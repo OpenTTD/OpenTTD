@@ -598,6 +598,8 @@ static void DeleteStationIfEmpty(Station *st) {
 	}
 }
 
+static int32 ClearTile_Station(uint tile, byte flags);
+
 // Tries to clear the given area. Returns the cost in case of success.
 // Or an error code if it failed.
 int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *station)
@@ -647,7 +649,7 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 		// on exactly that station.
 		if ( (station != NULL) && IS_TILETYPE(tile_cur, MP_STATION)) {
 			if (_map5[tile_cur] >= 8) {
-				_error_message = STR_0007_FLAT_LAND_REQUIRED;
+				_error_message = ClearTile_Station(tile_cur, DC_AUTO); // get error message
 				return CMD_ERROR;
 			} else {
 				int st = _map2[tile_cur];
