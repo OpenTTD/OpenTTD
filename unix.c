@@ -408,6 +408,7 @@ int GetLanguageList(char **languages, int max)
 	return num;
 }
 
+#if defined(__BEOS__) || defined(__linux__)
 static void ChangeWorkingDirectory(char *exe)
 {
 	char *s = strrchr(exe, '/');
@@ -417,6 +418,7 @@ static void ChangeWorkingDirectory(char *exe)
 		*s = '/';
 	}
 }
+#endif
 
 void ShowInfo(const char *str)
 {
@@ -439,10 +441,7 @@ void ShowOSErrorBox(const char *buf)
 int CDECL main(int argc, char* argv[])
 {
 	// change the working directory to enable doubleclicking in UIs
-#if defined(__BEOS__)
-	ChangeWorkingDirectory(argv[0]);
-#endif
-#if defined(__linux__)
+#if defined(__BEOS__) || defined(__linux__)
 	ChangeWorkingDirectory(argv[0]);
 #endif
 
