@@ -137,17 +137,15 @@ Windows:
   Please read the Makefile for more information.
 
 Unix:
-  OpenTTD can be built either with "make" or with "jam". To build with
-  "make", just type "make", or "gmake" on non-gnu systems. To build with "jam",
-  first run "./configure" and then "jam". Note that you need SDL to compile
-  OpenTTD.
+  OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
+  Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
   (see also docs/Readme_Mandrake_Linux.txt)
 
 MacOS:
   Use "make".
 
 BeOS:
-  Use "jam".
+  Use "make".
 
 FreeBSD
   Use "gmake".
