@@ -353,13 +353,23 @@ STR_015F_QUIT							:Kilépés
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Biztosan kilépsz ebbõl a játékból ?
 STR_0161_QUIT_GAME						:{WHITE}Kilépés a játékból
 STR_SORT_TIP							:{BLACK}Válassz rendezési sorrendet
+SRT_SORT_BY							:{BLACK}Rendezés
 
 STR_SORT_BY_POPULATION						:{BLACK}Lakosság
 STR_SORT_BY_PRODUCTION						:{BLACK}Termelés
 STR_SORT_BY_TYPE						:{BLACK}Típus
 STR_SORT_BY_TRANSPORTED						:{BLACK}Elszállítás
 STR_SORT_BY_NAME						:{BLACK}Név
+STR_SORT_BY_DROPDOWN_NAME					:Név
 STR_SORT_BY_DATE						:{BLACK}Dátum
+STR_SORT_BY_UNSORTED						:Rendezetlen
+STR_SORT_BY_NUMBER						:Szám
+STR_SORT_BY_PROFIT_LAST_YEAR					:Tavalyi profit
+STR_SORT_BY_PROFIT_THIS_YEAR					:Idei profit
+STR_SORT_BY_AGE							:Életkor
+STR_SORT_BY_RELIABILITY						:Megbízhatóság
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Rakomány szerinti összkapacitás
+STR_SORT_BY_MAX_SPEED						:Maximum sebesség
 
 ############ range for months starts
 STR_0162_JAN							:jan
@@ -754,6 +764,12 @@ STR_02DB_OFF							:{BLACK}Ki
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Állami támogatások
 STR_02DD_SUBSIDIES						:Támogatások
 STR_02DE_MAP_OF_WORLD						:Világtérkép
+STR_EXTRA_VIEW_PORT						:Extra látkép
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}{COMMA16}. látkép
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Látkép aktualizálása
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Beállítja a globális látkép pozicióját erre a látképre
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Látkép visszatöltése
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}A látkép pozicióját beállítja a globális látképre
 
 STR_02DF_TOWN_DIRECTORY						:Városlista
 STR_02E0_CURRENCY_UNITS						:{BLACK}Pénznem
@@ -1032,6 +1048,7 @@ STR_CONFIG_PATCHES_INT32					:{INT32}
 STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Válassz beállítási értéket
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}A lenti alap szervíz intervallum beállítások némelyike/mindegyike inkompatibilis a választott beállítással! Csak 5-90% és 30-800 napig elfogadható.
 
 STR_TEMPERATE_LANDSCAPE						:mérsékelt táj
 STR_SUB_ARCTIC_LANDSCAPE					:sarkköri táj
@@ -1145,6 +1162,7 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Vonat átalakítása
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Válaszd ki, milyen árut szállítson a vonat
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}A vonat átalakítása a kijelölt áru szállítására
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nem alakíthatod át a vonatot...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Üdv, ez itt az új, fejlesztés alatt álló MI. Elõfordulhatnak gondok, problémák. Ha belefutsz egybe, kérlek készíts képernyõmentést küld be a fórumra. Jó játékot!
 TEMP_AI_ACTIVATED						:{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok mûködnek!
@@ -1203,6 +1221,8 @@ STR_NETWORK_6_PLAYERS						:6 játékos
 STR_NETWORK_7_PLAYERS						:7 játékos
 STR_NETWORK_8_PLAYERS						:8 játékos
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
+STR_NETWORK_LOAD_GAME						:{BLACK}Játék betöltése
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Pálya betöltése
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Többjátékos játék-lobby
 
@@ -1216,6 +1236,13 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Új vállalatot nyit
 STR_NETWORK_READY						:{BLACK}Kész
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Nem található semmilyen hálózati játék
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} A szerver nem reagált a kérésre
+STR_NETWORK_ERR_DESYNC						:{WHITE} Hálózat - Játék szinkronizáció sikertelen.
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Hálózat - Játék kapcsolat elveszett.
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nem sikerült a szerver játékmentés betöltése.
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} A(z) {NUMU16}. játékos kapcsolata elveszett.
 
 ############ end network gui strings
 
@@ -1824,6 +1851,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Mûködési nyereség grafikon
 STR_7026_BANK_BALANCE						:{WHITE}Banki egyenleg
 STR_7027_LOAN							:{WHITE}Kölcsön
+STR_MAX_LOAN							:{WHITE}Max. kölcsön:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Kölcsönkér {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Visszafizet {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1897,8 +1925,10 @@ STR_706D_PRESIDENT						:Elnök
 STR_706E_TYCOON							:Nagytõkés
 STR_706F_BUILD_HQ						:{BLACK}Székház építése
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}A cég székházának megépítése/ megnézése
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}A cég fõhadiszállásának újraépítése másutt a cég értékének 1%-áért
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Nem építheted ide a székházadat...
 STR_7072_VIEW_HQ						:{BLACK}Székház
+STR_RELOCATE_HQ							:{BLACK}FH áthelyezése
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erõsödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -2202,6 +2232,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Mindig javítsd a vonatot a {TOWN}i jármû
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Úton a {TOWN}i jármûtelepre
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Úton a {TOWN}i jármûtelepre, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Hibás menetrend)
 
 STR_UNKNOWN_DESTINATION						:ismeretlen célpont
 STR_8812_EMPTY							:{LTBLUE}Üres
@@ -2248,6 +2279,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Nem adhatod el a vasúti jármûvet
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Nem találok utat a helyi jármûtelepre
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Nem indíthatod el/ állíthatod meg a vonatot...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Javítási idõköz: {LTBLUE}{COMMA16} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA16}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vonatok - kattints egy vonatra az adataihoz
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Új vonatok vásárlása (jármûtelep szükséges hozzá)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a jármûveket
@@ -2514,6 +2546,7 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Olajfinomító robbant fel {T
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Gyanús körülmények között felrobbant egy gyár {TOWN} közelében!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' szállt le {TOWN} közelében!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Egy szénbánya lesüllyedése földcsuszamlást okozott {TOWN} közelében!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Áradás!{}Legalább {COMMA16} ember meghalt vagy eltünt a halálos áradás következtében!
 
 STR_BRIBE_FAILED						:{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2						:{WHITE}lefülelte egy helyi nyomozó!

@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Historique de performance
 STR_0158_COMPANY_VALUE_GRAPH					:Valeur de la compagnie
 STR_0159_CARGO_PAYMENT_RATES					:Valeur des cargaisons
 STR_015A_COMPANY_LEAGUE_TABLE					:Classement des compagnies
+STR_PERFORMANCE_DETAIL_MENU					:Détail de l'évaluation de la performance
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -352,13 +353,23 @@ STR_015F_QUIT							:Quitter le jeu
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Êtes vous sur de vouloir abandonner cette partie?
 STR_0161_QUIT_GAME						:{WHITE}Abandonner
 STR_SORT_TIP							:{BLACK}Sélectionne l'ordre de tri
+SRT_SORT_BY							:{BLACK}Trier par
 
 STR_SORT_BY_POPULATION						:{BLACK}Population
 STR_SORT_BY_PRODUCTION						:{BLACK}Production
 STR_SORT_BY_TYPE						:{BLACK}Type
 STR_SORT_BY_TRANSPORTED						:{BLACK}Transporté
 STR_SORT_BY_NAME						:{BLACK}Nom
+STR_SORT_BY_DROPDOWN_NAME					:Nom
 STR_SORT_BY_DATE						:{BLACK}Date
+STR_SORT_BY_UNSORTED						:Non trié
+STR_SORT_BY_NUMBER						:Numéro
+STR_SORT_BY_PROFIT_LAST_YEAR					:Profit l'an dernier
+STR_SORT_BY_PROFIT_THIS_YEAR					:Profit cette année
+STR_SORT_BY_AGE							:Age
+STR_SORT_BY_RELIABILITY						:Fiabilité
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capacité totale par type de cargo
+STR_SORT_BY_MAX_SPEED						:Vitesse maximum
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -753,6 +764,12 @@ STR_02DB_OFF							:{BLACK}Désactivé
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES						:Subventions
 STR_02DE_MAP_OF_WORLD						:Carte du monde
+STR_EXTRA_VIEW_PORT						:Vue supplémentaire
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vue {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copier vers la vue
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copie l'emplacement de la vue globale vers cette vue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Coller depuis la vue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Colle l'emplacement de cette vue vers la vue globale
 
 STR_02DF_TOWN_DIRECTORY						:Annuaire des villes
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unité monétaire
@@ -835,6 +852,7 @@ STR_TOWNNAME_SWEDISH						:Suédois
 STR_TOWNNAME_DUTCH						:Hollandais
 STR_TOWNNAME_FINNISH						:Finnish
 STR_TOWNNAME_POLISH						:Polonais
+STR_TOWNNAME_CZECH						:Tchèques
 STR_TOWNNAME_SLOVAKISH						:Slovaques
 STR_TOWNNAME_HUNGARIAN						:Hongrois
 STR_TOWNNAME_AUSTRIAN						:Autrichiens
@@ -1030,6 +1048,7 @@ STR_CONFIG_PATCHES_INT32					:{INT32}
 STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Entrez une valeur
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Un ou plusieurs intervalles de service par défaut ci-dessous sont incompatibles avec le paramètre choisi! 5-90% et 30-800 jours sont valides
 
 STR_TEMPERATE_LANDSCAPE						:environnement 'Tempéré'
 STR_SUB_ARCTIC_LANDSCAPE					:environnement 'Arctique'
@@ -1046,6 +1065,7 @@ STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Les jets ne se crashent plus (fréquemment) sur les petites aéroports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Changer de climat : {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}En route pour {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}En route pour {CHECKPOINT}, {VELOCITY}
@@ -1142,6 +1162,7 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Réaménager le train
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Choix du type de marchandises à transporter
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Réaménager le train pour les marchandises sélectionnées
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Impossible de réaménager le train...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Les intervalles de service sont en pourcentage: {ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Bienvenue dans cette nouvelle IA, en cours d'élaboration. Vous pouvez vous attendre à rencontrer des problèmes. Dans ce cas, faites une capture d'écran et postez-la sur le forum. Amusez-vous bien !
 TEMP_AI_ACTIVATED						:{WHITE}Attention: cette nouvelle IA est en version alpha ! Pour le moment seuls les camions et les bus fonctionnent !
@@ -1200,6 +1221,8 @@ STR_NETWORK_6_PLAYERS						:6 joueurs
 STR_NETWORK_7_PLAYERS						:7 joueurs
 STR_NETWORK_8_PLAYERS						:8 joueurs
 STR_NETWORK_START_GAME						:{BLACK}Démarrer la partie
+STR_NETWORK_LOAD_GAME						:{BLACK}Charger une partie
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Charger un scénario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chat d'avant jeu
 
@@ -1216,6 +1239,10 @@ STR_NETWORK_READY						:{BLACK}Prêt
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Le serveur n'a pas répondu à la requête
+STR_NETWORK_ERR_DESYNC						:{WHITE} La synchronisation de la partie réseau a échouée.
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} La connection de la partie réseau a été perdue.
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} La sauvegarde serveur n'a pas pu être chargée.
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} La connection #{NUMU16} a dépassé le temps d'attente.
 
 ############ end network gui strings
 
@@ -1824,6 +1851,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graphique du profit d'opération
 STR_7026_BANK_BALANCE						:{WHITE}Equilibre bancaire
 STR_7027_LOAN							:{WHITE}Prêt
+STR_MAX_LOAN							:{WHITE}Emprunt maximum :  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Emprunter {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Rembourser {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1897,8 +1925,10 @@ STR_706D_PRESIDENT						:President
 STR_706E_TYCOON							:Tycoon
 STR_706F_BUILD_HQ						:{BLACK}Const. siège
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Contruire/voir le siège
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Reconstruit le quartier général de la compagne ailleurs pour le prix de 1% de la valeur de la compagnie
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Impossible de construire le siège...
 STR_7072_VIEW_HQ						:{BLACK}Voir le siège
+STR_RELOCATE_HQ							:{BLACK}Déménager le QG
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Récession mondiale!{}{}Les experts financiers craignent le pire!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Fin de la récession!{}{}La reprise redonne confiance aux industries!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Bascule entre une grande/petite fenêtre
@@ -2202,6 +2232,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Aller faire la maintenance sans s'arrête
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Roule vers le dépôt de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ordre invalide)
 
 STR_UNKNOWN_DESTINATION						:destination inconnue
 STR_8812_EMPTY							:{LTBLUE}Vide
@@ -2248,6 +2279,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Impossible de vendre le véhicule
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Impossible de trouver la route jusqu'au dépôt
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Impossible de démarrer/stopper le train...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}jours{BLACK}   Dernière maintenance: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}%{BLACK}   Dernière maintenance: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trains - Cliquez sur un train pour obtenir des informations
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Contruire de nouveaux trains (nécessite un dépôt ferroviaire)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trains - Cliquez sur un train pour obtenir des informations, glissez le wagon pour l'ajouter/le supprimer du train
@@ -2514,11 +2546,38 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Explosion d'une raffinerie 
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Usine détruite dans des circonstances suspectes près de {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}Un 'OVNI' attérit près de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Affaissement d'une veine de charbon entraîne la desctruction de la mine de {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Inondations!{}Au moins {COMMA16} présumés manquants ou morts après des inondations meurtrières!
 
 STR_BRIBE_FAILED						:{WHITE}Votre tentative de corruption à été
 STR_BRIBE_FAILED_2						:{WHITE}révélée à la presse par un journaliste régional.
 STR_BUILD_DATE							:{BLACK}Construit le: {LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Détail de l'évaluation de la performance
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Détail
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Véhicules :
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stations :
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Profit min. :
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Revenu min. :
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Revenu max. :
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Livré :
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Cargo :
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Argent :
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Emprunt :
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total :
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Nombre de véhicules. Ceci inclut les véhicules routiers, les trains, les navies et les aéronefs.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Nombre de parties de stations. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est compté, même si elles sont connectées à une seule station.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 année d'existence)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Quantité d'argent fait dans le mois ayant le plus bas profit des trois dernières années.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Quantité d'argent fait dans le mois ayant le plus haut profit des trois dernières années.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Unités de cargo livrées durant les 4 derniers trimestres.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Types de cargo livrés durant le dernier trimestre.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Quantité d'argent disponible.
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Avez-vous un emprunt élevé ?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total des points par rapport aux points possibles.
 
