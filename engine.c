@@ -7,6 +7,7 @@
 #include "vehicle.h"
 #include "news.h"
 #include "saveload.h"
+#include "console.h"
 
 #define UPDATE_PLAYER_RAILTYPE(e,p) if ((byte)(e->railtype + 1) > p->max_railtype) p->max_railtype = e->railtype + 1;
 
@@ -164,6 +165,7 @@ void StartupEngines()
 	AdjustAvailAircraft();
 }
 
+_iconsole_var * IConsoleResetEngines(byte argc, byte* argv[], byte argt[]) {StartupEngines(); return 0;}
 
 uint32 _engine_refit_masks[256];
 

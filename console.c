@@ -1267,6 +1267,7 @@ return NULL;
 }
 
 static void IConsoleStdLibRegister() {
+	// functions
 	IConsoleCmdRegister("debug_level",IConsoleStdLibDebugLevel);
 	IConsoleCmdRegister("dump_vars",IConsoleStdLibListDumpVariables);
 	IConsoleCmdRegister("echo",IConsoleStdLibEcho);
@@ -1281,6 +1282,9 @@ static void IConsoleStdLibRegister() {
 	IConsoleCmdRegister("list_vars",IConsoleStdLibListVariables);
 	IConsoleCmdRegister("screenshot",IConsoleStdLibScreenShot);
 	IConsoleCmdRegister("varinfo",IConsoleStdLibVarInfo);
+	IConsoleCmdRegister("resetengines",IConsoleResetEngines);
+
+	// variables
 	IConsoleVarRegister("cursor_rate",(void *) &_icursor_rate,ICONSOLE_VAR_BYTE);
 	IConsoleVarRegister("con_developer",(void *) &_stdlib_con_developer,ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarRegister("developer",(void *) &_stdlib_developer,ICONSOLE_VAR_BYTE);

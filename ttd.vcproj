@@ -1105,6 +1105,9 @@
 				RelativePath="console.h">
 			</File>
 			<File
+				RelativePath=".\console_cmds.h">
+			</File>
+			<File
 				RelativePath="economy.h">
 			</File>
 			<File

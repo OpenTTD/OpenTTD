@@ -1,3 +1,5 @@
+#ifndef CONSOLE_H
+#define CONSOLE_H
 // ** console ** //
 
 enum {
@@ -88,3 +90,7 @@ void IConsoleVarDump(_iconsole_var * var, byte * dump_desc);
 // *** Parser *** //
 
 void IConsoleCmdExec(byte * cmdstr);
+
+#include "console_cmds.h"
+
+#endif /* CONSOLE_H */
