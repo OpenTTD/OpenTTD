@@ -229,6 +229,7 @@ typedef struct {
 	WindowNumber wnd_num;
 	uint16 maxlen, maxwidth;
 	char *buf;
+	const char* orig;
 } querystr_d;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)

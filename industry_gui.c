@@ -4,7 +4,7 @@
 #include "strings.h"
 #include "table/strings.h"
 #include "map.h"
-//#include "gui.h"
+#include "gui.h"
 #include "window.h"
 #include "gfx.h"
 #include "command.h"
@@ -23,7 +23,6 @@ extern const byte _industry_type_costs[37];
 
 static void UpdateIndustryProduction(Industry *i);
 extern void DrawArrowButtons(int x, int y, int state);
-extern void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
 
 static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 {

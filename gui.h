@@ -116,7 +116,7 @@ enum {
 
 bool DoZoomInOutWindow(int how, Window * w);
 void ShowBuildIndustryWindow(void);
-void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number);
 void ShowMusicWindow(void);
 
 /* main_gui.c */

@@ -26,9 +26,6 @@
 
 bool _query_string_active;
 
-/* Now this is what I call dirty.. the edit-box needs to be rewritten! */
-static bool _do_edit_on_text_even_when_no_change_to_edit_box;
-
 typedef struct LandInfoData {
 	Town *town;
 	int32 costclear;
@@ -884,8 +881,6 @@ void DrawEditBox(Window *w, int wid)
 }
 
 
-#define MAX_QUERYSTR_LEN 64
-
 static void QueryStringWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
@@ -904,8 +899,8 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
-			if (strcmp(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) == 0 &&
-					!_do_edit_on_text_even_when_no_change_to_edit_box) {
+			if (WP(w, querystr_d).orig != NULL &&
+					strcmp(WP(w, querystr_d).buf, WP(w, querystr_d).orig) == 0) {
 				DeleteWindow(w);
 			} else {
 				char *buf = WP(w,querystr_d).buf;
@@ -985,30 +980,30 @@ static const WindowDesc _query_string_desc = {
 	QueryStringWndProc
 };
 
-static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
+static char _edit_str_buf[64];
+static char _orig_str_buf[lengthof(_edit_str_buf)];
 
-void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number)
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number)
 {
 	Window *w;
 
-#define _orig_edit_str_buf (_edit_str_buf+MAX_QUERYSTR_LEN)
+	assert(maxlen < lengthof(_edit_str_buf));
 
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	GetString(_orig_edit_str_buf, str);
+	w = AllocateWindowDesc(&_query_string_desc);
+
+	GetString(_edit_str_buf, str);
+	_edit_str_buf[maxlen] = '\0';
 
 	if (maxlen & 0x1000) {
-		_do_edit_on_text_even_when_no_change_to_edit_box = true;
+		WP(w, querystr_d).orig = NULL;
 		maxlen &= ~0x1000;
-	} else
-		_do_edit_on_text_even_when_no_change_to_edit_box = false;
-
-	_orig_edit_str_buf[maxlen] = 0;
-
-	memcpy(_edit_str_buf, _orig_edit_str_buf, MAX_QUERYSTR_LEN);
-
-	w = AllocateWindowDesc(&_query_string_desc);
+	} else {
+		strcpy(_orig_str_buf, _edit_str_buf);
+		WP(w, querystr_d).orig = _orig_str_buf;
+	}
 
 	w->click_state = 1 << 5;
 	WP(w,querystr_d).caption = caption;
@@ -1346,7 +1341,7 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
 	w->click_state |= (1 << 6);
 	WP(w,querystr_d).caret = 0;
-	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
+	WP(w,querystr_d).maxlen = lengthof(_edit_str_buf);
 	WP(w,querystr_d).maxwidth = 240;
 	WP(w,querystr_d).buf = _edit_str_buf;
 
