@@ -820,6 +820,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
+		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
