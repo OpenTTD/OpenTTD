@@ -33,6 +33,50 @@ static const SpriteID _aircraft_sprite[] = {
 	0x0EBD, 0x0EC5
 };
 
+// use this to find the nearest hangar to v
+// bit 16 is set in the return value if the player do not have any airports with a hangar (like helipads only)
+static uint32 FindNearestHangar(Vehicle *v)
+{
+	/* TODO add a check to see if the aircraft can land at the airport */
+	Station *st;
+	uint32 temp_distance, distance = 65000;
+	uint16 index_to_target = 0;
+
+	FOR_ALL_STATIONS(st) {
+		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
+			if (GetAirport(st->airport_type)->terminals != NULL) {
+				TileIndex airport_tile = st->airport_tile;
+				temp_distance = abs((v->x_pos >> 4) - TileX(airport_tile)) + abs((v->y_pos >> 4) - TileY(airport_tile));
+				if (temp_distance < distance) {
+					distance = temp_distance;
+					index_to_target = st->index;
+				}
+			}
+		}
+	}
+	if (distance == 65000)
+		SETBIT(index_to_target, 16);
+	return index_to_target;
+}
+
+// returns true if vehicle v have an airport in the schedule, that has a hangar
+static bool HaveHangarInOrderList(Vehicle *v)
+{
+	const Order *order;
+
+	FOR_VEHICLE_ORDERS(v, order) {
+		const Station *st = GetStation(order->station);
+		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
+			// If an airport doesn't have terminals (so no landing space for airports),
+			// it surely doesn't have any hangars
+			if (GetAirport(st->airport_type)->terminals != NULL)
+				return true;
+		}
+	}
+
+	return false;
+}
+
 int GetAircraftImage(Vehicle *v, byte direction)
 {
 	int spritenum = v->spritenum;
@@ -360,10 +404,11 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	Station *st;
+	uint16 next_airport_index;
 
 	v = GetVehicle(p1);
 
-	if (p2 != 0) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
+	if (HASBIT(p2, 16)) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -376,7 +421,8 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 	} else {
-		st = GetStation(v->u.air.targetairport);
+		next_airport_index = (HASBIT(p2, 17)) ? (int16)p2 : v->u.air.targetairport;
+		st = GetStation(next_airport_index);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
 		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL)
@@ -384,9 +430,13 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (flags & DC_EXEC) {
 			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = p2 == 0 ? OF_NON_STOP | OF_FULL_LOAD : 0;
-			v->current_order.station = v->u.air.targetairport;
+			v->current_order.flags = v->set_for_replacement ? 0 : OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.station = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			if (HASBIT(p2, 17)) {
+				AircraftNextAirportPos_and_Order(v);
+				v->u.air.targetairport = next_airport_index;
+			}
 		}
 	}
 
@@ -1439,11 +1489,42 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 	AircraftNextAirportPos_and_Order(v);
 
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
-	if (v->current_order.type != OT_GOTO_DEPOT && ((v->owner == _local_player && _autoreplace_array[v->engine_type] != v->engine_type) ||
-		(v->owner == _local_player && _patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30)))) {
-		_current_player = _local_player;
-		DoCommandP(v->tile, v->index, 1, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
-		_current_player = OWNER_NONE;
+	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
+		// only the vehicle owner needs to calculate the rest (locally)
+		if ((_autoreplace_array[v->engine_type] != v->engine_type) ||
+			(_patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+
+			if (v->set_for_replacement) {
+				Station *st = GetStation(v->u.air.targetairport);
+				// If an airport doesn't have terminals (so no landing space for airports),
+				// it surely doesn't have any hangars
+				if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL)
+					return;
+				/* this is not the airport, where the helicopter will be replaced
+					No need to make everybody check this, since it would be a waste of bandwidth */
+			}
+
+			{
+				bool has_hangar = HaveHangarInOrderList(v); // this info is needed twice, but we only want to loop the orders once ;)
+				uint32 next_airport = 0;
+
+				if (!has_hangar) {
+					// the helicopter needs help to find a hangar since there are none in the schedule
+					SETBIT(next_airport, 17);
+					next_airport |= FindNearestHangar(v);
+					if (HASBIT(next_airport, 16)) {
+						/* when shared airports are allowed, a check for a rentable hangar should be added here */
+						/* TODO: tell the player that he needs a hangar */
+						v->set_for_replacement = false; //needed so it will check again later when the player might have build a hangar
+						return; // player do not own any hangars
+					}
+				}
+				SETBIT(next_airport, 16);
+				_current_player = _local_player;
+				DoCommandP(v->tile, v->index, next_airport, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+				_current_player = OWNER_NONE;
+			}
+		}
 	}
 }
 
