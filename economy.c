@@ -992,7 +992,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 	/* Check if there's an industry close to the station that accepts
 	 * the cargo */
 	best = NULL;
-	u = 0x11;
+	u = _patches.station_spread + 8;
 	for(ind = _industries; ind != endof(_industries); ind++) {
 		if (ind->xy != 0 && (cargo_type == ind->accepts_cargo[0] || cargo_type
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
