@@ -124,8 +124,10 @@ enum WindowKeyCodes {
 	WKC_F11 = 43,
 	WKC_F12 = 44,
 
-	// Required for french keyboard
-	WKC_AMPERSAND = 45,
+	// backquote is the key left of "1"
+	// we only store this key here, no matter what character is really mapped to it
+	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
+	WKC_BACKQUOTE = 45,
 	
 	// 0-9 are mapped to 48-57
 	// A-Z are mapped to 65-90

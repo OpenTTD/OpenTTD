@@ -108,7 +108,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		e->keypress.cont=false;
-		if (e->keypress.keycode == WKC_TAB)
+		if (e->keypress.keycode == WKC_BACKQUOTE)
 			{
 			IConsoleSwitch();
 			} else

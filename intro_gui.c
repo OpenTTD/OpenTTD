@@ -73,7 +73,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		}
 	case WE_KEYPRESS:
 		switch(e->keypress.keycode) {
-		case WKC_TAB: IConsoleSwitch(); break;
+		case WKC_BACKQUOTE: IConsoleSwitch(); break;
 		}
 		break;
 	}

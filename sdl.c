@@ -344,8 +344,6 @@ static const VkMapping _vk_mapping[] = {
 	AM(SDLK_a,SDLK_z,'A','Z'),
 	AM(SDLK_0,SDLK_9,'0','9'),
 
-	AS(SDLK_AMPERSAND, WKC_AMPERSAND), // mainly for french keyboards
-	
 	AS(SDLK_ESCAPE,	WKC_ESC),
 	AS(SDLK_BACKSPACE,	WKC_BACKSPACE),
 
@@ -385,6 +383,9 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 			break;
 		}
 	}
+
+	// check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards)
+	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
 	
 	// META are the command keys on mac
 	if (sym->mod & KMOD_META) key |= WKC_META;
