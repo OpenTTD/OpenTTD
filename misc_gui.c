@@ -1432,14 +1432,14 @@ static void WriteCE(const CheatEntry *ce, int32 val)
 
 
 static const CheatEntry _cheats_ui[] = {
-	{CE_CLICK, 0, STR_CHEAT_MONEY, 					&_cheats.money.value, 					&_cheats.money.been_used, 				&ClickMoneyCheat},
-	{CE_UINT8, 0, STR_CHEAT_CHANGE_PLAYER, 	&_local_player, 								&_cheats.switch_player.been_used,	&ClickChangePlayerCheat, 0, 11, 1},
-	{CE_BOOL, 0, STR_CHEAT_EXTRA_DYNAMITE,	&_cheats.magic_bulldozer.value,	&_cheats.magic_bulldozer.been_used},
-	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used},
-	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,	&_cheats.build_in_pause.been_used},
-	{CE_BOOL, 0, STR_CHEAT_NO_JETCRASH,			&_cheats.no_jetcrash.value,			&_cheats.no_jetcrash.been_used},
-	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape, 								&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat, -1, 4, 1},
-	{CE_UINT8, 0, STR_CHEAT_CHANGE_DATE,		&_cur_year,			&_cheats.change_date.been_used,	&ClickChangeDateCheat, -1,1,1},
+	{CE_CLICK, 0, STR_CHEAT_MONEY, 					&_cheats.money.value, 					&_cheats.money.been_used, 					&ClickMoneyCheat,					0, 0, 0},
+	{CE_UINT8, 0, STR_CHEAT_CHANGE_PLAYER, 	&_local_player, 								&_cheats.switch_player.been_used,		&ClickChangePlayerCheat,	0, 11, 1},
+	{CE_BOOL, 0, STR_CHEAT_EXTRA_DYNAMITE,	&_cheats.magic_bulldozer.value,	&_cheats.magic_bulldozer.been_used, NULL,											0, 0, 0},
+	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,											0, 0, 0},
+	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,	&_cheats.build_in_pause.been_used,	NULL,											0, 0, 0},
+	{CE_BOOL, 0, STR_CHEAT_NO_JETCRASH,			&_cheats.no_jetcrash.value,			&_cheats.no_jetcrash.been_used,			NULL,											0, 0, 0},
+	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape, 								&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat,-1, 4, 1},
+	{CE_UINT8, 0, STR_CHEAT_CHANGE_DATE,		&_cur_year,											&_cheats.change_date.been_used,			&ClickChangeDateCheat,	 -1, 1, 1},
 };
 
 

@@ -725,178 +725,176 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 //***************************
 
 static const SettingDesc music_settings[] = {
-	{"playlist", SDT_UINT8, (void*)0, (void*)offsetof(MusicFileSettings, playlist) },
-	{"music_vol", SDT_UINT8, (void*)128, (void*)offsetof(MusicFileSettings, music_vol) },
-	{"effect_vol", SDT_UINT8, (void*)128, (void*)offsetof(MusicFileSettings, effect_vol) },
-	{"custom_1", SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_1) << 16, NULL, (void*)offsetof(MusicFileSettings, custom_1) },
-	{"custom_2", SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_2) << 16, NULL, (void*)offsetof(MusicFileSettings, custom_2) },
-	{"playing", SDT_BOOL, (void*)true, (void*)offsetof(MusicFileSettings, btn_down) },
-	{"shuffle", SDT_BOOL, (void*)false, (void*)offsetof(MusicFileSettings, shuffle) },
-	{NULL}
+	{"playlist",	SDT_UINT8,	(void*)0,			(void*)offsetof(MusicFileSettings,	playlist), NULL},
+	{"music_vol", SDT_UINT8,	(void*)128,		(void*)offsetof(MusicFileSettings,	music_vol), NULL},
+	{"effect_vol",SDT_UINT8,	(void*)128,		(void*)offsetof(MusicFileSettings,	effect_vol), NULL},
+	{"custom_1",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_1) << 16, NULL, (void*)offsetof(MusicFileSettings, custom_1), NULL},
+	{"custom_2",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_2) << 16, NULL, (void*)offsetof(MusicFileSettings, custom_2), NULL},
+	{"playing",		SDT_BOOL,		(void*)true,	(void*)offsetof(MusicFileSettings,	btn_down), NULL},
+	{"shuffle",		SDT_BOOL,		(void*)false, (void*)offsetof(MusicFileSettings,	shuffle), NULL},
+	{NULL,				0,					NULL,					NULL,																NULL}
 };
 
 static const SettingDesc win32_settings[] = {
-	{"display_hz", SDT_UINT, (void*)0, &_display_hz},
-	{"force_full_redraw", SDT_BOOL, (void*)false, &_force_full_redraw},
-	{"fullscreen_bpp", SDT_UINT, (void*)8, &_fullscreen_bpp},
-	{"double_size", SDT_BOOL, (void*)false, &_double_size},
-	{NULL}
+	{"display_hz",				SDT_UINT, (void*)0,			&_display_hz,					NULL},
+	{"force_full_redraw", SDT_BOOL, (void*)false, &_force_full_redraw,	NULL},
+	{"fullscreen_bpp",		SDT_UINT, (void*)8,			&_fullscreen_bpp,			NULL},
+	{"double_size",				SDT_BOOL, (void*)false, &_double_size,				NULL},
+	{NULL,								0,				NULL,					NULL,									NULL}
 };
 
 static const SettingDesc misc_settings[] = {
-	{"display_opt", SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_CHECKPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|CHECKPOINTS"},
-	{"news_display_opt", SDT_UINT16, (void*)-1, &_news_display_opt},
-	{"fullscreen", SDT_BOOL, (void*)false, &_fullscreen},
-	{"videodriver", SDT_STRINGBUF | (lengthof(_ini_videodriver)<<16) | SDT_NOSAVE, NULL, _ini_videodriver},
-	{"musicdriver", SDT_STRINGBUF | (lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE, NULL, _ini_musicdriver},
-	{"sounddriver", SDT_STRINGBUF | (lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE, NULL, _ini_sounddriver},
-	{"language", SDT_STRINGBUF | lengthof(_dynlang.curr_file)<<16, NULL, _dynlang.curr_file },
-	{"resolution", SDT_UINT16 | SDT_INTLIST | lengthof(_cur_resolution) << 16, "640,480", _cur_resolution},
-	{"cache_sprites", SDT_BOOL, (void*)false, &_cache_sprites},
-	{"screenshot_format", SDT_STRINGBUF | (lengthof(_screenshot_format_name)<<16), NULL, _screenshot_format_name},
-	{"savegame_format", SDT_STRINGBUF | (lengthof(_savegame_format)<<16), NULL, _savegame_format},
-	{"rightclick_emulate", SDT_BOOL, (void*)false, &_rightclick_emulate},
-	{NULL}
+	{"display_opt",				SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_CHECKPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|CHECKPOINTS"},
+	{"news_display_opt",	SDT_UINT16,		(void*)-1,		&_news_display_opt,		NULL},
+	{"fullscreen",				SDT_BOOL,			(void*)false, &_fullscreen,					NULL},
+	{"videodriver",				SDT_STRINGBUF | (lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},
+	{"musicdriver",				SDT_STRINGBUF | (lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE,NULL,			_ini_musicdriver,				NULL},
+	{"sounddriver",				SDT_STRINGBUF | (lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
+	{"language",					SDT_STRINGBUF | lengthof(_dynlang.curr_file)<<16,							NULL,			_dynlang.curr_file,			NULL},
+	{"resolution",				SDT_UINT16 | SDT_INTLIST | lengthof(_cur_resolution) << 16,		"640,480",_cur_resolution,				NULL},
+	{"cache_sprites",			SDT_BOOL,			(void*)false, &_cache_sprites,			NULL},
+	{"screenshot_format", SDT_STRINGBUF | (lengthof(_screenshot_format_name)<<16),			NULL,			_screenshot_format_name,NULL},
+	{"savegame_format",		SDT_STRINGBUF | (lengthof(_savegame_format)<<16),							NULL,			_savegame_format,				NULL},
+	{"rightclick_emulate",SDT_BOOL,			(void*)false, &_rightclick_emulate, NULL},
+	{NULL,								0,						NULL,					NULL,									NULL}
 };
 
 static const SettingDesc network_settings[] = {
-	{"port", SDT_UINT | SDT_NOSAVE, (void*)3978, &_network_client_port},
-	{"server_port", SDT_UINT | SDT_NOSAVE, (void*)3979, &_network_server_port},
-	{"sync_freq", SDT_UINT | SDT_NOSAVE, (void*)4, &_network_sync_freq},
-	{"ahead_frames", SDT_UINT | SDT_NOSAVE, (void*)5, &_network_ahead_frames},
-	{NULL}
+	{"port",					SDT_UINT | SDT_NOSAVE,	(void*)3978,	&_network_client_port,	NULL},
+	{"server_port",		SDT_UINT | SDT_NOSAVE,	(void*)3979,	&_network_server_port,	NULL},
+	{"sync_freq",			SDT_UINT | SDT_NOSAVE,	(void*)4,			&_network_sync_freq,		NULL},
+	{"ahead_frames",	SDT_UINT | SDT_NOSAVE,	(void*)5,			&_network_ahead_frames, NULL},
+	{NULL,						0,											NULL,					NULL,										NULL}
 };
 
 static const SettingDesc debug_settings[] = {
-	{"savedump_path", SDT_STRINGBUF | (lengthof(_savedump_path)<<16) | SDT_NOSAVE, NULL, _savedump_path},
-	{"savedump_first", SDT_UINT | SDT_NOSAVE, 0, &_savedump_first},
-	{"savedump_freq", SDT_UINT | SDT_NOSAVE, (void*)1, &_savedump_freq},
-	{"savedump_last", SDT_UINT | SDT_NOSAVE, 0, &_savedump_last},
-	{NULL}
+	{"savedump_path",		SDT_STRINGBUF | (lengthof(_savedump_path)<<16) | SDT_NOSAVE, NULL, _savedump_path, NULL},
+	{"savedump_first",	SDT_UINT | SDT_NOSAVE,	0,				&_savedump_first, NULL},
+	{"savedump_freq",		SDT_UINT | SDT_NOSAVE,	(void*)1, &_savedump_freq,	NULL},
+	{"savedump_last",		SDT_UINT | SDT_NOSAVE,	0,				&_savedump_last,	NULL},
+	{NULL,							0,											NULL,			NULL,							NULL}
 };
 
 
 static const SettingDesc gameopt_settings[] = {
-	{"diff_level", SDT_UINT8, (void*)9, (void*)offsetof(GameOptions, diff_level) },
-	{"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, (void*)offsetof(GameOptions, diff) },
-	{"currency", SDT_UINT8 | SDT_ONEOFMANY, (void*)21, (void*)offsetof(GameOptions, currency), "GBP|USD|FF|DM|YEN|PT|FT|ZL|ATS|BEF|DKK|FIM|GRD|CHF|NLG|ITL|SEK|RUR|CZK|ISK|NOK|EUR" },
-	{"distances", SDT_UINT8 | SDT_ONEOFMANY, (void*)1, (void*)offsetof(GameOptions, kilometers), "imperial|metric" },
-	{"town_names", SDT_UINT8 | SDT_ONEOFMANY, (void*)0, (void*)offsetof(GameOptions, town_name), "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|czech|slovakish|hungarian" },
-	{"landscape", SDT_UINT8 | SDT_ONEOFMANY, (void*)0, (void*)offsetof(GameOptions, landscape), "normal|hilly|desert|candy" },
-	{"autosave", SDT_UINT8 | SDT_ONEOFMANY, (void*)1, (void*)offsetof(GameOptions, autosave), "off|monthly|quarterly|half year|yearly" },
-	{"road_side", SDT_UINT8 | SDT_ONEOFMANY, (void*)1, (void*)offsetof(GameOptions, road_side), "left|right" },
-
-	{NULL}
+	{"diff_level",	SDT_UINT8,									(void*)9,		(void*)offsetof(GameOptions, diff_level), NULL},
+	{"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, (void*)offsetof(GameOptions, diff), NULL},
+	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)21,	(void*)offsetof(GameOptions, currency),		"GBP|USD|FF|DM|YEN|PT|FT|ZL|ATS|BEF|DKK|FIM|GRD|CHF|NLG|ITL|SEK|RUR|CZK|ISK|NOK|EUR" },
+	{"distances",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, kilometers), "imperial|metric" },
+	{"town_names",	SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		(void*)offsetof(GameOptions, town_name),	"english|french|german|american|latin|silly|swedish|dutch|finnish|polish|czech|slovakish|hungarian" },
+	{"landscape",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		(void*)offsetof(GameOptions, landscape),	"normal|hilly|desert|candy" },
+	{"autosave",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, autosave),		"off|monthly|quarterly|half year|yearly" },
+	{"road_side",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, road_side),	"left|right" },
+	{NULL,					0,													NULL,				NULL,																			NULL}
 };
 
 static const SettingDesc patch_settings[] = {
-	{"vehicle_speed", SDT_BOOL, (void*)true, (void*)offsetof(Patches, vehicle_speed) },
-	{"build_on_slopes", SDT_BOOL, (void*)true, (void*)offsetof(Patches, build_on_slopes) },
-	{"mammoth_trains", SDT_BOOL, (void*)true, (void*)offsetof(Patches, mammoth_trains) },
-	{"join_stations", SDT_BOOL, (void*)true, (void*)offsetof(Patches, join_stations) },
-	{"station_spread", SDT_UINT8, (void*)12, (void*)offsetof(Patches, station_spread) },
-	{"full_load_any", SDT_BOOL, (void*)true, (void*)offsetof(Patches, full_load_any)},
-	{"order_review_system", SDT_UINT8, (void*)2, (void*)offsetof(Patches, order_review_system)},
+	{"vehicle_speed",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, vehicle_speed),				NULL},
+	{"build_on_slopes",			SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, build_on_slopes),			NULL},
+	{"mammoth_trains",			SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, mammoth_trains),				NULL},
+	{"join_stations",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, join_stations),				NULL},
+	{"station_spread",			SDT_UINT8,	(void*)12,		(void*)offsetof(Patches, station_spread),				NULL},
+	{"full_load_any",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, full_load_any),				NULL},
+	{"order_review_system", SDT_UINT8,	(void*)2,			(void*)offsetof(Patches, order_review_system),	NULL},
 
-	{"inflation", SDT_BOOL, (void*)true, (void*)offsetof(Patches, inflation)},
-	{"selectgoods", SDT_BOOL, (void*)true, (void*)offsetof(Patches, selectgoods)},
-	{"longbridges", SDT_BOOL, (void*)false, (void*)offsetof(Patches, longbridges)},
-	{"gotodepot", SDT_BOOL, (void*)true, (void*)offsetof(Patches, gotodepot)},
+	{"inflation",						SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, inflation),						NULL},
+	{"selectgoods",					SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, selectgoods),					NULL},
+	{"longbridges",					SDT_BOOL,		(void*)false, (void*)offsetof(Patches, longbridges),					NULL},
+	{"gotodepot",						SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, gotodepot),						NULL},
 
-	{"build_rawmaterial_ind", SDT_BOOL, (void*)false, (void*)offsetof(Patches, build_rawmaterial_ind)},
-	{"multiple_industry_per_town", SDT_BOOL, (void*)false, (void*)offsetof(Patches, multiple_industry_per_town)},
-	{"same_industry_close", SDT_BOOL, (void*)false, (void*)offsetof(Patches, same_industry_close)},
+	{"build_rawmaterial_ind",	SDT_BOOL, (void*)false, (void*)offsetof(Patches, build_rawmaterial_ind),NULL},
+	{"multiple_industry_per_town",SDT_BOOL, (void*)false, (void*)offsetof(Patches, multiple_industry_per_town), NULL},
+	{"same_industry_close",	SDT_BOOL,		(void*)false, (void*)offsetof(Patches, same_industry_close),	NULL},
 
-	{"lost_train_days", SDT_UINT16, (void*)180, (void*)offsetof(Patches, lost_train_days)},
-	{"train_income_warn", SDT_BOOL, (void*)true, (void*)offsetof(Patches, train_income_warn)},
+	{"lost_train_days",			SDT_UINT16, (void*)180,		(void*)offsetof(Patches, lost_train_days),			NULL},
+	{"train_income_warn",		SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, train_income_warn),		NULL},
 
-	{"status_long_date", SDT_BOOL, (void*)true, (void*)offsetof(Patches, status_long_date)},
-	{"signal_side", SDT_BOOL, (void*)true, (void*)offsetof(Patches, signal_side)},
-	{"show_finances", SDT_BOOL, (void*)true, (void*)offsetof(Patches, show_finances)},
+	{"status_long_date",		SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, status_long_date),			NULL},
+	{"signal_side",					SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, signal_side),					NULL},
+	{"show_finances",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, show_finances),				NULL},
 
-	{"new_nonstop", SDT_BOOL, (void*)false, (void*)offsetof(Patches, new_nonstop)},
-	{"roadveh_queue", SDT_BOOL, (void*)false, (void*)offsetof(Patches, roadveh_queue)},
+	{"new_nonstop",					SDT_BOOL,		(void*)false, (void*)offsetof(Patches, new_nonstop),					NULL},
+	{"roadveh_queue",				SDT_BOOL,		(void*)false, (void*)offsetof(Patches, roadveh_queue),				NULL},
 
-	{"autoscroll", SDT_BOOL, (void*)false, (void*)offsetof(Patches, autoscroll)},
-	{"errmsg_duration", SDT_UINT8, (void*)5, (void*)offsetof(Patches, errmsg_duration)},
-	{"snow_line_height", SDT_UINT8, (void*)7, (void*)offsetof(Patches, snow_line_height)},
+	{"autoscroll",					SDT_BOOL,		(void*)false, (void*)offsetof(Patches, autoscroll),						NULL},
+	{"errmsg_duration",			SDT_UINT8,	(void*)5,			(void*)offsetof(Patches, errmsg_duration),			NULL},
+	{"snow_line_height",		SDT_UINT8,	(void*)7,			(void*)offsetof(Patches, snow_line_height),			NULL},
 
-	{"bribe", SDT_BOOL, (void*)false, (void*)offsetof(Patches, bribe)},
-	{"new_depot_finding", SDT_BOOL, (void*)false, (void*)offsetof(Patches, new_depot_finding)},
+	{"bribe",								SDT_BOOL,		(void*)false, (void*)offsetof(Patches, bribe),								NULL},
+	{"new_depot_finding",		SDT_BOOL,		(void*)false, (void*)offsetof(Patches, new_depot_finding),		NULL},
 
-	{"nonuniform_stations", SDT_BOOL, (void*)false, (void*)offsetof(Patches, nonuniform_stations)},
-	{"always_small_airport", SDT_BOOL, (void*)false, (void*)offsetof(Patches, always_small_airport)},
-	{"realistic_acceleration", SDT_BOOL, (void*)false, (void*)offsetof(Patches, realistic_acceleration)},
+	{"nonuniform_stations",	SDT_BOOL,		(void*)false, (void*)offsetof(Patches, nonuniform_stations),	NULL},
+	{"always_small_airport",SDT_BOOL,		(void*)false, (void*)offsetof(Patches, always_small_airport),	NULL},
+	{"realistic_acceleration",SDT_BOOL, (void*)false, (void*)offsetof(Patches, realistic_acceleration),	NULL},
 	
-	{"toolbar_pos", SDT_UINT8, (void*)0, (void*)offsetof(Patches, toolbar_pos)},
+	{"toolbar_pos",					SDT_UINT8,	(void*)0,			(void*)offsetof(Patches, toolbar_pos),					NULL},
 
-	{"max_trains", SDT_UINT8, (void*)80,(void*)offsetof(Patches, max_trains)},
-	{"max_roadveh", SDT_UINT8, (void*)80,(void*)offsetof(Patches, max_roadveh)},
-	{"max_aircraft", SDT_UINT8, (void*)40,(void*)offsetof(Patches, max_aircraft)},
-	{"max_ships", SDT_UINT8, (void*)50,(void*)offsetof(Patches, max_ships)},
+	{"max_trains",					SDT_UINT8,	(void*)80,		(void*)offsetof(Patches, max_trains),						NULL},
+	{"max_roadveh",					SDT_UINT8,	(void*)80,		(void*)offsetof(Patches, max_roadveh),					NULL},
+	{"max_aircraft",				SDT_UINT8,	(void*)40,		(void*)offsetof(Patches, max_aircraft),					NULL},
+	{"max_ships",						SDT_UINT8,	(void*)50,		(void*)offsetof(Patches, max_ships),						NULL},
 
-	{"servint_ispercent", SDT_BOOL, (void*)false,(void*)offsetof(Patches, servint_ispercent)},
-	{"servint_trains", SDT_UINT16, (void*)150,(void*)offsetof(Patches, servint_trains)},
-	{"servint_roadveh", SDT_UINT16, (void*)150,(void*)offsetof(Patches, servint_roadveh)},
-	{"servint_ships", SDT_UINT16, (void*)360,(void*)offsetof(Patches, servint_ships)},
-	{"servint_aircraft", SDT_UINT16, (void*)100,(void*)offsetof(Patches, servint_aircraft)},
+	{"servint_ispercent",		SDT_BOOL,		(void*)false,	(void*)offsetof(Patches, servint_ispercent),		NULL},
+	{"servint_trains",			SDT_UINT16, (void*)150,		(void*)offsetof(Patches, servint_trains),				NULL},
+	{"servint_roadveh",			SDT_UINT16, (void*)150,		(void*)offsetof(Patches, servint_roadveh),			NULL},
+	{"servint_ships",				SDT_UINT16, (void*)360,		(void*)offsetof(Patches, servint_ships),				NULL},
+	{"servint_aircraft",		SDT_UINT16, (void*)100,		(void*)offsetof(Patches, servint_aircraft),			NULL},
 
-	{"autorenew", SDT_BOOL, (void*)false,(void*)offsetof(Patches, autorenew)},
-	{"autorenew_months", SDT_INT16, (void*)-6, (void*)offsetof(Patches, autorenew_months)},
-	{"autorenew_money", SDT_INT32, (void*)100000, (void*)offsetof(Patches, autorenew_money)},
+	{"autorenew",						SDT_BOOL,		(void*)false,	(void*)offsetof(Patches, autorenew),						NULL},
+	{"autorenew_months",		SDT_INT16,	(void*)-6,		(void*)offsetof(Patches, autorenew_months),			NULL},
+	{"autorenew_money",			SDT_INT32,	(void*)100000,(void*)offsetof(Patches, autorenew_money),			NULL},
 
-	{"new_pathfinding",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, new_pathfinding)},
-	{"pf_maxlength", SDT_UINT16, (void*)512, (void*)offsetof(Patches, pf_maxlength)},
-	{"pf_maxdepth", SDT_UINT8, (void*)16, (void*)offsetof(Patches, pf_maxdepth)},
+	{"new_pathfinding",			SDT_BOOL,		(void*)false, (void*)offsetof(Patches, new_pathfinding),			NULL},
+	{"pf_maxlength",				SDT_UINT16, (void*)512,		(void*)offsetof(Patches, pf_maxlength),					NULL},
+	{"pf_maxdepth",					SDT_UINT8,	(void*)16,		(void*)offsetof(Patches, pf_maxdepth),					NULL},
 
 	
+	{"ai_disable_veh_train",SDT_BOOL,		(void*)false, (void*)offsetof(Patches, ai_disable_veh_train),	NULL},
+	{"ai_disable_veh_roadveh",SDT_BOOL,	(void*)false, (void*)offsetof(Patches, ai_disable_veh_roadveh),	NULL},
+	{"ai_disable_veh_aircraft",SDT_BOOL,(void*)false, (void*)offsetof(Patches, ai_disable_veh_aircraft),NULL},
+	{"ai_disable_veh_ship",	SDT_BOOL,		(void*)false, (void*)offsetof(Patches, ai_disable_veh_ship),	NULL},
+	{"starting_date",				SDT_UINT32, (void*)1950,	(void*)offsetof(Patches, starting_date),				NULL},
 
-	{"ai_disable_veh_train", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_train)},
-	{"ai_disable_veh_roadveh", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_roadveh)},
-	{"ai_disable_veh_aircraft", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_aircraft)},
-	{"ai_disable_veh_ship", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_ship)},
-	{"starting_date", SDT_UINT32, (void*)1950, (void*)offsetof(Patches, starting_date)},
+	{"colored_news_date",		SDT_UINT32, (void*)2000,	(void*)offsetof(Patches, colored_news_date),		NULL},
 
-	{"colored_news_date", SDT_UINT32, (void*)2000, (void*)offsetof(Patches, colored_news_date)},
+	{"bridge_pillars",			SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, bridge_pillars),				NULL},
+	{"invisible_trees",			SDT_BOOL,		(void*)false, (void*)offsetof(Patches, invisible_trees),			NULL},
 
-	{"bridge_pillars",  SDT_BOOL, (void*)true, (void*)offsetof(Patches, bridge_pillars)},
-	{"invisible_trees", SDT_BOOL, (void*)false, (void*)offsetof(Patches, invisible_trees)},
+	{"keep_all_autosave",		SDT_BOOL,		(void*)false, (void*)offsetof(Patches, keep_all_autosave),		NULL},
 
-	{"keep_all_autosave",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, keep_all_autosave)},
+	{"extra_dynamite",			SDT_BOOL,		(void*)false, (void*)offsetof(Patches, extra_dynamite),				NULL},
 
-	{"extra_dynamite",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, extra_dynamite)},
+	{"never_expire_vehicles",SDT_BOOL,	(void*)false, (void*)offsetof(Patches, never_expire_vehicles),NULL},
+	{"extend_vehicle_life",	SDT_UINT8,	(void*)0,			(void*)offsetof(Patches, extend_vehicle_life),	NULL},
 
-	{"never_expire_vehicles",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, never_expire_vehicles)},
-	{"extend_vehicle_life", SDT_UINT8, (void*)0, (void*)offsetof(Patches, extend_vehicle_life)},
+	{"auto_euro",						SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, auto_euro),						NULL},
 
-	{"auto_euro",  SDT_BOOL, (void*)true, (void*)offsetof(Patches, auto_euro)},
+	{"serviceathelipad",		SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, serviceathelipad),			NULL},
+	{"smooth_economy",			SDT_BOOL,		(void*)false, (void*)offsetof(Patches, smooth_economy),				NULL},
+	{"dist_local_authority",SDT_UINT8,	(void*)20,		(void*)offsetof(Patches, dist_local_authority), NULL},
 
-	{"serviceathelipad",  SDT_BOOL, (void*)true, (void*)offsetof(Patches, serviceathelipad)},
-	{"smooth_economy", SDT_BOOL, (void*)false, (void*)offsetof(Patches, smooth_economy)},
-	{"dist_local_authority", SDT_UINT8, (void*)20, (void*)offsetof(Patches, dist_local_authority)},
-
-	{"wait_oneway_signal", SDT_UINT8, (void*)15, (void*)offsetof(Patches, wait_oneway_signal)},
-	{"wait_twoway_signal", SDT_UINT8, (void*)41, (void*)offsetof(Patches, wait_twoway_signal)},
+	{"wait_oneway_signal",	SDT_UINT8,	(void*)15,		(void*)offsetof(Patches, wait_oneway_signal),		NULL},
+	{"wait_twoway_signal",	SDT_UINT8,	(void*)41,		(void*)offsetof(Patches, wait_twoway_signal),		NULL},
 	
-	{"ainew_active", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ainew_active)},
+	{"ainew_active",				SDT_BOOL,		(void*)false, (void*)offsetof(Patches, ainew_active),					NULL},
 
-	{"drag_signals_density", SDT_UINT8, (void*)4, (void*)offsetof(Patches, drag_signals_density)},
+	{"drag_signals_density",SDT_UINT8,	(void*)4,			(void*)offsetof(Patches, drag_signals_density), NULL},
 
-	{NULL}
+	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, void *grpname, void *base);
 
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 {
-	proc(ini, misc_settings, "misc", NULL);
-	proc(ini, win32_settings, "win32", NULL);
-	proc(ini, network_settings, "network", NULL);
-	proc(ini, music_settings, "music", &msf);
-	proc(ini, gameopt_settings, "gameopt", &_new_opt);
-	proc(ini, patch_settings, "patches", &_patches);
+	proc(ini, misc_settings,		"misc",			NULL);
+	proc(ini, win32_settings,		"win32",		NULL);
+	proc(ini, network_settings, "network",	NULL);
+	proc(ini, music_settings,		"music",		&msf);
+	proc(ini, gameopt_settings, "gameopt",	&_new_opt);
+	proc(ini, patch_settings,		"patches",	&_patches);
 
-	proc(ini, debug_settings, "debug", NULL);
+	proc(ini, debug_settings,		"debug",		NULL);
 }
 
 void LoadGrfSettings(IniFile *ini)

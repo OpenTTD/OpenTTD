@@ -355,7 +355,7 @@ static const BestFitStruct _bestfit[] = {
 	{5, M(0,16), 0, 1<<3}, // right track
 	{5, M(1,16), 0, 1<<3}, // right track
 
-	{0xff,0,0},
+	{0xff, 0, 0, 0},
 };
 #undef M
 

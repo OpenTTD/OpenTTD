@@ -363,7 +363,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_KP_PLUS,			WKC_NUM_PLUS),
 	AS(SDLK_KP_ENTER,			WKC_NUM_ENTER),
 	AS(SDLK_KP_PERIOD,		WKC_NUM_DECIMAL),
-	{0}	
+	{0, 0, 0}	
 };
 
 static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)

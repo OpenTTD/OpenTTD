@@ -48,16 +48,16 @@ typedef struct ScoreInfo {
 } ScoreInfo;
 
 static const ScoreInfo score_info[] = {
-    {SCORE_VEHICLES, 	120, 		100},
-    {SCORE_STATIONS, 	80, 		100},
-    {SCORE_MIN_PROFIT,	10000, 		100},
-    {SCORE_MIN_INCOME,	50000, 		50},
+    {SCORE_VEHICLES,		120, 			100},
+    {SCORE_STATIONS,		80, 			100},
+    {SCORE_MIN_PROFIT,	10000,		100},
+    {SCORE_MIN_INCOME,	50000,		50},
     {SCORE_MAX_INCOME,	100000,		100},
-    {SCORE_DELIVERED,	40000, 		400},
-    {SCORE_CARGO,		8,			50},
-    {SCORE_MONEY,		10000000,	50},
-    {SCORE_LOAN,		250000,		50},
-    {SCORE_TOTAL}
+    {SCORE_DELIVERED,		40000, 		400},
+    {SCORE_CARGO,				8,				50},
+    {SCORE_MONEY,				10000000,	50},
+    {SCORE_LOAN,				250000,		50},
+    {SCORE_TOTAL,				0,				0}
 };
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];

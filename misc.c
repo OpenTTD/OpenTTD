@@ -700,7 +700,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	{&_next_competitor_start, 	SLE_FILE_U16 | SLE_VAR_UINT, 0, 255},
 	{&_trees_tick_ctr, 					SLE_UINT8,	0, 255},
 	{&_pause, 									SLE_UINT8,	4, 255},
-	{NULL,0}
+	{NULL,											0,					0,   0}
 };
 
 // Save load date related variables as well as persistent tick counters
@@ -712,10 +712,10 @@ static void SaveLoad_DATE()
 
 
 static const SaveLoadGlobVarList _view_desc[] = {
-	{&_saved_scrollpos_x, SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
-	{&_saved_scrollpos_y, SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
-	{&_saved_scrollpos_zoom, SLE_UINT8, 0, 255},
-	{NULL,0}
+	{&_saved_scrollpos_x,			SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
+	{&_saved_scrollpos_y,			SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
+	{&_saved_scrollpos_zoom,	SLE_UINT8,	0, 255},
+	{NULL,										0,					0,   0}
 };
 
 static void SaveLoad_VIEW()

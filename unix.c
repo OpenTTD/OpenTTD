@@ -318,19 +318,19 @@ void FiosDelete(const char *name)
 }
 
 const DriverDesc _video_driver_descs[] = {
-	{"null", "Null Video Driver",				&_null_video_driver,	0},
+	{"null",	"Null Video Driver",	&_null_video_driver,	0},
 #if defined(WITH_SDL)
-	{"sdl", "SDL Video Driver",					&_sdl_video_driver,	1},
+	{ "sdl",	"SDL Video Driver",		&_sdl_video_driver,		1},
 #endif
-	{NULL}
+	{ NULL,		NULL,									NULL,									0}
 };
 
 const DriverDesc _sound_driver_descs[] = {
-	{"null", "Null Sound Driver",			&_null_sound_driver,	0},
+	{"null",	"Null Sound Driver",	&_null_sound_driver,		0},
 #if defined(WITH_SDL)
-	{"sdl", "SDL Sound Driver",				&_sdl_sound_driver,	1},
+	{ "sdl",	"SDL Sound Driver",		&_sdl_sound_driver,			1},
 #endif
-	{NULL}
+	{ NULL,		NULL,									NULL,										0}
 };
 
 #if defined(__APPLE__)
@@ -343,14 +343,14 @@ const DriverDesc _music_driver_descs[] = {
 #ifndef __BEOS__
 #ifndef __MORPHOS__
 // MorphOS have no music support
-	{"extmidi", "External MIDI Driver",	&_extmidi_music_driver,	EXTMIDI_PRI},
+	{"extmidi",	"External MIDI Driver",	&_extmidi_music_driver,	EXTMIDI_PRI},
 #endif
 #endif
 #ifdef __BEOS__
-	{"bemidi", "BeOS MIDI Driver", &_bemidi_music_driver, 1},
+	{ "bemidi",	"BeOS MIDI Driver",			&_bemidi_music_driver,	1},
 #endif	
-	{"null", "Null Music Driver",		&_null_music_driver,	1},
-	{NULL}
+	{   "null",	"Null Music Driver",		&_null_music_driver,		1},
+	{     NULL,	NULL,										NULL,										0}
 };
 
 bool FileExists(const char *filename)
