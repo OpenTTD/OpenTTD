@@ -575,7 +575,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
             }
 
 			if (i == owner) x = 1; else x = 0;
-			DrawPlayerIcon(i, i*33+11+x, 16+x);
+			DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
 		}
 
 		// The colors used to show how the progress is going
@@ -712,33 +712,33 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 static const Widget _performance_rating_detail_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   266,     0,    13, STR_PERFORMANCE_DETAIL,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   266,    14,    27, 0x0,											STR_NULL},
+{    WWT_CAPTION,    14,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   298,    14,    27, 0x0,											STR_NULL},
 
-{     WWT_IMGBTN,    14,     0,   266,    28,    47, 0x0,STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
-{     WWT_IMGBTN,    14,     0,   266,    48,    67, 0x0,STR_PERFORMANCE_DETAIL_STATIONS_TIP},
-{     WWT_IMGBTN,    14,     0,   266,    68,    87, 0x0,STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
-{     WWT_IMGBTN,    14,     0,   266,    88,   107, 0x0,STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   108,   127, 0x0,STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   128,   147, 0x0,STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   148,   167, 0x0,STR_PERFORMANCE_DETAIL_CARGO_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   168,   187, 0x0,STR_PERFORMANCE_DETAIL_MONEY_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   188,   207, 0x0,STR_PERFORMANCE_DETAIL_LOAN_TIP},
-{     WWT_IMGBTN,    14,     0,   266,   208,   227, 0x0,STR_PERFORMANCE_DETAIL_TOTAL_TIP},
+{     WWT_IMGBTN,    14,     0,   298,    28,    47, 0x0,STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
+{     WWT_IMGBTN,    14,     0,   298,    48,    67, 0x0,STR_PERFORMANCE_DETAIL_STATIONS_TIP},
+{     WWT_IMGBTN,    14,     0,   298,    68,    87, 0x0,STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
+{     WWT_IMGBTN,    14,     0,   298,    88,   107, 0x0,STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   108,   127, 0x0,STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   128,   147, 0x0,STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   148,   167, 0x0,STR_PERFORMANCE_DETAIL_CARGO_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   168,   187, 0x0,STR_PERFORMANCE_DETAIL_MONEY_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   188,   207, 0x0,STR_PERFORMANCE_DETAIL_LOAN_TIP},
+{     WWT_IMGBTN,    14,     0,   298,   208,   227, 0x0,STR_PERFORMANCE_DETAIL_TOTAL_TIP},
 
-{     WWT_IMGBTN,    14,     2,    34,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,    35,    67,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,    68,   100,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,   101,   133,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,   134,   166,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,   167,   199,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,   200,   232,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,    14,   233,   265,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,     2,    38,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,    39,    75,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,    76,   112,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,   113,   149,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,   150,   186,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,   187,   223,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,   224,   260,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{     WWT_IMGBTN,    14,   261,   297,    14,    26, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _performance_rating_detail_desc = {
-	-1, -1, 267, 228,
+	-1, -1, 299, 228,
 	WC_PERFORMANCE_DETAIL,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_performance_rating_detail_widgets,
