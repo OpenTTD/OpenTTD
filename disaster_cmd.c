@@ -171,7 +171,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		} else if (v->current_order.station == 0) {
 			tile = v->tile; /**/
 
-			if (IsTileType(tile, MP_STATION) &&
+			if (IsValidTile(tile) &&
+					IsTileType(tile, MP_STATION) &&
 				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 				IS_HUMAN_PLAYER(_map_owner[tile])) {
 
@@ -196,7 +197,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		tile = v->tile; /**/
 
-		if (IsTileType(tile, MP_STATION) &&
+		if (IsValidTile(tile) &&
+				IsTileType(tile, MP_STATION) &&
 			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 			IS_HUMAN_PLAYER(_map_owner[tile])) {
 
@@ -238,7 +240,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	}
 
 	tile = v->tile;/**/
-	if (IsTileType(tile, MP_STATION) &&
+	if (IsValidTile(tile) &&
+			IsTileType(tile, MP_STATION) &&
 		IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 		IS_HUMAN_PLAYER(_map_owner[tile])) {
 
