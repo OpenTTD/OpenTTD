@@ -466,7 +466,7 @@ static void MakeSortedIndustryList()
 
 	qsort(_industry_sort, n, 1, IndustrySorter);
 
-	//DEBUG(misc, 1) ("Resorting Industries list...");
+	DEBUG(misc, 1) ("Resorting Industries list...");
 }
 
 

@@ -1023,7 +1023,7 @@ void MouseLoop()
 		}
 
 		if (click == 1) {
-			//DEBUG(misc, 1) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
+			DEBUG(misc, 1) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 			if (_thd.place_mode != 0 &&
 					// query button and place sign button work in pause mode
 					!(_cursor.sprite == 0x2CF || _cursor.sprite == 0x2D2) &&
@@ -1176,7 +1176,7 @@ void DeleteNonVitalWindows()
 
 int PositionMainToolbar(Window *w) 
 {
-	//DEBUG(misc, 1) ("Repositioning Main Toolbar...");
+	DEBUG(misc, 1) ("Repositioning Main Toolbar...");
 
 	if (w == NULL || w->window_class != WC_MAIN_TOOLBAR)
 		w = FindWindowById(WC_MAIN_TOOLBAR, 0);

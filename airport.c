@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "ttd.h"
 #include "airport.h"
 
 AirportFTAClass *CountryAirport;
@@ -92,8 +93,8 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 
 	// build the state machine
 	AirportBuildAutomata(Airport, FA);
-	//	DEBUG(misc, 1) ("#Elements %2d; #Terminals %2d in %d group(s); #Helipads %2d in %d group(s)", Airport->nofelements,
-	//				  Airport->nofterminals, Airport->nofterminalgroups, Airport->nofhelipads, Airport->nofhelipadgroups);
+		DEBUG(misc, 1) ("#Elements %2d; #Terminals %2d in %d group(s); #Helipads %2d in %d group(s)", Airport->nofelements,
+				  Airport->nofterminals, Airport->nofterminalgroups, Airport->nofhelipads, Airport->nofhelipadgroups);
 
 
 	{
