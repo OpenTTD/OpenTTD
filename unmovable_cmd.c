@@ -314,20 +314,28 @@ extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint inva
 */
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	Player *p = DEREF_PLAYER(_current_player);
 	int score;
 	int32 cost = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-	if (CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL) == CMD_ERROR)
+  cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+
+	if (cost == CMD_ERROR)
 		return CMD_ERROR;
 
-	if (p1)
-		cost = DoCommand(
+	if (p1) {
+		int32 ret = DoCommand(
 			TileX(p->location_of_house) * 16, TileY(p->location_of_house) * 16,
 			p1 & 0xFF, 0, flags, CMD_DESTROY_COMPANY_HQ);
+
+		if (ret == CMD_ERROR)
+			return CMD_ERROR;
+
+		cost += ret;
+	}
 
 	if (flags & DC_EXEC) {
 		score = UpdateCompanyRatingAndValue(p, false);
