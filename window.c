@@ -531,8 +531,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 		if (pt.x > _screen.width + 10 - desc->width)
 			pt.x = (_screen.width + 10 - desc->width) - 20;
 		pt.y = w->top + 10;
-	// open Build Toolbars and Terraforming Toolbar aligned
-	} else if (desc->cls == WC_BUILD_TOOLBAR || desc->cls == WC_SCEN_LAND_GEN) {
+	} else if (desc->cls == WC_BUILD_TOOLBAR) {	// open Build Toolbars aligned
 		/* Override the position if a toolbar is opened according to the place of the maintoolbar
 		 * The main toolbar (WC_MAIN_TOOLBAR) is 640px in width */
 		switch (_patches.toolbar_pos) {
