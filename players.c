@@ -746,7 +746,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 }
 
 /* Return true if any cheat has been used, false otherwise */
-static CheatHasBeenUsed(void)
+static bool CheatHasBeenUsed(void)
 {
 	const Cheat* cht = (Cheat*) &_cheats;
 	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
