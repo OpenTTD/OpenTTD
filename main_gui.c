@@ -2373,12 +2373,12 @@ extern void ShowJoinStatusWindowAfterJoin(void);
 void SetupColorsAndInitialWindow(void)
 {
 	int i;
-	byte *b;
 	Window *w;
 	int width,height;
 
 	for(i=0; i!=16; i++) {
-		b = GetNonSprite(0x307 + i);
+		const byte* b = GetNonSprite(0x307 + i);
+
 		assert(b);
 		_color_list[i] = *(ColorList*)(b + 0xC6);
 	}

@@ -680,12 +680,12 @@ static uint RotateSprite(uint s)
 }
 #endif
 
-Sprite *GetSprite(SpriteID sprite)
+const Sprite *GetSprite(SpriteID sprite)
 {
 	return GetNonSprite(sprite);
 }
 
-byte *GetNonSprite(SpriteID sprite)
+const byte *GetNonSprite(SpriteID sprite)
 {
 	byte *p;
 

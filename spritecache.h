@@ -17,8 +17,8 @@ typedef struct {
 } SpriteDimension;
 
 const SpriteDimension *GetSpriteDimension(SpriteID sprite);
-Sprite *GetSprite(SpriteID sprite);
-byte *GetNonSprite(SpriteID sprite);
+const Sprite *GetSprite(SpriteID sprite);
+const byte *GetNonSprite(SpriteID sprite);
 
 void GfxLoadSprites(void);
 void IncreaseSpriteLRU(void);
