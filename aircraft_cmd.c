@@ -93,21 +93,19 @@ int GetAircraftImage(Vehicle *v, byte direction)
 void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 {
 	int spritenum = AircraftVehInfo(engine)->image_index;
+	int sprite = (6 + _aircraft_sprite[spritenum]);
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleIcon(engine, 6);
-
-		if (sprite) {
-			DrawSprite(sprite | image_ormod, x, y);
-			return;
-		}
-		spritenum = _engine_original_sprites[engine];
+		sprite = GetCustomVehicleIcon(engine, 6);
+		if (!sprite)
+			sprite = _engine_original_sprites[engine];
 	}
 
-	DrawSprite((6 + _aircraft_sprite[spritenum]) | image_ormod, x, y);
+	DrawSprite(sprite | image_ormod, x, y);
 
-	if ((AircraftVehInfo(engine)->subtype & 1) == 0)
+	if ((AircraftVehInfo(engine)->subtype & 1) == 0) {
 		DrawSprite(0xF3D, x, y-5);
+	}
 }
 
 void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
