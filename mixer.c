@@ -139,7 +139,7 @@ void MxSetChannelVolume(MixerChannel *mc, uint left, uint right)
 }
 
 
-void MxActivate(MixerChannel* mc)
+void MxActivateChannel(MixerChannel* mc)
 {
 	mc->active = true;
 }

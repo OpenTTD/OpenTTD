@@ -124,7 +124,7 @@ static void StartSound(uint sound, uint panning, uint volume)
 			return;
 		if (SetBankSource(mc, sound)) {
 			MxSetChannelVolume(mc, volume << 8, volume << 8);
-			MxActivate(mc);
+			MxActivateChannel(mc);
 		}
 	}
 }
