@@ -392,6 +392,7 @@ int CheckOrders(Vehicle *v)
 				n_st++;
 				st = DEREF_STATION(order >> 8);
 				required_tile = GetStationTileForVehicle(v,st);
+				if (!required_tile) problem_type = 3;
 			}
 			old_order = order; //store the old order
 		}
@@ -403,8 +404,6 @@ int CheckOrders(Vehicle *v)
 		}
 
 		if (n_st < 2) problem_type = 0;
-
-		if (!required_tile) problem_type = 3;
 
 		SET_DPARAM16(0, v->unitnumber);
 
