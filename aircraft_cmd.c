@@ -37,16 +37,17 @@ static const SpriteID _aircraft_sprite[] = {
 // bit 16 is set in the return value if the player do not have any airports with a hangar (like helipads only)
 static uint32 FindNearestHangar(Vehicle *v)
 {
-	/* TODO add a check to see if the aircraft can land at the airport */
 	Station *st;
-	uint32 temp_distance, distance = 65000;
+	uint temp_distance, distance = 0xFFFF;
 	uint16 index_to_target = 0;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
 			if (GetAirport(st->airport_type)->terminals != NULL) {
-				TileIndex airport_tile = st->airport_tile;
-				temp_distance = abs((v->x_pos >> 4) - TileX(airport_tile)) + abs((v->y_pos >> 4) - TileY(airport_tile));
+				// don't crash the planes if we know they can't land at the airport
+				if (HASBIT(v->subtype,1) && st->airport_type == AT_SMALL && !_cheats.no_jetcrash.value) continue;
+
+				temp_distance = GetTileDistAdv(v->tile, st->airport_tile);
 				if (temp_distance < distance) {
 					distance = temp_distance;
 					index_to_target = st->index;
