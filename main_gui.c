@@ -2378,7 +2378,7 @@ void SetupColorsAndInitialWindow(void)
 	int width,height;
 
 	for(i=0; i!=16; i++) {
-		b = GetSpritePtr(0x307 + i);
+		b = GetNonSprite(0x307 + i);
 		assert(b);
 		_color_list[i] = *(ColorList*)(b + 0xC6);
 	}

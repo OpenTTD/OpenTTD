@@ -618,7 +618,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active)
 				_owner_colors[p->index] =
-					dup_byte32(GetSpritePtr(0x307 + p->player_color)[0xCB]);
+					dup_byte32(GetNonSprite(0x307 + p->player_color)[0xCB]);
 		}
 	}
 

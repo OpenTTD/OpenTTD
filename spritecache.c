@@ -698,7 +698,12 @@ static uint RotateSprite(uint s)
 }
 #endif
 
-byte *GetSpritePtr(SpriteID sprite)
+Sprite *GetSprite(SpriteID sprite)
+{
+	return GetNonSprite(sprite);
+}
+
+byte *GetNonSprite(SpriteID sprite)
 {
 	byte *p;
 
@@ -987,7 +992,7 @@ const SpriteDimension *GetSpriteDimension(SpriteID sprite)
 
 	p = _sprite_ptr[sprite];
 	if (p == NULL)
-		p = GetSpritePtr(sprite);
+		p = GetSprite(sprite);
 
 	/* decode sprite header */
 	sd = &sd_static;

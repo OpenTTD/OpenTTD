@@ -476,7 +476,7 @@ static void GenerateTerrain(int type, int flag)
 	byte direction;
 
 	r = Random();
-	p = GetSpritePtr((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
+	p = GetNonSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
 	x = r & MapMaxX();
 	y = (r >> MapLogX()) & MapMaxY();

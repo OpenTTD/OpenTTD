@@ -144,7 +144,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color) {
 			} while (--bottom);
 		} else {
 			/* use colortable mode */
-			ctab = GetSpritePtr(color & 0x3FFF) + 1;
+			ctab = GetNonSprite(color & 0x3FFF) + 1;
 			do {
 				int i;
 				for(i=0; i!=right;i++)
@@ -528,7 +528,7 @@ skip_cont:;
 		if (c >= ASCII_LETTERSTART) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + 26 >= dpi->left) {
-				GfxMainBlitter(GetSpritePtr(base + 2 + c - ASCII_LETTERSTART), x, y, 1);
+				GfxMainBlitter(GetSprite(base + 2 + c - ASCII_LETTERSTART), x, y, 1);
 			}
 			x += _stringwidth_table[base + c - ' '];
 		} else if (c == ASCII_NL) { // newline = {}
@@ -560,13 +560,13 @@ skip_cont:;
 
 void DrawSprite(uint32 img, int x, int y) {
 	if (img & 0x8000) {
-		_color_remap_ptr = GetSpritePtr(img >> 16) + 1;
-		GfxMainBlitter(GetSpritePtr(img & 0x3FFF), x, y, 1);
+		_color_remap_ptr = GetNonSprite(img >> 16) + 1;
+		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 1);
 	} else if (img & 0x4000) {
-		_color_remap_ptr = GetSpritePtr(img >> 16) + 1;
-		GfxMainBlitter(GetSpritePtr(img & 0x3FFF), x, y, 2);
+		_color_remap_ptr = GetNonSprite(img >> 16) + 1;
+		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 2);
 	} else {
-		GfxMainBlitter(GetSpritePtr(img & 0x3FFF), x, y, 0);
+		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 0);
 	}
 }
 
@@ -1628,15 +1628,15 @@ void LoadStringWidthTable(void)
 
 	// 2 equals space.
 	for(i=2; i != 0xE2; i++) {
-		*b++ = (byte)((i < 93 || i >= 129 || i == 98) ? GetSpritePtr(i)[2] : 0);
+		*b++ = (byte)((i < 93 || i >= 129 || i == 98) ? TO_LE16(GetSprite(i)->width) : 0);
 	}
 
 	for(i=0xE2; i != 0x1C2; i++) {
-		*b++ = (byte)((i < 317 || i >= 353) ? GetSpritePtr(i)[2]+1 : 0);
+		*b++ = (byte)((i < 317 || i >= 353) ? TO_LE16(GetSprite(i)->width) + 1 : 0);
 	}
 
 	for(i=0x1C2; i != 0x2A2; i++) {
-		*b++ = (byte)((i < 541 || i >= 577) ? GetSpritePtr(i)[2]+1 : 0);
+		*b++ = (byte)((i < 541 || i >= 577) ? TO_LE16(GetSprite(i)->width) + 1 : 0);
 	}
 }
 
@@ -1911,7 +1911,7 @@ static void SetCursorSprite(uint cursor)
 	if (cv->sprite == cursor)
 		return;
 
-	p =	GetSpritePtr(cursor & 0x3FFF);
+	p =	GetSprite(cursor & 0x3FFF);
 	cv->sprite = cursor;
 	cv->size.y = p->height;
 	cv->size.x = TO_LE16(p->width);
