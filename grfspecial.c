@@ -44,8 +44,8 @@ struct GRFFile {
 	int spriteset_numents;
 	int spriteset_feature;
 
-	int spritesset_count;
-	struct SpriteGroup *spritesset;
+	int spritegroups_count;
+	struct SpriteGroup *spritegroups;
 
 	uint32 statinfo_classid[256];
 	byte statinfo_tiles[256];
@@ -1063,8 +1063,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		/* XXX: This just goes for the default superset for now,
 		 * straight and safe. --pasky */
 		uint8 var = buf[4];
-		//uint8 shiftnum = buf[5];
-		//uint8 andmask = buf[6];
+		uint8 shiftnum = buf[5];
+		uint8 andmask = buf[6];
 		uint8 nvar = buf[7];
 		//uint32 val;
 		uint16 def;
@@ -1073,13 +1073,13 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		//val = (0xff << shiftnum) & andmask;
 
-		if (setid >= _cur_grffile->spritesset_count) {
-			_cur_grffile->spritesset_count = setid + 1;
-			_cur_grffile->spritesset = realloc(_cur_grffile->spritesset, _cur_grffile->spritesset_count * sizeof(struct SpriteGroup));
+		if (setid >= _cur_grffile->spritegroups_count) {
+			_cur_grffile->spritegroups_count = setid + 1;
+			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
 		}
 		buf += 8 + nvar * 4;
 		def = grf_load_word(&buf);
-		_cur_grffile->spritesset[setid] = _cur_grffile->spritesset[def];
+		_cur_grffile->spritegroups[setid] = _cur_grffile->spritegroups[def];
 		return;
 
 	} else if (numloaded & 0x80) {
@@ -1112,11 +1112,11 @@ static void NewSpriteGroup(byte *buf, int len)
 		numloading = 16;
 	}
 
-	if (setid >= _cur_grffile->spritesset_count) {
-		_cur_grffile->spritesset_count = setid + 1;
-		_cur_grffile->spritesset = realloc(_cur_grffile->spritesset, _cur_grffile->spritesset_count * sizeof(struct SpriteGroup));
+	if (setid >= _cur_grffile->spritegroups_count) {
+		_cur_grffile->spritegroups_count = setid + 1;
+		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
 	}
-	group = &_cur_grffile->spritesset[setid];
+	group = &_cur_grffile->spritegroups[setid];
 	memset(group, 0, sizeof(struct SpriteGroup));
 	group->sprites_per_set = _cur_grffile->spriteset_numents;
 	group->loaded_count  = numloaded;
@@ -1197,9 +1197,9 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			uint8 stid = buf[3 + i];
 			int j;
 
-			if (groupid >= _cur_grffile->spritesset_count) {
+			if (groupid >= _cur_grffile->spritegroups_count) {
 				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
-				       groupid, _cur_grffile->spritesset_count);
+				       groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
@@ -1208,7 +1208,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				DrawTileSeqStruct *seq;
 
 				foreach_draw_tile_seq(seq, (DrawTileSeqStruct*) _cur_grffile->statinfo_renderdata[stid][j].seq) {
-					seq->image += _cur_grffile->spritesset[groupid].loading[0];
+					seq->image += _cur_grffile->spritegroups[groupid].loading[0];
 				}
 			}
 			/* FIXME: This means several GRF files defining new stations
@@ -1233,7 +1233,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
 	// what should we exactly do with that? --pasky
 
-	if (!_cur_grffile->spriteset_start || !_cur_grffile->spritesset) {
+	if (!_cur_grffile->spriteset_start || !_cur_grffile->spritegroups) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
@@ -1272,8 +1272,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			DEBUG(grf, 8) ("VehicleMapSpriteGroup: * [%d] Cargo type %x, group id %x", c, ctype, groupid);
 
-			if (groupid >= _cur_grffile->spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritesset_count);
+			if (groupid >= _cur_grffile->spritegroups_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
@@ -1282,9 +1282,9 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_cur_grffile->spritesset[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, &_cur_grffile->spritesset[groupid]);
+				SetCustomEngineSprites(engine, ctype, &_cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -1300,16 +1300,16 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
 			// Don't tell me you don't love duplicated code!
-			if (groupid >= _cur_grffile->spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritesset_count);
+			if (groupid >= _cur_grffile->spritegroups_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_cur_grffile->spritesset[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, CID_DEFAULT, &_cur_grffile->spritesset[groupid]);
+				SetCustomEngineSprites(engine, CID_DEFAULT, &_cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
 			}
 		}
