@@ -31,11 +31,6 @@ static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static Textbuf _iconsole_cmdline;
 static byte _iconsole_scroll;
 
-// ** console cursor ** //
-static bool _icursor_state;
-static byte _icursor_rate;
-static byte _icursor_counter;
-
 // ** stdlib ** //
 byte _stdlib_developer = 1;
 bool _stdlib_con_developer = false;
@@ -202,9 +197,6 @@ void IConsoleInit(void)
 	_iconsole_inited = true;
 	_iconsole_mode = ICONSOLE_CLOSED;
 	_iconsole_win = NULL;
-	_icursor_state = false;
-	_icursor_rate = 5;
-	_icursor_counter = 0;
 
 #ifdef ENABLE_NETWORK /* Initialize network only variables */
 	_redirect_console_to_client = 0;
