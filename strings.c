@@ -32,45 +32,6 @@ typedef struct {
 	uint16 offsets[32];	// the offsets
 } LanguagePackHeader;
 
-typedef struct {
-	uint16 rate;
-	char separator;
-	byte flags;
-	char pre[4];
-	char post[4];
-} CurrencySpec;
-
-enum {
-	CF_TOEURO_2002 = 1,
-	CF_ISEURO = 2,
-};
-
-static const CurrencySpec _currency_specs[] = {
-	{ 1,   ',', 0,              "\xA3", "" },     // british pounds
-	{ 2,   ',', 0,              "$",    "" },     // us dollars
-	{ 10,  '.', CF_TOEURO_2002, "FF ",  "" },     // french francs
-	{ 4,   '.', CF_TOEURO_2002, "DM ",  "" },     // deutsche mark
-	{ 200, ',', 0,              "\xA5", "" },     // yen
-	{ 200, '.', CF_TOEURO_2002, "Pt",   "" },     // spanish pesetas
-	{ 376, ',', CF_TOEURO_2002, "",     " Ft" },
-	{ 6,   ' ', 0,              "",     " zl" },
-	{ 19,  ',', CF_TOEURO_2002, "ATS ", "" },
-	{ 57,  ',', CF_TOEURO_2002, "BEF ", "" },
-	{ 10,  '.', 0,              "",     " kr" },
-	{ 8,   ',', CF_TOEURO_2002, "FIM ", "" },
-	{ 480, ',', CF_TOEURO_2002, "GRD ", "" },
-	{ 2,   ',', 0,              "CHF ", "" },
-	{ 3,   ',', CF_TOEURO_2002, "NLG ", "" },
-	{ 2730,',', CF_TOEURO_2002, "ITL ", "" },
-	{ 13,  '.', 0,              "",     " kr" },
-	{ 5,   ' ', 0,              "",     " rur" },
-	{ 50,  ',', 0,              "",     " Kc" },
-	{ 130, '.', 0,              "",     " kr" },
-	{ 11,  '.', 0,              "",     " kr" },
-	{ 2,   ',', CF_ISEURO,      "¤",    "" },
-	{ 6,   '.', 0,              "",     " Lei" },
-};
-
 const uint16 _currency_string_list[] = {
 	STR_CURR_POUNDS,
 	STR_CURR_DOLLARS,
@@ -95,6 +56,7 @@ const uint16 _currency_string_list[] = {
 	STR_CURR_NOK,
 	STR_CURR_EUR,
 	STR_CURR_ROL,
+	STR_CURR_CUSTOM,
 	INVALID_STRING_ID
 };
 
@@ -111,9 +73,10 @@ uint GetMaskOfAllowedCurrencies()
 	int i;
 	uint mask = 0;
 	for(i=0; i!=lengthof(_currency_specs); i++) {
-		byte flags = _currency_specs[i].flags;
-		if (_cur_year >= (2002-1920) && (flags & CF_TOEURO_2002)) continue;
-		if (_cur_year < (2000-1920) && (flags & CF_ISEURO)) continue;
+		uint16 to_euro = _currency_specs[i].to_euro;
+		if (i == 23) mask |= (1 << 23); // always allow custom currency
+		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-1920)) continue;
+		if (_cur_year < (2000-1920) && (to_euro == CF_ISEURO)) continue;
 		mask |= (1 << i);
 	}
 	return mask;
@@ -121,7 +84,9 @@ uint GetMaskOfAllowedCurrencies()
 
 void CheckSwitchToEuro()
 {
-	if (_cur_year >= (2002-1920) && _currency_specs[_opt.currency].flags & CF_TOEURO_2002) {
+	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
+			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
+			_cur_year >= (_currency_specs[_opt.currency].to_euro-1920)) {
 		_opt.currency = 21; // this is the index of euro above.
 		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
 	}

@@ -13,6 +13,7 @@ void ShowGameOptions();
 void ShowGameDifficulty();
 void ShowPatchesSelection();
 void ShowNewgrf();
+void ShowCustCurrency();
 
 /* graph_gui.c */
 void ShowOperatingProfitGraph();

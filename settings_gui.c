@@ -145,6 +145,8 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 5:
+			if (e->dropdown.index == 23)
+				ShowCustCurrency();
 			_opt_mod_ptr->currency = _opt.currency = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
@@ -184,7 +186,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		break;
+
+	case WE_DESTROY:
+		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+		break;
 	}
+
 }
 
 int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -1260,5 +1267,222 @@ void ShowNewgrf()
 	w->vscroll.count = _grffile_count;
 	w->vscroll.pos = 0;
 	w->disabled_state = (1 << 5) | (1 << 6) | (1 << 7);
+}
+
+/* state: 0 = none clicked, 0x01 = first clicked, 0x02 = second clicked */
+void DrawArrowButtons(int x, int y, int state)
+{
+	DrawFrameRect(x, y+1, x+9, y+9, 3, (state&0x01) ? 0x20 : 0);
+	DrawFrameRect(x+10, y+1, x+19, y+9, 3, (state&0x02) ? 0x20 : 0);
+	DrawStringCentered(x+5, y+1, STR_6819, 0);
+	DrawStringCentered(x+15, y+1, STR_681A, 0);
+}
+
+char str_separator[2];
+
+static void CustCurrencyWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT: {
+		int x=35, y=20, i=0;
+		int clk = WP(w,def_d).data_1;
+		DrawWindowWidgets(w);
+
+		// exchange rate
+		DrawArrowButtons(10, y, (clk >> (i*2)) & 0x03);
+		SetDParam(0, 1);
+		SetDParam(1, 1);
+		DrawString(x, y + 1, STR_CURRENCY_EXCHANGE_RATE, 0);
+		x = 35;
+		y+=12;
+		i++;
+
+		// separator
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		x = DrawString(x, y + 1, STR_CURRENCY_SEPARATOR, 0);
+		DoDrawString(str_separator, x + 4, y + 1, 6);
+		x = 35;
+		y+=12;
+		i++;
+
+		// prefix
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		x = DrawString(x, y + 1, STR_CURRENCY_PREFIX, 0);
+		DoDrawString(_currency_specs[23].pre, x + 4, y + 1, 6);
+		x = 35;
+		y+=12;
+		i++;
+
+		// postfix
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		x = DrawString(x, y + 1, STR_CURRENCY_POSTFIX, 0);
+		DoDrawString(_currency_specs[23].post, x + 4, y + 1, 6);
+		x = 35;
+		y+=12;
+		i++;
+
+		// switch to euro
+		DrawArrowButtons(10, y, (clk >> (i*2)) & 0x03);
+		SetDParam(0, _currency_specs[23].to_euro);
+		DrawString(x, y + 1, (_currency_specs[23].to_euro)?STR_CURRENCY_SWITCH_TO_EURO:STR_CURRENCY_SWITCH_TO_EURO_NEVER, 0);
+		x = 35;
+		y+=12;
+		i++;
+
+		// Preview
+		y+=12;
+		SetDParam(0, 10000);
+		DrawString(x, y + 1, STR_CURRENCY_PREVIEW, 0);
+	} break;
+
+	case WE_CLICK: {
+		bool edittext = false;
+		int line = (e->click.pt.y - 20)/12;
+		int len;
+		int x = e->click.pt.x;
+		StringID str;
+
+		switch ( line ) {
+			case 0: // rate
+				if ( IS_INT_INSIDE(x, 10, 30) ) { // clicked buttons
+					if (x < 20) {
+						_currency_specs[23].rate = max(1, _currency_specs[23].rate-1);
+						WP(w,def_d).data_1 =  (1 << (line * 2 + 0));
+					} else {
+						_currency_specs[23].rate = min(5000, _currency_specs[23].rate+1);
+						WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
+					}
+				} else { // enter text
+					SetDParam(0, _currency_specs[23].rate);
+					str = STR_CONFIG_PATCHES_INT32;
+					len = 4;
+					edittext = true;
+				}
+			break;
+			case 1: // separator
+				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
+					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
+				str = AllocateName(str_separator, 0);
+				len = 1;
+				edittext = true;
+			break;
+			case 2: // prefix
+				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
+					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
+				str = AllocateName(_currency_specs[23].pre, 0);
+				len = 12;
+				edittext = true;
+			break;
+			case 3: // postfix
+				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
+					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
+				str = AllocateName(_currency_specs[23].post, 0);
+				len = 12;
+				edittext = true;
+			break;
+			case 4: // to euro
+				if ( IS_INT_INSIDE(x, 10, 30) ) { // clicked buttons
+					if (x < 20) {
+						if(_currency_specs[23].to_euro <= 2000) _currency_specs[23].to_euro = 0;
+						else _currency_specs[23].to_euro--;
+						WP(w,def_d).data_1 = (1 << (line * 2 + 0));
+					} else {
+						if(_currency_specs[23].to_euro == 0) _currency_specs[23].to_euro = 2000;
+						else _currency_specs[23].to_euro++;
+						_currency_specs[23].to_euro = min(2090, _currency_specs[23].to_euro);
+						WP(w,def_d).data_1 = (1 << (line * 2 + 1));
+					}
+				} else { // enter text
+					SetDParam(0, _currency_specs[23].to_euro);
+					str = STR_CONFIG_PATCHES_INT32;
+					len = 4;
+					edittext = true;
+				}
+			break;
+		}
+		
+		if(edittext) {
+			WP(w,def_d).data_2 = line;
+			ShowQueryString(
+			str,
+			STR_CURRENCY_CHANGE_PARAMETER,
+			len, // maximum number of characters OR
+			250, // characters up to this width pixels, whichever is satisfied first
+			w->window_class,
+			w->window_number);
+			if (str !=  STR_CONFIG_PATCHES_INT32) DeleteName(str);
+		}
+		
+		w->flags4 |= 5 << WF_TIMEOUT_SHL;
+		SetWindowDirty(w);
+	} break;
+
+	case WE_ON_EDIT_TEXT: {
+			int val;
+			byte *b = e->edittext.str;
+			switch (WP(w,def_d).data_2) {
+				case 0:
+					val = atoi(b);
+					val = clamp(val, 1, 5000);
+					_currency_specs[23].rate = val;
+				break;
+				case 1:
+					_currency_specs[23].separator = b[0];
+					ttd_strlcpy(str_separator, b, 16);
+				break;
+				case 2:
+					ttd_strlcpy(_currency_specs[23].pre, b, 16);
+				break;
+				case 3:
+					ttd_strlcpy(_currency_specs[23].post, b, 16);
+				break;
+				case 4:
+					val = atoi(b);
+					val = clamp(val, 1999, 2090);
+					if (val == 1999) val = 0;
+					_currency_specs[23].to_euro = val;
+				break;
+			}
+		MarkWholeScreenDirty();
+			
+		
+	} break;
+
+	case WE_TIMEOUT:
+		WP(w,def_d).data_1 = 0;
+		SetWindowDirty(w);
+		break;
+
+	case WE_DESTROY:
+		DeleteWindowById(WC_QUERY_STRING, 0);
+		MarkWholeScreenDirty();
+		break;
+	}
+}
+
+static const Widget _cust_currency_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   229,     0,    13, STR_CURRENCY_WINDOW,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,    14,     0,   229,    14,   119, 0x0,									STR_NULL},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _cust_currency_desc = {
+	WDP_CENTER, WDP_CENTER, 230, 120,
+	WC_CUSTOM_CURRENCY, 0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_cust_currency_widgets,
+	CustCurrencyWndProc,
+};
+
+void ShowCustCurrency()
+{
+	Window *w;
+
+	str_separator[0] = _currency_specs[23].separator;
+	str_separator[1] = '\0';
+
+	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+	w = AllocateWindowDesc(&_cust_currency_desc);
 }
 

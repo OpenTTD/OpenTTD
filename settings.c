@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "sound.h"
+#include "table/currency.h"
 #include "network.h"
 #include "settings.h"
 
@@ -169,7 +170,7 @@ static IniFile *ini_load(const char *filename)
 	while (fgets(buffer, sizeof(buffer), in)) {
 
 		// trim whitespace from the left side
-		for(s=buffer; *s == ' ' || *s == '\t'; s++);
+		for(s=buffer; s[0] == ' ' || s[0] == '\t'; s++);
 
 		// trim whitespace from right side.
 		e = s + strlen(s);
@@ -225,6 +226,15 @@ static IniFile *ini_load(const char *filename)
 
 			// find start of parameter
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
+
+
+			// remove starting quotation marks
+			if(*t=='\"') t++;
+			// remove ending quotation marks
+			e = t + strlen(t);
+			if(e>t && e[-1] =='\"') e--;
+			*e = 0;
+
 			item->value = pool_strdup(&ini->pool, t, e - t);
 		} else {
 			// it's an orphan item
@@ -504,6 +514,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 
 	case SDT_STRING:
 	case SDT_STRINGBUF:
+	case SDT_STRINGQUOT:
 	case SDT_INTLIST:
 		return (void*)str;
 	}
@@ -567,6 +578,7 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			*(char**)ptr = strdup((char*)p);
 			break;
 		case SDT_STRINGBUF:
+		case SDT_STRINGQUOT:
 			if (p) ttd_strlcpy((char*)ptr, p, desc->flags >> 16);
 			break;
 		case SDT_INTLIST: {
@@ -680,6 +692,9 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			default:
 				NOT_REACHED();
 			}
+			break;
+		case SDT_STRINGQUOT:
+			sprintf(buf, "\"%s\"", (char*)ptr);
 			break;
 		case SDT_STRINGBUF:
 			strcpy(buf, (char*)ptr);
@@ -889,6 +904,15 @@ const SettingDesc patch_settings[] = {
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 
+static const SettingDesc currency_settings[] = {
+	{"rate",			SDT_UINT16,										(void*)1,		&_currency_specs[23].rate,			NULL},
+	{"separator", SDT_STRINGQUOT | (2) << 16,		".", 				&_currency_specs[23].separator,	NULL},
+	{"to_euro",		SDT_UINT16,										(void*)0,		&_currency_specs[23].to_euro,		NULL},
+	{"pre",				SDT_STRINGQUOT | (16) << 16,	NULL,				&_currency_specs[23].pre,				NULL},
+	{"post",			SDT_STRINGQUOT | (16) << 16,	" credits",	&_currency_specs[23].post,			NULL},
+	{NULL,				0,														NULL,				NULL,														NULL}
+};
+
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const void *grpname);
 
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
@@ -902,6 +926,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 	proc(ini, gameopt_settings, "gameopt");
 	proc(ini, patch_settings,		"patches");
 	proc(ini, patch_player_settings,		"patches");
+	proc(ini, currency_settings,"currency");
 
 	proc(ini, debug_settings,		"debug");
 }

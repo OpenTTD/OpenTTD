@@ -36,6 +36,21 @@ VARDEF GameOptions _opt;
 // These are the options for the new game
 VARDEF GameOptions _new_opt;
 
+enum {
+	CF_NOEURO = 0,
+	CF_ISEURO = 1,
+};
+
+typedef struct {
+	uint16 rate;
+	char separator;
+	uint16 to_euro;
+	char pre[16];
+	char post[16];
+} CurrencySpec;
+
+CurrencySpec _currency_specs[24];
+
 // Current date
 VARDEF uint16 _date;
 VARDEF uint16 _date_fract;
