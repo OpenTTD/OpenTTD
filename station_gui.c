@@ -398,18 +398,16 @@ static void DrawStationViewWindow(Window *w)
 	} while (pos > -5 && ++i != 12);
 
 	if (IsWindowOfPrototype(w, _station_view_widgets)) {
-		char *b;
+		char *b = _userstring;
 
-		b = _userstring;
 		b = InlineString(b, STR_000C_ACCEPTS);
 
-		for(i=0; i!=NUM_CARGO; i++) {
-			if ((b - _userstring) + 5 > USERSTRING_LEN - 1)
-				break;
+		for (i = 0; i != NUM_CARGO; i++) {
+			if (b >= endof(_userstring) - 5 - 1) break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
 				b = InlineString(b, _cargoc.names_s[i]);
-				WRITE_LE_UINT16(b, 0x202C);
-				b += 2;
+				*b++ = ',';
+				*b++ = ' ';
 			}
 		}
 
@@ -417,7 +415,7 @@ static void DrawStationViewWindow(Window *w)
 			b = InlineString(b, STR_00D0_NOTHING);
 			*b++ = '\0';
 		} else {
-			b[-2] = 0;
+			b[-2] = '\0';
 		}
 
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);

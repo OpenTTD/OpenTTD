@@ -663,18 +663,17 @@ void GuiShowTooltips(StringID string_id)
 }
 
 
-static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, uint mask)
+static void DrawStationCoverageText(const AcceptedCargo accepts,
+	int str_x, int str_y, uint mask)
 {
+	char *b = _userstring;
 	int i;
-	char *b;
 
-	b = _userstring;
 	b = InlineString(b, STR_000D_ACCEPTS);
 
-	for(i=0; i!=NUM_CARGO; i++,mask>>=1) {
-		if (accepts[i] >= 8 && (mask&1) ) {
-			StringID id = _cargoc.names_s[i];
-			b = InlineString(b, id);
+	for (i = 0; i != NUM_CARGO; i++, mask >>= 1) {
+		if (accepts[i] >= 8 && mask & 1) {
+			b = InlineString(b, _cargoc.names_s[i]);
 			*b++ = ',';
 			*b++ = ' ';
 		}
@@ -684,7 +683,7 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 		b = InlineString(b, STR_00D0_NOTHING);
 		*b++ = '\0';
 	} else {
-		b[-2] = 0;
+		b[-2] = '\0';
 	}
 
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);

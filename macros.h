@@ -151,9 +151,4 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 	}
 #endif
 
-static inline void WRITE_LE_UINT16(void *b, uint16 x) {
-	((byte*)b)[0] = (byte)x;
-	((byte*)b)[1] = (byte)(x >> 8);
-}
-
 #endif /* MACROS_H */
