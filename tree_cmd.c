@@ -36,7 +36,7 @@ static void PlaceTree(uint tile, uint32 r, byte m5_or)
 
 	if (tree >= 0) {
 		m5 = (byte)(r >> 16);
-		if(m5==7) m5--;
+		if ((m5 & 0x7) == 7) m5--; // there is no growth state 7
 
 		_map5[tile] = m5 & 0x07;	// growth state;
 		_map5[tile] |=  m5 & 0xC0;	// amount of trees
