@@ -535,7 +535,7 @@ void NetworkUDPRemoveAdvertise(void)
 
 	/* check for socket */
 	if (_udp_master_socket == INVALID_SOCKET)
-		if (!NetworkUDPListen(&_udp_master_socket, 0, 0, false))
+		if (!NetworkUDPListen(&_udp_master_socket, _network_server_bind_ip, 0, false))
 			return;
 
 	DEBUG(net, 2)("[NET][UDP] Removing advertise..");
@@ -568,7 +568,7 @@ void NetworkUDPAdvertise(void)
 
 	/* check for socket */
 	if (_udp_master_socket == INVALID_SOCKET)
-		if (!NetworkUDPListen(&_udp_master_socket, 0, 0, false))
+		if (!NetworkUDPListen(&_udp_master_socket, _network_server_bind_ip, 0, false))
 			return;
 
 	/* Only send once in the 450 game-days (about 15 minutes) */
