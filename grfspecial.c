@@ -1725,6 +1725,7 @@ static void ParamSet(byte *buf, int len)
 	uint16 data = 0;
 
 	check_length(len, 5, "ParamSet");
+	buf++;
 	target = grf_load_byte(&buf);
 	oper = grf_load_byte(&buf);
 	src1 = grf_load_byte(&buf);
