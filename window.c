@@ -575,6 +575,7 @@ Window *FindWindowFromPt(int x, int y)
 
 void InitWindowSystem()
 {
+	IConsoleClose();
 	memset(&_windows, 0, sizeof(_windows));
 	_last_window = _windows;
 	memset(_viewports, 0, sizeof(_viewports));

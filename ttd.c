@@ -642,8 +642,8 @@ void LoadIntroGame()
 	_opt_mod_ptr = &_new_opt;
 	GfxLoadSprites();
 	LoadStringWidthTable();
+	
 	// Setup main window
-	IConsoleClose();
 	InitWindowSystem();
 	SetupColorsAndInitialWindow();
 
@@ -673,7 +673,6 @@ void MakeNewGame()
 	GfxLoadSprites();
 
 	// Reinitialize windows
-	IConsoleClose();
 	InitWindowSystem();
 	LoadStringWidthTable();
 
@@ -701,7 +700,6 @@ void MakeNewEditorWorld()
 	GfxLoadSprites();
 
 	// Re-init the windowing system
-	IConsoleClose();
 	InitWindowSystem();
 
 	// Create toolbars
@@ -736,7 +734,6 @@ void StartScenario()
 	GfxLoadSprites();
 
 	// Reinitialize windows
-	IConsoleClose();
 	InitWindowSystem();
 	LoadStringWidthTable();
 

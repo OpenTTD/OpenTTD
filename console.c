@@ -16,7 +16,7 @@ static byte* _iconsole_buffer[80];
 static byte _iconsole_cbuffer[80];
 static byte _iconsole_cmdline[255];
 static byte _iconsole_cmdpos;
-static byte _iconsole_mode;
+static byte _iconsole_mode = ICONSOLE_CLOSED;
 static byte _iconsole_color_default = 1;
 static byte _iconsole_color_error = 3;
 static byte _iconsole_color_debug = 5;
@@ -67,6 +67,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 
 	case WE_PAINT:
+
 		GfxFillRect(w->left,w->top,w->width,w->height-1,0);
 		{
 		int i=_iconsole_scroll;
@@ -81,10 +82,6 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TICK:
-
-		if (_iconsole_mode==ICONSOLE_OPENING) {
-			_iconsole_mode=ICONSOLE_OPENED;
-			}
 
 		_icursor_counter++;
 		if (_icursor_counter>_icursor_rate) {
@@ -223,7 +220,7 @@ void IConsoleSwitch()
 		_iconsole_win = AllocateWindowDesc(&_iconsole_window_desc);
 		_iconsole_win->height = _screen.height / 3;
 		_iconsole_win->width= _screen.width;
-		_iconsole_mode=ICONSOLE_OPENING;
+		_iconsole_mode=ICONSOLE_OPENED;
 		} else
 	if (_iconsole_mode==ICONSOLE_OPENED) {
 		DeleteWindow(_iconsole_win);
@@ -237,6 +234,7 @@ void IConsoleSwitch()
 
 void IConsoleClose() {
 if (_iconsole_mode==ICONSOLE_OPENED)  IConsoleSwitch();
+_iconsole_mode=ICONSOLE_CLOSED;
 }
 
 void IConsoleOpen() {
@@ -1187,7 +1185,6 @@ static void IConsoleStdLibRegister() {
 	IConsoleVarInsert(var,"temp_uint16");
 	var = IConsoleVarAlloc(ICONSOLE_VAR_UINT32);
 	IConsoleVarInsert(var,"temp_uint32");
-
 
 	var = IConsoleVarAlloc(ICONSOLE_VAR_STRING);
 	IConsoleVarInsert(var,"temp_string");

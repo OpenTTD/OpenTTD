@@ -3,8 +3,6 @@
 enum {
 	ICONSOLE_OPENED=0,
 	ICONSOLE_CLOSED,
-	ICONSOLE_OPENING,
-	ICONSOLE_CLOSING,
 } _iconsole_modes;
 
 // ** console parser ** //
