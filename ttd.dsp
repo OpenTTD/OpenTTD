@@ -293,6 +293,10 @@ SOURCE=.\sound.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\sprite.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\spritecache.c
 # End Source File
 # Begin Source File
