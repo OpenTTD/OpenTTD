@@ -13,6 +13,7 @@
 #include "gui.h"
 #include "player.h"
 #include "sound.h"
+#include "npf.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -70,17 +71,26 @@ static int FindClosestShipDepot(Vehicle *v)
 	byte owner = v->owner;
 	uint tile2 = v->tile;
 
-	for(i=0; i!=lengthof(_depots); i++) {
-		tile = _depots[i].xy;
-		if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
-			dist = DistanceManhattan(tile, tile2);
-			if (dist < best_dist) {
-				best_dist = dist;
-				best_depot = i;
+	if (_patches.new_pathfinding_all) {
+		NPFFoundTargetData ftd;
+		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_ROAD);
+		if (ftd.best_bird_dist == 0)
+			best_depot = ftd.node.tile; /* Found target */
+		else
+			best_depot = -1; /* Did not find target */
+	} else {
+		for(i=0; i!=lengthof(_depots); i++) {
+			tile = _depots[i].xy;
+			if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
+				dist = DistanceManhattan(tile, tile2);
+				if (dist < best_dist) {
+					best_dist = dist;
+					best_depot = i;
+				}
 			}
 		}
 	}
-
 	return best_depot;
 }
 
@@ -568,27 +578,55 @@ bad:;
 	return best_bird_dist;
 }
 
-static int ChooseShipTrack(Vehicle *v, uint tile, int dir, uint tracks)
+/* returns the track to choose on the next tile, or -1 when it's better to
+ * reverse. The tile given is the tile we are about to enter, enterdir is the
+ * direction in which we are entering the tile */
+static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
 {
-	uint b;
-	uint tot_dist, dist;
-	int track;
-	uint tile2;
+	assert(enterdir>=0 && enterdir<=3);
 
-	assert(dir>=0 && dir<=3);
-	tile2 = TILE_ADD(tile, -TileOffsByDir(dir));
-	dir ^= 2;
-	tot_dist = (uint)-1;
-	b = GetTileShipTrackStatus(tile2) & _ship_sometracks[dir] & v->u.ship.state;
-	if (b != 0) {
-		dist = FindShipTrack(v, tile2, dir, b, tile, &track);
-		if (dist != (uint)-1)
-			tot_dist = dist + 1;
+	if (_patches.new_pathfinding_all) {
+		NPFFindStationOrTileData fstd;
+		NPFFoundTargetData ftd;
+		uint src_tile = TILE_ADD(tile, TileOffsByDir(_reverse_dir[enterdir]));
+		byte track = FIND_FIRST_BIT(v->u.ship.state);
+		assert (KILL_FIRST_BIT(v->u.ship.state) == 0); /* Check that only one bit is set in state */
+		assert (v->u.ship.state != 0x80); /* Check that we are not in a depot */
+		assert (track < 6);
+
+		NPFFillWithOrderData(&fstd, v);
+
+		ftd = NPFRouteToStationOrTile(src_tile, _track_direction_to_trackdir[track][v->direction], &fstd, TRANSPORT_WATER);
+
+		if (ftd.best_bird_dist == 0 && ftd.best_trackdir != 0xff)
+			/* Found the target, and it is not our current tile */
+			return ftd.best_trackdir & 7; /* TODO: Wrapper function? */
+		else
+			return -1; /* Couldn't find target, reverse */
+			/* TODO: When the target is unreachable, the ship will keep reversing */
+	} else {
+		uint b;
+		uint tot_dist, dist;
+		int track;
+		uint tile2;
+
+		tile2 = TILE_ADD(tile, -TileOffsByDir(enterdir));
+		tot_dist = (uint)-1;
+
+		/* Let's find out how far it would be if we would reverse first */
+		b = GetTileShipTrackStatus(tile2) & _ship_sometracks[_reverse_dir[enterdir]] & v->u.ship.state;
+		if (b != 0) {
+			dist = FindShipTrack(v, tile2, _reverse_dir[enterdir], b, tile, &track);
+			if (dist != (uint)-1)
+				tot_dist = dist + 1;
+		}
+		/* And if we would not reverse? */
+		dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+		if (dist > tot_dist)
+			/* We could better reverse */
+			return -1;
+		return track;
 	}
-	dist = FindShipTrack(v, tile, dir^2, tracks, 0, &track);
-	if (dist > tot_dist)
-		return -1;
-	return track;
 }
 
 static const byte _new_vehicle_direction_table[11] = {

@@ -128,6 +128,7 @@ typedef struct Patches {
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
+	bool forbid_90_deg; // forbid trains to make 90 deg turns
 	bool invisible_trees; // don't show trees when buildings are transparent
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
 
@@ -185,6 +186,13 @@ typedef struct Patches {
 
 	byte drag_signals_density; // many signals density
 	bool ainew_active;  // Is the new AI active?
+
+	/* New Path Finding */
+	bool new_pathfinding_all; /* Use the newest pathfinding algorithm for all */
+
+	uint32 npf_rail_firstred_penalty; /* The penalty for when the first signal is red */
+	uint32 npf_rail_station_penalty; /* The penalty for station tiles */
+	uint32 npf_rail_slope_penalty; /* The penalty for sloping upwards */
 
 	bool population_in_label; // Show the population of a town in his label?
 } Patches;
@@ -433,6 +441,9 @@ VARDEF byte _vehicle_design_names;
 
 /* tunnelbridge */
 #define MAX_BRIDGES 13
+
+/* For new pathfinding. Define here so it is globally available */
+#define NPF_TILE_LENGTH 100
 
 /* Autoreplace vehicle stuff*/
 VARDEF byte _autoreplace_array[256];

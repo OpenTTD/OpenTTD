@@ -978,7 +978,7 @@ static void MaybePlantFarmField(Industry *i)
 		int x = (i->width>>1) + Random() % 31 - 16;
 		int y = (i->height>>1) + Random() % 31 - 16;
 		tile = TileAddWrap(i->xy, x, y);
-		if (tile != TILE_WRAPPED)
+		if (tile != INVALID_TILE)
 			PlantFarmField(tile);
 	}
 }
@@ -1496,7 +1496,7 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 			int x = Random() % 31 - 16;
 			int y = Random() % 31 - 16;
 			uint new_tile = TileAddWrap(tile, x, y);
-			if (new_tile != TILE_WRAPPED)
+			if (new_tile != INVALID_TILE)
 				PlantFarmField(new_tile);
 		}
 	}

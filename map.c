@@ -108,6 +108,32 @@ uint ScaleByMapSize1D(uint n)
 }
 
 
+// This function checks if we add addx/addy to tile, if we
+//  do wrap around the edges. For example, tile = (10,2) and
+//  addx = +3 and addy = -4. This function will now return
+//  INVALID_TILE, because the y is wrapped. This is needed in
+//  for example, farmland. When the tile is not wrapped,
+//  the result will be tile + TILE_XY(addx, addy)
+uint TileAddWrap(TileIndex tile, int addx, int addy)
+{
+	uint x, y;
+	x = TileX(tile) + addx;
+	y = TileY(tile) + addy;
+
+	// Are we about to wrap?
+		if (x < MapMaxX() && y < MapMaxY())
+		return tile + TILE_XY(addx, addy);
+
+	return INVALID_TILE;
+}
+
+const TileIndexDiffC _tileoffs_by_dir[] = {
+	{-1,  0},
+	{ 0,  1},
+	{ 1,  0},
+	{ 0, -1}
+};
+
 uint DistanceManhattan(TileIndex t0, TileIndex t1)
 {
 	return
@@ -151,10 +177,3 @@ uint DistanceFromEdge(TileIndex tile)
 	return minl < minh ? minl : minh;
 }
 
-
-const TileIndexDiffC _tileoffs_by_dir[] = {
-	{-1,  0},
-	{ 0,  1},
-	{ 1,  0},
-	{ 0, -1}
-};

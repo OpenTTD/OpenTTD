@@ -823,6 +823,33 @@ static const SettingDesc patch_player_settings[] = {
 
 	{"window_snap_radius",  SDT_UINT8,  (void*)10,    &_patches.window_snap_radius,   NULL},
 
+	/* New Path Finding */
+	{"new_pathfinding_all",	SDT_BOOL,		(void*)false, &_patches.new_pathfinding_all,	NULL},
+
+	/* When a red signal is encountered, a small detour can be made around
+	 * it. This specifically occurs when a track is doubled, in which case
+	 * the detour is typically 2 tiles. It is also often used at station
+	 * entrances, when there is a choice of multiple platforms. If we take
+	 * a typical 4 platform station, the detour is 4 tiles. To properly
+	 * support larger stations we increase this value.
+	 * We want to prevent that trains that want to leave at one side of a
+	 * station, leave through the other side, turn around, enter the
+	 * station on another platform and exit the station on the right side
+	 * again, just because the sign at the right side was red. If we take
+	 * a typical 5 length station, this detour is 10 or 11 tiles (not
+	 * sure), so we set the default penalty at 10 (the station tile
+	 * penalty will further prevent this */
+	{"npf_rail_firstred_penalty",		SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),	&_patches.npf_rail_firstred_penalty,		NULL},
+	/* When a train plans a route over a station tile, this penalty is
+	 * applied. We want that trains plan a route around a typical, 4x5
+	 * station, which means two tiles to the right, and two tiles back to
+	 * the left around it, or 5 tiles of station through it. If we assign
+	 * a penalty of 1 tile for every station tile passed, the route will
+	 * be around it.
+	 */
+	{"npf_rail_station_penalty",		SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_station_penalty, 		NULL},
+	{"npf_rail_slope_penalty",			SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_slope_penalty,				NULL},
+
 	{"autorenew",						SDT_BOOL,		(void*)false,	&_patches.autorenew,						NULL},
 	{"autorenew_months",		SDT_INT16,	(void*)-6,		&_patches.autorenew_months,			NULL},
 	{"autorenew_money",			SDT_INT32,	(void*)100000,&_patches.autorenew_money,			NULL},
@@ -864,6 +891,7 @@ const SettingDesc patch_settings[] = {
 	{"nonuniform_stations",	SDT_BOOL,		(void*)true,	&_patches.nonuniform_stations,	NULL},
 	{"always_small_airport",SDT_BOOL,		(void*)false,	&_patches.always_small_airport,	NULL},
 	{"realistic_acceleration",SDT_BOOL, (void*)false,	&_patches.realistic_acceleration,	NULL},
+	{"forbid_90_deg",				SDT_BOOL, 	(void*)false, &_patches.forbid_90_deg,					NULL},
 	{"improved_load",				SDT_BOOL,		(void*)false,	&_patches.improved_load,				NULL},
 
 	{"max_trains",					SDT_UINT8,	(void*)80,		&_patches.max_trains,						NULL},

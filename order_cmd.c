@@ -136,9 +136,11 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 	if (v->num_orders >= 40)
 		return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 
-	/* For ships, make sure that the station is not too far away from the previous destination. */
+	/* For ships, make sure that the station is not too far away from the
+	 * previous destination, for human players with new pathfinding disabled */
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
-		sel != 0 && GetVehicleOrder(v, sel - 1)->type == OT_GOTO_STATION) {
+		sel != 0 && GetVehicleOrder(v, sel - 1)->type == OT_GOTO_STATION
+		&& !_patches.new_pathfinding_all) {
 
 		int dist = DistanceManhattan(
 			GetStation(GetVehicleOrder(v, sel - 1)->station)->xy,

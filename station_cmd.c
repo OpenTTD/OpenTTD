@@ -16,7 +16,7 @@
 #include "player.h"
 #include "airport.h"
 #include "sprite.h"
-#include "table/directions.h"
+#include "npf.h"
 
 // FIXME -- need to be embedded into Airport variable. Is dynamically
 // deducteable from graphics-tile array, so will not be needed
@@ -2275,10 +2275,6 @@ static void ClickTile_Station(uint tile)
 	} else {
 		ShowStationViewWindow(_map2[tile]);
 	}
-}
-
-static inline bool IsTrainStationTile(uint tile) {
-	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
 }
 
 static const byte _enter_station_speedtable[12] = {

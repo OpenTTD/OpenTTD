@@ -973,8 +973,8 @@ STR_SHIP_AUTORENEW_FAILED					:{WHITE}Autorenew failed on ship {COMMA16} (money 
 STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Autorenew failed on aircraft {COMMA16} (money limit)
 
 STR_CONFIG_PATCHES						:{BLACK}Configure Patches
-STR_CONFIG_PATCHES_TIP						:{BLACK}Configure the patches
-STR_CONFIG_PATCHES_CAPTION					:{WHITE}Configure Patches
+STR_CONFIG_PATCHES_TIP									:{BLACK}Configure the patches
+STR_CONFIG_PATCHES_CAPTION							:{WHITE}Configure Patches
 
 STR_CONFIG_PATCHES_OFF						:Off
 STR_CONFIG_PATCHES_ON						:On
@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Allow more realistically sized catchme
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
@@ -1003,7 +1004,8 @@ STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Pan window when mouse is at the edge:
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}New depot finding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding (NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 

@@ -35,7 +35,9 @@ uint ScaleByMapSize(uint); // Scale relative to the number of tiles
 uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
 
 typedef uint32 TileIndex;
-
+enum {
+	INVALID_TILE = (uint32) -1
+};
 
 static inline uint TileX(TileIndex tile)
 {
@@ -71,6 +73,24 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 
 #define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x, y))
 
+uint TileAddWrap(TileIndex tile, int addx, int addy);
+
+static inline TileIndexDiffC TileIndexDiffCByDir(uint dir) {
+	extern const TileIndexDiffC _tileoffs_by_dir[4];
+	return _tileoffs_by_dir[dir];
+}
+
+/* Returns tile + the diff given in diff. If the result tile would end up
+ * outside of the map, INVALID_TILE is returned instead.
+ */
+static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff) {
+	int x = TileX(tile) + diff.x;
+	int y = TileY(tile) + diff.y;
+	if (x < 0 || y < 0 || x > (int)MapMaxX() || y > (int)MapMaxY())
+		return INVALID_TILE;
+	else
+		return TILE_XY(x, y);
+}
 
 // Functions to calculate distances
 uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm

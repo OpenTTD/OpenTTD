@@ -173,6 +173,7 @@ void InitializeStations(void);
 static void InitializeNameMgr(void);
 void InitializePlayers(void);
 static void InitializeCheats(void);
+void InitializeNPF(void);
 
 void GenerateLandscape(void);
 void GenerateClearTile(void);
@@ -235,6 +236,7 @@ void InitializeGame(uint log_x, uint log_y)
 	InitializeNameMgr();
 	InitializeVehiclesGuiList();
 	InitializeTrains();
+	InitializeNPF();
 
 	InitializePlayers();
 	InitializeCheats();

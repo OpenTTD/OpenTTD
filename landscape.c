@@ -721,25 +721,6 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	));
 }
 
-// This function checks if we add addx/addy to tile, if we
-//  do wrap around the edges. For example, tile = (10,2) and
-//  addx = +3 and addy = -4. This function will now return
-//  TILE_WRAPPED, because the y is wrapped. This is needed in
-//  for example, farmland. When the tile is not wrapped,
-//  the result will be tile + TILE_XY(addx, addy)
-uint TileAddWrap(TileIndex tile, int addx, int addy)
-{
-	uint x, y;
-	x = TileX(tile) + addx;
-	y = TileY(tile) + addy;
-
-	// Are we about to wrap?
-	if (x < MapMaxX() && y < MapMaxY())
-		return tile + TILE_XY(addx, addy);
-
-	return TILE_WRAPPED;
-}
-
 bool IsValidTile(uint tile)
 {
 	return (tile < MapSizeX() * MapMaxY() && TileX(tile) != MapMaxX());

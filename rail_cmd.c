@@ -2168,7 +2168,6 @@ static uint32 GetTileTrackStatus_Track(uint tile, TransportType mode) {
 		ret = (m5 << 8) + m5;
 	} else
 		return 0;
-
 	return ret;
 }
 

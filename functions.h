@@ -26,11 +26,6 @@ void ClickTile(uint tile);
 void GetTileDesc(uint tile, TileDesc *td);
 void DrawTile(TileInfo *ti);
 
-uint TileAddWrap(TileIndex tile, int addx, int addy);
-enum {
-	TILE_WRAPPED = (uint)-1
-};
-
 bool IsValidTile(uint tile);
 
 static inline Point RemapCoords(int x, int y, int z)

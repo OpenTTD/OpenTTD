@@ -9,7 +9,7 @@
 #include "player.h"
 #include "town.h"
 #include "gfx.h"
-#include "table/directions.h"
+#include "npf.h"
 #include "sound.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction

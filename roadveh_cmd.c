@@ -10,6 +10,7 @@
 #include "news.h"
 #include "gfx.h"
 #include "pathfind.h"
+#include "npf.h"
 #include "player.h"
 #include "sound.h"
 
@@ -287,21 +288,33 @@ static int FindClosestRoadDepot(Vehicle *v)
 {
 	uint tile = v->tile;
 	int i;
-	RoadFindDepotData rfdd;
 
 	if (v->u.road.state == 255) { tile = GetVehicleOutOfTunnelTile(v); }
 
-	rfdd.owner = v->owner;
-	rfdd.best_length = (uint)-1;
+	if (_patches.new_pathfinding_all) {
+		NPFFoundTargetData ftd;
+		/* See where we are now */
+		byte trackdir = _dir_to_diag_trackdir[(v->direction>>1)&3];
+		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD);
+		if (ftd.best_bird_dist == 0)
+			return GetDepotByTile(ftd.node.tile); /* Target found */
+		else
+			return -1; /* Target not found */
+		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
+	} else {
+		RoadFindDepotData rfdd;
+		rfdd.owner = v->owner;
+		rfdd.best_length = (uint)-1;
 
-	/* search in all directions */
-	for(i=0; i!=4; i++)
-		FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
+		/* search in all directions */
+		for(i=0; i!=4; i++)
+			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
 
-	if (rfdd.best_length == (uint)-1)
-		return -1;
+		if (rfdd.best_length == (uint)-1)
+			return -1;
 
-	return GetDepotByTile(rfdd.tile);
+		return GetDepotByTile(rfdd.tile);
+	}
 }
 
 /*  Send a road vehicle to the nearest depot
@@ -1011,7 +1024,7 @@ static bool EnumRoadTrackFindDist(uint tile, FindRoadToChooseData *frd, int trac
 
 // Returns direction to choose
 // or -1 if the direction is currently blocked
-static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
+static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
 {
 #define return_track(x) {best_track = x; goto found_best_track; }
 
@@ -1055,66 +1068,95 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 	 */
 
 	/* remove unreachable tracks */
-	bitmask &= _road_veh_fp_ax_and[direction];
+	bitmask &= _road_veh_fp_ax_and[enterdir];
 	if (bitmask == 0) {
-		// reverse
-		return_track(_road_reverse_table[direction]);
+		/* No reachable tracks, so we'll reverse */
+		return_track(_road_reverse_table[enterdir]);
 	}
 
 	if (v->u.road.reverse_ctr != 0) {
+		/* What happens here?? */
 		v->u.road.reverse_ctr = 0;
 		if (v->tile != (TileIndex)tile) {
-			return_track(_road_reverse_table[direction]);
+			return_track(_road_reverse_table[enterdir]);
 		}
 	}
 
 	desttile = v->dest_tile;
 	if (desttile == 0) {
-		// Pick a random direction
+		// Pick a random track
 		return_track(PickRandomBit(bitmask));
 	}
 
-	// Only one direction to choose between?
-	if (!(bitmask & (bitmask - 1))) {
+	// Only one track to choose between?
+	if (!(KillFirstBit2x64(bitmask))) {
 		return_track(FindFirstBit2x64(bitmask));
 	}
 
-	if (IsTileType(desttile, MP_STREET)) {
-		m5 = _map5[desttile];
-		if ((m5&0xF0) == 0x20)
-			goto do_it;
-	} else if (IsTileType(desttile, MP_STATION)) {
-		m5 = _map5[desttile];
-		if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
-			m5 -= 0x43;
+	if (_patches.new_pathfinding_all) {
+		NPFFindStationOrTileData fstd;
+		NPFFoundTargetData ftd;
+		byte trackdir;
+
+		NPFFillWithOrderData(&fstd, v);
+		trackdir = _dir_to_diag_trackdir[enterdir];
+		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
+
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD);
+		if (ftd.best_bird_dist != 0 || ftd.best_trackdir == 0xff) {
+			/* Not found, just do something, or we are already there */
+			//TODO: maybe display error?
+			//TODO: go straight ahead if possible?
+			return_track(FindFirstBit2x64(bitmask));
+		} else {
+			return_track(ftd.best_trackdir);
+		}
+	} else {
+		if (IsTileType(desttile, MP_STREET)) {
+			m5 = _map5[desttile];
+			if ((m5&0xF0) == 0x20)
+				/* We are heading for a Depot */
+				goto do_it;
+		} else if (IsTileType(desttile, MP_STATION)) {
+			m5 = _map5[desttile];
+			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
+				/* We are heading for a station */
+				m5 -= 0x43;
 do_it:;
-			desttile += TileOffsByDir(m5 & 3);
-			if (desttile == tile && bitmask&_road_pf_table_3[m5&3]) {
-				return_track(FindFirstBit2x64(bitmask&_road_pf_table_3[m5&3]));
+				/* When we are heading for a depot or station, we just
+				 * pretend we are heading for the tile in front, we'll
+				 * see from there */
+				desttile += TileOffsByDir(m5 & 3);
+				if (desttile == tile && bitmask&_road_pf_table_3[m5&3]) {
+					/* If we are already in front of the
+					 * station/depot and we can get in from here,
+					 * we enter */
+					return_track(FindFirstBit2x64(bitmask&_road_pf_table_3[m5&3]));
+				}
 			}
 		}
+		// do pathfind
+		frd.dest = desttile;
+
+		best_track = -1;
+		best_dist = (uint)-1;
+		best_maxlen = (uint)-1;
+		i = 0;
+		do {
+			if (bitmask & 1) {
+				if (best_track == -1) best_track = i; // in case we don't find the path, just pick a track
+				frd.maxtracklen = (uint)-1;
+				frd.mindist = (uint)-1;
+				FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
+
+				if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
+					best_dist = frd.mindist;
+					best_maxlen = frd.maxtracklen;
+					best_track = i;
+				}
+			}
+		} while (++i,(bitmask>>=1) != 0);
 	}
-	// do pathfind
-	frd.dest = desttile;
-
-	best_track = -1;
-	best_dist = (uint)-1;
-	best_maxlen = (uint)-1;
-	i = 0;
-	do {
-		if (bitmask & 1) {
-			if (best_track == -1) best_track = i; // in case we don't find the path, just pick a direction
-			frd.maxtracklen = (uint)-1;
-			frd.mindist = (uint)-1;
-			FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
-
-			if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
-				best_dist = frd.mindist;
-				best_maxlen = frd.maxtracklen;
-				best_track = i;
-			}
-		}
-	} while (++i,(bitmask>>=1) != 0);
 
 found_best_track:;
 
@@ -1301,6 +1343,7 @@ static void RoadVehEventHandler(Vehicle *v)
 
 again:
 		if ((dir & 7) >= 6) {
+			/* Turning around */
 			tile = v->tile;
 		}
 

@@ -110,14 +110,32 @@ extern const byte _ffb_64[128];
 
 static inline int FindFirstBit2x64(int value)
 {
+/*
 	int i = 0;
 	if ( (byte) value == 0) {
 		i += 8;
 		value >>= 8;
 	}
 	return i + FIND_FIRST_BIT(value & 0x3F);
+
+Faster ( or at least cleaner ) implementation below?
+*/
+	if ( (byte) value == 0) {
+		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
+	} else {
+		return FIND_FIRST_BIT(value & 0x3F);
+	}
+
 }
 
+static inline int KillFirstBit2x64(int value)
+{
+	if ( (byte) value == 0) {
+		return KILL_FIRST_BIT((value >> 8) & 0x3F) << 8;
+	} else {
+		return value & (KILL_FIRST_BIT(value & 0x3F)|0x3F00);
+	}
+}
 
 /* [min,max), strictly less than */
 #define IS_BYTE_INSIDE(a,min,max) ((byte)((a)-(min)) < (byte)((max)-(min)))

@@ -595,6 +595,7 @@ C_SOURCES += network_gui.c
 C_SOURCES += network_server.c
 C_SOURCES += network_udp.c
 C_SOURCES += news_gui.c
+C_SOURCES += npf.c
 C_SOURCES += oldloader.c
 C_SOURCES += order_cmd.c
 C_SOURCES += order_gui.c

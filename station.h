@@ -2,6 +2,7 @@
 #define STATION_H
 
 #include "sprite.h"
+#include "tile.h"
 #include "vehicle.h"
 
 typedef struct GoodsEntry {
@@ -223,5 +224,20 @@ inline int GetRoadStopType(TileIndex tile);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 RoadStop * GetFirstFreeRoadStop( void );
+
+static inline bool IsTrainStationTile(uint tile) {
+	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
+}
+
+static inline bool IsRoadStationTile(uint tile) {
+	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0x43, 0x4B);
+}
+
+/* Get's the direction the station exit points towards. Ie, returns 0 for a
+ * station with the exit NE. */
+static inline byte GetRoadStationDir(uint tile) {
+	assert(IsRoadStationTile(tile));
+	return (_map5[tile] - 0x43) & 3;
+}
 
 #endif /* STATION_H */

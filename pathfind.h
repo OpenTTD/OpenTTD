@@ -1,6 +1,9 @@
 #ifndef PATHFIND_H
 #define PATHFIND_H
 
+//#define PF_BENCH // perform simple benchmarks on the train pathfinder (not
+//supported on all archs)
+
 typedef struct TrackPathFinder TrackPathFinder;
 typedef bool TPFEnumProc(uint tile, void *data, int track, uint length, byte *state);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
