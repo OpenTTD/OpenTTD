@@ -887,6 +887,9 @@ STR_OPTIONS_LANG						:{BLACK}Nyelv
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Válassz nyelvet
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Teljes képernyõ
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Jelöld be ezt, ha teljes képernyõs módban szeretnél OpenTTD-zni
+
 STR_OPTIONS_RES							:{BLACK}A képernyõ felbontása
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP						:{BLACK}Válaszd ki, milyen felbontást szeretnél a játékhoz

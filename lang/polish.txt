@@ -887,6 +887,9 @@ STR_OPTIONS_LANG						:{BLACK}Jezyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Wybierz jezyk interfejsu
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Pelny ekran
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Zaznacz to jesli chcesz grac w OpenTTD w trybie pelno ekranowym
+
 STR_OPTIONS_RES							:{BLACK}Rozdzielczosc ekranu
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP						:{BLACK}Wybierz rozdzielczosc ekranu

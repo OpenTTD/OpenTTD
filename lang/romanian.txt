@@ -887,6 +887,9 @@ STR_OPTIONS_LANG						:{BLACK}Limba
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Alege limba în care doresti afisatã interfata
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Mod
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Bifeaza aceasta casuta pentru a juca in modul
+
 STR_OPTIONS_RES							:{BLACK}Rezolutia ecranului
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP						:{BLACK}Alege rezolutia doritã pentru joc

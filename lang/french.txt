@@ -887,6 +887,7 @@ STR_OPTIONS_LANG						:{BLACK}Langue
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Selectionner la langue d'interface à utiliser
 
+
 STR_OPTIONS_RES							:{BLACK}Résolution
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP						:{BLACK}Selectionner la résolution d'écran à utiliser
