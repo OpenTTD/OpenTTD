@@ -34,6 +34,10 @@ uint32 DoRandom(int line, const char *file)
 uint32 Random(void)
 #endif
 {
+
+uint32 s;
+uint32 t;
+
 #ifdef RANDOM_DEBUG
 	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
 		printf("Random [%d/%d] %s:%d\n",_frame_counter, _current_player, file, line);
@@ -41,8 +45,8 @@ uint32 Random(void)
 
 #ifdef PLAYER_SEED_RANDOM
 	if (_current_player>=MAX_PLAYERS || !_networking) {
-		uint32 s = _random_seeds[0][0];
-		uint32 t = _random_seeds[0][1];
+		s = _random_seeds[0][0];
+		t = _random_seeds[0][1];
 		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
 		return _random_seeds[0][1] = ROR(s, 3);
 	} else {
@@ -53,8 +57,8 @@ uint32 Random(void)
 		return _player_seeds[_current_player][1] = ROR(s, 3);
 	}
 #else
-	uint32 s = _random_seeds[0][0];
-	uint32 t = _random_seeds[0][1];
+	s = _random_seeds[0][0];
+	t = _random_seeds[0][1];
 	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
 	return _random_seeds[0][1] = ROR(s, 3);
 #endif
