@@ -214,12 +214,6 @@ endif
 endif
 endif
 
-# For some reason it will not link with libpng if SDL is disabled
-# this automatically disables libpng if no SDL is found
-ifndef WITH_SDL
-WITH_PNG:=
-endif
-
 
 
 ##############################################################################
@@ -415,21 +409,13 @@ ifdef FREEBSD
 LIBS += -lpng
 else
 CFLAGS += `libpng-config --cflags`
-ifdef OSX
-ifdef STATIC
-# Seems like we need a tiny hack for OSX static to work
-LIBS += `libpng-config --prefix`/lib/libpng.a
-else
-LIBS += `libpng-config  --libs`
-endif
-else
+
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
 LIBS += `libpng-config --static $(PNGCONFIG_FLAGS)`
 else
-LIBS += `libpng-config  $(PNGCONFIG_FLAGS)`
-endif
+LIBS += `libpng-config  --L_opts $(PNGCONFIG_FLAGS)`
 endif
 endif
 endif
