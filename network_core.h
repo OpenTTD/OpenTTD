@@ -88,6 +88,10 @@ typedef struct ifreq IFREQ;
 #	include <netdb.h>
 #endif // UNIX
 
+#ifdef __BEOS__
+typedef int socklen_t;
+#endif
+
 // OS/2 stuff
 #if defined(__OS2__)
 #	define SOCKET int
