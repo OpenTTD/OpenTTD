@@ -1455,7 +1455,10 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 		}
 	} else if (_map5[tile] & 0x80) {
 		if (v->type == VEH_Road || (v->type == VEH_Train && v->subtype == 0)) {
-			if (GetTileSlope(tile, &h) != 0 || myabs(h - v->z_pos) > 2) {
+			if (GetTileSlope(tile, &h) != 0)
+				h += 8; // Compensate for possible foundation
+			if (!(_map5[tile] & 0x40) || // start/end tile of bridge
+					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */
 				uint16 spd = _bridge_speeds[_map2[tile] >> 4];
 				if (v->type == VEH_Road) spd<<=1;
