@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Gebruik realistisch handelsgebied: {OR
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Verbied schepen en treinen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (Vereist NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één lading geladen is, met 'vol laden': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Nieuwe methode om het depot te vinden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nieuw algorithme voor routeplanning van treinen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nieuwe globale routeplanner (NPF, voorkeur over NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 

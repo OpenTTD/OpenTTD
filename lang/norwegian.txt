@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Mer realistisk størrelse på oppfanging
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Tillat riving av industri, mer vei, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Tillat bygging av veldig lange tog : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistisk akslerasjon for tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Forby tog og skip mot å gjøre 90-graders svinger: {ORANGE}{STRING} {LTBLUE} (trenger NGR)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Slå sammen stasjoner som blir bygget på siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Forlat stasjonen når én type varevogn er full, hvis 'full last' er på: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Bruk forbedret lastingsalgoritme: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Ny togstallokalisering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Ikke-ensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny algoritme for togs kjørerute: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
 
@@ -1090,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Tillat bygging i pause modus: {ORANGE}{STR
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetfly vil ikke krasje (hele tiden) på små flyplasser: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Bytt klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Bytt dato: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Har kurs mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Har kurs mot {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1399,8 @@ STR_NETWORK_SEND						:{BLACK}Send
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}X-størrelse på kart: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Y-størrelse på kart: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Kostnad: {CURRENCY}
@@ -1616,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}For nær en annen jernbanestasj
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Grenser til mer enn én eksiterende stasjon/lasteterminal
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}For mange stasjoner/lasteterminaler i byen
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}For mange stasjner/lasteterminaler
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}For mange bussholdeplasser
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}For mange lasteterminaler
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}For nær en annen jerbanestasjon/lasteterminal
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Må rive eksiterende jernbanestasjon først
@@ -1689,6 +1696,7 @@ STR_3069_BUOY							:Bøye
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bøyen er i veien
 STR_306B_HELIPORT						:{BLACK}Landingsplass for helikopter
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stasjonen er spredd for mye
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...ikke-ensartede stasjoner deaktivert
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Skipdepot retning

@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Tillåt mer realistiska uppsamlingsområ
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Tillåt borttagning av mera stadsägda vägar etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktivera realistisk acceleration för tåg: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Förbjud tåg och skepp att göra 90 graders svängar: {ORANGE}{STRING} {LTBLUE} (kräver NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Kombinera tågstationer som byggs bredvid varandra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Lämna stationen när något gods är fullt, om 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
@@ -1616,6 +1617,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}För nära en annan järnvägsstat
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Angränsar till mer än en station/hållplats
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}För många stationer/hållplatser i staden
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}För många stationer/hållplatser
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}För många buss hållplatser
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}För många lastbils stationer
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}För nära en annan stationer/hållplatser
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Måste riva järnvägsstation först
@@ -2786,6 +2789,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Välj järnvägstyp för att byta ut fordon
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Visa vilket fordon, det vänstra fordonet byts ut till, om något
 STR_REPLACE_HELP						:{BLACK}Detta gör det möjligt att byta ut en fordonstyp med en annan typ, när tågen av den ursprungliga typen anländer till en depå
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

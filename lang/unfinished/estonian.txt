@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Võimalda reaalsemaid veekogu alasid: {
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Luba linna teede, sildade, tunnelite, jne eemaldamine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Luba väga pikkade rongide ehitamine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktiveeri realistlik rongide kiirendamine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Keela rongidel ja laevadel 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Ühenda üksteise vastu ehitatud jaamad kokku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Lahku jaamast, kui üks kaupadest on täis, 'täis laadimisel': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Kasuta parandatud laadimisalgoritmi: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Luba kohalikele võimudele altkäemaksu maks
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Uue depoo otsimine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Kasuta rongide teeleidmiseks uut algoritmi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Uus teeotsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Luba väikesed lennujaamad kuni mängu lõpuni: {ORANGE}{STRING}
 
@@ -1397,6 +1399,8 @@ STR_NETWORK_SEND						:{BLACK}Saada
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Kaardi X-telje suurus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Kaardi Y-telje suurus: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Hind: {CURRENCY}
@@ -1617,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Teisele raudteejaamale liiga l
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Rohkem kui ühe olemasoleva jaama kokku ühendamine
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Selles linnas on juba liiga palju jaamasid
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Liiga palju jaamasid
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Liiga palju bussipeatusi
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Liigapalju laadimisplatvorme
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Mõnele teisele jaamale liiga lähedal
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Enne tuleb raudteejaam hävitada
@@ -2065,6 +2071,25 @@ STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} alustas ehitustöi
 STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Ettevõtet ei saa osta...
 STR_7061_CARGO_PAYMENT_RATES					:{WHITE}Veoste hindadte graafik
 STR_7062_DAYS_IN_TRANSIT					:{BLACK}{TINYFONT}Päevi teel
+STR_7063_PAYMENT_FOR_DELIVERING					:{BLACK}{TINYFONT}Makstav summa 10 ühiku(või 10 000 liitri) veose vedamise eest 20 ruudu kohta
+STR_7064_TOGGLE_GRAPH_FOR_CARGO					:{BLACK}Lülita veose graafik sisse/välja
+STR_7065							:{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER						:Insener
+STR_7067_TRAFFIC_MANAGER					:Liiklusmänežer
+STR_7068_TRANSPORT_COORDINATOR					:Transpordi juht
+STR_7069_ROUTE_SUPERVISOR					:Marsuruudi inspektor
+STR_706A_DIRECTOR						:Direktor
+STR_706B_CHIEF_EXECUTIVE					:Tegevjuht
+STR_706C_CHAIRMAN						:Esimees
+STR_706D_PRESIDENT						:President
+STR_706E_TYCOON							:Tycoon
+STR_706F_BUILD_HQ						:{BLACK}Ehita Peakorter
+STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Ettevõtte peakorteri ehitamine / vii vaade peakorterile
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Ehita ettevõtte peakorter mujale 1% ettevõtte väärtuse hinna eest
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Ettevõtte peakorterit ei saa ehitada...
+STR_7072_VIEW_HQ						:{BLACK}Vaata Peakorterit
+STR_RELOCATE_HQ							:{BLACK}Liiguta Peakorterit
+STR_COMPANY_PASSWORD						:{BLACK}Parool
 
 ##id 0x8000
 

@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permitir tamaño del área de captación 
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permitir demoler más propiedades de poblaciones: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Activar aceleración realista de trenes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Prohibir a trenes y barcos realizar giros de 90 grados: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Abandona est. con alguna carga completa, en 'carga completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Usar algoritmo mejorado de carga: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Permitir sobornos a la autoridad local: {O
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Encuentro de nuevos depósitos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Estaciones no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nuevo algoritmo para encuentro de rutas de los trenes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nuevo sistema de busq. de rutas global (NPF, anula a NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1397,6 +1399,8 @@ STR_NETWORK_SEND						:{BLACK}Enviar
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Tamaño X del mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Tamaño Y del mapa: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Coste: {CURRENCY}
@@ -1617,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Demasiado cerca de otra estaci
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}djunta más de una estación/zona de carga existente
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Demasiadas estaciones/zonas de carga en esta población
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Demasiadas estaciones/zonas de carga
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Demasiadas paradas de Autobús
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Demasiadas zonas de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Demasiado cerca de otra estación/zona de carga
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Primero debe demolerse estación de tren

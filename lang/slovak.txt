@@ -1090,6 +1090,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Umoznit vystavbu v pauze: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Triskove lietadla nebudu havarovat (casto) na malych letiskach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Povolit zmenu objemu vyroby: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Smeruje do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Smeruje do {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1397,8 @@ STR_NETWORK_SEND						:{BLACK}Poslat
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cena: {CURRENCY}
@@ -2786,6 +2789,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vyber typ kolajnic, pre ktore chces vymien
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
 STR_REPLACE_HELP						:{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
