@@ -15,7 +15,7 @@
 extern void StartupEconomy(void);
 extern void InitNewsItemStructs(void);
 
-byte _name_array[512][32];
+char _name_array[512][32];
 
 static inline uint32 ROR(uint32 x, int n)
 {
@@ -306,9 +306,9 @@ void DeleteName(StringID id)
 	}
 }
 
-byte *GetName(int id, byte *buff)
+char *GetName(int id, char *buff)
 {
-	byte *b;
+	const char *b;
 
 	if (id & 0x600) {
 		if (id & 0x200) {
@@ -341,11 +341,11 @@ static void InitializeNameMgr(void)
 	memset(_name_array, 0, sizeof(_name_array));
 }
 
-StringID RealAllocateName(const byte *name, byte skip, bool check_double)
+StringID RealAllocateName(const char *name, byte skip, bool check_double)
 {
 	int free_item = -1;
-	const byte *names;
-	byte *dst;
+	const char *names;
+	char *dst;
 	int i;
 
 	names = &_name_array[0][0];
@@ -744,7 +744,7 @@ void bubblesort(void *base, size_t nmemb, size_t size, int(*compar)(const void *
 static void Save_NAME(void)
 {
 	int i;
-	byte *b = _name_array[0];
+	char *b = _name_array[0];
 
 	for(i=0; i!=lengthof(_name_array); i++,b+=sizeof(_name_array[0])) {
 		if (*b) {

@@ -132,7 +132,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 	/* If GetDParam(0) == nothing, we delete the sign */
 	if (GetDParam(0) != 0 && owner != OWNER_NONE) {
 		/* Create the name */
-		str = AllocateName((byte*)_decode_parameters, 0);
+		str = AllocateName((const char*)_decode_parameters, 0);
 		if (str == 0)
 			return CMD_ERROR;
 

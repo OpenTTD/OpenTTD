@@ -275,22 +275,22 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				DeleteName(_str_server_version);
 				DeleteName(_str_server_address);
 				if (_selected_item->info.server_name[0] != '\0')
-					_str_game_name = AllocateName((byte*) _selected_item->info.server_name, 0);
+					_str_game_name = AllocateName(_selected_item->info.server_name, 0);
 				else
 					_str_game_name = STR_EMPTY;
 
 				if (_selected_item->info.map_name[0] != '\0')
-					_str_map_name = AllocateName((byte*) _selected_item->info.map_name, 0);
+					_str_map_name = AllocateName(_selected_item->info.map_name, 0);
 				else
 					_str_map_name = STR_EMPTY;
 
 				if (_selected_item->info.server_revision[0] != '\0')
-					_str_server_version = AllocateName((byte*) _selected_item->info.server_revision, 0);
+					_str_server_version = AllocateName(_selected_item->info.server_revision, 0);
 				else
 					_str_server_version = STR_EMPTY;
 
 				if (_selected_item->info.hostname[0] != '\0')
-					_str_server_address = AllocateName((byte*) _selected_item->info.hostname, 0);
+					_str_server_address = AllocateName(_selected_item->info.hostname, 0);
 				else
 					_str_server_address = STR_EMPTY;
 			}
@@ -303,7 +303,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 12: { // Add a server
-				StringID str = AllocateName((byte*)_network_default_ip, 0);
+				StringID str = AllocateName(_network_default_ip, 0);
 
 				ShowQueryString(
 				str,

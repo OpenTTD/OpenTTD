@@ -1612,7 +1612,7 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	str = AllocateNameUnique((byte*)_decode_parameters, 2);
+	str = AllocateNameUnique((const char*)_decode_parameters, 2);
 	if (str == 0)
 		return CMD_ERROR;
 

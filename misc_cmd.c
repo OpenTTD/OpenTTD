@@ -126,7 +126,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Player *p;
 
-	str = AllocateNameUnique((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((const char*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 
@@ -148,7 +148,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Player *p;
 
-	str = AllocateNameUnique((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((const char*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 

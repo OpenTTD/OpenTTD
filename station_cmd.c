@@ -2652,7 +2652,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Station *st;
 
-	str = AllocateNameUnique((byte*)_decode_parameters, 6);
+	str = AllocateNameUnique((const char*)_decode_parameters, 6);
 	if (str == 0)
 		return CMD_ERROR;
 

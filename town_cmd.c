@@ -1395,7 +1395,7 @@ int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Town *t = GetTown(p1);
 
-	str = AllocateNameUnique((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((const char*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 

@@ -462,7 +462,7 @@ static void FixOldVehicles(void)
 #define REMAP_ORDER_IDX(x) ((x) - (0x045AB08 - 0x0458EF0)) / 2
 
 extern TileIndex _animated_tile_list[256];
-extern byte _name_array[512][32];
+extern char _name_array[512][32];
 extern uint16 _custom_sprites_base;
 
 static byte   _old_vehicle_multipler;
