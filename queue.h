@@ -76,7 +76,8 @@ struct Queue{
 			uint blocks; /* The amount of blocks for which space is reserved in elements */
 			BinaryHeapNode** elements;
 		} binaryheap;
-	};
+	} data;
+
 	/* If true, this struct will be free'd when the
 	 * Queue is deleted. */
 	bool freeq;

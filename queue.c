@@ -6,31 +6,31 @@ void Stack_Clear(Queue* q, bool free_values)
 {
 	uint i;
 	if (free_values)
-		for (i=0;i<q->stack.size;i++)
-			free(q->stack.elements[i]);
-	q->stack.size = 0;
+		for (i=0;i<q->data.stack.size;i++)
+			free(q->data.stack.elements[i]);
+	q->data.stack.size = 0;
 }
 
 void Stack_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
-	free(q->stack.elements);
+	free(q->data.stack.elements);
 	if (q->freeq)
 		free(q);
 }
 
 bool Stack_Push(Queue* q, void* item, int priority) {
-	if (q->stack.size == q->stack.max_size)
+	if (q->data.stack.size == q->data.stack.max_size)
 		return false;
-	q->stack.elements[q->stack.size++] = item;
+	q->data.stack.elements[q->data.stack.size++] = item;
 	return true;
 }
 
 void* Stack_Pop(Queue* q) {
 	void* result;
-	if (q->stack.size == 0)
+	if (q->data.stack.size == 0)
 		return NULL;
-	result = q->stack.elements[--q->stack.size];
+	result = q->data.stack.elements[--q->data.stack.size];
 
 	return result;
 }
@@ -46,9 +46,9 @@ Queue* init_stack(Queue* q, uint max_size) {
 	q->del = Stack_Delete;
 	q->clear = Stack_Clear;
 	q->free = Stack_Free;
-	q->stack.max_size = max_size;
-	q->stack.size = 0;
-	q->stack.elements = malloc(max_size * sizeof(void*));
+	q->data.stack.max_size = max_size;
+	q->data.stack.size = 0;
+	q->data.stack.elements = malloc(max_size * sizeof(void*));
 	q->freeq = false;
 	return q;
 }
@@ -69,43 +69,43 @@ void Fifo_Clear(Queue* q, bool free_values)
 {
 	uint head, tail;
 	if (free_values) {
-		head = q->fifo.head;
-		tail = q->fifo.tail; /* cache for speed */
+		head = q->data.fifo.head;
+		tail = q->data.fifo.tail; /* cache for speed */
 		while (head != tail) {
-			free(q->fifo.elements[tail]);
-			tail = (tail + 1) % q->fifo.max_size;
+			free(q->data.fifo.elements[tail]);
+			tail = (tail + 1) % q->data.fifo.max_size;
 		}
 	}
-	q->fifo.head = q->fifo.tail = 0;
+	q->data.fifo.head = q->data.fifo.tail = 0;
 }
 
 void Fifo_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
-	free(q->fifo.elements);
+	free(q->data.fifo.elements);
 	if (q->freeq)
 		free(q);
 }
 
 bool Fifo_Push(Queue* q, void* item, int priority) {
-	uint next = (q->fifo.head + 1) % q->fifo.max_size;
-	if (next == q->fifo.tail)
+	uint next = (q->data.fifo.head + 1) % q->data.fifo.max_size;
+	if (next == q->data.fifo.tail)
 		return false;
-	q->fifo.elements[q->fifo.head] = item;
+	q->data.fifo.elements[q->data.fifo.head] = item;
 
 
-	q->fifo.head = next;
+	q->data.fifo.head = next;
 	return true;
 }
 
 void* Fifo_Pop(Queue* q) {
 	void* result;
-	if (q->fifo.head == q->fifo.tail)
+	if (q->data.fifo.head == q->data.fifo.tail)
 		return NULL;
-	result = q->fifo.elements[q->fifo.tail];
+	result = q->data.fifo.elements[q->data.fifo.tail];
 
 
-	q->fifo.tail = (q->fifo.tail + 1) % q->fifo.max_size;
+	q->data.fifo.tail = (q->data.fifo.tail + 1) % q->data.fifo.max_size;
 	return result;
 }
 
@@ -120,10 +120,10 @@ Queue* init_fifo(Queue* q, uint max_size) {
 	q->del = Fifo_Delete;
 	q->clear = Fifo_Clear;
 	q->free = Fifo_Free;
-	q->fifo.max_size = max_size;
-	q->fifo.head = 0;
-	q->fifo.tail = 0;
-	q->fifo.elements = malloc(max_size * sizeof(void*));
+	q->data.fifo.max_size = max_size;
+	q->data.fifo.head = 0;
+	q->data.fifo.tail = 0;
+	q->data.fifo.elements = malloc(max_size * sizeof(void*));
 	q->freeq = false;
 	return q;
 }
@@ -142,7 +142,7 @@ Queue* new_Fifo(uint max_size)
  */
 
 void InsSort_Clear(Queue* q, bool free_values) {
-	InsSortNode* node = q->inssort.first;
+	InsSortNode* node = q->data.inssort.first;
 	InsSortNode* prev;
 	while (node != NULL) {
 		if (free_values)
@@ -152,7 +152,7 @@ void InsSort_Clear(Queue* q, bool free_values) {
 		free(prev);
 		
 	}
-	q->inssort.first = NULL;
+	q->data.inssort.first = NULL;
 }
 
 void InsSort_Free(Queue* q, bool free_values)
@@ -167,11 +167,11 @@ bool InsSort_Push(Queue* q, void* item, int priority) {
 	if (newnode == NULL) return false;
 	newnode->item = item;
 	newnode->priority = priority;
-	if (q->inssort.first == NULL || q->inssort.first->priority >= priority) {
-		newnode->next = q->inssort.first;
-		q->inssort.first = newnode;
+	if (q->data.inssort.first == NULL || q->data.inssort.first->priority >= priority) {
+		newnode->next = q->data.inssort.first;
+		q->data.inssort.first = newnode;
 	} else {
-		InsSortNode* node = q->inssort.first;
+		InsSortNode* node = q->data.inssort.first;
 		while( node != NULL ) {
 			if (node->next == NULL || node->next->priority >= priority) {
 				newnode->next = node->next;
@@ -185,14 +185,14 @@ bool InsSort_Push(Queue* q, void* item, int priority) {
 }
 
 void* InsSort_Pop(Queue* q) {
-	InsSortNode* node = q->inssort.first;
+	InsSortNode* node = q->data.inssort.first;
 	void* result;
 	if (node == NULL)
 		return NULL;
 	result = node->item;
-	q->inssort.first = q->inssort.first->next;
-	if (q->inssort.first)
-		assert(q->inssort.first->priority >= node->priority);
+	q->data.inssort.first = q->data.inssort.first->next;
+	if (q->data.inssort.first)
+		assert(q->data.inssort.first->priority >= node->priority);
 	free(node);
 	return result;
 }
@@ -208,7 +208,7 @@ void init_InsSort(Queue* q) {
 	q->del = InsSort_Delete;
 	q->clear = InsSort_Clear;
 	q->free = InsSort_Free;
-	q->inssort.first = NULL;
+	q->data.inssort.first = NULL;
 	q->freeq = false;
 }
 
@@ -231,16 +231,16 @@ Queue* new_InsSort() {
 // To make our life easy, we make the next define
 //  Because Binary Heaps works with array from 1 to n,
 //  and C with array from 0 to n-1, and we don't like typing
-//  q->binaryheap.elements[i-1] every time, we use this define.
-#define BIN_HEAP_ARR(i) q->binaryheap.elements[((i)-1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i)-1) & BINARY_HEAP_BLOCKSIZE_MASK]
+//  q->data.binaryheap.elements[i-1] every time, we use this define.
+#define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i)-1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i)-1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
 void BinaryHeap_Clear(Queue* q, bool free_values)
 {
 	/* Free all items if needed and free all but the first blocks of
 	 * memory */
 	uint i,j;
-	for (i=0;i<q->binaryheap.blocks;i++) {
-		if (q->binaryheap.elements[i] == NULL) {
+	for (i=0;i<q->data.binaryheap.blocks;i++) {
+		if (q->data.binaryheap.elements[i] == NULL) {
 			/* No more allocated blocks */
 			break;
 		}
@@ -248,29 +248,29 @@ void BinaryHeap_Clear(Queue* q, bool free_values)
 		if (free_values)
 			for (j=0;j<(1<<BINARY_HEAP_BLOCKSIZE_BITS);j++) {
 				/* For every element in the block */
-				if ((q->binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS) == i
-					&& (q->binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == j)
+				if ((q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS) == i
+					&& (q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == j)
 					break; /* We're past the last element */
-				free(q->binaryheap.elements[i][j].item);
+				free(q->data.binaryheap.elements[i][j].item);
 			}
 		if (i != 0) {
 			/* Leave the first block of memory alone */
-			free(q->binaryheap.elements[i]);
-			q->binaryheap.elements[i] = NULL;
+			free(q->data.binaryheap.elements[i]);
+			q->data.binaryheap.elements[i] = NULL;
 		}
 	}
-	q->binaryheap.size = 0;
-	q->binaryheap.blocks = 1;
+	q->data.binaryheap.size = 0;
+	q->data.binaryheap.blocks = 1;
 }
 
 void BinaryHeap_Free(Queue* q, bool free_values)
 {
 	uint i;
 	q->clear(q, free_values);
-	for (i=0;i<q->binaryheap.blocks;i++) {
-		if (q->binaryheap.elements[i] == NULL)
+	for (i=0;i<q->data.binaryheap.blocks;i++) {
+		if (q->data.binaryheap.elements[i] == NULL)
 			break;
-		free(q->binaryheap.elements[i]);
+		free(q->data.binaryheap.elements[i]);
 	}
 	if (q->freeq)
 		free(q);
@@ -278,33 +278,33 @@ void BinaryHeap_Free(Queue* q, bool free_values)
 
 bool BinaryHeap_Push(Queue* q, void* item, int priority) {
 	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->binaryheap.size);
+			printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->data.binaryheap.size);
 	#endif
-	if (q->binaryheap.size == q->binaryheap.max_size)
+	if (q->data.binaryheap.size == q->data.binaryheap.max_size)
 		return false;
-	assert(q->binaryheap.size < q->binaryheap.max_size);
+	assert(q->data.binaryheap.size < q->data.binaryheap.max_size);
 	
-	if (q->binaryheap.elements[q->binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
+	if (q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
 		/* The currently allocated blocks are full, allocate a new one */
-		assert((q->binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
-		q->binaryheap.elements[q->binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
-		q->binaryheap.blocks++;
+		assert((q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
+		q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
+		q->data.binaryheap.blocks++;
 #ifdef QUEUE_DEBUG
-		printf("[BinaryHeap] Increasing size of elements to %d nodes\n",q->binaryheap.blocks *  BINARY_HEAP_BLOCKSIZE);
+		printf("[BinaryHeap] Increasing size of elements to %d nodes\n",q->data.binaryheap.blocks *  BINARY_HEAP_BLOCKSIZE);
 #endif
 	}
 
 	// Add the item at the end of the array
-	BIN_HEAP_ARR(q->binaryheap.size+1).priority = priority;
-	BIN_HEAP_ARR(q->binaryheap.size+1).item = item;
-	q->binaryheap.size++;
+	BIN_HEAP_ARR(q->data.binaryheap.size+1).priority = priority;
+	BIN_HEAP_ARR(q->data.binaryheap.size+1).item = item;
+	q->data.binaryheap.size++;
 
 	// Now we are going to check where it belongs. As long as the parent is
 	// bigger, we switch with the parent
 	{
 		int i, j;
 		BinaryHeapNode temp;
-		i = q->binaryheap.size;
+		i = q->data.binaryheap.size;
 		while (i > 1) {
 			// Get the parent of this object (divide by 2)
 			j = i / 2;
@@ -327,20 +327,20 @@ bool BinaryHeap_Push(Queue* q, void* item, int priority) {
 bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 {
 	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->binaryheap.size);
+			printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->data.binaryheap.size);
 	#endif
 	uint i = 0;
 	// First, we try to find the item..
 	do {
 		if (BIN_HEAP_ARR(i+1).item == item) break;
 		i++;
-	} while (i < q->binaryheap.size);
+	} while (i < q->data.binaryheap.size);
 	// We did not find the item, so we return false
-	if (i == q->binaryheap.size) return false;
+	if (i == q->data.binaryheap.size) return false;
 
 	// Now we put the last item over the current item while decreasing the size of the elements
-	q->binaryheap.size--;
-	BIN_HEAP_ARR(i+1) = BIN_HEAP_ARR(q->binaryheap.size+1);
+	q->data.binaryheap.size--;
+	BIN_HEAP_ARR(i+1) = BIN_HEAP_ARR(q->data.binaryheap.size+1);
 
 	// Now the only thing we have to do, is resort it..
 	// On place i there is the item to be sorted.. let's start there
@@ -354,14 +354,14 @@ bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 		for (;;) {
 			j = i;
 			// Check if we have 2 childs
-			if (2*j+1 <= q->binaryheap.size) {
+			if (2*j+1 <= q->data.binaryheap.size) {
 				// Is this child smaller then the parent?
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) {i = 2*j; }
 				// Yes, we _need_ to use i here, not j, because we want to have the smallest child
 				//  This way we get that straight away!
 				if (BIN_HEAP_ARR(i).priority >= BIN_HEAP_ARR(2*j+1).priority) { i = 2*j+1; }
 			// Do we have one child?
-			} else if (2*j <= q->binaryheap.size) {
+			} else if (2*j <= q->data.binaryheap.size) {
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) { i = 2*j; }
 			}
 
@@ -382,10 +382,10 @@ bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 
 void* BinaryHeap_Pop(Queue* q) {
 	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->binaryheap.size);
+			printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->data.binaryheap.size);
 	#endif
 	void* result;
-	if (q->binaryheap.size == 0)
+	if (q->data.binaryheap.size == 0)
 		return NULL;
 
 	// The best item is always on top, so give that as result
@@ -404,13 +404,13 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->del = BinaryHeap_Delete;
 	q->clear = BinaryHeap_Clear;
 	q->free = BinaryHeap_Free;
-	q->binaryheap.max_size = max_size;
-	q->binaryheap.size = 0;
+	q->data.binaryheap.max_size = max_size;
+	q->data.binaryheap.size = 0;
 	// We malloc memory in block of BINARY_HEAP_BLOCKSIZE
 	//   It autosizes when it runs out of memory
-	q->binaryheap.elements = calloc(1, ((max_size - 1) / BINARY_HEAP_BLOCKSIZE) + 1);
-	q->binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
-	q->binaryheap.blocks = 1;
+	q->data.binaryheap.elements = calloc(1, ((max_size - 1) / BINARY_HEAP_BLOCKSIZE) + 1);
+	q->data.binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
+	q->data.binaryheap.blocks = 1;
 	q->freeq = false;
 #ifdef QUEUE_DEBUG
 		printf("[BinaryHeap] Initial size of elements is %d nodes\n",(1024));
