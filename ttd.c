@@ -472,8 +472,8 @@ void ParseResolution(int res[2], char *s)
 		return;
 	}
 
-	res[0] = (strtoul(s, NULL, 0) + 7) & ~7;
-	res[1] = (strtoul(t+1, NULL, 0) + 7) & ~7;
+	res[0] = (strtoul(s, NULL, 0) + 7);
+	res[1] = (strtoul(t+1, NULL, 0) + 7);
 }
 
 int ttd_main(int argc, char* argv[])
