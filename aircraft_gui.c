@@ -742,7 +742,7 @@ static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **v
 
 	xt = x / 74;
 	xm = x % 74;
-	if (xt >= 4)
+	if (xt >= w->hscroll.cap)
 		return 1;
 
 	row = (y - 14) / 24;
@@ -750,7 +750,7 @@ static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **v
 	if (row >= w->vscroll.cap)
 		return 1;
 
-	pos = (row + w->vscroll.pos) * 4 + xt;
+	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {

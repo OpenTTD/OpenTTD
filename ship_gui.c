@@ -684,7 +684,7 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 
 	xt = x / 90;
 	xm = x % 90;
-	if (xt >= 5)
+	if (xt >= w->hscroll.cap)
 		return 1;
 
 	row = (y - 14) / 24;
@@ -692,7 +692,7 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	if (row >= w->vscroll.cap)
 		return 1;
 
-	pos = (row + w->vscroll.pos) * 3 + xt;
+	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
