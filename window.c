@@ -240,7 +240,7 @@ void DeleteWindow(Window *w)
 
 	v = --_last_window;
 	count = (byte*)v - (byte*)w;
-	memcpy(w, w + 1, count);
+	memmove(w, w + 1, count);
 }
 
 Window *FindWindowById(WindowClass cls, WindowNumber number)
