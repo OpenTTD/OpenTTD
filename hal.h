@@ -101,19 +101,7 @@ typedef struct {
 	uint64 mtime;
 	char title[64];
 	char name[256-12-64];
-	int old_extension;
 } FiosItem;
-
-// extensions of old savegames, scenarios
-static const char* const _old_extensions[] = {
-	// old savegame types
-	"ss1", // Transport Tycoon Deluxe preset game
-	"sv1", // Transport Tycoon Deluxe (Patch) saved game
-	"sv2", // Transport Tycoon Deluxe (Patch) saved 2-player game
-	// old scenario game type
-	"sv0", // Transport Tycoon Deluxe (Patch) scenario
-	"ss0", // Transport Tycoon Deluxe preset scenario
-};
 
 enum {
 	FIOS_TYPE_DRIVE = 0,
