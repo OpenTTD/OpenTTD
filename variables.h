@@ -49,7 +49,7 @@ typedef struct {
 	char post[16];
 } CurrencySpec;
 
-CurrencySpec _currency_specs[24];
+VARDEF CurrencySpec _currency_specs[24];
 
 // Current date
 VARDEF uint16 _date;
