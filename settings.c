@@ -876,6 +876,7 @@ const SettingDesc patch_settings[] = {
 	{"servint_roadveh",			SDT_UINT16, (void*)150,		&_patches.servint_roadveh,			NULL},
 	{"servint_ships",				SDT_UINT16, (void*)360,		&_patches.servint_ships,				NULL},
 	{"servint_aircraft",		SDT_UINT16, (void*)100,		&_patches.servint_aircraft,			NULL},
+	{"no_servicing_if_no_breakdowns", SDT_BOOL, (void*)0, &_patches.no_servicing_if_no_breakdowns, NULL},
 
 	{"new_pathfinding",			SDT_BOOL,		(void*)true,	&_patches.new_pathfinding,			NULL},
 	{"pf_maxlength",				SDT_UINT16, (void*)512,		&_patches.pf_maxlength,					NULL},

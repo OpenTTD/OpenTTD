@@ -28,6 +28,9 @@ void VehicleServiceInDepot(Vehicle *v)
 
 bool VehicleNeedsService(const Vehicle *v)
 {
+	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0)
+		return false;
+
 	return _patches.servint_ispercent ?
 		(v->reliability < _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) :
 		(v->date_of_last_service + v->service_interval < _date);

@@ -129,6 +129,7 @@ typedef struct Patches {
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
 	bool invisible_trees; // don't show trees when buildings are transparent
+	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
 
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius; // Windows snap at each other if closer than this
