@@ -128,7 +128,6 @@
 - Fix: When deleting an order, the next pointer was not cleared, resulting in some unusual behavoir from time to time
 - Fix: You can now also delete automatically found servers by pressing "del"
 - Fix: You should no longer be able to delete bridges on any type of underground when there is a vehicle on it
-- Fix: your loan is now substracted from your company value
 - Add: A brand new set of icons.
 - Change: AutoRenew is now a client-side patch instead of a game-side patch
 - Change: Removed the 'close ALL windows' from the toolbar since shift+del does this.

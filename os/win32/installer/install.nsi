@@ -66,7 +66,7 @@ Page custom SelectCD SelectCD2 ": TTD folder"
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
 !define MUI_FINISHPAGE_LINK "Visit OpenTTD's homepage"
-!define MUI_FINISHPAGE_LINK_LOCATION "http://www.openttd.com/"
+!define MUI_FINISHPAGE_LINK_LOCATION "http://www.openttd.org/"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
 
@@ -97,11 +97,8 @@ Section "!OpenTTD" Section1
 
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
-  File ${PATH_ROOT}data\canalsw.grf
-  File ${PATH_ROOT}data\openttd.grf
-  File ${PATH_ROOT}data\opntitle.dat
-  File ${PATH_ROOT}data\signalsw.grf
-  File ${PATH_ROOT}data\trkfoundw.grf
+	File ${PATH_ROOT}data\*.grf
+	File ${PATH_ROOT}data\opntitle.dat
   ; Copy scenario files
 	SetOutPath "$INSTDIR\scenario\"
   File ${PATH_ROOT}scenario\*.scn
@@ -223,6 +220,7 @@ Section Uninstall
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\openttd.cfg"
+	Delete "$INSTDIR\hs.dat"
 	Delete "$INSTDIR\save\autosave\network*.tmp" ; temporary network file
 
 	; Data files
@@ -231,6 +229,7 @@ Section Uninstall
 	Delete "$INSTDIR\data\openttd.grf"
 	Delete "$INSTDIR\data\canalsw.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
+	Delete "$INSTDIR\data\autorail.grf"
 	Delete "$INSTDIR\data\trg1r.grf"
 	Delete "$INSTDIR\data\trghr.grf"
 	Delete "$INSTDIR\data\trgtr.grf"
