@@ -445,9 +445,14 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	// put the command in a network queue and execute it later?
 	if (_networking && !(cmd & CMD_DONT_NETWORK)) {
-		NetworkSendCommand(tile, p1, p2, cmd, callback);
-		_docommand_recursive = 0;
-		return true;
+		if (!(cmd & CMD_NET_INSTANT)) {
+			NetworkSendCommand(tile, p1, p2, cmd, callback);
+			_docommand_recursive = 0;
+			return true;
+		} else {
+			// Instant Command ... Relay and Process then
+			NetworkSendCommand(tile, p1, p2, cmd, callback);
+		}
 	}
 
 	// update last build coordinate of player.

@@ -878,6 +878,9 @@ normal_load:
 // That check is enforced in DoCommand.
 void StateGameLoop()
 {
+	// dont execute the state loop during pause
+	if (_pause) return;
+
 	_in_state_game_loop = true;
 	_frame_counter++;
 
@@ -1021,8 +1024,7 @@ void GameLoop()
 		}
 	} else {
 		// server/client/standalone: not synced --> state game loop
-		if (!_pause)
-			StateGameLoop();
+		StateGameLoop();
 		// server/client: process queued network commands
 		if (_networking) NetworkProcessCommands();
 	}

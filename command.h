@@ -168,6 +168,7 @@ enum {
 	CMD_NO_WATER = 0x400,
 	CMD_DONT_NETWORK = 0x800,		// execute the command without sending it on the network
 	CMD_ASYNC = 0x1000,					// execute the command asynchronously without testing first in networking
+	CMD_NET_INSTANT = 0x2000,
 };
 
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)

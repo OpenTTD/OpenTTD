@@ -235,6 +235,7 @@ enum {
 };
 
 void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet);
+static void HandleCommandPacket(ClientState *cs, CommandPacket *np);
 static void CloseClient(ClientState *cs);
 void NetworkSendWelcome(ClientState *cs, bool direct);
 
@@ -451,7 +452,11 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	QueuedCommand *qp;
 	ClientState *cs;
 
-	qp = AllocQueuedCommand(_networking_server ? &_command_queue : &_ack_queue);
+	if (!(cmd & CMD_NET_INSTANT)) {
+		qp = AllocQueuedCommand(_networking_server ? &_command_queue : &_ack_queue);
+	} else {
+		qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
+		}
 	qp->cp.packet_type = PACKET_TYPE_COMMAND;
 	qp->cp.tile = tile;
 	qp->cp.p1 = p1;
@@ -487,6 +492,9 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, &qp->cp, qp->cp.packet_length);
 
 #endif
+	if (cmd & CMD_NET_INSTANT) {
+		free(qp);
+	}
 }
 
 // client:
@@ -505,13 +513,22 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	QueuedCommand *qp;
 	ClientState *c;
 	AckPacket ap;
+	uint16 cmd;
 
 	DEBUG(net, 2) ("[NET] cmd size %d", np->packet_length);
-
 	assert(np->packet_length >= COMMAND_PACKET_BASE_SIZE);
 
-	// put it into the command queue
-	qp = AllocQueuedCommand(&_command_queue);
+	cmd = np->cmd;
+#if defined(TTD_BIG_ENDIAN)
+	cmd = TO_LE16(cmd);
+#endif
+
+	if (!(cmd & CMD_NET_INSTANT)) {
+		// put it into the command queue
+		qp = AllocQueuedCommand(&_command_queue);
+	} else {
+		qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
+	}
 	qp->cp = *np;
 	
 	qp->frame = _frame_counter_max - GetNextSyncFrame();
@@ -530,7 +547,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	if (_networking_server) {
 		for(c=_clients; c->socket != INVALID_SOCKET; c++) {
 			if (c == cs) {
-				SendDirectBytes(c, &ap, ap.packet_length);
+				if (!(cmd & CMD_NET_INSTANT)) SendDirectBytes(c, &ap, ap.packet_length);
 			} else {
 				if (!cs->inactive) SendBytes(c, &qp->cp, qp->cp.packet_length);
 			}
@@ -546,6 +563,15 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 #endif
 
 	qp->cmd = qp->cp.cmd;
+
+	if (cmd & CMD_NET_INSTANT) {
+		byte p = _current_player;
+		_current_player = qp->cp.player;
+		memcpy(_decode_parameters, qp->cp.dp, (qp->cp.packet_length - COMMAND_PACKET_BASE_SIZE));
+		DoCommandP(qp->cp.tile, qp->cp.p1, qp->cp.p2, qp->callback, qp->cmd | CMD_DONT_NETWORK);
+		free(qp);
+		_current_player = p;
+		}
 }
 
 // sent from server -> client periodically to tell the client about the current tick in the server

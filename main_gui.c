@@ -83,7 +83,9 @@ typedef void ToolbarButtonProc(Window *w);
 
 static void ToolbarPauseClick(Window *w)
 {
-	if (DoCommandP(0, _pause?0:1, 0, NULL, CMD_PAUSE))
+	if (_networking && !_networking_server) { return;} // only server can pause the game
+
+	if (DoCommandP(0, _pause?0:1, 0, NULL, CMD_PAUSE | CMD_NET_INSTANT))
 		SndPlayFx(0x13);
 }
 
@@ -1654,14 +1656,11 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
 
-		// if networking, disable fast-forward button
-		if (_networking) w->disabled_state |= (1 << 1);
-
 		// if spectator, disable things
 		if (_current_player == OWNER_SPECTATOR){
-			w->disabled_state |= (1 << 0) | (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23);
+			w->disabled_state |= (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23);
 		} else {
-			w->disabled_state &= ~((1 << 0) | (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23));
+			w->disabled_state &= ~((1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23));
 		}
 
 		DrawWindowWidgets(w);
@@ -2225,7 +2224,14 @@ void SetupColorsAndInitialWindow()
 		AssignWindowViewport(w, 0, 0, width, height, 0x8080, 0);
 
 		w = AllocateWindowDesc(&_toolb_normal_desc);
-		w->disabled_state = 1 << 17;
+		w->disabled_state = 1 << 17; // disable zoon-in button (by default game is zoomed in)
+
+		if (_networking) { // if networking, disable fast-forward button
+			w->disabled_state |= (1 << 1);
+			if (!_networking_server) // if not server, disable pause button
+				w->disabled_state |= (1 << 0);
+		}
+
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
 		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)

@@ -98,8 +98,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				ShowQueryString(
 				str,
 				STR_NETWORK_ENTER_IP,
-				15,
-				160,
+				50,  // maximum 50 characters OR
+				250, // characters up to width 250 pixels, whichever is satisfied first
 				w->window_class,
 				w->window_number);
 				DeleteName(str);
