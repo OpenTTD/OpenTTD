@@ -656,6 +656,9 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		} else
 			w->disabled_state = 0;
 
+		if (_network_lobby_company_count == MAX_PLAYERS)
+			w->disabled_state |= (1<<8);
+
 		DrawWindowWidgets(w);
 
 		SetDParam(0, _str_game_name);
