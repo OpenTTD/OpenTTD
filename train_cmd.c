@@ -1261,18 +1261,11 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 static bool CheckTrainStayInDepot(Vehicle *v)
 {
 	Vehicle *u;
-	if (v->u.rail.track != 0x80)	// first wagon (eg engine) in depot
-		return false;
 
-	// make sure that all vehicles are in the depot
-	u = GetLastVehicleInChain(v);
-	if (u->u.rail.track != 0x80)
-		return false;
-
-	// fix hung train if both ends are in depots (when here first wagon and last wagon is in depot)
-	// both first and last should be in the same depot, eg on the same tile
-	if (v->tile != u->tile)
-		return false;
+	// bail out if not all wagons are in the same depot or not in a depot at all
+	for (u = v; u != NULL; u = u->next) 
+		if (u->u.rail.track != 0x80 || u->tile != v->tile)
+			return false;
 
 	if (v->u.rail.force_proceed == 0) {
 		if (++v->load_unload_time_rem < 37)
