@@ -1100,7 +1100,12 @@ void NetworkClose(bool client) {
 
 void NetworkShutdown()
 {
-
+	_networking_server = false;	
+	_networking = false;
+	_networking_sync = false;
+	_frame_counter = 0;
+	_frame_counter_max = 0;
+	_frame_counter_srv = 0;
 }
 
 // switch to synced mode.
@@ -1491,8 +1496,6 @@ void NetworkCoreDisconnect()
 		NetworkClose(true);
 		}
 	
-	_networking_server = false;	
-	_networking = false;
 	NetworkShutdown();
 }
 

@@ -100,6 +100,11 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			}
 		break;
 
+	case WE_DESTROY:
+		_iconsole_win=NULL;
+		_iconsole_mode=ICONSOLE_CLOSED;
+		break;
+
 	case WE_KEYPRESS:
 		e->keypress.cont=false;
 		if (e->keypress.keycode == (WKC_UP))
@@ -333,7 +338,7 @@ if (_iconsole_win!=NULL) SetWindowDirty(_iconsole_win);
 }
 
 
-void IConsolePrintF(byte color_code, const char *s, ...)
+void CDECL IConsolePrintF(byte color_code, const char *s, ...)
 {
 	va_list va;
 	char buf[1024];

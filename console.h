@@ -65,7 +65,7 @@ void IConsoleCmdBufferNavigate(signed char direction);
 
 // ** console output ** //
 void IConsolePrint(byte color_code, byte* string);
-void IConsolePrintF(byte color_code, const char *s, ...);
+void CDECL IConsolePrintF(byte color_code, const char *s, ...);
 void IConsoleDebug(byte* string);
 void IConsoleError(byte* string);
 
