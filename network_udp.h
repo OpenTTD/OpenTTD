@@ -8,5 +8,6 @@ void NetworkUDPSearchGame(void);
 void NetworkUDPQueryMasterServer(void);
 NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port);
 void NetworkUDPAdvertise(void);
+void NetworkUDPRemoveAdvertise(void);
 
 #endif /* NETWORK_LAN_H */

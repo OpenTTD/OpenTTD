@@ -24,6 +24,7 @@ typedef enum {
 	PACKET_UDP_MASTER_ACK_REGISTER, // Packet indicating registration has succedeed
 	PACKET_UDP_CLIENT_GET_LIST, // Request for serverlist from master server
 	PACKET_UDP_MASTER_RESPONSE_LIST, // Response from master server with server ip's + port's
+	PACKET_UDP_SERVER_UNREGISTER, // Request to be removed from the server-list
 	PACKET_UDP_END
 } PacketUDPType;
 
@@ -246,7 +247,11 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST) {
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER) {
 	_network_advertise_retries = 0;
-	DEBUG(net, 2)("[NET] We are advertised on the master-server!");
+	DEBUG(net, 2)("[NET][UDP] We are advertised on the master-server!");
+
+	if (!_network_advertise)
+		/* We are advertised, but we don't want to! */
+		NetworkUDPRemoveAdvertise();
 }
 
 
@@ -261,7 +266,8 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 	NULL,
 	RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER),
 	NULL,
-	RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST)
+	RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST),
+	NULL
 };
 
 
@@ -515,6 +521,38 @@ NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port)
 
 	UpdateNetworkGameWindow(false);
 	return item;
+}
+
+/* Remove our advertise from the master-server */
+void NetworkUDPRemoveAdvertise(void)
+{
+	struct sockaddr_in out_addr;
+	Packet *p;
+
+	/* Check if we are advertising */
+	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
+		return;
+
+	/* check for socket */
+	if (_udp_master_socket == INVALID_SOCKET)
+		if (!NetworkUDPListen(&_udp_master_socket, 0, 0, false))
+			return;
+
+	DEBUG(net, 2)("[NET][UDP] Removing advertise..");
+
+	/* Find somewhere to send */
+	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
+	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+
+	/* Send the packet */
+	p = NetworkSend_Init(PACKET_UDP_SERVER_UNREGISTER);
+	/* Packet is: Version, server_port */
+	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
+	NetworkSend_uint16(p, _network_server_port);
+	NetworkSendUDP_Packet(_udp_master_socket, p, &out_addr);
+
+	free(p);
 }
 
 /* Register us to the master server

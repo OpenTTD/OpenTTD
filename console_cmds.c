@@ -780,8 +780,10 @@ DEF_CONSOLE_CMD(ConSet) {
 		if (argc == 3) {
 			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
 				_network_advertise = true;
-			else
+			else {
+				NetworkUDPRemoveAdvertise();
 				_network_advertise = false;
+			}
 			IConsolePrintF(_iconsole_color_warning, "Server-advertise changed to '%s'", (_network_advertise)?"on":"off");
 		} else {
 			IConsolePrintF(_iconsole_color_default, "Current server-advertise is '%s'", (_network_advertise)?"on":"off");

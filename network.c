@@ -1002,6 +1002,8 @@ void NetworkDisconnect(void)
 		}
 	}
 
+	NetworkUDPRemoveAdvertise();
+
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	NetworkClose();
