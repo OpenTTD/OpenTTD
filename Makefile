@@ -310,7 +310,7 @@ ifdef OSX
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL $(WARNING_DISPLAY)
 else
 ifdef MORPHOS
-BASECFLAGS += -O2 -funroll-loops -fexpensive-optimizations -mstring -mmultiple $(WARNING_DISPLAY)
+BASECFLAGS += -O3 -funroll-loops -fexpensive-optimizations -mstring -mmultiple $(WARNING_DISPLAY)
 else
 BASECFLAGS += -O2 $(WARNING_DISPLAY)
 endif

@@ -182,4 +182,9 @@ assert_compile(sizeof(uint8)	== 1);
 #define CloseConnection OTTD_CloseConnection
 #endif
 
+#if !(defined(__AMIGA__) && !defined(__MORPHOS__))
+// it seems AmigaOS already have a Point declared
+#define Point OTTD_AMIGA_POINT
+#endif
+
 #endif // !defined(_STDAFX_H)

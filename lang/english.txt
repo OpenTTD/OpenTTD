@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS					:MorphOS
+STR_OSNAME_AMIGAOS                                             :AmigaOS
 
 STR_0139_IMPERIAL_MILES					:Imperial (miles)
 STR_013A_METRIC_KILOMETERS				:Metric (kilometers)

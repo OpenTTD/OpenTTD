@@ -351,8 +351,8 @@ const DriverDesc _sound_driver_descs[] = {
 
 const DriverDesc _music_driver_descs[] = {
 #ifndef __BEOS__
-#ifndef __MORPHOS__
-// MorphOS have no music support
+#if !defined(__MORPHOS__) && !defined(__AMIGA__)
+// MorphOS and AmigaOS have no music support
 	{"extmidi",	"External MIDI Driver",	&_extmidi_music_driver,	EXTMIDI_PRI},
 #endif
 #endif
