@@ -1116,7 +1116,6 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_DESTROY:
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		_query_string_active = false;
 		FiosFreeSavegameList();
 		break;
@@ -1189,9 +1188,6 @@ void ShowSaveLoadDialog(int mode)
 	} else if (mode == SLD_SAVE_SCENARIO) {
 		strcpy(_edit_str_buf, "UNNAMED");
 	}
-
-	if (_game_mode != GM_MENU)
-		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	BuildFileList();
 
