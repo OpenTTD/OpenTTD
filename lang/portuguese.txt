@@ -1237,62 +1237,603 @@ STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar um novo jogo em rede a partir 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de jogo multi-jogador
 
 STR_NETWORK_SEND						:{BLACK}Enviar
+STR_NETWORK_SEND_TIP						:{BLACK}Enviar uma mensagem aos outros jogadores
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da empresa:
+STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Alterar o nome da sua empresa. Pressione Enter para aplicar alterações
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar jogo
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ver jogo como um espectador
+STR_NETWORK_NEW_COMPANY						:{BLACK}Nova empresa
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Criar uma nova empresa
+STR_NETWORK_READY						:{BLACK}Pronto
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Não foram encontrados jogos de rede
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} O servidor não respondeu ao pedido
+STR_NETWORK_ERR_DESYNC						:{WHITE} A sincronização do jogo de rede falhou.
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} A conexão do jogo de rede perdeu-se.
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Não foi possível abrir o jogo.
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tempo de espera esgotado na conexão #{NUMU16}.
 
 ############ end network gui strings
 
 
 ##id 0x0800
+STR_0800_COST							:{TINYFONT}{RED}Custo: {CURRENCY}
+STR_0801_COST							:{RED}Custo: {CURRENCY}
+STR_0802_INCOME							:{TINYFONT}{GREEN}Lucro: {CURRENCY}
+STR_0803_INCOME							:{GREEN}Lucro: {CURRENCY}
+STR_0804_ESTIMATED_COST						:{TINYFONT}{WHITE}Custo Estimado: {CURRENCY}
+STR_0805_ESTIMATED_COST						:{WHITE}Custo Estimado: {CURRENCY}
+STR_0806_ESTIMATED_INCOME					:{TINYFONT}{WHITE}Lucro Estimado: {CURRENCY}
+STR_0807_ESTIMATED_INCOME					:{WHITE}Lucro Estimado: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE					:{WHITE}Não é possível levantar terreno aqui...
+STR_0809_CAN_T_LOWER_LAND_HERE					:{WHITE}Não é possível baixar terreno aqui...
+STR_080A_ROCKS							:Rochas
+STR_080B_ROUGH_LAND						:Terreno Irregular
+STR_080C_BARE_LAND						:Terreno Deserto
+STR_080D_GRASS							:Terreno de Prados
+STR_080E_FIELDS							:Campos
+STR_080F_SNOW_COVERED_LAND					:Neve
+STR_0810_DESERT							:Deserto
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Terreno inclinado na direcção incorrecta
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION				:{WHITE}Combinação de linhas impossível
+STR_1002_EXCAVATION_WOULD_DAMAGE				:{WHITE}A escavação estragaria o túnel
+STR_1003_ALREADY_AT_SEA_LEVEL					:{WHITE}Já está ao nível do mar
+STR_1004_TOO_HIGH						:{WHITE}Demasiado alto
+STR_1005_NO_SUITABLE_RAILROAD_TRACK				:{WHITE}Tipo de linha não apropriado
+STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Comboio no depósito
+STR_1007_ALREADY_BUILT						:{WHITE}...já construído
+STR_1008_MUST_REMOVE_RAILROAD_TRACK				:{WHITE}Deverá remover a linha férrea primeiro
+STR_1009_TOO_MANY_DEPOTS					:{WHITE}Demasiados depósitos
+STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Construção de caminhos-de-ferro
+STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Construção de monocarril
+STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Construção de MagLev
+STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Seleccione Ponte Ferroviária
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Não é possível construir depósito aqui...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Não é possível construir estação ferroviária aqui...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE				:{WHITE}Não é possível construir sinais aqui...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Não é possível construir linha férrea aqui...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Não é possível remover linha férrea daqui...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Não é possível remover sinais daqui...
+STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Orientação do Depósito
+STR_1015_RAILROAD_CONSTRUCTION					:Construção de caminhos-de-ferro
+STR_1016_MONORAIL_CONSTRUCTION					:Construção de monocarril
+STR_1017_MAGLEV_CONSTRUCTION					:Construção de MagLev
+STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Construir linha férrea
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Construir depósito (para criação e manutenção de comboios)
+STR_101A_BUILD_RAILROAD_STATION					:{BLACK}Construir estação ferroviária
+STR_101B_BUILD_RAILROAD_SIGNALS					:{BLACK}Construir sinais ferroviários
+STR_101C_BUILD_RAILROAD_BRIDGE					:{BLACK}Construir ponte ferroviária
+STR_101D_BUILD_RAILROAD_TUNNEL					:{BLACK}Construir túnel ferroviário
+STR_101E_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Alternar entre construir/remover linha férrea e sinais
+STR_101F_BRIDGE_SELECTION_CLICK					:{BLACK}Selecção de ponte - clique na ponte desejada para a construir
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Seleccionar a orientação do depósito
+STR_1021_RAILROAD_TRACK						:Caminhos-de-ferro
+STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:caminhos-de-ferro com sinais
+STR_1023_RAILROAD_TRAIN_DEPOT					:Depósito ferroviário
+STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...a àrea é propriedade de outra empresa
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Caminhos-de-ferro com sinais normais
+STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Caminhos-de-ferro com pre-sinais
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS				:Caminhos-de-ferro com sinais de saída
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Caminhos-de-ferro com sinais combinados
 
 
 
 ##id 0x1800
+STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Terreno inclinado na direcção incorrecta para a estrada
+STR_1801_MUST_REMOVE_ROAD_FIRST					:{WHITE}Deverá remover a estrada primeiro
+STR_1802_ROAD_CONSTRUCTION					:{WHITE}Construção de Estradas
+STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Seleccionar Ponte de Estrada
+STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Não é possível construir estrada aqui...
+STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Não é possível remover estrada daqui...
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientação do Depósito
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Não é possível construir depósito de veículos de estrada aqui...
+STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Não é possível construir estação de autocarros...
+STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Não é possível construir estação de carregamento de camiões...
+STR_180A_ROAD_CONSTRUCTION					:Construção de estradas
+STR_180B_BUILD_ROAD_SECTION					:{BLACK}Construir estradas
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT				:{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
+STR_180D_BUILD_BUS_STATION					:{BLACK}Construir estação de autocarros
+STR_180E_BUILD_TRUCK_LOADING_BAY				:{BLACK}Construir área de carregamento de camiões
+STR_180F_BUILD_ROAD_BRIDGE					:{BLACK}Construir ponte de estrada
+STR_1810_BUILD_ROAD_TUNNEL					:{BLACK}Construir túnel de estrada
+STR_1811_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Alternar entre construir/remover estradas
+STR_1812_BRIDGE_SELECTION_CLICK					:{BLACK}Selecção de ponte - clique na ponte desejada para a construir
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT				:{BLACK}Seleccionar a orientação do depósito
+STR_1814_ROAD							:Estrada
+STR_1815_ROAD_WITH_STREETLIGHTS					:Estrada com iluminação
+STR_1816_TREE_LINED_ROAD					:Estrada com árvores
+STR_1817_ROAD_VEHICLE_DEPOT					:Depósito de veículos de estrada
+STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Passagem de nível
 
 ##id 0x2000
+STR_2000_TOWNS							:{WHITE}Cidades
+STR_2001							:{WHITE}{STRING}
+STR_2002							:{TINYFONT}{BLACK}{STRING}
+STR_2003							:{TINYFONT}{WHITE}{STRING}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED				:{WHITE}O edifício deve ser demolido primeiro
+STR_2005							:{WHITE}{TOWN}
+STR_2006_POPULATION						:{BLACK}População: {ORANGE}{COMMA32}{BLACK}  Casas: {ORANGE}{COMMA32}
+STR_2007_RENAME_TOWN						:Renomear Cidade
+STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Não é possível renomear cidade...
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}A autoridade local de {TOWN} não autoriza
+STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Nomes das cidades - clique no nome para centrar a visualização na cidade
+STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centrar visualização na cidade
+STR_200C_CHANGE_TOWN_NAME					:{BLACK}Alterar o nome da cidade
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passageiros último mês: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correio último mês: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
+STR_200F_TALL_OFFICE_BLOCK					:Edifício alto de escritórios
+STR_2010_OFFICE_BLOCK						:Edifício de escritórios
+STR_2011_SMALL_BLOCK_OF_FLATS					:Edifício de apartamentos grande
+STR_2012_CHURCH							:Igreja
+STR_2013_LARGE_OFFICE_BLOCK					:Edifício de escritórios grande
+STR_2014_TOWN_HOUSES						:Casas
+STR_2015_HOTEL							:Hotel
+STR_2016_STATUE							:Estátua
+STR_2017_FOUNTAIN						:Fonte
+STR_2018_PARK							:Parque
+STR_2019_OFFICE_BLOCK						:Edifício de escritórios
+STR_201A_SHOPS_AND_OFFICES					:Lojas e escritórios
+STR_201B_MODERN_OFFICE_BUILDING					:Edifício de escritórios moderno
+STR_201C_WAREHOUSE						:Armazém
+STR_201D_OFFICE_BLOCK						:Edifício de escritórios
+STR_201E_STADIUM						:Estádio
+STR_201F_OLD_HOUSES						:Casas velhas
+STR_2020_LOCAL_AUTHORITY					:{BLACK}Autoridade local
+STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Ver informações sobre a autoridade local
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN} autoridade local
+STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Avaliações da companhia de transporte
+STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES						:{WHITE}Subsídios
+STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Oferta de subsídios para os serviços:-
+STR_2027_FROM_TO						:{ORANGE}{STRING} de {STRING} para {STRING}
+STR_2028_BY							:{YELLOW} (por {DATE_SHORT})
+STR_2029							:{STRING} {STRING}
+STR_202A_NONE							:{ORANGE}Nenhum
+STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Serviços já subsidiados:-
+STR_202C_FROM_TO						:{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({STRING}
+STR_202D_UNTIL							:{YELLOW}, até {DATE_SHORT})
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não é subsidiado.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Subsídio retirado:{}{}serviço de transporte de {STRING} de {STATION} para {STATION} já não é subsidiado.
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsídio de ligação oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá o subsídio de um ano da autoridade local!
+STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STATION} para {STATION} pagará 50% extra durante o próximo ano!
+STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STATION} para {STATION} pagará a dobrar durante o próximo ano!
+STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STATION} para {STATION} pagará a triplicar durante o próximo ano!
+STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STATION} para {STATION} pagará a quadruplicar durante o próximo ano!
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} a autoridade local recusa permitir que outro aeroporto seja construído nesta cidade
+STR_2036_COTTAGES						:Casas de campo
+STR_2037_HOUSES							:Casas
+STR_2038_FLATS							:Apartamentos
+STR_2039_TALL_OFFICE_BLOCK					:Prédio de escritórios alto
+STR_203A_SHOPS_AND_OFFICES					:Lojas e escritórios
+STR_203B_SHOPS_AND_OFFICES					:Lojas e escritórios
+STR_203C_THEATER						:Teatro
+STR_203D_STADIUM						:Estádio
+STR_203E_OFFICES						:Escritórios
+STR_203F_HOUSES							:Casas
+STR_2040_CINEMA							:Cinema
+STR_2041_SHOPPING_MALL						:Centro Comercial
+STR_2042_DO_IT							:{BLACK}Aplicar
+STR_2043_LIST_OF_THINGS_TO_DO_AT				:{BLACK}Lista de acções disponíveis nesta cidade - fazer clique no item para mais detalhes
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Realizar a acção destacada na lista acima
+STR_2045_ACTIONS_AVAILABLE					:{BLACK}Acções disponíveis:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN				:Pequena campanha publicitária
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN				:Média campanha publicitária
+STR_2048_LARGE_ADVERTISING_CAMPAIGN				:Grande campanha publicitária
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION				:Financiar a reconstrução das estradas locais
+STR_204A_BUILD_STATUE_OF_COMPANY				:Construir estátua do proprietário da companhia
+STR_204B_FUND_NEW_BUILDINGS					:Financiar novos edifícios
+STR_204C_BUY_EXCLUSIVE_TRANSPORT				:Comprar exclusividade da rede de transportes
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY				:Subornar a autoridade local
+STR_204D_INITIATE_A_SMALL_LOCAL					:{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária pequena, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL				:{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL					:{WHITE}{STRING}{}{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e carga à sua companhia.{}  Custo: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION				:{WHITE}{STRING}{}{YELLOW} Financíe a reconstrução da rede rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego até 6 meses.{}  Custo: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR				:{WHITE}{STRING}{}{YELLOW} Construa uma estátua em honra da sua companhia.{} Custo: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Financíe a construção de edifícios comerciais novos na cidade.{}  Custo: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e a carga usem somente estações da sua companhia.{} Custo: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Suborne a autoridade local para aumentar a sua avaliação, correndo o  risco de uma penalidade severa se apanhado.{}  Custo: {CURRENCY}
+STR_2054_CAN_T_DO_THIS						:{WHITE}Não pode fazer isto...
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financinado por {STRING} provoca 6 meses de miséria aos condutores!
+STR_2056							:{TINYFONT}{WHITE}{TOWN}
+STR_2057							:{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2058_UNDER_CONSTRUCTION					:{STRING} (em construção)
+STR_2059_IGLOO							:Igloo
+STR_205A_TEPEES							:Tepees
+STR_205B_TEAPOT_HOUSE						:Casa-bule
+STR_205C_PIGGY_BANK						:Mealheiro
 
 ##id 0x2800
+STR_LANDSCAPING							:Paisagem
+STR_2800_PLANT_TREES						:Plantar árvores
+STR_2801_PLACE_SIGN						:Colocar sinal
+STR_2802_TREES							:{WHITE}Árvores
+STR_2803_TREE_ALREADY_HERE					:{WHITE}...árvore já plantada aqui
+STR_2804_SITE_UNSUITABLE					:{WHITE}...local impróprio
+STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Impossível plantar árvore aqui...
+STR_2806							:{WHITE}{STRING}
+STR_2807							:{TINYFONT}{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS						:{WHITE}...demasiados sinais
+STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Não pode colocar um sinal aqui...
+STR_280A_SIGN							:Sinal
+STR_280B_EDIT_SIGN_TEXT						:{WHITE}Editar texto do sinal
+STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Não pode alterar o nome do sinal...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Escolha um tipo de árvore para plantar
+STR_280E_TREES							:Árvores
+STR_280F_RAINFOREST						:Floresta Tropical
+STR_2810_CACTUS_PLANTS						:Cactos
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION					:{WHITE}Selecção de estação ferroviária
+STR_3001_AIRPORT_SELECTION					:{WHITE}Selecção de aeroportos
+STR_3002_ORIENTATION						:{BLACK}Orientação
+STR_3003_NUMBER_OF_TRACKS					:{BLACK}Número de linhas
+STR_3004_PLATFORM_LENGTH					:{BLACK}Comprimento da plataforma
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Demasiado perto de outra estação ferroviária
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Muito junto de uma estação/local de carga já existente
+STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Demasiadas estações/locais de carga nesta cidade
+STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Demasiadas estações/locais de carga
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Muito junto de uma estação/local de carga
+STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
+STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Precisa de demolir a estação primeiro
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT				:{WHITE}Demasiado perto de outro aeroporto
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Precisa de demolir o aeroporto primeiro
 
+STR_3030_RENAME_STATION_LOADING					:Alterar nome de estação/local de carga
+STR_3031_CAN_T_RENAME_STATION					:{WHITE}Não pode alterar o nome da estação...
+STR_3032_RATINGS						:{BLACK}Avaliações
+STR_3033_ACCEPTS						:{BLACK}Aceita
+STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Avaliação local do serviço de transporte:
 
 ############ range for rating starts
+STR_3035_APPALLING						:Inexistente
+STR_3036_VERY_POOR						:Muito Fraco
+STR_3037_POOR							:Fraco
+STR_3038_MEDIOCRE						:Medíocre
+STR_3039_GOOD							:Bom
+STR_303A_VERY_GOOD						:Muito Bom
+STR_303B_EXCELLENT						:Excelente
+STR_303C_OUTSTANDING						:Proeminente
 ############ range for rating ends
 
+STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} não aceita mais {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} não aceita mais {STRING} ou {STRING}
+STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} agora aceita {STRING}
+STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} agora aceita {STRING} e {STRING}
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Orientação da estação de autocarros
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Orientação da estação de carga
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Demasiado perto de outra estação de autocarros
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Demasiado perto de outra estação de carga
+STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Precisa de demolir a estação de autocarros primeiro
+STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Precisa de demolir a estação de carga primeiro
+STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Estações
+STR_3049_0							:{YELLOW}{STATION} {STRINL 0x30D1}
+STR_304A_NONE							:{YELLOW}- Nenhuma -
+STR_304B_SITE_UNSUITABLE					:{WHITE}...sítio inadequado
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Muito perto de outra doca
+STR_304D_MUST_DEMOLISH_DOCK_FIRST				:{WHITE}Deverá demolir a doca primeiro
+STR_304E_SELECT_RAILROAD_STATION				:{BLACK}Seleccionar a orientação da estação ferroviária
+STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Seleccionar o número de linhas da estação ferroviária
+STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Seleccionar o comprimento da estação ferroviária
+STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Seleccionar a orientação da estação de autocarros
+STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Seleccionar a orientação da estação de carregamento de camiões
+STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Centrar visualização no local estação
+STR_3054_SHOW_STATION_RATINGS					:{BLACK}Mostrar avaliações da estação
+STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Alterar o nome da estação
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Mostrar lista de carga aceite
+STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Nome da estação - clique no nome para centrar a visualização na estação
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Seleccionar tamanho/tipo de aeroporto
+STR_3059_SMALL							:{BLACK}Pequeno
+STR_305A_LARGE							:{BLACK}Cidade
+STR_305AA_LARGE							:{BLACK}Aeroporto Metropolitano
+STR_305AB_LARGE							:{BLACK}Aeroporto Internacional
+STR_305B_SIZE							:{BLACK}Tamanho
+STR_305C_0							:{STATION} {STRINL 0x30D1}
+STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
+STR_305E_RAILROAD_STATION					:Estação ferroviária
+STR_305F_AIRCRAFT_HANGAR					:Hangar
+STR_3060_AIRPORT						:Aeroporto
+STR_3061_TRUCK_LOADING_AREA					:Área de carregamento de camiões
+STR_3062_BUS_STATION						:Estação de autocarros
+STR_3063_SHIP_DOCK						:Doca
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Evidenciar área de cobertura do sítio proposto
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Não evidenciar área de cobertura do sítio proposto
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Evidenciar cobertura
+STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Seleccionar Estação Monocarril.
+STR_3068_DOCK							:{WHITE}Doca
+STR_3069_BUOY							:Bóia
+STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bóia no caminho
+STR_306B_HELIPORT						:{BLACK}Heliporto
+STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...estação muito extensa
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientação do Depósito
+STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...deverá ser construído na água
+STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Não é possível construir depósito naval aqui...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Seleccione a orientação do depósito naval
+STR_3804_WATER							:Água
+STR_3805_COAST_OR_RIVERBANK					:Costa ou margem
+STR_3806_SHIP_DEPOT						:Depósito naval
+STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...Não é possível construir na água
 
 ##id 0x4000
+STR_4000_SAVE_GAME						:{WHITE}Guardar Jogo
+STR_4001_LOAD_GAME						:{WHITE}Abrir Jogo
+STR_4002_SAVE							:{BLACK}Guardar
+STR_4003_DELETE							:{BLACK}Eliminar
+STR_4004							:{STRING}, {DATE_LONG}
+STR_4005_BYTES_FREE						:{BLACK}{COMMA32} megabytes livres
+STR_4006_UNABLE_TO_READ_DRIVE					:{BLACK}Não é possível ler unidade
+STR_4007_GAME_SAVE_FAILED					:{WHITE}Falha ao Guardar Jogo
+STR_4008_UNABLE_TO_DELETE_FILE					:{WHITE}Não é possível eliminar ficheiro
+STR_4009_GAME_LOAD_FAILED					:{WHITE}Falha ao Abrir Jogo
+STR_400A_LIST_OF_DRIVES_DIRECTORIES				:{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
+STR_400B_CURRENTLY_SELECTED_NAME				:{BLACK}Nome escolhido para guardar o jogo
+STR_400C_DELETE_THE_CURRENTLY_SELECTED				:{BLACK}Eliminar o jogo guardado seleccionado
+STR_400D_SAVE_THE_CURRENT_GAME_USING				:{BLACK}Guardar o jogo actual, usando o nome escolhido
+STR_400E_SELECT_NEW_GAME_TYPE					:{WHITE}Seleccionar Novo Tipo de Jogo
+STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Seleccionar cenário (verde), jogo pré-programado (azul), ou novo jogo aleatório
+STR_4010_GENERATE_RANDOM_NEW_GAME				:Gerar novo jogo aleatório
 
 ##id 0x4800
+STR_4800_IN_THE_WAY						:{WHITE}{STRING} no caminho
+STR_4801							:{WHITE}{TOWN} {STRING}
+STR_4802_COAL_MINE						:Mina de Carvão
+STR_4803_POWER_STATION						:Central Eléctrica
+STR_4804_SAWMILL						:Serração
+STR_4805_FOREST							:Floresta
+STR_4806_OIL_REFINERY						:Refinaria de Petróleo
+STR_4807_OIL_RIG						:Plataforma Petrolífera
+STR_4808_FACTORY						:Fábrica
+STR_4809_PRINTING_WORKS						:Tipografia
+STR_480A_STEEL_MILL						:Siderurgia
+STR_480B_FARM							:Quinta
+STR_480C_COPPER_ORE_MINE					:Mina de Cobre
+STR_480D_OIL_WELLS						:Poços de Petróleo
+STR_480E_BANK							:Banco
+STR_480F_FOOD_PROCESSING_PLANT					:Companhia Alimentar
+STR_4810_PAPER_MILL						:Fábrica de Papel
+STR_4811_GOLD_MINE						:Mina de Ouro
+STR_4812_BANK							:Banco
+STR_4813_DIAMOND_MINE						:Mina de Diamantes
+STR_4814_IRON_ORE_MINE						:Mina de Ferro
+STR_4815_FRUIT_PLANTATION					:Plantação de Fruta
+STR_4816_RUBBER_PLANTATION					:Plantação de Árvores da Borracha
+STR_4817_WATER_SUPPLY						:Abastecimento de Água
+STR_4818_WATER_TOWER						:Depósito de Água
+STR_4819_FACTORY						:Fábrica
+STR_481A_FARM							:Quinta
+STR_481B_LUMBER_MILL						:Fábrica de Madeiras
+STR_481C_COTTON_CANDY_FOREST					:Floresta de Algodão Doce
+STR_481D_CANDY_FACTORY						:Fábrica de Doces
+STR_481E_BATTERY_FARM						:Campo de Baterias
+STR_481F_COLA_WELLS						:Poços de Cola
+STR_4820_TOY_SHOP						:Loja de Brinquedos
+STR_4821_TOY_FACTORY						:Fábrica de Brinquedos
+STR_4822_PLASTIC_FOUNTAINS					:Fontes de Plástico
+STR_4823_FIZZY_DRINK_FACTORY					:Fábrica de Bebidas Gasosas
+STR_4824_BUBBLE_GENERATOR					:Produtor de Bolhas
+STR_4825_TOFFEE_QUARRY						:Extracção de Caramelo
+STR_4826_SUGAR_MINE						:Mina de Açúcar
 
 ############ range for requires	starts
+STR_4827_REQUIRES						:{BLACK}Necessário: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Necessário: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Necessário: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Produção no último mês:
+STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% transportado)
+STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centrar visualização na localização da indústria
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Nova {STRING} em construção em {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Nova {STRING} está a ser plantada em {TOWN}!
+STR_482F_COST							:{BLACK}Custo: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Não é possível construir este tipo de indústria aqui...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...a floresta só pode ser plantada acima do nível de neve
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}Em {TOWN}, {STRING} anuncia fechar em breve!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Em {TOWN}, problemas no abastecimento levam {STRING} a anunciar fechar em breve!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Em {TOWN}, falta de árvores leva {STRING} a anunciar fechar em breve!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}Em {TOWN}, {STRING} aumenta a produção!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Novo jazigo carbonífero encontrado em {TOWN} na {STRING}!{}É previsto duplicar a produção!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {TOWN} na {STRING}!{}É previsto duplicar a produção!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Sistemas agrícolas melhorados em {TOWN} na {STRING} deverão duplicar a produção!
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}Em {TOWN}, {STRING} diminuí produção 50%
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Em {TOWN} praga de insectos causa problemas na {STRING}!{}Produção diminuí 50%
+STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...só pode ser colocado perto das bordas do mapa
+STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}A produção de {STRING} em {TOWN} {STRING} aumenta {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}A produção de {STRING} em {TOWN} {STRING} diminui {COMMA16}%!
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Há um comboio no túnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL					:{WHITE}Há um veículo de estrada no túnel
+STR_5002							:
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY				:{WHITE}Há outro túnel no caminho
+STR_5004							:
+STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Não é possível escavar o terreno para o outro lado do túnel
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Deverá demolir o túnel primeiro
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Deverá demolir a ponte primeiro
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Não é posível iniciar e finalizar no mesmo ponto
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Debaixo da ponte é necessário terreno plano ou água
+STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Inicio e fim devem estar alinhados
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}O sítio não é adequado para a entrada do túnel
+STR_500C							:
+STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL					:Suspensa, Aço
+STR_500F_GIRDER_STEEL						:Vigas, Aço
+STR_5010_CANTILEVER_STEEL					:Cantilever, Aço
+STR_5011_SUSPENSION_CONCRETE					:Suspensa, Betão
+STR_5012_WOODEN							:De madeira
+STR_5013_CONCRETE						:Betão
+STR_5014_TUBULAR_STEEL						:Tubular, Aço
+STR_BRIDGE_TUBULAR_SILICON					:Tubular, Silício
+STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Não é possível construir ponte aqui...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Não é possível construir túnel aqui...
+STR_5017_RAILROAD_TUNNEL					:Túnel ferroviário
+STR_5018_ROAD_TUNNEL						:Túnel de estrada
+STR_5019							:
+STR_501A							:
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Ponte ferroviária suspensa em aço
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Ponte ferroviária com vigas em aço
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Ponte ferroviária cantilever em aço
+STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Ponte ferroviária suspensa de betão reforçado
+STR_501F_WOODEN_RAIL_BRIDGE					:Ponte ferroviária de madeira
+STR_5020_CONCRETE_RAIL_BRIDGE					:Ponte ferroviária de betão
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Ponte de estrada suspensa em aço
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Ponte de estrada com vigas em aço
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Ponte de estrada cantilever em aço
+STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Ponte de estrada suspensa de betão reforçado
+STR_5025_WOODEN_ROAD_BRIDGE					:Ponte de estrada de madeira
+STR_5026_CONCRETE_ROAD_BRIDGE					:Ponte de estrada de betão
+STR_5027_TUBULAR_RAIL_BRIDGE					:Ponte de estrada tubular
+STR_5028_TUBULAR_ROAD_BRIDGE					:Ponte de estrada tubular
+STR_5029_STEEL							:Aço
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Objecto no caminho
+STR_5801_TRANSMITTER						:Transmissor
+STR_5802_LIGHTHOUSE						:Farol
+STR_5803_COMPANY_HEADQUARTERS					:Sede de Empresa
+STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...sede de empresa no caminho
+STR_5805_COMPANY_OWNED_LAND					:Terreno propriedade de uma empresa
+STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Não é possível comprar esta área de terreno...
+STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...já a possui!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY							:
+STR_SV_UNNAMED							:Sem nome{SKIP}
+STR_SV_TRAIN_NAME						:Comboio {COMMA16}
+STR_SV_ROADVEH_NAME						:Veículo de Estrada {COMMA16}
+STR_SV_SHIP_NAME						:Barco {COMMA16}
+STR_SV_AIRCRAFT_NAME						:Aeronave {COMMA16}
 
+STR_SV_STNAME							:{STRING}
+STR_SV_STNAME_NORTH						:{STRING} Norte
+STR_SV_STNAME_SOUTH						:{STRING} Sul
+STR_SV_STNAME_EAST						:{STRING} Este
+STR_SV_STNAME_WEST						:{STRING} Oeste
+STR_SV_STNAME_CENTRAL						:{STRING} Central
+STR_SV_STNAME_TRANSFER						:{STRING} Transporte
+STR_SV_STNAME_HALT						:{STRING} Paragem
+STR_SV_STNAME_VALLEY						:Vale de {STRING}
+STR_SV_STNAME_HEIGHTS						:Montes de {STRING}
+STR_SV_STNAME_WOODS						:Floresta de {STRING}
+STR_SV_STNAME_LAKESIDE						:Lago de {STRING}
+STR_SV_STNAME_EXCHANGE						:{STRING} Intercâmbio
+STR_SV_STNAME_AIRPORT						:Aeroporto de {STRING}
+STR_SV_STNAME_OILFIELD						:Petrolífera de {STRING}
+STR_SV_STNAME_MINES						:Minas de {STRING}
+STR_SV_STNAME_DOCKS						:Docas de {STRING}
+STR_SV_STNAME_BUOY_1						:{STRING} Bóia 1
+STR_SV_STNAME_BUOY_2						:{STRING} Bóia 2
+STR_SV_STNAME_BUOY_3						:{STRING} Bóia 3
+STR_SV_STNAME_BUOY_4						:{STRING} Bóia 4
+STR_SV_STNAME_BUOY_5						:{STRING} Bóia 5
+STR_SV_STNAME_BUOY_6						:{STRING} Bóia 6
+STR_SV_STNAME_BUOY_7						:{STRING} Bóia 7
+STR_SV_STNAME_BUOY_8						:{STRING} Bóia 8
+STR_SV_STNAME_BUOY_9						:{STRING} Bóia 9
+STR_SV_STNAME_ANNEXE						:{STRING} Anexo
+STR_SV_STNAME_SIDINGS						:Desvio de {STRING}
+STR_SV_STNAME_BRANCH						:Ramal de {STRING}
+STR_SV_STNAME_UPPER						:{STRING} de cima
+STR_SV_STNAME_LOWER						:{STRING} de baixo
+STR_SV_STNAME_HELIPORT						:Heliporto de {STRING}
+STR_SV_STNAME_FOREST						:Floresta de {STRING}
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL					:Nível de Dificuldade{WHITE}
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Guardar
 
 ############ range for difficulty levels starts
+STR_6801_EASY							:{BLACK}Fácil
+STR_6802_MEDIUM							:{BLACK}Médio
+STR_6803_HARD							:{BLACK}Difícil
+STR_6804_CUSTOM							:{BLACK}Personalizado
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS					:{LTBLUE}Número máximo de oponentes: {ORANGE}{COMMA16}
+STR_6806_COMPETITOR_START_TIME					:{LTBLUE}Data de início dos oponentes: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS						:{LTBLUE}Número de cidades: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Número de indústrias: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Empréstimo máximo inicial: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Taxa de interesse inicial: {ORANGE}{COMMA16}%
+STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Custos de circulação dos veículos: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Velocidade de construção dos oponentes: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Inteligência dos oponentes: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Avarias nos veículos: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Multiplicador de subsídio: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION					:{LTBLUE}Custos de construção: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE						:{LTBLUE}Tipo de terreno: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Quantidade de mar/lagos: {ORANGE}{STRING}
+STR_6813_ECONOMY						:{LTBLUE}Economia: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING					:{LTBLUE}Inverter comboio: {ORANGE}{STRING}
+STR_6815_DISASTERS						:{LTBLUE}Desastres: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Atitude das autoridades em relação a reestruturamentos: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Nenhum
+STR_6816_LOW							:Baixo
+STR_6817_NORMAL							:Normal
+STR_6818_HIGH							:Alto
+STR_6819							:{BLACK}<
+STR_681A							:{BLACK}>
+STR_681B_VERY_SLOW						:Muito Lento
+STR_681C_SLOW							:Lento
+STR_681D_MEDIUM							:Médio
+STR_681E_FAST							:Rápido
+STR_681F_VERY_FAST						:Muito Rápido
+STR_VERY_LOW							:Muito Baixo
+STR_6820_LOW							:Baixo
+STR_6821_MEDIUM							:Médio
+STR_6822_HIGH							:Alto
+STR_6823_NONE							:Nenhum
+STR_6824_REDUCED						:Reduzido
+STR_6825_NORMAL							:Normal
+STR_6826_X1_5							:x1.5
+STR_6827_X2							:x2
+STR_6828_X3							:x3
+STR_6829_X4							:x4
+STR_682A_VERY_FLAT						:Muito Plano
+STR_682B_FLAT							:Plano
+STR_682C_HILLY							:Acidentado
+STR_682D_MOUNTAINOUS						:Montanhoso
+STR_682E_STEADY							:Estável
+STR_682F_FLUCTUATING						:Flutuante
+STR_6830_IMMEDIATE						:Imediato
+STR_6831_3_MONTHS_AFTER_PLAYER					:3 meses depois do jogador
+STR_6832_6_MONTHS_AFTER_PLAYER					:6 meses depois do jogador
+STR_6833_9_MONTHS_AFTER_PLAYER					:9 meses depois do jogador
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS				:No fim da linha e em estações
+STR_6835_AT_END_OF_LINE_ONLY					:Só no fim da linha
+STR_6836_OFF							:Off
+STR_6837_ON							:On
+STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Mostrar melhores pontuações
+STR_6839_PERMISSIVE						:Permissivo
+STR_683A_TOLERANT						:Tolerante
+STR_683B_HOSTILE						:Hostil
 
 ##id 0x7000
+STR_7000							:
+STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7002_PLAYER							:(Jogador {COMMA16})
+STR_7004_NEW_FACE						:{BLACK}Nova Cara
+STR_7005_COLOR_SCHEME						:{BLACK}Cores
+STR_7006_COLOR_SCHEME						:{GOLD}Cores:
+STR_7007_NEW_COLOR_SCHEME					:{WHITE}Novo Esquema de Cores
+STR_7008_COMPANY_NAME						:{BLACK}Empresa
+STR_7009_PRESIDENT_NAME						:{BLACK}Presidente
+STR_700A_COMPANY_NAME						:Nome da Empresa
+STR_700B_PRESIDENT_S_NAME					:Nome do Presidente
+STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Não é possível alterar o nome da empresa...
 
 ##id 0x8000
 

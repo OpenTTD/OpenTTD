@@ -418,9 +418,9 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nie mozna zmienic okresu miedzy serw
 STR_018B_CLOSE_WINDOW						:{BLACK}Zamkniecie okna
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Niszczenie budynkow itp w danym kwadracie terenu
-STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Nizszy naroznik terenu
-STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Wyzszy naroznik terenu
-STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Pazsek przesuwu - przesuwa liste gora/dol
+STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Obnizenie naroznika terenu
+STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Wywyzszenie naroznika terenu
+STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Pasek przesuwu - przesuwa liste gora/dol
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Pokaz zarysy ladu na mapie
 STR_0192_SHOW_VEHICLES_ON_MAP					:{BLACK}Pokaz pojazdy na mapie
 STR_0193_SHOW_INDUSTRIES_ON_MAP					:{BLACK}Pokaz przedsiebiorstwa na mapie
@@ -1528,7 +1528,7 @@ STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Nazwa stacji - kliknij na nazwie aby
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Wybierz wielkosc/typ lotniska
 STR_3059_SMALL							:{BLACK}Male
 STR_305A_LARGE							:{BLACK}Duze
-STR_305AA_LARGE							:{BLACK}lotnisko metropoli
+STR_305AA_LARGE							:{BLACK}Lotnisko metropoli
 STR_305AB_LARGE							:{BLACK}Lotnisko miedzynarodowe
 STR_305B_SIZE							:{BLACK}Rozmiar
 STR_305C_0							:{STATION} {STRINL 0x30D1}
@@ -2321,7 +2321,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE				:{BLACK}Wstaw nowe polecenie przed zaznacz
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Spraw aby zaznaczone polecenie zmusilo pojazd do czekania na pelny zaladunek
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Spraw aby zaznaczone polecenie zmusilo pojazd do wyladunku
 STR_SERVICE_HINT						:{BLACK}Pomin to polecenie jesli jest wymagany serwis
-STR_8859_NEW_NOW_AVAILABLE					:{BLACK}{BIGFONT}Nowy {STRING} juz dostepny!
+STR_8859_NEW_NOW_AVAILABLE					:{BLACK}{BIGFONT}Nowa {STRING} juz dostepna!
 STR_885A							:{BLACK}{BIGFONT}{STRING}
 STR_885B_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Koszt: {CURRENCY} Waga: {COMMA16}t{}Predkosc: {VELOCITY}  Moc: {COMMA16}KM{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING}
 STR_885C_BROKEN_DOWN						:{RED}Awaria
