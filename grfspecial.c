@@ -69,6 +69,8 @@ enum grfspec_feature {
 	GSF_SHIP,
 	GSF_AIRCRAFT,
 	GSF_STATION,
+	GSF_BRIDGE,
+	GSF_TOWNHOUSE,
 };
 
 
@@ -697,6 +699,11 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	/* This is one single huge TODO. It doesn't handle anything more than
 	 * just waypoints for now. */
 
+	/* TODO: Differentiate between railtypes. This is missing in the new
+	 * GRF file specification yet, though, so I need to agree on this with
+	 * patchman yet. We just assume all the station stuff is for railtype 0
+	 * (railroad) for now. --pasky */
+
 	//printf("sci %d %d [0x%02x]\n", stid, numinfo, prop);
 	switch (prop) {
 		case 0x08:
@@ -877,14 +884,16 @@ static void VehicleChangeInfo(byte *buf, int len)
 	 *                 vehicles/stations will be changed
 	 * B property      what property to change, depends on the feature
 	 * V new-info      new bytes of info (variable size; depends on properties) */
-	/* TODO: Stations. */
+	/* TODO: Bridges, town houses. */
 
-	static const VCI_Handler handler[5] = {
+	static const VCI_Handler handler[7] = {
 		/* GSF_TRAIN */    RailVehicleChangeInfo,
 		/* GSF_ROAD */     RoadVehicleChangeInfo,
 		/* GSF_SHIP */     ShipVehicleChangeInfo,
 		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
 		/* GSF_STATION */  StationChangeInfo,
+		/* GSF_BRIDGE */   NULL,
+		/* GSF_TOWNHOUSE */NULL,
 	};
 
 	uint8 feature;
@@ -901,6 +910,11 @@ static void VehicleChangeInfo(byte *buf, int len)
 
 	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
+
+	if (feature > GSF_STATION) {
+		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported feature %d, skipping.", feature);
+		return;
+	}
 
 	if (feature != GSF_STATION)
 		ei = &_engine_info[engine + _vehshifts[feature]];
@@ -1137,7 +1151,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	 * B cargo-type    type of this cargo type (e.g. mail=2, wood=7, see below)
 	 * W cid           cargo ID (sprite group ID) for this type of cargo
 	 * W def-cid       default cargo ID (sprite group ID) */
-	/* TODO: Only trains supported now. */
+	/* TODO: Bridges, town houses. */
 	/* TODO: Multiple cargo support could be useful even for trains/cars -
 	 * cargo id 0xff is used for showing images in the build train list. */
 
@@ -1159,6 +1173,11 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 	DEBUG(grf, 6) ("VehicleMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d.",
 			feature, idcount, cidcount, wagover);
+
+	if (feature > GSF_STATION) {
+		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Unsupported feature %d, skipping.", feature);
+		return;
+	}
 
 
 	if (feature == GSF_STATION) {
