@@ -158,6 +158,8 @@ static const char *SdlOpen(uint32 x)
 	signal(SIGABRT, SdlAbort);
 	signal(SIGSEGV, SdlAbort);
 	signal(SIGFPE, SdlAbort);
+
+	signal(SIGPIPE, SIG_IGN);
 #endif
 
 	return NULL;
