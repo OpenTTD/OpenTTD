@@ -748,12 +748,13 @@ static const char * const _cached_filenames[4] = {
 	"cached_sprites.xx3",
 };
 
-#define OPENTTD_SPRITES_COUNT 70
+#define OPENTTD_SPRITES_COUNT 93
 static const uint16 _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE+0,	SPR_OPENTTD_BASE+7, // icons etc
-	134, 134,     // euro symbol medium size
-	582, 582,   // euro symbol large size
-	SPR_OPENTTD_BASE+10, SPR_OPENTTD_BASE+57, // more icons
+	134, 134,  // euro symbol medium size
+	582, 582,  // euro symbol large size
+	358, 358,  // euro symbol tiny
+	SPR_OPENTTD_BASE+11, SPR_OPENTTD_BASE+57, // more icons
 	648, 648, // nordic char: æ
 	616, 616, // nordic char: Æ
 	666, 666, // nordic char: Ø

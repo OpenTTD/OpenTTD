@@ -52,7 +52,7 @@ void DrawVehicleProfitButton(Vehicle *v, int x, int y)
 		ormod = 0x30a8000; // yellow
 	else
 		ormod = 0x30d8000; // green
-	DrawSprite((SPR_OPENTTD_BASE + 10) | ormod, x, y);
+	DrawSprite((SPR_BLOT) | ormod, x, y);
 }
 
 /************ Sorter functions *****************/

@@ -122,14 +122,23 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				SetDParam(1, cur_item->info.clients_max);
 				DrawString(135, y, STR_NETWORK_CLIENTS_ONLINE, 2);
 
-				// draw red or green icon, depending on compatibility with server. TODO: needs new icons
-				DrawSprite((SPR_OPENTTD_BASE + 10) | (compatible?0x30d8000:0x30b8000), 185, y);
-				// draw red or green flag, to show if the server is password protected. TODO: needs new icons
-				DrawSprite((cur_item->info.use_password)? 0xC12 : 0xC13, 195, y);
+				// only draw icons if the server is online
+				if(cur_item->online) {
 
-				cur_item = cur_item->next;
-				y += NET_PRC__SIZE_OF_ROW;
-				if (++n == w->vscroll.cap) { break;} // max number of games in the window
+					// draw a lock if the server is password protected.
+					if(cur_item->info.use_password)
+						DrawSprite(SPR_LOCK, 186, y-1);
+	
+					// draw red or green icon, depending on compatibility with server.
+					DrawSprite(SPR_BLOT | (compatible?0x30d8000:0x30b8000), 195, y);
+	
+					// draw flag according to server language
+					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, 206, y);
+	
+					cur_item = cur_item->next;
+					y += NET_PRC__SIZE_OF_ROW;
+					if (++n == w->vscroll.cap) { break;} // max number of games in the window
+				}
 			}
 		}
 

@@ -1035,7 +1035,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 				if(h) GfxFillRect(1, y + 1, 267, y + 12, 156);
 				// XXX - will be grf name later
 				DoDrawString(c->filename, 25, y + 2, h ? 0xC : 0x10);
-				DrawSprite(SPRITE_PALETTE(0x2EB | 0x30b8000), 5, y + 3);
+				DrawSprite(SPRITE_PALETTE(SPR_SQUARE | 0x30b8000), 5, y + 2);
 				y += NEWGRF_WND_PROC_ROWSIZE;
 			}
 

@@ -135,7 +135,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 						*/
 					SetDParam((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
 					if (t->exclusivity == p->index) // red icon for player with exclusive rights
-						DrawSprite((SPR_OPENTTD_BASE + 10) | 0x30b8000, 18, y);
+						DrawSprite((SPR_BLOT) | 0x30b8000, 18, y);
 
 					DrawString(28, y, STR_2024, 0);
 					y+=10;

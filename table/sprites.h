@@ -46,7 +46,16 @@ enum Sprites {
 	SPR_SLOPES_BASE		= SPR_CANALS_BASE + 70,
 	SPR_OPENTTD_BASE	= SPR_SLOPES_BASE + 74,		//5270
 
-	SPR_BLOT = SPR_OPENTTD_BASE + 10, // used as vehicle profit marker
+	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
+
+	SPR_PIN_UP = SPR_OPENTTD_BASE + 62,   // pin icon 
+	SPR_PIN_DOWN = SPR_OPENTTD_BASE + 63,
+	
+	
+	/* Network GUI sprites */
+	SPR_SQUARE = SPR_OPENTTD_BASE + 23,     // colored square (used for newgrf compatibility)
+	SPR_LOCK = SPR_OPENTTD_BASE + 22,       // lock icon (for password protected servers)
+	SPR_FLAGS_BASE = SPR_OPENTTD_BASE + 90, // start of the flags block (in same order as enum NetworkLanguage)
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
