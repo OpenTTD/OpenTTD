@@ -686,7 +686,6 @@ DEF_CONSOLE_CMD(ConSet) {
 		} else {
 			IConsolePrint(_iconsole_color_default, "'set company_pw' sets a password for your company, so no-one without the correct password can join.");
 			IConsolePrint(_iconsole_color_warning, "Usage: set company_pw \"<password>\".   Use * as <password> to set no password.");
-			IConsolePrintF(_iconsole_color_warning, "Current password is: '%s'", _network_player_info[_local_player].password);
 		}
 		return NULL;
 	}
