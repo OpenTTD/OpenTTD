@@ -810,6 +810,7 @@ void ShowBuildRailToolbar(int index, int button)
 		w = AllocateWindowDesc(_build_rr_desc[index]);
 	}
 
+	_remove_button_clicked = false;
 	if (w != NULL && button >= 0) _build_railroad_button_proc[button](w);
 }
 

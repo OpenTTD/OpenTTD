@@ -111,6 +111,7 @@ Several important non-standard controls:
 
 * Use Ctrl to place presignals
 * Ctrl-d toggles double mode on win32
+* Ingame console. More information at http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
 
 
 6.0) Configuration File:

@@ -951,14 +951,13 @@ static ClientState *AllocClient(SOCKET s)
 void NetworkSendReadyPacket()
 {
 	if ((!_network_ready_sent) && (_frame_counter + _network_ready_ahead >= _frame_counter_max)) {
-		ReadyPacket *rp	= malloc(sizeof(rp));
-		ClientState *c	= _clients;
+		ReadyPacket rp;
 
 		DEBUG(net,1) ("NET: %i] ready packet sent", _frame_counter);
 
-		rp->packet_type = PACKET_TYPE_READY;
-		rp->packet_length = sizeof(rp);
-		SendBytes(c, rp, sizeof(rp));
+		rp.packet_type = PACKET_TYPE_READY;
+		rp.packet_length = sizeof(rp);
+		SendBytes(_clients, &rp, sizeof(rp));
 		_network_ready_sent = true;
 	}
 }
@@ -1911,20 +1910,18 @@ NetworkGameList * NetworkGameListItem(uint16 index)
 void NetworkGameFillDefaults()
 {
 	NetworkGameInfo * game = &_network_game;
-#if defined(WITH_REV)
-	extern char _openttd_revision[];
-#endif
+	#if defined(WITH_REV)
+		extern char _openttd_revision[];
+	#else
+		const char _openttd_revision[] = "norev000";
+	#endif
 
 	DEBUG(net, 4) ("[NET][G-Info] setting defaults");
 
-	ttd_strlcpy(game->server_name,"OpenTTD Game",13);
+	ttd_strlcpy(game->server_name, "OpenTTD Game", sizeof(game->server_name));
 	game->game_password[0]='\0';
 	game->map_name[0]='\0';
-#if defined(WITH_REV)
-	ttd_strlcpy(game->server_revision,_openttd_revision,strlen(_openttd_revision));
-#else
-	ttd_strlcpy(game->server_revision,"norev000",strlen("norev000"));
-#endif
+	ttd_strlcpy(game->server_revision, _openttd_revision, sizeof(game->server_revision));
 	game->game_date=0;
 
 	game->map_height=0;

@@ -1,6 +1,6 @@
 OPENTTD INGAME CONSOLE DOCUMENTATION
 ====================================
-http://openttd.rulez.org/wiki2/index.php/OpenTTDDevBlackBook
+http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
 for detailed information
 
 HOTKEY: BACKQUOTE (aka tilde, the key left to "1")
