@@ -388,13 +388,20 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 #if defined(WIN32)
 	if (sym->scancode == 41) key |= WKC_BACKQUOTE;
 #else
-	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
+	#if defined(__APPLE__)
+		if (sym->scancode == 10) key |= WKC_BACKQUOTE;
+	#else
+		if (sym->scancode == 49) key |= WKC_BACKQUOTE;
+	#endif
 #endif
 	// META are the command keys on mac
 	if (sym->mod & KMOD_META) key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
 	if (sym->mod & KMOD_CTRL) key |= WKC_CTRL;
 	if (sym->mod & KMOD_ALT) key |= WKC_ALT;
+	// these two lines really helps porting hotkey combos. Uncomment to use -- Bjarni
+	//printf("scancode character pressed %d\n", sym->scancode);
+	//printf("unicode character pressed %d\n", sym->unicode);
 	return (key << 16) + sym->unicode;
 }
 
