@@ -1817,7 +1817,7 @@ static bool CheckReverseTrain(Vehicle *v)
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
 		} else {
-			if (ftd.node.user_data[NPF_NODE_FLAGS] & NPF_FLAG_REVERSE)
+			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE))
 				reverse_best = true;
 			else
 				reverse_best = false;
