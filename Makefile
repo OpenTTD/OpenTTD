@@ -885,11 +885,13 @@ endif
 	mkdir -p $(DATA_DIR_INSTALL)/data
 	mkdir -p $(DATA_DIR_INSTALL)/gm
 	mkdir -p $(BINARY_DIR_INSTALL)
+	mkdir -p $(PERSONAL_DIR)/scenario
 	cp $(TTD) $(BINARY_DIR_INSTALL)
 	cp lang/*.lng $(DATA_DIR_INSTALL)/lang
 	cp data/*.grf $(DATA_DIR_INSTALL)/data
 	cp data/opntitle.dat $(DATA_DIR_INSTALL)/data
 	cp media/openttd.64.png $(DATA_DIR_INSTALL)
+	cp scenario/* $(PERSONAL_DIR)/scenario/
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)
