@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Zmeny prijmu zbozi
 STR_020E_SUBSIDIES						:{YELLOW}Dotace
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Obecné informace
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...prilis daleko od predchazejiciho cile
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Nejlepsi spolecnosti, které dosáhly roku 2050{}({STRING} uroven)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Nejlepsi spolecnosti, které dosáhly {NUMU16}{}({STRING} uroven)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Tabulka spolecnosti v roce {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Obchodník
 STR_0214_ENTREPRENEUR						:Manazer
@@ -573,9 +574,10 @@ STR_0216_CAPITALIST						:Kapitalista
 STR_0217_MAGNATE						:Magnát
 STR_0218_MOGUL							:Velemagnát
 STR_0219_TYCOON_OF_THE_CENTURY					:Magnát století
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosahuje hodnosti '{STRING}' !
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} z {STRING} dosahuje hodnosti '{STRING}' !
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} získal oznaceni '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} z {STRING} získal oznaceni '{STRING}' status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -739,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Nastavení newgrf
 STR_NEWGRF_SETTINGS2						:Nastavení newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Zavrit VSECHNA okna
-STR_CLOSE_ALL_WINDOWS2						:Zavrit VSECHNA okna
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení jmen mest
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Zobrazení jmen mest
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazení jmen stanic
@@ -859,10 +859,12 @@ STR_TOWNNAME_DUTCH						:Holandská
 STR_TOWNNAME_FINNISH						:Finská
 STR_TOWNNAME_POLISH						:Polská
 STR_TOWNNAME_SLOVAKISH						:Slovenská
+STR_TOWNNAME_NORWEGIAN						:Norská
 STR_TOWNNAME_HUNGARIAN						:Madarska
 STR_TOWNNAME_AUSTRIAN						:Rakouská
 STR_TOWNNAME_ROMANIAN						:Rumunská
 STR_TOWNNAME_CZECH						:Ceska
+STR_TOWNNAME_SWISS						:Svycarska
 ############ end of	townname region
 
 STR_CURR_GBP							:Libry ({POUNDSIGN})
@@ -1042,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Základní servisní interval pro l
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Základní servisní interval pro letadla: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Základní servisní interval pro lode: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Základní servisní interval pro lode: {ORANGE}vypnuto
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Vypnout servisy kdyz jsou vypnuty poruchy: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Pocatecni datum: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Ukoncit hru v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Plynulé zmeny ekonomiky (více mensich zmen)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Povolit kupování podilu z ostatních spolecnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Pri tazeni umistovat signály kazdych(e): {ORANGE}{STRING} dilku(y)
@@ -1187,6 +1191,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Zvolit typ nákladu na ktery vlak pr
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Prestavet vlak na oznaceny typ nákladu
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nelze prestavet vlak...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Intervaly servisu v procentech: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Zmenit produkci
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Predstavujeme ti novou umelou inteligenci (pracovní). Není jeste OK, takze s ním jsou jeste problémy. Kdykoli muzes, udelej screenshot a prispej s ním do fóra. At se ti líbí!
 TEMP_AI_ACTIVATED						:{WHITE}Pozor: tato nová umela inteligence je jeste v alpha verzi (= nebyla moc testována)! Zatím umí pracovat jen se silnicnimi vozidly!
@@ -2088,6 +2093,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Nemohu prodat 25% podíl v této spole
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% vlastneno {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% vlastneno {STRING}{}   {COMMA16}% vlastneno {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} byla prevzata {STRING}!
+STR_7080_PROTECTED						:{WHITE}Tato spolecnost zatím neobchoduje s akciemi...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (parní)
@@ -2448,7 +2454,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED				:{BLACK}Ukázat detaily prepravovaneho 
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES				:{BLACK}Ukázat detaily jednotlivých vagonu
 STR_8851_SHOW_CAPACITIES_OF_EACH				:{BLACK}Ukázat kapacity jednotlivých vagonu
 STR_8852_SHOW_TOTAL_CARGO					:{BLACK}Ukázat celkovou kapacitu vlaku, rozdelenou dle nákladu
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Seznam prikazu - stiskni prikaz pro oznaceni
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Seznam prikazu - stiskni prikaz pro oznaceni. Kliknutím na prikaz se stisknutým CTRL se nastaví pohled na stanici
 STR_8853_SKIP_THE_CURRENT_ORDER					:{BLACK}Preskocit prikaz a jit na dalsi
 STR_8854_DELETE_THE_HIGHLIGHTED					:{BLACK}Smazat oznaceny prikaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Provest oznaceny prikaz bez zastaveni
@@ -2764,9 +2770,9 @@ STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zobrazit vsechny lode, které mají tuto stan
 
 STR_REPLACE_VEHICLES						:{BLACK}Vymenovani vozidel
 STR_REPLACE_VEHICLES_WHITE					:{WHITE}Vymenovani vozidel
-STR_REPLACE_VEHICLES_START					:{BLACK}Spustit zamenovani vozidel
-STR_REPLACE_VEHICLES_STOP					:{BLACK}Vypnout zamenovani vozidel
-STR_NOT_REPLACING						:{BLACK}Nezamenuje se
+STR_REPLACE_VEHICLES_START					:{BLACK}Zapnout zamenovani
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Vypnout zamenovani
+STR_NOT_REPLACING						:{BLACK}(nezamenuje se)
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Není oznaceno zadne vozidlo
 STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Vyber typ lokomotivy na vymenu
 STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Vyber typ nové lokomotivy, kterou chces pouzit místo vybrané v levém seznamu
@@ -2778,9 +2784,10 @@ STR_REPLACE_HELP						:{BLACK}Tato moznost hry ti umoznuje vybrat typ lokomotivy
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES						:Lokomotivy pro zeleznici
+STR_RAIL_VEHICLES						:Zeleznicni lokomotivy
 STR_MONORAIL_VEHICLES						:Lokomotivy pro monorail
 STR_MAGLEV_VEHICLES						:Lokomotivy pro maglev
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

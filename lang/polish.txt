@@ -185,9 +185,9 @@ STR_00B3_MESSAGE_FROM						:{YELLOW}Wiadomosc od {STRING}
 STR_00B4_CAN_T_DO_THIS						:{WHITE}Niemozna tego zrobic....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nie mozna wyczyscic terenu....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_00B7_VERSION						:{BLACK}Wersja OpenTTD {REV}: Language Pack by Tom and PolPot and Spooqy
-STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
-STR_TRANSLATED_BY						:{BLACK}  Tlumacz(e) -
+STR_00B7_VERSION						:{BLACK}Wersja OpenTTD {REV}
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 Zespol OpenTTD
+STR_TRANSLATED_BY						:{BLACK}  Tlumacz(e) - : Tom and PolPot and Spooqy
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -564,7 +564,7 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Zamiany w akceptowaniu ladunku
 STR_020E_SUBSIDIES						:{YELLOW}Subsydia
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Ogolne informacje
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...zbyt daleko od poprzedniego celu
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Pierwsza firma ktora osiagnie 2050{}({STRING} Poziom)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Czolowka firm ktora osiagnela poziom {NUMU16}{}({STRING})
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Biznesmen
 STR_0214_ENTREPRENEUR						:Przedsiebiorca
@@ -573,7 +573,8 @@ STR_0216_CAPITALIST						:Kapitalista
 STR_0217_MAGNATE						:Magnat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon Stulecia
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} osiaga status: '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} {STRING} osiaga status: '{STRING}'!
 STR_021D							:{BLACK}
@@ -739,8 +740,6 @@ STR_NEWGRF_SETTINGS						:Ustawienia newgrf
 STR_NEWGRF_SETTINGS2						:Ustawienia newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Zamknij WSZYSTKIE okienka
-STR_CLOSE_ALL_WINDOWS2						:Zamknij wszystkie okienka
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Wyswietlanie nazw miast
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Wyswietlanie nazw miast
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Wyswietlanie nazw stacji
@@ -859,10 +858,12 @@ STR_TOWNNAME_DUTCH						:Holenderskie
 STR_TOWNNAME_FINNISH						:Finskie
 STR_TOWNNAME_POLISH						:Polskie
 STR_TOWNNAME_SLOVAKISH						:Slowackie
+STR_TOWNNAME_NORWEGIAN						:Norweskie
 STR_TOWNNAME_HUNGARIAN						:Wegierskie
 STR_TOWNNAME_AUSTRIAN						:Austriackie
 STR_TOWNNAME_ROMANIAN						:Rumunskie
 STR_TOWNNAME_CZECH						:Czeskie
+STR_TOWNNAME_SWISS						:Szwajcarskie
 ############ end of	townname region
 
 STR_CURR_GBP							:Funty ({POUNDSIGN})
@@ -1045,7 +1046,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Domyslny okres miedzy serwi
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data rozpoczecia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Data zako&#324;czenia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Pozwol na lagodna ekonomie (male zmiany)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Pozwol kupowac udzialy w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING} kratke(i)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Pozycja glownego paska narzedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:z lewej
@@ -1186,6 +1189,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wybierz typ ladunku jaki ma przewoz
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Przebudowa pociagu do przewozu podswietlonych towarow
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nie mozna przebudowac pociagu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Okres miedzy serwisowania w procentach: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Zmiana produkcji
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Witamy w nowym AI. Mozesz oczekiwac problemow. Gdy to sie stanie, wykonaj zrzut ekranu i wyslij go na forum. Powodzenia!
 TEMP_AI_ACTIVATED						:{WHITE}Ostrzenie: nowe AI jest ciagle w wersji alpha! Obecnie dziala tylko dla samochodow!
@@ -2385,7 +2389,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} z {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Pociag {COMMA16} czeka w zajezdni
 STR_8815_NEW_VEHICLES						:{BLACK}Nowe pojazdy
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{COMMA16}t{}{BLACK}Predkosc: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{COMMA32}hp{}{BLACK}Utrzymanie: {GOLD}{CURRENCY}/rok{}{BLACK}Pojemnosc: {GOLD}{STRING}{}{BLACK}Zaprojektowany: {GOLD}{NUMU16}{BLACK} Trwalosc: {GOLD}{COMMA16} lat{}{BLACK}Max. Niezawodnosc: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{COMMA16}t{}{BLACK}Predkosc: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{COMMA32}KM{}{BLACK}Koszt utrzymania: {GOLD}{CURRENCY}/rok{}{BLACK}Pojemnosc: {GOLD}{STRING}{}{BLACK}Zaprojektowano: {GOLD}{NUMU16}{BLACK} Wiek: {GOLD}{COMMA16} lat{}{BLACK}Maks. niezawodnosc: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Informacje
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Pociag zbyt dlugi
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Pociag moze byc modyfikowany tylko jak jest zatrzymany w zajezdni
@@ -2783,3 +2787,4 @@ STR_MAGLEV_VEHICLES						:Pojazdy Maglew
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

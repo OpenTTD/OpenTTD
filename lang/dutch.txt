@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Verandering geaccepteerde goede
 STR_020E_SUBSIDIES						:{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Algemene informatie
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...te ver van vorige bestemming
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Beste bedrijven die 2050 bereikten{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top bedrijven die {NUMU16} bereikt hebben{}({STRING} Niveau)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Bedrijfswedstrijdtabel in {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Zakenman
 STR_0214_ENTREPRENEUR						:Entrepreneur
@@ -573,9 +574,10 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnaat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon van de Eeuw
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} heeft de '{STRING}' status bereikt!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} van {STRING} heeft de '{STRING}' status bereikt!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} bereikt '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} van {STRING} bereikt '{STRING}' status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -739,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Newgrf instellingen
 STR_NEWGRF_SETTINGS2						:Newgrf instellingen
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Sluit ALLE vensters
-STR_CLOSE_ALL_WINDOWS2						:Sluit ALLE vensters
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Geef stadsnamen weer
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Geef stadsnamen weer
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Geef stationsnamen weer
@@ -859,10 +859,12 @@ STR_TOWNNAME_DUTCH						:Nederlands
 STR_TOWNNAME_FINNISH						:Fins
 STR_TOWNNAME_POLISH						:Pools
 STR_TOWNNAME_SLOVAKISH						:Slowaaks
+STR_TOWNNAME_NORWEGIAN						:Noors
 STR_TOWNNAME_HUNGARIAN						:Hongaars
 STR_TOWNNAME_AUSTRIAN						:Oostenrijks
 STR_TOWNNAME_ROMANIAN						:Roemeens
 STR_TOWNNAME_CZECH						:Tsjechisch
+STR_TOWNNAME_SWISS						:Zwitsers
 ############ end of	townname region
 
 STR_CURR_GBP							:Pond ({POUNDSIGN})
@@ -1045,7 +1047,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standaard reparatie interva
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Beginjaar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Stop spel in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Sta het kopen van aandelen toe
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Positie van hoofd knoppenbalk: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Links
@@ -1186,6 +1190,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Kies type lading om te transportere
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Bouw trein om voor geselecteerde ladingtype
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan trein niet ombouwen...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Reparatie intervallen zijn in percentages: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Verander productie
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welkom bij deze nieuwe AI, in aanbouw. Je kan problemen verwachten. Gebeurt dat, maak een screenshot en plaats die op het forum. Veel plezier!
 TEMP_AI_ACTIVATED						:{WHITE}Waarschuwing: deze nieuwe AI is nog steeds alpha! Momenteel werken alleen vrachtwagens en bussen!
@@ -2087,6 +2092,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kan geen 25% aandeel in dit bedrijf 
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% eigendom van {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% eigendom van {STRING}{}   {COMMA16}% eigendom van {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} is overgenomen door {STRING}!
+STR_7080_PROTECTED						:{WHITE}Dit bedrijf verhandelt nog geen aandelen...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Stoom)
@@ -2783,3 +2789,4 @@ STR_MAGLEV_VEHICLES						:Maglev Voertuigen
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

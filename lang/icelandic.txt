@@ -25,7 +25,7 @@ STR_0013_LIVESTOCK						:Nautgripir
 STR_0014_GOODS							:Vörur
 STR_0015_GRAIN							:Korn
 STR_0016_WOOD							:Timbur
-STR_0017_IRON_ORE						:Járn
+STR_0017_IRON_ORE						:Járngrýti
 STR_0018_STEEL							:Stál
 STR_0019_VALUABLES						:Verðmæti
 STR_001A_COPPER_ORE						:Kopar
@@ -57,7 +57,7 @@ STR_0033_LIVESTOCK						:Nautgripur
 STR_0034_GOODS							:Vörur
 STR_0035_GRAIN							:Korn
 STR_0036_WOOD							:Timbur
-STR_0037_IRON_ORE						:Járn
+STR_0037_IRON_ORE						:Járngrýti
 STR_0038_STEEL							:Stál
 STR_0039_VALUABLES						:Verðmæti
 STR_003A_COPPER_ORE						:Kopar
@@ -89,7 +89,7 @@ STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} nautgripur
 STR_0054_CRATE_OF_GOODS						:{COMMA16} kassi af vörum
 STR_0055_TON_OF_GRAIN						:{COMMA16} tonn af korni
 STR_0056_TON_OF_WOOD						:{COMMA16} tonn af timbri
-STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonn af járni
+STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonn af járngrýti
 STR_0058_TON_OF_STEEL						:{COMMA16} tonn af stáli
 STR_0059_BAG_OF_VALUABLES					:{COMMA16} poki af verðmætum
 STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonn af kopar
@@ -121,7 +121,7 @@ STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} nautgripir
 STR_0074_CRATES_OF_GOODS					:{COMMA16} kassar af vörum
 STR_0075_TONS_OF_GRAIN						:{COMMA16} tonn af korni
 STR_0076_TONS_OF_WOOD						:{COMMA16} tonn af timbri
-STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonn af járni
+STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonn af járngrýti
 STR_0078_TONS_OF_STEEL						:{COMMA16} tonn af stáli
 STR_0079_BAGS_OF_VALUABLES					:{COMMA16} pokar af verðmætum
 STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tonn af kopar
@@ -433,7 +433,7 @@ STR_019A_YEARS							:{COMMA16} ár ({COMMA16})
 STR_019B_YEARS							:{RED}{COMMA16} ár ({COMMA16})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE						:Götufarartæki
+STR_019C_ROAD_VEHICLE						:Bifreið
 STR_019D_AIRCRAFT						:Flugvél
 STR_019E_SHIP							:Skip
 STR_019F_TRAIN							:Lest
@@ -570,9 +570,8 @@ STR_0216_CAPITALIST						:Kapítalisti
 STR_0217_MAGNATE						:Áhrifamaður
 STR_0218_MOGUL							:Stórlax
 STR_0219_TYCOON_OF_THE_CENTURY					:Viðskiptajöfur aldarinnar
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} öðlast '{STRING}' titil!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} úr {STRING} öðlast '{STRING}' titil!
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} öðlast '{STRING}' titil!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} úr {STRING} öðlast '{STRING}' titil!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -651,7 +650,7 @@ STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY				:{BLACK}Byggja Olíuborpall (aðeins hægt a
 STR_0268_CONSTRUCT_FACTORY					:{BLACK}Byggja Verksmiðju
 STR_0269_CONSTRUCT_STEEL_MILL					:{BLACK}Byggja Stálbræðslu
 STR_026A_CONSTRUCT_FARM						:{BLACK}Byggja Býli
-STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Byggja Járnnámu
+STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Grafa Járnnámu
 STR_026C_CONSTRUCT_OIL_WELLS					:{BLACK}Byggja Olíulindir
 STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Byggja Banka (aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum)
 STR_026E_CONSTRUCT_PAPER_MILL					:{BLACK}Reisa pappírsverksmiðju
@@ -736,8 +735,6 @@ STR_NEWGRF_SETTINGS						:Newgrf stillingar
 STR_NEWGRF_SETTINGS2						:Newgrf stillingar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Loka ÖLLUM gluggum
-STR_CLOSE_ALL_WINDOWS2						:Loka ÖLLUM gluggum
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bæjarnöfn sýnd
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Bæjarnöfn sýnd
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stöðvarnöfn sýnd
@@ -781,7 +778,7 @@ STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Val á gjaldeyriseiningu
 STR_02E3_DISTANCE_UNITS						:{BLACK}Fjarlægðareining
 STR_02E4							:{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Val á fjarlægðareiningu
-STR_02E6_ROAD_VEHICLES						:{BLACK}Götufarartæki
+STR_02E6_ROAD_VEHICLES						:{BLACK}Bifreið
 STR_02E7							:{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Veldu vegarhelming fyrir bifreiðir
 STR_02E9_DRIVE_ON_LEFT						:Keyra vinstra megin
@@ -833,7 +830,7 @@ STR_031B_SCREENSHOT_SUCCESSFULLY				:{WHITE}Skjáskot vistað sem '{STRING}'
 STR_031C_SCREENSHOT_FAILED					:{WHITE}Skjáskot mistókst!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE				:{BLACK}Kaupa landssvæði til notkunar síðar
-STR_032A_1_ROAD_VEHICLE_SERVICE					:{BLACK}1: Götufarartækjaþjónusta
+STR_032A_1_ROAD_VEHICLE_SERVICE					:{BLACK}1: Bifreiðarþjónusta
 STR_032B_2_RAILROAD_SERVICE					:{BLACK}2: Lestarþjónusta
 STR_032C_3_AIR_SERVICE						:{BLACK}3: Loftþjónusta
 STR_032D_4_SHIP_SERVICE						:{BLACK}4: Skipaþjónusta
@@ -988,14 +985,14 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Má byggja iðnaði af sömu gerð nálæg
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Sýna alltaf fulla dagsetningu í upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Götufarartæki fara í biðraðir(með stórvægilegum aukaverkunum): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Bifreiðir fara í biðraðir (með stórvægilegum aukaverkunum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Færa sjónarhorn þegar músin nálgast brún gluggans: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Lestar finna ný skýli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Órétthyrndar lestarstöðvar leyfðar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nýr algrímur fyrir leiðarfund lesta: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Leyfa ætíð litla flugvelli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Alltaf leyfa litla flugvelli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Lest týnist ef hún er aðgerðalaus í: {ORANGE}{STRING} daga
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Lest týnist ef hún er aðgerðalaus í: {ORANGE}óvirkt
@@ -1107,7 +1104,7 @@ STR_NO_TOWN_IN_SCENARIO						:{WHITE}...það er enginn bær í þessu landi
 STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Ertu viss um að þú viljir búa til tilviljanakennt landslag?
 STR_MANY_RANDOM_TOWNS						:{BLACK}Búa til marga bæi
 STR_RANDOM_TOWNS_TIP						:{BLACK}Þekja landið með bæjum
-STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Marga handahófskennda iðnaði
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Búa til marga iðnaði
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Þekja kortið mörgum handahófskenndum iðnöðum
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Get ekki búið til iðnað...
 

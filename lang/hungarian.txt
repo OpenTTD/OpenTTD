@@ -187,7 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nem tisztíthatod meg a területet...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 Az OpenTTD csapat
-STR_TRANSLATED_BY						:{BLACK}  Fordítók(s) -
+STR_TRANSLATED_BY						:{BLACK}  Fordítók -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Áruk elfogadásának változásai
 STR_020E_SUBSIDIES						:{YELLOW}Támogatások
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Általános információk
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...túl távol van az elõzõ céltól
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}A legjobb cégek, akik elérték 2050-et{}({STRING} szinten)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUMU16}{}({STRING} Szintet)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Cégdicsõség tábla {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Üzletember
 STR_0214_ENTREPRENEUR						:Vállalkozó
@@ -573,9 +574,10 @@ STR_0216_CAPITALIST						:Tõkés
 STR_0217_MAGNATE						:Mágnás
 STR_0218_MOGUL							:Fejes
 STR_0219_TYCOON_OF_THE_CENTURY					:Az évszázad iparmágnása
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING}  '{STRING}' rangot ért el!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING}, a közismert {STRING} cég elnöke '{STRING}' rangot ért el!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} elérte a '{STRING}' rangot!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} - {STRING} elérte a '{STRING}' rangot!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -739,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Newgrf beállítások
 STR_NEWGRF_SETTINGS2						:Newgrf beállítások
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Összes ablak bezárása
-STR_CLOSE_ALL_WINDOWS2						:Összes ablak bezárása
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Városnevek mutatása
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Városnevek mutatása
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Állomásnevek mutatása
@@ -859,10 +859,12 @@ STR_TOWNNAME_DUTCH						:Holland
 STR_TOWNNAME_FINNISH						:Finn
 STR_TOWNNAME_POLISH						:Lengyel
 STR_TOWNNAME_SLOVAKISH						:Szlovák
+STR_TOWNNAME_NORWEGIAN						:Norvég
 STR_TOWNNAME_HUNGARIAN						:Magyar
 STR_TOWNNAME_AUSTRIAN						:Osztrák
 STR_TOWNNAME_ROMANIAN						:Romániai
 STR_TOWNNAME_CZECH						:Cseh
+STR_TOWNNAME_SWISS						:Svájci
 ############ end of	townname region
 
 STR_CURR_GBP							:Font ({POUNDSIGN})
@@ -1042,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Alapértelmezett szervízelés repü
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Alap szervízelési idõ a repülõkre: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Alap szervízelési idõ a hajókra: {ORANGE}kikapcsolva
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Játék befejezésének az éve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Egyenletes gazdaság (több, kisebb változás)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Másik cégekbõl részvényt lehet vásárolni
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezõre
@@ -1187,6 +1191,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Válaszd ki, milyen árut szállítson 
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}A vonat átalakítása a kijelölt áru szállítására
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nem alakíthatod át a vonatot...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Termelés megváltoztatása
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Üdv, ez itt az új, fejlesztés alatt álló MI. Elõfordulhatnak gondok, problémák. Ha belefutsz egybe, kérlek készíts képernyõmentést küld be a fórumra. Jó játékot!
 TEMP_AI_ACTIVATED						:{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok mûködnek!
@@ -1316,7 +1321,7 @@ STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Regisztrálás..
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Játékinfó lekérése..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Céginfó lekérése..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} kliens velünk szemben
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} kliensre várunk, hogy befejezze
 STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kilobájt lett eddig letöltve
 
 STR_NETWORK_DISCONNECT						:{BLACK}Lebontás
@@ -1897,7 +1902,7 @@ STR_6806_COMPETITOR_START_TIME					:{LTBLUE}Ellenfelek kezdésének ideje: {ORANGE
 STR_6807_NO_OF_TOWNS						:{LTBLUE}Városok száma: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Gazdasági épületek száma: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Kezdeti kölcsön: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Kezdõ kamatláb: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Éves kamatláb: {ORANGE}{COMMA16}%
 STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Jármû fenntartási költség: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Ellenfelek építkezési sebessége: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Ellenfelek intelligenciája: {ORANGE}{STRING}
@@ -2088,6 +2093,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Nem adhatsz el 25%-ot ebbõl a cégbõl
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% {STRING} tulajdona)
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% {STRING} tulajdona{}   {COMMA16}% {STRING} tulajdona)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} céget felvásárolta {STRING}!
+STR_7080_PROTECTED						:{WHITE}Ez a cég egyelõre még nem rendelkezik részvényekkel...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Gõz)
@@ -2386,7 +2392,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} {STATION} állomásról
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}{COMMA16}. vonat a jármûtelepen várakozik
 STR_8815_NEW_VEHICLES						:{BLACK}Új jármûvek
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Súly: {GOLD}{COMMA16}t{}{BLACK}Sebesség:{GOLD}{VELOCITY}{BLACK} Teljesítmény:{GOLD}{COMMA32}le{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA16}t{}{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK}   Teljesítmény: {GOLD}{COMMA32}lóerõ{}{BLACK}Üzemeltetési Költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK} Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
@@ -2784,3 +2790,4 @@ STR_MAGLEV_VEHICLES						:Maglev Vasutak
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

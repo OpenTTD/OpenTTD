@@ -573,7 +573,6 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnaat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Sajandi suurärimees
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} saavutused '{STRING}' seisus!
 STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} of {STRING} achieves '{STRING}' status!
 STR_021D							:{BLACK}
@@ -739,8 +738,6 @@ STR_NEWGRF_SETTINGS						:Newgrf seaded
 STR_NEWGRF_SETTINGS2						:Newgrf seaded
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Sulge kõik aknad
-STR_CLOSE_ALL_WINDOWS2						:Sulge kõik aknad
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Linnade nimede näitamine
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Linnade nimede näitamine
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Jaamade nimede näitamine
@@ -826,7 +823,6 @@ STR_0313_FUND_NEW_INDUSTRY					:Rahasta tööstuse ehitamist
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Uue tööstuse rahastamine
-STR_0315							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...saab ehitada ainult linnadesse
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...saab ehitada ainult vihmametsadesse
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...saab ehitada ainult kõrbesse
@@ -859,6 +855,7 @@ STR_TOWNNAME_DUTCH						:Holland
 STR_TOWNNAME_FINNISH						:Soome
 STR_TOWNNAME_POLISH						:Poola
 STR_TOWNNAME_SLOVAKISH						:Slovakkia
+STR_TOWNNAME_NORWEGIAN						:Norra
 STR_TOWNNAME_HUNGARIAN						:Ungari
 STR_TOWNNAME_AUSTRIAN						:Austria
 STR_TOWNNAME_ROMANIAN						:Rumeenia
@@ -1046,6 +1043,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Vaikimisi teenindusvahemik 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Luba sujuv majandus (väiksemad muutused)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Luba teiste ettevõtete aktsiate ostmine
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Venitades paigutatud signaaltulede tihedus: {ORANGE}{STRING} ühik(ut)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vasakul
@@ -1350,11 +1348,39 @@ STR_NETWORK_ERR_CLIENT_DESYNC					:sünkroniseerimise viga
 STR_NETWORK_ERR_CLIENT_SAVEGAME					:ei saa kaarti laadida
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:ühendus katkes
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokolli viga
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Keelatud
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:kahtlane pakett vastu võetud
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:vale versioon
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nimi on juba kasutusel
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:vale mängu parool
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:vale mängija-id DoCommand'is
+STR_NETWORK_ERR_CLIENT_KICKED					:server viskas välja
+STR_NETWORK_ERR_CLIENT_CHEATER					:üritas pettust kasutada
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:liitus mänguga
+STR_NETWORK_GIVE_MONEY						:andis sinu ettevõtele raha ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:sina andsid ettevõttele {STRING} raha ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] kohta {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Private] kohta {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:muutis oma nimeks
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server sulges sessiooni
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Server restardib...{}Palun oota...
+
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Klient
+
+STR_NETWORK_CLIENTLIST_NONE					:(pole)
+STR_NETWORK_CLIENTLIST_KICK					:Viska välja
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Anna raha
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Räägi kõigiga
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Räägi ettevõttega
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privaatne sõnum
 
 
-
-
+STR_NETWORK_SEND						:{BLACK}Saada
 
 ############ end network gui strings
 
@@ -1416,6 +1442,10 @@ STR_1021_RAILROAD_TRACK						:Raudteerööpad
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Raudteerööpad koos signaaltuledega
 STR_1023_RAILROAD_TRAIN_DEPOT					:Rongi depoo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...ala kuulub teisele ettevõttele
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Raudtee tavaliste signaaltuledega
+STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Raudtee eel-signaalidega
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS				:Raudtee väljumis-signaalidega
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Raudtee kombo-signaalidega
 
 
 
@@ -1448,15 +1478,16 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Raudtee ülesõit
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Linnad
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED				:{WHITE}Ehitis tuleb enne hävitada
-STR_2005							:{WHITE}{CITY}
-STR_2006_POPULATION						:{BLACK}Populatsioon: {ORANGE}{COMMA32}
+STR_2005							:{WHITE}{TOWN}
+STR_2006_POPULATION						:{BLACK}Populatsioon: {ORANGE}{COMMA32}{BLACK} Maju: {ORANGE}{COMMA32}
 STR_2007_RENAME_TOWN						:Linna nime muutmine
 STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Linna nime ei saa muuta...
-STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}Linna {CITY} kohalik võim ei anna selle tegemiseks luba
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} kohalik võim keeldus sellest
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Linnade nimed - vajuta linna nimele, et viia vaade linnale
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Vaate viimine linnale
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Linna nime muutmine
@@ -1481,7 +1512,7 @@ STR_201E_STADIUM						:Staadion
 STR_201F_OLD_HOUSES						:Vana maja
 STR_2020_LOCAL_AUTHORITY					:{BLACK}Kohalik võim
 STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Näitab informatsiooni kohaliku võimu kohta
-STR_2022_LOCAL_AUTHORITY					:{WHITE}Linna {CITY} kohalik võim
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN} kohalik võim
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Ettevõtete reitingud:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Subsiidiumid
@@ -1500,7 +1531,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Teenusesubsiidium makstakse
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kahekordselt!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kolmekordselt!
 STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal neljakordselt!
-STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}Linna {CITY} kohalik võim ei luba siia piirkonda enam lennuväljasid ehitada
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} kohalik võim keelab uut lennujaama siia ehitada
 STR_2036_COTTAGES						:Suvila
 STR_2037_HOUSES							:Majad
 STR_2038_FLATS							:Korterid
@@ -1534,9 +1565,9 @@ STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Uute ärihoonete 
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Üheks aastaks monopoolsete transpordiõiguste ostmine selles linnas. Linna võimud lubavad reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Hind: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Linnavõimudele altkäemaksu pakkumine, et tõsta ettevõtte reitingut. Vahelejäämise korral tuleb maksta trahvi.{} Hind: {CURRENCY}
 STR_2054_CAN_T_DO_THIS						:{WHITE}Seda ei saa teha...
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Linna {CITY} liikluses kaos!{}{}Ettevõte {STRING} rahastas teeparandustöid. Kuus kuud kannatust maanteesõidukitele!
-STR_2056							:{TINYFONT}{WHITE}{CITY}
-STR_2057							:{ORANGE}{CITY}{BLACK} ({COMMA32})
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Teedeehitus programmi rahastab {STRING}, mis tekitab 6 kuud häireid maanteesõidukitele!
+STR_2056							:{TINYFONT}{WHITE}{TOWN}
+STR_2057							:{ORANGE}{TOWN}{BLACK} ({COMMA32})
 STR_2058_UNDER_CONSTRUCTION					:{STRING} (ehitamisel)
 STR_2059_IGLOO							:Iglu
 STR_205A_TEPEES							:Tipid
@@ -1544,6 +1575,7 @@ STR_205B_TEAPOT_HOUSE						:Teepoti maja
 STR_205C_PIGGY_BANK						:Krossu pank
 
 ##id 0x2800
+STR_LANDSCAPING							:Maapinna kujunuds
 STR_2800_PLANT_TREES						:Puude istutamine
 STR_2801_PLACE_SIGN						:Paigalda silt
 STR_2802_TREES							:{WHITE}Puud
@@ -1606,7 +1638,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Liiga lähedal teisele bussijaamale
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Liiga lähedal teisele laadimisplatsile
 STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Enne pead pussijaama hävitama
 STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Enne pead laadimisplatsi hävitama
-STR_3048_STATIONS						:{WHITE}{STRING} - Jaamad
+STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Jaamad
 STR_3049_0							:{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE							:{YELLOW}- Puudub -
 STR_304B_SITE_UNSUITABLE					:{WHITE}...ebasobiv koht
@@ -1625,8 +1657,10 @@ STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Jaamade nimed - vajuta nimel, et vii
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Lennuvälja suuruse/tüübi valimine
 STR_3059_SMALL							:{BLACK}Väike
 STR_305A_LARGE							:{BLACK}Suur
+STR_305AA_LARGE							:{BLACK}Suurlinna lennujaam
+STR_305AB_LARGE							:{BLACK}Rahvusvaheline lennujaam
 STR_305B_SIZE							:{BLACK}Suurus
-STR_305C_0							:{BLACK}{STATION} {STRINL 0x30D1}
+STR_305C_0							:{STATION} {STRINL 0x30D1}
 STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION					:Raudteejaam
 STR_305F_AIRCRAFT_HANGAR					:Lennuki hangaar
@@ -1675,7 +1709,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME				:Genereeri juhuslik kaart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY						:{WHITE}{STRING} on ees
-STR_4801							:{WHITE}{CITY} {STRING}
+STR_4801							:{WHITE}{TOWN} {STRING}
 STR_4802_COAL_MINE						:Kivisöe kaevandust
 STR_4803_POWER_STATION						:Elektrijaama
 STR_4804_SAWMILL						:Saeveskit
@@ -1723,7 +1757,7 @@ STR_4829_REQUIRES						:{BLACK}Vajab: {YELLOW}{STRING}, {STRING}, {STRING}
 STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Eelmise kuu toodang:
 STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% transporditud)
 STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Vaate viimine tööstusele
-STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Uus {STRING} on ehitamisel linna {CITY} lähedal!
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Uus {STRING} ehitamisel linna {TOWN} lähedal!
 STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Uus {STRING} on istutamisel linna {CITY} lähedal!
 STR_482F_COST							:{BLACK}Hind: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Seda tüüpi tööstust ei saa siia ehitada...

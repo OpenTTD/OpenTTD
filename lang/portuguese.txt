@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Não é possível limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
 STR_00B7_VERSION						:{BLACK}OpenTTD versão {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 A equipa do OpenTTD
+STR_TRANSLATED_BY						:{BLACK}  Tradutor(es) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -305,6 +306,7 @@ STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
 STR_OSNAME_AMIGAOS						:AmigaOS
+STR_OSNAME_OS2							:SO/2
 
 STR_0139_IMPERIAL_MILES						:Imperial (milhas)
 STR_013A_METRIC_KILOMETERS					:Métrico (quilómetros)
@@ -414,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Não é possível alterar o intervalo d
 STR_018B_CLOSE_WINDOW						:{BLACK}Fechar janela
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título da janela - arraste isto para mover a janela
 STR_STICKY_BUTTON						:{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
+STR_RESIZE_BUTTON						:{BLACK}Clique e arraste para reajustar janela
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolir edifícios, etc. num quadrado de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Baixar um canto do terreno
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Levantar um canto do terreno
@@ -561,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Alterações de aceitação de carg
 STR_020E_SUBSIDIES						:{YELLOW}Subsídios
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Informações gerais
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...Muito distante do destino anterior
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top de empresas que chegaram a 2050{}(Nível {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top de companhias que chegaram a {NUMU16}{}({STRING} Nivél)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Tabela de Liga de Companhias em {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Negociante
 STR_0214_ENTREPRENEUR						:Empresário
@@ -570,9 +574,10 @@ STR_0216_CAPITALIST						:Capitalista
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Grande magnate
 STR_0219_TYCOON_OF_THE_CENTURY					:Magnate do século
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} alcança o estatuto de '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} de {STRING} alcança o estatuto de '{STRING}'!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} conquista '{STRING}' desempenho!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} de {STRING} conquista '{STRING}' desempenho!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -736,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Definições Newgrf
 STR_NEWGRF_SETTINGS2						:Definições Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Fechar todas as janelas
-STR_CLOSE_ALL_WINDOWS2						:Fechar todas as janelas
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar nomes de cidades
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostrar nomes de cidades
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estações
@@ -848,6 +851,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Inglês
 STR_TOWNNAME_FRENCH						:Francês
 STR_TOWNNAME_GERMAN						:Alemão
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Inglês (Adicional)
 STR_TOWNNAME_LATIN_AMERICAN					:Latino-Americano
 STR_TOWNNAME_SILLY						:Absurdo
 STR_TOWNNAME_SWEDISH						:Sueco
@@ -855,6 +859,7 @@ STR_TOWNNAME_DUTCH						:Holandês
 STR_TOWNNAME_FINNISH						:Finlandês
 STR_TOWNNAME_POLISH						:Polaco
 STR_TOWNNAME_SLOVAKISH						:Eslovaco
+STR_TOWNNAME_NORWEGIAN						:Noreguês
 STR_TOWNNAME_HUNGARIAN						:Húngaro
 STR_TOWNNAME_AUSTRIAN						:Austríaco
 STR_TOWNNAME_ROMANIAN						:Romeno
@@ -1012,6 +1017,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Auto-renovação de veículos quan
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
@@ -1040,7 +1046,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de serviço predef
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data de início: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Terminar jogo em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Activar economia regular (alterações menores)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Permite comprar acções de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Esquerda
@@ -1181,6 +1189,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Seleccionar tipo de carga do comboi
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Adaptar comboio para transportar a carga seleccionada
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Não é possível ajustar comboio...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Modificar produção
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Bem-vindo à nova IA, ainda em desenvolvimento. Pode encontrar problemas. Neste caso faça uma captura de ecrã e coloque-a no fórum. Divirta-se!
 TEMP_AI_ACTIVATED						:{WHITE}Atenção: esta nova IA está ainda em versão alpha! Actualmente, só funcionam camiões e autocarros!
@@ -1334,6 +1343,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Ocorreu um erro de protocolo e a ligaç
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} A revisão deste cliente não condiz com a revisão do servidor
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Palavra-chave incorrecta
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Servidor cheio
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Foi banido deste SERVIDOR
 STR_NETWORK_ERR_KICKED						:{WHITE} Você foi expulso do jogo
 STR_NETWORK_ERR_CHEATER						:{WHITE} Batotas não são permitidas neste servidor
 
@@ -1353,10 +1363,30 @@ STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:id do jogador incorrecta em DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:avisado pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER					:estava a tentar usar batota
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:entrou no jogo
+STR_NETWORK_GIVE_MONEY						:deu à sua empresa algum dinheiro ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:você deu {STRING} algum dinheiro ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Equipa] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Equipa] Para {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privado] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privado] Para {STRING}:
+STR_NETWORK_CHAT_ALL						:[Todos] {STRING}:
+STR_NETWORK_NAME_CHANGE						:mudou o nome dele/dela para
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} O servidor fechou a sessão
+STR_NETWORK_SERVER_REBOOT					:{WHITE} O servidor está a reiniciar...{}Por favor espere...
+
+STR_NETWORK_SERVER						:Servidor
+STR_NETWORK_CLIENT						:Cliente
+
+STR_NETWORK_CLIENTLIST_NONE					:(nenhum)
+STR_NETWORK_CLIENTLIST_KICK					:Banir
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Dar dinheiro
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Falar com todos
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Falar com a empresa
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Mensagem privada
 
 
-
-
+STR_NETWORK_SEND						:{BLACK}Enviar
 
 ############ end network gui strings
 
@@ -1454,6 +1484,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Passagem de nível
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Cidades
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2044,6 +2075,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Reconstruir sede da empresa noutro 
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Não é possível construir sede da empresa...
 STR_7072_VIEW_HQ						:{BLACK}Ver sede
 STR_RELOCATE_HQ							:{BLACK}Mover sede
+STR_COMPANY_PASSWORD						:{BLACK}Palavra passe
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Usar palavra passe na empresa para prevenir utilizadores não autorizados.
+STR_SET_COMPANY_PASSWORD					:Definir palavra passe da empresa
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Retrocesso Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Fim do retrocesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Alternar entre janela grande/pequena
@@ -2057,6 +2091,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Não é possível vender 25% de acções 
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% propriedade de {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% propriedade de {STRING}{}   {COMMA16}% propriedade de {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} foi comprada por {STRING}!
+STR_7080_PROTECTED						:{WHITE}Esta empresa ainda não troca acções...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Vapor)
@@ -2582,6 +2617,7 @@ STR_GO_TO_SHIP_DEPOT						:Ir para o depósito naval de {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Manutenção no depósito de {TOWN}
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Aeroportos
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Não é possível construir aeroporto aqui...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nova Aeronave
@@ -2635,6 +2671,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Não é possível renomear aeronave...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Renomear aeronave
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Acidente de Avião!{}{COMMA16} morrem na explosão em {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Desastre de Avião!{}Avião ficou sem combustivél, {COMMA16} morreram em incêndiol!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinos:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Renomear
@@ -2704,6 +2741,13 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Não existem ficheiros newgrf actualmen
 STR_NEWGRF_FILENAME						:{BLACK}Nome do ficheiro:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Moeda Modificada
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Separador:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefixo:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Sufixo:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Mudar para Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Mudar para Euro: {ORANGE}nunca
 
 
 

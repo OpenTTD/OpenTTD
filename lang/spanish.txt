@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Cambios en la aceptación de car
 STR_020E_SUBSIDIES						:{YELLOW}Subvenciones
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Información general
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...demasiado lejano del destino anterior
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top de empresas que han llegado al 2050{}({STRING} nivel)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top de empresas que han alcanzado {NUMU16}{}(Nivel {STRING})
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Tabla clasificatoria de empresas en {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Hombre de negocios
 STR_0214_ENTREPRENEUR						:Empresario
@@ -573,9 +574,10 @@ STR_0216_CAPITALIST						:Capitalista
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Magnate del siglo
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} alcanza el estatus de '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} de {STRING} alcanza el estatus de '{STRING}'!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} logra el estado '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} de {STRING} logra el estado '{STRING}'!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -739,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Configuración Newgrf
 STR_NEWGRF_SETTINGS2						:Configuración Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Cerrar TODAS las ventanas
-STR_CLOSE_ALL_WINDOWS2						:Cerrar TODAS las ventanas
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Ver nombres de poblaciones
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Ver nombres de poblaciones
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Ver nombres de estaciones
@@ -859,6 +859,7 @@ STR_TOWNNAME_DUTCH						:Holandés
 STR_TOWNNAME_FINNISH						:Finlandés
 STR_TOWNNAME_POLISH						:Polaco
 STR_TOWNNAME_SLOVAKISH						:Eslovaco
+STR_TOWNNAME_NORWEGIAN						:Noruego
 STR_TOWNNAME_HUNGARIAN						:Húngaro
 STR_TOWNNAME_AUSTRIAN						:Austríaco
 STR_TOWNNAME_ROMANIAN						:Rumano
@@ -1045,7 +1046,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de despacho por d
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Noticias en color aparecen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Fecha de inicio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Fin del juego en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Activar economía suave (cambios más pequeños)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Permitir comprar acciones de otras empresas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Izquierda
@@ -1186,6 +1189,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Elegir tipo de carga para que el tr
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Reformar tren para transportar mercancía resaltada
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}No se puede reformar tren...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}intervalo de despachos está en porcentaje: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Cambiar producción
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Bienvenido a esta nueva IA, en progreso. Puede esperar problemas. Cuando los encuentres, haz una captura de pantalla y envíala al foro. Disfruta!
 TEMP_AI_ACTIVATED						:{WHITE}Atención: esta nueva IA está en fase alpha! Actualmente, solo los camiones y autobuses funcionan!
@@ -2087,6 +2091,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}No se puede vender el 25% de accione
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% propiedad de {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% propiedad de {STRING}{}   {COMMA16}% propiedad de {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} ha sido comprada por {STRING}!
+STR_7080_PROTECTED						:{WHITE}Esta empresa todavía no dispone acciones a la venta...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Vapor)
@@ -2783,3 +2788,4 @@ STR_MAGLEV_VEHICLES						:Vehículos de Lev. Mag.
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

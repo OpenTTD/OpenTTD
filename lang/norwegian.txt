@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Endringer i godtatte varer
 STR_020E_SUBSIDIES						:{YELLOW}Subsidier
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Generell informasjon
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...for langt i fra forrige destinasjon
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Beste firma som kom til 2050{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Beste firma som nådde {NUMU16}{}({STRING} Nivå)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Firmarangering i {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Forretningsmann
 STR_0214_ENTREPRENEUR						:Entreprenør
@@ -573,9 +574,10 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Århundrets finansfyrste
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} oppnår '{STRING}'status!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} av {STRING} oppnår '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} oppnår '{STRING}'-status!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} av {STRING} oppnår '{STRING}'-status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -739,8 +741,6 @@ STR_NEWGRF_SETTINGS						:Innstillinger for ny grafikk
 STR_NEWGRF_SETTINGS2						:Innstillinger for ny grafikk
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Lukk ALLE vindu
-STR_CLOSE_ALL_WINDOWS2						:Lukk ALLE Vindu
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Vis bynavn
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Vis bynavn
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Vis stasjonsnavn
@@ -864,6 +864,7 @@ STR_TOWNNAME_HUNGARIAN						:Ungarsk
 STR_TOWNNAME_AUSTRIAN						:Østerriksk
 STR_TOWNNAME_ROMANIAN						:Rumensk
 STR_TOWNNAME_CZECH						:Tsjekkisk
+STR_TOWNNAME_SWISS						:Sveitsisk
 ############ end of	townname region
 
 STR_CURR_GBP							:Pund ({POUNDSIGN})
@@ -1043,10 +1044,13 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard serviceintervall for fl
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standard serviceintervall for kjøretøy: {ORANGE}deaktivert
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard serviceintervall for båter: {ORANGE}{STRING} dager
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standard serviceintervall for skip: {ORANGE}deaktivert
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Deaktiver service når havarier er slått av: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farge i avisen kommer i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Start spillet i år: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Spillet slutter {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Jevn økonomi (Flere, mindre endringer)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Tillat kjøping av aksjer i andre selskaper
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Ved opptrekking plasser signal hver: {ORANGE}{STRING} rute(r)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posisjon av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Venstre
@@ -1187,6 +1191,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Velg hvilken last lokomotivet skal 
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Bygg om lokomotivet til å frakte den valgte varetypen
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke bygge om lokomotiv...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i prosent: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Endre produksjon
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner ett problem, lag ett skjermbilde av det og post det i forumet. Mor deg!
 TEMP_AI_ACTIVATED						:{WHITE}Advarsel: denne nye AI er fremdeles alfa! Akkurat nå, virker bare lastebiler og busser!
@@ -2088,6 +2093,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kan ikke selge 25% av aksjene...
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% eies av {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% eies av {STRING}{}   {COMMA16}% eies av {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} har blitt kjøpt opp av {STRING}!
+STR_7080_PROTECTED						:{WHITE}Dette selskapet selger ikke aksjer enda...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Damp)
@@ -2386,7 +2392,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} fra {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tog {COMMA16} venter i togstallen
 STR_8815_NEW_VEHICLES						:{BLACK}Nye tog/vogner
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Koster: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{COMMA16}t{}{BLACK}Fart: {GOLD}{VELOCITY}{BLACK}   Kraft: {GOLD}{COMMA32}hk{}{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år{}{BLACK}Kapasitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks. pålitelighet: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{COMMA16}t{}{BLACK}Fart: {GOLD}{VELOCITY}{BLACK}   Kraft: {GOLD}{COMMA32}hk{}{BLACK}Driftskostnad: {GOLD}{CURRENCY}/år{}{BLACK}Kapasitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks. Pålitelighet: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Informasjon
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Tog kan bare endres når det står stille i togstallen
@@ -2784,3 +2790,4 @@ STR_MAGLEV_VEHICLES						:Maglev-lokomotiv
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

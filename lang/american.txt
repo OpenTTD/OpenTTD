@@ -570,7 +570,6 @@ STR_0216_CAPITALIST						:Capitalist
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon of the Century
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} of {STRING} achieves '{STRING}' status!
 STR_021D							:{BLACK}
@@ -736,8 +735,6 @@ STR_NEWGRF_SETTINGS						:Newgrf settings
 STR_NEWGRF_SETTINGS2						:Newgrf settings
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Close ALL windows
-STR_CLOSE_ALL_WINDOWS2						:Close ALL windows
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Town names displayed
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Town names displayed
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Station names displayed

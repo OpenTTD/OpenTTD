@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Oblast sa neda vycistit...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY						:{BLACK} Preklad - gpsoft
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nieje mozne zmenit servisny interval
 STR_018B_CLOSE_WINDOW						:{BLACK}Zavriet okno
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Nadpis okna - potiahni pre posun okna
 STR_STICKY_BUTTON						:{BLACK}Oznacit toto okno, aby sa nedalo zatvorit klavesou 'Zavri vsetky okna'
+STR_RESIZE_BUTTON						:{BLACK}Uchop a tahaj pre zmenu velkosti okna
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Zburanie budov, cistenie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Zvysit roh terenu
@@ -571,7 +573,8 @@ STR_0216_CAPITALIST						:Kapitalista
 STR_0217_MAGNATE						:Magnat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon
-STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosiahol '{STRING}' stav!
 STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosiahnuti {STRING} '{STRING}' stavu!
 STR_021D							:{BLACK}
@@ -737,8 +740,6 @@ STR_NEWGRF_SETTINGS						:Nastavenie newgrf
 STR_NEWGRF_SETTINGS2						:Nastavenie newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS						:Zatvorit VSETKY okna
-STR_CLOSE_ALL_WINDOWS2						:Zatvorit VSETKY okna
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit nazvy miest
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Zobrazit nazvy miest
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazit nazvy stanic
@@ -849,6 +850,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Anglicke
 STR_TOWNNAME_FRENCH						:Francuzke
 STR_TOWNNAME_GERMAN						:Nemecke
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Anglicke (Dalsie)
 STR_TOWNNAME_LATIN_AMERICAN					:Latinsko-Americke
 STR_TOWNNAME_SILLY						:Hlupe (anglicky)
 STR_TOWNNAME_SWEDISH						:Svedske
@@ -856,6 +858,7 @@ STR_TOWNNAME_DUTCH						:Holandske
 STR_TOWNNAME_FINNISH						:Finske
 STR_TOWNNAME_POLISH						:Polske
 STR_TOWNNAME_SLOVAKISH						:Slovenske
+STR_TOWNNAME_NORWEGIAN						:Norske
 STR_TOWNNAME_HUNGARIAN						:Madarske
 STR_TOWNNAME_AUSTRIAN						:Rakuske
 STR_TOWNNAME_ROMANIAN						:Rumunske
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaticka obnova dopravnych p
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti maximalneho veku
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimalny pocet penazi pre automaticke obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Zobrazit populaciu mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING} {RED}Vystraha: Vysoke hodnoty spomaluju hru
@@ -1042,6 +1046,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Implicitny servisny interva
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Povolit nakup akcii od ostatnych spolocnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Na lavo
@@ -1335,6 +1340,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Chyba vznikla v protokole a spojenie j
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Chybne heslo.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Server je plny
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Si zablokovany na tomto serveri
 STR_NETWORK_ERR_KICKED						:{WHITE} Bol si vyhodeny z hry
 STR_NETWORK_ERR_CHEATER						:{WHITE} Cheatovanie nie je povolene na tomto serveri
 
@@ -1475,6 +1481,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Zeleznicny prejazd
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Mesta
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2667,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Nemozno pomenovat lietadlo...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Pomenovat lietadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prve lietadlo pristalo na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Letecka havaria!{}{COMMA16} mrtvych pri poziari na {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Letecka havaria!{}Lietadlu doslo palivo, {COMMA16} mrtvych pri poziari!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Ciele:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Premenovat
@@ -2754,9 +2762,26 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Zobrazit vsetky auta, ktore maju tut
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Zobrazit vsetky lietadla, ktore maju tuto stanicu v cestovnom poriadku
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku
 
+STR_REPLACE_VEHICLES						:{BLACK}Vymena vozidiel
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Vymena vozidiel
+STR_REPLACE_VEHICLES_START					:{BLACK}Zacat vymenu vozidiel
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Zastavit vymenu vozidiel
+STR_NOT_REPLACING						:{BLACK}Nevymiena sa
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Nie je oznacene vozidlo
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Vyber typ lokomotivy na vymenu
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Vyber typ novej lokomotivy, ktoru chces pouzit namiesto typu v lavom zozname
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Stlac toto tlacidlo, ak nechces vymienat typ lokomotivy vybrany v lavom zozname
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Stlac toto tlacidlo, ak chces zacat vymienat typ lokomotivy v lavom zozname za typ lokomotivy v pravom zozname
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
+STR_REPLACE_HELP						:{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Lokomotiva pre zeleznicu
+STR_MONORAIL_VEHICLES						:Lokomotiva pre jednokolajovku
+STR_MAGLEV_VEHICLES						:Lokomotiva pre magneticku drahu
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}
