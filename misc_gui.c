@@ -802,9 +802,13 @@ press_ok:;
 			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN)) {
 				DeleteWindow(w);
 			} else {
-				Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
 				byte *buf = WP(w,querystr_d).buf;
+				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
+				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
+				Window *parent;
+
 				DeleteWindow(w);
+				parent = FindWindowById(wnd_class, wnd_num);
 				if (parent != NULL) {
 					WindowEvent e;
 					e.event = WE_ON_EDIT_TEXT;
