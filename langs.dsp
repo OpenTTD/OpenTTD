@@ -40,12 +40,45 @@ MTL=midl.exe
 # Name "langs - Win32 Debug"
 # Begin Source File
 
+SOURCE=.\lang\american.txt
+# Begin Custom Build
+InputPath=.\lang\american.txt
+
+"lang\american.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\american.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
 SOURCE=.\lang\czech.txt
 # Begin Custom Build
 InputPath=.\lang\czech.txt
 
 "lang\czech.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	strgen\debug\strgen.exe lang\czech.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=.\lang\danish.txt
+# Begin Custom Build
+InputPath=.\lang\danish.txt
+
+"lang\danish.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\danish.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=.\lang\dutch.txt
+# Begin Custom Build
+InputPath=.\lang\dutch.txt
+
+"lang\dutch.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\dutch.txt
 
 # End Custom Build
 # End Source File
@@ -68,6 +101,17 @@ InputPath=.\lang\french.txt
 
 "lang\french.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	strgen\debug\strgen.exe lang\french.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=.\lang\galician.txt
+# Begin Custom Build
+InputPath=.\lang\galician.txt
+
+"lang\galican.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\galican.txt
 
 # End Custom Build
 # End Source File
@@ -112,6 +156,17 @@ InputPath=.\lang\norwegian.txt
 
 "lang\norwegian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	strgen\debug\strgen.exe lang\norwegian.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=.\lang\polish.txt
+# Begin Custom Build
+InputPath=.\lang\polish.txt
+
+"lang\polish.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\polish.txt
 
 # End Custom Build
 # End Source File

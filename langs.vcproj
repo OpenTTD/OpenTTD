@@ -38,14 +38,14 @@
 	</References>
 	<Files>
 		<File
-			RelativePath=".\lang\british.txt">
+			RelativePath=".\lang\american.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
-					Description="Generating british language file"
+					Description="Generating american language file"
 					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;"
-					Outputs="lang\british.lng"/>
+					Outputs="lang\american.lng"/>
 			</FileConfiguration>
 		</File>
 		<File

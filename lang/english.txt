@@ -1,5 +1,5 @@
 ##name English
-##ownname English
+##ownname English (UK)
 
 ##id 0x0000
 STR_NULL								:
@@ -40,9 +40,9 @@ STR_0022_WHEAT							:Wheat
 STR_0023_RUBBER							:Rubber
 STR_0024_SUGAR							:Sugar
 STR_0025_TOYS							:Toys
-STR_0026_CANDY							:Candy
+STR_0026_CANDY							:Sweets
 STR_0027_COLA							:Cola
-STR_0028_COTTON_CANDY					:Cotton Candy
+STR_0028_COTTON_CANDY					:Candyfloss
 STR_0029_BUBBLES						:Bubbles
 STR_002A_TOFFEE							:Toffee
 STR_002B_BATTERIES						:Batteries
@@ -72,9 +72,9 @@ STR_0042_WHEAT							:Wheat
 STR_0043_RUBBER							:Rubber
 STR_0044_SUGAR							:Sugar
 STR_0045_TOY							:Toy 
-STR_0046_CANDY							:Candy
+STR_0046_CANDY							:Sweets
 STR_0047_COLA							:Cola
-STR_0048_COTTON_CANDY					:Cotton Candy
+STR_0048_COTTON_CANDY					:Candyfloss
 STR_0049_BUBBLE							:Bubble
 STR_004A_TOFFEE							:Toffee
 STR_004B_BATTERY						:Battery
@@ -82,65 +82,65 @@ STR_004C_PLASTIC						:Plastic
 STR_004D_FIZZY_DRINK					:Fizzy Drink
 STR_004E								:
 STR_004F_PASSENGER						:{COMMA16} passenger
-STR_0050_TON_OF_COAL					:{COMMA16} ton of coal
+STR_0050_TON_OF_COAL					:{COMMA16} tonne of coal
 STR_0051_BAG_OF_MAIL					:{COMMA16} bag of mail
 STR_0052_OF_OIL							:{VOLUME} of oil
 STR_0053_ITEM_OF_LIVESTOCK				:{COMMA16} item of livestock
 STR_0054_CRATE_OF_GOODS					:{COMMA16} crate of goods
-STR_0055_TON_OF_GRAIN					:{COMMA16} ton of grain
-STR_0056_TON_OF_WOOD					:{COMMA16} ton of wood
-STR_0057_TON_OF_IRON_ORE				:{COMMA16} ton of iron ore
-STR_0058_TON_OF_STEEL					:{COMMA16} ton of steel
+STR_0055_TON_OF_GRAIN					:{COMMA16} tonne of grain
+STR_0056_TON_OF_WOOD					:{COMMA16} tonne of wood
+STR_0057_TON_OF_IRON_ORE				:{COMMA16} tonne of iron ore
+STR_0058_TON_OF_STEEL					:{COMMA16} tonne of steel
 STR_0059_BAG_OF_VALUABLES				:{COMMA16} bag of valuables
-STR_005A_TON_OF_COPPER_ORE				:{COMMA16} ton of copper ore
-STR_005B_TON_OF_MAIZE					:{COMMA16} ton of maize
-STR_005C_TON_OF_FRUIT					:{COMMA16} ton of fruit
+STR_005A_TON_OF_COPPER_ORE				:{COMMA16} tonne of copper ore
+STR_005B_TON_OF_MAIZE					:{COMMA16} tonne of maize
+STR_005C_TON_OF_FRUIT					:{COMMA16} tonne of fruit
 STR_005D_BAG_OF_DIAMONDS				:{COMMA16} bag of diamonds
-STR_005E_TON_OF_FOOD					:{COMMA16} ton of food
-STR_005F_TON_OF_PAPER					:{COMMA16} ton of paper
+STR_005E_TON_OF_FOOD					:{COMMA16} tonne of food
+STR_005F_TON_OF_PAPER					:{COMMA16} tonne of paper
 STR_0060_BAG_OF_GOLD					:{COMMA16} bag of gold
 STR_0061_OF_WATER						:{VOLUME} of water
-STR_0062_TON_OF_WHEAT					:{COMMA16} ton of wheat
+STR_0062_TON_OF_WHEAT					:{COMMA16} tonne of wheat
 STR_0063_OF_RUBBER						:{VOLUME} of rubber
-STR_0064_TON_OF_SUGAR					:{COMMA16} ton of sugar
+STR_0064_TON_OF_SUGAR					:{COMMA16} tonne of sugar
 STR_0065_TOY							:{COMMA16} toy
-STR_0066_BAG_OF_CANDY					:{COMMA16} bag of candy
+STR_0066_BAG_OF_CANDY					:{COMMA16} bag of sweets
 STR_0067_OF_COLA						:{VOLUME} of cola
-STR_0068_TON_OF_COTTON_CANDY			:{COMMA16} ton of cotton candy
+STR_0068_TON_OF_COTTON_CANDY			:{COMMA16} tonne of candyfloss
 STR_0069_BUBBLE							:{COMMA16} bubble
-STR_006A_TON_OF_TOFFEE					:{COMMA16} ton of toffee
+STR_006A_TON_OF_TOFFEE					:{COMMA16} tonne of toffee
 STR_006B_BATTERY						:{COMMA16} battery
 STR_006C_OF_PLASTIC						:{VOLUME} of plastic
 STR_006D_FIZZY_DRINK					:{COMMA16} fizzy drink
 STR_006E								:
 STR_006F_PASSENGERS						:{COMMA16} passengers
-STR_0070_TONS_OF_COAL					:{COMMA16} tons of coal
+STR_0070_TONS_OF_COAL					:{COMMA16} tonnes of coal
 STR_0071_BAGS_OF_MAIL					:{COMMA16} bags of mail
 STR_0072_OF_OIL							:{VOLUME} of oil
 STR_0073_ITEMS_OF_LIVESTOCK				:{COMMA16} items of livestock
 STR_0074_CRATES_OF_GOODS				:{COMMA16} crates of goods
-STR_0075_TONS_OF_GRAIN					:{COMMA16} tons of grain
-STR_0076_TONS_OF_WOOD					:{COMMA16} tons of wood
-STR_0077_TONS_OF_IRON_ORE				:{COMMA16} tons of iron ore
-STR_0078_TONS_OF_STEEL					:{COMMA16} tons of steel
+STR_0075_TONS_OF_GRAIN					:{COMMA16} tonnes of grain
+STR_0076_TONS_OF_WOOD					:{COMMA16} tonnes of wood
+STR_0077_TONS_OF_IRON_ORE				:{COMMA16} tonnes of iron ore
+STR_0078_TONS_OF_STEEL					:{COMMA16} tonnes of steel
 STR_0079_BAGS_OF_VALUABLES				:{COMMA16} bags of valuables
-STR_007A_TONS_OF_COPPER_ORE				:{COMMA16} tons of copper ore
-STR_007B_TONS_OF_MAIZE					:{COMMA16} tons of maize
-STR_007C_TONS_OF_FRUIT					:{COMMA16} tons of fruit
+STR_007A_TONS_OF_COPPER_ORE				:{COMMA16} tonnes of copper ore
+STR_007B_TONS_OF_MAIZE					:{COMMA16} tonnes of maize
+STR_007C_TONS_OF_FRUIT					:{COMMA16} tonnes of fruit
 STR_007D_BAGS_OF_DIAMONDS				:{COMMA16} bags of diamonds
-STR_007E_TONS_OF_FOOD					:{COMMA16} tons of food
-STR_007F_TONS_OF_PAPER					:{COMMA16} tons of paper
+STR_007E_TONS_OF_FOOD					:{COMMA16} tonnes of food
+STR_007F_TONS_OF_PAPER					:{COMMA16} tonnes of paper
 STR_0080_BAGS_OF_GOLD					:{COMMA16} bags of gold
 STR_0081_OF_WATER						:{VOLUME} of water
-STR_0082_TONS_OF_WHEAT					:{COMMA16} tons of wheat
+STR_0082_TONS_OF_WHEAT					:{COMMA16} tonnes of wheat
 STR_0083_OF_RUBBER						:{VOLUME} of rubber
-STR_0084_TONS_OF_SUGAR					:{COMMA16} tons of sugar
+STR_0084_TONS_OF_SUGAR					:{COMMA16} tonnes of sugar
 STR_0085_TOYS							:{COMMA16} toys
-STR_0086_BAGS_OF_CANDY					:{COMMA16} bags of candy
+STR_0086_BAGS_OF_CANDY					:{COMMA16} bags of sweets
 STR_0087_OF_COLA						:{VOLUME} of cola
-STR_0088_TONS_OF_COTTON_CANDY			:{COMMA16} tons of cotton candy
+STR_0088_TONS_OF_COTTON_CANDY			:{COMMA16} tonnes of candyfloss
 STR_0089_BUBBLES						:{COMMA16} bubbles
-STR_008A_TONS_OF_TOFFEE					:{COMMA16} tons of toffee
+STR_008A_TONS_OF_TOFFEE					:{COMMA16} tonnes of toffee
 STR_008B_BATTERIES						:{COMMA16} batteries
 STR_008C_OF_PLASTIC						:{VOLUME} of plastic
 STR_008D_FIZZY_DRINKS					:{COMMA16} fizzy drinks
@@ -229,7 +229,7 @@ STR_00E8_ROUTES							:Routes
 STR_00E9_VEGETATION						:Vegetation
 STR_00EA_OWNERS							:Owners
 STR_00EB_ROADS							:{BLACK}{TINYFONT}Roads
-STR_00EC_RAILROADS						:{BLACK}{TINYFONT}Railroads
+STR_00EC_RAILROADS						:{BLACK}{TINYFONT}Railways
 STR_00ED_STATIONS_AIRPORTS_DOCKS		:{BLACK}{TINYFONT}Stations/Airports/Docks
 STR_00EE_BUILDINGS_INDUSTRIES			:{BLACK}{TINYFONT}Buildings/Industries
 STR_00EF_VEHICLES						:{BLACK}{TINYFONT}Vehicles
@@ -265,8 +265,8 @@ STR_010C_RUBBER_PLANTATION				:{BLACK}{TINYFONT}Rubber Plantation
 STR_010D_WATER_SUPPLY					:{BLACK}{TINYFONT}Water Supply
 STR_010E_WATER_TOWER					:{BLACK}{TINYFONT}Water Tower
 STR_010F_LUMBER_MILL					:{BLACK}{TINYFONT}Lumber Mill
-STR_0110_COTTON_CANDY_FOREST			:{BLACK}{TINYFONT}Cotton Candy Forest
-STR_0111_CANDY_FACTORY					:{BLACK}{TINYFONT}Candy Factory
+STR_0110_COTTON_CANDY_FOREST			:{BLACK}{TINYFONT}Candyfloss Forest
+STR_0111_CANDY_FACTORY					:{BLACK}{TINYFONT}Sweets Factory
 STR_0112_BATTERY_FARM					:{BLACK}{TINYFONT}Battery Farm
 STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Cola Wells
 STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Toy Shop
@@ -276,7 +276,7 @@ STR_0117_FIZZY_DRINK_FACTORY			:{BLACK}{TINYFONT}Fizzy Drink Factory
 STR_0118_BUBBLE_GENERATOR				:{BLACK}{TINYFONT}Bubble Generator
 STR_0119_TOFFEE_QUARRY					:{BLACK}{TINYFONT}Toffee Quarry
 STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Sugar Mine
-STR_011B_RAILROAD_STATION				:{BLACK}{TINYFONT}Railroad Station
+STR_011B_RAILROAD_STATION				:{BLACK}{TINYFONT}Railway Station
 STR_011C_TRUCK_LOADING_BAY				:{BLACK}{TINYFONT}Truck Loading Bay
 STR_011D_BUS_STATION					:{BLACK}{TINYFONT}Bus Station
 STR_011E_AIRPORT_HELIPORT				:{BLACK}{TINYFONT}Airport/Heliport
@@ -385,7 +385,7 @@ STR_017D_DISPLAY_LIST_OF_COMPANY		:{BLACK}Display list of company's ships
 STR_017E_DISPLAY_LIST_OF_COMPANY		:{BLACK}Display list of company's aircraft
 STR_017F_ZOOM_THE_VIEW_IN				:{BLACK}Zoom the view in
 STR_0180_ZOOM_THE_VIEW_OUT				:{BLACK}Zoom the view out
-STR_0181_BUILD_RAILROAD_TRACK			:{BLACK}Build railroad track
+STR_0181_BUILD_RAILROAD_TRACK			:{BLACK}Build railway track
 STR_0182_BUILD_ROADS					:{BLACK}Build roads
 STR_0183_BUILD_SHIP_DOCKS				:{BLACK}Build ship docks
 STR_0184_BUILD_AIRPORTS					:{BLACK}Build airports
@@ -612,8 +612,8 @@ STR_0253_WATER_SUPPLY					:{BLACK}Water Supply
 STR_0254_WATER_TOWER					:{BLACK}Water Tower
 STR_0255_DIAMOND_MINE					:{BLACK}Diamond Mine
 STR_0256_COPPER_ORE_MINE				:{BLACK}Copper Ore Mine
-STR_0257_COTTON_CANDY_FOREST			:{BLACK}Cotton Candy Forest
-STR_0258_CANDY_FACTORY					:{BLACK}Candy Factory
+STR_0257_COTTON_CANDY_FOREST			:{BLACK}Candyfloss Forest
+STR_0258_CANDY_FACTORY					:{BLACK}Sweets Factory
 STR_0259_BATTERY_FARM					:{BLACK}Battery Farm
 STR_025A_COLA_WELLS						:{BLACK}Cola Wells
 STR_025B_TOY_SHOP						:{BLACK}Toy Shop
@@ -647,8 +647,8 @@ STR_0276_CONSTRUCT_WATER_SUPPLY			:{BLACK}Construct Water Supply
 STR_0277_CONSTRUCT_WATER_TOWER_CAN		:{BLACK}Construct Water Tower (Can only be built in towns)
 STR_0278_CONSTRUCT_DIAMOND_MINE			:{BLACK}Construct Diamond Mine
 STR_0279_CONSTRUCT_COPPER_ORE_MINE		:{BLACK}Construct Copper Ore Mine
-STR_027A_PLANT_COTTON_CANDY_FOREST		:{BLACK}Plant Cotton Candy Forest
-STR_027B_CONSTRUCT_CANDY_FACTORY		:{BLACK}Construct Candy Factory
+STR_027A_PLANT_COTTON_CANDY_FOREST		:{BLACK}Plant Candyfloss Forest
+STR_027B_CONSTRUCT_CANDY_FACTORY		:{BLACK}Construct Sweets Factory
 STR_027C_CONSTRUCT_BATTERY_FARM			:{BLACK}Construct Battery Farm
 STR_027D_CONSTRUCT_COLA_WELLS			:{BLACK}Construct Cola Wells
 STR_027E_CONSTRUCT_TOY_SHOP				:{BLACK}Construct Toy Shop
@@ -804,10 +804,10 @@ STR_031C_SCREENSHOT_FAILED				:{WHITE}Screenshot failed!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE		:{BLACK}Purchase land for future use
 STR_032A_1_ROAD_VEHICLE_SERVICE			:{BLACK}1: Road vehicle service
-STR_032B_2_RAILROAD_SERVICE				:{BLACK}2: Railroad service
+STR_032B_2_RAILROAD_SERVICE				:{BLACK}2: Railway service
 STR_032C_3_AIR_SERVICE					:{BLACK}3: Air service
 STR_032D_4_SHIP_SERVICE					:{BLACK}4: Ship service
-STR_032E_5_RAILROAD_SERVICE_ADVANCED	:{BLACK}5: Railroad service (advanced)
+STR_032E_5_RAILROAD_SERVICE_ADVANCED	:{BLACK}5: Railway service (advanced)
 STR_032F_AUTOSAVE						:{RED}AUTOSAVE
 STR_0330_SELECT_EZY_STREET_STYLE		:{BLACK}Select 'Ezy Street style music' program
 
@@ -888,8 +888,8 @@ STR_NO_ORDERS_VEL						:{LTBLUE}No orders, {VELOCITY}
 
 STR_PASSENGERS						:passengers
 STR_BAGS									:bags
-STR_TONS									:tons
-STR_LITERS								:liters
+STR_TONS									:tonnes
+STR_LITERS								:litres
 STR_ITEMS									:items
 STR_CRATES								:crates
 STR_RES_OTHER							:other
@@ -984,7 +984,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED	:{LTBLUE}Default service interval f
 STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Colored news appears in: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Coloured news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE		:{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY		:{LTBLUE}Enable smooth economy (more, smaller changes)
 
@@ -1031,7 +1031,7 @@ STR_CONVERT_RAIL_TO_CHECKPOINT_TIP		:{BLACK}Convert rail to checkpoint
 STR_CANT_BUILD_TRAIN_CHECKPOINT			:{WHITE}Can't build train checkpoint here...
 STR_CANT_REMOVE_TRAIN_CHECKPOINT		:{WHITE}Can't remove train checkpoint here...
 
-STR_BUILD_AUTORAIL_TIP					:{BLACK}Build railroad track using the Autorail mode
+STR_BUILD_AUTORAIL_TIP					:{BLACK}Build railway track using the Autorail mode
 
 STR_NO_TOWN_IN_SCENARIO					:{WHITE}...there is no town in this scenario
 
@@ -1086,7 +1086,7 @@ STR_CONSTRUCT_IRON_ORE_MINE_TIP			:{BLACK}Construct Iron Ore Mine
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP		:{BLACK}Fund Fruit Plantation
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP		:{BLACK}Fund Rubber Plantation
 STR_CONSTRUCT_WATER_SUPPLY_TIP			:{BLACK}Fund Water Supply
-STR_CONSTRUCT_COTTON_CANDY_TIP			:{BLACK}Plant Cotton Candy Forest
+STR_CONSTRUCT_COTTON_CANDY_TIP			:{BLACK}Plant Candyfloss Forest
 STR_CONSTRUCT_BATTERY_FARM_TIP			:{BLACK}Fund Battery Farm
 STR_CONSTRUCT_COLA_WELLS_TIP			:{BLACK}Drill for Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP		:{BLACK}Fund Plastic Fountains
@@ -1209,42 +1209,42 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION	:{WHITE}Impossible track combination
 STR_1002_EXCAVATION_WOULD_DAMAGE		:{WHITE}Excavation would damage tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL			:{WHITE}Already at sea-level
 STR_1004_TOO_HIGH						:{WHITE}Too high
-STR_1005_NO_SUITABLE_RAILROAD_TRACK		:{WHITE}No suitable railroad track
+STR_1005_NO_SUITABLE_RAILROAD_TRACK		:{WHITE}No suitable railway track
 STR_1006_TRAIN_INSIDE_DEPOT				:{WHITE}Train inside depot
 STR_1007_ALREADY_BUILT					:{WHITE}...already built
-STR_1008_MUST_REMOVE_RAILROAD_TRACK		:{WHITE}Must remove railroad track first
+STR_1008_MUST_REMOVE_RAILROAD_TRACK		:{WHITE}Must remove railway track first
 STR_1009_TOO_MANY_DEPOTS				:{WHITE}Too many depots
-STR_100A_RAILROAD_CONSTRUCTION			:{WHITE}Railroad Construction
+STR_100A_RAILROAD_CONSTRUCTION			:{WHITE}Railway Construction
 STR_100B_MONORAIL_CONSTRUCTION			:{WHITE}Monorail Construction
 STR_100C_MAGLEV_CONSTRUCTION			:{WHITE}MagLev Construction
 STR_100D_SELECT_RAIL_BRIDGE				:{WHITE}Select Rail Bridge
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT		:{WHITE}Can't build train depot here...
-STR_100F_CAN_T_BUILD_RAILROAD_STATION	:{WHITE}Can't build railroad station here...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION	:{WHITE}Can't build railway station here...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE		:{WHITE}Can't build signals here...
-STR_1011_CAN_T_BUILD_RAILROAD_TRACK		:{WHITE}Can't build railroad track here...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK	:{WHITE}Can't remove railroad track from here...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK		:{WHITE}Can't build railway track here...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK	:{WHITE}Can't remove railway track from here...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM		:{WHITE}Can't remove signals from here...
 STR_1014_TRAIN_DEPOT_ORIENTATION		:{WHITE}Train Depot Orientation
-STR_1015_RAILROAD_CONSTRUCTION			:Railroad construction
+STR_1015_RAILROAD_CONSTRUCTION			:Railway construction
 STR_1016_MONORAIL_CONSTRUCTION			:Monorail construction
 STR_1017_MAGLEV_CONSTRUCTION			:MagLev construction
-STR_1018_BUILD_RAILROAD_TRACK			:{BLACK}Build railroad track
+STR_1018_BUILD_RAILROAD_TRACK			:{BLACK}Build railway track
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING	:{BLACK}Build train depot (for building and servicing trains)
-STR_101A_BUILD_RAILROAD_STATION			:{BLACK}Build railroad station
-STR_101B_BUILD_RAILROAD_SIGNALS			:{BLACK}Build railroad signals
-STR_101C_BUILD_RAILROAD_BRIDGE			:{BLACK}Build railroad bridge
-STR_101D_BUILD_RAILROAD_TUNNEL			:{BLACK}Build railroad tunnel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR		:{BLACK}Toggle build/remove for railroad track and signals
+STR_101A_BUILD_RAILROAD_STATION			:{BLACK}Build railway station
+STR_101B_BUILD_RAILROAD_SIGNALS			:{BLACK}Build railway signals
+STR_101C_BUILD_RAILROAD_BRIDGE			:{BLACK}Build railway bridge
+STR_101D_BUILD_RAILROAD_TUNNEL			:{BLACK}Build railway tunnel
+STR_101E_TOGGLE_BUILD_REMOVE_FOR		:{BLACK}Toggle build/remove for railway track and signals
 STR_101F_BRIDGE_SELECTION_CLICK			:{BLACK}Bridge selection - click on selected bridge to build it
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO:{BLACK}Select railroad depot orientation
-STR_1021_RAILROAD_TRACK					:Railroad track
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS	:Railroad track with signals
-STR_1023_RAILROAD_TRAIN_DEPOT			:Railroad train depot
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO:{BLACK}Select railway depot orientation
+STR_1021_RAILROAD_TRACK					:Railway track
+STR_1022_RAILROAD_TRACK_WITH_SIGNALS	:Railway track with signals
+STR_1023_RAILROAD_TRAIN_DEPOT			:Railway train depot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER		:{WHITE}...area is owned by another company
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS	:Railroad track with normal signals
-STR_RAILROAD_TRACK_WITH_PRESIGNALS	:Railroad track with pre-signals
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS	:Railroad track with exit-signals
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS	:Railroad track with combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS	:Railway track with normal signals
+STR_RAILROAD_TRACK_WITH_PRESIGNALS	:Railway track with pre-signals
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS	:Railway track with exit-signals
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS	:Railway track with combo-signals
 
 
 
@@ -1398,13 +1398,13 @@ STR_3001_AIRPORT_SELECTION				:{WHITE}Airport Selection
 STR_3002_ORIENTATION					:{BLACK}Orientation
 STR_3003_NUMBER_OF_TRACKS				:{BLACK}Number of tracks
 STR_3004_PLATFORM_LENGTH				:{BLACK}Platform length
-STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Too close to another railroad station
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Too close to another railway station
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING	:{WHITE}Adjoins more than one existing station/loading area
 STR_3007_TOO_MANY_STATIONS_LOADING		:{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING		:{WHITE}Too many stations/loading areas
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION	:{WHITE}Too close to another station/loading area
 STR_300A_0								:{WHITE}{STATION} {STRINL 0x30D1}
-STR_300B_MUST_DEMOLISH_RAILROAD			:{WHITE}Must demolish railroad station first
+STR_300B_MUST_DEMOLISH_RAILROAD			:{WHITE}Must demolish railway station first
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT	:{WHITE}Too close to another airport
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST	:{WHITE}Must demolish airport first
 
@@ -1442,9 +1442,9 @@ STR_304A_NONE							:{YELLOW}- None -
 STR_304B_SITE_UNSUITABLE				:{WHITE}...site unsuitable
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK		:{WHITE}Too close to another dock
 STR_304D_MUST_DEMOLISH_DOCK_FIRST		:{WHITE}Must demolish dock first
-STR_304E_SELECT_RAILROAD_STATION		:{BLACK}Select railroad station orientation
-STR_304F_SELECT_NUMBER_OF_PLATFORMS		:{BLACK}Select number of platforms for railroad station
-STR_3050_SELECT_LENGTH_OF_RAILROAD		:{BLACK}Select length of railroad station
+STR_304E_SELECT_RAILROAD_STATION		:{BLACK}Select railway station orientation
+STR_304F_SELECT_NUMBER_OF_PLATFORMS		:{BLACK}Select number of platforms for railway station
+STR_3050_SELECT_LENGTH_OF_RAILROAD		:{BLACK}Select length of railway station
 STR_3051_SELECT_BUS_STATION_ORIENTATION	:{BLACK}Select bus station orientation
 STR_3052_SELECT_TRUCK_LOADING_BAY		:{BLACK}Select truck loading bay orientation
 STR_3053_CENTER_MAIN_VIEW_ON_STATION	:{BLACK}Center main view on station location
@@ -1460,7 +1460,7 @@ STR_305AB_LARGE             :{BLACK}International airport
 STR_305B_SIZE							:{BLACK}Size
 STR_305C_0								:{STATION} {STRINL 0x30D1}
 STR_305D_0								:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
-STR_305E_RAILROAD_STATION				:Railroad station
+STR_305E_RAILROAD_STATION				:Railway station
 STR_305F_AIRCRAFT_HANGAR				:Aircraft hangar
 STR_3060_AIRPORT						:Airport
 STR_3061_TRUCK_LOADING_AREA				:Truck loading area
@@ -1534,8 +1534,8 @@ STR_4818_WATER_TOWER					:Water Tower
 STR_4819_FACTORY						:Factory
 STR_481A_FARM							:Farm
 STR_481B_LUMBER_MILL					:Lumber Mill
-STR_481C_COTTON_CANDY_FOREST			:Cotton Candy Forest
-STR_481D_CANDY_FACTORY					:Candy Factory
+STR_481C_COTTON_CANDY_FOREST			:Candyfloss Forest
+STR_481D_CANDY_FACTORY					:Sweets Factory
 STR_481E_BATTERY_FARM					:Battery Farm
 STR_481F_COLA_WELLS						:Cola Wells
 STR_4820_TOY_SHOP						:Toy Shop
@@ -1598,7 +1598,7 @@ STR_5014_TUBULAR_STEEL					:Tubular, Steel
 STR_BRIDGE_TUBULAR_SILICON				:Tubular, Silicon
 STR_5015_CAN_T_BUILD_BRIDGE_HERE		:{WHITE}Can't build bridge here...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE		:{WHITE}Can't build tunnel here...
-STR_5017_RAILROAD_TUNNEL				:Railroad tunnel
+STR_5017_RAILROAD_TUNNEL				:Railway tunnel
 STR_5018_ROAD_TUNNEL					:Road tunnel
 STR_5019								:
 STR_501A								:
@@ -1752,15 +1752,15 @@ STR_7000								:
 STR_7001								:{WHITE}{STRING}{BLACK}{STRING}
 STR_7002_PLAYER						: (Player {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}New Face
-STR_7005_COLOR_SCHEME					:{BLACK}Color Scheme
-STR_7006_COLOR_SCHEME					:{GOLD}Color Scheme:
-STR_7007_NEW_COLOR_SCHEME				:{WHITE}New Color Scheme
+STR_7005_COLOR_SCHEME					:{BLACK}Colour Scheme
+STR_7006_COLOR_SCHEME					:{GOLD}Colour Scheme:
+STR_7007_NEW_COLOR_SCHEME				:{WHITE}New Colour Scheme
 STR_7008_COMPANY_NAME					:{BLACK}Company Name
-STR_7009_PRESIDENT_NAME					:{BLACK}President Name
+STR_7009_PRESIDENT_NAME					:{BLACK}Manager Name
 STR_700A_COMPANY_NAME					:Company Name
-STR_700B_PRESIDENT_S_NAME				:President's Name
+STR_700B_PRESIDENT_S_NAME				:Manager's Name
 STR_700C_CAN_T_CHANGE_COMPANY_NAME		:{WHITE}Can't change company name...
-STR_700D_CAN_T_CHANGE_PRESIDENT			:{WHITE}Can't change president's name...
+STR_700D_CAN_T_CHANGE_PRESIDENT			:{WHITE}Can't change manager's name...
 STR_700E_FINANCES						:{WHITE}{STRING} Finances{BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME				:{WHITE}Expenditure/Income
 STR_7010								:{WHITE}{NUMU16}
@@ -1795,14 +1795,14 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Can't borrow any more money...
 STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...no loan to repay
 STR_702E_REQUIRED						:{WHITE}...{CURRENCY} required
 STR_702F_CAN_T_REPAY_LOAN				:{WHITE}Can't repay loan...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT	:{BLACK}Select new face for president
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT	:{BLACK}Select new face for manager
 STR_7031_CHANGE_THE_COMPANY_VEHICLE		:{BLACK}Change the company vehicle livery
-STR_7032_CHANGE_THE_PRESIDENT_S			:{BLACK}Change the president's name
+STR_7032_CHANGE_THE_PRESIDENT_S			:{BLACK}Change the manager's name
 STR_7033_CHANGE_THE_COMPANY_NAME		:{BLACK}Change the company name
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR	:{BLACK}Click on selected new color scheme
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR	:{BLACK}Click on selected new colour scheme
 STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Increase size of loan
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Repay part of loan
-STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
+STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Manager)
 STR_7038_INAUGURATED					:{GOLD}Inaugurated: {WHITE}{NUMU16}
 STR_7039_VEHICLES						:{GOLD}Vehicles: 
 STR_703A_TRAIN							:{WHITE}{COMMA16} train
@@ -1835,7 +1835,7 @@ STR_7054								:{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRI
 STR_7055								:{YELLOW}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE	:{BLACK}{BIGFONT}Transport company in trouble!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED	:{BLACK}{BIGFONT}{STRING} will be sold off or declared bankrupt unless performance increases soon!
-STR_7058_PRESIDENT						:{BLACK}{STRING}{}(President)
+STR_7058_PRESIDENT						:{BLACK}{STRING}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER		:{BLACK}{BIGFONT}Transport company merger!
 STR_705A_HAS_BEEN_SOLD_TO_FOR			:{BLACK}{BIGFONT}{STRING} has been sold to {STRING} for {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT	:{WHITE}We are looking for a transport company to take-over our company{}{}Do you want to purchase {STRING} for {CURRENCY}?
@@ -1922,7 +1922,7 @@ STR_8029_WATER_TANKER					:Water Tanker
 STR_802A_FRUIT_TRUCK					:Fruit Truck
 STR_802B_RUBBER_TRUCK					:Rubber Truck
 STR_802C_SUGAR_TRUCK					:Sugar Truck
-STR_802D_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
+STR_802D_COTTON_CANDY_HOPPER			:Candyfloss Hopper
 STR_802E_TOFFEE_HOPPER					:Toffee Hopper
 STR_802F_BUBBLE_VAN						:Bubble Van
 STR_8030_COLA_TANKER					:Cola Tanker
@@ -1952,7 +1952,7 @@ STR_8047_WATER_TANKER					:Water Tanker
 STR_8048_FRUIT_TRUCK					:Fruit Truck
 STR_8049_RUBBER_TRUCK					:Rubber Truck
 STR_804A_SUGAR_TRUCK					:Sugar Truck
-STR_804B_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
+STR_804B_COTTON_CANDY_HOPPER			:Candyfloss Hopper
 STR_804C_TOFFEE_HOPPER					:Toffee Hopper
 STR_804D_BUBBLE_VAN						:Bubble Van
 STR_804E_COLA_TANKER					:Cola Tanker
@@ -1984,7 +1984,7 @@ STR_8067_WATER_TANKER					:Water Tanker
 STR_8068_FRUIT_TRUCK					:Fruit Truck
 STR_8069_RUBBER_TRUCK					:Rubber Truck
 STR_806A_SUGAR_TRUCK					:Sugar Truck
-STR_806B_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
+STR_806B_COTTON_CANDY_HOPPER			:Candyfloss Hopper
 STR_806C_TOFFEE_HOPPER					:Toffee Hopper
 STR_806D_BUBBLE_VAN						:Bubble Van
 STR_806E_COLA_TANKER					:Cola Tanker
@@ -2057,9 +2057,9 @@ STR_80B0_WIZZOWOW_SUGAR_TRUCK			:Wizzowow Sugar Truck
 STR_80B1_MIGHTYMOVER_COLA_TRUCK			:MightyMover Cola Truck
 STR_80B2_POWERNAUGHT_COLA_TRUCK			:Powernaught Cola Truck
 STR_80B3_WIZZOWOW_COLA_TRUCK			:Wizzowow Cola Truck
-STR_80B4_MIGHTYMOVER_COTTON_CANDY		:MightyMover Cotton Candy Truck
-STR_80B5_POWERNAUGHT_COTTON_CANDY		:Powernaught Cotton Candy Truck
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Wizzowow Cotton Candy Truck
+STR_80B4_MIGHTYMOVER_COTTON_CANDY		:MightyMover Candyfloss Truck
+STR_80B5_POWERNAUGHT_COTTON_CANDY		:Powernaught Candyfloss Truck
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Wizzowow Candyfloss Truck
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:MightyMover Toffee Truck
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Powernaught Toffee Truck
 STR_80B9_WIZZOWOW_TOFFEE_TRUCK			:Wizzowow Toffee Truck
@@ -2135,7 +2135,7 @@ STR_80FE_GURU_X2_HELICOPTER				:Guru X2 Helicopter
 STR_80FF_POWERNAUT_HELICOPTER			:Powernaut Helicopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE:{WHITE}Message from vehicle manufacturer
 STR_8101_WE_HAVE_JUST_DESIGNED_A		:{GOLD}We have just designed a new {STRING} - would you be interested in a year's exclusive use of this vehicle, so we can see how it performs before making it universally available ?
-STR_8102_RAILROAD_LOCOMOTIVE			:railroad locomotive
+STR_8102_RAILROAD_LOCOMOTIVE			:Railway locomotive
 STR_8103_ROAD_VEHICLE					:road vehicle
 STR_8104_AIRCRAFT						:aircraft
 STR_8105_SHIP							:ship
@@ -2191,7 +2191,7 @@ STR_8829_ORDERS							:{WHITE}{STRING} (Orders)
 STR_882A_END_OF_ORDERS					:{SETX 10}- - End of Orders - -
 STR_FULLLOAD_OR_SERVICE					:{SKIP}{SKIP}{STRING}
 STR_SERVICE								:{BLACK}Service
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE	:{WHITE}Can't build railroad vehicle...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE	:{WHITE}Can't build railway vehicle...
 STR_882C_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Built: {LTBLUE}{NUMU16}{BLACK} Value: {LTBLUE}{CURRENCY}
 STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Value: {LTBLUE}{CURRENCY}
 STR_882E								:{WHITE}{STRING}
@@ -2205,7 +2205,7 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER		:{WHITE}Can't modify this order...
 STR_8836_MUST_BUILD_TRAIN_DEPOT			:{WHITE}Must build train depot first
 STR_8837_CAN_T_MOVE_VEHICLE				:{WHITE}Can't move vehicle...
 STR_8838_N_A							:N/A{SKIP}
-STR_8839_CAN_T_SELL_RAILROAD_VEHICLE	:{WHITE}Can't sell railroad vehicle...
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE	:{WHITE}Can't sell railway vehicle...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO		:{WHITE}Unable to find route to local depot
 STR_883B_CAN_T_STOP_START_TRAIN			:{WHITE}Can't stop/start train...
 STR_883C_SERVICING_INTERVAL_DAYS		:{BLACK}Servicing interval: {LTBLUE}{COMMA16}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
