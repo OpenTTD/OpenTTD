@@ -246,10 +246,12 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"CURRENCY", EmitSingleByte, 0x7F},
 
-	{"CURRCOMPACT", EmitEscapedByte, 0}, // compact currency
-	{"INT32", EmitEscapedByte, 1}, // compact currency
-	{"REV", EmitEscapedByte, 2}, // openttd revision string
-	{"SHORTCARGO", EmitEscapedByte, 3}, // short cargo description, only ### tons, or ### litres
+	// 0x85
+	{"CURRCOMPACT", EmitEscapedByte, 0},		// compact currency (32 bits)
+	{"INT32", EmitEscapedByte, 1},					// signed 32 bit integer
+	{"REV", EmitEscapedByte, 2},						// openttd revision string
+	{"SHORTCARGO", EmitEscapedByte, 3},			// short cargo description, only ### tons, or ### litres
+	{"CURRCOMPACT64", EmitEscapedByte, 4},	// compact currency 64 bits
 
 	{"STRINL", EmitStringInl, 0x81},
 

@@ -433,20 +433,19 @@ static byte *DecodeString(byte *buff, const byte *str)
 		// 0x85 is used as escape character..
 		case 0x85:
 			switch(*str++) {
-			case 0:
+			case 0: /* {CURRCOMPACT} */
 				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt32(), true);
 				break;
-			case 1: // {INT32}
+			case 1: /* {INT32} */
 				buff = FormatNoCommaNumber(buff, GetParamInt32());
 				break;
-
-			case 2: // {REV}
+			case 2: /* {REV} */
 #ifdef WITH_REV
 				buff = str_cat(buff, (const byte*)_openttd_revision);
 #endif
 				break;
-			case 3: { // {SHORTCARGO}
-				// Layout:
+			case 3: { /* {SHORTCARGO} */
+				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
 				char *s;
@@ -458,8 +457,11 @@ static byte *DecodeString(byte *buff, const byte *str)
 
 				memcpy(buff++, " ", 1);
 				while (*s) *buff++ = *s++;
+			}	break;
+			case 4: /* {CURRCOMPACT64} */
+				// 64 bit compact currency-unit
+				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), true);
 				break;
-			}
 
 			default:
 				error("!invalid escape sequence in string");

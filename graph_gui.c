@@ -13,6 +13,8 @@ static uint _legend_cargobits;
 /* GENERIC GRAPH DRAWER */
 /************************/
 
+enum {GRAPH_NUM = 16};
+
 typedef struct GraphDrawer {
 	uint sel;
 	byte num_dataset;
@@ -27,9 +29,11 @@ typedef struct GraphDrawer {
 	uint height;
 	StringID format_str_y_axis;
 	byte color_3, color_2, bg_line_color;
-	byte colors[16];
-	uint32 cost[16][24];
+	byte colors[GRAPH_NUM];
+	uint64 cost[GRAPH_NUM][24]; // last 2 years
 } GraphDrawer;
+
+#define INVALID_VALUE 0x80000000
 
 void DrawGraph(GraphDrawer *gw)
 {
@@ -39,13 +43,17 @@ void DrawGraph(GraphDrawer *gw)
 	int color;
 	int right, bottom;
 	int num_x, num_dataset;
-	uint32 *row_ptr, *col_ptr;
-	int32 mx;
+	uint64 *row_ptr, *col_ptr;
+	int64 mx;
 	int adj_height;
-	uint32 y_scaling, tmp;
-	int32 value;
-	int32 cur_val;
+	uint64 y_scaling, tmp;
+	int64 value;
+	int64 cur_val;
 	uint sel;
+
+	/* the colors and cost array of GraphDrawer must accomodate 
+	 * both values for cargo and players. So if any are higher, quit */
+	assert(GRAPH_NUM >= NUM_CARGO && GRAPH_NUM >= MAX_PLAYERS);
 
 	color = _color_list[gw->bg_line_color].window_color_1b;
 
@@ -83,26 +91,34 @@ void DrawGraph(GraphDrawer *gw)
 	if (gw->num_on_x_axis == 0)
 		return;
 
-	num_dataset = gw->num_dataset;assert(num_dataset > 0);
+	num_dataset = gw->num_dataset;
+	assert(num_dataset > 0);
+
 	row_ptr = gw->cost[0];
 	mx = 0;
+		/* bit selection for the showing of various players, base max element
+		 * on to-be shown player-information. This way the graph can scale */
+	sel = gw->sel;
 	do {
-		num_x = gw->num_on_x_axis;assert(num_x > 0);
-		col_ptr = row_ptr;
-		do {
-			if (*col_ptr != 0x80000000) {
-				mx = max(mx, myabs(*col_ptr));
-			}
-		} while (col_ptr++, --num_x);
-	} while (row_ptr+=24, --num_dataset);
+		if (!(sel&1)) {
+			num_x = gw->num_on_x_axis;
+			assert(num_x > 0);
+			col_ptr = row_ptr;
+			do {
+				if (*col_ptr != INVALID_VALUE) {
+					mx = max64(mx, myabs64(*col_ptr));
+				}
+			} while (col_ptr++, --num_x);
+		}
+	} while (sel>>=1, row_ptr+=24, --num_dataset);
 
 	/* setup scaling */
-	y_scaling = 0x80000000;
+	y_scaling = INVALID_VALUE;
 	value = adj_height * 2;
 
 	if (mx > value) {
 		mx = (mx + 7) & ~7;
-		y_scaling = (uint32) (((uint64) (value>>1) << 32) / mx);
+		y_scaling = (((uint64) (value>>1) << 32) / mx);
 		value = mx;
 	}
 
@@ -114,7 +130,7 @@ void DrawGraph(GraphDrawer *gw)
 	i = 9;
 	do {
 		SET_DPARAM16(0, gw->format_str_y_axis);
-		SET_DPARAM32(1, tmp);
+		SET_DPARAM64(1, (int64)tmp);
 		tmp -= (value >> 3);
 		DrawStringRightAligned(x, y, STR_0170, gw->color_3);
 		y += gw->height >> 3;
@@ -156,27 +172,27 @@ void DrawGraph(GraphDrawer *gw)
 	/* draw lines and dots */
 	i = 0;
 	row_ptr = gw->cost[0];
-	sel = gw->sel;
+	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_showbits)
 	do {
 		if (!(sel & 1)) {
 			x = gw->left + 55;
 			j = gw->num_on_x_axis;assert(j>0);
 			col_ptr = row_ptr;
 			color = gw->colors[i];
-			old_y = old_x = 0x80000000;
+			old_y = old_x = INVALID_VALUE;
 			do {
 				cur_val = *col_ptr++;
-				if (cur_val != (int32)0x80000000) {
-					y = adj_height - BIGMULSS(cur_val, y_scaling >> 1, 31) + gw->top;
+				if (cur_val != INVALID_VALUE) {
+					y = adj_height - BIGMULSS64(cur_val, y_scaling >> 1, 31) + gw->top;
 
 					GfxFillRect(x-1, y-1, x+1, y+1, color);
-					if (old_x != 0x80000000)
+					if (old_x != INVALID_VALUE)
 						GfxDrawLine(old_x, old_y, x, y, color);
 
 					old_x = x;
 					old_y = y;
 				} else {
-					old_x = 0x80000000;
+					old_x = INVALID_VALUE;
 				}
 			} while (x+=22,--j);
 		}
@@ -310,7 +326,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 136;
 		gd.include_neg = true;
-		gd.format_str_y_axis = STR_7023;
+		gd.format_str_y_axis = STR_CURRCOMPACT32;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -323,7 +339,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
 			for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
-				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? 0x80000000 : 	(p->old_economy[j].income + p->old_economy[j].expenses);
+				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)(p->old_economy[j].income + p->old_economy[j].expenses);
 				i++;
 			}
 			numd++;
@@ -331,11 +347,9 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.num_dataset=numd;
 
 		DrawGraph(&gd);
-		break;
-	}
-
+	}	break;
 	case WE_CLICK:
-		if (e->click.widget == 2)
+		if (e->click.widget == 2) /* Clicked on Legend */
 			ShowGraphLegend();
 		break;
 	}
@@ -386,7 +400,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 104;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_7023;
+		gd.format_str_y_axis = STR_CURRCOMPACT32;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -398,7 +412,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
 			for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
-				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? 0x80000000 : (p->old_economy[j].income);
+				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].income;
 				i++;
 			}
 			numd++;
@@ -472,7 +486,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
 			for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
-				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? 0x80000000 : p->old_economy[j].delivered_cargo;
+				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].delivered_cargo;
 				i++;
 			}
 			numd++;
@@ -766,7 +780,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
 			for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
-				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? 0x80000000 : p->old_economy[j].performance_history;
+				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].performance_history;
 				i++;
 			}
 			numd++;
@@ -830,7 +844,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 200;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_7023;
+		gd.format_str_y_axis = STR_CURRCOMPACT64;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -840,9 +854,10 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (!p->is_active)
 				continue;
+
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
 			for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
-				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? 0x80000000 : (p->old_economy[j].company_value);
+				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].company_value;
 				i++;
 			}
 			numd++;
@@ -917,7 +932,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.top = 24;
 		gd.height = 104;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_7023;
+		gd.format_str_y_axis = STR_CURRCOMPACT32;
 		gd.color_3 = 16;
 		gd.color_2 = 215;
 		gd.bg_line_color = 14;
@@ -931,7 +946,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		for(i=0; i!=NUM_CARGO; i++) {
 			gd.colors[i] = _cargo_legend_colors[i];
 			for(j=0; j!=20; j++) {
-				gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j*6+6,i);
+				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j*6+6,i);
 			}
 		}
 

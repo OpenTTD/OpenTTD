@@ -75,7 +75,7 @@ int64 CalculateCompanyValue(Player *p) {
 	}
 
 	if (p->player_money > 0)
-		value += p->player_money;
+		value += p->money64; // add real money value
 
 	return value;
 }

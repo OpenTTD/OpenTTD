@@ -13,6 +13,7 @@
 
 static INLINE int min(int a, int b) { if (a <= b) return a; return b; }
 static INLINE int max(int a, int b) { if (a >= b) return a; return b; }
+static INLINE int64 max64(int64 a, int64 b) { if (a >= b) return a; return b; }
 
 static INLINE uint minu(uint a, uint b) { if (a <= b) return a; return b; }
 static INLINE uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
@@ -47,6 +48,10 @@ static INLINE bool str_is_below(byte *a, byte *b) {
 
 static INLINE int32 BIGMULSS(int32 a, int32 b, int shift) {
 	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
+}
+
+static INLINE int64 BIGMULSS64(int64 a, int64 b, int shift) {
+	return ((a) * (b)) >> (shift);
 }
 
 static INLINE uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
@@ -194,6 +199,7 @@ static INLINE int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
 #define intswap(a,b) ((b) = intxchg_(&(a), (b)))
 
 static INLINE int myabs(int a) { if (a<0) a = -a; return a; }
+static INLINE int64 myabs64(int64 a) { if (a<0) a = -a; return a; }
 
 static INLINE void swap_byte(byte *a, byte *b) { byte t = *a; *a = *b; *b = t; }
 static INLINE void swap_uint16(uint16 *a, uint16 *b) { uint16 t = *a; *a = *b; *b = t; }

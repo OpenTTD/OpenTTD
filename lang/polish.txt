@@ -1745,7 +1745,8 @@ STR_701F                                :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                          :{WHITE}Calkowicie:
 STR_7021                                :{STRING}{STRING}
 STR_7022_INCOME_GRAPH                   :{WHITE}Wykres przychodow
-STR_7023                                :{CURRCOMPACT}
+STR_CURRCOMPACT32							:{CURRCOMPACT}
+STR_CURRCOMPACT64							:{CURRCOMPACT64}
 STR_7024                                :{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH         :{WHITE}Wykres obrotow
 STR_7026_BANK_BALANCE                   :{WHITE}Bilans bankowy
