@@ -597,6 +597,14 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 {
 	uint32 full = 0, not_full = 0;
 
+	//special handling of aircraft
+	
+	//if the aircraft carries passengers and is NOT full, then
+	//continue loading, no matter how much mail is in
+	if ((v->type == VEH_Aircraft) && (v->cargo_type == CT_PASSENGERS) && (v->cargo_cap != v->cargo_count)) {
+		return true;
+	}
+
 	// patch should return "true" to continue loading, i.e. when there is no cargo type that is fully loaded.
 	do {
 		//Should never happen, but just in case future additions change this

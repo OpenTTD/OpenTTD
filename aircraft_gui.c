@@ -204,14 +204,53 @@ static void ShowBuildAircraftWindow(uint tile)
 	}
 }
 
-const byte _aircraft_refit_normal[] = { 0,1,4,5,6,7,8,9,10,0xFF };
-const byte _aircraft_refit_arctic[] = { 0,1,4,5,6,7,9,11,10,0xFF };
-const byte _aircraft_refit_desert[] = { 0,4,5,8,6,7,9,10,0xFF };
-const byte _aircraft_refit_candy[] = { 0,1,3,5,7,8,9,6,4,10,11,0xFF };
+#define MAX_REFIT 0xFF
+
+const byte _aircraft_refit_normal[] = { 
+	CT_PASSENGERS,
+	CT_MAIL,
+	CT_GOODS,
+	CT_VALUABLES,
+	MAX_REFIT 
+};
+
+const byte _aircraft_refit_arctic[] = { 
+	CT_PASSENGERS,
+	CT_MAIL,
+	CT_GOODS,
+	CT_FOOD,
+	MAX_REFIT 
+};
+
+const byte _aircraft_refit_desert[] = { 
+	CT_PASSENGERS,
+	CT_MAIL,
+	CT_FRUIT,
+	CT_GOODS,
+	CT_DIAMONDS,
+	MAX_REFIT 
+};
+
+const byte _aircraft_refit_candy[] = { 
+	CT_PASSENGERS,
+	CT_SUGAR,
+	CT_TOYS,
+	CT_CANDY,
+	CT_COLA,
+	CT_COTTON_CANDY,
+	CT_BUBBLES,
+	CT_TOFFEE,
+	CT_BATTERIES,
+	CT_PLASTIC,
+	CT_FIZZY_DRINKS,
+	MAX_REFIT
+};
 
 const byte * const _aircraft_refit_types[4] = {
 	_aircraft_refit_normal, _aircraft_refit_arctic, _aircraft_refit_desert, _aircraft_refit_candy
 };
+
+#undef MAX_REFIT
 
 static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 {

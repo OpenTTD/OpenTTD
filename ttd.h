@@ -239,14 +239,18 @@ enum {
 	CT_FOOD = 11,
 
 	// Arctic
+	CT_WHEAT = 6,
 	CT_HILLY_UNUSED = 8,
 	CT_PAPER = 9,
+	CT_GOLD = 10,
 
 	// Tropic
 	CT_RUBBER = 1,
 	CT_FRUIT = 4,
+	CT_MAIZE = 6,
 	CT_COPPER_ORE = 8,
 	CT_WATER = 9,
+	CT_DIAMONDS = 10,
 
 	// Toyland
 	CT_SUGAR = 1,

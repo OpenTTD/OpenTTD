@@ -416,18 +416,30 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	byte SkipStoppedInHangerCheck = (p2 & 0x100) >> 8; //excludes the cargo value
 	byte new_cargo_type = p2 & 0xFF; //gets the cargo number
+	AircraftVehicleInfo *avi;
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
 	v = GetVehicle(p1);
+	avi = AircraftVehInfo(v->engine_type);
 	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
 		return CMD_ERROR;
 
-	pass = AircraftVehInfo(v->engine_type)->passenger_capacity;
-	if (new_cargo_type != CT_PASSENGERS) {
-		pass >>= 1;
-		if (new_cargo_type != CT_GOODS)
-			pass >>= 1;
+	switch (new_cargo_type) {
+		case CT_PASSENGERS:
+			pass = avi->passenger_capacity;
+			break;
+		case CT_MAIL:
+			pass = avi->passenger_capacity + avi->mail_capacity;
+			break;
+		case CT_GOODS:
+			pass = avi->passenger_capacity + avi->mail_capacity;
+			pass /= 2;
+			break;
+		default:
+			pass = avi->passenger_capacity + avi->mail_capacity;
+			pass /= 4;
+			break;
 	}
 	_aircraft_refit_capacity = pass;
 
@@ -440,7 +452,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_cap = pass;
 
 		u = v->next;
-		mail = AircraftVehInfo(v->engine_type)->mail_capacity;
+		mail = avi->mail_capacity;
 		if (new_cargo_type != CT_PASSENGERS) {
 			mail = 0;
 		}
