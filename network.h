@@ -83,6 +83,7 @@ typedef struct NetworkPlayerInfo {
 	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];			// How many vehicles are there of this type?
 	uint16 num_station[NETWORK_STATION_TYPES];			// How many stations are there of this type?
 	char players[NETWORK_PLAYERS_LENGTH];						// The players that control this company (Name1, name2, ..)
+	uint16 months_empty;														// How many months the company is empty
 } NetworkPlayerInfo;
 
 typedef struct NetworkClientInfo {
@@ -174,6 +175,10 @@ VARDEF uint16 _network_udp_broadcast;
 
 VARDEF bool _network_advertise;
 VARDEF uint16 _network_last_advertise_date;
+
+VARDEF bool _network_autoclean_companies;
+VARDEF uint8 _network_autoclean_unprotected; // Remove a company after X months
+VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X months
 
 #endif /* ENABLE_NETWORK */
 

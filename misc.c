@@ -7,6 +7,8 @@
 #include "assert.h"
 #include "saveload.h"
 #include "network.h"
+#include "network_data.h"
+#include "network_server.h"
 
 extern void StartupEconomy();
 extern void InitNewsItemStructs();
@@ -667,6 +669,10 @@ void IncreaseDate()
 		TownsMonthlyLoop();
 		IndustryMonthlyLoop();
 		StationMonthlyLoop();
+#ifdef ENABLE_NETWORK
+		if (_network_server)
+			NetworkServerMonthlyLoop();
+#endif /* ENABLE_NETWORK */
 	}
 
 	/* check if we entered a new year? */

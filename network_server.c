@@ -629,6 +629,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		}
 	}
+
+	/* Make sure companies to who people try to join are not autocleaned */
+	if (playas >= 1 && playas <= MAX_PLAYERS)
+		_network_player_info[playas-1].months_empty = 0;
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
@@ -1121,6 +1125,7 @@ void NetworkPopulateCompanyInfo(void)
 	ClientState *cs;
 	NetworkClientInfo *ci;
 	int i;
+	uint16 months_empty;
 
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) {
@@ -1130,7 +1135,9 @@ void NetworkPopulateCompanyInfo(void)
 
 		// Clean the info but not the password
 		ttd_strlcpy(password, _network_player_info[p->index].password, sizeof(password));
+		months_empty = _network_player_info[p->index].months_empty;
 		memset(&_network_player_info[p->index], 0, sizeof(NetworkPlayerInfo));
+		_network_player_info[p->index].months_empty = months_empty;
 		ttd_strlcpy(_network_player_info[p->index].password, password, sizeof(_network_player_info[p->index].password));
 
 		// Grap the company name
@@ -1225,6 +1232,67 @@ void NetworkUpdateClientInfo(uint16 client_index)
 
 	FOR_ALL_CLIENTS(cs) {
 		SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, ci);
+	}
+}
+
+/* Check if the server has autoclean_companies activated
+    Two things happen:
+      1) If a company is not protected, it is closed after 1 year (for example)
+      2) If a company is protected, protection is disabled after 3 years (for example)
+           (and item 1. happens a year later) */
+static void NetworkAutoCleanCompanies()
+{
+	ClientState *cs;
+	NetworkClientInfo *ci;
+	Player *p;
+	bool clients_in_company[MAX_PLAYERS];
+
+	if (!_network_autoclean_companies)
+		return;
+
+	memset(clients_in_company, 0, sizeof(clients_in_company));
+
+	/* Detect the active companies */
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
+			clients_in_company[ci->client_playas-1] = true;
+		}
+	}
+	if (!_network_dedicated) {
+		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
+			clients_in_company[ci->client_playas-1] = true;
+		}
+	}
+
+	/* Go through all the comapnies */
+	FOR_ALL_PLAYERS(p) {
+		/* Skip the non-active once */
+		if (!p->is_active || p->is_ai)
+			continue;
+
+		if (!clients_in_company[p->index]) {
+			/* The company is empty for one month more */
+			_network_player_info[p->index].months_empty++;
+
+			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
+			if (_network_player_info[p->index].months_empty > _network_autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
+				/* Shut the company down */
+				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
+				IConsolePrintF(_iconsole_color_default, "Auto-cleaned company #%d", p->index+1);
+			}
+			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
+			if (_network_player_info[p->index].months_empty > _network_autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
+				/* Unprotect the company */
+				_network_player_info[p->index].password[0] = '\0';
+				IConsolePrintF(_iconsole_color_default, "Auto-removed protection from company #%d", p->index+1);
+				_network_player_info[p->index].months_empty = 0;
+			}
+		} else {
+			/* It is not empty, reset the date */
+			_network_player_info[p->index].months_empty = 0;
+		}
 	}
 }
 
@@ -1383,6 +1451,11 @@ void NetworkServer_Tick(void)
 
 	/* See if we need to advertise */
 	NetworkUDPAdvertise();
+}
+
+void NetworkServerMonthlyLoop()
+{
+	NetworkAutoCleanCompanies();
 }
 
 #endif /* ENABLE_NETWORK */

@@ -733,6 +733,9 @@ static const SettingDesc network_settings[] = {
 	{"server_name",			SDT_STRINGBUF | (lengthof(_network_server_name) << 16), NULL, &_network_server_name, NULL},
 	{"connect_to_ip",		SDT_STRINGBUF | (lengthof(_network_default_ip) << 16), NULL, &_network_default_ip, NULL},
 	{"network_id",			SDT_STRINGBUF | (lengthof(_network_unique_id) << 16), NULL, &_network_unique_id, NULL},
+	{"autoclean_companies", SDT_BOOL, (void*)false, &_network_autoclean_companies, NULL},
+	{"autoclean_unprotected", SDT_UINT8, (void*)12, &_network_autoclean_unprotected, NULL},
+	{"autoclean_protected", SDT_UINT8, (void*)36, &_network_autoclean_protected, NULL},
 	{NULL,							0,											NULL,					NULL,										NULL}
 };
 #endif /* ENABLE_NETWORK */

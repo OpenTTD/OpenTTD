@@ -790,6 +790,57 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
+	// setting the server autoclean on/off
+	if (strcmp(argv[1],"autoclean_companies") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
+				_network_autoclean_companies = true;
+			else
+				_network_autoclean_companies = false;
+			IConsolePrintF(_iconsole_color_warning, "Autoclean-companies changed to '%s'", (_network_autoclean_companies)?"on":"off");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current autoclean-companies is '%s'", (_network_autoclean_companies)?"on":"off");
+			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_companies on/off.");
+		}
+		return NULL;
+	}
+
+	// setting the server autoclean protected
+	if (strcmp(argv[1],"autoclean_protected") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			_network_autoclean_protected = atoi(argv[2]);
+			IConsolePrintF(_iconsole_color_warning, "Autoclean-protected changed to '%d'", _network_autoclean_protected);
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current autoclean-protected is '%d'", _network_autoclean_protected);
+			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_protected <months>.");
+		}
+		return NULL;
+	}
+
+	// setting the server autoclean protected
+	if (strcmp(argv[1],"autoclean_unprotected") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			_network_autoclean_unprotected = atoi(argv[2]);
+			IConsolePrintF(_iconsole_color_warning, "Autoclean-unprotected changed to '%d'", _network_autoclean_unprotected);
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current autoclean-unprotected is '%d'", _network_autoclean_unprotected);
+			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_unprotected <months>.");
+		}
+		return NULL;
+	}
+
 #endif /* ENABLE_NETWORK */
 
 	// Patch-options
@@ -811,13 +862,16 @@ DEF_CONSOLE_CMD(ConSet) {
 	IConsolePrint(_iconsole_color_error, "Unknown setting");
 	IConsolePrint(_iconsole_color_error, "Known settings are:");
 #ifdef ENABLE_NETWORK
-	IConsolePrint(_iconsole_color_error, " - server_pw \"<password>\"");
+	IConsolePrint(_iconsole_color_error, " - autoclean_companies on/off");
+	IConsolePrint(_iconsole_color_error, " - autoclean_protected <months>");
+	IConsolePrint(_iconsole_color_error, " - autoclean_unprotected <months>");
 	IConsolePrint(_iconsole_color_error, " - company_pw \"<password>\"");
 	IConsolePrint(_iconsole_color_error, " - name \"<playername>\"");
-	IConsolePrint(_iconsole_color_error, " - servername \"<name>\"");
-	IConsolePrint(_iconsole_color_error, " - server_port <port>");
-	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
+	IConsolePrint(_iconsole_color_error, " - server_name \"<name>\"");
 	IConsolePrint(_iconsole_color_error, " - server_advertise on/off");
+	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
+	IConsolePrint(_iconsole_color_error, " - server_port <port>");
+	IConsolePrint(_iconsole_color_error, " - server_pw \"<password>\"");
 #endif /* ENABLE_NETWORK */
 	IConsolePrint(_iconsole_color_error, " - patch <patch_name> [<value>]");
 

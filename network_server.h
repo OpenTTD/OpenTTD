@@ -14,6 +14,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 bool NetworkServer_ReadPackets(ClientState *cs);
 void NetworkServer_Tick();
+void NetworkServerMonthlyLoop();
 
 #endif /* ENABLE_NETWORK */
 

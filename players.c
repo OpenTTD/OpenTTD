@@ -665,6 +665,8 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				NetworkUpdateClientInfo(ci->client_index);
 
 				if (ci->client_playas != 0 && ci->client_playas <= MAX_PLAYERS) {
+					_network_player_info[p->index].months_empty = 0;
+
 					memcpy(_decode_parameters, ci->client_name, 32);
 					/* XXX - What are the consequents of this? It is needed, but is it bad? */
 					_docommand_recursive = 0;
