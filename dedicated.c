@@ -88,6 +88,40 @@ static void DedicatedSignalHandler(int sig)
 }
 #endif
 
+#ifdef WIN32
+HANDLE hEvent;
+static HANDLE hThread; // Thread to close
+static char _win_console_thread_buffer[200];
+
+/* Windows Console thread. Just loop and signal when input has been received */
+void WINAPI CheckForConsoleInput(void)
+{
+	while (true) {
+		fgets(_win_console_thread_buffer, lengthof(_win_console_thread_buffer), stdin);
+		SetEvent(hEvent); // signal input waiting that the line is ready
+	}
+}
+
+void CreateWindowsConsoleThread(void)
+{
+	/* Create event to signal when console input is ready */
+	hEvent = CreateEvent(NULL, false, false, "keyboard input");    
+
+	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, 0, 0, NULL);
+	if (hThread == NULL)
+		error("Cannot create console thread!");
+
+	DEBUG(misc, 0) ("Windows console thread started...");
+}
+
+void CloseWindowsConsoleThread(void)
+{
+	CloseHandle(hThread);
+	DEBUG(misc, 0) ("Windows console thread shut down...");
+}
+
+#endif
+
 static const char *DedicatedVideoStart(char **parm) {
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
@@ -99,6 +133,7 @@ static const char *DedicatedVideoStart(char **parm) {
 #ifdef WIN32
 	// For win32 we need to allocate an console (debug mode does the same)
 	CreateConsole();
+	CreateWindowsConsoleThread();
 	SetConsoleTitle("OpenTTD Dedicated Server");
 #endif
 
@@ -110,13 +145,20 @@ static const char *DedicatedVideoStart(char **parm) {
 	DEBUG(misc,0)("Loading dedicated server...");
 	return NULL;
 }
-static void DedicatedVideoStop() { free(_dedicated_video_mem); }
+
+static void DedicatedVideoStop(void)
+{
+#ifdef WIN32
+	CloseWindowsConsoleThread();
+#endif
+	free(_dedicated_video_mem); 
+}
+
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 
 #ifdef UNIX
-
-static bool InputWaiting()
+static bool InputWaiting(void)
 {
 	struct timeval tv;
 	fd_set readfds;
@@ -133,49 +175,55 @@ static bool InputWaiting()
 
 	if (ret > 0)
 		return true;
-	else
-		return false;
+
+	return false;
 }
 #else
-static bool InputWaiting()
+static bool InputWaiting(void)
 {
-	return kbhit();
+	if (WaitForSingleObject(hEvent, 1) == WAIT_OBJECT_0)
+		return true;
+  
+	return false;
 }
 #endif
 
-static void DedicatedHandleKeyInput()
+static void DedicatedHandleKeyInput(void)
 {
-#ifdef WIN32
-	char input;
-#endif
 	static char input_line[200] = "";
 
-#if defined(UNIX) || defined(__OS2__)
-	if (InputWaiting()) {
-		if (_exit_game)
-			return;
+	if (!InputWaiting())
+		return;
 
-		fgets(input_line, 200, stdin);
-		// Forget about the final \n (or \r)
-		strtok(input_line, "\r\n");
-		IConsoleCmdExec(input_line);
-	}
+	if (_exit_game)
+		return;
+
+#if defined(UNIX) || defined(__OS2__)
+		fgets(input_line, lengthof(input_line), stdin);
 #else
-	if (InputWaiting()) {
-		input = getch();
-		printf("%c", input);
-		if (input != '\r')
-			snprintf(input_line, 200, "%s%c", input_line, input);
-		else {
-			printf("\n");
-			IConsoleCmdExec(input_line);
-			input_line[0] = '\0';
+		strncpy(input_line, _win_console_thread_buffer, lengthof(input_line));
+#endif
+
+	/* XXX - strtok() does not 'forget' \n\r if it is the first character! */
+	strtok(input_line, "\r\n"); // Forget about the final \n (or \r)
+	{ /* Remove any special control characters */
+		uint i;
+		for (i = 0; i < lengthof(input_line); i++) {
+			if (input_line[i] == '\n' || input_line[i] == '\r') // cut missed beginning '\0'
+				input_line[i] = '\0';
+
+			if (input_line[i] == '\0')
+				break;
+
+			if (!IS_INT_INSIDE(input_line[i], ' ', 256))
+				input_line[i] = ' ';
 		}
 	}
-#endif
+
+	IConsoleCmdExec(input_line); // execute command
 }
 
-static int DedicatedVideoMainLoop()
+static int DedicatedVideoMainLoop(void)
 {
 #ifndef WIN32
 	struct timeval tim;
@@ -259,10 +307,10 @@ static const char *DedicatedVideoStart(char **parm) {
 }
 
 void DedicatedFork(void) {}
-static void DedicatedVideoStop() { free(_dedicated_video_mem); }
+static void DedicatedVideoStop(void) { free(_dedicated_video_mem); }
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
-static int DedicatedVideoMainLoop() { return ML_QUIT; }
+static int DedicatedVideoMainLoop(void) { return ML_QUIT; }
 
 const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoStart,

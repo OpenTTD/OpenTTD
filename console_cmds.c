@@ -607,17 +607,7 @@ DEF_CONSOLE_CMD(ConReturn)
 /* **************************** */
 /*   default console commands   */
 /* **************************** */
-bool CloseConsoleLogIfActive()
-{
-	extern FILE* _iconsole_output_file;
-	if (_iconsole_output_file != NULL) {
-		IConsolePrintF(_iconsole_color_default, "file output complete");
-		fclose(_iconsole_output_file);
-		return true;
-	}
-
-	return false;
-}
+extern bool CloseConsoleLogIfActive(void);
 
 DEF_CONSOLE_CMD(ConScript)
 {

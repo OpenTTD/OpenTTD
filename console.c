@@ -192,9 +192,8 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline);
 					_iconsole_cmdbufferpos = 19;
 					IConsoleCmdBufferAdd(_iconsole_cmdline);
-					if (strlen(_iconsole_cmdline) != 0) // only execute if there is something typed obviously
-						IConsoleCmdExec(_iconsole_cmdline);
 
+					IConsoleCmdExec(_iconsole_cmdline);
 					IConsoleClearCommand();
 					break;
 				case WKC_CTRL | WKC_RETURN:
@@ -271,11 +270,31 @@ void IConsoleClear(void)
 		free(_iconsole_buffer[i]);
 }
 
+static void IConsoleWriteToLogFile(const char* string)
+{
+	if (_iconsole_output_file != NULL) {
+		// if there is an console output file ... also print it there
+		fwrite(string, strlen(string), 1, _iconsole_output_file);
+		fwrite("\n", 1, 1, _iconsole_output_file);
+	}
+}
+
+bool CloseConsoleLogIfActive(void)
+{
+	if (_iconsole_output_file != NULL) {
+		IConsolePrintF(_iconsole_color_default, "file output complete");
+		fclose(_iconsole_output_file);
+		return true;
+	}
+
+	return false;
+}
+
 void IConsoleFree(void)
 {
 	_iconsole_inited = false;
 	IConsoleClear();
-	if (_iconsole_output_file != NULL) fclose(_iconsole_output_file);
+	CloseConsoleLogIfActive();
 }
 
 void IConsoleResize(void)
@@ -382,6 +401,7 @@ void IConsolePrint(uint16 color_code, const char* string)
 
 	if (_network_dedicated) {
 		printf("%s\n", string);
+		IConsoleWriteToLogFile(string);
 		return;
 	}
 
@@ -403,11 +423,7 @@ void IConsolePrint(uint16 color_code, const char* string)
 	}
 	free(_ex);
 
-	if (_iconsole_output_file != NULL) {
-		// if there is an console output file ... also print it there
-		fwrite(string, strlen(string), 1, _iconsole_output_file);
-		fwrite("\n", 1, 1, _iconsole_output_file);
-	}
+	IConsoleWriteToLogFile(string);
 
 	if (_iconsole_win != NULL) SetWindowDirty(_iconsole_win);
 }
@@ -1072,6 +1088,9 @@ void IConsoleCmdExec(const char* cmdstr)
 	uint c;
 	uint i;
 	uint l;
+	
+	if (strlen(cmdstr) == 0) // only execute if there is something typed obviously
+		return;
 
 	if (_stdlib_con_developer)
 		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_cmdline: %s", cmdstr);
