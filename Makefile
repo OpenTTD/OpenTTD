@@ -114,6 +114,10 @@
 # Configuration
 #
 
+ifndef RELEASE
+RELEASE:=0.3.6
+endif
+
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
 MAKEFILE_VERSION:=6
@@ -775,6 +779,7 @@ release: all
 	@cp docs/console.txt               "/t/openttd-$(RELEASE)-morphos/docs/Console"
 	@cp COPYING                        "/t/openttd-$(RELEASE)-morphos/docs/"
 	@cp changelog.txt                  "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog"
+	@cp known-bugs.txt				   "/t/openttd-$(RELEASE)-morphos/docs/known-bugs.txt"
 	@cp os/morphos/icons/openttd.info  "/t/openttd-$(RELEASE)-morphos/$(TTD).info"
 	@cp os/morphos/icons/docs.info     "/t/openttd-$(RELEASE)-morphos/docs.info"
 	@cp os/morphos/icons/drawer.info   "/t/openttd-$(RELEASE)-morphos.info"
@@ -805,6 +810,7 @@ release: all
 	@cp changelog.txt "OpenTTD $(RELEASE)"/docs/
 	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
 	@cp os/macos/*.webloc "OpenTTD $(RELEASE)"
+	@cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
 	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
 	@rm -fr "OpenTTD $(RELEASE)"
 
