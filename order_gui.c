@@ -169,9 +169,6 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
 				if ((_map5[tile]&0xFC)==0xC0)
 					return (GetDepotByTile(tile)<<8) | OT_GOTO_DEPOT | OF_UNLOAD;
-
-				if ((_map5[tile]&0xFE)==0xC4)
-					return (GetCheckpointByTile(tile)<<8) | OT_GOTO_CHECKPOINT;
 			}
 			break;
 
@@ -197,6 +194,13 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 			}
 		}
 	}
+
+	// check checkpoint
+	if (IS_TILETYPE(tile, MP_RAILWAY)
+	&& v->type == VEH_Train 
+	&& _map_owner[tile] == _local_player
+	&& (_map5[tile]&0xFE)==0xC4)
+		return (GetCheckpointByTile(tile)<<8) | OT_GOTO_CHECKPOINT;
 
 	if (IS_TILETYPE(tile, MP_STATION)) {
 		st = DEREF_STATION(st_index = _map2[tile]);
