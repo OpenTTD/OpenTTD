@@ -385,9 +385,20 @@ void OnTick_Town()
 
 }
 
+static inline byte GetTownRoadBitsByTile(TileIndex tile) {
+	byte b = GetRoadBitsByTile(tile);
+
+	/* Don't get fooled and check if we didn't hit a station.
+	 * That little roadstation pinkeye returns nonzero
+	 * GetRoadBitsByTile(), but the road doesn't really go through
+	 * it (nor can we extend it at that place, but it is reasonable
+	 * to build a road along the station). */
+	return IS_TILETYPE(tile, MP_STATION) ? 0 : b;
+}
+
 static byte GetTownRoadMask(TileIndex tile)
 {
-	byte b = GetRoadBitsByTile(tile);
+	byte b = GetTownRoadBitsByTile(tile);
 	byte r=0;
 	if (b&1) r|=10;
 	if (b&2) r|=5;
@@ -408,15 +419,8 @@ static bool IsRoadAllowedHere(uint tile, int dir)
 	TILE_ASSERT(tile);
 
 	for(;;) {
-		// Check if we didn't hit a station. That little roadstation
-		// pinkeye returns nonzero GetRoadBitsByTile(), but the road
-		// doesn't really go through it (nor can we extend it at
-		// that place).
-		if (IS_TILETYPE(tile, MP_STATION))
-			return false;
-
 		// Check if there already is a road at this point?
-		if (GetRoadBitsByTile(tile) == 0) {
+		if (GetTownRoadBitsByTile(tile) == 0) {
 			// No, try to build one in the direction.
 			// if that fails clear the land, and if that fails exit.
 			// This is to make sure that we can build a road here later.
@@ -741,7 +745,7 @@ bool GrowTown(Town *t)
 	tile = t->xy;
 	ptr = _town_coord_mod;
 	do {
-		if (GetRoadBitsByTile(tile) != 0) {
+		if (GetTownRoadBitsByTile(tile) != 0) {
 			int r = GrowTownAtRoad(t, tile);
 			_current_player = old_player;
 			return r;
