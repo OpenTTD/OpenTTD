@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "tile.h"
 
 void SetMapExtraBits(TileIndex tile, byte bits)

@@ -342,6 +342,10 @@ SOURCE=.\texteff.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\tile.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\ttd.c
 # End Source File
 
@@ -527,6 +531,10 @@ SOURCE=.\station.h
 
 # Begin Source File
 SOURCE=.\StdAfx.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\tile.h
 # End Source File
 
 # Begin Source File

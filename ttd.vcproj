@@ -908,6 +908,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\tile.c">
+			</File>
+			<File
 				RelativePath="ttd.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -1237,6 +1240,9 @@
 			</File>
 			<File
 				RelativePath="StdAfx.h">
+			</File>
+			<File
+				RelativePath=".\tile.h">
 			</File>
 			<File
 				RelativePath=".\town.h">
