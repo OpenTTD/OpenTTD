@@ -596,7 +596,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 {
 	NetworkAction action = NetworkRecv_uint8(p);
 	char msg[MAX_TEXT_MSG_LEN];
-	NetworkClientInfo *ci, *ci_to;
+	NetworkClientInfo *ci = NULL, *ci_to;
 	uint16 index;
 	char name[NETWORK_NAME_LENGTH];
 	bool self_send;

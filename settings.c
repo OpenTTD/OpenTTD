@@ -952,14 +952,14 @@ static void LoadList(IniFile *ini, const char *grpname, char **list, int len)
 static void SaveList(IniFile *ini, const char *grpname, char **list, int len)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
-	IniItem *item;
+	IniItem *item = NULL;
 	int i;
 	bool first = true;
 
 	if (!group)
 		return;
-	for ( i=0; i != len; i++) {
-		if ( list[i] == '\0' ) continue;
+	for (i = 0; i != len; i++) {
+		if (list[i] == '\0') continue;
 
 		if (first) { // add first item to the head of the group
 			item = ini_item_alloc(group, list[i], strlen(list[i]));

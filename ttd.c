@@ -519,7 +519,7 @@ void LoadIntroGame()
 	if (_music_driver->is_song_playing()) ResetMusic();
 }
 
-extern void DedicatedFork();
+extern void DedicatedFork(void);
 
 int ttd_main(int argc, char* argv[])
 {

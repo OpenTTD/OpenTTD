@@ -57,15 +57,14 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 4: ShowPatchesSelection(); break;
 		case 5: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
 		case 7:
-#ifdef ENABLE_NETWORK
+		#ifdef ENABLE_NETWORK
 			if (!_network_available) {
-				ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-			} else {
+				ShowErrorMessage(-1, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+			} else
 				ShowNetworkGameWindow();
-			}
-#else
-			ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-#endif /* ENABLE_NETWORK */
+		#else
+			ShowErrorMessage(-1 ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+		#endif /* ENABLE_NETWORK */
 			break;
 		case 8: ShowGameOptions(); break;
 		case 9: ShowGameDifficulty(); break;

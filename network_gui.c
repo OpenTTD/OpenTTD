@@ -1315,7 +1315,7 @@ void ShowJoinStatusWindow()
 	AllocateWindowDesc(&_network_join_status_window_desc);
 }
 
-void ShowJoinStatusWindowAfterJoin()
+void ShowJoinStatusWindowAfterJoin(void)
 {
 	/* This is a special instant of ShowJoinStatusWindow, because
 	    it is opened after the map is loaded, but the client maybe is not
@@ -1454,5 +1454,6 @@ void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, by
 	WP(w,querystr_d).buf = _edit_str_buf;
 }
 
-
+#else
+void ShowJoinStatusWindowAfterJoin(void) {}
 #endif /* ENABLE_NETWORK */

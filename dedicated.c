@@ -34,7 +34,7 @@ static void *_dedicated_video_mem;
 
 #ifdef UNIX
 /* We want to fork our dedicated server */
-void DedicatedFork()
+void DedicatedFork(void)
 {
 	/* Fork the program */
 	_dedicated_pid = fork();
@@ -242,6 +242,7 @@ static const char *DedicatedVideoStart(char **parm) {
 	return NULL;
 }
 
+void DedicatedFork(void) {}
 static void DedicatedVideoStop() { free(_dedicated_video_mem); }
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }

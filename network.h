@@ -132,8 +132,6 @@ VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
 VARDEF char _network_player_name[NETWORK_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
-#define MAX_SAVED_SERVERS 10
-VARDEF char *_network_host_list[MAX_SAVED_SERVERS];
 
 VARDEF uint16 _network_own_client_index;
 VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
@@ -186,9 +184,13 @@ VARDEF bool _network_autoclean_companies;
 VARDEF uint8 _network_autoclean_unprotected; // Remove a company after X months
 VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X months
 
+NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
+
 #endif /* ENABLE_NETWORK */
 
 // Those variables must always be registered!
+#define MAX_SAVED_SERVERS 10
+VARDEF char *_network_host_list[MAX_SAVED_SERVERS];
 VARDEF bool _networking;
 VARDEF bool _network_available;  // is network mode available?
 VARDEF bool _network_server; // network-server is active
@@ -199,7 +201,6 @@ void ParseConnectionString(const byte **player, const byte **port, byte *connect
 void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const byte *b);
 void NetworkRebuildHostList();
-NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
 void NetworkChangeCompanyPassword(const char *str);
 
 #endif /* NETWORK_H */

@@ -2370,7 +2370,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 
 
 void ShowSelectGameWindow();
-extern void ShowJoinStatusWindowAfterJoin();
+extern void ShowJoinStatusWindowAfterJoin(void);
 
 void SetupColorsAndInitialWindow()
 {
