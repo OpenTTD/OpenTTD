@@ -218,6 +218,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\lithuanian.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating lithuanian language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\lithuanian.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\norwegian.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
