@@ -1083,8 +1083,8 @@ STR_WAYPOINTNAME_CITY						:{TOWN}i ellenõrzõ pont
 STR_WAYPOINTNAME_CITY_SERIAL					:{TOWN}i {COMMA16}. ellenõrzõ pont
 STR_LANDINFO_WAYPOINT						:Ellenõrzõ pont
 
-STR_WAYPOINT							:{WHITE}Útipont
-STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Válassz útipont tipust
+STR_WAYPOINT							:{WHITE}Ellenõrzõ pont
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Válassz ellenõrzõ-pont tipust
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
