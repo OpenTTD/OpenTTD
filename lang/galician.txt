@@ -862,29 +862,23 @@ STR_TOWNNAME_ROMANIAN						:Rumano
 STR_TOWNNAME_CZECH						:Checo
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Libra ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dólar ($)
-STR_CURR_FF							:Franco (FF)
-STR_CURR_DM							:Marco alemán (DM)
+STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
-STR_CURR_PT							:Peseta (Pt)
-STR_CURR_FT							:Forint Húngaro (Ft)
-STR_CURR_ZL							:Zloty Polaco (zl)
 STR_CURR_ATS							:Chelín Austríaco (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
+STR_CURR_CHF							:Franco Suizo (CHF)
+STR_CURR_CZK							:Corona Checa (CZK)
 STR_CURR_DKK							:Corona Danesa (DKK)
 STR_CURR_FIM							:Marco Finés (FIM)
 STR_CURR_GRD							:Dracma Grego (GRD)
-STR_CURR_CHF							:Franco Suizo (CHF)
-STR_CURR_NLG							:Florín Holandés (NLG)
-STR_CURR_ITL							:Lira Italiana (ITL)
-STR_CURR_SEK							:Corona Sueca(SEK)
-STR_CURR_RUR							:Rublo Ruso (rur)
-STR_CURR_CZK							:Corona Checa (CZK)
 STR_CURR_ISK							:Corona Islandesa (ISK)
+STR_CURR_ITL							:Lira Italiana (ITL)
+STR_CURR_NLG							:Florín Holandés (NLG)
 STR_CURR_NOK							:Corona Noruguesa (NOK)
 STR_CURR_ROL							:Leu Rumano (Lei)
-STR_CURR_EUR							:Euro (¤)
+STR_CURR_RUR							:Rublo Ruso (rur)
+STR_CURR_SEK							:Corona Sueca(SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2648,6 +2642,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Puntos totais de puntos posibles
 STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Configuración Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplica-los cambios
 STR_NEWGRF_FILENAME						:{BLACK}Ficheiro:
+
 
 
 

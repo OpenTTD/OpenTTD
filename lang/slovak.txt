@@ -858,29 +858,23 @@ STR_TOWNNAME_ROMANIAN						:Rumunske
 STR_TOWNNAME_CZECH						:Ceske
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Libry ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dolare ($)
-STR_CURR_FF							:Franky (FF)
-STR_CURR_DM							:Nemecke Marky (DM)
+STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Jeny ({YENSIGN})
-STR_CURR_PT							:Pesos (Pt)
-STR_CURR_FT							:Madarske Forinty (Ft)
-STR_CURR_ZL							:Polske Zlote (zl)
 STR_CURR_ATS							:Rakuske Silingy (ATS)
 STR_CURR_BEF							:Belgicke Franky (BEF)
+STR_CURR_CHF							:Svajciarske Franky (CHF)
+STR_CURR_CZK							:Ceske Koruny (CZK)
 STR_CURR_DKK							:Danske Koruny (DKK)
 STR_CURR_FIM							:Finske Marky (FIM)
 STR_CURR_GRD							:Grecke Drachny (GRD)
-STR_CURR_CHF							:Svajciarske Franky (CHF)
-STR_CURR_NLG							:Danske Guldeny (NLG)
-STR_CURR_ITL							:Talianske Liry (ITL)
-STR_CURR_SEK							:Svedske Koruny (SEK)
-STR_CURR_RUR							:Rusle Ruble (rur)
-STR_CURR_CZK							:Ceske Koruny (CZK)
 STR_CURR_ISK							:Islandske Koruny (ISK)
+STR_CURR_ITL							:Talianske Liry (ITL)
+STR_CURR_NLG							:Danske Guldeny (NLG)
 STR_CURR_NOK							:Norske Koruny (NOK)
 STR_CURR_ROL							:Rumunske Lei
-STR_CURR_EUR							:Euro (¤)
+STR_CURR_RUR							:Rusle Ruble (rur)
+STR_CURR_SEK							:Svedske Koruny (SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2691,6 +2685,7 @@ STR_NEWGRF_TIP							:{BLACK}Zoznam sady nainstalovanych novych grafik. Nastaven
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
 STR_NEWGRF_FILENAME						:{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
+
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

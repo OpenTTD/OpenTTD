@@ -855,29 +855,23 @@ STR_TOWNNAME_ROMANIAN						:Rumænske
 STR_TOWNNAME_CZECH						:Tjekkiske
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Pund ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dollar ($)
-STR_CURR_FF							:Franc (FF)
-STR_CURR_DM							:Deutschmark (DM)
+STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
-STR_CURR_PT							:Peseta (Pt)
-STR_CURR_FT							:Ungarsk Forint (Ft)
-STR_CURR_ZL							:Polsk Zloty (zl)
 STR_CURR_ATS							:Østrisk Shilling (ATS)
 STR_CURR_BEF							:Belgisk Franc (BEF)
+STR_CURR_CHF							:Sweiziske Franc (CHF)
+STR_CURR_CZK							:Tjekkiske Koruna (CZK)
 STR_CURR_DKK							:Danske Kroner (DKK)
 STR_CURR_FIM							:Finske Markka (FIM)
 STR_CURR_GRD							:Græske Drachmer (GRD)
-STR_CURR_CHF							:Sweiziske Franc (CHF)
-STR_CURR_NLG							:Hollandske Guilder (NLG)
-STR_CURR_ITL							:Italienske Lire (ITL)
-STR_CURR_SEK							:Svenske Kroner (SEK)
-STR_CURR_RUR							:Russiske Rubel (rur)
-STR_CURR_CZK							:Tjekkiske Koruna (CZK)
 STR_CURR_ISK							:Islandske Kroner (ISK)
+STR_CURR_ITL							:Italienske Lire (ITL)
+STR_CURR_NLG							:Hollandske Guilder (NLG)
 STR_CURR_NOK							:Norske Kroner (NOK)
 STR_CURR_ROL							:Rumænske Lei
-STR_CURR_EUR							:Euro (¤)
+STR_CURR_RUR							:Russiske Rubel (rur)
+STR_CURR_SEK							:Svenske Kroner (SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Sprog
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2585,6 +2579,7 @@ STR_NEWGRF_TIP							:{BLACK}Liste med alle Newgrf sæt du har installeret. Marke
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
 
 
 

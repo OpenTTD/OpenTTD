@@ -724,6 +724,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Hönnunarnöfn farartækja
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Sjálfgefið
 STR_02BF_CUSTOM							:Sérval
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Vista sérvalin nöfn
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Nöfn farartækja
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Vista sérvalin hönnunarnöfn farartækja á disk
 
@@ -738,6 +739,8 @@ STR_NEWGRF_SETTINGS						:Newgrf stillingar
 STR_NEWGRF_SETTINGS2						:Newgrf stillingar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Loka ÖLLUM gluggum
+STR_CLOSE_ALL_WINDOWS2						:Loka ÖLLUM gluggum
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bæjarnöfn sýnd
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Bæjarnöfn sýnd
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stöðvarnöfn sýnd
@@ -861,29 +864,24 @@ STR_TOWNNAME_ROMANIAN						:Rúmensk
 STR_TOWNNAME_CZECH						:Tékknesk
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Sterlingspund ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dollarar ($)
-STR_CURR_FF							:Frankar (FF)
-STR_CURR_DM							:Þýsk mörk (DM)
+STR_CURR_EUR							:Evra (¤)
 STR_CURR_YEN							:Jen ({YENSIGN})
-STR_CURR_PT							:Pesetar (Pt)
-STR_CURR_FT							:Ungverskar Forintur (Ft)
-STR_CURR_ZL							:Pólsk Zloty (zl)
 STR_CURR_ATS							:Austurrískur skildingur (ATS)
 STR_CURR_BEF							:Belgískur Franki (BEF)
+STR_CURR_CHF							:Svissneskur Franki (CHF)
+STR_CURR_CZK							:Tékknesk Kóróna (CZK)
 STR_CURR_DKK							:Dönsk Króna (DKK)
 STR_CURR_FIM							:Finnskt mark (FIM)
 STR_CURR_GRD							:Grísk drakma (GRD)
-STR_CURR_CHF							:Svissneskur Franki (CHF)
-STR_CURR_NLG							:Hollensk Gyllini (NLG)
-STR_CURR_ITL							:Ítölsk Líra (ITL)
-STR_CURR_SEK							:Sænsk Króna (SEK)
-STR_CURR_RUR							:Rússnesk Rúbla (rur)
-STR_CURR_CZK							:Tékknesk Kóróna (CZK)
 STR_CURR_ISK							:Íslensk Króna (ISK)
+STR_CURR_ITL							:Ítölsk Líra (ITL)
+STR_CURR_NLG							:Hollensk Gyllini (NLG)
 STR_CURR_NOK							:Norsk króna (NOK)
 STR_CURR_ROL							:Rúmensk leu (Lei)
-STR_CURR_EUR							:Evra (¤)
+STR_CURR_RUR							:Rússnesk Rúbla (rur)
+STR_CURR_SEK							:Sænsk Króna (SEK)
+
+STR_CURR_CUSTOM							:Sérvalið...
 
 STR_OPTIONS_LANG						:{BLACK}Tungumál
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1172,6 +1170,7 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Breyta lest
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin flytur
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest til að flytja valinn varning
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Get ekki breytt lest...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Bil milli skoðana er í hundraðshlutum: {ORANGE}{STRING}
 
 TEMP_AI_ACTIVATED						:{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnablikinu virka aðeins flutningabílar og strætisvagnar!
 
@@ -1181,6 +1180,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Fjölspilun
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nafn leikmanns:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Þetta er nafnið sem aðrir leikmenn munu þekkja þig undir
+STR_NETWORK_CONNECTION						:{BLACK}Tenging:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Veldu milli alnetleiks eða staðarnetleiks
 
 STR_NETWORK_START_SERVER					:{BLACK}Hefja þjón
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Hefja eigin þjón
@@ -1188,12 +1189,30 @@ STR_NETWORK_START_SERVER_TIP					:{BLACK}Hefja eigin þjón
 STR_NETWORK_GAME_NAME						:{BLACK}Nafn
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nafn leiksins
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Tungumál, útgáfa þjóns o.s.frv.
+STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Ýttu á leik á listanum til að velja hann
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Finna þjón
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leita að þjónum á neti
+STR_NETWORK_ADD_SERVER						:{BLACK}Bæta við þjóni
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Bætir þjóni við listann sem mun alltaf sýna leiki í spilun
+STR_NETWORK_ENTER_IP						:{BLACK}Sláðu inn IP tölu þjónsins
 
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Notendur
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Tengdir notendur / hámarksfjöldi notenda
+STR_NETWORK_GAME_INFO						:{SILVER}UPPLÝSINGAR UM LEIK
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Notendur:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Tungumál:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Stærð:  {WHITE}{COMMA16}x{COMMA16}
-STR_NETWORK_PASSWORD						:{BLACK}Lykilorð:
+STR_NETWORK_SERVER_VERSION					:{SILVER}Útgáfa þjóns:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Veffang þjóns:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Upphafsdagsetning:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Núverandi dagsetning:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Varið með lykilorði!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}ÞJÓNN AFTENGDUR
+STR_NETWORK_SERVER_FULL						:{SILVER}ÞJÓNN FULLUR
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}ÚTGÁFA STEMMIR EKKI
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Tengjast leik
 
@@ -1202,35 +1221,90 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Hefja nýjan fjölspilunarleik
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nafn leiks:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nafn leiksins mun vera sýnilegt öðrum leikmönnum í fjölspilunarvalmyndinni
+STR_NETWORK_SET_PASSWORD					:{BLACK}Veldu lykilorð
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Verndaðu leikinn þinn með lykilorði ef þú vilt ekki að aðrir tengist honum
 STR_NETWORK_SELECT_MAP						:{BLACK}Veldu kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvaða kort viltu spila?
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Hámarksfjöldi notenda:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Veldu hámarksfjölda notenda. Ekki þarf að fylla öll pláss
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:Staðarnet / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (auglýsa)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 notendur
+STR_NETWORK_3_CLIENTS						:3 notendur
+STR_NETWORK_4_CLIENTS						:4 notendur
+STR_NETWORK_5_CLIENTS						:5 notendur
+STR_NETWORK_6_CLIENTS						:6 notendur
+STR_NETWORK_7_CLIENTS						:7 notendur
+STR_NETWORK_8_CLIENTS						:8 notendur
+STR_NETWORK_9_CLIENTS						:9 notendur
+STR_NETWORK_10_CLIENTS						:10 notendur
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Tungumál:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Hefja leik
+STR_NETWORK_START_GAME_TIP					:{BLACK}Hefja nýjan netleik í korti eða landslagi sem valið er tilviljanakennt
 STR_NETWORK_LOAD_GAME						:{BLACK}Hlaða leik
 STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Hefja aftur vistaðan fjölspilunarleik (vertu viss um að tengjast sem réttur leikmaður)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Opna landslag
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Hefja nýjan netleik í landslagi
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Hvað sem er
+STR_NETWORK_LANG_ENGLISH					:Enska
+STR_NETWORK_LANG_GERMAN						:Þýska
+STR_NETWORK_LANG_FRENCH						:Franska
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Anddyri fjölspilunarleiks
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Undirbý tengingu við:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Listi yfir öll fyrirtæki í leiknum. Þú getur annað hvort gengið í lið með einu eða komið á fót nýju ef pláss er fyrir nýtt
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nýtt fyrirtæki
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Koma á fót nýju fyrirtæki
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Fylgjast með leik
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Fylgjast með leiknum sem áhorfandi
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Ganga í lið með fyrirtæki
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Hjálpa við stjórnun þessa fyrirtækis
+STR_NETWORK_REFRESH						:{BLACK}Endurnýja þjón
+STR_NETWORK_REFRESH_TIP						:{BLACK}Endurnýja upplýsingar um þjón
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}UPPLÝSINGAR UM FYRIRTÆKI
 
 STR_NETWORK_COMPANY_NAME					:{SILVER}Nafn fyrirtækis:  {WHITE}{STRING}
+STR_NETWORK_VALUE						:{SILVER}Virði fyrirtækis:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Núverandi staða:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Innkoma síðasta árs:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Frammistaða:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Farartæki:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stöðvar:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Leikmenn:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Tengist...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Tengist..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Staðfesti..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Bíð..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Hala niður korti..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Vinn úr gögnum..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Skrái..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Næ í upplýsingar um leik..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Næ í upplýsingar um fyrirtæki..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} þjónar fyrir framan þig
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kílóbæti niðurhöluð hingaðtil
 
+STR_NETWORK_DISCONNECT						:{BLACK}Aftengjast
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Sláðu inn skilaboð til að senda
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Sláðu inn upphæð fjár sem þú villt gefa
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Þjónn er varinn. Sláðu inn lykilorð
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Fyrirtæki er varið. Sláðu inn lykilorð
+STR_NETWORK_CLIENT_LIST						:{WHITE}Listi yfir leikmenn
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Enginn netbúnaður fannst eða of flókið án ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Fann enga netleiki
@@ -1238,9 +1312,25 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Þjóninn svaraði ekki fyrirspurninni
 STR_NETWORK_ERR_DESYNC						:{WHITE} Samstilling netleiks mistókst.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Tenging við netleik glataðist.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Gat ekki hlaðið vistuðum leik af þjóni.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Gat ekki ræst þjón
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Gat ekki tengst
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tenging #{NUMU16} fjaraði út.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rangt lykilorð
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Þjónninn er fullur
+STR_NETWORK_ERR_KICKED						:{WHITE} Þér var hent út úr leiknum
+STR_NETWORK_ERR_CHEATER						:{WHITE} Svindl er ekki leyft á þessum þjóni
 
+STR_NETWORK_ERR_LEFT						:hefur hætt í leiknum
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:almenn villa
+STR_NETWORK_ERR_CLIENT_DESYNC					:samstillingar villa
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:gat ekki opnað kort
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:tenging týndist
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:tók á móti undarlegum pakka
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:röng útgáfa
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nafn nú þegar í notkun
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:rangt leikja lykilorð
+STR_NETWORK_ERR_CLIENT_KICKED					:hent út af þjón
 ############ End of leave-in-this-order
 
 
@@ -1530,6 +1620,7 @@ STR_3033_ACCEPTS						:{BLACK}Tekur við
 
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

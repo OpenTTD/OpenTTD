@@ -858,29 +858,23 @@ STR_TOWNNAME_ROMANIAN						:Romeno
 STR_TOWNNAME_CZECH						:Checo
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Libra ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dólar ($)
-STR_CURR_FF							:Franco (FF)
-STR_CURR_DM							:Marco Alemão (DM)
+STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
-STR_CURR_PT							:Peseta (Pt)
-STR_CURR_FT							:Forint Húngaro (Ft)
-STR_CURR_ZL							:Zloty Polaco (zl)
 STR_CURR_ATS							:Shilling Austríaco (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
+STR_CURR_CHF							:Franco Suíço (CHF)
+STR_CURR_CZK							:Coroa Checa (CZK)
 STR_CURR_DKK							:Coroa Dinamarquesa (DKK)
 STR_CURR_FIM							:Marco Finlandês (FIM)
 STR_CURR_GRD							:Dracma Grego (GRD)
-STR_CURR_CHF							:Franco Suíço (CHF)
-STR_CURR_NLG							:Guilda Holandesa (NLG)
-STR_CURR_ITL							:Lira Italiana (ITL)
-STR_CURR_SEK							:Coroa Sueca (SEK)
-STR_CURR_RUR							:Rublo Russo (rur)
-STR_CURR_CZK							:Coroa Checa (CZK)
 STR_CURR_ISK							:Coroa Islandesa (ISK)
+STR_CURR_ITL							:Lira Italiana (ITL)
+STR_CURR_NLG							:Guilda Holandesa (NLG)
 STR_CURR_NOK							:Coroa Norueguesa (NOK)
 STR_CURR_ROL							:Lei Romeno (Lei)
-STR_CURR_EUR							:Euro (¤)
+STR_CURR_RUR							:Rublo Russo (rur)
+STR_CURR_SEK							:Coroa Sueca (SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2645,6 +2639,7 @@ STR_NEWGRF_TIP							:{BLACK}Lista de todos os conjuntos Newgrf que instalou. Cl
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME						:{BLACK}Nome do ficheiro:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
 
 
 

@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Nastavení newgrf
 STR_NEWGRF_SETTINGS2						:Nastavení newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Zavrit VSECHNA okna
+STR_CLOSE_ALL_WINDOWS2						:Zavrit VSECHNA okna
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení jmen mest
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Zobrazení jmen mest
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazení jmen stanic
@@ -866,29 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumunská
 STR_TOWNNAME_CZECH						:Ceska
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Anglické libry ({POUNDSIGN})
-STR_CURR_DOLLARS						:Americké dolary ($)
-STR_CURR_FF							:Francouzské franky (FF)
-STR_CURR_DM							:Nemecke marky (DM)
+STR_CURR_GBP							:Libry ({POUNDSIGN})
+STR_CURR_USD							:Dolary ($)
+STR_CURR_EUR							:Eura (¤)
 STR_CURR_YEN							:Japonské jeny ({YENSIGN})
-STR_CURR_PT							:Spanelske pesety (Pt)
-STR_CURR_FT							:Madarske forinty (Ft)
-STR_CURR_ZL							:Polské zlote (zl)
 STR_CURR_ATS							:Rakouské silinky (ATS)
 STR_CURR_BEF							:Belgické franky (BEF)
-STR_CURR_DKK							:Dánské koruny (DKK)
-STR_CURR_FIM							:Finské marky (FIM)
-STR_CURR_GRD							:Recke drachmy (GRD)
 STR_CURR_CHF							:Svycarske franky (CHF)
-STR_CURR_NLG							:Holandské guldeny (NLG)
-STR_CURR_ITL							:Italské liry (ITL)
-STR_CURR_SEK							:Svedske koruny (SEK)
-STR_CURR_RUR							:Ruské rubly (RUR)
 STR_CURR_CZK							:Ceske koruny (CZK)
+STR_CURR_DEM							:Nemecke marky (DEM)
+STR_CURR_DKK							:Dánské koruny (DKK)
+STR_CURR_ESP							:Pesety (ESP)
+STR_CURR_FIM							:Finské marky (FIM)
+STR_CURR_FRF							:Franky (FRF)
+STR_CURR_GRD							:Recke drachmy (GRD)
+STR_CURR_HUF							:Madarske forinty (HUF)
 STR_CURR_ISK							:Islandské koruny (ISK)
+STR_CURR_ITL							:Italské liry (ITL)
+STR_CURR_NLG							:Holandské guldeny (NLG)
 STR_CURR_NOK							:Norské koruny (NOK)
+STR_CURR_PLN							:Polské zloté (PLN)
 STR_CURR_ROL							:Rumunský Lei (ROL)
-STR_CURR_EUR							:Eura (¤)
+STR_CURR_RUR							:Ruské rubly (RUR)
+STR_CURR_SEK							:Svedske koruny (SEK)
+
+STR_CURR_CUSTOM							:Vlastní...
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1243,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximální pocet hracu:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (oznámit)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2725,6 +2731,16 @@ STR_NEWGRF_TIP							:{BLACK}Tady je seznam vsech nainstalovaných grafických set
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Zadne soubory s novou grafikou nejsou nainstalovány! Pro instrukce, jak nainstalovat nové grafické soubory, se podívejte se do manuálu.
 STR_NEWGRF_FILENAME						:{BLACK}Jméno souboru:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
+
+STR_CURRENCY_WINDOW						:{WHITE}Vlastní mena
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Oddelovac:
+STR_CURRENCY_PREFIX						:{LTBLUE}Predpona:
+STR_CURRENCY_POSTFIX						:{LTBLUE}Pripona:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Prechod k Euru: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Prechod k Euru: {ORANGE}nikdy
+STR_CURRENCY_PREVIEW						:{LTBLUE}Náhled: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Zmenit parametry vlastní meny
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

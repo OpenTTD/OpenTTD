@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Configuracions de Newgrf
 STR_NEWGRF_SETTINGS2						:Configuracions de Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Tancar TOTES les finestres
+STR_CLOSE_ALL_WINDOWS2						:Tancar TOTES les finestres
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrats noms de poblacions
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostrats noms de poblacions
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrats noms d'estacions
@@ -866,29 +868,23 @@ STR_TOWNNAME_ROMANIAN						:Romanès
 STR_TOWNNAME_CZECH						:Txec
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Lliues Esterlines ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dólars ($)
-STR_CURR_FF							:Francs Francesos (FF)
-STR_CURR_DM							:Marcs Alemanys (DM)
+STR_CURR_EUR							:Euros (¤)
 STR_CURR_YEN							:Iens ({YENSIGN})
-STR_CURR_PT							:Pessetes (Pt)
-STR_CURR_FT							:Florins Húngars (Ft)
-STR_CURR_ZL							:Zlotys Polacs (zl)
 STR_CURR_ATS							:Shillings Austríacs (ATS)
 STR_CURR_BEF							:Francs Belgues (BEF)
+STR_CURR_CHF							:Francs Suissos (CHF)
+STR_CURR_CZK							:Corones Txeques (CZK)
 STR_CURR_DKK							:Corones Daneses (DKK)
 STR_CURR_FIM							:Marcs Finesos (FIM)
 STR_CURR_GRD							:Dracmes Gregues (GRD)
-STR_CURR_CHF							:Francs Suissos (CHF)
-STR_CURR_NLG							:Florins Holandesos (NLG)
-STR_CURR_ITL							:Lires Italianes (ITL)
-STR_CURR_SEK							:Corones Sueques (SEK)
-STR_CURR_RUR							:Rubles Russos (rur)
-STR_CURR_CZK							:Corones Txeques (CZK)
 STR_CURR_ISK							:Corones Islandeses (ISK)
+STR_CURR_ITL							:Lires Italianes (ITL)
+STR_CURR_NLG							:Florins Holandesos (NLG)
 STR_CURR_NOK							:Corones Noruegues (NOK)
 STR_CURR_ROL							:Leu Romanès (Lei)
-STR_CURR_EUR							:Euros (¤)
+STR_CURR_RUR							:Rubles Russos (rur)
+STR_CURR_SEK							:Corones Sueques (SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1336,6 +1332,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La revisió d'aquest client no concor
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contrasenya incorrecta.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} El servidor és plé
 STR_NETWORK_ERR_KICKED						:{WHITE} T'han fet fora del servidor
+STR_NETWORK_ERR_CHEATER						:{WHITE} No es permet usar codis trampa en aquest servidor
 
 STR_NETWORK_ERR_LEFT						:ha deixat el joc
 ############ Leave those lines in this order!!
@@ -1351,6 +1348,7 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nom ja utilitzat
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:contrasenya de joc incorrecta
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:id de jugador incorrecta en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:tret pel servidor
+STR_NETWORK_ERR_CLIENT_CHEATER					:s'ha intentat usar un codi trampa
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:ha entrat al joc
 STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
@@ -2723,6 +2721,7 @@ STR_NEWGRF_TIP							:{BLACK}Llista de totes les opcions de Newgrf que has insta
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Ara no hi ha arxius de Newgrf instal.lats! Consulta el manual per a les instruccions d'instal.lació de nous gràfics.
 STR_NEWGRF_FILENAME						:{BLACK}Nom d'arxiu:
 STR_NEWGRF_GRF_ID						:{BLACK}Id de GRF:
+
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

@@ -742,8 +742,8 @@ STR_NEWGRF_SETTINGS						:Newgrf settings
 STR_NEWGRF_SETTINGS2						:Newgrf settings
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_CLOSE_ALL_WINDOWS             :Close ALL windows
-STR_CLOSE_ALL_WINDOWS2            :Close ALL windows
+STR_CLOSE_ALL_WINDOWS						:Close ALL windows
+STR_CLOSE_ALL_WINDOWS2						:Close ALL windows
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Town names displayed
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Town names displayed
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Station names displayed
@@ -868,31 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Romanian
 STR_TOWNNAME_CZECH						:Czech
 ############ end of	townname region
 
-STR_CURR_GBP				:Pounds ({POUNDSIGN})
-STR_CURR_USD				:Dollars ($)
-STR_CURR_EUR				:Euro (¤)
-STR_CURR_YEN				:Yen ({YENSIGN})
-STR_CURR_ATS				:Austrian Shilling (ATS)
-STR_CURR_BEF				:Belgian Franc (BEF)
-STR_CURR_CHF				:Swiss Franc (CHF)
-STR_CURR_CZK				:Czech Koruna (CZK)
-STR_CURR_DEM				:Deutschmark (DEM)
-STR_CURR_DKK				:Danish Krone (DKK)
-STR_CURR_ESP				:Peseta (ESP)
-STR_CURR_FIM				:Finnish Markka (FIM)
-STR_CURR_FRF				:Franc (FRF)
-STR_CURR_GRD				:Greek Drachma (GRD)
-STR_CURR_HUF				:Hungarian Forint (HUF)
-STR_CURR_ISK				:Icelandic Krona (ISK)
-STR_CURR_ITL				:Italian Lira (ITL)
-STR_CURR_NLG				:Dutch Guilder (NLG)
-STR_CURR_NOK				:Norwegian Krone (NOK)
-STR_CURR_PLN				:Polish Zloty (PLN)
-STR_CURR_ROL				:Romanian Leu (ROL)
-STR_CURR_RUR				:Russian Rubles (RUR)
-STR_CURR_SEK				:Swedish Krona (SEK)
+STR_CURR_GBP							:Pounds ({POUNDSIGN})
+STR_CURR_USD							:Dollars ($)
+STR_CURR_EUR							:Euro (¤)
+STR_CURR_YEN							:Yen ({YENSIGN})
+STR_CURR_ATS							:Austrian Shilling (ATS)
+STR_CURR_BEF							:Belgian Franc (BEF)
+STR_CURR_CHF							:Swiss Franc (CHF)
+STR_CURR_CZK							:Czech Koruna (CZK)
+STR_CURR_DEM							:Deutschmark (DEM)
+STR_CURR_DKK							:Danish Krone (DKK)
+STR_CURR_ESP							:Peseta (ESP)
+STR_CURR_FIM							:Finnish Markka (FIM)
+STR_CURR_FRF							:Franc (FRF)
+STR_CURR_GRD							:Greek Drachma (GRD)
+STR_CURR_HUF							:Hungarian Forint (HUF)
+STR_CURR_ISK							:Icelandic Krona (ISK)
+STR_CURR_ITL							:Italian Lira (ITL)
+STR_CURR_NLG							:Dutch Guilder (NLG)
+STR_CURR_NOK							:Norwegian Krone (NOK)
+STR_CURR_PLN							:Polish Zloty (PLN)
+STR_CURR_ROL							:Romanian Leu (ROL)
+STR_CURR_RUR							:Russian Rubles (RUR)
+STR_CURR_SEK							:Swedish Krona (SEK)
 
-STR_CURR_CUSTOM			:Custom...
+STR_CURR_CUSTOM							:Custom...
 
 STR_OPTIONS_LANG						:{BLACK}Language
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1247,8 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum allowed clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN										:LAN
-STR_NETWORK_INTERNET							:Internet
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (advertise)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2732,15 +2732,15 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}There are currently no newgrf files in
 STR_NEWGRF_FILENAME						:{BLACK}Filename:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
-STR_CURRENCY_WINDOW								:{WHITE}Custom currency
-STR_CURRENCY_EXCHANGE_RATE				:{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_WINDOW						:{WHITE}Custom currency
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
 STR_CURRENCY_SEPARATOR						:{LTBLUE}Separator:
-STR_CURRENCY_PREFIX								:{LTBLUE}Prefix:
-STR_CURRENCY_POSTFIX							:{LTBLUE}Postfix:
-STR_CURRENCY_SWITCH_TO_EURO				:{LTBLUE}Switch to Euro: {ORANGE}{INT32}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER	:{LTBLUE}Switch to Euro: {ORANGE}never
-STR_CURRENCY_PREVIEW							:{LTBLUE}Preview: {ORANGE}{CURRENCY}
-STR_CURRENCY_CHANGE_PARAMETER			:{BLACK}Change custom currency parameter
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefix:
+STR_CURRENCY_POSTFIX						:{LTBLUE}Postfix:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Switch to Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Switch to Euro: {ORANGE}never
+STR_CURRENCY_PREVIEW						:{LTBLUE}Preview: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Change custom currency parameter
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

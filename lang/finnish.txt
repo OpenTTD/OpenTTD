@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Lopeta peli
 STR_015F_QUIT							:Lopeta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Haluatko todella lopettaa pelin?
 STR_0161_QUIT_GAME						:{WHITE}Lopeta peli
+STR_SORT_ORDER_TIP						:{BLACK}Valitse j‰rjestys (laskeva/nouseva)
+STR_SORT_CRITERIA_TIP						:{BLACK}Valitse j‰rjestyskriteeri
 SRT_SORT_BY							:{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION						:{BLACK}Asukasluku
@@ -864,29 +866,23 @@ STR_TOWNNAME_ROMANIAN						:Romania
 STR_TOWNNAME_CZECH						:Tsekki
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Punnat ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dollait ($)
-STR_CURR_FF							:Frankit (FF)
-STR_CURR_DM							:Saksan markka (DM)
+STR_CURR_EUR							:Euro (§)
 STR_CURR_YEN							:Jeni ({YENSIGN})
-STR_CURR_PT							:Peseta (Pt)
-STR_CURR_FT							:Unkarin forint (Ft)
-STR_CURR_ZL							:Puolan zloty (zl)
 STR_CURR_ATS							:It‰vallan shillinki (ATS)
 STR_CURR_BEF							:Belgian frankki (BEF)
+STR_CURR_CHF							:Sveitsin frankki (CHF)
+STR_CURR_CZK							:Tsekin kruunu (CZK)
 STR_CURR_DKK							:Tanskan kruunu (DKK)
 STR_CURR_FIM							:Suomen markka (FIM)
 STR_CURR_GRD							:Kreikan drakma (GRD)
-STR_CURR_CHF							:Sveitsin frankki (CHF)
-STR_CURR_NLG							:Hollannin guildeni (NLG)
-STR_CURR_ITL							:Italian liira (ITL)
-STR_CURR_SEK							:Ruotsin kruunu (SEK)
-STR_CURR_RUR							:Venj‰n rupla (rur)
-STR_CURR_CZK							:Tsekin kruunu (CZK)
 STR_CURR_ISK							:Islannin kruunu (ISK)
+STR_CURR_ITL							:Italian liira (ITL)
+STR_CURR_NLG							:Hollannin guildeni (NLG)
 STR_CURR_NOK							:Norjan kruunu (NOK)
 STR_CURR_ROL							:Romanian leu (lei)
-STR_CURR_EUR							:Euro (§)
+STR_CURR_RUR							:Venj‰n rupla (rur)
+STR_CURR_SEK							:Ruotsin kruunu (SEK)
+
 
 STR_OPTIONS_LANG						:{BLACK}Kieli
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1333,6 +1329,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} T‰m‰n asiakkaan revisio ei vastaa pa
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} V‰‰r‰ salasana.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Palvelin on t‰ynn‰
 STR_NETWORK_ERR_KICKED						:{WHITE} Sinut potkittiin pihalle palvelimelta
+STR_NETWORK_ERR_CHEATER						:{WHITE} Huijaaminen ei ole sallittua t‰ll‰ palvelimella
 
 STR_NETWORK_ERR_LEFT						:poistui pelist‰
 ############ Leave those lines in this order!!
@@ -1348,13 +1345,24 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nimi on jo k‰ytˆss‰
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:v‰‰r‰ pelisalasana
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:v‰‰r‰ player-id DoCommand:ssa
 STR_NETWORK_ERR_CLIENT_KICKED					:palvelin potki pihalle
+STR_NETWORK_ERR_CLIENT_CHEATER					:yritti k‰ytt‰‰ huijausta
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:liittyi peliin
 STR_NETWORK_GIVE_MONEY						:antoi sinulle rahaa ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:annoit {STRING}:lle hieman rahaa ({CURRENCY})
+STR_NETWORK_NAME_CHANGE						:on vaihtanut nimens‰:
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Palvelin sulki istunnon
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Palvelin k‰ynnistyy uudelleen...{}Odota, ole hyv‰...
 
+STR_NETWORK_SERVER						:Palvelin
+STR_NETWORK_CLIENT						:Asiakas
 
+STR_NETWORK_CLIENTLIST_NONE					:(tyhj‰)
+STR_NETWORK_CLIENTLIST_KICK					:Potkaise
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Anna rahaa
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Puhu kaikille
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Puhu yhtiˆlle
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Yksityinen viesti
 
 
 STR_NETWORK_SEND						:{BLACK}L‰het‰
@@ -2705,6 +2713,7 @@ STR_NEWGRF_TIP							:{BLACK}Lista kaikista asentamistasi Newgrf-paketeista. Kli
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Yht‰‰n Newgrf-tiedostoa ei ole asennettuna! Ole hyv‰ ja katso manuaalista ohjeet uusien grafiikoiden asentamiseksi.
 STR_NEWGRF_FILENAME						:{BLACK}Tiedostonimi:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}
