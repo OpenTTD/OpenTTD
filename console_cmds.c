@@ -602,11 +602,11 @@ DEF_CONSOLE_CMD(ConSet) {
 		}
 		if (argc == 3) {
 			// Change server password
-			if (strncmp(argv[2], "*", 20) == 0) {
+			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
 				_network_game_info.server_password[0] = '\0';
 				_network_game_info.use_password = 0;
 			} else {
-				strncpy(_network_game_info.server_password, argv[2], 20);
+				strncpy(_network_game_info.server_password, argv[2], sizeof(_network_game_info.server_password));
 				_network_game_info.use_password = 1;
 			}
 			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_game_info.server_password);
@@ -628,10 +628,10 @@ DEF_CONSOLE_CMD(ConSet) {
 			return NULL;
 		}
 		if (argc == 3) {
-			if (strncmp(argv[2], "*", 20) == 0) {
+			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
 				_network_player_info[_local_player].password[0] = '\0';
 			} else {
-				strncpy(_network_player_info[_local_player].password, argv[2], 20);
+				strncpy(_network_player_info[_local_player].password, argv[2], sizeof(_network_player_info[_local_player].password));
 			}
 			if (!_network_server)
 				SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
@@ -660,12 +660,12 @@ DEF_CONSOLE_CMD(ConSet) {
 			else {
 				if (NetworkFindName(argv[2])) {
 					NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, argv[2]);
-					ttd_strlcpy(ci->client_name, argv[2], 40);
+					ttd_strlcpy(ci->client_name, argv[2], sizeof(ci->client_name));
 					NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 				}
 			}
 			/* Also keep track of the new name on the client itself */
-			ttd_strlcpy(_network_player_name, argv[2], 40);
+			ttd_strlcpy(_network_player_name, argv[2], sizeof(_network_player_name));
 		} else {
 			IConsolePrint(_iconsole_color_default, "With 'set name' you can change your network-player name.");
 			IConsolePrint(_iconsole_color_warning, "Usage: set name \"<name>\".");
@@ -680,9 +680,9 @@ DEF_CONSOLE_CMD(ConSet) {
 			return NULL;
 		}
 		if (argc == 3) {
-			strncpy(_network_server_name, argv[2], 40);
+			strncpy(_network_server_name, argv[2], sizeof(_network_server_name));
 			IConsolePrintF(_iconsole_color_warning, "Server-name changed to '%s'", _network_server_name);
-			ttd_strlcpy(_network_game_info.server_name, _network_server_name, 40);
+			ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
 		} else {
 			IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
 			IConsolePrint(_iconsole_color_warning, "Usage: set server_name \"<GameName>\".");
