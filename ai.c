@@ -425,7 +425,7 @@ static Industry *AiFindRandomIndustry() {
 
 static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 {
-	int i;
+	uint i;
 	byte cargo;
 	Subsidy *s;
 	Industry *from, *to_ind;

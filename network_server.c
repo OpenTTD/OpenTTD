@@ -451,7 +451,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientState *cs, Com
 	//    uint32: Frame of execution
 	//
 
-	int i;
+	uint i;
 	char *dparam_char;
 	Packet *p = NetworkSend_Init(PACKET_SERVER_COMMAND);
 
@@ -749,7 +749,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
 	// The client has done a command and wants us to handle it
-	int i;
+	uint i;
 	byte callback;
 	NetworkClientState *new_cs;
 	NetworkClientInfo *ci;

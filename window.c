@@ -407,7 +407,7 @@ Window *AllocateWindow(
 	w->resize.step_height = 1;
 
 	{
-		int i;
+		uint i;
 		for (i=0;i<lengthof(w->custom);i++)
 			w->custom[i] = 0;
 	}

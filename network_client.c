@@ -144,7 +144,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	//    uint8:  CallBackID (see callback_table.c)
 	//
 
-	int i;
+	uint i;
 	char *dparam_char;
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
 
@@ -572,7 +572,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
-	int i;
+	uint i;
 	char *dparam_char;
 	CommandPacket *cp = malloc(sizeof(CommandPacket));
 	cp->player = NetworkRecv_uint8(MY_CLIENT, p);

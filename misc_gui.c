@@ -213,7 +213,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		const char *str;
 		char buffer[100];
-		int i;
+		uint i;
 		int y = WP(w, general_d).j;
 		DrawWindowWidgets(w);
 

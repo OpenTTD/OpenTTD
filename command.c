@@ -313,11 +313,11 @@ static CommandProc * const _command_proc_table[] = {
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */
-bool IsValidCommand(int cmd)
+bool IsValidCommand(uint cmd)
 {
 	cmd = cmd & 0xFF;
 
-	if (cmd < 0 || cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd] == NULL)
+	if (cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd] == NULL)
 		return false;
 
 	return true;

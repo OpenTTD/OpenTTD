@@ -306,7 +306,8 @@ static byte MakeFinnishTownName(byte *buf, uint32 seed)
 
 static byte MakePolishTownName(byte *buf, uint32 seed)
 {
-	int i, j;
+	uint i;
+	uint j;
 
 	//null terminates the string for strcat
 	strcpy(buf, "");
@@ -402,7 +403,7 @@ static byte MakeNorwegianTownName(byte *buf, uint32 seed)
 
 static byte MakeHungarianTownName(byte *buf, uint32 seed)
 {
-	int i;
+	uint i;
 
 	//null terminates the string for strcat
 	strcpy(buf, "");

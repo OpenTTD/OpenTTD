@@ -1058,9 +1058,9 @@ void IConsoleCmdExec(const char* cmdstr)
 	bool valid_token;
 	bool skip_lt_change;
 
-	int c;
-	int i;
-	int l;
+	uint c;
+	uint i;
+	uint l;
 
 	if (_stdlib_con_developer)
 		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_cmdline: %s", cmdstr);

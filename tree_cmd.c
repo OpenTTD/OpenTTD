@@ -271,7 +271,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	{
 		uint16 tmp = ti->x;
-		int index;
+		uint index;
 
 		tmp = (tmp >> 2) | (tmp << 14);
 		tmp -= ti->y;

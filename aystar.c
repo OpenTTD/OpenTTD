@@ -101,7 +101,7 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 
 	// Check if this item is already in the OpenList
 	if ((check = AyStarMain_OpenList_IsInList(aystar, current)) != NULL) {
-		int i;
+		uint i;
 		// Yes, check if this g value is lower..
 		if (new_g > check->g) return AYSTAR_DONE;
 		aystar->OpenListQueue.del(&aystar->OpenListQueue, check, 0);

@@ -1006,7 +1006,7 @@ void ConsoleSetPatchSetting(char *name, char *value)
 	const PatchPage *page;
 	const PatchEntry *pe = NULL;
 	bool found = false;
-	int i;
+	uint i;
 	unsigned int j;
 	int val;
 
@@ -1066,7 +1066,7 @@ void ConsoleGetPatchSetting(char *name)
 	const PatchEntry *pe = NULL;
 	char value[50];
 	bool found = false;
-	int i;
+	uint i;
 	unsigned int j;
 
 	/* Search for the name in the patch-settings */

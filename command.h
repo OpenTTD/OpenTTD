@@ -182,7 +182,7 @@ enum {
 int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 
-bool IsValidCommand(int cmd);
+bool IsValidCommand(uint cmd);
 int32 GetAvailableMoneyForCommand();
 
 #endif /* COMMAND_H */

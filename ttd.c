@@ -267,7 +267,7 @@ void LoadDriver(int driver, const char *name)
 		ttd_strlcpy(buffer, name, sizeof(buffer));
 		parm = strchr(buffer, ':');
 		if (parm) {
-			int np = 0;
+			uint np = 0;
 			// Tokenize the parm.
 			do {
 				*parm++ = 0;
@@ -1243,7 +1243,7 @@ void UpdateCurrencies()
 // even though they should have. This is fixed by this function
 void UpdateVoidTiles()
 {
-	int i;
+	uint i;
 	// create void tiles on the border
 	for (i = 0; i != MapMaxY(); i++)
 		_map_type_and_height[ i * MapSizeX() + MapMaxY() ] = MP_VOID << 4;

@@ -148,7 +148,7 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 // We found the end.. let's get the route back and put it in an array
 static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *current) {
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
-	int i = 0;
+	uint i = 0;
 	PathNode *parent = &current->path;
 
 	do {
@@ -168,7 +168,10 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 
 // What tiles are around us.
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current) {
-    int i, r, dir;
+		uint i;
+		int r;
+		int dir;
+
    	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 
     aystar->num_neighbours = 0;

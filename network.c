@@ -620,7 +620,7 @@ static void NetworkAcceptClients(void)
 #else
 	LONG sin_len; // for some reason we need a 'LONG' under MorphOS
 #endif
-	int i;
+	uint i;
 	bool banned;
 
 	// Should never ever happen.. is it possible??
@@ -878,7 +878,7 @@ void NetworkAddServer(const byte *b)
  * by the function that generates the config file. */
 void NetworkRebuildHostList()
 {
-	int i = 0;
+	uint i = 0;
 	NetworkGameList *item = _network_game_list;
 	while (item != NULL && i != lengthof(_network_host_list)) {
 		if (item->manually)

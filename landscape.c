@@ -486,7 +486,7 @@ void RunTileLoop()
 void InitializeLandscape()
 {
 	uint map_size = MapSize();
-	int i;
+	uint i;
 
 	memset(_map_owner, OWNER_NONE, map_size);
 	memset(_map2, 0, map_size * sizeof(uint16));

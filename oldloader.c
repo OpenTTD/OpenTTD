@@ -1377,7 +1377,7 @@ bool LoadOldSaveGame(const char *file)
 	LoadSavegameState lss;
 	OldMain *m;
 	uint map_size;
-	int i;
+	uint i;
 
 	_cur_state = &lss;
 	memset(&lss, 0, sizeof(lss));

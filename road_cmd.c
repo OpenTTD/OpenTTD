@@ -399,7 +399,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				goto do_clear;
 
 		/* only allow roads pertendicular to bridge */
-		if ((pieces & 5) == (ti.map5 & 0x01))
+		if ((pieces & 5U) == (ti.map5 & 0x01U))
 				goto do_clear;
 
 		/* check if clear land under bridge */

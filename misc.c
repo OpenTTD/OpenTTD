@@ -184,7 +184,7 @@ void ConvertGroundTilesIntoWaterTiles();
 void InitializeGame()
 {
 	// Initialize the autoreplace array. Needs to be cleared between each game
-	int i;
+	uint i;
 	for (i = 0; i < lengthof(_autoreplace_array); i++)
 		_autoreplace_array[i] = i;
 
@@ -608,7 +608,9 @@ static const uint16 _autosave_months[] = {
 void IncreaseDate()
 {
 	const int vehicles_per_day = (1 << (sizeof(_date_fract) * 8)) / 885;
-	int i,ctr,t;
+	uint i;
+	VehicleID ctr;
+	int t;
 	YearMonthDay ymd;
 
 	if (_game_mode == GM_MENU) {

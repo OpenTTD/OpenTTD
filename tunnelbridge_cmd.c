@@ -1311,14 +1311,14 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 
 	if ((m5 & 0xF0) == 0) {
 		/* This is a tunnel */
-		if (((m5 & 0xC) >> 2) == mode) {
+		if (((m5 & 0xCU) >> 2) == mode) {
 			/* Tranport in the tunnel is compatible */
 			return m5&1 ? 0x202 : 0x101;
 		}
 	} else if (m5 & 0x80) {
 		/* This is a bridge */
 		result = 0;
-		if (((m5 & 0x6) >> 1) == mode) {
+		if (((m5 & 0x6U) >> 1) == mode) {
 			/* Transport over the bridge is compatible */
 			result = m5&1 ? 0x202 : 0x101;
 		}
@@ -1334,7 +1334,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 						return result;
 			} else {
 				/* Transport underneath */
-				if ((m5 & 0x18) >> 3 != mode)
+				if ((m5 & 0x18U) >> 3 != mode)
 					/* Incompatible transport underneath */
 					return result;
 			}
