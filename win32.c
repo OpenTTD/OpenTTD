@@ -43,7 +43,7 @@ static bool _has_console;
 extern const HalMusicDriver _dmusic_midi_driver;
 #endif
 
-static void MakePalette()
+static void MakePalette(void)
 {
 	LOGPALETTE *pal;
 	int i;
@@ -178,7 +178,7 @@ static void ClientSizeChanged(int w, int h)
 	}
 }
 
-void DoExitSave();
+void DoExitSave(void);
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -420,7 +420,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-static void RegisterWndClass()
+static void RegisterWndClass(void)
 {
 	static bool registered;
 	if (!registered) {
@@ -581,7 +581,7 @@ static const uint16 default_resolutions[][2] = {
 	{1920, 1200}
 };
 
-static void FindResolutions()
+static void FindResolutions(void)
 {
 	int i = 0, n = 0;
 	DEVMODE dm;
@@ -629,7 +629,7 @@ static const char *Win32GdiStart(char **parm)
 	return NULL;
 }
 
-static void Win32GdiStop()
+static void Win32GdiStop(void)
 {
 	if ( _wnd.fullscreen ) {
 		ChangeDisplaySettings(NULL, 0);
@@ -669,14 +669,14 @@ static void Win32GdiMakeDirty(int left, int top, int width, int height)
 	InvalidateRect(_wnd.main_wnd, &r, FALSE);
 }
 
-static void CheckPaletteAnim()
+static void CheckPaletteAnim(void)
 {
 	if (_pal_last_dirty == -1)
 		return;
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 
-static int Win32GdiMainLoop()
+static int Win32GdiMainLoop(void)
 {
 	MSG mesg;
 	uint32 next_tick = GetTickCount() + 30, cur_ticks;
@@ -780,7 +780,7 @@ static void Win32MidiPlaySong(const char *filename)
 	SetEvent(_midi.wait_obj);
 }
 
-static void Win32MidiStopSong()
+static void Win32MidiStopSong(void)
 {
 	if (_midi.playing) {
 		_midi.stop_song = true;
@@ -789,7 +789,7 @@ static void Win32MidiStopSong()
 	}
 }
 
-static bool Win32MidiIsSongPlaying()
+static bool Win32MidiIsSongPlaying(void)
 {
 	return _midi.playing;
 }
@@ -820,7 +820,7 @@ static bool MidiIntPlaySong(const char *filename)
 	return true;
 }
 
-static void MidiIntStopSong()
+static void MidiIntStopSong(void)
 {
 	MidiSendCommand("close all");
 }
@@ -831,7 +831,7 @@ static void MidiIntSetVolume(int vol)
 	midiOutSetVolume((HMIDIOUT)-1, v + (v<<16));
 }
 
-static bool MidiIntIsSongPlaying()
+static bool MidiIntIsSongPlaying(void)
 {
 	char buf[16];
 	mciSendStringA("status song mode", buf, sizeof(buf), 0);
@@ -885,7 +885,7 @@ static char *Win32MidiStart(char **parm)
 	return 0;
 }
 
-static void Win32MidiStop()
+static void Win32MidiStop(void)
 {
 	_midi.terminate = true;
 	SetEvent(_midi.wait_obj);
@@ -914,7 +914,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 		error("waveOutPrepareHeader failed");
 }
 
-static void FillHeaders()
+static void FillHeaders(void)
 {
 	WAVEHDR *hdr;
 	for(hdr=_wave_hdr; hdr != endof(_wave_hdr); hdr++) {
@@ -957,7 +957,7 @@ static char *Win32SoundStart(char **parm)
 	return NULL;
 }
 
-static void Win32SoundStop()
+static void Win32SoundStop(void)
 {
 	HWAVEOUT waveout = _waveout;
 	_waveout = NULL;
@@ -1333,14 +1333,14 @@ static BOOL CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lPar
 	return FALSE;
 }
 
-static void Handler2()
+static void Handler2(void)
 {
 	ShowCursor(TRUE);
 	ShowWindow(GetActiveWindow(), FALSE);
 	DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(100), NULL, CrashDialogFunc);
 }
 
-extern bool CloseConsoleLogIfActive();
+extern bool CloseConsoleLogIfActive(void);
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
@@ -1460,7 +1460,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
-static void Win32InitializeExceptions()
+static void Win32InitializeExceptions(void)
 {
 	_asm {
 		mov _safe_esp,esp
@@ -1485,7 +1485,7 @@ static char *_fios_scn_path;
 static FiosItem *_fios_items;
 static int _fios_count, _fios_alloc;
 
-static FiosItem *FiosAlloc()
+static FiosItem *FiosAlloc(void)
 {
 	if (_fios_count == _fios_alloc) {
 		_fios_alloc += 256;
@@ -1716,7 +1716,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 }
 
 // Free the list of savegames
-void FiosFreeSavegameList()
+void FiosFreeSavegameList(void)
 {
 	free(_fios_items);
 	_fios_items = NULL;
@@ -1856,7 +1856,7 @@ const DriverDesc _music_driver_descs[] = {
 	{NULL}
 };
 
-byte GetOSVersion()
+byte GetOSVersion(void)
 {
 	OSVERSIONINFO osvi;
 
@@ -1956,7 +1956,7 @@ __int64 _declspec(naked) rdtsc()
 }
 #endif
 
-void CreateConsole()
+void CreateConsole(void)
 {
 	HANDLE hand;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;

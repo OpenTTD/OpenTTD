@@ -261,7 +261,6 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 
 static byte *FormatTinyDate(byte *buff, uint16 number)
 {
-	const char *src;
 	YearMonthDay ymd;
 
 	ConvertDayToYMD(&ymd, number);
