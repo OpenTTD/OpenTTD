@@ -723,7 +723,6 @@ static void SpriteNewSuperset(byte *buf, int len)
 /* Action 0x03 */
 static void VehicleMapSpriteSuperset(byte *buf, int len)
 {
-	byte *bufend = buf + len;
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
 	 * id-list	:= [<id>] [id-list]
 	 * cargo-list	:= <cargo-type> <cid> [cargo-list]
@@ -927,33 +926,69 @@ static void SkipIf(byte *buf, int len)
 	uint8 paramsize;
 	uint8 condtype;
 	uint8 numsprites;
-	int val, result;
+	int param_val = 0, cond_val = 0, result;
 
 	check_length(len, 6, "SkipIf");
 	param = buf[1];
 	paramsize = buf[2];
 	condtype = buf[3];
-	numsprites = buf[4 + paramsize];
 
-	if (param == 0x83) {
-		val = _opt.landscape;
-	} else {
-		grfmsg(GMS_WARN, "Unsupported param %x. Ignoring test.", param);
-		return;
+	if (condtype < 2) {
+		/* Always 1 for bit tests, the given value should
+		 * be ignored. */
+		paramsize = 1;
+	}
+
+	buf += 4;
+	if (paramsize == 4)
+		cond_val = grf_load_dword(&buf);
+	else if (paramsize == 2)
+		cond_val = grf_load_word(&buf);
+	else if (paramsize == 1)
+		cond_val = grf_load_byte(&buf);
+
+	switch (param) {
+		case 0x83:
+			param_val = _opt.landscape;
+			break;
+		case 0x84:
+			/* XXX: This should be always true (at least until we get multiple loading stages?). */
+			param_val = 1;
+			break;
+		case 0x86:
+			param_val = _opt.road_side << 4;
+			break;
+		default:
+			grfmsg(GMS_WARN, "Unsupported param %x. Ignoring test.", param);
+			return;
 	}
 
 	switch (condtype) {
-		case 2: result = (buf[4] == val);
+		case 0: result = (param_val & (1 << cond_val));
 			break;
-		case 3: result = (buf[4] != val);
+		case 1: result = !(param_val & (1 << cond_val));
+			break;
+		/* TODO: For the following, make it to work with paramsize>1. */
+		case 2: result = (param_val == cond_val);
+			break;
+		case 3: result = (param_val != cond_val);
+			break;
+		case 4: result = (param_val < cond_val);
+			break;
+		case 5: result = (param_val > cond_val);
 			break;
 		default:
 			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
 			return;
 	}
 
-	if (!result)
+	if (result == 0) {
+		grfmsg(GMS_NOTICE, "Not skipping sprites, test was false.");
 		return;
+	}
+
+	numsprites = grf_load_byte(&buf);
+	grfmsg(GMS_NOTICE, "Skipping %d sprites, test was true.", numsprites);
 
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
