@@ -89,7 +89,7 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 		}
 		else
 		{
-			strcat(buf, name_additional_english_1b3b[GetNumberBasedOnSeed(12, lengthof(name_additional_english_1b3a), seed)]);
+			strcat(buf, name_additional_english_1b3b[GetNumberBasedOnSeed(12, lengthof(name_additional_english_1b3b), seed)]);
 		}
 	}
 
