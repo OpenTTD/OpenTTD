@@ -704,8 +704,9 @@ bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type)
 	case ICONSOLE_HOOK_ACCESS:
 		proc = hook_var->hook_access;
 		break;
-	default: return true;
 	}
+
+	if (proc == NULL) { return true;}
 
 	return proc(hook_var);
 }
@@ -741,8 +742,9 @@ bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type)
 	case ICONSOLE_HOOK_ACCESS:
 		proc = hook_cmd->hook_access;
 		break;
-	default: return true;
 	}
+
+	if (proc == NULL) { return true;}
 
 	return proc(hook_cmd);
 }
