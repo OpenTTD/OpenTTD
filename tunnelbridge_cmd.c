@@ -864,14 +864,22 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 	} else if ((_map5[tile]&0xC6) == 0x80) {
 		uint starttile;
 		int32 cost;
+		uint z = TilePixelHeight(tile);
+
+		z += 8;
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		// railway bridge
 		starttile = tile = FindEdgesOfBridge(tile, &endtile);
 		// Make sure there's no vehicle on the bridge
-		if ((v=FindVehicleBetween(tile, endtile, 0xff)) != NULL) {
+		if ((v=FindVehicleBetween(tile, endtile, z)) != NULL) {
 			VehicleInTheWayErrMsg(v);
+			return CMD_ERROR;
+		}
+
+		if (!EnsureNoVehicle(starttile) || !EnsureNoVehicle(endtile)) {
+			_error_message = STR_8803_TRAIN_IN_THE_WAY;
 			return CMD_ERROR;
 		}
 
