@@ -443,7 +443,7 @@ static WindowNumber _dropdown_windownum;
 static byte _dropdown_var1;
 static byte _dropdown_var2;
 
-static const Widget _dropdown_menu_widgets[] = {
+static Widget _dropdown_menu_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
@@ -616,6 +616,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 			}
 		}
 	}
+
+	_dropdown_menu_widgets[0].color = wi->color;
 
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
