@@ -1691,7 +1691,7 @@ static void SkipIf(byte *buf, int len)
 			return;
 	}
 
-	if (result == 0) {
+	if (!result) {
 		grfmsg(GMS_NOTICE, "Not skipping sprites, test was false.");
 		return;
 	}
