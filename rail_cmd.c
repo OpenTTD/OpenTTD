@@ -299,21 +299,31 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
 			if ((m5 & 0xC0) != 0xC0 || // not bridge middle part?
-					(m5 & 0x01 ? 1 : 2) != rail_bit || // wrong direction?
-					(m5 & 0x38) != 0x00) { // no clear land underneath?
+					(m5 & 0x01 ? 1 : 2) != rail_bit) { // wrong direction?
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 
-			ret = CheckRailSlope(tileh, rail_bit, 0, tile);
-			if (ret & CMD_ERROR) return ret;
-			cost += ret;
+			switch (m5 & 0x38) { // what's under the bridge?
+				case 0x00: // clear land
+					ret = CheckRailSlope(tileh, rail_bit, 0, tile);
+					if (ret & CMD_ERROR) return ret;
+					cost += ret;
 
-			if (flags & DC_EXEC) {
-				_map_owner[tile] = _current_player;
-				_map3_lo[tile] &= ~0x0F;
-				_map3_lo[tile] |= rail_type;
-				_map5[tile] = (m5 & 0xC7) | 0x20; // railroad under bridge
+					if (flags & DC_EXEC) {
+						_map_owner[tile] = _current_player;
+						_map3_lo[tile] &= ~0x0F;
+						_map3_lo[tile] |= rail_type;
+						_map5[tile] = (m5 & 0xC7) | 0x20; // railroad under bridge
+					}
+					break;
+
+				case 0x20: // rail already there
+					return_cmd_error(STR_1007_ALREADY_BUILT);
+
+				default:
+					// Get detailed error message
+					return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 			break;
 
