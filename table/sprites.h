@@ -48,10 +48,11 @@ enum Sprites {
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
-	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon 
+	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon
 	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 63,
-	
-	
+	SPR_WINDOW_RESIZE = SPR_OPENTTD_BASE + 94,   // resize icon
+
+
 	/* Network GUI sprites */
 	SPR_SQUARE = SPR_OPENTTD_BASE + 23,     // colored square (used for newgrf compatibility)
 	SPR_LOCK = SPR_OPENTTD_BASE + 22,       // lock icon (for password protected servers)
@@ -62,7 +63,7 @@ enum Sprites {
 
 	/* Shadow cell */
 	SPR_SHADOW_CELL = 1004,
-	
+
 	/* Sliced view shadow cells */
 	/* Maybe we have differen ones in the future */
 	SPR_MAX_SLICE = SPR_OPENTTD_BASE + 71,

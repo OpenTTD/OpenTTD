@@ -215,7 +215,7 @@ static bool LoadNextSprite(int load_index, byte file_index)
 
 		_replace_sprites_offset[0]++;
 		_replace_sprites_count[0]--;
-		
+
 		if ((offset + count) <= NUM_SPRITES) {
 			load_index = offset;
 		} else {
@@ -743,7 +743,7 @@ static const char * const _cached_filenames[4] = {
 	"cached_sprites.xx3",
 };
 
-#define OPENTTD_SPRITES_COUNT 93
+#define OPENTTD_SPRITES_COUNT 94
 static const uint16 _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE+0,	SPR_OPENTTD_BASE+7, // icons etc
 	134, 134,  // euro symbol medium size
@@ -777,7 +777,7 @@ static void CheckGrfFile()
 
 	s = str_fmt("%s%s", _path.data_dir, files_dos.basic[0]);
 	f = fopen(s, "r");
-	if (f != NULL) { 
+	if (f != NULL) {
 		_use_dos_palette = true;
 		return;
 	}
