@@ -978,6 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Eritt‰in pitkien junien rakentamine
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Junien realistinen kiihdytt‰minen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Yhdist‰ vierekk‰iset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}J‰t‰ asema, kun mik‰ tahansa rahti on t‰ysi, jos 't‰ysi lastaus': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}K‰yt‰ kehittyneemp‰‰ lastausalgoritmia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflaatio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Kuljeta rahti asemalle vain, kun on kysynt‰‰: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Eritt‰in pitkien siltojen rakentaminens: {ORANGE}{STRING}

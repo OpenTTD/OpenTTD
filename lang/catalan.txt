@@ -978,6 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Activar la construcció de trens mol
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Activar l'acceleració realista per als trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Juntar estacions de tren fetes al costat d'un altre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Marxar de l'estació quan un tipus de càrrega és ple, si 'càrrega completa': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Usar algorisme millorat de càrrega: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflació: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Entregar càrreges en una estació només quan ho demana: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Permetre construir ponts molt llargs: {ORANGE}{STRING}

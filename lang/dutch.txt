@@ -978,6 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Zeer lange treinen toestaan: {ORANG
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één type lading geheel geladen is, met 'volledig laden': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}

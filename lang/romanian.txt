@@ -978,6 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permite constructia de trenuri foar
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Permite acceleratie realisticã pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflatia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Permite constructia de poduri foarte lungi: {ORANGE}{STRING}
