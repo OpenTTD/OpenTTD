@@ -73,6 +73,7 @@ struct Town {
 	uint16 radius[5];
 };
 
+uint32 GetWorldPopulation();
 
 void UpdateTownVirtCoord(Town *t);
 void InitializeTown();

@@ -203,6 +203,17 @@ static void ChangePopulation(Town *t, int mod)
 	if (_town_sort_order & 2) _town_sort_dirty = true;
 }
 
+uint32 GetWorldPopulation()
+{
+	uint32 pop;
+	Town *t;
+	pop = 0;
+	FOR_ALL_TOWNS(t) {
+			pop += t->population;
+	}
+	return pop;
+}
+
 static void MakeSingleHouseBigger(uint tile)
 {
 	byte b;

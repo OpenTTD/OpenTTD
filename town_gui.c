@@ -350,8 +350,9 @@ static const Widget _town_directory_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    98,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    99,   195,    14,    25, STR_SORT_BY_POPULATION,	STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN, RESIZE_BOTTOM,    13,     0,   195,    26,   189, 0x0,										STR_200A_TOWN_NAMES_CLICK_ON_NAME},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   196,   207,    14,   177, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,     RESIZE_TB,    13,   196,   207,   178,   189, 0x0,										STR_RESIZE_BUTTON},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   196,   207,    14,   189, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_PANEL,   	RESIZE_TB,    	13,  		0,   195,    190,  201, 0x0,				STR_NULL},
+{  WWT_RESIZEBOX,     RESIZE_TB,    13,   196,   207,   190,   201, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -451,6 +452,8 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 				i++;
 				if (++n == w->vscroll.cap) { break;} // max number of towns in 1 window
 			}
+			SetDParam(0, GetWorldPopulation());
+			DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, 0);
 		}
 	} break;
 
@@ -498,7 +501,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _town_directory_desc = {
-	-1, -1, 208, 190,
+	-1, -1, 208, 202,
 	WC_TOWN_DIRECTORY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_town_directory_widgets,
@@ -514,7 +517,7 @@ void ShowTownDirectory()
 	if (w) {
 		w->vscroll.cap = 16;
 		w->resize.step_height = 10;
-		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list
+		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
 	}
 }
 
