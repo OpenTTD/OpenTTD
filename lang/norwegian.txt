@@ -5,11 +5,11 @@
 STR_NULL							:
 STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Utenfor kartet
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}For nært kanten av kartet
-STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Du har ikke nok penger - det behøves {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Du har ikke nok penger - du trenger {CURRENCY}
 STR_0004							:{WHITE}{CURRENCY64}
 STR_0005							:{RED}{CURRENCY64}
 STR_EMPTY							:
-STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Flatt land behøves
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Flatt land er nødvendig
 STR_0008_WAITING						:{BLACK}Venter: {WHITE}{STRING}
 STR_0009							:{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (varer fra
@@ -24,11 +24,11 @@ STR_0012_OIL							:Olje
 STR_0013_LIVESTOCK						:Buskap
 STR_0014_GOODS							:Gods
 STR_0015_GRAIN							:Korn
-STR_0016_WOOD							:Tre
-STR_0017_IRON_ORE						:Jern malm
+STR_0016_WOOD							:Ved
+STR_0017_IRON_ORE						:Jernmalm
 STR_0018_STEEL							:Stål
-STR_0019_VALUABLES						:Verdi saker
-STR_001A_COPPER_ORE						:Kobber malm
+STR_0019_VALUABLES						:Verdisaker
+STR_001A_COPPER_ORE						:Kobbermalm
 STR_001B_MAIZE							:Mais
 STR_001C_FRUIT							:Frukt
 STR_001D_DIAMONDS						:Diamanter
@@ -57,10 +57,10 @@ STR_0033_LIVESTOCK						:Buskap
 STR_0034_GOODS							:Gods
 STR_0035_GRAIN							:Korn
 STR_0036_WOOD							:Ved
-STR_0037_IRON_ORE						:Jern malm
+STR_0037_IRON_ORE						:Jernmalm
 STR_0038_STEEL							:Stål
-STR_0039_VALUABLES						:Verdi saker
-STR_003A_COPPER_ORE						:Kobber malm
+STR_0039_VALUABLES						:Verdisaker
+STR_003A_COPPER_ORE						:Kobbermalm
 STR_003B_MAIZE							:Mais
 STR_003C_FRUIT							:Frukt
 STR_003D_DIAMOND						:Diamant
@@ -89,10 +89,10 @@ STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} enhet buskap
 STR_0054_CRATE_OF_GOODS						:{COMMA16} kasse gods
 STR_0055_TON_OF_GRAIN						:{COMMA16} tonn korn
 STR_0056_TON_OF_WOOD						:{COMMA16} tonn ved
-STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonn jern malm
+STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonn jernmalm
 STR_0058_TON_OF_STEEL						:{COMMA16} tonn stål
 STR_0059_BAG_OF_VALUABLES					:{COMMA16} sekk med verdisaker
-STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonn kobber malm
+STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonn kobbermalm
 STR_005B_TON_OF_MAIZE						:{COMMA16} tonn mais
 STR_005C_TON_OF_FRUIT						:{COMMA16} tonn frukt
 STR_005D_BAG_OF_DIAMONDS					:{COMMA16} sekk med diamanter

@@ -335,11 +335,11 @@ STR_0152_TOWN_DIRECTORY						:Lista de cidades
 STR_0153_SUBSIDIES						:Subsídios
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH					:Gráfico de benefícios operativos
-STR_0155_INCOME_GRAPH						:Gráfico de rendimentos
-STR_0156_DELIVERED_CARGO_GRAPH					:Gráfico de carga entregue
-STR_0157_PERFORMANCE_HISTORY_GRAPH				:Gráfico de histórico de rendimentos
-STR_0158_COMPANY_VALUE_GRAPH					:Gráfico de valor da empresa
+STR_0154_OPERATING_PROFIT_GRAPH					:Benefícios operativos
+STR_0155_INCOME_GRAPH						:Rendimentos
+STR_0156_DELIVERED_CARGO_GRAPH					:Carga entregue
+STR_0157_PERFORMANCE_HISTORY_GRAPH				:Histórico de rendimentos
+STR_0158_COMPANY_VALUE_GRAPH					:Valor da empresa
 STR_0159_CARGO_PAYMENT_RATES					:Tarifas por carga
 STR_015A_COMPANY_LEAGUE_TABLE					:Classificação de empresas
 STR_PERFORMANCE_DETAIL_MENU					:Avaliação detalhada
@@ -594,7 +594,7 @@ STR_022D_ARE_YOU_SURE_YOU_WANT_TO				:{WHITE}Tem a certeza que deseja repor o te
 STR_022E_LANDSCAPE_GENERATION					:{BLACK}Gerar terreno
 STR_022F_TOWN_GENERATION					:{BLACK}Gerar cidades
 STR_0230_INDUSTRY_GENERATION					:{BLACK}Gerar indústrias
-STR_0231_ROAD_CONSTRUCTION					:{BLACK}Construção de estradas
+STR_0231_ROAD_CONSTRUCTION					:{BLACK}Construir estradas
 STR_0232_VEGETATION_AND_OTHER_OBJECTS				:{BLACK}Vegetação e outros objectos
 STR_0233_TOWN_GENERATION					:{WHITE}Gerar Cidades
 STR_0234_NEW_TOWN						:{BLACK}Nova Cidade
@@ -683,7 +683,7 @@ STR_0286_MUST_BUILD_TOWN_FIRST					:{WHITE}...é necessário construir uma cidade 
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN				:{WHITE}...só é permitido uma por cidade
 STR_0288_PLANT_TREES						:{BLACK}Plantar árvores
 STR_0289_PLACE_SIGN						:{BLACK}Colocar indicações
-STR_028A_RANDOM_TREES						:{BLACK}Árvores aleatórias
+STR_028A_RANDOM_TREES						:{BLACK}Plantar Aleatoriamente
 STR_028B_PLANT_TREES_RANDOMLY_OVER				:{BLACK}Plantar árvores aleatoriamente no terreno
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Colocar áreas rochosas no terreno
 STR_028D_PLACE_LIGHTHOUSE					:{BLACK}Colocar farol
@@ -915,7 +915,7 @@ STR_MONTH_NOV							:Novembro
 STR_MONTH_DEC							:Dezembro
 
 STR_HEADING_FOR_STATION						:{LTBLUE}Dirige-se para {STATION}
-STR_HEADING_FOR_STATION_VEL					:{LTBLUE}Dirige-se para {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION_VEL					:{LTBLUE}Dirige-se a {STATION}, {VELOCITY}
 STR_NO_ORDERS							:{LTBLUE}Sem ordens
 STR_NO_ORDERS_VEL						:{LTBLUE}Sem ordens, {VELOCITY}
 
@@ -1003,12 +1003,12 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:de todos os veículos
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Avisar se o lucro de um comboio for negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Auto-renovação de veículos quando ficam velhos
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máxima
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Tamanho máximo de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
@@ -1072,8 +1072,8 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Os aviões a jacto não irão ter acidentes (fr
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Mudar de clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Dirige-se para {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Dirige-se para {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Dirige-se a {CHECKPOINT}
+STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Dirige-se a {CHECKPOINT}, {VELOCITY}
 
 STR_GO_TO_CHECKPOINT						:Ir via {CHECKPOINT}
 
@@ -1174,7 +1174,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Atenção: esta nova IA está ainda em versão alpha!
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}A interface de rede ainda não está completamente operacional!{}As opções que ainda não funcionam foram desactivadas.
+TEMP_STRING_NO_NETWORK						:{WHITE}A interface de rede ainda não está completamente operacional!{}Alguns itens não estão disponíveis.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multi-jogador
 
@@ -1287,9 +1287,9 @@ STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Comboio no depósito
 STR_1007_ALREADY_BUILT						:{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK				:{WHITE}Deverá remover a linha férrea primeiro
 STR_1009_TOO_MANY_DEPOTS					:{WHITE}Demasiados depósitos
-STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Construção de caminhos-de-ferro
-STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Construção de monocarril
-STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Construção de MagLev
+STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Construir caminhos-de-ferro
+STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Construir monocarril
+STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Construir MagLev
 STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Seleccione Ponte Ferroviária
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Não é possível construir depósito aqui...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Não é possível construir estação ferroviária aqui...
@@ -1298,9 +1298,9 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Não é possível construir linha fé
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Não é possível remover linha férrea daqui...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Não é possível remover sinais daqui...
 STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Orientação do Depósito
-STR_1015_RAILROAD_CONSTRUCTION					:Construção de caminhos-de-ferro
-STR_1016_MONORAIL_CONSTRUCTION					:Construção de monocarril
-STR_1017_MAGLEV_CONSTRUCTION					:Construção de MagLev
+STR_1015_RAILROAD_CONSTRUCTION					:Construir caminhos-de-ferro
+STR_1016_MONORAIL_CONSTRUCTION					:Construir monocarril
+STR_1017_MAGLEV_CONSTRUCTION					:Construir MagLev
 STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Construir linha férrea
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Construir depósito (para criação e manutenção de comboios)
 STR_101A_BUILD_RAILROAD_STATION					:{BLACK}Construir estação ferroviária
@@ -1324,7 +1324,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Caminhos-de-ferro com sinais combinados
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Terreno inclinado na direcção incorrecta para a estrada
 STR_1801_MUST_REMOVE_ROAD_FIRST					:{WHITE}Deverá remover a estrada primeiro
-STR_1802_ROAD_CONSTRUCTION					:{WHITE}Construção de Estradas
+STR_1802_ROAD_CONSTRUCTION					:{WHITE}Construir Estradas
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Seleccionar Ponte de Estrada
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Não é possível construir estrada aqui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Não é possível remover estrada daqui...
@@ -1332,7 +1332,7 @@ STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientação do Depósito
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Não é possível construir depósito de veículos de estrada aqui...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Não é possível construir estação de autocarros...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Não é possível construir estação de carregamento de camiões...
-STR_180A_ROAD_CONSTRUCTION					:Construção de estradas
+STR_180A_ROAD_CONSTRUCTION					:Construir estradas
 STR_180B_BUILD_ROAD_SECTION					:{BLACK}Construir estradas
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT				:{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
 STR_180D_BUILD_BUS_STATION					:{BLACK}Construir estação de autocarros
@@ -1466,11 +1466,11 @@ STR_280F_RAINFOREST						:Floresta Tropical
 STR_2810_CACTUS_PLANTS						:Cactos
 
 ##id 0x3000
-STR_3000_RAIL_STATION_SELECTION					:{WHITE}Selecção de estação ferroviária
-STR_3001_AIRPORT_SELECTION					:{WHITE}Selecção de aeroportos
+STR_3000_RAIL_STATION_SELECTION					:{WHITE}Selecção de Estação
+STR_3001_AIRPORT_SELECTION					:{WHITE}Selecção de Aeroporto
 STR_3002_ORIENTATION						:{BLACK}Orientação
 STR_3003_NUMBER_OF_TRACKS					:{BLACK}Número de linhas
-STR_3004_PLATFORM_LENGTH					:{BLACK}Comprimento da plataforma
+STR_3004_PLATFORM_LENGTH					:{BLACK}Tamanho da plataforma
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Demasiado perto de outra estação ferroviária
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Muito junto de uma estação/local de carga já existente
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Demasiadas estações/locais de carga nesta cidade
@@ -1517,7 +1517,7 @@ STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Muito perto de outra doca
 STR_304D_MUST_DEMOLISH_DOCK_FIRST				:{WHITE}Deverá demolir a doca primeiro
 STR_304E_SELECT_RAILROAD_STATION				:{BLACK}Seleccionar a orientação da estação ferroviária
 STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Seleccionar o número de linhas da estação ferroviária
-STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Seleccionar o comprimento da estação ferroviária
+STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Seleccionar o tamanho da estação ferroviária
 STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Seleccionar a orientação da estação de autocarros
 STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Seleccionar a orientação da estação de carregamento de camiões
 STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Centrar visualização no local estação
@@ -1777,7 +1777,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Quantidade de mar/lagos: {ORANGE}{ST
 STR_6813_ECONOMY						:{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Inverter comboio: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:{LTBLUE}Atitude das autoridades em relação a reestruturamentos: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Atitude das autoridades sobre reestruturamentos: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE							:Nenhum
@@ -1855,7 +1855,7 @@ STR_701E							:{BLACK}-{CURRENCY64}
 STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Total:
 STR_7021							:{STRING}{STRING}
-STR_7022_INCOME_GRAPH						:{WHITE}Gráfico de rendimentos
+STR_7022_INCOME_GRAPH						:{WHITE}Gráfico de Rendimentos
 STR_CURRCOMPACT32						:{CURRCOMPACT}
 STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
@@ -2228,20 +2228,20 @@ STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Comboio no caminho
 STR_8804							:{SETX 10}{COMMA8}: {STRING}
 STR_8805							:{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO							:Ir para {STATION}
-STR_8807_GO_TO_UNLOAD						:Ir para {STATION} (Descarregar)
-STR_8808_GO_TO_LOAD						:Ir para {STATION} (Carregar)
+STR_8807_GO_TO_UNLOAD						:Ir para {STATION} (Descarga)
+STR_8808_GO_TO_LOAD						:Ir para {STATION} (Carga)
 STR_8809							:
 STR_880A_GO_NON_STOP_TO						:Ir sem parar para {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD					:Ir sem parar para {STATION} (Descarregar)
-STR_880C_GO_NON_STOP_TO_LOAD					:Ir sem parar para {STATION} (Carregar)
+STR_880B_GO_NON_STOP_TO_UNLOAD					:Ir sem parar para {STATION} (Descarga)
+STR_880C_GO_NON_STOP_TO_LOAD					:Ir sem parar para {STATION} (Carga)
 STR_880D							:
 STR_880E_GO_TO_TRAIN_DEPOT					:Ir para o depósito de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT					:Manutenção no depósito de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Manutenção no depósito de {TOWN} sem parar
 
-STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Dirige-se para o depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Dirige-se para o depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER						:{RED} (Ordem Inválida)
 
@@ -2266,8 +2266,8 @@ STR_8823_SKIP							:{BLACK}Saltar
 STR_8824_DELETE							:{BLACK}Eliminar
 STR_8825_NON_STOP						:{BLACK}Sem parar
 STR_8826_GO_TO							:{BLACK}Ir Para
-STR_8827_FULL_LOAD						:{BLACK}Carregar
-STR_8828_UNLOAD							:{BLACK}Descarregar
+STR_8827_FULL_LOAD						:{BLACK}Carga
+STR_8828_UNLOAD							:{BLACK}Descarga
 STR_8829_ORDERS							:{WHITE}{STRING} (Ordens)
 STR_882A_END_OF_ORDERS						:{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE						:{SKIP}{SKIP}{STRING}
@@ -2276,7 +2276,7 @@ STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE				:{WHITE}Não é possível construir veícul
 STR_882C_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E							:{WHITE}{STRING}
-STR_882F_LOADING_UNLOADING					:{LTBLUE}A carregar/descarregar
+STR_882F_LOADING_UNLOADING					:{LTBLUE}A carregar / descarregar
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT				:{WHITE}Não é possível mandar o comboio para o depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS				:{WHITE}Não há espaço para mais ordens
 STR_8832_TOO_MANY_ORDERS					:{WHITE}Demasiadas ordens
@@ -2368,8 +2368,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE					:{WHITE}...deve estar parado num depósito de
 STR_9014_CAN_T_SELL_ROAD_VEHICLE				:{WHITE}Não é possível vender veículo de estrada...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE				:{WHITE}Não é possível iniciar/parar veículo de estrada...
 STR_9016_ROAD_VEHICLE_IS_WAITING				:{WHITE}Veículo de Estrada {COMMA16} está a aguardar no depósito
-STR_HEADING_FOR_ROAD_DEPOT					:{LTBLUE}Dirige-se para o depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL					:{LTBLUE}Dirige-se para o depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT					:{LTBLUE}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL					:{LTBLUE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT				:{WHITE}Não é possível mandar o veículo para o depósito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Não é possível encontrar o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON					:{BLACK}Veículos de estrada - clique num veículo para informações
@@ -2406,8 +2406,8 @@ STR_9038_GO_TO_ROADVEH_DEPOT					:Ir para o depósito de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT					:Manutenção no depósito de {TOWN}
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION					:Construção de docas
-STR_9801_DOCK_CONSTRUCTION					:{WHITE}Construção de docas
+STR_9800_DOCK_CONSTRUCTION					:Construir docas
+STR_9801_DOCK_CONSTRUCTION					:{WHITE}Construir docas
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Não é possível construir doca aqui...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Depósito Naval
 STR_9804_NEW_SHIPS						:{BLACK}Novos Barcos
@@ -2433,8 +2433,8 @@ STR_9817_CAPACITY						:{BLACK}Capacidade: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP					:{WHITE}Não é possível iniciar/parar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT				:{WHITE}Não é possível mandar barco para o depósito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Não é possível encontrar depósito local
-STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Dirige-se para o depósito de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Dirige-se para o depósito {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Dirige-se ao depósito {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT				:{WHITE}Barco {COMMA16} está a aguardar no depósito
 STR_981D_BUILD_SHIP_DOCK					:{BLACK}Construir doca naval
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Construir depósito (para criação e manutenção de barcos)
@@ -2478,7 +2478,7 @@ STR_GO_TO_SHIP_DEPOT						:Ir para o depósito naval de {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Manutenção no depósito de {TOWN}
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construção de Aeroporto
+STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construir Aeroporto
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Não é possível construir aeroporto aqui...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nova Aeronave
@@ -2487,7 +2487,7 @@ STR_A005_NEW_AIRCRAFT						:{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT						:{BLACK}Construir Aeronave
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Capacidade: {GOLD}{COMMA16} passageiros, {COMMA16} sacos de correio{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Não é possível construir aeronave...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aeronave
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aeronaves
 STR_A00A							:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Ordens)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Detalhes)
@@ -2497,8 +2497,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Lucros deste ano: {LTBLUE}{CURREN
 STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Fiabilidade: {LTBLUE}{COMMA8}%  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA16}
 STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}Não é possível mandar aeronave para o hangar...
-STR_HEADING_FOR_HANGAR						:{LTBLUE}Dirige-se para o hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Dirige-se para o hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR						:{LTBLUE}Dirige-se ao hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Dirige-se ao hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}Aeronave {COMMA16} está a aguardar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Aeronave no caminho
 STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}Não é possível iniciar/parar aeronave...
@@ -2508,7 +2508,7 @@ STR_A019_CAPACITY						:{BLACK}Capacidade: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY						:{BLACK}Capacidade: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED				:{WHITE}A aeronave deverá estar parada no hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT					:{WHITE}Não é possível vender aeronave...
-STR_A01D_AIRPORT_CONSTRUCTION					:Construção de aeroporto
+STR_A01D_AIRPORT_CONSTRUCTION					:Construir aeroporto
 STR_A01E_BUILD_AIRPORT						:{BLACK}Construir aeroporto
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Aeronave - clique na aeronave para informações
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Construir nova aeronave (necessita de aeroporto com hangar)
