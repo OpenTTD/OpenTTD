@@ -723,11 +723,9 @@ rev.c: FORCE
 FORCE:
 
 
-# ttd$(EXE) is removed just to make sure people execute the right binary (openttd$(EXE))
-# remove this for next release!
 clean:
 	@echo 'Cleaning up...'; \
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK) ttd$(EXE)
+	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK)
 
 mrproper: clean
 	rm -rf $(MAKE_CONFIG)
