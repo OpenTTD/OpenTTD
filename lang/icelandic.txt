@@ -985,6 +985,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Raunverulegri stærð svæðis sem stöðvar
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Leyfa byggingu mjög langra lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Raunveruleg hröðun lesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Banna lestum og skipum að taka 90°  beygjur: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Yfirgefa lestarstöð þegar einhver farmur er fullur, ef kveikt er á 'fullhlaða': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Nota endurbættan algóriþma við hleðslu: {ORANGE}{STRING}
@@ -1005,6 +1006,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Lestar finna ný skýli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Órétthyrndar lestarstöðvar leyfðar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nýr algrímur fyrir leiðarfund lesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nýtt heildar-leiðarkerfi (NPF, yfirtekur NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Alltaf leyfa litla flugvelli: {ORANGE}{STRING}
 
@@ -1091,6 +1093,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggja í bið: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Þotur brotlenda ekki (oft) á litlum flugvöllum: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Skipta um loftslag: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Á leiðinni til {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Á leiðinni til {WAYPOINT}, {VELOCITY}
@@ -1230,6 +1233,7 @@ STR_NETWORK_GAME_INFO						:{SILVER}UPPLÝSINGAR UM LEIK
 STR_ORANGE							:{ORANGE}{STRING}
 STR_NETWORK_CLIENTS						:{SILVER}Notendur:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE						:{SILVER}Tungumál:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Landslag:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Stærð:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Útgáfa þjóns:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS					:{SILVER}Veffang þjóns:  {WHITE}{STRING} : {NUMU16}
@@ -1301,6 +1305,7 @@ STR_NETWORK_REFRESH_TIP						:{BLACK}Endurnýja upplýsingar um þjón
 STR_NETWORK_COMPANY_INFO					:{SILVER}UPPLÝSINGAR UM FYRIRTÆKI
 
 STR_NETWORK_COMPANY_NAME					:{SILVER}Nafn fyrirtækis:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Upphaf:  {WHITE}{NUMU16}
 STR_NETWORK_VALUE						:{SILVER}Virði fyrirtækis:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE					:{SILVER}Núverandi staða:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Innkoma síðasta árs:  {WHITE}{CURRENCY64}
@@ -1344,6 +1349,7 @@ STR_NETWORK_ERR_SERVER_START					:{WHITE} Gat ekki ræst þjón
 STR_NETWORK_ERR_CLIENT_START					:{WHITE} Gat ekki tengst
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tenging #{NUMU16} fjaraði út.
 STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Villa varð í samskiptum og tengingu var lokað
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Útgáfa biðils er ekki sama og útgáfa þjóns
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rangt lykilorð
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Þjónninn er fullur
 STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Þú ert bannaður/bönnuð á þessum þjóni
@@ -1362,6 +1368,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:tók á móti undarlegum pakka
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:röng útgáfa
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nafn nú þegar í notkun
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:rangt leikjalykilorð
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:rangt notandanúmer í DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:hent út af þjón
 STR_NETWORK_ERR_CLIENT_CHEATER					:reyndi að svindla
 ############ End of leave-in-this-order
@@ -1374,6 +1381,7 @@ STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
 STR_NETWORK_CHAT_TO_CLIENT					:[Private] Til {STRING}:
 STR_NETWORK_CHAT_ALL						:[All] {STRING}:
 STR_NETWORK_NAME_CHANGE						:hefur breytt nafni sínu í
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Þjónninn sleit tengingunni
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
 
 STR_NETWORK_SERVER						:Þjónn
@@ -1392,6 +1400,8 @@ STR_NETWORK_SEND						:{BLACK}Senda
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Lengd korts: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Breidd korts: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Kostnaður: {CURRENCY}
@@ -1499,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} bæjaryfirvöld leyfa þetta ekk
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Bæjarnöfn - ýttu á nafn til að færa sjónarhorn að viðkomandi bæ
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Færa sjónarhorn á staðsetningu bæjar
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Breyta nafni bæjar
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Farþegar síðasta mánuð: {ORANGE}{COMMA16}{BLACK}  hámark: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Póstur síðasta mánuð: {ORANGE}{COMMA16}{BLACK}  hámark: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Farþegar síðasta mánaðar: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Póstur síðasta mánaðar: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Há skrifstofubygging
 STR_2010_OFFICE_BLOCK						:Skrifstofubygging
 STR_2011_SMALL_BLOCK_OF_FLATS					:Lítil íbúðarbygging
@@ -1612,6 +1622,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Of nálægt annarri lestarstöð
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Tengist fleiri en einni annarri stöð
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Of margar stöðvar/lestunarsvæði í þessum bæ
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Of margar stöðvar/lestunarsvæði
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Of margar strætisvagnastöðvar
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Of margar vörubílastöðvar
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Of nálægt annarri stöð/lestunarsvæði
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Þarf fyrst að rífa lestarstöð
@@ -1685,6 +1697,7 @@ STR_3069_BUOY							:Bauja
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bauja fyrir
 STR_306B_HELIPORT						:{BLACK}Þyrlupallur
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stöð of dreyfð
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...óregluleg lögun lestarstöðva bönnuð
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Staða skipaslipps
@@ -1765,6 +1778,8 @@ STR_4829_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}, {STRING}, {STRING}
 STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Framleiðsla síðasta mánaðar:
 STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% flutt)
 STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Miðja aðalsjónarhorn á iðnað
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Ný {STRING} í byggingu við {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Ný {STRING} er að rísa við {TOWN}!
 STR_482F_COST							:{BLACK}Kostnaður: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Get ekki reist þennan iðnað hér...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...skógur getur aðeins verið gróðursettur yfir snjólínu
@@ -1852,26 +1867,563 @@ STR_SV_STNAME_NORTH						:{STRING} Norður
 STR_SV_STNAME_SOUTH						:{STRING} Suður
 STR_SV_STNAME_EAST						:{STRING} Austur
 STR_SV_STNAME_WEST						:{STRING} Vestur
+STR_SV_STNAME_CENTRAL						:{STRING} Miðstöð
+STR_SV_STNAME_TRANSFER						:{STRING} Flutningur
+STR_SV_STNAME_HALT						:{STRING} Stans
+STR_SV_STNAME_VALLEY						:{STRING} Dalir
+STR_SV_STNAME_HEIGHTS						:{STRING} Hæðir
+STR_SV_STNAME_WOODS						:{STRING} Skógar
+STR_SV_STNAME_LAKESIDE						:{STRING} Lækjarbakki
+STR_SV_STNAME_EXCHANGE						:{STRING} Skipti
+STR_SV_STNAME_AIRPORT						:{STRING} Flugvöllur
+STR_SV_STNAME_OILFIELD						:{STRING} Olíulendi
+STR_SV_STNAME_MINES						:{STRING} Náma
+STR_SV_STNAME_DOCKS						:{STRING} Höfn
+STR_SV_STNAME_BUOY_1						:{STRING} Bauja 1
+STR_SV_STNAME_BUOY_2						:{STRING} Bauja 2
+STR_SV_STNAME_BUOY_3						:{STRING} Bauja 3
+STR_SV_STNAME_BUOY_4						:{STRING} Bauja 4
+STR_SV_STNAME_BUOY_5						:{STRING} Bauja 5
+STR_SV_STNAME_BUOY_6						:{STRING} Bauja 6
+STR_SV_STNAME_BUOY_7						:{STRING} Bauja 7
+STR_SV_STNAME_BUOY_8						:{STRING} Bauja 8
+STR_SV_STNAME_BUOY_9						:{STRING} Bauja 9
+STR_SV_STNAME_ANNEXE						:{STRING} Annáll
+STR_SV_STNAME_SIDINGS						:{STRING} Hliðrun
+STR_SV_STNAME_BRANCH						:{STRING} Grein
+STR_SV_STNAME_UPPER						:Efri {STRING}
+STR_SV_STNAME_LOWER						:Neðri {STRING}
+STR_SV_STNAME_HELIPORT						:{STRING} Þyrlupallur
+STR_SV_STNAME_FOREST						:{STRING} Skógur
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL					:{WHITE}Erfiðleikastig
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Vista
 
 ############ range for difficulty levels starts
+STR_6801_EASY							:{BLACK}Auðvelt
+STR_6802_MEDIUM							:{BLACK}Miðlungs
+STR_6803_HARD							:{BLACK}Erfitt
+STR_6804_CUSTOM							:{BLACK}Sérsniðið
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS					:{LTBLUE}Hámarks fj. keppinauta: {ORANGE}{COMMA16}
+STR_6806_COMPETITOR_START_TIME					:{LTBLUE}Byrjunartími keppinauta: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS						:{LTBLUE}Fj. bæja: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Fj. iðnaða: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Hámarkslán í upphafi: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Vextir í upphafi: {ORANGE}{COMMA16}%
+STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Rekstrarkostnaður farartækja: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Byggingarhraði keppinauta: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Hæfni keppinauta: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Bilanatíðni farartækja: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Margföldun ríkisstyrks: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION					:{LTBLUE}Byggingarkostnaður: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE						:{LTBLUE}Gerð landslags: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Magn sjávar/lækja: {ORANGE}{STRING}
+STR_6813_ECONOMY						:{LTBLUE}Efnahagur: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING					:{LTBLUE}Snúningur lestar: {ORANGE}{STRING}
+STR_6815_DISASTERS						:{LTBLUE}Hrakföll: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Afstaða borgaryfirvalda gagnvart svæðisbreytingum: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Engin
+STR_6816_LOW							:Lág
+STR_6817_NORMAL							:Venjuleg
+STR_6818_HIGH							:Há
+STR_6819							:{BLACK}<
+STR_681A							:{BLACK}>
+STR_681B_VERY_SLOW						:Mjög hægt
+STR_681C_SLOW							:Hægt
+STR_681D_MEDIUM							:Miðlungs
+STR_681E_FAST							:Hratt
+STR_681F_VERY_FAST						:Mjög hratt
+STR_VERY_LOW							:Mjög lágt
+STR_6820_LOW							:Lágt
+STR_6821_MEDIUM							:Miðlungs
+STR_6822_HIGH							:Hátt
+STR_6823_NONE							:Ekkert
+STR_6824_REDUCED						:Minnkað
+STR_6825_NORMAL							:Venjulegt
+STR_6826_X1_5							:x1.5
+STR_6827_X2							:x2
+STR_6828_X3							:x3
+STR_6829_X4							:x4
+STR_682A_VERY_FLAT						:Mjög flatt
+STR_682B_FLAT							:Flatt
+STR_682C_HILLY							:Hæðótt
+STR_682D_MOUNTAINOUS						:Fjallótt
+STR_682E_STEADY							:Stöðugur
+STR_682F_FLUCTUATING						:Bylgjóttur
+STR_6830_IMMEDIATE						:Undir eins
+STR_6831_3_MONTHS_AFTER_PLAYER					:3 mánuðum eftir spilara
+STR_6832_6_MONTHS_AFTER_PLAYER					:6 mánuðum eftir spilara
+STR_6833_9_MONTHS_AFTER_PLAYER					:9 mánuðum eftir spilara
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS				:Á enda brautar, og á lestarstöðvum
+STR_6835_AT_END_OF_LINE_ONLY					:Aðeins á enda brautar
+STR_6836_OFF							:Ekki á
+STR_6837_ON							:Á
+STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Sýna topplistann
+STR_6839_PERMISSIVE						:Eftirgefinn
+STR_683A_TOLERANT						:Biðlyndur
+STR_683B_HOSTILE						:Fjandsamlegur
 
 ##id 0x7000
+STR_7000							:
+STR_7001							:{WHITE}{STRING} {BLACK}{STRING}
+STR_7002_PLAYER							:(Spilari {COMMA16})
+STR_7004_NEW_FACE						:{BLACK}Nýtt Andlit
+STR_7005_COLOR_SCHEME						:{BLACK}Litaskema
+STR_7006_COLOR_SCHEME						:{GOLD}Litaskema:
+STR_7007_NEW_COLOR_SCHEME					:{WHITE}Nýtt Litaskema
+STR_7008_COMPANY_NAME						:{BLACK}Nafn Fyrirtækis
+STR_7009_PRESIDENT_NAME						:{BLACK}Nafn Forstöðumanns
+STR_700A_COMPANY_NAME						:Nafn Fyrirtækis
+STR_700B_PRESIDENT_S_NAME					:Nafn Forstöðumanns
+STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Ekki hægt að breyta nafni fyrirtækis...
+STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Ekki hægt að breyta nafni forstöðumanns...
+STR_700E_FINANCES						:{WHITE}{STRING} Fjármál {BLACK}{STRING}
+STR_700F_EXPENDITURE_INCOME					:{WHITE}Útgjöld/Tekjur
+STR_7010							:{WHITE}{NUMU16}
+STR_7011_CONSTRUCTION						:{GOLD}Bygging
+STR_7012_NEW_VEHICLES						:{GOLD}Ný Farartæki
+STR_7013_TRAIN_RUNNING_COSTS					:{GOLD}Rekstrarkostnaður Lesta
+STR_7014_ROAD_VEH_RUNNING_COSTS					:{GOLD}Rekstrarkostnaður Bíla
+STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Rekstrarkostnaður Flugvéla
+STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Rekstrarkostnaður Skipa
+STR_7017_PROPERTY_MAINTENANCE					:{GOLD}Viðhald Eigna
+STR_7018_TRAIN_INCOME						:{GOLD}Lestartekjur
+STR_7019_ROAD_VEHICLES_INCOME					:{GOLD}Bílatekjur
+STR_701A_AIRCRAFT_INCOME					:{GOLD}Flúgvélatekjur
+STR_701B_SHIP_INCOME						:{GOLD}Skipstekjur
+STR_701C_LOAN_INTEREST						:{GOLD}Lánavextir
+STR_701D_OTHER							:{GOLD}Annað
+STR_701E							:{BLACK}-{CURRENCY64}
+STR_701F							:{BLACK}+{CURRENCY64}
+STR_7020_TOTAL							:{WHITE}Summa:
+STR_7021							:{STRING}{STRING}
+STR_7022_INCOME_GRAPH						:{WHITE}Tekjulínurit
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
+STR_7024							:{COMMA32}
+STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Resktrartekju línurit
+STR_7026_BANK_BALANCE						:{WHITE}Bankainnistæða
+STR_7027_LOAN							:{WHITE}Lán
+STR_MAX_LOAN							:{WHITE}Hámarkslán:  {BLACK}{CURRENCY64}
+STR_7028							:{BLACK}{CURRENCY64}
+STR_7029_BORROW							:{BLACK}Taka lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Borga lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...hámarksleyfi á láni er {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Ekki hægt að fá meiri pening lánaðan...
+STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...ekkert lán til að borga
+STR_702E_REQUIRED						:{WHITE}...{CURRENCY} vantar
+STR_702F_CAN_T_REPAY_LOAN					:{WHITE}Getur ekki borgað lán...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT				:{BLACK}Velja nýtt andlit á forstöðumanninn
+STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Breyta útliti á farartækjum fyrirtækisins
+STR_7032_CHANGE_THE_PRESIDENT_S					:{BLACK}Breyta nafni forstöðumanns
+STR_7033_CHANGE_THE_COMPANY_NAME				:{BLACK}Breyta nafni fyrirtækisins
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Smelltu á litaskemað sem þú vilt
+STR_7035_INCREASE_SIZE_OF_LOAN					:{BLACK}Auka lán
+STR_7036_REPAY_PART_OF_LOAN					:{BLACK}Borga til baka hluta af láni
+STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Manager)
+STR_7038_INAUGURATED						:{GOLD}Hafið: {WHITE}{NUMU16}
+STR_7039_VEHICLES						:{GOLD}Farartæki:
+STR_703A_TRAIN							:{WHITE}{COMMA16} lest
+STR_703B_TRAINS							:{WHITE}{COMMA16} lestir
+STR_703C_ROAD_VEHICLE						:{WHITE}{COMMA16} bíll
+STR_703D_ROAD_VEHICLES						:{WHITE}{COMMA16} bílar
+STR_703E_AIRCRAFT						:{WHITE}{COMMA16} flugvél
+STR_703F_AIRCRAFT						:{WHITE}{COMMA16} flugvélar
+STR_7040_SHIP							:{WHITE}{COMMA16} skip
+STR_7041_SHIPS							:{WHITE}{COMMA16} skip
+STR_7042_NONE							:{WHITE}Engin
+STR_7043_FACE_SELECTION						:{WHITE}Andlitsval
+STR_7044_MALE							:{BLACK}Karlmaður
+STR_7045_FEMALE							:{BLACK}Kvenmaður
+STR_7046_NEW_FACE						:{BLACK}Nýtt Andlit
+STR_7047_CANCEL_NEW_FACE_SELECTION				:{BLACK}Hætta við andlitsval
+STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Samþykkja andlitsval
+STR_7049_SELECT_MALE_FACES					:{BLACK}Velja karlmannsandlit
+STR_704A_SELECT_FEMALE_FACES					:{BLACK}Velja kvenmannsandlit
+STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Mynda andlit af handahófi
+STR_704C_KEY							:{BLACK}Lykill
+STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Sýna lykilmynd
+STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Lykilmynd fyrir fyrirtækjagröf
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY				:{BLACK}Smelltu hér til að taka út/setja inn graf þessa fyrirtækis
+STR_7050_UNITS_OF_CARGO_DELIVERED				:{WHITE}Fluttar einingar af farmi
+STR_7051_COMPANY_PERFORMANCE_RATINGS				:{WHITE}Einkunn fyrirtækis (hámarkseinkunn=1000)
+STR_7052_COMPANY_VALUES						:{WHITE}Fyrirtækisvirði
+STR_7053_COMPANY_LEAGUE_TABLE					:{WHITE}Fyrirtækjalisti
+STR_7054							:{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRING}'
+STR_7055							:{YELLOW}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE				:{BLACK}{BIGFONT}Flutningsfyrirtæki í hættu!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED				:{BLACK}{BIGFONT}{STRING} mun vera selt eða skráð gjaldþrota nema það fari að taka sig á sem fyrst!
+STR_7058_PRESIDENT						:{BLACK}{STRING}{}(Forstöðumaður)
+STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}Samruni flutningsfyrirtækja!
+STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}{STRING} hefur verið selt {STRING} fyrir {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}Við erum að leita að flutningsfyrirtæki til að taka yfir okkar rekstri.{}{}Viltu kaupa {STRING} fyrir {CURRENCY}?
+STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Gjaldþrota!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} hefur verið lokað af bankanum og allar eignir seldar!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Nýtt flutningsfyrirtæki stofnað!
+STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} hefur byggingu nálægt {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Get ekki keypt fyrirtæki...
+STR_7061_CARGO_PAYMENT_RATES					:{WHITE}Farmgjöld
+STR_7062_DAYS_IN_TRANSIT					:{BLACK}{TINYFONT}Dagar í flutningi
+STR_7063_PAYMENT_FOR_DELIVERING					:{BLACK}{TINYFONT}Laun fyrir flutning á 10 einingum (eða 10,000 lítra) af farmi um 20 ramma vegalend
+STR_7064_TOGGLE_GRAPH_FOR_CARGO					:{BLACK}Taka út/setja inn graf fyrir farmgerðir
+STR_7065							:{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER						:Verkfræðingur
+STR_7067_TRAFFIC_MANAGER					:Umferðarstjórnandi
+STR_7068_TRANSPORT_COORDINATOR					:Flutningaskipuleggjandi
+STR_7069_ROUTE_SUPERVISOR					:Leiðarumsjónarmaður
+STR_706A_DIRECTOR						:Farmstjóri
+STR_706B_CHIEF_EXECUTIVE					:Höfuðákvarðanarmaður
+STR_706C_CHAIRMAN						:Sætisherra
+STR_706D_PRESIDENT						:Forseti
+STR_706E_TYCOON							:Auðkýfingur
+STR_706F_BUILD_HQ						:{BLACK}Byggja HS
+STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Byggja höfuðstöðvar fyrirtækisins / skoða höfuðstöðvar fyrirtækisins
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% kostnað af fyrirtækisvirði
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Ekki hægt að byggja höfuðstöðvar...
+STR_7072_VIEW_HQ						:{BLACK}Skoða HS
+STR_RELOCATE_HQ							:{BLACK}Flytja HS
+STR_COMPANY_PASSWORD						:{BLACK}Lykilorð
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Til að vernda fyrirtæki þitt frá óboðnum notendum geturðu sett lykilorð á það
+STR_SET_COMPANY_PASSWORD					:Setja lykilorð á fyrirtæki
+STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Heimssamdráttur!{}{}Fræðingar hræddir um efnahagshrun!
+STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Samdráttur!{}{}Uppslag í viðskiptum gefur bjartari von um betri efnahag!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Stækka/smækka gluggastærð
+STR_7076_COMPANY_VALUE						:{GOLD}Virði fyrirtækis: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Kaupa 25% hlut í fyrirtæki
+STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Selja 25% hlut í fyrirtæki
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Kaupa 25% hlut í þessu fyrirtæki
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY				:{BLACK}Selja 25% hlut í þessu fyrirtæki
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS				:{WHITE}Get ekki keypt 25% hlut í þessu fyrirtæki...
+STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Get ekki selt 25% hlut í þessu fyrirtæki...
+STR_707D_OWNED_BY						:{WHITE}({COMMA16}% í eign {STRING})
+STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% í eign {STRING}{}   {COMMA16}% í eign {STRING})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} hefur verið yfirtekið af {STRING}!
+STR_7080_PROTECTED						:{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla hlut enn...
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Gufu)
+STR_8001_MJS_250_DIESEL						:MJS 250 (Dísel)
+STR_8002_PLODDYPHUT_CHOO_CHOO					:Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO					:Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO					:Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL					:Ploddyphut Dísel
+STR_8006_POWERNAUT_DIESEL					:Powernaut Dísel
+STR_8007_WILLS_2_8_0_STEAM					:Wills 2-8-0 (Gufu)
+STR_8008_CHANEY_JUBILEE_STEAM					:Chaney 'Jubilee' (Gufu)
+STR_8009_GINZU_A4_STEAM						:Ginzu 'A4' (Gufu)
+STR_800A_SH_8P_STEAM						:SH '8P' (Gufu)
+STR_800B_MANLEY_MOREL_DMU_DIESEL				:Manley-Morel DMU (Dísel)
+STR_800C_DASH_DIESEL						:'Dash' (Dísel)
+STR_800D_SH_HENDRY_25_DIESEL					:SH/Hendry '25' (Dísel)
+STR_800E_UU_37_DIESEL						:UU '37' (Dísel)
+STR_800F_FLOSS_47_DIESEL					:Floss '47' (Dísel)
+STR_8010_CS_4000_DIESEL						:CS 4000 (Dísel)
+STR_8011_CS_2400_DIESEL						:CS 2400 (Dísel)
+STR_8012_CENTENNIAL_DIESEL					:Centennial (Dísel)
+STR_8013_KELLING_3100_DIESEL					:Kelling 3100 (Dísel)
+STR_8014_TURNER_TURBO_DIESEL					:Turner Turbo (Dísel)
+STR_8015_MJS_1000_DIESEL					:MJS 1000 (Dísel)
+STR_8016_SH_125_DIESEL						:SH '125' (Dísel)
+STR_8017_SH_30_ELECTRIC						:SH '30' (Rafmagns)
+STR_8018_SH_40_ELECTRIC						:SH '40' (Rafmagns)
+STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Rafmagns)
+STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Rafmagns)
+STR_801B_PASSENGER_CAR						:Fólks
+STR_801C_MAIL_VAN						:Póst Geymsla
+STR_801D_COAL_CAR						:Kola Pallur
+STR_801E_OIL_TANKER						:Olíu Tankur
+STR_801F_LIVESTOCK_VAN						:Búfénaðs Geymsla
+STR_8020_GOODS_VAN						:Gæðavöru Geymsla
+STR_8021_GRAIN_HOPPER						:Hveiti Pallur
+STR_8022_WOOD_TRUCK						:Viðar Pallur
+STR_8023_IRON_ORE_HOPPER					:Járn Pallur
+STR_8024_STEEL_TRUCK						:Stál Pallur
+STR_8025_ARMORED_VAN						:Brynvarin Geymsla
+STR_8026_FOOD_VAN						:Matar Geymsla
+STR_8027_PAPER_TRUCK						:Pappírs Geymsla
+STR_8028_COPPER_ORE_HOPPER					:Kopar Pallur
+STR_8029_WATER_TANKER						:Vatns Tankur
+STR_802A_FRUIT_TRUCK						:Ávaxta Pallur
+STR_802B_RUBBER_TRUCK						:Gúmmi Pallur
+STR_802C_SUGAR_TRUCK						:Sykur Pallur
+STR_802D_COTTON_CANDY_HOPPER					:Kandífloss Pallur
+STR_802E_TOFFEE_HOPPER						:Karamellu Pallur
+STR_802F_BUBBLE_VAN						:Sápukúlu Geymsla
+STR_8030_COLA_TANKER						:Kók Tankur
+STR_8031_CANDY_VAN						:Sætinda Geymsla
+STR_8032_TOY_VAN						:Dóta Geymsla
+STR_8033_BATTERY_TRUCK						:Rafhlöðu Pallur
+STR_8034_FIZZY_DRINK_TRUCK					:Fizzy Drykkja Pallur
+STR_8035_PLASTIC_TRUCK						:Plast Pallur
+STR_8036_X2001_ELECTRIC						:'X2001' (Rafmagns)
+STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Rafmagns)
+STR_8038_WIZZOWOW_Z99						:Wizzowow Z99
+STR_8039_PASSENGER_CAR						:Fólks bifreið
+STR_803A_MAIL_VAN						:Póst geymsl
+STR_803B_COAL_CAR						:Kola trukkure
+STR_803C_OIL_TANKER						:Olíu Tankur
+STR_803D_LIVESTOCK_VAN						:Nautgripa Geymsla
+STR_803E_GOODS_VAN						:Gæðavöru Geymsla
+STR_803F_GRAIN_HOPPER						:Hveiti Pallur
+STR_8040_WOOD_TRUCK						:Viðar Pallur
+STR_8041_IRON_ORE_HOPPER					:Járn Pallur
+STR_8042_STEEL_TRUCK						:Stál Pallur
+STR_8043_ARMORED_VAN						:Brynvarin Geymsla
+STR_8044_FOOD_VAN						:Matar Geymsla
+STR_8045_PAPER_TRUCK						:Pappírs Pallur
+STR_8046_COPPER_ORE_HOPPER					:Kopar Pallur
+STR_8047_WATER_TANKER						:Vatns Tankur
+STR_8048_FRUIT_TRUCK						:Ávaxta Pallur
+STR_8049_RUBBER_TRUCK						:Gúmmí Pallur
+STR_804A_SUGAR_TRUCK						:Sykur Pallur
+STR_804B_COTTON_CANDY_HOPPER					:Kandífloss Pallur
+STR_804C_TOFFEE_HOPPER						:Karamellu Pallur
+STR_804D_BUBBLE_VAN						:Sápukúlu Geymsla
+STR_804E_COLA_TANKER						:Kók Tankur
+STR_804F_CANDY_VAN						:Sælgætis Geymsla
+STR_8050_TOY_VAN						:Leikfanga Geymsla
+STR_8051_BATTERY_TRUCK						:Rafhlöðu Pallur
+STR_8052_FIZZY_DRINK_TRUCK					:Fizzy Drykkjar Pallur
+STR_8053_PLASTIC_TRUCK						:Plast Pallur
+STR_8054_LEV1_LEVIATHAN_ELECTRIC				:Lev1 'Leviathan' (Rafmagns)
+STR_8055_LEV2_CYCLOPS_ELECTRIC					:Lev2 'Cyclops' (Rafmagns)
+STR_8056_LEV3_PEGASUS_ELECTRIC					:Lev3 'Pegasus' (Rafmagns)
+STR_8057_LEV4_CHIMAERA_ELECTRIC					:Lev4 'Chimaera' (Rafmagns)
+STR_8058_WIZZOWOW_ROCKETEER					:Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR						:Fólks Bifreið
+STR_805A_MAIL_VAN						:Póst Geymsla
+STR_805B_COAL_CAR						:Kola Pallur
+STR_805C_OIL_TANKER						:Olíu Tankur
+STR_805D_LIVESTOCK_VAN						:Búfénaðs Geymsla
+STR_805E_GOODS_VAN						:Gæðavöru Geymsla
+STR_805F_GRAIN_HOPPER						:Hveiti Pallur
+STR_8060_WOOD_TRUCK						:Viðar Pallur
+STR_8061_IRON_ORE_HOPPER					:Járn Pallur
+STR_8062_STEEL_TRUCK						:Stál Pallur
+STR_8063_ARMORED_VAN						:Brynvarin Geymsla
+STR_8064_FOOD_VAN						:Matar Geymsla
+STR_8065_PAPER_TRUCK						:Pappírs Pallur
+STR_8066_COPPER_ORE_HOPPER					:Kopar Pallur
+STR_8067_WATER_TANKER						:Vatns Tankur
+STR_8068_FRUIT_TRUCK						:Ávaxta Pallur
+STR_8069_RUBBER_TRUCK						:Gúmmí Pallur
+STR_806A_SUGAR_TRUCK						:Sykur Pallur
+STR_806B_COTTON_CANDY_HOPPER					:Kandífloss Pallur
+STR_806C_TOFFEE_HOPPER						:Karamellu Pallur
+STR_806D_BUBBLE_VAN						:Sápukúlu Geymsla
+STR_806E_COLA_TANKER						:Kók Tankur
+STR_806F_CANDY_VAN						:Sælgætis Geymsla
+STR_8070_TOY_VAN						:Leikfanga Geymsla
+STR_8071_BATTERY_TRUCK						:Rafhlöðu Pallur
+STR_8072_FIZZY_DRINK_TRUCK					:Fizzy Drykkjar Pallur
+STR_8073_PLASTIC_TRUCK						:Plast Pallur
+STR_8074_MPS_REGAL_BUS						:MPS Regal Strætó
+STR_8075_HEREFORD_LEOPARD_BUS					:Hereford Leopard Strætó
+STR_8076_FOSTER_BUS						:Foster Strætó
+STR_8077_FOSTER_MKII_SUPERBUS					:Foster MkII Ofurstrætó
+STR_8078_PLODDYPHUT_MKI_BUS					:Ploddyphut MkI Strætó
+STR_8079_PLODDYPHUT_MKII_BUS					:Ploddyphut MkII Strætó
+STR_807A_PLODDYPHUT_MKIII_BUS					:Ploddyphut MkIII Strætó
+STR_807B_BALOGH_COAL_TRUCK					:Balogh Kolabíll
+STR_807C_UHL_COAL_TRUCK						:Uhl Kolabíll
+STR_807D_DW_COAL_TRUCK						:DW Kolabíll
+STR_807E_MPS_MAIL_TRUCK						:MPS Póstbíll
+STR_807F_REYNARD_MAIL_TRUCK					:Reynard Póstbíll
+STR_8080_PERRY_MAIL_TRUCK					:Perry Póstbíll
+STR_8081_MIGHTYMOVER_MAIL_TRUCK					:MightyMover Póstbíll
+STR_8082_POWERNAUGHT_MAIL_TRUCK					:Powernaught Póstbíll
+STR_8083_WIZZOWOW_MAIL_TRUCK					:Wizzowow Póstbíll
+STR_8084_WITCOMBE_OIL_TANKER					:Witcombe Olíubíll
+STR_8085_FOSTER_OIL_TANKER					:Foster Olíubíll
+STR_8086_PERRY_OIL_TANKER					:Perry Olíubíll
+STR_8087_TALBOTT_LIVESTOCK_VAN					:Talbott Nautgripabíll
+STR_8088_UHL_LIVESTOCK_VAN					:Uhl Nautgripabíll
+STR_8089_FOSTER_LIVESTOCK_VAN					:Foster Nautgripabíll
+STR_808A_BALOGH_GOODS_TRUCK					:Balogh Gæðavörubíll
+STR_808B_CRAIGHEAD_GOODS_TRUCK					:Craighead Gæðavörubíll
+STR_808C_GOSS_GOODS_TRUCK					:Goss Gæðavörubíll
+STR_808D_HEREFORD_GRAIN_TRUCK					:Hereford Hveitibíll
+STR_808E_THOMAS_GRAIN_TRUCK					:Thomas Hveitibíll
+STR_808F_GOSS_GRAIN_TRUCK					:Goss Hveitibíll
+STR_8090_WITCOMBE_WOOD_TRUCK					:Witcombe Viðarbíll
+STR_8091_FOSTER_WOOD_TRUCK					:Foster Viðarbíll
+STR_8092_MORELAND_WOOD_TRUCK					:Moreland Viðarbíll
+STR_8093_MPS_IRON_ORE_TRUCK					:MPS Járngrýtisbíll
+STR_8094_UHL_IRON_ORE_TRUCK					:Uhl Járngrýtisbíll
+STR_8095_CHIPPY_IRON_ORE_TRUCK					:Chippy Járngrýtisbíll
+STR_8096_BALOGH_STEEL_TRUCK					:Balogh Stálbíll
+STR_8097_UHL_STEEL_TRUCK					:Uhl Stálbíll
+STR_8098_KELLING_STEEL_TRUCK					:Kelling Stálbíll
+STR_8099_BALOGH_ARMORED_TRUCK					:Balogh Brynvarinn Bíll
+STR_809A_UHL_ARMORED_TRUCK					:Uhl Brynvarinn Bíll
+STR_809B_FOSTER_ARMORED_TRUCK					:Foster Brynvarinn Bíll
+STR_809C_FOSTER_FOOD_VAN					:Foster Matarbíll
+STR_809D_PERRY_FOOD_VAN						:Perry Matarbíll
+STR_809E_CHIPPY_FOOD_VAN					:Chippy Matarbíll
+STR_809F_UHL_PAPER_TRUCK					:Uhl Pappírsbíll
+STR_80A0_BALOGH_PAPER_TRUCK					:Balogh Pappírsbíll
+STR_80A1_MPS_PAPER_TRUCK					:MPS Pappírsbíll
+STR_80A2_MPS_COPPER_ORE_TRUCK					:MPS Koparbíll
+STR_80A3_UHL_COPPER_ORE_TRUCK					:Uhl Koparbíll
+STR_80A4_GOSS_COPPER_ORE_TRUCK					:Goss Koparbíll
+STR_80A5_UHL_WATER_TANKER					:Uhl Vatnsbíll
+STR_80A6_BALOGH_WATER_TANKER					:Balogh Vatnsbíll
+STR_80A7_MPS_WATER_TANKER					:MPS Vatnsbíll
+STR_80A8_BALOGH_FRUIT_TRUCK					:Balogh Vatnsbíll
+STR_80A9_UHL_FRUIT_TRUCK					:Uhl Ávaxtabíll
+STR_80AA_KELLING_FRUIT_TRUCK					:Kelling Ávaxtabíll
+STR_80AB_BALOGH_RUBBER_TRUCK					:Balogh Gúmmíbíll
+STR_80AC_UHL_RUBBER_TRUCK					:Uhl Gúmmíbíll
+STR_80AD_RMT_RUBBER_TRUCK					:RMT Gúmmíbíll
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK				:MightyMover Sykurbíll
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK				:Powernaught Sykurbíll
+STR_80B0_WIZZOWOW_SUGAR_TRUCK					:Wizzowow Sykurbíll
+STR_80B1_MIGHTYMOVER_COLA_TRUCK					:MightyMover Kóladrykkjarbíll
+STR_80B2_POWERNAUGHT_COLA_TRUCK					:Powernaught Kóladrykkjabíll
+STR_80B3_WIZZOWOW_COLA_TRUCK					:Wizzowow Kóladrykkjarbíll
+STR_80B4_MIGHTYMOVER_COTTON_CANDY				:MightyMover Kandíflossbíll
+STR_80B5_POWERNAUGHT_COTTON_CANDY				:Powernaught Kandíflossbíll
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK				:Wizzowow Kandíflossbíll
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK				:MightyMover Karamellubíll
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK				:Powernaught Karamellubíll
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK					:Wizzowow Karamellubíll
+STR_80BA_MIGHTYMOVER_TOY_VAN					:MightyMover Leikfangabíll
+STR_80BB_POWERNAUGHT_TOY_VAN					:Powernaught Leikfangabíll
+STR_80BC_WIZZOWOW_TOY_VAN					:Wizzowow Leikfangabíll
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK				:MightyMover Sælgætisbíll
+STR_80BE_POWERNAUGHT_CANDY_TRUCK				:Powernaught Sælgætisbíll
+STR_80BF_WIZZOWOW_CANDY_TRUCK					:Wizzowow Sælgætisbíll
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK				:MightyMover Rafhlöðubíll
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK				:Powernaught Rafhlöðubíll
+STR_80C2_WIZZOWOW_BATTERY_TRUCK					:Wizzowow Rafhlöðubíll
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK				:MightyMover Fizzy Drykkjarbíll
+STR_80C4_POWERNAUGHT_FIZZY_DRINK				:Powernaught Fizzy Drykkjarbíll
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK				:Wizzowow Fizzy Drykkjarbíll
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK				:MightyMover Plastbíll
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK				:Powernaught Plastbíll
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK					:Wizzowow Plastbíll
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK				:MightyMover Sápukúlubíll
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK				:Powernaught Sápukúlubíll
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK					:Wizzowow Sápukúlubíll
+STR_80CC_MPS_OIL_TANKER						:MPS Olíuskip
+STR_80CD_CS_INC_OIL_TANKER					:CS-Inc. Olíuskip
+STR_80CE_MPS_PASSENGER_FERRY					:MPS Farþegaferja
+STR_80CF_FFP_PASSENGER_FERRY					:FFP Farþegaferja
+STR_80D0_BAKEWELL_300_HOVERCRAFT				:Bakewell 300 Svifnökkvi
+STR_80D1_CHUGGER_CHUG_PASSENGER					:Chugger-Chug Farþegaferja
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY				:Shivershake Farþegaferja
+STR_80D3_YATE_CARGO_SHIP					:Yate Farmskip
+STR_80D4_BAKEWELL_CARGO_SHIP					:Bakewell Farmskip
+STR_80D5_MIGHTYMOVER_CARGO_SHIP					:Mightymover Farmskip
+STR_80D6_POWERNAUT_CARGO_SHIP					:Powernaut Farmskip
+STR_80D7_SAMPSON_U52						:Sampson U52
+STR_80D8_COLEMAN_COUNT						:Coleman Count
+STR_80D9_FFP_DART						:FFP Dart
+STR_80DA_YATE_HAUGAN						:Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3					:Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8					:Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9					:Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80					:Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10					:Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11					:Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11				:Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100						:Darwin 100
+STR_80E3_DARWIN_200						:Darwin 200
+STR_80E4_DARWIN_300						:Darwin 300
+STR_80E5_DARWIN_400						:Darwin 400
+STR_80E6_DARWIN_500						:Darwin 500
+STR_80E7_DARWIN_600						:Darwin 600
+STR_80E8_GURU_GALAXY						:Guru Galaxy
+STR_80E9_AIRTAXI_A21						:Airtaxi A21
+STR_80EA_AIRTAXI_A31						:Airtaxi A31
+STR_80EB_AIRTAXI_A32						:Airtaxi A32
+STR_80EC_AIRTAXI_A33						:Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46					:Yate Aerospace YAe46
+STR_80EE_DINGER_100						:Dinger 100
+STR_80EF_AIRTAXI_A34_1000					:AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE						:Yate Z-Skutla
+STR_80F1_KELLING_K1						:Kelling K1
+STR_80F2_KELLING_K6						:Kelling K6
+STR_80F3_KELLING_K7						:Kelling K7
+STR_80F4_DARWIN_700						:Darwin 700
+STR_80F5_FFP_HYPERDART_2					:FFP Ofurpíla 2
+STR_80F6_DINGER_200						:Dinger 200
+STR_80F7_DINGER_1000						:Dinger 1000
+STR_80F8_PLODDYPHUT_100						:Ploddyphut 100
+STR_80F9_PLODDYPHUT_500						:Ploddyphut 500
+STR_80FA_FLASHBANG_X1						:Flashbang X1
+STR_80FB_JUGGERPLANE_M1						:Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER					:Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER					:Tricario Þyrla
+STR_80FE_GURU_X2_HELICOPTER					:Guru X2 Þyrla
+STR_80FF_POWERNAUT_HELICOPTER					:Powernaut Þyrla
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE			:{WHITE}Skilaboð frá farartækisframleiðanda
+STR_8101_WE_HAVE_JUST_DESIGNED_A				:{GOLD}Við höfum hannað nýja {STRING} - hefðir þú áhuga á árs einkaleyfi á notkun þessa farartækis, svo að við getum athugað frammistöðu þess?
+STR_8102_RAILROAD_LOCOMOTIVE					:lest
+STR_8103_ROAD_VEHICLE						:bifreið
+STR_8104_AIRCRAFT						:flugvél
+STR_8105_SHIP							:sjóferju
+STR_8106_MONORAIL_LOCOMOTIVE					:einteina lest
+STR_8107_MAGLEV_LOCOMOTIVE					:segul lest
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} Lestar Bygging
+STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Borgarar fagna . . .{}Fyrsta lestin stöðvar í {STATION}!
+STR_8802_DETAILS						:{WHITE}{STRING} (Nánar)
+STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Lest fyrir
+STR_8804							:{SETX 10}{COMMA8}: {STRING}
+STR_8805							:{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8806_GO_TO							:Fer til {STATION}
+STR_8807_GO_TO_UNLOAD						:Fer til {STATION} (Afferma)
+STR_8808_GO_TO_LOAD						:Fer til {STATION} (Ferma)
+STR_8809							:
+STR_880A_GO_NON_STOP_TO						:Fer viðstöðvarlaust til {STATION}
+STR_880B_GO_NON_STOP_TO_UNLOAD					:Fer viðstöðvarlaust til {STATION} (Afferma)
+STR_880C_GO_NON_STOP_TO_LOAD					:Fer viðstöðvarlaust til {STATION} (Ferma)
+STR_880D							:
+STR_880E_GO_TO_TRAIN_DEPOT					:Fer til {TOWN} Lestar Byggingar
+STR_SERVICE_AT_TRAIN_DEPOT					:Viðgerð í {TOWN} Lestar Byggingu
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Fer viðstöðvunarlaust til {TOWN} Lestar Byggingar
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Viðgerð viðstöðvunarlaust í {TOWN} Lestar Byggingu
 
+STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Á leið í {TOWN} Lestar Byggingu
+STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Á leið í {TOWN} Lestar Byggingu, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ógild Skipun)
 
+STR_UNKNOWN_DESTINATION						:óþekktur áfangastaður
+STR_8812_EMPTY							:{LTBLUE}Tómt
+STR_8813_FROM							:{LTBLUE}{CARGO} frá {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Lest {COMMA16} bíður í skýli
+STR_8815_NEW_VEHICLES						:{BLACK}Ný faratæki
+STR_8816							:{BLACK}-
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA16}tonn{}{BLACK}Hraði: {GOLD}{VELOCITY}{BLACK}   Orka: {GOLD}{COMMA32}hestöfl{}{BLACK}Viðhaldskostnaður: {GOLD}{CURRENCY}/ár{}{BLACK}Burðargeta: {GOLD}{STRING}{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK} Líftími: {GOLD}{COMMA16} ár{}{BLACK}Áreiðanleiki mest: {GOLD}{COMMA8}%
+STR_8818_INFORMATION						:{BLACK}Upplýsingar
+STR_8819_TRAIN_TOO_LONG						:{WHITE}Lestin er of löng
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Lestir
+STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Nýir lestarvagnar
+STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nýir einteingungsvagnar
+STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Nýir segullestarvagnar
+STR_881F_BUILD_VEHICLE						:{BLACK}Smíða vagn
+STR_8820_RENAME							:{BLACK}Endurnefna
+STR_8821_COST_WEIGHT_T_T_CAPACITY				:{BLACK}Verð: {GOLD}{CURRENCY}{}{BLACK}Þyngd: {GOLD}{COMMA16}tonn  ({COMMA16}tonn){}{BLACK}Burðargeta: {GOLD}{STRING}
+STR_8823_SKIP							:{BLACK}Sleppa
+STR_8824_DELETE							:{BLACK}Eyða
+STR_8825_NON_STOP						:{BLACK}Stansleysa
+STR_8826_GO_TO							:{BLACK}Fara að
+STR_8827_FULL_LOAD						:{BLACK}Fullferma
+STR_8828_UNLOAD							:{BLACK} Afferma
+STR_8829_ORDERS							:{WHITE}{STRING} (Skipanir)
+STR_882A_END_OF_ORDERS						:{SETX 10}- - Endi skipana - -
 
 
 

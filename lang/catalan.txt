@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} les autoritats locals rebutge
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Noms de Població - clica al nom per centrar la pantalla principal a la població
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centra la pantalla principal a la població
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Canvía el nom de la població
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passatgers del darrer mes: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correu del darrer mes: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passatgers el darrer mes: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correu el darrer mes: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Bloc d'oficines alt
 STR_2010_OFFICE_BLOCK						:Bloc d'oficines
 STR_2011_SMALL_BLOCK_OF_FLATS					:Petit bloc d'apartaments

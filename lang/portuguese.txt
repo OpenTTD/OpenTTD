@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}A autoridade local de {TOWN} não aut
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Nomes das cidades - clique no nome para centrar a visualização na cidade
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centrar visualização na cidade
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Alterar o nome da cidade
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passageiros último mês: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correio último mês: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passageiros no último mês: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correio no último mês: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Edifício alto de escritórios
 STR_2010_OFFICE_BLOCK						:Edifício de escritórios
 STR_2011_SMALL_BLOCK_OF_FLATS					:Edifício de apartamentos grande
