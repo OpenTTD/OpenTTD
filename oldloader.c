@@ -1381,7 +1381,6 @@ bool LoadOldSaveGame(const char *file)
 	#endif
 
 	// copy sections of it to our datastructures.
-	fprintf(stderr, "moo\n");
 	map_size = MapSize();
 	memcpy(_map_owner, m->map_owner, map_size);
 	memcpy(_map2, m->map2, map_size);
