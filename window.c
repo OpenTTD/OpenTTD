@@ -806,10 +806,8 @@ bool HandleWindowDragging()
 				int v_bottom = v->top + v->height;
 				int v_right = v->left + v->width;
 				if (ny + t->top >= v->top && ny + t->top < v_bottom) {
-					if (v->left < 13 && nx + t->left < v->left) {
-						ny = v_bottom;
-					} else if (v_right > _screen.width - 13 &&
-							nx + t->right > v_right) {
+					if ((v->left < 13 && nx + t->left < v->left) ||
+							(v_right > _screen.width - 13 && nx + t->right > v_right)) {
 						ny = v_bottom;
 					} else {
 						if (nx + t->left > v->left - 13 &&
