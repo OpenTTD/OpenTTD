@@ -3,6 +3,31 @@
 
 #include "vehicle.h"
 
+VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {
+	&VehicleUnsortedSorter,
+	&VehicleNumberSorter,
+	&VehicleNameSorter,
+	&VehicleAgeSorter,
+	&VehicleProfitThisYearSorter,
+	&VehicleProfitLastYearSorter,
+	&VehicleCargoSorter,
+	&VehicleReliabilitySorter,
+	&VehicleMaxSpeedSorter
+};
+
+const StringID _vehicle_sort_listing[] = {
+	STR_SORT_BY_UNSORTED,
+	STR_SORT_BY_NUMBER,
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_AGE,
+	STR_SORT_BY_PROFIT_THIS_YEAR,
+	STR_SORT_BY_PROFIT_LAST_YEAR,
+	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
+	STR_SORT_BY_RELIABILITY,
+	STR_SORT_BY_MAX_SPEED,
+	INVALID_STRING_ID
+};
+
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList()
 {
