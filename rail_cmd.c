@@ -873,6 +873,7 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	byte m5;
 	int32 cost;
 	int track = p1 & 0x7;
+	byte a,b,c,d;
 
 	assert(track >= 0 && track < 6); // only 6 possible track-combinations
 
@@ -901,13 +902,21 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckTileOwnership(tile))
 		return CMD_ERROR;
 
+	// calculate masks for..
+	a = _signals_table[track];      // .. signal for this track in one direction
+	b = _signals_table[track + 8];  // .. signal for this track in the other direction
+	c = a | b;											// .. 2-way signal for this track
+
 	// If it had signals previously it is free to change orientation/pre-exit-combo signals
 	cost = 0;
 	if (!(m5 & RAIL_TYPE_SIGNALS)) {
 		cost = _price.build_signals;
+	} else {
+		d = _map3_lo[tile] & c;					// mask of built signals. it only affects &0xF0
+		if (d == 0) cost += _price.build_signals; // no signals built yet
 	// if converting signals<->semaphores, charge the player for it
-	} else if (p2 && ((HASBIT(p1, 3) && !HASBIT(_map3_hi[tile], 2)) || (!HASBIT(p1, 3) && HASBIT(_map3_hi[tile], 2)) ) ) {
-		cost += _price.build_signals + _price.remove_signals;
+		if (p2 && ((HASBIT(p1, 3) && !HASBIT(_map3_hi[tile], 2)) || (!HASBIT(p1, 3) && HASBIT(_map3_hi[tile], 2)) ) )
+			cost += _price.build_signals + _price.remove_signals;
 	}
 
 	if (flags & DC_EXEC) {
@@ -918,23 +927,17 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_map2[tile] |= 0xF0;              // all signals are on
 			_map3_lo[tile] &= ~0xF0;          // no signals built by default
 			_map3_hi[tile] = (p1 & 8) ? 4 : 0;// initial presignal state, semaphores depend on ctrl key
+			d = 0;														// no existing signals
 			if (!p2)
 				goto ignore_presig;
 		}
 
 		if (!p2) { // not called from CmdBuildManySignals
 			if (!HASBIT(p1, 3)) { // not CTRL pressed
-				byte a,b,c,d;
 	ignore_presig:
-				a = _signals_table[track];      // signal for this track in one direction
-				b = _signals_table[track + 8];  // signal for this track in the other direction
-				c = a | b;
-				d = _map3_lo[tile] & c;					// mask of built signals. it only affects &0xF0
-
 				// Alternate between a|b, b, a
-				if ( d != 0 && d != a) {
-					c = (d==c)?b:a;
-				}
+				if ( d != 0 && d != a)
+					c = (d == c)?b:a;
 
 				_map3_lo[tile] = (_map3_lo[tile]&~(a|b)) | c;
 			} else // CTRL pressed
@@ -1064,7 +1067,7 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /* Remove signals
- * p1 = unused
+ * p1 bits 0..2 = track
  * p2 = unused
  */
 
@@ -1072,6 +1075,8 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	uint tile;
+	int track = p1 & 0x7;
+	byte a,b,c,d;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1094,16 +1099,29 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile))
 		return CMD_ERROR;
 
+	// calculate already built signals
+	a = _signals_table[track];      // signal for this track in one direction
+	b = _signals_table[track + 8];  // signal for this track in the other direction
+	c = a | b;
+	d = _map3_lo[tile] & c;
+
+	/* no signals on selected track? */
+	if (d == 0)
+		return CMD_ERROR;
+
 	/* Do it? */
 	if (flags & DC_EXEC) {
-		byte bits = _map5[tile];
-		_map5[tile] &= ~RAIL_TYPE_SIGNALS;
-		_map2[tile] &= ~0xF0;
-		CLRBIT(_map3_hi[tile], 2); // remove any possible semaphores
+		
+		_map3_lo[tile] &= ~c;
 
-		/* TTDBUG: this code contains a bug, if a tile contains 2 signals
-		 * on separate tracks, it won't work properly for the 2nd track */
-		SetSignalsOnBothDir(tile, FIND_FIRST_BIT(bits & RAIL_BIT_MASK));
+		/* removed last signal from tile? */
+		if ((_map3_lo[tile] & 0xF0) == 0) {
+			_map5[tile] &= ~RAIL_TYPE_SIGNALS;
+			_map2[tile] &= ~0xF0;
+			CLRBIT(_map3_hi[tile], 2); // remove any possible semaphores
+		}
+		
+		SetSignalsOnBothDir(tile, track);
 
 		MarkTileDirtyByTile(tile);
 	}
@@ -1229,9 +1247,20 @@ regular_track:;
 		return cost;
 
 	} else if ((m5 & RAIL_TYPE_MASK)==RAIL_TYPE_SIGNALS) {
-		cost = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
-		if (cost == CMD_ERROR)
-			return CMD_ERROR;
+		cost = 0;
+		if (_map3_lo[tile] & (_signals_table[0] | _signals_table[0 + 8])) { // check for signals in the first track
+			ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
+			if (ret == CMD_ERROR)
+				return CMD_ERROR;
+			cost += ret;
+		};
+		if (_map3_lo[tile] & (_signals_table[3] | _signals_table[3 + 8])) { // check for signals in the other track
+			ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
+			if (ret == CMD_ERROR)
+				return CMD_ERROR;
+			cost += ret;
+		};
+		
 		m5 &= RAIL_BIT_MASK;
 		if (flags & DC_EXEC)
 			goto regular_track;
