@@ -18,7 +18,6 @@
 #endif //_MSC_VER
 
 #if ! (defined(__MINGW32__) || defined(__CYGWIN__))
-	#define ENABLE_NETWORK // On windows, the network is always enabled
 	// Windows has some different names for some types..
 	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
@@ -89,7 +88,7 @@ typedef struct ifreq IFREQ;
 #endif // UNIX
 
 #ifdef __BEOS__
-typedef int socklen_t;
+	typedef int socklen_t;
 #endif
 
 // OS/2 stuff

@@ -3,6 +3,7 @@
 
 #include "ttd.h"
 #include "network.h"
+#include "network_core.h"
 
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
