@@ -596,6 +596,11 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			}
 			DoCommandP(0, -1, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			DeleteWindow(w);
+			// If we are in the editor, we should reload the economy.
+			//  This way when you load a game, the max loan and interest rate
+			//  are loaded correctly.
+			if (_game_mode == GM_EDITOR)
+				StartupEconomy();
 			break;
 		}
 		case 11: // Cancel button - close window
