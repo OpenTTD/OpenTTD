@@ -9,9 +9,6 @@
 #include "command.h"
 #include "news.h"
 
-void DrawShipEngine(int x, int y, int engine, uint32 image_ormod);
-void DrawShipEngineInfo(int engine, int x, int y, int maxw);
-
 
 StringID GetEngineCategoryName(byte engine)
 {

@@ -218,7 +218,6 @@ bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleZ(TileIndex tile, byte z);
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost);
-void MarkWholeScreenDirty();
 
 void DrawFoundation(TileInfo *ti, uint f);
 
@@ -228,7 +227,6 @@ void ChangeTownRating(Town *t, int add, int max);
 
 uint GetRoadBitsByTile(TileIndex tile);
 int GetTownRadiusGroup(Town *t, uint tile);
-int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
 void ShowNetworkNeedGamePassword();

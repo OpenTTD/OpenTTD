@@ -3,6 +3,7 @@
 #include "table/strings.h"
 #include "engine.h"
 #include "table/engines.h"
+#include "gfx.h"
 #include "player.h"
 #include "command.h"
 #include "vehicle.h"

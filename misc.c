@@ -176,7 +176,6 @@ void GenerateUnmovables();
 void GenerateTowns();
 
 void StartupPlayers();
-void StartupEngines();
 void StartupDisasters();
 void GenerateTrees();
 

@@ -16,7 +16,6 @@
 #include "hal.h" // for file list
 
 bool _query_string_active;
-void SetFiosType(const byte fiostype);
 
 /* Now this is what I call dirty.. the edit-box needs to be rewritten! */
 static bool _do_edit_on_text_even_when_no_change_to_edit_box;

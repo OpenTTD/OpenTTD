@@ -511,8 +511,6 @@ void DispatchMouseWheelEvent(Window *w, uint widget, int wheel);
 void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent();
-void DrawDirtyBlocks();
-void SetDirtyBlocks(int left, int top, int right, int bottom);
 void SetWindowDirty(Window *w);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);

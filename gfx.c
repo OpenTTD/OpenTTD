@@ -5,7 +5,6 @@
 #include "hal.h"
 
 static void GfxMainBlitter(byte *sprite, int x, int y, int mode);
-void GfxInitPalettes();
 
 static int _stringwidth_out;
 static byte _cursor_backup[64*64];

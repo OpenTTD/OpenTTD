@@ -30,8 +30,6 @@
 
 #include <stdarg.h>
 
-void GameLoop();
-
 void IncreaseSpriteLRU();
 void GenerateWorld(int mode);
 void CallLandscapeTick();

@@ -1439,8 +1439,6 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-static byte _edit_str_buf[MAX_QUERYSTR_LEN*2];
-
 void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number)
 {
 	Window *w;
