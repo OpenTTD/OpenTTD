@@ -18,6 +18,7 @@
 		? is_custom_firsthead_sprite(spritenum) \
 		: _engine_sprite_add[spritenum] == 0)
 
+static bool TrainCheckIfLineEnds(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
 static const byte _vehicle_initial_y_fract[4] = {8,4,8,10};
@@ -1274,7 +1275,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	Vehicle *u;
 
 	// bail out if not all wagons are in the same depot or not in a depot at all
-	for (u = v; u != NULL; u = u->next) 
+	for (u = v; u != NULL; u = u->next)
 		if (u->u.rail.track != 0x80 || u->tile != v->tile)
 			return false;
 
@@ -2067,6 +2068,10 @@ static void TrainController(Vehicle *v)
 					gp.y = v->y_pos;
 				} else {
 					/* is not inside depot */
+
+					if (!TrainCheckIfLineEnds(v))
+						return;
+
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 					if (r & 0x8)
 						goto invalid_rail;
@@ -2363,7 +2368,7 @@ static const byte _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
 };
 
-static void TrainCheckIfLineEnds(Vehicle *v)
+static bool TrainCheckIfLineEnds(Vehicle *v)
 {
 	uint tile;
 	uint x,y;
@@ -2382,18 +2387,20 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 
 	// exit if inside a tunnel
 	if (v->u.rail.track & 0x40)
-		return;
+		return true;
 
 	tile = v->tile;
 
 	// tunnel entrance?
 	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
 			(_map5[tile] & 0xF0) == 0 && (byte)((_map5[tile] & 3)*2+1) == v->direction)
-				return;
+				return true;
 
 	// depot?
-	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0)
-		return;
+	/* XXX -- When enabled, this makes it possible to crash trains of others
+	     (by building a depot right against a station) */
+/*	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0)
+		return true;*/
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
 	t = v->direction >> 1;
@@ -2434,6 +2441,12 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 	}
 
 	if ( (uint16)ts != 0) {
+		/* If we approach a rail-piece which we can't enter, don't enter it! */
+		if (x + 4 > 15 && !CheckCompatibleRail(v, tile)) {
+			v->cur_speed = 0;
+			ReverseTrainDirection(v);
+			return false;
+		}
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
 			if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
@@ -2443,12 +2456,12 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return;
+			return true;
 		}
 	} else if (x + 4 > 15) {
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);
-		return;
+		return false;
 	}
 
 	// slow down
@@ -2457,6 +2470,8 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 	if (!(v->direction&1)) t>>=1;
 	if ((uint16)t < v->cur_speed)
 		v->cur_speed = t;
+
+	return true;
 }
 
 static void TrainLocoHandler(Vehicle *v, bool mode)
