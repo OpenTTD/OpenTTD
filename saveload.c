@@ -60,7 +60,7 @@ static void NORETURN SlError(const char *msg)
 	longjmp(_sl.excpt, 0);
 }
 
-int SlReadByte(void)
+inline int SlReadByte(void)
 {
 	if (_sl.bufp == _sl.bufe) SlReadFill();
 	return *_sl.bufp++;
