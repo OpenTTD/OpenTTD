@@ -5,6 +5,7 @@
 #include "command.h"
 #include "town.h"
 #include "news.h"
+#include "sound.h"
 
 static void FloodVehicle(Vehicle *v);
 

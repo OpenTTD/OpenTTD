@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "pathfind.h"
 #include "player.h"
+#include "sound.h"
 
 void ShowRoadVehViewWindow(Vehicle *v);
 

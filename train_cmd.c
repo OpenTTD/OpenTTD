@@ -9,7 +9,7 @@
 #include "news.h"
 #include "engine.h"
 #include "player.h"
-
+#include "sound.h"
 
 #define is_firsthead_sprite(spritenum) \
 	(is_custom_sprite(spritenum) \
@@ -1241,9 +1241,15 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 	int engtype = v->engine_type;
 
 	switch (_engines[engtype].railtype) {
-		case 0: SndPlayVehicleFx(sfx[_rail_vehicle_info[engtype].engclass], v); break;
-		case 1: SndPlayVehicleFx(0x41, v); break;
-		case 2: SndPlayVehicleFx(0x47, v); break;
+		case 0:
+			SndPlayVehicleFx(sfx[_rail_vehicle_info[engtype].engclass], v);
+			break;
+		case 1:
+			SndPlayVehicleFx(SND_47_MAGLEV_2, v);
+			break;
+		case 2:
+			SndPlayVehicleFx(SND_41_MAGLEV, v);
+			break;
 	}
 }
 

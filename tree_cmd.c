@@ -3,6 +3,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "town.h"
+#include "sound.h"
 
 static int GetRandomTreeType(uint tile, uint seed)
 {

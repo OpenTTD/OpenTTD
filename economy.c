@@ -12,6 +12,7 @@
 #include "industry.h"
 #include "town.h"
 #include "network.h"
+#include "sound.h"
 
 void UpdatePlayerHouse(Player *p, uint score)
 {

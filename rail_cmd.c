@@ -5,6 +5,7 @@
 #include "command.h"
 #include "pathfind.h"
 #include "town.h"
+#include "sound.h"
 
 void ShowTrainDepotWindow(uint tile);
 

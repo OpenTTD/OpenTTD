@@ -55,11 +55,6 @@ int GetParamInt8();
 int GetParamUint16();
 
 
-/* sound.c */
-void SndPlayTileFx(int sound, TileIndex tile);
-void SndPlayVehicleFx(int sound, Vehicle *v);
-void SndPlayFx(int sound);
-
 /* clear_land.c */
 void DrawHillyLandTile(TileInfo *ti);
 void DrawClearLandTile(TileInfo *ti, byte set);

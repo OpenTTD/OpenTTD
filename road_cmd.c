@@ -7,6 +7,7 @@
 #include "town.h"
 #include "gfx.h"
 #include "table/directions.h"
+#include "sound.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction
  * as normal roads instead of impassable. This is used when detecting whether

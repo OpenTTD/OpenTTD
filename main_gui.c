@@ -11,6 +11,7 @@
 #include "town.h"
 #include "vehicle.h"
 #include "console.h"
+#include "sound.h"
 
 #include "table/animcursors.h"
 

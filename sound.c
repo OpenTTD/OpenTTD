@@ -6,13 +6,13 @@
 #include "viewport.h"
 #include "fileio.h"
 
-typedef struct {
+typedef struct MixerChannel {
 	// Mixer
 	Mixer *mx;
 	bool active;
 
 	// pointer to allocated buffer memory
-	void *memory;
+	int8 *memory;
 
 	// current position in memory
 	uint32 pos;
@@ -27,14 +27,13 @@ typedef struct {
 	uint flags;
 } MixerChannel;
 
-typedef struct FileEntry FileEntry;
-struct FileEntry {
+typedef struct FileEntry {
 	uint32 file_offset;
 	uint32 file_size;
 	uint16 rate;
 	uint8 bits_per_sample;
 	uint8 channels;
-};
+} FileEntry;
 
 struct Mixer {
 	uint32 play_rate;
@@ -53,8 +52,6 @@ enum {
 #define SOUND_SLOT 31
 
 
-FILE *out;
-
 static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
 	int8 *b;
@@ -67,7 +64,7 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	sc->samples_left -= samples;
 	assert(samples > 0);
 
-	b = (int8*)sc->memory + sc->pos;
+	b = sc->memory + sc->pos;
 	frac_pos = sc->frac_pos;
 	frac_speed = sc->frac_speed;
 	volume_left = sc->volume_left;
@@ -76,11 +73,11 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	if (frac_speed == 0x10000) {
 		// Special case when frac_speed is 0x10000
 		do {
-			buffer[0]+= *b * volume_left >> 8;
-			buffer[1]+= *b * volume_right >> 8;
+			buffer[0] += *b * volume_left >> 8;
+			buffer[1] += *b * volume_right >> 8;
 			b++;
 			buffer += 2;
-		} while (--samples);
+		} while (--samples > 0);
 	} else {
 		do {
 			buffer[0] += *b * volume_left >> 8;
@@ -89,52 +86,50 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 			frac_pos += frac_speed;
 			b += frac_pos >> 16;
 			frac_pos &= 0xffff;
-		} while (--samples);
+		} while (--samples > 0);
 	}
 
 	sc->frac_pos = frac_pos;
-	sc->pos = b - (int8*)sc->memory;
+	sc->pos = b - sc->memory;
 }
 
 static void MxCloseChannel(MixerChannel *mc)
 {
-	void *mem = mc->memory;
+	if (mc->flags & MX_AUTOFREE) free(mc->memory);
 	mc->memory = NULL;
 	mc->active = false;
-
-	if (mc->flags & MX_AUTOFREE)
-		free(mem);
 }
 
 void MxMixSamples(Mixer *mx, void *buffer, uint samples)
 {
-	int i;
 	MixerChannel *mc;
 
 	// Clear the buffer
-	memset(buffer, 0, sizeof(int16)*2*samples);
+	memset(buffer, 0, sizeof(int16) * 2 * samples);
 
 	// Mix each channel
-	for(i=0,mc=mx->channels; i!=lengthof(mx->channels); i++,mc++) {
+	for (mc = mx->channels; mc != endof(mx->channels); mc++) {
 		if (mc->active) {
-			mix_int8_to_int16(mc, (int16*)buffer, samples);
-			if (mc->samples_left == 0) {
-				MxCloseChannel(mc);
-			}
+			mix_int8_to_int16(mc, buffer, samples);
+			if (mc->samples_left == 0) MxCloseChannel(mc);
 		}
 	}
 
-//	if (out == NULL)
-//		out = fopen("d:\\dump.raw", "wb");
-//	fwrite(buffer, samples*4, 1, out);
+	#if 0
+	{
+		static FILE *out = NULL;
+		if (out == NULL)
+			out = fopen("d:\\dump.raw", "wb");
+		fwrite(buffer, samples * 4, 1, out);
+	}
+	#endif
 }
 
 static MixerChannel *MxAllocateChannel(Mixer *mx)
 {
-	int i;
 	MixerChannel *mc;
-	for(i=0,mc=mx->channels; i!=lengthof(mx->channels); i++,mc++)
-		if (!mc->memory) {
+	for (mc = mx->channels; mc != endof(mx->channels); mc++)
+		if (mc->memory == NULL) {
 			mc->active = false;
 			mc->mx = mx;
 			return mc;
@@ -142,18 +137,20 @@ static MixerChannel *MxAllocateChannel(Mixer *mx)
 	return NULL;
 }
 
-static void MxSetChannelRawSrc(MixerChannel *mc, void *mem, uint size, uint rate, uint flags)
+static void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint flags)
 {
 	mc->memory = mem;
 	mc->flags = flags;
 	mc->frac_pos = 0;
 	mc->pos = 0;
 
-	mc->frac_speed = (rate<<16) / mc->mx->play_rate;
+	mc->frac_speed = (rate << 16) / mc->mx->play_rate;
 
 	// adjust the magnitude to prevent overflow
-	while (size & 0xFFFF0000)
-		size >>= 1, rate = (rate >> 1) + 1;
+	while (size & 0xFFFF0000) {
+		size >>= 1;
+		rate = (rate >> 1) + 1;
+	}
 
 	mc->samples_left = size * mc->mx->play_rate / rate;
 }
@@ -176,39 +173,55 @@ static void MxOpenBankFile(Mixer *mx, const char *filename)
 
 	FioSeekTo(0, SEEK_SET);
 
-	for(i=0; i!=count; i++,fe++) {
+	for (i = 0; i != count; i++, fe++) {
 		fe->file_offset = FioReadDword();
 		fe->file_size = FioReadDword();
 	}
 
 	fe = mx->files;
-	for(i=0; i!=count; i++,fe++) {
+	for (i = 0; i != count; i++, fe++) {
+		char name[255];
+
 		FioSeekTo(fe->file_offset, SEEK_SET);
-		// Skip past string and the name.
-		FioSeekTo(FioReadByte() + 12, SEEK_CUR);
 
-		// Read riff tags
-		while(true) {
-			tag = FioReadDword();
-			size = FioReadDword();
+		// Check for special case, see else case
+		FioReadBlock(name, FioReadByte()); // Read the name of the sound
+		if (strcmp(name, "Corrupt sound") != 0) {
+			FioSeekTo(12, SEEK_CUR); // Skip past RIFF header
 
-			if (tag == ' tmf') {
-				FioReadWord(); // wFormatTag
-				fe->channels = FioReadWord(); // wChannels
-				FioReadDword(); // samples per second
-				fe->rate = 11025; // seems like all samples should be played at this rate.
-				FioReadDword();						// avg bytes per second
-				FioReadWord();							// alignment
-				fe->bits_per_sample = FioReadByte(); // bits per sample
-				FioSeekTo(size - (2+2+4+4+2+1), SEEK_CUR);
-			} else if (tag == 'atad') {
-				fe->file_size = size;
-				fe->file_offset = FioGetPos() | (SOUND_SLOT << 24);
-				break;
-			} else {
-				fe->file_size = 0;
-				break;
+			// Read riff tags
+			for (;;) {
+				tag = FioReadDword();
+				size = FioReadDword();
+
+				if (tag == ' tmf') {
+					FioReadWord(); // wFormatTag
+					fe->channels = FioReadWord(); // wChannels
+					FioReadDword();   // samples per second
+					fe->rate = 11025; // seems like all samples should be played at this rate.
+					FioReadDword();   // avg bytes per second
+					FioReadWord();    // alignment
+					fe->bits_per_sample = FioReadByte(); // bits per sample
+					FioSeekTo(size - (2 + 2 + 4 + 4 + 2 + 1), SEEK_CUR);
+				} else if (tag == 'atad') {
+					fe->file_size = size;
+					fe->file_offset = FioGetPos() | (SOUND_SLOT << 24);
+					break;
+				} else {
+					fe->file_size = 0;
+					break;
+				}
 			}
+		} else {
+			/*
+			 * Special case for the jackhammer sound
+			 * (name in sample.cat is "Corrupt sound")
+			 * It's no RIFF file, but raw PCM data
+			 */
+			fe->channels = 1;
+			fe->rate = 11025;
+			fe->bits_per_sample = 8;
+			fe->file_offset = FioGetPos() | (SOUND_SLOT << 24);
 		}
 	}
 }
@@ -216,19 +229,18 @@ static void MxOpenBankFile(Mixer *mx, const char *filename)
 static bool MxSetBankSource(MixerChannel *mc, uint bank)
 {
 	FileEntry *fe = &mc->mx->files[bank];
-	void *mem;
+	int8 *mem;
 	uint i;
 
 	if (fe->file_size == 0)
 		return false;
 
-	mem = malloc(fe->file_size);
+	mem = malloc(fe->file_size); /* XXX unchecked malloc */
 	FioSeekToFile(fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
 
-	for(i=0; i!=fe->file_size; i++) {
-		((byte*)mem)[i] ^= 0x80;
-	}
+	for (i = 0; i != fe->file_size; i++)
+		mem[i] -= 128; // Convert unsigned sound data to signed
 
 	assert(fe->bits_per_sample == 8 && fe->channels == 1 && fe->file_size != 0 && fe->rate != 0);
 
@@ -289,7 +301,7 @@ static const byte _sound_idx[] = {
 	72,
 };
 
-void SndPlayScreenCoordFx(int sound, int x, int y)
+static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
 	Window *w;
 	ViewPort *vp;
@@ -298,8 +310,8 @@ void SndPlayScreenCoordFx(int sound, int x, int y)
 	if (msf.effect_vol == 0)
 		return;
 
-	for(w=_windows; w!=_last_window; w++) {
-		if ((vp=w->viewport) &&
+	for (w = _windows; w != _last_window; w++) {
+		if ((vp = w->viewport) != NULL &&
 				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&
 				IS_INSIDE_1D(y, vp->virtual_top, vp->virtual_height)) {
 
@@ -315,23 +327,24 @@ void SndPlayScreenCoordFx(int sound, int x, int y)
 
 }
 
-void SndPlayTileFx(int sound, TileIndex tile)
+void SndPlayTileFx(SoundFx sound, TileIndex tile)
 {
-	int x = GET_TILE_X(tile)*16;
-	int y = GET_TILE_Y(tile)*16;
-	Point pt = RemapCoords(x,y, GetSlopeZ(x+8, y+8));
+	/* emits sound from center (+ 8) of the tile */
+	int x = GET_TILE_X(tile) * 16 + 8;
+	int y = GET_TILE_Y(tile) * 16 + 8;
+	Point pt = RemapCoords(x, y, GetSlopeZ(x, y));
 	SndPlayScreenCoordFx(sound, pt.x, pt.y);
 }
 
-void SndPlayVehicleFx(int sound, Vehicle *v)
+void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 {
 	SndPlayScreenCoordFx(sound,
-		(v->left_coord + v->right_coord) >> 1,
-		(v->top_coord + v->bottom_coord) >> 1
+		(v->left_coord + v->right_coord) / 2,
+		(v->top_coord + v->bottom_coord) / 2
 	);
 }
 
-void SndPlayFx(int sound)
+void SndPlayFx(SoundFx sound)
 {
 	StartSound(
 		_sound_idx[sound],

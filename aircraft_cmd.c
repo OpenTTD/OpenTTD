@@ -6,6 +6,7 @@
 #include "station.h"
 #include "news.h"
 #include "gfx.h"
+#include "sound.h"
 #include "player.h"
 #include "airport.h"
 

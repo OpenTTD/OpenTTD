@@ -8,6 +8,7 @@
 #include "news.h"
 #include "saveload.h"
 #include "economy.h"
+#include "sound.h"
 
 byte _industry_sound_ctr;
 TileIndex _industry_sound_tile;

@@ -9,6 +9,7 @@
 #include "command.h"
 #include "player.h"
 #include "town.h"
+#include "sound.h"
 
 #include "hal.h" // Fios items
 

@@ -9,6 +9,7 @@
 #include "saveload.h"
 #include "player.h"
 #include "engine.h"
+#include "sound.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))

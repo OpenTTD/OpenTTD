@@ -5,6 +5,7 @@
 #include "gui.h"
 #include "viewport.h"
 #include "gfx.h"
+#include "sound.h"
 #include "command.h"
 
 static void ShowBuildDockStationPicker();

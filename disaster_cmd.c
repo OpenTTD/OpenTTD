@@ -9,6 +9,7 @@
 #include "industry.h"
 #include "player.h"
 #include "airport_movement.h"
+#include "sound.h"
 
 static void DisasterClearSquare(uint tile)
 {

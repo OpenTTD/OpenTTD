@@ -5,6 +5,7 @@
 #include "command.h"
 #include "player.h"
 #include "town.h"
+#include "sound.h"
 
 extern void DrawCanalWater(uint tile);
 

@@ -9,6 +9,7 @@
 #include "saveload.h"
 #include "command.h"
 #include "ai.h"
+#include "sound.h"
 
 extern void StartupEconomy();
 

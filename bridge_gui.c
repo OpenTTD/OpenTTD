@@ -6,6 +6,7 @@
 #include "viewport.h"
 #include "gfx.h"
 #include "command.h"
+#include "sound.h"
 
 static struct BridgeData {
 	int count;
