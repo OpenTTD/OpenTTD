@@ -1886,7 +1886,7 @@ static byte MakeRomanianTownName(byte *buf, uint32 seed)
 	AppendPart(&buf, GETNUM(0, NUM_ROMANIAN_1), romanian_1);
 	return 0;	
 }
- 
+
 #define NUM_SLOVAKISH_1 87
 static const char slovakish_1[] =
 MK("Bratislava")

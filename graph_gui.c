@@ -51,7 +51,7 @@ void DrawGraph(GraphDrawer *gw)
 	int64 cur_val;
 	uint sel;
 
-	/* the colors and cost array of GraphDrawer must accomodate 
+	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
 	assert(GRAPH_NUM >= NUM_CARGO && GRAPH_NUM >= MAX_PLAYERS);
 

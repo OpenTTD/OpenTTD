@@ -72,7 +72,7 @@ static const CurrencySpec _currency_specs[] = {
 	{ 50,  ',', 0,              "",     " Kc" },
 	{ 130, '.', 0,              "",     " kr" },
 	{ 11,  '.', 0,              "",     " kr" },
-	{ 6,   '.', 0,              "",     " Lei" }, 
+	{ 6,   '.', 0,              "",     " Lei" },
 	{ 2,   ',', CF_ISEURO,      "€",    "" },
 };
 

@@ -70,7 +70,7 @@ VARDEF Subsidy _subsidies[MAX_PLAYERS];
 Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode);
 void DeleteSubsidyWithIndustry(byte index);
 void DeleteSubsidyWithStation(byte index);
-void RemoteSubsidyAdd(Subsidy *s_new); 
+void RemoteSubsidyAdd(Subsidy *s_new);
 
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
 uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount);

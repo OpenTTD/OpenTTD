@@ -897,7 +897,7 @@ void RemoteSubsidyAdd(Subsidy *s_new)
 	Pair pair;
 
 	// search the first free subsidy
-	for(s=_subsidies; s != endof(_subsidies); s++) 
+	for(s=_subsidies; s != endof(_subsidies); s++)
 		if (s->cargo_type == 0xFF)
 			break;
 
@@ -907,7 +907,6 @@ void RemoteSubsidyAdd(Subsidy *s_new)
 	AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
 
 	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
-
 }
 
 static void SubsidyMonthlyHandler()
