@@ -49,10 +49,11 @@ typedef struct {
 	uint16 max_pass, max_mail;
 	uint16 act_pass, act_mail;
 	byte pct_pass_transported, pct_mail_transported;
-	uint16 new_act_food, new_act_paper;
-	uint16 act_food, act_paper;
+	uint16 new_act_food, new_act_water;
+	uint16 act_food, act_water;
 	byte road_build_months;
 	byte fund_buildings_months;
+	// unused bytes at the end of the Town Struct
 	uint32 unk56;
 	uint32 unk5A;
 } GCC_PACK OldTown;
@@ -579,15 +580,21 @@ static void LoadSavegameBytes(void *p, size_t count)
 	} while (--count);
 }
 
-static void FixTown(Town *t, OldTown *o, int num)
+extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
+
+static void FixTown(Town *t, OldTown *o, int num, byte town_name_type)
 {
 	do {
 		t->xy = o->xy;
 		t->population = o->population;
 		t->townnametype = o->townnametype;
 		t->townnameparts = o->townnameparts;
-		if (IS_INT_INSIDE(o->townnametype, 0x20C1, 0x20C2 + 1))
-			t->townnametype = SPECSTR_TOWNNAME_ENGLISH;
+		// Random TownNames
+		if (IS_INT_INSIDE(o->townnametype, 0x20C1, 0x20C2 + 1)) {
+			t->townnametype = SPECSTR_TOWNNAME_ENGLISH + town_name_type;
+			if (o->xy)
+				t->townnameparts = GetOldTownName(o->townnameparts, town_name_type);
+		}
 
 		t->grow_counter = o->grow_counter;
 		t->flags12 = o->flags12;
@@ -608,9 +615,9 @@ static void FixTown(Town *t, OldTown *o, int num)
 		t->pct_pass_transported = o->pct_pass_transported;
 		t->pct_mail_transported = o->pct_mail_transported;
 		t->new_act_food = o->new_act_food;
-		t->new_act_paper = o->new_act_paper;
+		t->new_act_water = o->new_act_water;
 		t->act_food = o->act_food;
-		t->act_paper = o->act_paper;
+		t->act_water = o->act_water;
 		t->road_build_months = o->road_build_months;
 		t->fund_buildings_months = o->fund_buildings_months;
 	} while (t++,o++,--num);
@@ -853,18 +860,28 @@ static void FixAiBuildRec(AiBuildRec *n, OldAiBuildRec *o)
 	n->cargo = o->cargo;
 }
 
-static void FixPlayer(Player *n, OldPlayer *o, int num)
+static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 {
 	int i, j;
 	int x = 0;
-
+	
 	do {
 		n->name_1 = RemapOldStringID(o->name_1);
 		n->name_2 = o->name_2;
-		if (o->name_1 == 0 && x == 0)
-			n->name_1 = STR_SV_UNNAMED;
-		else
-			n->is_active=true;
+		/*	In every Old TTD(Patch) game Player1 (0) is human, and all others are AI
+		 *	(Except in .SV2 savegames, which were 2 player games, but we are not fixing
+		 *	that
+		 */
+
+		if (x == 0) {
+			if (o->name_1 == 0) // if first player doesn't have a name, he is 'unnamed'
+				n->name_1 = STR_SV_UNNAMED;
+		} else {
+			n->is_ai = 1;
+		}
+
+		if (o->name_1 != 0)
+			n->is_active = true;
 		
 		n->face = o->face;
 		n->president_name_1 = o->pres_name_1;
@@ -899,7 +916,12 @@ static void FixPlayer(Player *n, OldPlayer *o, int num)
 		n->last_build_coordinate = o->last_build_coordinate;
 		n->num_valid_stat_ent = o->num_valid_stat_ent;
 
-		n->ai.state = o->ai_state;
+		/*	Not good, since AI doesn't have a vehicle assigned as 
+		 *	in p->ai.cur_veh and thus will crash on certain actions.
+		 *	Best is to set state to AiStateVehLoop (2)
+		 *	n->ai.state = o->ai_state;
+		 */
+		n->ai.state = 2;
 		n->ai.state_mode = o->ai_state_mode;
 		n->ai.state_counter = o->ai_state_counter;
 		n->ai.timeout_counter = o->ai_timeout_counter;
@@ -1032,9 +1054,15 @@ bool LoadOldSaveGame(const char *file)
 	lss.fin = fopen(file, "rb");
 	if (lss.fin == NULL) return false;
 
-	fseek(lss.fin, 49, SEEK_SET);
+	/*	B - byte 8bit					(1)
+	 *	W - word 16bit				(2 bytes)
+	 *	L - 'long' word 32bit	(4 bytes)
+	 */
+	fseek(lss.fin, 49, SEEK_SET); // 47B TITLE, W Checksum - Total 49
 
-	// load the file into memory
+	/*	Load the file into memory
+	 *	Game Data 0x77179 + L4 (256x256) + L5 (256x256)
+	 */
 	m = (OldMain *)malloc(sizeof(OldMain));
 	LoadSavegameBytes(m, sizeof(OldMain));
 
@@ -1063,7 +1091,7 @@ bool LoadOldSaveGame(const char *file)
 	memcpy(_order_array, m->order_list, sizeof(m->order_list));
 	_ptr_to_next_order = _order_array + REMAP_ORDER_IDX(m->ptr_to_next_order);
 
-	FixTown(_towns, m->town_list, lengthof(m->town_list));
+	FixTown(_towns, m->town_list, lengthof(m->town_list), m->town_name_type);
 	FixIndustry(_industries, m->industries, lengthof(m->industries));
 	FixStation(_stations, m->stations, lengthof(m->stations));
 
@@ -1071,7 +1099,7 @@ bool LoadOldSaveGame(const char *file)
 	FixVehicle(_vehicles, m->vehicles, lengthof(m->vehicles));
 	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));
 	
-	FixPlayer(_players, m->players, lengthof(m->players));
+	FixPlayer(_players, m->players, lengthof(m->players), m->town_name_type);
 	FixName(m->names, lengthof(m->names));
 	FixSign(_sign_list, m->signs, lengthof(m->signs));
 	FixEngine(_engines, m->engines, lengthof(m->engines));

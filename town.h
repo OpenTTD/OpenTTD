@@ -47,9 +47,9 @@ struct Town {
 
 	// Amount of food and paper that was transported. Actually a bit mask would be enough.
 	uint16 act_food;
-	uint16 act_paper;
+	uint16 act_water;
 	uint16 new_act_food;
-	uint16 new_act_paper;
+	uint16 new_act_water;
 	
 	// Time until we rebuild a house.
 	byte time_until_rebuild;

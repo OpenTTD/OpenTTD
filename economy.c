@@ -1058,7 +1058,7 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte des
 	{
 		Town *t = s_to->town;
 		if (cargo_type == CT_FOOD) t->new_act_food += num_pieces;
-		if (cargo_type == CT_STEEL)  t->new_act_paper += num_pieces;
+		if (cargo_type == CT_STEEL)  t->new_act_water += num_pieces;
 	}
 
 	// Give the goods to the industry.

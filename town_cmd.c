@@ -850,9 +850,9 @@ static void DoCreateTown(Town *t, TileIndex tile)
 	t->pct_mail_transported = 0;
 	t->fund_buildings_months = 0;
 	t->new_act_food = 0;
-	t->new_act_paper = 0;
+	t->new_act_water = 0;
 	t->act_food = 0;
-	t->act_paper = 0;
+	t->act_water = 0;
 
 	for(i = 0; i != MAX_PLAYERS; i++)
 		t->ratings[i] = 500;
@@ -1590,7 +1590,7 @@ static void UpdateTownGrowRate(Town *t)
 		if (GET_TILEHEIGHT(t->xy) >= _opt.snow_line &&	t->act_food == 0)
 			return;
 	} else if (_opt.landscape == LT_DESERT) {
-		if (GetMapExtraBits(t->xy) == 1 && (t->act_food==0 || t->act_paper==0))
+		if (GetMapExtraBits(t->xy) == 1 && (t->act_food==0 || t->act_water==0))
 			return;
 	}
 
@@ -1609,7 +1609,7 @@ static void UpdateTownAmounts(Town *t)
 	t->max_pass = t->new_max_pass; t->new_max_pass = 0;
 	t->act_pass = t->new_act_pass; t->new_act_pass = 0;
 	t->act_food = t->new_act_food; t->new_act_food = 0;
-	t->act_paper = t->new_act_paper; t->new_act_paper = 0;
+	t->act_water = t->new_act_water; t->new_act_water = 0;
 
 	// Using +1 here to prevent overflow and division by zero
 	t->pct_mail_transported = t->new_act_mail * 256 / (t->new_max_mail + 1);
@@ -1811,9 +1811,9 @@ static const byte _town_desc[] = {
 	SLE_VAR(Town,pct_mail_transported,SLE_UINT8),
 
 	SLE_VAR(Town,act_food,		SLE_UINT16),
-	SLE_VAR(Town,act_paper,		SLE_UINT16),
+	SLE_VAR(Town,act_water,		SLE_UINT16),
 	SLE_VAR(Town,new_act_food,SLE_UINT16),
-	SLE_VAR(Town,new_act_paper,SLE_UINT16),
+	SLE_VAR(Town,new_act_water,SLE_UINT16),
 
 	SLE_VAR(Town,time_until_rebuild,		SLE_UINT8),
 	SLE_VAR(Town,grow_counter,					SLE_UINT8),

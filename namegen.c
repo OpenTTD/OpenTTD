@@ -534,7 +534,7 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 	if ((ext==12) || (ext==19)) {
 		i=GETNUM(2,NUM_GERMAN_3-2);
 		AppendPart(&buf, 2+i, german_3);
-		}
+	}
 
 
 	i=GETNUM(3,NUM_GERMAN_1);
@@ -543,7 +543,7 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 
 	if (i>NUM_GERMAN_1_HARDCODED-1) {
 		AppendPart(&buf, GETNUM(5, NUM_GERMAN_2), german_2);
-		}
+	}
 
 	if (ext==24) {
 		i=GETNUM(9,NUM_GERMAN_4);
@@ -551,11 +551,11 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 		if (i<=NUM_GERMAN_4_PRECHANGE-1) {
 			AppendPart(&buf, 0, german_3);
 			AppendPart(&buf, i, german_4);
-			} else {
+		} else {
 			AppendPart(&buf, 1, german_3);
 			AppendPart(&buf, i, german_4);
-			}
 		}
+	}
 
 	return 0;
 }
@@ -802,7 +802,7 @@ static const char silly_1[] =
 	MK("Scramble")
 	MK("Silly")
 	MK("Simple")
-	MK("Tricky")
+	MK("Trickle")
 	MK("Slippery")
 	MK("Slimey")
 	MK("Slumber")
@@ -1972,3 +1972,34 @@ TownNameGenerator * const _town_name_generators[] = {
 	MakeHungarianTownName,
 	MakeAustrianTownName
 };
+
+#define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
+
+uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
+{
+	uint32 a = 0;
+	switch (old_town_name_type) {
+		case 0: case 3: /* English, American */
+			/*	Already OK */
+			return townnameparts;
+		case 1: /* French */
+			/*	For some reason 86 needs to be subtracted from townnameparts
+			 *	0000 0000 0000 0000 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts - 86, NUM_FRENCH_1, 0);
+		case 2: /* German */
+			#ifdef _DEBUG
+				printf("German Townnames are buggy... (%d)\n", townnameparts);
+			#endif
+			return townnameparts;
+		case 4: /* Latin-American */
+			/*	0000 0000 0000 0000 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts, NUM_SPANISH_1, 0);
+		case 5: /* Silly */
+				//AppendPart(&buf, GETNUM(16, NUM_SILLY_2),silly_2);
+			/*	NUM_SILLY_1	-	lower 16 bits
+			 *	NUM_SILLY_2	-	upper 16 bits without leading 1 (first 8 bytes)
+			 *	1000 0000 2222 2222 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts, NUM_SILLY_1, 0) | FIXNUM(((townnameparts >> 16)&0xFF), NUM_SILLY_2, 16);
+	}
+	return 0;
+}
