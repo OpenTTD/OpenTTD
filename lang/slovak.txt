@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Nastavenia obtiaznosti
 STR_02C6_DIFFICULTY_SETTINGS					:Nastavenia obtiaznosti
 STR_02C7_CONFIG_PATCHES						:Konfigurovat zaplaty
 STR_02C8_CONFIG_PATCHES						:Konfigurovat zaplaty
+STR_NEWGRF_SETTINGS						:Nastavenie newgrf
+STR_NEWGRF_SETTINGS2						:Nastavenie newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit nazvy miest
@@ -1042,6 +1044,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRI
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Na lavo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:V strede
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Na pravo
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Vzdialenost pre uchytenie okna: {ORANGE}{STRING} bodov
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Vzdialenost pre uchytenie okna: {ORANGE}vypnute
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Rozhranie
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Vystavba
@@ -1083,6 +1087,8 @@ STR_WAYPOINTNAME_CITY						:Smerovy bod {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Smerovy bod {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Smerovy bod
 
+STR_WAYPOINT							:{WHITE}Kontrolny bod
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Vyber typ kontrolneho bodu
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -2596,3 +2602,10 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mnozstvo penazi k dispozicii
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Mas velku pozicku?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Celkove body z vsetkych moznych
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Nastavenie novych grafickych suborov
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Potvrdit zmeny
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Nastavit parametre
+STR_NEWGRF_TIP							:{BLACK}Zoznam sady nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
+STR_NEWGRF_FILENAME						:{BLACK}Nazov suboru:
+STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:

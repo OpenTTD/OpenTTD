@@ -2600,6 +2600,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Ilosc pieniedzy w reku
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Dokonales najwyzszej pozyczki?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Calkowia liczba pkt z posrod mozliwych
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Ustawienia Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Zastosuj zmiany
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Ustaw parametry
 STR_NEWGRF_TIP							:{BLACK}Lista plikow Newgrf jakie sa zainstalowane. Kliknij na ustawnienia by zmienic.

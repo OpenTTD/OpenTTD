@@ -2602,6 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Cantidad de dinero en mano
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}¿Tienes un préstamo muy elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total de puntos ganados del máximo posible
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Configuración de Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplicar cambios
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Establecer parámetros
 STR_NEWGRF_TIP							:{BLACK}Un listado de todos los Newgrf que tiene instalados. Haga click para cambiar las opciones.

@@ -2602,6 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Käteisvarat
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Onko sinulla kova laina?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Yhteispistemäärä kaikista mahdollisista pisteistä
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf-asetukset
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Ota käyttöön
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Aseta parametrit
 STR_NEWGRF_TIP							:{BLACK}Lista kaikista asentamistasi Newgrf-paketeista. Klikkaa pakettia muuttaaksesi asetuksia.

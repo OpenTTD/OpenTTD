@@ -2602,6 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mengd penger på hånden.
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et høyt lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total poeng av mulige poeng
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Innstillinger for ny grafikk
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Bruk forandringene
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Sett parametre
 STR_NEWGRF_TIP							:{BLACK}En liste over alle de nye grafikkpakkene du har installert. Klikk på en pakke for å forandre innstillingene.

@@ -2602,6 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Balanta curentã
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Ponderea creditelor
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Punctajul total din numãrul maxim posibil
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Setari Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplica schimbarile
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Seteaza parametri
 STR_NEWGRF_TIP							:{BLACK}Lista tuturor setarilor Newgrf pe care le-ai instalat. Click pentru a schimba setarile.
