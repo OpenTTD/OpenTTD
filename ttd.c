@@ -291,7 +291,7 @@ static void showhelp(void)
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
 		"  -t date             = Set starting date\n"
-		"  -d [dbg]            = Debug mode\n"
+		"  -d [[fac=]lvl[,...]]= Debug mode\n"
 		"  -l lng              = Select Language\n"
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
