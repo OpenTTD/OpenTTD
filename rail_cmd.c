@@ -736,7 +736,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
-		if (p1 & 0x100) {
+		if (p1 & 0x100 && (p1 & 0xff)!=0) { // waypoint type 0 uses default graphics
 			// custom graphics
 			_map3_lo[tile] |= 16;
 			_map3_hi[tile] = p1 & 0xff;
@@ -1631,6 +1631,8 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 	DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;
 	uint32 ormod, img;
+	const DrawTrackSeqStruct *dtss;
+	const byte *t;
 
 	assert(stat);
 
@@ -1643,6 +1645,23 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 
 	x += 33;
 	y += 17;
+
+	// draw default waypoint graphics of ID 0
+	t = _track_depot_layout_table[4];
+	if(stat_id==0)
+	{
+		img = *(const uint16*)t;
+		if (img & 0x8000) img = (img & 0x7FFF) + 0;
+		DrawSprite(img, x, y);
+
+		for(dtss = (const DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
+			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
+			img = dtss->image;
+			if (img & 0x8000) img |= ormod;
+			DrawSprite(img + 0, x + pt.x, y + pt.y);
+		}
+		return;
+	}
 
 	img = cust->ground_sprite;
 	if (img & 0x8000) img = (img & 0x7FFF);

@@ -13,7 +13,7 @@
 static uint _cur_railtype;
 static bool _remove_button_clicked;
 static byte _build_depot_direction;
-static byte _waypoint_count;
+static byte _waypoint_count=1;
 static byte _cur_waypoint_type;
 
 struct {
@@ -1069,6 +1069,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		if(r+1<=_waypoint_count) DrawWaypointSprite(70,  25, r + 1);
 		if(r+2<=_waypoint_count) DrawWaypointSprite(138, 25, r + 2);
 		if(r+3<=_waypoint_count) DrawWaypointSprite(206, 25, r + 3);
+		if(r+4<=_waypoint_count) DrawWaypointSprite(274, 25, r + 4);
 		break;
 		}
 	case WE_CLICK: {
@@ -1080,6 +1081,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		case 4:
 		case 5:
 		case 6:
+		case 7:
 			_cur_waypoint_type = e->click.widget - 3;
 			SndPlayFx(0x13);
 			SetWindowDirty(w);
@@ -1097,20 +1099,21 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_waypoint_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   275,     0,    13, STR_WAYPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   275,    14,    91, 0x0, 0},
+{    WWT_CAPTION,     7,    11,   343,     0,    13, STR_WAYPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     7,     0,   343,    14,    91, 0x0, 0},
 
 {      WWT_PANEL,     7,     3,    68,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
 {      WWT_PANEL,     7,    71,   136,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
 {      WWT_PANEL,     7,   139,   204,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
 {      WWT_PANEL,     7,   207,   272,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,   275,   340,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
 
-{  WWT_HSCROLLBAR,    7,     1,   275,    80,    91, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_HSCROLLBAR,    7,     1,   343,    80,    91, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
 };
 
 static const WindowDesc _build_waypoint_desc = {
-	-1,-1, 276, 92,
+	-1,-1, 344, 92,
 	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_waypoint_widgets,
@@ -1120,8 +1123,8 @@ static const WindowDesc _build_waypoint_desc = {
 static void ShowBuildWaypointPicker()
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
-	w->hscroll.cap = 4;
-	w->hscroll.count = (uint) (_waypoint_count+3) / 4;
+	w->hscroll.cap = 5;
+	w->hscroll.count = (uint) (_waypoint_count+4) / 5;
 }
 
 
