@@ -1303,6 +1303,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Engedélyezés..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Várakozás..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Térkép letöltése..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Adatfeldolgozás..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Regisztrálás..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Játékinfó lekérése..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Céginfó lekérése..

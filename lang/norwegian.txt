@@ -540,6 +540,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Velg 'new style music'-program
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Velg 'Egendefinert 1'-program
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Velg 'Egendefinert 2'-program
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Slett gjeldende program (Gjelder bare Egendefinert 1 og 2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Lagre musikkvalg
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klikk på musikkspor for å legge til gjeldene program (Gjelder bare egendefinert 1 og 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Skru tilfeldig program av/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Vis musikkspormeny
@@ -724,6 +725,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Navn på kjøretøy
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standard
 STR_02BF_CUSTOM							:Egendefinert
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Lagre egendefinerte navn
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Velg navn på kjøretøy
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Lagre egendefinerte navn på kjøretøy
 
@@ -798,13 +800,16 @@ STR_02F8_EVERY_3_MONTHS						:Hver 3. måned
 STR_02F9_EVERY_6_MONTHS						:Hver 6. måned
 STR_02FA_EVERY_12_MONTHS					:Hver 12. måned
 STR_02FB_START_A_NEW_GAME					:{BLACK}Start nytt spill
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Last inn et lagret spill
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Se demontrasjoner/veiledninger
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Spesiallag en spillverden eller et scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Velg énspiller-modus
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Velg flerspiller-spill med 2-8 spillere
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Vis spillinnstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Vis vanskelighetsgrad
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Start et nytt spill som bruker et scenario
 STR_0304_QUIT							:{BLACK}Avslutt
+STR_0305_QUIT_OPENTTD						:{BLACK}Avslutt 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Se demonstrasjon/veiledning
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...kan bare bygges i byer
@@ -1298,6 +1303,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoriserer..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Venter..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Laster ned kart..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Behandler data..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registrerer..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Henter spilloversikt..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Henter firmaoversikt..
@@ -1348,6 +1354,7 @@ STR_NETWORK_GIVE_MONEY						:gav deg penger ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Tjeneren avsluttet spillet
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Tjeneren starter på nytt...{}Vennligst vent
 
+STR_NETWORK_SEND						:{BLACK}Send
 
 ############ end network gui strings
 
@@ -1634,9 +1641,9 @@ STR_3060_AIRPORT						:Flyplass
 STR_3061_TRUCK_LOADING_AREA					:Lasteterminal
 STR_3062_BUS_STATION						:Bussterminal
 STR_3063_SHIP_DOCK						:Havn
-STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Vis dekningsområdet til den forslåtte plassering
-STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Ikke vis dekningsområdet til den forslåtte plassering
-STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Dekningsområdet
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Vis dekningsområdet til den foreslåtte plassering
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Ikke vis dekningsområdet til den foreslåtte plassering
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Dekningsområde
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Monorailstasjon valg.
 STR_3068_DOCK							:{WHITE}Havn
 STR_3069_BUOY							:Bøye
@@ -1651,12 +1658,12 @@ STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Kan ikke bygge skipsdepot her...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Velg skipsdepot retning
 STR_3804_WATER							:Vann
 STR_3805_COAST_OR_RIVERBANK					:Kyst eller elvebredd
-STR_3806_SHIP_DEPOT						:Skipdepot
+STR_3806_SHIP_DEPOT						:Skipsdepot
 STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...Kan ikke bygge på vann
 
 ##id 0x4000
 STR_4000_SAVE_GAME						:{WHITE}Lagre spill
-STR_4001_LOAD_GAME						:{WHITE}Hent frem spill
+STR_4001_LOAD_GAME						:{WHITE}Last inn spill
 STR_4002_SAVE							:{BLACK}Lagre
 STR_4003_DELETE							:{BLACK}Slett
 STR_4004							:{STRING}, {DATE_LONG}
@@ -1789,12 +1796,12 @@ STR_5029_STEEL							:Stål
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Objekt er i veien
 STR_5801_TRANSMITTER						:Radiosender
-STR_5802_LIGHTHOUSE						:Fyrlykt
+STR_5802_LIGHTHOUSE						:Fyrtårn
 STR_5803_COMPANY_HEADQUARTERS					:Hovedkontor til firma
 STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...hovedkontor til firma er i veien
 STR_5805_COMPANY_OWNED_LAND					:Området eies av et firma
 STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Kan ikke kjøpe dette landområdet
-STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...du eier det allerede
+STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...du eier det allerede!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1860,19 +1867,19 @@ STR_6806_COMPETITOR_START_TIME					:{LTBLUE}Konkurrentenes starttidspunkt: {ORAN
 STR_6807_NO_OF_TOWNS						:{LTBLUE}Antall byer: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Antall industrier: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Maksimalt startlån: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Begynnerrente: {ORANGE}{COMMA16}%
-STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Kjøretøy sine driftkostnader: {ORANGE}{STRING}
+STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Startrente: {ORANGE}{COMMA16}%
+STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Driftskostnader for kjøretøy: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Konstruksjonshastighet hos konkurrenter: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Konkurrentene sin intelligens: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Konkurrentenes intelligens: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Kjøretøyhavarier: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Subisidemultiplikator: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION					:{LTBLUE}Konstruksjonskosnader: {ORANGE}{STRING}
-STR_6811_TERRAIN_TYPE						:{LTBLUE}Terreng type: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE						:{LTBLUE}Terrengtype: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Mengde sjø/innsjøer: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Togreversering: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:{LTBLUE}bystyret's holdning mot destruering av område: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Bystyret's holdning mot ombygging av område: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE							:Ingen
@@ -1912,7 +1919,7 @@ STR_6835_AT_END_OF_LINE_ONLY					:Bare ved linjeslutt
 STR_6836_OFF							:Av
 STR_6837_ON							:På
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Vis rekorder
-STR_6839_PERMISSIVE						:Tolerant
+STR_6839_PERMISSIVE						:Tillatende
 STR_683A_TOLERANT						:Tolerant
 STR_683B_HOSTILE						:Fientlig
 
@@ -1925,13 +1932,13 @@ STR_7005_COLOR_SCHEME						:{BLACK}Firmafarge
 STR_7006_COLOR_SCHEME						:{GOLD}Firmafarge:
 STR_7007_NEW_COLOR_SCHEME					:{WHITE}Ny firmafarge
 STR_7008_COMPANY_NAME						:{BLACK}Firmanavn
-STR_7009_PRESIDENT_NAME						:{BLACK}Navnet til sjefen
+STR_7009_PRESIDENT_NAME						:{BLACK}Sjefens navn
 STR_700A_COMPANY_NAME						:Firmanavn
 STR_700B_PRESIDENT_S_NAME					:Sjefens navn
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kan ikke endre firmanavn...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Kan ikke bytte navn på sjefen...
-STR_700E_FINANCES						:{WHITE}{STRING} Finanser {BLACK}{STRING}
-STR_700F_EXPENDITURE_INCOME					:{WHITE}Utgifter/Inntekter
+STR_700E_FINANCES						:{WHITE}{STRING} Regnskap{BLACK}{STRING}
+STR_700F_EXPENDITURE_INCOME					:{WHITE}Kostnader/Inntekter
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Konstruksjon
 STR_7012_NEW_VEHICLES						:{GOLD}Nye kjøretøy
@@ -1942,8 +1949,8 @@ STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Driftkostnader på skip
 STR_7017_PROPERTY_MAINTENANCE					:{GOLD}Vedlikehold av eiendom
 STR_7018_TRAIN_INCOME						:{GOLD}Inntekter fra tog
 STR_7019_ROAD_VEHICLES_INCOME					:{GOLD}Inntekter fra kjøretøy
-STR_701A_AIRCRAFT_INCOME					:{GOLD}inntekter fra fly
-STR_701B_SHIP_INCOME						:{GOLD}inntekter fra skip
+STR_701A_AIRCRAFT_INCOME					:{GOLD}Inntekter fra fly
+STR_701B_SHIP_INCOME						:{GOLD}Inntekter fra skip
 STR_701C_LOAN_INTEREST						:{GOLD}Renter
 STR_701D_OTHER							:{GOLD}Annet
 STR_701E							:{BLACK}-{CURRENCY64}
@@ -1992,7 +1999,7 @@ STR_7046_NEW_FACE						:{BLACK}Nytt ansikt
 STR_7047_CANCEL_NEW_FACE_SELECTION				:{BLACK}Avbryt velg utseende
 STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Aksepter nytt utseende
 STR_7049_SELECT_MALE_FACES					:{BLACK}Velg mannsansikt
-STR_704A_SELECT_FEMALE_FACES					:{BLACK}Velg kvinneligansikt
+STR_704A_SELECT_FEMALE_FACES					:{BLACK}Velg kvinneansikt
 STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Lag et tilfeldig ansikt
 STR_704C_KEY							:{BLACK}Nøkkel
 STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Vis oversikt over grafvalg
