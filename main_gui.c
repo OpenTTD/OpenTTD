@@ -1147,18 +1147,18 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 			/* Raise land */
 			h = 15;
 			BEGIN_TILE_LOOP(tile2, size, size, tile)
-				h = min(h, _map_type_and_height[tile2]&0xF);
+				h = min(h, TileHeight(tile2));
 			END_TILE_LOOP(tile2, size, size, tile)
 		} else {
 			/* Lower land */
 			h = 0;
 			BEGIN_TILE_LOOP(tile2, size, size, tile)
-				h = max(h, _map_type_and_height[tile2]&0xF);
+				h = max(h, TileHeight(tile2));
 			END_TILE_LOOP(tile2, size, size, tile)
 		}
 
 		BEGIN_TILE_LOOP(tile2, size, size, tile)
-			if ((uint)(_map_type_and_height[tile2]&0xF) == h) {
+			if (TileHeight(tile2) == h) {
 				DoCommandP(tile2, 8, (uint32)mode, NULL, CMD_TERRAFORM_LAND | CMD_AUTO);
 			}
 		END_TILE_LOOP(tile2, size, size, tile)

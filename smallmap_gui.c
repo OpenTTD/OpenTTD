@@ -310,7 +310,7 @@ static inline uint32 GetSmallMapCountoursPixels(uint tile)
 		}
 	}
 
-	return (_map_height_bits[_map_type_and_height[tile] & 0xF] & _smallmap_contours_andor[t][1]) | _smallmap_contours_andor[t][0];
+	return (_map_height_bits[TileHeight(tile)] & _smallmap_contours_andor[t][1]) | _smallmap_contours_andor[t][0];
 }
 
 static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)

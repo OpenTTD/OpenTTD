@@ -20,7 +20,7 @@ static void DisasterClearSquare(uint tile)
 	if (!EnsureNoVehicle(tile))
 		return;
 
-	type = _map_type_and_height[tile] >> 4;
+	type = TileType(tile);
 
 	if (type == MP_RAILWAY) {
 		if (IS_HUMAN_PLAYER(_map_owner[tile]))

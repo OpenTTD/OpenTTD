@@ -53,12 +53,12 @@ uint GetTileSlope(uint tile, int *h)
 
 	assert(tile < MapSize() && TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
-	min = a = _map_type_and_height[tile] & 0xF;
-	b = _map_type_and_height[tile+TILE_XY(1,0)] & 0xF;
+	min = a = TileHeight(tile);
+	b = TileHeight(tile + TILE_XY(1,0));
 	if (min >= b) min = b;
-	c = _map_type_and_height[tile+TILE_XY(0,1)] & 0xF;
+	c = TileHeight(tile + TILE_XY(0,1));
 	if (min >= c) min = c;
-	d = _map_type_and_height[tile+TILE_XY(1,1)] & 0xF;
+	d = TileHeight(tile + TILE_XY(1,1));
 	if (min >= d) min = d;
 
 	r = 0;
@@ -634,14 +634,13 @@ static void CreateDesertOrRainForest()
 {
 	uint tile;
 	const TileIndexDiffC *data;
-	byte mt;
 	int i;
 
 	for (tile = 0; tile != MapSize(); ++tile) {
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
-			mt = _map_type_and_height[TILE_MASK(tile + ToTileIndexDiff(*data))];
-			if ((mt & 0xf) >= 4 || (mt >> 4) == MP_WATER) break;
+			TileIndex t = tile + ToTileIndexDiff(*data);
+			if (TileHeight(t) >= 4 || IsTileType(t, MP_WATER)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetMapExtraBits(tile, 1);

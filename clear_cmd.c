@@ -52,7 +52,7 @@ static int TerraformGetHeightOfTile(TerraformerState *ts, TileIndex tile)
 			return mod->height;
 	}
 
-	return _map_type_and_height[tile] & 0xF;
+	return TileHeight(tile);
 }
 
 static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
@@ -91,7 +91,7 @@ static int TerraformProc(TerraformerState *ts, uint tile, int mode)
 	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
 		return r;
 
-	if ((_map_type_and_height[tile] >> 4) == MP_RAILWAY) {
+	if (IsTileType(tile, MP_RAILWAY)) {
 		static const byte _railway_modes[4] = {8, 0x10, 4, 0x20};
 		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
 		static const byte _railway_dangslopes2[4] = {0x2, 0x1, 0x8, 0x4};
@@ -239,25 +239,25 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 & 1) {
 		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,0),
-				(_map_type_and_height[tile+TILE_XY(1,0)]&0xF) + direction))
+				TileHeight(tile + TILE_XY(1, 0)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 2) {
 		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,1),
-				(_map_type_and_height[tile+TILE_XY(1,1)]&0xF) + direction))
+				TileHeight(tile + TILE_XY(1, 1)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 4) {
 		if (!TerraformTileHeight(&ts, tile+TILE_XY(0,1),
-				(_map_type_and_height[tile+TILE_XY(0,1)]&0xF) + direction))
+				TileHeight(tile + TILE_XY(0, 1)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 8) {
 		if (!TerraformTileHeight(&ts, tile+TILE_XY(0,0),
-				(_map_type_and_height[tile+TILE_XY(0,0)]&0xF) + direction))
+				TileHeight(tile + TILE_XY(0, 0)) + direction))
 					return CMD_ERROR;
 	}
 
@@ -338,7 +338,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// remember level height
-	h = _map_type_and_height[p1]&0xF;
+	h = TileHeight(p1);
 
 	ex >>= 4; ey >>= 4;
 
@@ -356,7 +356,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	cost = 0;
 
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile)
-		curh = _map_type_and_height[tile2]&0xF;
+		curh = TileHeight(tile2);
 		while (curh != h) {
 			ret = DoCommandByTile(tile2, 8, (curh > h)?0:1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (ret == CMD_ERROR) break;
