@@ -621,7 +621,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	FOR_ALL_DEPOTS(depot) {
 		/* Check if this is really a valid depot, it is of the needed type and
 		 * owner */
-		if (IsValidDepot(depot) && IsTileDepotType(depot->xy, tiletype) && IsTileOwner(depot->xy, owner))
+		if (IsValidDepot(depot) && IsTileDepotType(depot->xy, type) && IsTileOwner(depot->xy, owner))
 			/* If so, let's add it to the queue, sorted by distance */
 			depots.push(&depots, depot, DistanceManhattan(tile, depot->xy));
 	}
