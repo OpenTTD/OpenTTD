@@ -644,7 +644,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	if (_network_game_info.use_password)
 		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
 	else {
-		if (ci->client_playas <= MAX_PLAYERS && _network_player_info[ci->client_playas - 1].password[0] != '\0') {
+		if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS && _network_player_info[ci->client_playas - 1].password[0] != '\0') {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 		}
 		else {
