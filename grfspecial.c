@@ -1456,25 +1456,34 @@ static void SkipIf(byte *buf, int len)
 		cond_val = grf_load_byte(&buf);
 
 	switch (param) {
-		case 0x83:
+		case 0x83:    /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
 			param_val = _opt.landscape;
 			break;
-		case 0x84:
+		case 0x84:    /* .grf loading stage, 0=initialization, 1=activation */
 			param_val = _cur_stage;
 			break;
-		case 0x85:
+		case 0x85:    /* TTDPatch flags, only for bit tests */
 			param_val = _ttdpatch_flags[cond_val / 0x20];
 			cond_val %= 0x20;
 			break;
-		case 0x86:
+		case 0x86:    /* road traffic side, bit 4 clear=left, set=right */
 			param_val = _opt.road_side << 4;
 			break;
-		case 0x88: {
+		case 0x88: {  /* see if specified GRFID is active */
 			struct GRFFile *file;
 
 			file = GetFileByGRFID(cond_val);
 			param_val = (file != NULL);
 		}	break;
+		case 0x8B:    /* TTDPatch version */
+			param_val = 0xFFFF;
+			break;
+		case 0x8D:    /* TTD Version, 00=DOS, 01=Windows */
+			param_val = 1;
+			break;
+		/* TODO */
+		case 0x8E:    /* How many pixels to displace sprites in train info windows */
+		case 0x8F:    /* Track type cost multipliers */
 		default:
 			if (param >= 0x80) {
 				/* In-game variable. */
