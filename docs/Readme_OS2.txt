@@ -103,19 +103,13 @@ A Note About Subversion Revision Numbers
 ----------------------------------------
 
 The project file uses a bit of a hack to find out the SVN revision number and
-create an appropriate rev.c file. It does this using a batch file and a GNU
-makefile, as well as the SVN tools (specifically, "svnversion"). For this to
-work successfully, you'll need the SVN tools installed and in your path, as
-well as some of the GNU tools (GNU make, and some tools from textutils,
-possibly others too) - otherwise, a generic rev.c with the revision set to
-"norev000" will be created. To specifically force a version number, set
-the environment variable "RELEASE" to the number (eg, "0.3.6") -before-
-starting the Open Watcom IDE (which must be launched from the same shell
+create an appropriate rev.c file. You'll need the SVN tools in your path
+(specifically, "svnversion"). If "svnversion" can't be found, a generic rev.c
+with the revision set to "norev000" will be created. To specifically force a
+version number, set the environment variable "RELEASE" to the number (eg, "0.3.6")
+-before- starting the Open Watcom IDE (which must be launched from the same shell
 session). Also, beware, as you WILL cause incompatibilities if you try to
 play a multiplayer game with a different version.
-
-Apologies for the complicated hack used here, but it's a bit of a pain to do,
-as any Windows MSVC user will tell you. ;)
 
 Compiling
 ---------
