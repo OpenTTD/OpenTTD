@@ -15,6 +15,7 @@
 #define INCL_DOS
 #define INCL_OS2MM
 #define INCL_WIN
+#define INCL_WINCLIPBOARD
 
 #include <os2.h>
 #include <os2me.h>
@@ -687,6 +688,21 @@ const HalMusicDriver _os2_music_driver = {
 
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
+#if 0
+	HAB hab = 0; // anchor-block handle
+	PSZ pszClipText, pszLocalText;
+
+	if (WinOpenClipbrd(hab))
+	{
+		if (pszClipText = (PSZ) WinQueryClipbrdData(hab, CF_TEXT))
+		{
+			while (*pszLocalText++ = *pszClipText++);
+		}
+		WinCloseClipbrd(hab);
+	}
+
+	// text is now in pszLocalText, do something with it!
+#endif
 	// TODO
 	return false;
 }

@@ -66,13 +66,14 @@ Compiler
 
 Open Watcom 1.3 was used to build OpenTTD (earlier versions will
 NOT work). See http://www.openwatcom.org/ to download it. It may
-also be possible to build OpenTTD under OS/2: I attempted this
+also be possible to build OpenTTD with GCC: I attempted this
 before using Open Watcom, but found the tools available for OS/2
 at the time to be a bit more tricky to get working.
 
 Due to complexities in my set-up, I actually used the Win32 version
 of Open Watcom to initially compile OpenTTD for OS/2. There should
-be no reason of course why the OS/2 version cannot be used.
+be no reason of course why the OS/2 version cannot be used, and I
+have subsequently built OpenTTD successfully this way.
 
 Libraries Required
 ------------------
@@ -84,10 +85,10 @@ provided, they are not designed for Watcom (apart from SDL):
 
 - zlib
   http://www.zlib.org/ - contains a makefile for OS/2, but is out
-  of date and uses EMX
+  of date and uses EMX, ignore this
 
 - libpng
-  http://www.libpng.org/ - contains an EMX/gcc makefile
+  http://www.libpng.org/ - contains an EMX/gcc makefile, ignore this
 
 - SDL for OS/2
   For 0.3.5, I used ftp://ftp.netlabs.org/pub/sdl/SDL-1.2.7-src-20040908a.zip -
@@ -97,6 +98,24 @@ provided, they are not designed for Watcom (apart from SDL):
 If you do not wish to build the libraries yourself, pre-built versions
 can be downloaded from the Files section at
 http://sourceforge.net/projects/openttd/ - see "os2-useful.zip".
+
+A Note About Subversion Revision Numbers
+----------------------------------------
+
+The project file uses a bit of a hack to find out the SVN revision number and
+create an appropriate rev.c file. It does this using a batch file and a GNU
+makefile, as well as the SVN tools (specifically, "svnversion"). For this to
+work successfully, you'll need the SVN tools installed and in your path, as
+well as some of the GNU tools (GNU make, and some tools from textutils,
+possibly others too) - otherwise, a generic rev.c with the revision set to
+"norev000" will be created. To specifically force a version number, set
+the environment variable "RELEASE" to the number (eg, "0.3.6") -before-
+starting the Open Watcom IDE (which must be launched from the same shell
+session). Also, beware, as you WILL cause incompatibilities if you try to
+play a multiplayer game with a different version.
+
+Apologies for the complicated hack used here, but it's a bit of a pain to do,
+as any Windows MSVC user will tell you. ;)
 
 Compiling
 ---------
@@ -115,4 +134,4 @@ If you have any questions regarding OS/2 issues, please contact me
 (owen@owenrudge.net) and I'll try to help you out. For general OpenTTD
 issues, see the Contacting section of readme.txt.
 
-- Owen Rudge, 26th December 2004
+- Owen Rudge
