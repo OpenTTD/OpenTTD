@@ -586,7 +586,6 @@ static const PatchEntry _patches_ui[] = {
 
 	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	&_patches.errmsg_duration,					0, 20,  1, NULL},
 
-	{PE_UINT8,	PF_MULTISTRING, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
 	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
 	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, &_patches.window_snap_radius,     1, 32,  1, NULL},
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	&_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
