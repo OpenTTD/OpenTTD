@@ -893,20 +893,17 @@ static void LoadSpriteTables(void)
 
 
 		/* Load newgrf sprites */
-
+		// in each loading stage, (try to) open each file specified in the config and load information from it.
 		_custom_sprites_base = load_index;
-
-		_loading_stage = 0;
-		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
-			InitNewGRFFile(_newgrf_files[j], load_index);
-			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+		for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
+			for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
+				if ( !FiosCheckFileExists(_newgrf_files[j]) )
+					continue;
+				if (_loading_stage == 0)
+					InitNewGRFFile(_newgrf_files[j], load_index);
+				load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+			}
 		}
-
-		_loading_stage = 1;
-		load_index = _custom_sprites_base;
-		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++)
-			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
-
 
 		// If needed, save the cache to file
 		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);

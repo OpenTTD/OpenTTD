@@ -100,6 +100,42 @@ void FioCloseAll(void)
 		FioCloseFile(i);
 }
 
+bool FiosCheckFileExists(const char *filename)
+{
+	FILE *f;
+	char buf[MAX_PATH];
+
+	sprintf(buf, "%s%s", _path.data_dir, filename);
+
+	f = fopen(buf, "rb");
+#if !defined(WIN32)
+	if (f == NULL) {
+		char *s;
+		// Make lower case and try again
+		for(s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+			*s = tolower(*s);
+		f = fopen(buf, "rb");
+
+#if defined SECOND_DATA_DIR
+	// tries in the 2nd data directory
+		if (f == NULL) {
+			sprintf(buf, "%s%s", _path.second_data_dir, filename);
+			for(s=buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
+			*s = tolower(*s);
+		f = fopen(buf, "rb");
+		}
+#endif
+	}
+#endif
+
+	if (f == NULL)
+		return false;
+	else {
+		fclose(f);
+		return true;
+	}
+}
+
 void FioOpenFile(int slot, const char *filename)
 {
 	FILE *f;
