@@ -87,7 +87,6 @@ typedef struct Patches {
 	bool full_load_any;			// new full load calculation, any cargo must be full
 	byte station_spread;		// amount a station may spread
 	bool inflation;					// disable inflation
-	bool no_train_service;	// never automatically send trains to service
 	bool selectgoods;       // only send the goods to station if a train has been there
 	bool longbridges;				// allow 100 tile long bridges
 	bool gotodepot;					// allow goto depot in orders

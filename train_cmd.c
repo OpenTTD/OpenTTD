@@ -2503,7 +2503,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	uint tile;
 	byte depot;
 
-	if (_patches.no_train_service && IS_HUMAN_PLAYER(v->owner))
+	if (_patches.servint_trains == 0 && IS_HUMAN_PLAYER(v->owner))
 		return;
 
 	if (v->date_of_last_service + v->service_interval > _date)

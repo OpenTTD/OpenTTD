@@ -525,6 +525,9 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 {
 	Station *st;
 
+	if (_patches.servint_aircraft == 0 && IS_HUMAN_PLAYER(v->owner))
+		return;
+
 	if (v->date_of_last_service + v->service_interval > _date)
 		return;
 

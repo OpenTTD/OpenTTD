@@ -917,7 +917,6 @@ STR_CONFIG_PATCHES_REALISTICACCEL		:{LTBLUE}Enable realistic acceleration for tr
 STR_CONFIG_PATCHES_JOINSTATIONS			:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY			:{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION				:{LTBLUE}Inflation: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE		:{LTBLUE}No automatic train servicing: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Allow building very long bridges: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Allow goto depot orders: {ORANGE}{STRING}
@@ -938,6 +937,7 @@ STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Build while in pause mode: {ORANGE}{
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}A train is lost if no progress is made for: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED		:{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES	:{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
 STR_CONFIG_AUTORENEW_VEHICLE			:{LTBLUE}Autorenew vehicle when it gets old
@@ -956,10 +956,14 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH	:{LTBLUE}Disable road vehicles for computer
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT	:{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS		:{LTBLUE}Disable ships for computer: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS		:{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_ROADVEH		:{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT		:{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_SHIPS		:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_TRAINS							:{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED		:{LTBLUE}Default service interval for trains: {ORANGE}disabled
+STR_CONFIG_PATCHES_SERVINT_ROADVEH						:{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED		:{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT						:{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED	:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
+STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE		:{LTBLUE}Starting date: {ORANGE}{STRING}

@@ -698,7 +698,6 @@ static const PatchEntry _patches_construction[] = {
 static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_REALISTICACCEL, &_patches.realistic_acceleration},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_MAMMOTHTRAINS, &_patches.mammoth_trains},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_NOTRAINSERVICE, &_patches.no_train_service},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_GOTODEPOT, &_patches.gotodepot},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_ROADVEH_QUEUE, &_patches.roadveh_queue},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_NEW_DEPOT_FINDING, &_patches.new_depot_finding},
@@ -715,10 +714,10 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_AIRCRAFT, &_patches.max_aircraft, 0, 240, 10},
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_SHIPS, &_patches.max_ships, 0, 240, 10},
 
-	{PE_UINT16, 0, STR_CONFIG_PATCHES_SERVINT_TRAINS, &_patches.servint_trains, 0, 1200, 10},
-	{PE_UINT16, 0, STR_CONFIG_PATCHES_SERVINT_ROADVEH, &_patches.servint_roadveh, 0, 1200, 10},
-	{PE_UINT16, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 0, 1200, 10},
-	{PE_UINT16, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 0, 1200, 10},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS, &_patches.servint_trains, 30, 1200, 10},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH, &_patches.servint_roadveh, 30, 1200, 10},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 30, 1200, 10},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 30, 1200, 10},
 
 	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh, 0x01},
 	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh, 0x02},
@@ -814,6 +813,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		clk = WP(w,def_d).data_2;
 		page = &_patches_page[WP(w,def_d).data_1];
 		for(i=0,pe=page->entries; i!=page->num; i++,pe++) {
+			bool disabled = false;
 			if (pe->type == PE_BOOL) {
 				DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
 				SET_DPARAM16(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
@@ -830,14 +830,15 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(x+20, y+1, STR_681A, 0);
 
 				val = ReadPE(pe);
-				if (val == 0 && pe->flags & PF_0ISDIS) {
+				disabled = ((val == 0) && (pe->flags & PF_0ISDIS));
+				if (disabled) {
 					SET_DPARAM16(0, STR_CONFIG_PATCHES_DISABLED);
 				} else {
 					SET_DPARAM32(1, val);
 					SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
 				}
 			}
-			DrawString(30, y+1, pe->str, 0);
+			DrawString(30, y+1, (pe->str)+disabled, 0);
 			y += 11;
 		}
 		break;

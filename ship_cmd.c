@@ -85,6 +85,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 {
 	int i;
 
+	if (_patches.servint_ships == 0 && IS_HUMAN_PLAYER(v->owner))
+		return;
+
 	if (v->date_of_last_service + v->service_interval > _date)
 		return;
 
