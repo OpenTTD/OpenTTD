@@ -57,8 +57,6 @@ void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 /* find the landscape height for the coordinates x y */
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 {
-	int tile;
-
 	ti->x = x;
 	ti->y = y;
 
@@ -71,8 +69,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 		return;
 	}
 
-	tile = TILE_FROM_XY(x,y);
-	FindLandscapeHeightByTile(ti, tile);
+	FindLandscapeHeightByTile(ti, TILE_FROM_XY(x,y));
 }
 
 uint GetPartialZ(int x, int y, int corners)
@@ -173,18 +170,9 @@ uint GetPartialZ(int x, int y, int corners)
 uint GetSlopeZ(int x,  int y)
 {
 	TileInfo ti;
-//	int z;
 
 	FindLandscapeHeight(&ti, x, y);
 
-/*
-	z = ti.z;
-	x &= 0xF;
-	y &= 0xF;
-
-
-	assert(z < 256);
-*/
 	return _tile_type_procs[ti.type]->get_slope_z_proc(&ti);
 }
 
@@ -239,7 +227,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 	}
 }
 
-void DoClearSquare(uint tile)
+void DoClearSquare(TileIndex tile)
 {
 	ModifyTile(tile,
 		MP_SETTYPE(MP_CLEAR) |
@@ -249,28 +237,28 @@ void DoClearSquare(uint tile)
 	);
 }
 
-uint32 GetTileTrackStatus(uint tile, TransportType mode)
+uint32 GetTileTrackStatus(TileIndex tile, TransportType mode)
 {
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode);
 }
 
-void ChangeTileOwner(uint tile, byte old_player, byte new_player)
+void ChangeTileOwner(TileIndex tile, byte old_player, byte new_player)
 {
 	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
 }
 
-void GetAcceptedCargo(uint tile, AcceptedCargo ac)
+void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac)
 {
 	memset(ac, 0, sizeof(AcceptedCargo));
 	_tile_type_procs[GetTileType(tile)]->get_accepted_cargo_proc(tile, ac);
 }
 
-void AnimateTile(uint tile)
+void AnimateTile(TileIndex tile)
 {
 	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);
 }
 
-void ClickTile(uint tile)
+void ClickTile(TileIndex tile)
 {
 	_tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
 }
@@ -280,7 +268,7 @@ void DrawTile(TileInfo *ti)
 	_tile_type_procs[ti->type]->draw_tile_proc(ti);
 }
 
-void GetTileDesc(uint tile, TileDesc *td)
+void GetTileDesc(TileIndex tile, TileDesc *td)
 {
 	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);
 }
@@ -292,10 +280,10 @@ void GetTileDesc(uint tile, TileDesc *td)
 
 int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile;
+	TileIndex tile = TILE_FROM_XY(x, y);
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile = TILE_FROM_XY(x,y);
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
@@ -350,7 +338,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 
 /* utility function used to modify a tile */
-void CDECL ModifyTile(uint tile, uint flags, ...)
+void CDECL ModifyTile(TileIndex tile, uint flags, ...)
 {
 	va_list va;
 	int i;
@@ -403,7 +391,7 @@ void CDECL ModifyTile(uint tile, uint flags, ...)
 
 void RunTileLoop(void)
 {
-	uint tile;
+	TileIndex tile;
 	uint count;
 
 	tile = _cur_tileloop_tile;
@@ -694,7 +682,7 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	));
 }
 
-bool IsValidTile(uint tile)
+bool IsValidTile(TileIndex tile)
 {
 	return (tile < MapSizeX() * MapMaxY() && TileX(tile) != MapMaxX());
 }

@@ -10,22 +10,22 @@
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
 void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile);
 
-void DoClearSquare(uint tile);
-void CDECL ModifyTile(uint tile, uint flags, ...);
+void DoClearSquare(TileIndex tile);
+void CDECL ModifyTile(TileIndex tile, uint flags, ...);
 void RunTileLoop(void);
 
 uint GetPartialZ(int x, int y, int corners);
 uint GetSlopeZ(int x, int y);
-uint32 GetTileTrackStatus(uint tile, TransportType mode);
-void GetAcceptedCargo(uint tile, AcceptedCargo ac);
-void ChangeTileOwner(uint tile, byte old_player, byte new_player);
-void AnimateTile(uint tile);
-void ClickTile(uint tile);
-void GetTileDesc(uint tile, TileDesc *td);
+uint32 GetTileTrackStatus(TileIndex tile, TransportType mode);
+void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
+void ChangeTileOwner(TileIndex tile, byte old_player, byte new_player);
+void AnimateTile(TileIndex tile);
+void ClickTile(TileIndex tile);
+void GetTileDesc(TileIndex tile, TileDesc *td);
 void DrawTile(TileInfo *ti);
 void UpdateTownMaxPass(Town *t);
 
-bool IsValidTile(uint tile);
+bool IsValidTile(TileIndex tile);
 
 static inline Point RemapCoords(int x, int y, int z)
 {
