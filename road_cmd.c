@@ -164,7 +164,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (ti.type == MP_TUNNELBRIDGE) {
-		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
+		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xE9) == 0xE8) {

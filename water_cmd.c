@@ -459,7 +459,7 @@ static void GetAcceptedCargo_Water(uint tile, AcceptedCargo ac)
 
 static void GetTileDesc_Water(uint tile, TileDesc *td)
 {
-	if (_map5[tile] == 0 && TileHeight(tile) == 0)
+	if (_map5[tile] == 0 && TilePixelHeight(tile) == 0)
 		td->str = STR_3804_WATER;
 	else if (_map5[tile] == 0)
 		td->str = STR_LANDINFO_CANAL;

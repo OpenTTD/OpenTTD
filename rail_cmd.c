@@ -279,7 +279,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (ti.type == MP_TUNNELBRIDGE) {
 /* BUILD ON BRIDGE CODE */
-		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
+		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xF8) == 0xC0) {
@@ -438,7 +438,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (ti.type == MP_TUNNELBRIDGE) {
-		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
+		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xF8) != 0xE0)

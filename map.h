@@ -73,7 +73,7 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
 }
 
 
-static inline uint TileHeight(TileIndex tile)
+static inline uint TilePixelHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
 	return (_map_type_and_height[tile] & 0xf) * 8;
