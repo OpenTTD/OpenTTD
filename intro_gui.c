@@ -210,6 +210,10 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 		break;
+	case WE_KEYPRESS: /* Exit game on pressing 'Enter' */
+		if (e->keypress.keycode == WKC_RETURN)
+			_exit_game = true;
+		break; 
 	}
 }
 
