@@ -3,6 +3,7 @@
 #include "station.h"
 #include "town.h"
 #include "vehicle.h"
+#include "news.h"
 
 #define USE_TABLE(x)  { assert(index < lengthof(x)); str = x[index]; break; }
 
@@ -125,6 +126,7 @@ void CheckSwitchToEuro()
 {
 	if (_cur_year >= (2002-1920) && _currency_specs[_opt.currency].flags & CF_TOEURO_2002) {
 		_opt.currency = 21; // this is the index of euro above.
+		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
 	}
 }
 
