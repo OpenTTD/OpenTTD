@@ -86,7 +86,7 @@ STR_0050_TON_OF_COAL						:{COMMA16} Tonne Kohle
 STR_0051_BAG_OF_MAIL						:{COMMA16} Postsack
 STR_0052_OF_OIL							:{VOLUME}  Öl
 STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} Stück Vieh
-STR_0054_CRATE_OF_GOODS						:{COMMA16} Warenkisten
+STR_0054_CRATE_OF_GOODS						:{COMMA16} Warenkiste
 STR_0055_TON_OF_GRAIN						:{COMMA16} Tonne Getreide
 STR_0056_TON_OF_WOOD						:{COMMA16} Tonne Holz
 STR_0057_TON_OF_IRON_ORE					:{COMMA16} Tonne Eisenerz
@@ -103,7 +103,7 @@ STR_0061_OF_WATER						:{VOLUME}  Wasser
 STR_0062_TON_OF_WHEAT						:{COMMA16} Tonne Weizen
 STR_0063_OF_RUBBER						:{VOLUME}  Kautschuk
 STR_0064_TON_OF_SUGAR						:{COMMA16} Tonne Zucker
-STR_0065_TOY							:{COMMA16} Spiel
+STR_0065_TOY							:{COMMA16} Spielzeug
 STR_0066_BAG_OF_CANDY						:{COMMA16} Sack mit Bonbons
 STR_0067_OF_COLA						:{VOLUME}  Cola
 STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} Tonne Zuckerwatte
@@ -189,7 +189,7 @@ STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Original Design: Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Graphiken: Simon Foster
 STR_SPECIAL_THANKS						:{BLACK}Spezieller Dank gebührt:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-Signals und Semaphoren {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Vorsignale und Semaphoren {COPYRIGHT} 2003 Michael Blunck
 STR_SPECIAL_THANKS_CANALS					:{BLACK}° Grundlagen für Schienen auf Abhängen {COPYRIGHT} Marcin Grzegorczyk
 STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanal/Schleusen Grafiken {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD-Team
@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Leistungskurven - Diagramm
 STR_0158_COMPANY_VALUE_GRAPH					:Firmenwert - Diagramm
 STR_0159_CARGO_PAYMENT_RATES					:Frachtraten - Diagramm
 STR_015A_COMPANY_LEAGUE_TABLE					:Firmentabelle
+STR_PERFORMANCE_DETAIL_MENU					:Leistungsaufschlüsselung
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -829,6 +830,7 @@ STR_TOWNNAME_SWEDISH						:Schwedisch
 STR_TOWNNAME_DUTCH						:Niederländisch
 STR_TOWNNAME_FINNISH						:Finnisch
 STR_TOWNNAME_POLISH						:Polnisch
+STR_TOWNNAME_CZECH						:Tschechisch
 STR_TOWNNAME_SLOVAKISH						:Slovakisch
 STR_TOWNNAME_HUNGARIAN						:Ungarisch
 STR_TOWNNAME_AUSTRIAN						:Österreichisch
@@ -1025,10 +1027,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Einstellungswert ändern
 
-STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
-STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
-STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
-STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
+STR_TEMPERATE_LANDSCAPE						:Gemäßigt
+STR_SUB_ARCTIC_LANDSCAPE					:Subarktisch
+STR_SUB_TROPICAL_LANDSCAPE					:Subtropisch
+STR_TOYLAND_LANDSCAPE						:Fantastisch
 
 STR_CHEATS							:{WHITE}Cheats
 STR_CHEATS_TIP							:{BLACK}Kontrollfelder zeigen, ob du diesen Cheat schonmal benutzt hast.
@@ -1039,7 +1041,8 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRIN
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnel dürfen sich kreuzen {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Flugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Ändere Datum: {ORANGE} {DATE_SHORT}
 
 STR_SORT_BY_POPULATION						:{BLACK}Bevölkerung
 
@@ -1213,9 +1216,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_READY						:{BLACK}Fertig
 
-STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
-STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Keine Netzwerkspiele gefunden
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Der Server antwortete nicht auf die Anfrage
 
 ############ end network gui strings
 
@@ -2202,6 +2205,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Wartung (ohne Halt) bei {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Unterwegs zu {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Unterwegs zu {TOWN} Zugdepot, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ungültiger Auftrag)
+
 STR_UNKNOWN_DESTINATION						:unbekanntes Ziel
 STR_8812_EMPTY							:{LTBLUE}Leer
 STR_8813_FROM							:{LTBLUE}{CARGO} von {STATION}
@@ -2497,7 +2502,7 @@ STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}Kann das Flugzeug nicht umbenenne
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Umrüstung des Flugzeuges zum Transport anderer Frachten
 STR_A03C_REFIT							:{WHITE}{STRING} (Umrüstung)
 STR_A03D_REFIT_AIRCRAFT						:{BLACK}Flugzeug umrüsten
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wähle die Fracht die das Flugzeug transportieren soll
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wähle die Fracht, die das Flugzeug transportieren soll
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Umrüstung des Flugzeuges auf die ausgewählte Frachtart
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Wähle Frachtart für Umrüstung aus:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Neue Kapazität: {GOLD}{STRING}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
@@ -2517,3 +2522,33 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Stolleneinbruch hinterl
 STR_BRIBE_FAILED						:{WHITE}Ihr Bestechungsversuch wurde
 STR_BRIBE_FAILED_2						:{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
 STR_BUILD_DATE							:{BLACK}Errichtet am: {LTBLUE}{DATE_LONG}
+
+STR_PERFORMANCE_DETAIL						:{WHITE}Leistungsaufschlüsselung
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Details
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
+############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Fahrzeuge:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stationen:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Min. Gewinn:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Min. Einkommen:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Max. Einkommen:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Geliefert:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Fracht:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Geld:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Kredit:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Gesamt:
+############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Menge der Fahrzeuge. (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Helikopter)
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Menge an Stationen. (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Geringster Gewinn der Fahrzeuge, die älter als 2 Jahre sind
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Höchste Monatseinnahmen in den letzten 12 Quartalen
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}In den letzten 4 Quartalen gelieferte Frachteinheiten
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Im letzten Quartal gelieferte Frachttypen
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Bargeld
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Schuldenfalle?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
+

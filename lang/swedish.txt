@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf över prestationshistorik
 STR_0158_COMPANY_VALUE_GRAPH					:Graf över företagets värde
 STR_0159_CARGO_PAYMENT_RATES					:Fraktförtjänster
 STR_015A_COMPANY_LEAGUE_TABLE					:Tabell över ledande företag
+STR_PERFORMANCE_DETAIL_MENU					:<TODO>Detail performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -829,6 +830,7 @@ STR_TOWNNAME_SWEDISH						:Svenska
 STR_TOWNNAME_DUTCH						:Hollänska
 STR_TOWNNAME_FINNISH						:Finska
 STR_TOWNNAME_POLISH						:Polska
+STR_TOWNNAME_CZECH						:<TODO>Czech
 STR_TOWNNAME_SLOVAKISH						:Slovakiska
 STR_TOWNNAME_HUNGARIAN						:Hungarianska
 STR_TOWNNAME_AUSTRIAN						:Australienska
@@ -1040,6 +1042,7 @@ STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRI
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:<TODO>{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:<TODO>{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
 
 STR_SORT_BY_POPULATION						:<TODO>{BLACK}Population
 
@@ -2202,6 +2205,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Servning non-stop {TOWN} Tåg depå
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}På väg mot {TOWN} depå
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}På väg mot {TOWN} depå, {VELOCITY}
 
+STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
+
 STR_UNKNOWN_DESTINATION						:<TODO>unknown destination
 STR_8812_EMPTY							:{LTBLUE}Tom
 STR_8813_FROM							:{LTBLUE}{CARGO} från {STATION}
@@ -2517,3 +2522,33 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Kolgruva sjunker - lämn
 STR_BRIBE_FAILED						:{WHITE}Ditt mutningsförsök har blivit
 STR_BRIBE_FAILED_2						:{WHITE}uppdagat av en regional utredare.
 STR_BUILD_DATE							:<TODO>{BLACK}Built: {LTBLUE}{DATE_LONG}
+
+STR_PERFORMANCE_DETAIL						:<TODO>{WHITE}Detail performance rating
+STR_PERFORMANCE_DETAIL_KEY					:<TODO>{BLACK}Detail
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:<TODO>{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:<TODO>{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:<TODO>{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:<TODO>{BLACK}{INT32}
+############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:<TODO>{BLACK}Vehicles:
+STR_PERFORMANCE_DETAIL_STATIONS					:<TODO>{BLACK}Stations:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:<TODO>{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:<TODO>{BLACK}Min. income:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:<TODO>{BLACK}Max. income:
+STR_PERFORMANCE_DETAIL_DELIVERED				:<TODO>{BLACK}Delivered:
+STR_PERFORMANCE_DETAIL_CARGO					:<TODO>{BLACK}Cargo:
+STR_PERFORMANCE_DETAIL_MONEY					:<TODO>{BLACK}Money:
+STR_PERFORMANCE_DETAIL_LOAN					:<TODO>{BLACK}Loan:
+STR_PERFORMANCE_DETAIL_TOTAL					:<TODO>{BLACK}Total:
+############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:<TODO>{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:<TODO>{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:<TODO>{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:<TODO>{BLACK}Units of cargo delivered in the past four quarters.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:<TODO>{BLACK}Types of cargo delivered in the last quarter.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:<TODO>{BLACK}Amount of cash on hand
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:<TODO>{BLACK}Do you have a high loan?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:<TODO>{BLACK}Total points out of possible points
+

@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Teljesítmény grafikon
 STR_0158_COMPANY_VALUE_GRAPH					:Vállalat értéke grafikon
 STR_0159_CARGO_PAYMENT_RATES					:Rakományok szállítási díja
 STR_015A_COMPANY_LEAGUE_TABLE					:A cégek helyezése
+STR_PERFORMANCE_DETAIL_MENU					:Teljesítményértékelések részletezése
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -829,6 +830,7 @@ STR_TOWNNAME_SWEDISH						:Svéd
 STR_TOWNNAME_DUTCH						:Holland
 STR_TOWNNAME_FINNISH						:Finn
 STR_TOWNNAME_POLISH						:Lengyel
+STR_TOWNNAME_CZECH						:Cseh
 STR_TOWNNAME_SLOVAKISH						:Szlovák
 STR_TOWNNAME_HUNGARIAN						:Magyar
 STR_TOWNNAME_AUSTRIAN						:Osztrák
@@ -1040,6 +1042,7 @@ STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}A csatornák keresztezhessék egymást: {ORA
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jet-repülõgépek nem fognak (gyakran) lezuhanni a kisebb repülõtereken: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Dátum módosítás: {ORANGE} {DATE_SHORT}
 
 STR_SORT_BY_POPULATION						:{BLACK}Lakosság
 
@@ -2202,6 +2205,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Mindig javítsd a vonatot a {TOWN}i jármû
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Úton a {TOWN}i jármûtelepre
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Úton a {TOWN}i jármûtelepre, {VELOCITY}
 
+STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
+
 STR_UNKNOWN_DESTINATION						:ismeretlen célpont
 STR_8812_EMPTY							:{LTBLUE}Üres
 STR_8813_FROM							:{LTBLUE}{CARGO} {STATION} állomásról
@@ -2517,3 +2522,33 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Egy szénbánya lesüllyed
 STR_BRIBE_FAILED						:{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2						:{WHITE}lefülelte egy helyi nyomozó!
 STR_BUILD_DATE							:{BLACK}Építve: {LTBLUE}{DATE_LONG}
+
+STR_PERFORMANCE_DETAIL						:{WHITE}Teljesítményértékelések részletezése
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Részletek
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
+############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Jármûvek:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Állomások:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Min. bevétel:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Max. bevétel:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Elszállítás:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Rakomány:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Pénz:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Kölcsön:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Összesen:
+############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Jármûvek száma. Beleértendõek a közúti jármûvek, a vonatok, hajók és repülõk.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülõtér), még akkor is, ha egy állomáshoz tartoznak is.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}A két évesnél idõsebb vonatok minimális profitja
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Az utóbbi 12 negyedév legalacsonyabb havi profitja
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Az utóbbi 12 negyedév legjövedelmezõbb havi profitja
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Utolsó négy negyedévben elszállított rakomány.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Az utolsó negyedévben elszállított árúk típusa.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Elérhetõ készpénz
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Magas kölcsönöd van?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Megszerzett pontok az elérhetõ pontokból
+
