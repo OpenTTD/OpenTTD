@@ -17,6 +17,8 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,\# MIDI: sets path to midi player)
 	$(call CONFIG_LINE,\# MIDI_ARG: sets an argument which is used when calling the midi player. Default off)
 	$(call CONFIG_LINE,\# SUPRESS_LANG_ERRORS: supresses output about missing and mismatched strings)
+	$(call CONFIG_LINE,\# WITH_NETWORK: makes OpenTTD able to play multiplayer using TCP and UDP)
+	$(call CONFIG_LINE,\# DEDICATED: compiles a dedicated server. This one can only host using a CLI, but do not need SDL)
 	$(call CONFIG_LINE,STATIC:=$(STATIC))
 	$(call CONFIG_LINE,TRANSLATOR:=$(TRANSLATOR))
 	$(call CONFIG_LINE,DISPLAY_WARNINGS:=$(DISPLAY_WARNINGS))
@@ -25,6 +27,8 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,MIDI:=$(MIDI))
 	$(call CONFIG_LINE,MIDI_ARG:=$(MIDI_ARG))
 	$(call CONFIG_LINE,SUPRESS_LANG_ERRORS:=$(SUPRESS_LANG_ERRORS))
+	$(call CONFIG_LINE,WITH_NETWORK:=$(WITH_NETWORK))
+	$(call CONFIG_LINE,DEDICATED:=$(DEDICATED))
 	$(call CONFIG_LINE,)
 	
 	$(call CONFIG_LINE,\# Disable asserts. Leave them on for easier bug finding)
@@ -44,9 +48,7 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,)
 	
 	$(call CONFIG_LINE,\# Experimental)
-	$(call CONFIG_LINE,WITH_NETWORK:=$(WITH_NETWORK))
 	$(call CONFIG_LINE,WITH_DIRECTMUSIC:=$(WITH_DIRECTMUSIC))
-	$(call CONFIG_LINE,DEDICATED:=$(DEDICATED))
 	$(call CONFIG_LINE,)
 	$(call CONFIG_LINE,)
 

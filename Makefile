@@ -67,6 +67,8 @@
 # NOVERBOSE: supress all warnings and errors during compilation.
 #  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
 # VERBOSE: actually show the commands used for compilation.
+# WITH_NETWORK: enable networking
+# DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 #
 # Paths:
 # INSTALL: If not set, the game uses the directory of the binary to
@@ -106,9 +108,7 @@
 # MINGW: build with MingW compiler, link with MingW libraries
 #
 # Experimental (does not work properly):
-# WITH_NETWORK: enable networking
 # WITH_DIRECTMUSIC: enable DirectMusic MIDI support
-# DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 
 
 ##############################################################################
@@ -118,7 +118,7 @@
 
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=5
+MAKEFILE_VERSION:=6
 
 # CONFIG_WRITER have to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
