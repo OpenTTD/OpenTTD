@@ -552,19 +552,19 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3: { /* select face */
-			w = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
-			if (w) {
-				w->caption_color = w->window_number;
-				WP(w,facesel_d).face = DEREF_PLAYER(w->window_number)->face;
-				WP(w,facesel_d).gender = 0;
+			Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
+			if (wf) {
+				wf->caption_color = w->window_number;
+				WP(wf,facesel_d).face = DEREF_PLAYER(wf->window_number)->face;
+				WP(wf,facesel_d).gender = 0;
 			}
 		} break;
 
 		case 4: {/* change color */
-			w = AllocateWindowDescFront(&_select_player_color_desc,w->window_number);
-			if (w) {
-				w->caption_color = w->window_number;
-				w->vscroll.cap = 8;
+			Window *wf = AllocateWindowDescFront(&_select_player_color_desc,w->window_number);
+			if (wf) {
+				wf->caption_color = wf->window_number;
+				wf->vscroll.cap = 8;
 			}
 		} break;
 
