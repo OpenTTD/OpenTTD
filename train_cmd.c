@@ -34,6 +34,200 @@ static const byte _signal_otherdir[14] = {
 	0x80, 0x80, 0x80, 0x20, 0x40, 0x10
 };
 
+static const byte _curve_neighbours45[8][2] = {
+	{7, 1},
+	{0, 2},
+	{1, 3},
+	{2, 4},
+	{3, 5},
+	{4, 6},
+	{5, 7},
+	{6, 0},
+};
+
+static const byte _curve_neighbours90[8][2] = {
+	{6, 2},
+	{7, 3},
+	{0, 4},
+	{1, 5},
+	{2, 6},
+	{3, 7},
+	{4, 0},
+	{5, 1},
+};
+
+enum AccelType {
+	AM_ACCEL,
+	AM_BRAKE
+};
+
+//new acceleration
+static int GetTrainAcceleration(Vehicle *v, bool mode)
+{
+	Vehicle *u = v;
+	int num = 0;	//number of vehicles, change this into the number of axles later
+	int power = 0;
+	int mass = 0;
+	int max_speed = 2000;
+	int area = 120;
+	int friction = 35; //[1e-3]
+	int drag_coeff = 20;	//[1e-4]
+	int incl = 0;
+	int resistance;
+	int speed = v->cur_speed; //[mph]
+	int force = 0x3FFFFFFF;
+	int pos = 0;
+	int lastpos = -1;
+	int curvecount[2] = {0, 0};
+	int *dist = NULL;
+	int sum = 0;
+	int numcurve = 0;
+	int i;
+
+	speed *= 10;
+	speed /= 16;
+
+	//first find the curve speed limit
+	for (; u->next != NULL; u = u->next, pos++) {
+		int dir = u->direction;
+		int ndir = u->next->direction;
+
+		for (i = 0; i < 2; i++) {
+			if ( _curve_neighbours45[dir][i] == ndir) {
+				curvecount[i]++;
+				if (lastpos != -1) {
+					dist = realloc(dist, sizeof(int) * ++numcurve);
+					dist[numcurve - 1] = pos - lastpos;
+					if (pos - lastpos == 1) {
+						max_speed = 88;
+					}
+				}
+				lastpos = pos;
+			}
+		}
+
+		//if we have a 90 degree turn, fix the speed limit to 60
+		if ( _curve_neighbours90[dir][0] == ndir || _curve_neighbours90[dir][1] == ndir) {
+			max_speed = 61;
+		}
+	}
+
+	for(i = 0; i < numcurve; i++) {
+		sum += dist[i];
+	}
+
+	if (numcurve > 0) {
+		sum /= numcurve;
+	}
+
+	if ((curvecount[0] != 0 || curvecount[1] != 0) && (max_speed > 88)) {
+		int total = curvecount[0] + curvecount[1];
+		if (curvecount[0] == 1 && curvecount[1] == 1) {
+			max_speed = 0xFFFF;
+		} else if (total > 1) {
+			max_speed = 232 - (13 - clamp(sum, 1, 12)) * (13 - clamp(sum, 1, 12));
+		}
+	}
+
+	max_speed += (max_speed / 2) * v->u.rail.railtype;
+
+	if (IsTileType(v->tile, MP_STATION) && v->subtype == TS_Front_Engine) {
+		static const TileIndexDiffC _station_dir_from_vdir[] = {
+			{0, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 0}, {1, 0}, {0, 0}, {0, -1}
+		};
+
+		if (((v->current_order.station == _map2[v->tile]) || !(v->current_order.flags & OF_NON_STOP)) && v->last_station_visited != _map2[v->tile]) {
+			int station_length = 0;
+			TileIndex tile = v->tile;
+			int delta_v;
+
+			max_speed = 120;
+			do {
+				station_length++;
+				tile = TILE_ADD(tile, ToTileIndexDiff(_station_dir_from_vdir[v->direction]));
+			} while (IsTileType(tile, MP_STATION));
+
+			delta_v = v->cur_speed / (station_length + 1);
+			if (v->max_speed > (v->cur_speed - delta_v))
+				max_speed = v->cur_speed - (delta_v / 10);
+
+			max_speed = max(max_speed, 25 * station_length);
+		}
+	}
+
+	for (u = v; u != NULL; u = u->next) {
+		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+		int vmass;
+
+		num++;
+		power += rvi->power * 746;	//[W]
+		drag_coeff += 3;
+
+		if (rvi->max_speed != 0)
+			max_speed = min(rvi->max_speed, max_speed);
+
+		if (u->u.rail.track == 0x80)
+			max_speed = 61;
+
+		vmass = rvi->weight;  //[t]
+		vmass += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+		mass += vmass; //[t]
+
+		if (!IsTileType(u->tile, MP_TUNNELBRIDGE)) {
+			if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
+				incl += vmass * 60;		//3% slope, quite a bit actually
+			} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
+				incl -= vmass * 60;
+			}
+		}
+	}
+
+
+	// these are shown in the UI
+	v->u.rail.cached_weight = mass;
+	v->u.rail.cached_power = power / 746;
+	v->max_speed = max_speed;
+
+
+	if (v->u.rail.railtype != 2) {
+		resistance = 13 * mass / 10;
+		resistance += 60 * num;
+		resistance += friction * mass * speed / 1000;
+		resistance += (area * drag_coeff * speed * speed) / 10000;
+	} else
+		resistance = (area * (drag_coeff / 2) * speed * speed) / 10000;
+	resistance += incl;
+	resistance *= 4; //[N]
+
+	if (speed > 0) {
+		switch (v->u.rail.railtype) {
+			case 0:
+			case 1:
+			{
+				force = power / speed; //[N]
+				force *= 22;
+				force /= 10;
+			} break;
+			case 2:
+				force = power / 25;
+			break;
+		}
+	} else
+		//"kickoff" acceleration
+		force = resistance * 10;
+
+	if (force <= 0) force = 10000;
+
+	if (v->u.rail.railtype != 2)
+		force = min(force, mass * 10 * 200);
+
+	if (mode == AM_ACCEL) {
+		return (force - resistance) / (mass * 4);
+	} else {
+		return min((-force - resistance) /(mass * 4), (10000 / (mass * 4)));
+	}
+}
+
 void UpdateTrainAcceleration(Vehicle *v)
 {
 	uint acc, power=0, max_speed=5000, weight=0;
@@ -72,84 +266,6 @@ void UpdateTrainAcceleration(Vehicle *v)
 
 	v->acceleration = (byte)acc;
 }
-
-#define F_GRAV 9.82f
-#define F_THETA 0.05f
-
-#define F_HP_KW 0.74569f
-#define F_KPH_MS 0.27778f
-#define F_MU 0.3f
-
-#define F_COEF_FRIC 0.04f
-#define F_COEF_ROLL 0.18f
-
-#define F_CURVE_FACTOR (1/96.f)
-
-static int GetRealisticAcceleration(Vehicle *v)
-{
-	uint emass = 0;
-	Vehicle *u = v;
-	float f = 0.0f, spd;
-	int curves = 0;
-
-	assert(v->subtype == TS_Front_Engine);
-
-	// compute inclination force and number of curves.
-	do {
-		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		uint mass = rvi->weight + ((_cargoc.weights[u->cargo_type] * u->cargo_count) >> 4);
-		if (rvi->power) emass += mass;
-
-		if (!IsTileType(u->tile, MP_TUNNELBRIDGE)) {
-			if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
-				f += (float)mass * ( -F_GRAV * F_THETA);
-			} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
-				f += (float)mass * ( F_GRAV * F_THETA);
-			}
-		}
-
-		// compute curve penalty..
-		if (u->next != NULL) {
-			uint diff = (u->direction - u->next->direction) & 7;
-			if (diff) {
-				curves += (diff == 1 || diff == 7) ? 1 : 3;
-			}
-		}
-	} while ((u = u->next) != NULL);
-
-	spd = (float)(v->cur_speed ? v->cur_speed : 1);
-
-	// compute tractive effort
-	{
-		float te = (float)v->u.rail.cached_power * (F_HP_KW/F_KPH_MS) / spd;
-		float te2 = (float)emass * (F_MU * F_GRAV);
-		if (te > te2) te = te2;
-		f += te;
-	}
-
-	// add air resistance
-	{
-		float cx = 1.0f; // NOT DONE
-
-		// air resistance is doubled in tunnels.
-		if (v->vehstatus == 0x40) cx *= 2;
-
-		f -= cx * spd * spd * (F_KPH_MS * F_KPH_MS * 0.001f);
-	}
-
-	// after this f contains the acceleration.
-	f /= (float)v->u.rail.cached_weight;
-
-	// add friction to sum of forces (avoid mul by weight). (0.001 because we want kN)
-	f -= (F_COEF_FRIC * F_GRAV * 0.001f + (F_COEF_ROLL * F_KPH_MS * F_GRAV * 0.001f) * spd);
-
-	// penalty for curves?
-	if (curves)
-		 f -= (float)min(curves, 8) * F_CURVE_FACTOR;
-
-	return (int)(f  * (1.0/(F_KPH_MS * 0.015f)) + 0.5f);
-}
-
 
 int GetTrainImage(Vehicle *v, byte direction)
 {
@@ -1517,9 +1633,9 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int direction, byte trackbit
 			fd.best_track_dist = (uint)-1;
 
 			NewTrainPathfind(tile, _search_directions[i][direction], (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
-			if (best_track != -1) {
-				if (best_track_dist == -1) {
-					if (fd.best_track_dist == -1) {
+			if (best_track != (uint)-1) {
+				if (best_track_dist == (uint)-1) {
+					if (fd.best_track_dist == (uint)-1) {
 						/* neither reached the destination, pick the one with the smallest bird dist */
 						if (fd.best_bird_dist > best_bird_dist) goto bad;
 						if (fd.best_bird_dist < best_bird_dist) goto good;
@@ -1528,7 +1644,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int direction, byte trackbit
 						goto good;
 					}
 				} else {
-					if (fd.best_track_dist == -1) {
+					if (fd.best_track_dist == (uint)-1) {
 						/* didn't find destination, but we've found the destination previously */
 						goto bad;
 					} else {
@@ -1553,7 +1669,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int direction, byte trackbit
 	bad:;
 		} while (bits != 0);
 //		printf("Train %d %s\n", v->unitnumber, best_track_dist == -1 ? "NOTFOUND" : "FOUND");
-		assert(best_track != -1);
+		assert(best_track != (uint)-1);
 	}
 
 #if 0
@@ -1782,17 +1898,25 @@ static int UpdateTrainSpeed(Vehicle *v)
 	uint accel;
 
 	if (v->vehstatus & VS_STOPPED || HASBIT(v->u.rail.flags, VRF_REVERSING)) {
-		accel = -v->acceleration * 2;
+		if (_patches.realistic_acceleration)
+			accel = GetTrainAcceleration(v, AM_BRAKE) * 2;
+		else
+			accel = v->acceleration * -2;
 	} else {
-		accel = v->acceleration;
-		if (_patches.realistic_acceleration) {
-			accel = GetRealisticAcceleration(v);
-		}
+		if (_patches.realistic_acceleration)
+			accel = GetTrainAcceleration(v, AM_ACCEL);
+		else
+			accel = v->acceleration;
 	}
 
 	spd = v->subspeed + accel * 2;
 	v->subspeed = (byte)spd;
-	v->cur_speed = spd = clamp(v->cur_speed + ((int)spd >> 8), 0, v->max_speed);
+	{
+		int tempmax = v->max_speed;
+		if (v->cur_speed > v->max_speed)
+			tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
+		v->cur_speed = spd = clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
+	}
 
 	if (!(v->direction & 1)) spd = spd * 3 >> 2;
 

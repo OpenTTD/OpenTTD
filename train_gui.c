@@ -1011,6 +1011,7 @@ static void DrawTrainDetailsWindow(Window *w)
 {
 	Vehicle *v, *u;
 	uint16 tot_cargo[NUM_CARGO][2];	// count total cargo ([0]-actual cargo, [1]-total cargo)
+	int max_speed = 0xFFFF;
 	int i,num,x,y,sel;
 	StringID str;
 	byte det_tab = WP(w, traindetails_d).tab;
@@ -1030,6 +1031,8 @@ static void DrawTrainDetailsWindow(Window *w)
 			tot_cargo[u->cargo_type][0] += u->cargo_count;
 			tot_cargo[u->cargo_type][1] += u->cargo_cap;
 		}
+		if (RailVehInfo(u->engine_type)->max_speed != 0)
+			max_speed = min(max_speed, RailVehInfo(u->engine_type)->max_speed);
 	} while ( (u = u->next) != NULL);
 
 	/*	set scroll-amount seperately from counting, as to not
@@ -1072,7 +1075,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
-	SetDParam(2, v->max_speed * 10 >> 4);
+	SetDParam(2, max_speed * 10 >> 4);
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
 	DrawString(x, 25, STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED, 0);
