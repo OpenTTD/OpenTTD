@@ -962,7 +962,7 @@ static void SaveList(IniFile *ini, const char *grpname, char **list, int len)
 	if (!group)
 		return;
 	for (i = 0; i != len; i++) {
-		if (list[i] == '\0') continue;
+		if (list[i] == NULL || list[i][0] == '\0') continue;
 
 		if (first) { // add first item to the head of the group
 			item = ini_item_alloc(group, list[i], strlen(list[i]));
