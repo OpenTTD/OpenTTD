@@ -507,9 +507,14 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 
 			/* Let's see if were headed the right way */
 			if (src_trackdir != _dir_to_diag_trackdir[exitdir])
-				/* Not going out of the station/depot through the exit, but the back. No
-				 * neighbours then. */
-				return;
+				/* We are headed inwards. We can only reverse here, so we'll not
+				 * consider this direction, but jump ahead to the reverse direction.
+				 * It would be nicer to return one neighbour here (the reverse
+				 * trackdir of the one we are considering now) and then considering
+				 * that one to return the tracks outside of the depot. But, because
+				 * the code layout is cleaner this way, we will just pretend we are
+				 * reversed already */
+				src_trackdir = _reverse_trackdir[src_trackdir];
 		}
 		/* This a normal tile, a bridge, a tunnel exit, etc. */
 		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(_trackdir_to_exitdir[src_trackdir]));
