@@ -1670,15 +1670,13 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (st->airport_tile != 0)
 			return_cmd_error(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 	} else {
-		Town *t;
-
 		airport_upgrade = false;
 
 		st = AllocateStation();
 		if (st == NULL)
 			return CMD_ERROR;
 
-		st->town = t = ClosestTownFromTile(tile, (uint)-1);
+		st->town = t;
 
 		if (_current_player < MAX_PLAYERS && flags&DC_EXEC)
 			SETBIT(t->have_ratings, _current_player);
