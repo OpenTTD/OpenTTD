@@ -307,7 +307,7 @@ static void BuildRailClick_Sign(Window *w)
 
 static void BuildRailClick_Waypoint(Window *w)
 {
-	_waypoint_count = GetCustomStationsCount('WAYP');
+	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
 	if (HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
 	    && _waypoint_count > 1)
 		ShowBuildWaypointPicker();

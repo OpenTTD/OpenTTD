@@ -967,7 +967,7 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 {
 	int stid = -1;
 
-	assert(spec->classid == 'WAYP');
+	assert(spec->sclass == STAT_CLASS_WAYP);
 
 	if (spec->localidx != 0) {
 		/* Already allocated, try to resolve to global stid */
@@ -998,9 +998,9 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 	memcpy(&_waypoint_data[stid], spec, sizeof(*spec));
 }
 
-struct StationSpec *GetCustomStation(uint32 classid, byte stid)
+struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid)
 {
-	assert(classid == 'WAYP');
+	assert(sclass == STAT_CLASS_WAYP);
 	if (stid > _waypoint_highest_id)
 		return NULL;
 	return &_waypoint_data[stid];
@@ -1092,7 +1092,7 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 {
 	struct RealSpriteGroup *rsg;
 
-	assert(spec->classid == 'WAYP');
+	assert(spec->sclass == STAT_CLASS_WAYP);
 
 	rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], stat);
 
@@ -1112,9 +1112,9 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 	return 0x42D;
 }
 
-int GetCustomStationsCount(uint32 classid)
+int GetCustomStationsCount(enum StationClass sclass)
 {
-	assert(classid == 'WAYP');
+	assert(sclass == STAT_CLASS_WAYP);
 	return _waypoint_highest_id + 1;
 }
 

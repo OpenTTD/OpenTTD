@@ -710,12 +710,25 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		{	/* Class ID */
 			FOR_EACH_ENGINE {
 				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				uint32 classid;
 
 				/* classid, for a change, is always little-endian */
-				stat->classid = *(buf++) << 24;
-				stat->classid |= *(buf++) << 16;
-				stat->classid |= *(buf++) << 8;
-				stat->classid |= *(buf++);
+				classid = *(buf++) << 24;
+				classid |= *(buf++) << 16;
+				classid |= *(buf++) << 8;
+				classid |= *(buf++);
+
+				switch (classid) {
+					case 'DFLT':
+						stat->sclass = STAT_CLASS_DFLT;
+						break;
+					case 'WAYP':
+						stat->sclass = STAT_CLASS_WAYP;
+						break;
+					default:
+						stat->sclass = STAT_CLASS_CUSTOM;
+						break;
+				}
 			}
 			break;
 		}
@@ -1288,7 +1301,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
 				stat->grfid = _cur_grffile->grfid;
 				SetCustomStation(stid, stat);
-				stat->classid = 0;
+				stat->sclass = STAT_CLASS_NONE;
 			}
 		}
 		return;

@@ -97,7 +97,18 @@ struct StationSpec {
 	uint32 grfid;
 	int localidx; // per-GRFFile station index + 1; SetCustomStation() takes care of this
 
-	uint32 classid;
+	enum StationClass {
+		STAT_CLASS_NONE, // unused station slot or so
+		STAT_CLASS_DFLT, // default station class
+		STAT_CLASS_WAYP, // waypoints
+
+		/* TODO: When we actually support custom classes, they are
+		 * going to be allocated dynamically (with some classid->sclass
+		 * mapping, there's a TTDPatch limit on 16 custom classes in
+		 * the whole game at the same time) with base at
+		 * STAT_CLASS_CUSTOM. --pasky */
+		STAT_CLASS_CUSTOM, // some custom class
+	} sclass;
 
 	byte tiles;
 	DrawTileSprites renderdata[8];
@@ -114,11 +125,11 @@ struct StationSpec {
 void SetCustomStation(byte stid, struct StationSpec *spec);
 /* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
  * (lookup is therefore very fast as we do this very frequently). */
-struct StationSpec *GetCustomStation(uint32 classid, byte stid);
+struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid);
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
 uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype);
-int GetCustomStationsCount(uint32 classid);
+int GetCustomStationsCount(enum StationClass sclass);
 
 #endif /* STATION_H */
