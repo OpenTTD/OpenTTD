@@ -1,0 +1,38 @@
+0,9,10,2,3,13,9,9,0,10,4,15,6,11,14,1
+dark blue=0	=0
+pale_green=1	=9
+pink=2		=10
+yellow=3	=2
+red=4		=3
+light blue=5	=13
+green=6		=9
+dark green=7	=9
+blue=8		=0
+cream=9		=10
+mauve=10	=4
+purple=11	=15
+orange=12	=6
+brown=13	=11
+grey=14		=14
+white=15	=1
+
+
+		=blue=0		
+		=white=1
+		=yellow=2
+		=red=3
+		=blue=4
+		=grey=5
+		=orange=6
+		=green=7
+		=light yellow=8
+		=light green=9
+		=cream=10
+		=brown=11
+		=white=12
+		=light blue=13
+		=dark grey=14
+		=purple=15
+		=black=16
+		=dark green=17=not good
+		=dark grey=21
