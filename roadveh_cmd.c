@@ -694,7 +694,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	u = VehicleFromPos(TILE_FROM_XY(x,y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
 
 	// This code protects a roadvehicle from being blocked for ever
-	//  If more then 1480 / 74 days a road vehicle is blocked, it will
+	//  If more than 1480 / 74 days a road vehicle is blocked, it will
 	//  drive just through it. The ultimate backup-code of TTD.
 	// It can be disabled.
 	if (u == NULL) {

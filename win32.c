@@ -1842,7 +1842,7 @@ const DriverDesc _music_driver_descs[] = {
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 	{"dmusic", "DirectMusic MIDI Driver",	&_dmusic_midi_driver,	Windows_2000},
 #endif
-	// Win32 MIDI driver has higher priority then DMusic, so this one is chosen
+	// Win32 MIDI driver has higher priority than DMusic, so this one is chosen
 	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,				Windows_NT3_51},
 	{NULL}
 };

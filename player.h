@@ -93,9 +93,9 @@ typedef struct PlayerAiNew {
 	uint tick;
 	uint idle;
 
-	int temp; 	// A value used in more then one function, but it just temporary
+	int temp; 	// A value used in more than one function, but it just temporary
 				// The use is pretty simple: with this we can 'think' about stuff
-				//   in more then one tick, and more then one AI. A static will not
+				//   in more than one tick, and more than one AI. A static will not
 				//   do, because they are not saved. This way, the AI is almost human ;)
 	int counter; 	// For the same reason as temp, we have counter. It can count how
 					//  long we are trying something, and just abort if it takes too long

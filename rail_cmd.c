@@ -1029,7 +1029,7 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if ((signal_ctr %	signal_density) == 0 ) {
 			ret = DoCommand(x, y, (railbit & 7) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
-			/* Abort placement for any other error then NOT_SUITEABLE_TRACK
+			/* Abort placement for any other error than NOT_SUITABLE_TRACK
 			 * This includes vehicles on track, competitor's tracks, etc. */
 			if (ret == CMD_ERROR) {
 				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) {

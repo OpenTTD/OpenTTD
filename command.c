@@ -413,7 +413,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
 	proc = _command_proc_table[cmd & 0xFF];
 
-	// Some commands have a different output in dryrun then the realrun
+	// Some commands have a different output in dryrun than the realrun
 	//  e.g.: if you demolish a whole town, the dryrun would say okay.
 	//  but by really destroying, your rating drops and at a certain point
 	//  it will fail. so res and res2 are different
@@ -474,7 +474,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_yearly_expenses_type = 0;
 	res2 = proc(x,y, flags|DC_EXEC, p1, p2);
 
-	// If notest is on, it means the result of the test can be different then
+	// If notest is on, it means the result of the test can be different than
 	//   the real command.. so ignore the test
 	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		assert(res == res2); // sanity check

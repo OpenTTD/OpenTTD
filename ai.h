@@ -71,7 +71,7 @@
 #define AI_LOCATE_ROUTE_MAX_COUNTER 200
 
 // How many days must there be between building the first station and the second station
-//  within one city. This number is in days and should be more then 4 months.
+//  within one city. This number is in days and should be more than 4 months.
 #define AI_CHECKCITY_DATE_BETWEEN 180
 
 // How many cargo is needed for one station in a city?
@@ -130,7 +130,7 @@
 //  reuse the station instead of building a new one!
 #define AI_STATION_REUSE_MULTIPLER 2
 
-// No more then this amount of vehicles per station..
+// No more than this amount of vehicles per station..
 #define AI_CHECK_MAX_VEHICLE_PER_STATION 10
 
 // How many thick between building 2 vehicles
@@ -149,7 +149,7 @@
 //   while old vehicles stay longer, because we do get less in return.
 #define AI_MINIMUM_ROUTE_PROFIT 1000
 
-// A vehicle is considered lost when he his cargo is more then 180 days old
+// A vehicle is considered lost when he his cargo is more than 180 days old
 #define AI_VEHICLE_LOST_DAYS 180
 
 // How many times may the AI try to find a route before it gives up

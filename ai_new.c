@@ -408,7 +408,7 @@ static void AiNew_State_LocateRoute(Player *p) {
    			int max_cargo = DEREF_TOWN(p->ainew.from_ic)->max_pass + DEREF_TOWN(p->ainew.temp)->max_pass;
    			max_cargo -= DEREF_TOWN(p->ainew.from_ic)->act_pass + DEREF_TOWN(p->ainew.temp)->act_pass;
    			// max_cargo is now the amount of cargo we can move between the two cities
-   			// If it is more then the distance, we allow it
+   			// If it is more than the distance, we allow it
    			if (GetTileDist(DEREF_TOWN(p->ainew.from_ic)->xy, DEREF_TOWN(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_BUS_CARGO_DISTANCE) {
    				// We found a good city/industry, save the data of it
    				p->ainew.to_ic = p->ainew.temp;
@@ -493,7 +493,7 @@ static void AiNew_State_LocateRoute(Player *p) {
    	p->ainew.last_id = p->ainew.temp;
 }
 
-// Check if there are not more then a certain amount of vehicles pointed to a certain
+// Check if there are not more than a certain amount of vehicles pointed to a certain
 //  station. This to prevent 10 busses going to one station, which gives... problems ;)
 static bool AiNew_CheckVehicleStation(Player *p, Station *st) {
 	int count = 0;
@@ -558,7 +558,7 @@ static void AiNew_State_FindStation(Player *p) {
 
     // First, we are going to look at the stations that already exist inside the city
     //  If there is enough cargo left in the station, we take that station
-    //  If that is not possible, and there are more then 2 stations in the city, abort
+    //  If that is not possible, and there are more than 2 stations in the city, abort
 	i = AiNew_PickVehicle(p);
 	// Euhmz, this should not happen _EVER_
 	// Quit finding a route...
@@ -588,7 +588,7 @@ static void AiNew_State_FindStation(Player *p) {
 	}
 	// We are going to add a new station...
 	if (new_tile == 0) count++;
-	// No more then 2 stations allowed in a city
+	// No more than 2 stations allowed in a city
 	//  This is because only the best 2 stations of one cargo do get any cargo
 	if (count > 2) {
 		p->ainew.state = AI_STATE_NOTHING;
@@ -851,7 +851,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	else
     		max_cargo = DEREF_INDUSTRY(p->ainew.to_ic)->total_production[0];
 
-    	// This is because moving 60% is more then we can dream of!
+    	// This is because moving 60% is more than we can dream of!
     	max_cargo *= 0.6;
     	// We want all the cargo to be gone in a month.. so, we know the cargo it delivers
     	//  we know what the vehicle takes with him, and we know the time it takes him
@@ -1134,7 +1134,7 @@ static void AiNew_State_GiveOrders(Player *p) {
         p->ainew.veh_main_id = p->ainew.veh_id;
     }
 
-    // When more then 1 vehicle, we send them to different directions
+    // When more than 1 vehicle, we send them to different directions
 		idx = 0;
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
@@ -1188,7 +1188,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v) {
 
 	// When a vehicle is older then 1 year, it should make money...
 	if (v->age > 360) {
-		// If both years together are not more then AI_MINIMUM_ROUTE_PROFIT,
+		// If both years together are not more than AI_MINIMUM_ROUTE_PROFIT,
 		//  it is not worth the line I guess...
 		if (v->profit_last_year + v->profit_this_year < AI_MINIMUM_ROUTE_PROFIT ||
 			(v->reliability * 100 >> 16) < 40) {

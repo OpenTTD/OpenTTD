@@ -387,7 +387,7 @@ void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandC
 	if (_network_server) {
 		// If we are the server, we queue the command in our 'special' queue.
 		//   In theory, we could execute the command right away, but then the
-		//   client on the server can do everything 1 tick faster then others.
+		//   client on the server can do everything 1 tick faster than others.
 		//   So to keep the game fair, we delay the command with 1 tick
 		//   which gives about the same speed as most clients.
 		NetworkClientState *cs;

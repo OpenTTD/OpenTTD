@@ -355,7 +355,7 @@ bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 			j = i;
 			// Check if we have 2 childs
 			if (2*j+1 <= q->data.binaryheap.size) {
-				// Is this child smaller then the parent?
+				// Is this child smaller than the parent?
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) {i = 2*j; }
 				// Yes, we _need_ to use i here, not j, because we want to have the smallest child
 				//  This way we get that straight away!
@@ -365,7 +365,7 @@ bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) { i = 2*j; }
 			}
 
-			// One of our childs is smaller then we are, switch
+			// One of our childs is smaller than we are, switch
 			if (i != j) {
 				temp = BIN_HEAP_ARR(j);
 				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);

@@ -215,7 +215,7 @@ void AyStarMain_Clear(AyStar *aystar) {
 int AyStarMain_Main(AyStar *aystar) {
 	int r, i = 0;
 	// Loop through the OpenList
-	//  Quit if result is no AYSTAR_STILL_BUSY or is more then loops_per_tick
+	//  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick
 	while ((r = aystar->loop(aystar)) == AYSTAR_STILL_BUSY && (aystar->loops_per_tick == 0 || ++i < aystar->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
 	if (r == AYSTAR_FOUND_END_NODE)

@@ -183,7 +183,7 @@ typedef struct {
 #define WP(ptr,str) (*(str*)(ptr)->custom)
 // querystr_d is the bigest struct that comes in w->custom
 //  because 64-bit systems use 64-bit pointers, it is bigger on a 64-bit system
-//  then on a 32-bit system. Therefor the size is calculated from querystr_d
+//  than on a 32-bit system. Therefore, the size is calculated from querystr_d
 //  instead of a hardcoded number.
 // if any struct becomes bigger the querystr_d, it should be replaced.
 #define WINDOW_CUSTOM_SIZE sizeof(querystr_d)

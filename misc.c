@@ -713,10 +713,10 @@ void IncreaseDate()
 
 int FindFirstBit(uint32 value)
 {
-	// This is much faster then the one that was before here.
+	// This is much faster than the one that was before here.
 	//  Created by Darkvater.. blame him if it is wrong ;)
 	// Btw, the macro FINDFIRSTBIT is better to use when your value is
-	//  not more then 128.
+	//  not more than 128.
 	byte i = 0;
 	if (value & 0xffff0000) { value >>= 16; i += 16; }
 	if (value & 0x0000ff00) { value >>= 8;  i += 8; }

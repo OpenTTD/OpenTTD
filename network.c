@@ -1310,7 +1310,7 @@ void NetworkStartUp(void)
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
 	/* XXX - Hard number here, because the strings can currently handle no more
-	    then 10 clients -- TrueLight */
+	    than 10 clients -- TrueLight */
 	_network_game_info.clients_max = 10;
 
 	// Let's load the network in windows

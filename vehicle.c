@@ -203,7 +203,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	/* random_bits is used to pick out a random sprite for vehicles
 	    which are technical the same (newgrf stuff).
 	   Because RandomRange() results in desyncs, and because it does
-	    not really matter that one client has other visual vehicles then
+	    not really matter that one client has other visual vehicles than
 	    the other, it can be InteractiveRandomRange() without any problem
 	*/
 	v->random_bits = InteractiveRandomRange(256);

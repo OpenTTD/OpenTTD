@@ -140,7 +140,7 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl);
 		r2 = GetTileDist(current->tile, PathFinderInfo->end_tile_br);
 	}
-	// See if the bottomright is faster then the topleft..
+	// See if the bottomright is faster than the topleft..
 	if (r2 < r) r = r2;
 	return r * AI_PATHFINDER_H_MULTIPLER;
 }
@@ -429,7 +429,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		if (parent->path.parent != NULL && parent->path.parent->parent != NULL) {
 			int dir1 = AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile);
 			int dir2 = AiNew_GetRailDirection(parent->path.parent->parent->node.tile, parent->path.parent->node.tile, parent->path.node.tile);
-			// First, see if we are on diagonal path, that is better then straight path
+			// First, see if we are on diagonal path, that is better than straight path
 			if (dir1 > 1) { res -= AI_PATHFINDER_DIAGONAL_BONUS; }
 
 			// First see if they are different

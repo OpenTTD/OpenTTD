@@ -350,7 +350,7 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	}
 
 	// CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-	//  order number is one more then the current amount of orders, and because
+	//  order number is one more than the current amount of orders, and because
 	//  in network the commands are queued before send, the second insert always
 	//  fails in test mode. By bypassing the test-mode, that no longer is a problem.
 	for (i = 0; bak->order[i].type != OT_NOTHING; ++i)

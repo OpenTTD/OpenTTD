@@ -1372,7 +1372,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		if (!found_name) {
 			// Try a new name (<name> #1, <name> #2, and so on)
 
-			// Stop if we tried for more then 50 times..
+			// Stop if we tried for more than 50 times..
 			if (number++ > 50) break;
 			snprintf(new_name, NETWORK_CLIENT_NAME_LENGTH, "%s #%d", original_name, number);
 		}
@@ -1450,7 +1450,7 @@ void NetworkServer_Tick(void)
 				if (lag > 3) {
 					// Client did still not report in after 4 game-day, drop him
 					//  (that is, the 3 of above, + 1 before any lag is counted)
-					IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because the client did not respond for more then 4 game-days", cs->index);
+					IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
 					NetworkCloseClient(cs);
 					continue;
 				}
