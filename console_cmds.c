@@ -8,6 +8,7 @@
 #include "network_data.h"
 #include "network_client.h"
 #include "network_server.h"
+#include "network_udp.h"
 #include "command.h"
 #include "settings.h"
 
