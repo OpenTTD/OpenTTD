@@ -83,7 +83,7 @@ void SubtractMoneyFromPlayer(int32 cost);
 void SubtractMoneyFromPlayerFract(byte player, int32 cost);
 bool CheckOwnership(byte owner);
 bool CheckTileOwnership(uint tile);
-StringID GetPlayerNameString(byte player);
+StringID GetPlayerNameString(byte player, byte index);
 
 /* standard */
 void ShowInfo(const char *str);

@@ -504,7 +504,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 			
 				SET_DPARAM16(0, p->name_1);
 				SET_DPARAM32(1, p->name_2);
-				SET_DPARAM16(2, GetPlayerNameString(p->index));
+				SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
 							
 				color = (byte)((p->index==sel) ? 0xC : 0x10);
 				if (chk&1) color = 14;

@@ -134,8 +134,8 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 
 		SET_DPARAM16(0, p->name_1);
 		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number));
-		SET_DPARAM32(3, 10000);
+		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
+		SET_DPARAM32(4, 10000);
 		DrawWindowWidgets(w);
 
 		DrawPlayerEconomyStats(p, (byte)WP(w,def_d).data_1);
@@ -480,7 +480,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	
 		SET_DPARAM16(0, p->name_1);
 		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number));
+		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
 
 		dis = 0;
 		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 8;

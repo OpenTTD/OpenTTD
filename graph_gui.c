@@ -212,7 +212,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, GetPlayerNameString(p->index));
+			SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
 			DrawString(21,17+p->index*12,STR_7021,HASBIT(_legend_showbits, p->index) ? 0x10 : 0xC);
 		}
 		break;
@@ -823,8 +823,8 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			SET_DPARAM16(1, p->name_1);
 			SET_DPARAM32(2, p->name_2);
 			
-			SET_DPARAM16(3, GetPlayerNameString(p->index));
-			SET_DPARAM16(4, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			SET_DPARAM16(3, GetPlayerNameString(p->index, 4));
+			SET_DPARAM16(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);

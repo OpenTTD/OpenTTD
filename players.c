@@ -559,10 +559,13 @@ void RunOtherPlayersLoop()
 	_current_player = 0;
 }
 
-StringID GetPlayerNameString(byte player)
+// index is the next parameter in _decode_parameters to set up
+StringID GetPlayerNameString(byte player, byte index)
 {
-	if (IS_HUMAN_PLAYER(player) && player < 2) // temporarily fixes the names in the list.
-		return STR_7002_PLAYER_1+player;
+	if (IS_HUMAN_PLAYER(player) && player < MAX_PLAYERS) {
+		SET_DPARAM16(index, player+1);
+		return STR_7002_PLAYER;
+	}
 	return STR_EMPTY;
 }
 

@@ -114,7 +114,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					
 					SET_DPARAM16(0, p->name_1);
 					SET_DPARAM32(1, p->name_2);
-					SET_DPARAM16(2, GetPlayerNameString(p->index));
+					SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
 
 					r = t->ratings[p->index];
 					(str = STR_3035_APPALLING, r <= -400) ||	// Apalling
@@ -126,7 +126,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					(str++, r <= 800) ||											// Excellent
 					(str++, true);														// Outstanding
 
-					SET_DPARAM16(3, str);
+					SET_DPARAM16(4, str);
 					DrawString(19, y, STR_2024, 0);
 					y+=10;
 				}
