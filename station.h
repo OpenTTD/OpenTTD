@@ -178,8 +178,8 @@ static inline uint16 GetRoadStopPoolSize(void)
 VARDEF bool _station_sort_dirty[MAX_PLAYERS];
 VARDEF bool _global_station_sort_dirty;
 
-void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad);
-void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad);
+void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
+void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 uint GetStationPlatforms(Station *st, uint tile);
 
 

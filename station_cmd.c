@@ -415,16 +415,19 @@ done:
 }
 #undef M
 
-static Station *GetClosestStationFromTile(uint tile, uint threshold, byte owner)
+static Station *GetClosestStationFromTile(TileIndex tile, uint threshold, byte owner)
 {
-	Station *st, *best_station = NULL;
-	uint cur_dist;
+	Station* best_station = NULL;
+	Station* st;
 
 	FOR_ALL_STATIONS(st) {
-		cur_dist = DistanceManhattan(tile, st->xy);
-		if (cur_dist < threshold && (owner == 0xFF || st->owner == owner) && (st->xy != 0)) {
-			threshold = cur_dist;
-			best_station = st;
+		if (st->xy != 0 && (owner == OWNER_SPECTATOR || st->owner == owner)) {
+			uint cur_dist = DistanceManhattan(tile, st->xy);
+
+			if (cur_dist < threshold) {
+				threshold = cur_dist;
+				best_station = st;
+			}
 		}
 	}
 
@@ -433,7 +436,6 @@ static Station *GetClosestStationFromTile(uint tile, uint threshold, byte owner)
 
 static void StationInitialize(Station *st, TileIndex tile)
 {
-	int i;
 	GoodsEntry *ge;
 
 	st->xy = tile;
@@ -447,7 +449,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 
 	st->last_vehicle = INVALID_VEHICLE;
 
-	for(i=0,ge=st->goods; i!=NUM_CARGO; i++, ge++) {
+	for (ge = st->goods; ge != endof(st->goods); ge++) {
 		ge->waiting_acceptance = 0;
 		ge->days_since_pickup = 0;
 		ge->enroute_from = INVALID_STATION;
@@ -492,21 +494,20 @@ static void UpdateStationVirtCoordDirty(Station *st)
 }
 
 // Get a mask of the cargo types that the station accepts.
-static uint GetAcceptanceMask(Station *st)
+static uint GetAcceptanceMask(const Station *st)
 {
 	uint mask = 0;
-	uint cur_mask = 1;
-	int i;
-	for(i=0; i!=NUM_CARGO; i++,cur_mask*=2) {
-		if (st->goods[i].waiting_acceptance & 0x8000)
-			mask |= cur_mask;
+	uint i;
+
+	for (i = 0; i != NUM_CARGO; i++) {
+		if (st->goods[i].waiting_acceptance & 0x8000) mask |= 1 << i;
 	}
 	return mask;
 }
 
 // Items contains the two cargo names that are to be accepted or rejected.
 // msg is the string id of the message to display.
-static void ShowRejectOrAcceptNews(Station *st, uint32 items, StringID msg)
+static void ShowRejectOrAcceptNews(const Station *st, uint32 items, StringID msg)
 {
 	if (items) {
 		SetDParam(2, items >> 16);
@@ -517,56 +518,57 @@ static void ShowRejectOrAcceptNews(Station *st, uint32 items, StringID msg)
 }
 
 // Get a list of the cargo types being produced around the tile.
-void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
+void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
+	int w, int h, int rad)
 {
 	int x,y;
 	int x1,y1,x2,y2;
 	int xc,yc;
-	byte cargos[2];
 
 	memset(produced, 0, NUM_CARGO * sizeof(uint));
 
 	x = TileX(tile);
 	y = TileY(tile);
 
-	// expand the region by 4 tiles on each side
+	// expand the region by rad tiles on each side
 	// while making sure that we remain inside the board.
 	x2 = min(x + w + rad, MapSizeX());
-	x1 = max(x-rad, 0);
+	x1 = max(x - rad, 0);
 
 	y2 = min(y + h + rad, MapSizeY());
-	y1 = max(y-rad, 0);
+	y1 = max(y - rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
 	assert(w > 0);
 	assert(h > 0);
 
-	yc = y1;
-	do {
-		xc = x1;
-		do {
+	for (yc = y1; yc != y2; yc++) {
+		for (xc = x1; xc != x2; xc++) {
 			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
 				GetProducedCargoProc *gpc;
-				uint tile = TILE_XY(xc, yc);
+				TileIndex tile = TILE_XY(xc, yc);
+
 				gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
-					cargos[0] = cargos[1] = 0xFF;
+					byte cargos[2] = { CT_INVALID, CT_INVALID };
+
 					gpc(tile, cargos);
-					if (cargos[0] != 0xFF) {
+					if (cargos[0] != CT_INVALID) {
 						produced[cargos[0]]++;
-						if (cargos[1] != 0xFF) {
+						if (cargos[1] != CT_INVALID) {
 							produced[cargos[1]]++;
 						}
 					}
 				}
 			}
-		} while (++xc != x2);
-	} while (++yc != y2);
+		}
+	}
 }
 
 // Get a list of the cargo types that are accepted around the tile.
-void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
+void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
+	int w, int h, int rad)
 {
 	int x,y;
 	int x1,y1,x2,y2;
@@ -577,33 +579,32 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 	x = TileX(tile);
 	y = TileY(tile);
 
-	// expand the region by 4 tiles on each side
+	// expand the region by rad tiles on each side
 	// while making sure that we remain inside the board.
 	x2 = min(x + w + rad, MapSizeX());
 	y2 = min(y + h + rad, MapSizeY());
-	x1 = max(x-rad, 0);
-	y1 = max(y-rad, 0);
+	x1 = max(x - rad, 0);
+	y1 = max(y - rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
 	assert(w > 0);
 	assert(h > 0);
 
-	yc = y1;
-	do {
-		xc = x1;
-		do {
-			uint tile = TILE_XY(xc, yc);
+	for (yc = y1; yc != y2; yc++) {
+		for (xc = x1; xc != x2; xc++) {
+			TileIndex tile = TILE_XY(xc, yc);
+
 			if (!IsTileType(tile, MP_STATION)) {
 				AcceptedCargo ac;
-				int i;
+				uint i;
 
 				GetAcceptedCargo(tile, ac);
-				for (i = 0; i < NUM_CARGO; ++i)
+				for (i = 0; i < lengthof(ac); ++i)
 					accepts[i] += ac[i];
 			}
-		} while (++xc != x2);
-	} while (++yc != y2);
+		}
+	}
 }
 
 typedef struct Rectangle {
@@ -690,7 +691,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	// Adjust in case our station only accepts fewer kinds of goods
-	for(i=0; i!=NUM_CARGO; i++) {
+	for (i = 0; i != NUM_CARGO; i++) {
 		uint amt = min(accepts[i], 15);
 
 		// Make sure the station can accept the goods type.
