@@ -929,9 +929,10 @@ static const Widget _player_roadveh_widgets[] = {
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
 {      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_883E_BUILD_NEW_TRAINS_REQUIRES},
+/* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
+{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
 {      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											STR_NULL},
 {   WIDGETS_END},
 };
@@ -951,7 +952,7 @@ static const Widget _other_player_roadveh_widgets[] = {
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
 {      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
