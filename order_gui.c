@@ -167,7 +167,7 @@ static void *FindVehicleCallb(Vehicle *v, FindVehS *f)
 	return v;
 }
 
-Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
+static Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
 {
 	FindVehS fs;
 	fs.tile = tile;

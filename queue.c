@@ -2,7 +2,7 @@
 #include "ttd.h"
 #include "queue.h"
 
-void Stack_Clear(Queue* q, bool free_values)
+static void Stack_Clear(Queue* q, bool free_values)
 {
 	uint i;
 	if (free_values)
@@ -11,7 +11,7 @@ void Stack_Clear(Queue* q, bool free_values)
 	q->data.stack.size = 0;
 }
 
-void Stack_Free(Queue* q, bool free_values)
+static void Stack_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
 	free(q->data.stack.elements);
@@ -19,14 +19,16 @@ void Stack_Free(Queue* q, bool free_values)
 		free(q);
 }
 
-bool Stack_Push(Queue* q, void* item, int priority) {
+static bool Stack_Push(Queue* q, void* item, int priority)
+{
 	if (q->data.stack.size == q->data.stack.max_size)
 		return false;
 	q->data.stack.elements[q->data.stack.size++] = item;
 	return true;
 }
 
-void* Stack_Pop(Queue* q) {
+static void* Stack_Pop(Queue* q)
+{
 	void* result;
 	if (q->data.stack.size == 0)
 		return NULL;
@@ -35,12 +37,13 @@ void* Stack_Pop(Queue* q) {
 	return result;
 }
 
-bool Stack_Delete(Queue* q, void* item, int priority)
+static bool Stack_Delete(Queue* q, void* item, int priority)
 {
 	return false;
 }
 
-Queue* init_stack(Queue* q, uint max_size) {
+static Queue* init_stack(Queue* q, uint max_size)
+{
 	q->push = Stack_Push;
 	q->pop = Stack_Pop;
 	q->del = Stack_Delete;
@@ -65,7 +68,7 @@ Queue* new_Stack(uint max_size)
  * Fifo
  */
 
-void Fifo_Clear(Queue* q, bool free_values)
+static void Fifo_Clear(Queue* q, bool free_values)
 {
 	uint head, tail;
 	if (free_values) {
@@ -79,7 +82,7 @@ void Fifo_Clear(Queue* q, bool free_values)
 	q->data.fifo.head = q->data.fifo.tail = 0;
 }
 
-void Fifo_Free(Queue* q, bool free_values)
+static void Fifo_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
 	free(q->data.fifo.elements);
@@ -87,7 +90,8 @@ void Fifo_Free(Queue* q, bool free_values)
 		free(q);
 }
 
-bool Fifo_Push(Queue* q, void* item, int priority) {
+static bool Fifo_Push(Queue* q, void* item, int priority)
+{
 	uint next = (q->data.fifo.head + 1) % q->data.fifo.max_size;
 	if (next == q->data.fifo.tail)
 		return false;
@@ -98,7 +102,8 @@ bool Fifo_Push(Queue* q, void* item, int priority) {
 	return true;
 }
 
-void* Fifo_Pop(Queue* q) {
+static void* Fifo_Pop(Queue* q)
+{
 	void* result;
 	if (q->data.fifo.head == q->data.fifo.tail)
 		return NULL;
@@ -109,12 +114,13 @@ void* Fifo_Pop(Queue* q) {
 	return result;
 }
 
-bool Fifo_Delete(Queue* q, void* item, int priority)
+static bool Fifo_Delete(Queue* q, void* item, int priority)
 {
 	return false;
 }
 
-Queue* init_fifo(Queue* q, uint max_size) {
+static Queue* init_fifo(Queue* q, uint max_size)
+{
 	q->push = Fifo_Push;
 	q->pop = Fifo_Pop;
 	q->del = Fifo_Delete;
@@ -141,7 +147,8 @@ Queue* new_Fifo(uint max_size)
  * Insertion Sorter
  */
 
-void InsSort_Clear(Queue* q, bool free_values) {
+static void InsSort_Clear(Queue* q, bool free_values)
+{
 	InsSortNode* node = q->data.inssort.first;
 	InsSortNode* prev;
 	while (node != NULL) {
@@ -155,14 +162,15 @@ void InsSort_Clear(Queue* q, bool free_values) {
 	q->data.inssort.first = NULL;
 }
 
-void InsSort_Free(Queue* q, bool free_values)
+static void InsSort_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
 	if (q->freeq)
 		free(q);
 }
 
-bool InsSort_Push(Queue* q, void* item, int priority) {
+static bool InsSort_Push(Queue* q, void* item, int priority)
+{
 	InsSortNode* newnode = malloc(sizeof(InsSortNode));
 	if (newnode == NULL) return false;
 	newnode->item = item;
@@ -184,7 +192,8 @@ bool InsSort_Push(Queue* q, void* item, int priority) {
 	return true;
 }
 
-void* InsSort_Pop(Queue* q) {
+static void* InsSort_Pop(Queue* q)
+{
 	InsSortNode* node = q->data.inssort.first;
 	void* result;
 	if (node == NULL)
@@ -197,7 +206,7 @@ void* InsSort_Pop(Queue* q) {
 	return result;
 }
 
-bool InsSort_Delete(Queue* q, void* item, int priority)
+static bool InsSort_Delete(Queue* q, void* item, int priority)
 {
 	return false;
 }
@@ -235,7 +244,7 @@ Queue* new_InsSort(void)
 //  q->data.binaryheap.elements[i-1] every time, we use this define.
 #define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i)-1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i)-1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
-void BinaryHeap_Clear(Queue* q, bool free_values)
+static void BinaryHeap_Clear(Queue* q, bool free_values)
 {
 	/* Free all items if needed and free all but the first blocks of
 	 * memory */
@@ -264,7 +273,7 @@ void BinaryHeap_Clear(Queue* q, bool free_values)
 	q->data.binaryheap.blocks = 1;
 }
 
-void BinaryHeap_Free(Queue* q, bool free_values)
+static void BinaryHeap_Free(Queue* q, bool free_values)
 {
 	uint i;
 	q->clear(q, free_values);
@@ -277,7 +286,8 @@ void BinaryHeap_Free(Queue* q, bool free_values)
 		free(q);
 }
 
-bool BinaryHeap_Push(Queue* q, void* item, int priority) {
+static bool BinaryHeap_Push(Queue* q, void* item, int priority)
+{
 	#ifdef QUEUE_DEBUG
 			printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->data.binaryheap.size);
 	#endif
@@ -325,7 +335,7 @@ bool BinaryHeap_Push(Queue* q, void* item, int priority) {
 	return true;
 }
 
-bool BinaryHeap_Delete(Queue* q, void* item, int priority)
+static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 {
 	#ifdef QUEUE_DEBUG
 			printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->data.binaryheap.size);
@@ -381,7 +391,8 @@ bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 	return true;
 }
 
-void* BinaryHeap_Pop(Queue* q) {
+static void* BinaryHeap_Pop(Queue* q)
+{
 	#ifdef QUEUE_DEBUG
 			printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->data.binaryheap.size);
 	#endif
@@ -523,7 +534,8 @@ void clear_Hash(Hash* h, bool free_values)
  * bucket, or NULL if it is empty. prev can also be NULL, in which case it is
  * not used for output.
  */
-HashNode* Hash_FindNode(Hash* h, uint key1, uint key2, HashNode** prev_out) {
+static HashNode* Hash_FindNode(Hash* h, uint key1, uint key2, HashNode** prev_out)
+{
 	uint hash = h->hash(key1, key2);
 	HashNode* result = NULL;
 	#ifdef HASH_DEBUG

@@ -9,7 +9,7 @@
 
 extern void UpdateNetworkGameWindow(bool unselect);
 
-void NetworkGameListClear(void)
+static void NetworkGameListClear(void)
 {
 	NetworkGameList *item;
 	NetworkGameList *next;
@@ -92,7 +92,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 	}
 }
 
-void NetworkGameListAddQueriedItem(const NetworkGameInfo *info, bool server_online)
+static void NetworkGameListAddQueriedItem(const NetworkGameInfo *info, bool server_online)
 {
 	// We queried a server and now we are going to add it to the list
 	NetworkGameList *item;

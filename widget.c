@@ -478,7 +478,7 @@ static int GetDropdownItem(Window *w)
 	return item;
 }
 
-void DropdownMenuWndProc(Window *w, WindowEvent *e)
+static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 {
 	int item;
 

@@ -182,7 +182,7 @@ uint NetworkCalculateLag(const NetworkClientState *cs)
 
 // There was a non-recoverable error, drop back to the main menu with a nice
 //  error
-void NetworkError(StringID error_string)
+static void NetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
 	_switch_mode_errorstr = error_string;

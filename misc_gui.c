@@ -1514,7 +1514,7 @@ static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 }
 
 // p1 -1 or +1 (down/up)
-int32 ClickChangeClimateCheat(int32 p1, int32 p2)
+static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
 	if(p1==-1) p1 = 3;
 	if(p1==4) p1 = 0;
@@ -1527,7 +1527,7 @@ int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 extern void EnginesMonthlyLoop(void);
 
 // p2 1 (increase) or -1 (decrease)
-int32 ClickChangeDateCheat(int32 p1, int32 p2)
+static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 {
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, _date);

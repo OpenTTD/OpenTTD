@@ -649,7 +649,7 @@ typedef struct RoadVehFindData {
 	byte dir;
 } RoadVehFindData;
 
-void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
+static void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
 {
 	static const short _dists[] = {
 		-4, -8, -4, -1, 4, 8, 4, 1,
@@ -801,7 +801,7 @@ typedef struct OvertakeData {
 	byte tilebits;
 } OvertakeData;
 
-void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
+static void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
 {
 	if (v->tile != (TileIndex)od->tile ||
 			v->type != VEH_Road ||

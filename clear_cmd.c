@@ -413,7 +413,8 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-int32 ClearTile_Clear(uint tile, byte flags) {
+static int32 ClearTile_Clear(uint tile, byte flags)
+{
 	static const int32 * _clear_price_table[] = {
 			NULL,
 			&_price.clear_1, &_price.clear_1,&_price.clear_1,
@@ -523,9 +524,12 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawClearLandFence(ti, _map3_hi[ti->tile] >> 2);
 }
 
-uint GetSlopeZ_Clear(TileInfo *ti) { return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z; }
+static uint GetSlopeZ_Clear(TileInfo *ti)
+{
+	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+}
 
-uint GetSlopeTileh_Clear(TileInfo *ti)
+static uint GetSlopeTileh_Clear(TileInfo *ti)
 {
 	return ti->tileh;
 }

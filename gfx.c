@@ -290,7 +290,8 @@ void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color)
 	GfxFillRect(x-(w>>1), y+10, x-(w>>1)+w, y+10, _string_colorremap[1]);
 }
 
-uint32 FormatStringLinebreaks(byte *str, int maxw) {
+static uint32 FormatStringLinebreaks(byte *str, int maxw)
+{
 	int num = 0;
 	int base = _stringwidth_base;
 	int w;

@@ -211,7 +211,7 @@ void ttd_strlcpy(char *dst, const char *src, size_t len)
 	*dst = 0;
 }
 
-char *strecpy(char *dst, const char *src)
+static char *strecpy(char *dst, const char *src)
 {
 	while ( (*dst++ = *src++) != 0) {}
 	return dst - 1;
@@ -469,7 +469,7 @@ void SetDebugString(const char *s)
 	}
 }
 
-void ParseResolution(int res[2], char *s)
+static void ParseResolution(int res[2], char *s)
 {
 	char *t = strchr(s, 'x');
 	if (t == NULL) {
@@ -513,7 +513,7 @@ static void UnInitializeDynamicVariables(void)
 }
 
 
-void LoadIntroGame(void)
+static void LoadIntroGame(void)
 {
 	char filename[256];
 	_game_mode = GM_MENU;
@@ -776,7 +776,7 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-void MakeNewGame(void)
+static void MakeNewGame(void)
 {
 	_game_mode = GM_NORMAL;
 
@@ -834,7 +834,7 @@ static void MakeNewEditorWorld(void)
 void StartupPlayers(void);
 void StartupDisasters(void);
 
-void StartScenario(void)
+static void StartScenario(void)
 {
 	_game_mode = GM_NORMAL;
 
@@ -1190,7 +1190,7 @@ void BeforeSaveGame(void)
 	}
 }
 
-void ConvertTownOwner(void)
+static void ConvertTownOwner(void)
 {
 	uint tile;
 
@@ -1209,7 +1209,7 @@ void ConvertTownOwner(void)
 }
 
 // before savegame version 4, the name of the company determined if it existed
-void CheckIsPlayerActive(void)
+static void CheckIsPlayerActive(void)
 {
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
@@ -1220,7 +1220,7 @@ void CheckIsPlayerActive(void)
 }
 
 // since savegame version 4.1, exclusive transport rights are stored at towns
-void UpdateExclusiveRights(void)
+static void UpdateExclusiveRights(void)
 {
 	Town *t;
 	FOR_ALL_TOWNS(t) if (t->xy != 0) {
@@ -1245,14 +1245,14 @@ byte convert_currency[] = {
 	18,  2, 20, };
 
 // since savegame version 4.2 the currencies are arranged differently
-void UpdateCurrencies(void)
+static void UpdateCurrencies(void)
 {
 	_opt.currency = convert_currency[_opt.currency];
 }
 
 // up to revision 1413, the invisible tiles at the southern border have not been MP_VOID
 // even though they should have. This is fixed by this function
-void UpdateVoidTiles(void)
+static void UpdateVoidTiles(void)
 {
 	uint i;
 	// create void tiles on the border

@@ -19,13 +19,15 @@
 #include "aystar.h"
 // This looks in the Hash if a node exists in ClosedList
 //  If so, it returns the PathNode, else NULL
-PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, AyStarNode *node) {
+static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, AyStarNode *node)
+{
 	return (PathNode*)Hash_Get(&aystar->ClosedListHash, node->tile, node->direction);
 }
 
 // This adds a node to the ClosedList
 //  It makes a copy of the data
-void AyStarMain_ClosedList_Add(AyStar *aystar, PathNode *node) {
+static void AyStarMain_ClosedList_Add(AyStar *aystar, PathNode *node)
+{
 	// Add a node to the ClosedList
 	PathNode *new_node = malloc(sizeof(PathNode));
 	*new_node = *node;
@@ -34,14 +36,16 @@ void AyStarMain_ClosedList_Add(AyStar *aystar, PathNode *node) {
 
 // Checks if a node is in the OpenList
 //   If so, it returns the OpenListNode, else NULL
-OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, AyStarNode *node) {
+static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, AyStarNode *node)
+{
 	return (OpenListNode*)Hash_Get(&aystar->OpenListHash, node->tile, node->direction);
 }
 
 // Gets the best node from OpenList
 //  returns the best node, or NULL of none is found
 // Also it deletes the node from the OpenList
-OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar) {
+static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
+{
 	// Return the item the Queue returns.. the best next OpenList item.
 	OpenListNode* res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
 	if (res != NULL)
@@ -52,7 +56,8 @@ OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar) {
 
 // Adds a node to the OpenList
 //  It makes a copy of node, and puts the pointer of parent in the struct
-void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode *node, int f, int g, int userdata) {
+static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode *node, int f, int g, int userdata)
+{
 	// Add a new Node to the OpenList
 	OpenListNode* new_node = malloc(sizeof(OpenListNode));
 	new_node->g = g;

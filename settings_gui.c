@@ -517,7 +517,7 @@ void ShowGameDifficulty(void)
 }
 
 // virtual PositionMainToolbar function, calls the right one.
-int32 v_PositionMainToolbar(int32 p1)
+static int32 v_PositionMainToolbar(int32 p1)
 {
 	if (_game_mode != GM_MENU)
 		PositionMainToolbar(NULL);
@@ -525,7 +525,7 @@ int32 v_PositionMainToolbar(int32 p1)
 	return 0;
 }
 
-int32 AiNew_PatchActive_Warning(int32 p1)
+static int32 AiNew_PatchActive_Warning(int32 p1)
 {
   if (p1 == 1)
     ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
@@ -533,7 +533,7 @@ int32 AiNew_PatchActive_Warning(int32 p1)
   return 0;
 }
 
-int32 PopulationInLabelActive(int32 p1)
+static int32 PopulationInLabelActive(int32 p1)
 {
 	Town *t;
 
@@ -546,20 +546,20 @@ int32 PopulationInLabelActive(int32 p1)
 	return 0;
 }
 
-int32 InvisibleTreesActive(int32 p1)
+static int32 InvisibleTreesActive(int32 p1)
 {
 	MarkWholeScreenDirty();
 	return 0;
 }
 
-int32 InValidateDetailsWindow(int32 p1)
+static int32 InValidateDetailsWindow(int32 p1)
 {
 	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
 	return 0;
 }
 
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
-int32 CheckInterval(int32 p1)
+static int32 CheckInterval(int32 p1)
 {
 	bool warning;
 	if (p1) {

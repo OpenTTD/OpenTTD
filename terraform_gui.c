@@ -61,7 +61,7 @@ void PlaceProc_LevelLand(uint tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | (2<<4));
 }
 
-void PlaceProc_PlantTree(uint tile)
+static void PlaceProc_PlantTree(uint tile)
 {
 }
 

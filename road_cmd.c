@@ -20,7 +20,7 @@ static bool _road_special_gettrackstatus;
 void RoadVehEnterDepot(Vehicle *v);
 
 
-bool HasTileRoadAt(uint tile, int i)
+static bool HasTileRoadAt(uint tile, int i)
 {
 	int mask;
 	byte b;
@@ -886,7 +886,7 @@ static uint GetSlopeZ_Road(TileInfo *ti)
 	return z; // normal Z if no slope
 }
 
-uint GetSlopeTileh_Road(TileInfo *ti)
+static uint GetSlopeTileh_Road(TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {

@@ -8,7 +8,8 @@
 
 // Tests if a station can be build on the given spot
 // TODO: make it train compatible
-bool TestCanBuildStationHere(uint tile, byte dir) {
+static bool TestCanBuildStationHere(uint tile, byte dir)
+{
     Player *p = DEREF_PLAYER(_current_player);
     if (dir == TEST_STATION_NO_DIR) {
         // TODO: currently we only allow spots that can be access from al 4 directions...
@@ -46,7 +47,8 @@ static bool IsRoad(TileIndex tile)
 #define TILES_BETWEEN(a, b, c) (TileX(a) >= TileX(b) && TileX(a) <= TileX(c) && TileY(a) >= TileY(b) && TileY(a) <= TileY(c))
 
 // Check if the current tile is in our end-area
-int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current) {
+static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current)
+{
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	// It is not allowed to have a station on the end of a bridge or tunnel ;)
 	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
@@ -60,12 +62,14 @@ int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current) {
 
 // Calculates the hash
 //   Currently it is a 10 bit hash, so the hash array has a max depth of 6 bits (so 64)
-uint AiPathFinder_Hash(uint key1, uint key2) {
+static uint AiPathFinder_Hash(uint key1, uint key2)
+{
 	return (TileX(key1) & 0x1F) + ((TileY(key1) & 0x1F) << 5);
 }
 
 // Clear the memory of all the things
-void AyStar_AiPathFinder_Free(AyStar *aystar) {
+static void AyStar_AiPathFinder_Free(AyStar *aystar)
+{
 	AyStarMain_Free(aystar);
 	free(aystar);
 }

@@ -532,7 +532,8 @@ static bool IsGoodAutoPlace2(int left, int top)
 	return true;
 }
 
-Point GetAutoPlacePosition(int width, int height) {
+static Point GetAutoPlacePosition(int width, int height)
+{
 	Window *w;
 	Point pt;
 
@@ -778,7 +779,7 @@ static bool HandlePopupMenu(void)
 	return false;
 }
 
-bool HandleMouseOver(void)
+static bool HandleMouseOver(void)
 {
 	Window *w;
 	WindowEvent e;
@@ -811,7 +812,7 @@ bool HandleMouseOver(void)
 	return true;
 }
 
-bool HandleWindowDragging(void)
+static bool HandleWindowDragging(void)
 {
 	Window *w;
 	// Get out immediately if no window is being dragged at all.

@@ -590,7 +590,8 @@ _iconsole_alias* IConsoleAliasGet(const char* name)
 	return NULL;
 }
 
-void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20]) {
+static void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20])
+{
 	char* lines[ICON_MAX_ALIAS_LINES];
 	char* linestream;
 	char* linestream_s;

@@ -2017,7 +2017,7 @@ static uint GetSlopeZ_Track(TileInfo *ti)
 	return z;
 }
 
-uint GetSlopeTileh_Track(TileInfo *ti)
+static uint GetSlopeTileh_Track(TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {

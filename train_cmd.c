@@ -1997,7 +1997,7 @@ typedef struct TrainCollideChecker {
 
 } TrainCollideChecker;
 
-void *FindTrainCollideEnum(Vehicle *v, TrainCollideChecker *tcc)
+static void *FindTrainCollideEnum(Vehicle *v, TrainCollideChecker *tcc)
 {
 	if (v == tcc->v || v == tcc->v_skip || v->type != VEH_Train || v->u.rail.track==0x80)
 		return 0;
@@ -2621,7 +2621,7 @@ void Train_Tick(Vehicle *v)
 static const byte _depot_track_ind[4] = {0,1,0,1};
 
 // Validation for the news item "Train is waiting in depot"
-bool ValidateTrainInDepot( uint data_a, uint data_b )
+static bool ValidateTrainInDepot( uint data_a, uint data_b )
 {
 	Vehicle *v = GetVehicle(data_a);
 	return  (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED));

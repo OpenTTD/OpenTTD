@@ -200,7 +200,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 // returns the correct index in the array
 // (to deal with overflows)
-byte increaseIndex(byte i)
+static byte increaseIndex(byte i)
 {
 	if (i == INVALID_NEWS)
 		return 0;
@@ -451,7 +451,7 @@ void NewsLoop(void)
 }
 
 /* Do a forced show of a specific message */
-void ShowNewsMessage(byte i)
+static void ShowNewsMessage(byte i)
 {
 	if (_total_news == 0) return;
 

@@ -1167,7 +1167,7 @@ DEF_CONSOLE_CMD(ConSet) {
 /*  debug commands and variables */
 /* ****************************************** */
 
-void IConsoleDebugLibRegister(void)
+static void IConsoleDebugLibRegister(void)
 {
 	// debugging variables and functions
 	extern bool _stdlib_con_developer; /* XXX extern in .c */

@@ -10,7 +10,7 @@
 #include "news.h"
 
 
-StringID GetEngineCategoryName(byte engine)
+static StringID GetEngineCategoryName(byte engine)
 {
 	if (engine < NUM_TRAIN_ENGINES) {
 		switch (_engines[engine].railtype) {

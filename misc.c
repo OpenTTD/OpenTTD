@@ -569,7 +569,7 @@ void OnNewDay_Train(Vehicle *v);
 void OnNewDay_RoadVeh(Vehicle *v);
 void OnNewDay_Aircraft(Vehicle *v);
 void OnNewDay_Ship(Vehicle *v);
-void OnNewDay_EffectVehicle(Vehicle *v) { /* empty */ }
+static void OnNewDay_EffectVehicle(Vehicle *v) { /* empty */ }
 void OnNewDay_DisasterVehicle(Vehicle *v);
 
 typedef void OnNewVehicleDayProc(Vehicle *v);

@@ -131,22 +131,22 @@ static uint SlGetGammaLength(uint i) {
 	return (i>=0x80) ? 2 : 1;
 }
 
-inline int SlReadSparseIndex(void)
+static inline int SlReadSparseIndex(void)
 {
 	return SlReadSimpleGamma();
 }
 
-inline void SlWriteSparseIndex(uint index)
+static inline void SlWriteSparseIndex(uint index)
 {
 	SlWriteSimpleGamma(index);
 }
 
-inline int SlReadArrayLength(void)
+static inline int SlReadArrayLength(void)
 {
 	return SlReadSimpleGamma();
 }
 
-inline void SlWriteArrayLength(uint length)
+static inline void SlWriteArrayLength(uint length)
 {
 	SlWriteSimpleGamma(length);
 }
@@ -241,7 +241,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 	}
 }
 
-void SlSkipBytes(size_t length)
+static void SlSkipBytes(size_t length)
 {
 	while (length) {
 		SlReadByte();
@@ -925,7 +925,7 @@ static uint ReferenceToInt(void *v, uint t)
 	return 0;
 }
 
-void *IntToReference(uint r, uint t)
+static void *IntToReference(uint r, uint t)
 {
 	/* From version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE, and should be loaded
 	    like that */

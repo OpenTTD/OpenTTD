@@ -114,7 +114,7 @@ void NetworkSend_Packet(Packet *packet, NetworkClientState *cs)
 //  this handles what to do.
 // For clients: close connection and drop back to main-menu
 // For servers: close connection and that is it
-NetworkRecvStatus CloseConnection(NetworkClientState *cs)
+static NetworkRecvStatus CloseConnection(NetworkClientState *cs)
 {
 	NetworkCloseClient(cs);
 

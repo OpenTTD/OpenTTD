@@ -902,7 +902,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 
 
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
-uint GetBridgeHeight(const TileInfo *ti)
+static uint GetBridgeHeight(const TileInfo *ti)
 {
 	uint delta;
 	TileInfo ti_end;

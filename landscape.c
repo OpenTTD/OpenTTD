@@ -234,7 +234,7 @@ uint GetSlopeZ(int x,  int y)
 
 // direction=true:  check for foundation in east and south corner
 // direction=false: check for foundation in west and south corner
-bool hasFoundation(TileInfo *ti, bool direction)
+static bool hasFoundation(TileInfo *ti, bool direction)
 {
 	bool south, other; // southern corner and east/west corner
 	uint slope = _tile_type_procs[ti->type]->get_slope_tileh_proc(ti);

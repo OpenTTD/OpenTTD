@@ -266,7 +266,8 @@ ViewPort *IsPtInWindowViewport(Window *w, int x, int y)
 	return NULL;
 }
 
-Point TranslateXYToTileCoord(ViewPort *vp, int x, int y) {
+static Point TranslateXYToTileCoord(ViewPort *vp, int x, int y)
+{
 	int z;
 	Point pt;
 	int a,b;
@@ -1682,7 +1683,7 @@ void HandleClickOnTrain(Vehicle *v);
 void HandleClickOnRoadVeh(Vehicle *v);
 void HandleClickOnAircraft(Vehicle *v);
 void HandleClickOnShip(Vehicle *v);
-void HandleClickOnSpecialVeh(Vehicle *v) {}
+static void HandleClickOnSpecialVeh(Vehicle *v) {}
 void HandleClickOnDisasterVeh(Vehicle *v);
 typedef void OnVehicleClickProc(Vehicle *v);
 static OnVehicleClickProc * const _on_vehicle_click_proc[6] = {
