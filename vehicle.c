@@ -598,7 +598,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 	uint32 full = 0, not_full = 0;
 
 	//special handling of aircraft
-	
+
 	//if the aircraft carries passengers and is NOT full, then
 	//continue loading, no matter how much mail is in
 	if ((v->type == VEH_Aircraft) && (v->cargo_type == CT_PASSENGERS) && (v->cargo_cap != v->cargo_count)) {
@@ -1507,7 +1507,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if it is a multiheaded engine (rear engine)
 				(rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) is true if the engine is heading the other way, otherwise 0*/
 				v->spritenum = rvi->image_index + (( rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
-				
+
 				// turn the last engine in a multiheaded train if needed
 				if ( v->next == NULL && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
 					v->spritenum++;
@@ -2023,10 +2023,6 @@ static void Save_VEHS()
 	// Write the vehicles
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0) {
-			/* XXX - Here for now, because we did not bump the savegame to version 5 yet */
-			if (_sl.version < 5 && v->last_station_visited == 0xFFFF)
-				v->last_station_visited = 0xFF;
-
 			SlSetArrayIndex(v->index);
 			SlObject(v, _veh_descs[v->type - 0x10]);
 		}
@@ -2128,7 +2124,7 @@ static void Load_CHKP()
 
 static void Save_ORDR()
 {
-	uint16 orders[lengthof(_order_array)];
+	uint32 orders[lengthof(_order_array)];
 	uint len = _ptr_to_next_order - _order_array;
 	uint i;
 
@@ -2137,22 +2133,38 @@ static void Save_ORDR()
 	for (i = 0; i < len; ++i)
 		orders[i] = PackOrder(&_order_array[i]);
 
-	SlArray(orders, len, SLE_UINT16);
+	SlArray(orders, len, SLE_UINT32);
 }
 
 static void Load_ORDR()
 {
-	uint16 orders[lengthof(_order_array)];
-	uint len = SlGetFieldLength() >> 1;
+	uint len = SlGetFieldLength();
 	uint i;
 
-	assert (len <= lengthof(orders));
+	if (_sl.version < 5) {
+		/* Older version had an other layout for orders.. convert them correctly */
+		uint16 orders[lengthof(_order_array)];
+
+		len /= sizeof(uint16);
+		assert (len <= lengthof(orders));
+
+		SlArray(orders, len, SLE_UINT16);
+
+		for (i = 0; i < len; ++i)
+			_order_array[i] = UnpackVersion4Order(orders[i]);
+	} else {
+		uint32 orders[lengthof(_order_array)];
+
+		len /= sizeof(uint32);
+		assert (len <= lengthof(orders));
+
+		SlArray(orders, len, SLE_UINT32);
+
+		for (i = 0; i < len; ++i)
+			_order_array[i] = UnpackOrder(orders[i]);
+	}
 
 	_ptr_to_next_order = _order_array + len;
-	SlArray(orders, len, SLE_UINT16);
-
-	for (i = 0; i < len; ++i)
-		_order_array[i] = UnpackOrder(orders[i]);
 }
 
 const ChunkHandler _veh_chunk_handlers[] = {
