@@ -480,19 +480,20 @@ void RunTileLoop()
 
 void InitializeLandscape()
 {
+	uint map_size = MapSize();
 	int i;
 
-	memset(_map_owner, OWNER_NONE, sizeof(_map_owner));
-	memset(_map2, 0, sizeof(_map2));
-	memset(_map3_lo, 0, sizeof(_map3_lo));
-	memset(_map3_hi, 0, sizeof(_map3_hi));
-	memset(_map_extra_bits, 0, sizeof(_map_extra_bits));
-	memset(_map_type_and_height, MP_WATER << 4, sizeof(_map_type_and_height));
+	memset(_map_owner, OWNER_NONE, map_size);
+	memset(_map2, 0, map_size);
+	memset(_map3_lo, 0, map_size);
+	memset(_map3_hi, 0, map_size);
+	memset(_map_extra_bits, 0, map_size / 4);
+	memset(_map_type_and_height, MP_WATER << 4, map_size);
 
 	for(i=0; i!=TILES_Y-1; i++)
 		memset(_map_type_and_height + i*TILES_X, 0, TILES_X-1);
 
-	memset(_map5, 3, sizeof(_map5));
+	memset(_map5, 3, map_size);
 }
 
 void ConvertGroundTilesIntoWaterTiles()

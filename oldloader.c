@@ -1356,6 +1356,7 @@ bool LoadOldSaveGame(const char *file)
 {
 	LoadSavegameState lss;
 	OldMain *m;
+	uint map_size;
 	int i;
 
 	_cur_state = &lss;
@@ -1380,18 +1381,20 @@ bool LoadOldSaveGame(const char *file)
 	#endif
 
 	// copy sections of it to our datastructures.
-	memcpy(_map_owner, m->map_owner, sizeof(_map_owner));
-	memcpy(_map2, m->map2, sizeof(_map2));
-	memcpy(_map_type_and_height, m->map_type_and_height, sizeof(_map_type_and_height));
-	memcpy(_map5, m->map5, sizeof(_map5));
-	for(i=0; i!=256*256; i++) {
+	fprintf(stderr, "moo\n");
+	map_size = MapSize();
+	memcpy(_map_owner, m->map_owner, map_size);
+	memcpy(_map2, m->map2, map_size);
+	memcpy(_map_type_and_height, m->map_type_and_height, map_size);
+	memcpy(_map5, m->map5, map_size);
+	for (i = 0; i != map_size; i++) {
 		_map3_lo[i] = m->map3[i] & 0xFF;
 		_map3_hi[i] = m->map3[i] >> 8;
 	}
-	memcpy(_map_extra_bits, m->map_extra, sizeof(_map_extra_bits));
+	memcpy(_map_extra_bits, m->map_extra, map_size / 4);
 
 	// go through the tables and see if we can find any ttdpatch presignals. Then convert those to our format.
-	for(i=0; i!=256*256; i++) {
+	for (i = 0; i != map_size; i++) {
 		if (IS_TILETYPE(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
 			// this byte is always zero in real ttd.
 			if (_map3_hi[i]) {
@@ -1456,7 +1459,8 @@ bool LoadOldSaveGame(const char *file)
 	_economy.infl_amount = m->inflation_amount;
 	_economy.infl_amount_pr = m->inflation_amount_payment_rates;
 
-	memcpy(_animated_tile_list, m->animated_tile_list, sizeof(m->animated_tile_list));
+	for (i = 0; i != lengthof(m->animated_tile_list); ++i)
+		_animated_tile_list[i] = m->animated_tile_list[i];
 	memcpy(_engine_name_strings, m->engine_name_strings, sizeof(m->engine_name_strings));
 
 	for(i=0; i!=lengthof(m->prices); i++) {

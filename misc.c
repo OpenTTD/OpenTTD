@@ -826,31 +826,31 @@ static void SaveLoad_VIEW()
 }
 
 static void SaveLoad_MAPT() {
-  SlArray(_map_type_and_height, lengthof(_map_type_and_height), SLE_UINT8);
+  SlArray(_map_type_and_height, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_MAP2() {
-  SlArray(_map2, lengthof(_map2), SLE_UINT8);
+  SlArray(_map2, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_M3LO() {
-  SlArray(_map3_lo, lengthof(_map3_lo), SLE_UINT8);
+  SlArray(_map3_lo, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_M3HI() {
-  SlArray(_map3_hi, lengthof(_map3_hi), SLE_UINT8);
+  SlArray(_map3_hi, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_MAPO() {
-  SlArray(_map_owner, lengthof(_map_owner), SLE_UINT8);
+  SlArray(_map_owner, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_MAP5() {
-  SlArray(_map5, lengthof(_map5), SLE_UINT8);
+  SlArray(_map5, MapSize(), SLE_UINT8);
 }
 
 static void SaveLoad_MAPE() {
-  SlArray(_map_extra_bits, lengthof(_map_extra_bits), SLE_UINT8);
+  SlArray(_map_extra_bits, MapSize() / 4, SLE_UINT8);
 }
 
 

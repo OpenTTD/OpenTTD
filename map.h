@@ -10,13 +10,13 @@
 #define TILE_X_MAX (TILES_X - 1)
 #define TILE_Y_MAX (TILES_Y - 1)
 
-extern byte _map_type_and_height[TILES_X * TILES_Y];
-extern byte _map5[TILES_X * TILES_Y];
-extern byte _map3_lo[TILES_X * TILES_Y];
-extern byte _map3_hi[TILES_X * TILES_Y];
-extern byte _map_owner[TILES_X * TILES_Y];
-extern byte _map2[TILES_X * TILES_Y];
-extern byte _map_extra_bits[TILES_X * TILES_Y / 4];
+extern byte _map_type_and_height[];
+extern byte _map5[];
+extern byte _map3_lo[];
+extern byte _map3_hi[];
+extern byte _map_owner[];
+extern byte _map2[];
+extern byte _map_extra_bits[];
 
 // binary logarithm of the map size, try to avoid using this one
 static inline uint MapLogX(void)  { extern uint _map_log_x; return _map_log_x; }
