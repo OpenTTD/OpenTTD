@@ -450,17 +450,30 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 	if (dynamic_subst) {
 		strcat(buf, name_czech_subst_stem[stem].name);
 		if (postfix < (int) lengthof(name_czech_subst_postfix)) {
+			const char *poststr = name_czech_subst_postfix[postfix];
+			const char *endstr = name_czech_subst_ending[ending].name;
 			int postlen, endlen;
 
-			postlen = strlen(name_czech_subst_postfix[postfix]);
-			endlen = strlen(name_czech_subst_ending[ending].name);
+			postlen = strlen(poststr);
+			endlen = strlen(endstr);
+			assert(postlen > 0 && endlen > 0);
+
 			// Kill the "avava" and "Jananna"-like cases
-			if (2 > postlen || postlen > endlen
-			    || (name_czech_subst_postfix[postfix][1]
-			           != name_czech_subst_ending[ending].name[1]
-			        && name_czech_subst_postfix[postfix][2]
-			           != name_czech_subst_ending[ending].name[1]))
-				strcat(buf, name_czech_subst_postfix[postfix]);
+			if (postlen < 2 || postlen > endlen
+			    || ((poststr[1] != 'v' || poststr[1] != endstr[1])
+			        && poststr[2] != endstr[1])) {
+				int buflen;
+				strcat(buf, poststr);
+				buflen = strlen(buf);
+
+				// k-i -> c-i, h-i -> z-i
+				if (endstr[0] == 'i') {
+					if (buf[buflen - 1] == 'k')
+						buf[buflen - 1] = 'c';
+					else if (buf[buflen - 1] == 'h')
+						buf[buflen - 1] = 'z';
+				}
+			}
 		}
 		strcat(buf, name_czech_subst_ending[ending].name);
 	} else {
