@@ -1920,7 +1920,7 @@ static void Load_ORDR()
 	SlArray(orders, len, SLE_UINT16);
 
 	for (i = 0; i < len; ++i)
-		_order_array[i] = UnpackOldOrder(orders[i]);
+		_order_array[i] = UnpackOrder(orders[i]);
 }
 
 const ChunkHandler _veh_chunk_handlers[] = {
