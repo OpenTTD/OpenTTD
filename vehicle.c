@@ -30,10 +30,10 @@ static void *EnsureNoVehicleProc(Vehicle *v, void *data)
 {
 	if (v->tile != (TileIndex)(int)data || v->type == VEH_Disaster)
 		return NULL;
-	
-	VehicleInTheWayErrMsg(v);	
+
+	VehicleInTheWayErrMsg(v);
 	return (void*)1;
-} 
+}
 
 bool EnsureNoVehicle(TileIndex tile)
 {
@@ -169,7 +169,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 Vehicle *ForceAllocateSpecialVehicle()
 {
 	Vehicle *v;
-	for(v=_vehicles + NUM_NORMAL_VEHICLES; 
+	for(v=_vehicles + NUM_NORMAL_VEHICLES;
 			v!=&_vehicles[NUM_NORMAL_VEHICLES+NUM_SPECIAL_VEHICLES]; v++) {
 		if (v->type == 0)
 			return InitializeVehicle(v);
@@ -227,7 +227,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 			while (veh != INVALID_VEHICLE) {
 				Vehicle *v = &_vehicles[veh];
 				void *a;
-				
+
 				if ((a = proc(v, data)) != NULL)
 					return a;
 				veh = v->next_hash;
@@ -259,7 +259,7 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 
 	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x,y)];
 	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
-	
+
 	if (old_hash == new_hash)
 		return;
 
@@ -295,7 +295,7 @@ void InitializeVehicles()
 	memset(&_vehicles, 0, sizeof(_vehicles));
 	memset(&_checkpoints, 0, sizeof(_checkpoints));
 	memset(&_depots, 0, sizeof(_depots));
-	
+
 	// setup indexes..
 	i = 0;
 	FOR_ALL_VEHICLES(v)
@@ -334,7 +334,7 @@ Vehicle *GetFirstVehicleInChain(Vehicle *v)
 			if (++v == endof(_vehicles))
 				return u;
 		}
-	}	
+	}
 }
 
 int CountVehiclesInChain(Vehicle *v)
@@ -358,13 +358,13 @@ Depot *AllocateDepot()
 		}
 	}
 
-	if (free_dep == NULL || 
+	if (free_dep == NULL ||
 			(num_free < 30 && IS_HUMAN_PLAYER(_current_player))) {
 		_error_message = STR_1009_TOO_MANY_DEPOTS;
 		return NULL;
 	}
 
-	return free_dep;	
+	return free_dep;
 }
 
 Checkpoint *AllocateCheckpoint()
@@ -443,7 +443,7 @@ void DeleteCommandFromVehicleSchedule(uint cmd)
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0 && v->schedule_ptr != NULL) {
-			
+
 			// clear last station visited
 			if (v->last_station_visited == (cmd>>8) && (cmd & OT_MASK) == OT_GOTO_STATION)
 				v->last_station_visited = 0xFF;
@@ -459,7 +459,7 @@ void DeleteCommandFromVehicleSchedule(uint cmd)
 			sched = v->schedule_ptr;
 			while ((order=*sched++) != 0) {
 				if ( (order & (OT_MASK|0xFF00)) == cmd) {
-					sched[-1] = OT_DUMMY;		
+					sched[-1] = OT_DUMMY;
 					need_invalidate = true;
 				}
 			}
@@ -538,7 +538,7 @@ void CallVehicleTicks()
 static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 {
 	uint32 full = 0, not_full = 0;
-	
+
 	// patch should return "true" to continue loading, i.e. when there is no cargo type that is fully loaded.
 	do {
 		//Should never happen, but just in case future additions change this
@@ -559,7 +559,7 @@ bool CanFillVehicle(Vehicle *v)
 	byte *t = &_map_type_and_height[v->tile];
 
 	if (t[0] >> 4 == MP_STATION ||
-			(v->type == VEH_Ship && 
+			(v->type == VEH_Ship &&
 			(t[TILE_XY(1,0)] >> 4 == MP_STATION ||
 				t[TILE_XY(-1,0)] >> 4 == MP_STATION ||
 				t[TILE_XY(0,1)] >> 4 == MP_STATION ||
@@ -581,14 +581,14 @@ bool CanFillVehicle(Vehicle *v)
 static void DoDrawVehicle(Vehicle *v)
 {
 	uint32 image = v->cur_image;
-	
+
 	if (v->vehstatus & VS_DISASTER) {
 		image |= 0x3224000;
 	} else if (v->vehstatus & VS_DEFPAL) {
 		image |= (v->vehstatus & VS_CRASHED) ? 0x3248000 : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	} 
+	}
 
-	AddSortableSpriteToDraw(image, v->x_pos + v->x_offs, v->y_pos + v->y_offs, 
+	AddSortableSpriteToDraw(image, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
 		v->sprite_width, v->sprite_height, v->z_height, v->z_pos);
 }
 
@@ -610,12 +610,12 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 			veh = _vehicle_position_hash[ (x+y)&0xFFFF ];
 			while (veh != INVALID_VEHICLE) {
 				v = &_vehicles[veh];
-				
-				if (!(v->vehstatus & VS_HIDDEN) && 
+
+				if (!(v->vehstatus & VS_HIDDEN) &&
 						dpi->left <= v->right_coord &&
 						dpi->top <= v->bottom_coord &&
 						dpi->left + dpi->width >= v->left_coord &&
-						dpi->top + dpi->height >= v->top_coord) {				
+						dpi->top + dpi->height >= v->top_coord) {
 					DoDrawVehicle(v);
 				}
 				veh = v->next_hash;
@@ -647,7 +647,7 @@ static void EffectTick_0(Vehicle *v)
 
 	if (--v->progress & 0x80) {
 		BeginVehicleMove(v);
-		
+
 		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
 		if (!IS_TILETYPE(tile, MP_INDUSTRY)) {
 			EndVehicleMove(v);
@@ -673,11 +673,11 @@ static void EffectInit_1(Vehicle *v)
 static void EffectTick_1(Vehicle *v)
 {
 	bool moved;
-	
+
 	BeginVehicleMove(v);
-	
+
 	moved = false;
-	
+
 	if ((++v->progress & 7) == 0) {
 		v->z_pos++;
 		moved = true;
@@ -753,11 +753,11 @@ static void EffectInit_4(Vehicle *v)
 static void EffectTick_4(Vehicle *v)
 {
 	bool moved;
-	
+
 	BeginVehicleMove(v);
-	
+
 	moved = false;
-	
+
 	if ((++v->progress & 3) == 0) {
 		v->z_pos++;
 		moved = true;
@@ -1095,8 +1095,8 @@ again:
 		EndVehicleMove(v);
 		DeleteVehicle(v);
 		return;
-	} 
-	
+	}
+
 	if (*b == 0x81) {
 		if (v->z_pos > 180 || CHANCE16(1,96)) {
 			v->spritenum = 5;
@@ -1104,8 +1104,8 @@ again:
 		}
 		et = 0;
 		goto again;
-	} 
-	
+	}
+
 	if (*b == 0x82) {
 		uint tile;
 
@@ -1163,7 +1163,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 Vehicle *CreateEffectVehicle(int x, int y, int z, int type)
 {
 	Vehicle *v;
-	
+
 	v = ForceAllocateSpecialVehicle();
 	if (v != NULL) {
 		v->type = VEH_Special;
@@ -1213,10 +1213,10 @@ Vehicle *CheckClickOnVehicle(ViewPort *vp, int x, int y)
 	y = (y << vp->zoom) + vp->virtual_top;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0 && (v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 && 
+		if (v->type != 0 && (v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 &&
 				x >= v->left_coord && x <= v->right_coord &&
 				y >= v->top_coord && y <= v->bottom_coord) {
-			
+
 			dist = max(
 				myabs( ((v->left_coord + v->right_coord)>>1) - x ),
 				myabs( ((v->top_coord + v->bottom_coord)>>1) - y )
@@ -1275,7 +1275,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	/* calculate reliability value to use in comparison */
 	rel = v->reliability;
 	if (v->type == VEH_Ship) rel += 0x6666;
-	
+
 	/* disabled breakdowns? */
 	if (_opt.diff.vehicle_breakdowns < 1)
 		return;
@@ -1320,8 +1320,8 @@ void AgeVehicle(Vehicle *v)
 
 	age = v->age - v->max_age;
 	if (age == 366*0 || age == 366*1 || age == 366*2 || age == 366*3 || age == 366*4)
-		v->reliability_spd_dec <<= 1; 
-	
+		v->reliability_spd_dec <<= 1;
+
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	if (age == -366) {
@@ -1343,7 +1343,7 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 	//  It can be any value between -12 and 12.
 	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30))
 		return;
-		
+
 	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
 		if (v->owner == _local_player) {
 			int message;
@@ -1361,7 +1361,7 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 		}
 		return;
 	}
-	
+
 	// Withdraw the money from the right player ;)
 	_current_player = v->owner;
 
@@ -1376,7 +1376,7 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	SubtractMoneyFromPlayer(build_cost - v->value);
 	v->value = build_cost;
-	
+
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 }
 
@@ -1394,7 +1394,7 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	str = AllocateName((byte*)_decode_parameters, 2);
 	if (str == 0)
 		return CMD_ERROR;
-	
+
 	if (flags & DC_EXEC) {
 		StringID old_str = v->string_id;
 		v->string_id = str;
@@ -1490,10 +1490,10 @@ byte GetDirectionTowards(Vehicle *v, int x, int y)
  * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
  * other bits that can be set? */
 uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y)
-{	
+{
 	uint old_tile = v->tile;
 	uint32 result = _tile_type_procs[GET_TILETYPE(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
-	
+
 	/* When vehicle_enter_tile_proc returns 8, that apparently means that
 	 * we cannot enter the tile at all. In that case, don't call
 	 * leave_tile. */
@@ -1513,7 +1513,7 @@ uint GetFreeUnitNumber(byte type)
 restart:
 	unit_num++;
 	FOR_ALL_VEHICLES(u) {
-		if (u->type == type && u->owner == _current_player && 
+		if (u->type == type && u->owner == _current_player &&
 		    unit_num == u->unitnumber)
 					goto restart;
 	}
@@ -1524,7 +1524,7 @@ restart:
 // Save and load of vehicles
 const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
-		
+
 	SLE_VAR(Vehicle,next_in_chain_old, SLE_UINT16),
 	SLE_VAR(Vehicle,string_id,				SLE_STRINGID),
 	SLE_VAR(Vehicle,unitnumber,				SLE_UINT8),
@@ -1589,7 +1589,7 @@ const byte _common_veh_desc[] = {
 
 	// reserve extra space in savegame here. (currently 16 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
-	
+
 	SLE_END()
 };
 
@@ -1646,7 +1646,7 @@ static const byte _aircraft_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,pos),							SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,state),						SLE_UINT8),
-	
+
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,previous_pos),			SLE_UINT8, 2, 255),
 
 	// reserve extra space in savegame here. (currently 15 bytes)
@@ -1659,7 +1659,7 @@ static const byte _special_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Special, 4),
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
-		
+
 	SLE_VAR(Vehicle,tile,							SLE_UINT16),
 
 	SLE_VAR(Vehicle,x_pos,						SLE_INT16),

@@ -44,7 +44,7 @@ static void SkipToPrevSong()
 	// empty playlist
 	if (b[0] == 0)
 		return;
-	
+
 	// find the end
 	do p++; while (p[0] != 0);
 
@@ -132,7 +132,7 @@ static void PlayPlaylistSong()
 	_music_wnd_cursong = _cur_playlist[0];
 	DoPlaySong();
 	_song_is_active = true;
-	
+
 	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
 }
 
@@ -190,7 +190,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			DrawStringCentered(216, 45 + i*8, STR_01D5_ALL + i, (i==msf.playlist) ? 0xC : 0x10);
 		}
 
-		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0); 
+		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0);
 		DrawStringCentered(216, 45+8*6+16*2, STR_01F1_SAVE, 0);
 
 		y = 23;
@@ -203,7 +203,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	}
-	
+
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3: { /* add to playlist */
@@ -321,7 +321,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 
 
 		DrawString(60, 38, STR_01E8_TRACK_XTITLE, 0);
-		
+
 		for(i=0; i!=6; i++) {
 			DrawStringCentered(25+i*50, 59, STR_01D5_ALL+i, msf.playlist == i ? 0xC : 0x10);
 		}
@@ -336,14 +336,14 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		DrawFrameRect(108, 23, 174, 26, 14, 0x20);
 		DrawFrameRect(214, 23, 280, 26, 14, 0x20);
 
-		DrawFrameRect(108 + (msf.music_vol>>1), 
+		DrawFrameRect(108 + (msf.music_vol>>1),
 									22,
 									111 + (msf.music_vol>>1),
 									28,
 									14,
 									0);
 
-		DrawFrameRect(214 + (msf.effect_vol>>1), 
+		DrawFrameRect(214 + (msf.effect_vol>>1),
 									22,
 									217 + (msf.effect_vol>>1),
 									28,
@@ -371,7 +371,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 6:{ // volume sliders
 			byte *vol,new_vol;
-			int x = e->click.pt.x - 88; 
+			int x = e->click.pt.x - 88;
 
 			if (x < 0)
 				return;

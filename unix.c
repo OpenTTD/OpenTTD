@@ -44,7 +44,7 @@ int compare_FiosItems (const void *a, const void *b) {
 
 	if (_savegame_sort_order < 2) // sort by date
     r = da->mtime < db->mtime ? -1 : 1;
-	else	
+	else
 		r = strcmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
 
 	if (_savegame_sort_order & 1) r = -r;
@@ -71,7 +71,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		_fios_path = _fios_scn_path;
 	else
 		_fios_path = _fios_save_path;
-	
+
 	// Parent directory, only if not in root already.
 	if (_fios_path[1] != 0) {
 		fios = FiosAlloc();
@@ -263,11 +263,11 @@ char *FiosBrowseTo(const FiosItem *item)
 	case FIOS_TYPE_OLDFILE:
 		sprintf(str_buffr, "%s/%s.%s", _fios_path, item->name, _old_extensions[item->old_extension]);
 		return str_buffr;
-	
+
 	case FIOS_TYPE_SCENARIO:
 		sprintf(str_buffr, "%s/%s.scn", path, item->name);
 		return str_buffr;
-	
+
 	case FIOS_TYPE_OLD_SCENARIO:
 		sprintf(str_buffr, "%s/%s.%s", path, item->name, _old_extensions[item->old_extension]);
 		return str_buffr;
@@ -291,14 +291,14 @@ StringID FiosGetDescText(char **path)
 	{
 		uint64 tot = (uint64)s.f_bsize * s.f_bavail;
 		SET_DPARAM32(0, (uint32)(tot >> 20));
-		return STR_4005_BYTES_FREE; 
+		return STR_4005_BYTES_FREE;
 	}
 	else
 		return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
 #else
 	SET_DPARAM32(0, 0);
-	return STR_4005_BYTES_FREE; 
+	return STR_4005_BYTES_FREE;
 #endif
 }
 
@@ -348,14 +348,14 @@ const DriverDesc _music_driver_descs[] = {
 #endif
 #ifdef __BEOS__
 	{ "bemidi",	"BeOS MIDI Driver",			&_bemidi_music_driver,	1},
-#endif	
+#endif
 	{   "null",	"Null Music Driver",		&_null_music_driver,		1},
 	{     NULL,	NULL,										NULL,										0}
 };
 
 bool FileExists(const char *filename)
 {
-	return access(filename, 0) == 0;	
+	return access(filename, 0) == 0;
 }
 
 static int LanguageCompareFunc(const void *a, const void *b)
@@ -380,7 +380,7 @@ int GetLanguageList(char **languages, int max)
 		}
 		closedir(dir);
 	}
-	
+
 	qsort(languages, num, sizeof(char*), LanguageCompareFunc);
 	return num;
 }
@@ -403,7 +403,7 @@ void ShowInfo(const char *str)
 void ShowOSErrorBox(const char *buf)
 {
 	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
-	
+
 #if defined(__APPLE__)
 	// this opens the crash log opener script
 	system("./Crash_Log_Opener.app");
@@ -435,25 +435,25 @@ void DeterminePaths()
 
 #if defined(USE_HOMEDIR)
 	{
-		char *homedir; 
+		char *homedir;
 		homedir = getenv("HOME");
-		
+
 		if(!homedir) {
 			struct passwd *pw = getpwuid(getuid());
 			if (pw) homedir = pw->pw_dir;
 		}
-		
+
 		_path.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 	}
-	
+
 #else /* not defined(USE_HOMEDIR) */
 
 	_path.personal_dir = malloc( MAX_PATH );
 	strcpy(_path.personal_dir, PERSONAL_DIR);
-	
+
 	// check if absolute or relative path
 	s = strchr(_path.personal_dir, '/');
-	
+
 	// add absolute path
 	if (s==NULL || _path.personal_dir != s) {
 		getcwd(_path.personal_dir, MAX_PATH);
@@ -461,23 +461,23 @@ void DeterminePaths()
 		*s++ = '/';
 		strcpy(s, PERSONAL_DIR);
 	}
-	
+
 #endif /* defined(USE_HOMEDIR) */
 
 	s = strchr(_path.personal_dir, 0);
-	
+
 	// append a / ?
 	if (s[-1] != '/') { s[0] = '/'; s[1] = 0; }
-	
+
 	_path.save_dir = str_fmt("%ssave", _path.personal_dir);
 	_path.autosave_dir = str_fmt("%s/autosave", _path.save_dir);
 	_path.scenario_dir = str_fmt("%sscenario", _path.personal_dir);
 	_path.gm_dir = str_fmt("%sgm/", _path.game_data_dir);
 	_path.data_dir = str_fmt("%sdata/", _path.game_data_dir);
 	_path.lang_dir = str_fmt("%slang/", _path.game_data_dir);
-	
+
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
-	
+
 	// make (auto)save and scenario folder
 	mkdir(_path.save_dir, 0755);
 	mkdir(_path.autosave_dir, 0755);

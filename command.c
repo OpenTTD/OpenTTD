@@ -305,7 +305,7 @@ static CommandProc * const _command_proc_table[] = {
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	return DoCommand(GET_TILE_X(tile)*16, GET_TILE_Y(tile)*16, p1, p2, flags, procc);
-} 
+}
 
 
 //extern void _stdcall Sleep(int s);
@@ -314,7 +314,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	int32 res;
 	CommandProc *proc;
-	
+
 	proc = _command_proc_table[procc];
 
 	if (_docommand_recursive == 0) {
@@ -383,7 +383,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int x = GET_TILE_X(tile)*16;
 	int y = GET_TILE_Y(tile)*16;
 
-	assert(_docommand_recursive == 0);	
+	assert(_docommand_recursive == 0);
 
 	_error_message = INVALID_STRING_ID;
 	_error_message_2 = cmd >> 16;
@@ -404,9 +404,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	proc = _command_proc_table[cmd & 0xFF];
 
 	// this command is a notest command?
-	notest = 
-		(cmd & 0xFF) == CMD_CLEAR_AREA || 
-		(cmd & 0xFF) == CMD_CONVERT_RAIL || 
+	notest =
+		(cmd & 0xFF) == CMD_CLEAR_AREA ||
+		(cmd & 0xFF) == CMD_CONVERT_RAIL ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
 		(cmd & 0xFF) == CMD_TRAIN_GOTO_DEPOT;
 
@@ -429,7 +429,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		return false;
 	}
 
-	
+
 
 	// unless the command is a notest command, check if it can be executed.
 	if (!notest) {
@@ -456,7 +456,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	// actually try and execute the command.
 	_yearly_expenses_type = 0;
 	res2 = proc(x,y, flags|DC_EXEC, p1, p2);
-	
+
 	if (!notest) {
 		assert(res == res2); // sanity check
 	} else {
@@ -479,7 +479,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 
 	_docommand_recursive = 0;
-	
+
 	if (callback) callback(true, tile, p1, p2);
 	return true;
 
@@ -490,7 +490,7 @@ show_error:
 
 callb_err:
 	_docommand_recursive = 0;
-	
+
 	if (callback) callback(false, tile, p1, p2);
 	return false;
 }

@@ -63,7 +63,7 @@ static void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
 
 	if (!success)
 		return;
-				
+
 	v = &_vehicles[_new_train_id];
 	if (tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
@@ -76,7 +76,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT:
-	
+
 		if (w->window_number == 0)
 			SETBIT(w->disabled_state, 5);
 
@@ -93,7 +93,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		SET_DPARAM16(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
 		DrawWindowWidgets(w);
-		
+
 		{
 			int num = _rail_engines_count[WP(w,buildtrain_d).railtype];
 			Engine *e = _rail_engines[WP(w,buildtrain_d).railtype];
@@ -112,7 +112,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 						DrawTrainEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 						y += 14;
 					}
-					sel--; 
+					sel--;
 				}
 			} while (++engine_id, ++e,--num);
 
@@ -132,15 +132,15 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					SET_DPARAM16(3, rvi->power << multihead);
 					SET_DPARAM16(1, rvi->weight << multihead);
 					SET_DPARAM32(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
-					
+
 					SET_DPARAM16(5, STR_8838_N_A);
 					if (rvi->capacity != 0) {
 						SET_DPARAM16(6, rvi->capacity << multihead);
 						SET_DPARAM16(5, _cargoc.names_long_p[rvi->cargo_type]);
 					}
 
-					e = &_engines[selected_id];	
-					
+					e = &_engines[selected_id];
+
 					SET_DPARAM16(8, e->lifelength);
 					SET_DPARAM8(9, e->reliability * 100 >> 16);
 					ConvertDayToYMD(&ymd, e->intro_date);
@@ -207,7 +207,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	} break;
 	}
 }
-	
+
 static const Widget _new_rail_vehicle_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   227,     0,    13, STR_0315,	STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -236,7 +236,7 @@ static void ShowBuildTrainWindow(uint tile)
 	w = AllocateWindowDesc(&_new_rail_vehicle_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
-	
+
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
 		WP(w,buildtrain_d).railtype = _map3_lo[tile] & 0xF;
@@ -296,7 +296,7 @@ static void DrawTrainDepotWindow(Window *w)
 	}
 	SetVScrollCount(w, num);
 	SetHScrollCount(w, hnum);
-	
+
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
 
@@ -312,7 +312,7 @@ static void DrawTrainDepotWindow(Window *w)
 		if (v->type == VEH_Train &&
 				v->subtype == 0 &&
 				v->tile == (TileIndex)tile &&
-				v->u.rail.track == 0x80 && 
+				v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -6) {
 
 			DrawTrainImage(v, x+21, y, 10, w->hscroll.pos, WP(w,traindepot_d).sel);
@@ -331,7 +331,7 @@ static void DrawTrainDepotWindow(Window *w)
 		if (v->type == VEH_Train &&
 				v->subtype == 4 &&
 				v->tile == (TileIndex)tile &&
-				v->u.rail.track == 0x80 && 
+				v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -6) {
 
 			DrawTrainImage(v, x+50, y, 9, 0, WP(w,traindepot_d).sel);
@@ -395,20 +395,20 @@ static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehicl
 	/* didn't find anything, get out */
 	return 0;
 
-found_it:	
+found_it:
 	d->head = d->wagon = v;
 
 	/* either pressed the flag or the number, but only when it's a loco */
 	if (area_x < 0 && v->subtype==0)
 		return area_x;
-	
+
 	/* find the vehicle in this row that was clicked */
 	while (--area_x >= 0) {
 		v = v->next;
 		if (v == NULL) break;
 	}
 
-	d->wagon = v;	
+	d->wagon = v;
 
 	return 0;
 }
@@ -447,7 +447,7 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 
 	// share / copy orders
 	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = gdvp.head; return; }
-	
+
 	v = gdvp.wagon;
 
 	switch(mode) {
@@ -482,10 +482,10 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 6: 
+		case 6:
 			ShowBuildTrainWindow(w->window_number);
 			break;
-		case 7: 
+		case 7:
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		case 2:
@@ -513,7 +513,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 				return;
 
 			v = &_vehicles[WP(w,traindepot_d).sel];
-			
+
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
 
@@ -538,14 +538,14 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
 				SetWindowDirty(w);
 
-				if (GetVehicleFromTrainDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &gdvp) == 0 && 
+				if (GetVehicleFromTrainDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &gdvp) == 0 &&
 						sel != INVALID_VEHICLE) {
 					if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 						TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 					} else if (gdvp.head != NULL && gdvp.head->subtype==0) {
 						ShowTrainViewWindow(gdvp.head);
 					}
-				}			
+				}
 			} break;
 
 		default:
@@ -722,11 +722,11 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v;
 		StringID str;
 
-		v = &_vehicles[w->window_number];	
-	
+		v = &_vehicles[w->window_number];
+
 		w->disabled_state = (v->owner == _local_player) ? 0 : 0x1C0;
-		
-		
+
+
 		/* draw widgets & caption */
 		SET_DPARAM16(0, v->string_id);
 		SET_DPARAM16(1, v->unitnumber);
@@ -734,7 +734,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		/* draw the flag */
 		DrawSprite( (v->vehstatus&VS_STOPPED) ? 0xC12 : 0xC13, 2, 123);
-		
+
 		if (v->u.rail.crash_anim_pos != 0) {
 			str = STR_8863_CRASHED;
 		} else if (v->breakdown_ctr == 1) {
@@ -772,7 +772,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM16(1, v->u.rail.last_speed * 10 >> 4);
 				break;
 			}
-			
+
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
@@ -792,20 +792,20 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(wid) {
-		case 4: /* start/stop train */ 
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN)); 
+		case 4: /* start/stop train */
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 			break;
 		case 5:	/* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 6:	/* goto depot */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
 		case 7: /* force proceed */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
 			break;
 		case 8: /* reverse direction */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_8869_CAN_T_REVERSE_DIRECTION)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_8869_CAN_T_REVERSE_DIRECTION));
 			break;
 		case 9: /* show train orders */
 			ShowOrdersWindow(v);
@@ -828,7 +828,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v;
 		uint32 h;
 
-		v = &_vehicles[w->window_number];		
+		v = &_vehicles[w->window_number];
 		assert(v->type == VEH_Train);
 		h = CheckStoppedInDepot(v) >= 0 ? (1 << 8) : (1 << 11);
 		if (h != w->hidden_state) {
@@ -893,7 +893,7 @@ static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
 		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
 		SET_DPARAM32(1, v->value);
 		DrawString(x, y, STR_882D_VALUE, 0x10);
-	}	
+	}
 }
 
 static void TrainDetailsCapacityTab(Vehicle *v, int x, int y)
@@ -927,7 +927,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	// det_tab == 3 <-- Total Cargo tab
 	if (det_tab == 3)	// reset tot_cargo array to 0 values
 		memset(tot_cargo, 0, sizeof(tot_cargo));
-	
+
 	u = v = &_vehicles[w->window_number];
 	do {
 		if (det_tab != 3)
@@ -964,9 +964,9 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	num = v->age / 366;
 	SET_DPARAM16(1, num);
-	
+
 	x = 2;
-	
+
 	str = STR_0199_YEAR;
 	if (num != 1) {
 		str += STR_019A_YEARS - STR_0199_YEAR;
@@ -975,7 +975,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	}
 	SET_DPARAM16(0, str);
 	SET_DPARAM16(2, v->max_age / 366);
-	SET_DPARAM32(3, GetTrainRunningCost(v) >> 8);	
+	SET_DPARAM32(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
 	SET_DPARAM16(2, v->max_speed * 10 >> 4);
@@ -998,7 +998,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	x = 1;
 	y = 57;
 	sel = w->vscroll.pos;
-	
+
 	// draw the first 3 details tabs
 	if (det_tab != 3) {
 		for(;;) {
@@ -1058,7 +1058,7 @@ do_change_service_int:
 				mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
 				if (mod == v->service_interval)
 					return;
-			
+
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_TRAIN_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		/* details buttons*/
@@ -1127,7 +1127,7 @@ void ShowTrainDetailsWindow(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
-	_alloc_wnd_parent_num = veh;	
+	_alloc_wnd_parent_num = veh;
 	w = AllocateWindowDesc(&_train_details_desc);
 
 	w->window_number = veh;
@@ -1163,7 +1163,7 @@ static void MakeSortedTrainList(byte owner)
 		// trains are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 		for (i = &_num_train_sort[1]; i != endof(_num_train_sort); i++) {*i += *(i-1);}
-	
+
 		// sort by owner, then only subsort the requested owner-vehicles
 		qsort(_train_sort, n, sizeof(_train_sort[0]), GeneralOwnerSorter);
 
@@ -1208,7 +1208,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 trains
 		i = (window_number == 0) ? 0 : _num_train_sort[window_number-1];
 		SetVScrollCount(w, _num_train_sort[window_number] - i);
-		
+
 		/* draw the widgets */
 		{
 			Player *p = DEREF_PLAYER(window_number);
@@ -1251,7 +1251,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM32(0, v->profit_this_year);
 				SET_DPARAM32(1, v->profit_last_year);
 				DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				
+
 				if (v->string_id != STR_SV_TRAIN_NAME) {
 					SET_DPARAM16(0, v->string_id);
 					DrawString(x+21, y, STR_01AB, 0);
@@ -1276,7 +1276,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-			
+
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
 			id_v += w->vscroll.pos;
@@ -1301,15 +1301,15 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsTrainDepotTile(tile)) {			
+				if (_map_owner[tile] == _local_player && IsTrainDepotTile(tile)) {
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;
 				}
-				
+
 				tile = TILE_MASK(tile + 1);
 			} while(tile != _last_built_train_depot_tile);
-			
+
 			ShowBuildTrainWindow(0);
 		} break;
 		}

@@ -21,9 +21,9 @@ static void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 static void GenericRaiseLowerLand(uint tile, int mode)
 {
 	if (mode) {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE)); 
+		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE));
 	} else {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE)); 
+		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE));
 	}
 }
 
@@ -94,7 +94,7 @@ static void TerraformClick_BuyLand(Window *w)
 
 static void TerraformClick_Trees(Window *w)
 {
-	if (HandlePlacePushButton(w, 8, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();	
+	if (HandlePlacePushButton(w, 8, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
 }
 
 static void TerraformClick_PlaceSign(Window *w)
@@ -159,7 +159,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
 			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
 //				if (e->click.pt.x != -1) {
-//					DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL, 
+//					DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL,
 //						CMD_PLANT_TREE | CMD_AUTO | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
 			} else {
 				assert(true);

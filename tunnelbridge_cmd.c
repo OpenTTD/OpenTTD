@@ -17,7 +17,7 @@ static const byte _bridge_minlen[MAX_BRIDGES] = {
 };
 
 static const byte _bridge_maxlen[MAX_BRIDGES] = {
-	16, 2, 5, 10, 16, 16, 7, 8, 9, 2, 16, 32, 32, 
+	16, 2, 5, 10, 16, 16, 7, 8, 9, 2, 16, 32, 32,
 };
 
 const uint16 _bridge_type_price_mod[MAX_BRIDGES] = {
@@ -31,8 +31,8 @@ const uint16 _bridge_speeds[MAX_BRIDGES] = {
 const PalSpriteID _bridge_sprites[MAX_BRIDGES] = {
 	0x0A24, 0x31E8A26, 0x0A25, 0x3208A22,
 	0x0A22, 0x3218A22, 0x0A23, 0x31C8A23,
-	0x31E8A23, 0x0A27, 0x0A28, 0x3218A28, 
-	0x3238A28, 
+	0x31E8A23, 0x0A27, 0x0A28, 0x3218A28,
+	0x3238A28,
 };
 
 const StringID _bridge_material[MAX_BRIDGES] = {
@@ -88,11 +88,11 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 					- no extra cost
 					- direction X: tiles 0,12
 					- direction Y: tiles 0, 9
-			*/		
+			*/
 			if ((direction?0x201:0x1001) & (1 << tileh))
 				return 0;
-			
-			// disallow certain start tiles to avoid certain crooked bridges	
+
+			// disallow certain start tiles to avoid certain crooked bridges
 			if (tileh == 2)
 				return CMD_ERROR;
 
@@ -106,7 +106,7 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 			if ((direction?0x41:0x9) & (1 << tileh))
 				return 0;
 
-			// disallow certain end tiles to avoid certain crooked bridges	
+			// disallow certain end tiles to avoid certain crooked bridges
 			if (tileh == 8)
 				return CMD_ERROR;
 
@@ -116,7 +116,7 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 		 *	start-tile:	X 2,1 Y 2,4 (2 was disabled before)
 		 *	end-tile:		X 8,4 Y 8,1 (8 was disabled before)
 		 */
-		if ( (tileh == 1 && (is_start_tile != (bool)direction)) || 
+		if ( (tileh == 1 && (is_start_tile != (bool)direction)) ||
 			   (tileh == 4 && (is_start_tile == (bool)direction))    )
 			return CMD_ERROR;
 
@@ -135,7 +135,7 @@ uint32 GetBridgeLength(TileIndex begin, TileIndex end)
 	y1 = GET_TILE_Y(begin);
 	x2 = GET_TILE_X(end);
 	y2 = GET_TILE_Y(end);
-	
+
 	return abs((x2 + y2 - x1 - y1)) - 1;
 }
 
@@ -156,7 +156,7 @@ bool CheckBridge_Stuff(byte bridge_type, int bridge_len)
 	return true;
 }
 
-/* Build a Bridge 
+/* Build a Bridge
  * x,y - end tile coord
  * p1  - packed start tile coords (~ dx)
  * p2&0xFF - bridge type (hi bh)
@@ -174,11 +174,11 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost, terraformcost, ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-	
+
 	/* unpack parameters */
 	bridge_type = p2 & 0xFF;
 	railtype = (byte)(p2 >> 8);
-	
+
 	// type of bridge
 	if (railtype & 0x80) {
 		railtype = 0;
@@ -238,9 +238,9 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = ret;
 
 	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);	// true - bridge-start-tile, false - bridge-end-tile
-	
+
 	// towns are not allowed to use bridges on slopes.
-	if (terraformcost == CMD_ERROR || 
+	if (terraformcost == CMD_ERROR ||
 		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
@@ -250,11 +250,11 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if ((ret=DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
 		return CMD_ERROR;
 	cost += ret;
-	
+
 	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);	// false - end tile slope check
 
 	// towns are not allowed to use bridges on slopes.
-	if (terraformcost == CMD_ERROR || 
+	if (terraformcost == CMD_ERROR ||
 		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
@@ -299,7 +299,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (ti.tileh != 0 && ti.z >= ti_start.z)
 			return CMD_ERROR;
 
-		// Find ship below 
+		// Find ship below
 		if ( ti.type == MP_WATER && !EnsureNoVehicle(ti.tile) )
 		{
 			_error_message = STR_980E_SHIP_IN_THE_WAY;
@@ -339,26 +339,26 @@ not_valid_below:;
 			_map_type_and_height[ti.tile] |= MP_TUNNELBRIDGE << 4;
 
 			//bridges pieces sequence (middle parts)
-			// bridge len 1: 0 
+			// bridge len 1: 0
 			// bridge len 2: 0 1
 			// bridge len 3: 0 4 1
 			// bridge len 4: 0 2 3 1
 			// bridge len 5: 0 2 5 3 1
 			// bridge len 6: 0 2 3 2 3 1
 			// bridge len 7: 0 2 3 4 2 3 1
-			// #0 - alwats as first, #1 - always as last (if len>1) 
+			// #0 - alwats as first, #1 - always as last (if len>1)
 			// #2,#3 are to pair in order
 			// for odd bridges: #5 is going in the bridge middle if on even position, #4 on odd (counting from 0)
 
 			if(i==0)                    //first tile
-				m5 = 0; 
+				m5 = 0;
 			else if (i==bridge_len-1)   //last tile
 				m5 = 1;
 			else if(i==odd_middle_part) //we are on the middle of odd bridge: #5 on even pos, #4 on odd
 				m5 = 5 - (i%2);
 			else {
 					// generate #2 and #3 in turns [i%2==0], after the middle of odd bridge
-					// this sequence swaps [... XOR (i>odd_middle_part)], 
+					// this sequence swaps [... XOR (i>odd_middle_part)],
 					// for even bridges XOR does not apply as odd_middle_part==bridge_len
 					m5 = 2 + ((i%2==0)^(i>odd_middle_part));
 			}
@@ -377,7 +377,7 @@ not_valid_below:;
 			It's unnecessary to execute this command every time for every bridge. So it is done only
 			and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	*/
-	if (!(flags & DC_QUERY_COST)) {	
+	if (!(flags & DC_QUERY_COST)) {
 		bridge_len += 2;	// begin and end tiles/ramps
 
 		if (_current_player < MAX_PLAYERS && !(_is_ai_player && !_patches.ainew_active))
@@ -575,7 +575,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC && DoBuildTunnel(x,y,tiorg.x,tiorg.y,flags&~DC_EXEC,excavated_tile) == CMD_ERROR)
 		return CMD_ERROR;
-	
+
 	return DoBuildTunnel(x,y,tiorg.x, tiorg.y,flags,excavated_tile);
 }
 
@@ -588,14 +588,14 @@ uint CheckTunnelBusy(uint tile, int *length)
 	int delta = _tileoffs_by_dir[m5 & 3], len = 0;
 	uint starttile = tile;
 	Vehicle *v;
-	
+
 	do { tile += delta; len++; } while (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || _map5[tile]&0xF0 || (byte)(_map5[tile] ^ 2) != m5 || GetTileZ(tile) != z);
 
 	if ((v=FindVehicleBetween(starttile, tile, z)) != NULL) {
 		_error_message = v->type == VEH_Train ? STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
 		return (uint)-1;
 	}
-	
+
 	if (length) *length = len;
 	return tile;
 }
@@ -618,7 +618,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	if (endtile == (uint)-1) return CMD_ERROR;
 
 	_build_tunnel_endtile = endtile;
-	
+
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the tunnel owned by a town
 	// removal allowal depends on difficulty settings
@@ -638,7 +638,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
 		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
-		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) 
+		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, -250, 0);
 	}
 	return  _price.clear_tunnel * (length + 1);
@@ -676,7 +676,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	Vehicle *v;
 	Town *t;
 	int direction;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	direction = _map5[tile]&1;
@@ -688,7 +688,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		// check if we own the tile below the bridge..
 		if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)) ))
 			return CMD_ERROR;
-		
+
 		cost = (_map5[tile] & 8) ? _price.remove_road * 2 : _price.remove_rail;
 
 		if (flags & DC_EXEC) {
@@ -697,11 +697,11 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
-		
+
 	/* delete canal under bridge */
 	} else if(_map5[tile]==0xC8 && GET_TILEHEIGHT(tile)!=0) {
 		int32 cost;
-		
+
 		// check for vehicles under bridge
 		if ( !EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)) )
 			return CMD_ERROR;
@@ -732,7 +732,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	tile		+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 	endtile	-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 	if ((v=FindVehicleBetween(tile, endtile, GET_TILEHEIGHT(tile) + 8)) != NULL) {
-		VehicleInTheWayErrMsg(v);		
+		VehicleInTheWayErrMsg(v);
 		return CMD_ERROR;
 	}
 
@@ -740,12 +740,12 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	tile		-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 	endtile	+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 
-	
+
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
-	// check if you're allowed to remove the bridge owned by a town. 
+	// check if you're allowed to remove the bridge owned by a town.
 	// removal allowal depends on difficulty settings
 	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
-		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE)) 
+		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE))
 			return CMD_ERROR;
 	}
 
@@ -756,8 +756,8 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 
 		//checks if the owner is town then decrease town rating by 250 until
 		// you have a "Poor" (0) town rating
-		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) 
-			ChangeTownRating(t, -250, 0); 
+		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+			ChangeTownRating(t, -250, 0);
 
 		do {
 			m5 = _map5[c];
@@ -787,7 +787,7 @@ clear_it:;
 
 		SetSignalsOnBothDir(tile, direction);
 		SetSignalsOnBothDir(endtile, direction);
-		
+
 	}
 
 	return ((((endtile - tile) >> (direction?8:0))&0xFF)+1) * _price.clear_bridge;
@@ -826,7 +826,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		if ( (uint)(_map3_lo[tile] & 0xF) == totype) return CMD_ERROR;
-		
+
 		endtile = CheckTunnelBusy(tile, &length);
 		if (endtile == (uint)-1) return CMD_ERROR;
 
@@ -861,7 +861,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 		starttile = tile = FindEdgesOfBridge(tile, &endtile);
 		// Make sure there's no vehicle on the bridge
 		if ((v=FindVehicleBetween(tile, endtile, 0xff)) != NULL) {
-			VehicleInTheWayErrMsg(v);		
+			VehicleInTheWayErrMsg(v);
 			return CMD_ERROR;
 		}
 
@@ -881,7 +881,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 		} while (tile <= endtile);
 
 		return cost;
-	} else 
+	} else
 		return CMD_ERROR;
 }
 
@@ -906,7 +906,7 @@ uint GetBridgeHeight(const TileInfo *ti)
 	FindLandscapeHeightByTile(&ti_end, tile);
 	if (HASBIT(1 << 7, ti_end.tileh))
 		z_correction += 8;
-	
+
 	// return the height there (the height of the NORTH CORNER)
 	return GET_TILEHEIGHT(tile) + z_correction;
 }
@@ -973,7 +973,7 @@ uint GetBridgeFoundation(uint tileh, byte direction) {
 		return tileh;
 
 	// inclined sloped building
-	if (	((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) && 
+	if (	((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) &&
 				( direction == 0 || (i++, direction == 1)) )
 		return i + 15;
 
@@ -986,8 +986,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	uint tmp;
 	const uint32 *b;
 	bool ice = _map3_hi[ti->tile] & 0x80;
-	
-	// draw tunnel? 
+
+	// draw tunnel?
 	if ( (byte)(ti->map5&0xF0) == 0) {
 		/* railway type */
 		image = (_map3_lo[ti->tile] & 0xF) * 8;
@@ -1018,11 +1018,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		tmp = (ti->map5&3) + (tmp*2);
 
 		if (!(ti->map5 & 0x40)) {	// bridge ramps
-			
+
 			if (!(BRIDGE_NO_FOUNDATION & (1 << ti->tileh))) {	// no foundations for 0, 3, 6, 9, 12
 				int f = GetBridgeFoundation(ti->tileh, ti->map5 & 0x1);	// pass direction
 				if (f) DrawFoundation(ti, f);
-				
+
 				// default sloped sprites..
 				if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
 			}
@@ -1033,8 +1033,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			b += (tmp&1); // direction
 			if (ti->tileh == 0) b += 4; // sloped "entrance" ?
 			if (ti->map5 & 0x20) b += 2; // which side
-				
-			image = *b; 
+
+			image = *b;
 
 			if (!ice) {
 				DrawClearLandTile(ti, 3);
@@ -1062,7 +1062,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (ti->map5 & 8 && ti->z != 0) DrawCanalWater(ti->tile);
 			} else {
 				// draw transport route under bridge
-			
+
 				// draw foundation?
 				if (ti->tileh) {
 					int f = _bridge_foundations[ti->map5&1][ti->tileh];
@@ -1087,7 +1087,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			b = _bridge_sprite_table[_map2[ti->tile]>>4][_map2[ti->tile]&0xF] + tmp * 4;
 
 			z = GetBridgeHeight(ti) + 5;
-			
+
 			// draw rail
 			image = b[0];
 			if (!(_display_opt & DO_TRANS_BUILDINGS)) image = (image & 0x3FFF) | 0x03224000;
@@ -1106,7 +1106,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				y += 12;
 				if (image&0x3FFF) AddSortableSpriteToDraw(image, x,y, 16, 1, 0x28, z);
 			}
-			
+
 			if (ti->z + 5 == z ) {
 				// draw poles below for small bridges
 				image = b[2];
@@ -1136,7 +1136,7 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 		if ( (ti->map5 & 0xF0) == 0)
 			return z;
 
-		// bridge?	
+		// bridge?
 		if ( ti->map5 & 0x80 ) {
 			// bridge ending?
 			if (!(ti->map5 & 0x40)) {
@@ -1154,18 +1154,18 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 					// ramp in opposite dir
 					return (z + ((x^0xF)>>1));
 				}
-			
+
 			// bridge middle part
 			} else {
 				// build on slopes?
 				if (ti->tileh) z+=8;
 
 				// keep the same elevation because we're on the bridge?
-				if (_get_z_hint >= z + 8) 
+				if (_get_z_hint >= z + 8)
 					return _get_z_hint;
-				
+
 				// actually on the bridge, but not yet in the shared area.
-				if (!IS_INT_INSIDE(x, 5, 10+1)) 
+				if (!IS_INT_INSIDE(x, 5, 10+1))
 					return GetBridgeHeight(ti) + 8;
 
 				// in the shared area, assume that we're below the bridge, cause otherwise the hint would've caught it.
@@ -1174,11 +1174,11 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 					uint f = _bridge_foundations[ti->map5&1][ti->tileh];
 					// make sure that the slope is not inclined foundation
 					if (IS_BYTE_INSIDE(f, 1, 15)) return z;
-					
+
 					// change foundation type?
 					if (f) ti->tileh = _inclined_tileh[f - 15];
 				}
-	
+
 				// no transport route, fallback to default
 			}
 		}
@@ -1282,7 +1282,7 @@ static void TileLoop_TunnelBridge(uint tile)
 	} else if (_opt.landscape == LT_DESERT) {
 		if (GetMapExtraBits(tile) == 1 && !(_map3_hi[tile]&0x80)) {
 			_map3_hi[tile] |= 0x80;
-			MarkTileDirtyByTile(tile);			
+			MarkTileDirtyByTile(tile);
 		}
 	}
 
@@ -1303,7 +1303,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 
 	if ((m5 & 0xF0) == 0) {
 		/* This is a tunnel */
-		if (((m5 & 0xC) >> 2) == mode) { 
+		if (((m5 & 0xC) >> 2) == mode) {
 			/* Tranport in the tunnel is compatible */
 			return m5&1 ? 0x202 : 0x101;
 		}
@@ -1321,7 +1321,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 				if ((m5 &= 0x18) != 8)
 					/* Clear ground */
 					return result;
-				else	
+				else
 					if (mode != TRANSPORT_WATER)
 						return result;
 			} else {
@@ -1347,7 +1347,7 @@ static void ChangeTileOwner_TunnelBridge(uint tile, byte old_player, byte new_pl
 {
 	if (_map_owner[tile] != old_player)
 		return;
-	
+
 	if (new_player != 255) {
 		_map_owner[tile] = new_player;
 	}	else {
@@ -1394,7 +1394,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 
 		if (v->type == VEH_Train) {
 			fc = (x&0xF)+(y<<4);
-			
+
 			dir = _map5[tile] & 3;
 			vdir = v->direction >> 1;
 
@@ -1428,10 +1428,10 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 			if (v->u.road.state != 0xFF && dir == vdir) {
 				if (fc == _tunnel_fractcoord_4[dir] ||
 						fc == _tunnel_fractcoord_5[dir]) {
-					
+
 					v->tile = tile;
 					v->u.road.state = 0xFF;
-					v->vehstatus |= VS_HIDDEN;	
+					v->vehstatus |= VS_HIDDEN;
 					return 4;
 				} else {
 					return 0;

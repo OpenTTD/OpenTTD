@@ -18,7 +18,7 @@ static int GetRandomTreeType(uint tile, uint seed)
 			return (seed >> 6) + 28;
 		} else if (i == 1) {
 			if (seed > 12)
-				return -1;	
+				return -1;
 			return 27;
 		} else {
 			return (seed * 7 >> 8) + 20;
@@ -144,7 +144,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	int sx,sy,x,y;
 	int treetype;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// make sure sx,sy are smaller than ex,ey
@@ -152,7 +152,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	sy = GET_TILE_Y(p2)*16;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
-	
+
 	cost = 0; // total cost
 
 	for(x=sx; x<=ex; x+=16) {
@@ -174,7 +174,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 				}
 				// 2x as expensive to add more trees to an existing tile
 				cost += _price.build_trees * 2;
-			} else {		
+			} else {
 				// don't allow building on rocks
 				if (ti.type != MP_CLEAR || _map_owner[ti.tile] != OWNER_NONE || (ti.map5 & 0x1C) == 8) {
 					_error_message = STR_2804_SITE_UNSUITABLE;
@@ -204,9 +204,9 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 						treetype = GetRandomTreeType(ti.tile, Random()>>24);
 						if (treetype==-1) treetype=27;
 					}
-					
+
 					ModifyTile(ti.tile,
-						MP_SETTYPE(MP_TREES) | 
+						MP_SETTYPE(MP_TREES) |
 						MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
 						m2, /* map2 */
 						treetype, /* map3lo */
@@ -221,7 +221,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 	}
-	
+
 	if (cost == 0) return CMD_ERROR;
 	return cost;
 }
@@ -276,12 +276,12 @@ static void DrawTile_Trees(TileInfo *ti)
 		d = _tree_layout_xy[(tmp & 0x30) >> 4];
 
 		index = ((tmp>>6)&3) + (_map3_lo[ti->tile]<<2);
-		
+
 		/* different tree styles above one of the grounds */
 		if ((m2 & 0xB0) == 0xA0 && index >= 48 && index < 80)
 			index += 164 - 48;
-		
-		assert(index < lengthof(_tree_layout_sprite));		
+
+		assert(index < lengthof(_tree_layout_sprite));
 		s = _tree_layout_sprite[index];
 	}
 
@@ -342,7 +342,7 @@ static int32 ClearTile_Trees(uint tile, byte flags) {
 
 	if (flags & DC_EXEC && _current_player < MAX_PLAYERS) {
 		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
-		if (t != NULL) 
+		if (t != NULL)
 			ChangeTownRating(t, -35, -1000);
 	}
 
@@ -372,7 +372,7 @@ static void GetTileDesc_Trees(uint tile, TileDesc *td)
 	(str=STR_2810_CACTUS_PLANTS, b==0x1B) ||
 	(str=STR_280F_RAINFOREST, IS_BYTE_INSIDE(b, 0x14, 0x1A+1)) ||
 	(str=STR_280E_TREES, true);
-	td->str = str; 
+	td->str = str;
 }
 
 static void AnimateTile_Trees(uint tile)
@@ -420,7 +420,7 @@ static void TileLoopTreesAlps(uint tile)
 		m2 = 0;
 	} else if (k == -8) {
 		/* snow_m1 */
-		m2 = 0x20; 
+		m2 = 0x20;
 		if (tmp == m2)
 			return;
 	} else if (k < 8) {
@@ -492,7 +492,7 @@ static void TileLoop_Trees(uint tile)
 			case 0: /* start destructing */
 				m5++;
 				break;
-			
+
 			case 1: /* add a tree */
 				if (m5 < 0xC0) {
 					m5 = (m5 + 0x40) & ~7;
@@ -502,7 +502,7 @@ static void TileLoop_Trees(uint tile)
 
 			case 2: { /* add a neighbouring tree */
 				byte m3 = _map3_lo[tile];
-				
+
 				tile += _tileloop_trees_dir[Random() & 7];
 
 				if (!IS_TILETYPE(tile, MP_CLEAR))
@@ -525,7 +525,7 @@ static void TileLoop_Trees(uint tile)
 
 				m5 = 0;
 				break;
-			}	
+			}
 
 			default:
 				return;
@@ -566,14 +566,14 @@ void OnTick_Trees()
 	int tree;
 
 	/* place a tree at a random rainforest spot */
-	if (_opt.landscape == LT_DESERT && 
+	if (_opt.landscape == LT_DESERT &&
 			(r=Random(),tile=TILE_MASK(r),GetMapExtraBits(tile)==2) &&
 			IS_TILETYPE(tile, MP_CLEAR) &&
 			(m=_map5[tile]&0x1C, m<=4) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
-		
+
 		ModifyTile(tile,
-			MP_SETTYPE(MP_TREES) | 
+			MP_SETTYPE(MP_TREES) |
 			MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
 			(m == 4 ? 0x10 : 0),
 			tree,
@@ -585,7 +585,7 @@ void OnTick_Trees()
 	// byte underflow
 	if (--_trees_tick_ctr)
 		return;
-	
+
 	/* place a tree at a random spot */
 	r = Random();
 	tile = TILE_MASK(r);
@@ -593,7 +593,7 @@ void OnTick_Trees()
 			(m=_map5[tile]&0x1C, m==0 || m==4 || m==0x10) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
 		int m2;
-			
+
 		if (m == 0) {
 			m2 = 0;
 		} else if (m == 4) {
@@ -603,7 +603,7 @@ void OnTick_Trees()
 		}
 
 		ModifyTile(tile,
-			MP_SETTYPE(MP_TREES) | 
+			MP_SETTYPE(MP_TREES) |
 			MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
 			m2,
 			tree,

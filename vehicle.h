@@ -6,8 +6,8 @@
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
 	uint16 crash_anim_pos;
-	uint16 days_since_order_progr; 
-	
+	uint16 days_since_order_progr;
+
 	uint16 cached_weight; // cached power and weight for the vehicle.
 	uint32 cached_power;  // no need to save those, they are recomputed on load.
 
@@ -69,7 +69,7 @@ struct WorldSprite {
 
 	// screen coordinates
 	int16 left, top, right, bottom;
-	
+
 	// world coordinates
 	int16 x;
 	int16 y;
@@ -126,7 +126,7 @@ struct Vehicle {
 
 	byte vehstatus;		// Status
 	byte last_station_visited;
-	
+
 	byte cargo_type;	// type of cargo this vehicle is carrying
 	byte cargo_days; // how many days have the pieces been in transit
 	byte cargo_source;// source of cargo
@@ -162,7 +162,7 @@ struct Vehicle {
 	byte build_year;
 
 	uint16 load_unload_time_rem;
-	
+
 	int32 profit_this_year;
 	int32 profit_last_year;
 	uint32 value;
@@ -379,7 +379,7 @@ enum {
 	NUM_NORMAL_VEHICLES = 2048,
 	NUM_SPECIAL_VEHICLES = 512,
 	NUM_VEHICLES = NUM_NORMAL_VEHICLES + NUM_SPECIAL_VEHICLES
-};	
+};
 
 VARDEF Vehicle _vehicles[NUM_VEHICLES];
 

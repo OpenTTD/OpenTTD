@@ -23,7 +23,7 @@ typedef struct {
 #pragma pack(push, 1)
 #endif
 
-typedef struct BitmapFileHeader { 
+typedef struct BitmapFileHeader {
 	uint16 type;
 	uint32 size;
 	uint32 reserved;
@@ -113,12 +113,12 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 		// determine # lines
 		n = min(h, maxlines);
 		h -= n;
-		
+
 		// render the pixels
 		callb(userdata, buff, h, padw, n);
-		
-		// write each line 
-		while (n) 
+
+		// write each line
+		while (n)
 			fwrite(buff + (--n) * padw, 1, padw, f);
 	} while (h);
 
@@ -182,10 +182,10 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 
 	png_init_io(png_ptr, f);
-	
+
 	png_set_filter(png_ptr, 0, PNG_FILTER_NONE);
 
-	png_set_IHDR(png_ptr, info_ptr, w, h, pixelformat, PNG_COLOR_TYPE_PALETTE, PNG_INTERLACE_NONE, 
+	png_set_IHDR(png_ptr, info_ptr, w, h, pixelformat, PNG_COLOR_TYPE_PALETTE, PNG_INTERLACE_NONE,
 		PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
 	// convert the palette to the .PNG format.
@@ -215,7 +215,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	do {
 		// determine # lines to write
 		n = min(h - y, maxlines);
-		
+
 		// render the pixels into the buffer
 		callb(userdata, buff, y, w, n);
 		y += n;
@@ -272,7 +272,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	if (f == NULL) return false;
 
 	memset(&pcx, 0, sizeof(pcx));
-	
+
 	// setup pcx header
 	pcx.manufacturer = 10;
 	pcx.version = 5;
@@ -287,7 +287,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	pcx.cpal = TO_LE16(1);
 	pcx.width = pcx.pitch = TO_LE16(w);
 	pcx.height = TO_LE16(h);
-	
+
 	// write pcx header
 	fwrite(&pcx, sizeof(pcx), 1, f);
 
@@ -302,7 +302,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	do {
 		// determine # lines to write
 		uint n = min(h - y, maxlines), i;
-		
+
 		// render the pixels into the buffer
 		callb(userdata, buff, y, w, n);
 		y += n;
@@ -314,7 +314,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 			byte runchar = buff[0];
 			uint left = w - 1;
 
-			// for each pixel... 
+			// for each pixel...
 			while (left) {
 				byte ch = *bufp++;
 				if (ch != runchar || runcount >= 0x3f) {
@@ -334,7 +334,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	} while (y != h);
 
 	// write 8-bit color palette
-	fputc(12, f); 
+	fputc(12, f);
 	fwrite(palette, 256*3, 1, f);
 	fclose(f);
 
@@ -404,8 +404,8 @@ void LargeWorldCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
 	while (vp->width - left != 0) {
 		wx = min(vp->width - left, 1600);
 		left += wx;
-		
-		ViewportDoDraw(vp, 
+
+		ViewportDoDraw(vp,
 			((left - wx - vp->left) << vp->zoom) + vp->virtual_left,
 			((y - vp->top) << vp->zoom) + vp->virtual_top,
 			((left - vp->left) << vp->zoom) + vp->virtual_left,
@@ -437,7 +437,7 @@ static char *MakeScreenshotName(const char *ext)
 
 	serial = 0;
 	for(;;) {
-		snprintf(filename, sizeof(filename), "%s%s", _path.personal_dir, _screenshot_name);	
+		snprintf(filename, sizeof(filename), "%s%s", _path.personal_dir, _screenshot_name);
 		if (!FileExists(filename))
 			break;
 		sprintf(base, " #%d.%s", ++serial, ext);
@@ -451,7 +451,7 @@ extern byte _cur_palette[768];
 bool MakeScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, 8, _cur_palette); 
+	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, 8, _cur_palette);
 }
 
 bool MakeWorldScreenshot(int left, int top, int width, int height, int zoom)

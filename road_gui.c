@@ -128,17 +128,17 @@ static void BuildRoadClick_Raise(Window *w)
 
 static void BuildRoadClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 7, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();	
+	if (HandlePlacePushButton(w, 7, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
-	if (HandlePlacePushButton(w, 8, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();	
+	if (HandlePlacePushButton(w, 8, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
-	if (HandlePlacePushButton(w, 9, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();	
+	if (HandlePlacePushButton(w, 9, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
 static void BuildRoadClick_Bridge(Window *w)
@@ -244,7 +244,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		} else {
 			sel_method = VPM_X_OR_Y;
 		}
-		
+
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, sel_method);
 		return;
 	}
@@ -257,8 +257,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 				ResetObjectToPlace();
 				ShowBuildBridgeWindow(start_tile, end_tile, 0x80);
 			} else if (e->place.userdata != 4) {
-				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D, 
-					_remove_button_clicked ? 
+				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D,
+					_remove_button_clicked ?
 					CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
 					CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
 			} else {
@@ -363,9 +363,9 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 			SndPlayFx(0x13);
 			SetWindowDirty(w);
 			break;
-		}	
+		}
 	}	break;
-	
+
 	case WE_MOUSELOOP:
 		if (WP(w,def_d).close)
 			DeleteWindow(w);
@@ -445,7 +445,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 	} break;
-	
+
 	case WE_MOUSELOOP: {
 		if (WP(w,def_d).close) {
 			DeleteWindow(w);
@@ -454,7 +454,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 
 		CheckRedrawStationCoverage(w);
 	} break;
-	}		
+	}
 }
 
 static const Widget _bus_station_picker_widgets[] = {

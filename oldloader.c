@@ -314,7 +314,7 @@ typedef struct {
 	byte owner;
 	uint16 tile;
 	uint16 cur_image;
-	
+
 	int16 left_coord, right_coord, top_coord, bottom_coord; // NOLOAD, calculated automatically.
 	uint16 vehstatus;
 	uint16 cur_speed;
@@ -420,21 +420,21 @@ typedef struct {
 	uint16 age_cargo_skip_counter;
 	uint16 tick_counter;
 	uint16 cur_tileloop_tile;
-	
+
 	OldPrice prices[49];
 	OldPaymentRate cargo_payment_rates[12];
-	
+
 	byte map_owner[256*256];
 	byte map2[256*256];
 	uint16 map3[256*256];
 	byte map_extra[256*256/4];
-	
+
 	OldStation stations[250];
 	OldIndustry industries[90];
 	OldPlayer players[8];
 	OldVehicle vehicles[850];
 	OldName names[500];
-		
+
 	uint16 vehicle_position_hash[0x1000]; // NOLOAD, calculated automatically.
 
 	OldSign signs[40];
@@ -455,7 +455,7 @@ typedef struct {
 	uint16 cargo_sprites[12];
 
 	uint16 engine_name_strings[256];
-	
+
 	//NOLOAD. These are calculated from InitializeLandscapeVariables
 	uint16 railveh_by_cargo_1[12], railveh_by_cargo_2[12], railveh_by_cargo_3[12];
 	uint16 roadveh_by_cargo_start[12];
@@ -486,9 +486,9 @@ typedef struct {
 	byte snow_line_height;
 
 	byte new_industry_randtable[32]; // NOLOAD. Not needed due to different code design.
-	
+
 	//NOLOAD. Initialized by InitializeLandscapeVariables
-	byte cargo_weights[12]; 
+	byte cargo_weights[12];
 	byte transit_days_table_1[12];
 	byte transit_days_table_2[12];
 
@@ -557,7 +557,7 @@ static byte DecodeSavegameByte()
 			return GetSavegameByteFromBuffer();
 		}
 	}
-	
+
 	x = GetSavegameByteFromBuffer();
 	if (x >= 0) {
 		lss->count = x;
@@ -568,7 +568,7 @@ static byte DecodeSavegameByte()
 		lss->count = -x;
 		lss->rep_char = GetSavegameByteFromBuffer();
 		return lss->rep_char;
-	}	
+	}
 }
 
 static void LoadSavegameBytes(void *p, size_t count)
@@ -642,7 +642,7 @@ static void FixIndustry(Industry *i, OldIndustry *o, int num)
 		i->prod_level = o->prod_level;
 		i->last_mo_production[0] = o->last_mo_production[0];
 		i->last_mo_production[1] = o->last_mo_production[1];
-		
+
 		i->last_mo_transported[0] = o->last_mo_transported[0];
 		i->last_mo_transported[1] = o->last_mo_transported[1];
 		i->last_mo_transported[2] = o->last_mo_transported[2];
@@ -652,7 +652,7 @@ static void FixIndustry(Industry *i, OldIndustry *o, int num)
 
 		i->total_production[0] = o->total_production[0];
 		i->total_production[1] = o->total_production[1];
-		
+
 		i->total_transported[0] = i->total_transported[0];
 		i->total_transported[1] = i->total_transported[1];
 
@@ -688,7 +688,7 @@ static void FixStation(Station *s, OldStation *o, int num)
 		s->train_tile = o->train_tile;
 		s->airport_tile = o->airport_tile;
 		s->dock_tile = o->dock_tile;
-		
+
 		if (o->train_tile) {
 			int w = (o->platforms >> 3) & 0x7;
 			int h = (o->platforms & 0x7);
@@ -696,7 +696,7 @@ static void FixStation(Station *s, OldStation *o, int num)
 			s->trainst_w = w;
 			s->trainst_h = h;
 		}
-		
+
 		s->string_id = RemapOldStringID(o->string_id);
 		s->had_vehicle_of_type = o->had_vehicle_of_type;
 		FixGoodsEntry(s->goods, o->goods, lengthof(o->goods));
@@ -727,7 +727,7 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 	do {
 		n->type = o->type;
 		n->subtype = o->subtype;
-		
+
 		if (o->schedule_ptr == 0xFFFFFFFF || o->schedule_ptr == 0) {
 			n->schedule_ptr = NULL;
 		} else {
@@ -758,7 +758,7 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 		n->owner = o->owner;
 		n->tile = o->tile;
 		n->cur_image = o->cur_image;
-	
+
 		n->vehstatus = o->vehstatus;
 		n->cur_speed = o->cur_speed;
 		n->subspeed = o->subspeed;
@@ -787,7 +787,7 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 		n->next = o->next_in_chain == 0xffff ? NULL : &_vehicles[o->next_in_chain];
 		n->value = o->value;
 		n->string_id = RemapOldStringID(o->string_id);
-		
+
 		switch(o->type) {
 		case VEH_Train:
 			n->u.rail.track = o->u.rail.track;
@@ -864,7 +864,7 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 {
 	int i, j;
 	int x = 0;
-	
+
 	do {
 		n->name_1 = RemapOldStringID(o->name_1);
 		n->name_2 = o->name_2;
@@ -882,15 +882,15 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 
 		if (o->name_1 != 0)
 			n->is_active = true;
-		
+
 		n->face = o->face;
 		n->president_name_1 = o->pres_name_1;
 		n->president_name_2 = o->pres_name_2;
-		
+
 		n->money64 = n->player_money = o->money;
 		n->current_loan = o->loan;
-		
-		// Correct money for scenario loading. 
+
+		// Correct money for scenario loading.
 		// It's always 893288 pounds (and no loan), if not corrected
 		if(o->money==0xda168)
 			n->money64 = n->player_money = n->current_loan =100000;
@@ -905,7 +905,7 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 		n->bankrupt_value = o->bankrupt_value;
 		n->bankrupt_timeout = o->bankrupt_timeout;
 		n->cargo_types = o->cargo_types;
-		
+
 		for(i=0; i!=3; i++)
 			for(j=0; j!=13; j++)
 				n->yearly_expenses[i][j] = o->expenses[i].cost[j];
@@ -916,7 +916,7 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 		n->last_build_coordinate = o->last_build_coordinate;
 		n->num_valid_stat_ent = o->num_valid_stat_ent;
 
-		/*	Not good, since AI doesn't have a vehicle assigned as 
+		/*	Not good, since AI doesn't have a vehicle assigned as
 		 *	in p->ai.cur_veh and thus will crash on certain actions.
 		 *	Best is to set state to AiStateVehLoop (2)
 		 *	n->ai.state = o->ai_state;
@@ -927,18 +927,18 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 		n->ai.timeout_counter = o->ai_timeout_counter;
 		n->ai.banned_tile_count = o->ai_banned_tile_count;
 		n->ai.railtype_to_use = o->ai_railtype_to_use;
-		
+
 		FixAiBuildRec(&n->ai.src, &o->ai_src);
 		FixAiBuildRec(&n->ai.dst, &o->ai_dst);
 		FixAiBuildRec(&n->ai.mid1, &o->ai_mid1);
 		FixAiBuildRec(&n->ai.mid2, &o->ai_mid2);
-		
+
 		n->ai.cargo_type = o->ai_cargo_type;
 		n->ai.num_wagons = o->ai_num_wagons;
 		n->ai.num_build_rec = o->ai_num_build_rec;
 		n->ai.num_loco_to_build = o->ai_num_loco_to_build;
 		n->ai.num_want_fullload = o->ai_num_want_fullload;
-		
+
 		for(i=0; i!=9; i++) n->ai.wagon_list[i] = o->ai_wagonlist[i];
 		memcpy(n->ai.order_list_blocks, o->ai_order_list_blocks, 20);
 		n->ai.start_tile_a = o->ai_start_tile_a;
@@ -949,7 +949,7 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 		n->ai.start_dir_b = o->ai_start_dir_b;
 		n->ai.cur_dir_a = o->ai_cur_dir_a;
 		n->ai.cur_dir_b = o->ai_cur_dir_b;
-		
+
 		for(i=0; i!=16; i++) {
 			n->ai.banned_tiles[i] = o->banned_tiles[i].tile;
 			n->ai.banned_val[i] = o->banned_tiles[i].data;
@@ -1081,7 +1081,7 @@ bool LoadOldSaveGame(const char *file)
 	for(i=0; i!=256*256; i++) {
 		if (IS_TILETYPE(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
 			// this byte is always zero in real ttd.
-			if (_map3_hi[i]) { 
+			if (_map3_hi[i]) {
 				// convert ttdpatch presignal format to openttd presignal format.
 				_map3_hi[i] = (_map3_hi[i] >> 1) & 7;
 			}
@@ -1098,7 +1098,7 @@ bool LoadOldSaveGame(const char *file)
 	FixDepot(_depots, m->depots, lengthof(m->depots));
 	FixVehicle(_vehicles, m->vehicles, lengthof(m->vehicles));
 	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));
-	
+
 	FixPlayer(_players, m->players, lengthof(m->players), m->town_name_type);
 	FixName(m->names, lengthof(m->names));
 	FixSign(_sign_list, m->signs, lengthof(m->signs));
@@ -1154,7 +1154,7 @@ bool LoadOldSaveGame(const char *file)
 		_cargo_payment_rates[i] = -(int32)m->cargo_payment_rates[i].price;
 		_cargo_payment_rates_frac[i] = m->cargo_payment_rates[i].frac;
 	}
-	
+
 	free(m);
 	fclose(lss.fin);
 	return true;

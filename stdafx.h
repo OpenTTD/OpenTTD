@@ -119,7 +119,7 @@ static uint32 INLINE TO_LE32(uint32 x) { return BSWAP32(x); }
 static uint16 INLINE TO_LE16(uint16 x) { return BSWAP16(x); }
 # define TO_BE32(x) x
 # define TO_BE16(x) x
-#define TO_BE32X(x) x 
+#define TO_BE32X(x) x
 #else
 # define TO_LE32(x) x
 # define TO_LE16(x) x

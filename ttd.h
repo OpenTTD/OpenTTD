@@ -9,7 +9,7 @@
 #endif
 
 // use this on non static functions
-#define PUBLIC 
+#define PUBLIC
 
 typedef struct Rect {
 	int left,top,right,bottom;
@@ -34,10 +34,10 @@ typedef struct YearMonthDay {
 
 /* --- 1 Day is 74 ticks ---
 * The game's internal structure is dictated by ticks. The date counter (date_fract) is an integer of
-* uint16 type, so it can have a max value of 65536. Every tick this variable (date_fract) is 
-* increased by 885. When it overflows, the new day loop is called. 
+* uint16 type, so it can have a max value of 65536. Every tick this variable (date_fract) is
+* increased by 885. When it overflows, the new day loop is called.
 * * this that means 1 day is : 65536 / 885 = 74 ticks
-* * 1 tick is approximately 27ms. 
+* * 1 tick is approximately 27ms.
 * * 1 day is thus about 2 seconds (74*27 = 1998) on a machine that can run OpenTTD normally
 */
 #define DAY_TICKS 74
@@ -196,7 +196,7 @@ typedef struct Prices {
 	int32 aircraft_running;
 	int32 roadveh_running;
 	int32 ship_running;
-	int32 build_industry;	
+	int32 build_industry;
 } Prices;
 
 #define GAME_DIFFICULTY_NUM 18
@@ -267,12 +267,12 @@ typedef void GetTileDescProc(uint tile, TileDesc *td);
  * tracks = (byte)(ts | ts >>8)
  * This effectively converts the present part of the result (ccdd) to a
  * track bitmask, which disregards directions. Normally, this is the same as just
- * doing (byte)ts I think, although I am not really sure 
+ * doing (byte)ts I think, although I am not really sure
  *
  * A trackdir is combination of a track and a dir, where the lower three bits
  * are a track, the fourth bit is the direction. these give 12 (or 14)
  * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
- * above. 
+ * above.
  */
 typedef uint32 GetTileTrackStatusProc(uint tile, TransportType mode);
 typedef void GetProducedCargoProc(uint tile, byte *b);
@@ -316,7 +316,7 @@ enum {
 	MP_MAP5 = 1<<3,
 	MP_MAPOWNER_CURRENT = 1<<4,
 	MP_MAPOWNER = 1<<5,
-		
+
 	MP_TYPE_MASK = 0xF << 8,
 
 	MP_MAP2_CLEAR = 1 << 12,
@@ -466,7 +466,7 @@ enum {
 
 // special string constants
 enum SpecialStrings {
-	
+
 	// special strings for town names. the town name is generated dynamically on request.
 	SPECSTR_TOWNNAME_START = 0x20C0,
 	SPECSTR_TOWNNAME_ENGLISH = SPECSTR_TOWNNAME_START,
@@ -493,7 +493,7 @@ enum SpecialStrings {
 	SPECSTR_PLAYERNAME_AMERICAN,
 	SPECSTR_PLAYERNAME_LATIN,
 	SPECSTR_PLAYERNAME_SILLY,
-	SPECSTR_PLAYERNAME_LAST = SPECSTR_PLAYERNAME_SILLY, 
+	SPECSTR_PLAYERNAME_LAST = SPECSTR_PLAYERNAME_SILLY,
 
 	SPECSTR_ANDCO_NAME = 0x70E6,
 	SPECSTR_PRESIDENT_NAME = 0x70E7,

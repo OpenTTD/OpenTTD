@@ -129,7 +129,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
-		break;	
+		break;
 
 	case WE_PLACE_DRAG: {
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
@@ -155,7 +155,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
 		if (w != NULL) WP(w,def_d).close=true;
 		break;
-	
+
 	case WE_PLACE_PRESIZE: {
 		uint tile_from, tile_to;
 
@@ -225,7 +225,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		CheckRedrawStationCoverage(w);
 		break;
 	}
-	}	
+	}
 }
 
 static const Widget _build_dock_station_widgets[] = {

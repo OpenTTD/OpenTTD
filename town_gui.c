@@ -84,7 +84,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 	uint buttons;
 	int numact;
 	Town *t = DEREF_TOWN(w->window_number);
-		
+
 	switch(e->event) {
 	case WE_PAINT:
 		buttons = GetMaskOfTownActions(&numact, t);
@@ -129,7 +129,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					/*	WARNING ugly hack!
 							GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
 							It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
-							that because there is another param after it. 
+							that because there is another param after it.
 							So we'll just shift the rating one back if player is AI and all is fine
 						*/
 					SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
@@ -167,7 +167,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
 			}
 		}
-	
+
 		break;
 
 	case WE_CLICK:
@@ -225,11 +225,11 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		SET_DPARAM16(0, t->index);
 		DrawWindowWidgets(w);
-		
+
 		SET_DPARAM32(0, t->population);
 		SET_DPARAM32(1, t->num_houses);
 		DrawString(2,107,STR_2006_POPULATION,0);
-		
+
 		SET_DPARAM16(0, t->act_pass);
 		SET_DPARAM16(1, t->max_pass);
 		DrawString(2,117,STR_200D_PASSENGERS_LAST_MONTH_MAX,0);
@@ -237,7 +237,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM16(0, t->act_mail);
 		SET_DPARAM16(1, t->max_mail);
 		DrawString(2,127,STR_200E_MAIL_LAST_MONTH_MAX,0);
-			
+
 		DrawWindowViewport(w);
 		break;
 
@@ -411,7 +411,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 		DoDrawString(_town_sort_order & 1 ? "\xAA" : "\xA0", (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
-			
+
 		{
 			Town *t;
 			int n = 0;
@@ -447,7 +447,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			_town_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
-		
+
 		case 4: { /* Click on Town Matrix */
 			uint16 id_v = (e->click.pt.y - 28) / 10;
 
@@ -460,17 +460,17 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			{
 				Town *t = DEREF_TOWN(_town_sort[id_v]);
 				assert(t->xy);
-				
+
 				ScrollMainWindowToTile(t->xy);
 			}
 		}	break;
 		}
 		break;
-		
+
 	case WE_4:
 		SetWindowDirty(w);
 		break;
-	}	
+	}
 }
 
 static const WindowDesc _town_directory_desc = {

@@ -96,7 +96,7 @@ int CDECL VehicleNameSorter(const void *a, const void *b)
 	}
 
 	r =  strcmp(buf1, _bufcache);	// sort by name
-	
+
 	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
 		r = va->unitnumber - vb->unitnumber;
 
@@ -120,7 +120,7 @@ int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
 	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
 	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
 	int r = va->profit_this_year - vb->profit_this_year;
-	
+
 	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
 		r = va->unitnumber - vb->unitnumber;
 

@@ -11,7 +11,7 @@ static void AppendPart(byte **buf, int num, const char *names)
 	while (--num>=0) {
 		do names++; while (names[-1]);
 	}
-	
+
 	for(s=*buf; (*s++ = *names++) != 0;) {}
 	*buf = s - 1;
 }
@@ -19,14 +19,14 @@ static void AppendPart(byte **buf, int num, const char *names)
 #define MK(x) x "\x0"
 
 #define NUM_ENGLISH_1 4
-static const char english_1[] = 
+static const char english_1[] =
 	MK("Great ")
 	MK("Little ")
 	MK("New ")
 	MK("Fort ")
 ;
 
-#define NUM_ENGLISH_2 26 
+#define NUM_ENGLISH_2 26
 static const char english_2[] =
 	MK("Wr")
 	MK("B")
@@ -57,7 +57,7 @@ static const char english_2[] =
 ;
 
 #define NUM_ENGLISH_3 8
-static const char english_3[] = 
+static const char english_3[] =
 	MK("ar")
 	MK("a")
 	MK("e")
@@ -69,7 +69,7 @@ static const char english_3[] =
 ;
 
 #define NUM_ENGLISH_4 7
-static const char english_4[] = 
+static const char english_4[] =
 	MK("n")
 	MK("ning")
 	MK("ding")
@@ -80,7 +80,7 @@ static const char english_4[] =
 ;
 
 #define NUM_ENGLISH_5 23
-static const char english_5[] = 
+static const char english_5[] =
 	MK("ville")
 	MK("ham")
 	MK("field")
@@ -107,7 +107,7 @@ static const char english_5[] =
 ;
 
 #define NUM_ENGLISH_6 9
-static const char english_6[] = 
+static const char english_6[] =
 	MK("-on-sea")
 	MK(" Bay")
 	MK(" Market")
@@ -130,7 +130,7 @@ static byte MakeEnglishTownName(byte *buf, uint32 seed)
 	i = GETNUM(0, 54) - 50;
 	if (i >= 0)
 		AppendPart(&buf, i, english_1);
-	
+
 	start = buf;
 
 	AppendPart(&buf, GETNUM(4, NUM_ENGLISH_2), english_2);
@@ -141,14 +141,14 @@ static byte MakeEnglishTownName(byte *buf, uint32 seed)
 	i = GETNUM(15, NUM_ENGLISH_6 + 60) - 60;
 
 	result = 0;
-	
+
 	if (i >= 0) {
 		if (i <= 1) result = NG_EDGE;
 		AppendPart(&buf, i, english_6);
 	}
 
 	if (start[0]=='C' && (start[1] == 'e' || start[1] == 'i'))
-		start[0] = 'K'; 
+		start[0] = 'K';
 
 	/* Replace certain words (routine identical to TTD now) */
 
@@ -167,7 +167,7 @@ static byte MakeEnglishTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_AUSTRIAN_A1 6
-static const char austrian_a1[] = 
+static const char austrian_a1[] =
 	MK("Bad ")
 	MK("Deutsch ")
 	MK("Gross ")
@@ -177,7 +177,7 @@ static const char austrian_a1[] =
 ;
 
 #define NUM_AUSTRIAN_A2 42
-static const char austrian_a2[] = 
+static const char austrian_a2[] =
 	MK("Aus")
 	MK("Alten")
 	MK("Braun")
@@ -223,7 +223,7 @@ static const char austrian_a2[] =
 ;
 
 #define NUM_AUSTRIAN_A3 16
-static const char austrian_a3[] = 
+static const char austrian_a3[] =
 	MK("see")
 	MK("bach")
 	MK("dorf")
@@ -371,8 +371,8 @@ static byte MakeAustrianTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_GERMAN_1 114
-#define NUM_GERMAN_1_HARDCODED 21 
-static const char german_1[] = 
+#define NUM_GERMAN_1_HARDCODED 21
+static const char german_1[] =
 	/* hardcoded names */
 	MK("Berlin")
 	MK("Bonn")
@@ -531,14 +531,14 @@ static const char german_4[] =
 	MK("Elbe")
 	/* use "am" */
 	MK("Main")
-	
+
 ;
 
 static byte MakeGermanTownName(byte *buf, uint32 seed)
 {
 	int i;
 	int ext;
-	
+
 	ext=GETNUM(7, 28); /* Extension - Prefix / Suffix */
 
 	if ((ext==12) || (ext==19)) {
@@ -571,7 +571,7 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_SPANISH_1 86
-static const char spanish_1[] = 
+static const char spanish_1[] =
 	MK("Caracas")
 	MK("Maracay")
 	MK("Maracaibo")
@@ -662,11 +662,11 @@ static const char spanish_1[] =
 static byte MakeSpanishTownName(byte *buf, uint32 seed)
 {
 	AppendPart(&buf, GETNUM(0, NUM_SPANISH_1), spanish_1);
-	return 0;	
+	return 0;
 }
 
 #define NUM_FRENCH_1 70
-static const char french_1[] = 
+static const char french_1[] =
 	MK("Agincourt")
 	MK("Lille")
 	MK("Dinan")
@@ -684,7 +684,7 @@ static const char french_1[] =
 	MK("St. Tropez")
 	MK("Marseilles")
 	MK("Narbonne")
-	MK("Sète") 
+	MK("Sète")
 	MK("Aurillac")
 	MK("Gueret")
 	MK("Le Creusot")
@@ -751,7 +751,7 @@ static byte MakeAmericanTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_SILLY_1 88
-static const char silly_1[] = 
+static const char silly_1[] =
 	MK("Binky")
 	MK("Blubber")
 	MK("Bumble")
@@ -851,7 +851,7 @@ static const char silly_1[] =
 ;
 
 #define NUM_SILLY_2 15
-static const char silly_2[] = 
+static const char silly_2[] =
 	MK("ton")
 	MK("bury")
 	MK("bottom")
@@ -862,7 +862,7 @@ static const char silly_2[] =
 	MK("wig")
 	MK("wick")
 	MK("wood")
-	
+
 	MK("pool")
 	MK("head")
 	MK("burg")
@@ -872,7 +872,7 @@ static const char silly_2[] =
 
 
 static byte MakeSillyTownName(byte *buf, uint32 seed)
-{		
+{
 	AppendPart(&buf, GETNUM(0, NUM_SILLY_1), silly_1);
 	AppendPart(&buf, GETNUM(16, NUM_SILLY_2),silly_2);
 	return 0;
@@ -1081,7 +1081,7 @@ static const char dutch_1[] =
 	MK("Klein ");
 
 #define NUM_DUTCH_2 57
-static const char dutch_2[] = 
+static const char dutch_2[] =
 	MK("Hoog")
 	MK("Laag")
 	MK("Klein")
@@ -1141,7 +1141,7 @@ static const char dutch_2[] =
 	MK("Hil");
 
 #define NUM_DUTCH_3 20
-static const char dutch_3[] = 
+static const char dutch_3[] =
 	MK("Drog")
 	MK("Nat")
 	MK("Valk")
@@ -1162,10 +1162,10 @@ static const char dutch_3[] =
 	MK("Wams")
 	MK("Heerhug")
 	MK("Koning");
-	
+
 
 #define NUM_DUTCH_4 6
-static const char dutch_4[] = 
+static const char dutch_4[] =
 	MK("e")
 	MK("er")
 	MK("el")
@@ -1174,7 +1174,7 @@ static const char dutch_4[] =
 	MK("s");
 
 #define NUM_DUTCH_5 56
-static const char dutch_5[] = 
+static const char dutch_5[] =
 	MK("stad")
 	MK("vorst")
 	MK("dorp")
@@ -1231,13 +1231,13 @@ static const char dutch_5[] =
 	MK("schede")
 	MK("mere")
 	MK("end");
-	
+
 static byte MakeDutchTownName(byte *buf, uint32 seed)
 {
 	int i;
 
 	i = GETNUM(0, 50 + NUM_DUTCH_1) - 50;
-	if (i >= 0) 
+	if (i >= 0)
 		AppendPart(&buf, i, dutch_1);
 
 	i = GETNUM(6, 9);
@@ -1253,7 +1253,7 @@ static byte MakeDutchTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_FINNISH_1 25
-static const char finnish_1[] = 
+static const char finnish_1[] =
 	MK("Aijala")
 	MK("Kisko")
 	MK("Espoo")
@@ -1279,9 +1279,9 @@ static const char finnish_1[] =
 	MK("Imatra")
 	MK("Tapanila")
 	MK("Pasila");
- 
+
 #define NUM_FINNISH_2a 26
-static const char finnish_2a[] = 
+static const char finnish_2a[] =
 	MK("Hiekka")
 	MK("Haapa")
 	MK("Mylly")
@@ -1310,7 +1310,7 @@ static const char finnish_2a[] =
 	MK("Koivu");
 
 #define NUM_FINNISH_2b 18
-static const char finnish_2b[] = 
+static const char finnish_2b[] =
 	MK("harju")
 	MK("linna")
 	MK("järvi")
@@ -1576,7 +1576,7 @@ MK(" Malopolski")
 MK(" Podlaski")
 MK(" Lesny")
 ;
-static const char polish_3_f[] = 
+static const char polish_3_f[] =
 MK(" Wybudowanie")
 MK(" Swietokrzyska")
 MK(" Gorska")
@@ -1692,7 +1692,7 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 }
 
 #define NUM_CZECH_1 82
-static const char czech_1[] = 
+static const char czech_1[] =
 MK("As")
 MK("Benesov")
 MK("Beroun")
@@ -1780,7 +1780,7 @@ MK("Znojmo")
 static byte MakeCzechTownName(byte *buf, uint32 seed)
 {
 	AppendPart(&buf, GETNUM(0, NUM_CZECH_1), czech_1);
-	return 0;	
+	return 0;
 }
 
 
@@ -1879,12 +1879,12 @@ MK("Zvolen")
 static byte MakeSlovakishTownName(byte *buf, uint32 seed)
 {
 	AppendPart(&buf, GETNUM(0, NUM_SLOVAKISH_1), slovakish_1);
-	return 0;	
+	return 0;
 }
 
 // Modifiers
 #define NUM_HUNGARIAN_1 5
-static const char hungarian_1[] = 
+static const char hungarian_1[] =
 	MK("Nagy-")
 	MK("Kis-")
 	MK("Felsõ-")
@@ -1893,7 +1893,7 @@ static const char hungarian_1[] =
 ;
 
 #define NUM_HUNGARIAN_2 54
-static const char hungarian_2[] = 
+static const char hungarian_2[] =
 // River modifiers
 // 1 - 10
 	MK("Bodrog")
@@ -1971,7 +1971,7 @@ static const char hungarian_2[] =
 ;
 
 #define NUM_HUNGARIAN_3 16
-static const char hungarian_3[] = 
+static const char hungarian_3[] =
 	MK("apáti")
 	MK("bába")
 	MK("bikk")
@@ -1991,7 +1991,7 @@ static const char hungarian_3[] =
 ;
 
 #define NUM_HUNGARIAN_4 5
-static const char hungarian_4[] = 
+static const char hungarian_4[] =
 	MK("alja")
 	MK("egyháza")
 	MK("háza")
@@ -2054,7 +2054,7 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 
 		AppendPart(&buf, GETNUM(3, NUM_HUNGARIAN_2), hungarian_2);
 		AppendPart(&buf, GETNUM(6, NUM_HUNGARIAN_3), hungarian_3);
-		
+
 		i = GETNUM(10, NUM_HUNGARIAN_4 * 3);
 		if (i < NUM_HUNGARIAN_4) AppendPart(&buf, i, hungarian_4);
 	}

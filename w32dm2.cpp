@@ -65,7 +65,7 @@ IDirectMusicPerformance *performance = NULL;
 IDirectMusicSegment *segment = NULL;
 
 // the loader bject can load many types of DMusic related files
-IDirectMusicLoader *loader = NULL;						
+IDirectMusicLoader *loader = NULL;
 
 // whether we've initialized COM or not (when deciding whether to shut down)
 int COMInitialized = 0;
@@ -81,7 +81,7 @@ struct ProcPtrs {
 };
 
 #define M(x) x "\0"
-static const char ole_files[] = 
+static const char ole_files[] =
 	M("ole32.dll")
 	M("CoCreateInstance")
 	M("CoInitialize")
@@ -95,7 +95,7 @@ static ProcPtrs _proc;
 
 static bool LoadOleDLL()
 {
-	if (_proc.CoCreateInstance != NULL) 
+	if (_proc.CoCreateInstance != NULL)
 		return true;
 	if (!LoadLibraryList((void**)&_proc, ole_files))
 		return false;
@@ -151,7 +151,7 @@ bool InitDirectMusic (void)
 	// midi file for our demo. Again, we need to use CoCreateInstance
 	// and pass the appropriate ID parameters
 	if (FAILED(_proc.CoCreateInstance((REFCLSID)CLSID_DirectMusicLoader,
-			NULL, CLSCTX_INPROC, 
+			NULL, CLSCTX_INPROC,
 			(REFIID)IID_IDirectMusicLoader,
 			(LPVOID *)&loader))) {
 		MSGBOX("Failed to create loader object");
@@ -163,7 +163,7 @@ bool InitDirectMusic (void)
 	return true;
 }
 
-// Releases memory used by all of the initialized 
+// Releases memory used by all of the initialized
 // DirectMusic objects in the program
 void ReleaseSegment (void)
 {
@@ -174,8 +174,8 @@ void ReleaseSegment (void)
 }
 void ShutdownDirectMusic (void)
 {
-	// release everything but the segment, which the performance 
-	// will release automatically (and it'll crash if it's been 
+	// release everything but the segment, which the performance
+	// will release automatically (and it'll crash if it's been
 	// released already)
 
 	if (NULL != loader) {
@@ -196,7 +196,7 @@ void ShutdownDirectMusic (void)
 	}
 }
 
-// Load MIDI file for playing 
+// Load MIDI file for playing
 bool LoadMIDI (char *directory, char *filename)
 {
 	DMUS_OBJECTDESC obj_desc;
@@ -229,8 +229,8 @@ bool LoadMIDI (char *directory, char *filename)
 		ReleaseSegment();
 
 	// and make a new segment
-	if (FAILED(loader->GetObject(&obj_desc, 
-			(REFIID)IID_IDirectMusicSegment, 
+	if (FAILED(loader->GetObject(&obj_desc,
+			(REFIID)IID_IDirectMusicSegment,
 			(LPVOID *) &segment))) {
 		MSGBOX("LoadMIDI: Get object failed");
 		return FALSE;

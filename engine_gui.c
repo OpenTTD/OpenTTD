@@ -88,7 +88,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3: DeleteWindow(w); break;
-		case 4: 
+		case 4:
 			DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
 			DeleteWindow(w);
 			break;
@@ -150,7 +150,7 @@ void DrawNewsNewAircraftAvail(Window *w)
 	DrawNewsBorder(w);
 
 	engine = WP(w,news_d).ni->string_id;
-	
+
 	DrawStringMultiCenter(w->width >> 1, 20, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE, w->width - 2);
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
@@ -203,7 +203,7 @@ void DrawNewsNewShipAvail(Window *w)
 	DrawNewsBorder(w);
 
 	engine = WP(w,news_d).ni->string_id;
-	
+
 	DrawStringMultiCenter(w->width >> 1, 20, STR_982C_NEW_SHIP_NOW_AVAILABLE, w->width - 2);
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 

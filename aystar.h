@@ -107,7 +107,7 @@ struct AyStar {
 	AyStar_GetNeighbours* GetNeighbours;
 	AyStar_EndNodeCheck* EndNodeCheck;
 	AyStar_FoundEndNode* FoundEndNode;
-	
+
 	/* These are completely untouched by AyStar, they can be accesed by
 	 * the application specific routines to input and output data.
 	 * user_path should typically contain data about the resulting path
@@ -117,7 +117,7 @@ struct AyStar {
 	void *user_path;
 	void *user_target;
 	uint user_data[10];
-	
+
 	/* How many loops are there called before AyStarMain_Main gives
 	 * control back to the caller. 0 = until done */
 	byte loops_per_tick;
@@ -125,7 +125,7 @@ struct AyStar {
 	 *  0 = infinite */
 	uint max_path_cost;
 	/* The maximum amount of nodes that will be expanded, 0 = infinite */
-	uint max_search_nodes; 
+	uint max_search_nodes;
 
 	/* These should be filled with the neighbours of a tile by
 	 * GetNeighbours */
@@ -140,7 +140,7 @@ struct AyStar {
 	AyStar_Free* free;
 	AyStar_Clear* clear;
 	AyStar_CheckTile* checktile;
-	
+
 	/* These will contain the open and closed lists */
 
 	/* The actual closed list */
@@ -164,6 +164,6 @@ void AyStarMain_Clear(AyStar *aystar);
  * callling init_AyStar (see the declaration of AyStar for which fields are
  * internal */
 void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets);
-	
+
 
 #endif

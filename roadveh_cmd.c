@@ -38,7 +38,7 @@ static const byte _roadveh_spritenum[88] = {
 	0, 17, 17, 34, 51, 51, 51, 1,
 	18, 35, 2, 19, 36, 57, 57, 57,
 	3, 20, 37, 4, 21, 38, 5, 22,
-	
+
 	39, 6, 23, 40, 7, 24, 41, 8,
 	25, 42, 9, 26, 43, 10, 27, 44,
 	11, 28, 45, 12, 29, 46, 13, 30,
@@ -47,7 +47,7 @@ static const byte _roadveh_spritenum[88] = {
 	33, 50, 52, 52, 52, 53, 53, 53,
 	54, 54, 54, 55, 55, 55, 56, 56,
 	56, 58, 58, 58, 59, 59, 59, 60,
-	60, 60, 61, 61, 61, 62, 62, 62,	
+	60, 60, 61, 61, 61, 62, 62, 62,
 };
 
 const byte _roadveh_speed[88] = {
@@ -164,7 +164,7 @@ int GetRoadVehImage(Vehicle *v, byte direction)
 		img = _engine_original_sprites[v->engine_type];
 	}
 #endif
-	
+
 	image = direction + _roadveh_images[img];
 	if (v->cargo_count >= (v->cargo_cap >> 1))
 		image += _roadveh_full_adder[img];
@@ -186,7 +186,7 @@ void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 
 	SET_DPARAM16(4, _roadveh_capacity[engine]);
 	SET_DPARAM16(3, _cargoc.names_long_p[_roadveh_cargo_type[engine]]);
-		
+
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
@@ -202,7 +202,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	byte unit_num;
 	uint tile = TILE_FROM_XY(x,y);
 	Engine *e;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	cost = EstimateRoadVehCost(p1);
@@ -256,7 +256,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
 		_new_roadveh_id = v->index;
-		
+
 		v->string_id = STR_SV_ROADVEH_NAME;
 		*(v->schedule_ptr = _ptr_to_next_order++) = 0;
 
@@ -303,7 +303,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	
+
 	v = &_vehicles[p1];
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
@@ -311,7 +311,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
-	
+
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -321,7 +321,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteVehicle(v);
 	}
-	
+
 	return -(int32)v->value;
 }
 
@@ -351,7 +351,7 @@ static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int trac
 	if (IS_TILETYPE(tile, MP_STREET) &&
 			(_map5[tile] & 0xF0) == 0x20 &&
 			_map_owner[tile] == rfdd->owner) {
-			
+
 		if (length < rfdd->best_length) {
 			rfdd->best_length = length;
 			rfdd->tile = tile;
@@ -365,7 +365,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 	uint tile = v->tile;
 	int i;
 	RoadFindDepotData rfdd;
-		
+
 	if (v->u.road.state == 255) { tile = GetVehicleOutOfTunnelTile(v); }
 
 	rfdd.owner = v->owner;
@@ -409,7 +409,7 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->dest_tile = _depots[depot].xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
-	
+
 	return 0;
 }
 
@@ -430,10 +430,10 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_error_message = STR_EMPTY;
 		return CMD_ERROR;
 	}
-				
+
 	if (flags & DC_EXEC) {
 		v->u.road.reverse_ctr = 180;
-	}		
+	}
 
 	return 0;
 }
@@ -495,10 +495,10 @@ static void ClearCrashedStation(Vehicle *v)
 
 	// mark station as not busy
 	bb &= ~0x80;
-	
+
 	// free parking bay
 	bb |= (v->u.road.state&0x02)?2:1;
-	
+
 	*b = bb;
 }
 
@@ -506,17 +506,17 @@ static void RoadVehDelete(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		
+
 	_vehicle_sort_dirty[VEHROAD] = true; // delete bus/truck (eg. crash for example)
 	InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 	InvalidateWindow(WC_COMPANY, v->owner);
 
 	if(IS_TILETYPE(v->tile, MP_STATION))
 		ClearCrashedStation(v);
-	
+
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
-	
+
 	DeleteVehicle(v);
 }
 
@@ -531,7 +531,7 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 
 	old_z = v->z_pos;
 	v->z_pos = new_z;
-	
+
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
 	return old_z;
@@ -621,10 +621,10 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
-		
+
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		
+
 		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ? 0xD : 0x34, v);
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
@@ -693,7 +693,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 {
 	if (v->next_order == OT_NOTHING)
 		return;
-	
+
 	if (v->next_order != OT_DUMMY) {
 		if ((v->next_order&OT_MASK) != OT_LOADING)
 			return;
@@ -709,7 +709,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 			}
 			return;
 		}
-		
+
 		{
 			byte b = v->next_order;
 			v->next_order = OT_LEAVESTATION;
@@ -737,16 +737,16 @@ typedef struct RoadVehFindData {
 
 void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
 {
-	static const short _dists[] = { 
+	static const short _dists[] = {
 		-4, -8, -4, -1, 4, 8, 4, 1,
 		-4, -1, 4, 8, 4, 1, -4, -8,
 	};
-	
+
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
 
-	if (rvf->veh == v || 
-			v->type != VEH_Road || 
+	if (rvf->veh == v ||
+			v->type != VEH_Road ||
 			v->u.road.state == 254 ||
 			myabs(v->z_pos - rvf->veh->z_pos) > 6 ||
 			v->direction != rvf->dir ||
@@ -766,13 +766,13 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 
 	if (v->u.road.reverse_ctr != 0)
 		return NULL;
-	
+
 	rvf.x = x;
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
 	u = VehicleFromPos(TILE_FROM_XY(x,y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
-	
+
 	// This code protects a roadvehicle from being blocked for ever
 	//  If more then 1480 / 74 days a road vehicle is blocked, it will
 	//  drive just through it. The ultimate backup-code of TTD.
@@ -784,7 +784,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 
 	if (++v->u.road.unk2 > 1480)
 		return NULL;
-	
+
 	return u;
 }
 
@@ -825,13 +825,13 @@ static bool RoadVehAccelerate(Vehicle *v)
 {
 	uint spd = v->cur_speed + 1 + ((v->u.road.overtaking != 0)?1:0);
 	byte t;
-	
+
 	// Clamp
 	spd = min(spd, v->max_speed);
 
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
-		v->cur_speed = spd;	
+		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
@@ -858,7 +858,7 @@ static byte RoadVehGetNewDirection(Vehicle *v, int x, int y)
 		1, 0, 5, 0,
 		2, 3, 4
 	};
-	
+
 	x = x - v->x_pos + 1;
 	y = y - v->y_pos + 1;
 
@@ -878,7 +878,7 @@ static byte RoadVehGetSlidingDirection(Vehicle *v, int x, int y)
 	if (b==d) return d;
 	if (b==((d-1)&7)) return d;
 	if (b==((d-2)&7)) return d;
-	return (d+2)&7;	
+	return (d+2)&7;
 }
 
 typedef struct OvertakeData {
@@ -890,11 +890,11 @@ typedef struct OvertakeData {
 void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
 {
 	if (v->tile != (TileIndex)od->tile ||
-			v->type != VEH_Road || 
-			v == od->u || 
+			v->type != VEH_Road ||
+			v == od->u ||
 			v == od->v)
 				return NULL;
-	return v; 
+	return v;
 }
 
 static bool FindRoadVehToOvertake(OvertakeData *od)
@@ -1078,7 +1078,7 @@ do_it:;
 			if (desttile == tile && bitmask&_road_pf_table_3[m5&3]) {
 				return_track(FindFirstBit2x64(bitmask&_road_pf_table_3[m5&3]));
 			}
-		}		
+		}
 	}
 	// do pathfind
 	frd.dest = desttile;
@@ -1107,7 +1107,7 @@ found_best_track:;
 	if (HASBIT(signal, best_track))
 		return -1;
 
-	return best_track;		
+	return best_track;
 }
 
 typedef struct RoadDriveEntry {
@@ -1173,13 +1173,13 @@ static void RoadVehEventHandler(Vehicle *v)
 		byte rd2;
 
 		v->cur_speed = 0;
-		
+
 		dir = _map5[v->tile]&3;
 		v->direction = dir*2+1;
 
 		rd2 = _roadveh_data_2[dir];
 		rdp = _road_drive_data[(_opt.road_side<<4) + rd2];
-		
+
 		x = GET_TILE_X(v->tile)*16 + (rdp[6].x&0xF);
 		y = GET_TILE_Y(v->tile)*16 + (rdp[6].y&0xF);
 
@@ -1193,7 +1193,7 @@ static void RoadVehEventHandler(Vehicle *v)
 		v->vehstatus &= ~VS_HIDDEN;
 		v->u.road.state = rd2;
 		v->u.road.frame = 6;
-		
+
 		v->cur_image = GetRoadVehImage(v, v->direction);
 		UpdateRoadVehDeltaXY(v);
 		SetRoadVehPosition(v,x,y);
@@ -1223,7 +1223,7 @@ static void RoadVehEventHandler(Vehicle *v)
 		if (IS_TILETYPE(gp.new_tile, MP_TUNNELBRIDGE) &&
 				(_map5[gp.new_tile]&0xF0) == 0 &&
 				(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&4)) {
-			
+
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
 			v->cur_image = GetRoadVehImage(v, v->direction);
 			UpdateRoadVehDeltaXY(v);
@@ -1353,7 +1353,7 @@ again:
 
 	x = (v->x_pos&~15)+(rd.x&15);
 	y = (v->y_pos&~15)+(rd.y&15);
-	
+
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
 	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && (u=RoadVehFindCloseTo(v, x, y, new_dir)) != NULL) {
@@ -1383,7 +1383,7 @@ again:
 
 		if ( (v->next_order&OT_MASK) != OT_LEAVESTATION &&
 				(v->next_order&OT_MASK) != OT_GOTO_DEPOT) {
-			
+
 			*b &= ~0x80;
 
 			v->last_station_visited = _map2[v->tile];
@@ -1393,7 +1393,7 @@ again:
 			old_order = v->next_order;
 			v->next_order = OT_LOADING;
 
-			if ((old_order & OT_MASK) == OT_GOTO_STATION && 
+			if ((old_order & OT_MASK) == OT_GOTO_STATION &&
 					v->next_order_param == v->last_station_visited) {
 				v->next_order = OT_LOADING | OF_NON_STOP | (old_order & (OF_FULL_LOAD|OF_UNLOAD));
 			}
@@ -1449,10 +1449,10 @@ void RoadVehEnterDepot(Vehicle *v)
 
 	MaybeRenewVehicle(v, EstimateRoadVehCost(v->engine_type));
 
-	
+
 	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-	
+
 		t = v->next_order;
 		v->next_order = OT_DUMMY;
 
@@ -1504,7 +1504,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
 		return;
-	
+
 	// Don't interfere with a depot visit scheduled by the user, or a
 	// depot visit by the order list.
 	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT &&
@@ -1527,7 +1527,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	v->next_order = OT_GOTO_DEPOT | OF_NON_STOP;
 	v->next_order_param = (byte)i;
 	v->dest_tile = (&_depots[i])->xy;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);		
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 }
 
 void OnNewDay_RoadVeh(Vehicle *v)

@@ -117,11 +117,11 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			// setup screenshot format dropdown
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0);
 			return;
-			
+
 		}
 		break;
 
-	case WE_DROPDOWN_SELECT: 
+	case WE_DROPDOWN_SELECT:
 		switch(e->dropdown.button) {
 		case 20:
 			if (e->dropdown.index == 0) {
@@ -220,7 +220,7 @@ static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,    14,   130,   349,   202,   213, STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK,	STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
 
 {      WWT_FRAME,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,				STR_NULL},
-{          WWT_6,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,		STR_OPTIONS_LANG_TIP}, 
+{          WWT_6,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,		STR_OPTIONS_LANG_TIP},
 {   WWT_CLOSEBOX,    14,   338,   348,   119,   128, STR_0225,								STR_OPTIONS_LANG_TIP},
 {      WWT_FRAME,    14,    10,   179,   146,   181, STR_OPTIONS_RES,					STR_NULL},
 {          WWT_6,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,			STR_OPTIONS_RES_TIP},
@@ -354,7 +354,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			uint btn, dis;
 			int val;
 			const GameSettingData *info;
-			
+
 			x = e->click.pt.x - 5;
 			if (!IS_INT_INSIDE(x, 0, 21))
 				return;
@@ -470,7 +470,7 @@ void ShowGameDifficulty()
 	 */
 	memcpy(&_opt_mod_temp, _opt_mod_ptr, sizeof(GameOptions));
 	AllocateWindowDesc(&_game_difficulty_desc);
-}	
+}
 
 void ShowHighscoreTable(int tbl)
 {
@@ -490,7 +490,7 @@ int32 AiNew_PatchActive_Warning(int32 p1)
 {
   if (p1 == 1)
     ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
-    
+
   return 0;
 }
 
@@ -511,14 +511,14 @@ int32 CheckInterval(int32 p1)
 {
 	bool warning;
 	if (p1) {
-		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   5, 90+1) || _patches.servint_trains   == 0) && 
+		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   5, 90+1) || _patches.servint_trains   == 0) &&
 								(IS_INT_INSIDE(_patches.servint_roadveh,  5, 90+1) || _patches.servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(_patches.servint_aircraft, 5, 90+1) || _patches.servint_aircraft == 0) && 
+								(IS_INT_INSIDE(_patches.servint_aircraft, 5, 90+1) || _patches.servint_aircraft == 0) &&
 								(IS_INT_INSIDE(_patches.servint_ships,    5, 90+1) || _patches.servint_ships    == 0) );
 	} else {
-		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   30, 800+1) || _patches.servint_trains   == 0) && 
+		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   30, 800+1) || _patches.servint_trains   == 0) &&
 								(IS_INT_INSIDE(_patches.servint_roadveh,  30, 800+1) || _patches.servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(_patches.servint_aircraft, 30, 800+1) || _patches.servint_aircraft == 0) && 
+								(IS_INT_INSIDE(_patches.servint_aircraft, 30, 800+1) || _patches.servint_aircraft == 0) &&
 								(IS_INT_INSIDE(_patches.servint_ships,    30, 800+1) || _patches.servint_ships    == 0) );
 	}
 
@@ -560,7 +560,7 @@ static const PatchEntry _patches_ui[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTOSCROLL,				&_patches.autoscroll,								0,  0,  0, NULL},
 
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_ERRMSG_DURATION,	&_patches.errmsg_duration,					0, 20,  1, NULL},
-	
+
 	{PE_UINT8,	PF_MULTISTRING, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_INVISIBLE_TREES,	&_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
 };
@@ -570,7 +570,7 @@ static const PatchEntry _patches_construction[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_EXTRADYNAMITE,		&_patches.extra_dynamite,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGBRIDGES,			&_patches.longbridges,							0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				&_patches.signal_side,							0,  0,  0, NULL},
-	
+
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		&_patches.always_small_airport,			0,  0,  0, NULL},
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, &_patches.drag_signals_density, 1, 20,  1, NULL},
 
@@ -622,7 +622,7 @@ static const PatchEntry _patches_economy[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SAMEINDCLOSE,			&_patches.same_industry_close,			0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_BRIBE,						&_patches.bribe,										0,  0,  0, NULL},
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	&_patches.snow_line_height,					2, 13,  1, NULL},
-	
+
 	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, &_patches.colored_news_date, 1900, 2200, 5, NULL},
 	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, &_patches.starting_date,	 1920,2100, 1, NULL},
 
@@ -666,7 +666,7 @@ static int32 ReadPE(const PatchEntry*pe)
 	default:
 		NOT_REACHED();
 	}
-  
+
 	/* useless, but avoids compiler warning this way */
 	return 0;
 }
@@ -682,36 +682,36 @@ static void WritePE(const PatchEntry *pe, int32 val)
 	switch(pe->type) {
 	case PE_BOOL: *(bool*)pe->variable = (bool)val; break;
 
-	case PE_UINT8: if ((uint8)val > (uint8)pe->max) 
+	case PE_UINT8: if ((uint8)val > (uint8)pe->max)
 									*(uint8*)pe->variable = (uint8)pe->max;
 								else if ((uint8)val < (uint8)pe->min)
 									*(uint8*)pe->variable = (uint8)pe->min;
 								else
-									*(uint8*)pe->variable = (uint8)val; 
+									*(uint8*)pe->variable = (uint8)val;
 								break;
 
-	case PE_INT16: if ((int16)val > (int16)pe->max) 
+	case PE_INT16: if ((int16)val > (int16)pe->max)
 									*(int16*)pe->variable = (int16)pe->max;
 								else if ((int16)val < (int16)pe->min)
 									*(int16*)pe->variable = (int16)pe->min;
 								else
-									*(int16*)pe->variable = (int16)val; 
+									*(int16*)pe->variable = (int16)val;
 								break;
 
-	case PE_UINT16: if ((uint16)val > (uint16)pe->max) 
+	case PE_UINT16: if ((uint16)val > (uint16)pe->max)
 									*(uint16*)pe->variable = (uint16)pe->max;
 								else if ((uint16)val < (uint16)pe->min)
 									*(uint16*)pe->variable = (uint16)pe->min;
 								else
-									*(uint16*)pe->variable = (uint16)val; 
+									*(uint16*)pe->variable = (uint16)val;
 								break;
 
-	case PE_INT32: if ((int32)val > (int32)pe->max) 
+	case PE_INT32: if ((int32)val > (int32)pe->max)
 									*(int32*)pe->variable = (int32)pe->max;
 								else if ((int32)val < (int32)pe->min)
 									*(int32*)pe->variable = (int32)pe->min;
 								else
-									*(int32*)pe->variable = val; 
+									*(int32*)pe->variable = val;
 								break;
 
 	case PE_CURRENCY: val /= GetCurrentCurrencyRate();
@@ -791,7 +791,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 			y = e->click.pt.y - 46 - 1;
 			if (y < 0) return;
-			
+
 			btn = y / 11;
 			if (y % 11 > 9) return;
 
@@ -836,13 +836,13 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 							if (val < pe->min) val = pe->min;
 						}
 					}
-					
+
 					if (val != oval) {
 						WP(w,def_d).data_2 = btn * 2 + 1 + ((x>=10) ? 1 : 0);
 						w->flags4 |= 5 << WF_TIMEOUT_SHL;
 						_left_button_clicked = false;
 					}
-					break;				
+					break;
 				}
 				if (val != oval) {
 					WritePE(pe, val);
@@ -858,7 +858,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0);
 				}
 			}
-			
+
 			break;
 		}
 		case 4: case 5: case 6: case 7: case 8: case 9:
@@ -878,7 +878,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		if (*e->edittext.str) {
 			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
 			const PatchEntry *pe = &page->entries[WP(w,def_d).data_3];
-			WritePE(pe, atoi(e->edittext.str)); 
+			WritePE(pe, atoi(e->edittext.str));
 			SetWindowDirty(w);
 
 			if (pe->click_proc != NULL) // call callback function

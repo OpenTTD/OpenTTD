@@ -3,7 +3,7 @@
 
 #define MAX_INT 0x7FFFFFFF
 
-#ifdef min 
+#ifdef min
 #undef min
 #endif
 
@@ -35,7 +35,7 @@ static INLINE bool str_eq(const byte *a, const byte *b)
 }
 
 // Will crash if strings are equal
-static INLINE bool str_is_below(byte *a, byte *b) {		
+static INLINE bool str_is_below(byte *a, byte *b) {
 	while (*a <= *b) {
 		if (*a < *b) return true;
 		a++;
@@ -152,7 +152,7 @@ static INLINE int FindFirstBit2x64(int value)
 
 
 #if TILE_X_BITS + TILE_Y_BITS <= 16
-	typedef uint16 TileIndex;	
+	typedef uint16 TileIndex;
 	typedef int16 TileIndexDiff;
 #else
 	typedef uint32 TileIndex;
@@ -210,7 +210,7 @@ static INLINE void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 	static INLINE uint16 READ_LE_UINT16(const void *b) {
 		return ((byte*)b)[0] + (((byte*)b)[1] << 8);
 	}
-#	define ADD_WORD(x) ((x) >> 8)&0xFF, (x)&0xFF 
+#	define ADD_WORD(x) ((x) >> 8)&0xFF, (x)&0xFF
 #	define ADD_DWORD(x) ((x) >> 24)&0xFF, ((x) >> 16)&0xFF, ((x) >> 8)&0xFF,  (x)&0xFF
 #endif
 

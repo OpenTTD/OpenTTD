@@ -110,7 +110,7 @@ typedef struct Patches {
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
 	bool invisible_trees; // don't show trees when buildings are transparent
-	
+
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 
 	byte max_trains;				//max trains in game per player (these are 8bit because the unitnumber field can't hold more)
@@ -132,7 +132,7 @@ typedef struct Patches {
 	byte pf_maxdepth;				// maximum recursion depth when searching for a train route for new pathfinder
 	uint16 pf_maxlength;		// maximum length when searching for a train route for new pathfinder
 
-	
+
 	bool bridge_pillars;		// show bridge pillars for high bridges
 
 	bool ai_disable_veh_train;		// disable types for AI
@@ -169,7 +169,7 @@ typedef struct Cheat {
 } Cheat;
 
 
-// WARNING! Do _not_ remove entries in Cheats struct or change the order 
+// WARNING! Do _not_ remove entries in Cheats struct or change the order
 // of the existing ones! Would break downward compatibility.
 // Only add new entries at the end of the struct!
 
@@ -187,7 +187,7 @@ typedef struct Cheats {
 VARDEF Cheats _cheats;
 
 typedef struct Paths {
-	char *personal_dir;  // includes cfg file and save folder 
+	char *personal_dir;  // includes cfg file and save folder
 	char *game_data_dir; // includes data, gm, lang
 	char *data_dir;
 	char *gm_dir;

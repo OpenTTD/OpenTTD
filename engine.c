@@ -124,7 +124,7 @@ void StartupEngines()
 		e->railtype = ei->railtype_climates >> 4;
 		e->flags = 0;
 		e->player_avail = 0;
-		
+
 		r = Random();
 		e->intro_date = (uint16)((r & 0x1FF) + ei->base_intro);
 		if (e->intro_date <= _date) {
@@ -191,7 +191,7 @@ void SetWagonOverrideSprites(byte engine, struct SpriteSuperSet *superset,
 	wos->overrides_count++;
 	wos->overrides = realloc(wos->overrides,
 	                         wos->overrides_count * sizeof(struct WagonOverride));
-	
+
 	wo = &wos->overrides[wos->overrides_count - 1];
 	wo->superset = *superset;
 	wo->trains = trains;
@@ -246,7 +246,7 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
 		overset = GetWagonOverrideSpriteSet(engine, overriding_engine);
 		if (overset) superset = overset;
 	}
-	
+
 	if (!superset->sprites_per_set && cargo != 29) {
 		// This superset is empty but perhaps there'll be a default one.
 		superset = &_engine_custom_sprites[engine][29];
@@ -307,7 +307,7 @@ void AcceptEnginePreview(Engine *e, int player)
 	SETBIT(e->player_avail, player);
 
 	p = DEREF_PLAYER(player);
-	
+
 	UPDATE_PLAYER_RAILTYPE(e,p);
 
 	e->preview_player = 0xFF;
@@ -333,7 +333,7 @@ void EnginesDailyLoop()
 					e->flags &= ~ENGINE_PREVIEWING;
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player++;
-				}	
+				}
 			} else if (e->preview_player != 0xFF) {
 				num = e->preview_player;
 				mask = 0;
@@ -341,7 +341,7 @@ void EnginesDailyLoop()
 					best_hist = -1;
 					best_player = -1;
 					FOR_ALL_PLAYERS(p) {
-						if (p->is_active && p->block_preview == 0 && !HASBIT(mask,p->index) && 
+						if (p->is_active && p->block_preview == 0 && !HASBIT(mask,p->index) &&
 								p->old_economy[0].performance_history > best_hist) {
 							best_hist = p->old_economy[0].performance_history;
 							best_player = p->index;
@@ -353,7 +353,7 @@ void EnginesDailyLoop()
 					}
 					mask |= (1 << best_player);
 				} while (--num != 0);
-				
+
 				if (!IS_HUMAN_PLAYER(best_player)) {
 					/* TTDBUG: TTD has a bug here */
 					AcceptEnginePreview(e, best_player);
@@ -361,7 +361,7 @@ void EnginesDailyLoop()
 					e->flags |= ENGINE_PREVIEWING;
 					e->preview_wait = 20;
 					if (IS_INTERACTIVE_PLAYER(best_player)) {
-						ShowEnginePreviewWindow(i);					
+						ShowEnginePreviewWindow(i);
 					}
 				}
 			}
@@ -390,7 +390,7 @@ void NewVehicleAvailable(Engine *e)
 		FOR_ALL_PLAYERS(p) {
 			if (!HASBIT(e->player_avail,p->index))
 				continue;
-		
+
 			for(v=_vehicles;;) {
 				if (v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship ||
 						(v->type == VEH_Aircraft && v->subtype <= 2)) {
@@ -466,7 +466,7 @@ int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	str = AllocateName((byte*)_decode_parameters, 0);
 	if (str == 0)
 		return CMD_ERROR;
-	
+
 	if (flags & DC_EXEC) {
 		StringID old_str = _engine_name_strings[p1];
 		_engine_name_strings[p1] = str;

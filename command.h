@@ -140,7 +140,7 @@ enum {
 	CMD_REFIT_RAIL_VEHICLE = 106,
 	CMD_RESTORE_ORDER_INDEX = 107,
 	CMD_BUILD_LOCK = 108,
-	
+
 	CMD_START_SCENARIO = 109,
 	CMD_BUILD_MANY_SIGNALS = 110,
 
@@ -157,7 +157,7 @@ enum {
 	DC_AI_BUILDING = 0x20,			// special building rules for AI
 	DC_NO_TOWN_RATING = 0x40,		// town rating does not disallow you from building
 	DC_FORCETEST = 0x80,				// force test too.
-	
+
 	CMD_ERROR = ((int32)0x80000000),
 };
 

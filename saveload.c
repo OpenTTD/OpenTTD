@@ -88,7 +88,7 @@ static void SlWriteFill()
 		_sl.offs_base += len;
 		if (len) _sl.write_bytes(len);
 	}
-	
+
 	// setup next buffer
 	_sl.bufp = _sl.buf;
 	_sl.bufe = _sl.buf + _sl.bufsize;
@@ -203,7 +203,7 @@ int SlIterateArray()
 {
 	int ind;
 	static uint32 next_offs;
-	
+
 	// Must be at end of current block.
 	assert(next_offs == 0 || SlGetOffs() == next_offs);
 
@@ -224,7 +224,7 @@ int SlIterateArray()
 			DEBUG(misc, 0) ("SlIterateArray: error\n");
 			return -1; // error
 		}
-		
+
 		if (len != 0)
 			return ind;
 	}
@@ -300,7 +300,7 @@ uint SlGetFieldLength()
 static void SlSaveLoadConv(void *ptr, uint conv)
 {
 	int64 x = 0;
-	
+
 	if (_sl.save) {
 		// Read a value from the struct. These ARE endian safe.
 		switch((conv >> 4)&0xf) {
@@ -310,7 +310,7 @@ static void SlSaveLoadConv(void *ptr, uint conv)
 		case SLE_VAR_U16>>4: x = *(uint16*)ptr; break;
 		case SLE_VAR_I32>>4: x = *(int32*)ptr; break;
 		case SLE_VAR_U32>>4: x = *(uint32*)ptr; break;
-		case SLE_VAR_I64>>4: x = *(int64*)ptr; break; 
+		case SLE_VAR_I64>>4: x = *(int64*)ptr; break;
 		case SLE_VAR_U64>>4: x = *(uint64*)ptr; break;
 		case SLE_VAR_NULL>>4: x = 0; break;
 		default:
@@ -333,7 +333,7 @@ static void SlSaveLoadConv(void *ptr, uint conv)
 			NOT_REACHED();
 		}
 	} else {
-		
+
 		// Read a value from the file
 		switch(conv & 0xF) {
 		case SLE_FILE_I8: x = (int8)SlReadByte();	break;
@@ -441,7 +441,7 @@ static size_t SlCalcObjLength(void *object, const void *desc)
 
 			switch(cmd&3) {
 			// Normal variable
-			case 0: length += SlCalcConvLen(conv, NULL);break;			
+			case 0: length += SlCalcConvLen(conv, NULL);break;
 			// Reference
 			case 1: length += 2; break;
 			// Array
@@ -509,7 +509,7 @@ void SlObject(void *object, const void *desc)
 			case 2:	SlArray(ptr, *d++, conv); break;
 			default:NOT_REACHED();
 			}
-	
+
 		// Write byte.
 		} else if (cmd == 8) {
 			if (_sl.save) {
@@ -592,7 +592,7 @@ static void SlLoadChunk(const ChunkHandler *ch)
 
 	_sl.block_mode = m;
 	_sl.obj_len = 0;
-	
+
 	switch(m) {
 	case CH_ARRAY:
 		_sl.array_index = 0;
@@ -641,7 +641,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 		_tmp_proc_1 = proc;
 		proc = SlStubSaveProc;
 	}
-	
+
 	_sl.block_mode = ch->flags & CH_TYPE_MASK;
 	switch(ch->flags & CH_TYPE_MASK) {
 	case CH_RIFF:
@@ -674,7 +674,7 @@ void SlSaveChunks()
 		for(chsc=_sl.chs;(ch=*chsc++) != NULL;) {
 			while(true) {
 				if (((ch->flags >> CH_PRI_SHL) & (CH_NUM_PRI_LEVELS - 1)) == p)
-					SlSaveChunk(ch);	
+					SlSaveChunk(ch);
 				if (ch->flags & CH_LAST)
 					break;
 				ch++;
@@ -741,7 +741,7 @@ static uint ReadLZO()
 
 	// Check if size is bad
 	((uint32*)out)[0] = size = tmp[1];
-	
+
 	if (_sl.version != 0) {
 		tmp[0] = TO_BE32(tmp[0]);
 		size = TO_BE32(size);
@@ -754,7 +754,7 @@ static uint ReadLZO()
 
 	// Verify checksum
 	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError("bad checksum");
-	
+
 	// Decompress
 	lzo1x_decompress(out + sizeof(uint32)*1, size, _sl.buf, &len, NULL);
 	return len;
@@ -767,7 +767,7 @@ static void WriteLZO(uint size)
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	byte wrkmem[sizeof(byte*)*4096];
 	uint outlen;
-	
+
 	lzo1x_1_compress(_sl.buf, size, out + sizeof(uint32)*2, &outlen, wrkmem);
 	((uint32*)out)[1] = TO_BE32(outlen);
 	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
@@ -821,7 +821,7 @@ static bool InitReadZlib()
 {
 	memset(&_z, 0, sizeof(_z));
 	if (inflateInit(&_z) != Z_OK) return false;
-	
+
 	_sl.bufsize = 4096;
 	_sl.buf = (byte*)malloc(4096 + 4096); // also contains fread buffer
 	return true;
@@ -845,7 +845,7 @@ static uint ReadZlib()
 		if (r == Z_STREAM_END)
 			break;
 
-		if (r != Z_OK) 
+		if (r != Z_OK)
 			SlError("inflate() failed");
 	} while (_z.avail_out);
 
@@ -1020,7 +1020,7 @@ int SaveOrLoad(const char *filename, int mode)
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;
   uint version;
-		
+
 	// old style load
 	if (mode == SL_OLD_LOAD) {
 		InitializeGame();
@@ -1028,11 +1028,11 @@ int SaveOrLoad(const char *filename, int mode)
 		AfterLoadGame(0);
 		return SL_OK;
 	}
-	
+
 	_sl.fh = fopen(filename, mode?"wb":"rb");
 	if (_sl.fh == NULL)
 		return SL_ERROR;
-	
+
 	_sl.bufe = _sl.bufp = NULL;
 	_sl.offs_base = 0;
 	_sl.int_to_ref_proc = IntToReference;
@@ -1060,23 +1060,23 @@ int SaveOrLoad(const char *filename, int mode)
 		}
 	}
 
-  // we first initialize here to avoid: "warning: variable `version' might 
+  // we first initialize here to avoid: "warning: variable `version' might
   // be clobbered by `longjmp' or `vfork'"
 	version = 0;
 
 	if (mode != SL_LOAD) {
 		fmt = GetSavegameFormat(_savegame_format);
-		
+
 		_sl.write_bytes = fmt->writer;
 		_sl.excpt_uninit = fmt->uninit_write;
 		if (!fmt->init_write()) goto init_err;
-		
+
 		hdr[0] = fmt->tag;
 		hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION<<16) + (SAVEGAME_MINOR_VERSION << 8));
 		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
-		
+
 		_sl.version = SAVEGAME_MAJOR_VERSION;
-		
+
 		BeforeSaveGame();
 		SlSaveChunks();
 		SlWriteFill(); // flush the save buffer
@@ -1104,7 +1104,7 @@ init_err:
 			if (fmt->tag == hdr[0]) {
 				// check version number
 				version = TO_BE32(hdr[1]) >> 8;
-				
+
 				// incompatible version?
 				if (version > SAVEGAME_LOADABLE_VERSION) goto read_err;
 				_sl.version = (version>>8);

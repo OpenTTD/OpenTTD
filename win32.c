@@ -51,7 +51,7 @@ static void MakePalette()
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
-	
+
 	for(i=0,b=_cur_palette; i!=256;i++,b+=3) {
 		pal->palPalEntry[i].peRed = b[0];
 		pal->palPalEntry[i].peGreen = b[1];
@@ -60,7 +60,7 @@ static void MakePalette()
 
 	}
 	_wnd.gdi_palette = CreatePalette(pal);
-	if (_wnd.gdi_palette == NULL)	
+	if (_wnd.gdi_palette == NULL)
 		error("CreatePalette failed!\n");
 }
 
@@ -133,7 +133,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(VK_SUBTRACT,		WKC_NUM_MINUS),
 	AS(VK_ADD,				WKC_NUM_PLUS),
 	AS(VK_DECIMAL,		WKC_NUM_DECIMAL),
-	{0}	
+	{0}
 };
 
 static uint MapWindowsKey(uint key)
@@ -162,14 +162,14 @@ static bool AllocateDibSection(int w, int h);
 static void ClientSizeChanged(int w, int h)
 {
 	if (_wnd.double_size) { w >>= 1; h >>= 1; }
-	
+
 	// allocate new dib section of the new size
 	if (AllocateDibSection(w, h)) {
 		// mark all palette colors dirty
 		_pal_first_dirty = 0;
 		_pal_last_dirty = 255;
 		GameSizeChanged();
-		
+
 		// redraw screen
 		if (_wnd.running) {
 			_screen.dst_ptr = _wnd.buffer_bits;
@@ -191,12 +191,12 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		dc2 = CreateCompatibleDC(dc);
 		old_bmp = SelectObject(dc2, _wnd.dib_sect);
 		old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
-		
+
 		if (_pal_last_dirty != -1) {
 			UpdatePalette(dc2, _pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
 			_pal_last_dirty = -1;
 		}
-				
+
 		BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
 		SelectPalette(dc, old_palette, TRUE);
 		SelectObject(dc2, old_bmp);
@@ -219,7 +219,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			InvalidateRect(hwnd, NULL, FALSE);
 		return 0;
 	}
-		
+
 	case WM_CLOSE:
 		AskExitGame();
 		return 0;
@@ -255,7 +255,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			x >>= 1;
 			y >>= 1;
 		}
-		
+
 		if (_cursor.fix_at) {
 			int dx = x - _cursor.pos.x;
 			int dy = y - _cursor.pos.y;
@@ -285,7 +285,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	}
 
 	case WM_KEYDOWN:
-		{         
+		{
 		// this is the rewritten ascii input function
 		// it disables windows deadkey handling --> more linux like :D
         unsigned short w = 0;
@@ -304,7 +304,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			ClientSizeChanged(_wnd.width, _wnd.height);
 			MarkWholeScreenDirty();
 		}
-		break;	
+		break;
 
 
 	case WM_SYSKEYDOWN:
@@ -334,7 +334,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		SetRect(&r2, 0, 0, 0, 0);
 		AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
-		
+
 		w = r->right - r->left - (r2.right - r2.left);
 		h = r->bottom - r->top - (r2.bottom - r2.top);
 		if (_wnd.double_size) { w >>= 1; h >>= 1; }
@@ -389,7 +389,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 #endif  //GET_WHEEL_DELTA_WPARAM
 
 	case WM_MOUSEWHEEL: {
-		int delta = GET_WHEEL_DELTA_WPARAM(wParam);	
+		int delta = GET_WHEEL_DELTA_WPARAM(wParam);
 		if (delta < 0) {
 			_cursor.wheel++;
 		} else if (delta > 0) {
@@ -433,13 +433,13 @@ static void MakeWindow(bool full_screen)
 	_fullscreen = full_screen;
 
 	_wnd.double_size = _double_size && !full_screen;
-	
+
 	// recreate window?
 	if ((full_screen|_wnd.fullscreen) && _wnd.main_wnd) {
 		DestroyWindow(_wnd.main_wnd);
 		_wnd.main_wnd = 0;
 	}
-	
+
 	if (full_screen) {
 		DEVMODE settings;
 		memset(&settings, 0, sizeof(DEVMODE));
@@ -467,7 +467,7 @@ static void MakeWindow(bool full_screen)
 		RECT r;
 		uint style;
 		int x, y, w, h;
-	
+
 		if ((_wnd.fullscreen=full_screen) != false) {
 			style = WS_POPUP | WS_VISIBLE;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
@@ -510,11 +510,11 @@ static bool AllocateDibSection(int w, int h)
 		free(_wnd.alloced_bits);
 		_wnd.alloced_bits = NULL;
 	}
-	
+
 	bi = alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-	
+
 	{
 		if (_wnd.double_size) {
 			_wnd.alloced_bits = _wnd.buffer_bits = (byte*)malloc(w * h);
@@ -525,7 +525,7 @@ static bool AllocateDibSection(int w, int h)
 		bi->bmiHeader.biWidth = _wnd.width = w;
 		bi->bmiHeader.biHeight = -(_wnd.height = h);
 	}
-	
+
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = 8;
 	bi->bmiHeader.biCompression = BI_RGB;
@@ -539,7 +539,7 @@ static bool AllocateDibSection(int w, int h)
 		error("CreateDIBSection failed");
 	ReleaseDC(0, dc);
 
-	if (!_wnd.double_size) 
+	if (!_wnd.double_size)
 		_wnd.buffer_bits = _wnd.bitmap_bits;
 
 	return true;
@@ -562,7 +562,7 @@ static void FindResolutions()
 	DEVMODE dm;
 
 	while (EnumDisplaySettings(NULL, i++, &dm)) {
-		if (dm.dmBitsPerPel == 8 && 
+		if (dm.dmBitsPerPel == 8 &&
 				IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH+1) &&
 				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT+1) &&
 				(n == 0 || _resolutions[n-1][0] != dm.dmPelsWidth || _resolutions[n-1][1] != dm.dmPelsHeight)) {
@@ -625,7 +625,7 @@ static void filter(int left, int top, int width, int height)
 
 	while (height) {
 		for(i=0; i!=width; i++) {
-			d[i*2] = d[i*2+1] = d[i*2+p*2] = d[i*2+1+p*2] = s[i];  
+			d[i*2] = d[i*2+1] = d[i*2+p*2] = d[i*2+1+p*2] = s[i];
 		}
 		s += p;
 		d += p * 4;
@@ -676,7 +676,7 @@ static int Win32GdiMainLoop()
 		} else if (_fast_forward&2) {
 			_fast_forward = 0;
 		}
-		
+
 
 		cur_ticks=GetTickCount();
 		if ((_fast_forward && !_pause) || cur_ticks > next_tick)
@@ -687,15 +687,15 @@ static int Win32GdiMainLoop()
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
 			_dbg_screen_rect = _wnd.has_focus && GetAsyncKeyState(VK_CAPITAL)<0;
-			
+
 			// determine which directional keys are down
-			_dirkeys = 
-				(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) + 
-				(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) + 
-				(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) + 
+			_dirkeys =
+				(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
+				(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
+				(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
 				(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
 
-			GameLoop();	
+			GameLoop();
 			_cursor.delta.x = _cursor.delta.y = 0;
 
 			if (_force_full_redraw)
@@ -718,9 +718,9 @@ static bool Win32GdiChangeRes(int w, int h)
 {
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
-		
+
 	MakeWindow(_wnd.fullscreen);
-		
+
 	return true;
 }
 
@@ -823,15 +823,15 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 		if ((vol=_midi.new_vol) != -1) {
 			_midi.new_vol = -1;
 			MidiIntSetVolume(vol);
-			
+
 		}
 		if ((s=_midi.start_song)[0]) {
 			_midi.playing = MidiIntPlaySong(s);
 			s[0] = 0;
-			
+
 			// Delay somewhat in case we don't manage to play.
 			if (!_midi.playing) {
-				Sleep(5000);	
+				Sleep(5000);
 			}
 		}
 		if (_midi.stop_song != false && _midi.playing) {
@@ -893,7 +893,7 @@ static void FillHeaders()
 	WAVEHDR *hdr;
 	for(hdr=_wave_hdr; hdr != endof(_wave_hdr); hdr++) {
 		if (!(hdr->dwFlags & WHDR_INQUEUE)) {
-			MxMixSamples(_mixer, hdr->lpData, hdr->dwBufferLength >> 2);		
+			MxMixSamples(_mixer, hdr->lpData, hdr->dwBufferLength >> 2);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
 				error("waveOutWrite failed");
 		}
@@ -914,7 +914,7 @@ static char *Win32SoundStart(char **parm)
 {
 	WAVEFORMATEX wfex;
 	int hz;
-	
+
 	_bufsize = GetDriverParamInt(parm, "bufsize", 1024);
 	hz = GetDriverParamInt(parm, "hz", 11025);
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -1007,7 +1007,7 @@ static uint32 *_crc_table;
 static void MakeCRCTable(uint32 *table) {
 	uint32 crc, poly = 0xEDB88320L;
 	int	i, j;
-	
+
 	_crc_table = table;
 
 	for (i=0; i!=256; i++) {
@@ -1051,7 +1051,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
 			}
 			dfi->size = filesize;
 			dfi->crc32 = crc ^ (uint32)-1;
-			
+
 			if (GetFileTime(file, NULL, NULL, &write_time)) {
 				FileTimeToSystemTime(&write_time, &dfi->file_time);
 			}
@@ -1108,14 +1108,14 @@ static char *PrintModuleList(char *output)
 	return output;
 }
 
-static const char _crash_desc[] = 
+static const char _crash_desc[] =
 	"A serious fault condition occured in the game. The game will shut down.\n"
 	"Press \"Submit report\" to send crash information to the developers. "
 	"This will greatly help debugging. The information contained in the report is "
 	"displayed below.\n"
 	"Press \"Emergency save\" to attempt saving the game.";
 
-static const char _save_succeeded[] = 
+static const char _save_succeeded[] =
 	"Emergency save succeeded.\nBe aware that critical parts of the internal game state "
 	"may have become corrupted. The saved game is not guaranteed to work.";
 
@@ -1132,7 +1132,7 @@ typedef struct {
 } WinInetProcs;
 
 #define M(x) x "\0"
-static const char wininet_files[] = 
+static const char wininet_files[] =
 	M("wininet.dll")
 	M("InternetOpenA")
 	M("InternetConnectA")
@@ -1153,7 +1153,7 @@ static char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *a
 	DWORD code, len;
 	static char buf[100];
 	char buff[100];
-	
+
 	if (_wininet.InternetOpen == NULL && !LoadLibraryList((void**)&_wininet, wininet_files)) return "can't load wininet.dll";
 
 	inet = _wininet.InternetOpen("TTD", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
@@ -1171,7 +1171,7 @@ static char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *a
 
 	len = sizeof(code);
 	if (!_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &code, &len, 0)) { err = "httpqueryinfo failed"; goto error4; }
-	
+
 	if (code != 200) {
 		int l = sprintf(buf, "Server said: %d ", code);
 		len = sizeof(buf) - l;
@@ -1201,13 +1201,13 @@ static void SubmitFile(HWND wnd, const char *file)
 
 	size = GetFileSize(h, NULL);
 	if (size > 500000) goto error1;
-	
+
 	mem = malloc(size);
 	if (mem == NULL) goto error1;
 
 	if (!ReadFile(h, mem, size, &read, NULL) || read != size) goto error2;
 
-	SubmitCrashReport(wnd, mem, size, file);		
+	SubmitCrashReport(wnd, mem, size, file);
 
 error2:
 	free(mem);
@@ -1223,16 +1223,16 @@ static void SetWndSize(HWND wnd, int mode)
 	int offs;
 
 	GetWindowRect(wnd, &r);
-	
+
 	SetDlgItemText(wnd, 15, _expand_texts[mode == 1]);
-	
+
 	if (mode >= 0) {
 		GetWindowRect(GetDlgItem(wnd, 11), &r2);
 		offs = r2.bottom - r2.top + 10;
 		if (!mode) offs=-offs;
 		SetWindowPos(wnd, HWND_TOPMOST, 0, 0, r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
 	} else {
-		SetWindowPos(wnd, HWND_TOPMOST, 
+		SetWindowPos(wnd, HWND_TOPMOST,
 			(GetSystemMetrics(SM_CXSCREEN) - (r.right - r.left)) >> 1,
 			(GetSystemMetrics(SM_CYSCREEN) - (r.bottom - r.top)) >> 1,
 			0, 0, SWP_NOSIZE);
@@ -1273,7 +1273,7 @@ static BOOL CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lPar
 		}
 		case 14: { // Submit crash report
 			char *s;
-			
+
 			SetCursor(LoadCursor(NULL, IDC_WAIT));
 
 			s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), "");
@@ -1281,7 +1281,7 @@ static BOOL CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lPar
 				MessageBoxA(wnd, s, "Error", MB_ICONSTOP);
 				break;
 			}
-			
+
 			// try to submit emergency savegame
 			if (_did_emerg_save || DoEmergencySave(wnd)) {
 				SubmitFile(wnd, "crash.sav");
@@ -1324,7 +1324,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (had_exception) { ExitProcess(0); }
 	had_exception = true;
-	
+
 	_ident = GetTickCount(); // something pretty unique
 
 	MakeCRCTable(alloca(256 * sizeof(uint32)));
@@ -1333,7 +1333,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	{
 		SYSTEMTIME time;
 		GetLocalTime(&time);
-		output += sprintf(output, 
+		output += sprintf(output,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
 			"Build: %s built on " __TIMESTAMP__ "\r\n",
@@ -1436,7 +1436,7 @@ static void Win32InitializeExceptions()
 	_asm {
 		mov _safe_esp,esp
 	}
-	
+
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
 #endif
@@ -1459,7 +1459,7 @@ static FiosItem *FiosAlloc()
 static HANDLE MyFindFirstFile(char *path, char *file, WIN32_FIND_DATA *fd)
 {
 	char paths[MAX_PATH];
-	
+
 	sprintf(paths, "%s\\%s", path, file);
 	return FindFirstFile(paths, fd);
 }
@@ -1471,7 +1471,7 @@ int CDECL compare_FiosItems (const void *a, const void *b) {
 
 	if (_savegame_sort_order < 2) // sort by date
     r = da->mtime < db->mtime ? -1 : 1;
-	else	
+	else
 		r = stricmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
 
 	if (_savegame_sort_order & 1) r = -r;
@@ -1503,7 +1503,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		fios->type = FIOS_TYPE_PARENT;
 		strcpy(fios->title, ".. (Parent directory)");
 	}
-	
+
 
 	// Show subdirectories first
 	h = MyFindFirstFile(_fios_path, "*.*", &fd);
@@ -1695,7 +1695,7 @@ char *FiosBrowseTo(const FiosItem *item)
 	case FIOS_TYPE_DRIVE:
 		sprintf(path, "%c:\\", item->title[0]);
 		break;
-	
+
 	case FIOS_TYPE_PARENT:
 		// Skip drive part
 		path += 3;
@@ -1713,7 +1713,7 @@ char *FiosBrowseTo(const FiosItem *item)
 		while (*++path);
 		// Add backslash?
 		if (path[-1] != '\\') *path++ = '\\';
-		
+
 		strcpy(path, item->name);
 		break;
 
@@ -1752,7 +1752,7 @@ StringID FiosGetDescText(char **path)
 	if (GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		uint32 tot = ((spc*bps)*(uint64)nfc) >> 20;
 		SET_DPARAM32(0, tot);
-		return STR_4005_BYTES_FREE; 
+		return STR_4005_BYTES_FREE;
 	} else {
 		return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
@@ -1848,7 +1848,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 		// end?
 		if (*line == 0)
 			break;
-		
+
 		// special handling when quoted
 		if (*line == '"') {
 			argv[n++] = ++line;
@@ -1863,7 +1863,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 				line++;
 			}
 		}
-		*line++ = 0;	
+		*line++ = 0;
 	} while (n != max_argc);
 
 	return n;
@@ -1890,12 +1890,12 @@ void CreateConsole()
 	_has_console = true;
 
 	AllocConsole();
-	
+
 	hand = GetStdHandle(STD_OUTPUT_HANDLE);
 	GetConsoleScreenBufferInfo(hand, &coninfo);
 	coninfo.dwSize.Y = 500;
 	SetConsoleScreenBufferSize(hand, coninfo.dwSize);
-    
+
 	// redirect unbuffered STDIN, STDOUT, STDERR to the console
 #if !defined(__CYGWIN__)
 	*stdout = *_fdopen( _open_osfhandle((long)hand, _O_TEXT), "w" );
@@ -1905,11 +1905,11 @@ void CreateConsole()
 	// open_osfhandle is not in cygwin
 	*stdout = *fdopen(1, "w" );
 	*stdin = *fdopen(0, "w" );
-	*stderr = *fdopen(2, "w" );    
+	*stderr = *fdopen(2, "w" );
 #endif
-    
-	setvbuf( stdin, NULL, _IONBF, 0 );    
-	setvbuf( stdout, NULL, _IONBF, 0 );    
+
+	setvbuf( stdin, NULL, _IONBF, 0 );
+	setvbuf( stdout, NULL, _IONBF, 0 );
 	setvbuf( stderr, NULL, _IONBF, 0 );
 }
 
@@ -1919,10 +1919,10 @@ void ShowInfo(const char *str)
 		puts(str);
 	else {
 		bool old;
-		
+
 		ReleaseCapture();
 		_left_button_clicked =_left_button_down = false;
-		
+
 		old = MyShowCursor(true);
 		if (MessageBoxA(GetActiveWindow(), str, "OpenTTD", MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
 			CreateConsole();
@@ -1960,7 +1960,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPTSTR lpCmdLin
 	argc = ParseCommandLine(GetCommandLine(), argv, lengthof(argv));
 
 #if defined(WIN32_EXCEPTION_TRACKER)
-	{	
+	{
 		Win32InitializeExceptions();
 	}
 #endif
@@ -1985,7 +1985,7 @@ void DeterminePaths()
 
 	_path.personal_dir = _path.game_data_dir = cfg = malloc(MAX_PATH);
 	GetCurrentDirectory(MAX_PATH - 1, cfg);
-	
+
 
 	s = strchr(cfg, 0);
 	if (s[-1] != '\\') { s[0] = '\\'; s[1] = 0; }

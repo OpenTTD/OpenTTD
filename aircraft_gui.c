@@ -891,7 +891,7 @@ static void MakeSortedAircraftList(byte owner)
 		// aircraft are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 		for (i = &_num_aircraft_sort[1]; i != endof(_num_aircraft_sort); i++) {*i += *(i-1);}
-	
+
 		// sort by owner, then only subsort the requested owner-vehicles
 		qsort(_aircraft_sort, n, sizeof(_aircraft_sort[0]), GeneralOwnerSorter);
 
@@ -936,7 +936,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 aircraft
 		i = (window_number == 0) ? 0 : _num_aircraft_sort[window_number-1];
 		SetVScrollCount(w, _num_aircraft_sort[window_number] - i);
-		
+
 		/* draw the widgets */
 		{
 			Player *p = DEREF_PLAYER(window_number);
@@ -980,7 +980,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM32(0, v->profit_this_year);
 				SET_DPARAM32(1, v->profit_last_year);
 				DrawString(x+19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				
+
 				if (v->string_id != STR_SV_AIRCRAFT_NAME) {
 					SET_DPARAM16(0, v->string_id);
 					DrawString(x+19, y, STR_01AB, 0);
@@ -1007,7 +1007,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
-			
+
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
 			id_v += w->vscroll.pos;

@@ -68,7 +68,7 @@ static const CurrencySpec _currency_specs[] = {
 	{ 3,   ',', CF_TOEURO_2002, "NLG ", "" },
 	{ 2730,',', CF_TOEURO_2002, "ITL ", "" },
 	{ 13,  '.', 0,              "",     " kr" },
-	{ 5,   ' ', 0,              "",     " rur" },	
+	{ 5,   ' ', 0,              "",     " rur" },
 	{ 50,  ',', 0,              "",     " Kc" },
 	{ 130, '.', 0,              "",     " kr" },
 	{ 11,  '.', 0,              "",     " kr" },
@@ -171,9 +171,9 @@ byte *GetString(byte *buffr, uint16 string)
 	return DecodeString(buffr, GetStringPtr(string));
 }
 
-void InjectDparam(int amount) 
+void InjectDparam(int amount)
 {
-	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32)); 
+	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32));
 }
 
 
@@ -301,7 +301,7 @@ static byte *FormatYmdString(byte *buff, uint16 number)
 	ConvertDayToYMD(&ymd, number);
 
 	for(src = GetStringPtr(ymd.day+STR_01AC_1ST-1); (*buff++=*src++) != 0;) {}
-	
+
 	buff[-1] = ' ';
 	memcpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), 4);
 	buff[3] = ' ';
@@ -338,7 +338,7 @@ static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 n
 
 	// convert from negative
 	if (number < 0) { *buff++ = '-'; number = -number; }
-	
+
 	// add pre part
 	s = spec->pre;
 	while (s != spec->pre + lengthof(spec->pre) && (c=*s++)) *buff++ = c;
@@ -352,13 +352,13 @@ static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 n
 		} else if (number >= 1000000) {
 			number = (number + 500) / 1000;
 			compact = 'k';
-		}	
+		}
 	}
-	
+
 	// convert to ascii number and add commas
 	p = buf;
 	j = 4;
-	do { 
+	do {
 		if (--j == 0) { *p++ = spec->separator; j = 3; }
 		*p++ = '0' + number % 10;
 	} while (number /= 10);
@@ -427,8 +427,8 @@ static byte *DecodeString(byte *buff, const byte *str)
 			}
 			break;
 		}
-		
-		// 0x85 is used as escape character.. 
+
+		// 0x85 is used as escape character..
 		case 0x85:
 			switch(*str++) {
 			case 0:
@@ -453,7 +453,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 				// liquid type of cargo is multiplied by 100 to get correct amount
 				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier );
 				s = GetStringPtr(cargo_str);
-				
+
 				memcpy(buff++, " ", 1);
 				while (*s) *buff++ = *s++;
 				break;
@@ -476,7 +476,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 			while (*s) *buff++ = *s++;
 			break;
 		}
-		
+
 		case 0x88: // {STRING}
 			buff = GetString(buff, (uint16)GetParamUint16());
 			break;
@@ -515,7 +515,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 		}
 
 		case 0x9C: { // {CURRENCY64}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), false);	
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), false);
 			break;
 		}
 
@@ -567,7 +567,7 @@ static byte *StationGetSpecialString(byte *buff)
 
 static byte *GetSpecialTownNameString(byte *buff, int ind) {
 	uint32 x = GetParamInt32();
-	
+
 	_town_name_generators[ind](buff, x);
 
 	while (*buff != 0) buff++;
@@ -669,7 +669,7 @@ static byte *GenPlayerName_4(byte *buff)
 	if (i < sizeof(_initial_name_letters)) {
 		buff[0] = _initial_name_letters[i];
 		buff[1] = '.';
-		buff += 2;		
+		buff += 2;
 	}
 
 	base = 0;
@@ -712,7 +712,7 @@ static const char * const _song_names[] = {
 static byte *GetSpecialPlayerNameString(byte *buff, int ind)
 {
 	switch(ind) {
-	
+
 	// not used
 	case 1: {
 		int i = GetParamInt32() & 0xFFFF;
@@ -789,14 +789,14 @@ bool ReadLanguagePack(int lang_index) {
 		free(lang);
 	}
 	if (lang_pack == NULL) return false;
-	if (len < sizeof(LanguagePackHeader) || 
+	if (len < sizeof(LanguagePackHeader) ||
 			HDR->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
 			HDR->version != TO_LE32(LANGUAGE_PACK_VERSION)) {
 		free(lang_pack);
 		return false;
 	}
 #undef HDR
-	
+
 #if defined(TTD_BIG_ENDIAN)
 	for(i=0; i!=32; i++) {
 		((LanguagePackHeader*)lang_pack)->offsets[i] = READ_LE_UINT16(&((LanguagePackHeader*)lang_pack)->offsets[i]);
@@ -855,7 +855,7 @@ void InitializeLanguagePacks()
 		char *s = str_fmt("%s%s", _path.lang_dir, files[i]);
 		in = fopen(s, "rb");
 		free(s);
-		if (!in || 
+		if (!in ||
 				(j = fread(&hdr, sizeof(hdr), 1, in), fclose(in), j) != 1 ||
 				hdr.ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
 				hdr.version != TO_LE32(LANGUAGE_PACK_VERSION)) {
@@ -865,7 +865,7 @@ void InitializeLanguagePacks()
 
 		dl->ent[m].file = files[i];
 		dl->ent[m].name = strdup(hdr.name);
-		
+
 		if (!strcmp(hdr.name, "English")) def = m;
 
 		m++;
@@ -873,7 +873,7 @@ void InitializeLanguagePacks()
 
 	if (m == 0)
 		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
-		
+
 	dl->num = m;
 	for(i=0; i!=dl->num; i++)
 		dl->dropdown[i] = SPECSTR_LANGUAGE_START + i;

@@ -44,7 +44,7 @@ static const WindowDesc _iconsole_window_desc = {
 static _iconsole_cmd * _iconsole_cmds; // list of registred commands
 static _iconsole_var * _iconsole_vars; // list of registred vars
 
-// ** console std lib ** // 
+// ** console std lib ** //
 static byte _stdlib_developer=1;
 static bool _stdlib_con_developer=false;
 static void IConsoleStdLibRegister();
@@ -96,7 +96,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(posx,posy,posx+5,posy+1,color);
 				_video_driver->make_dirty(posx,posy,5,1);
 			}
-			_icursor_counter=0;			
+			_icursor_counter=0;
 			}
 		break;
 
@@ -157,14 +157,14 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			{
 			IConsoleSwitch();
 			} else
-		if (e->keypress.keycode == WKC_RETURN) 
+		if (e->keypress.keycode == WKC_RETURN)
 			{
 			IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline);
 			IConsoleCmdBufferAdd(_iconsole_cmdline);
 			IConsoleCmdExec((byte *) _iconsole_cmdline);
 			IConsoleClearCommand();
 			} else
-		if (e->keypress.keycode == WKC_BACKSPACE) 
+		if (e->keypress.keycode == WKC_BACKSPACE)
 			{
 			if (_iconsole_cmdpos!=0) _iconsole_cmdpos--;
 			_iconsole_cmdline[_iconsole_cmdpos]=0;
@@ -175,10 +175,10 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			{
 			_iconsole_scroll=79;
 			_iconsole_cmdline[_iconsole_cmdpos]=e->keypress.ascii;
-			if (_iconsole_cmdpos!=255) _iconsole_cmdpos++;	
+			if (_iconsole_cmdpos!=255) _iconsole_cmdpos++;
 			SetWindowDirty(w);
 			_iconsole_cmdbufferpos=19;
-			} else e->keypress.cont=true;	
+			} else e->keypress.cont=true;
 		break;
 
 	}
@@ -211,9 +211,9 @@ for (i=0;i<80;i++) {
 	}
 IConsoleStdLibRegister();
 #if defined(WITH_REV)
-IConsolePrintF(13,"OpenTTD Game Console Revision 3 - %s",_openttd_revision);	
+IConsolePrintF(13,"OpenTTD Game Console Revision 3 - %s",_openttd_revision);
 #else
-IConsolePrint(13,"OpenTTD Game Console Revision 3");	
+IConsolePrint(13,"OpenTTD Game Console Revision 3");
 #endif
 IConsolePrint(12,"---------------------------------");
 IConsolePrint(12,"use \"help\" for more info");
@@ -386,7 +386,7 @@ void* IConsoleCmdGetAddr(byte * name) {
 _iconsole_cmd * item;
 
 item = _iconsole_cmds;
-while (item != NULL) { 
+while (item != NULL) {
 	if (strcmp(item->name,name)==0) return item->addr;
 	item = item->_next;
 	}
@@ -455,7 +455,7 @@ _iconsole_var * IConsoleVarGet(byte * name) {
 _iconsole_var * item;
 
 item = _iconsole_vars;
-while (item != NULL) { 
+while (item != NULL) {
 	if (strcmp(item->name,name)==0) return item;
 	item = item->_next;
 	}
@@ -733,7 +733,7 @@ tokenstream--;
 if (!(*tokenstream==0)) {
 	c++;
 	tokenstream++;
-	*tokenstream = 0;	
+	*tokenstream = 0;
 	}
 
 //** interpreting **//
@@ -790,7 +790,7 @@ if (function != NULL) {
 //** executing **//
 if (_stdlib_con_developer) IConsolePrintF(_iconsole_color_debug,"CONDEBUG: execution_mode: %i",execution_mode);
 switch (execution_mode) {
-case 0: 
+case 0:
 	{
 	// not found
 	IConsoleError("command or variable not found");
@@ -830,7 +830,7 @@ case 2:
 				else if (strcmp(tokens[1],"--")==0) {
 					*(bool *)var->addr=!*(bool *)var->addr;
 					IConsoleVarDump(var,NULL);
-					}	 
+					}
 				else { IConsoleError("operation not supported"); }
 				}
 				break;
@@ -852,7 +852,7 @@ case 2:
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(byte *)var->addr)--;
 					IConsoleVarDump(var,NULL);
-					}	 
+					}
 				else { IConsoleError("operation not supported"); }
 				}
 				break;
@@ -1083,7 +1083,7 @@ case 4:
 			result = NULL;
 			}
 		}
-	
+
 	}
 	break;
 default:
@@ -1129,7 +1129,7 @@ static _iconsole_var * IConsoleStdLibPrintFC(byte argc, byte* argv[], byte argt[
 }
 
 static _iconsole_var * IConsoleStdLibScreenShot(byte argc, byte* argv[], byte argt[]) {
-	
+
 	if (argc<2) {
 		_make_screenshot=1;
 	} else {
@@ -1201,7 +1201,7 @@ int l = 0;
 if (argv[1]!=NULL) l = strlen((char *) argv[1]);
 
 item = _iconsole_cmds;
-while (item != NULL) { 
+while (item != NULL) {
 	if (argv[1]!=NULL) {
 
 		if (memcmp((void *) item->name, (void *) argv[1],l)==0)
@@ -1225,7 +1225,7 @@ int l = 0;
 if (argv[1]!=NULL) l = strlen((char *) argv[1]);
 
 item = _iconsole_vars;
-while (item != NULL) { 
+while (item != NULL) {
 	if (argv[1]!=NULL) {
 
 		if (memcmp((void *) item->name, (void *) argv[1],l)==0)
@@ -1249,7 +1249,7 @@ int l = 0;
 if (argv[1]!=NULL) l = strlen((char *) argv[1]);
 
 item = _iconsole_vars;
-while (item != NULL) { 
+while (item != NULL) {
 	if (argv[1]!=NULL) {
 
 		if (memcmp((void *) item->name, (void *) argv[1],l)==0)

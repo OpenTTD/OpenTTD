@@ -33,7 +33,7 @@ typedef struct GraphDrawer {
 
 void DrawGraph(GraphDrawer *gw)
 {
-	
+
 	int i,j,k;
 	int x,y,old_x,old_y;
 	int color;
@@ -57,7 +57,7 @@ void DrawGraph(GraphDrawer *gw)
 		GfxFillRect(x, gw->top, x, bottom, color);
 		x += 22;
 	} while (--i);
-	
+
 	/* draw the horizontal lines */
 	i = 9;
 	x = gw->left + 44;
@@ -95,7 +95,7 @@ void DrawGraph(GraphDrawer *gw)
 			}
 		} while (col_ptr++, --num_x);
 	} while (row_ptr+=24, --num_dataset);
-	
+
 	/* setup scaling */
 	y_scaling = 0x80000000;
 	value = adj_height * 2;
@@ -271,10 +271,10 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 	int nums;
 	int mo,yr;
 
-	// Exclude the players which aren't valid	
+	// Exclude the players which aren't valid
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) CLRBIT(showbits,p->index);
-	}	
+	}
 	gd->sel = showbits;
 	gd->num_vert_lines = 24;
 
@@ -305,7 +305,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		int numd;
 
 		DrawWindowWidgets(w);
-		
+
 		gd.left = 2;
 		gd.top = 18;
 		gd.height = 136;
@@ -314,7 +314,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
-		
+
 		SetupGraphDrawerForPlayers(&gd);
 
 		numd = 0;
@@ -528,13 +528,13 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		uint16 y=14;
 		int total_score = 0;
 		int color_done, color_notdone;
-		
+
 		// Draw standard stuff
 		DrawWindowWidgets(w);
-		
+
 		// The player of which we check the detail performance rating
 		owner = FindFirstBit(w->click_state) - 13;
-		
+
 		// Paint the player icons
 		for (i=0;i<MAX_PLAYERS;i++) {
        		if (!DEREF_PLAYER(i)->is_active) {
@@ -550,7 +550,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
                 }
                	continue;
             }
-			
+
 			// Check if we have the player marked as inactive
 			if ((w->disabled_state & (1 << (i+13)))) {
 				// New player! Yippie :p
@@ -558,11 +558,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
                	// We need a repaint
                	SetWindowDirty(w);
             }
-				
+
 			if (i == owner) x = 1; else x = 0;
 			DrawPlayerIcon(i, i*33+11+x, 16+x);
 		}
-		
+
 		// The colors used to show how the progress is going
 		color_done = _color_list[6].window_color_1b;
 		color_notdone = _color_list[4].window_color_1b;
@@ -579,44 +579,44 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
     			score = SCORE_MAX;
     		} else
     			total_score += score;
-    			
+
     		DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
 
     		// Draw the score
     		SET_DPARAM32(0, score);
     		DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
-    		
+
     		// Calculate the %-bar
     		if (val > needed) x = 50;
     		else if (val == 0) x = 0;
     		else x = ((val * 50) / needed);
-    		
+
     		// SCORE_LOAN is inversed
     		if (val < 0 && i == SCORE_LOAN)
     			x = 0;
-    		
+
     		// Draw the bar
     		if (x != 0)
     			GfxFillRect(112, y-2, x + 112, y+10, color_done);
     		if (x != 50)
     			GfxFillRect(x + 112, y-2, 50 + 112, y+10, color_notdone);
-    			
+
    			// Calculate the %
     		if (val > needed) x = 100;
     		else x = ((val * 100) / needed);
-    		
+
     		// SCORE_LOAN is inversed
     		if (val < 0 && i == SCORE_LOAN)
     			x = 0;
-    		
+
     		// Draw it
     		SET_DPARAM32(0, x);
     		DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
-    		
+
     		// SCORE_LOAN is inversed
     		if (i == SCORE_LOAN)
 				val = needed - val;
-    		
+
     		// Draw the amount we have against what is needed
     		//  For some of them it is in currency format
     		SET_DPARAM32(0, val);
@@ -666,12 +666,12 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
         	FOR_ALL_PLAYERS(p2)
         		if (p2->is_active)
         			UpdateCompanyRatingAndValue(p2, false);
-        		
+
         	w->custom[0] = DAY_TICKS;
         	w->custom[1] = 5;
-        	
+
         	w->click_state = 1 << 13;
-        	
+
 			SetWindowDirty(w);
         }
     	break;
@@ -927,7 +927,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.month = 0xFF;
 		gd.unk61A = 10;
 		gd.unk61C = 10;
-		
+
 		for(i=0; i!=NUM_CARGO; i++) {
 			gd.colors[i] = _cargo_legend_colors[i];
 			for(j=0; j!=20; j++) {
@@ -1031,14 +1031,14 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 		size_t pl_num, i;
 
 		DrawWindowWidgets(w);
-		
+
 		pl_num=0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active)
 				plist[pl_num++] = p;
 		}
 		assert(pl_num > 0);
-		
+
 		qsort(plist, pl_num, sizeof(Player*), _perf_hist_comp);
 
 		i = 0;
@@ -1047,12 +1047,12 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			p = plist[i];
 			SET_DPARAM16(1, p->name_1);
 			SET_DPARAM32(2, p->name_2);
-			
+
 			SET_DPARAM16(3, GetPlayerNameString(p->index, 4));
 			/*	WARNING ugly hack!
 					GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
 					It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
-					that because there is another param after it. 
+					that because there is another param after it.
 					So we'll just shift the rating one back if player is AI and all is fine
 				*/
 			SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));

@@ -54,7 +54,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 		case 4: ShowPatchesSelection(); break;
 		case 5: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
-		case 6: 
+		case 6:
 			if (_networking)
 				DoCommandP(0, 0, 0, NULL, CMD_SET_SINGLE_PLAYER);
 			break;
@@ -113,7 +113,7 @@ int32 CmdStartNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_SAVELOAD, 0);
 		break;
 	}
-	
+
 	return 0;
 }
 
@@ -216,7 +216,7 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 	case WE_KEYPRESS: /* Exit game on pressing 'Enter' */
 		if (e->keypress.keycode == WKC_RETURN)
 			_exit_game = true;
-		break; 
+		break;
 	}
 }
 
@@ -247,9 +247,9 @@ static void AskQuitGameWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		DrawStringMultiCenter(0x5A, 0x26, 
-			_game_mode != GM_EDITOR ? STR_0160_ARE_YOU_SURE_YOU_WANT_TO : 
-				STR_029B_ARE_YOU_SURE_YOU_WANT_TO, 
+		DrawStringMultiCenter(0x5A, 0x26,
+			_game_mode != GM_EDITOR ? STR_0160_ARE_YOU_SURE_YOU_WANT_TO :
+				STR_029B_ARE_YOU_SURE_YOU_WANT_TO,
 			178);
 		return;
 

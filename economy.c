@@ -44,11 +44,11 @@ void UpdatePlayerHouse(Player *p, uint score)
 uint32 CalculateCompanyValue(Player *p) {
 	byte owner = p->index;
 	uint32 value;
-	
+
 	{
 		Station *st;
 		uint num = 0;
-		
+
 		FOR_ALL_STATIONS(st) {
 			if (st->xy != 0 && st->owner == owner) {
 				uint facil = st->facilities;
@@ -194,7 +194,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	{
 		_score_part[owner][SCORE_LOAN] = score_info[SCORE_LOAN].needed - p->current_loan;
 	}
-	
+
 	// Now we calculate the score for each item..
 	{
 		int i;
@@ -210,9 +210,9 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			score += s;
 			total_score += score_info[i].score;
 		}
-		
+
 		_score_part[owner][SCORE_TOTAL] = score;
-		
+
 		// We always want the score scaled to SCORE_MAX (1000)
 		if (total_score != SCORE_MAX)
 			score = score * SCORE_MAX / total_score;
@@ -223,7 +223,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
     	UpdatePlayerHouse(p, score);
     	p->old_economy[0].company_value = CalculateCompanyValue(p);
     }
-	
+
 	InvalidateWindow(WC_PERFORMANCE_DETAIL, 0);
 	return score;
 }
@@ -236,7 +236,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 
 	if (new_player == 255) {
 		Subsidy *s;
-		
+
 		for(s=_subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != 0xff && s->age >= 12) {
 				Station *st = DEREF_STATION(s->to);
@@ -249,7 +249,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 	// take care of rating in towns
 	{
 		Town *t;
-		
+
 		// if a player takes over, give the ratings to that player.
 		if (new_player != 255) {
 			FOR_ALL_TOWNS(t) if (t->xy && HASBIT(t->have_ratings, old_player)) {
@@ -269,7 +269,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 			CLRBIT(t->have_ratings, old_player);
 		}
 	}
-	
+
 	{
 		int num_train = 0;
 		int num_road = 0;
@@ -353,7 +353,7 @@ static void PlayersCheckBankrupt(Player *p)
 
 	if (p->quarters_of_bankrupcy == 2) {
 year_2:
-		AddNewsItem( (StringID)(owner + 16), 
+		AddNewsItem( (StringID)(owner + 16),
 			NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	} else if (p->quarters_of_bankrupcy == 3) {
@@ -396,7 +396,7 @@ void DrawNewsBankrupcy(Window *w)
 {
 	Player *p;
 
-	DrawNewsBorder(w);		
+	DrawNewsBorder(w);
 
 	p = DEREF_PLAYER(WP(w,news_d).ni->string_id & 15);
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
@@ -446,7 +446,7 @@ void DrawNewsBankrupcy(Window *w)
 			90,
 			STR_705D_HAS_BEEN_CLOSED_DOWN_BY,
 			w->width - 101);
-		break;		
+		break;
 
 	case 4:
 		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
@@ -499,7 +499,7 @@ StringID GetNewsStringBankrupcy(NewsItem *ni)
 	default:
 		NOT_REACHED();
 	}
-  
+
 	/* useless, but avoids compiler warning this way */
 	return 0;
 }
@@ -563,13 +563,13 @@ static void AddInflation()
 	}
 
 	_economy.max_loan_unround += BIGMULUS(_economy.max_loan_unround, inf, 16);
-	
+
 	if (_economy.max_loan + 50000 <= _economy.max_loan_unround)
 		_economy.max_loan += 50000;
 
 	inf = _economy.infl_amount_pr * 54;
 	for(i=0; i!=NUM_CARGO; i++) {
-		AddSingleInflation( 
+		AddSingleInflation(
 			_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,
 			inf
@@ -592,7 +592,7 @@ static void PlayersPayInterest()
 
 		_current_player = p->index;
 		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
-		
+
 		SubtractMoneyFromPlayer(BIGMULUS(p->current_loan, interest, 16));
 
 		SET_EXPENSES_TYPE(EXPENSES_OTHER);
@@ -767,28 +767,28 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 void DeleteSubsidyWithIndustry(byte index)
 {
 	Subsidy *s;
-	
+
 	for(s=_subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != 0xFF && s->age < 12 &&
 				s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL &&
 				(index == s->from || (s->cargo_type!=CT_GOODS && s->cargo_type!=CT_FOOD && index==s->to))) {
 			s->cargo_type = 0xFF;
 		}
-	}	
+	}
 }
 
-void DeleteSubsidyWithStation(byte index) 
+void DeleteSubsidyWithStation(byte index)
 {
 	Subsidy *s;
 	bool dirty = false;
-	
+
 	for(s=_subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != 0xFF && s->age >= 12 &&
 				(s->from == index || s->to == index)) {
 			s->cargo_type = 0xFF;
 			dirty = true;
 		}
-	}	
+	}
 
 	if (dirty)
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
@@ -852,7 +852,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		// The destination is a town
 		Town *t = DEREF_TOWN(RandomRange(_total_towns));
-		
+
 		// Only want big towns
 		if (t->xy == 0 || t->population < 900)
 			return;
@@ -861,9 +861,9 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	} else {
 		// The destination is an industry
 		Industry *i2 = DEREF_INDUSTRY(RandomRange(_total_industries));
-		
+
 		// The industry must accept the cargo
-		if (i == i2 || i2->xy == 0 || 
+		if (i == i2 || i2->xy == 0 ||
 				(cargo != i2->accepts_cargo[0] &&
 				cargo != i2->accepts_cargo[1] &&
 				cargo != i2->accepts_cargo[2]))
@@ -873,15 +873,15 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	}
 }
 
-static bool CheckSubsidyDuplicate(Subsidy *s) 
+static bool CheckSubsidyDuplicate(Subsidy *s)
 {
 	Subsidy *ss;
 
 	for(ss=_subsidies; ss != endof(_subsidies); ss++) {
-		if (s != ss && 
-//				ss->age < 12 && 
-				ss->from == s->from && 
-				ss->to == s->to && 
+		if (s != ss &&
+//				ss->age < 12 &&
+				ss->from == s->from &&
+				ss->to == s->to &&
 				ss->cargo_type == s->cargo_type) {
 			s->cargo_type = 0xFF;
 			return true;
@@ -929,7 +929,7 @@ static void SubsidyMonthlyHandler()
 			if (++s == endof(_subsidies))
 				goto no_add;
 		}
-		
+
 		n = 1000;
 		do {
 			FindSubsidyPassengerRoute(&fr);
@@ -1002,7 +1002,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, b
 	if (transit_days > _cargoc.transit_days_1[cargo]) {
 		transit_days -= _cargoc.transit_days_1[cargo];
 		f -= transit_days;
-		
+
 		if (transit_days > _cargoc.transit_days_2[cargo]) {
 			transit_days -= _cargoc.transit_days_2[cargo];
 
@@ -1019,7 +1019,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, b
 
 static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces)
 {
-	Industry *ind, *best;	
+	Industry *ind, *best;
 	int t, u;
 
 	/* Check if there's an industry close to the station that accepts
@@ -1031,7 +1031,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
 				 ind->produced_cargo[0] != 0xFF &&
 				 ind->produced_cargo[0] != cargo_type &&
-				 (t=GetTileDist(ind->xy, xy)) < u) {			
+				 (t=GetTileDist(ind->xy, xy)) < u) {
 			u = t;
 			best = ind;
 		}
@@ -1063,7 +1063,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 	/* check if there's a new subsidy that applies.. */
 	for(s=_subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == cargo_type && s->age < 12) {
-		
+
 			/* Check distance from source */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL) {
 				xy = DEREF_TOWN(s->from)->xy;
@@ -1072,7 +1072,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			}
 			if (GetTileDist1D(xy, from->xy) > 9)
 				continue;
-			
+
 			/* Check distance from dest */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_GOODS || cargo_type == CT_FOOD) {
 				xy = DEREF_TOWN(s->to)->xy;
@@ -1096,7 +1096,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
 			AddNewsItem(
-				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier, 
+				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
 				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
 				pair.a, pair.b);
 
@@ -1138,7 +1138,7 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte des
 
 	// Give the goods to the industry.
 	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
-	
+
 	// Determine profit
 	{
 		int t = GetTileDist(s_from->xy, s_to->xy);
@@ -1197,7 +1197,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	for(;;) {
 		if (v->cargo_cap == 0)
 			goto next_vehicle;
-		
+
 		ge = &st->goods[v->cargo_type];
 
 		/* unload? */
@@ -1211,7 +1211,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			} else if (u->next_order & OF_UNLOAD) {
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
-				
+
 				if ((t=ge->waiting_acceptance & 0xFFF) == 0) {
 					// No goods waiting at station
 					ge->enroute_time = v->cargo_days;
@@ -1229,7 +1229,7 @@ int LoadUnloadVehicle(Vehicle *v)
 				v->cargo_count = 0;
 			}
 		}
-	
+
 		/* don't pick up goods that we unloaded */
 		if (u->next_order & OF_UNLOAD)
 			goto next_vehicle;
@@ -1238,7 +1238,7 @@ int LoadUnloadVehicle(Vehicle *v)
 		ge->days_since_pickup = 0;
 		t = u->max_speed;
 		if (u->type == VEH_Road) t >>=1;
-		
+
 		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
 		ge->last_speed = t < 255 ? t : 255;
 		ge->last_age = _cur_year - v->build_year;
@@ -1252,7 +1252,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			ge->waiting_acceptance -= cap;
 			unloading_time += cap;
 			st->time_since_load = 0;
-			
+
 			// And record the source of the cargo, and the days in travel.
 			v->cargo_source = ge->enroute_from;
 			v->cargo_days = ge->enroute_time;

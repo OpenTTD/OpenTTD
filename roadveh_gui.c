@@ -51,7 +51,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			StringID str;
 
 			SET_DPARAM16(1, year);
-			
+
 			str = STR_0199_YEAR;
 			if (year != 1) {
 				str++;
@@ -97,7 +97,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM16(1, 1920 + v->build_year);
 		SET_DPARAM32(2, v->value);
 		DrawString(34, 57, STR_9011_BUILT_VALUE, 0);
-		
+
 		SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
 		SET_DPARAM16(1, v->cargo_cap);
 		DrawString(34, 67, STR_9012_CAPACITY, 0);
@@ -180,7 +180,7 @@ static void ShowRoadVehDetailsWindow(Vehicle *v)
 	VehicleID veh = v->index;
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
-	_alloc_wnd_parent_num = veh;	
+	_alloc_wnd_parent_num = veh;
 	w = AllocateWindowDesc(&_roadveh_details_desc);
 	w->window_number = veh;
 	w->caption_color = v->owner;
@@ -242,13 +242,13 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(125, 105, str, 0);
 		DrawWindowViewport(w);
 	} break;
-		
+
 	case WE_CLICK: {
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(e->click.widget) {
 		case 4: /* start stop */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE));
 			break;
 		case 5: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
@@ -267,11 +267,11 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 	} break;
-		
+
 	case WE_DESTROY:
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
-		break;	
+		break;
 	}
 }
 
@@ -348,7 +348,7 @@ static void DrawNewRoadVehWindow(Window *w)
 					DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 					y += 14;
 				}
-				sel--; 
+				sel--;
 			}
 		} while (++engine_id, ++e,--num);
 
@@ -362,12 +362,12 @@ static void DrawNewRoadVehWindow(Window *w)
 			SET_DPARAM16(4, _roadveh_capacity[selected_id - ROAD_ENGINES_INDEX]);
 			SET_DPARAM16(3, _cargoc.names_long_p[_roadveh_cargo_type[selected_id - ROAD_ENGINES_INDEX]]);
 
-			e = &_engines[selected_id];	
+			e = &_engines[selected_id];
 			SET_DPARAM16(6, e->lifelength);
 			SET_DPARAM8(7, e->reliability * 100 >> 16);
 			ConvertDayToYMD(&ymd, e->intro_date);
 			SET_DPARAM16(5, ymd.year + 1920);
-			
+
 			DrawString(2, 127, STR_9008_COST_SPEED_RUNNING_COST, 0);
 		}
 	}
@@ -419,7 +419,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 				160,
 				w->window_class,
 				w->window_number);
-			break;		
+			break;
 		}
 		break;
 
@@ -436,8 +436,8 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		memcpy(_decode_parameters, b, 32);
 		DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_9037_CAN_T_RENAME_ROAD_VEHICLE));
 	} break;
-		
-	}	
+
+	}
 }
 
 static const Widget _new_road_veh_widgets[] = {
@@ -468,7 +468,7 @@ static void ShowBuildRoadVehWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_road_veh_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
-	
+
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
 	} else {
@@ -509,17 +509,17 @@ static void DrawRoadDepotWindow(Window *w)
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road &&
-				v->u.road.state == 254 && 
+				v->u.road.state == 254 &&
 				v->tile == (TileIndex)tile &&
 				--num < 0 && num >=	-15) {
 
 			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
-			
+
 			SET_DPARAM16(0, v->unitnumber);
 			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x + 16, y);
-			
+
 			if ((x+=56) == 2+56*5) {
 				x = 2;
 				y += 14;
@@ -534,7 +534,7 @@ static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	TileIndex tile;
 	Vehicle *v;
 	int pos;
-		
+
 	xt = x / 56;
 	xm = x % 56;
 	if (xt >= 5)
@@ -549,7 +549,7 @@ static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road &&
-				v->u.road.state == 254 && 
+				v->u.road.state == 254 &&
 				v->tile == (TileIndex)tile &&
 				--pos < 0) {
 					*veh = v;
@@ -611,7 +611,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		case 2:
 			RoadDepotClickVeh(w, e->click.pt.x, e->click.pt.y);
 			break;
-			
+
 		case 5:
 			ShowBuildRoadVehWindow(w->window_number);
 			break;
@@ -621,7 +621,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 	} break;
-	
+
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
 		break;
@@ -641,12 +641,12 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 				ShowRoadVehViewWindow(v);
 			}
 		} break;
-					
+
 		case 3:
 			if (!HASBIT(w->disabled_state, 3) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
-				
+
 				HandleButtonClick(w, 3);
 
 				v = &_vehicles[WP(w,traindepot_d).sel];
@@ -654,7 +654,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 				_backup_orders_tile = v->tile;
 				BackupVehicleOrders(v, _backup_orders_data);
-	
+
 				if (!DoCommandP(v->tile, v->index, 0, NULL, CMD_SELL_ROAD_VEH | CMD_MSG(STR_9014_CAN_T_SELL_ROAD_VEHICLE)))
 					_backup_orders_tile = 0;
 			}
@@ -693,7 +693,7 @@ static const WindowDesc _road_depot_desc = {
 void ShowRoadDepotWindow(uint tile)
 {
 	Window *w;
-	
+
 	w = AllocateWindowDescFront(&_road_depot_desc, tile);
 	if (w) {
 		w->caption_color = _map_owner[w->window_number];
@@ -730,7 +730,7 @@ static void MakeSortedRoadList(byte owner)
 		// roads are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 		for (i = &_num_road_sort[1]; i != endof(_num_road_sort); i++) {*i += *(i-1);}
-	
+
 		// sort by owner, then only subsort the requested owner-vehicles
 		qsort(_road_sort, n, sizeof(_road_sort[0]), GeneralOwnerSorter);
 
@@ -775,7 +775,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 roads
 		i = (window_number == 0) ? 0 : _num_road_sort[window_number-1];
 		SetVScrollCount(w, _num_road_sort[window_number] - i);
-		
+
 		/* draw the widgets */
 		{
 			Player *p = DEREF_PLAYER(window_number);
@@ -818,7 +818,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM32(0, v->profit_this_year);
 				SET_DPARAM32(1, v->profit_last_year);
 				DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				
+
 				if (v->string_id != STR_SV_ROADVEH_NAME) {
 					SET_DPARAM16(0, v->string_id);
 					DrawString(x+24, y, STR_01AB, 0);
@@ -843,7 +843,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-			
+
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
 			id_v += w->vscroll.pos;
@@ -868,15 +868,15 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_road_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsRoadDepotTile(tile)) {					
+				if (_map_owner[tile] == _local_player && IsRoadDepotTile(tile)) {
 					ShowRoadDepotWindow(tile);
 					ShowBuildRoadVehWindow(tile);
 					return;
 				}
-				
+
 				tile = TILE_MASK(tile + 1);
 			} while(tile != _last_built_road_depot_tile);
-			
+
 			ShowBuildRoadVehWindow(0);
 		} break;
 		}

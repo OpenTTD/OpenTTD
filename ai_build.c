@@ -85,8 +85,8 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	if (part < 1) part = 1;
 	// When we are done, stop it
 	if (part >= PathFinderInfo->route_length - 1) { PathFinderInfo->position = -2; return 0; }
-	
-	
+
+
 	if (PathFinderInfo->rail_or_road) {
 		// Tunnel code
      	if ((AI_PATHFINDER_FLAG_TUNNEL & route_extra[part]) != 0) {
@@ -198,7 +198,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	    if (!EnsureNoVehicle(route[part]) && flag == DC_EXEC) part--;
      	PathFinderInfo->position = part;
     }
-    
+
     return cost;
 }
 
@@ -232,7 +232,7 @@ int AiNew_PickVehicle(Player *p) {
 int AiNew_Build_Vehicle(Player *p, uint tile, byte flag) {
 	int i = AiNew_PickVehicle(p);
 	if (i == -1) return CMD_ERROR;
-	
+
 	if (p->ainew.tbt == AI_TRAIN) {
 		return CMD_ERROR;
 	} else {

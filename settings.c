@@ -50,7 +50,7 @@ static MemoryPool *pool_new(uint minsize)
 {
 	MemoryPool *p;
 	if (minsize < 4096 - 12) minsize = 4096 - 12;
-	
+
 	p = malloc(sizeof(MemoryPool) - 1 + minsize);
 	p->pos = 0;
 	p->size = minsize;
@@ -78,7 +78,7 @@ static void *pool_alloc(MemoryPool **pool, uint size)
 		MemoryPool *n = pool_new(size);
 		*pool = n;
 		n->next = p;
-		p = n;		
+		p = n;
 	}
 
 	pos = p->pos;
@@ -188,7 +188,7 @@ static IniFile *ini_load(const char *filename)
 
 	// for each line in the file
 	while (fgets(buffer, sizeof(buffer), in)) {
-		
+
 		// trim whitespace from the left side
 		for(s=buffer; *s == ' ' || *s == '\t'; s++);
 
@@ -230,7 +230,7 @@ static IniFile *ini_load(const char *filename)
 		} else if (group) {
 			// find end of keyname
 			for(t=s; *t != 0 && *t != '=' && *t != '\t' && *t != ' '; t++) {}
-						
+
 			// it's an item in an existing group
 			item = ini_item_alloc(group, s, t-s);
 			if (comment_size) {
@@ -285,7 +285,7 @@ static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 	for(item = group->item; item; item = item->next)
 		if (!strcmp(item->name, name))
 			return item;
-	
+
 	if (!create) return NULL;
 
 	// otherwise make a new one
@@ -299,7 +299,7 @@ static bool ini_save(const char *filename, IniFile *ini)
 	FILE *f;
 	IniGroup *group;
 	IniItem *item;
-	
+
 	f = fopen(filename, "w");
 	if (f == NULL) return false;
 
@@ -328,7 +328,7 @@ struct SettingDesc {
 	void *def;
 	void *ptr;
 	void *b;
-	
+
 };
 
 static int lookup_oneofmany(const char *many, const char *one, int onelen)
@@ -341,7 +341,7 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 	// check if it's an integer
 	if (*one >= '0' && *one <= '9')
 		return strtoul(one, NULL, 0);
-		
+
 	idx = 0;
 	for(;;) {
 		// find end of item
@@ -400,7 +400,7 @@ static bool load_intlist(const char *str, void *array, int nelems, int type)
 {
 	int items[64];
 	int i,nitems;
-	
+
 	if (str == NULL) {
 		memset(items, 0, sizeof(items));
 		nitems = nelems;
@@ -522,7 +522,7 @@ static void *string_to_val(const SettingDesc *desc, const char *str)
 			return (void*)false;
 		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
 		break;
-	
+
 	case SDT_STRING:
 	case SDT_STRINGBUF:
 	case SDT_INTLIST:
@@ -549,14 +549,14 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 			s = desc->name;
 			group = group_def;
 		}
-		
+
 		item = ini_getitem(group, s, false);
 		if (!item) {
 			p = desc->def;
 		} else {
 			p = string_to_val(desc, item->value);
 		}
-		
+
 		// get ptr to array
 		ptr = desc->ptr;
 		if ( (uint32)ptr < 0x10000)
@@ -600,7 +600,7 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 		default:
 			NOT_REACHED();
 		}
-	}	
+	}
 }
 
 static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpname, void *base)
@@ -615,7 +615,7 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 	for (;desc->name;desc++) {
 		if (desc->flags & SDT_NOSAVE)
 			continue;
-		
+
 		// group override?
 		s = strchr(desc->name, '.');
 		if (s) {
@@ -627,16 +627,16 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 			s = desc->name;
 			group = group_def;
 		}
-		
+
 		item = ini_getitem(group, s, true);
 
 		// get ptr to array
 		ptr = desc->ptr;
 		if ( (uint32)ptr < 0x10000)
 			ptr = (byte*)base + (uint32)ptr;
-		
+
 		if (item->value != NULL) {
-			// check if the value is the same as the old value	
+			// check if the value is the same as the old value
 			p = string_to_val(desc, item->value);
 
 			switch(desc->flags & 0xF) {
@@ -658,7 +658,7 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 				case SDT_INT32 >> 4:
 				case SDT_UINT32 >> 4:
 					if (*(uint32*)ptr == (uint32)p)
-						continue;	
+						continue;
 					break;
 				default:
 					NOT_REACHED();
@@ -717,7 +717,7 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 		}
 		// the value is different, that means we have to write it to the ini
 		item->value = pool_strdup(&ini->pool, buf, strlen(buf));
-	}	
+	}
 }
 
 //***************************
@@ -826,7 +826,7 @@ static const SettingDesc patch_settings[] = {
 	{"nonuniform_stations",	SDT_BOOL,		(void*)false, (void*)offsetof(Patches, nonuniform_stations),	NULL},
 	{"always_small_airport",SDT_BOOL,		(void*)false, (void*)offsetof(Patches, always_small_airport),	NULL},
 	{"realistic_acceleration",SDT_BOOL, (void*)false, (void*)offsetof(Patches, realistic_acceleration),	NULL},
-	
+
 	{"toolbar_pos",					SDT_UINT8,	(void*)0,			(void*)offsetof(Patches, toolbar_pos),					NULL},
 
 	{"max_trains",					SDT_UINT8,	(void*)80,		(void*)offsetof(Patches, max_trains),						NULL},
@@ -848,7 +848,7 @@ static const SettingDesc patch_settings[] = {
 	{"pf_maxlength",				SDT_UINT16, (void*)512,		(void*)offsetof(Patches, pf_maxlength),					NULL},
 	{"pf_maxdepth",					SDT_UINT8,	(void*)16,		(void*)offsetof(Patches, pf_maxdepth),					NULL},
 
-	
+
 	{"ai_disable_veh_train",SDT_BOOL,		(void*)false, (void*)offsetof(Patches, ai_disable_veh_train),	NULL},
 	{"ai_disable_veh_roadveh",SDT_BOOL,	(void*)false, (void*)offsetof(Patches, ai_disable_veh_roadveh),	NULL},
 	{"ai_disable_veh_aircraft",SDT_BOOL,(void*)false, (void*)offsetof(Patches, ai_disable_veh_aircraft),NULL},
@@ -875,7 +875,7 @@ static const SettingDesc patch_settings[] = {
 
 	{"wait_oneway_signal",	SDT_UINT8,	(void*)15,		(void*)offsetof(Patches, wait_oneway_signal),		NULL},
 	{"wait_twoway_signal",	SDT_UINT8,	(void*)41,		(void*)offsetof(Patches, wait_twoway_signal),		NULL},
-	
+
 	{"ainew_active",				SDT_BOOL,		(void*)false, (void*)offsetof(Patches, ainew_active),					NULL},
 
 	{"drag_signals_density",SDT_UINT8,	(void*)4,			(void*)offsetof(Patches, drag_signals_density), NULL},

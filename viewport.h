@@ -8,12 +8,12 @@ struct ViewPort {
 	int virtual_left, virtual_top;			// virtual coordinates
 	int virtual_width, virtual_height;	// these are just width << zoom, height << zoom
 
-	byte zoom;	
+	byte zoom;
 };
 
 /* viewport.c */
 Point MapXYZToViewport(ViewPort *vp, uint x, uint y, uint z);
-void AssignWindowViewport(Window *w, int x, int y, 
+void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 void SetViewportPosition(Window *w, int x, int y);
 ViewPort *IsPtInWindowViewport(Window *w, int x, int y);

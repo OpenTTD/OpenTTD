@@ -5,7 +5,7 @@
  *  For more information about AyStar (A* Algorithm), you can look at
  *    http://en.wikipedia.org/wiki/A-star_search_algorithm
  */
- 
+
 /*
  * Friendly reminder:
  *  Call (AyStar).free() when you are done with Aystar. It reserves a lot of memory
@@ -46,7 +46,7 @@ OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar) {
 	OpenListNode* res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
 	if (res != NULL)
 		Hash_Delete(&aystar->OpenListHash, res->path.node.tile, res->path.node.direction);
-	
+
 	return res;
 }
 
@@ -76,29 +76,29 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 
 	// Check the new node against the ClosedList
 	if (AyStarMain_ClosedList_IsInList(aystar, current) != NULL) return AYSTAR_DONE;
-	
+
 	// Calculate the G-value for this node
 	new_g = aystar->CalculateG(aystar, current, parent);
 	// If the value was INVALID_NODE, we don't do anything with this node
 	if (new_g == AYSTAR_INVALID_NODE) return AYSTAR_DONE;
-	
+
 	// There should not be given any other error-code..
 	assert(new_g >= 0);
 	// Add the parent g-value to the new g-value
 	new_g += parent->g;
 	if (aystar->max_path_cost != 0 && (uint)new_g > aystar->max_path_cost) return AYSTAR_DONE;
-	
+
 	// Calculate the h-value
 	new_h = aystar->CalculateH(aystar, current, parent);
 	// There should not be given any error-code..
 	assert(new_h >= 0);
-	
+
 	// The f-value if g + h
 	new_f = new_g + new_h;
-	
+
 	// Get the pointer to the parent in the ClosedList (the currentone is to a copy of the one in the OpenList)
 	closedlist_parent = AyStarMain_ClosedList_IsInList(aystar, &parent->path.node);
-	
+
 	// Check if this item is already in the OpenList
 	if ((check = AyStarMain_OpenList_IsInList(aystar, current)) != NULL) {
 		int i;
@@ -117,7 +117,7 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 		// A new node, add him to the OpenList
 		AyStarMain_OpenList_Add(aystar, closedlist_parent, current, new_f, new_g, 0);
 	}
-	
+
 	return AYSTAR_DONE;
 }
 
@@ -134,12 +134,12 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
  */
 int AyStarMain_Loop(AyStar *aystar) {
 	int i, r;
-	
+
 	// Get the best node from OpenList
 	OpenListNode *current = AyStarMain_OpenList_Pop(aystar);
 	// If empty, drop an error
 	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
-	
+
 	// Check for end node and if found, return that code
 	if (aystar->EndNodeCheck(aystar, current) == AYSTAR_FOUND_END_NODE) {
 		if (aystar->FoundEndNode != NULL)
@@ -147,22 +147,22 @@ int AyStarMain_Loop(AyStar *aystar) {
 		free(current);
 		return AYSTAR_FOUND_END_NODE;
 	}
-	
+
 	// Add the node to the ClosedList
 	AyStarMain_ClosedList_Add(aystar, &current->path);
 
 	// Load the neighbours
 	aystar->GetNeighbours(aystar, current);
-	
+
 	// Go through all neighbours
 	for (i=0;i<aystar->num_neighbours;i++) {
 		// Check and add them to the OpenList if needed
 		r = aystar->checktile(aystar, &aystar->neighbours[i], current);
 	}
-	
+
 	// Free the node
 	free(current);
-	
+
 	if (aystar->max_search_nodes != 0 && Hash_Size(&aystar->ClosedListHash) >= aystar->max_search_nodes)
 		/* We've expanded enough nodes */
 		return AYSTAR_LIMIT_REACHED;
@@ -228,7 +228,7 @@ int AyStarMain_Main(AyStar *aystar) {
 	if (r != AYSTAR_STILL_BUSY)
 		/* We're done, clean up */
 		aystar->clear(aystar);
-		
+
 	// Check result-value
 	if (r == AYSTAR_FOUND_END_NODE) return AYSTAR_FOUND_END_NODE;
 	// Check if we have some left in the OpenList
@@ -242,7 +242,7 @@ int AyStarMain_Main(AyStar *aystar) {
  * Adds a node from where to start an algorithm. Multiple nodes can be added
  * if wanted. You should make sure that clear() is called before adding nodes
  * if the AyStar has been used before (though the normal main loop calls
- * clear() automatically when the algorithm finishes 
+ * clear() automatically when the algorithm finishes
  */
 void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node) {
 #ifdef AYSTAR_DEBUG

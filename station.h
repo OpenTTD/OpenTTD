@@ -28,7 +28,7 @@ struct Station {
 	ViewportSign sign;
 
 	uint16 had_vehicle_of_type;
-	
+
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;

@@ -58,7 +58,7 @@ static void DrawOrdersWindow(Window *w)
 	SetVScrollCount(w, num+1);
 
 	sel = OrderGetSel(w);
-	
+
 	SET_DPARAM16(2,STR_8827_FULL_LOAD);
 	switch(v->schedule_ptr[sel] & 0x1F) {
 	case OT_GOTO_STATION:
@@ -70,7 +70,7 @@ static void DrawOrdersWindow(Window *w)
 	default:
 		SETBIT(w->disabled_state, 6); /* nonstop */
 		SETBIT(w->disabled_state, 8);	/* full load */
-		SETBIT(w->disabled_state, 9);	/* unload */				
+		SETBIT(w->disabled_state, 9);	/* unload */
 	}
 
 	SET_DPARAM16(0, v->string_id);
@@ -82,11 +82,11 @@ static void DrawOrdersWindow(Window *w)
 	i = 0;
 	for(;;) {
 		str = ((byte)v->cur_order_index == i) ? STR_8805 : STR_8804;
-		
+
 		ord = v->schedule_ptr[i];
 
 		if ( (uint)(i - w->vscroll.pos) < 6) {
-			
+
 			if (ord == 0) {
 				str = shared_schedule ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
 			} else {
@@ -149,7 +149,7 @@ static void *FindVehicleCallb(Vehicle *v, FindVehS *f)
 {
 	if (v->tile != f->tile || v->owner != f->owner || v->vehstatus & VS_HIDDEN ) return NULL;
 	return v;
-} 
+}
 
 Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
 {
@@ -231,7 +231,7 @@ static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
 	// v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
 	// obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
 	if (v->num_orders != 0 && _ctrl_pressed == 0) {return false;}
-	
+
 	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? 0 : 1, NULL,
 		_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
 		WP(w,order_d).sel = -1;
@@ -245,7 +245,7 @@ static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
 {
 	uint cmd;
 	Vehicle *u;
-	
+
 	// check if we're clicking on a vehicle first.. clone orders in that case.
 	u = CheckMouseOverVehicle();
 	if (u && HandleOrderVehClick(v, u, w))
@@ -273,7 +273,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 		int mode;
 		switch(e->click.widget) {
-		case 2:	{/* orders list */	
+		case 2:	{/* orders list */
 			int sel;
 			sel = (e->click.pt.y - 15) / 10;
 
@@ -298,7 +298,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 				if (xy)
 					ScrollMainWindowToTile(xy);
-				
+
 				return;
 			}
 
@@ -383,7 +383,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			HandleOrderVehClick(&_vehicles[w->window_number], v, w);
 		}
 	} break;
-		
+
 	}
 }
 
@@ -556,7 +556,7 @@ void ShowOrdersWindow(Vehicle *v)
 
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
-	
+
 	_alloc_wnd_parent_num = veh;
 	w = AllocateWindowDesc(
 		_order_window_desc[(v->type - VEH_Train)*2 + (v->owner != _local_player)]);

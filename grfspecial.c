@@ -465,20 +465,20 @@ static void VehicleChangeInfo(byte *buf, int len)
 			uint8 prop = grf_load_byte(&buf);
 
 			switch (prop) {
-			case 0x00: {	
+			case 0x00: {
 				/* Introduction date */
 				foreach_engine {
 					uint16 date = grf_load_word(&buf);
-					
+
 					ei[i].base_intro = date;
 				}
 				break;
 			}
-			case 0x02: {	
+			case 0x02: {
 				/* Decay speed */
 				foreach_engine {
 					uint8 decay = grf_load_byte(&buf);
-									
+
 					ei[i].unk2 &= 0x80;
 					ei[i].unk2 |= decay & 0x7f;
 				}
@@ -493,7 +493,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 				}
 				break;
 			}
-			case 0x04: {	
+			case 0x04: {
 				/* Model life */
 				foreach_engine {
 					uint8 life = grf_load_byte(&buf);
@@ -512,7 +512,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 				}
 				break;
 			}
-			case 0x07: {	
+			case 0x07: {
 				/* Loading speed */
 				/* Hyronymus explained me what does
 				 * this mean and insists on having a
@@ -636,7 +636,7 @@ static void SpriteNewSuperset(byte *buf, int len)
 			uint8 nvar = buf[7];
 			//uint32 val;
 			uint16 def;
-			
+
 			grfmsg(GMS_WARN, "SpriteNewSuperset(0x81): Unsupported variable %x. Using default cid.", var);
 
 			//val = (0xff << shiftnum) & andmask;

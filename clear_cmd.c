@@ -15,7 +15,7 @@ typedef struct TerraformerState {
 	int direction;
 	int modheight_count;
 	int tile_table_count;
-	
+
 	int32 cost;
 
 	TileIndex *tile_table;
@@ -44,7 +44,7 @@ static int TerraformGetHeightOfTile(TerraformerState *ts, TileIndex tile)
 {
 	TerraformerHeightMod *mod = ts->modheight;
 	int count;
-	
+
 	for(count = ts->modheight_count; count != 0; count--, mod++) {
 		if (mod->tile == tile)
 			return mod->height;
@@ -85,10 +85,10 @@ static int TerraformProc(TerraformerState *ts, uint tile, int mode)
 	int32 ret;
 
 	assert(tile < TILES_X * TILES_Y);
-	
+
 	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
 		return r;
-	
+
 	if ((_map_type_and_height[tile] >> 4) == MP_RAILWAY) {
 		static const byte _railway_modes[4] = {8, 0x10, 4, 0x20};
 		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
@@ -128,7 +128,7 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 	int nh;
 	TerraformerHeightMod *mod;
 	int count;
-	
+
 	assert(tile < TILES_X * TILES_Y);
 
 	if (height < 0) {
@@ -140,11 +140,11 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 
 	if (height > 0xF)
 		return false;
-	
+
 	nh = TerraformGetHeightOfTile(ts, tile);
 	if (nh < 0 || height == nh)
-		return false; 
-	
+		return false;
+
 	if (TerraformProc(ts, tile, 0)<0)
 		return false;
 
@@ -227,7 +227,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = TILE_FROM_XY(x,y);
 
 	if (p1 & 1) {
-		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,0),	
+		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,0),
 				(_map_type_and_height[tile+TILE_XY(1,0)]&0xF) + direction))
 					return CMD_ERROR;
 	}
@@ -254,7 +254,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* Check if tunnel would take damage */
 		int count;
 		TileIndex *ti = ts.tile_table;
-		
+
 		for(count = ts.tile_table_count; count != 0; count--, ti++) {
 			uint z, t;
 			uint tile = *ti;
@@ -280,7 +280,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			for(count = ts.tile_table_count; count != 0; count--, ti++) {
 				DoCommandByTile(*ti, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
-		}	
+		}
 
 		/* change the height */
 		{
@@ -291,10 +291,10 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			mod = ts.modheight;
 			for(count = ts.modheight_count; count != 0; count--, mod++) {
 				til = mod->tile;
-				
+
 				// Change tile height
 				_map_type_and_height[til] = (_map_type_and_height[til]&~0x0F)|mod->height;
-				
+
 				TerraformAddDirtyTileAround(&ts, til);
 			}
 		}
@@ -306,7 +306,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			for(count = ts.tile_table_count; count != 0; count--, ti++) {
 				MarkTileDirtyByTile(*ti);
 			}
-		}	
+		}
 	}
 	return ts.cost;
 }
@@ -374,9 +374,9 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile;
 	int32 cost;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-		
+
 	tile = TILE_FROM_XY(x,y);
 
 	if (!EnsureNoVehicle(tile))
@@ -426,7 +426,7 @@ int32 ClearTile_Clear(uint tile, byte flags) {
 int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	tile = TILE_FROM_XY(x,y);
@@ -464,7 +464,7 @@ void DrawHillyLandTile(TileInfo *ti)
 void DrawClearLandFence(TileInfo *ti, byte img)
 {
 	byte z = ti->z;
-	
+
 	if (ti->tileh & 2) {
 		z += 8;
 		if (ti->tileh == 0x17)
@@ -508,7 +508,7 @@ static void DrawTile_Clear(TileInfo *ti)
 		DrawGroundSprite( _clear_land_sprites_3[ti->map5&3] + _tileh_to_sprite[ti->tileh]);
 		break;
 	}
-	
+
 	DrawClearLandFence(ti, _map3_hi[ti->tile] >> 2);
 }
 
@@ -521,7 +521,7 @@ uint GetSlopeTileh_Clear(TileInfo *ti)
 
 static void GetAcceptedCargo_Clear(uint tile, AcceptedCargo *ac)
 {
-	/* unused */	
+	/* unused */
 }
 
 static void AnimateTile_Clear(uint tile)
@@ -553,7 +553,7 @@ void TileLoopClearHelper(uint tile)
 		if ( (img_1&2) != (img_2&2) ) {
 			_map3_hi[tile] |= 3 << 5;
 			dirty = tile;
-		} 
+		}
 	} else {
 		if (img_1 == 1 && img_2 == 1) {
 			_map3_hi[tile] &= ~(3 << 5);
@@ -572,7 +572,7 @@ void TileLoopClearHelper(uint tile)
 		if ( (img_1&2) != (img_2&2) ) {
 			_map3_hi[tile] |= 3 << 2;
 			dirty = tile;
-		} 
+		}
 	} else {
 		if (img_1 == 1 && img_2 == 1) {
 			_map3_hi[tile] &= ~(3 << 2);
@@ -596,7 +596,7 @@ static void TileLoopClearAlps(uint tile)
 
 	m5 = _map5[tile] & 0x1C;
 	tmp = _map5[tile] & 3;
-	
+
 	if (k < -8) {
 		/* snow_m2_down */
 		if (m5 != 0x10)
@@ -671,7 +671,7 @@ static void TileLoop_Clear(uint tile)
 	byte m5,m3;
 
 	TileLoopClearHelper(tile);
-	
+
 	if (_opt.landscape == LT_DESERT) {
 		TileLoopClearDesert(tile);
 	} else if (_opt.landscape == LT_HILLY) {
@@ -685,7 +685,7 @@ static void TileLoop_Clear(uint tile)
 	if ( (m5 & 0x1C) != 0xC) {
 		if ( (m5 & 3) == 3)
 			return;
-		
+
 		if (_game_mode != GM_EDITOR) {
 			m5 += 0x20;
 			if (m5 >= 0x20) {
@@ -727,7 +727,7 @@ void GenerateClearTile()
 	/* add hills */
 	i = (Random() & 0x3FF) | 0x400;
 	do {
-		tile = TILE_MASK(Random());	
+		tile = TILE_MASK(Random());
 		if (IS_TILETYPE(tile, MP_CLEAR))
 			_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (1<<2));
 	} while (--i);
@@ -736,7 +736,7 @@ void GenerateClearTile()
 	i = (Random() & 0x7F) | 0x80;
 	do {
 		r = Random();
-		tile = TILE_MASK(r);	
+		tile = TILE_MASK(r);
 		if (IS_TILETYPE(tile, MP_CLEAR)) {
 			j = ((r >> 16) & 0xF) + 5;
 			for(;;) {

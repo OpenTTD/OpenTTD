@@ -30,7 +30,7 @@ static void CcBuildBridge(bool success, uint tile, uint32 p1, uint32 p2)
 static void BuildBridge(Window *w, int i)
 {
 	DeleteWindow(w);
-	DoCommandP(_bridge.end_tile, _bridge.start_tile, _bridge.indexes[i] | (_bridge.type << 8), CcBuildBridge, 
+	DoCommandP(_bridge.end_tile, _bridge.start_tile, _bridge.indexes[i] | (_bridge.type << 8), CcBuildBridge,
 		CMD_BUILD_BRIDGE | CMD_AUTO | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 }
 
@@ -60,11 +60,11 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 			e->keypress.cont = false;
 			BuildBridge(w, i);
 		}
-		
+
 		break;
 	}
 
-	case WE_CLICK: 
+	case WE_CLICK:
 	 if (e->click.widget == 2) {
 			uint ind = ((int)e->click.pt.y - 14) / 22;
 			if (ind < 4 && (ind += w->vscroll.pos) < (uint)_bridge.count)
@@ -136,7 +136,7 @@ void ShowBuildBridgeWindow(uint start, uint end, byte bridge_type)
 
 		// get absolute bridge length
 		bridge_len = GetBridgeLength(start, end);
-		tot_bridge_len = bridge_len + 2;		
+		tot_bridge_len = bridge_len + 2;
 
 		tot_bridge_len = CalcBridgeLenCostFactor(tot_bridge_len);
 
@@ -155,7 +155,7 @@ void ShowBuildBridgeWindow(uint start, uint end, byte bridge_type)
 	_bridge.count = j;
 
 	if (j != 0) {
-		Window *w = AllocateWindowDesc((_bridge.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);	
+		Window *w = AllocateWindowDesc((_bridge.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
 		w->vscroll.cap = 4;
 		w->vscroll.count = (byte)j;
 	} else {

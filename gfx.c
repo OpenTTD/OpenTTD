@@ -242,17 +242,17 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 // 0 - end of string
 // 1 - SETX <BYTE>
 // 2 - SETXY <BYTE> <BYTE>
-// 3-7 - 
+// 3-7 -
 // 8 - TINYFONT
 // 9 - BIGFONT
 // 10 - newline
-// 11-14 - 
+// 11-14 -
 // 15-31 - 17 colors
 
 
 enum {
 	ASCII_LETTERSTART = 32,
-	
+
 	ASCII_SETX = 1,
 	ASCII_SETXY = 2,
 
@@ -510,7 +510,7 @@ check_bounds:
 skip_char:;
 		for(;;) {
 			c = *string++;
-			if (c < ASCII_LETTERSTART) goto skip_cont;			
+			if (c < ASCII_LETTERSTART) goto skip_cont;
 		}
 	}
 
@@ -586,7 +586,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 
 	if (bp->mode & 1) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
-		
+
 		do {
 			do {
 				done = src_o[0];
@@ -1351,7 +1351,7 @@ static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
 
 		if (dpi->zoom > 0) {
 			start_y += bp.height &~ zoom_mask;
-			bp.height &= zoom_mask; 
+			bp.height &= zoom_mask;
 			if (bp.height == 0) return;
 			y&=zoom_mask;
 		}
@@ -1622,7 +1622,7 @@ void UndrawMouseCursor()
 			_screen.dst_ptr + _cursor.draw_pos.x + _cursor.draw_pos.y * _screen.pitch,
 			_cursor_backup,
 			_cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x, _screen.pitch);
-		
+
 		_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 	}
 }
@@ -1920,7 +1920,7 @@ void SetAnimatedMouseCursor(const uint16 *table)
 }
 
 bool ChangeResInGame(int w, int h)
-{	
+{
 	if ((_screen.width != w || _screen.height != h) && !_video_driver->change_resolution(w, h))
 		return false;
 

@@ -68,7 +68,7 @@ static void AiCase1(Player *p)
 static void AiStateVehLoop(Player *p)
 {
 	Vehicle *v;
-	
+
 	v = p->ai.cur_veh == NULL ? _vehicles : p->ai.cur_veh+1;
 
 	for (;v != endof(_vehicles); v++) {
@@ -79,7 +79,7 @@ static void AiStateVehLoop(Player *p)
 				v->type == VEH_Road ||
 				(v->type == VEH_Aircraft && v->subtype <= 2) ||
 				v->type == VEH_Ship) {
-			
+
 			/* replace engine? */
 			if (v->type == VEH_Train && v->engine_type < 3 &&
 					(_price.build_railvehicle >> 3) < p->player_money) {
@@ -115,7 +115,7 @@ static void AiStateVehLoop(Player *p)
 
 // XXX
 static const byte _rail_locos_count[3] = {
-	27, 3, 5		
+	27, 3, 5
 };
 extern const byte _rail_engines_start[3];
 
@@ -130,14 +130,14 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
 	Engine *e = &_engines[i];
 	do {
 		assert(!(_rail_vehicle_info[i].flags & RVI_WAGON));
-		
+
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
 		r = DoCommandByTile(0, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
-		if (r != CMD_ERROR && 
-					(!(_cmd_build_rail_veh_var1&1) || !(flag&1)) && 
-					r <= money && 
+		if (r != CMD_ERROR &&
+					(!(_cmd_build_rail_veh_var1&1) || !(flag&1)) &&
+					r <= money &&
 				_cmd_build_rail_veh_score >= best_veh_score) {
 			best_veh_score = _cmd_build_rail_veh_score;
 			best_veh_index = i;
@@ -206,7 +206,7 @@ static int32 AiGetBasePrice(Player *p)
 	// adjust base price when more expensive vehicles are available
 	if (p->ai.railtype_to_use == 1) base = (base * 3) >> 1;
 	else if (p->ai.railtype_to_use == 2) base *= 2;
-	
+
 	return base;
 }
 
@@ -266,7 +266,7 @@ static void AiHandleGotoDepot(Player *p, int cmd)
 		p->ai.cur_veh->next_order = OT_DUMMY;
 		InvalidateWindow(WC_VEHICLE_VIEW, p->ai.cur_veh->index);
 	}
-} 
+}
 
 static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
@@ -296,7 +296,7 @@ static void AiHandleReplaceTrain(Player *p)
 	if (veh != -1) {
 		BackupVehicleOrders(v, orderbak);
 		tile = v->tile;
-		
+
 		if (DoCommandByTile(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON) != CMD_ERROR &&
 			 DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE) != CMD_ERROR) {
 			veh = _new_train_id;
@@ -324,7 +324,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	if (veh != -1) {
 		BackupVehicleOrders(v, orderbak);
 		tile = v->tile;
-		
+
 		if (DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH) != CMD_ERROR &&
 			 DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH) != CMD_ERROR) {
 			veh = _new_roadveh_id;
@@ -437,7 +437,7 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 	// initially error
 	fr->distance = -1;
 
-	// Randomize subsidy index.. 
+	// Randomize subsidy index..
 	i = RandomRange(lengthof(_subsidies) * 3);
 	if (i >= lengthof(_subsidies))
 		return;
@@ -476,7 +476,7 @@ static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 	// initially error
 	fr->distance = -1;
 
-	// Randomize subsidy index.. 
+	// Randomize subsidy index..
 	i = RandomRange(lengthof(_subsidies) * 3);
 	if (i >= lengthof(_subsidies))
 		return;
@@ -512,7 +512,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 
 	// pick a source
 	fr->from = i = AiFindRandomIndustry();
-	if (i == NULL)	
+	if (i == NULL)
 		return;
 
 	// pick a random produced cargo
@@ -539,7 +539,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 		t = AiFindRandomTown();
 		if (t == NULL || t->population < (uint32)(cargo == CT_FOOD ? 200 : 900))
 			return;
-		
+
 		fr->to = t;
 		fr->distance = GetTileDist(i->xy, t->xy);
 	}
@@ -558,7 +558,7 @@ static void AiFindRandomPassengerRoute(FoundRoute *fr)
 	fr->from = source = AiFindRandomTown();
 	if (source == NULL || source->population < 400)
 		return;
-	
+
 	fr->to = dest = AiFindRandomTown();
 	if (dest == NULL || source == dest || dest->population < 400)
 		return;
@@ -589,7 +589,7 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 		if (to_tile == from_tile && st->xy == to_tile)
 		    same_station++;
 	}
-	
+
 	// To prevent the AI from building ten busstations in the same town, do some calculations
 	//  For each road or airport station, we want 350 of population!
 	if ((bitmask == 2 || bitmask == 4) && same_station > 2 && ((Town *)(fr->from))->population < same_station * 350)
@@ -612,8 +612,8 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 			return false;
 	} else {
 		Industry *i = (Industry*)fr->from;
-		
-		if (i->pct_transported[fr->cargo != i->produced_cargo[0]] > 0x99 || 
+
+		if (i->pct_transported[fr->cargo != i->produced_cargo[0]] > 0x99 ||
 				i->total_production[fr->cargo != i->produced_cargo[0]] == 0)
 			return false;
 	}
@@ -680,7 +680,7 @@ static void AiWantLongIndustryRoute(Player *p)
 	p->ai.src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
-	
+
 	p->ai.dst.use_tile = 0;
 	p->ai.dst.rand_rng = 9;
 	p->ai.dst.cur_building_rule = 0xFF;
@@ -751,7 +751,7 @@ static void AiWantMediumIndustryRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 40, 60+1))
@@ -824,7 +824,7 @@ static void AiWantShortIndustryRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 15, 40+1))
@@ -897,7 +897,7 @@ static void AiWantMailRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 60, 110+1))
@@ -1003,7 +1003,7 @@ static void AiWantPassengerRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 0, 55+1))
@@ -1075,7 +1075,7 @@ static void AiWantTrainRoute(Player *p)
 	uint16 r;
 	p->ai.railtype_to_use = p->max_railtype - 1;
 	r = (uint16)Random();
-	
+
 	if (r > 0xD000) {
 		AiWantLongIndustryRoute(p);
 	} else if (r > 0x6000) {
@@ -1096,7 +1096,7 @@ static void AiWantLongRoadIndustryRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 35, 55+1))
@@ -1157,7 +1157,7 @@ static void AiWantMediumRoadIndustryRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 15, 40+1))
@@ -1218,7 +1218,7 @@ static void AiWantLongRoadPassengerRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 55, 180+1))
@@ -1356,7 +1356,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 
 	i = 60;
 	for(;;) {
-		
+
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance,0,95+1))
@@ -1401,7 +1401,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	p->ai.order_list_blocks[0] = 0;
 	p->ai.order_list_blocks[1] = 1;
 	p->ai.order_list_blocks[2] = 255;
-	
+
 	p->ai.state = AIS_AIRPORT_STUFF;
 	p->ai.timeout_counter = 0;
 }
@@ -1498,11 +1498,11 @@ static void AiStateWantNewRoute(Player *p)
 	i = 200;
 	for(;;) {
 		r = (uint16)Random();
-		
+
 		if (_patches.ai_disable_veh_train && _patches.ai_disable_veh_roadveh &&
 			_patches.ai_disable_veh_aircraft && _patches.ai_disable_veh_ship)
 			return;
-		
+
 		if (r < 0x7626) {
 			if (_patches.ai_disable_veh_train) continue;
 			AiWantTrainRoute(p);
@@ -1516,7 +1516,7 @@ static void AiStateWantNewRoute(Player *p)
 			if (_patches.ai_disable_veh_ship) continue;
 			AiWantShipRoute(p);
 		}
-		
+
 		// got a route?
 		if (p->ai.state != AIS_WANT_NEW_ROUTE)
 			break;
@@ -1598,7 +1598,7 @@ clear_town_stuff:;
 
 			j = p->attr;
 			k = 0;
-			
+
 			// Build the rail
 			for(i=0; i!=6; i++,j>>=1) {
 				if (j&1) {
@@ -1608,7 +1608,7 @@ clear_town_stuff:;
 					total_cost += r;
 				}
 			}
-			
+
 			/* signals too? */
 			if (j&3) {
 				// Can't build signals on a road.
@@ -1643,7 +1643,7 @@ clear_town_stuff:;
 			// Unk
 			break;
 		}
-		
+
 		p++;
 	}
 
@@ -1663,7 +1663,7 @@ static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, by
 	const AiDefaultRailBlock *p;
 
 	for(i=0; (p = _default_rail_track_data[i]) != NULL; i++) {
-		if (p->p0 == p0 && p->p1 == p1 && p->p2 == p2 && p->p3 == p3 && 
+		if (p->p0 == p0 && p->p1 == p1 && p->p2 == p2 && p->p3 == p3 &&
 				(p->dir == 0xFF || p->dir == dir || ((p->dir-1)&3) == dir)) {
 			*cost = AiDoBuildDefaultRailTrack(tile, p->data, DC_NO_TOWN_RATING);
 			if (*cost != CMD_ERROR && AiCheckTrackResources(tile, p->data, cargo))
@@ -1723,7 +1723,7 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 	} while (--unk >= 0);
 
 	slope = GetTileSlope(tile, &h);
-	
+
 	if (slope != 0) {
 		if (mode > 0 || (mode == 0 && !(r&0xC))) {
 			// Terraform up
@@ -1731,9 +1731,9 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 				DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 		} else if (h != 0) {
 			// Terraform down
-			DoCommandByTile(tile, _terraform_down_flags[slope-1], 0, 
+			DoCommandByTile(tile, _terraform_down_flags[slope-1], 0,
 				DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-		}				
+		}
 	}
 
 	_current_player = old_player;
@@ -1850,7 +1850,7 @@ static bool AiDoFollowTrack(Player *p)
 	arpfd.tile2 = p->ai.cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + _tileoffs_by_dir[p->ai.cur_dir_a], 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2, 
+	FollowTrack(p->ai.cur_tile_a + _tileoffs_by_dir[p->ai.cur_dir_a], 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2,
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -1888,7 +1888,7 @@ static bool AiIsTileBanned(Player *p, TileIndex tile, byte val) {
 	int i;
 
 	for(i=0; i!=p->ai.banned_tile_count; i++)
-		if (p->ai.banned_tiles[i] == tile && 
+		if (p->ai.banned_tiles[i] == tile &&
 				p->ai.banned_val[i] == val)
 					return true;
 	return false;
@@ -1924,7 +1924,7 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 			arf->best_ptr = p;
 			arf->best_tile = arf->cur_best_tile;
 			better = true;
-		}	
+		}
 	} else if (arf->recursive_mode > 1) {
 		// Mode is 2.
 		if (arf->best_dist != 0 || arf->cur_best_depth < arf->best_depth) {
@@ -1948,7 +1948,7 @@ static void FORCEINLINE AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex 
 	bool flag;
 
 	int dir2 = p[0] & 3;
-	
+
 	FindLandscapeHeightByTile(&arf->ti, tile);
 
 	if (arf->ti.tileh == _dir_table_1[dir2] || (arf->ti.tileh==0 && arf->ti.z!=0)) {
@@ -1969,11 +1969,11 @@ static void FORCEINLINE AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex 
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (DoCommandByTile(tile_new, tile, arf->player->ai.railtype_to_use<<8, 
+		if (DoCommandByTile(tile_new, tile, arf->player->ai.railtype_to_use<<8,
 			DC_AUTO, CMD_BUILD_BRIDGE) == CMD_ERROR)
 				return;
 		AiBuildRailRecursive(arf, tile_new, dir2);
-		
+
 		// At the bottom depth, check if the new path is better than the old one.
 		if (arf->depth == 1) {
 			if (AiCheckRailPathBetter(arf, p))
@@ -1986,7 +1986,7 @@ static void FORCEINLINE AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex 
 {
 	FindLandscapeHeightByTile(&arf->ti, tile);
 
-	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) { 
+	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) {
 		int32 cost = DoCommandByTile(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (cost != CMD_ERROR && cost <= (arf->player->player_money>>4)) {
@@ -2004,7 +2004,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 	const byte *p;
 
 	tile = TILE_MASK(tile + _tileoffs_by_dir[dir]);
-	
+
 	// Reached destination?
 	if (tile == arf->final_tile) {
 		if (arf->final_dir != (dir^2)) {
@@ -2067,7 +2067,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 }
 
 
-static const byte _dir_table_3[]= {0x25, 0x2A, 0x19, 0x16};	
+static const byte _dir_table_3[]= {0x25, 0x2A, 0x19, 0x16};
 
 static void AiBuildRailConstruct(Player *p)
 {
@@ -2078,7 +2078,7 @@ static void AiBuildRailConstruct(Player *p)
 	if (AiDoFollowTrack(p)) {
 		p->ai.state_counter = (Random()&0xE)+6; // Destruct this amount of blocks
 		p->ai.state_mode = 1; // Start destruct
-		
+
 		// Ban this tile and don't reach it for a while.
 		AiBanTile(p, p->ai.cur_tile_a, FindFirstBit(GetRailTrackStatus(p->ai.cur_tile_a)));
 		return;
@@ -2097,7 +2097,7 @@ static void AiBuildRailConstruct(Player *p)
 	arf.best_depth = 0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;
-	AiBuildRailRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);		
+	AiBuildRailRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);
 
 	// Reached destination?
 	if (arf.recursive_mode == 2 && arf.cur_best_depth == 0) {
@@ -2114,19 +2114,19 @@ static void AiBuildRailConstruct(Player *p)
 		if (++p->ai.state_counter == 21) {
 			p->ai.state_counter = 40;
 			p->ai.state_mode = 1;
-			
+
 			// Ban this tile
 			AiBanTile(p, p->ai.cur_tile_a, FindFirstBit(GetRailTrackStatus(p->ai.cur_tile_a)));
 		}
 		return;
 	}
-	
+
 	p->ai.cur_tile_a += _tileoffs_by_dir[p->ai.cur_dir_a];
 
 	if (arf.best_ptr[0]&0x80) {
 		int i;
 		int32 bridge_len = GetBridgeLength(arf.bridge_end_tile, p->ai.cur_tile_a);
-		
+
 		/*	Figure out what (rail)bridge type to build
 				start with best bridge, then go down to worse and worse bridges
 				unnecessary to check for worse bridge (i=0), since AI will always build that.
@@ -2153,7 +2153,7 @@ static void AiBuildRailConstruct(Player *p)
 	} else {
 		// rail
 		p->ai.cur_dir_a = arf.best_ptr[1];
-		DoCommandByTile(p->ai.cur_tile_a, p->ai.railtype_to_use, arf.best_ptr[0], 
+		DoCommandByTile(p->ai.cur_tile_a, p->ai.railtype_to_use, arf.best_ptr[0],
 			DC_EXEC | DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL);
 		p->ai.state_counter = 0;
 	}
@@ -2183,7 +2183,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 		}
 
 		if (!(_map5[tile] & 0x40)) {
-			
+
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
 			if ((_map5[tile]&1) != (p->ai.cur_dir_a&1))
@@ -2194,7 +2194,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			do {
 				tile = TILE_MASK(tile - offs);
 			} while (_map5[tile] & 0x40);
-			
+
 			tilenew = TILE_MASK(tile - offs);
 			// And clear the bridge.
 			if (DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
@@ -2217,7 +2217,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			(_map5[tile]&0xC0) == 0x40) {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_SIGNALS);
 	}
-	
+
 	// And also remove the rail.
 	if (DoCommandByTile(tile, 0, bit, DC_EXEC, CMD_REMOVE_SINGLE_RAIL) == CMD_ERROR)
 		return false;
@@ -2226,7 +2226,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	ptr = _ai_table_15[p->ai.cur_dir_a^2];
 	while (ptr[0] != bit) ptr+=2;
 	p->ai.cur_dir_a = ptr[1] ^ 2;
-	
+
 	// And then also switch tile.
 	p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a - _tileoffs_by_dir[p->ai.cur_dir_a]);
 
@@ -2246,7 +2246,7 @@ static void AiBuildRailDestruct(Player *p)
 	if (p->ai.cur_tile_a == p->ai.start_tile_a)
 		return;
 
-	AiRemoveTileAndGoForward(p);	
+	AiRemoveTileAndGoForward(p);
 }
 
 
@@ -2256,9 +2256,9 @@ static void AiBuildRail(Player *p)
 
 	if (p->ai.state_mode < 1) {
 		// Construct mode, build new rail.
-		AiBuildRailConstruct(p);		
+		AiBuildRailConstruct(p);
 	} else if (p->ai.state_mode == 1) {
-		
+
 		// Destruct mode, destroy the rail currently built.
 		AiBuildRailDestruct(p);
 	} else if (p->ai.state_mode == 2) {
@@ -2291,7 +2291,7 @@ static void AiStateBuildRail(Player *p)
 	// Currently building a rail between two points?
 	if (p->ai.state_mode != 255) {
 		AiBuildRail(p);
-		
+
 		// Alternate between edges
 		swap_tile(&p->ai.start_tile_a, &p->ai.start_tile_b);
 		swap_tile(&p->ai.cur_tile_a, &p->ai.cur_tile_b);
@@ -2425,7 +2425,7 @@ handle_nocash:
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS ||
 							p->ai.cargo_type == CT_MAIL ||
 							(_opt.landscape==LT_NORMAL && p->ai.cargo_type == CT_VALUABLES));
-		
+
 		if (!is_pass && i == 1) flags |= OF_UNLOAD;
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0)) flags |= OF_FULL_LOAD;
 
@@ -2453,7 +2453,7 @@ static void AiStateDeleteRailBlocks(Player *p)
 	AiBuildRec *aib;
 	const AiDefaultBlockData *b;
 
-	num = p->ai.num_build_rec;	
+	num = p->ai.num_build_rec;
 	aib = &p->ai.src;
 	do {
 		if (aib->cur_building_rule != 255) {
@@ -2521,13 +2521,13 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 		uint c = TILE_MASK(tile+ p->tileoffs);
 
 		_cleared_town = NULL;
-	
+
 		if (p->mode == 2) {
 			if (IS_TILETYPE(c, MP_STREET) &&
 					(_map5[c]&0xF0)==0 &&
 					(_map5[c]&p->attr)!=0) {
 				roadflag |= 2;
-				
+
 				// all bits are already built?
 				if ((_map5[c]&p->attr)==p->attr)
 					continue;
@@ -2575,7 +2575,7 @@ clear_town_stuff:;
 				r = DoCommandByTile(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (r == CMD_ERROR) return CMD_ERROR;
 			}
-		
+
 		}
 	}
 
@@ -2595,9 +2595,9 @@ static bool AiCheckBlockDistances(Player *p, TileIndex tile)
 {
 	AiBuildRec *aib;
 	int num;
-	
+
 	num = p->ai.num_build_rec;
-	aib = &p->ai.src;	
+	aib = &p->ai.src;
 
 	do {
 		if (aib->cur_building_rule != 255) {
@@ -2720,7 +2720,7 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 	if (arf->recursive_mode < 1) {
 		// Mode is 0. This means destination has not been found yet.
 		// If the found path is shorter than the current one, remember it.
-		if (arf->cur_best_dist < arf->best_dist || 
+		if (arf->cur_best_dist < arf->best_dist ||
 			(arf->cur_best_dist == arf->best_dist && arf->cur_best_depth < arf->best_depth)) {
 			arf->best_depth = arf->cur_best_depth;
 			arf->best_dist = arf->cur_best_dist;
@@ -2728,7 +2728,7 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 			arf->best_ptr = p;
 			arf->best_tile = arf->cur_best_tile;
 			better = true;
-		}	
+		}
 	} else if (arf->recursive_mode > 1) {
 		// Mode is 2.
 		if (arf->best_dist != 0 || arf->cur_best_depth < arf->best_depth) {
@@ -2825,14 +2825,14 @@ static void FORCEINLINE AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex 
 	bool flag;
 
 	int dir2 = p[0] & 3;
-	
+
 	FindLandscapeHeightByTile(&arf->ti, tile);
 	if (arf->ti.tileh == _dir_table_1[dir2] || (arf->ti.tileh==0 && arf->ti.z!=0)) {
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
 		flag = arf->ti.z == 0;
 		for(;;) {
-			if (tile_new < -_tileoffs_by_dir[dir2]) return; // Wraping around map, no bridge possible!		
+			if (tile_new < -_tileoffs_by_dir[dir2]) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + _tileoffs_by_dir[dir2]);
 			FindLandscapeHeightByTile(&arf->ti, tile_new);
 			if (arf->ti.tileh != 0 || arf->ti.type == MP_CLEAR || arf->ti.type == MP_TREES) {
@@ -2850,7 +2850,7 @@ static void FORCEINLINE AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex 
 		if (DoCommandByTile(tile_new, tile, 0x8000, DC_AUTO, CMD_BUILD_BRIDGE) == CMD_ERROR)
 			return;
 		AiBuildRoadRecursive(arf, tile_new, dir2);
-		
+
 		// At the bottom depth, check if the new path is better than the old one.
 		if (arf->depth == 1) {
 			if (AiCheckRoadPathBetter(arf, p))
@@ -2863,7 +2863,7 @@ static void FORCEINLINE AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex 
 {
 	FindLandscapeHeightByTile(&arf->ti, tile);
 
-	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) { 
+	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) {
 		int32 cost = DoCommandByTile(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (cost != CMD_ERROR && cost <= (arf->player->player_money>>4)) {
@@ -2882,13 +2882,13 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 	const byte *p;
 
 	tile = TILE_MASK(tile + _tileoffs_by_dir[dir]);
-	
+
 	// Reached destination?
 	if (tile == arf->final_tile) {
 		if ((arf->final_dir^2) == dir) {
 			arf->recursive_mode = 2;
 			arf->cur_best_depth = arf->depth;
-		} 
+		}
 		return;
 	}
 
@@ -2965,7 +2965,7 @@ static void AiBuildRoadConstruct(Player *p)
 	arf.best_depth =  0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;
-	AiBuildRoadRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);		
+	AiBuildRoadRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);
 
 	// Reached destination?
 	if (arf.recursive_mode == 2 && arf.cur_best_depth == 0) {
@@ -3003,7 +3003,7 @@ do_some_terraform:
 				unnecessary to check for worse bridge (i=0), since AI will always build that.
 				AI is so fucked up that fixing this small thing will probably not solve a thing
 		*/
-		for(i = 10; i != 0; i--) {                      
+		for(i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				int32 cost = DoCommandByTile(tile, p->ai.cur_tile_a, i + (0x80 << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (cost != CMD_ERROR && cost < (p->player_money >> 5))
@@ -3021,7 +3021,7 @@ do_some_terraform:
 		p->ai.cur_tile_a = _build_tunnel_endtile;
 		p->ai.state_counter = 0;
 	} else {
-		
+
 		// road
 		if (!AiBuildRoadHelper(tile, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, arf.best_ptr[0]))
 			goto do_some_terraform;
@@ -3044,7 +3044,7 @@ static void AiBuildRoad(Player *p)
 
 	if (p->ai.state_mode < 1) {
 		// Construct mode, build new road.
-		AiBuildRoadConstruct(p);		
+		AiBuildRoadConstruct(p);
 	} else if (p->ai.state_mode == 1) {
 		// Destruct mode, not implemented for roads.
 		p->ai.state_mode = 2;
@@ -3088,7 +3088,7 @@ static void AiStateBuildRoad(Player *p)
 	// Currently building a road between two points?
 	if (p->ai.state_mode != 255) {
 		AiBuildRoad(p);
-		
+
 		// Alternate between edges
 		swap_tile(&p->ai.start_tile_a, &p->ai.start_tile_b);
 		swap_tile(&p->ai.cur_tile_a, &p->ai.cur_tile_b);
@@ -3149,7 +3149,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 	uint tile,loco_id;
 	int veh, i;
 	int32 cost;
-	
+
 	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
 	for(;ptr->mode != 0;ptr++) {}
 	tile = TILE_ADD(p->ai.src.use_tile, ptr->tileoffs);
@@ -3197,7 +3197,7 @@ static void AiStateDeleteRoadBlocks(Player *p)
 	AiBuildRec *aib;
 	const AiDefaultBlockData *b;
 
-	num = p->ai.num_build_rec;	
+	num = p->ai.num_build_rec;
 	aib = &p->ai.src;
 	do {
 		if (aib->cur_building_rule != 255) {
@@ -3379,7 +3379,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	// do the following 8 times
 	i = 8;
 	do {
-		// check if we can build the default 
+		// check if we can build the default
 		aib = &p->ai.src;
 		j = p->ai.num_build_rec;
 		do {
@@ -3399,7 +3399,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 					!IS_TILETYPE(aib->use_tile, MP_RAILWAY) &&
 					!IS_TILETYPE(aib->use_tile, MP_STATION)
 					) {
-				
+
 				_map_type_and_height[aib->use_tile] = 0xa1;
 				_map5[aib->use_tile] = 0x80;
 				MarkTileDirtyByTile(aib->use_tile);
@@ -3460,7 +3460,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	int32 cost;
 	int i;
 	uint loco_id;
-	
+
 	ptr = _airport_default_block_data[p->ai.src.cur_building_rule];
 	for(;ptr->mode!=0;ptr++) {}
 
@@ -3523,7 +3523,7 @@ static void AiStateSellVeh(Player *p)
 
 	if (v->owner == _current_player) {
 		if (v->type == VEH_Train) {
-			
+
 			if (!IsTrainDepotTile(v->tile) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
 				if ((v->next_order & OT_MASK) != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_TRAIN_GOTO_DEPOT);
@@ -3532,7 +3532,7 @@ static void AiStateSellVeh(Player *p)
 
 			// Sell whole train
 			DoCommandByTile(v->tile, v->index, 1, DC_EXEC, CMD_SELL_RAIL_WAGON);
-			
+
 		} else if (v->type == VEH_Road) {
 			if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
 				if ((v->next_order & OT_MASK) != OT_GOTO_DEPOT)
@@ -3613,7 +3613,7 @@ static void AiRemovePlayerRailOrRoad(Player *p, uint tile)
 		if ((m5&~0x3) != 0xC0) {
 is_rail_crossing:;
 			m5 = GetRailTrackStatus(tile);
-			
+
 			if (m5 == 0xC || m5 == 0x30)
 				return;
 
@@ -3662,7 +3662,7 @@ pos_3:
 			m5 &= 3;
 			if (GetRailTrackStatus(tile + _tileoffs_by_dir[m5]) & _depot_bits[m5])
 				return;
-			
+
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
 	} else if (IS_TILETYPE(tile, MP_STREET)) {
@@ -3707,7 +3707,7 @@ pos_3:
 
 		if (_map_owner[tile] != _current_player || (_map5[tile] & 0xC6) != 0x80)
 			return;
-		
+
 		m5 = 0;
 
 		b = _map5[tile] & 0x21;
@@ -3721,7 +3721,7 @@ pos_3:
 static void AiStateRemoveTrack(Player *p)
 {
 	int num = 1000;
-	
+
 	do {
 		uint tile = ++p->ai.state_counter;
 
@@ -3775,7 +3775,7 @@ static AiStateAction * const _ai_actions[] = {
 	AiStateSellVeh,
 	AiStateRemoveStation,
 	AiStateRemoveTrack,
-	
+
 	AiStateRemoveSingleRailTile
 };
 
@@ -3875,10 +3875,10 @@ static void AiBuildCompanyHQ(Player *p)
 }
 
 
-void AiDoGameLoop(Player *p) 
+void AiDoGameLoop(Player *p)
 {
 	_cur_ai_player = p;
-	
+
 	if (p->bankrupt_asked != 0) {
 		AiHandleTakeover(p);
 		return;
@@ -3913,7 +3913,7 @@ void AiDoGameLoop(Player *p)
 					return;
 			}
 		}
-	} 
+	}
 #if 0
 	{
 		static byte old_state = 99;

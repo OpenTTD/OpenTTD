@@ -27,7 +27,7 @@ bool IsClearWaterTile(uint tile)
 int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile, tile2;
-	
+
 	int32 cost, ret;
 	Depot *dep;
 
@@ -49,7 +49,7 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	ret = DoCommandByTile(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret == CMD_ERROR)
 		return CMD_ERROR;
-	
+
 	// pretend that we're not making land from the water even though we actually are.
 	cost = 0;
 
@@ -62,12 +62,12 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_last_built_ship_depot_tile = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		ModifyTile(tile, 
+		ModifyTile(tile,
 			MP_SETTYPE(MP_WATER) | MP_MAPOWNER_CURRENT | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
 			(0x80 + p1*2)
 		);
-	
-		ModifyTile(tile2, 
+
+		ModifyTile(tile2,
 			MP_SETTYPE(MP_WATER) | MP_MAPOWNER_CURRENT | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
 			(0x81 + p1*2)
 		);
@@ -101,8 +101,8 @@ static int32 RemoveShipDepot(uint tile, uint32 flags)
 		// Kill the entry from the depot table
 		for(d=_depots; d->xy != tile; d++) {}
 		d->xy = 0;
-				
-		DeleteWindowById(WC_VEHICLE_DEPOT, tile);		
+
+		DeleteWindowById(WC_VEHICLE_DEPOT, tile);
 	}
 
 	return _price.remove_ship_depot;
@@ -117,7 +117,7 @@ static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
 	// middle tile
 	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret == CMD_ERROR) return CMD_ERROR;
-	
+
 	delta = _tileoffs_by_dir[dir];
 	// lower tile
 	ret = DoCommandByTile(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -151,7 +151,7 @@ static int32 RemoveShiplift(uint tile, uint32 flags)
 		DoClearSquare(tile + delta);
 		DoClearSquare(tile - delta);
 	}
-	
+
 	return _price.clear_water * 2;
 }
 
@@ -168,7 +168,7 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tile = TILE_FROM_XY(x,y);
 	int32 ret;
 	uint th;
-	th = GetTileSlope(tile, NULL); 
+	th = GetTileSlope(tile, NULL);
 
 	if (th==3 || th==6 || th==9 || th==12) {
 		static const byte _shiplift_dirs[16] = {0,0,0,2,0,0,1,0,0,3,0,0,0};
@@ -194,7 +194,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// move in which direction?
 	delta = (GET_TILE_X(tile) == GET_TILE_X(endtile)) ? TILE_XY(0,1) : TILE_XY(1,0);
 	if (endtile < tile) delta = -delta;
-	
+
 	cost = 0;
 	for(;;) {
 		ret = 0;
@@ -277,7 +277,7 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 					DoClearSquare(tile);
 				return _price.clear_water;
 			}
-			if (flags & DC_EXEC)			
+			if (flags & DC_EXEC)
 				DoClearSquare(tile);
 			return _price.purchase_land;
 		} else
@@ -290,7 +290,7 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 			TILE_XY(-1, 0),TILE_XY(0, 1),TILE_XY(1, 0),TILE_XY(0, -1), // lower
 			TILE_XY(1, 0),TILE_XY(0, -1),TILE_XY(-1, 0),TILE_XY(0, 1), // upper
 		};
-				
+
 		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 		// don't allow water to delete it.
 		if (_current_player == OWNER_WATER) return CMD_ERROR;
@@ -316,9 +316,9 @@ static bool IsWateredTile(uint tile)
 {
 	byte m5 = _map5[tile];
 	if (IS_TILETYPE(tile, MP_WATER)) {
-		return m5 != 1;	
+		return m5 != 1;
 	} else if (IS_TILETYPE(tile, MP_STATION)) {
-		// returns true if it is a dock-station (m5 inside values is m5<75 all stations, 
+		// returns true if it is a dock-station (m5 inside values is m5<75 all stations,
 		// 83<=m5<=114 new airports
 		return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
 	} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
@@ -331,13 +331,13 @@ static bool IsWateredTile(uint tile)
 void DrawCanalWater(uint tile)
 {
 	uint wa;
-	
+
 	// determine the edges around with water.
 	wa = IsWateredTile(TILE_ADDXY(tile, -1, 0)) << 0;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, 1)) << 1;
 	wa += IsWateredTile(TILE_ADDXY(tile, 1, 0)) << 2;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, -1)) << 3;
-	
+
 	if (!(wa & 1)) DrawGroundSprite(SPR_CANALS_BASE + 57);
 	if (!(wa & 2)) DrawGroundSprite(SPR_CANALS_BASE + 58);
 	if (!(wa & 4)) DrawGroundSprite(SPR_CANALS_BASE + 59);
@@ -383,9 +383,9 @@ static void DrawWaterStuff(TileInfo *ti, const byte *t, uint32 palette, uint bas
 	const WaterDrawTileStruct *wdts;
 	uint32 image;
 
-	DrawGroundSprite(*(uint16*)t);	
+	DrawGroundSprite(*(uint16*)t);
 	t += sizeof(uint16);
-		
+
 	for(wdts = (WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
 		image =	wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
@@ -431,7 +431,7 @@ void DrawShipDepotSprite(int x, int y, int image)
 	t = _shipdepot_display_seq[image];
 	DrawSprite(*(uint16*)t, x, y);
 	t += sizeof(uint16);
-		
+
 	for(wdts = (WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
 		DrawSprite(wdts->image + PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
@@ -440,12 +440,12 @@ void DrawShipDepotSprite(int x, int y, int image)
 
 
 uint GetSlopeZ_Water(TileInfo *ti)
-{ 
+{
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
 uint GetSlopeTileh_Water(TileInfo *ti)
-{ 
+{
 	return ti->tileh;
 }
 
@@ -534,7 +534,7 @@ static void FloodVehicle(Vehicle *v)
 			_vehicle_sort_dirty[VEHROAD] = true;
 			InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 		}
-		
+
 		else if (v->type == VEH_Train) {
 			v = GetFirstVehicleInChain(v);
 			u = v;
@@ -549,13 +549,13 @@ static void FloodVehicle(Vehicle *v)
 			v = u;
 			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
 			_vehicle_sort_dirty[VEHTRAIN] = true;
-			InvalidateWindow(WC_TRAINS_LIST, v->owner);						
+			InvalidateWindow(WC_TRAINS_LIST, v->owner);
 		} else
 			return;
 
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		
+
 		SET_DPARAM16(0, pass);
 		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
@@ -621,7 +621,7 @@ static uint32 GetTileTrackStatus_Water(uint tile, TransportType mode)
 	}
 
 	if ( (m5 & 0x10) == 0x10) {
-		// 
+		//
 		b = _shiplift_tracks[m5 & 0xF];
 		return b + (b<<8);
 	}
@@ -638,7 +638,7 @@ extern void ShowShipDepotWindow(uint tile);
 static void ClickTile_Water(uint tile)
 {
 	byte m5 = _map5[tile] - 0x80;
-	
+
 	if (IS_BYTE_INSIDE(m5, 0, 3+1)) {
 		if (m5 & 1)
 			tile += (m5==1) ? TILE_XY(-1,0) : TILE_XY(0,-1);

@@ -11,7 +11,7 @@ static Point HandleScrollbarHittest(Scrollbar *sb, int top, int bottom)
 
 	top += 10;
 	bottom -= 9;
-	
+
 	height = (bottom - top);
 
 	pos = sb->pos;
@@ -19,7 +19,7 @@ static Point HandleScrollbarHittest(Scrollbar *sb, int top, int bottom)
 	cap = sb->cap;
 
 	if (count != 0)	top += height * pos / count;
-	
+
 	if (cap > count) cap = count;
 	if (count != 0)
 		bottom -= (count - pos - cap) * height / count;
@@ -61,7 +61,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		pos = x;
 		sb = &w->hscroll;
 	}
-	
+
 	if (pos <= mi+9) {
 		// Pressing the upper button?
 		if (!_demo_mode) {
@@ -76,7 +76,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		// Pressing the lower button?
 		if (!_demo_mode) {
 			w->flags4 |= WF_SCROLL_DOWN;
-			
+
 			if (_scroller_click_timeout == 0) {
 				_scroller_click_timeout = 6;
 				if ((byte)(sb->pos + sb->cap) < sb->count)
@@ -85,14 +85,14 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			_left_button_clicked = false;
 		}
 	} else {
-		// 
+		//
 		Point pt = HandleScrollbarHittest(sb, mi, ma);
 
 		if (pos < pt.x) {
 			sb->pos = max(sb->pos - sb->cap, 0);
 		} else if (pos > pt.y) {
 			sb->pos = min(
-				sb->pos + sb->cap, 
+				sb->pos + sb->cap,
 				max(sb->count - sb->cap, 0)
 			);
 		} else {
@@ -147,9 +147,9 @@ void DrawWindowWidgets(Window *w)
 	Rect r;
 	uint32 dparam_backup[10];
 	uint32 cur_click, cur_disabled, cur_hidden;
-	
+
 	if (w->desc_flags & WDF_RESTORE_DPARAM)	COPY_OUT_DPARAM(dparam_backup, 0, lengthof(dparam_backup));
-	
+
 	wi = w->widget;
 
 	cur_click = w->click_state;
@@ -190,7 +190,7 @@ void DrawWindowWidgets(Window *w)
 			StringID str = wi->unkA;
 
 			if ((wi->type&WWT_MASK) == WWT_4 && (cur_click&1)) str++;
-			
+
 			DrawStringCentered((r.left + r.right+1)>>1, ((r.top+r.bottom + 1)>>1) - 5, str, 0);
 			goto restore_dparam;
 		}
@@ -207,13 +207,13 @@ void DrawWindowWidgets(Window *w)
 		}
 
 		case WWT_MATRIX: {
-			int c, d, ctr;	
+			int c, d, ctr;
 			int x, amt1, amt2;
 			int color;
-		
+
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color,
 					(cur_click & 1) ? 0x20 : 0);
-			
+
 			c = (wi->unkA&0xFF);
 			amt1 = (wi->right - wi->left + 1) / c;
 
@@ -221,7 +221,7 @@ void DrawWindowWidgets(Window *w)
 			amt2 = (wi->bottom - wi->top + 1) / d;
 
 			color = _color_list[wi->color&0xF].window_color_bgb;
-			
+
 			x = r.left;
 			for(ctr=c; --ctr; ) {
 				x += amt1;
@@ -248,7 +248,7 @@ void DrawWindowWidgets(Window *w)
 				GfxFillRect(r.left+1, x, r.right-1, x, color);
 			}
 
-			goto draw_default;			
+			goto draw_default;
 		}
 
 		// vertical scrollbar
@@ -276,7 +276,7 @@ void DrawWindowWidgets(Window *w)
 			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
 			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
 			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
-			
+
 			pt = HandleScrollbarHittest(&w->vscroll, r.top, r.bottom);
 			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == WF_SCROLL_MIDDLE ? 0x20 : 0);
 			break;
@@ -350,7 +350,7 @@ void DrawWindowWidgets(Window *w)
 		case WWT_CAPTION: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0x10);
 			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? 0x60 : 0x70);
-			
+
 			if (w->caption_color != 0xFF) {
 				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _color_list[_player_colors[w->caption_color]].window_color_1b);
 			}
@@ -365,7 +365,7 @@ draw_default:;
 		}
 		}
 	} while (cur_click>>=1, cur_disabled>>=1, cur_hidden >>= 1, (++wi)->type != WWT_LAST);
-	
+
 
 	if (w->flags4 & WF_WHITE_BORDER_MASK) {
 		//DrawFrameRect(w->left, w->top, w->left + w->width-1, w->top+w->height-1, 0xF, 0x10);
@@ -396,7 +396,7 @@ static int GetDropdownItem(Window *w)
 
 	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0)
 		return -1;
-	
+
 	y = _cursor.pos.y - w->top - 2;
 
 	if (y < 0)
@@ -433,7 +433,7 @@ void DropdownMenuWndProc(Window *w, WindowEvent *e)
 				DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
 
 				if (dis & 1) {
-					GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 + 
+					GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
 						_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
 				}
 			} else {
@@ -491,7 +491,7 @@ void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 	} break;
-		
+
 	case WE_DESTROY: {
 		Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
 		if (w2 != NULL) {
@@ -510,7 +510,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	const Widget *wi;
 	Window *w2;
 	uint32 old_click_state = w->click_state;
-	
+
 	_dropdown_disabled = disabled_mask;
 
 	cls = w->window_class;
@@ -524,7 +524,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	SETBIT(w->click_state, button);
 
 	InvalidateWidget(w, button);
-	
+
 	for(i=0;strings[i] != INVALID_STRING_ID;i++);
 	if (i == 0)
 		return;
@@ -532,11 +532,11 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	_dropdown_items = strings;
 	_dropdown_item_count = i;
 	_dropdown_selindex = selected;
-	
+
 	_dropdown_windowclass = w->window_class;
 	_dropdown_windownum = w->window_number;
 	_dropdown_button = button;
-	
+
 	_dropdown_var1 = 0;
 	_dropdown_var2 = 1;
 
@@ -547,8 +547,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
 		w->top + wi->bottom + 2,
-		(_dropdown_menu_widgets[0].right=t1=wi->right - wi[-1].left, t1 + 1), 
-		(_dropdown_menu_widgets[0].bottom=t2=i*10+3, t2+1), 
+		(_dropdown_menu_widgets[0].right=t1=wi->right - wi[-1].left, t1 + 1),
+		(_dropdown_menu_widgets[0].bottom=t2=i*10+3, t2+1),
 		DropdownMenuWndProc,
 		0x3F,
 		_dropdown_menu_widgets);

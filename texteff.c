@@ -33,7 +33,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 
 	if (_game_mode == GM_MENU)
 		return;
-	
+
 	for (te = _text_effect_list; te->string_id != 0xFFFF; ) {
 		if (++te == endof(_text_effect_list))
 			return;
@@ -115,7 +115,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 						continue;
 			AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2);
 		}
-		
+
 	}
 }
 
@@ -131,7 +131,7 @@ void DeleteAnimatedTile(uint tile)
 			endof(_animated_tile_list)[-1] = 0;
 			MarkTileDirtyByTile(tile);
 			return;
-		}	
+		}
 	}
 }
 
@@ -145,7 +145,7 @@ bool AddAnimatedTile(uint tile)
 			MarkTileDirtyByTile(tile);
 			return true;
 		}
-	}	
+	}
 
 	return false;
 }

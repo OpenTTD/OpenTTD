@@ -23,7 +23,7 @@ static bool _all_modes;
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
 
-#define SDL_CALL    
+#define SDL_CALL
 
 #if defined(DYNAMICALLY_LOADED_SDL) && defined(WIN32)
 
@@ -60,7 +60,7 @@ typedef struct {
 } SDLProcs;
 
 #define M(x) x "\0"
-static const char sdl_files[] = 
+static const char sdl_files[] =
 	M("sdl.dll")
 	M("SDL_Init")
 	M("SDL_InitSubSystem")
@@ -97,7 +97,7 @@ static SDLProcs _proc;
 
 static char *LoadSdlDLL()
 {
-	if (_proc.SDL_Init != NULL) 
+	if (_proc.SDL_Init != NULL)
 		return NULL;
 	if (!LoadLibraryList((void**)&_proc, sdl_files))
 		return "Unable to load sdl.dll";
@@ -247,7 +247,7 @@ static void GetVideoModes(void) {
 		for(i = 0; modes[i]; i++) {
 			int w = modes[i]->w;
 			int h = modes[i]->h;
-			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH+1) && 
+			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH+1) &&
 					IS_INT_INSIDE(h, 480, MAX_SCREEN_HEIGHT+1) &&
 					w%8 == 0 && h%8 == 0) { // disable screen resolutions which are not multiples of 8
 				int j;
@@ -363,7 +363,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_KP_PLUS,			WKC_NUM_PLUS),
 	AS(SDLK_KP_ENTER,			WKC_NUM_ENTER),
 	AS(SDLK_KP_PERIOD,		WKC_NUM_DECIMAL),
-	{0, 0, 0}	
+	{0, 0, 0}
 };
 
 static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
@@ -376,7 +376,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 		from = map->vk_from;
 		if (from == 0) {
 			key = 0;
-			break;		
+			break;
 		}
 		if ((uint)(key - from) <= map->vk_count) {
 			key = key - from + map->map_to;
@@ -444,7 +444,7 @@ static int PollEvent() {
 			_right_button_down = true;
 			_right_button_clicked = true;
 		}
-#if !defined(WIN32)		
+#if !defined(WIN32)
 		 else if (ev.button.button == SDL_BUTTON_WHEELUP) {
 			_cursor.wheel--;
 		} else if (ev.button.button == SDL_BUTTON_WHEELDOWN) {
@@ -479,17 +479,17 @@ static int PollEvent() {
 			_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
 		}
 		break;
-		
+
 	case SDL_VIDEORESIZE: {
 			int w, h;
 			w = ev.resize.w;
 			h = ev.resize.h;
-			
+
 			w = clamp(w & ~0x7, 64, MAX_SCREEN_WIDTH);
 			h = clamp(h & ~0x7, 64, MAX_SCREEN_HEIGHT);
-			
+
 			ChangeResInGame(w, h);
-			
+
 			break;
 		}
 	}
@@ -529,14 +529,14 @@ static int SdlVideoMainLoop()
 
 	while (true) {
 		InteractiveRandom(); // randomness
-		
+
 		while ((i=PollEvent()) == -1) {}
 		if (i>=0) return i;
 
 		if (_exit_game)	return ML_QUIT;
 
 		mod = SDL_CALL SDL_GetModState();
-		keys = SDL_CALL SDL_GetKeyState(&numkeys);		
+		keys = SDL_CALL SDL_GetKeyState(&numkeys);
 #if defined(_DEBUG)
 		if (_shift_pressed) {
 #else
@@ -556,12 +556,12 @@ static int SdlVideoMainLoop()
 
 			_ctrl_pressed = !!(mod & (KMOD_LCTRL | KMOD_RCTRL));
 			_shift_pressed = !!(mod & (KMOD_LSHIFT | KMOD_RSHIFT));
-			
+
 			// determine which directional keys are down
-			_dirkeys = 
-			    (keys[SDLK_LEFT] ? 1 : 0) + 
-			    (keys[SDLK_UP] ? 2 : 0) + 
-			    (keys[SDLK_RIGHT] ? 4 : 0) + 
+			_dirkeys =
+			    (keys[SDLK_LEFT] ? 1 : 0) +
+			    (keys[SDLK_UP] ? 2 : 0) +
+			    (keys[SDLK_RIGHT] ? 4 : 0) +
 			    (keys[SDLK_DOWN] ? 8 : 0);
 			GameLoop();
 
@@ -607,7 +607,7 @@ static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
 static char *SdlSoundStart(char **parm)
 {
 	SDL_AudioSpec spec;
-	
+
 	{char *s;if ((s = SdlOpen(SDL_INIT_AUDIO)) != NULL) return s;}
 	spec.freq = GetDriverParamInt(parm, "hz", 11025);
 	spec.format = AUDIO_S16SYS;

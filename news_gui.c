@@ -12,7 +12,7 @@
 News system is realized as a FIFO queue (in an array)
 The positions in the queue can't be rearranged, we only access
 the array elements through pointers to the elements. Once the
-array is full, the oldest entry (_oldest_news) is being overwritten 
+array is full, the oldest entry (_oldest_news) is being overwritten
 by the newest (_latest news).
 
 oldest                   current   lastest
@@ -28,7 +28,7 @@ static NewsItem _news_items[MAX_NEWS];
 static byte _current_news = 255; // points to news item that should be shown next
 static byte _oldest_news = 0;    // points to first item in fifo queue
 static byte _latest_news = 255;  // points to last item in fifo queue
-static byte _forced_news = 255;  // if the message being shown was forced by the user, its index is stored in _forced_news. 
+static byte _forced_news = 255;  // if the message being shown was forced by the user, its index is stored in _forced_news.
 																 //forced_news is 255 otherwise. (Users can force messages through history or "last message")
 
 static byte _total_news = 0; // total news count
@@ -80,13 +80,13 @@ void DrawNewsBorder(Window *w)
 	int bottom = w->height - 1;
 
 	GfxFillRect(left, top, right, bottom, 0xF);
-	
+
 	GfxFillRect(left, top, left, bottom, 0xD7);
 	GfxFillRect(right, top, right, bottom, 0xD7);
 	GfxFillRect(left, top, right, top, 0xD7);
 	GfxFillRect(left, bottom, right, bottom, 0xD7);
-	
-	DrawString(left + 2, top + 1, STR_00C6, 0);	
+
+	DrawString(left + 2, top + 1, STR_00C6, 0);
 }
 
 static void NewsWindowProc(Window *w, WindowEvent *e)
@@ -115,7 +115,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 				/* Shade the viewport into gray, or color*/
 				vp = w->viewport;
-				GfxFillRect(vp->left - w->left, vp->top - w->top, vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1, 
+				GfxFillRect(vp->left - w->left, vp->top - w->top, vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
 					ni->flags & NF_INCOLOR ? 0x4322:0x4323
 				);
 
@@ -208,7 +208,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	_forced_news = 255;
 	if(_total_news < MAX_NEWS) _total_news++;
-	
+
 	// make sure our pointer isn't overflowing
 	_latest_news = increaseIndex(_latest_news);
 
@@ -431,7 +431,7 @@ void ShowLastNewsMessage()
 	else if(_forced_news!=0)
 		ShowNewsMessage(_forced_news-1);
 	else {
-		if(_total_news != MAX_NEWS) 
+		if(_total_news != MAX_NEWS)
 			ShowNewsMessage(_latest_news);
 		else
 			ShowNewsMessage(MAX_NEWS-1);
@@ -443,7 +443,7 @@ void ShowLastNewsMessage()
 recent news. Returns 255 if end of queue reached. */
 static byte getNews(byte i)
 {
-	if(i>=_total_news) 
+	if(i>=_total_news)
 		return 255;
 
 	if(_latest_news < i)
@@ -459,17 +459,17 @@ static void GetNewsString(NewsItem *ni, byte *buffer)
 {
 	StringID str;
 	byte *s, *d;
-	
+
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
 		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
-		str = ni->string_id;	
+		str = ni->string_id;
 	}
 
 	GetString(str_buffr, str);
 	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
-	
+
 	s = str_buffr;
 	d = buffer;
 
@@ -611,7 +611,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		for(i=STR_0206_ARRIVAL_OF_FIRST_VEHICLE; i <= STR_020F_GENERAL_INFORMATION; i++) {
 			DrawString(124, y, i, 0);
 			y += 12;
-		}		
+		}
 
 		break;
 		}

@@ -78,7 +78,7 @@ static const uint16 _legend_land_contours[] = {
 	MK(0x5E,STR_00F2_300M),
 	MK(0x1F,STR_00F3_400M),
 	MK(0x27,STR_00F4_500M),
-	
+
 	MS(0xD7,STR_00EB_ROADS),
 	MK(0x0A,STR_00EC_RAILROADS),
 	MK(0x98,STR_00ED_STATIONS_AIRPORTS_DOCKS),
@@ -509,7 +509,7 @@ static uint32 INLINE GetSmallMapVegetationPixels(uint tile)
 		if (i >= 0) i = (i >> 2);
 		bits = _vegetation_clear_bits[i + 4];
 	} else if (t == MP_INDUSTRY) {
-		bits = IS_BYTE_INSIDE(_map5[tile], 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5); 
+		bits = IS_BYTE_INSIDE(_map5[tile], 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
 	} else if (t == MP_TREES) {
 		bits = MKCOLOR(0x54575754);
 		if ((_map2[tile] & 0x30) == 0x20)
@@ -550,7 +550,7 @@ static uint32 INLINE GetSmallMapOwnerPixels(uint tile)
 
 	t = GET_TILETYPE(tile);
 	if (t == MP_HOUSE || _map_owner[tile] == OWNER_TOWN) {
-		t = 0x80;				
+		t = 0x80;
 	} else if (t == MP_INDUSTRY) {
 		t = 0xff;
 	} else {
@@ -641,10 +641,10 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 
 		/* setup owners ptr */
 		_owner_colors = tbl = alloca(256 * sizeof(*_owner_colors));
-		
+
 		/* clear the town colors */
 		memset(tbl + 128, 0xB4, 128 * sizeof(*_owner_colors));
-		
+
 		/* fill with some special colors */
 		tbl[0x10] = MKCOLOR(0x54545454);
 		tbl[0x11] = MKCOLOR(0xCACACACA);
@@ -655,7 +655,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 			if (p->is_active) {
 				tbl[p->index] = dup_byte32(GetSpritePtr(0x307 + p->player_color)[0xCB]);
 			}
-		}	
+		}
 	}
 
 	tile_x = (int)WP(w,smallmap_d).scroll_x >> 4;
@@ -712,7 +712,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 			proc(ptr, tile_x, tile_y, dpi->pitch*2, reps, mask);
 		}
 
-skip_column:		
+skip_column:
 		if (y == 0) {
 			tile_y++;
 			y++;
@@ -736,7 +736,7 @@ skip_column:
 			if (v->type != 0 && v->type != 0x14 && (v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0) {
 				// Remap into flat coordinates.
 				Point pt = RemapCoords(
-					(int)(v->x_pos - WP(w,smallmap_d).scroll_x) >> 4, 
+					(int)(v->x_pos - WP(w,smallmap_d).scroll_x) >> 4,
 					(int)(v->y_pos - WP(w,smallmap_d).scroll_y) >> 4,
 					0);
 				x = pt.x;
@@ -765,11 +765,11 @@ skip_column:
 						continue;
 					skip = true;
 				}
-				
+
 				// Calculate pointer to pixel and the color
 				ptr = dpi->dst_ptr + y * dpi->pitch + x;
 				color = (type == 1) ? _vehicle_type_colors[v->type-0x10] : 0xF;
-				
+
 				// And draw either one or two pixels depending on clipping
 				ptr[0] = color;
 				if (!skip)
@@ -789,11 +789,11 @@ skip_column:
 					0);
 				x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;
-								
+
 				// Check if the town sign is within bounds
 				if (x + t->sign.width_2 > dpi->left &&
 						x < dpi->left + dpi->width &&
-						y + 6 > dpi->top && 
+						y + 6 > dpi->top &&
 						y < dpi->top + dpi->height) {
 					// And draw it.
 					SET_DPARAM16(0, t->index);
@@ -801,7 +801,7 @@ skip_column:
 				}
 			}
 		}
-	} 
+	}
 
 	// Draw map indicators
 	{
@@ -809,7 +809,7 @@ skip_column:
 
 		// Find main viewport.
 		vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
-		
+
 		pt = RemapCoords(
 			WP(w,smallmap_d).scroll_x,
 			WP(w,smallmap_d).scroll_y,
@@ -846,7 +846,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		/* draw the window */
 		SET_DPARAM16(0, STR_00E5_CONTOURS + _smallmap_type);
 		DrawWindowWidgets(w);
-		
+
 		/* draw the legend */
 		tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
 		x = 4;
@@ -877,7 +877,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: {/* big/small size */
-			// const Widget *wi = w->widget; 
+			// const Widget *wi = w->widget;
 			DeleteWindow(w);
 			SndPlayFx(0x13);
 			{
@@ -903,7 +903,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		case 5: /* show land contours */
 		case 6: /* show vehicles */
 		case 7: /* show industries */
-		case 8: /* show transport routes */			
+		case 8: /* show transport routes */
 		case 9: /* show vegetation */
 		case 10: /* show land owners */
 			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
@@ -978,7 +978,7 @@ static void DoShowSmallMap(int big)
 	int x,y;
 
 	_smallmap_size = big;
-	
+
 	w = AllocateWindowDescFront(_smallmap_descs[big], 0);
 	if (w) {
 		w->click_state = (1<<5) << _smallmap_type | _smallmap_show_towns << 11;
@@ -1039,7 +1039,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 
 			// set this view to same location. Based on the center, adjusting for zoom
 			WP(w2,vp_d).scrollpos_x =  x - (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
-			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (214 << vp->zoom) )/2;			
+			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (214 << vp->zoom) )/2;
 		} break;
 		case 7: { /* inverse location button (move this view to same spot as main view) */
 			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -1047,9 +1047,9 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			int y = WP(w2,vp_d).scrollpos_y;
 
 			WP(w,vp_d).scrollpos_x =  x + (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
-			WP(w,vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - (214 << vp->zoom) )/2;			
+			WP(w,vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - (214 << vp->zoom) )/2;
 		} break;
-		}	
+		}
 	} break;
 	}
 }
@@ -1066,7 +1066,7 @@ void ShowExtraViewPortWindow()
 {
 	Window *w, *v;
 	int i = 0;
-	
+
 	// find next free window number for extra viewport
 	while (FindWindowById(WC_EXTRA_VIEW_PORT,i) ) {
 		i++;
@@ -1078,8 +1078,8 @@ void ShowExtraViewPortWindow()
 		// disable zoom in button
 		w->disabled_state = 1 << 4;
 		// the main window with the main view
-		v = FindWindowById(WC_MAIN_WINDOW, 0); 
-		// New viewport start ats (zero,zero) 
+		v = FindWindowById(WC_MAIN_WINDOW, 0);
+		// New viewport start ats (zero,zero)
 		AssignWindowViewport(w, 3, 17, 294, 214, 0 , 0);
 
 		// center on same place as main window (zoom is maximum, no adjustment needed)

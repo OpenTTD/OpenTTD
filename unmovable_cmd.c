@@ -31,10 +31,10 @@ typedef struct DrawTileSeqStruct {
 static void DrawTile_Unmovable(TileInfo *ti)
 {
 	uint32 image, ormod;
-	
+
 	if (!(ti->map5 & 0x80)) {
 		if (ti->map5 == 2) {
-			
+
 			// statue
 			DrawGroundSprite(0x58C);
 
@@ -44,32 +44,32 @@ static void DrawTile_Unmovable(TileInfo *ti)
 				image = (image & 0x3FFF) | 0x3224000;
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
 		} else if (ti->map5 == 3) {
-			
+
 			// "owned by" sign
 			DrawClearLandTile(ti, 0);
-			
+
 			AddSortableSpriteToDraw(
 				PLAYER_SPRITE_COLOR(_map_owner[ti->tile]) + 0x92B6,
 				ti->x+8, ti->y+8,
-				1, 1, 
-				10, 
+				1, 1,
+				10,
 				GetSlopeZ(ti->x+8, ti->y+8)
 			);
 		} else {
 			// lighthouse or transmitter
-			
+
 			const DrawTileUnmovableStruct *dtus;
 
 			if (ti->tileh) DrawFoundation(ti, ti->tileh);
 			DrawClearLandTile(ti, 2);
-			
-			dtus = &_draw_tile_unmovable_data[ti->map5];		
+
+			dtus = &_draw_tile_unmovable_data[ti->map5];
 
 			image = dtus->image;
 			if (!(_display_opt & DO_TRANS_BUILDINGS))
 				image = (image & 0x3FFF) | 0x3224000;
-			
-			AddSortableSpriteToDraw(image, 
+
+			AddSortableSpriteToDraw(image,
 				ti->x | dtus->subcoord_x,
 				ti->y | dtus->subcoord_y,
 				dtus->width, dtus->height,
@@ -87,7 +87,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		DrawGroundSprite(*(uint16*)t | ormod);
 
 		t += sizeof(uint16);
-			
+
 		for(dtss = (DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
 			image =	dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
@@ -101,12 +101,12 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Unmovable(TileInfo *ti) 
+static uint GetSlopeZ_Unmovable(TileInfo *ti)
 {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Unmovable(TileInfo *ti) 
+static uint GetSlopeTileh_Unmovable(TileInfo *ti)
 {
 	return 0;
 }
@@ -114,12 +114,12 @@ static uint GetSlopeTileh_Unmovable(TileInfo *ti)
 static int32 ClearTile_Unmovable(uint tile, byte flags)
 {
 	byte m5 = _map5[tile];
-		
+
 	if (m5 & 0x80) {
-		if (_current_player == OWNER_WATER) 
+		if (_current_player == OWNER_WATER)
 			return DoCommandByTile(tile, OWNER_WATER, 0, DC_EXEC, CMD_DESTROY_COMPANY_HQ);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
-	}	
+	}
 
 	if (m5 == 3)	// company owned land
 		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
@@ -127,8 +127,8 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 	// checks if you're allowed to remove unmovable things
 	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
 		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
-	
-	if (flags & DC_EXEC) {	
+
+	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
 	}
 
@@ -171,7 +171,7 @@ static const StringID _unmovable_tile_str[] = {
 	STR_5802_LIGHTHOUSE,
 	STR_2016_STATUE,
 	STR_5805_COMPANY_OWNED_LAND,
-};	
+};
 
 static void GetTileDesc_Unmovable(uint tile, TileDesc *td)
 {
@@ -289,7 +289,7 @@ void GenerateUnmovables()
 
 	if (_opt.landscape == LT_DESERT)
 		return;
-		
+
 	/* add lighthouses */
 	i = (Random()&3) + 7;
 	do {
@@ -297,7 +297,7 @@ restart:
 		r = Random();
 		dir = r >> 30;
 		r = r%((dir==0 || dir== 2)?TILE_Y_MAX:TILE_X_MAX);
-		tile = 
+		tile =
           (dir==0)?TILE_XY(0,r):0 +             // left
           (dir==1)?TILE_XY(r,0):0 +             // top
           (dir==2)?TILE_XY(TILE_X_MAX,r):0 +    // right
@@ -308,7 +308,7 @@ restart:
 				goto restart;
 			tile = TILE_MASK(tile + _tile_add[dir]);
 		} while (!(IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
-		
+
 		assert(tile == TILE_MASK(tile));
 
 		_map_type_and_height[tile] |= MP_UNMOVABLE << 4;
@@ -328,7 +328,7 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Player *p = DEREF_PLAYER(_current_player);
 	int score;
 	int32 cost = 0;
-	
+
 	if (CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL) == CMD_ERROR)
 		return CMD_ERROR;
 
@@ -404,7 +404,7 @@ static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_playe
 {
 	if (_map_owner[tile] != old_player)
 		return;
-	
+
 	if (_map5[tile]==3 && new_player != 255) {
 		_map_owner[tile] = new_player;
 	}	else {

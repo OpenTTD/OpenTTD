@@ -1021,7 +1021,7 @@ void MouseLoop()
 			return;
 
 		// only allow zooming in-out in main window, or in viewports
-		if ( mousewheel && !(w->flags4 & WF_DISABLE_VP_SCROLL) && 
+		if ( mousewheel && !(w->flags4 & WF_DISABLE_VP_SCROLL) &&
 			   (w->window_class == WC_MAIN_WINDOW || w->window_class == WC_EXTRA_VIEW_PORT) ) {
 			ZoomInOrOutToCursorWindow(mousewheel < 0,w);
 		}

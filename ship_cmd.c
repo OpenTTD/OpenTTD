@@ -93,7 +93,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED)
 		return;
-	
+
 	if ((v->next_order & (OT_MASK | OF_FULL_LOAD)) == (OT_GOTO_DEPOT | OF_FULL_LOAD))
 		return;
 
@@ -113,7 +113,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	v->next_order = OT_GOTO_DEPOT | OF_NON_STOP;
 	v->next_order_param = (byte)i;
 	v->dest_tile = (&_depots[i])->xy;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);		
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 }
 
 void OnNewDay_Ship(Vehicle *v)
@@ -128,11 +128,11 @@ void OnNewDay_Ship(Vehicle *v)
 	CheckIfShipNeedsService(v);
 
 	CheckOrders(v);
-	
+
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	
+
 
 	cost = ship_vehicle_info(v->engine_type).running_cost * _price.ship_running / 364;
 	v->profit_this_year -= cost >> 8;
@@ -152,10 +152,10 @@ static void HandleBrokenShip(Vehicle *v)
 
 		if (v->breakdowns_since_last_service != 255)
 			v->breakdowns_since_last_service++;
-		
+
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		
+
 		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ? 0xE : 0x3A, v);
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
@@ -231,7 +231,7 @@ static void ProcessShipOrder(Vehicle *v)
 	if ((order & OT_MASK) == OT_GOTO_STATION) {
 		if ( (byte)(order >> 8) == v->last_station_visited)
 			v->last_station_visited = 0xFF;
-		
+
 		st = DEREF_STATION(order >> 8);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, _dock_offs[_map5[st->dock_tile]-0x4B]);
@@ -248,7 +248,7 @@ static void HandleShipLoading(Vehicle *v)
 {
 	if (v->next_order == OT_NOTHING)
 		return;
-	
+
 	if (v->next_order != OT_DUMMY) {
 		if ((v->next_order&OT_MASK) != OT_LOADING)
 			return;
@@ -265,7 +265,7 @@ static void HandleShipLoading(Vehicle *v)
 			return;
 		}
 		PlayShipSound(v);
-		
+
 		{
 			byte b = v->next_order;
 			v->next_order = OT_LEAVESTATION;
@@ -352,7 +352,7 @@ static bool ShipAccelerate(Vehicle *v)
 
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
-		v->cur_speed = spd;	
+		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
@@ -384,7 +384,7 @@ static void ShipEnterDepot(Vehicle *v)
 	v->vehstatus |= VS_HIDDEN;
 	v->cur_speed = 0;
 	RecalcShipStuff(v);
-	
+
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
 	v->reliability = _engines[v->engine_type].reliability;
@@ -394,7 +394,7 @@ static void ShipEnterDepot(Vehicle *v)
 
 	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-	
+
 		t = v->next_order;
 		v->next_order = OT_DUMMY;
 
@@ -444,7 +444,7 @@ static bool ShipTrackFollower(uint tile, PathFindShip *pfs, int track, uint leng
 	// Found dest?
 	if (tile == pfs->dest_coords) {
 		pfs->best_bird_dist = 0;
-		
+
 //		if (length < pfs->best_length)
 //			dbg_store_path();
 
@@ -456,7 +456,7 @@ static bool ShipTrackFollower(uint tile, PathFindShip *pfs, int track, uint leng
 	if (tile != pfs->skiptile) {
 		pfs->best_bird_dist = minu(pfs->best_bird_dist, GetTileDist1Db(pfs->dest_coords, tile));
 	}
-	
+
 	return false;
 }
 
@@ -488,12 +488,12 @@ static uint FindShipTrack(Vehicle *v, uint tile, int dir, uint bits, uint skipti
 	do {
 		i = FIND_FIRST_BIT(bits);
 		bits = KILL_FIRST_BIT(bits);
-		
+
 		pfs.best_bird_dist = (uint)-1;
 		pfs.best_length = (uint)-1;
 
 		FollowTrack(tile, 0x3800 | TRANSPORT_WATER, _ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
-		
+
 		if (best_track >= 0) {
 			if (pfs.best_bird_dist != 0) {
 				/* neither reached the destination, pick the one with the smallest bird dist */
@@ -503,8 +503,8 @@ static uint FindShipTrack(Vehicle *v, uint tile, int dir, uint bits, uint skipti
 				if (pfs.best_length > best_length) goto bad;
 				if (pfs.best_length < best_length) goto good;
 			}
-			
-			/* if we reach this position, there's two paths of equal value so far. 
+
+			/* if we reach this position, there's two paths of equal value so far.
 			 * pick one randomly. */
 			r = (byte)Random();
 			if (_pick_shiptrack_table[i] == ship_dir) r += 80;
@@ -554,7 +554,7 @@ static const byte _new_vehicle_direction_table[11] = {
 
 static int ShipGetNewDirectionFromTiles(uint new_tile, uint old_tile)
 {
-	uint offs = (GET_TILE_Y(new_tile) - GET_TILE_Y(old_tile) + 1) * 4 + 
+	uint offs = (GET_TILE_Y(new_tile) - GET_TILE_Y(old_tile) + 1) * 4 +
 							GET_TILE_X(new_tile) - GET_TILE_X(old_tile) + 1;
 	assert(offs < 11 && offs != 3 && offs != 7);
 	return _new_vehicle_direction_table[offs];
@@ -707,7 +707,7 @@ static void ShipController(Vehicle *v)
 			goto reverse_direction;
 
 		b = _ship_subcoord[dir][track];
-	
+
 		gp.x = (gp.x&~0xF) | b[0];
 		gp.y = (gp.y&~0xF) | b[1];
 
@@ -794,7 +794,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint unit_num;
 	uint tile = TILE_FROM_XY(x,y);
 	Engine *e;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	value = EstimateShipCost(p1);
@@ -802,10 +802,10 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return value;
 
 	v = AllocateVehicle();
-	if (v == NULL || _ptr_to_next_order >= endof(_order_array) || 
+	if (v == NULL || _ptr_to_next_order >= endof(_order_array) ||
 			(unit_num = GetFreeUnitNumber(VEH_Ship)) > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
-	
+
 	if (flags & DC_EXEC) {
 		v->unitnumber = unit_num;
 
@@ -823,12 +823,12 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->x_offs = -3;
 		v->y_offs = -3;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
-		
+
 		v->spritenum = ship_vehicle_info(p1).image_index;
 		v->cargo_type = ship_vehicle_info(p1).cargo_type;
 		v->cargo_cap = ship_vehicle_info(p1).capacity;
 		v->value = value;
-		
+
 		v->last_station_visited = 255;
 		v->max_speed = ship_vehicle_info(p1).max_speed;
 		v->engine_type = (byte)p1;
@@ -856,7 +856,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_SHIPS_LIST, v->owner);
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
-	
+
 	return value;
 }
 
@@ -865,7 +865,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	
+
 	v = &_vehicles[p1];
 
 	if (!CheckOwnership(v->owner))
@@ -873,7 +873,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsShipDepotTile(v->tile) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
-	
+
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		_vehicle_sort_dirty[VEHSHIP] = true; // sell a ship
@@ -882,7 +882,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteVehicle(v);
 	}
-	
+
 	return -(int32)v->value;
 }
 
@@ -919,7 +919,7 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			if (v->next_order&OF_UNLOAD) {v->cur_order_index++;}
 			v->next_order = OT_DUMMY;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);			
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 	} else {
 		depot = FindClosestShipDepot(v);
@@ -963,7 +963,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
-	
+
 	v = &_vehicles[p1];
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;

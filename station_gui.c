@@ -16,7 +16,7 @@ static void StationsWndShowStationRating(int x, int y, int type, uint acceptance
 
 	if (acceptance > 575)
 		acceptance = 575;
-	
+
 	acceptance = (acceptance + 7) >> 3;
 
 	/* draw cargo */
@@ -31,12 +31,12 @@ static void StationsWndShowStationRating(int x, int y, int type, uint acceptance
 	}
 
 	x -= (acceptance>>3);
-	
+
 	DrawString(x+1, y, _cargoc.names_short[type], 0x10);
 
 	/* draw green/red ratings bar */
 	GfxFillRect(x+1, y+8, x+7, y+8, 0xB8);
-	
+
 	rating = (rating >> 5);
 
 	if (rating != 0) {
@@ -110,7 +110,7 @@ static void MakeSortedStationList(byte owner)
 	}
 
 	qsort(firstelement, n, sizeof(_station_sort[0]), StationNameSorter);
-	
+
 	DEBUG(misc, 1) ("Resorting Stations list...");
 }
 
@@ -151,7 +151,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				DrawString(xb, y, STR_304A_NONE, 0);
 				return;
 			}
-				
+
 			i += w->vscroll.pos;	// offset from sorted station list of current player
 			assert(i < _num_station_sort[window_number]); // at least one station must exist
 
@@ -318,7 +318,7 @@ static void DrawStationViewWindow(Window *w)
 		uint waiting = (st->goods[i].waiting_acceptance & 0xFFF);
 		if (waiting == 0)
 			continue;
-		
+
 		num = (waiting + 5) / 10;
 		if (num != 0) {
 			int cur_x = x;
@@ -352,7 +352,7 @@ static void DrawStationViewWindow(Window *w)
 			}
 		}
 	} while (pos > -5 && ++i != 12);
-	
+
 	if (w->widget == _station_view_widgets) {
 		b = _userstring;
 		b[0] = 0x81;
@@ -368,7 +368,7 @@ static void DrawStationViewWindow(Window *w)
 				b += 5;
 			}
 		}
-		
+
 		if (b == (byte*)&_userstring[3]) {
 			b[0] = 0x81;
 			b[1] = STR_00D0_NOTHING;
@@ -380,7 +380,7 @@ static void DrawStationViewWindow(Window *w)
 
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
 	} else {
-		
+
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
 
 		y = 77;
@@ -412,7 +412,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case 7:
 			SetWindowDirty(w);
-			
+
 			/* toggle height/widget set */
 			w->height ^= (210 ^ 110);
 			*(uint32*)&w->widget ^= (uint32)_station_view_expanded_widgets ^ (uint32)_station_view_widgets;
@@ -438,7 +438,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		st = DEREF_STATION(w->window_number);
 		DoCommandP(st->xy, w->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
-	} break;	
+	} break;
 	}
 }
 

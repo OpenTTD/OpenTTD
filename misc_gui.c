@@ -45,7 +45,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		str = STR_01A4_COST_TO_CLEAR_N_A;
 		if (lid->costclear != CMD_ERROR) {
-			SET_DPARAM32(0, lid->costclear);	
+			SET_DPARAM32(0, lid->costclear);
 			str = STR_01A5_COST_TO_CLEAR;
 		}
 		DrawStringCentered(140, 38, str, 0);
@@ -102,7 +102,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		if (str != (STR_01CE_CARGO_ACCEPTED - 1))
 			DrawStringMultiCenter(140, 76, str, 276);
-			
+
 		if (lid->td.build_date != 0) {
 			SET_DPARAM16(0,lid->td.build_date);
 			DrawStringCentered(140,71, STR_BUILD_DATE, 0);
@@ -136,7 +136,7 @@ static void Place_LandInfo(uint tile)
 
 	w = AllocateWindowDesc(&_land_info_desc);
 	WP(w,void_d).data = &lid;
-	
+
 	lid.tile = tile;
 	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
@@ -150,13 +150,13 @@ static void Place_LandInfo(uint tile)
 	lid.costclear = DoCommandByTile(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->money64 = old_money;
 	UpdatePlayerMoney32(p);
-	
+
 	// Becuase build_date is not set yet in every TileDesc, we make sure it is empty
 	lid.td.build_date = 0;
-	
+
 	GetAcceptedCargo(tile, &lid.ac);
 	GetTileDesc(tile, &lid.td);
-	
+
 	#if defined(_DEBUG)
 		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
 		DEBUG(misc, 0) ("TILE: %d ", tile);
@@ -273,7 +273,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		case 11:case 12: case 13: case 14:
 			if ( (uint)(wid-3) >= (uint)WP(w,tree_d).count)
 				return;
-		
+
 			if (HandlePlacePushButton(w, wid, 0x7DA, 1, NULL))
 				_tree_to_plant = WP(w,tree_d).base + wid - 3;
 			break;
@@ -292,7 +292,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 	} break;
-		
+
 	case WE_PLACE_OBJ:
 		VpStartPlaceSizing(e->place.tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(20);
@@ -304,7 +304,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->click.pt.x != -1) {
-			DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL, 
+			DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL,
 				CMD_PLANT_TREE | CMD_AUTO | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
 		}
 		break;
@@ -377,7 +377,7 @@ static const WindowDesc _build_trees_scen_desc = {
 	BuildTreesWndProc
 };
 
-	
+
 void ShowBuildTreesToolbar()
 {
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
@@ -418,7 +418,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		if (w->widget != _errmsg_face_widgets) {
 			DrawStringMultiCenter(
 				120,
-				(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15), 
+				(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
 				_errmsg_message_2,
 				238);
 			if (_errmsg_message_1 != INVALID_STRING_ID)
@@ -433,7 +433,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 
 			DrawStringMultiCenter(
 				214,
-				(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45), 
+				(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45),
 				_errmsg_message_2,
 				238);
 			if (_errmsg_message_1 != INVALID_STRING_ID)
@@ -490,7 +490,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	_errmsg_duration = _patches.errmsg_duration;
 	if (!_errmsg_duration)
 		return;
-	
+
 	if (_errmsg_message_1 != STR_013B_OWNED_BY || GET_DPARAMX8(_errmsg_decode_params,2) >= 8) {
 
 		if ( (x|y) != 0) {
@@ -501,11 +501,11 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			// move x pos to opposite corner
 			pt.x = ((pt.x - vp->virtual_left) >> vp->zoom) + vp->left;
 			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
-			
+
 			// move y pos to opposite corner
 			pt.y = ((pt.y - vp->virtual_top) >> vp->zoom) + vp->top;
 			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
-			
+
 		} else {
 			pt.x = (_screen.width - 240) >> 1;
 			pt.y = (_screen.height - 46) >> 1;
@@ -566,7 +566,7 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 
 	switch(e->event) {
 	case WE_PAINT: {
-		GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);	
+		GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
 		GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
 		DrawStringMultiCenter((w->width>>1), (w->height>>1)-5, WP(w,tooltips_d).string_id, 197);
 		break;
@@ -583,7 +583,7 @@ void GuiShowTooltips(StringID string_id)
 	Window *w;
 	int right,bottom;
 	int x,y;
-	
+
 	if (string_id == 0)
 		return;
 
@@ -628,7 +628,7 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 {
 	int i;
 	byte *b;
-	
+
 	b = _userstring;
 	b[0] = 0x81;
 	b[1] = STR_000D_ACCEPTS;
@@ -734,7 +734,7 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 			count++;
 			width += _stringwidth_table[*p - 32];
 		} while (1);
-		
+
 		if (we->keypress.keycode == WKC_BACKSPACE) {
 			if (count != 0) {
 				WP(w,querystr_d).buf[count-1] = 0;
@@ -1067,7 +1067,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 				return;
 
 			file = _fios_list + y;
-			
+
 			if ((name = FiosBrowseTo(file)) != NULL) {
 				if (_saveload_mode == SLD_LOAD_GAME) {
 					_switch_mode = SM_LOAD;
@@ -1120,7 +1120,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		_query_string_active = false;
 		FiosFreeSavegameList();
 		break;
-	}	
+	}
 }
 
 static const WindowDesc _load_dialog_desc = {
@@ -1226,7 +1226,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 			_savegame_sort_dirty = false;
 			MakeSortedSaveGameList();
 		}
-		
+
 		SetVScrollCount(w, _fios_num);
 
 		DrawWindowWidgets(w);
@@ -1272,7 +1272,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 					return;
 
 				file = _fios_list + y;
-			
+
 				if ((name = FiosBrowseTo(file)) != NULL) {
 					SetFiosType(file->type);
 					strcpy(_file_to_saveload.name, name);
@@ -1410,7 +1410,7 @@ static int32 ReadCE(const CheatEntry*ce)
 	default:
 		NOT_REACHED();
 	}
-  
+
 	/* useless, but avoids compiler warning this way */
 	return 0;
 }
@@ -1490,7 +1490,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				DrawFrameRect(x+30, y+1, x+30+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
 				DrawStringCentered(x+25, y+1, STR_6819, 0);
 				DrawStringCentered(x+35, y+1, STR_681A, 0);
-				
+
 				val = ReadCE(ce);
 
 				// set correct string for switch climate cheat
@@ -1502,7 +1502,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				// display date for change date cheat
 				if(ce->str==STR_CHEAT_CHANGE_DATE)
 					SET_DPARAM16(0, _date);
-				
+
 				// draw colored flag for change player cheat
 				if(ce->str==STR_CHEAT_CHANGE_PLAYER)
 					DrawPlayerIcon(_current_player, 156, y+2);
@@ -1579,7 +1579,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		WP(w,def_d).data_1 = 0;
 		SetWindowDirty(w);
 		break;
-	}	
+	}
 }
 static const WindowDesc _cheats_desc = {
 	240, 22, 400, 148,
@@ -1593,7 +1593,7 @@ static const WindowDesc _cheats_desc = {
 void ShowCheatWindow()
 {
 	Window *w;
-	
+
 	DeleteWindowById(WC_CHEATS, 0);
 	w = AllocateWindowDesc(&_cheats_desc);
 

@@ -42,7 +42,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		if (DoCommandP(e->place.tile, _build_industry_types[_opt.landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
 			ResetObjectToPlace();
 		break;
-		
+
 	case WE_ABORT_PLACE_OBJ:
 		w->click_state = 0;
 		SetWindowDirty(w);
@@ -259,7 +259,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 };
 
 void ShowBuildIndustryWindow()
-{	
+{
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
 }
 
@@ -291,20 +291,20 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			}
 			DrawString(2, 107, str, 0);
 		}
-		
+
 		if (i->produced_cargo[0] != 0xFF) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
 			SET_DPARAM16(1, i->total_production[0]);
-			SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5)); 
+			SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 			SET_DPARAM16(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4, 127, STR_482B_TRANSPORTED, 0);
 
 			if (i->produced_cargo[1] != 0xFF) {
 				SET_DPARAM16(1, i->total_production[1]);
-				SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5)); 
+				SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
 				SET_DPARAM16(2, i->pct_transported[1] * 100 >> 8);
-				DrawString(4, 137, STR_482B_TRANSPORTED, 0);				
+				DrawString(4, 137, STR_482B_TRANSPORTED, 0);
 			}
 		}
 
@@ -323,7 +323,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			/*	passing only i->xy is not safe if industry has a weird shape like:
 					_ X X
 					X X X
-					_ <--- grass, no industry, but i->xy points there (first top-left tile)!, 
+					_ <--- grass, no industry, but i->xy points there (first top-left tile)!,
 					so passing i->xy to destroy industry will fail in called procedure
 			*/
 			//DoCommandP(i->xy, w->window_number, 0, CcPlaySound10,  CMD_DESTROY_INDUSTRY | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
@@ -399,7 +399,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 	switch (_industry_sort_order >> 1) {
 	/* case 0: Sort by Name (handled later) */
 	case 1: /* Sort by Type */
-		r = i->type - j->type; 
+		r = i->type - j->type;
 		break;
 	// FIXME - Production & Transported sort need to be inversed...but, WTF it does not wanna!
 	// FIXME - And no simple --> "if (!(_industry_sort_order & 1)) r = -r;" hack at the bottom!!
@@ -407,7 +407,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
 				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
 					r = j->total_production[0] - i->total_production[0];
-				else	
+				else
 					r = (j->total_production[0] + j->total_production[1]) / 2 - (i->total_production[0] + i->total_production[1]) / 2;
 		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
 			r = 0;
@@ -421,7 +421,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
 				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
 					r = (j->pct_transported[0] * 100 >> 8) - (i->pct_transported[0] * 100 >> 8);
-				else 
+				else
 					r = ((j->pct_transported[0] * 100 >> 8) + (j->pct_transported[1] * 100 >> 8)) / 2 - ((i->pct_transported[0] * 100 >> 8) + (i->pct_transported[1] * 100 >> 8)) / 2;
 		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
 			r = 0;
@@ -444,8 +444,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		}
 		r = strcmp(buf1, _bufcache);
 	}
-	
-	if (_industry_sort_order & 1) r = -r;	
+
+	if (_industry_sort_order & 1) r = -r;
 	return r;
 }
 
@@ -496,7 +496,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			if (i->produced_cargo[0] != 0xFF) {
 				SET_DPARAM16(3, i->total_production[0] * 100 >> 8);
 				SET_DPARAM16(2, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
-				
+
 				if (i->produced_cargo[1] != 0xFF) {
 					SET_DPARAM16(5, i->total_production[1] * 100 >> 8);
 					SET_DPARAM16(4, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
@@ -541,7 +541,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
-		
+
 		case 7: {
 			int y = (e->click.pt.y - 28) / 10;
 			byte p;
@@ -561,7 +561,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	case WE_4:
 		SetWindowDirty(w);
 		break;
-	}  
+	}
 }
 
 

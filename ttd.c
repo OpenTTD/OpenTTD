@@ -59,7 +59,7 @@ void CDECL error(const char *s, ...) {
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	
+
 	ShowOSErrorBox(buf);
 	if (_video_driver)
 		_video_driver->stop();
@@ -145,7 +145,7 @@ static int NullVideoMainLoop() {
 
 static bool NullVideoChangeRes(int w, int h) { return false; }
 
-	
+
 const HalVideoDriver _null_video_driver = {
 	NullVideoStart,
 	NullVideoStop,
@@ -298,7 +298,7 @@ static void showhelp()
 	const DriverDesc *dd;
 	int i;
 
-	p = strecpy(buf, 
+	p = strecpy(buf,
 		"Command line options:\n"
 		"  -v drv = Set video driver (see below)\n"
 		"  -s drv = Set sound driver (see below)\n"
@@ -313,7 +313,7 @@ static void showhelp()
 		"  -G seed= Set random seed\n"
 	);
 
-	for(i=0; i!=lengthof(_driver_classes); i++,dc++) { 
+	for(i=0; i!=lengthof(_driver_classes); i++,dc++) {
 		p += sprintf(p, "List of %s drivers:\n", dc->name);
 		dd = dc->descs;
 		do {
@@ -427,7 +427,7 @@ void SetDebugString(const char *s)
 	if (*s >= '0' && *s <= '9') {
 		v = strtoul(s, &end, 0);
 		s = end;
-		
+
 		_debug_spritecache_level = v;
 		_debug_misc_level = v;
 		_debug_grf_level = v;
@@ -460,7 +460,7 @@ void SetDebugString(const char *s)
 		v = strtoul(s, &end, 0);
 		s = end;
 		if (p) *p = v;
-	}		
+	}
 }
 
 void ParseResolution(int res[2], char *s)
@@ -473,7 +473,7 @@ void ParseResolution(int res[2], char *s)
 
 	res[0] = (strtoul(s, NULL, 0) + 7) & ~7;
 	res[1] = (strtoul(t+1, NULL, 0) + 7) & ~7;
-} 
+}
 
 int ttd_main(int argc, char* argv[])
 {
@@ -500,10 +500,10 @@ int ttd_main(int argc, char* argv[])
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
 		case 'n': {
-				network = 1; 
+				network = 1;
 				_networking_override=true;
 				if (mgo.opt) {
-					network_conn = mgo.opt; 
+					network_conn = mgo.opt;
 					network++;
 				}
 				else
@@ -525,7 +525,7 @@ int ttd_main(int argc, char* argv[])
 			} break;
 		case 'e': _switch_mode = SM_EDITOR; break;
 		case 'i': _ignore_wrong_grf = true; break;
-		case 'g': 
+		case 'g':
 			if (mgo.opt) {
 				strcpy(_file_to_saveload.name, mgo.opt);
 				_switch_mode = SM_LOAD;
@@ -568,10 +568,10 @@ int ttd_main(int argc, char* argv[])
 
 	// initialize airport state machines
 	InitializeAirports();
-	
+
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
-	MxInitialize(11025, "sample.cat"); 
+	MxInitialize(11025, "sample.cat");
 
 	// This must be done early, since functions use the InvalidateWindow* calls
 	InitWindowSystem();
@@ -588,7 +588,7 @@ int ttd_main(int argc, char* argv[])
 
 	// Default difficulty level
 	_opt_mod_ptr = &_new_opt;
-	
+
 	// ugly hack, if diff_level is 9, it means we got no setting from the config file, so we load the default settings.
 	if (_opt_mod_ptr->diff_level == 9)
 		SetDifficultyLevel(0, _opt_mod_ptr);
@@ -646,7 +646,7 @@ void LoadIntroGame()
 	_opt_mod_ptr = &_new_opt;
 	GfxLoadSprites();
 	LoadStringWidthTable();
-	
+
 	// Setup main window
 	InitWindowSystem();
 	SetupColorsAndInitialWindow();
@@ -655,7 +655,7 @@ void LoadIntroGame()
 	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
 		GenerateWorld(1); // if failed loading, make empty world.
-	
+
 	_opt.currency = _new_opt.currency;
 
 	_pause = 0;
@@ -687,7 +687,7 @@ void MakeNewGame()
 
 	// Create a single player
 	DoStartupNewPlayer(false);
-	
+
 	_local_player = 0;
 
 	MarkWholeScreenDirty();
@@ -700,7 +700,7 @@ void MakeNewEditorWorld()
 	// Copy in game options
 	_opt_mod_ptr = &_opt;
 	memcpy(&_opt, &_new_opt, sizeof(_opt));
-	
+
 	GfxLoadSprites();
 
 	// Re-init the windowing system
@@ -758,7 +758,7 @@ void StartScenario()
 	//  and in AfterLoad a player is started when it is
 	//  a scenario.. so we do not need it here.
 //	DoStartupNewPlayer(false);
-	
+
 	_local_player = 0;
 
 	MarkWholeScreenDirty();
@@ -781,7 +781,7 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 		return false;
 	} else if (r != SL_OK) {
 		_game_mode = ogm;
-		return false;		
+		return false;
 	} else
 		return true;
 }
@@ -789,7 +789,7 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 static void SwitchMode(int new_mode)
 {
 	_in_state_game_loop = true;
-	
+
 	switch(new_mode) {
 	case SM_EDITOR: // Switch to scenario editor
 		MakeNewEditorWorld();
@@ -842,7 +842,7 @@ normal_load:
 
 
 	case SM_MENU: // Switch to game menu
-		
+
 		if ((_networking) && (!_networking_override)) NetworkCoreDisconnect();
 		_networking_override=false;
 
@@ -863,8 +863,8 @@ normal_load:
 		MarkWholeScreenDirty();
 		break;
 	}
-	
-	if (_switch_mode_errorstr!=INVALID_STRING_ID) 
+
+	if (_switch_mode_errorstr!=INVALID_STRING_ID)
 		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
 
 	_in_state_game_loop = false;
@@ -885,10 +885,10 @@ void StateGameLoop()
 	_sync_seed_2 = _random_seed_2;
 	if (_networking) disable_computer=true;
 
-	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) { 
-		char buf[100]; 
-		sprintf(buf, "%s%.5d.sav", _savedump_path, _frame_counter); 
-		SaveOrLoad(buf, SL_SAVE); 
+	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
+		char buf[100];
+		sprintf(buf, "%s%.5d.sav", _savedump_path, _frame_counter);
+		SaveOrLoad(buf, SL_SAVE);
 		if ((uint)_frame_counter >= _savedump_last) exit(1);
 	}
 
@@ -917,7 +917,7 @@ void StateGameLoop()
 static void DoAutosave()
 {
 	char buf[200];
-	
+
 	if (_patches.keep_all_autosave && _local_player != OWNER_SPECTATOR) {
 		Player *p;
 		char *s;
@@ -1063,7 +1063,7 @@ void UpdateExclusiveRights()
 	FOR_ALL_TOWNS(t) if (t->xy != 0) {
 		t->exclusivity=(byte)-1;
 	}
-	
+
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
 			could be implemented this way:
 			1.) Go through all stations
@@ -1090,7 +1090,7 @@ bool AfterLoadGame(uint version)
 	if (version <= 0x400) {
 		UpdateExclusiveRights();
 	}
-	
+
 	// convert road side to my format.
 	if (_opt.road_side) _opt.road_side = 1;
 
@@ -1102,7 +1102,7 @@ bool AfterLoadGame(uint version)
 
 	// reinit the landscape variables (landscape might have changed)
 	InitializeLandscapeVariables(true);
-	
+
 	// Update all vehicles
 	AfterLoadVehicles();
 	// in version 2.2 of the savegame, we have new airports
@@ -1131,7 +1131,7 @@ bool AfterLoadGame(uint version)
 
 	WP(w,vp_d).scrollpos_x = _saved_scrollpos_x;
 	WP(w,vp_d).scrollpos_y = _saved_scrollpos_y;
-	
+
 	vp = w->viewport;
 	vp->zoom = _saved_scrollpos_zoom;
 	vp->virtual_width = vp->width << vp->zoom;
@@ -1143,8 +1143,8 @@ bool AfterLoadGame(uint version)
 	if (version <= 0x400) {
 		CheckIsPlayerActive();
 	}
-	
-	// If Load Scenario / New (Scenario) Game is used, 
+
+	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
 	if (!_players[0].is_active)
 		DoStartupNewPlayer(false);

@@ -39,7 +39,7 @@ int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (pp->is_active && pp != p && pp->player_color == (byte)p2)
 			return CMD_ERROR;
 	}
-	
+
 	if (flags & DC_EXEC) {
 		_player_colors[p1] = (byte)p2;
 		p->player_color = (byte)p2;
@@ -126,7 +126,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	str = AllocateName((byte*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
-	
+
 	if (flags & DC_EXEC) {
 		p = DEREF_PLAYER(p1);
 		old_str = p->name_1;
@@ -148,7 +148,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	str = AllocateName((byte*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
-	
+
 	if (flags & DC_EXEC) {
 		p = DEREF_PLAYER(p1);
 		old_str = p->president_name_1;
@@ -161,13 +161,13 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			d--; do d++; while (*d);
 			do *d++ = b = *s++; while(d != (byte*)endof(_decode_parameters) && b != 0);
 			DoCommandByTile(0, p1, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
-		} 
+		}
 		MarkWholeScreenDirty();
 	} else {
 		DeleteName(str);
 	}
 
-	return 0;	
+	return 0;
 }
 
 static void UpdateSignVirtCoords(SignStruct *ss)
@@ -200,7 +200,7 @@ static void MarkSignDirty(SignStruct *ss)
 int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	SignStruct *ss;
-	
+
 	for(ss=_sign_list; ss != endof(_sign_list); ss++) {
 		if (ss->str == 0) {
 			if (flags & DC_EXEC) {
@@ -213,7 +213,7 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				_new_sign_struct = ss;
 			}
 			return 0;
-		}	
+		}
 	}
 
 	return_cmd_error(STR_2808_TOO_MANY_SIGNS);
@@ -275,7 +275,7 @@ int32 CmdResume(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);	
+	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	return (int32)p1;
 }
 
@@ -290,7 +290,7 @@ int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
-	return 0;	
+	return 0;
 }
 
 static const byte _sign_desc[] = {

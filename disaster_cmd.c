@@ -13,7 +13,7 @@
 static void DisasterClearSquare(uint tile)
 {
 	int type;
-		
+
 	if (!EnsureNoVehicle(tile))
 		return;
 
@@ -107,7 +107,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 
 	if ( (u=v->next) != NULL) {
 		BeginVehicleMove(u);
-	
+
 		u->x_pos = x;
 		u->y_pos = yt = y - 1 - (max(z - GetSlopeZ(x, y-1), 0) >> 3);
 		u->z_pos = GetSlopeZ(x,yt);
@@ -144,7 +144,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			return;
 
 		GetNewVehiclePos(v, &gp);
-		
+
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 		if (v->next_order == 1) {
@@ -162,7 +162,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			if (IS_TILETYPE(tile, MP_STATION) &&
 				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 				IS_HUMAN_PLAYER(_map_owner[tile])) {
-				
+
 				v->next_order = 1;
 				v->age = 0;
 
@@ -176,12 +176,12 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		if (v->y_pos >= (TILES_Y+9) * 16 - 1)
 			DeleteDisasterVeh(v);
 		return;
-	} 
-	
+	}
+
 	if (v->next_order > 2) {
 		if (++v->age <= 13320)
 			return;
-		
+
 		tile = v->tile; /**/
 
 		if (IS_TILETYPE(tile, MP_STATION) &&
@@ -245,9 +245,9 @@ static void DisasterTick_UFO(Vehicle *v)
 	byte z;
 
 	v->u.disaster.image_override = (++v->tick_counter & 8) ? 0xF45 : 0xF44;
-	
+
 	if (v->next_order == 0) {
-// fly around randomly 
+// fly around randomly
 		int x = GET_TILE_X(v->dest_tile)*16;
 		int y = GET_TILE_Y(v->dest_tile)*16;
 		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
@@ -288,11 +288,11 @@ static void DisasterTick_UFO(Vehicle *v)
 
 		v->direction = GetDirectionTowards(v, u->x_pos, u->y_pos);
 		GetNewVehiclePos(v, &gp);
-		
+
 		z = v->z_pos;
 		if (dist <= 16 && z > u->z_pos) z--;
 		SetDisasterVehiclePos(v, gp.x, gp.y, z);
-			
+
 		if (z <= u->z_pos && (u->vehstatus&VS_HIDDEN)==0) {
 			v->age++;
 			if (u->u.road.crashed_ctr == 0) {
@@ -332,10 +332,10 @@ static void DestructIndustry(Industry *i)
 static void DisasterTick_2(Vehicle *v)
 {
 	GetNewVehiclePosResult gp;
-	
+
 	v->tick_counter++;
 	v->u.disaster.image_override = (v->next_order == 1 && v->tick_counter&4) ? 0xF4F : 0;
-	
+
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
@@ -386,7 +386,7 @@ static void DisasterTick_2(Vehicle *v)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
-		if (!IS_TILETYPE(tile, MP_INDUSTRY))	
+		if (!IS_TILETYPE(tile, MP_INDUSTRY))
 			return;
 
 		v->dest_tile = ind = _map2[tile];
@@ -456,7 +456,7 @@ static void DisasterTick_3(Vehicle *v)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
-		if (!IS_TILETYPE(tile, MP_INDUSTRY))	
+		if (!IS_TILETYPE(tile, MP_INDUSTRY))
 			return;
 
 		v->dest_tile = ind = _map2[tile];
@@ -546,7 +546,7 @@ static void DisasterTick_4(Vehicle *v)
 		InitializeDisasterVehicle(w, -6*16, v->y_pos, 0, 5, 12);
 		w->vehstatus |= VS_DISASTER;
 	} else if (v->next_order < 1) {
-		
+
 		int x = GET_TILE_X(v->dest_tile)*16;
 		int y = GET_TILE_Y(v->dest_tile)*16;
 		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
@@ -593,7 +593,7 @@ static void DisasterTick_4b(Vehicle *v)
 	}
 
 	if (v->next_order == 0) {
-		u = &_vehicles[v->u.disaster.unk2];	
+		u = &_vehicles[v->u.disaster.unk2];
 		if (abs(v->x_pos - u->x_pos) > 16)
 			return;
 		v->next_order = 1;
@@ -685,7 +685,7 @@ void OnNewDay_DisasterVehicle(Vehicle *v)
 typedef void DisasterInitProc();
 
 // Zeppeliner which crashes on a small airport
-static void Disaster0_Init() 
+static void Disaster0_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	Station *st;
@@ -695,7 +695,7 @@ static void Disaster0_Init()
 		return;
 
 	for(st=_stations;;) {
-		if (st->xy && st->airport_tile != 0 && 
+		if (st->xy && st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IS_HUMAN_PLAYER(st->owner)) {
 			x = (GET_TILE_X(st->xy) + 2) * 16;
@@ -714,12 +714,12 @@ static void Disaster0_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,0,0,3,1); 
+		InitializeDisasterVehicle(u,x,0,0,3,1);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
 
-static void Disaster1_Init() 
+static void Disaster1_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x;
@@ -737,12 +737,12 @@ static void Disaster1_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,0,0,3,3); 
+		InitializeDisasterVehicle(u,x,0,0,3,3);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
 
-static void Disaster2_Init() 
+static void Disaster2_Init()
 {
 	Industry *i, *found;
 	Vehicle *v,*u;
@@ -750,7 +750,7 @@ static void Disaster2_Init()
 
 	for(found=NULL,i=_industries; i != endof(_industries); i++) {
 		if (i->xy != 0 &&
-				i->type == IT_OIL_REFINERY && 
+				i->type == IT_OIL_REFINERY &&
 				(found==NULL || CHANCE16(1,2))) {
 			found = i;
 		}
@@ -771,12 +771,12 @@ static void Disaster2_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,3,5); 
+		InitializeDisasterVehicle(u,x,y,0,3,5);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
 
-static void Disaster3_Init() 
+static void Disaster3_Init()
 {
 	Industry *i, *found;
 	Vehicle *v,*u,*w;
@@ -784,7 +784,7 @@ static void Disaster3_Init()
 
 	for(found=NULL,i=_industries; i != endof(_industries); i++) {
 		if (i->xy != 0 &&
-				i->type == IT_FACTORY && 
+				i->type == IT_FACTORY &&
 				(found==NULL || CHANCE16(1,2))) {
 			found = i;
 		}
@@ -805,18 +805,18 @@ static void Disaster3_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,5,7); 
+		InitializeDisasterVehicle(u,x,y,0,5,7);
 		u->vehstatus |= VS_DISASTER;
 
 		w = ForceAllocateSpecialVehicle();
 		if (w != NULL) {
 			u->next = w;
-			InitializeDisasterVehicle(w,x,y,140,5,8); 
+			InitializeDisasterVehicle(w,x,y,140,5,8);
 		}
 	}
 }
 
-static void Disaster4_Init() 
+static void Disaster4_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x,y;
@@ -835,13 +835,13 @@ static void Disaster4_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,7,10); 
+		InitializeDisasterVehicle(u,x,y,0,7,10);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
 
 // Submarine type 1
-static void Disaster5_Init() 
+static void Disaster5_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -862,7 +862,7 @@ static void Disaster5_Init()
 }
 
 // Submarine type 2
-static void Disaster6_Init() 
+static void Disaster6_Init()
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -882,20 +882,20 @@ static void Disaster6_Init()
 	v->age = 0;
 }
 
-static void Disaster7_Init() 
+static void Disaster7_Init()
 {
 	Industry *i;
 	int maxloop = 15;
 	int index = Random() & 0xF;
-	
+
 	do {
 		for(i=_industries; i != endof(_industries); i++) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE	&& --index < 0) {
-				
+
 				SET_DPARAM16(0, i->town->index);
-				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES, 
+				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TILE_XY(1,1), 0);
-				
+
 				{
 					uint tile = i->xy;
 					int step = _tileoffs_by_dir[Random() & 3];

@@ -232,7 +232,7 @@ static size_t _transmit_file_size;
 
 static FILE *_recv_file;
 
-typedef struct NetworkGameInfo {	
+typedef struct NetworkGameInfo {
 	char server_name[40];			// name of the game
 	char server_revision[8];	// server game version
 	byte server_lang;					// langid
@@ -263,17 +263,17 @@ void CSleep(int milliseconds) {
 Sleep(milliseconds);
 #endif
 #if defined(UNIX)
-#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGAOS__) 
+#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGAOS__)
 usleep(milliseconds*1000);
 #endif
 #ifdef __BEOS__
 snooze(milliseconds*1000);
 #endif
-#if defined(__MORPHOS__) 
+#if defined(__MORPHOS__)
 usleep(milliseconds*1000);
 #endif
-#if defined(__AMIGAOS__) && !defined(__MORPHOS__) 
-{ 
+#if defined(__AMIGAOS__) && !defined(__MORPHOS__)
+{
 	ULONG signals;
 	ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
 
@@ -826,7 +826,7 @@ void NetworkSendReadyPacket()
 		rp->packet_type = 5;
 		rp->packet_length = sizeof(rp);
 		SendBytes(c, rp, sizeof(rp));
-		_network_ready_sent = true;	
+		_network_ready_sent = true;
 	}
 }
 
@@ -955,7 +955,7 @@ bool NetworkConnect(const char *hostname, int port)
 
 	b = 1;
 	setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));
-	
+
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
 	sin.sin_port = htons(port);
@@ -980,7 +980,7 @@ bool NetworkConnect(const char *hostname, int port)
 
 void NetworkListen()
 {
-		
+
 	SOCKET ls;
 	struct sockaddr_in sin;
 	int port;
@@ -992,7 +992,7 @@ void NetworkListen()
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET)
 		error("socket() on listen socket failed");
-	
+
 	// reuse the socket
 	{
 		int reuse = 1; if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1)
@@ -1021,7 +1021,7 @@ void NetworkReceive()
 	int n;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
-	
+
 	FD_ZERO(&read_fd);
 	FD_ZERO(&write_fd);
 
@@ -1119,13 +1119,13 @@ void NetworkSend()
 					CSleep(5);
 					}
 			}
-				
+
 			_not_packet = 0;
 
 			new_max = max(_frame_counter + (int)_network_ahead_frames, _frame_counter_max);
-			
+
 			DEBUG(net,3) ("net: serv: sync max=%i, seed1=%i, seed2=%i",new_max,_sync_seed_1,_sync_seed_2);
-			
+
 			sp.packet_length = sizeof(sp);
 			sp.packet_type = 1;
 			sp.frames = new_max - _frame_counter_max;
@@ -1196,7 +1196,7 @@ void NetworkClose(bool client) {
 
 void NetworkShutdown()
 {
-	_networking_server = false;	
+	_networking_server = false;
 	_networking = false;
 	_networking_sync = false;
 	_frame_counter = 0;
@@ -1255,10 +1255,10 @@ void NetworkUDPListen(bool client)
 	DEBUG(net, 1) ("[NET][UDP] listening on port %i", port);
 
 	udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	
+
 	// this disables network
 	_network_available = !(udp == INVALID_SOCKET);
-	
+
 	// set nonblocking mode for socket
 	{ unsigned long blocking = 1; ioctlsocket(udp, FIONBIO, &blocking); }
 
@@ -1268,7 +1268,7 @@ void NetworkUDPListen(bool client)
 
 	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0)
 		DEBUG(net, 1) ("[NET][UDP] error: bind failed on port %i", port);
-		
+
 
 	// enable broadcasting
 	{ unsigned long val=1; setsockopt(udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val)); }
@@ -1280,7 +1280,7 @@ void NetworkUDPListen(bool client)
 }
 
 void NetworkUDPClose(bool client) {
-	if (client) { 
+	if (client) {
 		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_client_port);
 		closesocket(_udp_client_socket);
 		_udp_client_socket = INVALID_SOCKET;
@@ -1301,17 +1301,17 @@ void NetworkUDPReceive(bool client) {
 	int nbytes;
 	struct UDPPacket packet;
 	int packet_len;
-	
+
 	SOCKET udp;
 	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
 
 	packet_len = sizeof(packet);
-	client_len = sizeof(client_addr);	
-	
+	client_len = sizeof(client_addr);
+
 	nbytes = recvfrom(udp, (char *) &packet, packet_len , 0, (struct sockaddr *) &client_addr, &client_len);
 	if (nbytes>0) {
 		if (packet.command_code==packet.command_check) switch (packet.command_code) {
-		
+
  		case NET_UDPCMD_SERVERSEARCH:
  			if (!client) {
 				packet.command_check=packet.command_code=NET_UDPCMD_SERVERINFO;
@@ -1335,7 +1335,7 @@ void NetworkUDPReceive(bool client) {
 				item = (NetworkGameList *) NetworkGameListAdd();
 				item -> ip = inet_addr(inet_ntoa(client_addr.sin_addr));
 				item -> port = ntohs(client_addr.sin_port);
-				
+
 				memcpy(item,&packet.data,packet.data_len);
  			}
  			break;
@@ -1365,14 +1365,14 @@ void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
 		if (res==-1) DEBUG(net, 1)("udp: broadcast error: %i",GET_LAST_ERROR());
 		i++;
 	}
-	
+
 }
 
 void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet) {
 
 	SOCKET udp;
 	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
-	
+
 	sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &recv,sizeof(recv));
 }
 
@@ -1380,13 +1380,13 @@ void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet
 bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned short * _network_detected_serverport) {
 	struct UDPPacket packet;
 	int timeout=3000;
-	
+
 	NetworkGameListClear();
 
 	DEBUG(net, 0) ("[NET][UDP] searching server");
 	*_network_detected_serverip = "255.255.255.255";
 	*_network_detected_serverport = 0;
-	
+
 	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
 	packet.data_len=0;
 	NetworkUDPBroadCast(true, packet);
@@ -1403,11 +1403,11 @@ bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned sho
  			timeout=-1;
  			DEBUG(net, 0) ("[NET][UDP] server found on %s", *_network_detected_serverip);
  			}
-	
+
 		}
 
 	return (*_network_detected_serverport>0);
-		
+
 }
 
 
@@ -1420,7 +1420,7 @@ void NetworkIPListInit() {
 	char hostname[250];
 	uint32 bcaddr;
 	int i=0;
-		
+
 	gethostname(hostname,250);
 	DEBUG(net, 2) ("[NET][IP] init for host %s", hostname);
 	he=gethostbyname((char *) hostname);
@@ -1428,7 +1428,7 @@ void NetworkIPListInit() {
 	if (he == NULL) {
 		he = gethostbyname("localhost");
 		}
-	
+
 	if (he == NULL) {
 		bcaddr = inet_addr("127.0.0.1");
 		he = gethostbyaddr(inet_ntoa(*(struct in_addr *) &bcaddr), sizeof(bcaddr), AF_INET);
@@ -1437,7 +1437,7 @@ void NetworkIPListInit() {
 	if (he == NULL) {
 		DEBUG(net, 2) ("[NET][IP] cannot resolve %s", hostname);
 	} else {
-		while(he->h_addr_list[i]) { 
+		while(he->h_addr_list[i]) {
 			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
 			_network_ip_list[i]=bcaddr;
 			DEBUG(net, 2) ("[NET][IP] add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
@@ -1446,7 +1446,7 @@ void NetworkIPListInit() {
 
 	}
 	_network_ip_list[i]=0;
-	
+
 }
 
 /* *************************************************** */
@@ -1468,7 +1468,7 @@ _network_client_timeout=3000;
 		_network_available=false;
 		}
 }
-#else 
+#else
 
 // [morphos/amigaos] bsd-socket startup
 
@@ -1486,14 +1486,14 @@ _network_client_timeout=3000;
 		if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
 			if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
 				if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
-					// free ressources... 
+					// free ressources...
 					DEBUG(net, 3) ("[NET][Core] Couldn't initialize timer.");
 					_network_available=false;
 				}
 			}
 		}
 	}
-	#endif 
+	#endif
 
 }
 #else
@@ -1527,9 +1527,9 @@ void NetworkCoreShutdown() {
 DEBUG(net, 3) ("[NET][Core] shutdown()");
 
 #if defined(__MORPHOS__) || defined(__AMIGA__)
-{	
+{
 	// free allocated ressources
-	#if !defined(__MORPHOS__) 
+	#if !defined(__MORPHOS__)
   if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
   if (TimerRequest) { DeleteIORequest(TimerRequest); }
   if (TimerPort)    { DeleteMsgPort(TimerPort); }
@@ -1574,9 +1574,9 @@ bool NetworkCoreConnectGame(const byte* b, unsigned short port)
 	if (_networking) {
 		NetworkLobbyShutdown();
 	} else {
-		if (_networking_override) 
+		if (_networking_override)
 			NetworkLobbyShutdown();
-		
+
 		ShowErrorMessage(-1, STR_NETWORK_ERR_NOCONNECTION,0,0);
 		_switch_mode_errorstr = STR_NETWORK_ERR_NOCONNECTION;
 	}
@@ -1607,13 +1607,13 @@ void NetworkCoreDisconnect()
 	if (_networking_server) {
 		NetworkUDPClose(false);
 		NetworkClose(false);
-		} 
+		}
 
 	/* terminate client connection */
 	else if (_networking) {
 		NetworkClose(true);
 		}
-	
+
 	NetworkShutdown();
 }
 
@@ -1670,7 +1670,7 @@ void NetworkLobbyShutdown() {
 
 void NetworkGameListClear() {
 NetworkGameList * item;
-NetworkGameList * next; 
+NetworkGameList * next;
 
 DEBUG(net, 4) ("[NET][G-List] cleared server list");
 
@@ -1686,7 +1686,7 @@ _network_game_count=0;
 
 char * NetworkGameListAdd() {
 NetworkGameList * item;
-NetworkGameList * before; 
+NetworkGameList * before;
 
 DEBUG(net, 4) ("[NET][G-List] added server to list");
 
@@ -1726,7 +1726,7 @@ void NetworkGameListFromInternet() {
 
 char * NetworkGameListItem(uint16 index) {
 NetworkGameList * item;
-NetworkGameList * next; 
+NetworkGameList * next;
 uint16 cnt = 0;
 
 item = _network_game_list;
@@ -1749,7 +1749,7 @@ void NetworkGameFillDefaults() {
 #if defined(WITH_REV)
 	extern char _openttd_revision[];
 #endif
-	
+
 	DEBUG(net, 4) ("[NET][G-Info] setting defaults");
 
 	ttd_strlcpy(game->server_name,"OpenTTD Game",13);
@@ -1768,7 +1768,7 @@ void NetworkGameFillDefaults() {
 
 	game->players_max=8;
 	game->players_on=0;
-	
+
 	game->server_lang=_dynlang.curr;
 }
 

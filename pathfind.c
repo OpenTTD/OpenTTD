@@ -37,7 +37,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, uint tile, int dir)
 			return true;
 		} else {
 			/* two tiles with the same hash, need to make a link */
-			
+
 			/* allocate a link. if out of links, handle this by returning
 			 * that a tile was already visisted. */
 			if (tpf->num_links_left == 0)
@@ -51,7 +51,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, uint tile, int dir)
 			tpf->hash_tile[hash] = PATHFIND_GET_LINK_OFFS(tpf, link);
 
 			link->flags = tpf->hash_head[hash];
-			tpf->hash_head[hash] = 0xFFFF; /* multi link */ 
+			tpf->hash_head[hash] = 0xFFFF; /* multi link */
 
 			link->next = 0xFFFF;
 		}
@@ -59,7 +59,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, uint tile, int dir)
 		/* a linked list of many tiles,
 		 * find the one corresponding to the tile, if it exists.
 		 * otherwise make a new link */
-		
+
 		offs = tpf->hash_tile[hash];
 		do {
 			link = PATHFIND_GET_LINK_PTR(tpf, offs);
@@ -74,7 +74,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, uint tile, int dir)
 			}
 		} while ((offs=link->next) != 0xFFFF);
 	}
-	
+
 	/* get here if we need to add a new link to link,
 	 * first, allocate a new link, in the same way as before */
 	if (tpf->num_links_left == 0)
@@ -130,12 +130,12 @@ void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 
 	// This addition will sometimes overflow by a single tile.
 	// The use of TILE_MASK here makes sure that we still point at a valid
-	// tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail. 
+	// tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail.
 	tile = TILE_MASK(tile + _tileoffs_by_dir[direction]);
 
 	if (++tpf->rd.cur_length > 50)
 		return;
-	
+
 	bits = GetTileTrackStatus(tile, tpf->tracktype);
 	bits = (byte)((bits | (bits >> 8)) & _bits_mask[direction]);
 	if (bits == 0)
@@ -161,7 +161,7 @@ void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 		// Change direction 4 times only
 		if ((byte)i != tpf->rd.pft_var6) {
 			if(++tpf->rd.depth > 4) {
-				tpf->rd = rd;		
+				tpf->rd = rd;
 				return;
 			}
 			tpf->rd.pft_var6 = (byte)i;
@@ -169,7 +169,7 @@ void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 
 continue_here:;
 		tpf->the_dir = HASBIT(_otherdir_mask[direction],i) ? (i+8) : i;
-		
+
 #ifdef DEBUG_TILE_PUSH
 		dbg_push_tile(tile, tpf->the_dir);
 #endif
@@ -265,7 +265,7 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0) {
 		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
 			return;
-		tile = SkipToEndOfTunnel(tpf, tile, direction);		
+		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
 	tile += _tileoffs_by_dir[direction];
 	tpf->rd.cur_length++;
@@ -286,7 +286,7 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 
 				tpf->the_dir = (_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i;
 				rd = tpf->rd;
-				
+
 #ifdef DEBUG_TILE_PUSH
 		dbg_push_tile(tile, tpf->the_dir);
 #endif
@@ -304,12 +304,12 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 
 	/* the next is only used when signals are checked.
 	 * seems to go in 2 directions simultaneously */
-	 
+
 	/* if i can get rid of this, tail end recursion can be used to minimize
-	 * stack space dramatically. */	
+	 * stack space dramatically. */
 	if (tpf->hasbit_13)
 		return;
-	
+
 	tile = tile_org;
 	direction ^= 2;
 
@@ -327,7 +327,7 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	do {
 		i = FIND_FIRST_BIT(bits);
 		bits = KILL_FIRST_BIT(bits);
-		
+
 		tpf->the_dir = (_otherdir_mask[direction] & (byte)(1 << i)) ? (i+8) : i;
 		rd = tpf->rd;
 		if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
@@ -344,16 +344,16 @@ void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc
 
 	assert(direction < 4);
 
-	/* initialize path finder variables */	
+	/* initialize path finder variables */
 	tpf->userdata = data;
-	tpf->enum_proc = enum_proc;	
+	tpf->enum_proc = enum_proc;
 	tpf->new_link = tpf->links;
 	tpf->num_links_left = 0x400;
 
 	tpf->rd.cur_length = 0;
 	tpf->rd.depth = 0;
 	tpf->rd.pft_var6 = 0;
-	
+
 	tpf->var2 = HASBIT(flags, 15) ? 0x43 : 0xFF; /* 0x8000 */
 
 	tpf->disable_tile_hash = HASBIT(flags, 12) != 0;     /* 0x1000 */
@@ -362,10 +362,10 @@ void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc
 
 	tpf->tracktype = (byte)flags;
 
-	if (HASBIT(flags, 11)) {	
+	if (HASBIT(flags, 11)) {
 		tpf->rd.pft_var6 = 0xFF;
 		tpf->enum_proc(tile, data, 0, 0, 0);
-		TPFMode2(tpf, tile, direction);	
+		TPFMode2(tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */
 		memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
@@ -373,7 +373,7 @@ void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc
 	}
 
 	if (after_proc != NULL)
-		after_proc(tpf);	
+		after_proc(tpf);
 }
 
 typedef struct {
@@ -439,10 +439,10 @@ static void INLINE HeapifyUp(NewTrackPathFinder *tpf)
 {
 	StackedItem si;
 	int i = ++tpf->nstack;
-	
+
 	while (i != 1 && ARR(i).cur_length < ARR(i>>1).cur_length) {
 		// the child element is larger than the parent item.
-		// swap the child item and the parent item. 
+		// swap the child item and the parent item.
 		si = ARR(i); ARR(i) = ARR(i>>1); ARR(i>>1) = si;
 		i>>=1;
 	}
@@ -462,13 +462,13 @@ static void INLINE HeapifyDown(NewTrackPathFinder *tpf)
 
 	while ((j=i*2) <= n) {
 		// figure out which is smaller of the children.
-		if (j != n && ARR(j).cur_length > ARR(j+1).cur_length) 
+		if (j != n && ARR(j).cur_length > ARR(j+1).cur_length)
 			j++; // right item is smaller
 
 		assert(i <= n && j <= n);
 		if (ARR(i).cur_length <= ARR(j).cur_length)
 			break; // base elem smaller than smallest, done!
-	
+
 		// swap parent with the child
 		si = ARR(i); ARR(i) = ARR(j); ARR(j) = si;
 		i = j;
@@ -484,7 +484,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 	HashLink *link, *new_link;
 
 	assert(length < 1024);
-	
+
 	hash = PATHFIND_HASH_TILE(tile);
 
 	// never visited before?
@@ -496,10 +496,10 @@ static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 
 	if (head != 0xffff) {
 		if ( (TileIndex)tile == tpf->hash_tile[hash] && (head & 0x3) == dir ) {
-			
+
 			// longer length
 			if (length >= (head >> 2)) return false;
-			
+
 			tpf->hash_head[hash] = dir | (length << 2);
 			return true;
 		}
@@ -517,13 +517,13 @@ static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 		tpf->hash_tile[hash] = NTP_GET_LINK_OFFS(tpf, link);
 
 		link->typelength = tpf->hash_head[hash];
-		tpf->hash_head[hash] = 0xFFFF; /* multi link */ 
+		tpf->hash_head[hash] = 0xFFFF; /* multi link */
 		link->next = 0xFFFF;
 	} else {
 		// a linked list of many tiles,
 		// find the one corresponding to the tile, if it exists.
 		// otherwise make a new link
-		
+
 		uint offs = tpf->hash_tile[hash];
 		do {
 			link = NTP_GET_LINK_PTR(tpf, offs);
@@ -534,7 +534,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 			}
 		} while ((offs=link->next) != 0xFFFF);
 	}
-	
+
 	/* get here if we need to add a new link to link,
 	 * first, allocate a new link, in the same way as before */
 	if (tpf->num_links_left == 0)
@@ -613,7 +613,7 @@ restart:
 
 	for(;;) {
 		tile += _tileoffs_by_dir[direction];
-		
+
 		// too long search length? bail out.
 		if (++si.cur_length >= tpf->maxlength)
 			goto popnext;
@@ -628,7 +628,7 @@ restart:
 		// regular rail tile, determine the tracks that are actually reachable.
 		bits &= _bits_mask[direction];
 		if (bits == 0) goto popnext; // no tracks there? stop searching.
-		
+
 		// complex tile?, let the generic handler handle that..
 		if (KILL_FIRST_BIT(bits) != 0) break;
 
@@ -656,16 +656,16 @@ restart:
 	// too high recursion depth.. bail out..
 	if (si.depth >= _patches.pf_maxdepth)
 		goto popnext;
-	
+
 	si.depth++; // increase recursion depth.
 
 	// see if this tile was already visited..?
 	if (NtpVisit(tpf, tile, direction, si.cur_length)) {
-		// push all possible alternatives	
+		// push all possible alternatives
 		si.tile = tile;
 		do {
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
-			
+
 			// out of stack items, bail out?
 			if (tpf->nstack >= lengthof(tpf->stack))
 				break;
@@ -678,11 +678,11 @@ restart:
 		// also randomize the order in which we search through them.
 		if (si.depth == 1) {
 			uint32 r = Random();
-			assert(tpf->nstack == 2 || tpf->nstack == 3);			
-			if (r&1) swap_byte(&tpf->stack[0].track, &tpf->stack[1].track);	
+			assert(tpf->nstack == 2 || tpf->nstack == 3);
+			if (r&1) swap_byte(&tpf->stack[0].track, &tpf->stack[1].track);
 			if (tpf->nstack != 2) {
 				byte t = tpf->stack[2].track;
-				if (r&2) swap_byte(&tpf->stack[0].track, &t);	
+				if (r&2) swap_byte(&tpf->stack[0].track, &t);
 				if (r&4) swap_byte(&tpf->stack[1].track, &t);
 				tpf->stack[2].first_track = tpf->stack[2].track = t;
 			}
@@ -702,7 +702,7 @@ popnext:
 		!NtpCheck(tpf, tile, _tpf_prev_direction[si.track], si.cur_length) || // already have better path to that tile?
 		tpf->enum_proc(tile, tpf->userdata, si.track, si.cur_length, &si.state)
 	);
-	
+
 	direction = _tpf_new_direction[si.track];
 	goto restart;
 }
@@ -718,7 +718,7 @@ void NewTrainPathfind(uint tile, byte direction, TPFEnumProc *enum_proc, void *d
 
 		tpf  = alloca(sizeof(NewTrackPathFinder));
 		tpf->userdata = data;
-		tpf->enum_proc = enum_proc;	
+		tpf->enum_proc = enum_proc;
 		tpf->tracktype = 0;
 		tpf->maxlength = _patches.pf_maxlength;
 		tpf->nstack = 0;

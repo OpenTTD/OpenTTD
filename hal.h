@@ -65,7 +65,7 @@ extern const HalVideoDriver _sdl_video_driver;
 
 #if defined(UNIX)
 extern const HalMusicDriver _extmidi_music_driver;
-#endif 
+#endif
 
 #if defined(__BEOS__)
 extern const HalMusicDriver _bemidi_music_driver;

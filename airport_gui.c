@@ -77,12 +77,12 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		if (e->click.widget-2 >= 0)
-			_build_air_button_proc[e->click.widget - 2](w);		
+			_build_air_button_proc[e->click.widget - 2](w);
 		break;
 
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
-		break;	
+		break;
 
 	case WE_PLACE_DRAG: {
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
@@ -160,7 +160,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
     // strings such as 'Size' and 'Coverage Area'
 		DrawStringCentered(74, 16, STR_305B_SIZE, 0);
 		DrawStringCentered(74, 78, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
-		DrawStationCoverageAreaText(2, 104, (uint)-1);		
+		DrawStationCoverageAreaText(2, 104, (uint)-1);
 		break;
 	}
 

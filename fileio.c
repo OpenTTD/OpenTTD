@@ -101,7 +101,7 @@ void FioOpenFile(int slot, const char *filename)
 	char buf[MAX_PATH];
 
 	sprintf(buf, "%s%s", _path.data_dir, filename);
-	
+
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
 	if (f == NULL) {
@@ -115,7 +115,7 @@ void FioOpenFile(int slot, const char *filename)
 
 	if (f == NULL)
 		error("Cannot open file '%s'", buf);
-	
+
 	_fio.handles[slot] = f;
 	FioSeekToFile(slot << 24);
 }

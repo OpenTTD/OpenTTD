@@ -26,7 +26,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];	
+		Vehicle *v = &_vehicles[w->window_number];
 		const byte *b;
 		int sel;
 		int x,y;
@@ -38,7 +38,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
-		
+
 		cargo = -1;
 		x = 6;
 		y = 25;
@@ -103,7 +103,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 			} break;
 		case 4: /* refit button */
 			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = &_vehicles[w->window_number];	
+				Vehicle *v = &_vehicles[w->window_number];
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_SHIP | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP)))
 					DeleteWindow(w);
 			}
@@ -136,8 +136,8 @@ static void ShowShipRefitWindow(Vehicle *v)
 	Window *w;
 
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-	
-	_alloc_wnd_parent_num = v->index;	
+
+	_alloc_wnd_parent_num = v->index;
 	w = AllocateWindowDesc(&_ship_refit_desc);
 	w->window_number = v->index;
 	w->caption_color = v->owner;
@@ -166,7 +166,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			StringID str;
 
 			SET_DPARAM16(1, year);
-			
+
 			str = STR_0199_YEAR;
 			if (year != 1) {
 				str++;
@@ -212,7 +212,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
 		SET_DPARAM32(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);
-		
+
 		SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
 		SET_DPARAM16(1, v->cargo_cap);
 		DrawString(74, 67, STR_9817_CAPACITY, 0);
@@ -295,7 +295,7 @@ static void ShowShipDetailsWindow(Vehicle *v)
 	VehicleID veh = v->index;
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
-	_alloc_wnd_parent_num = veh;	
+	_alloc_wnd_parent_num = veh;
 	w = AllocateWindowDesc(&_ship_details_desc);
 	w->window_number = veh;
 	w->caption_color = v->owner;
@@ -314,7 +314,7 @@ static void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
 	ShowShipViewWindow(v);
 }
 
-static void NewShipWndProc(Window *w, WindowEvent *e) 
+static void NewShipWndProc(Window *w, WindowEvent *e)
 {
 	YearMonthDay ymd;
 	switch(e->event) {
@@ -354,7 +354,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 						DrawShipEngine(x+35, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 						y += 24;
 					}
-					sel--; 
+					sel--;
 				}
 			} while (++engine_id, ++e,--num);
 
@@ -370,12 +370,12 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM16(4, ship_vehicle_info(selected_id).refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 				SET_DPARAM32(5, ship_vehicle_info(selected_id).running_cost * _price.ship_running >> 8);
 
-				e = &_engines[selected_id];	
+				e = &_engines[selected_id];
 				SET_DPARAM16(7, e->lifelength);
 				SET_DPARAM8(8, e->reliability * 100 >> 16);
 				ConvertDayToYMD(&ymd, e->intro_date);
 				SET_DPARAM16(6, ymd.year + 1920);
-				
+
 				DrawString(2, 111, STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
 			}
 		}
@@ -456,13 +456,13 @@ static void ShowBuildShipWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_ship_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 4;
-	
+
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
 	} else {
 		w->caption_color = _local_player;
 	}
-	
+
 }
 
 
@@ -479,7 +479,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 				v->u.ship.state == 0x80 &&
 				IsShipDepotTile(v->tile))
 			disabled = 0;
-					
+
 		if (v->owner != _local_player)
 			disabled |= 1<<7 | 1<<6;
 		w->disabled_state = disabled;
@@ -535,13 +535,13 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 
 		switch(e->click.widget) {
 		case 4: /* start stop */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP));
 			break;
 		case 5: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 6: /* goto hangar */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT)); 
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
 			break;
 		case 7: /* refit */
 			ShowShipRefitWindow(v);
@@ -557,7 +557,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
-		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);		
+		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
 	}
@@ -641,17 +641,17 @@ static void DrawShipDepotWindow(Window *w)
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Ship &&
-				v->u.ship.state == 0x80 && 
+				v->u.ship.state == 0x80 &&
 				v->tile == (TileIndex)tile &&
 				--num < 0 && num >=	-6) {
 
 			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
-			
+
 			SET_DPARAM16(0, v->unitnumber);
 			DrawString(x, y, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x, y + 9);
-			
+
 			if ((x+=90) == 2+90*3) {
 				x = 2;
 				y += 24;
@@ -666,7 +666,7 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	TileIndex tile;
 	Vehicle *v;
 	int pos;
-		
+
 	xt = x / 90;
 	xm = x % 90;
 	if (xt >= 5)
@@ -682,7 +682,7 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Ship &&
-				v->vehstatus&VS_HIDDEN && 
+				v->vehstatus&VS_HIDDEN &&
 				v->tile == (TileIndex)tile &&
 				--pos < 0) {
 					*veh = v;
@@ -695,7 +695,7 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	}
 
 	return 1; /* outside */
-	
+
 }
 
 static void ShipDepotClick(Window *w, int x, int y)
@@ -714,7 +714,7 @@ static void ShipDepotClick(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) + 
+			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) +
 				GetShipImage(v, 6), 4, w);
 		}
 		break;
@@ -743,7 +743,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 		case 2:
 			ShipDepotClick(w, e->click.pt.x, e->click.pt.y);
 			break;
-			
+
 		case 5:
 			ShowBuildShipWindow(w->window_number);
 			break;
@@ -773,12 +773,12 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 				ShowShipViewWindow(v);
 			}
 		} break;
-					
+
 		case 3:
 			if (!HASBIT(w->disabled_state, 3) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
-				
+
 				HandleButtonClick(w, 3);
 
 				v = &_vehicles[WP(w,traindepot_d).sel];
@@ -786,7 +786,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 
 				_backup_orders_tile = v->tile;
 				BackupVehicleOrders(v, _backup_orders_data);
-	
+
 				if (!DoCommandP(v->tile, v->index, 0, NULL, CMD_SELL_SHIP | CMD_MSG(STR_980C_CAN_T_SELL_SHIP)))
 					_backup_orders_tile = 0;
 			}
@@ -854,7 +854,7 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 
 		if ((ord & OT_MASK) == OT_GOTO_STATION) {
 			st = DEREF_STATION(ord >> 8);
-			
+
 			if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
 				SET_DPARAM16(0, ord >> 8);
 				DrawString(x, y, STR_A036, 0);
@@ -894,7 +894,7 @@ static void MakeSortedShiptList(byte owner)
 		// ships are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 		for (i = &_num_ship_sort[1]; i != endof(_num_ship_sort); i++) {*i += *(i-1);}
-	
+
 		// sort by owner, then only subsort the requested owner-vehicles
 		qsort(_ship_sort, n, sizeof(_ship_sort[0]), GeneralOwnerSorter);
 
@@ -939,7 +939,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 ships
 		i = (window_number == 0) ? 0 : _num_ship_sort[window_number-1];
 		SetVScrollCount(w, _num_ship_sort[window_number] - i);
-		
+
 		/* draw the widgets */
 		{
 			Player *p = DEREF_PLAYER(window_number);
@@ -982,7 +982,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				SET_DPARAM32(0, v->profit_this_year);
 				SET_DPARAM32(1, v->profit_last_year);
 				DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				
+
 				if (v->string_id != STR_SV_SHIP_NAME) {
 					SET_DPARAM16(0, v->string_id);
 					DrawString(x+12, y, STR_01AB, 0);
@@ -1010,7 +1010,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
-			
+
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
 			id_v += w->vscroll.pos;
@@ -1035,15 +1035,15 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_ship_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsShipDepotTile(tile)) {					
+				if (_map_owner[tile] == _local_player && IsShipDepotTile(tile)) {
 					ShowShipDepotWindow(tile);
 					ShowBuildShipWindow(tile);
 					return;
 				}
-				
+
 				tile = TILE_MASK(tile + 1);
 			} while(tile != _last_built_ship_depot_tile);
-			
+
 			ShowBuildShipWindow(0);
 		} break;
 		}

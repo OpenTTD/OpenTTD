@@ -13,7 +13,7 @@ struct DrawPixelInfo {
 	byte *dst_ptr;
 	int left, top, width, height;
 	int pitch;
-	uint16 zoom;	
+	uint16 zoom;
 };
 
 
@@ -47,8 +47,8 @@ int DrawString(int x, int y, uint16 str, byte color);
 void DrawStringCenterUnderline(int x, int y, uint16 str, byte color);
 int DoDrawString(const byte *string, int x, int y, byte color);
 void DrawStringRightAligned(int x, int y, uint16 str, byte color);
-void GfxFillRect(int left, int top, int right, int bottom, int color);	
-void GfxDrawLine(int left, int top, int right, int bottom, int color);	
+void GfxFillRect(int left, int top, int right, int bottom, int color);
+void GfxDrawLine(int left, int top, int right, int bottom, int color);
 void DrawFrameRect(int left, int top, int right, int bottom, int color, int flags);
 
 int GetStringWidth(const byte *str);

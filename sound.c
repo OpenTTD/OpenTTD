@@ -73,7 +73,7 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	volume_left = sc->volume_left;
 	volume_right = sc->volume_right;
 
-	if (frac_speed == 0x10000) { 
+	if (frac_speed == 0x10000) {
 		// Special case when frac_speed is 0x10000
 		do {
 			buffer[0]+= *b * volume_left >> 8;
@@ -110,10 +110,10 @@ void MxMixSamples(Mixer *mx, void *buffer, uint samples)
 {
 	int i;
 	MixerChannel *mc;
-	
+
 	// Clear the buffer
 	memset(buffer, 0, sizeof(int16)*2*samples);
-	
+
 	// Mix each channel
 	for(i=0,mc=mx->channels; i!=lengthof(mx->channels); i++,mc++) {
 		if (mc->active) {
@@ -154,7 +154,7 @@ static void MxSetChannelRawSrc(MixerChannel *mc, void *mem, uint size, uint rate
 	// adjust the magnitude to prevent overflow
 	while (size & 0xFFFF0000)
 		size >>= 1, rate = (rate >> 1) + 1;
-	
+
 	mc->samples_left = size * mc->mx->play_rate / rate;
 }
 
@@ -180,7 +180,7 @@ static void MxOpenBankFile(Mixer *mx, const char *filename)
 		fe->file_offset = FioReadDword();
 		fe->file_size = FioReadDword();
 	}
-	
+
 	fe = mx->files;
 	for(i=0; i!=count; i++,fe++) {
 		FioSeekTo(fe->file_offset, SEEK_SET);
@@ -221,7 +221,7 @@ static bool MxSetBankSource(MixerChannel *mc, uint bank)
 
 	if (fe->file_size == 0)
 		return false;
-		
+
 	mem = malloc(fe->file_size);
 	FioSeekToFile(fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
@@ -229,7 +229,7 @@ static bool MxSetBankSource(MixerChannel *mc, uint bank)
 	for(i=0; i!=fe->file_size; i++) {
 		((byte*)mem)[i] ^= 0x80;
 	}
-	
+
 	assert(fe->bits_per_sample == 8 && fe->channels == 1 && fe->file_size != 0 && fe->rate != 0);
 
 	MxSetChannelRawSrc(mc, mem, fe->file_size, fe->rate, MX_AUTOFREE | MX_UNSIGNED);
@@ -302,10 +302,10 @@ void SndPlayScreenCoordFx(int sound, int x, int y)
 		if ((vp=w->viewport) &&
 				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&
 				IS_INSIDE_1D(y, vp->virtual_top, vp->virtual_height)) {
-		
+
 			left = ((x - vp->virtual_left) >> vp->zoom) + vp->left;
 			StartSound(
-				_sound_idx[sound], 
+				_sound_idx[sound],
 				clamp(left / 71, 0, 8),
 				(_sound_base_vol[sound] * msf.effect_vol * _vol_factor_by_zoom[vp->zoom]) >> 15
 			);
@@ -334,8 +334,8 @@ void SndPlayVehicleFx(int sound, Vehicle *v)
 void SndPlayFx(int sound)
 {
 	StartSound(
-		_sound_idx[sound], 
-		4, 
+		_sound_idx[sound],
+		4,
 		(_sound_base_vol[sound] * msf.effect_vol) >> 7
 	);
 }

@@ -9,14 +9,14 @@ struct Town {
 	// Current population of people and amount of houses.
 	uint16 num_houses;
 	uint32 population;
-	
+
 	// Town name
 	uint16 townnametype;
 	uint32 townnameparts;
-	
-	// NOSAVE: Location of name sign, UpdateTownVirtCoord updates this. 
+
+	// NOSAVE: Location of name sign, UpdateTownVirtCoord updates this.
 	ViewportSign sign;
-	
+
 	// Makes sure we don't build certain house types twice.
 	byte flags12;
 
@@ -32,7 +32,7 @@ struct Town {
 	uint8 exclusivity;	     // which player has exslusivity
 	uint8 exclusive_counter;     // months till the exclusivity expires
 	int16 ratings[MAX_PLAYERS];
-		
+
 	// Maximum amount of passengers and mail that can be transported.
 	uint16 max_pass;
 	uint16 max_mail;
@@ -52,17 +52,17 @@ struct Town {
 	uint16 act_water;
 	uint16 new_act_food;
 	uint16 new_act_water;
-	
+
 	// Time until we rebuild a house.
 	byte time_until_rebuild;
 
 	// When to grow town next time.
 	byte grow_counter;
-	byte growth_rate;	
+	byte growth_rate;
 
 	// Fund buildings program in action?
 	byte fund_buildings_months;
-	
+
 	// Fund road reconstruction in action?
 	byte road_build_months;
 

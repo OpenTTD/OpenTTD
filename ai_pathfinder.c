@@ -38,7 +38,7 @@ int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current) {
 		if (IS_TILETYPE(current->path.node.tile, MP_CLEAR) || IS_TILETYPE(current->path.node.tile, MP_TREES))
 			if (current->path.parent == NULL || TestCanBuildStationHere(current->path.node.tile,AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile)))
     			return AYSTAR_FOUND_END_NODE;
-		
+
 	return AYSTAR_DONE;
 }
 
@@ -103,7 +103,7 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo) {
 	PathNode start_node;
 	uint x,y;
-	
+
 	aystar->clear(aystar);
 
 	// Set the user_data to the PathFinderInfo
@@ -149,7 +149,7 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int i = 0;
 	PathNode *parent = &current->path;
-	
+
 	do {
      	PathFinderInfo->route_extra[i] = parent->node.user_data[0];
 		PathFinderInfo->route[i++] = parent->node.tile;
@@ -169,16 +169,16 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current) {
     int i, r, dir;
    	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
-    
+
     aystar->num_neighbours = 0;
-    
+
   	// Go through all surrounding tiles and check if they are within the limits
    	for (i=0;i<4;i++) {
    		if (GET_TILE_X(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_X(_tiles_around[i] + current->path.node.tile) < TILE_X_MAX - 1 &&
        		GET_TILE_Y(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_Y(_tiles_around[i] + current->path.node.tile) < TILE_Y_MAX - 1) {
        		// We also directly test if the current tile can connect to this tile..
        		//  We do this simply by just building the tile!
-       		
+
        		// If the next step is a bridge, we have to enter it the right way
        		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile + _tiles_around[i])) {
        			if (IS_TILETYPE(current->path.node.tile + _tiles_around[i], MP_TUNNELBRIDGE)) {
@@ -198,7 +198,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        				if ((_map5[current->path.node.tile] & 1) != (i & 1)) continue;
        			}
        		}
-       		
+
        		if ((AI_PATHFINDER_FLAG_BRIDGE & current->path.node.user_data[0]) != 0 ||
        			(AI_PATHFINDER_FLAG_TUNNEL & current->path.node.user_data[0]) != 0) {
        			// We are a bridge/tunnel, how cool!!
@@ -206,7 +206,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        			if (i != (current->path.node.user_data[0] >> 8)) continue;
        		}
        		dir = 0;
-       		
+
        		// First, check if we have a parent
        		if (current->path.parent == NULL && current->path.node.user_data[0] == 0) {
        			// If not, this means we are at the starting station
@@ -254,16 +254,16 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        					if (r == CMD_ERROR) continue;
        				}
        			}
-       			
+
        		}
-       		
+
 			// The tile can be connected
    			aystar->neighbours[aystar->num_neighbours].tile = _tiles_around[i] + current->path.node.tile;
    			aystar->neighbours[aystar->num_neighbours].user_data[0] = 0;
    			aystar->neighbours[aystar->num_neighbours++].direction = 0;
        	}
     }
-    
+
     // Next step, check for bridges and tunnels
     if (current->path.parent != NULL && current->path.node.user_data[0] == 0) {
 
@@ -273,9 +273,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
     	// It means we can only walk with the track, so the bridge has to be in the same direction
     	TileIndex tile = current->path.node.tile;
     	TileIndex new_tile = tile;
-    	
+
     	FindLandscapeHeightByTile(&ti, tile);
-    	
+
    		// Bridges can only be build on land that is not flat
    		//  And if there is a road or rail blocking
    		if (ti.tileh != 0 ||
@@ -284,10 +284,10 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
     		for (;;) {
     			new_tile += _tiles_around[dir];
-    	
+
     	    	// Precheck, is the length allowed?
     	    	if (!CheckBridge_Stuff(0,GetBridgeLength(tile, new_tile))) break;
-    	    	
+
     	    	// Check if we hit the station-tile.. we don't like that!
     	    	if (TILES_BETWEEN(new_tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) break;
 
@@ -302,7 +302,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				if (aystar->num_neighbours == 11) break;
 			}
     	}
-    	
+
     	// Next, check for tunnels!
     	// Tunnels can only be build with tileh of 3, 6, 9 or 12, depending on the direction
     	//  For now, we check both sides for this tile.. terraforming gives fuzzy result
@@ -334,11 +334,11 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, res = 0;
 	TileInfo ti, parent_ti;
-	
+
 	// Gather some information about the tile..
 	FindLandscapeHeightByTile(&ti, current->tile);
 	FindLandscapeHeightByTile(&parent_ti, parent->path.node.tile);
-	
+
 	// Check if we hit the end-tile
 	if (TILES_BETWEEN(current->tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) {
 		// We are at the end-tile, check if we had a direction or something...
@@ -348,7 +348,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// If it was valid, drop out.. we don't build on the endtile
 		return 0;
 	}
-	
+
 	// Give everything a small penalty
 	res += AI_PATHFINDER_PENALTY;
 
@@ -359,7 +359,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			res -= AI_PATHFINDER_ROAD_ALREADY_EXISTS_BONUS;
 		}
 	}
-	
+
 	// We should give a penalty when the tile is going up or down.. this is one way to do so!
 	//  Too bad we have to count it from the parent.. but that is not so bad
 	if (parent_ti.tileh != 0 && parent->path.parent != NULL) {
@@ -380,7 +380,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			}
 		}
 	}
-	
+
 	// Are we part of a tunnel?
 	if ((AI_PATHFINDER_FLAG_TUNNEL & current->user_data[0]) != 0) {
 		// Tunnels are very expensive when build on long routes..
@@ -409,7 +409,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		if (ti.tileh == 0)
 			res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 	}
-	
+
 	//  To prevent the AI from taking the fastest way in tiles, but not the fastest way
 	//    in speed, we have to give a good penalty to direction changing
 	//  This way, we get almost the fastest way in tiles, and a very good speed on the track
@@ -448,7 +448,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			}
 		}
 	}
-	
+
 	// Res should never be below zero.. if so, make it zero!
 	if (res < 0) { res = 0; }
 

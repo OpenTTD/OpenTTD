@@ -10,7 +10,7 @@
 #include "economy.h"
 
 static void HandleSubsidyClick(int y)
-{			
+{
 	Subsidy *s;
 	int num,offs;
 	TileIndex xy;
@@ -42,7 +42,7 @@ static void HandleSubsidyClick(int y)
 		}
 	}
 	return;
-	
+
 handle_click:
 
 	/* determine from coordinate for subsidy and try to scroll to it */
@@ -53,7 +53,7 @@ handle_click:
 		xy = DEREF_TOWN(offs)->xy;
 	} else {
 		xy = _industries[offs].xy;
-		
+
 	}
 	if (!ScrollMainWindowToTile(xy)) {
 		/* otherwise determine to coordinate for subsidy and scroll to it */
@@ -90,7 +90,7 @@ static void DrawSubsidiesWindow(Window *w)
 		if (s->cargo_type != 0xFF && s->age < 12) {
 			SetupSubsidyDecodeParam(s, 1);
 			x2 = DrawString(x+2, y, STR_2027_FROM_TO, 0);
-			
+
 			SET_DPARAM16(0, _date - ymd.day + 384 - s->age * 32);
 			DrawString(x2, y, STR_2028_BY, 0);
 			y += 10;

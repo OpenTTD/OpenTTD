@@ -23,12 +23,12 @@ static const StringID _connection_types_dropdown[] = {
 };
 
 /* Should be _network_game->players_max but since network is not yet really done
-* we'll just use some dummy here 
+* we'll just use some dummy here
 * network.c -->> static NetworkGameInfo _network_game;
 */
 static byte _players_max;
 /* Should be ??????????? (something) but since network is not yet really done
-* we'll just use some dummy here 
+* we'll just use some dummy here
 */
 static byte _network_connection;
 
@@ -36,20 +36,20 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-	
+
 		SET_DPARAM16(0, 0x00);
 		SET_DPARAM16(2, STR_NETWORK_LAN + _network_connection);
 		DrawWindowWidgets(w);
-		
+
 		DrawEditBox(w, 6);
-		
+
 		DrawString(9, 43, STR_NETWORK_PLAYER_NAME, 2);
 		DrawString(9, 63, STR_NETWORK_SELECT_CONNECTION, 2);
 
 		DrawString(15, 82, STR_NETWORK_GAME_NAME, 2);
 		DrawString(238, 82, STR_NETWORK_PLAYERS, 2);
 		DrawString(288, 82, STR_NETWORK_MAP_SIZE, 2);
-		
+
 	}	break;
 
 	case WE_CLICK:
@@ -65,7 +65,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 4: { /* Connect via direct ip */
 				StringID str;
 				str = AllocateName((byte*)_decode_parameters, 0);
-				
+
 				ShowQueryString(
 				str,
 				STR_NETWORK_ENTER_IP,
@@ -93,7 +93,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_MOUSELOOP:
 		if (_selected_field == 6)
 			HandleEditBox(w, 6);
-		
+
 		break;
 
 	case WE_KEYPRESS:
@@ -160,11 +160,11 @@ void ShowNetworkGameWindow()
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	NetworkLobbyInit();
-	
+
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	strcpy(_edit_str_buf, "Your name");
 
-	
+
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 240;
@@ -186,7 +186,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-	
+
 		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _players_max);
 		DrawWindowWidgets(w);
 
@@ -194,13 +194,13 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawEditBox(w, 3);
 		DrawEditBox(w, 4);
-		
+
 		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
 		DrawString(210, 22, STR_NETWORK_PASSWORD, 2);
 
 		DrawString(10, 43, STR_NETWORK_SELECT_MAP, 2);
 		DrawString(260, 63, STR_NETWORK_NUMBER_OF_PLAYERS, 2);
-		
+
 	}	break;
 
 	case WE_CLICK:
@@ -251,7 +251,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		break;
-		
+
 	}
 }
 
@@ -288,10 +288,10 @@ static void ShowNetworkStartServerWindow()
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
-	
+
 	w = AllocateWindowDesc(&_network_start_server_window_desc);
 	strcpy(_edit_str_buf, "");
-	
+
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 240;
@@ -303,7 +303,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-	
+
 		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _opt_mod_ptr->road_side);
 		DrawWindowWidgets(w);
 
@@ -312,7 +312,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawEditBox(w, 5);
 		DrawEditBox(w, 7);
-		
+
 		DrawString(10, 255, STR_NETWORK_COMPANY_NAME, 2);
 
 		break;
@@ -340,7 +340,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			HandleEditBox(w, 7);
 			break;
 		}
-			
+
 		break;
 
 	case WE_KEYPRESS:
@@ -352,7 +352,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		break;
-		
+
 	}
 }
 
@@ -398,11 +398,11 @@ static void ShowNetworkLobbyWindow()
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
-	
+
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
 	strcpy(_edit_str_buf, "");
 
-	
+
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 240;

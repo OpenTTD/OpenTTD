@@ -275,8 +275,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// On hold for NewAI
 		v->u.air.pos = (!_patches.ainew_active && _is_ai_player) ? 0:MAX_ELEMENTS;
 
-		/* When we click on hangar we know the tile (it is in var 'tile')it is on. By that we know 
-			its position in the array of depots the airport has.....we can search 
+		/* When we click on hangar we know the tile (it is in var 'tile')it is on. By that we know
+			its position in the array of depots the airport has.....we can search
 			->layout for #th position of depot. Since layout must start with depots, it is simple
 		*/
 		{
@@ -542,7 +542,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
  	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
  		return;
- 
+
 	st = DEREF_STATION(v->next_order_param);
 	// only goto depot if the target airport has terminals (eg. it is airport)
 	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->nofterminals != 0) {
@@ -621,7 +621,7 @@ static void HelicopterTickHandler(Vehicle *v)
 	if (u->vehstatus & VS_HIDDEN)
 		return;
 
-	// if true, helicopter rotors do not rotate. This should only be the case if a helicopter is 
+	// if true, helicopter rotors do not rotate. This should only be the case if a helicopter is
 	// loading/unloading at a terminal or stopped
 	if ((v->next_order&OT_MASK) == OT_LOADING || (v->vehstatus&VS_STOPPED)) {
 		if (u->cur_speed != 0) {
@@ -735,7 +735,7 @@ static bool UpdateAircraftSpeed(Vehicle *v)
 
 	v->subspeed = (t=v->subspeed) + (byte)spd;
 	spd = min( v->cur_speed + (spd >> 8) + (v->subspeed < t), v->max_speed);
-		   
+
 	// adjust speed for broken vehicles
 	if(v->vehstatus&VS_AIRCRAFT_BROKEN) spd = min(spd, 27);
 
@@ -875,7 +875,7 @@ static bool Aircraft_5(Vehicle *v)
 
 		// Change direction smoothly to final direction.
 		dirdiff = amd->direction - v->direction;
-		// if distance is 0, and plane points in right direction, no point in calling 
+		// if distance is 0, and plane points in right direction, no point in calling
 		// UpdateAircraftSpeed(). So do it only afterwards
 		if (dirdiff == 0) {
 			v->cur_speed = 0;
@@ -1061,7 +1061,7 @@ static void ProcessAircraftOrder(Vehicle *v)
  		if ((v->next_order & (OT_MASK|OF_UNLOAD)) != (OT_GOTO_DEPOT|OF_UNLOAD))
  			return;
  	}
- 
+
  	if ((v->next_order & (OT_MASK|OF_UNLOAD|OF_FULL_LOAD)) == (OT_GOTO_DEPOT|OF_UNLOAD|OF_FULL_LOAD) &&
  			SERVICE_INTERVAL) {
  		v->cur_order_index++;
@@ -1217,7 +1217,7 @@ static void AircraftEnterHangar(Vehicle *v)
 	byte old_order;
 
 	ServiceAircraft(v);
-	
+
 	MaybeRenewVehicle(v, EstimateAircraftCost(v->engine_type));
 
 	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
@@ -1227,7 +1227,7 @@ static void AircraftEnterHangar(Vehicle *v)
 		v->next_order = OT_NOTHING;
 
  			if (old_order & OF_UNLOAD) { v->cur_order_index++; }
- 
+
  			else if (old_order & OF_FULL_LOAD) { // force depot visit
 			v->vehstatus |= VS_STOPPED;
 
@@ -1692,7 +1692,7 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 	return false;
 }
 
-static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport) 
+static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 {
 	byte nofterminalspergroup, i;
 	AirportFTA *temp;
@@ -1703,9 +1703,9 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 		Heading 255 denotes a group. We see 2 groups here:
 		1. group 0 -- TERM_GROUP1_block (check block)
 		2. group 1 -- TERM_GROUP2_ENTER_block (check block)
-		First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it 
-		looks	at the corresponding terminals of that group. If no free ones are found, other 
-		possible groups are checked	(in this case group 1, since that is after group 0). If that 
+		First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
+		looks	at the corresponding terminals of that group. If no free ones are found, other
+		possible groups are checked	(in this case group 1, since that is after group 0). If that
 		fails, then attempt fails and plane waits
 	*/
 	if (Airport->nofterminalgroups > 1) {
@@ -1731,7 +1731,7 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 	return FreeTerminal(v, 0, Airport->nofterminals);
 }
 
-static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport) 
+static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 {
   Station *st;
   byte nofhelipadspergroup,  i;
@@ -1847,7 +1847,7 @@ void UpdateOldAircraft()
 			AircraftNextAirportPos_and_Order(v_oldstyle); // move it to the entry point of the airport
 			GetNewVehiclePos(v_oldstyle, &gp); // get the position of the plane (to be used for setting)
 			v_oldstyle->tile = 0; // aircraft in air is tile=0
-			
+
 			// correct speed of helicopter-rotors
 			if (v_oldstyle->subtype == 0) {v_oldstyle->next->next->cur_speed = 32;}
 
@@ -1857,7 +1857,7 @@ void UpdateOldAircraft()
 	}
 }
 
-void UpdateAirplanesOnNewStation(Station *st) 
+void UpdateAirplanesOnNewStation(Station *st)
 {
 	GetNewVehiclePosResult gp;
 	Vehicle *v;

@@ -23,7 +23,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// for ships, make sure that the station is not too far away from the previous destination.
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
 			sel != 0 && ((t=v->schedule_ptr[sel-1])&OT_MASK) == OT_GOTO_STATION) {
-		
+
 		int dist = GetTileDist(DEREF_STATION(t >> 8)->xy, DEREF_STATION(p2 >> 8)->xy);
 		if (dist >= 130)
 			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
@@ -39,7 +39,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		s1[0] = (uint16)p2;
 
 		s1 = v->schedule_ptr;
-		
+
 		FOR_ALL_VEHICLES(u) {
 			if (u->type != 0 && u->schedule_ptr != NULL) {
 				if (s1 < u->schedule_ptr) {
@@ -69,10 +69,10 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		DeleteVehicleSchedule(dst);
-		
+
 		dst->num_orders = 0;
 		*(dst->schedule_ptr = _ptr_to_next_order++) = 0;
-		
+
 		InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
 	}
 	return 0;
@@ -92,7 +92,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		uint16 *s1;
-		
+
 		s1 = &v->schedule_ptr[sel];
 
 		// copy all orders to get rid of the hole
@@ -119,7 +119,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -133,7 +133,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			byte b = v->cur_order_index + 1;
 			if (b >= v->num_orders) b = 0;
 			v->cur_order_index = b;
-			
+
 			if (v->type == VEH_Train)
 				v->u.rail.days_since_order_progr = 0;
 		}
@@ -160,7 +160,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	sched = &v->schedule_ptr[sel];
-	if (!((*sched & OT_MASK) == OT_GOTO_STATION || 
+	if (!((*sched & OT_MASK) == OT_GOTO_STATION ||
 			((*sched & OT_MASK) == OT_GOTO_DEPOT &&  (p2>>8) != 1)))
 		return CMD_ERROR;
 
@@ -185,9 +185,9 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (v->schedule_ptr == sched)
 				InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
 		}
-		
+
 	}
-	
+
 	return 0;
 }
 
@@ -204,12 +204,12 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *dst = &_vehicles[p1 & 0xFFFF];
-	
+
 	if (!(dst->type && dst->owner == _current_player))
 		return CMD_ERROR;
 
 	switch(p2) {
-	
+
 	// share vehicle orders?
 	case 0: {
 		Vehicle *src = &_vehicles[p1 >> 16];
@@ -217,7 +217,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// sanity checks
 		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
 			return CMD_ERROR;
-			
+
 		// let's see what happens with road vehicles
 		if (src->type == VEH_Road) {
 			if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
@@ -243,14 +243,14 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// sanity checks
 		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
 			return CMD_ERROR;
-			
+
 		// let's see what happens with road vehicles
 		if (src->type == VEH_Road) {
 			uint16 ord;
 			int i;
 			Station *st;
 			TileIndex required_dst;
-			
+
 			for (i=0; (ord = src->schedule_ptr[i]) != 0; i++) {
 				if ( ( ord & OT_MASK ) == OT_GOTO_STATION ) {
 					st = DEREF_STATION(ord >> 8);
@@ -292,7 +292,7 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 
 	bak->orderindex = v->cur_order_index;
 	bak->service_interval = v->service_interval;
-	
+
 	if ((v->string_id & 0xF800) != 0x7800) {
 		bak->name[0] = 0;
 	} else {
@@ -306,7 +306,7 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		os[1] = u->index;
 		return;
 	}
-	
+
 	sched = v->schedule_ptr;
 	do {
 		ord = *sched++;
@@ -325,7 +325,7 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	}
 
 	DoCommandP(0, v->index, bak->orderindex|(bak->service_interval<<16) , NULL, CMD_RESTORE_ORDER_INDEX | CMD_ASYNC);
-	
+
 	os = bak->order;
 	if (os[0] == 0xFFFF) {
 		DoCommandP(0, v->index | os[1]<<16, 0, NULL, CMD_CLONE_ORDER);
@@ -359,7 +359,7 @@ int CheckOrders(Vehicle *v)
 {
 	if (!_patches.order_review_system)	//User doesn't want things to be checked
 		return 0;
-		
+
 	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
 		return 0;
 
@@ -401,17 +401,17 @@ int CheckOrders(Vehicle *v)
 		if ( (v->schedule_ptr[0] == v->schedule_ptr[i-2]) && ( i-2 != 0 ) ) {
 			problem_type = 2;
 		}
-		
+
 		if (n_st < 2) problem_type = 0;
-		
+
 		if (!required_tile) problem_type = 3;
 
 		SET_DPARAM16(0, v->unitnumber);
-		
+
 		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
-	
+
 		if (problem_type < 0) return 0;
-		
+
 		AddNewsItem(
 			message,
 			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),

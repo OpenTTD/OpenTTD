@@ -36,7 +36,7 @@ static void HandleOnEditText(WindowEvent *e) {
 	memcpy(_decode_parameters, b, 32);
 
 	id = _rename_id;
-	
+
 	switch(_rename_what) {
 	case 0:
 		// for empty string send "remove sign" parameter
@@ -188,7 +188,7 @@ void MenuClickCompany(int index)
 {
 	ShowPlayerCompany(index);
 }
-	
+
 
 void MenuClickGraphs(int index)
 {
@@ -403,11 +403,11 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(v);
 			return;
 		}
-		
+
 	case WE_POPUPMENU_SELECT: {
 		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
 		int action_id;
-		
+
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
@@ -417,10 +417,10 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 		action_id = WP(w,menu_d).action_id;
 		DeleteWindow(w);
-		
+
 		if (index >= 0)
 			_menu_clicked_procs[action_id](index);
-	
+
 		break;
 		}
 	case WE_POPUPMENU_OVER: {
@@ -458,7 +458,7 @@ static int GetPlayerIndexFromMenu(int index)
 				if (--index < 0)
 					return p->index;
 			}
-		} 
+		}
 	}
 	return -1;
 }
@@ -472,7 +472,7 @@ static void UpdatePlayerMenuHeight(Window *w)
 		if (p->is_active)
 			num++;
 	}
-	
+
 	if (WP(w,menu_d).item_count != num) {
 		WP(w,menu_d).item_count = num;
 		SetWindowDirty(w);
@@ -499,25 +499,25 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		y = 1;
 		sel = WP(w,menu_d).sel_index;
 		chk = WP(w,menu_d).checked_items; // let this mean gray items.
-		
+
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				if (p->index == sel) {
 					GfxFillRect(x, y, x + 0xEE, y + 9, 0);
 				}
 				DrawSprite( ((p->player_color + 0x307)<<16)+0x82EB, x+2, y+1);
-			
+
 				SET_DPARAM16(0, p->name_1);
 				SET_DPARAM32(1, p->name_2);
 				SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
-							
+
 				color = (byte)((p->index==sel) ? 0xC : 0x10);
 				if (chk&1) color = 14;
 				DrawString(x+0x13, y, STR_7021, color);
-				
+
 				y += 10;
-			}	
-			chk >>= 1;		
+			}
+			chk >>= 1;
 		}
 		break;
 		}
@@ -528,7 +528,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		SetWindowDirty(v);
 		return;
 		}
-		
+
 	case WE_POPUPMENU_SELECT: {
 		int index = GetPlayerIndexFromMenu(GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y));
 		int action_id = WP(w,menu_d).action_id;
@@ -540,7 +540,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		}
 
 		DeleteWindow(w);
-		
+
 		if (index >= 0) {
 			assert(index >= 0 && index < 30);
 			_menu_clicked_procs[action_id](index);
@@ -576,7 +576,7 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 	_menu_widgets[0].bottom = h = item_count * 10 + 1;
 	w = AllocateWindow(x, 0x16, 0xA0, h+1, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-	
+
 	WP(w,menu_d).item_count = item_count;
 	WP(w,menu_d).sel_index = 0;
 	WP(w,menu_d).main_button = main_button;
@@ -585,7 +585,7 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 	WP(w,menu_d).checked_items = 0;
 
 	_popup_menu_active = true;
-	
+
 	SndPlayFx(0x13);
 
 	return w;
@@ -594,7 +594,7 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int gray)
 {
 	x += w->left;
-	
+
 	SETBIT(w->click_state, main_button);
 	InvalidateWidget(w, main_button);
 
@@ -703,7 +703,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 {
 	ViewPort *vp;
 	int button;
-	
+
 	switch(_game_mode) {
 	case GM_EDITOR: button = 9; break;
 	case GM_NORMAL: button = 17; break;
@@ -758,7 +758,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 		else if (vp->zoom == 2) SETBIT(wt->disabled_state, button + 1);
 		SetWindowDirty(wt);
 	}
-	
+
 	return true;
 }
 
@@ -855,7 +855,7 @@ static void ToolbarScenDateBackward(Window *w)
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		HandleButtonClick(w, 6);
 		InvalidateWidget(w, 5);
-		
+
 		if (_date > 0x2ACE) {
 			SetDate(ConvertYMDToDay(_cur_year - 1, 0, 1));
 		}
@@ -898,7 +898,7 @@ static void ToolbarScenZoomOut(Window *w)
 	}
 }
 
-void ZoomInOrOutToCursorWindow(bool in, Window *w) 
+void ZoomInOrOutToCursorWindow(bool in, Window *w)
 {
 	ViewPort * vp;
 	Point pt;
@@ -924,10 +924,10 @@ void ResetLandscape()
 {
 	_random_seed_1 = InteractiveRandom();
 	_random_seed_2 = InteractiveRandom();
-	
+
 	GenerateWorld(1);
 	MarkWholeScreenDirty();
-} 
+}
 
 static const Widget _ask_reset_landscape_widgets[] = {
 {    WWT_TEXTBTN,     4,     0,    10,     0,    13, STR_00C5,									STR_NULL},
@@ -961,7 +961,7 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 				SndPlayFx(0x13);
 				_switch_mode = SM_GENRANDLAND;
 			}
-			
+
 			break;
 		}
 	}
@@ -1131,7 +1131,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		// XXX: only show reset button when nothing was built
 		DrawWindowWidgets(w);
-		
+
 		{
 			int n = _terraform_size * _terraform_size;
 			const int8 *coords = &_multi_terraform_coords[0][0];
@@ -1190,7 +1190,7 @@ terraform_size_common:;
 		case 10: /* place rocky areas */
 			HandlePlacePushButton(w, 10, 0xFF7, 1, PlaceProc_RockyArea);
 			break;
-			
+
 		case 11: /* place lighthouse */
 			HandlePlacePushButton(w, 11, 0xFF8, 1, _opt.landscape == LT_DESERT ? PlaceProc_Desert : PlaceProc_LightHouse);
 			break;
@@ -1493,7 +1493,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if ((button=e->click.widget) == 3) { 
+		if ((button=e->click.widget) == 3) {
 			HandleButtonClick(w, 3);
 
 		if (!AnyTownExists()) {
@@ -1505,7 +1505,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 			GenerateIndustries();
 			_generating_world = false;
 		}
-	
+
 		if ((button=e->click.widget) >= 4) {
 			if (HandlePlacePushButton(w, button, 0xFF1, 1, NULL))
 				_industry_type_to_place = _industry_type_list[_opt.landscape][button - 4];
@@ -1705,7 +1705,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL | WKC_ALT | 'C': if(!_networking) ShowCheatWindow(); break;
 		}
 	} break;
-	
+
 	case WE_PLACE_OBJ: {
 		_place_proc(e->place.tile);
 	} break;
@@ -1718,12 +1718,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-		
+
 		if (((w->click_state) & 1) != (uint)!!_pause) {
 			w->click_state ^= (1 << 0);
 			SetWindowDirty(w);
 		}
-		
+
 		if (((w->click_state >> 1) & 1) != (uint)!!_fast_forward) {
 			w->click_state ^= (1 << 1);
 			SetWindowDirty(w);
@@ -1900,7 +1900,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	}
-	
+
 	case WE_PLACE_OBJ: {
 		_place_proc(e->place.tile);
 	} break;
@@ -1950,7 +1950,7 @@ static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
 		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
-		str = ni->string_id;	
+		str = ni->string_id;
 	}
 
 	GetString(str_buffr, str);
@@ -1992,7 +1992,7 @@ void StatusBarWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		SET_DPARAM16(0, _date);
 		DrawStringCentered(70, 1, ((_pause||_patches.status_long_date)?STR_00AF:STR_00AE), 0);
-		
+
 		p = _local_player == OWNER_SPECTATOR ? NULL : DEREF_PLAYER(_local_player);
 
 		if (p) {
@@ -2092,7 +2092,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			DrawSprite(0x12EA, off_x+275,50); // o
 			DrawSprite(0x12E5, off_x+307,50); // r
 			DrawSprite(0x12E4, off_x+337,50); // t
-			
+
 			DrawSprite(0x12E4, off_x+390,50); // t
 			DrawSprite(0x12EB, off_x+417,50); // y
 			DrawSprite(0x12EC, off_x+447,50); // c
@@ -2146,7 +2146,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			}
 			break;
 		}
-		
+
 		case WKC_ESC: ResetObjectToPlace(); break;
 		case WKC_DELETE: DeleteNonVitalWindows(); break;
 		case 'Q' | WKC_CTRL: AskExitGame(); break;
@@ -2185,7 +2185,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		}
 		e->keypress.cont = false;
 		break;
-				
+
 	}
 }
 
@@ -2224,7 +2224,7 @@ void SetupColorsAndInitialWindow()
 		w = AllocateWindowDesc(&_toolb_normal_desc);
 		w->disabled_state = 1 << 17;
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
-		
+
 		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
 
 		_main_status_desc.top = height - 12;
@@ -2241,7 +2241,7 @@ void SetupColorsAndInitialWindow()
 		w = AllocateWindowDesc(&_toolb_scen_desc);
 		w->disabled_state = 1 << 9;
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
-		
+
 		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_scen_desc)
 		break;
 	default:
