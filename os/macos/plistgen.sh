@@ -7,6 +7,7 @@ VERSION="$3"
 else
 VERSION="$2"
 fi
+date=`date +%Y`
 
 # Generates Info.plist while applying $VERSION
 
@@ -22,7 +23,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleExecutable</key>
         <string>openttd</string>
         <key>CFBundleGetInfoString</key>
-        <string>$VERSION, Copyright 2004 The Open Transport Tycoon team</string>
+        <string>$VERSION, Copyright 2004-$date The Open Transport Tycoon team</string>
         <key>CFBundleIconFile</key>
         <string>openttd.icns</string>
         <key>CFBundleIdentifier</key>
@@ -38,7 +39,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleVersion</key>
         <string>$VERSION</string>
         <key>NSHumanReadableCopyright</key>
-        <string>Copyright 2004 The Open Transport Tycoon team</string>
+        <string>Copyright 2004-$date The Open Transport Tycoon team</string>
         <key>NSPrincipalClass</key>
         <string>NSApplication</string>
 </dict>
