@@ -365,6 +365,35 @@ int32 EstimateTrainCost(const RailVehicleInfo *rvi)
 	return (rvi->base_cost * (_price.build_railvehicle >> 3)) >> 5;
 }
 
+void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) 
+{
+	u->direction = v->direction;
+	u->owner = v->owner;
+	u->tile = v->tile;
+	u->x_pos = v->x_pos;
+	u->y_pos = v->y_pos;
+	u->z_pos = v->z_pos;
+	u->z_height = 6;
+	u->u.rail.track = 0x80;
+	v->u.rail.first_engine = 0xffff;
+	u->vehstatus = v->vehstatus & ~VS_STOPPED;
+	u->subtype = 2;
+	u->spritenum = v->spritenum + 1;
+	u->cargo_type = v->cargo_type;
+	u->cargo_cap = v->cargo_cap;
+	u->u.rail.railtype = v->u.rail.railtype;
+	if (building) v->next = u;
+	u->engine_type = v->engine_type;
+	u->build_year = v->build_year;
+	if (building) 
+		v->value = u->value = v->value >> 1;
+	else
+		u->value = v->value;
+	u->type = VEH_Train;
+	u->cur_image = 0xAC2;
+	VehiclePositionChanged(u);
+}
+
 /* Build a railroad vehicle
  * p1 = vehicle type id
  */
@@ -442,32 +471,8 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			VehiclePositionChanged(v);
 
-			if (rvi->flags&RVI_MULTIHEAD && (u=AllocateVehicle()) != NULL) {
-				u->direction = v->direction;
-				u->owner = v->owner;
-				u->tile = v->tile;
-				u->x_pos = v->x_pos;
-				u->y_pos = v->y_pos;
-				u->z_pos = v->z_pos;
-				u->z_height = 6;
-				u->u.rail.track = 0x80;
-				v->u.rail.first_engine = 0xffff;
-				u->vehstatus = VS_HIDDEN | VS_DEFPAL;
-				u->subtype = 2;
-				u->spritenum = v->spritenum + 1;
-				u->cargo_type = v->cargo_type;
-				u->cargo_cap = v->cargo_cap;
-				u->u.rail.railtype = v->u.rail.railtype;
-//				u->next_in_chain = 0xffff;
-				v->next = u;
-				u->engine_type = v->engine_type;
-				u->build_year = v->build_year;
-				v->value = u->value = v->value >> 1;
-//				u->day_counter = 0;
-				u->type = VEH_Train;
-				u->cur_image = 0xAC2;
-				VehiclePositionChanged(u);
-			}
+			if (rvi->flags&RVI_MULTIHEAD && (u = AllocateVehicle()) != NULL)
+				AddRearEngineToMultiheadedTrain(v, u, true);
 
 			UpdateTrainAcceleration(v);
 			NormalizeTrainVehInDepot(v);

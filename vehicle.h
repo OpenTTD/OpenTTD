@@ -284,6 +284,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 void TrainEnterDepot(Vehicle *v, uint tile);
 
+void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) ;
+
 /* train_cmd.h */
 int GetTrainImage(Vehicle *v, byte direction);
 int GetAircraftImage(Vehicle *v, byte direction);

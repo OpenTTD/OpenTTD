@@ -1321,7 +1321,9 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
 	uint32 autorefit_money = (p2  >> 16) * 100000;
 	Vehicle *v = GetVehicle(p1);
-	int cost, build_cost;
+	int cost, build_cost, rear_engine_cost = 0;
+	Vehicle *u = v;
+	byte old_engine_type = v->engine_type;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -1347,12 +1349,42 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* In a rare situation, when 2 clients are connected to 1 company and have the same
 	    settings, a vehicle can be replaced twice.. check if this is the situation here */
-	if (v->engine_type == new_engine_type && v->age == 0)
+	if (old_engine_type == new_engine_type && v->age == 0)
 		return CMD_ERROR;
+		
+	if ( v->type == VEH_Train ) {
+		u = GetLastVehicleInChain(v);
+		if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD )
+			build_cost = build_cost >> 1;   //multiheaded engines have EstimateTrainCost() for both engines
+		
+		if ( old_engine_type != new_engine_type ) {
+		
+			// prevent that the rear engine can get replaced to something else than the front engine
+			if ( v->u.rail.first_engine != 0xffff && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
+				Vehicle *first = GetFirstVehicleInChain(v);
+				if ( first->engine_type != new_engine_type ) return CMD_ERROR;
+			}
+			
+			// checks if the engine is the first one
+			if ( v->u.rail.first_engine == 0xffff ) {
+				if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD ) {
+					if ( u->engine_type == old_engine_type && v->next != NULL) {
+						rear_engine_cost = build_cost - u->value;
+					} else {
+						rear_engine_cost = build_cost;
+					}
+				} else {
+					if ( u->engine_type == old_engine_type && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD) {
+						if (v->next != NULL) rear_engine_cost = -u->value;
+					}
+				}
+			 }
+		}
+	}
 
 	/* Check if there is money for the upgrade.. if not, give a nice news-item
 	    (that is needed, because this CMD is called automaticly) */
-	if ( DEREF_PLAYER(v->owner)->money64 < (int32)(autorefit_money + build_cost - v->value)) {
+	if ( DEREF_PLAYER(v->owner)->money64 < (int32)(autorefit_money + build_cost + rear_engine_cost - v->value)) {
 		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
 			int message;
 			SetDParam(0, v->unitnumber);
@@ -1370,18 +1402,27 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		return CMD_ERROR;
 	}
-	cost = build_cost - v->value;
+	cost = build_cost - v->value + rear_engine_cost;
 
 
 	if (flags & DC_EXEC) {
+		/* We do not really buy a new vehicle, we upgrade the old one */
 		Engine *e;
 		e = DEREF_ENGINE(new_engine_type);
 
-		// TODO make it check if refit is possible before actually doing it
+		v->reliability = e->reliability;
+		v->reliability_spd_dec = e->reliability_spd_dec;
+		v->age = 0;
 
-		/* We do not really buy a new vehicle, we upgrade the old one */
+		v->date_of_last_service = _date;
+		v->build_year = _cur_year;
+
+		v->value = build_cost;
+
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+
+	
 		if (v->engine_type != new_engine_type) {
-			byte old_engine = v->engine_type;
 			byte sprite = v->spritenum;
 			byte cargo_type = v->cargo_type;
 			v->engine_type = new_engine_type;
@@ -1390,11 +1431,11 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* Update limits of the vehicle (for when upgraded) */
 			switch (v->type) {
 			case VEH_Train:
-			// using if (true) to declare the const
 				{
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
-				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine);
+				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine_type);
 				byte capacity = rvi->capacity;
+				Vehicle *first = GetFirstVehicleInChain(v);
 
 				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
 				if it is a multiheaded engine (rear engine)
@@ -1402,7 +1443,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->spritenum = rvi->image_index + (( rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
 
 				// turn the last engine in a multiheaded train if needed
-				if ( v->next == NULL && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
+				if ( v->next == NULL && v->u.rail.first_engine != 0xffff && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
 					v->spritenum++;
 
 				v->cargo_type = rvi->cargo_type;
@@ -1420,11 +1461,34 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				} else {
 					v->cargo_type = rvi->cargo_type;
 				}
+				
+				if ( rvi2->flags & RVI_MULTIHEAD && !(rvi->flags & RVI_MULTIHEAD) &&  v->index == first->index) {
+					if (old_engine_type == u->engine_type ) {
+						u = GetLastVehicleInChain(v);
+						Vehicle *w = GetPrevVehicleInChain(u);
+						w->next = NULL;
+						DeleteVehicle(u);
+					}
+				}
+				
+				if ( rvi->flags & RVI_MULTIHEAD && rvi2->flags & RVI_MULTIHEAD &&  v->index == first->index ) {
+					CmdReplaceVehicle(x, y, flags, u->index, p2);
+				}
+				
+				if ( rvi->flags & RVI_MULTIHEAD && !(rvi2->flags & RVI_MULTIHEAD) &&  v->index == first->index ) {
+					if ( old_engine_type != u->engine_type ) {
+						Vehicle *w;
+						if ( (w=AllocateVehicle()) != NULL ) {
+							AddRearEngineToMultiheadedTrain(v,w, false);
+							u->next = w;
+						}
+					}
+				}
+				
 				break;
 				}
 			case VEH_Road:
-			// using if (true) to declare the const
-				if (true) {
+				{
 				const RoadVehicleInfo *rvi = RoadVehInfo(new_engine_type);
 
 				v->spritenum = rvi->image_index;
@@ -1434,8 +1498,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 				}
 			case VEH_Ship:
-			// using if (true) to declare the const
-				if (true) {
+				{
 				const ShipVehicleInfo *svi = ShipVehInfo(new_engine_type);
 
 				v->spritenum = svi->image_index;
@@ -1450,8 +1513,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 				}
 			case VEH_Aircraft:
-			// using if (true) to declare the const
-				if (true) {
+				{
 				const AircraftVehicleInfo *avi = AircraftVehInfo(new_engine_type);
 				Vehicle *u;
 
@@ -1480,17 +1542,6 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					v->cargo_count = v->cargo_cap;
 			}
 		}
-
-		v->reliability = e->reliability;
-		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->age = 0;
-
-		v->date_of_last_service = _date;
-		v->build_year = _cur_year;
-
-		v->value = build_cost;
-
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
 	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
