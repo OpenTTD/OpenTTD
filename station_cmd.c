@@ -1035,7 +1035,8 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 						value = 0x01010000;
 					} else {
 						/* TODO: Only small fraction done. */
-						// 0x80 + offset - 0x10
+						// TTDPatch runs on little-endian arch;
+						// Variable is 0x70 + offset in the TTD's station structure
 						switch (dsg->variable - 0x70) {
 							case 0x80:
 								if (stat) value = stat->facilities;
@@ -1053,7 +1054,7 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 								if (stat) value = stat->airport_flags & 0xFFFF;
 								break;
 							case 0x87:
-								if (stat) value = (stat->airport_flags >> 8) & 0xFF;
+								if (stat) value = stat->airport_flags & 0xFF;
 								break;
 							case 0x8A:
 								if (stat) value = stat->build_date;

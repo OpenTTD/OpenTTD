@@ -243,6 +243,153 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
+static struct RealSpriteGroup *
+ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
+{
+	switch (spritegroup->type) {
+		case SGT_REAL:
+			return &spritegroup->g.real;
+
+		case SGT_DETERMINISTIC: {
+			struct DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			struct SpriteGroup *target;
+			int value = -1;
+
+			//debug("[%p] Having fun resolving variable %x", dsg->variable);
+
+			if ((dsg->variable >> 6) == 0) {
+				/* General property */
+				value = GetDeterministicSpriteValue(dsg->variable);
+
+			} else {
+				/* Station-specific property. */
+				if (dsg->var_scope == VSG_SCOPE_PARENT) {
+					/* First engine in the vehicle chain */
+					if (veh != NULL && veh->type == VEH_Train)
+						veh = GetFirstVehicleInChain(veh);
+				}
+
+				if (dsg->variable == 0x40) {
+					if (veh && veh->type == VEH_Train) {
+						Vehicle *u = GetFirstVehicleInChain(veh);
+						byte chain_before = 0, chain_after = 0;
+
+						while (u != veh) {
+							u = u->next;
+							chain_before++;
+						}
+						while (u->next != NULL) {
+							u = u->next;
+							chain_after++;
+						};
+
+						value = chain_before << 16 | chain_after << 8
+						        | (chain_before + chain_after + 1);
+					} else {
+						value = 1; /* 1 vehicle in the chain */
+					}
+
+				} else {
+					// TTDPatch runs on little-endian arch;
+					// Variable is 0x80 + offset in TTD's vehicle structure
+					switch (dsg->variable - 0x80) {
+#define veh_prop(id_, value_) case id_: if (veh != NULL) value = value_; break /* XXX factorise "if" */
+						veh_prop(0x00, veh->type);
+						veh_prop(0x01, veh->subtype);
+						veh_prop(0x04, veh->index);
+						veh_prop(0x05, veh->index & 0xFF);
+						/* XXX? Is THIS right? */
+						veh_prop(0x0A, veh->next_order_param << 8 | veh->next_order);
+						veh_prop(0x0B, veh->next_order);
+						veh_prop(0x0C, veh->num_orders);
+						veh_prop(0x0D, veh->cur_order_index);
+						veh_prop(0x10, veh->load_unload_time_rem);
+						veh_prop(0x11, veh->load_unload_time_rem & 0xFF);
+						veh_prop(0x12, veh->date_of_last_service);
+						veh_prop(0x13, veh->date_of_last_service & 0xFF);
+						veh_prop(0x14, veh->service_interval);
+						veh_prop(0x15, veh->service_interval & 0xFF);
+						veh_prop(0x16, veh->last_station_visited);
+						veh_prop(0x17, veh->tick_counter);
+						veh_prop(0x18, veh->max_speed);
+						veh_prop(0x19, veh->max_speed & 0xFF);
+						veh_prop(0x1F, veh->direction);
+						veh_prop(0x28, veh->cur_image);
+						veh_prop(0x29, veh->cur_image & 0xFF);
+						veh_prop(0x32, veh->vehstatus);
+						veh_prop(0x33, veh->vehstatus);
+						veh_prop(0x34, veh->cur_speed);
+						veh_prop(0x35, veh->cur_speed & 0xFF);
+						veh_prop(0x36, veh->subspeed);
+						veh_prop(0x37, veh->acceleration);
+						veh_prop(0x39, veh->cargo_type);
+						veh_prop(0x3A, veh->cargo_cap);
+						veh_prop(0x3B, veh->cargo_cap & 0xFF);
+						veh_prop(0x3C, veh->cargo_count);
+						veh_prop(0x3D, veh->cargo_count & 0xFF);
+						veh_prop(0x3E, veh->cargo_source); // Probably useless; so what
+						veh_prop(0x3F, veh->cargo_days);
+						veh_prop(0x40, veh->age);
+						veh_prop(0x41, veh->age & 0xFF);
+						veh_prop(0x42, veh->max_age);
+						veh_prop(0x43, veh->max_age & 0xFF);
+						veh_prop(0x44, veh->build_year);
+						veh_prop(0x45, veh->unitnumber);
+						veh_prop(0x46, veh->engine_type);
+						veh_prop(0x47, veh->engine_type & 0xFF);
+						veh_prop(0x48, veh->spritenum);
+						veh_prop(0x49, veh->day_counter);
+						veh_prop(0x4A, veh->breakdowns_since_last_service);
+						veh_prop(0x4B, veh->breakdown_ctr);
+						veh_prop(0x4C, veh->breakdown_delay);
+						veh_prop(0x4D, veh->breakdown_chance);
+						veh_prop(0x4E, veh->reliability);
+						veh_prop(0x4F, veh->reliability & 0xFF);
+						veh_prop(0x50, veh->reliability_spd_dec);
+						veh_prop(0x51, veh->reliability_spd_dec & 0xFF);
+						veh_prop(0x52, veh->profit_this_year);
+						veh_prop(0x53, veh->profit_this_year & 0xFFFFFF);
+						veh_prop(0x54, veh->profit_this_year & 0xFFFF);
+						veh_prop(0x55, veh->profit_this_year & 0xFF);
+						veh_prop(0x56, veh->profit_last_year);
+						veh_prop(0x57, veh->profit_last_year & 0xFF);
+						veh_prop(0x58, veh->profit_last_year);
+						veh_prop(0x59, veh->profit_last_year & 0xFF);
+						veh_prop(0x5A, veh->next_in_chain_old);
+						veh_prop(0x5B, veh->next_in_chain_old & 0xFF);
+						veh_prop(0x5C, veh->value);
+						veh_prop(0x5D, veh->value & 0xFFFFFF);
+						veh_prop(0x5E, veh->value & 0xFFFF);
+						veh_prop(0x5F, veh->value & 0xFF);
+						veh_prop(0x60, veh->string_id);
+						veh_prop(0x61, veh->string_id & 0xFF);
+						/* 00h..07h=sub image? 40h=in tunnel; actually some kind of status
+						 * aircraft: >=13h when in flight
+						 * train, ship: 80h=in depot
+						 * rv: 0feh=in depot */
+						/* TODO veh_prop(0x62, veh->???); */
+
+						/* TODO: The rest is per-vehicle, I hope no GRF file looks so far.
+						 * But they won't let us have an easy ride so surely *some* GRF
+						 * file does. So someone needs to do this too. --pasky */
+
+#undef veh_prop
+					}
+				}
+			}
+
+			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
+			//debug("Resolved variable %x: %d", dsg->variable, value);
+			return ResolveVehicleSpriteGroup(target, veh);
+		}
+
+		default:
+		case SGT_RANDOM:
+			error("I don't know how to handle random spritegroups yet!");
+			return NULL;
+	}
+}
+
 int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
 {
 	struct SpriteGroup *group;
@@ -270,13 +417,11 @@ int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
 		if (overset) group = overset;
 	}
 
-	/* TODO: Resolve surreal groups properly. --pasky */
-	rsg = TriviallyGetRSG(group);
+	rsg = ResolveVehicleSpriteGroup(group, v);
 
-	if (!rsg->sprites_per_set && cargo != 29) {
+	if (rsg->sprites_per_set == 0 && cargo != 29) { /* XXX magic number */
 		// This group is empty but perhaps there'll be a default one.
-		/* TODO: Resolve surreal groups properly. --pasky */
-		rsg = TriviallyGetRSG(&_engine_custom_sprites[engine][29]);
+		rsg = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][29], v);
 	}
 
 	if (!rsg->sprites_per_set) {

@@ -101,26 +101,11 @@ struct DeterministicSpriteGroupRange {
 	byte high;
 };
 
-/* This is a temporary helper for SpriteGroup users not supporting variational
- * sprite groups yet - it just traverses those cowardly, always taking the
- * default choice until it hits a real sprite group, returning it. */
-static struct RealSpriteGroup *TriviallyGetRSG(struct SpriteGroup *sg);
 /* This takes value (probably of the variable specified in the group) and
  * chooses corresponding SpriteGroup accordingly to the given
  * DeterministicSpriteGroup. */
 struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup *dsg, int value);
 /* Get value of a common deterministic SpriteGroup variable. */
 int GetDeterministicSpriteValue(byte var);
-
-
-
-/**** Inline functions ****/
-
-static INLINE struct RealSpriteGroup *TriviallyGetRSG(struct SpriteGroup *sg)
-{
-	if (sg->type == SGT_REAL)
-		return &sg->g.real;
-	return TriviallyGetRSG(sg->g.determ.default_group);
-}
 
 #endif
