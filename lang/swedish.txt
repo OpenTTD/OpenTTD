@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:<TODO>{LTBLUE}Autorenew vehicle when it
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:<TODO>{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:<TODO>{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:<TODO>{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max stationsspridning: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
@@ -990,6 +991,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Förbjud tåg för datorn: {ORANGE}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Förbjud vägfordon för datorn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Förbjud flygplan för datorn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:<TODO>{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard-serviceintervall för tåg: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:<TODO>{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -1022,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY					:<TODO>{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Ändra inställningsvärde
 
+STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
+STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
+STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
+STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
 
 STR_CHEATS							:{WHITE}Fusk
 STR_CHEATS_TIP							:{BLACK}Checkboxar indikerar om du använt det här fusket förut
@@ -1032,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}trimmad bulldozer (ta bort industrier, fyr
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:<TODO>{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION						:<TODO>{BLACK}Population
 
@@ -1134,6 +1142,8 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Välj godstyp för tåget att bära
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Anpassa tåg för att bära vald godstyp
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ej anpassa tåg...
 
+TEMP_AI_IN_PROGRESS						:<TODO>{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
+TEMP_AI_ACTIVATED						:<TODO>{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 
 ############ network gui strings
 
@@ -1203,6 +1213,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Starta ett nytt företag
 STR_NETWORK_READY						:{BLACK}Klar
 
+STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
+STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 

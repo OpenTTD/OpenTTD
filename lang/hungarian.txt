@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatán felújítja a jármûvet 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatán felújítja a jármûvet {ORANGE}{STRING}{LTBLUE} hónappal a max életkora elõtt/után
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automata megújításhoz szükséges minimális pénz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
@@ -990,6 +991,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Vonatok tiltása a gépi ellenfele
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Közúti jármûvek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Repülõgépek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Új MI engedélyezése (alfa): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Alap szervízelési idõ a vonatokra: {ORANGE}kikapcsolva
@@ -1022,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Válassz beállítási értéket
 
+STR_TEMPERATE_LANDSCAPE						:mérsékelt táj
+STR_SUB_ARCTIC_LANDSCAPE					:sarkköri táj
+STR_SUB_TROPICAL_LANDSCAPE					:trópusi táj
+STR_TOYLAND_LANDSCAPE						:játék táj
 
 STR_CHEATS							:{WHITE}Csalások
 STR_CHEATS_TIP							:{BLACK}A kijelölõnégyzetek jelzik a csalások eddigi használtságát
@@ -1032,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Csodabuldózer (lerombol gazdasági épületek
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}A csatornák keresztezhessék egymást: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jet-repülõgépek nem fognak (gyakran) lezuhanni a kisebb repülõtereken: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION						:{BLACK}Lakosság
 
@@ -1134,6 +1142,8 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Válaszd ki, milyen árut szállítson 
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}A vonat átalakítása a kijelölt áru szállítására
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nem alakíthatod át a vonatot...
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Üdv, ez itt az új, fejlesztés alatt álló MI. Elõfordulhatnak gondok, problémák. Ha belefutsz egybe, kérlek készíts képernyõmentést küld be a fórumra. Jó játékot!
+TEMP_AI_ACTIVATED						:{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok mûködnek!
 
 ############ network gui strings
 
@@ -1203,6 +1213,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Új vállalatot nyit
 STR_NETWORK_READY						:{BLACK}Kész
 
+STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
+STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 

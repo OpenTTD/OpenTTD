@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Renouveller automatiquement les
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Renouveller automatiquement le véhicule {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Argent nécessaire pour le renouvellement automatique : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Temps d'affichage des messages d'erreur: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Arbres invisibles (quand les bâtiments sont transparents) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Etendue maximum des stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
@@ -990,6 +991,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Désactiver les trains pour l'ord
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Désactiver les véhicules routiers pour l'ordinateur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Désactiver les avions pour l'ordinateur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Désactiver les navires pour l'ordinateur: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Activer la nouvelle IA (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Maintenance des trains tous les: {ORANGE}{STRING} jours
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Maintenance des trains tous les: {ORANGE}désactivé
@@ -1022,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Entrez une valeur
 
+STR_TEMPERATE_LANDSCAPE						:environnement 'Tempéré'
+STR_SUB_ARCTIC_LANDSCAPE					:environnement 'Arctique'
+STR_SUB_TROPICAL_LANDSCAPE					:environnement 'Tropical'
+STR_TOYLAND_LANDSCAPE						:environnement 'Jouets'
 
 STR_CHEATS							:{WHITE}Triches
 STR_CHEATS_TIP							:{BLACK}Les cases à cocher indiquent que vous avez déjà utilisé cette triche auparavant
@@ -1032,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Bulldozer magique (enlèvement industries e
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Les jets ne se crashent plus (fréquemment) sur les petites aéroports: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Changer de climat : {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION						:{BLACK}Population
 
@@ -1134,6 +1142,8 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Choix du type de marchandises à tra
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Réaménager le train pour les marchandises sélectionnées
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Impossible de réaménager le train...
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Bienvenue dans cette nouvelle IA, en cours d'élaboration. Vous pouvez vous attendre à rencontrer des problèmes. Dans ce cas, faites une capture d'écran et postez-la sur le forum. Amusez-vous bien !
+TEMP_AI_ACTIVATED						:{WHITE}Attention: cette nouvelle IA est en version alpha ! Pour le moment seuls les camions et les bus fonctionnent !
 
 ############ network gui strings
 
@@ -1203,6 +1213,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nouvelle compagnie
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Crée une nouvelle compagnie
 STR_NETWORK_READY						:{BLACK}Prêt
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Aucune partie réseau n'a été trouvée
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Le serveur n'a pas répondu à la requête
 
 ############ end network gui strings
 

@@ -509,7 +509,7 @@ STR_01E9_SHUFFLE						:{TINYFONT}Shuffle
 STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Muziekprogrammakeuze
 STR_01EC_0							:{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED							:{TINYFONT}{LTBLUE}{COMMA16}
+STR_01ED							:{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
 STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Nummer index
 STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Leeg
@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:<TODO>{LTBLUE}Autorenew vehicle when it
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:<TODO>{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:<TODO>{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Onzichtbare bomen (met transparante gebouwen): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
@@ -990,6 +991,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Treinen voor de computer uitscha
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Wegvoertuigen voor de computer uitschakelen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Vliegtuigen voor de computer uitschakelen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Schepen voor de computer uitschakelen: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Nieuwe AI inschakelen (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standaard reparatie interval bij treinen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:<TODO>{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -1022,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY					:<TODO>{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Verander waarde
 
+STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
+STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
+STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
+STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
 
 STR_CHEATS							:{WHITE}Cheats
 STR_CHEATS_TIP							:{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
@@ -1032,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magische bulldozer (industrieën en andere 
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:<TODO>{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION						:{BLACK}Inwoners
 
@@ -1040,8 +1048,8 @@ STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Op weg naar {CHECKPOINT}, {VELOCITY}
 
 STR_GO_TO_CHECKPOINT						:Ga via {CHECKPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Checkpoint {CITY}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Checkpoint {CITY} #{COMMA16}
+STR_CHECKPOINTNAME_CITY						:Tussenstop {TOWN}
+STR_CHECKPOINTNAME_CITY_SERIAL					:Tussenstop {TOWN} #{COMMA16}
 STR_LANDINFO_CHECKPOINT						:Checkpoint
 
 STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
@@ -1121,9 +1129,9 @@ STR_SORT_BY_PRODUCTION						:{BLACK}Productie
 STR_SORT_BY_TYPE						:{BLACK}Soort
 STR_SORT_BY_TRANSPORTED						:{BLACK}Vervoerd
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrielijst
-STR_INDUSTRYDIR_ITEM						:{ORANGE}{CITY} {STRING}{BLACK} ({STRING})
-STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{CITY} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% vervoerd)
-STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{CITY} {STRING}
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% vervoerd)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% vervoerd)
+STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}...te dicht bij een andere industrie
 
@@ -1134,6 +1142,8 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Kies type lading om te transportere
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Bouw trein om voor geselecteerde ladingtype
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan trein niet ombouwen...
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Welkom bij deze nieuwe AI, in aanbouw. Je kan problemen verwachten. Gebeurt dat, maak een screenshot en plaats die op het forum. Veel plezier!
+TEMP_AI_ACTIVATED						:{WHITE}Waarschuwing: deze nieuwe AI is nog steeds alpha! Momenteel werken alleen vrachtwagens en bussen!
 
 ############ network gui strings
 
@@ -1203,6 +1213,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nieuw bedrijf
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open een nieuw bedrijf
 STR_NETWORK_READY						:{BLACK}Klaar
 
+STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
+STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 
@@ -1304,11 +1317,11 @@ STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED				:{WHITE}Gebouw moet eerst gesloopt worden
-STR_2005							:{WHITE}{CITY}
+STR_2005							:{WHITE}{TOWN}
 STR_2006_POPULATION						:{BLACK}Bevolking: {ORANGE}{COMMA32}{BLACK}  Huizen: {ORANGE}{COMMA32}
 STR_2007_RENAME_TOWN						:
 STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Kan stad niet hernoemen...
-STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{CITY} gemeenteraad weigert dit toe te staan
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de stad
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centreer de hoofdbeeld op de lokatie van de stad
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Hernoem stad
@@ -1333,7 +1346,7 @@ STR_201E_STADIUM						:Stadion
 STR_201F_OLD_HOUSES						:Oude huizen
 STR_2020_LOCAL_AUTHORITY					:{BLACK}Gemeente
 STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Geef informatie over de gemeente weer
-STR_2022_LOCAL_AUTHORITY					:{WHITE}{CITY} gemeente
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN}'s gemeenteraad
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Reputatie van transportbedrijven:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Subsidies
@@ -1352,7 +1365,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidie uitgereikt aan {ST
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt dubbele omzet voor het volgende jaar!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt driedubbele omzet voor het volgende jaar!
 STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STATION} naar {STATION} krijgt vierdubbele omzet voor het volgende jaar!
-STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{CITY} gemeenteraad weigert het bouwen van nog een vliegveld in deze stad.
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
 STR_2036_COTTAGES						:
 STR_2037_HOUSES							:Huizen
 STR_2038_FLATS							:Flats
@@ -1386,9 +1399,9 @@ STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Betaal de bouw v
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze stad. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:<TODO>{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
 STR_2054_CAN_T_DO_THIS						:{WHITE}Kan dit niet doen...
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Verkeerschaos in {CITY}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van ergernis bij weggebruikers!
-STR_2056							:{TINYFONT}{WHITE}{CITY}
-STR_2057							:{ORANGE}{CITY}{BLACK} ({COMMA32})
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
+STR_2056							:{TINYFONT}{WHITE}{TOWN}
+STR_2057							:{ORANGE}{TOWN}{BLACK} ({COMMA32})
 STR_2058_UNDER_CONSTRUCTION					:{STRING} (in aanbouw)
 STR_2059_IGLOO							:Iglo
 STR_205A_TEPEES							:Tepees
@@ -1530,7 +1543,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME				:Genereer willekeurig nieuw spel
 
 ##id 0x4800
 STR_4800_IN_THE_WAY						:{WHITE}{STRING} in de weg
-STR_4801							:{WHITE}{CITY} {STRING}
+STR_4801							:{WHITE}{TOWN} {STRING}
 STR_4802_COAL_MINE						:Kolenmijn
 STR_4803_POWER_STATION						:Energiecentrale
 STR_4804_SAWMILL						:Houtzagerij
@@ -1586,11 +1599,11 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:<TODO>{WHITE}...forest can only be plant
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:<TODO>{BLACK}{BIGFONT}{TOWN} {STRING} announces imminent closure!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:<TODO>{BLACK}{BIGFONT}Supply problems cause {TOWN} {STRING} to announce imminent closure!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:<TODO>{BLACK}{BIGFONT}Lack of nearby trees causes {TOWN} {STRING} to announce imminent closure!
-STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{CITY} {STRING} vergroot hun productie!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} verhoogt productie!
 STR_4836_NEW_COAL_SEAM_FOUND_AT					:<TODO>{BLACK}{BIGFONT}New coal seam found at {TOWN} {STRING}!{}Production is expected to double!
 STR_4837_NEW_OIL_RESERVES_FOUND					:<TODO>{BLACK}{BIGFONT}New oil reserves found at {TOWN} {STRING}!{}Production is expected to double!
 STR_4838_IMPROVED_FARMING_METHODS				:<TODO>{BLACK}{BIGFONT}Improved farming methods at {TOWN} {STRING} are expected to double production!
-STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}{CITY} {STRING} productie verlaagd met 50%
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}Productie van {TOWN} {STRING} verlaagd met 50%
 STR_483A_INSECT_INFESTATION_CAUSES				:<TODO>{BLACK}{BIGFONT}Insect infestation causes havoc at {TOWN} {STRING}!{}Production down by 50%
 STR_483B_CAN_ONLY_BE_POSITIONED					:<TODO>{WHITE}...can only be positioned near edges of map
 STR_INDUSTRY_PROD_GOUP						:<TODO>{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} goes up by {COMMA16}%!
@@ -1812,8 +1825,8 @@ STR_7025_OPERATING_PROFIT_GRAPH					:<TODO>{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE						:<TODO>{WHITE}Bank Balance
 STR_7027_LOAN							:{WHITE}Lening
 STR_7028							:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}Leen {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:{BLACK}Betaal {SKIP}{SKIP}{SKIP}{CURRENCY} terug
+STR_7029_BORROW							:{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Betaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} terug
 STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...maximaal toegestane leninggrootte is {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Kan geen geld meer lenen...
 STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...geen lening om terug te betalen
@@ -1866,7 +1879,7 @@ STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}We zoeken voor een transportb
 STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Failliet!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} is gesloten door schuldeisers en alle eigendomen zijn verkocht!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Nieuw transportbedrijf opgestart!
-STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} begint met bouwen in de buurt van {CITY}!
+STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} begint werkzaamheden bij {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Kan bedrijf niet kopen...
 STR_7061_CARGO_PAYMENT_RATES					:<TODO>{WHITE}Cargo Payment Rates
 STR_7062_DAYS_IN_TRANSIT					:<TODO>{BLACK}{TINYFONT}Days in transit
@@ -2167,7 +2180,7 @@ STR_8106_MONORAIL_LOCOMOTIVE					:monorail locomotief
 STR_8107_MAGLEV_LOCOMOTIVE					:maglev locomotief
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT						:{WHITE}{CITY} Treindepot
+STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} Treindepot
 STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS						:{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Trein in de weg
@@ -2181,10 +2194,10 @@ STR_880A_GO_NON_STOP_TO						:Ga non-stop naar {STATION}
 STR_880B_GO_NON_STOP_TO_UNLOAD					:Ga non-stop naar {STATION} (Uitladen)
 STR_880C_GO_NON_STOP_TO_LOAD					:Ga non-stop naar {STATION} (Inladen)
 STR_880D							:
-STR_880E_GO_TO_TRAIN_DEPOT					:Ga naar {CITY} treindepot
-STR_SERVICE_AT_TRAIN_DEPOT					:Reparatie in {CITY} treindepot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Ga non-stop naar {CITY} treindepot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Non-stop reparatie in {CITY} treindepot
+STR_880E_GO_TO_TRAIN_DEPOT					:Ga naar {TOWN} treindepot
+STR_SERVICE_AT_TRAIN_DEPOT					:Reparatie in {TOWN} Treindepot
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Ga zonder tussenstop naar {TOWN} Treindepot
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Reparatie zonder tussentop in {TOWN} Treindepot
 
 STR_HEADING_FOR_TRAIN_DEPOT					:<TODO>{LTBLUE}Heading for {TOWN} Train Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:<TODO>{LTBLUE}Heading for {TOWN} Train Depot, {VELOCITY}
@@ -2291,7 +2304,7 @@ STR_TRAIN_STOPPING_VEL						:<TODO>{RED}Stopping, {VELOCITY}
 STR_9000_ROAD_VEHICLE_IN_THE_WAY				:{WHITE}Wegvoertuig in de weg
 STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - Wegvoertuigen
 STR_9002							:{WHITE}{STRING}
-STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}{CITY} wegvoertuigendepot
+STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}{TOWN} Road Vehicle Depot
 STR_9004_NEW_VEHICLES						:{BLACK}Nieuwe voertuigen
 STR_9005_INFORMATION						:{BLACK}Informatie
 STR_9006_NEW_ROAD_VEHICLES					:<TODO>{WHITE}New Road Vehicles
@@ -2345,14 +2358,14 @@ STR_9034_RENAME							:{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE				:{BLACK}Hernoem wegvoertuigtype
 STR_9036_RENAME_ROAD_VEHICLE_TYPE				:{WHITE}Hernoem wegvoertuigtype
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE				:{WHITE}Kan wegvoertuigtype niet hernoemen...
-STR_9038_GO_TO_ROADVEH_DEPOT					:Ga naar {CITY} wegvoertuigdepot
-STR_SERVICE_AT_ROADVEH_DEPOT					:Reparatie in {CITY} wegvoertuigdepot
+STR_9038_GO_TO_ROADVEH_DEPOT					:Go to {TOWN} Road Vehicle Depot
+STR_SERVICE_AT_ROADVEH_DEPOT					:Service at {TOWN} Road Vehicle Depot
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION					:
 STR_9801_DOCK_CONSTRUCTION					:{WHITE}Dokbouw
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Kan hier geen dok bouwen...
-STR_9803_SHIP_DEPOT						:{WHITE}{CITY} Schipdepot
+STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Schipdepot
 STR_9804_NEW_SHIPS						:{BLACK}Nieuwe schepen
 STR_9805_SHIPS							:{WHITE}{STRING} - Schepen
 STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Kan geen schip bouwen...
@@ -2417,8 +2430,8 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Selecteer goederentype om te vervo
 STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nieuwe capaciteit: {GOLD}{STRING}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP					:{WHITE}Kan schip niet ombouwen...
 STR_9842_REFITTABLE						:(ombouwbaar)
-STR_GO_TO_SHIP_DEPOT						:Ga naar {CITY} schipdepot
-SERVICE_AT_SHIP_DEPOT						:Reparatie in {CITY} schipdepot
+STR_GO_TO_SHIP_DEPOT						:Ga naar {TOWN} Schipdepot
+SERVICE_AT_SHIP_DEPOT						:Reparatie in {TOWN} Schipdepot
 
 ##id 0xA000
 STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Vliegveldbouw
@@ -2496,10 +2509,10 @@ SERVICE_AT_AIRPORT_HANGAR					:Reperatie bij {STATION} hanger
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT					:{BLACK}{BIGFONT}Zeppelin ongeluk bij {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED					:{BLACK}{BIGFONT}Voertuig vernietigd in botsing met 'UFO'
-STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Olieraffinaderij geëxplodeerd bij {CITY}
-STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Een frabriek is onder verdachte omstandigheden vernietigd in de buurt van {CITY}!
-STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' land in de buurt van {CITY}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Een instorting bij een kolenmijn laat een ravage achter bij {CITY}!
+STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Olieraffinaderij in de buurt van {TOWN} is explodeerd!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Fabriek in de buurt van {TOWN} is vernietigd onder verdachte omstandigheden!
+STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' landt in de buurt van {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Instorting van kolenmijn laat spoor van vernietiging achter in de buurt van {TOWN}!
 
 STR_BRIBE_FAILED						:{WHITE}Je poging tot omkopen is
 STR_BRIBE_FAILED_2						:{WHITE}ondekt door regionale onderzoekers

@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Fahrzeug erneuern, wenn es vera
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximal-Alter
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dauer der Fehlermeldung: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximale Bahnhofsausbreitung: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
@@ -990,6 +991,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Züge für den Computer abschalten
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Straßenfahrzeuge für den Computer abschalten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Flugzeuge für den Computer abschalten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Aktiviere neue KI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}abgeschaltet
@@ -1022,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Einstellungswert ändern
 
+STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
+STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
+STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
+STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
 
 STR_CHEATS							:{WHITE}Cheats
 STR_CHEATS_TIP							:{BLACK}Kontrollfelder zeigen, ob du diesen Cheat schonmal benutzt hast.
@@ -1032,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRIN
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnel dürfen sich kreuzen {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Flugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION						:{BLACK}Bevölkerung
 
@@ -1134,10 +1142,12 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wähle die Frachten aus, die der Zug
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Umrüstung des Zuges auf die ausgewählte Frachtart
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kann den Zug nicht umrüsten...
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Willkommen bei der neuen KI. Erwarte Fehler. Falls du einen findest, mache einen Screenshot und berichte im Forum. Viel Spaß!
+TEMP_AI_ACTIVATED						:{WHITE}Achtung: Die neue KI ist noch im Alpha-Stadium. Derzeit funktionieren nur Straßenfahrzeuge.
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Der Nertzwerk-Dialog funktioniert noch nicht!
+TEMP_STRING_NO_NETWORK						:{WHITE}Der Netzwerk-Dialog funktioniert noch nicht!
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Mehrspieler
 
@@ -1203,6 +1213,9 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_READY						:{BLACK}Fertig
 
+STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
+STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 
