@@ -2964,7 +2964,8 @@ static const byte _roadstop_desc[] = {
 	SLE_VAR(RoadStop,xy,           SLE_UINT32),
 	SLE_VAR(RoadStop,used,         SLE_UINT8),
 	SLE_VAR(RoadStop,status,       SLE_UINT8),
-	SLE_VAR(RoadStop,index,        SLE_UINT32),
+	/* Index was saved in some versions, but this is not needed */
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U32 | SLE_VAR_NULL, 1, 0, 8),
 	SLE_VAR(RoadStop,station,      SLE_UINT16),
 	SLE_VAR(RoadStop,type,         SLE_UINT8),
 
