@@ -95,9 +95,12 @@ static const ExtraPaletteValues _extra_palette_values = {
 };
 
 // Color table for colors in lang files (e.g. {BLACK})
-// 1st color: text
-// 2nd color: shadow
-static const byte StringColormap[17][2] = {
+typedef struct StringColor {
+	byte text;
+	byte shadow;
+} StringColor;
+
+static const StringColor _string_colormap[] = {
 	{ 150, 215 }, // BLUE
 	{  12, 215 }, // SILVER
 	{ 189, 215 }, // GOLD

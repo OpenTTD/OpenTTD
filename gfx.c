@@ -487,8 +487,8 @@ int DoDrawString(const byte *string, int x, int y, byte color) {
 
 		if (color != 0xFF) {
 switch_color:;
-			_string_colorremap[1] = StringColormap[color][0];
-			_string_colorremap[2] = StringColormap[color][1];
+			_string_colorremap[1] = _string_colormap[color].text;
+			_string_colorremap[2] = _string_colormap[color].shadow;
 			_color_remap_ptr = _string_colorremap;
 		}
 	}
