@@ -645,8 +645,8 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 		// if station is set, then we have special handling to allow building on top of already existing stations.
 		// so station points to -1 if we can build on any station. or it points to a station if we're only allowed to build
 		// on exactly that station.
-		if (station && IS_TILETYPE(tile_cur, MP_STATION)) {
-			if (_map5[tile] >= 8) {
+		if ( (station != NULL) && IS_TILETYPE(tile_cur, MP_STATION)) {
+			if (_map5[tile_cur] >= 8) {
 				_error_message = STR_0007_FLAT_LAND_REQUIRED;
 				return CMD_ERROR;
 			} else {
