@@ -133,7 +133,7 @@ void AcceptEnginePreview(Engine *e, int player);
 void LoadCustomEngineNames(void);
 void DeleteCustomEngineNames(void);
 
-bool IsEngineBuildable(int engine, byte type);
+bool IsEngineBuildable(uint engine, byte type);
 
 enum {
 	NUM_NORMAL_RAIL_ENGINES = 54,
