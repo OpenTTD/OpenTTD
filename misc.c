@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "string.h"
 #include "strings.h" // XXX GetParam*
 #include "table/strings.h"
 #include "map.h"
@@ -308,25 +309,10 @@ void DeleteName(StringID id)
 
 char *GetName(int id, char *buff)
 {
-	const char *b;
+	if (id & 0x400) GetParamInt32();
+	if (id & 0x200) GetParamUint16();
 
-	if (id & 0x600) {
-		if (id & 0x200) {
-			if (id & 0x400) {
-				GetParamInt32();
-				GetParamUint16();
-			} else {
-				GetParamUint16();
-			}
-		} else {
-			GetParamInt32();
-		}
-	}
-
-	b = _name_array[(id&~0x600)];
-	while ((*buff++ = *b++) != 0);
-
-	return buff - 1;
+	return strecpy(buff, _name_array[id & ~0x600], NULL);
 }
 
 
@@ -343,36 +329,25 @@ static void InitializeNameMgr(void)
 
 StringID RealAllocateName(const char *name, byte skip, bool check_double)
 {
-	int free_item = -1;
-	const char *names;
-	char *dst;
-	int i;
+	char (*free_item)[lengthof(*_name_array)] = NULL;
+	char (*i)[lengthof(*_name_array)];
 
-	names = &_name_array[0][0];
-
-	for(i=0; i!=512; i++,names+=sizeof(_name_array[0])) {
-		if (names[0] == 0) {
-			if (free_item == -1)
-				free_item = i;
-		} else {
-			if (check_double && strcmp(names, name) == 0) {
-				_error_message = STR_0132_CHOSEN_NAME_IN_USE_ALREADY;
-				return 0;
-			}
+	for (i = _name_array; i != endof(_name_array); ++i) {
+		if ((*i)[0] == '\0') {
+			if (free_item == NULL) free_item = i;
+		} else if (check_double && strncmp(*i, name, lengthof(*i) - 1) == 0) {
+			_error_message = STR_0132_CHOSEN_NAME_IN_USE_ALREADY;
+			return 0;
 		}
 	}
 
-	if (free_item < 0) {
+	if (free_item != NULL) {
+		ttd_strlcpy(*free_item, name, lengthof(*free_item));
+		return (free_item - _name_array) | 0x7800 | (skip << 8);
+	} else {
 		_error_message = STR_0131_TOO_MANY_NAMES_DEFINED;
 		return 0;
 	}
-
-	dst=_name_array[free_item];
-
-	for(i=0; (dst[i] = name[i]) != 0 && ++i != 32; ) {}
-	dst[31] = 0;
-
-	return free_item | 0x7800 | (skip << 8);
 }
 
 
@@ -744,12 +719,11 @@ void bubblesort(void *base, size_t nmemb, size_t size, int(*compar)(const void *
 static void Save_NAME(void)
 {
 	int i;
-	char *b = _name_array[0];
 
-	for(i=0; i!=lengthof(_name_array); i++,b+=sizeof(_name_array[0])) {
-		if (*b) {
+	for (i = 0; i != lengthof(_name_array); ++i) {
+		if (_name_array[i][0] != '\0') {
 			SlSetArrayIndex(i);
-			SlArray(b, strlen(b), SLE_UINT8);
+			SlArray(_name_array[i], strlen(_name_array[i]), SLE_UINT8);
 		}
 	}
 }
