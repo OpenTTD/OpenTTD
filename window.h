@@ -283,6 +283,7 @@ typedef struct {
 	StringID string_id; /* unk30 */
 	uint16 checked_items; /* unk32 */
 } menu_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
 
 typedef struct {
 	int16 data_1, data_2, data_3;
@@ -290,23 +291,28 @@ typedef struct {
 	bool close; /* scrollpos_y */
 	byte byte_1;
 } def_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
 
 typedef struct {
 	void *data;
 } void_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(void_d));
 
 typedef struct {
 	uint16 base; /* follow_vehicle */
 	uint16 count;/* scrollpos_x */
 } tree_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
 
 typedef struct {
 	byte refresh_counter; /* follow_vehicle */
 } plstations_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
 typedef struct {
 	StringID string_id;
 } tooltips_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
 typedef struct {
 	byte railtype;
@@ -314,6 +320,7 @@ typedef struct {
 	int16 sel_engine;
 	int16 rename_engine;
 } buildtrain_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
 
 typedef struct {
 	byte railtype;
@@ -322,40 +329,59 @@ typedef struct {
 	int16 sel_engine[2];
 	uint16 count[2];
 } replaceveh_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
 typedef struct {
 	VehicleID sel;
 } traindepot_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindepot_d));
 
 typedef struct {
 	int sel;
 } order_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
 
 typedef struct {
 	byte tab;
 } traindetails_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindetails_d));
 
 typedef struct {
 	int32 scroll_x;
 	int32 scroll_y;
 	int32 subscroll;
 } smallmap_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindetails_d));
 
 typedef struct {
 	uint32 face;
 	byte gender;
 } facesel_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
 typedef struct {
 	int sel;
 	byte cargo;
 } refit_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 
 typedef struct {
 	uint16 follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 } vp_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d) + 3 * sizeof(byte)); // + 3 * byte is a hack from Miham
+
+// vp2_d is the same as vp_d, except for the data_# values..
+typedef struct {
+	uint16 follow_vehicle;
+	int32 scrollpos_x;
+	int32 scrollpos_y;
+	byte data_1;
+	byte data_2;
+	byte data_3;
+} vp2_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp2_d));
 
 typedef struct {
 	uint16 follow_vehicle;
@@ -363,16 +389,19 @@ typedef struct {
 	int32 scrollpos_y;
 	NewsItem *ni;
 } news_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
 
 typedef struct {
 	uint32 background_img;
 	int8 rank;
 } highscore_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(highscore_d));
 
 typedef struct {
 	int height;
 	uint16 counter;
 } scroller_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 typedef enum VehicleListFlags {
 	VL_DESC    = 0x01,
@@ -387,7 +416,7 @@ typedef struct vehiclelist_d {
 	VehicleListFlags flags;
 	uint16 resort_timer;
 } vehiclelist_d;
-assert_compile(sizeof(vehiclelist_d) <= WINDOW_CUSTOM_SIZE);
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 enum WindowEvents {
 	WE_CLICK = 0,

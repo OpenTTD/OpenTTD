@@ -1191,6 +1191,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Select type of cargo for train to c
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Can't refit train...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Change production
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, a work in progress. You should expect problems. When you happen take a screenshot and post it in the forum. Enjoy!
 TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!

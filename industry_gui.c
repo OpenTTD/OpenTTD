@@ -19,6 +19,10 @@ static const byte _build_industry_types[4][12] = {
 
 extern const byte _industry_type_costs[37];
 
+static void UpdateIndustryProduction(Industry *i);
+extern void DrawArrowButtons(int x, int y, int state);
+extern void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
+
 static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -265,13 +269,17 @@ void ShowBuildIndustryWindow()
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
 }
 
+#define NEED_ALTERB	(_game_mode == GM_EDITOR && i->accepts_cargo[0] == CT_INVALID)
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
-	Industry *i;
-	StringID str;
+	// WP(w,vp2_d).data_1 is for the editbox line
+	// WP(w,vp2_d).data_2 is for the clickline
+	// WP(w,vp2_d).data_3 is for the click pos (left or right)
 
 	switch(e->event) {
-	case WE_PAINT:
+	case WE_PAINT: {
+		const Industry *i;
+		StringID str;
 		// in editor, use bulldoze to destroy industry
 		// Destroy Industry button costing money removed per request of dominik
 		//w->disabled_state = (_patches.extra_dynamite && !_networking && _game_mode != GM_EDITOR) ? 0 : (1 << 6);
@@ -280,13 +288,13 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, i->type + STR_4802_COAL_MINE);
 		DrawWindowWidgets(w);
 
-		if (i->accepts_cargo[0] != 0xFF) {
+		if (i->accepts_cargo[0] != CT_INVALID) {
 			SetDParam(0, _cargoc.names_s[i->accepts_cargo[0]]);
 			str = STR_4827_REQUIRES;
-			if (i->accepts_cargo[1] != 0xFF) {
+			if (i->accepts_cargo[1] != CT_INVALID) {
 				SetDParam(1, _cargoc.names_s[i->accepts_cargo[1]]);
 				str++;
-				if (i->accepts_cargo[2] != 0xFF) {
+				if (i->accepts_cargo[2] != CT_INVALID) {
 					SetDParam(2, _cargoc.names_s[i->accepts_cargo[2]]);
 					str++;
 				}
@@ -294,27 +302,85 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			DrawString(2, 107, str, 0);
 		}
 
-		if (i->produced_cargo[0] != 0xFF) {
+		if (i->produced_cargo[0] != CT_INVALID) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
 			SetDParam(1, i->total_production[0]);
 			SetDParam(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
-			DrawString(4, 127, STR_482B_TRANSPORTED, 0);
+			DrawString(4 + (NEED_ALTERB ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
+			// Let's put out those buttons..
+			if (NEED_ALTERB)
+				DrawArrowButtons(5, 127, (WP(w,vp2_d).data_2 == 1 ? WP(w,vp2_d).data_3 : 0));
 
-			if (i->produced_cargo[1] != 0xFF) {
+			if (i->produced_cargo[1] != CT_INVALID) {
 				SetDParam(1, i->total_production[1]);
 				SetDParam(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
-				DrawString(4, 137, STR_482B_TRANSPORTED, 0);
+				DrawString(4 + (NEED_ALTERB ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
+				// Let's put out those buttons..
+				if (NEED_ALTERB)
+				    DrawArrowButtons(5, 137, (WP(w,vp2_d).data_2 == 2 ? WP(w,vp2_d).data_3 : 0));
 			}
 		}
 
 		DrawWindowViewport(w);
+		}
 		break;
 
-	case WE_CLICK:
+	case WE_CLICK: {
+		Industry *i;
+
 		switch(e->click.widget) {
+		case 5: {
+			int line; 
+			int x;
+			byte b;
+
+			i = GetIndustry(w->window_number);
+
+			// We should only work in editor
+			if (_game_mode != GM_EDITOR)
+				return;
+
+			// And if the industry is raw-material producer
+			if (i->accepts_cargo[0] != CT_INVALID)
+				return;
+
+			x = e->click.pt.x;
+			line = (e->click.pt.y - 127) / 10;
+			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line]) {
+				if (IS_INT_INSIDE(x, 5, 25) ) { 
+					// clicked buttons
+					if (x < 15) {				
+						// decrease
+						i->production_rate[line] /= 2;
+						if (i->production_rate[line] < 4)
+							i->production_rate[line] = 4;
+					} else {
+						// increase
+						b = i->production_rate[line] * 2;
+						if (i->production_rate[line] >= 128) 
+							b=255;
+						i->production_rate[line] = b;
+					}
+					UpdateIndustryProduction(i);
+					SetWindowDirty(w);
+					w->flags4 |= 5 << WF_TIMEOUT_SHL;
+					WP(w,vp2_d).data_2 = line+1;
+					WP(w,vp2_d).data_3 = (x < 15 ? 1 : 2);
+				} else if (IS_INT_INSIDE(x, 34, 160)) {
+					// clicked the text
+					WP(w,vp2_d).data_1 = line;
+					SetDParam(0, i->production_rate[line] * 8);
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, 
+							STR_CONFIG_GAME_PRODUCTION, 
+							10, 100, w->window_class, 
+							w->window_number);
+				}
+			}	
+			}
+			break;
 		case 6:
 			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TILE_XY(1,1));
@@ -331,8 +397,41 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			//DoCommandP(i->xy, w->window_number, 0, CcPlaySound10,  CMD_DESTROY_INDUSTRY | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			break;
 		}
+		}
 		break;
+	case WE_TIMEOUT:
+		WP(w,vp2_d).data_2 = 0;
+		WP(w,vp2_d).data_3 = 0;
+		SetWindowDirty(w);
+		break;
+
+	case WE_ON_EDIT_TEXT:
+		if (*e->edittext.str) {
+			Industry *i;
+			int val;
+			int line;
+
+			i = GetIndustry(w->window_number);
+			line = WP(w,vp2_d).data_1;
+			val = atoi(e->edittext.str);
+			if (!IS_INT_INSIDE(val, 32, 2040)) {
+				if (val < 32) val = 32;
+				else val = 2040;
+			}
+			i->production_rate[line] = (byte)(val / 8);
+			UpdateIndustryProduction(i);
+			SetWindowDirty(w);
+		}
 	}
+}
+
+static void UpdateIndustryProduction(Industry *i)
+{
+	if (i->produced_cargo[0] != CT_INVALID)
+		i->total_production[0] = 8 * i->production_rate[0];
+
+	if (i->produced_cargo[1] != CT_INVALID)
+		i->total_production[1] = 8 * i->production_rate[1];
 }
 
 static const Widget _industry_view_widgets[] = {
@@ -340,7 +439,7 @@ static const Widget _industry_view_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,     9,    11,   247,     0,    13, STR_4801,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,				STR_NULL},
+{	  WWT_6,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,				STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,				STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION,	STR_482C_CENTER_THE_MAIN_VIEW_ON},
 {     WWT_IMGBTN,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,				STR_NULL},
@@ -365,6 +464,9 @@ void ShowIndustryViewWindow(int industry)
 	w = AllocateWindowDescFront(&_industry_view_desc, industry);
 	if (w) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
+		WP(w,vp2_d).data_1 = 0;
+		WP(w,vp2_d).data_2 = 0;
+		WP(w,vp2_d).data_3 = 0;
 		i = GetIndustry(w->window_number);
 		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, i->xy + TILE_XY(1,1), 1);
 	}

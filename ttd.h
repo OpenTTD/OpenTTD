@@ -268,6 +268,8 @@ enum {
 	CT_FIZZY_DRINKS = 11,
 
 	NUM_CARGO = 12,
+
+	CT_INVALID = 0xFF
 };
 
 typedef uint AcceptedCargo[NUM_CARGO];
