@@ -81,7 +81,7 @@ static bool TrainShouldStop(Vehicle *v, TileIndex tile)
 //new acceleration
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
-	Vehicle *u = v;
+	const Vehicle *u;
 	int num = 0;	//number of vehicles, change this into the number of axles later
 	int power = 0;
 	int mass = 0;
@@ -96,25 +96,24 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	int pos = 0;
 	int lastpos = -1;
 	int curvecount[2] = {0, 0};
-	int *dist = NULL;
 	int sum = 0;
 	int numcurve = 0;
-	int i;
 
 	speed *= 10;
 	speed /= 16;
 
 	//first find the curve speed limit
-	for (; u->next != NULL; u = u->next, pos++) {
+	for (u = v; u->next != NULL; u = u->next, pos++) {
 		int dir = u->direction;
 		int ndir = u->next->direction;
+		int i;
 
 		for (i = 0; i < 2; i++) {
 			if ( _curve_neighbours45[dir][i] == ndir) {
 				curvecount[i]++;
 				if (lastpos != -1) {
-					dist = realloc(dist, sizeof(int) * ++numcurve);
-					dist[numcurve - 1] = pos - lastpos;
+					numcurve++;
+					sum += pos - lastpos;
 					if (pos - lastpos == 1) {
 						max_speed = 88;
 					}
@@ -129,11 +128,6 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			max_speed = 61;
 		}
 	}
-
-	for (i = 0; i < numcurve; i++) sum += dist[i];
-
-	free(dist);
-	dist = NULL;
 
 	if (numcurve > 0) sum /= numcurve;
 
@@ -150,10 +144,6 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	max_speed += (max_speed / 2) * v->u.rail.railtype;
 
 	if (IsTileType(v->tile, MP_STATION) && v->subtype == TS_Front_Engine) {
-		static const TileIndexDiffC _station_dir_from_vdir[] = {
-			{0, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 0}, {1, 0}, {0, 0}, {0, -1}
-		};
-
 		if (TrainShouldStop(v, v->tile)) {
 			int station_length = 0;
 			TileIndex tile = v->tile;
@@ -162,7 +152,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			max_speed = 120;
 			do {
 				station_length++;
-				tile = TILE_ADD(tile, ToTileIndexDiff(_station_dir_from_vdir[v->direction]));
+				tile = TILE_ADD(tile, TileOffsByDir(v->direction / 2));
 			} while (IsTileType(tile, MP_STATION));
 
 			delta_v = v->cur_speed / (station_length + 1);
