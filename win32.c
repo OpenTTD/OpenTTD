@@ -113,9 +113,6 @@ static const VkMapping _vk_mapping[] = {
 	AM('A','Z','A','Z'),
 	AM('0','9','0','9'),
 
-	AS(VK_OEM_3,	WKC_BACKQUOTE),
-	AS(220,				WKC_BACKQUOTE),
-
 	AS(VK_ESCAPE,		WKC_ESC),
 	AS(VK_PAUSE, WKC_PAUSE),
 	AS(VK_BACK,			WKC_BACKSPACE),
@@ -296,6 +293,13 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		return 0;
 	}
 
+	case WM_CHAR: {
+		uint16 scancode = (( lParam & 0xFF0000 ) >> 16 );
+		if( scancode == 41 )
+			_pressed_key = WKC_BACKQUOTE << 16;
+	} break;
+	
+	
 	case WM_KEYDOWN: {
 		// this is the rewritten ascii input function
 		// it disables windows deadkey handling --> more linux like :D
