@@ -192,6 +192,10 @@ SOURCE=.\console_cmds.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\debug.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\documentation.txt
 # End Source File
 
@@ -455,6 +459,10 @@ SOURCE=.\command.h
 
 # Begin Source File
 SOURCE=.\console.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\debug.h
 # End Source File
 
 # Begin Source File
@@ -794,10 +802,6 @@ SOURCE=.\table\build_industry.h
 
 # Begin Source File
 SOURCE=.\table\clear_land.h
-# End Source File
-
-# Begin Source File
-SOURCE=.\table\directions.h
 # End Source File
 
 # Begin Source File

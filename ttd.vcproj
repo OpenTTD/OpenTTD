@@ -310,6 +310,9 @@
 				RelativePath=".\console_cmds.c">
 			</File>
 			<File
+				RelativePath=".\debug.c">
+			</File>
+			<File
 				RelativePath=".\dedicated.c">
 			</File>
 			<File
@@ -1156,6 +1159,9 @@
 			</File>
 			<File
 				RelativePath="console.h">
+			</File>
+			<File
+				RelativePath="debug.h">
 			</File>
 			<File
 				RelativePath="economy.h">
@@ -2533,9 +2539,6 @@
 			</File>
 			<File
 				RelativePath="table\clear_land.h">
-			</File>
-			<File
-				RelativePath=".\table\directions.h">
 			</File>
 			<File
 				RelativePath="table\engines.h">
