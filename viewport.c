@@ -1910,7 +1910,7 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 	}
 
 	// allow drag in any rail direction
-	if (method == VPM_RAILDIRS) {
+	if (method == VPM_RAILDIRS || method == VPM_SIGNALDIRS) {
 		CalcRaildirsDrawstyle(thd, x, y);
 		return;
 	}

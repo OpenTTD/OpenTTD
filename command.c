@@ -160,6 +160,8 @@ DEF_COMMAND(CmdBuildLock);
 
 DEF_COMMAND(CmdStartScenario);
 
+DEF_COMMAND(CmdBuildManySignals);
+
 /* The master command table */
 static CommandProc * const _command_proc_table[] = {
 	CmdBuildRailroadTrack,			/* 0 */
@@ -294,8 +296,8 @@ static CommandProc * const _command_proc_table[] = {
 	CmdRefitRailVehicle,		/* 106 */
 	CmdRestoreOrderIndex,		/* 107 */
 	CmdBuildLock,						/* 108 */
-	CmdStartScenario				/* 109 */
-	
+	CmdStartScenario,				/* 109 */
+	CmdBuildManySignals,		/* 110 */
 	//CmdDestroyIndustry,			/* 109 */
 };
 

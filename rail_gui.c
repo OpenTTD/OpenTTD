@@ -140,7 +140,7 @@ static void PlaceRail_Station(uint tile)
 	}
 }
 
-static void PlaceRail_Signals(uint tile)
+static void GenericPlaceSignals(uint tile)
 {
 	uint trackstat;
 	int i;
@@ -199,6 +199,11 @@ static void PlaceRail_ConvertRail(uint tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | (1<<4));
 }
 
+static void PlaceRail_AutoSignals(uint tile)
+{
+	VpStartPlaceSizing(tile, VPM_SIGNALDIRS);
+}
+
 static void BuildRailClick_AutoRail(Window *w)
 {
 	HandlePlacePushButton(w, 3, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
@@ -255,9 +260,9 @@ static void BuildRailClick_Station(Window *w)
 	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();	
 }
 
-static void BuildRailClick_Signals(Window *w)
+static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS, 1, PlaceRail_Signals);
+	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
 }
 
 static void BuildRailClick_Bridge(Window *w)
@@ -508,6 +513,42 @@ static void HandleAutodirPlacement()
 	}
 }
 
+static void HandleAutoSignalPlacement()
+{
+	TileHighlightData *thd = &_thd;
+	int mode;
+	uint trackstat = 0;
+
+	int dx = thd->selstart.x - (thd->selend.x&~0xF);
+	int dy = thd->selstart.y - (thd->selend.y&~0xF);
+	
+	if (dx == 0 && dy == 0 ) // 1x1 tile signals
+		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
+	else { // signals have been dragged
+		if (thd->drawstyle == HT_RECT) { // X,Y direction
+			if (dx == 0) 
+				mode = VPM_FIX_X;
+			else if (dy == 0)
+				mode = VPM_FIX_Y;
+
+			trackstat = 0xC0;
+		}	else { // W-E or N-S direction
+			mode = thd->drawstyle & 1 ? 0 : 3;
+
+			if (dx == dy || abs(dx - dy) == 16) // North<->South track |
+				trackstat = (thd->drawstyle & 1) ? 0x20 : 0x10;
+			else if (dx == -dy || abs(dx + dy) == 16) // East<->West track --
+				trackstat = (thd->drawstyle & 1) ? 4 : 8;
+		}
+
+		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y), 
+		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8), 
+		CcPlaySound1E, 
+		(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
+															CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );									
+	}	
+}
+
 static OnButtonClick * const _build_railroad_button_proc[] = {
 	BuildRailClick_AutoRail,
 	BuildRailClick_N,
@@ -519,7 +560,7 @@ static OnButtonClick * const _build_railroad_button_proc[] = {
 	BuildRailClick_Raise,
 	BuildRailClick_Depot,
 	BuildRailClick_Station,
-	BuildRailClick_Signals,
+	BuildRailClick_AutoSignals,
 	BuildRailClick_Bridge,
 	BuildRailClick_Tunnel,
 	BuildRailClick_Remove,
@@ -603,6 +644,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				if (_ctrl_pressed) _remove_button_clicked = true;
 				HandleAutodirPlacement();
 				_remove_button_clicked = old;
+			} else if (e->place.userdata == VPM_SIGNALDIRS) {
+				HandleAutoSignalPlacement();
 			} else if (e->place.userdata == VPM_X_AND_Y) {
 				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			} else if (e->place.userdata == (VPM_X_AND_Y | (1<<4))) {

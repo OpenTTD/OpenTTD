@@ -152,6 +152,7 @@ typedef struct Patches {
 	byte wait_oneway_signal;	//waitingtime in days before a oneway signal
 	byte wait_twoway_signal;	//waitingtime in days before a twoway signal
 
+	byte drag_signals_density; // many signals density
 } Patches;
 
 VARDEF Patches _patches;

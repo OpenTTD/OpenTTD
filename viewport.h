@@ -53,6 +53,7 @@ enum {
 	VPM_RAILDIRS = 3,
 	VPM_X_AND_Y = 4,
 	VPM_X_AND_Y_LIMITED = 5,
+	VPM_SIGNALDIRS = 6,
 };
 
 void VpSelectTilesWithMethod(int x, int y, int method);

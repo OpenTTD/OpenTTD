@@ -521,8 +521,8 @@ static const struct {
 
 
 /* Build either NE or NW sequence of tracks.
- * p1 0:15  - start pt X
- * p1 16:31 - start pt y
+ * p1 0:15  - end pt X
+ * p1 16:31 - end pt y
  *
  * p2 0:3   - rail type
  * p2 4:7   - rail direction
@@ -538,7 +538,7 @@ int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC)
 		SndPlayTileFx(0x1E, TILE_FROM_XY(x,y));
 	
-	/* unpack start point */
+	/* unpack end point */
 	sx = (p1 & 0xFFFF) & ~0xF;
 	sy = (p1 >> 16) & ~0xF;
 
@@ -837,7 +837,11 @@ int32 CmdRenameCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/* build signals, p1 = track */
+/*	build signals, alternate between double/single, signal/semaphore, pre/exit/combo -signals
+		p1 = (lower 3 bytes)	- track-orientation
+		p1 = (byte 4)					- semaphores/signals
+		p2 = used for CmdBuildManySignals() to copy style first signal
+ */
 int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile;
@@ -845,8 +849,7 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	int track = p1 & 0x7;
 	
-	assert(track >= 0 && track < 6);
-	assert(p2 == 0);
+	assert(track >= 0 && track < 6); // only 6 possible track-combinations
 	
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -855,11 +858,11 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
-	
 	// must be railway, and not a depot, and it must have a track in the suggested position.
 	if (!IS_TILETYPE(tile, MP_RAILWAY) || (m5=_map5[tile], m5&0x80) || !HASBIT(m5, track))
 		return CMD_ERROR;
+
+	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
 
 	// check rail combination
 	{
@@ -873,40 +876,54 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckTileOwnership(tile))
 		return CMD_ERROR;
 
-	// If it had signals previously it's no cost to build.
+	// If it had signals previously it is free to change orientation/pre-exit-combo signals
 	cost = 0;
 	if (!(m5 & RAIL_TYPE_SIGNALS)) {
 		cost = _price.build_signals;
+	// if converting signals<->semaphores, charge the player for it
+	} else if (p2 && ((HASBIT(p1, 3) && !HASBIT(_map3_hi[tile], 2)) || (!HASBIT(p1, 3) && HASBIT(_map3_hi[tile], 2)) ) ) {
+		cost += _price.build_signals + _price.remove_signals;
 	}
 
 	if (flags & DC_EXEC) {
 		
 
-		if (!(m5 & RAIL_TYPE_SIGNALS)) {
+		if (!(m5 & RAIL_TYPE_SIGNALS)) {		// if there are no signals yet present on the track
 			_map5[tile] |= RAIL_TYPE_SIGNALS; // change into signals
 			_map2[tile] |= 0xF0;              // all signals are on
 			_map3_lo[tile] &= ~0xF0;          // no signals built by default
 			_map3_hi[tile] = (p1 & 8) ? 4 : 0;// initial presignal state, semaphores depend on ctrl key
-			goto ignore_presig;
+			if (!p2)
+				goto ignore_presig;
 		}
 
-		if (!(p1 & 8)) {
-			byte a,b,c,d;
-ignore_presig:
-			a = _signals_table[track];      // signal for this track in one direction
-			b = _signals_table[track + 8];  // signal for this track in the other direction
-			c = a | b;
-			d = _map3_lo[tile] & c;					// mask of built signals. it only affects &0xF0
+		if (!p2) { // not called from CmdBuildManySignals
+			if (!HASBIT(p1, 3)) { // not CTRL pressed
+				byte a,b,c,d;
+	ignore_presig:
+				a = _signals_table[track];      // signal for this track in one direction
+				b = _signals_table[track + 8];  // signal for this track in the other direction
+				c = a | b;
+				d = _map3_lo[tile] & c;					// mask of built signals. it only affects &0xF0
 
-			// Alternate between a|b, b, a
-			if ( d != 0 && d != a) {
-				c = (d==c)?b:a;
-			}
+				// Alternate between a|b, b, a
+				if ( d != 0 && d != a) {
+					c = (d==c)?b:a;
+				}
 
-			_map3_lo[tile] = (_map3_lo[tile]&~(a|b)) | c;
+				_map3_lo[tile] = (_map3_lo[tile]&~(a|b)) | c;
+			} else // CTRL pressed
+				_map3_hi[tile] = (_map3_hi[tile] & ~3) | ((_map3_hi[tile] + 1) & 3);
 		} else {
-			// toggle between the signal types. Using low 2 bits of map3_hi.
-			_map3_hi[tile] = (_map3_hi[tile] & ~3) | ((_map3_hi[tile] + 1) & 3);
+			/* If CmdBuildManySignals is called with copying signals, just copy the style of the first signal
+			* given as parameter by CmdBuildManySignals */
+			switch (track) {
+			case 2: case 4: _map3_lo[tile] = (p2&0xC0) | _map3_lo[tile]&~0xC0; break;
+			case 3: case 5: _map3_lo[tile] = (p2&0x30) | _map3_lo[tile]&~0x30; break;
+			default : _map3_lo[tile] = (p2&0xF0) | _map3_lo[tile]&0xF;
+			}
+			// convert between signal<->semaphores when dragging
+			HASBIT(p1, 3) ? SETBIT(_map3_hi[tile], 2) : CLRBIT(_map3_hi[tile], 2);
 		}
 		
 		MarkTileDirtyByTile(tile);
@@ -914,6 +931,108 @@ ignore_presig:
 	}
 
 	return cost;
+}
+
+/*	Build many signals by dragging: AutoSignals
+		x,y= start tile
+		p1 = end tile
+		p2 = (byte 0)		- 0 = build, 1 = remove signals
+		p2 = (byte 3)		- 0 = signals, 1 = semaphores
+		p2 = (byte 7-4)	- track-orientation
+		p2 = (byte 8-)	- track style
+ */
+int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	int ex, ey, railbit;
+	bool error = true;
+	TileIndex tile = TILE_FROM_XY(x, y);
+	int32 ret, total_cost, signal_ctr;
+	byte m5, semaphores = (HASBIT(p2, 3)) ? 8 : 0;
+	int mode = (p2 >> 4)&0xF;
+	// for vertical/horizontal tracks, double the given signals density
+	// since the original amount will be too dense (shorter tracks)
+	byte signal_density = (mode == 1 || mode == 2) ? _patches.drag_signals_density : _patches.drag_signals_density * 2;
+	byte signals = p2 >> 8;
+	mode = p2 & 0x1;  // build/remove signals
+
+	/* unpack end tile */
+	ex = GET_TILE_X(p1)*16;
+	ey = GET_TILE_Y(p1)*16;
+
+	railbit = _railbit.initial[((p2 >> 4)&0xF) + (x > ex ? 4 : 0) + (y > ey ? 8 : 0)];
+
+	// copy the signal-style of the first rail-piece if existing
+	m5 = _map5[tile];
+	if (!(m5 & RAIL_TYPE_SPECIAL) && (m5 & RAIL_BIT_MASK) && (m5 & RAIL_TYPE_SIGNALS)) {
+		if (m5 & 0x3) // X,Y direction tracks
+			signals = _map3_lo[tile]&0xC0;
+		else {
+			/* W-E or N-S direction, only copy the side which was chosen, leave
+			 * the other side alone */
+			switch (signals) {
+				case 0x20: case 8: /* east corner (N-S), south corner (W-E) */
+					if (_map3_lo[tile]&0x30) 
+						signals = _map3_lo[tile]&0x30;
+					else
+						signals = 0x30 | _map3_lo[tile]&0xC0;
+					break;
+				case 0x10: case 4: /* west corner (N-S), north corner (W-E) */
+					if (_map3_lo[tile]&0xC0) 
+						signals = _map3_lo[tile]&0xC0;
+					else
+						signals = 0xC0 | _map3_lo[tile]&0x30;
+					break;
+			}
+		}
+
+		semaphores = (_map3_hi[tile] & ~3) ? 8 : 0; // copy signal/semaphores style (independent of CTRL)
+	} else { // no signals exist, drag a two-way signal stretch
+		switch (signals) {
+			case 0x20: case 8: /* east corner (N-S), south corner (W-E) */
+				signals = 0x30; break;
+			case 0x10: case 4: /* west corner (N-S), north corner (W-E) */
+				signals = 0xC0;
+		}
+	}
+
+	/* signal_density_ctr	- amount of tiles already processed
+	 * signals_density		- patch setting to put signal on every Nth tile (double space on |, -- tracks)
+	 **********
+	 * railbit		- direction of autorail
+	 * semaphores	- semaphores or signals
+	 * signals		- is there a signal/semaphore on the first tile, copy its style (two-way/single-way) 
+									and convert all others to semaphore/signal
+	 * mode				- 1 remove signals, 0 build signals */
+	signal_ctr = total_cost = 0;
+	for(;;) {
+		// only build/remove signals with the specified density
+		if ((signal_ctr %	signal_density) == 0 ) {
+			ret = DoCommand(x, y, (railbit & 7) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+
+			/* Abort placement for any other error then NOT_SUITEABLE_TRACK
+			 * This includes vehicles on track, competitor's tracks, etc. */
+			if (ret == CMD_ERROR) {
+				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) {
+					return CMD_ERROR;
+				}
+			} else {
+				error = false;
+				total_cost += ret;
+			}
+		}
+
+		if (ex == x && ey == y) // reached end of drag
+			break;
+
+		x += _railbit.xinc[railbit];
+		y += _railbit.yinc[railbit];	
+		signal_ctr++;
+		
+		// toggle railbit for the diagonal tiles (|, -- tracks)
+		if (railbit & 0x6) railbit ^= 1;
+	}
+
+	return (error) ? CMD_ERROR : total_cost;
 }
 
 /* Remove signals
@@ -952,6 +1071,7 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		byte bits = _map5[tile];
 		_map5[tile] &= ~RAIL_TYPE_SIGNALS;
 		_map2[tile] &= ~0xF0;
+		CLRBIT(_map3_hi[tile], 2); // remove any possible semaphores
 		
 		/* TTDBUG: this code contains a bug, if a tile contains 2 signals
 		 * on separate tracks, it won't work properly for the 2nd track */		
