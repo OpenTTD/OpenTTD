@@ -1941,13 +1941,13 @@ static void DrawTile_Station(TileInfo *ti)
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
-	image += railtype * ((image < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
+	image += railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 1);
 	DrawGroundSprite(image);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		image =	dtss->image + relocation;
-		// XXX: Do we want to do this for custom stations? --pasky
-		image += railtype * ((image < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
+		// For custom sprites, there's no railtype-based pitching.
+		image += railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 0);
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			if (image&0x8000) image |= image_or_modificator;	
 		} else {
