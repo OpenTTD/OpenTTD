@@ -496,7 +496,10 @@ static byte *DecodeString(byte *buff, const byte *str)
 			Station *st;
 			InjectDparam(1);
 			st = DEREF_STATION(GET_DPARAM16(1));
-			assert(st->xy);
+			if (!st->xy) { // station doesn't exist anymore
+				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
+				break;
+			}
 			SET_DPARAM16(0, st->town->townnametype);
 			SET_DPARAM32(1, st->town->townnameparts);
 			buff = GetString(buff, st->string_id);
