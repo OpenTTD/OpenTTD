@@ -19,10 +19,12 @@ static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
 static inline uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
 
 
-static inline int clamp(int a, int min, int max) { if (a <= min) return min; if (a >= max) return max; return a; }
-static inline int clamp2(int a, int min, int max) { if (a <= min) a=min; if (a >= max) a=max; return a; }
-static inline bool int32_add_overflow(int32 a, int32 b) { return (int32)(a^b)>=0 && (int32)(a^(a+b))<0; }
-static inline bool int32_sub_overflow(int32 a, int32 b) { return (int32)(a^b)<0 && (int32)(a^(a-b))<0; }
+static inline int clamp(int a, int min, int max)
+{
+	if (a <= min) return min;
+	if (a >= max) return max;
+	return a;
+}
 
 
 static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
@@ -124,13 +126,10 @@ static inline int KillFirstBit2x64(int value)
 	for(_i=0; _b!=0; _i++,_b>>=1)								\
 		if (_b&1)
 
-#define assert_array(i,j) assert(i < lengthof(j))
-
 #define abs myabs
 
 
 static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
-#define intxchg(a,b) intxchg_(&(a), (b))
 #define intswap(a,b) ((b) = intxchg_(&(a), (b)))
 
 static inline int myabs(int a) { if (a<0) a = -a; return a; }
@@ -146,14 +145,10 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 
 #if defined(TTD_LITTLE_ENDIAN)
 #	define READ_LE_UINT16(b) (*(const uint16*)(b))
-#	define ADD_WORD(x) (x)&0xFF, ((x) >> 8)&0xFF
-#	define ADD_DWORD(x) (x)&0xFF, ((x) >> 8)&0xFF, ((x) >> 16)&0xFF, ((x) >> 24)&0xFF
 #elif defined(TTD_BIG_ENDIAN)
 	static inline uint16 READ_LE_UINT16(const void *b) {
 		return ((const byte*)b)[0] + (((const byte*)b)[1] << 8);
 	}
-#	define ADD_WORD(x) ((x) >> 8)&0xFF, (x)&0xFF
-#	define ADD_DWORD(x) ((x) >> 24)&0xFF, ((x) >> 16)&0xFF, ((x) >> 8)&0xFF,  (x)&0xFF
 #endif
 
 static inline void WRITE_LE_UINT16(void *b, uint16 x) {
