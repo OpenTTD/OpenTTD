@@ -58,6 +58,32 @@ static void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
 	ShowTrainViewWindow(v);
 }
 
+static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
+	int *selected_id, byte railtype, bool is_engine)
+{
+	int i;
+
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+		const Engine *e = DEREF_ENGINE(i);
+		const RailVehicleInfo *rvi = &rail_vehinfo(i);
+
+		if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
+				!HASBIT(e->player_avail, _local_player))
+			continue;
+
+		if (*sel == 0) *selected_id = i;
+
+		if (IS_INT_INSIDE(--*pos, -8, 0)) {
+			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),
+				*sel == 0 ? 0xC : 0x10);
+			DrawTrainEngine(*x + 29, *y + 6 + _traininfo_vehicle_pitch, i,
+				SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+			*y += 14;
+		}
+		--*sel;
+	}
+}
+
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -72,7 +98,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			int i;
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-				Engine *e = &_engines[i];
+				const Engine *e = DEREF_ENGINE(i);
 				if (e->railtype == railtype
 				    && HASBIT(e->player_avail, _local_player))
 					count++;
@@ -90,36 +116,19 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			int x = 1;
 			int y = 15;
 			int selected_id = -1;
-			int i;
 
 			/* Ensure that custom engines which substituted wagons
-			 * are sorted correctly. */
-#define engine_drawing_loop(cmp_) \
-			for (i = 0; i < NUM_TRAIN_ENGINES; i++) { \
-				Engine *e = DEREF_ENGINE(i); \
-				RailVehicleInfo *rvi = &rail_vehinfo(i); \
- \
- 				if (e->railtype != railtype || (rvi->flags & RVI_WAGON) cmp_ 0 \
-				    || !HASBIT(e->player_avail, _local_player)) \
-					continue; \
- \
-				if (sel == 0) selected_id = i; \
-				if (IS_INT_INSIDE(--pos, -8, 0)) { \
-					DrawString(x+59, y+2, GetCustomEngineName(i), sel == 0 ? 0xC : 0x10); \
-					DrawTrainEngine(x+29, y+6+_traininfo_vehicle_pitch, i, \
-					                SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player))); \
-					y += 14; \
-				} \
-				sel--; \
-			}
-
-			engine_drawing_loop(!=); // True engines
-			engine_drawing_loop(==); // Feeble wagons
+			 * are sorted correctly.
+			 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
+			 * engines to get more types.. Stays here until we have our own format
+			 * then it is exit!!! */
+			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, true); // True engines
+			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, false); // Feeble wagons
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				const RailVehicleInfo *rvi = &_rail_vehicle_info[selected_id];
+				const RailVehicleInfo *rvi = &rail_vehinfo(selected_id);
 				Engine *e;
 				YearMonthDay ymd;
 
