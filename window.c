@@ -5,6 +5,9 @@
 #include "viewport.h"
 #include "console.h"
 
+// delta between mouse cursor and upper left corner of dragged window
+static Point _drag_delta;
+
 void HandleButtonClick(Window *w, byte widget)
 {
 	w->click_state |= (1 << widget);
@@ -691,50 +694,116 @@ bool HandlePopupMenu()
 bool HandleWindowDragging()
 {
 	Window *w;
-	int x, y, t;
-
 	// Get out immediately if no window is being dragged at all.
 	if (!_dragging_window)
 		return true;
 
 	// Otherwise find the window...
-	for(w=_windows; w != _last_window; w++) {
-		if (w->flags4&(WF_DRAGGING|WF_SIZING)) {
+	for (w = _windows; w != _last_window; w++) {
+		if (w->flags4 & WF_DRAGGING) {
+			const Window *v;
+			int x;
+			int y;
+			int nx;
+			int ny;
 
 			// Stop the dragging if the left mouse button was released
 			if (!_left_button_down) {
-				w->flags4 &= ~(WF_DRAGGING | WF_SIZING);
+				w->flags4 &= ~WF_DRAGGING;
 				break;
 			}
 
-			// Otherwise calculate the delta position.
-			x = _cursor.pos.x;
-			y = clamp2(_cursor.pos.y, 23, _screen.height-12);
-			t = _cursorpos_drag_start.x; _cursorpos_drag_start.x = x; x-=t;
-			t = _cursorpos_drag_start.y; _cursorpos_drag_start.y = y; y-=t;
-
-			// No movement?
-			if (x == 0 && y == 0)
-				return false;
-
-			// Mark the old position dirty
 			SetWindowDirty(w);
 
-			if (w->flags4 & WF_SIZING) {
-				// Size the window
-				w->width += x;
-				w->height += y;
-			} else {
-				// Move the window and viewport
-				w->left += x;
-				w->top += y;
-				if (w->viewport) {
-					w->viewport->left += x;
-					w->viewport->top += y;
+			x = _cursor.pos.x + _drag_delta.x;
+			y = _cursor.pos.y + _drag_delta.y;
+			nx = x;
+			ny = y;
+
+			if (_patches.window_snap_radius != 0) {
+				uint hsnap = _patches.window_snap_radius;
+				uint vsnap = _patches.window_snap_radius;
+				uint delta;
+
+				// Snap at screen borders
+				// Left screen border
+				delta = abs(x);
+				if (delta <= hsnap) {
+					nx = 0;
+					hsnap = delta;
+				}
+
+				// Right screen border
+				delta = abs(_screen.width - x - w->width);
+				if (delta <= hsnap) {
+					nx = _screen.width - w->width;
+					hsnap = delta;
+				}
+
+				// Top of screen
+				delta = abs(y);
+				if (delta <= vsnap) {
+					ny = 0;
+					vsnap = delta;
+				}
+
+				// Bottom of screen
+				delta = abs(_screen.height - y - w->height);
+				if (delta <= vsnap) {
+					ny = _screen.height - w->height;
+					vsnap = delta;
+				}
+
+				// Snap at other windows
+				for (v = _windows; v != _last_window; ++v) {
+					if (v == w) continue; // Don't snap at yourself
+
+					if (y + w->height > v->top && y < v->top + v->height) {
+						// Your left border <-> other right border
+						delta = abs(v->left + v->width - x);
+						if (delta <= hsnap) {
+							nx = v->left + v->width;
+							hsnap = delta;
+						}
+
+						// Your right border <-> other left border
+						delta = abs(v->left - x - w->width);
+						if (delta <= hsnap) {
+							nx = v->left - w->width;
+							hsnap = delta;
+						}
+					}
+
+					if (x + w->width > v->left && x < v->left + v->width) {
+						// Your top border <-> other bottom border
+						delta = abs(v->top + v->height - y);
+						if (delta <= vsnap) {
+							ny = v->top + v->height;
+							vsnap = delta;
+						}
+
+						// Your bottom border <-> other top border
+						delta = abs(v->top - y - w->height);
+						if (delta <= vsnap) {
+							ny = v->top - w->height;
+							vsnap = delta;
+						}
+					}
 				}
 			}
 
-			// And also mark the new position dirty.
+			// Make sure the window doesn't leave the screen
+			// 13 is the height of the title bar
+			nx = clamp(nx, 13 - w->width, _screen.width - 13);
+			ny = clamp(ny, 0, _screen.height - 13);
+
+			if (w->viewport != NULL) {
+				w->viewport->left += nx - w->left;
+				w->viewport->top  += ny - w->top;
+			}
+			w->left = nx;
+			w->top  = ny;
+
 			SetWindowDirty(w);
 			return false;
 		}
@@ -748,7 +817,8 @@ Window *StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
 	_dragging_window = true;
-	_cursorpos_drag_start = _cursor.pos;
+	_drag_delta.x = w->left - _cursor.pos.x;
+	_drag_delta.y = w->top  - _cursor.pos.y;
 	w = BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 	return w;

@@ -829,6 +829,7 @@ static const SettingDesc patch_settings[] = {
 	{"realistic_acceleration",SDT_BOOL, (void*)false, (void*)offsetof(Patches, realistic_acceleration),	NULL},
 
 	{"toolbar_pos",					SDT_UINT8,	(void*)0,			(void*)offsetof(Patches, toolbar_pos),					NULL},
+	{"window_snap_radius",  SDT_UINT8,  (void*)10,    (void*)offsetof(Patches, window_snap_radius),   NULL},
 
 	{"max_trains",					SDT_UINT8,	(void*)80,		(void*)offsetof(Patches, max_trains),						NULL},
 	{"max_roadveh",					SDT_UINT8,	(void*)80,		(void*)offsetof(Patches, max_roadveh),					NULL},
