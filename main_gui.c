@@ -51,7 +51,6 @@ void HandleOnEditTextCancel() {
 #ifdef ENABLE_NETWORK
 	case 4:
 		NetworkDisconnect();
-		ShowNetworkGameWindow();
 		break;
 #endif /* ENABLE_NETWORK */
 	}
@@ -1809,6 +1808,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_PAUSE:
 			ToolbarPauseClick(w);
 			break;
+		case 'L': ShowTerraformToolbar(); break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
 		case WKC_F4: ShowSmallMap(); break;
@@ -2229,7 +2229,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			DrawSprite(SPR_OTTD_T, off_x +  34, 50);
 			DrawSprite(SPR_OTTD_T, off_x +  65, 50);
 			DrawSprite(SPR_OTTD_D, off_x +  96, 50);
-
+			
 			/*
 			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
 			DrawSprite(SPR_OTTD_A, off_x + 148, 50);
