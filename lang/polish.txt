@@ -1050,7 +1050,7 @@ STR_CONFIG_PATCHES_INT32					:{INT32}
 STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Zmiana wartosci
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Niektore lub wszystkie domyslne domyslne okresy miedzyserwisowania sa sprzeczne z wybranymi! 5-90% i 30-800 dni sa poprawne
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Niektore lub wszystkie domyslne okresy miedzyserwisowania sa sprzeczne z wybranymi! 5-90% i 30-800 dni sa poprawne
 
 STR_TEMPERATE_LANDSCAPE						:krajobraz umiarkowany
 STR_SUB_ARCTIC_LANDSCAPE					:krajobraz arktyczny
@@ -1993,7 +1993,7 @@ STR_8025_ARMORED_VAN						:Opancerzony wagon
 STR_8026_FOOD_VAN						:Wagon na zywnosc
 STR_8027_PAPER_TRUCK						:Wagon na papier
 STR_8028_COPPER_ORE_HOPPER					:Wagon na rude miedzi
-STR_8029_WATER_TANKER						:Wagon na wode
+STR_8029_WATER_TANKER						:Cysterna na wode
 STR_802A_FRUIT_TRUCK						:Wagon na owoce
 STR_802B_RUBBER_TRUCK						:Wagon na gume
 STR_802C_SUGAR_TRUCK						:Wagon na cukier
@@ -2009,24 +2009,24 @@ STR_8035_PLASTIC_TRUCK						:Wagon na plastik
 STR_8036_X2001_ELECTRIC						:'X2001' (Electric)
 STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Elektrowoz)
 STR_8038_WIZZOWOW_Z99						:Wizzowow Z99
-STR_8039_PASSENGER_CAR						:Autobus
-STR_803A_MAIL_VAN						:Pocztowy
-STR_803B_COAL_CAR						:do wegiel
-STR_803C_OIL_TANKER						:do rope
-STR_803D_LIVESTOCK_VAN						:do zywca
-STR_803E_GOODS_VAN						:do towarow
-STR_803F_GRAIN_HOPPER						:do zboza
-STR_8040_WOOD_TRUCK						:do drewna
-STR_8041_IRON_ORE_HOPPER					:do rudy zelaza
-STR_8042_STEEL_TRUCK						:do stali
-STR_8043_ARMORED_VAN						:opancerzony
-STR_8044_FOOD_VAN						:do zywnosci
-STR_8045_PAPER_TRUCK						:do papieru
-STR_8046_COPPER_ORE_HOPPER					:do rudy miedzi
-STR_8047_WATER_TANKER						:do wody
-STR_8048_FRUIT_TRUCK						:do owocow
-STR_8049_RUBBER_TRUCK						:do gumy
-STR_804A_SUGAR_TRUCK						:do cukru
+STR_8039_PASSENGER_CAR						:Wagon pasazerski
+STR_803A_MAIL_VAN						:Wagon pocztowy
+STR_803B_COAL_CAR						:Wagon na wegiel
+STR_803C_OIL_TANKER						:Cysterna
+STR_803D_LIVESTOCK_VAN						:Wagon na zywiec
+STR_803E_GOODS_VAN						:Wagon towarowy
+STR_803F_GRAIN_HOPPER						:Wagon na zboze
+STR_8040_WOOD_TRUCK						:Wagon na drewno
+STR_8041_IRON_ORE_HOPPER					:Wagon na rude zelaza
+STR_8042_STEEL_TRUCK						:Wagon na stal
+STR_8043_ARMORED_VAN						:Opancerzony wagon
+STR_8044_FOOD_VAN						:Wagon na zywnosc
+STR_8045_PAPER_TRUCK						:Wagon do papieru
+STR_8046_COPPER_ORE_HOPPER					:Wagon na rude miedzi
+STR_8047_WATER_TANKER						:Cysterna do wody
+STR_8048_FRUIT_TRUCK						:Wagon na owoce
+STR_8049_RUBBER_TRUCK						:Wagon na gumy
+STR_804A_SUGAR_TRUCK						:Wagon na cukier
 STR_804B_COTTON_CANDY_HOPPER					:Wagon na wate cukrowa
 STR_804C_TOFFEE_HOPPER						:Wagon na toffi
 STR_804D_BUBBLE_VAN						:Wagon na gume do zucia
@@ -2051,11 +2051,11 @@ STR_805F_GRAIN_HOPPER						:Wagon na zboze
 STR_8060_WOOD_TRUCK						:Wagon na drewno
 STR_8061_IRON_ORE_HOPPER					:Wagon na rude zelaza
 STR_8062_STEEL_TRUCK						:Wagon na stal
-STR_8063_ARMORED_VAN						:Wagon opancerzony
+STR_8063_ARMORED_VAN						:Opancerzony wagon
 STR_8064_FOOD_VAN						:Wagon na zywnosc
 STR_8065_PAPER_TRUCK						:Wagon na papier
 STR_8066_COPPER_ORE_HOPPER					:Wagon na rude miedzi
-STR_8067_WATER_TANKER						:Wagon na wode
+STR_8067_WATER_TANKER						:Cysterna na wode
 STR_8068_FRUIT_TRUCK						:Wagon na owoce
 STR_8069_RUBBER_TRUCK						:Wagon na gume
 STR_806A_SUGAR_TRUCK						:Wagon na cukier
