@@ -1,6 +1,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#include "network.h"
+
 /* vehicle.c */
 
 /* window.c */
@@ -144,16 +146,17 @@ void NetworkCoreShutdown();
 void NetworkCoreDisconnect();
 void NetworkCoreLoop(bool incomming);
 bool NetworkCoreConnectGame(const byte* b, unsigned short port);
+bool NetworkCoreConnectGameStruct(NetworkGameList * item);
 bool NetworkCoreStartGame();
 
 void NetworkLobbyShutdown();
 void NetworkLobbyInit();
 
 void NetworkGameListClear();
-char * NetworkGameListAdd();
+NetworkGameList * NetworkGameListAdd();
 void NetworkGameListFromLAN();
 void NetworkGameListFromInternet();
-char * NetworkGameListItem(uint16 index);
+NetworkGameList * NetworkGameListItem(uint16 index);
 
 void NetworkGameFillDefaults();
 void NetworkGameChangeDate(uint16 newdate);

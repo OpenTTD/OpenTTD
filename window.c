@@ -25,19 +25,19 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 		if (e.click.widget < 0) return; /* exit if clicked outside of widgets */
 
 		wi = &w->widget[e.click.widget];
+				
+		/* don't allow any interaction if the button has been disabled */
+		if (HASBIT(w->disabled_state, e.click.widget))
+			return;
 
 		if (wi->type & 0xE0) {
-			/* special widget handling */
+			/* special widget handling for buttons*/
 			switch(wi->type) {
-			case WWT_IMGBTN | WWB_PUSHBUTTON:
-			case WWT_TEXTBTN | WWB_PUSHBUTTON:
-				if (HASBIT(w->disabled_state, e.click.widget))
-					return; /* don't allow click if disabled */
+			case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
+			case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
 				HandleButtonClick(w, e.click.widget);
 				break;
 			case WWT_NODISTXTBTN:
-				if (HASBIT(w->disabled_state, e.click.widget))
-					return; /* don't allow click if disabled */
 				break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_HSCROLLBAR) {

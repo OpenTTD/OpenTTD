@@ -1145,6 +1145,8 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Size of the map
 STR_NETWORK_INFO_ICONS_TIP				:{BLACK}Language, server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT	:{BLACK}Click a game from the list to select it
 
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+
 STR_NETWORK_JOIN_GAME							:{BLACK}Join game
 
 

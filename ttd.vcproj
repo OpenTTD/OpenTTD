@@ -1135,6 +1135,9 @@
 				RelativePath="macros.h">
 			</File>
 			<File
+				RelativePath=".\network.h">
+			</File>
+			<File
 				RelativePath="news.h">
 			</File>
 			<File

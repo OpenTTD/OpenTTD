@@ -1199,6 +1199,8 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Velikost mapy
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jazyk, verze serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Hru vyberes kliknutim do seznamu
 
+STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+
 STR_NETWORK_JOIN_GAME						:{BLACK}Pridat se
 
 

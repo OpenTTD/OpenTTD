@@ -1199,6 +1199,8 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}A térkép mérete
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Nyelv, szerver verzió, stb.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Kattints a listában a jatékra hogy kiválaszd
 
+STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+
 STR_NETWORK_JOIN_GAME						:{BLACK}Csatlakozás a játékhoz
 
 

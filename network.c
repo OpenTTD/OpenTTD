@@ -246,31 +246,6 @@ static size_t _transmit_file_size;
 
 static FILE *_recv_file;
 
-typedef struct NetworkGameInfo {
-	char server_name[40];			// name of the game
-	char server_revision[8];	// server game version
-	byte server_lang;					// langid
-	byte players_max;					// max players allowed on server
-	byte players_on;					// current count of players on server
-	uint16 game_date;					// current date
-	char game_password[10];		// should fit ... 10 chars
-	char map_name[40];				// map which is played ["random" for a randomized map]
-	uint map_width;						// map width / 8
-	uint map_height;					// map height / 8
-	byte map_set;							// graphical set
-} NetworkGameInfo;
-
-typedef struct NetworkGameList {
-	NetworkGameInfo item;
-	uint32 ip;
-	uint16 port;
-	char * _next;
-} NetworkGameList;
-
-static NetworkGameInfo _network_game;
-static NetworkGameList * _network_game_list = NULL;
-
-
 /* multi os compatible sleep function */
 void CSleep(int milliseconds) {
 #if defined(WIN32)
@@ -327,6 +302,7 @@ static void NetworkHandleConnectionLost()
 		_switch_mode = SM_MENU;
 		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
 }
+
 static void NetworkHandleDeSync()
 {
 	DEBUG(net, 0) ("[NET] Fatal ERROR: network sync error at frame %i", _frame_counter);
@@ -354,7 +330,8 @@ static QueuedCommand *AllocQueuedCommand(CommandQueue *nq)
 	return qp;
 }
 
-static void QueueClear(CommandQueue *nq) {
+static void QueueClear(CommandQueue *nq)
+{
 	QueuedCommand *qp;
 	while ((qp=nq->head)) {
 		// unlink it.
@@ -676,7 +653,8 @@ static void HandleFilePacket(FilePacketHdr *fp)
 	}
 }
 
-static void HandleWelcomePacket(WelcomePacket *wp) {
+static void HandleWelcomePacket(WelcomePacket *wp)
+{
 	int i;
 	for (i=0; i<MAX_PLAYERS; i++) {
 		_player_seeds[i][0]=wp->player_seeds[i][0];
@@ -1036,7 +1014,6 @@ static void NetworkAcceptClients()
 	//  * sync - games are in sync
 }
 
-
 static void SendQueuedCommandsToNewClient(ClientState *cs)
 {
 	// send the commands in the server queue to the new client.
@@ -1072,8 +1049,8 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 
 }
 
-
-bool NetworkCheckClientReady() {
+bool NetworkCheckClientReady()
+{
 	bool ready_all = true;
 	uint16 count = 0;
 	ClientState *cs;
@@ -1095,7 +1072,8 @@ bool NetworkCheckClientReady() {
 // * TCP Networking         * //
 // ************************** //
 
-unsigned long NetworkResolveHost(const char *hostname) {
+unsigned long NetworkResolveHost(const char *hostname)
+{
 	struct hostent* remotehost;
 
 	if ((hostname[0]<0x30) || (hostname[0]>0x39)) {
@@ -1291,6 +1269,7 @@ void NetworkInitialize()
 	QueueClear(&_command_queue);
 	QueueClear(&_ack_queue);
 	_command_queue.last = &_command_queue.head;
+	_network_game_list = NULL;
 
 	// invalidate all clients
 	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++)
@@ -1298,7 +1277,8 @@ void NetworkInitialize()
 
 }
 
-void NetworkClose(bool client) {
+void NetworkClose(bool client)
+{
 
 	ClientState *cs;
 	// invalidate all clients
@@ -1312,7 +1292,7 @@ void NetworkClose(bool client) {
 		closesocket(_listensocket);
 		_listensocket= INVALID_SOCKET;
 		DEBUG(net, 1) ("[NET][TCP] closed listener on port %i", _network_server_port);
-		}
+	}
 }
 
 void NetworkShutdown()
@@ -1331,6 +1311,7 @@ void NetworkStartSync(bool fcreset)
 	DEBUG(net, 3) ("[NET][SYNC] switching to synced game mode");
 	_networking_sync = true;
 	_frame_counter = 0;
+
 	if (fcreset) {
 		_frame_counter_max = 0;
 		_frame_counter_srv = 0;
@@ -1339,22 +1320,23 @@ void NetworkStartSync(bool fcreset)
 	_num_future_seed = 0;
 	_sync_seed_1 = _sync_seed_2 = 0;
 	memset(_my_seed_list, 0, sizeof(_my_seed_list));
-
 }
 
 // ********************************* //
 // * Network Core Console Commands * //
 // ********************************* //
 
-static _iconsole_var * NetworkConsoleCmdConnect(byte argc, byte* argv[], byte argt[]) {
+static _iconsole_var * NetworkConsoleCmdConnect(byte argc, byte* argv[], byte argt[])
+{
 	if (argc<2) return NULL;
-	if (argc==2) {
+
+	if (argc == 2) {
 		IConsolePrintF(_iconsole_color_default, "connecting to %s",argv[1]);
 		NetworkCoreConnectGame(argv[1],_network_server_port);
-	} else if (argc==3) {
+	} else if (argc == 3) {
 		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s",argv[1],argv[2]);
 		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
-	} else if (argc==4) {
+	} else if (argc == 4) {
 		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s as player %s",argv[1],argv[2],argv[3]);
 		_network_playas = atoi(argv[3]);
 		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
@@ -1401,7 +1383,8 @@ void NetworkUDPListen(bool client)
 
 }
 
-void NetworkUDPClose(bool client) {
+void NetworkUDPClose(bool client)
+{
 	if (client) {
 		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_client_port);
 		closesocket(_udp_client_socket);
@@ -1413,7 +1396,8 @@ void NetworkUDPClose(bool client) {
 		};
 	}
 
-void NetworkUDPReceive(bool client) {
+void NetworkUDPReceive(bool client)
+{
 	struct sockaddr_in client_addr;
 #ifndef __MORPHOS__
 	int client_len;
@@ -1465,9 +1449,8 @@ void NetworkUDPReceive(bool client) {
 	}
 }
 
-
-
-void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
+void NetworkUDPBroadCast(bool client, struct UDPPacket packet)
+{
 	int i=0, res;
 	struct sockaddr_in out_addr;
 	uint32 bcaddr;
@@ -1490,8 +1473,8 @@ void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
 
 }
 
-void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet) {
-
+void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet)
+{
 	SOCKET udp;
 	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
 
@@ -1499,7 +1482,8 @@ void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet
 }
 
 
-bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned short * _network_detected_serverport) {
+bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned short * _network_detected_serverport)
+{
 	struct UDPPacket packet;
 	int timeout=3000;
 
@@ -1537,7 +1521,8 @@ bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned sho
 // * New Network Core System * //
 // *************************** //
 
-void NetworkIPListInit() {
+void NetworkIPListInit()
+{
 	struct hostent* he = NULL;
 	char hostname[250];
 	uint32 bcaddr;
@@ -1573,103 +1558,98 @@ void NetworkIPListInit() {
 
 /* *************************************************** */
 
-void NetworkCoreInit() {
-
-DEBUG(net, 3) ("[NET][Core] init()");
-_network_available=true;
-_network_client_timeout=300;
-
-// [win32] winsock startup
-
-#if defined(WIN32)
+void NetworkCoreInit()
 {
-	WSADATA wsa;
-	DEBUG(net, 3) ("[NET][Core] using windows socket library");
-	if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
-		DEBUG(net, 3) ("[NET][Core] error: WSAStartup failed");
-		_network_available=false;
-		}
-}
-#else
+	DEBUG(net, 3) ("[NET][Core] init()");
+	_network_available=true;
+	_network_client_timeout=300;
 
-// [morphos/amigaos] bsd-socket startup
+	// [win32] winsock startup
 
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-{
-	DEBUG(misc,3) ("[NET][Core] using bsd socket library");
-	if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-		DEBUG(net, 3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
-		_network_available=false;
-		}
+	#if defined(WIN32)
+	{
+		WSADATA wsa;
+		DEBUG(net, 3) ("[NET][Core] using windows socket library");
+		if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
+			DEBUG(net, 3) ("[NET][Core] error: WSAStartup failed");
+			_network_available=false;
+			}
+	}
+	#else
 
-	#if !defined(__MORPHOS__)
-	// for usleep() implementation (only required for legacy AmigaOS builds)
-	if ( (TimerPort = CreateMsgPort()) ) {
-		if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
-			if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
-				if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
-					// free ressources...
-					DEBUG(net, 3) ("[NET][Core] Couldn't initialize timer.");
-					_network_available=false;
+	// [morphos/amigaos] bsd-socket startup
+
+	#if defined(__MORPHOS__) || defined(__AMIGA__)
+	{
+		DEBUG(misc,3) ("[NET][Core] using bsd socket library");
+		if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
+			DEBUG(net, 3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
+			_network_available=false;
+			}
+
+		#if !defined(__MORPHOS__)
+		// for usleep() implementation (only required for legacy AmigaOS builds)
+		if ( (TimerPort = CreateMsgPort()) ) {
+			if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
+				if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
+					if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
+						// free ressources...
+						DEBUG(net, 3) ("[NET][Core] Couldn't initialize timer.");
+						_network_available=false;
+					}
 				}
 			}
 		}
+		#endif
+
 	}
+	#else
+
+	// [linux/macos] unix-socket startup
+
+		DEBUG(net, 3) ("[NET][Core] using unix socket library");
+
 	#endif
 
-}
-#else
-
-// [linux/macos] unix-socket startup
-
-	DEBUG(net, 3) ("[NET][Core] using unix socket library");
-
-#endif
-
-#endif
+	#endif
 
 
-if (_network_available) {
-	DEBUG(net, 3) ("[NET][Core] OK: multiplayer available");
-	// initiate network ip list
-	NetworkIPListInit();
-	IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
-	IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
-	IConsoleVarRegister("net_ready_ahead",&_network_ready_ahead,ICONSOLE_VAR_UINT16);
-	IConsoleVarRegister("net_sync_freq",&_network_sync_freq,ICONSOLE_VAR_UINT16);
-	} else {
-	DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
-	}
+	if (_network_available) {
+		DEBUG(net, 3) ("[NET][Core] OK: multiplayer available");
+		// initiate network ip list
+		NetworkIPListInit();
+		IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
+		IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
+		IConsoleVarRegister("net_ready_ahead",&_network_ready_ahead,ICONSOLE_VAR_UINT16);
+		IConsoleVarRegister("net_sync_freq",&_network_sync_freq,ICONSOLE_VAR_UINT16);
+	} else
+		DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
 }
 
 /* *************************************************** */
 
-void NetworkCoreShutdown() {
-
-DEBUG(net, 3) ("[NET][Core] shutdown()");
-
-#if defined(__MORPHOS__) || defined(__AMIGA__)
+void NetworkCoreShutdown()
 {
-	// free allocated ressources
-	#if !defined(__MORPHOS__)
-  if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
-  if (TimerRequest) { DeleteIORequest(TimerRequest); }
-  if (TimerPort)    { DeleteMsgPort(TimerPort); }
+	DEBUG(net, 3) ("[NET][Core] shutdown()");
+
+	#if defined(__MORPHOS__) || defined(__AMIGA__)
+	{
+		// free allocated ressources
+		#if !defined(__MORPHOS__)
+		if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
+		if (TimerRequest) { DeleteIORequest(TimerRequest); }
+		if (TimerPort)    { DeleteMsgPort(TimerPort); }
+		#endif
+
+		if (SocketBase) {
+			CloseLibrary(SocketBase);
+		}
+	}
 	#endif
 
-	if (SocketBase) {
-		CloseLibrary(SocketBase);
-	}
-}
-#endif
-
-
-#if defined(WIN32)
-{
-	WSACleanup();
-}
-#endif
-
+	#if defined(WIN32)
+	{ WSACleanup();}
+	#endif
 }
 
 /* *************************************************** */
@@ -1703,6 +1683,13 @@ bool NetworkCoreConnectGame(const byte* b, unsigned short port)
 		_switch_mode_errorstr = STR_NETWORK_ERR_NOCONNECTION;
 	}
 	return _networking;
+}
+
+/* *************************************************** */
+
+bool NetworkCoreConnectGameStruct(NetworkGameList * item)
+{
+	return NetworkCoreConnectGame(inet_ntoa(*(struct in_addr *) &item->ip),item->port);
 }
 
 /* *************************************************** */
@@ -1741,39 +1728,33 @@ void NetworkCoreDisconnect()
 
 /* *************************************************** */
 
-void NetworkCoreLoop(bool incomming) {
+void NetworkCoreLoop(bool incomming)
+{
+	if (incomming) {
+		// incomming
+		if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
+		if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
 
-
-if (incomming) {
-
-	// incomming
-
-	if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
-	if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
-
-	if (_networking) {
-		NetworkReceive();
-		}
+		if (_networking)
+			NetworkReceive();
 
 	} else {
+		if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
+		if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
 
-	if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
-	if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
-
-	if (_networking) {
-		NetworkSend();
-		}
-
+		if (_networking)
+			NetworkSend();
 	}
-
 }
 
-void NetworkLobbyInit() {
+void NetworkLobbyInit()
+{
 	DEBUG(net, 3) ("[NET][Lobby] init()");
 	NetworkUDPListen(true);
 }
 
-void NetworkLobbyShutdown() {
+void NetworkLobbyShutdown()
+{
 	DEBUG(net, 3) ("[NET][Lobby] shutdown()");
 	NetworkUDPClose(true);
 }
@@ -1783,46 +1764,52 @@ void NetworkLobbyShutdown() {
 // * Network Game List Extensions * //
 // ******************************** //
 
-void NetworkGameListClear() {
-NetworkGameList * item;
-NetworkGameList * next;
+void NetworkGameListClear()
+{
+	NetworkGameList * item;
+	NetworkGameList * next;
 
-DEBUG(net, 4) ("[NET][G-List] cleared server list");
+	DEBUG(net, 4) ("[NET][G-List] cleared server list");
 
-item = _network_game_list;
-while (item != NULL) {
-	next = (NetworkGameList *) item -> _next;
-	free (item);
-	item = next;
+	item = _network_game_list;
+
+	while (item != NULL) {
+		next = (NetworkGameList *) item -> _next;
+		free (item);
+		item = next;
 	}
-_network_game_list=NULL;
-_network_game_count=0;
+	_network_game_list=NULL;
+	_network_game_count=0;
 }
 
-char * NetworkGameListAdd() {
-NetworkGameList * item;
-NetworkGameList * before;
+NetworkGameList * NetworkGameListAdd()
+{
+	NetworkGameList * item;
+	NetworkGameList * before;
 
-DEBUG(net, 4) ("[NET][G-List] added server to list");
+	DEBUG(net, 4) ("[NET][G-List] added server to list");
 
-item = _network_game_list;
-before = item;
-while (item != NULL) {
+	item = _network_game_list;
 	before = item;
-	item = (NetworkGameList *) item -> _next;
+	while (item != NULL) {
+		before = item;
+		item = (NetworkGameList *) item -> _next;
 	}
-item = malloc(sizeof(NetworkGameList));
-item -> _next = NULL;
-if (before == NULL) {
-	_network_game_list = item;
-	} else {
-	before -> _next = (char *) item;
-	}
-_network_game_count++;
-return (char *) item;
+
+	item = malloc(sizeof(NetworkGameList));
+	item -> _next = NULL;
+
+	if (before == NULL) {
+		_network_game_list = item;
+	} else
+		before -> _next = item;
+
+	_network_game_count++;
+	return item;
 }
 
-void NetworkGameListFromLAN() {
+void NetworkGameListFromLAN()
+{
 	struct UDPPacket packet;
 	DEBUG(net, 2) ("[NET][G-List] searching server over lan");
 	NetworkGameListClear();
@@ -1831,35 +1818,37 @@ void NetworkGameListFromLAN() {
 	NetworkUDPBroadCast(true,packet);
 }
 
-void NetworkGameListFromInternet() {
+void NetworkGameListFromInternet()
+{
 	DEBUG(net, 2) ("[NET][G-List] searching servers over internet");
 	NetworkGameListClear();
 
 	// **TODO** masterserver communication [internet protocol list]
-
 }
 
-char * NetworkGameListItem(uint16 index) {
-NetworkGameList * item;
-NetworkGameList * next;
-uint16 cnt = 0;
+NetworkGameList * NetworkGameListItem(uint16 index)
+{
+	NetworkGameList * item;
+	NetworkGameList * next;
+	uint16 cnt = 0;
 
-item = _network_game_list;
+	item = _network_game_list;
 
-while ((item != NULL) && (cnt != index)) {
-	next = (NetworkGameList *) item -> _next;
-	item = next;
-	cnt++;
+	while ((item != NULL) && (cnt != index)) {
+		next = (NetworkGameList *) item -> _next;
+		item = next;
+		cnt++;
 	}
 
-return (char *) item;
+	return item;
 }
 
 // *************************** //
 // * Network Game Extensions * //
 // *************************** //
 
-void NetworkGameFillDefaults() {
+void NetworkGameFillDefaults()
+{
 	NetworkGameInfo * game = &_network_game;
 #if defined(WITH_REV)
 	extern char _openttd_revision[];
@@ -1887,10 +1876,10 @@ void NetworkGameFillDefaults() {
 	game->server_lang=_dynlang.curr;
 }
 
-void NetworkGameChangeDate(uint16 newdate) {
-	if (_networking_server) {
+void NetworkGameChangeDate(uint16 newdate)
+{
+	if (_networking_server)
 		_network_game.game_date = newdate;
-		}
 }
 
 #else // not ENABLE_NETWORK

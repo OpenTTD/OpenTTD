@@ -1144,6 +1144,8 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Grootte van de kaart
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Taal, serverversie, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klik op een spel uit de lijst om deze te selecteren
 
+STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+
 STR_NETWORK_JOIN_GAME						:{BLACK}Meespelen
 
 
