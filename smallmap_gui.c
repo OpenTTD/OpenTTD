@@ -1013,7 +1013,6 @@ static Widget _extra_view_port_widgets[] = {
 static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 {
 	ViewPort *vp = w->viewport;
-	int button = 4;
 
 	switch(e->event) {
 	case WE_PAINT: {
