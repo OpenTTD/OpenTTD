@@ -55,6 +55,7 @@ struct GRFFile {
 static struct GRFFile *_cur_grffile, *_first_grffile;
 static int _cur_spriteid;
 static int _cur_stage;
+extern int _custom_sprites_base;
 
 static int32 _paramlist[0x7f];
 static int _param_max;
@@ -1150,6 +1151,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			groupid = grf_load_word(&buf);
 			if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
+				grf_load_word(&buf); // skip range
 				i--; dg->num_ranges--;
 				continue;
 			}
@@ -1163,7 +1165,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		groupid = grf_load_word(&buf);
 		if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
 			/* This spritegroup stinks. */
-			free(dg->ranges);
+			free(dg->ranges), dg->ranges = NULL;
 			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Default groupid %04x is cargo callback or unknown, ignoring spritegroup.", setid, numloaded, groupid);
 			return;
 		}
@@ -1629,7 +1631,7 @@ static void SkipIf(byte *buf, int len)
 	}
 
 	numsprites = grf_load_byte(&buf);
-	grfmsg(GMS_NOTICE, "Skipping %d sprites, test was true.", numsprites);
+	grfmsg(GMS_NOTICE, "Skipping %d->+%d sprites, test was true.", _cur_spriteid - _custom_sprites_base, numsprites);
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
 		/* Zero means there are no sprites to skip, so
@@ -1732,6 +1734,11 @@ static void GRFError(byte *buf, int len)
 	check_length(len, 6, "GRFError");
 	severity = buf[1];
 	msgid = buf[3];
+
+	// Undocumented TTDPatch feature.
+	if ((severity & 0x80) == 0 && _cur_stage == 0)
+		return;
+	severity &= 0x7F;
 
 	if (msgid == 0xFF) {
 		grfmsg(severity, "%s", buf+4);
@@ -1903,18 +1910,24 @@ static void InitializeGRFSpecial(void)
 {
 	/* FIXME: We should rather reflect reality in _ttdpatch_flags[]. */
 
-	_ttdpatch_flags[1] = (1 << 0x08)	/* mammothtrains */
-		| (1 << 0x0B)			/* subsidiaries */
-		| (1 << 0x14)			/* bridgespeedlimits */
-		| (1 << 0x16)			/* eternalgame */
-		| (1 << 0x17)			/* newtrains */
-		| (1 << 0x18)			/* newrvs */
-		| (1 << 0x19)			/* newships */
-		| (1 << 0x1A);		/* newplanes */
+	_ttdpatch_flags[1] = (1 << 0x08)  /* mammothtrains */
+	                   | (1 << 0x0B)  /* subsidiaries */
+	                   | (1 << 0x14)  /* bridgespeedlimits */
+	                   | (1 << 0x16)  /* eternalgame */
+	                   | (1 << 0x17)  /* newtrains */
+	                   | (1 << 0x18)  /* newrvs */
+	                   | (1 << 0x19)  /* newships */
+	                   | (1 << 0x1A)  /* newplanes */
+			   | (1 << 0x1B); /* signalsontrafficside */
+	                   /* Uncomment following if you want to fool the GRF file.
+	                    * Some GRF files will refuse to load without this
+	                    * but you can still squeeze something from them even
+	                    * without the support - i.e. USSet. --pasky */
+			   //| (1 << 0x1C); /* electrifiedrailway */
 
-	_ttdpatch_flags[2] = (1 << 0x0D)	/* signalsontrafficside */
-		| (1 << 0x16)			/* canals */
-		| (1 << 0x17);		/* newstartyear */
+	_ttdpatch_flags[2] = (1 << 0x0D)  /* buildonslopes */
+	                   | (1 << 0x16)  /* canals */
+	                   | (1 << 0x17); /* newstartyear */
 }
 
 void InitNewGRFFile(const char *filename, int sprite_offset)
@@ -2019,7 +2032,7 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 		 * considered active if its action 8 has been processed, i.e. its
 		 * action 8 hasn't been skipped using an action 7.
 		 *
-		 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9 and 0A are
+		 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
 		 * carried out.  All others are ignored, because they only need to be
 		 * processed once at initialization.  */
 
@@ -2035,7 +2048,7 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 
 		} else if ((action == 0x00) || (action == 0x01) || (action == 0x02) || (action == 0x03)
 			   || (action == 0x04) || (action == 0x05) || (action == 0x07) || (action == 0x08)
-			   || (action == 0x09) || (action == 0x0A)) {
+			   || (action == 0x09) || (action == 0x0A) || (action == 0x0B)) {
 			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
 			handlers[action](buf, num);
 
