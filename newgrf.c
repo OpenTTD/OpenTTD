@@ -855,6 +855,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						stat->platforms[l] = number;
 					}
 
+					p = 0;
 					layout = malloc(length * number);
 					for (l = 0; l < length; l++)
 						for (p = 0; p < number; p++)
@@ -862,6 +863,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					l--;
 					p--;
+					assert(p >= 0);
 					free(stat->layouts[l][p]);
 					stat->layouts[l][p] = layout;
 				}
@@ -949,7 +951,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 	uint8 numprops;
 	uint8 numinfo;
 	byte engine;
-	EngineInfo *ei;
+	EngineInfo *ei = NULL;
 
 	if (len == 1) {
 		DEBUG(grf, 8) ("Silently ignoring one-byte special sprite 0x00.");
@@ -972,6 +974,8 @@ static void VehicleChangeInfo(byte *buf, int len)
 
 	if (feature != GSF_STATION)
 		ei = &_engine_info[engine + _vehshifts[feature]];
+	/* XXX - Should there not be a check to see if 'ei' is NULL
+	    when it is used in the switch below?? -- TrueLight */
 
 	buf += 5;
 

@@ -545,8 +545,9 @@ static void DoTriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger, byte bas
 		rsg = TriggerVehicleSpriteGroup(&_engine_custom_sprites[veh->engine_type][29], veh,
 						(resolve_callback) TriggerVehicleSpriteGroup);
 	}
+	new_random_bits = Random();
 	veh->random_bits &= ~_vsg_bits_to_reseed;
-	veh->random_bits |= (first ? (new_random_bits = Random()) : base_random_bits) & _vsg_bits_to_reseed;
+	veh->random_bits |= (first ? new_random_bits : base_random_bits) & _vsg_bits_to_reseed;
 
 	switch (trigger) {
 		case VEHICLE_TRIGGER_NEW_CARGO:
