@@ -1661,6 +1661,9 @@ static const char *name_czech_real[] = {
 
 
 /* The advanced hyperintelligent Czech town names generator! */
+/* The tables and MakeCzechTownName() is (c) Petr Baudis 2005 (GPL'd)
+ * Feel free to ask me about anything unclear or if you need help
+ * with cloning this for your own language. */
 
 // Sing., pl.
 enum CzechGender {
