@@ -384,11 +384,11 @@ static const Widget _industry_directory_widgets[] = {
 {   WIDGETS_END},
 };
 
-static byte _industry_sort[lengthof(_industries)];
+static uint16 _industry_sort[lengthof(_industries)];
 static uint _num_industry_sort;
 
 static char _bufcache[96];
-static byte _last_industry_idx;
+static uint16 _last_industry_idx;
 
 static byte _industry_sort_order;
 
@@ -396,8 +396,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	char buf1[96];
 	byte val;
-	Industry *i = DEREF_INDUSTRY(*(const byte*)a);
-	Industry *j = DEREF_INDUSTRY(*(const byte*)b);
+	Industry *i = DEREF_INDUSTRY(*(const uint16*)a);
+	Industry *j = DEREF_INDUSTRY(*(const uint16*)b);
 	int r = 0;
 
 	switch (_industry_sort_order >> 1) {
@@ -441,7 +441,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		SetDParam(0, i->town->townnameparts);
 		GetString(buf1, i->town->townnametype);
 
-		if ( (val=*(const byte*)b) != _last_industry_idx) {
+		if ( (val=*(const uint16*)b) != _last_industry_idx) {
 			_last_industry_idx = val;
 			SetDParam(0, j->town->townnameparts);
 			GetString(_bufcache, j->town->townnametype);
@@ -459,13 +459,15 @@ static void MakeSortedIndustryList()
 	int n = 0, index = 0;
 
 	for(i=_industries; i != endof(_industries); i++) {
-		if(i->xy) _industry_sort[n++] = index;
+		if(i->xy)
+			_industry_sort[n++] = index;
+
 		index++;
 	}
 	_num_industry_sort = n;
-	_last_industry_idx = 255; // used for "cache"
+	_last_industry_idx = 0xFFFF; // used for "cache"
 
-	qsort(_industry_sort, n, 1, GeneralIndustrySorter);
+	qsort(_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
 
 	DEBUG(misc, 1) ("Resorting Industries list...");
 }
@@ -548,7 +550,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 		case 8: {
 			int y = (e->click.pt.y - 28) / 10;
-			byte p;
+			uint16 p;
 			Industry *c;
 
 			if (!IS_INT_INSIDE(y, 0, 16))

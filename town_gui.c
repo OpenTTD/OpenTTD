@@ -352,11 +352,11 @@ static const Widget _town_directory_widgets[] = {
 
 
 // used to get a sorted list of the towns
-static byte _town_sort[lengthof(_towns)];
+static uint16 _town_sort[lengthof(_towns)];
 static uint _num_town_sort;
 
 static char _bufcache[64];
-static byte _last_town_idx;
+static uint16 _last_town_idx;
 
 static int CDECL TownNameSorter(const void *a, const void *b)
 {
@@ -365,11 +365,11 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	byte val;
 	int r;
 
-	t = DEREF_TOWN(*(const byte*)a);
+	t = DEREF_TOWN(*(const uint16*)a);
 	SetDParam(0, t->townnameparts);
 	GetString(buf1, t->townnametype);
 
-	if ( (val=*(const byte*)b) != _last_town_idx) {
+	if ( (val=*(const uint16*)b) != _last_town_idx) {
 		_last_town_idx = val;
 		t = DEREF_TOWN(val);
 		SetDParam(0, t->townnameparts);
@@ -383,8 +383,8 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 
 static int CDECL TownPopSorter(const void *a, const void *b)
 {
-	const Town *ta = DEREF_TOWN(*(const byte*)a);
-	const Town *tb = DEREF_TOWN(*(const byte*)b);
+	const Town *ta = DEREF_TOWN(*(const uint16*)a);
+	const Town *tb = DEREF_TOWN(*(const uint16*)b);
 	int r = ta->population - tb->population;
 	if (_town_sort_order & 1) r = -r;
 	return r;
@@ -394,7 +394,10 @@ static void MakeSortedTownList()
 {
 	Town *t;
 	int n = 0;
-	FOR_ALL_TOWNS(t) if(t->xy) _town_sort[n++] = t->index;
+	FOR_ALL_TOWNS(t)
+		if(t->xy)
+			_town_sort[n++] = t->index;
+
 	_num_town_sort = n;
 
 	_last_town_idx = 0; // used for "cache"
