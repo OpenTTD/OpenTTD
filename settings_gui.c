@@ -167,8 +167,10 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			MarkWholeScreenDirty();
 			break;
 		case 11: /* Road side */
-			if (_opt_mod_ptr->road_side != e->dropdown.index) // only change if setting changed
+			if (_opt_mod_ptr->road_side != e->dropdown.index) { // only change if setting changed
 				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_EMPTY));
+				MarkWholeScreenDirty();
+			}
 			break;
 		case 14: /* Town names */
 			if (_game_mode == GM_MENU)
