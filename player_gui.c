@@ -494,6 +494,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		//   and the player is not an AI
 		if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) dis |= 1 << 9;
 		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
+		if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
 
 		w->disabled_state = dis;
 		DrawWindowWidgets(w);
