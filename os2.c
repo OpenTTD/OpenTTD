@@ -112,8 +112,8 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
-					strcmp(fd.cFileName, ".") != 0 &&
-					strcmp(fd.cFileName, "..") != 0) {
+					strcmp(filename, ".") != 0 &&
+					strcmp(filename, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
@@ -239,10 +239,9 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
-			if (!stat(filename, &sb) && (S_ISDIR(sb.st_mode)
-						strcmp(dirent->d_name, ".") != 0 &&
-						strcmp(dirent->d_name, "..") != 0 &&
-					) {
+			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
+					strcmp(filename, ".") != 0 &&
+					strcmp(filename, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
@@ -679,5 +678,6 @@ const HalMusicDriver _os2_music_driver = {
 
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
+	// TODO
 	return false;
 }
