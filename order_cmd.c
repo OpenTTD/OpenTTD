@@ -287,7 +287,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			dst->schedule_ptr = _ptr_to_next_order;
 			dst->num_orders = src->num_orders;
 			_ptr_to_next_order += src->num_orders + 1;
-			memcpy(dst->schedule_ptr, src->schedule_ptr, (src->num_orders + 1) * sizeof(uint16));
+			memcpy(dst->schedule_ptr, src->schedule_ptr, (src->num_orders + 1) * sizeof(Order));
 
 			InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
 
