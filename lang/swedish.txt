@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placera 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placera fyrtorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placera radiosändare
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiera öken
+STR_CREATE_LAKE                                                 :{BLACK}Definiera vattenområde. Kommer översvämma omgivningarna om höjden är vid havsnivån.
 STR_0290_DELETE                                                 :{BLACK}Ta bort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Ta bort staden helt och hållet
 STR_0292_SAVE_SCENARIO                                          :Spara scenario
