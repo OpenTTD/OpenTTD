@@ -3609,23 +3609,25 @@ return_to_loop:;
 static void AiStateRemoveStation(Player *p)
 {
 	// Remove stations that aren't in use by any vehicle
-	byte in_use[256], *used;
+	byte *in_use;
+	const byte *used;
 	const Order *ord;
-	Station *st;
-	uint tile;
+	const Station *st;
+	TileIndex tile;
 
 	// Go to this state when we're done.
 	p->ai.state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
-	memset(in_use, 0, sizeof(in_use));
+	in_use = malloc(GetStationPoolSize());
+	memset(in_use, 0, GetStationPoolSize());
 	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION)
 			in_use[ord->station] = 1;
 	}
 
 	// Go through all stations and delete those that aren't in use
-	used=in_use;
+	used = in_use;
 	FOR_ALL_STATIONS(st) {
 		if (st->xy != 0 && st->owner == _current_player && !*used &&
 				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
@@ -3638,6 +3640,7 @@ static void AiStateRemoveStation(Player *p)
 		used++;
 	}
 
+	free(in_use);
 }
 
 static void AiRemovePlayerRailOrRoad(Player *p, TileIndex tile)
