@@ -39,7 +39,7 @@ static const DrawTrackSeqStruct _track_depot_layout_table_3[] = {
 static const DrawTrackSeqStruct _track_waypoint_table_0[] = {
 	TILE_SEQ_BEGIN(0x83F4)
 	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+18,  0,  0,  16,  5)
-	TILE_SEQ_LINE(0x8000 + +19,  0, 11,  16,  5)
+	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+19,  0, 11,  16,  5)
 	TILE_SEQ_END()
 };
 
