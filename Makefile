@@ -290,7 +290,7 @@ endif
 # -O	optimize or -O2 fully optimize (O's above 2 are not recommended)
 # -pg	profile - generate profiling data.  See "man gprof" to use this.
 
-CFLAGS=-Wall -Wno-multichar -Wsign-compare
+CFLAGS=-Wall -Wno-multichar -Wsign-compare -W -O1 -Wno-unused-parameter
 CDEFS=-DWITH_REV
 LDFLAGS=
 LIBS=
