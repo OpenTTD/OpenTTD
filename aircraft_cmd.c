@@ -35,31 +35,34 @@ static const SpriteID _aircraft_sprite[] = {
 	0x0EBD, 0x0EC5
 };
 
-// use this to find the nearest hangar to v
-// bit 16 is set in the return value if the player do not have any airports with a hangar (like helipads only)
-static uint32 FindNearestHangar(Vehicle *v)
+/* Find the nearest hangar to v
+ * INVALID_STATION is returned, if the player does not have any suitable
+ * airports (like helipads only)
+ */
+static uint16 FindNearestHangar(const Vehicle *v)
 {
-	Station *st;
-	uint temp_distance, distance = 0xFFFF;
-	uint16 index_to_target = 0;
+	const Station *st;
+	uint best = 0;
+	uint16 index = INVALID_STATION;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
-			if (GetAirport(st->airport_type)->terminals != NULL) {
-				// don't crash the planes if we know they can't land at the airport
-				if (HASBIT(v->subtype,1) && st->airport_type == AT_SMALL && !_cheats.no_jetcrash.value) continue;
+		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT &&
+				GetAirport(st->airport_type)->nof_depots > 0) {
+			uint distance;
 
-				temp_distance = DistanceSquare(v->tile, st->airport_tile);
-				if (temp_distance < distance) {
-					distance = temp_distance;
-					index_to_target = st->index;
-				}
+			// don't crash the plane if we know it can't land at the airport
+			if (HASBIT(v->subtype, 1) && st->airport_type == AT_SMALL &&
+					!_cheats.no_jetcrash.value)
+				continue;
+
+			distance = DistanceSquare(v->tile, st->airport_tile);
+			if (distance < best || index == INVALID_STATION) {
+				best = distance;
+				index = st->index;
 			}
 		}
 	}
-	if (distance == 65000)
-		SETBIT(index_to_target, 16);
-	return index_to_target;
+	return index;
 }
 
 // returns true if vehicle v have an airport in the schedule, that has a hangar
@@ -438,14 +441,16 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st = GetStation(next_airport_index);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
-		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL) {
+		if (st->xy == 0 || st->airport_tile == 0 ||
+				GetAirport(st->airport_type)->nof_depots == 0) {
 			if (p2 == 0) {
-				// the aircraft have to search for a hangar on it's own
-				uint32 temp = FindNearestHangar(v);
+				// the aircraft has to search for a hangar on its own
+				uint16 station = FindNearestHangar(v);
+
 				next_airport_has_hangar = false;
-				if (HASBIT(temp, 16)) return CMD_ERROR; // the player does not own a hangar
-				st = GetStation(temp);
-				next_airport_index = (uint16)temp;
+				if (station == INVALID_STATION) return CMD_ERROR;
+				st = GetStation(station);
+				next_airport_index = station;
 			} else {
 				return CMD_ERROR;
 			}
