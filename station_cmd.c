@@ -964,22 +964,22 @@ uint GetStationPlatforms(Station *st, uint tile)
  * file used non-contignuous station ids. --pasky */
 
 static int _waypoint_highest_id = -1;
-static DrawTileSprites _waypoint_data[256][8];
+static struct StationSpec _waypoint_data[256];
 
-void SetCustomStation(uint32 classid, byte stid, DrawTileSprites *data, byte tiles)
+void SetCustomStation(byte stid, struct StationSpec *spec)
+{
+	assert(spec->classid == 'WAYP');
+	if (stid > _waypoint_highest_id)
+		_waypoint_highest_id = stid;
+	memcpy(&_waypoint_data[stid], spec, sizeof(*spec));
+}
+
+DrawTileSprites *GetCustomStationRenderdata(uint32 classid, byte stid)
 {
 	assert(classid == 'WAYP');
 	if (stid > _waypoint_highest_id)
-		_waypoint_highest_id = stid;
-	memcpy(_waypoint_data[stid], data, sizeof(DrawTileSprites) * tiles);
-}
-
-DrawTileSprites *GetCustomStation(uint32 classid, byte stid)
-{
-	assert(classid == 'WAYP');
-	if (stid > _waypoint_highest_id || !_waypoint_data || !_waypoint_data[stid])
 		return NULL;
-	return _waypoint_data[stid];
+	return _waypoint_data[stid].renderdata;
 }
 
 int GetCustomStationsCount(uint32 classid)

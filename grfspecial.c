@@ -21,12 +21,6 @@ extern int _skip_sprites;
 extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 
-struct StationSpec {
-	uint32 classid;
-	byte tiles;
-	DrawTileSprites renderdata[8];
-};
-
 struct GRFFile {
 	char *filename;
 	uint32 grfid;
@@ -1225,10 +1219,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					seq->image += _cur_grffile->spritegroups[groupid].loading[0];
 				}
 			}
-			/* FIXME: This means several GRF files defining new stations
-			 * will override each other, but the stid should be GRF-specific
-			 * instead! --pasky */
-			SetCustomStation(stat->classid, stid, stat->renderdata, stat->tiles);
+			SetCustomStation(stid, stat);
 			stat->classid = 0;
 		}
 		return;

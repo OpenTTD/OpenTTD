@@ -1544,7 +1544,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_WAYPOINT(m5) && _map3_lo[ti->tile]&16) {
 			// look for customization
-			DrawTileSprites *cust = GetCustomStation('WAYP', _map3_hi[ti->tile]);
+			DrawTileSprites *cust = GetCustomStationRenderdata('WAYP', _map3_hi[ti->tile]);
 
 			if (cust) {
 				DrawTileSeqStruct const *seq;
@@ -1623,7 +1623,7 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 void DrawWaypointSprite(int x, int y, int stat_id)
 {
 	// TODO: We should use supersets with cargo-id FF, if available. --pasky
-	DrawTileSprites *cust = GetCustomStation('WAYP', stat_id);
+	DrawTileSprites *cust = GetCustomStationRenderdata('WAYP', stat_id);
 	DrawTileSeqStruct const *seq;
 	uint32 ormod, img;
 
