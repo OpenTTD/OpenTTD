@@ -1229,6 +1229,21 @@ bool AfterLoadGame(uint version)
 		UpdateCurrencies();
 	}
 
+	/* In old version there seems to be a problem that water is owned by
+	    OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
+	    (0x402) version, so I just check when versions are older, and then
+	    walk through the whole map.. */
+	if (version <= 0x402) {
+		TileIndex tile = TILE_XY(0,0);
+		uint w = MapSizeX();
+		uint h = MapSizeY();
+
+		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
+			if (IS_TILETYPE(tile_cur, MP_WATER) && _map_owner[tile_cur] != OWNER_WATER)
+				_map_owner[tile_cur] = OWNER_WATER;
+		END_TILE_LOOP(tile_cur, w, h, tile)
+	}
+
 	// convert road side to my format.
 	if (_opt.road_side) _opt.road_side = 1;
 
