@@ -772,6 +772,11 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	{&_station_tick_ctr, 				SLE_UINT16, 0, 255},
 	{&_random_seeds[0][0], 					SLE_UINT32, 0, 255},
 	{&_random_seeds[0][1], 					SLE_UINT32, 0, 255},
+	/* XXX: We save only a portion of the _cur_town_ctr, this should be
+	 * fixed in the next revision bump. It does not hurt so much since
+	 * it just gives a small single-time penalty to the towns with higher
+	 * IDs at the load time. _cur_town_ctr is zeroed in InitializeTowns()
+	 * so the higher octets do not interfere at this time. */
 	{&_cur_town_ctr, 						SLE_UINT8,	0, 255},
 	{&_cur_player_tick_index, 	SLE_FILE_U8 | SLE_VAR_UINT, 0, 255},
 	{&_next_competitor_start, 	SLE_FILE_U16 | SLE_VAR_UINT, 0, 255},

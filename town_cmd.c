@@ -442,7 +442,7 @@ void OnTick_Town(void)
 	for (counter += GetTownPoolSize();
 	     counter >= TOWN_GROWTH_FREQUENCY;
 	     counter -= TOWN_GROWTH_FREQUENCY) {
-		int i = _cur_town_ctr;
+		uint32 i = _cur_town_ctr;
 		Town *t;
 
 		if (++_cur_town_ctr >= GetTownPoolSize())
