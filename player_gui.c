@@ -372,7 +372,9 @@ static const Widget _my_player_company_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_706F_BUILD_HQ,       STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{      WWT_EMPTY,   RESIZE_NONE,    14,   266,   355,    32,    43, 0x0,                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   355,    32,    43, 0x0,                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   355,    32,    43, 0x0,                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   355,    32,    43, 0x0,                     STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
@@ -402,6 +404,8 @@ static const Widget _my_player_company_bh_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,        STR_7070_BUILD_COMPANY_HEADQUARTERS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,         STR_RELOCATE_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   355,    32,    43, 0x0,                     STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   355,    32,    43, 0x0,                     STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
@@ -502,7 +506,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
 
-			if (!_networking) w->hidden_state |= (1 << 9); // hide company-password widget
+			if (!_networking) w->hidden_state |= (1 << 11); // hide company-password widget
 		} else {
 			if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) dis |= 1 << 9;
 			// Also disable the buy button if 25% is not-owned by someone
@@ -589,7 +593,14 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			SetObjectToPlaceWnd(0x2D0, 1, w);
 			SetTileSelectSize(2, 2);
 			break;
-		case 9: {/* buy 25% or password protect your company */
+		case 9: /* buy 25% */
+			DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
+			break;
+
+		case 10: /* sell 25% */
+			DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
+			break;
+		case 11: { /* Password protect company */
 			#ifdef ENABLE_NETWORK
 			if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 				StringID str;
@@ -597,17 +608,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				str = AllocateName(_network_player_info[_local_player].password, 0);
 				ShowQueryString(str, STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number);
 				DeleteName(str);
-			} else
+			}
 			#endif
-				DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
-
-		} break;
-
-		case 10: /* sell 25% */
-			DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
-			break;
+		}	break;
 		}
-		break;
 
 	case WE_MOUSELOOP:
 		/* redraw the window every now and then */
