@@ -65,8 +65,8 @@ void DedicatedFork()
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
 {
-		_exit_game = true;
-		signal(sig, DedicatedSignalHandler);
+	_exit_game = true;
+	signal(sig, DedicatedSignalHandler);
 }
 #endif
 
@@ -97,6 +97,7 @@ static bool InputWaiting()
 {
 	struct timeval tv;
 	fd_set readfds;
+	byte ret;
 
 	tv.tv_sec = 0;
 	tv.tv_usec = 1;
@@ -105,9 +106,9 @@ static bool InputWaiting()
 	FD_SET(STDIN, &readfds);
 
 	/* don't care about writefds and exceptfds: */
-	select(STDIN+1, &readfds, NULL, NULL, &tv);
+	ret = select(STDIN + 1, &readfds, NULL, NULL, &tv);
 
-	if (FD_ISSET(STDIN, &readfds))
+	if (ret > 0)
 		return true;
 	else
 		return false;
@@ -128,6 +129,9 @@ static void DedicatedHandleKeyInput()
 
 #ifdef UNIX
 	if (InputWaiting()) {
+		if (_exit_game)
+			return;
+
 		fgets(input_line, 200, stdin);
 		// Forget about the final \n (or \r)
 		strtok(input_line, "\r\n");
@@ -167,7 +171,7 @@ static int DedicatedVideoMainLoop()
 #ifdef UNIX
 	signal(SIGTERM, DedicatedSignalHandler);
 	signal(SIGINT, DedicatedSignalHandler);
-	signal(SIGABRT, DedicatedSignalHandler);
+	signal(SIGQUIT, DedicatedSignalHandler);
 #endif
 
 	// Load the dedicated server stuff
