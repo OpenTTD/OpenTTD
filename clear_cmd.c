@@ -549,7 +549,7 @@ void TileLoopClearHelper(TileIndex tile)
 {
 	byte img_1;
 	byte img_2;
-	static byte img_by_map5[] = { 0, 0, 0, 2, 1, 1, 0, 0 };
+	static const byte img_by_map5[] = { 0, 0, 0, 2, 1, 1, 0, 0 };
 	TileIndex dirty = INVALID_TILE;
 
 	switch (GetTileType(tile)) {

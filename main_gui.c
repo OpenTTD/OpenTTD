@@ -1105,6 +1105,7 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		DrawStringMultiCenter(90, 38, mode?STR_022D_ARE_YOU_SURE_YOU_WANT_TO:STR_GENERATE_RANDOM_LANDSCAPE , 168);
+		break;
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3:
@@ -1125,6 +1126,7 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 
 			break;
 		}
+		break;
 	}
 }
 
