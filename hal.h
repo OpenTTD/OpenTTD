@@ -132,10 +132,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode);
 void FiosFreeSavegameList(void);
 // Browse to. Returns a filename w/path if we reached a file.
 char *FiosBrowseTo(const FiosItem *item);
-// Get descriptive texts.
-// Returns a path as well as a
-//  string describing the path.
-StringID FiosGetDescText(const char **path);
+// Return path, free space and stringID
+StringID FiosGetDescText(const char **path, uint32 *tot);
 // Delete a name
 void FiosDelete(const char *name);
 // Make a filename from a name

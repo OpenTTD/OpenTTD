@@ -20,6 +20,7 @@
 
 #include "hal.h" // for file list
 
+static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
 bool _query_string_active;
@@ -1126,24 +1127,29 @@ static const Widget _save_dialog_scen_widgets[] = {
 
 void BuildFileList(void)
 {
+	_fios_path_changed = true;
 	FiosFreeSavegameList();
-	if(_saveload_mode==SLD_NEW_GAME || _saveload_mode==SLD_LOAD_SCENARIO || _saveload_mode==SLD_SAVE_SCENARIO)
+	if (_saveload_mode == SLD_NEW_GAME || _saveload_mode == SLD_LOAD_SCENARIO || _saveload_mode == SLD_SAVE_SCENARIO) {
 		_fios_list = FiosGetScenarioList(&_fios_num, _saveload_mode);
-	else
+	} else
 		_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
 }
 
 static void DrawFiosTexts(void)
 {
-	const char *path;
-	StringID str;
+	static const char *path = NULL;
+	static StringID str = STR_4006_UNABLE_TO_READ_DRIVE;
+	static uint32 tot = 0;
 
-	str = FiosGetDescText(&path);
-	if (str != 0)
-		DrawString(2, 37, str, 0);
+	if (_fios_path_changed) {
+		str = FiosGetDescText(&path, &tot);
+		_fios_path_changed = false;
+	}
+
+	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
+	DrawString(2, 37, str, 0);
 	DoDrawString(path, 2, 27, 16);
 }
-
 
 static void MakeSortedSaveGameList(void)
 {

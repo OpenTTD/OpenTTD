@@ -293,7 +293,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	FiosGetSavegameList(&_fios_num, SLD_LOAD_GAME);
 	FiosFreeSavegameList();
 
-	FiosGetDescText(&path);
+	FiosGetDescText(&path, NULL);
 	IConsolePrint(_iconsole_color_default, path);
 	return NULL;
 }

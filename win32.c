@@ -1546,13 +1546,17 @@ static FiosItem *FiosAlloc(void)
 	return &_fios_items[_fios_count++];
 }
 
-static HANDLE MyFindFirstFile(const char *path, const char *file,
-	WIN32_FIND_DATA *fd)
+static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DATA *fd)
 {
+	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
+	HANDLE h;
 	char paths[MAX_PATH];
 
 	sprintf(paths, "%s\\%s", path, file);
-	return FindFirstFile(paths, fd);
+	h = FindFirstFile(paths, fd);
+
+	SetErrorMode(sem); // restore previous setting
+	return h;
 }
 
 int CDECL compare_FiosItems(const void *a, const void *b)
@@ -1834,23 +1838,31 @@ char *FiosBrowseTo(const FiosItem *item)
 	return NULL;
 }
 
-// Get descriptive texts.
-// Returns a path as well as a
-//  string describing the path.
-StringID FiosGetDescText(const char **path)
+/**
+ * Get descriptive texts. Returns the path and free space
+ * left on the device
+ * @param path string describing the path
+ * @param tfs total free space in megabytes, optional (can be NULL)
+ * @return StringID describing the path (free space or failure)
+ */
+StringID FiosGetDescText(const char **path, uint32 *tot)
 {
+	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 	char root[4];
 	DWORD spc, bps, nfc, tnc;
+	StringID sid;
+
 	*path = _fios_path;
 
 	sprintf(root, "%c:\\", _fios_path[0]);
-	if (GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
-		uint32 tot = ((spc * bps) * (uint64)nfc) >> 20;
-		SetDParam(0, tot);
-		return STR_4005_BYTES_FREE;
-	} else {
-		return STR_4006_UNABLE_TO_READ_DRIVE;
-	}
+	if (tot != NULL && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
+		*tot = ((spc * bps) * (uint64)nfc) >> 20;
+		sid = STR_4005_BYTES_FREE;
+	} else
+		sid = STR_4006_UNABLE_TO_READ_DRIVE;
+
+	SetErrorMode(sem); // reset previous setting
+	return sid;
 }
 
 void FiosMakeSavegameName(char *buf, const char *name)

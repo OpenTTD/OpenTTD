@@ -300,28 +300,30 @@ char *FiosBrowseTo(const FiosItem *item)
 	return NULL;
 }
 
-// Get descriptive texts.
-// Returns a path as well as a
-//  string describing the path.
-StringID FiosGetDescText(const char **path)
+/**
+ * Get descriptive texts. Returns the path and free space
+ * left on the device
+ * @param path string describing the path
+ * @param tfs total free space in megabytes, optional (can be NULL)
+ * @return StringID describing the path (free space or failure)
+ */
+StringID FiosGetDescText(const char **path, uint32 *tot)
 {
+	uint32 free = 0;
 	*path = _fios_path[0] != '\0' ? _fios_path : "/";
 
 #if defined(__linux__)
 	{
 		struct statvfs s;
 
-		if (statvfs(*path, &s) == 0) {
-			uint64 tot = (uint64)s.f_bsize * s.f_bavail;
-			SetDParam(0, (uint32)(tot >> 20));
-			return STR_4005_BYTES_FREE;
+		if (statvfs(*path, &s) != 0) {
+			free = ((uint64)s.f_bsize * s.f_bavail) >> 20;
 		} else
 			return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
-#else
-	SetDParam(0, 0);
-	return STR_4005_BYTES_FREE;
 #endif
+	if (tot != NULL) *tot = free;
+	return STR_4005_BYTES_FREE;
 }
 
 void FiosMakeSavegameName(char *buf, const char *name)
