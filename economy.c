@@ -592,13 +592,55 @@ static byte _price_category[NUM_PRICES] = {
 };
 
 static const int32 _price_base[NUM_PRICES] = {
-	100, 100, 95, 65, 275, 600, 500, 700,
-	450, 200, 180, 600, 200, 200, 350, 400000,
-	2000, 700000, 14000, 65000, 20, 250, 20, 40,
-	200, 500, 20, -70, 10, 50, 80, 80,
-	90, 30, 10000, 50, 30, 50, 50, 55,
-	1600, 40, 5600, 5200, 4800, 9600, 1600, 5600,
-	1000000,
+	100,		// station_value
+	100,		// build_rail
+	95,			// build_road
+	65,			// build_signals
+	275,		// build_bridge
+	600,		// build_train_depot
+	500,		// build_road_depot
+	700,		// build_ship_depot
+	450,		// build_tunnel
+	200,		// train_station_track
+	180,		// train_station_length
+	600,		// build_airport
+	200,		// build_bus_station
+	200,		// build_truck_station
+	350,		// build_dock
+	400000,	// build_railvehicle
+	2000,		// build_railwagon
+	700000,	// aircraft_base
+	14000,	// roadveh_base
+	65000,	// ship_base
+	20,			// build_trees
+	250,		// terraform
+	20,			// clear_1
+	40,			// purchase_land
+	200,		// clear_2
+	500,		// clear_3
+	20,			// remove_trees
+	-70,		// remove_rail
+	10,			// remove_signals
+	50,			// clear_bridge
+	80,			// remove_train_depot
+	80,			// remove_road_depot
+	90,			// remove_ship_depot
+	30,			// clear_tunnel
+	10000,	// clear_water
+	50,			// remove_rail_station
+	30,			// remove_airport
+	50,			// remove_bus_station
+	50,			// remove_truck_station
+	55,			// remove_dock
+	1600,		// remove_house
+	40,			// remove_road
+	5600,		// running_rail[0] railroad
+	5200,		// running_rail[1] monorail
+	4800,		// running_rail[2] maglev
+	9600,		// aircraft_running
+	1600,		// roadveh_running
+	5600,		// ship_running
+	1000000, // build_industry
 };
 
 void StartupEconomy()
