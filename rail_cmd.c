@@ -109,7 +109,7 @@ enum RailMap2Lower4 {
  *               11uuuudd => rail depot
  */
 
-static bool CheckTrackCombination(byte map5, byte trackbits, byte flags)
+static bool CheckTrackCombination(uint map5, uint trackbits, uint flags)
 {
 	_error_message = STR_1001_IMPOSSIBLE_TRACK_COMBINATION;
 
@@ -242,14 +242,15 @@ uint GetRailFoundation(uint tileh, uint bits)
 }
 
 //
-static uint32 CheckRailSlope(int tileh, uint rail_bits, uint existing, uint tile)
+static uint32 CheckRailSlope(uint tileh, uint rail_bits, uint existing, TileIndex tile)
 {
 	// never allow building on top of steep tiles
 	if (!(tileh & 0x10)) {
 		rail_bits |= existing;
 
 		// don't allow building on the lower side of a coast
-		if (IsTileType(tile, MP_WATER) && ~_valid_tileh_slopes[2][tileh] & rail_bits) {
+		if (IsTileType(tile, MP_WATER) &&
+				~_valid_tileh_slopes[2][tileh] & rail_bits) {
 			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 		}
 
@@ -257,150 +258,128 @@ static uint32 CheckRailSlope(int tileh, uint rail_bits, uint existing, uint tile
 		if ((~_valid_tileh_slopes[0][tileh] & rail_bits) == 0)
 			return 0;
 
-		if (((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0) || // whole tile is leveled up
-			((rail_bits == RAIL_BIT_DIAG1 || rail_bits == RAIL_BIT_DIAG2) && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8))) { // partly up
-			return existing ? 0 : _price.terraform;
+		if ((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0 || ( // whole tile is leveled up
+					(rail_bits == RAIL_BIT_DIAG1 || rail_bits == RAIL_BIT_DIAG2) &&
+					(tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)
+				)) { // partly up
+			if (existing != 0) {
+				return 0;
+			} else if (!_patches.build_on_slopes ||
+					(_is_ai_player && !_patches.ainew_active)) {
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			} else {
+				return _price.terraform;
+			}
 		}
 	}
 	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 }
 
-/* Build a single track.
- * p1 - railroad type normal/maglev
- * p2 - tile direction
- */
-
-int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildSingleRail(int x, int y, uint32 flags,
+	uint32 rail_type, uint32 rail)
 {
-	TileInfo ti;
-	int32 ret, cost = 0;
-	byte rail_bit = 1 << p2;
-	byte rail_type = (byte)(p1 & 0xF);
-	uint tile;
-	byte existing = 0;
-	bool need_clear = false;
+	TileIndex tile;
+	uint tileh;
+	uint m5;
+	uint rail_bit;
+	int32 cost = 0;
+	int32 ret;
+
+	if (rail_type > _players[_current_player].max_railtype ||
+			rail > 5) // invalid track number?
+		return CMD_ERROR;
+
+	tile = TILE_FROM_XY(x, y);
+	tileh = GetTileSlope(tile, NULL);
+	m5 = _map5[tile];
+	rail_bit = 1 << rail;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	_error_message = STR_1007_ALREADY_BUILT;
+	switch (GetTileType(tile)) {
+		case MP_TUNNELBRIDGE:
+			if ((m5 & 0xC0) != 0xC0 || // not bridge middle part?
+					(m5 & 0x01 ? 1 : 2) != rail_bit || // wrong direction?
+					(m5 & 0x38) != 0x00) { // no clear land underneath?
+				// Get detailed error message
+				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
 
-	FindLandscapeHeight(&ti, x, y);
-	tile = ti.tile;
-
-	// allow building rail under bridge
-	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile))
-		return CMD_ERROR;
-
-	if (ti.type == MP_TUNNELBRIDGE) {
-/* BUILD ON BRIDGE CODE */
-		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
-			return CMD_ERROR;
-
-		if ((ti.map5 & 0xF8) == 0xC0) {
-			if (ti.tileh & 0x10 || rail_bit != (byte)((ti.map5 & 1) ? 1 : 2)) goto need_clear;
-
-			if (!(flags & DC_EXEC))
-				return _price.build_rail;
-
-			_map5[tile] = (ti.map5 & 0xC7) | 0x20;
-			goto set_ownership;
-		} else if ((ti.map5 & 0xF8) == 0xE0) {
-			if ((_map3_lo[tile] & 0xF) != (int)p1) goto need_clear;
-			if (rail_bit != (byte)((ti.map5 & 1) ? 1 : 2)) goto need_clear;
-			return CMD_ERROR;
-		} else
-			goto need_clear;
-	} else if (ti.type == MP_STREET) {
-		byte m5;
-/* BUILD ON STREET CODE */
-		if (ti.tileh & 0x10) // very steep tile
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-		if (!_valid_tileh_slopes[3][ti.tileh]) // prevent certain slopes
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-		if (!(ti.map5 & 0xF0)) {
-			if ((ti.map5 & 0x0F) == 0xA) {
-				if (rail_bit != 2) goto need_clear;
-				m5 = 0x10;
-			} else if ((ti.map5 & 0x0F) == 0x5) {
-				if (rail_bit != 1) goto need_clear;
-				m5 = 0x18;
-			} else
-				goto need_clear;
-
-			if (!(flags & DC_EXEC))
-				return _price.build_rail;
-
-			ModifyTile(tile,
-				MP_SETTYPE(MP_STREET) |
-				MP_MAP3LO | MP_MAP3HI | MP_MAPOWNER_CURRENT | MP_MAP5,
-				_map_owner[tile], /* map3_lo */
-				p1, /* map3_hi */
-				m5  /* map5 */
-			);
-			goto fix_signals;
-		} else if (!(ti.map5 & 0xE0)) {
-			if (rail_bit != (byte)((ti.map5 & 8) ? 1 : 2)) goto need_clear;
-			return CMD_ERROR;
-		} else
-			goto need_clear;
-	} else if (ti.type == MP_RAILWAY) {
-
-/* BUILD ON RAILWAY CODE */
-		if (_map_owner[tile] != _current_player || (byte)(_map3_lo[tile]&0xF) != rail_type)
-			goto need_clear;
-		if (!CheckTrackCombination(ti.map5, rail_bit, (byte)flags))
-			return CMD_ERROR;
-
-		existing = ti.map5 & 0x3F;
-	} else {
-
-/* DEFAULT BUILD ON CODE */
-need_clear:;
-		/* isnot_railway */
-		if (!(flags & DC_EXEC)) {
-			ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (ret == CMD_ERROR) return CMD_ERROR;
+			ret = CheckRailSlope(tileh, rail_bit, m5 & RAIL_BIT_MASK, tile);
+			if (ret & CMD_ERROR) return ret;
 			cost += ret;
-		}
-		need_clear = true;
-	}
 
-	ret = CheckRailSlope(ti.tileh, rail_bit, existing, tile);
-	if (ret & 0x80000000)
-		return ret;
-	cost += ret;
+			if (flags & DC_EXEC) {
+				_map_owner[tile] = _current_player;
+				_map3_lo[tile] &= ~0x0F;
+				_map3_lo[tile] |= rail_type;
+				_map5[tile] = (m5 & 0xC7) | 0x20; // railroad under bridge
+			}
+			break;
 
-	// the AI is not allowed to used foundationed tiles.
-	if (ret && (!_patches.build_on_slopes || (!_patches.ainew_active && _is_ai_player)))
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		case MP_RAILWAY:
+			if (!CheckTrackCombination(m5, rail_bit, flags) ||
+					!EnsureNoVehicle(tile)) {
+				return CMD_ERROR;
+			}
+			if (m5 & RAIL_TYPE_SPECIAL ||
+					_map_owner[tile] != _current_player ||
+					(_map3_lo[tile] & 0xFU) != rail_type) {
+				// Get detailed error message
+				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
 
-	if (flags & DC_EXEC && need_clear) {
-		ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (ret == CMD_ERROR) return CMD_ERROR;
-		cost += ret;
+			ret = CheckRailSlope(tileh, rail_bit, m5 & RAIL_BIT_MASK, tile);
+			if (ret & CMD_ERROR) return ret;
+			cost += ret;
+
+			if (flags & DC_EXEC) _map5[tile] = m5 | rail_bit;
+			break;
+
+		case MP_STREET:
+			if (!_valid_tileh_slopes[3][tileh]) // prevent certain slopes
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+
+			if ((m5 & 0xF0) == 0 && ( // normal road?
+						(rail_bit == 1 && m5 == 0x05) ||
+						(rail_bit == 2 && m5 == 0x0A) // correct direction?
+					)) {
+				if (flags & DC_EXEC) {
+					_map3_lo[tile] = _map_owner[tile];
+					_map_owner[tile] = _current_player;
+					_map3_hi[tile] = rail_type;
+					_map5[tile] = 0x10 | (rail_bit == 1 ? 0x08 : 0x00); // level crossing
+				}
+				break;
+			}
+
+			if ((m5 & 0xF0) == 0x10 && (m5 & 0x08 ? 1 : 2) == rail_bit)
+				return_cmd_error(STR_1007_ALREADY_BUILT);
+			/* FALLTHROUGH */
+
+		default:
+			ret = CheckRailSlope(tileh, rail_bit, 0, tile);
+			if (ret & CMD_ERROR) return ret;
+			cost += ret;
+
+			ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			if (ret & CMD_ERROR) return ret;
+			cost += ret;
+
+			if (flags & DC_EXEC) {
+				SetTileType(tile, MP_RAILWAY);
+				_map_owner[tile] = _current_player;
+				_map2[tile] = 0; // Bare land
+				_map3_lo[tile] = rail_type; // No signals, rail type
+				_map5[tile] = rail_bit;
+			}
+			break;
 	}
 
 	if (flags & DC_EXEC) {
-		SetTileType(tile, MP_RAILWAY);
-		_map5[tile] |= rail_bit;
-		_map2[tile] &= ~RAIL_MAP2LO_GROUND_MASK;
-
-		// In case it's a tile without signals, clear the signal bits. Why?
-		if ((_map5[tile] & RAIL_TYPE_MASK) != RAIL_TYPE_SIGNALS)
-			_map2[tile] &= ~0xF0;
-
-set_ownership:
-		_map_owner[tile] = _current_player;
-
-		_map3_lo[tile] &= ~0xF;
-		_map3_lo[tile] |= rail_type;
-
 		MarkTileDirtyByTile(tile);
-
-fix_signals:
-		SetSignalsOnBothDir(tile, (byte)p2);
+		SetSignalsOnBothDir(tile, rail);
 	}
 
 	return cost + _price.build_rail;
