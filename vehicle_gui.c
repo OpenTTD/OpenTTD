@@ -418,10 +418,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
 			Engine *e = &_engines[SHIP_ENGINES_INDEX];
-			byte cargo; 
+			byte cargo, refittable; 
 			EngineInfo *info;
 			engine_id = SHIP_ENGINES_INDEX;
-			byte refittable;
 
 			do {
 				info = &_engine_info[engine_id];
@@ -454,10 +453,10 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				
 		case VEH_Aircraft:{
 			int num = NUM_AIRCRAFT_ENGINES;
+			byte subtype;
 			Engine *e = &_engines[AIRCRAFT_ENGINES_INDEX];
 			EngineInfo *info;
 			engine_id = AIRCRAFT_ENGINES_INDEX;
-			byte subtype;
 
 			do {
 				info = &_engine_info[engine_id];
