@@ -82,9 +82,9 @@ enum {
 	CA_AIR_SMALL = 4,
 	CA_AIR_LARGE = 5,
 	CA_DOCK = 5,
-	CA_AIR_METRO = 6, 
+	CA_AIR_METRO = 6,
 	CA_AIR_INTER = 8,
-}; 
+};
 
 void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radius);
 

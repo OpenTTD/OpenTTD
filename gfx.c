@@ -1507,7 +1507,7 @@ void DoPaletteAnimations()
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
-	int c = _use_dos_palette?38:28; 
+	int c = _use_dos_palette?38:28;
 	int j;
 	int i;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
@@ -1594,7 +1594,7 @@ void DoPaletteAnimations()
 			j+=3;
 			if (j == 15) j = 0;
 		}
-	
+
 		// Glittery water DOS
 		s = ev->b;
 		if (_opt.landscape == LT_CANDY) s = ev->bc;

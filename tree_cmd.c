@@ -81,7 +81,7 @@ static void DoPlaceMoreTrees(uint tile)
 
 		/* Only on tiles within 13 squares from tile,
 		    on clear tiles, and NOT on farm-tiles or rocks */
-		if (dist <= 13 && IS_TILETYPE(cur_tile, MP_CLEAR) && 
+		if (dist <= 13 && IS_TILETYPE(cur_tile, MP_CLEAR) &&
 			 (_map5[cur_tile] & 0x1F) != 0x0F && (_map5[cur_tile] & 0x1C) != 8) {
 			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
 		}

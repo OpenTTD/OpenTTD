@@ -37,7 +37,7 @@
 #endif
 
 #ifdef __MORPHOS__
-// morphos defines certain amiga defines per default, we undefine them 
+// morphos defines certain amiga defines per default, we undefine them
 // here to make the rest of source less messy and more clear what is
 // required for morphos and what for amigaos
 #	ifdef amigaos

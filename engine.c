@@ -119,7 +119,7 @@ void AddTypeToEngines()
 {
 	Engine *e;
 	uint32 counter = 0;
-	
+
 	for(e=_engines; e != endof(_engines); e++, counter++) {
 
 		e->type = VEH_Train;
@@ -187,7 +187,7 @@ void StartupEngines()
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
 		}
-		
+
 		/* This sets up type for the engine
 		   It is needed if you want to ask the engine what type it is
 		   It should hopefully be the same as when you ask a vehicle what it is

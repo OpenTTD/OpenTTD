@@ -68,7 +68,7 @@ static int GetCurRes()
 static inline bool RoadVehiclesAreBuilt(void)
 {
 	Vehicle *v;
-	FOR_ALL_VEHICLES(v) { 
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road) return true;
 	}
 	return false;

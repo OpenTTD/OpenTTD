@@ -32,7 +32,7 @@
 #	define STDIN 0  /* file descriptor for standard input */
 #endif
 #ifdef __MORPHOS__
-/*  voids the fork, option will be disabled for morphos build anyway, because MorphOS 
+/*  voids the fork, option will be disabled for morphos build anyway, because MorphOS
  *  doesn't support forking (could only implemented with lots of code changes here).
  */
 int morphos_dummy_fork() { return -1; }

@@ -1409,17 +1409,17 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 This is a nice way to send 32 bit and only use 16 bit
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
-	uint32 autorefit_money = (p2  >> 16) * 100000; 
+	uint32 autorefit_money = (p2  >> 16) * 100000;
 	Vehicle *v = DEREF_VEHICLE(p1);
 	int cost, build_cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	
-	
+
+
 	// first we make sure that it's a valid type the user requested
 	// check that it's an engine that is in the engine array
 	if (new_engine_type >= TOTAL_NUM_ENGINES ) return CMD_ERROR;
-	
+
 	// check that the new vehicle type is the same as the original one
 	if (v->type != DEREF_ENGINE(new_engine_type)->type) return CMD_ERROR;
 
@@ -1466,7 +1466,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		Engine *e;
 		e = DEREF_ENGINE(new_engine_type);
-		
+
 		// TODO make it check if refit is possible before actually doing it
 
 		/* We do not really buy a new vehicle, we upgrade the old one */
@@ -1474,7 +1474,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			byte cargo_type = v->cargo_type;
 			v->engine_type = new_engine_type;
 			v->max_age = e->lifelength * 366;
-		
+
 			/* Update limits of the vehicle (for when upgraded) */
 			switch (v->type) {
 			case VEH_Train:
@@ -1489,7 +1489,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->max_speed = rvi->max_speed;
 
 				v->u.rail.railtype = e->railtype;
-				
+
 				// 0x0100 means that we skip the check for being stopped inside the depot
 				// since we do not stop it for autorefitting
 				if (v->cargo_type != cargo_type && capacity) {
@@ -1521,7 +1521,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->cargo_type = svi->cargo_type;
 				v->cargo_cap = svi->capacity;
 				v->max_speed = svi->max_speed;
-				
+
 				// 0x0100 means that we skip the check for being stopped inside the depot
 				// since we do not stop it for autorefitting
 				if (v->cargo_type != cargo_type)
@@ -1559,7 +1559,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					v->cargo_count = v->cargo_cap;
 			}
 		}
-		
+
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->age = 0;
@@ -1580,7 +1580,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 void MaybeReplaceVehicle(Vehicle *v)
 {
 	uint32 new_engine_and_autoreplace_money;
-	
+
 	if (v->owner != _local_player)
 		return;
 	// uncomment next line if you want to see what engine type just entered a depot
@@ -1597,7 +1597,7 @@ void MaybeReplaceVehicle(Vehicle *v)
 	}
 	/* Now replace the vehicle */
 	_current_player = v->owner;
-	
+
 	/* makes the variable to inform about how much money the player wants to have left after replacing
 	 and which engine to replace with
 	 the first 16 bit is the money. Since we know the last 5 digits is 0, they are thrown away.
@@ -1605,9 +1605,9 @@ void MaybeReplaceVehicle(Vehicle *v)
 	 This is a nice way to send 32 bit and only use 16 bit
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	new_engine_and_autoreplace_money = ((_patches.autorenew_money / 100000) << 16) + _autoreplace_array[v->engine_type];
-	
+
 	assert(v->type == DEREF_ENGINE(_autoreplace_array[v->engine_type])->type);
-	
+
 	if ( v->type != VEH_Train ) {
 		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
 	} else {

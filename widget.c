@@ -408,7 +408,7 @@ void DrawWindowWidgets(Window *w)
 
 		case WWT_RESIZEBOX: {
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
-			
+
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
 			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3, r.top + 3);
 			break;

@@ -37,14 +37,14 @@ static const char *name_original_english_2[] = {
 	"W"
 };
 
-static const char *name_original_english_3[] = { 
-	"ar", 
-	"a", 
-	"e", 
-	"in", 
+static const char *name_original_english_3[] = {
+	"ar",
+	"a",
+	"e",
+	"in",
 	"on",
 	"u",
-	"un", 
+	"un",
 	"en"
 };
 
@@ -107,7 +107,7 @@ static const char *name_additional_english_prefix[] = {
 
 static const char *name_additional_english_1a[] = {
 	"Pen",
-	"Lough", 
+	"Lough",
 	"Stam",
 	"Aber",
 	"Acc",
@@ -180,18 +180,18 @@ static const char *name_additional_english_1b1[] = {
 	"W"
 };
 
-static const char *name_additional_english_1b2[] = { 
-	"ar", 
-	"a", 
-	"e", 
-	"in", 
+static const char *name_additional_english_1b2[] = {
+	"ar",
+	"a",
+	"e",
+	"in",
 	"on",
 	"u",
 	"o",
 	"ee",
 	"es",
 	"ea",
-	"un", 
+	"un",
 	"en"
 };
 
@@ -603,8 +603,8 @@ static const char *name_german_4_an_der[] = {
 	"Saale",
 	"Elbe"
 };
-	
-static const char *name_german_4_am[] = {	
+
+static const char *name_german_4_am[] = {
 	"Main"
 };
 

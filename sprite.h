@@ -73,7 +73,7 @@ struct DeterministicSpriteGroup {
 	} operation;
 	byte add_val;
 	byte divmod_val;
-	
+
 	// And apply it to this:
 	byte num_ranges;
 	struct DeterministicSpriteGroupRange *ranges; // Dynamically allocated

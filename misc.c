@@ -189,7 +189,7 @@ void InitializeGame()
 		_autoreplace_array[i] = i;
 
 	AddTypeToEngines(); // make sure all engines have a type
-	
+
 	SetObjectToPlace(1, 0, 0, 0);
 
 	_pause = 0;

@@ -1461,7 +1461,7 @@ static void Win32InitializeExceptions()
 }
 #else
 /* Get rid of unused variable warnings.. ShowOSErrorBox
- * is now used twice, once in MSVC, and once in all other Win 
+ * is now used twice, once in MSVC, and once in all other Win
  * compilers (cygwin, mingw, etc.) */
 void ShowOSErrorBox(const char *buf)
 {

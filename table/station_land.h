@@ -490,7 +490,7 @@ const DrawTileSeqStruct _station_display_datas_088[] = {
 
 // runway tiles
 const DrawTileSeqStruct _station_display_datas_089[] = {
-	{ 0,  0,  0, 16,  1,  6, 0x8A68 }, // fences	
+	{ 0,  0,  0, 16,  1,  6, 0x8A68 }, // fences
 	TILE_SEQ_END()
 };
 

@@ -996,7 +996,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->u.ship.state != 0x80)
 			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 		}
-		
+
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && (byte)p2 != v->cargo_type) {
 		cost = _price.ship_base >> 7;
@@ -1006,7 +1006,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		//autorefitted ships wants to keep the cargo
 		//it will be checked if the cargo is valid in CmdRenewVehicle
 		if (!(SkipStoppedInDepotCheck))
-			v->cargo_count = 0;	
+			v->cargo_count = 0;
 		v->cargo_type = (byte)p2;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}

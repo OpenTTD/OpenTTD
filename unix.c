@@ -25,7 +25,7 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 
 #ifdef __AMIGA__
 #warning add stack symbol to avoid that user needs to set stack manually (tokai)
-// ULONG __stack = 
+// ULONG __stack =
 #endif
 
 static char *_fios_path;
@@ -506,7 +506,7 @@ void DeterminePaths()
 	_path.data_dir = str_fmt("%sdata/", _path.game_data_dir);
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
 	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
-	
+
 #if defined CUSTOM_LANG_DIR
 	// sets the search path for lng files to the custom one
 	_path.lang_dir = malloc( MAX_PATH );

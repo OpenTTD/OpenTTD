@@ -56,7 +56,7 @@ static DIR *my_opendir(char *path, char *file)
 {
 	char paths[MAX_PATH];
 
-	append_path(paths, path, file);		
+	append_path(paths, path, file);
 	return opendir(paths);
 }
 
@@ -179,7 +179,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		{
 			_dos_setdrive(disk, &total);
 			_dos_getdrive(&disk2);
-			
+
 			if (disk == disk2)
 			{
 				fios = FiosAlloc();
@@ -299,7 +299,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		{
 			_dos_setdrive(disk, &total);
 			_dos_getdrive(&disk2);
-			
+
 			if (disk == disk2)
 			{
 				fios = FiosAlloc();
@@ -384,7 +384,7 @@ StringID FiosGetDescText(const char **path)
 {
 	struct diskfree_t free;
 	char drive;
-	
+
 	*path = _fios_path;
 	drive = *path[0] - 'A'+1;
 
@@ -486,7 +486,7 @@ void ShowInfo(const char *str)
 	HAB hab;
 	HMQ hmq;
 	ULONG rc;
-   
+
 	// init PM env.
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
@@ -503,7 +503,7 @@ void ShowOSErrorBox(const char *buf)
 	HAB hab;
 	HMQ hmq;
 	ULONG rc;
-   
+
 	// init PM env.
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
@@ -579,7 +579,7 @@ void DeterminePaths()
 	_path.gm_dir = str_fmt("%sgm\\", _path.game_data_dir);
 	_path.data_dir = str_fmt("%sdata\\", _path.game_data_dir);
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
-	
+
 #if defined CUSTOM_LANG_DIR
 	// sets the search path for lng files to the custom one
 	_path.lang_dir = malloc( MAX_PATH );
