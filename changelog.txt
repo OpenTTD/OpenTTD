@@ -7,11 +7,11 @@
            When using the autorail tool, the rail pieces which are going to be build are highlighted.
            If a piece is shown in red, this indicates that the slope/rail combination is impossible. It does not tell you if
            the rail line construction might not be possible because of other obstacles, e.g. houses or water.
-- Feature: Autoreplace Vehicles (accessible from the train list)
+- Feature: Autoreplace Vehicles (accessible from the vehicle lists)
            This feature works much like autorenew, but it will get you a new engine type instead of a new one of the same type. Once
            ordered, it will automatically replace the engines while they visits a depot. The GUI for setting this up have been added on the
-           vehicle overview windows
-- Feature: A counter to tell how many engines you have of each type to the autoreplace vehicle windows
+           vehicle overview windows (Bjarni)
+- Feature: A counter to tell how many engines you have of each type to the autoreplace vehicle windows (Bjarni)
 - Feature: A display for the total map population to the town display
 - Feature: [network] RCon (Remote Connection).
            A server can set: 'set rcon_pw <password>' to enable rcon
@@ -22,7 +22,7 @@
 - Feature: [Network] server can now pause and unpause a game through the console. Use 'pause' and 'unpause'
 - Feature: [OS/2] OS/2 support is now finished (Fixes for networking, file selection, keyboard input, plus many other minor issues)
 - Feature: [SDL] Show revision number in window title
-- Feature: [Unix] Check which gcc version is present and only set availible compiler flags
+- Feature: [Unix] Check which gcc version is present and only set available compiler flags
 - Feature: [Windows] CTRL+V (Paste) now works on all editboxes. This includes 'Add Server', chat, etc.
 - Feature: [Windows] dedicated server is now functioning correctly
 - Feature: Addded keyboard shortcuts for the order window
@@ -41,7 +41,7 @@
 - Feature: place multiple accepting industies nearby in the editor mode if the appropriate patches are set
 - Feature: population in label of the town (patch setting)
 - Feature: scrolling credits list (in  alphabetical order)
-- Feature: Train window shows now the number of vehicles per row (mpetrov)
+- Feature: Train window now shows the number of vehicles per row (mpetrov)
 - Feature: [ 1039061 ] Swiss town-names (vulvulune)
 - Feature: [ 1090950 ] Adding 16:10 resolutions for mainly laptops  (doode)
 - Feature: [ 1098254 ] (dis)Allow Shares. Add patch options to allow buying/selling of shares (Hackykid)
@@ -69,7 +69,7 @@
 - Fix: [ 1101906 ] Configure Patches window text overflow
 - Fix: [ 1101963 ] console in dedicated server
 - Fix: [ 1102275 ] Game crashed when clicking "new face" or "company color" twice
-- Fix: [ 1102776 ], [ 1099535 ] Aircraft vehicle lists are now redrawn when an aircraft arrives in the depot. Station-specific vehicle lists are now redrawn daily as well (not only the master list)
+- Fix: [ 1102776 ], [ 1099535 ] Vehicle lists are now redrawn when a vehicle arrives in a depot. Station-specific vehicle lists are now redrawn daily as well (not only the master list)
 - Fix: [ 1103113 ] font size changing. Dedicated server did not have code filtering, 'tab' could result in bigger fonts
 - Fix: [ 1103187 ] Order Check messages are now validated before displayed
 - Fix: [ 1103301 ] Railroad tracks on slopes weren't flooded
@@ -112,7 +112,7 @@
 - Fix: Loan does not count against the company value
 - Fix: nasty bug where one could build one station OVER the other
 - Fix: No crash when creating a game with New English town names any more
-- Fix: now helicopters will use a hangar in schedule to be replaced in, even if they are only set to service there. Since helicopters are serviced at helipads, they will only go there if they needs to be replaced or renewed.
+- Fix: now helicopters will use a hangar in schedule to be replaced in, even if they are only set to service there. Since helicopters are serviced at helipads, they will only go there if they needs to be replaced or renewed. They will also use a hangar in an airport in the schedule if needed. (Bjarni)
 - Fix: only a server can rename a town in a MP game
 - Fix: really old maps do load again (Darkvater / TrueLight)
 - Fix: Refit engine button is now disabled when cargo capacity equals zero
@@ -122,6 +122,7 @@
 - Fix: solve AI related order-problem
 - Fix: starting openttd with -g <invalid_name> now acts normal
 - Fix: The cost for an autorenew was not always send to the right player ;)
+- Fix: Autorenewing multiheaded train engines now costs the correct amount. Used to be twice the correct price
 - Fix: the scrollbar in the network gui (server list) now updates when scrolling (HackyKid)
 - Fix: Train crashes should no longer desync the game.
 - Fix: When deleting an order, the next pointer was not cleared, resulting in some unusual behavoir from time to time
