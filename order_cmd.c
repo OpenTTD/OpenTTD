@@ -273,6 +273,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selec
 
 		/* Give the item free */
 		order->type = OT_NOTHING;
+		order->next = NULL;
 
 		u = GetFirstVehicleFromSharedList(v);
 		while (u != NULL) {
@@ -568,6 +569,7 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		}
 		/* End the list with an OT_NOTHING */
 		dest->type = OT_NOTHING;
+		dest->next = NULL;
 	}
 }
 
@@ -663,7 +665,7 @@ bool CheckOrders(uint data_a, uint data_b)
 		} else {
 			DEBUG(misc, 3) ("CheckOrder called in mode 1 (validation mode) for %d", v->index);
 		}*/
-		
+
 		FOR_VEHICLE_ORDERS(v, order) {
 			/* Dummy order? */
 			if (order->type == OT_DUMMY) {
