@@ -581,7 +581,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
-static uint CheckTunnelBusy(uint tile, int *length)
+uint CheckTunnelBusy(uint tile, int *length)
 {
 	int z = GetTileZ(tile);
 	byte m5 = _map5[tile];

@@ -1931,27 +1931,29 @@ static int CountPassengersInTrain(Vehicle *v)
 static void CheckTrainCollision(Vehicle *v)
 {
 	TrainCollideChecker tcc;
-	Vehicle *coll;
+	Vehicle *coll,*realcoll;
 	int num;
 
 	/* can't collide in depot */
 	if (v->u.rail.track == 0x80)
 		return;
 	
-	assert((uint)TILE_FROM_XY(v->x_pos, v->y_pos) == v->tile);
+	if ( !(v->u.rail.track == 0x40) ) 
+		assert((uint)TILE_FROM_XY(v->x_pos, v->y_pos) == v->tile);
 
 	tcc.v = v;
 	tcc.v_skip = v->next;
 
 	/* find colliding vehicle */
-	coll = VehicleFromPos(v->tile, &tcc, (VehicleFromPosProc*)FindTrainCollideEnum);
+	realcoll = coll = VehicleFromPos(TILE_FROM_XY(v->x_pos, v->y_pos), &tcc, (VehicleFromPosProc*)FindTrainCollideEnum);
 	if (coll == NULL)
 		return;
+		
 	
 	coll = GetFirstVehicleInChain(coll);
 	
 	/* it can't collide with its own wagons */
-	if (v == coll)
+	if ( (v == coll) || ( (v->u.rail.track & 0x40) && ( (v->direction & 2) != (realcoll->direction & 2) ) ) )
 		return;
 
 	//two drivers + passangers killed in train v 
@@ -1963,7 +1965,7 @@ static void CheckTrainCollision(Vehicle *v)
 	SetVehicleCrashed(v);
 	if (coll->subtype == 0)
 		SetVehicleCrashed(coll);
-
+	
 	
 	SET_DPARAM16(0, num);
 	
@@ -2112,6 +2114,8 @@ static void TrainController(Vehicle *v)
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
 			VehiclePositionChanged(v);
+			if (prev == NULL)
+				CheckTrainCollision(v);
 			goto next_vehicle;
 		}
 common:;
@@ -2180,6 +2184,8 @@ reverse_train_direction:
 
 }
 
+extern uint CheckTunnelBusy(uint tile, int *length);
+
 static void DeleteLastWagon(Vehicle *v)
 {
 	Vehicle *u = v;
@@ -2203,6 +2209,17 @@ static void DeleteLastWagon(Vehicle *v)
 	if (!((t=v->u.rail.track) & 0xC0)) {
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(t));
 	}
+	
+	if (v->u.rail.track == 0x40) {
+		int length;
+		TileIndex endtile = CheckTunnelBusy(v->tile, &length);
+		if ((v->direction == 1) || (v->direction == 5) )
+			SetSignalsOnBothDir(v->tile,0);
+			SetSignalsOnBothDir(endtile,0);
+		if ((v->direction == 3) || (v->direction == 7) )
+			SetSignalsOnBothDir(v->tile,1);
+			SetSignalsOnBothDir(endtile,1);
+	}
 }
 
 static void ChangeTrainDirRandomly(Vehicle *v)
@@ -2210,7 +2227,9 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 	static int8 _random_dir_change[4] = { -1, 0, 0, 1};
 	
 	do {
-		v->direction = (v->direction + _random_dir_change[Random()&3]) & 7;
+		//I need to buffer the train direction
+		if (!v->u.rail.track & 0x40) 
+			v->direction = (v->direction + _random_dir_change[Random()&3]) & 7;
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);
@@ -2226,7 +2245,7 @@ static void HandleCrashedTrain(Vehicle *v)
 	uint32 r;
 	Vehicle *u;
 	
-	if (state == 4) {
+	if ( (state == 4) && (v->u.rail.track != 0x40) ) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
 	}
 
