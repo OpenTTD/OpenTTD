@@ -52,12 +52,16 @@ static void DrawTile_Town(TileInfo *ti)
 
 	/* Retrieve pointer to the draw town tile struct */
 	{
-		uint hash, t;
-		hash  = ti->x >> 4;
-		hash ^= hash>>2;
-		hash ^= (t=(ti->y >> 4));
-		hash -= t>>2;
-		dcts = &_town_draw_tile_data[((_map2[ti->tile]<<4)|(_map3_lo[ti->tile]>>6)|((hash&3)<<2))];
+		/* this "randomizes" on the (up to) 4 variants of a building */
+		byte gfx   = _map2[ti->tile];
+		byte stage = _map3_lo[ti->tile] >> 6;
+		uint variant;
+		variant  = ti->x >> 4;
+		variant ^= ti->x >> 6;
+		variant ^= ti->y >> 4;
+		variant -= ti->y >> 6;
+		variant &= 3;
+		dcts = &_town_draw_tile_data[gfx << 4 | variant << 2 | stage];
 	}
 
 	z = ti->z;
