@@ -762,7 +762,7 @@ static const Widget _other_player_roadveh_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,											STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   208,   219, 0x0,											STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   248,   208,   219, 0x0,											STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   208,   219, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -893,6 +893,9 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			ShowBuildRoadVehWindow(0);
 		} break;
 		case 10: {
+			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
+				break;
+
 			ShowReplaceVehicleWindow(VEH_Road);
 			break;
 		}

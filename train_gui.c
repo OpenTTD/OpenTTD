@@ -1234,7 +1234,7 @@ static const Widget _other_player_trains_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   312,   208,   219, 0x0,										STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   313,   208,   219, 0x0,										STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   314,   324,   208,   219, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -1368,6 +1368,9 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			ShowBuildTrainWindow(0);
 		} break;
 		case 10: {
+			if (!IsWindowOfPrototype(w, _player_trains_widgets))
+				break;
+
 			ShowReplaceVehicleWindow(VEH_Train);
 			break;
  		}

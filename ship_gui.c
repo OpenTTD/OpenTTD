@@ -924,7 +924,7 @@ static const Widget _other_player_ships_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,   249,   248,   170,   181, 0x0,											STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   248,   170,   181, 0x0,											STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   170,   181, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -1058,6 +1058,9 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 10: {
+			if (!IsWindowOfPrototype(w, _player_ships_widgets))
+				break;
+
 			ShowReplaceVehicleWindow(VEH_Ship);
 			break;
 		}
