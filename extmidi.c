@@ -26,7 +26,7 @@ static void extmidi_kill(void)
 	_pid = 0;
 }
 
-static char *extmidi_start(char **parm)
+static const char *extmidi_start(const char * const *parm)
 {
 	_pid = 0;
 	return NULL;

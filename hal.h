@@ -2,12 +2,12 @@
 #define HAL_H
 
 typedef struct {
-	char *(*start)(char **parm);
+	const char *(*start)(const char * const *parm);
 	void (*stop)(void);
 } HalCommonDriver;
 
 typedef struct {
-	const char *(*start)(char **parm);
+	const char *(*start)(const char * const *parm);
 	void (*stop)(void);
 	void (*make_dirty)(int left, int top, int width, int height);
 	int (*main_loop)(void);
@@ -20,12 +20,12 @@ enum {
 };
 
 typedef struct {
-	char *(*start)(char **parm);
+	const char *(*start)(const char * const *parm);
 	void (*stop)(void);
 } HalSoundDriver;
 
 typedef struct {
-	char *(*start)(char **parm);
+	const char *(*start)(const char * const *parm);
 	void (*stop)(void);
 
 	void (*play_song)(const char *filename);
@@ -88,9 +88,9 @@ extern bool _dbg_screen_rect;
 
 void LoadDriver(int driver, const char *name);
 
-char *GetDriverParam(char **parm, const char *name);
-bool GetDriverParamBool(char **parm, const char *name);
-int GetDriverParamInt(char **parm, const char *name, int def);
+const char *GetDriverParam(const char * const *parm, const char *name);
+bool GetDriverParamBool(const char * const *parm, const char *name);
+int GetDriverParamInt(const char * const *parm, const char *name, int def);
 
 
 

@@ -103,7 +103,7 @@ static const char sdl_files[] =
 
 static SDLProcs _proc;
 
-static char *LoadSdlDLL(void)
+static const char *LoadSdlDLL(void)
 {
 	if (_proc.SDL_Init != NULL)
 		return NULL;
@@ -138,11 +138,11 @@ static void SdlAbort(int sig)
 #endif
 
 
-static char *SdlOpen(uint32 x)
+static const char *SdlOpen(uint32 x)
 {
 #if defined(DYNAMICALLY_LOADED_SDL) && defined(WIN32)
 	{
-		char *s = LoadSdlDLL();
+		const char *s = LoadSdlDLL();
 		if (s != NULL) return s;
 	}
 #endif
@@ -540,7 +540,7 @@ static int PollEvent(void)
 	return -1;
 }
 
-static const char *SdlVideoStart(char **parm)
+static const char *SdlVideoStart(const char * const *parm)
 {
 	char buf[30];
 
@@ -654,11 +654,11 @@ static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
 	MxMixSamples(_mixer, stream, len / 4);
 }
 
-static char *SdlSoundStart(char **parm)
+static const char *SdlSoundStart(const char * const *parm)
 {
 	SDL_AudioSpec spec;
 
-	char *s = SdlOpen(SDL_INIT_AUDIO);
+	const char *s = SdlOpen(SDL_INIT_AUDIO);
 	if (s != NULL) return s;
 
 	spec.freq = GetDriverParamInt(parm, "hz", 11025);

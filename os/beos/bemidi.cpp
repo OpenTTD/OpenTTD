@@ -9,7 +9,7 @@
 
 BMidiSynthFile midiSynthFile;
 
-static char *bemidi_start(char **parm)
+static const char *bemidi_start(const char * const *parm)
 {
 	return NULL;
 }

@@ -32,7 +32,7 @@
 #include "sound.h"
 #include "hal.h"
 
-static char * DMusicMidiStart(char **parm);
+static const char * DMusicMidiStart(const char * const *parm);
 static void DMusicMidiStop(void);
 static void DMusicMidiPlaySong(const char *filename);
 static void DMusicMidiStopSong(void);
@@ -60,7 +60,7 @@ extern void SetVolume (long);
 
 bool seeking = false;
 
-static char * DMusicMidiStart(char **parm)
+static const char * DMusicMidiStart(const char * const *parm)
 {
 	if (InitDirectMusic() == true)
 		return(0);

@@ -100,7 +100,7 @@ char * CDECL str_fmt(const char *str, ...)
 
 
 // NULL midi driver
-static char *NullMidiStart(char **parm) { return NULL; }
+static const char *NullMidiStart(const char * const *parm) { return NULL; }
 static void NullMidiStop(void) {}
 static void NullMidiPlaySong(const char *filename) {}
 static void NullMidiStopSong(void) {}
@@ -118,7 +118,8 @@ const HalMusicDriver _null_music_driver = {
 
 // NULL video driver
 static void *_null_video_mem;
-static const char *NullVideoStart(char **parm) {
+static const char *NullVideoStart(const char * const *parm)
+{
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
 	_null_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
@@ -149,7 +150,7 @@ const HalVideoDriver _null_video_driver = {
 };
 
 // NULL sound driver
-static char *NullSoundStart(char **parm) { return NULL; }
+static const char *NullSoundStart(const char * const *parm) { return NULL; }
 static void NullSoundStop(void) {}
 const HalSoundDriver _null_sound_driver = {
 	NullSoundStart,
@@ -254,7 +255,7 @@ void LoadDriver(int driver, const char *name)
 	const char *err;
 	char *parm;
 	char buffer[256];
-	char *parms[32];
+	const char *parms[32];
 
 	parms[0] = NULL;
 
@@ -330,9 +331,9 @@ static void showhelp(void)
 }
 
 
-char *GetDriverParam(char **parm, const char *name)
+const char *GetDriverParam(const char * const *parm, const char *name)
 {
-	char *p;
+	const char *p;
 	int len = strlen(name);
 	while ((p = *parm++) != NULL) {
 		if (!strncmp(p,name,len)) {
@@ -343,15 +344,15 @@ char *GetDriverParam(char **parm, const char *name)
 	return NULL;
 }
 
-bool GetDriverParamBool(char **parm, const char *name)
+bool GetDriverParamBool(const char * const *parm, const char *name)
 {
-	char *p = GetDriverParam(parm, name);
+	const char *p = GetDriverParam(parm, name);
 	return p != NULL;
 }
 
-int GetDriverParamInt(char **parm, const char *name, int def)
+int GetDriverParamInt(const char * const *parm, const char *name, int def)
 {
-	char *p = GetDriverParam(parm, name);
+	const char *p = GetDriverParam(parm, name);
 	return p != NULL ? atoi(p) : def;
 }
 

@@ -656,7 +656,7 @@ static bool OS2MidiIsSongPlaying()
 	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
 }
 
-static char *OS2MidiStart(char **parm)
+static const char *OS2MidiStart(const char * const *parm)
 {
 	return 0;
 }

@@ -606,7 +606,7 @@ static void FindResolutions(void)
 }
 
 
-static const char *Win32GdiStart(char **parm)
+static const char *Win32GdiStart(const char * const *parm)
 {
 	memset(&_wnd, 0, sizeof(_wnd));
 	_wnd.cursor_visible = true;
@@ -879,7 +879,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 	return 0;
 }
 
-static char *Win32MidiStart(char **parm)
+static const char *Win32MidiStart(const char * const *parm)
 {
 	DWORD threadId;
 	memset(&_midi, 0, sizeof(_midi));
@@ -939,7 +939,7 @@ static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD dwInstance, DWOR
 	}
 }
 
-static char *Win32SoundStart(char **parm)
+static const char *Win32SoundStart(const char * const *parm)
 {
 	WAVEFORMATEX wfex;
 	int hz;

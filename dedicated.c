@@ -128,7 +128,8 @@ void CloseWindowsConsoleThread(void)
 
 #endif
 
-static const char *DedicatedVideoStart(char **parm) {
+static const char *DedicatedVideoStart(const char * const *parm)
+{
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
 	_dedicated_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
@@ -306,7 +307,8 @@ const HalVideoDriver _dedicated_video_driver = {
 
 static void *_dedicated_video_mem;
 
-static const char *DedicatedVideoStart(char **parm) {
+static const char *DedicatedVideoStart(const char **parm)
+{
 	DEBUG(misc,0)("OpenTTD compiled without network-support, quiting...");
 
 	return NULL;
