@@ -147,10 +147,11 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 	}
 }
 
-static void ReadSprite(SpriteID id, byte *dest)
+static void ReadSprite(SpriteID id, void *buffer)
 {
 	uint num = _sprite_size[id];
 	byte type;
+	byte* dest;
 
 	FioSeekToFile(_sprite_file_pos[id]);
 
@@ -158,7 +159,7 @@ static void ReadSprite(SpriteID id, byte *dest)
 	/* We've decoded special sprites when reading headers. */
 	if (type != 0xFF) {
 		/* read sprite hdr */
-		Sprite* sprite = dest;
+		Sprite* sprite = buffer;
 		sprite->info = type;
 		sprite->height = FioReadByte();
 		if (id == 142) sprite->height = 10; // Compensate for a TTD bug
@@ -167,6 +168,8 @@ static void ReadSprite(SpriteID id, byte *dest)
 		sprite->y_offs = FioReadWord();
 		dest = sprite->data;
 		num -= 8;
+	} else {
+		dest = buffer;
 	}
 
 	if (type & 2) {
@@ -680,12 +683,7 @@ static uint RotateSprite(uint s)
 }
 #endif
 
-const Sprite *GetSprite(SpriteID sprite)
-{
-	return GetNonSprite(sprite);
-}
-
-const byte *GetNonSprite(SpriteID sprite)
+const void *GetRawSprite(SpriteID sprite)
 {
 	byte *p;
 

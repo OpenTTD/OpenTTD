@@ -17,8 +17,17 @@ typedef struct {
 } SpriteDimension;
 
 const SpriteDimension *GetSpriteDimension(SpriteID sprite);
-const Sprite *GetSprite(SpriteID sprite);
-const byte *GetNonSprite(SpriteID sprite);
+const void *GetRawSprite(SpriteID sprite);
+
+static inline const Sprite *GetSprite(SpriteID sprite)
+{
+	return GetRawSprite(sprite);
+}
+
+static inline const byte *GetNonSprite(SpriteID sprite)
+{
+	return GetRawSprite(sprite);
+}
 
 void GfxLoadSprites(void);
 void IncreaseSpriteLRU(void);
