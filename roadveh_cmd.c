@@ -14,6 +14,7 @@
 #include "npf.h"
 #include "player.h"
 #include "sound.h"
+#include "depot.h"
 
 void ShowRoadVehViewWindow(Vehicle *v);
 
@@ -285,7 +286,7 @@ static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int trac
 	return false;
 }
 
-static int FindClosestRoadDepot(Vehicle *v)
+static Depot *FindClosestRoadDepot(Vehicle *v)
 {
 	uint tile = v->tile;
 	int i;
@@ -300,7 +301,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 		if (ftd.best_bird_dist == 0)
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		else
-			return -1; /* Target not found */
+			return NULL; /* Target not found */
 		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
 	} else {
 		RoadFindDepotData rfdd;
@@ -312,7 +313,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
 
 		if (rfdd.best_length == (uint)-1)
-			return -1;
+			return NULL;
 
 		return GetDepotByTile(rfdd.tile);
 	}
@@ -326,7 +327,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	int depot;
+	Depot *depot;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -352,14 +353,14 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	depot = FindClosestRoadDepot(v);
-	if (depot < 0)
+	if (depot == NULL)
 		return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = p2 == 0 ? OF_NON_STOP | OF_FULL_LOAD : 0;
-		v->current_order.station = (byte)depot;
-		v->dest_tile = _depots[depot].xy;
+		v->current_order.station = depot->index;
+		v->dest_tile = depot->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
@@ -676,7 +677,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			dist = NULL;
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order->station].xy;
+		v->dest_tile = GetDepot(order->station)->xy;
 	}
 
 	InvalidateVehicleOrder(v);
@@ -1596,7 +1597,7 @@ void RoadVeh_Tick(Vehicle *v)
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
-	int i;
+	Depot *depot;
 
 	if (_patches.servint_roadveh == 0 && !v->set_for_replacement)
 		return;
@@ -1620,9 +1621,9 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	if (v->u.road.slot != NULL)
 		return;
 
-	i = FindClosestRoadDepot(v);
+	depot = FindClosestRoadDepot(v);
 
-	if (i < 0 || DistanceManhattan(v->tile, (&_depots[i])->xy) > 12) {
+	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT && !(
 			DistanceManhattan(v->tile, v->dest_tile) > 25 && v->set_for_replacement)) {
 			/*  a vehicle needs a greater distance to a depot to loose it than to find it since
@@ -1641,8 +1642,8 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.station = (byte)i;
-	v->dest_tile = (&_depots[i])->xy;
+	v->current_order.station = depot->index;
+	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 

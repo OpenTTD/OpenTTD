@@ -353,7 +353,6 @@ void InitializeVehicles(void)
 
 	// clear it...
 	memset(&_waypoints, 0, sizeof(_waypoints));
-	memset(&_depots, 0, sizeof(_depots));
 
 	memset(_vehicle_position_hash, -1, sizeof(_vehicle_position_hash));
 }
@@ -397,29 +396,6 @@ int CountVehiclesInChain(Vehicle *v)
 	return count;
 }
 
-
-Depot *AllocateDepot(void)
-{
-	Depot *dep, *free_dep = NULL;
-	int num_free = 0;
-
-	for(dep = _depots; dep != endof(_depots); dep++) {
-		if (dep->xy == 0) {
-			num_free++;
-			if (free_dep==NULL)
-				free_dep = dep;
-		}
-	}
-
-	if (free_dep == NULL ||
-			(num_free < 30 && IS_HUMAN_PLAYER(_current_player))) {
-		_error_message = STR_1009_TOO_MANY_DEPOTS;
-		return NULL;
-	}
-
-	return free_dep;
-}
-
 Waypoint *AllocateWaypoint(void)
 {
 	Waypoint *cp;
@@ -438,27 +414,6 @@ uint GetWaypointByTile(uint tile)
 	int i=0;
 	for(cp=_waypoints; cp->xy != (TileIndex)tile; cp++) { i++; }
 	return i;
-}
-
-void DoDeleteDepot(uint tile)
-{
-	Order order;
-	byte dep_index;
-	Depot *d;
-
-	// Clear it
-	DoClearSquare(tile);
-
-	// Nullify the depot struct
-	for(d=_depots,dep_index=0; d->xy != (TileIndex)tile; d++) {dep_index++;}
-	d->xy = 0;
-
-	order.type = OT_GOTO_DEPOT;
-	order.station = dep_index;
-	DeleteDestinationFromVehicleOrder(order);
-
-	// Delete the depot
-	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
 }
 
 void DeleteVehicle(Vehicle *v)
@@ -2110,33 +2065,6 @@ static void Load_VEHS(void)
 		_vehicle_id_ctr_day = 0;
 }
 
-static const byte _depot_desc[] = {
-	SLE_CONDVAR(Depot, xy,			SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Depot, xy,			SLE_UINT32, 6, 255),
-	SLE_VAR(Depot,town_index,		SLE_UINT16),
-	SLE_END()
-};
-
-static void Save_DEPT(void)
-{
-	Depot *d;
-	int i;
-	for(i=0,d=_depots; i!=lengthof(_depots); i++,d++) {
-		if (d->xy != 0) {
-			SlSetArrayIndex(i);
-			SlObject(d, _depot_desc);
-		}
-	}
-}
-
-static void Load_DEPT(void)
-{
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		SlObject(&_depots[index], _depot_desc);
-	}
-}
-
 static const byte _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, 255),
@@ -2171,7 +2099,6 @@ static void Load_CHKP(void)
 
 const ChunkHandler _veh_chunk_handlers[] = {
 	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY},
-	{ 'DEPT', Save_DEPT, Load_DEPT, CH_ARRAY},
 	{ 'CHKP', Save_CHKP, Load_CHKP, CH_ARRAY | CH_LAST},
 };
 

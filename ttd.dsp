@@ -466,6 +466,10 @@ SOURCE=.\debug.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\depot.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\economy.h
 # End Source File
 
@@ -709,6 +713,10 @@ SOURCE=.\aircraft_cmd.c
 
 # Begin Source File
 SOURCE=.\clear_cmd.c
+# End Source File
+
+# Begin Source File
+SOURCE=.\debug.c
 # End Source File
 
 # Begin Source File

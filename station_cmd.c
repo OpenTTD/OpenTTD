@@ -18,6 +18,7 @@
 #include "airport.h"
 #include "sprite.h"
 #include "npf.h"
+#include "depot.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */

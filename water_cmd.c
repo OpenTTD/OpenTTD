@@ -9,13 +9,9 @@
 #include "town.h"
 #include "news.h"
 #include "sound.h"
+#include "depot.h"
 
 static void FloodVehicle(Vehicle *v);
-
-bool IsShipDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_WATER) && (_map5[tile] & ~3) == 0x80;
-}
 
 static bool IsClearWaterTile(uint tile)
 {
@@ -33,7 +29,7 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tile, tile2;
 
 	int32 cost, ret;
-	Depot *dep;
+	Depot *depot;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -57,14 +53,14 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// pretend that we're not making land from the water even though we actually are.
 	cost = 0;
 
-	dep = AllocateDepot();
-	if (dep == NULL)
+	depot = AllocateDepot();
+	if (depot == NULL)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		dep->xy = tile;
+		depot->xy = tile;
 		_last_built_ship_depot_tile = tile;
-		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
+		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		ModifyTile(tile,
 			MP_SETTYPE(MP_WATER) | MP_MAPOWNER_CURRENT | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
@@ -96,17 +92,12 @@ static int32 RemoveShipDepot(uint tile, uint32 flags)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Depot *d;
+		/* Kill the depot */
+		DoDeleteDepot(tile);
 
-		// convert the cleared tiles to water
+		/* Make the tiles water */
 		ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
 		ModifyTile(tile2, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
-
-		// Kill the entry from the depot table
-		for(d=_depots; d->xy != tile; d++) {}
-		d->xy = 0;
-
-		DeleteWindowById(WC_VEHICLE_DEPOT, tile);
 	}
 
 	return _price.remove_ship_depot;

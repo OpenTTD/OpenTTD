@@ -872,6 +872,7 @@ static void UninitWriteZlib(void)
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
+extern const ChunkHandler _depot_chunk_handlers[];
 extern const ChunkHandler _order_chunk_handlers[];
 extern const ChunkHandler _town_chunk_handlers[];
 extern const ChunkHandler _sign_chunk_handlers[];
@@ -884,6 +885,7 @@ extern const ChunkHandler _animated_tile_chunk_handlers[];
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
 	_veh_chunk_handlers,
+	_depot_chunk_handlers,
 	_order_chunk_handlers,
 	_industry_chunk_handlers,
 	_economy_chunk_handlers,

@@ -7,6 +7,7 @@
 #include "pathfind.h"
 #include "station.h"
 #include "tile.h"
+#include "depot.h"
 
 AyStar _train_find_station;
 AyStar _train_find_depot;
@@ -605,7 +606,6 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	 * for ships, since the heuristic will not be to far off then. I hope.
 	 */
 	Queue depots;
-	uint i;
 	TileType tiletype = 0;
 	int r;
 	NPFFoundTargetData best_result;
@@ -613,6 +613,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	NPFFindStationOrTileData target;
 	AyStarNode start;
 	Depot* current;
+	Depot *depot;
 
 
 	/* This is a little ugly, but it works :-S */
@@ -627,11 +628,9 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 
 	init_InsSort(&depots);
 	/* Okay, let's find all depots that we can use first */
-	for (i=0;i<lengthof(_depots);i++) {
-		int depot_tile = _depots[i].xy;
-		if (IsTileType(depot_tile, tiletype))
-			depots.push(&depots, &_depots[i], DistanceManhattan(tile, depot_tile));
-
+	FOR_ALL_DEPOTS(depot) {
+		if (IsTileType(depot->xy, tiletype))
+			depots.push(&depots, depot, DistanceManhattan(tile, depot->xy));
 	}
 
 	/* Now, let's initialise the aystar */

@@ -13,6 +13,7 @@
 #include "engine.h"
 #include "viewport.h"
 #include "player.h"
+#include "depot.h"
 
 
 void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)

@@ -12,6 +12,7 @@
 #include "pathfind.h"
 #include "economy.h"
 #include "airport.h"
+#include "depot.h"
 
 // remove some day perhaps?
 static Player *_cur_ai_player;

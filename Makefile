@@ -563,6 +563,7 @@ C_SOURCES += console.c
 C_SOURCES += console_cmds.c
 C_SOURCES += debug.c
 C_SOURCES += dedicated.c
+C_SOURCES += depot.c
 C_SOURCES += disaster_cmd.c
 C_SOURCES += dock_gui.c
 C_SOURCES += dummy_land.c

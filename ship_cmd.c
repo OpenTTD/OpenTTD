@@ -14,6 +14,7 @@
 #include "player.h"
 #include "sound.h"
 #include "npf.h"
+#include "depot.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -63,30 +64,31 @@ int GetShipImage(Vehicle *v, byte direction)
 	return _ship_sprites[spritenum] + direction;
 }
 
-static int FindClosestShipDepot(Vehicle *v)
+static Depot *FindClosestShipDepot(Vehicle *v)
 {
+	Depot *depot;
+	Depot *best_depot = NULL;
 	uint tile, dist, best_dist = (uint)-1;
-	int best_depot = -1;
-	int i;
 	byte owner = v->owner;
 	uint tile2 = v->tile;
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_ROAD);
+		/* XXX --- SLOW!!!! */
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER);
 		if (ftd.best_bird_dist == 0)
-			best_depot = ftd.node.tile; /* Found target */
+			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		else
-			best_depot = -1; /* Did not find target */
+			best_depot = NULL; /* Did not find target */
 	} else {
-		for(i=0; i!=lengthof(_depots); i++) {
-			tile = _depots[i].xy;
+		FOR_ALL_DEPOTS(depot) {
+			tile = depot->xy;
 			if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
 				dist = DistanceManhattan(tile, tile2);
 				if (dist < best_dist) {
 					best_dist = dist;
-					best_depot = i;
+					best_depot = depot;
 				}
 			}
 		}
@@ -96,7 +98,7 @@ static int FindClosestShipDepot(Vehicle *v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	int i;
+	Depot *depot;
 
 	if (_patches.servint_ships == 0 && !v->set_for_replacement)
 		return;
@@ -114,9 +116,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	if (_patches.gotodepot && VehicleHasDepotOrders(v))
 		return;
 
-	i = FindClosestShipDepot(v);
+	depot = FindClosestShipDepot(v);
 
-	if (i < 0 || DistanceManhattan(v->tile, (&_depots[i])->xy) > 12) {
+	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -127,8 +129,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.station = (byte)i;
-	v->dest_tile = (&_depots[i])->xy;
+	v->current_order.station = depot->index;
+	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
@@ -261,7 +263,7 @@ static void ProcessShipOrder(Vehicle *v)
 			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_map5[st->dock_tile]-0x4B]));
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order->station].xy;
+		v->dest_tile = GetDepot(order->station)->xy;
 	} else {
 		v->dest_tile = 0;
 	}
@@ -1009,7 +1011,7 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	int depot;
+	Depot *depot;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -1032,14 +1034,14 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} else {
 		depot = FindClosestShipDepot(v);
-		if (depot < 0)
+		if (depot == NULL)
 			return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 		if (flags & DC_EXEC) {
-			v->dest_tile = _depots[depot].xy;
+			v->dest_tile = depot->xy;
 			v->current_order.type = OT_GOTO_DEPOT;
 			v->current_order.flags = HASBIT(p2, 0) ? 0 : OF_NON_STOP | OF_FULL_LOAD;
-			v->current_order.station = depot;
+			v->current_order.station = depot->index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 	}

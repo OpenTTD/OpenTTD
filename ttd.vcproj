@@ -314,6 +314,9 @@
 			</File>
 			<File
 				RelativePath=".\dedicated.c">
+			</File>				
+			<File
+				RelativePath=".\depot.c">
 			</File>
 			<File
 				RelativePath="economy.c">
@@ -1162,6 +1165,9 @@
 			</File>
 			<File
 				RelativePath="debug.h">
+			</File>
+			<File
+				RelativePath="depot.h">
 			</File>
 			<File
 				RelativePath="economy.h">

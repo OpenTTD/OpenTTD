@@ -11,6 +11,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "airport.h"
+#include "depot.h"
 
 static byte _selected_airport_type;
 

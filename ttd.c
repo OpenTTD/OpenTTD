@@ -30,6 +30,7 @@
 #include "screenshot.h"
 #include "network.h"
 #include "signs.h"
+#include "depot.h"
 
 #include <stdarg.h>
 

@@ -13,7 +13,7 @@
 #include "player.h"
 #include "engine.h"
 #include "vehicle_gui.h"
-
+#include "depot.h"
 
 int _traininfo_vehicle_pitch = 0;
 
@@ -303,7 +303,7 @@ static void DrawTrainDepotWindow(Window *w)
 	uint tile;
 	Vehicle *v, *u;
 	int num,x,y,i, hnum;
-	Depot *d;
+	Depot *depot;
 
 	tile = w->window_number;
 
@@ -336,11 +336,10 @@ static void DrawTrainDepotWindow(Window *w)
 	SetHScrollCount(w, hnum);
 
 	/* locate the depot struct */
-	for (d = _depots; d->xy != (TileIndex)tile; d++) {
-		assert(d < endof(_depots));
-	}
+	depot = GetDepotByTile(tile);
+	assert(depot != NULL);
 
-	SetDParam(0, d->town_index);
+	SetDParam(0, depot->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -850,7 +849,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = &_depots[v->current_order.station];
+				Depot *dep = GetDepot(v->current_order.station);
 				SetDParam(0, dep->town_index);
 				str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
 				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
@@ -927,7 +926,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		v = GetVehicle(w->window_number);
 		assert(v->type == VEH_Train);
-		h = CheckStoppedInDepot(v) >= 0 ? (1 << 9) : (1 << 12);
+		h = CheckTrainStoppedInDepot(v) >= 0 ? (1 << 9) : (1 << 12);
 		if (h != w->hidden_state) {
 			w->hidden_state = h;
 			SetWindowDirty(w);

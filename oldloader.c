@@ -11,6 +11,7 @@
 #include "engine.h"
 #include "vehicle.h"
 #include "signs.h"
+#include "depot.h"
 
 extern byte _name_array[512][32];
 extern TileIndex _animated_tile_list[256];
@@ -777,15 +778,23 @@ static void FixStation(OldStation *o, int num)
 	} while (i++,o++,--num);
 }
 
-static void FixDepot(Depot *n, OldDepot *o, int num)
+static void FixDepot(OldDepot *o, int num)
 {
+	Depot *depot;
+	uint i = 0;
+
 	do {
 		if (o->xy == 0)
 			continue;
 
-		n->town_index = REMAP_TOWN_IDX(o->town);
-		n->xy = o->xy;
-	} while (n++,o++,--num);
+		if (!AddBlockIfNeeded(&_depot_pool, i))
+			error("Depots: failed loading savegame: too many depots");
+
+		depot = GetDepot(i);
+
+		depot->town_index = REMAP_TOWN_IDX(o->town);
+		depot->xy = o->xy;
+	} while (i++,o++,--num);
 }
 
 static void FixOrder(uint16 *o, int num)
@@ -1533,7 +1542,7 @@ bool LoadOldSaveGame(const char *file)
 	FixIndustry(m->industries, lengthof(m->industries));
 	FixStation(m->stations, lengthof(m->stations));
 
-	FixDepot(_depots, m->depots, lengthof(m->depots));
+	FixDepot(m->depots, lengthof(m->depots));
 	FixOrder(m->order_list, lengthof(m->order_list));
 	FixVehicle(m->vehicles, lengthof(m->vehicles));
 	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));

@@ -14,6 +14,7 @@
 #include "engine.h"
 #include "player.h"
 #include "sound.h"
+#include "depot.h"
 
 #define is_firsthead_sprite(spritenum) \
 	(is_custom_sprite(spritenum) \
@@ -627,13 +628,6 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return value;
 }
 
-
-bool IsTrainDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_RAILWAY) &&
-					(_map5[tile] & 0xFC) == 0xC0;
-}
-
 static bool IsTunnelTile(TileIndex tile)
 {
 	return IsTileType(tile, MP_TUNNELBRIDGE) &&
@@ -641,7 +635,7 @@ static bool IsTunnelTile(TileIndex tile)
 }
 
 
-int CheckStoppedInDepot(Vehicle *v)
+int CheckTrainStoppedInDepot(Vehicle *v)
 {
 	int count;
 	TileIndex tile = v->tile;
@@ -744,13 +738,13 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (dst != NULL) dst_head = GetFirstVehicleInChain(dst);
 
 	/* check if all vehicles in the source train are stopped */
-	if (CheckStoppedInDepot(src_head) < 0)
+	if (CheckTrainStoppedInDepot(src_head) < 0)
 		return CMD_ERROR;
 
 	/* check if all the vehicles in the dest train are stopped,
 	 * and that the length of the dest train is no longer than XXX vehicles */
 	if (dst_head != NULL) {
-		int num = CheckStoppedInDepot(dst_head);
+		int num = CheckTrainStoppedInDepot(dst_head);
 		if (num < 0)
 			return CMD_ERROR;
 
@@ -925,7 +919,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	// make sure the vehicle is stopped in the depot
-	if (CheckStoppedInDepot(first) < 0)
+	if (CheckTrainStoppedInDepot(first) < 0)
 		return CMD_ERROR;
 
 
@@ -1234,7 +1228,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
+	if (v->type != VEH_Train || !CheckOwnership(v->owner) || ((CheckTrainStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
 		return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
@@ -1266,14 +1260,6 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_returned_refit_amount = num;
 
 	return cost;
-}
-
-int GetDepotByTile(uint tile)
-{
-	Depot *d;
-	int i=0;
-	for(d=_depots; d->xy != (TileIndex)tile; d++) { i++; }
-	return i;
 }
 
 typedef struct TrainFindDepotData {
@@ -1396,7 +1382,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = HASBIT(p2, 0) ? 0 : OF_NON_STOP | OF_FULL_LOAD;
-		v->current_order.station = GetDepotByTile(tfdd.tile);
+		v->current_order.station = GetDepotByTile(tfdd.tile)->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
@@ -1944,7 +1930,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 			break;
 
 		case OT_GOTO_DEPOT:
-			v->dest_tile = _depots[order->station].xy;
+			v->dest_tile = GetDepot(order->station)->xy;
 			result = CheckReverseTrain(v);
 			break;
 
@@ -2988,7 +2974,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
-	byte depot;
+	Depot *depot;
 	TrainFindDepotData tfdd;
 
 	if (_patches.servint_trains == 0 && !v->set_for_replacement)
@@ -3026,13 +3012,13 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	depot = GetDepotByTile(tfdd.tile);
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.station != depot &&
+			v->current_order.station != depot->index &&
 			!CHANCE16(3,16))
 		return;
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.station = depot;
+	v->current_order.station = depot->index;
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }

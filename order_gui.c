@@ -11,6 +11,7 @@
 #include "town.h"
 #include "command.h"
 #include "viewport.h"
+#include "depot.h"
 
 static int OrderGetSel(Window *w)
 {
@@ -110,7 +111,7 @@ static void DrawOrdersWindow(Window *w)
 					s = STR_GO_TO_AIRPORT_HANGAR;
 					SetDParam(2, order->station);
 				} else {
-					SetDParam(2, _depots[order->station].town_index);
+					SetDParam(2, GetDepot(order->station)->town_index);
 					switch (v->type) {
 						case VEH_Train: s = STR_880E_GO_TO_TRAIN_DEPOT;   break;
 						case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
@@ -189,7 +190,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 				if ((_map5[tile]&0xFC)==0xC0) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_UNLOAD;
-					order.station = GetDepotByTile(tile);
+					order.station = GetDepotByTile(tile)->index;
 					return order;
 				}
 			}
@@ -199,7 +200,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_UNLOAD;
-				order.station = GetDepotByTile(tile);
+				order.station = GetDepotByTile(tile)->index;
 				return order;
 			}
 			break;
@@ -223,7 +224,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 				}
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_UNLOAD;
-				order.station = GetDepotByTile(tile);
+				order.station = GetDepotByTile(tile)->index;
 				return order;
 			}
 
@@ -396,7 +397,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					xy = GetStation(ord->station)->xy ;
 					break;
 				case OT_GOTO_DEPOT:				/* goto depot order */
-					xy = _depots[ord->station].xy;
+					xy = GetDepot(ord->station)->xy;
 					break;
 				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
 					xy = _waypoints[ord->station].xy;

@@ -26,6 +26,7 @@
 #include "station.h"
 #include "engine.h"
 #include "gui.h"
+#include "depot.h"
 
 // This function is called after StartUp. It is the init of an AI
 static void AiNew_State_FirstTime(Player *p) {
@@ -1166,7 +1167,7 @@ static void AiNew_State_GiveOrders(Player *p) {
 			idx = 2;
 			order.type = OT_GOTO_DEPOT;
 			order.flags = OF_UNLOAD;
-			order.station = GetDepotByTile(p->ainew.depot_tile);
+			order.station = GetDepotByTile(p->ainew.depot_tile)->index;
 			DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 

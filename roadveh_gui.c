@@ -12,6 +12,7 @@
 #include "command.h"
 #include "player.h"
 #include "engine.h"
+#include "depot.h"
 
 void Set_DPARAM_Road_Veh_Build_Window(uint16 engine_number)
 {
@@ -233,8 +234,8 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = &_depots[v->current_order.station];
-				SetDParam(0, dep->town_index);
+				Depot *depot = GetDepot(v->current_order.station);
+				SetDParam(0, depot->town_index);
 				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
 			} break;
@@ -494,7 +495,7 @@ static void DrawRoadDepotWindow(Window *w)
 	uint tile;
 	Vehicle *v;
 	int num,x,y;
-	Depot *d;
+	Depot *depot;
 
 	tile = w->window_number;
 
@@ -511,11 +512,10 @@ static void DrawRoadDepotWindow(Window *w)
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	/* locate the depot struct */
-	for (d = _depots; d->xy != (TileIndex)tile; d++) {
-		assert(d < endof(_depots));
-	}
+	depot = GetDepotByTile(tile);
+	assert(depot != NULL);
 
-	SetDParam(0, d->town_index);
+	SetDParam(0, depot->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;

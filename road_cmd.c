@@ -11,6 +11,7 @@
 #include "gfx.h"
 #include "npf.h"
 #include "sound.h"
+#include "depot.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction
  * as normal roads instead of impassable. This is used when detecting whether
@@ -114,12 +115,6 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 	}
 
 	return true;
-}
-
-bool IsRoadDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_STREET) &&
-					(_map5[tile] & 0xF0) == 0x20;
 }
 
 uint GetRoadBitsByTile(TileIndex tile)

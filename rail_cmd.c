@@ -12,6 +12,7 @@
 #include "sound.h"
 #include "station.h"
 #include "sprite.h"
+#include "depot.h"
 
 extern uint16 _custom_sprites_base;
 
@@ -632,7 +633,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
 	int32 cost, ret;
-	Depot *dep;
+	Depot *depot;
 	uint tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -649,8 +650,8 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (ret == CMD_ERROR) return CMD_ERROR;
 	cost = ret;
 
-	dep = AllocateDepot();
-	if (dep == NULL)
+	depot = AllocateDepot();
+	if (depot == NULL)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -664,8 +665,8 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			p2 | RAIL_TYPE_DEPOT /* map5 */
 		);
 
-		dep->xy = tile;
-		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
+		depot->xy = tile;
+		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		SetSignalsOnBothDir(tile, (p2&1) ? 2 : 1);
 

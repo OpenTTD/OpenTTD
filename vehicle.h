@@ -200,11 +200,6 @@ struct Vehicle {
 #define is_custom_firsthead_sprite(x) (x == 0xfd)
 #define is_custom_secondhead_sprite(x) (x == 0xfe)
 
-struct Depot {
-	TileIndex xy;
-	uint16 town_index;
-};
-
 // train waypoint
 struct Waypoint {
 	TileIndex xy;
@@ -280,14 +275,11 @@ void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks(void);
 
-Depot *AllocateDepot(void);
 Waypoint *AllocateWaypoint(void);
 void UpdateWaypointSign(Waypoint *cp);
 void RedrawWaypointSign(Waypoint *cp);
 
 void InitializeTrains(void);
-bool IsTrainDepotTile(TileIndex tile);
-bool IsRoadDepotTile(TileIndex tile);
 
 bool CanFillVehicle(Vehicle *v);
 
@@ -330,19 +322,15 @@ void EndVehicleMove(Vehicle *v);
 bool IsAircraftHangarTile(TileIndex tile);
 void ShowAircraftViewWindow(Vehicle *v);
 
-bool IsShipDepotTile(TileIndex tile);
 UnitID GetFreeUnitNumber(byte type);
 
 int LoadUnloadVehicle(Vehicle *v);
-int GetDepotByTile(uint tile);
 uint GetWaypointByTile(uint tile);
-
-void DoDeleteDepot(uint tile);
 
 void UpdateTrainAcceleration(Vehicle *v);
 int32 GetTrainRunningCost(Vehicle *v);
 
-int CheckStoppedInDepot(Vehicle *v);
+int CheckTrainStoppedInDepot(Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
@@ -434,8 +422,6 @@ static inline Vehicle *GetFirstVehicleFromSharedList(Vehicle *v)
 	return u;
 }
 
-VARDEF Depot _depots[255];
-
 // 128 waypoints
 VARDEF Waypoint _waypoints[128];
 
@@ -452,21 +438,10 @@ VARDEF uint16 _aircraft_refit_capacity;
 VARDEF byte _cmd_build_rail_veh_score;
 VARDEF byte _cmd_build_rail_veh_var1;
 
-// NOSAVE: Player specific info
-VARDEF TileIndex _last_built_train_depot_tile;
-VARDEF TileIndex _last_built_road_depot_tile;
-VARDEF TileIndex _last_built_aircraft_depot_tile;
-VARDEF TileIndex _last_built_ship_depot_tile;
-
 // for each player, for each vehicle type, keep a list of the vehicles.
 //VARDEF Vehicle *_vehicle_arr[8][4];
 
 #define INVALID_VEHICLE 0xffff
-
-#define MIN_SERVINT_PERCENT  5
-#define MAX_SERVINT_PERCENT 90
-#define MIN_SERVINT_DAYS    30
-#define MAX_SERVINT_DAYS   800
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */
