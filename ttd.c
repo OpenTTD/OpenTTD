@@ -728,9 +728,7 @@ int ttd_main(int argc, char* argv[])
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
 			NetworkClientConnectGame(network_conn, rport);
-		} else {
-//			NetworkCoreConnectGame("auto", _network_server_port);
-		}
+		} 
 	}
 #endif /* ENABLE_NETWORK */
 
@@ -759,6 +757,9 @@ int ttd_main(int argc, char* argv[])
 
 	/* uninitialize variables that are allocated dynamic */
 	UnInitializeDynamicVariables();
+
+	/* Close all and any open filehandles */
+	FioCloseAll();
 
 	return 0;
 }

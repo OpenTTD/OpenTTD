@@ -83,11 +83,11 @@ void FioReadBlock(void *ptr, uint size)
 	fread(ptr, 1, size, _fio.cur_fh);
 }
 
-void FioCloseAll()
+void FioCloseAll(void)
 {
 	int i;
 
-	for(i=0; i!=lengthof(_fio.handles); i++) {
+	for (i = 0; i != lengthof(_fio.handles); i++) {
 		if (_fio.handles[i] != NULL) {
 			fclose(_fio.handles[i]);
 			_fio.handles[i] = NULL;
