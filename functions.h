@@ -234,7 +234,7 @@ void ShowNetworkNeedGamePassword();
 void ShowNetworkNeedCompanyPassword();
 void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);
-void ShowHighscoreTable(int difficulty, int rank);
+void ShowHighscoreTable(int difficulty, int8 rank);
 void ShowEndGameChart(void);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 

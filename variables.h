@@ -160,6 +160,7 @@ typedef struct Patches {
 	bool ai_disable_veh_aircraft;		// disable types for AI
 	bool ai_disable_veh_ship;		// disable types for AI
 	uint32 starting_date;		// starting date
+	uint32 ending_date;		// end of the game (just show highscore)
 	uint32 colored_news_date; // when does newspaper become colored?
 
 	bool keep_all_autosave;		// name the autosave in a different way.

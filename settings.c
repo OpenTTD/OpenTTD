@@ -886,6 +886,7 @@ const SettingDesc patch_settings[] = {
 	{"ai_disable_veh_aircraft",SDT_BOOL,(void*)false, &_patches.ai_disable_veh_aircraft,NULL},
 	{"ai_disable_veh_ship",	SDT_BOOL,		(void*)false, &_patches.ai_disable_veh_ship,	NULL},
 	{"starting_date",				SDT_UINT32, (void*)1950,	&_patches.starting_date,				NULL},
+	{"ending_date",				  SDT_UINT32, (void*)2051,	&_patches.ending_date,				  NULL},
 
 	{"colored_news_date",		SDT_UINT32, (void*)2000,	&_patches.colored_news_date,		NULL},
 

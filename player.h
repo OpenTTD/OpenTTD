@@ -207,9 +207,10 @@ typedef struct HighScore {
 	uint16 score;
 } HighScore;
 
-VARDEF HighScore _highscore_table[4][5]; // 4 difficulty-settings; top 5
+VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
 void SaveToHighScore(void);
 void LoadFromHighScore(void);
-int SaveHighScoreValue(const Player *p);
+int8 SaveHighScoreValue(const Player *p);
+int8 SaveHighScoreValueNetwork(void);
 
 #endif /* PLAYER_H */

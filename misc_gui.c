@@ -207,14 +207,14 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_CREATE: /* Set up window counter and start position of scroller */
-		WP(w, general_d).i = 0;
-		WP(w, general_d).j = w->height - 40;
+		WP(w, scroller_d).counter = 0;
+		WP(w, scroller_d).height = w->height - 40;
 		break;
 	case WE_PAINT: {
 		const char *str;
 		char buffer[100];
 		uint i;
-		int y = WP(w, general_d).j;
+		int y = WP(w, scroller_d).height;
 		DrawWindowWidgets(w);
 
 		// Show original copyright and revision version
@@ -239,13 +239,13 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		}
 
 		// If the last text has scrolled start anew from the start
-		if (y < 50) WP(w, general_d).j = w->height - 40;
+		if (y < 50) WP(w, scroller_d).height = w->height - 40;
 
 		DrawStringMultiCenter(200, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 398);
 	}	break;
 	case WE_MOUSELOOP: /* Timer to scroll the text and adjust the new top */
-		if (WP(w, general_d).i++ % 3 == 0) {
-			WP(w, general_d).j--;
+		if (WP(w, scroller_d).counter++ % 3 == 0) {
+			WP(w, scroller_d).height--;
 			SetWindowDirty(w);
 		}
 		break;

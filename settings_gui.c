@@ -345,9 +345,12 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		w->click_state = (1 << 3) << _opt_mod_temp.diff_level;
 		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
-		// Disable save-button in multiplayer (and if client)
-		if (_networking && !_network_server)
-			SETBIT(w->disabled_state, 10);
+		if (_networking) {
+			SETBIT(w->disabled_state, 7); // disable highscore chart in multiplayer
+			if (!_network_server)
+				SETBIT(w->disabled_state, 10); // Disable save-button in multiplayer (and if client)
+		}
+
 		DrawWindowWidgets(w);
 
 		click_a = _difficulty_click_a;
@@ -598,10 +601,11 @@ enum {
 	PE_INT32		= 4,
 	PE_CURRENCY	= 5,
 
-	PF_0ISDIS				= 1,
-	PF_NOCOMMA			= 2,
-	PF_MULTISTRING	= 4,
-	PF_PLAYERBASED	= 8, // This has to match the entries that are in settings.c, patch_player_settings
+	PF_0ISDIS				= 1 << 0,
+	PF_NOCOMMA			= 1 << 1,
+	PF_MULTISTRING	= 1 << 2,
+	PF_PLAYERBASED	= 1 << 3, // This has to match the entries that are in settings.c, patch_player_settings
+	PF_NETWORK_ONLY = 1 << 4, // this setting only applies to network games
 };
 
 static const PatchEntry _patches_ui[] = {
@@ -680,7 +684,8 @@ static const PatchEntry _patches_economy[] = {
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	"snow_line_height", &_patches.snow_line_height,					2, 13,  1, NULL},
 
 	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, "colored_new_data", &_patches.colored_news_date, 1900, 2200, 5, NULL},
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 1920, MAX_YEAR_END_REAL, 1, NULL},
+	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, 1, NULL},
+	{PE_INT32,	PF_NOCOMMA | PF_NETWORK_ONLY, STR_CONFIG_PATCHES_ENDING_DATE, "ending_date", &_patches.ending_date,	 MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, 1, NULL},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		"smooth_economy", &_patches.smooth_economy,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_ALLOW_SHARES,			"allow_shares", &_patches.allow_shares,						0,  0,  0, NULL},
@@ -795,9 +800,13 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		y = 46;
 		clk = WP(w,def_d).data_2;
 		page = &_patches_page[WP(w,def_d).data_1];
-		for(i=0,pe=page->entries; i!=page->num; i++,pe++) {
+		for (i = 0, pe = page->entries; i != page->num; i++, pe++) {
 			bool disabled = false;
 			bool editable = true;
+
+			if ((pe->flags & PF_NETWORK_ONLY) && !_networking)
+				editable = false;
+
 			// We do not allow changes of some items when we are a client in a networkgame
 			if (!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)
 				editable = false;
@@ -863,7 +872,8 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			x = e->click.pt.x - 5;
 			if (x < 0) return;
 
-			if (!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)
+			if (((pe->flags & PF_NETWORK_ONLY) && !_networking) || // return if action is only active in network
+					(!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)) // return if only server can change it
 				return;
 
 			if (x < 21) { // clicked on the icon on the left side. Either scroller or bool on/off

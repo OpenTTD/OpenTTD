@@ -365,9 +365,14 @@ typedef struct {
 } news_d;
 
 typedef struct {
-	int i;
-	int j;
-} general_d;
+	uint32 background_img;
+	int8 rank;
+} highscore_d;
+
+typedef struct {
+	int height;
+	uint16 counter;
+} scroller_d;
 
 typedef enum VehicleListFlags {
 	VL_DESC    = 0x01,

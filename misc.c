@@ -702,8 +702,8 @@ void IncreaseDate()
 		NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */
 
-	/* check if we reached 2090, that's the maximum year. */
-	if (_cur_year == 131) { // end of game on 31 dec 2050
+	/* check if we reached end of the game (31 dec 2050) */
+	if (_cur_year == _patches.ending_date - MAX_YEAR_BEGIN_REAL) {
 			ShowEndGameChart();
 	/* check if we reached 2090 (MAX_YEAR_END_REAL), that's the maximum year. */
 	} else if (_cur_year == (MAX_YEAR_END + 1)) {

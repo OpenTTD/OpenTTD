@@ -763,7 +763,7 @@ static void SetupHighScoreEndWindow(Window *w, uint *x, uint *y)
 	*x = max(0, (_screen.width  / 2) - (640 / 2));
 	*y = max(0, (_screen.height / 2) - (480 / 2));
 	for (i = 0; i < 10; i++) // the image is split into 10 50px high parts
-		DrawSprite(WP(w, general_d).i + i, *x, *y + (i * 50));
+		DrawSprite(WP(w, highscore_d).background_img + i, *x, *y + (i * 50));
 }
 
 extern StringID EndGameGetPerformanceTitleFromValue(uint value);
@@ -780,7 +780,7 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
-		if (WP(w, general_d).i == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
+		if (WP(w, highscore_d).background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
 			SetDParam(0, p->president_name_1);
 			SetDParam(1, p->president_name_2);
 			SetDParam(2, p->name_1);
@@ -796,7 +796,7 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 		} break;
 	case WE_CLICK: /* OnClick show the highscore chart */
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		ShowHighscoreTable(w->window_number, WP(w, general_d).j);
+		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
 		DeleteWindow(w);
 	}
 }
@@ -806,12 +806,14 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		const HighScore *hs = _highscore_table[w->window_number];
-		uint i, x, y;
+		uint x, y;
+		uint8 i;
 
 		SetupHighScoreEndWindow(w, &x, &y);
 
-		SetDParam(0, w->window_number + STR_6801_EASY);
-		DrawStringMultiCenter(x + (640 / 2), y + 62, STR_0211_TOP_COMPANIES_WHO_REACHED, 640);
+		SetDParam(0, _patches.ending_date);
+		SetDParam(1, w->window_number + STR_6801_EASY);
+		DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
 
 		/* Draw Highscore peepz */
 		for (i = 0; i < lengthof(_highscore_table[0]); i++) {
@@ -819,7 +821,7 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 			DrawString(x + 40, y + 140 + (i * 55), STR_0212, 0x10);
 
 			if (hs[i].company[0] != '\0') {
-				uint16 colour = (WP(w, general_d).j == i) ? 0x3 : 0x10; // draw new highscore in red
+				uint16 colour = (WP(w, highscore_d).rank == (int8)i) ? 0x3 : 0x10; // draw new highscore in red
 
 				DoDrawString(hs[i].company, x + 71, y + 140 + (i * 55), colour);
 				SetDParam(0, hs[i].title);
@@ -830,7 +832,7 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 	} break;	
 
 	case WE_CLICK: /* Onclick get back all hidden windows */
-		if (_game_mode != GM_MENU)				
+		if (_game_mode != GM_MENU && !_networking)				
 			ShowVitalWindows();
 
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
@@ -863,16 +865,16 @@ static const WindowDesc _endgame_desc = {
 /* Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added
  * and is thus highlighted */
-void ShowHighscoreTable(int difficulty, int ranking)
+void ShowHighscoreTable(int difficulty, int8 ranking)
 {
 	Window *w;
 
-	/* Close all always on-top windows to get a clean screen */
-	if (_game_mode != GM_MENU)
-		HideVitalWindows();
-
-	if (!_networking) // pause game to show chart
+	if (!_networking) { // pause game to show chart
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		/* Close all always on-top windows to get a clean screen */
+		if (_game_mode != GM_MENU)
+			HideVitalWindows();
+	}
 
 	DeleteWindowById(WC_HIGHSCORE_ENDSCREEN, 0);
 	w = AllocateWindowDesc(&_highscore_desc);
@@ -880,8 +882,8 @@ void ShowHighscoreTable(int difficulty, int ranking)
 	if (w != NULL) {
 		MarkWholeScreenDirty();
 		w->window_number = difficulty; // show highscore chart for difficulty...
-		WP(w, general_d).i = SPR_HIGHSCORE_CHART_BEGIN; // which background to show
-		WP(w, general_d).j = ranking;
+		WP(w, highscore_d).background_img = SPR_HIGHSCORE_CHART_BEGIN; // which background to show
+		WP(w, highscore_d).rank = ranking;
 	}
 }
 
@@ -902,8 +904,10 @@ void ShowEndGameChart(void)
 
 	if (w != NULL) {
 		MarkWholeScreenDirty();
-		w->window_number = _opt.diff_level; // show highscore chart for difficulty...
-		WP(w, general_d).i = (p->old_economy[0].performance_history == SCORE_MAX) ? SPR_TYCOON_IMG2_BEGIN : SPR_TYCOON_IMG1_BEGIN; // which background to show
-		WP(w, general_d).j = SaveHighScoreValue(p);
+		/* In a network game show the endscores of the custom difficulty 'network' which is the last one
+		 * as well as generate a TOP5 of that game, and not an all-time top5 */
+		w->window_number = (!_networking) ? _opt.diff_level : lengthof(_highscore_table) - 1;
+		WP(w, highscore_d).background_img = (p->old_economy[0].performance_history == SCORE_MAX) ? SPR_TYCOON_IMG2_BEGIN : SPR_TYCOON_IMG1_BEGIN; // which background to show
+		WP(w, highscore_d).rank = (!_networking) ? SaveHighScoreValue(p) : SaveHighScoreValueNetwork();
 	}
 }

@@ -746,7 +746,7 @@ inline StringID EndGameGetPerformanceTitleFromValue(uint value)
 }
 
 /* Save the highscore for the player */
-int SaveHighScoreValue(const Player *p)
+int8 SaveHighScoreValue(const Player *p)
 {
 	HighScore *hs = _highscore_table[_opt.diff_level];
 	uint i;
@@ -774,6 +774,62 @@ int SaveHighScoreValue(const Player *p)
 	return -1; // too bad; we did not make it into the top5
 }
 
+/* Sort all players given their performance */
+static int CDECL HighScoreSorter(const void *a, const void *b)
+{
+	const Player *pa = *(const Player* const*)a;
+	const Player *pb = *(const Player* const*)b;
+
+	return pb->old_economy[0].performance_history - pa->old_economy[0].performance_history;
+}
+
+/* Save the highscores in a network game when it has ended */
+#define LAST_HS_ITEM lengthof(_highscore_table) - 1
+int8 SaveHighScoreValueNetwork(void)
+{
+	Player *p, *player_sort[MAX_PLAYERS];
+	size_t count = 0;
+	int8 player = -1;
+
+	/* Sort all active players with the highest score first */
+	FOR_ALL_PLAYERS(p) {
+		if (p->is_active)
+			player_sort[count++] = p;
+	}
+	qsort(player_sort, count, sizeof(player_sort[0]), HighScoreSorter);
+
+	{
+		HighScore *hs;
+		byte buf[sizeof(_highscore_table[0]->company)];
+		Player* const *p_cur = &player_sort[0];
+		uint8 i;
+
+		memset(_highscore_table[LAST_HS_ITEM], 0, sizeof(_highscore_table[0]));
+
+		/* Copy over Top5 companies */
+		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < (uint8)count; i++) {
+			hs = &_highscore_table[LAST_HS_ITEM][i];
+			SetDParam(0, (*p_cur)->president_name_1);
+			SetDParam(1, (*p_cur)->president_name_2);
+			SetDParam(2, (*p_cur)->name_1);
+			SetDParam(3, (*p_cur)->name_1);
+			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
+			ttd_strlcpy(hs->company, buf, sizeof(buf));
+			hs->score = (*p_cur)->old_economy[0].performance_history;
+			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
+
+			// get the ranking of the local player
+			if ((*p_cur)->index == (int8)_local_player) 
+				player = i;
+
+			p_cur++;
+		}
+	}
+
+	/* Add top5 players to highscore table */
+	return player;
+}
+
 /* Save HighScore table to file */
 void SaveToHighScore(void)
 {
@@ -783,7 +839,7 @@ void SaveToHighScore(void)
 		uint i;
 		HighScore *hs;
 
-		for (i = 0; i < lengthof(_highscore_table); i++) {
+		for (i = 0; i < LAST_HS_ITEM; i++) { // don't save network highscores
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				/* First character is a command character, so strlen will fail on that */
 				byte length = min(sizeof(hs->company), (hs->company[0] == '\0') ? 0 : strlen(&hs->company[1]) + 1);
@@ -809,7 +865,7 @@ void LoadFromHighScore(void)
 		uint i;
 		HighScore *hs;
 
-		for (i = 0; i < lengthof(_highscore_table); i++) {
+		for (i = 0; i < LAST_HS_ITEM; i++) { // don't load network highscores
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				byte length;
 				fread(&length, sizeof(length), 1, fp);
@@ -821,6 +877,9 @@ void LoadFromHighScore(void)
 		}
 		fclose(fp);
 	}
+	
+	/* Initialize end of game variable (when to show highscore chart) */
+	 _patches.ending_date = 2051;
 }
 
 // Save/load of players
