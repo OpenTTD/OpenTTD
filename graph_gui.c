@@ -226,6 +226,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
 			InvalidateWindow(WC_DELIVERED_CARGO, 0);
 			InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
+			InvalidateWindow(WC_COMPANY_VALUE, 0);
 		}
 		break;
 	}
