@@ -174,152 +174,127 @@ DEF_CONSOLE_CMD(ConSave)
 	return NULL;
 }
 
-/* Load a file-number from current dir */
-static void LoadMap(uint no)
+
+static const FiosItem* GetFiosItem(const char* file)
 {
-	/* Build file list */
+	int i;
+
 	BuildFileList();
 
-	/* Check if in range */
-	if (no != 0 && no <= (uint)_fios_num) {
-		const FiosItem *item = &_fios_list[no - 1];
+	for (i = 0; i < _fios_num; i++) {
+		if (strcmp(file, _fios_list[i].name) == 0) break;
+	}
 
-		if (item->type == FIOS_TYPE_FILE) {
-			/* Load the file */
-			_switch_mode = SM_LOAD;
-			SetFiosType(item->type);
-			strcpy(_file_to_saveload.name, FiosBrowseTo(item));
+	if (i == _fios_num) { /* If no name matches, try to parse it as number */
+		char* endptr;
 
-			IConsolePrint(_iconsole_color_default, "Loading map...");
-		} else
-			IConsolePrint(_iconsole_color_error, "That is not a map.");
+		i = strtol(file, &endptr, 10);
+		if (file == endptr || *endptr != '\0') i = -1;
+	}
 
-	} else /* Show usages */
-		IConsolePrint(_iconsole_color_error, "Unknown map. Use 'list_files' and 'goto_dir' to find the numbers of the savegame.");
-
-	/* Free the file-list */
-	FiosFreeSavegameList();
+	return IS_INT_INSIDE(i, 0, _fios_num) ? &_fios_list[i] : NULL;
 }
 
-/* Load a file from a map */
+
 DEF_CONSOLE_CMD(ConLoad)
 {
-	/* We need 1 argument */
-	if (argc == 2) {
-		/* Load the map */
-		LoadMap(atoi(argv[1]));
+	const FiosItem* item;
+	const char* file;
+
+	if (argc != 2) {
+		IConsolePrint(_iconsole_color_default, "Usage: load <file | number>");
 		return NULL;
 	}
 
-	/* Give usage */
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: load <file-no>");
+	file = argv[1];
+	item = GetFiosItem(file);
+	if (item != NULL) {
+		switch (item->type) {
+			case FIOS_TYPE_FILE:
+			case FIOS_TYPE_OLDFILE:
+				_switch_mode = SM_LOAD;
+				SetFiosType(item->type);
+				strcpy(_file_to_saveload.name, FiosBrowseTo(item));
+				break;
+
+			default:
+				IConsolePrintF(_iconsole_color_error, "%s: Not a map.", file);
+				break;
+		}
+	} else {
+		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.",
+			file);
+	}
+
+	FiosFreeSavegameList();
 	return NULL;
 }
+
 
 /* List all the files in the current dir via console */
 DEF_CONSOLE_CMD(ConListFiles)
 {
-	const FiosItem *item;
-	int pos = 0;
+	int i;
 
-	/* Build the file-list */
 	BuildFileList();
 
-	/* As long as we have files */
-	while (pos < _fios_num) {
-		item = _fios_list + pos;
-		pos++;
-		/* Show them */
-		IConsolePrintF(_iconsole_color_default, "%d) %s", pos, item->title[0] ? item->title : item->name);
+	for (i = 0; i < _fios_num; i++) {
+		const FiosItem* item = &_fios_list[i];
+
+		IConsolePrintF(_iconsole_color_default, "%d) %s",
+			i, item->title[0] != '\0' ? item->title : item->name);
 	}
 
-	/* Destroy the file list */
 	FiosFreeSavegameList();
-
 	return NULL;
 }
 
-/* Get an Specific file */
-DEF_CONSOLE_CMD(ConScanFiles)
-{
-	const FiosItem *item;
-	int pos = 0;
-	_iconsole_var* result;
-
-
-	result = IConsoleVarAlloc(ICONSOLE_VAR_STRING);
-
-	if (argc <= 1) {
-		IConsoleVarSetString(result, "0");
-		return result; // return an zero
-	}
-
-	/* Build the file-list */
-	BuildFileList();
-
-	/* As long as we have files */
-	while (pos < _fios_num) {
-		item = _fios_list + pos;
-		pos++;
-		if (strcmp(argv[1], "..") == 0) {
-			if (item->type == FIOS_TYPE_PARENT) {
-				// huh we are searching for the parent directory
-				char buffer[10];
-				sprintf(buffer, "%d", pos);
-				IConsoleVarSetString(result, buffer);
-				return result;
-			}
-		} else
-			// file records ?
-			if (item->type == FIOS_TYPE_FILE) {
-				if (strcmp(argv[1], item->name) == 0) {
-					char buffer[10];
-					sprintf(buffer, "%d", pos);
-					IConsoleVarSetString(result, buffer);
-					return result;
-				}
-			}
-	}
-
-	/* Destroy the file list */
-	FiosFreeSavegameList();
-
-	return NULL;
-}
 
 /* Change the dir via console */
-DEF_CONSOLE_CMD(ConGotoDir)
+DEF_CONSOLE_CMD(ConChangeDirectory)
 {
-	char *file;
-	int no;
+	const FiosItem* item;
+	const char* file;
 
-	/* We need 1 argument */
 	if (argc != 2) {
-		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: goto_dir <dir-no>");
+		IConsolePrint(_iconsole_color_default, "Usage: cd <directory | number>");
 		return NULL;
 	}
 
-	no = atoi(argv[1]);
+	file = argv[1];
+	item = GetFiosItem(file);
+	if (item != NULL) {
+		switch (item->type) {
+			case FIOS_TYPE_DIR:
+			case FIOS_TYPE_DRIVE:
+			case FIOS_TYPE_PARENT:
+				FiosBrowseTo(item);
+				break;
 
-	/* Make the file list */
-	BuildFileList();
-
-	/* Check if we are in range */
-	if (no != 0 && no <= _fios_num) {
-		const FiosItem *item = &_fios_list[no - 1];
-		/* Only DIR and PARENT we do allow here */
-		if (item->type == FIOS_TYPE_DIR || item->type == FIOS_TYPE_PARENT) {
-			/* Goto the map */
-			file = FiosBrowseTo(item);
-			FiosFreeSavegameList();
-			return NULL;
+			default:
+				IConsolePrintF(_iconsole_color_error, "%s: Not a directory.", file);
+				break;
 		}
+	} else {
+		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.",
+			file);
 	}
 
-	/* Report error */
-	IConsolePrint(_iconsole_color_default, "That number is no directory.");
+	FiosFreeSavegameList();
+	return NULL;
+}
+
+
+DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
+{
+	const char* path;
+
+	// XXX Workaround for broken file handling
+	FiosGetSavegameList(&_fios_num, SLD_LOAD_GAME);
 	FiosFreeSavegameList();
 
+	FiosGetDescText(&path);
+	IConsolePrint(_iconsole_color_default, path);
 	return NULL;
 }
 
@@ -1270,13 +1245,13 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("alias",		ConAlias);
 	IConsoleCmdRegister("load",			ConLoad);
 	IConsoleCmdRegister("save",			ConSave);
-	IConsoleCmdRegister("list_files", ConListFiles);
-	IConsoleCmdRegister("scan_files", ConScanFiles);
-	IConsoleCmdRegister("goto_dir", ConGotoDir);
+	IConsoleCmdRegister("ls", ConListFiles);
+	IConsoleCmdRegister("cd", ConChangeDirectory);
+	IConsoleCmdRegister("pwd", ConPrintWorkingDirectory);
+	IConsoleAliasRegister("dir", "ls");
 	IConsoleAliasRegister("new_game", "newgame");
 	IConsoleAliasRegister("newmap", "newgame");
 	IConsoleAliasRegister("new_map", "newgame");
-	IConsoleAliasRegister("load_game", "temp_string << scan_files %!;load temp_string");
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
 
