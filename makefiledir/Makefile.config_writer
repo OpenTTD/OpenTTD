@@ -16,6 +16,7 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,\# Display_Warnings: when off it hides some warnings while compiling)
 	$(call CONFIG_LINE,\# MIDI: sets path to midi player)
 	$(call CONFIG_LINE,\# MIDI_ARG: sets an argument which is used when calling the midi player. Default off)
+	$(call CONFIG_LINE,\# SUPRESS_LANG_ERRORS: supresses output about missing and mismatched strings)
 	$(call CONFIG_LINE,STATIC:=$(STATIC))
 	$(call CONFIG_LINE,TRANSLATOR:=$(TRANSLATOR))
 	$(call CONFIG_LINE,DISPLAY_WARNINGS:=$(DISPLAY_WARNINGS))
@@ -23,6 +24,7 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,PROFILE:=$(PROFILE))
 	$(call CONFIG_LINE,MIDI:=$(MIDI))
 	$(call CONFIG_LINE,MIDI_ARG:=$(MIDI_ARG))
+	$(call CONFIG_LINE,SUPRESS_LANG_ERRORS:=$(SUPRESS_LANG_ERRORS))
 	$(call CONFIG_LINE,)
 	
 	$(call CONFIG_LINE,\# DATA_DIR_PREFIX is the path to OpenTTD. It can be absolute or relative)
@@ -79,3 +81,4 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,SDL-CONFIG:=$(SDL-CONFIG))
 	$(call CONFIG_LINE,CONFIG_INCLUDED:=yes)
 	$(call CONFIG_LINE,PATH_SET:=$(PATH_SET))
+	$(call CONFIG_LINE,CONFIG_VERSION:=$(MAKEFILE_VERSION))

@@ -81,6 +81,10 @@
 # Configuration
 #
 
+# Makefile version tag
+# it checks if the version tag in makefile.config is the same and force update outdated config files
+MAKEFILE_VERSION:=1
+
 # CONFIG_WRITER have to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
 
@@ -99,13 +103,8 @@ else
 CONFIG_INCLUDED:=1
 endif
 
-# tests if makefile.config contains the new needed SDL-CONFIG
-# it updates makefile.config if needed. Flags like ENABLE_NETWORK are remembered
-ifndef SDL-CONFIG
-ifdef WITH_SDL
-ifndef MANUAL_CONFIG
-#network is enabled by default
-ENABLE_NETWORK:=1
+# updates makefile.config if it's outdated
+ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
 UPDATECONFIG:=upgradeconf
 CONFIG_INCLUDED:=
 else
@@ -114,8 +113,6 @@ ifeq ($(shell uname),FreeBSD)
 SDL-CONFIG:=sdl11-config
 else
 SDL-CONFIG:=sdl-config
-endif
-endif
 endif
 endif
 
@@ -136,6 +133,12 @@ WARNING_DISPLAY:=-fstrict-aliasing
 VERBOSE_FILTER =  
 else
 WARNING_DISPLAY:=-fno-strict-aliasing
+endif
+
+ifdef SUPRESS_LANG_ERRORS
+ifndef VERBOSE_FILTER
+LANG_ERRORS =  >/dev/null 2>&1
+endif
 endif
 
 ifdef STATIC
@@ -546,7 +549,7 @@ table/strings.h: lang/english.lng
 
 lang/%.lng: lang/%.txt $(STRGEN)
 	@echo 'Generating $@'; \
-	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER)
+	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER) $(LANG_ERRORS)
 
 winres.o: ttd.rc
 	windres -o $@ $<
