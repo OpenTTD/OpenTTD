@@ -351,7 +351,8 @@ static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int rep
 {
 	do {
 		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
-			WRITE_PIXELS_OR( dst, GetSmallMapCountoursPixels(TILE_XY(xc,yc)) & mask );
+		    if (dst > _screen.dst_ptr && dst < (_screen.dst_ptr + _screen.width * _screen.height - _screen.width) )
+		        WRITE_PIXELS_OR( dst, GetSmallMapCountoursPixels(TILE_XY(xc,yc)) & mask );
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
 
