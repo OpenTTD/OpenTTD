@@ -1202,11 +1202,10 @@ static void PlaceProc_LowerBigLand(uint tile)
 
 static void PlaceProc_RockyArea(uint tile)
 {
-	if (!IS_TILETYPE(tile, MP_CLEAR))
+	if (!IS_TILETYPE(tile, MP_CLEAR) && !IS_TILETYPE(tile, MP_TREES))
 		return;
 
-	_map5[tile] = (_map5[tile] & ~0x1C) | 0xB;
-	MarkTileDirtyByTile(tile);
+	ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_map5[tile] & ~0x1C) | 0xB);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 

@@ -181,14 +181,14 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 				// 2x as expensive to add more trees to an existing tile
 				cost += _price.build_trees * 2;
 			} else {
-				// don't allow building on rocks
-				if (ti.type != MP_CLEAR || _map_owner[ti.tile] != OWNER_NONE || (ti.map5 & 0x1C) == 8) {
+				if (ti.type != MP_CLEAR || _map_owner[ti.tile] != OWNER_NONE) {
 					_error_message = STR_2804_SITE_UNSUITABLE;
 					continue;
 				}
 
 				// it's expensive to clear farmland
 				if ((ti.map5 & 0x1F) == 0xF) cost += _price.clear_3;
+				else if ((ti.map5 & 0x1C) == 8) cost += _price.clear_2;
 
 				if (flags & DC_EXEC) {
 					int m2;
