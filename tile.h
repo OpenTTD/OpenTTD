@@ -1,6 +1,7 @@
 #ifndef TILE_H
 #define TILE_H
 
+#include "macros.h"
 #include "map.h"
 
 typedef enum TileType {
@@ -22,6 +23,13 @@ uint GetMapExtraBits(TileIndex tile);
 
 uint GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
+
+static inline bool CorrectZ(uint tileh)
+{
+	/* tile height must be corrected if the north corner is not raised, but
+	 * any other corner is. These are the cases 1 till 7 */
+	return IS_INT_INSIDE(tileh, 1, 8);
+}
 
 static inline uint TileHeight(TileIndex tile)
 {

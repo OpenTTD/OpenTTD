@@ -3,8 +3,6 @@
 
 #include "map.h"
 
-#define MAX_INT 0x7FFFFFFF
-
 #ifdef min
 #undef min
 #endif
@@ -47,21 +45,6 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 //#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
 #define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
 
-
-enum {
-	CORRECT_Z_BITS = 1 << 1 | 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7
-};
-#define CORRECT_Z(tileh) (CORRECT_Z_BITS & (1 << tileh))
-
-#define TILE_ASSERT(x) assert( TILE_MASK(x) == (x) );
-
-//#define REMADP_COORDS(x,y,z) { int t = x; x = (y-t)*2; y+=t-z; }
-
-#define PACK_POINT(x,y) ((x) | ((y) << 16))
-#define UNPACK_POINT_X(p) ((uint16)(p))
-#define UNPACK_POINT_Y(p) ((uint16)(p>>16))
-
-#define PACK_PPOINT(p) PACK_POINT((p).x, (p).y)
 
 #define HASBIT(x,y)    ((x) &   (1 << (y)))
 #define SETBIT(x,y)    ((x) |=  (1 << (y)))
@@ -177,7 +160,5 @@ static inline void WRITE_LE_UINT16(void *b, uint16 x) {
 	((byte*)b)[0] = (byte)x;
 	((byte*)b)[1] = (byte)(x >> 8);
 }
-
-#define MAX_DETOUR 6
 
 #endif /* MACROS_H */

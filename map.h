@@ -7,6 +7,7 @@
 #define TILE_XY(x,y) (((y) << MapLogX()) + (x))
 
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
+#define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
 extern byte   *_map_type_and_height;
 extern byte   *_map_owner;

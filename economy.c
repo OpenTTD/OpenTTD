@@ -123,7 +123,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count vehicles */
 	{
 		Vehicle *v;
-		int32 min_profit = MAX_INT;
+		int32 min_profit = 0;
 		uint num = 0;
 
 		FOR_ALL_VEHICLES(v) {
@@ -142,9 +142,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		}
 
 		_score_part[owner][SCORE_VEHICLES] = num;
-
-		if (min_profit != MAX_INT && min_profit > 0)
-			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
+		_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
 	}
 
 /* Count stations */

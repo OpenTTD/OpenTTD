@@ -98,7 +98,7 @@ static inline uint Correct_Z(uint tileh)
 {
 	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
 	// 1, 2, 3, 4, 5, 6 and 7
-	return (CORRECT_Z(tileh)) ? 8 : 0;
+	return CorrectZ(tileh) ? 8 : 0;
 }
 
 uint GetCorrectTileHeight(TileIndex tile)
