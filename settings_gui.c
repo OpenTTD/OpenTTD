@@ -680,6 +680,7 @@ enum {
 
 	PF_0ISDIS = 1,
 	PF_NOCOMMA = 2,
+	PF_MULTISTRING = 4,
 };
 
 static const PatchEntry _patches_ui[] = {
@@ -889,8 +890,12 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					SET_DPARAM32(1, val);
 					if (pe->type == PE_CURRENCY)
 						SET_DPARAM16(0, STR_CONFIG_PATCHES_CURRENCY);
-					else
-						SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+					else {
+						if (pe->flags & PF_MULTISTRING)
+							SET_DPARAM16(0, pe->str + val + 1);
+						else
+							SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+					}
 				}
 			}
 			DrawString(30, y+1, (pe->str)+disabled, 0);
