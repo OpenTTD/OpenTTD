@@ -8,6 +8,26 @@
 #include "news.h"
 #include "saveload.h"
 
+enum {
+	/* Max orders: 64000 (64 * 1000) */
+	ORDER_POOL_BLOCK_SIZE_BITS = 6,       /* In bits, so (1 << 6) == 64 */
+	ORDER_POOL_MAX_BLOCKS      = 1000,
+};
+
+/**
+ * Called if a new block is added to the order-pool
+ */
+static void OrderPoolNewBlock(uint start_item)
+{
+	Order *order;
+
+	FOR_ALL_ORDERS_FROM(order, start_item)
+		order->index = start_item++;
+}
+
+/* Initialize the order-pool */
+MemoryPool _order_pool = { "Orders", ORDER_POOL_MAX_BLOCKS, ORDER_POOL_BLOCK_SIZE_BITS, sizeof(Order), &OrderPoolNewBlock, 0, 0, NULL };
+
 /**
  *
  * Unpacks a order from savegames made with TTD(Patch)
@@ -87,12 +107,18 @@ static Order *AllocateOrder(void)
 	FOR_ALL_ORDERS(order) {
 		if (order->type == OT_NOTHING) {
 			uint index = order->index;
+
 			memset(order, 0, sizeof(Order));
 			order->index = index;
 			order->next = NULL;
+
 			return order;
 		}
 	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_order_pool))
+		return AllocateOrder();
 
 	return NULL;
 }
@@ -906,14 +932,8 @@ bool CheckForValidOrders(Vehicle *v)
 
 void InitializeOrders(void)
 {
-	Order *order;
-	int i;
-
-	memset(&_orders, 0, sizeof(_orders[0]) * _orders_size);
-
-	i = 0;
-	FOR_ALL_ORDERS(order)
-		order->index = i++;
+	CleanPool(&_order_pool);
+	AddBlockToPool(&_order_pool);
 
 	_backup_orders_tile = 0;
 }
@@ -955,22 +975,28 @@ static void Load_ORDR(void)
 			uint16 orders[5000];
 
 			len /= sizeof(uint16);
-			assert (len <= _orders_size);
+			assert (len <= lengthof(orders));
 
 			SlArray(orders, len, SLE_UINT16);
 
 			for (i = 0; i < len; ++i) {
+				if (!AddBlockIfNeeded(&_order_pool, i))
+					error("Orders: failed loading savegame: too many orders");
+
 				AssignOrder(GetOrder(i), UnpackVersion4Order(orders[i]));
 			}
 		} else if (_sl.full_version <= 0x501) {
 			uint32 orders[5000];
 
 			len /= sizeof(uint32);
-			assert (len <= _orders_size);
+			assert (len <= lengthof(orders));
 
 			SlArray(orders, len, SLE_UINT32);
 
 			for (i = 0; i < len; ++i) {
+				if (!AddBlockIfNeeded(&_order_pool, i))
+					error("Orders: failed loading savegame: too many orders");
+
 				AssignOrder(GetOrder(i), UnpackOrder(orders[i]));
 			}
 		}
@@ -987,8 +1013,12 @@ static void Load_ORDR(void)
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			Order *order = GetOrder(index);
+			Order *order;
 
+			if (!AddBlockIfNeeded(&_order_pool, index))
+				error("Orders: failed loading savegame: too many orders");
+
+			order = GetOrder(index);
 			SlObject(order, _order_desc);
 		}
 	}

@@ -440,8 +440,6 @@ static void ParseResolution(int res[2], char *s)
 static void InitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
-	_orders_size    = lengthof(_orders);
-
 	_station_sort  = NULL;
 	_vehicle_sort  = NULL;
 	_town_sort     = NULL;
@@ -456,6 +454,7 @@ static void UnInitializeDynamicVariables(void)
 	CleanPool(&_station_pool);
 	CleanPool(&_vehicle_pool);
 	CleanPool(&_sign_pool);
+	CleanPool(&_order_pool);
 
 	free(_station_sort);
 	free(_vehicle_sort);

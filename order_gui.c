@@ -167,15 +167,6 @@ static void *FindVehicleCallb(Vehicle *v, FindVehS *f)
 	return v;
 }
 
-static Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
-{
-	FindVehS fs;
-	fs.tile = tile;
-	fs.owner = owner;
-	fs.type = 0;
-	return VehicleFromPos(tile, &fs, (VehicleFromPosProc*)FindVehicleCallb);
-}
-
 static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 {
 	Order order;

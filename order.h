@@ -1,6 +1,8 @@
 #ifndef ORDER_H
 #define ORDER_H
 
+#include "pool.h"
+
 /* Order types */
 enum {
 	OT_NOTHING       = 0,
@@ -64,23 +66,37 @@ typedef struct {
 VARDEF TileIndex _backup_orders_tile;
 VARDEF BackuppedOrders _backup_orders_data[1];
 
-VARDEF Order _orders[5000];
-VARDEF uint32 _orders_size;
+extern MemoryPool _order_pool;
 
+/**
+ * Get the pointer to the order with index 'index'
+ */
 static inline Order *GetOrder(uint index)
 {
-	assert(index < _orders_size);
-	return &_orders[index];
+	return (Order*)GetItemFromPool(&_order_pool, index);
 }
 
-#define FOR_ALL_ORDERS_FROM(o, from) for(o = GetOrder(from); o != &_orders[_orders_size]; o++)
-#define FOR_ALL_ORDERS(o) FOR_ALL_ORDERS_FROM(o, 0)
+/**
+ * Get the current size of the OrderPool
+ */
+static inline uint16 GetOrderPoolSize(void)
+{
+	return _order_pool.total_items;
+}
+
+#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL)
+#define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
+
 
 #define FOR_VEHICLE_ORDERS(v, order) for (order = v->orders; order != NULL; order = order->next)
 
 static inline bool HasOrderPoolFree(uint amount)
 {
 	const Order *order;
+
+	/* There is always room if not all blocks in the pool are reserved */
+	if (_order_pool.current_blocks < _order_pool.max_blocks)
+		return true;
 
 	FOR_ALL_ORDERS(order)
 		if (order->type == OT_NOTHING)

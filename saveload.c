@@ -941,7 +941,11 @@ static void *IntToReference(uint r, uint t)
 		return NULL;
 
 	switch (t) {
-		case REF_ORDER:   return GetOrder(r - 1);
+		case REF_ORDER: {
+			if (!AddBlockIfNeeded(&_order_pool, r - 1))
+				error("Orders: failed loading savegame: too many orders");
+			return GetOrder(r - 1);
+		}
 		case REF_VEHICLE: {
 			if (!AddBlockIfNeeded(&_vehicle_pool, r - 1))
 				error("Vehicles: failed loading savegame: too many vehicles");
@@ -959,7 +963,7 @@ static void *IntToReference(uint r, uint t)
 		}
 		case REF_ROADSTOPS: {
 			if (!AddBlockIfNeeded(&_roadstop_pool, r - 1))
-				error("RoadStop: failed loading savegame: too many RoadStops");
+				error("RoadStops: failed loading savegame: too many RoadStops");
 			return GetRoadStop(r - 1);
 		}
 

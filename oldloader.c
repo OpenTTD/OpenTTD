@@ -803,6 +803,9 @@ static void FixOrder(uint16 *o, int num)
 	int i;
 
 	for (i = 0; i < num; ++i) {
+		if (!AddBlockIfNeeded(&_order_pool, i))
+			error("Orders: failed loading savegame: too many orders");
+
 		order = GetOrder(i);
 		AssignOrder(order, UnpackOldOrder(*o));
 		/* Recover the next list */

@@ -3138,7 +3138,7 @@ static void Load_ROADSTOP( void )
 		RoadStop *rs;
 
 		if (!AddBlockIfNeeded(&_roadstop_pool, index))
-			error("RoadStop: failed loading savegame: too many RoadStops");
+			error("RoadStops: failed loading savegame: too many RoadStops");
 
 		rs = GetRoadStop(index);
 		SlObject(rs, _roadstop_desc);
