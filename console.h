@@ -115,7 +115,7 @@ void IConsoleVarDump(_iconsole_var * var, const byte * dump_desc);
 
 // *** Parser *** //
 
-void IConsoleCmdExec(byte * cmdstr);
+void IConsoleCmdExec(const byte* cmdstr);
 
 // ** console std lib ** //
 void IConsoleStdLibRegister();

@@ -768,7 +768,7 @@ bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type)
 	return proc(hook_cmd);
 }
 
-void IConsoleCmdExec(byte * cmdstr)
+void IConsoleCmdExec(const byte* cmdstr)
 {
 	_iconsole_var * (*function)(byte argc, byte* argv[], byte argt[]);
 	byte * tokens[20];
@@ -799,7 +799,7 @@ void IConsoleCmdExec(byte * cmdstr)
 	longtoken=false;
 	valid_token=false;
 	skip_lt_change=false;
-	l=strlen((char *) cmdstr);
+	l=strlen(cmdstr);
 	i=0;
 	c=0;
 	tokens[c] = tokenstream;
