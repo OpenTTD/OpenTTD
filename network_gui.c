@@ -643,6 +643,10 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		if (_network_lobby_company_count == MAX_PLAYERS)
 			w->disabled_state |= (1<<8);
+		/* You can not join a server as spectator when it has no companies active..
+		     it causes some nasty crashes */
+		if (_network_lobby_company_count == 0)
+			w->disabled_state |= (1<<9);
 
 		DrawWindowWidgets(w);
 
