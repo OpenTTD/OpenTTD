@@ -182,12 +182,11 @@ DEF_CONSOLE_CMD(ConReturn)
 DEF_CONSOLE_CMD(ConScript)
 {
 	extern FILE* _iconsole_output_file;
-
 	if (_iconsole_output_file!=NULL) {
-		if (argc<2) return NULL;
 		IConsolePrintF(_iconsole_color_default,"file output complete");
 		fclose(_iconsole_output_file);
 	} else {
+		if (argc<2) return NULL;
 		IConsolePrintF(_iconsole_color_default,"file output started to: %s",argv[1]);
 		_iconsole_output_file = fopen(argv[1],"ab");
 		if (_iconsole_output_file == NULL) IConsoleError("could not open file");

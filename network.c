@@ -352,9 +352,8 @@ static void QueueClear(CommandQueue *nq)
 static int GetNextSyncFrame()
 {
 	uint32 newframe;
-	if (_frame_fsync_last == 0) return -5;
-	newframe = (_frame_fsync_last + 10); // do not use a multiple of 4 since that screws up sync-packets
-	if ( (newframe + 4) > _frame_counter_max) return -5;
+	if (_frame_fsync_last == 0) return -11;
+	newframe = (_frame_fsync_last + 11); // do not use a multiple of 4 since that screws up sync-packets
 	return (_frame_counter_max - newframe);
 
 }
