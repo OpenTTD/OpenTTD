@@ -212,7 +212,7 @@ SOURCE=.\gfx.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\grfspecial.c
+SOURCE=.\newgrf.c
 # End Source File
 # Begin Source File
 

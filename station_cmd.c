@@ -1122,7 +1122,7 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 
 	error("Custom station 0x%08x::0x%02x has no sprites associated.",
 	       spec->grfid, spec->localidx);
-	/* This is what gets subscribed of dtss->image in grfspecial.c,
+	/* This is what gets subscribed of dtss->image in newgrf.c,
 	 * so it's probably kinda "default offset". Try to use it as
 	 * emergency measure. */
 	return 0x42D;

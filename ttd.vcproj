@@ -419,7 +419,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\grfspecial.c">
+				RelativePath=".\newgrf.c">
 			</File>
 			<File
 				RelativePath="landscape.c">

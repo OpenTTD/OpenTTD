@@ -13,7 +13,7 @@ CFILES = 	ai.c aircraft_cmd.c aircraft_gui.c airport_gui.c
 	train_cmd.c train_gui.c tree_cmd.c ttd.c
 	tunnelbridge_cmd.c unmovable_cmd.c vehicle.c
 	viewport.c water_cmd.c widget.c window.c screenshot.c
-	airport.c grfspecial.c terraform_gui.c sprite.c ;
+	airport.c newgrf.c terraform_gui.c sprite.c ;
 
 
 LANGFILES = english.txt swedish.txt french.txt german.txt italian.txt slovak.txt hungarian.txt norwegian.txt danish.txt czech.txt galician.txt polish.txt romanian.txt;

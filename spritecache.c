@@ -13,7 +13,7 @@
 //#define WANT_LOCKED
 
 
-/* These are used in grfspecial.c: */
+/* These are used in newgrf.c: */
 
 int _skip_sprites = 0;
 int _replace_sprites_count[16];
