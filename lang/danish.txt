@@ -145,37 +145,6 @@ STR_008B_BATTERIES						:{COMMA16} batterier
 STR_008C_OF_PLASTIC						:{VOLUME} plastik
 STR_008D_FIZZY_DRINKS						:{COMMA16} sodavand
 STR_008E							:
-STR_008F_PS							:{TINYFONT}PS
-STR_0090_CL							:{TINYFONT}CL
-STR_0091_ML							:{TINYFONT}ML
-STR_0092_OL							:{TINYFONT}OL
-STR_0093_LV							:{TINYFONT}LV
-STR_0094_GD							:{TINYFONT}GD
-STR_0095_GR							:{TINYFONT}GR
-STR_0096_WD							:{TINYFONT}WD
-STR_0097_OR							:{TINYFONT}OR
-STR_0098_ST							:{TINYFONT}ST
-STR_0099_VL							:{TINYFONT}VL
-STR_009A_CO							:{TINYFONT}CO
-STR_009B_MZ							:{TINYFONT}MZ
-STR_009C_FT							:{TINYFONT}FT
-STR_009D_DM							:{TINYFONT}DM
-STR_009E_FD							:{TINYFONT}FD
-STR_009F_PR							:{TINYFONT}PR
-STR_00A0_GD							:{TINYFONT}GD
-STR_00A1_WR							:{TINYFONT}WR
-STR_00A2_WH							:{TINYFONT}WH
-STR_00A3_RB							:{TINYFONT}RB
-STR_00A4_SG							:{TINYFONT}SG
-STR_00A5_TY							:{TINYFONT}TY
-STR_00A6_SW							:{TINYFONT}SW
-STR_00A7_CL							:{TINYFONT}CL
-STR_00A8_CF							:{TINYFONT}CF
-STR_00A9_BU							:{TINYFONT}BU
-STR_00AA_TF							:{TINYFONT}TF
-STR_00AB_BA							:{TINYFONT}BA
-STR_00AC_PL							:{TINYFONT}PL
-STR_00AD_FZ							:{TINYFONT}FZ
 STR_00AE							:{WHITE}{DATE_SHORT}
 STR_00AF							:{WHITE}{DATE_LONG}
 STR_00B0_MAP							:{WHITE}Kort - {STRING}
@@ -435,7 +404,6 @@ STR_019A_YEARS							:{COMMA16} år ({COMMA16})
 STR_019B_YEARS							:{RED}{COMMA16} år ({COMMA16})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE						:Lastbil
 STR_019D_AIRCRAFT						:Fly
 STR_019E_SHIP							:Skibe
 STR_019F_TRAIN							:Tog
@@ -1012,22 +980,11 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Deaktiver lastbiler for compute
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
-
-STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard serviceinterval for tog: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard serviceinterval for lastbiler: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard serviceinterval for fly: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard serviceinterval for skibe: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Start dato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Center
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Højre
@@ -1046,10 +1003,7 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Skift indstillingsværdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
 
-STR_TEMPERATE_LANDSCAPE						:temperate landscape
-STR_SUB_ARCTIC_LANDSCAPE					:sub-arctic landscape
-STR_SUB_TROPICAL_LANDSCAPE					:sub-tropical landscape
-STR_TOYLAND_LANDSCAPE						:toyland landscape
+
 
 STR_CHEATS							:{WHITE}Snydefunktioner
 STR_CHEATS_TIP							:{BLACK}Checkboxes viser om du bruger denne snydefunktion before
@@ -1059,9 +1013,7 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spil som spiller: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Switch climate: {ORANGE} {STRING}
-STR_CHEAT_CHANGE_DATE						:{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
+
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Retning mod {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
@@ -1077,17 +1029,7 @@ STR_WAYPOINT_RAW						:{WAYPOINT}
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Byg togskinner ved hjælp af autotogskinner mode
 
-STR_NO_TOWN_IN_SCENARIO						:{WHITE}...there is no town in this scenario
 
-STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Are you sure you want to create a random landscape?
-STR_MANY_RANDOM_TOWNS						:{BLACK}Many random towns
-STR_RANDOM_TOWNS_TIP						:{BLACK}Cover the map with randomly placed towns
-STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Many random industries
-STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Cover the map with randomly placed industries
-STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Can't generate industries...
-
-STR_LANDSCAPING_TOOLBAR						:{WHITE}Landscaping
-STR_LEVEL_LAND_TOOLTIP						:{BLACK}Level land
 
 
 STR_TREES_RANDOM_TYPE						:{BLACK}Træer af tilfældig type
@@ -1114,9 +1056,7 @@ STR_STATION_DRAG_DROP						:{BLACK}Byg en station via træk & slip
 
 STR_FAST_FORWARD						:{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY						:{WHITE}Tidligere beskeder
-STR_MESSAGE_HISTORY_TIP						:{BLACK}A list of the recent news messages
-STR_MESSAGES_DISABLE_ALL					:{BLACK}Disable all
-STR_MESSAGES_ENABLE_ALL						:{BLACK}Enable all
+
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Byg Kulmine
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Plant Skov
@@ -1153,15 +1093,12 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Ombyg toget til at køre med den m
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 
-TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
-TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
+
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
-STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en ny server
@@ -1171,46 +1108,21 @@ STR_NETWORK_GAME_NAME_TIP					:{BLACK}Spillets navn
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Sprog, server version, osv.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klik på et spil fra listen for at vælge det
 
-STR_NETWORK_FIND_SERVER						:{BLACK}Find server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
-STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
+
 
 STR_NETWORK_MAP_SIZE						:{SILVER}Størrelse:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_PASSWORD						:{BLACK}Kodeord:
 
-STR_NETWORK_JOIN_GAME						:{BLACK}Join game
 
 
-STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start new multiplayer game
-
-STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spil navn:
-STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
-STR_NETWORK_PASSWORD_TIP					:{BLACK}Protect your game with a password if you don't want other people to join it
 STR_NETWORK_SELECT_MAP						:{BLACK}Vælg et kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilket kort vil du spille?
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_START_GAME						:{BLACK}Start Game
-STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
-STR_NETWORK_LOAD_GAME						:{BLACK}Load Game
-STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Resume an earlier saved multiplayer game (be sure to connect as the correct player)
-STR_NETWORK_LOAD_SCENARIO					:{BLACK}Load Scenario
-STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start a new network game from a scenario
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
-
-STR_NETWORK_NEW_COMPANY						:{BLACK}New company
-STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open a new company
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Spectate game
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
-
-
-STR_NETWORK_COMPANY_NAME					:{SILVER}Company name:  {WHITE}{STRING}
-
-STR_NETWORK_PLAYERS						:{BLACK}#/#
 
 
 ############ Leave those lines in this order!!
@@ -1219,13 +1131,7 @@ STR_NETWORK_PLAYERS						:{BLACK}#/#
 
 
 
-STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER					:{WHITE} Could not find any network games
-STR_NETWORK_ERR_NOCONNECTION					:{WHITE} The server didn't answer the request
-STR_NETWORK_ERR_DESYNC						:{WHITE} Network-Game synchronization failed.
-STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Network-Game connection lost.
-STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Could not load server-savegame.
-STR_NETWORK_ERR_TIMEOUT						:{WHITE} Connection #{NUMU16} timed out.
+
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -2544,7 +2450,6 @@ STR_BUILD_DATE							:{BLACK}Produceret: {LTBLUE}{DATE_LONG}
 STR_MULTIPLAYER_PAUSED						:{WHITE}Spillet er i pause.{}Kommandoen kan ikke køres
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Præstations oversigt
-STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}({COMMA32}/{COMMA32})
 STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
@@ -2561,14 +2466,6 @@ STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Penge:
 STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}The profit of the vehicle with the lowest income (of all vehicles older than 2 years)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Types of cargo delivered in the last quarter.
-STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Samlet point af max point
 
