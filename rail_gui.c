@@ -819,12 +819,11 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		}
 		CheckRedrawStationCoverage(w);
 		} break;
-		
+
 	case WE_DESTROY:
 		ResetObjectToPlace();
 		break;
 	}
-
 }
 
 static const Widget _station_builder_widgets[] = {
@@ -978,6 +977,10 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		if (WP(w,def_d).close)
 			DeleteWindow(w);
 		return;
+
+	case WE_DESTROY:
+		ResetObjectToPlace();
+		break;
 	}
 }
 
