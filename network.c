@@ -864,6 +864,9 @@ bool NetworkServerStart(void)
 	_frame_counter_max = 0;
 	_network_own_client_index = NETWORK_SERVER_INDEX;
 
+	if (!_network_dedicated)
+		_network_playas = 1;
+
 	_network_clients_connected = 0;
 
 	NetworkInitGameInfo();
