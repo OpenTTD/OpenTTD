@@ -1219,6 +1219,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					seq->image += _cur_grffile->spritegroups[groupid].loading[0];
 				}
 			}
+			stat->grfid = _cur_grffile->grfid;
 			SetCustomStation(stid, stat);
 			stat->classid = 0;
 		}

@@ -110,13 +110,22 @@ typedef struct DrawTileSprites {
 
 
 struct StationSpec {
-	int globalidx;
+	uint32 grfid;
+	int localidx; // per-GRFFile station index + 1; SetCustomStation() takes care of this
+
 	uint32 classid;
+
 	byte tiles;
 	DrawTileSprites renderdata[8];
 };
 
+/* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet
+ * set, it gets new dynamically allocated global index and spec->localidx is
+ * set to @stid, otherwise we take it as that we are replacing it and try to
+ * search for it first (that isn't much fast but we do it only very seldom). */
 void SetCustomStation(byte stid, struct StationSpec *spec);
+/* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
+ * (lookup is therefore very fast as we do this very frequently). */
 DrawTileSprites *GetCustomStationRenderdata(uint32 classid, byte stid);
 int GetCustomStationsCount(uint32 classid);
 

@@ -958,19 +958,39 @@ uint GetStationPlatforms(Station *st, uint tile)
 
 
 /* TODO: Multiple classes! */
-/* FIXME: Also, we should actually allocate the station id (but
- * SetCustomStation() needs to be able to override an existing custom station
- * as well) on our own. This would also prevent possible weirdness if some GRF
- * file used non-contignuous station ids. --pasky */
 
 static int _waypoint_highest_id = -1;
 static struct StationSpec _waypoint_data[256];
 
-void SetCustomStation(byte stid, struct StationSpec *spec)
+void SetCustomStation(byte local_stid, struct StationSpec *spec)
 {
+	int stid = -1;
+
 	assert(spec->classid == 'WAYP');
-	if (stid > _waypoint_highest_id)
-		_waypoint_highest_id = stid;
+
+	if (spec->localidx != 0) {
+		/* Already allocated, try to resolve to global stid */
+		int i;
+
+		for (i = 0; i <= _waypoint_highest_id; i++) {
+			if (_waypoint_data[i].grfid == spec->grfid
+			    && _waypoint_data[i].localidx == local_stid + 1) {
+				stid = i;
+				break;
+			}
+		}
+	}
+
+	if (stid == -1) {
+		/* Allocate new one. */
+		if (_waypoint_highest_id >= 255) {
+			error("Too many custom stations allocated.");
+			return;
+		}
+		stid = ++_waypoint_highest_id;
+		spec->localidx = local_stid + 1;
+	}
+
 	memcpy(&_waypoint_data[stid], spec, sizeof(*spec));
 }
 
