@@ -312,9 +312,11 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case VK_RETURN: /* Full Screen */
 			MakeWindow(!_wnd.fullscreen);
 			return 0;
-		default: /* just ALT or ALT in combination with something else */
+		case VK_MENU: /* Just ALT */
+			return 0; // do nothing
+		default: /* ALT in combination with something else */
 			_pressed_key = MapWindowsKey(wParam) << 16;
-			return 0; // game doesn't have a title-bar, so just ignore that
+			break;
 		}
 		break;
 	case WM_NCMOUSEMOVE:
