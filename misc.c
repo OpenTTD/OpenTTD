@@ -778,6 +778,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	{&_next_competitor_start, 	SLE_FILE_U16 | SLE_VAR_UINT, 0, 255},
 	{&_trees_tick_ctr, 					SLE_UINT8,	0, 255},
 	{&_pause, 									SLE_UINT8,	4, 255},
+	{&_cur_town_iter, 						SLE_UINT32,	11, 255},
 	{NULL,											0,					0,   0}
 };
 

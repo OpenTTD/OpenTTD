@@ -432,16 +432,14 @@ static void TownTickHandler(Town *t)
 
 void OnTick_Town(void)
 {
-	static int counter;
-
 	if (_game_mode == GM_EDITOR)
 		return;
 
 	/* Make sure each town's tickhandler invocation frequency is about the
 	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
-	for (counter += GetTownPoolSize();
-	     counter >= TOWN_GROWTH_FREQUENCY;
-	     counter -= TOWN_GROWTH_FREQUENCY) {
+	for (_cur_town_iter += GetTownPoolSize();
+	     _cur_town_iter >= TOWN_GROWTH_FREQUENCY;
+	     _cur_town_iter -= TOWN_GROWTH_FREQUENCY) {
 		uint32 i = _cur_town_ctr;
 		Town *t;
 
@@ -1914,6 +1912,7 @@ void InitializeTowns(void)
 		s->cargo_type = 0xFF;
 
 	_cur_town_ctr = 0;
+	_cur_town_iter = 0;
 	_total_towns = 0;
 	_town_sort_dirty = true;
 }

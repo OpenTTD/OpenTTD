@@ -85,6 +85,8 @@ VARDEF uint32 _player_seeds[MAX_PLAYERS][2];
 
 // Iterator through all towns in OnTick_Town
 VARDEF uint32 _cur_town_ctr;
+// Frequency iterator at the same place
+VARDEF uint32 _cur_town_iter;
 
 VARDEF uint _cur_player_tick_index;
 VARDEF uint _next_competitor_start;
