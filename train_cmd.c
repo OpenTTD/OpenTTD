@@ -873,7 +873,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type == 0 || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	// get first vehicle in chain
