@@ -502,6 +502,18 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
 		// make coast..
 		switch (TileType(target)) {
+			case MP_RAILWAY: {
+				uint slope = GetTileSlope(target, NULL);
+				byte tracks = _map5[target] & 0x3F;
+				if (!(
+						(slope == 1 && tracks == 0x20) ||
+						(slope == 2 && tracks == 0x04) ||
+						(slope == 4 && tracks == 0x10) ||
+						(slope == 8 && tracks == 0x08)))
+					break;
+			}
+			/* FALLTHROUGH */
+
 			case MP_CLEAR:
 			case MP_TREES:
 				_current_player = OWNER_WATER;
