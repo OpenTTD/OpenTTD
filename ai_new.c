@@ -1001,33 +1001,41 @@ static void AiNew_State_BuildPath(Player *p) {
             		dir3 = p->ainew.to_direction;
             	}
 
-            	DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-            	DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-            	DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+            	r = DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				if (r != CMD_ERROR) {
+					dir1 = _tileoffs_by_dir[dir1];
+					if (IS_TILETYPE(tile+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1, MP_TREES)) {
+						r = DoCommandByTile(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						if (r != CMD_ERROR) {
+							if (IS_TILETYPE(tile+dir1+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1+dir1, MP_TREES))
+								DoCommandByTile(tile+dir1+dir1, AiNew_GetRoadDirection(tile+dir1, tile+dir1+dir1, tile+dir1+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						}
+					}
+				}
 
-            	dir1 = _tileoffs_by_dir[dir1];
-            	dir2 = _tileoffs_by_dir[dir2];
-            	dir3 = _tileoffs_by_dir[dir3];
-            	r = CMD_ERROR;
-           		if (IS_TILETYPE(tile+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1, MP_TREES))
-           			r = DoCommandByTile(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-           		if (r != CMD_ERROR)
-             		if (IS_TILETYPE(tile+dir1+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1+dir1, MP_TREES))
-             			DoCommandByTile(tile+dir1+dir1, AiNew_GetRoadDirection(tile+dir1, tile+dir1+dir1, tile+dir1+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				r = DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				if (r != CMD_ERROR) {
+					dir2 = _tileoffs_by_dir[dir2];
+					if (IS_TILETYPE(tile+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2, MP_TREES)) {
+						r = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						if (r != CMD_ERROR) {
+							if (IS_TILETYPE(tile+dir2+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2+dir2, MP_TREES))
+								DoCommandByTile(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						}
+					}
+				}
 
-             	r = CMD_ERROR;
-           		if (IS_TILETYPE(tile+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2, MP_TREES))
-           			r = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-           		if (r != CMD_ERROR)
-           			if (IS_TILETYPE(tile+dir2+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2+dir2, MP_TREES))
-           				DoCommandByTile(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-
-           		r = CMD_ERROR;
-           		if (IS_TILETYPE(tile+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3, MP_TREES))
-           			r = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-           		if (r != CMD_ERROR)
-           			if (IS_TILETYPE(tile+dir3+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3+dir3, MP_TREES))
-           				DoCommandByTile(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				r = DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				if (r != CMD_ERROR) {
+					dir3 = _tileoffs_by_dir[dir3];
+					if (IS_TILETYPE(tile+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3, MP_TREES)) {
+						r = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						if (r != CMD_ERROR) {
+							if (IS_TILETYPE(tile+dir3+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3+dir3, MP_TREES))
+								DoCommandByTile(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						}
+					}
+				}
             }
         }
 
