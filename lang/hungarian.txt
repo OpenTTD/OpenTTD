@@ -885,7 +885,7 @@ STR_CURR_CZK							:Cseh Korona (CZK)
 STR_CURR_ISK							:Izlandi Korona (ISK)
 STR_CURR_NOK							:Norvég Korona (NOK)
 STR_CURR_ROL							:Román Lej (Lej)
-STR_CURR_EUR							:Euró (€)
+STR_CURR_EUR							:Euró (¤)
 
 STR_OPTIONS_LANG						:{BLACK}Nyelv
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

@@ -885,7 +885,7 @@ STR_CURR_CZK							:Tsekin kruunu (CZK)
 STR_CURR_ISK							:Islannin kruunu (ISK)
 STR_CURR_NOK							:Norjan kruunu (NOK)
 STR_CURR_ROL							:Romanian leu (lei)
-STR_CURR_EUR							:Euro (€)
+STR_CURR_EUR							:Euro (¤)
 
 STR_OPTIONS_LANG						:{BLACK}Kieli
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

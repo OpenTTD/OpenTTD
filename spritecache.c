@@ -751,8 +751,8 @@ static const char * const _cached_filenames[4] = {
 #define OPENTTD_SPRITES_COUNT 70
 static const uint16 _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE+0,	SPR_OPENTTD_BASE+7, // icons etc
-	98,98,     // euro symbol medium size
-	546,546,   // euro symbol large size
+	134, 134,     // euro symbol medium size
+	582, 582,   // euro symbol large size
 	SPR_OPENTTD_BASE+10, SPR_OPENTTD_BASE+57, // more icons
 	648, 648, // nordic char: æ
 	616, 616, // nordic char: Æ

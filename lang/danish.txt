@@ -881,7 +881,7 @@ STR_CURR_CZK							:Tjekkiske Koruna (CZK)
 STR_CURR_ISK							:Islandske Kroner (ISK)
 STR_CURR_NOK							:Norske Kroner (NOK)
 STR_CURR_ROL							:Rumænske Lei
-STR_CURR_EUR							:Euro (€)
+STR_CURR_EUR							:Euro (¤)
 
 STR_OPTIONS_LANG						:{BLACK}Sprog
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

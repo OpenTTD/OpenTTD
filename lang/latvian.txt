@@ -1,2 +1,2 @@
 ##name Latvian
-##ownname Latviešu valoda
+##ownname Latvie¨u valoda

@@ -169,7 +169,7 @@ Here are some translation guidelines which you should follow closely.
 
     * Please contact the development team before begining the translation process!
       This avoids double work, as someone else may have already started translating to the same language.
-    * Translators must use the charater set "Windows latin-1", also known as ISO 8859-1.
+    * Translators must use the charater set ISO 8859-15.
       Otherwise, some characters will not display correctly in the game.
 
 8.2) Translation:

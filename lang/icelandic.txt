@@ -868,7 +868,7 @@ STR_CURR_CZK							:Tékknesk Kóróna (CZK)
 STR_CURR_ISK							:Íslensk Króna (ISK)
 STR_CURR_NOK							:Norsk króna (NOK)
 STR_CURR_ROL							:Rúmensk leu (Lei)
-STR_CURR_EUR							:Evra (€)
+STR_CURR_EUR							:Evra (¤)
 
 STR_OPTIONS_LANG						:{BLACK}Tungumál
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
