@@ -512,7 +512,7 @@ void ConvertGroundTilesIntoWaterTiles()
 		}
 		tile++;
 		if (GET_TILE_X(tile) == MapMaxX()) {
-			tile += TILE_XY(-MapMaxX(), 1);
+			tile += TILE_XY(-(int)MapMaxX(), 1);
 			if (GET_TILE_Y(tile) == MapMaxY())
 				break;
 		}
@@ -525,7 +525,7 @@ static const byte _genterrain_tbl_2[5] = { 0, 0, 0, 0, 33 };
 static void GenerateTerrain(int type, int flag)
 {
 	uint32 r;
-	int x,y;
+	uint x,y;
 	int w,h;
 	byte *p,*tile;
 	byte direction;
@@ -747,12 +747,12 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 //  the result will be tile + TILE_XY(addx, addy)
 uint TileAddWrap(TileIndex tile, int addx, int addy)
 {
-	int x, y;
+	uint x, y;
 	x = GET_TILE_X(tile) + addx;
 	y = GET_TILE_Y(tile) + addy;
 
 	// Are we about to wrap?
-	if (x > 0 && x < MapMaxX() && y > 0 && y < MapMaxY())
+	if (x < MapMaxX() && y < MapMaxY())
 		return tile + TILE_XY(addx, addy);
 
 	return TILE_WRAPPED;
