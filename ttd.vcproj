@@ -261,6 +261,9 @@
 				RelativePath=".\airport.c">
 			</File>
 			<File
+				RelativePath=".\aystar.c">
+			</File>
+			<File
 				RelativePath="command.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -642,6 +645,9 @@
 						PreprocessorDefinitions=""
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\queue.c">
 			</File>
 			<File
 				RelativePath="saveload.c">
@@ -1087,6 +1093,9 @@
 				RelativePath=".\airport_movement.h">
 			</File>
 			<File
+				RelativePath=".\aystar.h">
+			</File>
+			<File
 				RelativePath="command.h">
 			</File>
 			<File
@@ -1124,6 +1133,9 @@
 			</File>
 			<File
 				RelativePath="player.h">
+			</File>
+			<File
+				RelativePath=".\queue.h">
 			</File>
 			<File
 				RelativePath="saveload.h">
@@ -2592,6 +2604,25 @@
 			</File>
 			<File
 				RelativePath="table\water_land.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="AI Files"
+			Filter="">
+			<File
+				RelativePath=".\ai.h">
+			</File>
+			<File
+				RelativePath=".\ai_build.c">
+			</File>
+			<File
+				RelativePath=".\ai_new.c">
+			</File>
+			<File
+				RelativePath=".\ai_pathfinder.c">
+			</File>
+			<File
+				RelativePath=".\ai_shared.c">
 			</File>
 		</Filter>
 		<File
