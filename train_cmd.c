@@ -1718,6 +1718,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 			return;
 
 		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+			v->u.rail.days_since_order_progr = 0; /* Prevent a train lost message for full loading trains */
 			SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 			if (LoadUnloadVehicle(v)) {
 				InvalidateWindow(WC_TRAINS_LIST, v->owner);
