@@ -514,15 +514,16 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 
 bool CanFillVehicle(Vehicle *v)
 {
-	byte *t = &_map_type_and_height[v->tile];
+	TileIndex tile = v->tile;
 
-	if (t[0] >> 4 == MP_STATION ||
-			(v->type == VEH_Ship &&
-			(t[TILE_XY(1,0)] >> 4 == MP_STATION ||
-				t[TILE_XY(-1,0)] >> 4 == MP_STATION ||
-				t[TILE_XY(0,1)] >> 4 == MP_STATION ||
-				t[TILE_XY(0,-1)] >> 4 == MP_STATION ||
-				t[TILE_XY(-2,0)] >> 4 == MP_STATION))) {
+	if (IsTileType(tile, MP_STATION) ||
+			(v->type == VEH_Ship && (
+				IsTileType(TILE_ADDXY(tile,  1,  0), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile, -1,  0), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile,  0,  1), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile,  0, -1), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile, -2,  0), MP_STATION)
+			))) {
 
 		// If patch is active, use alternative CanFillVehicle-function
 		if (_patches.full_load_any)
