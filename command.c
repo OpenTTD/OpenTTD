@@ -22,8 +22,8 @@ DEF_COMMAND(CmdBuildRailroadStation);
 DEF_COMMAND(CmdRemoveFromRailroadStation);
 DEF_COMMAND(CmdConvertRail);
 
-DEF_COMMAND(CmdBuildSignals);
-DEF_COMMAND(CmdRemoveSignals);
+DEF_COMMAND(CmdBuildSingleSignal);
+DEF_COMMAND(CmdRemoveSingleSignal);
 
 DEF_COMMAND(CmdTerraformLand);
 
@@ -163,7 +163,8 @@ DEF_COMMAND(CmdRefitRailVehicle);
 
 DEF_COMMAND(CmdStartScenario);
 
-DEF_COMMAND(CmdBuildManySignals);
+DEF_COMMAND(CmdBuildSignalTrack);
+DEF_COMMAND(CmdRemoveSignalTrack);
 
 DEF_COMMAND(CmdReplaceVehicle);
 
@@ -177,8 +178,8 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildBridge,								/* 5  */
 	CmdBuildRailroadStation,			/* 6  */
 	CmdBuildTrainDepot,						/* 7  */
-	CmdBuildSignals,							/* 8  */
-	CmdRemoveSignals,							/* 9  */
+	CmdBuildSingleSignal,					/* 8  */
+	CmdRemoveSingleSignal,				/* 9  */
 	CmdTerraformLand,							/* 10 */
 	CmdPurchaseLandArea,					/* 11 */
 	CmdSellLandArea,							/* 12 */
@@ -302,12 +303,14 @@ static CommandProc * const _command_proc_table[] = {
 	CmdRestoreOrderIndex,					/* 107 */
 	CmdBuildLock,									/* 108 */
 	CmdStartScenario,							/* 109 */
-	CmdBuildManySignals,					/* 110 */
-	//CmdDestroyIndustry,						/* 109 */
-	CmdDestroyCompanyHQ,					/* 111 */
-	CmdGiveMoney,									/* 112 */
-	CmdChangePatchSetting,				/* 113 */
-	CmdReplaceVehicle,							/* 114 */
+	CmdBuildSignalTrack,					/* 110 */
+	CmdRemoveSignalTrack,					/* 111 */
+	CmdDestroyCompanyHQ,					/* 112 */
+	CmdGiveMoney,									/* 113 */
+	CmdChangePatchSetting,				/* 114 */
+	CmdReplaceVehicle,						/* 115 */
+
+	//CmdDestroyIndustry,					/* 109 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

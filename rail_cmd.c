@@ -512,64 +512,99 @@ skip_mark_dirty:;
 static const struct {
 	int8 xinc[16];
 	int8 yinc[16];
-	byte initial[16];
 } _railbit = {{
-//  0   1   2    3   4   5
-	 16,  0,-16,   0, 16,  0,    0,  0,
-	-16,  0,  0,  16,  0,-16,    0,  0,
+//  0   1   2   3   4   5
+	-16,  0,-16,  0, 16,  0,    0,  0,
+	 16,  0,  0, 16,  0,-16,    0,  0,
 },{
-	0,   16,  0,  16,  0, 16,    0,  0,
-	0,  -16, -16,  0,-16,  0,    0,  0,
-},{
-	5,     1,   0,   4, // normal
-	2,     1, 8|0,   3, // x > sx
-	8|2, 8|1,   0, 8|3, // y > sy
-	8|5, 8|1, 8|0, 8|4, // x > sx && y > sy
+	  0, 16,  0, 16,  0, 16,    0,  0,
+	  0,-16,-16,  0,-16,  0,    0,  0,
 }};
 
-
-/* Build either NE or NW sequence of tracks.
- * p1 0:15  - end pt X
- * p1 16:31 - end pt y
- *
- * p2 0:3   - rail type
- * p2 4:7   - rail direction
- */
-
-
-int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+static int32 ValidateAutoDrag(int *railbit, int x, int y, int ex, int ey)
 {
-	int sx, sy;
+	int dx, dy, trdx, trdy;
+
+	if (*railbit > 5) return CMD_ERROR; // only 6 possible track-combinations
+
+	// calculate delta x,y from start to end tile
+	dx = ex - x;
+	dy = ey - y;
+
+	// calculate delta x,y for the first direction
+	trdx = _railbit.xinc[*railbit];
+	trdy = _railbit.yinc[*railbit];
+
+	if (*railbit & 0x6) {
+		trdx += _railbit.xinc[*railbit ^ 1];
+		trdy += _railbit.yinc[*railbit ^ 1];
+	}
+
+	// validate the direction
+	while (((trdx <= 0) && (dx > 0)) || ((trdx >= 0) && (dx < 0)) ||
+	       ((trdy <= 0) && (dy > 0)) || ((trdy >= 0) && (dy < 0))) {
+		if (*railbit < 8) { // first direction is invalid, try the other
+			SETBIT(*railbit, 3);
+			trdx = -trdx;
+			trdy = -trdy;
+		} else // other direction is invalid too, invalid drag
+			return CMD_ERROR;
+	}
+
+	// (for diagonal tracks, this is already made sure of by above test), but:
+	// for non-diagonal tracks, check if the start and end tile are on 1 line
+	if (*railbit & 0x6) {
+		trdx = _railbit.xinc[*railbit];
+		trdy = _railbit.yinc[*railbit];
+		if ((abs(dx) != abs(dy)) && (abs(dx) + abs(trdy) != abs(dy) + abs(trdx)))
+			return CMD_ERROR;
+	}
+
+	return 0;
+}
+
+/* Build a stretch of railroad tracks.
+ * x,y= start tile
+ * p1 = end tile
+ * p2 = (bit 0-3)		- railroad type normal/maglev
+ * p2 = (bit 4-6)		- track-orientation, valid values: 0-5
+ * p2 = (bit 7)			- 0 = build, 1 = remove tracks
+ */
+static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	int ex, ey;
 	int32 ret, total_cost = 0;
-	int railbit;
+	int railbit = (p2 >> 4) & 7;
+	byte mode = HASBIT(p2, 7);
+
+	/* unpack end point */
+	ex = TileX(p1) * 16;
+	ey = TileY(p1) * 16;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (flags & DC_EXEC)
 		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
 
-	/* unpack end point */
-	sx = (p1 & 0xFFFF) & ~0xF;
-	sy = (p1 >> 16) & ~0xF;
-
-	railbit = _railbit.initial[(p2 >> 4) + (x > sx ? 4 : 0) + (y > sy ? 8 : 0)];
+	if (ValidateAutoDrag(&railbit, x, y, ex, ey) == CMD_ERROR)
+		return CMD_ERROR;
 
 	for(;;) {
-		ret = DoCommand(x, y, p2&0xF, railbit&7, flags, CMD_BUILD_SINGLE_RAIL);
+		ret = DoCommand(x, y, p2&0x3, railbit&7, flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
 
 		if (ret == CMD_ERROR) {
-			if (_error_message != STR_1007_ALREADY_BUILT)
+			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0))
 				break;
 		} else
 			total_cost += ret;
 
-		if (x == sx && y == sy)
+		if (x == ex && y == ey)
 			break;
 
 		x += _railbit.xinc[railbit];
 		y += _railbit.yinc[railbit];
 
-		// toggle railbit for the diagonal tiles
+		// toggle railbit for the non-diagonal tracks
 		if (railbit & 0x6) railbit ^= 1;
 	}
 
@@ -579,48 +614,14 @@ int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return total_cost;
 }
 
-
-/* Remove either NE or NW sequence of tracks.
- * p1 0:15  - start pt X
- * p1 16:31 - start pt y
- *
- * p2 0:3   - rail type
- * p2 4:7   - rail direction
- */
-
+int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	return CmdRailTrackHelper(x, y, flags, p1, p2);
+}
 
 int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	int sx, sy;
-	int32 ret, total_cost = 0;
-	int railbit;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	if (flags & DC_EXEC)
-		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
-
-	/* unpack start point */
-	sx = (p1 & 0xFFFF) & ~0xF;
-	sy = (p1 >> 16) & ~0xF;
-
-	railbit = _railbit.initial[(p2 >> 4) + (x > sx ? 4 : 0) + (y > sy ? 8 : 0)];
-
-	for(;;) {
-		ret = DoCommand(x, y, p2&0xF, railbit&7, flags, CMD_REMOVE_SINGLE_RAIL);
-		if (ret != CMD_ERROR) total_cost += ret;
-		if (x == sx && y == sy)
-			break;
-		x += _railbit.xinc[railbit];
-		y += _railbit.yinc[railbit];
-		// toggle railbit for the diagonal tiles
-		if (railbit & 0x6) railbit ^= 1;
-	}
-
-	if (total_cost == 0)
-		return CMD_ERROR;
-
-	return total_cost;
+	return CmdRailTrackHelper(x, y, flags, p1, SETBIT(p2, 7));
 }
 
 /* Build a train depot
@@ -870,7 +871,7 @@ int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  *               depending on context
  * p2 = used for CmdBuildManySignals() to copy style of first signal
  */
-int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x, y);
 	bool semaphore;
@@ -992,68 +993,45 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /*	Build many signals by dragging: AutoSignals
-		x,y= start tile
-		p1 = end tile
-		p2 = (byte 0)			- 0 = build, 1 = remove signals
-		p2 = (byte 3)			- 0 = signals, 1 = semaphores
-		p2 = (byte 7-4)		- track-orientation
-		p2 = (byte 8-)		- track style
-		p2 = (byte 24-31)	- user defined signals_density
+ * x,y = start tile
+ * p1  = end tile
+ * p2  = (bit 0)			- 0 = build, 1 = remove signals
+ * p2  = (bit 3)			- 0 = signals, 1 = semaphores
+ * p2  = (bit 4-6)		- track-orientation, valid values: 0-5
+ * p2  = (bit 24-31)	- user defined signals_density
  */
-int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	int ex, ey, railbit;
+	int ex, ey;
+	int railbit = (p2 >> 4) & 7;
 	bool error = true;
 	TileIndex tile = TILE_FROM_XY(x, y);
 	int32 ret, total_cost, signal_ctr;
 	byte m5, semaphores = (HASBIT(p2, 3)) ? 8 : 0;
-	int mode = (p2 >> 4)&0xF;
+	int mode = p2 & 0x1;
 	// for vertical/horizontal tracks, double the given signals density
 	// since the original amount will be too dense (shorter tracks)
-	byte signal_density = (mode == 1 || mode == 2) ? (p2 >> 24) : (p2 >> 24) * 2;
-	byte signals = (p2 >> 8)&0xFF;
-	mode = p2 & 0x1;  // build/remove signals
+	byte signal_density = (railbit & 0x6) ? (p2 >> 24) * 2: (p2 >> 24);
+	byte signals;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	/* unpack end tile */
+	// unpack end tile
 	ex = TileX(p1) * 16;
 	ey = TileY(p1) * 16;
 
-	railbit = _railbit.initial[((p2 >> 4)&0xF) + (x > ex ? 4 : 0) + (y > ey ? 8 : 0)];
+	if (ValidateAutoDrag(&railbit, x, y, ex, ey) == CMD_ERROR)
+		return CMD_ERROR;
 
 	// copy the signal-style of the first rail-piece if existing
 	m5 = _map5[tile];
 	if (!(m5 & RAIL_TYPE_SPECIAL) && (m5 & RAIL_BIT_MASK) && (m5 & RAIL_TYPE_SIGNALS)) {
-		if (m5 & 0x3) // X,Y direction tracks
-			signals = _map3_lo[tile]&0xC0;
-		else {
-			/* W-E or N-S direction, only copy the side which was chosen, leave
-			 * the other side alone */
-			switch (signals) {
-				case 0x20: case 8: /* east corner (N-S), south corner (W-E) */
-					if (_map3_lo[tile]&0x30)
-						signals = _map3_lo[tile]&0x30;
-					else
-						signals = 0x30 | (_map3_lo[tile]&0xC0);
-					break;
-				case 0x10: case 4: /* west corner (N-S), north corner (W-E) */
-					if (_map3_lo[tile]&0xC0)
-						signals = _map3_lo[tile]&0xC0;
-					else
-						signals = 0xC0 | (_map3_lo[tile]&0x30);
-					break;
-			}
-		}
+		signals = _map3_lo[tile] & _signals_table_both[railbit];
+		if (signals == 0) signals = _signals_table_both[railbit];
 
 		semaphores = (_map3_hi[tile] & ~3) ? 8 : 0; // copy signal/semaphores style (independent of CTRL)
 	} else { // no signals exist, drag a two-way signal stretch
-		switch (signals) {
-			case 0x20: case 8: /* east corner (N-S), south corner (W-E) */
-				signals = 0x30; break;
-			case 0x10: case 4: /* west corner (N-S), north corner (W-E) */
-				signals = 0xC0;
-		}
+		signals = _signals_table_both[railbit];
 	}
 
 	/* signal_density_ctr	- amount of tiles already processed
@@ -1089,11 +1067,17 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		y += _railbit.yinc[railbit];
 		signal_ctr++;
 
-		// toggle railbit for the diagonal tiles (|, -- tracks)
+		// toggle railbit for the non-diagonal tracks (|, -- tracks)
 		if (railbit & 0x6) railbit ^= 1;
 	}
 
 	return (error) ? CMD_ERROR : total_cost;
+}
+
+/* Stub for the unified Signal builder/remover */
+int32 CmdBuildSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	return CmdSignalTrackHelper(x, y, flags, p1, p2);
 }
 
 /* Remove signals
@@ -1101,7 +1085,7 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * p2 = unused
  */
 
-int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	uint tile;
@@ -1157,6 +1141,12 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	return _price.remove_signals;
+}
+
+/* Stub for the unified Signal builder/remover */
+int32 CmdRemoveSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 1));
 }
 
 typedef int32 DoConvertRailProc(uint tile, uint totype, bool exec);

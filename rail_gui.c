@@ -309,117 +309,45 @@ static void BuildRailClick_Landscaping(Window *w)
 	ShowTerraformToolbar();
 }
 
-
 static void DoRailroadTrack(int mode)
 {
-	DoCommandP(TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y), PACK_POINT(_thd.selend.x, _thd.selend.y), (mode << 4) | _cur_railtype, NULL,
+	DoCommandP(TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y), TILE_FROM_XY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4), NULL,
 		_remove_button_clicked ?
 		CMD_REMOVE_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
+		CMD_BUILD_RAILROAD_TRACK  | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
 }
-
-
-// This function is more or less a hack because DoRailroadTrack() would otherwise screw up
-static void SwapSelection(void)
-{
-	TileHighlightData *thd = &_thd;
-	Point pt = thd->selstart;
-	thd->selstart.x = thd->selend.x & ~0xF;
-	thd->selstart.y = thd->selend.y & ~0xF;
-	thd->selend = pt;
-}
-
 
 static void HandleAutodirPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
-	int bit;
-	int dx = thd->selstart.x - (thd->selend.x&~0xF);
-	int dy = thd->selstart.y - (thd->selend.y&~0xF);
+	int trackstat = thd->drawstyle & 0xF; // 0..5
 
 	if (thd->drawstyle & HT_RAIL) { // one tile case
-		bit = thd->drawstyle & 0xF;
-		GenericPlaceRail(TILE_FROM_XY(thd->selend.x, thd->selend.y), bit);
-	} else if ( !(thd->drawstyle & 0xE) ) { // x/y dir
-		if (dx == 0) { // Y dir
-			DoRailroadTrack(1);
-		} else {
-			DoRailroadTrack(2);
-		}
-	} else if (myabs(dx)+myabs(dy) >= 32) { // long line (more than 2 tiles)
-		if(thd->drawstyle == (HT_LINE | HT_DIR_HU))
-			DoRailroadTrack(0);
-		if(thd->drawstyle == (HT_LINE | HT_DIR_HL))
-			DoRailroadTrack(3);
-		if(thd->drawstyle == (HT_LINE | HT_DIR_VL))
-			DoRailroadTrack(3);
-		if(thd->drawstyle == (HT_LINE | HT_DIR_VR))
-			DoRailroadTrack(0);
-	} else { // 2x1 pieces line
-		if(thd->drawstyle == (HT_LINE | HT_DIR_HU)) {
-			DoRailroadTrack(0);
-		} else if (thd->drawstyle == (HT_LINE | HT_DIR_HL)) {
-			SwapSelection();
-			DoRailroadTrack(0);
-			SwapSelection();
-		} else if (thd->drawstyle == (HT_LINE | HT_DIR_VL)) {
-			if(dx == 0) {
-				SwapSelection();
-				DoRailroadTrack(0);
-				SwapSelection();
-			} else {
-				DoRailroadTrack(3);
-			}
-		} else if (thd->drawstyle == (HT_LINE | HT_DIR_VR)) {
-			if(dx == 0) {
-				DoRailroadTrack(0);
-			} else {
-				SwapSelection();
-				DoRailroadTrack(3);
-				SwapSelection();
-			}
-		}
+		GenericPlaceRail(TILE_FROM_XY(thd->selend.x, thd->selend.y), trackstat);
+		return;
 	}
+
+	DoRailroadTrack(trackstat);
 }
 
 static void HandleAutoSignalPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
-	int mode = 0;
-	uint trackstat = 0;
-
-	int dx = thd->selstart.x - (thd->selend.x&~0xF);
-	int dy = thd->selstart.y - (thd->selend.y&~0xF);
+	byte trackstat = thd->drawstyle & 0xF; // 0..5
 
 	if (thd->drawstyle == HT_RECT) { // one tile case
 		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
 		return;
 	}
 
-	if (!(thd->drawstyle & 0xE)) { // X/Y direction
-		mode = (dx == 0) ? VPM_FIX_X : VPM_FIX_Y;
-		trackstat = 0xC0;
-	} else if (myabs(dx) + myabs(dy) >= 32) { // long line (more than 2 tiles)
-		mode = ((thd->drawstyle & 0xF) == HT_DIR_HU || (thd->drawstyle & 0xF) == HT_DIR_VR) ? 0 : 3;
-
-		if (dx == dy || abs(dx - dy) == 16) // North<->South track |
-			trackstat = (thd->drawstyle & 1) ? 0x20 : 0x10;
-		else if (dx == -dy || abs(dx + dy) == 16) // East<->West track --
-			trackstat = (thd->drawstyle & 1) ? 8 : 4;
-
-	} else { // 2x1 pieces line
-		GenericPlaceSignals(TILE_FROM_XY(thd->selstart.x, thd->selstart.y));
-		return;
-	}
-
 	// _patches.drag_signals_density is given as a parameter such that each user in a network
 	// game can specify his/her own signal density
 	DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
-	(mode << 4) | (_remove_button_clicked | _ctrl_pressed) | (trackstat << 8) | (_patches.drag_signals_density << 24),
+	(_ctrl_pressed ? 1 << 3 : 0) | (trackstat << 4) | (_patches.drag_signals_density << 24),
 	CcPlaySound1E,
-	(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-														CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
+	(_remove_button_clicked ?	CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
+	                          CMD_BUILD_SIGNAL_TRACK  | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
 }
 
 static OnButtonClick * const _build_railroad_button_proc[] = {
@@ -527,9 +455,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
 			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
-			} else {
-				DoRailroadTrack(e->place.userdata);
-			}
+			} else
+				DoRailroadTrack(e->place.userdata & 1);
 		}
 		break;
 
