@@ -171,20 +171,22 @@ static const char *credits[] = {
 	"",
 	"The OpenTTD team (in alphabetical order):",
 	"  Bjarni Corfitzen (Bjarni) - MacOS port",
+	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
 	"  Tamas Faragó (Darkvater) - Lead coder",
 	"  Dominik Scherer (dominik81) - Lead coder",
-	"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
 	"  Kerekes Miham (MiHaMiX) - Translator system, and Nightlies host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
+  "  Christoph Mallon (Tron) - Programmer, code correctness police",
 	"  Patric Stout (TrueLight) - Coder, network guru, SVN- and website host",
+	"",
+	"Retired Developers:",
+	"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
 	"  Serge Paquet (vurlix) - Assistant project manager, coder (0.1 - 0.3.3)",
 	"",
 	"Special thanks go out to:",
 	"  Josef Drexler - For his great work on TTDPatch",
 	"  Marcin Grzegorczyk - For his documentation of TTD internals",
-	"  Tron - Many patches, suggestions and relentless correcting of the code",
-	"  Celestar - For his many patches, suggestions and fixes",
-	"  blathijs - For his many patches, suggestions and code documentation",
+	"  blathijs - For his many patches, suggestions and major work on maprewrite",
 	"  pasky - Many patches, newgrf support",
 	"  Stefan Meißner (sign_de) - For his work on the console",
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
@@ -217,8 +219,8 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		// Show original copyright and revision version
-		DrawStringCentered(200, 17, STR_00B6_ORIGINAL_COPYRIGHT, 0);
-		DrawStringCentered(200, 17 + 10, STR_00B7_VERSION, 0);
+		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, 0);
+		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, 0);
 
 		// Show all scrolling credits
 		for (i = 0; i < lengthof(credits); i++) {
@@ -240,7 +242,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		// If the last text has scrolled start anew from the start
 		if (y < 50) WP(w, scroller_d).height = w->height - 40;
 
-		DrawStringMultiCenter(200, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 398);
+		DrawStringMultiCenter(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 398);
 	}	break;
 	case WE_MOUSELOOP: /* Timer to scroll the text and adjust the new top */
 		if (WP(w, scroller_d).counter++ % 3 == 0) {
@@ -253,14 +255,14 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 
 static const Widget _about_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_NULL},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_015B_OPENTTD,	STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   399,    14,   271, 0x0,								STR_NULL},
-{      WWT_FRAME,   RESIZE_NONE,    14,     5,   394,    40,   245, STR_NULL,					STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   419,     0,    13, STR_015B_OPENTTD,	STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   419,    14,   271, 0x0,								STR_NULL},
+{      WWT_FRAME,   RESIZE_NONE,    14,     5,   414,    40,   245, STR_NULL,					STR_NULL},
 {    WIDGETS_END},
 };
 
 static const WindowDesc _about_desc = {
-	WDP_CENTER, WDP_CENTER, 400, 272,
+	WDP_CENTER, WDP_CENTER, 420, 272,
 	WC_GAME_OPTIONS,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_about_widgets,

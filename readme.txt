@@ -215,27 +215,28 @@ X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
   Bjarni Corfitzen (Bjarni)      - MacOS port
-  Tamas Faragó (Darkvater)       - Lead coder
-  Dominik Scherer (dominik81)    - Lead coder
-  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
+  Victor Fischer (Celestar)      - Programming everywhere you need him to
+  Tamas Faragó (Darkvater)       - Lead programmer
+  Dominik Scherer (dominik81)    - Lead programmer
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Owen Rudge (orudge)            - Contributor, forum host, masterserver host
-  Patric Stout (TrueLight)       - Coder, network guru, SVN-repository and website host
+  Christoph Mallon (Tron)        - Programmer, code correctness police
+  Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
+
+Retired Developers:
+  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
 Thanks to:
   Josef Drexler - For his great work on TTDPatch.
   Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  Celestar - For his many patches, suggestions and fixes
-  blathijs - For his many patches, suggestions and code documentation
-  Tron - For his many patches, suggestions and relentless correcting of the code
-  Stefan Meißner (sign_de) - For his work on the console
+  blathijs - For his many patches, suggestions and major work on maprewrite
   pasky - Many patches, newgrf support, etc.
+  Stefan Meißner (sign_de) - For his work on the console
   Mike Ragsdale - OpenTTD installer
   Cian Duffy (MYOB) - BeOS port / manual writing
   Christian Rosentreter (tokaiz) - MorphOS / AmigaOS port
-  Michael Polnick - Some patches
-  Michael Blunck - Nice graphics
+  Michael Blunck - For revolutionizing TTD with awesome graphics
   George - Canal graphics
   All Translators - For their support to make OpenTTD a truly international game
   Bug Reporters - Thanks for all bug reports
