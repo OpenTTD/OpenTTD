@@ -8,7 +8,7 @@
 
 /* landscape.c */
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
-void FindLandscapeHeightByTile(TileInfo *ti, uint tile);
+void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile);
 
 void DoClearSquare(uint tile);
 void CDECL ModifyTile(uint tile, uint flags, ...);
@@ -51,7 +51,7 @@ static inline Point RemapCoords2(int x, int y)
 void DrawHillyLandTile(TileInfo *ti);
 void DrawClearLandTile(TileInfo *ti, byte set);
 void DrawClearLandFence(TileInfo *ti, byte img);
-void TileLoopClearHelper(uint tile);
+void TileLoopClearHelper(TileIndex tile);
 
 /* station_land.c */
 void StationPickerDrawSprite(int x, int y, int railtype, int image);
