@@ -7,21 +7,21 @@
 CFG=ttd - Win32 Checked
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "ttd.mak".
-!MESSAGE
+!MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "ttd.mak" CFG="ttd - Win32 Checked"
-!MESSAGE
+!MESSAGE 
 !MESSAGE Possible choices for configuration are:
-!MESSAGE
+!MESSAGE 
 !MESSAGE "ttd - Win32 Release" (based on "Win32 (x86) Console Application")
 !MESSAGE "ttd - Win32 Debug" (based on "Win32 (x86) Console Application")
 !MESSAGE "ttd - Win32 Checked" (based on "Win32 (x86) Console Application")
 !MESSAGE "ttd - Win32 Release with PNG" (based on "Win32 (x86) Console Application")
-!MESSAGE
+!MESSAGE 
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -139,7 +139,7 @@ LINK32=link.exe
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib libpng.lib zlibstat.lib /nologo /subsystem:windows /map /machine:I386 /opt:nowin98
 # SUBTRACT LINK32 /pdb:none
 
-!ENDIF
+!ENDIF 
 
 # Begin Target
 
@@ -156,7 +156,27 @@ SOURCE=.\ai.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\ai_build.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai_new.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai_pathfinder.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai_shared.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\airport.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\aystar.c
 # End Source File
 # Begin Source File
 
@@ -212,7 +232,7 @@ SOURCE=.\minilzo.c
 # SUBTRACT BASE CPP /YX /Yc /Yu
 # SUBTRACT CPP /YX /Yc /Yu
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -238,6 +258,10 @@ SOURCE=.\pathfind.c
 # Begin Source File
 
 SOURCE=.\players.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\queue.c
 # End Source File
 # Begin Source File
 
@@ -280,7 +304,7 @@ SOURCE=.\StdAfx.c
 # ADD BASE CPP /Yc"stdafx.h"
 # ADD CPP /Yc"stdafx.h"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -321,7 +345,7 @@ SOURCE=.\unix.c
 # PROP BASE Exclude_From_Build 1
 # PROP Exclude_From_Build 1
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -353,7 +377,7 @@ SOURCE=.\w32dm2.cpp
 # SUBTRACT BASE CPP /YX /Yc /Yu
 # SUBTRACT CPP /YX /Yc /Yu
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -374,7 +398,11 @@ SOURCE=.\window.c
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\town.h
+SOURCE=.\ai.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\aystar.h
 # End Source File
 # Begin Source File
 
@@ -430,6 +458,10 @@ SOURCE=.\player.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\queue.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\saveload.h
 # End Source File
 # Begin Source File
@@ -443,6 +475,10 @@ SOURCE=.\station.h
 # Begin Source File
 
 SOURCE=.\StdAfx.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\town.h
 # End Source File
 # Begin Source File
 
@@ -850,10 +886,6 @@ SOURCE=.\table\build_industry.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\table\town_land.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\table\clear_land.h
 # End Source File
 # Begin Source File
@@ -895,6 +927,10 @@ SOURCE=.\table\station_land.h
 # Begin Source File
 
 SOURCE=.\table\strings.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\table\town_land.h
 # End Source File
 # Begin Source File
 
