@@ -1819,9 +1819,8 @@ static int GetDirectionToVehicle(Vehicle *v, int x, int y)
 /* Check if the vehicle is compatible with the specified tile */
 static bool CheckCompatibleRail(Vehicle *v, uint tile)
 {
-	if (IS_TILETYPE(tile, MP_RAILWAY) ||
-			IS_TILETYPE(tile, MP_STATION)) {
-
+	if (IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION)) {
+		// normal tracks, jump to owner check
 	} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
 		if ((_map5[tile] & 0xC0) == 0xC0) {// is bridge middle part?
 			TileInfo ti;
@@ -1834,6 +1833,12 @@ static bool CheckCompatibleRail(Vehicle *v, uint tile)
 			if(v->z_pos != ti.z) // train is going over bridge
 				return true;
 		}
+	} else if (IS_TILETYPE(tile, MP_STREET)) { // train is going over a road-crossing
+		// tracks over roads, do owner check of tracks (_map_owner[tile])
+		if (_map_owner[tile] != v->owner || (v->subtype == 0 && (_map3_hi[tile] & 0xF) != v->u.rail.railtype))
+			return false;
+
+		return true;
 	} else
 		return true;
 
