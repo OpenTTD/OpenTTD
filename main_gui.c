@@ -2218,29 +2218,34 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 	case WE_PAINT:
 		DrawWindowViewport(w);
 		if (_game_mode == GM_MENU) {
-			off_x = ((_screen.width - 400) >> 1) - 70;
+			off_x = _screen.width / 2;
 
-			DrawSprite(0x12EA, off_x+0-40, 50); // o
-			DrawSprite(0x12E9, off_x+28-40,50); // p
-			DrawSprite(SPR_OPENTTD_BASE+16, off_x+55-40,50); // e
-			DrawSprite(0x12E7, off_x+84-40,50); // n
+			DrawSprite(SPR_OTTD_O, off_x - 114, 50);
+			DrawSprite(SPR_OTTD_P, off_x -  80, 50);
+			DrawSprite(SPR_OTTD_E, off_x -  47, 50);
+			DrawSprite(SPR_OTTD_N, off_x -  16, 50);
 
-			DrawSprite(0x12E4, off_x+90, 50); // t
-			DrawSprite(0x12E5, off_x+119, 50); // r
-			DrawSprite(0x12E6, off_x+148,50); // a
-			DrawSprite(0x12E7, off_x+181,50); // n
-			DrawSprite(0x12E8, off_x+215,50); // s
-			DrawSprite(0x12E9, off_x+246,50); // p
-			DrawSprite(0x12EA, off_x+275,50); // o
-			DrawSprite(0x12E5, off_x+307,50); // r
-			DrawSprite(0x12E4, off_x+337,50); // t
+			DrawSprite(SPR_OTTD_T, off_x +  28, 50);
+			DrawSprite(SPR_OTTD_T, off_x +  59, 50);
+			DrawSprite(SPR_OTTD_D, off_x +  90, 50);
+			
+			/*
+			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
+			DrawSprite(SPR_OTTD_A, off_x + 148, 50);
+			DrawSprite(SPR_OTTD_N, off_x + 181, 50);
+			DrawSprite(SPR_OTTD_S, off_x + 215, 50);
+			DrawSprite(SPR_OTTD_P, off_x + 246, 50);
+			DrawSprite(SPR_OTTD_O, off_x + 275, 50);
+			DrawSprite(SPR_OTTD_R, off_x + 307, 50);
+			DrawSprite(SPR_OTTD_T, off_x + 337, 50);
 
-			DrawSprite(0x12E4, off_x+390,50); // t
-			DrawSprite(0x12EB, off_x+417,50); // y
-			DrawSprite(0x12EC, off_x+447,50); // c
-			DrawSprite(0x12EA, off_x+478,50); // o
-			DrawSprite(0x12EA, off_x+509,50); // o
-			DrawSprite(0x12E7, off_x+541,50); // n
+			DrawSprite(SPR_OTTD_T, off_x + 390, 50);
+			DrawSprite(SPR_OTTD_Y, off_x + 417, 50);
+			DrawSprite(SPR_OTTD_C, off_x + 447, 50);
+			DrawSprite(SPR_OTTD_O, off_x + 478, 50);
+			DrawSprite(SPR_OTTD_O, off_x + 509, 50);
+			DrawSprite(SPR_OTTD_N, off_x + 541, 50);
+			*/
 		}
 		break;
 

@@ -707,6 +707,7 @@ enum Sprites {
 	SPR_OTTD_O                = 4842,
 	SPR_OTTD_P                = 4841,
 	SPR_OTTD_E                = SPR_OPENTTD_BASE + 16,
+	SPR_OTTD_D                = SPR_OPENTTD_BASE + 17,
 	SPR_OTTD_N                = 4839,
 	SPR_OTTD_T                = 4836,
 	SPR_OTTD_R                = 4837,
