@@ -208,6 +208,7 @@ typedef struct Cheats {
 	Cheat no_jetcrash;				// no jet will crash on small airports anymore
 	Cheat switch_climate;
 	Cheat change_date;				//changes date ingame
+	Cheat setup_prod;				//setup raw-material production in game
 } Cheats;
 
 VARDEF Cheats _cheats;

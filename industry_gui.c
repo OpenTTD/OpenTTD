@@ -269,7 +269,7 @@ void ShowBuildIndustryWindow(void)
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
 }
 
-#define NEED_ALTERB	(_game_mode == GM_EDITOR && i->accepts_cargo[0] == CT_INVALID)
+#define NEED_ALTERB	((_game_mode == GM_EDITOR || _cheats.setup_prod.value) && i->accepts_cargo[0] == CT_INVALID)
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
 	// WP(w,vp2_d).data_1 is for the editbox line
@@ -339,12 +339,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			i = GetIndustry(w->window_number);
 
-			// We should only work in editor
-			if (_game_mode != GM_EDITOR)
-				return;
-
-			// And if the industry is raw-material producer
-			if (i->accepts_cargo[0] != CT_INVALID)
+			// We should work if needed..
+			if (!NEED_ALTERB)
 				return;
 
 			x = e->click.pt.x;
