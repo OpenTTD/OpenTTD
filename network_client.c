@@ -279,7 +279,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	company_info_version = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (!MY_CLIENT->quited && company_info_version == 1) {
+	if (!MY_CLIENT->quited && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		byte total;
 		byte current;
 
