@@ -319,9 +319,12 @@ static int GetAvailableVideoMode(int *w, int *h)
 	return 2;
 }
 
+extern const char _openttd_revision[];
+
 static bool CreateMainSurface(int w, int h)
 {
 	SDL_Surface *newscreen;
+	char *caption;
 
 	GetAvailableVideoMode(&w, &h);
 
@@ -339,7 +342,8 @@ static bool CreateMainSurface(int w, int h)
 	_sdl_screen = newscreen;
 	InitPalette();
 
-	SDL_CALL SDL_WM_SetCaption("OpenTTD", "OpenTTD");
+	caption = str_fmt("OpenTTD %s", _openttd_revision);
+	SDL_CALL SDL_WM_SetCaption(caption, caption);
 	SDL_CALL SDL_ShowCursor(0);
 
 	GameSizeChanged();
