@@ -13,6 +13,8 @@
 #include <signal.h>
 
 #ifdef __MORPHOS__
+	// The system supplied definition of SIG_DFL is wrong on MorphOS
+	#undef SIG_DFL
 	#define SIG_DFL (void (*)(int))0
 #endif
 #endif
