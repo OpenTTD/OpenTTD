@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørken
+STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde, vil flomme utover hvis på havnivå
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario

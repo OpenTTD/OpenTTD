@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Aseta ka
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Aseta majakka
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Aseta lähetin
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Määrittele aavikon alue
+STR_CREATE_LAKE                                                 :{BLACK}Määrittele vesialue; ympäristö tulvii, jos valitaan tasoksi merenpinta
 STR_0290_DELETE                                                 :{BLACK}Poista
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Poista tämä kaupunki kokonaan
 STR_0292_SAVE_SCENARIO                                          :Tallenna skenaario

@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Zobrazit
 STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Extra pohlad
+STR_SIGN_LIST                                                   :Zoznam popisov
 STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zo
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA16} popisov
 
 ############ Lists rail types
 

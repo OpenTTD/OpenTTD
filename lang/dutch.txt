@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats s
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Geef woestijngebied aan
+STR_CREATE_LAKE                                                 :{BLACK}Defineer water gebied, zal de omgeving later overstromen als deze op zeeniveau is
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan

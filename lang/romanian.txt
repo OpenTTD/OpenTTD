@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaseaza
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaseazã far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaseazã transmitãtor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineste zona de desert
+STR_CREATE_LAKE                                                 :{BLACK}Defineste aria acoperita de apa ce va inunda imprejurimile aflate la nivelul marii
 STR_0290_DELETE                                                 :{BLACK}Sterge
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sterge acest oras
 STR_0292_SAVE_SCENARIO                                          :Salveazã scenariul
@@ -772,6 +773,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Afiseazã
 STR_02DD_SUBSIDIES                                              :Subventii (F6)
 STR_02DE_MAP_OF_WORLD                                           :Harta lumii (F4)
 STR_EXTRA_VIEW_PORT                                             :Extra ecran
+STR_SIGN_LIST                                                   :Lista de semne
 STR_02DF_TOWN_DIRECTORY                                         :Lista oraselor
 STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran{COMMA16}
@@ -2796,6 +2798,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA16} Semne
 
 ############ Lists rail types
 
