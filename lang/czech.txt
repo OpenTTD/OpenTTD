@@ -950,7 +950,7 @@ STR_CONFIG_PATCHES_BRIBE			:{LTBLUE}Povolit úplatek místní sprave: {ORANGE}{STRI
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING		:{LTBLUE}Nové vyhledávání dep: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS		:{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND		:{LTBLUE}Nový algoritmus pro hledání cesty vlaku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Povolit stavbu pri pauze: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Malá letiste se budou moci stále stavet: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Vlak je povazovan za ztracený, pokud nedojede do: {ORANGE}{STRING} dní
@@ -1009,6 +1009,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Navysit peníze o {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Hrajes jako hrac: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Magický buldozer (odstraní prumysl a neodstranitelné predmety): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunely se mohou krizit: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Povolit stavbu pri pauze: {ORANGE}{STRING}
 
 STR_SORT_BY_POPULATION					:{BLACK}Populace
 

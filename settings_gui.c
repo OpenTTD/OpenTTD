@@ -698,7 +698,7 @@ static const PatchEntry _patches_construction[] = {
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_EXTRADYNAMITE, &_patches.extra_dynamite},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_LONGBRIDGES, &_patches.longbridges},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_SIGNALSIDE, &_patches.signal_side},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_BUILD_IN_PAUSE, &_patches.build_in_pause},
+	
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_SMALL_AIRPORTS, &_patches.always_small_airport},
 	{PE_UINT8,0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, &_patches.drag_signals_density, 1, 20, 1},
 

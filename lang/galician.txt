@@ -950,7 +950,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Permiti-la chantaxe as autoridades locales:
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Novo sistema para atopar depósito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Estacións non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Novo algoritmo para atopa-las rutas para os trens: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}{STRING} días
@@ -1009,6 +1009,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Incrementa-lo diñeiro en {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Xogar coma xogador: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Escavadora máxica(Elimina industrias, non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
 
 STR_SORT_BY_POPULATION					:{BLACK}Poboación
 

@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE                :{LTBLUE}Pozwol dawac lapowki lok. wladz
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING    :{LTBLUE}Szukanie nowych zajezdni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS  :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND   :{LTBLUE}Nowy algorytm szukania drogi dla pociagow: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE       :{LTBLUE}Budowanie w czasie pauzy: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS       :{LTBLUE}Zawsze zezwalaj budowac male lotniska: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS      :{LTBLUE}Pociag zagubil sie jesli nie porusza sie przez: {ORANGE}{STRING} dni
@@ -979,7 +979,7 @@ STR_CHEAT_MONEY                         :{LTBLUE}Zwieksz ilosc pieniedzy o {CURR
 STR_CHEAT_CHANGE_PLAYER                 :{LTBLUE}Gra jako gracz: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE                :{LTBLUE}Magiczny buldozer (usuwanie przedsiebiorstw etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS               :{LTBLUE}Tunele moga sie krzyzowac: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE       :{LTBLUE}Budowanie w czasie pauzy: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME                        :{BLACK}Nazwa
 STR_TOWNDIR_POPULATION                  :{BLACK}Populacja

@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Bestechen der Stadtverwaltung erlauben: {OR
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Neues Wegfinden für Depots: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Neuen Algorithmus für die Züge zur Wegfindung benutzen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Im pausiertem Spiel bauen: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Ein Zug ist verloren, wenn kein Fortschritt seit: {ORANGE}{STRING} Tagen
@@ -978,7 +978,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Kontostand um {CURRENCY64} erhöhen
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Folgenden Spieler steuern: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnel dürfen sich kreuzen {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Im pausiertem Spiel bauen: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Name
 STR_TOWNDIR_POPULATION					:{BLACK}Einwohner

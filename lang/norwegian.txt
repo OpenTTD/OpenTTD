@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Tillate bestikkelser av kommunestyret: {ORA
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Ny togstall lokalisering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Ikke ensartet stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Ny algoritme for togs kjørerute: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Tillate bygging i pause modus: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Alltid tillate bygging av små flyplasser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Et tog har kjørt seg vil vist de ikke har kommet lengre på ordrelisten etter:{ORANGE}{STRING} dager
@@ -978,7 +978,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Øk pengebeholdningen med {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Spiller som spiller: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Magisk bulldoser (fjern industrier, ufjernbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tuneller kan krysse hverandre: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Tillate bygging i pause modus: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Navn
 STR_TOWNDIR_POPULATION					:{BLACK}Innbyggere

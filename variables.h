@@ -128,7 +128,7 @@ typedef struct Patches {
 	byte pf_maxdepth;				// maximum recursion depth when searching for a train route for new pathfinder
 	uint16 pf_maxlength;		// maximum length when searching for a train route for new pathfinder
 
-	bool build_in_pause;		// build while in pause mode
+	
 	bool bridge_pillars;		// show bridge pillars for high bridges
 
 	bool ai_disable_veh_train;		// disable types for AI
@@ -173,6 +173,7 @@ typedef struct Cheats {
 	Cheat switch_player;			// change to another player
 	Cheat money;							// get rich
 	Cheat crossing_tunnels;		// allow tunnels that cross each other
+	Cheat	build_in_pause;			// build while in pause mode
 } Cheats;
 
 VARDEF Cheats _cheats;

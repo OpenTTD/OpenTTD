@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Tillad bestikkelse af de lokale myndigheder
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Find nyt depot: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Ny stifindingsalgoritme til tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Et tog er væk hvis der ikke forekommer fremskridt inden for: {ORANGE}{STRING} dage
@@ -977,7 +977,7 @@ STR_CHEAT_MONEY						:{LTBLUE}Forøg kassebeholdning med {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER					:{LTBLUE}Spil som spiller: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE				:{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS				:{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME					:{BLACK}Navn
 STR_TOWNDIR_POPULATION					:{BLACK}Indbyggertal

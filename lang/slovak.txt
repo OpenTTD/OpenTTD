@@ -930,7 +930,7 @@ STR_CONFIG_PATCHES_BRIBE			:{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING		:{LTBLUE}Nove vyhladavanie depa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS		:{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND		:{LTBLUE}Novy algoritmus pre hladanie smeru: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Umoznit vystavbu v pauze: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS       :{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
  
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS      :{LTBLUE}Vlak sa strati pokial nic nedosiahne za: {ORANGE}{STRING} dni
@@ -979,7 +979,7 @@ STR_CHEAT_MONEY                     :{LTBLUE}Zvysit hotovost o {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER             :{LTBLUE}Hrat ako hrac: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE            :{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS           :{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Umoznit vystavbu v pauze: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME				:{BLACK}Meno
 STR_TOWNDIR_POPULATION				:{BLACK}Populacia

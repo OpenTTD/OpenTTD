@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Consenti corruzione autorità locale: {ORANG
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Nuovo sistema individuazione deposito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Nuovo algoritmo pathfinding dei treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Consenti sempre costruzione piccoli aeroporti: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un treno è ritenuto perso se non si ottengono progressi dopo: {ORANGE}{STRING} giorni
@@ -978,7 +978,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Aumenta soldi di {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Gioca come giocatore: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Bulldozer magico (rimuove industrie e altri): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Nome
 STR_TOWNDIR_POPULATION					:{BLACK}Popolazione

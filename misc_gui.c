@@ -850,9 +850,6 @@ void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, b
 
 #define _orig_edit_str_buf (_edit_str_buf+MAX_QUERYSTR_LEN)
 
-	if (_pause != 0 && !_patches.build_in_pause)
-		return;
-
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
@@ -1405,6 +1402,7 @@ static const CheatEntry _cheats_ui[] = {
 	{CE_UINT8, 0, STR_CHEAT_CHANGE_PLAYER, 	&_local_player, 								&_cheats.switch_player.been_used,	&ClickChangePlayerCheat, 0, 11, 1},
 	{CE_BOOL, 0, STR_CHEAT_EXTRA_DYNAMITE,	&_cheats.magic_bulldozer.value,	&_cheats.magic_bulldozer.been_used},
 	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used},
+	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,		&_cheats.build_in_pause.been_used},
 };
 
 

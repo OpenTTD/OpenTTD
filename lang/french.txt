@@ -957,7 +957,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Permettre la corruption de la municipalité:
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Nouvelle recherche de dépôt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Nouvel algorithme de recherche de route: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un train est perdu si aucun progrès n'est fait pendant: {ORANGE}{STRING} jours
@@ -1021,8 +1021,9 @@ STR_CHEAT_MONEY								:{LTBLUE}Augmenter l'argent de {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Jouer en tant que joueur n°: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
 
-STR_SORT_BY_POPULATION					:{BLACK}Population
+
 
 STR_HEADING_FOR_CHECKPOINT				:{LTBLUE}En route pour {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL			:{LTBLUE}En route pour {CHECKPOINT}, {VELOCITY}

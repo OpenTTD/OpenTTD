@@ -1013,10 +1013,12 @@ void MouseLoop()
 		}
 
 		if (click == 1) {
+			DEBUG(misc, 1) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 			if (_thd.place_mode != 0 &&
-					_cursor.sprite != 0x2CF &&
+					// query button and place sign button work in pause mode
+					!(_cursor.sprite == 0x2CF || _cursor.sprite == 0x2D2) &&
 					_pause != 0 &&
-					!_patches.build_in_pause)
+					!_cheats.build_in_pause.value)
 						return;
 			
 			if (_thd.place_mode == 0) {

@@ -929,7 +929,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Tillåt mutning av den lokala kommunen: {ORA
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Ny algoritm för att hitta depå: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Ny algoritm för att hitta rutt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}{STRING} dagar
@@ -978,7 +978,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Öka pengar genom att {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Spelar som: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}trimmad bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Namn
 STR_TOWNDIR_POPULATION					:{BLACK}Invånare

@@ -920,7 +920,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Önkormányzatok lefizethetõsége: {ORANGE}{S
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Új garázskeresés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Különbözõ vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Új algoritmus a vonatok útkeresésére: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE				:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}A vonat eltévedt, ha az úton töltött napok száma legalább : {ORANGE}{STRING} nap
@@ -960,6 +960,8 @@ STR_CONFIG_PATCHES_DISABLED					:kikapcsolva
 STR_CONFIG_PATCHES_INT32					:{INT32}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Válassz beállítási értéket
+
+STR_CHEAT_BUILD_IN_PAUSE				:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Név
 STR_TOWNDIR_POPULATION						:{BLACK}Lakosság

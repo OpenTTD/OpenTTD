@@ -974,7 +974,7 @@ void GameLoop()
 	if (!_pause && _display_opt&DO_FULL_ANIMATION)
 		DoPaletteAnimations();
 
-	if (!_pause || _patches.build_in_pause)
+	if (!_pause || _cheats.build_in_pause.value)
 		MoveAllTextEffects();
 
 	MouseLoop();

@@ -845,7 +845,7 @@ static const SettingDesc patch_settings[] = {
 	{"pf_maxlength", SDT_UINT16, (void*)512, (void*)offsetof(Patches, pf_maxlength)},
 	{"pf_maxdepth", SDT_UINT8, (void*)16, (void*)offsetof(Patches, pf_maxdepth)},
 
-	{"build_in_pause",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, build_in_pause)},
+	
 
 	{"ai_disable_veh_train", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_train)},
 	{"ai_disable_veh_roadveh", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_roadveh)},

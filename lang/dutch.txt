@@ -930,7 +930,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Nieuwe methode om het depot te vinden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nieuw algorithme voor routeplanning van treinen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE				:{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Een trein is verdwaald als er geen voortgang is binnen: {ORANGE}{STRING} dagen
@@ -980,7 +980,7 @@ STR_CHEAT_MONEY							:{LTBLUE}Verhoog geld met {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spelend als speler: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
-
+STR_CHEAT_BUILD_IN_PAUSE				:{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
 
 STR_TOWNDIR_NAME						:{BLACK}Naam
 STR_TOWNDIR_POPULATION						:{BLACK}Bevolking

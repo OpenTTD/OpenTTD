@@ -950,7 +950,7 @@ STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Allow bribing the local authority: {ORANGE}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}New depot finding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}New algorithm for train pathfinding: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}A train is lost if no progress is made for: {ORANGE}{STRING} days
@@ -1009,6 +1009,7 @@ STR_CHEAT_MONEY								:{LTBLUE}Increase money by {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Playing as player: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
 
 STR_SORT_BY_POPULATION					:{BLACK}Population
 
