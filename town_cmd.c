@@ -250,6 +250,8 @@ static void TileLoop_Town(uint tile)
 		if ( (byte) (r >> 8) >= 12) {
 			DoBuildTownHouse(t, tile);
 		}
+
+		_current_player = OWNER_NONE;
 	}
 }
 

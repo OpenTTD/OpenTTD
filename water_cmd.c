@@ -583,6 +583,9 @@ void TileLoop_Water(uint tile)
 		for(i=0; i!=4; i++)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 	}
+	// _current_player can be changed by TileLoopWaterHelper.. reset it back
+	//   here
+	_current_player = OWNER_NONE;
 
 	// edges
 	if ( GET_TILE_X(tile)==0 && IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) //NE

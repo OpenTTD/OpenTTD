@@ -999,6 +999,7 @@ static void ChopLumberMillTrees(Industry *i)
 			do {
 				tile = TILE_MASK(tile);
 				if (IS_TILETYPE(tile, MP_TREES)) {
+					uint old_player = _current_player;
 					/* found a tree */
 
 					_current_player = OWNER_NONE;
@@ -1010,6 +1011,8 @@ static void ChopLumberMillTrees(Industry *i)
 					SetMapExtraBits(tile, 0);
 
 					i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45);
+
+					_current_player = old_player;
 					return;
 				}
 				tile += _chop_dir[dir];
