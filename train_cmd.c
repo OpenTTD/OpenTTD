@@ -528,11 +528,9 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
 
-	/* NOTE: The AI sends build engine commands without DC_EXEC to figure out if
-	it can affort an engine before trying to buy it*/
-	if (!IsTrainDepotTile((TileIndex)tile) && flags & DC_EXEC) return CMD_ERROR;
+	if (!IsTrainDepotTile((TileIndex)tile)) return CMD_ERROR;
 
-	if (_map_owner[tile] != _current_player && flags & DC_EXEC) return CMD_ERROR;
+	if (_map_owner[tile] != _current_player) return CMD_ERROR;
 
 	_cmd_build_rail_veh_var1 = 0;
 

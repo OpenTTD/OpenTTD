@@ -116,7 +116,7 @@ static void AiStateVehLoop(Player *p)
 	p->ai.state_counter = 0;
 }
 
-static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
+static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex tile)
 {
 	int best_veh_index = -1;
 	byte best_veh_score = 0;
@@ -131,7 +131,7 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
 		    || !HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
-		r = DoCommandByTile(0, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
+		r = DoCommandByTile(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
 		if (r != CMD_ERROR &&
 					(!(_cmd_build_rail_veh_var1&1) || !(flag&1)) &&
 					r <= money &&
@@ -238,7 +238,7 @@ static int AiChooseTrainToReplaceWith(Player *p, Vehicle *v)
 	}
 
 	// XXX: check if a wagon
-	return AiChooseTrainToBuild(v->u.rail.railtype, avail_money, 0);
+	return AiChooseTrainToBuild(v->u.rail.railtype, avail_money, 0, v->tile);
 }
 
 static int AiChooseShipToReplaceWith(Player *p, Vehicle *v)
@@ -2393,7 +2393,7 @@ static void AiStateBuildRailVeh(Player *p)
 	}
 
 	// Which locomotive to build?
-	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, (cargo!=CT_PASSENGERS)?1:0);
+	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, (cargo!=CT_PASSENGERS)?1:0, tile);
 	if (veh == -1) {
 handle_nocash:
 		// after a while, if AI still doesn't have cash, get out of this block by selling the wagons.
