@@ -1110,9 +1110,15 @@ static bool CheckNewIndustry_Forest(uint tile, int type)
 	return true;
 }
 
+extern bool _ignore_restrictions;
+
 static bool CheckNewIndustry_Oilwell(uint tile, int type)
 {
 	int x,y;
+	
+	if(_ignore_restrictions && _game_mode == GM_EDITOR)
+		return true;
+
 	if (type != IT_OIL_RIG && _game_mode == GM_EDITOR)
 		return true;
 

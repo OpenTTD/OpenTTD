@@ -1437,6 +1437,8 @@ static bool TryBuildIndustry(TileIndex tile, int type)
 {
 	int n;
 
+	if (CreateNewIndustry(tile, type)) return true;
+
 	n = 100;
 	do {
 		if (CreateNewIndustry(AdjustTileCoordRandomly(tile, 1), type)) return true;
@@ -1462,6 +1464,8 @@ static const byte _industry_type_list[4][16] = {
 	{25, 19, 20, 4, 13, 23, 21, 24, 22, 11, 16, 17, 10},
 	{26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36},
 };
+
+bool _ignore_restrictions;
 
 static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 {
@@ -1504,10 +1508,12 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 
 		_current_player = OWNER_NONE;
 		_generating_world = true;
+		_ignore_restrictions = true;
 		if (!TryBuildIndustry(e->place.tile,type)) {
 			SET_DPARAM16(0, type + STR_4802_COAL_MINE);
 			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE,e->place.pt.x, e->place.pt.y);
 		}
+		_ignore_restrictions = false;
 		_generating_world = false;
 		break;
 	}
