@@ -14,8 +14,6 @@ int GetTileZ(uint tile);
 
 void DoClearSquare(uint tile);
 void CDECL ModifyTile(uint tile, uint flags, ...);
-void SetMapExtraBits(uint tile, byte flags);
-uint GetMapExtraBits(uint tile);
 void RunTileLoop(void);
 
 uint GetPartialZ(int x, int y, int corners);

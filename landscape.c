@@ -430,17 +430,6 @@ void CDECL ModifyTile(uint tile, uint flags, ...)
 		MarkTileDirtyByTile(tile);
 }
 
-void SetMapExtraBits(uint tile, byte bits)
-{
-	_map_extra_bits[tile >> 2] &= ~(3 << ((tile&3)*2));
-	_map_extra_bits[tile >> 2] |= (bits&3) << ((tile&3)*2);
-}
-
-uint GetMapExtraBits(uint tile)
-{
-	assert(tile < MapSize());
-	return (_map_extra_bits[tile >> 2] >> (tile & 3) * 2) & 3;
-}
 
 #define TILELOOP_BITS 4
 #define TILELOOP_SIZE (1 << TILELOOP_BITS)

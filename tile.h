@@ -3,6 +3,9 @@
 
 #include "map.h"
 
+void SetMapExtraBits(TileIndex tile, byte flags);
+uint GetMapExtraBits(TileIndex tile);
+
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
