@@ -777,7 +777,8 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (p2 != 1) {
 			// sell last part of multiheaded?
 			last = GetLastVehicleInChain(v);
-			if (is_firsthead_sprite(last->spritenum))
+			// Check if the end-part is the same engine and check if it is the rear-end
+			if (last->engine_type != first->engine_type || is_firsthead_sprite(last->spritenum))
 				last = NULL;
 		} else {
 			last = NULL;
