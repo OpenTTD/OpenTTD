@@ -702,7 +702,7 @@ static void LoadSpriteTables()
 		load_index += LoadGrfFile("canalsw.grf", load_index, i++);
 		/* XXX: Only for debugging. Will be more generic. */
 
-		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT;
+		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT+1;
 
 		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
 			load_index += LoadGrfFile(_newgrf_files[j], load_index, i++);
