@@ -242,7 +242,18 @@ uint NPFTunnelCost(AyStarNode* current) {
 
 uint NPFSlopeCost(AyStarNode* current) {
 	TileIndex next = current->tile + TileOffsByDir(_trackdir_to_exitdir[current->direction]);
-	if (GetTileZ(next) > GetTileZ(current->tile)) {
+	int x,y;
+	int8 z1,z2;
+
+	x = TileX(current->tile) * 16;
+	y = TileY(current->tile) * 16;
+	z1 = GetSlopeZ(x+8, y+8);
+
+	x = TileX(next) * 16;
+	y = TileY(next) * 16;
+	z2 = GetSlopeZ(x+8, y+8);
+
+	if ((z2 - z1) > 1) {
 		/* Slope up */
 		return _patches.npf_rail_slope_penalty;
 	}
@@ -336,6 +347,16 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 		case MP_STREET: /* Railway crossing */
 			cost = NPF_TILE_LENGTH;
 			break;
+		case MP_STATION:
+			/* We give a station tile a penalty. Logically we would only
+					* want to give station tiles that are not our destination
+					* this penalty. This would discourage trains to drive through
+					* busy stations. But, we can just give any station tile a
+					* penalty, because every possible route will get this penalty
+					* exactly once, on its end tile (if it's a station) and it
+			* will therefore not make a difference. */
+			cost = NPF_TILE_LENGTH + _patches.npf_rail_station_penalty;
+			break;
 		default:
 			break;
 	}
@@ -363,7 +384,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	/* Penalise the tile if it is a target tile and the last signal was
 	 * red */
-	if (as->EndNodeCheck(as, current) && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
+	if (as->EndNodeCheck(as, current)==AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
 		cost += _patches.npf_rail_lastred_penalty;
 
 	/* Check for slope */
@@ -377,18 +398,6 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	/* Check for occupied track */
 	//TODO
-
-	/* Check for station tiles */
-	if (IsTileType(tile, MP_STATION)) {
-		/* We give a station tile a penalty. Logically we would only
-		 * want to give station tiles that are not our destination
-		 * this penalty. This would discourage trains to drive through
-		 * busy stations. But, we can just give any station tile a
-		 * penalty, because every possible route will get this penalty
-		 * exactly once, on its end tile (if it's a station) and it
-		 * will therefore not make a difference. */
-		cost += _patches.npf_rail_station_penalty;
-	}
 
 #ifdef NPF_MARKROUTE
 	NPFMarkTile(tile);
