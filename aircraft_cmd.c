@@ -451,9 +451,9 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL) {
 			if (p2 == 0) {
 				// the aircraft have to search for a hangar on it's own
-				next_airport_has_hangar = false;
 				uint32 temp = FindNearestHangar(v);
-				if (HASBIT(temp, 16)) return CMD_ERROR; // the player do not own a hangar
+				next_airport_has_hangar = false;
+				if (HASBIT(temp, 16)) return CMD_ERROR; // the player does not own a hangar
 				st = GetStation(temp);
 				next_airport_index = (uint16)temp;
 			} else {
