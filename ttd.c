@@ -1015,6 +1015,7 @@ static void DoAutosave()
 		sprintf(buf, "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, n);
 	}
 
+	DEBUG(misc, 2) ("Autosaving to %s", buf);
 	if (SaveOrLoad(buf, SL_SAVE) != SL_OK)
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
