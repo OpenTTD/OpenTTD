@@ -199,7 +199,6 @@ static const char *credits[] = {
 	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
 	"  All Translators - Who made OpenTTD a truly international game",
 	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
-	NULL,
 	"",
 	"",
 	"And last but not least:",
@@ -214,8 +213,6 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		WP(w, scroller_d).height = w->height - 40;
 		break;
 	case WE_PAINT: {
-		const char *str;
-		char buffer[100];
 		uint i;
 		int y = WP(w, scroller_d).height;
 		DrawWindowWidgets(w);
@@ -227,16 +224,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		// Show all scrolling credits
 		for (i = 0; i < lengthof(credits); i++) {
 			if (y >= 50 && y < (w->height - 40)) {
-				str = credits[i];
-				/* Hack-Alert: Translated by is a dynamic string as it changes
-				 * with the language chosen. So the special value of NULL is used
-				 * to identify this for the moment */
-				if (str == NULL) {
-					GetString(buffer, STR_TRANSLATED_BY);
-					str = buffer;
-				}
-
-			 DoDrawString(str, 10, y, 0x10);
+				DoDrawString(credits[i], 10, y, 0x10);
 			}
 			y += 10;
 		}
