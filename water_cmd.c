@@ -527,6 +527,14 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				}
 				break;
 
+			case MP_TUNNELBRIDGE:
+				// Middle part of bridge with clear land below?
+				if ((_map5[target] & 0xF8) == 0xC0) {
+					_map5[target] |= 0x08;
+					MarkTileDirtyByTile(tile);
+				}
+				break;
+
 			default:
 				break;
 		}

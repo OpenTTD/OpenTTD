@@ -310,7 +310,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		if (ti.type == MP_WATER) {
-			if (ti.map5 != 0) goto not_valid_below;
+			if (ti.map5 > 1) goto not_valid_below;
 			m5 = 0xC8;
 		} else if (ti.type == MP_RAILWAY) {
 			if (direction == 0) {
@@ -780,7 +780,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 					new_data = _new_data_table[((m5 & 0x18) >> 2) | (m5&1)];
 				}	else {
 					if (!(m5 & 0x18)) goto clear_it;
-					new_data = 0x6000;
+					new_data = (GetTileSlope(c, NULL) == 0) ? 0x6000 : 0x6001;
 				}
 
 				SetTileType(c, new_data >> 12);
@@ -937,6 +937,7 @@ extern const byte _road_sloped_sprites[14];
 
 #include "table/bridge_land.h"
 #include "table/tunnel_land.h"
+#include "table/water_land.h"
 
 static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 {
@@ -1075,7 +1076,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (!(ti->map5 & 0x20)) {
 				// draw land under bridge
 				if (ice) image += 2;					// ice too?
-				DrawGroundSprite(_bridge_land_below[image] + _tileh_to_sprite[ti->tileh]);
+
+				if (image != 1 || ti->tileh == 0)
+					DrawGroundSprite(_bridge_land_below[image] + _tileh_to_sprite[ti->tileh]);
+				else
+					DrawGroundSprite(_water_shore_sprites[ti->tileh]);
 
 				// draw canal water?
 				if (ti->map5 & 8 && ti->z != 0) DrawCanalWater(ti->tile);
