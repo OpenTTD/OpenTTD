@@ -542,9 +542,10 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
 
-	if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
-
-	if (_map_owner[tile] != _current_player) return CMD_ERROR;
+	if (!(flags & DC_QUERY_COST)) {
+		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
+		if (_map_owner[tile] != _current_player) return CMD_ERROR;
+	}
 
 	_cmd_build_rail_veh_var1 = 0;
 
