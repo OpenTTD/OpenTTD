@@ -2510,7 +2510,9 @@ static const byte _station_desc[] = {
 	SLE_VAR(Station,airport_type,				SLE_UINT8),
 	SLE_VAR(Station,truck_stop_status,	SLE_UINT8),
 	SLE_VAR(Station,bus_stop_status,		SLE_UINT8),
-	SLE_VAR(Station,blocked_months,			SLE_UINT8),
+			
+	// blocked_months was stored here in savegame format 0 - 4.0
+	SLE_CONDVAR(Station,blocked_months_obsolete,	SLE_UINT8, 0, 4),
 
 	SLE_CONDVAR(Station,airport_flags,			SLE_VAR_U32 | SLE_FILE_U16, 0, 2),
 	SLE_CONDVAR(Station,airport_flags,			SLE_UINT32, 3, 255),

@@ -1047,7 +1047,7 @@ void UpdateExclusiveRights()
 		t->exclusivity=(byte)-1;
 	}
 	
-	/* FIXME old exclusive rights status is not being imported.
+	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
 			could be implemented this way:
 			1.) Go through all stations
 					Build an array town_blocked[ town_id ][ player_id ]

@@ -37,7 +37,7 @@ struct Station {
 	byte airport_type;
 	byte truck_stop_status;
 	byte bus_stop_status;
-	byte blocked_months;
+	byte blocked_months_obsolete;
 
 	// trainstation width/height
 	byte trainst_w, trainst_h;

@@ -106,7 +106,7 @@ typedef struct {
 	byte facilities;
 	byte airport_type;
 	byte truck_stop_status, bus_stop_status;
-	byte blocked_months;
+	byte blocked_months_obsolete;
 	byte unk85;
 	uint16 airport_flags;
 	uint16 last_vehicle;
@@ -708,7 +708,7 @@ static void FixStation(Station *s, OldStation *o, int num)
 		s->airport_type = o->airport_type;
 		s->truck_stop_status = o->truck_stop_status;
 		s->bus_stop_status = o->bus_stop_status;
-		s->blocked_months = o->blocked_months;
+		s->blocked_months_obsolete = o->blocked_months_obsolete;
 		s->airport_flags = o->airport_flags;
 		s->last_vehicle = o->last_vehicle;
 	} while (s++,o++,--num);
