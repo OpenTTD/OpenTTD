@@ -16,6 +16,10 @@
 #include "table/animcursors.h"
 
 
+/* Min/Max date for scenario editor */
+static const uint MinDate = 0;     // 1920-01-01
+static const uint MaxDate = 29220; // 2000-01-01
+
 extern void DoTestSave();
 extern void DoTestLoad();
 
@@ -859,9 +863,8 @@ static void ToolbarScenDateBackward(Window *w)
 		HandleButtonClick(w, 6);
 		InvalidateWidget(w, 5);
 
-		if (_date > 0x2ACE) {
+		if (_date > MinDate)
 			SetDate(ConvertYMDToDay(_cur_year - 1, 0, 1));
-		}
 	}
 	_left_button_clicked = false;
 }
@@ -873,9 +876,8 @@ static void ToolbarScenDateForward(Window *w)
 		HandleButtonClick(w, 7);
 		InvalidateWidget(w, 5);
 
-		if (_date < 0x4E79) {
+		if (_date < MaxDate)
 			SetDate(ConvertYMDToDay(_cur_year + 1, 0, 1));
-		}
 	}
 	_left_button_clicked = false;
 }
@@ -1864,6 +1866,16 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT:
+		/* XXX look for better place for these */
+		if (_date <= MinDate)
+			SETBIT(w->disabled_state, 6);
+		else
+			CLRBIT(w->disabled_state, 6);
+		if (_date >= MaxDate)
+			SETBIT(w->disabled_state, 7);
+		else
+			CLRBIT(w->disabled_state, 7);
+
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
