@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Svårighetsgrad
 STR_02C6_DIFFICULTY_SETTINGS					:Svårighetsgrad
 STR_02C7_CONFIG_PATCHES						:Konfigurera patchar
 STR_02C8_CONFIG_PATCHES						:Konfigurera patchar
+STR_NEWGRF_SETTINGS						:Newgrf inställningar
+STR_NEWGRF_SETTINGS2						:Newgrf inställningar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Stadsnamn visas
@@ -1042,6 +1044,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position av verktygsraden: {ORANGE}{
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vänster
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centrerad
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Höger
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Fönster snäpp radie: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Fönster snäpp radie: {ORANGE}avaktiverad
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
@@ -1083,6 +1087,8 @@ STR_WAYPOINTNAME_CITY						:Kontrollstation {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollstation {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Kontrollpunkt
 
+STR_WAYPOINT							:{WHITE}Vägpunkt
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Välj vägpunkts typ
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -2596,3 +2602,10 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mängden pengar på hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du ett stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totalt antal poäng utav möjligt antal poäng
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf inställningar
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Spara ändringar
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Parametrar
+STR_NEWGRF_TIP							:{BLACK}En lista av alla Newgrf som du har installerade. Clicka på en för att ändra inställningar.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Det finns för närvarande inga newgrf filer installerade! Vänligen kolla manualen hur man installerar ny grafik.
+STR_NEWGRF_FILENAME						:{BLACK}Filnamn:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:

@@ -1,2 +1,250 @@
 ##name Latvian
 ##ownname Latvie¨u valoda
+
+##id 0x0000
+STR_NULL							:
+STR_0001_OFF_EDGE_OF_MAP					:{WHITE}&#256;rpus kartes robežas
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}P&#257;r&#257;k tuvu kartes malai
+STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Nav diezgan naudas - vajag {CURRENCY}
+STR_0004							:{WHITE}{CURRENCY64}
+STR_0005							:{RED}{CURRENCY64}
+STR_EMPTY							:
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Zemei j&#257;b&#363;t plakanai
+STR_0008_WAITING						:{BLACK}Gaidam: {WHITE}{STRING}
+STR_0009							:{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (ce&#316;&#257; no
+STR_000B							:{YELLOW}{STATION})
+STR_000C_ACCEPTS						:{BLACK}Pie&#326;em: {WHITE}
+STR_000D_ACCEPTS						:{BLACK}Pie&#326;em: {GOLD}
+STR_000E							:
+STR_000F_PASSENGERS						:Pasažieri
+STR_0010_COAL							:Ogle
+STR_0011_MAIL							:Pasts
+STR_0012_OIL							:Nafta
+STR_0013_LIVESTOCK						:Liellopi
+STR_0014_GOODS							:Preces
+STR_0015_GRAIN							:Graudi
+STR_0016_WOOD							:Kokmatere&#257;li
+STR_0017_IRON_ORE						:Dzelzs r&#363;da
+STR_0018_STEEL							:T&#275;rauds
+STR_0019_VALUABLES						:V&#275;rtspap&#299;ri
+STR_001A_COPPER_ORE						:Vara r&#363;da
+STR_001B_MAIZE							:Kukur&#363;za
+STR_001C_FRUIT							:Aug&#316;i
+STR_001D_DIAMONDS						:Dimanti
+STR_001E_FOOD							:P&#257;rtika
+STR_001F_PAPER							:Pap&#299;rs
+STR_0020_GOLD							:Zelts
+STR_0021_WATER							:&#362;dens
+STR_0022_WHEAT							:Kvieši
+STR_0023_RUBBER							:Gumija
+STR_0024_SUGAR							:Cukurs
+STR_0025_TOYS							:Rota&#316;lietas
+STR_0026_CANDY							:Saldumi
+STR_0027_COLA							:Kola
+STR_0028_COTTON_CANDY						:Cukurvate
+STR_0029_BUBBLES						:Burbu&#316;i
+STR_002A_TOFFEE							:Cukurpl&#257;ksnes
+STR_002B_BATTERIES						:Baterijas
+STR_002C_PLASTIC						:Plastmasa
+STR_002D_FIZZY_DRINKS						:Burbu&#316;&#363;de&#326;i
+STR_002E							:
+STR_002F_PASSENGER						:Pasažieris
+STR_0030_COAL							:Ogle
+STR_0031_MAIL							:Pasts
+
+
+
+
+
+
+############ range for menu	starts
+############ range for menu	ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days	starts
+############ range for days	ends
+
+
+############ range for cargo acecpted starts
+############ range for cargo acecpted ends
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ end network gui strings
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+

@@ -735,8 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Vanskelighetsgrad
 STR_02C6_DIFFICULTY_SETTINGS					:Vanskelighetsgrad
 STR_02C7_CONFIG_PATCHES						:Konfigurer andre valg
 STR_02C8_CONFIG_PATCHES						:Konfigurer andre valg
-STR_NEWGRF_SETTINGS						:Ny grafikk instillinger
-STR_NEWGRF_SETTINGS2						:Ny grafikk instillinger
+STR_NEWGRF_SETTINGS						:Innstillinger for ny grafikk
+STR_NEWGRF_SETTINGS2						:Innstillinger for ny grafikk
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Vis bynavn
@@ -1088,7 +1088,7 @@ STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollpunkt {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Kontrollpunkt
 
 STR_WAYPOINT							:{WHITE}Sjekkpunkt
-STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Velg sjekkpunkt type
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Velg sjekkpunkttype
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -2602,10 +2602,9 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mengd penger på hånden.
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et høyt lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total poeng av mulige poeng
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Ny grafikk instillinger
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Bruk forandringene
-STR_NEWGRF_SET_PARAMETERS					:{BLACK}Sett parameter
-STR_NEWGRF_TIP							:{BLACK}En liste med alle Nye grafikkpakkene du har installert. Klikk på en pakke for å forandre innstillingene.
-STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Vær venlig å les manualen for instruksjoner for å installere nye grafikker
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Sett parametre
+STR_NEWGRF_TIP							:{BLACK}En liste over alle de nye grafikkpakkene du har installert. Klikk på en pakke for å forandre innstillingene.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Manualen inneholder instruksjoner for installering av ny grafikk
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:

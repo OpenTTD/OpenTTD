@@ -2602,7 +2602,6 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Quantité d'argent disponible.
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Avez-vous un emprunt élevé ?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total des points par rapport aux points possibles.
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Paramètres Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Appliquer les changements
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Changer les paramètres
 STR_NEWGRF_TIP							:{BLACK}Une liste de tous les sets Newgrf que vous avez installé. Cliquez un set pour changer les paramètres.

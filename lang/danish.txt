@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Sværhedsgrad
 STR_02C6_DIFFICULTY_SETTINGS					:Sværhedsgrad
 STR_02C7_CONFIG_PATCHES						:Indstil patches
 STR_02C8_CONFIG_PATCHES						:Indstil patches
+STR_NEWGRF_SETTINGS						:Newgrf indstillinger
+STR_NEWGRF_SETTINGS2						:Newgrf indstillinger
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bynavne vist
@@ -2586,3 +2588,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total points out of possible points
 
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Anvend ændringer
+STR_NEWGRF_TIP							:{BLACK}Liste med alle Newgrf sæt du har installeret. Marker et sæt for at ændre indstilliger.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
+STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:

@@ -2602,7 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Dinheiro 'em mãos'
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total de pontos sobre o máximo de pontos
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Definições Newgrf
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Definir parâmetros
 STR_NEWGRF_TIP							:{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.

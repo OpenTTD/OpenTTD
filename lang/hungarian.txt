@@ -2602,7 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Elérhetõ készpénz
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Magas kölcsönöd van?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Megszerzett pontok az elérhetõ pontokból
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Newgrf beállítások
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf beállítások
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Alkalmazás
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Paraméterek beállítása
 STR_NEWGRF_TIP							:{BLACK}Az általad felinstallált newgrf csomagok listája. Kattints a csomagra a beállítások módosításához.

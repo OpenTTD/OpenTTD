@@ -2602,7 +2602,6 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Hoeveelheid contant geld
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Heb je een hoge lening?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totaal aantal punten uit de mogelijke punten
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Newgrf instellingen
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Wijzigingen doorvoeren
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Stel parameters in
 STR_NEWGRF_TIP							:{BLACK}Een lijst van alle geïnstalleerde Newgrf sets. Klik op een set om de instellingen te wijzigen.

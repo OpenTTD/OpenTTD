@@ -2602,7 +2602,6 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Soucasna hotovost spolecnosti
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Mas velký dluh?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Celkový pocet bodu z 1000 moznych
 
-STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Nastavení nových grafických souboru
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Potvrdit zmeny
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Nastavit parametry
 STR_NEWGRF_TIP							:{BLACK}Tady je seznam vsech nainstalovaných grafických setu. Nastavení zmenite kliknutím na set.

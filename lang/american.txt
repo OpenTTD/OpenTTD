@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Difficulty settings
 STR_02C6_DIFFICULTY_SETTINGS					:Difficulty settings
 STR_02C7_CONFIG_PATCHES						:Configure patches
 STR_02C8_CONFIG_PATCHES						:Configure patches
+STR_NEWGRF_SETTINGS						:Newgrf settings
+STR_NEWGRF_SETTINGS2						:Newgrf settings
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Town names displayed
@@ -883,7 +885,7 @@ STR_CURR_CZK							:Czech Koruna (CZK)
 STR_CURR_ISK							:Icelandic Krona (ISK)
 STR_CURR_NOK							:Norwegian Krone (NOK)
 STR_CURR_ROL							:Romanian Leu (Lei)
-STR_CURR_EUR							:Euro (¤)
+STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Language
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1042,6 +1044,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{S
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Left
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Right
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Window snap radius: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Window snap radius: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Construction
@@ -1083,6 +1087,8 @@ STR_WAYPOINTNAME_CITY						:Waypoint {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Waypoint {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Waypoint
 
+STR_WAYPOINT							:{WHITE}Waypoint
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Select waypoint type
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -2596,3 +2602,9 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Do you have a high loan?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total points out of possible points
 
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Apply changes
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Set parameters
+STR_NEWGRF_TIP							:{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions to install new graphics.
+STR_NEWGRF_FILENAME						:{BLACK}Filename:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:

@@ -732,6 +732,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Erfiðleikastig
 STR_02C6_DIFFICULTY_SETTINGS					:Erfiðleikastig
 STR_02C7_CONFIG_PATCHES						:Auka stillingar
 STR_02C8_CONFIG_PATCHES						:Auka stillingar
+STR_NEWGRF_SETTINGS						:Newgrf stillingar
+STR_NEWGRF_SETTINGS2						:Newgrf stillingar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bæjarnöfn sýnd
@@ -1000,6 +1002,10 @@ STR_CONFIG_PATCHES_MAX_ROADVEH					:{LTBLUE}Birfreiðir á leikmann mest: {ORANGE}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT					:{LTBLUE}Flugvélar á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS					:{LTBLUE}Skip á leikmann mest: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Útiloka lestir fyrir tölvu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Útiloka bifreiðir fyrir tölvu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Útiloka flugvélar fyrir tölvu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Útiloka skip fyrir tölvu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Virkja nýja gervigreind (alfa): {ORANGE}{STRING}
 
