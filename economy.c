@@ -1514,6 +1514,10 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
 
+	/* Those lines are here for network-protection (clients can be slow) */
+	if (GetAmountOwnedBy(p, _current_player) == 0)
+		return 0;
+
 	/* adjust it a little to make it less profitable to sell and buy */
 	cost = CalculateCompanyValue(p) >> 2;
 	cost = -(cost - (cost >> 7));
