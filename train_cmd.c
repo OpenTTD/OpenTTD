@@ -62,6 +62,25 @@ enum AccelType {
 	AM_BRAKE
 };
 
+static bool TrainShouldStop(Vehicle *v, TileIndex tile)
+{
+	Order *o = &v->current_order;
+	assert(v->type == VEH_Train);
+	assert(IsTileType(v->tile, MP_STATION));
+	//When does a train drive through a station
+	//first we deal with the "new nonstop handling"
+	if ( _patches.new_nonstop && o->flags & OF_NON_STOP && _map2[tile] == o->station )
+		return false;
+
+	if (v->last_station_visited == _map2[tile])
+		return false;
+
+	if ( _map2[tile] != o->station && (o->flags & OF_NON_STOP || _patches.new_nonstop))
+		return false;
+
+	return true;
+}
+
 //new acceleration
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
@@ -137,7 +156,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			{0, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 0}, {1, 0}, {0, 0}, {0, -1}
 		};
 
-		if (((v->current_order.station == _map2[v->tile]) || !(v->current_order.flags & OF_NON_STOP)) && v->last_station_visited != _map2[v->tile]) {
+		if (TrainShouldStop(v, v->tile)) {
 			int station_length = 0;
 			TileIndex tile = v->tile;
 			int delta_v;
