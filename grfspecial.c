@@ -1212,6 +1212,13 @@ static void NewSpriteGroup(byte *buf, int len)
 		rg->groups = calloc(rg->num_groups, sizeof(*rg->groups));
 		for (i = 0; i < rg->num_groups; i++) {
 			uint16 groupid = grf_load_word(&buf);
+
+			if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+				/* This doesn't exist for us. */
+				i--;
+				rg->num_groups--;
+				continue;
+			}
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
 			rg->groups[i] = _cur_grffile->spritegroups[groupid];
