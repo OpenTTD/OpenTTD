@@ -100,7 +100,7 @@ void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
-static int32 EstimateRoadVehCost(byte engine_type)
+int32 EstimateRoadVehCost(byte engine_type)
 {
 	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
 }
@@ -1379,7 +1379,7 @@ void RoadVehEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	MaybeRenewVehicle(v, EstimateRoadVehCost(v->engine_type));
+	MaybeRenewVehicle(v);
 
 	VehicleServiceInDepot(v);
 

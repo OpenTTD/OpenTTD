@@ -364,7 +364,7 @@ static const byte _railveh_score[] = {
 };
 
 
-static int32 EstimateTrainCost(const RailVehicleInfo *rvi)
+int32 EstimateTrainCost(const RailVehicleInfo *rvi)
 {
 	return (rvi->base_cost * (_price.build_railvehicle >> 3)) >> 5;
 }
@@ -2618,7 +2618,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 	v->load_unload_time_rem = 0;
 	v->cur_speed = 0;
 
-	MaybeRenewVehicle(v, EstimateTrainCost(RailVehInfo(v->engine_type)));
+	MaybeRenewVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

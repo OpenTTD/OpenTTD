@@ -100,7 +100,7 @@ static bool AllocateVehicles(Vehicle **vl, int num)
 	return success;
 }
 
-static int32 EstimateAircraftCost(uint16 engine_type)
+int32 EstimateAircraftCost(uint16 engine_type)
 {
 	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;
 }
@@ -1157,7 +1157,7 @@ static void AircraftEnterHangar(Vehicle *v)
 
 	ServiceAircraft(v);
 
-	MaybeRenewVehicle(v, EstimateAircraftCost(v->engine_type));
+	MaybeRenewVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

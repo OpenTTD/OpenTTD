@@ -387,7 +387,7 @@ static bool ShipAccelerate(Vehicle *v)
 }
 
 
-static int32 EstimateShipCost(uint16 engine_type);
+int32 EstimateShipCost(uint16 engine_type);
 
 static void ShipEnterDepot(Vehicle *v)
 {
@@ -400,7 +400,7 @@ static void ShipEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	MaybeRenewVehicle(v, EstimateShipCost(v->engine_type));
+	MaybeRenewVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
@@ -680,7 +680,7 @@ static void ShipController(Vehicle *v)
 
 					/* Process station in the schedule. Don't do that for buoys (HVOT_BUOY) */
 					st = DEREF_STATION(v->current_order.station);
-					if (!(st->had_vehicle_of_type & HVOT_BUOY) 
+					if (!(st->had_vehicle_of_type & HVOT_BUOY)
 							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
 						v->current_order.type = OT_LOADING;
 						v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
@@ -796,7 +796,7 @@ void ShipsYearlyLoop()
 	}
 }
 
-static int32 EstimateShipCost(uint16 engine_type)
+int32 EstimateShipCost(uint16 engine_type)
 {
 	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
 }

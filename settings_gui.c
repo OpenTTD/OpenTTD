@@ -624,9 +624,9 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, "never_expire_vehicles", &_patches.never_expire_vehicles,0,0,0, NULL},
 
 	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, "lost_train_days", &_patches.lost_train_days,	180,720, 60, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,"autorenew", &_patches.autorenew,								0,  0,  0, NULL},
-	{PE_INT16,	0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, "autorenew_months", &_patches.autorenew_months,				-12, 12,  1, NULL},
-	{PE_CURRENCY, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,"autorenew_money", &_patches.autorenew_money,					0, 2000000, 100000, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,"autorenew", &_patches.autorenew,								0,  0,  0, NULL},
+	{PE_INT16,	PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, "autorenew_months", &_patches.autorenew_months,				-12, 12,  1, NULL},
+	{PE_CURRENCY, PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONEY,"autorenew_money", &_patches.autorenew_money,					0, 2000000, 100000, NULL},
 
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,240, 10, NULL},
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,240, 10, NULL},
@@ -700,7 +700,7 @@ static int32 ReadPE(const PatchEntry*pe)
 	case PE_INT16:  return *(int16*)pe->variable;
 	case PE_UINT16: return *(uint16*)pe->variable;
 	case PE_INT32:  return *(int32*)pe->variable;
-	case PE_CURRENCY:  return (*(int64*)pe->variable) * GetCurrentCurrencyRate();
+	case PE_CURRENCY:  return (*(int32*)pe->variable) * GetCurrentCurrencyRate();
 	default:
 		NOT_REACHED();
 	}
@@ -744,20 +744,13 @@ static void WritePE(const PatchEntry *pe, int32 val)
 									*(uint16*)pe->variable = (uint16)val;
 								break;
 
+	case PE_CURRENCY:
 	case PE_INT32: if ((int32)val > (int32)pe->max)
 									*(int32*)pe->variable = (int32)pe->max;
 								else if ((int32)val < (int32)pe->min)
 									*(int32*)pe->variable = (int32)pe->min;
 								else
 									*(int32*)pe->variable = val;
-								break;
-
-	case PE_CURRENCY: if ((int64)val > (int64)pe->max)
-									*(int64*)pe->variable = (int64)pe->max;
-								else if ((int64)val < (int64)pe->min)
-									*(int64*)pe->variable = (int64)pe->min;
-								else
-									*(int64*)pe->variable = val;
 								break;
 	default:
 		NOT_REACHED();
@@ -1400,7 +1393,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 				}
 			break;
 		}
-		
+
 		if(edittext) {
 			WP(w,def_d).data_2 = line;
 			ShowQueryString(
@@ -1412,7 +1405,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			w->window_number);
 			if (str !=  STR_CONFIG_PATCHES_INT32) DeleteName(str);
 		}
-		
+
 		w->flags4 |= 5 << WF_TIMEOUT_SHL;
 		SetWindowDirty(w);
 	} break;
@@ -1444,8 +1437,8 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 				break;
 			}
 		MarkWholeScreenDirty();
-			
-		
+
+
 	} break;
 
 	case WE_TIMEOUT:

@@ -822,6 +822,10 @@ static const SettingDesc patch_player_settings[] = {
 
 	{"window_snap_radius",  SDT_UINT8,  (void*)10,    &_patches.window_snap_radius,   NULL},
 
+	{"autorenew",						SDT_BOOL,		(void*)false,	&_patches.autorenew,						NULL},
+	{"autorenew_months",		SDT_INT16,	(void*)-6,		&_patches.autorenew_months,			NULL},
+	{"autorenew_money",			SDT_INT32,	(void*)100000,&_patches.autorenew_money,			NULL},
+
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 
@@ -869,10 +873,6 @@ const SettingDesc patch_settings[] = {
 	{"servint_roadveh",			SDT_UINT16, (void*)150,		&_patches.servint_roadveh,			NULL},
 	{"servint_ships",				SDT_UINT16, (void*)360,		&_patches.servint_ships,				NULL},
 	{"servint_aircraft",		SDT_UINT16, (void*)100,		&_patches.servint_aircraft,			NULL},
-
-	{"autorenew",						SDT_BOOL,		(void*)false,	&_patches.autorenew,						NULL},
-	{"autorenew_months",		SDT_INT16,	(void*)-6,		&_patches.autorenew_months,			NULL},
-	{"autorenew_money",			SDT_INT32,	(void*)100000,&_patches.autorenew_money,			NULL},
 
 	{"new_pathfinding",			SDT_BOOL,		(void*)true,	&_patches.new_pathfinding,			NULL},
 	{"pf_maxlength",				SDT_UINT16, (void*)512,		&_patches.pf_maxlength,					NULL},

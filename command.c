@@ -167,6 +167,8 @@ DEF_COMMAND(CmdStartScenario);
 
 DEF_COMMAND(CmdBuildManySignals);
 
+DEF_COMMAND(CmdRenewVehicle);
+
 /* The master command table */
 static CommandProc * const _command_proc_table[] = {
 	CmdBuildRailroadTrack,				/* 0  */
@@ -307,6 +309,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdDestroyCompanyHQ,					/* 111 */
 	CmdGiveMoney,									/* 112 */
 	CmdChangePatchSetting,				/* 113 */
+	CmdRenewVehicle,							/* 114 */
 };
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)

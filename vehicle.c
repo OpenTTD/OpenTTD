@@ -25,8 +25,8 @@ void VehicleServiceInDepot(Vehicle *v)
 
 bool VehicleNeedsService(const Vehicle *v)
 {
-	return _patches.servint_ispercent ? 
-		(v->reliability < _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) : 
+	return _patches.servint_ispercent ?
+		(v->reliability < _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) :
 		(v->date_of_last_service + v->service_interval < _date);
 }
 
@@ -1358,6 +1358,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
 	if (v->owner != _local_player)
 		return;
+
 	// Do not show getting-old message if autorenew is active
 	if (_patches.autorenew)
 		return;
@@ -1389,9 +1390,89 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
-void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
+extern int32 EstimateTrainCost(const RailVehicleInfo *rvi);
+extern int32 EstimateRoadVehCost(byte engine_type);
+extern int32 EstimateShipCost(uint16 engine_type);
+extern int32 EstimateAircraftCost(uint16 engine_type);
+
+/* Renews a vehicle
+    p1 - Index of vehicle
+    p2 - Type of new engine */
+int32 CmdRenewVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Engine *e;
+	byte new_engine_type = p2;
+	Vehicle *v = DEREF_VEHICLE(p1);
+	int cost, build_cost;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+
+	switch (v->type) {
+		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(v->engine_type)); break;
+		case VEH_Road:     build_cost = EstimateRoadVehCost(new_engine_type);           break;
+		case VEH_Ship:     build_cost = EstimateShipCost(v->engine_type);               break;
+		case VEH_Aircraft: build_cost = EstimateAircraftCost(new_engine_type);          break;
+		default: return CMD_ERROR;
+	}
+
+	/* In a rare situation, when 2 clients are connected to 1 company and have the same
+	    settings, a vehicle can be replaced twice.. check if this is the situation here */
+	if (v->age == 0)
+		return CMD_ERROR;
+
+	/* Check if there is money for the upgrade.. if not, give a nice news-item
+	    (that is needed, because this CMD is called automaticly) */
+	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
+		if (_local_player == v->owner) {
+			int message;
+			SetDParam(0, v->unitnumber);
+			switch (v->type) {
+				case VEH_Train:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
+				case VEH_Road:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+				case VEH_Ship:     message = STR_SHIP_AUTORENEW_FAILED;        break;
+				case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
+				// This should never happen
+				default: message = 0; break;
+			}
+
+			AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+		}
+
+		return CMD_ERROR;
+	}
+
+	cost = build_cost - v->value;
+
+	if (flags & DC_QUERY_COST)
+		return cost;
+
+	if (flags & DC_EXEC) {
+		Engine *e;
+
+		/* We do not really buy a new vehicle, we upgrade the old one */
+		if (v->engine_type != new_engine_type) {
+			/* XXX - We need to do some more stuff here, when we are going to upgrade
+			    to a new engine! */
+		}
+		e = &_engines[new_engine_type];
+		v->reliability = e->reliability;
+		v->reliability_spd_dec = e->reliability_spd_dec;
+		v->age = 0;
+
+		v->date_of_last_service = _date;
+		v->build_year = _cur_year;
+
+		v->value = build_cost;
+
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	}
+
+	return cost;
+}
+
+void MaybeRenewVehicle(Vehicle *v)
+{
+	if (v->owner != _local_player)
+		return;
 
 	// A vehicle is autorenewed when it it gets the amount of months
 	//  give by _patches.autorenew_months away for his max age.
@@ -1400,42 +1481,8 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30))
 		return;
 
-	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
-		if (v->owner == _local_player) {
-			int message;
-			SetDParam(0, v->unitnumber);
-			switch (v->type) {
-				case VEH_Train: message = STR_TRAIN_AUTORENEW_FAILED; break;
-				case VEH_Road: message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
-				case VEH_Ship: message = STR_SHIP_AUTORENEW_FAILED; break;
-				case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED; break;
-				// This should never happen
-				default: message = 0; break;
-			}
-
-			AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
-		}
-		return;
-	}
-
-	// Withdraw the money from the right player ;)
-	_current_player = v->owner;
-
-	e = &_engines[v->engine_type];
-	v->reliability = e->reliability;
-	v->reliability_spd_dec = e->reliability_spd_dec;
-	v->age = 0;
-
-	v->date_of_last_service = _date;
-	v->build_year = _cur_year;
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	SubtractMoneyFromPlayer(build_cost - v->value);
-	v->value = build_cost;
-
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	_current_player = OWNER_NONE;
+	/* Now renew the vehicle */
+	DoCommandP(v->tile, v->index, v->engine_type, NULL, CMD_RENEW_VEHICLE);
 }
 
 
