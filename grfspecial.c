@@ -559,6 +559,111 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	return ret;
 }
 
+static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+{
+	AircraftVehicleInfo *avi = &_aircraft_vehicle_info[engine];
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	//printf("e %x prop %x?\n", engine, prop);
+	switch (prop) {
+		case 0x08: {	/* Sprite ID */
+			FOR_EACH_ENGINE {
+				uint8 spriteid = grf_load_byte(&buf);
+
+				if (spriteid == 0xFF)
+					spriteid = 0xFD; // ships have different custom id in the GRF file
+
+				// This is currently not used but there's no reason
+				// in not having it here for the future.
+				if (spriteid == 0xFD && avi[i].image_index != 0xFD)
+					_engine_original_sprites[AIRCRAFT_ENGINES_INDEX + engine + i] = avi[i].image_index;
+
+				avi[i].image_index = spriteid;
+			}
+		}	break;
+		case 0x09: {	/* Helicopter */
+			FOR_EACH_ENGINE {
+				uint8 heli = grf_load_byte(&buf);
+
+				avi[i].subtype = (heli == 0) ? 0 : 1;
+			}
+		}	break;
+		case 0x0A: {	/* Large */
+			FOR_EACH_ENGINE {
+				uint8 large = grf_load_byte(&buf);
+
+				avi[i].subtype = (large == 1) ? 3 : 1;
+			}
+		}	break;
+		case 0x0B: {	/* Cost factor */
+			FOR_EACH_ENGINE {
+				uint8 cost_factor = grf_load_byte(&buf);
+
+				avi[i].base_cost = cost_factor; // ?? is it base_cost?
+			}
+		}	break;
+		case 0x0C: {	/* Speed */
+			FOR_EACH_ENGINE {
+				uint8 speed = grf_load_byte(&buf);
+
+				avi[i].max_speed = speed; // ?? units
+			}
+		}	break;
+		case 0x0D: {	/* Acceleration */
+			FOR_EACH_ENGINE {
+				uint8 accel = grf_load_byte(&buf);
+
+				avi[i].acceleration = accel;
+			}
+		} break;
+		case 0x0E: {	/* Running cost factor */
+			FOR_EACH_ENGINE {
+				uint8 runcost = grf_load_byte(&buf);
+
+				avi[i].running_cost = runcost;
+			}
+		} break;
+		case 0x0F: {	/* Passenger capacity */
+			FOR_EACH_ENGINE {
+				uint16 capacity = grf_load_word(&buf);
+
+				avi[i].passanger_capacity = capacity;
+			}
+		}	break;
+		case 0x11: {	/* Mail capacity */
+			FOR_EACH_ENGINE {
+				uint8 capacity = grf_load_byte(&buf);
+
+				avi[i].mail_capacity = capacity;
+			}
+		}	break;
+		case 0x12: {	/* SFX */
+			FOR_EACH_ENGINE {
+				uint8 sfx = grf_load_byte(&buf);
+
+				avi[i].sfx = sfx;
+			}
+		}	break;
+		case 0x13: {	/* Cargos available for refitting */
+			FOR_EACH_ENGINE {
+				uint32 refit_mask = grf_load_dword(&buf);
+
+				_engine_refit_masks[AIRCRAFT_ENGINES_INDEX + engine + i] = refit_mask;
+			}
+		}	break;
+		case 0x14: { /* Callback TODO */
+			ret = true;
+		}	break;
+		default:
+			ret = true;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 #undef shift_buf
 
 /* Action 0x00 */
@@ -578,13 +683,13 @@ static void VehicleChangeInfo(byte *buf, int len)
 	 *                 vehicles/stations will be changed
 	 * B property      what property to change, depends on the feature
 	 * V new-info      new bytes of info (variable size; depends on properties) */
-	/* TODO: Only trains and ships are supported for now. */
+	/* TODO: Stations. */
 
 	static const VCI_Handler handler[5] = {
 		/* GSF_TRAIN */    RailVehicleChangeInfo,
 		/* GSF_ROAD */     RoadVehicleChangeInfo,
 		/* GSF_SHIP */     ShipVehicleChangeInfo,
-		/* GSF_AIRCRAFT */ NULL,
+		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
 		/* GSF_STATION */  NULL,
 	};
 
@@ -603,8 +708,8 @@ static void VehicleChangeInfo(byte *buf, int len)
 	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
 
-	if (feature != GSF_TRAIN && feature != GSF_ROAD && feature != GSF_SHIP) {
-		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported vehicle type %x, skipping.", feature);
+	if (feature == GSF_STATION) {
+		grfmsg(GMS_WARN, "VehicleChangeInfo: Stations unsupported, skipping.");
 		return;
 	}
 

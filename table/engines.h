@@ -407,7 +407,7 @@ ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES] = {
 	{  0, 144, 80,  CT_GOODS,      190, 113, SND_06_SHIP_HORN,  1 }, /* 10 */
 };
 
-/* subtype: 0: chopper; 1: regular aircraft; 2: crashes easily on small airports */
+/* subtype: &1: regular aircraft (else chopper); &2: crashes easily on small airports */
 /* sfx from somewhere around SND_45_PLANE_CRASHING are toyland plane-sounds */
 AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 	// image_index         sfx                         acceleration

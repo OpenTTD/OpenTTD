@@ -10,12 +10,6 @@
 #include "viewport.h"
 #include "player.h"
 
-extern const byte _aircraft_cost_table[NUM_AIRCRAFT_ENGINES];
-extern const byte _aircraft_speed[NUM_AIRCRAFT_ENGINES];
-extern const uint16 _aircraft_num_pass[NUM_AIRCRAFT_ENGINES];
-extern const byte _aircraft_num_mail[NUM_AIRCRAFT_ENGINES];
-extern const byte _aircraft_running_cost[NUM_AIRCRAFT_ENGINES];
-
 
 static void DrawAircraftImage(Vehicle *v, int x, int y, VehicleID selection)
 {
@@ -95,11 +89,11 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			if (selected_id != -1) {
 				Engine *e;
 
-				SET_DPARAM32(0, _aircraft_cost_table[selected_id - AIRCRAFT_ENGINES_INDEX] * (_price.aircraft_base>>3)>>5);
-				SET_DPARAM16(1, _aircraft_speed[selected_id - AIRCRAFT_ENGINES_INDEX] * 8);
-				SET_DPARAM16(2, _aircraft_num_pass[selected_id - AIRCRAFT_ENGINES_INDEX]);
-				SET_DPARAM16(3, _aircraft_num_mail[selected_id - AIRCRAFT_ENGINES_INDEX]);
-				SET_DPARAM32(4,_aircraft_running_cost[selected_id - AIRCRAFT_ENGINES_INDEX] * _price.aircraft_running >> 8);
+				SET_DPARAM32(0, aircraft_vehinfo(selected_id).base_cost * (_price.aircraft_base>>3)>>5);
+				SET_DPARAM16(1, aircraft_vehinfo(selected_id).max_speed * 8);
+				SET_DPARAM16(2, aircraft_vehinfo(selected_id).passanger_capacity);
+				SET_DPARAM16(3, aircraft_vehinfo(selected_id).mail_capacity);
+				SET_DPARAM32(4, aircraft_vehinfo(selected_id).running_cost * _price.aircraft_running >> 8);
 
 				e = &_engines[selected_id];
 				SET_DPARAM16(6, e->lifelength);
@@ -219,6 +213,8 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 
 		DrawString(1, 15, STR_A040_SELECT_CARGO_TYPE_TO_CARRY, 0);
 
+		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
+
 		cargo = -1;
 		x = 6;
 		y = 25;
@@ -331,7 +327,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			}
 			SET_DPARAM16(0, str);
 			SET_DPARAM16(2, v->max_age / 366);
-			SET_DPARAM32(3, _price.aircraft_running * _aircraft_running_cost[v->engine_type - AIRCRAFT_ENGINES_INDEX] >> 8);
+			SET_DPARAM32(3, _price.aircraft_running * aircraft_vehinfo(v->engine_type).running_cost >> 8);
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);
 		}
 
