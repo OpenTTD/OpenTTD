@@ -142,7 +142,7 @@ static void DrawGraph(GraphDrawer *gw)
 		x = gw->left + 44;
 		y = gw->top + gw->height + 1;
 		j = gw->month;
-		k = gw->year + 1920;
+		k = gw->year + MAX_YEAR_BEGIN_REAL;
 		i = gw->num_on_x_axis;assert(i>0);
 		do {
 			SetDParam(2, k);

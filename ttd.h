@@ -42,6 +42,9 @@ typedef struct YearMonthDay {
 * * 1 day is thus about 2 seconds (74*27 = 1998) on a machine that can run OpenTTD normally
 */
 #define DAY_TICKS 74
+#define MAX_YEAR_BEGIN_REAL 1920
+#define MAX_YEAR_END_REAL 2090
+#define MAX_YEAR_END 170
 
 #include "macros.h"
 

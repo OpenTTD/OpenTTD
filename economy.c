@@ -26,8 +26,8 @@ uint GetMaskOfAllowedCurrencies(void)
 	for (i = 0; i != lengthof(_currency_specs); i++) {
 		uint16 to_euro = _currency_specs[i].to_euro;
 		if (i == 23) mask |= (1 << 23); // always allow custom currency
-		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-1920)) continue;
-		if (_cur_year < (2000-1920) && (to_euro == CF_ISEURO)) continue;
+		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-MAX_YEAR_BEGIN_REAL)) continue;
+		if (_cur_year < (2000-MAX_YEAR_BEGIN_REAL) && (to_euro == CF_ISEURO)) continue;
 		mask |= (1 << i);
 	}
 	return mask;
@@ -37,7 +37,7 @@ void CheckSwitchToEuro(void)
 {
 	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
-			_cur_year >= (_currency_specs[_opt.currency].to_euro-1920)) {
+			_cur_year >= (_currency_specs[_opt.currency].to_euro-MAX_YEAR_BEGIN_REAL)) {
 		_opt.currency = 2; // this is the index of euro above.
 		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
 	}

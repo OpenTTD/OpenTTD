@@ -746,7 +746,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			DeleteName(str);
 			y += 10;
 
-			SetDParam(0, _network_player_info[_selected_company_item].inaugurated_year + 1920);
+			SetDParam(0, _network_player_info[_selected_company_item].inaugurated_year + MAX_YEAR_BEGIN_REAL);
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, 2); // inauguration year
 			y += 10;
 

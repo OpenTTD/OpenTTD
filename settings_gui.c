@@ -682,7 +682,7 @@ static const PatchEntry _patches_economy[] = {
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	"snow_line_height", &_patches.snow_line_height,					2, 13,  1, NULL},
 
 	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, "colored_new_data", &_patches.colored_news_date, 1900, 2200, 5, NULL},
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 1920,2100, 1, NULL},
+	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 1920, MAX_YEAR_END_REAL, 1, NULL},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		"smooth_economy", &_patches.smooth_economy,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_ALLOW_SHARES,			"allow_shares", &_patches.allow_shares,						0,  0,  0, NULL},
@@ -1403,7 +1403,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					} else {
 						if(_currency_specs[23].to_euro == 0) _currency_specs[23].to_euro = 2000;
 						else _currency_specs[23].to_euro++;
-						_currency_specs[23].to_euro = min(2090, _currency_specs[23].to_euro);
+						_currency_specs[23].to_euro = min(MAX_YEAR_END_REAL, _currency_specs[23].to_euro);
 						WP(w,def_d).data_1 = (1 << (line * 2 + 1));
 					}
 				} else { // enter text
@@ -1452,7 +1452,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 				break;
 				case 4:
 					val = atoi(b);
-					val = clamp(val, 1999, 2090);
+					val = clamp(val, 1999, MAX_YEAR_END_REAL);
 					if (val == 1999) val = 0;
 					_currency_specs[23].to_euro = val;
 				break;

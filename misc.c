@@ -443,7 +443,7 @@ uint ConvertYMDToDay(uint year, uint month, uint day)
 }
 
 // convert a date on the form
-// 1920 - 2090
+// 1920 - 2090 (MAX_YEAR_END_REAL)
 // 192001 - 209012
 // 19200101 - 20901231
 // or if > 2090 and below 65536, treat it as a daycount
@@ -452,7 +452,7 @@ uint ConvertIntDate(uint date)
 {
 	uint year, month = 0, day = 1;
 
-	if (IS_INT_INSIDE(date, 1920, 2090 + 1)) {
+	if (IS_INT_INSIDE(date, 1920, MAX_YEAR_END_REAL + 1)) {
 		year = date - 1920;
 	} else if (IS_INT_INSIDE(date, 192001, 209012+1)) {
 		month = date % 100 - 1;
@@ -700,10 +700,10 @@ void IncreaseDate()
 		NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */
 
-	/* check if we reached 2090, that's the maximum year. */
-	if (_cur_year == 171) {
+	/* check if we reached 2090 (MAX_YEAR_END_REAL), that's the maximum year. */
+	if (_cur_year == (MAX_YEAR_END + 1)) {
 		Vehicle *v;
-		_cur_year = 170;
+		_cur_year = MAX_YEAR_END;
 		_date = 62093;
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service -= 365; // 1 year is 365 days long

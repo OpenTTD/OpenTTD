@@ -25,7 +25,7 @@
 
 
 /* Min/Max date for scenario editor */
-static const uint MinDate = 0;     // 1920-01-01
+static const uint MinDate = 0;     // 1920-01-01 (MAX_YEAR_BEGIN_REAL)
 static const uint MaxDate = 29220; // 2000-01-01
 
 extern void DoTestSave();

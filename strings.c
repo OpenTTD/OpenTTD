@@ -243,7 +243,7 @@ static byte *FormatYmdString(byte *buff, uint16 number)
 	memcpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), 4);
 	buff[3] = ' ';
 
-	return FormatNoCommaNumber(buff+4, ymd.year + 1920);
+	return FormatNoCommaNumber(buff+4, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
 static byte *FormatMonthAndYear(byte *buff, uint16 number)
@@ -256,7 +256,7 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 	for(src = GetStringPtr(STR_MONTH_JAN + ymd.month); (*buff++=*src++) != 0;) {}
 	buff[-1] = ' ';
 
-	return FormatNoCommaNumber(buff, ymd.year + 1920);
+	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
 uint GetCurrentCurrencyRate() {

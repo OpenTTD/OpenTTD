@@ -941,7 +941,7 @@ static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
 
 		FixEconomy(&n->cur_economy, &o->economy[0]);
 		for(i=0; i!=24; i++) FixEconomy(&n->old_economy[i], &o->economy[i+1]);
-		n->inaugurated_year = o->inaugurated_date - 1920;
+		n->inaugurated_year = o->inaugurated_date - MAX_YEAR_BEGIN_REAL;
 		n->last_build_coordinate = o->last_build_coordinate;
 		n->num_valid_stat_ent = o->num_valid_stat_ent;
 
