@@ -629,7 +629,6 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			rs = GetPrimaryRoadStop(st, type);
 
 			if (rs == NULL) {
-				int i, validorders = 0;
 				//There is no stop left at the station, so don't even TRY to go there
 				v->cur_order_index++;
 				InvalidateVehicleOrder(v);
