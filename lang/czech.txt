@@ -277,17 +277,17 @@ STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Hrackarstvi
 STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Tovarna na hracky
 STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastove fontany
 STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Stacirna limonad
-STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Generator bublin
+STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Generátor bublin
 STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Karamelolom
-STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Cukerny dul
+STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Cukerný dul
 STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Nadrazi
-STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Nakladaci plosina
-STR_011D_BUS_STATION						:{BLACK}{TINYFONT}Autobusova zastavka
+STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Nakládací rampa
+STR_011D_BUS_STATION						:{BLACK}{TINYFONT}Autobusová zastávka
 STR_011E_AIRPORT_HELIPORT					:{BLACK}{TINYFONT}Letiste/Heliport
 STR_011F_DOCK							:{BLACK}{TINYFONT}Pristavy
-STR_0120_ROUGH_LAND						:{BLACK}{TINYFONT}Hrbolata zem
-STR_0121_GRASS_LAND						:{BLACK}{TINYFONT}Travnata zem
-STR_0122_BARE_LAND						:{BLACK}{TINYFONT}Prazdna zem
+STR_0120_ROUGH_LAND						:{BLACK}{TINYFONT}Hrbolatá zem
+STR_0121_GRASS_LAND						:{BLACK}{TINYFONT}Travnatá zem
+STR_0122_BARE_LAND						:{BLACK}{TINYFONT}Holá zem
 STR_0123_FIELDS							:{BLACK}{TINYFONT}Pole
 STR_0124_TREES							:{BLACK}{TINYFONT}Stromy
 STR_0125_ROCKS							:{BLACK}{TINYFONT}Kameny
@@ -302,7 +302,7 @@ STR_012D							:{WHITE}{STRING}
 STR_012E_CANCEL							:{BLACK}Zrusit
 STR_012F_OK							:{BLACK}OK
 STR_0130_RENAME							:{BLACK}Prejmenovat
-STR_0131_TOO_MANY_NAMES_DEFINED					:{WHITE}Definovano prilis mnoho jmen
+STR_0131_TOO_MANY_NAMES_DEFINED					:{WHITE}Definováno prilis mnoho jmen
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Zvolené jméno se jiz pouziva
 
 STR_0133_WINDOWS						:Windows
@@ -352,16 +352,16 @@ STR_015E_QUIT_GAME						:Ukoncit hru
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Opravdu chces ukoncit tuto hru?
 STR_0161_QUIT_GAME						:{WHITE}Konec hry
-STR_SORT_TIP							:{BLACK}Vyberte zpusob razeni ulozeni
+STR_SORT_TIP							:{BLACK}Vyberte zpusob razeni (sestupne nebo vzestupne)
 SRT_SORT_BY							:{BLACK}Radit podle
 
 STR_SORT_BY_POPULATION						:{BLACK}Populace
 STR_SORT_BY_PRODUCTION						:{BLACK}Prudukce
 STR_SORT_BY_TYPE						:{BLACK}Typ
 STR_SORT_BY_TRANSPORTED						:{BLACK}Prepraveno
-STR_SORT_BY_NAME						:{BLACK}Jméno
+STR_SORT_BY_NAME						:{BLACK}Podle jména
 STR_SORT_BY_DROPDOWN_NAME					:jména
-STR_SORT_BY_DATE						:{BLACK}Datum
+STR_SORT_BY_DATE						:{BLACK}Podle data
 STR_SORT_BY_UNSORTED						:(neradit)
 STR_SORT_BY_NUMBER						:cisla
 STR_SORT_BY_PROFIT_LAST_YEAR					:hrubého zisku letos
@@ -396,15 +396,15 @@ STR_0174_DISPLAY_MAP						:{BLACK}Zobrazit mapu
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY				:{BLACK}Zobrazit mapu a seznam mest
 STR_0176_DISPLAY_TOWN_DIRECTORY					:{BLACK}Zobrazit seznam mest
 STR_0177_DISPLAY_COMPANY_FINANCES				:{BLACK}Zobrazit financni informace o spolecnosti
-STR_0178_DISPLAY_COMPANY_GENERAL				:{BLACK}Zobrazit obecne informace o spolecnosti
+STR_0178_DISPLAY_COMPANY_GENERAL				:{BLACK}Zobrazit obecné informace o spolecnosti
 STR_0179_DISPLAY_GRAPHS						:{BLACK}Zobrazit grafy
 STR_017A_DISPLAY_COMPANY_LEAGUE					:{BLACK}Zobrazit tabulku spolecnosti
 STR_017B_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam vlaku spolecnosti
-STR_017C_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam silnicni vozidlou spolecnosti
-STR_017D_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam lodi spolecnosti
+STR_017C_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam silnicnich vozidel spolecnosti
+STR_017D_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam lodí spolecnosti
 STR_017E_DISPLAY_LIST_OF_COMPANY				:{BLACK}Zobrazit seznam letadel spolecnosti
 STR_017F_ZOOM_THE_VIEW_IN					:{BLACK}Priblizit pohled
-STR_0180_ZOOM_THE_VIEW_OUT					:{BLACK}Oddalit pohled
+STR_0180_ZOOM_THE_VIEW_OUT					:{BLACK}Oddálit pohled
 STR_0181_BUILD_RAILROAD_TRACK					:{BLACK}Stavet koleje
 STR_0182_BUILD_ROADS						:{BLACK}Stavet silnice
 STR_0183_BUILD_SHIP_DOCKS					:{BLACK}Stavet doky
@@ -420,7 +420,7 @@ STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titulek okna - tahej pro posun okna
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolice budov, atd.
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Snizit roh zeme
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Zvysit roh zeme
-STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Posuvnik - posouva vypisem nahoru a dolu
+STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Posuvník - posouvá výpisem nahoru nebo dolu ci doleva nebo doprava
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Zobrazit na mape relief krajiny
 STR_0192_SHOW_VEHICLES_ON_MAP					:{BLACK}Zobrazit na mape dopravní prostredky
 STR_0193_SHOW_INDUSTRIES_ON_MAP					:{BLACK}Zobrazit na mape prumysl
@@ -812,7 +812,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE				:{BLACK}Krajina mírného pásma
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE				:{BLACK}Subarktická krajina
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE				:{BLACK}Subtropická krajina
 STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Zeme hracek
-STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Investovat do nového prumyslu
+STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Prumysl
 
 ############ range for menu	starts
 STR_INDUSTRY_DIR						:Seznam prumyslu
@@ -1234,19 +1234,19 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat ve drive ulozene hre pro více h
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacit sitovou hru ze scenaria
 
-STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupni mistnost do multiplayerove hry
+STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupní místnost do multiplayerové hry
 
 STR_NETWORK_SEND						:{BLACK}Poslat
-STR_NETWORK_SEND_TIP						:{BLACK}Polat zpravu ostatnim hracum
+STR_NETWORK_SEND_TIP						:{BLACK}Poslat zprávu ostatním hracum
 STR_NETWORK_COMPANY_NAME					:{BLACK}Jméno spolecnosti:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Muzes zmenit jméno tve spolecnosti. Enterem potvrdis zmeny
+STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Muzes zmenit jméno své spolecnosti. Zmeny potvrdis Enterem.
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Koukat na hru jako divak
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Pripojit se do hry jako divák
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nová spolecnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novou spolecnost
 STR_NETWORK_READY						:{BLACK}Pripraven
 
-STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Zadna sitova zarizeni nebyla nalezena (nebo nejsou zkompilována s/bez ENABLE_NETWORK)
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Zadna sitova zarizeni nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nenalezena zadna sitova hra
 STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Server neodpovedel na pozadavek
 STR_NETWORK_ERR_DESYNC						:{WHITE} Sit - synchronizace hry selhala
@@ -1670,7 +1670,7 @@ STR_5013_CONCRETE						:Betonovy
 STR_5014_TUBULAR_STEEL						:Potrubni, Ocelovy
 STR_BRIDGE_TUBULAR_SILICON					:Potrubni, Kremikovy
 STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Zde nelze postavit most...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Zde nelze postavit most...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Zde nelze postavit tunel...
 STR_5017_RAILROAD_TUNNEL					:Zeleznicni tunel
 STR_5018_ROAD_TUNNEL						:Silnicni tunel
 STR_5019							:
@@ -2589,7 +2589,7 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Cisty zisk (= bez provoz. nakla
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Cisty zisk v mesici s nejvetsim prijmem za posledních 12 ctvrtleti.
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Pocet dorucenych jednotek nákladu za poslední rok (4Q).
 STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Pocet dorucenych druhu nákladu za poslední 3 mesice (1Q).
-STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Tvoje soucasna hotovost
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Soucasna hotovost spolecnosti
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Mas velký dluh?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Celkový pocet bodu z 1000 moznych
 
