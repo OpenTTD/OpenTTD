@@ -17,12 +17,22 @@
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>
 #	include <unistd.h>
+#	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
 #endif
 
 // This file handles all dedicated-server in- and outputs
 
 static void *_dedicated_video_mem;
+
+#ifdef UNIX
+/* Signal handlers */
+void DedicatedSignalHandler(int sig)
+{
+		_exit_game = true;
+		signal(sig, DedicatedSignalHandler);
+}
+#endif
 
 static const char *DedicatedVideoStart(char **parm) {
 	_screen.width = _screen.pitch = _cur_resolution[0];
@@ -90,6 +100,12 @@ static int DedicatedVideoMainLoop() {
 	next_tick = (tim.tv_usec / 1000) + 30 + (tim.tv_sec * 1000);
 #endif
 
+	/* Siganl handlers */
+#ifdef UNIX
+	signal(SIGTERM, DedicatedSignalHandler);
+	signal(SIGINT, DedicatedSignalHandler);
+#endif
+
 	// Load the dedicated server stuff
 	_is_network_server = true;
 	_network_dedicated = true;
@@ -106,6 +122,8 @@ static int DedicatedVideoMainLoop() {
 
 	while (true) {
 		InteractiveRandom(); // randomness
+
+		if (_exit_game) return ML_QUIT;
 
 #ifdef UNIX
 		if (InputWaiting()) {
@@ -127,8 +145,6 @@ static int DedicatedVideoMainLoop() {
 			}
 		}
 #endif
-
-		if (_exit_game) return ML_QUIT;
 
 #ifdef WIN32
 		cur_ticks = GetTickCount();
