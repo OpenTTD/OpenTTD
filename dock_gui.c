@@ -234,9 +234,6 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
 		case 3: case 4:
 			_station_show_coverage = e->click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
@@ -256,7 +253,8 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }
@@ -307,9 +305,6 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
 		case 3:
 		case 4:
 			_ship_depot_direction = e->click.widget - 3;
@@ -326,7 +321,8 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }

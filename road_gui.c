@@ -353,14 +353,8 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
-		case 3:
-		case 4:
-		case 5:
-		case 6:
+		switch (e->click.widget) {
+		case 3: case 4: case 5: case 6:
 			_road_depot_orientation = e->click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -374,7 +368,8 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }
@@ -436,20 +431,13 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
-		case 3:
-		case 4:
-		case 5:
-		case 6:
+		switch (e->click.widget) {
+		case 3: case 4: case 5: case 6:
 			_road_station_picker_orientation = e->click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
-		case 7:
-		case 8:
+		case 7: case 8:
 			_station_show_coverage = e->click.widget - 7;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -467,7 +455,8 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }

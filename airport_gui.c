@@ -179,9 +179,6 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
 		case 3: case 4: case 5: case 6: case 7:
 			_selected_airport_type = e->click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
@@ -205,7 +202,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }
