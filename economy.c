@@ -1127,7 +1127,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 	 * the cargo */
 	best = NULL;
 	u = _patches.station_spread + 8;
-	for(ind = _industries; ind != endof(_industries); ind++) {
+	FOR_ALL_INDUSTRIES(ind) {
 		if (ind->xy != 0 && (cargo_type == ind->accepts_cargo[0] || cargo_type
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
 				 ind->produced_cargo[0] != 0xFF &&

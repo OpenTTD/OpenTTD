@@ -458,7 +458,7 @@ static void MakeSortedIndustryList()
 	Industry *i;
 	int n = 0, index = 0;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if(i->xy)
 			_industry_sort[n++] = index;
 

@@ -1375,7 +1375,7 @@ void DeleteTown(Town *t)
 	_town_sort_dirty = true;
 
 	// Delete all industries belonging to the town
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy && i->town == t)
 			DeleteIndustry(i);
 	}

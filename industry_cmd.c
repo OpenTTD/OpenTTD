@@ -1105,7 +1105,7 @@ void OnTick_Industry()
 	if (_game_mode == GM_EDITOR)
 		return;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0)
 			ProduceIndustryGoods(i);
 	}
@@ -1233,7 +1233,7 @@ static Town *CheckMultipleIndustryInTown(uint tile, int type)
 	if (_patches.multiple_industry_per_town)
 		return t;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0 &&
 				i->type == (byte)type &&
 				i->town == t) {
@@ -1366,7 +1366,7 @@ static bool CheckIfTooCloseToIndustry(uint tile, int type)
 	if (_patches.same_industry_close && (spec->accepts_cargo[0] == 0xFF) )
 		return true;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		// check if an industry that accepts the same goods is nearby
 		if (i->xy != 0 &&
 				(GetTileDist1D(tile, i->xy) <= 14) &&
@@ -1391,7 +1391,7 @@ static Industry *AllocateIndustry()
 {
 	Industry *i;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy == 0) {
 			int index = i - _industries;
 		    if (index > _total_industries) _total_industries = index;
@@ -1807,7 +1807,7 @@ void IndustryMonthlyLoop()
 	byte old_player = _current_player;
 	_current_player = OWNER_NONE;
 
-	for(i=_industries; i != endof(_industries); i++) {
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0)
 			UpdateIndustryStatistics(i);
 	}
@@ -1887,9 +1887,10 @@ static const byte _industry_desc[] = {
 static void Save_INDY()
 {
 	Industry *ind;
-	int i;
+	int i = 0;
 	// Write the vehicles
-	for(ind=_industries,i=0; i!=lengthof(_industries); ind++,i++) {
+	FOR_ALL_INDUSTRIES(ind) {
+		i++;
 		if (ind->xy != 0) {
 			SlSetArrayIndex(i);
 			SlObject(ind, _industry_desc);

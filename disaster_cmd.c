@@ -755,7 +755,9 @@ static void Disaster2_Init()
 	Vehicle *v,*u;
 	int x,y;
 
-	for(found=NULL,i=_industries; i != endof(_industries); i++) {
+	found = NULL;
+
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0 &&
 				i->type == IT_OIL_REFINERY &&
 				(found==NULL || CHANCE16(1,2))) {
@@ -789,7 +791,9 @@ static void Disaster3_Init()
 	Vehicle *v,*u,*w;
 	int x,y;
 
-	for(found=NULL,i=_industries; i != endof(_industries); i++) {
+	found = NULL;
+
+	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0 &&
 				i->type == IT_FACTORY &&
 				(found==NULL || CHANCE16(1,2))) {
@@ -896,7 +900,7 @@ static void Disaster7_Init()
 	int index = Random() & 0xF;
 
 	do {
-		for(i=_industries; i != endof(_industries); i++) {
+		FOR_ALL_INDUSTRIES(i) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE	&& --index < 0) {
 
 				SetDParam(0, i->town->index);

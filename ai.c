@@ -1416,7 +1416,7 @@ static void AiWantOilRigAircraftRoute(Player *p)
 		t = AiFindRandomTown();
 		if (t != NULL) {
 			// Find a random oil rig industry
-			in = DEREF_INDUSTRY(RandomRange(lengthof(_industries)));
+			in = DEREF_INDUSTRY(RandomRange(_total_industries));
 			if (in != NULL && in->type == IT_OIL_RIG) {
 				if (GetTileDist(t->xy, in->xy) < 60)
 					break;
@@ -2482,13 +2482,13 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 {
 	uint values[NUM_CARGO];
 	int rad;
-	
+
 	if (_patches.modified_catchment) {
-		rad = CA_TRUCK;		//Same as CA_BUS at the moment? 
+		rad = CA_TRUCK;		//Same as CA_BUS at the moment?
 	} else {			//change that at some point?
 		rad = 4;
 	}
-	
+
 	for(;;p++) {
 		if (p->mode == 4) {
 			return true;
@@ -3354,9 +3354,9 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	int w,h;
 	uint tile2;
 	int rad;
-	
+
 	if (_patches.modified_catchment) {
-		rad = CA_AIR_LARGE;		//I Have NFI what airport the 
+		rad = CA_AIR_LARGE;		//I Have NFI what airport the
 	} else {				//AI is going to build here
 		rad = 4;
 	}

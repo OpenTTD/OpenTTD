@@ -28,6 +28,7 @@ struct Industry {
 VARDEF int _total_industries; // For the AI: the amount of industries active
 VARDEF Industry _industries[90];
 #define DEREF_INDUSTRY(i) (&_industries[i])
+#define FOR_ALL_INDUSTRIES(i) for(i = _industries; i != endof(_industries); i++)
 VARDEF bool _industry_sort_dirty;
 void DeleteIndustry(Industry *is);
 
