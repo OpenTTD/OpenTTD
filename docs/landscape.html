@@ -151,7 +151,9 @@ map5 bits 7..4 clear: road
 <tr><td nowrap valign=top>bit 3: </td><td align=left>NE piece</td></tr>
 </table></li>
 <li>map_owner: <a href="#OwnershipInfo">owner</a> of the road</li>
-<li>map2 bits 0..2: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> - paved, <tt>3</tt> - with streetlights, <tt>5</tt> - tree-lined, <tt>6</tt> - on grass with road works, <tt>7</tt> - paved with road works</li>
+<li>map2: Index into the array of towns, 0 for non-town roads</li>
+<li>map3_hi bits 0..3: counter for the roadworks</li>
+<li>map3_hi bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> - paved, <tt>3</tt> - with streetlights, <tt>5</tt> - tree-lined, <tt>6</tt> - on grass with road works, <tt>7</tt> - paved with road works</li>
 <li>map3_hi bit 7 set = on snow or desert</li>
 </ul>
 map5 bit 4 set, bits 7..5 clear: level crossing
@@ -159,9 +161,10 @@ map5 bit 4 set, bits 7..5 clear: level crossing
 <li>map5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
 <li>map5 bit 2: set if crossing lights are on</li>
 <li>map_owner: <a href="#OwnershipInfo">owner</a> of the railway track</li>
-<li>map2 bits 0..2: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> or higher - paved</li>
+<li>map2: Index into the array of towns, 0 for non-town roads</li>
 <li>map3_lo bits 0..7: <a href="#OwnershipInfo">owner</a> of the road</li>
 <li>map3_hi bits 3..0: <a href="#TrackType">track type</a></li>
+<li>map3_hi bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> or higher - paved</li>
 <li>map3_hi bit 7 set = on snow or desert</li>
 </ul>
 map5 bit 5 set: road depot
@@ -175,7 +178,8 @@ map5 bit 5 set: road depot
 <tr><td valign=top nowrap><a name="Class3"><tt> 3 </tt></a></td><td>
 Town building
 <ul>
-<li>map2: <a name="HouseTypes">town building type</a>:
+<li>map2: Index into the array of towns</li>
+<li>map3_hi: <a name="HouseTypes">town building type</a>:
 <p><small>Note: In the climate list, 'sub-arctic' means below the <a href="#_snowline">snow line</a>, and 'snow' means above the snow line in the sub-arctic climate.</small></p>
 <table>
 <tr><th align=left>Type&nbsp;</th><th align=left>Size&nbsp;</th><th align=left>Climates&nbsp;</th><th align=left>Description</th></tr>

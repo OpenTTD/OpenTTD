@@ -1407,6 +1407,27 @@ bool AfterLoadGame(uint version)
 		UpdateOilRig();
 	}
 
+	if (version <= 0x600) {
+		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
+			if (IsTileType(tile, MP_HOUSE)) {
+				_map3_hi[tile] = _map2[tile];
+				//XXX magic
+				SetTileType(tile, MP_VOID);
+				_map2[tile] = ClosestTownFromTile(tile,(uint)-1)->index;
+				SetTileType(tile, MP_HOUSE);
+			} else if (IsTileType(tile, MP_STREET)) {
+				//XXX magic
+				SetTileType(tile, MP_VOID);
+				_map3_hi[tile] |= (_map2[tile] << 4);
+				if ( _map_owner[tile] == OWNER_TOWN)
+					_map2[tile] = ClosestTownFromTile(tile,(uint)-1)->index;
+				else
+					_map2[tile] = 0;
+				SetTileType(tile, MP_STREET);
+			}
+		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+	}
+
 	return true;
 }
 

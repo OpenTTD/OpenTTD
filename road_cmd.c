@@ -333,6 +333,7 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 
 /* Build a piece of road
  * p1 = piece flags
+ * p2 = town which is building the road
  */
 
 int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -382,7 +383,8 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			ModifyTile(tile,
 				MP_SETTYPE(MP_STREET) |
-				MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
+				MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
+				p2,
 				_current_player, /* map3_lo */
 				_map3_lo[tile] & 0xF, /* map3_hi */
 				m5 /* map5 */
@@ -451,6 +453,7 @@ do_clear:;
 		if (ti.type != MP_STREET) {
 			SetTileType(tile, MP_STREET);
 			_map5[tile] = 0;
+			_map2[tile] = p2;
 			_map_owner[tile] = _current_player;
 		}
 
@@ -751,7 +754,7 @@ static void DrawTile_Road(TileInfo *ti)
 			image = _road_tile_sprites_1[ti->map5 & 0xF];
 		}
 
-		m2 = _map2[ti->tile] & 7;
+		m2 = (_map3_hi[ti->tile] & 0x70) >> 4;
 
 		if (m2 == 0) image |= 0x3178000;
 
@@ -797,7 +800,7 @@ static void DrawTile_Road(TileInfo *ti)
 		if ( _map3_hi[ti->tile] & 0x80) {
 			image += 8;
 		} else {
-			m2 = _map2[ti->tile] & 7;
+			m2 = (_map3_hi[ti->tile] & 0x70) >> 4;
 			if (m2 == 0) image |= 0x3178000;
 			if (m2 > 1) image += 4;
 		}
@@ -960,7 +963,7 @@ static void TileLoop_Road(uint tile)
 	if (_map5[tile] & 0xE0)
 		return;
 
-	if ((_map2[tile] & 7) < 6) {
+	if (((_map3_hi[tile] & 0x70) >> 4) < 6) {
 		t = ClosestTownFromTile(tile, (uint)-1);
 		grp = 0;
 		if (t != NULL) {
@@ -976,7 +979,7 @@ static void TileLoop_Road(uint tile)
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
 					(_map5[tile]==5 || _map5[tile]==10)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
-					_map2[tile] = ((_map2[tile]&7) <= 1) ? 6 : 7;
+					_map3_hi[tile] |= ((((_map3_hi[tile] & 0x70) >> 4 ) <=  2) ? 7 : 6) << 4;
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
@@ -992,7 +995,7 @@ static void TileLoop_Road(uint tile)
 
 		{
 			const byte *p = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
-			byte b = _map2[tile] & 7;
+			byte b = (_map3_hi[tile] & 0x70) >> 4;
 
 			if (b == p[0])
 				return;
@@ -1004,18 +1007,23 @@ static void TileLoop_Road(uint tile)
 			} else {
 				b = 0;
 			}
-			_map2[tile] = (_map2[tile] & ~7) | b;
+			_map3_hi[tile] = (_map3_hi[tile] & ~0x70) | (b << 4);
 			MarkTileDirtyByTile(tile);
 		}
 	} else {
 		// Handle road work
+		//XXX undocumented
 
-		uint16 b = _map2[tile];
-		if (b < 0x80) {
-			_map2[tile] = b + 8;
+		byte b = _map3_hi[tile];
+		//roadworks take place only
+		//keep roadworks running for 16 loops
+		//lower 4 bits of map3_hi store the counter now
+		if ((b & 0xF) != 0xF) {
+			_map3_hi[tile] = b + 1;
 			return;
 		}
-		_map2[tile] = ((b&7) == 6) ? 1 : 2;
+		//roadworks finished
+		_map3_hi[tile] = ((((b& 0x70) >> 4)== 6) ? 1 : 2) << 4;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1042,7 +1050,7 @@ static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
 		byte b = _map5[tile];
 		if ((b & 0xF0) == 0) {
 			/* Ordinary road */
-			if (!_road_special_gettrackstatus && (_map2[tile]&7) >= 6)
+			if (!_road_special_gettrackstatus && ((_map3_hi[tile]&0x70) >> 4) >= 6)
 				return 0;
 			return _road_trackbits[b&0xF] * 0x101;
 		} else if ((b&0xF0) == 0x10) {
@@ -1077,7 +1085,7 @@ static void GetTileDesc_Road(uint tile, TileDesc *td)
 {
 	int i = (_map5[tile] >> 4);
 	if (i == 0)
-		i = (_map2[tile] & 7) + 3;
+		i = ((_map3_hi[tile] & 0x70) >> 4) + 3;
 	td->str = _road_tile_strings[i - 1];
 	td->owner = _map_owner[tile];
 }

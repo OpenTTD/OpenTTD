@@ -85,7 +85,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = (byte)_map2[ti->tile];
+		byte gfx   = (byte)_map3_hi[ti->tile];
 		byte stage = _map3_lo[ti->tile] >> 6;
 		uint variant;
 		variant  = ti->x >> 4;
@@ -153,7 +153,7 @@ static void AnimateTile_Town(uint tile)
 	if (_tick_counter & 3)
 		return;
 
-	if (_map2[tile] != 4 && _map2[tile] != 5)
+	if (_map3_hi[tile] != 4 && _map3_hi[tile] != 5)
 		return;
 
 	if (!((old=_map_owner[tile])&0x80)) {
@@ -255,14 +255,14 @@ static void MakeSingleHouseBigger(uint tile)
 
 	if ( (_map3_lo[tile] & 0xC0) == 0xC0) {
 		Town *t = ClosestTownFromTile(tile, (uint)-1);
-		ChangePopulation(t, _housetype_population[_map2[tile]]);
+		ChangePopulation(t, _housetype_population[_map3_hi[tile]]);
 	}
 	MarkTileDirtyByTile(tile);
 }
 
 static void MakeTownHouseBigger(uint tile)
 {
-	uint flags = _house_more_flags[_map2[tile]];
+	uint flags = _house_more_flags[_map3_hi[tile]];
 	if (flags & 8) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
 	if (flags & 4) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
 	if (flags & 2) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
@@ -280,7 +280,7 @@ static void TileLoop_Town(uint tile)
 		return;
 	}
 
-	house = _map2[tile];
+	house = _map3_hi[tile];
 	if (_housetype_extra_flags[house] & 0x20 &&
 			!(_map5[tile] & 0x80) &&
 			CHANCE16(1,2) &&
@@ -340,7 +340,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-	house = _map2[tile];
+	house = _map3_hi[tile];
 	cost = _price.remove_house * _housetype_remove_cost[house] >> 8;
 
 	rating = _housetype_remove_ratingmod[house];
@@ -364,7 +364,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 
 static void GetAcceptedCargo_Town(uint tile, AcceptedCargo ac)
 {
-	int type = _map2[tile];
+	int type = _map3_hi[tile];
 
 	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
 	ac[CT_MAIL] = _housetype_cargo_mail[type];
@@ -374,7 +374,7 @@ static void GetAcceptedCargo_Town(uint tile, AcceptedCargo ac)
 
 static void GetTileDesc_Town(uint tile, TileDesc *td)
 {
-	td->str = _town_tile_names[_map2[tile]];
+	td->str = _town_tile_names[_map3_hi[tile]];
 	if ((_map3_lo[tile] & 0xC0) != 0xC0) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
@@ -676,7 +676,7 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 			(i++,ti.tileh != 12) &&
 			(i++,ti.tileh != 6)) {
 build_road_and_exit:
-		if (DoCommandByTile(tile, rcmd, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD) != CMD_ERROR)
+		if (DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD) != CMD_ERROR)
 			_grow_town_result = -1;
 		return;
 	}
@@ -809,7 +809,7 @@ bool GrowTown(Town *t)
 		// Only work with plain land that not already has a house with map5=0
 		if (ti.tileh == 0 && !(ti.type==MP_HOUSE && ti.map5==0)) {
 			if (DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
-				DoCommandByTile(tile, GenRandomRoadBits(), 0, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
+				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
 				return true;
 			}
@@ -1272,9 +1272,10 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		assert(IsTileType(tile, MP_CLEAR));
 
 		ModifyTile(tile,
-			MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
-			house, /* map2 */
-			m3lo,  /* map3_lo */
+			MP_SETTYPE(MP_HOUSE) | MP_MAP3HI | MP_MAP3LO | MP_MAP2 | MP_MAP5 | MP_MAPOWNER,
+			t->index,
+			m3lo,   /* map3_lo */
+			house,  /* map3_hi */
 			0,     /* map_owner */
 			m5		 /* map5 */
 		);
@@ -1284,9 +1285,10 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		if (eflags&0x18) {
 			assert(IsTileType(tile + TILE_XY(0,1), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(0,1),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
-				++house,	/* map2 */
+				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
+				t->index,
 				m3lo,			/* map3_lo */
+				++house,	/* map3_hi */
 				0,				/* map_owner */
 				m5				/* map5 */
 			);
@@ -1295,9 +1297,10 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		if (eflags&0x14) {
 			assert(IsTileType(tile + TILE_XY(1,0), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(1,0),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
-				++house,	/* map2 */
+				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
+				t->index,
 				m3lo,			/* map3_lo */
+				++house,	/* map3_hi */
 				0,				/* map_owner */
 				m5				/* map5 */
 			);
@@ -1306,9 +1309,10 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		if (eflags&0x10) {
 			assert(IsTileType(tile + TILE_XY(1,1), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(1,1),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
-				++house,	/* map2 */
+				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
+				t->index,
 				m3lo,			/* map3_lo */
+				++house,	/* map3_hi */
 				0,				/* map_owner */
 				m5				/* map5 */
 			);
@@ -1342,7 +1346,7 @@ static void DoClearTownHouseHelper(uint tile)
 }
 
 static void ClearTownHouse(Town *t, uint tile) {
-	uint house = _map2[tile];
+	uint house = _map3_hi[tile];
 	uint eflags;
 
 	assert(IsTileType(tile, MP_HOUSE));
@@ -1776,6 +1780,9 @@ Town *ClosestTownFromTile(uint tile, uint threshold)
 	Town *t;
 	uint dist, best = threshold;
 	Town *best_town = NULL;
+
+	if ((IsTileType(tile, MP_STREET) && _map_owner[tile] == OWNER_TOWN) || IsTileType(tile, MP_HOUSE))
+		return GetTown(_map2[tile]);
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) {
