@@ -203,7 +203,7 @@ void InvalidateWindowClasses(byte cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number);
 
 void SetObjectToPlaceWnd(int icon, byte mode, Window *w);
-void SetObjectToPlace(int icon, byte mode, byte window_class, uint16 window_num);
+void SetObjectToPlace(int icon, byte mode, WindowClass window_class, WindowNumber window_num);
 
 void ResetObjectToPlace();
 

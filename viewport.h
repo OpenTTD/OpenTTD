@@ -86,9 +86,9 @@ typedef struct TileHighlightData {
 	byte next_drawstyle;
 
 	byte place_mode;
-	byte window_class;
 	bool make_square_red;
-	uint16 window_number;
+	WindowClass window_class;
+	WindowNumber window_number;
 
 	int userdata;
 	TileIndex redsq;

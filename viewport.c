@@ -2060,7 +2060,7 @@ void SetObjectToPlaceWnd(int icon, byte mode, Window *w)
 
 #include "table/animcursors.h"
 
-void SetObjectToPlace(int icon, byte mode, byte window_class, uint16 window_num)
+void SetObjectToPlace(int icon, byte mode, WindowClass window_class, WindowNumber window_num)
 {
 	TileHighlightData *thd = _thd_ptr;
 	Window *w;
