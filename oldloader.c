@@ -1269,6 +1269,12 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 		if (!LoadChunk(ls, v, vehicle_chunk))
 			return false;
 
+		/* This should be consistent, else we have a big problem... */
+		if (v->index != _current_vehicle_id) {
+			DEBUG(oldloader, 0)("[OldLoader] -- Loading failed - vehicle-array is invalid");
+			return false;
+		}
+
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
 			v->orders = GetOrder(REMAP_ORDER_IDX(_old_order_ptr));
 		}
@@ -1613,6 +1619,8 @@ bool LoadOldSaveGame(const char *file)
 		return false;
 
 	fclose(_ls.file);
+
+	_pause = 2;
 
 	return true;
 }
