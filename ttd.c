@@ -750,8 +750,10 @@ void StartScenario()
 	StartupEngines();
 	StartupDisasters();
 
-	// Create a single player
-	DoStartupNewPlayer(false);
+	// When starting a scenario, is it really a load..
+	//  and in AfterLoad a player is started when it is
+	//  a scenario.. so we do not need it here.
+//	DoStartupNewPlayer(false);
 	
 	_local_player = 0;
 
@@ -1133,6 +1135,11 @@ bool AfterLoadGame(uint version)
 	if (version <= 0x400) {
 		CheckIsPlayerActive();
 	}
+	
+	// If Load Scenario / New (Scenario) Game is used, 
+	//  a player does not exist yet. So create one here.
+	if (!_players[0].is_active)
+		DoStartupNewPlayer(false);
 
 	DoZoomInOut(ZOOM_NONE); // update button status
 	MarkWholeScreenDirty();
