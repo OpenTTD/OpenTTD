@@ -85,8 +85,6 @@ void UpdateTrainAcceleration(Vehicle *v)
 
 #define F_CURVE_FACTOR (1/96.f)
 
-static bool IsTunnelTile(TileIndex tile);
-
 static int GetRealisticAcceleration(Vehicle *v)
 {
 	uint emass = 0;
