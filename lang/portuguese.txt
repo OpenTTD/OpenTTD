@@ -341,7 +341,7 @@ STR_0156_DELIVERED_CARGO_GRAPH					:Gráfico de carga entregue
 STR_0157_PERFORMANCE_HISTORY_GRAPH				:Gráfico de histórico de rendimentos
 STR_0158_COMPANY_VALUE_GRAPH					:Gráfico de valor da empresa
 STR_0159_CARGO_PAYMENT_RATES					:Tarifas por carga
-STR_015A_COMPANY_LEAGUE_TABLE					:Tabela de classificação de empresas
+STR_015A_COMPANY_LEAGUE_TABLE					:Classificação de empresas
 STR_PERFORMANCE_DETAIL_MENU					:Avaliação detalhada
 ############ range for menu	ends
 
@@ -519,10 +519,13 @@ STR_01E3							:{DKGREEN}{TINYFONT}--
 STR_01E4_0							:{DKGREEN}{TINYFONT}0{COMMA8}
 STR_01E5							:{DKGREEN}{TINYFONT}{COMMA8}
 STR_01E6							:{DKGREEN}{TINYFONT}------
+STR_01E7							:{DKGREEN}{TINYFONT}'{STRING}'
 STR_01E8_TRACK_XTITLE						:{BLACK}{TINYFONT}Faixa{SETX 88}Título
 STR_01E9_SHUFFLE						:{TINYFONT}Baralhar
 STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Programação Musical
+STR_01EC_0							:{TINYFONT}{LTBLUE}0{COMMA16} '{STRING}'
+STR_01ED							:{TINYFONT}{LTBLUE}{COMMA16}   '{STRING}'
 STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Índice de faixas
 STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Limpar
@@ -696,7 +699,7 @@ STR_0296_QUIT							:Sair
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO				:{BLACK}Guardar cenário, abrir cenário, abandonar editor de cenário, sair
 STR_0298_LOAD_SCENARIO						:{WHITE}Abrir Cenário
 STR_0299_SAVE_SCENARIO						:{WHITE}Guardar Cenário
-STR_029A_PLAY_SCENARIO						:{BLACK}Jogar neste cenário
+STR_029A_PLAY_SCENARIO						:{BLACK}Jogar Cenário
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Tem a certeza que deseja abandonar este cenário ?
 STR_029C_QUIT_EDITOR						:{WHITE}Sair do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...só pode ser construido em cidades com pelo menos 1200 habitantes
@@ -732,10 +735,10 @@ STR_02C7_CONFIG_PATCHES						:Configurar correcções
 STR_02C8_CONFIG_PATCHES						:Configurar correcções
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
-STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar nomes das cidades
-STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostrar nomes das cidades
-STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes das estações
-STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrar nomes das estações
+STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar nomes de cidades
+STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostrar nomes de cidades
+STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estações
+STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrar nomes de estações
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar indicações
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostrar indicações
 STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar checkpoints
@@ -752,7 +755,7 @@ STR_02D4_TRANSPARENT_BUILDINGS					:{SETX 12}Edifícios transparentes
 STR_02D5_LAND_BLOCK_INFO					:Informações do terreno
 STR_02D6							:
 STR_02D7_SCREENSHOT_CTRL_S					:Captura de ecrã (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Captura gigante de ecrã (Ctrl-G)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Captura gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD						:Sobre o OpenTTD...
 ############ range ends	here
 
@@ -930,27 +933,149 @@ STR_CANT_COPY_ORDER_LIST					:{WHITE}Não é possível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Fim de Ordens Partilhadas - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Comboio {COMMA16} está perdido.
+STR_TRAIN_IS_UNPROFITABLE					:{WHITE}O lucro do comboio {COMMA16} no último ano foi de {CURRENCY}
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}O comboio {COMMA16} tem muito poucas ordens definidas
+STR_TRAIN_HAS_VOID_ORDER					:{WHITE}O comboio {COMMA16} tem uma ordem inválida
+STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}O comboio {COMMA16} tem ordens duplicadas
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}O comboio {COMMA16} tem uma estação inválida nas suas ordens
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}O veículo de estrada {COMMA16} tem muito poucas ordens definidas
+STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}O veículo de estrada {COMMA16} tem uma ordem inválida
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}O veículo de estrada {COMMA16} tem ordens duplicadas
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}O veículo de estrada {COMMA16} tem uma estação inválida nas suas ordens
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}O barco {COMMA16} tem muito poucas ordens definidas
+STR_SHIP_HAS_VOID_ORDER						:{WHITE}O barco {COMMA16} tem uma ordem inválida
+STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}O barco {COMMA16} tem ordens duplicadas
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}O barco {COMMA16} tem uma estação inválida nas suas ordens
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}A aeronave {COMMA16} tem muito poucas ordens definidas
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}A aeronave {COMMA16} tem uma ordem inválida
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}A aeronave {COMMA16} tem ordens duplicadas
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}A aeronave {COMMA16} tem uma estação inválida nas suas ordens
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}A auto-renovação do comboio {COMMA16} falhou (limite de dinheiro)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}A auto-renovação do veículo de estrada {COMMA16} falhou (limite de dinheiro)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}A auto-renovação do barco {COMMA16} falhou (limite de dinheiro)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}A auto-renovação da aeronave {COMMA16} falhou (limite de dinheiro)
 
+STR_CONFIG_PATCHES						:{BLACK}Configurar Correcções
+STR_CONFIG_PATCHES_TIP						:{BLACK}Configurar as correcções
+STR_CONFIG_PATCHES_CAPTION					:{WHITE}Configurar Correcções
 
+STR_CONFIG_PATCHES_OFF						:Off
+STR_CONFIG_PATCHES_ON						:On
+STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permitir a remoção de mais estradas, pontes, etc. das cidades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Activar aceleração realista para comboios: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Juntar estações ferroviárias construidas pegadas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Deixar a estação quando uma das cargas estiver completa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflação: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Permitir ordens de ir para o depósito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Permitir construção de produções de matérias-primas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Permitir várias indústrias semelhantes por cidade: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Indústrias do mesmo tipo podem ser construídas perto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Mostrar sempre a data completa na barra de estado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Mostrar sinais no lado da circulação: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Mostrar janela das finanças no fim do ano: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}Função non-stop compatível com TTDPatch: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Novo sistema de localização de depósitos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Novo sistema para calcular trajectórias dos comboios: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Um comboio está perdido se não houver progresso em: {ORANGE}{STRING} dias
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Um comboio está perdido se não houver progresso em: {ORANGE}Desactivado
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:Não
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:Sim, mas excluir veículos parados
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:de todos os veículos
+STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Avisar se o lucro de um comboio for negativo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Auto-renovação de veículos quando ficam velhos
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máxima
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Dinheiro minimo para fazer auto-renovação: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Tamanho máximo de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento
+STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH					:{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT					:{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS					:{LTBLUE}Máximo de barcos por jogador: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Desactivar comboios para o computador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Desactivar veículos de estrada para o computador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Desactivar aeronaves para o computador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Desactivar barcos para o computador: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Activar nova IA (alpha): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dias
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}desactivado
+STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Intervalo de serviço predefinido para veículos de estrada: {ORANGE}{STRING} dias
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Intervalo de serviço predefinido para veículos de estrada: {ORANGE}desactivado
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dias
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desactivado
+STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dias
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data de início: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Activar economia regular (alterações menores)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Esquerda
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centro
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Direita
 
+STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
+STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Construção
+STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Veículos
+STR_CONFIG_PATCHES_STATIONS					:{BLACK}Estações
+STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Economia
+STR_CONFIG_PATCHES_AI						:{BLACK}Oponentes
 
+STR_CONFIG_PATCHES_DISABLED					:desactivado
+STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
+STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Alterar valor
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
 
+STR_TEMPERATE_LANDSCAPE						:terreno temperado
+STR_SUB_ARCTIC_LANDSCAPE					:terreno subárctico
+STR_SUB_TROPICAL_LANDSCAPE					:terreno subtropical
+STR_TOYLAND_LANDSCAPE						:terreno 'toyland'
 
+STR_CHEATS							:{WHITE}Truques
+STR_CHEATS_TIP							:{BLACK}As caixas de verificação indicam se já usou este truque antes
+STR_CHEATS_WARNING						:{BLACK}Atenção! Está prestes a trair os seus oponentes. Tenha em conta que isto ficará registado para sempre.
+STR_CHEAT_MONEY							:{LTBLUE}Aumentar dinheiro em {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Jogar como o jogador: {ORANGE}{COMMA16}
+STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Bulldozer mágico (destroi indústrias, etc.): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Os tuneis poderão cruzar-se: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Os aviões a jacto não irão ter acidentes (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Mudar de clima: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 
+STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Dirige-se para {CHECKPOINT}
+STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Dirige-se para {CHECKPOINT}, {VELOCITY}
 
+STR_GO_TO_CHECKPOINT						:Ir via {CHECKPOINT}
 
 
 
