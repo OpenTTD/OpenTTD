@@ -1920,7 +1920,7 @@ void SetAnimatedMouseCursor(const uint16 *table)
 }
 
 bool ChangeResInGame(int w, int h)
-{
+{	
 	if ((_screen.width != w || _screen.height != h) && !_video_driver->change_resolution(w, h))
 		return false;
 

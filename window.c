@@ -3,6 +3,7 @@
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"
+#include "console.h"
 
 void HandleButtonClick(Window *w, byte widget)
 {
@@ -1205,6 +1206,8 @@ void RelocateAllWindows(int neww, int newh)
 			vp->virtual_height = newh << vp->zoom;
 			continue; // don't modify top,left
 		}
+
+		IConsoleResize();
 
 		if (w->window_class == WC_MAIN_TOOLBAR) {
 			top = w->top;

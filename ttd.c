@@ -21,6 +21,7 @@
 #include "airport.h"
 #include "saveload.h"
 #include "ai.h"
+#include "console.h"
 
 #include <stdarg.h>
 
@@ -74,8 +75,8 @@ void CDECL debug(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-
 	fprintf(stderr, "dbg: %s\n", buf);
+	IConsoleDebug((byte *) &buf);
 }
 
 void CDECL ShowInfoF(const char *str, ...)
@@ -597,7 +598,12 @@ int ttd_main(int argc, char* argv[])
 			}
 		}
 
+	// initialize the ingame console
+	IConsoleInit();
+
 	while (_video_driver->main_loop() == ML_SWITCHDRIVER) {}
+
+	IConsoleFree();
 
 	if (_network_available) {
 		// shutdown network-core
@@ -637,6 +643,7 @@ void LoadIntroGame()
 	GfxLoadSprites();
 	LoadStringWidthTable();
 	// Setup main window
+	IConsoleClose();
 	InitWindowSystem();
 	SetupColorsAndInitialWindow();
 
@@ -666,6 +673,7 @@ void MakeNewGame()
 	GfxLoadSprites();
 
 	// Reinitialize windows
+	IConsoleClose();
 	InitWindowSystem();
 	LoadStringWidthTable();
 
@@ -693,6 +701,7 @@ void MakeNewEditorWorld()
 	GfxLoadSprites();
 
 	// Re-init the windowing system
+	IConsoleClose();
 	InitWindowSystem();
 
 	// Create toolbars
@@ -727,6 +736,7 @@ void StartScenario()
 	GfxLoadSprites();
 
 	// Reinitialize windows
+	IConsoleClose();
 	InitWindowSystem();
 	LoadStringWidthTable();
 

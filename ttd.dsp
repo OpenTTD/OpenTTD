@@ -184,6 +184,10 @@ SOURCE=.\command.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\console.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\documentation.txt
 # End Source File
 # Begin Source File
@@ -407,6 +411,10 @@ SOURCE=.\aystar.h
 # Begin Source File
 
 SOURCE=.\command.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\console.h
 # End Source File
 # Begin Source File
 

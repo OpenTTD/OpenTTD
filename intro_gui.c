@@ -7,6 +7,7 @@
 #include "gfx.h"
 #include "player.h"
 #include "command.h"
+#include "console.h"
 
 extern void MakeNewGame();
 extern void StartScenario();
@@ -69,6 +70,10 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 12: case 13: case 14: case 15:
 			DoCommandP(0, e->click.widget - 12, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
 			break;
+		}
+	case WE_KEYPRESS:
+		switch(e->keypress.keycode) {
+		case WKC_TAB: IConsoleSwitch(); break;
 		}
 		break;
 	}
