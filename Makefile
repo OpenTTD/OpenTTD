@@ -422,20 +422,20 @@ endif
 ### Sources
 
 ttd_SOURCES = \
-	ai.c aircraft_cmd.c aircraft_gui.c airport.c airport_gui.c bridge_gui.c \
+	ai.c ai_build.c ai_new.c ai_pathfinder.c ai_shared.c aircraft_cmd.c \
+	aircraft_gui.c airport.c airport_gui.c aystar.c bridge_gui.c \
 	clear_cmd.c command.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
-	engine.c engine_gui.c fileio.c gfx.c graph_gui.c industry_cmd.c \
-	industry_gui.c intro_gui.c landscape.c main_gui.c misc.c misc_cmd.c \
-	misc_gui.c music_gui.c namegen.c network.c news_gui.c oldloader.c \
-	order_cmd.c order_gui.c pathfind.c player_gui.c players.c rail_cmd.c \
-	rail_gui.c road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c saveload.c \
-	settings_gui.c ship_cmd.c ship_gui.c smallmap_gui.c sound.c \
-	spritecache.c station_cmd.c station_gui.c strings.c subsidy_gui.c \
-	texteff.c town_cmd.c town_gui.c train_cmd.c train_gui.c tree_cmd.c \
-	ttd.c tunnelbridge_cmd.c unmovable_cmd.c vehicle.c viewport.c \
-	water_cmd.c widget.c window.c minilzo.c screenshot.c settings.c rev.c \
-	grfspecial.c terraform_gui.c network_gui.c aystar.c queue.c \
-	ai_new.c ai_build.c ai_pathfinder.c ai_shared.c
+	engine.c engine_gui.c fileio.c gfx.c graph_gui.c grfspecial.c \
+	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c \
+	minilzo.c misc.c misc_cmd.c misc_gui.c music_gui.c namegen.c network.c \
+	network_gui.c news_gui.c oldloader.c order_cmd.c order_gui.c \
+	pathfind.c player_gui.c players.c queue.c rail_cmd.c rail_gui.c rev.c \
+	road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c saveload.c \
+	screenshot.c settings.c settings_gui.c ship_cmd.c ship_gui.c \
+	smallmap_gui.c sound.c spritecache.c station_cmd.c station_gui.c \
+	strings.c subsidy_gui.c terraform_gui.c texteff.c town_cmd.c \
+	town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c tunnelbridge_cmd.c \
+	unmovable_cmd.c vehicle.c viewport.c water_cmd.c widget.c window.c \
 
 ifdef WITH_SDL
 ttd_SOURCES += sdl.c
