@@ -15,6 +15,11 @@
 #include "sound.h"
 #include "network.h"
 
+// Windows stuff for Clipboard
+#if defined(WIN32)
+#include <windows.h>
+#endif
+
 #include "hal.h" // for file list
 
 bool _query_string_active;
@@ -700,7 +705,7 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 
 	if (b == &_userstring[3]) {
 		b[0] = 0x81;
-		b[1] = STR_00D0_NOTHING;
+		b[1] = (char)STR_00D0_NOTHING;
 		b[2] = STR_00D0_NOTHING >> 8;
 		b[3] = 0;
 	} else {

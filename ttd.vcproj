@@ -314,7 +314,7 @@
 			</File>
 			<File
 				RelativePath=".\dedicated.c">
-			</File>				
+			</File>
 			<File
 				RelativePath=".\depot.c">
 			</File>
@@ -860,6 +860,9 @@
 						PreprocessorDefinitions=""
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\string.c">
 			</File>
 			<File
 				RelativePath="strings.c">
