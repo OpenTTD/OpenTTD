@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "debug.h"
 #include "gfx.h"
+#include "spritecache.h"
 #include "fileio.h"
 #include "newgrf.h"
 #include "md5.h"
@@ -697,7 +698,7 @@ static uint RotateSprite(uint s)
 }
 #endif
 
-byte *GetSpritePtr(uint sprite)
+byte *GetSpritePtr(SpriteID sprite)
 {
 	byte *p;
 
@@ -976,7 +977,7 @@ void GfxLoadSprites(void)
 }
 
 
-const SpriteDimension *GetSpriteDimension(uint sprite)
+const SpriteDimension *GetSpriteDimension(SpriteID sprite)
 {
 	static SpriteDimension sd_static;
 	SpriteDimension *sd;

@@ -8,6 +8,7 @@
 
 #define VARDEF
 #include "ttd.h"
+#include "spritecache.h"
 #include "gfx.h"
 #include "gui.h"
 #include "station.h"
@@ -35,7 +36,6 @@
 
 #include <stdarg.h>
 
-void IncreaseSpriteLRU(void);
 void GenerateWorld(int mode, uint log_x, uint log_y);
 void CallLandscapeTick(void);
 void IncreaseDate(void);

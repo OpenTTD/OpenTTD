@@ -69,11 +69,6 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 /* window.c */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
-/* spritecache.c */
-byte *GetSpritePtr(uint sprite);
-void GfxInitSpriteMem(byte *ptr, uint32 size);
-void GfxLoadSprites(void);
-
 void SetMouseCursor(uint cursor);
 void SetAnimatedMouseCursor(const uint16 *table);
 void CursorTick(void);
@@ -82,13 +77,6 @@ void ScreenSizeChanged(void);
 void UndrawMouseCursor(void);
 bool ChangeResInGame(int w, int h);
 void ToggleFullScreen(const bool full_screen);
-
-typedef struct {
-	int xoffs, yoffs;
-	int xsize, ysize;
-} SpriteDimension;
-
-const SpriteDimension *GetSpriteDimension(uint sprite);
 
 /* gfx.c */
 VARDEF int _stringwidth_base;

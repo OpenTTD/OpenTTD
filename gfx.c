@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "spritecache.h"
 #include "strings.h"
 #include "gfx.h"
 #include "table/palettes.h"

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "spritecache.h"
 #include "strings.h"
 #include "table/strings.h"
 #include "map.h"
