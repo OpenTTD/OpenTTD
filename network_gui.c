@@ -309,6 +309,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 					_selected_item = NULL;
 				}
 			}
+			break;
+		}
+
+		switch (HandleEditBoxKey(w, 3, e)) {
+		case 1:
+			HandleButtonClick(w, 8);
+			break;
 		}
 
 		// The name is only allowed when it starts with a letter!
