@@ -915,12 +915,14 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	if (!IsShipDepotTile(v->tile) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
@@ -943,9 +945,11 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -969,9 +973,11 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	int depot;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (HASBIT(p2, 0)) v->set_for_replacement = true;
@@ -1007,9 +1013,11 @@ int32 CmdChangeShipServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -1031,10 +1039,12 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	byte SkipStoppedInDepotCheck = (p2 & 0x100) >> 8; //excludes the cargo value
 
 	p2 = p2 & 0xFF;
-	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
+
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
-	if (!CheckOwnership(v->owner))
+
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (!( SkipStoppedInDepotCheck )) {
@@ -1043,6 +1053,8 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->u.ship.state != 0x80)
 			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 		}
+
+	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && (byte)p2 != v->cargo_type) {

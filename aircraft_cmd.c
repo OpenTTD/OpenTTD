@@ -360,12 +360,14 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	if (flags & DC_EXEC) {
 		// Invalidate depot
@@ -385,9 +387,11 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	// cannot stop airplane when in flight, or when taking off / landing
@@ -417,9 +421,11 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Station *st;
 	uint16 next_airport_index;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (HASBIT(p2, 16)) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
@@ -465,9 +471,11 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -490,12 +498,18 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	byte new_cargo_type = p2 & 0xFF; //gets the cargo number
 	AircraftVehicleInfo *avi;
 
-	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
+
+	if (v->type != VEH_Aircraft) return CMD_ERROR;
+
 	avi = AircraftVehInfo(v->engine_type);
+
 	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
 	switch (new_cargo_type) {
 		case CT_PASSENGERS:

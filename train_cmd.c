@@ -719,7 +719,10 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *src, *dst, *src_head, *dst_head;
 	bool is_loco;
 
+	if (!IsVehicleIndex(p1 & 0xFFFF)) return CMD_ERROR;
+
 	src = GetVehicle(p1 & 0xFFFF);
+
 	if (src->type != VEH_Train) return CMD_ERROR;
 
 	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON)
@@ -864,9 +867,11 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -888,12 +893,14 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v, *first,*last;
 	int32 cost;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	// get first vehicle in chain
 	first = v;
@@ -1172,9 +1179,11 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	_error_message = STR_EMPTY;
@@ -1201,9 +1210,11 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC)
@@ -1225,11 +1236,14 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	p2 = p2 & 0xFF;
 
-	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
-	if (!CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
+
+	if (v->type != VEH_Train || !CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 
 	cost = 0;
 	num = 0;
@@ -1341,10 +1355,14 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		 bit 2 = clear v->set_for_replacement */
 int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v;
 	TrainFindDepotData tfdd;
 
-	if (!CheckOwnership(v->owner))
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
+	v = GetVehicle(p1);
+
+	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (HASBIT(p2, 0)) v->set_for_replacement = true;
@@ -1387,9 +1405,13 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangeTrainServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v;
 
-	if (!CheckOwnership(v->owner))
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
+	v = GetVehicle(p1);
+
+	if (v->type != VEH_Train || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

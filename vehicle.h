@@ -376,6 +376,14 @@ static inline Vehicle *GetVehicle(uint index)
 	return &_vehicles[index];
 }
 
+static inline bool IsVehicleIndex(uint index)
+{
+	if (index < _vehicles_size)
+		return true;
+	else
+		return false;
+}
+
 #define FOR_ALL_VEHICLES(v) for(v = _vehicles; v != &_vehicles[_vehicles_size]; v++)
 #define FOR_ALL_VEHICLES_FROM(v, from) for(v = GetVehicle(from); v != &_vehicles[_vehicles_size]; v++)
 

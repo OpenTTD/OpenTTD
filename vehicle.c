@@ -1331,13 +1331,15 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
 	uint32 autorefit_money = (p2  >> 16) * 100000;
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v, *u;
 	int cost, build_cost, rear_engine_cost = 0;
-	Vehicle *u = v;
-	byte old_engine_type = v->engine_type;
+	byte old_engine_type;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
+	v = u = GetVehicle(p1);
+
+	old_engine_type = v->engine_type;
 
 	// first we make sure that it's a valid type the user requested
 	// check that it's an engine that is in the engine array
@@ -1635,6 +1637,8 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	StringID str;
+
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 

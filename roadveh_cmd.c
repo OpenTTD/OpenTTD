@@ -209,6 +209,8 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
@@ -229,12 +231,14 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
@@ -307,8 +311,12 @@ static int FindClosestRoadDepot(Vehicle *v)
 		 bit 2 = clear v->set_for_replacement */
 int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v;
 	int depot;
+
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
+	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -348,6 +356,8 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
@@ -372,6 +382,8 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdChangeRoadVehServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
