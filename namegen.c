@@ -19,7 +19,7 @@ static void ReplaceWords(const char *org, const char *rep, char *buf)
 	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4);
 }
 
-static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
+static byte MakeEnglishOriginalTownName(char *buf, uint32 seed)
 {
 	int i;
 
@@ -60,7 +60,7 @@ static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
 }
 
 
-static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
+static byte MakeEnglishAdditionalTownName(char *buf, uint32 seed)
 {
 	int i;
 
@@ -105,7 +105,7 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeAustrianTownName(byte *buf, uint32 seed)
+static byte MakeAustrianTownName(char *buf, uint32 seed)
 {
 	int i, j = 0;
 	strcpy(buf, "");
@@ -143,7 +143,7 @@ static byte MakeAustrianTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeGermanTownName(byte *buf, uint32 seed)
+static byte MakeGermanTownName(char *buf, uint32 seed)
 {
 	uint i;
 	uint seed_derivative;
@@ -185,26 +185,26 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeSpanishTownName(byte *buf, uint32 seed)
+static byte MakeSpanishTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_spanish_1[SeedChance(0, lengthof(name_spanish_1), seed)]);
 	return 0;
 }
 
-static byte MakeFrenchTownName(byte *buf, uint32 seed)
+static byte MakeFrenchTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_french_1[SeedChance(0, lengthof(name_french_1), seed)]);
 	return 0;
 }
 
-static byte MakeSillyTownName(byte *buf, uint32 seed)
+static byte MakeSillyTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_silly_1[SeedChance( 0, lengthof(name_silly_1), seed)]);
 	strcat(buf, name_silly_2[SeedChance(16, lengthof(name_silly_2), seed)]);
 	return 0;
 }
 
-static byte MakeSwedishTownName(byte *buf, uint32 seed)
+static byte MakeSwedishTownName(char *buf, uint32 seed)
 {
 	int i;
 
@@ -230,7 +230,7 @@ static byte MakeSwedishTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeDutchTownName(byte *buf, uint32 seed)
+static byte MakeDutchTownName(char *buf, uint32 seed)
 {
 	int i;
 
@@ -254,7 +254,7 @@ static byte MakeDutchTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeFinnishTownName(byte *buf, uint32 seed)
+static byte MakeFinnishTownName(char *buf, uint32 seed)
 {
 	//null terminates the string for strcat
 	strcpy(buf, "");
@@ -270,7 +270,7 @@ static byte MakeFinnishTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakePolishTownName(byte *buf, uint32 seed)
+static byte MakePolishTownName(char *buf, uint32 seed)
 {
 	uint i;
 	uint j;
@@ -316,25 +316,25 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeCzechTownName(byte *buf, uint32 seed)
+static byte MakeCzechTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_czech_1[SeedChance(0, lengthof(name_czech_1), seed)]);
 	return 0;
 }
 
-static byte MakeRomanianTownName(byte *buf, uint32 seed)
+static byte MakeRomanianTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_romanian_1[SeedChance(0, lengthof(name_romanian_1), seed)]);
 	return 0;
 }
 
-static byte MakeSlovakTownName(byte *buf, uint32 seed)
+static byte MakeSlovakTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_slovakish_1[SeedChance(0, lengthof(name_slovakish_1), seed)]);
 	return 0;
 }
 
-static byte MakeNorwegianTownName(byte *buf, uint32 seed)
+static byte MakeNorwegianTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, "");
 
@@ -353,7 +353,7 @@ static byte MakeNorwegianTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeHungarianTownName(byte *buf, uint32 seed)
+static byte MakeHungarianTownName(char *buf, uint32 seed)
 {
 	uint i;
 
@@ -382,7 +382,7 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-static byte MakeSwissTownName(byte *buf, uint32 seed)
+static byte MakeSwissTownName(char *buf, uint32 seed)
 {
 	strcpy(buf, name_swiss_real[SeedChance(0, lengthof(name_swiss_real), seed)]);
 	return 0;
