@@ -61,6 +61,13 @@ typedef struct ifreq IFREQ;
 #			define INADDR_NONE 0xffffffff
 #		endif // SUNOS
 #	endif // BEOS_NET_SERVER
+
+/* GLibc 2.1 does not support GetIfAddr() */
+#	if defined(__GLIBC__) && (__GLIBC__ == 2) && (__GLIBC_MINOR__ == 1)
+#		undef HAVE_GETIFADDRS
+		typedef uint32_t in_addr_t;
+#	endif /* __GLIBC__ && (__GLIBC__ == 2) && (__GLIBC_MINOR__ == 1) */
+
 #	include <errno.h>
 #	include <sys/time.h>
 #	include <netdb.h>
