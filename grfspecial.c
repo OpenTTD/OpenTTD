@@ -23,6 +23,9 @@ extern int _replace_sprites_offset[16];
 static const char *_cur_grffile;
 static int _cur_spriteid;
 
+static int32 _paramlist[0x7f];
+static int _param_max;
+
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
 static const int _vehshifts[4] = {
@@ -899,7 +902,13 @@ static void SkipIf(byte *buf, int len)
 			param_val = _opt.road_side << 4;
 			break;
 		default:
-			grfmsg(GMS_WARN, "Unsupported param %x. Ignoring test.", param);
+			if (param >= 0x80) {
+				/* In-game variable. */
+				grfmsg(GMS_WARN, "Unsupported in-game variable %x. Ignoring test.", param);
+			} else {
+				/* Parameter. */
+				param_val = _paramlist[param];
+			}
 			return;
 	}
 
@@ -1065,7 +1074,97 @@ static void ParamSet(byte *buf, int len)
 	 * 06      Signed bit shift, source1 by source2
 	 *         (source2 like in 05, and source1 as well)
 	 */
-	/* TODO */
+
+	byte target;
+	byte oper;
+	uint16 src1;
+	uint16 src2;
+	uint16 data = 0;
+
+	check_length(len, 5, "ParamSet");
+	target = grf_load_byte(&buf);
+	oper = grf_load_byte(&buf);
+	src1 = grf_load_byte(&buf);
+	src2 = grf_load_byte(&buf);
+
+	if (len >= 8)
+		data = grf_load_dword(&buf);
+	
+	/* You can add 80 to the operation to make it apply only if the target
+	 * is not defined yet.  In this respect, a parameter is taken to be
+	 * defined if any of the following applies:
+	 * - it has been set to any value in the newgrf(w).cfg parameter list
+	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
+	 *   an earlier action D */
+	if (oper & 0x80) {
+		if (_param_max < target)
+			oper &= 0x7F;
+		else
+			return;
+	}
+
+	/* The source1 and source2 operands refer to the grf parameter number
+	 * like in action 6 and 7.  In addition, they can refer to the special
+	 * variables available in action 7, or they can be FF to use the value
+	 * of <data>.  If referring to parameters that are undefined, a value
+	 * of 0 is used instead.  */
+	if (src1 == 0xFF) {
+		src1 = data;
+	} else {
+		src1 = _param_max >= src1 ? _paramlist[src1] : 0;
+	}
+
+	if (src2 == 0xFF) {
+		src2 = data;
+	} else {
+		src2 = _param_max >= src2 ? _paramlist[src2] : 0;
+	}
+
+	/* TODO: You can access the parameters of another GRF file by using
+	 * source2=FE, source1=the other GRF's parameter number and data=GRF
+	 * ID.  This is only valid with operation 00 (set).  If the GRF ID
+	 * cannot be found, a value of 0 is used for the parameter value
+	 * instead. */
+
+	/* TODO: The target operand can also refer to the special variables
+	 * from action 7, but at the moment the only variable that is valid to
+	 * write is 8E. */
+
+	if (_param_max < target)
+		_param_max = target;
+
+	/* FIXME: No checking for overflows. */
+	switch (oper) {
+		case 0x00:
+			_paramlist[target] = src1;
+			break;
+		case 0x01:
+			_paramlist[target] = src1 + src2;
+			break;
+		case 0x02:
+			_paramlist[target] = src1 - src2;
+			break;
+		case 0x03:
+			_paramlist[target] = ((uint32) src1) * ((uint32) src2);
+			break;
+		case 0x04:
+			_paramlist[target] = ((int32) src1) * ((int32) src2);
+			break;
+		case 0x05:
+			if (src2 & 0x8000) /* src2 is "negative" */
+				_paramlist[target] = src1 >> -((int16) src2);
+			else
+				_paramlist[target] = src1 << src2;
+			break;
+		case 0x06:
+			if (src2 & 0x8000) /* src2 is "negative" */
+				_paramlist[target] = ((int16) src1) >> -((int16) src2);
+			else
+				_paramlist[target] = ((int16) src1) << src2;
+			break;
+		default:
+			grfmsg(GMS_ERROR, "ParamSet: Unknown operation %d, skipping.", oper);
+	}
 }
 
 static void GRFInhibit(byte *buf, int len)
