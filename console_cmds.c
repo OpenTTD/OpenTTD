@@ -177,14 +177,15 @@ DEF_CONSOLE_CMD(ConInfoVar)
 {
 	if (argc<2) return NULL;
 	if (argt[1]!=ICONSOLE_VAR_REFERENCE) {
-		IConsoleError("first argument must be an variable reference");
+		IConsoleError("first argument has to be a variable reference");
 		} else {
 		_iconsole_var * item;
 		item = (_iconsole_var *) argv[1];
 		IConsolePrintF(_iconsole_color_default,"var_name: %s",item->name);
 		IConsolePrintF(_iconsole_color_default,"var_type: %i",item->type);
 		IConsolePrintF(_iconsole_color_default,"var_addr: %i",item->addr);
-		if (item->_malloc) IConsolePrintF(_iconsole_color_default,"var_malloc: internal"); else IConsolePrintF(_iconsole_color_default, "var_malloc: external");
+		if (item->_malloc) IConsolePrintF(_iconsole_color_default,"var_malloc: internal");
+			else IConsolePrintF(_iconsole_color_default, "var_malloc: external");
 		if (item->hook_access) IConsoleWarning("var_access hooked");
 		if (item->hook_before_change) IConsoleWarning("var_before_change hooked");
 		if (item->hook_after_change) IConsoleWarning("var_after_change hooked");
@@ -197,7 +198,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 {
 	if (argc<2) return NULL;
 	if (argt[1]!=ICONSOLE_VAR_UNKNOWN) {
-		IConsoleError("first argument must be an commandname");
+		IConsoleError("first argument has to be a command name");
 		} else {
 		_iconsole_cmd * item;
 		item = IConsoleCmdGet(argv[1]);
