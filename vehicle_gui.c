@@ -120,7 +120,7 @@ void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
 	}
 
 	vl->sort_list = realloc(vl->sort_list, n * sizeof(vl->sort_list[0]));
-	if (vl->sort_list == NULL)
+	if (n!=0 && vl->sort_list == NULL)
 		error("Could not allocate memory for the vehicle-sorting-list");
 	vl->list_length = n;
 
