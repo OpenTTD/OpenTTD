@@ -226,6 +226,10 @@ endif
 endif
 endif
 
+# remove the dependancy for sdl if DEDICALTED is used
+ifdef DEDICATED
+WITH_SDL:=
+endif
 
 
 ##############################################################################
