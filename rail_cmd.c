@@ -1083,52 +1083,30 @@ int32 CmdBuildSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /* Remove signals
- * p1 bits 0..2 = track
+ * p1 bits 0-2 = track, valid values: 0-5
  * p2 = unused
  */
-
 int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
-	uint tile;
-	int track = p1 & 0x7;
-	byte a,b,c,d;
+	TileIndex tile = TILE_FROM_XY(x, y);
+	uint track = p1 & 0x7;
+
+	if (!(track < 6) || // only 6 possible track-combinations
+			!IsTileType(tile, MP_RAILWAY) ||
+			!EnsureNoVehicle(tile))
+		return CMD_ERROR;
+
+	if ((_map5[tile] & RAIL_TYPE_MASK) != RAIL_TYPE_SIGNALS ||
+			(_map3_lo[tile] & _signals_table_both[track]) == 0) // signals on track?
+		return CMD_ERROR;
+
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	FindLandscapeHeight(&ti, x, y);
-	tile = ti.tile;
-
-	/* No vehicle behind. */
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
-
-	/* Signals can only exist on railways */
-	if (ti.type != MP_RAILWAY)
-		return CMD_ERROR;
-
-	/* Map5 mode is 0x40 when there's signals */
-	if ((ti.map5 & RAIL_TYPE_MASK) != RAIL_TYPE_SIGNALS)
-		return CMD_ERROR;
-
-	/* Who owns the tile? */
-	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile))
-		return CMD_ERROR;
-
-	// calculate already built signals
-	a = _signals_table[track];      // signal for this track in one direction
-	b = _signals_table[track + 8];  // signal for this track in the other direction
-	c = a | b;
-	d = _map3_lo[tile] & c;
-
-	/* no signals on selected track? */
-	if (d == 0)
-		return CMD_ERROR;
-
 	/* Do it? */
 	if (flags & DC_EXEC) {
-
-		_map3_lo[tile] &= ~c;
+		_map3_lo[tile] &= ~_signals_table_both[track];
 
 		/* removed last signal from tile? */
 		if ((_map3_lo[tile] & 0xF0) == 0) {
