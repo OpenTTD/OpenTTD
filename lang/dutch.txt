@@ -1,5 +1,5 @@
-##name Dutch (not complete)
-##ownname Nederlands (niet volledig)
+##name Dutch
+##ownname Nederlands
 
 ##id 0x0000
 STR_NULL							:

@@ -390,7 +390,7 @@ STR_016E							:{TINYFONT}{STRING}{} {STRING}
 STR_016F							:{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
 STR_0170							:{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME						:{BLACK}Pause game
-STR_0172_SAVE_GAME_ABANDON_GAME					:{BLACK}Save game, abandon game, quit
+STR_0172_SAVE_GAME_ABANDON_GAME					:{BLACK}Save game, quit game, quit
 STR_0173_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's stations
 STR_0174_DISPLAY_MAP						:{BLACK}Display map
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY				:{BLACK}Display map, town directory
@@ -1215,7 +1215,7 @@ STR_NETWORK_PASSWORD_TIP					:{BLACK}Protect your game with a password if you do
 STR_NETWORK_SELECT_MAP						:{BLACK}Select a map:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Number of players:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Chose a maximum number of players. Not all slots need to be filled.
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Choose a maximum number of players. Not all slots need to be filled.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_PLAYERS						:2 players
 STR_NETWORK_3_PLAYERS						:3 players
@@ -1237,7 +1237,7 @@ STR_NETWORK_SEND						:{BLACK}Send
 STR_NETWORK_SEND_TIP						:{BLACK}Send a message to the other players
 STR_NETWORK_COMPANY_NAME					:{BLACK}Company name:
 STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Change the name of your company. Hit enter to apply changes
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Spectate game
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Watch game
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
 STR_NETWORK_NEW_COMPANY						:{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open a new company
@@ -1363,7 +1363,7 @@ STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passengers last month: {ORANGE}{CO
 STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Mail last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
 STR_200F_TALL_OFFICE_BLOCK					:Tall office block
 STR_2010_OFFICE_BLOCK						:Office block
-STR_2011_SMALL_BLOCK_OF_FLATS					:Small block of flats
+STR_2011_SMALL_BLOCK_OF_FLATS					:Small block of apartments
 STR_2012_CHURCH							:Church
 STR_2013_LARGE_OFFICE_BLOCK					:Large office block
 STR_2014_TOWN_HOUSES						:Town houses
@@ -1402,7 +1402,7 @@ STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Service subsidy awarded to 
 STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} local authority refuses to allow another airport to be built in this town
 STR_2036_COTTAGES						:Cottages
 STR_2037_HOUSES							:Houses
-STR_2038_FLATS							:Flats
+STR_2038_FLATS							:Apartments
 STR_2039_TALL_OFFICE_BLOCK					:Tall office block
 STR_203A_SHOPS_AND_OFFICES					:Shops and offices
 STR_203B_SHOPS_AND_OFFICES					:Shops and offices
@@ -1460,7 +1460,7 @@ STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Can't change sign name...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Select tree type to plant
 STR_280E_TREES							:Trees
 STR_280F_RAINFOREST						:Rainforest
-STR_2810_CACTUS_PLANTS						:Cactus Plants
+STR_2810_CACTUS_PLANTS						:Cactuses
 
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION					:{WHITE}Rail Station Selection
