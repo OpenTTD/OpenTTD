@@ -413,6 +413,19 @@ static const WindowDesc _network_game_window_desc = {
 
 static FiosItem *selected_map = NULL; // to highlight slected map
 
+// called when a new server is found on the network
+void UpdateNetworkGameWindow(bool unselect)
+{
+	Window *w;
+	w = FindWindowById(WC_NETWORK_WINDOW, 0);
+	if (w != NULL) {
+		if (unselect)
+			_selected_item = NULL;
+		w->vscroll.count = _network_game_count;
+		SetWindowDirty(w);
+	}
+}
+
 void ShowNetworkGameWindow()
 {
 	uint i;
@@ -437,19 +450,8 @@ void ShowNetworkGameWindow()
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 120;
 	WP(w,querystr_d).buf = _edit_str_buf;
-}
 
-// called when a new server is found on the network
-void UpdateNetworkGameWindow(bool unselect)
-{
-	Window *w;
-	w = FindWindowById(WC_NETWORK_WINDOW, 0);
-	if (w != NULL) {
-		if (unselect)
-			_selected_item = NULL;
-		w->vscroll.count = _network_game_count;
-		SetWindowDirty(w);
-	}
+	UpdateNetworkGameWindow(true);
 }
 
 static const StringID _players_dropdown[] = {
