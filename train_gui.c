@@ -200,16 +200,14 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			if (sel_eng != -1)
 				DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 		}	break;
-		case 6:
-			WP(w,buildtrain_d).rename_engine = WP(w,buildtrain_d).sel_engine;
-			ShowQueryString(
-				GetCustomEngineName(WP(w,buildtrain_d).sel_engine),
-				STR_886A_RENAME_TRAIN_VEHICLE_TYPE,
-				31,
-				160,
-				w->window_class,
-				w->window_number);
-			break;
+		case 6: { /* rename */
+			int sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != -1) {
+				WP(w,buildtrain_d).rename_engine = sel_eng;
+				ShowQueryString(GetCustomEngineName(sel_eng),
+					STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);
+			}
+		} break;
 		}
 	} break;
 

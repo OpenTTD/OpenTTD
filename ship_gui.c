@@ -402,17 +402,14 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
 		} break;
 
-		case 6:	/* rename */
-			WP(w,buildtrain_d).rename_engine = WP(w,buildtrain_d).sel_engine;
-			ShowQueryString(
-				GetCustomEngineName(WP(w,buildtrain_d).sel_engine),
-				STR_9838_RENAME_SHIP_TYPE,
-				31,
-				160,
-				w->window_class,
-				w->window_number);
-			break;
-
+		case 6:	{ /* rename */
+			int sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != -1) {
+				WP(w,buildtrain_d).rename_engine = sel_eng;
+				ShowQueryString(GetCustomEngineName(sel_eng),
+					STR_9838_RENAME_SHIP_TYPE, 31, 160, w->window_class, w->window_number);
+			}
+		}	break;
 		}
 		break;
 

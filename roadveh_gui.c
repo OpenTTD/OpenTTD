@@ -411,16 +411,14 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 		} break;
 
-		case 6: /* rename */
-			WP(w,buildtrain_d).rename_engine = WP(w,buildtrain_d).sel_engine;
-			ShowQueryString(
-				GetCustomEngineName(WP(w,buildtrain_d).sel_engine),
-				STR_9036_RENAME_ROAD_VEHICLE_TYPE,
-				31,
-				160,
-				w->window_class,
-				w->window_number);
-			break;
+		case 6: { /* rename */
+			int sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != -1) {
+				WP(w,buildtrain_d).rename_engine = sel_eng;
+				ShowQueryString(GetCustomEngineName(sel_eng),
+					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);
+			}
+		}	break;
 		}
 		break;
 
