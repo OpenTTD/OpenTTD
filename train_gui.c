@@ -358,6 +358,15 @@ static void DrawTrainDepotWindow(Window *w)
 			/* Draw the train number */
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
+			
+			/*Draw the train counter */
+			i = 0;
+			u = v;
+			do i++; while ( (u=u->next) != NULL);		//Determine length of train
+			SetDParam(0, i);				//Set the counter
+			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
+			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
+			
 			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
 
@@ -375,6 +384,14 @@ static void DrawTrainDepotWindow(Window *w)
 
 			DrawTrainImage(v, x+50, y, w->hscroll.cap - 1, 0, WP(w,traindepot_d).sel);
 			DrawString(x, y+2, STR_8816, 0);
+			
+			/*Draw the train counter */
+			i = 0;
+			u = v;
+			do i++; while ( (u=u->next) != NULL);		//Determine length of train
+			SetDParam(0, i);				//Set the counter
+			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
+			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
 			y += 14;
 		}
 	}
@@ -603,25 +620,25 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 static const Widget _train_depot_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   337,   348,     0,    13, 0x0,										STR_STICKY_BUTTON},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   348,     0,    13, STR_8800_TRAIN_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   349,   360,     0,    13, 0x0,										STR_STICKY_BUTTON},
 
-{      WWT_PANEL,    RESIZE_LRB,    14,   314,   336,    14,    13, 0x0,										STR_NULL},
-{      WWT_PANEL,   RESIZE_LRTB,    14,   314,   336,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
-{      WWT_PANEL,   RESIZE_LRTB,    14,   314,   336,    55,   109, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
+{      WWT_PANEL,    RESIZE_LRB,    14,   326,   348,    14,    13, 0x0,										STR_NULL},
+{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
+{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,    55,   109, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
 
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   337,   348,    14,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   325,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   349,   360,    14,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   167,   110,   121, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   168,   336,   110,   121, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
-{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   313,    98,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,   337,   336,   110,   121, 0x0,										STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   337,   348,   110,   121, 0x0,										STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   168,   348,   110,   121, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
+{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   325,    98,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,   349,   348,   110,   121, 0x0,										STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   349,   360,   110,   121, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _train_depot_desc = {
-	-1, -1, 349, 122,
+	-1, -1, 361, 122,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_train_depot_widgets,

@@ -2789,3 +2789,4 @@ STR_MAGLEV_VEHICLES						:Maglev Vehicles
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}
