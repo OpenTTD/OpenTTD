@@ -253,6 +253,7 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 Window *BringWindowToFront(Window *w)
 {
 	Window *v;
+	Window temp;
 
 	v = _last_window;
 	do {
@@ -265,14 +266,13 @@ Window *BringWindowToFront(Window *w)
 
 	assert(w < v);
 
-	do {
-		memswap(w, w+1, sizeof(Window));
-		w++;
-	} while (v != w);
+	temp = *w;
+	memmove(w, w + 1, (v - w) * sizeof(Window));
+	*v = temp;
 
-	SetWindowDirty(w);
+	SetWindowDirty(v);
 
-	return w;
+	return v;
 }
 
 Window *AllocateWindow(
