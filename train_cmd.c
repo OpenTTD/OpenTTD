@@ -1521,7 +1521,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 /* Check for station tiles */
 typedef struct TrainTrackFollowerData {
 	TileIndex dest_coords;
-	int station_index; // station index we're heading for
+	StationID station_index; // station index we're heading for
 	uint best_bird_dist;
 	uint best_track_dist;
 	byte best_track;
@@ -1550,7 +1550,7 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 		return false;
 
 	// did we reach the final station?
- if ((ttfd->station_index == -1 && tile == ttfd->dest_coords) ||
+ if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) ||
   (IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
   /* We do not check for dest_coords if we have a station_index,
    * because in that case the dest_coords are just an
@@ -1585,7 +1585,7 @@ static void FillWithStationData(TrainTrackFollowerData *fd, Vehicle *v)
         if (v->current_order.type == OT_GOTO_STATION)
                 fd->station_index = v->current_order.station;
         else
-                fd->station_index = -1;
+                fd->station_index = INVALID_STATION;
 
 }
 
@@ -2018,7 +2018,7 @@ static int UpdateTrainSpeed(Vehicle *v)
 	return (spd >> 8);
 }
 
-static void TrainEnterStation(Vehicle *v, int station)
+static void TrainEnterStation(Vehicle *v, StationID station)
 {
 	Station *st;
 	uint32 flags;

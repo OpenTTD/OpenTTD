@@ -28,13 +28,15 @@ enum {
 	ROAD_STOP_LIMIT = 8,
 };
 
+typedef uint16 StationID;
+
 typedef struct RoadStop {
 	TileIndex xy;
 	bool used;
 	byte status;
 	uint32 index;
 	uint16 slot[NUM_SLOTS];
-	uint16 station;		//XXX should be StationIndex
+	StationID station;
 	uint8 type;
 	struct RoadStop *next;
 	struct RoadStop *prev;
@@ -72,7 +74,7 @@ struct Station {
 
 	//uint16 airport_flags;
 	uint32 airport_flags;
-	uint16 index;
+	StationID index;
 
 	VehicleID last_vehicle;
 	GoodsEntry goods[NUM_CARGO];
@@ -131,7 +133,7 @@ extern MemoryPool _station_pool;
 /**
  * Get the pointer to the station with index 'index'
  */
-static inline Station *GetStation(uint index)
+static inline Station *GetStation(StationID index)
 {
 	return (Station*)GetItemFromPool(&_station_pool, index);
 }

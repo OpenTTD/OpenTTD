@@ -79,7 +79,7 @@ static void MarkStationDirty(Station *st)
 	}
 }
 
-static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, uint index)
+static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, StationID index)
 {
 	road_stop->xy = tile;
 	road_stop->used = true;
@@ -224,7 +224,7 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 
 static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 {
-	uint16 station_index = st->index;
+	StationID station_index = st->index;
 	uint i;
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
@@ -258,7 +258,7 @@ static Station *AllocateStation(void)
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy == 0) {
-			uint index = st->index;
+			StationID index = st->index;
 
 			memset(st, 0, sizeof(Station));
 			st->index = index;
@@ -1020,7 +1020,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 	if (flags & DC_EXEC) {
 		int tile_delta;
 		byte *layout_ptr;
-		uint station_index = st->index;
+		StationID station_index = st->index;
 		StationSpec *statspec;
 
 		// Now really clear the land below the station
@@ -2316,7 +2316,7 @@ static const byte _enter_station_speedtable[12] = {
 
 static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 {
-	uint16 station_id;	//XXX should be stationindex
+	StationID station_id;
 	byte dir;
 	uint16 spd;
 
@@ -2390,7 +2390,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 static void DeleteStation(Station *st)
 {
 	Order order;
-	int index;
+	StationID index;
 	st->xy = 0;
 
 	DeleteName(st->string_id);
@@ -2473,7 +2473,8 @@ static byte _rating_boost[3] = { 0, 31, 63};
 static void UpdateStationRating(Station *st)
 {
 	GoodsEntry *ge;
-	int rating, index;
+	int rating;
+	StationID index;
 	int waiting;
 	bool waiting_changed = false;
 
@@ -2671,8 +2672,8 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 {
 	Station *around_ptr[8];
-	uint16 around[8];
-	uint16 st_index;
+	StationID around[8];
+	StationID st_index;
 	int i;
 	Station *st;
 	uint moved;
