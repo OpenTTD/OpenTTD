@@ -166,41 +166,45 @@ static byte MakeAustrianTownName(byte *buf, uint32 seed)
 
 static byte MakeGermanTownName(byte *buf, uint32 seed)
 {
-	int i;
+	uint i;
+	uint seed_derivative;
 
 	//null terminates the string for strcat
 	strcpy(buf, "");
 
-	// optional first segment
-	if ((i = GetNumberBasedOnSeed(0, lengthof(name_german_pre) + 50, seed) - 50) >= 0)
-	{
+	seed_derivative = GetNumberBasedOnSeed(7, 28, seed);
+
+	//optional prefix
+	if (seed_derivative == 12 || seed_derivative == 19) {
+		i = GetNumberBasedOnSeed(2, lengthof(name_german_pre), seed);
 		strcat(buf,name_german_pre[i]);
 	}
 
+	i = GetNumberBasedOnSeed(3, lengthof(name_german_hardcoded) + lengthof(name_german_1), seed);
+
 	// mandatory middle segments including option of hardcoded name
-	if ((i = GetNumberBasedOnSeed(4, lengthof(name_german_hardcoded) + 50, seed) - 50) >= 0)
-	{
+	if (i < lengthof(name_german_hardcoded)) {
 		strcat(buf,name_german_hardcoded[i]);
 	}
 	else
 	{
-		strcat(buf, name_german_1[GetNumberBasedOnSeed( 7, lengthof(name_german_1), seed)]);
-		strcat(buf, name_german_2[GetNumberBasedOnSeed(10, lengthof(name_german_2), seed)]);
+		strcat(buf, name_german_1[i - lengthof(name_german_hardcoded)]);
+
+		i = GetNumberBasedOnSeed(5, lengthof(name_german_2), seed);
+		strcat(buf, name_german_2[i]);
 	}
 
-	//optional last segment
-	if ((i = GetNumberBasedOnSeed(12, 50 + 10, seed) - 50) >= 0)
-	{
-		if (i > 2)
-		{
-			strcat(buf, name_german_3_an_der[GetNumberBasedOnSeed(14, lengthof(name_german_3_an_der), seed)]);
-			strcat(buf, name_german_4_an_der[GetNumberBasedOnSeed(15, lengthof(name_german_4_an_der), seed)]);
+	// optional suffix
+	if (seed_derivative == 24) {
+		i = GetNumberBasedOnSeed(9,
+			lengthof(name_german_4_an_der) + lengthof(name_german_4_am), seed);
+		if (i < lengthof(name_german_4_an_der)) {
+			strcat(buf, name_german_3_an_der[0]);
+			strcat(buf, name_german_4_an_der[i]);
 		} else {
-			strcat(buf, name_german_3_am[GetNumberBasedOnSeed(14, lengthof(name_german_3_am), seed)]);
-			strcat(buf, name_german_4_am[GetNumberBasedOnSeed(15, lengthof(name_german_4_am), seed)]);
+			strcat(buf, name_german_3_am[0]);
+			strcat(buf, name_german_4_am[i - lengthof(name_german_4_an_der)]);
 		}
-
-
 	}
 	return 0;
 }
@@ -415,7 +419,8 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 	else
 	{
 		// optional first segment
-		if ((i = GetNumberBasedOnSeed(0, lengthof(name_hungarian_1) * 3, seed)) < lengthof(name_hungarian_1))
+		i = GetNumberBasedOnSeed(3, lengthof(name_hungarian_1) * 3, seed);
+		if (i < lengthof(name_hungarian_1))
 		{
 			strcat(buf, name_hungarian_1[i]);
 		}
