@@ -1376,7 +1376,10 @@ static bool CheckIfTooCloseToIndustry(uint tile, int type)
 		if (i->xy != 0 &&
 				(GetTileDist1D(tile, i->xy) <= 14) &&
 				spec->accepts_cargo[0] != 0xFF &&
-				spec->accepts_cargo[0] == i->accepts_cargo[0]) {
+				spec->accepts_cargo[0] == i->accepts_cargo[0] && 
+				!(_game_mode == GM_EDITOR && 
+					_patches.same_industry_close &&
+					_patches.multiple_industry_per_town)) {
 				_error_message = STR_INDUSTRY_TOO_CLOSE;
 				return false;
 				}
