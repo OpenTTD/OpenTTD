@@ -978,7 +978,7 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
 	$(call cmd,cxx_compile)
-	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
+	@mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d)
 
 # Silence stale header dependencies
 %.h:
