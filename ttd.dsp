@@ -966,6 +966,10 @@ SOURCE=.\table\landscape_sprite.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\table\namegen.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\table\palettes.h
 # End Source File
 

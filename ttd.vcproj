@@ -2660,6 +2660,9 @@
 				RelativePath="table\landscape_sprite.h">
 			</File>
 			<File
+				RelativePath="table\namegen.h">
+			</File>
+			<File
 				RelativePath="table\palettes.h">
 			</File>
 			<File
