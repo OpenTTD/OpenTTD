@@ -418,9 +418,11 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->scancode == 17)  key |= WKC_BACKQUOTE;
 #elif defined(__SVR4) && defined(__sun)
 	if (sym->scancode == 60) key |= WKC_BACKQUOTE;
+	if (sym->scancode == 49) key |= WKC_BACKSPACE;
 #else
 	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
 #endif
+
 	// META are the command keys on mac
 	if (sym->mod & KMOD_META) key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
