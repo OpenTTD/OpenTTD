@@ -480,7 +480,7 @@ int ttd_main(int argc, char* argv[])
 	int network = 0;
 	char *network_conn = NULL;
 	char *language = NULL;
-	char musicdriver[32], sounddriver[32], videodriver[32];
+	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
 	_ignore_wrong_grf = false;
@@ -549,9 +549,9 @@ int ttd_main(int argc, char* argv[])
 	LoadFromConfig();
 
 	// override config?
-	if (musicdriver[0]) strcpy(_ini_musicdriver, musicdriver);
-	if (sounddriver[0]) strcpy(_ini_sounddriver, sounddriver);
-	if (videodriver[0]) strcpy(_ini_videodriver, videodriver);
+	if (musicdriver[0]) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
+	if (sounddriver[0]) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
+	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != -1) _patches.starting_date = startdate;
 
