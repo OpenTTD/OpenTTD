@@ -981,7 +981,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automata megújításhoz szükséges m
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: Magas értékek lelassítják a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1150,7 +1150,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Hálózati felület nem mûködik jelenleg!
+TEMP_STRING_NO_NETWORK						:{WHITE}Hálózati felület nem mûködik teljesen!{}Egyes opciók mûködnek, de masok, mint a lobby, etc. nem. Csak információként.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Többjátékos
 
@@ -1168,8 +1168,8 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}A többi játékos ilyen nével fog ismerni T
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Válassz kapcsolat típust:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Válassz az internetes játék és a helyi hálózatban történõ játék között
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:{BLACK}Helyi hálózat
-STR_NETWORK_INTERNET						:{BLACK}Internet
+STR_NETWORK_LAN									:Helyi hálózat
+STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Név
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Játék neve
@@ -1194,13 +1194,13 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Melyik terképen akarsz játszani?
 STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Játékosok száma:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Válaszd ki a maximális játékos-számot. Nem kötelezõ mindet kihasználni.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:{BLACK}2 játékos
-STR_NETWORK_3_PLAYERS						:{BLACK}3 játékos
-STR_NETWORK_4_PLAYERS						:{BLACK}4 játékos
-STR_NETWORK_5_PLAYERS						:{BLACK}5 játékos
-STR_NETWORK_6_PLAYERS						:{BLACK}6 játékos
-STR_NETWORK_7_PLAYERS						:{BLACK}7 játékos
-STR_NETWORK_8_PLAYERS						:{BLACK}8 játékos
+STR_NETWORK_2_PLAYERS						:2 játékos
+STR_NETWORK_3_PLAYERS						:3 játékos
+STR_NETWORK_4_PLAYERS						:4 játékos
+STR_NETWORK_5_PLAYERS						:5 játékos
+STR_NETWORK_6_PLAYERS						:6 játékos
+STR_NETWORK_7_PLAYERS						:7 játékos
+STR_NETWORK_8_PLAYERS						:8 játékos
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
 
 
@@ -2217,7 +2217,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Súly
 STR_8818_INFORMATION						:{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
-STR_881B_TRAINS							:{WHITE}{STRING} vonatai
+STR_881B_TRAINS							:{WHITE}{STRING} vonatai - {COMMA16}
 STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Új vasúti jármûvek
 STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Új MagLev jármûvek
@@ -2307,7 +2307,7 @@ STR_TRAIN_STOPPING_VEL						:{RED}Lassít, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY				:{WHITE}Közúti jármû van az útban
-STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} közúti jármûvei
+STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} közúti jármûvei - {COMMA16}
 STR_9002							:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}{TOWN}i garázs
 STR_9004_NEW_VEHICLES						:{BLACK}Új jármûvek
@@ -2372,7 +2372,7 @@ STR_9801_DOCK_CONSTRUCTION					:{WHITE}Kikötõépítés
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Nem építhetsz ide kikötõt...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN}i dokk
 STR_9804_NEW_SHIPS						:{BLACK}Új hajók
-STR_9805_SHIPS							:{WHITE}{STRING} hajói
+STR_9805_SHIPS							:{WHITE}{STRING} hajói - {COMMA16} 
 STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Nem vehetsz hajókat...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Elõbb dokkot kell építened
 STR_9808_NEW_SHIPS						:{WHITE}Új hajók
@@ -2448,7 +2448,7 @@ STR_A005_NEW_AIRCRAFT						:{WHITE}Új repülõgépek
 STR_A006_BUILD_AIRCRAFT						:{BLACK}Megvesz
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Sebesség: {GOLD}{VELOCITY}{}{BLACK}Kapacitás: {GOLD}{COMMA16} utas, {COMMA16} csomag levél{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Nem veheted meg a repülõgépet...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} repülõgépei
+STR_A009_AIRCRAFT						:{WHITE}{STRING} repülõgépei - {COMMA16}
 STR_A00A							:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} menetrendje
 STR_A00C_DETAILS						:{WHITE}{STRING} adatai

@@ -183,11 +183,11 @@ STR_00B2_MESSAGE						:{YELLOW}Messaggio
 STR_00B3_MESSAGE_FROM					:{YELLOW}Messaggio da {STRING}
 STR_00B4_CAN_T_DO_THIS					:{WHITE}Non puoi fare questo....
 STR_00B5_CAN_T_CLEAR_THIS_AREA			:{WHITE}Non puoi ripulire l'area....
-STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER	:{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
-STR_00B7_VERSION_3_02_011_11TH_OCTOBER	:{BLACK}OpenTTD versione {REV}
-STR_00B8_DESIGNED_PROGRAMMED_BY			:{BLACK}Concepito originariamente da Chris Sawyer
-STR_00B9_GRAPHICS_BY_SIMON_FOSTER		:{BLACK}Grafica di Simon Foster
-STR_00BA_WINDOWS_95_CONVERSION_BY		:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
+STR_00B7_VERSION										:{BLACK}OpenTTD versione {REV}
+STR_00B8_ORIGINAL_DESIGN_PROGRAM		:{BLACK}Concepito originariamente da Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafica di Simon Foster
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
 STR_00C6								:{SILVER}{CROSS}
@@ -339,7 +339,7 @@ STR_0159_CARGO_PAYMENT_RATES			:Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE			:Classifica società
 ############ range for menu	ends
 
-STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
+STR_015B_OPENTTD							:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Salva partita
 STR_015D_LOAD_GAME						:Carica partita
 STR_015E_QUIT_GAME						:Abbandona partita
@@ -557,7 +557,7 @@ STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Crea Scenario
-STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
+STR_0221_OPENTTD								:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Editor Scenario
 STR_0223_LAND_GENERATION				:{WHITE}Genera paesaggio
 STR_0224								:{BLACK}{UPARROW}
@@ -731,11 +731,11 @@ STR_02D4_TRANSPARENT_BUILDINGS			:{SETX 12}Edifici trasparenti
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO				:Informazioni sull'area
-STR_02D6								:
-STR_02D7_SCREENSHOT_CTRL_S				:ScreenShot (Ctrl-S)
+STR_02D5_LAND_BLOCK_INFO						:Informazioni sull'area
+STR_02D6														:
+STR_02D7_SCREENSHOT_CTRL_S					:ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G		:ScreenShot Gigante (Ctrl-G)
-STR_02D9_ABOUT_TRANSPORT_TYCOON			:Info su 'OpenTTD'
+STR_02D9_ABOUT_OPENTTD							:Info su 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON								:{BLACK}On
@@ -776,9 +776,9 @@ STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Mostra opzioni di gioco
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Mostra opzioni difficoltà
 STR_0303_START_A_NEW_GAME_USING			:{BLACK}Inizia una partita con uno scenario personalizzato
 STR_0304_QUIT							:{BLACK}Esci
-STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Esci da 'OpenTTD'
+STR_0305_LEAVE_OPENTTD								:{BLACK}Esci da 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Guarda dimostrazione/tutorial
-STR_0307_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD {REV}
+STR_0307_OPENTTD											:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...può essere costruito solo in città
 STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Seleziona paesaggio 'temperato'
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-artico' 
@@ -903,8 +903,8 @@ STR_TRAIN_IS_UNPROFITABLE				:{WHITE}Il profitto del treno {COMMA16} per l'anno 
 STR_EURO_INTRODUCE					: {BLACK}{BIGFONT}Unione Monetaria Europea!{}{}E’ stato introdotto l’euro come unica moneta per qualsiasi transazione del tuo Paese!
 
 # Start of order review system. 
-:# DON'T ADD OR REMOVE LINES HERE
-:STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}Il treno {COMMA16} non ha sufficienti ordini pianificati
+# DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}Il treno {COMMA16} non ha sufficienti ordini pianificati
 STR_TRAIN_HAS_VOID_ORDER						:{WHITE}Il treno {COMMA16} non ha alcun ordine
 STR_TRAIN_HAS_DUPLICATE_ENTRY				:{WHITE}Il treno {COMMA16} ha alcuni ordini duplicati
 STR_TRAIN_HAS_INVALID_ENTRY                           :{WHITE}Il treno {COMMA16} ha una stazione non valida negli ordini 
@@ -921,7 +921,7 @@ STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}L’aereo {COMMA16} non ha alcun ordine
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY		:{WHITE}L’aereo {COMMA16} ha alcuni ordini duplicati 
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                :{WHITE}L’aereo {COMMA16} ha un aeroporto non valido negli ordini
 # end of order system
-:
+
 STR_TRAIN_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per il treno {COMMA16} (limite fondi)
 STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per il veicolo {COMMA16} (limite fondi)
 STR_SHIP_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per la nave {COMMA16} (limite fondi)
@@ -1116,7 +1116,7 @@ STR_SORT_BY_PRODUCTION				:{BLACK}Produzione
 STR_SORT_BY_TYPE					:{BLACK}Tipo
 STR_SORT_BY_TRANSPORTED				:{BLACK}Trasportato
 STR_INDUSTRYDIR_CAPTION					:{WHITE}Industrie
-STR_INDUSTRYDIR_ITEM					:<CHECK>{ORANGE}{TOWN} {STRING}{BLACK} ({STRING})
+STR_INDUSTRYDIR_ITEM					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% trasportato)
 STR_INDUSTRYDIR_ITEM_TWO				:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% trasportate)
 STR_INDUSTRYDIR_ITEM_NOPROD				:{ORANGE}{TOWN} {STRING}
 
@@ -1150,8 +1150,8 @@ STR_NETWORK_ENTER_NAME_TIP				:{BLACK}Questo è il nome con cui gli altri giocato
 STR_NETWORK_SELECT_CONNECTION			:{BLACK}Seleziona tipo di connessione:
 STR_NETWORK_CONNECTION_TYPE_TIP		:{BLACK}Seleziona tra una partita via Internet o un gioco nella rete locale 
 STR_NETWORK_COMBO1								:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN										:{BLACK}LAN
-STR_NETWORK_INTERNET							:{BLACK}Internet
+STR_NETWORK_LAN										:LAN
+STR_NETWORK_INTERNET							:Internet
 
 STR_NETWORK_GAME_NAME							:{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome del gioco 
@@ -1176,13 +1176,13 @@ STR_NETWORK_SELECT_MAP_TIP				:{BLACK}Con quale mappa vuoi giocare?
 STR_NETWORK_NUMBER_OF_PLAYERS			: {BLACK}Numero di giocatori:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP	:{BLACK}Seleziona il numero Massimo di giocatori. Non è necessario che tutti gli spazi vengano occupati.
 STR_NETWORK_COMBO2								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS							:{BLACK}2 giocatori
-STR_NETWORK_3_PLAYERS							:{BLACK}3 giocatori 
-STR_NETWORK_4_PLAYERS							:{BLACK}4 giocatori 
-STR_NETWORK_5_PLAYERS							:{BLACK}5 giocatori 
-STR_NETWORK_6_PLAYERS							:{BLACK}6 giocatori 
-STR_NETWORK_7_PLAYERS							:{BLACK}7 giocatori 
-STR_NETWORK_8_PLAYERS							:{BLACK}8 giocatori 
+STR_NETWORK_2_PLAYERS							:2 giocatori
+STR_NETWORK_3_PLAYERS							:3 giocatori 
+STR_NETWORK_4_PLAYERS							:4 giocatori 
+STR_NETWORK_5_PLAYERS							:5 giocatori 
+STR_NETWORK_6_PLAYERS							:6 giocatori 
+STR_NETWORK_7_PLAYERS							:7 giocatori 
+STR_NETWORK_8_PLAYERS							:8 giocatori 
 STR_NETWORK_START_GAME						:{BLACK}Avvia gioco 
 
 
@@ -1807,8 +1807,8 @@ STR_7025_OPERATING_PROFIT_GRAPH			:{WHITE}Grafico Profitti Operazionali
 STR_7026_BANK_BALANCE					:{WHITE}Bilancio Bancario
 STR_7027_LOAN							:{WHITE}Prestito
 STR_7028								:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:<CHECK>{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:<CHECK>{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW							:<CHECK>{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:<CHECK>{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN			:{WHITE}...il prestito massimo concesso è di {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Non puoi chiedere altro denaro...
 STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...debito già ripagato
@@ -2194,7 +2194,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso:
 STR_8818_INFORMATION					:{BLACK}Informazioni
 STR_8819_TRAIN_TOO_LONG					:{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
-STR_881B_TRAINS							:{WHITE}{STRING} - Treni
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Treni
 STR_881C_NEW_RAIL_VEHICLES				:{WHITE}Nuovo Veicolo Ferroviario
 STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}Nuovo  Veicolo Per Monorotaia
 STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}Nuovo Veicolo Per Maglev
@@ -2284,7 +2284,7 @@ STR_TRAIN_STOPPING_VEL					:{RED}In frenata, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Veicolo in mezzo
-STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - Veicoli stradali
+STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - {COMMA16} Veicoli stradali
 STR_9002								:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}{TOWN} Deposito Veicoli Stradali
 STR_9004_NEW_VEHICLES					:{BLACK}Nuovo Veicolo Stradale
@@ -2349,7 +2349,7 @@ STR_9801_DOCK_CONSTRUCTION				:{WHITE}Costruzione moli
 STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Non puoi costruire molo qui...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Deposito Navale
 STR_9804_NEW_SHIPS						:{BLACK}Nuove Navi
-STR_9805_SHIPS							:{WHITE}{STRING} - Navi
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Navi
 STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}Non puoi costruire nave...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Devi costruire un deposito prima
 STR_9808_NEW_SHIPS						:{WHITE}Nuove Navi
@@ -2425,7 +2425,7 @@ STR_A005_NEW_AIRCRAFT					:{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT					:{BLACK}Construisci Aereo
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}{}{BLACK}Capienza: {GOLD}{COMMA16} passeggeri, {COMMA16} sacchi postali{}{BLACK}Consumi: {GOLD}{CURRENCY}/anno{}{BLACK}Progettato nel: {GOLD}{NUMU16}{BLACK}  Vita: {GOLD}{COMMA16} Anni{}{BLACK}Affidabilità Max: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Non puoi costruire aereo
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - Aereo
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aereo
 STR_A00A								:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Ordini)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Dettagli)

@@ -1133,8 +1133,8 @@ STR_NETWORK_ENTER_NAME_TIP				:{BLACK}Este é o nome polo que te identificarán os
 STR_NETWORK_SELECT_CONNECTION			:{BLACK}Selecciona o tipo de conexión:
 STR_NETWORK_CONNECTION_TYPE_TIP		:{BLACK}Escoller entre unha partida na Internet ou na rede de área local
 STR_NETWORK_COMBO1								:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN										:{BLACK}LAN
-STR_NETWORK_INTERNET							:{BLACK}Internet
+STR_NETWORK_LAN										:LAN
+STR_NETWORK_INTERNET							:Internet
 
 STR_NETWORK_GAME_NAME							:{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome da partida
@@ -1159,13 +1159,13 @@ STR_NETWORK_SELECT_MAP_TIP				:{BLACK}¿Que mapa queres xogar?
 STR_NETWORK_NUMBER_OF_PLAYERS			:{BLACK}Número de xogadores:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP	:{BLACK}Selecciona o número máximo de xogadores. Non é necesario encher tódalas ranuras.
 STR_NETWORK_COMBO2								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS							:{BLACK}2 xogadores
-STR_NETWORK_3_PLAYERS							:{BLACK}3 xogadores
-STR_NETWORK_4_PLAYERS							:{BLACK}4 xogadores
-STR_NETWORK_5_PLAYERS							:{BLACK}5 xogadores
-STR_NETWORK_6_PLAYERS							:{BLACK}6 xogadores
-STR_NETWORK_7_PLAYERS							:{BLACK}7 xogadores
-STR_NETWORK_8_PLAYERS							:{BLACK}8 xogadores
+STR_NETWORK_2_PLAYERS							:2 xogadores
+STR_NETWORK_3_PLAYERS							:3 xogadores
+STR_NETWORK_4_PLAYERS							:4 xogadores
+STR_NETWORK_5_PLAYERS							:5 xogadores
+STR_NETWORK_6_PLAYERS							:6 xogadores
+STR_NETWORK_7_PLAYERS							:7 xogadores
+STR_NETWORK_8_PLAYERS							:8 xogadores
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Partida
 
 
@@ -2175,7 +2175,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso:
 STR_8818_INFORMATION					:{BLACK}Información
 STR_8819_TRAIN_TOO_LONG					:{WHITE}O tren é demasiado longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Os trens só se poden alterar cando estean parados nunha estación
-STR_881B_TRAINS							:{WHITE}{STRING} - Trens
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Trens
 STR_881C_NEW_RAIL_VEHICLES				:{WHITE}Novos Vehículos de Ferrocarril
 STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}Novos Vehículos de Monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}Novos Vehículos de Maglev
@@ -2265,7 +2265,7 @@ STR_TRAIN_STOPPING_VEL					:{RED}Parando, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Haí un vehículo de estrada no camiño
-STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - Vehículos de Estrada
+STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - {COMMA16} Vehículos de Estrada
 STR_9002								:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}Depósito de Vehículos de Estrada de {TOWN}
 STR_9004_NEW_VEHICLES					:{BLACK}Novos Vehículos
@@ -2330,7 +2330,7 @@ STR_9801_DOCK_CONSTRUCTION				:{WHITE}Construcción de Peiraos
 STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Non se pode construí-lo peirao aí...
 STR_9803_SHIP_DEPOT						:{WHITE}Depósito de Barcos de {TOWN}
 STR_9804_NEW_SHIPS						:{BLACK}Novos Barcos
-STR_9805_SHIPS							:{WHITE}{STRING} - Barcos
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Barcos
 STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}No se pode construí-los barcos...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Debes construír un depósito de barcos primeiro
 STR_9808_NEW_SHIPS						:{WHITE}Novos Barcos
@@ -2406,7 +2406,7 @@ STR_A005_NEW_AIRCRAFT					:{WHITE}Novo Avión
 STR_A006_BUILD_AIRCRAFT					:{BLACK}Construír Avión
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Capacidade: {GOLD}{COMMA16} pasaxeiros, {COMMA16} sacos de correo{}{BLACK}Coste de Mantemento: {GOLD}{CURRENCY}/ano{}{BLACK}Deseñado: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Non se pode construí-lo avíon...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - Avión
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Avión
 STR_A00A								:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Ordes)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Detalles)

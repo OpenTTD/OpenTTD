@@ -962,7 +962,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS			:{LTBLUE}Autorenew when vehice is {ORANGE}
 STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Duration of error message: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Snow line height: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD	:{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS			:{LTBLUE}Max trains per player: {ORANGE}{STRING}
@@ -1115,7 +1115,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE			:{WHITE}Can't refit train...
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not working yet!
+TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not fully working yet!{}Some options work, but others like lobby, etc. don't. Just so you know.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
@@ -1133,8 +1133,8 @@ STR_NETWORK_ENTER_NAME_TIP				:{BLACK}This is the name other players will identi
 STR_NETWORK_SELECT_CONNECTION			:{BLACK}Select connection type:
 STR_NETWORK_CONNECTION_TYPE_TIP		:{BLACK}Chose between an internet game or a local area nework game
 STR_NETWORK_COMBO1								:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN										:{BLACK}LAN
-STR_NETWORK_INTERNET							:{BLACK}Internet
+STR_NETWORK_LAN										:LAN
+STR_NETWORK_INTERNET							:Internet
 
 STR_NETWORK_GAME_NAME							:{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Name of the game
@@ -1159,13 +1159,13 @@ STR_NETWORK_SELECT_MAP_TIP				:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_PLAYERS			:{BLACK}Number of players:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP	:{BLACK}Chose a maximum number of players. Not all slots need to be filled.
 STR_NETWORK_COMBO2								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS							:{BLACK}2 players
-STR_NETWORK_3_PLAYERS							:{BLACK}3 players
-STR_NETWORK_4_PLAYERS							:{BLACK}4 players
-STR_NETWORK_5_PLAYERS							:{BLACK}5 players
-STR_NETWORK_6_PLAYERS							:{BLACK}6 players
-STR_NETWORK_7_PLAYERS							:{BLACK}7 players
-STR_NETWORK_8_PLAYERS							:{BLACK}8 players
+STR_NETWORK_2_PLAYERS							:2 players
+STR_NETWORK_3_PLAYERS							:3 players
+STR_NETWORK_4_PLAYERS							:4 players
+STR_NETWORK_5_PLAYERS							:5 players
+STR_NETWORK_6_PLAYERS							:6 players
+STR_NETWORK_7_PLAYERS							:7 players
+STR_NETWORK_8_PLAYERS							:8 players
 STR_NETWORK_START_GAME						:{BLACK}Start Game
 
 
@@ -2175,7 +2175,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight
 STR_8818_INFORMATION					:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG					:{WHITE}Train too long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Trains can only be altered when stopped inside a depot
-STR_881B_TRAINS							:{WHITE}{STRING} - Trains
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Trains
 STR_881C_NEW_RAIL_VEHICLES				:{WHITE}New Rail Vehicles
 STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}New Maglev Vehicles
@@ -2265,7 +2265,7 @@ STR_TRAIN_STOPPING_VEL					:{RED}Stopping, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Road vehicle in the way
-STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - Road Vehicles
+STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - {COMMA16} Road Vehicles
 STR_9002								:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}{TOWN} Road Vehicle Depot
 STR_9004_NEW_VEHICLES					:{BLACK}New Vehicles
@@ -2330,7 +2330,7 @@ STR_9801_DOCK_CONSTRUCTION				:{WHITE}Dock construction
 STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Can't build dock here...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Ship Depot
 STR_9804_NEW_SHIPS						:{BLACK}New Ships
-STR_9805_SHIPS							:{WHITE}{STRING} - Ships
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Ships
 STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}Can't build ships...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Must build ship depot first
 STR_9808_NEW_SHIPS						:{WHITE}New Ships
@@ -2406,7 +2406,7 @@ STR_A005_NEW_AIRCRAFT					:{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT					:{BLACK}Build Aircraft
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Can't build aircraft...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - Aircraft
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aircraft
 STR_A00A								:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Orders)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Details)

@@ -1168,8 +1168,8 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Podle tohoto jména te ostatní hraci pozna
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vyber typ pripojeni:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Vyber si hru na internetu nebo v místní síti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:{BLACK}LAN
-STR_NETWORK_INTERNET						:{BLACK}Internet
+STR_NETWORK_LAN									:LAN
+STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Název
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Název hry
@@ -1194,13 +1194,13 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve ktere mape si chces zahrat?
 STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Pocet hracu:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Zvol maximalni pocet hracu. Nemusis vybirat maximalni pocet.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:{BLACK}2 hraci
-STR_NETWORK_3_PLAYERS						:{BLACK}3 hraci
-STR_NETWORK_4_PLAYERS						:{BLACK}4 hraci
-STR_NETWORK_5_PLAYERS						:{BLACK}5 hracu
-STR_NETWORK_6_PLAYERS						:{BLACK}6 hracu
-STR_NETWORK_7_PLAYERS						:{BLACK}7 hracu
-STR_NETWORK_8_PLAYERS						:{BLACK}8 hracu
+STR_NETWORK_2_PLAYERS						:2 hraci
+STR_NETWORK_3_PLAYERS						:3 hraci
+STR_NETWORK_4_PLAYERS						:4 hraci
+STR_NETWORK_5_PLAYERS						:5 hracu
+STR_NETWORK_6_PLAYERS						:6 hracu
+STR_NETWORK_7_PLAYERS						:7 hracu
+STR_NETWORK_8_PLAYERS						:8 hracu
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
 
 
@@ -2217,7 +2217,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmot
 STR_8818_INFORMATION						:{BLACK}Informace
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Prilis dlouhý vlak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Vlaky lze menit, jen kdyz stojí uvnitr depa
-STR_881B_TRAINS							:{WHITE}{STRING} - vlaky
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} vlaky
 STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Nové lokomotivy a vagony
 STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Nové lokomotivy a vagony pro maglev
@@ -2307,7 +2307,7 @@ STR_TRAIN_STOPPING_VEL						:{RED}Zastavuje, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY				:{WHITE}Silnicni vozidlo v ceste
-STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - silnicni vozidla
+STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - {COMMA16} silnicni vozidla
 STR_9002							:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}Garaze pro silnicni vozidla {TOWN}
 STR_9004_NEW_VEHICLES						:{BLACK}Nová silnicni vozidla
@@ -2372,7 +2372,7 @@ STR_9801_DOCK_CONSTRUCTION					:{WHITE}Konstrukce pristavu
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Zde nelze postavit pristav...
 STR_9803_SHIP_DEPOT						:{WHITE}Lodní depo {TOWN}
 STR_9804_NEW_SHIPS						:{BLACK}Nové lode
-STR_9805_SHIPS							:{WHITE}{STRING} - lode
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} lode
 STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Nemohu koupit lod...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Nejprve musis postavit lodní depo
 STR_9808_NEW_SHIPS						:{WHITE}Nové lode
@@ -2448,7 +2448,7 @@ STR_A005_NEW_AIRCRAFT						:{WHITE}Nové letadlo
 STR_A006_BUILD_AIRCRAFT						:{BLACK}Koupit letadlo
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}{}{BLACK}Kapacita: {GOLD}{COMMA16} cestujících, {COMMA16} baliku posty{}{BLACK}Cena provozu: {GOLD}{CURRENCY} rocne{}{BLACK}Vyvinuto: {GOLD}{NUMU16}{BLACK}  Zivotnost: {GOLD}{COMMA16} let{}{BLACK}Max. spolehlivost: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Nelze koupit letadlo...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - letadla a helikoptery
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} letadla a helikoptery
 STR_A00A							:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Prikazy)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Detaily)
