@@ -30,39 +30,42 @@ void VehicleInTheWayErrMsg(Vehicle *v)
 
 static void *EnsureNoVehicleProc(Vehicle *v, void *data)
 {
-	if (v->tile != (TileIndex)(int)data || v->type == VEH_Disaster)
+	if (v->tile != *(const TileIndex*)data || v->type == VEH_Disaster)
 		return NULL;
 
 	VehicleInTheWayErrMsg(v);
-	return (void*)1;
+	return v;
 }
 
 bool EnsureNoVehicle(TileIndex tile)
 {
-	return VehicleFromPos(tile, (void*)(int)tile, (VehicleFromPosProc*)EnsureNoVehicleProc) == NULL;
+	return VehicleFromPos(tile, &tile, EnsureNoVehicleProc) == NULL;
 }
 
 static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
-	uint32 d = (uint32)data;	// max mapsize 4,096*4,096 if shifted 8 bits for byte
-	// with uint64 max mapsize is 2,6843,5456*2,6843,5456 :D
-	if (v->tile != (TileIndex)(d >> (sizeof(byte)*8)) || v->z_pos != (byte)d || v->type == VEH_Disaster)
+	const TileInfo *ti = data;
+
+	if (v->tile != ti->tile || v->z_pos != ti->z || v->type == VEH_Disaster)
 		return NULL;
 
 	VehicleInTheWayErrMsg(v);
-	return (void*)1;
+	return v;
 }
 
 bool EnsureNoVehicleZ(TileIndex tile, byte z)
 {
 	TileInfo ti;
+
 	FindLandscapeHeightByTile(&ti, tile);
 	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
 	// 1, 2, 3, 4, 5, 6 and 7
 	if (CORRECT_Z(ti.tileh))
 		z += 8;
 
-	return VehicleFromPos(tile, (void*)((TileIndex)tile << (sizeof(byte)*8) | (byte)z), (VehicleFromPosProc*)EnsureNoVehicleProcZ) == NULL;
+	ti.z = z;
+
+	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ) == NULL;
 }
 
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
