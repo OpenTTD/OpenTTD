@@ -66,6 +66,32 @@ typedef struct ifreq IFREQ;
 #	include <netdb.h>
 #endif // UNIX
 
+// OS/2 stuff
+#if defined(__OS2__)
+#	define SOCKET int
+#	define INVALID_SOCKET -1
+typedef struct ifreq IFREQ;
+#	define ioctlsocket ioctl
+#	define closesocket close
+#	define GET_LAST_ERROR() (errno)
+
+// Includes needed for OS/2 systems
+#	include <types.h>
+#	include <unistd.h>
+#	include <sys/ioctl.h>
+#	include <sys/socket.h>
+#	include <netinet/in.h>
+#	include <netinet/tcp.h>
+#	include <arpa/inet.h>
+#	include <net/if.h>
+#	include <errno.h>
+#	include <sys/time.h>
+#	include <netdb.h>
+#	include <nerrno.h>
+
+typedef unsigned long in_addr_t;
+#endif // OS/2
+
 // MorphOS and Amiga stuff
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 #	include <exec/types.h>

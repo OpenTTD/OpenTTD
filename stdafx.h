@@ -24,6 +24,10 @@
 #	include <sys/types.h>
 #endif
 
+#if defined(__OS2__)
+#	include <types.h>
+#endif
+
 #ifdef __BEOS__
 #include <SupportDefs.h>
 #endif
@@ -77,6 +81,18 @@
 # endif
 #endif
 
+#if defined(__WATCOMC__)
+#       define NORETURN
+#       define FORCEINLINE inline
+#       define CDECL
+#       define NOT_REACHED()
+#       define GCC_PACK
+#       undef TTD_ALIGNMENT_4
+#       undef TTD_ALIGNMENT_2
+
+#       include <malloc.h>
+#endif
+
 // Stuff for MSVC
 #if defined(_MSC_VER)
 #	include <malloc.h> // alloca()
@@ -93,7 +109,7 @@ int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #endif
 
 // Windows has always LITTLE_ENDIAN
-#if defined(WIN32)
+#if defined(WIN32) || defined(__OS2__)
   #define TTD_LITTLE_ENDIAN
 #else
 // Else include endian.h, which has the endian-type, autodetected by the Makefile
@@ -182,7 +198,11 @@ enum {
 #endif
 
 // Compile time assertions
-#define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
+#ifdef __OS2__
+#       define assert_compile(expr)
+#else
+#       define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
+#endif
 
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);

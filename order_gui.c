@@ -164,7 +164,10 @@ static void *FindVehicleCallb(Vehicle *v, FindVehS *f)
 
 Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
 {
-	FindVehS fs = {tile, owner, 0};
+	FindVehS fs;
+	fs.tile = tile;
+	fs.owner = owner;
+	fs.type = 0;
 	return VehicleFromPos(tile, &fs, (VehicleFromPosProc*)FindVehicleCallb);
 }
 

@@ -13,6 +13,15 @@
 #	include <windows.h> /* GetTickCount */
 #	include <conio.h>
 #endif
+
+#ifdef __OS2__
+#	include <sys/time.h> /* gettimeofday */
+#	include <sys/types.h>
+#	include <unistd.h>
+#	include <conio.h>
+#	define STDIN 0  /* file descriptor for standard input */
+#endif
+
 #ifdef UNIX
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>
@@ -134,7 +143,7 @@ static void DedicatedHandleKeyInput()
 #endif
 	static char input_line[200] = "";
 
-#ifdef UNIX
+#if defined(UNIX) || defined(__OS2__)
 	if (InputWaiting()) {
 		if (_exit_game)
 			return;

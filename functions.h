@@ -38,9 +38,13 @@ bool IsValidTile(uint tile);
 static inline Point RemapCoords(int x, int y, int z)
 {
 #if !defined(NEW_ROTATION)
-	Point pt = { (y - x) * 2, y + x - z };
+	Point pt;
+	pt.x = (y - x) * 2;
+	pt.y = y + x - z;
 #else
-	Point pt = { (x + y) * 2, x - y - z };
+	Point pt;
+	pt.x = (x + y) * 2;
+	pt.y = x - y - z;
 #endif
 	return pt;
 }

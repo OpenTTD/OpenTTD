@@ -726,9 +726,7 @@ static void SlLoadChunks()
 //*******************************************
 #define LZO_SIZE 8192
 
-int CDECL lzo1x_1_compress( const byte *src, uint src_len,byte *dst, uint *dst_len,void *wrkmem );
-uint32 CDECL lzo_adler32(uint32 adler, const byte *buf, uint len);
-int CDECL lzo1x_decompress( const byte *src, uint  src_len,byte *dst, uint *dst_len,void *wrkmem /* NOT USED */ );
+#include "minilzo.h"
 
 static uint ReadLZO()
 {
