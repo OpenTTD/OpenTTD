@@ -184,11 +184,11 @@ STR_00B2_MESSAGE						:{YELLOW}Melding
 STR_00B3_MESSAGE_FROM					:{YELLOW}Melding fra {STRING}
 STR_00B4_CAN_T_DO_THIS					:{WHITE}Kan ikke gjøre det....
 STR_00B5_CAN_T_CLEAR_THIS_AREA			:{WHITE}Kan ikke rydde området....
-STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER	:{BLACK}Opprinnelig copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
-STR_00B7_VERSION_3_02_011_11TH_OCTOBER	:{BLACK}OpenTTD versjon {REV}
-STR_00B8_DESIGNED_PROGRAMMED_BY			:{BLACK}Opprinnelig designet av Chris Sawyer
-STR_00B9_GRAPHICS_BY_SIMON_FOSTER		:{BLACK}Grafikk laget av Simon Foster
-STR_00BA_WINDOWS_95_CONVERSION_BY		:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_ORIGINAL_COPYRIGHT							:{BLACK}Opprinnelig copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
+STR_00B7_VERSION												:{BLACK}OpenTTD versjon {REV}
+STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Opprinnelig designet av Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Grafikk laget av Simon Foster
+STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
 STR_00C6								:{SILVER}{CROSS}
@@ -340,7 +340,7 @@ STR_0159_CARGO_PAYMENT_RATES			:Fraktfortjeneste
 STR_015A_COMPANY_LEAGUE_TABLE			:Tabell over ledende firma
 ############ range for menu	ends
 
-STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
+STR_015B_OPENTTD		:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Lagre spill
 STR_015D_LOAD_GAME						:Laste inn spill
 STR_015E_QUIT_GAME						:Avslutte gjeldende spill
@@ -555,7 +555,7 @@ STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Lag scenario
-STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
+STR_0221_OPENTTD				:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Scenario redigerer
 STR_0223_LAND_GENERATION				:{WHITE}Land generering
 STR_0224								:{BLACK}{UPARROW}
@@ -733,7 +733,7 @@ STR_02D5_LAND_BLOCK_INFO				:Informasjon om tomt.
 STR_02D6								:
 STR_02D7_SCREENSHOT_CTRL_S				:Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G		:Stor skjermdump (Ctrl-G)
-STR_02D9_ABOUT_TRANSPORT_TYCOON			:Om 'OpenTTD'
+STR_02D9_ABOUT_OPENTTD			:Om 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON								:{BLACK}På
@@ -774,9 +774,9 @@ STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Vis spillinnstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Vis vanskelighetsgrad
 STR_0303_START_A_NEW_GAME_USING			:{BLACK}Start et nytt spill som bruker et scenario
 STR_0304_QUIT							:{BLACK}Avslutt
-STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Forlat 'OpenTTD', og avslutt
+STR_0305_LEAVE_OPENTTD			:{BLACK}Forlat 'OpenTTD', og avslutt
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Se demonstrasjon/veiledning
-STR_0307_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD {REV}
+STR_0307_OPENTTD		:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...kan bare bygges i byer
 STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Velg temperert miljø
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Velg sub-artisk miljø

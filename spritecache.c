@@ -269,6 +269,7 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 	int start;
 
 	FioOpenFile(file_index, filename);
+	_cur_grffile = filename;
 
 	for(;(start=*index_tbl++) != 0xffff;) {
 		int end = *index_tbl++;

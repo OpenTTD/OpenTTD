@@ -184,11 +184,15 @@ STR_00B2_MESSAGE						:{YELLOW}Message
 STR_00B3_MESSAGE_FROM					:{YELLOW}Message from {STRING}
 STR_00B4_CAN_T_DO_THIS					:{WHITE}Can't do this....
 STR_00B5_CAN_T_CLEAR_THIS_AREA			:{WHITE}Can't clear this area....
-STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER	:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_00B7_VERSION_3_02_011_11TH_OCTOBER	:{BLACK}OpenTTD version {REV}
-STR_00B8_DESIGNED_PROGRAMMED_BY			:{BLACK}Original design by Chris Sawyer
-STR_00B9_GRAPHICS_BY_SIMON_FOSTER		:{BLACK}Graphics by Simon Foster
-STR_00BA_WINDOWS_95_CONVERSION_BY		:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_ORIGINAL_COPYRIGHT							:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_00B7_VERSION												:{BLACK}OpenTTD version {REV}
+STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Original design by Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Original graphics by Simon Foster
+STR_SPECIAL_THANKS											:{BLACK}Special thanks go out to:
+STR_SPECIAL_THANKS_SIGNALS							:{BLACK}° Pre-Signals and Semaphores {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS								:{BLACK}° Foundations for Tracks on Slopes {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Canal/Lock graphics {COPYRIGHT} 2003-2004 George
+STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
 STR_00C6								:{SILVER}{CROSS}
@@ -340,16 +344,16 @@ STR_0159_CARGO_PAYMENT_RATES			:Cargo payment rates
 STR_015A_COMPANY_LEAGUE_TABLE			:Company league table
 ############ range for menu	ends
 
-STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
-STR_015C_SAVE_GAME						:Save game
-STR_015D_LOAD_GAME						:Load game
-STR_015E_QUIT_GAME						:Abandon game
-STR_015F_QUIT							:Exit
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Are you sure you want to abandon this game?
-STR_0161_QUIT_GAME						:{WHITE}Abandon Game
-STR_SORT_TIP					:{BLACK}Select sorting order
-STR_SORT_BY_NAME							:{BLACK}Name
-STR_SORT_BY_DATE							:{BLACK}Date
+STR_015B_OPENTTD									:{WHITE}About OpenTTD
+STR_015C_SAVE_GAME								:Save game
+STR_015D_LOAD_GAME								:Load game
+STR_015E_QUIT_GAME								:Abandon game
+STR_015F_QUIT											:Exit
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO	:{YELLOW}Are you sure you want to abandon this game?
+STR_0161_QUIT_GAME								:{WHITE}Abandon Game
+STR_SORT_TIP											:{BLACK}Select sorting order
+STR_SORT_BY_NAME									:{BLACK}Name
+STR_SORT_BY_DATE									:{BLACK}Date
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -558,7 +562,7 @@ STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Create Scenario
-STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
+STR_0221_OPENTTD								:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Scenario Editor
 STR_0223_LAND_GENERATION				:{WHITE}Land Generation
 STR_0224								:{BLACK}{UPARROW}
@@ -732,11 +736,11 @@ STR_02D4_TRANSPARENT_BUILDINGS			:{SETX 12}Transparent buildings
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO				:Land area information
-STR_02D6								:
+STR_02D5_LAND_BLOCK_INFO					:Land area information
+STR_02D6													:
 STR_02D7_SCREENSHOT_CTRL_S				:Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G		:Giant Screenshot (Ctrl-G)
-STR_02D9_ABOUT_TRANSPORT_TYCOON			:About 'OpenTTD'
+STR_02D8_GIANT_SCREENSHOT_CTRL_G	:Giant Screenshot (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD						:About 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON								:{BLACK}On
@@ -760,32 +764,32 @@ STR_02EB_TOWN_NAMES						:{BLACK}Town names
 STR_02EC								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES		:{BLACK}Select style of town names
 
-STR_02F4_AUTOSAVE						:{BLACK}Autosave
-STR_02F5								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN		:{BLACK}Select interval between automatic game saves
-STR_02F7_OFF							:Off
-STR_02F8_EVERY_3_MONTHS					:Every 3 months
-STR_02F9_EVERY_6_MONTHS					:Every 6 months
-STR_02FA_EVERY_12_MONTHS				:Every 12 months
-STR_02FB_START_A_NEW_GAME				:{BLACK}Start a new game
-STR_02FC_LOAD_A_SAVED_GAME_FROM			:{BLACK}Load a saved game from disk
+STR_02F4_AUTOSAVE												:{BLACK}Autosave
+STR_02F5																:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN				:{BLACK}Select interval between automatic game saves
+STR_02F7_OFF														:Off
+STR_02F8_EVERY_3_MONTHS									:Every 3 months
+STR_02F9_EVERY_6_MONTHS									:Every 6 months
+STR_02FA_EVERY_12_MONTHS								:Every 12 months
+STR_02FB_START_A_NEW_GAME								:{BLACK}Start a new game
+STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Load a saved game from disk
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS	:{BLACK}View demonstrations/tutorials
-STR_02FE_CREATE_A_CUSTOMIZED_GAME		:{BLACK}Create a customized game world/scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME		:{BLACK}Select single-player game
-STR_0300_SELECT_TWO_PLAYER_GAME			:{BLACK}Select two-player game
-STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Display game options
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Display difficulty options
-STR_0303_START_A_NEW_GAME_USING			:{BLACK}Start a new game, using a customized scenario
-STR_0304_QUIT							:{BLACK}Quit
-STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Leave 'OpenTTD', and quit
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}View demonstration/tutorial
-STR_0307_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...can only be built in towns
-STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Select 'temperate' landscape style
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Select 'sub-arctic' landscape style
+STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Create a customized game world/scenario
+STR_02FF_SELECT_SINGLE_PLAYER_GAME			:{BLACK}Select single-player game
+STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Select two-player game
+STR_0301_DISPLAY_GAME_OPTIONS						:{BLACK}Display game options
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS			:{BLACK}Display difficulty options
+STR_0303_START_A_NEW_GAME_USING					:{BLACK}Start a new game, using a customized scenario
+STR_0304_QUIT														:{BLACK}Quit
+STR_0305_LEAVE_OPENTTD									:{BLACK}Leave 'OpenTTD', and quit
+STR_0306_VIEW_DEMONSTRATION_TUTORIAL		:{BLACK}View demonstration/tutorial
+STR_0307_OPENTTD												:{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS			:{WHITE}...can only be built in towns
+STR_030E_SELECT_TEMPERATE_LANDSCAPE			:{BLACK}Select 'temperate' landscape style
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE		:{BLACK}Select 'sub-arctic' landscape style
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE	:{BLACK}Select 'sub-tropical' landscape style
-STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Select 'toyland' landscape style
-STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Fund construction of new industry
+STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Select 'toyland' landscape style
+STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Fund construction of new industry
 
 ############ range for menu	starts
 STR_0313_FUND_NEW_INDUSTRY				:Fund new industry

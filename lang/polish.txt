@@ -183,11 +183,11 @@ STR_00B2_MESSAGE                        :{YELLOW}Wiadomosc
 STR_00B3_MESSAGE_FROM                   :{YELLOW}Wiadomosc od {STRING}
 STR_00B4_CAN_T_DO_THIS                  :{WHITE}Niemozna tego zrobic....
 STR_00B5_CAN_T_CLEAR_THIS_AREA          :{WHITE}Nie mozna wyczyscic terenu....
-STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_00B7_VERSION_3_02_011_11TH_OCTOBER  :{BLACK}Wersja OpenTTD {REV}: Language Pack by Tom and PolPot and Spooqy
-STR_00B8_DESIGNED_PROGRAMMED_BY         :{BLACK}Designed & Programmed by Chris Sawyer
-STR_00B9_GRAPHICS_BY_SIMON_FOSTER       :{BLACK}Graphics by Simon Foster
-STR_00BA_WINDOWS_95_CONVERSION_BY       :{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_ORIGINAL_COPYRIGHT    					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_00B7_VERSION												:{BLACK}Wersja OpenTTD {REV}: Language Pack by Tom and PolPot and Spooqy
+STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Designed & Programmed by Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Graphics by Simon Foster
+STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5                                :{BLACK}{CROSS}
 STR_00C6                                :{SILVER}{CROSS}
@@ -339,7 +339,7 @@ STR_0159_CARGO_PAYMENT_RATES            :Stawki za ladunek
 STR_015A_COMPANY_LEAGUE_TABLE           :Wykres Ligi Firm
 ############ range for menu ends
 
-STR_015B_TRANSPORT_TYCOON_DELUXE        :{WHITE}OpenTTD
+STR_015B_OPENTTD        :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                      :Zapisz gre
 STR_015D_LOAD_GAME                      :Wczytaj gre
 STR_015E_QUIT_GAME                      :Opusc gre
@@ -554,7 +554,7 @@ STR_021D                                :{BLACK}
 STR_021E                                :{WHITE}
 STR_021F                                :{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO                :{BLACK}Tworzenie scenariusza
-STR_0221_TRANSPORT_TYCOON               :{YELLOW}OpenTTD
+STR_0221_OPENTTD               :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                :{YELLOW}Edytor scenariusza
 STR_0223_LAND_GENERATION                :{WHITE}Generowanie ladu
 STR_0224                                :{BLACK}{UPARROW}
@@ -732,7 +732,7 @@ STR_02D5_LAND_BLOCK_INFO                :Info o terenie.
 STR_02D6                                :
 STR_02D7_SCREENSHOT_CTRL_S              :Zrzut ekranu (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G        :Gigantyczny zrzut(Ctrl-G)
-STR_02D9_ABOUT_TRANSPORT_TYCOON         :Info o 'OpenTTD'
+STR_02D9_ABOUT_OPENTTD         :Info o 'OpenTTD'
 ############ range ends here
 
 STR_02DA_ON                             :{BLACK}Wla.
@@ -773,9 +773,9 @@ STR_0301_DISPLAY_GAME_OPTIONS           :{BLACK}Wyswietl opcje gry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS     :{BLACK}Wyswietl opcje trudnosci
 STR_0303_START_A_NEW_GAME_USING         :{BLACK}Rozpocznij gre uzywajac wlasnego scenariusza
 STR_0304_QUIT                           :{BLACK}Wyjscie
-STR_0305_LEAVE_TRANSPORT_TYCOON         :{BLACK}Opusc 'OpenTTD', i wyjdz
+STR_0305_LEAVE_OPENTTD         :{BLACK}Opusc 'OpenTTD', i wyjdz
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL    :{BLACK}Zobacz demo/wprowadzenie
-STR_0307_TRANSPORT_TYCOON_DELUXE        :{WHITE}OpenTTD {REV}
+STR_0307_OPENTTD        :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS     :{WHITE}...moze byc wybudowane tylko w miescie
 STR_030E_SELECT_TEMPERATE_LANDSCAPE     :{BLACK}Wybierz krajobraz 'Umiarkowany'
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE    :{BLACK}Wybierz krajobraz 'Arktyczny'

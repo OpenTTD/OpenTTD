@@ -183,11 +183,11 @@ STR_00B2_MESSAGE						:{YELLOW}Message
 STR_00B3_MESSAGE_FROM					:{YELLOW}Message de {STRING}
 STR_00B4_CAN_T_DO_THIS					:{WHITE}Impossible d'exécuter....
 STR_00B5_CAN_T_CLEAR_THIS_AREA			:{WHITE}Impossible de balayer....
-STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER	:{BLACK}Copyright originel {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
-STR_00B7_VERSION_3_02_011_11TH_OCTOBER	:{BLACK}OpenTTD version {REV}
-STR_00B8_DESIGNED_PROGRAMMED_BY			:{BLACK}Design original par Chris Sawyer
-STR_00B9_GRAPHICS_BY_SIMON_FOSTER		:{BLACK}Graphismes par Simon Foster
-STR_00BA_WINDOWS_95_CONVERSION_BY		:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_ORIGINAL_COPYRIGHT							:{BLACK}Copyright originel {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
+STR_00B7_VERSION												:{BLACK}OpenTTD version {REV}
+STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Design original par Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Graphismes par Simon Foster
+STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
 STR_00C6								:{SILVER}{CROSS}
@@ -339,7 +339,7 @@ STR_0159_CARGO_PAYMENT_RATES			:Valeur des cargaisons
 STR_015A_COMPANY_LEAGUE_TABLE			:Classement des compagnies
 ############ range for menu	ends
 
-STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
+STR_015B_OPENTTD		:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Sauvegarder la partie
 STR_015D_LOAD_GAME						:Charger une partie
 STR_015E_QUIT_GAME						:Abandonner la partie
@@ -557,7 +557,7 @@ STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Créer Scénario
-STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
+STR_0221_OPENTTD				:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Éditeur de Scénario
 STR_0223_LAND_GENERATION				:{WHITE}Génération de terrain
 STR_0224								:{BLACK}{UPARROW}
@@ -735,7 +735,7 @@ STR_02D5_LAND_BLOCK_INFO				:Outil d'Inspection
 STR_02D6								:
 STR_02D7_SCREENSHOT_CTRL_S				:ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G		:ScreenShot Géant(Ctrl-G)
-STR_02D9_ABOUT_TRANSPORT_TYCOON			:À Propos de 'OpenTTD'
+STR_02D9_ABOUT_OPENTTD			:À Propos de 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON								:{BLACK}Activé
@@ -776,9 +776,9 @@ STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Afficher les options du jeu
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Afficher les options de niveau de difficulté
 STR_0303_START_A_NEW_GAME_USING			:{BLACK}Débuter une nouvelle partie à partir d'un scénario 
 STR_0304_QUIT							:{BLACK}Quitter
-STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Quitter OpenTTD
+STR_0305_LEAVE_OPENTTD			:{BLACK}Quitter OpenTTD
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Visionner démonstration/didacticiel
-STR_0307_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD {REV}
+STR_0307_OPENTTD		:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...peut seulement être construit en ville
 STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Selectionner l'environnement 'Tempéré'
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Selectionner l'environnement 'Arctique'

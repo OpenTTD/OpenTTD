@@ -45,7 +45,7 @@ static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 	va_start(va, str);
 	vsprintf(buf, str, va);
 	va_end(va);
-	DEBUG(grf, 1) ("[%s][%s] %s", _cur_grffile, severitystr[severity], buf);
+	DEBUG(grf, 2) ("[%s][%s] %s", _cur_grffile, severitystr[severity], buf);
 }
 
 static byte INLINE grf_load_byte(byte **buf) {

@@ -1854,7 +1854,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(298, 6, STR_00AF, 0);
 
 		SET_DPARAM16(0, _date);
-		DrawStringCentered(161, 1, STR_0221_TRANSPORT_TYCOON, 0);
+		DrawStringCentered(161, 1, STR_0221_OPENTTD, 0);
 		DrawStringCentered(161, 11,STR_0222_SCENARIO_EDITOR, 0);
 
 		break;

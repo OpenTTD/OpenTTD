@@ -188,11 +188,16 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 
 		x = 200;
 		y = 0;
-		DrawStringCentered(x, y+=17, STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER, 0);
-		DrawStringCentered(x, y+=10, STR_00B7_VERSION_3_02_011_11TH_OCTOBER, 0);
-		DrawStringCentered(x, y+=15, STR_00B8_DESIGNED_PROGRAMMED_BY, 0);
-		DrawStringCentered(x, y+=10, STR_00B9_GRAPHICS_BY_SIMON_FOSTER, 0);
-		DrawStringMultiCenter(x, y+0x73, STR_00BA_WINDOWS_95_CONVERSION_BY, 0x18E);
+		DrawStringCentered(x, y += 17, STR_00B6_ORIGINAL_COPYRIGHT, 0);
+		DrawStringCentered(x, y += 10, STR_00B7_VERSION, 0);
+		DrawString(20, y += 20, STR_00B8_ORIGINAL_DESIGN_PROGRAM, 0);
+		DrawString(20, y += 10, STR_00B9_ORIGINAL_GRAPHICS, 0);
+		DrawString(20, y += 30, STR_SPECIAL_THANKS, 0);
+		// will probably be dynamic when stringhandling is finally reworked.
+		DrawString(20, y += 10, STR_SPECIAL_THANKS_SIGNALS, 0);
+		DrawString(20, y += 10, STR_SPECIAL_THANKS_CANALS, 0);
+		DrawString(20, y += 10, STR_SPECIAL_THANKS_FOUNDATIONS, 0);
+		DrawStringMultiCenter(x, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 0x18E);
 		break;
 		}
 	}
@@ -200,7 +205,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 
 static const Widget _about_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5},
-{    WWT_CAPTION,    14,    11,   399,     0,    13, STR_015B_TRANSPORT_TYCOON_DELUXE},
+{    WWT_CAPTION,    14,    11,   399,     0,    13, STR_015B_OPENTTD},
 {      WWT_PANEL,    14,     0,   399,    14,   271, 0x0},
 {      WWT_LAST},
 };
