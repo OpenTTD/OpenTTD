@@ -485,14 +485,18 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
 			/* Trucks can't copy all the orders from busses (and visa versa) */
 			if (src->type == VEH_Road) {
 				const Order *order;
-				TileIndex required_dst;
+				TileIndex required_dst = INVALID_TILE;
 
 				FOR_VEHICLE_ORDERS(src, order) {
 					if (order->type == OT_GOTO_STATION) {
 						const Station *st = GetStation(order->station);
-						required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_stops->xy : st->truck_stops->xy;
+						if (dst->cargo_type == CT_PASSENGERS) {
+							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
+						} else {
+							if (st->truck_stops != NULL) required_dst = st->truck_stops->xy;
+						}
 						/* This station has not the correct road-bay, so we can't copy! */
-						if (!required_dst)
+						if (required_dst == INVALID_TILE)
 							return CMD_ERROR;
 					}
 				}
