@@ -1908,6 +1908,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
+		case 'A': ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
+		case 'L': ShowTerraformToolbar(); break;
 		default: return;
 		e->keypress.cont = false;
 		}
@@ -2100,7 +2102,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS: {
-		switch(e->keypress.keycode) {
+		switch (e->keypress.keycode) {
 		case WKC_F1: ToolbarPauseClick(w); break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
@@ -2114,9 +2116,9 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F11: PlaceLandBlockInfo(); break;
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
-		}
-		break;
-	}
+		case 'L': ShowEditorTerraformToolBar(); break;
+		} break;
+	}	break;
 
 	case WE_PLACE_OBJ: {
 		_place_proc(e->place.tile);
@@ -2350,18 +2352,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 #endif
 			break;
 
-		// invoke autorail
-		case 'A':
-			ShowBuildRailToolbar(_last_built_railtype, 4);
-			break;
-
-		case 'L':
-  		if (_game_mode == GM_EDITOR) {
-  			ShowEditorTerraformToolBar();
-  		} else
-  			ShowTerraformToolbar();
-			break;
-
 		case 'X':
 			_display_opt ^= DO_TRANS_BUILDINGS;
 			MarkWholeScreenDirty();
@@ -2370,7 +2360,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 #ifdef ENABLE_NETWORK
 		case WKC_RETURN:
 		case 'T' | WKC_SHIFT:
-			if(_networking)
+			if (_networking)
 				ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
 			break;
 #endif /* ENABLE_NETWORK */
