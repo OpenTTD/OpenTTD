@@ -1037,7 +1037,12 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	num = 0;
 
 	do {
-		if (!(_rail_vehicle_info[v->engine_type].flags & RVI_WAGON) && (byte)p2 != v->cargo_type && v->cargo_cap != 0) {
+		/* XXX: We also refit all the attached wagons en-masse if they
+		 * can be refitted. This is how TTDPatch does it.  TODO: Have
+		 * some nice [Refit] button near each wagon. --pasky */
+		if ((!(_rail_vehicle_info[v->engine_type].flags & RVI_WAGON)
+		     || (_engine_refit_masks[v->engine_type] & (1 << p2)))
+		    && (byte) p2 != v->cargo_type && v->cargo_cap != 0) {
 			cost += (_price.build_railvehicle >> 8);
 			num += v->cargo_cap;
 			if (flags & DC_EXEC) {
