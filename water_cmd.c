@@ -486,47 +486,65 @@ static void AnimateTile_Water(uint tile)
 	/* not used */
 }
 
-static void TileLoopWaterHelper(uint tile, const TileIndexDiffC *offs)
+static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 {
-	byte *p;
-
-	p = &_map_type_and_height[tile];
-	tile += ToTileIndexDiff(offs[0]);
+	TileIndex target = TILE_ADD(tile, ToTileIndexDiff(offs[0]));
 
 	// type of this tile mustn't be water already.
-	if (p[ToTileIndexDiff(offs[0])] >> 4 == MP_WATER)
+	if (IsTileType(target, MP_WATER))
 		return;
 
-	if ((p[ToTileIndexDiff(offs[1])] | p[ToTileIndexDiff(offs[2])]) & 0xF)
+	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[1]))) != 0 ||
+			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[2]))) != 0)
 		return;
 
-	if ((p[ToTileIndexDiff(offs[3])] | p[ToTileIndexDiff(offs[4])]) & 0xF) {
+	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
+			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
 		// make coast..
-		if (p[ToTileIndexDiff(offs[0])] >> 4 == MP_CLEAR ||
-				p[ToTileIndexDiff(offs[0])] >> 4 == MP_TREES) {
-			_current_player = OWNER_WATER;
-			if (DoCommandByTile(tile,0,0,DC_EXEC | DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR)
-				ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,OWNER_WATER,1);
+		switch (TileType(target)) {
+			case MP_CLEAR:
+			case MP_TREES:
+				_current_player = OWNER_WATER;
+				if (DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
+					ModifyTile(
+						target,
+						MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |
+							MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
+						OWNER_WATER, 1
+					);
+				}
+				break;
+
+			default:
+				break;
 		}
 	} else {
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			byte m5 = _map5[tile];
-			if ( (m5&0xF8) == 0xC8 || (m5&0xF8) == 0xF0)
+		if (IsTileType(target, MP_TUNNELBRIDGE)) {
+			byte m5 = _map5[target];
+			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0)
 				return;
 
-			if ( (m5&0xC0) == 0xC0) {
-				ModifyTile(tile, MP_MAPOWNER | MP_MAP5,OWNER_WATER,(m5 & ~0x38)|0x8);
+			if ((m5 & 0xC0) == 0xC0) {
+				ModifyTile(target, MP_MAPOWNER | MP_MAP5, OWNER_WATER, (m5 & ~0x38) | 0x8);
 				return;
 			}
 		}
 
 		_current_player = OWNER_WATER;
 		{
-			Vehicle *v = FindVehicleBetween(tile, tile, 0);
-			if (v != NULL) {FloodVehicle(v);}
+			Vehicle *v = FindVehicleBetween(target, target, 0);
+			if (v != NULL) FloodVehicle(v);
 		}
-		if (DoCommandByTile(tile,0,0,DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR)
-			ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,OWNER_WATER,0);
+
+		if (DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
+			ModifyTile(
+				target,
+				MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |
+					MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
+				OWNER_WATER,
+				0
+			);
+		}
 	}
 }
 
