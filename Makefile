@@ -916,16 +916,16 @@ ifeq ($(BINARY_DIR),)
 endif
 # We'll install in $DEST_DIR instead of root if it is set (we don't
 # care about extra /'s
-	mkdir -p $(DATA_DIR_INSTALL)/lang
-	mkdir -p $(DATA_DIR_INSTALL)/data
-	mkdir -p $(DATA_DIR_INSTALL)/gm
-	mkdir -p $(BINARY_DIR_INSTALL)
-	mkdir -p $(PERSONAL_DIR)/scenario
-	cp $(TTD) $(BINARY_DIR_INSTALL)
-	cp lang/*.lng $(DATA_DIR_INSTALL)/lang
-	cp data/*.grf $(DATA_DIR_INSTALL)/data
-	cp data/opntitle.dat $(DATA_DIR_INSTALL)/data
-	cp media/openttd.64.png $(DATA_DIR_INSTALL)
+	install -d $(DATA_DIR_INSTALL)/lang \
+	           $(DATA_DIR_INSTALL)/data \
+	           $(DATA_DIR_INSTALL)/gm \
+	           $(BINARY_DIR_INSTALL)
+	mkdir -p   $(PERSONAL_DIR)/scenario
+	install $(TTD) $(BINARY_DIR_INSTALL)
+	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
+	install -m 644 data/*.grf $(DATA_DIR_INSTALL)/data
+	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
+	install -m 644 media/openttd.64.png $(DATA_DIR_INSTALL)
 	cp scenario/* $(PERSONAL_DIR)/scenario/
 else	#MorphOS
 install:
