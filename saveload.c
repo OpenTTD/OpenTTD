@@ -241,6 +241,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 	}
 }
 
+#if 0
 static void SlSkipBytes(size_t length)
 {
 	while (length) {
@@ -248,6 +249,7 @@ static void SlSkipBytes(size_t length)
 		length--;
 	}
 }
+#endif
 
 uint SlGetFieldLength(void)
 {

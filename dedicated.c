@@ -327,9 +327,9 @@ const HalVideoDriver _dedicated_video_driver = {
 
 static void *_dedicated_video_mem;
 
-static const char *DedicatedVideoStart(const char **parm)
+static const char *DedicatedVideoStart(const char * const *parm)
 {
-	DEBUG(misc,0)("OpenTTD compiled without network-support, quiting...");
+	DEBUG(misc, 0) ("OpenTTD compiled without network-support, exiting...");
 
 	return NULL;
 }

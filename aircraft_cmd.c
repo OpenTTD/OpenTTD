@@ -65,6 +65,7 @@ static uint16 FindNearestHangar(const Vehicle *v)
 	return index;
 }
 
+#if 0
 // returns true if vehicle v have an airport in the schedule, that has a hangar
 static bool HaveHangarInOrderList(Vehicle *v)
 {
@@ -82,6 +83,7 @@ static bool HaveHangarInOrderList(Vehicle *v)
 
 	return false;
 }
+#endif
 
 int GetAircraftImage(Vehicle *v, byte direction)
 {
