@@ -13,11 +13,16 @@
 //#define WANT_LOCKED
 
 
+/* These are used in grfspecial.c: */
+
 int _skip_sprites = 0;
+int _replace_sprites_count[16];
+int _replace_sprites_offset[16];
 
 static const char *_cur_grffile;
 static int _skip_specials;
 static SpriteHdr _cur_sprite;
+
 
 static byte *_sprite_ptr[NUM_SPRITES];
 static uint16 _sprite_size[NUM_SPRITES];
@@ -185,14 +190,45 @@ static void ReadSprite(int num, byte *dest)
 static bool LoadNextSprite(int load_index, byte file_index)
 {
 	uint16 size;
+	uint32 file_pos;
 
-	if ( (size = FioReadWord()) == 0)
+	if ((size = FioReadWord()) == 0)
 		return false;
 
-	_sprite_size[load_index] = size;
-	_sprite_file_pos[load_index] = FioGetPos() | (file_index << 24);
+	file_pos = FioGetPos() | (file_index << 24);
 
 	ReadSpriteHeaderSkipData(size, load_index);
+
+	if ((_replace_sprites_count[0] > 0) && (_cur_sprite.info != 0xFF)) {
+		int count = _replace_sprites_count[0];
+		int offset = _replace_sprites_offset[0];
+
+		_replace_sprites_offset[0]++;
+		_replace_sprites_count[0]--;
+		
+		if ((offset + count) <= NUM_SPRITES) {
+			load_index = offset;
+		} else {
+			DEBUG(spritecache, 1) ("Sprites to be replaced are out of range: %x+%x",
+					count, offset);
+			_replace_sprites_offset[0] = 0;
+			_replace_sprites_count[0] = 0;
+		}
+
+		if (_replace_sprites_count[0] == 0) {
+			int i;
+
+			for (i = 0; i < 15; i++) {
+				_replace_sprites_count[i] = _replace_sprites_count[i + 1];
+				_replace_sprites_offset[i] = _replace_sprites_offset[i + 1];
+			}
+			_replace_sprites_count[i] = 0;
+			_replace_sprites_offset[i] = 0;
+		}
+	}
+
+	_sprite_size[load_index] = size;
+	_sprite_file_pos[load_index] = file_pos;
 
 #ifdef WANT_SPRITESIZES
 	_sprite_xsize[load_index] = _cur_sprite.width;
@@ -259,7 +295,10 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 		}
 	}
 
-	_skip_sprites = 0; // clean up
+	/* Clean up. */
+	_skip_sprites = 0;
+	memset(_replace_sprites_count, 0, 16 * sizeof(*_replace_sprites_count));
+	memset(_replace_sprites_offset, 0, 16 * sizeof(*_replace_sprites_offset));
 
 	return load_index - load_index_org;
 }

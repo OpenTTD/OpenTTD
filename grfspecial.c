@@ -17,6 +17,8 @@
  * served as subject to the initial testing of this codec. */
 
 extern int _skip_sprites;
+extern int _replace_sprites_count[16];
+extern int _replace_sprites_offset[16];
 
 static const char *_cur_grffile;
 static int _cur_spriteid;
@@ -927,7 +929,6 @@ static void SkipIf(byte *buf, int len)
 
 	numsprites = grf_load_byte(&buf);
 	grfmsg(GMS_NOTICE, "Skipping %d sprites, test was true.", numsprites);
-
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
 		/* Zero means there are no sprites to skip, so
@@ -969,7 +970,30 @@ static void SpriteReplace(byte *buf, int len)
 	 * Each set:
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
-	/* TODO */
+	uint8 num_sets;
+	int i;
+
+	buf++; /* skip action byte */
+	num_sets = grf_load_byte(&buf);
+
+	if (num_sets > 16) {
+		grfmsg(GMS_ERROR, "SpriteReplace: Too many sets (%d), taking only the first 16!", num_sets);
+	}
+	
+	for (i = 0; i < 16; i++) {
+		if (i < num_sets) {
+			uint8 num_sprites = grf_load_byte(&buf);
+			uint16 first_sprite = grf_load_word(&buf);
+
+			_replace_sprites_count[i] = num_sprites;
+			_replace_sprites_offset[i] = first_sprite;
+			grfmsg(GMS_NOTICE, "SpriteReplace: [Set %d] Changing %d sprites, beginning with %d",
+					i, num_sprites, first_sprite);
+		} else {
+			_replace_sprites_count[i] = 0;
+			_replace_sprites_offset[i] = 0;
+		}
+	}
 }
 
 static void GRFError(byte *buf, int len)
