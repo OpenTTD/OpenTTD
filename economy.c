@@ -361,6 +361,24 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 		}
 	}
 
+	{
+		Player *p;
+		uint i;
+
+		/* Check for shares */
+		FOR_ALL_PLAYERS(p) {
+			for(i = 0; i < 4; i++) {
+				/* 'Sell' the share if this player has any */
+				if (p->share_owners[i] == _current_player)
+					p->share_owners[i] = 0xFF;
+			}
+		}
+		p = DEREF_PLAYER(_current_player);
+		/* Sell all the shares that people have on this company */
+		for(i = 0; i < 4; i++)
+			p->share_owners[i] = 0xFF;
+	}
+
 	_current_player = old;
 
 	MarkWholeScreenDirty();
