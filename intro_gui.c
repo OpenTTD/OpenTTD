@@ -199,7 +199,7 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 #elif defined(__MORPHOS__)
 		SetDParam(0, STR_OSNAME_MORPHOS);
 #elif defined(__AMIGA__) /* note: __AMIGA__ is defined under MorphOS too, so it must be after __MORPHOS__. */ 
-		SET_DPARAM16(0, STR_OSNAME_AMIGAOS);
+		SetDParam(0, STR_OSNAME_AMIGAOS);
 #else
 		SetDParam(0, STR_0134_UNIX);
 #endif
