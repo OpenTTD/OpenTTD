@@ -162,7 +162,7 @@ enum {
 #define WP(ptr,str) (*(str*)(ptr)->custom)
 
 typedef struct {
-	byte count, cap, pos;
+	uint16 count, cap, pos;
 } Scrollbar;
 
 struct Window {
