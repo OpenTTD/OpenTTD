@@ -302,7 +302,10 @@ Point TranslateXYToTileCoord(ViewPort *vp, int x, int y) {
 	return pt;
 }
 
-static Point GetTileFromScreenXY(int x, int y)
+/* When used for zooming, check area below current coordinates (x,y)
+ * and return the tile of the zoomed out/in position (zoom_x, zoom_y)
+ * when you just want the tile, make x = zoom_x and y = zoom_y */
+static Point GetTileFromScreenXY(int x, int y, int zoom_x, int zoom_y)
 {
 	Window *w;
 	ViewPort *vp;
@@ -310,7 +313,7 @@ static Point GetTileFromScreenXY(int x, int y)
 
 	if ( (w = FindWindowFromPt(x, y)) != NULL &&
 			 (vp = IsPtInWindowViewport(w, x, y)) != NULL)
-				return TranslateXYToTileCoord(vp, x, y);
+				return TranslateXYToTileCoord(vp, zoom_x, zoom_y);
 
 	pt.y = pt.x = -1;
 	return pt;
@@ -318,7 +321,7 @@ static Point GetTileFromScreenXY(int x, int y)
 
 Point GetTileBelowCursor()
 {
-	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y);
+	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y, _cursor.pos.x, _cursor.pos.y);
 }
 
 
@@ -337,7 +340,8 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 		x = vp->width - (_cursor.pos.x - vp->left);
 		y = vp->height - (_cursor.pos.y - vp->top);
 	}
-	return GetTileFromScreenXY(x+vp->left, y+vp->top);
+	/* Get the tile below the cursor and center on the zoomed-out center */
+	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y, x + vp->left, y + vp->top);
 }
 
 void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
