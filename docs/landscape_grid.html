@@ -2,47 +2,57 @@
 <html>
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-  <title>Transport Tycoon Savegame
-Internals - Landscape #2</title>
+  <meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays #2">
+  <title>OpenTTD Landscape Internals - #2</title>
+  <style type="text/css">
+    .freebits { background-color: rgb(30, 178, 54);}
+    .abuse { background-color: rgb(255, 58, 31);}
+  </style>
 </head>
 <body style="direction: ltr;">
 <h3 style="font-weight: bold;">Landscape</h3>
-<span style="font-weight: bold;"></span>Five
-arrays are used to encode the information of the contents of the tile.
-This can be seen in the <a href="landscape.html">Landscape</a>
-document. This page tries to give an overview of used and free bits of
-the array so you can quickly see what is used and what is not.<br>
+<span style="font-weight: bold;"></span>Five arrays are used to encode the information of the contents of the tile.
+This can be seen in the <a href="landscape.html">Landscape</a> document. This page tries to give an overview of used and free bits of
+the array so you can quickly see what is used and what is not.
 <ul>
-  <li><span style="font-weight: bold;">O</span>
-- bit is free</li>
-  <li><span style="font-weight: bold;">X</span>
-- bit is used</li>
+  <li><span style="font-weight: bold;"><span class="freebits">O</span></span> - bit is free</li>
+  <li><span style="font-weight: bold;">X</span> - bit is used</li>
+  <li><span style="font-weight: bold;"><span class="abuse">&nbsp;&nbsp;&nbsp;</span></span> - bit of _map_* is abused for different purposes</li>
 </ul>
+<p>
+<ul>
+  <li><span style="font-weight: bold;">_map_owner[]</span> - 8 bits in size, used to identify the owner of that tile (eg piece of rail, bridge, etc.).</li>
+  <li><span style="font-weight: bold;">_map2[]</span> - 16 bits in size, used to identify the index of the given tile (object) in the (object-)array.</li>
+  <li><span style="font-weight: bold;">_map3[]</span> - 16 bits in size, which is split up into _map3lo[] and _map3hi[] is used for general storage.</li>
+  <li><span style="font-weight: bold;">_map_type_and_height[]</span> - 8 bits in size, stores tile height (lower 4 bits) and tile class (upper 4 bits).</li>
+  <li><span style="font-weight: bold;">_map5[]</span> - 8 bits in size, is used for general storage.</li>
+</ul>
+
 <table style="text-align: left;" border="1" cellpadding="2"
  cellspacing="2" width="100%">
   <tbody>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">type</td>
-      <td style="white-space: nowrap; text-align: center;">_map_owner[L1]</td>
-      <td style="white-space: nowrap; text-align: center;">_map2[L2]</td>
-      <td style="white-space: nowrap; text-align: center;">_map3[lo&amp; hi,L3]</td>
-      <td style="white-space: nowrap; text-align: center;">_map_type_and_height[L4]</td>
-      <td style="white-space: nowrap; text-align: center;">_map5[L5]</td>
+      <th style="white-space: nowrap; text-align: left;">class</th>
+      <th style="white-space: nowrap; text-align: center;">_map_owner[L1] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">_map2[L2] (16)</th>
+      <th style="white-space: nowrap; text-align: center;">_map3[lo&amp; hi,L3] (16)</th>
+      <th style="white-space: nowrap; text-align: center;">_map_type_and_height[L4] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">_map5[L5] (8)</th>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">ground</td>
+      <td style="white-space: nowrap; text-align: left;">(0) ground</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;">XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OO</span>XX XXXX</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;">XXXX <span class="freebits">OOOO OO</span>XX XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX X<span style="background-color: rgb(30, 178, 54);">O</span>XX</td>
+      <td style="white-space: nowrap; text-align: center;">XXXX X<span class="freebits">O</span>XX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">rail</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OOOO</span><br>
+      <td style="white-space: nowrap; text-align: left;">(1) rail</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="abuse">XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;">XXXX XXXX <span class="freebits">OOOO OOOO</span><br>
       </td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXX<span style="background-color: rgb(30, 178, 54);">O OOOO</span><br>
+      <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXX<span class="freebits">O OOOO</span><br>
       </td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX<br>
@@ -51,105 +61,105 @@ the array so you can quickly see what is used and what is not.<br>
     <tr>
       <td>
       <ul>
-        <li>depot/checkpoint</li>
+        <li style="white-space: nowrap; text-align: left;">depot/checkpoint</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;">XXXX X<span style="background-color: rgb(30, 178, 54);">OOO</span> XXXX XXXX</td>
+      <td style="text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="text-align: center;">XXXX X<span class="freebits">OOO</span> XXXX XXXX</td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="white-space: nowrap; text-align: center;">XXX<span style="background-color: rgb(30, 178, 54);">O OO</span>XX</td>
+      <td style="white-space: nowrap; text-align: center;">XXX<span class="freebits">O OO</span>XX</td>
     </tr>
     <tr>
-      <td>road</td>
+      <td style="white-space: nowrap; text-align: left;">(2) road</td>
       <td style="text-align: center;">XXXX XXXX</td>
-      <td style="text-align: center;">XXXX XXXX XXXX XXXX</td>
-      <td style="text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO</span> XXXX XXXX</td>
+      <td style="text-align: center;"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="freebits">OOOO OOOO</span> XXXX XXXX</td>
       <td style="text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li>level crossing</li>
+        <li style="white-space: nowrap; text-align: left;">level crossing</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="text-align: center;">XXXX XXXX XXXX XXXX</td>
+      <td style="text-align: center;"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
       <td style="text-align: center;">XXXX XXXX XXXX XXXX</td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="text-align: center;"><span style="background-color: rgb(30, 178, 54);">OO</span>XX XXXX</td>
+      <td style="text-align: center;"><span class="freebits">OO</span>XX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li>road depot</li>
+        <li style="white-space: nowrap; text-align: left;">road depot</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOO</span>X</td>
+      <td style="text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="text-align: center;"><span class="freebits">OOOO OOOO OOOO OOO</span>X</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">town</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
+      <td style="white-space: nowrap; text-align: left;">(3) town</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="abuse">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXXX XXXX<br>
       </td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXXX XXXX<br>
       </td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXOX</td>
+      <td style="white-space: nowrap; text-align: center;">XXXX XX<span class="freebits">O</span>X</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">trees</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XX<span style="background-color: rgb(30, 178, 54);">OO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XXXX OOXX XXXX</td>
+      <td style="white-space: nowrap; text-align: left;">(4) trees</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="abuse">XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;">XXXX XX<span class="freebits">OO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;">XXXX XXXX <span class="freebits">OO</span>XX XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXX<span style="background-color: rgb(30, 178, 54);">O OO</span>XX</td>
+      <td style="white-space: nowrap; text-align: center;">XXX<span class="freebits">O OO</span>XX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">station</td>
+      <td style="white-space: nowrap; text-align: left;">(5) station</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX XOOO XXXX XXXX</td>
+      <td style="white-space: nowrap; text-align: center;">XXXX X<span class="freebits">OOO</span> XXXX XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">water</td>
+      <td style="white-space: nowrap; text-align: left;">(6) water</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">industry</td>
-      <td style="white-space: nowrap; text-align: center;">XXXX X<span style="background-color: rgb(30, 178, 54);">OO</span>X</td>
+      <td style="white-space: nowrap; text-align: left;">(8) industry</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="abuse">XXXX X</span><span class="freebits">OO</span><span class="abuse">X</span></td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li>bubble/sugar/toffee</li>
+        <li style="white-space: nowrap; text-align: left;">bubble/sugar/toffee</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
-      <td style="text-align: center;">XXXX XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OOOO</span></td>
+      <td style="text-align: center;">XXXX XXXX <span class="freebits">OOOO OOOO</span></td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li>toy factory</li>
+        <li style="white-space: nowrap; text-align: left;">toy factory</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
@@ -161,11 +171,10 @@ the array so you can quickly see what is used and what is not.<br>
     <tr>
       <td>
       <ul>
-        <li>gold/copper/coal</li>
+        <li style="white-space: nowrap; text-align: left;">gold/copper/coal</li>
       </ul>
       </td>
-      <td style="text-align: center;">XXXX
-XXXX</td>
+      <td style="text-align: center;">XXXX XXXX</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
@@ -174,7 +183,7 @@ XXXX</td>
     <tr>
       <td>
       <ul>
-        <li>oil wells</li>
+        <li style="white-space: nowrap; text-align: left;">oil wells</li>
       </ul>
       </td>
       <td style="text-align: center;">-inherit-</td>
@@ -186,45 +195,45 @@ XXXX</td>
     <tr>
       <td>
       <ul>
-        <li>power station</li>
+        <li style="white-space: nowrap; text-align: left;">power station</li>
       </ul>
       </td>
-      <td style="text-align: center;">XXXX XX<span style="background-color: rgb(30, 178, 54);">O</span>X</td>
+      <td style="text-align: center;">XXXX XX<span class="freebits">O</span>X</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
       <td style="text-align: center;">-inherit-</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">tunnel</td>
+      <td style="white-space: nowrap; text-align: left;">(9) tunnel</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;">XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOO</span>X</td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;">XXXX <span class="freebits">OOOO OOOO OOO</span>X</td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li>bridge</li>
+        <li style="white-space: nowrap; text-align: left;">bridge</li>
       </ul>
       </td>
       <td style="text-align: center;">XXXX XXXX</td>
-      <td style="text-align: center;">XXXX XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OOOO</span></td>
-      <td style="text-align: center;">XXXX XXXX <span style="background-color: rgb(30, 178, 54);">OOOO OOO</span>X</td>
+      <td style="text-align: center;"><span class="abuse">XXXX XXXX</span> <span class="freebits">OOOO OOOO</span></td>
+      <td style="text-align: center;">XXXX XXXX <span class="freebits">OOOO OOO</span>X</td>
       <td style="text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="text-align: center;">XXXX XXXX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">various (HQ)</td>
+      <td style="white-space: nowrap; text-align: left;">(10) various (HQ)</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span style="background-color: rgb(30, 178, 54);">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="freebits">OOOO OOOO OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;">XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX</td>
       <td style="white-space: nowrap; text-align: center;">XXXX XXXX</td>
     </tr>
   </tbody>
 </table>
-<br>
+
 </body>
 </html>

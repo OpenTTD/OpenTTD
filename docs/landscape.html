@@ -2,22 +2,19 @@
 <html>
 <head>
 <meta name="Author" content="Marcin Grzegorczyk">
-<meta name="Description" content="Structure of Transport Tycoon Deluxe (TTD) savegame files">
+<meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Transport Tycoon Deluxe savegame internals</title>
+<title>OpenTTD Landscape Internals</title>
 
 </head>
 <body>
 
 <h3><a name="Landscape">Landscape</a></h3>
 <p>
-Five arrays are used to encode the information of the contents of each tile. These arrays are referred to as <a href="#_landscape1">map_owner</a>, <a href="#_landscape2">map2</a>, <a href="#_landscape3">map3_lo</a>, <a href="#_landscape4">type_and_height</a> and <a href="#_landscape5">map5</a>. The known encodings are listed in the table below. The most important value is the class of a tile, stored in the upper 4 bits of the type_and_height array. The lower 4 bits are used to encode the height and slope data. For a graphical represenation of the tile-layout have a look at <a href="landscape_grid.html">Landscape grid</a> page.
+Five arrays are used to encode the information of the contents of each tile. These arrays are referred to as "<span style="font-weight: bold;">map_owner</span>", "<span style="font-weight: bold;">map2</span>", "<span style="font-weight: bold;">map3_lo|_hi</span>", "<span style="font-weight: bold;">map_type_and_height</span>" and "<span style="font-weight: bold;">map5</span>". The known encodings are listed in the table below. The most important value is the class of a tile, stored in the upper 4 bits of the type_and_height array. The lower 4 bits are used to encode the height and slope data. For a graphical represenation of the tile-layout have a look at <a href="landscape_grid.html">Landscape grid</a> page.
 </p>
 <p>
-<a name="OwnershipInfo">Owner values</a> <tt>00</tt> through <tt>07</tt> are companies (they're indices into the <a href="#_CompanyArray">array of companies</a>), <tt>10</tt> is no owner, <tt>11</tt> appears to be reserved for water, <tt>80</tt> and above are towns (in this case the low 7 bits contain an index into the <a href="#_TownArray">town array</a>).
-</p>
-<p>
-TTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.
+OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.
 </p>
 
 <table border=1 cellpadding=3>
@@ -606,13 +603,13 @@ map5 bit 5 set:
 </td></tr>
 
 <tr><td colspan=2>
-Classes <tt>B</tt> through <tt>F</tt> are reserved. The presence of a tile in one of the reserved classes will crash TTD.
+Classes <tt>B</tt> through <tt>F</tt> are reserved. The presence of a tile in one of the reserved classes will crash OTTD.
 </td></tr>
 </table>
 
 
 <hr>
-Copyright &copy; 2003 by Marcin Grzegorczyk.<br>
+Original Copyright &copy; 2003 by Marcin Grzegorczyk for TTDLX.<br>
 Transport Tycoon and Transport Tycoon Deluxe are Copyright &copy; by Chris Sawyer. All the other trademarks are the property of their respective owners.<br>
 
 </body>
