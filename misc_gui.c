@@ -1554,8 +1554,18 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 typedef int32 CheckButtonClick(int32, int32);
 
+typedef enum ce_type {
+	CE_BOOL = 0,
+	CE_UINT8 = 1,
+	CE_INT16 = 2,
+	CE_UINT16 = 3,
+	CE_INT32 = 4,
+	CE_BYTE = 5,
+	CE_CLICK = 6,
+} ce_type;
+
 typedef struct CheatEntry {
-	byte type;    // type of selector
+	ce_type type;    // type of selector
 	byte flags;		// selector flags
 	StringID str; // string with descriptive text
 	void *variable; // pointer to the variable
@@ -1564,19 +1574,6 @@ typedef struct CheatEntry {
 	int16 min,max; // range for spinbox setting
 	uint16 step;   // step for spinbox
 } CheatEntry;
-
-enum {
-	CE_BOOL = 0,
-	CE_UINT8 = 1,
-	CE_INT16 = 2,
-	CE_UINT16 = 3,
-	CE_INT32 = 4,
-	CE_BYTE = 5,
-	CE_CLICK = 6,
-
-	CF_0ISDIS = 1,
-	CF_NOCOMMA = 2,
-};
 
 static int32 ReadCE(const CheatEntry*ce)
 {
