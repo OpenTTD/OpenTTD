@@ -1938,30 +1938,32 @@ static void ClickTile_Track(uint tile)
 
 }
 
-static void GetTileDesc_Track(uint tile, TileDesc *td)
+static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 {
-	byte m5 = _map5[tile];
-	if (!(m5 & 0x80)) {
-		if(!(m5 & 0x40)) // no signals
-			td->str = STR_1021_RAILROAD_TRACK;
-		else
-		{
-			switch(_map3_hi[tile] & 0x03)
-			{
-				case 0: td->str = STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS;
-					break;
-				case 1: td->str = STR_RAILROAD_TRACK_WITH_PRESIGNALS;
-					break;
-				case 2: td->str = STR_RAILROAD_TRACK_WITH_EXITSIGNALS;
-					break;
-				case 3: td->str = STR_RAILROAD_TRACK_WITH_COMBOSIGNALS;
-					break;
-			}
-		}
-	} else {
-		td->str = m5 < 0xC4 ? STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
-	}
 	td->owner = _map_owner[tile];
+	switch (_map5[tile] & RAIL_TYPE_MASK) {
+		case RAIL_TYPE_NORMAL:
+			td->str = STR_1021_RAILROAD_TRACK;
+			break;
+
+		case RAIL_TYPE_SIGNALS: {
+			const StringID signal_type[] = {
+				STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS,
+				STR_RAILROAD_TRACK_WITH_PRESIGNALS,
+				STR_RAILROAD_TRACK_WITH_EXITSIGNALS,
+				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
+			};
+
+			td->str = signal_type[_map3_hi[tile] & 0x03];
+			break;
+		}
+
+		case RAIL_TYPE_DEPOT:
+		default:
+			td->str = ((_map5[tile] & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT) ?
+				STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
+			break;
+	}
 }
 
 static void ChangeTileOwner_Track(uint tile, byte old_player, byte new_player)
