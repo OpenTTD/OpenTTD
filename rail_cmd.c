@@ -9,6 +9,8 @@
 #include "station.h"
 #include "sprite.h"
 
+extern uint16 _custom_sprites_base;
+
 void ShowTrainDepotWindow(uint tile);
 
 enum { /* These values are bitmasks for the map5 byte */
@@ -1569,9 +1571,12 @@ static void DrawTile_Track(TileInfo *ti)
 				// emulate station tile - open with building
 				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
+				int railtype=(_map3_lo[ti->tile] & 0xF);
 
-				image = cust->ground_sprite;
-				if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
+				image = cust->ground_sprite + railtype*((image<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
+				if (image & 0x8000) image = (image & 0x7FFF);
+				
+
 				DrawGroundSprite(image);
 
 				foreach_draw_tile_seq(seq, cust->seq) {
@@ -1640,7 +1645,7 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	}
 }
 
-void DrawWaypointSprite(int x, int y, int stat_id)
+void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 {
 	struct StationSpec *stat;
 	uint32 relocation;
@@ -1659,14 +1664,14 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 		const DrawTrackSeqStruct *dtss;
 
 		img = *(const uint16*)t;
-		if (img & 0x8000) img = (img & 0x7FFF) + 0;
+		if (img & 0x8000) img = (img & 0x7FFF) + railtype*TRACKTYPE_SPRITE_PITCH;
 		DrawSprite(img, x, y);
 
 		for (dtss = (const DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
 			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 			img = dtss->image;
 			if (img & 0x8000) img |= ormod;
-			DrawSprite(img + 0, x + pt.x, y + pt.y);
+			DrawSprite(img, x + pt.x, y + pt.y);
 		}
 		return;
 	}
@@ -1678,7 +1683,7 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 	// add 1 to get the other direction
 	cust = &stat->renderdata[2];
 
-	img = cust->ground_sprite;
+	img = cust->ground_sprite + railtype*((img<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
 	if (img & 0x8000) img = (img & 0x7FFF);
 	DrawSprite(img, x, y);
 

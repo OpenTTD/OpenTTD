@@ -66,7 +66,7 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image);
 
 /* track_land.c */
 void DrawTrainDepotSprite(int x, int y, int image, int railtype);
-void DrawWaypointSprite(int x, int y, int image);
+void DrawWaypointSprite(int x, int y, int image, int railtype);
 
 /* road_land.c */
 void DrawRoadDepotSprite(int x, int y, int image);

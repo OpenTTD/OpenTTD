@@ -1065,11 +1065,11 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		r = 4*w->hscroll.pos;
-		if(r+0<=_waypoint_count) DrawWaypointSprite(2,   25, r + 0);
-		if(r+1<=_waypoint_count) DrawWaypointSprite(70,  25, r + 1);
-		if(r+2<=_waypoint_count) DrawWaypointSprite(138, 25, r + 2);
-		if(r+3<=_waypoint_count) DrawWaypointSprite(206, 25, r + 3);
-		if(r+4<=_waypoint_count) DrawWaypointSprite(274, 25, r + 4);
+		if(r+0<=_waypoint_count) DrawWaypointSprite(2,   25, r + 0, _cur_railtype);
+		if(r+1<=_waypoint_count) DrawWaypointSprite(70,  25, r + 1, _cur_railtype);
+		if(r+2<=_waypoint_count) DrawWaypointSprite(138, 25, r + 2, _cur_railtype);
+		if(r+3<=_waypoint_count) DrawWaypointSprite(206, 25, r + 3, _cur_railtype);
+		if(r+4<=_waypoint_count) DrawWaypointSprite(274, 25, r + 4, _cur_railtype);
 		break;
 		}
 	case WE_CLICK: {
