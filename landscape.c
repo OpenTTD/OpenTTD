@@ -445,11 +445,8 @@ void SetMapExtraBits(uint tile, byte bits)
 
 uint GetMapExtraBits(uint tile)
 {
-	if (TileX(tile) < MapSizeX() && TileY(tile) < MapSizeY() &&
-			TileX(tile) > 0 && TileY(tile) > 0)
-		return (_map_extra_bits[tile >> 2] >> (tile&3)*2)&3;
-	else
-		return 0;
+	assert(tile < MapSize());
+	return (_map_extra_bits[tile >> 2] >> (tile & 3) * 2) & 3;
 }
 
 #define TILELOOP_BITS 4
