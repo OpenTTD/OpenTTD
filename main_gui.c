@@ -1896,6 +1896,11 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
+		if (((w->click_state) & 1) != (uint)!!_pause) {
+			w->click_state ^= (1 << 0);
+			SetWindowDirty(w);
+		}
+
 		if (((w->click_state >> 1) & 1) != (uint)!!_fast_forward) {
 			w->click_state ^= (1 << 1);
 			SetWindowDirty(w);
