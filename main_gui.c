@@ -1097,10 +1097,13 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 			break;
 		case 4:
 			DeleteWindow(w);
-			if(mode) { // reset landscape
+			DeleteWindowByClass(WC_INDUSTRY_VIEW);
+			DeleteWindowByClass(WC_TOWN_VIEW);
+			DeleteWindowByClass(WC_LAND_INFO);			
+
+			if (mode) { // reset landscape
 				ResetLandscape();
-			}
-			else { // make random landscape
+			} else { // make random landscape
 				SndPlayFx(SND_15_BEEP);
 				_switch_mode = SM_GENRANDLAND;
 			}

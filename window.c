@@ -262,6 +262,18 @@ void DeleteWindowById(WindowClass cls, WindowNumber number)
 	DeleteWindow(FindWindowById(cls, number));
 }
 
+void DeleteWindowByClass(WindowClass cls)
+{
+	Window *w;
+	for (w = _windows; w != _last_window;) {
+		if (w->window_class == cls) {
+			DeleteWindow(w);
+			w = _windows;
+		} else
+			w++;
+	}
+}
+
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
 	Window *w = FindWindowById(cls, number);
