@@ -107,6 +107,7 @@ static const VkMapping _vk_mapping[] = {
 	AM('A','Z','A','Z'),
 	AM('0','9','0','9'),
 
+	AS(VK_OEM_3,	WKC_BACKQUOTE),
 	AS(220,				WKC_BACKQUOTE),
 
 	AS(VK_ESCAPE,		WKC_ESC),
