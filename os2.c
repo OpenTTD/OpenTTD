@@ -392,10 +392,19 @@ StringID FiosGetDescText(const char **path)
 
 void FiosMakeSavegameName(char *buf, const char *name)
 {
+	const char* extension;
+	const char* period;
+
 	if (_game_mode == GM_EDITOR)
-		sprintf(buf, "%s\\%s.scn", _fios_path, name);
+		extension = ".scn";
 	else
-		sprintf(buf, "%s\\%s.sav", _fios_path, name);
+		extension = ".sav";
+
+	// Don't append the extension, if it is already there
+	period = strrchr(name, '.');
+	if (period != NULL && strcasecmp(period, extension) == 0) extension = "";
+
+	sprintf(buf, "%s\\%s%s", _fios_path, name, extension);
 }
 
 void FiosDelete(const char *name)
