@@ -1394,9 +1394,27 @@ STR_2808_TOO_MANY_SIGNS						:{WHITE}...of mörg merki
 STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Ekki hægt að setja tré hér...
 STR_280A_SIGN							:Merki
 STR_280B_EDIT_SIGN_TEXT						:{WHITE}Breyta texta merkis
+STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Get ekki breytt nafni merkis...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Veldu trjátegud sem á að gróðursetja
+STR_280E_TREES							:Tré
+STR_280F_RAINFOREST						:Regnskógar
+STR_2810_CACTUS_PLANTS						:Kaktus
 
 ##id 0x3000
+STR_3003_NUMBER_OF_TRACKS					:{BLACK}Fjöldi lestarspora
+STR_3004_PLATFORM_LENGTH					:{BLACK}Lengd lestarstöðvar
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Of nálægt annarri lestarstöð
+STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Of margar stöðvar/lestunarsvæði í þessum bæ
+STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Of margar stöðvar/lestunarsvæði
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Of nálægt annarri stöð/lestunarsvæði
+STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
+STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Þarf fyrst að rífa lestarstöð
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT				:{WHITE}Of nálægt öðrum flugvelli
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Þarf fyrst að rífa flugvöll
 
+STR_3030_RENAME_STATION_LOADING					:Endurnefna stöð/lestunarsvæði
+STR_3031_CAN_T_RENAME_STATION					:{WHITE}Get ekki endurnefnt stöð...
+STR_3033_ACCEPTS						:{BLACK}Tekur við
 
 ############ range for rating starts
 ############ range for rating ends

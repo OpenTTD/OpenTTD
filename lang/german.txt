@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Schwierigkeitsgrad
 STR_02C6_DIFFICULTY_SETTINGS					:Schwierigkeitsgrad
 STR_02C7_CONFIG_PATCHES						:Einstellungen der Patches
 STR_02C8_CONFIG_PATCHES						:Einstellungen der Patches
+STR_NEWGRF_SETTINGS						:Newgrf-Einstellungen
+STR_NEWGRF_SETTINGS2						:Newgrf-Einstellungen
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Städtenamen anzeigen
@@ -1085,6 +1087,8 @@ STR_WAYPOINTNAME_CITY						:Wegpunkt {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Wegpunkt {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Wegpunkt
 
+STR_WAYPOINT							:{WHITE}Wegpunkt
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Wegpunkttyp auswählen
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -2598,3 +2602,10 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Bargeld
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Schuldenfalle?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
+STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Newgrf-Einstellungen
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Änderungen anwenden
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Parameter setzen
+STR_NEWGRF_TIP							:{BLACK}Eine Liste aller Newgrf-Sets, die installiert sind. Per Klick auswählen.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Keine Newgrf-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
+STR_NEWGRF_FILENAME						:{BLACK}Dateiname:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:

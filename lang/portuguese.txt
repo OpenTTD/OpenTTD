@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Configurações de dificuldade
 STR_02C6_DIFFICULTY_SETTINGS					:Configurações de dificuldade
 STR_02C7_CONFIG_PATCHES						:Configurar correcções
 STR_02C8_CONFIG_PATCHES						:Configurar correcções
+STR_NEWGRF_SETTINGS						:Definições Newgrf
+STR_NEWGRF_SETTINGS2						:Definições Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar nomes de cidades
@@ -2600,3 +2602,10 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Dinheiro 'em mãos'
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total de pontos sobre o máximo de pontos
 
+STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Definições Newgrf
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplicar alterações
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Definir parâmetros
+STR_NEWGRF_TIP							:{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
+STR_NEWGRF_FILENAME						:{BLACK}Nome do ficheiro:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
