@@ -684,7 +684,7 @@ DEF_CONSOLE_CMD(ConSet) {
 			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
 				_network_player_info[_local_player].password[0] = '\0';
 			} else {
-				strncpy(_network_player_info[_local_player].password, argv[2], sizeof(_network_player_info[_local_player].password));
+				ttd_strlcpy(_network_player_info[_local_player].password, argv[2], sizeof(_network_player_info[_local_player].password));
 			}
 			if (!_network_server)
 				SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
@@ -733,7 +733,7 @@ DEF_CONSOLE_CMD(ConSet) {
 			return NULL;
 		}
 		if (argc == 3) {
-			strncpy(_network_server_name, argv[2], sizeof(_network_server_name));
+			ttd_strlcpy(_network_server_name, argv[2], sizeof(_network_server_name));
 			IConsolePrintF(_iconsole_color_warning, "Server-name changed to '%s'", _network_server_name);
 			ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
 		} else {

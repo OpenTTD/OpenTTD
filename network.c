@@ -795,8 +795,6 @@ bool NetworkClientConnectGame(const byte* host, unsigned short port)
 	return _networking;
 }
 
-extern const char _openttd_revision[];
-
 void NetworkInitGameInfo(void)
 {
 	NetworkClientInfo *ci;
@@ -813,7 +811,7 @@ void NetworkInitGameInfo(void)
 		_network_game_info.clients_on = 1;
 		_network_game_info.dedicated = false;
 	}
-	strncpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
+	ttd_strlcpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
 	_network_game_info.spectators_on = 0;
 	_network_game_info.game_date = _date;
 	_network_game_info.start_date = ConvertIntDate(_patches.starting_date);
@@ -837,8 +835,8 @@ void NetworkInitGameInfo(void)
 		ci->client_playas = OWNER_SPECTATOR;
 	else
 		ci->client_playas = _local_player + 1;
-	strncpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
-	strncpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
+	ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
+	ttd_strlcpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
 }
 
 bool NetworkServerStart(void)
