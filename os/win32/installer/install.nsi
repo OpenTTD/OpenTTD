@@ -110,7 +110,6 @@ Section "!OpenTTD" Section1
   File ${PATH_ROOT}changelog.txt
   File ${PATH_ROOT}COPYING
   File ${PATH_ROOT}readme.txt
-  File ${PATH_ROOT}known-bugs.txt
 
 	; Copy executable
 	File /oname=openttd.exe        ${PATH_ROOT}Release\openttd.exe
@@ -145,7 +144,6 @@ Section "!OpenTTD" Section1
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Readme.lnk" "$INSTDIR\Readme.txt"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk" "$INSTDIR\Changelog.txt"
-	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk" "$INSTDIR\known-bugs.txt"
 	!insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
@@ -215,7 +213,6 @@ Section Uninstall
 	Delete "$INSTDIR\openttd.exe"
 	Delete "$INSTDIR\strgen.exe"
 	Delete "$INSTDIR\COPYING"
-	Delete "$INSTDIR\known-bugs.txt"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\openttd.cfg"
