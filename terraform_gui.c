@@ -36,7 +36,7 @@ static const uint16 _terraform_keycodes[] = {
 	'3',
 	'4',
 	'5',
-	'6',
+	0,
 	'7',
 };
 
