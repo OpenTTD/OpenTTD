@@ -1146,6 +1146,14 @@ bool EmergencySave()
 	return true;
 }
 
+void DoExitSave()
+{
+	char buf[200];
+	sprintf(buf, "%s%sexit.sav", _path.autosave_dir, PATHSEP);
+	debug(buf);
+	SaveOrLoad(buf, SL_SAVE);
+}
+
 // not used right now, but could be used if extensions of savegames are garbled
 /*int GetSavegameType(char *file)
 {

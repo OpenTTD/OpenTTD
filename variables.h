@@ -148,6 +148,7 @@ typedef struct Patches {
 	uint32 colored_news_date; // when does newspaper become colored?
 
 	bool keep_all_autosave;		// name the autosave in a different way.
+	bool autosave_on_exit;		// save an autosave when you quit the game, but do not ask "Do you really want to quit?"
 	bool extra_dynamite;			// extra dynamite
 
 	bool never_expire_vehicles; // never expire vehicles

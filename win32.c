@@ -181,6 +181,8 @@ static void ClientSizeChanged(int w, int h)
 	}
 }
 
+void DoExitSave();
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch(msg) {
@@ -224,7 +226,15 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	}
 
 	case WM_CLOSE:
-		AskExitGame();
+		// do not ask to quit on the main screen
+		if (_game_mode != GM_MENU) {
+			if(_patches.autosave_on_exit) {
+				DoExitSave();
+				_exit_game = true;
+			} else
+				AskExitGame();
+		} else
+			return ML_QUIT;
 		return 0;
 
 	case WM_LBUTTONDOWN:

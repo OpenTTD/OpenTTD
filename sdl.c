@@ -434,6 +434,8 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	return (key << 16) + sym->unicode;
 }
 
+void DoExitSave();
+
 static int PollEvent(void)
 {
 	SDL_Event ev;
@@ -500,9 +502,13 @@ static int PollEvent(void)
 
 	case SDL_QUIT:
 		// do not ask to quit on the main screen
-		if (_game_mode != GM_MENU)
-			AskExitGame();
-		else
+		if (_game_mode != GM_MENU) {
+			if(_patches.autosave_on_exit) {
+				DoExitSave();
+				return ML_QUIT;
+			} else
+				AskExitGame();
+		} else
 			return ML_QUIT;
 		break;
 
