@@ -982,8 +982,8 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	
 			// draw grf id
 			x = DrawString(5, 209, STR_NEWGRF_GRF_ID, 0);
-			SET_DPARAM16(0, _sel_grffile->grfid);
-			DrawString(x + 2, 209, STR_7024, 0x01);
+			snprintf(_userstring, USERSTRING_LEN, "%08X", _sel_grffile->grfid);
+			DrawString(x + 2, 209, STR_SPEC_USERSTRING, 0x01);
 		}
 	} break;
 
