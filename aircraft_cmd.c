@@ -299,6 +299,7 @@ static void DoDeleteAircraft(Vehicle *v)
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 	DeleteVehicleChain(v);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 // p1 = vehicle
@@ -343,6 +344,7 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 	}
 
 	return 0;
@@ -505,19 +507,6 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 }
 
-void InvalidateAircraftWindows(const Vehicle *v)
-{
-	const Order *order;
-
-	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
-
-	FOR_VEHICLE_ORDERS(v, order) {
-		if (order->type == OT_GOTO_STATION ) {
-			InvalidateWindow(WC_AIRCRAFT_LIST, (order->station << 16) | v->owner);
-		}
-	}
-}
-
 void OnNewDay_Aircraft(Vehicle *v)
 {
 	int32 cost;
@@ -545,6 +534,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 void AircraftYearlyLoop()
@@ -1068,7 +1058,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 	InvalidateVehicleOrder(v);
 
-	InvalidateAircraftWindows(v);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 static void HandleAircraftLoading(Vehicle *v, int mode)
@@ -1206,6 +1196,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 	LoadUnloadVehicle(v);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 static void AircraftEnterHangar(Vehicle *v)
@@ -1213,6 +1204,7 @@ static void AircraftEnterHangar(Vehicle *v)
 	Order old_order;
 
 	ServiceAircraft(v);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 
 	MaybeReplaceVehicle(v);
 
@@ -1229,7 +1221,7 @@ static void AircraftEnterHangar(Vehicle *v)
 			v->cur_order_index++;
 		} else if (old_order.flags & OF_FULL_LOAD) { // force depot visit
 			v->vehstatus |= VS_STOPPED;
-			InvalidateAircraftWindows(v);
+			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -1291,6 +1283,7 @@ static void AircraftLeaveHangar(Vehicle *v)
 	VehicleServiceInDepot(v);
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
 

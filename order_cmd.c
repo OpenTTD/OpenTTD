@@ -343,8 +343,8 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 	}
 
 	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
-	if (v->type == VEH_Aircraft) InvalidateAircraftWindows(v);
-	if (v->type == VEH_Ship) InvalidateShipWindows(v);
+	if (v->type == VEH_Aircraft) InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	if (v->type == VEH_Ship) InvalidateWindowClasses(WC_SHIPS_LIST);
 
 	return 0;
 }

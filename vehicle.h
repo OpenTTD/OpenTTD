@@ -333,9 +333,6 @@ int CheckStoppedInDepot(Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
-void InvalidateAircraftWindows(const Vehicle *v);
-void InvalidateShipWindows(const Vehicle *v);
-
 typedef struct GetNewVehiclePosResult {
 	int x,y;
 	uint old_tile;
