@@ -100,7 +100,7 @@ void CcRailDepot(bool success, uint tile, uint32 p1, uint32 p2)
 
 		tile += TileOffsByDir(dir);
 
-		if (IS_TILETYPE(tile, MP_RAILWAY)) {
+		if (IsTileType(tile, MP_RAILWAY)) {
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir]);
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 4]);
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 8]);
@@ -394,11 +394,11 @@ static int GetBestFit1x1(int x, int y)
 		};
 		tile += ToTileIndexDiff(_tile_inc[i]);
 		m[i] = 0;
-		if (IS_TILETYPE(tile, MP_RAILWAY) && _map5[tile] < 0x80)
+		if (IsTileType(tile, MP_RAILWAY) && _map5[tile] < 0x80)
 			m[i] = _map5[tile]&0x3F;
 
 		// handle tracks under bridge
-		if(IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile]&0xF8)==0xE0)
+		if(IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile]&0xF8)==0xE0)
 			m[i] = (byte) !(_map5[tile]&0x01) + 1;
 
 		if (_remove_button_clicked) m[i] ^= 0x3F;

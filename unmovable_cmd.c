@@ -240,7 +240,7 @@ static bool checkRadioTowerNearby(uint tile)
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
 		// already a radio tower here?
-		if (IS_TILETYPE(tile, MP_UNMOVABLE) && _map5[tile] == 0)
+		if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 0)
 			return false;
 	END_TILE_LOOP(tile, 9, 9, tile_s)
 	return true;
@@ -265,7 +265,7 @@ void GenerateUnmovables()
 		tile = r % MapSize();
 //		TILE_MASK seems to be not working correctly. Radio masts accumulate in one area.
 //		tile = TILE_MASK(r);
-		if (IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
 			if(!checkRadioTowerNearby(tile))
 				continue;
 			_map_type_and_height[tile] |= MP_UNMOVABLE << 4;
@@ -296,7 +296,7 @@ restart:
 			if (--j == 0)
 				goto restart;
 			tile = TILE_MASK(tile + ToTileIndexDiff(_tile_add[dir]));
-		} while (!(IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
+		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
 
 		assert(tile == TILE_MASK(tile));
 

@@ -836,11 +836,11 @@ static void ChangeTileOwner_Industry(uint tile, byte old_player, byte new_player
 void DeleteIndustry(Industry *i)
 {
 	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
-		if (IS_TILETYPE(tile_cur, MP_INDUSTRY)) {
+		if (IsTileType(tile_cur, MP_INDUSTRY)) {
 			if (_map2[tile_cur] == i->index) {
 				DoClearSquare(tile_cur);
 			}
-		} else if (IS_TILETYPE(tile_cur, MP_STATION) && _map5[tile_cur] == 0x4B) {
+		} else if (IsTileType(tile_cur, MP_STATION) && _map5[tile_cur] == 0x4B) {
 			DeleteOilRig(tile_cur);
 		}
 	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
@@ -856,12 +856,12 @@ static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 
 
 static bool IsBadFarmFieldTile(uint tile)
 {
-	if (IS_TILETYPE(tile,MP_CLEAR)) {
+	if (IsTileType(tile, MP_CLEAR)) {
 		byte m5 = _map5[tile] & 0x1C;
 		if (m5 == 0xC || m5 == 0x10)
 			return true;
 		return false;
-	} else if (IS_TILETYPE(tile,MP_TREES)) {
+	} else if (IsTileType(tile, MP_TREES)) {
 		return false;
 	} else {
 		return true;
@@ -870,12 +870,12 @@ static bool IsBadFarmFieldTile(uint tile)
 
 static bool IsBadFarmFieldTile2(uint tile)
 {
-	if (IS_TILETYPE(tile,MP_CLEAR)) {
+	if (IsTileType(tile, MP_CLEAR)) {
 		byte m5 = _map5[tile] & 0x1C;
 		if (m5 == 0x10)
 			return true;
 		return false;
-	} else if (IS_TILETYPE(tile,MP_TREES)) {
+	} else if (IsTileType(tile, MP_TREES)) {
 		return false;
 	} else {
 		return true;
@@ -889,7 +889,7 @@ static void SetupFarmFieldFence(uint tile, int size, byte type, int direction)
 	do {
 		tile = TILE_MASK(tile);
 
-		if (IS_TILETYPE(tile, MP_CLEAR) || IS_TILETYPE(tile, MP_TREES)) {
+		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
 
 			or = type;
 			if (or == 1 && (uint16)Random() <= 9362) or = 2;
@@ -999,7 +999,7 @@ static void ChopLumberMillTrees(Industry *i)
 			j = a;
 			do {
 				tile = TILE_MASK(tile);
-				if (IS_TILETYPE(tile, MP_TREES)) {
+				if (IsTileType(tile, MP_TREES)) {
 					uint old_player = _current_player;
 					/* found a tree */
 

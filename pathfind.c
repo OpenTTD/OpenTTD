@@ -131,10 +131,10 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	int owner = -1;
 
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE))) {
+		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE)) {
 			owner = _map_owner[tile];
 			/* Check if we are on the middle of a bridge (has no owner) */
-			if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
+			if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
 				owner = -1;
 		}
 	}
@@ -146,9 +146,9 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE)))
+		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 			/* Check if we are on the middle of a bridge (has no owner) */
-			if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
 				if (owner != -1 && _map_owner[tile] != owner)
 					return;
 	}
@@ -231,7 +231,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
 
 		tile = TILE_FROM_XY(x,y);
 
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
+		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
 				(_map5[tile] & 0xF0) == 0 &&					// tunnel entrance/exit
 				//((_map5[tile]>>2)&3) == type &&		// rail/road-tunnel <-- This is not necesary to check, right?
 				((_map5[tile] & 3)^2) == direction &&	// entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
@@ -281,7 +281,7 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	RememberData rd;
 	uint tile_org = tile;
 
-	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0) {
 		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>2)&3) != tpf->tracktype)
 			return;
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
@@ -290,11 +290,11 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if ((IS_TILETYPE(tile_org, MP_RAILWAY) || IS_TILETYPE(tile_org, MP_STATION) || IS_TILETYPE(tile_org, MP_TUNNELBRIDGE)))
-			if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE)))
+		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
+			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 				/* Check if we are on a bridge (middle parts don't have an owner */
-				if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
-					if (!IS_TILETYPE(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
+				if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+					if (!IsTileType(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
 						if (_map_owner[tile_org] != _map_owner[tile])
 							return;
 	}
@@ -628,7 +628,7 @@ static void NTPEnum(NewTrackPathFinder *tpf, uint tile, uint direction)
 	si.state = 0;
 
 restart:
-	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0) {
 		/* This is a tunnel tile */
 		if ( (uint)(_map5[tile] & 3) != (direction ^ 2)) { /* ^ 2 is reversing the direction */
 			/* We are not just driving out of the tunnel */
@@ -653,7 +653,7 @@ restart:
 			goto popnext;
 
 		// not a regular rail tile?
-		if (!IS_TILETYPE(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0xC0) {
+		if (!IsTileType(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0xC0) {
 			bits = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
 			bits = (bits | (bits >> 8)) & 0x3F;
 			break;

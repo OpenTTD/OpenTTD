@@ -81,7 +81,7 @@ static void DoPlaceMoreTrees(uint tile)
 
 		/* Only on tiles within 13 squares from tile,
 		    on clear tiles, and NOT on farm-tiles or rocks */
-		if (dist <= 13 && IS_TILETYPE(cur_tile, MP_CLEAR) &&
+		if (dist <= 13 && IsTileType(cur_tile, MP_CLEAR) &&
 			 (_map5[cur_tile] & 0x1F) != 0x0F && (_map5[cur_tile] & 0x1C) != 8) {
 			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
 		}
@@ -107,7 +107,7 @@ void PlaceTreesRandomly()
 		r = Random();
 		tile = TILE_MASK(r);
 		/* Only on clear tiles, and NOT on farm-tiles or rocks */
-		if (IS_TILETYPE(tile, MP_CLEAR) && (_map5[tile] & 0x1F) != 0x0F && (_map5[tile] & 0x1C) != 8) {
+		if (IsTileType(tile, MP_CLEAR) && (_map5[tile] & 0x1F) != 0x0F && (_map5[tile] & 0x1C) != 8) {
 			PlaceTree(tile, r, 0);
 		}
 	} while (--i);
@@ -119,7 +119,7 @@ void PlaceTreesRandomly()
 		do {
 			r = Random();
 			tile = TILE_MASK(r);
-			if (IS_TILETYPE(tile, MP_CLEAR) && GetMapExtraBits(tile) == 2) {
+			if (IsTileType(tile, MP_CLEAR) && GetMapExtraBits(tile) == 2) {
 				PlaceTree(tile, r, 0);
 			}
 		} while (--i);
@@ -516,7 +516,7 @@ static void TileLoop_Trees(uint tile)
 
 				tile += ToTileIndexDiff(_tileloop_trees_dir[Random() & 7]);
 
-				if (!IS_TILETYPE(tile, MP_CLEAR))
+				if (!IsTileType(tile, MP_CLEAR))
 					return;
 
 				if ( (_map5[tile] & 0x1C) == 4) {
@@ -579,7 +579,7 @@ void OnTick_Trees()
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_DESERT &&
 			(r=Random(),tile=TILE_MASK(r),GetMapExtraBits(tile)==2) &&
-			IS_TILETYPE(tile, MP_CLEAR) &&
+			IsTileType(tile, MP_CLEAR) &&
 			(m=_map5[tile]&0x1C, m<=4) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
 
@@ -600,7 +600,7 @@ void OnTick_Trees()
 	/* place a tree at a random spot */
 	r = Random();
 	tile = TILE_MASK(r);
-	if (IS_TILETYPE(tile, MP_CLEAR) &&
+	if (IsTileType(tile, MP_CLEAR) &&
 			(m=_map5[tile]&0x1C, m==0 || m==4 || m==0x10) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
 		int m2;

@@ -164,7 +164,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		} else if (v->current_order.station == 0) {
 			tile = v->tile; /**/
 
-			if (IS_TILETYPE(tile, MP_STATION) &&
+			if (IsTileType(tile, MP_STATION) &&
 				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 				IS_HUMAN_PLAYER(_map_owner[tile])) {
 
@@ -189,7 +189,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		tile = v->tile; /**/
 
-		if (IS_TILETYPE(tile, MP_STATION) &&
+		if (IsTileType(tile, MP_STATION) &&
 			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 			IS_HUMAN_PLAYER(_map_owner[tile])) {
 
@@ -231,7 +231,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	}
 
 	tile = v->tile;/**/
-	if (IS_TILETYPE(tile, MP_STATION) &&
+	if (IsTileType(tile, MP_STATION) &&
 		IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 		IS_HUMAN_PLAYER(_map_owner[tile])) {
 
@@ -325,7 +325,7 @@ static void DestructIndustry(Industry *i)
 	uint tile;
 
 	for(tile=0; tile != MapSize(); tile++) {
-		if (IS_TILETYPE(tile, MP_INDUSTRY) &&	_map2[tile] == i->index) {
+		if (IsTileType(tile, MP_INDUSTRY) &&	_map2[tile] == i->index) {
 			_map_owner[tile] = 0;
 			MarkTileDirtyByTile(tile);
 		}
@@ -391,7 +391,7 @@ static void DisasterTick_2(Vehicle *v)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
-		if (!IS_TILETYPE(tile, MP_INDUSTRY))
+		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
 		v->dest_tile = ind = _map2[tile];
@@ -462,7 +462,7 @@ static void DisasterTick_3(Vehicle *v)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
-		if (!IS_TILETYPE(tile, MP_INDUSTRY))
+		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
 		v->dest_tile = ind = _map2[tile];
@@ -570,7 +570,7 @@ static void DisasterTick_4(Vehicle *v)
 
 		tile_org = tile = TILE_MASK(Random());
 		do {
-			if (IS_TILETYPE(tile, MP_RAILWAY) &&
+			if (IsTileType(tile, MP_RAILWAY) &&
 					(_map5[tile]&~3)!=0xC0 &&	IS_HUMAN_PLAYER(_map_owner[tile]))
 						break;
 			tile = TILE_MASK(tile+1);

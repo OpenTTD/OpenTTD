@@ -73,7 +73,7 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 {
 	// check around to see if there's any stations there
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TILE_XY(1,1))
-		if (IS_TILETYPE(tile_cur, MP_STATION)) {
+		if (IsTileType(tile_cur, MP_STATION)) {
 			int t;
 			t = _map2[tile_cur];
 			{
@@ -118,7 +118,7 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 	uint t;
 
 	for (i = 0; i != MapSize(); i++) {
-		if (IS_TILETYPE(i, MP_STATION) && _map2[i] == station_index) {
+		if (IsTileType(i, MP_STATION) && _map2[i] == station_index) {
 			t = TileX(i);
 			if (t < x1) x1 = t;
 			if (t > x2) x2 = t;
@@ -180,7 +180,7 @@ static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
 	for (p = _count_square_table; p != endof(_count_square_table); ++p) {
 		tile = TILE_MASK(tile + ToTileIndexDiff(*p));
 
-		if (IS_TILETYPE(tile, type) && _map5[tile] >= min && _map5[tile] <= max)
+		if (IsTileType(tile, type) && _map5[tile] >= min && _map5[tile] <= max)
 			num++;
 	}
 
@@ -435,7 +435,7 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
 			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
 				GetProducedCargoProc *gpc;
 				uint tile = TILE_XY(xc, yc);
-				gpc = _tile_type_procs[GET_TILETYPE(tile)]->get_produced_cargo_proc;
+				gpc = _tile_type_procs[TileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
 					cargos[0] = cargos[1] = 0xFF;
 					gpc(tile, cargos);
@@ -480,7 +480,7 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 		xc = x1;
 		do {
 			uint tile = TILE_XY(xc, yc);
-			if (!IS_TILETYPE(tile, MP_STATION)) {
+			if (!IsTileType(tile, MP_STATION)) {
 				AcceptedCargo ac;
 				int i;
 
@@ -647,7 +647,7 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 		// if station is set, then we have special handling to allow building on top of already existing stations.
 		// so station points to -1 if we can build on any station. or it points to a station if we're only allowed to build
 		// on exactly that station.
-		if ( (station != NULL) && IS_TILETYPE(tile_cur, MP_STATION)) {
+		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
 			if (_map5[tile_cur] >= 8) {
 				_error_message = ClearTile_Station(tile_cur, DC_AUTO); // get error message
 				return CMD_ERROR;
@@ -914,7 +914,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 static bool TileBelongsToRailStation(Station *st, uint tile)
 {
-	return IS_TILETYPE(tile, MP_STATION) && _map2[tile] == st->index && _map5[tile] < 8;
+	return IsTileType(tile, MP_STATION) && _map2[tile] == st->index && _map5[tile] < 8;
 }
 
 static void MakeRailwayStationAreaSmaller(Station *st)
@@ -965,7 +965,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
-	if (!IS_TILETYPE(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
+	if (!IsTileType(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
 	st = GetStation(_map2[tile]);
 	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
@@ -2174,7 +2174,7 @@ static void ClickTile_Station(uint tile)
 }
 
 static inline bool IsTrainStationTile(uint tile) {
-	return IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
+	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
 }
 
 static const byte _enter_station_speedtable[12] = {
@@ -2530,7 +2530,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad,max_rad))
 		cur_tile = TILE_MASK(cur_tile);
-		if (IS_TILETYPE(cur_tile, MP_STATION)) {
+		if (IsTileType(cur_tile, MP_STATION)) {
 			st_index = _map2[cur_tile];
 			for(i=0; i!=8; i++)	{
 				if (around[i] == 0xFF) {

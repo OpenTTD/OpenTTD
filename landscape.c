@@ -93,7 +93,7 @@ void FindLandscapeHeightByTile(TileInfo *ti, uint tile)
 
 	ti->tile = tile;
 	ti->map5 = _map5[tile];
-	ti->type = GET_TILETYPE(tile);
+	ti->type = TileType(tile);
 	ti->tileh = GetTileSlope(tile, &ti->z);
 //	ti->z = min * 8;
 }
@@ -295,28 +295,28 @@ void DoClearSquare(uint tile)
 
 uint32 GetTileTrackStatus(uint tile, TransportType mode)
 {
-	return _tile_type_procs[GET_TILETYPE(tile)]->get_tile_track_status_proc(tile, mode);
+	return _tile_type_procs[TileType(tile)]->get_tile_track_status_proc(tile, mode);
 }
 
 void ChangeTileOwner(uint tile, byte old_player, byte new_player)
 {
-	_tile_type_procs[GET_TILETYPE(tile)]->change_tile_owner_proc(tile, old_player, new_player);
+	_tile_type_procs[TileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
 }
 
 void GetAcceptedCargo(uint tile, AcceptedCargo ac)
 {
 	memset(ac, 0, sizeof(AcceptedCargo));
-	_tile_type_procs[GET_TILETYPE(tile)]->get_accepted_cargo_proc(tile, ac);
+	_tile_type_procs[TileType(tile)]->get_accepted_cargo_proc(tile, ac);
 }
 
 void AnimateTile(uint tile)
 {
-	_tile_type_procs[GET_TILETYPE(tile)]->animate_tile_proc(tile);
+	_tile_type_procs[TileType(tile)]->animate_tile_proc(tile);
 }
 
 void ClickTile(uint tile)
 {
-	_tile_type_procs[GET_TILETYPE(tile)]->click_tile_proc(tile);
+	_tile_type_procs[TileType(tile)]->click_tile_proc(tile);
 }
 
 void DrawTile(TileInfo *ti)
@@ -326,7 +326,7 @@ void DrawTile(TileInfo *ti)
 
 void GetTileDesc(uint tile, TileDesc *td)
 {
-	_tile_type_procs[GET_TILETYPE(tile)]->get_tile_desc_proc(tile, td);
+	_tile_type_procs[TileType(tile)]->get_tile_desc_proc(tile, td);
 }
 
 /* Clear a piece of landscape
@@ -340,7 +340,7 @@ int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	tile = TILE_FROM_XY(x,y);
-	return _tile_type_procs[GET_TILETYPE(tile)]->clear_tile_proc(tile, flags);
+	return _tile_type_procs[TileType(tile)]->clear_tile_proc(tile, flags);
 }
 
 // p1 = end tile
@@ -467,7 +467,7 @@ void RunTileLoop()
 	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
 	count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
 	do {
-		_tile_type_procs[GET_TILETYPE(tile)]->tile_loop_proc(tile);
+		_tile_type_procs[TileType(tile)]->tile_loop_proc(tile);
 
 		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; /* no overflow */
@@ -509,7 +509,7 @@ void ConvertGroundTilesIntoWaterTiles()
 	int h;
 
 	while(true) {
-		if (IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
 			_map_type_and_height[tile] = MP_WATER << 4;
 			_map5[tile] = 0;
 			_map_owner[tile] = OWNER_WATER;
@@ -654,7 +654,7 @@ static void CreateDesertOrRainForest()
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (IS_TILETYPE(t, MP_CLEAR) && (_map5[t] & 0x1c) == 0x14) break;
+			if (IsTileType(t, MP_CLEAR) && (_map5[t] & 0x1c) == 0x14) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetMapExtraBits(tile, 2);

@@ -593,7 +593,15 @@ uint CheckTunnelBusy(uint tile, int *length)
 	uint starttile = tile;
 	Vehicle *v;
 
-	do { tile += delta; len++; } while (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || _map5[tile]&0xF0 || (byte)(_map5[tile] ^ 2) != m5 || GetTileZ(tile) != z);
+	do {
+		tile += delta;
+		len++;
+	} while (
+		!IsTileType(tile, MP_TUNNELBRIDGE) ||
+		(_map5[tile] & 0xF0) != 0 ||
+		(byte)(_map5[tile] ^ 2) != m5 ||
+		GetTileZ(tile) != z
+	);
 
 	if ((v=FindVehicleBetween(starttile, tile, z)) != NULL) {
 		_error_message = v->type == VEH_Train ? STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
@@ -655,7 +663,7 @@ static uint FindEdgesOfBridge(uint tile, uint *endtile)
 
 	// find start of bridge
 	for(;;) {
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0x80)
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0x80)
 			break;
 		tile += direction ? TILE_XY(0,-1) : TILE_XY(-1,0);
 	}
@@ -664,7 +672,7 @@ static uint FindEdgesOfBridge(uint tile, uint *endtile)
 
 	// find end of bridge
 	for(;;) {
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0xA0)
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0xA0)
 			break;
 		tile += direction ? TILE_XY(0,1) : TILE_XY(1,0);
 	}
@@ -690,7 +698,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		int32 cost;
 
 		// check if we own the tile below the bridge..
-		if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)) ))
+		if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TileHeight(tile))))
 			return CMD_ERROR;
 
 		cost = (_map5[tile] & 8) ? _price.remove_road * 2 : _price.remove_rail;
@@ -703,11 +711,11 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		return cost;
 
 	/* delete canal under bridge */
-	} else if(_map5[tile]==0xC8 && GET_TILEHEIGHT(tile)!=0) {
+	} else if(_map5[tile] == 0xC8 && TileHeight(tile) != 0) {
 		int32 cost;
 
 		// check for vehicles under bridge
-		if ( !EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)) )
+		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
 			return CMD_ERROR;
 		cost = _price.clear_water;
 		if (flags & DC_EXEC) {
@@ -735,7 +743,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	*/
 	tile		+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 	endtile	-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
-	if ((v=FindVehicleBetween(tile, endtile, GET_TILEHEIGHT(tile) + 8)) != NULL) {
+	if ((v = FindVehicleBetween(tile, endtile, TileHeight(tile) + 8)) != NULL) {
 		VehicleInTheWayErrMsg(v);
 		return CMD_ERROR;
 	}
@@ -844,7 +852,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 	} else if ((_map5[tile] & 0xF8) == 0xE0) {
 		// bridge middle part with rail below
 		// only check for train under bridge
-		if (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)))
+		if (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TileHeight(tile)))
 			return CMD_ERROR;
 
 		// tile is already of requested type?
@@ -912,7 +920,7 @@ uint GetBridgeHeight(const TileInfo *ti)
 		z_correction += 8;
 
 	// return the height there (the height of the NORTH CORNER)
-	return GET_TILEHEIGHT(tile) + z_correction;
+	return TileHeight(tile) + z_correction;
 }
 
 static const byte _bridge_foundations[2][16] = {

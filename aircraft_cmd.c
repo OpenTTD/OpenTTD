@@ -277,7 +277,7 @@ bool IsAircraftHangarTile(TileIndex tile)
 	// 0x56 - hangar facing other way international airport (86)
 	// 0x20 - hangar large airport (32)
 	// 0x41 - hangar small airport (65)
-	return IS_TILETYPE(tile, MP_STATION) &&
+	return IsTileType(tile, MP_STATION) &&
 				(_map5[tile] == 32 || _map5[tile] == 65 || _map5[tile] == 86);
 }
 

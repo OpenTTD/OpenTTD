@@ -72,4 +72,22 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
 }
 
+
+static inline uint TileHeight(TileIndex tile)
+{
+	assert(tile < MapSize());
+	return (_map_type_and_height[tile] & 0xf) * 8;
+}
+
+static inline int TileType(TileIndex tile)
+{
+	assert(tile < MapSize());
+	return _map_type_and_height[tile] >> 4;
+}
+
+static inline bool IsTileType(TileIndex tile, int type)
+{
+	return TileType(tile) == type;
+}
+
 #endif

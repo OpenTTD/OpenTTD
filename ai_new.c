@@ -607,7 +607,7 @@ static void AiNew_State_FindStation(Player *p) {
 	    for (x = TileX(tile) - AI_FINDSTATION_TILE_RANGE; x <= TileX(tile) + AI_FINDSTATION_TILE_RANGE; x++) {
 	    	for (y = TileY(tile) - AI_FINDSTATION_TILE_RANGE; y <= TileY(tile) + AI_FINDSTATION_TILE_RANGE; y++) {
 	    		new_tile = TILE_XY(x,y);
-	    		if (IS_TILETYPE(new_tile, MP_CLEAR) || IS_TILETYPE(new_tile, MP_TREES)) {
+	    		if (IsTileType(new_tile, MP_CLEAR) || IsTileType(new_tile, MP_TREES)) {
 	    			// This tile we can build on!
 	    			// Check acceptance
 						// XXX - Get the catchment area
@@ -744,7 +744,7 @@ static void AiNew_State_FindDepot(Player *p) {
 	for (i=2;i<p->ainew.path_info.route_length-2;i++) {
 		tile = p->ainew.path_info.route[i];
 		for (j = 0; j < 4; j++) {
-			if (IS_TILETYPE(tile + TileOffsByDir(j), MP_STREET)) {
+			if (IsTileType(tile + TileOffsByDir(j), MP_STREET)) {
 				// Its a street, test if it is a depot
 				if (_map5[tile + TileOffsByDir(j)] & 0x20) {
 					// We found a depot, is it ours? (TELL ME!!!)
@@ -787,10 +787,10 @@ static void AiNew_State_FindDepot(Player *p) {
 					tile + TileOffsByDir(j) == p->ainew.path_info.route[i+1]) continue;
 			// Not around a bridge?
 			if (p->ainew.path_info.route_extra[i] != 0) continue;
-			if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) continue;
+			if (IsTileType(tile, MP_TUNNELBRIDGE)) continue;
 			// Is the terrain clear?
-			if (IS_TILETYPE(tile + TileOffsByDir(j), MP_CLEAR) ||
-					IS_TILETYPE(tile + TileOffsByDir(j), MP_TREES)) {
+			if (IsTileType(tile + TileOffsByDir(j), MP_CLEAR) ||
+					IsTileType(tile + TileOffsByDir(j), MP_TREES)) {
 				TileInfo ti;
 				FindLandscapeHeightByTile(&ti, tile);
 				// If the current tile is on a slope (tileh != 0) then we do not allow this
@@ -929,11 +929,11 @@ static void AiNew_State_BuildStation(Player *p) {
 	int res = 0;
     assert(p->ainew.state == AI_STATE_BUILD_STATION);
     if (p->ainew.temp == 0) {
-    	if (!IS_TILETYPE(p->ainew.from_tile, MP_STATION))
+    	if (!IsTileType(p->ainew.from_tile, MP_STATION))
     		res = AiNew_Build_Station(p, p->ainew.tbt, p->ainew.from_tile, 0, 0, p->ainew.from_direction, DC_EXEC);
    	}
     else {
-       	if (!IS_TILETYPE(p->ainew.to_tile, MP_STATION))
+       	if (!IsTileType(p->ainew.to_tile, MP_STATION))
        	   	res = AiNew_Build_Station(p, p->ainew.tbt, p->ainew.to_tile, 0, 0, p->ainew.to_direction, DC_EXEC);
     	p->ainew.state = AI_STATE_BUILD_PATH;
     }
@@ -1000,10 +1000,10 @@ static void AiNew_State_BuildPath(Player *p) {
             	r = DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
 					dir1 = TileOffsByDir(dir1);
-					if (IS_TILETYPE(tile+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1, MP_TREES)) {
+					if (IsTileType(tile + dir1, MP_CLEAR) || IsTileType(tile + dir1, MP_TREES)) {
 						r = DoCommandByTile(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
-							if (IS_TILETYPE(tile+dir1+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1+dir1, MP_TREES))
+							if (IsTileType(tile + dir1 + dir1, MP_CLEAR) || IsTileType(tile + dir1 + dir1, MP_TREES))
 								DoCommandByTile(tile+dir1+dir1, AiNew_GetRoadDirection(tile+dir1, tile+dir1+dir1, tile+dir1+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
@@ -1012,10 +1012,10 @@ static void AiNew_State_BuildPath(Player *p) {
 				r = DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
 					dir2 = TileOffsByDir(dir2);
-					if (IS_TILETYPE(tile+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2, MP_TREES)) {
+					if (IsTileType(tile + dir2, MP_CLEAR) || IsTileType(tile + dir2, MP_TREES)) {
 						r = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
-							if (IS_TILETYPE(tile+dir2+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2+dir2, MP_TREES))
+							if (IsTileType(tile + dir2 + dir2, MP_CLEAR) || IsTileType(tile + dir2 + dir2, MP_TREES))
 								DoCommandByTile(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
@@ -1024,10 +1024,10 @@ static void AiNew_State_BuildPath(Player *p) {
 				r = DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
 					dir3 = TileOffsByDir(dir3);
-					if (IS_TILETYPE(tile+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3, MP_TREES)) {
+					if (IsTileType(tile + dir3, MP_CLEAR) || IsTileType(tile + dir3, MP_TREES)) {
 						r = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
-							if (IS_TILETYPE(tile+dir3+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3+dir3, MP_TREES))
+							if (IsTileType(tile + dir3 + dir3, MP_CLEAR) || IsTileType(tile + dir3 + dir3, MP_TREES))
 								DoCommandByTile(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
@@ -1046,7 +1046,7 @@ static void AiNew_State_BuildDepot(Player *p) {
 	int res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
-	if (IS_TILETYPE(p->ainew.depot_tile, MP_STREET) && _map5[p->ainew.depot_tile] & 0x20) {
+	if (IsTileType(p->ainew.depot_tile, MP_STREET) && _map5[p->ainew.depot_tile] & 0x20) {
 		if (_map_owner[p->ainew.depot_tile] == _current_player) {
 			// The depot is already builded!
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;

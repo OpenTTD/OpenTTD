@@ -1193,13 +1193,13 @@ void ConvertTownOwner()
 	uint tile;
 
 	for (tile = 0; tile != MapSize(); tile++) {
-		if (IS_TILETYPE(tile, MP_STREET)) {
+		if (IsTileType(tile, MP_STREET)) {
 			if ((_map5[tile] & 0xF0) == 0x10 && _map3_lo[tile] & 0x80)
 				_map3_lo[tile] = OWNER_TOWN;
 
 			if (_map_owner[tile] & 0x80)
 				_map_owner[tile] = OWNER_TOWN;
-		} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			if (_map_owner[tile] & 0x80)
 				_map_owner[tile] = OWNER_TOWN;
 		}
@@ -1292,7 +1292,7 @@ bool AfterLoadGame(uint version)
 		uint h = MapSizeY();
 
 		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
-			if (IS_TILETYPE(tile_cur, MP_WATER) && _map_owner[tile_cur] >= MAX_PLAYERS)
+			if (IsTileType(tile_cur, MP_WATER) && _map_owner[tile_cur] >= MAX_PLAYERS)
 				_map_owner[tile_cur] = OWNER_WATER;
 		END_TILE_LOOP(tile_cur, w, h, tile)
 	}

@@ -1193,7 +1193,7 @@ static void PlaceProc_LowerBigLand(uint tile)
 
 static void PlaceProc_RockyArea(uint tile)
 {
-	if (!IS_TILETYPE(tile, MP_CLEAR) && !IS_TILETYPE(tile, MP_TREES))
+	if (!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES))
 		return;
 
 	ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_map5[tile] & ~0x1C) | 0xB);

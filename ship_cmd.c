@@ -84,7 +84,7 @@ static int FindClosestShipDepot(Vehicle *v)
 
 	for(i=0; i!=lengthof(_depots); i++) {
 		tile = _depots[i].xy;
-		if (IS_TILETYPE(tile, MP_WATER) && _map_owner[tile] == owner) {
+		if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
 			dist = GetTileDist(tile, tile2);
 			if (dist < best_dist) {
 				best_dist = dist;

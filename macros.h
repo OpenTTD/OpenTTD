@@ -70,10 +70,6 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 
 #define LANDSCAPE_SIZE_FACTOR 1
 
-#define IS_TILETYPE(_t_, _s_) (_map_type_and_height[(_t_)] >> 4 == (_s_))
-#define GET_TILETYPE(_t_) (_map_type_and_height[(_t_)] >> 4)
-#define GET_TILEHEIGHT(_t_) ((_map_type_and_height[_t_] & 0xF) * 8)
-
 enum {
 	CORRECT_Z_BITS = 1 << 1 | 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7
 };

@@ -230,8 +230,8 @@ enum {
 
 // A macro for mp_street, where 0x20 is depot
 //   mp_tunnelbridge, where 0xf0 is a bridge, and 0x4/0x2 means: roadtunnel/bridge
-#define AI_PATHFINDER_IS_ROAD(tile) ((IS_TILETYPE(tile, MP_STREET) && !(_map5[tile] & 0x20)) || \
-(IS_TILETYPE(tile, MP_TUNNELBRIDGE) && \
+#define AI_PATHFINDER_IS_ROAD(tile) ((IsTileType(tile, MP_STREET) && !(_map5[tile] & 0x20)) || \
+(IsTileType(tile, MP_TUNNELBRIDGE) && \
 	(((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) || \
 	 ((_map5[tile] & 0x80) != 0 && (_map5[tile] & 0x2) == 0x2))))
 

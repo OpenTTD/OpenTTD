@@ -577,7 +577,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 
 		{
 			uint tile = v->tile;
-			if (IS_TILETYPE(tile, MP_STATION) &&
+			if (IsTileType(tile, MP_STATION) &&
 					(_map5[tile] == 32 || _map5[tile] == 65) &&
 					v->vehstatus&VS_STOPPED)
 						disabled = 0;

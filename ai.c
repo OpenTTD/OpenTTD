@@ -1599,7 +1599,7 @@ clear_town_stuff:;
 			}
 		} else if (p->mode == 2) {
 			// Rail
-			if (IS_TILETYPE(c, MP_RAILWAY))
+			if (IsTileType(c, MP_RAILWAY))
 				return CMD_ERROR;
 
 			j = p->attr;
@@ -1618,7 +1618,7 @@ clear_town_stuff:;
 			/* signals too? */
 			if (j&3) {
 				// Can't build signals on a road.
-				if (IS_TILETYPE(c, MP_STREET))
+				if (IsTileType(c, MP_STREET))
 					return CMD_ERROR;
 
 				if (flag & DC_EXEC) {
@@ -2179,7 +2179,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	int offs;
 	TileIndex tilenew;
 
-	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (!(_map5[tile] & 0x80)) {
 			// Clear the tunnel and continue at the other side of it.
 			if (DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
@@ -2219,7 +2219,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	bit = FindFirstBit(b);
 
 	// Then remove and signals if there are any.
-	if (IS_TILETYPE(tile, MP_RAILWAY) &&
+	if (IsTileType(tile, MP_RAILWAY) &&
 			(_map5[tile]&0xC0) == 0x40) {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_SIGNALS);
 	}
@@ -2542,7 +2542,7 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 		_cleared_town = NULL;
 
 		if (p->mode == 2) {
-			if (IS_TILETYPE(c, MP_STREET) &&
+			if (IsTileType(c, MP_STREET) &&
 					(_map5[c]&0xF0)==0 &&
 					(_map5[c]&p->attr)!=0) {
 				roadflag |= 2;
@@ -2590,7 +2590,7 @@ clear_town_stuff:;
 			if (GetTileSlope(c, NULL) != 0)
 				return CMD_ERROR;
 
-			if (!(IS_TILETYPE(c, MP_STREET) && (_map5[c]&0xF0)==0)) {
+			if (!(IsTileType(c, MP_STREET) && (_map5[c] & 0xF0) == 0)) {
 				r = DoCommandByTile(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (r == CMD_ERROR) return CMD_ERROR;
 			}
@@ -2773,7 +2773,7 @@ static bool AiEnumFollowRoad(uint tile, AiRoadEnum *a, int track, uint length, b
 
 	if (dist <= a->best_dist) {
 		tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
-		if (IS_TILETYPE(tile2, MP_STREET) &&
+		if (IsTileType(tile2, MP_STREET) &&
 				(_map5[tile2]&0xF0) == 0) {
 			a->best_dist = dist;
 			a->best_tile = tile;
@@ -3426,9 +3426,9 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 			rule = AiFindBestDefaultAirportBlock(aib->use_tile, aib->cargo, p->ai.build_kind, &cost);
 
 #if 0
-			if (!IS_TILETYPE(aib->use_tile, MP_STREET) &&
-					!IS_TILETYPE(aib->use_tile, MP_RAILWAY) &&
-					!IS_TILETYPE(aib->use_tile, MP_STATION)
+			if (!IsTileType(aib->use_tile, MP_STREET) &&
+					!IsTileType(aib->use_tile, MP_RAILWAY) &&
+					!IsTileType(aib->use_tile, MP_STATION)
 					) {
 
 				_map_type_and_height[aib->use_tile] = 0xa1;
@@ -3643,7 +3643,7 @@ static void AiRemovePlayerRailOrRoad(Player *p, uint tile)
 {
 	byte m5;
 
-	if (IS_TILETYPE(tile, MP_RAILWAY)) {
+	if (IsTileType(tile, MP_RAILWAY)) {
 		if (_map_owner[tile] != _current_player)
 			return;
 		m5 = _map5[tile];
@@ -3702,7 +3702,7 @@ pos_3:
 
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
-	} else if (IS_TILETYPE(tile, MP_STREET)) {
+	} else if (IsTileType(tile, MP_STREET)) {
 		if (_map_owner[tile] != _current_player)
 			return;
 
@@ -3713,19 +3713,19 @@ pos_3:
 			int dir;
 
 			// Check if there are any stations around.
-			if (IS_TILETYPE(tile + TILE_XY(-1,0), MP_STATION) &&
+			if (IsTileType(tile + TILE_XY(-1,0), MP_STATION) &&
 					_map_owner[tile + TILE_XY(-1,0)] == _current_player)
 						return;
 
-			if (IS_TILETYPE(tile + TILE_XY(1,0), MP_STATION) &&
+			if (IsTileType(tile + TILE_XY(1,0), MP_STATION) &&
 					_map_owner[tile + TILE_XY(1,0)] == _current_player)
 						return;
 
-			if (IS_TILETYPE(tile + TILE_XY(0,-1), MP_STATION) &&
+			if (IsTileType(tile + TILE_XY(0,-1), MP_STATION) &&
 					_map_owner[tile + TILE_XY(0,-1)] == _current_player)
 						return;
 
-			if (IS_TILETYPE(tile + TILE_XY(0,1), MP_STATION) &&
+			if (IsTileType(tile + TILE_XY(0,1), MP_STATION) &&
 					_map_owner[tile + TILE_XY(0,1)] == _current_player)
 						return;
 
@@ -3739,7 +3739,7 @@ pos_3:
 				DC_EXEC,
 				CMD_REMOVE_ROAD);
 		}
-	} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		byte b;
 
 		if (_map_owner[tile] != _current_player || (_map5[tile] & 0xC6) != 0x80)

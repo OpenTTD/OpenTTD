@@ -207,7 +207,7 @@ static void MakeSingleHouseBigger(uint tile)
 {
 	byte b;
 
-	assert(IS_TILETYPE(tile, MP_HOUSE));
+	assert(IsTileType(tile, MP_HOUSE));
 
 	b = _map5[tile];
 	if (b & 0x80)
@@ -515,7 +515,7 @@ static void LevelTownLand(uint tile)
 	}
 }
 
-#define IS_WATER_TILE(t) (IS_TILETYPE((t), MP_WATER) && _map5[(t)] == 0)
+#define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _map5[(t)] == 0)
 
 static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 {
@@ -563,8 +563,8 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 				return;
 
 			// Return if neither side of the new road is a house
-			if (!IS_TILETYPE(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
-					!IS_TILETYPE(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 3])), MP_HOUSE))
+			if (!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
+					!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 3])), MP_HOUSE))
 				return;
 
 			// That means that the road is only allowed if there is a house
@@ -580,14 +580,14 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 	} else {
 
 		// Reached a tunnel? Then continue at the other side of it.
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile]&~3)==4) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile]& ~3) == 4) {
 			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _map5[tile]&3);
 			*tile_ptr = flotr.tile;
 			return;
 		}
 
 		// For any other kind of tunnel/bridge, bail out.
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE))
+		if (IsTileType(tile, MP_TUNNELBRIDGE))
 			return;
 
 		// Possibly extend the road in a direction.
@@ -614,7 +614,7 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 		//  always ok if no road allowed.
 		if (!IsRoadAllowedHere(tmptile, i) || CHANCE16(6,10)) {
 			// But not if there already is a house there.
-			if (!IS_TILETYPE(tmptile, MP_HOUSE)) {
+			if (!IsTileType(tmptile, MP_HOUSE)) {
 				// Level the land if possible
 				LevelTownLand(tmptile);
 
@@ -1223,7 +1223,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 			m5 = (r >> 16) & 0x3F;
 		}
 
-		assert(IS_TILETYPE(tile, MP_CLEAR));
+		assert(IsTileType(tile, MP_CLEAR));
 
 		ModifyTile(tile,
 			MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
@@ -1236,7 +1236,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		eflags = _housetype_extra_flags[house];
 
 		if (eflags&0x18) {
-			assert(IS_TILETYPE(tile + TILE_XY(0,1), MP_CLEAR));
+			assert(IsTileType(tile + TILE_XY(0,1), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(0,1),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
 				++house,	/* map2 */
@@ -1247,7 +1247,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		}
 
 		if (eflags&0x14) {
-			assert(IS_TILETYPE(tile + TILE_XY(1,0), MP_CLEAR));
+			assert(IsTileType(tile + TILE_XY(1,0), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(1,0),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
 				++house,	/* map2 */
@@ -1258,7 +1258,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 		}
 
 		if (eflags&0x10) {
-			assert(IS_TILETYPE(tile + TILE_XY(1,1), MP_CLEAR));
+			assert(IsTileType(tile + TILE_XY(1,1), MP_CLEAR));
 			ModifyTile(tile + TILE_XY(1,1),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5 | MP_MAPOWNER,
 				++house,	/* map2 */
@@ -1290,7 +1290,7 @@ static bool BuildTownHouse(Town *t, uint tile)
 
 static void DoClearTownHouseHelper(uint tile)
 {
-	assert(IS_TILETYPE(tile, MP_HOUSE));
+	assert(IsTileType(tile, MP_HOUSE));
 	DoClearSquare(tile);
 	DeleteAnimatedTile(tile);
 }
@@ -1299,7 +1299,7 @@ static void ClearTownHouse(Town *t, uint tile) {
 	uint house = _map2[tile];
 	uint eflags;
 
-	assert(IS_TILETYPE(tile, MP_HOUSE));
+	assert(IsTileType(tile, MP_HOUSE));
 
 	// need to align the tile to point to the upper left corner of the house
 	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
@@ -1395,11 +1395,11 @@ void DeleteTown(Town *t)
 	// Go through all tiles and delete those belonging to the town
 	tile = 0;
 	do {
-		if (IS_TILETYPE(tile, MP_HOUSE)) {
+		if (IsTileType(tile, MP_HOUSE)) {
 			if (ClosestTownFromTile(tile, (uint)-1) == t) {
 				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			}
-		} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) || IS_TILETYPE(tile, MP_STREET)) {
+		} else if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileType(tile, MP_STREET)) {
 			if (_map_owner[tile] == OWNER_TOWN && ClosestTownFromTile(tile, (uint)-1) == t) {
 				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			}
@@ -1656,7 +1656,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_opt.landscape == LT_HILLY) {
- 		if (GET_TILEHEIGHT(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
+ 		if (TileHeight(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
 			return;
 	} else if (_opt.landscape == LT_DESERT) {
  		if (GetMapExtraBits(t->xy) == 1 && (t->act_food==0 || t->act_water==0) && t->population > 60)

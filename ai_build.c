@@ -174,11 +174,11 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	     		if (old_dir != -1 && old_dir != dir) break;
 	     		old_dir = dir;
 	     		// There is already some road, and it is a bridge.. don't build!!!
-	     		if (!IS_TILETYPE(route[part], MP_TUNNELBRIDGE)) {
+	     		if (!IsTileType(route[part], MP_TUNNELBRIDGE)) {
 	     			// Build the tile
 	     			res = DoCommandByTile(route[part], dir, 0, flag | DC_NO_WATER, CMD_BUILD_ROAD);
 	     			// Currently, we ignore CMD_ERRORs!
-	     			if (res == CMD_ERROR && flag == DC_EXEC && !IS_TILETYPE(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
+	     			if (res == CMD_ERROR && flag == DC_EXEC && !IsTileType(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
      					// Problem.. let's just abort it all!
      					DEBUG(ai,0)("Darn, the route could not be builded.. aborting!");
     	     			p->ainew.state = AI_STATE_NOTHING;

@@ -184,7 +184,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 
 	// check depot first
 	if (_patches.gotodepot) {
-		switch(GET_TILETYPE(tile)) {
+		switch (TileType(tile)) {
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
 				if ((_map5[tile]&0xFC)==0xC0) {
@@ -231,7 +231,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 	}
 
 	// check waypoint
-	if (IS_TILETYPE(tile, MP_RAILWAY)
+	if (IsTileType(tile, MP_RAILWAY)
 	&& v->type == VEH_Train
 	&& _map_owner[tile] == _local_player
 	&& (_map5[tile]&0xFE)==0xC4) {
@@ -241,7 +241,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 		return order;
 	}
 
-	if (IS_TILETYPE(tile, MP_STATION)) {
+	if (IsTileType(tile, MP_STATION)) {
 		st = GetStation(st_index = _map2[tile]);
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {

@@ -13,7 +13,7 @@ static void FloodVehicle(Vehicle *v);
 
 bool IsShipDepotTile(TileIndex tile)
 {
-	return IS_TILETYPE(tile, MP_WATER) &&	(_map5[tile]&~3) == 0x80;
+	return IsTileType(tile, MP_WATER) && (_map5[tile] & ~3) == 0x80;
 }
 
 static bool IsClearWaterTile(uint tile)
@@ -206,12 +206,12 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
 			// can't make water of water!
-			if (IS_TILETYPE(tile, MP_WATER)) {
+			if (IsTileType(tile, MP_WATER)) {
 				_error_message = STR_1007_ALREADY_BUILT;
 			} else {
 
 				/* is middle piece of a bridge? */
-				if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && _map5[tile] & 0x40) { /* build under bridge */
+				if (IsTileType(tile, MP_TUNNELBRIDGE) && _map5[tile] & 0x40) { /* build under bridge */
 					if(_map5[tile] & 0x20) { // transport route under bridge
 						_error_message = STR_5800_OBJECT_IN_THE_WAY;
 						ret = CMD_ERROR;
@@ -230,7 +230,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				/* execute modifications */
 				if (flags & DC_EXEC) {
-					if(IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+					if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 						// change owner to OWNER_WATER and set land under bridge bit to water
 						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _map5[tile] | 0x08);
 					} else {
@@ -318,13 +318,13 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 static bool IsWateredTile(uint tile)
 {
 	byte m5 = _map5[tile];
-	if (IS_TILETYPE(tile, MP_WATER)) {
+	if (IsTileType(tile, MP_WATER)) {
 		return m5 != 1;
-	} else if (IS_TILETYPE(tile, MP_STATION)) {
+	} else if (IsTileType(tile, MP_STATION)) {
 		// returns true if it is a dock-station (m5 inside values is m5<75 all stations,
 		// 83<=m5<=114 new airports
 		return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
-	} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		return (m5 & 0xF8) == 0xC8;
 	} else
 		return false;
@@ -459,7 +459,7 @@ static void GetAcceptedCargo_Water(uint tile, AcceptedCargo ac)
 
 static void GetTileDesc_Water(uint tile, TileDesc *td)
 {
-	if (_map5[tile] == 0 && GET_TILEHEIGHT(tile) == 0)
+	if (_map5[tile] == 0 && TileHeight(tile) == 0)
 		td->str = STR_3804_WATER;
 	else if (_map5[tile] == 0)
 		td->str = STR_LANDINFO_CANAL;
@@ -501,7 +501,7 @@ static void TileLoopWaterHelper(uint tile, const TileIndexDiffC *offs)
 				ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,OWNER_WATER,1);
 		}
 	} else {
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			byte m5 = _map5[tile];
 			if ( (m5&0xF8) == 0xC8 || (m5&0xF8) == 0xF0)
 				return;

@@ -25,7 +25,7 @@ bool HasTileRoadAt(uint tile, int i)
 	int mask;
 	byte b;
 
-	switch(GET_TILETYPE(tile)) {
+	switch (TileType(tile)) {
 	case MP_STREET:
 		b = _map5[tile];
 
@@ -76,7 +76,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 		return true;
 
 	// A railway crossing has the road owner in the map3_lo byte.
-	if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
 		owner = _map3_lo[tile];
 	} else {
 		owner = _map_owner[tile];
@@ -117,7 +117,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 
 bool IsRoadDepotTile(TileIndex tile)
 {
-	return IS_TILETYPE(tile, MP_STREET) &&
+	return IsTileType(tile, MP_STREET) &&
 					(_map5[tile] & 0xF0) == 0x20;
 }
 
@@ -164,7 +164,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (ti.type == MP_TUNNELBRIDGE) {
-		if (!EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)))
+		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xE9) == 0xE8) {

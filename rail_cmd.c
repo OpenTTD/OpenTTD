@@ -235,7 +235,7 @@ static uint32 CheckRailSlope(int tileh, uint rail_bits, uint existing, uint tile
 		rail_bits |= existing;
 
 		// don't allow building on the lower side of a coast
-		if (IS_TILETYPE(tile, MP_WATER) && ~_valid_tileh_slopes[2][tileh] & rail_bits) {
+		if (IsTileType(tile, MP_WATER) && ~_valid_tileh_slopes[2][tileh] & rail_bits) {
 			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 		}
 
@@ -279,7 +279,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (ti.type == MP_TUNNELBRIDGE) {
 /* BUILD ON BRIDGE CODE */
-		if (!EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)))
+		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xF8) == 0xC0) {
@@ -438,7 +438,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (ti.type == MP_TUNNELBRIDGE) {
-		if (!EnsureNoVehicleZ(tile, GET_TILEHEIGHT(tile)))
+		if (!EnsureNoVehicleZ(tile, TileHeight(tile)))
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xF8) != 0xE0)
@@ -721,7 +721,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!IS_TILETYPE(tile, MP_RAILWAY) || ((dir=0, _map5[tile] != 1) && (dir=1, _map5[tile] != 2)))
+	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _map5[tile] != 1) && (dir = 1, _map5[tile] != 2)))
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 
 	if (!CheckTileOwnership(tile))
@@ -793,7 +793,7 @@ static int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
 	Waypoint *cp;
 
 	// make sure it's a waypoint
-	if (!IS_TILETYPE(tile, MP_RAILWAY) || !IS_RAIL_WAYPOINT(_map5[tile]))
+	if (!IsTileType(tile, MP_RAILWAY) || !IS_RAIL_WAYPOINT(_map5[tile]))
 		return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile) && !(_current_player==17))
@@ -885,7 +885,7 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	// must be railway, and not a depot, and it must have a track in the suggested position.
-	if (!IS_TILETYPE(tile, MP_RAILWAY) || (m5=_map5[tile], m5&0x80) || !HASBIT(m5, track))
+	if (!IsTileType(tile, MP_RAILWAY) || (m5 = _map5[tile], m5 & 0x80) || !HASBIT(m5, track))
 		return CMD_ERROR;
 
 	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
@@ -1159,10 +1159,10 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 			uint tile = TILE_FROM_XY(x,y);
 			DoConvertRailProc *p;
 
-			if (IS_TILETYPE(tile, MP_RAILWAY)) p = DoConvertRail;
-			else if (IS_TILETYPE(tile, MP_STATION)) p = DoConvertStationRail;
-			else if (IS_TILETYPE(tile, MP_STREET)) p = DoConvertStreetRail;
-			else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) p = DoConvertTunnelBridgeRail;
+			if (IsTileType(tile, MP_RAILWAY)) p = DoConvertRail;
+			else if (IsTileType(tile, MP_STATION)) p = DoConvertStationRail;
+			else if (IsTileType(tile, MP_STREET)) p = DoConvertStreetRail;
+			else if (IsTileType(tile, MP_TUNNELBRIDGE)) p = DoConvertTunnelBridgeRail;
 			else continue;
 
 			ret = p(tile, p2, false);
@@ -1749,7 +1749,7 @@ typedef struct SetSignalsData {
 static bool SetSignalsEnumProc(uint tile, SetSignalsData *ssd, int track, uint length, byte *state)
 {
 	// the tile has signals?
-	if (IS_TILETYPE(tile, MP_RAILWAY)) {
+	if (IsTileType(tile, MP_RAILWAY)) {
 		if ((_map5[tile]&RAIL_TYPE_MASK) == RAIL_TYPE_SIGNALS) {
 			if ((_map3_lo[tile] & _signals_table_both[track]) != 0) {
 
@@ -2040,28 +2040,28 @@ static void TileLoop_Track(uint tile)
 			owner = _map_owner[tile];
 
 			if ( (!(rail&(RAIL_BIT_DIAG2|RAIL_BIT_UPPER|RAIL_BIT_LEFT)) && (rail&RAIL_BIT_DIAG1)) || rail==(RAIL_BIT_LOWER|RAIL_BIT_RIGHT)) {
-				if (!IS_TILETYPE(tile + TILE_XY(0,-1), MP_RAILWAY) ||
+				if (!IsTileType(tile + TILE_XY(0,-1), MP_RAILWAY) ||
 						owner != _map_owner[tile + TILE_XY(0,-1)] ||
 						(_map5[tile + TILE_XY(0,-1)]==RAIL_BIT_UPPER || _map5[tile + TILE_XY(0,-1)]==RAIL_BIT_LEFT))
 							a2 = RAIL_GROUND_FENCE_NW;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG2|RAIL_BIT_LOWER|RAIL_BIT_RIGHT)) && (rail&RAIL_BIT_DIAG1)) || rail==(RAIL_BIT_UPPER|RAIL_BIT_LEFT)) {
-				if (!IS_TILETYPE(tile + TILE_XY(0,1), MP_RAILWAY) ||
+				if (!IsTileType(tile + TILE_XY(0,1), MP_RAILWAY) ||
 						owner != _map_owner[tile + TILE_XY(0,1)] ||
 						(_map5[tile + TILE_XY(0,1)]==RAIL_BIT_LOWER || _map5[tile + TILE_XY(0,1)]==RAIL_BIT_RIGHT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG1|RAIL_BIT_UPPER|RAIL_BIT_RIGHT)) && (rail&RAIL_BIT_DIAG2)) || rail==(RAIL_BIT_LOWER|RAIL_BIT_LEFT)) {
-				if (!IS_TILETYPE(tile + TILE_XY(-1,0), MP_RAILWAY) ||
+				if (!IsTileType(tile + TILE_XY(-1,0), MP_RAILWAY) ||
 						owner != _map_owner[tile + TILE_XY(-1,0)] ||
 						(_map5[tile + TILE_XY(-1,0)]==RAIL_BIT_UPPER || _map5[tile + TILE_XY(-1,0)]==RAIL_BIT_RIGHT))
 							a2 = RAIL_GROUND_FENCE_NE;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG1|RAIL_BIT_LOWER|RAIL_BIT_LEFT)) && (rail&RAIL_BIT_DIAG2)) || rail==(RAIL_BIT_UPPER|RAIL_BIT_RIGHT)) {
-				if (!IS_TILETYPE(tile + TILE_XY(1,0), MP_RAILWAY) ||
+				if (!IsTileType(tile + TILE_XY(1,0), MP_RAILWAY) ||
 						owner != _map_owner[tile + TILE_XY(1,0)] ||
 						(_map5[tile + TILE_XY(1,0)]==RAIL_BIT_LOWER || _map5[tile + TILE_XY(1,0)]==RAIL_BIT_LEFT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;

@@ -253,7 +253,7 @@ static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int trac
 {
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
-	if (IS_TILETYPE(tile, MP_STREET) &&
+	if (IsTileType(tile, MP_STREET) &&
 			(_map5[tile] & 0xF0) == 0x20 &&
 			_map_owner[tile] == rfdd->owner) {
 
@@ -417,7 +417,7 @@ static void RoadVehDelete(Vehicle *v)
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 
-	if(IS_TILETYPE(v->tile, MP_STATION))
+	if (IsTileType(v->tile, MP_STATION))
 		ClearCrashedStation(v);
 
 	BeginVehicleMove(v);
@@ -511,7 +511,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 	tile = v->tile;
 
 	// Make sure it's a road/rail crossing
-	if (!IS_TILETYPE(tile, MP_STREET) ||
+	if (!IsTileType(tile, MP_STREET) ||
 	    (_map5[tile] & 0xF0) != 0x10)
 				return;
 
@@ -942,11 +942,11 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 		bitmask = (uint16)r;
 	}
 
-	if (IS_TILETYPE(tile, MP_STREET)) {
+	if (IsTileType(tile, MP_STREET)) {
 		if ((_map5[tile]&0xF0) == 0x20 && v->owner == _map_owner[tile])
 			/* Road crossing */
 			bitmask |= _road_veh_fp_ax_or[_map5[tile]&3];
-	} else if (IS_TILETYPE(tile, MP_STATION)) {
+	} else if (IsTileType(tile, MP_STATION)) {
 		if (_map_owner[tile] == OWNER_NONE || _map_owner[tile] == v->owner) {
 			/* Our station */
 			Station *st = GetStation(_map2[tile]);
@@ -990,11 +990,11 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 		return_track(FindFirstBit2x64(bitmask));
 	}
 
-	if (IS_TILETYPE(desttile, MP_STREET)) {
+	if (IsTileType(desttile, MP_STREET)) {
 		m5 = _map5[desttile];
 		if ((m5&0xF0) == 0x20)
 			goto do_it;
-	} else if (IS_TILETYPE(desttile, MP_STATION)) {
+	} else if (IsTileType(desttile, MP_STATION)) {
 		m5 = _map5[desttile];
 		if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
 			m5 -= 0x43;
@@ -1147,7 +1147,7 @@ static void RoadVehEventHandler(Vehicle *v)
 			return;
 		}
 
-		if (IS_TILETYPE(gp.new_tile, MP_TUNNELBRIDGE) &&
+		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
 				(_map5[gp.new_tile]&0xF0) == 0 &&
 				(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&4)) {
 
@@ -1198,7 +1198,7 @@ again:
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (r & 8) {
-			if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
 				return;
 			}
@@ -1206,7 +1206,7 @@ again:
 			goto again;
 		}
 
-		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IS_TILETYPE(v->tile, MP_STATION)) {
+		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
 			if ((tmp&7) >= 6) { v->cur_speed = 0; return; }
 			if (IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x4B)) {
 				Station *st = GetStation(_map2[v->tile]);

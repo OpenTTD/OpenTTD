@@ -487,13 +487,13 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 bool IsTrainDepotTile(TileIndex tile)
 {
-	return IS_TILETYPE(tile, MP_RAILWAY) &&
+	return IsTileType(tile, MP_RAILWAY) &&
 					(_map5[tile] & 0xFC) == 0xC0;
 }
 
 static bool IsTunnelTile(TileIndex tile)
 {
-	return IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
+	return IsTileType(tile, MP_TUNNELBRIDGE) &&
 				 (_map5[tile]&0x80) == 0;
 }
 
@@ -983,7 +983,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		/* Calculate next tile */
 		tile += TileOffsByDir(t);
 		/* Test if we have a rail/road-crossing */
-		if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
+		if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
 			/* Check if there is a train on the tile itself */
 			if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
 				/* If light is on, switch light off */
@@ -1119,7 +1119,7 @@ typedef struct TrainFindDepotData {
 
 static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
 {
-	if (IS_TILETYPE(tile, MP_RAILWAY) && _map_owner[tile] == tfdd->owner) {
+	if (IsTileType(tile, MP_RAILWAY) && _map_owner[tile] == tfdd->owner) {
 		if ((_map5[tile] & ~0x3) == 0xC0) {
 			if (length < tfdd->best_length) {
 				tfdd->best_length = length;
@@ -1357,7 +1357,7 @@ typedef struct TrainTrackFollowerData {
 } TrainTrackFollowerData;
 
 static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int track, uint length, byte *state){
-	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile]&0xC0) == 0x40) {
+	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile]&0xC0) == 0x40) {
 		// the tile has a signal
 		byte m3 = _map3_lo[tile];
 		if (!(m3 & _signal_onedir[track])) {
@@ -1380,7 +1380,7 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 
 	// did we reach the final station?
  if ((ttfd->station_index == -1 && tile == ttfd->dest_coords) ||
-  (IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
+  (IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
   /* We do not check for dest_coords if we have a station_index,
    * because in that case the dest_coords are just an
    * approximation of where the station is */
@@ -1895,9 +1895,9 @@ static int GetDirectionToVehicle(Vehicle *v, int x, int y)
 /* Check if the vehicle is compatible with the specified tile */
 static bool CheckCompatibleRail(Vehicle *v, uint tile)
 {
-	if (IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION)) {
+	if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION)) {
 		// normal tracks, jump to owner check
-	} else if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) {
+	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if ((_map5[tile] & 0xC0) == 0xC0) {// is bridge middle part?
 			TileInfo ti;
 			FindLandscapeHeightByTile(&ti, tile);
@@ -1909,7 +1909,7 @@ static bool CheckCompatibleRail(Vehicle *v, uint tile)
 			if(v->z_pos != ti.z) // train is going over bridge
 				return true;
 		}
-	} else if (IS_TILETYPE(tile, MP_STREET)) { // train is going over a road-crossing
+	} else if (IsTileType(tile, MP_STREET)) { // train is going over a road-crossing
 		// tracks over roads, do owner check of tracks (_map_owner[tile])
 		if (_map_owner[tile] != v->owner || (v->subtype == 0 && (_map3_hi[tile] & 0xF) != v->u.rail.railtype))
 			return false;
@@ -1977,7 +1977,7 @@ static const byte _otherside_signal_directions[14] = {
 static void TrainMovedChangeSignals(uint tile, int dir)
 {
 	int i;
-	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile]&0xC0)==0x40) {
+	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40) {
 		i = FindFirstBit2x64((_map5[tile]+(_map5[tile]<<8)) & _reachable_tracks[dir]);
 		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i]);
 	}
@@ -2215,7 +2215,7 @@ static void TrainController(Vehicle *v)
 			/* in tunnel */
 			GetNewVehiclePos(v, &gp);
 
-			if (IS_TILETYPE(gp.new_tile, MP_TUNNELBRIDGE) &&
+			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
 					!(_map5[gp.new_tile] & 0xF0)) {
 				r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 				if (r & 0x4) goto common;
@@ -2443,14 +2443,14 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile = v->tile;
 
 	// tunnel entrance?
-	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
+	if (IsTileType(tile, MP_TUNNELBRIDGE) &&
 			(_map5[tile] & 0xF0) == 0 && (byte)((_map5[tile] & 3)*2+1) == v->direction)
 				return true;
 
 	// depot?
 	/* XXX -- When enabled, this makes it possible to crash trains of others
 	     (by building a depot right against a station) */
-/*	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0)
+/*	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0)
 		return true;*/
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
@@ -2500,7 +2500,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		}
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
-			if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
+			if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
 				if (!(_map5[tile] & 4)) {
 					_map5[tile] |= 4;
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);

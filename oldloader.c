@@ -1478,7 +1478,7 @@ bool LoadOldSaveGame(const char *file)
 
 	// go through the tables and see if we can find any ttdpatch presignals. Then convert those to our format.
 	for (i = 0; i != map_size; i++) {
-		if (IS_TILETYPE(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
+		if (IsTileType(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
 			// this byte is always zero in real ttd.
 			if (_map3_hi[i]) {
 				// convert ttdpatch presignal format to openttd presignal format.

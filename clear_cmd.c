@@ -395,7 +395,7 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	if (IS_TILETYPE(tile, MP_UNMOVABLE) &&
+	if (IsTileType(tile, MP_UNMOVABLE) &&
 			_map5[tile] == 3 &&
 			_map_owner[tile] == _current_player)
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
@@ -549,16 +549,16 @@ void TileLoopClearHelper(uint tile)
 	uint dirty = -1;
 
 	img_1 = 0;
-	if (IS_TILETYPE(tile, MP_CLEAR)) {
+	if (IsTileType(tile, MP_CLEAR)) {
 		img_1 = img_by_map5[(_map5[tile] & 0x1C) >> 2];
-	} else if (IS_TILETYPE(tile, MP_TREES) && (_map2[tile] & 0x30) == 0x20) {
+	} else if (IsTileType(tile, MP_TREES) && (_map2[tile] & 0x30) == 0x20) {
 		img_1 = 1;
 	}
 
 	img_2 = 0;
-	if (IS_TILETYPE(TILE_ADDXY(tile, 1, 0), MP_CLEAR)) {
+	if (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR)) {
 		img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
-	} else if (IS_TILETYPE(TILE_ADDXY(tile, 1, 0), MP_TREES) && (_map2[TILE_ADDXY(tile, 1, 0)] & 0x30) == 0x20) {
+	} else if (IsTileType(TILE_ADDXY(tile, 1, 0), MP_TREES) && (_map2[TILE_ADDXY(tile, 1, 0)] & 0x30) == 0x20) {
 		img_2 = 1;
 	}
 
@@ -575,9 +575,9 @@ void TileLoopClearHelper(uint tile)
 	}
 
 	img_2 = 0;
-	if (IS_TILETYPE(TILE_ADDXY(tile, 0, 1), MP_CLEAR)) {
+	if (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR)) {
 		img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 0, 1)] & 0x1C) >> 2];
-	} else if (IS_TILETYPE(TILE_ADDXY(tile, 0, 1), MP_TREES) && (_map2[TILE_ADDXY(tile, 0, 1)] & 0x30) == 0x20) {
+	} else if (IsTileType(TILE_ADDXY(tile, 0, 1), MP_TREES) && (_map2[TILE_ADDXY(tile, 0, 1)] & 0x30) == 0x20) {
 		img_2 = 1;
 	}
 
@@ -741,7 +741,7 @@ void GenerateClearTile()
 	i = (Random() & 0x3FF) | 0x400;
 	do {
 		tile = TILE_MASK(Random());
-		if (IS_TILETYPE(tile, MP_CLEAR))
+		if (IsTileType(tile, MP_CLEAR))
 			_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (1<<2));
 	} while (--i);
 
@@ -750,14 +750,14 @@ void GenerateClearTile()
 	do {
 		r = Random();
 		tile = TILE_MASK(r);
-		if (IS_TILETYPE(tile, MP_CLEAR)) {
+		if (IsTileType(tile, MP_CLEAR)) {
 			j = ((r >> 16) & 0xF) + 5;
 			for(;;) {
 				_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (2<<2));
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(Random() & 3);
-				} while (!IS_TILETYPE(tile_new, MP_CLEAR));
+				} while (!IsTileType(tile_new, MP_CLEAR));
 				tile = tile_new;
 			}
 get_out:;
