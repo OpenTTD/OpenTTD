@@ -1068,6 +1068,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 	if (numloaded == 0x81 || numloaded == 0x82) {
 		struct DeterministicSpriteGroup *dg;
+		uint16 groupid;
 		int i;
 
 		// Ok, this is gonna get a little wild, so hold your breath...
@@ -1104,20 +1105,35 @@ static void NewSpriteGroup(byte *buf, int len)
 			dg->divmod_val = grf_load_byte(&buf);
 		}
 
+		/* (groupid & 0x8000) means this is callback result; we happily
+		 * ignore that for now. */
+
 		dg->num_ranges = grf_load_byte(&buf);
 		dg->ranges = calloc(dg->num_ranges, sizeof(*dg->ranges));
 		for (i = 0; i < dg->num_ranges; i++) {
-			uint16 setid = grf_load_word(&buf);
-
+			groupid = grf_load_word(&buf);
+			if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+				/* This doesn't exist for us. */
+				i--; dg->num_ranges--;
+				continue;
+			}
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-			dg->ranges[i].group = _cur_grffile->spritegroups[setid];
+			dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
 			dg->ranges[i].low = grf_load_byte(&buf);
 			dg->ranges[i].high = grf_load_byte(&buf);
 		}
 
+		groupid = grf_load_word(&buf);
+		if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+			/* This spritegroup stinks. */
+			free(dg->ranges);
+			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Default groupid %04x is cargo callback or unknown, ignoring spritegroup.", setid, numloaded, groupid);
+			return;
+		}
+
 		dg->default_group = malloc(sizeof(*dg->default_group));
-		memcpy(dg->default_group, &_cur_grffile->spritegroups[grf_load_word(&buf)], sizeof(*dg->default_group));
+		memcpy(dg->default_group, &_cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
 
 		return;
 
