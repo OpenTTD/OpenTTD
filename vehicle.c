@@ -186,7 +186,7 @@ void AfterLoadVehicles(void)
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
 
-			if (v->type == VEH_Train) {
+			if (!_patches.realistic_acceleration && v->type == VEH_Train) {
 				if (v->subtype == TS_Front_Engine)
 					UpdateTrainAcceleration(v);
 			}
