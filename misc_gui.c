@@ -428,7 +428,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					238);
 		} else {
-			Player *p = DEREF_PLAYER(_errmsg_decode_params[2]);
+			Player *p = DEREF_PLAYER(GET_DPARAMX8(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
 			DrawStringMultiCenter(
