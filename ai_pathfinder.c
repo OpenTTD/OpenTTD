@@ -27,6 +27,21 @@ bool TestCanBuildStationHere(uint tile, byte dir) {
     return true;
 }
 
+
+static bool IsRoad(TileIndex tile)
+{
+	return
+		// MP_STREET, but not a road depot?
+		(IsTileType(tile, MP_STREET) && !(_map5[tile] & 0x20)) ||
+		(IsTileType(tile, MP_TUNNELBRIDGE) && (
+			// road tunnel?
+			((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) ||
+			// road bridge?
+			((_map5[tile] & 0x80) != 0 && (_map5[tile] & 0x2) == 0x2)
+		));
+}
+
+
 // Checks if a tile 'a' is between the tiles 'b' and 'c'
 #define TILES_BETWEEN(a, b, c) (TileX(a) >= TileX(b) && TileX(a) <= TileX(c) && TileY(a) >= TileY(b) && TileY(a) <= TileY(c))
 
@@ -186,7 +201,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        		//  We do this simply by just building the tile!
 
        		// If the next step is a bridge, we have to enter it the right way
-       		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile + TileOffsByDir(i))) {
+       		if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile + TileOffsByDir(i))) {
        			if (IsTileType(current->path.node.tile + TileOffsByDir(i), MP_TUNNELBRIDGE)) {
        				// An existing bridge... let's test the direction ;)
        				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1U) != (i & 1)) continue;
@@ -198,7 +213,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        			}
        		}
        		// But also if we are on a bridge, we can only move a certain direction
-       		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile)) {
+       		if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile)) {
        			if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
        				// An existing bridge/tunnel... let's test the direction ;)
        				if ((_map5[current->path.node.tile] & 1U) != (i & 1)) continue;
@@ -240,7 +255,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        			} else {
        				// Road check
        				dir = AiNew_GetRoadDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
-       				if (AI_PATHFINDER_IS_ROAD(current->path.node.tile)) {
+       				if (IsRoad(current->path.node.tile)) {
        					if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
        						// We have a bridge, how nicely! We should mark it...
        						dir = 0;
@@ -361,7 +376,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	if (!PathFinderInfo->rail_or_road) {
 		// Road has the lovely advantage it can use other road... check if
 		//  the current tile is road, and if so, give a good bonus
-		if (AI_PATHFINDER_IS_ROAD(current->tile)) {
+		if (IsRoad(current->tile)) {
 			res -= AI_PATHFINDER_ROAD_ALREADY_EXISTS_BONUS;
 		}
 	}
@@ -378,7 +393,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				}
 			} else {
-				if (!(AI_PATHFINDER_IS_ROAD(parent->path.node.tile) && IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE))) {
+				if (!(IsRoad(parent->path.node.tile) && IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE))) {
 					r = GetRoadFoundation(parent_ti.tileh, AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
 					if (r >= 15 || r == 0)
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
@@ -423,7 +438,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		if (parent->path.parent != NULL &&
 			AiNew_GetDirection(current->tile, parent->path.node.tile) != AiNew_GetDirection(parent->path.node.tile, parent->path.parent->node.tile)) {
 			// When road exists, we don't like turning, but its free, so don't be to piggy about it
-			if (AI_PATHFINDER_IS_ROAD(parent->path.node.tile))
+			if (IsRoad(parent->path.node.tile))
 				res += AI_PATHFINDER_DIRECTION_CHANGE_ON_EXISTING_ROAD_PENALTY;
 			else
 				res += AI_PATHFINDER_DIRECTION_CHANGE_PENALTY;

@@ -228,13 +228,6 @@ enum {
 #define AI_PATHFINDER_FLAG_BRIDGE 1
 #define AI_PATHFINDER_FLAG_TUNNEL 2
 
-// A macro for mp_street, where 0x20 is depot
-//   mp_tunnelbridge, where 0xf0 is a bridge, and 0x4/0x2 means: roadtunnel/bridge
-#define AI_PATHFINDER_IS_ROAD(tile) ((IsTileType(tile, MP_STREET) && !(_map5[tile] & 0x20)) || \
-(IsTileType(tile, MP_TUNNELBRIDGE) && \
-	(((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) || \
-	 ((_map5[tile] & 0x80) != 0 && (_map5[tile] & 0x2) == 0x2))))
-
 typedef void AiNew_StateFunction(Player *p);
 
 // ai_new.c
