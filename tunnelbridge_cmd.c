@@ -922,6 +922,7 @@ static const byte _bridge_foundations[2][16] = {
 extern const byte _track_sloped_sprites[14];
 extern const byte _road_sloped_sprites[14];
 
+#include "table/bridge_land.h"
 #include "table/tunnel_land.h"
 
 static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
