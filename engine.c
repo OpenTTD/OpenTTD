@@ -255,22 +255,36 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
 			struct SpriteGroup *target;
 			int value = -1;
 
-			//debug("[%p] Having fun resolving variable %x", dsg->variable);
+			//debug("[%p] Having fun resolving variable %x", veh, dsg->variable);
 
 			if ((dsg->variable >> 6) == 0) {
 				/* General property */
 				value = GetDeterministicSpriteValue(dsg->variable);
 
 			} else {
-				/* Station-specific property. */
+				/* Vehicle-specific property. */
+
+				if (veh == NULL) {
+					/* We are in a purchase list of something,
+					 * and we are checking for something undefined.
+					 * That means we should get the first target
+					 * (NOT the default one). */
+					if (dsg->num_ranges > 0) {
+						target = &dsg->ranges[0].group;
+					} else {
+						target = dsg->default_group;
+					}
+					return ResolveVehicleSpriteGroup(target, NULL);
+				}
+
 				if (dsg->var_scope == VSG_SCOPE_PARENT) {
 					/* First engine in the vehicle chain */
-					if (veh != NULL && veh->type == VEH_Train)
+					if (veh->type == VEH_Train)
 						veh = GetFirstVehicleInChain(veh);
 				}
 
 				if (dsg->variable == 0x40) {
-					if (veh && veh->type == VEH_Train) {
+					if (veh->type == VEH_Train) {
 						Vehicle *u = GetFirstVehicleInChain(veh);
 						byte chain_before = 0, chain_after = 0;
 
@@ -293,7 +307,7 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
 					// TTDPatch runs on little-endian arch;
 					// Variable is 0x80 + offset in TTD's vehicle structure
 					switch (dsg->variable - 0x80) {
-#define veh_prop(id_, value_) case id_: if (veh != NULL) value = value_; break /* XXX factorise "if" */
+#define veh_prop(id_, value_) case id_: value = value_; break
 						veh_prop(0x00, veh->type);
 						veh_prop(0x01, veh->subtype);
 						veh_prop(0x04, veh->index);

@@ -1023,6 +1023,19 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 				value = GetDeterministicSpriteValue(dsg->variable);
 
 			} else {
+				if (stat == NULL) {
+					/* We are in a build dialog of something,
+					 * and we are checking for something undefined.
+					 * That means we should get the first target
+					 * (NOT the default one). */
+					if (dsg->num_ranges > 0) {
+						target = &dsg->ranges[0].group;
+					} else {
+						target = dsg->default_group;
+					}
+					return ResolveStationSpriteGroup(target, NULL);
+				}
+
 				/* Station-specific property. */
 				if (dsg->var_scope == VSG_SCOPE_PARENT) {
 					/* TODO: Town structure. */
@@ -1039,25 +1052,25 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 						// Variable is 0x70 + offset in the TTD's station structure
 						switch (dsg->variable - 0x70) {
 							case 0x80:
-								if (stat) value = stat->facilities;
+								value = stat->facilities;
 								break;
 							case 0x81:
-								if (stat) value = stat->airport_type;
+								value = stat->airport_type;
 								break;
 							case 0x82:
-								if (stat) value = stat->truck_stop_status;
+								value = stat->truck_stop_status;
 								break;
 							case 0x83:
-								if (stat) value = stat->bus_stop_status;
+								value = stat->bus_stop_status;
 								break;
 							case 0x86:
-								if (stat) value = stat->airport_flags & 0xFFFF;
+								value = stat->airport_flags & 0xFFFF;
 								break;
 							case 0x87:
-								if (stat) value = stat->airport_flags & 0xFF;
+								value = stat->airport_flags & 0xFF;
 								break;
 							case 0x8A:
-								if (stat) value = stat->build_date;
+								value = stat->build_date;
 								break;
 						}
 					}
