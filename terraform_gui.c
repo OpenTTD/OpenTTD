@@ -122,10 +122,6 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 	{
 		int i;
 
-		// check if we have a query string window open before allowing hotkeys
-		if(FindWindowById(WC_QUERY_STRING, 0)!=NULL)
-			break;
-
 		for(i=0; i!=lengthof(_terraform_keycodes); i++)
 			if (e->keypress.keycode == _terraform_keycodes[i]) {
 				e->keypress.cont = false;

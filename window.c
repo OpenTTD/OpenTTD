@@ -1054,6 +1054,10 @@ static void HandleKeypress(uint32 key)
 {
 	Window *w;
 	WindowEvent we;
+ /* Stores if a window with a textfield for typing is open 	
+  * If this is the case, keypress events are only passed to windows with text fields and 
+	* to thein this main toolbar. */
+	bool query_open = false;
 
 	// Setup event
 	we.keypress.event = WE_KEYPRESS;
@@ -1061,9 +1065,16 @@ static void HandleKeypress(uint32 key)
 	we.keypress.keycode = key >> 16;
 	we.keypress.cont = true;
 
+	// check if we have a query string window open before allowing hotkeys
+	if(FindWindowById(WC_QUERY_STRING, 0)!=NULL || FindWindowById(WC_SEND_NETWORK_MSG, 0)!=NULL)
+		query_open = true;
+
 	// Call the event, start with the uppermost window.
 	for(w=_last_window; w != _windows;) {
 		--w;
+		// if a query window is open, only call the event for certain window types
+		if(query_open && w->window_class!=WC_QUERY_STRING && w->window_class!=WC_SEND_NETWORK_MSG && w->window_class!=WC_MAIN_TOOLBAR)
+			continue;
 		w->wndproc(w, &we);
 		if (!we.keypress.cont)
 			break;
