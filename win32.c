@@ -1337,6 +1337,8 @@ static void Handler2()
 	DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(100), NULL, CrashDialogFunc);
 }
 
+extern bool CloseConsoleLogIfActive();
+
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
 	char *output;
@@ -1442,13 +1444,17 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		}
 	}
 
+	/* Close any possible log files */
+	CloseConsoleLogIfActive();
+
 	if (_safe_esp) {
 		ep->ContextRecord->Eip = (DWORD)Handler2;
 		ep->ContextRecord->Esp = (DWORD)_safe_esp;
 		return EXCEPTION_CONTINUE_EXECUTION;
-	} else {
-		return EXCEPTION_EXECUTE_HANDLER;
 	}
+
+
+	return EXCEPTION_EXECUTE_HANDLER;
 }
 
 static void Win32InitializeExceptions()

@@ -595,20 +595,28 @@ DEF_CONSOLE_CMD(ConReturn)
 /* **************************** */
 /*   default console commands   */
 /* **************************** */
-
-DEF_CONSOLE_CMD(ConScript)
+bool CloseConsoleLogIfActive()
 {
 	extern FILE* _iconsole_output_file;
 	if (_iconsole_output_file != NULL) {
 		IConsolePrintF(_iconsole_color_default, "file output complete");
 		fclose(_iconsole_output_file);
-	} else {
+		return true;
+	}
+
+	return false;
+}
+
+DEF_CONSOLE_CMD(ConScript)
+{
+	extern FILE* _iconsole_output_file;
+	if (!CloseConsoleLogIfActive()) {
 		if (argc < 2) return NULL;
-		IConsolePrintF(_iconsole_color_default, "file output started to: %s",
-			argv[1]);
+		IConsolePrintF(_iconsole_color_default, "file output started to: %s",	argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
 		if (_iconsole_output_file == NULL) IConsoleError("could not open file");
 	}
+
 	return NULL;
 }
 
