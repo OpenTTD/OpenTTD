@@ -342,7 +342,6 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf over præstation
 STR_0158_COMPANY_VALUE_GRAPH					:Graf over selskabsværdi
 STR_0159_CARGO_PAYMENT_RATES					:Graf over last udbetalingsrater
 STR_015A_COMPANY_LEAGUE_TABLE					:Selskabsoversigt
-STR_PERFORMANCE_DETAIL_MENU					:<TODO>Detail performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -353,8 +352,19 @@ STR_015F_QUIT							:Afslut
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Er du sikker på du vil afslutte dette spil ?
 STR_0161_QUIT_GAME						:{WHITE}Afslut Spil
 STR_SORT_TIP							:{BLACK}Vælg sorteringsorden
+SRT_SORT_BY							:{BLACK}Sorter efter
+
 STR_SORT_BY_NAME						:{BLACK}Navn
+STR_SORT_BY_DROPDOWN_NAME					:Navn
 STR_SORT_BY_DATE						:{BLACK}Dato
+STR_SORT_BY_UNSORTED						:Usorteret
+STR_SORT_BY_NUMBER						:Nummer
+STR_SORT_BY_PROFIT_LAST_YEAR					:Profit sidste år
+STR_SORT_BY_PROFIT_THIS_YEAR					:Profit dette år
+STR_SORT_BY_AGE							:Alder
+STR_SORT_BY_RELIABILITY						:Pålidelighed
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Total kapacitet for hver lasttype
+STR_SORT_BY_MAX_SPEED						:Top hastighed
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -749,6 +759,12 @@ STR_02DB_OFF							:{BLACK}Fra
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Vis specialaftaler
 STR_02DD_SUBSIDIES						:Specialaftaler
 STR_02DE_MAP_OF_WORLD						:Kort over verden
+STR_EXTRA_VIEW_PORT						:Flere lokalitetsvinduer
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Lokalitetsvinduer {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Gå til lokalitetsvindue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Hent fra lokalitetsvindue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
+
 STR_02DF_TOWN_DIRECTORY						:Byoversigt
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valutaenhed
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -830,7 +846,6 @@ STR_TOWNNAME_SWEDISH						:Svenske
 STR_TOWNNAME_DUTCH						:Hollandske
 STR_TOWNNAME_FINNISH						:Finske
 STR_TOWNNAME_POLISH						:Polske
-STR_TOWNNAME_CZECH						:<TODO>Czech
 STR_TOWNNAME_SLOVAKISH						:Slovakiske
 STR_TOWNNAME_HUNGARIAN						:Ungarske
 STR_TOWNNAME_AUSTRIAN						:Østrigske
@@ -926,13 +941,8 @@ STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Skib {COMMA16} har en ugyldig havn i sin 
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Fly {COMMA16} har for få ordre i sin flyveplan
 STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Fly {COMMA16} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Fly {COMMA16} har dobbelt ordre
-STR_AIRCRAFT_HAS_INVALID_ENTRY					:<TODO>{WHITE}Aircraft {COMMA16} has an invalid station in the orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on train {COMMA16} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED				:<TODO>{WHITE}Autorenew failed on road vehicle {COMMA16} (money limit)
-STR_SHIP_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on ship {COMMA16} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on aircraft {COMMA16} (money limit)
 
 STR_CONFIG_PATCHES						:{BLACK}Indstil Patches
 STR_CONFIG_PATCHES_TIP						:{BLACK}Indstil Patchesne
@@ -947,7 +957,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Aktiver bygning af meget lange tog:
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION					:<TODO>{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Tillad go til depot ordrer: {ORANGE}{STRING}
@@ -968,20 +977,10 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny stifindingsalgoritme til to
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Et tog er væk hvis der ikke forekommer fremskridt inden for: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:<TODO>{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
-STR_CONFIG_PATCHES_ORDER_REVIEW					:<TODO>{LTBLUE}Review vehicles' orders: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:<TODO>no
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:<TODO>yes, but exclude stopped vehicles
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:<TODO>of all vehicles
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:<TODO>{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:<TODO>{LTBLUE}Autorenew vehicle when it gets old
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:<TODO>{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:<TODO>{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES				:<TODO>{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maks stations spredning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
@@ -994,43 +993,28 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Deaktiver lastbiler for compute
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE					:<TODO>{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard serviceinterval for tog: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:<TODO>{LTBLUE}Default service interval for trains: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard serviceinterval for lastbiler: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:<TODO>{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard serviceinterval for fly: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:<TODO>{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard serviceinterval for skibe: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:<TODO>{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Start dato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:<TODO>{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS					:<TODO>{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:<TODO>Left
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:<TODO>Centre
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:<TODO>Right
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Brugerflade
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Køretøjer
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stationer
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Økonomi
-STR_CONFIG_PATCHES_AI						:<TODO>{BLACK}Competitors
 
 STR_CONFIG_PATCHES_DISABLED					:deaktiveret
 STR_CONFIG_PATCHES_INT32					:{INT32}
-STR_CONFIG_PATCHES_CURRENCY					:<TODO>{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Skift indstillingsværdi
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
 
-STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
-STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
-STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
-STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
 
 STR_CHEATS							:{WHITE}Snydefunktioner
 STR_CHEATS_TIP							:{BLACK}Checkboxes viser om du bruger denne snydefunktion before
@@ -1040,11 +1024,6 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spil som spiller: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH						:<TODO>{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
-STR_CHEAT_CHANGE_DATE						:<TODO>{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
-
-STR_SORT_BY_POPULATION						:<TODO>{BLACK}Population
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Retning mod {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Retning mod {CHECKPOINT}, {VELOCITY}
@@ -1067,17 +1046,8 @@ STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Kan ikke fjerne et togcheckpoint her
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Byg togskinner ved hjælp af autotogskinner mode
 
-STR_NO_TOWN_IN_SCENARIO						:<TODO>{WHITE}...there is no town in this scenario
 
-STR_GENERATE_RANDOM_LANDSCAPE					:<TODO>{WHITE}Are you sure you want to create a random landscape?
-STR_MANY_RANDOM_TOWNS						:<TODO>{BLACK}Many random towns
-STR_RANDOM_TOWNS_TIP						:<TODO>{BLACK}Cover the map with randomly placed towns
-STR_MANY_RANDOM_INDUSTRIES					:<TODO>{BLACK}Many random industries
-STR_RANDOM_INDUSTRIES_TIP					:<TODO>{BLACK}Cover the map with randomly placed industries
-STR_CAN_T_GENERATE_INDUSTRIES					:<TODO>{WHITE}Can't generate industries...
 
-STR_LANDSCAPING_TOOLBAR						:<TODO>{WHITE}Landscaping
-STR_LEVEL_LAND_TOOLTIP						:<TODO>{BLACK}Level land
 
 
 STR_TREES_RANDOM_TYPE						:{BLACK}Træer af tilfældig type
@@ -1104,9 +1074,6 @@ STR_STATION_DRAG_DROP						:{BLACK}Byg en station via træk & slip
 
 STR_FAST_FORWARD						:{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY						:{WHITE}Tidligere beskeder
-STR_MESSAGE_HISTORY_TIP						:<TODO>{BLACK}A list of the recent news messages
-STR_MESSAGES_DISABLE_ALL					:<TODO>{BLACK}Disable all
-STR_MESSAGES_ENABLE_ALL						:<TODO>{BLACK}Enable all
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Byg Kulmine
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Plant Skov
@@ -1128,12 +1095,8 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Byg Boblegenerator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Opfør Karamelbrud
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Byg Sukkermine
 
-STR_SORT_BY_PRODUCTION						:<TODO>{BLACK}Production
-STR_SORT_BY_TYPE						:<TODO>{BLACK}Type
-STR_SORT_BY_TRANSPORTED						:<TODO>{BLACK}Transported
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM						:<TODO>{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transported)
-STR_INDUSTRYDIR_ITEM_TWO					:<TODO>{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transported)
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporteret)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}...for tæt på en anden industribygning
@@ -1144,81 +1107,23 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Ombyg toget
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Vælg den slags last toget skal køre med
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Ombyg toget til at køre med den markerede slags last
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke ombygge toget...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 
-TEMP_AI_IN_PROGRESS						:<TODO>{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
-TEMP_AI_ACTIVATED						:<TODO>{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:<TODO>{WHITE}Network interface is not working yet!
-
-STR_NETWORK_MULTIPLAYER						:<TODO>{WHITE}Multiplayer
-
-STR_NETWORK_FIND_SERVER						:<TODO>{BLACK}Find server
-STR_NETWORK_FIND_SERVER_TIP					:<TODO>{BLACK}Search network for a server
-STR_NETWORK_DIRECT_CONNECT					:<TODO>{BLACK}Direct connect
-STR_NETWORK_ENTER_IP						:<TODO>{BLACK}Enter the IP address of the server
-STR_NETWORK_DIRECT_CONNECT_TIP					:<TODO>{BLACK}Connect to a known IP
-STR_NETWORK_START_SERVER					:<TODO>{BLACK}Start server
-STR_NETWORK_START_SERVER_TIP					:<TODO>{BLACK}Start an own server
-
-STR_NETWORK_PLAYER_NAME						:<TODO>{BLACK}Player name:
-STR_NETWORK_ENTER_NAME_TIP					:<TODO>{BLACK}This is the name other players will identify you by
-
-STR_NETWORK_SELECT_CONNECTION					:<TODO>{BLACK}Select connection type:
-STR_NETWORK_CONNECTION_TYPE_TIP					:<TODO>{BLACK}Chose between an internet game or a local area nework game
-STR_NETWORK_COMBO1						:<TODO>{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:<TODO>LAN
-STR_NETWORK_INTERNET						:<TODO>Internet
-
-STR_NETWORK_GAME_NAME						:<TODO>{BLACK}Name
-STR_NETWORK_GAME_NAME_TIP					:<TODO>{BLACK}Name of the game
-STR_NETWORK_PLAYERS						:<TODO>{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:<TODO>{BLACK}Players currently in this game / Maximum number of players
-STR_NETWORK_MAP_SIZE						:<TODO>{BLACK}Size
-STR_NETWORK_MAP_SIZE_TIP					:<TODO>{BLACK}Size of the map
-STR_NETWORK_INFO_ICONS_TIP					:<TODO>{BLACK}Language, server version, etc.
-STR_NETWORK_CLICK_GAME_TO_SELECT				:<TODO>{BLACK}Click a game from the list to select it
-
-STR_NETWORK_JOIN_GAME						:<TODO>{BLACK}Join game
 
 
-STR_NETWORK_START_GAME_WINDOW					:<TODO>{WHITE}Start new game
-
-STR_NETWORK_NEW_GAME_NAME					:<TODO>{BLACK}Game name:
-STR_NETWORK_NEW_GAME_NAME_TIP					:<TODO>{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
-STR_NETWORK_PASSWORD						:<TODO>{BLACK}Password:
-STR_NETWORK_PASSWORD_TIP					:<TODO>{BLACK}Protect your game with a password if you don't want other people to join it
-STR_NETWORK_SELECT_MAP						:<TODO>{BLACK}Select a map:
-STR_NETWORK_SELECT_MAP_TIP					:<TODO>{BLACK}Which map do you want to play?
-STR_NETWORK_NUMBER_OF_PLAYERS					:<TODO>{BLACK}Number of players:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:<TODO>{BLACK}Chose a maximum number of players. Not all slots need to be filled.
-STR_NETWORK_COMBO2						:<TODO>{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:<TODO>2 players
-STR_NETWORK_3_PLAYERS						:<TODO>3 players
-STR_NETWORK_4_PLAYERS						:<TODO>4 players
-STR_NETWORK_5_PLAYERS						:<TODO>5 players
-STR_NETWORK_6_PLAYERS						:<TODO>6 players
-STR_NETWORK_7_PLAYERS						:<TODO>7 players
-STR_NETWORK_8_PLAYERS						:<TODO>8 players
-STR_NETWORK_START_GAME						:<TODO>{BLACK}Start Game
 
 
-STR_NETWORK_GAME_LOBBY						:<TODO>{WHITE}Multiplayer game lobby
 
-STR_NETWORK_SEND						:<TODO>{BLACK}Send
-STR_NETWORK_SEND_TIP						:<TODO>{BLACK}Send a message to the other players
-STR_NETWORK_COMPANY_NAME					:<TODO>{BLACK}Company name:
-STR_NETWORK_COMPANY_NAME_TIP					:<TODO>{BLACK}Change the name of your company. Hit enter to apply changes
-STR_NETWORK_SPECTATE_GAME					:<TODO>{BLACK}Spectate game
-STR_NETWORK_SPECTATE_GAME_TIP					:<TODO>{BLACK}Watch the game as a spectator
-STR_NETWORK_NEW_COMPANY						:<TODO>{BLACK}New company
-STR_NETWORK_NEW_COMPANY_TIP					:<TODO>{BLACK}Open a new company
-STR_NETWORK_READY						:<TODO>{BLACK}Ready
 
-STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
-STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
+
+
+
+
+
+
 
 ############ end network gui strings
 
@@ -1412,7 +1317,6 @@ STR_205B_TEAPOT_HOUSE						:Tepottehus
 STR_205C_PIGGY_BANK						:Sparegris
 
 ##id 0x2800
-STR_LANDSCAPING							:<TODO>Landscaping
 STR_2800_PLANT_TREES						:Plant træer
 STR_2801_PLACE_SIGN						:Placer skilt
 STR_2802_TREES							:{WHITE}Træer
@@ -1716,7 +1620,6 @@ STR_SV_STNAME_FOREST						:{STRING} Skov
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Sværhedsgrad
-STR_OPTIONS_SAVE_CHANGES					:<TODO>{BLACK}Save
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Nem
@@ -1743,10 +1646,8 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Antal søer/floder: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Tog vender: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:<TODO>{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE							:<TODO>None
 STR_6816_LOW							:Lav
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:Høj
@@ -1783,14 +1684,10 @@ STR_6835_AT_END_OF_LINE_ONLY					:Kun ved slutningen af jernbanespor
 STR_6836_OFF							:Fra
 STR_6837_ON							:Til
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Vis higscoreliste
-STR_6839_PERMISSIVE						:<TODO>Permissive
-STR_683A_TOLERANT						:<TODO>Tolerant
-STR_683B_HOSTILE						:<TODO>Hostile
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER							:<TODO>(Player {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nyt Ansigt
 STR_7005_COLOR_SCHEME						:{BLACK}Farvetema
 STR_7006_COLOR_SCHEME						:{GOLD}Farvetema:
@@ -1828,7 +1725,7 @@ STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Profit Garf
 STR_7026_BANK_BALANCE						:{WHITE}Bank Balance
 STR_7027_LOAN							:{WHITE}Lån
 STR_7028							:{BLACK}{CURRENCY64}
-STR_7029_BORROW							::{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW							:{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Tilbagebetal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...maksimale størrelse af lån er {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Kan ikke låne felere penge...
@@ -1900,8 +1797,10 @@ STR_706D_PRESIDENT						:President
 STR_706E_TYCOON							:Matador
 STR_706F_BUILD_HQ						:{BLACK}Byg HK
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Byg firmaets hovedkvarter / centrer over hovedkvarteret
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Flyt firmaets hovedkvarter for 1% af firmaets værdi
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan ikke bygge firmaets hovedkvarter...
 STR_7072_VIEW_HQ						:{BLACK}Vis HK
+STR_RELOCATE_HQ							:{BLACK}Flyt hovedkvarter
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Skift mellem stort/lille vindue
@@ -2205,9 +2104,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Service non-stop i {TOWN} remise
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Retning mod {TOWN} remise
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Retning mod {TOWN} remise, {VELOCITY}
 
-STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
 
-STR_UNKNOWN_DESTINATION						:<TODO>unknown destination
 STR_8812_EMPTY							:{LTBLUE}Tom
 STR_8813_FROM							:{LTBLUE}{CARGO} fra {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tog {COMMA16} Venter i depot
@@ -2521,34 +2418,7 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Sammenstyrtning af kulm
 
 STR_BRIBE_FAILED						:{WHITE}Dit forsøg på bestikkelse er blevet
 STR_BRIBE_FAILED_2						:{WHITE}opdaget af en inspektør.
-STR_BUILD_DATE							:<TODO>{BLACK}Built: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL						:<TODO>{WHITE}Detail performance rating
-STR_PERFORMANCE_DETAIL_KEY					:<TODO>{BLACK}Detail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:<TODO>{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT				:<TODO>{BLACK}{TINYFONT}({INT32}/{INT32})
-STR_PERFORMANCE_DETAIL_PERCENT					:<TODO>{WHITE}{INT32}%
-SET_PERFORMANCE_DETAIL_INT					:<TODO>{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES					:<TODO>{BLACK}Vehicles:
-STR_PERFORMANCE_DETAIL_STATIONS					:<TODO>{BLACK}Stations:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT				:<TODO>{BLACK}Min. profit:
-STR_PERFORMANCE_DETAIL_MIN_INCOME				:<TODO>{BLACK}Min. income:
-STR_PERFORMANCE_DETAIL_MAX_INCOME				:<TODO>{BLACK}Max. income:
-STR_PERFORMANCE_DETAIL_DELIVERED				:<TODO>{BLACK}Delivered:
-STR_PERFORMANCE_DETAIL_CARGO					:<TODO>{BLACK}Cargo:
-STR_PERFORMANCE_DETAIL_MONEY					:<TODO>{BLACK}Money:
-STR_PERFORMANCE_DETAIL_LOAN					:<TODO>{BLACK}Loan:
-STR_PERFORMANCE_DETAIL_TOTAL					:<TODO>{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:<TODO>{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:<TODO>{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:<TODO>{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:<TODO>{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TIP				:<TODO>{BLACK}Types of cargo delivered in the last quarter.
-STR_PERFORMANCE_DETAIL_MONEY_TIP				:<TODO>{BLACK}Amount of cash on hand
-STR_PERFORMANCE_DETAIL_LOAN_TIP					:<TODO>{BLACK}Do you have a high loan?
-STR_PERFORMANCE_DETAIL_TOTAL_TIP				:<TODO>{BLACK}Total points out of possible points
 

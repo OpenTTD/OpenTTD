@@ -4,12 +4,12 @@
 ##id 0x0000
 STR_NULL							:
 STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Mimo okraj mapy
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Prilis blizko k okraji mapy
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Prilis blízko k okraji mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Nedostatek penez - je potreba {CURRENCY}
 STR_0004							:{WHITE}{CURRENCY64}
 STR_0005							:{RED}{CURRENCY64}
 STR_EMPTY							:
-STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Je potreba plocha zeme
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Je potreba plochá zeme
 STR_0008_WAITING						:{BLACK}Ceka: {WHITE}{STRING}
 STR_0009							:{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (na ceste z
@@ -73,7 +73,7 @@ STR_0043_RUBBER							:kaucuku
 STR_0044_SUGAR							:cukru
 STR_0045_TOY							:hracek
 STR_0046_CANDY							:bonbonu
-STR_0047_COLA							:koly
+STR_0047_COLA							:coly
 STR_0048_COTTON_CANDY						:cukrové vaty
 STR_0049_BUBBLE							:bublin
 STR_004A_TOFFEE							:karamelu
@@ -132,12 +132,12 @@ STR_007E_TONS_OF_FOOD						:{COMMA16} tun jídla
 STR_007F_TONS_OF_PAPER						:{COMMA16} tun papíru
 STR_0080_BAGS_OF_GOLD						:{COMMA16} baliku zlata
 STR_0081_OF_WATER						:{VOLUME} vody
-STR_0082_TONS_OF_WHEAT						:{COMMA16} psenice
+STR_0082_TONS_OF_WHEAT						:{COMMA16} tun psenice
 STR_0083_OF_RUBBER						:{VOLUME} kaucuku
 STR_0084_TONS_OF_SUGAR						:{COMMA16} tun cukru
 STR_0085_TOYS							:{COMMA16} hracek
 STR_0086_BAGS_OF_CANDY						:{COMMA16} pytlu bonbonu
-STR_0087_OF_COLA						:{VOLUME} koly
+STR_0087_OF_COLA						:{VOLUME} coly
 STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tun cukrové vaty
 STR_0089_BUBBLES						:{COMMA16} bublin
 STR_008A_TONS_OF_TOFFEE						:{COMMA16} tun karamelu
@@ -181,7 +181,7 @@ STR_00AF							:{WHITE}{DATE_LONG}
 STR_00B0_MAP							:{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS						:{WHITE}Moznosti hry
 STR_00B2_MESSAGE						:{YELLOW}Zpráva
-STR_00B3_MESSAGE_FROM						:{YELLOW}Zprava od {STRING}
+STR_00B3_MESSAGE_FROM						:{YELLOW}Zpráva od {STRING}
 STR_00B4_CAN_T_DO_THIS						:{WHITE}Tohle neumuzes udelat...
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nemuzes vycistit tuto oblast...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Puvodni copyright: {COPYRIGHT} 1995 Chris Sawyer, vsechna práva vyhrazena
@@ -251,11 +251,11 @@ STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Uhelny dul
 STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Elektrarna
 STR_00FC_FOREST							:{BLACK}{TINYFONT}Les
 STR_00FD_SAWMILL						:{BLACK}{TINYFONT}Pila
-STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Ropna rafinerie
+STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Ropná rafinerie
 STR_00FF_FARM							:{BLACK}{TINYFONT}Farma
 STR_0100_FACTORY						:{BLACK}{TINYFONT}Tovarna
 STR_0101_PRINTING_WORKS						:{BLACK}{TINYFONT}Tiskarna
-STR_0102_OIL_WELLS						:{BLACK}{TINYFONT}Ropny vrt
+STR_0102_OIL_WELLS						:{BLACK}{TINYFONT}Ropný vrt
 STR_0103_IRON_ORE_MINE						:{BLACK}{TINYFONT}Dul na medenou rudu
 STR_0104_STEEL_MILL						:{BLACK}{TINYFONT}Ocelarna
 STR_0105_BANK							:{BLACK}{TINYFONT}Banka
@@ -272,7 +272,7 @@ STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Pila
 STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Les cukrove vaty
 STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Tovarna na sladkosti
 STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Farma na baterie
-STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Colove studny
+STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Colové studny
 STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Hrackarstvi
 STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Tovarna na hracky
 STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastove fontany
@@ -294,16 +294,16 @@ STR_0125_ROCKS							:{BLACK}{TINYFONT}Kameny
 STR_0126_WATER							:{BLACK}{TINYFONT}Voda
 STR_0127_NO_OWNER						:{BLACK}{TINYFONT}Zadny vlastník
 STR_0128_TOWNS							:{BLACK}{TINYFONT}Mesta
-STR_0129_INDUSTRIES						:{BLACK}{TINYFONT}Tovarny
+STR_0129_INDUSTRIES						:{BLACK}{TINYFONT}Továrny
 STR_012A_DESERT							:{BLACK}{TINYFONT}Poust
-STR_012B_SNOW							:{BLACK}{TINYFONT}Snih
-STR_012C_MESSAGE						:{WHITE}Zprava
+STR_012B_SNOW							:{BLACK}{TINYFONT}Sníh
+STR_012C_MESSAGE						:{WHITE}Zpráva
 STR_012D							:{WHITE}{STRING}
 STR_012E_CANCEL							:{BLACK}Zrusit
 STR_012F_OK							:{BLACK}OK
 STR_0130_RENAME							:{BLACK}Prejmenovat
 STR_0131_TOO_MANY_NAMES_DEFINED					:{WHITE}Definovano prilis mnoho jmen
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Zvolene jméno se jiz pouziva
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Zvolené jméno se jiz pouziva
 
 STR_0133_WINDOWS						:Windows
 STR_0134_UNIX							:Unix
@@ -353,8 +353,23 @@ STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Opravdu chces ukoncit tuto hru?
 STR_0161_QUIT_GAME						:{WHITE}Konec hry
 STR_SORT_TIP							:{BLACK}Vyberte zpusob razeni ulozeni
+SRT_SORT_BY							:{BLACK}Radit podle
+
+STR_SORT_BY_POPULATION						:{BLACK}Populace
+STR_SORT_BY_PRODUCTION						:{BLACK}Prudukce
+STR_SORT_BY_TYPE						:{BLACK}Typ
+STR_SORT_BY_TRANSPORTED						:{BLACK}Prepraveno
 STR_SORT_BY_NAME						:{BLACK}Jméno
+STR_SORT_BY_DROPDOWN_NAME					:jména
 STR_SORT_BY_DATE						:{BLACK}Datum
+STR_SORT_BY_UNSORTED						:(neradit)
+STR_SORT_BY_NUMBER						:cisla
+STR_SORT_BY_PROFIT_LAST_YEAR					:hrubého zisku letos
+STR_SORT_BY_PROFIT_THIS_YEAR					:hrubého zisku vloni
+STR_SORT_BY_AGE							:stari
+STR_SORT_BY_RELIABILITY						:spolehlivosti
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:celkové kapacity podle druhu nákladu
+STR_SORT_BY_MAX_SPEED						:max. rychlosti
 
 ############ range for months starts
 STR_0162_JAN							:led
@@ -529,15 +544,15 @@ STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Ukaz skladbu ve vyberovem okne
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER				:{BLACK}Klepni na dotaci pro zobrazeni mesta/prumyslu
 STR_01FE_DIFFICULTY						:{BLACK}Obtiznost ({STRING})
 STR_01FF							:{TINYFONT}{BLACK}{DATE_LONG}
-STR_0200_LAST_MESSAGE_NEWS_REPORT				:Posledni zprava / clanek
-STR_0201_MESSAGE_SETTINGS					:Nastaveni zprav
-STR_MESSAGE_HISTORY_MENU					:Historie zprav
-STR_0202_SEND_MESSAGE						:Poslat zpravu
-STR_0203_SHOW_LAST_MESSAGE_NEWS					:{BLACK}Ukázat posledni zpravu / clanek, moznosti zprav
-STR_0204_MESSAGE_OPTIONS					:{WHITE}Moznosti zprav
-STR_0205_MESSAGE_TYPES						:{BLACK}Typy zprav:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Prijezd prvniho vozidla do hracovy stanice
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Prijezd prvniho vozidla do konkurencni stanice
+STR_0200_LAST_MESSAGE_NEWS_REPORT				:Poslední zpráva / clanek
+STR_0201_MESSAGE_SETTINGS					:Nastavení zpráv
+STR_MESSAGE_HISTORY_MENU					:Historie zpráv
+STR_0202_SEND_MESSAGE						:Poslat zprávu
+STR_0203_SHOW_LAST_MESSAGE_NEWS					:{BLACK}Ukázat poslední zprávu / clanek, moznosti zpráv
+STR_0204_MESSAGE_OPTIONS					:{WHITE}Moznosti zpráv
+STR_0205_MESSAGE_TYPES						:{BLACK}Typy zpráv:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Prijezd prvního vozidla do hracovy stanice
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Prijezd prvního vozidla do konkurencni stanice
 STR_0208_ACCIDENTS_DISASTERS					:{YELLOW}Nehody / katastrofy
 STR_0209_COMPANY_INFORMATION					:{YELLOW}Informace o spolecnosti
 STR_020A_ECONOMY_CHANGES					:{YELLOW}Zmeny v ekonomice
@@ -547,15 +562,15 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Zmeny prijmu zbozi
 STR_020E_SUBSIDIES						:{YELLOW}Dotace
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Obecné informace
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...prilis daleko od predchazejiciho cile
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Nejlepsi spolecnosti, ktere dosahly roku 2050{}(Uroven {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Nejlepsi spolecnosti, které dosáhly roku 2050{}({STRING} uroven)
 STR_0212							:{BIGFONT}{COMMA16}.
-STR_0213_BUSINESSMAN						:Obchodnik
+STR_0213_BUSINESSMAN						:Obchodník
 STR_0214_ENTREPRENEUR						:Manazer
-STR_0215_INDUSTRIALIST						:Tovarnik
+STR_0215_INDUSTRIALIST						:Továrník
 STR_0216_CAPITALIST						:Kapitalista
-STR_0217_MAGNATE						:Magnat
-STR_0218_MOGUL							:Velemagnat
-STR_0219_TYCOON_OF_THE_CENTURY					:Magnat stoleti
+STR_0217_MAGNATE						:Magnát
+STR_0218_MOGUL							:Velemagnát
+STR_0219_TYCOON_OF_THE_CENTURY					:Magnát století
 STR_021A							:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosahuje hodnosti '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} z {STRING} dosahuje hodnosti '{STRING}' !
@@ -568,7 +583,7 @@ STR_0222_SCENARIO_EDITOR					:{YELLOW}Editor mapy
 STR_0223_LAND_GENERATION					:{WHITE}Generovat zemi
 STR_0224							:{BLACK}{UPARROW}
 STR_0225							:{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND						:{BLACK}Nahodna zeme
+STR_0226_RANDOM_LAND						:{BLACK}Náhodná zeme
 STR_0227_RESET_LAND						:{BLACK}Vymaz zemi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA				:{BLACK}Zvetsit oblast zeme pro snizeni/zvyseni
 STR_0229_DECREASE_SIZE_OF_LAND_AREA				:{BLACK}Zmensit oblast zeme pro snizeni/zvyseni
@@ -594,42 +609,42 @@ STR_023C_EXPAND							:{BLACK}Rozsirit
 STR_023D_RANDOM_TOWN						:{BLACK}Nahodne mesto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}Vybuduj mesto na nahodne pozici
 STR_023F_INDUSTRY_GENERATION					:{WHITE}Generovani prumyslu
-STR_0240_COAL_MINE						:{BLACK}Uhelny dul
-STR_0241_POWER_STATION						:{BLACK}Elektrarna
+STR_0240_COAL_MINE						:{BLACK}Uhelný dul
+STR_0241_POWER_STATION						:{BLACK}Elektrárna
 STR_0242_SAWMILL						:{BLACK}Pila
 STR_0243_FOREST							:{BLACK}Les
-STR_0244_OIL_REFINERY						:{BLACK}Ropny vrt
-STR_0245_OIL_RIG						:{BLACK}Rafinerie
-STR_0246_FACTORY						:{BLACK}Tovarna
-STR_0247_STEEL_MILL						:{BLACK}Ocelarna
+STR_0244_OIL_REFINERY						:{BLACK}Ropná rafinerie
+STR_0245_OIL_RIG						:{BLACK}Ropná plosina
+STR_0246_FACTORY						:{BLACK}Továrna
+STR_0247_STEEL_MILL						:{BLACK}Ocelárna
 STR_0248_FARM							:{BLACK}Farma
 STR_0249_IRON_ORE_MINE						:{BLACK}Dul na zeleznou rudu
-STR_024A_OIL_WELLS						:{BLACK}Ropny vrt
+STR_024A_OIL_WELLS						:{BLACK}Ropný vrt
 STR_024B_BANK							:{BLACK}Banka
-STR_024C_PAPER_MILL						:{BLACK}Papirna
-STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Tovarna na zpracovani potravin
-STR_024E_PRINTING_WORKS						:{BLACK}Tiskarna
+STR_024C_PAPER_MILL						:{BLACK}Papírna
+STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Továrna na zprácování potravin
+STR_024E_PRINTING_WORKS						:{BLACK}Tiskárna
 STR_024F_GOLD_MINE						:{BLACK}Dul na zlato
 STR_0250_LUMBER_MILL						:{BLACK}Pila
-STR_0251_FRUIT_PLANTATION					:{BLACK}Ovocna plantaz
+STR_0251_FRUIT_PLANTATION					:{BLACK}Ovocná plantaz
 STR_0252_RUBBER_PLANTATION					:{BLACK}Kaucukova plantaz
 STR_0253_WATER_SUPPLY						:{BLACK}Zdroj vody
 STR_0254_WATER_TOWER						:{BLACK}Vodojem
-STR_0255_DIAMOND_MINE						:{BLACK}Diamantovy dul
+STR_0255_DIAMOND_MINE						:{BLACK}Diamantový dul
 STR_0256_COPPER_ORE_MINE					:{BLACK}Dul na medenou rudu
-STR_0257_COTTON_CANDY_FOREST					:{BLACK}Les cukrove vaty
-STR_0258_CANDY_FACTORY						:{BLACK}Tovarna na sladkosti
-STR_0259_BATTERY_FARM						:{BLACK}Farma na baterky
-STR_025A_COLA_WELLS						:{BLACK}Colove studny
+STR_0257_COTTON_CANDY_FOREST					:{BLACK}Les cukrové vaty
+STR_0258_CANDY_FACTORY						:{BLACK}Továrna na sladkosti
+STR_0259_BATTERY_FARM						:{BLACK}Farma na baterie
+STR_025A_COLA_WELLS						:{BLACK}Colové studny
 STR_025B_TOY_SHOP						:{BLACK}Hrackarstvi
-STR_025C_TOY_FACTORY						:{BLACK}Tovarna na hracky
-STR_025D_PLASTIC_FOUNTAINS					:{BLACK}Plastove fontany
-STR_025E_FIZZY_DRINK_FACTORY					:{BLACK}Stacirna limonad
-STR_025F_BUBBLE_GENERATOR					:{BLACK}Generator bublin
+STR_025C_TOY_FACTORY						:{BLACK}Továrna na hracky
+STR_025D_PLASTIC_FOUNTAINS					:{BLACK}Plastové fontány
+STR_025E_FIZZY_DRINK_FACTORY					:{BLACK}Stacirna limonád
+STR_025F_BUBBLE_GENERATOR					:{BLACK}Generátor bublin
 STR_0260_TOFFEE_QUARRY						:{BLACK}Karamelolom
-STR_0261_SUGAR_MINE						:{BLACK}Cukerny dul
-STR_0262_CONSTRUCT_COAL_MINE					:{BLACK}Postavit uhelny dul
-STR_0263_CONSTRUCT_POWER_STATION				:{BLACK}Postavit elektrarnu
+STR_0261_SUGAR_MINE						:{BLACK}Cukerný dul
+STR_0262_CONSTRUCT_COAL_MINE					:{BLACK}Postavit uhelný dul
+STR_0263_CONSTRUCT_POWER_STATION				:{BLACK}Postavit elektrárnu
 STR_0264_CONSTRUCT_SAWMILL					:{BLACK}Postavit pilu
 STR_0265_PLANT_FOREST						:{BLACK}Vysadit les
 STR_0266_CONSTRUCT_OIL_REFINERY					:{BLACK}Postavit rafinerii
@@ -749,6 +764,13 @@ STR_02DB_OFF							:{BLACK}Vypnuto
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Zobrazit nabidky dotaci
 STR_02DD_SUBSIDIES						:Dotace
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
+STR_EXTRA_VIEW_PORT						:Dalsi pohled
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohled {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit jako pohled
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit soucasne zorné pole jako pohled
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Jít na pohled
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit pohled do jako zorné pole
+
 STR_02DF_TOWN_DIRECTORY						:Seznam mest
 STR_02E0_CURRENCY_UNITS						:{BLACK}Jednotky meny
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -981,7 +1003,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimální castka pro automatické 
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Neviditelné stromy (spolecne s pruhlednymi budovami): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Vyska snehove cary: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING} {RED}Varování: Vysoké nastavení zpomaluje hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Udrzba helikoptér na heliportech: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximum vlaku na hrace: {ORANGE}{STRING}
@@ -1026,6 +1048,7 @@ STR_CONFIG_PATCHES_INT32					:{INT32}
 STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Zmenit hodnotu nastavení
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Vsechny nebo nektere základní intervaly servisu nize nesouhlasí s vybraným nastavením! 5-90% nebo 30-800 dní jsou platné hodnoty
 
 STR_TEMPERATE_LANDSCAPE						:krajina mírného pásma
 STR_SUB_ARCTIC_LANDSCAPE					:subarktická krajina
@@ -1043,8 +1066,6 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Povolit staveni v pauze: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Letadla nebudou na malých letistich (tak casto) havarovat: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit podnebí: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
-
-STR_SORT_BY_POPULATION						:{BLACK}Populace
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Mirim do {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Mirim do {CHECKPOINT}, {VELOCITY}
@@ -1128,9 +1149,6 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Vybudovat generátor bublin
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Vyhloubit karamelolom
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Vyhloubit cukrový dul
 
-STR_SORT_BY_PRODUCTION						:{BLACK}Prudukce
-STR_SORT_BY_TYPE						:{BLACK}Typ
-STR_SORT_BY_TRANSPORTED						:{BLACK}Prepraveno
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Prumysl
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% prepraveno)
 STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% prepraveno)
@@ -1144,13 +1162,14 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Prestavet vlak
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Zvolit typ nákladu na ktery vlak prestavet
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Prestavet vlak na oznaceny typ nákladu
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nelze prestavet vlak...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Intervaly servisu v procentech: {ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Predstavujeme ti novou umelou inteligenci (pracovní). Není jeste OK, takze s ním jsou jeste problémy. Kdykoli muzes, udelej screenshot a prispej s ním do fóra. At se ti líbí!
 TEMP_AI_ACTIVATED						:{WHITE}Pozor: tato nová umela inteligence je jeste v alpha verzi (= nebyla moc testována)! Zatím umí pracovat jen se silnicnimi vozidly!
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Sitove rozhraní jeste není plne funkcni!
+TEMP_STRING_NO_NETWORK						:{WHITE}Sitove rozhraní jeste není plne funkcni!{}Nektera nastavení fungují, ale napr. vstupní místnost atd. ne. Jen abyste vedeli.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
@@ -1168,7 +1187,7 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Podle tohoto jména te ostatní hraci pozna
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vyber typ pripojeni:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Vyber si hru na internetu nebo v místní síti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN									:LAN
+STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Název
@@ -1202,7 +1221,8 @@ STR_NETWORK_6_PLAYERS						:6 hracu
 STR_NETWORK_7_PLAYERS						:7 hracu
 STR_NETWORK_8_PLAYERS						:8 hracu
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
-
+STR_NETWORK_LOAD_GAME						:{BLACK}Nahrát hru
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupni mistnost do multiplayerove hry
 
@@ -1219,6 +1239,10 @@ STR_NETWORK_READY						:{BLACK}Pripraven
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Zadna sitova zarizeni nebyla nalezena (nebo nejsou zkompilována s/bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nenalezena zadna sitova hra
 STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Server neodpovedel na pozadavek
+STR_NETWORK_ERR_DESYNC						:{WHITE} Sit - synchronizace hry selhala
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Sit - spojení ztraceno
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nemohu nahrát ulozenou hru ze serveru
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} U spojení c. {NUMU16} byl prekrocen cekaci limit.
 
 ############ end network gui strings
 
@@ -1330,30 +1354,30 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Umistit pohled na mesto
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Zmenit jméno mesta
 STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Cestující minulý mesic: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
 STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Posta minulý mesic: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200F_TALL_OFFICE_BLOCK					:Vysoky kancelarsky blok
+STR_200F_TALL_OFFICE_BLOCK					:Vysoký kancelarsky blok
 STR_2010_OFFICE_BLOCK						:Kancelarsky blok
-STR_2011_SMALL_BLOCK_OF_FLATS					:Male bytovky
+STR_2011_SMALL_BLOCK_OF_FLATS					:Malé bytovky
 STR_2012_CHURCH							:Kostel
-STR_2013_LARGE_OFFICE_BLOCK					:Velky kancelarsky blok
+STR_2013_LARGE_OFFICE_BLOCK					:Velký kancelarsky blok
 STR_2014_TOWN_HOUSES						:Mestske domy
 STR_2015_HOTEL							:Hotel
 STR_2016_STATUE							:Socha
-STR_2017_FOUNTAIN						:Fontana
+STR_2017_FOUNTAIN						:Fontána
 STR_2018_PARK							:Park
 STR_2019_OFFICE_BLOCK						:Kancelarsky blok
 STR_201A_SHOPS_AND_OFFICES					:Obchody a kancelare
-STR_201B_MODERN_OFFICE_BUILDING					:Moderni kancelarsky blok
-STR_201C_WAREHOUSE						:Vyrobni hala
+STR_201B_MODERN_OFFICE_BUILDING					:Moderní kancelarsky blok
+STR_201C_WAREHOUSE						:Výrobní hala
 STR_201D_OFFICE_BLOCK						:Kancelarsky blok
 STR_201E_STADIUM						:Stadion
-STR_201F_OLD_HOUSES						:Stare domy
+STR_201F_OLD_HOUSES						:Staré domy
 STR_2020_LOCAL_AUTHORITY					:{BLACK}Místní správa
 STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Ukázat informace o místní sprave
 STR_2022_LOCAL_AUTHORITY					:{WHITE}Místní správa mesta {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Hodnocení spolecnosti:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Dotace
-STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Nabidnute dotace pro sluzbu:
+STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Nabídnuté dotace pro sluzbu:
 STR_2027_FROM_TO						:{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY							:{YELLOW} (do {DATE_SHORT})
 STR_2029							:{STRING} {STRING}
@@ -1361,12 +1385,12 @@ STR_202A_NONE							:{ORANGE}Nic
 STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Jiz priznane dotace:
 STR_202C_FROM_TO						:{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({STRING}
 STR_202D_UNTIL							:{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Nabidka dotace prepravy vyprsela:{}{}Dotace dopravy {STRING} z {STRING} do {STRING} nebude dále nabízena.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Nabídka dotace prepravy vyprsela:{}{}Dotace dopravy {STRING} z {STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Ukonceni dotovaní dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} jiz nebude dále poskytována.
 STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotovana místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset 150% normalní ceny.
-STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset dvojnasobek normalní ceny!
-STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset trojnasobek normalní ceny!
+STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset dvojnásobek normalní ceny!
+STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset trojnásobek normalní ceny!
 STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Dotace pridelena spolecnosti {STRING}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset ctyrnasobek normalní ceny!
 STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}Místní správa mesta {TOWN} zakazuje stavbu dalsiho letiste v tomto meste.
 STR_2036_COTTAGES						:Chatky
@@ -1547,43 +1571,43 @@ STR_4010_GENERATE_RANDOM_NEW_GAME				:Vytvorit nahodnou novou hru
 ##id 0x4800
 STR_4800_IN_THE_WAY						:{WHITE}{STRING} v ceste
 STR_4801							:{WHITE}{TOWN} {STRING}
-STR_4802_COAL_MINE						:Uhelny dul
-STR_4803_POWER_STATION						:Elektrarna
+STR_4802_COAL_MINE						:Uhelný dul
+STR_4803_POWER_STATION						:Elektrárna
 STR_4804_SAWMILL						:Pila
 STR_4805_FOREST							:Les
 STR_4806_OIL_REFINERY						:Rafinerie
-STR_4807_OIL_RIG						:Ropna plosina
-STR_4808_FACTORY						:Tovarna
-STR_4809_PRINTING_WORKS						:Tiskarna
-STR_480A_STEEL_MILL						:Ocelarna
+STR_4807_OIL_RIG						:Ropná plosina
+STR_4808_FACTORY						:Továrna
+STR_4809_PRINTING_WORKS						:Tiskárna
+STR_480A_STEEL_MILL						:Ocelárna
 STR_480B_FARM							:Farma
 STR_480C_COPPER_ORE_MINE					:Medeny dul
-STR_480D_OIL_WELLS						:Ropne vrty
+STR_480D_OIL_WELLS						:Ropné vrty
 STR_480E_BANK							:Banka
-STR_480F_FOOD_PROCESSING_PLANT					:Tovarna na zpracovani jidla
-STR_4810_PAPER_MILL						:Papirna
-STR_4811_GOLD_MINE						:Zlaty dul
+STR_480F_FOOD_PROCESSING_PLANT					:Továrna na zpracování jídla
+STR_4810_PAPER_MILL						:Papírna
+STR_4811_GOLD_MINE						:Zlatý dul
 STR_4812_BANK							:Banka
-STR_4813_DIAMOND_MINE						:Diamantovy dul
+STR_4813_DIAMOND_MINE						:Diamantový dul
 STR_4814_IRON_ORE_MINE						:Dul na zeleznou rudu
-STR_4815_FRUIT_PLANTATION					:Ovocna plantaz
+STR_4815_FRUIT_PLANTATION					:Ovocná plantaz
 STR_4816_RUBBER_PLANTATION					:Kaucukova plantaz
 STR_4817_WATER_SUPPLY						:Zdroj vody
 STR_4818_WATER_TOWER						:Vodojem
-STR_4819_FACTORY						:Tovarna
+STR_4819_FACTORY						:Továrna
 STR_481A_FARM							:Farma
 STR_481B_LUMBER_MILL						:Pila
-STR_481C_COTTON_CANDY_FOREST					:Les cukrove vaty
-STR_481D_CANDY_FACTORY						:Tovarna na sladkosti
-STR_481E_BATTERY_FARM						:Farma na baterky
-STR_481F_COLA_WELLS						:Kolove studny
+STR_481C_COTTON_CANDY_FOREST					:Les cukrové vaty
+STR_481D_CANDY_FACTORY						:Továrna na sladkosti
+STR_481E_BATTERY_FARM						:Farma na baterie
+STR_481F_COLA_WELLS						:Colové studny
 STR_4820_TOY_SHOP						:Hrackarstvi
-STR_4821_TOY_FACTORY						:Tovarna na hracky
-STR_4822_PLASTIC_FOUNTAINS					:Plastove fontany
-STR_4823_FIZZY_DRINK_FACTORY					:Sodovkarna
-STR_4824_BUBBLE_GENERATOR					:Generator bublin
+STR_4821_TOY_FACTORY						:Továrna na hracky
+STR_4822_PLASTIC_FOUNTAINS					:Plastové fontány
+STR_4823_FIZZY_DRINK_FACTORY					:Sodovkárna
+STR_4824_BUBBLE_GENERATOR					:Generátor bublin
 STR_4825_TOFFEE_QUARRY						:Karamelolom
-STR_4826_SUGAR_MINE						:Cukrovy dul
+STR_4826_SUGAR_MINE						:Cukerný dul
 
 ############ range for requires	starts
 STR_4827_REQUIRES						:{BLACK}Vyzaduje: {YELLOW}{STRING}
@@ -1719,7 +1743,7 @@ STR_6800_DIFFICULTY_LEVEL					:{WHITE}Obtiznost
 STR_OPTIONS_SAVE_CHANGES					:{BLACK}Ulozit
 
 ############ range for difficulty levels starts
-STR_6801_EASY							:{BLACK}Lehka
+STR_6801_EASY							:{BLACK}Lehká
 STR_6802_MEDIUM							:{BLACK}Stredni
 STR_6803_HARD							:{BLACK}Tezka
 STR_6804_CUSTOM							:{BLACK}Uzivatelska
@@ -1827,6 +1851,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graf provozního zisku
 STR_7026_BANK_BALANCE						:{WHITE}Stav na uctu
 STR_7027_LOAN							:{WHITE}Pujcka
+STR_MAX_LOAN							:{WHITE}Max. pujcka:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Pujcit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Vrátit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1900,10 +1925,12 @@ STR_706D_PRESIDENT						:Prezident
 STR_706E_TYCOON							:Magnát
 STR_706F_BUILD_HQ						:{BLACK}Reditelstvi
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Vybudovat reditelstvi spolecnosti / ukázat reditelstvi spolecnosti
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sídlo spolecnosti se vystaví jinde za 1% její hodnoty
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Nemohu postavit reditelstvi spolecnosti
 STR_7072_VIEW_HQ						:{BLACK}Reditelstvi
-STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Svetova recese!{}{}Financni experti se obavaji nejhorsiho!
-STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Konec recese!{}{}Zvyseni obchodu dava prumyslu duveru o tom, ze ekonomika posiluje!
+STR_RELOCATE_HQ							:{BLACK}Presidlit
+STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Celosvetovy hospodarsky úpadek!{}{}Financni experti se kvuli prudkému poklesu ekonomiky obávají nejhorsiho!
+STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Konec hospodarskeho úpadku!{}{}Posílení trhu zvysilo u prumyslu duveru!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Prepnout velke/male okno
 STR_7076_COMPANY_VALUE						:{GOLD}Hodnota spolecnosti: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Koupit 25% podíl ve spolecnosti
@@ -1965,7 +1992,7 @@ STR_802C_SUGAR_TRUCK						:Vagon na cukr
 STR_802D_COTTON_CANDY_HOPPER					:Vagon na cukrovou vatu
 STR_802E_TOFFEE_HOPPER						:Vagon na karamel
 STR_802F_BUBBLE_VAN						:Vagon na bubliny
-STR_8030_COLA_TANKER						:Cisternový vagon na kolu
+STR_8030_COLA_TANKER						:Cisternový vagon na colu
 STR_8031_CANDY_VAN						:Vagon na bonbony
 STR_8032_TOY_VAN						:Vagon na hracky
 STR_8033_BATTERY_TRUCK						:Vagon na baterie
@@ -1995,7 +2022,7 @@ STR_804A_SUGAR_TRUCK						:Vagon na cukr
 STR_804B_COTTON_CANDY_HOPPER					:Vagon na cukrovou vatu
 STR_804C_TOFFEE_HOPPER						:Vagon na karamel
 STR_804D_BUBBLE_VAN						:Vagon na bubliny
-STR_804E_COLA_TANKER						:Cisternový vagon na kolu
+STR_804E_COLA_TANKER						:Cisternový vagon na colu
 STR_804F_CANDY_VAN						:Vagon na bonbony
 STR_8050_TOY_VAN						:Vagon na hracky
 STR_8051_BATTERY_TRUCK						:Vagon na baterie
@@ -2027,7 +2054,7 @@ STR_806A_SUGAR_TRUCK						:Vagon na cukr
 STR_806B_COTTON_CANDY_HOPPER					:Vagon na cukrovou vatu
 STR_806C_TOFFEE_HOPPER						:Vagon na karamel
 STR_806D_BUBBLE_VAN						:Vagon na bubliny
-STR_806E_COLA_TANKER						:Cisternový vagon na kolu
+STR_806E_COLA_TANKER						:Cisternový vagon na colu
 STR_806F_CANDY_VAN						:Vagon na bonbony
 STR_8070_TOY_VAN						:Vagon na hracky
 STR_8071_BATTERY_TRUCK						:Vagon na baterie
@@ -2217,7 +2244,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmot
 STR_8818_INFORMATION						:{BLACK}Informace
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Prilis dlouhý vlak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Vlaky lze menit, jen kdyz stojí uvnitr depa
-STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} vlaky
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} vlaku
 STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Nové lokomotivy a vagony
 STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Nové lokomotivy a vagony pro maglev
@@ -2251,7 +2278,8 @@ STR_8838_N_A							:N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Nemohu prodat vagon/lokomotivu...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Nemohu najít cestu do místního depa...
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Nemohu rozjet/zastavit vlak...
-STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Interval servisu: {LTBLUE}{COMMA16}dní{BLACK}   Poslední servis: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Interval servisu: {LTBLUE}{COMMA16}dní{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Interval servisu: {LTBLUE}{COMMA16}%{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vlaky - klepni na vlak pro informace
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Kupovat nové vlaky (vyzaduje zeleznicni depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vlaky - stiskni na vlaku pro info, presun vagon pro pridani ci odebrani z vlaku
@@ -2307,7 +2335,7 @@ STR_TRAIN_STOPPING_VEL						:{RED}Zastavuje, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY				:{WHITE}Silnicni vozidlo v ceste
-STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - {COMMA16} silnicni vozidla
+STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - {COMMA16} silnicnich vozidel
 STR_9002							:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}Garaze pro silnicni vozidla {TOWN}
 STR_9004_NEW_VEHICLES						:{BLACK}Nová silnicni vozidla
@@ -2372,7 +2400,7 @@ STR_9801_DOCK_CONSTRUCTION					:{WHITE}Konstrukce pristavu
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Zde nelze postavit pristav...
 STR_9803_SHIP_DEPOT						:{WHITE}Lodní depo {TOWN}
 STR_9804_NEW_SHIPS						:{BLACK}Nové lode
-STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} lode
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} lodí
 STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Nemohu koupit lod...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Nejprve musis postavit lodní depo
 STR_9808_NEW_SHIPS						:{WHITE}Nové lode
@@ -2448,7 +2476,7 @@ STR_A005_NEW_AIRCRAFT						:{WHITE}Nové letadlo
 STR_A006_BUILD_AIRCRAFT						:{BLACK}Koupit letadlo
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}{}{BLACK}Kapacita: {GOLD}{COMMA16} cestujících, {COMMA16} baliku posty{}{BLACK}Cena provozu: {GOLD}{CURRENCY} rocne{}{BLACK}Vyvinuto: {GOLD}{NUMU16}{BLACK}  Zivotnost: {GOLD}{COMMA16} let{}{BLACK}Max. spolehlivost: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Nelze koupit letadlo...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} letadla a helikoptery
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} letadel a helikoptér
 STR_A00A							:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Prikazy)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Detaily)
@@ -2458,8 +2486,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Prijem tento rok: {LTBLUE}{CURREN
 STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
 STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUMU16}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}Nelze poslat letadlo do hangáru...
-STR_HEADING_FOR_HANGAR						:{LTBLUE}Letím do hangáru {STATION}
-STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Letím do hangáru {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR						:{LTBLUE}Mirim do hangáru {STATION}
+STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Mirim do hangáru {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}Letadlo {COMMA16} ceka v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}Nemohu rozjet/zastavit letadlo...
@@ -2518,6 +2546,7 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Výbuch ropné rafinerie u {T
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Za podezrelych okolností byla znicena továrna u {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}UFO pristalo pobliz {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Pokles terénu u uhelného dolu {TOWN} zpusobil velké skody!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Záplavy!{}Po straslivych záplavách je odhadem {COMMA16} lidí pohresovanych nebo mrtvých!
 
 STR_BRIBE_FAILED						:{WHITE}Tvuj pokus o úplatek byl
 STR_BRIBE_FAILED_2						:{WHITE}odhalen místním vysetrovatelem.
@@ -2542,8 +2571,8 @@ STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Dluh:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Celkem:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Pocet dopravních prostredku, tzn. silnicnich vozidel, vlaku, lodí a letadel.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet dilku stanic. Kazdy dílek stanice (napr. nadrazi, autobusové zastávky, letiste) se zapocitava, i kdyz patri jediné stanci.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Minimální hrubý zisk (= s provoz. náklady) vsech vozidel starsich 2 let.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet soucasti stanic. Kazda soucast stanice (napr. nadrazi, autobusové zastávky, letiste) se zapocitava, i kdyz patri jediné stanici.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Minimální hrubý zisk (= s provoz. náklady) vozidla s nejnizsim prijmem (starsiho 2 let)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Cisty zisk (= bez provoz. nakladu) v nejslabsim mesici za posledních 12 ctvrtleti
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Cisty zisk v mesici s nejvetsim prijmem za posledních 12 ctvrtleti.
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Pocet dorucenych jednotek nákladu za poslední rok (4Q).

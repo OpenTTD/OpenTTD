@@ -353,6 +353,11 @@ STR_015F_QUIT							:Kilépés
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Biztosan kilépsz ebbõl a játékból ?
 STR_0161_QUIT_GAME						:{WHITE}Kilépés a játékból
 STR_SORT_TIP							:{BLACK}Válassz rendezési sorrendet
+
+STR_SORT_BY_POPULATION						:{BLACK}Lakosság
+STR_SORT_BY_PRODUCTION						:{BLACK}Termelés
+STR_SORT_BY_TYPE						:{BLACK}Típus
+STR_SORT_BY_TRANSPORTED						:{BLACK}Elszállítás
 STR_SORT_BY_NAME						:{BLACK}Név
 STR_SORT_BY_DATE						:{BLACK}Dátum
 
@@ -749,6 +754,7 @@ STR_02DB_OFF							:{BLACK}Ki
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Állami támogatások
 STR_02DD_SUBSIDIES						:Támogatások
 STR_02DE_MAP_OF_WORLD						:Világtérkép
+
 STR_02DF_TOWN_DIRECTORY						:Városlista
 STR_02E0_CURRENCY_UNITS						:{BLACK}Pénznem
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -981,7 +987,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automata megújításhoz szükséges m
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: Magas értékek lelassítják a játékot
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1043,8 +1049,6 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jet-repülõgépek nem fognak (gyakran) lezuhanni a kisebb repülõtereken: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Dátum módosítás: {ORANGE} {DATE_SHORT}
-
-STR_SORT_BY_POPULATION						:{BLACK}Lakosság
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Úton {CHECKPOINT} felé
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Úton {CHECKPOINT} felé, {VELOCITY}
@@ -1128,9 +1132,6 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Buborékgenerátor építése
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Tejkaramella fejtõ építése
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Cukorbánya építése
 
-STR_SORT_BY_PRODUCTION						:{BLACK}Termelés
-STR_SORT_BY_TYPE						:{BLACK}Típus
-STR_SORT_BY_TRANSPORTED						:{BLACK}Elszállítás
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Gazdasági épületek
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% elszállítva)
 STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% elszállítva)
@@ -1168,7 +1169,7 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}A többi játékos ilyen nével fog ismerni T
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Válassz kapcsolat típust:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Válassz az internetes játék és a helyi hálózatban történõ játék között
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN									:Helyi hálózat
+STR_NETWORK_LAN							:Helyi hálózat
 STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Név
@@ -1203,7 +1204,6 @@ STR_NETWORK_7_PLAYERS						:7 játékos
 STR_NETWORK_8_PLAYERS						:8 játékos
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
 
-
 STR_NETWORK_GAME_LOBBY						:{WHITE}Többjátékos játék-lobby
 
 STR_NETWORK_SEND						:{BLACK}Küld
@@ -1216,9 +1216,6 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Új vállalatot nyit
 STR_NETWORK_READY						:{BLACK}Kész
 
-STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
-STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 
@@ -2205,7 +2202,6 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Mindig javítsd a vonatot a {TOWN}i jármû
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Úton a {TOWN}i jármûtelepre
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Úton a {TOWN}i jármûtelepre, {VELOCITY}
 
-STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
 
 STR_UNKNOWN_DESTINATION						:ismeretlen célpont
 STR_8812_EMPTY							:{LTBLUE}Üres
@@ -2372,7 +2368,7 @@ STR_9801_DOCK_CONSTRUCTION					:{WHITE}Kikötõépítés
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Nem építhetsz ide kikötõt...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN}i dokk
 STR_9804_NEW_SHIPS						:{BLACK}Új hajók
-STR_9805_SHIPS							:{WHITE}{STRING} hajói - {COMMA16} 
+STR_9805_SHIPS							:{WHITE}{STRING} hajói - {COMMA16}
 STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Nem vehetsz hajókat...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Elõbb dokkot kell építened
 STR_9808_NEW_SHIPS						:{WHITE}Új hajók

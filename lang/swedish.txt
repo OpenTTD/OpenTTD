@@ -188,10 +188,6 @@ STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Ursprungligen designat av Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafik av Simon Foster
-STR_SPECIAL_THANKS						:<TODO>{BLACK}Special thanks go out to:
-STR_SPECIAL_THANKS_SIGNALS					:<TODO>{BLACK}° Pre-Signals and Semaphores {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:<TODO>{BLACK}° Foundations for Tracks on Slopes {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:<TODO>{BLACK}° Canal/Lock graphics {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD-teamet
 
 STR_00C5							:{BLACK}{CROSS}
@@ -342,7 +338,6 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf över prestationshistorik
 STR_0158_COMPANY_VALUE_GRAPH					:Graf över företagets värde
 STR_0159_CARGO_PAYMENT_RATES					:Fraktförtjänster
 STR_015A_COMPANY_LEAGUE_TABLE					:Tabell över ledande företag
-STR_PERFORMANCE_DETAIL_MENU					:<TODO>Detail performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -352,9 +347,7 @@ STR_015E_QUIT_GAME						:Avsluta spelet
 STR_015F_QUIT							:Avsluta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vill du verkligen avsluta spelet?
 STR_0161_QUIT_GAME						:{WHITE}Avsluta spelet
-STR_SORT_TIP							:<TODO>{BLACK}Select sorting order
-STR_SORT_BY_NAME						:<TODO>{BLACK}Name
-STR_SORT_BY_DATE						:<TODO>{BLACK}Date
+
 
 ############ range for months starts
 STR_0162_JAN							:jan
@@ -749,6 +742,7 @@ STR_02DB_OFF							:{BLACK}Av
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Visa subventioner
 STR_02DD_SUBSIDIES						:Subventioner
 STR_02DE_MAP_OF_WORLD						:Världskarta
+
 STR_02DF_TOWN_DIRECTORY						:Lista av städer
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valutaenheter
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -830,7 +824,6 @@ STR_TOWNNAME_SWEDISH						:Svenska
 STR_TOWNNAME_DUTCH						:Hollänska
 STR_TOWNNAME_FINNISH						:Finska
 STR_TOWNNAME_POLISH						:Polska
-STR_TOWNNAME_CZECH						:<TODO>Czech
 STR_TOWNNAME_SLOVAKISH						:Slovakiska
 STR_TOWNNAME_HUNGARIAN						:Hungarianska
 STR_TOWNNAME_AUSTRIAN						:Australienska
@@ -907,32 +900,11 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Slut på delade order - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Tåg {COMMA16} har tappat bort sig.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Tåg {COMMA16}s vinst förra året var {CURRENCY}
-STR_EURO_INTRODUCE						:<TODO>{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS					:<TODO>{WHITE}Train {COMMA16} has too few orders in the schedule
-STR_TRAIN_HAS_VOID_ORDER					:<TODO>{WHITE}Train {COMMA16} has a void order
-STR_TRAIN_HAS_DUPLICATE_ENTRY					:<TODO>{WHITE}Train {COMMA16} has duplicate orders
-STR_TRAIN_HAS_INVALID_ENTRY					:<TODO>{WHITE}Train {COMMA16} has an invalid station in the orders
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:<TODO>{WHITE}Road Vehicle {COMMA16} has too few orders in the schedule
-STR_ROADVEHICLE_HAS_VOID_ORDER					:<TODO>{WHITE}Road Vehicle {COMMA16} has void order
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:<TODO>{WHITE}Road Vehicle {COMMA16} has duplicate orders
-STR_ROADVEHICLE_HAS_INVALID_ENTRY				:<TODO>{WHITE}Road Vehicle {COMMA16} has an invalid station in the orders
-STR_SHIP_HAS_TOO_FEW_ORDERS					:<TODO>{WHITE}Ship {COMMA16} has too few orders in the schedule
-STR_SHIP_HAS_VOID_ORDER						:<TODO>{WHITE}Ship {COMMA16} has void order
-STR_SHIP_HAS_DUPLICATE_ENTRY					:<TODO>{WHITE}Ship {COMMA16} has duplicate orders
-STR_SHIP_HAS_INVALID_ENTRY					:<TODO>{WHITE}Ship {COMMA16} has an invalid station in the orders
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:<TODO>{WHITE}Aircraft {COMMA16} has too few orders in the schedule
-STR_AIRCRAFT_HAS_VOID_ORDER					:<TODO>{WHITE}Aircraft {COMMA16} has void order
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:<TODO>{WHITE}Aircraft {COMMA16} has duplicate orders
-STR_AIRCRAFT_HAS_INVALID_ENTRY					:<TODO>{WHITE}Aircraft {COMMA16} has an invalid station in the orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on train {COMMA16} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED				:<TODO>{WHITE}Autorenew failed on road vehicle {COMMA16} (money limit)
-STR_SHIP_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on ship {COMMA16} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED					:<TODO>{WHITE}Autorenew failed on aircraft {COMMA16} (money limit)
 
 STR_CONFIG_PATCHES						:{BLACK}Konfigurera patchar
 STR_CONFIG_PATCHES_TIP						:{BLACK}Konfigurera patcharna
@@ -968,18 +940,9 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny algoritm för att hitta rutt
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}{STRING} dagar
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:<TODO>{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
-STR_CONFIG_PATCHES_ORDER_REVIEW					:<TODO>{LTBLUE}Review vehicles' orders: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:<TODO>no
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:<TODO>yes, but exclude stopped vehicles
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:<TODO>of all vehicles
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Varna om ett tågs inkomst är negativ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:<TODO>{LTBLUE}Autorenew vehicle when it gets old
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:<TODO>{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:<TODO>{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES				:<TODO>{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max stationsspridning: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
@@ -994,43 +957,27 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Förbjud vägfordon för datorn: {
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Förbjud flygplan för datorn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE					:<TODO>{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard-serviceintervall för tåg: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:<TODO>{LTBLUE}Default service interval for trains: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard-serviceintervall för vägfordon: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:<TODO>{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard-serviceintervall för flygplan: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:<TODO>{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard-serviceintervall för skepp: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:<TODO>{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Lugn ekonomi (flera små ändringar)
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:<TODO>{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS					:<TODO>{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:<TODO>Left
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:<TODO>Center
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:<TODO>Right
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Fordon
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stationer
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI						:<TODO>{BLACK}Competitors
 
 STR_CONFIG_PATCHES_DISABLED					:Avaktiverat
 STR_CONFIG_PATCHES_INT32					:{INT32}
-STR_CONFIG_PATCHES_CURRENCY					:<TODO>{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Ändra inställningsvärde
 
-STR_TEMPERATE_LANDSCAPE						:<TODO>temperate landscape
-STR_SUB_ARCTIC_LANDSCAPE					:<TODO>sub-arctic landscape
-STR_SUB_TROPICAL_LANDSCAPE					:<TODO>sub-tropical landscape
-STR_TOYLAND_LANDSCAPE						:<TODO>toyland landscape
 
 STR_CHEATS							:{WHITE}Fusk
 STR_CHEATS_TIP							:{BLACK}Checkboxar indikerar om du använt det här fusket förut
@@ -1040,11 +987,6 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spelar som: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}trimmad bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH						:<TODO>{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE					:<TODO>{LTBLUE}Switch climate: {ORANGE} {STRING}
-STR_CHEAT_CHANGE_DATE						:<TODO>{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
-
-STR_SORT_BY_POPULATION						:<TODO>{BLACK}Population
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}På väg mot {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}På väg mot {CHECKPOINT}, {VELOCITY}
@@ -1128,9 +1070,6 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Bygg bubbelgenerator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Bygg knäckbrott
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Bygg sockergruva
 
-STR_SORT_BY_PRODUCTION						:<TODO>{BLACK}Production
-STR_SORT_BY_TYPE						:<TODO>{BLACK}Type
-STR_SORT_BY_TRANSPORTED						:<TODO>{BLACK}Transported
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrier
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{CITY} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporterat)
 STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{CITY} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transporterat)
@@ -1145,8 +1084,6 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Välj godstyp för tåget att bära
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Anpassa tåg för att bära vald godstyp
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ej anpassa tåg...
 
-TEMP_AI_IN_PROGRESS						:<TODO>{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
-TEMP_AI_ACTIVATED						:<TODO>{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 
 ############ network gui strings
 
@@ -1168,7 +1105,7 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Namnet som andra spelare kommer att ident
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Välj typ av nätverksspel:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Välj mellan att spela på internet eller över det lokala nätverket
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN									:LAN
+STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Namn
@@ -1203,7 +1140,6 @@ STR_NETWORK_7_PLAYERS						:7 spelare
 STR_NETWORK_8_PLAYERS						:8 spelare
 STR_NETWORK_START_GAME						:{BLACK}Starta spelet
 
-
 STR_NETWORK_GAME_LOBBY						:{WHITE}Nätverksspel
 
 STR_NETWORK_SEND						:{BLACK}Skicka
@@ -1216,9 +1152,6 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Starta ett nytt företag
 STR_NETWORK_READY						:{BLACK}Klar
 
-STR_NETWORK_ERR_NOTAVAILABLE					:<TODO>{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER					:<TODO>{WHITE} Could not find any network game
-STR_NETWORK_ERR_NOCONNECTION					:<TODO>{WHITE} The server didn't answer the request
 
 ############ end network gui strings
 
@@ -1716,7 +1649,6 @@ STR_SV_STNAME_FOREST						:{STRING} Skog
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Svårighetsgrad
-STR_OPTIONS_SAVE_CHANGES					:<TODO>{BLACK}Save
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Lätt
@@ -1743,10 +1675,8 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Mängd sjöar/hav: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Ekonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Tåg kan vända: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:<TODO>{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE							:<TODO>None
 STR_6816_LOW							:Låg
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:Hög
@@ -1783,14 +1713,10 @@ STR_6835_AT_END_OF_LINE_ONLY					:Enbart vid slut på linjen
 STR_6836_OFF							:Av
 STR_6837_ON							:På
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Visa highscore-lista
-STR_6839_PERMISSIVE						:<TODO>Permissive
-STR_683A_TOLERANT						:<TODO>Tolerant
-STR_683B_HOSTILE						:<TODO>Hostile
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER							:<TODO>(Player {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nytt ansikte
 STR_7005_COLOR_SCHEME						:{BLACK}Färgval
 STR_7006_COLOR_SCHEME						:{GOLD}Färgval:
@@ -2205,9 +2131,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Servning non-stop {TOWN} Tåg depå
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}På väg mot {TOWN} depå
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}På väg mot {TOWN} depå, {VELOCITY}
 
-STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
 
-STR_UNKNOWN_DESTINATION						:<TODO>unknown destination
 STR_8812_EMPTY							:{LTBLUE}Tom
 STR_8813_FROM							:{LTBLUE}{CARGO} från {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tåg {COMMA16} väntar i depå
@@ -2521,34 +2445,7 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Kolgruva sjunker - lämn
 
 STR_BRIBE_FAILED						:{WHITE}Ditt mutningsförsök har blivit
 STR_BRIBE_FAILED_2						:{WHITE}uppdagat av en regional utredare.
-STR_BUILD_DATE							:<TODO>{BLACK}Built: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL						:<TODO>{WHITE}Detail performance rating
-STR_PERFORMANCE_DETAIL_KEY					:<TODO>{BLACK}Detail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:<TODO>{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT				:<TODO>{BLACK}{TINYFONT}({INT32}/{INT32})
-STR_PERFORMANCE_DETAIL_PERCENT					:<TODO>{WHITE}{INT32}%
-SET_PERFORMANCE_DETAIL_INT					:<TODO>{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES					:<TODO>{BLACK}Vehicles:
-STR_PERFORMANCE_DETAIL_STATIONS					:<TODO>{BLACK}Stations:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT				:<TODO>{BLACK}Min. profit:
-STR_PERFORMANCE_DETAIL_MIN_INCOME				:<TODO>{BLACK}Min. income:
-STR_PERFORMANCE_DETAIL_MAX_INCOME				:<TODO>{BLACK}Max. income:
-STR_PERFORMANCE_DETAIL_DELIVERED				:<TODO>{BLACK}Delivered:
-STR_PERFORMANCE_DETAIL_CARGO					:<TODO>{BLACK}Cargo:
-STR_PERFORMANCE_DETAIL_MONEY					:<TODO>{BLACK}Money:
-STR_PERFORMANCE_DETAIL_LOAN					:<TODO>{BLACK}Loan:
-STR_PERFORMANCE_DETAIL_TOTAL					:<TODO>{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:<TODO>{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:<TODO>{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:<TODO>{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:<TODO>{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TIP				:<TODO>{BLACK}Types of cargo delivered in the last quarter.
-STR_PERFORMANCE_DETAIL_MONEY_TIP				:<TODO>{BLACK}Amount of cash on hand
-STR_PERFORMANCE_DETAIL_LOAN_TIP					:<TODO>{BLACK}Do you have a high loan?
-STR_PERFORMANCE_DETAIL_TOTAL_TIP				:<TODO>{BLACK}Total points out of possible points
 

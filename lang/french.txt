@@ -342,7 +342,6 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Historique de performance
 STR_0158_COMPANY_VALUE_GRAPH					:Valeur de la compagnie
 STR_0159_CARGO_PAYMENT_RATES					:Valeur des cargaisons
 STR_015A_COMPANY_LEAGUE_TABLE					:Classement des compagnies
-STR_PERFORMANCE_DETAIL_MENU					:<TODO>Detail performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -353,6 +352,11 @@ STR_015F_QUIT							:Quitter le jeu
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Êtes vous sur de vouloir abandonner cette partie?
 STR_0161_QUIT_GAME						:{WHITE}Abandonner
 STR_SORT_TIP							:{BLACK}Sélectionne l'ordre de tri
+
+STR_SORT_BY_POPULATION						:{BLACK}Population
+STR_SORT_BY_PRODUCTION						:{BLACK}Production
+STR_SORT_BY_TYPE						:{BLACK}Type
+STR_SORT_BY_TRANSPORTED						:{BLACK}Transporté
 STR_SORT_BY_NAME						:{BLACK}Nom
 STR_SORT_BY_DATE						:{BLACK}Date
 
@@ -749,6 +753,7 @@ STR_02DB_OFF							:{BLACK}Désactivé
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES						:Subventions
 STR_02DE_MAP_OF_WORLD						:Carte du monde
+
 STR_02DF_TOWN_DIRECTORY						:Annuaire des villes
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unité monétaire
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -830,7 +835,6 @@ STR_TOWNNAME_SWEDISH						:Suédois
 STR_TOWNNAME_DUTCH						:Hollandais
 STR_TOWNNAME_FINNISH						:Finnish
 STR_TOWNNAME_POLISH						:Polonais
-STR_TOWNNAME_CZECH						:<TODO>Czech
 STR_TOWNNAME_SLOVAKISH						:Slovaques
 STR_TOWNNAME_HUNGARIAN						:Hongrois
 STR_TOWNNAME_AUSTRIAN						:Autrichiens
@@ -981,7 +985,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Argent nécessaire pour le renouve
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Temps d'affichage des messages d'erreur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Arbres invisibles (quand les bâtiments sont transparents) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Etendue maximum des stations: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Etendue maximum des stations: {ORANGE}{STRING} {RED}Attention: Une valeur trop élevée ralentit le jeu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
@@ -1042,9 +1046,6 @@ STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Les jets ne se crashent plus (fréquemment) sur les petites aéroports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Changer de climat : {ORANGE} {STRING}
-STR_CHEAT_CHANGE_DATE						:<TODO>{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
-
-STR_SORT_BY_POPULATION						:{BLACK}Population
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}En route pour {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}En route pour {CHECKPOINT}, {VELOCITY}
@@ -1128,9 +1129,6 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Construire un générateur de bulles
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Construire une carrière de caramel
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Construire une mine de sucre
 
-STR_SORT_BY_PRODUCTION						:{BLACK}Production
-STR_SORT_BY_TYPE						:{BLACK}Type
-STR_SORT_BY_TRANSPORTED						:{BLACK}Transporté
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industries
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporté)
 STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transporté)
@@ -1168,7 +1166,7 @@ STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Ceci est le nom avec lequel les autres jo
 STR_NETWORK_SELECT_CONNECTION					:{BLACK}Choisissez le type de connection:
 STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Permet de choisir entre une partie sur sur internet ou sur un lan
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN									:LAN
+STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Nom
@@ -1202,7 +1200,6 @@ STR_NETWORK_6_PLAYERS						:6 joueurs
 STR_NETWORK_7_PLAYERS						:7 joueurs
 STR_NETWORK_8_PLAYERS						:8 joueurs
 STR_NETWORK_START_GAME						:{BLACK}Démarrer la partie
-
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chat d'avant jeu
 
@@ -2205,7 +2202,6 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Aller faire la maintenance sans s'arrête
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Roule vers le dépôt de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
 
-STR_INVALID_ORDER						:<TODO>{RED} (Invalid Order)
 
 STR_UNKNOWN_DESTINATION						:destination inconnue
 STR_8812_EMPTY							:{LTBLUE}Vide
@@ -2523,32 +2519,6 @@ STR_BRIBE_FAILED						:{WHITE}Votre tentative de corruption à été
 STR_BRIBE_FAILED_2						:{WHITE}révélée à la presse par un journaliste régional.
 STR_BUILD_DATE							:{BLACK}Construit le: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL						:<TODO>{WHITE}Detail performance rating
-STR_PERFORMANCE_DETAIL_KEY					:<TODO>{BLACK}Detail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:<TODO>{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT				:<TODO>{BLACK}{TINYFONT}({INT32}/{INT32})
-STR_PERFORMANCE_DETAIL_PERCENT					:<TODO>{WHITE}{INT32}%
-SET_PERFORMANCE_DETAIL_INT					:<TODO>{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES					:<TODO>{BLACK}Vehicles:
-STR_PERFORMANCE_DETAIL_STATIONS					:<TODO>{BLACK}Stations:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT				:<TODO>{BLACK}Min. profit:
-STR_PERFORMANCE_DETAIL_MIN_INCOME				:<TODO>{BLACK}Min. income:
-STR_PERFORMANCE_DETAIL_MAX_INCOME				:<TODO>{BLACK}Max. income:
-STR_PERFORMANCE_DETAIL_DELIVERED				:<TODO>{BLACK}Delivered:
-STR_PERFORMANCE_DETAIL_CARGO					:<TODO>{BLACK}Cargo:
-STR_PERFORMANCE_DETAIL_MONEY					:<TODO>{BLACK}Money:
-STR_PERFORMANCE_DETAIL_LOAN					:<TODO>{BLACK}Loan:
-STR_PERFORMANCE_DETAIL_TOTAL					:<TODO>{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:<TODO>{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:<TODO>{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:<TODO>{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:<TODO>{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:<TODO>{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TIP				:<TODO>{BLACK}Types of cargo delivered in the last quarter.
-STR_PERFORMANCE_DETAIL_MONEY_TIP				:<TODO>{BLACK}Amount of cash on hand
-STR_PERFORMANCE_DETAIL_LOAN_TIP					:<TODO>{BLACK}Do you have a high loan?
-STR_PERFORMANCE_DETAIL_TOTAL_TIP				:<TODO>{BLACK}Total points out of possible points
 
