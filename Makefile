@@ -735,7 +735,7 @@ $(64_bit_warnings):
 
 $(STRGEN): strgen/strgen.c endian.h
 	@echo 'Compiling and Linking $@'; \
-		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^ $(VERBOSE_FILTER)
+		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $< $(VERBOSE_FILTER)
 
 table/strings.h: lang/english.txt $(STRGEN)
 	@echo 'Generating $@'; \
@@ -849,7 +849,7 @@ endif
 love:
 	@echo "YES! I thought you would never ask. We will have a great time. You can keep me turned on all night"
 
-.PHONY: clean all $(OSX) install $(64_bit_warnings) $(endwarnings) love endian.h
+.PHONY: clean all $(OSX) install $(64_bit_warnings) $(endwarnings) love
 
 
 ### Automatic configuration
