@@ -2,7 +2,7 @@
 !define APPNAME "OpenTTD"
 !define APPNAMEANDVERSION "OpenTTD 0.3.4.0"
 !define APPVERSION "0.3.4.0"
-!define INSTALLERVERSION 11
+!define INSTALLERVERSION 12 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 
 BrandingText "OpenTTD Installer"
 
