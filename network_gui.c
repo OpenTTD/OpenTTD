@@ -110,8 +110,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		{ // draw list of games
 			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
 			int32 n = 0;
+			int32 pos=w->vscroll.pos;
 			char servername[NETWORK_NAME_LENGTH];
 			const NetworkGameList *cur_item = _network_game_list;
+			while (pos>0 && cur_item != NULL) {
+				--pos;
+				cur_item = cur_item->next;
+			}
 			while (cur_item != NULL) {
 				bool compatible = (strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) == 0);
 				if (strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision)) == 0)
