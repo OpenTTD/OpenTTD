@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Can't clear this area....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY						:{BLACK}  Translator(s) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -305,6 +306,7 @@ STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
 STR_OSNAME_AMIGAOS						:AmigaOS
+STR_OSNAME_OS2							:OS/2
 
 STR_0139_IMPERIAL_MILES						:Imperial (miles)
 STR_013A_METRIC_KILOMETERS					:Metric (kilometers)
@@ -414,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Can't change servicing interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Close window
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Window title - drag this to move window
 STR_STICKY_BUTTON						:{BLACK}Mark this window as undeletable for the 'Close All Windows' key
+STR_RESIZE_BUTTON						:{BLACK}Click and drag to resize this window
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolish buildings etc. on a square of land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Raise a corner of land
@@ -561,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Changes of cargo acceptance
 STR_020E_SUBSIDIES						:{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION					:{YELLOW}General information
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...too far from previous destination
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top companies who reached 2050{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Company League Table in {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Businessman
 STR_0214_ENTREPRENEUR						:Entrepreneur
@@ -570,8 +574,10 @@ STR_0216_CAPITALIST						:Capitalist
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon of the Century
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} achieves '{STRING}' status!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} of {STRING} achieves '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} achieves '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} of {STRING} achieves '{STRING}' status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -766,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Map of world
 STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Town directory
+STR_TOWN_POPULATION						:{BLACK}World population: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copy to viewport
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copy the location of the global view to this viewport
@@ -845,6 +852,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:English
 STR_TOWNNAME_FRENCH						:French
 STR_TOWNNAME_GERMAN						:German
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:English (Additional)
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-American
 STR_TOWNNAME_SILLY						:Silly
 STR_TOWNNAME_SWEDISH						:Swedish
@@ -852,10 +860,12 @@ STR_TOWNNAME_DUTCH						:Dutch
 STR_TOWNNAME_FINNISH						:Finnish
 STR_TOWNNAME_POLISH						:Polish
 STR_TOWNNAME_SLOVAKISH						:Slovakish
+STR_TOWNNAME_NORWEGIAN						:Norwegian
 STR_TOWNNAME_HUNGARIAN						:Hungarian
 STR_TOWNNAME_AUSTRIAN						:Austrian
 STR_TOWNNAME_ROMANIAN						:Romanian
 STR_TOWNNAME_CZECH						:Czech
+STR_TOWNNAME_SWISS						:Swiss
 ############ end of	townname region
 
 STR_CURR_GBP							:Pounds ({POUNDSIGN})
@@ -1009,6 +1019,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autorenew vehicle when it gets 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duration of error message: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Show town population in the town name label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
@@ -1034,10 +1045,13 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Default service interval for air
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Starting date: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}End game in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Enable smooth economy (more, smaller changes)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Left
@@ -1127,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Can't build locks here...
 STR_BUILD_LOCKS_TIP						:{BLACK}Build locks
 STR_LANDINFO_LOCK						:Lock
 
+STR_BUOY_IS_IN_USE						:{WHITE}... buoy is in use!
+
 STR_LANDINFO_COORDS						:{BLACK}Coordinates: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Can't remove part of station...
@@ -1178,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Select type of cargo for train to c
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Can't refit train...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Change production
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
 TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
@@ -1215,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Language:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Map size:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server address:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server address:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Start date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Password protected!
@@ -1331,6 +1348,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} We made a protocol-error and our conne
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} The revision of this client does not match the revision of the server.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Wrong password.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} The server is full
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} You are banned from this server
 STR_NETWORK_ERR_KICKED						:{WHITE} You are kicked out of the server
 STR_NETWORK_ERR_CHEATER						:{WHITE} Cheating is not allowed on this server
 
@@ -1471,6 +1489,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Road/rail level crossing
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Towns
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2077,6 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Can't sell 25% share in this company
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% owned by {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% owned by {STRING}{}   {COMMA16}% owned by {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} has been taken over by {STRING}!
+STR_7080_PROTECTED						:{WHITE}This company does not trade shares yet...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Steam)
@@ -2656,6 +2676,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Can't name aircraft...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Name aircraft
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Citizens celebrate . . .{}First aircraft arrives at {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA16} die in fireball!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinations:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rename
@@ -2750,9 +2771,28 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Show all road vehicles which have th
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Show all aircraft which have this station on their schedule
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Show all ships which have this station on their schedule
 
+STR_REPLACE_VEHICLES						:{BLACK}Replace Vehicles
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Replace Vehicles
+STR_REPLACE_VEHICLES_START					:{BLACK}Start Replacing Vehicles
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop Replacing Vehicles
+STR_NOT_REPLACING						:{BLACK}Not replacing
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No vehicle selected
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Select the engine type to replace
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Select the new engine type you would like to use in place of the left selected engine type
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Press to stop the replacement of the engine type selected on the left
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Choose the railtype you want to replace engines for
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left selected engine is being replaced with, if any
+STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Rail Vehicles
+STR_MONORAIL_VEHICLES						:Monorail Vehicles
+STR_MAGLEV_VEHICLES						:Maglev Vehicles
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

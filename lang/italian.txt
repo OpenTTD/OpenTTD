@@ -1126,6 +1126,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Impossibile costruire una chiusa qui...
 STR_BUILD_LOCKS_TIP						:{BLACK}Costruisci chiusa
 STR_LANDINFO_LOCK						:Chiusa
 
+
 STR_LANDINFO_COORDS						:{BLACK}Coordinate: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Impossibile rimuovere una porzione di stazione...
@@ -2629,6 +2630,7 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Mostra tutti i treni che hanno questa stazi
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostra tutti i veicoli che hanno questa stazione tra gli ordini
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostra tutti gli aerei che hanno questa stazione tra gli ordini
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostra tutte le navi che hanno questo porto tra gli ordini
+
 
 
 ############ Lists rail types

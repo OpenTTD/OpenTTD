@@ -42,7 +42,7 @@ STR_0024_SUGAR							:Sykur
 STR_0025_TOYS							:Leikföng
 STR_0026_CANDY							:Sælgæti
 STR_0027_COLA							:Kóladrykkir
-STR_0028_COTTON_CANDY						:Kandís
+STR_0028_COTTON_CANDY						:Sykurfrauð
 STR_0029_BUBBLES						:Kúlur
 STR_002A_TOFFEE							:Toffý
 STR_002B_BATTERIES						:Rafhlöður
@@ -74,7 +74,7 @@ STR_0044_SUGAR							:Sykur
 STR_0045_TOY							:Leikfang
 STR_0046_CANDY							:Sælgæti
 STR_0047_COLA							:Kóladrykkur
-STR_0048_COTTON_CANDY						:Kandís
+STR_0048_COTTON_CANDY						:Sykurfrauð
 STR_0049_BUBBLE							:Kúla
 STR_004A_TOFFEE							:Toffý
 STR_004B_BATTERY						:Rafhlaða
@@ -106,7 +106,7 @@ STR_0064_TON_OF_SUGAR						:{COMMA16} tonn af sykri
 STR_0065_TOY							:{COMMA16} leikfang
 STR_0066_BAG_OF_CANDY						:{COMMA16} poki af sælgæti
 STR_0067_OF_COLA						:{VOLUME} af kóladrykk
-STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonn af kandís
+STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonn af sykurfrauði
 STR_0069_BUBBLE							:{COMMA16} kúla
 STR_006A_TON_OF_TOFFEE						:{COMMA16} tonn af toffý
 STR_006B_BATTERY						:{COMMA16} rafhlaða
@@ -138,7 +138,7 @@ STR_0084_TONS_OF_SUGAR						:{COMMA16} tonn af sykri
 STR_0085_TOYS							:{COMMA16} leikföng
 STR_0086_BAGS_OF_CANDY						:{COMMA16} pokar af sælgæti
 STR_0087_OF_COLA						:{VOLUME} af kóla
-STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tonn af kandís
+STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tonn af sykurfrauði
 STR_0089_BUBBLES						:{COMMA16} kúlur
 STR_008A_TONS_OF_TOFFEE						:{COMMA16} tonn af toffý
 STR_008B_BATTERIES						:{COMMA16} rafhlöður
@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Get ekki hreinsað þetta svæði....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Upphaflegur höfundarréttur {COPYRIGHT} 1995 Chris Sawyer, Öll réttindi áskilin
 STR_00B7_VERSION						:{BLACK}OpenTTD útgáfa {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD hópurinn
+STR_TRANSLATED_BY						:{BLACK}  Þýðendur -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -263,7 +264,7 @@ STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Gúmmíplantekra
 STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Vatnsbirgi
 STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Vatnsturn
 STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Timburverksmiðja
-STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Kandísskógur
+STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Sykurfrauðsskógur
 STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Sælgætisverksmiðja
 STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Rafhlöðubýli
 STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Kólalindir
@@ -275,7 +276,7 @@ STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Kúluframkallari
 STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Toffýæð
 STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Sykurnáma
 STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Lestarstöð
-STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Flutningabílastöð
+STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Vörubílastöð
 STR_011D_BUS_STATION						:{BLACK}{TINYFONT}Strætóstoppistöð
 STR_011E_AIRPORT_HELIPORT					:{BLACK}{TINYFONT}Flugvöllur/Þyrlupallur
 STR_011F_DOCK							:{BLACK}{TINYFONT}Bryggja
@@ -349,6 +350,7 @@ STR_015F_QUIT							:Hætta í OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ertu viss um að þú viljir hætta í þessum leik ?
 STR_0161_QUIT_GAME						:{WHITE}Hætta leik
 STR_SORT_ORDER_TIP						:{BLACK}Velja uppröðun (minnkandi/stækkandi)
+STR_SORT_CRITERIA_TIP						:{BLACK}Velja uppröðun
 SRT_SORT_BY							:{BLACK}Flokka eftir
 
 STR_SORT_BY_POPULATION						:{BLACK}Fólksfjöldi
@@ -414,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Get ekki breytt viðgerðarmillibili..
 STR_018B_CLOSE_WINDOW						:{BLACK}Loka glugga
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titill glugga - dragðu þetta til að færa gluggann
 STR_STICKY_BUTTON						:{BLACK}Merkja þennan glugga sem ólokanlegan fyrir
+STR_RESIZE_BUTTON						:{BLACK}Ýttu og dragðu til að breyta stærð gluggans
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Eyða byggingum o.s.frv. á lóðarreiti
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lækka horn af landssvæði
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Lyfta horni af landssvæði
@@ -561,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Breyting á viðtöku farms
 STR_020E_SUBSIDIES						:{YELLOW}Samstarfssamningar
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Almennar upplýsingar
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...of langt frá fyrrverandi stað
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Topp fyrirtæki sem störfuðu til ársins 2050{}({STRING} Metorðastig)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Efstu fyrirtæki sem náðu {NUMU16}{}({STRING} stig)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Sambandstafla fyrirtækis í {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Viðskiptamaður
 STR_0214_ENTREPRENEUR						:Athafnamaður
@@ -570,6 +574,8 @@ STR_0216_CAPITALIST						:Kapítalisti
 STR_0217_MAGNATE						:Áhrifamaður
 STR_0218_MOGUL							:Stórlax
 STR_0219_TYCOON_OF_THE_CENTURY					:Viðskiptajöfur aldarinnar
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} öðlast '{STRING}' titil!
 STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} úr {STRING} öðlast '{STRING}' titil!
 STR_021D							:{BLACK}
@@ -630,7 +636,7 @@ STR_0253_WATER_SUPPLY						:{BLACK}Vatnsbirgi
 STR_0254_WATER_TOWER						:{BLACK}Vatnsturn
 STR_0255_DIAMOND_MINE						:{BLACK}Demantanáma
 STR_0256_COPPER_ORE_MINE					:{BLACK}Koparnáma
-STR_0257_COTTON_CANDY_FOREST					:{BLACK}Kandísskógur
+STR_0257_COTTON_CANDY_FOREST					:{BLACK}Sykurfrauðsskógur
 STR_0258_CANDY_FACTORY						:{BLACK}Sælgætisverksmiðja
 STR_0259_BATTERY_FARM						:{BLACK}Rafhlöðubýli
 STR_025A_COLA_WELLS						:{BLACK}Kólalindir
@@ -665,7 +671,7 @@ STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Reisa Vatnsbirgi
 STR_0277_CONSTRUCT_WATER_TOWER_CAN				:{BLACK}Byggja Vatnsturn (aðeins hægt að byggja í bæjum)
 STR_0278_CONSTRUCT_DIAMOND_MINE					:{BLACK}Byggja Demantanámu
 STR_0279_CONSTRUCT_COPPER_ORE_MINE				:{BLACK}Byggja Koparnámu
-STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Gróðursetja Kandísskóg
+STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Gróðursetja sykurfrauðsskóg
 STR_027B_CONSTRUCT_CANDY_FACTORY				:{BLACK}Byggja Sælgætisverksmiðju
 STR_027C_CONSTRUCT_BATTERY_FARM					:{BLACK}Byggja Rafhlöðubýli
 STR_027D_CONSTRUCT_COLA_WELLS					:{BLACK}Byggja Kólalindir
@@ -754,8 +760,8 @@ STR_02D4_TRANSPARENT_BUILDINGS					:{SETX 12}Gegnsæjar byggingar
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO					:Landssvæðisupplýsingar
 STR_02D6							:
-STR_02D7_SCREENSHOT_CTRL_S					:Skjáskot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Risa skjáskot (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S					:Skjámynd (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Risa skjámynd (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD						:Um 'OpenTTD'
 ############ range ends	here
 
@@ -766,6 +772,7 @@ STR_02DD_SUBSIDIES						:Samstarfssamningar
 STR_02DE_MAP_OF_WORLD						:Heimskort
 STR_EXTRA_VIEW_PORT						:Auka sjónarhorn
 STR_02DF_TOWN_DIRECTORY						:Bæjarmappa
+STR_TOWN_POPULATION						:{BLACK}Heildaríbúafjöldi: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Sjónarhorn {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Afrita í sjónarhorn
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Afrita aðalsjónarhornið í sjónarhornsrammann
@@ -826,8 +833,8 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...aðeins hægt að byggja á re
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...aðeins hægt að byggja í eyðimörk
 STR_0319_PAUSED							:{YELLOW}* *  STOPPAÐUR  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY				:{WHITE}Skjáskot vistað sem '{STRING}'
-STR_031C_SCREENSHOT_FAILED					:{WHITE}Skjáskot mistókst!
+STR_031B_SCREENSHOT_SUCCESSFULLY				:{WHITE}Skjámynd vistuð sem '{STRING}'
+STR_031C_SCREENSHOT_FAILED					:{WHITE}Ekki tókst að taka skjámynd!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE				:{BLACK}Kaupa landssvæði til notkunar síðar
 STR_032A_1_ROAD_VEHICLE_SERVICE					:{BLACK}1: Bifreiðarþjónusta
@@ -845,6 +852,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Ensk
 STR_TOWNNAME_FRENCH						:Frönsk
 STR_TOWNNAME_GERMAN						:Þýsk
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Enska (Aukaleg)
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerísk
 STR_TOWNNAME_SILLY						:Fáránleg
 STR_TOWNNAME_SWEDISH						:Sænsk
@@ -852,10 +860,12 @@ STR_TOWNNAME_DUTCH						:Hollensk
 STR_TOWNNAME_FINNISH						:Finnsk
 STR_TOWNNAME_POLISH						:Pólsk
 STR_TOWNNAME_SLOVAKISH						:Slóvakísk
+STR_TOWNNAME_NORWEGIAN						:Norska
 STR_TOWNNAME_HUNGARIAN						:Ungversk
 STR_TOWNNAME_AUSTRIAN						:Austurrísk
 STR_TOWNNAME_ROMANIAN						:Rúmensk
 STR_TOWNNAME_CZECH						:Tékknesk
+STR_TOWNNAME_SWISS						:Svissneska
 ############ end of	townname region
 
 STR_CURR_GBP							:Pund ({POUNDSIGN})
@@ -895,9 +905,9 @@ STR_OPTIONS_RES							:{BLACK}Skjáupplausn
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP						:{BLACK}Veldu skjáupplausn
 
-STR_OPTIONS_SCREENSHOT_FORMAT					:{BLACK}Form skjáskota
+STR_OPTIONS_SCREENSHOT_FORMAT					:{BLACK}Form skjámynda
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO				:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP				:{BLACK}Veldu form skjáskota
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP				:{BLACK}Veldu form skjámynda
 
 STR_AUTOSAVE_1_MONTH						:Í hverjum mánuði
 STR_AUTOSAVE_FAILED						:{WHITE}Sjálfvirk vistun mistókst
@@ -970,11 +980,13 @@ STR_CONFIG_PATCHES_OFF						:Nei
 STR_CONFIG_PATCHES_ON						:Já
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Sýna hraða farartækis í upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Leyfilegt að byggja í halla og á strönd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Leyfa byggingu mjög langra lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Raunveruleg hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Yfirgefa lestarstöð þegar einhver farmur er fullur, ef kveikt er á 'fullhlaða': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Nota endurbættan algóriþma við hleðslu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Verðbólga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Leyfa byggingu mjög langra brúa: {ORANGE}{STRING}
@@ -985,6 +997,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Má byggja iðnaði af sömu gerð nálæg
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Sýna alltaf fulla dagsetningu í upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch samhæfð meðhöndlun stansleysu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Bifreiðir fara í biðraðir (með stórvægilegum aukaverkunum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Færa sjónarhorn þegar músin nálgast brún gluggans: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE}{STRING}
@@ -1006,6 +1019,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Uppfæra faratæki sjálfvirkt þeg
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Uppfæra farartæki sjálfkrafa {ORANGE}{STRING}{LTBLUE} mánuðum fyrir/eftir hámarksaldur þess
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Lægsta upphæð peninga sem þörf er á fyrir sjálfvirka uppfæringu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Birtingartími villuskilaboða: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Sýna íbúafjölda í bæjarmerki: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Ósýnileg tré (með gagnsæjum byggingum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hæð snjólínu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Dreyfing stöðva mest: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
@@ -1031,10 +1045,13 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Bið milli skoðana á flugvélum: {
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Bið milli skoðana á flugvélum: {ORANGE}óvrikt
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Bið milli skoðana á skipum: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Bið milli skoðana á skipum: {ORANGE}óvirkt
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Hætta skoðunum þegar bilanir eru afvirktar: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Fréttir birtast í lit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Upphafsár: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Enda leik árið: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Virkja jafnan efnahag (fleiri og minni breytingar)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Leyfa hlutabréfakaup í öðrum fyrirtækjum
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Þegar dregið er, setja skilti á: {ORANGE}{STRING} hvern reit
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Staðsetning tækjasláar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vinstri
@@ -1124,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Ekki hægt að gera skurðgátt hér
 STR_BUILD_LOCKS_TIP						:{BLACK}Grafa skruðgátt
 STR_LANDINFO_LOCK						:Skurðgátt
 
+STR_BUOY_IS_IN_USE						:{WHITE}... bauja í notkun!
+
 STR_LANDINFO_COORDS						:{BLACK}Hnit: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Get ekki fjarlægt hluta af stöð...
@@ -1155,7 +1174,7 @@ STR_CONSTRUCT_RUBBER_PLANTATION_TIP				:{BLACK}Rækta Gúmmíplantekru
 STR_CONSTRUCT_WATER_SUPPLY_TIP					:{BLACK}Koma á fót Vatnsbirgi
 STR_CONSTRUCT_COTTON_CANDY_TIP					:{BLACK}Gróðursetja Sykurfrauðsskóg
 STR_CONSTRUCT_BATTERY_FARM_TIP					:{BLACK}Koma á fót Rafhlöðubýli
-STR_CONSTRUCT_COLA_WELLS_TIP					:{BLACK}Bora eftir Gosi
+STR_CONSTRUCT_COLA_WELLS_TIP					:{BLACK}Bora eftir kóla
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP				:{BLACK}Grafa Plastbrunna
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Reisa Kúluframleiðslu
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Grafa Karamellunámu
@@ -1175,7 +1194,9 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin flytur
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest til að flytja valinn varning
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Get ekki breytt lest...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Bil milli skoðana er í hundraðshlutum: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Breyta framleiðslu
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Velkomin í nýju gervigreindina, verk í vinnslu. Þú skalt búast við vandamálum og taktu skjámynd þegar þau koma upp og sendi á póstlistann. Njóttu!
 TEMP_AI_ACTIVATED						:{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnablikinu virka aðeins flutningabílar og strætisvagnar!
 
 ############ network gui strings
@@ -1321,8 +1342,10 @@ STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Gat ekki hlaðið vistuðum leik af þjón
 STR_NETWORK_ERR_SERVER_START					:{WHITE} Gat ekki ræst þjón
 STR_NETWORK_ERR_CLIENT_START					:{WHITE} Gat ekki tengst
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tenging #{NUMU16} fjaraði út.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Villa varð í samskiptum og tengingu var lokað
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rangt lykilorð
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Þjónninn er fullur
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Þú ert bannaður/bönnuð á þessum þjóni
 STR_NETWORK_ERR_KICKED						:{WHITE} Þér var hent út úr leiknum
 STR_NETWORK_ERR_CHEATER						:{WHITE} Svindl er ekki leyft á þessum þjóni
 
@@ -1332,6 +1355,7 @@ STR_NETWORK_ERR_CLIENT_GENERAL					:almenn villa
 STR_NETWORK_ERR_CLIENT_DESYNC					:samstillingarvilla
 STR_NETWORK_ERR_CLIENT_SAVEGAME					:gat ekki opnað kort
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:tenging rofnaði
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:samskiptavilla
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Ekki leyfilegt
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:tók á móti undarlegum pakka
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:röng útgáfa
@@ -1460,6 +1484,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Vega/lestar gatnamót
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Bæir
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -1595,6 +1620,7 @@ STR_3030_RENAME_STATION_LOADING					:Endurnefna stöð/lestunarsvæði
 STR_3031_CAN_T_RENAME_STATION					:{WHITE}Get ekki endurnefnt stöð...
 STR_3032_RATINGS						:{BLACK}Einkunn
 STR_3033_ACCEPTS						:{BLACK}Tekur við
+STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Staðbundin einkunn flutningsþjónustu:
 
 ############ range for rating starts
 STR_3035_APPALLING						:Hræðilegur
@@ -1645,8 +1671,12 @@ STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION					:Lestarstöð
 STR_305F_AIRCRAFT_HANGAR					:Flugskýli
 STR_3060_AIRPORT						:Flugvöllur
+STR_3061_TRUCK_LOADING_AREA					:Vörubílastöð
 STR_3062_BUS_STATION						:Strætisvagnastöð
 STR_3063_SHIP_DOCK						:Skipahöfn
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Sýna svæði sem tilheyrir stöð
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Ekki sýna svæði sem tilheyrir stöð
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Svæði sem tilheyrir stöð
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Einteinungsstöð
 STR_3068_DOCK							:{WHITE}Höfn
 STR_3069_BUOY							:Bauja
@@ -1675,6 +1705,12 @@ STR_4006_UNABLE_TO_READ_DRIVE					:{BLACK}Get ekki lesið af drifi
 STR_4007_GAME_SAVE_FAILED					:{WHITE}Vistun leiks mistókst
 STR_4008_UNABLE_TO_DELETE_FILE					:{WHITE}Get ekki eytt skrá
 STR_4009_GAME_LOAD_FAILED					:{WHITE}Mistókst að opna leik
+STR_400A_LIST_OF_DRIVES_DIRECTORIES				:{BLACK}Listi yfir drif, möppur og vistaða leiki
+STR_400B_CURRENTLY_SELECTED_NAME				:{BLACK}Nafn fyrir vistun leiks
+STR_400C_DELETE_THE_CURRENTLY_SELECTED				:{BLACK}Eyða nafninu
+STR_400D_SAVE_THE_CURRENT_GAME_USING				:{BLACK}Vista leikinn undir þessu nafni
+STR_400E_SELECT_NEW_GAME_TYPE					:{WHITE}Velja tegund leiks
+STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Velja landslag (grænt), forstilltan leik (blátt) eða handahófskenndan leik
 STR_4010_GENERATE_RANDOM_NEW_GAME				:Búa til nýjan leik
 
 ##id 0x4800
@@ -1701,10 +1737,44 @@ STR_4813_DIAMOND_MINE						:Demantanáma
 STR_4814_IRON_ORE_MINE						:Járnnáma
 STR_4815_FRUIT_PLANTATION					:Ávaxtaplantekra
 STR_4816_RUBBER_PLANTATION					:Gúmmíplantekra
+STR_4817_WATER_SUPPLY						:Vatnsbyrgi
+STR_4818_WATER_TOWER						:Vatnsturn
+STR_4819_FACTORY						:Verksmiðja
+STR_481A_FARM							:Bóndabýli
+STR_481B_LUMBER_MILL						:Timburverksmiðja
+STR_481C_COTTON_CANDY_FOREST					:Sykurfrauðsskógur
+STR_481D_CANDY_FACTORY						:Sælgætisverksmiðja
+STR_481E_BATTERY_FARM						:Rafhlöðubýli
+STR_481F_COLA_WELLS						:Kólalindir
+STR_4820_TOY_SHOP						:Leikfangabúð
+STR_4821_TOY_FACTORY						:Leikfangaverksmiðja
+STR_4822_PLASTIC_FOUNTAINS					:Plastbrunnar
+STR_4823_FIZZY_DRINK_FACTORY					:Gosdrykkjaverksmiðja
+STR_4824_BUBBLE_GENERATOR					:Kúluframleiðsla
+STR_4825_TOFFEE_QUARRY						:Karamellunáma
+STR_4826_SUGAR_MINE						:Sykurnáma
 
 ############ range for requires	starts
+STR_4827_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Framleiðsla síðasta mánaðar:
+STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% flutt)
+STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Miðja aðalsjónarhorn á iðnað
+STR_482F_COST							:{BLACK}Kostnaður: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Get ekki reist þennan iðnað hér...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...skógur getur aðeins verið gróðursettur yfir snjólínu
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} tilkynnir yfirvofandi lokun!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Birgðavandamál knýja {TOWN} {STRING} til að tilkynna yfirvofandi lokun!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Skortur á nálægum trjám knýr {TOWN} {STRING} til að tilkynna yfirvofandi lokun!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} eykur framleiðsluna!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Nýtt kolalag fanns í {TOWN} {STRING}!{}Tvöföldun í framleiðslu væntanleg!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Meri olía finnst við {TOWN} {STRING}!{}Tvöföldun í framleiðslu væntanleg!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Búist er við að endurbættar aðferðir á {TOWN} {STRING} muni skila tvöfaldri framleiðslu!
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}50% samdráttur í framleiðslu hjá {TOWN} {STRING}
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Skordýraplága veldur tjóni á {TOWN} {STRING}!{}Framleiðsla minnkar um 50%
 STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...getur aðeins verið staðsett nálægt brún kortsins
 STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING} framleiðsla í {TOWN} {STRING} hækkar um {COMMA16}%!
 STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING} framleiðsla í {TOWN} {STRING} lækkar um {COMMA16}%!
@@ -1719,12 +1789,33 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Get ekki breytt landi fyrir hinn end
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Verður að eyða göngum fyrst
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Verður að eyða brú fyrst
 STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Getur ekki byrjað og endað á sama stað
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Sléttlendi eða vatn nauðsynlegt undir brú
 STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Verður að byrja og enda í sömu línu
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Óhentug staðsetning fyrir enda gangnanna
 STR_500C							:
 STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL					:Hengibrú, stál
+STR_500F_GIRDER_STEEL						:Burðarbitabrú, stál
+STR_5010_CANTILEVER_STEEL					:Svifbitabrú, stál
+STR_5011_SUSPENSION_CONCRETE					:Hengibrú, steypa
 STR_5012_WOODEN							:Viðarbrú
 STR_5013_CONCRETE						:Steypubrú
+STR_5014_TUBULAR_STEEL						:Rörabrú, stál
+STR_BRIDGE_TUBULAR_SILICON					:Rörabrú, kísill
+STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Get ekki reist brú hér...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Get ekki grafið göng hér...
+STR_5017_RAILROAD_TUNNEL					:Lestagöng
+STR_5018_ROAD_TUNNEL						:Vegagöng
+STR_5019							:
+STR_501A							:
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Stálhengibrú, lestir
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Stálburðarbitabrú, lestir
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Stálsvifbitabrú, lestir
+STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Styrkt steypuhengirbú, lestir
+STR_501F_WOODEN_RAIL_BRIDGE					:Viðarbrú, lestir
+STR_5020_CONCRETE_RAIL_BRIDGE					:Steypubrú, lestir
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Stálhengibrú, vegur
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Stálburðarbitabrú, vegur
 
 ##id 0x5800
 
@@ -1770,6 +1861,7 @@ STR_5013_CONCRETE						:Steypubrú
 
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

@@ -1140,6 +1140,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Kan ikke bygge sluser her...
 STR_BUILD_LOCKS_TIP						:{BLACK}Bygg sluser
 STR_LANDINFO_LOCK						:Sluse
 
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinater: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Kan ikke fjerne del av stasjonen...
@@ -2781,6 +2782,7 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Klikk denne knappen hvis du vil bytte 
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Velg jernbanetypen du vil velge lokomotiv fra
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP						:{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
+
 
 ############ Lists rail types
 

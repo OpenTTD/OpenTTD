@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Támogatások
 STR_02DE_MAP_OF_WORLD						:Világtérkép
 STR_EXTRA_VIEW_PORT						:Extra látkép
 STR_02DF_TOWN_DIRECTORY						:Városlista
+STR_TOWN_POPULATION						:{BLACK}Világnépesség: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}{COMMA16}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Látkép aktualizálása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Beállítja a globális látkép pozicióját erre a látképre
@@ -1140,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Nem lehet zsilipet építeni ide...
 STR_BUILD_LOCKS_TIP						:{BLACK}Zsilip építése
 STR_LANDINFO_LOCK						:Zsilip
 
+STR_BUOY_IS_IN_USE						:{WHITE}... a bóját használják!
+
 STR_LANDINFO_COORDS						:{BLACK}Koordináták: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Can't remove part of station...
@@ -1229,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Nyelv:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Tájtípus:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}A pálya nagysága:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Szerver verzió:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}A szerver címe:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}A szerver címe:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Jelenlegi dátum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Jelszóval védve!
@@ -2781,6 +2784,8 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Nyomd meg ezt a gombot hogy a bal olda
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Válaszd ki a cserélendõ vasúttípust
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Megmutatja, hogy melyik bal oldali mozdonyt akarod kicserélni
 STR_REPLACE_HELP						:{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

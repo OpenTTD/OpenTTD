@@ -772,7 +772,7 @@ STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Map of world
 STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Town directory
-STR_TOWN_POPULATION								:{BLACK}World population: {COMMA32}
+STR_TOWN_POPULATION						:{BLACK}World population: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copy to viewport
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copy the location of the global view to this viewport
@@ -1141,7 +1141,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Can't build locks here...
 STR_BUILD_LOCKS_TIP						:{BLACK}Build locks
 STR_LANDINFO_LOCK						:Lock
 
-STR_BUOY_IS_IN_USE					:{WHITE}... buoy is in use!
+STR_BUOY_IS_IN_USE						:{WHITE}...buoy is in use!
 
 STR_LANDINFO_COORDS						:{BLACK}Coordinates: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -2096,7 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Can't sell 25% share in this company
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% owned by {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% owned by {STRING}{}   {COMMA16}% owned by {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} has been taken over by {STRING}!
-STR_7080_PROTECTED						:{WHITE}This company does not trade shares yet...
+STR_7080_PROTECTED						:{WHITE}This company is not old enough to trade shares yet...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Steam)
@@ -2785,7 +2785,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Choose the railtype you want to replace en
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 
-STR_SHORT_DATE					:{WHITE}{DATE_TINY}
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Canvis en admisió de càrrega
 STR_020E_SUBSIDIES						:{YELLOW}Subvencions
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Informació General
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...massa lluny del destí previ
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Principals empreses en asolir el 2050{}(Nivell {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Principals Empreses en asolir el Nivell {NUMU16}{}({STRING} )
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Taula de Lliga d'Empreses a {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Empresari
 STR_0214_ENTREPRENEUR						:Emprenedor
@@ -573,8 +574,10 @@ STR_0216_CAPITALIST						:Capitalista
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Gran Magnate
 STR_0219_TYCOON_OF_THE_CENTURY					:Magnate del Segle
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} asoleix l'estat '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} de {STRING} asoleix l'estat '{STRING}'!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} asoleix l'estat '{STRING}' !
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} de {STRING} asoleix l'estat '{STRING}' !
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -861,6 +864,7 @@ STR_TOWNNAME_HUNGARIAN						:Húngar
 STR_TOWNNAME_AUSTRIAN						:Austríac
 STR_TOWNNAME_ROMANIAN						:Romanès
 STR_TOWNNAME_CZECH						:Txec
+STR_TOWNNAME_SWISS						:Suís
 ############ end of	townname region
 
 STR_CURR_GBP							:Lliures ({POUNDSIGN})
@@ -1040,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Interval de manteniment per defe
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Interval de manteniment per defecte de les aeronaus: {ORANGE}desactivat
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} díes/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}desactivat
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Desactivar manteniment quan les averíes s'estableixen a cap: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Les noticies en color apareixen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data d'inici: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Fi del joc en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Activar economia suau (més canvis però més petits)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Permetre comprar participadions d'altres empreses
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}En arrosegant, sitúa senyals cada: {ORANGE}{STRING} quadre(s)
@@ -1134,6 +1140,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}No es pot construir resclosa aqui...
 STR_BUILD_LOCKS_TIP						:{BLACK}Construir rescloses
 STR_LANDINFO_LOCK						:Resclosa
 
+
 STR_LANDINFO_COORDS						:{BLACK}Coordenades: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}No es pot treure part de la estació...
@@ -1185,6 +1192,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Selecciona tipus de càrrega a trans
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Remodelar tren per transportar el tipus de càrrega seleccionat
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}No es pot remodelar el tren...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Els intervals de manteniment estàn en percentatges: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Canvi de producció
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Benvingut a aquest nou AI, en desenvolupament. Pot ser que tinguis problemes. Quan en tinguis, fes una còpia de pantalla i publícala al forums. Disfruta!
 TEMP_AI_ACTIVATED						:{WHITE}Atenció: aquest nou AI encara està en versió alfa! Actualment, només funcionen els autobusos i camions!
@@ -2086,6 +2094,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}No pots vendre el 25% de participaci
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% propietat de {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% propietat de {STRING}{}   {COMMA16}% propietat de {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} ha estat absorbida per {STRING}!
+STR_7080_PROTECTED						:{WHITE}Aquesta Empresa ja no negocía participacions...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Vapor)
@@ -2774,6 +2783,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Tria el tipus de via pel que vols reemplaç
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
 STR_REPLACE_HELP						:{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES						:Trens
@@ -2782,3 +2792,4 @@ STR_MAGLEV_VEHICLES						:Vehicles Maglev
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

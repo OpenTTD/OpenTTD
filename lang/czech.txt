@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Dotace
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
 STR_EXTRA_VIEW_PORT						:Dalsi pohled
 STR_02DF_TOWN_DIRECTORY						:Seznam mest
+STR_TOWN_POPULATION						:{BLACK}Populace sveta: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohled {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit soucasne zorné pole jako pohled
@@ -1140,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Zde nemohu postavit zdymadlo...
 STR_BUILD_LOCKS_TIP						:{BLACK}Stavet zdymadlo
 STR_LANDINFO_LOCK						:Zdymadlo
 
+STR_BUOY_IS_IN_USE						:{WHITE}... bojka je pouzivana!
+
 STR_LANDINFO_COORDS						:{BLACK}Souradnice: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Nemohu odstranit cast stanice...
@@ -1229,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Jazyk:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Prostredi:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Velikost mapy:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Verze hry na serveru:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa serveru:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa serveru:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Pocatecni datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Momentální datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Chraneno heslem!
@@ -2781,6 +2784,8 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Zmackni toto tlacitko, kdyz chces zame
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vyber typ kolejí, pro které chces vybírat lokomotivy na zamenu
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu zamenuje
 STR_REPLACE_HELP						:{BLACK}Tato moznost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdyz lokomotiva zajede do depa.
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

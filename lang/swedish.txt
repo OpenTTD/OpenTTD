@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Ändringar i godsacceptans
 STR_020E_SUBSIDIES						:{YELLOW}Subventioner
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Generell information
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...för långt från föregående destination
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Bästa företag som nått år 2050{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Company League Table in {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Affärsman
 STR_0214_ENTREPRENEUR						:Entreprenör
@@ -573,8 +574,10 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Århundradets Tycoon
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} uppnår '{STRING}' status!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} av {STRING} uppnår '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} uppnår '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} från {STRING} uppnår '{STRING}' status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -769,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subventioner
 STR_02DE_MAP_OF_WORLD						:Världskarta
 STR_EXTRA_VIEW_PORT						:Nytt vy fönster
 STR_02DF_TOWN_DIRECTORY						:Lista av städer
+STR_TOWN_POPULATION						:{BLACK}Världsbefolkning: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vy fönster {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopiera till vy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopiera kartans position till detta Vyfönster
@@ -861,6 +865,7 @@ STR_TOWNNAME_HUNGARIAN						:Hungarianska
 STR_TOWNNAME_AUSTRIAN						:Australienska
 STR_TOWNNAME_ROMANIAN						:Rumänska
 STR_TOWNNAME_CZECH						:Tjeckiska
+STR_TOWNNAME_SWISS						:Schweiziska
 ############ end of	townname region
 
 STR_CURR_GBP							:Pund ({POUNDSIGN})
@@ -1040,9 +1045,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard serviceintervall för fl
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}av
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}av
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Startdatum: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Avsluta spelet om: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Lugn ekonomi (flera små ändringar)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Tillåt inköp av aktier från andra företag
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
@@ -1134,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Kan ej bygga slussar här...
 STR_BUILD_LOCKS_TIP						:{BLACK}Bygg slussar
 STR_LANDINFO_LOCK						:Sluss
 
+STR_BUOY_IS_IN_USE						:{WHITE}... bojen används!
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinater: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Kan ej ta bort del av station...
@@ -1185,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Välj godstyp för tåget att bära
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Anpassa tåg för att bära vald godstyp
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ej anpassa tåg...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Visa serviceintervall i procent: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Ändra produktion
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Välkommen till denna nya AI, under uppbyggnad. Du kan räkna med att det finns problem med den. När något sådant händer, ta en skärmdump och lägg ut den på forumet. Mycket nöje!
 TEMP_AI_ACTIVATED						:{WHITE}Varning: den nya AI:n är fortfarande i alpha-stadiet! Just nu funkar bara vägfordon!
@@ -2086,6 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kan inte sälja 25% andel i detta för
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% ägd av {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% ägd av {STRING}{}   {COMMA16}% ägd av {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} har tagits över av {STRING}!
+STR_7080_PROTECTED						:{WHITE}Det här företaget bedriver inte aktiehandel ännu....
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Ånga)
@@ -2774,6 +2785,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Välj järnvägstyp för att byta ut fordon
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Visa vilket fordon, det vänstra fordonet byts ut till, om något
 STR_REPLACE_HELP						:{BLACK}Detta gör det möjligt att byta ut en fordonstyp med en annan typ, när tågen av den ursprungliga typen anländer till en depå
 
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES						:Järnvägsfordon
@@ -2782,3 +2794,4 @@ STR_MAGLEV_VEHICLES						:Maglevfordon
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

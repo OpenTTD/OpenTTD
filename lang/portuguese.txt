@@ -1138,6 +1138,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Não é possível construir diques aqui...
 STR_BUILD_LOCKS_TIP						:{BLACK}Construir diques
 STR_LANDINFO_LOCK						:Dique
 
+
 STR_LANDINFO_COORDS						:{BLACK}Coordenadas: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Não é possível remover parte da estação...
@@ -2748,6 +2749,7 @@ STR_CURRENCY_PREFIX						:{LTBLUE}Prefixo:
 STR_CURRENCY_SUFFIX						:{LTBLUE}Sufixo:
 STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Mudar para Euro: {ORANGE}{INT32}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Mudar para Euro: {ORANGE}nunca
+
 
 
 

@@ -771,6 +771,7 @@ STR_02DD_SUBSIDIES						:Subsydia
 STR_02DE_MAP_OF_WORLD						:Mapa swiata
 STR_EXTRA_VIEW_PORT						:Extra podglad
 STR_02DF_TOWN_DIRECTORY						:Lista miast
+STR_TOWN_POPULATION						:{BLACK}Swiatowa populacja: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Podglad {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopuj do podgladu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopiuj obecna pozycje z glownego okna do podgladu
@@ -1043,10 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Domyslny okres miedzy serwis. dl
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Domyslny okres miedzy serwis. dla samolotow: {ORANGE}niedostepne
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}niedostepne
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Serwis niedostepny jesli uszkodzenia pojazdow wylaczone: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data rozpoczecia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Data zako&#324;czenia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Data zakonczenia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Pozwol na lagodna ekonomie (male zmiany)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Pozwol kupowac udzialy w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING} kratke(i)
@@ -1137,6 +1139,8 @@ STR_LANDINFO_CANAL						:Kanal
 STR_CANT_BUILD_LOCKS						:{WHITE}Nie mozna tutaj wybudowac sluzy...
 STR_BUILD_LOCKS_TIP						:{BLACK}Buduj sluzy
 STR_LANDINFO_LOCK						:Sluza
+
+STR_BUOY_IS_IN_USE						:{WHITE}... boja w uzyciu!
 
 STR_LANDINFO_COORDS						:{BLACK}Pozycja: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -2091,6 +2095,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}nie mozna sprzedac 25% udzialow w te
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% w posiadaniu przez {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% w posiadaniu przez {STRING}{}   {COMMA16}% w posiadaniu przez {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} zostalo przejete przez {STRING}!
+STR_7080_PROTECTED						:{WHITE}Ta firma nie sprzedaje jeszcze akcji...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Parowoz)
@@ -2755,10 +2760,10 @@ STR_LORRY							:{BLACK}{LORRY}
 STR_PLANE							:{BLACK}{PLANE}
 STR_SHIP							:{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Pociagow
-STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Samochodow
-STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Samolotow
-STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Statkow
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Pociag(i/ow)
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Samochod(y/ow)
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Samolot(y/ow)
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Statek(i/ow)
 
 STR_SCHEDULED_TRAINS_TIP					:{BLACK}Pokazuje wszystkie pociagi ktore maja ta stacje w swoim rozkladzie
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Pokazuje wszystkie samochody ktore maja ta stacje w swoim rozkladzie
@@ -2778,6 +2783,8 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Wcisnij ten klawisz jesli chcesz zasta
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic pojazdy
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP						:{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

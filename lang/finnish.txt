@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Rahdin vastaanottamisen muutoks
 STR_020E_SUBSIDIES						:{YELLOW}Alennukset
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Yleistä tietoa
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...liian kaukana edellisestä määränpäästä
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden 2050{}({STRING} taso)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parhaat yhtiöt, jotka ylsivät {NUMU16}{}(taso: {STRING})
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Liikemies
 STR_0214_ENTREPRENEUR						:Yrittäjä
@@ -573,8 +574,10 @@ STR_0216_CAPITALIST						:Kapitalisti
 STR_0217_MAGNATE						:Magnaatti
 STR_0218_MOGUL							:Moguli
 STR_0219_TYCOON_OF_THE_CENTURY					:Vuosisadan pohatta
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} saavuttaa tilan '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} {STRING}:sta saavuttaa tilan '{STRING}'! ##
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} saavuttaa arvon '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} yhtiöstä {STRING} saavuttaa arvon '{STRING}'!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -861,6 +864,7 @@ STR_TOWNNAME_HUNGARIAN						:Unkarilainen
 STR_TOWNNAME_AUSTRIAN						:Itävaltalainen
 STR_TOWNNAME_ROMANIAN						:Romania
 STR_TOWNNAME_CZECH						:Tsekki
+STR_TOWNNAME_SWISS						:Sveitsiläinen
 ############ end of	townname region
 
 STR_CURR_GBP							:Puntaa ({POUNDSIGN})
@@ -1040,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Oletushuoltoväli lentokoneille: 
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Oletushuoltoväli lentokoneillet: {ORANGE}pois päältä
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}{STRING} päivää
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}pois päältä
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Huollot pois käytöstä, kun rikkoutumiset on pois: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Värjätty uutinen esiintyy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Aloituspäivämäärä: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Lopeta peli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Tasainen talous (enemmän pieniä muutoksia)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Salli osakkeiden ostaminen yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
@@ -1134,6 +1140,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Sulkua ei voi rakentaa tähän...
 STR_BUILD_LOCKS_TIP						:{BLACK}Rakenna sulku
 STR_LANDINFO_LOCK						:Sulku
 
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinaatit: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Asemasta ei voi poistaa osaa...
@@ -1185,6 +1192,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Valitse junan rahtityyppi
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Sovita juna kuljettamaan korostettua rahtityyppiä
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Junaa ei voi sovittaa...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Aloita tuotanto
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Tervetuloa uuteen tekoälyyn (työn alla). Odota ongelmia. Kun sellainen tulee vastaan, ota kuvankaappaus ja lähetä keskustelualueelle. Nauti!
 TEMP_AI_ACTIVATED						:{WHITE}Varoitus: uusi tekoäly on vielä alpha-koodia! Tällä hetkellä vain rekat ja linja-autot toimivat!
@@ -2086,6 +2094,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Tästä yhtiöstä ei voi myydä 25%:n os
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}%:n omistus: {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}%:n omistus: {STRING}{}   {COMMA16}%:n omistus {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}Yhtiön {STRING} on ottanut haltuun {STRING}!
+STR_7080_PROTECTED						:{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (höyry)
@@ -2774,6 +2783,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Valitse rautatietyyppi, jolle veturikorvau
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään
 STR_REPLACE_HELP						:{BLACK}Tällä voit korvata yhden veturityypin toisella, kun alkuperäisen tyypin junat menevät varikolle
 
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES						:Rautatiejunat
@@ -2782,3 +2792,4 @@ STR_MAGLEV_VEHICLES						:Maglev-junat
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

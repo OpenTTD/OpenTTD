@@ -145,7 +145,36 @@ STR_008B_BATTERIES						:{COMMA16} batterier
 STR_008C_OF_PLASTIC						:{VOLUME} plastik
 STR_008D_FIZZY_DRINKS						:{COMMA16} sodavand
 STR_008E							:
+STR_008F_PS							:{TINYFONT}PS
+STR_0090_CL							:{TINYFONT}CL
+STR_0091_ML							:{TINYFONT}ML
+STR_0092_OL							:{TINYFONT}OL
+STR_0093_LV							:{TINYFONT}LV
+STR_0094_GD							:{TINYFONT}GD
+STR_0095_GR							:{TINYFONT}GR
+STR_0096_WD							:{TINYFONT}WD
+STR_0097_OR							:{TINYFONT}OR
+STR_0098_ST							:{TINYFONT}ST
+STR_0099_VL							:{TINYFONT}VL
+STR_009A_CO							:{TINYFONT}CO
+STR_009B_MZ							:{TINYFONT}MZ
+STR_009C_FT							:{TINYFONT}FT
+STR_009D_DM							:{TINYFONT}DM
+STR_009E_FD							:{TINYFONT}FD
+STR_009F_PR							:{TINYFONT}PR
+STR_00A0_GD							:{TINYFONT}GD
+STR_00A1_WR							:{TINYFONT}WR
+STR_00A2_WH							:{TINYFONT}WH
+STR_00A3_RB							:{TINYFONT}RB
+STR_00A4_SG							:{TINYFONT}SG
+STR_00A5_TY							:{TINYFONT}TY
+STR_00A6_SW							:{TINYFONT}SW
+STR_00A7_CL							:{TINYFONT}CL
+STR_00A8_CF							:{TINYFONT}CF
+STR_00A9_BU							:{TINYFONT}BU
+STR_00AA_TF							:{TINYFONT}TF
 STR_00AB_BA							:{TINYFONT}BA
+STR_00AC_PL							:{TINYFONT}PL
 STR_00AD_FZ							:{TINYFONT}FZ
 STR_00AE							:{WHITE}{DATE_SHORT}
 STR_00AF							:{WHITE}{DATE_LONG}
@@ -158,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY						:{BLACK}  Oversætter(e) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -276,6 +306,7 @@ STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
 STR_OSNAME_AMIGAOS						:AmigaOS
+STR_OSNAME_OS2							:OS/2
 
 STR_0139_IMPERIAL_MILES						:Imperial (miles)
 STR_013A_METRIC_KILOMETERS					:Meter (kilometer)
@@ -385,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan ikke ændre service interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Luk vindue
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Vindue title - træk her for at flytte vindue
 STR_STICKY_BUTTON						:{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
+STR_RESIZE_BUTTON						:{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}nedriver bygning osv. på et stykke land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Hæv et hjørne af landet
@@ -532,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Ændring i accepteret last
 STR_020E_SUBSIDIES						:{YELLOW}Special aftaler
 STR_020F_GENERAL_INFORMATION					:{YELLOW}General information
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...for langt fra forrige destination
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Bedste firmaer der nåede til år 2050{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Bedste virksomheder, som har nået {NUMU16}{}({STRING} Niveau)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Selskabsoversigt i {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Forretningsmand
 STR_0214_ENTREPRENEUR						:Entreprenør
@@ -541,8 +574,10 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Århundredes Matador
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} opnår '{STRING}' status!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} af {STRING} opnår '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} får '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} fra {STRING} får '{STRING}' status!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -737,6 +772,7 @@ STR_02DD_SUBSIDIES						:Specialaftaler
 STR_02DE_MAP_OF_WORLD						:Kort over verden
 STR_EXTRA_VIEW_PORT						:Flere lokalitetsvinduer
 STR_02DF_TOWN_DIRECTORY						:Byoversigt
+STR_TOWN_POPULATION						:{BLACK}Verdens befolkning: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Lokalitetsvinduer {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Gå til lokalitetsvindue
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Hent lokalitet fra global visning
@@ -816,6 +852,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Engelske
 STR_TOWNNAME_FRENCH						:Franske
 STR_TOWNNAME_GERMAN						:Tyske
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Engelske (ekstra)
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerikanske
 STR_TOWNNAME_SILLY						:Fjollede
 STR_TOWNNAME_SWEDISH						:Svenske
@@ -823,10 +860,12 @@ STR_TOWNNAME_DUTCH						:Hollandske
 STR_TOWNNAME_FINNISH						:Finske
 STR_TOWNNAME_POLISH						:Polske
 STR_TOWNNAME_SLOVAKISH						:Slovakiske
+STR_TOWNNAME_NORWEGIAN						:Norske
 STR_TOWNNAME_HUNGARIAN						:Ungarske
 STR_TOWNNAME_AUSTRIAN						:Østrigske
 STR_TOWNNAME_ROMANIAN						:Rumænske
 STR_TOWNNAME_CZECH						:Tjekkiske
+STR_TOWNNAME_SWISS						:Schweiziske
 ############ end of	townname region
 
 STR_CURR_GBP							:Pund ({POUNDSIGN})
@@ -980,6 +1019,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatisk fornyelse af køretøj
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatisk fornyelse når køretøj er {ORANGE}{STRING}{LTBLUE} måneder under/over max alder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
@@ -1005,10 +1045,13 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard service interval for fl
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standard service interval for fly: {ORANGE}slået fra
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Start dato: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Afslut spillet i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Tillad at købe aktier i andre selskaber
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Venstre
@@ -1098,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Kan ikke bygge en sluse her...
 STR_BUILD_LOCKS_TIP						:{BLACK}Byg sluser
 STR_LANDINFO_LOCK						:Sluse
 
+STR_BUOY_IS_IN_USE						:{WHITE}... bøjen er i brug!
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinater: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Kan ikke fjerne en del af en station...
@@ -1149,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Vælg den slags last toget skal køre
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Ombyg toget til at køre med den markerede slags last
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Skift produktion
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet
 TEMP_AI_ACTIVATED						:{WHITE}Advarsel: den nye kunstige intelligents er i et tidligt stadie! Lige nu virker den kun med busser og lastbiler!
@@ -1186,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Sprog:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Klima:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Størrelse:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adresse:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Serveradresse:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Start dato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Nuværende dato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Beskyttet af kodeord!
@@ -1302,6 +1348,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Der opstod en protokol-fejl og forbind
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revisionen af denne klient passer ikke sammen med serverens revision
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Forkert kodeord
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serveren er fuld
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Du har forbud mod at bruge denne server
 STR_NETWORK_ERR_KICKED						:{WHITE} Du blev smidt ud af spillet
 STR_NETWORK_ERR_CHEATER						:{WHITE} Snyderi er ikke tilladt på denne server
 
@@ -1442,6 +1489,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Jernbaneoverskærring
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Byer
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2048,6 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kan ikke sælge 25% aktier i dette fi
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% ejes af {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% ejes af {STRING}{}   {COMMA16}% ejes af {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} er blevet overtaget af {STRING}!
+STR_7080_PROTECTED						:{WHITE}Dette selskab sælger ikke aktier endnu...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Damp)
@@ -2627,6 +2676,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kan ikke navngive flyet...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Navngiv fluet
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første fly ankommer til{STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flystyrt!{}{COMMA16} dør i flammerne ved {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flystyrt!{}Fly løb tør for brændstof, {COMMA16} døde i ildhelvede!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinationer:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Omdøb
@@ -2721,9 +2771,28 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Vis alle køretøjer, som har denne st
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
+STR_REPLACE_VEHICLES						:{BLACK}Udskift Køretøjer
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Udskift Køretøjer
+STR_REPLACE_VEHICLES_START					:{BLACK}Start udskiftning
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop udskiftning
+STR_NOT_REPLACING						:{BLACK}Udskifter ikke
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Intet køretøj valgt
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Vælg en køretøjstype, som du ønker at få i stedet for den type, du  har valgt i venste side
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Tryk for at begynde at udskifte køretøjet til venstre med køretøjet til højre
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vælg den skinnetype, hvor du vil udskifte lokomotiver
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Viser hvilket køretøj at det valgte køretøj til venstre bliver udskiftet med, hvis det bliver udskiftet
+STR_REPLACE_HELP						:{BLACK}Dette giver dig mulighed for at udskifte en køretøjstype med en anden, når et køretøj af den oprindelige type kører i depot
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Jernbane
+STR_MONORAIL_VEHICLES						:Monorail
+STR_MAGLEV_VEHICLES						:Magnetskinnetog
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

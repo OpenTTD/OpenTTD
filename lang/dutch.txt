@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Kaart
 STR_EXTRA_VIEW_PORT						:Extra kijkvenster
 STR_02DF_TOWN_DIRECTORY						:Stedenlijst
+STR_TOWN_POPULATION						:{BLACK}Wereld populatie: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Kijkvenster {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopieer naar kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopieer de lokatie van het algemene scherm naar dit kijkvenster
@@ -1044,6 +1045,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standaard reparatie interval bij
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standaard reparatie interval voor vliegtuigen: {ORANGE}uit
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standaard reparatie interval bij schepen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standaard reparatie interval voor schepen: {ORANGE}uit
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Schakel onderhoud uit wanneer defecten uit staan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Beginjaar: {ORANGE}{STRING}
@@ -1139,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Kan hier geen sluis bouwen...
 STR_BUILD_LOCKS_TIP						:{BLACK}Bouw sluis
 STR_LANDINFO_LOCK						:Sluis
 
+STR_BUOY_IS_IN_USE						:{WHITE}... boei is in gebruik!
+
 STR_LANDINFO_COORDS						:{BLACK}Coördinaten: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Kan deel van station niet weghalen...
@@ -1228,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Taal:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Klimaat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Kaartgrootte:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Server versie:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adres4:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adres:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Start datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Beveiligd met wachtwoord!
@@ -2780,6 +2784,8 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Klik op deze knop als je de aan de lin
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Selecteer een railtype waar je locomotieven voor wil selecteren
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
 STR_REPLACE_HELP						:{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
+
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

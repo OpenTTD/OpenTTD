@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Änderungen akzeptierter Fracht
 STR_020E_SUBSIDIES						:{YELLOW}Subventionen
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Allgemeine Nachrichten
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...zu weit vom vorherigen Bestimmungsort entfernt
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Die besten Firmen, die das Jahr 2050 erreichten{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Beste Unternehmen, die {NUMU16} erreichten{}(Schwierigkeitsgrad {STRING})
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Firmentabelle in {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Geschäftsmann
 STR_0214_ENTREPRENEUR						:Unternehmer
@@ -771,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subventionen
 STR_02DE_MAP_OF_WORLD						:Weltkarte
 STR_EXTRA_VIEW_PORT						:Zusatzansicht
 STR_02DF_TOWN_DIRECTORY						:Städteverzeichnis
+STR_TOWN_POPULATION						:{BLACK}Weltbevölkerung: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Ansicht {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}In Zusatzansicht
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopieren der Position im Hauptfenster in diese Zusatzansicht
@@ -863,6 +865,7 @@ STR_TOWNNAME_HUNGARIAN						:Ungarisch
 STR_TOWNNAME_AUSTRIAN						:Österreichisch
 STR_TOWNNAME_ROMANIAN						:Rumänisch
 STR_TOWNNAME_CZECH						:Tschechisch
+STR_TOWNNAME_SWISS						:Schweizerisch
 ############ end of	townname region
 
 STR_CURR_GBP							:Pfund ({POUNDSIGN})
@@ -1042,9 +1045,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Vorgegebener Wartungsintervall f
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Vorgegebener Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Startdatum: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Spiel beenden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Erlaube anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
@@ -1136,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Kann hier keine Schleuse bauen...
 STR_BUILD_LOCKS_TIP						:{BLACK}Schleusen bauen
 STR_LANDINFO_LOCK						:Schleuse
 
+STR_BUOY_IS_IN_USE						:{WHITE}... Boje wird gebraucht!
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinaten: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Kann den Teil des Bahnhofs nicht entfernen...
@@ -1187,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wähle die Frachten aus, die der Zug
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Umrüstung des Zuges auf die ausgewählte Frachtart
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kann den Zug nicht umrüsten...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Wartungsintervalle in Prozent: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Produktion ändern
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Willkommen bei der neuen KI. Erwarte Fehler. Falls du einen findest, mache einen Screenshot und berichte im Forum. Viel Spaß!
 TEMP_AI_ACTIVATED						:{WHITE}Achtung: Die neue KI ist noch im Alpha-Stadium. Derzeit funktionieren nur Straßenfahrzeuge.
@@ -1224,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Sprache:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Mapgröße:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Serverversion:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Serveradresse:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server Adresse:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Passwort geschützt!
@@ -2088,6 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kann 25% Anteil an dieser Firma nich
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% Eigentum von {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% Eigentum von {STRING}{}   {COMMA16}% Eigentum von {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} wurde von {STRING} übernommen!
+STR_7080_PROTECTED						:{WHITE}Dieses Unternehmen handelt noch nicht mit Anteilen...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Dampf)
@@ -2776,6 +2785,8 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wähle einen Schienentyp für den Loks erset
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_HELP						:{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES						:Eisenbahn
@@ -2784,3 +2795,4 @@ STR_MAGLEV_VEHICLES						:Magnetschwebebahn
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

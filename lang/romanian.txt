@@ -1140,6 +1140,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Nu pot construi o ecluzã aici...
 STR_BUILD_LOCKS_TIP						:{BLACK}Construieste ecluzã
 STR_LANDINFO_LOCK						:Ecluzã
 
+STR_BUOY_IS_IN_USE						:{WHITE}... baliza in uz!
+
 STR_LANDINFO_COORDS						:{BLACK}Coordonate: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Nu pot demola o parte din statie...
@@ -2781,6 +2783,7 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Apasa acest buton daca doresti sa inlo
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Alege un tip de cale ferata pentru care sa selectezi vehiculele
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
 STR_REPLACE_HELP						:{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
+
 
 ############ Lists rail types
 

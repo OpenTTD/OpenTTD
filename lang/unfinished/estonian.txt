@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Veoste vastuvõtutingimuste muut
 STR_020E_SUBSIDIES						:{YELLOW}Subsiidiumid
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Üldine informatsioon
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...eelmisest sihtpunktist liiga kaugel
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parimad ettevõtted, mis jõudsid aastasse 2050{}({STRING} Tase)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parimad ettevõtted, kes jõudsid tasemeni {NUMU16}{}({STRING})
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Ettevõtete edetabelis {NUMU16} kohal
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Ärimees
 STR_0214_ENTREPRENEUR						:Ettevõtja
@@ -573,8 +574,10 @@ STR_0216_CAPITALIST						:Kapitalist
 STR_0217_MAGNATE						:Magnaat
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Sajandi suurärimees
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} saavutused '{STRING}' seisus!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} of {STRING} achieves '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} saavtas '{STRING}' staatuse!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} {STRING}'st saavutas '{STRING}' staatuse!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -823,6 +826,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Rahasta tööstuse ehitamist
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Uue tööstuse rahastamine
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...saab ehitada ainult linnadesse
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...saab ehitada ainult vihmametsadesse
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...saab ehitada ainult kõrbesse
@@ -860,6 +864,7 @@ STR_TOWNNAME_HUNGARIAN						:Ungari
 STR_TOWNNAME_AUSTRIAN						:Austria
 STR_TOWNNAME_ROMANIAN						:Rumeenia
 STR_TOWNNAME_CZECH						:Tšehhi
+STR_TOWNNAME_SWISS						:Šveitsi
 ############ end of	townname region
 
 STR_CURR_GBP							:Naelad ({POUNDSIGN})
@@ -1039,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Vaikimisi hooldusintervall õhusõ
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Vaikimisi teenindusvahemik õhusõidukitele: {ORANGE}välja lülitatud
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Vaikimisi hooldusintervall laevadele: {ORANGE}{STRING} päeva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Vaikimisi teenindusvahemik laevadele: {ORANGE}välja lülitatud
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Peata hooldus, kui purunemine on keelatud: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Mäng lõpeb aastal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Luba sujuv majandus (väiksemad muutused)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Luba teiste ettevõtete aktsiate ostmine
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Venitades paigutatud signaaltulede tihedus: {ORANGE}{STRING} ühik(ut)
@@ -1133,6 +1140,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Siia ei saa lüüse ehitada...
 STR_BUILD_LOCKS_TIP						:{BLACK}Lüüsi ehitamine
 STR_LANDINFO_LOCK						:Lüüs
 
+
 STR_LANDINFO_COORDS						:{BLACK}Koordinaadid: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Jaamaosa ei saa eemaldada...
@@ -1184,6 +1192,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Vali veosetüüp, mida rong peaks kan
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Rongi seadistamine valitud veose tüübile
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Ei saa ümber seadistada...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Teenindusvahemikud on protsentides: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Tootlikuse muutumine
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Tervitused uuele TI'le(AI). Töö selle kallal veel käib. Peaksite eeldama, et esineb probleeme. Kui juhtud tegema kuvatõmmise, siis postita see ka foorumisse. Edu!
 TEMP_AI_ACTIVATED						:{WHITE}Hoiatus: uus TI(AI) on veel alfa staadiumis! Ainult maanteesõidukid töötavad!
@@ -1758,20 +1767,22 @@ STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Eelmise kuu toodang:
 STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% transporditud)
 STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Vaate viimine tööstusele
 STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Uus {STRING} ehitamisel linna {TOWN} lähedal!
-STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Uus {STRING} on istutamisel linna {CITY} lähedal!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Uus {STRING} on istutatud linna {TOWN} lähedale!
 STR_482F_COST							:{BLACK}Hind: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Seda tüüpi tööstust ei saa siia ehitada...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...metsa saab istutada ainult ülespoole lumepiiri
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}Linna {CITY} {STRING} teatab peatsest sulegemisest!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Varustatuse probleemide tõttu teatab linna {CITY} {STRING} peatsest sulgemisest!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Kuna lähikonnas on puud otsas, siis teatab linna {CITY} {STRING} peatsest sulgemisest!
-STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}Linna {CITY} {STRING} tõstis produktsiooni!
-STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Uued kivisöe maardlad leiti linna {CITY} kaevandusest {STRING}!{}Eeldatakse produktsiooni kahekordistumist!
-STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Uued naftareservid leiti linna {CITY} kohast {STRING}!{}Eeldatakse produktsiooni kahekordistumist!
-STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Improved farming methods at {CITY} {STRING} are expected to double production!
-STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}Linna {CITY} {STRING} produktsioon langeb 50%
-STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Kahjurid laastasid linna {CITY} {STRING}!{}Produktsioon langeb 50%
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} teatab sulgemisest!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}{TOWN} {STRING} teatab sulgemisest varustatuse probleemide tõttu!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Lähiümbruse puude puudumine põhjustab linna {TOWN} {STRING} sulgemise!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}Linnal {TOWN} {STRING} tõuseb populatsioon!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Linna {TOWN} {STRING} lähedal avati uus kivisöe kiht!{}Toodang kahekordistub!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Linna {TOWN} {STRING} leiti juurde nafta reserve!{}Toodang kahekordistub!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Linna {TOWN} {STRING} võettis kasutusele uues põllutöövahendid! Toodang kahekordistub!
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}{TOWN} {STRING} toodang langes 50%
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Putukate rünnak - {TOWN} {STRING}!{}Toodang langes 50%
 STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...saab ainult ehitada kaardi serva
+STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING} toodang ettevõttes {TOWN} {STRING} kasvab {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING} toodang ettevõttes {TOWN} {STRING} langeb {COMMA16}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Rong tunnelis
@@ -1877,6 +1888,7 @@ STR_SV_STNAME_FOREST						:{STRING} Mets
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Raskusaste
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Salvesta
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Kerge
@@ -1903,6 +1915,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Merede/järvede kogus: {ORANGE}{STRIN
 STR_6813_ECONOMY						:{LTBLUE}Majandus: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Rongide ümberpööramine: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastroofid: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Linnanõukogu suhtumine seoses maastikukujundamisega: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_6816_LOW							:Madal
@@ -2054,6 +2067,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}Ettevõte {STRING} müüdi {CURR
 
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 

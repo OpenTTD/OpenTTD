@@ -564,7 +564,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Zmeny prijmu nakladu
 STR_020E_SUBSIDIES						:{YELLOW}Dotacie
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Hlavne informacie
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...prilis daleko z predchadzajuceho ciela
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Najlepsie spolocnosti ktore dosiahli rok 2050{}({STRING} Uroven)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUMU16}{}({STRING} uroven)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Tabulka spolocnosti v roku {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Obchodnik
 STR_0214_ENTREPRENEUR						:Podnikatel
@@ -575,8 +576,8 @@ STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon
 STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
 STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosiahol '{STRING}' stav!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} dosiahnuti {STRING} '{STRING}' stavu!
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} ziskal oznacenie '{STRING}' !
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} z {STRING} ziskal oznacenie '{STRING}' !
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -771,6 +772,7 @@ STR_02DD_SUBSIDIES						:Dotacie
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
 STR_EXTRA_VIEW_PORT						:Extra pohlad
 STR_02DF_TOWN_DIRECTORY						:Zoznam miest
+STR_TOWN_POPULATION						:{BLACK}Svetova populacia: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohlad {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit pohlad podla mapy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit pohlad podla hlavneho pohladu
@@ -863,6 +865,7 @@ STR_TOWNNAME_HUNGARIAN						:Madarske
 STR_TOWNNAME_AUSTRIAN						:Rakuske
 STR_TOWNNAME_ROMANIAN						:Rumunske
 STR_TOWNNAME_CZECH						:Ceske
+STR_TOWNNAME_SWISS						:Svajciarske
 ############ end of	townname region
 
 STR_CURR_GBP							:Libry ({POUNDSIGN})
@@ -978,7 +981,7 @@ STR_CONFIG_PATCHES_ON						:Zap.
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Zobraz rychlost vozidla v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Umoznit vystavbu na sikmine a pobrezi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Povolit v oblasti pokrytia realistickejsiu velkost: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, tunelov, etc: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, atd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Umoznit spajat stanice: {ORANGE}{STRING}
@@ -1013,13 +1016,13 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:ano, u vsetkych vozidiel
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Stare vozidla sa neprestanu vyrabat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti maximalneho veku
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimalny pocet penazi pre automaticke obnovovanie vozidiel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti max. veku
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Min. mnozstvo penazi pre automaticke obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Zobrazit populaciu mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING} {RED}Vystraha: Vysoke hodnoty spomaluju hru
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max. pokrytie stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
@@ -1042,9 +1045,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Imlicitny servisny interval pre 
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Vypnut servisy, ak su vypnute poruchy: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Ukoncit hru v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Povolit nakup akcii od ostatnych spolocnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
@@ -1136,6 +1141,8 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Tu sa neda postavit stavidlo...
 STR_BUILD_LOCKS_TIP						:{BLACK}Postavit stavidla...
 STR_LANDINFO_LOCK						:Stavidlo
 
+STR_BUOY_IS_IN_USE						:{WHITE}... boja sa pouziva!
+
 STR_LANDINFO_COORDS						:{BLACK}Suradnice: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Nemozno odstranit cast stanice...
@@ -1187,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Vybrat typ prepravovaneho nakladu
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Prerobit vlak na prepravu vybraneho nakladu
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nemozno prerobit vlak...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Servisne intervaly su v percentach: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Zmenit produkciu
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Vitajte v novom AI. Mozete ocakavat problemy. Ak by nejake nastali urobte screenshot a poslite ho na forum.
 TEMP_AI_ACTIVATED						:{WHITE}Varovanie: toto nove AI je iba alpha verzia! Momentalne iba automobily funguju!
@@ -2088,6 +2096,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}25% podiel v tejto spolocnosti sa ne
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% vlastnene {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% vlastnene {STRING}{}   {COMMA16}% vlastnene {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} bola kupena spolocnostou {STRING}!
+STR_7080_PROTECTED						:{WHITE}Tato spolocnost zatial neobchoduje s akciami...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Parny)
@@ -2775,6 +2784,7 @@ STR_REPLACE_HELP_START_BUTTON					:{BLACK}Stlac toto tlacidlo, ak chces zacat vy
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
 STR_REPLACE_HELP						:{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
+
 
 ############ Lists rail types
 
