@@ -485,7 +485,8 @@ void DeterminePaths()
 
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
 
-	// make (auto)save and scenario folder
+	// create necessary folders
+	mkdir(_path.personal_dir, 0755);
 	mkdir(_path.save_dir, 0755);
 	mkdir(_path.autosave_dir, 0755);
 	mkdir(_path.scenario_dir, 0755);
