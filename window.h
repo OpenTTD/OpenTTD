@@ -419,7 +419,7 @@ void GuiShowTooltips(uint16 string_id);
 void UnclickWindowButtons(Window *w);
 void UnclickSomeWindowButtons(Window *w, uint32 mask);
 void RelocateAllWindows(int neww, int newh);
-int32 PositionMainToolbar(Window *w);
+int PositionMainToolbar(Window *w);
 
 /* widget.c */
 int GetWidgetFromPos(Window *w, int x, int y);
