@@ -254,8 +254,7 @@ static void MakeSingleHouseBigger(uint tile)
 	_map3_lo[tile] = _map3_lo[tile] + 0x40;
 
 	if ( (_map3_lo[tile] & 0xC0) == 0xC0) {
-		Town *t = ClosestTownFromTile(tile, (uint)-1);
-		ChangePopulation(t, _housetype_population[_map3_hi[tile]]);
+		ChangePopulation(GetTown(_map2[tile]), _housetype_population[_map3_hi[tile]]);
 	}
 	MarkTileDirtyByTile(tile);
 }
@@ -288,7 +287,7 @@ static void TileLoop_Town(uint tile)
 		_map5[tile] = (_map5[tile] & 0x40)|0x80;
 	}
 
-	t = ClosestTownFromTile(tile, (uint)-1);
+	t = GetTown(_map2[tile]);
 
 	r = Random();
 
@@ -345,7 +344,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 
 	rating = _housetype_remove_ratingmod[house];
 	_cleared_town_rating += rating;
-	_cleared_town = t = ClosestTownFromTile(tile, (uint)-1);
+	_cleared_town = t = GetTown(_map2[tile]);
 
 	if (_current_player < MAX_PLAYERS) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
@@ -552,7 +551,6 @@ static void LevelTownLand(uint tile)
 
 static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 {
-	Town *t2;
 	uint16 r;
 	int a,b,rcmd;
 	uint tmptile;
@@ -567,12 +565,6 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 		// Tile has no road. First reset the status counter
 		// to say that this is the last iteration.
 		_grow_town_result = 0;
-
-		// Then check if the tile we are at belongs to the town,
-		// if not, bail out.
-		t2 = ClosestTownFromTile(tile, (uint)-1);
-		if (t2 != t1)
-			return;
 
 		// Remove hills etc
 		LevelTownLand(tile);
@@ -635,13 +627,6 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 		// Don't do it if it reaches to water.
 		if (IS_WATER_TILE(tmptile))
 			return;
-
-		// If the new tile belongs to another town,
-		//  then stop the search altogether.
-		if (ClosestTownFromTile(tmptile, (uint)-1) != t1) {
-			_grow_town_result = 0;
-			return;
-		}
 
 		// Build a house at the edge. 60% chance or
 		//  always ok if no road allowed.
@@ -742,6 +727,10 @@ static int GrowTownAtRoad(Town *t, uint tile)
 		// and continue the search from there.
 		do block = Random() & 3; while (!HASBIT(mask,block));
 		tile += ToTileIndexDiff(_roadblock_tileadd[block]);
+
+		/* Don't allow building over roads of other cities */
+		if (IsTileType(tile, MP_STREET) && _map_owner[tile] == OWNER_TOWN && GetTown(_map2[tile]) != t)
+			_grow_town_result = -1;
 
 		// Max number of times is checked.
 	} while (--_grow_town_result >= 0);
@@ -1077,7 +1066,6 @@ void GenerateTowns(void)
 }
 
 static bool CheckBuildHouseMode(Town *t1, uint tile, uint tileh, int mode) {
-	Town *t2 = ClosestTownFromTile(tile, (uint)-1);
 	int b;
 	uint slope;
 
@@ -1085,9 +1073,6 @@ static bool CheckBuildHouseMode(Town *t1, uint tile, uint tileh, int mode) {
 		0xC,0x3,0x9,0x6,
 		0x3,0xC,0x6,0x9,
 	};
-
-	if (t2 != t1)
-		return false;
 
 	slope = GetTileSlope(tile, NULL);
 	if (slope & 0x10)
@@ -1122,7 +1107,6 @@ int GetTownRadiusGroup(Town *t, uint tile)
 
 static bool CheckFree2x2Area(Town *t1, uint tile)
 {
-	Town *t;
 	int i;
 
 	static const TileIndexDiffC _tile_add[] = {
@@ -1134,10 +1118,6 @@ static bool CheckFree2x2Area(Town *t1, uint tile)
 
 	for(i=0; i!=4; i++) {
 		tile += ToTileIndexDiff(_tile_add[i]);
-
-		t = ClosestTownFromTile(tile, (uint)-1);
-		if (t1 != t)
-			return false;
 
 		if (GetTileSlope(tile, NULL))
 			return false;
@@ -1446,7 +1426,7 @@ void DeleteTown(Town *t)
 	for (tile = 0; tile < MapSize(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
-				if (ClosestTownFromTile(tile, (uint)-1) == t)
+				if (GetTown(_map2[tile]) == t)
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 

@@ -107,7 +107,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 		if (_patches.extra_dynamite)
 			return true;
 
-		t = ClosestTownFromTile(tile, (uint)-1);
+		t = GetTown(_map2[tile]);
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
@@ -149,7 +149,10 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
-	t = ClosestTownFromTile(tile, (uint)-1); // needed for town rating penalty
+	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+		t = GetTown(_map2[tile]); // needed for town rating penalty
+	else
+		t = NULL;
 
 	// allow deleting road under bridge
 	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile))
@@ -964,12 +967,18 @@ static void TileLoop_Road(uint tile)
 		return;
 
 	if (((_map3_hi[tile] & 0x70) >> 4) < 6) {
-		t = ClosestTownFromTile(tile, (uint)-1);
+		if(_map_owner[tile] == OWNER_TOWN)
+			t = GetTown(_map2[tile]);
+		else
+			t = ClosestTownFromTile(tile, (uint)-1);
+
 		grp = 0;
 		if (t != NULL) {
-			// If in the scenario editor, set the owner to a town.
-			if (_game_mode == GM_EDITOR) {
+			/* In SE, set the owner to OWNER_TOWN */
+			if (_game_mode == GM_EDITOR && _map_owner[tile] != OWNER_TOWN) {
 				_map_owner[tile] = OWNER_TOWN;
+				/* XXX - This line is not perfect, any suggestions? */
+				_map2[tile] = ClosestTownFromTile(tile, (uint)-1)->index;
 			}
 
 			grp = GetTownRadiusGroup(t, tile);
