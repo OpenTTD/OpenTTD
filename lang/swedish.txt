@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Engelsk mil (miles)
 STR_013A_METRIC_KILOMETERS					:Metrisk (kilometer)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:Av
 STR_CONFIG_PATCHES_ON						:På
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Visa fordonshastighet i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Tillåt byggnation på sluttningar och kuster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Tillåt borttagning av mera stadsägda vägar etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktivera realistisk acceleration för tåg: {ORANGE}{STRING}
@@ -1186,8 +1188,10 @@ TEMP_AI_ACTIVATED						:{WHITE}Varning: den nya AI:n är fortfarande i alpha-stad
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Flera spelare
 
-STR_NETWORK_PLAYER_NAME						:{BLACK}Namn på spelare:
+STR_NETWORK_PLAYER_NAME						:{BLACK}Spelarnamn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Namnet som andra spelare kommer att identifiera dig av
+STR_NETWORK_CONNECTION						:{BLACK}Anslutning:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Välj mellan att spela över internet eller det lokala nätverket
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1206,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klicka på ett spel från listan för a
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Leta server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leta på nätverket efter en server
+STR_NETWORK_ADD_SERVER						:{BLACK}Lägg till server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Lägg till en server till listan som alltid kommer kontrolleras för aktiva spel.
 STR_NETWORK_ENTER_IP						:{BLACK}IP-adressen till servern
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Storlek
-STR_NETWORK_PASSWORD						:{BLACK}Lösenord:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Klienter
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Klienter online / Klienter max
+STR_NETWORK_GAME_INFO						:{SILVER}SPELINFO
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klienter:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Språk:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Miljö:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Kartstorlek:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Serverversion:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Serveradress:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Nuvarande datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Lösenordsskyddad!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER AVSTÄNGD
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER FULL
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Gå med i spelet
 
@@ -1214,10 +1234,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Starta ett nytt spel
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Namn:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Namnet på nätverksspelet som kommer att synas för dom andra spelarna
+STR_NETWORK_SET_PASSWORD					:{BLACK}Ange lösenord
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
 STR_NETWORK_SELECT_MAP						:{BLACK}Välj karta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Vilken karta vill du spela?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Max antal tillåtna klienter:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klienter
+STR_NETWORK_3_CLIENTS						:3 klienter
+STR_NETWORK_4_CLIENTS						:4 klienter
+STR_NETWORK_5_CLIENTS						:5 klienter
+STR_NETWORK_6_CLIENTS						:6 klienter
+STR_NETWORK_7_CLIENTS						:7 klienter
+STR_NETWORK_8_CLIENTS						:8 klienter
+STR_NETWORK_9_CLIENTS						:9 klienter
+STR_NETWORK_10_CLIENTS						:10 klienter
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Språk som talas:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP					:{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Ladda spel
@@ -1226,26 +1261,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Ladda scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Starta ett nätverksspel från ett scenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Valfritt
+STR_NETWORK_LANG_ENGLISH					:Engelska
+STR_NETWORK_LANG_GERMAN						:Tyska
+STR_NETWORK_LANG_FRENCH						:Franska
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Nätverksspel
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Förbereder att ansluta:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}En lista på alla nuvarande företag som är i spelet. Du kan antingen ansluta till ett eller starta ett
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Starta ett nytt företag
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Titta på spelet
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Titta på spelet som en åskådare
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Anslut till företag
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Hjälp till att styra detta företag
+STR_NETWORK_REFRESH						:{BLACK}Uppdatera server
+STR_NETWORK_REFRESH_TIP						:{BLACK}Uppdatera server info
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}FÖRETAGSINFO
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Företagsnamn:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Företagsnamn: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Etableringsår:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Företagsvärde:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Nuvarande saldo:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Förra årets inkomst:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Prestandabetyg:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Fordon:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stationer:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Spelare:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Ansluter...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Ansluter..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Godkänner..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Väntar..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Laddar hem karta..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Behandlar data..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Hämtar spelinfo..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Hämtar företagsinfo..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klient(er) före oss
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbyte nerladdat hittills
 
+STR_NETWORK_DISCONNECT						:{BLACK}Frånkopplad
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Ange meddelandet du vill skicka
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Ange beloppet du vill ge
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Servern är skyddad. Ange lösenord
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Företaget är skyddat. Ange lösenord
+STR_NETWORK_CLIENT_LIST						:{WHITE}Klientlista
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE}Kunde inte hitta några nätverksspel
@@ -1253,10 +1322,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE}Servern svarade inte på förfrågan
 STR_NETWORK_ERR_DESYNC						:{WHITE}Nätverk, Spelsynkronisering misslyckades
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE}Nätverk, koppling förlorad
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE}Kunde inte ladda det sparade spelet från servern
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Kunde inte starta servern.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Kunde inte ansluta.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE}Nätverkskoppling #{NUMU16} förlorad (klient slutade svara)
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Vi gjorde ett protokollfel och vår anslutningen är stängd.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Servern har en annan version än denna klient.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Fel lösenord.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Servern är full
+STR_NETWORK_ERR_KICKED						:{WHITE} Du är utkastad från servern
 
+STR_NETWORK_ERR_LEFT						:har lämnat spelet
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:allmänt fel
+STR_NETWORK_ERR_CLIENT_DESYNC					:synkroniseringsfel
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:kunde inte ladda kartan
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:anslutning förlorad
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokollfel
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:inte godkänd
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:mottog konstigt paket
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:fel version
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:namnet används redan
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:fel spel-lösenord
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:fel spelar-id i DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:utkastad av servern
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:har anslutit till spelet
+STR_NETWORK_GIVE_MONEY						:gav dig en del pengar ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Servern avslutade sessionen
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Servern startar om...{}Var vänlig vänta...
 
 ############ end network gui strings
 
@@ -1732,7 +1825,7 @@ STR_SV_STNAME_EXCHANGE						:{STRING} växel
 STR_SV_STNAME_AIRPORT						:{STRING} flygplats
 STR_SV_STNAME_OILFIELD						:{STRING} oljefält
 STR_SV_STNAME_MINES						:{STRING} gruva
-STR_SV_STNAME_DOCKS						:{STRING} hamnar
+STR_SV_STNAME_DOCKS						:{STRING} Hamnar
 STR_SV_STNAME_BUOY_1						:{STRING} boj 1
 STR_SV_STNAME_BUOY_2						:{STRING} boj 2
 STR_SV_STNAME_BUOY_3						:{STRING} boj 3
@@ -2440,7 +2533,7 @@ STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Kan inte finna lokal depå
 STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}På väg mot {TOWN} Skeppsdepå
 STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}På väg mot {TOWN} Skeppsdepå, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT				:{WHITE}Skepp {COMMA16} väntar i depå
-STR_981D_BUILD_SHIP_DOCK					:{BLACK}Bygg skeppsdepå
+STR_981D_BUILD_SHIP_DOCK					:{BLACK}Bygg hamn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Bygg skeppsdepå (för byggnad och lagning av skepp)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Skepp - klicka på skepp för information
 STR_9820_BUILD_NEW_SHIP						:{BLACK}Bygg nytt skepp

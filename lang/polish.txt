@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Brytyjski (mile)
 STR_013A_METRIC_KILOMETERS					:Metryczny (kilometry)
@@ -978,7 +979,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Pozwol budowac bardzo dlugie pociag
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistyczne przyspieszenie pociagow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Polacz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Wyjazd ze stacji gdy jakis towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Uzyj ulepszonego algorytmu wczytywania: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Uzyj ulepszonego algorytmu zaladunku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
@@ -1088,6 +1089,8 @@ STR_WAYPOINTNAME_CITY						:Pkt. kontrolny {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Pkt. kontrolny  {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Pkt. kontrolny
 
+STR_WAYPOINT							:{WHITE}Pkt kontrolny
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Wybierz typ pkt kontrolnego
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -1265,6 +1268,7 @@ STR_NETWORK_LANG_FRENCH						:Francuski
 STR_NETWORK_GAME_LOBBY						:{WHITE}Lobby gry wieloosobowej
 
 STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Przygotowanie do polaczenia:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Lista wszystkich firm w grze. Mozesz przylaczyc sie do jednej z nich lub rozpoczac
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nowa firma
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Rozpoczecie dzialanosci nowej firmy
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Gra obserwowana
@@ -1281,6 +1285,7 @@ STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguracja:  {WHITE}{NUMU16}
 STR_NETWORK_VALUE						:{SILVER}Wartosc firmy:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE					:{SILVER}Biezacy bilans:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Przychod w ostatnim roku:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Wydajnosc:  {WHITE}{NUMU16}
 
 STR_NETWORK_VEHICLES						:{SILVER}Pojazdy:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
 STR_NETWORK_STATIONS						:{SILVER}Stacje:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
@@ -1298,6 +1303,7 @@ STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Przetwarzanie danych..
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Uzyskiwanie informacji o grze..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klientow chce sie przylaczyc
 STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kB dotad pobranych
 
 STR_NETWORK_DISCONNECT						:{BLACK}Rozlaczony
@@ -1317,18 +1323,22 @@ STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nie mozna wczytac zapisanej gry z ser
 STR_NETWORK_ERR_SERVER_START					:{WHITE} Nie mozna uruchomic serwera.
 STR_NETWORK_ERR_CLIENT_START					:{WHITE} Nie mozna polaczyc.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Przekroczony limit czasu dla polaczenia #{NUMU16}.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Blad protokolu, polaczenie zostalo przerwane.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Wersja gry nie zgadza sie z wersja gry na serwerze.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Zle haslo.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serwer jest pelen
 STR_NETWORK_ERR_KICKED						:{WHITE} Zostales wyrzucony z serwera
 
 STR_NETWORK_ERR_LEFT						:opuscil gre
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:blad ogolny
 STR_NETWORK_ERR_CLIENT_DESYNC					:blad synchronizacji
 STR_NETWORK_ERR_CLIENT_SAVEGAME					:nie mozna zaladowac mapy
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:polaczenie utracone
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:blad protokolu
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:nie autoryzowane
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:odebrany nieznany pakiet
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:zla wersja
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:Nazwa juz w uzyciu
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:zle haslo gry
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:bledne id gracza w DoCommand
@@ -1921,7 +1931,7 @@ STR_700B_PRESIDENT_S_NAME					:Prezesa
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Nie mozna zmienic nazwy firmy...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Nie mozna zmienic nazwiska prezesa...
 STR_700E_FINANCES						:{WHITE}{STRING} Finanse{BLACK}{STRING}
-STR_700F_EXPENDITURE_INCOME					:{WHITE}Wychody/Przychody
+STR_700F_EXPENDITURE_INCOME					:{WHITE}Wydatki/Przychody
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Konstrukcje
 STR_7012_NEW_VEHICLES						:{GOLD}Nowe pojazdy
@@ -1957,7 +1967,7 @@ STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...pozyczka juz splacona
 STR_702E_REQUIRED						:{WHITE}...{CURRENCY} wymagane
 STR_702F_CAN_T_REPAY_LOAN					:{WHITE}Nie mozna zwrocic pozyczki...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT				:{BLACK}Wybierz nowa twarz prezesa
-STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Zmien dostawce pojazdow dla firmy
+STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Zmien kolor pojazdow firmy
 STR_7032_CHANGE_THE_PRESIDENT_S					:{BLACK}Zmien imie prezesa
 STR_7033_CHANGE_THE_COMPANY_NAME				:{BLACK}Zmien nazwe firmy
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Kliknij na nowym schemacie kolorow
