@@ -1584,6 +1584,8 @@ static void PlaceInitialIndustry(byte type, int amount)
 
 	if (_opt.diff.number_industries != 0)
 	{
+		byte old_player = _current_player;
+		_current_player = OWNER_NONE;
 		assert(num > 0);
 
 		do {
@@ -1593,6 +1595,8 @@ static void PlaceInitialIndustry(byte type, int amount)
 					break;
 			} while (--i != 0);
 		} while (--num);
+
+		_current_player = OWNER_NONE;
 	}
 }
 
@@ -1728,7 +1732,6 @@ static void MaybeNewIndustry(uint32 r)
 		return;
 
 	j = 2000;
-	_current_player = OWNER_NONE;
 	for(;;) {
 		i = CreateNewIndustry(TILE_MASK(Random()), type);
 		if (i != NULL)
@@ -1800,6 +1803,8 @@ add_news:
 void IndustryMonthlyLoop()
 {
 	Industry *i;
+	byte old_player = _current_player;
+	_current_player = OWNER_NONE;
 
 	for(i=_industries; i != endof(_industries); i++) {
 		if (i->xy != 0)
@@ -1815,6 +1820,9 @@ void IndustryMonthlyLoop()
 	} else if (!_patches.smooth_economy) {
 		MaybeCloseIndustry(i);
 	}
+
+	_current_player = old_player;
+
 	// production-change
 	_industry_sort_dirty = true;
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
