@@ -62,7 +62,8 @@ static const ScoreInfo score_info[] = {
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];
 
-void UpdateCompanyRatingAndValue(Player *p, bool update);
+int UpdateCompanyRatingAndValue(Player *p, bool update);
+void UpdatePlayerHouse(Player *p, uint score);
 
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];

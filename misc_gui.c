@@ -159,6 +159,7 @@ static void Place_LandInfo(uint tile)
 	
 	#if defined(_DEBUG)
 		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
+		DEBUG(misc, 0) ("TILE: %d ", tile);
 		DEBUG(misc, 0) ("_map_type_and_height=%#x", _map_type_and_height[tile]);
 		DEBUG(misc, 0) ("_map2=%#x", _map2[tile]);
 		DEBUG(misc, 0) ("_map3_lo=%#x", _map3_lo[tile]);

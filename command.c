@@ -77,6 +77,7 @@ DEF_COMMAND(CmdBuildIndustry);
 //DEF_COMMAND(CmdDestroyIndustry);
 
 DEF_COMMAND(CmdBuildCompanyHQ);
+DEF_COMMAND(CmdDestroyCompanyHQ);
 DEF_COMMAND(CmdSetPlayerFace);
 DEF_COMMAND(CmdSetPlayerColor);
 
@@ -149,6 +150,7 @@ DEF_COMMAND(CmdClearArea);
 
 DEF_COMMAND(CmdMoneyCheat);
 DEF_COMMAND(CmdBuildCanal);
+DEF_COMMAND(CmdBuildLock);
 
 DEF_COMMAND(CmdPlayerCtrl);
 
@@ -156,149 +158,148 @@ DEF_COMMAND(CmdLevelLand);
 
 DEF_COMMAND(CmdRefitRailVehicle);
 
-DEF_COMMAND(CmdBuildLock);
-
 DEF_COMMAND(CmdStartScenario);
 
 DEF_COMMAND(CmdBuildManySignals);
 
 /* The master command table */
 static CommandProc * const _command_proc_table[] = {
-	CmdBuildRailroadTrack,			/* 0 */
-	CmdRemoveRailroadTrack,			/* 1 */
-	CmdBuildSingleRail,				/* 2 */
-	CmdRemoveSingleRail,			/* 3 */
-	CmdLandscapeClear,				/* 4 */
-	CmdBuildBridge,					/* 5 */
-	CmdBuildRailroadStation,		/* 6 */
-	CmdBuildTrainDepot,				/* 7 */
-	CmdBuildSignals,				/* 8 */
-	CmdRemoveSignals,				/* 9 */
-	CmdTerraformLand,				/* 10 */
-	CmdPurchaseLandArea,			/* 11 */
-	CmdSellLandArea,				/* 12 */
-	CmdBuildTunnel,					/* 13 */
+	CmdBuildRailroadTrack,				/* 0  */
+	CmdRemoveRailroadTrack,				/* 1  */
+	CmdBuildSingleRail,						/* 2  */
+	CmdRemoveSingleRail,					/* 3  */
+	CmdLandscapeClear,						/* 4  */
+	CmdBuildBridge,								/* 5  */
+	CmdBuildRailroadStation,			/* 6  */
+	CmdBuildTrainDepot,						/* 7  */
+	CmdBuildSignals,							/* 8  */
+	CmdRemoveSignals,							/* 9  */
+	CmdTerraformLand,							/* 10 */
+	CmdPurchaseLandArea,					/* 11 */
+	CmdSellLandArea,							/* 12 */
+	CmdBuildTunnel,								/* 13 */
 	CmdRemoveFromRailroadStation,	/* 14 */
-	CmdConvertRail,						/* 15 */
-	CmdBuildTrainCheckpoint,	/* 16 */
-	CmdRenameCheckpoint,				/* 17 */
-	CmdRemoveTrainCheckpoint,		/* 18 */
-	CmdBuildTruckStation,			/* 19 */
-	NULL,							/* 20 */
-	CmdBuildBusStation,				/* 21 */
-	NULL,							/* 22 */
-	CmdBuildLongRoad,				/* 23 */
-	CmdRemoveLongRoad,				/* 24 */
-	CmdBuildRoad,					/* 25 */
-	CmdRemoveRoad,					/* 26 */
-	CmdBuildRoadDepot,				/* 27 */
-	NULL,							/* 28 */
-	CmdBuildAirport,				/* 29 */
-	CmdBuildDock,					/* 30 */
-	CmdBuildShipDepot,				/* 31 */
-	CmdBuildBuoy,					/* 32 */
-	CmdPlantTree,					/* 33 */
-	CmdBuildRailVehicle,			/* 34 */
-	CmdMoveRailVehicle,				/* 35 */
-	CmdStartStopTrain,				/* 36 */
-	NULL,				/* 37 */
-	CmdSellRailWagon,				/* 38 */
-	CmdTrainGotoDepot,				/* 39 */
-	CmdForceTrainProceed,			/* 40 */
-	CmdReverseTrainDirection,		/* 41 */
+	CmdConvertRail,								/* 15 */
+	CmdBuildTrainCheckpoint,			/* 16 */
+	CmdRenameCheckpoint,					/* 17 */
+	CmdRemoveTrainCheckpoint,			/* 18 */
+	CmdBuildTruckStation,					/* 19 */
+	NULL,													/* 20 */
+	CmdBuildBusStation,						/* 21 */
+	NULL,													/* 22 */
+	CmdBuildLongRoad,							/* 23 */
+	CmdRemoveLongRoad,						/* 24 */
+	CmdBuildRoad,									/* 25 */
+	CmdRemoveRoad,								/* 26 */
+	CmdBuildRoadDepot,						/* 27 */
+	NULL,													/* 28 */
+	CmdBuildAirport,							/* 29 */
+	CmdBuildDock,									/* 30 */
+	CmdBuildShipDepot,						/* 31 */
+	CmdBuildBuoy,									/* 32 */
+	CmdPlantTree,									/* 33 */
+	CmdBuildRailVehicle,					/* 34 */
+	CmdMoveRailVehicle,						/* 35 */
+	CmdStartStopTrain,						/* 36 */
+	NULL,													/* 37 */
+	CmdSellRailWagon,							/* 38 */
+	CmdTrainGotoDepot,						/* 39 */
+	CmdForceTrainProceed,					/* 40 */
+	CmdReverseTrainDirection,			/* 41 */
 
-	CmdModifyOrder,			/* 42 */
-	CmdSkipOrder,				/* 43 */
-	CmdDeleteOrder,			/* 44 */
-	CmdInsertOrder,			/* 45 */
+	CmdModifyOrder,								/* 42 */
+	CmdSkipOrder,									/* 43 */
+	CmdDeleteOrder,								/* 44 */
+	CmdInsertOrder,								/* 45 */
 
-	CmdChangeTrainServiceInt,		/* 46 */
+	CmdChangeTrainServiceInt,			/* 46 */
 
-	CmdBuildIndustry,				/* 47 */
-	CmdBuildCompanyHQ,				/* 48 */
-	CmdSetPlayerFace,				/* 49 */
-	CmdSetPlayerColor,				/* 50 */
+	CmdBuildIndustry,							/* 47 */
+	CmdBuildCompanyHQ,						/* 48 */
+	CmdSetPlayerFace,							/* 49 */
+	CmdSetPlayerColor,						/* 50 */
 
-	CmdIncreaseLoan,				/* 51 */
-	CmdDecreaseLoan,				/* 52 */
+	CmdIncreaseLoan,							/* 51 */
+	CmdDecreaseLoan,							/* 52 */
 
-	CmdWantEnginePreview,			/* 53 */
+	CmdWantEnginePreview,					/* 53 */
 
-	CmdNameVehicle,					/* 54 */
-	CmdRenameEngine,				/* 55 */
+	CmdNameVehicle,								/* 54 */
+	CmdRenameEngine,							/* 55 */
 
-	CmdChangeCompanyName,			/* 56 */
-	CmdChangePresidentName,			/* 57 */
+	CmdChangeCompanyName,					/* 56 */
+	CmdChangePresidentName,				/* 57 */
 
-	CmdRenameStation,				/* 58 */
+	CmdRenameStation,							/* 58 */
 
-	CmdSellAircraft,				/* 59 */
-	CmdStartStopAircraft,			/* 60 */
-	CmdBuildAircraft,				/* 61 */
-	CmdSendAircraftToHangar,		/* 62 */
+	CmdSellAircraft,							/* 59 */
+	CmdStartStopAircraft,					/* 60 */
+	CmdBuildAircraft,							/* 61 */
+	CmdSendAircraftToHangar,			/* 62 */
 	CmdChangeAircraftServiceInt,	/* 63 */
-	CmdRefitAircraft,				/* 64 */
+	CmdRefitAircraft,							/* 64 */
 
-	CmdPlaceSign,					/* 65 */
-	CmdRenameSign,					/* 66 */
+	CmdPlaceSign,									/* 65 */
+	CmdRenameSign,								/* 66 */
 
-	CmdBuildRoadVeh,				/* 67 */
-	CmdStartStopRoadVeh,			/* 68 */
-	CmdSellRoadVeh,					/* 69 */
-	CmdSendRoadVehToDepot,			/* 70 */
-	CmdTurnRoadVeh,					/* 71 */
+	CmdBuildRoadVeh,							/* 67 */
+	CmdStartStopRoadVeh,					/* 68 */
+	CmdSellRoadVeh,								/* 69 */
+	CmdSendRoadVehToDepot,				/* 70 */
+	CmdTurnRoadVeh,								/* 71 */
 	CmdChangeRoadVehServiceInt,		/* 72 */
 
-	CmdPause,								/* 73 */
+	CmdPause,											/* 73 */
 
-	CmdBuyShareInCompany,			/* 74 */
-	CmdSellShareInCompany,			/* 75 */
-	CmdBuyCompany,					/* 76 */
+	CmdBuyShareInCompany,					/* 74 */
+	CmdSellShareInCompany,				/* 75 */
+	CmdBuyCompany,								/* 76 */
 
-	CmdBuildTown,						/* 77 */
-	NULL,										/* 78 */
-	NULL,										/* 79 */
-	CmdRenameTown,					/* 80 */
-	CmdDoTownAction,				/* 81 */
+	CmdBuildTown,									/* 77 */
+	NULL,													/* 78 */
+	NULL,													/* 79 */
+	CmdRenameTown,								/* 80 */
+	CmdDoTownAction,							/* 81 */
 
-	CmdSetRoadDriveSide,			/* 82 */
-	CmdSetTownNameType,				/* 83 */
-	NULL,										/* 84 */
-	CmdChangeDifficultyLevel,		/* 85 */
+	CmdSetRoadDriveSide,					/* 82 */
+	CmdSetTownNameType,						/* 83 */
+	NULL,													/* 84 */
+	CmdChangeDifficultyLevel,			/* 85 */
 
-	CmdStartStopShip,				/* 86 */
-	CmdSellShip,					/* 87 */	
-	CmdBuildShip,					/* 88 */
-	CmdSendShipToDepot,				/* 89 */
-	CmdChangeShipServiceInt,		/* 90 */
-	CmdRefitShip,					/* 91 */
+	CmdStartStopShip,							/* 86 */
+	CmdSellShip,									/* 87 */
+	CmdBuildShip,									/* 88 */
+	CmdSendShipToDepot,						/* 89 */
+	CmdChangeShipServiceInt,			/* 90 */
+	CmdRefitShip,									/* 91 */
 
-	CmdStartNewGame,				/* 92 */
-	CmdLoadGame,					/* 93 */
-	CmdCreateScenario,				/* 94 */
-	CmdSetSinglePlayer,				/* 95 */
-	NULL,											/* 96 */
-	CmdSetNewLandscapeType,			/* 97 */
+	CmdStartNewGame,							/* 92 */
+	CmdLoadGame,									/* 93 */
+	CmdCreateScenario,						/* 94 */
+	CmdSetSinglePlayer,						/* 95 */
+	NULL,													/* 96 */
+	CmdSetNewLandscapeType,				/* 97 */
 
-	CmdGenRandomNewGame,			/* 98 */
+	CmdGenRandomNewGame,					/* 98 */
 
-	CmdCloneOrder,					/* 99 */
+	CmdCloneOrder,								/* 99 */
 
-	CmdClearArea,						/* 100 */
-	CmdResume,							/* 101 */
+	CmdClearArea,									/* 100 */
+	CmdResume,										/* 101 */
 
-	CmdMoneyCheat,					/* 102 */
-	CmdBuildCanal,					/* 103 */
-	CmdPlayerCtrl,					/* 104 */
+	CmdMoneyCheat,								/* 102 */
+	CmdBuildCanal,								/* 103 */
+	CmdPlayerCtrl,								/* 104 */
 
-	CmdLevelLand,						/* 105 */
+	CmdLevelLand,									/* 105 */
 
-	CmdRefitRailVehicle,		/* 106 */
-	CmdRestoreOrderIndex,		/* 107 */
-	CmdBuildLock,						/* 108 */
-	CmdStartScenario,				/* 109 */
-	CmdBuildManySignals,		/* 110 */
-	//CmdDestroyIndustry,			/* 109 */
+	CmdRefitRailVehicle,					/* 106 */
+	CmdRestoreOrderIndex,					/* 107 */
+	CmdBuildLock,									/* 108 */
+	CmdStartScenario,							/* 109 */
+	CmdBuildManySignals,					/* 110 */
+	//CmdDestroyIndustry,						/* 109 */
+	CmdDestroyCompanyHQ,					/* 111 */
 };
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
@@ -366,7 +367,7 @@ error:
 int32 GetAvailableMoneyForCommand()
 {
 	uint pid = _current_player;
-	if (pid >= 8) return 0x7FFFFFFF; // max int
+	if (pid >= MAX_PLAYERS) return 0x7FFFFFFF; // max int
 	return DEREF_PLAYER(pid)->player_money;
 }
 
@@ -389,7 +390,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_additional_cash_required = 0;
 
 	// spectator has no rights.
-	if (_current_player == 0xff) {
+	if (_current_player == OWNER_SPECTATOR) {
 		ShowErrorMessage(_error_message, _error_message_2, x, y);
 		return false;
 	}

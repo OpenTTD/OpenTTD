@@ -7,7 +7,7 @@ typedef struct PlayerEconomyEntry {
 	int32 income;
 	int32 expenses;
 	int32 delivered_cargo;
-	int32 performance_history;
+	int32 performance_history;	// player score (scale 0-1000)
 	int32 company_value;
 } PlayerEconomyEntry;
 

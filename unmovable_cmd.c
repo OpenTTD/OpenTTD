@@ -116,8 +116,11 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 	byte m5 = _map5[tile];
 	//Town *t;
 		
-	if (m5 & 0x80)
+	if (m5 & 0x80) {
+		if (_current_player == OWNER_WATER) 
+			return DoCommandByTile(tile, OWNER_WATER, 0, flags, CMD_DESTROY_COMPANY_HQ);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
+	}	
 
 	if (m5 == 3)	// company owned land
 		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
@@ -331,15 +334,26 @@ restart:
 
 extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
 
+/* p1				= relocate HQ
+	 p1&0xFF	= player whose HQ is up for relocation
+*/
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
-
+	Player *p = DEREF_PLAYER(_current_player);
+	int score;
+	int32 cost = 0;
+	
 	if (CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL) == CMD_ERROR)
 		return CMD_ERROR;
 
+	if (p1)
+		cost = DoCommand(GET_TILE_X(p->location_of_house)*16, GET_TILE_Y(p->location_of_house)*16, p1&0xFF, 0, flags, CMD_DESTROY_COMPANY_HQ);
+
 	if (flags & DC_EXEC) {
-		DEREF_PLAYER(_current_player)->location_of_house = tile;
+		score = UpdateCompanyRatingAndValue(p, false);
+
+		p->location_of_house = tile;
 
 		ModifyTile(tile + TILE_XY(0,0),
 			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
@@ -360,10 +374,46 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
 			0x83
 		);
+		UpdatePlayerHouse(p, score);
+		InvalidateWindow(WC_COMPANY, (int)p->index);
 	}
 
-	return 0;
+	return cost;
 }
+
+/*	p1 = owner of the HQ */
+int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	uint tile = TILE_FROM_XY(x,y);
+	Player *p;
+
+	if ((int)p1 != OWNER_WATER)	// destruction was initiated by player
+		p = DEREF_PLAYER((byte)p1);
+	else {	// find player that has HQ flooded, and reset their location_of_house
+		bool dodelete = false;
+		FOR_ALL_PLAYERS(p) {
+			if (p->location_of_house == tile) {
+				dodelete = true;
+				break;
+			}
+		}
+		if (!dodelete)
+			return CMD_ERROR;
+	}
+
+	if (flags & DC_EXEC) {
+		p->location_of_house = 0; // reset HQ position
+		DoClearSquare(tile + TILE_XY(0,0));
+		DoClearSquare(tile + TILE_XY(0,1));
+		DoClearSquare(tile + TILE_XY(1,0));
+		DoClearSquare(tile + TILE_XY(1,1));
+		InvalidateWindow(WC_COMPANY, (int)p->index);
+	}
+
+	// cost of relocating company is 1% of company value
+	return CalculateCompanyValue(p) / 100;
+}
+
 
 static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_player)
 {

@@ -364,6 +364,7 @@ static const Widget _other_player_company_widgets[] = {
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0, 0},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0, 0},
 { WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ, STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0, 0},
 { WWT_PUSHTXTBTN,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY, STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY, STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 {      WWT_LAST},
@@ -378,6 +379,7 @@ static const Widget _my_player_company_bh_widgets[] = {
 { WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
 { WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME, STR_7033_CHANGE_THE_COMPANY_NAME},
 { WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ, STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{ WWT_PUSHTXTBTN,    14,   266,   355,    32,    43, STR_RELOCATE_HQ, STR_RELOCATE_COMPANY_HEADQUARTERS},
 {      WWT_LAST},
 };
 
@@ -474,9 +476,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		Player *p = DEREF_PLAYER(w->window_number);
 		uint32 dis;
 
-		if (w->widget == _my_player_company_widgets &&
-				p->location_of_house != 0)
-					w->widget = _my_player_company_bh_widgets;
+		if (w->widget != _other_player_company_widgets)
+					w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
 	
 		SET_DPARAM16(0, p->name_1);
 		SET_DPARAM32(1, p->name_2);
@@ -554,11 +555,15 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			}	
 		} break;
 
-		case 8: /* buy 25% */
+		case 8: /* relocate HQ */
+			SetObjectToPlaceWnd(0x2D0, 1, w);
+			SetTileSelectSize(2, 2);
+			break;
+		case 9: /* buy 25% */
 			DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
 			break;
 
-		case 9: /* sell 25% */
+		case 10: /* sell 25% */
 			DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
 			break;
 		}
@@ -570,10 +575,14 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		break;
 
-	case WE_PLACE_OBJ:
-		if (DoCommandP(e->place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+	case WE_PLACE_OBJ: {
+		// you cannot destroy a HQ, only relocate it. So build_HQ is called, just with different flags
+		TileIndex tile = DEREF_PLAYER(w->window_number)->location_of_house;
+		if (DoCommandP(e->place.tile, (tile == 0) ? 0 : (1 << 16) | w->window_number, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
 		break;
+	}
+
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_PLAYER_COLOR, w->window_number);

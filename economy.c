@@ -12,7 +12,7 @@
 #include "industry.h"
 #include "town.h"
 
-static void UpdatePlayerHouse(Player *p, uint score)
+void UpdatePlayerHouse(Player *p, uint score)
 {
 	byte val;
 	uint tile = p->location_of_house;
@@ -82,7 +82,7 @@ uint32 CalculateCompanyValue(Player *p) {
 
 // if update is set to true, the economy is updated with this score
 //  (also the house is updated, should only be true in the on-tick event)
-void UpdateCompanyRatingAndValue(Player *p, bool update)
+int UpdateCompanyRatingAndValue(Player *p, bool update)
 {
 	byte owner = p->index;
 	int score = 0;
@@ -225,6 +225,7 @@ void UpdateCompanyRatingAndValue(Player *p, bool update)
     }
 	
 	InvalidateWindow(WC_PERFORMANCE_DETAIL, 0);
+	return score;
 }
 
 // use 255 as new_player to delete the player.
@@ -385,7 +386,7 @@ year_4:
 			p->bankrupt_timeout = 0x456;
 		} else {
 			p->money64 = p->player_money = 100000000;
-			ChangeOwnershipOfPlayerItems(owner, 0xFF);
+			ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
 			p->is_active = false;
 		}
 	}
