@@ -51,6 +51,7 @@ void HandleOnEditTextCancel() {
 #ifdef ENABLE_NETWORK
 	case 4:
 		NetworkDisconnect();
+		ShowNetworkGameWindow();
 		break;
 #endif /* ENABLE_NETWORK */
 	}
