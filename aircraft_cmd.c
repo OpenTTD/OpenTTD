@@ -65,12 +65,10 @@ void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 {
-	engine -= AIRCRAFT_ENGINES_INDEX;
-
 	SET_DPARAM32(0, ((_price.aircraft_base >> 3) * aircraft_vehinfo(engine).base_cost) >> 5);
 	SET_DPARAM16(1, aircraft_vehinfo(engine).max_speed << 3);
-	SET_DPARAM16(2, aircraft_vehinfo(engine).mail_capacity);
-	SET_DPARAM16(3, aircraft_vehinfo(engine).passanger_capacity);
+	SET_DPARAM16(2, aircraft_vehinfo(engine).passanger_capacity);
+	SET_DPARAM16(3, aircraft_vehinfo(engine).mail_capacity);
 	SET_DPARAM32(4, aircraft_vehinfo(engine).running_cost * _price.aircraft_running >> 8);
 
 	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
