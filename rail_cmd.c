@@ -862,96 +862,125 @@ int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/*	build signals, alternate between double/single, signal/semaphore, pre/exit/combo -signals
-		p1 = (lower 3 bytes)	- track-orientation
-		p1 = (byte 4)					- semaphores/signals
-		p2 = used for CmdBuildManySignals() to copy style first signal
+/* build signals, alternate between double/single, signal/semaphore,
+ * pre/exit/combo-signals
+ * p1 bits 0-2 - track-orientation, valid values: 0-5
+ * p1 bit  3   - choose semaphores/signals or cycle normal/pre/exit/combo
+ *               depending on context
+ * p2 = used for CmdBuildManySignals() to copy style of first signal
  */
 int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile;
+	TileIndex tile = TILE_FROM_XY(x, y);
+	bool semaphore;
+	bool pre_signal;
+	uint track = p1 & 0x7;
 	byte m5;
 	int32 cost;
-	int track = p1 & 0x7;
-	byte a,b,c,d;
 
-	assert(track >= 0 && track < 6); // only 6 possible track-combinations
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	tile = TILE_FROM_XY(x,y);
-
-	if (!EnsureNoVehicle(tile))
+	if (!(track < 6) || // only 6 possible track-combinations
+			!IsTileType(tile, MP_RAILWAY) ||
+			!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	// must be railway, and not a depot, and it must have a track in the suggested position.
-	if (!IsTileType(tile, MP_RAILWAY) || (m5 = _map5[tile], m5 & 0x80) || !HASBIT(m5, track))
+	// Protect against invalid signal copying
+	if (p2 != 0 && (p2 & _signals_table_both[track]) == 0)
 		return CMD_ERROR;
+
+	m5 = _map5[tile];
+
+	if (m5 & 0x80 || // mustn't be a depot
+			!HASBIT(m5, track)) // track must exist
+		return CMD_ERROR;
+
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
 
-	// check rail combination
 	{
 		byte m = m5 & RAIL_BIT_MASK;
-		if (m != RAIL_BIT_DIAG1 && m != RAIL_BIT_DIAG2 && m != RAIL_BIT_UPPER && m != RAIL_BIT_LOWER &&
-				m != RAIL_BIT_LEFT && m != RAIL_BIT_RIGHT && m != (RAIL_BIT_UPPER|RAIL_BIT_LOWER) && m != (RAIL_BIT_LEFT|RAIL_BIT_RIGHT))
+		if (m != RAIL_BIT_DIAG1 &&
+				m != RAIL_BIT_DIAG2 &&
+				m != RAIL_BIT_UPPER &&
+				m != RAIL_BIT_LOWER &&
+				m != RAIL_BIT_LEFT &&
+				m != RAIL_BIT_RIGHT &&
+				m != (RAIL_BIT_UPPER | RAIL_BIT_LOWER) &&
+				m != (RAIL_BIT_LEFT | RAIL_BIT_RIGHT))
 			return CMD_ERROR;
 	}
 
-	// check ownership
-	if (!CheckTileOwnership(tile))
-		return CMD_ERROR;
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// calculate masks for..
-	a = _signals_table[track];      // .. signal for this track in one direction
-	b = _signals_table[track + 8];  // .. signal for this track in the other direction
-	c = a | b;											// .. 2-way signal for this track
+	// Same bit, used in different contexts
+	semaphore = pre_signal = HASBIT(p1, 3);
 
-	// If it had signals previously it is free to change orientation/pre-exit-combo signals
-	cost = 0;
-	if (!(m5 & RAIL_TYPE_SIGNALS)) {
+	if ((_map3_lo[tile] & _signals_table_both[track]) == 0) {
+		// build new signals
 		cost = _price.build_signals;
 	} else {
-		d = _map3_lo[tile] & c;					// mask of built signals. it only affects &0xF0
-		if (d == 0) cost += _price.build_signals; // no signals built yet
-	// if converting signals<->semaphores, charge the player for it
-		if (p2 && ((HASBIT(p1, 3) && !HASBIT(_map3_hi[tile], 2)) || (!HASBIT(p1, 3) && HASBIT(_map3_hi[tile], 2)) ) )
-			cost += _price.build_signals + _price.remove_signals;
+		if (p2 != 0 &&
+				((semaphore && !HASBIT(_map3_hi[tile], 2)) ||
+				(!semaphore && HASBIT(_map3_hi[tile], 2)))) {
+			// convert signals <-> semaphores
+			cost = _price.build_signals + _price.remove_signals;
+		} else {
+			// it is free to change orientation/pre-exit-combo signals
+			cost = 0;
+		}
 	}
 
 	if (flags & DC_EXEC) {
-
-
-		if (!(m5 & RAIL_TYPE_SIGNALS)) {		// if there are no signals yet present on the track
+		if (!(m5 & RAIL_TYPE_SIGNALS)) {
+			// there are no signals at all on this tile yet
 			_map5[tile] |= RAIL_TYPE_SIGNALS; // change into signals
 			_map2[tile] |= 0xF0;              // all signals are on
 			_map3_lo[tile] &= ~0xF0;          // no signals built by default
-			_map3_hi[tile] = (p1 & 8) ? 4 : 0;// initial presignal state, semaphores depend on ctrl key
-			d = 0;														// no existing signals
-			if (!p2)
-				goto ignore_presig;
+			_map3_hi[tile] = semaphore ? 4 : 0;
 		}
 
-		if (!p2) { // not called from CmdBuildManySignals
-			if (!HASBIT(p1, 3)) { // not CTRL pressed
-	ignore_presig:
-				// Alternate between a|b, b, a
-				if ( d != 0 && d != a)
-					c = (d == c)?b:a;
+		if (p2 == 0) {
+			if ((_map3_lo[tile] & _signals_table_both[track]) == 0) {
+				// build new signals
+				_map3_lo[tile] |= _signals_table_both[track];
+			} else {
+				if (pre_signal) {
+					// cycle between normal -> pre -> exit -> combo -> ...
+					byte type = (_map3_hi[tile] + 1) & 0x03;
+					_map3_hi[tile] &= ~0x03;
+					_map3_hi[tile] |= type;
+				} else {
+					// cycle between two-way -> one-way -> one-way -> ...
+					switch (track) {
+						case 3:
+						case 5: {
+							byte signal = (_map3_lo[tile] - 0x10) & 0x30;
+							if (signal == 0) signal = 0x30;
+							_map3_lo[tile] &= ~0x30;
+							_map3_lo[tile] |= signal;
+							break;
+						}
 
-				_map3_lo[tile] = (_map3_lo[tile]&~(a|b)) | c;
-			} else // CTRL pressed
-				_map3_hi[tile] = (_map3_hi[tile] & ~3) | ((_map3_hi[tile] + 1) & 3);
-		} else {
-			/* If CmdBuildManySignals is called with copying signals, just copy the style of the first signal
-			* given as parameter by CmdBuildManySignals */
-			switch (track) {
-			case 2: case 4: _map3_lo[tile] = (p2&0xC0) | (_map3_lo[tile]&~0xC0); break;
-			case 3: case 5: _map3_lo[tile] = (p2&0x30) | (_map3_lo[tile]&~0x30); break;
-			default : _map3_lo[tile] = (p2&0xF0) | (_map3_lo[tile]&0xF);
+						default: {
+							byte signal = (_map3_lo[tile] - 0x40) & 0xC0;
+							if (signal == 0) signal = 0xC0;
+							_map3_lo[tile] &= ~0xC0;
+							_map3_lo[tile] |= signal;
+							break;
+						}
+					}
+				}
 			}
+		} else {
+			/* If CmdBuildManySignals is called with copying signals, just copy the
+			 * style of the first signal given as parameter by CmdBuildManySignals */
+			_map3_lo[tile] &= ~_signals_table_both[track];
+			_map3_lo[tile] |= p2 & _signals_table_both[track];
 			// convert between signal<->semaphores when dragging
-			HASBIT(p1, 3) ? SETBIT(_map3_hi[tile], 2) : CLRBIT(_map3_hi[tile], 2);
+			if (semaphore)
+				SETBIT(_map3_hi[tile], 2);
+			else
+				CLRBIT(_map3_hi[tile], 2);
 		}
 
 		MarkTileDirtyByTile(tile);
