@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "debug.h"
 #include "network_data.h"
 
 // Is the network enabled?

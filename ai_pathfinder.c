@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "debug.h"
 #include "map.h"
 #include "tile.h"
 #include "command.h"

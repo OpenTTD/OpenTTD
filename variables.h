@@ -452,27 +452,11 @@ VARDEF byte _autoreplace_array[256];
 VARDEF uint16 _player_num_engines[256];
 VARDEF byte _railtype_selected_in_replace_gui;
 
-/* Debugging levels */
-VARDEF int _debug_spritecache_level;
-VARDEF int _debug_misc_level;
-VARDEF int _debug_grf_level;
-VARDEF int _debug_ai_level;
-VARDEF int _debug_net_level;
-VARDEF int _debug_map_level;
-VARDEF int _debug_ms_level;
-
 /* Forking stuff */
 VARDEF bool _dedicated_forks;
 VARDEF bool _dedicated_enabled;
 #ifdef UNIX
 	VARDEF pid_t _dedicated_pid;
-#endif
-
-void CDECL debug(const char *s, ...);
-#ifdef NO_DEBUG_MESSAGES
-	#define DEBUG(name, level)
-#else
-	#define DEBUG(name, level) if (level == 0 || _debug_ ## name ## _level >= level) debug
 #endif
 
 #endif /* VARIABLES_H */

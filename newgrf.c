@@ -3,6 +3,7 @@
 #include <stdarg.h>
 
 #include "ttd.h"
+#include "debug.h"
 #include "gfx.h"
 #include "fileio.h"
 #include "engine.h"

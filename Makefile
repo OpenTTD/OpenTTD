@@ -561,6 +561,7 @@ C_SOURCES += clear_cmd.c
 C_SOURCES += command.c
 C_SOURCES += console.c
 C_SOURCES += console_cmds.c
+C_SOURCES += debug.c
 C_SOURCES += dedicated.c
 C_SOURCES += disaster_cmd.c
 C_SOURCES += dock_gui.c

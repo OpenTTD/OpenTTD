@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "debug.h"
 #include "map.h"
 #include "network_data.h"
 

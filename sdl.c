@@ -2,6 +2,7 @@
 
 #if defined(WITH_SDL)
 #include "ttd.h"
+#include "debug.h"
 #include "gfx.h"
 #include "sound.h"
 #include "window.h"

@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "console.h"
+#include "debug.h"
 #include "engine.h"
 #include "functions.h"
 #include "variables.h"

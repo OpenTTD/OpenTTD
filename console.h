@@ -104,10 +104,6 @@ VARDEF byte _iconsole_color_debug;
 VARDEF byte _iconsole_color_commands;
 VARDEF _iconsole_modes _iconsole_mode;
 
-// ** ttd.c functions ** //
-
-void SetDebugString(const char* s);
-
 // ** console functions ** //
 
 void IConsoleInit(void);

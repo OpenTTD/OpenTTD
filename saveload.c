@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "debug.h"
 #include "vehicle.h"
 #include "station.h"
 #include "town.h"

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "debug.h"
 #include "npf.h"
 #include "aystar.h"
 #include "macros.h"
