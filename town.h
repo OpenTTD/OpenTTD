@@ -67,7 +67,7 @@ struct Town {
 	byte road_build_months;
 
 	// Index in town array
-	byte index;
+	uint16 index;
 
 	// NOSAVE: UpdateTownRadius updates this given the house count.
 	uint16 radius[5];

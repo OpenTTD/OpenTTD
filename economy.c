@@ -845,7 +845,7 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 	return tp;
 }
 
-void DeleteSubsidyWithIndustry(byte index)
+void DeleteSubsidyWithIndustry(uint16 index)
 {
 	Subsidy *s;
 
@@ -858,7 +858,7 @@ void DeleteSubsidyWithIndustry(byte index)
 	}
 }
 
-void DeleteSubsidyWithStation(byte index)
+void DeleteSubsidyWithStation(uint16 index)
 {
 	Subsidy *s;
 	bool dirty = false;
@@ -1062,8 +1062,10 @@ no_add:;
 static const byte _subsidies_desc[] = {
 	SLE_VAR(Subsidy,cargo_type,		SLE_UINT8),
 	SLE_VAR(Subsidy,age,					SLE_UINT8),
-	SLE_VAR(Subsidy,from,					SLE_UINT8),
-	SLE_VAR(Subsidy,to,						SLE_UINT8),
+	SLE_CONDVAR(Subsidy,from,			SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVAR(Subsidy,from,			SLE_UINT16, 5, 255),
+	SLE_CONDVAR(Subsidy,to,				SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVAR(Subsidy,to,				SLE_UINT16, 5, 255),
 	SLE_END()
 };
 

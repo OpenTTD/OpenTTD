@@ -18,8 +18,8 @@ VARDEF Economy _economy;
 typedef struct Subsidy {
 	byte cargo_type;
 	byte age;
-	byte from;
-	byte to;
+	uint16 from;
+	uint16 to;
 } Subsidy;
 
 
@@ -68,8 +68,8 @@ void UpdatePlayerHouse(Player *p, uint score);
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];
 Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode);
-void DeleteSubsidyWithIndustry(byte index);
-void DeleteSubsidyWithStation(byte index);
+void DeleteSubsidyWithIndustry(uint16 index);
+void DeleteSubsidyWithStation(uint16 index);
 void RemoteSubsidyAdd(Subsidy *s_new);
 
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
