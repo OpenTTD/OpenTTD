@@ -735,8 +735,9 @@ void StartScenario()
 	}
 
 	// Copy in game options
-	_opt_mod_ptr = &_opt;
-	memcpy(&_opt, &_new_opt, sizeof(_opt));
+	// Removed copying of game options when using "new game". --dominik
+	// _opt_mod_ptr = &_opt;
+	// memcpy(&_opt, &_new_opt, sizeof(_opt));
 
 	GfxLoadSprites();
 
