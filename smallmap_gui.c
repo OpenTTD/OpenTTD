@@ -305,7 +305,7 @@ static const AndOr _smallmap_vegetation_andor[] = {
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 };
 
-static inline uint32 GetSmallMapCountoursPixels(uint tile)
+static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 {
 	uint t;
 
@@ -330,13 +330,13 @@ static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int rep
 {
 	do {
 		if (xc < MapMaxX() && yc < MapMaxY())
-		    if (dst > _screen.dst_ptr && dst < (_screen.dst_ptr + _screen.width * _screen.height - _screen.width) )
-		        WRITE_PIXELS_OR( dst, GetSmallMapCountoursPixels(TILE_XY(xc,yc)) & mask );
+			if (dst > _screen.dst_ptr && dst < (_screen.dst_ptr + _screen.width * _screen.height - _screen.width))
+				WRITE_PIXELS_OR(dst, GetSmallMapContoursPixels(TILE_XY(xc,yc)) & mask);
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
 
 
-static inline uint32 GetSmallMapVehiclesPixels(uint tile)
+static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 {
 	uint t;
 
@@ -389,7 +389,7 @@ static const byte _industry_smallmap_colors[175] = {
 	 15, 15, 15, 15, 15, 15, 15,
 };
 
-static inline uint32 GetSmallMapIndustriesPixels(uint tile)
+static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 {
 	int t;
 
@@ -421,7 +421,7 @@ static void DrawSmallMapIndustries(byte *dst, uint xc, uint yc, int pitch, int r
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
 
-static inline uint32 GetSmallMapRoutesPixels(uint tile)
+static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 {
 	int t;
 	uint32 bits;
@@ -477,35 +477,45 @@ static const uint32 _vegetation_clear_bits[4 + 7] = {
 	MKCOLOR(0x54545454),
 };
 
-static inline uint32 GetSmallMapVegetationPixels(uint tile)
+static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 {
-	int i,t;
+	int i;
+	TileType t;
 	uint32 bits;
 
 	t = GetTileType(tile);
-	if (t == MP_CLEAR) {
-		i = (_map5[tile] & 0x1F) - 4;
-		if (i >= 0) i = (i >> 2);
-		bits = _vegetation_clear_bits[i + 4];
-	} else if (t == MP_INDUSTRY) {
-		bits = IS_BYTE_INSIDE(_map5[tile], 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
-	} else if (t == MP_TREES) {
-		bits = MKCOLOR(0x54575754);
-		if ((_map2[tile] & 0x30) == 0x20)
-			bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
-	} else {
-		if (t == MP_TUNNELBRIDGE) {
-			t = _map5[tile];
-			if ((t & 0x80) == 0) t>>=1;
-			if ((t & 6) == 0) {
-				t = MP_RAILWAY;
-			} else if ((t & 6) == 2) {
-				t = MP_STREET;
-			} else {
-				t = MP_WATER;
+	switch (t) {
+		case MP_CLEAR:
+			i = (_map5[tile] & 0x1F) - 4;
+			if (i >= 0) i >>= 2;
+			bits = _vegetation_clear_bits[i + 4];
+			break;
+
+		case MP_INDUSTRY:
+			bits = IS_BYTE_INSIDE(_map5[tile], 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
+			break;
+
+		case MP_TREES:
+			if ((_map2[tile] & 0x30) == 0x20)
+				bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
+			else
+				bits = MKCOLOR(0x54575754);
+			break;
+
+		default:
+			if (t == MP_TUNNELBRIDGE) {
+				t = _map5[tile];
+				if ((t & 0x80) == 0) t>>=1;
+				if ((t & 6) == 0) {
+					t = MP_RAILWAY;
+				} else if ((t & 6) == 2) {
+					t = MP_STREET;
+				} else {
+					t = MP_WATER;
+				}
 			}
-		}
-		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
+			bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
+			break;
 	}
 
 	return bits;
@@ -523,7 +533,7 @@ static void DrawSmallMapVegetation(byte *dst, uint xc, uint yc, int pitch, int r
 
 static uint32 _owner_colors[256];
 
-static inline uint32 GetSmallMapOwnerPixels(uint tile)
+static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
 	int t;
 
@@ -555,8 +565,7 @@ static const uint32 _smallmap_mask_left[3] = {
 	MKCOLOR(0xFFFFFF00),
 };
 
-static const uint32 _smallmap_mask_right[4] = {
-	MKCOLOR(0x00000000),
+static const uint32 _smallmap_mask_right[] = {
 	MKCOLOR(0x000000FF),
 	MKCOLOR(0x0000FFFF),
 	MKCOLOR(0x00FFFFFF),
@@ -600,10 +609,8 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	DrawPixelInfo *old_dpi;
 	int dx,dy, x, y, x2, y2;
 	byte *ptr;
-	uint tile_x, tile_y;
-	uint32 mask;
-	int t;
-	int reps;
+	int tile_x;
+	int tile_y;
 	SmallmapDrawProc *proc;
 	ViewPort *vp;
 
@@ -633,17 +640,17 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		}
 	}
 
-	tile_x = (int)WP(w,smallmap_d).scroll_x >> 4;
-	tile_y = (int)WP(w,smallmap_d).scroll_y >> 4;
+	tile_x = WP(w,smallmap_d).scroll_x / 16;
+	tile_y = WP(w,smallmap_d).scroll_y / 16;
 
 	dx = dpi->left + WP(w,smallmap_d).subscroll;
-	tile_x -= (dx >> 2);
-	tile_y += (dx >> 2);
+	tile_x -= dx / 4;
+	tile_y += dx / 4;
 	dx &= 3;
 
 	dy = dpi->top;
-	tile_x += (dy >> 1);
-	tile_y += (dy >> 1);
+	tile_x += dy / 2;
+	tile_y += dy / 2;
 
 	if (dy & 1) {
 		tile_x++;
@@ -662,7 +669,11 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	y = 0;
 
 	for(;;) {
-		mask = (uint32)-1;
+		uint32 mask;
+		int reps;
+		int t;
+
+		mask = 0xFFFFFFFF;
 
 		/* distance from left edge */
 		if (x < 0) {
@@ -674,14 +685,14 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		/* distance from right edge */
 		t = dpi->width - x;
 		if (t < 4) {
-			if (t < 0)
+			if (t <= 0)
 				break; /* exit loop */
 			/* mask to use at the right edge */
-			mask &= _smallmap_mask_right[t];
+			mask &= _smallmap_mask_right[t - 1];
 		}
 
 		/* number of lines */
-		reps = ((dpi->height - y + 1) >> 1);
+		reps = (dpi->height - y + 1) / 2;
 		if (reps > 0) {
 //			assert(ptr >= dpi->dst_ptr);
 			proc(ptr, tile_x, tile_y, dpi->pitch*2, reps, mask);
@@ -708,19 +719,19 @@ skip_column:
 		byte color;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type != 0 && v->type != 0x14 && (v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0) {
+			if (v->type != 0 && v->type != VEH_Special &&
+					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				// Remap into flat coordinates.
 				Point pt = RemapCoords(
-					(int)(v->x_pos - WP(w,smallmap_d).scroll_x) >> 4,
-					(int)(v->y_pos - WP(w,smallmap_d).scroll_y) >> 4,
+					(v->x_pos - WP(w,smallmap_d).scroll_x) / 16,
+					(v->y_pos - WP(w,smallmap_d).scroll_y) / 16,
 					0);
 				x = pt.x;
 				y = pt.y;
 
 				// Check if y is out of bounds?
 				y -= dpi->top;
-				if ((uint)y >= (uint)dpi->height)
-					continue;
+				if (!IS_INT_INSIDE(y, 0, dpi->height)) continue;
 
 				// Default is to draw both pixels.
 				skip = false;
@@ -755,12 +766,13 @@ skip_column:
 
 	if (show_towns) {
 		Town *t;
+
 		FOR_ALL_TOWNS(t) {
 			if (t->xy != 0) {
 				// Remap the town coordinate
 				Point pt = RemapCoords(
-					(int)(TileX(t->xy) * 16 - WP(w,smallmap_d).scroll_x) >> 4,
-					(int)(TileY(t->xy) * 16 - WP(w,smallmap_d).scroll_y) >> 4,
+					(int)(TileX(t->xy) * 16 - WP(w, smallmap_d).scroll_x) / 16,
+					(int)(TileY(t->xy) * 16 - WP(w, smallmap_d).scroll_y) / 16,
 					0);
 				x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;
@@ -785,17 +797,14 @@ skip_column:
 		// Find main viewport.
 		vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
 
-		pt = RemapCoords(
-			WP(w,smallmap_d).scroll_x,
-			WP(w,smallmap_d).scroll_y,
-			0);
+		pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w, smallmap_d).scroll_y, 0);
 
 		x = vp->virtual_left - pt.x;
 		y = vp->virtual_top - pt.y;
-		x2 = (x + vp->virtual_width) >> 4;
-		y2 = (y + vp->virtual_height) >> 4;
-		x >>= 4;
-		y >>= 4;
+		x2 = (x + vp->virtual_width) / 16;
+		y2 = (y + vp->virtual_height) / 16;
+		x /= 16;
+		y /= 16;
 
 		x -= WP(w,smallmap_d).subscroll;
 		x2 -= WP(w,smallmap_d).subscroll;
