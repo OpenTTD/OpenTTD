@@ -1,14 +1,13 @@
 %define name openttd 
-%define version 0.3.3
+%define version 0.3.4
 %define release 1mdk
 
 Name: %{name} 
 Summary: An open source clone of the Microprose game "Transport Tycoon Deluxe"
 Version: %{version} 
 Release: %{release} 
-Source0: %{name}-%{version}.tar.bz2
+Source0: %{name}-%{version}.tar.bz
 Source10: %{name}.64.png
-Patch0: %{name}-%{version}-patch.diff
 URL: http://www.openttd.org
 Group: Games/Strategy
 Packager: Dominik Scherer <>
@@ -27,7 +26,6 @@ game data directory!
 %prep 
 rm -rf $RPM_BUILD_ROOT 
 %setup
-%patch -p1
 
 %build
 make BINARY_DIR=%{_gamesbindir}/openttd/ INSTALL_DIR=%{_gamesdatadir}/openttd/ GAME_DATA_DIR=%{_gamesdatadir}/openttd/ USE_HOMEDIR=1 PERSONAL_DIR=.openttd
@@ -36,7 +34,7 @@ make BINARY_DIR=%{_gamesbindir}/openttd/ INSTALL_DIR=%{_gamesdatadir}/openttd/ G
 mkdir -p $RPM_BUILD_ROOT%{_gamesbindir}/openttd
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang
 
-cp ./ttd $RPM_BUILD_ROOT%{_gamesbindir}/openttd/ttd
+cp ./openttd $RPM_BUILD_ROOT%{_gamesbindir}/openttd/openttd
 cp -r ./lang/*.lng $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang/
 cp -r ./data $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/
 
@@ -48,7 +46,7 @@ install -m644 %{SOURCE10} -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 # menu entry
 mkdir -p $RPM_BUILD_ROOT/%{_menudir}
 cat << EOF > $RPM_BUILD_ROOT/%{_menudir}/%{name}
-?package(%{name}):command="%{_gamesbindir}/openttd/ttd" icon="%{name}.png" \
+?package(%{name}):command="%{_gamesbindir}/openttd/openttd" icon="%{name}.png" \
   needs="X11" section="Amusement/Strategy" title="OpenTTD" \
   longtitle="%{Summary}"
 EOF
@@ -64,18 +62,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files 
 %defattr(-,root,root,0755) 
-%{_gamesbindir}/openttd/ttd
+%{_gamesbindir}/openttd/openttd
 
+%{_gamesdatadir}/openttd/lang/american.lng
 %{_gamesdatadir}/openttd/lang/czech.lng
 %{_gamesdatadir}/openttd/lang/danish.lng
+%{_gamesdatadir}/openttd/lang/dutch.lng
 %{_gamesdatadir}/openttd/lang/english.lng
+%{_gamesdatadir}/openttd/lang/finnish.lng
 %{_gamesdatadir}/openttd/lang/french.lng
 %{_gamesdatadir}/openttd/lang/galician.lng
 %{_gamesdatadir}/openttd/lang/german.lng
 %{_gamesdatadir}/openttd/lang/hungarian.lng
 %{_gamesdatadir}/openttd/lang/italian.lng
 %{_gamesdatadir}/openttd/lang/norwegian.lng
+%{_gamesdatadir}/openttd/lang/origveh.lng
 %{_gamesdatadir}/openttd/lang/polish.lng
+%{_gamesdatadir}/openttd/lang/romanian.lng
 %{_gamesdatadir}/openttd/lang/slovak.lng
 %{_gamesdatadir}/openttd/lang/swedish.lng
 
@@ -83,6 +86,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_gamesdatadir}/openttd/data/openttd.grf
 %{_gamesdatadir}/openttd/data/opntitle.dat
 %{_gamesdatadir}/openttd/data/signalsw.grf
+%{_gamesdatadir}/openttd/data/trkfoundw.grf
+
 
 %{_menudir}/%{name}
 %{_iconsdir}/*.png
@@ -92,5 +97,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc changelog.txt readme.txt COPYING
 
 %changelog 
+* Wed Sep 15 2004 Dominik Scherer <> 0.3.4-1mdk
+- Upgraded to 0.3.4
+
 * Wed Jul 31 2004 Dominik Scherer <> 0.3.3-1mdk
 - Initial release
