@@ -13,25 +13,31 @@
 #include "airport_movement.h"
 #include "sound.h"
 
-static void DisasterClearSquare(uint tile)
+static void DisasterClearSquare(TileIndex tile)
 {
-	int type;
-
 	if (!EnsureNoVehicle(tile))
 		return;
 
-	type = TileType(tile);
+	switch (TileType(tile)) {
+		case MP_RAILWAY:
+			if (IS_HUMAN_PLAYER(_map_owner[tile])) DoClearSquare(tile);
+			break;
 
-	if (type == MP_RAILWAY) {
-		if (IS_HUMAN_PLAYER(_map_owner[tile]))
+		case MP_HOUSE: {
+			byte p = _current_player;
+			_current_player = OWNER_NONE;
+			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			_current_player = p;
+			break;
+		}
+
+		case MP_TREES:
+		case MP_CLEAR:
 			DoClearSquare(tile);
-	} else if (type == MP_HOUSE) {
-		byte p = _current_player;
-		_current_player = OWNER_NONE;
-		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-		_current_player = p;
-	} else if (type == MP_TREES || type == MP_CLEAR) {
-		DoClearSquare(tile);
+			break;
+
+		default:
+			break;
 	}
 }
 

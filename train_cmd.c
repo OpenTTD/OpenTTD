@@ -1893,36 +1893,39 @@ static int GetDirectionToVehicle(Vehicle *v, int x, int y)
 }
 
 /* Check if the vehicle is compatible with the specified tile */
-static bool CheckCompatibleRail(Vehicle *v, uint tile)
+static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 {
-	if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION)) {
-		// normal tracks, jump to owner check
-	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if ((_map5[tile] & 0xC0) == 0xC0) {// is bridge middle part?
-			TileInfo ti;
-			FindLandscapeHeightByTile(&ti, tile);
+	switch (TileType(tile)) {
+		case MP_RAILWAY:
+		case MP_STATION:
+			// normal tracks, jump to owner check
+			break;
 
-			// correct Z position of a train going under a bridge on slopes
-			if (CORRECT_Z(ti.tileh))
-				ti.z += 8;
+		case MP_TUNNELBRIDGE:
+			if ((_map5[tile] & 0xC0) == 0xC0) { // is bridge middle part?
+				TileInfo ti;
+				FindLandscapeHeightByTile(&ti, tile);
 
-			if(v->z_pos != ti.z) // train is going over bridge
-				return true;
-		}
-	} else if (IsTileType(tile, MP_STREET)) { // train is going over a road-crossing
-		// tracks over roads, do owner check of tracks (_map_owner[tile])
-		if (_map_owner[tile] != v->owner || (v->subtype == 0 && (_map3_hi[tile] & 0xF) != v->u.rail.railtype))
-			return false;
+				// correct Z position of a train going under a bridge on slopes
+				if (CORRECT_Z(ti.tileh)) ti.z += 8;
 
-		return true;
-	} else
-		return true;
+				if (v->z_pos != ti.z) return true; // train is going over bridge
+			}
+			break;
 
-	if (_map_owner[tile] != v->owner ||
-			(v->subtype == 0 && (_map3_lo[tile] & 0xF) != v->u.rail.railtype))
-		return false;
+		case MP_STREET:
+			// tracks over roads, do owner check of tracks (_map_owner[tile])
+			return
+				_map_owner[tile] == v->owner &&
+				(v->subtype != 0 || (_map3_hi[tile] & 0xF) == v->u.rail.railtype);
 
-	return true;
+		default:
+			return true;
+	}
+
+	return
+		_map_owner[tile] == v->owner &&
+		(v->subtype != 0 || (_map3_lo[tile] & 0xF) == v->u.rail.railtype);
 }
 
 typedef struct {

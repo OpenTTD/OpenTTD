@@ -854,31 +854,35 @@ void DeleteIndustry(Industry *i)
 
 static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
 
-static bool IsBadFarmFieldTile(uint tile)
+static bool IsBadFarmFieldTile(TileIndex tile)
 {
-	if (IsTileType(tile, MP_CLEAR)) {
-		byte m5 = _map5[tile] & 0x1C;
-		if (m5 == 0xC || m5 == 0x10)
+	switch (TileType(tile)) {
+		case MP_CLEAR: {
+			byte m5 = _map5[tile] & 0x1C;
+			return m5 == 0xC || m5 == 0x10;
+		}
+
+		case MP_TREES:
+			return false;
+
+		default:
 			return true;
-		return false;
-	} else if (IsTileType(tile, MP_TREES)) {
-		return false;
-	} else {
-		return true;
 	}
 }
 
-static bool IsBadFarmFieldTile2(uint tile)
+static bool IsBadFarmFieldTile2(TileIndex tile)
 {
-	if (IsTileType(tile, MP_CLEAR)) {
-		byte m5 = _map5[tile] & 0x1C;
-		if (m5 == 0x10)
+	switch (TileType(tile)) {
+		case MP_CLEAR: {
+			byte m5 = _map5[tile] & 0x1C;
+			return m5 == 0x10;
+		}
+
+		case MP_TREES:
+			return false;
+
+		default:
 			return true;
-		return false;
-	} else if (IsTileType(tile, MP_TREES)) {
-		return false;
-	} else {
-		return true;
 	}
 }
 

@@ -315,19 +315,27 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 }
 
 // return true if a tile is a water tile.
-static bool IsWateredTile(uint tile)
+static bool IsWateredTile(TileIndex tile)
 {
 	byte m5 = _map5[tile];
-	if (IsTileType(tile, MP_WATER)) {
-		return m5 != 1;
-	} else if (IsTileType(tile, MP_STATION)) {
-		// returns true if it is a dock-station (m5 inside values is m5<75 all stations,
-		// 83<=m5<=114 new airports
-		return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
-	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		return (m5 & 0xF8) == 0xC8;
-	} else
-		return false;
+
+	switch (TileType(tile)) {
+		case MP_WATER:
+			// true, if not coast/riverbank
+			return m5 != 1;
+
+		case MP_STATION:
+			// returns true if it is a dock-station
+			// m5 inside values is m5 < 75 all stations, 83 <= m5 <= 114 new airports
+			return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
+
+		case MP_TUNNELBRIDGE:
+			// true, if tile is middle part of bridge with water underneath
+			return (m5 & 0xF8) == 0xC8;
+
+		default:
+			return false;
+	}
 }
 
 // draw a canal styled water tile with dikes around
