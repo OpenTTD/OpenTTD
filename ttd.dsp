@@ -925,7 +925,7 @@ SOURCE=.\changelog.txt
 # End Source File
 
 # Begin Source File
-SOURCE=.\icon1.ico
+SOURCE=.\openttd.ico
 # End Source File
 
 # Begin Source File

@@ -1,8 +1,8 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.3.5.0"
-!define APPVERSION "0.3.5.0"
-!define INSTALLERVERSION 13 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPNAMEANDVERSION "OpenTTD 0.3.6.0"
+!define APPVERSION "0.3.6.0"
+!define INSTALLERVERSION 14 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 
 BrandingText "OpenTTD Installer"
 
@@ -102,6 +102,9 @@ Section "!OpenTTD" Section1
   File ${PATH_ROOT}data\opntitle.dat
   File ${PATH_ROOT}data\signalsw.grf
   File ${PATH_ROOT}data\trkfoundw.grf
+  ; Copy scenario files
+	SetOutPath "$INSTDIR\scenario\"
+  File ${PATH_ROOT}scenario\*.scn
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
@@ -114,7 +117,7 @@ Section "!OpenTTD" Section1
 
 	; Copy executable
 	File /oname=OpenTTD.exe        ${PATH_ROOT}Release\openttd.exe
-	File ${PATH_ROOT}strgen\Release\strgen.exe
+	File ${PATH_ROOT}strgen\Debug\strgen.exe
 
 
   ; Delete old files from the main dir. they are now placed in data/ and lang/
