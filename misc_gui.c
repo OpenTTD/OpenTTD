@@ -135,16 +135,16 @@ static void Place_LandInfo(uint tile)
 	lid.tile = tile;
 	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	if (_local_player == 255) {
-		lid.costclear = 0;
-	} else {
+	if (_local_player >= MAX_PLAYERS)
+		p = DEREF_PLAYER(0);
+	else
 		p = DEREF_PLAYER(_local_player);
-		old_money = p->money64;
-		p->money64 = p->player_money = 0x7fffffff;
-		lid.costclear = DoCommandByTile(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
-		p->money64 = old_money;
-		UpdatePlayerMoney32(p);
-	}
+
+	old_money = p->money64;
+	p->money64 = p->player_money = 0x7fffffff;
+	lid.costclear = DoCommandByTile(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+	p->money64 = old_money;
+	UpdatePlayerMoney32(p);
 
 	GetAcceptedCargo(tile, &lid.ac);
 	GetTileDesc(tile, &lid.td);
