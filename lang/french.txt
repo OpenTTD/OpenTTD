@@ -863,6 +863,7 @@ STR_TOWNNAME_HUNGARIAN						:Hongrois
 STR_TOWNNAME_AUSTRIAN						:Autrichiens
 STR_TOWNNAME_ROMANIAN						:Roumain
 STR_TOWNNAME_CZECH						:Tchèques
+STR_TOWNNAME_SWISS						:Suisse
 ############ end of	townname region
 
 STR_CURR_GBP							:Livres ({POUNDSIGN})

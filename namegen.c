@@ -386,6 +386,12 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
+static byte MakeSwissTownName(byte *buf, uint32 seed)
+{
+	strcpy(buf, name_swiss_real[SeedChance(0, lengthof(name_swiss_real), seed)]);
+	return 0;
+}
+
 TownNameGenerator * const _town_name_generators[] =
 {
 	MakeEnglishOriginalTownName,
@@ -404,6 +410,7 @@ TownNameGenerator * const _town_name_generators[] =
 	MakeAustrianTownName,
 	MakeRomanianTownName,
 	MakeCzechTownName,
+	MakeSwissTownName,
 };
 
 // DO WE NEED THIS ANY MORE?
