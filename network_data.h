@@ -110,7 +110,7 @@ typedef enum {
 
 // To keep the clients all together
 typedef struct NetworkClientState {
-	int socket;
+	SOCKET socket;
 	uint16 index;
 	uint32 last_frame;
 	uint32 last_frame_server;

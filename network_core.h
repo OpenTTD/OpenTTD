@@ -150,7 +150,11 @@ typedef unsigned long in_addr_t;
 
 static inline bool SetNonBlocking(int d)
 {
+	#ifdef WIN32
+	u_long nonblocking = 1;
+	#else
 	int nonblocking = 1;
+	#endif
 	#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
 	return setsockopt(d, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(nonblocking)) == 0;
 	#else

@@ -332,9 +332,8 @@ static void NetworkFindIPs(void)
 	// If something fails, make sure the list is empty
 	_network_ip_list[0] = 0;
 
-	if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-		return;
-	}
+	sock = socket(AF_INET, SOCK_DGRAM, 0);
+	if (sock == INVALID_SOCKET) return;
 
 #ifdef WIN32
 	// On windows it is easy

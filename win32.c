@@ -135,23 +135,20 @@ static const VkMapping _vk_mapping[] = {
 	AS(VK_MULTIPLY,		WKC_NUM_MUL),
 	AS(VK_SUBTRACT,		WKC_NUM_MINUS),
 	AS(VK_ADD,				WKC_NUM_PLUS),
-	AS(VK_DECIMAL,		WKC_NUM_DECIMAL),
-	{0}
+	AS(VK_DECIMAL,		WKC_NUM_DECIMAL)
 };
 
-static uint MapWindowsKey(uint key)
+static uint MapWindowsKey(uint sym)
 {
-	const VkMapping	*map = _vk_mapping - 1;
-	uint from;
-	do {
-		map++;
-		from = map->vk_from;
-		if (from == 0) {
-			return 0; // Unknown key pressed.
-			}
-	}	while ((uint)(key - from) > map->vk_count);
+	const VkMapping *map;
+	uint key = 0;
 
-	key = key - from + map->map_to;
+	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
+		if ((uint)(sym - map->vk_from) <= map->vk_count) {
+			key = sym - map->vk_from + map->map_to;
+			break;
+		}
+	}
 
 	if (GetAsyncKeyState(VK_SHIFT)<0)	key |= WKC_SHIFT;
 	if (GetAsyncKeyState(VK_CONTROL)<0)	key |= WKC_CTRL;
@@ -1500,7 +1497,8 @@ static FiosItem *FiosAlloc(void)
 	return &_fios_items[_fios_count++];
 }
 
-static HANDLE MyFindFirstFile(char *path, char *file, WIN32_FIND_DATA *fd)
+static HANDLE MyFindFirstFile(const char *path, const char *file,
+	WIN32_FIND_DATA *fd)
 {
 	char paths[MAX_PATH];
 
@@ -1842,7 +1840,7 @@ const DriverDesc _video_driver_descs[] = {
 #endif
 	{"win32", "Win32 GDI Video Driver",	&_win32_video_driver,		Windows_NT3_51},
 	{ "dedicated", "Dedicated Video Driver", &_dedicated_video_driver, 0},
-	{NULL}
+	{ NULL, NULL, NULL, 0 }
 };
 
 const DriverDesc _sound_driver_descs[] = {
@@ -1851,7 +1849,7 @@ const DriverDesc _sound_driver_descs[] = {
 	{"sdl", "SDL Sound Driver",				&_sdl_sound_driver,		1},
 #endif
 	{"win32", "Win32 WaveOut Driver",	&_win32_sound_driver,	Windows_NT3_51},
-	{NULL}
+	{ NULL, NULL, NULL, 0 }
 };
 
 const DriverDesc _music_driver_descs[] = {
@@ -1861,7 +1859,7 @@ const DriverDesc _music_driver_descs[] = {
 #endif
 	// Win32 MIDI driver has higher priority than DMusic, so this one is chosen
 	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,				Windows_NT3_51},
-	{NULL}
+	{ NULL, NULL, NULL, 0 }
 };
 
 byte GetOSVersion(void)
