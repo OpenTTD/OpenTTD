@@ -375,7 +375,7 @@ int CheckOrders(Vehicle *v)
 	if (!_patches.order_review_system)	//User doesn't want things to be checked
 		return 0;
 
-	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
+	if ( (_patches.order_review_system == 1) && ((v->vehstatus & VS_STOPPED) || (v->vehstatus & VS_CRASHED)) )
 		return 0;
 
 	/* only check every 20 days, so that we don't flood the message log */
