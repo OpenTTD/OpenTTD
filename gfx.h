@@ -100,6 +100,8 @@ VARDEF CursorVars _cursor;
 VARDEF int _pal_first_dirty;
 VARDEF int _pal_last_dirty;
 
+VARDEF bool _use_dos_palette;
+
 /* spritecache.c */
 //enum { NUM_SPRITES = 0x1320 };
 //enum { NUM_SPRITES = 0x1500 };

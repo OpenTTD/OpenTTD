@@ -313,7 +313,7 @@ static void showhelp()
 		"  -G seed             = Set random seed\n"
 		"  -n [ip#player:port] = Start networkgame\n"
 		"  -D                  = Start dedicated server\n"
-		"  -i                  = Ignore wrong grf\n"
+		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
 		"  -p #player          = Player as #player (deprecated) (network only)\n"
 	);
 
@@ -525,7 +525,6 @@ int ttd_main(int argc, char* argv[])
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
-	_ignore_wrong_grf = false;
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
 	_game_mode = GM_MENU;
@@ -570,7 +569,7 @@ int ttd_main(int argc, char* argv[])
 					SetDebugString(mgo.opt);
 			} break;
 		case 'e': _switch_mode = SM_EDITOR; break;
-		case 'i': _ignore_wrong_grf = true; break;
+		case 'i': _use_dos_palette = true; break;
 		case 'g':
 			if (mgo.opt) {
 				strcpy(_file_to_saveload.name, mgo.opt);

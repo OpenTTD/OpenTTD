@@ -55,21 +55,30 @@ static byte *_spritecache_ptr;
 static uint32 _spritecache_size;
 static int _compact_cache_counter;
 
+typedef struct FileList {
+	const char * const basic[4];     // grf files that always have to be loaded
+	const char * const landscape[3]; // landscape specific grf files
+} FileList;
 
-static const char * const _filename_list[] = {
-	"TRG1R.GRF",
-	"TRGIR.GRF",
-	"signalsw.grf", //0x1320 - 0x1405 inclusive
-//	"openttd.grf",	//0x1406 -
-	NULL
+FileList files_dos = {
+	{	"TRG1.GRF",
+		"TRGI.GRF",
+		"signalsw.grf", //0x1320 - 0x1405 inclusive
+		NULL },
+	{	"TRGC.GRF",
+		"TRGH.GRF",
+		"TRGT.GRF" },
 };
 
-static const char * const _landscape_filenames[] = {
-	"TRGCR.GRF",
-	"TRGHR.GRF",
-	"TRGTR.GRF"
+FileList files_win = {
+	{	"TRG1R.GRF",
+		"TRGIR.GRF",
+		"signalsw.grf", //0x1320 - 0x1405 inclusive
+		NULL },
+	{	"TRGCR.GRF",
+		"TRGHR.GRF",
+		"TRGTR.GRF" },
 };
-
 
 #include "table/landscape_sprite.h"
 
@@ -267,16 +276,6 @@ static void SkipSprites(int count)
 	}
 }
 
-// Checks, if trg1r.grf is the Windows version
-static bool CheckGrfFile()
-{
-	byte check;
-	FioSeekToFile(38); // Byte 38 has the value 0x21 in Windows version, 0x07 in DOS
-	check = FioReadWord();
-	FioSeekToFile(0);
-	return (check==0x21);
-}
-
 static int LoadGrfFile(const char *filename, int load_index, int file_index)
 {
 	int load_index_org = load_index;
@@ -289,10 +288,6 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 	_skip_sprites = 0;
 
 	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", filename);
-
- 	if(file_index==0 && !_ignore_wrong_grf)
- 		if(!CheckGrfFile())
- 			error("Wrong version of grf files!\nThe Windows 95 edition of Transport Tycoon Deluxe is required to play OTTD!\n(you can disable this message by starting with the \"-i\" switch.");
 
 	while (LoadNextSprite(load_index, file_index)) {
 		load_index++;
@@ -307,7 +302,7 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 {
 	int i;
-	
+
 	FioOpenFile(file_index, filename);
 	_cur_grffile = filename;
 	_skip_specials = 0;
@@ -763,9 +758,35 @@ static const uint16 _openttd_grf_indexes[] = {
 	0xffff,
 };
 
+
+/* Checks, if either the Windows files exist (TRG1R.GRF) or the DOS files (TRG1.GRF).
+ * _use_dos_palette is set accordingly
+ * WARNING! This is case-sensitive, therefore the file has to be uppercase for correct
+ * detection. If neither are found, Windows palette is assumed. */
+static void CheckGrfFile()
+{
+	FILE *f;
+	byte *s;
+
+	s = str_fmt("%s%s", _path.data_dir, files_win.basic[0]);
+	f = fopen(s, "r");
+	if (f != NULL) {
+		_use_dos_palette = false;
+		return;
+	}
+
+	s = str_fmt("%s%s", _path.data_dir, files_dos.basic[0]);
+	f = fopen(s, "r");
+	if (f != NULL) { 
+		_use_dos_palette = true;
+		return;
+	}
+}
+
 static void LoadSpriteTables()
 {
 	int i,j;
+	FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
 
 	_loading_stage = 1;
 
@@ -780,6 +801,11 @@ static void LoadSpriteTables()
 	 *   invest that further. --octo
 	 */
 
+	// Check if we have the DOS or Windows version of the GRF files
+	CheckGrfFile();
+
+	files = _use_dos_palette?(&files_dos):(&files_win);
+
 	// Try to load the sprites from cache
 	if (!HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], true)) {
 		// We do not have the sprites in cache yet, or cache is disabled
@@ -787,14 +813,14 @@ static void LoadSpriteTables()
 
 		int load_index = 0;
 
-		for(i=0; _filename_list[i] != NULL; i++) {
-			load_index += LoadGrfFile(_filename_list[i], load_index, (byte)i);
+		for(i=0; files->basic[i] != NULL; i++) {
+			load_index += LoadGrfFile(files->basic[i], load_index, (byte)i);
 		}
 
 		LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 
 		if (_sprite_page_to_load != 0)
-			LoadGrfIndexed(_landscape_filenames[_sprite_page_to_load-1], _landscape_spriteindexes[_sprite_page_to_load-1], i++);
+			LoadGrfIndexed(files->landscape[_sprite_page_to_load-1], _landscape_spriteindexes[_sprite_page_to_load-1], i++);
 
 		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
@@ -832,13 +858,13 @@ static void LoadSpriteTables()
 		//
 		// NOTE: the order of the files must be identical as in the section above!!
 
-		for(i = 0; _filename_list[i] != NULL; i++)
-			FioOpenFile(i,_filename_list[i]);
+		for(i = 0; files->basic[i] != NULL; i++)
+			FioOpenFile(i,files->basic[i]);
 
 		FioOpenFile(i++, "openttd.grf");
 
 		if (_sprite_page_to_load != 0)
-			FioOpenFile(i++, _landscape_filenames[_sprite_page_to_load-1]);
+			FioOpenFile(i++, files->landscape[_sprite_page_to_load-1]);
 
 		FioOpenFile(i++, "trkfoundw.grf");
 		FioOpenFile(i++, "canalsw.grf");

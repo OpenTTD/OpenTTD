@@ -10,13 +10,15 @@ opntitle.dat
 signalsw.grf
 trkfoundw.grf
 
-THE WINDOWS GRF FILES ARE STILL NEEDED!
-they need to be inside a folder called "data" in the same folder as OpenTTD. Create it if you have none. It should contain:
+THE TTD GRF FILES ARE STILL NEEDED!
+They need to be inside a folder called "data" in the same folder as OpenTTD. Create it if you have none. It should contain:
 sample.cat
 trg1r.grf
 trgcr.grf
 trghr.grf
 trgir.grf
 trgtr.grf
+
+(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase to be detected correctly. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
 
 You should also use the data folder to add any custom grf files if you like

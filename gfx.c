@@ -1483,13 +1483,17 @@ static void GfxScalePalette(int pal, byte scaling)
 	} while (--count);
 }
 
+void DoPaletteAnimations();
+
 void GfxInitPalettes()
 {
-	memcpy(_cur_palette, _palettes[0], 256*3);
+	int pal = _use_dos_palette?1:0;
+	memcpy(_cur_palette, _palettes[pal], 256*3);
+
 	_pal_first_dirty = 0;
 	_pal_last_dirty = 255;
+	DoPaletteAnimations();
 }
-
 
 #define EXTR(p,q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
 #define EXTR2(p,q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
@@ -1499,13 +1503,17 @@ void DoPaletteAnimations()
 {
 	const byte *s;
 	byte *d;
+	/* Amount of colors to be rotated.
+	 * A few more for the DOS palette, because the water colors are
+	 * 245-254 for DOS and 217-226 for Windows.  */
+	int c = _use_dos_palette?38:28; 
 	int j;
 	int i;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	byte old_val[28*3];
+	byte old_val[c*3];
 
 	d = _cur_palette + 217*3;
-	memcpy(old_val, d, 28*3);
+	memcpy(old_val, d, c*3);
 
 	// Dark blue water
 	s = ev->a;
@@ -1574,9 +1582,32 @@ void DoPaletteAnimations()
 		if (j == 3*4) j = 0;
 	}
 
-	if (memcmp(old_val, _cur_palette + 217*3, 28*3)) {
+	// Animate water for old DOS graphics
+	if(_use_dos_palette) {
+		// Dark blue water DOS
+		s = ev->a;
+		if (_opt.landscape == LT_CANDY) s = ev->ac;
+		j = EXTR(320,5) * 3;
+		for(i=0; i!=5; i++) {
+			COPY_TRIPLET;
+			j+=3;
+			if (j == 15) j = 0;
+		}
+	
+		// Glittery water DOS
+		s = ev->b;
+		if (_opt.landscape == LT_CANDY) s = ev->bc;
+		j = EXTR(128, 15) * 3;
+		for(i=0; i!=5; i++) {
+			COPY_TRIPLET;
+			j += 9;
+			if (j >= 45) j -= 45;
+		}
+	}
+
+	if (memcmp(old_val, _cur_palette + 217*3, c*3)) {
 		if (_pal_first_dirty > 217) _pal_first_dirty = 217;
-		if (_pal_last_dirty < 217+29-1) _pal_last_dirty = 217+29-1;
+		if (_pal_last_dirty < 217+c) _pal_last_dirty = 217+c;
 	}
 }
 

@@ -31,14 +31,16 @@ You can undo changes to a file with
 
 3.) Required data files:
 
-Copy the following files from the WINDOWS version of Transport Tycoon Deluxe to openttd/data/
+Copy the following files from Transport Tycoon Deluxe to openttd/data/
   sample.cat
   trg1r.grf
   trgcr.grf
   trghr.grf
   trgir.grf
   trgtr.grf
-  
+
+(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase to be detected correctly. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
+
   
 4.) Compiling and running:
 

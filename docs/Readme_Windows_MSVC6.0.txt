@@ -58,7 +58,7 @@ b) libraru files (the lib dir, D:\Program Files\Microsoft Visual Studio\VC98\Dir
 
 Step 4
 -----------------
-Copy the following files from the WINDOWS version of Transport Tycoon Deluxe to the data folder
+Copy the following files from Transport Tycoon Deluxe to the data folder
   sample.cat
   trg1r.grf
   trgcr.grf
@@ -66,7 +66,7 @@ Copy the following files from the WINDOWS version of Transport Tycoon Deluxe to 
   trgir.grf
   trgtr.grf
 
-
+(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase to be detected correctly. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
 
 Step 5
 -----------------

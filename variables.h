@@ -415,8 +415,6 @@ VARDEF byte _vehicle_design_names;
 VARDEF SignStruct _sign_list[40];
 VARDEF SignStruct *_new_sign_struct;
 
-VARDEF bool _ignore_wrong_grf;
-
 /* tunnelbridge */
 #define MAX_BRIDGES 13
 
