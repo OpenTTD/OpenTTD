@@ -562,6 +562,7 @@ static int SdlVideoMainLoop()
 
 			_ctrl_pressed = !!(mod & (KMOD_LCTRL | KMOD_RCTRL));
 			_shift_pressed = !!(mod & (KMOD_LSHIFT | KMOD_RSHIFT));
+			_dbg_screen_rect = !!(mod & KMOD_CAPS);
 
 			// determine which directional keys are down
 			_dirkeys =
