@@ -1119,6 +1119,8 @@ static void RoadVehEventHandler(Vehicle *v)
 		if (RoadVehFindCloseTo(v,x,y,v->direction))
 			return;
 
+		VehicleServiceInDepot(v);
+
 		StartRoadVehSound(v);
 
 		BeginVehicleMove(v);
@@ -1377,12 +1379,11 @@ void RoadVehEnterDepot(Vehicle *v)
 	v->u.road.state = 254;
 	v->vehstatus |= VS_HIDDEN;
 
-	v->date_of_last_service = _date;
-	v->breakdowns_since_last_service = 0;
-	v->reliability = _engines[v->engine_type].reliability;
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	MaybeRenewVehicle(v, EstimateRoadVehCost(v->engine_type));
+
+	VehicleServiceInDepot(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

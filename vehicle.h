@@ -300,6 +300,7 @@ typedef struct {
 	char name[32];
 } BackuppedOrders;
 
+void VehicleServiceInDepot(Vehicle *v);
 void BackupVehicleOrders(Vehicle *v, BackuppedOrders *order);
 void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *order);
 Vehicle *AllocateVehicle();

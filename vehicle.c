@@ -15,6 +15,12 @@
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
 
+void VehicleServiceInDepot(Vehicle *v)
+{
+	v->date_of_last_service = _date;
+	v->breakdowns_since_last_service = 0;
+	v->reliability = _engines[v->engine_type].reliability;
+}
 
 Order UnpackOldOrder(uint16 packed)
 {

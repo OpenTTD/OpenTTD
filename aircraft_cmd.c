@@ -652,9 +652,7 @@ static void ServiceAircraft(Vehicle *v)
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
-	v->date_of_last_service = _date;
-	v->breakdowns_since_last_service = 0;
-	v->reliability = _engines[v->engine_type].reliability;
+	VehicleServiceInDepot(v);
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 }
 
@@ -1234,6 +1232,7 @@ static void AircraftLeaveHangar(Vehicle *v)
 		}
 	}
 
+	VehicleServiceInDepot(v);
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 }

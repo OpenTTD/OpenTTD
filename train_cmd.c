@@ -1288,6 +1288,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 			return true;
 	}
 
+	VehicleServiceInDepot(v);
 	TrainPlayLeaveStationSound(v);
 
 	v->u.rail.track = 1;
@@ -2554,9 +2555,8 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 	if (v->subtype != 0)
 		v = GetFirstVehicleInChain(v);
 
-	v->date_of_last_service = _date;
-	v->breakdowns_since_last_service = 0;
-	v->reliability = _engines[v->engine_type].reliability;
+	VehicleServiceInDepot(v);
+
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	v->load_unload_time_rem = 0;

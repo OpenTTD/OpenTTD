@@ -352,6 +352,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	RecalcShipStuff(v);
 
 	PlayShipSound(v);
+	VehicleServiceInDepot(v);
 }
 
 static bool ShipAccelerate(Vehicle *v)
@@ -394,9 +395,8 @@ static void ShipEnterDepot(Vehicle *v)
 	v->cur_speed = 0;
 	RecalcShipStuff(v);
 
-	v->date_of_last_service = _date;
-	v->breakdowns_since_last_service = 0;
-	v->reliability = _engines[v->engine_type].reliability;
+	VehicleServiceInDepot(v);
+
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	MaybeRenewVehicle(v, EstimateShipCost(v->engine_type));
