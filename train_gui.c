@@ -831,7 +831,8 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 6:	/* goto depot */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
+			/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
+			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
 		case 7: /* force proceed */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
