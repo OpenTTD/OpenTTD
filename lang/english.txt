@@ -1040,6 +1040,7 @@ STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnels may cross each other: {ORANGE}{STRI
 STR_CHEAT_BUILD_IN_PAUSE			:{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH					:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE			:{LTBLUE}Switch climate: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE					:{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
 
 STR_SORT_BY_POPULATION					:{BLACK}Population
 

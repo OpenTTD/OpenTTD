@@ -1356,11 +1356,27 @@ int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	return _opt.landscape;
 }
 
+extern void EnginesMonthlyLoop();
+
+// p2 1 (increase) or -1 (decrease)
+int32 ClickChangeDateCheat(int32 p1, int32 p2)
+{
+	YearMonthDay ymd;
+	ConvertDayToYMD(&ymd, _date);
+
+	if((ymd.year==0 && p2==-1) || (ymd.year==170 && p2==1)) return _cur_year;
+
+	SetDate(ConvertYMDToDay(_cur_year + p2, ymd.month, ymd.day));
+	EnginesMonthlyLoop();
+	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
+	return _cur_year;
+}
 
 typedef int32 CheckButtonClick(int32, int32);
 static CheckButtonClick * const _cheat_button_proc[] = {
 	ClickMoneyCheat,
 	ClickChangePlayerCheat,
+	ClickChangeDateCheat,
 };
 
 
@@ -1429,7 +1445,8 @@ static const CheatEntry _cheats_ui[] = {
 	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used},
 	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,	&_cheats.build_in_pause.been_used},
 	{CE_BOOL, 0, STR_CHEAT_NO_JETCRASH,			&_cheats.no_jetcrash.value,			&_cheats.no_jetcrash.been_used},
-	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, 	&_opt.landscape, 						&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat, -1, 4, 1},
+	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape, 								&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat, -1, 4, 1},
+	{CE_UINT8, 0, STR_CHEAT_CHANGE_DATE,		&_cur_year,			&_cheats.change_date.been_used,	&ClickChangeDateCheat, -1,1,1},
 };
 
 
@@ -1489,6 +1506,10 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 					val += STR_TEMPERATE_LANDSCAPE;
 
 				SET_DPARAM16(0, val);
+
+				// display date for change date cheat
+				if(ce->str==STR_CHEAT_CHANGE_DATE)
+					SET_DPARAM16(0, _date);
 				
 				// draw colored flag for change player cheat
 				if(ce->str==STR_CHEAT_CHANGE_PLAYER)

@@ -180,6 +180,7 @@ typedef struct Cheats {
 	Cheat build_in_pause;			// build while in pause mode
 	Cheat no_jetcrash;				// no jet will crash on small airports anymore
 	Cheat switch_climate;
+	Cheat change_date;				//changes date ingame
 } Cheats;
 
 VARDEF Cheats _cheats;
