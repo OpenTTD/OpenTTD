@@ -188,7 +188,7 @@ static const char *credits[] = {
 	"Special thanks go out to:",
 	"  Josef Drexler - For his great work on TTDPatch",
 	"  Marcin Grzegorczyk - For his documentation of TTD internals",
-	"  blathijs - For his many patches, suggestions and major work on maprewrite",
+	"  Matthijs Kooijman (blathijs) - For his many patches, suggestions and major work on maprewrite",
 	"  Petr Baudis (pasky) - Many patches, newgrf support",
 	"  Stefan Meiﬂner (sign_de) - For his work on the console",
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
