@@ -1,5 +1,6 @@
 ##name Lithuanian
 ##ownname Lietuviu
+##isocode lt
 
 ##id 0x0000
 STR_NULL							:

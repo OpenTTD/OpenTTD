@@ -1697,7 +1697,7 @@ STR_3069_BUOY							:Boje
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...Boje ist im Weg
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...Bahnhof ist zu groß
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...ungleichförmige stationen deaktiviert
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...ungleichförmige Stationen deaktiviert
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Werftausrichtung

@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} önkormányzata nem engedélyezi
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Városnevek - kattints egy névre a város megnézéséhez
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}A fõ nézetet a városra állítja
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}A város nevének megváltoztatása
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Utasok múlt hónapban: {ORANGE}{COMMA16}{BLACK}  legfeljebb: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Levelek múlt hónapban: {ORANGE}{COMMA16}{BLACK}  legfeljebb: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Utasok az elõzõ hónapban: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Levélcsomagok az elõzõ hónapban: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Magas irodaház
 STR_2010_OFFICE_BLOCK						:Irodaház
 STR_2011_SMALL_BLOCK_OF_FLATS					:Kis bérház

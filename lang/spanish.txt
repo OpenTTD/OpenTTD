@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} las autoridades locales recha
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Nombres de población - haga click sobre el nombre para centrar la vista en la población
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centrar la vista sobre la población
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Cambiar nombre de la población
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasajeros último mes: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correo último mes: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasajeros último mes: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correo último mes: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Bloque alto de oficinas
 STR_2010_OFFICE_BLOCK						:Bloque de oficinas
 STR_2011_SMALL_BLOCK_OF_FLATS					:Bloque de viviendas pequeño

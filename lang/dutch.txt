@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}De gemeenteraad van {TOWN} staat dit
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de stad
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centreer de hoofdbeeld op de lokatie van de stad
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Hernoem stad
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passagiers vorige maand: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Post vorige maand: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passagiers afelopen maand: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Post afgelopen maand: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Hoog kantoorgebouw
 STR_2010_OFFICE_BLOCK						:Kantoorgebouw
 STR_2011_SMALL_BLOCK_OF_FLATS					:Klein flatgebouw

@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}La municipalité de {TOWN} refuse cet
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Noms des villes - Cliquez sur un nom pour défiler à l'emplacement
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centrer la vue sur la ville
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Renommer la ville
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passagers du mois dernier: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Courrier du mois dernier: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passagers le mois dernier : {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Courrier le mois dernier : {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Grand immeuble de bureaux
 STR_2010_OFFICE_BLOCK						:Immeuble de bureaux
 STR_2011_SMALL_BLOCK_OF_FLATS					:Petit immeuble résidentiel

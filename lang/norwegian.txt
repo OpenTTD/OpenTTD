@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} bystyret nekter deg å gjøre d
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Bynavn - trykk på by navnet for å se på byen
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Sentrer bildet rundt byen
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Bytt navn på byen
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passasjerer sist måned: {ORANGE}{COMMA16}{BLACK}  maks: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Post sist måned: {ORANGE}{COMMA16}{BLACK}  maks: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passasjerer siste måned: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Post sist måned: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Høyhus
 STR_2010_OFFICE_BLOCK						:Kontorblokk
 STR_2011_SMALL_BLOCK_OF_FLATS					:Leilighetsblokk

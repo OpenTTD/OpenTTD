@@ -1,5 +1,6 @@
 ##name Estonian
 ##ownname eesti keel
+##isocode et
 
 ##id 0x0000
 STR_NULL							:
@@ -2142,6 +2143,81 @@ STR_801E_OIL_TANKER						:Õli tanker
 STR_801F_LIVESTOCK_VAN						:Kariloomade vagun
 STR_8020_GOODS_VAN						:Kaubavagun
 STR_8021_GRAIN_HOPPER						:Teraviljavagun
+STR_8022_WOOD_TRUCK						:Puiduveo vagun
+STR_8023_IRON_ORE_HOPPER					:Rauamaagi vagun
+STR_8024_STEEL_TRUCK						:Terase vagun
+STR_8025_ARMORED_VAN						:Soomusvagun
+STR_8026_FOOD_VAN						:Toduvagun
+STR_8027_PAPER_TRUCK						:Paberivagun
+STR_8028_COPPER_ORE_HOPPER					:Vase maagi vagun
+STR_8029_WATER_TANKER						:Vee tanker
+STR_802A_FRUIT_TRUCK						:Puuvilja vagin
+STR_802B_RUBBER_TRUCK						:Kummi vagun
+STR_802C_SUGAR_TRUCK						:Suhkru vagun
+STR_802D_COTTON_CANDY_HOPPER					:Suhkruvati vagun
+STR_802E_TOFFEE_HOPPER						:Iirise vagun
+STR_802F_BUBBLE_VAN						:Mullide vagun
+STR_8030_COLA_TANKER						:Koola vagun
+STR_8031_CANDY_VAN						:Maiustuste vagun
+STR_8032_TOY_VAN						:Mänguasjade vagun
+STR_8033_BATTERY_TRUCK						:Patareide vagun
+STR_8034_FIZZY_DRINK_TRUCK					:Kihisevate jookide vagun
+STR_8035_PLASTIC_TRUCK						:Plastiku vagun
+STR_8036_X2001_ELECTRIC						:'X2001' (Elektri)
+STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Elektri)
+STR_8038_WIZZOWOW_Z99						:Wizzowow Z99
+STR_8039_PASSENGER_CAR						:Reisiate vagun
+STR_803A_MAIL_VAN						:Postivagun
+STR_803B_COAL_CAR						:Kivisöe vagun
+STR_803C_OIL_TANKER						:Õli tanker
+STR_803D_LIVESTOCK_VAN						:Kariloomade vagun
+STR_803E_GOODS_VAN						:Kauba vagun
+STR_803F_GRAIN_HOPPER						:Teravilja vagun
+STR_8040_WOOD_TRUCK						:Puidu vagun
+STR_8041_IRON_ORE_HOPPER					:Rauamaagi vagun
+STR_8042_STEEL_TRUCK						:Terase vagun
+STR_8043_ARMORED_VAN						:Soomusvagun
+STR_8044_FOOD_VAN						:Toidu vagun
+STR_8045_PAPER_TRUCK						:Paberi vagun
+STR_8046_COPPER_ORE_HOPPER					:Vasemaagi vagun
+STR_8047_WATER_TANKER						:Vee tanker
+STR_8048_FRUIT_TRUCK						:Puuvilja vagun
+STR_8049_RUBBER_TRUCK						:Kummi vagun
+STR_804A_SUGAR_TRUCK						:Suhkru vagun
+STR_804B_COTTON_CANDY_HOPPER					:Suhkruvati vagun
+STR_804C_TOFFEE_HOPPER						:Iirise vagun
+STR_804D_BUBBLE_VAN						:Mullide vagun
+STR_804E_COLA_TANKER						:Koola vagun
+STR_804F_CANDY_VAN						:Maiustuste vagun
+STR_8050_TOY_VAN						:Mänguasjade vagun
+STR_8051_BATTERY_TRUCK						:Patareide vagun
+STR_8052_FIZZY_DRINK_TRUCK					:Kihisevate jookide vagun
+STR_8053_PLASTIC_TRUCK						:Plastiku vagun
+STR_8054_LEV1_LEVIATHAN_ELECTRIC				:Lev1 'Leviathan' (Elektri)
+STR_8055_LEV2_CYCLOPS_ELECTRIC					:Lev2 'Cyclops' (Elektri)
+STR_8056_LEV3_PEGASUS_ELECTRIC					:Lev3 'Pegasus' (Elektri)
+STR_8057_LEV4_CHIMAERA_ELECTRIC					:Lev4 'Chimaera' (Elektri)
+STR_8058_WIZZOWOW_ROCKETEER					:Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR						:Reisiate vagun
+STR_805A_MAIL_VAN						:Postivagun
+STR_805B_COAL_CAR						:Kivisöe vagun
+STR_805C_OIL_TANKER						:Õli tanker
+STR_805D_LIVESTOCK_VAN						:Kariloomade vagun
+STR_805E_GOODS_VAN						:Kauba vagun
+STR_805F_GRAIN_HOPPER						:Teravilja vagun
+STR_8060_WOOD_TRUCK						:Puidu vagun
+STR_8061_IRON_ORE_HOPPER					:Rauamaagi vagun
+STR_8062_STEEL_TRUCK						:Terase vagun
+STR_8063_ARMORED_VAN						:Soomusvagun
+STR_8064_FOOD_VAN						:Toiduvagun
+STR_8065_PAPER_TRUCK						:Paberi vagun
+STR_8066_COPPER_ORE_HOPPER					:Vasemaagi vagun
+STR_8067_WATER_TANKER						:Veetanker
+STR_8068_FRUIT_TRUCK						:Puuvilja vagun
+STR_8069_RUBBER_TRUCK						:Kummi vagun
+STR_806A_SUGAR_TRUCK						:Suhkru vagun
+STR_806B_COTTON_CANDY_HOPPER					:Suhkruvati vagun
+STR_806C_TOFFEE_HOPPER						:Iirise vagun
 
 ##id 0x8800
 

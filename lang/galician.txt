@@ -773,6 +773,7 @@ STR_02DD_SUBSIDIES						:Subsidios
 STR_02DE_MAP_OF_WORLD						:Mapa do Mundo
 STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Directorio de cidades
+STR_TOWN_POPULATION						:{BLACK}Poboación mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vista {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiar a vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copia a sitaución da vista global nesta vista
@@ -865,6 +866,7 @@ STR_TOWNNAME_HUNGARIAN						:Húngaro
 STR_TOWNNAME_AUSTRIAN						:Austríaco
 STR_TOWNNAME_ROMANIAN						:Rumano
 STR_TOWNNAME_CZECH						:Checo
+STR_TOWNNAME_SWISS						:Suízo
 ############ end of	townname region
 
 STR_CURR_GBP							:Libras ({POUNDSIGN})
@@ -983,6 +985,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permitir áreas de captura máis realist
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Habilita-la aceleración realista nos trens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Prohibir os trens e os barcos facer xiros de 90 grados: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Saír se calquera carga está chea,cando 'Carga chea': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
@@ -1003,6 +1006,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Permiti-la chantaxe as autoridades locales
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Novo sistema para atopar depósito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Estacións non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Novo algoritmo para atopa-las rutas para os trens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nova búsqueda de ruta global (NPF, invalida NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1139,6 +1143,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Non se pode construí-lo peche aí...
 STR_BUILD_LOCKS_TIP						:{BLACK}Construír peches
 STR_LANDINFO_LOCK						:Peche
 
+STR_BUOY_IS_IN_USE						:{WHITE}...a boia está en uso!
 
 STR_LANDINFO_COORDS						:{BLACK}Coordenadas: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1390,6 +1395,8 @@ STR_NETWORK_SEND						:{BLACK}Enviar
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Coste: {CURRENCY}
@@ -1497,8 +1504,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}: a autoridade local négase a 
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Nomes de cidades - pincha no nome para centra-la vista principal na cidade
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centra-la vista principal na situación da cidade
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Cambia-lo nome da cidade
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasaxeiros último mes: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correo último mes: {ORANGE}{COMMA16}{BLACK}  máx: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasaxeiros último mes: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Correo último mes: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Bloque alto de oficinas
 STR_2010_OFFICE_BLOCK						:Bloque de oficinas
 STR_2011_SMALL_BLOCK_OF_FLATS					:Bloque pequeno de apartamentos
@@ -1610,6 +1617,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Demasiado cerca doutra estació
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Xunta máis dunha estación/área de carga existente
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Hay demasiadas estacións/áreas de carga nesta cidade
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Hay demasiadas estacións/áreas de carga
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Demasiadas paradas de bus
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Demasiadas estacions de camións
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Demasiado cerca doutra estación ou área de carga
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Debes demole-la estación de ferrocarril primeiro
@@ -1683,6 +1692,7 @@ STR_3069_BUOY							:Boia
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...boia no camiño
 STR_306B_HELIPORT						:{BLACK}"Heliporto"
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...a estación ocupa demasiado
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...estacións non uniformes deshabilitadas
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orient. do Depósito de Barcos
@@ -2020,8 +2030,8 @@ STR_703A_TRAIN							:{WHITE}{COMMA16} tren
 STR_703B_TRAINS							:{WHITE}{COMMA16} trens
 STR_703C_ROAD_VEHICLE						:{WHITE}{COMMA16} vehículo de estrada
 STR_703D_ROAD_VEHICLES						:{WHITE}{COMMA16} vehículos de estrada
-STR_703E_AIRCRAFT						:{WHITE}Aeronave {COMMA16}
-STR_703F_AIRCRAFT						:{WHITE}Aeronave {COMMA16}
+STR_703E_AIRCRAFT						:{WHITE}Aeronaves {COMMA16}
+STR_703F_AIRCRAFT						:{WHITE}Aeronaves {COMMA16}
 STR_7040_SHIP							:{WHITE}{COMMA16} barco
 STR_7041_SHIPS							:{WHITE}{COMMA16} barcos
 STR_7042_NONE							:{WHITE}Ningún
@@ -2051,7 +2061,7 @@ STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}¡Fusión de compañías de tr
 STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}{STRING} foi vendida a {STRING} por {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}Buscamos unha compañía de transporte para adquiri-la nosa compañía{}{}¿Queres comprar {STRING} por {CURRENCY}?
 STR_705C_BANKRUPT						:{BLACK}{BIGFONT}¡Bancarrota!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} foi cerrada polos acreedores e vendéronse tódalas posesións!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} foi pechada polos acreedores e vendéronse tódalas posesións!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}¡Lanzada unha nova compañía de transporte!
 STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} comeza a construcción cerca de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Non se pode compra-la compañía...
@@ -2754,6 +2764,7 @@ STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Camións/Buses
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Aeronaves
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Navíos
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar tódolas aeronaves que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
@@ -2761,8 +2772,10 @@ STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar tódolos barcos que teñen esta estac
 STR_REPLACE_VEHICLES						:{BLACK}Reemplazar Vehículos
 STR_REPLACE_VEHICLES_WHITE					:{WHITE}Reemplazar vehículos
 STR_REPLACE_VEHICLES_START					:{BLACK}Comezar a Reemplazar Vehículos
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Non hai vehículos seleccionados
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

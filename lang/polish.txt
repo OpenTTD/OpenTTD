@@ -992,14 +992,14 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Uzyj ulepszonego algorytmu zaladunk
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Allow goto depot orders: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT					:
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP					:
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Przesun okno kiedy kursor jest przy krawedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING}
@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} Lokalne wladze nie pozwalaja 
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Nazwy miast - klik na nazwie aby wycentrowac widok na miescie
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Wycentruj glowny widok na miescie
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Zmien nazwe miasta
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasazerowie w ostatnim miesiacu: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Poczta w ostatnim miesiacu: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Pasazerow w zeszlym miesiacu: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Poczta w zeszlym miesiacu: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Wysoki biurowiec
 STR_2010_OFFICE_BLOCK						:Biurowiec
 STR_2011_SMALL_BLOCK_OF_FLATS					:Maly blok mieszkalny
@@ -1623,6 +1623,7 @@ STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Przylega do wiecej niz jednej
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Za duzo stacji/miejsc zalad. w tym miescie
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Za duzo stacji/miejsc zaladunk.
 STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Zbyt wiele przystankow autobusowych
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Zbyt wiele stacji dla ciezarowek
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Zbyt blisko innej stacji/miejsca zladunk.
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Musisz najpierw zniszczyc stacje
@@ -1687,8 +1688,8 @@ STR_3060_AIRPORT						:Lotnisko
 STR_3061_TRUCK_LOADING_AREA					:Miejsce zaladunku
 STR_3062_BUS_STATION						:Przystanek
 STR_3063_SHIP_DOCK						:Port
-STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Highlight coverage area of proposed site
-STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Don't highlight coverage area of proposed site
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:
 STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Pokryj zaznaczony teren
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Wybierz stacje jednoszynowa.
 STR_3068_DOCK							:{WHITE}Port
@@ -2613,15 +2614,15 @@ STR_9831_NAME_SHIP						:{WHITE}Nazwa statku
 STR_9832_CAN_T_NAME_SHIP					:{WHITE}Nie mozna zmienic nazwy statku...
 STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy statek przybyl do {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Ustaw boje, ktora moze byc uzyta jako dodatkowy pkt. drogi
-STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Nie mzna ustawic tutaj boji...
+STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Nie mozna ustawic tutaj boji...
 STR_9836_RENAME							:{BLACK}Zmien nazwe
 STR_9837_RENAME_SHIP_TYPE					:{BLACK}Zmien nazwe typu statku
 STR_9838_RENAME_SHIP_TYPE					:{WHITE}Zmien nazwe typu statku
 STR_9839_CAN_T_RENAME_SHIP_TYPE					:{WHITE}Nie mozna zmienic nazwy typu statku...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Przebuduj statek aby przwozil inny rodzaj towaru
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Przebuduj statek aby przewozil inny rodzaj towaru
 STR_983B_REFIT							:{WHITE}{STRING} (Przebudowa)
 STR_983C_REFIT_SHIP						:{BLACK}Przebudowa statku
-STR_983D_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wybierz typ ladunku jaki ma przwozic statek
+STR_983D_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Wybierz typ ladunku jaki ma przewozic statek
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED			:{BLACK}Zmien statek zeby mogl przewozic zaznaczony typ ladunku
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Wybierz typ ladunku do przewozu:-
 STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
