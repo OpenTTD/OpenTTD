@@ -264,7 +264,7 @@ DEF_CONSOLE_CMD(ConGotoDir)
 
 	/* We need 1 argument */
 	if (argc != 2) {
-		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: goto_map <dir-no>");
+		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: goto_dir <dir-no>");
 		return NULL;
 	}
 
