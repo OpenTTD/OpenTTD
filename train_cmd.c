@@ -752,7 +752,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		v->u.rail.days_since_order_progr = 0;
 		v->vehstatus ^= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 	return 0;
@@ -912,7 +912,7 @@ static void SetLastSpeed(Vehicle *v, int spd) {
 	if (spd != old) {
 		v->u.rail.last_speed = spd;
 		if (_patches.vehicle_speed || !old != !spd)
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 }
 
@@ -1184,7 +1184,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 		return 0;
 	}
@@ -1198,7 +1198,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
 		v->current_order.station = GetDepotByTile(tfdd.tile);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	return 0;
@@ -1805,7 +1805,7 @@ static void TrainEnterStation(Vehicle *v, int station)
 		MarkTrainDirty(v);
 		UpdateTrainAcceleration(v);
 	}
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
 static byte AfterSetTrainPos(Vehicle *v)
@@ -1997,7 +1997,7 @@ static void SetVehicleCrashed(Vehicle *v)
 		v->vehstatus |= VS_CRASHED;
 	END_ENUM_WAGONS(v)
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, u->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, u->index, STATUS_BAR);
 }
 
 static int CountPassengersInTrain(Vehicle *v)
@@ -2116,7 +2116,7 @@ static void TrainController(Vehicle *v)
 					if (v->current_order.type == OT_LEAVESTATION) {
 						v->current_order.type = OT_NOTHING;
 						v->current_order.flags = 0;
-						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 					}
 				}
 			} else {
@@ -2681,7 +2681,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 			 * schedule? */
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 		return;
 	}
@@ -2697,7 +2697,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	v->current_order.flags = OF_NON_STOP;
 	v->current_order.station = depot;
 	v->dest_tile = tfdd.tile;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
 int32 GetTrainRunningCost(Vehicle *v)

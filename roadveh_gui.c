@@ -188,7 +188,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 		StringID str;
 
-		w->disabled_state = (v->owner != _local_player) ? (1<<7 | 1<<6) : 0;
+		w->disabled_state = (v->owner != _local_player) ? (1<<8 | 1<<7) : 0;
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
@@ -242,22 +242,22 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(e->click.widget) {
-		case 4: /* start stop */
+		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE));
 			break;
-		case 5: /* center main view */
+		case 6: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 6: /* goto hangar */
+		case 7: /* goto hangar */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT));
 			break;
-		case 7: /* turn around */
+		case 8: /* turn around */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_TURN_ROADVEH | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
 			break;
-		case 8: /* show orders */
+		case 9: /* show orders */
 			ShowOrdersWindow(v);
 			break;
-		case 9: /* show details */
+		case 10: /* show details */
 			ShowRoadVehDetailsWindow(v);
 			break;
 		}
@@ -272,7 +272,8 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 
 static const Widget _roadveh_view_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_9002,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_9002,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
 {          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
 { WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_901C_CURRENT_VEHICLE_ACTION},
@@ -287,7 +288,7 @@ static const Widget _roadveh_view_widgets[] = {
 static const WindowDesc _roadveh_view_desc = {
 	-1,-1, 250, 116,
 	WC_VEHICLE_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_roadveh_view_widgets,
 	RoadVehViewWndProc,
 };

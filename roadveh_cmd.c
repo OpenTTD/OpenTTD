@@ -204,7 +204,7 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		v->vehstatus ^= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
@@ -307,7 +307,7 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->cur_order_index++;
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 		return 0;
 	}
@@ -321,7 +321,7 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
 		v->current_order.station = (byte)depot;
 		v->dest_tile = _depots[depot].xy;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	return 0;
@@ -491,7 +491,7 @@ static void RoadVehCrash(Vehicle *v)
 	v->u.road.crashed_ctr++;
 	v->vehstatus |= VS_CRASHED;
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 
 	pass = 1;
 	if (v->cargo_type == 0)
@@ -753,7 +753,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	// Decrease somewhat when turning
@@ -1339,7 +1339,7 @@ again:
 				InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 				MarkRoadVehDirty(v);
 			}
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			return;
 		}
 
@@ -1354,7 +1354,7 @@ again:
 		*b |= 0x80;
 
 		StartRoadVehSound(v);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	r = VehicleEnterTile(v, v->tile, x, y);
@@ -1455,7 +1455,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 		return;
 	}
@@ -1469,7 +1469,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	v->current_order.flags = OF_NON_STOP;
 	v->current_order.station = (byte)i;
 	v->dest_tile = (&_depots[i])->xy;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
 void OnNewDay_RoadVeh(Vehicle *v)

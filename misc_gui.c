@@ -675,7 +675,12 @@ void UnclickSomeWindowButtons(Window *w, uint32 mask)
 
 void UnclickWindowButtons(Window *w)
 {
+	bool sticky = false;
+	if (w->desc_flags & WDF_STICKY_BUTTON && HASBIT(w->click_state, 2))	sticky = true;
+
 	UnclickSomeWindowButtons(w, (uint32)-1);
+
+	if (sticky) SETBIT(w->click_state, 2);
 }
 
 

@@ -1683,6 +1683,7 @@ END_TILE_LOOP(tile_cur, w,h,tile)
 
 		for (i = 0; i < afc->nof_depots; ++i)
 			DeleteWindowById(WC_VEHICLE_DEPOT, tile + afc->airport_depots[i]);
+
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
 

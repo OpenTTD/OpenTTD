@@ -554,7 +554,7 @@ static void FloodVehicle(Vehicle *v)
 		} else
 			return;
 
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 		SetDParam(0, pass);

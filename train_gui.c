@@ -734,7 +734,8 @@ static void ShowRailVehicleRefitWindow(Vehicle *v)
 
 static Widget _train_view_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_882E,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_882E,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,     STR_STICKY_BUTTON},
 {      WWT_PANEL,    14,     0,   231,    14,   121, 0x0,			STR_NULL},
 {          WWT_6,    14,     2,   229,    16,   119, 0x0,			STR_NULL},
 { WWT_PUSHIMGBTN,    14,     0,   249,   122,   133, 0x0,			STR_8846_CURRENT_TRAIN_ACTION_CLICK},
@@ -757,7 +758,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		v = &_vehicles[w->window_number];
 
-		w->disabled_state = (v->owner == _local_player) ? 0 : 0x1C0;
+		w->disabled_state = (v->owner == _local_player) ? 0 : 0x380;
 
 
 		/* draw widgets & caption */
@@ -825,29 +826,29 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(wid) {
-		case 4: /* start/stop train */
+		case 5: /* start/stop train */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 			break;
-		case 5:	/* center main view */
+		case 6:	/* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 6:	/* goto depot */
+		case 7:	/* goto depot */
 			/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
-		case 7: /* force proceed */
+		case 8: /* force proceed */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
 			break;
-		case 8: /* reverse direction */
+		case 9: /* reverse direction */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_8869_CAN_T_REVERSE_DIRECTION));
 			break;
-		case 9: /* show train orders */
+		case 10: /* show train orders */
 			ShowOrdersWindow(v);
 			break;
-		case 10: /* show train details */
+		case 11: /* show train details */
 			ShowTrainDetailsWindow(v);
 			break;
-		case 11:
+		case 12:
 			ShowRailVehicleRefitWindow(v);
 			break;
 		}
@@ -865,7 +866,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		v = &_vehicles[w->window_number];
 		assert(v->type == VEH_Train);
-		h = CheckStoppedInDepot(v) >= 0 ? (1 << 8) : (1 << 11);
+		h = CheckStoppedInDepot(v) >= 0 ? (1 << 9) : (1 << 12);
 		if (h != w->hidden_state) {
 			w->hidden_state = h;
 			SetWindowDirty(w);
@@ -879,7 +880,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _train_view_desc = {
 	-1,-1, 250, 134,
 	WC_VEHICLE_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_train_view_widgets,
 	TrainViewWndProc
 };

@@ -456,4 +456,8 @@ VARDEF BackuppedOrders _backup_orders_data[1];
 #define MIN_SERVINT_DAYS    30
 #define MAX_SERVINT_DAYS   800
 
+/* A lot of code calls for the invalidation of the status bar, which is widget 5.
+ * Best is to have a virtual value for it when it needs to change again */
+#define STATUS_BAR 5
+
 #endif /* VEHICLE_H */

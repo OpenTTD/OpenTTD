@@ -472,7 +472,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT: {
 		Vehicle *v = &_vehicles[w->window_number];
-		uint32 disabled = 1<<7;
+		uint32 disabled = 1<<8;
 		StringID str;
 
 		// Possible to refit?
@@ -483,7 +483,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			disabled = 0;
 
 		if (v->owner != _local_player)
-			disabled |= 1<<7 | 1<<6;
+			disabled |= 1<<8 | 1<<7;
 		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
@@ -536,22 +536,22 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(e->click.widget) {
-		case 4: /* start stop */
+		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP));
 			break;
-		case 5: /* center main view */
+		case 6: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 6: /* goto hangar */
+		case 7: /* goto hangar */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
 			break;
-		case 7: /* refit */
+		case 8: /* refit */
 			ShowShipRefitWindow(v);
 			break;
-		case 8: /* show orders */
+		case 9: /* show orders */
 			ShowOrdersWindow(v);
 			break;
-		case 9: /* show details */
+		case 10: /* show details */
 			ShowShipDetailsWindow(v);
 			break;
 		}
@@ -567,7 +567,8 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 
 static const Widget _ship_view_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_980F,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_980F,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
 {          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
 { WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_9827_CURRENT_SHIP_ACTION_CLICK},
@@ -582,7 +583,7 @@ static const Widget _ship_view_widgets[] = {
 static const WindowDesc _ship_view_desc = {
 	-1,-1, 250, 116,
 	WC_VEHICLE_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_ship_view_widgets,
 	ShipViewWndProc
 };

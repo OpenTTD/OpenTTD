@@ -1489,7 +1489,7 @@ void EndVehicleMove(Vehicle *v)
 
 void InvalidateVehicleOrderWidget(Vehicle *v)
 {
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	InvalidateWindowWidget(WC_VEHICLE_ORDERS, v->index, 2);
 }
 

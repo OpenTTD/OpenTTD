@@ -503,7 +503,8 @@ static void ShowAircraftDetailsWindow(Vehicle *v)
 
 static const Widget _aircraft_view_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_A00A,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_A00A,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
 {          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
 { WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_A027_CURRENT_AIRCRAFT_ACTION},
@@ -520,7 +521,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		Vehicle *v = &_vehicles[w->window_number];
-		uint32 disabled = 1<<7;
+		uint32 disabled = 1<<8;
 		StringID str;
 
 		{
@@ -532,7 +533,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (v->owner != _local_player)
-			disabled |= 1<<7 | 1<<6;
+			disabled |= 1<<8 | 1<<7;
 		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
@@ -583,22 +584,22 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = &_vehicles[w->window_number];
 
 		switch(e->click.widget) {
-		case 4: /* start stop */
+		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT));
 			break;
-		case 5: /* center main view */
+		case 6: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 6: /* goto hangar */
+		case 7: /* goto hangar */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
 			break;
-		case 7: /* refit */
+		case 8: /* refit */
 			ShowAircraftRefitWindow(v);
 			break;
-		case 8: /* show orders */
+		case 9: /* show orders */
 			ShowOrdersWindow(v);
 			break;
-		case 9: /* show details */
+		case 10: /* show details */
 			ShowAircraftDetailsWindow(v);
 			break;
 		}
@@ -616,7 +617,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _aircraft_view_desc = {
 	-1,-1, 250, 116,
 	WC_VEHICLE_VIEW ,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_aircraft_view_widgets,
 	AircraftViewWndProc
 };
