@@ -286,8 +286,9 @@ DEF_CONSOLE_CMD(ConExec)
 
 	fgets(cmd, sizeof(cmd), _script_file);
 	while (!feof(_script_file) && _script_running) {
-		strtok(cmd, "\r\n");
-		IConsoleCmdExec(cmd);
+		strtok(cmd, "\r\n#");
+		if (strlen(cmd) > 0 && cmd[0] != '#')
+			IConsoleCmdExec(cmd);
 		fgets(cmd, sizeof(cmd), _script_file);
 	}
 
