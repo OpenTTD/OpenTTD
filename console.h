@@ -1,5 +1,6 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
+
 // ** console ** //
 
 enum {
@@ -20,13 +21,25 @@ enum {
 	ICONSOLE_VAR_STRING,
 	ICONSOLE_VAR_POINTER,
 	ICONSOLE_VAR_REFERENCE,
-	ICONSOLE_VAR_UNKNOWN
+	ICONSOLE_VAR_UNKNOWN,
 } _iconsole_var_types;
+
+enum {
+	ICONSOLE_HOOK_ACCESS,
+	ICONSOLE_HOOK_BEFORE_CHANGE,
+	ICONSOLE_HOOK_BEFORE_EXEC,
+	ICONSOLE_HOOK_AFTER_CHANGE,
+	ICONSOLE_HOOK_AFTER_EXEC,
+} _iconsole_hook_types;
 
 typedef struct {
 	// -------------- //
 	void * addr;
 	byte * name;
+	// -------------- //
+	void * hook_access;
+	void * hook_before_exec;
+	void * hook_after_exec;
 	// -------------- //
 	void * _next;
 	} _iconsole_cmd;
@@ -37,9 +50,18 @@ typedef struct {
 	byte * name;
 	byte type;
 	// -------------- //
+	void * hook_access;
+	void * hook_before_change;
+	void * hook_after_change;
+	// -------------- //
 	void * _next;
 	bool _malloc;
 	} _iconsole_var;
+
+// ** console parser ** //
+
+_iconsole_cmd * _iconsole_cmds; // list of registred commands
+_iconsole_var * _iconsole_vars; // list of registred vars
 
 // ** console colors ** //
 VARDEF byte _iconsole_color_default;
@@ -48,6 +70,7 @@ VARDEF byte _iconsole_color_debug;
 VARDEF byte _iconsole_color_commands;
 
 // ** ttd.c functions ** //
+
 void SetDebugString(const char *s);
 
 // ** console functions ** //
@@ -79,6 +102,7 @@ void* IConsoleCmdGetAddr(byte * name);
 // *** Variables *** //
 
 void IConsoleVarRegister(byte * name, void * addr, byte type);
+void IConsoleVarMemRegister(byte * name, byte type);
 void IConsoleVarInsert(_iconsole_var * var, byte * name);
 _iconsole_var * IConsoleVarGet(byte * name);
 _iconsole_var * IConsoleVarAlloc(byte type);
@@ -91,6 +115,14 @@ void IConsoleVarDump(_iconsole_var * var, byte * dump_desc);
 
 void IConsoleCmdExec(byte * cmdstr);
 
-#include "console_cmds.h"
+// ** console std lib ** //
+void IConsoleStdLibRegister();
+
+// ** hook code ** //
+void IConsoleVarHook(byte * name, byte type, void * proc);
+void IConsoleCmdHook(byte * name, byte type, void * proc);
+bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type);
+bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type);
+
 
 #endif /* CONSOLE_H */

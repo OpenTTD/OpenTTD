@@ -296,6 +296,9 @@
 				RelativePath=".\console.c">
 			</File>
 			<File
+				RelativePath=".\console_cmds.c">
+			</File>
+			<File
 				RelativePath="economy.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -1103,9 +1106,6 @@
 			</File>
 			<File
 				RelativePath="console.h">
-			</File>
-			<File
-				RelativePath=".\console_cmds.h">
 			</File>
 			<File
 				RelativePath="economy.h">

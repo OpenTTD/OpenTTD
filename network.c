@@ -202,8 +202,6 @@ static int _num_clients;
 // keep a history of the 16 most recent seeds to be able to capture out of sync errors.
 static uint32 _my_seed_list[16][2];
 static bool _network_ready_sent;
-static uint16 _network_ready_ahead = 1;
-static uint16 _network_client_timeout;
 static uint32 _frame_fsync_last;
 
 typedef struct FutureSeeds {
@@ -1348,28 +1346,6 @@ void NetworkStartSync(bool fcreset)
 	memset(_my_seed_list, 0, sizeof(_my_seed_list));
 }
 
-// ********************************* //
-// * Network Core Console Commands * //
-// ********************************* //
-
-static _iconsole_var * NetworkConsoleCmdConnect(byte argc, byte* argv[], byte argt[])
-{
-	if (argc<2) return NULL;
-
-	if (argc == 2) {
-		IConsolePrintF(_iconsole_color_default, "connecting to %s",argv[1]);
-		NetworkCoreConnectGame(argv[1],_network_server_port);
-	} else if (argc == 3) {
-		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s",argv[1],argv[2]);
-		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
-	} else if (argc == 4) {
-		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s as player %s",argv[1],argv[2],argv[3]);
-		_network_playas = atoi(argv[3]);
-		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
-		}
-	return NULL;
-}
-
 // ************************** //
 // * UDP Network Extensions * //
 // ************************** //
@@ -1587,8 +1563,9 @@ void NetworkIPListInit()
 void NetworkCoreInit()
 {
 	DEBUG(net, 3) ("[NET][Core] init()");
-	_network_available=true;
-	_network_client_timeout=300;
+	_network_available = true;
+	_network_client_timeout = 300;
+	_network_ready_ahead = 1;
 
 	// [win32] winsock startup
 
@@ -1644,10 +1621,6 @@ void NetworkCoreInit()
 		DEBUG(net, 3) ("[NET][Core] OK: multiplayer available");
 		// initiate network ip list
 		NetworkIPListInit();
-		IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
-		IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
-		IConsoleVarRegister("net_ready_ahead",&_network_ready_ahead,ICONSOLE_VAR_UINT16);
-		IConsoleVarRegister("net_sync_freq",&_network_sync_freq,ICONSOLE_VAR_UINT16);
 	} else
 		DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
 }
@@ -1938,6 +1911,7 @@ void NetworkGameListFromLAN() {};
 void NetworkGameListFromInternet() {};
 void NetworkGameFillDefaults() {};
 NetworkGameList * NetworkGameListItem(uint16 index) {return NULL;};
+bool NetworkCoreConnectGameStruct(NetworkGameList * item) {return false;};
 void NetworkGameChangeDate(uint16 newdate) {};
 
 #endif

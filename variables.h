@@ -231,6 +231,8 @@ VARDEF uint _network_server_port;
 
 VARDEF uint16 _network_sync_freq;
 VARDEF uint16 _network_ahead_frames;
+VARDEF uint16 _network_ready_ahead;
+VARDEF uint16 _network_client_timeout;
 
 VARDEF uint32 _sync_seed_1, _sync_seed_2;
 
