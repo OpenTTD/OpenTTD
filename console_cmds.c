@@ -9,6 +9,7 @@
 #include "network_client.h"
 #include "network_server.h"
 #include "command.h"
+#include "settings.h"
 
 
 // ** scriptfile handling ** //
@@ -545,87 +546,122 @@ DEF_CONSOLE_CMD(ConSayClient)
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConSetServerName) {
-	if (argc == 2) {
-		strncpy(_network_server_name, argv[1], 40);
-		IConsolePrintF(_iconsole_color_default, "Server-name changed to '%s'", _network_server_name);
-		ttd_strlcpy(_network_game_info.server_name, _network_server_name, 40);
-	} else if (argc == 1) {
-		IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
-		IConsolePrint(_iconsole_color_default, "  Usage: setservername \"<GameName>\".");
-	} else {
-		IConsolePrint(_iconsole_color_default, "Unknow usage. Usage: setservername \"<ServerName>\".");
-	}
-	return NULL;
-}
+#endif /* ENABLE_NETWORK */
 
-DEF_CONSOLE_CMD(ConClientName) {
-	NetworkClientInfo *ci;
-	ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+/* **************************** */
+/*   the "set" command          */
+/* **************************** */
 
-	if (argc == 2 && ci != NULL) {
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[1]);
-		else {
-			if (NetworkFindName(argv[1])) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, argv[1]);
-				ttd_strlcpy(ci->client_name, argv[1], 40);
-				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-			}
-		}
-	} else {
-		IConsolePrint(_iconsole_color_default, "With 'name' you can change your network-player name.");
-		IConsolePrint(_iconsole_color_default, "  Usage: name \"<name>\".");
-	}
 
-	return NULL;
-}
-
-DEF_CONSOLE_CMD(ConProtect) {
-	// Protect a company with a password
-	if (_local_player >= MAX_PLAYERS) {
-		IConsolePrintF(_iconsole_color_default, "You have to own a company to make use of this command.");
+DEF_CONSOLE_CMD(ConSet) {
+	if (argc < 2) {
+		IConsolePrint(_iconsole_color_warning, "Unknonw usage. Usage: set [setting] [value].");
 		return NULL;
 	}
-	if (argc == 2) {
-		if (strncmp(argv[1], "*", 20) == 0) {
-			_network_player_info[_local_player].password[0] = '\0';
-		} else {
-			strncpy(_network_player_info[_local_player].password, argv[1], 20);
+
+#ifdef ENABLE_NETWORK
+
+	// setting the server password
+	if ((strcmp(argv[1],"server_pw") == 0) || (strcmp(argv[1],"server_password") == 0)) {
+		if (!_networking) {
+			IConsolePrintF(_iconsole_color_error,"No network game running");
+			return NULL;
 		}
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
-		IConsolePrintF(_iconsole_color_default, "Company protected with '%s'", _network_player_info[_local_player].password);
-	} else {
-		IConsolePrint(_iconsole_color_default, "Protect sets a password on the company, so no-one without the correct password can join.");
-		IConsolePrint(_iconsole_color_default, "  Usage: protect \"<password>\".   Use * as <password> to set no password.");
+		if (argc == 3) {
+			// Change server password
+			if (strncmp(argv[2], "*", 20) == 0) {
+				_network_game_info.server_password[0] = '\0';
+				_network_game_info.use_password = 0;
+			} else {
+				strncpy(_network_game_info.server_password, argv[2], 20);
+				_network_game_info.use_password = 1;
+			}
+			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_game_info.server_password);
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current game-password is set to '%s'", _network_game_info.server_password);
+			IConsolePrint(_iconsole_color_warning, "Usage: set server_pw \"<password>\".   Use * as <password> to set no password.");
+		}
+		return NULL;
 	}
+
+	// setting the company password
+	if ((strcmp(argv[1],"company_pw") == 0) || (strcmp(argv[1],"company_password") == 0)) {
+		if (!_networking) {
+			IConsolePrintF(_iconsole_color_error,"No network game running");
+			return NULL;
+		}
+		if (_local_player >= MAX_PLAYERS) {
+			IConsolePrintF(_iconsole_color_default, "You have to own a company to make use of this command.");
+			return NULL;
+		}
+		if (argc == 3) {
+			if (strncmp(argv[2], "*", 20) == 0) {
+				_network_player_info[_local_player].password[0] = '\0';
+			} else {
+				strncpy(_network_player_info[_local_player].password, argv[1], 20);
+			}
+			if (!_network_server)
+				SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+			IConsolePrintF(_iconsole_color_warning, "Company protected with '%s'", _network_player_info[_local_player].password);
+		} else {
+			IConsolePrint(_iconsole_color_default, "'set company_pw' sets a password on your company, so no-one without the correct password can join.");
+			IConsolePrint(_iconsole_color_warning, "Usage: set company_pw \"<password>\".   Use * as <password> to set no password.");
+		}
+		return NULL;
+	}
+
+	// setting the player name
+	if (strcmp(argv[1],"name") == 0) {
+		NetworkClientInfo *ci;
+
+		if (!_networking) {
+			IConsolePrintF(_iconsole_color_error,"No network game running");
+			return NULL;
+		}
+
+		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+
+		if (argc == 3 && ci != NULL) {
+			if (!_network_server)
+				SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
+			else {
+				if (NetworkFindName(argv[2])) {
+					NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, argv[2]);
+					ttd_strlcpy(ci->client_name, argv[2], 40);
+					NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+				}
+			}
+		} else {
+			IConsolePrint(_iconsole_color_default, "With 'set name' you can change your network-player name.");
+			IConsolePrint(_iconsole_color_warning, "Usage: set name \"<name>\".");
+		}
+		return NULL;
+	}
+
+	// setting the server name
+	if (strcmp(argv[1],"server_name") == 0) {
+		if (!_networking) {
+			IConsolePrintF(_iconsole_color_error,"No network game running");
+			return NULL;
+		}
+		if (argc == 3) {
+			strncpy(_network_server_name, argv[2], 40);
+			IConsolePrintF(_iconsole_color_warning, "Server-name changed to '%s'", _network_server_name);
+			ttd_strlcpy(_network_game_info.server_name, _network_server_name, 40);
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
+			IConsolePrint(_iconsole_color_warning, "Usage: set server_name \"<GameName>\".");
+		}
+		return NULL;
+	}
+
+#endif
+
+	IConsolePrintF(_iconsole_color_error,"Unknown setting");
 
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConSetPassword) {
-	if (argc == 2) {
-		// Change server password
-		if (strncmp(argv[1], "*", 20) == 0) {
-			_network_game_info.server_password[0] = '\0';
-			_network_game_info.use_password = 0;
-		} else {
-			strncpy(_network_game_info.server_password, argv[1], 20);
-			_network_game_info.use_password = 1;
-		}
-		IConsolePrintF(_iconsole_color_default, "Game-password changed to '%s'", _network_game_info.server_password);
-	} else if (argc == 1) {
-		IConsolePrintF(_iconsole_color_default, "Current game-password is set to '%s'", _network_game_info.server_password);
-		IConsolePrint(_iconsole_color_default, "  Usage: setpassword \"<password>\".   Use * as <password> to set no password.");
-	} else {
-		IConsolePrint(_iconsole_color_default, "Unknow usage. Usage: setpassword \"<password>\".   Use * as <password> to set no password.");
-	}
-
-	return 0;
-}
-
-#endif /* ENABLE_NETWORK */
 
 #ifdef _DEBUG
 /* ****************************************** */
@@ -682,6 +718,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("screenshot", ConScreenShot);
 	IConsoleCmdRegister("script",     ConScript);
 	IConsoleCmdRegister("scrollto",   ConScrollToTile);
+	IConsoleCmdRegister("set",			ConSet);
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
 
@@ -695,15 +732,9 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHook("say_client", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
 	IConsoleCmdRegister("kick",         ConKick);
 	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("protect", ConProtect);
-	IConsoleCmdRegister("name",         ConClientName);
 	IConsoleCmdRegister("connect", ConNetworkConnect);
 	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
 	IConsoleCmdRegister("clients", ConNetworkClients);
-	IConsoleCmdRegister("setservername", ConSetServerName);
-	IConsoleCmdHook("setservername", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("setpassword", ConSetPassword);
-	IConsoleCmdHook("setpassword", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdRegister("status",   ConStatus);
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
