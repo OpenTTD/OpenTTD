@@ -173,7 +173,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.slotindex = 0;
 		v->u.road.slot_age = 0;
 
-		v->last_station_visited = 0xFFFF;
+		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
 
@@ -639,7 +639,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	if (order->type == OT_GOTO_STATION) {
 		if (order->station == v->last_station_visited)
-			v->last_station_visited = 0xFFFF;
+			v->last_station_visited = INVALID_STATION;
 		st = GetStation(order->station);
 
 		{

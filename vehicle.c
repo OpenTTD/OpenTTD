@@ -1807,7 +1807,8 @@ const byte _common_veh_desc[] = {
 
 	SLE_VAR(Vehicle,cargo_type,				SLE_UINT8),
 	SLE_VAR(Vehicle,cargo_days,				SLE_UINT8),
-	SLE_VAR(Vehicle,cargo_source,			SLE_UINT8),
+	SLE_CONDVAR(Vehicle,cargo_source,			SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
+	SLE_CONDVAR(Vehicle,cargo_source,			SLE_UINT16, 7, 255),
 	SLE_VAR(Vehicle,cargo_cap,				SLE_UINT16),
 	SLE_VAR(Vehicle,cargo_count,			SLE_UINT16),
 

@@ -756,7 +756,7 @@ void DeleteDestinationFromVehicleOrder(Order dest)
 
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == dest.station && dest.type == OT_GOTO_STATION)
-			v->last_station_visited = 0xFFFF;
+			v->last_station_visited = INVALID_STATION;
 
 		/* Check the current order */
 		if (v->current_order.type    == dest.type &&

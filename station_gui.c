@@ -432,7 +432,7 @@ static void DrawStationViewWindow(Window *w)
 
 		y = 77;
 		for(i=0; i!=NUM_CARGO; i++) {
-			if (st->goods[i].enroute_from != 0xFF) {
+			if (st->goods[i].enroute_from != INVALID_STATION) {
 				SetDParam(0, _cargoc.names_s[i]);
 				SetDParam(2, st->goods[i].rating * 101 >> 8);
 				SetDParam(1, STR_3035_APPALLING + (st->goods[i].rating >> 5));

@@ -9,7 +9,7 @@ typedef struct GoodsEntry {
 	uint16 waiting_acceptance;
 	byte days_since_pickup;
 	byte rating;
-	byte enroute_from;
+	uint16 enroute_from;
 	byte enroute_time;
 	byte last_speed;
 	byte last_age;
@@ -20,10 +20,13 @@ typedef enum RoadStopType {
 	RS_TRUCK
 } RoadStopType;
 
-enum { NUM_ROAD_STOPS = 250 };
-enum { ROAD_STOP_LIMIT = 8 };
-enum { NUM_SLOTS = 2 };
-enum { INVALID_SLOT = 0xFFFF };
+enum {
+	INVALID_STATION = 0xFFFF,
+	INVALID_SLOT = 0xFFFF,
+	NUM_SLOTS = 2,
+	ROAD_STOP_LIMIT = 8,
+	NUM_ROAD_STOPS = 250,
+};
 
 typedef struct RoadStop {
 	TileIndex xy;

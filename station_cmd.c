@@ -415,7 +415,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 	for(i=0,ge=st->goods; i!=NUM_CARGO; i++, ge++) {
 		ge->waiting_acceptance = 0;
 		ge->days_since_pickup = 0;
-		ge->enroute_from = 0xFF;
+		ge->enroute_from = INVALID_STATION;
 		ge->rating = 175;
 		ge->last_speed = 0;
 		ge->last_age = 0xFF;
@@ -2447,7 +2447,7 @@ static void UpdateStationRating(Station *st)
 
 	ge = st->goods;
 	do {
-		if (ge->enroute_from != 0xFF) {
+		if (ge->enroute_from != INVALID_STATION) {
 			byte_inc_sat(&ge->enroute_time);
 			byte_inc_sat(&ge->days_since_pickup);
 
@@ -2589,7 +2589,7 @@ void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radi
 				DistanceManhattan(tile, st->xy) <= radius) {
 			ge = st->goods;
 			for(i=0; i!=NUM_CARGO; i++,ge++) {
-				if (ge->enroute_from != 0xFF) {
+				if (ge->enroute_from != INVALID_STATION) {
 					ge->rating = clamp(ge->rating + amount, 0, 255);
 				}
 			}
@@ -2808,7 +2808,7 @@ void BuildOilRig(uint tile)
 			for(j=0; j!=NUM_CARGO; j++) {
 				st->goods[j].waiting_acceptance = 0;
 				st->goods[j].days_since_pickup = 0;
-				st->goods[j].enroute_from = 0xFF;
+				st->goods[j].enroute_from = INVALID_STATION;
 				st->goods[j].rating = 175;
 				st->goods[j].last_speed = 0;
 				st->goods[j].last_age = 255;
@@ -2998,7 +2998,8 @@ static const byte _goods_desc[] = {
 	SLE_VAR(GoodsEntry,waiting_acceptance,SLE_UINT16),
 	SLE_VAR(GoodsEntry,days_since_pickup,	SLE_UINT8),
 	SLE_VAR(GoodsEntry,rating,						SLE_UINT8),
-	SLE_VAR(GoodsEntry,enroute_from,			SLE_UINT8),
+	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
+	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_UINT16, 7, 255),
 	SLE_VAR(GoodsEntry,enroute_time,			SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_speed,				SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_age,					SLE_UINT8),
@@ -3012,8 +3013,13 @@ static void SaveLoad_STNS(Station *st)
 	int i;
 
 	SlObject(st, _station_desc);
-	for (i = 0; i != NUM_CARGO; i++)
+	for (i = 0; i != NUM_CARGO; i++) {
 		SlObject(&st->goods[i], _goods_desc);
+
+		/* In older versions, enroute_from had 0xFF as INVALID_STATION, is now 0xFFFF */
+		if (_sl.full_version < 0x700 && st->goods[i].enroute_from == 0xFF)
+			st->goods[i].enroute_from = 0xFFFF;
+	}
 }
 
 static void Save_STNS(void)

@@ -1208,7 +1208,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 	return false;
 }
 
-static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte dest, byte days_in_transit)
+static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16 dest, byte days_in_transit)
 {
 	bool subsidised;
 	Station *s_from, *s_to;
@@ -1335,7 +1335,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
-	int last_visited;
+	uint16 last_visited;
 	Station *st;
 	GoodsEntry *ge;
 	int t;
@@ -1358,7 +1358,7 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		/* unload? */
 		if (v->cargo_count != 0) {
-			if (v->cargo_source != (byte)last_visited && ge->waiting_acceptance & 0x8000) {
+			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000) {
 				// deliver goods to the station
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
 				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
@@ -1376,7 +1376,7 @@ int LoadUnloadVehicle(Vehicle *v)
 					// Goods already waiting at station. Set counters to the worst value.
 					if (v->cargo_days >= ge->enroute_time)
 						ge->enroute_time = v->cargo_days;
-					if ((byte)last_visited != ge->enroute_from)
+					if (last_visited != ge->enroute_from)
 						ge->enroute_from = v->cargo_source;
 				}
 				// Update amount of waiting cargo

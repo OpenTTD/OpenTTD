@@ -138,7 +138,7 @@ struct Vehicle {
 
 	byte cargo_type;	// type of cargo this vehicle is carrying
 	byte cargo_days; // how many days have the pieces been in transit
-	byte cargo_source;// source of cargo
+	uint16 cargo_source;// source of cargo
 	uint16 cargo_cap;	// total capacity
 	uint16 cargo_count;// how many pieces are used
 

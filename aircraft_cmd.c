@@ -232,7 +232,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 //		v->load_unload_time_rem = 0;
 //		v->progress = 0;
-		v->last_station_visited = 0xFFFF;
+		v->last_station_visited = INVALID_STATION;
 //		v->destination_coords = 0;
 
 		v->max_speed = avi->max_speed;

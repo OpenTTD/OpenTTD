@@ -586,7 +586,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->cargo_cap = rvi->capacity;
 			v->max_speed = rvi->max_speed;
 			v->value = value;
-			v->last_station_visited = 0xFFFF;
+			v->last_station_visited = INVALID_STATION;
 			v->dest_tile = 0;
 
 			v->engine_type = (byte)p1;
@@ -1938,7 +1938,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	switch (order->type) {
 		case OT_GOTO_STATION:
 			if (order->station == v->last_station_visited)
-				v->last_station_visited = 0xFFFF;
+				v->last_station_visited = INVALID_STATION;
 			v->dest_tile = GetStation(order->station)->xy;
 			result = CheckReverseTrain(v);
 			break;
