@@ -1104,7 +1104,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 };
 
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, int type)
+Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 {
 	Vehicle *v;
 
@@ -1129,12 +1129,12 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, int type)
 	return v;
 }
 
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, int type)
+Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type)
 {
 	return CreateEffectVehicle(x, y, GetSlopeZ(x, y) + z, type);
 }
 
-Vehicle *CreateEffectVehicleRel(Vehicle *v, int x, int y, int z, int type)
+Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type)
 {
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }

@@ -166,7 +166,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			}
 
 			if ((v->tick_counter&7)==0) {
-				CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE_3);
+				CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
 			}
 		} else if (v->current_order.station == 0) {
 			tile = v->tile; /**/
@@ -219,7 +219,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	SetDisasterVehiclePos(v, x, y, z);
 
 	if (++v->age == 1) {
-		CreateEffectVehicleRel(v, 0, 7, 8, EV_CRASHED_SMOKE);
+		CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, v);
 		v->u.disaster.image_override = 0xF42;
 	} else if (v->age == 70) {
@@ -232,7 +232,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				-7 + (r&0xF),
 				-7 + (r>>4&0xF),
 				5 + (r>>8&0x7),
-				EV_DEMOLISH);
+				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
 		v->current_order.station = 3;
@@ -323,7 +323,7 @@ static void DisasterTick_UFO(Vehicle *v)
 
 // destroy?
 		if (v->age > 50) {
-			CreateEffectVehicleRel(v, 0, 7, 8, EV_CRASHED_SMOKE);
+			CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
 			SndPlayVehicleFx(SND_12_EXPLOSION, v);
 			DeleteDisasterVeh(v);
 		}
@@ -370,7 +370,7 @@ static void DisasterTick_2(Vehicle *v)
 				x + (r & 0x3F),
 				y + (r >> 6 & 0x3F),
 				(r >> 12 & 0xF),
-				EV_DEMOLISH);
+				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
 				v->current_order.station = 3;
@@ -441,7 +441,7 @@ static void DisasterTick_3(Vehicle *v)
 				x + (r & 0x3F),
 				y + (r >> 6 & 0x3F),
 				(r >> 12 & 0xF),
-				EV_DEMOLISH);
+				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
 				v->current_order.station = 3;
@@ -614,7 +614,7 @@ static void DisasterTick_4b(Vehicle *v)
 			return;
 		v->current_order.station = 1;
 
-		CreateEffectVehicleRel(u, 0, 7, 8, EV_CRASHED_SMOKE);
+		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, u);
 
 		DeleteDisasterVeh(u);
@@ -625,7 +625,7 @@ static void DisasterTick_4b(Vehicle *v)
 				v->x_pos-32+(r&0x3F),
 				v->y_pos-32+(r>>5&0x3F),
 				0,
-				EV_DEMOLISH);
+				EV_EXPLOSION_SMALL);
 		}
 
 		BEGIN_TILE_LOOP(tile,6,6,v->tile - TILE_XY(3,3))

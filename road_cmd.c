@@ -980,7 +980,7 @@ static void TileLoop_Road(uint tile)
 						TileX(tile) * 16 + 7,
 						TileY(tile) * 16 + 7,
 						0,
-						EV_ROADWORK);
+						EV_BULLDOZER);
 					MarkTileDirtyByTile(tile);
 					return;
 				}

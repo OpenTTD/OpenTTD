@@ -1057,7 +1057,7 @@ static void HandleCrashedAircraft(Vehicle *v)
 				4 + (r&0xF),
 				4 + ((r>>4)&0xF),
 				((r>>8)&0xF),
-				EV_DEMOLISH);
+				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->u.air.crashed_counter >= 10000) {
 		// remove rubble of crashed airplane
@@ -1108,7 +1108,7 @@ static void HandleAircraftSmoke(Vehicle *v)
 			_aircraft_smoke_xy[v->direction],
 			_aircraft_smoke_xy[v->direction + 8],
 			2,
-			EV_SMOKE_3
+			EV_SMOKE
 		);
 	}
 }
@@ -1206,7 +1206,7 @@ static void CrashAirplane(Vehicle *v)
 	v->vehstatus |= VS_CRASHED;
 	v->u.air.crashed_counter = 0;
 
-	CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
+	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 
 	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 

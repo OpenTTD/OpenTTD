@@ -334,7 +334,9 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 				// draw explosion animation...
 				if ((x==sx || x==ex) && (y==sy || y==ey)) {
 					// big explosion in each corner, or small explosion for single tiles
-					CreateEffectVehicleAbove(x + 8,y + 8, 2, sy==ey && sx==ex ? EV_DEMOLISH : EV_CRASHED_SMOKE);
+					CreateEffectVehicleAbove(x + 8, y + 8, 2,
+						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
+					);
 				}
 			}
 		}

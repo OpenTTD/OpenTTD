@@ -238,23 +238,18 @@ enum TrainSubtype {
 };
 
 /* Effect vehicle types */
-enum {
-	EV_INDUSTRYSMOKE = 0,
-	EV_STEAM_SMOKE = 1,
-
-	EV_SMOKE_1 = 2,
-	EV_SMOKE_2 = 3,
-	EV_SMOKE_3 = 4,
-
-	EV_CRASHED_SMOKE = 5,
+typedef enum EffectVehicle {
+	EV_CHIMNEY_SMOKE   = 0,
+	EV_STEAM_SMOKE     = 1,
+	EV_DIESEL_SMOKE    = 2,
+	EV_ELECTRIC_SPARK  = 3,
+	EV_SMOKE           = 4,
+	EV_EXPLOSION_LARGE = 5,
 	EV_BREAKDOWN_SMOKE = 6,
-
-	EV_DEMOLISH = 7,
-	EV_ROADWORK = 8,
-
-	EV_INDUSTRY_SMOKE = 9,
-
-};
+	EV_EXPLOSION_SMALL = 7,
+	EV_BULLDOZER       = 8,
+	EV_BUBBLE          = 9
+} EffectVehicle;
 
 typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
@@ -295,9 +290,9 @@ int GetAircraftImage(Vehicle *v, byte direction);
 int GetRoadVehImage(Vehicle *v, byte direction);
 int GetShipImage(Vehicle *v, byte direction);
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, int type);
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, int type);
-Vehicle *CreateEffectVehicleRel(Vehicle *v, int x, int y, int z, int type);
+Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
+Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
+Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type);
 
 uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y);
 

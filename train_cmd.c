@@ -1454,14 +1454,14 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 		case 1:
 			// diesel smoke
 			if (u->cur_speed <= 40 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x1E00) {
-				CreateEffectVehicleRel(v, 0,0,10, EV_SMOKE_3);
+				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 			}
 			break;
 
 		case 2:
 			// blue spark
 			if ( (v->tick_counter&0x3) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x5B0) {
-				CreateEffectVehicleRel(v, 0,0,10, EV_SMOKE_2);
+				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 			}
 			break;
 		}
@@ -2658,7 +2658,7 @@ static void HandleCrashedTrain(Vehicle *v)
 	Vehicle *u;
 
 	if ( (state == 4) && (v->u.rail.track != 0x40) ) {
-		CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
+		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
 	if (state <= 200 && (uint16)(r=Random()) <= 0x2492) {
@@ -2673,7 +2673,7 @@ static void HandleCrashedTrain(Vehicle *v)
 					2 + ((r>>8)&7),
 					2 + ((r>>16)&7),
 					5 + (r&7),
-					EV_DEMOLISH);
+					EV_EXPLOSION_SMALL);
 				break;
 			}
 		} while ( (u=u->next) != NULL);

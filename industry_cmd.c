@@ -669,7 +669,7 @@ static void MakeIndustryTileBiggerCase8(uint tile)
 {
 	TileInfo ti;
 	FindLandscapeHeight(&ti, TileX(tile) * 16, TileY(tile) * 16);
-	CreateEffectVehicle(ti.x + 15, ti.y + 14, ti.z + 59 + (ti.tileh != 0 ? 8 : 0), EV_INDUSTRYSMOKE);
+	CreateEffectVehicle(ti.x + 15, ti.y + 14, ti.z + 59 + (ti.tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
 }
 
 static void MakeIndustryTileBigger(uint tile, byte size)
@@ -735,7 +735,7 @@ static void TileLoopIndustryCase161(uint tile)
 		TileX(tile) * 16 + _tileloop_ind_case_161[dir + 0],
 		TileY(tile) * 16 + _tileloop_ind_case_161[dir + 4],
 		_tileloop_ind_case_161[dir + 8],
-		EV_INDUSTRY_SMOKE
+		EV_BUBBLE
 	);
 
 	if (v != NULL)
@@ -819,7 +819,7 @@ static void TileLoop_Industry(uint tile)
 		break;
 
 	case 49: {
-		CreateEffectVehicleAbove(TileX(tile) * 16 + 6, TileY(tile) * 16 + 6, 43, EV_SMOKE_3);
+		CreateEffectVehicleAbove(TileX(tile) * 16 + 6, TileY(tile) * 16 + 6, 43, EV_SMOKE);
 	} break;
 
 

@@ -509,7 +509,7 @@ static void RoadVehIsCrashed(Vehicle *v)
 {
 	v->u.road.crashed_ctr++;
 	if (v->u.road.crashed_ctr == 2) {
-		CreateEffectVehicleRel(v,4,4,8,EV_CRASHED_SMOKE);
+		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	} else if (v->u.road.crashed_ctr <= 45) {
 		if ((v->tick_counter&7)==0)
 			RoadVehSetRandomDirection(v);
