@@ -228,8 +228,8 @@ Retired Developers:
 Thanks to:
   Josef Drexler - For his great work on TTDPatch.
   Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  blathijs - For his many patches, suggestions and major work on maprewrite
-  pasky - Many patches, newgrf support, etc.
+  Matthijs Kooijman (blathijs) - For his many patches, suggestions and major work on maprewrite
+  Petr Baudis (pasky) - Many patches, newgrf support, etc.
   Stefan Meiﬂner (sign_de) - For his work on the console
   Mike Ragsdale - OpenTTD installer
   Cian Duffy (MYOB) - BeOS port / manual writing
