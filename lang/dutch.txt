@@ -226,7 +226,7 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME				:{WHITE}Te veel voertuigen in het spel
 STR_00E2							:{BLACK}{COMMA16}
 STR_00E3							:{RED}{COMMA16}
 STR_00E4_LOCATION						:{BLACK}Locatie
-STR_00E5_CONTOURS						:Randen
+STR_00E5_CONTOURS						:Contouren
 STR_00E6_VEHICLES						:Voertuigen
 STR_00E7_INDUSTRIES						:Industrieën
 STR_00E8_ROUTES							:Routes
@@ -421,7 +421,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Sloop gebouwen etc. op een stuk land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Verlaag een hoek van het land
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Verhoog een hoek van het land
 STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Scrollbalk - scroll door de lijst
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Toon landranden op de kaart
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Toon landcontouren op de kaart
 STR_0192_SHOW_VEHICLES_ON_MAP					:{BLACK}Toon voertuigen op de kaart
 STR_0193_SHOW_INDUSTRIES_ON_MAP					:{BLACK}Toon industrieën op de kaart
 STR_0194_SHOW_TRANSPORT_ROUTES_ON				:{BLACK}Toon transportroutes op de kaart
@@ -787,7 +787,7 @@ STR_02EB_TOWN_NAMES						:{BLACK}Plaatsnamen
 STR_02EC							:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES				:{BLACK}Kies type plaatsnamen
 
-STR_02F4_AUTOSAVE						:{BLACK}Autosave
+STR_02F4_AUTOSAVE						:{BLACK}Automatisch opslaan
 STR_02F5							:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN				:{BLACK}Kies interval tussen autosaves
 STR_02F7_OFF							:Uit
@@ -1002,13 +1002,13 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:ja, maar sluit gestopte voertuigen u
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:van alle voertuigen
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Waarschuw als het inkomen van een trein negatief is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatisch vernieuw voertuig wanneer deze oud wordt
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatisch vernieuw voertuig wanneer {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd is
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Onzichtbare bomen (met transparante gebouwen): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Opgelete: Hoge waardes vertragen het spel
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
