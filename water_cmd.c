@@ -562,9 +562,9 @@ static void FloodVehicle(Vehicle *v)
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 			v->index,
 			0);
-	}
 	CreateEffectVehicleRel(v,4,4,8,EV_CRASHED_SMOKE);	// show cool destruction effects
 	SndPlayVehicleFx(SND_12_EXPLOSION, v); // create sound
+	}
 }
 
 // called from tunnelbridge_cmd
