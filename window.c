@@ -721,40 +721,10 @@ bool HandleWindowDragging()
 			ny = y;
 
 			if (_patches.window_snap_radius != 0) {
-				uint hsnap = _patches.window_snap_radius;
-				uint vsnap = _patches.window_snap_radius;
-				uint delta;
+				int hsnap = _patches.window_snap_radius;
+				int vsnap = _patches.window_snap_radius;
+				int delta;
 
-				// Snap at screen borders
-				// Left screen border
-				delta = abs(x);
-				if (delta <= hsnap) {
-					nx = 0;
-					hsnap = delta;
-				}
-
-				// Right screen border
-				delta = abs(_screen.width - x - w->width);
-				if (delta <= hsnap) {
-					nx = _screen.width - w->width;
-					hsnap = delta;
-				}
-
-				// Top of screen
-				delta = abs(y);
-				if (delta <= vsnap) {
-					ny = 0;
-					vsnap = delta;
-				}
-
-				// Bottom of screen
-				delta = abs(_screen.height - y - w->height);
-				if (delta <= vsnap) {
-					ny = _screen.height - w->height;
-					vsnap = delta;
-				}
-
-				// Snap at other windows
 				for (v = _windows; v != _last_window; ++v) {
 					if (v == w) continue; // Don't snap at yourself
 
@@ -774,6 +744,22 @@ bool HandleWindowDragging()
 						}
 					}
 
+					if (w->top + w->height >= v->top && w->top <= v->top + v->height) {
+						// Your left border <-> other left border
+						delta = abs(v->left - x);
+						if (delta <= hsnap) {
+							nx = v->left;
+							hsnap = delta;
+						}
+
+						// Your right border <-> other right border
+						delta = abs(v->left + v->width - x - w->width);
+						if (delta <= hsnap) {
+							nx = v->left + v->width - w->width;
+							hsnap = delta;
+						}
+					}
+
 					if (x + w->width > v->left && x < v->left + v->width) {
 						// Your top border <-> other bottom border
 						delta = abs(v->top + v->height - y);
@@ -786,6 +772,22 @@ bool HandleWindowDragging()
 						delta = abs(v->top - y - w->height);
 						if (delta <= vsnap) {
 							ny = v->top - w->height;
+							vsnap = delta;
+						}
+					}
+
+					if (w->left + w->width >= v->left && w->left <= v->left + v->width) {
+						// Your top border <-> other top border
+						delta = abs(v->top - y);
+						if (delta <= vsnap) {
+							ny = v->top;
+							vsnap = delta;
+						}
+
+						// Your bottom border <-> other bottom border
+						delta = abs(v->top + v->height - y - w->height);
+						if (delta <= vsnap) {
+							ny = v->top + v->height - w->height;
 							vsnap = delta;
 						}
 					}
