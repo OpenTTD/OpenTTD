@@ -1,7 +1,7 @@
 OPENTTD INGAME CONSOLE DOCUMENTATION
 ====================================
 
-HOTKEY: TAB
+HOTKEY: BACKQUOTE (aka tile, the key left to "1")
 
 COMMANDS:
 ---------
