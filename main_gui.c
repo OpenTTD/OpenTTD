@@ -1444,7 +1444,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, 4);
 			_generating_world = true;
-			t = CreateRandomTown();
+			t = CreateRandomTown(20);
 			_generating_world = false;
 			if (t != NULL)
 				ScrollMainWindowToTile(t->xy);

@@ -1027,15 +1027,12 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-Town *CreateRandomTown(void)
+Town *CreateRandomTown(uint attempts)
 {
 	uint tile;
 	TileInfo ti;
 	Town *t;
-	int n;
 
-	// Try 20 times.
-	n = 20;
 	do {
 		// Generate a tile index not too close from the edge
 		tile = TILE_MASK(Random());
@@ -1058,7 +1055,7 @@ Town *CreateRandomTown(void)
 
 		DoCreateTown(t, tile);
 		return t;
-	} while (--n);
+	} while (--attempts);
 	return NULL;
 }
 
@@ -1068,10 +1065,19 @@ static const byte _num_initial_towns[3] = {
 
 void GenerateTowns(void)
 {
+	uint num = 0;
 	uint n =
 		ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
 
-	do CreateRandomTown(); while (--n);
+	do {
+		if (CreateRandomTown(20) != NULL) 	//try 20 times for the first loop
+			num++;
+	} while (--n);
+
+	if (num == 0 && CreateRandomTown(10000) == NULL) {
+		//XXX can we handle that more gracefully?
+		error("Could not generate any town");
+	}
 }
 
 static bool CheckBuildHouseMode(Town *t1, uint tile, uint tileh, int mode) {
