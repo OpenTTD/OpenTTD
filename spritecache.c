@@ -58,7 +58,7 @@ static int _compact_cache_counter;
 
 typedef struct MD5File {
 	const char * const filename;     // filename
-	const md5_byte_t const hash[16]; // md5 sum of the file
+	const md5_byte_t hash[16]; // md5 sum of the file
 } MD5File;
 
 typedef struct FileList {
@@ -774,7 +774,6 @@ static bool FileMD5(const MD5File file, bool warn)
 {
 	FILE *f;
 	char buf[MAX_PATH];
-	byte *s;
 
 	md5_state_t filemd5state;
 	int len=0;
