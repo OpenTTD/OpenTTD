@@ -202,7 +202,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					if ( (ti.map5 & 0x1C) == 4 ) {
 						m2 = 16;
 					} else if ( (ti.map5 & 0x1C) == 16 ) {
-						m2 = (ti.map5 << 6) | 0x20;
+						m2 = ((ti.map5 & 3) << 6) | 0x20;
 					}
 
 					treetype = p1;
@@ -609,7 +609,7 @@ void OnTick_Trees()
 		} else if (m == 4) {
 			m2 = 0x10;
 		} else {
-			m2 = (_map5[tile] << 6) | 0x20;
+			m2 = ((_map5[tile] & 3) << 6) | 0x20;
 		}
 
 		ModifyTile(tile,
