@@ -218,7 +218,7 @@ static char *strecpy(char *dst, const char *src)
 	return dst - 1;
 }
 
-byte *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
+void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
 	FILE *in;
 	byte *mem;
