@@ -123,7 +123,7 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 	IniGroup *grp = pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
 	grp->name = pool_strdup(&ini->pool, grpt, len);
-	if(!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") )
+	if(!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") || !strcmp(grp->name, "bans") )
 		grp->type = IGT_LIST;
 	else
 		grp->type = IGT_VARIABLES;
@@ -983,6 +983,7 @@ void LoadFromConfig()
 	HandleSettingDescs(ini, load_setting_desc);
 	LoadList(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
 	LoadList(ini, "servers", _network_host_list, lengthof(_network_host_list));
+	LoadList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
 	ini_free(ini);
 }
 
@@ -991,6 +992,7 @@ void SaveToConfig()
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, save_setting_desc);
 	SaveList(ini, "servers", _network_host_list, lengthof(_network_host_list));
+	SaveList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }

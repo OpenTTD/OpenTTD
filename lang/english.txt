@@ -1343,6 +1343,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} A protocol-error was made and the conn
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} The revision of this client does not match the server's revision
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Wrong password
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} The server is full
+STR_NETWORK_ERR_SERVER_BANNED				:{WHITE} You are banned from this server
 STR_NETWORK_ERR_KICKED						:{WHITE} You were kicked out of the game
 STR_NETWORK_ERR_CHEATER						:{WHITE} Cheating is not allowed on this server
 

@@ -1069,6 +1069,7 @@ typedef void NetworkServerPacket(NetworkClientState *cs, Packet *p);
 //  packet is found.
 static NetworkServerPacket* const _network_server_packet[] = {
 	NULL, /*PACKET_SERVER_FULL,*/
+	NULL, /*PACKET_SERVER_BANNED,*/
 	RECEIVE_COMMAND(PACKET_CLIENT_JOIN),
 	NULL, /*PACKET_SERVER_ERROR,*/
 	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO),

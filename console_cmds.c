@@ -144,6 +144,87 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 // ********************************* //
 #ifdef ENABLE_NETWORK
 
+DEF_CONSOLE_CMD(ConBan)
+{
+	NetworkClientInfo *ci;
+
+	if (argc == 2) {
+		uint32 index = atoi(argv[1]);
+		if (index == NETWORK_SERVER_INDEX && !_network_dedicated) {
+			IConsolePrint(_iconsole_color_default, "Silly boy, you can not ban yourself!");
+			return NULL;
+		}
+		if (index == 0) {
+			IConsoleError("Invalid Client-ID");
+			return NULL;
+		}
+
+		ci = NetworkFindClientInfoFromIndex(index);
+
+		if (ci != NULL) {
+			uint i;
+			/* Add user to ban-list */
+			for (i = 0; i < lengthof(_network_ban_list); i++) {
+				if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
+					_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ci->client_ip));
+					break;
+				}
+			}
+
+			SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+			return NULL;
+		} else {
+			IConsoleError("Client-ID not found");
+			return NULL;
+		}
+	}
+
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: ban <client-id>. For client-ids, see 'clients'.");
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConUnBan)
+{
+	if (argc == 2) {
+		uint i;
+		for (i = 0; i < lengthof(_network_ban_list); i++) {
+			if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
+				continue;
+
+			if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0) {
+				_network_ban_list[i][0] = '\0';
+				IConsolePrint(_iconsole_color_default, "IP unbanned.");
+				return NULL;
+			}
+		}
+
+		IConsolePrint(_iconsole_color_default, "IP not in ban-list.");
+
+		return NULL;
+	}
+
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: unban <ip>.");
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConBanList)
+{
+	uint i;
+
+	IConsolePrint(_iconsole_color_default, "Banlist: ");
+
+	for (i = 0; i < lengthof(_network_ban_list); i++) {
+		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
+			continue;
+
+		IConsolePrintF(_iconsole_color_default, "  %d) %s", i + 1, _network_ban_list[i]);
+	}
+
+	return NULL;
+}
+
 DEF_CONSOLE_CMD(ConStatus)
 {
 	const char *status;
@@ -977,6 +1058,13 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("status",   ConStatus);
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
+
+	IConsoleCmdRegister("ban",   ConBan);
+	IConsoleCmdHook("ban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("unban",   ConUnBan);
+	IConsoleCmdHook("unban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("banlist",   ConBanList);
+	IConsoleCmdHook("banlist", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 
 	IConsoleAliasRegister("clean_company",		"reset_company %A");
 

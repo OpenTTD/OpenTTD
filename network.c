@@ -219,7 +219,8 @@ static void NetworkClientError(byte res, NetworkClientState *cs) {
 		default: errorno = NETWORK_ERROR_GENERAL;
 	}
 	// This means we fucked up and the server closed the connection
-	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL) {
+	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
+			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
 		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
 
 		// Dequeue all commands before closing the socket
@@ -615,6 +616,8 @@ static void NetworkAcceptClients(void)
 #else
 	LONG sin_len; // for some reason we need a 'LONG' under MorphOS
 #endif
+	int i;
+	bool banned;
 
 	// Should never ever happen.. is it possible??
 	assert(_listensocket != INVALID_SOCKET);
@@ -638,6 +641,33 @@ static void NetworkAcceptClients(void)
 		// The (const char*) cast is needed for windows!!
 		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
 		#endif
+
+		/* Check if the client is banned */
+		banned = false;
+		for (i = 0; i < lengthof(_network_ban_list); i++) {
+			if (_network_ban_list[i] == NULL)
+				continue;
+
+			if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) {
+				Packet *p = NetworkSend_Init(PACKET_SERVER_BANNED);
+
+				DEBUG(net, 1)("[NET] Banned ip tried to join (%s), refused", _network_ban_list[i]);
+
+				p->buffer[0] = p->size & 0xFF;
+				p->buffer[1] = p->size >> 8;
+
+				send(s, p->buffer, p->size, 0);
+				closesocket(s);
+
+				free(p);
+
+				banned = true;
+				break;
+			}
+		}
+		/* If this client is banned, continue with next client */
+		if (banned)
+			continue;
 
 		cs = NetworkAllocClient(s);
 		if (cs == NULL) {
@@ -844,15 +874,15 @@ void NetworkAddServer(const byte *b)
  * by the function that generates the config file. */
 void NetworkRebuildHostList()
 {
-	int i=0;
+	int i = 0;
 	NetworkGameList *item = _network_game_list;
-	while (item != NULL && i!=lengthof(_network_host_list)) {
+	while (item != NULL && i != lengthof(_network_host_list)) {
 		if (item->manually)
 			_network_host_list[i++] = strdup(item->info.hostname);
 		item = item->next;
 	}
 
-	for (; i<lengthof(_network_host_list); i++) {
+	for (; i < lengthof(_network_host_list); i++) {
 		_network_host_list[i] = strdup("");
 	}
 }
@@ -1262,10 +1292,10 @@ void NetworkStartUp(void)
 	DEBUG(net, 3) ("[NET][Core] Starting network...");
 
 	#if defined(__MORPHOS__) || defined(__AMIGA__)
-	/* 
+	/*
 	 *  IMPORTANT NOTE: SocketBase needs to be initialized before we use _any_
 	 *  network related function, else: crash.
-	 */	
+	 */
 	{
 		DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
 		if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
@@ -1291,7 +1321,7 @@ void NetworkStartUp(void)
 		#endif // __AMIGA__
 	}
 	#endif // __MORPHOS__ / __AMIGA__
-     
+
     // Network is available
 	_network_available = true;
 	_network_dedicated = false;

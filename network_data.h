@@ -67,6 +67,7 @@ typedef enum {
 	NETWORK_RECV_STATUS_MALFORMED_PACKET,
 	NETWORK_RECV_STATUS_SERVER_ERROR, // The server told us we made an error
 	NETWORK_RECV_STATUS_SERVER_FULL,
+	NETWORK_RECV_STATUS_SERVER_BANNED,
 	NETWORK_RECV_STATUS_CLOSE_QUERY, // Done quering the server
 } NetworkRecvStatus;
 
@@ -130,6 +131,7 @@ typedef struct NetworkClientState {
 //   is the respond to a wrong revision)
 typedef enum {
 	PACKET_SERVER_FULL,
+	PACKET_SERVER_BANNED,
 	PACKET_CLIENT_JOIN,
 	PACKET_SERVER_ERROR,
 	PACKET_CLIENT_COMPANY_INFO,

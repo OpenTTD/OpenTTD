@@ -263,6 +263,15 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 	return NETWORK_RECV_STATUS_SERVER_FULL;
 }
 
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_BANNED)
+{
+	// We try to join a server where we are banned
+	_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_BANNED;
+	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+
+	return NETWORK_RECV_STATUS_SERVER_BANNED;
+}
+
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 {
 	byte company_info_version;
@@ -737,6 +746,7 @@ typedef NetworkRecvStatus NetworkClientPacket(Packet *p);
 //  packet is found.
 static NetworkClientPacket* const _network_client_packet[] = {
 	RECEIVE_COMMAND(PACKET_SERVER_FULL),
+	RECEIVE_COMMAND(PACKET_SERVER_BANNED),
 	NULL, /*PACKET_CLIENT_JOIN,*/
 	RECEIVE_COMMAND(PACKET_SERVER_ERROR),
 	NULL, /*PACKET_CLIENT_COMPANY_INFO,*/

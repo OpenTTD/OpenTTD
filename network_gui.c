@@ -953,10 +953,21 @@ static void ClientList_Kick(byte client_no)
 		SEND_COMMAND(PACKET_SERVER_ERROR)(&_clients[client_no], NETWORK_ERROR_KICKED);
 }
 
-/*static void ClientList_Ban(byte client_no)
+static void ClientList_Ban(byte client_no)
 {
-// TODO
-}*/
+	uint i;
+	uint32 ip = NetworkFindClientInfo(client_no)->client_ip;
+
+	for (i = 0; i < lengthof(_network_ban_list); i++) {
+		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
+			_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ip));
+			break;
+		}
+	}
+
+	if (client_no < MAX_PLAYERS)
+		SEND_COMMAND(PACKET_SERVER_ERROR)(&_clients[client_no], NETWORK_ERROR_KICKED);
+}
 
 static void ClientList_GiveMoney(byte client_no)
 {
@@ -1090,8 +1101,8 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK);
 		_clientlist_proc[i++] = &ClientList_Kick;
 
-/*		sprintf(clientlist_action[i],"Ban");
-		clientlist_proc[i++] = &ClientList_Ban;*/
+		sprintf(_clientlist_action[i],"Ban");
+		_clientlist_proc[i++] = &ClientList_Ban;
 	}
 
 	if (i == 0) {
