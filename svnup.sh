@@ -8,10 +8,15 @@
 Base=`svn info | grep "Revision" | xargs -n 1 | tail -n 1`
 
 # updates the source
-svn update
+svn update > svn.log
+cat svn.log
 
 # if the revision number changed
 if [ "$Base" -ne "`svn info | grep "Revision" | xargs -n 1 | tail -n 1`" ]; then
 # displays the log changes
 svn log -r HEAD:$(($Base + 1))
 fi
+
+# displays merged files
+cat svn.log|grep "^G"
+cat svn.log|grep "^C"
