@@ -775,14 +775,21 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	ci = DEREF_CLIENT_INFO(cs);
 	// Only CMD_PLAYER_CTRL is always allowed, for the rest, playas needs
 	//  to match the player in the packet
-	if (cp->cmd != CMD_PLAYER_CTRL && ci->client_playas-1 != cp->player) {
+	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas-1 != cp->player) {
 		// The player did a command with the wrong player_id.. bad!!
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		return;
 	}
 	if (cp->cmd == CMD_PLAYER_CTRL) {
-		// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
-		cp->p2 = cs - _clients;
+		if (cp->p1 == 0)
+			// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
+			cp->p2 = cs - _clients;
+		else {
+			/* We do NOT allow any client to send any PLAYER_CTRL packet..
+			    (they can delete random players with it if they like */
+			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
+			return;
+		}
 	}
 
 
