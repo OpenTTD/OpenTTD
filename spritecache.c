@@ -149,12 +149,15 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 	}
 }
 
-static void ReadSprite(int num, byte *dest)
+static void ReadSprite(SpriteID id, byte *dest)
 {
+	uint num = _sprite_size[id];
 	byte type;
 	byte *rel;
 	int8 i;
 	int dist;
+
+	FioSeekToFile(_sprite_file_pos[id]);
 
 	type = FioReadByte();
 	/* We've decoded special sprites when reading headers. */
@@ -163,6 +166,7 @@ static void ReadSprite(int num, byte *dest)
 		Sprite* sprite = dest;
 		sprite->info = type;
 		sprite->height = FioReadByte();
+		if (id == 142) sprite->height = 10; // Compensate for a TTD bug
 		sprite->width = FioReadWord();
 		sprite->x_offs = FioReadWord();
 		sprite->y_offs = FioReadWord();
@@ -625,11 +629,7 @@ static byte *LoadSpriteToMem(int sprite)
 
 					_sprite_ptr[sprite] = s->data;
 
-					FioSeekToFile(_sprite_file_pos[sprite]);
-					ReadSprite(_sprite_size[sprite], s->data);
-
-					// Patch the height to compensate for a TTD bug?
-					if (sprite == 142) s->data[1] = 10;
+					ReadSprite(sprite, s->data);
 
 					// Return sprite ptr
 					return s->data;
