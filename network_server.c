@@ -1186,24 +1186,20 @@ void NetworkPopulateCompanyInfo(void)
 
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	// Register local player (if not dedicated)
-	if (ci != NULL && _local_player < MAX_PLAYERS) {
-		snprintf(_network_player_info[ci->client_playas-1].players, sizeof(_network_player_info[ci->client_playas-1].players), "%s", ci->client_name);
-	}
+	if (ci != NULL && ci->client_playas > 0  && ci->client_playas <= MAX_PLAYERS)
+		ttd_strlcpy(_network_player_info[ci->client_playas-1].players, ci->client_name, sizeof(_network_player_info[ci->client_playas-1].players));
 
 	FOR_ALL_CLIENTS(cs) {
 		char client_name[NETWORK_NAME_LENGTH];
-		char temp[NETWORK_PLAYERS_LENGTH];
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
 		ci = DEREF_CLIENT_INFO(cs);
-		if (ci != NULL && ci->client_playas <= MAX_PLAYERS) {
-			if (_network_player_info[ci->client_playas-1].players[0] == '\0')
-				snprintf(_network_player_info[ci->client_playas-1].players, sizeof(_network_player_info[ci->client_playas-1].players), "%s", client_name);
-			else {
-				snprintf(temp, sizeof(temp), "%s, %s", _network_player_info[ci->client_playas-1].players, client_name);
-				snprintf(_network_player_info[ci->client_playas-1].players, sizeof(_network_player_info[ci->client_playas-1].players), "%s", temp);
-			}
+		if (ci != NULL && ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS) {
+			if (strlen(_network_player_info[ci->client_playas-1].players) != 0)
+				strncat(_network_player_info[ci->client_playas-1].players, ", ", sizeof(_network_player_info[ci->client_playas-1].players));
+				
+			strncat(_network_player_info[ci->client_playas-1].players, client_name, sizeof(_network_player_info[ci->client_playas-1].players));
 		}
 	}
 }

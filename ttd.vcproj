@@ -45,6 +45,7 @@
 				ProgramDataBaseFileName=".\Release/"
 				BrowseInformation="1"
 				WarningLevel="3"
+				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
 				CompileAs="1"/>
@@ -118,6 +119,7 @@
 				ProgramDataBaseFileName=".\Checked/"
 				BrowseInformation="1"
 				WarningLevel="3"
+				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
 				CallingConvention="1"
