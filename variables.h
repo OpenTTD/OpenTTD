@@ -449,9 +449,5 @@ VARDEF byte _railtype_selected_in_replace_gui;
 
 /* Forking stuff */
 VARDEF bool _dedicated_forks;
-VARDEF bool _dedicated_enabled;
-#ifdef UNIX
-	VARDEF pid_t _dedicated_pid;
-#endif
 
 #endif /* VARIABLES_H */

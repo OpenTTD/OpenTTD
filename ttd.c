@@ -491,13 +491,15 @@ int ttd_main(int argc, char* argv[])
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
+	bool dedicated;
+
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
 	_switch_mode_errorstr = INVALID_STRING_ID;
 	_dedicated_forks = false;
-	_dedicated_enabled = false;
+	dedicated = false;
 
 	// The last param of the following function means this:
 	//   a letter means: it accepts that param (e.g.: -h)
@@ -519,7 +521,7 @@ int ttd_main(int argc, char* argv[])
 				sprintf(musicdriver,"null");
 				sprintf(sounddriver,"null");
 				sprintf(videodriver,"dedicated");
-				_dedicated_enabled = true;
+				dedicated = true;
 			} break;
 		case 'f': {
 				_dedicated_forks = true;
@@ -590,7 +592,7 @@ int ttd_main(int argc, char* argv[])
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != (uint)-1) _patches.starting_date = startdate;
 
-	if (_dedicated_forks && !_dedicated_enabled)
+	if (_dedicated_forks && !dedicated)
 		_dedicated_forks = false;
 
 	// enumerate language files

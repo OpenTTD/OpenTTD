@@ -49,8 +49,8 @@ static void *_dedicated_video_mem;
 void DedicatedFork(void)
 {
 	/* Fork the program */
-	_dedicated_pid = fork();
-	switch (_dedicated_pid) {
+	pid_t pid = fork();
+	switch (pid) {
 		case -1:
 			perror("Unable to fork");
 			exit(1);
@@ -76,7 +76,7 @@ void DedicatedFork(void)
 		default:
 			// We're the parent
 			printf("Loading dedicated server...\n");
-			printf("  - Forked to background with pid %d\n", _dedicated_pid);
+			printf("  - Forked to background with pid %d\n", pid);
 			exit(0);
 	}
 }
