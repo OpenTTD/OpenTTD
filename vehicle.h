@@ -4,8 +4,13 @@
 #include "vehicle_gui.h"
 
 typedef struct Order {
+#ifdef TTD_LITTLE_ENDIAN /* XXX hack to avoid savegame revision bump */
 	uint8 type:4;
 	uint8 flags:4;
+#else
+	uint8 flags:4;
+	uint8 type:4;
+#endif
 	uint8 station;
 } Order;
 
@@ -16,11 +21,10 @@ static inline uint16 PackOrder(const Order *order)
 
 static inline Order UnpackOrder(uint16 packed)
 {
-	Order order = {
-		(packed & 0x000f),
-		(packed & 0x00f0) >> 4,
-		(packed & 0xff00) >> 8
-	};
+	Order order;
+	order.type    = (packed & 0x000f);
+	order.flags   = (packed & 0x00f0) >> 4,
+	order.station = (packed & 0xff00) >> 8;
 	return order;
 }
 
