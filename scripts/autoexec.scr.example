@@ -1,0 +1,6 @@
+#
+# send chat messages from the console with
+#
+# ] s i love this chat
+#
+alias "s" "say %!"
