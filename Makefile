@@ -937,5 +937,5 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 # For DirectMusic build and BeOS specific parts
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
-	@echo '===> Compiling $<
+	@echo '===> Compiling $<'
 	@$(CXX_BUILD) $< -o $@
