@@ -249,9 +249,6 @@ enum {
 };
 void ShowSaveLoadDialog(int mode);
 
-void ttd_strlcpy(char *dst, const char *src, size_t size);
-void ttd_strlcat(char *dst, const char *src, size_t size);
-
 // callback from drivers that is called if the game size changes dynamically
 void GameSizeChanged(void);
 bool FileExists(const char *filename);

@@ -29,6 +29,7 @@
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
 #include "ttd.h"
+#include "string.h"
 #include "sound.h"
 #include "hal.h"
 

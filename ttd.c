@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "string.h"
 #include "table/strings.h"
 #include "debug.h"
 #include "strings.h"
@@ -197,27 +198,6 @@ static const DriverDesc *ChooseDefaultDriver(const DriverDesc *dd)
 	return best;
 }
 
-void ttd_strlcpy(char *dst, const char *src, size_t size)
-{
-	assert(size > 0);
-	while (--size > 0 && *src != '\0') *dst++ = *src++;
-	*dst = '\0';
-}
-
-void ttd_strlcat(char *dst, const char *src, size_t size)
-{
-	assert(size > 0);
-	for (; size > 0 && *dst != '\0'; --size, ++dst) {}
-	assert(size > 0);
-	while (--size > 0 && *src != '\0') *dst++ = *src++;
-	*dst = '\0';
-}
-
-static char *strecpy(char *dst, const char *src)
-{
-	while ( (*dst++ = *src++) != 0) {}
-	return dst - 1;
-}
 
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
@@ -318,7 +298,8 @@ static void showhelp(void)
 		"  -f                  = Fork into the background (dedicated only)\n"
 		#endif
 		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
-		"  -p #player          = Player as #player (deprecated) (network only)\n"
+		"  -p #player          = Player as #player (deprecated) (network only)\n",
+		lastof(buf)
 	);
 
 	for(i=0; i!=lengthof(_driver_classes); i++,dc++) {

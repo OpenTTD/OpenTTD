@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "string.h"
 #include "strings.h" // XXX GetCurrentCurrencyRate()
 #include "table/strings.h"
 #include "window.h"

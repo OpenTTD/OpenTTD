@@ -214,6 +214,7 @@ assert_compile(sizeof(uint8)	== 1);
 
 #define lengthof(x) (sizeof(x)/sizeof(x[0]))
 #define endof(x) (&x[lengthof(x)])
+#define lastof(x) (&x[lengthof(x) - 1])
 #ifndef offsetof
 #define offsetof(s,m)   (size_t)&(((s *)0)->m)
 #endif

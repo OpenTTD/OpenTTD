@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "engine.h"
 #include "functions.h"
+#include "string.h"
 #include "variables.h"
 #include "network_data.h"
 #include "network_client.h"

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "debug.h"
+#include "string.h"
 #include "strings.h"
 #include "network_data.h"
 

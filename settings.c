@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "sound.h"
+#include "string.h"
 #include "table/currency.h"
 #include "network.h"
 #include "settings.h"
