@@ -609,10 +609,12 @@ DEF_CONSOLE_CMD(ConExec)
 
 	_script_running = true;
 
-	fgets(cmd, sizeof(cmd), _script_file);
-	while (!feof(_script_file) && _script_running) {
+	while (_script_running && fgets(cmd, sizeof(cmd), _script_file) != NULL) {
 		IConsoleCmdExec(cmd);
-		fgets(cmd, sizeof(cmd), _script_file);
+	}
+
+	if (ferror(_script_file)) {
+		IConsoleError("Encountered errror while trying to read from script file");
 	}
 
 	_script_running = false;
