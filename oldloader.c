@@ -278,7 +278,7 @@ assert_compile(sizeof(OldVehicleDisasterUnion) == 4);
 
 typedef struct {
 	byte state;
-} OldVehicleShipUnion;
+} GCC_PACK OldVehicleShipUnion;
 assert_compile(sizeof(OldVehicleShipUnion) == 1);
 
 typedef union {
