@@ -552,6 +552,9 @@ DEF_CONSOLE_CMD(ConSayClient)
 /*   the "set" command          */
 /* **************************** */
 
+extern void ConsoleSetPatchSetting(char *name, char *value);
+extern void ConsoleGetPatchSetting(char *name);
+
 DEF_CONSOLE_CMD(ConSet) {
 	if (argc < 2) {
 		IConsolePrint(_iconsole_color_warning, "Unknonw usage. Usage: set [setting] [value].");
@@ -562,8 +565,8 @@ DEF_CONSOLE_CMD(ConSet) {
 
 	// setting the server password
 	if ((strcmp(argv[1],"server_pw") == 0) || (strcmp(argv[1],"server_password") == 0)) {
-		if (!_networking) {
-			IConsolePrintF(_iconsole_color_error,"No network game running");
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
 			return NULL;
 		}
 		if (argc == 3) {
@@ -639,8 +642,8 @@ DEF_CONSOLE_CMD(ConSet) {
 
 	// setting the server name
 	if (strcmp(argv[1],"server_name") == 0) {
-		if (!_networking) {
-			IConsolePrintF(_iconsole_color_error,"No network game running");
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
 			return NULL;
 		}
 		if (argc == 3) {
@@ -650,6 +653,19 @@ DEF_CONSOLE_CMD(ConSet) {
 		} else {
 			IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
 			IConsolePrint(_iconsole_color_warning, "Usage: set server_name \"<GameName>\".");
+		}
+		return NULL;
+	}
+
+	// setting the server name
+	if (strcmp(argv[1],"port") == 0) {
+		if (argc == 3 && atoi(argv[2]) != 0) {
+			_network_server_port = atoi(argv[2]);
+			IConsolePrintF(_iconsole_color_warning, "Server-port changed to '%d'", _network_server_port);
+			IConsolePrintF(_iconsole_color_warning, "Changes will take effect the next time you start a server.");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current server-port is '%d'", _network_server_port);
+			IConsolePrint(_iconsole_color_warning, "Usage: set server_port <port>.");
 		}
 		return NULL;
 	}

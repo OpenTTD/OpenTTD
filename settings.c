@@ -723,10 +723,9 @@ static const SettingDesc misc_settings[] = {
 
 #ifdef ENABLE_NETWORK
 static const SettingDesc network_settings[] = {
-	{"port",					SDT_UINT | SDT_NOSAVE,	(void*)NETWORK_DISCOVER_PORT,	&_network_client_port,	NULL},
-	{"server_port",		SDT_UINT | SDT_NOSAVE,	(void*)NETWORK_DEFAULT_PORT,	&_network_server_port,	NULL},
 	{"sync_freq",			SDT_UINT16 | SDT_NOSAVE,	(void*)100,			&_network_sync_freq,		NULL},
 	{"frame_freq",			SDT_UINT8 | SDT_NOSAVE,	(void*)0,			&_network_frame_freq,		NULL},
+	{"server_port",		SDT_UINT,	(void*)NETWORK_DEFAULT_PORT,	&_network_server_port,	NULL},
 	{"player_name",		SDT_STRINGBUF | (lengthof(_network_player_name) << 16), NULL, &_network_player_name, NULL},
 	{"server_password",		SDT_STRINGBUF | (lengthof(_network_game_info.server_password) << 16), NULL, &_network_game_info.server_password, NULL},
 	{"server_name",		SDT_STRINGBUF | (lengthof(_network_server_name) << 16), NULL, &_network_server_name, NULL},
