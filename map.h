@@ -18,4 +18,16 @@ extern byte _map_owner[TILES_X * TILES_Y];
 extern byte _map2[TILES_X * TILES_Y];
 extern byte _map_extra_bits[TILES_X * TILES_Y / 4];
 
+// binary logarithm of the map size, try to avoid using this one
+static inline uint MapLogX(void)  { extern uint _map_log_x; return _map_log_x; }
+static inline uint MapLogY(void)  { extern uint _map_log_y; return _map_log_y; }
+/* The size of the map */
+static inline uint MapSizeX(void) { return 1 << MapLogX(); }
+static inline uint MapSizeY(void) { return 1 << MapLogY(); }
+/* The maximum coordinates */
+static inline uint MapMaxX(void) { return MapSizeX() - 1; }
+static inline uint MapMaxY(void) { return MapSizeY() - 1; }
+/* The number of tiles in the map */
+static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
+
 #endif
