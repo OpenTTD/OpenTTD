@@ -284,7 +284,7 @@ static void AiHandleReplaceTrain(Player *p)
 	uint tile;
 
 	// wait until the vehicle reaches the depot.
-	if (!IsTrainDepotTile(v->tile) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
+	if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_TRAIN_GOTO_DEPOT);
 		return;
 	}
@@ -312,7 +312,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	int veh;
 	uint tile;
 
-	if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
+	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_ROADVEH_TO_DEPOT);
 		return;
 	}
@@ -3561,7 +3561,7 @@ static void AiStateSellVeh(Player *p)
 	if (v->owner == _current_player) {
 		if (v->type == VEH_Train) {
 
-			if (!IsTrainDepotTile(v->tile) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
+			if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_TRAIN_GOTO_DEPOT);
 				goto going_to_depot;
@@ -3571,7 +3571,7 @@ static void AiStateSellVeh(Player *p)
 			DoCommandByTile(v->tile, v->index, 1, DC_EXEC, CMD_SELL_RAIL_WAGON);
 
 		} else if (v->type == VEH_Road) {
-			if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
+			if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				goto going_to_depot;

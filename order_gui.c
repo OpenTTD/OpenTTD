@@ -194,7 +194,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 
 		case MP_WATER:
 			if (v->type != VEH_Ship) break;
-			if ( IsShipDepotTile(tile) && _map_owner[tile] == _local_player) {
+			if ( IsTileDepotType(tile, TRANSPORT_ROAD) && IsTileOwner(tile, _local_player)) {
 				switch (_map5[tile]) {
 				case 0x81: tile--; break;
 				case 0x83: tile-= TILE_XY(0,1); break;

@@ -35,6 +35,14 @@ uint ScaleByMapSize(uint); // Scale relative to the number of tiles
 uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
 
 typedef uint32 TileIndex;
+
+typedef enum {
+	OWNER_TOWN			= 0xf,	// a town owns the tile
+	OWNER_NONE			= 0x10,	// nobody owns the tile
+	OWNER_WATER			= 0x11,	// "water" owns the tile
+	OWNER_SPECTATOR	= 0xff,	// spectator in MP or in scenario editor
+} Owner;
+
 enum {
 	INVALID_TILE = (uint32) -1
 };

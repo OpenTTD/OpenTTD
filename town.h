@@ -134,6 +134,14 @@ VARDEF uint16 *_town_sort;
 extern MemoryPool _town_pool;
 
 /**
+ * Check if a Town really exists.
+ */
+static inline bool IsValidTown(Town* town)
+{
+	return town->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+}
+
+/**
  * Get the pointer to the town with index 'index'
  */
 static inline Town *GetTown(uint index)

@@ -538,11 +538,11 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v, *u;
 	UnitID unit_num;
 	Engine *e;
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
 
-	if (!IsTrainDepotTile((TileIndex)tile)) return CMD_ERROR;
+	if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
 
 	if (_map_owner[tile] != _current_player) return CMD_ERROR;
 
@@ -641,7 +641,7 @@ int CheckTrainStoppedInDepot(Vehicle *v)
 	TileIndex tile = v->tile;
 
 	/* check if stopped in a depot */
-	if (!IsTrainDepotTile(tile) || v->cur_speed != 0) {
+	if (!IsTileDepotType(tile, TRANSPORT_RAIL) || v->cur_speed != 0) {
 errmsg:
 		_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
 		return -1;
@@ -1128,7 +1128,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	int l = 0, r = -1;
 	Vehicle *u;
 
-	if (IsTrainDepotTile(v->tile))
+	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 	/* Check if we were approaching a rail/road-crossing */
@@ -1156,7 +1156,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		ReverseTrainSwapVeh(v, l++, r--);
 	} while (l <= r);
 
-	if (IsTrainDepotTile(v->tile))
+	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 	CLRBIT(v->u.rail.flags, VRF_REVERSING);
@@ -1176,7 +1176,7 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	_error_message = STR_EMPTY;
 
-//	if (v->u.rail.track & 0x80 || IsTrainDepotTile(v->tile))
+//	if (v->u.rail.track & 0x80 || IsTileDepotType(v->tile, TRANSPORT_RAIL))
 //		return CMD_ERROR;
 
 	if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0)
@@ -1300,7 +1300,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 	tfdd.owner = v->owner;
 	tfdd.best_length = (uint)-1;
 
-	if (IsTrainDepotTile(tile)){
+	if (IsTileDepotType(tile, TRANSPORT_RAIL)){
 		tfdd.tile = tile;
 		tfdd.best_length = 0;
 		return tfdd;
@@ -1311,7 +1311,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_RAIL);
+		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_RAIL, v->owner);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
@@ -1442,7 +1442,7 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 		switch (RailVehInfo(engtype)->engclass) {
 		case 0:
 			// steam smoke.
-			if ( (v->tick_counter&0xF) == 0 && !IsTrainDepotTile(v->tile) && !IsTunnelTile(v->tile)) {
+			if ( (v->tick_counter&0xF) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile)) {
 				CreateEffectVehicleRel(v,
 					(_vehicle_smoke_pos[v->direction]),
 					(_vehicle_smoke_pos[v->direction+8]),
@@ -1453,14 +1453,14 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 		case 1:
 			// diesel smoke
-			if (u->cur_speed <= 40 && !IsTrainDepotTile(v->tile) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x1E00) {
+			if (u->cur_speed <= 40 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x1E00) {
 				CreateEffectVehicleRel(v, 0,0,10, EV_SMOKE_3);
 			}
 			break;
 
 		case 2:
 			// blue spark
-			if ( (v->tick_counter&0x3) == 0 && !IsTrainDepotTile(v->tile) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x5B0) {
+			if ( (v->tick_counter&0x3) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x5B0) {
 				CreateEffectVehicleRel(v, 0,0,10, EV_SMOKE_2);
 			}
 			break;
@@ -1671,7 +1671,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 		trackdir = _track_exitdir_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][enterdir];
 		assert(trackdir != 0xff);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner);
 		if (ftd.best_bird_dist != 0 || ftd.best_trackdir == 0xff) {
 			/* Not found, or we are already there. Just do something */
 			//TODO: maybe display error?
@@ -1804,7 +1804,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner);
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
@@ -2493,6 +2493,7 @@ static void TrainController(Vehicle *v)
 				if (!(r&0x4)) {
 					v->tile = gp.new_tile;
 					v->u.rail.track = chosen_track;
+					assert(v->u.rail.track);
 				}
 
 				if (v->subtype == TS_Front_Engine)

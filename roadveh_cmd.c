@@ -116,12 +116,12 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	Vehicle *v;
 	UnitID unit_num;
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Road)) return CMD_ERROR;
 
-	if (!IsRoadDepotTile((TileIndex)tile)) return CMD_ERROR;
+	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
 
 	if (_map_owner[tile] != _current_player) return CMD_ERROR;
 
@@ -243,7 +243,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED))
+	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 
 	if (flags & DC_EXEC) {
@@ -297,7 +297,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		NPFFoundTargetData ftd;
 		/* See where we are now */
 		byte trackdir = _dir_to_diag_trackdir[(v->direction>>1)&3];
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD);
+		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist == 0)
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		else
@@ -1104,7 +1104,7 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
 		trackdir = _dir_to_diag_trackdir[enterdir];
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist != 0 || ftd.best_trackdir == 0xff) {
 			/* Not found, just do something, or we are already there */
 			//TODO: maybe display error?

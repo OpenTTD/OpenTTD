@@ -18,6 +18,14 @@ typedef struct SignStruct {
 extern MemoryPool _sign_pool;
 
 /**
+ * Check if a Sign really exists.
+ */
+static inline bool IsValidSign(SignStruct* ss)
+{
+	return ss->str != 0;
+}
+
+/**
  * Get the pointer to the sign with index 'index'
  */
 static inline SignStruct *GetSign(uint index)

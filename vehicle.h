@@ -372,6 +372,14 @@ static inline uint16 GetVehiclePoolSize(void)
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
 /**
+ * Check if a Vehicle really exists.
+ */
+static inline bool IsValidVehicle(Vehicle* v)
+{
+	return v->type != 0;
+}
+
+/**
  * Check if an index is a vehicle-index (so between 0 and max-vehicles)
  *
  * @return Returns true if the vehicle-id is in range

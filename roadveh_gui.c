@@ -822,7 +822,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsRoadDepotTile(v->tile) && (v->vehstatus & VS_HIDDEN))
+			if (IsTileDepotType(v->tile, TRANSPORT_ROAD) && (v->vehstatus & VS_HIDDEN))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
@@ -881,7 +881,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_road_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsRoadDepotTile(tile)) {
+				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
 					ShowRoadDepotWindow(tile);
 					ShowBuildRoadVehWindow(tile);
 					return;

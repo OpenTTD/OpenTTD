@@ -46,33 +46,6 @@ Depot *GetDepotByTile(uint tile)
 }
 
 /**
- * Check if a tile is a road-depot
- */
-bool IsRoadDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_STREET) &&
-			(_map5[tile] & 0xF0) == 0x20;
-}
-
-/**
- * Check if a tile is a train-depot
- */
-bool IsTrainDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_RAILWAY) &&
-			(_map5[tile] & 0xFC) == 0xC0;
-}
-
-/**
- * Check if a tile is a ship-depot
- */
-bool IsShipDepotTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_WATER) &&
-			(_map5[tile] & ~3) == 0x80;
-}
-
-/**
  * Allocate a new depot
  */
 Depot *AllocateDepot(void)
@@ -80,7 +53,7 @@ Depot *AllocateDepot(void)
 	Depot *depot;
 
 	FOR_ALL_DEPOTS(depot) {
-		if (depot->xy == 0) {
+		if (!IsValidDepot(depot)) {
 			uint index = depot->index;
 
 			memset(depot, 0, sizeof(Depot));
@@ -142,7 +115,7 @@ static void Save_DEPT(void)
 	Depot *depot;
 
 	FOR_ALL_DEPOTS(depot) {
-		if (depot->xy != 0) {
+		if (IsValidDepot(depot)) {
 			SlSetArrayIndex(depot->index);
 			SlObject(depot, _depot_desc);
 		}

@@ -1321,7 +1321,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsTrainDepotTile(v->tile) && (v->vehstatus & VS_HIDDEN))
+			if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
@@ -1382,7 +1382,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsTrainDepotTile(tile)) {
+				if (_map_owner[tile] == _local_player && IsTileDepotType(tile, TRANSPORT_RAIL)) {
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;

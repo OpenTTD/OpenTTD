@@ -272,6 +272,14 @@ static inline bool IsRoadStationTile(uint tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0x43, 0x4B);
 }
 
+/**
+ * Check if a station really exists.
+ */
+static inline bool IsValidStation(Station* station)
+{
+	return station->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+}
+
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
  * station with the exit NE. */
 static inline byte GetRoadStationDir(uint tile) {

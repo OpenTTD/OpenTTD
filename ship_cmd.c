@@ -69,14 +69,12 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 	Depot *depot;
 	Depot *best_depot = NULL;
 	uint tile, dist, best_dist = (uint)-1;
-	byte owner = v->owner;
 	uint tile2 = v->tile;
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
-		/* XXX --- SLOW!!!! */
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER);
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner);
 		if (ftd.best_bird_dist == 0)
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		else
@@ -84,7 +82,7 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 	} else {
 		FOR_ALL_DEPOTS(depot) {
 			tile = depot->xy;
-			if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
+			if (IsValidDepot(depot) && IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
 				dist = DistanceManhattan(tile, tile2);
 				if (dist < best_dist) {
 					best_dist = dist;
@@ -598,7 +596,7 @@ static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTile(src_tile, _track_direction_to_trackdir[track][v->direction], &fstd, TRANSPORT_WATER);
+		ftd = NPFRouteToStationOrTile(src_tile, _track_direction_to_trackdir[track][v->direction], &fstd, TRANSPORT_WATER, v->owner);
 
 		if (ftd.best_bird_dist == 0 && ftd.best_trackdir != 0xff)
 			/* Found the target, and it is not our current tile */
@@ -876,12 +874,12 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 value;
 	Vehicle *v;
 	UnitID unit_num;
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Ship)) return CMD_ERROR;
 
-	if (!IsShipDepotTile((TileIndex)tile)) return CMD_ERROR;
+	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
 
 	if (_map_owner[tile] != _current_player) return CMD_ERROR;
 
@@ -964,7 +962,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsShipDepotTile(v->tile) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))
+	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 
 	if (flags & DC_EXEC) {
@@ -1088,7 +1086,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (!( SkipStoppedInDepotCheck )) {
-		if (!IsShipDepotTile(v->tile) ||
+		if (!IsTileDepotType(v->tile, TRANSPORT_WATER) ||
 				!(v->vehstatus&VS_STOPPED) ||
 				v->u.ship.state != 0x80)
 			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);

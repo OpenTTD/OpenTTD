@@ -491,7 +491,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		if (ShipVehInfo(v->engine_type)->refittable &&
 				v->vehstatus&VS_STOPPED &&
 				v->u.ship.state == 0x80 &&
-				IsShipDepotTile(v->tile))
+				IsTileDepotType(v->tile, TRANSPORT_WATER))
 			disabled = 0;
 
 		if (v->owner != _local_player)
@@ -979,7 +979,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsShipDepotTile(v->tile) && (v->vehstatus & VS_HIDDEN))
+			if (IsTileDepotType(v->tile, TRANSPORT_WATER) && (v->vehstatus & VS_HIDDEN))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
@@ -1040,7 +1040,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_ship_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsShipDepotTile(tile)) {
+				if (_map_owner[tile] == _local_player && IsTileDepotType(tile, TRANSPORT_WATER)) {
 					ShowShipDepotWindow(tile);
 					ShowBuildShipWindow(tile);
 					return;

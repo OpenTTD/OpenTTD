@@ -510,13 +510,6 @@ enum SpecialStrings {
 
 typedef void PlaceProc(uint tile);
 
-enum MAP_OWNERS {
-	OWNER_TOWN			= 0xf,	// a town owns the tile
-	OWNER_NONE			= 0x10,	// nobody owns the tile
-	OWNER_WATER			= 0x11,	// "water" owns the tile
-	OWNER_SPECTATOR	= 0xff,	// spectator in MP or in scenario editor
-};
-
 VARDEF bool _savegame_sort_dirty;
 VARDEF byte _savegame_sort_order;
 

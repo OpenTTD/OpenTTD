@@ -15,7 +15,8 @@ typedef struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.target
 } NPFFindStationOrTileData;
 
 enum { /* Indices into AyStar.userdata[] */
-	NPF_TYPE = 0, /* Contains an TransportTypes value */
+	NPF_TYPE = 0, /* Contains a TransportTypes value */
+	NPF_OWNER, /* Contains an Owner value */
 };
 
 enum { /* Indices into AyStarNode.userdata[] */
@@ -30,7 +31,7 @@ enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]*/
 typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 	uint best_bird_dist; /* The best heuristic found. Is 0 if the target was found */
 	uint best_path_dist; /* The shortest path. Is (uint)-1 if no path is found */
-	byte best_trackdir; /* The trackdir that leads to the shortes path/closest birds dist */
+	byte best_trackdir; /* The trackdir that leads to the shortest path/closest birds dist */
 	AyStarNode node; /* The node within the target the search led us to */
 } NPFFoundTargetData;
 
@@ -39,20 +40,20 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 /* Will search from the given tile and direction, for a route to the given
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type);
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner);
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_NODE_REVERSE flag in the result node to see which
  * direction was taken */
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, NPFFindStationOrTileData* target, TransportType type);
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner);
 
 /* Will search a route to the closest depot. */
 
 /* Search using breadth first. Good for little track choice and inaccurate
  * heuristic, such as railway/road */
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type);
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type, Owner owner);
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
- * of choices and accurate heuristics, such as water */
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type);
+ * of choices and accurate heuristics, such as water. */
+NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type, Owner owner);
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
 

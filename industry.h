@@ -32,6 +32,14 @@ struct Industry {
 extern MemoryPool _industry_pool;
 
 /**
+ * Check if an Industry really exists.
+ */
+static inline bool IsValidIndustry(Industry* industry)
+{
+	return industry->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+}
+
+/**
  * Get the pointer to the industry with index 'index'
  */
 static inline Industry *GetIndustry(uint index)

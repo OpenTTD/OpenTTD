@@ -5,6 +5,7 @@
 #include "tile.h"
 #include "command.h"
 #include "ai.h"
+#include "depot.h"
 
 #define TEST_STATION_NO_DIR 0xFF
 
@@ -35,7 +36,7 @@ static bool IsRoad(TileIndex tile)
 {
 	return
 		// MP_STREET, but not a road depot?
-		(IsTileType(tile, MP_STREET) && !(_map5[tile] & 0x20)) ||
+		(IsTileType(tile, MP_STREET) && !(IsTileDepotType(tile, TRANSPORT_ROAD))) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
 			// road tunnel?
 			((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) ||

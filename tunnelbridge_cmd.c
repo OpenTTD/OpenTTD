@@ -1435,6 +1435,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 				/* We're at the tunnel exit ?? */
 				v->tile = tile;
 				v->u.rail.track = _exit_tunnel_track[dir];
+				assert(v->u.rail.track);
 				v->vehstatus &= ~VS_HIDDEN;
 				return 4;
 			}

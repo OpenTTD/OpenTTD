@@ -2260,6 +2260,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 			if ((v=v->next) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
 				v->u.rail.track = _depot_track_mask[dir];
+				assert(v->u.rail.track);
 			}
 		}
 	}

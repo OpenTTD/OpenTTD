@@ -57,4 +57,14 @@ static inline bool IsTileType(TileIndex tile, TileType type)
 	return GetTileType(tile) == type;
 }
 
+static inline bool GetTileOwner(TileIndex tile)
+{
+	return _map_owner[tile];
+}
+
+static inline bool IsTileOwner(TileIndex tile, Owner owner)
+{
+	return GetTileOwner(tile) == owner;
+}
+
 #endif

@@ -319,24 +319,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 /* Will find any depot */
 int32 NPFFindDepot(AyStar* as, OpenListNode *current) {
 	TileIndex tile = current->path.node.tile;
-	bool isDepot;
-	switch(GetTileType(tile)) {
-		case MP_RAILWAY:
-			/* Check if this is a rail depot */
-			isDepot = IsTrainDepotTile(tile);
-			break;
-		case MP_STREET:
-			/* Check if this is a road depot */
-			isDepot = IsRoadDepotTile(tile);
-			break;
-		case MP_WATER:
-			isDepot = IsShipDepotTile(tile);
-			break;
-		default:
-			isDepot = false;
-			break;
-	}
-	if (isDepot)
+	if (IsTileDepotType(tile, as->user_data[NPF_TYPE]))
 		return AYSTAR_FOUND_END_NODE;
 	else
 		return AYSTAR_DONE;
@@ -397,11 +380,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		flotr = FindLengthOfTunnel(src_tile, src_exitdir);
 		dst_tile = flotr.tile;
 	} else {
-		if (
-			(type == TRANSPORT_ROAD && IsRoadStationTile(src_tile))
-			|| (type == TRANSPORT_ROAD && IsRoadDepotTile(src_tile))
-			|| (type == TRANSPORT_RAIL && IsTrainDepotTile(src_tile))
-			){
+		if (IsTileDepotType(src_tile, type)){
 			/* This is a road station or a train or road depot. We can enter and exit
 			 * those from one side only. Trackdirs don't support that (yet), so we'll
 			 * do this here. */
@@ -429,19 +408,29 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	}
 
 	// TODO: check correct rail type (mono, maglev, etc)
-	// TODO: check tile owner
+
+	/* Check the owner of the tile */
+	if (
+		IsTileType(dst_tile, MP_RAILWAY) /* Rail tile */
+		|| IsTileDepotType(dst_tile, TRANSPORT_ROAD) /* Road depot tile */
+		|| IsTileType(dst_tile, MP_STATION) /* Station tile */
+		|| IsTileDepotType(dst_tile, TRANSPORT_WATER) /* Water depot tile */
+	) /* TODO: Crossings, tunnels and bridges are "public" now */
+		/* The above cases are "private" tiles, we need to check the owner */
+		if (!IsTileOwner(dst_tile, aystar->user_data[NPF_OWNER]))
+			return;
 
 	/* Determine available tracks */
-	if (type == TRANSPORT_ROAD && (IsRoadStationTile(dst_tile) || IsRoadDepotTile(dst_tile))){
-		byte exitdir;
+	if (type == TRANSPORT_ROAD && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, TRANSPORT_ROAD))){
 		/* Road stations and depots return 0 on GTTS, so we have to do this by hand... */
-			if (IsRoadStationTile(dst_tile))
-				exitdir = GetRoadStationDir(dst_tile);
-			else /* Road depot */
-				exitdir = _map5[dst_tile] & 3; /* Extract the direction from the map */
-			ts = (1 << _dir_to_diag_trackdir[exitdir]) |
-					(1 << _dir_to_diag_trackdir[_reverse_dir[exitdir]]);
-					/* Find the trackdirs that are available for a station with this orientation. They are in both directions */
+		byte exitdir;
+		if (IsRoadStationTile(dst_tile))
+			exitdir = GetRoadStationDir(dst_tile);
+		else /* Road depot */
+			/* Find the trackdirs that are available for a depot with this orientation. They are in both directions */
+			exitdir = _map5[dst_tile] & 3; /* Extract the direction from the map */
+			ts = (1 << _dir_to_diag_trackdir[exitdir])
+			     | (1 << _dir_to_diag_trackdir[_reverse_dir[exitdir]]);
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}
@@ -500,7 +489,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
  * multiple targets that are spread around, we should perform a breadth first
  * search by specifiying CalcZero as our heuristic.
  */
-NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type) {
+NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, Owner owner) {
 	int r;
 	NPFFoundTargetData result;
 
@@ -539,6 +528,7 @@ NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFF
 
 	/* Initialize user_data */
 	_npf_aystar.user_data[NPF_TYPE] = type;
+	_npf_aystar.user_data[NPF_OWNER] = owner;
 
 	/* GO! */
 	r = AyStarMain_Main(&_npf_aystar);
@@ -556,7 +546,7 @@ NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFF
 	return result;
 }
 
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, NPFFindStationOrTileData* target, TransportType type) {
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner) {
 	AyStarNode start1;
 	AyStarNode start2;
 
@@ -565,10 +555,10 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
 
-	return NPFRouteInternal(&start1, &start2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type);
+	return NPFRouteInternal(&start1, &start2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner);
 }
 
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type) {
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner) {
 	AyStarNode start;
 
 	assert(tile != 0);
@@ -579,10 +569,10 @@ NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFin
 	 * return a not found then */
 	start.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 
-	return NPFRouteInternal(&start, NULL, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type);
+	return NPFRouteInternal(&start, NULL, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner);
 }
 
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type) {
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type, Owner owner) {
 	AyStarNode start;
 
 	start.tile = tile;
@@ -593,10 +583,10 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, Tr
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start, NULL, NULL, NPFFindDepot, NPFCalcZero, type);
+	return NPFRouteInternal(&start, NULL, NULL, NPFFindDepot, NPFCalcZero, type, owner);
 }
 
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type) {
+NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type, Owner owner) {
 	/* Okay, what we're gonna do. First, we look at all depots, calculate
 	 * the manhatten distance to get to each depot. We then sort them by
 	 * distance. We start by trying to plan a route to the closest, then
@@ -629,7 +619,10 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	init_InsSort(&depots);
 	/* Okay, let's find all depots that we can use first */
 	FOR_ALL_DEPOTS(depot) {
-		if (IsTileType(depot->xy, tiletype))
+		/* Check if this is really a valid depot, it is of the needed type and
+		 * owner */
+		if (IsValidDepot(depot) && IsTileDepotType(depot->xy, tiletype) && IsTileOwner(depot->xy, owner))
+			/* If so, let's add it to the queue, sorted by distance */
 			depots.push(&depots, depot, DistanceManhattan(tile, depot->xy));
 	}
 
@@ -655,6 +648,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 
 	/* Initialize user_data */
 	_npf_aystar.user_data[NPF_TYPE] = type;
+	_npf_aystar.user_data[NPF_OWNER] = owner;
 
 	/* Initialize Start Node */
 	start.tile = tile;
@@ -663,11 +657,12 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	/* Initialize Result */
 	_npf_aystar.user_path = &result;
 	best_result.best_path_dist = (uint)-1;
+	best_result.best_bird_dist = (uint)-1;
 
 	/* Just iterate the depots in order of increasing distance */
 	while ((current = depots.pop(&depots))) {
 		/* Check to see if we already have a path shorter than this
-		 * depot's manhattan distance. Hack: We call DistanceManhattan
+		 * depot's manhattan distance. HACK: We call DistanceManhattan
 		 * again, we should probably modify the queue to give us that
 		 * value... */
 		if ( DistanceManhattan(tile, current->xy * NPF_TILE_LENGTH) > best_result.best_path_dist)
