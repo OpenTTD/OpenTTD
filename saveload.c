@@ -230,13 +230,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 		}
 	} else {
 		while(length) {
-			// INLINED SlReadByte
-#if !defined(_DEBUG)
-			if (_sl.bufp == _sl.bufe) SlReadFill();
-			*p++ = *_sl.bufp++;
-#else
 			*p++ = SlReadByte();
-#endif
 			length--;
 		}
 	}
