@@ -2,6 +2,9 @@
 #include "ttd.h"
 #include "map.h"
 
+#define TILE_X_BITS 8
+#define TILE_Y_BITS 8
+
 uint _map_log_x = TILE_X_BITS;
 uint _map_log_y = TILE_Y_BITS;
 

@@ -70,9 +70,6 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 
 #define LANDSCAPE_SIZE_FACTOR 1
 
-#define TILE_FROM_XY(x,y) (int)((((y) >> 4) << TILE_X_BITS) + ((x) >> 4))
-#define TILE_XY(x,y) (int)(((y) << TILE_X_BITS) + (x))
-
 #define IS_TILETYPE(_t_, _s_) (_map_type_and_height[(_t_)] >> 4 == (_s_))
 #define GET_TILETYPE(_t_) (_map_type_and_height[(_t_)] >> 4)
 #define GET_TILEHEIGHT(_t_) ((_map_type_and_height[_t_] & 0xF) * 8)
@@ -86,7 +83,7 @@ enum {
 
 extern uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int line);
 
-#if !defined(_DEBUG) || TILE_X_BITS != 8
+#if !defined(_DEBUG)
 #	define TILE_ADD(x,y) ((x)+(y))
 #else
 #	if defined(__GNUC__)

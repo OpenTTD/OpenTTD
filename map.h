@@ -1,8 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
-#define TILE_X_BITS 8
-#define TILE_Y_BITS 8
+#define TILE_FROM_XY(x,y) (int)((((y) >> 4) << MapLogX()) + ((x) >> 4))
+#define TILE_XY(x,y) (int)(((y) << MapLogX()) + (x))
 
 #define TILE_MASK(x) (int)((x) & ((1 << (MapLogX() + MapLogY())) - 1))
 

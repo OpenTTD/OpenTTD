@@ -454,8 +454,8 @@ uint GetMapExtraBits(uint tile)
 
 #define TILELOOP_BITS 4
 #define TILELOOP_SIZE (1 << TILELOOP_BITS)
-#define TILELOOP_ASSERTMASK ((TILELOOP_SIZE-1) + ((TILELOOP_SIZE-1) << TILE_X_BITS))
-#define TILELOOP_CHKMASK (((1 << (TILE_X_BITS - TILELOOP_BITS))-1) << TILELOOP_BITS)
+#define TILELOOP_ASSERTMASK ((TILELOOP_SIZE-1) + ((TILELOOP_SIZE-1) << MapLogX()))
+#define TILELOOP_CHKMASK (((1 << (MapLogX() - TILELOOP_BITS))-1) << TILELOOP_BITS)
 
 void RunTileLoop()
 {
@@ -538,7 +538,7 @@ static void GenerateTerrain(int type, int flag)
 	p = GetSpritePtr((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
 	x = r & MapMaxX();
-	y = (r >> TILE_X_BITS) & MapMaxY();
+	y = (r >> MapLogX()) & MapMaxY();
 
 
 	if (x < 2 || y < 2)
