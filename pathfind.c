@@ -190,7 +190,7 @@ static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 /* Returns the end tile and the length of a tunnel. The length does not
  * include the starting tile (entry), it does include the end tile (exit).
  */
-FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction, byte type)
+FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
 {
 	FindLengthOfTunnelResult flotr;
 	int x,y;
@@ -213,7 +213,8 @@ FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction, byte type)
 
 		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
 				(_map5[tile] & 0xF0) == 0 &&
-				((_map5[tile]>>1)&6) == type &&
+				//((_map5[tile]>>2)&3) == type && // This is
+				//not necesary to check, right?
 				((_map5[tile] & 3)^2) == direction &&
 				GetSlopeZ(x+8, y+8) == z)
 					break;
@@ -228,7 +229,7 @@ static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 static uint SkipToEndOfTunnel(TrackPathFinder *tpf, uint tile, int direction) {
 	FindLengthOfTunnelResult flotr;
 	TPFSetTileBit(tpf, tile, 14);
-	flotr = FindLengthOfTunnel(tile, direction, tpf->tracktype);
+	flotr = FindLengthOfTunnel(tile, direction);
 	tpf->rd.cur_length += flotr.length;
 	TPFSetTileBit(tpf, flotr.tile, 14);
 	return flotr.tile;
@@ -601,7 +602,7 @@ restart:
 				/* We are not driving into the tunnel, or it
 				 * is an invalid tunnel */
 				goto popnext;
-			flotr = FindLengthOfTunnel(tile, direction, tpf->tracktype);
+			flotr = FindLengthOfTunnel(tile, direction);
 			si.cur_length += flotr.length;
 			tile = flotr.tile;
 		}
@@ -619,7 +620,7 @@ restart:
 
 		// not a regular rail tile?
 		if (!IS_TILETYPE(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0xC0) {
-			bits = GetTileTrackStatus(tile, 0) & _tpfmode1_and[direction];
+			bits = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
 			bits = (bits | (bits >> 8)) & 0x3F;
 			break;
 		}
@@ -711,7 +712,7 @@ popnext:
 void NewTrainPathfind(uint tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache)
 {
 	if (!_patches.new_pathfinding) {
-		FollowTrack(tile, 0x3000, direction, enum_proc, NULL, data);
+		FollowTrack(tile, 0x3000 | TRANSPORT_RAIL, direction, enum_proc, NULL, data);
 	} else {
 		NewTrackPathFinder *tpf;
 

@@ -371,7 +371,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 
 	/* search in all directions */
 	for(i=0; i!=4; i++)
-		FollowTrack(tile, 0x2002, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
+		FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
 
 	if (rfdd.best_length == (uint)-1)
 		return -1;
@@ -898,7 +898,7 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 {
 	uint32 bits;
 
-	bits = GetTileTrackStatus(od->tile, 2)&0x3F;
+	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD)&0x3F;
 
 	if (!(od->tilebits & bits) || (bits&0x3C) || (bits & 0x3F3F0000))
 		return true;
@@ -924,7 +924,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	if (v->u.road.state >= 32 || (v->u.road.state&7) > 1 )
 		return;
 
-	tt = (byte)(GetTileTrackStatus(v->tile, 2) & 0x3F);
+	tt = (byte)(GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F);
 	if ((tt & 3) == 0)
 		return;
 	if ((tt & 0x3C) != 0)
@@ -1020,31 +1020,24 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 
 	{
 		uint32 r;
-		r = GetTileTrackStatus(tile, 2);
+			r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
 		signal = (uint16)(r >> 16);
 		bitmask = (uint16)r;
 	}
 
-	if (IS_TILETYPE(tile, MP_STREET)) {
-		
-		if ((_map5[tile]&0xF0) == 0x20 && v->owner == _map_owner[tile])
-			bitmask |= _road_veh_fp_ax_or[_map5[tile]&3];
 
-	} else if (IS_TILETYPE(tile, MP_STATION)) {
-		if (_map_owner[tile] == OWNER_NONE || _map_owner[tile] == v->owner) {
-			Station *st = DEREF_STATION(_map2[tile]);
-			byte val = _map5[tile];
+	/* Most of the checks that used to be here, are now integrated into
+	 * GetTileTrackStatus now. The only thing still remaining is the
+	 * owner check for stations and depots, since GetTileTrackStatus
+	 * doesn't know about owner */
+	if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile]&0xF0) == 0x20 && v->owner != _map_owner[tile])
+		/* Depot not owned by us */
+		bitmask = 0;
+	if (IS_TILETYPE(tile, MP_STATION) && _map_owner[tile] != OWNER_NONE && _map_owner[tile] != v->owner)
+		/* Station not owned by us */
+		bitmask = 0;
 
-			if (v->cargo_type != CT_PASSENGERS) {
-				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stop_status&3))
-					bitmask |= _road_veh_fp_ax_or[(val-0x43)&3];
-			} else {
-				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stop_status&3))
-					bitmask |= _road_veh_fp_ax_or[(val-0x47)&3];
-			}
-		}
-	}
-
+	/* remove unreachable tracks */
 	bitmask &= _road_veh_fp_ax_and[direction];
 	if (bitmask == 0) {
 		// reverse
@@ -1096,7 +1089,7 @@ do_it:;
 			if (best_track == -1) best_track = i; // in case we don't find the path, just pick a direction
 			frd.maxtracklen = (uint)-1;
 			frd.mindist = (uint)-1;
-			FollowTrack(tile, 0x3002, _road_pf_directions[i], (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
+			FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
 
 			if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
 				best_dist = frd.mindist;

@@ -20,7 +20,7 @@ void RunTileLoop();
 
 uint GetPartialZ(int x, int y, int corners);
 uint GetSlopeZ(int x, int y);
-uint32 GetTileTrackStatus(uint tile, int mode);
+uint32 GetTileTrackStatus(uint tile, TransportType mode);
 void GetAcceptedCargo(uint tile, AcceptedCargo *ac);
 void ChangeTileOwner(uint tile, byte old_player, byte new_player);
 void AnimateTile(uint tile);

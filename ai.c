@@ -47,7 +47,7 @@ enum {
 #include "table/ai_rail.h"
 
 static byte GetRailTrackStatus(TileIndex tile) {
-	uint32 r = GetTileTrackStatus(tile, 0);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_RAIL);
 	return (byte) (r | r >> 8);
 }
 
@@ -1849,7 +1849,7 @@ static bool AiDoFollowTrack(Player *p)
 	arpfd.tile2 = p->ai.cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + _tileoffs_by_dir[p->ai.cur_dir_a], 0x2000, p->ai.cur_dir_a^2, 
+	FollowTrack(p->ai.cur_tile_a + _tileoffs_by_dir[p->ai.cur_dir_a], 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2, 
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -2782,7 +2782,7 @@ bool AiCheckRoadFinished(Player *p)
 	are.dest = p->ai.cur_tile_b;
 	tile = TILE_MASK(p->ai.cur_tile_a + _tileoffs_by_dir[dir]);
 
-	bits = GetTileTrackStatus(tile, 2) & _ai_road_table_and[dir];
+	bits = GetTileTrackStatus(tile, TRANSPORT_ROAD) & _ai_road_table_and[dir];
 	if (bits == 0) {
 		return false;
 	}
@@ -2790,7 +2790,7 @@ bool AiCheckRoadFinished(Player *p)
 	are.best_dist = (uint)-1;
 
 	for_each_bit(i, bits) {
-		FollowTrack(tile, 0x3002, _dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
+		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 
 	if (GetTileDist(tile, are.dest) <= are.best_dist)

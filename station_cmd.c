@@ -12,6 +12,7 @@
 #include "economy.h"
 #include "player.h"
 #include "airport.h"
+#include "table/directions.h"
 
 // FIXME -- need to be embedded into Airport variable. Is dynamically
 // deducteable from graphics-tile array, so will not be needed
@@ -1837,21 +1838,34 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 
 static const byte _tile_track_status_rail[8] = { 1,2,1,2,1,2,1,2 };
 
-static uint32 GetTileTrackStatus_Station(uint tile, int mode) {
+static uint32 GetTileTrackStatus_Station(uint tile, TransportType mode) {
 	uint i = _map5[tile];
 	uint j = 0;
 
-	if (mode == 0) {
+	if (mode == TRANSPORT_RAIL) {
 		if (i < 8)
 			j = _tile_track_status_rail[i];
-	} else if (mode == 2) {
-		// not needed
-	} else if (mode == 4) {
-		// buoy
+		j += (j << 8);
+	} else if (mode == TRANSPORT_ROAD) {
+		Station *st = DEREF_STATION(_map2[tile]);
+		if ( (IS_BYTE_INSIDE(i, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stop_status&3)) ||
+		(IS_BYTE_INSIDE(i, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stop_status&3)) ) {
+			/* This is a bus/truck stop, and there is free space
+			 * (or we allow queueing) */
+			
+			/* We reverse the dir because it points out of the
+			 * exit, and we want to get in. Maybe we should return
+			 * both dirs here? */
+			byte dir = _reverse_dir[(i-0x43)&3];
+			j = 1 << _dir_to_straight_trackdir[dir];
+		}
+	} else if (mode == TRANSPORT_WATER) {
+		// buoy is coded as a station, it is always on open water
+		// (0x3F, all tracks available)
 		if (i == 0x52) j = 0x3F;
+		j += (j << 8);
 	}
-
-	return j + (j << 8);
+	return j;
 }
 
 static void TileLoop_Station(uint tile)

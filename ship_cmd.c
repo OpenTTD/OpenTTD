@@ -15,7 +15,7 @@ static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
 
 static byte GetTileShipTrackStatus(uint tile) {
-	uint32 r = GetTileTrackStatus(tile, 4);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
 	return r | r >> 8;
 }
 
@@ -492,7 +492,7 @@ static uint FindShipTrack(Vehicle *v, uint tile, int dir, uint bits, uint skipti
 		pfs.best_bird_dist = (uint)-1;
 		pfs.best_length = (uint)-1;
 
-		FollowTrack(tile, 0x3804, _ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
+		FollowTrack(tile, 0x3800 | TRANSPORT_WATER, _ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
 		
 		if (best_track >= 0) {
 			if (pfs.best_bird_dist != 0) {
@@ -569,7 +569,7 @@ static int ShipGetNewDirection(Vehicle *v, int x, int y)
 
 static int GetAvailShipTracks(uint tile, int dir)
 {
-	uint32 r = GetTileTrackStatus(tile, 4);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
 	return (byte) ((r | r >> 8)) & _ship_sometracks[dir];
 }
 

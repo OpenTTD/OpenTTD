@@ -600,12 +600,12 @@ void TileLoop_Water(uint tile)
 static const byte _coast_tracks[16] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
 static const byte _shipdepot_tracks[4] = {1,1,2,2};
 static const byte _shiplift_tracks[12] = {1,2,1,2,1,2,1,2,1,2,1,2};
-static uint32 GetTileTrackStatus_Water(uint tile, int mode)
+static uint32 GetTileTrackStatus_Water(uint tile, TransportType mode)
 {
 	uint m5;
 	uint b;
 
-	if (mode != 4)
+	if (mode != TRANSPORT_WATER)
 		return 0;
 
 	m5 = _map5[tile];

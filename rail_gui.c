@@ -145,7 +145,7 @@ static void GenericPlaceSignals(uint tile)
 	uint trackstat;
 	int i;
 
-	trackstat = (byte)GetTileTrackStatus(tile,0);
+	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL);
 
 	if ((trackstat & 0x30) == 0x30) {
 		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? 0x20 : 0x10;

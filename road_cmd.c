@@ -6,6 +6,7 @@
 #include "player.h"
 #include "town.h"
 #include "gfx.h"
+#include "table/directions.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction
  * as normal roads instead of impassable. This is used when detecting whether
@@ -119,7 +120,7 @@ bool IsRoadDepotTile(TileIndex tile)
 
 uint GetRoadBitsByTile(TileIndex tile)
 {
-	uint32 r = GetTileTrackStatus(tile, 2);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
 	return (byte)(r | (r >> 8));
 }
 
@@ -1023,18 +1024,20 @@ static const byte _road_trackbits[16] = {
 	0x0, 0x0, 0x0, 0x10, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x4, 0x1, 0x15, 0x20, 0x26, 0x29, 0x3F,
 };
 
-static uint32 GetTileTrackStatus_Road(uint tile, int mode)	{
-	if (mode == 0) {
+static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
+	if (mode == TRANSPORT_RAIL) {
 		if ((_map5[tile] & 0xF0) != 0x10)
 			return 0;
 		return _map5[tile] & 8 ? 0x101 : 0x202;
-	} else if  (mode == 2) {
+	} else if  (mode == TRANSPORT_ROAD) {
 		byte b = _map5[tile];
 		if ((b & 0xF0) == 0) {
+			/* Ordinary road */
 			if (!_road_special_gettrackstatus && (_map2[tile]&7) >= 6)
 				return 0;
 			return _road_trackbits[b&0xF] * 0x101;
-		} else if ((b&0xE0) == 0) {
+		} else if ((b&0xF0) == 0x10) {
+			/* Crossing */
 			uint32 r = 0x101;
 			if (b&8) r <<= 1;
 				
@@ -1042,6 +1045,13 @@ static uint32 GetTileTrackStatus_Road(uint tile, int mode)	{
 				r *= 0x10001;
 			}			
 			return r;
+		} else if ((b&0xF0) == 0x20) {
+			/* Depot */
+			/* We reverse the dir because it points out of the
+			 * exit, and we want to get in. Maybe we should return
+			 * both dirs here? */
+			byte dir = _reverse_dir[b&3];
+			return 1 << _dir_to_straight_trackdir[dir];
 		}
 	}
 	return 0;

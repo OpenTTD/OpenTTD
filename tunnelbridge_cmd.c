@@ -1296,34 +1296,49 @@ static void ClickTile_TunnelBridge(uint tile)
 }
 
 
-static uint32 GetTileTrackStatus_TunnelBridge(uint tile, int mode)
+static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 {
 	uint32 result;
-	byte t, m5 = _map5[tile];
+	byte m5 = _map5[tile];
 
 	if ((m5 & 0xF0) == 0) {
-		if (((m5 & 0xC) >> 1) == mode) { /* XXX: possible problem when switching mode constants */
+		/* This is a tunnel */
+		if (((m5 & 0xC) >> 2) == mode) { 
+			/* Tranport in the tunnel is compatible */
 			return m5&1 ? 0x202 : 0x101;
 		}
 	} else if (m5 & 0x80) {
+		/* This is a bridge */
 		result = 0;
-		if ((m5 & 6) == mode) {
+		if (((m5 & 0x6) >> 1) == mode) {
+			/* Transport over the bridge is compatible */
 			result = m5&1 ? 0x202 : 0x101;
 		}
 		if (m5 & 0x40) {
-			t = m5;
-			if (!(t & 0x20)) {
-				if ((t &= 0x18) != 8)
+			/* Bridge middle part */
+			if (!(m5 & 0x20)) {
+				/* Clear ground or water underneath */
+				if ((m5 &= 0x18) != 8)
+					/* Clear ground */
 					return result;
-				t = (t&0xE7) | 0x30;
+				else	
+					if (mode != TRANSPORT_WATER)
+						return result;
+			} else {
+				/* Transport underneath */
+				if ((m5 & 0x18) >> 3 != mode)
+					/* Incompatible transport underneath */
+					return result;
 			}
-
-			if ((t & 0x18) >> 2 != mode)
-				return result;
-
+			/* If we've not returned yet, there is a compatible
+			 * transport or water beneath, so we can add it to
+			 * result */
+			/* Why is this xor'd ? Can't it just be or'd? */
 			result ^= m5&1 ? 0x101 : 0x202;
 		}
 		return result;
+	} else {
+		assert(0); /* This should never occur */
 	}
 	return 0;
 }

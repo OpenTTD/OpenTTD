@@ -301,7 +301,7 @@ void DoClearSquare(uint tile)
 	);
 }
 
-uint32 GetTileTrackStatus(uint tile, int mode)
+uint32 GetTileTrackStatus(uint tile, TransportType mode)
 {
 	return _tile_type_procs[GET_TILETYPE(tile)]->get_tile_track_status_proc(tile, mode);
 }

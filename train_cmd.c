@@ -2035,7 +2035,7 @@ static void TrainController(Vehicle *v)
 				
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				ts = GetTileTrackStatus(gp.new_tile, 0) & _reachable_tracks[dir >> 1];
+				ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL) & _reachable_tracks[dir >> 1];
 
 				/* Combine the from & to directions.
 				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
@@ -2347,7 +2347,7 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 	/* Calculate next tile */
 	tile += _tileoffs_by_dir[t];
 	// determine the track status on the next tile.
-	ts = GetTileTrackStatus(tile, 0) & _reachable_tracks[t];
+ 	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[t];
 	
 	/* Calc position within the current tile ?? */
 	x = v->x_pos & 0xF;

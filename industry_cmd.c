@@ -820,7 +820,7 @@ static void ClickTile_Industry(uint tile)
 	ShowIndustryViewWindow(_map2[tile]);
 }
 
-static uint32 GetTileTrackStatus_Industry(uint tile, int mode)
+static uint32 GetTileTrackStatus_Industry(uint tile, TransportType mode)
 {
 	return 0;
 }

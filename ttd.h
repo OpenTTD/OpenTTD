@@ -86,6 +86,20 @@ enum MapTileTypes {
 	MP_UNMOVABLE
 };
 
+typedef enum TransportTypes {
+	/* These constants are for now linked to the representation of bridges
+	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge
+	 * to compare against the map5 array. In an ideal world, these
+	 * constants would be used everywhere when accessing tunnels and
+	 * bridges. For now, you should just not change the values for road
+	 * and rail.
+	 */
+        TRANSPORT_RAIL = 0,
+	TRANSPORT_ROAD = 1,
+	TRANSPORT_WATER,
+	TRANSPORT_MAX
+} TransportType;
+
 typedef struct TileInfo {
 	uint x;
 	uint y;
@@ -231,7 +245,26 @@ typedef uint GetSlopeZProc(TileInfo *ti);
 typedef int32 ClearTileProc(uint tile, byte flags);
 typedef void GetAcceptedCargoProc(uint tile, AcceptedCargo *res);
 typedef void GetTileDescProc(uint tile, TileDesc *td);
-typedef uint32 GetTileTrackStatusProc(uint tile, int mode);
+/* GetTileTrackStatusProcs return a value that contains the possible tracks
+ * that can be taken on a given tile by a given transport. The return value is
+ * composed as follows: 0xaabbccdd. ccdd and aabb are bitmasks of trackdirs,
+ * where bit n corresponds to trackdir n. ccdd are the trackdirs that are
+ * present in the tile (1==present, 0==not present), aabb is the signal
+ * status, if applicable (0==green/no signal, 1==red, note that this is
+ * reversed from map3/2[tile] for railway signals).
+ *
+ * The result (let's call it ts) is often used as follows:
+ * tracks = (byte)(ts | ts >>8)
+ * This effectively converts the present part of the result (ccdd) to a
+ * track bitmask, which disregards directions. Normally, this is the same as just
+ * doing (byte)ts I think, although I am not really sure 
+ *
+ * A trackdir is combination of a track and a dir, where the lower three bits
+ * are a track, the fourth bit is the direction. these give 12 (or 14)
+ * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
+ * above. 
+ */
+typedef uint32 GetTileTrackStatusProc(uint tile, TransportType mode);
 typedef void GetProducedCargoProc(uint tile, byte *b);
 typedef void ClickTileProc(uint tile);
 typedef void AnimateTileProc(uint tile);

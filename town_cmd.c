@@ -319,7 +319,7 @@ static void GetTileDesc_Town(uint tile, TileDesc *td)
 	td->owner = OWNER_TOWN;
 }
 
-static uint32 GetTileTrackStatus_Town(uint tile, int mode)
+static uint32 GetTileTrackStatus_Town(uint tile, TransportType mode)
 {
 	/* not used */
 	return 0;
@@ -540,7 +540,7 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 
 		// Reached a tunnel? Then continue at the other side of it.
 		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile]&~3)==4) {
-			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _map5[tile]&3, 2);
+			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _map5[tile]&3);
 			*tile_ptr = flotr.tile;
 			return;
 		}
