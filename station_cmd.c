@@ -2499,11 +2499,11 @@ static void UpdateStationRating(Station *st)
 			}
 
 			{
-				if (!IS_HUMAN_PLAYER(st->owner) && st->owner != OWNER_NONE)
+				if (st->owner != OWNER_NONE && !IS_HUMAN_PLAYER(st->owner))
 							rating += _rating_boost[_opt.diff.competitor_intelligence];
 			}
 
-			if (st->owner < 8 && HASBIT(st->town->statues, st->owner))
+			if (st->owner < MAX_PLAYERS && HASBIT(st->town->statues, st->owner))
 				rating += 26;
 
 			{
