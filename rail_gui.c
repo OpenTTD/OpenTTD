@@ -452,7 +452,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			} else if ((e->place.userdata & 0xF) == VPM_X_AND_Y) {
 				if (GUIPlaceProcDragXY(e)) break;
 
-				if ((e->place.userdata >> 0xF) == GUI_PlaceProc_ConvertRailArea)
+				if ((e->place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4)
 					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
 			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
