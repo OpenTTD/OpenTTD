@@ -587,7 +587,7 @@ extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
 static void FixTown(OldTown *o, int num, byte town_name_type)
 {
 	Town *t;
-	uint i;
+	uint i = 0;
 
 	do {
 		t = GetTown(i);
