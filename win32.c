@@ -307,14 +307,14 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		break;
 
 
-	case WM_SYSKEYDOWN:
+	case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
 		switch(wParam) {
-		case VK_RETURN:
+		case VK_RETURN: /* Full Screen */
 			MakeWindow(!_wnd.fullscreen);
 			return 0;
-		default:
+		default: /* just ALT or ALT in combination with something else */
 			_pressed_key = MapWindowsKey(wParam) << 16;
-			break;
+			return 0; // game doesn't have a title-bar, so just ignore that
 		}
 		break;
 	case WM_NCMOUSEMOVE:
