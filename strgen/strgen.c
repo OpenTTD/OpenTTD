@@ -12,6 +12,13 @@
 extern char _openttd_revision[];
 #endif
 
+#ifdef __MORPHOS__
+#ifdef stderr
+#undef stderr
+#endif
+#define stderr stdout
+#endif // __MORPHOS__
+
 /* Compiles a list of strings into a compiled string list */
 
 #define lengthof(x) (sizeof(x)/sizeof(x[0]))
@@ -645,7 +652,7 @@ void write_strings_h(const char *filename)
 
 	fprintf(out, 
 		"\nenum {\n"
-		"\tLANGUAGE_PACK_IDENT = 'GNAL',\n"
+		"\tLANGUAGE_PACK_IDENT = 0x474E414C, // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
 		"\tLANGUAGE_PACK_VERSION = 0x%X,\n"
 		"};\n", (unsigned int)_hash);
 
@@ -683,8 +690,8 @@ void write_langfile(const char *filename, int show_todo)
 		hdr.offsets[i] = TO_LE16(n);
 	}
 
-	
-	hdr.ident = TO_LE32('GNAL');
+	// see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...) 
+	hdr.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
 	hdr.version = TO_LE32(_hash);
 	strcpy(hdr.name, _lang_name);
 	strcpy(hdr.own_name, _lang_ownname);
