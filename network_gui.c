@@ -172,9 +172,35 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		const byte *b = e->edittext.str;
-		if (*b != 0)
-			NetworkCoreConnectGame(b, _network_server_port);
+		byte *b = e->edittext.str;
+		if (*b != 0) {
+			byte * ip = NULL;
+			byte * port = NULL;
+			byte * player = NULL;
+			byte c;
+			uint16 rport;
+
+			rport = _network_server_port;
+			c = 0;
+			ip = b;
+			
+			while (b[c] != 0) {
+				if (((char)b[c]) == '#') {
+					player = &b[c+1];
+					b[c] = 0;
+					}
+				if (((char)b[c]) == ':') {
+					port = &b[c+1];
+					b[c] = 0;
+					}
+				c++;
+				}
+
+			if (player!=NULL) _network_playas = atoi(player);
+			if (port!=NULL) rport = atoi(port);
+
+			NetworkCoreConnectGame(b, rport);
+		}
 	} break;
 
 	case WE_TICK: {
