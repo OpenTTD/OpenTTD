@@ -51,15 +51,15 @@
   1999-05-03 lpd Original version.
  */
 
+#include "stdafx.h"
 #include "md5.h"
 #include <string.h>
-#include "stdafx.h"
 
 #undef BYTE_ORDER	/* 1 = big-endian, -1 = little-endian, 0 = unknown */
-#ifdef ARCH_IS_BIG_ENDIAN
-#  define BYTE_ORDER (ARCH_IS_BIG_ENDIAN ? 1 : -1)
+#if defined(TTD_BIG_ENDIAN)
+#  define BYTE_ORDER 1
 #else
-#  define BYTE_ORDER 0
+#  define BYTE_ORDER -1
 #endif
 
 #define T_MASK ((md5_word_t)~0)
