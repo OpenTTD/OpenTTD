@@ -786,7 +786,7 @@ static bool FileMD5(const MD5File file, bool warn)
 
 #if !defined(WIN32)
 	if (f == NULL) {
-		byte *s;
+		char *s;
 	// make lower case and check again
 		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);

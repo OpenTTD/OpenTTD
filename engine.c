@@ -625,7 +625,7 @@ void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger)
 
 static char *_engine_custom_names[256];
 
-void SetCustomEngineName(int engine, char *name)
+void SetCustomEngineName(int engine, const char *name)
 {
 	_engine_custom_names[engine] = strdup(name);
 }

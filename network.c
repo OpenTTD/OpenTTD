@@ -425,9 +425,9 @@ unsigned long NetworkResolveHost(const char *hostname)
 // connection_string will be re-terminated to seperate out the hostname, and player and port will
 // be set to the player and port strings given by the user, inside the memory area originally
 // occupied by connection_string.
-void ParseConnectionString(const byte **player, const byte **port, byte *connection_string)
+void ParseConnectionString(const char **player, const char **port, char *connection_string)
 {
-	byte *p;
+	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
 		if (*p == '#') {
 			*player = p + 1;
@@ -819,7 +819,7 @@ static void NetworkInitialize(void)
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
-NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
+NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info)
 {
 	if (!_network_available) return NULL;
 
@@ -853,13 +853,13 @@ NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool 
 /* Validates an address entered as a string and adds the server to
  * the list. If you use this functions, the games will be marked
  * as manually added. */
-void NetworkAddServer(const byte *b)
+void NetworkAddServer(const char *b)
 {
 	if (*b != '\0') {
 		NetworkGameList *item;
-		const byte *port = NULL;
-		const byte *player = NULL;
-		byte host[NETWORK_HOSTNAME_LENGTH];
+		const char *port = NULL;
+		const char *player = NULL;
+		char host[NETWORK_HOSTNAME_LENGTH];
 		uint16 rport;
 
 		ttd_strlcpy(host, b, lengthof(host));
@@ -896,7 +896,7 @@ void NetworkRebuildHostList(void)
 }
 
 // Used by clients, to connect to a server
-bool NetworkClientConnectGame(const byte* host, unsigned short port)
+bool NetworkClientConnectGame(const char* host, unsigned short port)
 {
 	if (!_network_available) return false;
 

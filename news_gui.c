@@ -503,10 +503,11 @@ static byte getNews(byte i)
 }
 
 // cut string after len pixels
-static void GetNewsString(NewsItem *ni, byte *buffer, uint max)
+static void GetNewsString(NewsItem *ni, char *buffer, uint max)
 {
 	StringID str;
-	byte *s, *d;
+	const char *s;
+	char *d;
 	uint len = 0;
 
 	if (ni->display_mode == 3) {
@@ -537,8 +538,8 @@ static void GetNewsString(NewsItem *ni, byte *buffer, uint max)
 		} else if (*s == '\r') {
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
-		} else if (*s >= ' ' && (*s < 0x88 || *s >= 0x99)) {
-			len += _stringwidth_table[*s - 32];
+		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
+			len += _stringwidth_table[(byte)*s - 32];
 			*d++ = *s;
 		}
 	}
@@ -549,7 +550,6 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		byte buffer[256];
 		int y = 19;
 		byte p, show;
 		NewsItem *ni;
@@ -560,6 +560,8 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		show = min(_total_news, w->vscroll.cap);
 
 		for (p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
+			char buffer[256];
+
 			// get news in correct order
 			ni = &_news_items[getNews(p)];
 

@@ -775,7 +775,7 @@ int8 SaveHighScoreValue(const Player *p)
 	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 		/* You are in the TOP5. Move all values one down and save us there */
 		if (hs[i].score <= score) {
-			byte buf[sizeof(hs[i].company)];
+			char buf[sizeof(hs[i].company)];
 
 			// move all elements one down starting from the replaced one
 			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
@@ -820,7 +820,6 @@ int8 SaveHighScoreValueNetwork(void)
 
 	{
 		HighScore *hs;
-		byte buf[sizeof(_highscore_table[0]->company)];
 		Player* const *p_cur = &player_sort[0];
 		uint8 i;
 
@@ -828,6 +827,8 @@ int8 SaveHighScoreValueNetwork(void)
 
 		/* Copy over Top5 companies */
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < (uint8)count; i++) {
+			char buf[sizeof(_highscore_table[0]->company)];
+
 			hs = &_highscore_table[LAST_HS_ITEM][i];
 			SetDParam(0, (*p_cur)->president_name_1);
 			SetDParam(1, (*p_cur)->president_name_2);

@@ -317,8 +317,6 @@ static void DrawStationViewWindow(Window *w)
 	int pos;
 	StringID str;
 	uint16 station_id;
-	byte *b;
-
 
 	station_id = (uint16)w->window_number;
 
@@ -401,6 +399,8 @@ static void DrawStationViewWindow(Window *w)
 	} while (pos > -5 && ++i != 12);
 
 	if (IsWindowOfPrototype(w, _station_view_widgets)) {
+		char *b;
+
 		b = _userstring;
 		b[0] = 0x81;
 		b[1] = STR_000C_ACCEPTS;
@@ -408,7 +408,7 @@ static void DrawStationViewWindow(Window *w)
 		b += 3;
 
 		for(i=0; i!=NUM_CARGO; i++) {
-			if ((b - (byte *) &_userstring) + 5 > USERSTRING_LEN - 1)
+			if ((b - _userstring) + 5 > USERSTRING_LEN - 1)
 				break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
 				b[0] = 0x81;
@@ -418,7 +418,7 @@ static void DrawStationViewWindow(Window *w)
 			}
 		}
 
-		if (b == (byte*)&_userstring[3]) {
+		if (b == &_userstring[3]) {
 			b[0] = 0x81;
 			b[1] = STR_00D0_NOTHING;
 			b[2] = STR_00D0_NOTHING >> 8;

@@ -678,7 +678,7 @@ void GuiShowTooltips(StringID string_id)
 static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, uint mask)
 {
 	int i;
-	byte *b;
+	char *b;
 
 	b = _userstring;
 	b[0] = 0x81;
@@ -698,7 +698,7 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 		}
 	}
 
-	if (b == (byte*)&_userstring[3]) {
+	if (b == &_userstring[3]) {
 		b[0] = 0x81;
 		b[1] = STR_00D0_NOTHING;
 		b[2] = STR_00D0_NOTHING >> 8;
@@ -779,7 +779,7 @@ void SetHScrollCount(Window *w, int num)
  * [IN]buf: string to be checked
  * [OUT]count: gets set to the count of characters
  * [OUT]width: gets set to the pixels width */
-static void GetCurrentStringSize(const byte *buf, int *count, int *width)
+static void GetCurrentStringSize(const char *buf, int *count, int *width)
 {
 	*count = 0;
 	*width = -1;
@@ -788,7 +788,7 @@ static void GetCurrentStringSize(const byte *buf, int *count, int *width)
 		if (*++buf == 0)
 			break;
 		(*count)++;
-		(*width) += _stringwidth_table[*buf - 32];
+		(*width) += _stringwidth_table[(byte)*buf - 32];
 	} while (1);
 }
 

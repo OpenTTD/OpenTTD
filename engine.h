@@ -114,7 +114,7 @@ enum VehicleTrigger {
 };
 void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger);
 
-void SetCustomEngineName(int engine, char *name);
+void SetCustomEngineName(int engine, const char *name);
 StringID GetCustomEngineName(int engine);
 
 

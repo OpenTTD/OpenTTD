@@ -1509,6 +1509,7 @@ static void VehicleNewName(byte *buf, int len)
 	uint8 lang;
 	uint8 id;
 	uint8 endid;
+	const char* name;
 
 	check_length(len, 6, "VehicleNewName");
 	feature = buf[1];
@@ -1530,17 +1531,19 @@ static void VehicleNewName(byte *buf, int len)
 		return;
 	}
 
-	buf += 5, len -= 5;
+	name = (const char*)(buf + 5);
+	len -= 5;
 	for (; id < endid && len > 0; id++) {
-		int ofs = strlen(buf) + 1;
+		int ofs = strlen(name) + 1;
 
 		if (ofs < 128) {
-			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, buf);
-			SetCustomEngineName(id, buf);
+			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, name);
+			SetCustomEngineName(id, name);
 		} else {
 			DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
 		}
-		buf += ofs, len -= ofs;
+		name += ofs;
+		len -= ofs;
 	}
 }
 
@@ -1712,14 +1715,14 @@ static void GRFInfo(byte *buf, int len)
 	/* TODO: Check version. (We should have own versioning done somehow.) */
 	uint8 version;
 	uint32 grfid;
-	char *name;
-	char *info;
+	const char *name;
+	const char *info;
 
 	check_length(len, 9, "GRFInfo");
 	version = buf[1];
 	/* this is de facto big endian - grf_load_dword() unsuitable */
 	grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
-	name = buf + 6;
+	name = (const char*)(buf + 6);
 	info = name + strlen(name) + 1;
 
 	_cur_grffile->grfid = grfid;

@@ -647,8 +647,8 @@ int ttd_main(int argc, char* argv[])
 #ifdef ENABLE_NETWORK
 	if ((network) && (_network_available)) {
 		if (network_conn != NULL) {
-			const byte *port = NULL;
-			const byte *player = NULL;
+			const char *port = NULL;
+			const char *player = NULL;
 			uint16 rport;
 
 			rport = NETWORK_DEFAULT_PORT;

@@ -147,7 +147,7 @@ void NetworkShutDown(void);
 void NetworkGameLoop(void);
 void NetworkUDPGameLoop(void);
 bool NetworkServerStart(void);
-bool NetworkClientConnectGame(const byte* host, unsigned short port);
+bool NetworkClientConnectGame(const char* host, unsigned short port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
 void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);

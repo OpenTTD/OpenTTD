@@ -554,8 +554,8 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
 	char* ip;
-	const byte *port = NULL;
-	const byte *player = NULL;
+	const char *port = NULL;
+	const char *player = NULL;
 	uint16 rport;
 
 	if (argc<2) return NULL;

@@ -158,7 +158,7 @@ static IniFile *ini_load(const char *filename)
 	IniGroup *group = NULL;
 	IniItem *item;
 
-	byte *comment = NULL;
+	char *comment = NULL;
 	uint comment_size = 0;
 	uint comment_alloc = 0;
 

@@ -2102,10 +2102,11 @@ extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 {
 	StringID str;
-	byte *s, *d;
+	const char *s;
+	char *d;
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int x;
-	byte buffer[256];
+	char buffer[256];
 
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
@@ -2127,7 +2128,7 @@ static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 		} else if (*s == 0x0D) {
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d+=4;
-		} else if (*s >= ' ' && (*s < 0x88 || *s >= 0x99)) {
+		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
 			*d++ = *s;
 		}
 	}

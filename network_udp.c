@@ -516,7 +516,7 @@ void NetworkUDPSearchGame(void)
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
-NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port)
+NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 {
 	struct sockaddr_in out_addr;
 	Packet *p;

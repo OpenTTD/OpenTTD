@@ -196,7 +196,7 @@ VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X mont
 
 VARDEF uint16 _network_restart_game_date;    // If this year is reached, the server automaticly restarts
 
-NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
+NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info);
 
 #endif /* ENABLE_NETWORK */
 
@@ -211,9 +211,9 @@ VARDEF bool _network_server; // network-server is active
 VARDEF bool _network_dedicated; // are we a dedicated server?
 VARDEF byte _network_playas; // an id to play as..
 
-void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
+void ParseConnectionString(const char **player, const char **port, char *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
-void NetworkAddServer(const byte *b);
+void NetworkAddServer(const char *b);
 void NetworkRebuildHostList(void);
 void NetworkChangeCompanyPassword(const char *str);
 
