@@ -53,7 +53,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib"
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
@@ -120,7 +120,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib"
 				OutputFile=".\Debug/openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
@@ -1933,16 +1933,10 @@
 			RelativePath="icon1.ico">
 		</File>
 		<File
-			RelativePath=".\libpng.lib">
-		</File>
-		<File
 			RelativePath="mainicon.ico">
 		</File>
 		<File
 			RelativePath="ReadMe.txt">
-		</File>
-		<File
-			RelativePath=".\zlibstat.lib">
 		</File>
 	</Files>
 	<Globals>
