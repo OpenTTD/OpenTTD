@@ -7,6 +7,7 @@
 #include "town.h"
 #include "sound.h"
 #include "station.h"
+#include "sprite.h"
 
 void ShowTrainDepotWindow(uint tile);
 

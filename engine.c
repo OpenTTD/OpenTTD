@@ -7,6 +7,7 @@
 #include "vehicle.h"
 #include "news.h"
 #include "saveload.h"
+#include "sprite.h"
 
 #define UPDATE_PLAYER_RAILTYPE(e,p) if ((byte)(e->railtype + 1) > p->max_railtype) p->max_railtype = e->railtype + 1;
 

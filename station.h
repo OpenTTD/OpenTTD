@@ -1,7 +1,7 @@
 #ifndef STATION_H
 #define STATION_H
 
-#include "engine.h"
+#include "sprite.h"
 #include "vehicle.h"
 
 typedef struct GoodsEntry {
@@ -91,23 +91,6 @@ VARDEF bool _global_station_sort_dirty;
 void GetProductionAroundTiles(uint *produced, uint tile, int w, int h);
 void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h);
 uint GetStationPlatforms(Station *st, uint tile);
-
-
-typedef struct DrawTileSeqStruct {
-	int8 delta_x;
-	int8 delta_y;
-	int8 delta_z;
-	byte width,height;
-	byte unk; // 'depth', just z-size; TODO: rename
-	uint32 image;
-} DrawTileSeqStruct;
-
-typedef struct DrawTileSprites {
-	SpriteID ground_sprite;
-	DrawTileSeqStruct const *seq;
-} DrawTileSprites;
-
-#define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
 
 struct StationSpec {

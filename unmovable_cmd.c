@@ -7,6 +7,7 @@
 #include "station.h"
 #include "economy.h"
 #include "town.h"
+#include "sprite.h"
 
 typedef struct DrawTileUnmovableStruct {
 	uint16 image;

@@ -7,6 +7,7 @@
 #include "fileio.h"
 #include "engine.h"
 #include "station.h"
+#include "sprite.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

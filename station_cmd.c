@@ -12,6 +12,7 @@
 #include "economy.h"
 #include "player.h"
 #include "airport.h"
+#include "sprite.h"
 #include "table/directions.h"
 
 // FIXME -- need to be embedded into Airport variable. Is dynamically

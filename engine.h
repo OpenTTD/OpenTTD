@@ -1,6 +1,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include "sprite.h"
+
 typedef struct RailVehicleInfo {
 	byte image_index;
 	byte flags; /* 1=multihead engine, 2=wagon */
@@ -80,24 +82,6 @@ enum {
 void StartupEngines();
 
 
-struct SpriteGroup {
-	// XXX: Would anyone ever need more than 16 spritesets? Maybe we should
-	// use even less, now we take whole 8kb for custom sprites table, oh my!
-	byte sprites_per_set; // means number of directions - 4 or 8
-
-	// Loaded = in motion, loading = not moving
-	// Each group contains several spritesets, for various loading stages
-
-	// XXX: For stations the meaning is different - loaded is for stations
-	// with small amount of cargo whilst loading is for stations with a lot
-	// of da stuff.
-
-	byte loaded_count;
-	uint16 loaded[16]; // sprite ids
-	byte loading_count;
-	uint16 loading[16]; // sprite ids
-};
-
 extern byte _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
 enum {
 	CID_DEFAULT = 29,
@@ -173,4 +157,5 @@ extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 #define ship_vehicle_info(e) _ship_vehicle_info[e - SHIP_ENGINES_INDEX]
 #define aircraft_vehinfo(e) _aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX]
 #define road_vehicle_info(e) (&_road_vehicle_info[e - ROAD_ENGINES_INDEX])
+
 #endif

@@ -1160,6 +1160,9 @@
 				RelativePath="sound.h">
 			</File>
 			<File
+				RelativePath=".\sprite.h">
+			</File>
+			<File
 				RelativePath="station.h">
 			</File>
 			<File
