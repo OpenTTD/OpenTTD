@@ -285,7 +285,7 @@ ifeq ($(shell if test $(CC_VERSION) -ge 34; then echo true; fi), true)
 endif
 
 ifdef DEBUG
-  CFLAGS += -g -D_DEBUG
+  CFLAGS += -g -fno-inline -D_DEBUG
 endif
 
 ifdef PROFILE
