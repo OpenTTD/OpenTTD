@@ -303,7 +303,7 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY		:{WHITE}Chosen name in use already
 
 STR_0133_WINDOWS						:Windows
 STR_0134_UNIX							:Unix
-STR_0135_OSX							:OSX
+STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS					:MorphOS
 
@@ -343,10 +343,10 @@ STR_015A_COMPANY_LEAGUE_TABLE			:Company league table
 STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Save game
 STR_015D_LOAD_GAME						:Load game
-STR_015E_QUIT_GAME						:Quit game
-STR_015F_QUIT							:Quit
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Are you sure you want to quit this game ?
-STR_0161_QUIT_GAME						:{WHITE}Quit Game
+STR_015E_QUIT_GAME						:Abandon game
+STR_015F_QUIT							:Exit
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Are you sure you want to abandon this game?
+STR_0161_QUIT_GAME						:{WHITE}Abandon Game
 STR_SORT_TIP					:{BLACK}Select sorting order
 STR_SORT_BY_NAME							:{BLACK}Name
 STR_SORT_BY_DATE							:{BLACK}Date
@@ -1336,7 +1336,7 @@ STR_2038_FLATS							:Flats
 STR_2039_TALL_OFFICE_BLOCK				:Tall office block
 STR_203A_SHOPS_AND_OFFICES				:Shops and offices
 STR_203B_SHOPS_AND_OFFICES				:Shops and offices
-STR_203C_THEATER						:Theater
+STR_203C_THEATER						:Theatre
 STR_203D_STADIUM						:Stadium
 STR_203E_OFFICES						:Offices
 STR_203F_HOUSES							:Houses
