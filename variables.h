@@ -459,6 +459,7 @@ VARDEF int _debug_grf_level;
 VARDEF int _debug_ai_level;
 VARDEF int _debug_net_level;
 VARDEF int _debug_map_level;
+VARDEF int _debug_ms_level;
 
 /* Forking stuff */
 VARDEF bool _dedicated_forks;

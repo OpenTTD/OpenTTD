@@ -2441,7 +2441,7 @@ static void StationHandleBigTick(Station *st)
 					Vehicle *v = GetVehicle(rs->slot[k]);
 
 					if (v->u.road.slot != rs) {
-						DEBUG(misc, 1) ("Bus Slot Desync! cleaning up (Don't panic)");
+						DEBUG(ms, 0) ("Multistop: Bus Slot Desync! cleaning up (Don't panic)");
 						v->u.road.slot = NULL;
 						v->u.road.slot_age = 0;
 						rs->slot[k] = INVALID_SLOT;
@@ -2457,7 +2457,7 @@ static void StationHandleBigTick(Station *st)
 					Vehicle *v = GetVehicle(rs->slot[k]);
 
 					if (v->u.road.slot != rs) {
-						DEBUG(misc, 1) ("Truck Slot Desync! cleaning up (Don't panic)");
+						DEBUG(ms, 0) ("Multistop: Truck Slot Desync! cleaning up (Don't panic)");
 						v->u.road.slot = NULL;
 						v->u.road.slot_age = 0;
 						rs->slot[k] = INVALID_SLOT;

@@ -1206,6 +1206,7 @@ static const byte _roadveh_data_2[4] = { 0,1,8,9 };
 
 static inline void ClearSlot(Vehicle *v, RoadStop *rs)
 {
+	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
 	v->u.road.slot = NULL;
 	v->u.road.slot_age = 0;
 	rs->slot[v->u.road.slotindex] = INVALID_SLOT;
@@ -1513,7 +1514,7 @@ again:
 			//we have arrived at the wrong station
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
- 			DEBUG(misc, 1) ("Multistop: Wrong station, force a slot clearing. Vehicle %d at 0x%x, should go to 0x%x of station %d (%x), destination 0x%x", v->unitnumber, v->tile, v->u.road.slot->xy, st->index, st->xy, v->dest_tile);
+ 			DEBUG(ms, 1) ("Multistop: Wrong station, force a slot clearing. Vehicle %d at 0x%x, should go to 0x%x of station %d (%x), destination 0x%x", v->unitnumber, v->tile, v->u.road.slot->xy, st->index, st->xy, v->dest_tile);
 			ClearSlot(v, v->u.road.slot);
 		}
 
@@ -1696,6 +1697,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			if ( rs == NULL )
 				goto no_stop;
 
+			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			do {
 				stop->dist = 0xFFFFFFFF;
 
@@ -1703,6 +1705,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				//to one tile BEFORE the stop in question and doesn't
 				//regard the direction of the exit
 				stop->dist = RoadFindPathToStation(v, rs->xy);
+				DEBUG(ms, 3) ("Multistop: Distance to stop at 0x%x is %d", rs->xy, stop->dist);
 				stop->rs = rs;
 
 				if (stop->dist < mindist) {
@@ -1724,6 +1727,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 						if ((stop->rs->slot[i] == INVALID_SLOT) && (stop->dist < 120)) {
 
 							//Hooray we found a free slot. Assign it
+							DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d", i, stop->rs->xy, v->unitnumber);
 							stop->rs->slot[i] = v->index;
 							v->u.road.slot = stop->rs;
 
@@ -1742,8 +1746,10 @@ void OnNewDay_RoadVeh(Vehicle *v)
 have_slot:
 		//now we couldn't assign a slot for one reason or another.
 		//so we just go to the nearest station
-		if (v->u.road.slot == NULL)
-			v->dest_tile = firststop->rs->xy;
+			if (v->u.road.slot == NULL) {
+				DEBUG(ms, 1) ("Multistop: No free slot found for vehicle %d, going to default station", v->unitnumber);
+				v->dest_tile = firststop->rs->xy;
+			}
 		}
 
 		free(firststop);
