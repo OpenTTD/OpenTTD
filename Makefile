@@ -109,7 +109,7 @@
 
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=2
+MAKEFILE_VERSION:=3
 
 # CONFIG_WRITER have to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -405,8 +405,15 @@ endif
 endif
 
 # enables/disables assert()
+ifdef DISABLE_ASSERTS
+CFLAGS += -DNDEBUG
+endif
+
+# automatically disables asserts for release
+ifdef RELEASE
 ifndef ENABLE_ASSERTS
 CFLAGS += -DNDEBUG
+endif
 endif
 
 ifdef TRANSLATOR
