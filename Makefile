@@ -171,6 +171,7 @@ endif
 
 # Set output executable names
 TTD=openttd$(EXE)
+ENDIAN_CHECK=endian_check$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
 
@@ -198,7 +199,7 @@ BUILDDATE=`date +%d.%m.%y`
 ifeq ($(shell uname -m), x86_64)
 endwarnings:=endwarnings
 64_bit_warnings:=64_bit_warnings
-BASECFLAGS += -m64 -D_LITTLE_ENDIAN
+BASECFLAGS += -m64
 endif
 
 
@@ -488,8 +489,15 @@ OSX:=OSX
 endif
 
 
-all: $(UPDATECONFIG) $(TTD) $(OSX) $(endwarnings)
+all: endian.h $(UPDATECONFIG) $(TTD) $(OSX) $(endwarnings)
 
+endian.h: $(ENDIAN_CHECK)
+	# Check if system is LITTLE_ENDIAN or BIG_ENDIAN 
+	./$(ENDIAN_CHECK) > $@
+
+$(ENDIAN_CHECK): endian_check.c
+	$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
+	
 
 $(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
 	$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)
@@ -546,7 +554,7 @@ FORCE:
 # ttd$(EXE) is removed just to make sure people execute the right binary (openttd$(EXE))
 # remove this for next release!
 clean:
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) ttd$(EXE)
+	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK) ttd$(EXE)
 
 mrproper: clean
 	rm -rf $(MAKE_CONFIG)

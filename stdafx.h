@@ -67,27 +67,12 @@
 # define GCC_PACK
 #endif
 
+// Windows has always LITTLE_ENDIAN
 #if defined(WIN32)
-# define TTD_LITTLE_ENDIAN
-#endif
-
-#if defined(i386)
-# define TTD_LITTLE_ENDIAN
-#endif
-
-#if defined(__MORPHOS__)
-# define TTD_BIG_ENDIAN
-#endif
-
-// Check endianness
-#if !defined(TTD_LITTLE_ENDIAN) && !defined(TTD_BIG_ENDIAN)
-#	if defined(_BIG_ENDIAN)
-#		define TTD_BIG_ENDIAN
-#	elif defined(_LITTLE_ENDIAN)
-#		define TTD_LITTLE_ENDIAN
-#	else
-#		error No endianness defined, use either TTD_LITTLE_ENDIAN or TTD_BIG_ENDIAN
-#endif
+  #define TTD_LITTLE_ENDIAN
+#else
+// Else include endian.h, which has the endian-type, autodetected by the Makefile
+  #include "endian.h"
 #endif
 
 #if defined(UNIX)
