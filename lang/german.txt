@@ -827,7 +827,7 @@ STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...kann nur im Wüstengebiet erri
 STR_0319_PAUSED							:{YELLOW}* *  ANGEHALTEN  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY				:{WHITE}Screenshot ist gespeichert als '{STRING}'
-STR_031C_SCREENSHOT_FAILED					:{WHITE}Screenshot misslungen !
+STR_031C_SCREENSHOT_FAILED					:{WHITE}Screenshot misslungen!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE				:{BLACK}Land für künftige Nutzung kaufen
 STR_032A_1_ROAD_VEHICLE_SERVICE					:{BLACK}1: Fahrzeugreparatur
@@ -1636,7 +1636,7 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...Wald kann nur oberhalb der Sch
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} gibt bevorstehende Schließung bekannt!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Wegen fehlender Rohstoffe kündigt {TOWN} {STRING} die drohende Schließung an!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Wegen Holzmangel gibt {TOWN} {STRING} die bevorstehende Schließung bekannt!
-STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} erhöht die Produktion !
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} erhöht die Produktion!
 STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Neue Kohlevorkommen bei {TOWN} {STRING} gefunden!{}Förderung verdoppelt!
 STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Neue Ölfunde bei {TOWN} {STRING}!{}Förderung wird vermutlich verdoppelt!
 STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Neue Getreideanbaumethoden bei {TOWN} {STRING} werden Erträge verdoppeln!
@@ -1916,7 +1916,7 @@ STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}Transportfirmen fusioniere
 STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}{STRING} ist verkauft worden an {STRING} für {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}Wir suchen jemanden, der die Firma übernimmt.{}{}Nehmen Sie das Angebot an und kaufen {STRING} für {CURRENCY}?
 STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Insolvenz!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} ist von den Gläubigern geschlossen worden, alles Vermögen wurde veräussert !
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} ist von den Gläubigern geschlossen worden, alles Vermögen wurde veräussert!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Neue Transportfirma gegründet!
 STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} startet bei {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Kann die Firma nicht kaufen...
@@ -2557,7 +2557,7 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Explosion einer Ölraffineri
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Fabrik nahe {TOWN} durch mysteriöse Umstände zerstört!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' landet bei {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Stolleneinbruch hinterläßt einen Pfad der Zerstörung bei {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Hochwasser!{}Mindesten {COMMA16} Menschen vermisst oder tot nach schwerer Flut!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Hochwasser!{}Mindestens {COMMA16} Menschen vermisst oder tot nach schwerer Flut!
 
 STR_BRIBE_FAILED						:{WHITE}Ihr Bestechungsversuch wurde
 STR_BRIBE_FAILED_2						:{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
