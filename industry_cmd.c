@@ -1890,11 +1890,11 @@ static void Save_INDY()
 	int i = 0;
 	// Write the vehicles
 	FOR_ALL_INDUSTRIES(ind) {
-		i++;
 		if (ind->xy != 0) {
 			SlSetArrayIndex(i);
 			SlObject(ind, _industry_desc);
 		}
+		i++;
 	}
 }
 
