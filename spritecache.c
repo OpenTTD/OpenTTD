@@ -774,6 +774,7 @@ static bool FileMD5(const MD5File file, bool warn)
 {
 	FILE *f;
 	char buf[MAX_PATH];
+    byte *s;
 
 	md5_state_t filemd5state;
 	int len=0;
