@@ -23,7 +23,6 @@ static const uint16 _roadveh_images[63] = {
 	0xC5C, 0xC64, 0xC6C, 0xC74, 0xC84, 0xC94, 0xCA4
 };
 
-
 static const uint16 _roadveh_full_adder[63] = {
     0,  88,   0,   0,   0,   0,  48,  48,
    48,  48,   0,   0,  64,  64,   0,  16,
@@ -35,107 +34,6 @@ static const uint16 _roadveh_full_adder[63] = {
     0,   0,   0,   8,   8,   8,   8
 };
 
-static const byte _roadveh_spritenum[88] = {
-	0, 17, 17, 34, 51, 51, 51, 1,
-	18, 35, 2, 19, 36, 57, 57, 57,
-	3, 20, 37, 4, 21, 38, 5, 22,
-
-	39, 6, 23, 40, 7, 24, 41, 8,
-	25, 42, 9, 26, 43, 10, 27, 44,
-	11, 28, 45, 12, 29, 46, 13, 30,
-	47, 14, 31, 48, 15, 32, 49, 16,
-
-	33, 50, 52, 52, 52, 53, 53, 53,
-	54, 54, 54, 55, 55, 55, 56, 56,
-	56, 58, 58, 58, 59, 59, 59, 60,
-	60, 60, 61, 61, 61, 62, 62, 62,
-};
-
-const byte _roadveh_speed[88] = {
-	 112, 176, 224, 255, 112, 192, 240,  96,
-	 176, 224,  96, 176, 224,  96, 176, 224,
-	  96, 176, 224,  96, 176, 224,  96, 176,
-	 224,  96, 176, 224,  96, 176, 224,  96,
-	 176, 224,  96, 176, 224,  96, 176, 224,
-	  96, 176, 224,  96, 176, 224,  96, 176,
-	 224,  96, 176, 224,  96, 176, 224,  96,
-	 176, 224,  96, 176, 224,  96, 176, 224,
-	  96, 176, 224,  96, 176, 224,  96, 176,
-	 224,  96, 176, 224,  96, 176, 224,  96,
-	 176, 224,  96, 176, 224,  96, 176, 224,
-};
-
-
-const byte _roadveh_runningcost[88] = {
-	  91, 128, 178, 240,  91, 171, 240,  90,
-	 168, 240,  90, 168, 240,  90, 168, 240,
-	  90, 168, 240,  90, 168, 240,  90, 168,
-	 240,  90, 168, 240,  90, 168, 240,  90,
-	 168, 240,  90, 168, 240,  90, 168, 240,
-	  90, 168, 240,  90, 168, 240,  90, 168,
-	 240,  90, 168, 240,  90, 168, 240,  90,
-	 168, 240,  90, 168, 240,  90, 168, 240,
-	  90, 168, 240,  90, 168, 240,  90, 168,
-	 240,  90, 168, 240,  90, 168, 240,  90,
-	 168, 240,  90, 168, 240,  90, 168, 240,
-};
-
-
-const byte _roadveh_capacity[88] = {
-	31,  35,  37,  40,  30,  35,  38,  20,
-	25,  28,  22,  28,  30,  22,  28,  30,
-	21,  25,  27,  14,  16,  18,  14,  16,
-	18,  20,  25,  30,  20,  22,  24,  22,
-	25,  27,  15,  18,  20,  12,  15,  16,
-	17,  20,  22,  15,  18,  20,  22,  25,
-	27,  21,  25,  27,  18,  20,  23,  17,
-	19,  22,  17,  19,  22,  17,  19,  22,
-	17,  19,  22,  17,  19,  22,  17,  19,
-	22,  17,  19,  22,  17,  19,  22,  17,
-	19,  22,  17,  19,  22,  17,  19,  22,
-};
-
-const byte _roadveh_cargo_type[88] = {
-	 0, 0, 0, 0, 0, 0, 0, 1,
-	 1, 1, 2, 2, 2, 2, 2, 2,
-	 3, 3, 3, 4, 4, 4, 5, 5,
-	 5, 6, 6, 6, 7, 7, 7, 8,
-	 8, 8, 9, 9, 9,10,10,10,
-	11,11,11, 9, 9, 9, 8, 8,
-	 8, 9, 9, 9, 4, 4, 4, 1,
-	 1, 1, 1, 1, 1, 7, 7, 7,
-	 8, 8, 8, 6, 6, 6, 3, 3,
-	 3, 5, 5, 5, 4, 4, 4,11,
-	11,11,10,10,10, 9, 9, 9,
-};
-
-const byte _roadveh_price[88] = {
-	120,140,150,160,120,140,160,108,
-	128,138,115,135,145,115,135,145,
-	110,140,150,105,130,140,107,130,
-	140,114,133,143,118,137,147,121,
-	140,150,112,135,145,145,170,180,
-	112,134,144,112,135,145,121,140,
-	150,111,141,151,118,148,158,117,
-	147,157,117,147,157,117,147,157,
-	117,147,157,117,147,157,117,147,
-	157,117,147,157,117,147,157,117,
-	147,157,117,147,157,117,147,157,
-};
-
-static const byte _road_engine_sounds[88] = {
-	23, 26, 25, 25, 60, 62, 60, 23,
-	23, 23, 23, 23, 23, 62, 60, 62,
-	23, 23, 23, 23, 23, 23, 23, 23,
-	23, 23, 23, 23, 23, 23, 23, 23,
-	23, 23, 23, 23, 23, 23, 23, 23,
-	23, 23, 23, 23, 23, 23, 23, 23,
-	23, 23, 23, 23, 23, 23, 23, 23,
-	23, 23, 63, 64, 63, 64, 63, 64,
-	63, 64, 63, 64, 63, 64, 63, 64,
-	63, 64, 63, 64, 63, 64, 63, 64,
-	63, 64, 63, 64, 63, 64, 63, 64,
-};
 
 static const uint16 _road_veh_fp_ax_or[4] = {
 	0x100,0x200,1,2,
@@ -174,26 +72,24 @@ int GetRoadVehImage(Vehicle *v, byte direction)
 
 void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	DrawSprite((6 + _roadveh_images[_roadveh_spritenum[engine - ROAD_ENGINES_INDEX]]) | image_ormod, x, y);
+	DrawSprite((6 + _roadveh_images[road_vehicle_info(engine)->image_index]) | image_ormod, x, y);
 }
 
 void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 {
-	engine -= ROAD_ENGINES_INDEX;
+	SET_DPARAM32(0, ((_price.roadveh_base >> 3) * road_vehicle_info(engine)->base_cost) >> 5);
+	SET_DPARAM16(1, road_vehicle_info(engine)->max_speed * 10 >> 5);
+	SET_DPARAM32(2, road_vehicle_info(engine)->running_cost * _price.roadveh_running >> 8);
 
-	SET_DPARAM32(0, ((_price.roadveh_base >> 3) * _roadveh_price[engine]) >> 5);
-	SET_DPARAM16(1, _roadveh_speed[engine] * 10 >> 5);
-	SET_DPARAM32(2, _roadveh_runningcost[engine] * _price.roadveh_running >> 8);
-
-	SET_DPARAM16(4, _roadveh_capacity[engine]);
-	SET_DPARAM16(3, _cargoc.names_long_p[_roadveh_cargo_type[engine]]);
+	SET_DPARAM16(4, road_vehicle_info(engine)->capacity);
+	SET_DPARAM16(3, _cargoc.names_long_p[road_vehicle_info(engine)->cargo_type]);
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
 static int32 EstimateRoadVehCost(byte engine_type)
 {
-	return ((_price.roadveh_base >> 3) * _roadveh_price[engine_type - ROAD_ENGINES_INDEX]) >> 5;
+	return ((_price.roadveh_base >> 3) * road_vehicle_info(engine_type)->base_cost) >> 5;
 }
 
 int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -235,9 +131,9 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.state = 254;
 		v->vehstatus = VS_HIDDEN|VS_STOPPED|VS_DEFPAL;
 
-		v->spritenum = _roadveh_spritenum[p1 - ROAD_ENGINES_INDEX];
-		v->cargo_type = _roadveh_cargo_type[p1 - ROAD_ENGINES_INDEX];
-		v->cargo_cap = _roadveh_capacity[p1 - ROAD_ENGINES_INDEX];
+		v->spritenum = road_vehicle_info(p1)->image_index;
+		v->cargo_type = road_vehicle_info(p1)->cargo_type;
+		v->cargo_cap = road_vehicle_info(p1)->capacity;
 //		v->cargo_count = 0;
 		v->value = cost;
 //		v->day_counter = 0;
@@ -249,7 +145,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //	v->u.road.overtaking = 0;
 
 		v->last_station_visited = 0xFF;
-		v->max_speed = _roadveh_speed[p1 - ROAD_ENGINES_INDEX];
+		v->max_speed = road_vehicle_info(p1)->max_speed;
 		v->engine_type = (byte)p1;
 
 		e = &_engines[p1];
@@ -725,7 +621,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 static void StartRoadVehSound(Vehicle *v)
 {
-	int s = _road_engine_sounds[v->engine_type - ROAD_ENGINES_INDEX];
+	int s = road_vehicle_info(v->engine_type)->sfx;
 	if (s == 23 && (v->tick_counter&3) == 0) s++;
 	SndPlayVehicleFx(s, v);
 }
@@ -1569,7 +1465,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	cost = _roadveh_runningcost[v->engine_type - ROAD_ENGINES_INDEX] * _price.roadveh_running / 364;
+	cost = road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running / 364;
 
 	v->profit_this_year -= cost >> 8;
 

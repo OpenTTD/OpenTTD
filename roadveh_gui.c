@@ -11,12 +11,6 @@
 #include "player.h"
 #include "engine.h"
 
-extern const byte _roadveh_price[88];
-extern const byte _roadveh_speed[88];
-extern const byte _roadveh_runningcost[88];
-extern const byte _roadveh_capacity[88];
-extern const byte _roadveh_cargo_type[88];
-
 static void DrawRoadVehImage(Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetRoadVehImage(v, 6);
@@ -60,7 +54,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			}
 			SET_DPARAM16(0, str);
 			SET_DPARAM16(2, v->max_age / 366);
-			SET_DPARAM32(3, _roadveh_runningcost[v->engine_type - ROAD_ENGINES_INDEX] * _price.roadveh_running >> 8);
+			SET_DPARAM32(3, road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running >> 8);
 			DrawString(2, 15, STR_900D_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -356,11 +350,11 @@ static void DrawNewRoadVehWindow(Window *w)
 		if (selected_id != -1) {
 			Engine *e;
 
-			SET_DPARAM32(0, _roadveh_price[selected_id - ROAD_ENGINES_INDEX] * (_price.roadveh_base>>3)>>5);
-			SET_DPARAM16(1, _roadveh_speed[selected_id - ROAD_ENGINES_INDEX] * 10 >> 5);
-			SET_DPARAM32(2, _roadveh_runningcost[selected_id - ROAD_ENGINES_INDEX] * _price.roadveh_running >> 8);
-			SET_DPARAM16(4, _roadveh_capacity[selected_id - ROAD_ENGINES_INDEX]);
-			SET_DPARAM16(3, _cargoc.names_long_p[_roadveh_cargo_type[selected_id - ROAD_ENGINES_INDEX]]);
+			SET_DPARAM32(0, road_vehicle_info(selected_id)->base_cost * (_price.roadveh_base>>3)>>5);
+			SET_DPARAM16(1, road_vehicle_info(selected_id)->max_speed * 10 >> 5);
+			SET_DPARAM32(2, road_vehicle_info(selected_id)->running_cost * _price.roadveh_running >> 8);
+			SET_DPARAM16(4, road_vehicle_info(selected_id)->capacity);
+			SET_DPARAM16(3, _cargoc.names_long_p[road_vehicle_info(selected_id)->cargo_type]);
 
 			e = &_engines[selected_id];
 			SET_DPARAM16(6, e->lifelength);

@@ -14,6 +14,16 @@ typedef struct RailVehicleInfo {
 	byte cargo_type;
 } RailVehicleInfo;
 
+typedef struct RoadVehicleInfo {
+	byte image_index;
+	byte base_cost;
+	uint16 max_speed;
+	byte cargo_type;
+	uint16 capacity;
+	byte running_cost;
+	byte sfx;
+} RoadVehicleInfo;
+
 typedef struct ShipVehicleInfo {
 	byte image_index;
 	byte base_cost;
@@ -133,6 +143,10 @@ VARDEF StringID _engine_name_strings[TOTAL_NUM_ENGINES];
 
 extern EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 extern RailVehicleInfo _rail_vehicle_info[];
+#define road_vehicle_info(e) (&_road_vehicle_info[e - ROAD_ENGINES_INDEX])
+extern RoadVehicleInfo _road_vehicle_info[];
+/* TODO: Change this to return a pointer instead, for the sake of consistency.
+ * --pasky */
 #define ship_vehicle_info(e) _ship_vehicle_info[e - SHIP_ENGINES_INDEX]
 extern ShipVehicleInfo _ship_vehicle_info[];
 
