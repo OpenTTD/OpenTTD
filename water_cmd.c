@@ -203,7 +203,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ret = 0;
 		th = GetTileSlope(tile, NULL);
 		if(th!=0)
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
 			// can't make water of water!
 			if (IS_TILETYPE(tile, MP_WATER)) {
