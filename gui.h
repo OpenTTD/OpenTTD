@@ -12,6 +12,7 @@ void PlaceProc_Sign(uint tile);
 void ShowGameOptions();
 void ShowGameDifficulty();
 void ShowPatchesSelection();
+void ShowNewgrf();
 
 /* graph_gui.c */
 void ShowOperatingProfitGraph();

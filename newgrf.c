@@ -26,6 +26,7 @@ extern int _replace_sprites_offset[16];
 extern int _traininfo_vehicle_pitch;
 
 struct GRFFile *_cur_grffile, *_first_grffile;
+int _grffile_count;
 static int _cur_spriteid;
 static int _cur_stage;
 extern int _custom_sprites_base;

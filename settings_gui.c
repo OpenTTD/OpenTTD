@@ -7,6 +7,7 @@
 #include "command.h"
 #include "engine.h"
 #include "screenshot.h"
+#include "newgrf.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -933,3 +934,142 @@ void ShowPatchesSelection()
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_patches_selection_desc);
 }
+
+
+
+struct GRFFile *_sel_grffile;
+
+static void NewgrfWndProc(Window *w, WindowEvent *e)
+{
+	uint i=0;
+	switch(e->event) {
+	case WE_PAINT: {
+		int x, y = 15;
+		struct GRFFile *c=_first_grffile;
+
+		DrawWindowWidgets(w);
+		
+		if(_first_grffile==NULL) { // no grf sets installed
+			DrawStringMultiCenter(140, 240, STR_NEWGRF_NO_FILES_INSTALLED, 250);
+			break;
+		}
+
+		// draw list of all grf files
+		while(c!=NULL) {
+			if(i>=w->vscroll.pos) { // draw files according to scrollbar position
+				if(_sel_grffile==c) GfxFillRect(2, y-1, 267, y + 12, 10); // show highlighted item with a different background
+				DrawSprite(SPRITE_PALETTE(0x2EB | 0x30b8000), 5, y+2);
+				DoDrawString(c->filename, 25, y+2, 0x10); // will be grf name later
+				y+=15;
+			}
+			
+			c=c->next;
+			if(++i>=12+w->vscroll.pos) break; // stop after displaying 12 items
+		}
+
+// 		DoDrawString(_sel_grffile->setname, 120, 200, 0x01); // draw grf name
+
+		if(_sel_grffile==NULL) { // no grf file selected yet
+			DrawStringMultiCenter(140, 240, STR_NEWGRF_TIP, 250);
+		} else {
+			// draw filename
+			x = DrawString(5, 210, STR_NEWGRF_FILENAME, 0);
+			DoDrawString(_sel_grffile->filename, x+2, 210, 0x01);
+	
+			// draw grf id
+			x = DrawString(5, 220, STR_NEWGRF_GRF_ID, 0);
+			SET_DPARAM16(0, _sel_grffile->grfid);
+			DrawString(x+2, 220, STR_7024, 0x01);
+		}
+
+		} break;
+
+	case WE_CLICK:
+		switch(e->click.widget) {
+		case 2: { // select a grf file
+			int y;
+
+			y = e->click.pt.y - 16;
+			if (y < 0) return;
+
+			y = (y/15) + w->vscroll.pos; // calc selected item
+			if (y >= _grffile_count) return;
+
+			_sel_grffile = _first_grffile;
+			while(y) {
+				_sel_grffile = _sel_grffile->next;
+				y--;
+			}
+			SetWindowDirty(w);
+			} break;
+		case 9:
+			DeleteWindowById(WC_GAME_OPTIONS, 0);
+			break;
+		} break;
+
+/* Parameter edit box not used yet
+	case WE_TIMEOUT:
+		WP(w,def_d).data_2 = 0;
+		SetWindowDirty(w);
+		break;
+
+	case WE_ON_EDIT_TEXT: {
+		if (*e->edittext.str) {
+			SetWindowDirty(w);
+		}
+		break;
+	}
+*/
+	case WE_DESTROY:
+		DeleteWindowById(WC_QUERY_STRING, 0);
+		break;
+	}
+}
+
+static const Widget _newgrf_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   279,     0,    13, STR_NEWGRF_SETINGS_CAPTION,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX,    14,     0,   268,    14,   193, 0xC01,											STR_NEWGRF_TIP},
+{      WWT_PANEL,    14,     0,   279,   194,   332, 0x0,												STR_NULL},
+
+{  WWT_SCROLLBAR,    14,   269,   279,    14,   193, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+
+{   WWT_CLOSEBOX,    14,   147,   158,   300,   311, STR_0188,	STR_NULL},
+{   WWT_CLOSEBOX,    14,   159,   170,   300,   311, STR_0189,	STR_NULL},
+{   WWT_CLOSEBOX,    14,   175,   274,   300,   311, STR_NEWGRF_SET_PARAMETERS,	STR_NULL},
+
+{   WWT_CLOSEBOX,     3,     5,   138,   317,   328, STR_NEWGRF_APPLY_CHANGES,	STR_NULL},
+{   WWT_CLOSEBOX,     3,   142,   274,   317,   328, STR_012E_CANCEL,						STR_NULL},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _newgrf_desc = {
+	WDP_CENTER, WDP_CENTER, 280, 333,
+	WC_GAME_OPTIONS,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_newgrf_widgets,
+	NewgrfWndProc,
+};
+
+void ShowNewgrf()
+{
+	Window *w;
+	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	w = AllocateWindowDesc(&_newgrf_desc);
+
+	{ // little helper function to calculate _grffile_count
+	  // should be REMOVED once _grffile_count is calculated at loading
+		_grffile_count=0;
+		struct GRFFile *c=_first_grffile;
+		while(c!=NULL) {
+			_grffile_count++;
+			c=c->next;
+		}
+	}
+
+	w->vscroll.cap = 12;
+	w->vscroll.count = _grffile_count;
+	w->vscroll.pos = 0;
+	w->disabled_state = (1 << 5) | (1 << 6) | (1 << 7);
+}
+
