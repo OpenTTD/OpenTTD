@@ -418,6 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}No es pot canviar l'interval del manteniment...
 STR_018B_CLOSE_WINDOW						:{BLACK}Tancar finestra
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Títol de finestra - arrosega aixó per moure la finestra
+STR_STICKY_BUTTON						:{BLACK}Marca aquesta finestra com a no eliminable per a la clau 'Tancar totes les Finestres'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolició d'edificis etc. en un quadre de terreny
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Rebaixar una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Elevar una cantonada del terreny
@@ -1193,9 +1194,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Nom del jugador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaràn
 STR_NETWORK_CONNECTION						:{BLACK}Connexió:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Tria entre jugar per internet o jugar en xarxa local
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar en un servidor propi
@@ -1242,7 +1240,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}amb quin mapa vols jugar?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Màxim de clients permesos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (anunci)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clients
 STR_NETWORK_3_CLIENTS						:3 clients
 STR_NETWORK_4_CLIENTS						:4 clients
@@ -1254,7 +1255,7 @@ STR_NETWORK_9_CLIENTS						:9 clients
 STR_NETWORK_10_CLIENTS						:10 clients
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma parlat:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Els altres jugadors sabràn quin idioma es parla en aquest servidor.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Joc
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar un nou joc de xarxa des de un mapa aleatori, o escenari
 STR_NETWORK_LOAD_GAME						:{BLACK}Carregar Joc
@@ -1303,6 +1304,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoritzant..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Esperant..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descarregant mapa..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Processant dades..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registrant..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Obtenint informació del joc..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Obtenint informació de l'empresa..

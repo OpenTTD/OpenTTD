@@ -1137,9 +1137,6 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Fjölspilun
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nafn leikmanns:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Þetta er nafnið sem aðrir leikmenn munu þekkja þig undir
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:Innanhúsnet
-STR_NETWORK_INTERNET						:Veraldarvefur
 
 STR_NETWORK_START_SERVER					:{BLACK}Hefja þjón
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Hefja eigin þjón
@@ -1164,6 +1161,7 @@ STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nafn leiksins mun vera sýnilegt öðrum 
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Verndaðu leikinn þinn með lykilorði ef þú vilt ekki að aðrir tengist honum
 STR_NETWORK_SELECT_MAP						:{BLACK}Veldu kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvaða kort viltu spila?
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Hefja leik
 STR_NETWORK_LOAD_GAME						:{BLACK}Hlaða leik

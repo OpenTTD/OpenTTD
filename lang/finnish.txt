@@ -418,6 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Huoltoväliä ei voi muuttaa...
 STR_018B_CLOSE_WINDOW						:{BLACK}Sulje ikkuna
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa
+STR_STICKY_BUTTON						:{BLACK}Merkitse tämä ikkuna ei-suljettavaksi 'Sulje kaikki ikkunat' näppäimelle
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Tuhoa rakennuksia jne. maa-alaruudulla
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Madalla maanurkkausta
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Korota maanurkkausta
@@ -1193,9 +1194,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Pelaajan nimi
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Tällä nimellä muut pelaajat tunnistavat sinut
 STR_NETWORK_CONNECTION						:{BLACK}Yhteys:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Valitse Internet-pelin tai paikaillisverkkopelin välillä
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:Paikallisverkko
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Käynnistä palvelin
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Käynnistä oma palvelin
@@ -1242,7 +1240,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Valitse kartta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Mitä karttaa haluat pelata?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimimäärä asiakkaita:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Valitse asiakkaiden maksimimäärä. Kaikkiin lokeroihin ei tarvita välttämättä pelaajia.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:Lähiverkko / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (mainosta)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 asiakasta
 STR_NETWORK_3_CLIENTS						:3 asiakasta
 STR_NETWORK_4_CLIENTS						:4 asiakasta
@@ -1254,7 +1255,7 @@ STR_NETWORK_9_CLIENTS						:9 asiakasta
 STR_NETWORK_10_CLIENTS						:10 asiakasta
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Puhuttu kieli:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP					:{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla
 STR_NETWORK_LOAD_GAME						:{BLACK}Lataa peli
@@ -1303,6 +1304,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Valtuutetaan..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Odotetaan..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Ladataan karttaa..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Muokataan dataa..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Rekisteröidään..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Haetaan pelitiedot..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Haetaan yhtiötiedot...

@@ -418,6 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan ikke endre service-intervall
 STR_018B_CLOSE_WINDOW						:{BLACK}Lukk vindu
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Vindustittel - dra her for å flytte vindu
+STR_STICKY_BUTTON						:{BLACK}Merk dette vinduet som ulukkbart for 'Lukk alle vinduer'-knappen
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Riv bygninger o.l.
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Senk et hjørne av et landstykke
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Hev et hjørne av et landstykke
@@ -1193,9 +1194,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Spillernavn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Dette er navnet andre spillere vil identifisere deg med
 STR_NETWORK_CONNECTION						:{BLACK}Forbindelse:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Velg mellom å spille på internett eller i lokalt nettverk (LAN)
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internett
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en egen server
@@ -1242,7 +1240,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Velg et kart:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilket kart vil du spille?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimalt tillatte klienter
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Velg maksimalt antall klienter. Alle plassene trenger ikke bli tatt.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internett
+STR_NETWORK_INTERNET_ADVERTISE					:Internett (annonsér)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienter
 STR_NETWORK_3_CLIENTS						:3 klienter
 STR_NETWORK_4_CLIENTS						:4 klienter
@@ -1254,7 +1255,7 @@ STR_NETWORK_9_CLIENTS						:9 klienter
 STR_NETWORK_10_CLIENTS						:10 klienter
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Språk snakket på tjeneren:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andre spiller skal kunne vite hvilket språk man snakker på denne tjeneren.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start Spill
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start et nytt nettverksspill fra en tilfeldig bane, eller scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Last Spill

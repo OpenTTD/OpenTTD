@@ -540,6 +540,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Zvolit program 'nové skladby'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Zvolit program 'Volba 1' (uzivatelsky nastaveny)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Zvolit program 'Volba 2' (uzivatelsky nastaveny)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Vymaz aktualni program ( Jen Volba 1 a Volba 2 )
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Ulozit nastavení hudby
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Stiskni název skladby pro pridani do momentalniho programu ( Volba 1 nebo Volba 2 )
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Zapnout/vypnout nahodne opakovani skladeb
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Ukaz skladbu ve vyberovem okne
@@ -798,13 +799,16 @@ STR_02F8_EVERY_3_MONTHS						:Kazde 3 mesice
 STR_02F9_EVERY_6_MONTHS						:Kazdych 6 mesicu
 STR_02FA_EVERY_12_MONTHS					:Kazdych 12 mesicu
 STR_02FB_START_A_NEW_GAME					:{BLACK}Zalozit novou hru
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Nahrát hru
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Prohlédnout ukázky / tutorialy
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Vytvorit uzivatelsky svet (scenario)
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Vybrat hru pro jednoho hrace
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Vyberte hru pro 2-8 hracu
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Zobrazit moznosti hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Zobrazit nastavení obtiznosti
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Zalozit novou hru, pouzit uzivatelske scenario
 STR_0304_QUIT							:{BLACK}Ukoncit
+STR_0305_QUIT_OPENTTD						:{BLACK}Ukoncit 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Prohlédnout ukázku (tutorial)
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze být budováno jen ve mestech
@@ -1188,9 +1192,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Jméno hrace:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Podle tohoto jména te ostatní hraci poznají
 STR_NETWORK_CONNECTION						:{BLACK}Pripojeni:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Vyber si mezi hrou internetovou nebo v místní síti
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Spustit server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Spusti tvuj vlastni server
@@ -1237,7 +1238,9 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximální pocet hracu:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 hraci
 STR_NETWORK_3_CLIENTS						:3 hraci
 STR_NETWORK_4_CLIENTS						:4 hraci
@@ -1249,7 +1252,7 @@ STR_NETWORK_9_CLIENTS						:9 hracu
 STR_NETWORK_10_CLIENTS						:10 hracu
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME						:{BLACK}Nahrát hru
@@ -1348,6 +1351,7 @@ STR_NETWORK_GIVE_MONEY						:ti dal nejake penize ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaci
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Server se restartuje...{}Vyckejte prosím...
 
+STR_NETWORK_SEND						:{BLACK}Poslat
 
 ############ end network gui strings
 

@@ -1193,9 +1193,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Spelarnamn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Namnet som andra spelare kommer att identifiera dig av
 STR_NETWORK_CONNECTION						:{BLACK}Anslutning:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Välj mellan att spela över internet eller det lokala nätverket
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Starta server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Starta en server för andra att ansluta till
@@ -1242,7 +1239,9 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Välj karta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Vilken karta vill du spela?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienter
 STR_NETWORK_3_CLIENTS						:3 klienter
 STR_NETWORK_4_CLIENTS						:4 klienter
@@ -1254,7 +1253,7 @@ STR_NETWORK_9_CLIENTS						:9 klienter
 STR_NETWORK_10_CLIENTS						:10 klienter
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Språk som talas:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP					:{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Ladda spel
@@ -1303,6 +1302,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Godkänner..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Väntar..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Laddar hem karta..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Behandlar data..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registrerar..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Hämtar spelinfo..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Hämtar företagsinfo..

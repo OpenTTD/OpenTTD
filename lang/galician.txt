@@ -1169,9 +1169,6 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multixogador
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do xogador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome polo que te identificarán os outros xogadores
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Comezar un servidor propio
@@ -1198,6 +1195,7 @@ STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome da partida mostraráse ó outros 
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿Que mapa queres xogar?
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Partida
 STR_NETWORK_LOAD_GAME						:{BLACK}Cargar Partida

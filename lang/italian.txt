@@ -1169,9 +1169,6 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome giocatore:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Questo è il nome con cui gli altri giocatori ti identificheranno
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Avvia server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Avvia il tuo server
@@ -1198,6 +1195,7 @@ STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Il nome della partita verrà visualizza
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteggi il tuo gioco con una password se non vuoi che altre persone vi entrino
 STR_NETWORK_SELECT_MAP						:{BLACK}Seleziona una mappa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Con quale mappa vuoi giocare?
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Avvia gioco
 STR_NETWORK_START_GAME_TIP					:{BLACK}Inizia una nuova partita in rete partendo da una mappa random o da uno scenario

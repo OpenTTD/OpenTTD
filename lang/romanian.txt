@@ -418,6 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nu pot schimba intervalul de service...
 STR_018B_CLOSE_WINDOW						:{BLACK}Închide fereastra
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
+STR_STICKY_BUTTON						:{BLACK}Mark this window as undeletable for the 'Close All Windows' key
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demoleazã clãdiri, strãzi, etc. pe un pãtrat de teren
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Scade altitudinea unui vârf de teren
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Mãreste altitudinea unui vârf de teren
@@ -1193,9 +1194,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Acesta este numele prin care te vor identifica ceilalti
 STR_NETWORK_CONNECTION						:{BLACK}Conexiune:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Alege intre un joc pe internet si unul pe LAN
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Porneste serverul
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Porneste un server propriu
@@ -1242,7 +1240,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Alege o hartã:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ce hartã doresti sa joci?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Numar maxim de clienti
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Alege un numar maxim de clienti. Nu trebuie ocupate toate locurile.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (fa reclama)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clienti
 STR_NETWORK_3_CLIENTS						:3 clienti
 STR_NETWORK_4_CLIENTS						:4 clienti
@@ -1254,7 +1255,7 @@ STR_NETWORK_9_CLIENTS						:9 clienti
 STR_NETWORK_10_CLIENTS						:10 clienti
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Limba vorbita:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP					:{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME						:{BLACK}Incarca joc
@@ -1303,6 +1304,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Authorizare..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Asteptati..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descarcare harta..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Prelucrare date..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Inregistrare...
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Preluare info joc..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Preluare info companie..

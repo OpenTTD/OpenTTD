@@ -418,7 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Can't change servicing interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Close window
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Window title - drag this to move window
-STR_STICKY_BUTTON                       :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
+STR_STICKY_BUTTON						:{BLACK}Mark this window as undeletable for the 'Close All Windows' key
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolish buildings etc. on a square of land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Raise a corner of land
@@ -1241,8 +1241,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum allowed clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN_INTERNET							:LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE						:Internet (advertise)
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (advertise)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clients
 STR_NETWORK_3_CLIENTS						:3 clients

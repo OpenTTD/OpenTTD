@@ -1193,9 +1193,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Játékos neve:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}A többi játékos ilyen nével fog ismerni Téged.
 STR_NETWORK_CONNECTION						:{BLACK}Kapcsolat:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Válassz az internetes vagy helyi hálózati játék közül
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:Helyi hálózat
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Szerver indítása
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Saját szervert indít
@@ -1242,7 +1239,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Válassz egy térképet:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Melyik terképen akarsz játszani?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum hány játékos lehet:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Válaszd ki hány játékos kapcsolódhat maximum. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:Hálózat / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (reklámoz)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 kliens
 STR_NETWORK_3_CLIENTS						:3 kliens
 STR_NETWORK_4_CLIENTS						:4 kliens
@@ -1254,7 +1254,7 @@ STR_NETWORK_9_CLIENTS						:9 kliens
 STR_NETWORK_10_CLIENTS						:10 kliens
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Beszélt nyelv:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
 STR_NETWORK_START_GAME_TIP					:{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME						:{BLACK}Játék betöltése

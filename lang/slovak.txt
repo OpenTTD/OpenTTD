@@ -1186,9 +1186,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
 STR_NETWORK_CONNECTION						:{BLACK}Pripojenie:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Vyber si medzi hrou na internete alebo na localnej sieti
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:Lokalna siet (LAN)
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Urobit server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Spustit vlastny server
@@ -1234,6 +1231,7 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ktoru mapu chces hrat?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximalny pocet klientov:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximalny pocet klientov. Moze sa ich pripojit aj menej.
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienti
 STR_NETWORK_3_CLIENTS						:3 klienti

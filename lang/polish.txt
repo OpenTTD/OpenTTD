@@ -1193,9 +1193,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Nazwa gracza:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}To jest nazwa pod ktora beda Cie widziec inni gracze
 STR_NETWORK_CONNECTION						:{BLACK}Polaczenie:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Wybierz miedzy gra w internecie a gra w sieci lokalnej
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Uruchomienie serwera
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Uruchomienie wlasnego serwera
@@ -1242,7 +1239,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Wybierz mape:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Wybierz mape na ktorej chcesz grac
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Dopuszczalna ilosc klientow:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Ustaw maksymalna liczbe klientow. Nie wszystkie pola musza byc wypelnione.
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (zaawansowane)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klientow
 STR_NETWORK_3_CLIENTS						:3 klientow
 STR_NETWORK_4_CLIENTS						:4 klientow
@@ -1254,7 +1254,7 @@ STR_NETWORK_9_CLIENTS						:9 klientow
 STR_NETWORK_10_CLIENTS						:10 klientow
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Uzywany jezyk w grze:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Inni gracze beda poinformowani jaki jezyk jest uzywany na serwerze.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Rozpocznij gre
 STR_NETWORK_START_GAME_TIP					:{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
 STR_NETWORK_LOAD_GAME						:{BLACK}Zaladuj gre
@@ -1303,6 +1303,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoryzacja..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Oczekiwanie..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Pobieranie mapy..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Przetwarzanie danych..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Rejestracja..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Uzyskiwanie informacji o grze..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Uzyskiwanie informacji o firmach..

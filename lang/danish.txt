@@ -1169,9 +1169,6 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en ny server
@@ -1198,6 +1195,7 @@ STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}The game name will be displayed to oth
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protect your game with a password if you don't want other people to join it
 STR_NETWORK_SELECT_MAP						:{BLACK}Vælg et kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilket kort vil du spille?
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
