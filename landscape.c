@@ -619,7 +619,7 @@ static void GenerateTerrain(int type, int flag)
 					if (*p >= *tile_cur) *tile_cur = *p;
 					p++;
 					tile_cur -= TILE_XY(0, 1);
-				} while (--h_cur != 0);
+				}
 				tile++;
 			} while (--w != 0);
 			break;
