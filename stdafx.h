@@ -105,8 +105,8 @@
 #	define inline _inline
 #	define CDECL _cdecl
 # define NOT_REACHED() _assume(0)
-int snprintf(char *str, size_t size, const char *format, ...);
-int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+int CDECL snprintf(char *str, size_t size, const char *format, ...);
+int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 # undef TTD_ALIGNMENT_4
 # undef TTD_ALIGNMENT_2
 # define GCC_PACK

@@ -46,7 +46,7 @@ static byte _textmessage_backup[150*400]; // (y * max_width)
 extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
 
 // Duration is in game-days
-void AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
+void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
 {
 	int i;
 	char buf[1024];

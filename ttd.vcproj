@@ -189,6 +189,7 @@
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="4"
+				CallingConvention="0"
 				CompileAs="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>

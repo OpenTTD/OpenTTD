@@ -2074,7 +2074,7 @@ void DeterminePaths()
 	CreateDirectory(_path.scenario_dir, NULL);
 }
 
-int snprintf(char *str, size_t size, const char *format, ...)
+int CDECL snprintf(char *str, size_t size, const char *format, ...)
 {
 	va_list ap;
 	int ret;
@@ -2085,7 +2085,7 @@ int snprintf(char *str, size_t size, const char *format, ...)
 	return ret;
 }
 
-int vsnprintf(char *str, size_t size, const char *format, va_list ap)
+int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	int ret;
 	ret = _vsnprintf(str, size, format, ap);

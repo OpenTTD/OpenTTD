@@ -478,14 +478,12 @@ static int PollEvent(void)
 				_right_button_down = true;
 				_right_button_clicked = true;
 				break;
-#if !defined(WIN32)
 			case SDL_BUTTON_WHEELUP:
 				_cursor.wheel--;
 				break;
 			case SDL_BUTTON_WHEELDOWN:
 				_cursor.wheel++;
 				break;
-#endif
 			default:
 				break;
 		}
