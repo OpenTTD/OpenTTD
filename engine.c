@@ -243,13 +243,25 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
-int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
-                          byte loaded, byte in_motion, byte direction)
+int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
 {
-	struct SpriteGroup *group = &_engine_custom_sprites[engine][cargo];
+	struct SpriteGroup *group;
 	struct RealSpriteGroup *rsg;
+	uint16 overriding_engine = -1;
+	byte cargo = CID_PURCHASE;
+	byte loaded = 0;
+	byte in_motion = 0;
 	int totalsets, spriteset;
 	int r;
+
+	if (v != NULL) {
+		overriding_engine = v->type == VEH_Train ? v->u.rail.first_engine : -1;
+		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		loaded = ((v->cargo_count + 1) * 100) / (v->cargo_cap + 1);
+		in_motion = !!v->cur_speed;
+	}
+
+	group = &_engine_custom_sprites[engine][cargo];
 
 	if (overriding_engine != 0xffff) {
 		struct SpriteGroup *overset;

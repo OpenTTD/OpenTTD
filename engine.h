@@ -97,14 +97,9 @@ extern byte _engine_original_sprites[256];
 void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
-int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo, byte loaded, byte in_motion, byte direction);
-#define GetCustomVehicleSprite(v, direction) \
-	GetCustomEngineSprite(v->engine_type, v->type == VEH_Train ? v->u.rail.first_engine : -1, \
-	                      _global_cargo_id[_opt.landscape][v->cargo_type], \
-	                      ((v->cargo_count + 1) * 100) / (v->cargo_cap + 1), \
-	                      !!v->cur_speed, direction)
-#define GetCustomVehicleIcon(v, direction) \
-	GetCustomEngineSprite(v, -1, CID_PURCHASE, 0, 0, direction)
+int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction);
+#define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
+#define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 
 void SetCustomEngineName(int engine, char *name);
 StringID GetCustomEngineName(int engine);
