@@ -1303,7 +1303,9 @@ void DebugProc(int i)
 		*(byte*)0 = 0;
 		break;
 	case 1:
-		DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
+		/* Server can not cheat in advertise mode either! */
+		if (!_networking || !_network_server || !_network_advertise)
+			DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
 		break;
 	case 2:
 		UpdateAllStationVirtCoord();
