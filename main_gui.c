@@ -1138,7 +1138,7 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 //	tile = TILE_FROM_XY(TileX(tile) * 16 + _tile_fract_coords.x + 8, TileY(tile) * 16 + _tile_fract_coords.y + 8);
 
 	if (_terraform_size == 1) {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO);
+		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(_error_message_2));
 	} else {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 
