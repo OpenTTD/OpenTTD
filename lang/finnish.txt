@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Salli realistisemman kokoiset vaikutus
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Salli kaupungin omistamien teiden, tunnelien, siltojen, jne. raivaaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Junien realistinen kiihdyttäminen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Älä salli junien ja laivojen 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (vaatii: NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Jätä asema, kun mikä tahansa rahti on täysi, jos 'täysi lastaus': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{S
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Uusi huoltoasemahaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Ei-yhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Uusi algoritmi junien tienhaulle: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
@@ -1090,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Rakenna tauon aikana: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Suihkukoneet eivät syöksy (usein) pienille lentokentille: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Vaihda ilmastoa: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Muuta päiväystä: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Muuntavat tuotantoarvot: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Kohteena {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Kohteena {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1399,8 @@ STR_NETWORK_SEND						:{BLACK}Lähetä
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Kartan x-koko: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Kartan y-koko: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Hinta: {CURRENCY}
@@ -1616,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Liian lähellä toista rautatiea
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Liitä yhteen useampi kuin yksi olemassaoleva asema/lastausalue
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Liian monta asemaa/lastausaluetta kaupungissa
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Liian monta asemaa/lastausaluetta
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Liian monta linja-autopysäkkiä
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Liian monta lastauslaituria
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Liian lähellä toista asemaa/lastausaluetta
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Pitää tuhota rautatieasema ensin
@@ -1689,6 +1696,7 @@ STR_3069_BUOY							:Poiju
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...poiju on tiellä
 STR_306B_HELIPORT						:{BLACK}Helikopterikenttä
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...asema liian levittäytynyt
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...epäyhdenmukaiset asemat poissa käytöstä
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Telakan suunn.

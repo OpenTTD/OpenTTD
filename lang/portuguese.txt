@@ -2778,11 +2778,30 @@ STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Barcos
 STR_SCHEDULED_TRAINS_TIP					:{BLACK}Mostrar todos os comboios que têm esta estação nas ordens de serviço
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostrar todos os veiculos de estrada que têm esta estação nas ordens de serviço
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar todos os aviões que têm esta estação nas ordens de serviço
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
 
+STR_REPLACE_VEHICLES						:{BLACK}Substituir Veículos
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Substituir Veículos
+STR_REPLACE_VEHICLES_START					:{BLACK}Iniciar Substituição de Veículos
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Parar Substituição de Veículos
+STR_NOT_REPLACING						:{BLACK}Não substituindo
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Nenhum veículo seleccionado
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Seleccione o tipo de motor a substituir
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Seleccione o novo tipo de motor para substituir o que seleccionou à esquerda
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Pressione para parar a subsituição do tipo de motor que seleccionou à esquerda
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Pressione para iniciar a substituição do tipo de motor que seleccionou à esquerda, com o tipo de motor seleccionado à direita
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Seleccione o tipo de carril para o qual deseja efectuar a substituição dos motores
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
+STR_REPLACE_HELP						:{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Comboios
+STR_MONORAIL_VEHICLES						:Monocarris
+STR_MAGLEV_VEHICLES						:Maglevs
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Povolit v oblasti pokrytia realisticke
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, atd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Zakazat vlakom a lodiam otacenie o 90 stupnov: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Umoznit spajat stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Umoznit podplacanie miestnej spravy: {ORAN
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Nove vyhladavanie depa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Novy algoritmus pre hladanie smeru: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Novy globalny algoritmus vyhladavania cesty (NPF, nahradzuje NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
 
@@ -1619,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Prilis blizko inej zeleznicnej
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Susedi z viacerymi stanicami/vykladkami
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis vela stanic/vykladok v tomto meste
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis vela stanic/vykladok
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Prilis vela autobusovych zastavok
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Prilis vela zastavok nakladnych automobilov
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Prilis blizko inej stanice/vykladky
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Zeleznicna stanica sa musi naskor zburat
@@ -1692,6 +1696,7 @@ STR_3069_BUOY							:Boja
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...boja v ceste
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stanica je prilis velka
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...nejednoliate stanice su zakazane
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Otocenie lodenice

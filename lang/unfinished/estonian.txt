@@ -2090,8 +2090,58 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Ettevõtte peakorterit ei saa
 STR_7072_VIEW_HQ						:{BLACK}Vaata Peakorterit
 STR_RELOCATE_HQ							:{BLACK}Liiguta Peakorterit
 STR_COMPANY_PASSWORD						:{BLACK}Parool
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Ettevõtte kaitsmine parooliga, et võõrad ei saaks loata ühineda.
+STR_SET_COMPANY_PASSWORD					:Sea ettevõtte parool
+STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Majanduslik tagasilöök!{}{}Finantseksperdid ennustavad suurt majanduslangust!
+STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Madalseis läbi!{}{}Kaubanduse pööre ülespoole on majandust taas tugevdanud!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Lülita aken suureks/väikseks
+STR_7076_COMPANY_VALUE						:{GOLD}Ettevõtte väärtus: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Osta 25% ettevõtte aktsiatest
+STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Müü 25% ettevõtte aktsiatest
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Osta 25% ettevõtte aktsiatest
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY				:{BLACK}Müü 25% ettevõtte aktsiatest
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS				:{WHITE}Ei saa 25% selle ettevõtte aktsiatest osta...
+STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Ei saa 25% selle ettevõtte aktsiatest müüa...
+STR_707D_OWNED_BY						:{WHITE}({COMMA16}% on ettevõtte {STRING} käes)
+STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% on ettevõtte {STRING} käes{}   {COMMA16}% on ettevõtte {STRING} käes)
+STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} võeti üle ettevõtte {STRING} poolt!
+STR_7080_PROTECTED						:{WHITE}See kompanii pole veel piisavalt vana, et aktsiaid vahetada...
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Auruvedur)
+STR_8001_MJS_250_DIESEL						:MJS 250 (Diisel)
+STR_8002_PLODDYPHUT_CHOO_CHOO					:Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO					:Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO					:Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL					:Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL					:Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM					:Wills 2-8-0 (Auruvedur)
+STR_8008_CHANEY_JUBILEE_STEAM					:Chaney 'Jubilee' (Auruvedur)
+STR_8009_GINZU_A4_STEAM						:Ginzu 'A4' (Auruvedur)
+STR_800A_SH_8P_STEAM						:SH '8P' (Auruvedur)
+STR_800B_MANLEY_MOREL_DMU_DIESEL				:Manley-Morel DMU (Diisel)
+STR_800C_DASH_DIESEL						:'Dash' (Diisel)
+STR_800D_SH_HENDRY_25_DIESEL					:SH/Hendry '25' (Diisel)
+STR_800E_UU_37_DIESEL						:UU '37' (Diisel)
+STR_800F_FLOSS_47_DIESEL					:Floss '47' (Diisel)
+STR_8010_CS_4000_DIESEL						:CS 4000 (Diisel)
+STR_8011_CS_2400_DIESEL						:CS 2400 (Diisel)
+STR_8012_CENTENNIAL_DIESEL					:Centennial (Diisel)
+STR_8013_KELLING_3100_DIESEL					:Kelling 3100 (Diisel)
+STR_8014_TURNER_TURBO_DIESEL					:Turner Turbo (Diisel)
+STR_8015_MJS_1000_DIESEL					:MJS 1000 (Diisel)
+STR_8016_SH_125_DIESEL						:SH '125' (Diisel)
+STR_8017_SH_30_ELECTRIC						:SH '30' (Elektrivedur)
+STR_8018_SH_40_ELECTRIC						:SH '40' (Elektrivedur)
+STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Elektrivedur)
+STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Elektrivedur)
+STR_801B_PASSENGER_CAR						:Reisiate vagun
+STR_801C_MAIL_VAN						:Postivagun
+STR_801D_COAL_CAR						:Söevagun
+STR_801E_OIL_TANKER						:Õli tanker
+STR_801F_LIVESTOCK_VAN						:Kariloomade vagun
+STR_8020_GOODS_VAN						:Kaubavagun
+STR_8021_GRAIN_HOPPER						:Teraviljavagun
 
 ##id 0x8800
 

@@ -223,82 +223,82 @@ STR_00E3							:{RED}{COMMA16}
 STR_00E4_LOCATION						:{BLACK}Atrašan&#257;s vieta
 STR_00E5_CONTOURS						:Kont&#363;ras
 STR_00E6_VEHICLES						:Transporta l&#299;dzek&#316;i
-STR_00E7_INDUSTRIES						:Industries
-STR_00E8_ROUTES							:Routes
-STR_00E9_VEGETATION						:Vegetation
-STR_00EA_OWNERS							:Owners
-STR_00EB_ROADS							:{BLACK}{TINYFONT}Roads
-STR_00EC_RAILROADS						:{BLACK}{TINYFONT}Railways
-STR_00ED_STATIONS_AIRPORTS_DOCKS				:{BLACK}{TINYFONT}Stations/Airports/Docks
-STR_00EE_BUILDINGS_INDUSTRIES					:{BLACK}{TINYFONT}Buildings/Industries
-STR_00EF_VEHICLES						:{BLACK}{TINYFONT}Vehicles
+STR_00E7_INDUSTRIES						:Industrijas
+STR_00E8_ROUTES							:Mars'ruti
+STR_00E9_VEGETATION						:Veg'eta'cija
+STR_00EA_OWNERS							:I'pas'nieki
+STR_00EB_ROADS							:{BLACK}{TINYFONT}Cel'i
+STR_00EC_RAILROADS						:{BLACK}{TINYFONT}Dzelzscel'i
+STR_00ED_STATIONS_AIRPORTS_DOCKS				:{BLACK}{TINYFONT}Stacijas/Lidostas/Doki
+STR_00EE_BUILDINGS_INDUSTRIES					:{BLACK}{TINYFONT}Celtnes/Industrijas
+STR_00EF_VEHICLES						:{BLACK}{TINYFONT}Transporta li'dzekl'i
 STR_00F0_100M							:{BLACK}{TINYFONT}100m
 STR_00F1_200M							:{BLACK}{TINYFONT}200m
 STR_00F2_300M							:{BLACK}{TINYFONT}300m
 STR_00F3_400M							:{BLACK}{TINYFONT}400m
 STR_00F4_500M							:{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS							:{BLACK}{TINYFONT}Vilcieni
-STR_00F6_ROAD_VEHICLES						:{BLACK}{TINYFONT}Road Vehicles
+STR_00F6_ROAD_VEHICLES						:{BLACK}{TINYFONT}Cel'u transporta li'dzekl'i
 STR_00F7_SHIPS							:{BLACK}{TINYFONT}Ku&#291;i
-STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Lidmašina
-STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Transport Routes
-STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Coal Mine
-STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Power Station
+STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Lidmaši'na
+STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Transporta mars'ruti
+STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Ogl'u raktuve
+STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Elektrostacija
 STR_00FC_FOREST							:{BLACK}{TINYFONT}Mežs
-STR_00FD_SAWMILL						:{BLACK}{TINYFONT}Sawmill
-STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Oil Refinery
-STR_00FF_FARM							:{BLACK}{TINYFONT}Farm
+STR_00FD_SAWMILL						:{BLACK}{TINYFONT}Koku za'g'e'tava
+STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Naftas apstra'des stacija
+STR_00FF_FARM							:{BLACK}{TINYFONT}Ferma
 STR_0100_FACTORY						:{BLACK}{TINYFONT}Rupnîca
 STR_0101_PRINTING_WORKS						:{BLACK}{TINYFONT}Tipogrâfija
-STR_0102_OIL_WELLS						:{BLACK}{TINYFONT}Oil Wells
-STR_0103_IRON_ORE_MINE						:{BLACK}{TINYFONT}Iron Ore Mine
-STR_0104_STEEL_MILL						:{BLACK}{TINYFONT}Steel Mill
+STR_0102_OIL_WELLS						:{BLACK}{TINYFONT}Naftas atradnes
+STR_0103_IRON_ORE_MINE						:{BLACK}{TINYFONT}Dzelzs ru'das raktuves
+STR_0104_STEEL_MILL						:{BLACK}{TINYFONT}Te'rauda lietuve
 STR_0105_BANK							:{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL						:{BLACK}{TINYFONT}Paper Mill
-STR_0107_GOLD_MINE						:{BLACK}{TINYFONT}Gold Mine
-STR_0108_FOOD_PROCESSING_PLANT					:{BLACK}{TINYFONT}Food Processing Plant
-STR_0109_DIAMOND_MINE						:{BLACK}{TINYFONT}Diamond Mine
-STR_010A_COPPER_ORE_MINE					:{BLACK}{TINYFONT}Copper Ore Mine
-STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Fruit Plantation
-STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Rubber Plantation
-STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Water Supply
-STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Water Tower
-STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Lumber Mill
-STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Candyfloss Forest
-STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Sweet Factory
-STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Battery Farm
-STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Cola Wells
+STR_0106_PAPER_MILL						:{BLACK}{TINYFONT}Papi'ra ru'pni'ca
+STR_0107_GOLD_MINE						:{BLACK}{TINYFONT}Zelta raktuves
+STR_0108_FOOD_PROCESSING_PLANT					:{BLACK}{TINYFONT}Pa'rtikas apstra'des ru'pni'ca
+STR_0109_DIAMOND_MINE						:{BLACK}{TINYFONT}Dimantu raktuves
+STR_010A_COPPER_ORE_MINE					:{BLACK}{TINYFONT}Vara ru'das raktuves
+STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Augl'u planta'cija
+STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Kauc'uka planta'cija
+STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}U'dens avoti
+STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}U'denstornis
+STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Bal'k'u za'g'e'tava
+STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Cukurvates mez's'
+STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Saldumu ru'pni'ca
+STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Bateriju ferma
+STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Kolas akas
 STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Rotaïlietu Veikals
 STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Rotaïlietu Rupnîca
-STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastic Fountains
-STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Fizzy Drink Factory
-STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Bubble Generator
-STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Toffee Quarry
-STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Sugar Mine
-STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Railway Station
-STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Lorry Loading Bay
-STR_011D_BUS_STATION						:{BLACK}{TINYFONT}Bus Station
-STR_011E_AIRPORT_HELIPORT					:{BLACK}{TINYFONT}Airport/Heliport
-STR_011F_DOCK							:{BLACK}{TINYFONT}Dock
-STR_0120_ROUGH_LAND						:{BLACK}{TINYFONT}Rough Land
-STR_0121_GRASS_LAND						:{BLACK}{TINYFONT}Grass Land
-STR_0122_BARE_LAND						:{BLACK}{TINYFONT}Bare Land
-STR_0123_FIELDS							:{BLACK}{TINYFONT}Fields
-STR_0124_TREES							:{BLACK}{TINYFONT}Trees
-STR_0125_ROCKS							:{BLACK}{TINYFONT}Rocks
-STR_0126_WATER							:{BLACK}{TINYFONT}Water
-STR_0127_NO_OWNER						:{BLACK}{TINYFONT}No Owner
-STR_0128_TOWNS							:{BLACK}{TINYFONT}Towns
-STR_0129_INDUSTRIES						:{BLACK}{TINYFONT}Industries
-STR_012A_DESERT							:{BLACK}{TINYFONT}Desert
-STR_012B_SNOW							:{BLACK}{TINYFONT}Snow
+STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastmasas stru'klakas
+STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Burbul'u'den'u ru'pni'ca
+STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Burbul'u g'enera'tors
+STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Cukurpla'ks'n'u lauztuves
+STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Cukura raktuves
+STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Dzelzscel'a stacija
+STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Kravas auto iekrautuve
+STR_011D_BUS_STATION						:{BLACK}{TINYFONT}Autobusa stacija
+STR_011E_AIRPORT_HELIPORT					:{BLACK}{TINYFONT}Lidosta/Helikopteru osta
+STR_011F_DOCK							:{BLACK}{TINYFONT}Doki
+STR_0120_ROUGH_LAND						:{BLACK}{TINYFONT}Neli'dzena zeme
+STR_0121_GRASS_LAND						:{BLACK}{TINYFONT}Za'la'ju zeme
+STR_0122_BARE_LAND						:{BLACK}{TINYFONT}Kaila zeme
+STR_0123_FIELDS							:{BLACK}{TINYFONT}Lauki
+STR_0124_TREES							:{BLACK}{TINYFONT}Koki
+STR_0125_ROCKS							:{BLACK}{TINYFONT}Akmen'i
+STR_0126_WATER							:{BLACK}{TINYFONT}U'dens
+STR_0127_NO_OWNER						:{BLACK}{TINYFONT}Nav i'pas'nieka
+STR_0128_TOWNS							:{BLACK}{TINYFONT}Pilse'tas
+STR_0129_INDUSTRIES						:{BLACK}{TINYFONT}Industrijas
+STR_012A_DESERT							:{BLACK}{TINYFONT}Tuksnesis
+STR_012B_SNOW							:{BLACK}{TINYFONT}Sniegs
 STR_012C_MESSAGE						:{WHITE}Ziòojums
 STR_012D							:{WHITE}{STRING}
 STR_012E_CANCEL							:{BLACK}Atcelt
 STR_012F_OK							:{BLACK}Labi
-STR_0130_RENAME							:{BLACK}Rename
-STR_0131_TOO_MANY_NAMES_DEFINED					:{WHITE}Too many names defined
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Chosen name already in use
+STR_0130_RENAME							:{BLACK}Maini't nosaukumu
+STR_0131_TOO_MANY_NAMES_DEFINED					:{WHITE}Define'ti pa'ra'k daudz nosaukumi
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Izve'le'tais nosaukums jau tiek lietots
 
 STR_0133_WINDOWS						:Windows
 STR_0134_UNIX							:Unix
@@ -308,66 +308,66 @@ STR_OSNAME_MORPHOS						:MorphOS
 STR_OSNAME_AMIGAOS						:AmigaOS
 STR_OSNAME_OS2							:OS/22
 
-STR_0139_IMPERIAL_MILES						:Imperial (miles)
-STR_013A_METRIC_KILOMETERS					:Metric (kilometers)
-STR_013B_OWNED_BY						:{WHITE}...owned by {STRING}
+STR_0139_IMPERIAL_MILES						:Imperia'la's (ju'dzes)
+STR_013A_METRIC_KILOMETERS					:Metriska's (kilometri)
+STR_013B_OWNED_BY						:{WHITE}...pieder {STRING}
 STR_013C_CARGO							:{BLACK}Krava
 STR_013D_INFORMATION						:{BLACK}Informâcija
-STR_013E_CAPACITIES						:{BLACK}Capacities
+STR_013E_CAPACITIES						:{BLACK}Ietilpi'ba
 STR_013E_TOTAL_CARGO						:{BLACK}Krava Kopâ
-STR_013F_CAPACITY						:{BLACK}Capacity: {LTBLUE}{STRING}
-STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Total cargo capacity of this train:
+STR_013F_CAPACITY						:{BLACK}Ietilpi'ba: {LTBLUE}{STRING}
+STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
 STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME						:{BLACK}Jauna Spçle
-STR_0141_LOAD_GAME						:{BLACK}Load Game
-STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Tutorial / Demonstration
-STR_SINGLE_PLAYER						:{BLACK}Single player
-STR_MULTIPLAYER							:{BLACK}Multiplayer
+STR_0140_NEW_GAME						:{BLACK}Jauna spe'le
+STR_0141_LOAD_GAME						:{BLACK}Iela'de't spe'li
+STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Ma'ci'bu/Demonstra'cija
+STR_SINGLE_PLAYER						:{BLACK}Viens spe'le'ta'js
+STR_MULTIPLAYER							:{BLACK}Daudz-spe'le'ta'ju
 
-STR_0148_GAME_OPTIONS						:{BLACK}Spçles Opcijas
+STR_0148_GAME_OPTIONS						:{BLACK}Spe'les rez'i'mi
 
-STR_0150_SOMEONE						:someone{SKIP}{SKIP}
+STR_0150_SOMEONE						:ka'ds{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD						:Pasaules karte
-STR_0152_TOWN_DIRECTORY						:Town directory
-STR_0153_SUBSIDIES						:Subsidies
+STR_0152_TOWN_DIRECTORY						:Pilse'tu saraksts
+STR_0153_SUBSIDIES						:Subsi'dijas
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH					:Operating profit graph
-STR_0155_INCOME_GRAPH						:Income graph
-STR_0156_DELIVERED_CARGO_GRAPH					:Delivered cargo graph
-STR_0157_PERFORMANCE_HISTORY_GRAPH				:Performance history graph
-STR_0158_COMPANY_VALUE_GRAPH					:Company value graph
-STR_0159_CARGO_PAYMENT_RATES					:Cargo payment rates
-STR_015A_COMPANY_LEAGUE_TABLE					:Company league table
-STR_PERFORMANCE_DETAIL_MENU					:Detailed performance rating
+STR_0154_OPERATING_PROFIT_GRAPH					:Pana'kumu grafiks
+STR_0155_INCOME_GRAPH						:Iena'kumu grafiks
+STR_0156_DELIVERED_CARGO_GRAPH					:Transporte'ta's kravas grafiks
+STR_0157_PERFORMANCE_HISTORY_GRAPH				:Uzn'e'me'jdarbi'bas ve'stures grafiks
+STR_0158_COMPANY_VALUE_GRAPH					:Kompa'nijas ve'rti'bas grafiks
+STR_0159_CARGO_PAYMENT_RATES					:Kravas apmaksas cenas
+STR_015A_COMPANY_LEAGUE_TABLE					:Kompa'nijas li'gu tabula
+STR_PERFORMANCE_DETAIL_MENU					:Detalize'ti uzn'e'me'jdarbi'bas rezulta'ti
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}Par OpenTTD
-STR_015C_SAVE_GAME						:Save game
-STR_015D_LOAD_GAME						:Load game
-STR_015E_QUIT_GAME						:Abandon game
-STR_015F_QUIT							:Exit
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Are you sure you want to abandon this game?
-STR_0161_QUIT_GAME						:{WHITE}Abandon Game
-STR_SORT_ORDER_TIP						:{BLACK}Select sorting order (descending/ascending)
-STR_SORT_CRITERIA_TIP						:{BLACK}Select sorting criteria
-SRT_SORT_BY							:{BLACK}Sort by
+STR_015C_SAVE_GAME						:Saglaba't spe'li
+STR_015D_LOAD_GAME						:Iela'de't spe'li
+STR_015E_QUIT_GAME						:Pamest spe'li
+STR_015F_QUIT							:Iziet a'ra'
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vai tu patiesi gribi pamest s'o spe'li?
+STR_0161_QUIT_GAME						:{WHITE}Pamest spe'li
+STR_SORT_ORDER_TIP						:{BLACK}Izve'le'ties saka'rtojumu (dilstos's/augos's)
+STR_SORT_CRITERIA_TIP						:{BLACK}Izve'le'ties sorte's'anas krite'riju
+SRT_SORT_BY							:{BLACK}Sorte't pe'c
 
-STR_SORT_BY_POPULATION						:{BLACK}Population
-STR_SORT_BY_PRODUCTION						:{BLACK}Production
-STR_SORT_BY_TYPE						:{BLACK}Type
-STR_SORT_BY_TRANSPORTED						:{BLACK}Transported
-STR_SORT_BY_NAME						:{BLACK}Name
-STR_SORT_BY_DROPDOWN_NAME					:Vârds
+STR_SORT_BY_POPULATION						:{BLACK}Iedzi'vota'ju skaita
+STR_SORT_BY_PRODUCTION						:{BLACK}Produkcijas
+STR_SORT_BY_TYPE						:{BLACK}Tipa
+STR_SORT_BY_TRANSPORTED						:{BLACK}Transporte'ta'
+STR_SORT_BY_NAME						:{BLACK}Va'rda
+STR_SORT_BY_DROPDOWN_NAME					:Va'rds
 STR_SORT_BY_DATE						:{BLACK}Datums
-STR_SORT_BY_UNSORTED						:Unsorted
-STR_SORT_BY_NUMBER						:Numurs
-STR_SORT_BY_PROFIT_LAST_YEAR					:Profit last year
-STR_SORT_BY_PROFIT_THIS_YEAR					:Profit this year
+STR_SORT_BY_UNSORTED						:Nesaka'rtots
+STR_SORT_BY_NUMBER						:Nummurs
+STR_SORT_BY_PROFIT_LAST_YEAR					:Paga'jus'a' gada iena'kums
+STR_SORT_BY_PROFIT_THIS_YEAR					:S'i' gada iena'kums
 STR_SORT_BY_AGE							:Vecums
-STR_SORT_BY_RELIABILITY						:Reliability
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Total capacity per cargo type
-STR_SORT_BY_MAX_SPEED						:Maximum speed
+STR_SORT_BY_RELIABILITY						:Dros'i'ba
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Kope'ja' ietilpi'ba pe'c kravas tipa
+STR_SORT_BY_MAX_SPEED						:maksima'lais a'trums
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -387,48 +387,48 @@ STR_016D_DEC							:Dec
 STR_016E							:{TINYFONT}{STRING}{} {STRING}
 STR_016F							:{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
 STR_0170							:{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME						:{BLACK}Pause game
-STR_0172_SAVE_GAME_ABANDON_GAME					:{BLACK}Save game, abandon game, quit
-STR_0173_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's stations
-STR_0174_DISPLAY_MAP						:{BLACK}Paradît Karti
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY				:{BLACK}Display map, town directory
-STR_0176_DISPLAY_TOWN_DIRECTORY					:{BLACK}Display town directory
-STR_0177_DISPLAY_COMPANY_FINANCES				:{BLACK}Display company finances information
-STR_0178_DISPLAY_COMPANY_GENERAL				:{BLACK}Display general company information
-STR_0179_DISPLAY_GRAPHS						:{BLACK}Display graphs
-STR_017A_DISPLAY_COMPANY_LEAGUE					:{BLACK}Display company league table
-STR_017B_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's trains
-STR_017C_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's road vehicles
-STR_017D_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's ships
-STR_017E_DISPLAY_LIST_OF_COMPANY				:{BLACK}Display list of company's aircraft
-STR_017F_ZOOM_THE_VIEW_IN					:{BLACK}Zoom the view in
-STR_0180_ZOOM_THE_VIEW_OUT					:{BLACK}Zoom the view out
-STR_0181_BUILD_RAILROAD_TRACK					:{BLACK}Build railway track
-STR_0182_BUILD_ROADS						:{BLACK}Build roads
+STR_0171_PAUSE_GAME						:{BLACK}Pauze't spe'li
+STR_0172_SAVE_GAME_ABANDON_GAME					:{BLACK}Saglaba't spe'li, pamest spe'li, beigt
+STR_0173_DISPLAY_LIST_OF_COMPANY				:{BLACK}Para'di't kompa'nijas staciju sarakstu
+STR_0174_DISPLAY_MAP						:{BLACK}Para'di't karti
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY				:{BLACK}Para'di't karti, pilse'tu sarakstu
+STR_0176_DISPLAY_TOWN_DIRECTORY					:{BLACK}Para'di't pilse'tu sarakstu
+STR_0177_DISPLAY_COMPANY_FINANCES				:{BLACK}Para'di't kompa'niju finansia'lo sta'vokli
+STR_0178_DISPLAY_COMPANY_GENERAL				:{BLACK}Para'di't kompa'niju vispa're'jo informa'ciju
+STR_0179_DISPLAY_GRAPHS						:{BLACK}Para'di't grafikus
+STR_017A_DISPLAY_COMPANY_LEAGUE					:{BLACK}Para'di't kompa'niju li'gu tabulu
+STR_017B_DISPLAY_LIST_OF_COMPANY				:{BLACK}Para'di't kompa'nijas vilcienu sarakstu
+STR_017C_DISPLAY_LIST_OF_COMPANY				:{BLACK}Para'di't kompa'nijas automobil'u sarakstu
+STR_017D_DISPLAY_LIST_OF_COMPANY				:{BLACK}Para'di't kompa'nijas kug'u sarakstu
+STR_017E_DISPLAY_LIST_OF_COMPANY				:{BLACK}Para'di't kompa'nijas lidmas'i'nu sarakstu
+STR_017F_ZOOM_THE_VIEW_IN					:{BLACK}Palielina't skatu
+STR_0180_ZOOM_THE_VIEW_OUT					:{BLACK}Samazina't skatu
+STR_0181_BUILD_RAILROAD_TRACK					:{BLACK}Bu've't sliez'u posmu
+STR_0182_BUILD_ROADS						:{BLACK}Bu've't cel'us
 STR_0183_BUILD_SHIP_DOCKS					:{BLACK}Build ship docks
-STR_0184_BUILD_AIRPORTS						:{BLACK}Build airports
-STR_0185_PLANT_TREES_PLACE_SIGNS				:{BLACK}Plant trees, place signs etc.
-STR_0186_LAND_BLOCK_INFORMATION					:{BLACK}Land area information
-STR_0187_OPTIONS						:{BLACK}Options
+STR_0184_BUILD_AIRPORTS						:{BLACK}Bu've't lidlaukus
+STR_0185_PLANT_TREES_PLACE_SIGNS				:{BLACK}Sta'di't kokus, zi'mes, u.tml.
+STR_0186_LAND_BLOCK_INFORMATION					:{BLACK}Zemes informa'cija
+STR_0187_OPTIONS						:{BLACK}Rez'i'mi
 STR_0188							:{BLACK}{SMALLUPARROW}
 STR_0189							:{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Can't change servicing interval...
-STR_018B_CLOSE_WINDOW						:{BLACK}Close window
-STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Window title - drag this to move window
-STR_STICKY_BUTTON						:{BLACK}Mark this window as uncloseable by the 'Close All Windows' key
+STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nevar maini't servisa interva'lu...
+STR_018B_CLOSE_WINDOW						:{BLACK}Aiztaisi't logu
+STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Loga virsraksts - velc s'o lai pa'rvietotu logu
+STR_STICKY_BUTTON						:{BLACK}Atzi'me' s'o logu ka' neaiztaisa'mu ar
 STR_RESIZE_BUTTON						:{BLACK}Uzklikðíini un velc lai mainîtu ðî loga izmçrus
-STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolish buildings etc. on a square of land
-STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lower a corner of land
-STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Raise a corner of land
-STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Scroll bar - scrolls list up/down
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Show land contours on map
-STR_0192_SHOW_VEHICLES_ON_MAP					:{BLACK}Show vehicles on map
-STR_0193_SHOW_INDUSTRIES_ON_MAP					:{BLACK}Show industries on map
-STR_0194_SHOW_TRANSPORT_ROUTES_ON				:{BLACK}Show transport routes on map
-STR_0195_SHOW_VEGETATION_ON_MAP					:{BLACK}Show vegetation on map
-STR_0196_SHOW_LAND_OWNERS_ON_MAP				:{BLACK}Show land owners on map
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF				:{BLACK}Toggle town names on/off on map
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR				:{TINYFONT}{BLACK}Profit this year: {CURRENCY} (last year: {CURRENCY})
+STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demole't celtnes un tml. uz zemes laucin'a
+STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Pazemina't zemes stu'ri
+STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Pacelt zemes stu'ri
+STR_0190_SCROLL_BAR_SCROLLS_LIST				:{BLACK}Skrollba'rs - bi'da sarakstu augs'up/lejup
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP				:{BLACK}Ra'di't zemes kontu'ras uz kartes
+STR_0192_SHOW_VEHICLES_ON_MAP					:{BLACK}Ra'di't transporta li'dzekl'us uz kartes
+STR_0193_SHOW_INDUSTRIES_ON_MAP					:{BLACK}Ra'di't industrijas uz kartes
+STR_0194_SHOW_TRANSPORT_ROUTES_ON				:{BLACK}Ra'di't transporta mars'rutus uz kartes
+STR_0195_SHOW_VEGETATION_ON_MAP					:{BLACK}Ra'di't veg'eta'ciju uz kartes
+STR_0196_SHOW_LAND_OWNERS_ON_MAP				:{BLACK}Ra'di't zemes i'pas'niekus uz kartes
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF				:{BLACK}Iesle'gt/izsle'gt pilse'tu nosaukumus uz kartes
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR				:{TINYFONT}{BLACK}S'i' gada iena'kums: {CURRENCY} (paga'jus'aja' gada': {CURRENCY})
 
 ############ range for service numbers starts
 STR_0199_YEAR							:{COMMA16} gads ({COMMA16})
@@ -436,98 +436,98 @@ STR_019A_YEARS							:{COMMA16} gadi ({COMMA16})
 STR_019B_YEARS							:{RED}{COMMA16} gadi ({COMMA16})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE						:Road vehicle
-STR_019D_AIRCRAFT						:Lidmaðîna
-STR_019E_SHIP							:Kuìis
+STR_019C_ROAD_VEHICLE						:Cel'u transporta li'dzeklis
+STR_019D_AIRCRAFT						:Lidmas'i'na
+STR_019E_SHIP							:Kug'is
 STR_019F_TRAIN							:Vilciens
-STR_01A0_IS_GETTING_OLD						:{WHITE}{STRING} {COMMA16} is getting old
-STR_01A1_IS_GETTING_VERY_OLD					:{WHITE}{STRING} {COMMA16} is getting very old
-STR_01A2_IS_GETTING_VERY_OLD_AND				:{WHITE}{STRING} {COMMA16} is getting very old and urgently needs replacing
-STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Land Area Information
+STR_01A0_IS_GETTING_OLD						:{WHITE}{STRING} {COMMA16} paliek vecs
+STR_01A1_IS_GETTING_VERY_OLD					:{WHITE}{STRING} {COMMA16} paliek l'oti vecs
+STR_01A2_IS_GETTING_VERY_OLD_AND				:{WHITE}{STRING} {COMMA16} paliek l'oti vecs un ir steidzami ja'nomaina
+STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Zemes laukuma informa'cija
 STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Cost to clear: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR						:{BLACK}Cost to clear: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR						:{BLACK}Izmaksas noli'dzina's'anai: {LTBLUE}{CURRENCY}
 STR_01A6_N_A							:N/A
-STR_01A7_OWNER							:{BLACK}Owner: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY					:{BLACK}Local authority: {LTBLUE}{STRING}
+STR_01A7_OWNER							:{BLACK}I'pas'nieks: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY					:{BLACK}Viete'ja's varas iesta'des: {LTBLUE}{STRING}
 STR_01A9_NONE							:Neviens
-STR_01AA_NAME							:{BLACK}V&#257;rds
+STR_01AA_NAME							:{BLACK}Va'rds
 STR_01AB							:{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
 STR_01AC_1ST							:Pirmais
 STR_01AD_2ND							:Otrais
-STR_01AE_3RD							:Trešais
+STR_01AE_3RD							:Tres'ais
 STR_01AF_4TH							:Ceturtais
-STR_01B0_5TH							:5th
-STR_01B1_6TH							:6th
-STR_01B2_7TH							:7th
-STR_01B3_8TH							:8th
-STR_01B4_9TH							:9th
-STR_01B5_10TH							:10th
-STR_01B6_11TH							:11th
-STR_01B7_12TH							:12th
-STR_01B8_13TH							:13th
-STR_01B9_14TH							:14th
-STR_01BA_15TH							:15th
-STR_01BB_16TH							:16th
-STR_01BC_17TH							:17th
-STR_01BD_18TH							:18th
-STR_01BE_19TH							:19th
-STR_01BF_20TH							:20th
-STR_01C0_21ST							:21st
-STR_01C1_22ND							:22nd
-STR_01C2_23RD							:23rd
-STR_01C3_24TH							:24th
-STR_01C4_25TH							:25th
-STR_01C5_26TH							:26th
-STR_01C6_27TH							:27th
-STR_01C7_28TH							:28th
-STR_01C8_29TH							:29th
-STR_01C9_30TH							:30th
-STR_01CA_31ST							:31st
+STR_01B0_5TH							:5.
+STR_01B1_6TH							:6.
+STR_01B2_7TH							:7.
+STR_01B3_8TH							:8.
+STR_01B4_9TH							:9.
+STR_01B5_10TH							:10.
+STR_01B6_11TH							:11.
+STR_01B7_12TH							:12.
+STR_01B8_13TH							:13.
+STR_01B9_14TH							:14.
+STR_01BA_15TH							:15.
+STR_01BB_16TH							:16.
+STR_01BC_17TH							:17.
+STR_01BD_18TH							:18.
+STR_01BE_19TH							:19.
+STR_01BF_20TH							:20.
+STR_01C0_21ST							:21.
+STR_01C1_22ND							:22.
+STR_01C2_23RD							:23.
+STR_01C3_24TH							:24.
+STR_01C4_25TH							:25.
+STR_01C5_26TH							:26.
+STR_01C6_27TH							:27.
+STR_01C7_28TH							:28.
+STR_01C8_29TH							:29.
+STR_01C9_30TH							:30.
+STR_01CA_31ST							:31.
 ############ range for days	ends
 
 STR_01CB							:{TINYFONT}{COMMA16}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Toggle large/medium/small map size
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION				:{WHITE}Select Tutorial/Demonstration
+STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Pa'rsle'gt uz lielu/vide'ju/mazu karti
+STR_01CD_SELECT_TUTORIAL_DEMONSTRATION				:{WHITE}Izve'le'ties ma'ci'bu/demonstra'ciju
 
 ############ range for cargo acecpted starts
-STR_01CE_CARGO_ACCEPTED						:{BLACK}Pieòem Kravu: {LTBLUE}{STRING}
-STR_01CF_CARGO_ACCEPTED						:{BLACK}Pieòem Kravu: {LTBLUE}{STRING}, {STRING}
-STR_01D0_CARGO_ACCEPTED						:{BLACK}Pieòem Kravu: {LTBLUE}{STRING}, {STRING}, {STRING}
-STR_CARGO_ACCEPTED_4						:{BLACK}Pieòem Kravu: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}
-STR_CARGO_ACCEPTED_5						:{BLACK}Pieòem Kravu: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_01CE_CARGO_ACCEPTED						:{BLACK}Pien'em kravu: {LTBLUE}{STRING}
+STR_01CF_CARGO_ACCEPTED						:{BLACK}Pien'em kravu: {LTBLUE}{STRING}, {STRING}
+STR_01D0_CARGO_ACCEPTED						:{BLACK}Pien'em kravu: {LTBLUE}{STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_4						:{BLACK}Pien'em kravu: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_5						:{BLACK}Pien'em kravu: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
 STR_01D1_8							:({COMMA8}/8 {STRING})
-STR_01D2_JAZZ_JUKEBOX						:{WHITE}Jazz Jukebox
-STR_01D3_SOUND_MUSIC						:Skaòa/muzîka
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW				:{BLACK}Show sound/music window
-STR_01D5_ALL							:{TINYFONT}All
-STR_01D6_OLD_STYLE						:{TINYFONT}Old Style
-STR_01D7_NEW_STYLE						:{TINYFONT}New Style
-STR_01D8_EZY_STREET						:{TINYFONT}Ezy Street
-STR_01D9_CUSTOM_1						:{TINYFONT}Custom 1
-STR_01DA_CUSTOM_2						:{TINYFONT}Custom 2
-STR_01DB_MUSIC_VOLUME						:{BLACK}{TINYFONT}Music Volume
-STR_01DC_EFFECTS_VOLUME						:{BLACK}{TINYFONT}Effects Volume
+STR_01D2_JAZZ_JUKEBOX						:{WHITE}Dz'eza muzikas automa'ts
+STR_01D3_SOUND_MUSIC						:Skan'a/mu'zika
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW				:{BLACK}Ra'di't skan'as/mu'zikas logu
+STR_01D5_ALL							:{TINYFONT}Visi
+STR_01D6_OLD_STYLE						:{TINYFONT}Vecais stils
+STR_01D7_NEW_STYLE						:{TINYFONT}Jaunais stils
+STR_01D8_EZY_STREET						:{TINYFONT}Ezy iela
+STR_01D9_CUSTOM_1						:{TINYFONT}Specia'lais 1
+STR_01DA_CUSTOM_2						:{TINYFONT}Specia'lais 2
+STR_01DB_MUSIC_VOLUME						:{BLACK}{TINYFONT}Muzikas skal'ums
+STR_01DC_EFFECTS_VOLUME						:{BLACK}{TINYFONT}Efektu skal'ums
 STR_01DD_MIN_MAX						:{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
-STR_01DE_SKIP_TO_PREVIOUS_TRACK					:{BLACK}Skip to previous track in selection
-STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION			:{BLACK}Skip to next track in selection
-STR_01E0_STOP_PLAYING_MUSIC					:{BLACK}Stop playing music
-STR_01E1_START_PLAYING_MUSIC					:{BLACK}Start playing music
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC				:{BLACK}Drag sliders to set music and sound effect volumes
+STR_01DE_SKIP_TO_PREVIOUS_TRACK					:{BLACK}Pa'rlekt uz ieprieks'e'jo dziesmu
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION			:{BLACK}Pa'rlekt us na'kamo dziesmu
+STR_01E0_STOP_PLAYING_MUSIC					:{BLACK}Apsta'dina't muzikas spe'le's'anu
+STR_01E1_START_PLAYING_MUSIC					:{BLACK}Sa'kt muzikas spe'le's'anu
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC				:{BLACK}Bi'di klok'us lai maini'tu muzikas un skan'as efektu skal'umu
 STR_01E3							:{DKGREEN}{TINYFONT}--
 STR_01E4_0							:{DKGREEN}{TINYFONT}0{COMMA8}
 STR_01E5							:{DKGREEN}{TINYFONT}{COMMA8}
 STR_01E6							:{DKGREEN}{TINYFONT}------
-STR_01E8_TRACK_XTITLE						:{BLACK}{TINYFONT}Track{SETX 88}Title
-STR_01E9_SHUFFLE						:{TINYFONT}Shuffle
-STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programme
-STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Music Programme Selection
-STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Track Index
-STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programme - '{STRING}'
-STR_01F0_CLEAR							:{TINYFONT}{BLACK}Clear
+STR_01E8_TRACK_XTITLE						:{BLACK}{TINYFONT}Treks{SETX 88}Nosaukums
+STR_01E9_SHUFFLE						:{TINYFONT}Sajaukt
+STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programma
+STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Muzikas programmas izve'le
+STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Treka indekss
+STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programma - '{STRING}'
+STR_01F0_CLEAR							:{TINYFONT}{BLACK}Dze'st
 STR_01F1_SAVE							:{TINYFONT}{BLACK}Saglabât
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC				:{BLACK}Current programme of music tracks
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM				:{BLACK}Select 'all tracks' programme
@@ -561,7 +561,8 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Changes to cargo acceptance
 STR_020E_SUBSIDIES						:{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION					:{YELLOW}General information
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...too far from previous destination
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Top companies who reached 2050{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Laba'ka's kompa'nijas kas sasniegus'as{NUMU16}{}({STRING} Level)
+STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Lompa'niju li'gu tabula {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Biznesmens
 STR_0214_ENTREPRENEUR						:Uzòçmçjs
@@ -570,8 +571,10 @@ STR_0216_CAPITALIST						:Capitalist
 STR_0217_MAGNATE						:Magnate
 STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon of the Century
-STR_021B_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} achieves '{STRING}' status!
-STR_021C_OF_ACHIEVES_STATUS					:{BIGFONT}{STRING}{STRING} of {STRING} achieves '{STRING}' status!
+STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} sasniegusi '{STRING}' statusu!
+STR_021C_OF_ACHIEVES_STATUS					:{WHITE}{BIGFONT}{STRING} no {STRING} sasniegusi '{STRING}' statusu!
 STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
@@ -766,6 +769,7 @@ STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Pasaules Karte
 STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Town directory
+STR_TOWN_POPULATION						:{BLACK}Pasaules iedzi'vota'ju skaits: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copy to viewport
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copy the location of the global view to this viewport
@@ -820,6 +824,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Fund new industry
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Fund new industry
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...can only be built in towns
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...can only be built in rainforest areas
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...can only be built in desert areas
@@ -857,6 +862,7 @@ STR_TOWNNAME_HUNGARIAN						:Hungarian
 STR_TOWNNAME_AUSTRIAN						:Austrian
 STR_TOWNNAME_ROMANIAN						:Romanian
 STR_TOWNNAME_CZECH						:Czech
+STR_TOWNNAME_SWISS						:S'veices
 ############ end of	townname region
 
 STR_CURR_GBP							:Pounds ({POUNDSIGN})
@@ -975,6 +981,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Allow more realistically sized catchme
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Allow removal of more town-owned roads, bridges, tunnels, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Aizliedz vilcieniem un kug'iem taisi't 90 gra'du pagriezienus: {ORANGE}{STRING} {LTBLUE} (nepiecies'ams NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
@@ -995,6 +1002,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Allow bribing of the local authority: {ORA
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}New depot finding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Jauna' globa'la' cel'u kars'rutiza'cija (NPF, aizsta'j NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
@@ -1036,9 +1044,11 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Default service interval for air
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
+STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Aizliedz servisu kad saboja's'ana's izsle'gta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Coloured news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Starting date: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}Nobeidz spe'li: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Enable smooth economy (more, smaller changes)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Atïauj akciju pirkðanu no citâm kompânijâm
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging, place signals every: {ORANGE}{STRING} tile(s)
@@ -1079,6 +1089,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Build while in pause mode: {ORANGE}{STRING
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}L'auj izmaini't produktu ve'rti'bas: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Heading for {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
@@ -1130,6 +1141,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Can't build locks here...
 STR_BUILD_LOCKS_TIP						:{BLACK}Build locks
 STR_LANDINFO_LOCK						:Lock
 
+STR_BUOY_IS_IN_USE						:{WHITE}...boja jau tiek lietota!
 
 STR_LANDINFO_COORDS						:{BLACK}Coordinates: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1182,6 +1194,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Select type of cargo for train to c
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Can't refit train...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Maini't produkciju
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, a work in progress. You should expect problems. When you happen take a screenshot and post it in the forum. Enjoy!
 TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
@@ -1219,7 +1232,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Valoda:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Map size:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server address:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Servera adrese:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Start date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Password protected!
@@ -1383,6 +1396,8 @@ STR_NETWORK_SEND						:{BLACK}Send
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}kartes X-izme'ri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}kartes Y-izme'ri: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cost: {CURRENCY}
@@ -1603,6 +1618,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Too close to another railway s
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Adjoins more than one existing station/loading area
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Too many stations/loading areas
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Pa'ra'k daudz autobusa pieturu
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}pa'ra'k daudz kravas auto staciju
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Too close to another station/loading area
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Must demolish railway station first
@@ -1676,6 +1693,7 @@ STR_3069_BUOY							:Buoy
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...buoy in the way
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station too spread out
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...neregula'ras stacijas nav atl'autas
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Ship Depot Orientation
@@ -2084,6 +2102,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Can't sell 25% share in this company
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% owned by {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% owned by {STRING}{}   {COMMA16}% owned by {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} has been taken over by {STRING}!
+STR_7080_PROTECTED						:{WHITE}S'i' kompa'nija ir pa'ra'k jauna lai tirgotu akcijas...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Tvaika)
@@ -2772,6 +2791,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Izvçlies slieþu tipu kurâm tu gribi nomain
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Parâda kura lokomatîve no pa kreisi atzîmçtajâm tiek nomainîta, ja vien kâda ir
 STR_REPLACE_HELP						:{BLACK}ðis atïauj nomainît vienu lokomatîves tipu pret citu kad vilcieni ienâk depo
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
@@ -2781,3 +2801,4 @@ STR_MAGLEV_VEHICLES						:Maglev transporta lîdzekïi
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}
