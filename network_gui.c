@@ -1271,6 +1271,15 @@ void ShowJoinStatusWindow()
 	AllocateWindowDesc(&_network_join_status_window_desc);
 }
 
+void ShowJoinStatusWindowAfterJoin()
+{
+	/* This is a special instant of ShowJoinStatusWindow, because
+	    it is opened after the map is loaded, but the client maybe is not
+	    done registering itself to the server */
+	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+	_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
+	AllocateWindowDesc(&_network_join_status_window_desc);
+}
 
 
 

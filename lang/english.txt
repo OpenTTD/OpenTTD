@@ -1303,6 +1303,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Authorising..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Waiting..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Downloading map..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Processing data..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registering..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Fetching game info..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Fetching company info..

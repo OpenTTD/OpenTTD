@@ -487,8 +487,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		}
 		_opt_mod_ptr = &_opt;
 
-		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
@@ -498,6 +496,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			if (_network_playas == OWNER_SPECTATOR) {
 				// The client wants to be a spectator..
 				_local_player = OWNER_SPECTATOR;
+				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 			} else {
 				// send a command to make a new player
 				_local_player = 0;

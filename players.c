@@ -643,6 +643,13 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	switch(p1 & 0xff) {
 	case 0: // make new player
 		p = DoStartupNewPlayer(false);
+
+#ifdef ENABLE_NETWORK
+		if (_networking && !_network_server && _local_player == OWNER_SPECTATOR)
+			/* In case we are a client joining a server... */
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+#endif /* ENABLE_NETWORK */
+
 		if (p != NULL) {
 			if (_local_player == OWNER_SPECTATOR) {
 				_local_player = p->index;

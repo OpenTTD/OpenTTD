@@ -2229,7 +2229,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			DrawSprite(SPR_OTTD_T, off_x +  34, 50);
 			DrawSprite(SPR_OTTD_T, off_x +  65, 50);
 			DrawSprite(SPR_OTTD_D, off_x +  96, 50);
-			
+
 			/*
 			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
 			DrawSprite(SPR_OTTD_A, off_x + 148, 50);
@@ -2323,8 +2323,8 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			ShowBuildRailToolbar(_last_built_railtype, 4);
 			break;
 
-		case 'L': 
-			ShowTerraformToolbar(); 
+		case 'L':
+			ShowTerraformToolbar();
 			break;
 
 		case 'X':
@@ -2332,9 +2332,9 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			MarkWholeScreenDirty();
 			break;
 
-		case WKC_BACKQUOTE: 
-			IConsoleSwitch(); 
-			e->keypress.cont=false; 
+		case WKC_BACKQUOTE:
+			IConsoleSwitch();
+			e->keypress.cont=false;
 			break;
 
 #ifdef ENABLE_NETWORK
@@ -2356,6 +2356,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 
 
 void ShowSelectGameWindow();
+extern void ShowJoinStatusWindowAfterJoin();
 
 void SetupColorsAndInitialWindow()
 {
@@ -2404,6 +2405,10 @@ void SetupColorsAndInitialWindow()
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
 		WP(w,def_d).data_1 = -1280;
+
+		/* Bring joining GUI to front till the client is really joined */
+		if (_networking && !_network_server)
+			ShowJoinStatusWindowAfterJoin();
 
 		break;
 	case GM_EDITOR:
