@@ -506,6 +506,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		} else {
 			// take control over an existing company
 			_local_player = _network_playas - 1;
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
 
 		// Remeber the player
