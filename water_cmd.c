@@ -364,16 +364,6 @@ void DrawCanalWater(uint tile)
 	else if ((wa & 9) == 9 && !IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11);
 }
 
-typedef struct WaterDrawTileStruct {
-	int8 delta_x;
-	int8 delta_y;
-	int8 delta_z;
-	byte width;
-	byte height;
-	byte unk;
-	SpriteID image;
-} WaterDrawTileStruct;
-
 typedef struct LocksDrawTileStruct {
 	int8 delta_x, delta_y, delta_z;
 	byte width, height, depth;
@@ -382,15 +372,15 @@ typedef struct LocksDrawTileStruct {
 
 #include "table/water_land.h"
 
-static void DrawWaterStuff(TileInfo *ti, const byte *t, uint32 palette, uint base)
+static void DrawWaterStuff(TileInfo *ti, const WaterDrawTileStruct *wdts,
+	uint32 palette, uint base
+)
 {
-	const WaterDrawTileStruct *wdts;
 	uint32 image;
 
-	DrawGroundSprite(*(const uint16*)t);
-	t += sizeof(uint16);
+	DrawGroundSprite(wdts++->image);
 
-	for(wdts = (const WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
+	for (; wdts->delta_x != 0x80; wdts++) {
 		image =	wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			image = (image & 0x3FFF) | 0x03224000;
@@ -419,8 +409,8 @@ static void DrawTile_Water(TileInfo *ti)
 
 	// draw shiplift
 	if ((ti->map5 & 0xF0) == 0x10) {
-		const byte *t = _shiplift_display_seq[ti->map5 & 0xF];
-		DrawWaterStuff(ti, t, 0, ti->z > t[19] ? 24 : 0);
+		const WaterDrawTileStruct *t = _shiplift_display_seq[ti->map5 & 0xF];
+		DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
 		return;
 	}
 
@@ -429,14 +419,11 @@ static void DrawTile_Water(TileInfo *ti)
 
 void DrawShipDepotSprite(int x, int y, int image)
 {
-	const byte *t;
-	const WaterDrawTileStruct *wdts;
+	const WaterDrawTileStruct *wdts = _shipdepot_display_seq[image];
 
-	t = _shipdepot_display_seq[image];
-	DrawSprite(*(const uint16*)t, x, y);
-	t += sizeof(uint16);
+	DrawSprite(wdts++->image, x, y);
 
-	for(wdts = (const WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
+	for (; wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
 		DrawSprite(wdts->image + PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
 	}

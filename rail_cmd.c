@@ -1620,7 +1620,6 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 	} else {
 		/* draw depots / waypoints */
-		const byte *s;
 		const DrawTrackSeqStruct *drss;
 		byte type = m5 & 0x3F; // 0-3: depots, 4-5: waypoints
 
@@ -1664,9 +1663,9 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		}
 
-		s = _track_depot_layout_table[type];
+		drss = _track_depot_layout_table[type];
 
-		image = *(const uint16*)s;
+		image = drss++->image;
 		if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
 
 		// adjust ground tile for desert
@@ -1681,8 +1680,6 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawGroundSprite(image);
 
-		drss = (const DrawTrackSeqStruct*)(s + sizeof(uint16));
-
 		while ((image=drss->image) != 0) {
 			DrawSpecialBuilding(image, type < 4 ? tracktype_offs : 0, ti,
 			                    drss->subcoord_x, drss->subcoord_y, 0,
@@ -1696,23 +1693,22 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 {
 	uint32 ormod, img;
 	const DrawTrackSeqStruct *dtss;
-	const byte *t;
 
 	/* baseimage */
 	railtype *= TRACKTYPE_SPRITE_PITCH;
 
 	ormod = PLAYER_SPRITE_COLOR(_local_player);
 
-	t = _track_depot_layout_table[image];
+	dtss = _track_depot_layout_table[image];
 
 	x+=33;
 	y+=17;
 
-	img = *(const uint16*)t;
+	img = dtss++->image;
 	if (img & 0x8000) img = (img & 0x7FFF) + railtype;
 	DrawSprite(img, x, y);
 
-	for(dtss = (const DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
+	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 		image = dtss->image;
 		if (image & 0x8000) image |= ormod;
@@ -1735,14 +1731,13 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 
 	// draw default waypoint graphics of ID 0
 	if (stat_id == 0) {
-		const byte *t = _track_depot_layout_table[4];
-		const DrawTrackSeqStruct *dtss;
+		const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
 
-		img = *(const uint16*)t;
+		img = dtss++->image;
 		if (img & 0x8000) img = (img & 0x7FFF) + railtype*TRACKTYPE_SPRITE_PITCH;
 		DrawSprite(img, x, y);
 
-		for (dtss = (const DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
+		for (; dtss->image != 0; dtss++) {
 			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 			img = dtss->image;
 			if (img & 0x8000) img |= ormod;
