@@ -20,7 +20,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#if defined(UNIX)
+#if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
 #endif
 
