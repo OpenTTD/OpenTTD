@@ -1185,7 +1185,7 @@ STR_NETWORK_FIND_SERVER						:{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
 STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Størrelse
+STR_NETWORK_MAP_SIZE						:{SILVER}Størrelse:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_PASSWORD						:{BLACK}Kodeord:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Join game
@@ -1217,7 +1217,7 @@ STR_NETWORK_SPECTATE_GAME					:{BLACK}Spectate game
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
 
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Company name:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Company name:  {WHITE}{STRING}
 
 STR_NETWORK_PLAYERS						:{BLACK}#/#
 
@@ -1821,7 +1821,7 @@ STR_700A_COMPANY_NAME						:Firmanavn
 STR_700B_PRESIDENT_S_NAME					:Direktørens Navn
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kan ikke ændre firmaets navn...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Kan ikke ændre direktørens navn...
-STR_700E_FINANCES						:{WHITE}{STRING} Finanser{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Finanser {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Udgifter/Indkomst
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Konstruktion

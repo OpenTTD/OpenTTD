@@ -1277,7 +1277,7 @@ STR_NETWORK_REFRESH_TIP						:{BLACK}Renovar a informação do servidor
 
 STR_NETWORK_COMPANY_INFO					:{SILVER}INFORMAÇÃO DA COMPANHIA
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da empresa:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nome da empresa:  {WHITE}{STRING}
 
 STR_NETWORK_PLAYERS						:{BLACK}#/#
 
@@ -1881,7 +1881,7 @@ STR_700A_COMPANY_NAME						:Nome da Empresa
 STR_700B_PRESIDENT_S_NAME					:Nome do Presidente
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Não é possível alterar o nome da empresa...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Não é possível alterar o nome do presidente...
-STR_700E_FINANCES						:{WHITE}{STRING} Finanças{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Finanças {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Despesas/Lucros
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Construção

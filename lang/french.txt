@@ -1936,7 +1936,7 @@ STR_700A_COMPANY_NAME						:Nom de la société
 STR_700B_PRESIDENT_S_NAME					:Nom du P.D.G.
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Impossible de changer le nom de compagnie...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Impossible de changer le nom du P.D.G. ...
-STR_700E_FINANCES						:{WHITE}Finances: {STRING}{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}Finances: {STRING} {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Dépenses/Revenus
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Construction

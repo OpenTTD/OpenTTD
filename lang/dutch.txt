@@ -1936,7 +1936,7 @@ STR_700A_COMPANY_NAME						:Bedrijfsnaam
 STR_700B_PRESIDENT_S_NAME					:Naam van directeur
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kan bedrijfsnaam niet veranderen...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Kan naam manager niet veranderen...
-STR_700E_FINANCES						:{WHITE}{STRING} Financiën{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Financiën {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Uitgaven/inkomsten
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Bouwkosten

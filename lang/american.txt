@@ -1936,7 +1936,7 @@ STR_700A_COMPANY_NAME						:Company Name
 STR_700B_PRESIDENT_S_NAME					:President's Name
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Can't change company name...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Can't change president's name...
-STR_700E_FINANCES						:{WHITE}{STRING} Finances{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Finances {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Expenditure/Income
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Construction

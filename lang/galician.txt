@@ -1185,7 +1185,7 @@ STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Buscar un servidor na rede
 STR_NETWORK_ENTER_IP						:{BLACK}Introduce a dirección IP do servidor
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Tamaño
+STR_NETWORK_MAP_SIZE						:{SILVER}Tamaño:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_PASSWORD						:{BLACK}Contrasinal:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Unirse á partida
@@ -1214,7 +1214,7 @@ STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar partida
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Observa-la partida coma espectador
 
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da compañía:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nome da compañía:  {WHITE}{STRING}
 
 STR_NETWORK_PLAYERS						:{BLACK}#/#
 
@@ -1812,7 +1812,7 @@ STR_700A_COMPANY_NAME						:Nome da Compañía
 STR_700B_PRESIDENT_S_NAME					:Nome Do Presidente
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Non se pode cambia-lo nome da compañía...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Non se pode cambia-lo nome do presidente...
-STR_700E_FINANCES						:{WHITE}{STRING} Finanzas{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Finanzas {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Gastos/Ingresos
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Construccción

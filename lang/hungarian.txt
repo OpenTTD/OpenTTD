@@ -1936,7 +1936,7 @@ STR_700A_COMPANY_NAME						:A vállalat neve
 STR_700B_PRESIDENT_S_NAME					:Az elnök neve
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Nem változtathatod meg a cég nevét...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Nem változtathatod meg az elnök nevét...
-STR_700E_FINANCES						:{WHITE}{STRING} pénzügyei{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} pénzügyei {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Kiadás/Bevétel
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Építkezés

@@ -1927,7 +1927,7 @@ STR_700A_COMPANY_NAME						:Nazov spolocnosti
 STR_700B_PRESIDENT_S_NAME					:Meno prezidenta
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Nazov spolocnosti sa neda zmenit...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Meno prezidenta sa neda zmenit...
-STR_700E_FINANCES						:{WHITE}{STRING} Financie{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Financie {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Vydaje/Prijmy
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Vystavba

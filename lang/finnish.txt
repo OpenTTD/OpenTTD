@@ -1936,7 +1936,7 @@ STR_700A_COMPANY_NAME						:Yhtiön nimi
 STR_700B_PRESIDENT_S_NAME					:Pääjohtajan nimi
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Yhtiön nimeä ei voi muuttaa...
 STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Pääjohtajan nimeä ei voi muuttaa...
-STR_700E_FINANCES						:{WHITE}{STRING} Talous{BLACK}{STRING}
+STR_700E_FINANCES						:{WHITE}{STRING} Talous {BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Menot/tulot
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Rakentaminen
