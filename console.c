@@ -32,7 +32,6 @@ static char* _iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static char _iconsole_cmdline[ICON_CMDLN_SIZE];
 static byte _iconsole_cmdpos;
-static Window* _iconsole_win = NULL;
 static byte _iconsole_scroll;
 
 // ** console cursor ** //

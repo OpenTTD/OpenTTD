@@ -714,11 +714,14 @@ static int Win32GdiMainLoop(void)
 			_dbg_screen_rect = _wnd.has_focus && GetAsyncKeyState(VK_CAPITAL)<0;
 
 			// determine which directional keys are down
-			_dirkeys =
-				(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
-				(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
-				(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
-				(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+			if (_wnd.has_focus) {
+				_dirkeys =
+					(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
+					(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
+					(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
+					(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+			} else
+				_dirkeys = 0;
 
 			GameLoop();
 			_cursor.delta.x = _cursor.delta.y = 0;

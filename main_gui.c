@@ -2202,7 +2202,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-void ScrollMainViewport(int x, int y)
+static void ScrollMainViewport(int x, int y)
 {
 	if (_game_mode != GM_MENU) {
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -2250,7 +2250,7 @@ static const int8 scrollamt[16][2] = {
 
 void HandleKeyScrolling(void)
 {
-	if (_dirkeys) {
+	if (_dirkeys && _iconsole_win == NULL) {
 		int factor = _shift_pressed ? 50 : 10;
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
 	}
