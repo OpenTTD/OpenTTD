@@ -12,7 +12,11 @@
 #include <pwd.h>
 #include <signal.h>
 
-#if defined(__linux__)
+#if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__linux__)
+	#define HAS_STATVFS
+#endif
+
+#ifdef HAS_STATVFS
 #include <sys/statvfs.h>
 #endif
 
@@ -312,12 +316,12 @@ StringID FiosGetDescText(const char **path, uint32 *tot)
 	uint32 free = 0;
 	*path = _fios_path[0] != '\0' ? _fios_path : "/";
 
-#if defined(__linux__)
+#ifdef HAS_STATVFS
 	{
 		struct statvfs s;
 
-		if (statvfs(*path, &s) != 0) {
-			free = ((uint64)s.f_bsize * s.f_bavail) >> 20;
+		if (statvfs(*path, &s) == 0) {
+			free = (uint64)s.f_frsize * s.f_bavail >> 20;
 		} else
 			return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
