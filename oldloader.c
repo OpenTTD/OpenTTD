@@ -164,6 +164,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
 	const OldChunks *chunk = chunks;
 	byte *ptr;
+	byte *base_ptr = base;
 	uint i;
 
 	while (chunk->type != OC_END) {
@@ -238,7 +239,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				}
 
 				/* Sanity check */
-				assert(base != NULL || chunk->ptr != NULL);
+				assert(base_ptr != NULL || chunk->ptr != NULL);
 
 				/* Writing to the var: bit 8 till 15 have the VAR */
 				switch (((chunk->type >> 8) & 0xFF) << 8) {
@@ -248,7 +249,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(int8 *)ptr = res & 0xFF;
 							ptr++;
 						} else
-							*(int8 *)(base + chunk->offset) = res & 0xFF;
+							*(int8 *)(base_ptr + chunk->offset) = res & 0xFF;
 							break;
 
 					case OC_VAR_U8:
@@ -257,7 +258,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(uint8 *)ptr = res & 0xFF;
 							ptr++;
 						} else
-							*(uint8 *)(base + chunk->offset) = res & 0xFF;
+							*(uint8 *)(base_ptr + chunk->offset) = res & 0xFF;
 							break;
 
 					case OC_VAR_U16:
@@ -266,7 +267,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(uint16 *)ptr = res & 0xFFFF;
 							ptr += 2;
 						} else
-							*(uint16 *)(base + chunk->offset) = res & 0xFFFF;
+							*(uint16 *)(base_ptr + chunk->offset) = res & 0xFFFF;
 							break;
 
 					case OC_VAR_I16:
@@ -275,7 +276,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(int16 *)ptr = res & 0xFFFF;
 							ptr += 2;
 						} else
-							*(int16 *)(base + chunk->offset) = res & 0xFFFF;
+							*(int16 *)(base_ptr + chunk->offset) = res & 0xFFFF;
 							break;
 
 					case OC_VAR_U32:
@@ -284,7 +285,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(uint32 *)ptr = res;
 							ptr += 4;
 						} else
-							*(uint32 *)(base + chunk->offset) = res;
+							*(uint32 *)(base_ptr + chunk->offset) = res;
 							break;
 
 					case OC_VAR_I32:
@@ -293,7 +294,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(int32 *)ptr = res;
 							ptr += 4;
 						} else
-							*(int32 *)(base + chunk->offset) = res;
+							*(int32 *)(base_ptr + chunk->offset) = res;
 							break;
 
 					case OC_VAR_I64:
@@ -302,7 +303,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 							*(int64 *)ptr = res;
 							ptr += 8;
 						} else
-							*(int64 *)(base + chunk->offset) = res;
+							*(int64 *)(base_ptr + chunk->offset) = res;
 							break;
 				}
 			}
