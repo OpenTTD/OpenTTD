@@ -764,10 +764,10 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v) {
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
 	if ((v->current_order.type) == OT_GOTO_STATION && v->type == VEH_Train) {
+		const Station* st = GetStation(v->current_order.station);
+		TileIndexDiffC center = {st->trainst_w/2, st->trainst_h/2};
 		fstd->station_index = v->current_order.station;
 		/* Let's take the center of the station as our target tile for trains */
-		Station* st = GetStation(v->current_order.station);
-		TileIndexDiffC center = {st->trainst_w/2, st->trainst_h/2};
 		fstd->dest_coords = TILE_ADD(st->train_tile, ToTileIndexDiff(center));
 	} else {
 		fstd->dest_coords = v->dest_tile;

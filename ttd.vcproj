@@ -601,6 +601,9 @@
 				RelativePath=".\newgrf.c">
 			</File>
 			<File
+				RelativePath=".\npf.c">
+			</File>
+			<File
 				RelativePath="oldloader.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -1210,6 +1213,9 @@
 			</File>
 			<File
 				RelativePath="news.h">
+			</File>
+			<File
+				RelativePath=".\npf.h">
 			</File>
 			<File
 				RelativePath="pathfind.h">

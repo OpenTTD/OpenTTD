@@ -265,6 +265,10 @@ SOURCE=.\newgrf.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\npf.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\oldloader.c
 # End Source File
 
@@ -499,6 +503,10 @@ SOURCE=.\network.h
 
 # Begin Source File
 SOURCE=.\news.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\npf.h
 # End Source File
 
 # Begin Source File
