@@ -71,4 +71,4 @@ CommandCallback *_callback_table[] = {
 	/* 0x14 */ CcTerraform
 };
 
-const int _callback_table_count = sizeof (_callback_table) / sizeof (*_callback_table);
+const int _callback_table_count = lengthof(_callback_table);
