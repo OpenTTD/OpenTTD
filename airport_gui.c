@@ -45,28 +45,16 @@ static void BuildAirClick_Demolish(Window *w)
 	HandlePlacePushButton(w, 3, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
 }
 
-static void BuildAirClick_Lower(Window *w)
+static void BuildAirClick_Landscaping(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
-}
-
-static void BuildAirClick_Raise(Window *w)
-{
-	HandlePlacePushButton(w, 5, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
-}
-
-static void BuildAirClick_Purchase(Window *w)
-{
-	HandlePlacePushButton(w, 6, 0x12B8, 1, PlaceProc_BuyLand);
+	ShowTerraformToolbar();
 }
 
 typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_air_button_proc[] = {
 	BuildAirClick_Airport,
 	BuildAirClick_Demolish,
-	BuildAirClick_Lower,
-	BuildAirClick_Raise,
-	BuildAirClick_Purchase,
+	BuildAirClick_Landscaping,
 };
 
 static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
@@ -107,19 +95,17 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _air_toolbar_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   129,     0,    13, STR_A000_AIRPORT_CONSTRUCT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,    41,    14,    35, 0x2E8,												STR_A01E_BUILD_AIRPORT},
-{      WWT_PANEL,     7,    42,    63,    14,    35, 0x2BF,												STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    64,    85,    14,    35, 0x2B7,												STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,    86,   107,    14,    35, 0x2B6,												STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   108,   129,    14,    35, 0x12B7,											STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,     7,    11,    85,     0,    13, STR_A000_AIRPORTS,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     7,     0,    41,    14,    35, 0x2E8,									STR_A01E_BUILD_AIRPORT},
+{      WWT_PANEL,     7,    42,    63,    14,    35, 0x2BF,									STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING_S,	STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 
 static const WindowDesc _air_toolbar_desc = {
-	510, 22, 130, 36,
+	640-86, 22, 86, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_air_toolbar_widgets,

@@ -59,20 +59,14 @@ static void PlaceDocks_BuildLock(uint tile)
 }
 
 
-static void BuildDocksClick_Dock(Window *w)
+static void BuildDocksClick_Canal(Window *w)
 {
-
-	if (HandlePlacePushButton(w, 2, 0xE54, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
+	HandlePlacePushButton(w, 2, SPR_OPENTTD_BASE + 11, 1, PlaceDocks_BuildCanal);
 }
 
-static void BuildDocksClick_Depot(Window *w)
+static void BuildDocksClick_Lock(Window *w)
 {
-	if (HandlePlacePushButton(w, 3, 0x2D1, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
-}
-
-static void BuildDocksClick_Buoy(Window *w)
-{
-	HandlePlacePushButton(w, 4, 0x2BE, 1, PlaceDocks_Buoy);
+	HandlePlacePushButton(w, 3, SPR_OPENTTD_BASE + 64, 1, PlaceDocks_BuildLock);
 }
 
 static void BuildDocksClick_Demolish(Window *w)
@@ -80,42 +74,37 @@ static void BuildDocksClick_Demolish(Window *w)
 	HandlePlacePushButton(w, 5, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
 }
 
-static void BuildDocksClick_Lower(Window *w)
+static void BuildDocksClick_Depot(Window *w)
 {
-	HandlePlacePushButton(w, 6, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
+	if (HandlePlacePushButton(w, 6, 0x2D1, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
 }
 
-static void BuildDocksClick_Raise(Window *w)
+static void BuildDocksClick_Dock(Window *w)
 {
-	HandlePlacePushButton(w, 7, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
+
+	if (HandlePlacePushButton(w, 7, 0xE54, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
 }
 
-static void BuildDocksClick_Purchase(Window *w)
+static void BuildDocksClick_Buoy(Window *w)
 {
-	HandlePlacePushButton(w, 8, 0x12B8, 1, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, 8, 0x2BE, 1, PlaceDocks_Buoy);
 }
 
-static void BuildDocksClick_Canal(Window *w)
+static void BuildDocksClick_Landscaping(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_OPENTTD_BASE + 11, 1, PlaceDocks_BuildCanal);
-}
-
-static void BuildDocksClick_Lock(Window *w)
-{
-	HandlePlacePushButton(w, 10, SPR_OPENTTD_BASE + 64, 1, PlaceDocks_BuildLock);
+	ShowTerraformToolbar();
 }
 
 typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_docks_button_proc[] = {
-	BuildDocksClick_Dock,
-	BuildDocksClick_Depot,
-	BuildDocksClick_Buoy,
-	BuildDocksClick_Demolish,
-	BuildDocksClick_Lower,
-	BuildDocksClick_Raise,
-	BuildDocksClick_Purchase,
 	BuildDocksClick_Canal,
 	BuildDocksClick_Lock,
+	0,
+	BuildDocksClick_Demolish,
+	BuildDocksClick_Depot,
+	BuildDocksClick_Dock,
+	BuildDocksClick_Buoy,
+	BuildDocksClick_Landscaping,
 };
 
 static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
@@ -126,7 +115,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		if (e->click.widget - 2 >= 0) _build_docks_button_proc[e->click.widget - 2](w);
+		if (e->click.widget - 2 >= 0 && e->click.widget!=4) _build_docks_button_proc[e->click.widget - 2](w);
 	} break;
 
 	case WE_PLACE_OBJ:
@@ -175,21 +164,23 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   197,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,    21,    14,    35, 746,													STR_981D_BUILD_SHIP_DOCK},
-{      WWT_PANEL,     7,    22,    43,    14,    35, 748,													STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
-{      WWT_PANEL,     7,    44,    65,    14,    35, 693,													STR_9834_POSITION_BUOY_WHICH_CAN},
-{      WWT_PANEL,     7,    66,    87,    14,    35, 703,													STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    88,   109,    14,    35, 695,													STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   110,   131,    14,    35, 694,													STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   132,   153,    14,    35, 4791,												STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{      WWT_PANEL,     7,   154,   175,    14,    35, SPR_OPENTTD_BASE+65,					STR_BUILD_CANALS_TIP},
-{      WWT_PANEL,     7,   176,   197,    14,    35, SPR_CANALS_BASE+69,					STR_BUILD_LOCKS_TIP},
+{    WWT_CAPTION,     7,    11,   157,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+
+{      WWT_PANEL,     7,     0,    21,    14,    35, SPR_OPENTTD_BASE+65,					STR_BUILD_CANALS_TIP},
+{      WWT_PANEL,     7,    22,    43,    14,    35, SPR_CANALS_BASE+69,					STR_BUILD_LOCKS_TIP},
+
+{      WWT_PANEL,     7,    44,    47,    14,    35, 0x0,													STR_NULL},
+
+{      WWT_PANEL,     7,    48,    69,    14,    35, 703,													STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,    70,    91,    14,    35, 748,													STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,    92,   113,    14,    35, 746,													STR_981D_BUILD_SHIP_DOCK},
+{      WWT_PANEL,     7,   114,   135,    14,    35, 693,													STR_9834_POSITION_BUOY_WHICH_CAN},
+{      WWT_PANEL,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING_S,				STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	640-197, 22, 198, 36,
+	640-158, 22, 158, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_docks_toolb_widgets,

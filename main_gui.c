@@ -1898,7 +1898,7 @@ static const Widget _toolb_normal_widgets[] = {
 {      WWT_PANEL,    14,   479,   500,     0,    21, 0x2D8, STR_0182_BUILD_ROADS},
 {      WWT_PANEL,    14,   501,   522,     0,    21, 0x2D9, STR_0183_BUILD_SHIP_DOCKS},
 {      WWT_PANEL,    14,   523,   544,     0,    21, 0x2DA, STR_0184_BUILD_AIRPORTS},
-{      WWT_PANEL,    14,   545,   566,     0,    21, 0xFF3, STR_0185_PLANT_TREES_PLACE_SIGNS}, // tree icon is 0x2E6
+{      WWT_PANEL,    14,   545,   566,     0,    21, 0xFF3, STR_LANDSCAPING_TOOLBAR_TIP}, // tree icon is 0x2E6
 
 {      WWT_PANEL,    14,   574,   595,     0,    21, 0x2C9, STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
 {      WWT_PANEL,    14,   596,   617,     0,    21, 0x2A8, STR_0203_SHOW_LAST_MESSAGE_NEWS},

@@ -120,80 +120,68 @@ static void BuildRoadClick_Demolish(Window *w)
 	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceRoad_DemolishArea);
 }
 
-static void BuildRoadClick_Lower(Window *w)
-{
-	HandlePlacePushButton(w, 5, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
-}
-
-static void BuildRoadClick_Raise(Window *w)
-{
-	HandlePlacePushButton(w, 6, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
-}
-
 static void BuildRoadClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 7, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
+	if (HandlePlacePushButton(w, 5, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
-	if (HandlePlacePushButton(w, 8, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
+	if (HandlePlacePushButton(w, 6, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
-	if (HandlePlacePushButton(w, 9, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
+	if (HandlePlacePushButton(w, 7, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
 static void BuildRoadClick_Bridge(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 10, 0xA21, 1, PlaceRoad_Bridge);
+	HandlePlacePushButton(w, 8, 0xA21, 1, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 11, 0x981, 3, PlaceRoad_Tunnel);
+	HandlePlacePushButton(w, 9, 0x981, 3, PlaceRoad_Tunnel);
 }
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<12))
+	if (w->disabled_state & (1<<10))
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	_thd.make_square_red = !!((w->click_state ^= (1 << 12)) & (1<<12));
+	_thd.make_square_red = !!((w->click_state ^= (1 << 10)) & (1<<10));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
 }
 
-static void BuildRoadClick_Purchase(Window *w)
+static void BuildRoadClick_Landscaping(Window *w)
 {
-	HandlePlacePushButton(w, 13, 0x12B8, 1, PlaceProc_BuyLand);
+	ShowTerraformToolbar();
 }
 
 static OnButtonClick * const _build_road_button_proc[] = {
 	BuildRoadClick_NE,
 	BuildRoadClick_NW,
 	BuildRoadClick_Demolish,
-	BuildRoadClick_Lower,
-	BuildRoadClick_Raise,
 	BuildRoadClick_Depot,
 	BuildRoadClick_BusStation,
 	BuildRoadClick_TruckStation,
 	BuildRoadClick_Bridge,
 	BuildRoadClick_Tunnel,
 	BuildRoadClick_Remove,
-	BuildRoadClick_Purchase,
+	BuildRoadClick_Landscaping,
 };
 
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
-		w->disabled_state &= ~(1 << 12);
-		if (!(w->click_state & 12)) {
-			w->disabled_state |= (1 << 12);
-			w->click_state &= ~(1<<12);
+		w->disabled_state &= ~(1 << 10);
+		if (!(w->click_state & ((1<<2)|(1<<3)))) {
+			w->disabled_state |= (1 << 10);
+			w->click_state &= ~(1<<10);
 		}
 		DrawWindowWidgets(w);
 		break;
@@ -208,11 +196,13 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		case '1': BuildRoadClick_NE(w); break;
 		case '2': BuildRoadClick_NW(w); break;
 		case '3': BuildRoadClick_Demolish(w); break;
-		case '4': BuildRoadClick_Lower(w); break;
-		case '5': BuildRoadClick_Raise(w); break;
+		case '4': BuildRoadClick_Depot(w); break;
+		case '5': BuildRoadClick_BusStation(w); break;
+		case '6': BuildRoadClick_TruckStation(w); break;
 		case 'B': BuildRoadClick_Bridge(w); break;
 		case 'T': BuildRoadClick_Tunnel(w); break;
 		case 'R': BuildRoadClick_Remove(w); break;
+		case 'L': BuildRoadClick_Landscaping(w); break;
 		default:
 			return;
 		}
@@ -220,7 +210,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_PLACE_OBJ:
-		_remove_button_clicked = (w->click_state & (1 << 12)) != 0;
+		_remove_button_clicked = (w->click_state & (1 << 10)) != 0;
 		_place_proc(e->place.tile);
 		break;
 
@@ -283,24 +273,23 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 
 static const Widget _build_road_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   283,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,    21,    14,    35, 0x51D, STR_180B_BUILD_ROAD_SECTION},
-{      WWT_PANEL,     7,    22,    43,    14,    35, 0x51E, STR_180B_BUILD_ROAD_SECTION},
-{      WWT_PANEL,     7,    44,    65,    14,    35, 0x2BF, STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    66,    87,    14,    35, 0x2B7, STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,    88,   109,    14,    35, 0x2B6, STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   110,   131,    14,    35, 0x50F, STR_180C_BUILD_ROAD_VEHICLE_DEPOT},
-{      WWT_PANEL,     7,   132,   153,    14,    35, 0x2ED, STR_180D_BUILD_BUS_STATION},
-{      WWT_PANEL,     7,   154,   175,    14,    35, 0x2EE, STR_180E_BUILD_TRUCK_LOADING_BAY},
-{      WWT_PANEL,     7,   176,   217,    14,    35, 0xA22, STR_180F_BUILD_ROAD_BRIDGE},
-{      WWT_PANEL,     7,   218,   239,    14,    35, 0x97D, STR_1810_BUILD_ROAD_TUNNEL},
-{      WWT_PANEL,     7,   240,   261,    14,    35, 0x2CA, STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   262,   283,    14,    35, 0x12B7, STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{    WWT_CAPTION,     7,    11,   239,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+
+{      WWT_PANEL,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,				STR_180B_BUILD_ROAD_SECTION},
+{      WWT_PANEL,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,				STR_180B_BUILD_ROAD_SECTION},
+{      WWT_PANEL,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,			STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,		STR_180C_BUILD_ROAD_VEHICLE_DEPOT},
+{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,		STR_180D_BUILD_BUS_STATION},
+{      WWT_PANEL,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,			STR_180E_BUILD_TRUCK_LOADING_BAY},
+{      WWT_PANEL,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,				STR_180F_BUILD_ROAD_BRIDGE},
+{      WWT_PANEL,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,		STR_1810_BUILD_ROAD_TUNNEL},
+{      WWT_PANEL,     7,   196,   217,    14,    35, SPR_IMG_REMOVE, 				STR_1811_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   218,   239,    14,    35, SPR_IMG_LANDSCAPING_S, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_desc = {
-	356, 22, 284, 36,
+	640-240, 22, 240, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_widgets,

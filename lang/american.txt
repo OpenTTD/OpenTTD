@@ -2573,7 +2573,7 @@ STR_GO_TO_SHIP_DEPOT						:Go to {TOWN} Ship Depot
 SERVICE_AT_SHIP_DEPOT						:Service at {TOWN} Ship Depot
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Airport Construct.
+STR_A000_AIRPORTS										:{WHITE}Airports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Can't build airport here...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Aircraft Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}New Aircraft

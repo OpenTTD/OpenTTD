@@ -32,13 +32,13 @@ static void GenericRaiseLowerLand(uint tile, int mode)
 typedef void OnButtonClick(Window *w);
 
 static const uint16 _terraform_keycodes[] = {
-	'1',
-	'2',
-	'3',
-	'4',
-	'5',
+	'Q',
+	'W',
+	'E',
 	0,
-	'7',
+	'Z',
+	'U',
+	'I',
 };
 
 void PlaceProc_DemolishArea(uint tile)
@@ -66,26 +66,19 @@ void PlaceProc_PlantTree(uint tile)
 }
 
 
-
-
-static void TerraformClick_Dynamite(Window *w)
-{
-	HandlePlacePushButton(w, 2, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
-}
-
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, 3, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, 2, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, 3, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 5, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 4, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_BuyLand(Window *w)
@@ -95,22 +88,21 @@ static void TerraformClick_BuyLand(Window *w)
 
 static void TerraformClick_Trees(Window *w)
 {
-	if (HandlePlacePushButton(w, 8, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
+	if (HandlePlacePushButton(w, 7, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
 }
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, 9, 722, 1, PlaceProc_Sign);
+	HandlePlacePushButton(w, 8, 722, 1, PlaceProc_Sign);
 }
 
 
 static OnButtonClick * const _terraform_button_proc[] = {
-	TerraformClick_Dynamite,
 	TerraformClick_Lower,
 	TerraformClick_Raise,
 	TerraformClick_Level,
-	TerraformClick_BuyLand,
 	0,
+	TerraformClick_BuyLand,
 	TerraformClick_Trees,
 	TerraformClick_PlaceSign,
 };
@@ -124,7 +116,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		break;
 	case WE_CLICK:
-		if (e->click.widget >= 2 && e->click.widget != 7) {
+		if (e->click.widget >= 2 && e->click.widget != 5) {
 			_terraform_button_proc[e->click.widget - 2](w);
 		}
 		break;
@@ -185,22 +177,23 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _terraform_widgets[] = {
 { WWT_CLOSEBOX,     7,   0,  10,   0,  13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION,     7,  11, 157,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_CAPTION,     7,  11, 135,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{    WWT_PANEL,     7,   0,  21,  14,  35,  703,										STR_018D_DEMOLISH_BUILDINGS_ETC},
-{    WWT_PANEL,     7,  22,  43,  14,  35,  695,										STR_018E_LOWER_A_CORNER_OF_LAND},
-{    WWT_PANEL,     7,  44,  65,  14,  35,  694,										STR_018F_RAISE_A_CORNER_OF_LAND},
-{    WWT_PANEL,     7,  66,  87,  14,  35,  SPR_OPENTTD_BASE+68,		STR_LEVEL_LAND_TOOLTIP},
-{    WWT_PANEL,     7,  88, 109,  14,  35, 4791,										STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{    WWT_PANEL,     7, 110, 113,  14,  35,  0x0,										STR_NULL},
-{    WWT_PANEL,     7, 114, 135,  14,  35,  742,										STR_0185_PLANT_TREES_PLACE_SIGNS},
-{    WWT_PANEL,     7, 136, 157,  14,  35, SPR_OPENTTD_BASE+70,			STR_0289_PLACE_SIGN},
+{    WWT_PANEL,     7,   0,  21,  14,  35,  695,										STR_018E_LOWER_A_CORNER_OF_LAND},
+{    WWT_PANEL,     7,  22,  43,  14,  35,  694,										STR_018F_RAISE_A_CORNER_OF_LAND},
+{    WWT_PANEL,     7,  44,  65,  14,  35,  SPR_OPENTTD_BASE+68,		STR_LEVEL_LAND_TOOLTIP},
+
+{    WWT_PANEL,     7,  66,  69,  14,  35,  0x0,										STR_NULL},
+
+{    WWT_PANEL,     7,  70,  91,  14,  35, 4791,										STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{    WWT_PANEL,     7,  92, 113,  14,  35,  742,										STR_0185_PLANT_TREES_PLACE_SIGNS},
+{    WWT_PANEL,     7, 114, 135,  14,  35, SPR_OPENTTD_BASE+70,			STR_0289_PLACE_SIGN},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _terraform_desc = {
-	640-158, 22+36, 158, 36,
+	640-136, 22+36, 136, 36,
 	WC_SCEN_LAND_GEN,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_terraform_widgets,

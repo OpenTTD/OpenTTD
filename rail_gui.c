@@ -211,44 +211,34 @@ static void PlaceRail_AutoSignals(uint tile)
 	VpStartPlaceSizing(tile, VPM_SIGNALDIRS);
 }
 
-static void BuildRailClick_AutoRail(Window *w)
-{
-	HandlePlacePushButton(w, 3, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
-}
-
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, 4, _cur_railtype*4 + 0x4EF, 1, PlaceRail_N);
+	HandlePlacePushButton(w, 3, _cur_railtype*4 + 0x4EF, 1, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 5, _cur_railtype*4 + 0x4F0, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, 4, _cur_railtype*4 + 0x4F0, 1, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, 6, _cur_railtype*4 + 0x4F1, 1, PlaceRail_E);
+	HandlePlacePushButton(w, 5, _cur_railtype*4 + 0x4F1, 1, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 7, _cur_railtype*4 + 0x4F2, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, 6, _cur_railtype*4 + 0x4F2, 1, PlaceRail_NW);
+}
+
+static void BuildRailClick_AutoRail(Window *w)
+{
+	HandlePlacePushButton(w, 7, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
 {
 	HandlePlacePushButton(w, 8, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
-}
-
-static void BuildRailClick_Lower(Window *w)
-{
-	HandlePlacePushButton(w, 9, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
-}
-
-static void BuildRailClick_Raise(Window *w)
-{
-	HandlePlacePushButton(w, 10, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
 }
 
 static const SpriteID _depot_cursors[] = {
@@ -259,42 +249,50 @@ static const SpriteID _depot_cursors[] = {
 
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 11, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
+	if (HandlePlacePushButton(w, 9, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
+}
+
+static void BuildRailClick_Waypoint(Window *w)
+{
+	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
+	if (HandlePlacePushButton(w, 10, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
+	    && _waypoint_count > 1)
+		ShowBuildWaypointPicker();
 }
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, 11, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
+	HandlePlacePushButton(w, 12, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
 }
 
 static void BuildRailClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, 14, 0xA21, 1, PlaceRail_Bridge);
+	HandlePlacePushButton(w, 13, 0xA21, 1, PlaceRail_Bridge);
 }
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 15, 0x982 + _cur_railtype, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, 14, 0x982 + _cur_railtype, 3, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<16))
+	if (w->disabled_state & (1<<15))
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
+	_thd.make_square_red = !!((w->click_state ^= (1 << 15)) & (1<<15));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
-	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
+	_remove_button_clicked = (w->click_state & (1 << 15)) != 0;
 
 	// handle station builder
-	if( w->click_state & (1 << 12) )
+	if( w->click_state & (1 << 15) )
 	{
 		if(_remove_button_clicked)
 			SetTileSelectSize(1, 1);
@@ -303,22 +301,14 @@ static void BuildRailClick_Remove(Window *w)
 	}
 }
 
-static void BuildRailClick_Sign(Window *w)
-{
-	HandlePlacePushButton(w, 17, 0x12B8, 1, PlaceProc_BuyLand);
-}
-
-static void BuildRailClick_Waypoint(Window *w)
-{
-	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
-	    && _waypoint_count > 1)
-		ShowBuildWaypointPicker();
-}
-
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, 19, (SPR_OPENTTD_BASE + 26) + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, 16, (SPR_OPENTTD_BASE + 26) + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
+}
+
+static void BuildRailClick_Landscaping(Window *w)
+{
+	ShowTerraformToolbar();
 }
 
 
@@ -563,42 +553,39 @@ static void HandleAutoSignalPlacement()
 }
 
 static OnButtonClick * const _build_railroad_button_proc[] = {
-	BuildRailClick_AutoRail,
 	BuildRailClick_N,
 	BuildRailClick_NE,
 	BuildRailClick_E,
 	BuildRailClick_NW,
+	BuildRailClick_AutoRail,
 	BuildRailClick_Demolish,
-	BuildRailClick_Lower,
-	BuildRailClick_Raise,
 	BuildRailClick_Depot,
+	BuildRailClick_Waypoint,
 	BuildRailClick_Station,
 	BuildRailClick_AutoSignals,
 	BuildRailClick_Bridge,
 	BuildRailClick_Tunnel,
 	BuildRailClick_Remove,
-	BuildRailClick_Sign,
-	BuildRailClick_Waypoint,
 	BuildRailClick_Convert,
+	BuildRailClick_Landscaping,
 };
 
 static const uint16 _rail_keycodes[] = {
-	'5',
 	'1',
 	'2',
 	'3',
 	'4',
+	'5',
 	'6',
-	'7',
-	'8',
-	0,	// depot
-	0,	// station
-	'S',// signals
-	'B',// bridge
-	'T',// tunnel
-	'R',// remove
-	0,	// sign
-	'C',// waypoint
+	'7', // depot
+	'8', // waypoint
+	'9', // station
+	'S', // signals
+	'B', // bridge
+	'T', // tunnel
+	'R', // remove
+	'C', // convert rail
+	'L', // landscaping
 };
 
 
@@ -608,10 +595,10 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT:
-		w->disabled_state &= ~(1 << 16);
-		if (!(w->click_state & ((1<<3)|(1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<12)|(1<<13)|(1<<18)))) {
-			w->disabled_state |= (1 << 16);
-			w->click_state &= ~(1<<16);
+		w->disabled_state &= ~(1 << 15);
+		if (!(w->click_state & ((1<<3)|(1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<10)|(1<<11)|(1<<12)))) {
+			w->disabled_state |= (1 << 15);
+			w->click_state &= ~(1<<15);
 		}
 		DrawWindowWidgets(w);
 		break;
@@ -691,38 +678,37 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+
 static const Widget _build_railroad_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{      WWT_PANEL,     7,    110,  113,    14,    35, 0x0,			STR_NULL},
-{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 0, STR_BUILD_AUTORAIL_TIP},
+{      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 
 {      WWT_PANEL,     7,    0,     21,    14,    35, 0x4E3,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E4,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E5,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    66,    87,    14,    35, 0x4E6,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 0, STR_BUILD_AUTORAIL_TIP},
 
 {      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   180,   201,    14,    35, 0x50E,		STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   136,   157,    14,    35, 0x50E,		STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   158,   179,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97E,		STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   180,   221,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   222,   243,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   244,   285,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   286,   305,    14,    35, 0x97E,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   328,   349,    14,    35, SPR_OPENTTD_BASE + 25, STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
-{      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 25, STR_CONVERT_RAIL_TIP},
+{      WWT_PANEL,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING_S,	STR_LANDSCAPING_TOOLBAR_TIP},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_railroad_desc = {
-	640-418, 22, 418, 36,
+	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_railroad_widgets,
@@ -731,35 +717,34 @@ static const WindowDesc _build_railroad_desc = {
 
 static const Widget _build_monorail_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100B_MONORAIL_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100B_MONORAIL_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
 {      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
-{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 1, STR_BUILD_AUTORAIL_TIP},
 
 {      WWT_PANEL,     7,     0,    21,    14,    35, 0x4E7,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E8,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E9,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    66,    87,    14,    35, 0x4EA,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 1, STR_BUILD_AUTORAIL_TIP},
 
 {      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   180,   201,    14,    35, SPR_OPENTTD_BASE + 12, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   136,   157,    14,    35, SPR_OPENTTD_BASE + 12, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   158,   179,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97F,		STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   180,   221,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   222,   243,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   244,   285,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   286,   305,    14,    35, 0x97F,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   328,   349,    14,    35, SPR_OPENTTD_BASE + 27, STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
-{      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 27, STR_CONVERT_RAIL_TIP},
+{      WWT_PANEL,     7,   350,   371,    14,    35, 742,	STR_LANDSCAPING_TOOLBAR_TIP},
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_monorail_desc = {
-	640-418, 22, 418, 36,
+	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_monorail_widgets,
@@ -768,35 +753,34 @@ static const WindowDesc _build_monorail_desc = {
 
 static const Widget _build_maglev_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100C_MAGLEV_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100C_MAGLEV_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
 {      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
-{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 2, STR_BUILD_AUTORAIL_TIP},
 
 {      WWT_PANEL,     7,     0,    21,    14,    35, 0x4EB,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    22,    43,    14,    35, 0x4EC,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    44,    65,    14,    35, 0x4EE,		STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,     7,    66,    87,    14,    35, 0x4ED,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 2, STR_BUILD_AUTORAIL_TIP},
 
 {      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   180,   201,    14,    35, SPR_OPENTTD_BASE + 13, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   136,   157,    14,    35, SPR_OPENTTD_BASE + 13, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   158,   179,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x980,		STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   180,   221,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   222,   243,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   244,   285,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   286,   305,    14,    35, 0x980,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   328,   349,    14,    35, SPR_OPENTTD_BASE + 29, STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
-{      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 29, STR_CONVERT_RAIL_TIP},
+{      WWT_PANEL,     7,   350,   371,    14,    35, 742,	STR_LANDSCAPING_TOOLBAR_TIP},
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_maglev_desc = {
-	640-418, 22, 418, 36,
+	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_maglev_widgets,

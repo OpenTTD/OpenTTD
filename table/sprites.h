@@ -714,7 +714,18 @@ enum Sprites {
 	SPR_OTTD_A                = 4838,
 	SPR_OTTD_S                = 4840,
 	SPR_OTTD_Y                = 4843,
-	SPR_OTTD_C                = 4844
+	SPR_OTTD_C                = 4844,
+
+	/* road_gui.c */
+	SPR_IMG_ROAD_NW				= 1309,
+	SPR_IMG_ROAD_NE				= 1310,
+	SPR_IMG_ROAD_DEPOT		= 1295,
+	SPR_IMG_BUS_STATION		= 749,
+	SPR_IMG_TRUCK_BAY			= 750,
+	SPR_IMG_BRIDGE				= 2594,
+	SPR_IMG_ROAD_TUNNEL		= 2429,
+	SPR_IMG_REMOVE				= 714,
+	SPR_IMG_LANDSCAPING_S = 742
 };
 
 /* Cursor sprite numbers */
