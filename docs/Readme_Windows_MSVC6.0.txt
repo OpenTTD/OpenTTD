@@ -1,89 +1,105 @@
-Compilung OpenTTD using MS VC6.0
+Compiling OpenTTD using Microsoft Visual C++ 6.0
 
 
-Step 1
-------------------
-Downloaded:
-Useful.zip	http://sourceforge.net/project/showfiles.php?group_id=103924&package_id=114307&release_id=228633
-SDL.zip		http://www.libsdl.org/release/SDL-1.2.7-win32.zip
-DirectX7.0 SDK	http://www.tt-forums.net/download.php?id=15989
-		(or alternatively the latest DirectX SDK from Microsoft)
-afxres.h	http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H
+---Step 1
+
+Download the following files:
+
+    * Useful.zip (http://sourceforge.net/project/showfiles.php?group_id=103924&package_id=114307&release_id=228633)
+    * SDL-1.2.8-VC6.zip (http://www.libsdl.org/release/SDL-devel-1.2.8-VC6.zip)
+    * DirectX7.0 SDK (http://www.tt-forums.net/download.php?id=15989) (or alternatively the latest DirectX SDK from Microsoft)
+    * afxres.h (http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H) 
+
+...and of course the newest source from svn://svn.openttd.com/trunk
+
+(The alpha version of the new map array can be found at svn://svn.openttd.com/branch/map)
+
+You have to have and SVN-client to download the source:
+
+    * Command line version (http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91)
+    * TortoiseSVN (http://tortoisesvn.tigris.org/download.html) 
 
 
-Step 2
-------------------
-Put the newly downloaded files in the VC lib and include directories
-(Where D:\program files\ is your local location of VC)
+---Step 2
+
+Put the newly downloaded files in the VC lib and include directories (Where C:\program files\ is your local location of VC)
 
 
-* zconf.h		[useful.zip]
-* zlib.h		[useful.zip]
-* afxres.h	
+    * zconf.h [useful.zip]
+    * zlib.h [useful.zip]
+    * png.h [useful.zip]
+    * pngconf.h [useful.zip]
+    * afxres.h 
+
 in
-  D:\Program Files\Microsoft Visual Studio\VC98\Include
 
-* zlibstat.lib		[usefull.zip]
-* SDL.lib		[SDL.zip
-* libpng.lib		[usefull.zip]
+  C:\Program Files\Microsoft Visual Studio\VC98\Include
+
+and
+
+    * zlibstat.lib [useful.zip]
+    * SDL.lib [SDL.zip]
+    * libpng.lib [useful.zip] 
+
 in
-  D:\Program Files\Microsoft Visual Studio\VC98\Lib
 
-You can also make custum directories, for libraries (.lib) and includes/header files (.h) and
-add it to the VC paths via: 
+  C:\Program Files\Microsoft Visual Studio\VC98\Lib
+
+
+---Step 3: DirectX SDK
+
+(This should work with the latest DirectX SDK as well.) The installation with DirectX 7 was odd, so you'd better use the version available via the forum, see also the download link on top.
+
+There are 2 folder in the compressed file: Include and Lib
+
+Copy all files from Include folder to
+
+C:\Program Files\Microsoft Visual Studio\VC98\Include
+
+and all files from Lib folder to
+
+C:\Program Files\Microsoft Visual Studio\VC98\Lib
+
+
+
+You can also make custom directories, for libraries (.lib) and includes/header files (.h) and add it to the VC paths via:
+
 Tools -> Options -> Directories -> show directories for:
-a) include files (the include dir: D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\include )
-b) library files (the lib dir, D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\lib )
+
+a) include files (the include dir: C:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\include )
+
+b) library files (the lib dir, C:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\lib )
 
 
-Step 3: DirextX SDK
-------------------
-(This should work with the latest DirectX SDK as well.)
-The installation with DirectX 7 was odd, so you'd better use the version available via the forum, see also
-the download link on top.
+---Step 4
 
-Copy the DirectX 7 SDK files, leaving the directory stucture intact, to the directory:
-  D:\Program Files\Microsoft Visual Studio\VC98\
-thus resulting in
-  D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\include and
-  D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\lib
-
-Step 3.1
-
-Add these two folders to the search path of VC.
-In VC6.0: Tools -> Options -> Directories -> show directories for:
-a) include files (the include dir: D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\include )
-b) libraru files (the lib dir, D:\Program Files\Microsoft Visual Studio\VC98\DirectX 7 SDK\lib )
-
-
-Step 4
------------------
 Copy the following files from Transport Tycoon Deluxe to the data folder
-  sample.cat
-  trg1r.grf
-  trgcr.grf
-  trghr.grf
-  trgir.grf
-  trgtr.grf
 
-(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase to be detected correctly. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
-
-Step 5
------------------
-Compile ...
+    * sample.cat
+    * trg1r.grf
+    * trgcr.grf
+    * trghr.grf
+    * trgir.grf
+    * trgtr.grf 
 
 
-Step 6
------------------
+---Step 5
+
+Open trunk/ttd.dsw
+
+Build menu > Set active configuration > Select: "ttd - Win32 Release with PNG"
+
+Compile...
+
 
 Now it should work, it worked for me :)
 
-Go ahead and make that patch!
+From r1319 you can compile branch/map in Debug mode (by Bociusz)
 
-Happy Hacking!
+If it's not working, and you checked that you using the newest SVN (!) report to Bociusz on IRC (irc://irc.freenode.net/#openttd)
 
+Go ahead and make that patch! Happy Hacking! :)
 
+Originally written by Dribbel
 
-------------------
-written by Dribbel
-
+Project file updating by Bociusz
