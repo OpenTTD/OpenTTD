@@ -78,6 +78,7 @@ void DrawMouseCursor();
 void ScreenSizeChanged();
 void UndrawMouseCursor();
 bool ChangeResInGame(int w, int h);
+void ToggleFullScreen(const bool full_screen);
 
 typedef struct {
 	int xoffs, yoffs;

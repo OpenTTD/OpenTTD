@@ -77,7 +77,10 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		i = GetCurRes();
 		SET_DPARAM16(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SET_DPARAM16(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
+		(_fullscreen) ? SETBIT(w->click_state, 28) : CLRBIT(w->click_state, 28); // fullscreen button
+
 		DrawWindowWidgets(w);
+		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, 0); // fullscreen
 	}	break;
 
 	case WE_CLICK:
@@ -113,8 +116,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			// setup resolution dropdown
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), e->click.widget, 0);
 			return;
-		case 30:
-			// setup screenshot format dropdown
+		case 28: /* Click fullscreen on/off */
+			(_fullscreen) ? CLRBIT(w->click_state, 28) : SETBIT(w->click_state, 28);
+			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
+			SetWindowDirty(w);
+			return;
+		case 31: /* Setup screenshot format dropdown */
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0);
 			return;
 
@@ -197,7 +204,7 @@ int32 CmdSetTownNameType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,   369,    14,   233, 0x0,											STR_NULL},
+{      WWT_PANEL,    14,     0,   369,    14,   238, 0x0,											STR_NULL},
 {      WWT_FRAME,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,	STR_NULL},
 {          WWT_6,    14,    20,   169,    34,    45, STR_02E1,								STR_02E2_CURRENCY_UNITS_SELECTION},
 {   WWT_CLOSEBOX,    14,   158,   168,    35,    44, STR_0225,								STR_02E2_CURRENCY_UNITS_SELECTION},
@@ -214,27 +221,29 @@ static const Widget _game_options_widgets[] = {
 {          WWT_6,    14,    20,   169,   118,   129, STR_02F5,								STR_02F6_SELECT_INTERVAL_BETWEEN},
 {   WWT_CLOSEBOX,    14,   158,   168,   119,   128, STR_0225,								STR_02F6_SELECT_INTERVAL_BETWEEN},
 
-{      WWT_FRAME,    14,    10,   359,   188,   223, STR_02BC_VEHICLE_DESIGN_NAMES,				STR_NULL},
-{          WWT_6,    14,    20,   119,   202,   213, STR_02BD,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{   WWT_CLOSEBOX,    14,   108,   118,   203,   212, STR_0225,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{   WWT_CLOSEBOX,    14,   130,   349,   202,   213, STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK,	STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
+{      WWT_FRAME,    14,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,				STR_NULL},
+{          WWT_6,    14,    20,   119,   207,   218, STR_02BD,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{   WWT_CLOSEBOX,    14,   108,   118,   208,   217, STR_0225,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{   WWT_CLOSEBOX,    14,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK,	STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
 
 {      WWT_FRAME,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,				STR_NULL},
 {          WWT_6,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,		STR_OPTIONS_LANG_TIP},
 {   WWT_CLOSEBOX,    14,   338,   348,   119,   128, STR_0225,								STR_OPTIONS_LANG_TIP},
-{      WWT_FRAME,    14,    10,   179,   146,   181, STR_OPTIONS_RES,					STR_NULL},
+
+{      WWT_FRAME,    14,    10,   179,   146,   190, STR_OPTIONS_RES,					STR_NULL},
 {          WWT_6,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,			STR_OPTIONS_RES_TIP},
 {   WWT_CLOSEBOX,    14,   158,   168,   161,   170, STR_0225,								STR_OPTIONS_RES_TIP},
+{    WWT_TEXTBTN,    14,   149,   169,   176,   184, STR_EMPTY,								STR_OPTIONS_FULLSCREEN_TIP},
 
-{      WWT_FRAME,    14,   190,   359,   146,   181, STR_OPTIONS_SCREENSHOT_FORMAT,			STR_NULL},
-{          WWT_6,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO,	STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
+{      WWT_FRAME,    14,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,				STR_NULL},
+{          WWT_6,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO,		STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 {   WWT_CLOSEBOX,    14,   338,   348,   161,   170, STR_0225,								STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _game_options_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 234,
+	WDP_CENTER, WDP_CENTER, 370, 239,
 	WC_GAME_OPTIONS,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,

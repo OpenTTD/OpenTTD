@@ -1928,3 +1928,14 @@ bool ChangeResInGame(int w, int h)
 	_cur_resolution[1] = h;
 	return true;
 }
+
+void ToggleFullScreen(const bool full_screen)
+{
+	_fullscreen = full_screen;
+	/* use preset resolutions, not _screen.height and _screen.width. On windows for example
+	   if Desktop-size is 1280x1024, and gamesize is also 1280x1024, _screen.height will be 
+		 only 1000 because of possible start-bar. For this reason you cannot switch to 
+		 fullscreen mode from this resolution. Use of preset resolution will fix this */
+	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1]))
+		_fullscreen ^= true; // switching resolution failed, put back full_screen to original status
+}

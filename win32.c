@@ -498,6 +498,7 @@ static void MakeWindow(bool full_screen)
 				error("CreateWindow failed");
 		}
 	}
+	GameSizeChanged(); // invalidate all windows, force redraw
 }
 
 static bool AllocateDibSection(int w, int h)
@@ -727,7 +728,7 @@ static bool Win32GdiChangeRes(int w, int h)
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
-	MakeWindow(_wnd.fullscreen);
+	MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
 
 	return true;
 }
