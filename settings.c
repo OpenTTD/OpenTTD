@@ -837,7 +837,8 @@ static const SettingDesc patch_settings[] = {
 	{"servint_aircraft", SDT_UINT16, (void*)100,(void*)offsetof(Patches, servint_aircraft)},
 
 	{"autorenew", SDT_BOOL, (void*)false,(void*)offsetof(Patches, autorenew)},
-	{"autorenew_months", SDT_UINT16, (void*)-12, (void*)offsetof(Patches, autorenew_months)},
+	{"autorenew_months", SDT_INT16, (void*)-6, (void*)offsetof(Patches, autorenew_months)},
+	{"autorenew_money", SDT_INT32, (void*)100000, (void*)offsetof(Patches, autorenew_money)},
 
 	{"new_pathfinding",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, new_pathfinding)},
 	{"pf_maxlength", SDT_UINT16, (void*)512, (void*)offsetof(Patches, pf_maxlength)},

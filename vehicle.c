@@ -1302,6 +1302,9 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
 	if (v->owner != _local_player)
 		return;
+	// Do not show getting-old message if autorenew is active
+	if (_patches.autorenew)
+		return;
 
 	SET_DPARAM16(0, _vehicle_type_names[v->type - 0x10]);
 	SET_DPARAM16(1, v->unitnumber);
@@ -1334,13 +1337,33 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 {
 	Engine *e;
 
-	// When automatically renewing a vehicle we want to prevent the
-	// "getting old" messages so we renew it if it won't enter the
-	// depot during the next service sooner than half a year before
-	// the vehicle getting old (that's one year before it reaches
-	// the max_age, see AgeVehicle).
-	if (!(_patches.autorenew && v->max_age - v->age < 366 + 183 + v->service_interval))
+	// A vehicle is autorenewed when it it gets the amount of months
+	//  give by _patches.autorenew_months away for his max age.
+	//  Standard is -6, meaning 6 months before his max age
+	//  It can be any value between -12 and 12.
+	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30))
 		return;
+		
+	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
+		if (v->owner == _local_player) {
+			int message;
+			SET_DPARAM16(0, v->unitnumber);
+			switch (v->type) {
+				case VEH_Train: message = STR_TRAIN_AUTORENEW_FAILED; break;
+				case VEH_Road: message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+				case VEH_Ship: message = STR_SHIP_AUTORENEW_FAILED; break;
+				case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED; break;
+				// This should never happen
+				default: message = 0; break;
+			}
+
+			AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+		}
+		return;
+	}
+	
+	// Withdraw the money from the right player ;)
+	_current_player = v->owner;
 
 	e = &_engines[v->engine_type];
 	v->reliability = e->reliability;

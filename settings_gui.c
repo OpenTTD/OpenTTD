@@ -659,8 +659,8 @@ typedef struct PatchEntry {
 	byte flags;		// selector flags
 	StringID str; // string with descriptive text
 	void *variable; // pointer to the variable
-	int16 min,max; // range for spinbox setting
-	uint16 step;   // step for spinbox
+	int32 min,max; // range for spinbox setting
+	uint32 step;   // step for spinbox
 } PatchEntry;
 
 enum {
@@ -669,6 +669,7 @@ enum {
 	PE_INT16 = 2,
 	PE_UINT16 = 3,
 	PE_INT32 = 4,
+	PE_CURRENCY = 5,
 
 	PF_0ISDIS = 1,
 	PF_NOCOMMA = 2,
@@ -706,7 +707,9 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, &_patches.never_expire_vehicles},
 
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, &_patches.lost_train_days, 180, 720, 60},
-	{PE_BOOL, 0, STR_CONFIG_AUTORENEW_VEHICLE, &_patches.autorenew},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE, &_patches.autorenew},
+	{PE_INT16, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, &_patches.autorenew_months, -12, 12, 1},
+	{PE_CURRENCY, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY, &_patches.autorenew_money, 0, 2000000, 100000},
 
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_TRAINS, &_patches.max_trains, 0, 240, 10},
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_ROADVEH, &_patches.max_roadveh, 0, 240, 10},
@@ -764,6 +767,8 @@ static const PatchPage _patches_page[] = {
 	{_patches_ai, lengthof(_patches_ai) },
 };
 
+extern uint GetCurrentCurrencyRate();
+
 static int32 ReadPE(const PatchEntry*pe)
 {
 	switch(pe->type) {
@@ -772,6 +777,7 @@ static int32 ReadPE(const PatchEntry*pe)
 	case PE_INT16:  return *(int16*)pe->variable;
 	case PE_UINT16: return *(uint16*)pe->variable;
 	case PE_INT32:  return *(int32*)pe->variable;
+	case PE_CURRENCY:  return (*(int64*)pe->variable) * GetCurrentCurrencyRate();
 	default:
 		NOT_REACHED();
 	}
@@ -816,6 +822,15 @@ static void WritePE(const PatchEntry *pe, int32 val)
 								else
 									*(int32*)pe->variable = val; 
 								break;
+
+	case PE_CURRENCY: val /= GetCurrentCurrencyRate();
+								if ((int64)val > (int64)pe->max)
+									*(int64*)pe->variable = (int64)pe->max;
+								else if ((int64)val < (int64)pe->min)
+									*(int64*)pe->variable = (int64)pe->min;
+								else
+									*(int64*)pe->variable = val;
+								break;
 	default:
 		NOT_REACHED();
 	}
@@ -852,12 +867,17 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(x+20, y+1, STR_681A, 0);
 
 				val = ReadPE(pe);
+				if (pe->type == PE_CURRENCY)
+					val /= GetCurrentCurrencyRate();
 				disabled = ((val == 0) && (pe->flags & PF_0ISDIS));
 				if (disabled) {
 					SET_DPARAM16(0, STR_CONFIG_PATCHES_DISABLED);
 				} else {
 					SET_DPARAM32(1, val);
-					SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+					if (pe->type == PE_CURRENCY)
+						SET_DPARAM16(0, STR_CONFIG_PATCHES_CURRENCY);
+					else
+						SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
 				}
 			}
 			DrawString(30, y+1, (pe->str)+disabled, 0);
@@ -898,6 +918,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				case PE_INT16:
 				case PE_UINT16:
 				case PE_INT32:
+				case PE_CURRENCY:
 					// don't allow too fast scrolling
 					if ((w->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
 						_left_button_clicked = false;

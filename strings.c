@@ -322,6 +322,10 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 	return FormatNoCommaNumber(buff, ymd.year + 1920);
 }
 
+uint GetCurrentCurrencyRate() {
+    return (&_currency_specs[_opt.currency])->rate;
+}
+
 static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 number, bool compact)
 {
 	const char *s;

@@ -120,7 +120,8 @@ typedef struct Patches {
 	uint16 servint_ships;		// service interval for ships
 
 	bool autorenew;
-	uint16 autorenew_months;
+	int16 autorenew_months;
+	int32 autorenew_money;
 
 	bool new_pathfinding;		// use optimized pathfinding algoritm for trains
 	byte pf_maxdepth;				// maximum recursion depth when searching for a train route for new pathfinder

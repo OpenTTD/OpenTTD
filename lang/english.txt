@@ -903,15 +903,19 @@ STR_TRAIN_IS_LOST						:{WHITE}Train {COMMA16} is lost.
 STR_TRAIN_IS_UNPROFITABLE				:{WHITE}Train {COMMA16}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE					:{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
+STR_TRAIN_AUTORENEW_FAILED				:{WHITE}Autorenew failed on train {COMMA16} (money limit)
 STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}Train {COMMA16} has too few orders in the schedule
 STR_TRAIN_HAS_VOID_ORDER						:{WHITE}Train {COMMA16} has a void order
 STR_TRAIN_HAS_DUPLICATE_ENTRY				:{WHITE}Train {COMMA16} has duplicate orders
+STR_AIRCRAFT_AUTORENEW_FAILED				:{WHITE}Autorenew failed on aircraft {COMMA16} (money limit)
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS			:{WHITE}Aircraft {COMMA16} has too few orders in the schedule
 STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Aircraft {COMMA16} has void order
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY		:{WHITE}Aircraft {COMMA16} has duplicate orders
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Autorenew failed on road vehicle {COMMA16} (money limit)
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS	:{WHITE}Road Vehicle {COMMA16} has too few orders in the schedule
 STR_ROADVEHICLE_HAS_VOID_ORDER			:{WHITE}Road Vehicle {COMMA16} has void order
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY	:{WHITE}Road Vehicle {COMMA16} has duplicate orders
+STR_SHIP_AUTORENEW_FAILED				:{WHITE}Autorenew failed on ship {COMMA16} (money limit)
 STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}Ship {COMMA16} has too few orders in the schedule
 STR_SHIP_HAS_VOID_ORDER							:{WHITE}Ship {COMMA16} has void order
 STR_SHIP_HAS_DUPLICATE_ENTRY				:{WHITE}Ship {COMMA16} has duplicate orders
@@ -953,7 +957,9 @@ STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}A train is lost if no progress is m
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED		:{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES	:{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE			:{LTBLUE}Autorenew vehicle when it gets old
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE			:{LTBLUE}Autorenew vehicle when it gets old
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS			:{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
+STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Duration of error message: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING}
@@ -991,6 +997,7 @@ STR_CONFIG_PATCHES_AI					:{BLACK}Competitors
 
 STR_CONFIG_PATCHES_DISABLED				:disabled
 STR_CONFIG_PATCHES_INT32				:{INT32}
+STR_CONFIG_PATCHES_CURRENCY				:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Change setting value
 
