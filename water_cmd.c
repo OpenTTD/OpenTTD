@@ -182,8 +182,6 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	else
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-	return 0;
 }
 
 int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)

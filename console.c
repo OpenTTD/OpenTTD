@@ -913,7 +913,6 @@ void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc)
 			IConsolePrintF(_iconsole_color_default, "%s = %s",
 				dump_desc, *var->data.bool_ ? "true" : "false");
 			break;
-		break;
 		case ICONSOLE_VAR_BYTE:
 		case ICONSOLE_VAR_UINT8:
 			IConsolePrintF(_iconsole_color_default, "%s = %u",
