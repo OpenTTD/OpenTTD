@@ -66,8 +66,6 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 //#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
 #define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
 
-#define TILE_X_BITS 8
-#define TILE_Y_BITS 8
 #define LANDSCAPE_SIZE_FACTOR 1
 
 #define TILE_FROM_XY(x,y) (int)((((y) >> 4) << TILE_X_BITS) + ((x) >> 4))
@@ -81,12 +79,6 @@ enum {
 	CORRECT_Z_BITS = 1 << 1 | 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7
 };
 #define CORRECT_Z(tileh) (CORRECT_Z_BITS & (1 << tileh))
-
-#define TILES_X (1 << TILE_X_BITS)
-#define TILES_Y (1 << TILE_Y_BITS)
-
-#define TILE_X_MAX (TILES_X-1)
-#define TILE_Y_MAX (TILES_Y-1)
 
 #define TILE_ASSERT(x) assert( TILE_MASK(x) == (x) );
 

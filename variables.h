@@ -384,13 +384,6 @@ static inline uint32 GetDParam(uint n)
 
 /* landscape.c */
 extern const byte _tileh_to_sprite[32];
-extern byte _map_type_and_height[TILES_X * TILES_Y];
-extern byte _map5[TILES_X * TILES_Y];
-extern byte _map3_lo[TILES_X * TILES_Y];
-extern byte _map3_hi[TILES_X * TILES_Y];
-extern byte _map_owner[TILES_X * TILES_Y];
-extern byte _map2[TILES_X * TILES_Y];
-extern byte _map_extra_bits[TILES_X * TILES_Y/4];
 
 static const byte _inclined_tileh[] = {
 	3,9,3,6,12,6,12,9,

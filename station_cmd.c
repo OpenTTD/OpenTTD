@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "table/strings.h"
+#include "map.h"
 #include "station.h"
 #include "gfx.h"
 #include "window.h"

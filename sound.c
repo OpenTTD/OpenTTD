@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "map.h"
 #include "sound.h"
 #include "vehicle.h"
 #include "window.h"

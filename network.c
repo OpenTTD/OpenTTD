@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "map.h"
 #include "network_data.h"
 
 #if defined(WITH_REV)
