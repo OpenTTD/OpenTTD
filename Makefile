@@ -425,7 +425,12 @@ CFLAGS += `libpng-config --cflags`
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
+ifdef OSX
+# Seems like we need a tiny hack for OSX static to work
+LIBS += `libpng-config --prefix`/lib/libpng.a
+else
 LIBS += `libpng-config --static $(PNGCONFIG_FLAGS)`
+endif
 else
 LIBS += `libpng-config  --L_opts $(PNGCONFIG_FLAGS)`
 endif
