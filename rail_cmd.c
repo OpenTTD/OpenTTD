@@ -1544,19 +1544,21 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_WAYPOINT(m5) && _map3_lo[ti->tile]&16) {
 			// look for customization
-			DrawTileSprites *cust = GetCustomStationRenderdata('WAYP', _map3_hi[ti->tile]);
+			struct StationSpec *stat = GetCustomStation('WAYP', _map3_hi[ti->tile]);
 
-			if (cust) {
+			if (stat) {
 				DrawTileSeqStruct const *seq;
-
-				cust = &cust[2 + (m5 & 0x1)]; // emulate station tile - open with building
+				// emulate station tile - open with building
+				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
+				uint32 relocation = GetCustomStationRelocation(stat, 0);
 
 				image = cust->ground_sprite;
 				if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
 				DrawGroundSprite(image);
 
 				foreach_draw_tile_seq(seq, cust->seq) {
-					DrawSpecialBuilding(seq->image|0x8000, 0, ti,
+					uint32 image = seq->image + relocation;
+					DrawSpecialBuilding(image|0x8000, 0, ti,
 					                    seq->delta_x, seq->delta_y, seq->delta_z,
 					                    seq->width, seq->height, seq->unk);
 				}
@@ -1622,16 +1624,18 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 
 void DrawWaypointSprite(int x, int y, int stat_id)
 {
-	// TODO: We should use supersets with cargo-id FF, if available. --pasky
-	DrawTileSprites *cust = GetCustomStationRenderdata('WAYP', stat_id);
+	struct StationSpec *stat = GetCustomStation('WAYP', stat_id);
+	uint32 relocation;
+	DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;
 	uint32 ormod, img;
 
-	assert(cust);
+	assert(stat);
 
+	relocation = GetCustomStationRelocation(stat, 1);
 	// emulate station tile - open with building
 	// add 1 to get the other direction
-	cust = &cust[2];
+	cust = &stat->renderdata[2];
 
 	ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
 
@@ -1644,7 +1648,9 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 
 	foreach_draw_tile_seq(seq, cust->seq) {
 		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
-		DrawSprite((seq->image&0x3FFF) | ormod, x + pt.x, y + pt.y);
+		uint32 image = seq->image + relocation;
+
+		DrawSprite((image&0x3FFF) | ormod, x + pt.x, y + pt.y);
 	}
 }
 

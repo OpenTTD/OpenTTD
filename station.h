@@ -1,6 +1,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include "engine.h"
 #include "vehicle.h"
 
 typedef struct GoodsEntry {
@@ -117,6 +118,10 @@ struct StationSpec {
 
 	byte tiles;
 	DrawTileSprites renderdata[8];
+
+	/* Sprite offsets for renderdata->seq->image. relocation[0] is default
+	 * whilst relocation[1] is "CID_PURCHASE". */
+	struct SpriteGroup relocation[2];
 };
 
 /* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet
@@ -126,7 +131,8 @@ struct StationSpec {
 void SetCustomStation(byte stid, struct StationSpec *spec);
 /* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
  * (lookup is therefore very fast as we do this very frequently). */
-DrawTileSprites *GetCustomStationRenderdata(uint32 classid, byte stid);
+struct StationSpec *GetCustomStation(uint32 classid, byte stid);
+uint32 GetCustomStationRelocation(struct StationSpec *spec, byte ctype);
 int GetCustomStationsCount(uint32 classid);
 
 #endif /* STATION_H */

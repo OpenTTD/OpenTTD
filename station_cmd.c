@@ -994,12 +994,33 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 	memcpy(&_waypoint_data[stid], spec, sizeof(*spec));
 }
 
-DrawTileSprites *GetCustomStationRenderdata(uint32 classid, byte stid)
+struct StationSpec *GetCustomStation(uint32 classid, byte stid)
 {
 	assert(classid == 'WAYP');
 	if (stid > _waypoint_highest_id)
 		return NULL;
-	return _waypoint_data[stid].renderdata;
+	return &_waypoint_data[stid];
+}
+
+uint32 GetCustomStationRelocation(struct StationSpec *spec, byte ctype)
+{
+	assert(spec->classid == 'WAYP');
+
+	/* In the future, variational spritegroups will kick in through this
+	 * accessor.  */
+
+	if (spec->relocation[ctype].loading_count != 0) {
+		return spec->relocation[ctype].loading[0];
+	} else if (spec->relocation[ctype].loading_count != 0) {
+		return spec->relocation[ctype].loaded[0];
+	} else {
+		error("Custom station 0x%08x::0x%02x has no sprites associated.",
+		       spec->grfid, spec->localidx);
+		/* This is what gets subscribed of dtss->image in grfspecial.c,
+		 * so it's probably kinda "default offset". Try to use it as
+		 * emergency measure. */
+		return 0x42D;
+	}
 }
 
 int GetCustomStationsCount(uint32 classid)

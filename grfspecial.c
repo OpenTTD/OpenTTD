@@ -934,7 +934,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
 
-		if (feature == 4)
+		if (feature == GSF_STATION)
 			// stations don't share those common properties
 			goto run_handler;
 
@@ -1193,15 +1193,33 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	if (feature == GSF_STATION) {
 		// We do things differently for stations.
 
-		/* XXX: Currently we don't support cargo-specific images, so
-		 * we go straight to the defaults. */
-		byte *bp = buf + 4 + idcount + cidcount * 3;
-		uint16 groupid = grf_load_word(&bp);
-
 		for (i = 0; i < idcount; i++) {
-			struct StationSpec *stat;
 			uint8 stid = buf[3 + i];
-			int j;
+			StationSpec *stat = &_cur_grffile->stations[stid];
+			byte *bp = &buf[4 + idcount];
+
+			for (c = 0; c < cidcount; c++) {
+				uint8 ctype = grf_load_byte(&bp);
+				uint16 groupid = grf_load_word(&bp);
+
+				if (groupid >= _cur_grffile->spritegroups_count) {
+					grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
+					       groupid, _cur_grffile->spritegroups_count);
+					return;
+				}
+
+				if (ctype != 0xFF) {
+					/* TODO: No support for any other cargo. */
+					continue;
+				}
+
+				stat->relocation[1] = _cur_grffile->spritegroups[groupid];
+			}
+		}
+
+		{
+			byte *bp = buf + 4 + idcount + cidcount * 3;
+			uint16 groupid = grf_load_word(&bp);
 
 			if (groupid >= _cur_grffile->spritegroups_count) {
 				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
@@ -1209,19 +1227,15 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				return;
 			}
 
-			stat = &_cur_grffile->stations[stid];
+			for (i = 0; i < idcount; i++) {
+				uint8 stid = buf[3 + i];
+				struct StationSpec *stat = &_cur_grffile->stations[stid];
 
-			// relocate sprite indexes based on spriteset locations
-			for (j = 0; j < stat->tiles; j++) {
-				DrawTileSeqStruct *seq;
-
-				foreach_draw_tile_seq(seq, (DrawTileSeqStruct*) stat->renderdata[j].seq) {
-					seq->image += _cur_grffile->spritegroups[groupid].loading[0];
-				}
+				stat->relocation[0] = _cur_grffile->spritegroups[groupid];
+				stat->grfid = _cur_grffile->grfid;
+				SetCustomStation(stid, stat);
+				stat->classid = 0;
 			}
-			stat->grfid = _cur_grffile->grfid;
-			SetCustomStation(stid, stat);
-			stat->classid = 0;
 		}
 		return;
 	}
