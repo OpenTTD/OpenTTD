@@ -41,6 +41,10 @@ enum { /* These values are bitmasks for the map5 byte */
 	RAIL_TYPE_WAYPOINT = 0xC4,
 	RAIL_WAYPOINT_TRACK_MASK = 1,
 	RAIL_WAYPOINT_UNUSED_BITS = 0x3E,
+
+	RAIL_SUBTYPE_MASK     = 0x3C,
+	RAIL_SUBTYPE_DEPOT    = 0x00,
+	RAIL_SUBTYPE_WAYPOINT = 0x04
 };
 
 #define IS_RAIL_DEPOT(x) (((x) & (RAIL_TYPE_DEPOT|RAIL_DEPOT_UNUSED_BITS)) == RAIL_TYPE_DEPOT)
@@ -1214,9 +1218,10 @@ static int32 RemoveTrainDepot(uint tile, uint32 flags)
 	return _price.remove_train_depot;
 }
 
-static int32 ClearTile_Track(uint tile, byte flags) {
-	int32 cost,ret;
-	int i;
+static int32 ClearTile_Track(TileIndex tile, byte flags)
+{
+	int32 cost;
+	int32 ret;
 	byte m5;
 
 	m5 = _map5[tile];
@@ -1233,44 +1238,54 @@ static int32 ClearTile_Track(uint tile, byte flags) {
 
 	cost = 0;
 
-
-	if ( (m5 & RAIL_TYPE_MASK) == RAIL_TYPE_NORMAL) {
-regular_track:;
-		for(i=0; m5; i++, m5>>=1) {
-			if (m5 & 1) {
-				ret = DoCommandByTile(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
-				if (ret == CMD_ERROR)
-					return CMD_ERROR;
+	switch (m5 & RAIL_TYPE_MASK) {
+		case RAIL_TYPE_SIGNALS:
+			if (_map3_lo[tile] & _signals_table_both[0]) {
+				ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
+				if (ret == CMD_ERROR) return CMD_ERROR;
 				cost += ret;
 			}
+			if (_map3_lo[tile] & _signals_table_both[3]) {
+				ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
+				if (ret == CMD_ERROR) return CMD_ERROR;
+				cost += ret;
+			}
+
+			m5 &= RAIL_BIT_MASK;
+			/* FALLTHROUGH */
+
+		case RAIL_TYPE_NORMAL: {
+			uint i;
+
+			for (i = 0; m5 != 0; i++, m5 >>= 1) {
+				if (m5 & 1) {
+					if (flags & DC_EXEC) {
+						ret = DoCommandByTile(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
+						if (ret == CMD_ERROR) return CMD_ERROR;
+					} else {
+						ret = _price.remove_rail;
+					}
+					cost += ret;
+				}
+			}
+			return cost;
 		}
-		return cost;
 
-	} else if ((m5 & RAIL_TYPE_MASK)==RAIL_TYPE_SIGNALS) {
-		cost = 0;
-		if (_map3_lo[tile] & (_signals_table[0] | _signals_table[0 + 8])) { // check for signals in the first track
-			ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
-			if (ret == CMD_ERROR)
-				return CMD_ERROR;
-			cost += ret;
-		};
-		if (_map3_lo[tile] & (_signals_table[3] | _signals_table[3 + 8])) { // check for signals in the other track
-			ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
-			if (ret == CMD_ERROR)
-				return CMD_ERROR;
-			cost += ret;
-		};
+		case RAIL_TYPE_DEPOT:
+			switch (m5 & RAIL_SUBTYPE_MASK) {
+				case RAIL_SUBTYPE_DEPOT:
+					return RemoveTrainDepot(tile, flags);
 
-		m5 &= RAIL_BIT_MASK;
-		if (flags & DC_EXEC)
-			goto regular_track;
-		return cost + _price.remove_rail;
-	} else if ( (m5 & (RAIL_TYPE_MASK|RAIL_DEPOT_UNUSED_BITS)) == RAIL_TYPE_DEPOT) {
-		return RemoveTrainDepot(tile, flags);
-	} else if ( (m5 & (RAIL_TYPE_MASK|RAIL_WAYPOINT_UNUSED_BITS)) == RAIL_TYPE_WAYPOINT) {
-		return RemoveTrainWaypoint(tile, flags, false);
-	} else
-		return CMD_ERROR;
+				case RAIL_SUBTYPE_WAYPOINT:
+					return RemoveTrainWaypoint(tile, flags, false);
+
+				default:
+					return CMD_ERROR;
+			}
+
+		default:
+			return CMD_ERROR;
+	}
 }
 
 
