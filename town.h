@@ -128,7 +128,7 @@ enum {
 
 bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type);
 
-VARDEF Town _towns[70];
+VARDEF Town _towns[250];
 VARDEF uint _towns_size;
 
 VARDEF uint16 *_town_sort;

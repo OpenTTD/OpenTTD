@@ -29,7 +29,7 @@ struct Industry {
 
 VARDEF int _total_industries; // For the AI: the amount of industries active
 
-VARDEF Industry _industries[90];
+VARDEF Industry _industries[250];
 VARDEF uint _industries_size;
 
 VARDEF uint16 *_industry_sort;
