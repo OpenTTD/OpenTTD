@@ -34,7 +34,7 @@ void ShowBuildRailToolbar(int index, int button);
 void PlaceProc_BuyLand(uint tile);
 
 /* train_gui.c */
-void ShowPlayerTrains(int player);
+void ShowPlayerTrains(int player, int station);
 void ShowTrainViewWindow(Vehicle *v);
 void ShowTrainDetailsWindow(Vehicle *v);
 void ShowOrdersWindow(Vehicle *v);
@@ -44,17 +44,17 @@ void ShowRoadVehViewWindow(Vehicle *v);
 /* road_gui.c */
 void ShowBuildRoadToolbar();
 void ShowBuildRoadScenToolbar();
-void ShowPlayerRoadVehicles(int player);
+void ShowPlayerRoadVehicles(int player, int station);
 
 /* dock_gui.c */
 void ShowBuildDocksToolbar();
-void ShowPlayerShips(int player);
+void ShowPlayerShips(int player, int station);
 
 void ShowShipViewWindow(Vehicle *v);
 
 /* aircraft_gui.c */
 void ShowBuildAirToolbar();
-void ShowPlayerAircraft(int player);
+void ShowPlayerAircraft(int player, int station);
 
 /* terraform_gui.c */
 void PlaceProc_DemolishArea(uint tile);

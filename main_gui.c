@@ -292,22 +292,22 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowPlayerTrains(index);
+	ShowPlayerTrains(index, -1);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowPlayerRoadVehicles(index);
+	ShowPlayerRoadVehicles(index, -1);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowPlayerShips(index);
+	ShowPlayerShips(index, -1);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowPlayerAircraft(index);
+	ShowPlayerAircraft(index, -1);
 }
 
 static void MenuClickBuildRail(int index)
@@ -1819,10 +1819,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowPlayerTrains(local); break;
-		case WKC_SHIFT | WKC_F2: ShowPlayerRoadVehicles(local); break;
-		case WKC_SHIFT | WKC_F3: ShowPlayerShips(local); break;
-		case WKC_SHIFT | WKC_F4: ShowPlayerAircraft(local); break;
+		case WKC_SHIFT | WKC_F1: ShowPlayerTrains(local, -1); break;
+		case WKC_SHIFT | WKC_F2: ShowPlayerRoadVehicles(local, -1); break;
+		case WKC_SHIFT | WKC_F3: ShowPlayerShips(local, -1); break;
+		case WKC_SHIFT | WKC_F4: ShowPlayerAircraft(local, -1); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype,-1); break;

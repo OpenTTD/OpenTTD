@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "vehicle_gui.h"
+
 typedef union WindowEvent WindowEvent;
 
 //typedef void WindowProc(Window *w, int event, int wparam, long lparam);
@@ -287,6 +289,21 @@ typedef struct {
 	int16 scrollpos_x, scrollpos_y;
 	NewsItem *ni;
 } news_d;
+
+typedef enum VehicleListFlags {
+	VL_DESC    = 0x01,
+	VL_RESORT  = 0x02,
+	VL_REBUILD = 0x04
+} VehicleListFlags;
+
+typedef struct vehiclelist_d {
+	SortStruct *sort_list;
+	uint16 list_length;
+	byte sort_type;
+	VehicleListFlags flags;
+	uint16 resort_timer;
+} vehiclelist_d;
+assert_compile(sizeof(vehiclelist_d) <= WINDOW_CUSTOM_SIZE);
 
 enum WindowEvents {
 	WE_CLICK = 0,

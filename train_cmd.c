@@ -499,8 +499,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			NormalizeTrainVehInDepot(v);
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
-			_vehicle_sort_dirty[VEHTRAIN] = true; // build a trainengine
-			InvalidateWindow(WC_TRAINS_LIST, v->owner);
+			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
 		}
 	}
@@ -811,8 +810,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// always redraw the depot. maybe redraw train list
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		if (first->subtype == 0) {
-			_vehicle_sort_dirty[VEHTRAIN] = true; // sell a wagon / locomotive
-			InvalidateWindow(WC_TRAINS_LIST, first->owner);
+			RebuildVehicleLists();
 		}
 		// when selling an attached locomotive. we need to delete its window.
 		if (v->subtype == 0) {
@@ -2254,8 +2252,7 @@ static void DeleteLastWagon(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	_vehicle_sort_dirty[VEHTRAIN] = true; // remove crashed train
-	InvalidateWindow(WC_TRAINS_LIST, v->owner);
+	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 
 	BeginVehicleMove(v);

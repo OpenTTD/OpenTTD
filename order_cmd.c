@@ -62,6 +62,8 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		}
+
+		RebuildVehicleLists();
 	}
 
 	return 0;
@@ -81,6 +83,8 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 		dst->schedule_ptr = _ptr_to_next_order++;
 
 		InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
+
+		RebuildVehicleLists();
 	}
 	return 0;
 }
@@ -126,6 +130,8 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		}
+
+		RebuildVehicleLists();
 	}
 
 	return 0;
@@ -240,6 +246,8 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			InvalidateWindow(WC_VEHICLE_ORDERS, src->index);
 			InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
+
+			RebuildVehicleLists();
 		}
 		break;
 	}
@@ -281,6 +289,8 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			memcpy(dst->schedule_ptr, src->schedule_ptr, (src->num_orders + 1) * sizeof(uint16));
 
 			InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
+
+			RebuildVehicleLists();
 		}
 		break;
 	}

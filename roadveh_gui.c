@@ -698,154 +698,122 @@ void ShowRoadDepotWindow(uint tile)
 	}
 }
 
-// used to get a sorted list of the vehicles
-static SortStruct _road_sort[NUM_NORMAL_VEHICLES];
-static uint16 _num_road_sort[MAX_PLAYERS];
 
-static void GlobalSortRoadVehList()
-{
-	const Vehicle *v;
-	uint16 *i;
-	uint32 n = 0;
+static Widget _player_roadveh_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+/* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
+{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
+{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											STR_NULL},
+{   WIDGETS_END},
+};
 
-	// reset #-of roadvehicles to 0 because ++ is used for value-assignment
-	for (i = _num_road_sort; i != endof(_num_road_sort); i++) {*i = 0;}
-
-	FOR_ALL_VEHICLES(v) {
-		if(v->type == VEH_Road) {
-			_road_sort[n].index = v->index;
-			_road_sort[n++].owner = v->owner;
-			_num_road_sort[v->owner]++; // add number of roadvehicless of player
-		}
-	}
-
-	// create cumulative roadvehicle-ownership
-	// roads are stored as a cummulative index, eg 25, 41, 43. This means
-	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-	for (i = &_num_road_sort[1]; i != endof(_num_road_sort); i++) {*i += *(i-1);}
-
-	qsort(_road_sort, n, sizeof(_road_sort[0]), GeneralOwnerSorter); // sort by owner
-
-	// since indexes are messed up after adding/removing a station, mark all lists dirty
-	memset(_road_sort_dirty, true, sizeof(_road_sort_dirty));
-	_vehicle_sort_dirty[VEHROAD] = false;
-
-	DEBUG(misc, 1) ("Resorting global roadvehicles list...");
-}
-
-static void MakeSortedRoadVehList(byte owner)
-{
-	SortStruct *firstelement;
-	uint32 n = 0;
-
-	if (owner == 0) { // first element starts at 0th element and has n elements as described above
-		firstelement =	&_road_sort[0];
-		n =							_num_road_sort[0];
-	}	else { // nth element starts at the end of the previous one, and has n elements as described above
-		firstelement =	&_road_sort[_num_road_sort[owner-1]];
-		n =							_num_road_sort[owner] - _num_road_sort[owner-1];
-	}
-
-	_internal_sort_order			= _road_sort_order[owner];
-	_internal_name_sorter_id	= STR_SV_ROADVEH_NAME;
-	_last_vehicle_idx = 0; // used for "cache" in namesorting
-	qsort(firstelement, n, sizeof(_road_sort[0]), _vehicle_sorter[_road_sort_type[owner]]);
-
-	_road_sort_dirty[owner] = false;
-
-	DEBUG(misc, 1) ("Resorting Roadvehicles list player %d...", owner+1);
-}
+static Widget _other_player_roadveh_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WIDGETS_END},
+};
 
 static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 {
+	int station = (int)w->window_number >> 16;
+	int owner = w->window_number & 0xff;
+	vehiclelist_d *vl = &WP(w, vehiclelist_d);
+
 	switch(e->event) {
 	case WE_PAINT: {
-		uint32 i;
-		const byte window_number = (byte)w->window_number;
+		int x = 2;
+		int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+		int max;
+		int i;
 
-		if (_road_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
+		BuildVehicleList(vl, VEH_Road, owner, station);
+		SortVehicleList(vl);
+
+		SetVScrollCount(w, vl->list_length);
+
+		// disable 'Sort By' tooltip on Unsorted sorting criteria
+		if (vl->sort_type == SORT_BY_UNSORTED)
 			w->disabled_state |= (1 << 2);
-
-		// resort roadvehicles window if roadvehicles have been added/removed
-		if (_vehicle_sort_dirty[VEHROAD])
-			GlobalSortRoadVehList();
-
-		if (_road_sort_dirty[window_number]) {
-			MakeSortedRoadVehList(window_number);
-			/* reset sorting timeout */
-			w->custom[0] = DAY_TICKS;
-			w->custom[1] = PERIODIC_RESORT_DAYS;
-		}
-
-		// roads are stored as a cummulative index, eg 25, 41, 43. This means
-		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 roads
-		i = (window_number == 0) ? 0 : _num_road_sort[window_number-1];
-		SetVScrollCount(w, _num_road_sort[window_number] - i);
 
 		/* draw the widgets */
 		{
-			Player *p = DEREF_PLAYER(window_number);
-			/* Company Name -- (###) Roadvehicles */
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, w->vscroll.count);
+			const Player *p = DEREF_PLAYER(owner);
+			/* XXX hack */
+			if (station == -1) {
+				/* Company Name -- (###) Road vehicles */
+				SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
+				SetDParam(2, w->vscroll.count);
+				_player_roadveh_widgets[1].unkA = STR_9001_ROAD_VEHICLES;
+				_other_player_roadveh_widgets[1].unkA = STR_9001_ROAD_VEHICLES;
+			} else {
+				/* Station Name -- (###) Road vehicles */
+				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(1, w->vscroll.count);
+				_player_roadveh_widgets[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
+				_other_player_roadveh_widgets[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
+			}
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
-		DrawString(85, 15, _vehicle_sort_listing[_road_sort_type[window_number]], 0x10);
-		/* draw arrow pointing up/down for ascending/descending soring */
-		DoDrawString(_road_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 69, 15, 0x10);
+		DrawString(85, 15, _vehicle_sort_listing[vl->sort_type], 0x10);
+		/* draw arrow pointing up/down for ascending/descending sorting */
+		DoDrawString(
+			vl->flags & VL_DESC ? "\xAA" : "\xA0", 69, 15, 0x10);
 
-		/* draw the roadvehicles */
-		{
-			Vehicle *v;
-			int n = 0;
-			const int x = 2;			// offset from left side of widget
-			int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;	// offset from top of widget
-			i += w->vscroll.pos;	// offset from sorted roads list of current player
+		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
+		for (i = w->vscroll.pos; i < max; ++i) {
+			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			StringID str;
 
-			while (i < _num_road_sort[window_number]) {
-				StringID str;
-				v = DEREF_VEHICLE(_road_sort[i].index);
+			assert(v->type == VEH_Road && v->owner == owner);
 
-				assert(v->type == VEH_Road && v->owner == window_number);
+			DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
+			DrawVehicleProfitButton(v, x, y + 13);
 
-				DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
-				DrawVehicleProfitButton(v, x, y+13);
+			SetDParam(0, v->unitnumber);
+			if (IsRoadDepotTile(v->tile))
+				str = STR_021F;
+			else
+				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+			DrawString(x, y + 2, str, 0);
 
-				SetDParam(0, v->unitnumber);
-				if (IsRoadDepotTile(v->tile)) {
-					str = STR_021F;
-				} else {
-					str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
-				}
-				DrawString(x, y+2, str, 0);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
+			DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-				SetDParam(0, v->profit_this_year);
-				SetDParam(1, v->profit_last_year);
-				DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-
-				if (v->string_id != STR_SV_ROADVEH_NAME) {
-					SetDParam(0, v->string_id);
-					DrawString(x+24, y, STR_01AB, 0);
-				}
-
-				y += PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-				i++; // next road
-				if (++n == w->vscroll.cap) { break;} // max number of roads in the window
+			if (v->string_id != STR_SV_TRAIN_NAME) {
+				SetDParam(0, v->string_id);
+				DrawString(x + 24, y, STR_01AB, 0);
 			}
+
+			y += PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 		}
 		}	break;
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 2: /* Flip sorting method ascending/descending */
-			_road_sort_order[(byte)w->window_number] ^= 1;
-			_road_sort_dirty[(byte)w->window_number] = true;
+			vl->flags ^= VL_DESC;
+			vl->flags |= VL_RESORT;
 			SetWindowDirty(w);
 			break;
+
 		case 3: case 4:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, _road_sort_type[(byte)w->window_number], 4, 0); // do it for widget 4
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 4, 0);
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
@@ -855,13 +823,11 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			id_v += w->vscroll.pos;
 
 			{
-				const byte owner = (byte)w->window_number;
 				Vehicle *v;
-				id_v += (owner == 0) ? 0 : _num_road_sort[owner - 1]; // first element in list
 
-				if (id_v >= _num_road_sort[owner]) { return;} // click out of vehicle bound
+				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(_road_sort[id_v].index); // add the offset id_x to that
+				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
 
 				assert(v->type == VEH_Road && v->owner == owner);
 
@@ -889,48 +855,36 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		if (_road_sort_type[(byte)w->window_number] != e->dropdown.index) // if value hasn't changed, dont resort list
-			_road_sort_dirty[(byte)w->window_number] = true;
+		if (vl->sort_type != e->dropdown.index) {
+			// value has changed -> resort
+			vl->flags |= VL_RESORT;
+			vl->sort_type = e->dropdown.index;
 
-		_road_sort_type[(byte)w->window_number] = e->dropdown.index;
-
-		if (_road_sort_type[(byte)w->window_number] != SORT_BY_UNSORTED) // enable 'Sort By' if a sorter criteria is chosen
-			w->disabled_state &= ~(1 << 2);
-
+			// enable 'Sort By' if a sorter criteria is chosen
+			if (vl->sort_type != SORT_BY_UNSORTED)
+				w->disabled_state &= ~(1 << 2);
+		}
 		SetWindowDirty(w);
 		break;
+
 	case WE_CREATE: /* set up resort timer */
-		w->custom[0] = DAY_TICKS;
-		w->custom[1] = PERIODIC_RESORT_DAYS;
+		vl->sort_list = NULL;
+		vl->flags = VL_REBUILD;
+		vl->sort_type = SORT_BY_UNSORTED;
+		vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
+
 	case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
-		if (--w->custom[0] == 0) {
-			w->custom[0] = DAY_TICKS;
-			if (--w->custom[1] == 0) {
-				w->custom[1] = PERIODIC_RESORT_DAYS;
-				_road_sort_dirty[(byte)w->window_number] = true;
-				DEBUG(misc, 1) ("Periodic resort Roadvehicles list player %d...", w->window_number+1);
-				SetWindowDirty(w);
-			}
+		if (--vl->resort_timer == 0) {
+			DEBUG(misc, 1) ("Periodic resort road vehicles list player %d station %d",
+				owner, station);
+			vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			vl->flags |= VL_RESORT;
+			SetWindowDirty(w);
 		}
 		break;
 	}
 }
-
-static const Widget _player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-/* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
-{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
-{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											STR_NULL},
-{   WIDGETS_END},
-};
 
 static const WindowDesc _player_roadveh_desc = {
 	-1, -1, 260, 220,
@@ -938,18 +892,6 @@ static const WindowDesc _player_roadveh_desc = {
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_roadveh_widgets,
 	PlayerRoadVehWndProc
-};
-
-static const Widget _other_player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
 };
 
 static const WindowDesc _other_player_roadveh_desc = {
@@ -961,14 +903,14 @@ static const WindowDesc _other_player_roadveh_desc = {
 };
 
 
-void ShowPlayerRoadVehicles(int player)
+void ShowPlayerRoadVehicles(int player, int station)
 {
 	Window *w;
 
 	if ( player == _local_player) {
-		w = AllocateWindowDescFront(&_player_roadveh_desc, player);
+		w = AllocateWindowDescFront(&_player_roadveh_desc, (station << 16) | player);
 	} else  {
-		w = AllocateWindowDescFront(&_other_player_roadveh_desc, player);
+		w = AllocateWindowDescFront(&_other_player_roadveh_desc, (station << 16) | player);
 	}
 	if (w) {
 		w->caption_color = player;

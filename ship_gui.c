@@ -866,157 +866,122 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 	}
 }
 
-// used to get a sorted list of the vehicles
-static SortStruct _ship_sort[NUM_NORMAL_VEHICLES];
-static uint16 _num_ship_sort[MAX_PLAYERS];
 
-static void GlobalSortShipList()
-{
-	const Vehicle *v;
-	uint16 *i;
-	uint32 n = 0;
+static Widget _player_ships_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
+{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_9804_NEW_SHIPS,		STR_9824_BUILD_NEW_SHIPS_REQUIRES},
+{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										STR_NULL},
+{   WIDGETS_END},
+};
 
-	// reset #-of ships to 0 because ++ is used for value-assignment
-	for (i = _num_ship_sort; i != endof(_num_ship_sort); i++) {*i = 0;}
-
-	FOR_ALL_VEHICLES(v) {
-		if(v->type == VEH_Ship) {
-			_ship_sort[n].index = v->index;
-			_ship_sort[n++].owner = v->owner;
-			_num_ship_sort[v->owner]++; // add number of ships of player
-		}
-	}
-
-	// create cumulative ship-ownership
-	// ships are stored as a cummulative index, eg 25, 41, 43. This means
-	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-	for (i = &_num_ship_sort[1]; i != endof(_num_ship_sort); i++) {*i += *(i-1);}
-
-	qsort(_ship_sort, n, sizeof(_ship_sort[0]), GeneralOwnerSorter); // sort by owner
-
-	// since indexes are messed up after adding/removing a station, mark all lists dirty
-	memset(_ship_sort_dirty, true, sizeof(_ship_sort_dirty));
-	_vehicle_sort_dirty[VEHSHIP] = false;
-
-	DEBUG(misc, 1) ("Resorting global ships list...");	
-}
-
-static void MakeSortedShipList(byte owner)
-{
-	SortStruct *firstelement;
-	uint32 n = 0;
-
-	if (owner == 0) { // first element starts at 0th element and has n elements as described above
-		firstelement =	&_ship_sort[0];
-		n =							_num_ship_sort[0];
-	}	else { // nth element starts at the end of the previous one, and has n elements as described above
-		firstelement =	&_ship_sort[_num_ship_sort[owner-1]];
-		n =							_num_ship_sort[owner] - _num_ship_sort[owner-1];
-	}
-
-	_internal_sort_order			= _ship_sort_order[owner];
-	_internal_name_sorter_id	= STR_SV_SHIP_NAME;
-	_last_vehicle_idx = 0; // used for "cache" in namesorting
-	qsort(firstelement, n, sizeof(_ship_sort[0]), _vehicle_sorter[_ship_sort_type[owner]]);
-
-	_ship_sort_dirty[owner] = false;
-
-	DEBUG(misc, 1) ("Resorting Ships list player %d...", owner+1);
-}
+static Widget _other_player_ships_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
+{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WIDGETS_END},
+};
 
 static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 {
+	int station = (int)w->window_number >> 16;
+	int owner = w->window_number & 0xff;
+	vehiclelist_d *vl = &WP(w, vehiclelist_d);
+
 	switch(e->event) {
 	case WE_PAINT: {
-		uint32 i;
-		const byte window_number = (byte)w->window_number;
+		int x = 2;
+		int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+		int max;
+		int i;
 
-		if (_ship_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
+		BuildVehicleList(vl, VEH_Ship, owner, station);
+		SortVehicleList(vl);
+
+		SetVScrollCount(w, vl->list_length);
+
+		// disable 'Sort By' tooltip on Unsorted sorting criteria
+		if (vl->sort_type == SORT_BY_UNSORTED)
 			w->disabled_state |= (1 << 2);
-
-		// resort shipps window if roadvehicles have been added/removed
-		if (_vehicle_sort_dirty[VEHSHIP])
-			GlobalSortShipList();
-
-		if (_ship_sort_dirty[window_number]) {
-			MakeSortedShipList(window_number);
-			/* reset sorting timeout */
-			w->custom[0] = DAY_TICKS;
-			w->custom[1] = PERIODIC_RESORT_DAYS;
-		}
-
-		// ships are stored as a cummulative index, eg 25, 41, 43. This means
-		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 ships
-		i = (window_number == 0) ? 0 : _num_ship_sort[window_number-1];
-		SetVScrollCount(w, _num_ship_sort[window_number] - i);
 
 		/* draw the widgets */
 		{
-			Player *p = DEREF_PLAYER(window_number);
-			/* Company Name -- (###) Ships */
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, w->vscroll.count);
+			const Player *p = DEREF_PLAYER(owner);
+			/* XXX hack */
+			if (station == -1) {
+				/* Company Name -- (###) Trains */
+				SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
+				SetDParam(2, w->vscroll.count);
+				_player_ships_widgets[1].unkA = STR_9805_SHIPS;
+				_other_player_ships_widgets[1].unkA = STR_9805_SHIPS;
+			} else {
+				/* Station Name -- (###) Trains */
+				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(1, w->vscroll.count);
+				_player_ships_widgets[1].unkA = STR_SCHEDULED_SHIPS;
+				_other_player_ships_widgets[1].unkA = STR_SCHEDULED_SHIPS;
+			}
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
-		DrawString(85, 15, _vehicle_sort_listing[_ship_sort_type[window_number]], 0x10);
-		/* draw arrow pointing up/down for ascending/descending soring */
-		DoDrawString(_ship_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 69, 15, 0x10);
+		DrawString(85, 15, _vehicle_sort_listing[vl->sort_type], 0x10);
+		/* draw arrow pointing up/down for ascending/descending sorting */
+		DoDrawString(
+			vl->flags & VL_DESC ? "\xAA" : "\xA0", 69, 15, 0x10);
 
-		/* draw the ship vehicles */
-		{
-			Vehicle *v;
-			int n = 0;
-			const int x = 2;			// offset from left side of widget
-			int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;	// offset from top of widget
-			i += w->vscroll.pos;	// offset from sorted ship list of current player
+		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
+		for (i = w->vscroll.pos; i < max; ++i) {
+			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			StringID str;
 
-			while (i < _num_ship_sort[window_number]) {
-				StringID str;
-				v = DEREF_VEHICLE(_ship_sort[i].index);
+			assert(v->type == VEH_Ship);
 
-				assert(v->type == VEH_Ship && v->owner == window_number);
+			DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
+			DrawVehicleProfitButton(v, x, y + 13);
 
-				DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
-				DrawVehicleProfitButton(v, x, y+13);
+			SetDParam(0, v->unitnumber);
+			if (IsShipDepotTile(v->tile))
+				str = STR_021F;
+			else
+				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+			DrawString(x, y + 2, str, 0);
 
-				SetDParam(0, v->unitnumber);
-				if (IsShipDepotTile(v->tile)) {
-					str = STR_021F;
-				} else {
-					str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
-				}
-				DrawString(x, y+2, str, 0);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
+			DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-				SetDParam(0, v->profit_this_year);
-				SetDParam(1, v->profit_last_year);
-				DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-
-				if (v->string_id != STR_SV_SHIP_NAME) {
-					SetDParam(0, v->string_id);
-					DrawString(x+12, y, STR_01AB, 0);
-				}
-
-				DrawSmallShipSchedule(v, x+138, y);
-
-
-				y += PLY_WND_PRC__SIZE_OF_ROW_BIG;
-				i++; // next ship
-				if (++n == w->vscroll.cap) { break;} // max number of ships in the window
+			if (v->string_id != STR_SV_SHIP_NAME) {
+				SetDParam(0, v->string_id);
+				DrawString(x + 12, y, STR_01AB, 0);
 			}
+
+			DrawSmallShipSchedule(v, x + 138, y);
+
+			y += PLY_WND_PRC__SIZE_OF_ROW_BIG;
 		}
 		}	break;
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 2: /* Flip sorting method ascending/descending */
-			_ship_sort_order[(byte)w->window_number] ^= 1;
-			_ship_sort_dirty[(byte)w->window_number] = true;
+			vl->flags ^= VL_DESC;
+			vl->flags |= VL_RESORT;
 			SetWindowDirty(w);
 			break;
 		case 3: case 4:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, _ship_sort_type[(byte)w->window_number], 4, 0); // do it for widget 4
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 4, 0);
 			return;
 		case 6: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
@@ -1026,15 +991,13 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			id_v += w->vscroll.pos;
 
 			{
-				const byte owner = (byte)w->window_number;
 				Vehicle *v;
-				id_v += (owner == 0) ? 0 : _num_ship_sort[owner - 1]; // first element in list
 
-				if (id_v >= _num_ship_sort[owner]) { return;} // click out of vehicle bound
+				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(_ship_sort[id_v].index); // add the offset id_x to that
+				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
 
-				assert(v->type == VEH_Ship && v->owner == owner);
+				assert(v->type == VEH_Ship);
 
 				ShowShipViewWindow(v);
 			}
@@ -1060,47 +1023,36 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		if (_ship_sort_type[(byte)w->window_number] != e->dropdown.index) // if value hasn't changed, dont resort list
-			_ship_sort_dirty[(byte)w->window_number] = true;
+		if (vl->sort_type != e->dropdown.index) {
+			// value has changed -> resort
+			vl->flags |= VL_RESORT;
+			vl->sort_type = e->dropdown.index;
 
-		_ship_sort_type[(byte)w->window_number] = e->dropdown.index;
-
-		if (_ship_sort_type[(byte)w->window_number] != SORT_BY_UNSORTED) // enable 'Sort By' if a sorter criteria is chosen
-			w->disabled_state &= ~(1 << 2);
-
+			// enable 'Sort By' if a sorter criteria is chosen
+			if (vl->sort_type != SORT_BY_UNSORTED)
+				w->disabled_state &= ~(1 << 2);
+		}
 		SetWindowDirty(w);
 		break;
+
 	case WE_CREATE: /* set up resort timer */
-		w->custom[0] = DAY_TICKS;
-		w->custom[1] = PERIODIC_RESORT_DAYS;
+		vl->sort_list = NULL;
+		vl->flags = VL_REBUILD;
+		vl->sort_type = SORT_BY_UNSORTED;
+		vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
+
 	case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
-		if (--w->custom[0] == 0) {
-			w->custom[0] = DAY_TICKS;
-			if (--w->custom[1] == 0) {
-				w->custom[1] = PERIODIC_RESORT_DAYS;
-				_ship_sort_dirty[(byte)w->window_number] = true;
-				DEBUG(misc, 1) ("Periodic resort Ships list player %d...", w->window_number+1);
-				SetWindowDirty(w);
-			}
+		if (--vl->resort_timer == 0) {
+			DEBUG(misc, 1) ("Periodic resort ships list player %d station %d",
+				owner, station);
+			vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			vl->flags |= VL_RESORT;
+			SetWindowDirty(w);
 		}
 		break;
 	}
 }
-
-static const Widget _player_ships_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_9804_NEW_SHIPS,		STR_9824_BUILD_NEW_SHIPS_REQUIRES},
-{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										STR_NULL},
-{   WIDGETS_END},
-};
 
 static const WindowDesc _player_ships_desc = {
 	-1, -1, 260, 182,
@@ -1108,18 +1060,6 @@ static const WindowDesc _player_ships_desc = {
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_ships_widgets,
 	PlayerShipsWndProc
-};
-
-static const Widget _other_player_ships_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
 };
 
 static const WindowDesc _other_player_ships_desc = {
@@ -1131,14 +1071,14 @@ static const WindowDesc _other_player_ships_desc = {
 };
 
 
-void ShowPlayerShips(int player)
+void ShowPlayerShips(int player, int station)
 {
 	Window *w;
 
 	if ( player == _local_player) {
-		w = AllocateWindowDescFront(&_player_ships_desc, player);
+		w = AllocateWindowDescFront(&_player_ships_desc, (station << 16) | player);
 	} else  {
-		w = AllocateWindowDescFront(&_other_player_ships_desc, player);
+		w = AllocateWindowDescFront(&_other_player_ships_desc, (station << 16) | player);
 	}
 	if (w) {
 		w->caption_color = w->window_number;

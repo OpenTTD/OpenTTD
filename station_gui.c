@@ -264,9 +264,13 @@ static const Widget _station_view_expanded_widgets[] = {
 {  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
 {     WWT_IMGBTN,    14,     0,   248,    66,   197, 0x0,					STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    82,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    83,   165,   198,   209, STR_3033_ACCEPTS,	STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
-{ WWT_PUSHTXTBTN,    14,   166,   248,   198,   209, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,    14,     0,    63,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,    14,    64,   128,   198,   209, STR_3033_ACCEPTS,	STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
+{ WWT_PUSHTXTBTN,    14,   129,   192,   198,   209, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,    14,   193,   206,   198,   209, STR_TRAIN, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   207,   220,   198,   209, STR_LORRY, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   221,   234,   198,   209, STR_PLANE, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   235,   248,   198,   209, STR_SHIP, STR_NULL },
 {   WIDGETS_END},
 };
 
@@ -277,9 +281,13 @@ static const Widget _station_view_widgets[] = {
 {  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    82,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    83,   165,    98,   109, STR_3032_RATINGS,	STR_3054_SHOW_STATION_RATINGS},
-{ WWT_PUSHTXTBTN,    14,   166,   248,    98,   109, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,    14,     0,    63,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,    14,    64,   128,    98,   109, STR_3032_RATINGS,	STR_3054_SHOW_STATION_RATINGS},
+{ WWT_PUSHTXTBTN,    14,   129,   192,    98,   109, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,    14,   193,   206,    98,   109, STR_TRAIN, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   207,   220,    98,   109, STR_LORRY, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   221,   234,    98,   109, STR_PLANE, STR_NULL },
+{ WWT_PUSHTXTBTN,    14,   235,   248,    98,   109, STR_SHIP, STR_NULL },
 {   WIDGETS_END},
 };
 
@@ -310,6 +318,13 @@ static void DrawStationViewWindow(Window *w)
 	SetVScrollCount(w, num);
 
 	w->disabled_state = st->owner == _local_player ? 0 : (1 << 8);
+
+	if (!(st->facilities & FACIL_TRAIN)) SETBIT(w->disabled_state,  9);
+	if (!(st->facilities & FACIL_TRUCK_STOP) &&
+			!(st->facilities & FACIL_BUS_STOP)) SETBIT(w->disabled_state, 10);
+	if (!(st->facilities & FACIL_AIRPORT)) SETBIT(w->disabled_state, 11);
+	if (!(st->facilities & FACIL_DOCK)) SETBIT(w->disabled_state, 12);
+
 	SetDParam(0, st->index);
 	SetDParam(1, st->facilities);
 	DrawWindowWidgets(w);
@@ -443,6 +458,30 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, st->town->townnameparts);
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		}	break;
+
+		case 9: {
+			const Station *st = DEREF_STATION(w->window_number);
+			ShowPlayerTrains(st->owner, w->window_number);
+			break;
+		}
+
+		case 10: {
+			const Station *st = DEREF_STATION(w->window_number);
+			ShowPlayerRoadVehicles(st->owner, w->window_number);
+			break;
+		}
+
+		case 11: {
+			const Station *st = DEREF_STATION(w->window_number);
+			ShowPlayerAircraft(st->owner, w->window_number);
+			break;
+		}
+
+		case 12: {
+			const Station *st = DEREF_STATION(w->window_number);
+			ShowPlayerShips(st->owner, w->window_number);
+			break;
+		}
 		}
 		break;
 
@@ -456,6 +495,17 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 		st = DEREF_STATION(w->window_number);
 		DoCommandP(st->xy, w->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 	} break;
+
+	case WE_DESTROY: {
+		WindowNumber wno =
+			(w->window_number << 16) | DEREF_STATION(w->window_number)->owner;
+
+		DeleteWindowById(WC_TRAINS_LIST, wno);
+		DeleteWindowById(WC_ROADVEH_LIST, wno);
+		DeleteWindowById(WC_SHIPS_LIST, wno);
+		DeleteWindowById(WC_AIRCRAFT_LIST, wno);
+		break;
+	}
 	}
 }
 

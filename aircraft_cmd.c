@@ -267,8 +267,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		_vehicle_sort_dirty[VEHAIRCRAFT] = true; // build aircraft
-		InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
 
@@ -299,8 +298,7 @@ static bool CheckStoppedInHangar(Vehicle *v)
 static void DoDeleteAircraft(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	_vehicle_sort_dirty[VEHAIRCRAFT] = true; // delete aircraft
-	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 	DeleteVehicleChain(v);
 }

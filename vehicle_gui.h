@@ -1,10 +1,18 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
+struct vehiclelist_d;
+
 void DrawVehicleProfitButton(Vehicle *v, int x, int y);
 void InitializeVehiclesGuiList();
 
 /* sorter stuff */
+void RebuildVehicleLists(void);
+void ResortVehicleLists(void);
+
+void BuildVehicleList(struct vehiclelist_d *vl, int type, int owner, int station);
+void SortVehicleList(struct vehiclelist_d *vl);
+
 typedef struct SortStruct { // store owner through sorting process
 	uint32	index;
 	byte		owner;
@@ -41,24 +49,6 @@ enum VehicleSortTypes {
 	VEHSHIP			= 2,
 	VEHAIRCRAFT	= 3
 };
-
-VARDEF bool _vehicle_sort_dirty[4];	// global sort, vehicles added/removed (4 types of vehicles)
-
-VARDEF bool _train_sort_dirty[MAX_PLAYERS];			// vehicles for a given player needs to be resorted (new criteria)
-VARDEF byte _train_sort_type[MAX_PLAYERS];			// different criteria for sorting
-VARDEF bool _train_sort_order[MAX_PLAYERS];			// sort descending/ascending
-
-VARDEF bool _aircraft_sort_dirty[MAX_PLAYERS];	// vehicles for a given player needs to be resorted (new criteria)
-VARDEF byte _aircraft_sort_type[MAX_PLAYERS];		// different criteria for sorting
-VARDEF bool _aircraft_sort_order[MAX_PLAYERS];	// sort descending/ascending
-
-VARDEF bool _ship_sort_dirty[MAX_PLAYERS];			// vehicles for a given player needs to be resorted (new criteria)
-VARDEF byte _ship_sort_type[MAX_PLAYERS];				// different criteria for sorting
-VARDEF bool _ship_sort_order[MAX_PLAYERS];			// sort descending/ascending
-
-VARDEF bool _road_sort_dirty[MAX_PLAYERS];			// vehicles for a given player needs to be resorted (new criteria)
-VARDEF byte _road_sort_type[MAX_PLAYERS];				// different criteria for sorting
-VARDEF bool _road_sort_order[MAX_PLAYERS];			// sort descending/ascending
 
 enum {
   PLY_WND_PRC__OFFSET_TOP_WIDGET	= 26,

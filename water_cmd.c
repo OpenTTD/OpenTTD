@@ -533,8 +533,7 @@ static void FloodVehicle(Vehicle *v)
 
 			v->vehstatus |= VS_CRASHED;
 			v->u.road.crashed_ctr = 2000;	// max 2220, disappear pretty fast
-			_vehicle_sort_dirty[VEHROAD] = true;
-			InvalidateWindow(WC_ROADVEH_LIST, v->owner);
+			RebuildVehicleLists();
 		}
 
 		else if (v->type == VEH_Train) {
@@ -550,8 +549,7 @@ static void FloodVehicle(Vehicle *v)
 
 			v = u;
 			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
-			_vehicle_sort_dirty[VEHTRAIN] = true;
-			InvalidateWindow(WC_TRAINS_LIST, v->owner);
+			RebuildVehicleLists();
 		} else
 			return;
 

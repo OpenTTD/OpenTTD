@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "table/strings.h"
 #include "vehicle.h"
+#include "window.h"
 
 VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {
 	&VehicleUnsortedSorter,
@@ -28,14 +29,109 @@ const StringID _vehicle_sort_listing[] = {
 	INVALID_STRING_ID
 };
 
+void RebuildVehicleLists(void)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; ++w)
+		switch (w->window_class) {
+			case WC_TRAINS_LIST:
+			case WC_ROADVEH_LIST:
+			case WC_SHIPS_LIST:
+			case WC_AIRCRAFT_LIST:
+				WP(w, vehiclelist_d).flags |= VL_REBUILD;
+				SetWindowDirty(w);
+				break;
+
+			default:
+				break;
+		}
+}
+
+void ResortVehicleLists(void)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; ++w)
+		switch (w->window_class) {
+			case WC_TRAINS_LIST:
+			case WC_ROADVEH_LIST:
+			case WC_SHIPS_LIST:
+			case WC_AIRCRAFT_LIST:
+				WP(w, vehiclelist_d).flags |= VL_RESORT;
+				SetWindowDirty(w);
+				break;
+
+			default:
+				break;
+		}
+}
+
+void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
+{
+	SortStruct sort_list[NUM_NORMAL_VEHICLES];
+	int subtype = (type != VEH_Aircraft) ? 0 : 2;
+	int n = 0;
+	int i;
+
+	if (!(vl->flags & VL_REBUILD)) return;
+
+	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
+		owner, station);	
+
+	if (station != -1) {
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == type && v->subtype <= subtype) {
+				const Order *ord;
+				for (ord = v->schedule_ptr; ord->type != OT_NOTHING; ++ord)
+					if (ord->type == OT_GOTO_STATION && ord->station == station) {
+						sort_list[n].index = v - _vehicles;
+						sort_list[n].owner = v->owner;
+						++n;
+						break;
+					}
+			}
+		}
+	} else {
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == type && v->subtype <= subtype && v->owner == owner) {
+				sort_list[n].index = v - _vehicles;
+				sort_list[n].owner = v->owner;
+				++n;
+			}
+		}
+	}
+
+	vl->sort_list = realloc(vl->sort_list, n * sizeof(vl->sort_list[0])); /* XXX unchecked malloc */
+	vl->list_length = n;
+
+	for (i = 0; i < n; ++i)
+		vl->sort_list[i] = sort_list[i];
+
+	vl->flags &= ~VL_REBUILD;
+	vl->flags |= VL_RESORT;
+}
+
+void SortVehicleList(vehiclelist_d *vl)
+{
+	if (!(vl->flags & VL_RESORT)) return;
+
+	_internal_sort_order = vl->flags & VL_DESC;
+	_internal_name_sorter_id = STR_SV_TRAIN_NAME;
+	_last_vehicle_idx = 0; // used for "cache" in namesorting
+	qsort(vl->sort_list, vl->list_length, sizeof(vl->sort_list[0]),
+		_vehicle_sorter[vl->sort_type]);
+
+	vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+	vl->flags &= ~VL_RESORT;
+}
+
+
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList()
 {
-	memset(_train_sort_dirty, true, sizeof(_train_sort_dirty));
-	memset(_aircraft_sort_dirty, true, sizeof(_aircraft_sort_dirty));
-	memset(_ship_sort_dirty, true, sizeof(_ship_sort_dirty));
-	memset(_road_sort_dirty, true, sizeof(_road_sort_dirty));
-	memset(_vehicle_sort_dirty, true, sizeof(_vehicle_sort_dirty));
 }
 
 // draw the vehicle profit button in the vehicle list window.
