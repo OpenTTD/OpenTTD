@@ -623,13 +623,11 @@ $(STRGEN): strgen/strgen.c
 	@echo 'Compiling and Linking $@'; \
 		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^ $(VERBOSE_FILTER)
 
-lang/english.lng: lang/english.txt $(STRGEN)
+table/strings.h: lang/english.txt $(STRGEN)
 	@echo 'Generating $@'; \
 	$(STRGEN)
 
-table/strings.h: lang/english.lng
-
-lang/%.lng: lang/%.txt $(STRGEN)
+lang/%.lng: lang/%.txt $(STRGEN) table/strings.h
 	@echo 'Generating $@'; \
 	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER) $(LANG_ERRORS)
 
