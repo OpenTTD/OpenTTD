@@ -793,11 +793,15 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
 			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
 		}
-		} break;
-	case WE_CLICK: /* OnClick show the highscore chart */
+	} break;
+	case WE_CLICK: { /* OnClick show the highscore chart */
+		int diff = w->window_number; // save values because deletewindow is called
+		int8 rank = WP(w, highscore_d).rank;
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		DeleteWindow(w);
-		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
+
+		ShowHighscoreTable(diff, rank);
+	} break;
 	}
 }
 

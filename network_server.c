@@ -1189,7 +1189,9 @@ void NetworkPopulateCompanyInfo(void)
 		ttd_strlcpy(_network_player_info[p->index].password, password, sizeof(_network_player_info[p->index].password));
 
 		// Grap the company name
-		GetString(_network_player_info[p->index].company_name, p->name_1);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING);
 
 		// Check the income
 		if (_cur_year - 1 == p->inaugurated_year)

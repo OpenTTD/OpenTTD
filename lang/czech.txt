@@ -826,7 +826,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Investovat do prumyslu
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Investovat do prumyslu
-STR_0315							:{STRING}
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze být budováno jen ve mestech
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...muze být budováno jen v pralesech
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...muze být budováno jen v poustich

@@ -238,7 +238,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 static const Widget _new_rail_vehicle_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   227,     0,    13, STR_0315,									STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   227,     0,    13, STR_JUST_STRING,					STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,										STR_8843_TRAIN_VEHICLE_SELECTION},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   187, 0x0,											STR_NULL},

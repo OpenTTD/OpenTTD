@@ -826,7 +826,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Új gazdasági épület építése
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Új gazdasági épület
-STR_0315							:{STRING}
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...csak városban építhetõ
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...csak esõerdõben építhetõ
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...csak sivatagban építhetõ

@@ -824,7 +824,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Financovat novy priemysel
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Financovat novy priemysel
-STR_0315							:{STRING}
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...moze byt postavene len v meste
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...moze byt postavene len v dazdovom pralese
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...moze byt postavene len v pusti

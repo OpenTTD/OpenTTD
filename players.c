@@ -780,7 +780,7 @@ int8 SaveHighScoreValue(const Player *p)
 			SetDParam(0, p->president_name_1);
 			SetDParam(1, p->president_name_2);
 			SetDParam(2, p->name_1);
-			SetDParam(3, p->name_1);
+			SetDParam(3, p->name_2);
 			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
 			ttd_strlcpy(hs[i].company, buf, sizeof(buf));
 			hs[i].score = score;
@@ -830,8 +830,9 @@ int8 SaveHighScoreValueNetwork(void)
 			SetDParam(0, (*p_cur)->president_name_1);
 			SetDParam(1, (*p_cur)->president_name_2);
 			SetDParam(2, (*p_cur)->name_1);
-			SetDParam(3, (*p_cur)->name_1);
+			SetDParam(3, (*p_cur)->name_2);
 			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
+
 			ttd_strlcpy(hs->company, buf, sizeof(buf));
 			hs->score = (*p_cur)->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);

@@ -823,7 +823,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Finanzia nuove industrie
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Finanzia nuove industrie
-STR_0315							:{STRING}
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...può essere costruito solo in città
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...può essere costruito solo nella foresta pluviale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...può essere costruito solo in aree desertiche

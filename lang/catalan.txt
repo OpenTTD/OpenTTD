@@ -826,7 +826,7 @@ STR_0313_FUND_NEW_INDUSTRY					:Fundar nova indústria
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Fundar nova indústria
-STR_0315							:{STRING}
+STR_JUST_STRING							:{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...només es pot construir en poblacions
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...només es pot construir en àrees de selva tropical
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...només es pot construir en àrees de desert
