@@ -11,6 +11,10 @@
 
 #ifdef UNIX
 #include <signal.h>
+
+#ifdef __MORPHOS__
+	#define SIG_DFL (void (*)(int))0
+#endif
 #endif
 
 #define DYNAMICALLY_LOADED_SDL
@@ -149,11 +153,7 @@ static void SdlClose(uint32 x)
 	if (--_sdl_usage == 0) {
 		SDL_CALL SDL_Quit();
 		#ifdef UNIX
-			#ifndef __MORPHOS__
-				signal(SIGABRT, SIG_DFL);
-			#else
-				signal(SIGABRT, (void (*)(int))0);
-			#endif
+		signal(SIGABRT, SIG_DFL);
 		#endif
 	}
 }
