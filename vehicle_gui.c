@@ -842,7 +842,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						break;
 					}   // end of VEH_Aircraft
 				}
-			}   // end of paint
+			} break;   // end of paint
 
 		case WE_CLICK: {
 			switch(e->click.widget) {
