@@ -35,9 +35,9 @@ static const uint16 _terraform_keycodes[] = {
 	'Q',
 	'W',
 	'E',
-	'Z',
 	'U',
 	'I',
+	'O',
 };
 
 void PlaceProc_DemolishArea(uint tile)
