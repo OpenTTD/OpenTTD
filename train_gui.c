@@ -285,7 +285,7 @@ static void DrawTrainDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<3)|(1<<4)|(1<<6));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<5)|(1<<7));
 
 	/* determine amount of items for scroller */
 	num = 1;
@@ -493,13 +493,13 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 6:
+		case 7:
 			ShowBuildTrainWindow(w->window_number);
 			break;
-		case 7:
+		case 8:
 			ScrollMainWindowToTile(w->window_number);
 			break;
-		case 2:
+		case 3:
 			TrainDepotClickTrain(w, e->click.pt.x, e->click.pt.y);
 			break;
 		}
@@ -512,7 +512,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
 		case 4:
-		case 3: {
+		case 5: {
 			Vehicle *v;
 			int sell_cmd;
 
@@ -530,7 +530,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, e->click.widget);
 
-			sell_cmd = (e->click.widget == 4 || _ctrl_pressed) ? 1 : 0;
+			sell_cmd = (e->click.widget == 5 || _ctrl_pressed) ? 1 : 0;
 
 			if (v->subtype != 0) {
 				DoCommandP(v->tile, v->index, sell_cmd, NULL, CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE));
@@ -542,7 +542,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			}
 		}	break;
 
-		case 2: {
+		case 3: {
 				GetDepotVehiclePtData gdvp;
 				VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -571,7 +571,8 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 static const Widget _train_depot_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   348,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   337,   348,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 {     WWT_MATRIX,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
 {      WWT_PANEL,    14,   314,   337,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
 {      WWT_PANEL,    14,   314,   337,    55,   108, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
@@ -586,7 +587,7 @@ static const Widget _train_depot_widgets[] = {
 static const WindowDesc _train_depot_desc = {
 	-1, -1, 349, 121,
 	WC_VEHICLE_DEPOT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_train_depot_widgets,
 	TrainDepotWndProc
 };
@@ -1173,7 +1174,8 @@ void ShowTrainDetailsWindow(Vehicle *v)
 
 static Widget _player_trains_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   313,   324,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_ORDER_TIP},
 {      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,			              STR_SORT_CRITERIA_TIP},
 {   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_CRITERIA_TIP},
@@ -1187,7 +1189,8 @@ static Widget _player_trains_widgets[] = {
 
 static Widget _other_player_trains_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   313,   324,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_ORDER_TIP},
 {      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
 {   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_CRITERIA_TIP},
@@ -1217,7 +1220,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
 		if (vl->sort_type == SORT_BY_UNSORTED)
-			w->disabled_state |= (1 << 2);
+			w->disabled_state |= (1 << 3);
 
 		/* draw the widgets */
 		{
@@ -1279,17 +1282,17 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 2: /* Flip sorting method ascending/descending */
+		case 3: /* Flip sorting method ascending/descending */
 			vl->flags ^= VL_DESC;
 			vl->flags |= VL_RESORT;
 			SetWindowDirty(w);
 			break;
 
-		case 3: case 4:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 4, 0);
+		case 4: case 5:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
 			return;
 
-		case 6: { /* Matrix to show vehicles */
+		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -1309,7 +1312,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 8: { /* Build new Vehicle */
+		case 9: { /* Build new Vehicle */
 			uint tile;
 
 			tile = _last_built_train_depot_tile;
@@ -1336,7 +1339,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			// enable 'Sort By' if a sorter criteria is chosen
 			if (vl->sort_type != SORT_BY_UNSORTED)
-				w->disabled_state &= ~(1 << 2);
+				w->disabled_state &= ~(1 << 3);
 		}
 		SetWindowDirty(w);
 		break;
@@ -1363,7 +1366,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _player_trains_desc = {
 	-1, -1, 325, 220,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_trains_widgets,
 	PlayerTrainsWndProc
 };
@@ -1371,7 +1374,7 @@ static const WindowDesc _player_trains_desc = {
 static const WindowDesc _other_player_trains_desc = {
 	-1, -1, 325, 208,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_trains_widgets,
 	PlayerTrainsWndProc
 };

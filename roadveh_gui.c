@@ -483,7 +483,7 @@ static void DrawRoadDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<3)|(1<<5));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<6));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -605,15 +605,15 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 2:
+		case 3:
 			RoadDepotClickVeh(w, e->click.pt.x, e->click.pt.y);
 			break;
 
-		case 5:
+		case 6:
 			ShowBuildRoadVehWindow(w->window_number);
 			break;
 
-		case 6: /* scroll to tile */
+		case 7: /* scroll to tile */
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		}
@@ -625,7 +625,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 2: {
+		case 3: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -639,12 +639,12 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 3:
-			if (!HASBIT(w->disabled_state, 3) &&
+		case 4:
+			if (!HASBIT(w->disabled_state, 4) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 3);
+				HandleButtonClick(w, 4);
 
 				v = &_vehicles[WP(w,traindepot_d).sel];
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -670,7 +670,8 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 static const Widget _road_depot_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   314,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   303,   314,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 {     WWT_MATRIX,    14,     0,   279,    14,    55, 0x305, STR_9022_VEHICLES_CLICK_ON_VEHICLE},
 {     WWT_IMGBTN,    14,   280,   303,    14,    55, 0x2A9, STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
 {  WWT_SCROLLBAR,    14,   304,   314,    14,    55, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -682,7 +683,7 @@ static const Widget _road_depot_widgets[] = {
 static const WindowDesc _road_depot_desc = {
 	-1, -1, 315, 68,
 	WC_VEHICLE_DEPOT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_road_depot_widgets,
 	RoadDepotWndProc
 };
@@ -704,6 +705,7 @@ void ShowRoadDepotWindow(uint tile)
 static Widget _player_roadveh_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
@@ -718,7 +720,8 @@ static Widget _player_roadveh_widgets[] = {
 
 static Widget _other_player_roadveh_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
@@ -748,7 +751,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
 		if (vl->sort_type == SORT_BY_UNSORTED)
-			w->disabled_state |= (1 << 2);
+			w->disabled_state |= (1 << 3);
 
 		/* draw the widgets */
 		{
@@ -808,16 +811,16 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 2: /* Flip sorting method ascending/descending */
+		case 3: /* Flip sorting method ascending/descending */
 			vl->flags ^= VL_DESC;
 			vl->flags |= VL_RESORT;
 			SetWindowDirty(w);
 			break;
 
-		case 3: case 4:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 4, 0);
+		case 4: case 5:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
 			return;
-		case 6: { /* Matrix to show vehicles */
+		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -837,7 +840,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 8: { /* Build new Vehicle */
+		case 9: { /* Build new Vehicle */
 			uint tile;
 
 			tile = _last_built_road_depot_tile;
@@ -864,7 +867,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			// enable 'Sort By' if a sorter criteria is chosen
 			if (vl->sort_type != SORT_BY_UNSORTED)
-				w->disabled_state &= ~(1 << 2);
+				w->disabled_state &= ~(1 << 3);
 		}
 		SetWindowDirty(w);
 		break;
@@ -891,7 +894,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _player_roadveh_desc = {
 	-1, -1, 260, 220,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };
@@ -899,7 +902,7 @@ static const WindowDesc _player_roadveh_desc = {
 static const WindowDesc _other_player_roadveh_desc = {
 	-1, -1, 260, 208,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };
