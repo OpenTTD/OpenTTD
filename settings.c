@@ -835,6 +835,7 @@ static const SettingDesc patch_settings[] = {
 	{"max_aircraft", SDT_UINT8, (void*)40,(void*)offsetof(Patches, max_aircraft)},
 	{"max_ships", SDT_UINT8, (void*)50,(void*)offsetof(Patches, max_ships)},
 
+	{"servint_ispercent", SDT_BOOL, (void*)false,(void*)offsetof(Patches, servint_ispercent)},
 	{"servint_trains", SDT_UINT16, (void*)150,(void*)offsetof(Patches, servint_trains)},
 	{"servint_roadveh", SDT_UINT16, (void*)150,(void*)offsetof(Patches, servint_roadveh)},
 	{"servint_ships", SDT_UINT16, (void*)360,(void*)offsetof(Patches, servint_ships)},

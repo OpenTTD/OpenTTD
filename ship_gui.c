@@ -154,6 +154,9 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT:
 		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
+		if (!_patches.servint_ships) // disable service-scroller when interval is set to disabled
+			w->disabled_state |= (1 << 5) | (1 << 6);
+
 		SET_DPARAM16(0, v->string_id);
 		SET_DPARAM16(1, v->unitnumber);
 		DrawWindowWidgets(w);
@@ -201,7 +204,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		{
 			SET_DPARAM16(0, v->service_interval);
 			SET_DPARAM16(1, v->date_of_last_service);
-			DrawString(13, 90, STR_883C_SERVICING_INTERVAL_DAYS, 0);
+			DrawString(13, 90, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
@@ -232,14 +235,19 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w->window_class, w->window_number);
 			break;
 		case 5: /* increase int */
-			mod = 10;
+			mod = _ctrl_pressed? 5 : 10;
 			goto change_int;
 		case 6: /* decrease int */
-			mod = -10;
+			mod = _ctrl_pressed?- 5 : -10;
 change_int:
 			mod += v->service_interval;
-			if (!IS_INT_INSIDE(mod, 30, 800+1))
+
+			/*	%-based service interval max 5%-90%
+					day-based service interval max 30-800 days */
+			mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
+			if (mod == v->service_interval)
 				return;
+
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SHIP_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		}

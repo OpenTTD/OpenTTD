@@ -414,4 +414,10 @@ VARDEF BackuppedOrders _backup_orders_data[1];
 
 #define INVALID_VEHICLE 0xffff
 
+#define SERVICE_INTERVAL (_patches.servint_ispercent ? (v->reliability > _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) : (v->date_of_last_service + v->service_interval > _date))
+#define MIN_SERVINT_PERCENT  5
+#define MAX_SERVINT_PERCENT 90
+#define MIN_SERVINT_DAYS    30
+#define MAX_SERVINT_DAYS   800
+
 #endif /* VEHICLE_H */

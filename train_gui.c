@@ -959,6 +959,9 @@ static void DrawTrainDetailsWindow(Window *w)
 	if (v->owner != _local_player)
 		w->disabled_state |= (1 << 2);
 
+	if (!_patches.servint_trains) // disable service-scroller when interval is set to disabled
+		w->disabled_state |= (1 << 6) | (1 << 7);
+
 	SET_DPARAM16(0, v->string_id);
 	SET_DPARAM16(1, v->unitnumber);
 	DrawWindowWidgets(w);
@@ -994,7 +997,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	SET_DPARAM16(0, v->service_interval);
 	SET_DPARAM16(1, v->date_of_last_service);
-	DrawString(x + 11, 141, STR_883C_SERVICING_INTERVAL_DAYS, 0);
+	DrawString(x + 11, 141, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 
 	x = 1;
 	y = 57;
@@ -1045,16 +1048,20 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w->window_class, w->window_number);
 			break;
 		case 6:	/* inc serv interval */
-			mod = 10;
+			mod = _ctrl_pressed? 5 : 10;
 			goto do_change_service_int;
 
 		case 7: /* dec serv interval */
-			mod = -10;
+			mod = _ctrl_pressed? -5 : -10;
 do_change_service_int:
 			v = &_vehicles[w->window_number];
 			mod += v->service_interval;
-			if (!IS_INT_INSIDE(mod, 30, 800+1))
-				return;
+
+				/*	%-based service interval max 5%-90%
+						day-based service interval max 30-800 days */
+				mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
+				if (mod == v->service_interval)
+					return;
 			
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_TRAIN_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;

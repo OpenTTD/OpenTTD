@@ -684,6 +684,34 @@ int32 InvisibleTreesActive(int32 p1)
 	return 0;
 }
 
+int32 InValidateDetailsWindow(int32 p1)
+{
+	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
+	return 0;
+}
+
+/* Check service intervals of vehicles, p1 is value of % or day based servicing */
+int32 CheckInterval(int32 p1)
+{
+	bool warning;
+	if (p1) {
+		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   5, 90+1) || _patches.servint_trains   == 0) && 
+								(IS_INT_INSIDE(_patches.servint_roadveh,  5, 90+1) || _patches.servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(_patches.servint_aircraft, 5, 90+1) || _patches.servint_aircraft == 0) && 
+								(IS_INT_INSIDE(_patches.servint_ships,    5, 90+1) || _patches.servint_ships    == 0) );
+	} else {
+		warning = ( (IS_INT_INSIDE(_patches.servint_trains,   30, 800+1) || _patches.servint_trains   == 0) && 
+								(IS_INT_INSIDE(_patches.servint_roadveh,  30, 800+1) || _patches.servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(_patches.servint_aircraft, 30, 800+1) || _patches.servint_aircraft == 0) && 
+								(IS_INT_INSIDE(_patches.servint_ships,    30, 800+1) || _patches.servint_ships    == 0) );
+	}
+
+	if (!warning)
+		ShowErrorMessage(-1, STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE, 0, 0);
+
+	return InValidateDetailsWindow(0);
+}
+
 typedef int32 PatchButtonClick(int32);
 
 typedef struct PatchEntry {
@@ -754,10 +782,11 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_AIRCRAFT, &_patches.max_aircraft, 0, 240, 10},
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_MAX_SHIPS, &_patches.max_ships, 0, 240, 10},
 
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS, &_patches.servint_trains, 30, 1200, 10},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH, &_patches.servint_roadveh, 30, 1200, 10},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 30, 1200, 10},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 30, 1200, 10},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_SERVINT_ISPERCENT, &_patches.servint_ispercent, 0, 0, 0, &CheckInterval},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS, &_patches.servint_trains, 5, 800, 5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH, &_patches.servint_roadveh, 5, 800, 5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 5, 800, 5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 5, 800, 5, &InValidateDetailsWindow},
 };
 
 static const PatchEntry _patches_stations[] = {

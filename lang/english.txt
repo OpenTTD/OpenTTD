@@ -1003,13 +1003,13 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS		:{LTBLUE}Disable ships for computer: {ORANGE
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE         :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS							:{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_TRAINS							:{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED		:{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH						:{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_ROADVEH						:{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED		:{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT						:{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT						:{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED	:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Coloured news appears in: {ORANGE}{STRING}
@@ -1033,6 +1033,7 @@ STR_CONFIG_PATCHES_INT32				:{INT32}
 STR_CONFIG_PATCHES_CURRENCY				:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Change setting value
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE	:{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
 
 STR_TEMPERATE_LANDSCAPE			:temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE		:sub-arctic landscape
@@ -1151,6 +1152,7 @@ STR_RAIL_REFIT_VEHICLE					:{BLACK}Refit train
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Select type of cargo for train to carry
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED		:{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE			:{WHITE}Can't refit train...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT		:{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
 TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
@@ -2261,6 +2263,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE	:{WHITE}Can't sell railway vehicle...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO		:{WHITE}Unable to find route to local depot
 STR_883B_CAN_T_STOP_START_TRAIN			:{WHITE}Can't stop/start train...
 STR_883C_SERVICING_INTERVAL_DAYS		:{BLACK}Servicing interval: {LTBLUE}{COMMA16}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT			:{BLACK}Servicing interval: {LTBLUE}{COMMA16}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Trains - click on train for information
 STR_883E_BUILD_NEW_TRAINS_REQUIRES		:{BLACK}Build new trains (requires train depot)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Trains - click on train for info., drag vehicle to add/remove from train

@@ -118,6 +118,7 @@ typedef struct Patches {
 	byte max_aircraft;			//max planes in game per player
 	byte max_ships;					//max ships in game per player
 
+	bool servint_ispercent;	// service intervals are in percents
 	uint16 servint_trains;	// service interval for trains
 	uint16 servint_roadveh;	// service interval for road vehicles
 	uint16 servint_aircraft;// service interval for aircraft
