@@ -914,8 +914,8 @@ STR_MONTH_OCT							:Rijen
 STR_MONTH_NOV							:Listopad
 STR_MONTH_DEC							:Prosinec
 
-STR_HEADING_FOR_STATION						:{LTBLUE}Jedu do {STATION}
-STR_HEADING_FOR_STATION_VEL					:{LTBLUE}Jedu do {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION						:{LTBLUE}Mirim do {STATION}
+STR_HEADING_FOR_STATION_VEL					:{LTBLUE}Mirim do {STATION}, {VELOCITY}
 STR_NO_ORDERS							:{LTBLUE}Bez prikazu
 STR_NO_ORDERS_VEL						:{LTBLUE}Bez prikazu, {VELOCITY}
 
@@ -1936,7 +1936,7 @@ STR_706D_PRESIDENT						:Prezident
 STR_706E_TYCOON							:Magnát
 STR_706F_BUILD_HQ						:{BLACK}Reditelstvi
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Vybudovat reditelstvi spolecnosti / ukázat reditelstvi spolecnosti
-STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sídlo spolecnosti se vystaví jinde za 1% její hodnoty
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sídlo spolecnosti muzes vystavit jinde za 1% její hodnoty
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Nemohu postavit reditelstvi spolecnosti
 STR_7072_VIEW_HQ						:{BLACK}Reditelstvi
 STR_RELOCATE_HQ							:{BLACK}Presidlit
@@ -2497,8 +2497,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Prijem tento rok: {LTBLUE}{CURREN
 STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
 STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUMU16}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}Nelze poslat letadlo do hangáru...
-STR_HEADING_FOR_HANGAR						:{LTBLUE}Mirim do hangáru {STATION}
-STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Mirim do hangáru {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR						:{LTBLUE}Jedu do hangáru {STATION}
+STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Jedu do hangáru {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}Letadlo {COMMA16} ceka v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}Nemohu rozjet/zastavit letadlo...

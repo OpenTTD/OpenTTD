@@ -83,7 +83,7 @@ STR_004D_FIZZY_DRINK						:Refresco
 STR_004E							:
 STR_004F_PASSENGER						:{COMMA16} pasajero
 STR_0050_TON_OF_COAL						:{COMMA16} tonelada de carbón
-STR_0051_BAG_OF_MAIL						:{COMMA16} bolsa de correo
+STR_0051_BAG_OF_MAIL						:{COMMA16} saca de correo
 STR_0052_OF_OIL							:{VOLUME} de petróleo
 STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} cabeza de ganado
 STR_0054_CRATE_OF_GOODS						:{COMMA16} caja de mercancía
@@ -115,7 +115,7 @@ STR_006D_FIZZY_DRINK						:{COMMA16} refresco
 STR_006E							:
 STR_006F_PASSENGERS						:{COMMA16} pasajeros
 STR_0070_TONS_OF_COAL						:{COMMA16} toneladas de carbón
-STR_0071_BAGS_OF_MAIL						:{COMMA16} bolsas de correo
+STR_0071_BAGS_OF_MAIL						:{COMMA16} sacas de correo
 STR_0072_OF_OIL							:{VOLUME} de petróleo
 STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} cabezas de ganado
 STR_0074_CRATES_OF_GOODS					:{COMMA16} cajas de mercancías
@@ -268,7 +268,7 @@ STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Plantación de fruta
 STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Plantación de caucho
 STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Abastecimiento de agua
 STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Torre de agua
-STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Cabaña de madera
+STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Aserradero
 STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Bosque de algodón de azúcar
 STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Fábrica de dulces
 STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Granja de pilas
@@ -625,7 +625,7 @@ STR_024C_PAPER_MILL						:{BLACK}Papelera
 STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Planta procesadora de alimentos
 STR_024E_PRINTING_WORKS						:{BLACK}Imprenta
 STR_024F_GOLD_MINE						:{BLACK}Mina de Oro
-STR_0250_LUMBER_MILL						:{BLACK}Cabaña de Madera
+STR_0250_LUMBER_MILL						:{BLACK}Aserradero
 STR_0251_FRUIT_PLANTATION					:{BLACK}Plantación de Fruta
 STR_0252_RUBBER_PLANTATION					:{BLACK}Plantación de Trigo
 STR_0253_WATER_SUPPLY						:{BLACK}Abastecimiento de Agua
@@ -660,7 +660,7 @@ STR_026F_CONSTRUCT_FOOD_PROCESSING				:{BLACK}Construir Planta procesadora de Al
 STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Construir Imprenta
 STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Construir Mina de Oro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construir Banco (Solo puede ser construido en poblaciones)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construir Cabaña de Madera (para limpiar la selva y producir madera)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construir Aserradero (para talar la selva y producir madera)
 STR_0274_PLANT_FRUIT_PLANTATION					:{BLACK}Plantar fruta
 STR_0275_PLANT_RUBBER_PLANTATION				:{BLACK}Plantar trigo
 STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Construir Abastecimiento de agua
@@ -1606,7 +1606,7 @@ STR_4817_WATER_SUPPLY						:Suministro de Agua
 STR_4818_WATER_TOWER						:Torre de Agua
 STR_4819_FACTORY						:Fábrica
 STR_481A_FARM							:Granja
-STR_481B_LUMBER_MILL						:Cabaña de Madera
+STR_481B_LUMBER_MILL						:Aserradero
 STR_481C_COTTON_CANDY_FOREST					:Bosque de Algodón de azúcar
 STR_481D_CANDY_FACTORY						:Fábrica de Dulces
 STR_481E_BATTERY_FARM						:Granja de Pilas
@@ -2485,7 +2485,7 @@ STR_A003_NEW_AIRCRAFT						:{BLACK}Nueva aeronave
 STR_A004_INFORMATION						:{BLACK}Información
 STR_A005_NEW_AIRCRAFT						:{WHITE}Nuevo avilón
 STR_A006_BUILD_AIRCRAFT						:{BLACK}Construir aeronave
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}{}{BLACK}Capacidad: {GOLD}{COMMA16} pasajeros, {COMMA16} bolsas de correo{}{BLACK}Coste Operativo: {GOLD}{CURRENCY}/año{}{BLACK}Diseño: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} años{}{BLACK}Fiabilidad máxima: {GOLD}{COMMA8}%
+STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}{}{BLACK}Capacidad: {GOLD}{COMMA16} pasajeros, {COMMA16} sacas de correo{}{BLACK}Coste Operativo: {GOLD}{CURRENCY}/año{}{BLACK}Diseño: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} años{}{BLACK}Fiabilidad máxima: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}No se puede construir aeronave...
 STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aeronave
 STR_A00A							:{WHITE}{STRING}
@@ -2525,7 +2525,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Enviar aeronave al hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Mostrar detalles de la aeronave
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}¡Nueva aeronave ya disponible!
 STR_A02D							:{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA16} pasajeros, {COMMA16} bolsas de correo{}Coste Operativo: {CURRENCY}/año
+STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA16} pasajeros, {COMMA16} sacas de correo{}Coste Operativo: {CURRENCY}/año
 
 STR_A030_NAME_AIRCRAFT						:{WHITE}Nombrar aeronave
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}No se puede nombrar aeronave...
