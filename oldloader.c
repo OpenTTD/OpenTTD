@@ -504,7 +504,7 @@ assert_compile(sizeof(OldMain) == 487801 + 256*256*2);
 #endif
 
 #define REMAP_TOWN_IDX(x) (x - (0x0459154 - 0x0458EF0)) / sizeof(OldTown)
-#define REMAP_TOWN_PTR(x) DEREF_TOWN( REMAP_TOWN_IDX(x) )
+#define REMAP_TOWN_PTR(x) GetTown( REMAP_TOWN_IDX(x) )
 
 #define REMAP_ORDER_IDX(x) (x - (0x045AB08 - 0x0458EF0)) / sizeof(uint16)
 
@@ -584,9 +584,14 @@ static void LoadSavegameBytes(void *p, size_t count)
 
 extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
 
-static void FixTown(Town *t, OldTown *o, int num, byte town_name_type)
+static void FixTown(OldTown *o, int num, byte town_name_type)
 {
+	Town *t;
+	uint i;
+
 	do {
+		t = GetTown(i);
+
 		t->xy = o->xy;
 		t->population = o->population;
 		t->townnametype = o->townnametype;
@@ -622,12 +627,17 @@ static void FixTown(Town *t, OldTown *o, int num, byte town_name_type)
 		t->act_water = o->act_water;
 		t->road_build_months = o->road_build_months;
 		t->fund_buildings_months = o->fund_buildings_months;
-	} while (t++,o++,--num);
+	} while (i++,o++,--num);
 }
 
-static void FixIndustry(Industry *i, OldIndustry *o, int num)
+static void FixIndustry(OldIndustry *o, int num)
 {
+	Industry *i;
+	uint j = 0;
+
 	do {
+		i = GetIndustry(j);
+
 		i->xy = o->xy;
 		i->town = REMAP_TOWN_PTR(o->town);
 		i->width = o->width;
@@ -664,7 +674,7 @@ static void FixIndustry(Industry *i, OldIndustry *o, int num)
 		i->last_prod_year = o->last_prod_year;
 		i->counter = o->counter;
 		i->was_cargo_delivered = o->was_cargo_delivered;
-	} while (i++,o++,--num);
+	} while (j++,o++,--num);
 }
 
 static void FixGoodsEntry(GoodsEntry *g, OldGoodsEntry *o, int num)
@@ -680,9 +690,14 @@ static void FixGoodsEntry(GoodsEntry *g, OldGoodsEntry *o, int num)
 	} while (g++,o++,--num);
 }
 
-static void FixStation(Station *s, OldStation *o, int num)
+static void FixStation(OldStation *o, int num)
 {
+	Station *s;
+	uint i = 0;
+
 	do {
+		s = GetStation(i);
+
 		s->xy = o->xy;
 		s->town = REMAP_TOWN_PTR(o->town);
 		s->bus_tile = o->bus_tile;
@@ -713,7 +728,7 @@ static void FixStation(Station *s, OldStation *o, int num)
 		s->blocked_months_obsolete = o->blocked_months_obsolete;
 		s->airport_flags = o->airport_flags;
 		s->last_vehicle = o->last_vehicle;
-	} while (s++,o++,--num);
+	} while (i++,o++,--num);
 }
 
 static void FixDepot(Depot *n, OldDepot *o, int num)
@@ -724,9 +739,14 @@ static void FixDepot(Depot *n, OldDepot *o, int num)
 	} while (n++,o++,--num);
 }
 
-static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
+static void FixVehicle(OldVehicle *o, int num)
 {
+	Vehicle *n;
+	uint i = 0;
+
 	do {
+		n = GetVehicle(i);
+
 		n->type = o->type;
 		n->subtype = o->subtype;
 
@@ -793,7 +813,7 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 		n->reliability_spd_dec = o->reliability_spd_dec;
 		n->profit_this_year = o->profit_this_year;
 		n->profit_last_year = o->profit_last_year;
-		n->next = o->next_in_chain == 0xffff ? NULL : &_vehicles[o->next_in_chain];
+		n->next = (o->next_in_chain == 0xFFFF) ? NULL : GetVehicle(o->next_in_chain);
 		n->value = o->value;
 		n->string_id = RemapOldStringID(o->string_id);
 
@@ -833,7 +853,7 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 			n->u.disaster.unk2 = o->u.disaster.unk2;
 			break;
 		}
-	} while (n++,o++,--num);
+	} while (i++,o++,--num);
 }
 
 static void FixSubsidy(Subsidy *n, OldSubsidy *o, int num)
@@ -1407,12 +1427,12 @@ bool LoadOldSaveGame(const char *file)
 		_order_array[i] = UnpackOldOrder(m->order_list[i]);
 	_ptr_to_next_order = _order_array + REMAP_ORDER_IDX(m->ptr_to_next_order);
 
-	FixTown(_towns, m->town_list, lengthof(m->town_list), m->town_name_type);
-	FixIndustry(_industries, m->industries, lengthof(m->industries));
-	FixStation(_stations, m->stations, lengthof(m->stations));
+	FixTown(m->town_list, lengthof(m->town_list), m->town_name_type);
+	FixIndustry(m->industries, lengthof(m->industries));
+	FixStation(m->stations, lengthof(m->stations));
 
 	FixDepot(_depots, m->depots, lengthof(m->depots));
-	FixVehicle(_vehicles, m->vehicles, lengthof(m->vehicles));
+	FixVehicle(m->vehicles, lengthof(m->vehicles));
 	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));
 
 	FixPlayer(_players, m->players, lengthof(m->players), m->town_name_type);

@@ -275,7 +275,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		// in editor, use bulldoze to destroy industry
 		// Destroy Industry button costing money removed per request of dominik
 		//w->disabled_state = (_patches.extra_dynamite && !_networking && _game_mode != GM_EDITOR) ? 0 : (1 << 6);
-		i = DEREF_INDUSTRY(w->window_number);
+		i = GetIndustry(w->window_number);
 		SetDParam(0, i->town->index);
 		SetDParam(1, i->type + STR_4802_COAL_MINE);
 		DrawWindowWidgets(w);
@@ -316,12 +316,12 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 6:
-			i = DEREF_INDUSTRY(w->window_number);
+			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TILE_XY(1,1));
 			break;
 		case 7:
 			// Destroy Industry button costing money removed per request of dominik
-			//i = DEREF_INDUSTRY(w->window_number);
+			//i = GetIndustry(w->window_number);
 			/*	passing only i->xy is not safe if industry has a weird shape like:
 					_ X X
 					X X X
@@ -365,7 +365,7 @@ void ShowIndustryViewWindow(int industry)
 	w = AllocateWindowDescFront(&_industry_view_desc, industry);
 	if (w) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		i = DEREF_INDUSTRY(w->window_number);
+		i = GetIndustry(w->window_number);
 		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, i->xy + TILE_XY(1,1), 1);
 	}
 }
@@ -385,7 +385,6 @@ static const Widget _industry_directory_widgets[] = {
 {   WIDGETS_END},
 };
 
-static uint16 _industry_sort[lengthof(_industries)];
 static uint _num_industry_sort;
 
 static char _bufcache[96];
@@ -397,8 +396,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	char buf1[96];
 	byte val;
-	Industry *i = DEREF_INDUSTRY(*(const uint16*)a);
-	Industry *j = DEREF_INDUSTRY(*(const uint16*)b);
+	Industry *i = GetIndustry(*(const uint16*)a);
+	Industry *j = GetIndustry(*(const uint16*)b);
 	int r = 0;
 
 	switch (_industry_sort_order >> 1) {
@@ -457,13 +456,16 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 static void MakeSortedIndustryList()
 {
 	Industry *i;
-	int n = 0, index = 0;
+	int n = 0;
+
+	/* Create array for sorting */
+	_industry_sort = realloc(_industry_sort, _industries_size * sizeof(_industry_sort[0]));
+	if (_industry_sort == NULL)
+		error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) {
 		if(i->xy)
-			_industry_sort[n++] = index;
-
-		index++;
+			_industry_sort[n++] = i->index;
 	}
 	_num_industry_sort = n;
 	_last_industry_idx = 0xFFFF; // used for "cache"
@@ -497,7 +499,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		n = 0;
 
 		while (p < _num_industry_sort) {
-			i = DEREF_INDUSTRY(_industry_sort[p]);
+			i = GetIndustry(_industry_sort[p]);
 			SetDParam(0, i->town->index);
 			SetDParam(1, i->type + STR_4802_COAL_MINE);
 			if (i->produced_cargo[0] != 0xFF) {
@@ -558,7 +560,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 				return;
 			p = y + w->vscroll.pos;
 			if (p < _num_industry_sort) {
-				c = DEREF_INDUSTRY(_industry_sort[p]);
+				c = GetIndustry(_industry_sort[p]);
 				ScrollMainWindowToTile(c->xy);
 			}
 		} break;

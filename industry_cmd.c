@@ -282,7 +282,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	uint32 image, ormod;
 
 	/* Pointer to industry */
-	ind = DEREF_INDUSTRY(_map2[ti->tile]);
+	ind = GetIndustry(_map2[ti->tile]);
 	ormod = (ind->color_map+0x307)<<16;
 
 	/* Retrieve pointer to the draw industry tile struct */
@@ -358,7 +358,7 @@ static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo ac)
 
 static void GetTileDesc_Industry(uint tile, TileDesc *td)
 {
-	Industry *i = DEREF_INDUSTRY(_map2[tile]);
+	Industry *i = GetIndustry(_map2[tile]);
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
@@ -370,7 +370,7 @@ static void GetTileDesc_Industry(uint tile, TileDesc *td)
 
 static int32 ClearTile_Industry(uint tile, byte flags)
 {
-	Industry *i = DEREF_INDUSTRY(_map2[tile]);
+	Industry *i = GetIndustry(_map2[tile]);
 
 	/*	* water can destroy industries
 			* in editor you can bulldoze industries
@@ -395,7 +395,7 @@ static int32 ClearTile_Industry(uint tile, byte flags)
 int32 CmdDestroyIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
-	Industry *i = DEREF_INDUSTRY((uint16)p1);
+	Industry *i = GetIndustry((uint16)p1);
   Town *t = ClosestTownFromTile(tile, (uint)-1); // find closest town to penaltize (ALWAYS penaltize)
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
@@ -430,7 +430,7 @@ static void TransportIndustryGoods(uint tile)
 	uint cw, am;
 	byte m5;
 
-	i = DEREF_INDUSTRY(_map2[tile]);
+	i = GetIndustry(_map2[tile]);
 
 	type = i->type;
 	cw = min(i->cargo_waiting[0], 255);
@@ -784,7 +784,7 @@ static void TileLoop_Industry(uint tile)
 
 
 	case 143: {
-			Industry *i = DEREF_INDUSTRY(_map2[tile]);
+			Industry *i = GetIndustry(_map2[tile]);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
 				if ((_map3_hi[tile]|_map3_lo[tile]) != 0)
@@ -823,7 +823,7 @@ static uint32 GetTileTrackStatus_Industry(uint tile, TransportType mode)
 
 static void GetProducedCargo_Industry(uint tile, byte *b)
 {
-	Industry *i = DEREF_INDUSTRY(_map2[tile]);
+	Industry *i = GetIndustry(_map2[tile]);
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
 }
@@ -835,22 +835,20 @@ static void ChangeTileOwner_Industry(uint tile, byte old_player, byte new_player
 
 void DeleteIndustry(Industry *i)
 {
-	int index = i - _industries;
-
-	BEGIN_TILE_LOOP(tile_cur,	i->width, i->height, i->xy);
+	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 		if (IS_TILETYPE(tile_cur, MP_INDUSTRY)) {
-			if (_map2[tile_cur] == (uint16)index) {
+			if (_map2[tile_cur] == i->index) {
 				DoClearSquare(tile_cur);
 			}
 		} else if (IS_TILETYPE(tile_cur, MP_STATION) && _map5[tile_cur] == 0x4B) {
 			DeleteOilRig(tile_cur);
 		}
-	END_TILE_LOOP(tile_cur,	i->width, i->height, i->xy);
+	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 
 	i->xy = 0;
 	_industry_sort_dirty = true;
-	DeleteSubsidyWithIndustry(index);
-	DeleteWindowById(WC_INDUSTRY_VIEW, index);
+	DeleteSubsidyWithIndustry(i->index);
+	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
@@ -1400,8 +1398,9 @@ static Industry *AllocateIndustry()
 
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy == 0) {
-			int index = i - _industries;
-		    if (index > _total_industries) _total_industries = index;
+			if (i->index > _total_industries)
+				_total_industries = i->index;
+
 			return i;
 		}
 	}
@@ -1475,7 +1474,7 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 
 			_map_type_and_height[cur_tile] = (_map_type_and_height[cur_tile]&~0xF0) | (MP_INDUSTRY<<4);
 			_map5[cur_tile] = it->map5;
-			_map2[cur_tile] = i - _industries;
+			_map2[cur_tile] = i->index;
 			_map_owner[cur_tile] = _generating_world ? 0x1E : 0; /* maturity */
 		}
 	} while ((++it)->ti.x != -0x80);
@@ -1711,7 +1710,7 @@ static void UpdateIndustryStatistics(Industry *i)
 
 
 	if ( i->produced_cargo[0] != 0xFF || i->produced_cargo[1] != 0xFF )
-		InvalidateWindow(WC_INDUSTRY_VIEW, i - _industries);
+		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
 
 	if (i->prod_level == 0)
 		DeleteIndustry(i);
@@ -1819,7 +1818,7 @@ void IndustryMonthlyLoop()
 			UpdateIndustryStatistics(i);
 	}
 
-	i = DEREF_INDUSTRY(RandomRange(lengthof(_industries)));
+	i = GetIndustry(RandomRange(_industries_size));
 
 	if (i->xy == 0) {
 		uint32 r;
@@ -1839,7 +1838,15 @@ void IndustryMonthlyLoop()
 
 void InitializeIndustries()
 {
-	memset(_industries, 0, sizeof(_industries));
+	Industry *i;
+	int j;
+
+	memset(_industries, 0, sizeof(_industries[0]) * _industries_size);
+
+	j = 0;
+	FOR_ALL_INDUSTRIES(i)
+		i->index = j++;
+
 	_total_industries = 0;
 	_industry_sort_dirty = true;
 }
@@ -1894,14 +1901,13 @@ static const byte _industry_desc[] = {
 static void Save_INDY()
 {
 	Industry *ind;
-	int i = 0;
+
 	// Write the vehicles
 	FOR_ALL_INDUSTRIES(ind) {
 		if (ind->xy != 0) {
-			SlSetArrayIndex(i);
+			SlSetArrayIndex(ind->index);
 			SlObject(ind, _industry_desc);
 		}
-		i++;
 	}
 }
 
@@ -1910,7 +1916,9 @@ static void Load_INDY()
 	int index;
 	_total_industries = 0;
 	while ((index = SlIterateArray()) != -1) {
-		SlObject(DEREF_INDUSTRY(index), _industry_desc);
+		Industry *i = GetIndustry(index);
+
+		SlObject(i, _industry_desc);
 		if (index > _total_industries) _total_industries = index;
 	}
 }

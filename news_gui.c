@@ -165,7 +165,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		case 0: {
 			NewsItem *ni = WP(w, news_d).ni;
 			if (ni->flags & NF_VEHICLE) {
-				Vehicle *v = &_vehicles[ni->data_a];
+				Vehicle *v = GetVehicle(ni->data_a);
 				ScrollMainWindowTo(v->x_pos, v->y_pos);
 			} else if (ni->flags & NF_TILE) {
 				if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0)

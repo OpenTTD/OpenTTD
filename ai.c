@@ -69,10 +69,11 @@ static void AiCase1(Player *p)
 static void AiStateVehLoop(Player *p)
 {
 	Vehicle *v;
+	uint index;
 
-	v = p->ai.cur_veh == NULL ? _vehicles : p->ai.cur_veh+1;
+	index = (p->ai.cur_veh == NULL) ? 0 : p->ai.cur_veh->index + 1;
 
-	for (;v != endof(_vehicles); v++) {
+	FOR_ALL_VEHICLES_FROM(v, index) {
 		if (v->type == 0 || v->owner != _current_player)
 			continue;
 
@@ -297,7 +298,7 @@ static void AiHandleReplaceTrain(Player *p)
 		if (DoCommandByTile(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON) != CMD_ERROR &&
 			 DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE) != CMD_ERROR) {
 			veh = _new_train_id;
-			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
 			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
@@ -325,7 +326,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 		if (DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH) != CMD_ERROR &&
 			 DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH) != CMD_ERROR) {
 			veh = _new_roadveh_id;
-			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 
 			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
@@ -353,7 +354,7 @@ static void AiHandleReplaceAircraft(Player *p)
 		if (DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT) != CMD_ERROR &&
 			 DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT) != CMD_ERROR) {
 			veh = _new_aircraft_id;
-			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
 			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
@@ -413,12 +414,12 @@ typedef struct FoundRoute {
 } FoundRoute;
 
 static Town *AiFindRandomTown() {
-	Town *t = DEREF_TOWN(RandomRange(_total_towns));
+	Town *t = GetTown(RandomRange(_total_towns));
 	return (t->xy != 0) ? t : NULL;
 }
 
 static Industry *AiFindRandomIndustry() {
-	Industry *i = DEREF_INDUSTRY(RandomRange(_total_industries));
+	Industry *i = GetIndustry(RandomRange(_total_industries));
 	return (i->xy != 0) ? i : NULL;
 }
 
@@ -447,16 +448,16 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 		return;
 	fr->cargo = cargo;
 
-	fr->from = from = DEREF_INDUSTRY(s->from);
+	fr->from = from = GetIndustry(s->from);
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
-		to_tow = DEREF_TOWN(s->to);
+		to_tow = GetTown(s->to);
 		if (to_tow->population < (uint32)(cargo == CT_FOOD ? 200 : 900))
 			return; // error
 		fr->to = to_tow;
 		to_xy = to_tow->xy;
 	} else {
-		to_ind = DEREF_INDUSTRY(s->to);
+		to_ind = GetIndustry(s->to);
 		fr->to = to_ind;
 		to_xy = to_ind->xy;
 	}
@@ -485,8 +486,8 @@ static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 		return;
 	fr->cargo = s->cargo_type;
 
-	fr->from = from = DEREF_TOWN(s->from);
-	fr->to = to = DEREF_TOWN(s->to);
+	fr->from = from = GetTown(s->from);
+	fr->to = to = GetTown(s->to);
 
 	// They must be big enough
 	if (from->population < 400 || to->population < 400)
@@ -1416,7 +1417,7 @@ static void AiWantOilRigAircraftRoute(Player *p)
 		t = AiFindRandomTown();
 		if (t != NULL) {
 			// Find a random oil rig industry
-			in = DEREF_INDUSTRY(RandomRange(_total_industries));
+			in = GetIndustry(RandomRange(_total_industries));
 			if (in != NULL && in->type == IT_OIL_RIG) {
 				if (GetTileDist(t->xy, in->xy) < 60)
 					break;
@@ -2412,7 +2413,7 @@ handle_nocash:
 	loco_id = _new_train_id;
 
 	// Sell a vehicle if the train is double headed.
-	v = &_vehicles[loco_id];
+	v = GetVehicle(loco_id);
 	if (v->next != NULL) {
 		i = p->ai.wagon_list[p->ai.num_wagons*2-2];
 		p->ai.wagon_list[p->ai.num_wagons*2-2] = INVALID_VEHICLE;

@@ -25,6 +25,10 @@ const byte _airport_size_y[5] = {3, 6, 1, 6, 7 };
 void ShowAircraftDepotWindow(uint tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
 
+enum {
+	STATIONS_MIN_FREE_FOR_AI = 30
+};
+
 static void MarkStationDirty(Station *st)
 {
 	if (st->sign.width_1 != 0) {
@@ -73,7 +77,7 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 			int t;
 			t = _map2[tile_cur];
 			{
-				Station *st = DEREF_STATION(t);
+				Station *st = GetStation(t);
 				// you cannot take control of an oilrig!!
 				if (st->airport_type == AT_OILRIG && st->facilities == (FACIL_AIRPORT|FACIL_DOCK))
 					continue;
@@ -87,7 +91,7 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 			}
 		}
 	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TILE_XY(1,1))
-	return (closest_station == -1) ? NULL : DEREF_STATION(closest_station);
+	return (closest_station == -1) ? NULL : GetStation(closest_station);
 }
 
 TileIndex GetStationTileForVehicle(Vehicle *v, Station *st)
@@ -136,20 +140,19 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 static Station *AllocateStation()
 {
 	Station *st, *a_free = NULL;
-	int count;
 	int num_free = 0;
 	int i;
 
-	for(st = _stations, count = lengthof(_stations); count != 0; count--, st++) {
+	FOR_ALL_STATIONS(st) {
 		if (st->xy == 0) {
 			num_free++;
-			if (a_free==NULL)
+			if (a_free == NULL)
 				a_free = st;
 		}
 	}
 
 	if (a_free == NULL ||
-			(num_free < 30 && IS_HUMAN_PLAYER(_current_player))) {
+			(num_free < STATIONS_MIN_FREE_FOR_AI && IS_HUMAN_PLAYER(_current_player))) {
 		_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
 		return NULL;
 	}
@@ -961,7 +964,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
 	if (!IS_TILETYPE(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
-	st = DEREF_STATION(_map2[tile]);
+	st = GetStation(_map2[tile]);
 	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
 	// if we reached here, it means we can actually delete it. do that.
@@ -1225,7 +1228,7 @@ int32 DoConvertStationRail(uint tile, uint totype, bool exec)
 {
 	Station *st;
 
-	st = DEREF_STATION(_map2[tile]);
+	st = GetStation(_map2[tile]);
 	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is not a railroad station?
@@ -1967,7 +1970,7 @@ static void DrawTile_Station(TileInfo *ti)
 		//debug("Cust-o-mized %p", statspec);
 
 		if (statspec != NULL) {
-			Station *st = DEREF_STATION(_map2[ti->tile]);
+			Station *st = GetStation(_map2[ti->tile]);
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
 			//debug("Relocation %d", relocation);
@@ -2052,7 +2055,7 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 	StringID str;
 
 	td->owner = _map_owner[tile];
-	td->build_date = DEREF_STATION(_map2[tile])->build_date;
+	td->build_date = GetStation(_map2[tile])->build_date;
 
 	m5 = _map5[tile];
 	(str=STR_305E_RAILROAD_STATION, m5 < 8) ||
@@ -2207,7 +2210,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 		}
 	} else if (v->type == VEH_Road) {
 		if (v->u.road.state < 16 && (v->u.road.state&4)==0 && v->u.road.frame==0) {
-			Station *st = DEREF_STATION(_map2[tile]);
+			Station *st = GetStation(_map2[tile]);
 			byte m5 = _map5[tile];
 			byte *b, bb,state;
 
@@ -2327,7 +2330,7 @@ static void UpdateStationRating(Station *st)
 			{
 				byte days = ge->days_since_pickup;
 				if (st->last_vehicle != INVALID_VEHICLE &&
-						(&_vehicles[st->last_vehicle])->type == VEH_Ship)
+						GetVehicle(st->last_vehicle)->type == VEH_Ship)
 							days >>= 2;
 				(days > 21) ||
 				(rating += 25, days > 12) ||
@@ -2408,10 +2411,10 @@ void OnTick_Station()
 		return;
 
 	i = _station_tick_ctr;
-	if (++_station_tick_ctr == lengthof(_stations))
+	if (++_station_tick_ctr == _stations_size)
 		_station_tick_ctr = 0;
 
-	st = DEREF_STATION(i);
+	st = GetStation(i);
 	if (st->xy != 0)
 		StationHandleBigTick(st);
 
@@ -2466,7 +2469,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		st = DEREF_STATION(p1);
+		st = GetStation(p1);
 		old_str = st->string_id;
 		st->string_id = str;
 		UpdateStationVirtCoord(st);
@@ -2520,7 +2523,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 			st_index = _map2[cur_tile];
 			for(i=0; i!=8; i++)	{
 				if (around[i] == 0xFF) {
-					st = DEREF_STATION(st_index);
+					st = GetStation(st_index);
 					if ((st->had_vehicle_of_type & HVOT_BUOY) == 0 &&
 							( !st->town->exclusive_counter || (st->town->exclusivity == st->owner) ) && // check exclusive transport rights
 							st->goods[type].rating != 0 &&
@@ -2673,7 +2676,7 @@ void BuildOilRig(uint tile)
 
 void DeleteOilRig(uint tile)
 {
-	Station *st = DEREF_STATION(_map2[tile]);
+	Station *st = GetStation(_map2[tile]);
 
 	DoClearSquare(tile);
 
@@ -2691,7 +2694,7 @@ static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 		return;
 
 	if (new_player != 255) {
-		Station *st = DEREF_STATION(_map2[tile]);
+		Station *st = GetStation(_map2[tile]);
 		_map_owner[tile] = new_player;
 		st->owner = new_player;
 		_global_station_sort_dirty = true; // transfer ownership of station to another player
@@ -2716,7 +2719,7 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
-	st = DEREF_STATION(_map2[tile]);
+	st = GetStation(_map2[tile]);
 
 	if (m5 < 8)
 		return RemoveRailroadStation(st, tile, flags);
@@ -2744,10 +2747,13 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 void InitializeStations()
 {
 	int i;
+	Station *s;
 
-	memset(_stations, 0, sizeof(_stations));
-	for(i = 0; i != lengthof(_stations); i++)
-		_stations[i].index=i;
+	memset(_stations, 0, sizeof(_stations[0]) * _stations_size);
+
+	i = 0;
+	FOR_ALL_STATIONS(s)
+		s->index = i++;
 
 	_station_tick_ctr = 0;
 
@@ -2843,7 +2849,7 @@ static void SaveLoad_STNS(Station *st)
 static void Save_STNS()
 {
 	Station *st;
-	// Write the vehicles
+	// Write the stations
 	FOR_ALL_STATIONS(st) {
 		if (st->xy != 0) {
 			SlSetArrayIndex(st->index);
@@ -2856,7 +2862,8 @@ static void Load_STNS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Station *st = &_stations[index];
+		Station *st = GetStation(index);
+
 		SaveLoad_STNS(st);
 
 		// this means it's an oldstyle savegame without support for nonuniform stations
@@ -2868,6 +2875,11 @@ static void Load_STNS()
 			st->trainst_h = h;
 		}
 	}
+
+	/* This is to ensure all pointers are within the limits of
+	    _stations_size */
+	if (_station_tick_ctr > _stations_size)
+		_station_tick_ctr = 0;
 }
 
 const ChunkHandler _station_chunk_handlers[] = {

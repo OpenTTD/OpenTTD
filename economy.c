@@ -270,7 +270,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 
 		for(s=_subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != 0xff && s->age >= 12) {
-				Station *st = DEREF_STATION(s->to);
+				Station *st = GetStation(s->to);
 				if (st->owner == old_player)
 					s->cargo_type = 0xff;
 			}
@@ -798,7 +798,7 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 	if (s->age < 12) {
 		if (!(s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL)) {
 			SetDParam(1, STR_2029);
-			i = DEREF_INDUSTRY(s->from);
+			i = GetIndustry(s->from);
 			tile = i->xy;
 			SetDParam(2, i->town->townnametype);
 			SetDParam(3, i->town->townnameparts);
@@ -807,34 +807,34 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 
 			if (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD) {
 				SetDParam(5, STR_2029);
-				i = DEREF_INDUSTRY(s->to);
+				i = GetIndustry(s->to);
 				tile2 = i->xy;
 				SetDParam(8, i->type + STR_4802_COAL_MINE);
 				SetDParam(6, i->town->townnametype);
 				SetDParam(7, i->town->townnameparts);
 			} else {
-				t = DEREF_TOWN(s->to);
+				t = GetTown(s->to);
 				tile2 = t->xy;
 				SetDParam(5, t->townnametype);
 				SetDParam(6, t->townnameparts);
 			}
 		} else {
-			t = DEREF_TOWN(s->from);
+			t = GetTown(s->from);
 			tile = t->xy;
 			SetDParam(1, t->townnametype);
 			SetDParam(2, t->townnameparts);
 
-			t = DEREF_TOWN(s->to);
+			t = GetTown(s->to);
 			tile2 = t->xy;
 			SetDParam(3, t->townnametype);
 			SetDParam(4, t->townnameparts);
 		}
 	} else {
-		st = DEREF_STATION(s->from);
+		st = GetStation(s->from);
 		tile = st->xy;
 		SetDParam(1, st->index);
 
-		st = DEREF_STATION(s->to);
+		st = GetStation(s->to);
 		tile2 = st->xy;
 		SetDParam(2, st->index);
 	}
@@ -888,11 +888,11 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = from = DEREF_TOWN(RandomRange(_total_towns));
+	fr->from = from = GetTown(RandomRange(_total_towns));
 	if (from->xy == 0 || from->population < 400)
 		return;
 
-	fr->to = to = DEREF_TOWN(RandomRange(_total_towns));
+	fr->to = to = GetTown(RandomRange(_total_towns));
 	if (from==to || to->xy == 0 || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
@@ -907,7 +907,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = i = DEREF_INDUSTRY(RandomRange(_total_industries));
+	fr->from = i = GetIndustry(RandomRange(_total_industries));
 	if (i->xy == 0)
 		return;
 
@@ -932,7 +932,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		// The destination is a town
-		Town *t = DEREF_TOWN(RandomRange(_total_towns));
+		Town *t = GetTown(RandomRange(_total_towns));
 
 		// Only want big towns
 		if (t->xy == 0 || t->population < 900)
@@ -941,7 +941,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		fr->to = t;
 	} else {
 		// The destination is an industry
-		Industry *i2 = DEREF_INDUSTRY(RandomRange(_total_industries));
+		Industry *i2 = GetIndustry(RandomRange(_total_industries));
 
 		// The industry must accept the cargo
 		if (i == i2 || i2->xy == 0 ||
@@ -1008,7 +1008,7 @@ static void SubsidyMonthlyHandler()
 			s->cargo_type = 0xFF;
 			modified = true;
 		} else if (s->age == 2*12-1) {
-			st = DEREF_STATION(s->to);
+			st = GetStation(s->to);
 			if (st->owner == _local_player) {
 				pair = SetupSubsidyDecodeParam(s, 1);
 				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
@@ -1041,8 +1041,8 @@ static void SubsidyMonthlyHandler()
 			FindSubsidyCargoRoute(&fr);
 			if (fr.distance <= 70) {
 				s->cargo_type = fr.cargo;
-				s->from = (Industry*)fr.from - _industries;
-				s->to = (fr.cargo == CT_GOODS || fr.cargo == CT_FOOD) ? ((Town*)fr.to)->index : (Industry*)fr.to - _industries;
+				s->from = ((Industry*)fr.from)->index;
+				s->to = (fr.cargo == CT_GOODS || fr.cargo == CT_FOOD) ? ((Town*)fr.to)->index : ((Industry*)fr.to)->index;
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
@@ -1167,18 +1167,18 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 
 			/* Check distance from source */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL) {
-				xy = DEREF_TOWN(s->from)->xy;
+				xy = GetTown(s->from)->xy;
 			} else {
-				xy = (DEREF_INDUSTRY(s->from))->xy;
+				xy = (GetIndustry(s->from))->xy;
 			}
 			if (GetTileDist1D(xy, from->xy) > 9)
 				continue;
 
 			/* Check distance from dest */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_GOODS || cargo_type == CT_FOOD) {
-				xy = DEREF_TOWN(s->to)->xy;
+				xy = GetTown(s->to)->xy;
 			} else {
-				xy = (DEREF_INDUSTRY(s->to))->xy;
+				xy = (GetIndustry(s->to))->xy;
 			}
 
 			if (GetTileDist1D(xy, to->xy) > 9)
@@ -1224,8 +1224,8 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte des
 	}
 
 	// Get station pointers.
-	s_from = DEREF_STATION(source);
-	s_to = DEREF_STATION(dest);
+	s_from = GetStation(source);
+	s_to = GetStation(dest);
 
 	// Check if a subsidy applies.
 	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
@@ -1349,7 +1349,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	old_player = _current_player;
 	_current_player = v->owner;
 
-	st = DEREF_STATION(last_visited = v->last_station_visited);
+	st = GetStation(last_visited = v->last_station_visited);
 
 	for (; v != NULL; v = v->next) {
 		if (v->cargo_cap == 0) continue;

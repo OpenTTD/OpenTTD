@@ -46,7 +46,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		const byte *b;
 		int sel;
 		int x,y;
@@ -123,7 +123,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 			} break;
 		case 4: /* refit button */
 			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = &_vehicles[w->window_number];
+				Vehicle *v = GetVehicle(w->window_number);
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_SHIP | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP)))
 					DeleteWindow(w);
 			}
@@ -166,7 +166,7 @@ static void ShowShipRefitWindow(Vehicle *v)
 
 static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 {
-	Vehicle *v = &_vehicles[w->window_number];
+	Vehicle *v = GetVehicle(w->window_number);
 	StringID str;
 	int mod;
 
@@ -326,7 +326,7 @@ void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
 	Vehicle *v;
 	if (!success) return;
 
-	v = &_vehicles[_new_ship_id];
+	v = GetVehicle(_new_ship_id);
 	if (v->tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v, _backup_orders_data);
@@ -484,7 +484,7 @@ static void ShowBuildShipWindow(TileIndex tile)
 static void ShipViewWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		uint32 disabled = 1<<8;
 		StringID str;
 
@@ -546,7 +546,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 	} break;
 
 	case WE_CLICK: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 
 		switch(e->click.widget) {
 		case 5: /* start stop */
@@ -799,7 +799,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 
 				HandleButtonClick(w, 5);
 
-				v = &_vehicles[WP(w,traindepot_d).sel];
+				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
 
 				_backup_orders_tile = v->tile;
@@ -882,7 +882,7 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 		sel--;
 
 		if (sched->type == OT_GOTO_STATION) {
-			st = DEREF_STATION(sched->station);
+			st = GetStation(sched->station);
 
 			if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
 				SetDParam(0, sched->station);
@@ -962,7 +962,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_9805_SHIPS;
 			} else {
 				/* Station Name -- (###) Trains */
-				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(0, GetStation(station)->index);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_SHIPS;
 			}
@@ -976,7 +976,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
-			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			Vehicle *v = GetVehicle(vl->sort_list[i].index);
 			StringID str;
 
 			assert(v->type == VEH_Ship);
@@ -1028,7 +1028,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
+				v	= GetVehicle(vl->sort_list[id_v].index);
 
 				assert(v->type == VEH_Ship);
 

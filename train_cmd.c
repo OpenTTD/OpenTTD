@@ -245,20 +245,16 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 
 		if (flags & DC_EXEC) {
 			byte img = rvi->image_index;
-			Vehicle *u;
+			Vehicle *u, *w;
 
 			v->spritenum = img;
 
-			u = _vehicles;
-			for(;;) {
-				if (u->type == VEH_Train && u->tile == (TileIndex)tile &&
-				    u->subtype == 4 && u->engine_type == engine) {
-					u = GetLastVehicleInChain(u);
-					break;
-				}
+			u = NULL;
 
-				if (++u == endof(_vehicles)) {
-					u = NULL;
+			FOR_ALL_VEHICLES(w) {
+				if (w->type == VEH_Train && w->tile == (TileIndex)tile &&
+				    w->subtype == 4 && w->engine_type == engine) {
+					u = GetLastVehicleInChain(w);
 					break;
 				}
 			}
@@ -598,7 +594,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *src, *dst, *src_head, *dst_head;
 	bool is_loco;
 
-	src = &_vehicles[p1 & 0xffff];
+	src = GetVehicle(p1 & 0xFFFF);
 	if (src->type != VEH_Train) return CMD_ERROR;
 
 	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON)
@@ -609,7 +605,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		dst = NULL;
 		if (!is_loco) dst = FindGoodVehiclePos(src);
 	} else {
-		dst = &_vehicles[((int32)p1 >> 16)];
+		dst = GetVehicle(((int32)p1 >> 16));
 	}
 
 	// don't move the same vehicle..
@@ -746,7 +742,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -772,7 +768,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -1018,7 +1014,7 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -1047,7 +1043,7 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -1073,7 +1069,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 	if (!CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
 		return CMD_ERROR;
 
@@ -1182,7 +1178,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 
 int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1];
+	Vehicle *v = GetVehicle(p1);
 	TrainFindDepotData tfdd;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
@@ -1219,7 +1215,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangeTrainServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1];
+	Vehicle *v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -1677,7 +1673,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	if (order.type == OT_GOTO_STATION) {
 		if (order.station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
-		v->dest_tile = DEREF_STATION(order.station)->xy;
+		v->dest_tile = GetStation(order.station)->xy;
 		result = CheckReverseTrain(v);
 	} else if (order.type == OT_GOTO_DEPOT) {
 		v->dest_tile = _depots[order.station].xy;
@@ -1783,7 +1779,7 @@ static void TrainEnterStation(Vehicle *v, int station)
 	v->last_station_visited = station;
 
 	/* check if a train ever visited this station before */
-	st = DEREF_STATION(station);
+	st = GetStation(station);
 	if (!(st->had_vehicle_of_type & HVOT_TRAIN)) {
 		st->had_vehicle_of_type |= HVOT_TRAIN;
 		SetDParam(0, st->index);
@@ -2608,7 +2604,7 @@ static const byte _depot_track_ind[4] = {0,1,0,1};
 // Validation for the news item "Train is waiting in depot"
 bool ValidateTrainInDepot( uint data_a, uint data_b )
 {
-	Vehicle *v = &_vehicles[data_a];
+	Vehicle *v = GetVehicle(data_a);
 	if (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED))
 		return true;
 	else
@@ -2752,7 +2748,7 @@ void OnNewDay_Train(Vehicle *v)
 
 		/* update destination */
 		if (v->current_order.type == OT_GOTO_STATION &&
-				(tile = DEREF_STATION(v->current_order.station)->train_tile) != 0)
+				(tile = GetStation(v->current_order.station)->train_tile) != 0)
 					v->dest_tile = tile;
 
 		if ((v->vehstatus & VS_STOPPED) == 0) {

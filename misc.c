@@ -607,6 +607,7 @@ static const uint16 _autosave_months[] = {
 
 void IncreaseDate()
 {
+	const int vehicles_per_day = (1 << (sizeof(_date_fract) * 8)) / 885;
 	int i,ctr,t;
 	YearMonthDay ymd;
 
@@ -621,15 +622,15 @@ void IncreaseDate()
 		65536 / 885 = 74; 74x12 = 888. So max 888. Any vehicles above that were not _on_new_vehicle_day_proc'd
 		eg. aged.
 		So new code updates it for max vehicles.
-		(NUM_VEHICLES / maximum number of times ctr is incremented before reset ) + 1 (to get last vehicles too)
+		(_vehicles_size / maximum number of times ctr is incremented before reset ) + 1 (to get last vehicles too)
 		max size of _date_fract / 885 (added each tick) is number of times before ctr is reset.
 		Calculation might look complicated, but compiler just replaces it with 35, so that's ok
 	*/
 
 	ctr = _vehicle_id_ctr_day;
-	for(i=0; i!=(NUM_VEHICLES / ((1<<sizeof(_date_fract)*8) / 885)) + 1 && ctr != lengthof(_vehicles); i++) {
-		Vehicle *v = &_vehicles[ctr++];
-		if ((t=v->type) != 0)
+	for (i = 0; i != (_vehicles_size / vehicles_per_day) + 1 && ctr != _vehicles_size; i++) {
+		Vehicle *v = GetVehicle(ctr++);
+		if ((t = v->type) != 0)
 			_on_new_vehicle_day_proc[t - 0x10](v);
 	}
 	_vehicle_id_ctr_day = ctr;
@@ -637,7 +638,8 @@ void IncreaseDate()
 	/* increase day, and check if a new day is there? */
 	_tick_counter++;
 
-	if ( (_date_fract += 885) >= 885)
+	_date_fract += 885;
+	if (_date_fract >= 885)
 		return;
 
 	/* yeah, increse day counter and call various daily loops */

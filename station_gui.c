@@ -45,7 +45,6 @@ static void StationsWndShowStationRating(int x, int y, int type, uint acceptance
 	}
 }
 
-static SortStruct _station_sort[lengthof(_stations)];
 static uint16 _num_station_sort[MAX_PLAYERS];
 
 static char _bufcache[64];
@@ -58,14 +57,14 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	const SortStruct *cmp1 = (const SortStruct*)a;
 	const SortStruct *cmp2 = (const SortStruct*)b;
 
-	st = DEREF_STATION(cmp1->index);
+	st = GetStation(cmp1->index);
 	SetDParam(0, st->town->townnametype);
 	SetDParam(1, st->town->townnameparts);
 	GetString(buf1, st->string_id);
 
 	if ( cmp2->index != _last_station_idx) {
 		_last_station_idx = cmp2->index;
-		st = DEREF_STATION(cmp2->index);
+		st = GetStation(cmp2->index);
 		SetDParam(0, st->town->townnametype);
 		SetDParam(1, st->town->townnameparts);
 		GetString(_bufcache, st->string_id);
@@ -81,7 +80,13 @@ static void GlobalSortStationList()
 	uint16 *i;
 
 	// reset #-of stations to 0 because ++ is used for value-assignment
-	for (i = _num_station_sort; i != endof(_num_station_sort); i++) {*i = 0;}
+	for (i = _num_station_sort; i != endof(_num_station_sort); i++)
+		*i = 0;
+
+	/* Create array for sorting */
+	_station_sort = realloc(_station_sort, _stations_size * sizeof(_station_sort[0]));
+	if (_station_sort == NULL)
+		error("Could not allocate memory for the station-sorting-list");
 
 	FOR_ALL_STATIONS(st) {
 		if(st->xy && st->owner != OWNER_NONE) {
@@ -171,7 +176,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			assert(i < _num_station_sort[window_number]); // at least one station must exist
 
 			while (i < _num_station_sort[window_number]) {	// do until max number of stations of owner
-				st = DEREF_STATION(_station_sort[i].index);
+				st = GetStation(_station_sort[i].index);
 
 				assert(st->xy && st->owner == window_number);
 
@@ -209,7 +214,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				if (id_v >= _num_station_sort[owner]) { return;} // click out of station bound
 
-				st = DEREF_STATION(_station_sort[id_v].index);
+				st = GetStation(_station_sort[id_v].index);
 
 				assert(st->xy && st->owner == owner);
 
@@ -315,7 +320,7 @@ static void DrawStationViewWindow(Window *w)
 
 	station_id = (byte)w->window_number;
 
-	st = DEREF_STATION(w->window_number);
+	st = GetStation(w->window_number);
 
 	num = 1;
 	for(i=0; i!=NUM_CARGO; i++) {
@@ -449,7 +454,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 7:
-			ScrollMainWindowToTile(DEREF_STATION(w->window_number)->xy);
+			ScrollMainWindowToTile(GetStation(w->window_number)->xy);
 			break;
 
 		case 8:
@@ -468,32 +473,32 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 9: {
-			Station *st = DEREF_STATION(w->window_number);
+			Station *st = GetStation(w->window_number);
 			SetDParam(0, st->town->townnametype);
 			SetDParam(1, st->town->townnameparts);
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		}	break;
 
 		case 10: {
-			const Station *st = DEREF_STATION(w->window_number);
+			const Station *st = GetStation(w->window_number);
 			ShowPlayerTrains(st->owner, w->window_number);
 			break;
 		}
 
 		case 11: {
-			const Station *st = DEREF_STATION(w->window_number);
+			const Station *st = GetStation(w->window_number);
 			ShowPlayerRoadVehicles(st->owner, w->window_number);
 			break;
 		}
 
 		case 12: {
-			const Station *st = DEREF_STATION(w->window_number);
+			const Station *st = GetStation(w->window_number);
 			ShowPlayerAircraft(st->owner, w->window_number);
 			break;
 		}
 
 		case 13: {
-			const Station *st = DEREF_STATION(w->window_number);
+			const Station *st = GetStation(w->window_number);
 			ShowPlayerShips(st->owner, w->window_number);
 			break;
 		}
@@ -507,13 +512,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			return;
 		memcpy(_decode_parameters, b, 32);
 
-		st = DEREF_STATION(w->window_number);
+		st = GetStation(w->window_number);
 		DoCommandP(st->xy, w->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 	} break;
 
 	case WE_DESTROY: {
 		WindowNumber wno =
-			(w->window_number << 16) | DEREF_STATION(w->window_number)->owner;
+			(w->window_number << 16) | GetStation(w->window_number)->owner;
 
 		DeleteWindowById(WC_TRAINS_LIST, wno);
 		DeleteWindowById(WC_ROADVEH_LIST, wno);
@@ -540,7 +545,7 @@ void ShowStationViewWindow(int station)
 
 	w = AllocateWindowDescFront(&_station_view_desc, station);
 	if (w) {
-		color = DEREF_STATION(w->window_number)->owner;
+		color = GetStation(w->window_number)->owner;
 		if (color != 0x10)
 			w->caption_color = color;
 		w->vscroll.cap = 5;

@@ -23,12 +23,25 @@ struct Industry {
 	byte color_map;
 	byte last_prod_year;
 	byte was_cargo_delivered;
+
+	uint16 index;
 };
 
 VARDEF int _total_industries; // For the AI: the amount of industries active
+
 VARDEF Industry _industries[90];
-#define DEREF_INDUSTRY(i) (&_industries[i])
-#define FOR_ALL_INDUSTRIES(i) for(i = _industries; i != endof(_industries); i++)
+VARDEF uint _industries_size;
+
+VARDEF uint16 *_industry_sort;
+
+static inline Industry *GetIndustry(uint index)
+{
+	assert(index < _industries_size);
+	return &_industries[index];
+}
+
+#define FOR_ALL_INDUSTRIES(i) for(i = _industries; i != &_industries[_industries_size]; i++)
+
 VARDEF bool _industry_sort_dirty;
 void DeleteIndustry(Industry *is);
 

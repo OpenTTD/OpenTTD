@@ -193,7 +193,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 			IS_HUMAN_PLAYER(_map_owner[tile])) {
 
-			st = DEREF_STATION(_map2[tile]);
+			st = GetStation(_map2[tile]);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 		}
 
@@ -235,7 +235,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
 		IS_HUMAN_PLAYER(_map_owner[tile])) {
 
-		st = DEREF_STATION(_map2[tile]);
+		st = GetStation(_map2[tile]);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
 }
@@ -278,7 +278,7 @@ static void DisasterTick_UFO(Vehicle *v)
 		DeleteDisasterVeh(v);
 	} else {
 // target a vehicle
-		u = &_vehicles[v->dest_tile];
+		u = GetVehicle(v->dest_tile);
 		if (u->type != VEH_Road) {
 			DeleteDisasterVeh(v);
 			return;
@@ -323,10 +323,9 @@ static void DisasterTick_UFO(Vehicle *v)
 static void DestructIndustry(Industry *i)
 {
 	uint tile;
-	byte index = i - _industries;
 
 	for(tile=0; tile != MapSize(); tile++) {
-		if (IS_TILETYPE(tile, MP_INDUSTRY) &&	_map2[tile] == index) {
+		if (IS_TILETYPE(tile, MP_INDUSTRY) &&	_map2[tile] == i->index) {
 			_map_owner[tile] = 0;
 			MarkTileDirtyByTile(tile);
 		}
@@ -352,7 +351,7 @@ static void DisasterTick_2(Vehicle *v)
 
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
-			Industry *i = DEREF_INDUSTRY(v->dest_tile);
+			Industry *i = GetIndustry(v->dest_tile);
 			int x = GET_TILE_X(i->xy)*16;
 			int y = GET_TILE_Y(i->xy)*16;
 			uint32 r = Random();
@@ -373,7 +372,7 @@ static void DisasterTick_2(Vehicle *v)
 			v->current_order.station = 2;
 			v->age = 0;
 
-			i = DEREF_INDUSTRY(v->dest_tile);
+			i = GetIndustry(v->dest_tile);
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
@@ -397,7 +396,7 @@ static void DisasterTick_2(Vehicle *v)
 
 		v->dest_tile = ind = _map2[tile];
 
-		if (DEREF_INDUSTRY(ind)->type == IT_OIL_REFINERY) {
+		if (GetIndustry(ind)->type == IT_OIL_REFINERY) {
 			v->current_order.station = 1;
 			v->age = 0;
 		}
@@ -423,7 +422,7 @@ static void DisasterTick_3(Vehicle *v)
 
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
-			Industry *i = DEREF_INDUSTRY(v->dest_tile);
+			Industry *i = GetIndustry(v->dest_tile);
 			int x = GET_TILE_X(i->xy)*16;
 			int y = GET_TILE_Y(i->xy)*16;
 			uint32 r = Random();
@@ -444,7 +443,7 @@ static void DisasterTick_3(Vehicle *v)
 			v->current_order.station = 2;
 			v->age = 0;
 
-			i = DEREF_INDUSTRY(v->dest_tile);
+			i = GetIndustry(v->dest_tile);
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
@@ -468,7 +467,7 @@ static void DisasterTick_3(Vehicle *v)
 
 		v->dest_tile = ind = _map2[tile];
 
-		if (DEREF_INDUSTRY(ind)->type == IT_FACTORY) {
+		if (GetIndustry(ind)->type == IT_FACTORY) {
 			v->current_order.station = 1;
 			v->age = 0;
 		}
@@ -600,7 +599,7 @@ static void DisasterTick_4b(Vehicle *v)
 	}
 
 	if (v->current_order.station == 0) {
-		u = &_vehicles[v->u.disaster.unk2];
+		u = GetVehicle(v->u.disaster.unk2);
 		if (abs(v->x_pos - u->x_pos) > 16)
 			return;
 		v->current_order.station = 1;
@@ -701,16 +700,15 @@ static void Disaster0_Init()
 	if (v == NULL)
 		return;
 
-	for(st=_stations;;) {
+	/* Pick a random place, unless we find
+	    a small airport */
+	x = (GET_TILE_X(Random())) * 16 + 8;
+
+	FOR_ALL_STATIONS(st) {
 		if (st->xy && st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IS_HUMAN_PLAYER(st->owner)) {
 			x = (GET_TILE_X(st->xy) + 2) * 16;
-			break;
-		}
-
-		if (++st == endof(_stations)) {
-			x = (GET_TILE_X(Random())) * 16 + 8;
 			break;
 		}
 	}
@@ -721,7 +719,7 @@ static void Disaster0_Init()
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,0,0,3,1);
+		InitializeDisasterVehicle(u, x, 0, 0, 3, 1);
 		u->vehstatus |= VS_DISASTER;
 	}
 }

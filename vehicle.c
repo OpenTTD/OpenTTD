@@ -15,6 +15,10 @@
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
 
+enum {
+	VEHICLES_MIN_FREE_FOR_AI = 90
+};
+
 void VehicleServiceInDepot(Vehicle *v)
 {
 	v->date_of_last_service = _date;
@@ -106,14 +110,13 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 	int x2 = GET_TILE_X(to);
 	int y2 = GET_TILE_Y(to);
 	Vehicle *veh;
-	uint count;
 
 	/* Make sure x1 < x2 or y1 < y2 */
 	if (x1 > x2 || y1 > y2) {
 		intswap(x1,x2);
 		intswap(y1,y2);
 	}
-	for(veh = _vehicles, count=lengthof(_vehicles); count != 0; count--, veh++) {
+	FOR_ALL_VEHICLES(veh) {
 		if ((veh->type == VEH_Train || veh->type == VEH_Road) && (z==0xFF || veh->z_pos == z)) {
 			if ((veh->x_pos>>4) >= x1 && (veh->x_pos>>4) <= x2 &&
 					(veh->y_pos>>4) >= y1 && (veh->y_pos>>4) <= y2) {
@@ -212,8 +215,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 Vehicle *ForceAllocateSpecialVehicle()
 {
 	Vehicle *v;
-	for(v=_vehicles + NUM_NORMAL_VEHICLES;
-			v!=&_vehicles[NUM_NORMAL_VEHICLES+NUM_SPECIAL_VEHICLES]; v++) {
+	FOR_ALL_VEHICLES_FROM(v, NUM_NORMAL_VEHICLES) {
 		if (v->type == 0)
 			return InitializeVehicle(v);
 	}
@@ -224,7 +226,10 @@ Vehicle *ForceAllocateSpecialVehicle()
 Vehicle *ForceAllocateVehicle()
 {
 	Vehicle *v;
-	for(v=_vehicles; v!=&_vehicles[NUM_NORMAL_VEHICLES]; v++) {
+	FOR_ALL_VEHICLES(v) {
+		if (v->index >= NUM_NORMAL_VEHICLES)
+			return NULL;
+
 		if (v->type == 0)
 			return InitializeVehicle(v);
 	}
@@ -239,12 +244,15 @@ Vehicle *AllocateVehicle()
 	if (IS_HUMAN_PLAYER(_current_player)) {
 		num = 0;
 
-		for(v=_vehicles; v!=&_vehicles[NUM_NORMAL_VEHICLES]; v++) {
+		FOR_ALL_VEHICLES(v) {
+			if (v->index >= NUM_NORMAL_VEHICLES)
+				break;
+
 			if (v->type == 0)
 				num++;
 		}
 
-		if (num <= 90)
+		if (num <= VEHICLES_MIN_FREE_FOR_AI)
 			return NULL;
 	}
 
@@ -268,7 +276,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 		for(;;) {
 			veh = _vehicle_position_hash[ (x+y)&0xFFFF ];
 			while (veh != INVALID_VEHICLE) {
-				Vehicle *v = &_vehicles[veh];
+				Vehicle *v = GetVehicle(veh);
 				void *a;
 
 				if ((a = proc(v, data)) != NULL)
@@ -310,7 +318,7 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 	if (old_hash != NULL) {
 		Vehicle *last = NULL;
 		int idx = *old_hash;
-		while((u = &_vehicles[idx]) != v) {
+		while ((u = GetVehicle(idx)) != v) {
 			idx = u->next_hash;
 			assert(idx != INVALID_VEHICLE);
 			last = u;
@@ -335,7 +343,7 @@ void InitializeVehicles()
 	int i;
 
 	// clear it...
-	memset(&_vehicles, 0, sizeof(_vehicles));
+	memset(&_vehicles, 0, sizeof(_vehicles[0]) * _vehicles_size);
 	memset(&_waypoints, 0, sizeof(_waypoints));
 	memset(&_depots, 0, sizeof(_depots));
 
@@ -359,24 +367,25 @@ Vehicle *GetPrevVehicleInChain(Vehicle *v)
 {
 	Vehicle *org = v;
 
-	v = _vehicles;
-	while (v->type != VEH_Train || org != v->next) {
-		if (++v == endof(_vehicles))
-			return NULL;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train && org == v->next)
+			return v;
 	}
 
-	return v;
+	return NULL;
 }
 
 Vehicle *GetFirstVehicleInChain(Vehicle *v)
 {
-	for(;;) {
-		Vehicle *u = v;
-		v = _vehicles;
-		while (v->type != VEH_Train || u != v->next) {
-			if (++v == endof(_vehicles))
-				return u;
-		}
+	Vehicle *u;
+
+	while (true) {
+		u = v;
+		v = GetPrevVehicleInChain(v);
+		/* If there is no such vehicle,
+		    'v' == NULL and so 'u' is the first vehicle in chain */
+		if (v == NULL)
+			return u;
 	}
 }
 
@@ -658,7 +667,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 		for(;;) {
 			veh = _vehicle_position_hash[ (x+y)&0xFFFF ];
 			while (veh != INVALID_VEHICLE) {
-				v = &_vehicles[veh];
+				v = GetVehicle(veh);
 
 				if (!(v->vehstatus & VS_HIDDEN) &&
 						dpi->left <= v->right_coord &&
@@ -1410,7 +1419,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
 	uint32 autorefit_money = (p2  >> 16) * 100000;
-	Vehicle *v = DEREF_VEHICLE(p1);
+	Vehicle *v = GetVehicle(p1);
 	int cost, build_cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
@@ -1628,7 +1637,7 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	StringID str;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -2013,10 +2022,11 @@ static void Load_VEHS()
 	Vehicle *v;
 
 	while ((index = SlIterateArray()) != -1) {
-		Vehicle *v = &_vehicles[index];
+		Vehicle *v = GetVehicle(index);
+
 		v->next_in_chain_old = INVALID_VEHICLE;
 		SlObject(v, _veh_descs[SlReadByte()]);
-		v->next = v->next_in_chain_old == INVALID_VEHICLE ? NULL : &_vehicles[v->next_in_chain_old];
+		v->next = (v->next_in_chain_old == INVALID_VEHICLE) ? NULL : GetVehicle(v->next_in_chain_old);
 		if (v->type == VEH_Train)
 			v->u.rail.first_engine = 0xffff;
 
@@ -2035,6 +2045,11 @@ static void Load_VEHS()
 		for (w = v->next; w; w = w->next)
 			w->u.rail.first_engine = v->engine_type;
 	}
+
+	/* This is to ensure all pointers are within the limits of
+	    _vehicles_size */
+	if (_vehicle_id_ctr_day >= _vehicles_size)
+		_vehicle_id_ctr_day = 0;
 }
 
 static const byte _depot_desc[] = {

@@ -13,7 +13,7 @@
  */
 int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1 & 0xFFFF];
+	Vehicle *v = GetVehicle(p1 & 0xFFFF);
 	int sel = p1 >> 16;
 	Order new_order = UnpackOrder(p2);
 
@@ -26,8 +26,8 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			sel != 0 && v->schedule_ptr[sel - 1].type == OT_GOTO_STATION) {
 
 		int dist = GetTileDist(
-			DEREF_STATION(v->schedule_ptr[sel - 1].station)->xy,
-			DEREF_STATION(new_order.station)->xy
+			GetStation(v->schedule_ptr[sel - 1].station)->xy,
+			GetStation(new_order.station)->xy
 		);
 		if (dist >= 130)
 			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
@@ -94,7 +94,7 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
  */
 int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1], *u;
+	Vehicle *v = GetVehicle(p1), *u;
 	uint sel = (uint)p2;
 
 	_error_message = STR_EMPTY;
@@ -141,7 +141,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		Vehicle *v = &_vehicles[p1];
+		Vehicle *v = GetVehicle(p1);
 
 		{
 			byte b = v->cur_order_index + 1;
@@ -168,7 +168,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1];
+	Vehicle *v = GetVehicle(p1);
 	byte sel = (byte)p2;
 	Order *sched;
 
@@ -219,7 +219,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *dst = &_vehicles[p1 & 0xFFFF];
+	Vehicle *dst = GetVehicle(p1 & 0xFFFF);
 
 	if (!(dst->type && dst->owner == _current_player))
 		return CMD_ERROR;
@@ -228,7 +228,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// share vehicle orders?
 	case 0: {
-		Vehicle *src = &_vehicles[p1 >> 16];
+		Vehicle *src = GetVehicle(p1 >> 16);
 
 		// sanity checks
 		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
@@ -255,7 +255,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// copy vehicle orders?
 	case 1: {
-		Vehicle *src = &_vehicles[p1 >> 16];
+		Vehicle *src = GetVehicle(p1 >> 16);
 		int delta;
 
 		// sanity checks
@@ -269,7 +269,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			for (i = src->schedule_ptr; i->type != OT_NOTHING; ++i) {
 				if (i->type == OT_GOTO_STATION) {
-					const Station *st = DEREF_STATION(i->station);
+					const Station *st = GetStation(i->station);
 					required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
 					if ( !required_dst )
 						return CMD_ERROR;
@@ -366,7 +366,7 @@ int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	// nonsense to update the windows, since, train rebought will have its window deleted
 	if (flags & DC_EXEC) {
-		Vehicle *v = &_vehicles[p1];
+		Vehicle *v = GetVehicle(p1);
 		v->service_interval = (uint16)(p2>>16);
 		v->cur_order_index = (byte)(p2&0xFFFF);
 	}
@@ -415,7 +415,7 @@ int CheckOrders(Vehicle *v)
 				//I uncommented this in order not to get two error messages
 				//when two identical entries are in the list
 				n_st++;
-				st = DEREF_STATION(order.station);
+				st = GetStation(order.station);
 				required_tile = GetStationTileForVehicle(v,st);
 				if (!required_tile) problem_type = 3;
 			}

@@ -408,9 +408,6 @@ byte GetDirectionTowards(Vehicle *v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
-#define DEREF_VEHICLE(i) (&_vehicles[i])
-#define FOR_ALL_VEHICLES(v) for(v=_vehicles; v != endof(_vehicles); v++)
-
 /* vehicle.c */
 enum {
 	NUM_NORMAL_VEHICLES = 2048,
@@ -419,6 +416,18 @@ enum {
 };
 
 VARDEF Vehicle _vehicles[NUM_VEHICLES];
+VARDEF uint _vehicles_size;
+
+VARDEF SortStruct *_vehicle_sort;
+
+static inline Vehicle *GetVehicle(uint index)
+{
+	assert(index < _vehicles_size);
+	return &_vehicles[index];
+}
+
+#define FOR_ALL_VEHICLES(v) for(v = _vehicles; v != &_vehicles[_vehicles_size]; v++)
+#define FOR_ALL_VEHICLES_FROM(v, from) for(v = GetVehicle(from); v != &_vehicles[_vehicles_size]; v++)
 
 VARDEF Order _order_array[5000];
 VARDEF Order *_ptr_to_next_order;

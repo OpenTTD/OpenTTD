@@ -51,7 +51,7 @@ void CcBuildAircraft(bool success, uint tile, uint32 p1, uint32 p2)
 	Vehicle *v;
 
 	if (success) {
-		v = &_vehicles[_new_aircraft_id];
+		v = GetVehicle(_new_aircraft_id);
 		if (v->tile == _backup_orders_tile) {
 			_backup_orders_tile = 0;
 			RestoreVehicleOrders(v, _backup_orders_data);
@@ -217,7 +217,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		const byte *b;
 		int sel;
 		int x,y;
@@ -296,7 +296,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 			} break;
 		case 4: /* refit button */
 			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = &_vehicles[w->window_number];
+				Vehicle *v = GetVehicle(w->window_number);
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_AIRCRAFT | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT)))
 					DeleteWindow(w);
 			}
@@ -339,7 +339,7 @@ static void ShowAircraftRefitWindow(Vehicle *v)
 static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 {
 	int mod;
-	Vehicle *v = &_vehicles[w->window_number], *u;
+	Vehicle *v = GetVehicle(w->window_number), *u;
 
 	switch(e->event) {
 	case WE_PAINT:
@@ -534,7 +534,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		uint32 disabled = 1<<8;
 		StringID str;
 
@@ -595,7 +595,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 
 		switch(e->click.widget) {
 		case 5: /* start stop */
@@ -832,7 +832,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 				HandleButtonClick(w, 5);
 
-				v = &_vehicles[WP(w,traindepot_d).sel];
+				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
 
 				_backup_orders_tile = v->tile;
@@ -979,7 +979,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_A009_AIRCRAFT;
 			} else {
 				/* Station Name -- (###) Aircraft */
-				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(0, GetStation(station)->index);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;
 			}
@@ -993,7 +993,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
-			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			Vehicle *v = GetVehicle(vl->sort_list[i].index);
 			StringID str;
 
 			assert(v->type == VEH_Aircraft && v->subtype <= 2);
@@ -1047,7 +1047,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
+				v = GetVehicle(vl->sort_list[id_v].index);
 
 				assert(v->type == VEH_Aircraft && v->subtype <= 2);
 

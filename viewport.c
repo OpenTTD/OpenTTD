@@ -116,7 +116,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 	if (follow_flags & 0x80000000) {
 		Vehicle *veh;
 		WP(w,vp_d).follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
-		veh = &_vehicles[WP(w,vp_d).follow_vehicle];
+		veh = GetVehicle(WP(w,vp_d).follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
 		int x = GET_TILE_X(follow_flags) * 16;
@@ -1271,7 +1271,7 @@ void UpdateViewportPosition(Window *w)
 		Vehicle *veh;
 		Point pt;
 
-		veh = &_vehicles[WP(w,vp_d).follow_vehicle];
+		veh = GetVehicle(WP(w,vp_d).follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {

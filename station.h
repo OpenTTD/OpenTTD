@@ -94,12 +94,20 @@ void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord();
 
 VARDEF Station _stations[250];
+VARDEF uint _stations_size;
+
+VARDEF SortStruct *_station_sort;
+
+static inline Station *GetStation(uint index)
+{
+	assert(index < _stations_size);
+	return &_stations[index];
+}
+
+#define FOR_ALL_STATIONS(st) for(st = _stations; st != &_stations[_stations_size]; st++)
+
 VARDEF bool _station_sort_dirty[MAX_PLAYERS];
 VARDEF bool _global_station_sort_dirty;
-
-#define DEREF_STATION(i) (&_stations[i])
-#define FOR_ALL_STATIONS(st) for(st=_stations; st != endof(_stations); st++)
-
 
 void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad);

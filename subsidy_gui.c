@@ -49,22 +49,22 @@ handle_click:
 	/* determine from coordinate for subsidy and try to scroll to it */
 	offs = s->from;
 	if (s->age >= 12) {
-		xy = DEREF_STATION(offs)->xy;
+		xy = GetStation(offs)->xy;
 	} else if (s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL) {
-		xy = DEREF_TOWN(offs)->xy;
+		xy = GetTown(offs)->xy;
 	} else {
-		xy = _industries[offs].xy;
+		xy = GetIndustry(offs)->xy;
 
 	}
 	if (!ScrollMainWindowToTile(xy)) {
 		/* otherwise determine to coordinate for subsidy and scroll to it */
 		offs = s->to;
 		if (s->age >= 12) {
-			xy = DEREF_STATION(offs)->xy;
+			xy = GetStation(offs)->xy;
 		} else if (s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL || s->cargo_type == CT_GOODS || s->cargo_type == CT_FOOD) {
-			xy = DEREF_TOWN(offs)->xy;
+			xy = GetTown(offs)->xy;
 		} else {
-			xy = _industries[offs].xy;
+			xy = GetIndustry(offs)->xy;
 		}
 		ScrollMainWindowToTile(xy);
 	}
@@ -112,7 +112,7 @@ static void DrawSubsidiesWindow(Window *w)
 		if (s->cargo_type != 0xFF && s->age >= 12) {
 			SetupSubsidyDecodeParam(s, 1);
 
-			p = DEREF_PLAYER(DEREF_STATION(s->to)->owner);
+			p = DEREF_PLAYER(GetStation(s->to)->owner);
 			SetDParam(3, p->name_1);
 			SetDParam(4, p->name_2);
 

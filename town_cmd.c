@@ -401,8 +401,8 @@ void OnTick_Town()
 		return;
 
 	i = _cur_town_ctr;
-	t = DEREF_TOWN(i);
-	if (++i == lengthof(_towns)) i = 0;
+	t = GetTown(i);
+	if (++i == _towns_size) i = 0;
 	_cur_town_ctr = i;
 
 	if (t->xy != 0)
@@ -1354,7 +1354,7 @@ static void ClearTownHouse(Town *t, uint tile) {
 int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
-	Town *t = DEREF_TOWN(p1);
+	Town *t = GetTown(p1);
 
 	str = AllocateNameUnique((byte*)_decode_parameters, 4);
 	if (str == 0)
@@ -1602,7 +1602,7 @@ int32 CmdDoTownAction(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = (_price.build_industry >> 8) * _town_action_costs[p2];
 
 	if (flags & DC_EXEC) {
-		_town_action_proc[p2](DEREF_TOWN(p1), p2);
+		_town_action_proc[p2](GetTown(p1), p2);
 		InvalidateWindow(WC_TOWN_AUTHORITY, p1);
 	}
 
@@ -1817,11 +1817,14 @@ void TownsMonthlyLoop()
 void InitializeTowns()
 {
 	Subsidy *s;
+	Town *t;
 	int i;
 
-	memset(_towns, 0, sizeof(_towns));
-	for(i=0; i!=lengthof(_towns); i++)
-		_towns[i].index = i;
+	memset(_towns, 0, sizeof(_towns[0]) * _towns_size);
+
+	i = 0;
+	FOR_ALL_TOWNS(t)
+		t->index = i++;
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (s=_subsidies; s != endof(_subsidies); s++)
@@ -1908,9 +1911,11 @@ static void Save_TOWN()
 {
 	Town *t;
 
-	FOR_ALL_TOWNS(t) if (t->xy != 0) {
-		SlSetArrayIndex(t->index);
-		SlObject(t, _town_desc);
+	FOR_ALL_TOWNS(t) {
+		if (t->xy != 0) {
+			SlSetArrayIndex(t->index);
+			SlObject(t, _town_desc);
+		}
 	}
 }
 
@@ -1918,7 +1923,8 @@ static void Load_TOWN()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Town *t = DEREF_TOWN(index);
+		Town *t = GetTown(index);
+
 		SlObject(t, _town_desc);
 		if (index > _total_towns) _total_towns = index;
 	}

@@ -432,7 +432,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 		case 0x9A: { // {STATION}
 			Station *st;
 			InjectDparam(1);
-			st = DEREF_STATION(GetDParam(1));
+			st = GetStation(GetDParam(1));
 			if (!st->xy) { // station doesn't exist anymore
 				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
 				break;
@@ -444,7 +444,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 		}
 		case 0x9B: { // {TOWN}
 			Town *t;
-			t = DEREF_TOWN(GetDParam(0));
+			t = GetTown(GetDParam(0));
 			assert(t->xy);
 			SetDParam(0, t->townnameparts);
 			buff = GetString(buff, t->townnametype);

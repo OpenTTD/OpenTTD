@@ -243,7 +243,7 @@ static void ProcessShipOrder(Vehicle *v)
 		if (order.station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
 
-		st = DEREF_STATION(order.station);
+		st = GetStation(order.station);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_map5[st->dock_tile]-0x4B]));
 		}
@@ -679,7 +679,7 @@ static void ShipController(Vehicle *v)
 					v->last_station_visited = v->current_order.station;
 
 					/* Process station in the schedule. Don't do that for buoys (HVOT_BUOY) */
-					st = DEREF_STATION(v->current_order.station);
+					st = GetStation(v->current_order.station);
 					if (!(st->had_vehicle_of_type & HVOT_BUOY)
 							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
 						v->current_order.type = OT_LOADING;
@@ -884,7 +884,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -908,7 +908,7 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -927,7 +927,7 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	int depot;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -960,7 +960,7 @@ int32 CmdChangeShipServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -986,7 +986,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	p2 = p2 & 0xFF;
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 

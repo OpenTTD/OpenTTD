@@ -1453,7 +1453,7 @@ static Station *ComposeWaypointStation(uint tile)
 
 	stat.train_tile = stat.xy = waypt->xy;
 	/* FIXME - We should always keep town. */
-	stat.town = waypt->town_or_string & 0xC000 ? &_towns[waypt->town_or_string & 0xFF] : NULL;
+	stat.town = waypt->town_or_string & 0xC000 ? GetTown(waypt->town_or_string & 0xFF) : NULL;
 	stat.string_id = waypt->town_or_string & 0xC000 ? /* FIXME? */ 0 : waypt->town_or_string;
 	stat.build_date = waypt->build_date;
 	stat.class_id = 6; stat.stat_id = waypt->stat_id;

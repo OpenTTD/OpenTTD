@@ -737,17 +737,22 @@ static void NewVehicleAvailable(Engine *e)
 	// prevent that player from getting future intro periods for a while.
 	if (e->flags&ENGINE_INTRODUCING) {
 		FOR_ALL_PLAYERS(p) {
+			uint block_preview = p->block_preview;
+
 			if (!HASBIT(e->player_avail,p->index))
 				continue;
 
-			for(v=_vehicles;;) {
+			/* We assume the user did NOT build it.. prove me wrong ;) */
+			p->block_preview = 20;
+
+			FOR_ALL_VEHICLES(v) {
 				if (v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship ||
 						(v->type == VEH_Aircraft && v->subtype <= 2)) {
-					if (v->owner == p->index && v->engine_type == index) break;
-				}
-				if (++v == endof(_vehicles)) {
-					p->block_preview = 20;
-					break;
+					if (v->owner == p->index && v->engine_type == index) {
+						/* The user did prove me wrong, so restore old value */
+						p->block_preview = block_preview;
+						break;
+					}
 				}
 			}
 		}

@@ -85,7 +85,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 {
 	uint buttons;
 	int numact;
-	Town *t = DEREF_TOWN(w->window_number);
+	Town *t = GetTown(w->window_number);
 
 	switch(e->event) {
 	case WE_PAINT:
@@ -224,7 +224,7 @@ static void ShowTownAuthorityWindow(uint town)
 
 static void TownViewWndProc(Window *w, WindowEvent *e)
 {
-	Town *t = DEREF_TOWN(w->window_number);
+	Town *t = GetTown(w->window_number);
 
 	switch(e->event) {
 	case WE_PAINT:
@@ -338,7 +338,7 @@ void ShowTownViewWindow(uint town)
 
 	if (w) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		t = DEREF_TOWN(w->window_number);
+		t = GetTown(w->window_number);
 		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, t->xy, 1);
 	}
 }
@@ -357,7 +357,6 @@ static const Widget _town_directory_widgets[] = {
 
 
 // used to get a sorted list of the towns
-static uint16 _town_sort[lengthof(_towns)];
 static uint _num_town_sort;
 
 static char _bufcache[64];
@@ -370,13 +369,13 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	byte val;
 	int r;
 
-	t = DEREF_TOWN(*(const uint16*)a);
+	t = GetTown(*(const uint16*)a);
 	SetDParam(0, t->townnameparts);
 	GetString(buf1, t->townnametype);
 
 	if ( (val=*(const uint16*)b) != _last_town_idx) {
 		_last_town_idx = val;
-		t = DEREF_TOWN(val);
+		t = GetTown(val);
 		SetDParam(0, t->townnameparts);
 		GetString(_bufcache, t->townnametype);
 	}
@@ -388,8 +387,8 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 
 static int CDECL TownPopSorter(const void *a, const void *b)
 {
-	const Town *ta = DEREF_TOWN(*(const uint16*)a);
-	const Town *tb = DEREF_TOWN(*(const uint16*)b);
+	const Town *ta = GetTown(*(const uint16*)a);
+	const Town *tb = GetTown(*(const uint16*)b);
 	int r = ta->population - tb->population;
 	if (_town_sort_order & 1) r = -r;
 	return r;
@@ -399,6 +398,12 @@ static void MakeSortedTownList()
 {
 	Town *t;
 	int n = 0;
+
+	/* Create array for sorting */
+	_town_sort = realloc(_town_sort, _towns_size * sizeof(_town_sort[0]));
+	if (_town_sort == NULL)
+		error("Could not allocate memory for the town-sorting-list");
+
 	FOR_ALL_TOWNS(t)
 		if(t->xy)
 			_town_sort[n++] = t->index;
@@ -434,7 +439,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			int y = 28;
 
 			while (i < _num_town_sort) {
-				t = DEREF_TOWN(_town_sort[i]);
+				t = GetTown(_town_sort[i]);
 
 				assert(t->xy);
 
@@ -473,7 +478,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			if (id_v >= _num_town_sort) { return;} // click out of town bounds
 
 			{
-				Town *t = DEREF_TOWN(_town_sort[id_v]);
+				Town *t = GetTown(_town_sort[id_v]);
 				assert(t->xy);
 
 				ScrollMainWindowToTile(t->xy);

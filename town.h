@@ -91,10 +91,19 @@ enum {
 
 bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type);
 
-#define DEREF_TOWN(i) (&_towns[i])
-#define FOR_ALL_TOWNS(c) for(c=_towns; c != endof(_towns); c++)
-
 VARDEF Town _towns[70];
+VARDEF uint _towns_size;
+
+VARDEF uint16 *_town_sort;
+
+static inline Town *GetTown(uint index)
+{
+	assert(index < _towns_size);
+	return &_towns[index];
+}
+
+#define FOR_ALL_TOWNS(t) for(t = _towns; t != &_towns[_towns_size]; t++)
+
 VARDEF int _total_towns; // For the AI: the amount of towns active
 
 VARDEF bool _town_sort_dirty;

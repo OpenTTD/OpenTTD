@@ -199,7 +199,7 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -213,7 +213,7 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-//  p1 = vehicle index in &_vehicles[]
+//  p1 = vehicle index in GetVehicle()
 //  p2 not used
 int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -221,7 +221,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -291,7 +291,7 @@ static int FindClosestRoadDepot(Vehicle *v)
 
 int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v = &_vehicles[p1];
+	Vehicle *v = GetVehicle(p1);
 	int depot;
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
@@ -327,7 +327,7 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -352,7 +352,7 @@ int32 CmdChangeRoadVehServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -396,7 +396,7 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 static void ClearCrashedStation(Vehicle *v)
 {
 	uint tile = v->tile;
-	Station *st = DEREF_STATION(_map2[tile]);
+	Station *st = GetStation(_map2[tile]);
 	byte *b, bb;
 
 	b = (_map5[tile] >= 0x47) ? &st->bus_stop_status : &st->truck_stop_status;
@@ -594,7 +594,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	if (order.type == OT_GOTO_STATION) {
 		if (order.station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
-		st = DEREF_STATION(order.station);
+		st = GetStation(order.station);
 		v->dest_tile = v->cargo_type==CT_PASSENGERS ? st->bus_tile : st->lorry_tile;
 	} else if (order.type == OT_GOTO_DEPOT) {
 		v->dest_tile = _depots[order.station].xy;
@@ -951,7 +951,7 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 	} else if (IS_TILETYPE(tile, MP_STATION)) {
 		if (_map_owner[tile] == OWNER_NONE || _map_owner[tile] == v->owner) {
 			/* Our station */
-			Station *st = DEREF_STATION(_map2[tile]);
+			Station *st = GetStation(_map2[tile]);
 			byte val = _map5[tile];
 			if (v->cargo_type != CT_PASSENGERS) {
 				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stop_status&3))
@@ -1211,7 +1211,7 @@ again:
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IS_TILETYPE(v->tile, MP_STATION)) {
 			if ((tmp&7) >= 6) { v->cur_speed = 0; return; }
 			if (IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x4B)) {
-				Station *st = DEREF_STATION(_map2[v->tile]);
+				Station *st = GetStation(_map2[v->tile]);
 				byte *b;
 
 				if (_map5[v->tile] >= 0x47) {
@@ -1307,7 +1307,7 @@ again:
 			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
 		byte *b;
 
-		st = DEREF_STATION(_map2[v->tile]);
+		st = GetStation(_map2[v->tile]);
 		b = IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x47) ? &st->truck_stop_status : &st->bus_stop_status;
 
 		if (v->current_order.type != OT_LEAVESTATION &&
@@ -1487,7 +1487,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION) {
-		st = DEREF_STATION(v->current_order.station);
+		st = GetStation(v->current_order.station);
 		if ((tile=(v->cargo_type==CT_PASSENGERS ? st->bus_tile : st->lorry_tile)) != 0)
 			v->dest_tile = tile;
 	}

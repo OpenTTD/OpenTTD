@@ -90,7 +90,7 @@ void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
 	if (!success)
 		return;
 
-	v = &_vehicles[_new_train_id];
+	v = GetVehicle(_new_train_id);
 	if (tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v, _backup_orders_data);
@@ -458,7 +458,7 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, int sel, Vehicle *head)
 {
 	Vehicle *v;
 
-	v = &_vehicles[sel];
+	v = GetVehicle(sel);
 
 	if (/*v->subtype == 0 ||*/ v == wagon)
 		return;
@@ -553,7 +553,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			if (WP(w,traindepot_d).sel == INVALID_VEHICLE)
 				return;
 
-			v = &_vehicles[WP(w,traindepot_d).sel];
+			v = GetVehicle(WP(w,traindepot_d).sel);
 
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
@@ -658,7 +658,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		const byte *b;
 		int sel;
 		int x,y;
@@ -734,7 +734,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 		} break;
 		case 4: /* refit button */
 			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = &_vehicles[w->window_number];
+				Vehicle *v = GetVehicle(w->window_number);
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE)))
 					DeleteWindow(w);
 			}
@@ -797,7 +797,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v;
 		StringID str;
 
-		v = &_vehicles[w->window_number];
+		v = GetVehicle(w->window_number);
 
 		w->disabled_state = (v->owner == _local_player) ? 0 : 0x380;
 
@@ -864,7 +864,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		int wid = e->click.widget;
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 
 		switch(wid) {
 		case 5: /* start/stop train */
@@ -905,7 +905,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v;
 		uint32 h;
 
-		v = &_vehicles[w->window_number];
+		v = GetVehicle(w->window_number);
 		assert(v->type == VEH_Train);
 		h = CheckStoppedInDepot(v) >= 0 ? (1 << 9) : (1 << 12);
 		if (h != w->hidden_state) {
@@ -1003,7 +1003,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	if (det_tab == 3)	// reset tot_cargo array to 0 values
 		memset(tot_cargo, 0, sizeof(tot_cargo));
 
-	u = v = &_vehicles[w->window_number];
+	u = v = GetVehicle(w->window_number);
 	do {
 		if (det_tab != 3)
 			num++;
@@ -1114,7 +1114,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 		Vehicle *v;
 		switch(e->click.widget) {
 		case 2: /* name train */
-			v = &_vehicles[w->window_number];
+			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w->window_class, w->window_number);
 			break;
@@ -1125,7 +1125,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 		case 7: /* dec serv interval */
 			mod = _ctrl_pressed? -5 : -10;
 do_change_service_int:
-			v = &_vehicles[w->window_number];
+			v = GetVehicle(w->window_number);
 			mod += v->service_interval;
 
 				/*	%-based service interval max 5%-90%
@@ -1276,7 +1276,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_881B_TRAINS;
 			} else {
 				/* Station Name -- (###) Trains */
-				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(0, GetStation(station)->index);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_TRAINS;
 			}
@@ -1290,7 +1290,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
-			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			Vehicle *v = GetVehicle(vl->sort_list[i].index);
 			StringID str;
 
 			assert(v->type == VEH_Train && v->owner == owner);
@@ -1344,7 +1344,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
+				v = GetVehicle(vl->sort_list[id_v].index);
 
 				assert(v->type == VEH_Train && v->subtype == 0 && v->owner == owner);
 

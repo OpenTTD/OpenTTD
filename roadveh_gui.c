@@ -45,7 +45,7 @@ static void DrawRoadVehImage(Vehicle *v, int x, int y, VehicleID selection)
 
 static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 {
-	Vehicle *v = &_vehicles[w->window_number];
+	Vehicle *v = GetVehicle(w->window_number);
 	StringID str;
 	int mod;
 
@@ -204,7 +204,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
 
 		w->disabled_state = (v->owner != _local_player) ? (1<<8 | 1<<7) : 0;
@@ -258,7 +258,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 
 		switch(e->click.widget) {
 		case 5: /* start stop */
@@ -380,7 +380,7 @@ void CcBuildRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
 
 	if (!success) return;
 
-	v = &_vehicles[_new_roadveh_id];
+	v = GetVehicle(_new_roadveh_id);
 	if (v->tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v, _backup_orders_data);
@@ -665,7 +665,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 				HandleButtonClick(w, 5);
 
-				v = &_vehicles[WP(w,traindepot_d).sel];
+				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
 
 				_backup_orders_tile = v->tile;
@@ -800,7 +800,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_9001_ROAD_VEHICLES;
 			} else {
 				/* Station Name -- (###) Road vehicles */
-				SetDParam(0, DEREF_STATION(station)->index);
+				SetDParam(0, GetStation(station)->index);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
 			}
@@ -814,7 +814,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
-			Vehicle *v = DEREF_VEHICLE(vl->sort_list[i].index);
+			Vehicle *v = GetVehicle(vl->sort_list[i].index);
 			StringID str;
 
 			assert(v->type == VEH_Road && v->owner == owner);
@@ -865,7 +865,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 				if (id_v >= vl->list_length) return; // click out of list bound
 
-				v	= DEREF_VEHICLE(vl->sort_list[id_v].index);
+				v	= GetVehicle(vl->sort_list[id_v].index);
 
 				assert(v->type == VEH_Road && v->owner == owner);
 

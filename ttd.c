@@ -482,6 +482,35 @@ void ParseResolution(int res[2], char *s)
 	res[1] = strtoul(t + 1, NULL, 0);
 }
 
+static void InitializeDynamicVariables(void)
+{
+	/* Dynamic stuff needs to be initialized somewhere... */
+	_stations_size = lengthof(_stations);
+	_station_sort = NULL;
+
+	_vehicles_size = lengthof(_vehicles);
+	_vehicle_sort = NULL;
+
+	_towns_size = lengthof(_towns);
+	_town_sort = NULL;
+
+	_industries_size = lengthof(_industries);
+	_industry_sort = NULL;
+}
+
+static void UnInitializeDynamicVariables(void)
+{
+	/* Dynamic stuff needs to be free'd somewhere... */
+	free(_station_sort);
+
+	free(_vehicle_sort);
+
+	free(_town_sort);
+
+	free(_industry_sort);
+}
+
+
 void LoadIntroGame()
 {
 	char filename[256];
@@ -640,6 +669,9 @@ int ttd_main(int argc, char* argv[])
 	// initialize airport state machines
 	InitializeAirports();
 
+	/* initialize all variables that are allocated dynamically */
+	InitializeDynamicVariables();
+
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
 	_os_version = GetOSVersion();
@@ -720,6 +752,9 @@ int ttd_main(int argc, char* argv[])
 
 	// uninitialize airport state machines
 	UnInitializeAirports();
+
+	/* uninitialize variables that are allocated dynamic */
+	UnInitializeDynamicVariables();
 
 	return 0;
 }

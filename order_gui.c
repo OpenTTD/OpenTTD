@@ -13,7 +13,7 @@
 
 static int OrderGetSel(Window *w)
 {
-	Vehicle *v = &_vehicles[w->window_number];
+	Vehicle *v = GetVehicle(w->window_number);
 	const Order *sched = v->schedule_ptr;
 	int num = WP(w,order_d).sel;
 	int count = 0;
@@ -41,7 +41,7 @@ static void DrawOrdersWindow(Window *w)
 	StringID str;
 	bool shared_schedule;
 
-	v = &_vehicles[w->window_number];
+	v = GetVehicle(w->window_number);
 
 	w->disabled_state = (v->owner == _local_player) ? 0 : 0x3F0;
 
@@ -237,7 +237,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 	}
 
 	if (IS_TILETYPE(tile, MP_STATION)) {
-		st = DEREF_STATION(st_index = _map2[tile]);
+		st = GetStation(st_index = _map2[tile]);
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;
@@ -314,7 +314,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		int mode;
 		switch(e->click.widget) {
 		case 2:	{/* orders list */
@@ -331,7 +331,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				int xy = 0;
 				switch (ord.type) {
 				case OT_GOTO_STATION:			/* station order */
-					xy = _stations[ord.station].xy ;
+					xy = GetStation(ord.station)->xy ;
 					break;
 				case OT_GOTO_DEPOT:				/* goto depot order */
 					xy = _depots[ord.station].xy;
@@ -389,7 +389,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 
 	case WE_RCLICK: {
-		Vehicle *v = &_vehicles[w->window_number];
+		Vehicle *v = GetVehicle(w->window_number);
 		if (e->click.widget != 8) break;
 		if (v->schedule_ptr[OrderGetSel(w)].type == OT_GOTO_DEPOT)
 			GuiShowTooltips(STR_SERVICE_HINT);
@@ -403,7 +403,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ: {
-		OrdersPlaceObj(&_vehicles[w->window_number], e->place.tile, w);
+		OrdersPlaceObj(GetVehicle(w->window_number), e->place.tile, w);
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
@@ -424,7 +424,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		 */
 		if (v && HASBIT(w->click_state, 7)) {
 			_place_clicked_vehicle = NULL;
-			HandleOrderVehClick(&_vehicles[w->window_number], v, w);
+			HandleOrderVehClick(GetVehicle(w->window_number), v, w);
 		}
 	} break;
 

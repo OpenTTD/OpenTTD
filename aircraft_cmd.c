@@ -217,7 +217,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			const AirportFTAClass *Airport;
 			const TileIndexDiffC *cur_depot;
 			byte i = 0;
-			st = DEREF_STATION(_map2[tile]);
+			st = GetStation(_map2[tile]);
 			Airport = GetAirport(st->airport_type);
 			for (cur_depot = Airport->airport_depots; i != Airport->nof_depots; cur_depot++) {
 				if ((uint)(st->airport_tile + ToTileIndexDiff(*cur_depot)) == tile) {
@@ -311,7 +311,7 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
 		return CMD_ERROR;
@@ -332,7 +332,7 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -357,7 +357,7 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	Station *st;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -370,7 +370,7 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 	} else {
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
 		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->nofterminals == 0)
@@ -393,7 +393,7 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
 {
 	Vehicle *v;
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
@@ -419,7 +419,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
-	v = &_vehicles[p1];
+	v = GetVehicle(p1);
 	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
 		return CMD_ERROR;
 
@@ -481,7 +481,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
  	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
  		return;
 
-	st = DEREF_STATION(v->current_order.station);
+	st = GetStation(v->current_order.station);
 	// only goto depot if the target airport has terminals (eg. it is airport)
 	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->nofterminals != 0) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
@@ -720,7 +720,7 @@ static bool Aircraft_5(Vehicle *v)
 	uint dist;
 	int x,y;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 
 	// prevent going to 0,0 if airport is deleted.
 	{
@@ -925,7 +925,7 @@ static void HandleCrashedAircraft(Vehicle *v)
 
 	v->u.air.crashed_counter++;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 
 	// make aircraft crash down to the ground
 	if ( st->airport_tile==0 && ((v->u.air.crashed_counter % 3) == 0) ) {
@@ -1112,7 +1112,7 @@ static void CrashAirplane(Vehicle *v)
 
 	v->cargo_count = 0;
 	v->next->cargo_count = 0,
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 	if(st->airport_tile==0) {
 		newsitem = STR_PLANE_CRASH_OUT_OF_FUEL;
 	} else {
@@ -1135,7 +1135,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 	uint16 prob;
 	int i;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
@@ -1164,7 +1164,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 	if (v->current_order.type == OT_GOTO_DEPOT)
 		return;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 	v->last_station_visited = v->u.air.targetairport;
 
 	/* Check if station was ever visited before */
@@ -1253,7 +1253,7 @@ static void AircraftNextAirportPos_and_Order(Vehicle *v)
 			v->current_order.type == OT_GOTO_DEPOT)
 		v->u.air.targetairport = v->current_order.station;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 	Airport = GetAirport(st->airport_type);
 	v->u.air.pos = v->u.air.previous_pos = Airport->entry_point;
 }
@@ -1423,7 +1423,7 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *Airpo
 	AirportFTA *current;
 	uint16 tcur_speed, tsubspeed;
 
-	st = DEREF_STATION(v->u.air.targetairport);
+	st = GetStation(v->u.air.targetairport);
 	// flying device is accepted at this station
 	// small airport --> no helicopters (AIRCRAFT_ONLY)
 	// all other airports --> all types of flying devices (ALL)
@@ -1537,7 +1537,7 @@ static void AirportClearBlock(Vehicle *v, const AirportFTAClass *Airport)
 	Station *st;
 	// we have left the previous block, and entered the new one. Free the previous block
 	if (Airport->layout[v->u.air.previous_pos].block != Airport->layout[v->u.air.pos].block) {
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		CLRBITS(st->airport_flags, Airport->layout[v->u.air.previous_pos].block);
 	}
 }
@@ -1613,7 +1613,7 @@ static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFT
 	// same block, then of course we can move
 	if (Airport->layout[current_pos->position].block != next->block) {
 		airport_flags = next->block;
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		// check additional possible extra blocks
 		if (current_pos != reference && current_pos->block != NOTHING_block) {
 			airport_flags |= current_pos->block;
@@ -1640,7 +1640,7 @@ static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportF
 	// if the next position is in another block, check it and wait until it is free
 	if (Airport->layout[current_pos->position].block != next->block) {
 		airport_flags = next->block;
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		//search for all all elements in the list with the same state, and blocks != N
 		// this means more blocks should be checked/set
 		current = current_pos;
@@ -1672,7 +1672,7 @@ static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportF
 
 static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 {
-	Station *st = DEREF_STATION(v->u.air.targetairport);
+	Station *st = GetStation(v->u.air.targetairport);
 	for (; i < last_terminal; i++) {
 		if (!HASBIT(st->airport_flags, i)) {
 			// TERMINAL# HELIPAD#
@@ -1701,7 +1701,7 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 		fails, then attempt fails and plane waits
 	*/
 	if (Airport->nofterminalgroups > 1) {
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		nofterminalspergroup = Airport->nofterminals / Airport->nofterminalgroups;
 		temp = Airport->layout[v->u.air.pos].next_in_chain;
 		while (temp != NULL) {
@@ -1734,7 +1734,7 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 
 	// if there are more helicoptergroups, pick one, just as in AirportFindFreeTerminal()
 	if (Airport->nofhelipadgroups > 1) {
-		st = DEREF_STATION(v->u.air.targetairport);
+		st = GetStation(v->u.air.targetairport);
 		nofhelipadspergroup = Airport->nofhelipads / Airport->nofhelipadgroups;
 		temp = Airport->layout[v->u.air.pos].next_in_chain;
 		while (temp != NULL) {
@@ -1787,7 +1787,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	// pass the right airport structure to the functions
 	// DEREF_STATION gets target airport (Station *st), its type is passed to GetAirport
 	// that returns the correct layout depending on type
-	AirportGoToNextPosition(v, GetAirport(DEREF_STATION(v->u.air.targetairport)->airport_type));
+	AirportGoToNextPosition(v, GetAirport(GetStation(v->u.air.targetairport)->airport_type));
 }
 
 void Aircraft_Tick(Vehicle *v)
