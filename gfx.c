@@ -258,29 +258,31 @@ enum {
 /* returns right coordinate */
 int DrawString(int x, int y, uint16 str, uint16 color)
 {
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
-	return DoDrawString(str_buffr, x, y, color);
+	char buffer[512];
+
+	GetString(buffer, str);
+	return DoDrawString(buffer, x, y, color);
 }
 
 
 void DrawStringRightAligned(int x, int y, uint16 str, uint16 color)
 {
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
-	DoDrawString(str_buffr, x - GetStringWidth(str_buffr), y, color);
+	char buffer[512];
+
+	GetString(buffer, str);
+	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
 }
 
 
 int DrawStringCentered(int x, int y, uint16 str, uint16 color)
 {
+	char buffer[512];
 	int w;
 
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buffer, str);
 
-	w = GetStringWidth(str_buffr);
-	DoDrawString(str_buffr, x - (w>>1), y, color);
+	w = GetStringWidth(buffer);
+	DoDrawString(buffer, x - w / 2, y, color);
 
 	return w;
 }
@@ -334,15 +336,15 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 
 void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 {
+	char buffer[512];
 	uint32 tmp;
 	int num, w, mt, t;
 	const char *src;
 	byte c;
 
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buffer, str);
 
-	tmp = FormatStringLinebreaks(str_buffr, maxw);
+	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = (uint16)tmp;
 	t = tmp >> 16;
 
@@ -354,7 +356,7 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 
 	y -= (mt >> 1) * num;
 
-	src = str_buffr;
+	src = buffer;
 
 	for(;;) {
 		w = GetStringWidth(src);
@@ -380,15 +382,15 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 }
 
 void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
+	char buffer[512];
 	uint32 tmp;
 	int num, w, mt, t;
 	const char *src;
 	byte c;
 
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buffer, str);
 
-	tmp = FormatStringLinebreaks(str_buffr, maxw);
+	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = (uint16)tmp;
 	t = tmp >> 16;
 	mt = 10;
@@ -397,7 +399,7 @@ void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
 		if (t != 244) mt = 18;
 	}
 
-	src = str_buffr;
+	src = buffer;
 
 	for(;;) {
 		w = GetStringWidth(src);

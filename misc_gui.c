@@ -631,6 +631,7 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 
 void GuiShowTooltips(StringID string_id)
 {
+	char buffer[512];
 	Window *w;
 	int right,bottom;
 	int x,y;
@@ -645,10 +646,9 @@ void GuiShowTooltips(StringID string_id)
 		DeleteWindow(w);
 	}
 
-	GetString(str_buffr, string_id);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buffer, string_id);
 
-	right = GetStringWidth(str_buffr) + 4;
+	right = GetStringWidth(buffer) + 4;
 
 	bottom = 14;
 	if (right > 200) {

@@ -505,6 +505,7 @@ static byte getNews(byte i)
 // cut string after len pixels
 static void GetNewsString(NewsItem *ni, char *buffer, uint max)
 {
+	char buf[512];
 	StringID str;
 	const char *s;
 	char *d;
@@ -517,10 +518,9 @@ static void GetNewsString(NewsItem *ni, char *buffer, uint max)
 		str = ni->string_id;
 	}
 
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buf, str);
 
-	s = str_buffr;
+	s = buf;
 	d = buffer;
 
 	for (;; s++) {

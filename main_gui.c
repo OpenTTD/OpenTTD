@@ -2101,6 +2101,7 @@ extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 
 static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 {
+	char buf[512];
 	StringID str;
 	const char *s;
 	char *d;
@@ -2115,10 +2116,9 @@ static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 		str = ni->string_id;
 	}
 
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	GetString(buf, str);
 
-	s = str_buffr;
+	s = buf;
 	d = buffer;
 
 	for(;;s++) {

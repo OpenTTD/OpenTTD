@@ -1811,7 +1811,8 @@ void FiosMakeSavegameName(char *buf, const char *name)
 
 void FiosDelete(const char *name)
 {
-	char *path = str_buffr;
+	char path[512];
+
 	FiosMakeSavegameName(path, name);
 	DeleteFile(path);
 }
