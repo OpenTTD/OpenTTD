@@ -1,0 +1,9 @@
+You require the data files of the original Transport Tycoon Deluxe
+for Windows to play the game. You have to manually copy the following
+files to %{_gamesdatadir}/openttd/data/
+sample.cat
+trg1r.grf
+trgcr.grf
+trghr.grf
+trgir.grf
+trgtr.grf
