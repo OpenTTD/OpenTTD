@@ -87,6 +87,12 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			w->disabled_state = (1<<17); // Server offline, join button disabled
 		else if (_selected_item->info.clients_on == _selected_item->info.clients_max)
 			w->disabled_state = (1<<17); // Server full, join button disabled
+#ifdef WITH_REV
+		else if (strncmp(_selected_item->info.server_revision, _openttd_revision, 10) != 0) {
+			if (strncmp(_selected_item->info.server_revision, "norev000", sizeof(_selected_item->info.server_revision)) != 0)
+				w->disabled_state = (1<<17); // Revision mismatch, join button disabled
+		}
+#endif
 		else
 			w->disabled_state = 0;
 
@@ -201,6 +207,14 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(260, y, STR_NETWORK_CURRENT_DATE, 2); // current date
 			y+=10;
 
+			y+=2;
+
+#ifdef WITH_REV
+			if (strncmp(_selected_item->info.server_revision, _openttd_revision, 10) != 0) {
+				if (strncmp(_selected_item->info.server_revision, "norev000", sizeof(_selected_item->info.server_revision)) != 0)
+					DrawStringMultiCenter(360, y, STR_NETWORK_VERSION_MISMATCH, 2); // server mismatch
+			} else
+#endif
 			if (_selected_item->info.clients_on == _selected_item->info.clients_max)
 				// Show: server full, when clients_on == clients_max
 				DrawStringMultiCenter(360, y, STR_NETWORK_SERVER_FULL, 2); // server full
