@@ -902,6 +902,11 @@ static void VehicleChangeInfo(byte *buf, int len)
 	byte engine;
 	EngineInfo *ei;
 
+	if (len == 1) {
+		DEBUG(grf, 8) ("Silently ignoring one-byte special sprite 0x00.");
+		return;
+	}
+
 	check_length(len, 6, "VehicleChangeInfo");
 	feature = buf[1];
 	numprops = buf[2];
