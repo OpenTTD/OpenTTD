@@ -217,6 +217,12 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// sanity checks
 		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
 			return CMD_ERROR;
+			
+		// let's see what happens with road vehicles
+		if (src->type == VEH_Road) {
+			if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
+				return CMD_ERROR;
+		}
 
 		if (flags & DC_EXEC) {
 			DeleteVehicleSchedule(dst);
@@ -237,6 +243,23 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// sanity checks
 		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
 			return CMD_ERROR;
+			
+		// let's see what happens with road vehicles
+		if (src->type == VEH_Road) {
+			uint16 ord;
+			int i;
+			Station *st;
+			TileIndex required_dst;
+			
+			for (i=0; (ord = src->schedule_ptr[i]) != 0; i++) {
+				if ( ( ord & OT_MASK ) == OT_GOTO_STATION ) {
+					st = DEREF_STATION(ord >> 8);
+					required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
+					if ( !required_dst )
+						return CMD_ERROR;
+				}
+			}
+		}
 
 		// make sure there's orders available
 		delta = IsScheduleShared(dst) ? src->num_orders + 1 : src->num_orders - dst->num_orders;
