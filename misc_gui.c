@@ -994,11 +994,7 @@ void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, b
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	if (str == 0xFFFF) {
-		memcpy(_orig_edit_str_buf, str_buffr, MAX_QUERYSTR_LEN);
-	} else {
-		GetString(_orig_edit_str_buf, str);
-	}
+	GetString(_orig_edit_str_buf, str);
 
 	if (maxlen & 0x1000) {
 		_do_edit_on_text_even_when_no_change_to_edit_box = true;

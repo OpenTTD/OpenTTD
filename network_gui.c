@@ -1455,11 +1455,7 @@ void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, by
 
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 
-	if (str == 0xFFFF) {
-		memcpy(_orig_edit_str_buf, str_buffr, MAX_QUERYSTR_LEN);
-	} else {
-		GetString(_orig_edit_str_buf, str);
-	}
+	GetString(_orig_edit_str_buf, str);
 
 	_orig_edit_str_buf[maxlen] = 0;
 
