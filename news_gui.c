@@ -62,7 +62,7 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 
 void InitNewsItemStructs()
 {
-	memset(_news_items, 0, sizeof(_news_items));
+	memset(_news_items, 0, sizeof(NewsItem)*MAX_NEWS);
 }
 
 void DrawNewsBorder(Window *w)
@@ -176,15 +176,13 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 // returns the correct index in the array
 // (to deal with overflows)
-byte getIndex(byte i)
+byte increaseIndex(byte i)
 {
-	if(i==255) {
-		if(_oldest_news <= _latest_news)
-			return _latest_news;
-		else
-			return MAX_NEWS;
-	}
-	if(i >= MAX_NEWS) i %= MAX_NEWS;
+	if(i==255)
+		return 0;
+	i++;
+	if(i >= MAX_NEWS)
+		i = i % MAX_NEWS;
 	return i;
 }
 
@@ -199,13 +197,13 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	_forced_news = 255;
 	if(_total_news < MAX_NEWS) _total_news++;
-
+	
 	// make sure our pointer isn't overflowing
-	_latest_news = getIndex(++_latest_news);
+	_latest_news = increaseIndex(_latest_news);
 
 	// overwrite oldest news entry
 	if( _oldest_news == _latest_news && _news_items[_oldest_news].string_id != 0)
-		_oldest_news = getIndex(++_oldest_news); // but make sure we're not overflowing here
+		_oldest_news = increaseIndex(_oldest_news); // but make sure we're not overflowing here
 
 	// add news to _latest_news
 	ni = &_news_items[_latest_news];
@@ -365,7 +363,7 @@ static void MoveToNexItem()
 	{
 		NewsItem *ni;
 
-		_current_news = getIndex(++_current_news);
+		_current_news = increaseIndex(_current_news);
 		ni = &_news_items[_current_news];
 
 		// check the date, don't show too old items
@@ -413,8 +411,14 @@ void ShowLastNewsMessage()
 {
 	if(_forced_news==255)
 		ShowNewsMessage(_current_news);
-	else
-		ShowNewsMessage( getIndex(_forced_news-1) );
+	else if(_forced_news!=0)
+		ShowNewsMessage(_forced_news-1);
+	else {
+		if(_total_news != MAX_NEWS) 
+			ShowNewsMessage(_latest_news);
+		else
+			ShowNewsMessage(MAX_NEWS-1);
+	}
 }
 
 
