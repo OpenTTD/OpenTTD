@@ -163,7 +163,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			bool stickied = !!(w->flags4 & WF_STICKY);
 			int player = w->window_number;
 			DeleteWindow(w);
-			DoShowPlayerFinances(player, mode^1, stickied);
+			DoShowPlayerFinances(player, !HASBIT(mode, 0), stickied);
 		} break;
 
 		case 6: /* increase loan */

@@ -1255,9 +1255,11 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-void ShowClientList()
+void ShowClientList(void)
 {
-	AllocateWindowDesc(&_client_list_desc);
+	Window *w = AllocateWindowDescFront(&_client_list_desc, 0);
+	if (w)
+		w->window_number = 0;
 }
 
 extern void SwitchMode(int new_mode);

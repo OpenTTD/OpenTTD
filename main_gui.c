@@ -251,7 +251,7 @@ static void MenuClickFinances(int index)
 }
 
 #ifdef ENABLE_NETWORK
-extern void ShowClientList();
+extern void ShowClientList(void);
 #endif /* ENABLE_NETWORK */
 
 static void MenuClickCompany(int index)
