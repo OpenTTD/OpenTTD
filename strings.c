@@ -9,8 +9,6 @@
 #include "news.h"
 #include "screenshot.h"
 
-#define USE_TABLE(x)  { assert(index < lengthof(x)); str = x[index]; break; }
-
 static byte *StationGetSpecialString(byte *buff);
 static byte *GetSpecialTownNameString(byte *buff, int ind);
 static byte *GetSpecialPlayerNameString(byte *buff, int ind);
@@ -23,8 +21,6 @@ static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
 extern const char _openttd_revision[];
-
-typedef byte *PlayerNameGeneratorProc(byte *buffr);
 
 typedef struct {
 	uint32 ident;
