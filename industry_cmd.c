@@ -13,6 +13,26 @@
 #include "economy.h"
 #include "sound.h"
 
+enum {
+	/* Max industries: 64000 (8 * 8000) */
+	INDUSTRY_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
+	INDUSTRY_POOL_MAX_BLOCKS      = 8000,
+};
+
+/**
+ * Called if a new block is added to the industry-pool
+ */
+void IndustryPoolNewBlock(uint start_item)
+{
+	Industry *i;
+
+	FOR_ALL_INDUSTRIES_FROM(i, start_item)
+		i->index = start_item++;
+}
+
+/* Initialize the industry-pool */
+MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, 0, 0, NULL };
+
 byte _industry_sound_ctr;
 TileIndex _industry_sound_tile;
 
@@ -1406,12 +1426,22 @@ static Industry *AllocateIndustry(void)
 
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy == 0) {
+			uint index = i->index;
+
 			if (i->index > _total_industries)
 				_total_industries = i->index;
+
+			memset(i, 0, sizeof(Industry));
+			i->index = index;
 
 			return i;
 		}
 	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_industry_pool))
+		return AllocateIndustry();
+
 	return NULL;
 }
 
@@ -1827,13 +1857,11 @@ void IndustryMonthlyLoop(void)
 			UpdateIndustryStatistics(i);
 	}
 
-	i = GetIndustry(RandomRange(_industries_size));
-
-	if (i->xy == 0) {
-		uint32 r;
-		if (CHANCE16I(1,9,r=Random()))
-			MaybeNewIndustry(r);
+	/* 3% chance that we start a new industry */
+	if (CHANCE16(3, 100)) {
+		MaybeNewIndustry(Random());
 	} else if (!_patches.smooth_economy) {
+		i = GetIndustry(RandomRange(_total_industries));
 		MaybeCloseIndustry(i);
 	}
 
@@ -1847,14 +1875,9 @@ void IndustryMonthlyLoop(void)
 
 void InitializeIndustries(void)
 {
-	Industry *i;
-	int j;
 
-	memset(_industries, 0, sizeof(_industries[0]) * _industries_size);
-
-	j = 0;
-	FOR_ALL_INDUSTRIES(i)
-		i->index = j++;
+	CleanPool(&_industry_pool);
+	AddBlockToPool(&_industry_pool);
 
 	_total_industries = 0;
 	_industry_sort_dirty = true;
@@ -1924,12 +1947,20 @@ static void Save_INDY(void)
 static void Load_INDY(void)
 {
 	int index;
-	_total_industries = 0;
-	while ((index = SlIterateArray()) != -1) {
-		Industry *i = GetIndustry(index);
 
+	_total_industries = 0;
+
+	while ((index = SlIterateArray()) != -1) {
+		Industry *i;
+
+		if (!AddBlockIfNeeded(&_industry_pool, index))
+			error("Industries: failed loading savegame: too many industries");
+
+		i = GetIndustry(index);
 		SlObject(i, _industry_desc);
-		if (index > _total_industries) _total_industries = index;
+
+		if (index > _total_industries)
+			_total_industries = index;
 	}
 }
 

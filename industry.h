@@ -1,6 +1,8 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
+#include "pool.h"
+
 struct Industry {
 	TileIndex xy;
 	byte width; /* swapped order of w/h with town */
@@ -27,22 +29,32 @@ struct Industry {
 	uint16 index;
 };
 
-VARDEF int _total_industries; // For the AI: the amount of industries active
+extern MemoryPool _industry_pool;
 
-VARDEF Industry _industries[250];
-VARDEF uint _industries_size;
-
-VARDEF uint16 *_industry_sort;
-
+/**
+ * Get the pointer to the industry with index 'index'
+ */
 static inline Industry *GetIndustry(uint index)
 {
-	assert(index < _industries_size);
-	return &_industries[index];
+	return (Industry*)GetItemFromPool(&_industry_pool, index);
 }
 
-#define FOR_ALL_INDUSTRIES(i) for(i = _industries; i != &_industries[_industries_size]; i++)
+/**
+ * Get the current size of the IndustryPool
+ */
+static inline uint16 GetIndustryPoolSize(void)
+{
+	return _industry_pool.total_items;
+}
 
+#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL)
+#define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
+
+VARDEF int _total_industries; // For the AI: the amount of industries active
+
+VARDEF uint16 *_industry_sort;
 VARDEF bool _industry_sort_dirty;
+
 void DeleteIndustry(Industry *is);
 
 enum {

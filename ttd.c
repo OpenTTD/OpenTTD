@@ -495,34 +495,27 @@ static void ParseResolution(int res[2], char *s)
 static void InitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
-	_stations_size = lengthof(_stations);
-	_station_sort = NULL;
-
+	_stations_size  = lengthof(_stations);
 	_roadstops_size = lengthof(_roadstops);
+	_vehicles_size  = lengthof(_vehicles);
+	_sign_size      = lengthof(_sign_list);
+	_orders_size    = lengthof(_orders);
 
-	_vehicles_size = lengthof(_vehicles);
-	_vehicle_sort = NULL;
-
-	_town_sort = NULL;
-
-	_industries_size = lengthof(_industries);
+	_station_sort  = NULL;
+	_vehicle_sort  = NULL;
+	_town_sort     = NULL;
 	_industry_sort = NULL;
-
-	_sign_size = lengthof(_sign_list);
-	_orders_size = lengthof(_orders);
 }
 
 static void UnInitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be free'd somewhere... */
 	CleanPool(&_town_pool);
+	CleanPool(&_industry_pool);
 
 	free(_station_sort);
-
 	free(_vehicle_sort);
-
 	free(_town_sort);
-
 	free(_industry_sort);
 }
 

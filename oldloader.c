@@ -647,6 +647,9 @@ static void FixIndustry(OldIndustry *o, int num)
 		if (o->xy == 0)
 			continue;
 
+		if (!AddBlockIfNeeded(&_industry_pool, j))
+			error("Industries: failed loading savegame: too many industries");
+
 		i = GetIndustry(j);
 
 		i->xy = o->xy;

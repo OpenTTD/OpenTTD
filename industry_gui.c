@@ -493,7 +493,7 @@ static byte _industry_sort_order;
 static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	char buf1[96];
-	byte val;
+	uint16 val;
 	Industry *i = GetIndustry(*(const uint16*)a);
 	Industry *j = GetIndustry(*(const uint16*)b);
 	int r = 0;
@@ -557,7 +557,7 @@ static void MakeSortedIndustryList(void)
 	int n = 0;
 
 	/* Create array for sorting */
-	_industry_sort = realloc(_industry_sort, _industries_size * sizeof(_industry_sort[0]));
+	_industry_sort = realloc(_industry_sort, GetIndustryPoolSize() * sizeof(_industry_sort[0]));
 	if (_industry_sort == NULL)
 		error("Could not allocate memory for the industry-sorting-list");
 
