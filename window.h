@@ -91,7 +91,7 @@ union WindowEvent {
 
 	struct {
 		byte event;
-		byte *str;
+		char *str;
 	} edittext;
 
 	struct {
@@ -228,7 +228,7 @@ typedef struct {
 	WindowClass wnd_class;
 	WindowNumber wnd_num;
 	uint16 maxlen, maxwidth;
-	byte *buf;
+	char *buf;
 } querystr_d;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)

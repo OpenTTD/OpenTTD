@@ -160,7 +160,7 @@ change_int:
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		if (*b == 0)
 			return;
 		memcpy(_decode_parameters, b, 32);
@@ -431,7 +431,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		if (*b == 0)
 			return;
 		memcpy(_decode_parameters, b, 32);

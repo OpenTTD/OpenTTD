@@ -219,7 +219,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		if (*b == 0)
 			return;
 
@@ -1180,7 +1180,7 @@ do_change_service_int:
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		if (*b == 0)
 			return;
 		memcpy(_decode_parameters, b, 32);

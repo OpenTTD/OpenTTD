@@ -45,14 +45,14 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 int DrawStringCentered(int x, int y, uint16 str, uint16 color);
 int DrawString(int x, int y, uint16 str, uint16 color);
 void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color);
-int DoDrawString(const byte *string, int x, int y, uint16 color);
+int DoDrawString(const char *string, int x, int y, uint16 color);
 void DrawStringRightAligned(int x, int y, uint16 str, uint16 color);
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 void DrawFrameRect(int left, int top, int right, int bottom, int color, int flags);
 uint16 GetDrawStringPlayerColor(byte player);
 
-int GetStringWidth(const byte *str);
+int GetStringWidth(const char *str);
 void LoadStringWidthTable(void);
 void DrawStringMultiCenter(int x, int y, uint16 str, int maxw);
 void DrawStringMultiLine(int x, int y, uint16 str, int maxw);

@@ -61,7 +61,7 @@ void HandleOnEditTextCancel(void)
 }
 
 void HandleOnEditText(WindowEvent *e) {
-	byte *b = e->edittext.str;
+	const char *b = e->edittext.str;
 	int id;
 	memcpy(_decode_parameters, b, 32);
 

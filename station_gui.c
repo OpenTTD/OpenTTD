@@ -509,7 +509,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 		Station *st;
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		if (*b == 0)
 			return;
 		memcpy(_decode_parameters, b, 32);

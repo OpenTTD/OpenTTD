@@ -1465,7 +1465,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 			int val;
-			byte *b = e->edittext.str;
+			const char *b = e->edittext.str;
 			switch (WP(w,def_d).data_2) {
 				case 0:
 					val = atoi(b);

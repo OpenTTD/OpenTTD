@@ -24,7 +24,7 @@
 #define BGC 5
 #define BTC 15
 #define MAX_QUERYSTR_LEN 64
-static byte _edit_str_buf[MAX_QUERYSTR_LEN*2];
+static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
 static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(void);
 
@@ -611,7 +611,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const char *b = e->edittext.str;
 		ttd_strlcpy(_network_server_password, b, sizeof(_network_server_password));
 		if (_network_server_password[0] == '\0') {
 			_network_game_info.use_password = 0;
@@ -1373,7 +1373,7 @@ press_ok:;
 			if (strcmp(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) == 0) {
 				DeleteWindow(w);
 			} else {
-				byte *buf = WP(w,querystr_d).buf;
+				char *buf = WP(w,querystr_d).buf;
 				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
 				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
 				Window *parent;

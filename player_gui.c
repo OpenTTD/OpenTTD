@@ -639,7 +639,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		char *b = (char*)e->edittext.str;
+		char *b = e->edittext.str;
 
 		if (*b == 0 && WP(w,def_d).byte_1 != 2) // empty string is allowed for password
 			return;

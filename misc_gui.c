@@ -901,7 +901,7 @@ press_ok:;
 					!_do_edit_on_text_even_when_no_change_to_edit_box) {
 				DeleteWindow(w);
 			} else {
-				byte *buf = WP(w,querystr_d).buf;
+				char *buf = WP(w,querystr_d).buf;
 				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
 				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
 				Window *parent;
@@ -978,7 +978,7 @@ static const WindowDesc _query_string_desc = {
 	QueryStringWndProc
 };
 
-static byte _edit_str_buf[MAX_QUERYSTR_LEN*2];
+static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
 
 void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number)
 {

@@ -291,12 +291,12 @@ void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color)
 	GfxFillRect(x-(w>>1), y+10, x-(w>>1)+w, y+10, _string_colorremap[1]);
 }
 
-static uint32 FormatStringLinebreaks(byte *str, int maxw)
+static uint32 FormatStringLinebreaks(char *str, int maxw)
 {
 	int num = 0;
 	int base = _stringwidth_base;
 	int w;
-	byte *last_space;
+	char *last_space;
 	byte c;
 
 	for(;;) {
@@ -336,7 +336,7 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 {
 	uint32 tmp;
 	int num, w, mt, t;
-	byte *src;
+	const char *src;
 	byte c;
 
 	GetString(str_buffr, str);
@@ -382,7 +382,7 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
 	uint32 tmp;
 	int num, w, mt, t;
-	byte *src;
+	const char *src;
 	byte c;
 
 	GetString(str_buffr, str);
@@ -422,7 +422,8 @@ void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
 	}
 }
 
-int GetStringWidth(const byte *str) {
+int GetStringWidth(const char *str)
+{
 	int w = -1;
 	byte c;
 	int base = _stringwidth_base;
@@ -475,7 +476,8 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 	}
 }
 
-int DoDrawString(const byte *string, int x, int y, uint16 real_color) {
+int DoDrawString(const char *string, int x, int y, uint16 real_color)
+{
 	DrawPixelInfo *dpi = _cur_dpi;
 	int base = _stringwidth_base;
 	byte c;
@@ -539,10 +541,10 @@ skip_cont:;
 			color = (byte)(c - ASCII_COLORSTART);
 			goto switch_color;
 		} else if (c == ASCII_SETX) { // {SETX}
-			x = xo + *string++;
+			x = xo + (byte)*string++;
 		} else if (c == ASCII_SETXY) {// {SETXY}
-			x = xo + *string++;
-			y = yo + *string++;
+			x = xo + (byte)*string++;
+			y = yo + (byte)*string++;
 		} else if (c == ASCII_TINYFONT) { // {TINYFONT}
 			base = 0xE0;
 		} else if (c == ASCII_BIGFONT) { // {BIGFONT}

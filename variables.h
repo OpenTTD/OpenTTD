@@ -431,7 +431,7 @@ extern const byte _airport_size_x[5];
 extern const byte _airport_size_y[5];
 
 /* misc */
-VARDEF byte str_buffr[512];
+VARDEF char str_buffr[512];
 VARDEF char _screenshot_name[128];
 #define USERSTRING_LEN 128
 VARDEF char _userstring[USERSTRING_LEN];
