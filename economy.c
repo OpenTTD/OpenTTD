@@ -142,7 +142,8 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		}
 
 		_score_part[owner][SCORE_VEHICLES] = num;
-		_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
+		if (min_profit > 0)
+			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
 	}
 
 /* Count stations */
