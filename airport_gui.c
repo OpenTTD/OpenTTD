@@ -69,6 +69,16 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		if (e->click.widget - 3 >= 0)
 			_build_air_button_proc[e->click.widget - 3](w);
 		break;
+		
+	case WE_KEYPRESS: {
+		switch (e->keypress.keycode) {
+			case '1': BuildAirClick_Airport(w); break;
+			case '2': BuildAirClick_Demolish(w); break;
+			case 'l': BuildAirClick_Landscaping(w); break;
+			default:
+				return;
+		}
+	} break;
 
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
