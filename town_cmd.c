@@ -31,7 +31,7 @@ static void TownPoolNewBlock(uint start_item)
 	Town *t;
 
 	FOR_ALL_TOWNS_FROM(t, start_item)
-			t->index = start_item++;
+		t->index = start_item++;
 }
 
 /* Initialize the town-pool */
@@ -1970,6 +1970,8 @@ static void Save_TOWN(void)
 static void Load_TOWN(void)
 {
 	int index;
+
+	_total_towns = 0;
 
 	while ((index = SlIterateArray()) != -1) {
 		Town *t;
