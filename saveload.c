@@ -1134,11 +1134,13 @@ init_err:
 	return SL_OK;
 }
 
+#ifdef WIN32
 bool EmergencySave(void)
 {
 	SaveOrLoad("crash.sav", SL_SAVE);
 	return true;
 }
+#endif
 
 void DoExitSave(void)
 {
