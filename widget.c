@@ -69,12 +69,13 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		}
 		case  WWT_HSCROLLBAR: {
 			// horizontal scroller
-			assert(wi->type == WWT_HSCROLLBAR);
+			w->flags4 &= ~WF_SCROLL2;
 			w->flags4 |= WF_HSCROLL;
 			mi = wi->left;
 			ma = wi->right;
 			pos = x;
 			sb = &w->hscroll;
+			break;
 		}
 		default: return; //this should never happen
 	}
@@ -394,10 +395,16 @@ void DrawWindowWidgets(Window *w)
 
 		case WWT_STICKYBOX: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (cur_click & 1) ? 0x20 : 0);
-			DrawSprite((cur_click & 1) ? SPR_PIN_UP :SPR_PIN_DOWN, r.left + 2, r.top + 3);
+			DrawSprite((cur_click & 1) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2, r.top + 3);
 			break;
 		}
-		
+
+		case WWT_RESIZEBOX: {
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
+			DrawSprite(SPR_WINDOW_RESIZE, r.left + 2, r.top + 3);
+			break;
+		}
+
 		case WWT_CAPTION: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0x10);
 			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? 0x60 : 0x70);
@@ -436,8 +443,8 @@ static WindowNumber _dropdown_windownum;
 static byte _dropdown_var1;
 static byte _dropdown_var2;
 
-static Widget _dropdown_menu_widgets[] = {
-{     WWT_IMGBTN,     0,     0, 0,     0, 0, 0x0, STR_NULL},
+static const Widget _dropdown_menu_widgets[] = {
+{     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -478,10 +485,10 @@ void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			sel    = _dropdown_selindex;
 			dis    = _dropdown_disabled;
 			hidden = _dropdown_hide_disabled;
-		
+
 
 			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
-				if (!(hidden) | !(dis & 1)) {
+				if (!(hidden && (dis & 1))) {
 					if (_dropdown_items[i] != 0) {
 						if (sel == 0) {
 							GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
@@ -563,7 +570,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 {
 	WindowNumber num;
 	WindowClass cls;
-	int i,t1,t2;
+	int i;
 	const Widget *wi;
 	Window *w2;
 	uint32 old_click_state = w->click_state;
@@ -610,17 +617,18 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		}
 	}
 
-	_dropdown_menu_widgets[0].color = wi->color;
-
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
 		w->top + wi->bottom + 2,
-		(_dropdown_menu_widgets[0].right=t1=wi->right - wi[-1].left, t1 + 1),
-		(_dropdown_menu_widgets[0].bottom=t2=i*10+3, t2+1),
+		wi->right - wi[-1].left + 1,
+		i * 10 + 4,
 		DropdownMenuWndProc,
 		0x3F,
 		_dropdown_menu_widgets);
 
+	w2->widget[0].color = wi->color;
+	w2->widget[0].right = wi->right - wi[-1].left;
+	w2->widget[0].bottom = i * 10 + 3;
 
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 }

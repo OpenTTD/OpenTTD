@@ -88,7 +88,7 @@ void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
 	if (!(vl->flags & VL_REBUILD)) return;
 
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
-		owner, station);	
+		owner, station);
 
 	if (station != -1) {
 		const Vehicle *v;
@@ -311,14 +311,14 @@ int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 #define ENGINE_AVAILABLE ((e->flags & 1 && HASBIT(info->railtype_climates, _opt.landscape)) || HASBIT(e->player_avail, _local_player))
 
 /*  if show_outdated is selected, it do not sort psudo engines properly but it draws all engines
- *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that 
+ *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that
  *  this was a big hack even before show_outdated was added. Stupid newgrf :p										*/
-static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *selected_id, byte railtype, 
+static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *selected_id, byte railtype,
 	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated)
 {
 	int i;
 	byte colour;
-	
+
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		const Engine *e = DEREF_ENGINE(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
@@ -326,7 +326,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 
 		if ( rvi->power == 0 && !(show_cars) )   // disables display of cars (works since they do not have power)
 			continue;
-			
+
 		if (*sel == 0) *selected_id = i;
 
 
@@ -335,12 +335,12 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 			if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 				continue;
-		} /*else { 
+		} /*else {
 		// TODO find a nice red colour for vehicles being replaced
 			if ( _autoreplace_array[i] != i )
 				colour = *sel == 0 ? 0x44 : 0x45;
 		} */
-				
+
 		if (IS_INT_INSIDE(--*pos, -lines_drawn, 0)) {
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),
 				colour);
@@ -361,14 +361,14 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 	int count = 0;
 	int count2 = 0;
 	int engine_id;
-				
+
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
 			railtype = WP(w,replaceveh_d).railtype;
 			for (engine_id = 0; engine_id < NUM_TRAIN_ENGINES; engine_id++) {
 				const Engine *e = DEREF_ENGINE(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
-							
+
 				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype) {
 					count++;
 					if (sel[0]==0)  selected_id[0] = engine_id;
@@ -394,16 +394,16 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				if (ENGINE_AVAILABLE) {
 					if (sel[0]==0)  selected_id[0] = engine_id;
 					count++;
-					sel[0]--;							
+					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
-					
+
 			if ( selected_id[0] != -1 ) {   // only draw right array if we have anything in the left one
 				num = NUM_ROAD_ENGINES;
 				engine_id = ROAD_ENGINES_INDEX;
 				e = &_engines[ROAD_ENGINES_INDEX];
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
-					
+
 				do {
 					if ( cargo == RoadVehInfo(engine_id)->cargo_type && HASBIT(e->player_avail, _local_player)) {
 						count2++;
@@ -411,14 +411,14 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 						sel[1]--;
 					}
 				} while (++engine_id,++e,--num);
-			}					
+			}
 			break;
 		}
-	
+
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
 			Engine *e = &_engines[SHIP_ENGINES_INDEX];
-			byte cargo, refittable; 
+			byte cargo, refittable;
 			EngineInfo *info;
 			engine_id = SHIP_ENGINES_INDEX;
 
@@ -427,21 +427,21 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				if (ENGINE_AVAILABLE) {
 					if ( sel[0] == 0 )  selected_id[0] = engine_id;
 					count++;
-					sel[0]--;							
+					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
-					
+
 			if ( selected_id[0] != -1 ) {
 				num = NUM_SHIP_ENGINES;
 				e = &_engines[SHIP_ENGINES_INDEX];
 				engine_id = SHIP_ENGINES_INDEX;
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
-					
-				do {											
-					if (HASBIT(e->player_avail, _local_player) 
+
+				do {
+					if (HASBIT(e->player_avail, _local_player)
 					&& ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-									
+
 						if ( sel[1]==0)  selected_id[1] = engine_id;
 						sel[1]--;
 						count2++;
@@ -450,7 +450,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			}
 			break;
 		}   //end of ship
-				
+
 		case VEH_Aircraft:{
 			int num = NUM_AIRCRAFT_ENGINES;
 			byte subtype;
@@ -466,7 +466,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
-					
+
 			if ( selected_id[0] != -1 ) {
 				num = NUM_AIRCRAFT_ENGINES;
 				e = &_engines[AIRCRAFT_ENGINES_INDEX];
@@ -490,7 +490,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 	SetVScroll2Count(w, count2);
 	WP(w,replaceveh_d).sel_engine[0] = selected_id[0];
 	WP(w,replaceveh_d).sel_engine[1] = selected_id[1];
-	
+
 	WP(w,replaceveh_d).count[0] = count;
 	WP(w,replaceveh_d).count[1] = count2;
 	return;
@@ -498,7 +498,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 
 static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int y2, int pos, int pos2,
-	int sel1, int sel2, int selected_id1, int selected_id2) 
+	int sel1, int sel2, int selected_id1, int selected_id2)
 {
 	int sel[2] = {sel1, sel2};
 	int selected_id[2] = {selected_id1, selected_id2};
@@ -518,16 +518,16 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false); // Feeble wagons
 			break;
 		}
-			
+
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
 			Engine *e = &_engines[ROAD_ENGINES_INDEX];
 			int engine_id = ROAD_ENGINES_INDEX;
 			byte cargo;
 			EngineInfo *info;
-				
+
 			if ( selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] <= SHIP_ENGINES_INDEX ) {
-				cargo = RoadVehInfo(selected_id[0])->cargo_type; 
+				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
 					info = &_engine_info[engine_id];
@@ -537,7 +537,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 							DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 							y += 14;
 						}
-					
+
 						if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
 							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
 								DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
@@ -552,18 +552,18 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			}
 			break;
 		}
-				
+
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
 			Engine *e = &_engines[SHIP_ENGINES_INDEX];
 			int engine_id = SHIP_ENGINES_INDEX;
-			byte cargo, refittable;  
+			byte cargo, refittable;
 			EngineInfo *info;
 
 			if ( selected_id[0] != -1 ) {
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
-				
+
 				do {
 					info = &_engine_info[engine_id];
 					if (ENGINE_AVAILABLE) {
@@ -588,7 +588,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			}
 			break;
 		}   //end of ship
-			
+
 		case VEH_Aircraft: {
 			if ( selected_id[0] != -1 ) {
 				int num = NUM_AIRCRAFT_ENGINES;
@@ -633,7 +633,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 	byte click_side = 1;
 
 	switch(e->event) {
-		case WE_PAINT:	
+		case WE_PAINT:
 			{
 				int pos = w->vscroll.pos;
 				int selected_id[2] = {-1,-1};
@@ -643,12 +643,12 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int x2 = 1 + 228;
 				int y2 = 15;
 				int sel[2] = { WP(w,replaceveh_d).sel_index[0], WP(w,replaceveh_d).sel_index[1]};
-			
+
 				SetupScrollStuffForReplaceWindow(w);
-			
+
 				selected_id[0] = WP(w,replaceveh_d).sel_engine[0];
 				selected_id[1] = WP(w,replaceveh_d).sel_engine[1];
-			
+
 			// sets the selected left item to the top one if it's greater than the number of vehicles in the left side
 
 				if ( WP(w,replaceveh_d).count[0] <= sel[0] ) {
@@ -676,23 +676,23 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						selected_id[1] = -1;
 					}
 				}
-		
+
 				if ( selected_id[0] == selected_id[1] || _autoreplace_array[selected_id[0]] == selected_id[1]
 					|| selected_id[0] == -1 || selected_id[1] == -1 )
 					SETBIT(w->disabled_state, 4);
 				else
 					CLRBIT(w->disabled_state, 4);
-			
+
 				if ( _autoreplace_array[selected_id[0]] == selected_id[0] || selected_id[0] == -1 )
 					SETBIT(w->disabled_state, 6);
 				else
 					CLRBIT(w->disabled_state, 6);
-		
+
 				// now the actual drawing of the window itself takes place
 				DrawWindowWidgets(w);
-		
-		
-		
+
+
+
 				// sets up the string for the vehicle that is being replaced to
 				if ( selected_id[0] != -1 ) {
 					if ( selected_id[0] == _autoreplace_array[selected_id[0]] )
@@ -702,14 +702,14 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				} else {
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 				}
-					
-					
+
+
 				DrawString(145, (WP(w,replaceveh_d).line_height == 24 ? 67 : 77 ) + ( WP(w,replaceveh_d).line_height * w->vscroll.cap), STR_02BD, 0x10);
 
-		
+
 				/*	now we draw the two arrays according to what we just counted */
 				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
-				
+
 				WP(w,replaceveh_d).sel_engine[0] = selected_id[0];
 				WP(w,replaceveh_d).sel_engine[1] = selected_id[1];
 				/* now we draw the info about the vehicles we selected */
@@ -717,7 +717,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					case VEH_Train: {
 						byte i = 0;
 						int offset = 0;
-				
+
 						for ( i = 0 ; i < 2 ; i++) {
 							if ( i )
 							offset = 228;
@@ -735,7 +735,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						}
 						break;
 					}   //end if case  VEH_Train
-			
+
 					case VEH_Road: {
 						if (selected_id[0] != -1) {
 							Set_DPARAM_Road_Veh_Build_Window(selected_id[0]);
@@ -747,7 +747,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						}
 						break;
 					}   // end of VEH_Road
-			
+
 					case VEH_Ship: {
 						if (selected_id[0] != -1) {
 							Set_DPARAM_Ship_Build_Window(selected_id[0]);
@@ -758,8 +758,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 							}
 						}
 						break;
-					}   // end of VEH_Ship 
-			
+					}   // end of VEH_Ship
+
 					case VEH_Aircraft: {
 						if (selected_id[0] != -1) {
 							Set_DPARAM_Aircraft_Build_Window(selected_id[0]);
@@ -779,7 +779,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				/*case 0:
 					DeleteWindowById(WC_REPLACE_VEHICLE, WP(w,replaceveh_d).vehicletype );
 					break;*/
-			
+
 				case 14: case 15:/* Select sorting criteria dropdown menu */
 				// finds mask for available engines
 				{
@@ -797,14 +797,14 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 				}
-				
+
 				case 6: {
 					_autoreplace_array[WP(w,replaceveh_d).sel_engine[0]] = WP(w,replaceveh_d).sel_engine[0];
 					SetWindowDirty(w);
 					break;
 				}
-			
-				case 7: 
+
+				case 7:
 					// sets up that the left one was clicked. The default values are for the right one (9)
 					// this way, the code for 9 handles both sides
 					click_scroll_pos = w->vscroll.pos;
@@ -818,78 +818,87 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 			}
-		   
+
 		} break;
 
 		case WE_DROPDOWN_SELECT: { /* we have selected a dropdown item in the list */
 			//potiential bug: railtypes needs to be activated 0, 1, 2... If one is skipped, it messes up
-			WP(w,replaceveh_d).railtype = e->dropdown.index;	
+			WP(w,replaceveh_d).railtype = e->dropdown.index;
 			SetWindowDirty(w);
-			break;
-		}
+		} break;
+
+		case WE_RESIZE: {
+			w->vscroll.cap  += e->sizing.diff.y / (int)w->resize.step_height;
+			w->vscroll2.cap += e->sizing.diff.y / (int)w->resize.step_height;
+
+			w->widget[7].unkA = (w->vscroll.cap  << 8) + 1;
+			w->widget[9].unkA = (w->vscroll2.cap << 8) + 1;
+		} break;
 	}
 }
 
 static const Widget _replace_rail_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   444,   455,     0,    13, 0x0,						STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   227,   126,   187, 0x0,						STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   138,   200,   211, STR_REPLACE_VEHICLES_START,STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,    14,   139,   316,   188,   199, 0x0,						STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,    14,   317,   455,   200,   211, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX,    14,     0,   216,    14,   125, 0x801,			STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR,    14,   217,   227,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX,    14,   228,   455,    14,   125, 0x801,			STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR,    14,   445,   455,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    14,   228,   455,   126,   187, 0x0,			STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,		STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, 0x0,						STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   187, 0x0,						STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   200,   211, STR_REPLACE_VEHICLES_START,STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   316,   188,   199, 0x0,						STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   444,   200,   211, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   216,    14,   125, 0x801,			STR_REPLACE_HELP_LEFT_ARRAY},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   217,   227,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   455,    14,   125, 0x801,			STR_REPLACE_HELP_RIGHT_ARRAY},
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   445,   455,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   187, 0x0,			STR_NULL},
 // the rest are train specific stuff
-{      WWT_PANEL,    14,     0,   138,   188,   199, 0x0,			STR_NULL},
-{      WWT_PANEL,     3,   139,   153,   200,   211, 0x0,			STR_NULL},
-{      WWT_PANEL,    14,   154,   290,   200,   211, 0x0,			STR_REPLACE_HELP_RAILTYPE},
-{   WWT_CLOSEBOX,    14,   291,   301,   200,   210, STR_0225,		STR_REPLACE_HELP_RAILTYPE},
-{      WWT_PANEL,     3,   301,   316,   200,   211, 0x0,			STR_NULL},
-{      WWT_PANEL,    14,   317,   455,   188,   199, 0x0,			STR_NULL},
-
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   138,   188,   199, 0x0,			STR_NULL},
+{      WWT_PANEL,     RESIZE_TB,     3,   139,   153,   200,   211, 0x0,			STR_NULL},
+{      WWT_PANEL,     RESIZE_TB,    14,   154,   289,   200,   211, 0x0,			STR_REPLACE_HELP_RAILTYPE},
+{   WWT_CLOSEBOX,     RESIZE_TB,    14,   279,   287,   201,   210, STR_0225,		STR_REPLACE_HELP_RAILTYPE},
+{      WWT_PANEL,     RESIZE_TB,     3,   290,   305,   200,   211, 0x0,			STR_NULL},
+{      WWT_PANEL,     RESIZE_TB,    14,   317,   455,   188,   199, 0x0,			STR_NULL},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   445,   455,   200,   211, 0x0,												STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _replace_road_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   444,   455,     0,    13, 0x0,						STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   227,   126,   187, 0x0,						STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   138,   188,   199, STR_REPLACE_VEHICLES_START,STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,    14,   139,   316,   188,   199, 0x0,						STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,    14,   317,   455,   188,   199, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX,    14,     0,   216,    14,   125, 0x801,			STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR,    14,   217,   227,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX,    14,   228,   455,    14,   125, 0x801,			STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR,    14,   445,   455,    14,   125, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    14,   228,   455,   126,   187, 0x0,			STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, 0x0,												STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   187, 0x0,												STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   188,   199, STR_REPLACE_VEHICLES_START,	STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   188,   199, 0x0,												STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   444,   188,   199, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   216,    14,   125, 0x801,											STR_REPLACE_HELP_LEFT_ARRAY},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   217,   227,    14,   125, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   455,    14,   125, 0x801,											STR_REPLACE_HELP_RIGHT_ARRAY},
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   445,   455,    14,   125, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   187, 0x0,												STR_NULL},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   445,   455,   188,   199, 0x0,												STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _replace_ship_aircraft_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   444,   455,     0,    13, 0x0,						STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   227,   110,   161, 0x0,						STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   138,   162,   173, STR_REPLACE_VEHICLES_START,STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,    14,   139,   316,   162,   173, 0x0,						STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,    14,   317,   455,   162,   173, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX,    14,     0,   216,    14,   109, 0x401,			STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR,    14,   217,   227,    14,   109, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX,    14,   228,   455,    14,   109, 0x401,			STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR,    14,   445,   455,    14,   109, 0x0,			STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    14,   228,   455,   110,   161, 0x0,			STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, 0x0,												STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   110,   161, 0x0,												STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   162,   173, STR_REPLACE_VEHICLES_START,	STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   162,   173, 0x0,												STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   444,   162,   173, STR_REPLACE_VEHICLES_STOP,	STR_REPLACE_HELP_STOP_BUTTON},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   216,    14,   109, 0x401,											STR_REPLACE_HELP_LEFT_ARRAY},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   217,   227,    14,   109, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   455,    14,   109, 0x401,											STR_REPLACE_HELP_RIGHT_ARRAY},
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   445,   455,    14,   109, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   110,   161, 0x0,												STR_NULL},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   445,   455,   162,   173, 0x0,												STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _replace_rail_vehicle_desc = {
 	-1, -1, 456, 212,
 	WC_REPLACE_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_rail_vehicle_widgets,
 	ReplaceVehicleWndProc
 };
@@ -897,7 +906,7 @@ static const WindowDesc _replace_rail_vehicle_desc = {
 static const WindowDesc _replace_road_vehicle_desc = {
 	-1, -1, 456, 200,
 	WC_REPLACE_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_road_vehicle_widgets,
 	ReplaceVehicleWndProc
 };
@@ -905,7 +914,7 @@ static const WindowDesc _replace_road_vehicle_desc = {
 static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 	-1, -1, 456, 174,
 	WC_REPLACE_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_ship_aircraft_vehicle_widgets,
 	ReplaceVehicleWndProc
 };
@@ -914,23 +923,26 @@ static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 void ShowReplaceVehicleWindow(byte vehicletype)
 {
 	Window *w;
-	
+
 	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype );
-	
+
 	switch (vehicletype) {
 		case VEH_Train:
 			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
+			w->resize.step_height = 14;
 			WP(w,replaceveh_d).line_height = 14;
 			break;
 		case VEH_Road:
 			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
+			w->resize.step_height = 14;
 			WP(w,replaceveh_d).line_height = 14;
 			break;
 		case VEH_Ship: case VEH_Aircraft:
 			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 4;
+			w->resize.step_height = 24;
 			WP(w,replaceveh_d).line_height = 24;
 			break;
 		default: return;

@@ -11,68 +11,28 @@
 #include "town.h"
 #include "sound.h"
 
-static const Widget _smallmap_megabig_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   580,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   581,   592,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    13,   593,   606,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
-{     WWT_IMGBTN,    13,     0,   606,    14,   407, 0x0,					STR_NULL},
-{          WWT_6,    13,     2,   604,    16,   405, 0x0,					STR_NULL},
-{     WWT_IMGBTN,    13,   541,   562,   408,   429, 0x2E2,				STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
-{     WWT_IMGBTN,    13,   563,   584,   408,   429, 0x2E3,				STR_0192_SHOW_VEHICLES_ON_MAP},
-{     WWT_IMGBTN,    13,   585,   606,   408,   429, 0x2E5,				STR_0193_SHOW_INDUSTRIES_ON_MAP},
-{     WWT_IMGBTN,    13,   519,   540,   430,   451, 0x2E4,				STR_0194_SHOW_TRANSPORT_ROUTES_ON},
-{     WWT_IMGBTN,    13,   541,   562,   430,   451, 0x2E6,				STR_0195_SHOW_VEGETATION_ON_MAP},
-{     WWT_IMGBTN,    13,   563,   584,   430,   451, 0x2E7,				STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{     WWT_IMGBTN,    13,   585,   606,   430,   451, 0xFED,				STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    13,     0,   518,   408,   451, 0x0,					STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    13,   519,   540,   408,   429, 0x0,					STR_NULL},
-{   WIDGETS_END},
-};
-
-static const Widget _smallmap_big_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   419,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   420,   431,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    13,   432,   445,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
-{     WWT_IMGBTN,    13,     0,   445,    14,   257, 0x0,					STR_NULL},
-{          WWT_6,    13,     2,   443,    16,   255, 0x0,					STR_NULL},
-{     WWT_IMGBTN,    13,   380,   401,   258,   279, 0x2E2,				STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
-{     WWT_IMGBTN,    13,   402,   423,   258,   279, 0x2E3,				STR_0192_SHOW_VEHICLES_ON_MAP},
-{     WWT_IMGBTN,    13,   424,   445,   258,   279, 0x2E5,				STR_0193_SHOW_INDUSTRIES_ON_MAP},
-{     WWT_IMGBTN,    13,   380,   401,   280,   301, 0x2E4,				STR_0194_SHOW_TRANSPORT_ROUTES_ON},
-{     WWT_IMGBTN,    13,   402,   423,   280,   301, 0x2E6,				STR_0195_SHOW_VEGETATION_ON_MAP},
-{     WWT_IMGBTN,    13,   424,   445,   280,   301, 0x2E7,				STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{     WWT_IMGBTN,    13,   358,   379,   280,   301, 0xFED,				STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    13,     0,   357,   258,   301, 0x0,					STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    13,   358,   379,   258,   279, 0x0,					STR_NULL},
-{   WIDGETS_END},
-};
-
-
-static const Widget _smallmap_small_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   221,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   222,   233,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    13,   234,   247,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
-{     WWT_IMGBTN,    13,     0,   225,    14,   167, 0x0,					STR_NULL},
-{          WWT_6,    13,     2,   223,    16,   165, 0x0,					STR_NULL},
-{     WWT_IMGBTN,    13,   226,   247,    14,    35, 0x2E2,				STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
-{     WWT_IMGBTN,    13,   226,   247,    36,    57, 0x2E3,				STR_0192_SHOW_VEHICLES_ON_MAP},
-{     WWT_IMGBTN,    13,   226,   247,    58,    79, 0x2E5,				STR_0193_SHOW_INDUSTRIES_ON_MAP},
-{     WWT_IMGBTN,    13,   226,   247,    80,   101, 0x2E4,				STR_0194_SHOW_TRANSPORT_ROUTES_ON},
-{     WWT_IMGBTN,    13,   226,   247,   102,   123, 0x2E6,				STR_0195_SHOW_VEGETATION_ON_MAP},
-{     WWT_IMGBTN,    13,   226,   247,   124,   145, 0x2E7,				STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{     WWT_IMGBTN,    13,   226,   247,   146,   167, 0xFED,				STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    13,     0,   247,   168,   211, 0x0,					STR_NULL},
+static const Widget _smallmap_widgets[] = {
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,         STR_STICKY_BUTTON},
+{     WWT_IMGBTN,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,					STR_NULL},
+{          WWT_6,     RESIZE_RB,    13,     2,   443,    16,   255, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   258,   279, 0x2E2,				STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   258,   279, 0x2E3,				STR_0192_SHOW_VEHICLES_ON_MAP},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   258,   279, 0x2E5,				STR_0193_SHOW_INDUSTRIES_ON_MAP},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   280,   301, 0x2E4,				STR_0194_SHOW_TRANSPORT_ROUTES_ON},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   280,   301, 0x2E6,				STR_0195_SHOW_VEGETATION_ON_MAP},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   280,   301, 0x2E7,				STR_0196_SHOW_LAND_OWNERS_ON_MAP},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   280,   301, 0xFED,				STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
+{     WWT_IMGBTN,    RESIZE_RTB,    13,     0,   357,   258,   301, 0x0,					STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    13,     0,   433,   302,   313, 0x0,					STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   434,   445,   302,   313, 0x0,					STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static int _smallmap_type;
-static byte _smallmap_size;
 static bool _smallmap_show_towns = true;
-
-static void DoShowSmallMap(int big);
 
 #define MK(a,b) a,b
 #define MKEND() 0xffff
@@ -848,7 +808,6 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		int x,y,y_org;
 		DrawPixelInfo new_dpi;
 
-
 		/* draw the window */
 		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
 		DrawWindowWidgets(w);
@@ -856,9 +815,9 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		/* draw the legend */
 		tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
 		x = 4;
-		y_org = w->height - 43;
+		y_org = w->height - 43 - 11;
 		y = y_org;
-		while(1) {
+		while (true) {
 			GfxFillRect(x, y+1, x+8, y + 5, 0);
 			GfxFillRect(x+1, y+2, x+7, y + 4, (byte)tbl[0]);
 			DrawString(x+11, y, tbl[1], 0);
@@ -874,7 +833,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		if (!FillDrawPixelInfo(&new_dpi, NULL, 3, 17, w->width - 28 + (w->widget == _smallmap_small_widgets ? 0 : 22), w->height - 64))
+		if (!FillDrawPixelInfo(&new_dpi, NULL, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
 			return;
 
 		DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);
@@ -882,18 +841,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 3: {/* big/small size */
-			// const Widget *wi = w->widget;
-			DeleteWindow(w);
-			SndPlayFx(SND_15_BEEP);
-			{
-				int i = _smallmap_size + 1;
-				if (i == 3) i = 0;
-				DoShowSmallMap(i);
-			}
-		} break;
-
-		case 5: {/* main wnd */
+		case 4: {/* main wnd */
 			Window *w2;
 			Point pt;
 
@@ -906,15 +854,15 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			WP(w2,vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 		} break;
 
-		case 6: /* show land contours */
-		case 7: /* show vehicles */
-		case 8: /* show industries */
-		case 9: /* show transport routes */
-		case 10: /* show vegetation */
-		case 11: /* show land owners */
-			w->click_state &= ~(1<<6|1<<7|1<<8|1<<9|1<<10|1<<11);
+		case 5: /* show land contours */
+		case 6: /* show vehicles */
+		case 7: /* show industries */
+		case 8: /* show transport routes */
+		case 9: /* show vegetation */
+		case 10: /* show land owners */
+			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
 			w->click_state |= 1 << e->click.widget;
-			_smallmap_type = e->click.widget - 6;
+			_smallmap_type = e->click.widget - 5;
 
 			SetWindowDirty(w);
 			SndPlayFx(SND_15_BEEP);
@@ -930,7 +878,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RCLICK:
-		if (e->click.widget == 5) {
+		if (e->click.widget == 4) {
 			if (_scrolling_viewport)
 				return;
 			_scrolling_viewport = true;
@@ -947,73 +895,50 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const WindowDesc _smallmap_small_desc = {
-	-1,-1, 248, 212,
+static const WindowDesc _smallmap_desc = {
+	-1,-1, 446, 314,
 	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_smallmap_small_widgets,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_smallmap_widgets,
 	SmallMapWindowProc
 };
 
-static const WindowDesc _smallmap_big_desc = {
-	-1,-1, 446, 302,
-	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_smallmap_big_widgets,
-	SmallMapWindowProc
-};
-
-static const WindowDesc _smallmap_megabig_desc = {
-	-1,-1, 607, 452,
-	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
-	_smallmap_megabig_widgets,
-	SmallMapWindowProc
-};
-
-static const WindowDesc * const _smallmap_descs[3] = {
-	&_smallmap_small_desc,
-	&_smallmap_big_desc,
-	&_smallmap_megabig_desc
-};
-
-static void DoShowSmallMap(int big)
+void ShowSmallMap()
 {
 	Window *w;
 	ViewPort *vp;
 	int x,y;
 
-	_smallmap_size = big;
-
-	w = AllocateWindowDescFront(_smallmap_descs[big], 0);
+	w = AllocateWindowDescFront(&_smallmap_desc, 0);
 	if (w) {
-		w->click_state = (1<<6) << _smallmap_type | _smallmap_show_towns << 12;
+		w->click_state = ((1<<5) << _smallmap_type) | (_smallmap_show_towns << 12);
+		w->resize.width = 350;
+		w->resize.height = 250;
+
 		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		x = (((vp->virtual_width - (big?220*32:110*32)) >> 1) + vp->virtual_left) >> 2;
-		y = ((((vp->virtual_height- (big?120*32:75*32)) >> 1) + vp->virtual_top) >> 1) - 32;
+		x =  (((vp->virtual_width - (220*32)) / 2) + vp->virtual_left) / 4;
+		y = ((((vp->virtual_height- (120*32)) / 2) + vp->virtual_top ) / 2) - 32;
 		WP(w,smallmap_d).scroll_x = (y-x) & ~0xF;
 		WP(w,smallmap_d).scroll_y = (x+y) & ~0xF;
 		WP(w,smallmap_d).subscroll = 0;
 	}
 }
 
-void ShowSmallMap()
-{
-	DoShowSmallMap(_smallmap_size);
-}
-
 /* Extra ViewPort Window Stuff */
-static Widget _extra_view_port_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   287,     0,    13, STR_EXTRA_VIEW_PORT_TITLE,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   288,   299,     0,    13, 0x0,       STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   299,    14,   233, 0x0,				STR_NULL},
-{          WWT_6,    14,     2,   297,    16,   231, 0x0,				STR_NULL},
-{      WWT_PANEL,    14,     0,    21,   234,   255, 0x2DF,			STR_017F_ZOOM_THE_VIEW_IN},
-{      WWT_PANEL,    14,    22,    43,   234,   255, 0x2E0,			STR_0180_ZOOM_THE_VIEW_OUT},
-{ WWT_PUSHTXTBTN,    14,    44,   171,   234,   255, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW,STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
-{ WWT_PUSHTXTBTN,    14,   172,   299,   234,   255, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN,STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
+static const Widget _extra_view_port_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   287,     0,    13, STR_EXTRA_VIEW_PORT_TITLE,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   288,   299,     0,    13, 0x0,       STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   299,    14,   233, 0x0,				STR_NULL},
+{          WWT_6,     RESIZE_RB,    14,     2,   297,    16,   231, 0x0,				STR_NULL},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,    21,   234,   255, 0x2DF,			STR_017F_ZOOM_THE_VIEW_IN},
+{      WWT_PANEL,     RESIZE_TB,    14,    22,    43,   234,   255, 0x2E0,			STR_0180_ZOOM_THE_VIEW_OUT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    44,   171,   234,   255, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW,STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   172,   298,   234,   255, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN,STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
+{      WWT_PANEL,    RESIZE_RTB,    14,   299,   299,   234,   255, 0x0,				STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   287,   256,   267, 0x0,				STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   288,   299,   256,   267, 0x0,				STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1032,11 +957,11 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 5: { /* zoom in */
-			DoZoomInOutWindow(ZOOM_IN,w);
+			DoZoomInOutWindow(ZOOM_IN, w);
 		} break;
 
 		case 6: { /* zoom out */
-			DoZoomInOutWindow(ZOOM_OUT,w);
+			DoZoomInOutWindow(ZOOM_OUT, w);
 		} break;
 
 		case 7: { /* location button (move main view to same spot as this view) */
@@ -1045,26 +970,33 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			int y = WP(w,vp_d).scrollpos_y;
 
 			// set this view to same location. Based on the center, adjusting for zoom
-			WP(w2,vp_d).scrollpos_x =  x - (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
-			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (214 << vp->zoom) )/2;
+			WP(w2,vp_d).scrollpos_x =  x - (w2->viewport->virtual_width -  (w->viewport->virtual_width  << vp->zoom)) / 2;
+			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (w->viewport->virtual_height << vp->zoom)) / 2;
 		} break;
 		case 8: { /* inverse location button (move this view to same spot as main view) */
 			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w2,vp_d).scrollpos_x;
 			int y = WP(w2,vp_d).scrollpos_y;
 
-			WP(w,vp_d).scrollpos_x =  x + (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
-			WP(w,vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - (214 << vp->zoom) )/2;
+			WP(w,vp_d).scrollpos_x =  x + (w2->viewport->virtual_width -  (w->viewport->virtual_width  << vp->zoom)) / 2;
+			WP(w,vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - (w->viewport->virtual_height << vp->zoom)) / 2;
 		} break;
 		}
+	} break;
+	case WE_RESIZE: {
+		w->viewport->width  += e->sizing.diff.x;
+		w->viewport->height += e->sizing.diff.y;
+
+		w->viewport->virtual_width  += e->sizing.diff.x;
+		w->viewport->virtual_height += e->sizing.diff.y;
 	} break;
 	}
 }
 
 static const WindowDesc _extra_view_port_desc = {
-	-1,-1, 300, 256,
+	-1,-1, 300, 268,
 	WC_EXTRA_VIEW_PORT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_extra_view_port_widgets,
 	ExtraViewPortWndProc
 };
@@ -1075,15 +1007,15 @@ void ShowExtraViewPortWindow()
 	int i = 0;
 
 	// find next free window number for extra viewport
-	while (FindWindowById(WC_EXTRA_VIEW_PORT,i) ) {
+	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) ) {
 		i++;
 	}
 
-	w = AllocateWindowDescFront(&_extra_view_port_desc,i);
+	w = AllocateWindowDescFront(&_extra_view_port_desc, i);
 	if (w) {
-		int x,y;
+		int x, y;
 		// disable zoom in button
-		w->disabled_state = 1 << 4;
+		w->disabled_state = (1 << 4);
 		// the main window with the main view
 		v = FindWindowById(WC_MAIN_WINDOW, 0);
 		// New viewport start ats (zero,zero)
@@ -1092,7 +1024,7 @@ void ShowExtraViewPortWindow()
 		// center on same place as main window (zoom is maximum, no adjustment needed)
 		x = WP(v,vp_d).scrollpos_x;
 		y = WP(v,vp_d).scrollpos_y;
-		WP(w,vp_d).scrollpos_x =  x + (v->viewport->virtual_width - (294) )/2;
-		WP(w,vp_d).scrollpos_y =  y + (v->viewport->virtual_height - (214)  )/2;
+		WP(w,vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (294)) / 2;
+		WP(w,vp_d).scrollpos_y = y + (v->viewport->virtual_height - (214)) / 2;
 	}
 }

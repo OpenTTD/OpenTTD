@@ -9,8 +9,52 @@ typedef union WindowEvent WindowEvent;
 
 typedef void WindowProc(Window *w, WindowEvent *e);
 
+/* How the resize system works:
+    First, you need to add a WWT_RESIZEBOX to the widgets, and you need
+     to add the flag WDF_RESIZABLE to the window. Now the window is ready
+     to resize itself.
+    As you may have noticed, all widgets have a RESIZE_XXX in their line.
+     This lines controls how the widgets behave on resize. RESIZE_NONE means
+     it doesn't do anything. Any other option let's one of the borders
+     move with the changed width/height. So if a widget has
+     RESIZE_RIGHT, and the window is made 5 pixels wider by the user,
+     the right of the window will also be made 5 pixels wider.
+    Now, what if you want to clamp a widget to the bottom? Give it the flag
+     RESIZE_TB. This is RESIZE_TOP + RESIZE_BOTTOM. Now if the window gets
+     5 pixels bigger, both the top and bottom gets 5 bigger, so the whole
+     widgets moves downwards without resizing, and appears to be clamped
+     to the bottom. Nice aint it?
+   You should know one more thing about this system. Most windows can't
+    handle an increase of 1 pixel. So there is a step function, which
+    let the windowsize only be changed by X pixels. You configure this
+    after making the window, like this:
+      w->resize.step_height = 10;
+    Now the window will only change in height in steps of 10.
+   You can also give a minimum width and height. The default value is
+    the default height/width of the window itself. You can change this
+    AFTER window-creation, with:
+     w->resize.width or w->resize.height.
+   That was all.. good luck, and enjoy :) -- TrueLight */
+
+enum {
+	RESIZE_NONE   = 0,
+
+	RESIZE_LEFT   = 1,
+	RESIZE_RIGHT  = 2,
+	RESIZE_TOP    = 4,
+	RESIZE_BOTTOM = 8,
+
+	RESIZE_LR     = RESIZE_LEFT  | RESIZE_RIGHT,
+	RESIZE_RB     = RESIZE_RIGHT | RESIZE_BOTTOM,
+	RESIZE_TB     = RESIZE_TOP   | RESIZE_BOTTOM,
+	RESIZE_LRB    = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_BOTTOM,
+	RESIZE_LRTB   = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_TOP | RESIZE_BOTTOM,
+	RESIZE_RTB    = RESIZE_RIGHT | RESIZE_TOP    | RESIZE_BOTTOM,
+};
+
 typedef struct Widget {
 	byte type;
+	byte resize_flag;
 	byte color;
 	uint16 left, right, top, bottom;
 	uint16 unkA;
@@ -38,6 +82,12 @@ union WindowEvent {
 		Point pt;
 		int widget;
 	} dragdrop;
+
+	struct {
+		byte event;
+		Point size;
+		Point diff;
+	} sizing;
 
 	struct {
 		byte event;
@@ -163,6 +213,7 @@ enum {
 	WDF_RESTORE_DPARAM = 8, /* when drawing widgets, restore the dparam so all widgets recieve the same set of them */
 	WDF_UNCLICK_BUTTONS=16, /* Unclick buttons when the window event times out */
 	WDF_STICKY_BUTTON  =32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
+	WDF_RESIZABLE      =64, /* A window can be resized */
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
@@ -192,22 +243,32 @@ typedef struct {
 	uint16 count, cap, pos;
 } Scrollbar;
 
+typedef struct {
+	uint width; /* Minimum width and height */
+	uint height;
+
+	uint step_width; /* In how big steps the width and height go */
+	uint step_height;
+} ResizeInfo;
+
 struct Window {
 	uint16 flags4;
 	WindowClass window_class;
 	WindowNumber window_number;
 
-	int left,top;
-	int width,height;
+	int left, top;
+	int width, height;
 
 	Scrollbar hscroll, vscroll, vscroll2;
+	ResizeInfo resize;
 
 	byte caption_color;
 
 	uint32 click_state, disabled_state, hidden_state;
 	WindowProc *wndproc;
 	ViewPort *viewport;
-	const Widget *widget;
+	const Widget *original_widget;
+ 	Widget *widget;
 	//const WindowDesc *desc;
 	uint32 desc_flags;
 
@@ -347,6 +408,7 @@ enum WindowEvents {
 	WE_CREATE = 19,
 	WE_MOUSEOVER = 20,
 	WE_ON_EDIT_TEXT_CANCEL = 21,
+	WE_RESIZE = 22,
 };
 
 
@@ -377,7 +439,8 @@ enum WindowWidgetTypes {
 	WWT_HSCROLLBAR = 11,
 	WWT_STICKYBOX = 12,
 	WWT_SCROLL2BAR = 13,				/* 2nd vertical scrollbar*/
-	WWT_LAST = 14,						/* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_RESIZEBOX = 14,
+	WWT_LAST = 15,						/* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK = 31,
 
@@ -386,7 +449,7 @@ enum WindowWidgetTypes {
 	WWT_NODISTXTBTN = WWT_TEXTBTN	| WWB_NODISBUTTON,
 };
 
-#define WIDGETS_END WWT_LAST,     0,     0,     0,     0,     0, 0, STR_NULL
+#define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL
 
 enum WindowFlags {
 	WF_TIMEOUT_SHL = 0,
@@ -398,7 +461,7 @@ enum WindowFlags {
 	WF_HSCROLL = 1 << 7,
 	WF_SIZING = 1 << 8,
 	WF_STICKY = 1 << 9,
-	
+
 	WF_DISABLE_VP_SCROLL = 1 << 10,
 
 	WF_WHITE_BORDER_ONE = 1 << 11,
@@ -427,6 +490,10 @@ Window *StartWindowDrag(Window *w);
 Window *StartWindowSizing(Window *w);
 Window *FindWindowFromPt(int x, int y);
 
+bool IsWindowOfPrototype(Window *w, const Widget *widget);
+void AssignWidgetToWindow(Window *w, const Widget *widget);
+/* Use this function to save the current widget to be the global default */
+void MakeWindowWidgetDefault(Window *w);
 Window *AllocateWindow(
 							int x,
 							int y,

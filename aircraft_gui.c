@@ -18,7 +18,7 @@ void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
 	Engine *e;
 	YearMonthDay ymd;
-	
+
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
 	SetDParam(1, avi->max_speed * 8);
 	SetDParam(2, avi->passanger_capacity);
@@ -30,7 +30,7 @@ void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
 	SetDParam(7, e->reliability * 100 >> 16);
 	ConvertDayToYMD(&ymd, e->intro_date);
 	SetDParam(5, ymd.year + 1920);
-	
+
 }
 
 static void DrawAircraftImage(Vehicle *v, int x, int y, VehicleID selection)
@@ -95,7 +95,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			do {
 				if (HASBIT(e->player_avail, _local_player)) {
 					if (sel==0) selected_id = engine_id;
-					if (IS_INT_INSIDE(--pos, -4, 0)) {
+					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
 						DrawAircraftEngine(x+29, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 						y += 24;
@@ -109,7 +109,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			if (selected_id != -1) {
 				Set_DPARAM_Aircraft_Build_Window(selected_id);
 
-				DrawString(2, 111, STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
+				DrawString(2, w->widget[4].top + 1, STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
 			}
 		}
 	} break;
@@ -118,7 +118,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 2: { /* listbox */
 			uint i = (e->click.pt.y - 14) / 24;
-			if (i < 4) {
+			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
 			}
@@ -156,24 +156,30 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		memcpy(_decode_parameters, b, 32);
 		DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
 	} break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 24;
+		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+		break;
 	}
 }
 
 static const Widget _new_aircraft_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   228,    14,   109, 0x401,										STR_A025_AIRCRAFT_SELECTION_LIST},
-{  WWT_SCROLLBAR,    14,   229,   239,    14,   109, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   239,   110,   161, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   119,   162,   173, STR_A006_BUILD_AIRCRAFT,	STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT},
-{ WWT_PUSHTXTBTN,    14,   120,   239,   162,   173, STR_A037_RENAME,					STR_A038_RENAME_AIRCRAFT_TYPE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   228,    14,   109, 0x401,										STR_A025_AIRCRAFT_SELECTION_LIST},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   229,   239,    14,   109, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   110,   161, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   162,   173, STR_A006_BUILD_AIRCRAFT,	STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   228,   162,   173, STR_A037_RENAME,					STR_A038_RENAME_AIRCRAFT_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   229,   239,   162,   173, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_aircraft_desc = {
 	-1, -1, 240, 174,
 	WC_BUILD_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_aircraft_widgets,
 	NewAircraftWndProc
 };
@@ -187,6 +193,9 @@ static void ShowBuildAircraftWindow(uint tile)
 	w = AllocateWindowDesc(&_new_aircraft_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 4;
+	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+
+	w->resize.step_height = 24;
 
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
@@ -298,11 +307,11 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _aircraft_refit_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   239,     0,    13, STR_A03C_REFIT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   239,    14,   135, 0x0,							STR_A03E_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,    14,     0,   239,   136,   157, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   239,   158,   169, STR_A03D_REFIT_AIRCRAFT, STR_A03F_REFIT_AIRCRAFT_TO_CARRY},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A03C_REFIT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,							STR_A03E_SELECT_TYPE_OF_CARGO_FOR},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_A03D_REFIT_AIRCRAFT, STR_A03F_REFIT_AIRCRAFT_TO_CARRY},
 {   WIDGETS_END},
 };
 
@@ -469,14 +478,14 @@ change_int:
 
 
 static const Widget _aircraft_details_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   349,     0,    13, STR_A00C_DETAILS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,   350,   389,     0,    13, STR_01AA_NAME,			STR_A032_NAME_AIRCRAFT},
-{     WWT_IMGBTN,    14,     0,   389,    14,    55, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   389,    56,   101, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,   102,   107, STR_0188,					STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,   108,   113, STR_0189,					STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,    14,    11,   389,   102,   113, 0x0,								STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   349,     0,    13, STR_A00C_DETAILS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   350,   389,     0,    13, STR_01AA_NAME,			STR_A032_NAME_AIRCRAFT},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   389,    14,    55, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   389,    56,   101, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   102,   107, STR_0188,					STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   108,   113, STR_0189,					STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   389,   102,   113, 0x0,								STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -507,17 +516,17 @@ static void ShowAircraftDetailsWindow(Vehicle *v)
 
 
 static const Widget _aircraft_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_A00A,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
-{          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
-{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_A027_CURRENT_AIRCRAFT_ACTION},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB,			STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2AF,			STR_A02A_SEND_AIRCRAFT_TO_HANGAR},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2B4,			STR_A03B_REFIT_AIRCRAFT_TO_CARRY},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2,			STR_A028_SHOW_AIRCRAFT_S_ORDERS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3,			STR_A02B_SHOW_AIRCRAFT_DETAILS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   237,     0,    13, STR_A00A,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,   249,   104,   115, 0x0,				STR_A027_CURRENT_AIRCRAFT_ACTION},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    14,    31, 0x2AB,			STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    32,    49, 0x2AF,			STR_A02A_SEND_AIRCRAFT_TO_HANGAR},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    50,    67, 0x2B4,			STR_A03B_REFIT_AIRCRAFT_TO_CARRY},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    68,    85, 0x2B2,			STR_A028_SHOW_AIRCRAFT_S_ORDERS},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    86,   103, 0x2B3,			STR_A02B_SHOW_AIRCRAFT_DETAILS},
 {   WIDGETS_END},
 };
 
@@ -648,7 +657,7 @@ static void DrawAircraftDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<6));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<7));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -657,21 +666,21 @@ static void DrawAircraftDepotWindow(Window *w)
 				v->tile == (TileIndex)tile)
 					num++;
 	}
-	SetVScrollCount(w, (num + 3) >> 2);
+	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	SetDParam(0, _map2[tile]);
 	DrawWindowWidgets(w);
 
 	x = 2;
 	y = 15;
-	num = w->vscroll.pos * 4;
+	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Aircraft &&
 				v->subtype <= 2 &&
 				v->vehstatus&VS_HIDDEN &&
 				v->tile == (TileIndex)tile &&
-				--num < 0 && num >=	-8) {
+				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
 
 			DrawAircraftImage(v, x+12, y, WP(w,traindepot_d).sel);
 
@@ -680,8 +689,8 @@ static void DrawAircraftDepotWindow(Window *w)
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x, y+12);
 
-			if ((x+=74) == 2+74*4) {
-				x -= 74*4;
+			if ((x+=74) == 2 + 74 * w->hscroll.cap) {
+				x = 2;
 				y += 24;
 			}
 		}
@@ -760,14 +769,17 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 }
 
 static const Widget _aircraft_depot_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   318,     0,    13, STR_A002_AIRCRAFT_HANGAR, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   319,   330,     0,    13, 0x0,   STR_STICKY_BUTTON},
-{     WWT_MATRIX,    14,     0,   295,    14,    61, 0x204, STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT},
-{     WWT_IMGBTN,    14,   296,   319,    14,    61, 0x2A9, STR_A023_DRAG_AIRCRAFT_TO_HERE_TO},
-{  WWT_SCROLLBAR,    14,   320,   330,    14,    61, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   164,    62,    73, STR_A003_NEW_AIRCRAFT, STR_A022_BUILD_NEW_AIRCRAFT},
-{ WWT_PUSHTXTBTN,    14,   165,   330,    62,    73, STR_00E4_LOCATION, STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   318,     0,    13, STR_A002_AIRCRAFT_HANGAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   319,   330,     0,    13, 0x0,											STR_STICKY_BUTTON},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   295,    14,    61, 0x204,										STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT},
+{      WWT_PANEL,    RESIZE_LRB,    14,   296,   319,    14,    13, 0x0,													STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    14,   296,   319,    14,    61, 0x2A9,										STR_A023_DRAG_AIRCRAFT_TO_HERE_TO},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   320,   330,    14,    61, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   159,    62,    73, STR_A003_NEW_AIRCRAFT,		STR_A022_BUILD_NEW_AIRCRAFT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   319,    62,    73, STR_00E4_LOCATION,				STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
+{      WWT_PANEL,    RESIZE_RTB,    14,   320,   319,    62,    73, 0x0,													STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   330,    62,    73, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -784,10 +796,10 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		case 3: /* click aircraft */
 			AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
 			break;
-		case 6: /* show build aircraft window */
+		case 7: /* show build aircraft window */
 			ShowBuildAircraftWindow(w->window_number);
 			break;
-		case 7: /* scroll to tile */
+		case 8: /* scroll to tile */
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		}
@@ -813,12 +825,12 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 4:
-			if (!HASBIT(w->disabled_state, 4) &&
+		case 5:
+			if (!HASBIT(w->disabled_state, 5) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 4);
+				HandleButtonClick(w, 5);
 
 				v = &_vehicles[WP(w,traindepot_d).sel];
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -837,6 +849,12 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 	break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 24;
+		w->hscroll.cap += e->sizing.diff.x / 74;
+		w->widget[3].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		break;
 	}
 }
 
@@ -845,7 +863,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _aircraft_depot_desc = {
 	-1, -1, 331, 74,
 	WC_VEHICLE_DEPOT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_aircraft_depot_widgets,
 	AircraftDepotWndProc
 };
@@ -859,6 +877,9 @@ void ShowAircraftDepotWindow(uint tile)
 	if (w) {
 		w->caption_color = _map_owner[tile];
 		w->vscroll.cap = 2;
+		w->hscroll.cap = 4;
+		w->resize.step_width = 74;
+		w->resize.step_height = 24;
 		WP(w,traindepot_d).sel = INVALID_VEHICLE;
 		_backup_orders_tile = 0;
 	}
@@ -893,31 +914,35 @@ static void DrawSmallSchedule(Vehicle *v, int x, int y) {
 }
 
 
-static Widget _player_aircraft_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   247,     0,    13, STR_A009_AIRCRAFT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_A003_NEW_AIRCRAFT,	STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES},
-{ WWT_PUSHTXTBTN,    14,   130,   259,   170,   181, STR_REPLACE_VEHICLES,						STR_REPLACE_HELP},
+static const Widget _player_aircraft_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_A009_AIRCRAFT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   169, 0x401,									STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_A003_NEW_AIRCRAFT,	STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   248,   170,   181, STR_REPLACE_VEHICLES,						STR_REPLACE_HELP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   249,   248,   170,   181, 0x0,											STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   170,   181, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
-static Widget _other_player_aircraft_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   247,     0,    13, STR_A009_AIRCRAFT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+static const Widget _other_player_aircraft_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_A009_AIRCRAFT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   169, 0x401,									STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,   249,   248,   170,   181, 0x0,											STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   170,   181, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -946,20 +971,17 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		/* draw the widgets */
 		{
 			const Player *p = DEREF_PLAYER(owner);
-			/* XXX hack */
 			if (station == -1) {
 				/* Company Name -- (###) Aircraft */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
 				SetDParam(2, w->vscroll.count);
-				_player_aircraft_widgets[1].unkA = STR_A009_AIRCRAFT;
-				_other_player_aircraft_widgets[1].unkA = STR_A009_AIRCRAFT;
+				w->widget[1].unkA = STR_A009_AIRCRAFT;
 			} else {
 				/* Station Name -- (###) Aircraft */
 				SetDParam(0, DEREF_STATION(station)->index);
 				SetDParam(1, w->vscroll.count);
-				_player_aircraft_widgets[1].unkA = STR_SCHEDULED_AIRCRAFT;
-				_other_player_aircraft_widgets[1].unkA = STR_SCHEDULED_AIRCRAFT;
+				w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;
 			}
 			DrawWindowWidgets(w);
 		}
@@ -1049,11 +1071,11 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 			ShowBuildAircraftWindow(0);
 		} break;
-		
-		case 10: 
+
+		case 10:
 			ShowReplaceVehicleWindow(VEH_Aircraft);
 			break;
-		
+
 		}
 	}	break;
 
@@ -1090,21 +1112,27 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 		break;
+
+	case WE_RESIZE:
+		/* Update the scroll + matrix */
+		w->vscroll.cap += e->sizing.diff.y / PLY_WND_PRC__SIZE_OF_ROW_BIG;
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		break;
 	}
 }
 
 static const WindowDesc _player_aircraft_desc = {
 	-1, -1, 260, 182,
 	WC_AIRCRAFT_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_aircraft_widgets,
 	PlayerAircraftWndProc
 };
 
 static const WindowDesc _other_player_aircraft_desc = {
-	-1, -1, 260, 170,
+	-1, -1, 260, 182,
 	WC_AIRCRAFT_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_other_player_aircraft_widgets,
 	PlayerAircraftWndProc
 };
@@ -1121,6 +1149,8 @@ void ShowPlayerAircraft(int player, int station)
 
 	if (w) {
 		w->caption_color = w->window_number;
-		w->vscroll.cap = 4; // maximum number of vehicles shown
+		w->vscroll.cap = 4;
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 	}
 }

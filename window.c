@@ -51,23 +51,23 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 		w->wndproc(w, &e);
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (e.click.widget == 0) DeleteWindow(w);
-			else {
+			if (e.click.widget == 0) {
+				DeleteWindow(w);
+			} else {
 				if (e.click.widget == 1) {
-					if (_ctrl_pressed)
-						StartWindowSizing(w);
-					else
-						StartWindowDrag(w);
+					StartWindowDrag(w);
 				}
 			}
 		}
-		
-		if (w->desc_flags & WDF_STICKY_BUTTON) {
-			if (e.click.widget == 2) {
-				w->click_state ^= (1 << e.click.widget);
-				w->flags4 ^= WF_STICKY;
-				InvalidateWidget(w, e.click.widget);
-			}
+
+		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
+			StartWindowSizing(w);
+		}
+
+		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
+			w->click_state ^= (1 << e.click.widget);
+			w->flags4 ^= WF_STICKY;
+			InvalidateWidget(w, e.click.widget);
 		}
 	} else {
 		w->wndproc(w, &e);
@@ -223,6 +223,8 @@ void DeleteWindow(Window *w)
 
 	SetWindowDirty(w);
 
+	free(w->widget);
+
 	v = --_last_window;
 	count = (byte*)v - (byte*)w;
 	memcpy(w, w + 1, count);
@@ -313,6 +315,31 @@ static Window *ForceFindDeletableWindow(void)
 	}
 }
 
+bool IsWindowOfPrototype(Window *w, const Widget *widget)
+{
+	return (w->original_widget == widget);
+}
+
+/* Copies 'widget' to 'w->widget' */
+void AssignWidgetToWindow(Window *w, const Widget *widget)
+{
+	w->original_widget = widget;
+
+	if (widget != NULL) {
+		const Widget *wi = widget;
+		uint index = 1;
+		while (wi->type != WWT_LAST) {
+			wi++;
+			index++;
+		}
+
+		w->widget = malloc(sizeof(Widget) * index);
+		memcpy(w->widget, widget, sizeof(Widget) * index);
+	} else {
+		w->widget = NULL;
+	}
+}
+
 Window *AllocateWindow(
 							int x,
 							int y,
@@ -373,7 +400,11 @@ Window *AllocateWindow(
 	w->vscroll.count = 0;
 	w->hscroll.pos = 0;
 	w->hscroll.count = 0;
-	w->widget = widget;
+	AssignWidgetToWindow(w, widget);
+	w->resize.width = width;
+	w->resize.height = height;
+	w->resize.step_width = 1;
+	w->resize.step_height = 1;
 
 	{
 		int i;
@@ -900,6 +931,89 @@ bool HandleWindowDragging()
 
 			SetWindowDirty(w);
 			return false;
+		} else if (w->flags4 & WF_SIZING) {
+			WindowEvent e;
+			int x, y;
+
+			/* Stop the sizing if the left mouse button was released */
+			if (!_left_button_down) {
+				w->flags4 &= ~WF_SIZING;
+				break;
+			}
+
+			x = _cursor.pos.x - _drag_delta.x;
+			y = _cursor.pos.y - _drag_delta.y;
+
+			/* X and Y has to go by step.. calculate it */
+			if (w->resize.step_width > 1)
+				x = x - (x % (int)w->resize.step_width);
+
+			if (w->resize.step_height > 1)
+				y = y - (y % (int)w->resize.step_height);
+
+			/* Check if we don't go below the minimum set size */
+			if ((int)w->width + x < (int)w->resize.width)
+				x = w->resize.width - w->width;
+			if ((int)w->height + y < (int)w->resize.height)
+				y = w->resize.height - w->height;
+
+			/* Window already on size */
+			if (x == 0 && y == 0)
+				return false;
+
+			/* Now find the new cursor pos.. this is NOT _cursor, because
+			    we move in steps. */
+			_drag_delta.x += x;
+			_drag_delta.y += y;
+
+			SetWindowDirty(w);
+
+			/* Scroll through all the windows and update the widgets if needed */
+			{
+				Widget *wi = w->widget;
+				bool resize_height = false;
+				bool resize_width = false;
+
+				while (wi->type != WWT_LAST) {
+					if (wi->resize_flag != RESIZE_NONE) {
+						/* Resize this widget */
+						if (wi->resize_flag & RESIZE_LEFT) {
+							wi->left += x;
+							resize_width = true;
+						}
+						if (wi->resize_flag & RESIZE_RIGHT) {
+							wi->right += x;
+							resize_width = true;
+						}
+
+						if (wi->resize_flag & RESIZE_TOP) {
+							wi->top += y;
+							resize_height = true;
+						}
+						if (wi->resize_flag & RESIZE_BOTTOM) {
+							wi->bottom += y;
+							resize_height = true;
+						}
+					}
+					wi++;
+				}
+
+				/* We resized at least 1 widget, so let's rezise the window totally */
+				if (resize_width)
+					w->width  = x + w->width;
+				if (resize_height)
+					w->height = y + w->height;
+			}
+
+			e.event = WE_RESIZE;
+			e.sizing.size.x = x + w->width;
+			e.sizing.size.y = y + w->height;
+			e.sizing.diff.x = x;
+			e.sizing.diff.y = y;
+			w->wndproc(w, &e);
+
+			SetWindowDirty(w);
+			return false;
 		}
 	}
 
@@ -911,8 +1025,10 @@ Window *StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
 	_dragging_window = true;
+
 	_drag_delta.x = w->left - _cursor.pos.x;
 	_drag_delta.y = w->top  - _cursor.pos.y;
+
 	w = BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 	return w;
@@ -922,7 +1038,10 @@ Window *StartWindowSizing(Window *w)
 {
 	w->flags4 |= WF_SIZING;
 	_dragging_window = true;
-	_cursorpos_drag_start = _cursor.pos;
+
+	_drag_delta.x = _cursor.pos.x;
+	_drag_delta.y = _cursor.pos.y;
+
 	w = BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 	return w;
@@ -1090,8 +1209,8 @@ static void HandleKeypress(uint32 key)
 {
 	Window *w;
 	WindowEvent we;
- /* Stores if a window with a textfield for typing is open 	
-  * If this is the case, keypress events are only passed to windows with text fields and 
+ /* Stores if a window with a textfield for typing is open
+  * If this is the case, keypress events are only passed to windows with text fields and
 	* to thein this main toolbar. */
 	bool query_open = false;
 
@@ -1369,7 +1488,7 @@ void DeleteNonVitalWindows()
 	}
 }
 
-/* It is possible that a stickied window gets to a position where the 
+/* It is possible that a stickied window gets to a position where the
  * 'close' button is outside the gaming area. You cannot close it then; except
  * with this function. It closes all windows calling the standard function,
  * then, does a little hacked loop of closing all stickied windows. Note

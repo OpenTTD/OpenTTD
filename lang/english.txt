@@ -416,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Can't change servicing interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Close window
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Window title - drag this to move window
 STR_STICKY_BUTTON						:{BLACK}Mark this window as uncloseable by the 'Close All Windows' key
+STR_RESIZE_BUTTON						:{BLACK}Click and drag to resize this window
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolish buildings etc. on a square of land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Raise a corner of land
@@ -2774,9 +2775,9 @@ STR_REPLACE_HELP						:{BLACK}This feature allows you to select an enginetype an
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES						:{BLACK}Rail Vehicles
-STR_MONORAIL_VEHICLES						:{BLACK}Monorail Vehicles
-STR_MAGLEV_VEHICLES						:{BLACK}Maglev Vehicles
+STR_RAIL_VEHICLES							:Rail Vehicles
+STR_MONORAIL_VEHICLES					:Monorail Vehicles
+STR_MAGLEV_VEHICLES						:Maglev Vehicles
 
 ############ End of list of rail types
 

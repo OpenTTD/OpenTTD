@@ -226,22 +226,27 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 		break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 10;
+		break;
 	}
 }
 
 static const Widget _player_stations_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   346,   357,     0,    13, 0x0, STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   346,    14,   137, 0x0, STR_3057_STATION_NAMES_CLICK_ON},
-{  WWT_SCROLLBAR,    14,   347,   357,    14,   137, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   345,     0,    13, STR_3048_STATIONS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   346,   357,     0,    13, 0x0,											STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   346,    14,   137, 0x0,											STR_3057_STATION_NAMES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   347,   357,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   347,   357,   126,   137, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _player_stations_desc = {
 	-1, -1, 358, 138,
 	WC_STATION_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
 	PlayerStationsWndProc
 };
@@ -255,42 +260,44 @@ void ShowPlayerStations(int player)
 	if (w) {
 		w->caption_color = (byte)w->window_number;
 		w->vscroll.cap = 12;
+		w->resize.step_height = 10;
+		w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
 	}
 }
 
 static const Widget _station_view_expanded_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
-{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
-{     WWT_IMGBTN,    14,     0,   248,    66,   197, 0x0,					STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    63,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    64,   128,   198,   209, STR_3033_ACCEPTS,	STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
-{ WWT_PUSHTXTBTN,    14,   129,   192,   198,   209, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
-{ WWT_PUSHTXTBTN,    14,   193,   206,   198,   209, STR_TRAIN, STR_SCHEDULED_TRAINS_TIP },
-{ WWT_PUSHTXTBTN,    14,   207,   220,   198,   209, STR_LORRY, STR_SCHEDULED_ROAD_VEHICLES_TIP },
-{ WWT_PUSHTXTBTN,    14,   221,   234,   198,   209, STR_PLANE, STR_SCHEDULED_AIRCRAFT_TIP },
-{ WWT_PUSHTXTBTN,    14,   235,   248,   198,   209, STR_SHIP, STR_SCHEDULED_SHIPS_TIP },
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   248,    66,   197, 0x0,					STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   128,   198,   209, STR_3033_ACCEPTS,	STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   129,   192,   198,   209, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   193,   206,   198,   209, STR_TRAIN, STR_SCHEDULED_TRAINS_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   207,   220,   198,   209, STR_LORRY, STR_SCHEDULED_ROAD_VEHICLES_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   221,   234,   198,   209, STR_PLANE, STR_SCHEDULED_AIRCRAFT_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   235,   248,   198,   209, STR_SHIP, STR_SCHEDULED_SHIPS_TIP },
 {   WIDGETS_END},
 };
 
 static const Widget _station_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
-{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    63,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    64,   128,    98,   109, STR_3032_RATINGS,	STR_3054_SHOW_STATION_RATINGS},
-{ WWT_PUSHTXTBTN,    14,   129,   192,    98,   109, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
-{ WWT_PUSHTXTBTN,    14,   193,   206,    98,   109, STR_TRAIN, STR_SCHEDULED_TRAINS_TIP },
-{ WWT_PUSHTXTBTN,    14,   207,   220,    98,   109, STR_LORRY, STR_SCHEDULED_ROAD_VEHICLES_TIP },
-{ WWT_PUSHTXTBTN,    14,   221,   234,    98,   109, STR_PLANE, STR_SCHEDULED_AIRCRAFT_TIP },
-{ WWT_PUSHTXTBTN,    14,   235,   248,    98,   109, STR_SHIP, STR_SCHEDULED_SHIPS_TIP },
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   128,    98,   109, STR_3032_RATINGS,	STR_3054_SHOW_STATION_RATINGS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   129,   192,    98,   109, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   193,   206,    98,   109, STR_TRAIN, STR_SCHEDULED_TRAINS_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   207,   220,    98,   109, STR_LORRY, STR_SCHEDULED_ROAD_VEHICLES_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   221,   234,    98,   109, STR_PLANE, STR_SCHEDULED_AIRCRAFT_TIP },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   235,   248,    98,   109, STR_SHIP, STR_SCHEDULED_SHIPS_TIP },
 {   WIDGETS_END},
 };
 
@@ -386,7 +393,7 @@ static void DrawStationViewWindow(Window *w)
 		}
 	} while (pos > -5 && ++i != 12);
 
-	if (w->widget == _station_view_widgets) {
+	if (IsWindowOfPrototype(w, _station_view_widgets)) {
 		b = _userstring;
 		b[0] = 0x81;
 		b[1] = STR_000C_ACCEPTS;
@@ -449,8 +456,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 
 			/* toggle height/widget set */
-			w->height ^= (210 ^ 110);
-			*(uint32*)&w->widget ^= (uint32)_station_view_expanded_widgets ^ (uint32)_station_view_widgets;
+			if (IsWindowOfPrototype(w, _station_view_expanded_widgets)) {
+				AssignWidgetToWindow(w, _station_view_widgets);
+				w->height = 110;
+			} else {
+				AssignWidgetToWindow(w, _station_view_expanded_widgets);
+				w->height = 220;
+			}
 
 			SetWindowDirty(w);
 			break;

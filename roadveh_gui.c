@@ -169,14 +169,14 @@ change_int:
 }
 
 static const Widget _roadveh_details_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   339,     0,    13, STR_900C_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,   340,   379,     0,    13, STR_01AA_NAME,		STR_902E_NAME_ROAD_VEHICLE},
-{     WWT_IMGBTN,    14,     0,   379,    14,    55, 0x0,							STR_NULL},
-{     WWT_IMGBTN,    14,     0,   379,    56,    88, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,    14,    11,   379,    89,   100, 0x0,							STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   339,     0,    13, STR_900C_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   340,   379,     0,    13, STR_01AA_NAME,		STR_902E_NAME_ROAD_VEHICLE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    14,    55, 0x0,							STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    56,    88, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   379,    89,   100, 0x0,							STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -290,17 +290,17 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _roadveh_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_9002,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
-{          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
-{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_901C_CURRENT_VEHICLE_ACTION},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB,			STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2AE,			STR_901F_SEND_VEHICLE_TO_DEPOT},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2CB,			STR_9020_FORCE_VEHICLE_TO_TURN_AROUND},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2,			STR_901D_SHOW_VEHICLE_S_ORDERS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3,			STR_9021_SHOW_ROAD_VEHICLE_DETAILS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   237,     0,    13, STR_9002,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,   249,   104,   115, 0x0,				STR_901C_CURRENT_VEHICLE_ACTION},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    14,    31, 0x2AB,			STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    32,    49, 0x2AE,			STR_901F_SEND_VEHICLE_TO_DEPOT},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    50,    67, 0x2CB,			STR_9020_FORCE_VEHICLE_TO_TURN_AROUND},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    68,    85, 0x2B2,			STR_901D_SHOW_VEHICLE_S_ORDERS},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    86,   103, 0x2B3,			STR_9021_SHOW_ROAD_VEHICLE_DETAILS},
 {   WIDGETS_END},
 };
 
@@ -356,7 +356,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		do {
 			if (HASBIT(e->player_avail, _local_player)) {
 				if (sel==0) selected_id = engine_id;
-				if (IS_INT_INSIDE(--pos, -8, 0)) {
+				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 					DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
 					DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 					y += 14;
@@ -369,7 +369,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		if (selected_id != -1) {
 			Set_DPARAM_Road_Veh_Build_Window(selected_id);
 
-			DrawString(2, 127, STR_9008_COST_SPEED_RUNNING_COST, 0);
+			DrawString(2, w->widget[4].top + 1, STR_9008_COST_SPEED_RUNNING_COST, 0);
 		}
 	}
 }
@@ -399,7 +399,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 2: { /* listbox */
 			uint i = (e->click.pt.y - 14) / 14;
-			if (i < 8) {
+			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
 			}
@@ -438,24 +438,33 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_9037_CAN_T_RENAME_ROAD_VEHICLE));
 	} break;
 
+	case WE_RESIZE: {
+		if (e->sizing.diff.y == 0)
+			break;
+
+		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+	} break;
+
 	}
 }
 
 static const Widget _new_road_veh_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   247,     0,    13, STR_9006_NEW_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   236,    14,   125, 0x801,									STR_9026_ROAD_VEHICLE_SELECTION},
-{  WWT_SCROLLBAR,    14,   237,   247,    14,   125, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   247,   126,   177, 0x0,										STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   123,   178,   189, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
-{ WWT_PUSHTXTBTN,    14,   124,   247,   178,   189, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   247,     0,    13, STR_9006_NEW_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   236,    14,   125, 0x801,									STR_9026_ROAD_VEHICLE_SELECTION},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   237,   247,    14,   125, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   247,   126,   177, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   117,   178,   189, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   118,   235,   178,   189, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   237,   247,   178,   189, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_road_veh_desc = {
 	-1, -1, 248, 190,
 	WC_BUILD_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_road_veh_widgets,
 	NewRoadVehWndProc
 };
@@ -469,6 +478,10 @@ static void ShowBuildRoadVehWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_road_veh_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
+	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+
+	w->resize.step_height = 14;
+	w->resize.height = w->height - 14 * 4; /* Minimum of 4 vehicles in the display */
 
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
@@ -487,7 +500,7 @@ static void DrawRoadDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<6));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<5)|(1<<7));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -496,7 +509,7 @@ static void DrawRoadDepotWindow(Window *w)
 				v->tile == (TileIndex)tile)
 					num++;
 	}
-	SetVScrollCount(w, (num + 4) / 5);
+	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
@@ -506,13 +519,13 @@ static void DrawRoadDepotWindow(Window *w)
 
 	x = 2;
 	y = 15;
-	num = w->vscroll.pos * 5;
+	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road &&
 				v->u.road.state == 254 &&
 				v->tile == (TileIndex)tile &&
-				--num < 0 && num >=	-15) {
+				--num < 0 && num >=	-w->vscroll.cap * w->hscroll.cap) {
 
 			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
 
@@ -521,7 +534,7 @@ static void DrawRoadDepotWindow(Window *w)
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x + 16, y);
 
-			if ((x+=56) == 2+56*5) {
+			if ((x+=56) == 2 + 56 * w->hscroll.cap) {
 				x = 2;
 				y += 14;
 			}
@@ -613,11 +626,11 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			RoadDepotClickVeh(w, e->click.pt.x, e->click.pt.y);
 			break;
 
-		case 6:
+		case 7:
 			ShowBuildRoadVehWindow(w->window_number);
 			break;
 
-		case 7: /* scroll to tile */
+		case 8: /* scroll to tile */
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		}
@@ -643,12 +656,12 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 4:
-			if (!HASBIT(w->disabled_state, 4) &&
+		case 5:
+			if (!HASBIT(w->disabled_state, 5) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 4);
+				HandleButtonClick(w, 5);
 
 				v = &_vehicles[WP(w,traindepot_d).sel];
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -668,26 +681,37 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 	}
 	break;
 
+	case WE_RESIZE: {
+		/* Update the scroll + matrix */
+		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->hscroll.cap += e->sizing.diff.x / 56;
+		w->widget[3].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+
+	} break;
+
 	}
 
 }
 
 static const Widget _road_depot_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   303,   314,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{     WWT_MATRIX,    14,     0,   279,    14,    55, 0x305, STR_9022_VEHICLES_CLICK_ON_VEHICLE},
-{     WWT_IMGBTN,    14,   280,   303,    14,    55, 0x2A9, STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
-{  WWT_SCROLLBAR,    14,   304,   314,    14,    55, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   156,    56,    67, STR_9004_NEW_VEHICLES, STR_9023_BUILD_NEW_ROAD_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   157,   314,    56,    67, STR_00E4_LOCATION, STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, 										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   303,   314,     0,    13, 0x0,													STR_STICKY_BUTTON},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,												STR_9022_VEHICLES_CLICK_ON_VEHICLE},
+{      WWT_PANEL,    RESIZE_LRB,    14,   280,   303,    14,    13, 0x0,													STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    14,   280,   303,    14,    55, 0x2A9,												STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   304,   314,    14,    55, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   150,    56,    67, STR_9004_NEW_VEHICLES,				STR_9023_BUILD_NEW_ROAD_VEHICLE},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   151,   302,    56,    67, STR_00E4_LOCATION,						STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
+{      WWT_PANEL,    RESIZE_RTB,    14,   303,   302,    56,    67, 0x0,													STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   304,   314,    56,    67, 0x0,													STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _road_depot_desc = {
 	-1, -1, 315, 68,
 	WC_VEHICLE_DEPOT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_road_depot_widgets,
 	RoadDepotWndProc
 };
@@ -699,39 +723,45 @@ void ShowRoadDepotWindow(uint tile)
 	w = AllocateWindowDescFront(&_road_depot_desc, tile);
 	if (w) {
 		w->caption_color = _map_owner[w->window_number];
+		w->hscroll.cap = 5;
 		w->vscroll.cap = 3;
-		WP(w,traindepot_d).sel = -1;
+		w->resize.step_width = 56;
+		w->resize.step_height = 14;
+		WP(w,traindepot_d).sel = INVALID_VEHICLE;
 		_backup_orders_tile = 0;
 	}
 }
 
-
-static Widget _player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+static const Widget _player_roadveh_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,											STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 /* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
-{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
-{ WWT_PUSHTXTBTN,    14,   130,   259,   208,   219, STR_REPLACE_VEHICLES,		STR_REPLACE_HELP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   248,   208,   219, STR_REPLACE_VEHICLES,    STR_REPLACE_HELP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   249,   248,   208,   219, 0x0,											STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   208,   219, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
-static Widget _other_player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+static const Widget _other_player_roadveh_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   259,    14,    25, 0x0,											STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   208,   219, 0x0,											STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   249,   259,   208,   219, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -760,20 +790,17 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		/* draw the widgets */
 		{
 			const Player *p = DEREF_PLAYER(owner);
-			/* XXX hack */
 			if (station == -1) {
 				/* Company Name -- (###) Road vehicles */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
 				SetDParam(2, w->vscroll.count);
-				_player_roadveh_widgets[1].unkA = STR_9001_ROAD_VEHICLES;
-				_other_player_roadveh_widgets[1].unkA = STR_9001_ROAD_VEHICLES;
+				w->widget[1].unkA = STR_9001_ROAD_VEHICLES;
 			} else {
 				/* Station Name -- (###) Road vehicles */
 				SetDParam(0, DEREF_STATION(station)->index);
 				SetDParam(1, w->vscroll.count);
-				_player_roadveh_widgets[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
-				_other_player_roadveh_widgets[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
+				w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
 			}
 			DrawWindowWidgets(w);
 		}
@@ -847,6 +874,9 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		case 9: { /* Build new Vehicle */
 			uint tile;
 
+			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
+				break;
+
 			tile = _last_built_road_depot_tile;
 			do {
 				if (_map_owner[tile] == _local_player && IsRoadDepotTile(tile)) {
@@ -900,21 +930,28 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 		break;
+
+
+	case WE_RESIZE:
+		/* Update the scroll + matrix */
+		w->vscroll.cap += e->sizing.diff.y / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		break;
 	}
 }
 
 static const WindowDesc _player_roadveh_desc = {
 	-1, -1, 260, 220,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };
 
 static const WindowDesc _other_player_roadveh_desc = {
-	-1, -1, 260, 208,
+	-1, -1, 260, 220,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_other_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };
@@ -931,6 +968,9 @@ void ShowPlayerRoadVehicles(int player, int station)
 	}
 	if (w) {
 		w->caption_color = player;
-		w->vscroll.cap = 7;
+		w->vscroll.cap = 7; // maximum number of vehicles shown
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
 	}
 }

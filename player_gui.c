@@ -95,42 +95,42 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 }
 
 static const Widget _player_finances_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   392,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,   393,   406,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{     WWT_IMGBTN,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   202,   204,   215, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,    14,   203,   406,   204,   215, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   392,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   393,   406,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   392,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,   393,   406,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{     WWT_IMGBTN,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   392,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   393,   406,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_small_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   265,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,   266,   279,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   265,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   266,   279,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _player_finances_small_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   265,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,   266,   279,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   139,    48,    59, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,    14,   140,   279,    48,    59, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   265,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   266,   279,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   139,    48,    59, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   140,   279,    48,    59, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
@@ -287,10 +287,10 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _select_player_color_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   149,     0,    13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   138,    14,   127, 0x0, STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
-{  WWT_SCROLLBAR,    14,   139,   149,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   149,     0,    13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   138,    14,   127, 0x0, STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   139,   149,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -335,14 +335,14 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _select_player_face_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   189,     0,    13, STR_7043_FACE_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   189,    14,   136, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    94,   137,   148, STR_012E_CANCEL,					STR_7047_CANCEL_NEW_FACE_SELECTION},
-{ WWT_PUSHTXTBTN,    14,    95,   189,   137,   148, STR_012F_OK,							STR_7048_ACCEPT_NEW_FACE_SELECTION},
-{    WWT_TEXTBTN,    14,    95,   187,    25,    36, STR_7044_MALE,						STR_7049_SELECT_MALE_FACES},
-{    WWT_TEXTBTN,    14,    95,   187,    37,    48, STR_7045_FEMALE,					STR_704A_SELECT_FEMALE_FACES},
-{ WWT_PUSHTXTBTN,    14,    95,   187,    79,    90, STR_7046_NEW_FACE,				STR_704B_GENERATE_RANDOM_NEW_FACE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   189,     0,    13, STR_7043_FACE_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   189,    14,   136, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   137,   148, STR_012E_CANCEL,					STR_7047_CANCEL_NEW_FACE_SELECTION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   189,   137,   148, STR_012F_OK,							STR_7048_ACCEPT_NEW_FACE_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    25,    36, STR_7044_MALE,						STR_7049_SELECT_MALE_FACES},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    37,    48, STR_7045_FEMALE,					STR_704A_SELECT_FEMALE_FACES},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   187,    79,    90, STR_7046_NEW_FACE,				STR_704B_GENERATE_RANDOM_NEW_FACE},
 {   WIDGETS_END},
 };
 
@@ -355,45 +355,45 @@ static const WindowDesc _select_player_face_desc = {
 };
 
 static const Widget _my_player_company_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
-{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
-{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_706F_BUILD_HQ,       STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{      WWT_EMPTY,    14,   266,   355,    32,    43, 0x0,                     STR_NULL},
-{ WWT_PUSHTXTBTN,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_706F_BUILD_HQ,       STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,   RESIZE_NONE,    14,   266,   355,    32,    43, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_company_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,					STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,								STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,	STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,	STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
-{ WWT_PUSHTXTBTN,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY,	STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   359,     0,    13, STR_7001,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   359,    14,   157, 0x0,								STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,	STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,	STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY,	STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 {   WIDGETS_END},
 };
 
 static const Widget _my_player_company_bh_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
-{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
-{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,        STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,         STR_RELOCATE_COMPANY_HEADQUARTERS},
-{ WWT_PUSHTXTBTN,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,        STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,         STR_RELOCATE_COMPANY_HEADQUARTERS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
 
@@ -490,8 +490,9 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		Player *p = DEREF_PLAYER(w->window_number);
 		uint32 dis;
 
-		if (w->widget != _other_player_company_widgets) {
-			w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
+		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
+			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
+
 			if (!_networking) w->hidden_state |= (1 << 9); // hide company-password widget
 		}
 
@@ -582,7 +583,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			break;
 		case 9: {/* buy 25% or password protect your company */
 			#ifdef ENABLE_NETWORK
-			if (w->widget != _other_player_company_widgets) {
+			if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 				StringID str;
 				WP(w,def_d).byte_1 = 2;
 				str = AllocateName(_network_player_info[_local_player].password, 0);
@@ -705,11 +706,11 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _buy_company_widgets[] = {
-{    WWT_TEXTBTN,     5,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     5,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,     5,     0,   333,    14,   136, 0x0,										STR_NULL},
-{    WWT_TEXTBTN,     5,   148,   207,   117,   128, STR_00C9_NO,						STR_NULL},
-{    WWT_TEXTBTN,     5,   218,   277,   117,   128, STR_00C8_YES,					STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     5,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,     5,     0,   333,    14,   136, 0x0,										STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     5,   148,   207,   117,   128, STR_00C9_NO,						STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     5,   218,   277,   117,   128, STR_00C8_YES,					STR_NULL},
 {   WIDGETS_END},
 };
 

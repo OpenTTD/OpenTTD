@@ -277,20 +277,20 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _build_road_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   227,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     7,   228,   239,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   227,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   228,   239,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 
-{      WWT_PANEL,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,				STR_180B_BUILD_ROAD_SECTION},
-{      WWT_PANEL,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,				STR_180B_BUILD_ROAD_SECTION},
-{      WWT_PANEL,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,			STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,		STR_180C_BUILD_ROAD_VEHICLE_DEPOT},
-{      WWT_PANEL,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,		STR_180D_BUILD_BUS_STATION},
-{      WWT_PANEL,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,			STR_180E_BUILD_TRUCK_LOADING_BAY},
-{      WWT_PANEL,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,				STR_180F_BUILD_ROAD_BRIDGE},
-{      WWT_PANEL,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,		STR_1810_BUILD_ROAD_TUNNEL},
-{      WWT_PANEL,     7,   196,   217,    14,    35, SPR_IMG_REMOVE, 				STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   218,   239,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,				STR_180B_BUILD_ROAD_SECTION},
+{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,				STR_180B_BUILD_ROAD_SECTION},
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,			STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,		STR_180C_BUILD_ROAD_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,		STR_180D_BUILD_BUS_STATION},
+{      WWT_PANEL,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,			STR_180E_BUILD_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,				STR_180F_BUILD_ROAD_BRIDGE},
+{      WWT_PANEL,   RESIZE_NONE,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,		STR_1810_BUILD_ROAD_TUNNEL},
+{      WWT_PANEL,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_REMOVE, 				STR_1811_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,   RESIZE_NONE,     7,   218,   239,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
@@ -309,20 +309,20 @@ void ShowBuildRoadToolbar()
 }
 
 static const Widget _build_road_scen_widgets[] = {
-{    WWT_TEXTBTN,     7,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     7,   162,   173,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   162,   173,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 
-{     WWT_IMGBTN,     7,     0,    21,    14,    35, 0x51D,			STR_180B_BUILD_ROAD_SECTION},
-{     WWT_IMGBTN,     7,    22,    43,    14,    35, 0x51E,			STR_180B_BUILD_ROAD_SECTION},
-{     WWT_IMGBTN,     7,    44,    65,    14,    35, 0x2BF,			STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
-{     WWT_IMGBTN,     7,    66,   107,    14,    35, 0xA22,			STR_180F_BUILD_ROAD_BRIDGE},
-{     WWT_IMGBTN,     7,   108,   129,    14,    35, 0x97D,			STR_1810_BUILD_ROAD_TUNNEL},
-{     WWT_IMGBTN,     7,   130,   151,    14,    35, 0x2CA,			STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, 0x51D,			STR_180B_BUILD_ROAD_SECTION},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, 0x51E,			STR_180B_BUILD_ROAD_SECTION},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, 0x2BF,			STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,   107,    14,    35, 0xA22,			STR_180F_BUILD_ROAD_BRIDGE},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   108,   129,    14,    35, 0x97D,			STR_1810_BUILD_ROAD_TUNNEL},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   130,   151,    14,    35, 0x2CA,			STR_1811_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,   RESIZE_NONE,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
@@ -375,13 +375,13 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _build_road_depot_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   139,     0,    13, STR_1806_ROAD_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   139,    14,   121, 0x0,			STR_NULL},
-{      WWT_PANEL,    14,    71,   136,    17,    66, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
-{      WWT_PANEL,    14,    71,   136,    69,   118, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
-{      WWT_PANEL,    14,     3,    68,    69,   118, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
-{      WWT_PANEL,    14,     3,    68,    17,    66, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1806_ROAD_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,			STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,			STR_1813_SELECT_ROAD_VEHICLE_DEPOT},
 {   WIDGETS_END},
 };
 
@@ -401,7 +401,7 @@ static void ShowRoadDepotPicker()
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 
 	int rad;
-	
+
 	switch(e->event) {
 	case WE_PAINT: {
 		int image;
@@ -411,13 +411,13 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 		DrawWindowWidgets(w);
 
 		SetTileSelectSize(1, 1);
-		
+
 		if (_patches.modified_catchment) {
 			rad = CA_TRUCK; // = CA_BUS
 		} else {
 			rad = 4;
 		}
-		
+
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-rad, -rad, 2*rad, 2*rad);
 
@@ -469,15 +469,15 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _bus_station_picker_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   139,     0,    13, STR_3042_BUS_STATION_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   139,    14,   176, 0x0,					STR_NULL},
-{      WWT_PANEL,    14,    71,   136,    17,    66, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
-{      WWT_PANEL,    14,    71,   136,    69,   118, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
-{      WWT_PANEL,    14,     3,    68,    69,   118, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
-{      WWT_PANEL,    14,     3,    68,    17,    66, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
-{   WWT_CLOSEBOX,    14,    10,    69,   133,   144, STR_02DB_OFF,STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{   WWT_CLOSEBOX,    14,    70,   129,   133,   144, STR_02DA_ON,	STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3042_BUS_STATION_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,					STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,					STR_3051_SELECT_BUS_STATION_ORIENTATION},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,	STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
@@ -495,15 +495,15 @@ static void ShowBusStationPicker()
 }
 
 static const Widget _truck_station_picker_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   139,     0,    13, STR_3043_TRUCK_STATION_ORIENT, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   139,    14,   176, 0x0,					STR_NULL},
-{      WWT_PANEL,    14,    71,   136,    17,    66, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,    14,    71,   136,    69,   118, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,    14,     3,    68,    69,   118, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,    14,     3,    68,    17,    66, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
-{   WWT_CLOSEBOX,    14,    10,    69,   133,   144, STR_02DB_OFF,STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{   WWT_CLOSEBOX,    14,    70,   129,   133,   144, STR_02DA_ON,	STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3043_TRUCK_STATION_ORIENT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,					STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,					STR_3052_SELECT_TRUCK_LOADING_BAY},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,	STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 

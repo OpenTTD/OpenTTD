@@ -144,9 +144,9 @@ static void SubsidiesListWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _subsidies_list_widgets[] = {
-{   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   629,     0,    13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    13,     0,   629,    14,   126, 0x0, STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   629,     0,    13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,   629,    14,   126, 0x0, STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
 {   WIDGETS_END},
 };
 

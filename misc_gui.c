@@ -96,9 +96,9 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _land_info_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   279,    14,    92, 0x0,				STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    92, 0x0,				STR_NULL},
 {    WIDGETS_END},
 };
 
@@ -253,9 +253,9 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,					STR_NULL},
-{    WWT_CAPTION,    14,    11,   399,     0,    13, STR_015B_OPENTTD,	STR_NULL},
-{      WWT_PANEL,    14,     0,   399,    14,   271, 0x0,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_015B_OPENTTD,	STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   399,    14,   271, 0x0,								STR_NULL},
 {      WWT_FRAME,    14,     5,   394,    40,   245, STR_NULL,					STR_NULL},
 {    WIDGETS_END},
 };
@@ -370,22 +370,22 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_trees_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   142,     0,    13, STR_2802_TREES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   142,    14,   170, 0x0,							STR_NULL},
-{      WWT_PANEL,    14,     2,    35,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,     2,    35,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,     2,    35,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{		WWT_CLOSEBOX,    14,   2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   142,     0,    13, STR_2802_TREES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   142,    14,   170, 0x0,							STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{		WWT_CLOSEBOX,   RESIZE_NONE,    14,   2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},
 {    WIDGETS_END},
 };
 
@@ -398,23 +398,23 @@ static const WindowDesc _build_trees_desc = {
 };
 
 static const Widget _build_trees_scen_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   142,     0,    13, STR_2802_TREES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   142,    14,   183, 0x0,							STR_NULL},
-{      WWT_PANEL,    14,     2,    35,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,     2,    35,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,     2,    35,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{      WWT_PANEL,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{		WWT_CLOSEBOX,    14,		 2,   140,   157,   168, STR_TREES_RANDOM_TYPE,	STR_TREES_RANDOM_TYPE_TIP},
-{   WWT_CLOSEBOX,    14,     2,   140,   170,   181, STR_028A_RANDOM_TREES,	STR_028B_PLANT_TREES_RANDOMLY_OVER},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   142,     0,    13, STR_2802_TREES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   142,    14,   183, 0x0,							STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    16,    61, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    63,   108, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
+{		WWT_CLOSEBOX,   RESIZE_NONE,    14,		 2,   140,   157,   168, STR_TREES_RANDOM_TYPE,	STR_TREES_RANDOM_TYPE_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     2,   140,   170,   181, STR_028A_RANDOM_TREES,	STR_028B_PLANT_TREES_RANDOMLY_OVER},
 {    WIDGETS_END},
 };
 
@@ -443,16 +443,16 @@ static uint _errmsg_duration;
 
 
 static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,     4,     0,    10,     0,    13, STR_00C5,					STR_NULL},
-{    WWT_CAPTION,     4,    11,   239,     0,    13, STR_00B2_MESSAGE,	STR_NULL},
-{      WWT_PANEL,     4,     0,   239,    14,    45, 0x0,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,					STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,     4,    11,   239,     0,    13, STR_00B2_MESSAGE,	STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     4,     0,   239,    14,    45, 0x0,								STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,     4,     0,    10,     0,    13, STR_00C5,							STR_NULL},
-{    WWT_CAPTION,     4,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_NULL},
-{      WWT_PANEL,     4,     0,   333,    14,   136, 0x0,										STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,							STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,     4,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     4,     0,   333,    14,   136, 0x0,										STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -463,7 +463,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		COPY_IN_DPARAM(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 		DrawWindowWidgets(w);
 		COPY_IN_DPARAM(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
-		if (w->widget != _errmsg_face_widgets) {
+		if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
 			DrawStringMultiCenter(
 				120,
 				(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
@@ -604,7 +604,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
 }
 
 static Widget _tooltips_widgets[] = {
-{      WWT_PANEL,    14,     0,   199,     0,    31, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -757,7 +757,7 @@ void SetVScrollCount(Window *w, int num)
 }
 
 void SetVScroll2Count(Window *w, int num)
-{ 
+{
 	w->vscroll2.count = num;
 	num -= w->vscroll2.cap;
 	if (num < 0) num = 0;
@@ -922,12 +922,12 @@ press_ok:;
 }
 
 static const Widget _query_string_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,				STR_NULL},
-{    WWT_CAPTION,    14,    11,   259,     0,    13, STR_012D,				STR_NULL},
-{     WWT_IMGBTN,    14,     0,   259,    14,    29, 0x0,							STR_NULL},
-{    WWT_TEXTBTN,    14,     0,   129,    30,    41, STR_012E_CANCEL,	STR_NULL},
-{    WWT_TEXTBTN,    14,   130,   259,    30,    41, STR_012F_OK,			STR_NULL},
-{     WWT_IMGBTN,    14,     2,   257,    16,    27, 0x0,							STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_NULL},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   259,     0,    13, STR_012D,				STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   259,    14,    29, 0x0,							STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   129,    30,    41, STR_012E_CANCEL,	STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   259,    30,    41, STR_012F_OK,			STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,							STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -981,58 +981,62 @@ void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, b
 }
 
 static const Widget _load_dialog_1_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   256,     0,    13, STR_4001_LOAD_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,	STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,	STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   256,    48,   293, 0x0,								STR_NULL},
-{          WWT_6,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    14,   246,   256,    48,   293, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_4001_LOAD_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
+{     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,								STR_NULL},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   281, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   282,   293, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _load_dialog_2_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   256,     0,    13, STR_0298_LOAD_SCENARIO,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,	STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,	STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   256,    48,   293, 0x0,								STR_NULL},
-{          WWT_6,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    14,   246,   256,    48,   293, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_0298_LOAD_SCENARIO,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
+{     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,										STR_NULL},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   281, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   282,   293, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _save_dialog_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   256,     0,    13, STR_4000_SAVE_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,    14,     0,   256,    26,    47, 0x0,									STR_NULL},
-{     WWT_IMGBTN,    14,     0,   256,    48,   291, 0x0,									STR_NULL},
-{          WWT_6,    14,     2,   243,    50,   289, 0x0,									STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    14,   246,   256,    48,   291, 0x0,									STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   256,   292,   307, 0x0,									STR_NULL},
-{     WWT_IMGBTN,    14,     2,   254,   294,   305, 0x0,									STR_400B_CURRENTLY_SELECTED_NAME},
-{ WWT_PUSHTXTBTN,    14,     0,   127,   308,   319, STR_4003_DELETE,			STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,    14,   128,   256,   308,   319, STR_4002_SAVE,				STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_4000_SAVE_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
+{     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,								STR_NULL},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   279, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,								STR_NULL},
+{     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,								STR_400B_CURRENTLY_SELECTED_NAME},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,		STR_400C_DELETE_THE_CURRENTLY_SELECTED},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   256,   308,   319, STR_4002_SAVE,			STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   280,   291, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _save_dialog_scen_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   256,     0,    13, STR_0299_SAVE_SCENARIO, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,	STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,	STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     0,   256,    48,   291, 0x0,								STR_NULL},
-{          WWT_6,    14,     2,   243,    50,   289, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    14,   246,   256,    48,   291, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   256,   292,   307, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    14,     2,   254,   294,   305, 0x0,								STR_400B_CURRENTLY_SELECTED_NAME},
-{ WWT_PUSHTXTBTN,    14,     0,   127,   308,   319, STR_4003_DELETE,		STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,    14,   128,   256,   308,   319, STR_4002_SAVE,			STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_0299_SAVE_SCENARIO, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
+{     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,										STR_NULL},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   279, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,										STR_NULL},
+{     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,										STR_400B_CURRENTLY_SELECTED_NAME},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,				STR_400C_DELETE_THE_CURRENTLY_SELECTED},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   256,   308,   319, STR_4002_SAVE,					STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   280,   291, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1107,8 +1111,6 @@ static void GenerateFileName(void)
 
 static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 {
-	const int list_start = 51;
-
 	switch(e->event) {
 	case WE_PAINT: {
 		int y,pos;
@@ -1123,17 +1125,17 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			MakeSortedSaveGameList();
 		}
 
-		GfxFillRect(3, list_start, 3+239, list_start+239, 0xD7);
-		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? 248 : 118, 15, 0x10);
+		GfxFillRect(w->widget[6].left + 1, w->widget[6].top + 1, w->widget[6].right, w->widget[6].bottom, 0xD7);
+		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? w->widget[3].right - 9 : w->widget[2].right - 9, 15, 0x10);
 
-		y = list_start;
+		y = w->widget[6].top + 1;
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
 			DoDrawString(item->title[0] ? item->title : item->name, 4, y, _fios_colors[item->type] );
 			pos++;
 			y+=10;
-			if (y >= w->vscroll.cap*10+list_start)
+			if (y >= w->vscroll.cap*10+w->widget[6].top+1)
 				break;
 		}
 
@@ -1157,7 +1159,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 6: { /* Click the listbox */
-			int y = (e->click.pt.y - list_start) / 10;
+			int y = (e->click.pt.y - w->widget[6].top - 1) / 10;
 			char *name;
 			const FiosItem *file;
 
@@ -1222,13 +1224,29 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		_query_string_active = false;
 		FiosFreeSavegameList();
 		break;
+	case WE_RESIZE: {
+		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
+		uint diff = e->sizing.diff.x / 2;
+		w->widget[2].right += diff;
+		w->widget[3].left  += diff;
+		w->widget[3].right += e->sizing.diff.x;
+
+		/* Same for widget 10 and 11 in save-dialog */
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			w->widget[10].right += diff;
+			w->widget[11].left  += diff;
+			w->widget[11].right += e->sizing.diff.x;
+		}
+
+		w->vscroll.cap += e->sizing.diff.y / 10;
+		} break;
 	}
 }
 
 static const WindowDesc _load_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 294,
 	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_1_widgets,
 	SaveLoadDlgWndProc,
 };
@@ -1236,7 +1254,7 @@ static const WindowDesc _load_dialog_desc = {
 static const WindowDesc _load_dialog_scen_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 294,
 	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_2_widgets,
 	SaveLoadDlgWndProc,
 };
@@ -1244,7 +1262,7 @@ static const WindowDesc _load_dialog_scen_desc = {
 static const WindowDesc _save_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 320,
 	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_widgets,
 	SaveLoadDlgWndProc,
 };
@@ -1252,7 +1270,7 @@ static const WindowDesc _save_dialog_desc = {
 static const WindowDesc _save_dialog_scen_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 320,
 	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_scen_widgets,
 	SaveLoadDlgWndProc,
 };
@@ -1276,6 +1294,9 @@ void ShowSaveLoadDialog(int mode)
 
 	w = AllocateWindowDesc(_saveload_dialogs[mode]);
 	w->vscroll.cap = 24;
+	w->resize.step_width = 2;
+	w->resize.step_height = 10;
+	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
 	w->click_state |= (1 << 6);
 	WP(w,querystr_d).caret = 0;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
@@ -1303,13 +1324,15 @@ void RedrawAutosave()
 }
 
 static const Widget _select_scenario_widgets[] = {
-{    WWT_TEXTBTN,     7,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   256,     0,    13, STR_400E_SELECT_NEW_GAME_TYPE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,     7,     0,   127,    14,    25, STR_SORT_BY_NAME,	STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,     7,   128,   256,    14,    25, STR_SORT_BY_DATE,	STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,     7,     0,   245,    26,   319, 0x0,								STR_NULL},
-{          WWT_6,     7,     2,   243,    28,   317, 0x0,								STR_400F_SELECT_SCENARIO_GREEN_PRE},
-{  WWT_SCROLLBAR,     7,   246,   256,    26,   319, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,     7,    11,   256,     0,    13, STR_400E_SELECT_NEW_GAME_TYPE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,  RESIZE_RIGHT,     7,     0,   256,    14,    25, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     7,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     7,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,     RESIZE_RB,     7,     0,   245,    26,   319, 0x0,								STR_NULL},
+{          WWT_6,     RESIZE_RB,     7,     2,   243,    28,   317, 0x0,								STR_400F_SELECT_SCENARIO_GREEN_PRE},
+{  WWT_SCROLLBAR,    RESIZE_LRB,     7,   246,   256,    26,   307, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,     7,   246,   256,   308,   319, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1329,7 +1352,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		SetVScrollCount(w, _fios_num);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? 248 : 118, 15, 0x10);
+		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? w->widget[4].right - 9 : w->widget[3].right - 9, 15, 0x10);
 		DrawString(4, 32, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
 
 		y = list_start;
@@ -1347,19 +1370,19 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 2: /* Sort scenario names by name */
+		case 3: /* Sort scenario names by name */
 			_savegame_sort_order = (_savegame_sort_order == 2) ? 3 : 2;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
-		case 3: /* Sort scenario names by date */
+		case 4: /* Sort scenario names by date */
 			_savegame_sort_order = (_savegame_sort_order == 0) ? 1 : 0;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
-		case 5: /* Click the listbox */
+		case 6: /* Click the listbox */
 			if(e->click.pt.y < list_start)
 				DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
 			else {
@@ -1383,6 +1406,16 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		}
 	case WE_DESTROY:
 		break;
+
+	case WE_RESIZE: {
+		/* Widget 3 and 4 have to go with halve speed, make it so obiwan */
+		uint diff = e->sizing.diff.x / 2;
+		w->widget[3].right += diff;
+		w->widget[4].left  += diff;
+		w->widget[4].right += e->sizing.diff.x;
+
+		w->vscroll.cap += e->sizing.diff.y / 10;
+		} break;
 	}
 }
 
@@ -1403,7 +1436,7 @@ void SetFiosType(const byte fiostype)
 static const WindowDesc _select_scenario_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 320,
 	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_select_scenario_widgets,
 	SelectScenarioWndProc
 };
@@ -1420,6 +1453,9 @@ void AskForNewGameToStart()
 
 	w = AllocateWindowDesc(&_select_scenario_desc);
 	w->vscroll.cap = 27;
+	w->resize.step_width = 2;
+	w->resize.step_height = 10;
+	w->resize.height = w->height - 10 * 17; // Minimum of 10 in the list
 }
 
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
@@ -1543,10 +1579,10 @@ static const CheatEntry _cheats_ui[] = {
 
 
 static const Widget _cheat_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   399,     0,    13, STR_CHEATS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,   399,    14,   147, 0x0,					STR_NULL},
-{     WWT_IMGBTN,    14,     0,   399,    14,   147, 0x0,					STR_CHEATS_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_CHEATS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   399,    14,   147, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   399,    14,   147, 0x0,					STR_CHEATS_TIP},
 {   WIDGETS_END},
 };
 

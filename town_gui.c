@@ -10,13 +10,13 @@
 #include "player.h"
 
 static const Widget _town_authority_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   316,    14,   105, 0x0,							STR_NULL},
-{     WWT_IMGBTN,    13,     0,   305,   106,   157, 0x0,							STR_2043_LIST_OF_THINGS_TO_DO_AT},
-{  WWT_SCROLLBAR,    13,   306,   316,   106,   157, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    13,     0,   316,   158,   209, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,    13,     0,   316,   210,   221, STR_2042_DO_IT,	STR_2044_CARRY_OUT_THE_HIGHLIGHTED},
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   316,    14,   105, 0x0,							STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   305,   106,   157, 0x0,							STR_2043_LIST_OF_THINGS_TO_DO_AT},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   306,   316,   106,   157, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   316,   158,   209, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   316,   210,   221, STR_2042_DO_IT,	STR_2044_CARRY_OUT_THE_HIGHLIGHTED},
 {   WIDGETS_END},
 };
 
@@ -278,15 +278,15 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _town_view_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   247,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   248,   259,     0,    13, 0x0,      STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,      STR_NULL},
-{          WWT_6,    13,     2,   257,    16,   103, 0x0,      STR_NULL},
-{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,      STR_NULL},
-{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION,				STR_200B_CENTER_THE_MAIN_VIEW_ON},
-{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY,STR_2021_SHOW_INFORMATION_ON_LOCAL},
-{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0130_RENAME,					STR_200C_CHANGE_TOWN_NAME},
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   247,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,      STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,      STR_NULL},
+{          WWT_6,   RESIZE_NONE,    13,     2,   257,    16,   103, 0x0,      STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,   106,   137, 0x0,      STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    85,   138,   149, STR_00E4_LOCATION,				STR_200B_CENTER_THE_MAIN_VIEW_ON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY,STR_2021_SHOW_INFORMATION_ON_LOCAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   259,   138,   149, STR_0130_RENAME,					STR_200C_CHANGE_TOWN_NAME},
 {   WIDGETS_END},
 };
 
@@ -299,17 +299,17 @@ static const WindowDesc _town_view_desc = {
 };
 
 static const Widget _town_view_scen_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   172,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,								STR_NULL},
-{          WWT_6,    13,     2,   257,    16,   103, 0x0,								STR_NULL},
-{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION,	STR_200B_CENTER_THE_MAIN_VIEW_ON},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    13,   173,   247,     0,    13, STR_0130_RENAME,		STR_200C_CHANGE_TOWN_NAME},
-{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_023C_EXPAND,		STR_023B_INCREASE_SIZE_OF_TOWN},
-{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0290_DELETE,		STR_0291_DELETE_THIS_TOWN_COMPLETELY},
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   172,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,								STR_NULL},
+{          WWT_6,   RESIZE_NONE,    13,     2,   257,    16,   103, 0x0,								STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,   106,   137, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    85,   138,   149, STR_00E4_LOCATION,	STR_200B_CENTER_THE_MAIN_VIEW_ON},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   173,   247,     0,    13, STR_0130_RENAME,		STR_200C_CHANGE_TOWN_NAME},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    86,   171,   138,   149, STR_023C_EXPAND,		STR_023B_INCREASE_SIZE_OF_TOWN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   259,   138,   149, STR_0290_DELETE,		STR_0291_DELETE_THIS_TOWN_COMPLETELY},
 {   WIDGETS_END},
 };
 
@@ -340,13 +340,14 @@ void ShowTownViewWindow(uint town)
 }
 
 static const Widget _town_directory_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   195,     0,    13, STR_2000_TOWNS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    13,   196,   207,     0,    13, 0x0,              STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    13,     0,    98,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,    13,     0,   196,    26,   189, 0x0, STR_200A_TOWN_NAMES_CLICK_ON_NAME},
-{  WWT_SCROLLBAR,    13,   197,   207,    14,   189, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   195,     0,    13, STR_2000_TOWNS,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    13,   196,   207,     0,    13, 0x0,										STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    98,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,	STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN, RESIZE_BOTTOM,    13,     0,   196,    26,   189, 0x0,										STR_200A_TOWN_NAMES_CLICK_ON_NAME},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   197,   207,    14,   177, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,     RESIZE_TB,    13,   197,   207,   178,   189, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -480,13 +481,17 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 	case WE_4:
 		SetWindowDirty(w);
 		break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 10;
+		break;
 	}
 }
 
 static const WindowDesc _town_directory_desc = {
 	-1, -1, 208, 190,
 	WC_TOWN_DIRECTORY,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_town_directory_widgets,
 	TownDirectoryWndProc
 };
@@ -499,6 +504,8 @@ void ShowTownDirectory()
 	w = AllocateWindowDescFront(&_town_directory_desc, 0);
 	if (w) {
 		w->vscroll.cap = 16;
+		w->resize.step_height = 10;
+		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list
 	}
 }
 

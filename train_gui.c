@@ -47,7 +47,7 @@ void Set_DPARAM_Train_Engine_Build_Window(uint16 engine_number)
 void Set_DPARAM_Train_Car_Build_Window(Window *w, uint16 engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-	
+
 	SetDParam(0, DoCommandByTile(w->window_number, engine_number, 0, DC_QUERY_COST, CMD_BUILD_RAIL_VEHICLE) );
 	SetDParam(4, rvi->capacity);
 	SetDParam(1, rvi->weight);
@@ -99,7 +99,7 @@ void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
-	int *selected_id, byte railtype, bool is_engine)
+	int *selected_id, byte railtype, byte show_max, bool is_engine)
 {
 	int i;
 
@@ -111,11 +111,11 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 				!HASBIT(e->player_avail, _local_player))
 			continue;
 
-		if (*sel == 0) *selected_id = i;
+		if (*sel == 0)
+			*selected_id = i;
 
-		if (IS_INT_INSIDE(--*pos, -8, 0)) {
-			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),
-				*sel == 0 ? 0xC : 0x10);
+		if (IS_INT_INSIDE(--*pos, -show_max, 0)) {
+			DrawString(*x + 59, *y + 2, GetCustomEngineName(i), *sel == 0 ? 0xC : 0x10);
 			DrawTrainEngine(*x + 29, *y + 6 + _traininfo_vehicle_pitch, i,
 				SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 			*y += 14;
@@ -162,8 +162,8 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
 			 * engines to get more types.. Stays here until we have our own format
 			 * then it is exit!!! */
-			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, true); // True engines
-			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, false); // Feeble wagons
+			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, true); // True engines
+			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, false); // Feeble wagons
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
@@ -174,12 +174,12 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					/* it's an engine */
 					Set_DPARAM_Train_Engine_Build_Window(selected_id);
 
-					DrawString(2, 0x7F, STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
+					DrawString(2, w->widget[4].top + 1, STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
 				} else {
 					/* it's a wagon */
 					Set_DPARAM_Train_Car_Build_Window(w, selected_id);
-					
-					DrawString(2, 0x7F, STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
+
+					DrawString(2, w->widget[4].top + 1, STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
 				}
 			}
 		}
@@ -189,7 +189,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 2: {
 			uint i = (e->click.pt.y - 14) / 14;
-			if (i < 8) {
+			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
 			}
@@ -227,24 +227,33 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		memcpy(_decode_parameters, b, 32);
 		DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
 	} break;
+
+	case WE_RESIZE: {
+		if (e->sizing.diff.y == 0)
+			break;
+
+		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+	} break;
 	}
 }
 
 static const Widget _new_rail_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   227,     0,    13, STR_0315,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   216,    14,   125, 0x801,			STR_8843_TRAIN_VEHICLE_SELECTION},
-{  WWT_SCROLLBAR,    14,   217,   227,    14,   125, 0x0,				STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    14,     0,   227,   126,   187, 0x0,				STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   113,   188,   199, STR_881F_BUILD_VEHICLE,	STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
-{ WWT_PUSHTXTBTN,    14,   114,   227,   188,   199, STR_8820_RENAME,					STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   227,     0,    13, STR_0315,									STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   216,    14,   125, 0x801,										STR_8843_TRAIN_VEHICLE_SELECTION},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   217,   227,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   187, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   188,   199, STR_881F_BUILD_VEHICLE,		STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   188,   199, STR_8820_RENAME,					STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   217,   227,   188,   199, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_rail_vehicle_desc = {
 	-1, -1, 228, 200,
 	WC_BUILD_VEHICLE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,
 	NewRailVehicleWndProc
 };
@@ -258,6 +267,10 @@ static void ShowBuildTrainWindow(uint tile)
 	w = AllocateWindowDesc(&_new_rail_vehicle_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
+	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+
+	w->resize.step_height = 14;
+	w->resize.height = w->height - 14 * 4; /* Minimum of 4 vehicles in the display */
 
 	if (tile != 0) {
 		w->caption_color = _map_owner[tile];
@@ -296,11 +309,11 @@ static void DrawTrainDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<5)|(1<<7));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<5)|(1<<6)|(1<<8));
 
 	/* determine amount of items for scroller */
-	num = 1;
-	hnum = 0;
+	num = 0;
+	hnum = 1;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
 				  (v->subtype == 0 || v->subtype == 4) &&
@@ -309,7 +322,7 @@ static void DrawTrainDepotWindow(Window *w)
 					num++;
 					// determine number of items in the X direction.
 					if (v->subtype == 0) {
-						i = -1;
+						i = 0;
 						u = v;
 						do i++; while ( (u=u->next) != NULL);
 						if (i > hnum) hnum = i;
@@ -322,7 +335,7 @@ static void DrawTrainDepotWindow(Window *w)
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
 
-	SetDParam(0,d->town_index);
+	SetDParam(0, d->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -335,9 +348,9 @@ static void DrawTrainDepotWindow(Window *w)
 				v->subtype == 0 &&
 				v->tile == (TileIndex)tile &&
 				v->u.rail.track == 0x80 &&
-				--num < 0 && num >= -6) {
+				--num < 0 && num >= -w->vscroll.cap) {
 
-			DrawTrainImage(v, x+21, y, 10, w->hscroll.pos, WP(w,traindepot_d).sel);
+			DrawTrainImage(v, x+21, y, w->hscroll.cap, w->hscroll.pos, WP(w,traindepot_d).sel);
 			/* Draw the train number */
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
@@ -354,9 +367,9 @@ static void DrawTrainDepotWindow(Window *w)
 				v->subtype == 4 &&
 				v->tile == (TileIndex)tile &&
 				v->u.rail.track == 0x80 &&
-				--num < 0 && num >= -6) {
+				--num < 0 && num >= -w->vscroll.cap) {
 
-			DrawTrainImage(v, x+50, y, 9, 0, WP(w,traindepot_d).sel);
+			DrawTrainImage(v, x+50, y, w->hscroll.cap - 1, 0, WP(w,traindepot_d).sel);
 			DrawString(x, y+2, STR_8816, 0);
 			y += 14;
 		}
@@ -504,10 +517,10 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 7:
+		case 8:
 			ShowBuildTrainWindow(w->window_number);
 			break;
-		case 8:
+		case 9:
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		case 3:
@@ -522,8 +535,8 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 4:
-		case 5: {
+		case 5:
+		case 6: {
 			Vehicle *v;
 			int sell_cmd;
 
@@ -541,7 +554,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, e->click.widget);
 
-			sell_cmd = (e->click.widget == 5 || _ctrl_pressed) ? 1 : 0;
+			sell_cmd = (e->click.widget == 6 || _ctrl_pressed) ? 1 : 0;
 
 			if (v->subtype != 0) {
 				DoCommandP(v->tile, v->index, sell_cmd, NULL, CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE));
@@ -576,29 +589,37 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		} break;
+	case WE_RESIZE: {
+		/* Update the scroll + matrix */
+		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->hscroll.cap += e->sizing.diff.x / 29;
+		w->widget[3].unkA = (w->vscroll.cap << 8) + 1;
+	} break;
 	}
 }
 
-
 static const Widget _train_depot_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   337,   348,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{     WWT_MATRIX,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
-{      WWT_PANEL,    14,   314,   337,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
-{      WWT_PANEL,    14,   314,   337,    55,   108, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   337,   348,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
+{      WWT_PANEL,    RESIZE_LRB,    14,   314,   337,    14,    13, 0x0,										STR_NULL},
+{      WWT_PANEL,   RESIZE_LRTB,    14,   314,   337,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
+{      WWT_PANEL,   RESIZE_LRTB,    14,   314,   337,    55,   108, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
 
-{  WWT_SCROLLBAR,    14,   338,   348,    14,   108, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   173,    109,  120, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   174,   348,    109,  120, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
-{ WWT_HSCROLLBAR,    14,     0,   313,    98,   108, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   338,   348,    14,   108, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   167,   109,   120, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   168,   336,   109,   120, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
+{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   313,    98,   108, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,   337,   336,   109,   120, 0x0,										STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   338,   348,   109,   120, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _train_depot_desc = {
 	-1, -1, 349, 121,
 	WC_VEHICLE_DEPOT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_train_depot_widgets,
 	TrainDepotWndProc
 };
@@ -612,7 +633,9 @@ void ShowTrainDepotWindow(uint tile)
 	if (w) {
 		w->caption_color = _map_owner[w->window_number];
 		w->vscroll.cap = 6;
-		w->hscroll.cap = 9;
+		w->hscroll.cap = 10;
+		w->resize.step_width = 29;
+		w->resize.step_height = 14;
 		WP(w,traindepot_d).sel = INVALID_VEHICLE;
 		_backup_orders_tile = 0;
 	}
@@ -717,11 +740,11 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _rail_vehicle_refit_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   239,     0,    13, STR_983B_REFIT,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   239,    14,   135, 0x0,										STR_RAIL_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,    14,     0,   239,   136,   157, 0x0,										STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,   239,   158,   169, STR_RAIL_REFIT_VEHICLE,STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,										STR_RAIL_SELECT_TYPE_OF_CARGO_FOR},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_RAIL_REFIT_VEHICLE,STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED},
 {   WIDGETS_END},
 };
 
@@ -745,19 +768,19 @@ static void ShowRailVehicleRefitWindow(Vehicle *v)
 }
 
 static Widget _train_view_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   237,     0,    13, STR_882E,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   238,   249,     0,    13, 0x0,     STR_STICKY_BUTTON},
-{      WWT_PANEL,    14,     0,   231,    14,   121, 0x0,			STR_NULL},
-{          WWT_6,    14,     2,   229,    16,   119, 0x0,			STR_NULL},
-{ WWT_PUSHIMGBTN,    14,     0,   249,   122,   133, 0x0,			STR_8846_CURRENT_TRAIN_ACTION_CLICK},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB,		STR_8848_CENTER_MAIN_VIEW_ON_TRAIN},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2AD,		STR_8849_SEND_TRAIN_TO_DEPOT},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2B1,		STR_884A_FORCE_TRAIN_TO_PROCEED},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2CB,		STR_884B_REVERSE_DIRECTION_OF_TRAIN},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B2,		STR_8847_SHOW_TRAIN_S_ORDERS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,   104,   121, 0x2B3,		STR_884C_SHOW_TRAIN_DETAILS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B4,		STR_RAIL_REFIT_VEHICLE_TO_CARRY},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   237,     0,    13, STR_882E,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   238,   249,     0,    13, 0x0,     STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   231,    14,   121, 0x0,			STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,     2,   229,    16,   119, 0x0,			STR_NULL},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,   249,   122,   133, 0x0,			STR_8846_CURRENT_TRAIN_ACTION_CLICK},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    14,    31, 0x2AB,		STR_8848_CENTER_MAIN_VIEW_ON_TRAIN},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    32,    49, 0x2AD,		STR_8849_SEND_TRAIN_TO_DEPOT},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    50,    67, 0x2B1,		STR_884A_FORCE_TRAIN_TO_PROCEED},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    68,    85, 0x2CB,		STR_884B_REVERSE_DIRECTION_OF_TRAIN},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    86,   103, 0x2B2,		STR_8847_SHOW_TRAIN_S_ORDERS},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,   104,   121, 0x2B3,		STR_884C_SHOW_TRAIN_DETAILS},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    68,    85, 0x2B4,		STR_RAIL_REFIT_VEHICLE_TO_CARRY},
 {   WIDGETS_END},
 };
 
@@ -1139,19 +1162,19 @@ do_change_service_int:
 }
 
 static const Widget _train_details_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   329,     0,    13, STR_8802_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,   330,   369,     0,    13, STR_01AA_NAME,		STR_8867_NAME_TRAIN},
-{      WWT_PANEL,    14,     0,   369,    14,    55, 0x0,							STR_NULL},
-{     WWT_MATRIX,    14,     0,   358,    56,   139, 0x601,						STR_NULL},
-{  WWT_SCROLLBAR,    14,   359,   369,    56,   139, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,    10,   140,   145, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,   146,   151, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL,    14,    11,   369,   140,   151, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    92,   152,   163, STR_013C_CARGO,	STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
-{ WWT_PUSHTXTBTN,    14,    93,   184,   152,   163, STR_013D_INFORMATION,	STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
-{ WWT_PUSHTXTBTN,    14,   185,   277,   152,   163, STR_013E_CAPACITIES,		STR_8851_SHOW_CAPACITIES_OF_EACH},
-{ WWT_PUSHTXTBTN,    14,   278,   369,   152,   163, STR_013E_TOTAL_CARGO,	STR_8852_SHOW_TOTAL_CARGO},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   329,     0,    13, STR_8802_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   330,   369,     0,    13, STR_01AA_NAME,		STR_8867_NAME_TRAIN},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,    55, 0x0,							STR_NULL},
+{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   358,    56,   139, 0x601,						STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   359,   369,    56,   139, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   140,   145, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   146,   151, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    11,   369,   140,   151, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    92,   152,   163, STR_013C_CARGO,	STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    93,   184,   152,   163, STR_013D_INFORMATION,	STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   185,   277,   152,   163, STR_013E_CAPACITIES,		STR_8851_SHOW_CAPACITIES_OF_EACH},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   278,   369,   152,   163, STR_013E_TOTAL_CARGO,	STR_8852_SHOW_TOTAL_CARGO},
 {   WIDGETS_END},
 };
 
@@ -1182,32 +1205,35 @@ void ShowTrainDetailsWindow(Vehicle *v)
 	WP(w,traindetails_d).tab = 0;
 }
 
-
-static Widget _player_trains_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   313,   324,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,			              STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
-{  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   161,   208,   219, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
-{ WWT_PUSHTXTBTN,    14,   162,   324,   208,   219, STR_REPLACE_VEHICLES,					STR_REPLACE_HELP},
+static const Widget _player_trains_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   313,   324,     0,    13, 0x0,										STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   156,   208,   219, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   157,   313,   208,   219, STR_REPLACE_VEHICLES,    STR_REPLACE_HELP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   314,   313,   208,   219, 0x0,										STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   314,   324,   208,   219, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
-static Widget _other_player_trains_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,    14,   313,   324,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_ORDER_TIP},
-{      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
-{  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+static const Widget _other_player_trains_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   312,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   313,   324,     0,    13, 0x0,										STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   312,   208,   219, 0x0,										STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   314,   324,   208,   219, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1236,20 +1262,17 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		/* draw the widgets */
 		{
 			const Player *p = DEREF_PLAYER(owner);
-			/* XXX hack */
 			if (station == -1) {
 				/* Company Name -- (###) Trains */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
 				SetDParam(2, w->vscroll.count);
-				_player_trains_widgets[1].unkA = STR_881B_TRAINS;
-				_other_player_trains_widgets[1].unkA = STR_881B_TRAINS;
+				w->widget[1].unkA = STR_881B_TRAINS;
 			} else {
 				/* Station Name -- (###) Trains */
 				SetDParam(0, DEREF_STATION(station)->index);
 				SetDParam(1, w->vscroll.count);
-				_player_trains_widgets[1].unkA = STR_SCHEDULED_TRAINS;
-				_other_player_trains_widgets[1].unkA = STR_SCHEDULED_TRAINS;
+				w->widget[1].unkA = STR_SCHEDULED_TRAINS;
 			}
 			DrawWindowWidgets(w);
 		}
@@ -1267,7 +1290,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			assert(v->type == VEH_Train && v->owner == owner);
 
 			DrawTrainImage(
-				v, x + 21, y + 6 + _traininfo_vehicle_pitch, 10, 0, INVALID_VEHICLE);
+				v, x + 21, y + 6 + _traininfo_vehicle_pitch, w->hscroll.cap, 0, INVALID_VEHICLE);
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
@@ -1326,6 +1349,9 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		case 9: { /* Build new Vehicle */
 			uint tile;
 
+			if (!IsWindowOfPrototype(w, _player_trains_widgets))
+				break;
+
 			tile = _last_built_train_depot_tile;
 			do {
 				if (_map_owner[tile] == _local_player && IsTrainDepotTile(tile)) {
@@ -1380,21 +1406,28 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 		break;
+
+	case WE_RESIZE:
+		/* Update the scroll + matrix */
+		w->hscroll.cap += e->sizing.diff.x / 29;
+		w->vscroll.cap += e->sizing.diff.y / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		break;
 	}
 }
 
 static const WindowDesc _player_trains_desc = {
 	-1, -1, 325, 220,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_trains_widgets,
 	PlayerTrainsWndProc
 };
 
 static const WindowDesc _other_player_trains_desc = {
-	-1, -1, 325, 208,
+	-1, -1, 325, 220,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_other_player_trains_widgets,
 	PlayerTrainsWndProc
 };
@@ -1410,6 +1443,11 @@ void ShowPlayerTrains(int player, int station)
 	}
 	if (w) {
 		w->caption_color = w->window_number;
+		w->hscroll.cap = 10;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
+		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+		w->resize.step_width = 29;
+		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
 	}
 }

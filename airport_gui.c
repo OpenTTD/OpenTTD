@@ -96,12 +96,12 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _air_toolbar_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,    73,     0,    13, STR_A000_AIRPORTS,			STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     7,    74,    85,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{      WWT_PANEL,     7,     0,    41,    14,    35, 0x2E8,									STR_A01E_BUILD_AIRPORT},
-{      WWT_PANEL,     7,    42,    63,    14,    35, 0x2BF,									STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,    73,     0,    13, STR_A000_AIRPORTS,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,    74,    85,     0,    13, 0x0,                   STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,    41,    14,    35, 0x2E8,									STR_A01E_BUILD_AIRPORT},
+{      WWT_PANEL,   RESIZE_NONE,     7,    42,    63,    14,    35, 0x2BF,									STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,   RESIZE_NONE,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
@@ -155,7 +155,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
          case AT_INTERNATIONAL: rad = CA_AIR_INTER; break;
        }
 		 }
-	
+
 		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
@@ -196,16 +196,16 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_airport_picker_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   147,    14,   130, 0x0,													STR_NULL},
-{WWT_NODISTXTBTN,    14,     2,    73,    27,    38, STR_3059_SMALL,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,    14,    74,   145,    27,    38, STR_305A_LARGE,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,    14,     2,   145,    63,    74, STR_306B_HELIPORT,						STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,    14,     2,   145,    39,    50, STR_305AA_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,    14,     2,   145,    51,    62, STR_305AB_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{   WWT_CLOSEBOX,    14,    14,    73,    88,    98, STR_02DB_OFF,								STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{   WWT_CLOSEBOX,    14,    74,   133,    88,    98, STR_02DA_ON,									STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   130, 0x0,													STR_NULL},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,    73,    27,    38, STR_3059_SMALL,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,    74,   145,    27,    38, STR_305A_LARGE,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    63,    74, STR_306B_HELIPORT,						STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    39,    50, STR_305AA_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    51,    62, STR_305AB_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    14,    73,    88,    98, STR_02DB_OFF,								STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,    74,   133,    88,    98, STR_02DA_ON,									STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
