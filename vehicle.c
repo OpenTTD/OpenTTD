@@ -1505,8 +1505,12 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
 				if it is a multiheaded engine (rear engine)
-				(sprite - rvi2->image_index) is 1 if the engine is heading the other way, otherwise 0*/
-				v->spritenum = rvi->image_index + (sprite - rvi2->image_index);
+				(rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) is true if the engine is heading the other way, otherwise 0*/
+				v->spritenum = rvi->image_index + (( rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
+				
+				// turn the last engine in a multiheaded train if needed
+				if ( v->next == NULL && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
+					v->spritenum++;
 				
 				v->cargo_type = rvi->cargo_type;
 				v->cargo_cap = rvi->capacity;
