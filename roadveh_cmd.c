@@ -121,15 +121,16 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_Road)) return CMD_ERROR;
 
-	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
-
-	if (_map_owner[tile] != _current_player) return CMD_ERROR;
-
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	cost = EstimateRoadVehCost(p1);
 	if (flags & DC_QUERY_COST)
 		return cost;
+
+	/* The ai_new queries the vehicle cost before building the route,
+	 * so we must check against cheaters no sooner than now. --pasky */
+	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
+	if (_map_owner[tile] != _current_player) return CMD_ERROR;
 
 	v = AllocateVehicle();
 	if (v == NULL || IsOrderPoolFull())
