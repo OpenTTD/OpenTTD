@@ -1,17 +1,10 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-// ** console ** //
-
-enum {
-	ICONSOLE_OPENED=0,
-	ICONSOLE_CLOSED,
-} _iconsole_modes;
-
 // ** console parser ** //
 
-enum {
-	ICONSOLE_VAR_NONE=0,
+typedef enum _iconsole_var_types {
+	ICONSOLE_VAR_NONE,
 	ICONSOLE_VAR_BOOLEAN,
 	ICONSOLE_VAR_BYTE,
 	ICONSOLE_VAR_UINT16,
@@ -21,47 +14,65 @@ enum {
 	ICONSOLE_VAR_STRING,
 	ICONSOLE_VAR_POINTER,
 	ICONSOLE_VAR_REFERENCE,
-	ICONSOLE_VAR_UNKNOWN,
+	ICONSOLE_VAR_UNKNOWN
 } _iconsole_var_types;
 
-enum {
+typedef enum _iconsole_hook_types {
 	ICONSOLE_HOOK_ACCESS,
 	ICONSOLE_HOOK_BEFORE_CHANGE,
 	ICONSOLE_HOOK_BEFORE_EXEC,
 	ICONSOLE_HOOK_AFTER_CHANGE,
-	ICONSOLE_HOOK_AFTER_EXEC,
+	ICONSOLE_HOOK_AFTER_EXEC
 } _iconsole_hook_types;
 
-typedef struct {
-	// -------------- //
-	void * addr;
-	byte * name;
-	// -------------- //
-	void * hook_access;
-	void * hook_before_exec;
-	void * hook_after_exec;
-	// -------------- //
-	void * _next;
-	} _iconsole_cmd;
+struct _iconsole_var;
+typedef bool (*iconsole_var_hook)(struct _iconsole_var* hook_var);
 
-typedef struct {
+typedef struct _iconsole_var {
 	// --------------- //
-	void * addr;
-	const byte * name;
-	byte type;
+	union {
+		void*   addr;
+		bool*   bool_;
+		byte*   byte_;
+		uint16* uint16_;
+		uint32* uint32_;
+		int16*  int16_;
+		int32*  int32_;
+		char*   string_;
+		struct _iconsole_var* reference_;
+	} data;
+	char* name;
+	_iconsole_var_types type;
 	// -------------- //
-	void * hook_access;
-	void * hook_before_change;
-	void * hook_after_change;
+	iconsole_var_hook hook_access;
+	iconsole_var_hook hook_before_change;
+	iconsole_var_hook hook_after_change;
 	// -------------- //
-	void * _next;
+	struct _iconsole_var* _next;
 	bool _malloc;
-	} _iconsole_var;
+} _iconsole_var;
+
+struct _iconsole_cmd;
+typedef bool (*iconsole_cmd_hook)(struct _iconsole_cmd* hook_cmd);
+
+typedef _iconsole_var* (*_iconsole_cmd_addr)(byte argc, char* argv[], byte argt[]);
+
+typedef struct _iconsole_cmd {
+	// -------------- //
+	_iconsole_cmd_addr addr;
+	char* name;
+	// -------------- //
+	iconsole_cmd_hook hook_access;
+	iconsole_cmd_hook hook_before_exec;
+	iconsole_cmd_hook hook_after_exec;
+	// -------------- //
+	void* _next;
+} _iconsole_cmd;
 
 // ** console parser ** //
 
-_iconsole_cmd * _iconsole_cmds; // list of registred commands
-_iconsole_var * _iconsole_vars; // list of registred vars
+_iconsole_cmd* _iconsole_cmds; // list of registred commands
+_iconsole_var* _iconsole_vars; // list of registred vars
 
 // ** console colors ** //
 VARDEF byte _iconsole_color_default;
@@ -72,58 +83,57 @@ VARDEF byte _iconsole_color_commands;
 
 // ** ttd.c functions ** //
 
-void SetDebugString(const char *s);
+void SetDebugString(const char* s);
 
 // ** console functions ** //
 
-void IConsoleClearCommand();
-void IConsoleInit();
-void IConsoleClear();
-void IConsoleFree();
-void IConsoleResize();
-void IConsoleSwitch();
-void IConsoleClose();
-void IConsoleOpen();
+void IConsoleInit(void);
+void IConsoleClear(void);
+void IConsoleFree(void);
+void IConsoleResize(void);
+void IConsoleSwitch(void);
+void IConsoleClose(void);
+void IConsoleOpen(void);
 
 // ** console cmd buffer ** //
-void IConsoleCmdBufferAdd(const byte *cmd);
+void IConsoleCmdBufferAdd(const char* cmd);
 void IConsoleCmdBufferNavigate(signed char direction);
 
 // ** console output ** //
-void IConsolePrint(byte color_code, const byte* string);
-void CDECL IConsolePrintF(byte color_code, const char *s, ...);
-void IConsoleDebug(byte* string);
-void IConsoleError(const byte* string);
-void IConsoleWarning(const byte* string);
+void IConsolePrint(byte color_code, const char* string);
+void CDECL IConsolePrintF(byte color_code, const char* s, ...);
+void IConsoleDebug(const char* string);
+void IConsoleError(const char* string);
+void IConsoleWarning(const char* string);
 
 // *** Commands *** //
 
-void IConsoleCmdRegister(const byte * name, void * addr);
-_iconsole_cmd * IConsoleCmdGet(const byte * name);
+void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr);
+_iconsole_cmd* IConsoleCmdGet(const char* name);
 
 // *** Variables *** //
 
-void IConsoleVarRegister(const byte * name, void * addr, byte type);
-void IConsoleVarMemRegister(const byte * name, byte type);
-void IConsoleVarInsert(_iconsole_var * var, const byte * name);
-_iconsole_var * IConsoleVarGet(const byte * name);
-_iconsole_var * IConsoleVarAlloc(byte type);
-void IConsoleVarFree(_iconsole_var * var);
-void IConsoleVarSetString(_iconsole_var * var, const byte * string);
-void IConsoleVarSetValue(_iconsole_var * var, int value);
-void IConsoleVarDump(_iconsole_var * var, const byte * dump_desc);
+void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type);
+void IConsoleVarMemRegister(const char* name, _iconsole_var_types type);
+void IConsoleVarInsert(_iconsole_var* var, const char* name);
+_iconsole_var* IConsoleVarGet(const char* name);
+_iconsole_var* IConsoleVarAlloc(_iconsole_var_types type);
+void IConsoleVarFree(_iconsole_var* var);
+void IConsoleVarSetString(_iconsole_var* var, const char* string);
+void IConsoleVarSetValue(_iconsole_var* var, int value);
+void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc);
 
 // *** Parser *** //
 
-void IConsoleCmdExec(const byte* cmdstr);
+void IConsoleCmdExec(const char* cmdstr);
 
 // ** console std lib ** //
-void IConsoleStdLibRegister();
+void IConsoleStdLibRegister(void);
 
 // ** hook code ** //
-void IConsoleVarHook(const byte * name, byte type, void * proc);
-void IConsoleCmdHook(const byte * name, byte type, void * proc);
-bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type);
-bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type);
+void IConsoleVarHook(const char* name, _iconsole_hook_types type, iconsole_var_hook proc);
+void IConsoleCmdHook(const char* name, _iconsole_hook_types type, iconsole_cmd_hook proc);
+bool IConsoleVarHookHandle(_iconsole_var* hook_var, _iconsole_hook_types type);
+bool IConsoleCmdHookHandle(_iconsole_cmd* hook_cmd, _iconsole_hook_types type);
 
 #endif /* CONSOLE_H */

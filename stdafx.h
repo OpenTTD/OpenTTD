@@ -62,6 +62,7 @@
 #	define CDECL _cdecl
 # define NOT_REACHED() _assume(0)
 # define snprintf _snprintf
+# define vsnprintf _vsnprintf
 # undef TTD_ALIGNMENT_4
 # undef TTD_ALIGNMENT_2
 # define GCC_PACK
