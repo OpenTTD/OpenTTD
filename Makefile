@@ -294,7 +294,20 @@ endif
 # -O	optimize or -O2 fully optimize (O's above 2 are not recommended)
 # -pg	profile - generate profiling data.  See "man gprof" to use this.
 
-CFLAGS=-Wall -Wno-multichar -Wsign-compare -W -O1 -Wno-unused-parameter
+CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1-3)
+
+# GNU make can only test for (in)equality
+# this is a workaround to test for >=
+ifeq ($(shell if test ! $(CC_VERSION) \< 2.9; then echo true; fi), true)
+  CFLAGS += -O -Wall -Wno-multichar -Wsign-compare
+endif
+ifeq ($(shell if test ! $(CC_VERSION) \< 3.0; then echo true; fi), true)
+  CFLAGS += -W -Wno-unused-parameter
+endif
+ifeq ($(shell if test ! $(CC_VERSION) \< 3.4; then echo true; fi), true)
+  CFLAGS += -Wdeclaration-after-statement
+endif
+
 CDEFS=-DWITH_REV
 LDFLAGS=
 LIBS=
