@@ -2640,12 +2640,22 @@ static void DeleteLastWagon(Vehicle *v)
 		if (endtile == INVALID_TILE) // tunnel is busy (error returned)
 			return;
 
-		if ((v->direction == 1) || (v->direction == 5) )
-			SetSignalsOnBothDir(v->tile, 0);
-			SetSignalsOnBothDir(endtile, 0);
-		if ((v->direction == 3) || (v->direction == 7) )
-			SetSignalsOnBothDir(v->tile, 1);
-			SetSignalsOnBothDir(endtile, 1);
+		switch (v->direction) {
+			case 1:
+			case 5:
+				SetSignalsOnBothDir(v->tile, 0);
+				SetSignalsOnBothDir(endtile, 0);
+				break;
+
+			case 3:
+			case 7:
+				SetSignalsOnBothDir(v->tile, 1);
+				SetSignalsOnBothDir(endtile, 1);
+				break;
+
+			default:
+				break;
+		}
 	}
 }
 
