@@ -1306,8 +1306,11 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 		return false;
 
 	// did we reach the final station?
-	if (tile == ttfd->dest_coords ||
-			(IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
+ if ((ttfd->station_index == -1 && tile == ttfd->dest_coords) ||
+  (IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
+  /* We do not check for dest_coords if we have a station_index,
+   * because in that case the dest_coords are just an
+   * approximation of where the station is */
 		// found station
 		ttfd->best_bird_dist = 0;
 		if (length < ttfd->best_track_dist) {
