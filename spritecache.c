@@ -3,6 +3,7 @@
 #include "gfx.h"
 #include "fileio.h"
 #include "newgrf.h"
+#include "md5.h"
 #include <ctype.h>
 
 #define SPRITECACHE_ID 0xF00F0006
@@ -55,31 +56,17 @@ static byte *_spritecache_ptr;
 static uint32 _spritecache_size;
 static int _compact_cache_counter;
 
+typedef struct MD5File {
+	const char * const filename;     // filename
+	const md5_byte_t const hash[16]; // md5 sum of the file
+} MD5File;
+
 typedef struct FileList {
-	const char * const basic[4];     // grf files that always have to be loaded
-	const char * const landscape[3]; // landscape specific grf files
+	const MD5File basic[4];     // grf files that always have to be loaded
+	const MD5File landscape[3]; // landscape specific grf files
 } FileList;
 
-FileList files_dos = {
-	{	"TRG1.GRF",
-		"TRGI.GRF",
-		"signalsw.grf", //0x1320 - 0x1405 inclusive
-		NULL },
-	{	"TRGC.GRF",
-		"TRGH.GRF",
-		"TRGT.GRF" },
-};
-
-FileList files_win = {
-	{	"TRG1R.GRF",
-		"TRGIR.GRF",
-		"signalsw.grf", //0x1320 - 0x1405 inclusive
-		NULL },
-	{	"TRGCR.GRF",
-		"TRGHR.GRF",
-		"TRGTR.GRF" },
-};
-
+#include "table/files.h"
 #include "table/landscape_sprite.h"
 
 static const uint16 * const _landscape_spriteindexes[] = {
@@ -758,28 +745,103 @@ static const uint16 _openttd_grf_indexes[] = {
 	0xffff,
 };
 
+/* FUNCTIONS FOR CHECKING MD5 SUMS OF GRF FILES */
 
-/* Checks, if either the Windows files exist (TRG1R.GRF) or the DOS files (TRG1.GRF).
- * _use_dos_palette is set accordingly
- * WARNING! This is case-sensitive, therefore the file has to be uppercase for correct
- * detection. If neither are found, Windows palette is assumed. */
-static void CheckGrfFile()
+/* Check that the supplied MD5 hash matches that stored for the supplied filename */
+static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
+{
+	int i, matching_bytes=0;
+
+	/* Loop through each byte of the file MD5 and the stored MD5... */
+	for (i = 0; i < 16; i++)
+	{
+		if (file.hash[i] == digest[i])
+			matching_bytes++;
+	};
+
+		/* If all bytes of the MD5's match (i.e. the MD5's match)... */
+	if (matching_bytes == 16) {
+		return true;
+	} else {
+		if (warn) printf("MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
+		return false;
+	};
+}
+
+/* Calculate and check the MD5 hash of the supplied filename. 
+ * returns true if the checksum is correct */
+static bool FileMD5(const MD5File file, bool warn)
 {
 	FILE *f;
+	char buf[MAX_PATH];
 	byte *s;
 
-	s = str_fmt("%s%s", _path.data_dir, files_win.basic[0]);
-	f = fopen(s, "r");
-	if (f != NULL) {
-		_use_dos_palette = false;
-		return;
-	}
+	md5_state_t filemd5state;
+	int len=0;
+	md5_byte_t buffer[1024], digest[16];
 
-	s = str_fmt("%s%s", _path.data_dir, files_dos.basic[0]);
-	f = fopen(s, "r");
+	// open file
+	sprintf(buf, "%s%s", _path.data_dir, file.filename);
+	f = fopen(buf, "rb");
+
+#if !defined(WIN32)
+	if (f == NULL) {
+	// make lower case and check again
+		for (s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+			*s = tolower(*s);
+		f = fopen(buf, "rb");
+	}
+#endif
+
 	if (f != NULL) {
+		md5_init(&filemd5state);
+		while ( (len = fread (buffer, 1, 1024, f)) )
+			md5_append(&filemd5state, buffer, len);
+
+		if (ferror(f))
+			if (warn) printf ("Error Reading from %s \n", buf);
+		fclose(f);
+  
+		md5_finish(&filemd5state, digest);
+	  return CheckMD5Digest(file, digest, warn);
+	} else { // file not found
+		return false;
+	}	
+}
+
+/* Checks, if either the Windows files exist (TRG1R.GRF) or the DOS files (TRG1.GRF)
+ * by comparing the MD5 checksums of the files. _use_dos_palette is set accordingly.
+ * If neither are found, Windows palette is assumed. 
+ *
+ * (Note: Also checks sample.cat for corruption) */
+void CheckExternalFiles()
+{
+	int i;
+	int dos=0, win=0; // count of files from this version
+
+	for (i=0; i<2; i++)
+	  if ( FileMD5(files_dos.basic[i], true) )
+			dos++;
+	for (i=0; i<3; i++)
+	  if ( FileMD5(files_dos.landscape[i], true) )
+			dos++;
+
+	for (i=0; i<2; i++)
+	  if ( FileMD5(files_win.basic[i], true) )
+			win++;
+	for (i=0; i<3; i++)
+	  if ( FileMD5(files_win.landscape[i], true) )
+			win++;
+
+	if ( !FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false) )
+		printf("Your sample.cat file is corrupted or missing!");
+
+	if (win == 5) {       // always use the Windows palette if all Windows files are present
+		_use_dos_palette = false;
+	} else if (dos == 5) { // else use the DOS palette if all DOS files are present
 		_use_dos_palette = true;
-		return;
+	} else {							// some files are missing, regardless of palette. Use Windows
+		_use_dos_palette = false;
 	}
 }
 
@@ -801,9 +863,6 @@ static void LoadSpriteTables()
 	 *   invest that further. --octo
 	 */
 
-	// Check if we have the DOS or Windows version of the GRF files
-	CheckGrfFile();
-
 	files = _use_dos_palette?(&files_dos):(&files_win);
 
 	// Try to load the sprites from cache
@@ -813,14 +872,14 @@ static void LoadSpriteTables()
 
 		int load_index = 0;
 
-		for(i=0; files->basic[i] != NULL; i++) {
-			load_index += LoadGrfFile(files->basic[i], load_index, (byte)i);
+		for(i=0; files->basic[i].filename != NULL; i++) {
+			load_index += LoadGrfFile(files->basic[i].filename, load_index, (byte)i);
 		}
 
 		LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 
 		if (_sprite_page_to_load != 0)
-			LoadGrfIndexed(files->landscape[_sprite_page_to_load-1], _landscape_spriteindexes[_sprite_page_to_load-1], i++);
+			LoadGrfIndexed(files->landscape[_sprite_page_to_load-1].filename, _landscape_spriteindexes[_sprite_page_to_load-1], i++);
 
 		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
@@ -858,13 +917,13 @@ static void LoadSpriteTables()
 		//
 		// NOTE: the order of the files must be identical as in the section above!!
 
-		for(i = 0; files->basic[i] != NULL; i++)
-			FioOpenFile(i,files->basic[i]);
+		for(i = 0; files->basic[i].filename != NULL; i++)
+			FioOpenFile(i,files->basic[i].filename);
 
 		FioOpenFile(i++, "openttd.grf");
 
 		if (_sprite_page_to_load != 0)
-			FioOpenFile(i++, files->landscape[_sprite_page_to_load-1]);
+			FioOpenFile(i++, files->landscape[_sprite_page_to_load-1].filename);
 
 		FioOpenFile(i++, "trkfoundw.grf");
 		FioOpenFile(i++, "canalsw.grf");

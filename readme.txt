@@ -92,10 +92,9 @@ trgir.grf
 trgtr.grf
 
 (Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF,
-TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase
-to be detected correctly. A few minor graphical glitches with the DOS
-graphics remain. E.g. the autorail button in the rail toolbar doesn't look
-as nice as with the Windows graphics.)
+TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with 
+the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't 
+look as nice as with the Windows graphics.)
 
 If you want music you need to copy the gm/ folder from Windows TTD into your
 OpenTTD folder, not your data folder.

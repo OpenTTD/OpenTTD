@@ -24,7 +24,7 @@ On BeOS, run ./configure and then use jam. There are a variaty of options you ca
 On Windows, insert your "Transport Tycoon Deluxe for Windows 95" disk. You can use a DOS version, but your graphics will be purple. NB: Even if your version of Transport Tycoon Deluxe ran on Windows 95, it may still be the DOS version. Then run the OpenTTD installer. 
 
 On UNIX platforms; decompress your OpenTTD archive, or otherwise run the installer. You should be left with an OpenTTD directory on your system. In this directory, make a subdirectory called 'data', and into this place the sample.cat file and all the .grf files from the install CD of 'Transport Tycoon Deluxe for Windows 95". 
-(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase to be detected correctly. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
+(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
 
 If you want MIDI music, copy the 'gm' folder from the original game directory/CD to the OpenTTD folder.
 

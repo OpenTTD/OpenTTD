@@ -545,6 +545,7 @@ void LoadIntroGame()
 }
 
 extern void DedicatedFork(void);
+extern void CheckExternalFiles();
 
 int ttd_main(int argc, char* argv[])
 {
@@ -638,6 +639,7 @@ int ttd_main(int argc, char* argv[])
 	}
 
 	DeterminePaths();
+	CheckExternalFiles();
 
 #ifdef UNIX
 	// We must fork here, or we'll end up without some resources we need (like sockets)
