@@ -8,40 +8,40 @@
 typedef struct IniFile IniFile;
 typedef struct IniItem IniItem;
 typedef struct IniGroup IniGroup;
-typedef struct MemoryPool MemoryPool;
+typedef struct SettingsMemoryPool SettingsMemoryPool;
 
-static void pool_init(MemoryPool **pool);
-static void *pool_alloc(MemoryPool **pool, uint size);
-static void *pool_strdup(MemoryPool **pool, const char *mem, uint size);
-static void pool_free(MemoryPool **pool);
+static void pool_init(SettingsMemoryPool **pool);
+static void *pool_alloc(SettingsMemoryPool **pool, uint size);
+static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size);
+static void pool_free(SettingsMemoryPool **pool);
 
-struct MemoryPool {
+struct SettingsMemoryPool {
 	uint pos,size;
-	MemoryPool *next;
+	SettingsMemoryPool *next;
 	byte mem[1];
 };
 
-static MemoryPool *pool_new(uint minsize)
+static SettingsMemoryPool *pool_new(uint minsize)
 {
-	MemoryPool *p;
+	SettingsMemoryPool *p;
 	if (minsize < 4096 - 12) minsize = 4096 - 12;
 
-	p = malloc(sizeof(MemoryPool) - 1 + minsize);
+	p = malloc(sizeof(SettingsMemoryPool) - 1 + minsize);
 	p->pos = 0;
 	p->size = minsize;
 	p->next = NULL;
 	return p;
 }
 
-static void pool_init(MemoryPool **pool)
+static void pool_init(SettingsMemoryPool **pool)
 {
 	*pool = pool_new(0);
 }
 
-static void *pool_alloc(MemoryPool **pool, uint size)
+static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 {
 	uint pos;
-	MemoryPool *p = *pool;
+	SettingsMemoryPool *p = *pool;
 
 	size = (size + 3) & ~3; // align everything to a 32 bit boundary
 
@@ -50,7 +50,7 @@ static void *pool_alloc(MemoryPool **pool, uint size)
 		p = p->next;
 	// then check if there's not memory in the cur pool
 	} else if (p->pos + size > p->size) {
-		MemoryPool *n = pool_new(size);
+		SettingsMemoryPool *n = pool_new(size);
 		*pool = n;
 		n->next = p;
 		p = n;
@@ -61,7 +61,7 @@ static void *pool_alloc(MemoryPool **pool, uint size)
 	return p->mem + pos;
 }
 
-static void *pool_strdup(MemoryPool **pool, const char *mem, uint size)
+static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size)
 {
 	byte *p = pool_alloc(pool, size + 1);
 	p[size] = 0;
@@ -69,9 +69,9 @@ static void *pool_strdup(MemoryPool **pool, const char *mem, uint size)
 	return p;
 }
 
-static void pool_free(MemoryPool **pool)
+static void pool_free(SettingsMemoryPool **pool)
 {
-	MemoryPool *p = *pool, *n;
+	SettingsMemoryPool *p = *pool, *n;
 	*pool = NULL;
 	while (p) {
 		n = p->next;
@@ -98,7 +98,7 @@ struct IniGroup {
 };
 
 struct IniFile {
-	MemoryPool *pool;
+	SettingsMemoryPool *pool;
 	IniGroup *group, **last_group;
 	char *comment; // last comment in file
 };
@@ -107,7 +107,7 @@ struct IniFile {
 static IniFile *ini_alloc(void)
 {
 	IniFile *ini;
-	MemoryPool *pool;
+	SettingsMemoryPool *pool;
 	pool_init(&pool);
 	ini = (IniFile*)pool_alloc(&pool, sizeof(IniFile));
 	ini->pool = pool;
