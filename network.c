@@ -878,7 +878,7 @@ void NetworkRebuildHostList()
 	NetworkGameList *item = _network_game_list;
 	while (item != NULL && i != lengthof(_network_host_list)) {
 		if (item->manually)
-			_network_host_list[i++] = strdup(item->info.hostname);
+			_network_host_list[i++] = str_fmt("%s:%i", item->info.hostname, item->port);
 		item = item->next;
 	}
 
