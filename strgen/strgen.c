@@ -266,6 +266,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"TOWN", EmitSingleByte, 0x9B},
 	{"CURRENCY64", EmitSingleByte, 0x9C},
 	{"WAYPOINT", EmitSingleByte, 0x9D}, // waypoint name
+	{"DATE_TINY", EmitSingleByte, 0x9E},
 	// 0x9E=158 is the LAST special character we may use.
 
 	{"UPARROW", EmitSingleByte, 0xA0},

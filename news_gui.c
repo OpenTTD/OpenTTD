@@ -501,10 +501,12 @@ static byte getNews(byte i)
 	return i;
 }
 
-static void GetNewsString(NewsItem *ni, byte *buffer)
+// cut string after len pixels
+static void GetNewsString(NewsItem *ni, byte *buffer, uint max)
 {
 	StringID str;
 	byte *s, *d;
+	uint len = 0;
 
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
@@ -521,7 +523,7 @@ static void GetNewsString(NewsItem *ni, byte *buffer)
 
 	for (;; s++) {
 		// cut strings that are too long
-		if (s >= str_buffr + 55) {
+		if (len >= max-24) { // add 3x "." at the end
 			d[0] = d[1] = d[2] = '.';
 			d += 3;
 			*d = '\0';
@@ -535,6 +537,7 @@ static void GetNewsString(NewsItem *ni, byte *buffer)
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
 		} else if (*s >= ' ' && (*s < 0x88 || *s >= 0x99)) {
+			len += _stringwidth_table[*s - 32];
 			*d++ = *s;
 		}
 	}
@@ -553,17 +556,17 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		if (_total_news == 0) break;
-		show = min(_total_news, 10);
+		show = min(_total_news, w->vscroll.cap);
 
 		for (p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
 			// get news in correct order
 			ni = &_news_items[getNews(p)];
 
 			SetDParam(0, ni->date);
-			DrawString(4, y, STR_00AF, 16);
+			DrawString(4, y, STR_SHORT_DATE, 16);
 
-			GetNewsString(ni, buffer);
-			DoDrawString(buffer, 85, y, 16);
+			GetNewsString(ni, buffer, w->width-90);
+			DoDrawString(buffer, 82, y, 16);
 			y += 12;
 		}
 
@@ -572,7 +575,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 2: {
+		case 3: {
 			int y = (e->click.pt.y - 19) / 12;
 			byte p, q;
 
@@ -601,21 +604,27 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		}
 		}
 		break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 12;
+		break;
 	}
 }
 
 static const Widget _message_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   387,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   388,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   387,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    13,   388,   399,     0,    13, 0x0,										STR_STICKY_BUTTON},
+{     WWT_IMGBTN,     RESIZE_RB,    13,     0,   387,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    13,   388,   399,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   388,   399,   128,   139, 0x0, STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _message_history_desc = {
 	240, 22, 400, 140,
 	WC_MESSAGE_HISTORY, 0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_message_history_widgets,
 	MessageHistoryWndProc
 };
@@ -630,6 +639,10 @@ void ShowMessageHistory(void)
 	if (w != NULL) {
 		w->vscroll.cap = 10;
 		w->vscroll.count = _total_news;
+		w->resize.step_height = 12;
+		w->resize.height = w->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
+		w->resize.step_width = 1;
+		w->resize.width = 200; // can't make window any smaller than 200 pixel
 		SetWindowDirty(w);
 	}
 }

@@ -259,6 +259,17 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
+static byte *FormatTinyDate(byte *buff, uint16 number)
+{
+	const char *src;
+	YearMonthDay ymd;
+
+	ConvertDayToYMD(&ymd, number);
+	buff += sprintf(buff, " %02i-%02i-%04i", ymd.day, ymd.month + 1, ymd.year + MAX_YEAR_BEGIN_REAL);
+
+	return buff;
+}
+
 uint GetCurrentCurrencyRate(void)
 {
     return (&_currency_specs[_opt.currency])->rate;
@@ -478,6 +489,12 @@ static byte *DecodeString(byte *buff, const byte *str)
 
 			buff = GetString(buff, str);
 		} break;
+
+		case 0x9E: { // {DATE_TINY}
+			buff = FormatTinyDate(buff, GetParamUint16());
+			break;
+		}
+
 		// case 0x88..0x98: // {COLORS}
 		// case 0xE: // {TINYFONT}
 		// case 0xF: // {BIGFONT}

@@ -2785,6 +2785,8 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Choose the railtype you want to replace en
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 
+STR_SHORT_DATE					:{WHITE}{DATE_TINY}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES						:Rail Vehicles
