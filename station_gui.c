@@ -44,47 +44,37 @@ static void StationsWndShowStationRating(int x, int y, int type, uint acceptance
 	}
 }
 
-// used to get a sorted list of the stations
-typedef struct StationSort {
-	uint16	index;
-	byte		owner;
-} StationSort;
-
-static StationSort _station_sort[lengthof(_stations)];
+static SortStruct _station_sort[lengthof(_stations)];
 static uint16 _num_station_sort[MAX_PLAYERS];
 
 static char _bufcache[64];
 static uint16 _last_station_idx;
 
-static int CDECL StationSorterByName(const void *a, const void *b)
+static int CDECL StationNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
 	Station *st;
-	StationSort *cmp1, *cmp2;
-	cmp1 = (StationSort*)a;
-	cmp2 = (StationSort*)b;
+	SortStruct *cmp1, *cmp2;
+	cmp1 = (SortStruct*)a;
+	cmp2 = (SortStruct*)b;
 
-	// sort stations by owner, and inside owner by name
-	if (cmp1->owner == cmp2->owner) {	// if same owner, sort by name
-		st = DEREF_STATION(cmp1->index);
+	st = DEREF_STATION(cmp1->index);
+	SET_DPARAM16(0, st->town->townnametype);
+	SET_DPARAM32(1, st->town->townnameparts);
+	GetString(buf1, st->string_id);
+
+	if ( cmp2->index != _last_station_idx) {
+		_last_station_idx = cmp2->index;
+		st = DEREF_STATION(cmp2->index);
 		SET_DPARAM16(0, st->town->townnametype);
 		SET_DPARAM32(1, st->town->townnameparts);
-		GetString(buf1, st->string_id);
-
-		if ( cmp2->index != _last_station_idx) {
-			_last_station_idx = cmp2->index;
-			st = DEREF_STATION(cmp2->index);
-			SET_DPARAM16(0, st->town->townnametype);
-			SET_DPARAM32(1, st->town->townnameparts);
-			GetString(_bufcache, st->string_id);
-		}
-
-		return strcmp(buf1, _bufcache);	// sort by name
+		GetString(_bufcache, st->string_id);
 	}
-	return cmp1->owner - cmp2->owner;	// sort by owner
+
+	return strcmp(buf1, _bufcache);	// sort by name
 }
 
-static void MakeSortedStationList(Window *w)
+static void MakeSortedStationList()
 {
 	Station *st;
 	uint16 n = 0;
@@ -106,7 +96,11 @@ static void MakeSortedStationList(Window *w)
 	for (i = &_num_station_sort[1]; i != endof(_num_station_sort); i++) {*i += *(i-1);}
 
 	_last_station_idx = 255; // used for "cache"
-	qsort(_station_sort, n, sizeof(_station_sort[0]), StationSorterByName);
+
+	// sort by owner, then only subsort the requested owner-vehicles
+	qsort(_station_sort, n, sizeof(_station_sort[0]), GeneralOwnerSorter);
+
+	qsort(_station_sort, n, sizeof(_station_sort[0]), StationNameSorter);
 	
 	DEBUG(misc, 1) ("Resorting Stations list...");
 }
@@ -118,12 +112,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		byte i;
 		if (_station_sort_dirty) {
 			_station_sort_dirty = false;
-			MakeSortedStationList(w);
+			MakeSortedStationList();
 		}
 
 		// stations are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 stations
-		i = (byte)(w->window_number == 0) ? 0 : _num_station_sort[w->window_number-1];;
+		i = (byte)(w->window_number == 0) ? 0 : _num_station_sort[w->window_number-1];
 		SetVScrollCount(w, _num_station_sort[w->window_number] - i);
 
 		/* draw widgets, with player's name in the caption */
@@ -167,7 +161,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				}
 				y += 10;
 				i++;	// next station
-				if (++p == 12) { break;} // max number of stations in 1 window
+				if (++p == w->vscroll.cap) { break;} // max number of stations in 1 window
 			}
 		}
 	} break;

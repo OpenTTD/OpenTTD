@@ -352,9 +352,24 @@ STR_015E_QUIT_GAME								:Abandon game
 STR_015F_QUIT											:Exit
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO	:{YELLOW}Are you sure you want to abandon this game?
 STR_0161_QUIT_GAME								:{WHITE}Abandon Game
-STR_SORT_TIP											:{BLACK}Select sorting order
-STR_SORT_BY_NAME									:{BLACK}Name
-STR_SORT_BY_DATE									:{BLACK}Date
+STR_SORT_TIP											:{BLACK}Select sorting order descending/ascending
+SRT_SORT_BY												:{BLACK}Sort by
+
+STR_SORT_BY_POPULATION										:{BLACK}Population
+STR_SORT_BY_PRODUCTION										:{BLACK}Production
+STR_SORT_BY_TYPE													:{BLACK}Type
+STR_SORT_BY_TRANSPORTED										:{BLACK}Transported
+STR_SORT_BY_NAME													:{BLACK}Name
+STR_SORT_BY_DROPDOWN_NAME									:Name
+STR_SORT_BY_DATE													:{BLACK}Date
+STR_SORT_BY_UNSORTED											:Unsorted
+STR_SORT_BY_NUMBER												:Number
+STR_SORT_BY_PROFIT_LAST_YEAR							:Profit last year
+STR_SORT_BY_PROFIT_THIS_YEAR							:Profit this year
+STR_SORT_BY_AGE														:Age
+STR_SORT_BY_RELIABILITY										:Reliability
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE	:Total capacity per cargo type
+STR_SORT_BY_MAX_SPEED											:Maximum speed
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -843,8 +858,8 @@ STR_TOWNNAME_HUNGARIAN					:Hungarian
 STR_TOWNNAME_AUSTRIAN					:Austrian
 ############ end of	townname region
 
-STR_CURR_POUNDS							:Pounds ({POUNDSIGN})
-STR_CURR_DOLLARS						:Dollars ($)
+STR_CURR_POUNDS						:Pounds ({POUNDSIGN})
+STR_CURR_DOLLARS					:Dollars ($)
 STR_CURR_FF								:Franc (FF)
 STR_CURR_DM								:Deutschmark (DM)
 STR_CURR_YEN							:Yen ({YENSIGN})
@@ -1052,8 +1067,6 @@ STR_CHEAT_NO_JETCRASH					:{LTBLUE}Jetplanes will not crash (frequently) on smal
 STR_CHEAT_SWITCH_CLIMATE			:{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE					:{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
 
-STR_SORT_BY_POPULATION					:{BLACK}Population
-
 STR_HEADING_FOR_CHECKPOINT				:{LTBLUE}Heading for {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL			:{LTBLUE}Heading for {CHECKPOINT}, {VELOCITY}
 
@@ -1136,9 +1149,6 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP		:{BLACK}Construct Bubble Generator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP			:{BLACK}Fund Toffee Quarry
 STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Construct Sugar Mine
 
-STR_SORT_BY_PRODUCTION				:{BLACK}Production
-STR_SORT_BY_TYPE					:{BLACK}Type
-STR_SORT_BY_TRANSPORTED				:{BLACK}Transported
 STR_INDUSTRYDIR_CAPTION					:{WHITE}Industries
 STR_INDUSTRYDIR_ITEM					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transported)
 STR_INDUSTRYDIR_ITEM_TWO				:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transported)
@@ -2228,7 +2238,7 @@ STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight
 STR_8818_INFORMATION					:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG					:{WHITE}Train too long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Trains can only be altered when stopped inside a depot
-STR_881B_TRAINS							:{WHITE}{STRING} - Trains
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Trains
 STR_881C_NEW_RAIL_VEHICLES				:{WHITE}New Rail Vehicles
 STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}New Maglev Vehicles
@@ -2319,7 +2329,7 @@ STR_TRAIN_STOPPING_VEL					:{RED}Stopping, {VELOCITY}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Road vehicle in the way
-STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - Road Vehicles
+STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - {COMMA16} Road Vehicles
 STR_9002								:{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}{TOWN} Road Vehicle Depot
 STR_9004_NEW_VEHICLES					:{BLACK}New Vehicles
@@ -2384,7 +2394,7 @@ STR_9801_DOCK_CONSTRUCTION				:{WHITE}Dock construction
 STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Can't build dock here...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Ship Depot
 STR_9804_NEW_SHIPS						:{BLACK}New Ships
-STR_9805_SHIPS							:{WHITE}{STRING} - Ships
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Ships
 STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}Can't build ships...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Must build ship depot first
 STR_9808_NEW_SHIPS						:{WHITE}New Ships
@@ -2460,7 +2470,7 @@ STR_A005_NEW_AIRCRAFT					:{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT					:{BLACK}Build Aircraft
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Can't build aircraft...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - Aircraft
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aircraft
 STR_A00A								:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Orders)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Details)

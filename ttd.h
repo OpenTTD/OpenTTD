@@ -32,6 +32,16 @@ typedef struct YearMonthDay {
 	int year, month, day;
 } YearMonthDay;
 
+/* --- 1 Day is 74 ticks ---
+* The game's internal structure is dictated by ticks. The date counter (date_fract) is an integer of
+* uint16 type, so it can have a max value of 65536. Every tick this variable (date_fract) is 
+* increased by 885. When it overflows, the new day loop is called. 
+* * this that means 1 day is : 65536 / 885 = 74 ticks
+* * 1 tick is approximately 27ms. 
+* * 1 day is thus about 2 seconds (74*27 = 1998) on a machine that can run OpenTTD normally
+*/
+#define DAY_TICKS 74
+
 #include "macros.h"
 
 // Forward declarations of structs.

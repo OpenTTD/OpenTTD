@@ -271,6 +271,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		_vehicle_sort_dirty[VEHROAD] = true; // build a new bus/truck
 		InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
@@ -314,6 +315,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		_vehicle_sort_dirty[VEHROAD] = true; // sell a bus/truck
 		InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
@@ -505,6 +507,7 @@ static void RoadVehDelete(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		
+	_vehicle_sort_dirty[VEHROAD] = true; // delete bus/truck (eg. crash for example)
 	InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 	InvalidateWindow(WC_COMPANY, v->owner);
 

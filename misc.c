@@ -121,6 +121,7 @@ void InitializeGame()
 	InitializeIndustries();
 	
 	InitializeNameMgr();
+	InitializeVehiclesGuiList();
 	InitializeTrains();
 
 	InitializePlayers();

@@ -358,6 +358,10 @@ SOURCE=.\vehicle.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\vehicle_gui.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\viewport.c
 # End Source File
 # Begin Source File
@@ -499,6 +503,10 @@ SOURCE=.\variables.h
 # Begin Source File
 
 SOURCE=.\vehicle.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\vehicle_gui.h
 # End Source File
 # Begin Source File
 

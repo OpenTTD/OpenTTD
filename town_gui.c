@@ -351,7 +351,7 @@ static uint _num_town_sort;
 static char _bufcache[64];
 static byte _last_town_idx;
 
-static int CDECL TownSorterByName(const void *a, const void *b)
+static int CDECL TownNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
 	Town *t;
@@ -374,11 +374,11 @@ static int CDECL TownSorterByName(const void *a, const void *b)
 	return r;
 }
 
-static int CDECL TownSorterByPop(const void *a, const void *b)
+static int CDECL TownPopSorter(const void *a, const void *b)
 {
 	Town *ta = DEREF_TOWN(*(byte*)a);
 	Town *tb = DEREF_TOWN(*(byte*)b);
-	int r = tb->population - ta->population;
+	int r = ta->population - tb->population;
 	if (_town_sort_order & 1) r = -r;
 	return r;
 }
@@ -391,7 +391,7 @@ static void MakeSortedTownList()
 	_num_town_sort = n;
 
 	_last_town_idx = 255; // used for "cache"
-	qsort(_town_sort, n, 1, _town_sort_order & 2 ? TownSorterByPop : TownSorterByName);
+	qsort(_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
 
 	DEBUG(misc, 1) ("Resorting Towns list...");
 }

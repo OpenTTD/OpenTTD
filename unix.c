@@ -43,7 +43,7 @@ int compare_FiosItems (const void *a, const void *b) {
 	int r;
 
 	if (_savegame_sort_order < 2) // sort by date
-    r = da->mtime < db->mtime ? 1 : -1;
+    r = da->mtime < db->mtime ? -1 : 1;
 	else	
 		r = strcmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
 

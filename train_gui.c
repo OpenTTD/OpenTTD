@@ -9,7 +9,6 @@
 #include "station.h"
 #include "command.h"
 #include "player.h"
-//#include "town.h"
 #include "engine.h"
 
 static Engine * const _rail_engines[3] = {
@@ -54,6 +53,7 @@ static void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 		found = GetLastVehicleInChain(found);
 		// put the new wagon at the end of the loco.
 		DoCommandP(0, _new_wagon_id | (found->index<<16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
+		_vehicle_sort_dirty[VEHTRAIN] = true;
 	}
 }
 
@@ -562,7 +562,6 @@ static const Widget _train_depot_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   348,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
-//{      WWT_PANEL,    14,   314,   337,    14,   108, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
 {      WWT_PANEL,    14,   314,   337,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
 {      WWT_PANEL,    14,   314,   337,    55,   108, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
 
@@ -699,9 +698,6 @@ static void ShowRailVehicleRefitWindow(Vehicle *v)
 	w->caption_color = v->owner;
 	WP(w,refit_d).sel = -1;
 }
-
-
-
 
 static Widget _train_view_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
@@ -1140,129 +1136,172 @@ void ShowTrainDetailsWindow(Vehicle *v)
 	WP(w,traindetails_d).tab = 0;
 }
 
-// draw the vehicle profit button in the vehicle list window.
-void DrawVehicleProfitButton(Vehicle *v, int x, int y)
+// used to get a sorted list of the vehicles
+static SortStruct _train_sort[NUM_NORMAL_VEHICLES];
+static uint16 _num_train_sort[MAX_PLAYERS];
+
+static void MakeSortedTrainList(byte owner)
 {
-	uint32 ormod;
+	SortStruct *firstelement;
+	Vehicle *v;
+	uint32 n = 0;
+	uint16 *i;
 
-	// draw profit-based colored icons
-	if(v->age <= 365 * 2)
-		ormod = 0x3158000; // grey
-	else if(v->profit_last_year < 0)
-		ormod = 0x30b8000; //red
-	else if(v->profit_last_year < 10000)
-		ormod = 0x30a8000; // yellow
-	else
-		ormod = 0x30d8000; // green
-	DrawSprite((SPR_OPENTTD_BASE + 10) | ormod, x, y);
+	if (_vehicle_sort_dirty[VEHTRAIN]) { // only resort the whole array if vehicles have been added/removed
+		// reset to 0 just to be sure
+		for (i = _num_train_sort; i != endof(_num_train_sort); i++) {*i = 0;}
+
+		FOR_ALL_VEHICLES(v) {
+			if(v->type == VEH_Train && v->subtype == 0) {
+				_train_sort[n].index = v->index;
+				_train_sort[n++].owner = v->owner;
+				_num_train_sort[v->owner]++; // add number of trains of player
+			}
+		}
+
+		// create cumulative train-ownage
+		// trains are stored as a cummulative index, eg 25, 41, 43. This means
+		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
+		for (i = &_num_train_sort[1]; i != endof(_num_train_sort); i++) {*i += *(i-1);}
+	
+
+		// sort by owner, then only subsort the requested owner-vehicles
+		qsort(_train_sort, n, sizeof(_train_sort[0]), GeneralOwnerSorter);
+
+		_last_vehicle_idx = 0; // used for "cache" in namesorting
+		_vehicle_sort_dirty[VEHTRAIN] = false;
+	}
+
+	if (owner == 0) { // first element starts at 0th element and has n elements as described above
+		firstelement =	&_train_sort[0];
+		n =							_num_train_sort[0];
+	}	else { // nth element starts at the end of the previous one, and has n elements as described above
+		firstelement =	&_train_sort[_num_train_sort[owner-1]];
+		n =							_num_train_sort[owner] - _num_train_sort[owner-1];
+	}
+
+	_internal_sort_type				= _train_sort_type[owner];
+	_internal_sort_order			= _train_sort_order[owner];
+	_internal_name_sorter_id	= STR_SV_TRAIN_NAME;
+	// only name sorting needs a different procedure, all others are handled by the general sorter
+	qsort(firstelement, n, sizeof(_train_sort[0]), (_internal_sort_type == SORT_BY_NAME) ? VehicleNameSorter : GeneralVehicleSorter);
+
+	DEBUG(misc, 1) ("Resorting Trains list player %d...", owner+1);
 }
-
-
-static const StringID _player_trains_tooltips[] = {
-	STR_018B_CLOSE_WINDOW,
-	STR_018C_WINDOW_TITLE_DRAG_THIS,
-	STR_883D_TRAINS_CLICK_ON_TRAIN_FOR,
-	STR_0190_SCROLL_BAR_SCROLLS_LIST,
-	STR_883E_BUILD_NEW_TRAINS_REQUIRES,
-	0,
-};
 
 static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
-	case WE_PAINT:
-		/* determine amount of items for scroller */
-		{
-			Vehicle *v;
-			int num = 0;
-			byte owner = (byte)w->window_number;
+	case WE_PAINT: {
+		uint32 i;
+		const byte window_number = (byte)w->window_number;
 
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Train && v->subtype == 0 && v->owner == owner)
-					num++;
-			}
+		if (_train_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
+			w->disabled_state |= (1 << 3);
 
-			SetVScrollCount(w, num);
+		if (_train_sort_dirty[window_number] || _vehicle_sort_dirty[VEHTRAIN]) {
+			_train_sort_dirty[window_number] = false;
+			MakeSortedTrainList(window_number);
+			/* reset sorting timeout */
+			w->custom[0] = DAY_TICKS;
+			w->custom[1] = PERIODIC_RESORT_DAYS;
 		}
+
+		// Trains are stored as a cummulative index, eg 25, 41, 43. This means
+		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 trains
+		i = (window_number == 0) ? 0 : _num_train_sort[window_number-1];
+		SetVScrollCount(w, _num_train_sort[window_number] - i);
 		
 		/* draw the widgets */
 		{
-			Player *p = DEREF_PLAYER(w->window_number);
+			Player *p = DEREF_PLAYER(window_number);
+			/* Company Name -- (###) Trains */
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
+			SET_DPARAM16(2, w->vscroll.count);
+			SET_DPARAM16(3, _vehicle_sort_listing[_train_sort_type[window_number]]);
 			DrawWindowWidgets(w);
 		}
+		/* draw arrow pointing up/down for ascending/descending soring */
+		DoDrawString(_train_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 150, 15, 0x10);
 
 		/* draw the trains */
 		{
 			Vehicle *v;
-			int pos = w->vscroll.pos;
-			byte owner = (byte)w->window_number;
-			int x = 2;
-			int y = 15;
-			
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Train && v->subtype == 0 && v->owner == owner &&
-						--pos < 0 && pos >= -7) {
-					StringID str;
-					
-					DrawTrainImage(v, x + 21, y + 6, 10, 0, INVALID_VEHICLE);
-					DrawVehicleProfitButton(v, x, y+13);
-					
-					SET_DPARAM16(0, v->unitnumber);
-					if (IsTrainDepotTile(v->tile)) {
-						str = STR_021F;
-					} else {
-						str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
-					}
-					DrawString(x, y+2, str, 0);
+			int n = 0;
+			const int x = 2;			// offset from left side of widget
+			int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;	// offset from top of widget
+			i += w->vscroll.pos;	// offset from sorted trains list of current player
 
-					SET_DPARAM32(0, v->profit_this_year);
-					SET_DPARAM32(1, v->profit_last_year);
-					DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-					
-					if (v->string_id != STR_SV_TRAIN_NAME) {
-						SET_DPARAM16(0, v->string_id);
-						DrawString(x+21, y, STR_01AB, 0);
-					}
+			while (i < _num_train_sort[window_number]) {
+				StringID str;
+				v = DEREF_VEHICLE(_train_sort[i].index);
 
-					y += 26;
-				}				
+				DrawTrainImage(v, x + 21, y + 6, 10, 0, INVALID_VEHICLE);
+				DrawVehicleProfitButton(v, x, y+13);
+
+				SET_DPARAM16(0, v->unitnumber);
+				if (IsTrainDepotTile(v->tile)) {
+					str = STR_021F;
+				} else {
+					str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+				}
+				DrawString(x, y+2, str, 0);
+
+				SET_DPARAM32(0, v->profit_this_year);
+				SET_DPARAM32(1, v->profit_last_year);
+				DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				
+				if (v->string_id != STR_SV_TRAIN_NAME) {
+					SET_DPARAM16(0, v->string_id);
+					DrawString(x+21, y, STR_01AB, 0);
+				}
+
+				y += PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+				i++; // next train
+				if (++n == w->vscroll.cap) { break;} // max number of trains in the window
 			}
 		}
-		break;
+		}	break;
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 2: {
-			int idx = (e->click.pt.y - 0xE) / 26;
-			Vehicle *v;
-			byte owner;
+		case 3: /* Flip sorting method ascending/descending */
+			_train_sort_order[(byte)w->window_number] ^= 1;
+			_train_sort_dirty[(byte)w->window_number] = true;
+			SetWindowDirty(w);
+			break;
+		case 4: case 5:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _vehicle_sort_listing, _train_sort_type[(byte)w->window_number], 5, 0); // do it for widget 5
+			return;
+		case 6: { /* Matrix to show vehicles */
+			int id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+			
+			if ((uint)id_v >= w->vscroll.cap) { return;} // click out of bounds
 
-			if ((uint)idx >= 7)
-				break;
+			id_v += w->vscroll.pos;
 
-			idx += w->vscroll.pos;
+			{
+				byte owner		= (byte)w->window_number;
+				uint16 adder	= (owner == 0) ? 0 : _num_train_sort[owner - 1]; // first element in list
+				Vehicle *v;
 
-			owner = (byte)w->window_number;
+				if (id_v + adder >= _num_train_sort[owner]) { return;} // click out of vehicle bound
 
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Train && v->subtype == 0 && v->owner == owner &&
-						--idx < 0) {	
-					ShowTrainViewWindow(v);
-					break;
-				}
+				v	= DEREF_VEHICLE(_train_sort[adder+id_v].index); // add the offset id_x to that
+
+				assert(v->type == VEH_Train && v->subtype == 0 && v->owner == owner && v->owner == _train_sort[adder+id_v].owner);
+
+				ShowTrainViewWindow(v);
 			}
 		} break;
 
-		case 4: {
+		case 8: { /* Build new Vehicle */
 			uint tile;
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player &&
-						IsTrainDepotTile(tile)) {
-					
+				if (_map_owner[tile] == _local_player && IsTrainDepotTile(tile)) {			
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;
@@ -1276,39 +1315,73 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		}
 	}	break;
 
+	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+		if (_train_sort_type[(byte)w->window_number] != e->dropdown.index) // if value hasn't changed, dont resort list
+			_train_sort_dirty[(byte)w->window_number] = true;
+
+		_train_sort_type[(byte)w->window_number] = e->dropdown.index;
+
+		if (_train_sort_type[(byte)w->window_number] != SORT_BY_UNSORTED) // enable 'Sort By' if a sorter criteria is chosen
+			w->disabled_state &= ~(1 << 3);
+
+		SetWindowDirty(w);
+		break;
+	case WE_CREATE: /* set up resort timer */
+		w->custom[0] = DAY_TICKS;
+		w->custom[1] = PERIODIC_RESORT_DAYS;
+		break;
+	case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
+		if (--w->custom[0] == 0) {
+			w->custom[0] = DAY_TICKS;
+			if (--w->custom[1] == 0) {
+				w->custom[1] = PERIODIC_RESORT_DAYS;
+				_train_sort_dirty[(byte)w->window_number] = true;
+				DEBUG(misc, 1) ("Periodic resort Trains list player %d...", w->window_number+1);
+				SetWindowDirty(w);
+			}
+		}
+		break;
 	}
 }
 
 static const Widget _player_trains_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   313,    14,   195, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
-{  WWT_SCROLLBAR,    14,   314,   324,    14,   195, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   161,   196,   207, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
-{      WWT_PANEL,    14,   162,   324,   196,   207, 0x0,										0},
+{      WWT_PANEL,    14,     0,    80,    14,    25, 0x0,										0},
+{ WWT_PUSHTXTBTN,    14,    81,   161,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
+{    WWT_TEXTBTN,    14,   162,   313,    14,    25, STR_02E7,              0},
+{   WWT_CLOSEBOX,    14,   314,   324,    14,    25, STR_0225,              STR_SORT_TIP},
+{     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,    14,     0,   161,   208,   219, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
+{      WWT_PANEL,    14,   162,   324,   208,   219, 0x0,										0},
 {      WWT_LAST},
 };
 
 static const WindowDesc _player_trains_desc = {
-	-1, -1, 325, 208,
+	-1, -1, 325, 220,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
 	_player_trains_widgets,
 	PlayerTrainsWndProc
 };
 
 static const Widget _other_player_trains_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   313,    14,   195, 0x701,						STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
-{  WWT_SCROLLBAR,    14,   314,   324,    14,   195, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,    14,     0,    80,    14,    25, 0x0,										0},
+{ WWT_PUSHTXTBTN,    14,    81,   161,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
+{    WWT_TEXTBTN,    14,   162,   313,    14,    25, STR_02E7,              0},
+{   WWT_CLOSEBOX,    14,   314,   324,    14,    25, STR_0225,              STR_SORT_TIP},
+{     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
+{  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
 };
 
 static const WindowDesc _other_player_trains_desc = {
-	-1, -1, 325, 196,
+	-1, -1, 325, 208,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
 	_other_player_trains_widgets,
 	PlayerTrainsWndProc
 };
@@ -1317,13 +1390,13 @@ void ShowPlayerTrains(int player)
 {
 	Window *w;
 
-	if ( player == _local_player) {
+	if (player == _local_player) {
 		w = AllocateWindowDescFront(&_player_trains_desc, player);
-	} else  {
+	} else {
 		w = AllocateWindowDescFront(&_other_player_trains_desc, player);
 	}
 	if (w) {
 		w->caption_color = w->window_number;
-		w->vscroll.cap = 7;
+		w->vscroll.cap = 7; // maximum number of vehicles shown
 	}
 }

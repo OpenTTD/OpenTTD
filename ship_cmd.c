@@ -852,6 +852,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		_vehicle_sort_dirty[VEHSHIP] = true; // build a ship
 		InvalidateWindow(WC_SHIPS_LIST, v->owner);
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
@@ -875,6 +876,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		_vehicle_sort_dirty[VEHSHIP] = true; // sell a ship
 		InvalidateWindow(WC_SHIPS_LIST, v->owner);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);

@@ -1399,6 +1399,10 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		StringID old_str = v->string_id;
 		v->string_id = str;
 		DeleteName(old_str);
+		_train_sort_dirty[v->owner]			= true;
+		_aircraft_sort_dirty[v->owner]	= true;
+		_ship_sort_dirty[v->owner]			= true;
+		_road_sort_dirty[v->owner]			= true;
 		MarkWholeScreenDirty();
 	} else {
 		DeleteName(str);

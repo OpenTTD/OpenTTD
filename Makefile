@@ -446,7 +446,7 @@ ttd_SOURCES = \
 	smallmap_gui.c sound.c spritecache.c station_cmd.c station_gui.c \
 	strings.c subsidy_gui.c terraform_gui.c texteff.c town_cmd.c \
 	town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c tunnelbridge_cmd.c \
-	unmovable_cmd.c vehicle.c viewport.c water_cmd.c widget.c window.c \
+	unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c water_cmd.c widget.c window.c \
 
 ifdef WITH_SDL
 ttd_SOURCES += sdl.c

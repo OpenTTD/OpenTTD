@@ -388,45 +388,44 @@ static byte _last_industry_idx;
 
 static byte _industry_sort_order;
 
-static int CDECL IndustrySorter(const void *a, const void *b)
+static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	char buf1[96];
-	Industry *i, *j;
 	byte val;
+	Industry *i = DEREF_INDUSTRY(*(byte*)a);
+	Industry *j = DEREF_INDUSTRY(*(byte*)b);
 	int r = 0;
 
-	i = DEREF_INDUSTRY(*(byte*)a);
-	j = DEREF_INDUSTRY(*(byte*)b);
-
 	switch (_industry_sort_order >> 1) {
-	case 0: 
-		r = 0; 
-		break;
-	case 1: /* Case 1, sort by type */
+	/* case 0: Sort by Name (handled later) */
+	case 1: /* Sort by Type */
 		r = i->type - j->type; 
 		break;
-	case 2: /* Case 2, sort by production */
-		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { //producing any cargo?
-				if (i->produced_cargo[1] == 0xFF) //producing one or two things?
+	// FIXME - Production & Transported sort need to be inversed...but, WTF it does not wanna!
+	// FIXME - And no simple --> "if (!(_industry_sort_order & 1)) r = -r;" hack at the bottom!!
+	case 2: { /* Sort by Production */
+		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
+				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
 					r = j->total_production[0] - i->total_production[0];
 				else	
 					r = (j->total_production[0] + j->total_production[1]) / 2 - (i->total_production[0] + i->total_production[1]) / 2;
-		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) //None of them producing anything, let them go to the name-sorting
+		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
 			r = 0;
-		else if (i->produced_cargo[0] == 0xFF) //Non-producers, end up last/first in list
+		else if (i->produced_cargo[0] == 0xFF) // end up the non-producer industry first/last in list
 			r = 1;
 		else
 			r = -1;
 		break;
-	case 3: /* Case 3, sort by transportation */
-		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { //producing any cargo?
-				if (i->produced_cargo[1] == 0xFF) //producing one or two things?
+	}
+	case 3: /* Sort by Transported amount */
+		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
+				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
 					r = (j->pct_transported[0] * 100 >> 8) - (i->pct_transported[0] * 100 >> 8);
 				else 
 					r = ((j->pct_transported[0] * 100 >> 8) + (j->pct_transported[1] * 100 >> 8)) / 2 - ((i->pct_transported[0] * 100 >> 8) + (i->pct_transported[1] * 100 >> 8)) / 2;
-		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) //None of them producing anything, let them go to the name-sorting
+		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
 			r = 0;
-		else if (i->produced_cargo[0] == 0xFF) //Non-producers, end up last/first in list
+		else if (i->produced_cargo[0] == 0xFF) // end up the non-producer industry first/last in list
 			r = 1;
 		else
 			r = -1;
@@ -446,9 +445,7 @@ static int CDECL IndustrySorter(const void *a, const void *b)
 		r = strcmp(buf1, _bufcache);
 	}
 	
-	if (_industry_sort_order & 1)
-		r = -r;
-	
+	if (_industry_sort_order & 1) r = -r;	
 	return r;
 }
 
@@ -464,7 +461,7 @@ static void MakeSortedIndustryList()
 	_num_industry_sort = n;
 	_last_industry_idx = 255; // used for "cache"
 
-	qsort(_industry_sort, n, 1, IndustrySorter);
+	qsort(_industry_sort, n, 1, GeneralIndustrySorter);
 
 	DEBUG(misc, 1) ("Resorting Industries list...");
 }

@@ -108,8 +108,6 @@ void ShowBuildIndustryWindow();
 void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
 void ShowMusicWindow();
 
-void DrawVehicleProfitButton(Vehicle *v, int x, int y);
-
 /* main_gui.c */
 VARDEF byte _newspaper_flag;
 VARDEF byte _construct_mode;

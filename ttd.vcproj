@@ -1168,6 +1168,9 @@
 				RelativePath="vehicle.h">
 			</File>
 			<File
+				RelativePath=".\vehicle_gui.h">
+			</File>
+			<File
 				RelativePath="viewport.h">
 			</File>
 			<File
@@ -2014,6 +2017,9 @@
 						PreprocessorDefinitions=""
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\vehicle_gui.c">
 			</File>
 		</Filter>
 		<Filter

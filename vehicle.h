@@ -1,6 +1,8 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include "vehicle_gui.h"
+
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
 	uint16 crash_anim_pos;
@@ -369,6 +371,7 @@ byte GetDirectionTowards(Vehicle *v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
+#define DEREF_VEHICLE(i) (&_vehicles[i])
 #define FOR_ALL_VEHICLES(v) for(v=_vehicles; v != endof(_vehicles); v++)
 
 /* vehicle.c */
