@@ -360,7 +360,10 @@ CDEFS += -DBEOS
 LDFLAGS += -lmidi -lbe
 ifdef WITH_NETWORK
 	ifdef BEOS_NET_SERVER
-	CDEFS += -DBEOS_NET_SERVER
+		CDEFS += -DBEOS_NET_SERVER
+	else
+		# Zeta needs a few more libraries than R5
+		LDFLAGS += -lbind -lsocket
 	endif
 endif
 endif

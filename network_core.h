@@ -60,7 +60,7 @@ typedef struct ifreq IFREQ;
 #		include <netinet/tcp.h>
 #		include <arpa/inet.h>
 #		include <net/if.h>
-#		if !defined(SUNOS) && !defined(__MORPHOS__)
+#		if !defined(SUNOS) && !defined(__MORPHOS__) && !defined(__BEOS__)
 #			include <ifaddrs.h>
 // If for any reason ifaddrs.h does not exist on a system, remove define below
 //   and an other system will be used to fetch ips from the system
@@ -68,6 +68,10 @@ typedef struct ifreq IFREQ;
 #		else
 #			define INADDR_NONE 0xffffffff
 #		endif // SUNOS
+#		if defined(__BEOS__) && !defined(BEOS_NET_SERVER)
+			// needed on Zeta
+#			include <sys/sockio.h>
+#		endif
 #	endif // BEOS_NET_SERVER
 
 /* GLibc 2.1 does not support GetIfAddr() */
