@@ -835,12 +835,15 @@ void CheckExternalFiles(void)
 		printf("Your sample.cat file is corrupted or missing!");
 
 	/*
+	 * forced DOS palette via command line -> leave it that way
 	 * all Windows files present -> Windows palette
 	 * all DOS files present -> DOS palette
 	 * no Windows files present and any DOS file present -> DOS palette
 	 * otherwise -> Windows palette
 	 */
-	if (win == 5) {
+	if (_use_dos_palette) {
+		return;
+	} else if (win == 5) {
 		_use_dos_palette = false;
 	} else if (dos == 5 || (win == 0 && dos > 0)) {
 		_use_dos_palette = true;
