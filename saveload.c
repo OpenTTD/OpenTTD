@@ -60,10 +60,15 @@ static void NORETURN SlError(const char *msg)
 	longjmp(_sl.excpt, 0);
 }
 
-inline int SlReadByte(void)
+static inline int SlReadByteInternal(void)
 {
 	if (_sl.bufp == _sl.bufe) SlReadFill();
 	return *_sl.bufp++;
+}
+
+int SlReadByte(void)
+{
+	return SlReadByteInternal();
 }
 
 void SlWriteByte(byte v)
@@ -230,7 +235,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 		}
 	} else {
 		while(length) {
-			*p++ = SlReadByte();
+			*p++ = SlReadByteInternal();
 			length--;
 		}
 	}
