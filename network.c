@@ -1933,11 +1933,11 @@ bool NetworkCoreStartGame() {return false;};
 void NetworkLobbyShutdown() {};
 void NetworkLobbyInit() {};
 void NetworkGameListClear() {};
-char * NetworkGameListAdd() {return NULL;};
+NetworkGameList * NetworkGameListAdd() {return NULL;};
 void NetworkGameListFromLAN() {};
 void NetworkGameListFromInternet() {};
 void NetworkGameFillDefaults() {};
-char * NetworkGameListItem(uint16 index) {return NULL;};
+NetworkGameList * NetworkGameListItem(uint16 index) {return NULL;};
 void NetworkGameChangeDate(uint16 newdate) {};
 
 #endif
