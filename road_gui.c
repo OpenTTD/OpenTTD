@@ -372,6 +372,10 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 		if (WP(w,def_d).close)
 			DeleteWindow(w);
 		break;
+
+	case WE_DESTROY:
+		ResetObjectToPlace();
+		break;
 	}
 }
 
@@ -461,6 +465,10 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 		CheckRedrawStationCoverage(w);
 	} break;
+	
+	case WE_DESTROY:
+		ResetObjectToPlace();
+		break;
 	}
 }
 
