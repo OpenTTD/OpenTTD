@@ -525,7 +525,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 {
 	Station *st;
 
-	if (_patches.servint_aircraft == 0 && IS_HUMAN_PLAYER(v->owner))
+	if (_patches.servint_aircraft == 0)
 		return;
 
 	if (v->date_of_last_service + v->service_interval > _date)
@@ -537,7 +537,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	if ((v->next_order & (OT_MASK | OF_FULL_LOAD)) == (OT_GOTO_DEPOT | OF_FULL_LOAD))
 		return;
 
- 	if (_patches.gotodepot && IS_HUMAN_PLAYER(v->owner) && ScheduleHasDepotOrders(v->schedule_ptr))
+ 	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
  		return;
  
 	st = DEREF_STATION(v->next_order_param);

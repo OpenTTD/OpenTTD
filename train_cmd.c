@@ -2520,7 +2520,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	uint tile;
 	byte depot;
 
-	if (_patches.servint_trains == 0 && IS_HUMAN_PLAYER(v->owner))
+	if (_patches.servint_trains == 0)
 		return;
 
 	if (v->date_of_last_service + v->service_interval > _date)
@@ -2529,7 +2529,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	if (_patches.gotodepot && IS_HUMAN_PLAYER(v->owner) && ScheduleHasDepotOrders(v->schedule_ptr))
+	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
 		return;
 	
 	// Don't interfere with a depot visit scheduled by the user, or a
