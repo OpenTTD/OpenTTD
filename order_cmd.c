@@ -140,9 +140,9 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /* p1 = vehicle */
 int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (flags & DC_EXEC) {
-		Vehicle *v = GetVehicle(p1);
+	Vehicle *v = GetVehicle(p1);
 
+	if (flags & DC_EXEC) {
 		{
 			byte b = v->cur_order_index + 1;
 			if (b >= v->num_orders) b = 0;
@@ -159,6 +159,13 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
 	}
+
+	//we have an aircraft, they have a mini-schedule, so update them all
+	if (v->type == VEH_Aircraft) InvalidateAircraftWindows(v);
+
+	//same goes for ships
+	if (v->type == VEH_Ship) InvalidateShipWindows(v);
+
 	return 0;
 }
 

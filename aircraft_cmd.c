@@ -508,13 +508,13 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 }
 
-void InvalidateAircraftWindows(Vehicle *v)
+void InvalidateAircraftWindows(const Vehicle *v)
 {
-	Order *o;
+	const Order *o;
 
 	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
 
-	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++, i++) {
+	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++) {
 		if (o->type == OT_GOTO_STATION ) {
 			InvalidateWindow(WC_AIRCRAFT_LIST, o->station << 16 | v->owner);
 		}
@@ -548,8 +548,6 @@ void OnNewDay_Aircraft(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	InvalidateAircraftWindows(v);
 }
 
 void AircraftYearlyLoop()
@@ -1084,6 +1082,8 @@ static void ProcessAircraftOrder(Vehicle *v)
 	}
 
 	InvalidateVehicleOrderWidget(v);
+	
+	InvalidateAircraftWindows(v);
 }
 
 static void HandleAircraftLoading(Vehicle *v, int mode)

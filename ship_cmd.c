@@ -21,6 +21,19 @@ static byte GetTileShipTrackStatus(uint tile) {
 	return r | r >> 8;
 }
 
+void InvalidateShipWindows(const Vehicle *v)
+{
+	const Order *o;
+
+	InvalidateWindow(WC_SHIPS_LIST, v->owner);
+
+	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++) {
+		if (o->type == OT_GOTO_STATION ) {
+			InvalidateWindow(WC_SHIPS_LIST, o->station << 16 | v->owner);
+		}
+	}
+}
+
 void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 {
 	int spritenum = ShipVehInfo(engine)->image_index;
@@ -146,7 +159,6 @@ void OnNewDay_Ship(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	InvalidateWindow(WC_SHIPS_LIST, v->owner);
 }
 
 static void HandleBrokenShip(Vehicle *v)
@@ -174,7 +186,7 @@ static void HandleBrokenShip(Vehicle *v)
 	if (!(v->tick_counter & 1)) {
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
-			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+			InvalidateShipWindows(v);
 		}
 	}
 }
@@ -253,6 +265,8 @@ static void ProcessShipOrder(Vehicle *v)
 		v->dest_tile = 0;
 	}
 	InvalidateVehicleOrderWidget(v);
+
+	InvalidateShipWindows(v);
 }
 
 static void HandleShipLoading(Vehicle *v)
@@ -917,6 +931,8 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
+
+	InvalidateShipWindows(v);
 
 	return 0;
 }
