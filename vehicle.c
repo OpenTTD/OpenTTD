@@ -1375,7 +1375,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					}
 				} else {
 					if ( u->engine_type == old_engine_type && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD) {
-						if (v->next != NULL) rear_engine_cost = -u->value;
+						if (v->next != NULL) rear_engine_cost = -(int32)u->value;
 					}
 				}
 			 }
