@@ -1113,7 +1113,8 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			(_map3_lo[tile] & _signals_table_both[track]) == 0) // signals on track?
 		return CMD_ERROR;
 
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile))
+		return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
