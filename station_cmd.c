@@ -304,12 +304,12 @@ static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
 static bool GenerateStationName(Station *st, uint tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
-		0,																/* 0 */
-		1 << M(STR_SV_STNAME_AIRPORT),		/* 1 */
-		1 << M(STR_SV_STNAME_OILFIELD),		/* 2 */
-		1 << M(STR_SV_STNAME_DOCKS),			/* 3 */
-		0x1FF << M(STR_SV_STNAME_BUOY_1),	/* 4 */
-		1 << M(STR_SV_STNAME_HELIPORT),		/* 5 */
+		0,                                      /* 0 */
+		1 << M(STR_SV_STNAME_AIRPORT),          /* 1 */
+		1 << M(STR_SV_STNAME_OILFIELD),         /* 2 */
+		1 << M(STR_SV_STNAME_DOCKS),            /* 3 */
+		0x1FF << M(STR_SV_STNAME_BUOY_1),       /* 4 */
+		1 << M(STR_SV_STNAME_HELIPORT),         /* 5 */
 	};
 
 	Town *t = st->town;
@@ -344,12 +344,12 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 	if (HASBIT(free_names, M(STR_SV_STNAME_MINES))) {
 		if (CountMapSquareAround(tile, MP_INDUSTRY, 0, 6) >= 2 ||
 		    CountMapSquareAround(tile, MP_INDUSTRY, 0x64, 0x73) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x2F, 0x33) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x48, 0x58) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x5B, 0x63) >= 2) {
-					found = M(STR_SV_STNAME_MINES);
-					goto done;
-				}
+		    CountMapSquareAround(tile, MP_INDUSTRY, 0x2F, 0x33) >= 2 ||
+		    CountMapSquareAround(tile, MP_INDUSTRY, 0x48, 0x58) >= 2 ||
+		    CountMapSquareAround(tile, MP_INDUSTRY, 0x5B, 0x63) >= 2) {
+			found = M(STR_SV_STNAME_MINES);
+			goto done;
+		}
 	}
 
 	/* check close enough to town to get central as name? */
@@ -362,19 +362,19 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 	}
 
 	/* Check lakeside */
-	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
-			DistanceFromEdge(tile) < 20 &&
-			CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
-				found = M(STR_SV_STNAME_LAKESIDE);
-				goto done;
-			}
+	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE))
+	    && DistanceFromEdge(tile) < 20
+	    && CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
+		found = M(STR_SV_STNAME_LAKESIDE);
+		goto done;
+	}
 
 	/* Check woods */
-	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) && (
-			CountMapSquareAround(tile, MP_TREES, 0, 255) >= 8 ||
-			CountMapSquareAround(tile, MP_INDUSTRY, 0x10, 0x11) >= 2 )) {
-				found = (_opt.landscape==LT_DESERT) ? M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
-				goto done;
+	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) &&
+	    (CountMapSquareAround(tile, MP_TREES, 0, 255) >= 8 ||
+	     CountMapSquareAround(tile, MP_INDUSTRY, 0x10, 0x11) >= 2)) {
+		found = (_opt.landscape==LT_DESERT) ? M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
+		goto done;
 	}
 
 	/* check elevation compared to town */
