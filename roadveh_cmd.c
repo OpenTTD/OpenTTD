@@ -950,6 +950,9 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stop_status&3))
 					bitmask |= _road_veh_fp_ax_or[(val-0x47)&3];
 			}
+		} else {
+			/* Other people's station. No-go */
+			bitmask = 0;
 		}
 	}
 	/* The above lookups should be moved to GetTileTrackStatus in the
