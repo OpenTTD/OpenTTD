@@ -417,18 +417,18 @@ static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_playe
 }
 
 const TileTypeProcs _tile_type_unmovable_procs = {
-        DrawTile_Unmovable,             /* draw_tile_proc */
-        GetSlopeZ_Unmovable,            /* get_slope_z_proc */
-        ClearTile_Unmovable,            /* clear_tile_proc */
-        GetAcceptedCargo_Unmovable,     /* get_accepted_cargo_proc */
-        GetTileDesc_Unmovable,          /* get_tile_desc_proc */
-        GetTileTrackStatus_Unmovable,   /* get_tile_track_status_proc */
-        ClickTile_Unmovable,            /* click_tile_proc */
-        AnimateTile_Unmovable,          /* animate_tile_proc */
-        TileLoop_Unmovable,             /* tile_loop_clear */
-        ChangeTileOwner_Unmovable,      /* change_tile_owner_clear */
-        NULL,                           /* get_produced_cargo_proc */
-        NULL,                           /* vehicle_enter_tile_proc */
-        NULL,                           /* vehicle_leave_tile_proc */
-        GetSlopeTileh_Unmovable,        /* get_slope_tileh_proc */
+	DrawTile_Unmovable,             /* draw_tile_proc */
+	GetSlopeZ_Unmovable,            /* get_slope_z_proc */
+	ClearTile_Unmovable,            /* clear_tile_proc */
+	GetAcceptedCargo_Unmovable,     /* get_accepted_cargo_proc */
+	GetTileDesc_Unmovable,          /* get_tile_desc_proc */
+	GetTileTrackStatus_Unmovable,   /* get_tile_track_status_proc */
+	ClickTile_Unmovable,            /* click_tile_proc */
+	AnimateTile_Unmovable,          /* animate_tile_proc */
+	TileLoop_Unmovable,             /* tile_loop_clear */
+	ChangeTileOwner_Unmovable,      /* change_tile_owner_clear */
+	NULL,                           /* get_produced_cargo_proc */
+	NULL,                           /* vehicle_enter_tile_proc */
+	NULL,                           /* vehicle_leave_tile_proc */
+	GetSlopeTileh_Unmovable,        /* get_slope_tileh_proc */
 };
