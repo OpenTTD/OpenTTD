@@ -270,7 +270,7 @@ void ShowBuildIndustryWindow(void)
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
 }
 
-#define NEED_ALTERB	((_game_mode == GM_EDITOR || _cheats.setup_prod.value) && i->accepts_cargo[0] == CT_INVALID)
+#define NEED_ALTERB	((_game_mode == GM_EDITOR || _cheats.setup_prod.value) && (i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES))
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
 	// WP(w,vp2_d).data_1 is for the editbox line
