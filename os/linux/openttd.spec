@@ -50,10 +50,12 @@ make BINARY_DIR=%{_gamesbindir} PREFIX=%{_gamesdatadir} DATA_DIR=openttd INSTALL
 mkdir -p $RPM_BUILD_ROOT%{_gamesbindir}
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data
+mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/scenario
 
 cp ./openttd $RPM_BUILD_ROOT%{_gamesbindir}/
 cp -r ./lang/*.lng $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang/
 cp -r ./data/*.grf $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data/
+cp -r ./scenario/*.scn $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/scenario/
 cp -r ./data/opntitle.dat $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data/
 
 # icon
@@ -113,6 +115,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_gamesdatadir}/openttd/data/opntitle.dat
 %{_gamesdatadir}/openttd/data/signalsw.grf
 %{_gamesdatadir}/openttd/data/trkfoundw.grf
+
+"%{_gamesdatadir}/openttd/scenario/Linkgame Islands 2004.scn"
+"%{_gamesdatadir}/openttd/scenario/Mountain Pass.scn"
+"%{_gamesdatadir}/openttd/scenario/Volcano City.scn"
 
 %{_menudir}/%{name}
 %{_iconsdir}/*.png
