@@ -49,7 +49,7 @@ extern const HalMusicDriver _dmusic_midi_driver;
 static void MakePalette(void)
 {
 	LOGPALETTE *pal;
-	int i;
+	uint i;
 	byte *b;
 
 	pal = alloca(sizeof(LOGPALETTE) + (256-1) * sizeof(PALETTEENTRY));
@@ -57,7 +57,7 @@ static void MakePalette(void)
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
 
-	for(i=0,b=_cur_palette; i!=256;i++,b+=3) {
+	for (i = 0, b = _cur_palette; i != 256; i++, b += 3) {
 		pal->palPalEntry[i].peRed = b[0];
 		pal->palPalEntry[i].peGreen = b[1];
 		pal->palPalEntry[i].peBlue = b[2];
@@ -75,7 +75,7 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 	uint i;
 	byte *b;
 
-		for(i=0,b = _cur_palette + start*3; i!=count; i++,b+=3) {
+		for (i = 0, b = _cur_palette + start * 3; i != count; i++, b += 3) {
 		rgb[i].rgbRed = b[0];
 		rgb[i].rgbGreen = b[1];
 		rgb[i].rgbBlue = b[2];
@@ -102,8 +102,8 @@ typedef struct {
 	byte map_to;
 } VkMapping;
 
-#define AS(x,z) {x,0,z}
-#define AM(x,y,z,w) {x,y-x,z}
+#define AS(x, z) {x, 0, z}
+#define AM(x, y, z, w) {x, y - x, z}
 
 #ifndef	VK_OEM_3
 #define VK_OEM_3 0xC0
@@ -161,7 +161,10 @@ static bool AllocateDibSection(int w, int h);
 
 static void ClientSizeChanged(int w, int h)
 {
-	if (_wnd.double_size) { w >>= 1; h >>= 1; }
+	if (_wnd.double_size) {
+		w /= 2;
+		h /= 2;
+	}
 
 	// allocate new dib section of the new size
 	if (AllocateDibSection(w, h)) {
@@ -182,7 +185,7 @@ void DoExitSave(void);
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	switch(msg) {
+	switch (msg) {
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC dc,dc2;
@@ -226,8 +229,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
 			_exit_game = true;
 		} else if (_patches.autosave_on_exit) {
-				DoExitSave();
-				_exit_game = true;
+			DoExitSave();
+			_exit_game = true;
 		} else
 			AskExitGame();
 
@@ -261,8 +264,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		POINT pt;
 
 		if (_wnd.double_size) {
-			x >>= 1;
-			y >>= 1;
+			x /= 2;
+			y /= 2;
 		}
 
 		if (_cursor.fix_at) {
@@ -308,10 +311,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		_pressed_key = w | MapWindowsKey(wParam) << 16;
 
-		if( scancode == 41 )
+		if (scancode == 41)
 			_pressed_key = w | WKC_BACKQUOTE << 16;
 
-		if ((_pressed_key>>16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
+		if ((_pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 			_double_size ^= 1;
 			_wnd.double_size = _double_size;
 			ClientSizeChanged(_wnd.width, _wnd.height);
@@ -321,7 +324,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 
 	case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
-		switch(wParam) {
+		switch (wParam) {
 		case VK_RETURN: /* Full Screen */
 			MakeWindow(!_wnd.fullscreen);
 			return 0;
@@ -352,10 +355,16 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		w = r->right - r->left - (r2.right - r2.left);
 		h = r->bottom - r->top - (r2.bottom - r2.top);
-		if (_wnd.double_size) { w >>= 1; h >>= 1; }
+		if (_wnd.double_size) {
+			w /= 2;
+			h /= 2;
+		}
 		w = clamp(w, 64, MAX_SCREEN_WIDTH);
 		h = clamp(h, 64, MAX_SCREEN_HEIGHT);
-		if (_wnd.double_size) { w <<= 1; h <<= 1; }
+		if (_wnd.double_size) {
+			w *= 2;
+			h *= 2;
+		}
 		SetRect(&r2, 0, 0, w, h);
 
 		AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -405,6 +414,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 	case WM_MOUSEWHEEL: {
 		int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+
 		if (delta < 0) {
 			_cursor.wheel++;
 		} else if (delta > 0) {
@@ -452,7 +462,7 @@ static void MakeWindow(bool full_screen)
 	_wnd.double_size = _double_size && !full_screen;
 
 	// recreate window?
-	if ((full_screen|_wnd.fullscreen) && _wnd.main_wnd) {
+	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
 		DestroyWindow(_wnd.main_wnd);
 		_wnd.main_wnd = 0;
 	}
@@ -469,9 +479,10 @@ static void MakeWindow(bool full_screen)
 		}
 		settings.dmPelsWidth = _wnd.width_org;
 		settings.dmPelsHeight = _wnd.height_org;
-		if ((settings.dmDisplayFrequency = _display_hz) != 0)
+		settings.dmDisplayFrequency = _display_hz;
+		if (settings.dmDisplayFrequency != 0)
 			settings.dmFields |= DM_DISPLAYFREQUENCY;
-		if ( !ChangeDisplaySettings(&settings, CDS_FULLSCREEN) == DISP_CHANGE_SUCCESSFUL ) {
+		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
 			MakeWindow(false);
 			return;
 		}
@@ -485,7 +496,8 @@ static void MakeWindow(bool full_screen)
 		uint style;
 		int x, y, w, h;
 
-		if ((_wnd.fullscreen=full_screen) != false) {
+		_wnd.fullscreen = full_screen;
+		if (_wnd.fullscreen) {
 			style = WS_POPUP | WS_VISIBLE;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
@@ -496,15 +508,16 @@ static void MakeWindow(bool full_screen)
 		AdjustWindowRect(&r, style, FALSE);
 		w = r.right - r.left;
 		h = r.bottom - r.top;
-		x = (GetSystemMetrics(SM_CXSCREEN)-w)>>1;
-		y = (GetSystemMetrics(SM_CYSCREEN)-h)>>1;
+		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
+		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
 		if (_wnd.main_wnd) {
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
 			char Windowtitle[50] = "OpenTTD ";
-			// also show revision number/release in window title
-			strncat(Windowtitle, _openttd_revision, sizeof(Windowtitle)-(strlen(Windowtitle) + 1));
+
+			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s",
+				_openttd_revision);
 
 			_wnd.main_wnd = CreateWindow("TTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
 			if (_wnd.main_wnd == NULL)
@@ -540,7 +553,7 @@ static bool AllocateDibSection(int w, int h)
 
 	if (_wnd.double_size) {
 		w = (w + 3) & ~0x3;
-		_wnd.alloced_bits = _wnd.buffer_bits = (byte*)malloc(w * h);
+		_wnd.alloced_bits = _wnd.buffer_bits = malloc(w * h);
 		w *= 2;
 		h *= 2;
 	}
@@ -588,18 +601,21 @@ static void FindResolutions(void)
 
 	while (EnumDisplaySettings(NULL, i++, &dm)) {
 		if (dm.dmBitsPerPel == 8 &&
-				IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH+1) &&
-				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT+1) &&
-				(n == 0 || _resolutions[n-1][0] != dm.dmPelsWidth || _resolutions[n-1][1] != dm.dmPelsHeight)) {
+				IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
+				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1) && (
+					n == 0 ||
+					_resolutions[n - 1][0] != dm.dmPelsWidth ||
+					_resolutions[n - 1][1] != dm.dmPelsHeight
+				)) {
 			_resolutions[n][0] = dm.dmPelsWidth;
 			_resolutions[n][1] = dm.dmPelsHeight;
-			if (++n == sizeof(_resolutions) / (sizeof(uint16)*2)) break;
+			if (++n == lengthof(_resolutions)) break;
 		}
 	}
 
 	if (n == 0) {
 		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
-		n = 6;
+		n = lengthof(default_resolutions);
 	}
 
 	_num_resolutions = n;
@@ -631,9 +647,7 @@ static const char *Win32GdiStart(const char * const *parm)
 
 static void Win32GdiStop(void)
 {
-	if ( _wnd.fullscreen ) {
-		ChangeDisplaySettings(NULL, 0);
-	}
+	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
 	MyShowCursor(true);
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
@@ -646,25 +660,28 @@ static void filter(int left, int top, int width, int height)
 	uint p = _screen.pitch;
 	byte *s = (byte*)_wnd.buffer_bits + top * p + left;
 	byte *d = (byte*)_wnd.bitmap_bits + top * p * 4 + left * 2;
-	int i;
 
-	while (height) {
-		for(i=0; i!=width; i++) {
-			d[i*2] = d[i*2+1] = d[i*2+p*2] = d[i*2+1+p*2] = s[i];
+	for (; height > 0; height--) {
+		int i;
+
+		for (i = 0; i != width; i++) {
+			d[i * 2] = d[i * 2 + 1] = d[i * 2 + p * 2] = d[i * 2 + 1 + p * 2] = s[i];
 		}
 		s += p;
 		d += p * 4;
-		height--;
 	}
 }
 
 static void Win32GdiMakeDirty(int left, int top, int width, int height)
 {
-	RECT r = {left, top, left+width, top+height};
+	RECT r = { left, top, left + width, top + height };
+
 	if (_wnd.double_size) {
 		filter(left, top, width, height);
-		//filter(0, 0, 640, 480);
-		r.left *= 2;r.top *= 2;r.right *= 2;r.bottom *= 2;
+		r.left *= 2;
+		r.top *= 2;
+		r.right *= 2;
+		r.bottom *= 2;
 	}
 	InvalidateRect(_wnd.main_wnd, &r, FALSE);
 }
@@ -699,7 +716,9 @@ static int Win32GdiMainLoop(void)
 #endif
 			/* Disable speeding up game with ALT+TAB (if syskey is pressed, the
 			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
-			if (((_pressed_key>>16) & WKC_TAB) && !_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+			if ((_pressed_key >> 16) & WKC_TAB && !_networking &&
+					_game_mode != GM_MENU)
+				_fast_forward |= 2;
 		} else if (_fast_forward & 2)
 			_fast_forward = 0;
 
@@ -766,7 +785,7 @@ const HalVideoDriver _win32_video_driver = {
  * WIN32 MIDI PLAYER
  **********************/
 
-struct {
+static struct {
 	bool stop_song;
 	bool terminate;
 	bool playing;
@@ -787,7 +806,7 @@ static void Win32MidiStopSong(void)
 {
 	if (_midi.playing) {
 		_midi.stop_song = true;
-		_midi.start_song[0] = 0;
+		_midi.start_song[0] = '\0';
 		SetEvent(_midi.wait_obj);
 	}
 }
@@ -806,6 +825,7 @@ static void Win32MidiSetVolume(byte vol)
 static long CDECL MidiSendCommand(const char *cmd, ...) {
 	va_list va;
 	char buf[512];
+
 	va_start(va, cmd);
 	vsprintf(buf, cmd, va);
 	va_end(va);
@@ -831,7 +851,7 @@ static void MidiIntStopSong(void)
 static void MidiIntSetVolume(int vol)
 {
 	uint v = (vol * 65535 / 127);
-	midiOutSetVolume((HMIDIOUT)-1, v + (v<<16));
+	midiOutSetVolume((HMIDIOUT)-1, v + (v << 16));
 }
 
 static bool MidiIntIsSongPlaying(void)
@@ -843,27 +863,30 @@ static bool MidiIntIsSongPlaying(void)
 
 static DWORD WINAPI MidiThread(LPVOID arg)
 {
-	char *s;
-	int vol;
-
 	_midi.wait_obj = CreateEvent(NULL, FALSE, FALSE, NULL);
 
 	do {
-		if ((vol=_midi.new_vol) != -1) {
+		char *s;
+		int vol;
+
+		vol = _midi.new_vol;
+		if (vol != -1) {
 			_midi.new_vol = -1;
 			MidiIntSetVolume(vol);
-
 		}
-		if ((s=_midi.start_song)[0]) {
+
+		s = _midi.start_song;
+		if (s[0] != '\0') {
 			_midi.playing = MidiIntPlaySong(s);
-			s[0] = 0;
+			s[0] = '\0';
 
 			// Delay somewhat in case we don't manage to play.
 			if (!_midi.playing) {
 				Sleep(5000);
 			}
 		}
-		if (_midi.stop_song != false && _midi.playing) {
+
+		if (_midi.stop_song && _midi.playing) {
 			_midi.stop_song = false;
 			_midi.playing = false;
 			MidiIntStopSong();
@@ -882,6 +905,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 static const char *Win32MidiStart(const char * const *parm)
 {
 	DWORD threadId;
+
 	memset(&_midi, 0, sizeof(_midi));
 	_midi.new_vol = -1;
 	CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId);
@@ -910,32 +934,37 @@ static WAVEHDR _wave_hdr[2];
 static int _bufsize;
 static void PrepareHeader(WAVEHDR *hdr)
 {
-	hdr->dwBufferLength = _bufsize*4;
+	hdr->dwBufferLength = _bufsize * 4;
 	hdr->dwFlags = 0;
-	hdr->lpData = malloc(_bufsize*4);
-	if (hdr->lpData == NULL || waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
+	hdr->lpData = malloc(_bufsize * 4);
+	if (hdr->lpData == NULL ||
+			waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
 		error("waveOutPrepareHeader failed");
 }
 
 static void FillHeaders(void)
 {
 	WAVEHDR *hdr;
-	for(hdr=_wave_hdr; hdr != endof(_wave_hdr); hdr++) {
+
+	for (hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
 		if (!(hdr->dwFlags & WHDR_INQUEUE)) {
-			MxMixSamples(_mixer, hdr->lpData, hdr->dwBufferLength >> 2);
+			MxMixSamples(_mixer, hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
 				error("waveOutWrite failed");
 		}
 	}
 }
 
-static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD dwInstance,
+	DWORD dwParam1, DWORD dwParam2)
 {
-	switch(uMsg) {
-	case WOM_DONE:
-		if (_waveout)
-			FillHeaders();
-		break;
+	switch (uMsg) {
+		case WOM_DONE:
+			if (_waveout) FillHeaders();
+			break;
+
+		default:
+			break;
 	}
 }
 
@@ -963,6 +992,7 @@ static const char *Win32SoundStart(const char * const *parm)
 static void Win32SoundStop(void)
 {
 	HWAVEOUT waveout = _waveout;
+
 	_waveout = NULL;
 	waveOutReset(waveout);
 	waveOutUnprepareHeader(waveout, &_wave_hdr[0], sizeof(WAVEHDR));
@@ -981,13 +1011,13 @@ bool LoadLibraryList(void **proc, const char *dll)
 	HMODULE lib;
 	void *p;
 
-	while (*dll) {
+	while (*dll != '\0') {
 		lib = LoadLibrary(dll);
 		if (lib == NULL)
 			return false;
 		while (true) {
-			while(*dll++);
-			if (!*dll)
+			while(*dll++ != '\0');
+			if (*dll == '\0')
 				break;
 			p = GetProcAddress(lib, dll);
 			if (p == NULL)
@@ -1036,22 +1066,22 @@ static void MakeCRCTable(uint32 *table) {
 
 	_crc_table = table;
 
-	for (i=0; i!=256; i++) {
+	for (i = 0; i != 256; i++) {
 		crc = i;
-		for (j=8; j!=0; j--) {
+		for (j = 8; j != 0; j--) {
 			if (crc & 1)
 				crc = (crc >> 1) ^ poly;
 			else
-				crc>>=1;
+				crc >>= 1;
 		}
 		table[i] = crc;
 	}
 }
 
 static uint32 CalcCRC(byte *data, uint size, uint32 crc) {
-	do {
-		crc = ((crc>>8) & 0x00FFFFFF) ^ _crc_table[ (crc^(*data++)) & 0xFF ];
-	} while (--size);
+	for (; size > 0; size--) {
+		crc = ((crc >> 8) & 0x00FFFFFF) ^ _crc_table[(crc ^ *data++) & 0xFF];
+	}
 	return crc;
 }
 
@@ -1067,10 +1097,12 @@ static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
 		FILETIME write_time;
 		uint32 crc = (uint32)-1;
 
-		file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, 0);
+		file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL,
+			OPEN_EXISTING, 0, 0);
 		if (file != INVALID_HANDLE_VALUE) {
 			while(true) {
-				if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 || numread==0)
+				if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 ||
+						numread == 0)
 					break;
 				filesize += numread;
 				crc = CalcCRC(buffer, numread, crc);
@@ -1091,6 +1123,7 @@ static char *PrintModuleInfo(char *output, HMODULE mod)
 {
 	char buffer[MAX_PATH];
 	DebugFileInfo dfi;
+
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
 	output += sprintf(output, " %-20s handle: %.8X size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
@@ -1123,8 +1156,9 @@ static char *PrintModuleList(char *output)
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
 			CloseHandle(proc);
 			if (res) {
-				count = min(needed/sizeof(HMODULE*), sizeof(modules)/sizeof(HMODULE*));
-				for(i=0; i!=count; i++)
+				count =
+					min(needed / sizeof(HMODULE), lengthof(modules));
+				for (i = 0; i != count; i++)
 					output = PrintModuleInfo(output, modules[i]);
 				return output;
 			}
@@ -1137,13 +1171,14 @@ static char *PrintModuleList(char *output)
 static const char _crash_desc[] =
 	"A serious fault condition occured in the game. The game will shut down.\n"
 	"Press \"Submit report\" to send crash information to the developers. "
-	"This will greatly help debugging. The information contained in the report is "
-	"displayed below.\n"
+	"This will greatly help debugging. "
+	"The information contained in the report is displayed below.\n"
 	"Press \"Emergency save\" to attempt saving the game.";
 
 static const char _save_succeeded[] =
-	"Emergency save succeeded.\nBe aware that critical parts of the internal game state "
-	"may have become corrupted. The saved game is not guaranteed to work.";
+	"Emergency save succeeded.\n"
+	"Be aware that critical parts of the internal game state may have become "
+	"corrupted. The saved game is not guaranteed to work.";
 
 bool EmergencySave();
 
@@ -1255,12 +1290,13 @@ static void SetWndSize(HWND wnd, int mode)
 	if (mode >= 0) {
 		GetWindowRect(GetDlgItem(wnd, 11), &r2);
 		offs = r2.bottom - r2.top + 10;
-		if (!mode) offs=-offs;
-		SetWindowPos(wnd, HWND_TOPMOST, 0, 0, r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
+		if (!mode) offs = -offs;
+		SetWindowPos(wnd, HWND_TOPMOST, 0, 0,
+			r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
 	} else {
 		SetWindowPos(wnd, HWND_TOPMOST,
-			(GetSystemMetrics(SM_CXSCREEN) - (r.right - r.left)) >> 1,
-			(GetSystemMetrics(SM_CYSCREEN) - (r.bottom - r.top)) >> 1,
+			(GetSystemMetrics(SM_CXSCREEN) - (r.right - r.left)) / 2,
+			(GetSystemMetrics(SM_CYSCREEN) - (r.bottom - r.top)) / 2,
 			0, 0, SWP_NOSIZE);
 	}
 }
@@ -1350,7 +1386,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	char *output;
 	static bool had_exception;
 
-	if (had_exception) { ExitProcess(0); }
+	if (had_exception) ExitProcess(0);
 	had_exception = true;
 
 	_ident = GetTickCount(); // something pretty unique
@@ -1375,7 +1411,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		);
 	}
 
-	if (_exception_string) output += sprintf(output, "Reason: %s\r\n", _exception_string);
+	if (_exception_string)
+		output += sprintf(output, "Reason: %s\r\n", _exception_string);
 
 	output += sprintf(output, "Exception %.8X at %.8X\r\n"
 		"Registers:\r\n"
@@ -1400,7 +1437,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	{
 		byte *b = (byte*)ep->ContextRecord->Eip;
 		int i;
-		for(i=0; i!=24; i++) {
+		for (i = 0; i != 24; i++) {
 			if (IsBadReadPtr(b, 1)) {
 				output += sprintf(output, " ??"); // OCR: WAS: , 0);
 			} else {
@@ -1417,8 +1454,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	{
 		int i,j;
 		uint32 *b = (uint32*)ep->ContextRecord->Esp;
-		for(j=0; j!=24; j++) {
-			for(i=0; i!=8; i++) {
+		for (j = 0; j != 24; j++) {
+			for (i = 0; i != 8; i++) {
 				if (IsBadReadPtr(b,sizeof(uint32))) {
 					output += sprintf(output, " ????????"); //OCR: WAS - , 0);
 				} else {
@@ -1438,7 +1475,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		os.dwOSVersionInfoSize = sizeof(os);
 		GetVersionEx(&os);
 		output += sprintf(output, "\r\nSystem information:\r\n"
-			" Windows version %d.%d %d %s\r\n", os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
+			" Windows version %d.%d %d %s\r\n",
+			os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
 	}
 
 	{
@@ -1466,7 +1504,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 static void Win32InitializeExceptions(void)
 {
 	_asm {
-		mov _safe_esp,esp
+		mov _safe_esp, esp
 	}
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
@@ -1507,14 +1545,17 @@ static HANDLE MyFindFirstFile(const char *path, const char *file,
 }
 
 int CDECL compare_FiosItems (const void *a, const void *b) {
-	const FiosItem *da = (const FiosItem *) a;
-	const FiosItem *db = (const FiosItem *) b;
+	const FiosItem *da = (const FiosItem *)a;
+	const FiosItem *db = (const FiosItem *)b;
 	int r;
 
 	if (_savegame_sort_order < 2) // sort by date
     r = da->mtime < db->mtime ? -1 : 1;
 	else
-		r = stricmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
+		r = stricmp(
+			da->title[0] != '\0' ? da->title : da->name,
+			db->title[0] != '\0' ? db->title : db->name
+		);
 
 	if (_savegame_sort_order & 1) r = -r;
 	return r;
@@ -1552,7 +1593,8 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	if (h != INVALID_HANDLE_VALUE) {
 		do {
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					!(fd.cFileName[0] == '.' && (fd.cFileName[1] == 0 || (fd.cFileName[1] == '.' && fd.cFileName[2] == 0)))) {
+					strcmp(fd.cFileName, ".") != 0 &&
+					strcmp(fd.cFileName, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				strcpy(fios->name, fd.cFileName);
@@ -1585,7 +1627,11 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 					ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
 				}	else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 					int ext = 0; // start of savegame extensions in _old_extensions[]
-					if (t && ((ext++, !stricmp(t, ".SS1")) || (ext++, !stricmp(t, ".SV1")) || (ext++, !stricmp(t, ".SV2"))) ) { // TTDLX(Patch)
+					if (t != NULL && (
+								(ext++, stricmp(t, ".SS1") == 0) ||
+								(ext++, stricmp(t, ".SV1") == 0) ||
+								(ext++, stricmp(t, ".SV2") == 0)
+							)) { // TTDLX(Patch)
 						fios = FiosAlloc();
 						fios->old_extension = ext-1;
 						fios->mtime = *(uint64*)&fd.ftLastWriteTime;
@@ -1639,7 +1685,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	_fios_path = _fios_scn_path;
 
 	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != 0 && mode != SLD_NEW_GAME) {
+	if (_fios_path[3] != '\0' && mode != SLD_NEW_GAME) {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		strcpy(fios->title, ".. (Parent directory)");
@@ -1650,7 +1696,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	if (h != INVALID_HANDLE_VALUE && mode != SLD_NEW_GAME) {
 		do {
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					!(fd.cFileName[0] == '.' && (fd.cFileName[1] == 0 || (fd.cFileName[1] == '.' && fd.cFileName[2] == 0)))) {
+					strcmp(fd.cFileName, ".") != 0 &&
+					strcmp(fd.cFileName, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				strcpy(fios->name, fd.cFileName);
@@ -1673,16 +1720,22 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		do {
 			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
 				char *t = strrchr(fd.cFileName, '.');
-				if (t && !stricmp(t, ".SCN")) { // OpenTTD
+
+				if (t != NULL && !stricmp(t, ".SCN")) { // OpenTTD
 					fios = FiosAlloc();
 					fios->mtime = *(uint64*)&fd.ftLastWriteTime;
 					sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
 					fios->type = FIOS_TYPE_SCENARIO;
-					fios->title[0] = 0;
+					fios->title[0] = '\0';
 					ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
-				}	else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
+				}	else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
+						mode == SLD_NEW_GAME) {
 					int ext = 3; // start of scenario extensions in _old_extensions[]
-					if (t && ((ext++, !stricmp(t, ".SV0")) || (ext++, !stricmp(t, ".SS0"))) ) { // TTDLX(Patch)
+
+					if (t != NULL && (
+								(ext++, stricmp(t, ".SV0") == 0) ||
+								(ext++, stricmp(t, ".SS0") == 0)
+							)) { // TTDLX(Patch)
 						fios = FiosAlloc();
 						fios->old_extension = ext-1;
 						fios->mtime = *(uint64*)&fd.ftLastWriteTime;
@@ -1702,16 +1755,14 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	// Drives
 	if (mode != SLD_NEW_GAME) {
 		char drives[256];
-		char *s;
+		const char *s;
+
 		GetLogicalDriveStrings(sizeof(drives), drives);
-		s=drives;
-		while (*s) {
+		for (s = drives; *s != '\0';) {
 			fios = FiosAlloc();
 			fios->type = FIOS_TYPE_DRIVE;
-			fios->title[0] = s[0];
-			fios->title[1] = ':';
-			fios->title[2] = 0;
-			while (*s++) {}
+			sprintf(fios->title, "%c:", s[0]);
+			while (*s++ != '\0') {}
 		}
 	}
 
@@ -1732,28 +1783,28 @@ char *FiosBrowseTo(const FiosItem *item)
 {
 	static char str_buffr[512];
 	char *path = _fios_path;
-	char *s;
 
-	switch(item->type) {
+	switch (item->type) {
 	case FIOS_TYPE_DRIVE:
 		sprintf(path, "%c:\\", item->title[0]);
 		break;
 
-	case FIOS_TYPE_PARENT:
+	case FIOS_TYPE_PARENT: {
+		char *s;
+
 		// Skip drive part
 		path += 3;
 		s = path;
-		while (*path) {
-			if (*path== '\\')
-				s = path;
-			path++;
+		for (; *path != '\0'; path++) {
+			if (*path== '\\') s = path;
 		}
-		*s = 0;
+		*s = '\0';
 		break;
+	}
 
 	case FIOS_TYPE_DIR:
 		// Scan to end
-		while (*++path);
+		while (*++path != '\0');
 		// Add backslash?
 		if (path[-1] != '\\') *path++ = '\\';
 
@@ -1765,14 +1816,17 @@ char *FiosBrowseTo(const FiosItem *item)
 		return str_buffr;
 
 	case FIOS_TYPE_OLDFILE:
-		sprintf(str_buffr, "%s\\%s.%s", _fios_path, item->name, _old_extensions[item->old_extension]);
+		sprintf(str_buffr, "%s\\%s.%s",
+			_fios_path, item->name, _old_extensions[item->old_extension]);
 		return str_buffr;
 
 	case FIOS_TYPE_SCENARIO:
 		sprintf(str_buffr, "%s\\%s.scn", path, item->name);
 		return str_buffr;
+
 	case FIOS_TYPE_OLD_SCENARIO:
-		sprintf(str_buffr, "%s\\%s.%s", path, item->name, _old_extensions[item->old_extension]);
+		sprintf(str_buffr, "%s\\%s.%s",
+			path, item->name, _old_extensions[item->old_extension]);
 		return str_buffr;
 	}
 
@@ -1788,12 +1842,9 @@ StringID FiosGetDescText(const char **path)
 	DWORD spc, bps, nfc, tnc;
 	*path = _fios_path;
 
-	root[0] = _fios_path[0];
-	root[1] = ':';
-	root[2] = '\\';
-	root[3] = 0;
+	sprintf(root, "%c:\\", _fios_path[0]);
 	if (GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
-		uint32 tot = ((spc*bps)*(uint64)nfc) >> 20;
+		uint32 tot = ((spc * bps) * (uint64)nfc) >> 20;
 		SetDParam(0, tot);
 		return STR_4005_BYTES_FREE;
 	} else {
@@ -1803,7 +1854,7 @@ StringID FiosGetDescText(const char **path)
 
 void FiosMakeSavegameName(char *buf, const char *name)
 {
-	if(_game_mode == GM_EDITOR)
+	if (_game_mode == GM_EDITOR)
 		sprintf(buf, "%s\\%s.scn", _fios_path, name);
 	else
 		sprintf(buf, "%s\\%s.sav", _fios_path, name);
@@ -1928,24 +1979,24 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 			line++;
 
 		// end?
-		if (*line == 0)
+		if (*line == '\0')
 			break;
 
 		// special handling when quoted
 		if (*line == '"') {
 			argv[n++] = ++line;
 			while (*line != '"') {
-				if (*line == 0) return n;
+				if (*line == '\0') return n;
 				line++;
 			}
 		} else {
 			argv[n++] = line;
 			while (*line != ' ' && *line != '\t') {
-				if (*line == 0) return n;
+				if (*line == '\0') return n;
 				line++;
 			}
 		}
-		*line++ = 0;
+		*line++ = '\0';
 	} while (n != max_argc);
 
 	return n;
@@ -1953,7 +2004,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 
 #if defined(_MSC_VER)
-__int64 _declspec(naked) rdtsc()
+static uint64 _declspec(naked) rdtsc(void)
 {
 	_asm {
 		rdtsc
@@ -1990,9 +2041,9 @@ void CreateConsole(void)
 	*stderr = *fdopen(2, "w" );
 #endif
 
-	setvbuf( stdin, NULL, _IONBF, 0 );
-	setvbuf( stdout, NULL, _IONBF, 0 );
-	setvbuf( stderr, NULL, _IONBF, 0 );
+	setvbuf(stdin, NULL, _IONBF, 0);
+	setvbuf(stdout, NULL, _IONBF, 0);
+	setvbuf(stderr, NULL, _IONBF, 0);
 }
 
 void ShowInfo(const char *str)
@@ -2014,7 +2065,8 @@ void ShowInfo(const char *str)
 }
 
 
-int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPTSTR lpCmdLine,int nCmdShow)
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+	LPTSTR lpCmdLine, int nCmdShow)
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
@@ -2031,8 +2083,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPTSTR lpCmdLin
 #if defined(_MSC_VER)
 	{
 		uint64 seed = rdtsc();
-		_random_seeds[0][0] = ((uint32*)&seed)[0];
-		_random_seeds[0][1] = ((uint32*)&seed)[1];
+		_random_seeds[0][0] = seed & 0xffffffff;
+		_random_seeds[0][1] = seed >> 32;
 	}
 #else
 	_random_seeds[0][0] = GetTickCount();
@@ -2070,7 +2122,7 @@ void DeterminePaths(void)
 
 
 	s = strchr(cfg, 0);
-	if (s[-1] != '\\') { s[0] = '\\'; s[1] = 0; }
+	if (s[-1] != '\\') strcpy(s, "\\");
 
 	_path.save_dir = str_fmt("%ssave", cfg);
 	_path.autosave_dir = str_fmt("%s\\autosave", _path.save_dir);
