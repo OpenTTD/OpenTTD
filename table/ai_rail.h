@@ -24,7 +24,7 @@ typedef struct {
 #define MKSTATION(a,b) {1,a,b}
 #define MKRAIL(a,b) {2,a,b}
 #define MKCLRRAIL(a,b) {3,a,b}
-#define MKEND {4}}
+#define MKEND {4, 0, 0}}
 
 static const AiDefaultRailBlock _raildata_ai_0 = {
 	MKHDR(1,2,1,0,1)
@@ -463,12 +463,12 @@ static const AiDefaultRoadBlock * const _road_default_block_data[] = {
 
 static const AiDefaultBlockData _airportdata_ai_0[] = {
 	MKAIR(1, 0),
-	{1},
+	{1, 0, 0},
 };
 
 static const AiDefaultBlockData _airportdata_ai_1[] = {
 	MKAIR(0, 0),
-	{1}
+	{1, 0, 0}
 };
 
 static const AiDefaultBlockData * const _airport_default_block_data[] = {

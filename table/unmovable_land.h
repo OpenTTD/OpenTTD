@@ -1,8 +1,8 @@
-#define TILE_SEQ_END() { 0x80 }
+#define TILE_SEQ_END() { 0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {
-	{0xA29, 7,7, 2,2, 70},
-	{0xA2A, 4,4, 7,7, 61},
+	{0xA29, 7,7, 2,2, 70, 0},
+	{0xA2A, 4,4, 7,7, 61, 0},
 };
 
 

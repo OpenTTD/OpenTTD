@@ -682,7 +682,7 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 	return true;
 }
 
-static byte FORCEINLINE *CreateSingle(byte *layout, int n)
+static inline byte *CreateSingle(byte *layout, int n)
 {
 	int i = n;
 	do *layout++ = 0; while (--i);
@@ -690,7 +690,7 @@ static byte FORCEINLINE *CreateSingle(byte *layout, int n)
 	return layout;
 }
 
-static byte FORCEINLINE *CreateMulti(byte *layout, int n, byte b)
+static inline byte *CreateMulti(byte *layout, int n, byte b)
 {
 	int i = n;
 	do *layout++ = b; while (--i);

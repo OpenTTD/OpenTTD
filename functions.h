@@ -37,13 +37,20 @@ enum {
 
 bool IsValidTile(uint tile);
 
+static inline Point RemapCoords(int x, int y, int z)
+{
 #if !defined(NEW_ROTATION)
-static Point FORCEINLINE RemapCoords(int x, int y, int z) { Point pt = { (y-x)*2, y + x -z }; return pt; }
+	Point pt = { (y - x) * 2, y + x - z };
 #else
-static Point FORCEINLINE RemapCoords(int x, int y, int z) { Point pt = { (x + y)*2, x - y -z }; return pt; }
+	Point pt = { (x + y) * 2, x - y - z };
 #endif
+	return pt;
+}
 
-static Point FORCEINLINE RemapCoords2(int x, int y) { return RemapCoords(x, y, GetSlopeZ(x, y)); }
+static inline Point RemapCoords2(int x, int y)
+{
+	return RemapCoords(x, y, GetSlopeZ(x, y));
+}
 
 /* game.c */
 byte *GetString(byte *buffr, uint16 string);

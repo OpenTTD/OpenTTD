@@ -288,7 +288,7 @@ static const GameSettingData _game_setting_info[] = {
 	{0,2,1,STR_6839_PERMISSIVE},
 };
 
-static bool FORCEINLINE GetBitAndShift(uint32 *b)
+static inline bool GetBitAndShift(uint32 *b)
 {
 	uint32 x = *b;
 	*b >>= 1;

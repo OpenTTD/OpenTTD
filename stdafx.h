@@ -127,10 +127,10 @@ static inline uint16 FROM_LE16(uint16 x) { return BSWAP16(x); }
 
 #else
 
-static uint32 FORCEINLINE TO_BE32(uint32 x) { return BSWAP32(x); }
-static uint16 FORCEINLINE TO_BE16(uint16 x) { return BSWAP16(x); }
-static uint32 FORCEINLINE FROM_BE32(uint32 x) { return BSWAP32(x); }
-static uint16 FORCEINLINE FROM_BE16(uint16 x) { return BSWAP16(x); }
+static inline uint32 TO_BE32(uint32 x) { return BSWAP32(x); }
+static inline uint16 TO_BE16(uint16 x) { return BSWAP16(x); }
+static inline uint32 FROM_BE32(uint32 x) { return BSWAP32(x); }
+static inline uint16 FROM_BE16(uint16 x) { return BSWAP16(x); }
 #define TO_LE32(x) x
 #define TO_LE16(x) x
 #define TO_BE32X(x) BSWAP32(x)
@@ -157,7 +157,7 @@ enum {
 #endif
 
 // Compile time assertions
-#define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)]);
+#define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
 
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);

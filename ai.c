@@ -1936,7 +1936,7 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 	return better;
 }
 
-static void FORCEINLINE AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile, const byte *p)
+static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
 	bool flag;
@@ -1976,7 +1976,7 @@ static void FORCEINLINE AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex 
 	}
 }
 
-static void FORCEINLINE AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile, const byte *p)
+static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
 	FindLandscapeHeightByTile(&arf->ti, tile);
 
@@ -2813,7 +2813,7 @@ static bool AiBuildRoadHelper(uint tile, int flags, int type)
 	return DoCommandByTile(tile, _road_bits[type], 0, flags, CMD_BUILD_ROAD) != CMD_ERROR;
 }
 
-static void FORCEINLINE AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
+static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
 	bool flag;
@@ -2853,7 +2853,7 @@ static void FORCEINLINE AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex 
 	}
 }
 
-static void FORCEINLINE AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
+static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
 	FindLandscapeHeightByTile(&arf->ti, tile);
 

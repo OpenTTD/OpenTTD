@@ -173,22 +173,22 @@ static uint SlGetGammaLength(uint i) {
 	return (i>=0x80) ? 2 : 1;
 }
 
-int inline SlReadSparseIndex()
+inline int SlReadSparseIndex()
 {
 	return SlReadSimpleGamma();
 }
 
-void inline SlWriteSparseIndex(uint index)
+inline void SlWriteSparseIndex(uint index)
 {
 	SlWriteSimpleGamma(index);
 }
 
-int inline SlReadArrayLength()
+inline int SlReadArrayLength()
 {
 	return SlReadSimpleGamma();
 }
 
-void inline SlWriteArrayLength(uint length)
+inline void SlWriteArrayLength(uint length)
 {
 	SlWriteSimpleGamma(length);
 }

@@ -1,4 +1,4 @@
-#define TILE_SEQ_END()	{ 0x80 }
+#define TILE_SEQ_END()	{ 0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileSeqStruct _station_display_datas_0[] = {
 	{ 0,  0,  0, 16,  5,  2, 0x842E },

@@ -728,7 +728,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					dts->ground_sprite = grf_load_dword(&buf);
 					if (!dts->ground_sprite) {
-						static const DrawTileSeqStruct empty = {0x80};
+						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
 						dts->seq = &empty;
 						continue;
 					}
@@ -771,7 +771,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					dts->ground_sprite = sdts->ground_sprite;
 					if (!dts->ground_sprite) {
-						static const DrawTileSeqStruct empty = {0x80};
+						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
 						dts->seq = &empty;
 						continue;
 					}
