@@ -1114,6 +1114,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Beaucoup d'industries au hasard
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Couvrir la carte avec des industries placées au hasard
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Ne peut pas générer les industries...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Ouvre la barre d'outils du paysagiste pour monter/descendre du terrain, planter des arbres, etc.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Manipulation du paysage
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Niveler le terrain
 
@@ -2575,7 +2576,7 @@ STR_GO_TO_SHIP_DEPOT						:Aller au dépôt de {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Maintenance au dépôt de {TOWN}
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construction d'Aéroport
+STR_A000_AIRPORTS						:{WHITE}Aéroports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Impossible de construire un aéroport ici...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}Hangar à {STATION}
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nouvel aéronef
@@ -2707,3 +2708,8 @@ STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Trains
 STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Véhicules routiers
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Aéronefs
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Navires
+
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Montre tous les trains qui ont cette station dans leur itinéraire
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Montre tous les véhicules routiers qui ont cette station dans leur itinéraire
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Montre tous les aéronefs qui ont cette station dans leur itinéraire
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Montre tous les navires qui ont cette station dans leur itinéraire

@@ -2575,7 +2575,6 @@ STR_GO_TO_SHIP_DEPOT						:Mergi la Santierul Naval {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Service la Santierul Naval {TOWN}
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construieste aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Nu pot construi un aeroport aici...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Aeronavã nouã
@@ -2697,5 +2696,6 @@ STR_NEWGRF_TIP							:{BLACK}Lista tuturor setarilor Newgrf pe care le-ai instal
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nu exista fisiere newgrf instalate! Citeste manualul pentru instructiunile de instalare a fisierelor grafice noi.
 STR_NEWGRF_FILENAME						:{BLACK}Nume fisier:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
+
 
 

@@ -1492,3 +1492,4 @@ STR_3033_ACCEPTS						:{BLACK}Tekur við
 
 
 
+

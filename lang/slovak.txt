@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperial (mile)
 STR_013A_METRIC_KILOMETERS					:Metric (kilometre)
@@ -1188,6 +1189,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Hra pre viac hracov
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
+STR_NETWORK_CONNECTION						:{BLACK}Pripojenie:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Vyber si medzi hrou na internete alebo na localnej sieti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Lokalna siet (LAN)
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1205,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Vyberte hru zo zoznamu
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Najst server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hlada po sieti servery
+STR_NETWORK_ADD_SERVER						:{BLACK}Zadat server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Prida server do zoznamu, v ktorom sa automaticky budu hladat beziace hry.
 STR_NETWORK_ENTER_IP						:{BLACK}Zadajte IP adresu serveru
 
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Klienti
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Klienti online / klienti max
+STR_NETWORK_GAME_INFO						:{SILVER}INFO O HRE
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klienti:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Jazyk:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Prostredie:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Velkost mapy:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Verzia servera:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa servera:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Datum zaciatku:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Aktualny date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Heslo:
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER JE OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER JE PLNY
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pripojit sa
 
@@ -1214,10 +1233,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Zacat novu hru pre viac hracov
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nazov hry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
+STR_NETWORK_SET_PASSWORD					:{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatny ludia
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ktoru mapu chces hrat?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximalny pocet klientov:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximalny pocet klientov. Moze sa ich pripojit aj menej.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klienti
+STR_NETWORK_3_CLIENTS						:3 klienti
+STR_NETWORK_4_CLIENTS						:4 klienti
+STR_NETWORK_5_CLIENTS						:5 klientov
+STR_NETWORK_6_CLIENTS						:6 klientov
+STR_NETWORK_7_CLIENTS						:7 klientov
+STR_NETWORK_8_CLIENTS						:8 klientov
+STR_NETWORK_9_CLIENTS						:9 klientov
+STR_NETWORK_10_CLIENTS						:10 klientov
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Jazyk hracov:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
 STR_NETWORK_LOAD_GAME						:{BLACK}Nacitat hru
@@ -1226,26 +1260,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Nahrat scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacat sietovu hru zo scenaria
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Lubovolny
+STR_NETWORK_LANG_ENGLISH					:Anglicky
+STR_NETWORK_LANG_GERMAN						:Nemecky
+STR_NETWORK_LANG_FRENCH						:Francuzsky
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sietova hra - lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Pripravuje sa k vstupu:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Aktualny zoznam spolocnosti v tejto hre. Bud mozes do jednej vstupit, alebo zalozit novu spolocnost.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova spolocnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novu spolocnost
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Sledovat hru
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Vstupit do spolocnosti
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Pomoct viest tuto spolocnost
+STR_NETWORK_REFRESH						:{BLACK}Obnovit server
+STR_NETWORK_REFRESH_TIP						:{BLACK}Obnovit info o serveri
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO O SPOLOCNOSTI
 
 STR_NETWORK_COMPANY_NAME					:{SILVER}Nazov spolocnosti:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Zalozene:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Hodnota spolocnosti:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Stav uctu:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Zisk v minulom roku:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Vykon:  {WHITE}{NUMU16}
 
+STR_NETWORK_VEHICLES						:{SILVER}Vozidla:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stanice:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
 STR_NETWORK_PLAYERS						:{SILVER}Hraci:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Pripajam sa...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Pripajam sa..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Overovanie..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Cakam..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Stahovanie mapy..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Spracovanie dat..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Prijem informacii o hre..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Prijem informacii o spolocnosti..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klient(i) pred nami
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kB stiahnute
 
+STR_NETWORK_DISCONNECT						:{BLACK}Odpojit sa
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Napis spravu, ktoru chces poslat
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Napis sumu, ktoru chces poskytnut
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Server je chraneny. Napis heslo
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Spolocnost je chranena. Napis heslo
+STR_NETWORK_CLIENT_LIST						:{WHITE}Zoznam klientov
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nebola najdena ziadna sietova hra
@@ -1253,10 +1321,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Server neodpoveda na ziadost
 STR_NETWORK_ERR_DESYNC						:{WHITE} Siet - Chyba synchronizacie hry
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Siet - Stratene spojenie
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nedokazem nahrat hru zo servera
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Nemozem spustit server.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Nemozem sa pripojit.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Vyprsal casovy limit pre spojenie #{NUMU16}.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Chyba vznikla v protokole a spojenie je zatvorene.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Chybne heslo.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Server je plny
+STR_NETWORK_ERR_KICKED						:{WHITE} Bol si vyhodeny z hry
 
+STR_NETWORK_ERR_LEFT						:opustil hru
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:generalna chyba
+STR_NETWORK_ERR_CLIENT_DESYNC					:chyba synchronizacie
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:neviem nahrat mapu
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:spojenie prerusene
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:chyba protokolu
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:overenie odmietnute
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:neplatny packet prijaty
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:chybna revizia hry
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:meno sa uz pouziva
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:chybne heslo
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:chybne id hraca v DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:vyhodeny zo servera
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:vstupil do hry
+STR_NETWORK_GIVE_MONEY						:ti dal nejake peniaze ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaciu
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Server sa restartuje...{}Cakajte prosim...
 
 ############ end network gui strings
 
@@ -2482,7 +2574,6 @@ STR_GO_TO_SHIP_DEPOT						:Chod do {TOWN} Lodenice
 SERVICE_AT_SHIP_DEPOT						:Opravit v {TOWN} Lodenici
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Vystavba letiska.
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Tu sa letisko neda postavit...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nove Lietadlo
@@ -2605,4 +2696,13 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nie su nainstalovane ziadne subory s n
 STR_NEWGRF_FILENAME						:{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
 
+STR_TRAIN							:{BLACK}{TRAIN}
+STR_LORRY							:{BLACK}{LORRY}
+STR_PLANE							:{BLACK}{PLANE}
+STR_SHIP							:{BLACK}{SHIP}
+
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Vlaky
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Auta
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Lietadla
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Lode
 

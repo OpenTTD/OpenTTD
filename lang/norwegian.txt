@@ -2575,7 +2575,6 @@ STR_GO_TO_SHIP_DEPOT						:Seil til {TOWN} skipsdepot
 SERVICE_AT_SHIP_DEPOT						:Service ved {TOWN} skipsdepot
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Bygg flyplass
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Kan ikke bygge flyplass her...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nytt fly
@@ -2697,5 +2696,6 @@ STR_NEWGRF_TIP							:{BLACK}En liste over alle de nye grafikkpakkene du har ins
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Manualen inneholder instruksjoner for installering av ny grafikk
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
 
 

@@ -2528,7 +2528,6 @@ STR_GO_TO_SHIP_DEPOT						:Ir para o depósito naval de {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Manutenção no depósito de {TOWN}
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construir Aeroporto
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Não é possível construir aeroporto aqui...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nova Aeronave
@@ -2650,5 +2649,6 @@ STR_NEWGRF_TIP							:{BLACK}Lista de todos os conjuntos Newgrf que instalou. Cl
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME						:{BLACK}Nome do ficheiro:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
 
 

@@ -2458,7 +2458,6 @@ STR_GO_TO_SHIP_DEPOT						:Ir ó Depósito de Barcos de {TOWN}
 SERVICE_AT_SHIP_DEPOT						:Face-lo servicio no Depósito de Barcos de {TOWN}
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Const. de Aeroportos
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Nonse pode construí-lo aeroporto aí...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}Nagar de Avións de {STATION}
 STR_A003_NEW_AIRCRAFT						:{BLACK}Novo Avión
@@ -2566,5 +2565,6 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Puntos totais de puntos posibles
 STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Configuración Newgrf
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplica-los cambios
 STR_NEWGRF_FILENAME						:{BLACK}Ficheiro:
+
 
 

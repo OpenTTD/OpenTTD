@@ -2468,7 +2468,6 @@ STR_GO_TO_SHIP_DEPOT						:Vai a {TOWN} Deposito Navale
 SERVICE_AT_SHIP_DEPOT						:Manutenzione a {TOWN} Deposito Navale
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Costruz. areoportuali
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Non puoi costruire aeroporto qui...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nuovo Aereo
@@ -2582,6 +2581,7 @@ STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Tipi di merci trasportate nell'ultim
 STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Ammontare di denaro in tasca
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Hai preso un prestito troppo elevato?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totale dei punti rispetto ad un massimo di punti possibili
+
 
 
 
