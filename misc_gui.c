@@ -17,6 +17,9 @@
 bool _query_string_active;
 void SetFiosType(const byte fiostype);
 
+/* Now this is what I call dirty.. the edit-box needs to be rewritten! */
+static bool _do_edit_on_text_even_when_no_change_to_edit_box;
+
 typedef struct LandInfoData {
 	Town *town;
 	int32 costclear;
@@ -780,7 +783,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
-			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) && (WP(w,querystr_d).maxlen & 0x1000) == 0) {
+			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) && !_do_edit_on_text_even_when_no_change_to_edit_box) {
 				DeleteWindow(w);
 			} else {
 				byte *buf = WP(w,querystr_d).buf;
@@ -876,6 +879,13 @@ void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, b
 	} else {
 		GetString(_orig_edit_str_buf, str);
 	}
+
+	if (maxlen & 0x1000) {
+		_do_edit_on_text_even_when_no_change_to_edit_box = true;
+		maxlen &= ~0x1000;
+	} else
+		_do_edit_on_text_even_when_no_change_to_edit_box = false;
+
 	_orig_edit_str_buf[maxlen] = 0;
 
 	memcpy(_edit_str_buf, _orig_edit_str_buf, MAX_QUERYSTR_LEN);
