@@ -1573,16 +1573,23 @@ static void DrawTile_Track(TileInfo *ti)
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 				int railtype=(_map3_lo[ti->tile] & 0xF);
 
+				/* We don't touch the 0x8000 bit. In all this
+				 * waypoint code, it is used to indicate that
+				 * we should offset by railtype, but we always
+				 * do that for custom ground sprites and never
+				 * for station sprites. And in the drawing
+				 * code, it is used to indicate that the sprite
+				 * should be drawn in company colors, and it's
+				 * up to the GRF file to decide that. */
+
 				image = cust->ground_sprite;
 				image += railtype*((image<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
-				if (image & 0x8000) image = (image & 0x7FFF);
-				
 
 				DrawGroundSprite(image);
 
 				foreach_draw_tile_seq(seq, cust->seq) {
 					uint32 image = seq->image + relocation;
-					DrawSpecialBuilding(image|0x8000, 0, ti,
+					DrawSpecialBuilding(image, 0, ti,
 					                    seq->delta_x, seq->delta_y, seq->delta_z,
 					                    seq->width, seq->height, seq->unk);
 				}
