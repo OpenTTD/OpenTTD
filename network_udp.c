@@ -3,6 +3,7 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "map.h"
 #include "network_gamelist.h"
 #include "network_udp.h"
 
@@ -48,6 +49,8 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 
 	// Update some game_info
 	_network_game_info.game_date = _date;
+	_network_game_info.map_width = MapSizeX();
+	_network_game_info.map_height = MapSizeY();
 	_network_game_info.map_set = _opt.landscape;
 
 	NetworkSend_uint8 (packet, NETWORK_GAME_INFO_VERSION);
