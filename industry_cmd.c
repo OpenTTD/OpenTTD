@@ -1179,7 +1179,8 @@ static bool CheckNewIndustry_Forest(uint tile, int type)
 
 extern bool _ignore_restrictions;
 
-static bool CheckNewIndustry_Oilwell(uint tile, int type)
+/* Oil Rig and Oil Refinery */
+static bool CheckNewIndustry_Oil(uint tile, int type)
 {
 	if(_ignore_restrictions && _game_mode == GM_EDITOR)
 		return true;
@@ -1246,7 +1247,7 @@ typedef bool CheckNewIndustryProc(uint tile, int type);
 static CheckNewIndustryProc * const _check_new_industry_procs[] = {
 	CheckNewIndustry_NULL,
 	CheckNewIndustry_Forest,
-	CheckNewIndustry_Oilwell,
+	CheckNewIndustry_Oil,
 	CheckNewIndustry_Farm,
 	CheckNewIndustry_Plantation,
 	CheckNewIndustry_Water,
