@@ -1911,8 +1911,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case 'A': ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
 		case 'L': ShowTerraformToolbar(); break;
 		default: return;
-		e->keypress.cont = false;
 		}
+		e->keypress.cont = false;
 	} break;
 
 	case WE_PLACE_OBJ: {
@@ -2397,14 +2397,14 @@ void SetupColorsAndInitialWindow(void)
 	// XXX: these are not done
 	switch(_game_mode) {
 	case GM_MENU:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, 0, NULL);
+		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, TILE_XY(32, 32), 0);
 //		w = AllocateWindowDesc(&_toolb_intro_desc);
 //		w->flags4 &= ~WF_WHITE_BORDER_MASK;
 		ShowSelectGameWindow();
 		break;
 	case GM_NORMAL:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, 0, NULL);
+		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, TILE_XY(32, 32), 0);
 
 		ShowVitalWindows();
@@ -2415,7 +2415,7 @@ void SetupColorsAndInitialWindow(void)
 
 		break;
 	case GM_EDITOR:
-		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, 0, NULL);
+		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, 0, 0);
 
 		w = AllocateWindowDesc(&_toolb_scen_desc);
