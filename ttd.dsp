@@ -196,6 +196,10 @@ SOURCE=.\debug.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\depot.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\documentation.txt
 # End Source File
 
@@ -343,6 +347,10 @@ SOURCE=.\StdAfx.c
 
 !ENDIF 
 
+# End Source File
+
+# Begin Source File
+SOURCE=.\string.c
 # End Source File
 
 # Begin Source File
@@ -558,6 +566,14 @@ SOURCE=.\station.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\string.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\strings.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\StdAfx.h
 # End Source File
 
@@ -713,10 +729,6 @@ SOURCE=.\aircraft_cmd.c
 
 # Begin Source File
 SOURCE=.\clear_cmd.c
-# End Source File
-
-# Begin Source File
-SOURCE=.\debug.c
 # End Source File
 
 # Begin Source File

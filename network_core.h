@@ -21,6 +21,7 @@
 	#define ENABLE_NETWORK // On windows, the network is always enabled
 	// Windows has some different names for some types..
 	typedef SSIZE_T ssize_t;
+	typedef int socklen_t;
 #endif
 
 #define GET_LAST_ERROR() WSAGetLastError()
