@@ -604,7 +604,7 @@ void IncreaseDate(void)
 	*/
 
 	ctr = _vehicle_id_ctr_day;
-	for (i = 0; i != (_vehicles_size / vehicles_per_day) + 1 && ctr != _vehicles_size; i++) {
+	for (i = 0; i != ((uint)GetVehiclePoolSize() / vehicles_per_day) + 1 && ctr != GetVehiclePoolSize(); i++) {
 		Vehicle *v = GetVehicle(ctr++);
 		if ((t = v->type) != 0)
 			_on_new_vehicle_day_proc[t - 0x10](v);

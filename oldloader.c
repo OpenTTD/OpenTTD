@@ -797,6 +797,9 @@ static void FixVehicle(OldVehicle *o, int num)
 		if (o->type == 0)
 			continue;
 
+		if (!AddBlockIfNeeded(&_vehicle_pool, i))
+			error("Vehicles: failed loading savegame: too many vehicles");
+
 		n = GetVehicle(i);
 
 		n->type = o->type;

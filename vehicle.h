@@ -1,6 +1,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include "pool.h"
 #include "vehicle_gui.h"
 #include "order.h"
 
@@ -359,33 +360,41 @@ byte GetDirectionTowards(Vehicle *v, int x, int y);
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
 /* vehicle.c */
-enum {
-	NUM_NORMAL_VEHICLES = 2048,
-	NUM_SPECIAL_VEHICLES = 512,
-	NUM_VEHICLES = NUM_NORMAL_VEHICLES + NUM_SPECIAL_VEHICLES
-};
-
-VARDEF Vehicle _vehicles[NUM_VEHICLES];
-VARDEF uint _vehicles_size;
-
 VARDEF SortStruct *_vehicle_sort;
 
-static inline Vehicle *GetVehicle(uint index)
+extern MemoryPool _vehicle_pool;
+
+/**
+ * Get the pointer to the vehicle with index 'index'
+ */
+static inline Vehicle *GetVehicle(VehicleID index)
 {
-	assert(index < _vehicles_size);
-	return &_vehicles[index];
+	return (Vehicle*)GetItemFromPool(&_vehicle_pool, index);
 }
 
+/**
+ * Get the current size of the VehiclePool
+ */
+static inline uint16 GetVehiclePoolSize(void)
+{
+	return _vehicle_pool.total_items;
+}
+
+#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL)
+#define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
+
+/**
+ * Check if an index is a vehicle-index (so between 0 and max-vehicles)
+ *
+ * @return Returns true if the vehicle-id is in range
+ */
 static inline bool IsVehicleIndex(uint index)
 {
-	if (index < _vehicles_size)
+	if (index < GetVehiclePoolSize())
 		return true;
-	else
-		return false;
-}
 
-#define FOR_ALL_VEHICLES(v) for(v = _vehicles; v != &_vehicles[_vehicles_size]; v++)
-#define FOR_ALL_VEHICLES_FROM(v, from) for(v = GetVehicle(from); v != &_vehicles[_vehicles_size]; v++)
+	return false;
+}
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */
 static inline Order *GetVehicleOrder(const Vehicle *v, int index)

@@ -79,7 +79,7 @@ void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
 	if (!(vl->flags & VL_REBUILD)) return;
 
 	/* Create array for sorting */
-	_vehicle_sort = realloc(_vehicle_sort, _vehicles_size * sizeof(_vehicle_sort[0]));
+	_vehicle_sort = realloc(_vehicle_sort, GetVehiclePoolSize() * sizeof(_vehicle_sort[0]));
 	if (_vehicle_sort == NULL)
 		error("Could not allocate memory for the vehicle-sorting-list");
 

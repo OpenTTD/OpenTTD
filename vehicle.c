@@ -17,8 +17,26 @@
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
 
 enum {
-	VEHICLES_MIN_FREE_FOR_AI = 90
+	/* Max vehicles: 64000 (512 * 125) */
+	VEHICLES_POOL_BLOCK_SIZE_BITS = 9,       /* In bits, so (1 << 9) == 512 */
+	VEHICLES_POOL_MAX_BLOCKS      = 125,
+
+	BLOCKS_FOR_SPECIAL_VEHICLES   = 2, //! Blocks needed for special vehicles
 };
+
+/**
+ * Called if a new block is added to the vehicle-pool
+ */
+static void VehiclePoolNewBlock(uint start_item)
+{
+	Vehicle *v;
+
+	FOR_ALL_VEHICLES_FROM(v, start_item)
+		v->index = start_item++;
+}
+
+/* Initialize the vehicle-pool */
+MemoryPool _vehicle_pool = { "Vehicle", VEHICLES_POOL_MAX_BLOCKS, VEHICLES_POOL_BLOCK_SIZE_BITS, sizeof(Vehicle), &VehiclePoolNewBlock, 0, 0, NULL };
 
 void VehicleServiceInDepot(Vehicle *v)
 {
@@ -205,49 +223,42 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 
 Vehicle *ForceAllocateSpecialVehicle(void)
 {
-	Vehicle *v;
-	FOR_ALL_VEHICLES_FROM(v, NUM_NORMAL_VEHICLES) {
-		if (v->type == 0)
-			return InitializeVehicle(v);
-	}
-	return NULL;
+	/* This stays a strange story.. there should always be room for special
+	 * vehicles (special effects all over the map), but with 65k of vehicles
+	 * is this realistic to double-check for that? For now we just reserve
+	 * BLOCKS_FOR_SPECIAL_VEHICLES times block_size vehicles that may only
+	 * be used for special vehicles.. should work nicely :) */
 
-}
-
-Vehicle *ForceAllocateVehicle(void)
-{
 	Vehicle *v;
+
 	FOR_ALL_VEHICLES(v) {
-		if (v->index >= NUM_NORMAL_VEHICLES)
+		/* No more room for the special vehicles, return NULL */
+		if (v->index >= (1 << _vehicle_pool.block_size_bits) * BLOCKS_FOR_SPECIAL_VEHICLES)
 			return NULL;
 
 		if (v->type == 0)
 			return InitializeVehicle(v);
 	}
+
 	return NULL;
 }
 
 Vehicle *AllocateVehicle(void)
 {
+	/* See note by ForceAllocateSpecialVehicle() why we skip the
+	 * first blocks */
 	Vehicle *v;
-	int num;
 
-	if (IS_HUMAN_PLAYER(_current_player)) {
-		num = 0;
-
-		FOR_ALL_VEHICLES(v) {
-			if (v->index >= NUM_NORMAL_VEHICLES)
-				break;
-
-			if (v->type == 0)
-				num++;
-		}
-
-		if (num <= VEHICLES_MIN_FREE_FOR_AI)
-			return NULL;
+	FOR_ALL_VEHICLES_FROM(v, (1 << _vehicle_pool.block_size_bits) * BLOCKS_FOR_SPECIAL_VEHICLES) {
+		if (v->type == 0)
+			return InitializeVehicle(v);
 	}
 
-	return ForceAllocateVehicle();
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_vehicle_pool))
+		return AllocateVehicle();
+
+	return NULL;
 }
 
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
@@ -330,18 +341,19 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 
 void InitializeVehicles(void)
 {
-	Vehicle *v;
 	int i;
 
+	/* Clean the vehicle pool, and reserve enough blocks
+	 *  for the special vehicles, plus one for all the other
+	 *  vehicles (which is increased on-the-fly) */
+	CleanPool(&_vehicle_pool);
+	AddBlockToPool(&_vehicle_pool);
+	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++)
+		AddBlockToPool(&_vehicle_pool);
+
 	// clear it...
-	memset(&_vehicles, 0, sizeof(_vehicles[0]) * _vehicles_size);
 	memset(&_waypoints, 0, sizeof(_waypoints));
 	memset(&_depots, 0, sizeof(_depots));
-
-	// setup indexes..
-	i = 0;
-	FOR_ALL_VEHICLES(v)
-		v->index = i++;
 
 	memset(_vehicle_position_hash, -1, sizeof(_vehicle_position_hash));
 }
@@ -2034,9 +2046,14 @@ static void Load_VEHS(void)
 	Vehicle *v;
 
 	while ((index = SlIterateArray()) != -1) {
-		Vehicle *v = GetVehicle(index);
+		Vehicle *v;
 
+		if (!AddBlockIfNeeded(&_vehicle_pool, index))
+			error("Vehicles: failed loading savegame: too many vehicles");
+
+		v = GetVehicle(index);
 		SlObject(v, _veh_descs[SlReadByte()]);
+
 		if (v->type == VEH_Train)
 			v->u.rail.first_engine = 0xffff;
 
@@ -2088,7 +2105,7 @@ static void Load_VEHS(void)
 
 	/* This is to ensure all pointers are within the limits of
 	    _vehicles_size */
-	if (_vehicle_id_ctr_day >= _vehicles_size)
+	if (_vehicle_id_ctr_day >= GetVehiclePoolSize())
 		_vehicle_id_ctr_day = 0;
 }
 

@@ -942,7 +942,11 @@ static void *IntToReference(uint r, uint t)
 
 	switch (t) {
 		case REF_ORDER:   return GetOrder(r - 1);
-		case REF_VEHICLE: return GetVehicle(r - 1);
+		case REF_VEHICLE: {
+			if (!AddBlockIfNeeded(&_vehicle_pool, r - 1))
+				error("Vehicles: failed loading savegame: too many vehicles");
+			return GetVehicle(r - 1);
+		}
 		case REF_STATION: {
 			if (!AddBlockIfNeeded(&_station_pool, r - 1))
 				error("Stations: failed loading savegame: too many stations");
@@ -962,6 +966,9 @@ static void *IntToReference(uint r, uint t)
 			    and the index was not - 1.. correct for this */
 			if (r == INVALID_VEHICLE)
 				return NULL;
+
+			if (!AddBlockIfNeeded(&_vehicle_pool, r))
+				error("Vehicles: failed loading savegame: too many vehicles");
 			return GetVehicle(r);
 		}
 		default:
