@@ -32,6 +32,12 @@ static const char *DedicatedVideoStart(char **parm) {
 	_debug_net_level = 6;
 	_debug_misc_level = 0;
 
+#ifdef WIN32
+	// For win32 we need to allocate an console (debug mode does the same)
+	CreateConsole();
+	SetConsoleTitle("OpenTTD Dedicated Server");
+#endif
+
 	DEBUG(misc,0)("Loading dedicated server...");
 	return NULL;
 }
