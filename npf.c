@@ -32,14 +32,14 @@ const byte _signal_against_trackdir[14] = {
 /* Maps a trackdir to the trackdirs that can be reached from it (ie, when
  * entering the next tile */
 const uint16 _trackdir_reaches_trackdirs[14] = {
-0x1009, 0x0016, 0x1009, 0x0016, 0x0520, 0x0016, 0, 0,
-0x0520, 0x2A00, 0x2A00, 0x0520, 0x2A00, 0x1009
+	0x1009, 0x0016, 0x1009, 0x0016, 0x0520, 0x0016, 0, 0,
+	0x0520, 0x2A00, 0x2A00, 0x0520, 0x2A00, 0x1009
 };
 
 /* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
 const uint16 _trackdir_crosses_trackdirs[14] = {
-0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C, 0, 0,
-0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C
+	0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C, 0, 0,
+	0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C
 };
 
 /* Maps a track to all tracks that make 90 deg turns with it. */
@@ -95,8 +95,9 @@ const byte _reverse_trackdir[14] = {
  */
 #define NPF_STRAIGHT_LENGTH (uint)(NPF_TILE_LENGTH * 0.7071)
 static const uint _trackdir_length[14] = {
-NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, 0, 0,
-NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH
+	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH,
+	0, 0,
+	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH
 };
 
 uint NTPHash(uint key1, uint key2)
@@ -118,9 +119,9 @@ TileIndex CalcClosestStationTile(int station, TileIndex tile) {
 	int x1,x2,x3,tx;
 	int y1,y2,y3,ty;
 
-	x1 = TileX(st->train_tile);			y1 = TileY(st->train_tile);			// topmost corner of station
-	x2 = x1 + st->trainst_w - 1; 		y2 = y1 + st->trainst_h - 1;		// lowermost corner of station
-	x3 = TileX(tile); 							y3 = TileY(tile);								// tile we take the distance from
+	x1 = TileX(st->train_tile);  y1 = TileY(st->train_tile);  // topmost corner of station
+	x2 = x1 + st->trainst_w - 1; y2 = y1 + st->trainst_h - 1; // lowermost corner of station
+	x3 = TileX(tile);            y3 = TileY(tile);            // tile we take the distance from
 
 	// we are going the aim for the x coordinate of the closest corner
 	// but if we are between those coordinates, we will aim for our own x coordinate
@@ -162,9 +163,9 @@ int32 NPFCalcTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent
 		ftd->best_bird_dist = dist;
 		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
 	}
-	#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 	debug("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
-	#endif
+#endif
 	return dist;
 }
 
@@ -191,9 +192,9 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 		ftd->best_bird_dist = dist;
 		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
 	}
-	#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 	debug("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
-	#endif
+#endif
 	return dist;
 }
 
@@ -208,9 +209,9 @@ void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
 		current->user_data[NPF_TRACKDIR_CHOICE] = trackdir;
-		#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 		debug("Saving trackdir: %#x", trackdir);
-		#endif
+#endif
 	} else {
 		/* We've already made the decision, so just save our parent's
 		 * decision */
@@ -305,12 +306,12 @@ int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Check for turns */
 	//TODO
 
-	#ifdef NPF_MARKROUTE
+#ifdef NPF_MARKROUTE
 	NPFMarkTile(tile);
-	#endif
-	#ifdef NPF_DEBUG
+#endif
+#ifdef NPF_DEBUG
 	debug("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
-	#endif
+#endif
 	return cost;
 }
 
@@ -389,12 +390,12 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 		cost += _patches.npf_rail_station_penalty;
 	}
 
-	#ifdef NPF_MARKROUTE
+#ifdef NPF_MARKROUTE
 	NPFMarkTile(tile);
-	#endif
-	#ifdef NPF_DEBUG
+#endif
+#ifdef NPF_DEBUG
 	debug("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
-	#endif
+#endif
 	return cost;
 }
 
@@ -461,9 +462,9 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	TransportType type = aystar->user_data[NPF_TYPE];
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
-	#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 	debug("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
-	#endif
+#endif
 
 	/* Find dest tile */
 	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_map5[src_tile] & 0xF0)==0 && (_map5[src_tile] & 3) == src_exitdir) {
@@ -529,25 +530,25 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	}
 	trackdirs = ts & 0x3F3F; /* Filter out signal status and the unused bits */
 
-	#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 	debug("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirs);
-	#endif
+#endif
 	/* Select only trackdirs we can reach from our current trackdir */
 	trackdirs &= _trackdir_reaches_trackdirs[src_trackdir];
 	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
 		trackdirs &= ~_trackdir_crosses_trackdirs[src_trackdir];
-	#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 	debug("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirs);
-	#endif
+#endif
 
 	/* Enumerate possible track */
 	while (trackdirs != 0) {
 		byte dst_trackdir;
 		dst_trackdir =  FindFirstBit2x64(trackdirs);
 		trackdirs = KillFirstBit2x64(trackdirs);
-		#ifdef NPF_DEBUG
+#ifdef NPF_DEBUG
 		debug("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirs);
-		#endif
+#endif
 
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && (_map5[dst_tile]&0xC0) == 0x40) {
@@ -781,56 +782,56 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 
 void InitializeNPF(void)
 {
-		init_AyStar(&_npf_aystar, NTPHash, 1024);
-		_npf_aystar.loops_per_tick = 0;
-		_npf_aystar.max_path_cost = 0;
-		_npf_aystar.max_search_nodes = 0;
-		/*
-		init_AyStar(&_train_find_station, NTPHash, 1024);
-		init_AyStar(&_train_find_depot, NTPHash, 1024);
-		init_AyStar(&_road_find_station, NTPHash, 1024);
-		init_AyStar(&_road_find_depot, NTPHash, 1024);
+	init_AyStar(&_npf_aystar, NTPHash, 1024);
+	_npf_aystar.loops_per_tick = 0;
+	_npf_aystar.max_path_cost = 0;
+	_npf_aystar.max_search_nodes = 0;
+#if 0
+	init_AyStar(&_train_find_station, NTPHash, 1024);
+	init_AyStar(&_train_find_depot, NTPHash, 1024);
+	init_AyStar(&_road_find_station, NTPHash, 1024);
+	init_AyStar(&_road_find_depot, NTPHash, 1024);
 
-		_train_find_station.loops_per_tick = 0;
-		_train_find_depot.loops_per_tick = 0;
-		_road_find_station.loops_per_tick = 0;
-		_road_find_depot.loops_per_tick = 0;
+	_train_find_station.loops_per_tick = 0;
+	_train_find_depot.loops_per_tick = 0;
+	_road_find_station.loops_per_tick = 0;
+	_road_find_depot.loops_per_tick = 0;
 
-		_train_find_station.max_path_cost = 0;
-		_train_find_depot.max_path_cost = 0;
-		_road_find_station.max_path_cost = 0;
-		_road_find_depot.max_path_cost = 0;
+	_train_find_station.max_path_cost = 0;
+	_train_find_depot.max_path_cost = 0;
+	_road_find_station.max_path_cost = 0;
+	_road_find_depot.max_path_cost = 0;
 
-		_train_find_station.max_search_nodes = 0;
-		_train_find_depot.max_search_nodes = 0;
-		_road_find_station.max_search_nodes = 0;
-		_road_find_depot.max_search_nodes = 0;
+	_train_find_station.max_search_nodes = 0;
+	_train_find_depot.max_search_nodes = 0;
+	_road_find_station.max_search_nodes = 0;
+	_road_find_depot.max_search_nodes = 0;
 
-		_train_find_station.CalculateG = NPFRailPathCost;
-		_train_find_depot.CalculateG = NPFRailPathCost;
-		_road_find_station.CalculateG = NPFRoadPathCost;
-		_road_find_depot.CalculateG = NPFRoadPathCost;
+	_train_find_station.CalculateG = NPFRailPathCost;
+	_train_find_depot.CalculateG = NPFRailPathCost;
+	_road_find_station.CalculateG = NPFRoadPathCost;
+	_road_find_depot.CalculateG = NPFRoadPathCost;
 
-		_train_find_station.CalculateH = NPFCalcStationHeuristic;
-		_train_find_depot.CalculateH = NPFCalcStationHeuristic;
-		_road_find_station.CalculateH = NPFCalcStationHeuristic;
-		_road_find_depot.CalculateH = NPFCalcStationHeuristic;
+	_train_find_station.CalculateH = NPFCalcStationHeuristic;
+	_train_find_depot.CalculateH = NPFCalcStationHeuristic;
+	_road_find_station.CalculateH = NPFCalcStationHeuristic;
+	_road_find_depot.CalculateH = NPFCalcStationHeuristic;
 
-		_train_find_station.EndNodeCheck = NPFFindStationOrTile;
-		_train_find_depot.EndNodeCheck = NPFFindStationOrTile;
-		_road_find_station.EndNodeCheck = NPFFindStationOrTile;
-		_road_find_depot.EndNodeCheck = NPFFindStationOrTile;
+	_train_find_station.EndNodeCheck = NPFFindStationOrTile;
+	_train_find_depot.EndNodeCheck = NPFFindStationOrTile;
+	_road_find_station.EndNodeCheck = NPFFindStationOrTile;
+	_road_find_depot.EndNodeCheck = NPFFindStationOrTile;
 
-		_train_find_station.FoundEndNode = NPFSaveTargetData;
-		_train_find_depot.FoundEndNode = NPFSaveTargetData;
-		_road_find_station.FoundEndNode = NPFSaveTargetData;
-		_road_find_depot.FoundEndNode = NPFSaveTargetData;
+	_train_find_station.FoundEndNode = NPFSaveTargetData;
+	_train_find_depot.FoundEndNode = NPFSaveTargetData;
+	_road_find_station.FoundEndNode = NPFSaveTargetData;
+	_road_find_depot.FoundEndNode = NPFSaveTargetData;
 
-		_train_find_station.GetNeighbours = NPFFollowTrack;
-		_train_find_depot.GetNeighbours = NPFFollowTrack;
-		_road_find_station.GetNeighbours = NPFFollowTrack;
-		_road_find_depot.GetNeighbours = NPFFollowTrack;
-		*/
+	_train_find_station.GetNeighbours = NPFFollowTrack;
+	_train_find_depot.GetNeighbours = NPFFollowTrack;
+	_road_find_station.GetNeighbours = NPFFollowTrack;
+	_road_find_depot.GetNeighbours = NPFFollowTrack;
+#endif
 }
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v) {
