@@ -630,8 +630,12 @@ void IncreaseDate()
 
 	/* check if we reached 2090, that's the maximum year. */
 	if (_cur_year == 171) {
+		Vehicle *v;
 		_cur_year = 170;
 		_date = 62093;
+		FOR_ALL_VEHICLES(v) {
+			v->date_of_last_service -= 365; // 1 year is 365 days long
+		}
 	}
 
 	if (_patches.auto_euro)
