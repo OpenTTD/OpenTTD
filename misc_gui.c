@@ -1322,9 +1322,6 @@ void AskForNewGameToStart()
 	w->vscroll.cap = 27;
 }
 
-
-
-
 int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
 		DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
@@ -1334,17 +1331,16 @@ int32 ClickMoneyCheat(int32 p1, int32 p2)
 // p1 player to set to, p2 is -1 or +1 (down/up)
 int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
-	while(p1 >= 0 && p1 < MAX_PLAYERS)
-	{
-		if (_players[p1].is_active)
-		{
+	while(p1 >= 0 && p1 < MAX_PLAYERS) {
+		if (_players[p1].is_active)	{
 			_local_player = p1;
 			MarkWholeScreenDirty();
 			return _local_player;
 		}
 		p1 += p2;
 	}
-return _local_player;
+
+	return _local_player;
 }
 
 // p1 -1 or +1 (down/up)
@@ -1375,12 +1371,6 @@ int32 ClickChangeDateCheat(int32 p1, int32 p2)
 }
 
 typedef int32 CheckButtonClick(int32, int32);
-static CheckButtonClick * const _cheat_button_proc[] = {
-	ClickMoneyCheat,
-	ClickChangePlayerCheat,
-	ClickChangeDateCheat,
-};
-
 
 typedef struct CheatEntry {
 	byte type;    // type of selector

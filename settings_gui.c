@@ -672,10 +672,10 @@ int32 v_PositionMainToolbar(int32 p1)
 
 int32 AiNew_PatchActive_Warning(int32 p1)
 {
-    if (p1 == 1)
-    	ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
-    	
-    return 0;
+  if (p1 == 1)
+    ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
+    
+  return 0;
 }
 
 int32 InvisibleTreesActive(int32 p1)
@@ -685,9 +685,6 @@ int32 InvisibleTreesActive(int32 p1)
 }
 
 typedef int32 PatchButtonClick(int32);
-static PatchButtonClick * const _patch_button_proc[] = {
-	&v_PositionMainToolbar,
-};
 
 typedef struct PatchEntry {
 	byte type;										// type of selector
