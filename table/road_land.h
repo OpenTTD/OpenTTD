@@ -1,39 +1,43 @@
-#define TILE_SEQ_BEGIN(x) ADD_DWORD(x),
-#define TILE_SEQ_LINE(a,b,c,d,e) ADD_DWORD(a), b,c,d,e,
-#define TILE_SEQ_END() 0,0,0,0
+#define TILE_SEQ_BEGIN(x) { x, 0, 0, 0, 0 },
+#define TILE_SEQ_LINE(a, b, c, d, e) { a, b, c, d, e },
+#define TILE_SEQ_END() { 0, 0, 0, 0, 0 }
 
-static const byte _road_display_datas_0[] = {
+static const DrawRoadSeqStruct _road_display_datas_0[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x8584, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
-static const byte _road_display_datas_1[] = {
+static const DrawRoadSeqStruct _road_display_datas_1[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x580, 0, 0, 1, 16)
 	TILE_SEQ_LINE(0x8581, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
-static const byte _road_display_datas_2[] = {
+static const DrawRoadSeqStruct _road_display_datas_2[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x582, 0, 0, 16, 1)
 	TILE_SEQ_LINE(0x8583, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
-static const byte _road_display_datas_3[] = {
+static const DrawRoadSeqStruct _road_display_datas_3[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x8585, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
-static const byte * const _road_display_datas[4] = {
+static const DrawRoadSeqStruct* const _road_display_datas[] = {
 	_road_display_datas_0,
 	_road_display_datas_1,
 	_road_display_datas_2,
 	_road_display_datas_3,
 };
+
+#undef TILE_SEQ_BEGIN
+#undef TILE_SEQ_LINE
+#undef TILE_SEQ_END
 
 
 static const SpriteID _road_tile_sprites_1[16] = {
@@ -43,182 +47,184 @@ static const SpriteID _road_tile_sprites_1[16] = {
 
 
 
-#define MAKELINE(a,b,c) ADD_WORD(a), b, c,
-static const byte _road_display_datas2_0[] = {
-	0,0
+#define MAKELINE(a, b, c) { a, b, c },
+#define ENDLINE { 0, 0, 0 }
+static const DrawRoadTileStruct _road_display_datas2_0[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_1[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_1[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_2[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_2[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_3[] = {
+static const DrawRoadTileStruct _road_display_datas2_3[] = {
 	MAKELINE(0x57f,1,8)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_4[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_4[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_5[] = {
+static const DrawRoadTileStruct _road_display_datas2_5[] = {
 	MAKELINE(0x57f,1,8)
 	MAKELINE(0x57e,14,8)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_6[] = {
+static const DrawRoadTileStruct _road_display_datas2_6[] = {
 	MAKELINE(0x57e,8,1)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_7[] = {
+static const DrawRoadTileStruct _road_display_datas2_7[] = {
 	MAKELINE(0x57f,1,8)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_8[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_8[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_9[] = {
+static const DrawRoadTileStruct _road_display_datas2_9[] = {
 	MAKELINE(0x57f,8,14)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_10[] = {
+static const DrawRoadTileStruct _road_display_datas2_10[] = {
 	MAKELINE(0x57f,8,14)
 	MAKELINE(0x57e,8,1)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_11[] = {
+static const DrawRoadTileStruct _road_display_datas2_11[] = {
 	MAKELINE(0x57f,8,14)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_12[] = {
+static const DrawRoadTileStruct _road_display_datas2_12[] = {
 	MAKELINE(0x57e,8,1)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_13[] = {
+static const DrawRoadTileStruct _road_display_datas2_13[] = {
 	MAKELINE(0x57e,14,8)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_14[] = {
+static const DrawRoadTileStruct _road_display_datas2_14[] = {
 	MAKELINE(0x57e,8,1)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_15[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_15[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_16[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_16[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_17[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_17[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_18[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_18[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_19[] = {
+static const DrawRoadTileStruct _road_display_datas2_19[] = {
 	MAKELINE(0x1212,0,2)
 	MAKELINE(0x1212,3,9)
 	MAKELINE(0x1212,10,12)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_20[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_20[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_21[] = {
+static const DrawRoadTileStruct _road_display_datas2_21[] = {
 	MAKELINE(0x1212,0,2)
 	MAKELINE(0x1212,0,10)
 	MAKELINE(0x1212,12,2)
 	MAKELINE(0x1212,12,10)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_22[] = {
+static const DrawRoadTileStruct _road_display_datas2_22[] = {
 	MAKELINE(0x1212,10,0)
 	MAKELINE(0x1212,3,3)
 	MAKELINE(0x1212,0,10)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_23[] = {
+static const DrawRoadTileStruct _road_display_datas2_23[] = {
 	MAKELINE(0x1212,0,2)
 	MAKELINE(0x1212,0,10)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_24[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_24[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_25[] = {
+static const DrawRoadTileStruct _road_display_datas2_25[] = {
 	MAKELINE(0x1212,12,2)
 	MAKELINE(0x1212,9,9)
 	MAKELINE(0x1212,2,12)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_26[] = {
+static const DrawRoadTileStruct _road_display_datas2_26[] = {
 	MAKELINE(0x1212,2,0)
 	MAKELINE(0x1212,10,0)
 	MAKELINE(0x1212,2,12)
 	MAKELINE(0x1212,10,12)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_27[] = {
+static const DrawRoadTileStruct _road_display_datas2_27[] = {
 	MAKELINE(0x1212,2,12)
 	MAKELINE(0x1212,10,12)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_28[] = {
+static const DrawRoadTileStruct _road_display_datas2_28[] = {
 	MAKELINE(0x1212,2,0)
 	MAKELINE(0x1212,9,3)
 	MAKELINE(0x1212,12,10)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_29[] = {
+static const DrawRoadTileStruct _road_display_datas2_29[] = {
 	MAKELINE(0x1212,12,2)
 	MAKELINE(0x1212,12,10)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_30[] = {
+static const DrawRoadTileStruct _road_display_datas2_30[] = {
 	MAKELINE(0x1212,2,0)
 	MAKELINE(0x1212,10,0)
-	0,0
+	ENDLINE
 };
 
-static const byte _road_display_datas2_31[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_31[] = {
+	ENDLINE
 };
 
-static const byte _road_display_datas2_32[] = {
-	0,0
+static const DrawRoadTileStruct _road_display_datas2_32[] = {
+	ENDLINE
 };
 
 #undef MAKELINE
+#undef ENDLINE
 
-static const byte * const _road_display_table_1[16] = {
+static const DrawRoadTileStruct* const _road_display_table_1[] = {
 	_road_display_datas2_32,_road_display_datas2_32,
 	_road_display_datas2_32,_road_display_datas2_32,
 	_road_display_datas2_32,_road_display_datas2_32,
@@ -229,7 +235,7 @@ static const byte * const _road_display_table_1[16] = {
 	_road_display_datas2_32,_road_display_datas2_32,
 };
 
-static const byte * const _road_display_table_2[16] = {
+static const DrawRoadTileStruct* const _road_display_table_2[] = {
 	_road_display_datas2_0,
 	_road_display_datas2_1,
 	_road_display_datas2_2,
@@ -248,7 +254,7 @@ static const byte * const _road_display_table_2[16] = {
 	_road_display_datas2_15,
 };
 
-static const byte * const _road_display_table_3[16] = {
+static const DrawRoadTileStruct* const _road_display_table_3[] = {
 	_road_display_datas2_16,
 	_road_display_datas2_17,
 	_road_display_datas2_18,
@@ -268,7 +274,7 @@ static const byte * const _road_display_table_3[16] = {
 	_road_display_datas2_31,
 };
 
-static const byte* const * const _road_display_table[6] = {
+static const DrawRoadTileStruct* const * const _road_display_table[] = {
 	_road_display_table_1,
 	_road_display_table_1,
 	_road_display_table_1,

@@ -733,7 +733,6 @@ static void DrawTile_Road(TileInfo *ti)
 {
 	uint32 image;
 	uint16 m2;
-	const byte *s;
 
 	if ( (ti->map5 & 0xF0) == 0) { // if it is a road the upper 4 bits are 0
 		const DrawRoadTileStruct *drts;
@@ -773,7 +772,7 @@ static void DrawTile_Road(TileInfo *ti)
 			return;
 		}
 
-		drts = (const DrawRoadTileStruct*)_road_display_table[m2][ti->map5 & 0xF];
+		drts = _road_display_table[m2][ti->map5 & 0xF];
 
 		while ((image = drts->image) != 0) {
 			int x = ti->x | drts->subcoord_x;
@@ -816,13 +815,13 @@ static void DrawTile_Road(TileInfo *ti)
 		if (player < MAX_PLAYERS)
 			ormod = PLAYER_SPRITE_COLOR(player);
 
-		s = _road_display_datas[ti->map5 & 0xF];
+		drss = _road_display_datas[ti->map5 & 0xF];
 
-		DrawGroundSprite(*(const uint32*)s);
-		s += sizeof(uint32);
-		drss = (const DrawRoadSeqStruct*)s;
+		DrawGroundSprite(drss++->image);
 
-		while ((image=drss->image) != 0) {
+		for (; drss->image != 0; drss++) {
+			uint32 image = drss->image;
+
 			if (image & 0x8000)
 				image |= ormod;
 			if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
@@ -830,7 +829,6 @@ static void DrawTile_Road(TileInfo *ti)
 
 			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
 				ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z);
-			drss++;
 		}
 	}
 }
@@ -839,19 +837,17 @@ void DrawRoadDepotSprite(int x, int y, int image)
 {
 	uint32 ormod;
 	const DrawRoadSeqStruct *dtss;
-	const byte *t;
 
 	ormod = PLAYER_SPRITE_COLOR(_local_player);
 
-	t = _road_display_datas[image];
+	dtss = _road_display_datas[image];
 
 	x+=33;
 	y+=17;
 
-	DrawSprite(*(const uint32*)t, x, y);
-	t += sizeof(uint32);
+	DrawSprite(dtss++->image, x, y);
 
-	for(dtss = (const DrawRoadSeqStruct *)t; dtss->image != 0; dtss++) {
+	for(; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 
 		image = dtss->image;
