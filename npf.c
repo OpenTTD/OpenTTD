@@ -343,7 +343,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Determine extra costs */
 
 	/* Check for signals */
-	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40) {
+	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40 && (_map3_lo[tile] & _signal_along_trackdir[trackdir]) != 0) {
 		/* Ordinary track with signals */
 		if ((_map2[tile] & _signal_along_trackdir[trackdir]) == 0) {
 			/* Signal facing us is red */
