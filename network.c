@@ -157,8 +157,8 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			break;
 	}
 
-	IConsolePrintF(color, message);
-	AddTextMessage(color, duration, message);
+	IConsolePrintF(color, "%s", message);
+	AddTextMessage(color, duration, "%s", message);
 }
 
 // Calculate the frame-lag of a client
