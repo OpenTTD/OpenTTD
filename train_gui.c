@@ -827,7 +827,6 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 			break;
 		case 5:	/* center main view */
-			DEBUG(misc, 0) ("Train: %d, Velocity: %d, Current Order: %i:%d:%x:%x", v->index, v->cur_speed, v->cur_order_index, v->current_order.station, v->current_order.flags, v->current_order.type);
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 6:	/* goto depot */
@@ -1199,7 +1198,7 @@ static void GlobalSortTrainList()
 	memset(_train_sort_dirty, true, sizeof(_train_sort_dirty));
 	_vehicle_sort_dirty[VEHTRAIN] = false;
 
-	DEBUG(misc, 1) ("Resorting global trains list...");	
+	DEBUG(misc, 1) ("Resorting global trains list...");
 }
 
 static void MakeSortedTrainList(byte owner)
