@@ -1783,8 +1783,110 @@ static byte MakeCzechTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
+#define NUM_ROMANIAN_1 94
+static const char romanian_1[]=
+MK("Adjud")
+MK("Alba Iulia")
+MK("Alexandria")
+MK("Babadag")
+MK("Bacãu")
+MK("Baia Mare")
+MK("Bãile Herculane")
+MK("Bãilesti")
+MK("Bârlad")
+MK("Bicaz")
+MK("Bistrita")
+MK("Blaj")
+MK("Borsec")
+MK("Botosani")
+MK("Brãila")
+MK("Brasov")
+MK("Bucuresti")
+MK("Buftea")
+MK("Buzãu")
+MK("Cãlãrasi")
+MK("Caransebes")
+MK("Cernavodã")
+MK("Cluj-Napoca")
+MK("Constanta")
+MK("Covasna")
+MK("Craiova")
+MK("Dej")
+MK("Deva")
+MK("Dorohoi")
+MK("Dr.-Tr. Severin")
+MK("Drãgãsani")
+MK("Fãgãras")
+MK("Fãlticeni")
+MK("Fetesti")
+MK("Focsani")
+MK("Galati")
+MK("Gheorgheni")
+MK("Giurgiu")
+MK("Hârsova")
+MK("Hunedoara")
+MK("Husi")
+MK("Iasi")
+MK("Isaccea")
+MK("Lugoj")
+MK("Mãcin")
+MK("Mangalia")
+MK("Medgidia")
+MK("Medias")
+MK("Miercurea Ciuc")
+MK("Mizil")
+MK("Motru")
+MK("Nãsãud")
+MK("Nãvodari")
+MK("Odobesti")
+MK("Oltenita")
+MK("Onesti")
+MK("Oradea")
+MK("Orsova")
+MK("Petrosani")
+MK("Piatra Neamt")
+MK("Pitesti")
+MK("Ploiesti")
+MK("Predeal")
+MK("Râmnicu Vâlcea")
+MK("Reghin")
+MK("Resita")
+MK("Roman")
+MK("Rosiorii de Vede")
+MK("Satu Mare")
+MK("Sebes")
+MK("Sfântu Gheorghe")
+MK("Sibiu")
+MK("Sighisoara")
+MK("Sinaia")
+MK("Slatina")
+MK("Slobozia")
+MK("Sovata")
+MK("Suceava")
+MK("Sulina")
+MK("Tãndãrei")
+MK("Târgoviste")
+MK("Târgu Jiu")
+MK("Târgu Mures")
+MK("Tecuci")
+MK("Timisoara")
+MK("Tulcea")
+MK("Turda")
+MK("Turnu Mãgurele")
+MK("Urziceni")
+MK("Vaslui")
+MK("Vatra Dornei")
+MK("Victoria")
+MK("Videle")
+MK("Zalãu")
+;
 
-
+static byte MakeRomanianTownName(byte *buf, uint32 seed)
+{
+	AppendPart(&buf, GETNUM(0, NUM_ROMANIAN_1), romanian_1);
+	return 0;	
+}
+ 
 #define NUM_SLOVAKISH_1 87
 static const char slovakish_1[] =
 MK("Bratislava")
@@ -2075,7 +2177,8 @@ TownNameGenerator * const _town_name_generators[] = {
 	MakeCzechTownName,
 	MakeSlovakishTownName,
 	MakeHungarianTownName,
-	MakeAustrianTownName
+	MakeAustrianTownName,
+	MakeRomanianTownName
 };
 
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)

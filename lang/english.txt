@@ -856,6 +856,7 @@ STR_TOWNNAME_CZECH					:Czech
 STR_TOWNNAME_SLOVAKISH					:Slovakish
 STR_TOWNNAME_HUNGARIAN					:Hungarian
 STR_TOWNNAME_AUSTRIAN					:Austrian
+STR_TOWNNAME_ROMANIAN					:Romanian
 ############ end of	townname region
 
 STR_CURR_POUNDS						:Pounds ({POUNDSIGN})
@@ -879,6 +880,7 @@ STR_CURR_RUR							:Russian Rubel (rur)
 STR_CURR_CZK							:Czech Koruna (CZK)
 STR_CURR_ISK							:Icelandic Krona (ISK)
 STR_CURR_NOK							:Norwegian Krone (NOK)
+STR_CURR_ROL							:Romanian Leu (Lei)
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Language

@@ -780,9 +780,9 @@ static const SettingDesc debug_settings[] = {
 static const SettingDesc gameopt_settings[] = {
 	{"diff_level",	SDT_UINT8,									(void*)9,		(void*)offsetof(GameOptions, diff_level), NULL},
 	{"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, (void*)offsetof(GameOptions, diff), NULL},
-	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)21,	(void*)offsetof(GameOptions, currency),		"GBP|USD|FF|DM|YEN|PT|FT|ZL|ATS|BEF|DKK|FIM|GRD|CHF|NLG|ITL|SEK|RUR|CZK|ISK|NOK|EUR" },
+	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)22,	(void*)offsetof(GameOptions, currency),		"GBP|USD|FF|DM|YEN|PT|FT|ZL|ATS|BEF|DKK|FIM|GRD|CHF|NLG|ITL|SEK|RUR|CZK|ISK|NOK|ROL|EUR" },
 	{"distances",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, kilometers), "imperial|metric" },
-	{"town_names",	SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		(void*)offsetof(GameOptions, town_name),	"english|french|german|american|latin|silly|swedish|dutch|finnish|polish|czech|slovakish|hungarian" },
+	{"town_names",	SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		(void*)offsetof(GameOptions, town_name),	"english|french|german|american|latin|silly|swedish|dutch|finnish|polish|czech|slovakish|hungarian|romanian" },
 	{"landscape",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		(void*)offsetof(GameOptions, landscape),	"normal|hilly|desert|candy" },
 	{"autosave",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, autosave),		"off|monthly|quarterly|half year|yearly" },
 	{"road_side",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		(void*)offsetof(GameOptions, road_side),	"left|right" },

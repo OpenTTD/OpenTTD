@@ -72,6 +72,7 @@ static const CurrencySpec _currency_specs[] = {
 	{ 50,  ',', 0,              "",     " Kc" },
 	{ 130, '.', 0,              "",     " kr" },
 	{ 11,  '.', 0,              "",     " kr" },
+	{ 6,   '.', 0,              "",     " Lei" }, 
 	{ 2,   ',', CF_ISEURO,      "€",    "" },
 };
 
@@ -97,6 +98,7 @@ const uint16 _currency_string_list[] = {
 	STR_CURR_CZK,
 	STR_CURR_ISK,
 	STR_CURR_NOK,
+	STR_CURR_ROL,
 	STR_CURR_EUR,
 	INVALID_STRING_ID
 };
@@ -663,13 +665,15 @@ static byte *GenPlayerName_4(byte *buff)
 
 	buff[0] = _initial_name_letters[ (sizeof(_initial_name_letters) * (byte)x) >> 8];
 	buff[1] = '.';
-	buff += 2;
+	buff[2] = ' '; // Insert a space after initial and period "I. Firstname" instead of "I.Firstname"
+	buff += 3;
 
 	i = ((sizeof(_initial_name_letters) + 35) * (byte)(x >> 8)) >> 8;
 	if (i < sizeof(_initial_name_letters)) {
 		buff[0] = _initial_name_letters[i];
 		buff[1] = '.';
-		buff += 2;
+		buff[2] = ' '; // Insert a space after initial and period "I. J. Firstname" instead of "I.J.Firstname"
+		buff += 3;
 	}
 
 	base = 0;

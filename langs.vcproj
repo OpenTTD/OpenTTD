@@ -192,6 +192,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\romanian.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating romanian language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\romanian.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\slovak.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
