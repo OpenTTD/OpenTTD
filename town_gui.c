@@ -390,7 +390,7 @@ static void MakeSortedTownList()
 	FOR_ALL_TOWNS(t) if(t->xy) _town_sort[n++] = t->index;
 	_num_town_sort = n;
 
-	_last_town_idx = 255; // used for "cache"
+	_last_town_idx = 0; // used for "cache"
 	qsort(_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
 
 	DEBUG(misc, 1) ("Resorting Towns list...");
@@ -401,66 +401,72 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		int n;
-		uint p;
-		Town *t;
 
 		if (_town_sort_dirty) {
 			_town_sort_dirty = false;
 			MakeSortedTownList();
 		}
 
-		w->vscroll.count = _num_town_sort;
+		SetVScrollCount(w, _num_town_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_town_sort_order & 1 ? "\xAA" : "\xA0", _town_sort_order <= 1 ? 88 : 187, 15, 0x10);
+		DoDrawString(_town_sort_order & 1 ? "\xAA" : "\xA0", (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
 			
-		p = w->vscroll.pos;
-		n = 0;
+		{
+			Town *t;
+			int n = 0;
+			uint16 i = w->vscroll.pos;
+			int y = 28;
 
-		while (p < _num_town_sort) {
-			t = DEREF_TOWN(_town_sort[p]);
-			SET_DPARAM16(0, t->index);
-			SET_DPARAM32(1, t->population);
-			DrawString(2, 28+n*10, STR_2057, 0);
-			p++;
-			if (++n == 16)
-				break;
+			while (i < _num_town_sort) {
+				t = DEREF_TOWN(_town_sort[i]);
+
+				assert(t->xy);
+
+				SET_DPARAM16(0, t->index);
+				SET_DPARAM32(1, t->population);
+				DrawString(2, y, STR_2057, 0);
+
+				y += 10;
+				i++;
+				if (++n == w->vscroll.cap) { break;} // max number of towns in 1 window
+			}
 		}
 	} break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 2: {
-			_town_sort_order = _town_sort_order==0 ? 1 : 0;
+		case 2: { /* Sort by Name ascending/descending */
+			_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
 			_town_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 3: {
-			_town_sort_order = _town_sort_order==2 ? 3 : 2;
+		case 3: { /* Sort by Population ascending/descending */
+			_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
 			_town_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 		
-		case 4: {
-			int y = (e->click.pt.y - 28) / 10;
-			byte p;
-			Town *t;
+		case 4: { /* Click on Town Matrix */
+			uint16 id_v = (e->click.pt.y - 28) / 10;
 
-			if (!IS_INT_INSIDE(y, 0, 16))
-				return;
-			p = y + w->vscroll.pos;
-			if (p < _num_town_sort) {
-				t = DEREF_TOWN(_town_sort[p]);
+			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+
+			id_v += w->vscroll.pos;
+
+			if (id_v >= _num_town_sort) { return;} // click out of town bounds
+
+			{
+				Town *t = DEREF_TOWN(_town_sort[id_v]);
+				assert(t->xy);
+				
 				ScrollMainWindowToTile(t->xy);
 			}
-			break;
-		}
+		}	break;
 		}
 		break;
 		
-	
 	case WE_4:
 		SetWindowDirty(w);
 		break;

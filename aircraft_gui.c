@@ -892,7 +892,6 @@ static void MakeSortedAircraftList(byte owner)
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 		for (i = &_num_aircraft_sort[1]; i != endof(_num_aircraft_sort); i++) {*i += *(i-1);}
 	
-
 		// sort by owner, then only subsort the requested owner-vehicles
 		qsort(_aircraft_sort, n, sizeof(_aircraft_sort[0]), GeneralOwnerSorter);
 
@@ -964,6 +963,8 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				StringID str;
 				v = DEREF_VEHICLE(_aircraft_sort[i].index);
 
+				assert(v->type == VEH_Aircraft && v->subtype <= 2 && v->owner == window_number);
+
 				DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
@@ -1005,22 +1006,22 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _vehicle_sort_listing, _aircraft_sort_type[(byte)w->window_number], 4, 0); // do it for widget 4
 			return;
 		case 6: { /* Matrix to show vehicles */
-			int id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
+			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
 			
-			if ((uint)id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
 			id_v += w->vscroll.pos;
 
 			{
-				byte owner		= (byte)w->window_number;
-				uint16 adder	= (owner == 0) ? 0 : _num_aircraft_sort[owner - 1]; // first element in list
+				const byte owner = (byte)w->window_number;
 				Vehicle *v;
+				id_v += (owner == 0) ? 0 : _num_aircraft_sort[owner - 1]; // first element in list
 
-				if (id_v + adder >= _num_aircraft_sort[owner]) { return;} // click out of vehicle bound
+				if (id_v >= _num_aircraft_sort[owner]) { return;} // click out of vehicle bound
 
-				v	= DEREF_VEHICLE(_aircraft_sort[adder+id_v].index); // add the offset id_x to that
+				v	= DEREF_VEHICLE(_aircraft_sort[id_v].index); // add the offset id_x to that
 
-				assert(v->type == VEH_Aircraft && v->subtype <= 2 && v->owner == owner && v->owner == _aircraft_sort[adder+id_v].owner);
+				assert(v->type == VEH_Aircraft && v->subtype <= 2 && v->owner == owner);
 
 				ShowAircraftViewWindow(v);
 			}

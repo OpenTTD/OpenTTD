@@ -74,10 +74,11 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	return strcmp(buf1, _bufcache);	// sort by name
 }
 
-static void MakeSortedStationList()
+static void MakeSortedStationList(byte owner)
 {
+	SortStruct *firstelement;
 	Station *st;
-	uint16 n = 0;
+	uint32 n = 0;
 	uint16 *i;
 	// reset to 0 just to be sure
 	for (i = _num_station_sort; i != endof(_num_station_sort); i++) {*i = 0;}
@@ -95,12 +96,20 @@ static void MakeSortedStationList()
 	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 	for (i = &_num_station_sort[1]; i != endof(_num_station_sort); i++) {*i += *(i-1);}
 
-	_last_station_idx = 255; // used for "cache"
+	_last_station_idx = 0; // used for "cache"
 
 	// sort by owner, then only subsort the requested owner-vehicles
 	qsort(_station_sort, n, sizeof(_station_sort[0]), GeneralOwnerSorter);
 
-	qsort(_station_sort, n, sizeof(_station_sort[0]), StationNameSorter);
+	if (owner == 0) { // first element starts at 0th element and has n elements as described above
+		firstelement =	&_station_sort[0];
+		n =							_num_station_sort[0];
+	}	else { // nth element starts at the end of the previous one, and has n elements as described above
+		firstelement =	&_station_sort[_num_station_sort[owner-1]];
+		n =							_num_station_sort[owner] - _num_station_sort[owner-1];
+	}
+
+	qsort(firstelement, n, sizeof(_station_sort[0]), StationNameSorter);
 	
 	DEBUG(misc, 1) ("Resorting Stations list...");
 }
@@ -109,20 +118,22 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		byte i;
+		uint32 i;
+		const byte window_number = (byte)w->window_number;
+
 		if (_station_sort_dirty) {
 			_station_sort_dirty = false;
-			MakeSortedStationList();
+			MakeSortedStationList(window_number);
 		}
 
 		// stations are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 stations
-		i = (byte)(w->window_number == 0) ? 0 : _num_station_sort[w->window_number-1];
-		SetVScrollCount(w, _num_station_sort[w->window_number] - i);
+		i = (window_number == 0) ? 0 : _num_station_sort[window_number-1];
+		SetVScrollCount(w, _num_station_sort[window_number] - i);
 
 		/* draw widgets, with player's name in the caption */
 		{
-			Player *p = DEREF_PLAYER(w->window_number);
+			Player *p = DEREF_PLAYER(window_number);
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
 			SET_DPARAM16(2, w->vscroll.count);
@@ -142,10 +153,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			}
 				
 			i += w->vscroll.pos;	// offset from sorted station list of current player
-			assert(i < _num_station_sort[w->window_number]); // at least one station must exist
+			assert(i < _num_station_sort[window_number]); // at least one station must exist
 
-			while (i < _num_station_sort[w->window_number]) {	// do until max number of stations of owner
+			while (i < _num_station_sort[window_number]) {	// do until max number of stations of owner
 				st = DEREF_STATION(_station_sort[i].index);
+
+				assert(st->xy && st->owner == window_number);
 
 				SET_DPARAM16(0, st->index);
 				SET_DPARAM8(1, st->facilities);
@@ -168,16 +181,24 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 2: {
-			uint y = (e->click.pt.y - 15) / 10;
-			uint16 p;
+			uint32 id_v = (e->click.pt.y - 15) / 10;
 
-			if (!IS_INT_INSIDE(y, 0, 12)) {	return;}
+			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
 
-			// get the p-th OUR station from globally sorted list
-			p = y + w->vscroll.pos; 
-			p += (w->window_number == 0) ? 0 : _num_station_sort[w->window_number-1];	// get offset of first station in list
-			if (p < _num_station_sort[w->window_number]) {
-				ScrollMainWindowToTile(DEREF_STATION(_station_sort[p].index)->xy);
+			id_v += w->vscroll.pos;
+
+			{
+				const byte owner = (byte)w->window_number;
+				Station *st;
+				id_v	+= (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
+
+				if (id_v >= _num_station_sort[owner]) { return;} // click out of station bound
+
+				st = DEREF_STATION(_station_sort[id_v].index);
+
+				assert(st->xy && st->owner == owner);
+
+				ScrollMainWindowToTile(st->xy);
 			}
 		} break;
 		}
