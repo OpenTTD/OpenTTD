@@ -2355,7 +2355,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} de {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Comboio {COMMA16} está a aguardar no depósito
 STR_8815_NEW_VEHICLES						:{BLACK}Novos Veículos
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t{}{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{COMMA16}hp{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Capacidade: {GOLD}{STRING}{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t{}{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{COMMA32}hp{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Capacidade: {GOLD}{STRING}{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Informação
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Comboio muito longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Os comboios só podem ser alterados quando parados num depósito

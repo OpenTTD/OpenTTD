@@ -2349,7 +2349,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} fra {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tog {COMMA16} Venter i depot
 STR_8815_NEW_VEHICLES						:{BLACK}Nye køretøjer
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA16}t{}{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA16}hp{}{BLACK}Kørselsomkostninger: {GOLD}{CURRENCY}/år{}{BLACK}Kapacitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks pålidelighed: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA16}t{}{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA32}hp{}{BLACK}Kørselsomkostninger: {GOLD}{CURRENCY}/år{}{BLACK}Kapacitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks pålidelighed: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Tog kan kun ændres når de er stoppet i et depot

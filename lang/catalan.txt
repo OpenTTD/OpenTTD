@@ -2385,7 +2385,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} procedent de {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tren {COMMA16} en espera en cotxeres
 STR_8815_NEW_VEHICLES						:{BLACK}Nous Vehicles
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{COMMA16}t{}{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{COMMA16}hp{}{BLACK}Cost de circulació: {GOLD}{CURRENCY}/any{}{BLACK}Capacitat: {GOLD}{STRING}{}{BLACK}Dissenyat en: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} anys{}{BLACK}Max. Rendibilitat: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{COMMA16}t{}{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{COMMA32}hp{}{BLACK}Cost de circulació: {GOLD}{CURRENCY}/any{}{BLACK}Capacitat: {GOLD}{STRING}{}{BLACK}Dissenyat en: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} anys{}{BLACK}Max. Rendibilitat: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Informació
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Tren massa llarg
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Els trens només es poden modificar quan s'han parat dintre d'una cotxera

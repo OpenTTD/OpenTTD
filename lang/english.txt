@@ -2387,7 +2387,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} from {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Train {COMMA16} is waiting in depot
 STR_8815_NEW_VEHICLES						:{BLACK}New Vehicles
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA16}t{}{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA16}hp{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Capacity: {GOLD}{STRING}{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK} Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA16}t{}{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA32}hp{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Capacity: {GOLD}{STRING}{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK} Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Train too long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Trains can only be altered when stopped inside a depot

@@ -2386,7 +2386,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} de {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Le train {COMMA16} est en attente au dépôt
 STR_8815_NEW_VEHICLES						:{BLACK}Nouveaux véhicules
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{COMMA16}t{}{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK}   Puissance: {GOLD}{COMMA16}ch{}{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an{}{BLACK}Capacité: {GOLD}{STRING}{}{BLACK}Conçu en: {GOLD}{NUMU16}{BLACK} Durée de vie: {GOLD}{COMMA16} ans{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{COMMA16}t{}{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK}   Puissance: {GOLD}{COMMA32}ch{}{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an{}{BLACK}Capacité: {GOLD}{STRING}{}{BLACK}Conçu en: {GOLD}{NUMU16}{BLACK} Durée de vie: {GOLD}{COMMA16} ans{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Train trop long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Les trains peuvent être manipulés qu'une fois stoppés au dépôt

@@ -2385,7 +2385,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} von {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Zug {COMMA16} wartet im Depot
 STR_8815_NEW_VEHICLES						:{BLACK}Neue Fahrzeuge
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA16}t{}{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{COMMA16} PS {}{BLACK}Betriebskosten: {GOLD}{CURRENCY}/Jahr{}{BLACK}Kapazität: {GOLD}{STRING}{}{BLACK}Entwurf: {GOLD}{NUMU16}{BLACK}  Lebensdauer: {GOLD}{COMMA16} Jahre{}{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA16}t{}{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{COMMA32} PS {}{BLACK}Betriebskosten: {GOLD}{CURRENCY}/Jahr{}{BLACK}Kapazität: {GOLD}{STRING}{}{BLACK}Entwurf: {GOLD}{NUMU16}{BLACK}  Lebensdauer: {GOLD}{COMMA16} Jahre{}{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Zug zu lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Züge können nur verändert werden, wenn sie im Depot halten

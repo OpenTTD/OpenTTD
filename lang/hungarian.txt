@@ -2386,7 +2386,7 @@ STR_8813_FROM							:{LTBLUE}{CARGO} {STATION} állomásról
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}{COMMA16}. vonat a jármûtelepen várakozik
 STR_8815_NEW_VEHICLES						:{BLACK}Új jármûvek
 STR_8816							:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Súly: {GOLD}{COMMA16}t{}{BLACK}Sebesség:{GOLD}{VELOCITY}{BLACK} Teljesítmény:{GOLD}{COMMA16}le{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Súly: {GOLD}{COMMA16}t{}{BLACK}Sebesség:{GOLD}{VELOCITY}{BLACK} Teljesítmény:{GOLD}{COMMA32}le{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
