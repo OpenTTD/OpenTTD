@@ -2201,7 +2201,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static void ScrollMainViewport(int x, int y)
+void ScrollMainViewport(int x, int y)
 {
 	if (_game_mode != GM_MENU) {
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -2227,6 +2227,33 @@ static WindowDesc _main_status_desc = {
 	_main_status_widgets,
 	StatusBarWndProc
 };
+
+static const int8 scrollamt[16][2] = {
+	{ 0, 0},
+	{-2, 0}, // 1:left
+	{ 0,-2}, // 2:up
+	{-2,-1}, // 3:left + up
+	{ 2, 0}, // 4:right
+	{ 0, 0}, // 5:left + right
+	{ 2,-1}, // 6:right + up
+	{ 0,-2}, // 7:left + right + up = up
+	{ 0 ,2}, // 8:down
+	{-2 ,1}, // 9:down+left
+	{ 0, 0}, // 10:impossible
+	{-2, 0}, // 11:left + up + down = left
+	{ 2, 1}, // 12:down+right
+	{ 0, 2}, // 13:left + right + down = down
+	{ 0,-2}, // 14:left + right + up = up
+	{ 0, 0}, // 15:impossible
+};
+
+void HandleKeyScrolling(void)
+{
+	if (_dirkeys) {
+		int factor = _shift_pressed ? 50 : 10;
+		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
+	}
+}
 
 extern void DebugProc(int i);
 
@@ -2271,34 +2298,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 	case WE_KEYPRESS:
 		if (_game_mode == GM_MENU)
 			break;
-
-		// this is a hack, but this needs to be called at a constant interval and i found
-		// no other window event that was suited for that purpose.
-		{
-			static const int8 scrollamt[16][2] = {
-				{0,0},
-				{-1,0},   // 1:left
-				{0,-1},   // 2:up
-				{-1,-1}, // 3:left + up
-				{1,0},    // 4:right
-				{0,0},     // 5:left + right
-				{1,-1},  // 6:right + up
-				{0,0},     // 7:impossible
-				{0,1},    // 8:down
-				{-1,1},  // 9:down+left
-				{0,0},     // 10:impossible
-				{0,0},     // 11:impossible
-				{1,1},   // 12:down+right
-				{0,0},     // 13:impossible
-				{0,0},     // 14:impossible
-				{0,0},     // 15:impossible
-			};
-
-			if (_dirkeys) {
-				int factor = _shift_pressed ? 50 : 10;
-				ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
-			}
-		}
 
 		switch(e->keypress.keycode) {
 		case 'C':

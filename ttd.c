@@ -1112,6 +1112,8 @@ static void DoAutosave(void)
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
 
+extern void HandleKeyScrolling(void);
+
 void GameLoop(void)
 {
 	int m;
@@ -1122,6 +1124,9 @@ void GameLoop(void)
 		DoAutosave();
 		RedrawAutosave();
 	}
+
+	// handle scrolling of the main window
+	if (_dirkeys) HandleKeyScrolling();
 
 	// make a screenshot?
 	if ((m=_make_screenshot) != 0) {
