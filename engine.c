@@ -638,7 +638,7 @@ void EnginesDailyLoop()
 	for(e=_engines,i=0; i!=TOTAL_NUM_ENGINES; e++,i++) {
 		if (e->flags & ENGINE_INTRODUCING) {
 			if (e->flags & ENGINE_PREVIEWING) {
-				if (!--e->preview_wait) {
+				if (e->preview_player != 0xFF && !--e->preview_wait) {
 					e->flags &= ~ENGINE_PREVIEWING;
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player++;
