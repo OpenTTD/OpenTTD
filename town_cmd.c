@@ -729,9 +729,17 @@ static int GrowTownAtRoad(Town *t, uint tile)
 		do block = Random() & 3; while (!HASBIT(mask,block));
 		tile += ToTileIndexDiff(_roadblock_tileadd[block]);
 
-		/* Don't allow building over roads of other cities */
-		if (IsTileType(tile, MP_STREET) && _map_owner[tile] == OWNER_TOWN && GetTown(_map2[tile]) != t)
-			_grow_town_result = -1;
+		if (IsTileType(tile, MP_STREET)) {
+			/* Don't allow building over roads of other cities */
+			if (_map_owner[tile] == OWNER_TOWN && GetTown(_map2[tile]) != t)
+				_grow_town_result = -1;
+			else if (_game_mode == GM_EDITOR) {
+				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
+				*  owner :) (happy happy happy road now) */
+				_map_owner[tile] = OWNER_TOWN;
+				_map2[tile] = t->index;
+			}
+		}
 
 		// Max number of times is checked.
 	} while (--_grow_town_result >= 0);

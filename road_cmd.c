@@ -966,13 +966,6 @@ static void TileLoop_Road(uint tile)
 
 		grp = 0;
 		if (t != NULL) {
-			/* In SE, set the owner to OWNER_TOWN */
-			if (_game_mode == GM_EDITOR && _map_owner[tile] != OWNER_TOWN) {
-				_map_owner[tile] = OWNER_TOWN;
-				/* XXX - This line is not perfect, any suggestions? */
-				_map2[tile] = ClosestTownFromTile(tile, (uint)-1)->index;
-			}
-
 			grp = GetTownRadiusGroup(t, tile);
 
 			// Show an animation to indicate road work
