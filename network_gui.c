@@ -527,7 +527,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 4: { /* Set password button */
 			StringID str;
-			str = AllocateName(_network_game_info.server_password, 0);
+			str = AllocateName(_network_server_password, 0);
 			ShowQueryString(str, STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number);
 			DeleteName(str);
 			} break;
@@ -610,8 +610,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 		byte *b = e->edittext.str;
-		ttd_strlcpy(_network_game_info.server_password, b, sizeof(_network_game_info.server_password));
-		if (_network_game_info.server_password[0] == '\0') {
+		ttd_strlcpy(_network_server_password, b, sizeof(_network_server_password));
+		if (_network_server_password[0] == '\0') {
 			_network_game_info.use_password = 0;
 		} else {
 			_network_game_info.use_password = 1;
