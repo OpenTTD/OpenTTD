@@ -38,6 +38,31 @@ static void MarkStationDirty(Station *st)
 	}
 }
 
+/* Calculate the radius of the station. Basicly it is the biggest
+    radius that is available within the station */
+static byte FindCatchmentRadius(Station *st)
+{
+	byte ret = 0;
+
+	if (st->bus_tile)   ret = max(ret, CA_BUS);
+	if (st->lorry_tile) ret = max(ret, CA_TRUCK);
+	if (st->train_tile) ret = max(ret, CA_TRAIN);
+	if (st->dock_tile)  ret = max(ret, CA_DOCK);
+
+	if (st->airport_tile) {
+		switch (st->airport_type) {
+			case AT_OILRIG:        ret = max(ret, CA_AIR_OILPAD);   break;
+			case AT_SMALL:         ret = max(ret, CA_AIR_SMALL);    break;
+			case AT_HELIPORT:      ret = max(ret, CA_AIR_HELIPORT); break;
+			case AT_LARGE:         ret = max(ret, CA_AIR_LARGE);    break;
+			case AT_METROPOLITAN:  ret = max(ret, CA_AIR_METRO);    break;
+			case AT_INTERNATIONAL: ret = max(ret, CA_AIR_INTER);    break;
+		}
+	}
+
+	return ret;
+}
+
 #define CHECK_STATIONS_ERR ((Station*)-1)
 
 static Station *GetStationAround(uint tile, int w, int h, int closest_station)
@@ -512,7 +537,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		}
 	}
 	if (_patches.modified_catchment) {
-		FIND_CATCHMENT_RADIUS(st,rad)
+		rad = FindCatchmentRadius(st);
 	} else {
 		rad = 4;
 	}
@@ -1966,7 +1991,7 @@ static void DrawTile_Station(TileInfo *ti)
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			image = (image & 0x3FFF) | 0x03224000;
 		} else {
-			if (image&0x8000) image |= image_or_modificator;	
+			if (image&0x8000) image |= image_or_modificator;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
@@ -2500,30 +2525,30 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
 							((st->facilities & (byte)~FACIL_TRUCK_STOP)!=0 || type!=CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
 								if (_patches.modified_catchment) {
-									FIND_CATCHMENT_RADIUS(st,rad)
+									rad = FindCatchmentRadius(st);
 									x_min_prod = y_min_prod = 9;
 									x_max_prod = 8 + w_prod;
 									y_max_prod = 8 + h_prod;
-		
+
 									x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
-		
+
 									if (w_cur < x_min_prod) {
 										x_dist = x_min_prod - w_cur;
 									} else {        //save cycles
 										if (w_cur > x_max_prod) x_dist = w_cur - x_max_prod;
 									}
-		
+
 									y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
 									if (h_cur < y_min_prod) {
 										y_dist = y_min_prod - h_cur;
 									} else {
 										if (h_cur > y_max_prod) y_dist = h_cur - y_max_prod;
 									}
-		
+
 								} else {
 									x_dist = y_dist = 0;
 								}
-		
+
 								if ( !(x_dist > rad) && !(y_dist > rad) ) {
 
 									around[i] = st_index;
