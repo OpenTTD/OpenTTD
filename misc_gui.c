@@ -1259,8 +1259,8 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_DESTROY:
-		// pause is only used in single-player, non-editor mode
-		if(!_networking && (_game_mode != GM_EDITOR))
+		// pause is only used in single-player, non-editor mode, non menu mode
+		if(!_networking && (_game_mode != GM_EDITOR) && (_game_mode != GM_MENU))
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		_query_string_active = false;
 		FiosFreeSavegameList();
@@ -1350,7 +1350,8 @@ void ShowSaveLoadDialog(int mode)
 		strcpy(_edit_str_buf, "UNNAMED");
 	}
 
-	// pause is only used in single-player, non-editor mode
+	// pause is only used in single-player, non-editor mode, non-menu mode. It
+	// will be unpaused in the WE_DESTROY event handler.
 	if(_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR)
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
