@@ -267,14 +267,11 @@ static void AiHandleGotoDepot(Player *p, int cmd)
 
 static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	const Order *os = bak->order;
-	int ind = 0;
+	int i;
 
-	while (os++->type != OT_NOTHING) {
-		if (DoCommandByTile(0, v->index + (ind << 16), PackOrder(os), DC_EXEC, CMD_INSERT_ORDER) == CMD_ERROR)
+	for (i = 0; bak->order[i].type != OT_NOTHING; i++)
+		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
-		ind++;
-	}
 }
 
 static void AiHandleReplaceTrain(Player *p)
