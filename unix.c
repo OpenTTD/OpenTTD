@@ -90,6 +90,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
+		strcpy(fios->name, "..");
 		strcpy(fios->title, ".. (Parent directory)");
 	}
 
