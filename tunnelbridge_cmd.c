@@ -630,10 +630,14 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
+		// We first need to request the direction before calling DoClearSquare
+		//  else the direction is always 0.. dah!! ;)
+		byte tile_dir = _map5[tile]&3;
+		byte endtile_dir = _map5[endtile]&3;
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
-		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[_map5[tile]&3]);
-		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[_map5[endtile]&3]);
+		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
+		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
 		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) 
 			ChangeTownRating(t, -250, 0);
 	}
