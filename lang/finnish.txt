@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Lopeta peli
 STR_015F_QUIT							:Lopeta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Haluatko todella lopettaa pelin?
 STR_0161_QUIT_GAME						:{WHITE}Lopeta peli
-STR_SORT_TIP							:{BLACK}Valitse laskeva/nouseva lajittelujärjestys
 SRT_SORT_BY							:{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION						:{BLACK}Asukasluku
@@ -1354,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:liittyi peliin
 STR_NETWORK_GIVE_MONEY						:antoi sinulle rahaa ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Palvelin sulki istunnon
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Lähetä
 

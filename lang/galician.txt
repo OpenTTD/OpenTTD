@@ -352,7 +352,6 @@ STR_015E_QUIT_GAME						:Saír ó menu principal
 STR_015F_QUIT							:Saír do programa
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}¿Está seguro de que desexa saír da partida?
 STR_0161_QUIT_GAME						:{WHITE}Saír ó menú principal
-STR_SORT_TIP							:{BLACK}Selecciona o modo de ordenación
 SRT_SORT_BY							:{BLACK}Ordear por
 
 STR_SORT_BY_POPULATION						:{BLACK}Poboación
@@ -1227,6 +1226,9 @@ STR_NETWORK_ERR_NOSERVER					:{WHITE} Non se atoparon xogos en rede
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
+
+
 
 
 ############ end network gui strings

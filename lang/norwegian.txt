@@ -183,7 +183,7 @@ STR_00B1_GAME_OPTIONS						:{WHITE}Spillinnstillinger
 STR_00B2_MESSAGE						:{YELLOW}Melding
 STR_00B3_MESSAGE_FROM						:{YELLOW}Melding fra {STRING}
 STR_00B4_CAN_T_DO_THIS						:{WHITE}Kan ikke gjøre det....
-STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan ikke rydde området....
+STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan ikke rydde feltet....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Opprinnelig copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION						:{BLACK}OpenTTD versjon {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Opprinnelig design av Chris Sawyer
@@ -318,12 +318,12 @@ STR_013B_OWNED_BY						:{WHITE}...eies av {STRING}
 STR_013C_CARGO							:{BLACK}Last
 STR_013D_INFORMATION						:{BLACK}Informasjon
 STR_013E_CAPACITIES						:{BLACK}Kapasitet
-STR_013E_TOTAL_CARGO						:{BLACK}Total Last
+STR_013E_TOTAL_CARGO						:{BLACK}Total last
 STR_013F_CAPACITY						:{BLACK}Kapasitet: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Total kapasitet på dette toget:
 STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME						:{BLACK}Nytt Spill
-STR_0141_LOAD_GAME						:{BLACK}Last inn Spill
+STR_0140_NEW_GAME						:{BLACK}Nytt spill
+STR_0141_LOAD_GAME						:{BLACK}Last inn spill
 STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Veiledning / Demonstrasjon
 STR_SINGLE_PLAYER						:{BLACK}Énspiller
 STR_MULTIPLAYER							:{BLACK}Flerspiller
@@ -352,8 +352,7 @@ STR_015D_LOAD_GAME						:Last inn spill
 STR_015E_QUIT_GAME						:Avslutt gjeldende spill
 STR_015F_QUIT							:Avslutt OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Er du sikker på du vil avslutte dette spillet ?
-STR_0161_QUIT_GAME						:{WHITE}Avslutt Spill
-STR_SORT_TIP							:{BLACK}Velg sorteringsrekkefølge synkende/stigende
+STR_0161_QUIT_GAME						:{WHITE}Avslutt spill
 SRT_SORT_BY							:{BLACK}Sorter etter
 
 STR_SORT_BY_POPULATION						:{BLACK}Folketall
@@ -411,7 +410,7 @@ STR_0182_BUILD_ROADS						:{BLACK}Bygg vei
 STR_0183_BUILD_SHIP_DOCKS					:{BLACK}Bygg kaier
 STR_0184_BUILD_AIRPORTS						:{BLACK}Bygg flyplasser
 STR_0185_PLANT_TREES_PLACE_SIGNS				:{BLACK}Plant trær, plasser skilt, osv.
-STR_0186_LAND_BLOCK_INFORMATION					:{BLACK}Informasjon om område
+STR_0186_LAND_BLOCK_INFORMATION					:{BLACK}Informasjon om felt
 STR_0187_OPTIONS						:{BLACK}Innstillinger
 STR_0188							:{BLACK}{SMALLUPARROW}
 STR_0189							:{BLACK}{SMALLDOWNARROW}
@@ -445,12 +444,12 @@ STR_019F_TRAIN							:Tog
 STR_01A0_IS_GETTING_OLD						:{WHITE}{STRING} {COMMA16} er gammel
 STR_01A1_IS_GETTING_VERY_OLD					:{WHITE}{STRING} {COMMA16} er veldig gammel
 STR_01A2_IS_GETTING_VERY_OLD_AND				:{WHITE}{STRING} {COMMA16} er stein gammel og må byttes ut
-STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Informasjon om landområde
-STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Pris for å rydde området: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR						:{BLACK}Pris for å rydde området: {LTBLUE}{CURRENCY}
+STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Informasjon om felt
+STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Pris for å fjerne: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR						:{BLACK}Pris for å fjerne: {LTBLUE}{CURRENCY}
 STR_01A6_N_A							:N/A
 STR_01A7_OWNER							:{BLACK}Eier: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY					:{BLACK}Kommune: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY					:{BLACK}Bystyre: {LTBLUE}{STRING}
 STR_01A9_NONE							:Ingen
 STR_01AA_NAME							:{BLACK}Navn
 STR_01AB							:{BLACK}{TINYFONT}{STRING}
@@ -606,7 +605,7 @@ STR_0235_CONSTRUCT_NEW_TOWN					:{BLACK}Grunnlegg en ny by
 STR_0236_CAN_T_BUILD_TOWN_HERE					:{WHITE}Kan ikke grunnlegge by her...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}...for nært kanten av kartet
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN				:{WHITE}...for nært en annen by
-STR_0239_SITE_UNSUITABLE					:{WHITE}...området er uskikket
+STR_0239_SITE_UNSUITABLE					:{WHITE}...feltet er uskikket
 STR_023A_TOO_MANY_TOWNS						:{WHITE}...for mange byer
 STR_023B_INCREASE_SIZE_OF_TOWN					:{BLACK}Øk bystørrelse
 STR_023C_EXPAND							:{BLACK}Utvid
@@ -689,7 +688,7 @@ STR_0288_PLANT_TREES						:{BLACK}Plant trær
 STR_0289_PLACE_SIGN						:{BLACK}Plasser skilt
 STR_028A_RANDOM_TREES						:{BLACK}Plant trær tilfeldig
 STR_028B_PLANT_TREES_RANDOMLY_OVER				:{BLACK}Plasser trær tilfeldig i landskapet
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Plasser steinete områder i landskapet
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Plasser steinete felt i landskapet
 STR_028D_PLACE_LIGHTHOUSE					:{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER					:{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA					:{BLACK}Definer ørken
@@ -758,7 +757,7 @@ STR_02D4_TRANSPARENT_BUILDINGS					:{SETX 12}Gjennomsiktige bygninger
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO					:Informasjon om landområde.
+STR_02D5_LAND_BLOCK_INFO					:Informasjon om felt.
 STR_02D6							:
 STR_02D7_SCREENSHOT_CTRL_S					:Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Stor skjermdump (Ctrl-G)
@@ -995,7 +994,7 @@ STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Vis regnskap ved nyttår: {ORANGE}{S
 STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch-kompatibel nonstop-håndtering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Tillat bestikkelser av kommunestyret: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Ny togstallokalisering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Ikke-ensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny algoritme for togs kjørerute: {ORANGE}{STRING}
@@ -1225,7 +1224,7 @@ STR_NETWORK_CURRENT_DATE					:{SILVER}Nettverksdato:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Passordbeskyttet!
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}TJENEREN ER KOBLET AV
 STR_NETWORK_SERVER_FULL						:{SILVER}TJENEREN ER FULL
-STR_NETWORK_VERSION_MISMATCH					:{SILVER}FORSKJELLIGE VERSJONER
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}DU HAR EN ANNEN VERSJON EN TJENEREN
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Bli med på spill
 
@@ -1355,6 +1354,9 @@ STR_NETWORK_GIVE_MONEY						:gav deg penger ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Tjeneren avsluttet spillet
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Tjeneren starter på nytt...{}Vennligst vent
 
+
+
+
 STR_NETWORK_SEND						:{BLACK}Send
 
 ############ end network gui strings
@@ -1416,7 +1418,7 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Velg togstallens retning
 STR_1021_RAILROAD_TRACK						:Jernbanespor
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Jernbanespor med signallykter
 STR_1023_RAILROAD_TRAIN_DEPOT					:Togstall
-STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...område eies av et annet firma
+STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...felt eies av et annet firma
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Jernbanespor med normale signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Jernbanespor med for-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS				:Jernbanespor med forlat-signaler
@@ -1425,7 +1427,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Jernbanespor med kombinerte signaler
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Landområdet heller feil vei for veibygging
+STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Feltet heller feil vei for veibygging
 STR_1801_MUST_REMOVE_ROAD_FIRST					:{WHITE}Må fjerne vei først
 STR_1802_ROAD_CONSTRUCTION					:{WHITE}Bygg vei
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Velg brotype
@@ -1461,7 +1463,7 @@ STR_2005							:{WHITE}{TOWN}
 STR_2006_POPULATION						:{BLACK}Innbyggertall: {ORANGE}{COMMA32}{BLACK}  Antall hus: {ORANGE}{COMMA32}
 STR_2007_RENAME_TOWN						:Bytt navn
 STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Kan ikke bytte navn på byen...
-STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} kommunen nekter deg å gjøre dette.
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} bystyret nekter deg å gjøre dette.
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Bynavn - trykk på by navnet for å se på byen
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Sentrer bildet rundt byen
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Bytt navn på byen
@@ -1484,9 +1486,9 @@ STR_201C_WAREHOUSE						:Varehus
 STR_201D_OFFICE_BLOCK						:Kontorblokk
 STR_201E_STADIUM						:Stadion
 STR_201F_OLD_HOUSES						:Gamle hus
-STR_2020_LOCAL_AUTHORITY					:{BLACK}Kommune
-STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Vis informasjon om kommunen
-STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN} kommune
+STR_2020_LOCAL_AUTHORITY					:{BLACK}Bystyre
+STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Vis informasjon om bystyret
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN} bystyre
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Vurdering av transportfirma:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Subsidier
@@ -1500,12 +1502,12 @@ STR_202C_FROM_TO						:{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({ST
 STR_202D_UNTIL							:{YELLOW}, inntil {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Tilbud om subsidie har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger være subsidiert.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Transport av {STRING} fra {STATION} til {STATION} er ikke lenger subsidiert.
-STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsidie-tilbud:{}{}Første transport av {STRING} fra {STRING} til {STRING} vil være subsidiert i et år av kommunen
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsidie-tilbud:{}{}Første transport av {STRING} fra {STRING} til {STRING} vil være subsidiert i et år av bystyret!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Tjeneste subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil betale 50% mer i løpet av et år!
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Tjeneste subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil betale dobbelt så mye i løpet av et år!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Tjeneste subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil betale tredobbelt i løpet av et år!
 STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Tjeneste subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil betale firedobbelt i løpet av et år!
-STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} kommunen tillater ikke flere flyplasser i denne byen
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} bystyret tillater ikke flere flyplasser i denne byen
 STR_2036_COTTAGES						:Hytter
 STR_2037_HOUSES							:Hus
 STR_2038_FLATS							:Leiligheter
@@ -1522,22 +1524,22 @@ STR_2042_DO_IT							:{BLACK}Gjør det
 STR_2043_LIST_OF_THINGS_TO_DO_AT				:{BLACK}Liste med ting som kan gjøres for/i byen - trykk på valg for mer informasjon
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Utfør den gjeldene handlingen valgt i listen over.
 STR_2045_ACTIONS_AVAILABLE					:{BLACK}Handlinger tilgjengelig:
-STR_2046_SMALL_ADVERTISING_CAMPAIGN				:Liten reklame kampanje
-STR_2047_MEDIUM_ADVERTISING_CAMPAIGN				:Medium reklame kampanje
-STR_2048_LARGE_ADVERTISING_CAMPAIGN				:Stor reklame kampanje
+STR_2046_SMALL_ADVERTISING_CAMPAIGN				:Liten reklamekampanje
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN				:Middels reklamekampanje
+STR_2048_LARGE_ADVERTISING_CAMPAIGN				:Stor reklamekampanje
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION				:Finansier lokal ombygging av veinettet
 STR_204A_BUILD_STATUE_OF_COMPANY				:Bygg statue av firmaets grunnlegger
 STR_204B_FUND_NEW_BUILDINGS					:Finansier nye bygninger
 STR_204C_BUY_EXCLUSIVE_TRANSPORT				:Kjøp eksklusive transportrettigheter
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY				:Besikk kommunestyret
-STR_204D_INITIATE_A_SMALL_LOCAL					:{WHITE}{STRING}{}{YELLOW} Start en liten lokal reklame kampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL				:{WHITE}{STRING}{}{YELLOW} Start en medium lokal reklame kampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL					:{WHITE}{STRING}{}{YELLOW} Start en stor lokal reklame kampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY				:Besikk bystyret
+STR_204D_INITIATE_A_SMALL_LOCAL					:{WHITE}{STRING}{}{YELLOW} Start en liten lokal reklamekampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL				:{WHITE}{STRING}{}{YELLOW} Start en middels lokal reklamekampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL					:{WHITE}{STRING}{}{YELLOW} Start en stor lokal reklamekampanje, for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION				:{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale veinettet. Fører til veiproblemer i seks måneder.{}  Koster: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR				:{WHITE}{STRING}{}{YELLOW} Bygg en statue for å ære firmaet.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Finasier byggingen av nye kommersielle byggninger i byen .{}  Koster: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Kjøp 1 års ekslusive transportrettigheter i kommunen. Kommunen vil bare tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Bestikk kommunestyret til å forbedre firmaets vurdering, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Kjøp 1 års ekslusive transportrettigheter i byen. Bystyre vil bare tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbedre vurderingen av firmaet, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
 STR_2054_CAN_T_DO_THIS						:{WHITE}Kan ikke gjøre dette...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Traffkkaos i {TOWN}!{}{}Ombygging av veien, finasiert av {STRING}, fører med seg seks måneders veiproblemer.
 STR_2056							:{TINYFONT}{WHITE}{TOWN}
@@ -1549,10 +1551,10 @@ STR_205B_TEAPOT_HOUSE						:Tekjelehus
 STR_205C_PIGGY_BANK						:Sparebøsse
 
 ##id 0x2800
-STR_LANDSCAPING							:Landskaps verktøy
+STR_LANDSCAPING							:Landskapsverktøy
 STR_2800_PLANT_TREES						:Plant trær
 STR_2801_PLACE_SIGN						:Plasser skilt
-STR_2802_TREES							:{WHITE}Tre
+STR_2802_TREES							:{WHITE}Trær
 STR_2803_TREE_ALREADY_HERE					:{WHITE}...det er allerede et tre her
 STR_2804_SITE_UNSUITABLE					:{WHITE}...upassende område
 STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Kan ikke plante trær her...
@@ -1594,7 +1596,7 @@ STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Lokal vurdering av transporttjenes
 STR_3035_APPALLING						:Forferdelig
 STR_3036_VERY_POOR						:Veldig dårlig
 STR_3037_POOR							:Dårlig
-STR_3038_MEDIOCRE						:Medium
+STR_3038_MEDIOCRE						:Middels
 STR_3039_GOOD							:God
 STR_303A_VERY_GOOD						:Veldig god
 STR_303B_EXCELLENT						:Utmerket
@@ -1623,11 +1625,11 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Velg antall spor stasjonen skal h
 STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Velg hvor lang stasjonen skal være
 STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Velg retning på bussterminal
 STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Velg retning på lasteterminal
-STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Sentrer bildet på stasjonsområdet
+STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Sentrer bildet på stasjonen
 STR_3054_SHOW_STATION_RATINGS					:{BLACK}Vis stasjonsvurdering
 STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Endre navnet til stasjonen
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Vis liste over aksepterte varer
-STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Stasjonsnavn - Trykk på navnet for å sentrere bildet på stasjonområdet
+STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Stasjonsnavn - Trykk på navnet for å sentrere bildet på stasjonen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Velg størrelse/type flyplass
 STR_3059_SMALL							:{BLACK}Liten
 STR_305A_LARGE							:{BLACK}Stor
@@ -1758,10 +1760,10 @@ STR_5004							:
 STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Kan ikke grave ut land til den andre tunnelutgangen
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Må rive tunnel først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Må rive bro først
-STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Kan ikke starte og slutte på samme landområde
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Kan ikke starte og slutte på samme felt
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Flatt land eller vann trengs under broen
 STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Start og slutt må være på linje
-STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Området er upassende for tunnelinngang
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Feltet er upassende for tunnelinngang
 STR_500C							:
 STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL					:Hengebro, stål
@@ -1800,8 +1802,8 @@ STR_5801_TRANSMITTER						:Radiosender
 STR_5802_LIGHTHOUSE						:Fyrtårn
 STR_5803_COMPANY_HEADQUARTERS					:Hovedkontor til firma
 STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...hovedkontor til firma er i veien
-STR_5805_COMPANY_OWNED_LAND					:Området eies av et firma
-STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Kan ikke kjøpe dette landområdet
+STR_5805_COMPANY_OWNED_LAND					:Feltet eies av et firma
+STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Kan ikke kjøpe dette feltet...
 STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...du eier det allerede!
 
 
@@ -1857,7 +1859,7 @@ STR_OPTIONS_SAVE_CHANGES					:{BLACK}Lagre
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Lett
-STR_6802_MEDIUM							:{BLACK}Medium
+STR_6802_MEDIUM							:{BLACK}Middels
 STR_6803_HARD							:{BLACK}Vanskelig
 STR_6804_CUSTOM							:{BLACK}Egendefinert
 ############ range for difficulty levels ends
@@ -1880,7 +1882,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Mengde sjø/innsjøer: {ORANGE}{STRING
 STR_6813_ECONOMY						:{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Togreversering: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:{LTBLUE}Bystyret's holdning mot ombygging av område: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Bystyret's holdning mot ombygging av felt: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE							:Ingen
@@ -1891,12 +1893,12 @@ STR_6819							:{BLACK}<
 STR_681A							:{BLACK}>
 STR_681B_VERY_SLOW						:Veldig sent
 STR_681C_SLOW							:Sent
-STR_681D_MEDIUM							:Medium
+STR_681D_MEDIUM							:Middels
 STR_681E_FAST							:Rask
 STR_681F_VERY_FAST						:Veldig rask
 STR_VERY_LOW							:Veldig lavt
 STR_6820_LOW							:Lavt
-STR_6821_MEDIUM							:Medium
+STR_6821_MEDIUM							:Middels
 STR_6822_HIGH							:Høyt
 STR_6823_NONE							:Ingen
 STR_6824_REDUCED						:Redusert
@@ -2315,13 +2317,13 @@ STR_80FD_TRICARIO_HELICOPTER					:Tricario helikopter
 STR_80FE_GURU_X2_HELICOPTER					:Guru X2 helikopter
 STR_80FF_POWERNAUT_HELICOPTER					:Powernaut helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE			:{WHITE}Melding fra kjøretøysprodusent
-STR_8101_WE_HAVE_JUST_DESIGNED_A				:{GOLD}Vi har nettopp designet nytt {STRING} - er du interessert i ett år ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
-STR_8102_RAILROAD_LOCOMOTIVE					:jernbane tog
+STR_8101_WE_HAVE_JUST_DESIGNED_A				:{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i ett års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
+STR_8102_RAILROAD_LOCOMOTIVE					:lokomotiv
 STR_8103_ROAD_VEHICLE						:kjøretøy
 STR_8104_AIRCRAFT						:fly
 STR_8105_SHIP							:skip
-STR_8106_MONORAIL_LOCOMOTIVE					:monorail tog
-STR_8107_MAGLEV_LOCOMOTIVE					:maglev tog
+STR_8106_MONORAIL_LOCOMOTIVE					:monorail lokomotiv
+STR_8107_MAGLEV_LOCOMOTIVE					:maglev lokomotiv
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} Togstall
@@ -2367,7 +2369,7 @@ STR_8820_RENAME							:{BLACK}Endre navn
 STR_8821_COST_WEIGHT_T_T_CAPACITY				:{BLACK}Koster: {GOLD}{CURRENCY}{}{BLACK}Vekt: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapasitet: {GOLD}{STRING}
 STR_8823_SKIP							:{BLACK}Hopp over
 STR_8824_DELETE							:{BLACK}Slett
-STR_8825_NON_STOP						:{BLACK}Uten-stopp
+STR_8825_NON_STOP						:{BLACK}Uten stopp
 STR_8826_GO_TO							:{BLACK}Kjør til
 STR_8827_FULL_LOAD						:{BLACK}Last fullt
 STR_8828_UNLOAD							:{BLACK}Last av
@@ -2393,7 +2395,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Kan ikke selge jernbanekjøretøy.
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Kan ikke finne en togstall i nærheten
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Kan ikke stoppe/starte tog...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Service interval: {LTBLUE}{COMMA16}dager{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Service intervall: {LTBLUE}{COMMA16}%{BLACK}   Siste service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Service intervall: {LTBLUE}{COMMA16}%{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - trykk på tog for mer informasjon
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Bygg nye tog (trenger en togstall)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - trykk på tog for mer info. Dra vogn for å legge til/fjerne fra tog
@@ -2419,10 +2421,10 @@ STR_8852_SHOW_TOTAL_CARGO					:{BLACK}Vis en total kapasitet på togene oppdelt e
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Ordreliste - trykk på en ordre for å velge den
 STR_8853_SKIP_THE_CURRENT_ORDER					:{BLACK}Hopper over gjeldende ordre, og forsett på neste
 STR_8854_DELETE_THE_HIGHLIGHTED					:{BLACK}Slett den valgte ordren
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en "uten å stoppe"-ordre
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en
 STR_8856_INSERT_A_NEW_ORDER_BEFORE				:{BLACK}Sett inn en ordre før den valgte ordren, eller i slutten av listen.
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en "vent til full last"-ordre
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en "bare last av"-ordre
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gjør den valgte ordren om til en
 STR_SERVICE_HINT						:{BLACK}Hopp over ordren med mindre service trengs.
 STR_8859_NEW_NOW_AVAILABLE					:{BLACK}{BIGFONT}Nytt {STRING} er nå tilgjengelig!
 STR_885A							:{BLACK}{BIGFONT}{STRING}
@@ -2433,7 +2435,7 @@ STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED				:{BLACK}Vekt: {LTBLUE}{COMMA16}t  {BLACK
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS					:{BLACK}Pålitelighet: {LTBLUE}{COMMA8}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA16}
 STR_8861_STOPPED						:{RED}Stoppet
-STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL				:{WHITE}Kan ikke tvinge tog til å kjøre på rødt lyse ved fare...
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL				:{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_8863_CRASHED						:{RED}Krasjet
 
 STR_8865_NAME_TRAIN						:{WHITE}Navngi tog
@@ -2500,7 +2502,7 @@ STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Innbyggerne jubler . . .{}
 STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Kollisjon!{}{COMMA16} dør etter kollisjon med tog
-STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Kan ikke bytte kjøreretning...
+STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Kan ikke snu...
 STR_9034_RENAME							:{BLACK}Endre navn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE				:{BLACK}Endre navnet til kjøretøytypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE				:{WHITE}Endre navnet til kjøretøytypen

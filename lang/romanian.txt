@@ -353,7 +353,8 @@ STR_015E_QUIT_GAME						:Iesire în meniul principal
 STR_015F_QUIT							:Iesire din joc
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Esti sigur cã vrei sã renunti la acest joc?
 STR_0161_QUIT_GAME						:{WHITE}Iesire din joc
-STR_SORT_TIP							:{BLACK}Alege criteriul de sortare
+STR_SORT_ORDER_TIP						:{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
+STR_SORT_CRITERIA_TIP						:{BLACK}Alegeti criteriul de sortare
 SRT_SORT_BY							:{BLACK}Ordoneaza dupa
 
 STR_SORT_BY_POPULATION						:{BLACK}Populatia
@@ -1086,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Merge spre {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Mergi via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Mergi non-stop via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Halta {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Halta {TOWN} #{COMMA16}
@@ -1352,8 +1354,26 @@ STR_NETWORK_ERR_CLIENT_KICKED					:dat afara de pe server
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:a intrat in joc
 STR_NETWORK_GIVE_MONEY						:ti-a dat o suma de bani ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:ai donat o suma de bani companiei {STRING} ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] To {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Private] pentru {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:si-a schimbat numele in
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE}Serverul a inchis conexiunea
 STR_NETWORK_SERVER_REBOOT					:{WHITE}Serverul este repornit...{}Va rugam asteptati...
+
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Client
+
+STR_NETWORK_CLIENTLIST_NONE					:(none)
+STR_NETWORK_CLIENTLIST_KICK					:Kick
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Doneaza bani
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Vorbeste catre toti
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Vorbeste catre companie
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Mesaj privat
+
 
 STR_NETWORK_SEND						:{BLACK}Trimite
 

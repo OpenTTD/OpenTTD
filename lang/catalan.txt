@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Abandonar joc
 STR_015F_QUIT							:Sortir
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Estàs segur de voler abandonar aquest joc?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar Joc
-STR_SORT_TIP							:{BLACK}Seleccionar ordre descendent/ascendent
 SRT_SORT_BY							:{BLACK}Ordenar per
 
 STR_SORT_BY_POPULATION						:{BLACK}Població
@@ -1354,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:ha entrat al joc
 STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha tancat la sesió
 STR_NETWORK_SERVER_REBOOT					:{WHITE} El servidor està reiniciant...{}Espera un moment...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Enviar
 

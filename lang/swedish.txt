@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Avsluta spelet
 STR_015F_QUIT							:Avsluta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vill du verkligen avsluta spelet?
 STR_0161_QUIT_GAME						:{WHITE}Avsluta spelet
-STR_SORT_TIP							:{BLACK}Välj sorteringsordning (stigande/fallande)
 SRT_SORT_BY							:{BLACK}Sortera efter
 
 STR_SORT_BY_POPULATION						:{BLACK}Befolkning
@@ -418,6 +417,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan inte ändra service-intervall...
 STR_018B_CLOSE_WINDOW						:{BLACK}Stäng fönster
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Fönstertitel - dra för att flytta fönstret
+STR_STICKY_BUTTON						:{BLACK}Markera detta fönster så att det finns kvar även fast man använder 'Stäng alla fönster' knappen
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Riv ned byggnader etc. på en ruta mark
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Sänk ett hörn av marken
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Höj upp ett hörn av marken
@@ -1241,6 +1241,7 @@ STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (reklam)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienter
 STR_NETWORK_3_CLIENTS						:3 klienter
@@ -1352,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:har anslutit till spelet
 STR_NETWORK_GIVE_MONEY						:gav dig en del pengar ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Servern avslutade sessionen
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Servern startar om...{}Var vänlig vänta...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Skicka
 

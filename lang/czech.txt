@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Ukoncit hru
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Opravdu chces ukoncit tuto hru?
 STR_0161_QUIT_GAME						:{WHITE}Konec hry
-STR_SORT_TIP							:{BLACK}Vyberte zpusob razeni (sestupne nebo vzestupne)
 SRT_SORT_BY							:{BLACK}Radit podle
 
 STR_SORT_BY_POPULATION						:{BLACK}Populace
@@ -418,6 +417,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nelze zmenit interval oprav...
 STR_018B_CLOSE_WINDOW						:{BLACK}Zavrit okno
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titulek okna - tahej pro posun okna
+STR_STICKY_BUTTON						:{BLACK}Oznacit toto okno, aby se nedalo zavrit klávesou 'Zavrit vsechna okna'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolice budov, atd.
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Snizit roh zeme
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Zvysit roh zeme
@@ -725,6 +725,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Názvy dopravních prostredku
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Základní
 STR_02BF_CUSTOM							:Uzivatelske
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Ulozit vlastní jména
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Vyber nazvu dopravnich prostredku
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Ulozit uzivatelske názvy dopravních prostredku na disk
 
@@ -1240,6 +1241,7 @@ STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximální pocet hracu:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (oznámit)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 hraci
 STR_NETWORK_3_CLIENTS						:3 hraci
@@ -1301,6 +1303,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Overovani..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Cekani..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Stahování mapy..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Zpracovávání dat..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registování..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Prijimani informací o hre..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Prijimani informací o spolecnosti..
@@ -1350,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:vstoupil do hry
 STR_NETWORK_GIVE_MONEY						:ti dal nejake penize ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaci
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Server se restartuje...{}Vyckejte prosím...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Poslat
 

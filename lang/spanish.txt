@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Abandonar juego
 STR_015F_QUIT							:Salir
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}¿Estás seguro que deseas abandonar este juego?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar Juego
-STR_SORT_TIP							:{BLACK}Selecciona ordenación descendiente/ascendente
 SRT_SORT_BY							:{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION						:{BLACK}Población
@@ -418,6 +417,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}No es posible cambiar el intervalo del mantenimiento
 STR_018B_CLOSE_WINDOW						:{BLACK}Cerrar ventana
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título de la ventana - arrastrelo para mover la ventana
+STR_STICKY_BUTTON						:{BLACK}Marcar esta ventana como no borrable para el comando de 'Cerrar Todas las Ventanas'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demoler edificios, etc. en un bloque de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Bajar una esquina del terreno
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Subir una esquina del terreno
@@ -1353,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:se ha unido al juego
 STR_NETWORK_GIVE_MONEY						:te ha enviado dinero ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha cerrado la sesión
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Se está reiniciando el servidor...{}Espere por favor...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Enviar
 

@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Opusc gre
 STR_015F_QUIT							:Wyjscie
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Jestes pewny ze chesz skonczyc gre?
 STR_0161_QUIT_GAME						:{WHITE}Wyjscie
-STR_SORT_TIP							:{BLACK}Wybierz porzadek sortowania
 SRT_SORT_BY							:{BLACK}Sortowanie
 
 STR_SORT_BY_POPULATION						:{BLACK}Populacja
@@ -1353,6 +1352,9 @@ STR_NETWORK_CLIENT_JOINED					:przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY						:dal Ci troche pieniedzy ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serwer zamknal sesje
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Restart serwera...{}Prosze czekac...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Wyslij
 

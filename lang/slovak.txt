@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Koniec hry
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME						:{WHITE}Koniec hry
-STR_SORT_TIP							:{BLACK}Vyber sposob usporiadania zostupny/vzostupny
 SRT_SORT_BY							:{BLACK}Usporiadat podla
 
 STR_SORT_BY_POPULATION						:{BLACK}Populacia
@@ -1342,6 +1341,9 @@ STR_NETWORK_CLIENT_JOINED					:vstupil do hry
 STR_NETWORK_GIVE_MONEY						:ti dal nejake peniaze ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Server sa restartuje...{}Cakajte prosim...
+
+
+
 
 
 ############ end network gui strings

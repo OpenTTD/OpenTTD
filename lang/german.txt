@@ -353,7 +353,8 @@ STR_015E_QUIT_GAME						:Spiel beenden
 STR_015F_QUIT							:Beenden
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Bist du sicher, dass du das Spiel beenden willst?
 STR_0161_QUIT_GAME						:{WHITE}Spiel beenden
-STR_SORT_TIP							:{BLACK}Sortierreihenfolge auswählen
+STR_SORT_ORDER_TIP						:{BLACK}Sortierreihenfolge auswählen absteigend/aufsteigend
+STR_SORT_CRITERIA_TIP						:{BLACK}Sortierkriterium auswählen
 SRT_SORT_BY							:{BLACK}Sortieren nach
 
 STR_SORT_BY_POPULATION						:{BLACK}Bevölkerung
@@ -418,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_018B_CLOSE_WINDOW						:{BLACK}Fenster schließen
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titelleiste verschieben um das Fenster zu bewegen
+STR_STICKY_BUTTON						:{BLACK}Diese Fenster markieren, damit es nicht durch die
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Land absenken
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Land anheben
@@ -1085,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Fahre zu {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Fahre über {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Fahre ohne Halt über {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Wegpunkt {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Wegpunkt {TOWN} #{COMMA16}
@@ -1351,8 +1354,26 @@ STR_NETWORK_ERR_CLIENT_KICKED					:gekickt
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:hat das Spiel betreten
 STR_NETWORK_GIVE_MONEY						:gab dir etwas Geld ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:Du hast {STRING} etwas Geld gegeben ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] An {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privat] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privat] An {STRING}:
+STR_NETWORK_CHAT_ALL						:[Alle] {STRING}:
+STR_NETWORK_NAME_CHANGE						:hat seinen Namen geändert zu
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Der Server hat das Spiel beendet.
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Der Server startet neu...{}Bitte warten...
+
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Client
+
+STR_NETWORK_CLIENTLIST_NONE					:(keiner)
+STR_NETWORK_CLIENTLIST_KICK					:Kicken
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Geld geben
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Mit allen sprechen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Mit eigener Firma sprechen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Private Nachricht
+
 
 STR_NETWORK_SEND						:{BLACK}Senden
 

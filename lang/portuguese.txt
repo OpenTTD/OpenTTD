@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Abandonar jogo
 STR_015F_QUIT							:Sair
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Tem a certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar jogo
-STR_SORT_TIP							:{BLACK}Seleccione ordem descendente/ascendente
 SRT_SORT_BY							:{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION						:{BLACK}População
@@ -1296,6 +1295,9 @@ STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tempo de espera esgotado na conexão #{NUMU
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
+
+
 
 
 ############ end network gui strings

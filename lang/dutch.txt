@@ -353,7 +353,6 @@ STR_015E_QUIT_GAME						:Spel stoppen
 STR_015F_QUIT							:Afsluiten
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Weet u zeker dat u dit spel wilt afsluiten?
 STR_0161_QUIT_GAME						:{WHITE}Spel stoppen
-STR_SORT_TIP							:{BLACK}Selecteer sorteervolgorde
 SRT_SORT_BY							:{BLACK}Sorteer op
 
 STR_SORT_BY_POPULATION						:{BLACK}Inwoners
@@ -1218,7 +1217,7 @@ STR_NETWORK_CLIENTS						:{SILVER}Spelers:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE						:{SILVER}Taal:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Klimaat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Kaartgrootte:  {WHITE}{COMMA16}x{COMMA16}
-STR_NETWORK_SERVER_VERSION					:{SILVER}Server versiw:  {WHITE}{STRING}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Server versie:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adres4:  {WHITE}{STRING}
 STR_NETWORK_START_DATE						:{SILVER}Start datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
@@ -1354,6 +1353,9 @@ STR_NETWORK_CLIENT_JOINED					:heeft zich bij het spel gevoegd
 STR_NETWORK_GIVE_MONEY						:heeft je geld gegeven ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT					:{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
+
+
+
 
 STR_NETWORK_SEND						:{BLACK}Verstuur
 

@@ -353,7 +353,8 @@ STR_015E_QUIT_GAME						:Abandonner la partie
 STR_015F_QUIT							:Quitter le jeu
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Êtes vous sur de vouloir abandonner cette partie?
 STR_0161_QUIT_GAME						:{WHITE}Abandonner
-STR_SORT_TIP							:{BLACK}Sélectionne l'ordre de tri
+STR_SORT_ORDER_TIP						:{BLACK}Choisir l'ordre de tri croissant/décroissant
+STR_SORT_CRITERIA_TIP						:{BLACK}Choisir le critère de tri
 SRT_SORT_BY							:{BLACK}Trier par
 
 STR_SORT_BY_POPULATION						:{BLACK}Population
@@ -418,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Impossible de modifier l'intervalle de service...
 STR_018B_CLOSE_WINDOW						:{BLACK}Fermer la fenêtre
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titre de fenêtre - Glissez ceci pour déplacer la fenêtre
+STR_STICKY_BUTTON						:{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Démolir les constructions sur un carré de terrain
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Abaisser le terrain
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Élever le terrain
@@ -1085,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}En route pour {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Passant par {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Aller sans-arrêt via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Point de contrôle {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Point de contrôle {TOWN} #{COMMA16}
@@ -1351,8 +1354,26 @@ STR_NETWORK_ERR_CLIENT_KICKED					:jeté par le serveur
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:a rejoint la partie
 STR_NETWORK_GIVE_MONEY						:vous a donné un peu d'argent ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:vous avez donné à {STRING} de l'argent ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Equipe] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Equipe] A {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privé] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privé] A {STRING}:
+STR_NETWORK_CHAT_ALL						:[Tous] {STRING}:
+STR_NETWORK_NAME_CHANGE						:a changé son nom pour
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Le serveur a fermé la session
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Le serveur redémarre...{}Veuillez patienter...
+
+STR_NETWORK_SERVER						:Serveur
+STR_NETWORK_CLIENT						:Client
+
+STR_NETWORK_CLIENTLIST_NONE					:(aucun)
+STR_NETWORK_CLIENTLIST_KICK					:Jeter
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Donner de l'argent
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Parler à tous
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Parler à la compagnie
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Message privé
+
 
 STR_NETWORK_SEND						:{BLACK}Envoyer
 
