@@ -241,19 +241,33 @@ uint GetSlopeZ(int x,  int y)
 	return _tile_type_procs[ti.type]->get_slope_z_proc(&ti);
 }
 
+/* TODO: add check if this tile has a foundation or not. Since this can't be done easily with the
+	current landscape arrays, we might have to add a new TileTypeProc. */ 
+bool hasFoundation(uint tile)
+{
+	return true;
+}
+
 void DrawFoundation(TileInfo *ti, uint f)
 {
+	uint32 sprite_base = SPR_SLOPES_BASE-14;
+	if(hasFoundation( TILE_FROM_XY(ti->x, ti->y-1) )) sprite_base += 22;		// foundation in NW direction
+	if(hasFoundation( TILE_FROM_XY(ti->x-1, ti->y) )) sprite_base += 22*2;	// foundation in NE direction
+
 	if (f < 15) {
 		// leveled foundation	
-		AddSortableSpriteToDraw(f + 0x3DE - 1, ti->x, ti->y, 16, 16, 7, ti->z);
+		if( sprite_base < SPR_SLOPES_BASE ) sprite_base = 990; // use original slope sprites
+
+		AddSortableSpriteToDraw(f-1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
 		ti->z += 8;
 		ti->tileh = 0;
 		OffsetGroundSprite(31, 1);
 	} else {
 		// inclined foundation
+		sprite_base += 14;
 		
 		AddSortableSpriteToDraw(
-			HASBIT( (1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? (SPR_OPENTTD_BASE+17) + (f - 15) : 	ti->tileh + 0x3DE - 1,
+			HASBIT( (1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? sprite_base + (f - 15) : 	ti->tileh + 0x3DE - 1,
 			ti->x, ti->y, 1, 1, 1, ti->z
 		);
 		

@@ -71,6 +71,13 @@ static const uint16 * const _landscape_spriteindexes[] = {
 	_landscape_spriteindexes_3,
 };
 
+static const uint16 * const _slopes_spriteindexes[] = {
+	_slopes_spriteindexes_0,
+	_slopes_spriteindexes_1,
+	_slopes_spriteindexes_2,
+	_slopes_spriteindexes_3,
+};
+
 static void CompactSpriteCache();
 
 void DecodeSpecialSprite(const char *filename, int num, int load_index);
@@ -210,6 +217,19 @@ static bool LoadNextSprite(int load_index, byte file_index)
 	return true;
 }
 
+static void SkipSprites(int count)
+{
+	while(count>0)
+	{
+		uint16 size;
+		if ( (size = FioReadWord()) == 0)
+			return;
+
+		ReadSpriteHeaderSkipData(size, NUM_SPRITES-1);
+		count--;
+	}
+}
+
 // Checks, if trg1r.grf is the Windows version
 static bool CheckGrfFile()
 {
@@ -246,16 +266,20 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 
 static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int file_index)
 {
-	int start, end;
+	int start;
 
 	FioOpenFile(file_index, filename);
 
 	for(;(start=*index_tbl++) != 0xffff;) {
-		end = *index_tbl++;
-		do {
-			bool b = LoadNextSprite(start, file_index);
-			assert(b);
-		} while (++start <= end);
+		int end = *index_tbl++;
+		if(start==0xfffe) { // skip sprites (amount in second var)
+			SkipSprites(end);
+		} else { // load sprites and use indexes from start to end
+			do {
+				bool b = LoadNextSprite(start, file_index);
+				assert(b);
+			} while (++start <= end);
+		}
 	}
 }	
 
@@ -669,6 +693,8 @@ static void LoadSpriteTables()
 			if ((l=_sprite_page_to_load) != 0)
 				LoadGrfIndexed(_landscape_filenames[l-1], _landscape_spriteindexes[l-1], i++); 
 		}
+		
+		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
 		load_index = SPR_CANALS_BASE;
 		load_index += LoadGrfFile("canalsw.grf", load_index, i++);

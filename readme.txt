@@ -211,9 +211,8 @@ The OpenTTD team:
   Viktor Strigeus (wiggo)        - Web hosting services
   
 Thanks to:
-  Bug Reporters - Thanks for all bug reports.
   Josef Drexler - For his great work on TTDPatch.
-  Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics.
+  Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations).
   Mike Ragsdale - OpenTTD installer
   pasky - Many patches, newgrf support, etc.
   truesatan - Some patches
@@ -221,5 +220,6 @@ Thanks to:
   Michael Polnick - Some patches
   Michael Blunck - Nice graphics
   George - Canal graphics
+  Bug Reporters - Thanks for all bug reports.
   Chris Sawyer - For an amazing game.
   
