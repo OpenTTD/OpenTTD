@@ -42,7 +42,7 @@ static uint32 GetArgumentInteger(const char* arg)
 DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 {
 	if (_networking) {
-		IConsoleError("this command is forbidden in multiplayer");
+		IConsoleError("This command is forbidden in multiplayer.");
 		return false;
 	}
 	return true;
@@ -52,7 +52,7 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetwork)
 {
 	if (_networking) {
-		IConsoleError("this variable is forbidden in multiplayer");
+		IConsoleError("This variable is forbidden in multiplayer.");
 		return false;
 	}
 	return true;
@@ -62,7 +62,7 @@ DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetwork)
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
 {
 	if (!_networking_server) {
-		IConsoleError("this variable only makes sense for a network server");
+		IConsoleError("This variable only makes sense for a network server.");
 		return false;
 	}
 	return true;
@@ -314,7 +314,6 @@ DEF_CONSOLE_CMD(ConHelp)
 
 DEF_CONSOLE_CMD(ConRandom)
 {
-	/* XXX memory leak */
 	_iconsole_var* result;
 	result = IConsoleVarAlloc(ICONSOLE_VAR_UINT16);
 	IConsoleVarSetValue(result, rand());

@@ -14,7 +14,10 @@
 #include <windows.h>
 #endif
 
-#define ICONSOLE_BUFFER_SIZE 80
+#define ICON_BUFFER 79
+#define ICON_CMDBUF_SIZE 20
+#define ICON_CMDLN_SIZE 255
+#define ICON_LINE_HEIGHT 12
 
 typedef enum {
 	ICONSOLE_OPENED,
@@ -23,9 +26,9 @@ typedef enum {
 
 // ** main console ** //
 static bool _iconsole_inited;
-static char* _iconsole_buffer[ICONSOLE_BUFFER_SIZE];
-static char _iconsole_cbuffer[ICONSOLE_BUFFER_SIZE];
-static char _iconsole_cmdline[255];
+static char* _iconsole_buffer[ICON_BUFFER + 1];
+static char _iconsole_cbuffer[ICON_BUFFER + 1];
+static char _iconsole_cmdline[ICON_CMDLN_SIZE];
 static byte _iconsole_cmdpos;
 static _iconsole_modes _iconsole_mode = ICONSOLE_CLOSED;
 static Window* _iconsole_win = NULL;
@@ -41,8 +44,8 @@ byte _stdlib_developer = 1;
 bool _stdlib_con_developer = false;
 FILE* _iconsole_output_file;
 
-// ** main console cmd buffer ** // sign_de: especially for Celestar :D
-static char* _iconsole_cmdbuffer[20];
+// ** main console cmd buffer
+static char* _iconsole_cmdbuffer[ICON_CMDBUF_SIZE];
 static byte _iconsole_cmdbufferpos;
 
 // ** console window ** //
@@ -73,8 +76,9 @@ static void IConsoleAppendClipboard(void)
 		cbuf = GetClipboardData(CF_TEXT);
 		data = GlobalLock(cbuf);
 
-		for (; IS_INT_INSIDE(*data, 32, 256); ++data) /* XXX magic numbers */
-			_iconsole_cmdline[_iconsole_cmdpos++] = *data; /* XXX prone to buffer overflow */
+		/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+		for (; (IS_INT_INSIDE(*data, ' ', 256)) && (_iconsole_cmdpos < lengthof(_iconsole_cmdline) - 1); ++data)
+			_iconsole_cmdline[_iconsole_cmdpos++] = *data;
 
 		GlobalUnlock(cbuf);
 		CloseClipboard();
@@ -98,16 +102,15 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 		case WE_PAINT:
 		{
 			int i = _iconsole_scroll;
-			int max = w->height / 12 - 1;
+			int max = (w->height / ICON_LINE_HEIGHT) - 1;
 			GfxFillRect(w->left, w->top, w->width, w->height - 1, 0);
 			while ((i > _iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
 				DoDrawString(_iconsole_buffer[i], 5,
-					w->height - (_iconsole_scroll + 2 - i) * 12, _iconsole_cbuffer[i]);
+					w->height - (_iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
 				i--;
 			}
-			DoDrawString("]", 5, w->height - 12, _iconsole_color_commands);
-			DoDrawString(_iconsole_cmdline, 10, w->height - 12,
-				_iconsole_color_commands);
+			DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+			DoDrawString(_iconsole_cmdline, 10, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
 			break;
 		}
 		case WE_TICK:
@@ -147,17 +150,17 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
-					if (_iconsole_scroll - w->height / 12 - 1 < 0)
+					if (_iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0)
 						_iconsole_scroll = 0;
 					else
-						_iconsole_scroll -= w->height / 12 - 1;
+						_iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEDOWN:
-					if (_iconsole_scroll + w->height / 12 - 1 > 79) /* XXX magic number */
-						_iconsole_scroll = 79; /* XXX magic number */
+					if (_iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER)
+						_iconsole_scroll = ICON_BUFFER;
 					else
-						_iconsole_scroll += w->height / 12 - 1;
+						_iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_UP:
@@ -168,8 +171,8 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_DOWN:
-					if (_iconsole_scroll >= 79) /* XXX magic number */
-						_iconsole_scroll = 79; /* XXX magic number */
+					if (_iconsole_scroll >= ICON_BUFFER)
+						_iconsole_scroll = ICON_BUFFER;
 					else
 						++_iconsole_scroll;
 					SetWindowDirty(w);
@@ -190,13 +193,14 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					_iconsole_cmdbufferpos = 19;
 					break;
 				default:
-					if (IS_INT_INSIDE(e->keypress.ascii, 32, 256)) {
-						_iconsole_scroll = 79; /* XXX magic number */
+					/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+					if (IS_INT_INSIDE(e->keypress.ascii, ' ', 256)) {
+						_iconsole_scroll = ICON_BUFFER;
 						_iconsole_cmdline[_iconsole_cmdpos] = e->keypress.ascii;
-						if (_iconsole_cmdpos != sizeof(_iconsole_cmdline))
+						if (_iconsole_cmdpos != lengthof(_iconsole_cmdline))
 							_iconsole_cmdpos++;
 						SetWindowDirty(w);
-						_iconsole_cmdbufferpos = 19;
+						_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
 					}
 					else
 						e->keypress.cont = true;
@@ -218,8 +222,8 @@ void IConsoleInit(void)
 	_iconsole_color_warning = 13;
 	_iconsole_color_debug = 5;
 	_iconsole_color_commands = 2;
-	_iconsole_scroll = 79; /* XXX magic number */
-	_iconsole_cmdbufferpos = 19; /* XXX magic number */
+	_iconsole_scroll = ICON_BUFFER;
+	_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
 	_iconsole_inited = true;
 	_iconsole_mode = ICONSOLE_CLOSED;
 	_iconsole_win = NULL;
@@ -228,7 +232,7 @@ void IConsoleInit(void)
 	_icursor_counter = 0;
 	for (i = 0; i < lengthof(_iconsole_cmdbuffer); i++)
 		_iconsole_cmdbuffer[i] = NULL;
-	for (i = 0; i < ICONSOLE_BUFFER_SIZE; i++) {
+	for (i = 0; i <= ICON_BUFFER; i++) {
 		_iconsole_buffer[i] = NULL;
 		_iconsole_cbuffer[i] = 0;
 	}
@@ -248,7 +252,7 @@ void IConsoleInit(void)
 void IConsoleClear(void)
 {
 	uint i;
-	for (i = 0; i < ICONSOLE_BUFFER_SIZE; i++)
+	for (i = 0; i <= ICON_BUFFER; i++)
 		free(_iconsole_buffer[i]);
 }
 
@@ -296,7 +300,7 @@ void IConsoleClose(void)
 void IConsoleOpen(void)
 {
 	if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();
-	/* XXX missing _iconsole_mode ? */
+	_iconsole_mode = ICONSOLE_OPENED;
 }
 
 void IConsoleCmdBufferAdd(const char* cmd)
@@ -346,9 +350,9 @@ void IConsolePrint(byte color_code, const char* string)
 	_new = strdup(string);
 
 	for (i = _new; *i != '\0'; ++i)
-		if (*i < 0x1F) *i = ' '; /* XXX 0x1F seems wrong + magic number */
+		if (*i < ' ') *i = ' '; /* filter for ascii-function codes like BELL and so on [we need an special filter here later] */
 
-	for (j = ICONSOLE_BUFFER_SIZE - 1; j >= 0; --j) {
+	for (j = ICON_BUFFER; j >= 0; --j) {
 		_ex = _iconsole_buffer[j];
 		_exc = _iconsole_cbuffer[j];
 		_iconsole_buffer[j] = _new;
@@ -377,9 +381,7 @@ void CDECL IConsolePrintF(byte color_code, const char* s, ...)
 	if (_iconsole_output_file != NULL) {
 		// if there is an console output file ... also print it there
 		fwrite(buf, len, 1, _iconsole_output_file);
-		/* XXX why newline? */
-		buf[1023] = '\n';
-		fwrite(&buf[1023], 1, 1, _iconsole_output_file);
+		fwrite("\n", 1, 1, _iconsole_output_file);
 	}
 }
 
@@ -474,7 +476,7 @@ void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
 			item_new->data.string_ = addr;
 			break;
 		default:
-			assert(0); /* XXX */
+			error("unknown console variable type");
 			break;
 	}
 	item_new->type = type;
@@ -567,14 +569,13 @@ _iconsole_var* IConsoleVarAlloc(_iconsole_var_types type)
 			item->_malloc = true;
 			break;
 		case ICONSOLE_VAR_POINTER:
-		case ICONSOLE_VAR_STRING: /* XXX */
+		case ICONSOLE_VAR_STRING:
+			// needs no memory ... it gets memory when it is set to an value
 			item->data.addr = NULL;
 			item->_malloc = false;
 			break;
 		default:
-			assert(0); /* XXX */
-			item->data.addr = NULL;
-			item->_malloc = false;
+			error("unknown console variable type");
 			break;
 	}
 
@@ -672,7 +673,9 @@ void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc)
 			IConsolePrintF(_iconsole_color_default, "%s = @%p",
 				dump_desc, var->data.addr);
 			break;
-		case ICONSOLE_VAR_NONE: /* XXX */
+		case ICONSOLE_VAR_NONE:
+			IConsolePrintF(_iconsole_color_default, "%s = [nothing]",
+				dump_desc);
 			break;
 	}
 }
@@ -803,7 +806,7 @@ void IConsoleCmdExec(const char* cmdstr)
 	i = 0;
 	c = 0;
 	tokens[c] = tokenstream;
-	while (i < l) {
+	while (i < l && c < lengthof(tokens) - 1) {
 		if (cmdstr[i] == '"') {
 			if (longtoken) {
 				if (cmdstr[i + 1] == '"') {
@@ -857,18 +860,16 @@ void IConsoleCmdExec(const char* cmdstr)
 		tokentypes[i] = ICONSOLE_VAR_UNKNOWN;
 		if (tokens[i] != NULL && i > 0 && strlen(tokens[i]) > 0) {
 			if (tokens[i][0] == '*') {
-				if ((i == 2) && (tokentypes[1] == ICONSOLE_VAR_UNKNOWN) &&
-					(strcmp(tokens[1], "<<") == 0)) {
-					// don't change the variable to an pointer if execution_mode 4 is
-					// being prepared
-					// this is used to assign one variable the value of the other one
-					// [token 0 and 2]
-					/* XXX empty? */
-				} else {
+				// change the variable to an pointer if execution_mode != 4 is
+				// being prepared. execution_mode 4 is used to assign 
+				// one variables data to another one
+				// [token 0 and 2]
+				if (!((i == 2) && (tokentypes[1] == ICONSOLE_VAR_UNKNOWN) &&
+					(strcmp(tokens[1], "<<") == 0))) {
 					var = IConsoleVarGet(tokens[i]);
 					if (var != NULL) {
-						assert(0); /* XXX */
-						//tokens[i] = var->addr; /* XXX ? */
+						// pointer to the data --> token
+						tokens[i] = (char *) var->data.addr; /* XXX: maybe someone finds an cleaner way to do this */ 
 						tokentypes[i] = var->type;
 					}
 				}
@@ -876,8 +877,8 @@ void IConsoleCmdExec(const char* cmdstr)
 			if (tokens[i] != NULL && tokens[i][0] == '@' && tokens[i][1] == '*') {
 				var = IConsoleVarGet(tokens[i] + 1);
 				if (var != NULL) {
-					assert(0); /* XXX */
-					//tokens[i] = var; /* XXX wtf? incompatible pointer type! */
+					// pointer to the _iconsole_var struct --> token
+					tokens[i] = (char *) var; /* XXX: maybe someone finds an cleaner way to do this */ 
 					tokentypes[i] = ICONSOLE_VAR_REFERENCE;
 				}
 			}
@@ -952,10 +953,10 @@ void IConsoleCmdExec(const char* cmdstr)
 							}
 							IConsoleVarDump(var, NULL);
 						} else if (strcmp(tokens[1], "++") == 0) {
-							*var->data.bool_ = !*var->data.bool_; /* XXX ++ on bool */
+							*var->data.bool_ = true;
 							IConsoleVarDump(var, NULL);
 						} else if (strcmp(tokens[1], "--") == 0) {
-							*var->data.bool_ = !*var->data.bool_; /* XXX -- on bool */
+							*var->data.bool_ = false;
 							IConsoleVarDump(var, NULL);
 						}
 						else
@@ -1074,26 +1075,27 @@ void IConsoleCmdExec(const char* cmdstr)
 						if (strcmp(tokens[1], "=") == 0) {
 							if (c == 3) {
 								if (tokentypes[2] == ICONSOLE_VAR_UNKNOWN)
-									var->data.addr = (void*)atoi(tokens[2]); /* XXX ? */
+									var->data.addr = (void*)atoi(tokens[2]); /* direct access on memory [by address] */
 								else
-									var->data.addr = (void*)tokens[2]; /* XXX ? */
+									var->data.addr = (void*)tokens[2]; /* direct acces on memory [by variable] */
 							} else
 								var->data.addr = NULL;
 							IConsoleVarDump(var, NULL);
 						} else if (strcmp(tokens[1], "++") == 0) {
-							++*(char*)&var->data.addr; /* XXX ++ on an arbitrary pointer? */
+							++*(char*)&var->data.addr; /* change the address + 1 */
 							IConsoleVarDump(var, NULL);
 						} else if (strcmp(tokens[1], "--") == 0) {
-							--*(char*)&var->data.addr; /* XXX -- on an arbitrary pointer? */
+							--*(char*)&var->data.addr; /* change the address - 1 */
 							IConsoleVarDump(var, NULL);
 						}
 						else
 							IConsoleError("operation not supported");
 						break;
 					}
-					case ICONSOLE_VAR_NONE: /* XXX */
-					case ICONSOLE_VAR_REFERENCE: /* XXX */
-					case ICONSOLE_VAR_UNKNOWN: /* XXX */
+					case ICONSOLE_VAR_NONE: 
+					case ICONSOLE_VAR_REFERENCE: 
+					case ICONSOLE_VAR_UNKNOWN: 
+						IConsoleError("operation not supported");
 						break;
 				}
 				IConsoleVarHookHandle(var, ICONSOLE_HOOK_AFTER_CHANGE);
@@ -1178,7 +1180,6 @@ void IConsoleCmdExec(const char* cmdstr)
 
 				if (execution_mode == 3) {
 					IConsoleVarFree(result);
-					result = NULL;
 				}
 			}
 			break;
@@ -1189,7 +1190,6 @@ void IConsoleCmdExec(const char* cmdstr)
 			break;
 	}
 
-	//** freeing the tokens **//
-	for (i = 0; i < 20; i++) tokens[i] = NULL; /* XXX wtf? */
+	//** freeing the tokenstream **//
 	free(tokenstream_s);
 }
