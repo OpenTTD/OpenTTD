@@ -378,9 +378,6 @@ typedef struct {
 
 VARDEF CargoConst _cargoc;
 
-typedef byte TownNameGenerator(byte *buf, uint32 seed);
-extern TownNameGenerator * const _town_name_generators[];
-
 
 static inline void SetDParamX(uint32 *s, uint n, uint32 v)
 {

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "table/strings.h"
+#include "namegen.h"
 #include "station.h"
 #include "town.h"
 #include "vehicle.h"
