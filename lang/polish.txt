@@ -912,7 +912,6 @@ STR_CONFIG_PATCHES_REALISTICACCEL       :{LTBLUE}Realistyczne przyspieszenie poc
 STR_CONFIG_PATCHES_JOINSTATIONS         :{LTBLUE}Polacz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY          :{LTBLUE}Wyjazd ze stacji gdy jakis towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                :{LTBLUE}Inflacja: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE       :{LTBLUE}Bez auomatycznego servisowania pociagow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS          :{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES          :{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT            :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING}
@@ -935,7 +934,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS       :{LTBLUE}Zawsze zezwalaj budowac male lo
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS      :{LTBLUE}Pociag zagubil sie jesli nie porusza sie przez: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_WARN_INCOME_LESS     :{LTBLUE}Ostrzegaj jesli pociag przynosi straty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES:{LTBLUE}Pojazdy nigdy nie starzeja sie: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE            :{LTBLUE}Automatycznie odnow pojazd kiedy sa stare
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE    :{LTBLUE}Automatycznie odnow pojazd kiedy sa stare
 STR_CONFIG_PATCHES_ERRMSG_DURATION      :{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT      :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD       :{LTBLUE}Maks wielkosc stacji: {ORANGE}{STRING}
@@ -1714,7 +1713,7 @@ STR_6838_SHOW_HI_SCORE_CHART            :{BLACK}Pokaz liste hi-score
 ##id 0x7000
 STR_7000                                :
 STR_7001                                :{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER		                      : (Gracz {COMMA16})
+STR_7002_PLAYER                         : (Gracz {COMMA16})
 STR_7004_NEW_FACE                       :{BLACK}nowa twarz
 STR_7005_COLOR_SCHEME                   :{BLACK}Schemat koloru
 STR_7006_COLOR_SCHEME                   :{GOLD}Schemat koloru:
@@ -1829,7 +1828,7 @@ STR_7072_VIEW_HQ                        :{BLACK}Zobacz SG
 STR_7073_WORLD_RECESSION_FINANCIAL      :{BIGFONT}{BLACK}Swiatowa recesja!{}{}Eksperci finansowi obawiaja sie najgorszego z powodu zastoju!
 STR_7074_RECESSION_OVER_UPTURN_IN       :{BIGFONT}{BLACK}Koniec recesji!{}{}Zmiana w wymianach daje pewnosc umocnienia fabryk i ekonomii!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW      :{BLACK}Przelacz duze/male okienko
-STR_7076_COMPANY_VALUE                  :{GOLD}Wartosc firmy: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE                  :{GOLD}Wartosc firmy: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY        :{BLACK}Kup 25% udzialow w firmie
 STR_7078_SELL_25_SHARE_IN_COMPANY       :{BLACK}Sprzedaj 25% udzialow w firmie
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY   :{BLACK}Kup 25% udzialow w tej firmie

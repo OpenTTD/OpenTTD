@@ -1805,7 +1805,7 @@ STR_RELOCATE_HQ							:{BLACK}Flyt hovedkvarter
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Skift mellem stort/lille vindue
-STR_7076_COMPANY_VALUE						:{GOLD}Selskabsværdi: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Selskabsværdi: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Køb 25% aktier i firmaet
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Sælg 25% aktier i firmaet
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Kæb 25% aktier i dette firma

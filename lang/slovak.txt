@@ -320,8 +320,6 @@ STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME			:{BLACK}Nova Hra
 STR_0141_LOAD_GAME			:{BLACK}Nahrat Hru
 STR_0142_TUTORIAL_DEMONSTRATION		:{BLACK}Nacvik / Ukazka
-STR_0143_1_PLAYER			:{BLACK}1 Hrac
-STR_0144_2_PLAYERS			:{BLACK}2 Hraci
 
 STR_0148_GAME_OPTIONS			:{BLACK}Nastavenia Hry
 
@@ -913,7 +911,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS		:{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE
 STR_CONFIG_PATCHES_REALISTICACCEL		:{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS			:{LTBLUE}Umoznit spajat stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY			:{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE		:{LTBLUE}Vypnut automaticke opravy vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Vykladat tovar v stanici len ked je dopyt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Umoznit stavbu dlhych mostov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Umoznit prikaz chod do depa: {ORANGE}{STRING}
@@ -935,7 +932,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS       :{LTBLUE}Vzdy povolit male letiska: {ORA
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS      :{LTBLUE}Vlak sa strati pokial nic nedosiahne za: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_WARN_INCOME_LESS     :{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE    :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
 STR_CONFIG_PATCHES_ERRMSG_DURATION      :{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT      :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD       :{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING}
@@ -1733,7 +1730,7 @@ STR_7072_VIEW_HQ				:{BLACK}Pozriet sidlo
 STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Prepinac velkosti okna
-STR_7076_COMPANY_VALUE				:{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE				:{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Kupit 25% podiel v spolocnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Predat 25% podiel v spolocnosti
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY		:{BLACK}Kupit 25% podiel v tejto spolocnosti

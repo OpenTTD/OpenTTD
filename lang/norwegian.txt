@@ -320,8 +320,6 @@ STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Nytt spill
 STR_0141_LOAD_GAME						:{BLACK}Last inn spill
 STR_0142_TUTORIAL_DEMONSTRATION			:{BLACK}Tutorial / Demonstration
-STR_0143_1_PLAYER						:{BLACK}1 Spiller
-STR_0144_2_PLAYERS						:{BLACK}2 Spillere
 
 STR_0148_GAME_OPTIONS					:{BLACK}Spill innstillinger
 
@@ -912,7 +910,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS		:{LTBLUE}Tillate bygging av veldig lange tog :
 STR_CONFIG_PATCHES_REALISTICACCEL		:{LTBLUE}Realistisk tog akslerasjon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS			:{LTBLUE}Slå sammen stasjoner som blir bygget på siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY			:{LTBLUE}Forlat stasjonen når en type varevogn er full, hvis 'full last' er på: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE		:{LTBLUE}Ingen automatisk tog service: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Lever varer til en stasjon bare når varen trengs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Tillate bygging av veldig lange broer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Tillate gå til jernbanestall order: {ORANGE}{STRING}
@@ -934,7 +931,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Alltid tillate bygging av små flypla
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Et tog har kjørt seg vil vist de ikke har kommet lengre på ordrelisten etter:{ORANGE}{STRING} dager
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Advar hvis et tog går med større underskudd enn: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE					:{LTBLUE}Bytt automatisk ut kjøretøy, når det blir gammelt:
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE		:{LTBLUE}Bytt automatisk ut kjøretøy, når det blir gammelt:
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Varighet til feilmelding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Snø høyde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Maks statsjon spredning: {ORANGE}{STRING}
@@ -1734,7 +1731,7 @@ STR_7072_VIEW_HQ						:{BLACK}Se HK
 STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Verdenskrise!{}{}Økonomer frykter det værste når de går nedgangstider i møte.
 STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Verdenskrise over!{}{}Opptur i markedet gir tilbake selvsikkerheten til industrien.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Bytte mellom stor/liten vindu størrelse
-STR_7076_COMPANY_VALUE					:{GOLD}Firma verdi: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE					:{GOLD}Firma verdi: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Kjøp 25% av aksjene i firmaet
 STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Selg 25% av aksjene du eier
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY	:{BLACK}Kjøp 25% av aksjene i firmaet

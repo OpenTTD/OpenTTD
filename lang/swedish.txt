@@ -1833,7 +1833,7 @@ STR_7072_VIEW_HQ						:{BLACK}Visa högkvarter
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Växla stor/liten fönsterstorlek
-STR_7076_COMPANY_VALUE						:{GOLD}Företagets värde: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Företagets värde: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Köp 25% andel i företag
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Sälj 25% andel i företag
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Köp 25% andel i detta företag
