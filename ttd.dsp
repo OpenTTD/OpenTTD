@@ -216,6 +216,10 @@ SOURCE=.\landscape.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\md5.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\minilzo.c
 
 !IF  "$(CFG)" == "ttd - Win32 Release"
