@@ -157,7 +157,7 @@ static void DedicatedVideoStop(void)
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 
-#ifdef UNIX
+#if defined(UNIX) || defined(__OS2__)
 static bool InputWaiting(void)
 {
 	struct timeval tv;
