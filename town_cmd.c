@@ -429,18 +429,23 @@ void OnTick_Town(void)
 {
 	uint i;
 	Town *t;
+	int towns;
 
 	if (_game_mode == GM_EDITOR)
 		return;
 
-	i = _cur_town_ctr;
-	if (++_cur_town_ctr >= GetTownPoolSize())
-		_cur_town_ctr = 0;
+	/* FIXME: This way we scale for larger map, but not for the smaller
+	 * ones. --pasky */
+	for (towns = ScaleByMapSize(1); towns > 0; towns--) {
+		i = _cur_town_ctr;
+		if (++_cur_town_ctr >= GetTownPoolSize())
+			_cur_town_ctr = 0;
 
-	t = GetTown(i);
+		t = GetTown(i);
 
-	if (t->xy != 0)
-		TownTickHandler(t);
+		if (t->xy != 0)
+			TownTickHandler(t);
+	}
 }
 
 static byte GetTownRoadMask(TileIndex tile)
