@@ -667,9 +667,11 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		// We have a new entry at the top of the list of menu 9 when networking
 		//  so keep that in count
-		if (!_networking || (WP(w,menu_d).main_button == 9 && index > 0)) {
-			index = GetPlayerIndexFromMenu(index-1)+1;
-		}
+		if (_networking && WP(w,menu_d).main_button == 9) {
+			if (index > 0)
+			 index = GetPlayerIndexFromMenu(index - 1) + 1;
+		} else
+			index = GetPlayerIndexFromMenu(index);
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
@@ -692,11 +694,11 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		// We have a new entry at the top of the list of menu 9 when networking
 		//  so keep that in count
-		if (index != -1) {
-			if (!_networking || (WP(w,menu_d).main_button == 9 && index != 0)) {
-				index = GetPlayerIndexFromMenu(index-1)+1;
-			}
-		}
+		if (_networking && WP(w,menu_d).main_button == 9) {
+			if (index > 0)
+			 index = GetPlayerIndexFromMenu(index - 1) + 1;
+		} else
+			index = GetPlayerIndexFromMenu(index);
 
 		if (index == -1 || index == WP(w,menu_d).sel_index)
 			return;
@@ -748,9 +750,13 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w,menu_d).item_count = 0;
-	WP(w,menu_d).sel_index = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
-	if (_networking && main_button == 9 && _local_player != OWNER_SPECTATOR) {
-		WP(w,menu_d).sel_index++;
+	WP(w,menu_d).sel_index = (_local_player != OWNER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
+	if (_networking && main_button == 9) {
+		if (_local_player != OWNER_SPECTATOR)
+			WP(w,menu_d).sel_index++;
+		else
+			/* Select client list by default for spectators */
+			WP(w,menu_d).sel_index = 0;
 	}
 	WP(w,menu_d).action_id = main_button;
 	WP(w,menu_d).main_button = main_button;
