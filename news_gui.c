@@ -28,7 +28,8 @@ static NewsItem _news_items[MAX_NEWS];
 static byte _current_news = 255; // points to news item that should be shown next
 static byte _oldest_news = 0;    // points to first item in fifo queue
 static byte _latest_news = 255;  // points to last item in fifo queue
-static byte _forced_news = 255;  // points to a forced-to-be-shown item (255 for none)
+static byte _forced_news = 255;  // if the message being shown was forced by the user, its index is stored in _forced_news. 
+																 //forced_news is 255 otherwise. (Users can force messages through history or "last message")
 
 static byte _total_news = 0; // total news count
 
@@ -37,6 +38,7 @@ void DrawNewsNewRoadVehAvail(Window *w);
 void DrawNewsNewShipAvail(Window *w);
 void DrawNewsNewAircraftAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
+static void MoveToNexItem();
 
 StringID GetNewsStringNewTrainAvail(NewsItem *ni);
 StringID GetNewsStringNewRoadVehAvail(NewsItem *ni);
@@ -199,6 +201,10 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	if (_game_mode == GM_MENU)
 		return;
+
+	// check the rare case that the oldest (to be overwritten) news item is open
+	if(_oldest_news == _current_news || _oldest_news == _forced_news)
+		MoveToNexItem();
 
 	_forced_news = 255;
 	if(_total_news < MAX_NEWS) _total_news++;
@@ -366,6 +372,7 @@ static bool ReadyForNextItem()
 static void MoveToNexItem()
 {
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
+	_forced_news = 255;
 
 	// if we're not at the last item, than move on
 	if(_current_news != _latest_news)
