@@ -508,7 +508,7 @@ static void DrawSmallMapVegetation(byte *dst, uint xc, uint yc, int pitch, int r
 }
 
 
-static uint32 *_owner_colors;
+static uint32 _owner_colors[256];
 
 static inline uint32 GetSmallMapOwnerPixels(uint tile)
 {
@@ -603,24 +603,20 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	/* setup owner table */
 	if (type == 5) {
 		Player *p;
-		uint32 *tbl;
-
-		/* setup owners ptr */
-		_owner_colors = tbl = alloca(256 * sizeof(*_owner_colors));
 
 		/* clear the town colors */
-		memset(tbl + 128, 0xB4, 128 * sizeof(*_owner_colors));
+		memset(&_owner_colors[128], 0xB4, 128 * sizeof(*_owner_colors));
 
 		/* fill with some special colors */
-		tbl[0x10] = MKCOLOR(0x54545454);
-		tbl[0x11] = MKCOLOR(0xCACACACA);
-		tbl[0xff] = MKCOLOR(0x20202020); /* industry */
+		_owner_colors[0x10] = MKCOLOR(0x54545454);
+		_owner_colors[0x11] = MKCOLOR(0xCACACACA);
+		_owner_colors[0xff] = MKCOLOR(0x20202020); /* industry */
 
 		/* now fill with the player colors */
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				tbl[p->index] = dup_byte32(GetSpritePtr(0x307 + p->player_color)[0xCB]);
-			}
+			if (p->is_active)
+				_owner_colors[p->index] =
+					dup_byte32(GetSpritePtr(0x307 + p->player_color)[0xCB]);
 		}
 	}
 
