@@ -73,6 +73,8 @@ enum {
 
 void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radius);
 
+TileIndex GetStationTileForVehicle(Vehicle *v, Station *st);
+
 void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord();
 

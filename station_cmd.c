@@ -61,6 +61,20 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 	return (closest_station == -1) ? NULL : DEREF_STATION(closest_station);
 }
 
+TileIndex GetStationTileForVehicle(Vehicle *v, Station *st)
+{
+	TileIndex required_tile=0;
+
+	switch (v->type) {
+		case VEH_Train: 		return st->train_tile;
+		case VEH_Aircraft:	return st->airport_tile;
+		case VEH_Ship:			return st->dock_tile;
+		case VEH_Road:			return (v->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
+		default:
+			assert(false);
+			return 0;
+	}
+}
 
 static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 {

@@ -357,77 +357,68 @@ int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 int CheckOrders(Vehicle *v)
 {
-	int i, n_st, duplicate;
-	uint16 order, old_orderer;
-	uint16 dummy;
-	int message=0;
-	
-	/* check the order list */
-	order = v->schedule_ptr[0];
-	n_st = duplicate = dummy = 0;
+	if (!_patches.order_review_system)	//User doesn't want things to be checked
+		return 0;
+		
+	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
+		return 0;
 
-	/* only check every 20 days */
+	/* only check every 20 days, so that we don't flood the message log */
 	if ( ( ( v->day_counter % 20) == 0 ) && (v->owner == _local_player) ) {
-		for(old_orderer = i = 0; order!=0; i++ ) {
+
+		uint16 order, old_order;
+		int i, n_st, problem_type = -1;
+		Station *st;
+		int message=0;
+		TileIndex required_tile=-1;
+
+		/* check the order list */
+		order = v->schedule_ptr[0];
+		n_st = 0;
+
+ 		for (old_order = i = 0; order!=0; i++ ) {
 			order = v->schedule_ptr[i];
-			if (order == old_orderer) duplicate = -1;
-			if ( (order & OT_MASK) == OT_DUMMY ) dummy = -1;
+			if (order == old_order) {
+				problem_type = 2;
+				break;
+			}
+			if ( (order & OT_MASK) == OT_DUMMY ) {
+				problem_type = 1;
+				break;
+			}
 			if ( ( (order & OT_MASK) == OT_GOTO_STATION ) /*&& (order != old_order) */) {
 				//I uncommented this in order not to get two error messages
 				//when two identical entries are in the list
 				n_st++;
+				st = DEREF_STATION(order >> 8);
+				required_tile = GetStationTileForVehicle(v,st);
 			}
-			old_orderer = order; //store the old order
+			old_order = order; //store the old order
 		}
 
 		//Now, check the last and the first order
 		//as the last order is the end of order marker, jump back 2
-		if ( (v->schedule_ptr[0] == v->schedule_ptr[i-2]) && ( i-2 != 0 ) ) duplicate = -1;
+		if ( (v->schedule_ptr[0] == v->schedule_ptr[i-2]) && ( i-2 != 0 ) ) {
+			problem_type = 2;
+		}
+		
+		if (n_st < 2) problem_type = 0;
+		
+		if (!required_tile) problem_type = 3;
 
 		SET_DPARAM16(0, v->unitnumber);
-
-		if  (n_st < 2) {
-			switch (v->type) {
-				case VEH_Train: message = STR_TRAIN_HAS_TOO_FEW_ORDERS; break;
-				case VEH_Road: message = STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS; break;
-				case VEH_Ship: message = STR_SHIP_HAS_TOO_FEW_ORDERS; break;
-				case VEH_Aircraft: message = STR_AIRCRAFT_HAS_TOO_FEW_ORDERS; break;
-			}
-			AddNewsItem(
-				message,
-				NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-				v->index,
-				0);
-		} else if (duplicate) {
-			switch (v->type) {
-				case VEH_Train: message = STR_TRAIN_HAS_DUPLICATE_ENTRY; break;
-				case VEH_Road: message = STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY; break;
-				case VEH_Ship: message = STR_SHIP_HAS_DUPLICATE_ENTRY; break;
-				case VEH_Aircraft: message = STR_AIRCRAFT_HAS_DUPLICATE_ENTRY; break;
-			}
-			AddNewsItem(
-				message,
-				NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-				v->index,
-				0);
-		} else if (dummy) {
-			switch (v->type) {
-				case VEH_Train: message = STR_TRAIN_HAS_VOID_ORDER; break;
-				case VEH_Road: message = STR_ROADVEHICLE_HAS_VOID_ORDER; break;
-				case VEH_Ship: message = STR_SHIP_HAS_VOID_ORDER; break;
-				case VEH_Aircraft: message = STR_AIRCRAFT_HAS_VOID_ORDER; break;
-			}
-			AddNewsItem(
-				message,
-				NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-				v->index,
-				0);
-		}
+		
+		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
+	
+		if (problem_type < 0) return 0;
+		
+		AddNewsItem(
+			message,
+			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
+			v->index,
+			0);
 	}
 	// End of order check
 
-	if ( (n_st > 2) || (duplicate) || (dummy) ) 
-		return 1;
-	else
-		return 0;
+	return 1;
 }

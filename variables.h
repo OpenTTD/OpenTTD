@@ -94,6 +94,7 @@ typedef struct Patches {
 	bool multiple_industry_per_town;	// allow many industries of the same type per town
 	bool same_industry_close;	// allow same type industries to be built close to each other
 	uint16 lost_train_days;	// if a train doesn't switch order in this amount of days, a train is lost warning is shown
+	uint8 order_review_system;
 	bool train_income_warn; // if train is generating little income, show a warning
 	bool status_long_date;		// always show long date in status bar
 	bool signal_side;				// show signals on right side

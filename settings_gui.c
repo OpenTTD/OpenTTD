@@ -712,6 +712,7 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND, &_patches.new_pathfinding},
 
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_WARN_INCOME_LESS, &_patches.train_income_warn},
+	{PE_UINT8, PF_MULTISTRING, STR_CONFIG_PATCHES_ORDER_REVIEW, &_patches.order_review_system,0,2,1},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, &_patches.never_expire_vehicles},
 
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, &_patches.lost_train_days, 180, 720, 60},
