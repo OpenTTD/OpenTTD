@@ -594,18 +594,15 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 DEF_CONSOLE_CMD(ConExec)
 {
 	char cmd[1024];
-	bool doerror;
 
-	if (argc<2) return NULL;
+	if (argc < 2) return NULL;
 
-	doerror = true;
 	_script_file = fopen(argv[1], "r");
 
 	if (_script_file == NULL) {
-		if (argc>2) if (atoi(argv[2])==0) doerror=false;
-		if (doerror) IConsoleError("script file not found");
+		if (argc <= 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
 		return NULL;
-		}
+	}
 
 	_script_running = true;
 
