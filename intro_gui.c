@@ -325,10 +325,3 @@ int32 CmdSetNewLandscapeType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 	return 0;
 }
-
-int32 CmdSetNewMapSize(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (flags & DC_EXEC) {
-	}
-	return 0;
-}
