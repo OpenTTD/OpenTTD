@@ -6,6 +6,7 @@
 #include "network_gamelist.h"
 
 extern void UpdateNetworkGameWindow(bool unselect);
+extern void NetworkPopulateCompanyInfo(void);
 
 //
 // This file handles all the LAN-stuff
@@ -14,8 +15,10 @@ extern void UpdateNetworkGameWindow(bool unselect);
 //
 
 typedef enum {
-	PACKET_UDP_FIND_SERVER,
+	PACKET_UDP_CLIENT_FIND_SERVER,
 	PACKET_UDP_SERVER_RESPONSE,
+	PACKET_UDP_CLIENT_DETAIL_INFO,
+	PACKET_UDP_SERVER_DETAIL_INFO, // Is not used in OpenTTD itself, only for external querying
 	PACKET_UDP_END
 } PacketUDPType;
 
@@ -24,7 +27,7 @@ static SOCKET _udp_server_socket; // udp server socket
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
 void NetworkSendUDP_Packet(Packet *p, struct sockaddr_in *recv);
 
-DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_FIND_SERVER)
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
 	Packet *packet;
 	// Just a fail-safe.. should never happen
@@ -100,13 +103,121 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	UpdateNetworkGameWindow(false);
 }
 
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
+{
+	ClientState *cs;
+	NetworkClientInfo *ci;
+	Packet *packet;
+	Player *player;
+	byte active = 0;
+	byte current = 0;
+	int i;
+
+	// Just a fail-safe.. should never happen
+	if (!_network_udp_server)
+		return;
+
+	packet = NetworkSend_Init(PACKET_UDP_SERVER_DETAIL_INFO);
+
+	FOR_ALL_PLAYERS(player) {
+		if (player->is_active)
+			active++;
+	}
+
+	/* Send the amount of active companies */
+	NetworkSend_uint8 (packet, NETWORK_COMPANY_INFO_VERSION);
+	NetworkSend_uint8 (packet, active);
+
+	/* Fetch the latest version of everything */
+	NetworkPopulateCompanyInfo();
+
+	/* Go through all the players */
+	FOR_ALL_PLAYERS(player) {
+		/* Skip non-active players */
+		if (!player->is_active)
+			continue;
+
+		current++;
+
+		/* Send the information */
+		NetworkSend_uint8 (packet, current);
+
+		NetworkSend_string(packet, _network_player_info[player->index].company_name);
+		NetworkSend_uint8 (packet, _network_player_info[player->index].inaugurated_year);
+		NetworkSend_uint64(packet, _network_player_info[player->index].company_value);
+		NetworkSend_uint64(packet, _network_player_info[player->index].money);
+		NetworkSend_uint64(packet, _network_player_info[player->index].income);
+		NetworkSend_uint16(packet, _network_player_info[player->index].performance);
+
+		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
+			NetworkSend_uint16(packet, _network_player_info[player->index].num_vehicle[i]);
+
+		for (i = 0; i < NETWORK_STATION_TYPES; i++)
+			NetworkSend_uint16(packet, _network_player_info[player->index].num_station[i]);
+
+		/* Find the clients that are connected to this player */
+		FOR_ALL_CLIENTS(cs) {
+			ci = DEREF_CLIENT_INFO(cs);
+			if ((ci->client_playas - 1) == player->index) {
+				/* The uint8 == 1 indicates that a client is following */
+				NetworkSend_uint8(packet, 1);
+				NetworkSend_string(packet, ci->client_name);
+				NetworkSend_string(packet, ci->unique_id);
+				NetworkSend_uint16(packet, ci->join_date);
+			}
+		}
+		/* Also check for the server itself */
+		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		if ((ci->client_playas - 1) == player->index) {
+			/* The uint8 == 1 indicates that a client is following */
+			NetworkSend_uint8(packet, 1);
+			NetworkSend_string(packet, ci->client_name);
+			NetworkSend_string(packet, ci->unique_id);
+			NetworkSend_uint16(packet, ci->join_date);
+		}
+
+		/* Indicates end of client list */
+		NetworkSend_uint8(packet, 0);
+	}
+
+	/* And check if we have any spectators */
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if ((ci->client_playas - 1) > MAX_PLAYERS) {
+			/* The uint8 == 1 indicates that a client is following */
+			NetworkSend_uint8(packet, 1);
+			NetworkSend_string(packet, ci->client_name);
+			NetworkSend_string(packet, ci->unique_id);
+			NetworkSend_uint16(packet, ci->join_date);
+		}
+	}
+	/* Also check for the server itself */
+	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	if ((ci->client_playas - 1) > MAX_PLAYERS) {
+		/* The uint8 == 1 indicates that a client is following */
+		NetworkSend_uint8(packet, 1);
+		NetworkSend_string(packet, ci->client_name);
+		NetworkSend_string(packet, ci->unique_id);
+		NetworkSend_uint16(packet, ci->join_date);
+	}
+
+	/* Indicates end of client list */
+	NetworkSend_uint8(packet, 0);
+
+	NetworkSendUDP_Packet(packet, client_addr);
+
+	free(packet);
+}
+
 
 // The layout for the receive-functions by UDP
 typedef void NetworkUDPPacket(Packet *p, struct sockaddr_in *client_addr);
 
 static NetworkUDPPacket* const _network_udp_packet[] = {
-	RECEIVE_COMMAND(PACKET_UDP_FIND_SERVER),
+	RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER),
 	RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE),
+	RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO),
+	NULL,
 };
 
 // If this fails, check the array above with network_data.h
@@ -279,7 +390,7 @@ void NetworkUDPBroadCast(void)
 	Packet *p;
 
 	// Init the packet
-	p = NetworkSend_Init(PACKET_UDP_FIND_SERVER);
+	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
 
 	// Go through all the ips on this pc
 	i = 0;
@@ -347,7 +458,7 @@ void NetworkUDPQueryServer(const byte* host, unsigned short port)
 	item->online = false;
 
 	// Init the packet
-	p = NetworkSend_Init(PACKET_UDP_FIND_SERVER);
+	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
 
 	NetworkSendUDP_Packet(p, &out_addr);
 
