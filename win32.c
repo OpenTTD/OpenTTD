@@ -1520,6 +1520,13 @@ void ShowOSErrorBox(const char *buf)
 }
 #endif
 
+#ifndef __MINGW32__
+static inline int strcasecmp(const char* s1, const char* s2)
+{
+	return stricmp(s1, s2);
+}
+#endif
+
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -1544,15 +1551,16 @@ static HANDLE MyFindFirstFile(const char *path, const char *file,
 	return FindFirstFile(paths, fd);
 }
 
-int CDECL compare_FiosItems (const void *a, const void *b) {
+int CDECL compare_FiosItems(const void *a, const void *b)
+{
 	const FiosItem *da = (const FiosItem *)a;
 	const FiosItem *db = (const FiosItem *)b;
 	int r;
 
 	if (_savegame_sort_order < 2) // sort by date
-    r = da->mtime < db->mtime ? -1 : 1;
+		r = da->mtime < db->mtime ? -1 : 1;
 	else
-		r = stricmp(
+		r = strcasecmp(
 			da->title[0] != '\0' ? da->title : da->name,
 			db->title[0] != '\0' ? db->title : db->name
 		);
@@ -1561,6 +1569,7 @@ int CDECL compare_FiosItems (const void *a, const void *b) {
 	return r;
 }
 
+
 // Get a list of savegames
 FiosItem *FiosGetSavegameList(int *num, int mode)
 {
@@ -1568,7 +1577,6 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	HANDLE h;
 	FiosItem *fios;
 	int sort_start;
-	char buf[MAX_PATH];
 
 	if (_fios_save_path == NULL) {
 		_fios_save_path = malloc(MAX_PATH);
@@ -1581,12 +1589,12 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		_fios_path = _fios_save_path;
 
 	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != 0) {
+	if (_fios_path[3] != '\0') {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
+		fios->mtime = 0;
 		strcpy(fios->title, ".. (Parent directory)");
 	}
-
 
 	// Show subdirectories first
 	h = MyFindFirstFile(_fios_path, "*.*", &fd);
@@ -1597,8 +1605,10 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 					strcmp(fd.cFileName, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
-				strcpy(fios->name, fd.cFileName);
-				sprintf(fios->title, "\\%s (Directory)", fd.cFileName);
+				fios->mtime = 0;
+				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
+				snprintf(fios->title, lengthof(fios->title),
+					"%s\\ (Directory)", fd.cFileName);
 			}
 		} while (FindNextFile(h, &fd));
 		FindClose(h);
@@ -1607,39 +1617,40 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	// this is where to start sorting
 	sort_start = _fios_count;
 
-	/*	Show savegame files
-	 *	.SAV	OpenTTD saved game
-	 *	.SS1	Transport Tycoon Deluxe preset game
-	 *	.SV1	Transport Tycoon Deluxe (Patch) saved game
-	 *	.SV2	Transport Tycoon Deluxe (Patch) saved 2-player game
+	/* Show savegame files
+	 * .SAV OpenTTD saved game
+	 * .SS1 Transport Tycoon Deluxe preset game
+	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
+	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game
 	 */
 	h = MyFindFirstFile(_fios_path, "*.*", &fd);
 	if (h != INVALID_HANDLE_VALUE) {
 		do {
-			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-				char *t = strrchr(fd.cFileName, '.');
-				if (t && !stricmp(t, ".SAV")) { // OpenTTD
+			char *t;
+
+			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) continue;
+
+			t = strrchr(fd.cFileName, '.');
+			if (t != NULL && strcasecmp(t, ".sav") == 0) { // OpenTTD
+				fios = FiosAlloc();
+				fios->type = FIOS_TYPE_FILE;
+				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
+				fios->title[0] = '\0';
+				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
+			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
+				if (t != NULL && (
+							strcasecmp(t, ".ss1") == 0 ||
+							strcasecmp(t, ".sv1") == 0 ||
+							strcasecmp(t, ".sv2") == 0
+						)) { // TTDLX(Patch)
+					char buf[MAX_PATH];
+
 					fios = FiosAlloc();
+					fios->type = FIOS_TYPE_OLDFILE;
 					fios->mtime = *(uint64*)&fd.ftLastWriteTime;
+					ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
 					sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-					fios->type = FIOS_TYPE_FILE;
-					fios->title[0] = 0;
-					ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
-				}	else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-					int ext = 0; // start of savegame extensions in _old_extensions[]
-					if (t != NULL && (
-								(ext++, stricmp(t, ".SS1") == 0) ||
-								(ext++, stricmp(t, ".SV1") == 0) ||
-								(ext++, stricmp(t, ".SV2") == 0)
-							)) { // TTDLX(Patch)
-						fios = FiosAlloc();
-						fios->old_extension = ext-1;
-						fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-						sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-						fios->type = FIOS_TYPE_OLDFILE;
-						GetOldSaveGameName(fios->title, buf);
-						ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
-					}
+					GetOldSaveGameName(fios->title, buf);
 				}
 			}
 		} while (FindNextFile(h, &fd));
@@ -1651,18 +1662,17 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	// Drives
 	{
 		char drives[256];
-		char *s;
+		const char *s;
+
 		GetLogicalDriveStrings(sizeof(drives), drives);
-		s=drives;
-		while (*s) {
+		for (s = drives; *s != '\0';) {
 			fios = FiosAlloc();
 			fios->type = FIOS_TYPE_DRIVE;
-			fios->title[0] = s[0];
-			fios->title[1] = ':';
-			fios->title[2] = 0;
-			while (*s++) {}
+			sprintf(fios->title, "%c:", s[0]);
+			while (*s++ != '\0') {}
 		}
 	}
+
 	*num = _fios_count;
 	return _fios_items;
 }
@@ -1674,7 +1684,6 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	WIN32_FIND_DATA fd;
 	HANDLE h;
 	int sort_start;
-	char buf[MAX_PATH];
 
 	if (mode == SLD_NEW_GAME || _fios_scn_path == NULL) {
 		if (_fios_scn_path == NULL)
@@ -1688,6 +1697,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	if (_fios_path[3] != '\0' && mode != SLD_NEW_GAME) {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
+		fios->mtime = 0;
 		strcpy(fios->title, ".. (Parent directory)");
 	}
 
@@ -1700,8 +1710,10 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 					strcmp(fd.cFileName, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
-				strcpy(fios->name, fd.cFileName);
-				sprintf(fios->title, "\\%s (Directory)", fd.cFileName);
+				fios->mtime = 0;
+				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
+				snprintf(fios->title, lengthof(fios->title),
+					"%s\\ (Directory)", fd.cFileName);
 			}
 		} while (FindNextFile(h, &fd));
 		FindClose(h);
@@ -1710,40 +1722,39 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	// this is where to start sorting
 	sort_start = _fios_count;
 
-	/*	Show scenario files
-	 *	.SCN	OpenTTD style scenario file
-	 *	.SV0	Transport Tycoon Deluxe (Patch) scenario
-	 *	.SS0	Transport Tycoon Deluxe preset scenario
+	/* Show scenario files
+	 * .SCN OpenTTD style scenario file
+	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
+	 * .SS0 Transport Tycoon Deluxe preset scenario
 	 */
 	h = MyFindFirstFile(_fios_scn_path, "*.*", &fd);
 	if (h != INVALID_HANDLE_VALUE) {
 		do {
-			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-				char *t = strrchr(fd.cFileName, '.');
+			char *t;
 
-				if (t != NULL && !stricmp(t, ".SCN")) { // OpenTTD
+			if ((fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) continue;
+
+			t = strrchr(fd.cFileName, '.');
+			if (t != NULL && strcasecmp(t, ".scn") == 0) { // OpenTTD
+				fios = FiosAlloc();
+				fios->type = FIOS_TYPE_SCENARIO;
+				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
+				fios->title[0] = '\0';
+				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
+			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
+					mode == SLD_NEW_GAME) {
+				if (t != NULL && (
+							strcasecmp(t, ".sv0") == 0 ||
+							strcasecmp(t, ".ss0") == 0
+						)) { // TTDLX(Patch)
+					char buf[MAX_PATH];
+
 					fios = FiosAlloc();
+					fios->type = FIOS_TYPE_OLD_SCENARIO;
 					fios->mtime = *(uint64*)&fd.ftLastWriteTime;
 					sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-					fios->type = FIOS_TYPE_SCENARIO;
-					fios->title[0] = '\0';
-					ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
-				}	else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
-						mode == SLD_NEW_GAME) {
-					int ext = 3; // start of scenario extensions in _old_extensions[]
-
-					if (t != NULL && (
-								(ext++, stricmp(t, ".SV0") == 0) ||
-								(ext++, stricmp(t, ".SS0") == 0)
-							)) { // TTDLX(Patch)
-						fios = FiosAlloc();
-						fios->old_extension = ext-1;
-						fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-						sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-						fios->type = FIOS_TYPE_OLD_SCENARIO;
-						GetOldScenarioGameName(fios->title, buf);
-						ttd_strlcpy(fios->name, fd.cFileName, strlen(fd.cFileName)-3);
-					}
+					GetOldScenarioGameName(fios->title, buf);
+					ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
 				}
 			}
 		} while (FindNextFile(h, &fd));
@@ -1770,6 +1781,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	return _fios_items;
 }
 
+
 // Free the list of savegames
 void FiosFreeSavegameList(void)
 {
@@ -1781,53 +1793,35 @@ void FiosFreeSavegameList(void)
 // Browse to
 char *FiosBrowseTo(const FiosItem *item)
 {
-	static char str_buffr[512];
 	char *path = _fios_path;
+	char *s;
 
 	switch (item->type) {
-	case FIOS_TYPE_DRIVE:
-		sprintf(path, "%c:\\", item->title[0]);
-		break;
+		case FIOS_TYPE_DRIVE:
+			sprintf(path, "%c:\\", item->title[0]);
+			break;
 
-	case FIOS_TYPE_PARENT: {
-		char *s;
+		case FIOS_TYPE_PARENT:
+			s = strrchr(path, '\\');
+			if (s != NULL) *s = '\0';
+			break;
 
-		// Skip drive part
-		path += 3;
-		s = path;
-		for (; *path != '\0'; path++) {
-			if (*path== '\\') s = path;
+		case FIOS_TYPE_DIR:
+			s = strchr(item->name, '\\');
+			if (s != NULL) *s = '\0';
+			strcat(path, "\\");
+			strcat(path, item->name);
+			break;
+
+		case FIOS_TYPE_FILE:
+		case FIOS_TYPE_OLDFILE:
+		case FIOS_TYPE_SCENARIO:
+		case FIOS_TYPE_OLD_SCENARIO: {
+			static char str_buffr[512];
+
+			sprintf(str_buffr, "%s\\%s", path, item->name);
+			return str_buffr;
 		}
-		*s = '\0';
-		break;
-	}
-
-	case FIOS_TYPE_DIR:
-		// Scan to end
-		while (*++path != '\0');
-		// Add backslash?
-		if (path[-1] != '\\') *path++ = '\\';
-
-		strcpy(path, item->name);
-		break;
-
-	case FIOS_TYPE_FILE:
-		FiosMakeSavegameName(str_buffr, item->name);
-		return str_buffr;
-
-	case FIOS_TYPE_OLDFILE:
-		sprintf(str_buffr, "%s\\%s.%s",
-			_fios_path, item->name, _old_extensions[item->old_extension]);
-		return str_buffr;
-
-	case FIOS_TYPE_SCENARIO:
-		sprintf(str_buffr, "%s\\%s.scn", path, item->name);
-		return str_buffr;
-
-	case FIOS_TYPE_OLD_SCENARIO:
-		sprintf(str_buffr, "%s\\%s.%s",
-			path, item->name, _old_extensions[item->old_extension]);
-		return str_buffr;
 	}
 
 	return NULL;
