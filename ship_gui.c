@@ -1047,6 +1047,10 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
 
+	case WE_DESTROY:
+		free(vl->sort_list);
+		break;
+
 	case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
 		if (--vl->resort_timer == 0) {
 			DEBUG(misc, 1) ("Periodic resort ships list player %d station %d",
