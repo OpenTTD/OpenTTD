@@ -969,7 +969,7 @@ static void MaybePlantFarmField(Industry *i)
 {
 	uint tile;
 	if (CHANCE16(1,8)) {
-		tile = TileAddWrap(i->xy, TILE_XY(i->width>>1, i->height>>1) + (Random()&TILE_XY(31,31))-TILE_XY(16,16));
+		tile = TileAddWrap(i->xy, ((i->width>>1) + Random() % 31 - 16), ((i->height>>1) + Random() % 31 - 16));
 		if (tile != TILE_WRAPPED)
 			PlantFarmField(tile);
 	}	
@@ -1473,10 +1473,10 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 	if (i->type == IT_FARM || i->type == IT_FARM_2) {
 		tile = i->xy + TILE_XY((i->width >> 1), (i->height >> 1));
 		for(j=0; j!=50; j++) {
-			uint new_tile = TileAddWrap(tile, (Random() & TILE_XY(31,31)) - TILE_XY(16,16));
+			uint new_tile = TileAddWrap(tile, Random() % 31 - 16, Random() % 31 - 16);
 			if (new_tile != TILE_WRAPPED)
 				PlantFarmField(new_tile);
-		}	
+		}
 	}
 	_industry_sort_dirty = true;
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
