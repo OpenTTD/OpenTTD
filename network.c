@@ -221,17 +221,17 @@ static size_t _transmit_file_size;
 static FILE *_recv_file;
 
 typedef struct NetworkGameInfo {	
-	char server_name[40]; // name of the game
-	char server_revision[8]; // server game version
-	byte server_lang; // langid
-	byte players_max; // max players allowed on server
-	byte players_on; // current count of players on server
-	uint16 game_date; // current date
-	char game_password[10]; // should fit ... 14 chars
-	char map_name[40]; // map which is played ["random" for a randomized map]
-	uint map_width; // map width / 8
-	uint map_height; // map height / 8
-	byte map_set; // graphical set
+	char server_name[40];			// name of the game
+	char server_revision[8];	// server game version
+	byte server_lang;					// langid
+	byte players_max;					// max players allowed on server
+	byte players_on;					// current count of players on server
+	uint16 game_date;					// current date
+	char game_password[10];		// should fit ... 10 chars
+	char map_name[40];				// map which is played ["random" for a randomized map]
+	uint map_width;						// map width / 8
+	uint map_height;					// map height / 8
+	byte map_set;							// graphical set
 } NetworkGameInfo;
 
 typedef struct NetworkGameList {
@@ -277,6 +277,36 @@ snooze(milliseconds*1000);
 }
 
 //////////////////////////////////////////////////////////////////////
+
+// ****************************** //
+// * Network Error Handlers     * //
+// ****************************** //
+
+static void NetworkHandleSaveGameError() {
+		_networking_sync = false;
+		_networking_queuing = true;
+		_switch_mode = SM_MENU;
+		_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+}
+
+static void NetworkHandleConnectionLost() {
+		_networking_sync = false;
+		_networking_queuing = true;
+		_switch_mode = SM_MENU;
+		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
+}
+static void NetworkHandleDeSync() {
+	printf("fatal error: network sync error at frame %i\n",_frame_counter);
+		{
+			int i;
+			for (i=15; i>=0; i--) printf("frame %i: [0]=%i, [1]=%i\n",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
+			for (i=0; i<8; i++) printf("frame %i: [0]=%i, [1]=%i\n",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
+		}
+		_networking_sync = false;
+		_networking_queuing = true;
+		_switch_mode = SM_MENU;
+		_switch_mode_errorstr = STR_NETWORK_ERR_DESYNC;
+}
 
 // ****************************** //
 // * TCP Packets and Handlers   * //
@@ -326,8 +356,7 @@ void NetworkProcessCommands()
 		while (_num_future_seed) {
 			assert(_future_seed[0].frame >= _frame_counter);
 			if (_future_seed[0].frame != _frame_counter) break;
-			if (_future_seed[0].seed[0] != _sync_seed_1 ||_future_seed[0].seed[1] != _sync_seed_2)
-				error("!network sync error");
+			if (_future_seed[0].seed[0] != _sync_seed_1 ||_future_seed[0].seed[1] != _sync_seed_2) NetworkHandleDeSync();
 			memcpy_overlapping(_future_seed, _future_seed + 1, --_num_future_seed * sizeof(FutureSeeds));
 		}
 	}
@@ -494,8 +523,7 @@ static void HandleSyncPacket(SyncPacket *sp)
 		// we are ahead of the server check if the seed is in our list.
 		if (_frame_counter_srv + 16 > _frame_counter) {
 			// the random seed exists in our array check it.
-			if (s1 != _my_seed_list[_frame_counter_srv & 0xF][0] || s2 != _my_seed_list[_frame_counter_srv & 0xF][1])
-				error("!network is desynched\n");
+			if (s1 != _my_seed_list[_frame_counter_srv & 0xF][0] || s2 != _my_seed_list[_frame_counter_srv & 0xF][1]) NetworkHandleDeSync();
 		}
 	} else {
 		// the server's frame has not been executed yet. store the server's seed in a list.
@@ -537,17 +565,14 @@ static void HandleFilePacket(FilePacketHdr *fp)
 
 		// attempt loading the game.
 		_game_mode = GM_NORMAL;
-		if (SaveOrLoad("networkc.tmp", SL_LOAD) != SL_OK) error("network load failed");
-
+		if (SaveOrLoad("networkc.tmp", SL_LOAD) != SL_OK) {
+				NetworkCoreDisconnect();
+				NetworkHandleSaveGameError();
+				return;
+				}
 		// sync to server.
 		_networking_queuing = false;
 		NetworkStartSync(false);
-/*		
-		_networking_sync = true;
-		_frame_counter = 0; // start executing at frame 0.
-		_sync_seed_1 = _sync_seed_2 = 0;
-		_num_future_seed = 0;
-		memset(_my_seed_list, 0, sizeof(_my_seed_list)); */
 
 		if (_network_playas == 0) {
 			// send a command to make a new player
@@ -977,7 +1002,7 @@ void NetworkReceive()
 #else
 	n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
-	if (n == -1) error("select failed");
+	if (n == -1) NetworkHandleConnectionLost();
 
 	// accept clients..
 	if (_networking_server && FD_ISSET(_listensocket, &read_fd))
@@ -1258,7 +1283,7 @@ void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
 		bcptr[3]=255;
 		out_addr.sin_addr.s_addr = bcaddr;
 		res=sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &out_addr,sizeof(out_addr));
-		if (res==-1) error("udp: broadcast error: %i",GET_LAST_ERROR());
+		if (res==-1) DEBUG(misc,1)("udp: broadcast error: %i",GET_LAST_ERROR());
 		i++;
 	}
 	
@@ -1446,22 +1471,27 @@ bool NetworkCoreConnectGame(byte* b, unsigned short port)
 	if (strcmp((char *) b,"auto")==0) {
 		// do autodetect
 		NetworkUDPSearchGame(&b, &port);
-		}
+	}
 
 	if (port==0) {
 		// autodetection failed
 		if (_networking_override) NetworkLobbyShutdown();
 		ShowErrorMessage(-1, STR_NETWORK_ERR_NOSERVER, 0, 0);
+		_switch_mode_errorstr = STR_NETWORK_ERR_NOSERVER;
 		return false;
-		}
+	}
+
 	NetworkInitialize();
 	_networking = NetworkConnect(b, port);
 	if (_networking) {
 		NetworkLobbyShutdown();
-		} else {
-		if (_networking_override) NetworkLobbyShutdown();
+	} else {
+		if (_networking_override) 
+			NetworkLobbyShutdown();
+		
 		ShowErrorMessage(-1, STR_NETWORK_ERR_NOCONNECTION,0,0);
-		}
+		_switch_mode_errorstr = STR_NETWORK_ERR_NOCONNECTION;
+	}
 	return _networking;
 }
 

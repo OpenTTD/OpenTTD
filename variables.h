@@ -282,6 +282,7 @@ typedef struct {
 
 // Used when switching from the intro menu.
 VARDEF byte _switch_mode;
+VARDEF StringID _switch_mode_errorstr;
 VARDEF bool _exit_game;
 VARDEF SmallFiosItem _file_to_saveload;
 VARDEF byte _make_screenshot;

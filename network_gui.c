@@ -27,13 +27,23 @@ static const StringID _connection_types_dropdown[] = {
 	INVALID_STRING_ID
 };
 
+/* Should be _network_game->players_max but since network is not yet really done
+* we'll just use some dummy here 
+* network.c -->> static NetworkGameInfo _network_game;
+*/
+static byte _players_max;
+/* Should be ??????????? (something) but since network is not yet really done
+* we'll just use some dummy here 
+*/
+static byte _network_connection;
+
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
 	
 		SET_DPARAM16(0, 0x00);
-		SET_DPARAM16(2, STR_NETWORK_LAN + _opt_mod_ptr->road_side);
+		SET_DPARAM16(2, STR_NETWORK_LAN + _network_connection);
 		DrawWindowWidgets(w);
 		
 		DrawEditBox(w, 6);
@@ -45,27 +55,20 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		DrawString(238, 82, STR_NETWORK_PLAYERS, 2);
 		DrawString(288, 82, STR_NETWORK_MAP_SIZE, 2);
 		
-		break;
-	}
+	}	break;
 
 	case WE_CLICK:
 		_selected_field = e->click.widget;
 		switch(e->click.widget) {
-
-		case 0:  // close X
-		case 15: // cancel button
+		case 0: case 15:  /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			NetworkLobbyShutdown();
 			break;
-		case 3: // find server automaticaly
-			{
+		case 3: { /* Find server automaticaly */
 			byte *b = "auto";
-			NetworkCoreConnectGame(b,_network_server_port);
-			}
-			break;
-
-		case 4: // connect via direct ip
-			{
+			NetworkCoreConnectGame(b, _network_server_port);
+		}	break;
+		case 4: { /* Connect via direct ip */
 				StringID str;
 				str = AllocateName((byte*)_decode_parameters, 0);
 				
@@ -77,27 +80,32 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				w->window_class,
 				w->window_number);
 				DeleteName(str);
-			}
-			break;
-			
-		case 5: // start server
+		} break;
+		case 5: /* Start server */
 			ShowNetworkStartServerWindow();
 			break;
-
-		case 8:
-			ShowDropDownMenu(w, _connection_types_dropdown, _opt_mod_ptr->currency, e->click.widget, 0);
+		case 7: case 8: /* Connection type */
+			ShowDropDownMenu(w, _connection_types_dropdown, _network_connection, 8, 0); // do it for widget 8
 			return;
 		}
+		break;
+
+	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+		_network_connection = e->dropdown.index;
+
+		SetWindowDirty(w);
+		break;
 
 	case WE_MOUSELOOP:
-		if(_selected_field != 6)
-			break;
-		HandleEditBox(w, 6);
+		if (_selected_field == 6)
+			HandleEditBox(w, 6);
+		
 		break;
 
 	case WE_KEYPRESS:
 		if(_selected_field != 6)
 			break;
+
 		switch (HandleEditBoxKey(w, 6, e)) {
 		case 1:
 			HandleButtonClick(w, 9);
@@ -116,32 +124,31 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_game_window_widgets[] = {
-{   WWT_PUSHTXTBTN, BGC,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_MULTIPLAYER},
-{     WWT_IMGBTN,   BGC,     0,   399,    14,   199, 0x0},
+{ WWT_PUSHTXTBTN,   BGC,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_MULTIPLAYER,			STR_NULL},
+{     WWT_IMGBTN,   BGC,     0,   399,    14,   199, 0x0,													STR_NULL},
 
-{ WWT_PUSHTXTBTN,   BTC,    20,   130,    22,    33, STR_NETWORK_FIND_SERVER, STR_NETWORK_FIND_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   145,   255,    22,    33, STR_NETWORK_DIRECT_CONNECT, STR_NETWORK_DIRECT_CONNECT_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   270,   380,    22,    33, STR_NETWORK_START_SERVER, STR_NETWORK_START_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   BTC,    20,   130,    22,    33, STR_NETWORK_FIND_SERVER,			STR_NETWORK_FIND_SERVER_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   145,   255,    22,    33, STR_NETWORK_DIRECT_CONNECT,	STR_NETWORK_DIRECT_CONNECT_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   270,   380,    22,    33, STR_NETWORK_START_SERVER,		STR_NETWORK_START_SERVER_TIP},
 
-{     WWT_IMGBTN,   BGC,   250,   394,    42,    53, 0x0, STR_NETWORK_ENTER_NAME_TIP},
+{     WWT_IMGBTN,   BGC,   250,   394,    42,    53, 0x0,													STR_NETWORK_ENTER_NAME_TIP},
 
-{          WWT_6,   BGC,   250,   393,    62,    73, STR_NETWORK_COMBO1, STR_NETWORK_CONNECTION_TYPE_TIP},
-{   WWT_CLOSEBOX,   BGC,   382,   392,    63,    72, STR_0225, STR_NETWORK_CONNECTION_TYPE_TIP},
+{          WWT_6,   BGC,   250,   393,    62,    73, STR_NETWORK_COMBO1,					STR_NETWORK_CONNECTION_TYPE_TIP},
+{   WWT_CLOSEBOX,   BGC,   382,   392,    63,    72, STR_0225,										STR_NETWORK_CONNECTION_TYPE_TIP},
 
-{  WWT_SCROLLBAR,   BGC,   382,   392,    81,   175, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   BGC,   382,   392,    81,   175, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{    WWT_IMGBTN,    BTC,    10,   231,    81,    92, 0x0, STR_NETWORK_GAME_NAME_TIP },
-{    WWT_IMGBTN,    BTC,   232,   281,    81,    92, 0x0, STR_NETWORK_PLAYERS_TIP },
-{    WWT_IMGBTN,    BTC,   282,   331,    81,    92, 0x0, STR_NETWORK_MAP_SIZE_TIP },
-{    WWT_IMGBTN,    BTC,   332,   381,    81,    92, 0x0, STR_NETWORK_INFO_ICONS_TIP },
+{     WWT_IMGBTN,   BTC,    10,   231,    81,    92, 0x0,													STR_NETWORK_GAME_NAME_TIP },
+{     WWT_IMGBTN,   BTC,   232,   281,    81,    92, 0x0,													STR_NETWORK_PLAYERS_TIP },
+{     WWT_IMGBTN,   BTC,   282,   331,    81,    92, 0x0,													STR_NETWORK_MAP_SIZE_TIP },
+{     WWT_IMGBTN,   BTC,   332,   381,    81,    92, 0x0,													STR_NETWORK_INFO_ICONS_TIP },
 
-{     WWT_MATRIX,   BGC,    10,   381,    93,   175, 0x601, STR_NETWORK_CLICK_GAME_TO_SELECT},
+{     WWT_MATRIX,   BGC,    10,   381,    93,   175, 0x601,												STR_NETWORK_CLICK_GAME_TO_SELECT},
 
-{ WWT_PUSHTXTBTN,   BTC,   145,   255,   180,   191, STR_012E_CANCEL, STR_NULL},
-{ WWT_PUSHTXTBTN,   BTC,   270,   392,   180,   191, STR_NETWORK_JOIN_GAME, STR_NULL},
-
-{      WWT_LAST},
+{ WWT_PUSHTXTBTN,   BTC,   145,   255,   180,   191, STR_012E_CANCEL,							STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   270,   392,   180,   191, STR_NETWORK_JOIN_GAME,				STR_NULL},
+{       WWT_LAST},
 };
 
 static const WindowDesc _network_game_window_desc = {
@@ -168,7 +175,6 @@ void ShowNetworkGameWindow()
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 240;
 	WP(w,querystr_d).buf = _edit_str_buf;
-	// ShowErrorMessage(-1, TEMP_STRING_NO_NETWORK, 0, 0);
 }
 
 static const StringID _players_dropdown[] = {
@@ -182,13 +188,12 @@ static const StringID _players_dropdown[] = {
 	INVALID_STRING_ID
 };
 
-
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
 	
-		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _opt_mod_ptr->road_side);
+		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _players_max);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 237, 168, 0xD7);
@@ -202,39 +207,45 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		DrawString(10, 43, STR_NETWORK_SELECT_MAP, 2);
 		DrawString(260, 63, STR_NETWORK_NUMBER_OF_PLAYERS, 2);
 		
-		break;
-	}
+	}	break;
 
 	case WE_CLICK:
 		_selected_field = e->click.widget;
 		switch(e->click.widget) {
-
-		case 0: // close X
-		case 10: // cancel button
+		case 0: case 12: /* Close 'X' | Cancel button */
 			ShowNetworkGameWindow();
 			break;
-		case 8:
-			ShowDropDownMenu(w, _players_dropdown, _opt_mod_ptr->currency, e->click.widget, 0);
+		case 7: case 8: /* Number of Players */
+			ShowDropDownMenu(w, _players_dropdown, _players_max, 8, 0); // do it for widget 8
 			return;
-		case 9: // start game
+		case  9: /* Start game */
 			NetworkCoreStartGame();
-			ShowNetworkLobbyWindow();
+			//ShowNetworkLobbyWindow();
 			DoCommandP(0, 0, 0, NULL, CMD_START_NEW_GAME);
 			break;
+		case 10: /* Load game */
+			NetworkCoreStartGame();
+			//ShowNetworkLobbyWindow();
+			ShowSaveLoadDialog(SLD_LOAD_GAME);
+			break;
+		case 11: /* Load scenario */
+			NetworkCoreStartGame();
+			//ShowNetworkLobbyWindow();
+			ShowSaveLoadDialog(SLD_LOAD_SCENARIO);;
+			break;
 		}
+		break;
+
+	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+		_players_max = e->dropdown.index;
+
+		SetWindowDirty(w);
+		break;
 
 	case WE_MOUSELOOP:
-		if(_selected_field == 3)
-		{
-			HandleEditBox(w, 3);
-			break;
-		}
-		if(_selected_field == 4)
-		{
-			HandleEditBox(w, 4);
-			break;
-		}
-			
+		if(_selected_field == 3 || _selected_field == 4)
+			HandleEditBox(w, _selected_field);
+
 		break;
 
 	case WE_KEYPRESS:
@@ -251,22 +262,23 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_start_server_window_widgets[] = {
-{   WWT_PUSHTXTBTN, BGC,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_START_GAME_WINDOW },
-{     WWT_IMGBTN,   BGC,     0,   399,    14,   199, 0x0},
+{   WWT_CLOSEBOX,   BGC,     0,    10,     0,    13, STR_00C5,											STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_START_GAME_WINDOW,	STR_NULL},
+{     WWT_IMGBTN,   BGC,     0,   399,    14,   199, 0x0,														STR_NULL},
 
-{     WWT_IMGBTN,   BGC,    80,   190,    22,    33, 0x0, STR_NETWORK_NEW_GAME_NAME_TIP},
-{     WWT_IMGBTN,   BGC,   280,   390,    22,    33, 0x0, STR_NETWORK_PASSWORD_TIP},
+{     WWT_IMGBTN,   BGC,    80,   190,    22,    33, 0x0,														STR_NETWORK_NEW_GAME_NAME_TIP},
+{     WWT_IMGBTN,   BGC,   280,   390,    22,    33, 0x0,														STR_NETWORK_PASSWORD_TIP},
 
-{     WWT_IMGBTN,   BGC,    10,   240,    62,   170, 0x0, STR_NETWORK_SELECT_MAP_TIP},
-{  WWT_SCROLLBAR,   BGC,   241,   251,    62,   170, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   BGC,    10,   240,    62,   170, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
+{  WWT_SCROLLBAR,   BGC,   241,   251,    62,   170, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{          WWT_6,   BGC,   260,   390,    81,    92, STR_NETWORK_COMBO2, STR_NETWORK_NUMBER_OF_PLAYERS_TIP},
-{   WWT_CLOSEBOX,   BGC,   378,   388,    82,    91, STR_0225, STR_NETWORK_NUMBER_OF_PLAYERS_TIP},
+{          WWT_6,   BGC,   260,   390,    81,    92, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_PLAYERS_TIP},
+{   WWT_CLOSEBOX,   BGC,   379,   389,    82,    91, STR_0225,											STR_NETWORK_NUMBER_OF_PLAYERS_TIP},
 
-{ WWT_PUSHTXTBTN,   BTC,    80,   180,   180,   191, STR_NETWORK_START_GAME, STR_NULL},
-{ WWT_PUSHTXTBTN,   BTC,   220,   320,   180,   191, STR_012E_CANCEL, STR_NULL},
-
+{ WWT_PUSHTXTBTN,   BTC,    10,   100,   180,   191, STR_NETWORK_START_GAME,				STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   110,   200,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   210,   300,   180,   191, STR_NETWORK_LOAD_SCENARIO,			STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   310,   390,   180,   191, STR_012E_CANCEL,								STR_NULL},
 {      WWT_LAST},
 };
 
@@ -278,7 +290,6 @@ static const WindowDesc _network_start_server_window_desc = {
 	NetworkStartServerWindowWndProc,
 };
 
-
 static void ShowNetworkStartServerWindow()
 {
 	Window *w;
@@ -286,7 +297,6 @@ static void ShowNetworkStartServerWindow()
 	
 	w = AllocateWindowDesc(&_network_start_server_window_desc);
 	strcpy(_edit_str_buf, "");
-
 	
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;

@@ -457,6 +457,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		TileHighlightData *thd = _thd_ptr;
 		TileIndex tile = thd->redsq;
 		thd->redsq = 0;
+		_switch_mode_errorstr = INVALID_STRING_ID;
 		if (tile != 0)
 			MarkTileDirtyByTile(tile);
 		break;

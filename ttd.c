@@ -489,6 +489,7 @@ int ttd_main(int argc, char* argv[])
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
+	_switch_mode_errorstr = INVALID_STRING_ID;
 
 	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hn::l:eit:d::r:g::G:cp:");
 	while ((i = MyGetOpt(&mgo)) != -1) {
@@ -860,6 +861,9 @@ normal_load:
 		MarkWholeScreenDirty();
 		break;
 	}
+	
+	if (_switch_mode_errorstr!=INVALID_STRING_ID) 
+		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
 
 	_in_state_game_loop = false;
 }

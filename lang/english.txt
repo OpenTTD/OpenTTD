@@ -1169,7 +1169,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, o
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not working yet!
+TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not fully working yet!{}Some options work, but others like lobby, etc. don't. Just so you know.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
@@ -1187,8 +1187,8 @@ STR_NETWORK_ENTER_NAME_TIP				:{BLACK}This is the name other players will identi
 STR_NETWORK_SELECT_CONNECTION			:{BLACK}Select connection type:
 STR_NETWORK_CONNECTION_TYPE_TIP		:{BLACK}Chose between an internet game or a local area nework game
 STR_NETWORK_COMBO1								:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN										:{BLACK}LAN
-STR_NETWORK_INTERNET							:{BLACK}Internet
+STR_NETWORK_LAN										:LAN
+STR_NETWORK_INTERNET							:Internet
 
 STR_NETWORK_GAME_NAME							:{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Name of the game
@@ -1213,15 +1213,16 @@ STR_NETWORK_SELECT_MAP_TIP				:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_PLAYERS			:{BLACK}Number of players:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP	:{BLACK}Chose a maximum number of players. Not all slots need to be filled.
 STR_NETWORK_COMBO2								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS							:{BLACK}2 players
-STR_NETWORK_3_PLAYERS							:{BLACK}3 players
-STR_NETWORK_4_PLAYERS							:{BLACK}4 players
-STR_NETWORK_5_PLAYERS							:{BLACK}5 players
-STR_NETWORK_6_PLAYERS							:{BLACK}6 players
-STR_NETWORK_7_PLAYERS							:{BLACK}7 players
-STR_NETWORK_8_PLAYERS							:{BLACK}8 players
+STR_NETWORK_2_PLAYERS							:2 players
+STR_NETWORK_3_PLAYERS							:3 players
+STR_NETWORK_4_PLAYERS							:4 players
+STR_NETWORK_5_PLAYERS							:5 players
+STR_NETWORK_6_PLAYERS							:6 players
+STR_NETWORK_7_PLAYERS							:7 players
+STR_NETWORK_8_PLAYERS							:8 players
 STR_NETWORK_START_GAME						:{BLACK}Start Game
-
+STR_NETWORK_LOAD_GAME							:{BLACK}Load Game
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Load Scenario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
@@ -1238,6 +1239,9 @@ STR_NETWORK_READY									:{BLACK}Ready
 STR_NETWORK_ERR_NOTAVAILABLE			:{WHITE} No network devices found or compiled without ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER			:{WHITE} Could not find any network game
 STR_NETWORK_ERR_NOCONNECTION			:{WHITE} The server didn't answer the request
+STR_NETWORK_ERR_DESYNC				:{WHITE} Network-Game synchronization failed.
+STR_NETWORK_ERR_LOSTCONNECTION			:{WHITE} Network-Game connection lost.
+STR_NETWORK_ERR_SAVEGAMEERROR			:{WHITE} Could not load server-savegame.
 
 ############ end network gui strings
 

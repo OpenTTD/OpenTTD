@@ -61,7 +61,10 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 7:
 			if (!_network_available) {
 				ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-				} else ShowNetworkGameWindow();
+			} else {
+				ShowNetworkGameWindow();
+				ShowErrorMessage(-1, TEMP_STRING_NO_NETWORK, 0, 0);
+			}
 			break;
 		case 8: ShowGameOptions(); break;
 		case 9: ShowGameDifficulty(); break;
