@@ -158,7 +158,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	if (bits == 0)
 		return;
 
-	assert(GET_TILE_X(tile) != 255 && GET_TILE_Y(tile) != 255);
+	assert(GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
 
 	if ( (bits & (bits - 1)) == 0 ) {
 		/* only one direction */
