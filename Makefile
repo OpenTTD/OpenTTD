@@ -585,7 +585,7 @@ OSX:=OSX
 endif
 
 
-all: endian.h $(UPDATECONFIG) $(TTD) $(OSX) $(endwarnings)
+all: endian.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
 	@# Check if system is LITTLE_ENDIAN or BIG_ENDIAN
@@ -597,7 +597,7 @@ $(ENDIAN_CHECK): endian_check.c
 		$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
 
 
-$(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
+$(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
 	$(if $(VERBOSE),@echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)';,@echo 'Compiling and Linking $@';) \
  		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
