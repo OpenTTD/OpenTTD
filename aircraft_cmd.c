@@ -907,8 +907,8 @@ static bool Aircraft_5(Vehicle *v)
 		if (amd->flag & AMED_SLOWTURN) {
 			if (v->load_unload_time_rem == 0) {
 				v->load_unload_time_rem = 8;
-				v->direction = newdir;
 			}
+			v->direction = newdir;
 		} else {
 			v->cur_speed >>= 1;
 			v->direction = newdir;
