@@ -43,7 +43,19 @@ static void DrawOrdersWindow(Window *w)
 
 	v = GetVehicle(w->window_number);
 
-	w->disabled_state = (v->owner == _local_player) ? 0 : 0x3F0;
+	w->disabled_state = (v->owner == _local_player) ? 0 : (
+		1 << 4 |   //skip
+		1 << 5 |   //delete
+		1 << 6 |   //non-stop
+		1 << 7 |   //go-to
+		1 << 8 |   //full load
+		1 << 9     //unload
+		);
+		
+	//disable non-stop for non-trains
+	if (v->type != VEH_Train) {
+		w->disabled_state |= 1 << 6;
+	}
 
 	shared_schedule = IsScheduleShared(v) != NULL;
 
@@ -431,7 +443,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const Widget _train_orders_widgets[] = {
+static const Widget _orders_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_8829_ORDERS,					STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,											STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
@@ -445,131 +457,15 @@ static const Widget _train_orders_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _train_orders_desc = {
+static const WindowDesc _orders_desc = {
 	-1,-1, 320, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
-	_train_orders_widgets,
+	_orders_widgets,
 	OrdersWndProc
 };
 
-static const Widget _other_train_orders_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_8829_ORDERS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0, STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _other_train_orders_desc = {
-	-1,-1, 320, 76,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_other_train_orders_widgets,
-	OrdersWndProc
-};
-
-
-static const Widget _roadveh_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_900B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,   128,   191,    76,    87, STR_8826_GO_TO,	STR_8856_INSERT_A_NEW_ORDER_BEFORE},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   192,   255,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   256,   319,    76,    87, STR_8828_UNLOAD,	STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _roadveh_orders_desc = {
-	-1,-1, 320, 88,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
-	_roadveh_orders_widgets,
-	OrdersWndProc
-};
-
-static const Widget _other_roadveh_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_900B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _other_roadveh_orders_desc = {
-	-1,-1, 320, 76,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_other_roadveh_orders_widgets,
-	OrdersWndProc
-};
-
-static const Widget _ship_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_9810_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,   128,   191,    76,    87, STR_8826_GO_TO,	STR_8856_INSERT_A_NEW_ORDER_BEFORE},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   192,   255,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   256,   319,    76,    87, STR_8828_UNLOAD,	STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _ship_orders_desc = {
-	-1,-1, 320, 88,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
-	_ship_orders_widgets,
-	OrdersWndProc
-};
-
-static const Widget _other_ship_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_9810_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _other_ship_orders_desc = {
-	-1,-1, 320, 76,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_other_ship_orders_widgets,
-	OrdersWndProc
-};
-
-
-static const Widget _aircraft_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_A00B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,   128,   191,    76,    87, STR_8826_GO_TO,	STR_8856_INSERT_A_NEW_ORDER_BEFORE},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   192,   255,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   256,   319,    76,    87, STR_8828_UNLOAD,	STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _aircraft_orders_desc = {
-	-1,-1, 320, 88,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
-	_aircraft_orders_widgets,
-	OrdersWndProc
-};
-
-static const Widget _other_aircraft_orders_widgets[] = {
+static const Widget _other_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_A00B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
@@ -577,21 +473,13 @@ static const Widget _other_aircraft_orders_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _other_aircraft_orders_desc = {
+static const WindowDesc _other_orders_desc = {
 	-1,-1, 320, 76,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_other_aircraft_orders_widgets,
+	_other_orders_widgets,
 	OrdersWndProc
 };
-
-static const WindowDesc * const _order_window_desc[8] = {
-	&_train_orders_desc, 	&_other_train_orders_desc,
-	&_roadveh_orders_desc,   &_other_roadveh_orders_desc,
-	&_ship_orders_desc,   &_other_ship_orders_desc,
-	&_aircraft_orders_desc, &_other_aircraft_orders_desc,
-};
-
 
 void ShowOrdersWindow(Vehicle *v)
 {
@@ -602,8 +490,8 @@ void ShowOrdersWindow(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
 	_alloc_wnd_parent_num = veh;
-	w = AllocateWindowDesc(
-		_order_window_desc[(v->type - VEH_Train)*2 + (v->owner != _local_player)]);
+	
+	w = AllocateWindowDesc( (v->owner == _local_player) ? &_orders_desc : &_other_orders_desc);
 
 	w->window_number = veh;
 	w->caption_color = v->owner;
