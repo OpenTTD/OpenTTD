@@ -1464,8 +1464,10 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				
 				if ( rvi2->flags & RVI_MULTIHEAD && !(rvi->flags & RVI_MULTIHEAD) &&  v->index == first->index) {
 					if (old_engine_type == u->engine_type ) {
+						Vehicle *w;
+
 						u = GetLastVehicleInChain(v);
-						Vehicle *w = GetPrevVehicleInChain(u);
+						w = GetPrevVehicleInChain(u);
 						w->next = NULL;
 						DeleteVehicle(u);
 					}
