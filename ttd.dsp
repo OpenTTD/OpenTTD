@@ -470,6 +470,10 @@ SOURCE=.\macros.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\md5.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\network.h
 # End Source File
 # Begin Source File
