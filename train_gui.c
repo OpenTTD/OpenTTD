@@ -372,7 +372,7 @@ static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehicl
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
 				--row < 0) {
-					area_x += w->hscroll.pos;
+					if (area_x >= 0) area_x += w->hscroll.pos;
 					goto found_it;
 		}
 	}
