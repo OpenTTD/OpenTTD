@@ -66,6 +66,7 @@ _iconsole_var * _iconsole_vars; // list of registred vars
 // ** console colors ** //
 VARDEF byte _iconsole_color_default;
 VARDEF byte _iconsole_color_error;
+VARDEF byte _iconsole_color_warning;
 VARDEF byte _iconsole_color_debug;
 VARDEF byte _iconsole_color_commands;
 
@@ -93,11 +94,12 @@ void IConsolePrint(byte color_code, const byte* string);
 void CDECL IConsolePrintF(byte color_code, const char *s, ...);
 void IConsoleDebug(byte* string);
 void IConsoleError(const byte* string);
+void IConsoleWarning(const byte* string);
 
 // *** Commands *** //
 
 void IConsoleCmdRegister(const byte * name, void * addr);
-void* IConsoleCmdGetAddr(byte * name);
+_iconsole_cmd * IConsoleCmdGet(const byte * name);
 
 // *** Variables *** //
 

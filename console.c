@@ -188,6 +188,7 @@ void IConsoleInit()
 	#endif
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
+	_iconsole_color_warning = 13;
 	_iconsole_color_debug = 5;
 	_iconsole_color_commands = 2;
 	_iconsole_scroll=79;
@@ -359,6 +360,11 @@ void IConsoleError(const byte* string)
 	if (_stdlib_developer>0) IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
 }
 
+void IConsoleWarning(const byte* string)
+{
+	if (_stdlib_developer>0) IConsolePrintF(_iconsole_color_warning, "WARNING: %s", string);
+}
+
 void IConsoleCmdRegister(const byte * name, void * addr)
 {
 	byte * _new;
@@ -390,7 +396,7 @@ void IConsoleCmdRegister(const byte * name, void * addr)
 		}
 }
 
-void* IConsoleCmdGet(const byte * name)
+_iconsole_cmd * IConsoleCmdGet(const byte * name)
 {
 	_iconsole_cmd * item;
 
