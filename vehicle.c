@@ -1307,7 +1307,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
 	uint32 autorefit_money = (p2  >> 16) * 100000;
-	Vehicle *v, *u;
+	Vehicle *v, *u, *first;
 	int cost, build_cost, rear_engine_cost = 0;
 	byte old_engine_type;
 
@@ -1349,6 +1349,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if ( v->type == VEH_Train ) {
+		first = GetFirstVehicleInChain(v);
 		u = GetLastVehicleInChain(v);
 		if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD )
 			build_cost = build_cost >> 1;   //multiheaded engines have EstimateTrainCost() for both engines
@@ -1357,7 +1358,6 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			// prevent that the rear engine can get replaced to something else than the front engine
 			if ( v->u.rail.first_engine != 0xffff && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
-				Vehicle *first = GetFirstVehicleInChain(v);
 				if ( first->engine_type != new_engine_type ) return CMD_ERROR;
 			}
 
@@ -1414,8 +1414,6 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->build_year = _cur_year;
 
 		v->value = build_cost;
-
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 
 		if (v->engine_type != new_engine_type) {
@@ -1493,6 +1491,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					} while ( (veh=veh->next) != NULL );
 				}
 				InvalidateWindowClasses(WC_TRAINS_LIST);
+				UpdateTrainAcceleration(first);
 				break;
 				}
 			case VEH_Road:
@@ -1555,6 +1554,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
 		ResortVehicleLists();
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
 	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
