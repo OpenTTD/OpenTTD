@@ -1697,8 +1697,11 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		//We do not have a slot, so make one
 		if (v->u.road.slot == NULL) {
 			//first we need to find out how far our stations are away.
-			if ( rs == NULL )
+			if ( rs == NULL ) {
+				free(firststop);
+				firststop = stop = NULL;
 				goto no_stop;
+			}
 
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			do {

@@ -131,6 +131,9 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		sum += dist[i];
 	}
 
+	free(dist);
+	dist = NULL;
+
 	if (numcurve > 0) {
 		sum /= numcurve;
 	}
