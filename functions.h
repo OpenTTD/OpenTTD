@@ -95,6 +95,8 @@ void memswap(void *a, void *b, size_t size);
 uint32 Random();
 uint RandomRange(uint max);
 
+void InitPlayerRandoms();
+
 uint32 InteractiveRandom(); /* Used for random sequences that are not the same on the other end of the multiplayer link */
 void SetDate(uint date);
 /* facedraw.c */
@@ -131,6 +133,8 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 void NetworkStartSync(bool fcreset);
 void NetworkClose(bool client);
 void NetworkSendReadyPacket();
+void NetworkSendSyncPackets();
+bool NetworkCheckClientReady();
 
 void NetworkIPListInit();
 

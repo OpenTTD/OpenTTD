@@ -922,8 +922,8 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 void ResetLandscape()
 {
-	_random_seed_1 = InteractiveRandom();
-	_random_seed_2 = InteractiveRandom();
+	_random_seeds[0][0] = InteractiveRandom();
+	_random_seeds[0][1] = InteractiveRandom();
 
 	GenerateWorld(1);
 	MarkWholeScreenDirty();

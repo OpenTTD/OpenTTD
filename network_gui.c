@@ -31,10 +31,17 @@ static byte _players_max;
 * we'll just use some dummy here
 */
 static byte _network_connection;
+static uint16 _network_game_count_last;
 
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
+	case WE_TICK: {
+		if (_network_game_count_last != _network_game_count) {
+			SetWindowDirty(w);
+			}
+		}
+		break;
 	case WE_PAINT: {
 
 		SET_DPARAM16(0, 0x00);
@@ -86,8 +93,18 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 		_network_connection = e->dropdown.index;
-
-		SetWindowDirty(w);
+		switch (_network_connection) {
+		case 0:
+			NetworkGameListFromLAN();
+			_network_game_count_last = _network_game_count;
+			SetWindowDirty(w);
+			break;
+		case 1:
+			NetworkGameListFromInternet();
+			_network_game_count_last = _network_game_count;
+			SetWindowDirty(w);
+			break;
+		}
 		break;
 
 	case WE_MOUSELOOP:
@@ -164,6 +181,7 @@ void ShowNetworkGameWindow()
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	strcpy(_edit_str_buf, "Your name");
 
+	_network_game_count_last = _network_game_count;
 
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;

@@ -62,7 +62,9 @@ VARDEF uint16 _disaster_delay;
 //  tick handler.
 VARDEF uint16 _station_tick_ctr;
 
-VARDEF uint32 _random_seed_1, _random_seed_2;
+VARDEF uint32 _random_seeds[2][2];
+VARDEF uint32 _player_seeds[MAX_PLAYERS][2];
+
 // Iterator through all towns in OnTick_Town
 VARDEF byte _cur_town_ctr;
 
@@ -214,10 +216,10 @@ VARDEF byte _cur_month;
 VARDEF byte _player_colors[MAX_PLAYERS];
 
 VARDEF bool _in_state_game_loop;
-VARDEF int32 _frame_counter;
+VARDEF uint32 _frame_counter;
 
-VARDEF int32 _frame_counter_max; // for networking, this is the frame that we are not allowed to execute yet.
-VARDEF int32 _frame_counter_srv; // for networking, this is the last known framecounter of the server. it is always less than frame_counter_max.
+VARDEF uint32 _frame_counter_max; // for networking, this is the frame that we are not allowed to execute yet.
+VARDEF uint32 _frame_counter_srv; // for networking, this is the last known framecounter of the server. it is always less than frame_counter_max.
 
 // networking settings
 VARDEF bool _network_available;  // is network mode available?

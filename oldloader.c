@@ -1124,8 +1124,8 @@ bool LoadOldSaveGame(const char *file)
 	_cur_tileloop_tile = m->cur_tileloop_tile;
 	_disaster_delay = m->disaster_delay;
 	_station_tick_ctr = m->station_tick_ctr;
-	_random_seed_1 = m->seed_1;
-	_random_seed_2 = m->seed_2;
+	_random_seeds[0][0] = m->seed_1;
+	_random_seeds[0][1] = m->seed_2;
 	_cur_town_ctr = REMAP_TOWN_IDX(m->cur_town_ptr);
 	_cur_player_tick_index = m->cur_player_tick_index;
 	_next_competitor_start = m->next_competitor_start;

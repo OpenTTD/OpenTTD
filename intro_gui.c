@@ -125,8 +125,8 @@ int32 CmdGenRandomNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// this forces stuff into test mode.
 	_docommand_recursive = 0;
 
-	_random_seed_1 = p1;
-	_random_seed_2 = p2;
+	_random_seeds[0][0] = p1;
+	_random_seeds[0][1] = p2;
 
 	if (_networking) { NetworkStartSync(true); }
 
@@ -166,8 +166,8 @@ int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// this forces stuff into test mode.
 	_docommand_recursive = 0;
 
-	_random_seed_1 = p1;
-	_random_seed_2 = p2;
+	_random_seeds[0][0] = p1;
+	_random_seeds[0][1] = p2;
 
 	if (_networking) { NetworkStartSync(true); }
 

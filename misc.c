@@ -8,8 +8,6 @@
 extern void StartupEconomy();
 extern void InitNewsItemStructs();
 
-static uint32 _random_seed_3, _random_seed_4;
-
 byte _name_array[512][32];
 
 static INLINE uint32 ROR(uint32 x, int n)
@@ -20,10 +18,17 @@ static INLINE uint32 ROR(uint32 x, int n)
 
 uint32 Random()
 {
-	uint32 t = _random_seed_2;
-	uint32 s = _random_seed_1;
-	_random_seed_1 = s + ROR(t ^ 0x1234567F, 7);
-	return _random_seed_2 = ROR(s, 3);
+	if (_current_player>=MAX_PLAYERS) {
+		uint32 s = _random_seeds[0][0];
+		uint32 t = _random_seeds[0][1];
+		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
+		return _random_seeds[0][1] = ROR(s, 3);
+	} else {
+		uint32 s = _player_seeds[_current_player][0];
+		uint32 t = _player_seeds[_current_player][1];
+		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7);
+		return _player_seeds[_current_player][1] = ROR(s, 3);
+	}
 }
 
 uint RandomRange(uint max)
@@ -33,10 +38,19 @@ uint RandomRange(uint max)
 
 uint32 InteractiveRandom()
 {
-	uint32 t = _random_seed_4;
-	uint32 s = _random_seed_3;
-	_random_seed_3 = s + ROR(t ^ 0x1234567F, 7);
-	return _random_seed_4 = ROR(s, 3);
+	uint32 t = _random_seeds[1][1];
+	uint32 s = _random_seeds[1][0];
+	_random_seeds[1][0] = s + ROR(t ^ 0x1234567F, 7);
+	return _random_seeds[1][1] = ROR(s, 3);
+}
+
+void InitPlayerRandoms()
+{
+	int i;
+	for (i=0; i<MAX_PLAYERS; i++) {
+		_player_seeds[i][0]=InteractiveRandom();
+		_player_seeds[i][1]=InteractiveRandom();
+		}
 }
 
 void memswap(void *a, void *b, size_t size) {
@@ -561,7 +575,7 @@ void IncreaseDate()
 		return;
 	_cur_month = ymd.month;
 
-//	printf("Month %d, %X\n", ymd.month, _random_seed_1);
+//	printf("Month %d, %X\n", ymd.month, _random_seeds[0][0]);
 
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {
@@ -693,8 +707,8 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	{&_cur_tileloop_tile, 			SLE_UINT16, 0, 255},
 	{&_disaster_delay, 					SLE_UINT16, 0, 255},
 	{&_station_tick_ctr, 				SLE_UINT16, 0, 255},
-	{&_random_seed_1, 					SLE_UINT32, 0, 255},
-	{&_random_seed_2, 					SLE_UINT32, 0, 255},
+	{&_random_seeds[0][0], 					SLE_UINT32, 0, 255},
+	{&_random_seeds[0][1], 					SLE_UINT32, 0, 255},
 	{&_cur_town_ctr, 						SLE_UINT8,	0, 255},
 	{&_cur_player_tick_index, 	SLE_FILE_U8 | SLE_VAR_UINT, 0, 255},
 	{&_next_competitor_start, 	SLE_FILE_U16 | SLE_VAR_UINT, 0, 255},

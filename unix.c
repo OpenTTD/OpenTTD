@@ -420,7 +420,7 @@ int CDECL main(int argc, char* argv[])
 	ChangeWorkingDirectory(argv[0]);
 #endif
 
-	_random_seed_2 = _random_seed_1 = time(NULL);
+	_random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
 
 
 	return ttd_main(argc, argv);

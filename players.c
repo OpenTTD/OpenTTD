@@ -548,7 +548,7 @@ void RunOtherPlayersLoop()
 	_is_ai_player = true;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
+		if (p->is_active && p->is_ai) {
 			_current_player = p->index;
 			if (_patches.ainew_active)
 				AiNewDoGameLoop(p);
@@ -558,8 +558,7 @@ void RunOtherPlayersLoop()
 	}
 
 	_is_ai_player = false;
-// XXX: is this needed?
-	_current_player = 0;
+	_current_player = OWNER_NONE;
 }
 
 // index is the next parameter in _decode_parameters to set up

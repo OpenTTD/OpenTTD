@@ -79,6 +79,15 @@ struct timerequest  *TimerRequest = NULL;
 
 #if defined(ENABLE_NETWORK)
 
+enum {
+	PACKET_TYPE_WELCOME = 0,
+	PACKET_TYPE_READY,
+	PACKET_TYPE_ACK,
+	PACKET_TYPE_SYNC,
+	PACKET_TYPE_XMIT,
+	PACKET_TYPE_COMMAND,
+};
+
 // sent from client -> server whenever the client wants to exec a command.
 // send from server -> client when another player execs a command.
 typedef struct CommandPacket {
@@ -91,8 +100,6 @@ typedef struct CommandPacket {
 	byte when;  // offset from the current max_frame value minus 1. this is set by the server.
 	uint32 dp[8];
 } CommandPacket;
-
-assert_compile(sizeof(CommandPacket) == 16 + 32);
 
 #define COMMAND_PACKET_BASE_SIZE (sizeof(CommandPacket) - 8 * sizeof(uint32))
 
@@ -107,13 +114,12 @@ typedef struct SyncPacket {
 	uint32 random_seed_2;
 } SyncPacket;
 
-assert_compile(sizeof(SyncPacket) == 12);
-
 // sent from server -> client as an acknowledgement that the server received the command.
 // the command will be executed at the current value of "max".
 typedef struct AckPacket {
 	byte packet_length;
 	byte packet_type;
+	byte when;
 } AckPacket;
 
 typedef struct ReadyPacket {
@@ -124,16 +130,16 @@ typedef struct ReadyPacket {
 typedef struct FilePacketHdr {
 	byte packet_length;
 	byte packet_type;
-	byte unused[2];
 } FilePacketHdr;
-
-assert_compile(sizeof(FilePacketHdr) == 4);
 
 // sent from server to client when the client has joined.
 typedef struct WelcomePacket {
 	byte packet_length;
 	byte packet_type;
-	byte unused[2];
+	uint32 player_seeds[MAX_PLAYERS][2];
+	uint32 frames_max;
+	uint32 frames_srv;
+	uint32 frames_cnt;
 } WelcomePacket;
 
 typedef struct Packet Packet;
@@ -155,11 +161,9 @@ typedef struct ClientState {
 	Packet *head, **last;
 
 	uint buflen;											// receive buffer len
-	byte buf[256];										// receive buffer
+	byte buf[1024];										// receive buffer
 } ClientState;
 
-
-static uint _not_packet;
 
 typedef struct QueuedCommand QueuedCommand;
 struct QueuedCommand {
@@ -167,7 +171,7 @@ struct QueuedCommand {
 	CommandPacket cp;
 	CommandCallback *callback;
 	uint32 cmd;
-	int32 frame;
+	uint32 frame;
 };
 
 typedef struct CommandQueue CommandQueue;
@@ -195,7 +199,7 @@ static uint16 _network_ready_ahead = 1;
 static uint16 _network_client_timeout;
 
 typedef struct FutureSeeds {
-	int32 frame;
+	uint32 frame;
 	uint32 seed[2];
 } FutureSeeds;
 
@@ -223,6 +227,8 @@ enum {
 };
 
 void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet);
+static void CloseClient(ClientState *cs);
+void NetworkSendWelcome(ClientState *cs, bool direct);
 
 uint32 _network_ip_list[10]; // network ip list
 
@@ -340,6 +346,16 @@ static QueuedCommand *AllocQueuedCommand(CommandQueue *nq)
 	return qp;
 }
 
+static void QueueClear(CommandQueue *nq) {
+	QueuedCommand *qp;
+	while ((qp=nq->head)) {
+		// unlink it.
+		if (!(nq->head = qp->next)) nq->last = &nq->head;
+		free(qp);
+		}
+	nq->last = &nq->head;
+}
+
 // go through the player queues for each player and see if there are any pending commands
 // that should be executed this frame. if there are, execute them.
 void NetworkProcessCommands()
@@ -416,6 +432,20 @@ static void SendBytes(ClientState *cs, void *bytes, uint len)
 	} while (len -= n);
 }
 
+// send data direct to a client
+static void SendDirectBytes(ClientState *cs, void *bytes, uint len)
+{
+	char *buf = (char*)bytes;
+	uint n;
+
+	n = send(cs->socket, buf, len, 0);
+	if (n == -1) {
+				int err = GET_LAST_ERROR();
+				DEBUG(net, 0) ("[NET] send() failed with error %d", err);
+				CloseClient(cs);
+			}
+}
+
 // client:
 //   add it to the client's ack queue, and send the command to the server
 // server:
@@ -427,7 +457,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	ClientState *cs;
 
 	qp = AllocQueuedCommand(_networking_server ? &_command_queue : &_ack_queue);
-	qp->cp.packet_type = 0;
+	qp->cp.packet_type = PACKET_TYPE_COMMAND;
 	qp->cp.tile = tile;
 	qp->cp.p1 = p1;
 	qp->cp.p2 = p2;
@@ -438,7 +468,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	qp->callback = callback;
 
 	// so the server knows when to execute it.
-	qp->frame = _frame_counter_max;
+	qp->frame = _frame_counter + 5;
 
 	// calculate the amount of extra bytes.
 	nump = 8;
@@ -480,6 +510,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	QueuedCommand *qp;
 	ClientState *c;
 	AckPacket ap;
+	int i;
 
 	DEBUG(net, 2) ("[NET] cmd size %d", np->packet_length);
 
@@ -489,21 +520,28 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	qp = AllocQueuedCommand(&_command_queue);
 	qp->cp = *np;
 
-	qp->frame = _frame_counter_max;
+	i = _frame_counter_max - (_frame_counter + 3);
+	
+	if (i<0) {
+		qp->frame = _frame_counter_max ;
+	} else {
+		qp->frame = _frame_counter + 3;
+	}
 
 	qp->callback = NULL;
 
 	// extra params
 	memcpy(&qp->cp.dp, np->dp, np->packet_length - COMMAND_PACKET_BASE_SIZE);
 
-	ap.packet_type = 2;
-	ap.packet_length = 2;
+	ap.packet_type = PACKET_TYPE_ACK;
+	ap.when = _frame_counter_max-(qp->frame);
+	ap.packet_length = sizeof(AckPacket);
 
 	// send it to the peers
 	if (_networking_server) {
 		for(c=_clients; c->socket != INVALID_SOCKET; c++) {
 			if (c == cs) {
-				SendBytes(c, &ap, 2);
+				SendDirectBytes(c, &ap, ap.packet_length);
 			} else {
 				if (!cs->inactive) SendBytes(c, &qp->cp, qp->cp.packet_length);
 			}
@@ -540,7 +578,7 @@ static void HandleSyncPacket(SyncPacket *sp)
 	s1 = TO_LE32(sp->random_seed_1);
 	s2 = TO_LE32(sp->random_seed_2);
 
-	DEBUG(net, 3) ("[NET] sync seeds: [1]=%i rnd[2]=%i", sp->random_seed_1, sp->random_seed_2);
+	DEBUG(net, 3) ("[NET] sync seeds: frame=%i 1=%i 2=%i",_frame_counter, sp->random_seed_1, sp->random_seed_2);
 
 	if (_frame_counter_srv <= _frame_counter) {
 		// we are ahead of the server check if the seed is in our list.
@@ -561,7 +599,7 @@ static void HandleSyncPacket(SyncPacket *sp)
 
 // sent from server -> client as an acknowledgement that the server received the command.
 // the command will be executed at the current value of "max".
-static void HandleAckPacket()
+static void HandleAckPacket(AckPacket * ap)
 {
 	QueuedCommand *q;
 	// move a packet from the ack queue to the end of this player's queue.
@@ -569,12 +607,12 @@ static void HandleAckPacket()
 	assert(q);
 	if (!(_ack_queue.head = q->next)) _ack_queue.last = &_ack_queue.head;
 	q->next = NULL;
-	q->frame = _frame_counter_max;
+	q->frame = (_frame_counter_max - (ap->when));
 
 	*_command_queue.last = q;
 	_command_queue.last = &q->next;
 
-	DEBUG(net, 2) ("[NET] ack");
+	DEBUG(net, 2) ("[NET] ack [frame=%i]",q->frame);
 }
 
 static void HandleFilePacket(FilePacketHdr *fp)
@@ -618,6 +656,28 @@ static void HandleFilePacket(FilePacketHdr *fp)
 		fwrite( (char*)fp + sizeof(*fp), n, 1, _recv_file);
 	}
 }
+
+static void HandleWelcomePacket(WelcomePacket *wp) {
+	int i;
+	for (i=0; i<MAX_PLAYERS; i++) {
+		_player_seeds[i][0]=wp->player_seeds[i][0];
+		_player_seeds[i][1]=wp->player_seeds[i][1];
+		}
+	if (wp->frames_srv != 0) {
+		_frame_counter_max = wp->frames_max;
+		_frame_counter_srv = wp->frames_srv;
+	}
+	if (wp->frames_cnt != 0) {
+		_frame_counter = wp->frames_cnt;
+	}
+}
+
+static void HandleReadyPacket(ReadyPacket *rp, ClientState *cs)
+{
+	cs->ready=true;
+	cs->timeout=_network_client_timeout;
+}
+
 
 static void CloseClient(ClientState *cs)
 {
@@ -680,24 +740,26 @@ static bool ReadPackets(ClientState *cs)
 			size -= packet[0];
 			pos += packet[0];
 			switch(packet[1]) {
-			case 0:
+			case PACKET_TYPE_WELCOME:
+				HandleWelcomePacket((WelcomePacket *)packet);
+				break;
+			case PACKET_TYPE_COMMAND:
 				HandleCommandPacket(cs, (CommandPacket*)packet);
 				break;
-			case 1:
+			case PACKET_TYPE_SYNC:
 				assert(_networking_sync || _networking_queuing);
 				assert(!_networking_server);
 				HandleSyncPacket((SyncPacket*)packet);
 				break;
-			case 2:
+			case PACKET_TYPE_ACK:
 				assert(!_networking_server);
-				HandleAckPacket();
+				HandleAckPacket((AckPacket*)packet);
 				break;
-			case 3:
+			case PACKET_TYPE_XMIT:
 				HandleFilePacket((FilePacketHdr*)packet);
 				break;
-			case 5:
-				cs->ready=true;
-				cs->timeout=_network_client_timeout;
+			case PACKET_TYPE_READY:
+				HandleReadyPacket((ReadyPacket*)packet, cs);
 				break;
 			default:
 				DEBUG (net,0) ("net: unknown packet type");
@@ -783,8 +845,7 @@ static void SendXmit(ClientState *cs)
 		n = minu(_transmit_file_size - pos, 248);
 
 		hdr.packet_length = n + sizeof(hdr);
-		hdr.packet_type = 3;
-		hdr.unused[0] = hdr.unused[1] = 0;
+		hdr.packet_type = PACKET_TYPE_XMIT;
 		SendBytes(cs, &hdr, sizeof(hdr));
 
 		if (n == 0) {
@@ -796,6 +857,10 @@ static void SendXmit(ClientState *cs)
 	} while (--p);
 
 	cs->xmitpos = pos + 1;
+
+	if (cs->xmitpos == 0) {
+		NetworkSendWelcome(cs,false);
+	}
 
 	DEBUG(net, 2) ("[NET] client xmit at %d", pos + 1);
 }
@@ -819,14 +884,62 @@ static ClientState *AllocClient(SOCKET s)
 
 void NetworkSendReadyPacket()
 {
-	if (!_network_ready_sent) {
+	if ((!_network_ready_sent) && (_frame_counter + _network_ready_ahead >= _frame_counter_max)) {
 		ReadyPacket *rp	= malloc(sizeof(rp));
 		ClientState *c	= _clients;
 
-		rp->packet_type = 5;
+		rp->packet_type = PACKET_TYPE_READY;
 		rp->packet_length = sizeof(rp);
 		SendBytes(c, rp, sizeof(rp));
 		_network_ready_sent = true;
+	}
+}
+
+void NetworkSendSyncPackets()
+{
+	ClientState *cs;
+	uint32 new_max;
+	SyncPacket sp;
+
+	new_max = _frame_counter + (int)_network_sync_freq;
+
+	DEBUG(net,3) ("net: serv: sync frame=%i,max=%i, seed1=%i, seed2=%i",new_max,_sync_seed_1,_sync_seed_2);
+
+	sp.packet_length = sizeof(sp);
+	sp.packet_type = PACKET_TYPE_SYNC;
+	sp.frames = new_max - _frame_counter_max;
+	sp.server = _frame_counter_max - _frame_counter;
+	sp.random_seed_1 = TO_LE32(_sync_seed_1);
+	sp.random_seed_2 = TO_LE32(_sync_seed_2);
+	_frame_counter_max = new_max;
+
+	// send it to all the clients and mark them unready
+	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+		cs->ready=false;
+		SendBytes(cs, &sp, sizeof(sp));
+	}
+
+}
+
+void NetworkSendWelcome(ClientState *cs, bool direct) {
+	WelcomePacket wp;
+	int i;
+	wp.packet_type = PACKET_TYPE_WELCOME;
+	wp.packet_length = sizeof(WelcomePacket);
+	for (i=0; i<MAX_PLAYERS; i++) {
+		wp.player_seeds[i][0]=_player_seeds[i][0];
+		wp.player_seeds[i][1]=_player_seeds[i][1];
+		}
+	if (direct) {
+		wp.frames_max=0;
+		wp.frames_srv=0;
+		wp.frames_cnt=_frame_counter;
+		SendDirectBytes(cs,(void *)&wp,wp.packet_length);
+	} else {
+		wp.frames_max=_frame_counter_max;
+		wp.frames_srv=_frame_counter_srv;
+		wp.frames_cnt=0;
+		SendBytes(cs,(void *)&wp,wp.packet_length);
 	}
 }
 
@@ -888,12 +1001,12 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	// send the commands in the server queue to the new client.
 	QueuedCommand *qp;
 	SyncPacket sp;
-	int32 frame;
+	uint32 frame;
 
 	DEBUG(net, 2) ("[NET] sending queued commands to client");
 
 	sp.packet_length = sizeof(sp);
-	sp.packet_type = 1;
+	sp.packet_type = PACKET_TYPE_SYNC;
 	sp.random_seed_1 = sp.random_seed_2 = 0;
 	sp.server = 0;
 
@@ -916,6 +1029,25 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 		SendBytes(cs, &sp, sizeof(sp));
 	}
 
+}
+
+
+bool NetworkCheckClientReady() {
+	bool ready_all = true;
+	uint16 count = 0;
+	ClientState *cs;
+
+	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+		count++;
+		ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
+		if (!cs->ready) cs->timeout-=1;
+		if (cs->timeout == 0) {
+			SET_DPARAM16(0,count);
+			ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
+			CloseClient(cs);
+			}
+		}
+	return ready_all;
 }
 
 // ************************** //
@@ -1077,6 +1209,8 @@ void NetworkReceive()
 
 				// send queue of commands to client.
 				SendQueuedCommandsToNewClient(cs);
+
+				NetworkSendWelcome(cs, true);
 			}
 		}
 	}
@@ -1086,61 +1220,6 @@ void NetworkSend()
 {
 	ClientState *cs;
 	void *free_xmit;
-	uint16 count;
-	bool ready_all;
-
-	// send sync packets?
-	if (_networking_server && _networking_sync && !_pause) {
-
-		if (++_not_packet >= _network_sync_freq) {
-			SyncPacket sp;
-			uint new_max;
-
-			_network_ahead_frames = _network_sync_freq + 1;
-
-			ready_all=false;
-
-			while (!ready_all) {
-				// check wether all clients are ready
-				ready_all=true;
-				count=0;
-				for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-					count++;
-					ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
-					if (!cs->ready) cs->timeout-=5;
-					if (cs->timeout == 0) {
-						SET_DPARAM16(0,count);
-						ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
-						CloseClient(cs);
-						}
-					}
-				if (!ready_all) {
-					NetworkReceive();
-					CSleep(5);
-					}
-			}
-
-			_not_packet = 0;
-
-			new_max = max(_frame_counter + (int)_network_ahead_frames, _frame_counter_max);
-
-			DEBUG(net,3) ("net: serv: sync max=%i, seed1=%i, seed2=%i",new_max,_sync_seed_1,_sync_seed_2);
-
-			sp.packet_length = sizeof(sp);
-			sp.packet_type = 1;
-			sp.frames = new_max - _frame_counter_max;
-			sp.server = _frame_counter_max - _frame_counter;
-			sp.random_seed_1 = TO_LE32(_sync_seed_1);
-			sp.random_seed_2 = TO_LE32(_sync_seed_2);
-			_frame_counter_max = new_max;
-
-			// send it to all the clients and mark them unready
-			for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-				cs->ready=false;
-				SendBytes(cs, &sp, sizeof(sp));
-			}
-		}
-	}
 
 	free_xmit = _transmit_file;
 
@@ -1168,8 +1247,9 @@ void NetworkInitialize()
 {
 	ClientState *cs;
 
+	QueueClear(&_command_queue);
+	QueueClear(&_ack_queue);
 	_command_queue.last = &_command_queue.head;
-	_ack_queue.last = &_ack_queue.head;
 
 	// invalidate all clients
 	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++)
@@ -1455,7 +1535,7 @@ void NetworkCoreInit() {
 
 DEBUG(net, 3) ("[NET][Core] init()");
 _network_available=true;
-_network_client_timeout=3000;
+_network_client_timeout=300;
 
 // [win32] winsock startup
 
@@ -1631,19 +1711,12 @@ if (incomming) {
 
 	if (_networking) {
 		NetworkReceive();
-		NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
 		}
 
 	} else {
 
-	// outgoing
-
-	if ((_networking) && (!_networking_server) && (_frame_counter+_network_ready_ahead >= _frame_counter_max)) {
-			// send the "i" am ready message to the server
-			// [_network_ready_ahead] frames before "i" reach the frame-limit
-			NetworkSendReadyPacket();
-		}
-
+	if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
+	if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
 
 	if (_networking) {
 		NetworkSend();

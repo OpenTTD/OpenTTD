@@ -1951,12 +1951,12 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPTSTR lpCmdLin
 #if defined(_MSC_VER)
 	{
 		uint64 seed = rdtsc();
-		_random_seed_1 = ((uint32*)&seed)[0];
-		_random_seed_2 = ((uint32*)&seed)[1];
+		_random_seeds[0][0] = ((uint32*)&seed)[0];
+		_random_seeds[0][1] = ((uint32*)&seed)[1];
 	}
 #else
-	_random_seed_1 = GetTickCount();
-	_random_seed_2 = _random_seed_1 * 0x1234567;
+	_random_seeds[0][0] = GetTickCount();
+	_random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
 #endif
 
 	argc = ParseCommandLine(GetCommandLine(), argv, lengthof(argv));

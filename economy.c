@@ -1305,6 +1305,8 @@ void PlayersMonthlyLoop()
 	if (_patches.inflation)
 		AddInflation();
 	PlayersPayInterest();
+	// Reset the _current_player flag
+	_current_player = OWNER_NONE;
 	HandleEconomyFluctuations();
 	SubsidyMonthlyHandler();
 }

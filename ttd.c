@@ -533,7 +533,7 @@ int ttd_main(int argc, char* argv[])
 				_switch_mode = SM_NEWGAME;
 			break;
 		case 'G':
-			_random_seed_1 = atoi(mgo.opt);
+			_random_seeds[0][0] = atoi(mgo.opt);
 			break;
 		case 'p': {
 			int i = atoi(mgo.opt);
@@ -604,6 +604,7 @@ int ttd_main(int argc, char* argv[])
 
 	// initialize the ingame console
 	IConsoleInit();
+	InitPlayerRandoms();
 
 	while (_video_driver->main_loop() == ML_SWITCHDRIVER) {}
 
@@ -881,8 +882,8 @@ void StateGameLoop()
 	_frame_counter++;
 
 	// store the random seed to be able to detect out of sync errors
-	_sync_seed_1 = _random_seed_1;
-	_sync_seed_2 = _random_seed_2;
+	_sync_seed_1 = _random_seeds[0][0];
+	_sync_seed_2 = _random_seeds[0][1];
 	if (_networking) disable_computer=true;
 
 	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
@@ -899,6 +900,11 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
+		// All these actions has to be done from OWNER_NONE
+		//  for multiplayer compatibility
+		uint p = _current_player;
+		_current_player = OWNER_NONE;
+
 		AnimateAnimatedTiles();
 		IncreaseDate();
 		RunTileLoop();
@@ -910,6 +916,7 @@ void StateGameLoop()
 
 		CallWindowTickEvent();
 		NewsLoop();
+		_current_player = p;
 	}
 	_in_state_game_loop = false;
 }
@@ -985,21 +992,36 @@ void GameLoop()
 	NetworkCoreLoop(true);
 
 	if (_networking_sync) {
-		// make sure client's time is synched to the server by running frames quickly up to where the server is.
+		// client: make sure client's time is synched to the server by running frames quickly up to where the server is.
 		if (!_networking_server) {
 			while (_frame_counter < _frame_counter_srv) {
 				StateGameLoop();
 				NetworkProcessCommands(); // need to process queue to make sure that packets get executed.
 			}
-		}
-		// don't exceed the max count told by the server
+		// client: don't exceed the max count told by the server
 		if (_frame_counter < _frame_counter_max) {
 			StateGameLoop();
 			NetworkProcessCommands();
 			}
+		// client: send the ready packet
+		NetworkSendReadyPacket();
+		} else {
+		// server: work on to the frame max
+		if (_frame_counter < _frame_counter_max) {
+			StateGameLoop();
+			NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
+			}
+		// server: wait until all clients were ready for going on
+		if (_frame_counter == _frame_counter_max) {
+			if (NetworkCheckClientReady()) NetworkSendSyncPackets();
+			}
+		}
 	} else {
+		// server/client/standalone: not synced --> state game loop
 		if (!_pause)
 			StateGameLoop();
+		// server/client: process queued network commands
+		if (_networking) NetworkProcessCommands();
 	}
 
 	if (!_pause && _display_opt&DO_FULL_ANIMATION)
