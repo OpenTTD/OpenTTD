@@ -2,7 +2,7 @@
 
 // This pretty simple file checks if the system is LITTLE_ENDIAN or BIG_ENDIAN
 //  it does that by putting a 1 and a 0 in an array, and read it out as one
-//  number. If it is 1, it is LITTLE_ENDIAN, if it is 256, it is BIG_ENDINA
+//  number. If it is 1, it is LITTLE_ENDIAN, if it is 256, it is BIG_ENDIAN
 //
 // After that it outputs the contents of an include files (endian.h)
 //  that says or TTD_LITTLE_ENDIAN, or TTD_BIG_ENDIAN. Makefile takes

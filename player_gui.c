@@ -25,7 +25,7 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 		for(i=0; i!=13; i++)
 			DrawString(2, 27 + i*10, STR_7011_CONSTRUCTION + i, 0);
 		DrawStringRightAligned(111, 27 + 10*13 + 2, STR_7020_TOTAL, 0);
-	
+
 		/* draw the price columns */
 		year = _cur_year - 2;
 		j = 3;
@@ -41,7 +41,7 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 					cost = (*tbl)[i];
 					if (cost != 0) {
 						sum += cost;
-						
+
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SET_DPARAM64(0, cost);
@@ -53,7 +53,7 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 				if (sum < 0) { sum = -sum; str++; }
 				SET_DPARAM64(0, sum);
 				DrawStringRightAligned(x, 27 + 13*10 + 2, str, 0);
-				
+
 				GfxFillRect(x - 75, 27 + 10*13, x, 27 + 10*13, 215);
 				x += 95;
 			}
@@ -134,7 +134,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		Player *p = DEREF_PLAYER(w->window_number);
-		
+
 		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 6);
 
 		SET_DPARAM16(0, p->name_1);
@@ -241,7 +241,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 		WP(w,def_d).data_1 = used_colors;
 		SetVScrollCount(w, num_free);
 		DrawWindowWidgets(w);
-		
+
 		x = 2;
 		y = 17;
 		pos = w->vscroll.pos;
@@ -255,7 +255,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 			used_colors >>= 1;
 		}
 	} break;
-		
+
 	case WE_CLICK:
 		if (e->click.widget == 2) {
 			int item = (e->click.pt.y - 13) / 14;
@@ -266,7 +266,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 				return;
 			item += w->vscroll.pos;
 			used_colors = WP(w,def_d).data_1;
-			
+
 			for(i=0; i!=16; i++) {
 				if (!(used_colors & 1) && --item < 0) {
 					DoCommandP(0, w->window_number, i, NULL, CMD_SET_PLAYER_COLOR);
@@ -310,7 +310,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3: DeleteWindow(w); break;
-		case 4: /* ok click */ 
+		case 4: /* ok click */
 			DoCommandP(0, w->window_number, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
 			DeleteWindow(w);
 			break;
@@ -394,7 +394,7 @@ static void DrawPlayerVehiclesAmount(int player)
 	int y = 72;
 	Vehicle *v;
 	uint train,road,air,ship;
-	
+
 	DrawString(x, y, STR_7039_VEHICLES, 0);
 
 	train = road = air = ship = 0;
@@ -445,9 +445,9 @@ static void DrawPlayerVehiclesAmount(int player)
 
 static int GetAmountOwnedBy(Player *p, byte owner)
 {
-	return (p->share_owners[0] == owner) + 
-				 (p->share_owners[1] == owner) + 
-				 (p->share_owners[2] == owner) + 
+	return (p->share_owners[0] == owner) +
+				 (p->share_owners[1] == owner) +
+				 (p->share_owners[2] == owner) +
 				 (p->share_owners[3] == owner);
 }
 
@@ -483,7 +483,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		if (w->widget != _other_player_company_widgets)
 					w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
-	
+
 		SET_DPARAM16(0, p->name_1);
 		SET_DPARAM32(1, p->name_2);
 		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
@@ -509,7 +509,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM32(1, p->president_name_2);
 		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
-		SET_DPARAM32(0, CalculateCompanyValue(p));
+		SET_DPARAM64(0, CalculateCompanyValue(p));
 		DrawString(110, 114, STR_7076_COMPANY_VALUE, 0);
 
 		DrawCompanyOwnerText(p);
@@ -557,7 +557,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				SetTileSelectSize(2, 2);
 			} else {
 				ScrollMainWindowToTile(tile);
-			}	
+			}
 		} break;
 
 		case 8: /* relocate HQ */

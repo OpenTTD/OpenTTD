@@ -8,7 +8,7 @@ typedef struct PlayerEconomyEntry {
 	int32 expenses;
 	int32 delivered_cargo;
 	int32 performance_history;	// player score (scale 0-1000)
-	int32 company_value;
+	int64 company_value;
 } PlayerEconomyEntry;
 
 typedef struct AiBuildRec {
@@ -188,7 +188,7 @@ typedef struct Player {
 
 void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player);
 void GetNameOfOwner(byte owner, uint tile);
-uint32 CalculateCompanyValue(Player *p);
+int64 CalculateCompanyValue(Player *p);
 void InvalidatePlayerWindows(Player *p);
 void AiDoGameLoop(Player *p);
 void UpdatePlayerMoney32(Player *p);

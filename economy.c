@@ -41,9 +41,9 @@ void UpdatePlayerHouse(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TILE_XY(1,1));
 }
 
-uint32 CalculateCompanyValue(Player *p) {
+int64 CalculateCompanyValue(Player *p) {
 	byte owner = p->index;
-	uint32 value;
+	int64 value;
 
 	{
 		Station *st;
@@ -340,7 +340,7 @@ extern void DeletePlayerWindows(int pi);
 static void PlayersCheckBankrupt(Player *p)
 {
 	int owner;
-	uint32 val;
+	int64 val;
 
 	if (p->player_money >= 0) {
 		p->quarters_of_bankrupcy = 0;
@@ -1313,7 +1313,7 @@ static void DoAcquireCompany(Player *p)
 {
 	Player *owner;
 	int i,pi;
-	int32 value;
+	int64 value;
 
 	SET_DPARAM16(0, p->name_1);
 	SET_DPARAM32(1, p->name_2);
@@ -1347,7 +1347,7 @@ static void DoAcquireCompany(Player *p)
 int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int32 cost;
+	int64 cost;
 	byte *b;
 	int i;
 
@@ -1375,7 +1375,7 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int32 cost;
+	int64 cost;
 	byte *b;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
