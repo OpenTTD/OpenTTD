@@ -530,8 +530,6 @@ static void LoadIntroGame(void)
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
-	GenerateWorld(1, 6, 6); // Make the viewport initialization happy
-
 	// Setup main window
 	InitWindowSystem();
 	SetupColorsAndInitialWindow();
@@ -719,6 +717,8 @@ int ttd_main(int argc, char* argv[])
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
 	InitPlayerRandoms();
+
+	GenerateWorld(1, 6, 6); // Make the viewport initialization happy
 
 #ifdef ENABLE_NETWORK
 	if ((network) && (_network_available)) {
