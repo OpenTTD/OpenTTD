@@ -65,6 +65,7 @@
 #  If unset, it will use the hardcoded path in the c code
 # NOVERBOSE: supress all warnings and errors during compilation.
 #  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
+# VERBOSE: actually show the commands used for compilation.
 #
 # Paths:
 # INSTALL: If not set, the game uses the directory of the binary to
@@ -597,8 +598,8 @@ $(ENDIAN_CHECK): endian_check.c
 
 
 $(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
-	@echo 'Compiling and Linking $@'; \
-		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
+	$(if $(VERBOSE),@echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)';,@echo 'Compiling and Linking $@';) \
+ 		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
 $(OSX):
 	@mkdir -p $(OSXAPP)/Contents/MacOS
@@ -738,7 +739,7 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 
 %.o: %.c $(MAKE_CONFIG)
-	@echo 'Compiling $(*F).o'; \
+	$(if $(VERBOSE),@echo '$(C_BUILD) $<',@echo 'Compiling $(*F).o'); \
 		       $(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp $(VERBOSE_FILTER)
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
 		tr ' ' '\012' < .deps/$(*F).pp \
