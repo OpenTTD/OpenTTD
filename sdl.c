@@ -468,7 +468,12 @@ static int PollEvent() {
 		break;
 
 	case SDL_QUIT:
-		return ML_QUIT;
+		// do not ask to quit on the main screen
+		if(_game_mode != GM_MENU)
+			AskExitGame();
+		else
+			return ML_QUIT;
+		break;
 
 	case SDL_KEYDOWN:
 		if ((((ev.key.keysym.sym == SDLK_RETURN) || (ev.key.keysym.sym == SDLK_f)) && (ev.key.keysym.mod & KMOD_ALT)) || (((ev.key.keysym.sym == SDLK_RETURN) || (ev.key.keysym.sym == SDLK_f)) && (ev.key.keysym.mod & KMOD_META))) {
