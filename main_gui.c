@@ -167,14 +167,13 @@ static void MenuClickSettings(int index)
 	case 2: ShowPatchesSelection(); return;
 	case 3: ShowNewgrf(); return;
 
-	case 5: DeleteAllNonVitalWindows(); return;
-	case 6: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
-	case 7: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
-	case 8: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
-	case 9: _display_opt ^= DO_WAYPOINTS; MarkWholeScreenDirty(); return;
-	case 10: _display_opt ^= DO_FULL_ANIMATION; MarkWholeScreenDirty(); return;
-	case 11: _display_opt ^= DO_FULL_DETAIL; MarkWholeScreenDirty(); return;
-	case 12: _display_opt ^= DO_TRANS_BUILDINGS; MarkWholeScreenDirty(); return;
+	case 5: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
+	case 6: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
+	case 7: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
+	case 8: _display_opt ^= DO_WAYPOINTS; MarkWholeScreenDirty(); return;
+	case 9: _display_opt ^= DO_FULL_ANIMATION; MarkWholeScreenDirty(); return;
+	case 10: _display_opt ^= DO_FULL_DETAIL; MarkWholeScreenDirty(); return;
+	case 11: _display_opt ^= DO_TRANS_BUILDINGS; MarkWholeScreenDirty(); return;
 	}
 }
 
@@ -975,16 +974,16 @@ static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x;
 
-	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13);
+	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 12);
 
 	x = (uint16)-1;
-	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<6);
-	if (_display_opt & DO_SHOW_STATION_NAMES) x &= ~(1<<7);
-	if (_display_opt & DO_SHOW_SIGNS) x &= ~(1<<8);
-	if (_display_opt & DO_WAYPOINTS) x &= ~(1<<9);
-	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<10);
-	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<11);
-	if (_display_opt & DO_TRANS_BUILDINGS) x &= ~(1<<12);
+	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<5);
+	if (_display_opt & DO_SHOW_STATION_NAMES) x &= ~(1<<6);
+	if (_display_opt & DO_SHOW_SIGNS) x &= ~(1<<7);
+	if (_display_opt & DO_WAYPOINTS) x &= ~(1<<8);
+	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<9);
+	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<10);
+	if (_display_opt & DO_TRANS_BUILDINGS) x &= ~(1<<11);
 	WP(w,menu_d).checked_items = x;
 }
 
