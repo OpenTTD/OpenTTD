@@ -65,7 +65,7 @@ static char * DMusicMidiStart(char **parm)
 	if (InitDirectMusic() == true)
 		return(0);
 	else
-		return(false);
+		return("Unable to initialize DirectMusic");
 }
 
 static void DMusicMidiStop()
