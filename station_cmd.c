@@ -76,7 +76,6 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 		if (IsTileType(tile_cur, MP_STATION)) {
 			int t;
 			t = _map2[tile_cur];
-			DEBUG(misc, 0) ("%x, %d", tile_cur, t);
 			{
 				Station *st = GetStation(t);
 				// you cannot take control of an oilrig!!
