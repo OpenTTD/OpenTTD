@@ -357,7 +357,8 @@ const DriverDesc _music_driver_descs[] = {
 	 Not needed for *nix. */
 byte GetOSVersion()
 {
-	return 1; // any arbitrary number bigger then 0
+	return 2;  // any arbitrary number bigger then 0
+				// numbers lower than 2 breaks default music selection on mac
 }
 
 bool FileExists(const char *filename)
