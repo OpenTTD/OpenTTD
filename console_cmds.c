@@ -11,6 +11,7 @@
 #include "network_udp.h"
 #include "command.h"
 #include "settings.h"
+#include "hal.h" /* for file list */
 
 
 // ** scriptfile handling ** //
@@ -136,6 +137,109 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	}
 
 	return 0;
+}
+
+extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
+extern void BuildFileList();
+extern void SetFiosType(const byte fiostype);
+
+/* Load a file-number from current dir */
+static void LoadMap(uint no)
+{
+	/* Build file list */
+	BuildFileList();
+
+	/* Check if in range */
+	if (no != 0 && no <= _fios_num) {
+		const FiosItem *item = &_fios_list[no - 1];
+
+		/* Load the file */
+		_switch_mode = SM_LOAD;
+		SetFiosType(item->type);
+		strcpy(_file_to_saveload.name, FiosBrowseTo(item));
+
+		IConsolePrint(_iconsole_color_default, "Loading map...");
+	} else {
+		/* Show usages */
+		IConsolePrint(_iconsole_color_default, "Unknown map. Use 'list_files' and 'goto_dir' to find the numbers of the savegame.");
+	}
+
+	/* Free the file-list */
+	FiosFreeSavegameList();
+}
+
+/* Load a file from a map */
+DEF_CONSOLE_CMD(ConLoad)
+{
+	/* We need 1 argument */
+	if (argc == 2) {
+		/* Load the map */
+		LoadMap(atoi(argv[1]));
+		return NULL;
+	}
+
+	/* Give usage */
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: load <file-no>");
+	return NULL;
+}
+
+/* List all the files in the current dir via console */
+DEF_CONSOLE_CMD(ConListFiles)
+{
+	const FiosItem *item;
+	int pos = 0;
+
+	/* Build the file-list */
+	BuildFileList();
+
+	/* As long as we have files */
+	while (pos < _fios_num) {
+		item = _fios_list + pos;
+		pos++;
+		/* Show them */
+		IConsolePrintF(_iconsole_color_default, "%d) %s", pos, item->title[0] ? item->title : item->name);
+	}
+
+	/* Destroy the file list */
+	FiosFreeSavegameList();
+
+	return NULL;
+}
+
+/* Change the dir via console */
+DEF_CONSOLE_CMD(ConGotoDir)
+{
+	char *file;
+	int no;
+
+	/* We need 1 argument */
+	if (argc != 2) {
+		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: goto_map <dir-no>");
+		return NULL;
+	}
+
+	no = atoi(argv[1]);
+
+	/* Make the file list */
+	BuildFileList();
+
+	/* Check if we are in range */
+	if (no != 0 && no <= _fios_num) {
+		const FiosItem *item = &_fios_list[no - 1];
+		/* Only DIR and PARENT we do allow here */
+		if (item->type == FIOS_TYPE_DIR || item->type == FIOS_TYPE_PARENT) {
+			/* Goto the map */
+			file = FiosBrowseTo(item);
+			FiosFreeSavegameList();
+			return NULL;
+		}
+	}
+
+	/* Report error */
+	IConsolePrint(_iconsole_color_default, "That number is no directory.");
+	FiosFreeSavegameList();
+
+	return NULL;
 }
 
 
@@ -1034,6 +1138,9 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("scrollto",   ConScrollToTile);
 	IConsoleCmdRegister("set",			ConSet);
 	IConsoleCmdRegister("alias",		ConAlias);
+	IConsoleCmdRegister("load",			ConLoad);
+	IConsoleCmdRegister("list_files", ConListFiles);
+	IConsoleCmdRegister("goto_dir", ConGotoDir);
 	IConsoleAliasRegister("new_game",		"newgame");
 	IConsoleAliasRegister("newmap",		"newgame");
 	IConsoleAliasRegister("new_map",		"newgame");
