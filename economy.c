@@ -123,7 +123,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count vehicles */
 	{
 		Vehicle *v;
-		int32 min_profit = 0;
+		int32 min_profit = score_info[SCORE_MIN_PROFIT].needed;
 		uint num = 0;
 
 		FOR_ALL_VEHICLES(v) {
