@@ -347,6 +347,10 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		w->click_state = (1 << 3) << _opt_mod_temp.diff_level;
 		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
+
+		if (_game_mode == GM_EDITOR)
+			SETBIT(w->disabled_state, 7);
+
 		if (_networking) {
 			SETBIT(w->disabled_state, 7); // disable highscore chart in multiplayer
 			if (!_network_server)
