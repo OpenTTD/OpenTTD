@@ -247,14 +247,6 @@ typedef struct RoadFindDepotData {
 	byte owner;
 } RoadFindDepotData;
 
-
-static const TileIndexDiff _road_find_sig_dir_mod[4] = {
-	TILE_XY(-1,0),
-	TILE_XY(0,1),
-	TILE_XY(1,0),
-	TILE_XY(0,-1),
-};
-
 static const byte _road_pf_directions[16] = {
 	0, 1, 0, 1, 2, 1, 255, 255,
 	2, 3, 3, 2, 3, 0, 255, 255,
@@ -262,7 +254,7 @@ static const byte _road_pf_directions[16] = {
 
 static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int track, uint length, byte *state)
 {
-	tile += _road_find_sig_dir_mod[_road_pf_directions[track]];
+	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IS_TILETYPE(tile, MP_STREET) &&
 			(_map5[tile] & 0xF0) == 0x20 &&
