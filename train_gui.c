@@ -1319,7 +1319,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsTrainDepotTile(v->tile))
+			if (IsTrainDepotTile(v->tile) && (v->vehstatus & VS_HIDDEN))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;

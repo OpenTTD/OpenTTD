@@ -515,7 +515,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 	// Make sure it's a road/rail crossing
 	if (!IsTileType(tile, MP_STREET) ||
-	    (_map5[tile] & 0xF0) != 0x10)
+		(_map5[tile] & 0xF0) != 0x10)
 				return;
 
 	if (VehicleFromPos(tile, v, (VehicleFromPosProc*)EnumCheckRoadVehCrashTrain) != NULL)
@@ -671,7 +671,7 @@ static void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
 			(_dists[v->direction] > 0 && (x_diff >= _dists[v->direction] || x_diff < 0)) ||
 			(_dists[v->direction+8] < 0 && (y_diff <= _dists[v->direction+8] || y_diff > 0)) ||
 			(_dists[v->direction+8] > 0 && (y_diff >= _dists[v->direction+8] || y_diff < 0)))
-   				return NULL;
+				return NULL;
 
 	return v;
 }
@@ -1408,6 +1408,7 @@ void RoadVehEnterDepot(Vehicle *v)
 	}
 
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
 
 static void AgeRoadVehCargo(Vehicle *v)
@@ -1504,7 +1505,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	InvalidateWindow(WC_ROADVEH_LIST, v->owner);
+	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
 
 void HandleClickOnRoadVeh(Vehicle *v)

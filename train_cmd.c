@@ -1336,15 +1336,21 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 			return false;
 
 	if (v->u.rail.force_proceed == 0) {
-		if (++v->load_unload_time_rem < 37)
+		if (++v->load_unload_time_rem < 37) {
+			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
+		}
+
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, v->direction))
+		if (UpdateSignalsOnSegment(v->tile, v->direction)) {
+			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
+		}
 	}
 
 	VehicleServiceInDepot(v);
+	InvalidateWindowClasses(WC_TRAINS_LIST);
 	TrainPlayLeaveStationSound(v);
 
 	v->u.rail.track = 1;
@@ -2485,7 +2491,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	/* Calculate next tile */
 	tile += TileOffsByDir(t);
 	// determine the track status on the next tile.
- 	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[t];
+	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[t];
 
 	/* Calc position within the current tile ?? */
 	x = v->x_pos & 0xF;
@@ -2690,6 +2696,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 			}
 		}
 	}
+	InvalidateWindowClasses(WC_TRAINS_LIST);
 }
 
 static void CheckIfTrainNeedsService(Vehicle *v)
@@ -2797,7 +2804,7 @@ void OnNewDay_Train(Vehicle *v)
 			SubtractMoneyFromPlayerFract(v->owner, cost);
 
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-			InvalidateWindow(WC_TRAINS_LIST, v->owner);
+			InvalidateWindowClasses(WC_TRAINS_LIST);
 		}
 	}
 }

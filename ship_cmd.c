@@ -175,7 +175,7 @@ static void HandleBrokenShip(Vehicle *v)
 	if (!(v->tick_counter & 1)) {
 		if (!--v->breakdown_delay) {
 			v->breakdown_ctr = 0;
-			InvalidateWindowClasses(WC_SHIPS_LIST);
+			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		}
 	}
 }

@@ -1029,15 +1029,15 @@ static void ProcessAircraftOrder(Vehicle *v)
 			v->current_order.type == OT_LOADING) {
 		if (v->current_order.type != OT_GOTO_DEPOT ||
 				!(v->current_order.flags & OF_UNLOAD))
- 			return;
- 	}
+			return;
+	}
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
- 			!VehicleNeedsService(v) &&
+			!VehicleNeedsService(v) &&
 			v->set_for_replacement == false) {
- 		v->cur_order_index++;
- 	}
+			v->cur_order_index++;
+		}
 
 	if (v->cur_order_index >= v->num_orders)
 		v->cur_order_index = 0;
