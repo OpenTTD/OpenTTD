@@ -397,22 +397,29 @@ static void PlayersCheckBankrupt(Player *p)
 				p->bankrupt_asked = 255;
 				p->bankrupt_timeout = 0x456;
 			} else {
-				// If we are the server, make sure it is clear that his player is no
-				//  longer with us!
 #ifdef ENABLE_NETWORK
 				if (IS_HUMAN_PLAYER(owner) && _network_server) {
+					// If we are the server, make sure it is clear that his player is no
+					//  longer with us!
 					NetworkClientInfo *ci;
-					ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					ci->client_playas = (byte)(OWNER_SPECTATOR + 1);
-					// Send the new info to all the clients
-					NetworkUpdateClientInfo(_network_own_client_index);
+					ClientState *cs;
+					/* Find all clients that were in control of this company */
+					FOR_ALL_CLIENTS(cs) {
+						ci = DEREF_CLIENT_INFO(cs);
+						if ((ci->client_playas-1) == owner) {
+							ci->client_playas = OWNER_SPECTATOR;
+							// Send the new info to all the clients
+							NetworkUpdateClientInfo(_network_own_client_index);
+						}
+					}
 				}
-#endif /* ENABLE_NETWORK */
 				// Make sure the player no longer controls the company
 				if (IS_HUMAN_PLAYER(owner) && owner == _local_player) {
 					// Switch the player to spectator..
 					_local_player = OWNER_SPECTATOR;
 				}
+#endif /* ENABLE_NETWORK */
+
 				// Convert everything the player owns to NO_OWNER
 				p->money64 = p->player_money = 100000000;
 				ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
