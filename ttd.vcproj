@@ -53,7 +53,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib"
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
@@ -67,81 +67,6 @@
 			<Tool
 				Name="VCMIDLTool"
 				TypeLibraryName=".\Release/ttd.tlb"
-				HeaderFileName=""/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1053"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Checked|Win32"
-			OutputDirectory=".\Checked"
-			IntermediateDirectory=".\Checked"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				GlobalOptimizations="TRUE"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="TRUE"
-				FavorSizeOrSpeed="2"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WITH_SDL;WIN32_EXCEPTION_TRACKER"
-				StringPooling="TRUE"
-				RuntimeLibrary="4"
-				StructMemberAlignment="3"
-				EnableFunctionLevelLinking="TRUE"
-				DefaultCharIsUnsigned="TRUE"
-				UsePrecompiledHeader="3"
-				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Checked/ttd.pch"
-				AssemblerOutput="2"
-				AssemblerListingLocation=".\Checked/"
-				ObjectFile=".\Checked/"
-				ProgramDataBaseFileName=".\Checked/"
-				BrowseInformation="1"
-				WarningLevel="3"
-				WarnAsError="TRUE"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"
-				CallingConvention="1"
-				CompileAs="1"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib"
-				OutputFile=".\Checked/openttd.exe"
-				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Checked/ttd.pdb"
-				GenerateMapFile="TRUE"
-				MapFileName=".\Checked/ttd.map"
-				SubSystem="2"
-				OptimizeForWindows98="1"
-				TargetMachine="1"/>
-			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Checked/ttd.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -247,15 +172,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -277,15 +193,6 @@
 				RelativePath="command.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -329,15 +236,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -350,15 +248,6 @@
 				RelativePath="engine.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -387,15 +276,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -416,15 +296,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -437,15 +308,6 @@
 				RelativePath="landscape.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -481,16 +343,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						UsePrecompiledHeader="0"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -504,15 +356,6 @@
 				RelativePath="misc.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -544,15 +387,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -565,15 +399,6 @@
 				RelativePath="network.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -623,15 +448,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -652,15 +468,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -673,15 +480,6 @@
 				RelativePath="players.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -716,15 +514,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -740,15 +529,6 @@
 				RelativePath="sdl.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -783,15 +563,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -815,15 +586,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -836,16 +598,6 @@
 				RelativePath="StdAfx.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						UsePrecompiledHeader="1"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -878,15 +630,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -899,15 +642,6 @@
 				RelativePath="texteff.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -931,15 +665,6 @@
 				RelativePath="ttd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -972,16 +697,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32"
-					ExcludedFromBuild="TRUE">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32"
 					ExcludedFromBuild="TRUE">
 					<Tool
@@ -1003,15 +718,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1024,15 +730,6 @@
 				RelativePath="viewport.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1074,15 +771,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1103,15 +791,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1124,15 +803,6 @@
 				RelativePath="window.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1313,15 +983,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1334,15 +995,6 @@
 				RelativePath="airport_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1371,15 +1023,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1392,15 +1035,6 @@
 				RelativePath="dock_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1429,15 +1063,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1450,15 +1075,6 @@
 				RelativePath="graph_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1487,15 +1103,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1508,15 +1115,6 @@
 				RelativePath="intro_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1545,15 +1143,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1574,15 +1163,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1595,15 +1175,6 @@
 				RelativePath="music_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1635,15 +1206,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1656,15 +1218,6 @@
 				RelativePath="order_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1693,15 +1246,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1714,15 +1258,6 @@
 				RelativePath="rail_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1751,15 +1286,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1772,15 +1298,6 @@
 				RelativePath="roadveh_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1809,15 +1326,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1830,15 +1338,6 @@
 				RelativePath="ship_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1867,15 +1366,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1896,15 +1386,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1917,15 +1398,6 @@
 				RelativePath="subsidy_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -1957,15 +1429,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1978,15 +1441,6 @@
 				RelativePath="train_gui.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2022,15 +1476,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2043,15 +1488,6 @@
 				RelativePath="clear_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2080,15 +1516,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2101,15 +1528,6 @@
 				RelativePath="dummy_land.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2138,15 +1556,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2159,15 +1568,6 @@
 				RelativePath="misc_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2196,15 +1596,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2217,15 +1608,6 @@
 				RelativePath="rail_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2254,15 +1636,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2275,15 +1648,6 @@
 				RelativePath="roadveh_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2312,15 +1676,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2333,15 +1688,6 @@
 				RelativePath="station_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2370,15 +1716,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2391,15 +1728,6 @@
 				RelativePath="train_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2428,15 +1756,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2449,15 +1768,6 @@
 				RelativePath="tunnelbridge_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"
@@ -2486,15 +1796,6 @@
 						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Checked|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2507,15 +1808,6 @@
 				RelativePath="water_cmd.c">
 				<FileConfiguration
 					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="3"
-						FavorSizeOrSpeed="2"
-						PreprocessorDefinitions=""
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Checked|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="3"

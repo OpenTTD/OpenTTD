@@ -13,11 +13,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
-#ifdef _MSC_VER
-	#pragma comment (lib, "ws2_32.lib")
-#endif //_MSC_VER
-
-#if ! (defined(__MINGW32__) || defined(__CYGWIN__))
+#if !(defined(__MINGW32__) || defined(__CYGWIN__))
 	// Windows has some different names for some types..
 	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
