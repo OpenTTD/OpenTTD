@@ -16,20 +16,21 @@ static char *GetSpecialPlayerNameString(char *buff, int ind);
 
 static char *DecodeString(char *buff, const char *str);
 
-static char **_langpack_offs;
-static char *_langpack;
-static uint _langtab_num[32]; // Offset into langpack offs
-static uint _langtab_start[32]; // Offset into langpack offs
-
 extern const char _openttd_revision[];
 
-typedef struct {
+typedef struct LanguagePack {
 	uint32 ident;
 	uint32 version;			// 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];			// the international name of this language
 	char own_name[32];	// the localized name of this language
 	uint16 offsets[32];	// the offsets
-} LanguagePackHeader;
+	char data[VARARRAY_SIZE];
+} LanguagePack;
+
+static char **_langpack_offs;
+static LanguagePack *_langpack;
+static uint _langtab_num[32]; // Offset into langpack offs
+static uint _langtab_start[32]; // Offset into langpack offs
 
 const uint16 _currency_string_list[] = {
 	STR_CURR_GBP,
@@ -757,7 +758,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 	// language name?
 	if (IS_INT_INSIDE(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
-		return str_cat(buff, i == _dynlang.curr ? ((LanguagePackHeader*)_langpack)->own_name : _dynlang.ent[i].name);
+		return str_cat(buff, i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name);
 	}
 
 	// resolution size?
@@ -793,35 +794,33 @@ StringID RemapOldStringID(StringID s)
 bool ReadLanguagePack(int lang_index)
 {
 	int tot_count, i;
-	char *lang_pack;
+	LanguagePack *lang_pack;
 	size_t len;
 	char **langpack_offs;
 	char *s;
 
-#define HDR ((LanguagePackHeader*)lang_pack)
 	{
 		char *lang = str_fmt("%s%s", _path.lang_dir, _dynlang.ent[lang_index].file);
 		lang_pack = ReadFileToMem(lang, &len, 100000);
 		free(lang);
 	}
 	if (lang_pack == NULL) return false;
-	if (len < sizeof(LanguagePackHeader) ||
-			HDR->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
-			HDR->version != TO_LE32(LANGUAGE_PACK_VERSION)) {
+	if (len < sizeof(LanguagePack) ||
+			lang_pack->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
+			lang_pack->version != TO_LE32(LANGUAGE_PACK_VERSION)) {
 		free(lang_pack);
 		return false;
 	}
-#undef HDR
 
 #if defined(TTD_BIG_ENDIAN)
 	for (i = 0; i != 32; i++) {
-		((LanguagePackHeader*)lang_pack)->offsets[i] = READ_LE_UINT16(&((LanguagePackHeader*)lang_pack)->offsets[i]);
+		lang_pack->offsets[i] = READ_LE_UINT16(&lang_pack->offsets[i]);
 	}
 #endif
 
 	tot_count = 0;
 	for (i = 0; i != 32; i++) {
-		uint num = ((LanguagePackHeader*)lang_pack)->offsets[i];
+		uint num = lang_pack->offsets[i];
 		_langtab_start[i] = tot_count;
 		_langtab_num[i] = num;
 		tot_count += num;
@@ -831,7 +830,7 @@ bool ReadLanguagePack(int lang_index)
 	langpack_offs = malloc(tot_count * sizeof(*langpack_offs));
 
 	// Fill offsets
-	s = lang_pack + sizeof(LanguagePackHeader);
+	s = lang_pack->data;
 	for (i = 0; i != tot_count; i++) {
 		len = (byte)*s;
 		*s++ = '\0'; // zero terminate the string before.
@@ -858,7 +857,7 @@ void InitializeLanguagePacks(void)
 {
 	DynamicLanguages *dl = &_dynlang;
 	int i, j, n, m,def;
-	LanguagePackHeader hdr;
+	LanguagePack hdr;
 	FILE *in;
 	char *files[32];
 
