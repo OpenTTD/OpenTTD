@@ -67,8 +67,10 @@ static void SwapOrders(Order *order1, Order *order2)
 	Order temp_order;
 
 	temp_order = *order1;
-	*order1 = *order2;
-	*order2 = temp_order;
+	AssignOrder(order1, *order2);
+	order1->next = order2->next;
+	AssignOrder(order2, temp_order);
+	order2->next = temp_order.next;
 }
 
 /**

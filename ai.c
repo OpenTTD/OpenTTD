@@ -3609,7 +3609,7 @@ static void AiStateRemoveStation(Player *p)
 {
 	// Remove stations that aren't in use by any vehicle
 	byte in_use[256], *used;
-	Order *ord;
+	const Order *ord;
 	Station *st;
 	uint tile;
 

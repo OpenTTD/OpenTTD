@@ -74,7 +74,7 @@ static inline Order *GetOrder(uint index)
 
 static inline bool HasOrderPoolFree(uint amount)
 {
-	Order *order;
+	const Order *order;
 
 	FOR_ALL_ORDERS(order)
 		if (order->type == OT_NOTHING)

@@ -1023,7 +1023,7 @@ static void HandleAircraftSmoke(Vehicle *v)
 
 static void ProcessAircraftOrder(Vehicle *v)
 {
-	Order *order;
+	const Order *order;
 
 	// OT_GOTO_DEPOT, OT_LOADING
 	if (v->current_order.type == OT_GOTO_DEPOT ||

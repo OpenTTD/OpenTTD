@@ -387,7 +387,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			sel += w->vscroll.pos;
 
 			if (_ctrl_pressed && sel < v->num_orders) {
-				Order *ord = GetVehicleOrder(v, sel);
+				const Order *ord = GetVehicleOrder(v, sel);
 				int xy = 0;
 				switch (ord->type) {
 				case OT_GOTO_STATION:			/* station order */
