@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperiale (miglia)
 STR_013A_METRIC_KILOMETERS					:Metrico (kilometri)
@@ -352,6 +353,8 @@ STR_015E_QUIT_GAME						:Abbandona partita
 STR_015F_QUIT							:Esci
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Sei sicuro di voler abbandonare la partita in corso?
 STR_0161_QUIT_GAME						:{WHITE}Abbandona partita
+STR_SORT_ORDER_TIP						:{BLACK}Seleziona ordinamento (discendente/ascendente)
+STR_SORT_CRITERIA_TIP						:{BLACK}Seleziona il criterio d'ordinamento
 SRT_SORT_BY							:{BLACK}Ordina per
 
 STR_SORT_BY_POPULATION						:{BLACK}Popolazione
@@ -416,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Non puoi cambiare l'intervallo di manutenzione...
 STR_018B_CLOSE_WINDOW						:{BLACK}Chiudi finestra
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Nome finestra - trascinala per muovere la finestra
+STR_STICKY_BUTTON						:{BLACK} Marca questa finestra come inchiudibile con il tasto 'Chiudi TUTTE le finestre'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolisci edifici ecc... su una casella del terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Abbassa un angolo del terreno
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Alza un angolo del terreno
@@ -538,6 +542,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Seleziona programma 'nuovo style'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Seleziona programma 'Personaliz. 1' (definito dall'utente)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Seleziona programma 'Personaliz. 2' (definito dall'utente)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Elimina programmazioni attuali (solo personalizzato 1 o personalizzato 2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Salva le impostazioni musicali
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Clicca sul brano per aggiungerlo al programma corrente (solamente personallizzato 1 o personalizzato 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Seleziona programmazione casuale on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Mostra finestra 'selezione brani'
@@ -722,6 +727,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nomi veicoli
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Predefiniti
 STR_02BF_CUSTOM							:Personalizzati
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Salva i nomi personalizzati
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Selezione nomi personalizzati
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Salva  nomi personalizzati dei veicoli
 
@@ -732,14 +738,20 @@ STR_02C5_DIFFICULTY_SETTINGS					:Scelta difficoltà
 STR_02C6_DIFFICULTY_SETTINGS					:Scelta difficoltà
 STR_02C7_CONFIG_PATCHES						:Configura patch
 STR_02C8_CONFIG_PATCHES						:Configura patch
+STR_NEWGRF_SETTINGS						:Impostazioni Newgrf
+STR_NEWGRF_SETTINGS2						:Impostazioni Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Chiudi TUTTE le finestre
+STR_CLOSE_ALL_WINDOWS2						:Chiudi TUTTE le finestre
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostra nomi città
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostra nomi città
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostra nomi stazioni
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostra nomi stazioni
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostra cartelli
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostra cartelli
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Waypoints mostrati
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Waypoints mostrati
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animazione completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animazione completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Massimo dettaglio
@@ -792,13 +804,16 @@ STR_02F8_EVERY_3_MONTHS						:Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS						:Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS					:Ogni 12 mesi
 STR_02FB_START_A_NEW_GAME					:{BLACK}Inizia nuovo gioco
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Carica un gioco salvato
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Guarda dimostrazione/tutorial
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Crea uno scenario personalizzato
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Seleziona giocatore singolo
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Seleziona un gioco multiplayer da 2-8 giocatori
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Mostra opzioni di gioco
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Mostra opzioni difficoltà
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Inizia una partita con uno scenario personalizzato
 STR_0304_QUIT							:{BLACK}Esci
+STR_0305_QUIT_OPENTTD						:{BLACK}Esci 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Guarda dimostrazione/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...può essere costruito solo in città
@@ -853,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumeni
 STR_TOWNNAME_CZECH						:Cechi
 ############ end of	townname region
 
+STR_CURR_GBP							:Sterlina ({POUNDSIGN})
+STR_CURR_USD							:Dollaro ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Scellino Austriano (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
 STR_CURR_CHF							:Franco Svizzero (CHF)
 STR_CURR_CZK							:Corona Ceca (CZK)
+STR_CURR_DEM							:Marco Tedesco (DEM)
 STR_CURR_DKK							:Corona Danese (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Marco Finlandese(FIM)
+STR_CURR_FRF							:Franco (FRF)
 STR_CURR_GRD							:Drachma Greca (GRD)
+STR_CURR_HUF							:Forint Ungherese (HUF)
 STR_CURR_ISK							:Corona Islandese (ISK)
 STR_CURR_ITL							:Lira Italiana (ITL)
 STR_CURR_NLG							:Fiorino olandese (NLG)
 STR_CURR_NOK							:Corona Norvegese (NOK)
+STR_CURR_PLN							:Zloty Polacco (PLN)
 STR_CURR_ROL							:Leu rumeno (Lei)
 STR_CURR_RUR							:Rupie Russe (RUR)
 STR_CURR_SEK							:Corona Svedese (SEK)
 
+STR_CURR_CUSTOM							:Personalizza...
 
 STR_OPTIONS_LANG						:{BLACK}Lingua
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -962,6 +985,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Consenti la costruzione di treni mo
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Unisci stazioni ferroviarie quando sono vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Lascia stazione quanto uno dei tipi di merce è a pieno carico: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflazione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Scarica le merci in una stazione solo se richieste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Consenti la costruzione di ponti molto lunghi: {ORANGE}{STRING}
@@ -1028,6 +1052,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posizione barra degli strumenti prin
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Sinistra
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Destra
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Raggio di snap delle finestre: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Raggio di snap delle finestre: {ORANGE}disabilitato
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interfaccia
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Costruzione
@@ -1064,16 +1090,24 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Direzione {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Direzione {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Vai al {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Procedi non-stop per {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Waypoint {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Waypoint {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Waypoint
 
+STR_WAYPOINT							:{WHITE}Waypoint
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Seleziona il tipo di waypoint
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Cambia il nome al waypoint
 
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Impossibile cambiare il nome al waypoint...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Trasforma la ferrovia in un waypoint
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Impossibile costruire un waypoint ferroviario qui...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Impossibile rimuovere un waypoint ferroviario qui...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Costruisci binario usando la modalità automatica
 
@@ -1086,6 +1120,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Alcune industrie casuali
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Copri la mappa con industrie costruite casualmente
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Impossibile generare le industrie...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Apri la barra 'Modellazione terreno' per alzare/abbassare il terreno, piantare alberi, ecc.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Modella terreno
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Livella terreno
 
@@ -1162,6 +1197,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome giocatore:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Questo è il nome con cui gli altri giocatori ti identificheranno
+STR_NETWORK_CONNECTION						:{BLACK}Connessione:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Scegli tra un gioco internet e un gioco in LAN (Local Area Network)
 
 STR_NETWORK_START_SERVER					:{BLACK}Avvia server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Avvia il tuo server
@@ -1173,9 +1210,20 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clicca su un nome della lista per se
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Trova server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cerca nella rete un server
+STR_NETWORK_ADD_SERVER						:{BLACK}Aggiungi server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Aggiungi un server alla lista che verrà sempre controllata per giochi attivi.
 STR_NETWORK_ENTER_IP						:{BLACK}Digita indirizzo IP del server
 
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clients
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clients online / clients max
+STR_NETWORK_GAME_INFO						:{SILVER}GAME INFO
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clients:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Lingua:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Dimens:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versione server:  {WHITE}{STRING}
 STR_NETWORK_PASSWORD						:{BLACK}Password:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Entra nel gioco

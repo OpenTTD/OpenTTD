@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Abandonar jogo
 STR_015F_QUIT							:Sair
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Tem a certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar jogo
+STR_SORT_ORDER_TIP						:{BLACK}Seleccione forma de ordenação (descendente/ascendente)
+STR_SORT_CRITERIA_TIP						:{BLACK}Seleccione critério de ordenação
 SRT_SORT_BY							:{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION						:{BLACK}População
@@ -417,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Não é possível alterar o intervalo de serviço...
 STR_018B_CLOSE_WINDOW						:{BLACK}Fechar janela
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título da janela - arraste isto para mover a janela
+STR_STICKY_BUTTON						:{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolir edifícios, etc. num quadrado de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Baixar um canto do terreno
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Levantar um canto do terreno
@@ -539,6 +542,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Seleccionar programa 'estilo moderno
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Seleccionar programa 'Personalizado 1'
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Seleccionar programa 'Personalizado 2'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Limpar programa actual (somente Personaliz. 1 ou Personaliz. 2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Gravar configuração de música
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Clique na faixa de música para a adicionar ao programa actual (somente Personaliz. 1 ou Personaliz. 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Ligar/Desligar programa aleatório
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Mostrar janela de selecção de faixas de música
@@ -723,6 +727,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nomes dos veículos
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Predefinição
 STR_02BF_CUSTOM							:Personalizado
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Gravar nomes personalizados
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Selecção de nomes dos veículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Guardar nomes dos veículos personalizados no disco
 
@@ -737,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Definições Newgrf
 STR_NEWGRF_SETTINGS2						:Definições Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Fechar todas as janelas
+STR_CLOSE_ALL_WINDOWS2						:Fechar todas as janelas
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar nomes de cidades
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Mostrar nomes de cidades
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estações
@@ -797,13 +804,16 @@ STR_02F8_EVERY_3_MONTHS						:Cada 3 meses
 STR_02F9_EVERY_6_MONTHS						:Cada 6 meses
 STR_02FA_EVERY_12_MONTHS					:Cada 12 meses
 STR_02FB_START_A_NEW_GAME					:{BLACK}Iniciar um novo jogo
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Carregar um jogo gravado
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Mostrar demonstrações/tutoriais
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Criar um cenário de jogo personalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Seleccionar jogo de 1 jogador
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Seleccione jogo múltiple de 2 a 8 jogadores
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Mostrar opções de jogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Mostrar opções de dificuldade
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Iniciar um novo jogo, utilizando um cenário personalizado guardado no disco
 STR_0304_QUIT							:{BLACK}Sair
+STR_0305_QUIT_OPENTTD						:{BLACK}Sair de 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Mostrar demonstração/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...só se pode construir em cidades
@@ -858,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Romeno
 STR_TOWNNAME_CZECH						:Checo
 ############ end of	townname region
 
+STR_CURR_GBP							:Libras ({POUNDSIGN})
+STR_CURR_USD							:Dólar ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Shilling Austríaco (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
 STR_CURR_CHF							:Franco Suíço (CHF)
 STR_CURR_CZK							:Coroa Checa (CZK)
+STR_CURR_DEM							:Marco Alemão (DEM)
 STR_CURR_DKK							:Coroa Dinamarquesa (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Marco Finlandês (FIM)
+STR_CURR_FRF							:Franco (FRF)
 STR_CURR_GRD							:Dracma Grego (GRD)
+STR_CURR_HUF							:Forint Húngaro (HUF)
 STR_CURR_ISK							:Coroa Islandesa (ISK)
 STR_CURR_ITL							:Lira Italiana (ITL)
 STR_CURR_NLG							:Guilda Holandesa (NLG)
 STR_CURR_NOK							:Coroa Norueguesa (NOK)
+STR_CURR_PLN							:Zloty Polaco (PLN)
 STR_CURR_ROL							:Lei Romeno (Lei)
 STR_CURR_RUR							:Rublo Russo (rur)
 STR_CURR_SEK							:Coroa Sueca (SEK)
 
+STR_CURR_CUSTOM							:Personalizado...
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1073,6 +1091,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Dirige-se a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Dirige-se a {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Ir via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Ir sem parar via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Ponto de passagem {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Ponto de passagem {TOWN} #{COMMA16}
@@ -1102,6 +1121,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Várias indústrias aleatórias
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Não é possível gerar indústrias...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Terreno
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Nivelar terreno
 
@@ -1211,6 +1231,7 @@ STR_NETWORK_CURRENT_DATE					:{SILVER}Data actual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Protegido por password!
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVIDOR CHEIO
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}VERSÃO INCOMPATÍVEL
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Juntar-se ao jogo
 
@@ -1225,8 +1246,12 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Seleccione um mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Em que mapa deseja jogar?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo de clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:Rede Local
+STR_NETWORK_INTERNET						:Internet
+STR_NETWORK_LAN_INTERNET					:Rede Local / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (divulgar)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clientes
 STR_NETWORK_3_CLIENTS						:3 clientes
 STR_NETWORK_4_CLIENTS						:4 clientes
@@ -1238,7 +1263,7 @@ STR_NETWORK_9_CLIENTS						:9 clientes
 STR_NETWORK_10_CLIENTS						:10 clientes
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME						:{BLACK}Abrir Jogo
@@ -1269,15 +1294,39 @@ STR_NETWORK_REFRESH_TIP						:{BLACK}Renovar a informação do servidor
 STR_NETWORK_COMPANY_INFO					:{SILVER}INFORMAÇÃO DA COMPANHIA
 
 STR_NETWORK_COMPANY_NAME					:{SILVER}Nome da empresa:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguração:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valor da Companhia: {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balanço actual: {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Rendimento do último ano: {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Desempenho: {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Veículos:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Estações:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Jogadores: {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}A ligar...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) A ligar..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autorizando..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Em espera..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) A obter mapa..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Processando dados..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) A registar..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}A obter a informação de jogo..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}A obter a informação da Companhia..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} cliente(s) à sua frente
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes obtidos até agora
 
+STR_NETWORK_DISCONNECT						:{BLACK}Desligar
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Introduza a mensagem de texto a enviar
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Introduza o valor do dinheiro que pretende dar
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Servidor protegido. Introduza palavra-chave
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Companhia protegida. Introduza palavra-chave
+STR_NETWORK_CLIENT_LIST						:{WHITE}Lista de clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Não foram encontrados jogos de rede
@@ -1285,9 +1334,31 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} O servidor não respondeu ao pedido
 STR_NETWORK_ERR_DESYNC						:{WHITE} A sincronização do jogo de rede falhou.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} A conexão do jogo de rede perdeu-se.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Não foi possível abrir o jogo.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Não foi possível iniciar o servidor
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Não foi possível estabelecer ligação
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tempo de espera esgotado na conexão #{NUMU16}.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Ocorreu um erro de protocolo e a ligação foi encerrada
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} A revisão deste cliente não condiz com a revisão do servidor
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Palavra-chave incorrecta
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Servidor cheio
+STR_NETWORK_ERR_KICKED						:{WHITE} Você foi expulso do jogo
+STR_NETWORK_ERR_CHEATER						:{WHITE} Batotas não são permitidas neste servidor
 
+STR_NETWORK_ERR_LEFT						:deixou o jogo
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:erro geral
+STR_NETWORK_ERR_CLIENT_DESYNC					:erro de dessincronização
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:não foi possível carregar o mapa
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:ligação perdida
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:erro de protocolo
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Não autorizado
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:recebido um pacote estranho
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:revisão incorrecta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nome já está a ser utilizado
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:palavra-chave do jogo está incorrecta
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:id do jogador incorrecta em DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:avisado pelo servidor
+STR_NETWORK_ERR_CLIENT_CHEATER					:estava a tentar usar batota
 ############ End of leave-in-this-order
 
 
