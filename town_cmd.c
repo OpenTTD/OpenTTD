@@ -898,7 +898,7 @@ restart:
 	}
 }
 
-static void UpdateTownMaxPass(Town *t)
+void UpdateTownMaxPass(Town *t)
 {
 	t->max_pass = t->population >> 3;
 	t->max_mail = t->population >> 4;
@@ -1926,14 +1926,23 @@ static const byte _town_desc[] = {
 	// failed bribe attempts are stored since savegame format 4
 	SLE_CONDARR(Town,unwanted,			SLE_INT8, 8, 4,255),
 
-	SLE_VAR(Town,max_pass,		SLE_UINT16),
-	SLE_VAR(Town,max_mail,		SLE_UINT16),
-	SLE_VAR(Town,new_max_pass,SLE_UINT16),
-	SLE_VAR(Town,new_max_mail,SLE_UINT16),
-	SLE_VAR(Town,act_pass,		SLE_UINT16),
-	SLE_VAR(Town,act_mail,		SLE_UINT16),
-	SLE_VAR(Town,new_act_pass,SLE_UINT16),
-	SLE_VAR(Town,new_act_mail,SLE_UINT16),
+	SLE_CONDVAR(Town,max_pass,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,max_mail,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,new_max_pass,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,new_max_mail,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,act_pass,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,act_mail,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,new_act_pass,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town,new_act_mail,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+
+	SLE_CONDVAR(Town,max_pass,		SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,max_mail,		SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,new_max_pass,SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,new_max_mail,SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,act_pass,		SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,act_mail,		SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,new_act_pass,SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,new_act_mail,SLE_UINT32, 9, 255),
 
 	SLE_VAR(Town,pct_pass_transported,SLE_UINT8),
 	SLE_VAR(Town,pct_mail_transported,SLE_UINT8),

@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} local authority refuses to al
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Town names - click on name to centre view on town
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centre the main view on town location
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Change town name
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passengers last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Mail last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passengers last month: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Mail last month: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Tall office block
 STR_2010_OFFICE_BLOCK						:Office block
 STR_2011_SMALL_BLOCK_OF_FLATS					:Small block of flats

@@ -190,7 +190,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 	if (type == AI_CITY) {
 		Town *t = GetTown(ic);
 		Station *st;
-		int count = 0;
+		uint count = 0;
 		int j = 0;
 
 		// We don't like roadconstructions, don't even true such a city

@@ -35,14 +35,14 @@ struct Town {
 	int16 ratings[MAX_PLAYERS];
 
 	// Maximum amount of passengers and mail that can be transported.
-	uint16 max_pass;
-	uint16 max_mail;
-	uint16 new_max_pass;
-	uint16 new_max_mail;
-	uint16 act_pass;
-	uint16 act_mail;
-	uint16 new_act_pass;
-	uint16 new_act_mail;
+	uint32 max_pass;
+	uint32 max_mail;
+	uint32 new_max_pass;
+	uint32 new_max_mail;
+	uint32 act_pass;
+	uint32 act_mail;
+	uint32 new_act_pass;
+	uint32 new_act_mail;
 
 	// Amount of passengers that were transported.
 	byte pct_pass_transported;

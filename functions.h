@@ -23,6 +23,7 @@ void AnimateTile(uint tile);
 void ClickTile(uint tile);
 void GetTileDesc(uint tile, TileDesc *td);
 void DrawTile(TileInfo *ti);
+void UpdateTownMaxPass(Town *t);
 
 bool IsValidTile(uint tile);
 

@@ -1345,6 +1345,13 @@ bool AfterLoadGame(uint version)
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
+	if (version < 0x900) {
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			UpdateTownMaxPass(t);
+		}
+	}
+
 	return true;
 }
 
