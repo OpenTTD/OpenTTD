@@ -338,8 +338,7 @@ not_valid_below:;
 		/* do middle part of bridge */
 		if (flags & DC_EXEC) {
 			_map5[ti.tile] = (byte)(m5 | direction | rail_or_road);
-			_map_type_and_height[ti.tile] &= ~0xF0;
-			_map_type_and_height[ti.tile] |= MP_TUNNELBRIDGE << 4;
+			SetTileType(ti.tile, MP_TUNNELBRIDGE);
 
 			//bridges pieces sequence (middle parts)
 			// bridge len 1: 0
@@ -783,8 +782,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 					new_data = 0x6000;
 				}
 
-				_map_type_and_height[c] &= 0x0F;
-				_map_type_and_height[c] |= new_data >> 8;
+				SetTileType(c, new_data >> 12);
 				_map5[c] = (byte)new_data;
 				_map2[c] = 0;
 

@@ -59,7 +59,7 @@ static void PlaceTree(uint tile, uint32 r, byte m5_or)
 
 
 		// make it tree class
-		_map_type_and_height[tile] |= MP_TREES << 4;
+		SetTileType(tile, MP_TREES);
 	}
 }
 
@@ -531,8 +531,7 @@ static void TileLoop_Trees(uint tile)
 
 				_map3_lo[tile] = m3;
 				_map3_hi[tile] = 0;
-				_map_type_and_height[tile] &= 0xF;
-				_map_type_and_height[tile] |= MP_TREES << 4;
+				SetTileType(tile, MP_TREES);
 
 				m5 = 0;
 				break;
@@ -549,7 +548,7 @@ static void TileLoop_Trees(uint tile)
 			m5 = ((m5 - 6) - 0x40) + 3;
 		} else {
 			/* just one tree, change type into MP_CLEAR */
-			_map_type_and_height[tile] = (_map_type_and_height[tile]&~0xF0) | (MP_CLEAR<<4);
+			SetTileType(tile, MP_CLEAR);
 
 			m5 = 3;
 			m2 = _map2[tile];

@@ -400,7 +400,7 @@ void CDECL ModifyTile(uint tile, uint flags, ...)
 	va_start(va, flags);
 
 	if ((i = (flags >> 8) & 0xF) != 0) {
-		_map_type_and_height[tile] = (_map_type_and_height[tile]&~0xF0)|((i-1) << 4);
+		SetTileType(tile, i - 1);
 	}
 
 	if (flags & (MP_MAP2_CLEAR | MP_MAP2)) {
@@ -510,7 +510,7 @@ void ConvertGroundTilesIntoWaterTiles()
 
 	while(true) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
-			_map_type_and_height[tile] = MP_WATER << 4;
+			SetTileType(tile, MP_WATER);
 			_map5[tile] = 0;
 			_map_owner[tile] = OWNER_WATER;
 		}

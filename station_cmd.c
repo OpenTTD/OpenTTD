@@ -2643,8 +2643,7 @@ void BuildOilRig(uint tile)
 			if (!GenerateStationName(st, tile, 2))
 				return;
 
-			_map_type_and_height[tile] &= 0xF;
-			_map_type_and_height[tile] |= MP_STATION << 4;
+			SetTileType(tile, MP_STATION);
 			_map5[tile] = 0x4B;
 			_map_owner[tile] = OWNER_NONE;
 			_map3_lo[tile] = 0;

@@ -303,9 +303,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			for(count = ts.modheight_count; count != 0; count--, mod++) {
 				til = mod->tile;
 
-				// Change tile height
-				_map_type_and_height[til] = (_map_type_and_height[til]&~0x0F)|mod->height;
-
+				SetTileHeight(til, mod->height);
 				TerraformAddDirtyTileAround(&ts, til);
 			}
 		}

@@ -448,8 +448,7 @@ do_clear:;
 
 	if (flags & DC_EXEC) {
 		if (ti.type != MP_STREET) {
-			_map_type_and_height[tile] &= 0xF;
-			_map_type_and_height[tile] |= MP_STREET << 4;
+			SetTileType(tile, MP_STREET);
 			_map5[tile] = 0;
 			_map_owner[tile] = _current_player;
 		}

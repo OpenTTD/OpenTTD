@@ -268,7 +268,7 @@ void GenerateUnmovables()
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
 			if(!checkRadioTowerNearby(tile))
 				continue;
-			_map_type_and_height[tile] |= MP_UNMOVABLE << 4;
+			SetTileType(tile, MP_UNMOVABLE);
 			_map5[tile] = 0;
 			_map_owner[tile] = OWNER_NONE;
 			if (--j == 0)
@@ -300,7 +300,7 @@ restart:
 
 		assert(tile == TILE_MASK(tile));
 
-		_map_type_and_height[tile] |= MP_UNMOVABLE << 4;
+		SetTileType(tile, MP_UNMOVABLE);
 		_map5[tile] = 1;
 		_map_owner[tile] = OWNER_NONE;
 	} while (--i);

@@ -369,8 +369,7 @@ need_clear:;
 	}
 
 	if (flags & DC_EXEC) {
-		_map_type_and_height[tile] &= 0xF;
-		_map_type_and_height[tile] |= MP_RAILWAY << 4;
+		SetTileType(tile, MP_RAILWAY);
 		_map5[tile] |= rail_bit;
 		_map2[tile] &= ~RAIL_MAP2LO_GROUND_MASK;
 
