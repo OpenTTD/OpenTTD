@@ -146,6 +146,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	//
 
 	int i;
+	char *dparam_char;
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
 
 	NetworkSend_uint8(p, cp->player);
@@ -153,8 +154,13 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	NetworkSend_uint32(p, cp->p1);
 	NetworkSend_uint32(p, cp->p2);
 	NetworkSend_uint32(p, (uint32)cp->tile);
-	for (i = 0; i < lengthof(cp->dp); i++) {
-		NetworkSend_uint32(p, cp->dp[i]);
+	/* We are going to send them byte by byte, because dparam is misused
+	    for chars (if it is used), and else we have a BigEndian / LittleEndian
+	    problem.. we should fix the misuse of dparam... -- TrueLight */
+	dparam_char = (char *)&cp->dp[0];
+	for (i = 0; i < lengthof(cp->dp) * 4; i++) {
+		NetworkSend_uint8(p, *dparam_char);
+		dparam_char++;
 	}
 	NetworkSend_uint8(p, cp->callback);
 
@@ -548,14 +554,21 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
 	int i;
+	char *dparam_char;
 	CommandPacket *cp = malloc(sizeof(CommandPacket));
 	cp->player = NetworkRecv_uint8(p);
 	cp->cmd = NetworkRecv_uint32(p);
 	cp->p1 = NetworkRecv_uint32(p);
 	cp->p2 = NetworkRecv_uint32(p);
 	cp->tile = NetworkRecv_uint32(p);
-	for (i = 0; i < lengthof(cp->dp); i++)
-		cp->dp[i] = NetworkRecv_uint32(p);
+	/* We are going to send them byte by byte, because dparam is misused
+	    for chars (if it is used), and else we have a BigEndian / LittleEndian
+	    problem.. we should fix the misuse of dparam... -- TrueLight */
+	dparam_char = (char *)&cp->dp[0];
+	for (i = 0; i < lengthof(cp->dp) * 4; i++) {
+		*dparam_char = NetworkRecv_uint8(p);
+		dparam_char++;
+	}
 	cp->callback = NetworkRecv_uint8(p);
 	cp->frame = NetworkRecv_uint32(p);
 	cp->next = NULL;
