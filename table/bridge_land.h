@@ -724,7 +724,7 @@ static const uint32 * const _bridge_sprite_table_12[] = {
 	_bridge_sprite_table_3_6,
 };
 
-static const uint32 * const * const _bridge_sprite_table[] = {
+static const uint32 * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 	_bridge_sprite_table_0,
 	_bridge_sprite_table_1,
 	_bridge_sprite_table_2,

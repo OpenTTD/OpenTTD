@@ -1976,7 +1976,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (DoCommandByTile(tile_new, tile, arf->player->ai.railtype_to_use<<8,
+		if (DoCommandByTile(tile_new, tile, 0 | arf->player->ai.railtype_to_use << 8,
 			DC_AUTO, CMD_BUILD_BRIDGE) == CMD_ERROR)
 				return;
 		AiBuildRailRecursive(arf, tile_new, dir2);
@@ -2139,16 +2139,16 @@ static void AiBuildRailConstruct(Player *p)
 				unnecessary to check for worse bridge (i=0), since AI will always build that.
 				AI is so fucked up that fixing this small thing will probably not solve a thing
 		*/
-		for(i = 10 + (p->ai.railtype_to_use << 8); i != 0; i--) {
+		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				int32 cost = DoCommandByTile(arf.bridge_end_tile, p->ai.cur_tile_a, i, DC_AUTO, CMD_BUILD_BRIDGE);
+				int32 cost = DoCommandByTile(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (cost != CMD_ERROR && cost < (p->player_money >> 5))
 					break;
 			}
 		}
 
 		// Build it
-		DoCommandByTile(arf.bridge_end_tile, p->ai.cur_tile_a, i, DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+		DoCommandByTile(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 
 		p->ai.cur_tile_a = arf.bridge_end_tile;
 		p->ai.state_counter = 0;

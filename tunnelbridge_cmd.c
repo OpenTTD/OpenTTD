@@ -197,6 +197,9 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	direction = 0;
 
+	if (bridge_type >= MAX_BRIDGES) // out of bounds bridge
+		return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
 		if (y == sy)
@@ -1046,7 +1049,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			// bridge ending.
-			b = _bridge_sprite_table[_map2[ti->tile]>>4][6];
+			b = _bridge_sprite_table[(_map2[ti->tile] >> 4) & 0xF][6];
 			b += (tmp&(3<<1))*4; /* actually ((tmp>>2)&3)*8 */
 			b += (tmp&1); // direction
 			if (ti->tileh == 0) b += 4; // sloped "entrance" ?
@@ -1106,7 +1109,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawGroundSprite(image);
 			}
 			// get bridge sprites
-			b = _bridge_sprite_table[_map2[ti->tile]>>4][_map2[ti->tile]&0xF] + tmp * 4;
+			b = _bridge_sprite_table[(_map2[ti->tile] >> 4) & 0xF][_map2[ti->tile]&0xF] + tmp * 4;
 
 			z = GetBridgeHeight(ti) + 5;
 
