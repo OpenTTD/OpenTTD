@@ -662,6 +662,7 @@ static const char * const _cached_filenames[4] = {
 	"cached_sprites.xx3",
 };
 
+#define OPENTTD_SPRITES_COUNT = 70
 static const uint16 _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE+0,	SPR_OPENTTD_BASE+7, // icons etc
 	98,98,     // euro symbol medium size
@@ -671,7 +672,7 @@ static const uint16 _openttd_grf_indexes[] = {
 	616, 616, // nordic char: Æ
 	666, 666, // nordic char: Ø
 	634, 634, // nordic char: Ø
-	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE+70, // more icons
+	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE+SPR_OPENTTD_COUNT, // more icons
 	0xffff,
 };
 
@@ -700,7 +701,9 @@ static void LoadSpriteTables()
 		load_index = SPR_CANALS_BASE;
 		load_index += LoadGrfFile("canalsw.grf", load_index, i++);
 		/* XXX: Only for debugging. Will be more generic. */
-		
+
+		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT;
+
 		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
 			load_index += LoadGrfFile(_newgrf_files[j], load_index, i++);
 
