@@ -1526,8 +1526,8 @@ static void DrawTile_Track(TileInfo *ti)
 		if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
 
 		// adjust ground tile for desert
-		// (don't adjust for arctic, because snow in depots looks weird)
-		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT && _opt.landscape == LT_DESERT)
+		// (don't adjust for arctic depots, because snow in depots looks weird)
+		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type>=4))
 		{
 			if(image!=3981)
 				image += 26; // tile with tracks
