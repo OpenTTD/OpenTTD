@@ -63,6 +63,11 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 void InitNewsItemStructs()
 {
 	memset(_news_items, 0, sizeof(NewsItem)*MAX_NEWS);
+	_current_news = 255;
+	_oldest_news = 0;
+	_latest_news = 255;
+	_forced_news = 255;
+	_total_news = 0;
 }
 
 void DrawNewsBorder(Window *w)
@@ -381,8 +386,7 @@ static void MoveToNexItem()
 void NewsLoop()
 {
 	// no news item yet
-	if(_total_news==0)
-		return;
+	if(_total_news==0) return;
 
 	if( ReadyForNextItem() )
 		MoveToNexItem();
@@ -391,6 +395,8 @@ void NewsLoop()
 /* Do a forced show of a specific message */
 void ShowNewsMessage(byte i)
 {
+	if(_total_news==0) return;
+
 	// Delete the news window
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 
@@ -421,6 +427,154 @@ void ShowLastNewsMessage()
 	}
 }
 
+
+/* return news by number, with 0 being the most
+recent news. Returns 255 if end of queue reached. */
+static byte getNews(byte i)
+{
+	if(i>=_total_news) 
+		return 255;
+
+	if(_latest_news < i)
+		i = _latest_news + MAX_NEWS - i;
+	else
+		i = _latest_news - i;
+
+	i = i % MAX_NEWS;
+	return i;
+}
+
+static void GetNewsString(NewsItem *ni, byte *buffer)
+{
+	StringID str;
+	byte *s, *d;
+	
+	if (ni->display_mode == 3) {
+		str = _get_news_string_callback[ni->callback](ni);
+	} else {
+		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+		str = ni->string_id;	
+	}
+
+	GetString(str_buffr, str);
+	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
+	
+	s = str_buffr;
+	d = buffer;
+
+	for(;;s++) {
+		// cut strings that are too long
+		if(s >= str_buffr + 55) {
+			d[0] = d[1] = d[2] = '.';
+			d+=3;
+			*d = 0;
+			break;
+		}
+
+		if (*s == 0) {
+			*d = 0;
+			break;
+		} else if (*s == 13) {
+			d[0] = d[1] = d[2] = d[3] = ' ';
+			d+=4;
+		} else if (*s >= ' ' && (*s < 0x88 || *s >= 0x99)) {
+			*d++ = *s;
+		}
+	}
+}
+
+
+static void MessageHistoryWndProc(Window *w, WindowEvent *e)
+{
+	switch(e->event) {
+	case WE_PAINT: {
+		byte buffer[256];
+		int y=19;
+		byte p, show;
+		NewsItem *ni;
+
+		DrawWindowWidgets(w);
+
+		if(_total_news==0) break;
+		show = min(_total_news, 10);
+
+		for(p=w->vscroll.pos; p<w->vscroll.pos+show; p++)
+		{
+			// get news in correct order
+			ni = &_news_items[ getNews(p) ];
+
+			SET_DPARAM16(0, ni->date);
+			DrawString(4, y, STR_00AF, 16);
+
+			GetNewsString(ni, buffer);
+			DoDrawString(buffer, 85, y, 16);
+			y += 12;
+		}
+
+		break;
+	}
+
+	case WE_CLICK:
+		switch(e->click.widget) {
+		case 2: {
+			int y = (e->click.pt.y - 19) / 12;
+			byte p, q;
+
+			/* // === DEBUG code only
+			for(p=0; p<_total_news; p++)
+			{
+				NewsItem *ni;
+				byte buffer[256];
+				ni=&_news_items[p];
+				GetNewsString(ni, buffer);
+				printf("%i\t%i\t%s\n", p, ni->date, buffer);
+			}
+			printf("=========================\n");
+			// === END OF DEBUG CODE */
+
+			p = y + w->vscroll.pos;
+			if( p > _total_news-1 ) break;
+
+			if(_latest_news >= p) q=_latest_news - p;
+			else q=_latest_news + MAX_NEWS - p;
+			ShowNewsMessage(q);
+
+			break;
+		}
+		}
+		break;
+	}
+}
+
+static const Widget _message_history_widgets[] = {
+{   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    13,     0,   388,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
+{  WWT_SCROLLBAR,    13,   389,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_LAST},
+};
+
+static const WindowDesc _message_history_desc = {
+	240, 22, 400, 140,
+	WC_MESSAGE_HISTORY,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_message_history_widgets,
+	MessageHistoryWndProc
+};
+
+void ShowMessageHistory()
+{
+	Window *w;
+
+	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
+	w = AllocateWindowDesc(&_message_history_desc);
+
+	if (w) {
+		w->vscroll.cap = 10;
+		w->vscroll.count = _total_news;
+		SetWindowDirty(w);
+	}
+}
 
 
 static void MessageOptionsWndProc(Window *w, WindowEvent *e)
@@ -520,144 +674,3 @@ void ShowMessageOptions()
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_message_options_desc);
 }
-
-
-
-/* return news by number, with 0 being the most
-recent news. Returns false if end of queue reached. */
-static byte getNews(byte i)
-{
-	if(i>=MAX_NEWS) 
-	{ 
-		return -1;
-	}
-
-	i = _latest_news - i;
-	i = i % MAX_NEWS;
-
-	if(_news_items[i].string_id == 0) return -1;
-
-	return i;
-}
-
-static void GetNewsString(NewsItem *ni, byte *buffer)
-{
-	StringID str;
-	byte *s, *d;
-	
-	if (ni->display_mode == 3) {
-		str = _get_news_string_callback[ni->callback](ni);
-	} else {
-		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
-		str = ni->string_id;	
-	}
-
-	GetString(str_buffr, str);
-	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
-	
-	s = str_buffr;
-	d = buffer;
-
-	for(;;s++) {
-		// cut strings that are too long
-		if(s >= str_buffr + 55) {
-			d[0] = d[1] = d[2] = '.';
-			d+=3;
-			*d = 0;
-			break;
-		}
-
-		if (*s == 0) {
-			*d = 0;
-			break;
-		} else if (*s == 13) {
-			d[0] = d[1] = d[2] = d[3] = ' ';
-			d+=4;
-		} else if (*s >= ' ' && (*s < 0x88 || *s >= 0x99)) {
-			*d++ = *s;
-		}
-	}
-}
-
-
-static void MessageHistoryWndProc(Window *w, WindowEvent *e)
-{
-	switch(e->event) {
-	case WE_PAINT: {
-		byte buffer[256];
-		int y=19;
-		byte p, show;
-		NewsItem *ni;
-
-		DrawWindowWidgets(w);
-
-		if(_total_news==0) break;
-		show = min(_total_news, 10);
-
-		for(p=w->vscroll.pos; p<w->vscroll.pos+show; p++)
-		{
-			// get news in correct order
-			ni = &_news_items[ getNews(p) ];
-
-			SET_DPARAM16(0, ni->date);
-			DrawString(4, y, STR_00AF, 16);
-
-			GetNewsString(ni, buffer);
-			DoDrawString(buffer, 85, y, 16);
-			y += 12;
-		}
-
-		break;
-	}
-
-	case WE_CLICK:
-		switch(e->click.widget) {
-		case 2: {
-			int y = (e->click.pt.y - 19) / 12;
-			byte p, q;
-
-			p = y + w->vscroll.pos;
-			if( p > _total_news-1 ) break;
-
-			if(_latest_news >= p) q=_latest_news - p;
-			else q=_latest_news + MAX_NEWS - p;
-
-			ShowNewsMessage(q);
-
-			break;
-		}
-		}
-		break;
-	}
-}
-
-static const Widget _message_history_widgets[] = {
-{   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   388,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
-{  WWT_SCROLLBAR,    13,   389,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
-};
-
-static const WindowDesc _message_history_desc = {
-	240, 22, 400, 140,
-	WC_MESSAGE_HISTORY,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_message_history_widgets,
-	MessageHistoryWndProc
-};
-
-void ShowMessageHistory()
-{
-	Window *w;
-
-	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
-	w = AllocateWindowDesc(&_message_history_desc);
-
-	if (w) {
-		w->vscroll.cap = 10;
-		w->vscroll.count = _total_news;
-		SetWindowDirty(w);
-	}
-}
-
