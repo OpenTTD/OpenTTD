@@ -292,22 +292,14 @@ static int32 ClearTile_Town(uint tile, byte flags)
 	return cost;
 }
 
-static void GetAcceptedCargo_Town(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Town(uint tile, AcceptedCargo ac)
 {
 	int type = _map2[tile];
 
-	ac->type_1 = CT_PASSENGERS;
-	ac->amount_1 = _housetype_cargo_passengers[type];
-
-	ac->type_2 = CT_GOODS;
-	ac->amount_2 = _housetype_cargo_goods[type];
-	if (ac->amount_2 & 0x80) {
-		ac->amount_2 &= 0x7F;
-		ac->type_2 = CT_FOOD;
-	}
-
-	ac->type_3 = CT_MAIL;
-	ac->amount_3 = _housetype_cargo_mail[type];
+	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
+	ac[CT_MAIL] = _housetype_cargo_mail[type];
+	ac[CT_GOODS] = _housetype_cargo_goods[type];
+	ac[CT_FOOD] = _housetype_cargo_food[type];
 }
 
 static void GetTileDesc_Town(uint tile, TileDesc *td)

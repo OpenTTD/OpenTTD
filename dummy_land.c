@@ -22,7 +22,7 @@ static int32 ClearTile_Dummy(uint tile, byte flags) {
 }
 
 
-static void GetAcceptedCargo_Dummy(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Dummy(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

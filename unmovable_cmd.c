@@ -126,7 +126,7 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 	return 0;
 }
 
-static void GetAcceptedCargo_Unmovable(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Unmovable(uint tile, AcceptedCargo ac)
 {
 	byte m5 = _map5[tile];
 	uint level; // HQ level (depends on company performance) in the range 1..5.
@@ -143,17 +143,13 @@ static void GetAcceptedCargo_Unmovable(uint tile, AcceptedCargo *ac)
 
 	// Top town building generates 10, so to make HQ interesting, the top
 	// type makes 20.
-	ac->type_1 = CT_PASSENGERS;
-	ac->amount_1 = level;
-	if (!ac->amount_1) ac->amount_1 = 1;
+	ac[CT_PASSENGERS] = max(1, level);
 
 	// Top town building generates 4, HQ can make up to 8. The
 	// proportion passengers:mail is different because such a huge
 	// commercial building generates unusually high amount of mail
 	// correspondence per physical visitor.
-	ac->type_2 = CT_MAIL;
-	ac->amount_2 = level / 2;
-	if (!ac->amount_2) ac->amount_2 = 1;
+	ac[CT_MAIL] = max(1, level / 2);
 }
 
 static const StringID _unmovable_tile_str[] = {

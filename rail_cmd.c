@@ -1965,7 +1965,7 @@ uint GetSlopeTileh_Track(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Track(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Track(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

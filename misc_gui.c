@@ -32,6 +32,8 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 	uint32 *b;
 
 	if (e->event == WE_PAINT) {
+		int i;
+
 		DrawWindowWidgets(w);
 
 		lid = WP(w,void_d).data;
@@ -68,37 +70,19 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		str = STR_01CE_CARGO_ACCEPTED - 1;
 
-		if (lid->ac.amount_1 != 0) {
-			if (lid->ac.amount_1 < 8) {
-				SET_DPARAMX16(b, 0, STR_01D1_8);
-				SET_DPARAMX8(b, 1, lid->ac.amount_1);
-				b += 2;
+		/* XXX if a tile accepts more cargo types than there are template strings
+		 * this breaks */
+		for (i = 0; i < NUM_CARGO; ++i) {
+			if (lid->ac[i] > 0) {
+				if (lid->ac[i] < 8) {
+					SET_DPARAMX16(b, 0, STR_01D1_8);
+					SET_DPARAMX8(b, 1, lid->ac[i]);
+					b += 2;
+				}
+				SET_DPARAMX16(b, 0, _cargoc.names_s[i]);
+				b++;
+				str++;
 			}
-			SET_DPARAMX16(b, 0, _cargoc.names_s[lid->ac.type_1]);
-			b++;
-			str++;
-		}
-
-		if (lid->ac.amount_2 != 0) {
-			if (lid->ac.amount_2 < 8) {
-				SET_DPARAMX16(b, 0, STR_01D1_8);
-				SET_DPARAMX8(b, 1, lid->ac.amount_2);
-				b += 2;
-			}
-			SET_DPARAMX16(b, 0, _cargoc.names_s[lid->ac.type_2]);
-			b++;
-			str++;
-		}
-
-		if (lid->ac.amount_3 != 0) {
-			if (lid->ac.amount_3 < 8) {
-				SET_DPARAMX16(b, 0, STR_01D1_8);
-				SET_DPARAMX8(b, 1, lid->ac.amount_3);
-				b += 2;
-			}
-			SET_DPARAMX16(b, 0, _cargoc.names_s[lid->ac.type_3]);
-			b++;
-			str++;
 		}
 
 		if (str != (STR_01CE_CARGO_ACCEPTED - 1))
@@ -155,7 +139,7 @@ static void Place_LandInfo(uint tile)
 	// Becuase build_date is not set yet in every TileDesc, we make sure it is empty
 	lid.td.build_date = 0;
 
-	GetAcceptedCargo(tile, &lid.ac);
+	GetAcceptedCargo(tile, lid.ac);
 	GetTileDesc(tile, &lid.td);
 
 	#if defined(_DEBUG)

@@ -357,7 +357,7 @@ static int32 ClearTile_Trees(uint tile, byte flags) {
 	return num * _price.remove_trees;
 }
 
-static void GetAcceptedCargo_Trees(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Trees(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

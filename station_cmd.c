@@ -429,9 +429,8 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h)
 	int x,y;
 	int x1,y1,x2,y2;
 	int xc,yc;
-	AcceptedCargo ac;
 
-	memset(accepts, 0, NUM_CARGO * sizeof(uint));
+	memset(accepts, 0, sizeof(AcceptedCargo));
 
 	x = GET_TILE_X(tile);
 	y = GET_TILE_Y(tile);
@@ -454,10 +453,12 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h)
 		do {
 			uint tile = TILE_XY(xc, yc);
 			if (!IS_TILETYPE(tile, MP_STATION)) {
-				GetAcceptedCargo(tile, &ac);
-				accepts[ac.type_1] += ac.amount_1;
-				accepts[ac.type_2] += ac.amount_2;
-				accepts[ac.type_3] += ac.amount_3;
+				AcceptedCargo ac;
+				int i;
+
+				GetAcceptedCargo(tile, ac);
+				for (i = 0; i < NUM_CARGO; ++i)
+					accepts[i] += ac[i];
 			}
 		} while (++xc != x2);
 	} while (++yc != y2);
@@ -1999,7 +2000,7 @@ static uint GetSlopeTileh_Station(TileInfo *ti)
 	return 0;
 }
 
-static void GetAcceptedCargo_Station(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Station(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

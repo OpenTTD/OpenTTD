@@ -523,7 +523,7 @@ uint GetSlopeTileh_Clear(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Clear(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Clear(uint tile, AcceptedCargo ac)
 {
 	/* unused */
 }

@@ -903,7 +903,7 @@ uint GetSlopeTileh_Road(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Road(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Road(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

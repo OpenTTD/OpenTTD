@@ -222,11 +222,47 @@ typedef struct GameDifficulty {
 	int town_council_tolerance;	// minimum required town ratings to be allowed to demolish stuff
 } GameDifficulty;
 
-typedef struct AcceptedCargo {
-	int type_1, amount_1;
-	int type_2, amount_2;
-	int type_3, amount_3;
-} AcceptedCargo;
+enum {
+	// Temperate
+	CT_PASSENGERS = 0,
+	CT_COAL = 1,
+	CT_MAIL = 2,
+	CT_OIL = 3,
+	CT_LIVESTOCK = 4,
+	CT_GOODS = 5,
+	CT_GRAIN = 6,
+	CT_WOOD = 7,
+	CT_IRON_ORE = 8,
+	CT_STEEL = 9,
+	CT_VALUABLES = 10,
+	CT_FOOD = 11,
+
+	// Arctic
+	CT_HILLY_UNUSED = 8,
+	CT_PAPER = 9,
+
+	// Tropic
+	CT_RUBBER = 1,
+	CT_FRUIT = 4,
+	CT_COPPER_ORE = 8,
+	CT_WATER = 9,
+
+	// Toyland
+	CT_SUGAR = 1,
+	CT_TOYS = 3,
+	CT_BATTERIES = 4,
+	CT_CANDY = 5,
+	CT_TOFFEE = 6,
+	CT_COLA = 7,
+	CT_COTTON_CANDY = 8,
+	CT_BUBBLES = 9,
+	CT_PLASTIC = 10,
+	CT_FIZZY_DRINKS = 11,
+
+	NUM_CARGO = 12,
+};
+
+typedef uint AcceptedCargo[NUM_CARGO];
 
 typedef struct TileDesc {
 	StringID str;
@@ -253,7 +289,7 @@ typedef int32 CommandProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileInfo *ti);
 typedef int32 ClearTileProc(uint tile, byte flags);
-typedef void GetAcceptedCargoProc(uint tile, AcceptedCargo *res);
+typedef void GetAcceptedCargoProc(uint tile, AcceptedCargo res);
 typedef void GetTileDescProc(uint tile, TileDesc *td);
 /* GetTileTrackStatusProcs return a value that contains the possible tracks
  * that can be taken on a given tile by a given transport. The return value is
@@ -324,46 +360,6 @@ enum {
 	MP_MAP3HI_CLEAR = 1 << 14,
 
 	MP_NODIRTY = 1<<15,
-};
-
-enum {
-	// Temperate
-	CT_PASSENGERS = 0,
-	CT_COAL = 1,
-	CT_MAIL = 2,
-	CT_OIL = 3,
-	CT_LIVESTOCK = 4,
-	CT_GOODS = 5,
-	CT_GRAIN = 6,
-	CT_WOOD = 7,
-	CT_IRON_ORE = 8,
-	CT_STEEL = 9,
-	CT_VALUABLES = 10,
-	CT_FOOD = 11,
-
-	// Arctic
-	CT_HILLY_UNUSED = 8,
-	CT_PAPER = 9,
-
-	// Tropic
-	CT_RUBBER = 1,
-	CT_FRUIT = 4,
-	CT_COPPER_ORE = 8,
-	CT_WATER = 9,
-
-	// Toyland
-	CT_SUGAR = 1,
-	CT_TOYS = 3,
-	CT_BATTERIES = 4,
-	CT_CANDY = 5,
-	CT_TOFFEE = 6,
-	CT_COLA = 7,
-	CT_COTTON_CANDY = 8,
-	CT_BUBBLES = 9,
-	CT_PLASTIC = 10,
-	CT_FIZZY_DRINKS = 11,
-
-	NUM_CARGO = 12,
 };
 
 enum {

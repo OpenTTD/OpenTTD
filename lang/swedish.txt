@@ -495,6 +495,8 @@ STR_01CD_SELECT_TUTORIAL_DEMONSTRATION				:{WHITE}Välj Tutorial/Demonstration
 STR_01CE_CARGO_ACCEPTED						:{BLACK}Accepterat gods: {LTBLUE}{STRING}
 STR_01CF_CARGO_ACCEPTED						:{BLACK}Accepterat gods: {LTBLUE}{STRING}, {STRING}
 STR_01D0_CARGO_ACCEPTED						:{BLACK}Accepterat gods: {LTBLUE}{STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_4						:{BLACK}Accepterat gods: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_5						:{BLACK}Accepterat gods: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
 STR_01D1_8							:({COMMA8}/8 {STRING})

@@ -311,7 +311,7 @@ void ChangeTileOwner(uint tile, byte old_player, byte new_player)
 	_tile_type_procs[GET_TILETYPE(tile)]->change_tile_owner_proc(tile, old_player, new_player);
 }
 
-void GetAcceptedCargo(uint tile, AcceptedCargo *ac)
+void GetAcceptedCargo(uint tile, AcceptedCargo ac)
 {
 	memset(ac, 0, sizeof(AcceptedCargo));
 	_tile_type_procs[GET_TILETYPE(tile)]->get_accepted_cargo_proc(tile, ac);

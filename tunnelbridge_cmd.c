@@ -1208,7 +1208,7 @@ static uint GetSlopeTileh_TunnelBridge(TileInfo *ti) {
 }
 
 
-static void GetAcceptedCargo_TunnelBridge(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_TunnelBridge(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

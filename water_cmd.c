@@ -450,7 +450,7 @@ static uint GetSlopeTileh_Water(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Water(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Water(uint tile, AcceptedCargo ac)
 {
 	/* not used */
 }

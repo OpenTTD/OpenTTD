@@ -339,28 +339,19 @@ static uint GetSlopeTileh_Industry(TileInfo *ti) {
 	return 0;
 }
 
-static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo *ac)
+static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo ac)
 {
 	int m5 = _map5[tile];
 	int a;
 
 	a = _industry_map5_accepts_1[m5];
-	if (a >= 0) {
-		ac->type_1 = a;
-		ac->amount_1 = (a == 0) ? 1 : 8;
-	}
+	if (a >= 0) ac[a] = (a == 0) ? 1 : 8;
 
 	a = _industry_map5_accepts_2[m5];
-	if (a >= 0) {
-		ac->type_2 = a;
-		ac->amount_2 = 8;
-	}
+	if (a >= 0) ac[a] = 8;
 
 	a = _industry_map5_accepts_3[m5];
-	if (a >= 0) {
-		ac->type_3 = a;
-		ac->amount_3 = 8;
-	}
+	if (a >= 0) ac[a] = 8;
 }
 
 static void GetTileDesc_Industry(uint tile, TileDesc *td)
