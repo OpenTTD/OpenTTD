@@ -131,6 +131,8 @@ VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
 VARDEF char _network_player_name[NETWORK_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
+#define MAX_SAVED_SERVERS 10
+VARDEF char *_network_server_list[MAX_SAVED_SERVERS];
 
 VARDEF uint16 _network_own_client_index;
 VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
@@ -191,5 +193,6 @@ VARDEF byte _network_playas; // an id to play as..
 
 void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
+void AddServer(byte *b);
 
 #endif /* NETWORK_H */

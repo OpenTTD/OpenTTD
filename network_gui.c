@@ -317,22 +317,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
-		if (*b != 0) {
-			const byte *port = NULL;
-			const byte *player = NULL;
-			uint16 rport;
-
-			ttd_strlcpy(_network_default_ip, b, lengthof(_network_default_ip));
-			rport = NETWORK_DEFAULT_PORT;
-
-			ParseConnectionString(&player, &port, b);
-
-			if (player != NULL) _network_playas = atoi(player);
-			if (port != NULL) rport = atoi(port);
-
-			NetworkQueryServer(b, rport, true);
-		}
+		AddServer(e->edittext.str);
 	} break;
 
 	case WE_CREATE: {
@@ -387,7 +372,6 @@ void ShowNetworkGameWindow()
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-//	NetworkLobbyInit();
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
 	w->vscroll.cap = 8;

@@ -122,7 +122,7 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 	IniGroup *grp = pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
 	grp->name = pool_strdup(&ini->pool, grpt, len);
-	if(!strcmp(grp->name, "newgrf"))
+	if(!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") )
 		grp->type = IGT_LIST;
 	else
 		grp->type = IGT_VARIABLES;
@@ -906,20 +906,19 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 	proc(ini, debug_settings,		"debug");
 }
 
-static void LoadGrfSettings(IniFile *ini)
+// loads all items from a *grpname section into the **list
+static void LoadList(IniFile *ini, const char *grpname, char **list, int len)
 {
-	IniGroup *group = ini_getgroup(ini, "newgrf", -1);
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
 	IniItem *item;
 	int i;
 
 	if (!group)
 		return;
-
 	item = group->item;
-	for(i=0; i!=lengthof(_newgrf_files); i++) {
-		if (!item)
-			break;
-		_newgrf_files[i] = strdup(item->value);
+	for ( i=0; i != len; i++) {
+		if (item == NULL) break;
+		list[i] = strdup(item->value);
 		item = item->next;
 	}
 }
@@ -928,7 +927,8 @@ void LoadFromConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, load_setting_desc);
-	LoadGrfSettings(ini);
+	LoadList(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
+	LoadList(ini, "servers", _network_server_list, lengthof(_network_server_list));
 	ini_free(ini);
 }
 

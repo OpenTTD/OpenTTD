@@ -707,6 +707,7 @@ void NetworkClose(void)
 void NetworkInitialize(void)
 {
 	ClientState *cs;
+	uint i;
 
 	_local_command_queue = NULL;
 
@@ -730,6 +731,12 @@ void NetworkInitialize(void)
 	InitPlayerRandoms();
 
 	NetworkUDPInitialize();
+
+	// add all servers from the config file to our list
+	for (i=0; i != lengthof(_network_server_list); i++) {
+		if (_network_server_list[i] == NULL) break;
+		AddServer(_network_server_list[i]);
+	}
 }
 
 // Query a server to fetch his game-info
@@ -764,6 +771,27 @@ void NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
 
 	// No networking, close everything down again
 	NetworkDisconnect();
+}
+
+// validates an address entered as a string and adds the server to
+// the list
+void AddServer(byte *b)
+{
+	if (*b != '\0') {
+		const byte *port = NULL;
+		const byte *player = NULL;
+		uint16 rport;
+
+		ttd_strlcpy(_network_default_ip, b, lengthof(_network_default_ip));
+		rport = NETWORK_DEFAULT_PORT;
+
+		ParseConnectionString(&player, &port, b);
+
+		if (player != NULL) _network_playas = atoi(player);
+		if (port != NULL) rport = atoi(port);
+
+		NetworkQueryServer(b, rport, true);
+	}
 }
 
 // Used by clients, to connect to a server
