@@ -783,7 +783,7 @@ static const SettingDesc debug_settings[] = {
 static const SettingDesc gameopt_settings[] = {
 	{"diff_level",	SDT_UINT8,									(void*)9,		&_new_opt.diff_level, NULL},
 	{"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, &_new_opt.diff, NULL},
-	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)21,	&_new_opt.currency,		"GBP|USD|FF|DM|YEN|PT|FT|ZL|ATS|BEF|DKK|FIM|GRD|CHF|NLG|ITL|SEK|RUR|CZK|ISK|NOK|EUR|ROL" },
+	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,	&_new_opt.currency,		"GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SEK|custom" },
 	{"distances",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		&_new_opt.kilometers, "imperial|metric" },
 	{"town_names",	SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		&_new_opt.town_name,	"english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|hungarian|romanian|czech" },
 	{"landscape",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		&_new_opt.landscape,	"normal|hilly|desert|candy" },
