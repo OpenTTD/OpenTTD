@@ -93,6 +93,7 @@ struct IniGroup {
 	IniItem *item, **last_item;
 	IniGroup *next;
 	IniFile *ini;
+	IniGroupType type; // type of group
 };
 
 struct IniFile {
@@ -121,6 +122,10 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 	IniGroup *grp = pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
 	grp->name = pool_strdup(&ini->pool, grpt, len);
+	if(!strcmp(grp->name, "newgrf"))
+		grp->type = IGT_LIST;
+	else
+		grp->type = IGT_VARIABLES;
 	grp->next = NULL;
 	grp->item = NULL;
 	grp->comment = NULL;
@@ -212,6 +217,12 @@ static IniFile *ini_load(const char *filename)
 				comment_size = 0;
 			}
 
+			// for list items, the name and value are the same:
+			if( group->type == IGT_LIST ) {
+				item->value = item->name;
+				continue;
+			}
+
 			// find start of parameter
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
 			item->value = pool_strdup(&ini->pool, t, e - t);
@@ -282,7 +293,10 @@ static bool ini_save(const char *filename, IniFile *ini)
 		fprintf(f, "[%s]\n", group->name);
 		for(item = group->item; item; item = item->next) {
 			if (item->comment) fputs(item->comment, f);
-			fprintf(f, "%s = %s\n", item->name, item->value ? item->value : "");
+			if(group->type==IGT_LIST)
+				fprintf(f, "%s\n", item->value ? item->value : "");
+			else
+				fprintf(f, "%s = %s\n", item->name, item->value ? item->value : "");
 		}
 	}
 	if (ini->comment) fputs(ini->comment, f);
@@ -901,13 +915,12 @@ static void LoadGrfSettings(IniFile *ini)
 	if (!group)
 		return;
 
+	item = group->item;
 	for(i=0; i!=lengthof(_newgrf_files); i++) {
-		char buf[3];
-		sprintf(buf, "%d", i);
-		item = ini_getitem(group, buf, false);
 		if (!item)
 			break;
 		_newgrf_files[i] = strdup(item->value);
+		item = item->next;
 	}
 }
 

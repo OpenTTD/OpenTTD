@@ -28,6 +28,11 @@ enum SettingDescType {
 	SDT_BOOL = SDT_BOOLX | SDT_UINT8,
 };
 
+typedef enum {
+	IGT_VARIABLES = 0, // values of the form "landscape = hilly"
+	IGT_LIST = 1,      // a list of values, seperated by \n and terminated by the next group block
+} IniGroupType;
+
 typedef struct SettingDesc {
 	const char *name;
 	int flags;
