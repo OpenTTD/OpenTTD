@@ -500,7 +500,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				engine_id = AIRCRAFT_ENGINES_INDEX;
 				do {
 					if (HASBIT(e->player_avail, _local_player)) {
-						if ( (subtype && AircraftVehInfo(engine_id)->subtype) || (!(subtype) && !AircraftVehInfo(engine_id)->subtype) ) {
+						if (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(engine_id)->subtype, 0)) {
 							count2++;
 							if (sel[1]==0)  selected_id[1] = engine_id;
 							sel[1]--;
@@ -647,7 +647,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						}
 						sel[0]--;
 					}
-					if ( ((subtype && AircraftVehInfo(engine_id)->subtype) || (!(subtype) && !AircraftVehInfo(engine_id)->subtype))
+					if ( (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(engine_id)->subtype, 0))
 						&& HASBIT(e->player_avail, _local_player) ) {
 						if (sel[1]==0) selected_id[1] = engine_id;
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
