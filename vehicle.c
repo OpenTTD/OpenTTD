@@ -1511,7 +1511,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				// turn the last engine in a multiheaded train if needed
 				if ( v->next == NULL && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
 					v->spritenum++;
-				
+
 				v->cargo_type = rvi->cargo_type;
 				v->cargo_cap = rvi->capacity;
 				v->max_speed = rvi->max_speed;
@@ -1834,12 +1834,18 @@ const byte _common_veh_desc[] = {
 
 	SLE_VAR(Vehicle,cur_order_index,	SLE_UINT8),
 	SLE_VAR(Vehicle,num_orders,				SLE_UINT8),
-	SLE_VAR(Vehicle,current_order,		SLE_UINT8), /* XXX hack to avoid version bump */
-	#if _MSC_VER != 1200
-	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
-	#else /* XXX workaround for MSVC6 */
-	SLE_VAR2(Vehicle, current_order, Order, station, SLE_UINT8),
-	#endif
+
+	/* This next line is for version 4 and prior compatibility.. it temporarily reads
+	    type and flags (which were both 4 bits) into type. Later on this is
+	    converted correctly */
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,  0, 4),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+
+	/* Orders for version 5 and on */
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,  5, 255),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags),   SLE_UINT8,  5, 255),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, 255),
+
 	SLE_REF(Vehicle,schedule_ptr,			REF_SCHEDULE),
 
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -1986,11 +1992,8 @@ static const byte _disaster_desc[] = {
 	SLE_VAR(Vehicle,z_height,					SLE_UINT8),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
-	#if _MSC_VER != 1200
-	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
-	#else /* XXX workaround for MSVC6 */
-	SLE_VAR2(Vehicle, current_order, Order, station, SLE_UINT8),
-	#endif
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, 255),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -2045,6 +2048,13 @@ static void Load_VEHS()
 		/* Old savegames used 'last_station_visited = 0xFF', should be 0xFFFF */
 		if (_sl.version < 5 && v->last_station_visited == 0xFF)
 			v->last_station_visited = 0xFFFF;
+
+		if (_sl.version < 5) {
+			/* Convert the current_order.type (which is a mix of type and flags, because
+			    in those versions, they both were 4 bits big) to type and flags */
+			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
+			v->current_order.type  =  v->current_order.type & 0x0F;
+		}
 	}
 
 	// Iterate through trains and set first_engine appropriately.

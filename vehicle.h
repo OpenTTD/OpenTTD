@@ -3,6 +3,10 @@
 
 #include "vehicle_gui.h"
 
+/* If you change this, keep in mind that it is saved on 3 places:
+    - Load_ORDR, all the global orders
+    - Vehicle -> current_order
+    - REF_SHEDULE (all REFs are currently limited to 16 bits!!) */
 typedef struct Order {
 	uint8 type;
 	uint8 flags;
