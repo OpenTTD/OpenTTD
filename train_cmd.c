@@ -2630,6 +2630,10 @@ void Train_Tick(Vehicle *v)
 		// make sure vehicle wasn't deleted.
 		if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
 			TrainLocoHandler(v, true);
+	} else if (v->subtype == TS_Free_Car && HASBITS(v->vehstatus, VS_CRASHED)) {
+		// Delete flooded standalone wagon
+		if (++v->u.rail.crash_anim_pos >= 4400)
+			DeleteVehicle(v);
 	}
 }
 

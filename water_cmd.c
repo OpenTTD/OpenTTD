@@ -587,7 +587,7 @@ static void FloodVehicle(Vehicle *v)
 		else if (v->type == VEH_Train) {
 			v = GetFirstVehicleInChain(v);
 			u = v;
-			pass = 4;	// driver
+			if (v->subtype == TS_Front_Engine) pass = 4; // driver
 
 			// crash all wagons, and count passangers
 			BEGIN_ENUM_WAGONS(v)
