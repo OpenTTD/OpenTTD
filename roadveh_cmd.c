@@ -1540,6 +1540,8 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	AgeVehicle(v);
 	CheckIfRoadVehNeedsService(v);
 
+	CheckOrders(v);
+
 	/* update destination */
 	if ((v->next_order & OT_MASK) == OT_GOTO_STATION) {
 		st = DEREF_STATION(v->next_order_param);

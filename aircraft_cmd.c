@@ -563,6 +563,8 @@ void OnNewDay_Aircraft(Vehicle *v)
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
 
+	CheckOrders(v);
+
 	CheckVehicleBreakdown(v);
 	AgeVehicle(v);
 	CheckIfAircraftNeedsService(v);

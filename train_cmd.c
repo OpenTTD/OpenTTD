@@ -2578,6 +2578,8 @@ void OnNewDay_Train(Vehicle *v)
 				0);
 		}
 
+		CheckOrders(v);
+				
 		/* update destination */
 		if ((v->next_order & OT_MASK) == OT_GOTO_STATION &&
 				(tile=DEREF_STATION(v->next_order_param)->train_tile) != 0)

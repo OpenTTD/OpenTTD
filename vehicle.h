@@ -354,6 +354,7 @@ int32 GetTrainRunningCost(Vehicle *v);
 int CheckStoppedInDepot(Vehicle *v);
 
 int ScheduleHasDepotOrders(uint16 *schedule);
+int CheckOrders(Vehicle *v);
 
 typedef struct GetNewVehiclePosResult {
 	int x,y;

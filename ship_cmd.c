@@ -127,8 +127,12 @@ void OnNewDay_Ship(Vehicle *v)
 	AgeVehicle(v);
 	CheckIfShipNeedsService(v);
 
+	CheckOrders(v);
+	
 	if (v->vehstatus & VS_STOPPED)
 		return;
+
+	
 
 	cost = ship_vehicle_info(v->engine_type).running_cost * _price.ship_running / 364;
 	v->profit_this_year -= cost >> 8;
