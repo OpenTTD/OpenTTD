@@ -1258,15 +1258,17 @@ static void UpdateCurrencies(void)
 	_opt.currency = convert_currency[_opt.currency];
 }
 
-// up to revision 1413, the invisible tiles at the southern border have not been MP_VOID
-// even though they should have. This is fixed by this function
+/* Up to revision 1413 the invisible tiles at the southern border have not been
+ * MP_VOID, even though they should have. This is fixed by this function
+ */
 static void UpdateVoidTiles(void)
 {
 	uint i;
-	// create void tiles on the border
-	for (i = 0; i != MapMaxY(); i++)
-		_map_type_and_height[ i * MapSizeX() + MapMaxY() ] = MP_VOID << 4;
-	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
+
+	for (i = 0; i < MapMaxY(); ++i)
+		SetTileType(i * MapSizeX() + MapMaxX(), MP_VOID);
+	for (i = 0; i < MapSizeX(); ++i)
+		SetTileType(MapSizeX() * MapMaxY() + i, MP_VOID);
 }
 
 // since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)

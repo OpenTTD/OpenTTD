@@ -492,10 +492,11 @@ void InitializeLandscape(void)
 	memset(_map_extra_bits, 0, map_size / 4);
 	memset(_map_type_and_height, MP_CLEAR << 4, map_size);
 
-	// create void tiles on the border
-	for (i = 0; i != MapMaxY(); i++)
-		_map_type_and_height[ i * MapSizeX() + MapMaxY() ] = MP_VOID << 4;
-	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
+	// create void tiles at the border
+	for (i = 0; i < MapMaxY(); ++i)
+		SetTileType(i * MapSizeX() + MapMaxX(), MP_VOID);
+	for (i = 0; i < MapSizeX(); ++i)
+		SetTileType(MapSizeX() * MapMaxY() + i, MP_VOID);
 
 	memset(_map5, 3, map_size);
 }
