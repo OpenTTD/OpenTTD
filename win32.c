@@ -299,7 +299,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	case WM_KEYDOWN: {
 		// this is the rewritten ascii input function
 		// it disables windows deadkey handling --> more linux like :D
-    unsigned short w = 0;
+		unsigned short w = 0;
 		int r = 0;
 		byte ks[256];
 		unsigned int scan = 0;
@@ -721,7 +721,7 @@ static int Win32GdiMainLoop(void)
 			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
 			if ((_pressed_key >> 16) & WKC_TAB &&
 #endif
-			  !_networking && _game_mode != GM_MENU)
+			    !_networking && _game_mode != GM_MENU)
 				_fast_forward |= 2;
 		} else if (_fast_forward & 2)
 			_fast_forward = 0;
