@@ -943,7 +943,11 @@ static void *IntToReference(uint r, uint t)
 	switch (t) {
 		case REF_ORDER:   return GetOrder(r - 1);
 		case REF_VEHICLE: return GetVehicle(r - 1);
-		case REF_STATION: return GetStation(r - 1);
+		case REF_STATION: {
+			if (!AddBlockIfNeeded(&_station_pool, r - 1))
+				error("Stations: failed loading savegame: too many stations");
+			return GetStation(r - 1);
+		}
 		case REF_TOWN: {
 			if (!AddBlockIfNeeded(&_town_pool, r - 1))
 				error("Towns: failed loading savegame: too many towns");

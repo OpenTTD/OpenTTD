@@ -1,6 +1,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include "pool.h"
 #include "sprite.h"
 #include "tile.h"
 #include "vehicle.h"
@@ -125,19 +126,30 @@ void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord(void);
 
 VARDEF RoadStop _roadstops[NUM_ROAD_STOPS * 2];
-VARDEF Station _stations[250];
 VARDEF uint _roadstops_size;
-VARDEF uint _stations_size;
 
 VARDEF SortStruct *_station_sort;
 
+extern MemoryPool _station_pool;
+
+/**
+ * Get the pointer to the station with index 'index'
+ */
 static inline Station *GetStation(uint index)
 {
-	assert(index < _stations_size);
-	return &_stations[index];
+	return (Station*)GetItemFromPool(&_station_pool, index);
 }
 
-#define FOR_ALL_STATIONS(st) for(st = _stations; st != &_stations[_stations_size]; st++)
+/**
+ * Get the current size of the StationPool
+ */
+static inline uint16 GetStationPoolSize(void)
+{
+	return _station_pool.total_items;
+}
+
+#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL)
+#define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
 VARDEF bool _station_sort_dirty[MAX_PLAYERS];
 VARDEF bool _global_station_sort_dirty;

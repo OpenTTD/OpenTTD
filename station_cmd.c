@@ -18,6 +18,27 @@
 #include "sprite.h"
 #include "npf.h"
 
+enum {
+	/* Max stations: 64000 (64 * 1000) */
+	STATION_POOL_BLOCK_SIZE_BITS = 6,       /* In bits, so (1 << 6) == 64 */
+	STATION_POOL_MAX_BLOCKS      = 1000,
+};
+
+/**
+ * Called if a new block is added to the station-pool
+ */
+static void StationPoolNewBlock(uint start_item)
+{
+	Station *st;
+
+	FOR_ALL_STATIONS_FROM(st, start_item)
+		st->index = start_item++;
+}
+
+/* Initialize the station-pool */
+MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_BLOCK_SIZE_BITS, sizeof(Station), &StationPoolNewBlock, 0, 0, NULL };
+
+
 // FIXME -- need to be embedded into Airport variable. Is dynamically
 // deducteable from graphics-tile array, so will not be needed
 const byte _airport_size_x[5] = {4, 6, 1, 6, 7 };
@@ -25,10 +46,6 @@ const byte _airport_size_y[5] = {3, 6, 1, 6, 7 };
 
 void ShowAircraftDepotWindow(uint tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
-
-enum {
-	STATIONS_MIN_FREE_FOR_AI = 30
-};
 
 static void MarkStationDirty(Station *st)
 {
@@ -216,28 +233,25 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 
 static Station *AllocateStation(void)
 {
-	Station *st, *a_free = NULL;
-	int num_free = 0;
-	int i;
+	Station *st = NULL;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy == 0) {
-			num_free++;
-			if (a_free == NULL)
-				a_free = st;
+			uint index = st->index;
+
+			memset(st, 0, sizeof(Station));
+			st->index = index;
+
+			return st;
 		}
 	}
 
-	if (a_free == NULL ||
-			(num_free < STATIONS_MIN_FREE_FOR_AI && IS_HUMAN_PLAYER(_current_player))) {
-		_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
-		return NULL;
-	}
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_station_pool))
+		return AllocateStation();
 
-	i = a_free->index;
-	memset(a_free, 0, sizeof(Station));
-	a_free->index = i;
-	return a_free;
+	_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
+	return NULL;
 }
 
 
@@ -2552,14 +2566,14 @@ static void StationHandleSmallTick(Station *st)
 
 void OnTick_Station(void)
 {
-	int i;
+	uint i;
 	Station *st;
 
 	if (_game_mode == GM_EDITOR)
 		return;
 
 	i = _station_tick_ctr;
-	if (++_station_tick_ctr == _stations_size)
+	if (++_station_tick_ctr == GetStationPoolSize())
 		_station_tick_ctr = 0;
 
 	st = GetStation(i);
@@ -2890,15 +2904,11 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 
 void InitializeStations(void)
 {
-	int i;
-	Station *s;
+	/* Clean the station pool and create 1 block in it */
+	CleanPool(&_station_pool);
+	AddBlockToPool(&_station_pool);
 
 	memset(_roadstops, 0, sizeof(_roadstops));
-	memset(_stations, 0, sizeof(_stations[0]) * _stations_size);
-
-	i = 0;
-	FOR_ALL_STATIONS(s)
-		s->index = i++;
 
 	_station_tick_ctr = 0;
 
@@ -3038,8 +3048,12 @@ static void Load_STNS(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Station *st = GetStation(index);
+		Station *st;
 
+		if (!AddBlockIfNeeded(&_station_pool, index))
+			error("Stations: failed loading savegame: too many stations");
+
+		st = GetStation(index);
 		SaveLoad_STNS(st);
 
 		// this means it's an oldstyle savegame without support for nonuniform stations
@@ -3080,7 +3094,7 @@ static void Load_STNS(void)
 
 	/* This is to ensure all pointers are within the limits of
 	    _stations_size */
-	if (_station_tick_ctr > _stations_size)
+	if (_station_tick_ctr > GetStationPoolSize())
 		_station_tick_ctr = 0;
 }
 

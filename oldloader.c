@@ -713,6 +713,9 @@ static void FixStation(OldStation *o, int num)
 		if (o->xy == 0)
 			continue;
 
+		if (!AddBlockIfNeeded(&_station_pool, i))
+			error("Stations: failed loading savegame: too many stations");
+
 		s = GetStation(i);
 
 		s->xy = o->xy;

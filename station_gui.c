@@ -84,7 +84,7 @@ static void GlobalSortStationList(void)
 		*i = 0;
 
 	/* Create array for sorting */
-	_station_sort = realloc(_station_sort, _stations_size * sizeof(_station_sort[0]));
+	_station_sort = realloc(_station_sort, GetStationPoolSize() * sizeof(_station_sort[0]));
 	if (_station_sort == NULL)
 		error("Could not allocate memory for the station-sorting-list");
 
@@ -318,7 +318,7 @@ static void DrawStationViewWindow(Window *w)
 	byte *b;
 
 
-	station_id = (byte)w->window_number;
+	station_id = (uint16)w->window_number;
 
 	st = GetStation(w->window_number);
 
