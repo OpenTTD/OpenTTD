@@ -1653,6 +1653,22 @@ void NetworkCoreShutdown()
 
 /* *************************************************** */
 
+void ParseConnectionString(const byte **player, const byte **port, byte *connection_string)
+{
+	byte c = 0;
+	while (connection_string[c] != '\0') {
+		if (connection_string[c] == '#') {
+			*player = &connection_string[c+1];
+			connection_string[c] = '\0';
+		}
+		if (connection_string[c] == ':') {
+			*port = &connection_string[c+1];
+			connection_string[c] = '\0';
+		}
+		c++;
+	}
+}
+
 bool NetworkCoreConnectGame(const byte* b, unsigned short port)
 {
 	if (!_network_available) return false;
@@ -1901,6 +1917,7 @@ void NetworkCoreInit() { _network_available=false; };
 void NetworkCoreShutdown() {};
 void NetworkCoreDisconnect() {};
 void NetworkCoreLoop(bool incomming) {};
+void ParseConnectionString(const byte **player, const byte **port, byte *connection_string) {};
 bool NetworkCoreConnectGame(const byte* b, unsigned short port) {return false;};
 bool NetworkCoreStartGame() {return false;};
 void NetworkLobbyShutdown() {};

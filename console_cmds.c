@@ -96,43 +96,29 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
-	byte * b;
-	byte * ip = NULL;
-	byte * port = NULL;
-	byte * player = NULL;
-	byte c;
+	byte * ip;
+	const byte *port = NULL;
+	const byte *player = NULL;
 	uint16 rport;
 
 	if (argc<2) return NULL;
 
-	b = argv[1];
+	ip = argv[1];
 	rport = _network_server_port;
-	c = 0;
-	ip = b;
 
-	while (b[c] != 0) {
-		if (((char)b[c]) == '#') {
-			player = &b[c+1];
-			b[c] = 0;
-			}
-		if (((char)b[c]) == ':') {
-			port = &b[c+1];
-			b[c] = 0;
-			}
-		c++;
-		}
+	ParseConnectionString(&player, &port, ip);
 
-	IConsolePrintF(_iconsole_color_default,"Connecting to %s...",ip);
+	IConsolePrintF(_iconsole_color_default,"Connecting to %s...", ip);
 	if (player!=NULL) {
 		_network_playas = atoi(player);
-		IConsolePrintF(_iconsole_color_default,"    player-no: %s",player);
+		IConsolePrintF(_iconsole_color_default,"    player-no: %s", player);
 	}
 	if (port!=NULL) {
 		rport = atoi(port);
-		IConsolePrintF(_iconsole_color_default,"    port: %s",port);
+		IConsolePrintF(_iconsole_color_default,"    port: %s", port);
 	}
 
-	NetworkCoreConnectGame(b, rport);
+	NetworkCoreConnectGame(ip, rport);
 
 	return NULL;
 }

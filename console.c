@@ -436,7 +436,7 @@ void IConsoleVarRegister(const byte * name, void * addr, byte type)
 		}
 }
 
-void IConsoleVarMemRegister(byte * name, byte type) /* XXX TRON */
+void IConsoleVarMemRegister(const byte * name, byte type)
 {
 	_iconsole_var * item;
 	item = IConsoleVarAlloc(type);

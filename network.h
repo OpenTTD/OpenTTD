@@ -27,4 +27,6 @@ typedef struct NetworkGameList {
 NetworkGameInfo _network_game;
 NetworkGameList * _network_game_list;
 
+void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
+
 #endif /* NETWORK_H */

@@ -102,7 +102,7 @@ void* IConsoleCmdGetAddr(byte * name);
 // *** Variables *** //
 
 void IConsoleVarRegister(const byte * name, void * addr, byte type);
-void IConsoleVarMemRegister(byte * name, byte type);
+void IConsoleVarMemRegister(const byte * name, byte type);
 void IConsoleVarInsert(_iconsole_var * var, const byte * name);
 _iconsole_var * IConsoleVarGet(const byte * name);
 _iconsole_var * IConsoleVarAlloc(byte type);
@@ -123,6 +123,5 @@ void IConsoleVarHook(const byte * name, byte type, void * proc);
 void IConsoleCmdHook(const byte * name, byte type, void * proc);
 bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type);
 bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type);
-
 
 #endif /* CONSOLE_H */
