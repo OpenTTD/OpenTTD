@@ -10,8 +10,7 @@ inline static uint32 GetNumberBasedOnSeed(int x, int y, uint32 seed)
 
 static void ReplaceWords(byte a, byte b, byte c, byte d, byte e, byte f, byte g, byte h, byte *buf)
 {
-	if (buf[0] == a && buf[1] == b && buf[2] == c && buf[3] == d)
-	{
+	if (buf[0] == a && buf[1] == b && buf[2] == c && buf[3] == d) {
 		buf[0] = e;
 		buf[1] = f;
 		buf[2] = g;
@@ -28,9 +27,7 @@ static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
 
 	// optional first segment
 	if ((i = GetNumberBasedOnSeed(0, lengthof(name_original_english_1) + 50, seed) - 50) >= 0)
-	{
 		strcat(buf,name_original_english_1[i]);
-	}
 
 	//mandatory middle segments
 	strcat(buf, name_original_english_2[GetNumberBasedOnSeed(4,  lengthof(name_original_english_2), seed)]);
@@ -40,9 +37,7 @@ static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
 
 	//optional last segment
 	if ((i = GetNumberBasedOnSeed(15, lengthof(name_original_english_6) + 60, seed) - 60) >= 0)
-	{
 		strcat(buf, name_original_english_6[i]);
-	}
 
 	if (buf[0] == 'C' && (buf[1] == 'e' || buf[1] == 'i'))
 		buf[0] = 'K';
@@ -50,7 +45,7 @@ static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
 	ReplaceWords('C','u','n','t',  'E','a','s','t', buf);
 	ReplaceWords('S','l','a','g',  'P','i','t','s', buf);
 	ReplaceWords('S','l','u','t',  'E','d','i','n', buf);
-//	ReplaceWords('F','a','r','t',  'B','o','o','t', buf);
+	//ReplaceWords('F','a','r','t',  'B','o','o','t', buf);
 	ReplaceWords('D','r','a','r',  'Q','u','a','r', buf);
 	ReplaceWords('D','r','e','h',  'B','a','s','h', buf);
 	ReplaceWords('F','r','a','r',  'S','h','o','r', buf);
@@ -71,24 +66,16 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 
 	// optional first segment
 	if ((i = GetNumberBasedOnSeed(0, lengthof(name_additional_english_prefix) + 50, seed) - 50) >= 0)
-	{
 		strcat(buf,name_additional_english_prefix[i]);
-	}
 
-	if (GetNumberBasedOnSeed(3, 20, seed) >= 14)
-	{
+	if (GetNumberBasedOnSeed(3, 20, seed) >= 14) {
 		strcat(buf, name_additional_english_1a[GetNumberBasedOnSeed(6, lengthof(name_additional_english_1a), seed)]);
-	}
-	else
-	{
+	} else {
 		strcat(buf, name_additional_english_1b1[GetNumberBasedOnSeed(6, lengthof(name_additional_english_1b1), seed)]);
 		strcat(buf, name_additional_english_1b2[GetNumberBasedOnSeed(9, lengthof(name_additional_english_1b2), seed)]);
-		if (GetNumberBasedOnSeed(11, 20, seed) >= 4)
-		{
+		if (GetNumberBasedOnSeed(11, 20, seed) >= 4) {
 			strcat(buf, name_additional_english_1b3a[GetNumberBasedOnSeed(12, lengthof(name_additional_english_1b3a), seed)]);
-		}
-		else
-		{
+		} else {
 			strcat(buf, name_additional_english_1b3b[GetNumberBasedOnSeed(12, lengthof(name_additional_english_1b3b), seed)]);
 		}
 	}
@@ -97,9 +84,7 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 
 	//optional last segment
 	if ((i = GetNumberBasedOnSeed(15, lengthof(name_additional_english_3) + 60, seed) - 60) >= 0)
-	{
 		strcat(buf, name_additional_english_3[i]);
-	}
 
 	ReplaceWords('C','u','n','t',  'E','a','s','t', buf);
 	ReplaceWords('S','l','a','g',  'P','i','t','s', buf);
@@ -113,8 +98,6 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 	ReplaceWords('W','r','a','r',  'S','t','a','n', buf);
 
 	return 0;
-
-
 }
 
 static byte MakeAustrianTownName(byte *buf, uint32 seed)
@@ -128,34 +111,26 @@ static byte MakeAustrianTownName(byte *buf, uint32 seed)
 	if (i >= 0) strcat(buf, name_austrian_a1[i]);
 
 	i = GetNumberBasedOnSeed(4, 6, seed);
-	if (i >= 4)
-	{
+	if (i >= 4) {
 		// Kaisers-kirchen
 		strcat(buf, name_austrian_a2[GetNumberBasedOnSeed( 7, lengthof(name_austrian_a2), seed)]);
 		strcat(buf, name_austrian_a3[GetNumberBasedOnSeed(13, lengthof(name_austrian_a3), seed)]);
-	}
-	else if (i >= 2)
-	{
+	} else if (i >= 2) {
 		// St. Johann
 		strcat(buf, name_austrian_a5[GetNumberBasedOnSeed( 7, lengthof(name_austrian_a5), seed)]);
 		strcat(buf, name_austrian_a6[GetNumberBasedOnSeed( 9, lengthof(name_austrian_a6), seed)]);
 		j = 1; // More likely to have a " an der " or " am "
-	}
-	else
-	{
+	} else {
 		// Zell
 		strcat(buf, name_austrian_a4[GetNumberBasedOnSeed( 7, lengthof(name_austrian_a4), seed)]);
 	}
 
 	i = GetNumberBasedOnSeed(1, 6, seed);
-	if (i >= 4 - j)
-	{
+	if (i >= 4 - j) {
 		// an der Donau (rivers)
 		strcat(buf, name_austrian_f1[GetNumberBasedOnSeed(4, lengthof(name_austrian_f1), seed)]);
 		strcat(buf, name_austrian_f2[GetNumberBasedOnSeed(5, lengthof(name_austrian_f2), seed)]);
-	}
-	else if (i >= 2 - j)
-	{
+	} else if (i >= 2 - j) {
 		// am Dachstein (mountains)
 		strcat(buf, name_austrian_b1[GetNumberBasedOnSeed(4, lengthof(name_austrian_b1), seed)]);
 		strcat(buf, name_austrian_b2[GetNumberBasedOnSeed(5, lengthof(name_austrian_b2), seed)]);
@@ -185,9 +160,7 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 	// mandatory middle segments including option of hardcoded name
 	if (i < lengthof(name_german_hardcoded)) {
 		strcat(buf,name_german_hardcoded[i]);
-	}
-	else
-	{
+	} else {
 		strcat(buf, name_german_1[i - lengthof(name_german_hardcoded)]);
 
 		i = GetNumberBasedOnSeed(5, lengthof(name_german_2), seed);
@@ -240,17 +213,12 @@ static byte MakeSwedishTownName(byte *buf, uint32 seed)
 
 	// optional first segment
 	if ((i = GetNumberBasedOnSeed(0, lengthof(name_swedish_1) + 50, seed) - 50) >= 0)
-	{
 		strcat(buf, name_swedish_1[i]);
-	}
 
 	// mandatory middle segments including option of hardcoded name
-	if (GetNumberBasedOnSeed(4, 5, seed) >= 3)
-	{
+	if (GetNumberBasedOnSeed(4, 5, seed) >= 3) {
 		strcat(buf, name_swedish_2[GetNumberBasedOnSeed( 7, lengthof(name_swedish_2), seed)]);
-	}
-	else
-	{
+	} else {
 		strcat(buf, name_swedish_2a[GetNumberBasedOnSeed( 7, lengthof(name_swedish_2a), seed)]);
 		strcat(buf, name_swedish_2b[GetNumberBasedOnSeed(10, lengthof(name_swedish_2b), seed)]);
 		strcat(buf, name_swedish_2c[GetNumberBasedOnSeed(13, lengthof(name_swedish_2c), seed)]);
@@ -270,17 +238,12 @@ static byte MakeDutchTownName(byte *buf, uint32 seed)
 
 	// optional first segment
 	if ((i = GetNumberBasedOnSeed(0, lengthof(name_dutch_1) + 50, seed) - 50) >= 0)
-	{
 		strcat(buf, name_dutch_1[i]);
-	}
 
 	// mandatory middle segments including option of hardcoded name
-	if (GetNumberBasedOnSeed(6, 9, seed) > 4)
-	{
+	if (GetNumberBasedOnSeed(6, 9, seed) > 4) {
 		strcat(buf, name_dutch_2[GetNumberBasedOnSeed( 9, lengthof(name_dutch_2), seed)]);
-	}
-	else
-	{
+	} else {
 		strcat(buf, name_dutch_3[GetNumberBasedOnSeed( 9, lengthof(name_dutch_3), seed)]);
 		strcat(buf, name_dutch_4[GetNumberBasedOnSeed(12, lengthof(name_dutch_4), seed)]);
 	}
@@ -295,12 +258,9 @@ static byte MakeFinnishTownName(byte *buf, uint32 seed)
 	strcpy(buf, "");
 
 	// Select randomly if town name should consists of one or two parts.
-	if (GetNumberBasedOnSeed(0, 15, seed) >= 10)
-	{
+	if (GetNumberBasedOnSeed(0, 15, seed) >= 10) {
 		strcat(buf, name_finnish_1[GetNumberBasedOnSeed( 2, lengthof(name_finnish_1), seed)]);
-	}
-	else
-	{
+	} else {
 		strcat(buf, name_finnish_2a[GetNumberBasedOnSeed( 2, lengthof(name_finnish_2a), seed)]);
 		strcat(buf, name_finnish_2b[GetNumberBasedOnSeed(10, lengthof(name_finnish_2b), seed)]);
 	}
@@ -318,19 +278,15 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 
 	// optional first segment
 	i = GetNumberBasedOnSeed(0,
-					lengthof(name_polish_2_o) +
-					lengthof(name_polish_2_m) +
-					lengthof(name_polish_2_f) +
-					lengthof(name_polish_2_n), seed);
+		lengthof(name_polish_2_o) + lengthof(name_polish_2_m) +
+		lengthof(name_polish_2_f) + lengthof(name_polish_2_n),
+		seed);
 	j = GetNumberBasedOnSeed(2, 20, seed);
 
 
-	if (i < lengthof(name_polish_2_o))
-	{
+	if (i < lengthof(name_polish_2_o)) {
 		strcat(buf, name_polish_2_o[GetNumberBasedOnSeed(3, lengthof(name_polish_2_o), seed)]);
-	}
-	else if (i < lengthof(name_polish_2_m) + lengthof(name_polish_2_o))
-	{
+	} else if (i < lengthof(name_polish_2_m) + lengthof(name_polish_2_o)) {
 		if (j < 4)
 			strcat(buf, name_polish_1_m[GetNumberBasedOnSeed(5, lengthof(name_polish_1_m), seed)]);
 
@@ -338,9 +294,7 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 
 		if (j >= 4 && j < 16)
 			strcat(buf, name_polish_3_m[GetNumberBasedOnSeed(10, lengthof(name_polish_3_m), seed)]);
-	}
-	else if (i < lengthof(name_polish_2_f) + lengthof(name_polish_2_m) + lengthof(name_polish_2_o))
-	{
+	} else if (i < lengthof(name_polish_2_f) + lengthof(name_polish_2_m) + lengthof(name_polish_2_o)) {
 		if (j < 4)
 			strcat(buf, name_polish_1_f[GetNumberBasedOnSeed(5, lengthof(name_polish_1_f), seed)]);
 
@@ -348,9 +302,7 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 
 		if (j >= 4 && j < 16)
 			strcat(buf, name_polish_3_f[GetNumberBasedOnSeed(10, lengthof(name_polish_3_f), seed)]);
-	}
-	else
-	{
+	} else {
 		if (j < 4)
 			strcat(buf, name_polish_1_n[GetNumberBasedOnSeed(5, lengthof(name_polish_1_n), seed)]);
 
@@ -389,13 +341,10 @@ static byte MakeNorwegianTownName(byte *buf, uint32 seed)
 
 	// Use first 4 bit from seed to decide whether or not this town should
 	// have a real name 3/16 chance.  Bit 0-3
-	if (GetNumberBasedOnSeed(0, 15, seed) < 3)
-	{
+	if (GetNumberBasedOnSeed(0, 15, seed) < 3) {
 		// Use 7bit for the realname table index.  Bit 4-10
 		strcat(buf, name_norwegian_real[GetNumberBasedOnSeed(4, lengthof(name_norwegian_real), seed)]);
-	}
-	else
-	{
+	} else {
 		// Use 7bit for the first fake part.  Bit 4-10
 		strcat(buf, name_norwegian_1[GetNumberBasedOnSeed(4, lengthof(name_norwegian_1), seed)]);
 		// Use 7bit for the last fake part.  Bit 11-17
@@ -412,18 +361,13 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 	//null terminates the string for strcat
 	strcpy(buf, "");
 
-	if (GetNumberBasedOnSeed(12, 15, seed) < 3)
-	{
+	if (GetNumberBasedOnSeed(12, 15, seed) < 3) {
 		strcat(buf, name_hungarian_real[GetNumberBasedOnSeed(0, lengthof(name_hungarian_real), seed)]);
-	}
-	else
-	{
+	} else {
 		// optional first segment
 		i = GetNumberBasedOnSeed(3, lengthof(name_hungarian_1) * 3, seed);
 		if (i < lengthof(name_hungarian_1))
-		{
 			strcat(buf, name_hungarian_1[i]);
-		}
 
 		// mandatory middle segments
 		strcat(buf, name_hungarian_2[GetNumberBasedOnSeed(3, lengthof(name_hungarian_2), seed)]);
@@ -438,7 +382,8 @@ static byte MakeHungarianTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
-TownNameGenerator * const _town_name_generators[] = {
+TownNameGenerator * const _town_name_generators[] =
+{
 	MakeEnglishOriginalTownName,
 	MakeFrenchTownName,
 	MakeGermanTownName,
@@ -466,16 +411,20 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 		case 0: case 3: /* English, American */
 			/*	Already OK */
 			return townnameparts;
+
 		case 1: /* French */
 			/*	For some reason 86 needs to be subtracted from townnameparts
 			*	0000 0000 0000 0000 0000 0000 1111 1111 */
 			return FIXNUM(townnameparts - 86, lengthof(name_french_1), 0);
+
 		case 2: /* German */
 			DEBUG(misc, 0) ("German Townnames are buggy... (%d)", townnameparts);
 			return townnameparts;
+
 		case 4: /* Latin-American */
 			/*	0000 0000 0000 0000 0000 0000 1111 1111 */
 			return FIXNUM(townnameparts, lengthof(name_spanish_1), 0);
+
 		case 5: /* Silly */
 			/*	NUM_SILLY_1	-	lower 16 bits
 			*	NUM_SILLY_2	-	upper 16 bits without leading 1 (first 8 bytes)
