@@ -583,8 +583,6 @@ int ttd_main(int argc, char* argv[])
 	_dedicated_forks = false;
 	_dedicated_enabled = false;
 
-	_redirect_console_to_client = 0;
-
 	// The last param of the following function means this:
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)

@@ -232,7 +232,6 @@ extern const char _openttd_revision[];
 
 void IConsoleInit(void)
 {
-	uint i;
 	_iconsole_output_file = NULL;
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
@@ -247,12 +246,15 @@ void IConsoleInit(void)
 	_icursor_state = false;
 	_icursor_rate = 5;
 	_icursor_counter = 0;
-	for (i = 0; i < lengthof(_iconsole_cmdbuffer); i++)
-		_iconsole_cmdbuffer[i] = NULL;
-	for (i = 0; i <= ICON_BUFFER; i++) {
-		_iconsole_buffer[i] = NULL;
-		_iconsole_cbuffer[i] = 0;
-	}
+
+#ifdef ENABLE_NETWORK /* Initialize network only variables */
+	_redirect_console_to_client = 0;
+#endif
+
+	memset(_iconsole_cmdbuffer, 0, sizeof(_iconsole_cmdbuffer));
+	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
+	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
+
 	IConsoleStdLibRegister();
 	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
 	IConsolePrint(12, "---------------------------------");
@@ -393,11 +395,13 @@ void IConsolePrint(uint16 color_code, const char* string)
 	char* i;
 	int j;
 
+#ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
 		/* Redirect the string to the client */
 		SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromIndex(_redirect_console_to_client), color_code, string);
 		return;
 	}
+#endif
 
 	if (_network_dedicated) {
 		printf("%s\n", string);
