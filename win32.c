@@ -330,9 +330,12 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 		case VK_MENU: /* Just ALT */
 			return 0; // do nothing
-		default: /* ALT in combination with something else */
+		case VK_F10: /* F10, ignore activation of menu */
 			_pressed_key = MapWindowsKey(wParam) << 16;
 			return 0;
+		default: /* ALT in combination with something else */
+			_pressed_key = MapWindowsKey(wParam) << 16;
+			break;
 		}
 		break;
 	case WM_NCMOUSEMOVE:
@@ -711,13 +714,14 @@ static int Win32GdiMainLoop(void)
 
 #if defined(_DEBUG)
 		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0) {
+			if (
 #else
 		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0) {
-#endif
 			/* Disable speeding up game with ALT+TAB (if syskey is pressed, the
 			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
-			if ((_pressed_key >> 16) & WKC_TAB && !_networking &&
-					_game_mode != GM_MENU)
+			if ((_pressed_key >> 16) & WKC_TAB &&
+#endif
+			  !_networking && _game_mode != GM_MENU)
 				_fast_forward |= 2;
 		} else if (_fast_forward & 2)
 			_fast_forward = 0;
