@@ -419,11 +419,14 @@ void ShowInfo(const char *str)
 
 void ShowOSErrorBox(const char *buf)
 {
-	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
-
 #if defined(__APPLE__)
-	// this opens the crash log opener script
-	system("./Crash_Log_Opener.app");
+	// this creates an error in the console and then opens the console.
+	// Colourcodes are not used in the console, so they are skipped here
+	fprintf(stderr, "Error: %s", buf);
+	system("/Applications/Utilities/Console.app/Contents/MacOS/Console");
+#else
+	// all systems, but OSX
+	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
 #endif
 }
 
