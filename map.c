@@ -29,7 +29,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 	uint y;
 
 	dx = add & MapMaxX();
-	if (dx >= MapSizeX() / 2) dx -= MapSizeX();
+	if (dx >= (int)MapSizeX() / 2) dx -= MapSizeX();
 	dy = (add - dx) / (int)MapSizeX();
 
 	x = TileX(tile) + dx;
