@@ -1713,7 +1713,7 @@ void NetworkCoreInit() { _network_available=false; };
 void NetworkCoreShutdown() {};
 void NetworkCoreDisconnect() {};
 void NetworkCoreLoop(bool incomming) {};
-bool NetworkCoreConnectGame(byte* b, unsigned short port) {return false;};
+bool NetworkCoreConnectGame(const byte* b, unsigned short port) {return false;};
 bool NetworkCoreStartGame() {return false;};
 void NetworkLobbyShutdown() {};
 void NetworkLobbyInit() {};
