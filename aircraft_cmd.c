@@ -1041,6 +1041,9 @@ static void ProcessAircraftOrder(Vehicle *v)
 		return;
 	}
 
+	if ( order.type == OT_DUMMY && !CheckForValidOrders(v))
+		CrashAirplane(v);
+
 	if (order.type == v->current_order.type &&
 			order.flags == v->current_order.flags &&
 			order.station == v->current_order.station)
@@ -1053,9 +1056,6 @@ static void ProcessAircraftOrder(Vehicle *v)
 		AircraftNextAirportPos_and_Order(v);
 		v->u.air.targetairport = order.station;
 	}
-
-	if ( order.type == OT_DUMMY && !CheckForValidOrders(v))
-		CrashAirplane(v);
 
 	InvalidateVehicleOrderWidget(v);
 }
