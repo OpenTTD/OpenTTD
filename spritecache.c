@@ -149,15 +149,19 @@ static void ReadSprite(int num, byte *dest)
 	byte type;
 	byte *rel;
 	int8 i;
-	int j, dist;
+	int dist;
 
 	type = FioReadByte();
 	/* We've decoded special sprites when reading headers. */
 	if (type != 0xFF) {
 		/* read sprite hdr */
-		*dest++ = type;
-		for(j=0; j!=7; j++)
-			*dest++ = FioReadByte();
+		Sprite* sprite = dest;
+		sprite->info = type;
+		sprite->height = FioReadByte();
+		sprite->width = FioReadWord();
+		sprite->x_offs = FioReadWord();
+		sprite->y_offs = FioReadWord();
+		dest = sprite->data;
 		num -= 8;
 	}
 
@@ -996,9 +1000,9 @@ const SpriteDimension *GetSpriteDimension(SpriteID sprite)
 
 	/* decode sprite header */
 	sd = &sd_static;
-	sd->xoffs = (int16)TO_LE16(p->x_offs);
-	sd->yoffs = (int16)TO_LE16(p->y_offs);
-	sd->xsize = TO_LE16(p->width);
+	sd->xoffs = p->x_offs;
+	sd->yoffs = p->y_offs;
+	sd->xsize = p->width;
 	sd->ysize = p->height;
 #else
 	sd = &sd_static;

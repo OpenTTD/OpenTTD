@@ -1335,9 +1335,9 @@ static void GfxMainBlitter(Sprite *sprite, int x, int y, int mode)
 	};
 
 	/* decode sprite header */
-	x += (int16)TO_LE16(sprite->x_offs);
-	y += (int16)TO_LE16(sprite->y_offs);
-	bp.width_org = bp.width = TO_LE16(sprite->width);
+	x += sprite->x_offs;
+	y += sprite->y_offs;
+	bp.width_org = bp.width = sprite->width;
 	bp.height_org = bp.height = sprite->height;
 	info = sprite->info;
 	bp.info = info;
@@ -1628,15 +1628,15 @@ void LoadStringWidthTable(void)
 
 	// 2 equals space.
 	for(i=2; i != 0xE2; i++) {
-		*b++ = (byte)((i < 93 || i >= 129 || i == 98) ? TO_LE16(GetSprite(i)->width) : 0);
+		*b++ = (byte)((i < 93 || i >= 129 || i == 98) ? GetSprite(i)->width : 0);
 	}
 
 	for(i=0xE2; i != 0x1C2; i++) {
-		*b++ = (byte)((i < 317 || i >= 353) ? TO_LE16(GetSprite(i)->width) + 1 : 0);
+		*b++ = (byte)((i < 317 || i >= 353) ? GetSprite(i)->width + 1 : 0);
 	}
 
 	for(i=0x1C2; i != 0x2A2; i++) {
-		*b++ = (byte)((i < 541 || i >= 577) ? TO_LE16(GetSprite(i)->width) + 1 : 0);
+		*b++ = (byte)((i < 541 || i >= 577) ? GetSprite(i)->width + 1 : 0);
 	}
 }
 
@@ -1914,9 +1914,9 @@ static void SetCursorSprite(uint cursor)
 	p =	GetSprite(cursor & 0x3FFF);
 	cv->sprite = cursor;
 	cv->size.y = p->height;
-	cv->size.x = TO_LE16(p->width);
-	cv->offs.x = (int16)TO_LE16(p->x_offs);
-	cv->offs.y = (int16)TO_LE16(p->y_offs);
+	cv->size.x = p->width;
+	cv->offs.x = p->x_offs;
+	cv->offs.y = p->y_offs;
 
 	cv->dirty = true;
 }
