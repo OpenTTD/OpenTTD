@@ -229,7 +229,7 @@ static void IndustryDrawTileProc3(TileInfo *ti)
 		AddChildSpriteScreen(0x128B, 5,
 			_industry_anim_offs_2[_map3_lo[ti->tile]]);
 	}
-	AddChildSpriteScreen(0x30B928A, 3, 67);
+	AddChildSpriteScreen(4746, 3, 67);
 }
 
 static void IndustryDrawTileProc4(TileInfo *ti)

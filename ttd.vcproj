@@ -2655,6 +2655,9 @@
 				RelativePath="table\roadveh.h">
 			</File>
 			<File
+				RelativePath=".\table\sprites.h">
+			</File>
+			<File
 				RelativePath="table\station_land.h">
 			</File>
 			<File
