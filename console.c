@@ -625,9 +625,10 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 					x += l2+1;
 					t++;
 				}
+				linestream--;
 				*linestream = '"';
 				linestream++;
-				x += 2;
+				x += 1;
 			} else {
 				// one specific parameter: %A = [param 1] %B = [param 2] ...
 				int l2;

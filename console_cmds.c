@@ -153,16 +153,18 @@ static void LoadMap(uint no)
 	if (no != 0 && no <= (uint)_fios_num) {
 		const FiosItem *item = &_fios_list[no - 1];
 
-		/* Load the file */
-		_switch_mode = SM_LOAD;
-		SetFiosType(item->type);
-		strcpy(_file_to_saveload.name, FiosBrowseTo(item));
+		if (item->type == FIOS_TYPE_FILE) {
+			/* Load the file */
+			_switch_mode = SM_LOAD;
+			SetFiosType(item->type);
+			strcpy(_file_to_saveload.name, FiosBrowseTo(item));
 
-		IConsolePrint(_iconsole_color_default, "Loading map...");
-	} else {
-		/* Show usages */
-		IConsolePrint(_iconsole_color_default, "Unknown map. Use 'list_files' and 'goto_dir' to find the numbers of the savegame.");
-	}
+			IConsolePrint(_iconsole_color_default, "Loading map...");
+		} else
+			IConsolePrint(_iconsole_color_error, "That is not a map.");
+
+	} else /* Show usages */
+		IConsolePrint(_iconsole_color_error, "Unknown map. Use 'list_files' and 'goto_dir' to find the numbers of the savegame.");
 
 	/* Free the file-list */
 	FiosFreeSavegameList();
@@ -198,6 +200,54 @@ DEF_CONSOLE_CMD(ConListFiles)
 		pos++;
 		/* Show them */
 		IConsolePrintF(_iconsole_color_default, "%d) %s", pos, item->title[0] ? item->title : item->name);
+	}
+
+	/* Destroy the file list */
+	FiosFreeSavegameList();
+
+	return NULL;
+}
+
+/* Get an Specific file */
+DEF_CONSOLE_CMD(ConScanFiles)
+{
+	const FiosItem *item;
+	int pos = 0;
+	_iconsole_var* result;
+
+
+	result = IConsoleVarAlloc(ICONSOLE_VAR_STRING);
+	
+	if (argc <= 1) {
+		IConsoleVarSetString(result, "0");
+		return result; // return an zero
+	}
+
+	/* Build the file-list */
+	BuildFileList();
+
+	/* As long as we have files */
+	while (pos < _fios_num) {
+		item = _fios_list + pos;
+		pos++;		
+		if (strcmp(argv[1], "..") == 0) {
+			if (item->type == FIOS_TYPE_PARENT) {
+				// huh we are searching for the parent directory
+				char buffer[10];
+				itoa(pos,buffer,10);
+				IConsoleVarSetString(result, buffer);
+				return result;
+			}
+		} else 
+			// file records ?
+			if (item->type == FIOS_TYPE_FILE) {
+				if (strcmp(argv[1], item->name) == 0) {
+					char buffer[10];
+					itoa(pos,buffer,10);
+					IConsoleVarSetString(result, buffer);
+					return result;
+				}			
+			}
 	}
 
 	/* Destroy the file list */
@@ -1089,15 +1139,8 @@ void IConsoleDebugLibRegister()
 	extern bool _stdlib_con_developer; /* XXX extern in .c */
 
 	IConsoleVarRegister("con_developer", &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN);
-	IConsoleVarMemRegister("temp_string", ICONSOLE_VAR_STRING);
 	IConsoleVarMemRegister("temp_string2", ICONSOLE_VAR_STRING);
-	IConsoleVarMemRegister("temp_bool", ICONSOLE_VAR_BOOLEAN);
-	IConsoleVarMemRegister("temp_int16", ICONSOLE_VAR_INT16);
-	IConsoleVarMemRegister("temp_int32", ICONSOLE_VAR_INT32);
-	IConsoleVarMemRegister("temp_pointer", ICONSOLE_VAR_POINTER);
-	IConsoleVarMemRegister("temp_uint16", ICONSOLE_VAR_UINT16);
 	IConsoleVarMemRegister("temp_uint16_2", ICONSOLE_VAR_UINT16);
-	IConsoleVarMemRegister("temp_uint32", ICONSOLE_VAR_UINT32);
 	IConsoleCmdRegister("resettile", ConResetTile);
 	IConsoleAliasRegister("dbg_echo","echo %A; echo %B");
 	IConsoleAliasRegister("dbg_echo2","echo %+");
@@ -1140,12 +1183,24 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("alias",		ConAlias);
 	IConsoleCmdRegister("load",			ConLoad);
 	IConsoleCmdRegister("list_files", ConListFiles);
+	IConsoleCmdRegister("scan_files", ConScanFiles);
 	IConsoleCmdRegister("goto_dir", ConGotoDir);
-	IConsoleAliasRegister("new_game",		"newgame");
-	IConsoleAliasRegister("newmap",		"newgame");
-	IConsoleAliasRegister("new_map",		"newgame");
+	IConsoleAliasRegister("new_game", "newgame");
+	IConsoleAliasRegister("newmap", "newgame");
+	IConsoleAliasRegister("new_map", "newgame");
+	IConsoleAliasRegister("load_game", "temp_string << scan_files %!;load temp_string");
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
+
+	// temporary data containers for alias scripting
+	IConsoleVarMemRegister("temp_string", ICONSOLE_VAR_STRING);
+	IConsoleVarMemRegister("temp_bool", ICONSOLE_VAR_BOOLEAN);
+	IConsoleVarMemRegister("temp_int16", ICONSOLE_VAR_INT16);
+	IConsoleVarMemRegister("temp_int32", ICONSOLE_VAR_INT32);
+	IConsoleVarMemRegister("temp_pointer", ICONSOLE_VAR_POINTER);
+	IConsoleVarMemRegister("temp_uint16", ICONSOLE_VAR_UINT16);
+	IConsoleVarMemRegister("temp_uint32", ICONSOLE_VAR_UINT32);
+
 
 	// networking variables and functions
 #ifdef ENABLE_NETWORK
