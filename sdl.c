@@ -295,6 +295,7 @@ static bool CreateMainSurface(int w, int h)
 
 	DEBUG(misc, 0) ("sdl: using mode %dx%d", w, h);
 
+	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE + SDL_HWPALETTE + (_fullscreen?SDL_FULLSCREEN:SDL_RESIZABLE));
 	if(newscreen == NULL)
 		return false;
