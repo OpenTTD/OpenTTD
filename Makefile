@@ -64,8 +64,6 @@
 #          where it normally would print the revision number
 # MIDI: if set, it will use it as custom path to midi player.
 #  If unset, it will use the hardcoded path in the c code
-# NOVERBOSE: supress all warnings and errors during compilation.
-#  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
 # VERBOSE: actually show the commands used for compilation.
 # WITH_NETWORK: enable networking
 # DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
@@ -120,7 +118,7 @@
 # it checks if the version tag in makefile.config is the same and force update outdated config files
 MAKEFILE_VERSION:=6
 
-# CONFIG_WRITER have to be found even for manual configuration
+# CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
 
 ifndef MANUAL_CONFIG
