@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperial (millas)
 STR_013A_METRIC_KILOMETERS					:Métrico (quilómetros)
@@ -352,6 +353,8 @@ STR_015E_QUIT_GAME						:Saír ó menu principal
 STR_015F_QUIT							:Saír do programa
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}¿Está seguro de que desexa saír da partida?
 STR_0161_QUIT_GAME						:{WHITE}Saír ó menú principal
+STR_SORT_ORDER_TIP						:{BLACK}Selecciona o modo de ordeamento(descendente/ascendente)
+STR_SORT_CRITERIA_TIP						:{BLACK}Selecciona o criterio de orde
 SRT_SORT_BY							:{BLACK}Ordear por
 
 STR_SORT_BY_POPULATION						:{BLACK}Poboación
@@ -416,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Non se pode cambia-lo intervalo de servicio...
 STR_018B_CLOSE_WINDOW						:{BLACK}Pechar fiestra
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título da fiestra - arrástrao para move-la fiestra
+STR_STICKY_BUTTON						:{BLACK}Marcar esta fiestra coma non pechable pola tecla de 'Pechar tódalas fiestras'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demoler edificios, etc. nun cadrado de terreo
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Baixar unha esquina de terreo
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Elevar unha esquina de terreo
@@ -538,6 +542,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Selecciona-lo programa 'Música novo 
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Selecciona-lo programa 'Persoal 1'
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Selecciona-lo programa 'Persoal 2'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Limpa-lo programa actual(Só Persoalizado 1 e Persoalizado 2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Graba-la configuración da música
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Pincha nunha pista de música para engadi-la ó programa actual(Sólo Persoal 1 e Persoal 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Activar/desactivar programa aleatorio
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Mostra-la pista musical na fiestra de selección
@@ -722,6 +727,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nomes dos deseños dos vehículos
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Defecto
 STR_02BF_CUSTOM							:Persoalizado
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Graba-los nomes persoalizados
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Selección de nomes dos deseños dos vehículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Graba-los nomes dos deseños dos vehículos persoalizados no disco
 
@@ -765,6 +771,7 @@ STR_02DB_OFF							:{BLACK}Off
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES						:Subsidios
 STR_02DE_MAP_OF_WORLD						:Mapa do Mundo
+STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Directorio de cidades
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Paste from viewport
 
@@ -791,13 +798,16 @@ STR_02F8_EVERY_3_MONTHS						:Cada 3 meses
 STR_02F9_EVERY_6_MONTHS						:Cada 6 meses
 STR_02FA_EVERY_12_MONTHS					:Cada 12 meses
 STR_02FB_START_A_NEW_GAME					:{BLACK}Comezar nova partida
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Cargar unha partida
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Ver demostracións/tutoriais
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Crear un mundo/escenario persoalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Partida para un Xogador
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Seleccionar partida multixogador de 2-8 xogadores
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Amosa-las opcións do xogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Amosa-las opcións de dificultade
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Comezar unha nova partida, usando un escenario persoalizado
 STR_0304_QUIT							:{BLACK}Saír
+STR_0305_QUIT_OPENTTD						:{BLACK}Saír 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Ver demostración/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...só se pode construír en cidades
@@ -1066,6 +1076,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Diríxese a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Diríxese a {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Ir vía {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Ir sen parar vía {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Punto de Control {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Punto de control {TOWN} #{COMMA16}
@@ -1160,6 +1171,7 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Reaxustar tren
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Selecciona o tipo de carga que levará o tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}No se pode reaxusta-lo tren...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 
 
 ############ network gui strings
@@ -1168,6 +1180,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multixogador
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do xogador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome polo que te identificarán os outros xogadores
+STR_NETWORK_CONNECTION						:{BLACK}Conexión:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Escolle entre unha partida en InterNet ou unha partida na rede de área local
 
 STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Comezar un servidor propio
@@ -1179,10 +1193,27 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Pincha nunha partida da lista para s
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Buscar un servidor na rede
+STR_NETWORK_ADD_SERVER						:{BLACK}Engadir servidor
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Engade un servidor á lista que será comprobado sempre para buscar partidas.
 STR_NETWORK_ENTER_IP						:{BLACK}Introduce a dirección IP do servidor
 
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clientes
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clientes conectador / clients máximos
+STR_NETWORK_GAME_INFO						:{SILVER}INFORMACIÓN DA PARTIDA
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clientes:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Set de Terreo:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Tamaño:  {WHITE}{COMMA16}x{COMMA16}
-STR_NETWORK_PASSWORD						:{BLACK}Contrasinal:
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versión do servidor:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Dirección do servidor:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Data de comezo:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Data actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}¡Protexido con clave!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVIDOR DESCONECTADO
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVIDOR CHEO
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}VERSION INCORRECTA
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Unirse á partida
 
@@ -1191,37 +1222,93 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Comezar nova partida
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome da partida mostraráse ó outros xogadores no menú de selección de partida multixogador
+STR_NETWORK_SET_PASSWORD					:{BLACK}Establecer clave
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿Que mapa queres xogar?
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo de clientes permitidos:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (anunciar)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clientes
+STR_NETWORK_3_CLIENTS						:3 clientes
+STR_NETWORK_4_CLIENTS						:4 clientes
+STR_NETWORK_5_CLIENTS						:5 clientes
+STR_NETWORK_6_CLIENTS						:6 clientes
+STR_NETWORK_7_CLIENTS						:7 clientes
+STR_NETWORK_8_CLIENTS						:8 clientes
+STR_NETWORK_9_CLIENTS						:9 clientes
+STR_NETWORK_10_CLIENTS						:10 clientes
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma falado:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Partida
+STR_NETWORK_START_GAME_TIP					:{BLACK}Comezar unha nova partida en rede a partires dun mapa aleatorio, ou un escenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Cargar Partida
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Resumir unha partida multixogador anterior (asegúrate de conectarte coma o xogador correcto)
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Cargar Escenario
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Comezar unha nova partida de rede a partires dun escenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Calquera
+STR_NETWORK_LANG_ENGLISH					:Inglés
+STR_NETWORK_LANG_GERMAN						:Alemán
+STR_NETWORK_LANG_FRENCH						:Francés
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de partida multixogador
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Preparando para unirse:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Unha lista de tódalas compañías nesta patida. Podes unirte a unha ou empezar unha nova se hai algún lugar libre
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova compañía
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Abrir unha nova compañía
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar partida
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Observa-la partida coma espectador
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Unirse a compañía
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Axudar a manexar compañía
+STR_NETWORK_REFRESH						:{BLACK}Actualizar servidor
+STR_NETWORK_REFRESH_TIP						:{BLACK}Actualiza-la información do servidor
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFORMACIÓN DA COMPAÑÍA
 
 STR_NETWORK_COMPANY_NAME					:{SILVER}Nome da compañía:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguración:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valor da compañía:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balance actual:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Ingresos do ano pasado:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Rendemento:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Vehículos:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Estacións:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Xogadores:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Conectando...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Conectando..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autorizando..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Esperando..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descargando mapa..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Procesando datos..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Rexistrando..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Descargando información da partida..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Descargando información da compañía..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} cliente(s) diante túa
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes descargados
 
+STR_NETWORK_DISCONNECT						:{BLACK}Desconectar
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Introduce o texto a enviar
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Introduce a cantidade de diñeiro a dar
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}O servidor está protexido. Introduce clave
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}A comañía está protexida. Introduce clave
+STR_NETWORK_CLIENT_LIST						:{WHITE}Lista de Clientes
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Non se atoparon xogos en rede
 
 ############ Leave those lines in this order!!

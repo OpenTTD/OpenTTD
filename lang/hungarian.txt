@@ -1336,6 +1336,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} A te gépeden lévõ és a szerveren lév
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rossz jelszó.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} A szerver tele van
 STR_NETWORK_ERR_KICKED						:{WHITE} Ki lettél rúgva a szerverrõl
+STR_NETWORK_ERR_CHEATER						:{WHITE} Ez a szerver nem engedi a csalást
 
 STR_NETWORK_ERR_LEFT						:elhagyta a játékot
 ############ Leave those lines in this order!!
@@ -1351,6 +1352,7 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:a név már használva van
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:rossz játék-jelszó
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:rossz játékos-id a DoCommand-ban
 STR_NETWORK_ERR_CLIENT_KICKED					:a szerver kirúgott
+STR_NETWORK_ERR_CLIENT_CHEATER					:csalni próbált
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:belépett a játékba
 STR_NETWORK_GIVE_MONEY						:adott egy kis pénzt ({CURRENCY})

@@ -1229,7 +1229,7 @@ STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVER VOLL
 STR_NETWORK_VERSION_MISMATCH					:{SILVER}Versionskonflikt festgestellt
 
-STR_NETWORK_JOIN_GAME						:{BLACK}Dem Spiel beitreten
+STR_NETWORK_JOIN_GAME						:{BLACK}Spiel betreten
 
 
 STR_NETWORK_START_GAME_WINDOW					:{WHITE}Neues Spiel beginnen
@@ -1575,7 +1575,7 @@ STR_2801_PLACE_SIGN						:Schild aufstellen
 STR_2802_TREES							:{WHITE}Bäume
 STR_2803_TREE_ALREADY_HERE					:{WHITE}...hier sind bereits Bäume
 STR_2804_SITE_UNSUITABLE					:{WHITE}...ungeeignetes Gelände
-STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Schild kann hier nicht aufgestellt werden...
+STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Baum kann hier nicht gepflanzt werden...
 STR_2806							:{WHITE}{STRING}
 STR_2807							:{TINYFONT}{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS						:{WHITE}...zu viele Schilder

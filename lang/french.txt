@@ -343,7 +343,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Historique de performance
 STR_0158_COMPANY_VALUE_GRAPH					:Valeur de la compagnie
 STR_0159_CARGO_PAYMENT_RATES					:Valeur des cargaisons
 STR_015A_COMPANY_LEAGUE_TABLE					:Classement des compagnies
-STR_PERFORMANCE_DETAIL_MENU					:Détail de l'évaluation de la performance
+STR_PERFORMANCE_DETAIL_MENU					:Détail des performances
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -370,7 +370,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR					:Profit l'an dernier
 STR_SORT_BY_PROFIT_THIS_YEAR					:Profit cette année
 STR_SORT_BY_AGE							:Age
 STR_SORT_BY_RELIABILITY						:Fiabilité
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capacité totale par type de cargo
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capacité totale par cargo
 STR_SORT_BY_MAX_SPEED						:Vitesse maximum
 
 ############ range for months starts
@@ -748,8 +748,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Afficher le nom des sta
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Afficher le nom des stations
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Afficher les panneaux
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Afficher les panneaux
-STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Afficher les points de contrôle
-STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Afficher les points de contrôle
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Afficher les pts de contrôle
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Afficher les pts de contrôle
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animation complète
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animation complète
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Détail Maximal
@@ -977,7 +977,7 @@ STR_CONFIG_PATCHES_ON						:Activé
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Afficher vitesse du véhicule dans la barre d'état: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Construction côtière et sur plans inclinés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Autorise des zones de désserte plus réalistes : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permettre la suppression de plus de routes, ponts, tunnels, etc possédés par une ville: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permettre la suppression de plus d'éléments possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
@@ -1011,13 +1011,13 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:oui, mais exclut les véhicules stopp
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:de tous les véhicules
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Alerte en cas de profit négatif pour un train: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Les véhicules n'expirent jamais: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Renouveller automatiquement les véhicules quand ils deviennent vieux
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Renouveller automatiquement le véhicule {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Argent nécessaire pour le renouvellement automatique : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Renouveller automatiquement les véhicules quand ils sont vieux
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Auto-renouveller les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Argent nécessaire pour l'auto-renouvellement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Temps d'affichage des messages d'erreur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Arbres invisibles (quand les bâtiments sont transparents) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Etendue maximum des stations: {ORANGE}{STRING} {RED}Attention: Une valeur trop élevée ralentit le jeu
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
@@ -1240,7 +1240,7 @@ STR_NETWORK_SET_PASSWORD					:{BLACK}Choisir le mot de passe
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres joueurs la rejoignent
 STR_NETWORK_SELECT_MAP						:{BLACK}Choisissez une carte:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Sur quelle carte voulez-vous jouer?
-STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Nombre de clients maximum :
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Nombre de clients max. :
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
@@ -1282,7 +1282,7 @@ STR_NETWORK_SPECTATE_GAME					:{BLACK}Observer une partie
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Permet d'observer une partie en tant que spectateur
 STR_NETWORK_JOIN_COMPANY					:{BLACK}Rejoindre la compagnie
 STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Aider à gérer cette compagnie
-STR_NETWORK_REFRESH						:{BLACK}Rafraîchir le serveur
+STR_NETWORK_REFRESH						:{BLACK}Rafraîchir
 STR_NETWORK_REFRESH_TIP						:{BLACK}Rafraîchir les infos à propos du serveur
 
 STR_NETWORK_COMPANY_INFO					:{SILVER}INFO DE LA COMPAGNIE
@@ -1336,6 +1336,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La révision de ce client ne correspo
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Mot de passe incorrect.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Le serveur est plein
 STR_NETWORK_ERR_KICKED						:{WHITE} Vous avez été jeté du serveur
+STR_NETWORK_ERR_CHEATER						:{WHITE} Tricher n'est pas autorisé sur ce serveur
 
 STR_NETWORK_ERR_LEFT						:a quitté la partie
 ############ Leave those lines in this order!!
@@ -1351,6 +1352,7 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nom déjà utilisé
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:mot de passe de partie incorrect
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:mauvais player-id dans DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:jeté par le serveur
+STR_NETWORK_ERR_CLIENT_CHEATER					:a tenté de tricher
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:a rejoint la partie
 STR_NETWORK_GIVE_MONEY						:vous a donné un peu d'argent ({CURRENCY})
@@ -1451,7 +1453,7 @@ STR_1802_ROAD_CONSTRUCTION					:{WHITE}Construction routière
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Choisir Pont Routier
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Impossible de construire la route ici...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Impossible de retirer la route ici...
-STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientation du dépôt routier
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientation du dépôt
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Impossible de construire un dépôt routier ici...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Impossible de construire un arrêt d'autobus...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Impossible de construire une station de camions...
@@ -1664,7 +1666,7 @@ STR_3062_BUS_STATION						:Arrêt de bus
 STR_3063_SHIP_DOCK						:Port
 STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Afficher la zone couverte
 STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Ne pas afficher la zone couverte
-STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Affichage de la zone couverte
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Afficher la zone couverte
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Choix de la gare monorail
 STR_3068_DOCK							:{WHITE}Port
 STR_3069_BUOY							:Bouée
@@ -2412,8 +2414,8 @@ STR_8838_N_A							:N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Impossible de vendre le véhicule ferroviaire...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Impossible de trouver la route jusqu'au dépôt
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Impossible de démarrer/stopper le train...
-STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}jours{BLACK}   Dernière maintenance: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}%{BLACK}   Dernière maintenance: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}jours{BLACK}   , dernière le : {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}%{BLACK}   , dernière le : {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trains - Cliquez sur un train pour obtenir des informations
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Contruire de nouveaux trains (nécessite un dépôt ferroviaire)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trains - Cliquez sur un train pour obtenir des informations, glissez le wagon pour l'ajouter/le supprimer du train

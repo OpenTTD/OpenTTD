@@ -189,6 +189,7 @@ STR_00B7_VERSION						:{BLACK}OpenTTD útgáfa {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Upphafleg hönnun: Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Upphafleg grafík: Simon Foster
 STR_SPECIAL_THANKS						:{BLACK}Sérstakar þakkir:
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Forljós og lestaskilti {COPYRIGHT} 2003 Michael Blunck
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD hópurinn
 
 STR_00C5							:{BLACK}{CROSS}
@@ -307,6 +308,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Amerískt (mílur)
 STR_013A_METRIC_KILOMETERS					:Metrakerfið (kílómetrar)
@@ -349,6 +351,7 @@ STR_015E_QUIT_GAME						:Hætta leik
 STR_015F_QUIT							:Hætta í OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ertu viss um að þú viljir hætta í þessum leik ?
 STR_0161_QUIT_GAME						:{WHITE}Hætta leik
+STR_SORT_ORDER_TIP						:{BLACK}Velja uppröðun (minnkandi/stækkandi)
 SRT_SORT_BY							:{BLACK}Flokka eftir
 
 STR_SORT_BY_POPULATION						:{BLACK}Fólksfjöldi
@@ -413,6 +416,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Get ekki breytt viðgerðarmillibili...
 STR_018B_CLOSE_WINDOW						:{BLACK}Loka glugga
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titill glugga - dragðu þetta til að færa gluggann
+STR_STICKY_BUTTON						:{BLACK}Merkja þennan glugga sem ólokanlegan fyrir
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Eyða byggingum o.s.frv. á lóðarreiti
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lækka horn af landssvæði
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Lyfta horni af landssvæði
@@ -535,6 +539,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Velja 'nýji stíll' listann
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Velja 'Sérval 1' (valið af notanda) listann
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Velja 'Sérval 2' (valið af notanda) listann
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Hreinsa núverandi lista (aðeins Sérval1 eða Sérval2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Vista tónlistarstillingar
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Veldu lag til að bæta í núverandi lista (aðeins Sérval1 eða Sérval2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Kveikja/slökkva á stokkun
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Sýna lagalista
@@ -793,13 +798,16 @@ STR_02F8_EVERY_3_MONTHS						:Í 3. hverjum mánuði
 STR_02F9_EVERY_6_MONTHS						:Í 6. hverjum mánuði
 STR_02FA_EVERY_12_MONTHS					:Í 12. hverjum mánuði
 STR_02FB_START_A_NEW_GAME					:{BLACK}Byrja nýjan leik
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Opna vistaðan leik
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Sjá sýnikennslu/leiðbeiningar
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Búa til eigið land
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Velja einspilunarleik
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Velja 2-8 leikmanna fjölspilunarleik
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Sýna Leikjastillingar
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Sýna Erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Byrja nýjan leik, í eigin landi
 STR_0304_QUIT							:{BLACK}Hætta í OpenTTD
+STR_0305_QUIT_OPENTTD						:{BLACK}Hætta í OpenTTD
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Sjá sýnikennslu/leiðbeiningar
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...aðeins hægt að byggja í bæjum
@@ -860,6 +868,7 @@ STR_CURR_DM							:Þýsk mörk (DM)
 STR_CURR_YEN							:Jen ({YENSIGN})
 STR_CURR_PT							:Pesetar (Pt)
 STR_CURR_FT							:Ungverskar Forintur (Ft)
+STR_CURR_ZL							:Pólsk Zloty (zl)
 STR_CURR_ATS							:Austurrískur skildingur (ATS)
 STR_CURR_BEF							:Belgískur Franki (BEF)
 STR_CURR_DKK							:Dönsk Króna (DKK)
@@ -971,6 +980,7 @@ STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Verðbólga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Leyfa byggingu mjög langra brúa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Lestir mega hafa skýli á skipanalista: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Leyfa byggingu hráefnaframleiðsluiðnaðar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Leyfa marga svipaða iðnaði í sama bæ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Má byggja iðnaði af sömu gerð nálægt hvor öðrum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Sýna alltaf fulla dagsetningu í upplýsingaslá: {ORANGE}{STRING}
@@ -1000,6 +1010,7 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Birtingartími villuskilaboða: {OR
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Ósýnileg tré (með gagnsæjum byggingum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hæð snjólínu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Dreyfing stöðva mest: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
+STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Skoða þyrlur sjálfvirkt á þyrlupalli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Lestir á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH					:{LTBLUE}Birfreiðir á leikmann mest: {ORANGE}{STRING}
@@ -1013,9 +1024,19 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Útiloka skip fyrir tölvu: {ORANGE
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Virkja nýja gervigreind (alfa): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Venjuleg bið milli skoðana á lestum: {ORANGE}{STRING} dagar/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Venjuleg bið milli skoðana á lestum: {ORANGE}óvirkt
+STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Venjuleg bið milli skoðana á bílum: {ORANGE}{STRING} dagar/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Venjuleg bið milli skoðana á bílum: {ORANGE}óvrikt
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Venjuleg bið milli skoðana á flugvélum: {ORANGE}{STRING} dagar/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Venjuleg bið milli skoðana á flugvélum: {ORANGE}óvrikt
+STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Venjuleg bið milli skoðana á skipum: {ORANGE}{STRING} dagar/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Venjuleg bið milli skoðana á skipum: {ORANGE}óvirkt
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Fréttir birtast í lit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Upphafsár: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Virkja jafnan efnahag (fleiri og minni breytingar)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Þegar dregið er, setja skilti á: {ORANGE}{STRING} hvern reit
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Staðsetning tækjasláar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vinstri
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Miðjað
@@ -1034,24 +1055,35 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Breyta gildi stillingar
 
+STR_TEMPERATE_LANDSCAPE						:Temprað landslag
+STR_SUB_ARCTIC_LANDSCAPE					:Heimskautalandslag
+STR_SUB_TROPICAL_LANDSCAPE					:Miðjarðarlandslag
+STR_TOYLAND_LANDSCAPE						:Leikfangalandslag
 
 STR_CHEATS							:{WHITE}Svindl
+STR_CHEATS_TIP							:{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
+STR_CHEATS_WARNING						:{BLACK}Aðvörun! Þú ert í þann mund að svíkja samkeppendur þína. Hafðu í huga að svoleiðs svívirðing mun ætíð höfð í minnum.
 STR_CHEAT_MONEY							:{LTBLUE}Auka pening um {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spila sem leikmaður: {ORANGE}{COMMA16}
+STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Töfrajarðýta (eyða iðnaði og óeyðanlegu): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Göng meiga skerast: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggja í bið: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Þotur brotlenda ekki (oft) á litlum flugvöllum: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Skipta um loftslag: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Á leiðinni til {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Á leiðinni til {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Fara með {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Ekki stoppa á {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Millistöð {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Millistöð {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Millistöð
 
+STR_WAYPOINT							:{WHITE}Leiðarvísir
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Velja tegund leiðarvísis
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -1065,10 +1097,16 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Get ekki fjarlægt lestarmillistöð héð
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Byggja lestartein í Sjálfvirkum ham
 
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...það er enginn bær í þessu landi
 
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Ertu viss um að þú viljir búa til tilviljanakennt landslag?
 STR_MANY_RANDOM_TOWNS						:{BLACK}Búa til marga bæi
 STR_RANDOM_TOWNS_TIP						:{BLACK}Þekja landið með bæjum
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Marga tilviljanakennda iðnaði
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Þekja kortið mörgum tilviljanakenndum iðnöðum
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Get ekki búið til iðnað...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Opna landslags verkfæraslána til að hækka/lækka land, gróðursetja tré o.s.frv.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Mótun lands
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Jafna land
 
@@ -1121,12 +1159,19 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Reisa kúluframleiðslu
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Grafa karamellunámu
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Grafa sykurnámu
 
+STR_INDUSTRYDIR_CAPTION						:{WHITE}Iðnaðir
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% flutt)
 STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% flutt)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
+STR_INDUSTRY_TOO_CLOSE						:{WHITE}...of nálægt öðrum iðnaði
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Breyta lest svo hún flytji annan varning
+STR_RAIL_REFIT							:{WHITE}{STRING} (Breyta)
+STR_RAIL_REFIT_VEHICLE						:{BLACK}Breyta lest
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin flytur
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest til að flytja valinn varning
+STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Get ekki breytt lest...
 
 TEMP_AI_ACTIVATED						:{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnablikinu virka aðeins flutningabílar og strætisvagnar!
 

@@ -748,7 +748,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Geef stationsnamen weer
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Geef stationsnamen weer
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Geef borden weer
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Geef borden weer
-STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Controlepost, weergegeven
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Geef controleposten weer
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Controlepost weergegeven
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Alle animatie
 STR_02D0_FULL_ANIMATION						:{SETX 12}Alle animatie
@@ -977,11 +977,11 @@ STR_CONFIG_PATCHES_ON						:Aan
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Geef snelheid in statusbalk weer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Bouwen op hellingen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Gebruik realistisch handelsgebied: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één type lading geheel geladen is, met 'vol laden': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één lading geladen is, met 'vol laden': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
@@ -989,7 +989,7 @@ STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Bouwen van zeer lange bruggen toesta
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}'Ga naar depot' order toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Plaatsen van grondstofproducerende industrie toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Industrieën van hetzelfde type dicht bij elkaar bouwen toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Industrieën van hetzelfde type dicht bij elkaar toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Financieel overzicht aan het eind van het jaar weergeven: {ORANGE}{STRING}
