@@ -9,6 +9,7 @@
 #include "player.h"
 #include "engine.h"
 #include "vehicle.h"
+#include "signs.h"
 
 extern byte _name_array[512][32];
 extern TileIndex _animated_tile_list[256];
@@ -1027,14 +1028,22 @@ static void FixName(OldName *o, int num)
 	}
 }
 
-static void FixSign(SignStruct *n, OldSign *o, int num)
+static void FixSign(OldSign *o, int num)
 {
+	SignStruct *n;
+	uint i = 0;
+
 	do {
+		if (o->text == 0)
+			continue;
+
+		n = GetSign(i);
+
 		n->str = o->text;
 		n->x = o->x;
 		n->y = o->y;
 		n->z = o->z;
-	} while (n++,o++,--num);
+	} while (i++,o++,--num);
 }
 
 static void FixEngine(Engine *n, OldEngine *o, int num)
@@ -1452,7 +1461,7 @@ bool LoadOldSaveGame(const char *file)
 
 	FixPlayer(_players, m->players, lengthof(m->players), m->town_name_type);
 	FixName(m->names, lengthof(m->names));
-	FixSign(_sign_list, m->signs, lengthof(m->signs));
+	FixSign(m->signs, lengthof(m->signs));
 	FixEngine(_engines, m->engines, lengthof(m->engines));
 
 	_opt.diff_level = m->difficulty_level;

@@ -6,7 +6,6 @@
 /* main_gui.c */
 void SetupColorsAndInitialWindow();
 void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2);
-void PlaceProc_Sign(uint tile);
 
 /* settings_gui.c */
 void ShowGameOptions();

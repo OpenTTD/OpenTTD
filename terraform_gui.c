@@ -8,7 +8,7 @@
 #include "sound.h"
 #include "command.h"
 #include "vehicle.h"
-
+#include "signs.h"
 
 void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 {

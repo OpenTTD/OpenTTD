@@ -753,6 +753,9 @@
 				RelativePath=".\settings.c">
 			</File>
 			<File
+				RelativePath=".\signs.c">
+			</File>
+			<File
 				RelativePath="sound.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -1217,6 +1220,9 @@
 			</File>
 			<File
 				RelativePath=".\screenshot.h">
+			</File>
+			<File
+				RelativePath=".\signs.h">
 			</File>
 			<File
 				RelativePath="sound.h">

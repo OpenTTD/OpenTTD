@@ -285,15 +285,6 @@ typedef struct {
 	byte width_1, width_2;
 } ViewportSign;
 
-typedef struct SignStruct {
-	StringID str;
-	ViewportSign sign;
-	int32 x;
-	int32 y;
-	byte z;
-} SignStruct;
-
-
 typedef int32 CommandProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
 typedef void DrawTileProc(TileInfo *ti);

@@ -641,7 +641,6 @@ static void ChangeTileOwner_Trees(uint tile, byte old_player, byte new_player)
 
 void InitializeTrees()
 {
-	memset(_sign_list, 0, sizeof(_sign_list));
 	_trees_tick_ctr = 0;
 }
 

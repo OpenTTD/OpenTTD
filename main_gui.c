@@ -14,6 +14,7 @@
 #include "console.h"
 #include "sound.h"
 #include "network.h"
+#include "signs.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"
@@ -370,7 +371,7 @@ void ShowNetworkNeedCompanyPassword()
 
 void ShowRenameSignWindow(SignStruct *ss)
 {
-	_rename_id = ss - _sign_list;
+	_rename_id = ss->index;
 	_rename_what = 0;
 	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0);
 }
@@ -390,19 +391,6 @@ void ShowRenameWaypointWindow(Waypoint *cp)
 	_rename_what = 1;
 	SetDParam(0, id);
 	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
-}
-
-void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
-{
-	if (success) {
-		ShowRenameSignWindow(_new_sign_struct);
-		ResetObjectToPlace();
-	}
-}
-
-void PlaceProc_Sign(uint tile)
-{
-	DoCommandP(tile, 0, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
 }
 
 static void SelectSignTool()

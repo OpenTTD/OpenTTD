@@ -162,6 +162,7 @@ void InitializeIndustries();
 void InitializeLandscape();
 void InitializeTowns();
 void InitializeTrees();
+void InitializeSigns();
 void InitializeStations();
 static void InitializeNameMgr();
 void InitializePlayers();
@@ -220,6 +221,7 @@ void InitializeGame()
 	InitializeDockGui();
 	InitializeTowns();
 	InitializeTrees();
+	InitializeSigns();
 	InitializeStations();
 	InitializeIndustries();
 

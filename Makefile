@@ -613,6 +613,7 @@ C_SOURCES += settings.c
 C_SOURCES += settings_gui.c
 C_SOURCES += ship_cmd.c
 C_SOURCES += ship_gui.c
+C_SOURCES += signs.c
 C_SOURCES += smallmap_gui.c
 C_SOURCES += sound.c
 C_SOURCES += sprite.c

@@ -425,9 +425,6 @@ VARDEF char _screenshot_name[128];
 VARDEF char _userstring[USERSTRING_LEN];
 VARDEF byte _vehicle_design_names;
 
-VARDEF SignStruct _sign_list[40];
-VARDEF SignStruct *_new_sign_struct;
-
 /* tunnelbridge */
 #define MAX_BRIDGES 13
 

@@ -297,6 +297,10 @@ SOURCE=.\settings.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\signs.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\sound.c
 # End Source File
 
@@ -507,6 +511,10 @@ SOURCE=.\queue.h
 
 # Begin Source File
 SOURCE=.\saveload.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\signs.h
 # End Source File
 
 # Begin Source File

@@ -26,6 +26,7 @@
 #include "console.h"
 #include "screenshot.h"
 #include "network.h"
+#include "signs.h"
 
 #include <stdarg.h>
 
@@ -44,7 +45,6 @@ void DeleteAllPlayerStations();
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern void DoStartupNewPlayer(bool is_ai);
-extern void UpdateAllSignVirtCoords();
 extern void ShowOSErrorBox(const char *buf);
 
 void redsq_debug(int tile);
@@ -496,6 +496,8 @@ static void InitializeDynamicVariables(void)
 
 	_industries_size = lengthof(_industries);
 	_industry_sort = NULL;
+
+	_sign_size = lengthof(_sign_list);
 }
 
 static void UnInitializeDynamicVariables(void)
@@ -1263,7 +1265,7 @@ bool AfterLoadGame(uint version)
 {
 	Window *w;
 	ViewPort *vp;
-	
+
 	// in version 2.1 of the savegame, town owner was unified.
 	if (version <= 0x200) {
 		ConvertTownOwner();

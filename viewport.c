@@ -8,6 +8,7 @@
 #include "station.h"
 #include "gfx.h"
 #include "town.h"
+#include "signs.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
@@ -885,7 +886,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	if (dpi->zoom < 1) {
-		for(ss=_sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 					bottom > ss->sign.top &&
 					top < ss->sign.top + 12 &&
@@ -902,7 +903,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	} else if (dpi->zoom == 1) {
 		right += 2;
 		bottom += 2;
-		for(ss=_sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 					bottom > ss->sign.top &&
 					top < ss->sign.top + 24 &&
@@ -920,7 +921,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		right += 4;
 		bottom += 5;
 
-		for(ss=_sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 					bottom > ss->sign.top &&
 					top < ss->sign.top + 24 &&
@@ -1541,7 +1542,7 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 		x = x - vp->left + vp->virtual_left;
 		y = y - vp->top + vp->virtual_top;
 
-		for(ss = _sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 			    y >= ss->sign.top &&
 					y < ss->sign.top + 12 &&
@@ -1554,7 +1555,7 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 	} else if (vp->zoom == 1) {
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		for(ss = _sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 			    y >= ss->sign.top &&
 					y < ss->sign.top + 24 &&
@@ -1567,7 +1568,7 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 	} else {
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		for(ss = _sign_list; ss != endof(_sign_list); ss++) {
+		FOR_ALL_SIGNS(ss) {
 			if (ss->str &&
 			    y >= ss->sign.top &&
 					y < ss->sign.top + 24 &&

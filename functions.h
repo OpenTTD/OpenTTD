@@ -232,7 +232,6 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
 void ShowNetworkNeedGamePassword();
 void ShowNetworkNeedCompanyPassword();
-void ShowRenameSignWindow(SignStruct *ss);
 void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int rank);
