@@ -13,14 +13,9 @@ static inline int32 SeedChanceBias(int shift_by, int max, uint32 seed, int bias)
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }
 
-static void ReplaceWords(byte a, byte b, byte c, byte d, byte e, byte f, byte g, byte h, byte *buf)
+static void ReplaceWords(const char *org, const char *rep, char *buf) 
 {
-	if (buf[0] == a && buf[1] == b && buf[2] == c && buf[3] == d) {
-		buf[0] = e;
-		buf[1] = f;
-		buf[2] = g;
-		buf[3] = h;
-	}
+	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4);
 }
 
 static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
@@ -49,16 +44,16 @@ static byte MakeEnglishOriginalTownName(byte *buf, uint32 seed)
 	if (buf[0] == 'C' && (buf[1] == 'e' || buf[1] == 'i'))
 		buf[0] = 'K';
 
-	ReplaceWords('C','u','n','t',  'E','a','s','t', buf);
-	ReplaceWords('S','l','a','g',  'P','i','t','s', buf);
-	ReplaceWords('S','l','u','t',  'E','d','i','n', buf);
-	//ReplaceWords('F','a','r','t',  'B','o','o','t', buf);
-	ReplaceWords('D','r','a','r',  'Q','u','a','r', buf);
-	ReplaceWords('D','r','e','h',  'B','a','s','h', buf);
-	ReplaceWords('F','r','a','r',  'S','h','o','r', buf);
-	ReplaceWords('G','r','a','r',  'A','b','e','r', buf);
-	ReplaceWords('B','r','a','r',  'O','v','e','r', buf);
-	ReplaceWords('W','r','a','r',  'I','n','v','e', buf);
+	ReplaceWords("Cunt", "East", buf);
+	ReplaceWords("Slag", "Pits", buf);
+	ReplaceWords("Slut", "Edin", buf);
+	//ReplaceWords("Fart", "Boot", buf);
+	ReplaceWords("Drar", "Quar", buf);
+	ReplaceWords("Dreh", "Bash", buf);
+	ReplaceWords("Frar", "Shor", buf);
+	ReplaceWords("Grar", "Aber", buf);
+	ReplaceWords("Brar", "Over", buf);
+	ReplaceWords("Wrar", "Inve", buf);
 
 	return 0;
 }
@@ -95,16 +90,16 @@ static byte MakeEnglishAdditionalTownName(byte *buf, uint32 seed)
 	if (i >= 0)
 		strcat(buf, name_additional_english_3[i]);
 
-	ReplaceWords('C','u','n','t',  'E','a','s','t', buf);
-	ReplaceWords('S','l','a','g',  'P','i','t','s', buf);
-	ReplaceWords('S','l','u','t',  'E','d','i','n', buf);
-	ReplaceWords('F','a','r','t',  'B','o','o','t', buf);
-	ReplaceWords('D','r','a','r',  'Q','u','a','r', buf);
-	ReplaceWords('D','r','e','h',  'B','a','s','h', buf);
-	ReplaceWords('F','r','a','r',  'S','h','o','r', buf);
-	ReplaceWords('G','r','a','r',  'A','b','e','r', buf);
-	ReplaceWords('B','r','a','r',  'O','v','e','r', buf);
-	ReplaceWords('W','r','a','r',  'S','t','a','n', buf);
+	ReplaceWords("Cunt", "East", buf);
+	ReplaceWords("Slag", "Pits", buf);
+	ReplaceWords("Slut", "Edin", buf);
+	ReplaceWords("Fart", "Boot", buf);
+	ReplaceWords("Drar", "Quar", buf);
+	ReplaceWords("Dreh", "Bash", buf);
+	ReplaceWords("Frar", "Shor", buf);
+	ReplaceWords("Grar", "Aber", buf);
+	ReplaceWords("Brar", "Over", buf);
+	ReplaceWords("Wrar", "Stan", buf);
 
 	return 0;
 }
