@@ -1114,6 +1114,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Viele zufällige Industrien
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Bedecke die Karte mit zufällig platzierten Industrien
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Kann keine Industrie erzeugen...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Öffne die Landschaftsbau-Toolbar, um Land zu senken/heben, Bäume zu pflanzen, etc.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Landschaft bearbeiten
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Land ausgleichen
 
@@ -1226,6 +1227,7 @@ STR_NETWORK_CURRENT_DATE					:{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Passwort geschützt!
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVER VOLL
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}Versionskonflikt festgestellt
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Dem Spiel beitreten
 
@@ -2575,6 +2577,7 @@ STR_GO_TO_SHIP_DEPOT						:Fahre zu {TOWN} Schiffswerft
 SERVICE_AT_SHIP_DEPOT						:Wartung bei {TOWN} Schiffswerft
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Flughäfen
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Flughafen kann hier nicht gebaut werden...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Flugzeughangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Neues Flugzeug
@@ -2707,3 +2710,7 @@ STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Straßenfahrzeuge
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Flugzeuge
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Schiffe
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Zeige alle Züge, die diesen Bahnhof anfahren
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Zeige alle Fahrzeuge, die diese Station anfahren
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Zeige alle Flugzeuge, die diesen Flughafen anfliegen
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zeige alle Schiffe, die diesen Hafen ansteuern

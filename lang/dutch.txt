@@ -343,7 +343,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Prestatiegrafiek
 STR_0158_COMPANY_VALUE_GRAPH					:Bedrijfswaardegrafiek
 STR_0159_CARGO_PAYMENT_RATES					:Ladingsprijzen
 STR_015A_COMPANY_LEAGUE_TABLE					:Bedrijfscompetitietabel
-STR_PERFORMANCE_DETAIL_MENU					:Gedetaileerde prestatiewaarde
+STR_PERFORMANCE_DETAIL_MENU					:Detail prestatiewaarde
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -369,7 +369,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR					:Winst vorig jaar
 STR_SORT_BY_PROFIT_THIS_YEAR					:Winst dit jaar
 STR_SORT_BY_AGE							:Leeftijd
 STR_SORT_BY_RELIABILITY						:Betrouwbaarheid
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Totale capaciteit per vrachttype
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capaciteit per vrachttype
 STR_SORT_BY_MAX_SPEED						:Maximale snelheid
 
 ############ range for months starts
@@ -416,7 +416,7 @@ STR_0187_OPTIONS						:{BLACK}Opties
 STR_0188							:{BLACK}{SMALLUPARROW}
 STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan onderhoudsinterval niet aanpassen...
-STR_018B_CLOSE_WINDOW						:{BLACK}Sluit scherm
+STR_018B_CLOSE_WINDOW						:{BLACK}Sluit venster
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Vensternaam - sleep om venster te verplaatsen
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Sloop gebouwen etc. op een stuk land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Verlaag een hoek van het land
@@ -979,7 +979,7 @@ STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Verwijderen van meer stedelijke weg
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één type lading geheel geladen is, met 'volledig laden': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlaat station wanneer één type lading geheel geladen is, met 'vol laden': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
@@ -1114,6 +1114,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Veel willekeurige industrieën
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Kan geen industrieën genereren
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Terreinvorming
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Landhoogte gelijk maken
 
@@ -1927,7 +1928,7 @@ STR_7005_COLOR_SCHEME						:{BLACK}Kleurenschema
 STR_7006_COLOR_SCHEME						:{GOLD}Kleurenschema:
 STR_7007_NEW_COLOR_SCHEME					:{WHITE}Nieuw kleurenschema
 STR_7008_COMPANY_NAME						:{BLACK}Bedrijfsnaam
-STR_7009_PRESIDENT_NAME						:{BLACK}Naam van directeur
+STR_7009_PRESIDENT_NAME						:{BLACK}Naam directeur
 STR_700A_COMPANY_NAME						:Bedrijfsnaam
 STR_700B_PRESIDENT_S_NAME					:Naam van directeur
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kan bedrijfsnaam niet veranderen...
@@ -2359,11 +2360,11 @@ STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Nieuwe maglevvoertuigen
 STR_881F_BUILD_VEHICLE						:{BLACK}Bouw voertuig
 STR_8820_RENAME							:{BLACK}Hernoemen
 STR_8821_COST_WEIGHT_T_T_CAPACITY				:{BLACK}Kosten: {GOLD}{CURRENCY}{}{BLACK}Gewicht: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capaciteit: {GOLD}{STRING}
-STR_8823_SKIP							:{BLACK}Overslaan
-STR_8824_DELETE							:{BLACK}Verwijderen
+STR_8823_SKIP							:{BLACK}Sla over
+STR_8824_DELETE							:{BLACK}Verwijder
 STR_8825_NON_STOP						:{BLACK}Non-stop
 STR_8826_GO_TO							:{BLACK}Ga naar
-STR_8827_FULL_LOAD						:{BLACK}Volledig laden
+STR_8827_FULL_LOAD						:{BLACK}Vol laden
 STR_8828_UNLOAD							:{BLACK}Uitladen
 STR_8829_ORDERS							:{WHITE}{STRING} (Orders)
 STR_882A_END_OF_ORDERS						:{SETX 10}- - Einde van orders - -
@@ -2575,6 +2576,7 @@ STR_GO_TO_SHIP_DEPOT						:Ga naar {TOWN} Scheepswerf
 SERVICE_AT_SHIP_DEPOT						:Reparatie in {TOWN} Scheepswerf
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Vliegvelden
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Kan vliegveld hier niet bouwen...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Vliegtuighangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nieuw vliegtuig
@@ -2707,3 +2709,7 @@ STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Wegvoertuigen
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Vliegtuigen
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Schepen
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Geef alle wegvoertuigen weer die dit station in hun opdrachtenlijst hebben
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Geef alle vliegtuigen weer die dit station in hun opdrachtenlijst hebben
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben

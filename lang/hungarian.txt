@@ -1114,6 +1114,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Sok véletlen gazdasági épület
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Elhelyez a térképen véletlenszerüen sok gazdasági épületet
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Nem tudok gazdasági épületet generálni...
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Nyisd meg a tájrendezõ ablakot a talaj növeléshez/csökkentéshez, faültetéshez, stb.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Tájrendezés
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Talajszint
 
@@ -2575,6 +2576,7 @@ STR_GO_TO_SHIP_DEPOT						:Menj a {TOWN}i kikötõbe
 SERVICE_AT_SHIP_DEPOT						:Service at {TOWN} Ship Depot
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Airports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Nem építhetsz ide repülõteret...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} hangárja
 STR_A003_NEW_AIRCRAFT						:{BLACK}Új repülõgépek
@@ -2707,3 +2709,7 @@ STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Közúti jármûvek
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Repülõgépek
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Hajók
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Kilistázza az összes közúti jármûvet, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Kilistázza az összes repülõt, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Kilistázza az összes hajót, aminek a menetrendjében szerepel ez az állomás
