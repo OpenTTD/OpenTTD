@@ -796,8 +796,8 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 		} break;
 	case WE_CLICK: /* OnClick show the highscore chart */
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
 		DeleteWindow(w);
+		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
 	}
 }
 

@@ -740,9 +740,23 @@ static const StringID _endgame_performance_titles[16] = {
 	STR_0219_TYCOON_OF_THE_CENTURY,
 };
 
-inline StringID EndGameGetPerformanceTitleFromValue(uint value)
+StringID EndGameGetPerformanceTitleFromValue(uint value)
 {
 	return _endgame_performance_titles[minu(value, 1000) >> 6];
+}
+
+/* Return true if any cheat has been used, false otherwise */
+static CheatHasBeenUsed(void)
+{
+	const Cheat* cht = (Cheat*) &_cheats;
+	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
+
+	for (; cht != cht_last; cht++) {
+		if (cht->been_used) 
+			return true;
+	}
+
+	return false;	
 }
 
 /* Save the highscore for the player */
@@ -751,6 +765,10 @@ int8 SaveHighScoreValue(const Player *p)
 	HighScore *hs = _highscore_table[_opt.diff_level];
 	uint i;
 	uint16 score = p->old_economy[0].performance_history;
+
+	/* Exclude cheaters from the honour of being in the highscore table */
+	if (CheatHasBeenUsed())
+		return -1;
 
 	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 		/* You are in the TOP5. Move all values one down and save us there */
