@@ -391,7 +391,11 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	#if defined(__APPLE__)
 		if (sym->scancode == 10) key |= WKC_BACKQUOTE;
 	#else
-		if (sym->scancode == 49) key |= WKC_BACKQUOTE;
+		#if defined(__MORPHOS__)
+			if (sym->scancode == 0)  key |= WKC_BACKQUOTE;  // yes, that key is code '0' under MorphOS :)
+		#else
+			if (sym->scancode == 49) key |= WKC_BACKQUOTE;
+		#endif
 	#endif
 #endif
 	// META are the command keys on mac
