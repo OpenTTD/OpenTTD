@@ -606,7 +606,7 @@ DEF_CONSOLE_CMD(ConSet) {
 				_network_game_info.server_password[0] = '\0';
 				_network_game_info.use_password = 0;
 			} else {
-				strncpy(_network_game_info.server_password, argv[2], sizeof(_network_game_info.server_password));
+				ttd_strlcpy(_network_game_info.server_password, argv[2], sizeof(_network_game_info.server_password));
 				_network_game_info.use_password = 1;
 			}
 			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_game_info.server_password);
