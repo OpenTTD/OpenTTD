@@ -65,12 +65,20 @@ static int GetCurRes()
 	return i;
 }
 
+static inline bool RoadVehiclesAreBuilt(void)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) { 
+		if (v->type == VEH_Road) return true;
+	}
+	return false;
+}
+
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
 {
-	int i;
-
 	switch(e->event) {
 	case WE_PAINT: {
+		int i;
 		StringID str = STR_02BE_DEFAULT;
 		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
 		SetDParam(0, str);
@@ -91,35 +99,39 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 5:
+		case 5: /* Setup currencies dropdown */
 			ShowDropDownMenu(w, _currency_string_list, _opt_mod_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 			return;
-		case 8:
+		case 8: /* Setup distance unit dropdown */
 			ShowDropDownMenu(w, _distances_dropdown, _opt_mod_ptr->kilometers, e->click.widget, 0, 0);
 			return;
-		case 11: {
-			int i = _opt_mod_ptr->road_side;
-			ShowDropDownMenu(w, _driveside_dropdown, i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
-			return;
-		}
-		case 14: {
+		case 11: { /* Setup road-side dropdown */
+			int i = 0;
+
+			/* You can only change the drive side if you are in the menu or ingame with
+			 * no vehicles present. In a networking game only the server can change it */
+			if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
+				i = (-1) ^ (1 << _opt_mod_ptr->road_side); // disable the other value
+
+			ShowDropDownMenu(w, _driveside_dropdown, _opt_mod_ptr->road_side, e->click.widget, i, 0);
+		} return;
+		case 14: { /* Setup townname dropdown */
 			int i = _opt_mod_ptr->town_name;
 			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
 			return;
 		}
-		case 17:
+		case 17: /* Setup autosave dropdown */
 			ShowDropDownMenu(w, _autosave_dropdown, _opt_mod_ptr->autosave, e->click.widget, 0, 0);
 			return;
-		case 20:
+		case 20: /* Setup customized vehicle-names dropdown */
 			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names&1)?1:0, e->click.widget, (_vehicle_design_names&2)?0:2, 0);
 			return;
-		case 21:
+		case 21: /* Save customized vehicle-names to disk */
 			return;
-		case 24:
+		case 24: /* Setup interface language dropdown */
 			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, e->click.widget, 0, 0);
 			return;
-		case 27:
-			// setup resolution dropdown
+		case 27: /* Setup resolution dropdown */
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), e->click.widget, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
@@ -130,13 +142,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		case 31: /* Setup screenshot format dropdown */
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0, 0);
 			return;
-
 		}
 		break;
 
 	case WE_DROPDOWN_SELECT:
 		switch(e->dropdown.button) {
-		case 20:
+		case 20: /* Vehicle design names */
 			if (e->dropdown.index == 0) {
 				DeleteCustomEngineNames();
 				MarkWholeScreenDirty();
@@ -145,43 +156,37 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 				MarkWholeScreenDirty();
 			}
 			break;
-		case 5:
+		case 5: /* Currency */
 			if (e->dropdown.index == 23)
 				ShowCustCurrency();
 			_opt_mod_ptr->currency = _opt.currency = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
-		case 8:
+		case 8: /* Distance units */
 			_opt_mod_ptr->kilometers = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
-		case 11:
-			if (_game_mode == GM_MENU)
+		case 11: /* Road side */
+			if (_opt_mod_ptr->road_side != e->dropdown.index) // only change if setting changed
 				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_EMPTY));
 			break;
-		case 14:
+		case 14: /* Town names */
 			if (_game_mode == GM_MENU)
 				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_TOWN_NAME_TYPE | CMD_MSG(STR_EMPTY));
 			break;
-		case 17:
+		case 17: /* Autosave options */
 			_opt_mod_ptr->autosave = e->dropdown.index;
 			SetWindowDirty(w);
 			break;
-
-		// change interface language
-		case 24:
+		case 24: /* Change interface language */
 			ReadLanguagePack(e->dropdown.index);
 			MarkWholeScreenDirty();
 			break;
-
-		// change resolution
-		case 27:
+		case 27: /* Change resolution */
 			if (e->dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->dropdown.index][0],_resolutions[e->dropdown.index][1]))
 				SetWindowDirty(w);
 			break;
-
-		// change screenshot format
-		case 31:
+		case 31: /* Change screenshot format */
 			SetScreenshotFormat(e->dropdown.index);
 			SetWindowDirty(w);
 			break;
