@@ -154,6 +154,14 @@ static void ReadSprite(SpriteID id, void *buffer)
 	byte type;
 	byte* dest;
 
+	if (_sprite_file_pos[id] == 0) {
+		error(
+			"Tried to load non-existing sprite #%d.\n"
+			"Probable cause: Wrong/missing NewGRFs",
+			id
+		);
+	}
+
 	FioSeekToFile(_sprite_file_pos[id]);
 
 	type = FioReadByte();
