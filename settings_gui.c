@@ -1238,10 +1238,10 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 static const Widget _newgrf_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_NEWGRF_SETTINGS_CAPTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   268,    14,   182, 0xC01,/*small rows*/					STR_NEWGRF_TIP},
+{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   267,    14,   182, 0xC01,/*small rows*/					STR_NEWGRF_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,   183,   276, 0x0,													STR_NULL},
 
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   269,   279,    14,   182, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   268,   279,    14,   182, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,   147,   158,   244,   255, STR_0188,	STR_NULL},
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,   159,   170,   244,   255, STR_0189,	STR_NULL},

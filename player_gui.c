@@ -145,7 +145,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		Player *p = DEREF_PLAYER(w->window_number);
 
-		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 6);
+		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 7);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
@@ -298,8 +298,8 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 static const Widget _select_player_color_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   149,     0,    13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   138,    14,   127, 0x0, STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   139,   149,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   137,    14,   127, 0x0, STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   138,   149,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 

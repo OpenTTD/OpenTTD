@@ -434,8 +434,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 static const Widget _train_orders_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_8829_ORDERS,					STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,											STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,											STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    52,    76,    87, STR_8823_SKIP,						STR_8853_SKIP_THE_CURRENT_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    53,   105,    76,    87, STR_8824_DELETE,					STR_8854_DELETE_THE_HIGHLIGHTED},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   106,   158,    76,    87, STR_8825_NON_STOP,				STR_8855_MAKE_THE_HIGHLIGHTED_ORDER},
@@ -456,8 +456,8 @@ static const WindowDesc _train_orders_desc = {
 static const Widget _other_train_orders_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_8829_ORDERS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0, STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0, STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -473,8 +473,8 @@ static const WindowDesc _other_train_orders_desc = {
 static const Widget _roadveh_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_900B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
@@ -495,8 +495,8 @@ static const WindowDesc _roadveh_orders_desc = {
 static const Widget _other_roadveh_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_900B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -511,8 +511,8 @@ static const WindowDesc _other_roadveh_orders_desc = {
 static const Widget _ship_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_9810_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
@@ -533,8 +533,8 @@ static const WindowDesc _ship_orders_desc = {
 static const Widget _other_ship_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_9810_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -550,8 +550,8 @@ static const WindowDesc _other_ship_orders_desc = {
 static const Widget _aircraft_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_A00B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    76,    87, STR_8823_SKIP,		STR_8853_SKIP_THE_CURRENT_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   127,    76,    87, STR_8824_DELETE,	STR_8854_DELETE_THE_HIGHLIGHTED},
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,							STR_NULL},
@@ -572,8 +572,8 @@ static const WindowDesc _aircraft_orders_desc = {
 static const Widget _other_aircraft_orders_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   319,     0,    13, STR_A00B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   308,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   309,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   307,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   308,   319,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 

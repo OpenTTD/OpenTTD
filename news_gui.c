@@ -607,8 +607,8 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 static const Widget _message_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   388,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   389,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   387,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   388,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 

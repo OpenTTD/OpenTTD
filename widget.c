@@ -273,6 +273,8 @@ void DrawWindowWidgets(Window *w)
 			Point pt;
 			int c1,c2;
 
+			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
+
 			// draw up/down buttons
 			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP ? 0x20 : 0);
 			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN ? 0x20 : 0);
@@ -301,6 +303,8 @@ void DrawWindowWidgets(Window *w)
 		case WWT_SCROLL2BAR: {
 			Point pt;
 			int c1,c2;
+
+			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			// draw up/down buttons
 			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2) ? 0x20 : 0);
@@ -332,6 +336,8 @@ void DrawWindowWidgets(Window *w)
 		case WWT_HSCROLLBAR: {
 			Point pt;
 			int c1,c2;
+
+			assert(r.bottom - r.top == 13); // XXX - to ensure the same sizes are used everywhere!
 
 			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL) ? 0x20 : 0);
 			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL) ? 0x20 : 0);
@@ -394,18 +400,22 @@ void DrawWindowWidgets(Window *w)
 		}
 
 		case WWT_STICKYBOX: {
+			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (cur_click & 1) ? 0x20 : 0);
 			DrawSprite((cur_click & 1) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2, r.top + 3);
 			break;
 		}
 
 		case WWT_RESIZEBOX: {
+			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
+			
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
-			DrawSprite(SPR_WINDOW_RESIZE, r.left + 2, r.top + 3);
+			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3, r.top + 3);
 			break;
 		}
 
 		case WWT_CAPTION: {
+			assert(r.bottom - r.top == 13); // XXX - to ensure the same sizes are used everywhere!
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0x10);
 			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? 0x60 : 0x70);
 

@@ -378,10 +378,10 @@ static const Widget _industry_directory_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   101,   200,    14,    25, STR_SORT_BY_TYPE,					STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,		STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED,	STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    13,   401,   496,    14,    25, 0x0,											STR_NULL},
-{     WWT_IMGBTN, RESIZE_BOTTOM,    13,     0,   496,    26,   189, 0x0,											STR_200A_TOWN_NAMES_CLICK_ON_NAME},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   497,   507,    14,   177, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,     RESIZE_TB,    13,   497,   507,   178,   189, 0x0,											STR_RESIZE_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,    13,   401,   495,    14,    25, 0x0,											STR_NULL},
+{     WWT_IMGBTN, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,											STR_200A_TOWN_NAMES_CLICK_ON_NAME},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   496,   507,    14,   177, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,     RESIZE_TB,    13,   496,   507,   178,   189, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 

@@ -237,9 +237,9 @@ static const Widget _player_stations_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   345,     0,    13, STR_3048_STATIONS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   346,   357,     0,    13, 0x0,											STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   346,    14,   137, 0x0,											STR_3057_STATION_NAMES_CLICK_ON},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   347,   357,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   347,   357,   126,   137, 0x0,											STR_RESIZE_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   345,    14,   137, 0x0,											STR_3057_STATION_NAMES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   346,   357,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   346,   357,   126,   137, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -269,8 +269,8 @@ static const Widget _station_view_expanded_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   237,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   248,    66,   197, 0x0,					STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
@@ -287,8 +287,8 @@ static const Widget _station_view_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   237,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
@@ -461,7 +461,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 				w->height = 110;
 			} else {
 				AssignWidgetToWindow(w, _station_view_expanded_widgets);
-				w->height = 220;
+				w->height = 210;
 			}
 
 			SetWindowDirty(w);
