@@ -694,17 +694,14 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 		StringID str;
 
-		if (_selected_company_item == -1) {
-			w->disabled_state = (1<<7);
-		} else
-			w->disabled_state = 0;
+		w->disabled_state = (_selected_company_item == -1) ? 1 << 7 : 0;
 
 		if (_network_lobby_company_count == MAX_PLAYERS)
-			w->disabled_state |= (1<<8);
+			SETBIT(w->disabled_state, 8);
 		/* You can not join a server as spectator when it has no companies active..
 		     it causes some nasty crashes */
 		if (_network_lobby_company_count == 0)
-			w->disabled_state |= (1<<9);
+			SETBIT(w->disabled_state, 9);
 
 		DrawWindowWidgets(w);
 
@@ -712,22 +709,22 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, 2);
 
 		// draw company list
-		GfxFillRect(11, 41, 139, 165, 0xD7);
+		GfxFillRect(11, 41, 154, 165, 0xD7);
 		pos = w->vscroll.pos;
 		while (pos < _network_lobby_company_count) {
 			byte index = NetworkLobbyFindCompanyIndex(pos);
 			bool income = false;
 			if (_selected_company_item == index)
-				GfxFillRect(11, y - 1, 139, y + 10, 155); // show highlighted item with a different colour
+				GfxFillRect(11, y - 1, 154, y + 10, 155); // show highlighted item with a different colour
 
 			DoDrawString(_network_player_info[index].company_name, 13, y, 2);
 			if(_network_player_info[index].use_password != 0)
-				DrawSprite(SPR_LOCK, 120, y);
+				DrawSprite(SPR_LOCK, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
-			if ((_network_player_info[index].income) > 0)
+			if ((_network_player_info[index].income) >= 0)
 				income = true;
-			DrawSprite(SPR_BLOT | (income?0x30d8000:0x30b8000), 130, y);
+			DrawSprite(SPR_BLOT | (income ? PALETTE_TO_GREEN : PALETTE_TO_RED), 145, y);
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW_COMPANY;
@@ -736,10 +733,10 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		}
 
 		// draw info about selected company
-		DrawStringMultiCenter(270, 48, STR_NETWORK_COMPANY_INFO, 0);
+		DrawStringMultiCenter(290, 48, STR_NETWORK_COMPANY_INFO, 0);
 		if (_selected_company_item != -1) { // if a company is selected...
 			// show company info
-			const uint x = 168;
+			const uint x = 183;
 			uint xm;
 			y = 65;
 
@@ -848,12 +845,12 @@ static const Widget _network_lobby_window_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   419,    14,   209, 0x0,												STR_NULL},
 
 // company list
-{          WWT_6,   RESIZE_NONE,   BGC,    10,   152,    40,   166, 0x0,												STR_NETWORK_COMPANY_LIST_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   140,   151,    41,   165, 0x1,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{          WWT_6,   RESIZE_NONE,   BGC,    10,   167,    40,   166, 0x0,												STR_NETWORK_COMPANY_LIST_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   155,   166,    41,   165, 0x1,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 // company/player info
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   158,   389,    38,   165, 0x0,					STR_NULL},
-{          WWT_6,   RESIZE_NONE,   BGC,   159,   388,    39,   164, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   173,   404,    38,   166, 0x0,					STR_NULL},
+{          WWT_6,   RESIZE_NONE,   BGC,   174,   403,    39,   165, 0x0,					STR_NULL},
 
 // buttons
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   175,   186, STR_NETWORK_JOIN_COMPANY,	STR_NETWORK_JOIN_COMPANY_TIP},
