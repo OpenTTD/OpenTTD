@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf over præstation
 STR_0158_COMPANY_VALUE_GRAPH					:Graf over selskabsværdi
 STR_0159_CARGO_PAYMENT_RATES					:Graf over last udbetalingsrater
 STR_015A_COMPANY_LEAGUE_TABLE					:Selskabsoversigt
+STR_PERFORMANCE_DETAIL_MENU					:Præstations oversigt
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -354,6 +355,10 @@ STR_0161_QUIT_GAME						:{WHITE}Afslut Spil
 STR_SORT_TIP							:{BLACK}Vælg sorteringsorden
 SRT_SORT_BY							:{BLACK}Sorter efter
 
+STR_SORT_BY_POPULATION						:{BLACK}Indbyggertal
+STR_SORT_BY_PRODUCTION						:{BLACK}Produktion
+STR_SORT_BY_TYPE						:{BLACK}Type
+STR_SORT_BY_TRANSPORTED						:{BLACK}Transporteret
 STR_SORT_BY_NAME						:{BLACK}Navn
 STR_SORT_BY_DROPDOWN_NAME					:Navn
 STR_SORT_BY_DATE						:{BLACK}Dato
@@ -762,6 +767,7 @@ STR_02DE_MAP_OF_WORLD						:Kort over verden
 STR_EXTRA_VIEW_PORT						:Flere lokalitetsvinduer
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Lokalitetsvinduer {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Gå til lokalitetsvindue
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Hent lokalitet fra global visning
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Hent fra lokalitetsvindue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
@@ -846,9 +852,11 @@ STR_TOWNNAME_SWEDISH						:Svenske
 STR_TOWNNAME_DUTCH						:Hollandske
 STR_TOWNNAME_FINNISH						:Finske
 STR_TOWNNAME_POLISH						:Polske
+STR_TOWNNAME_CZECH						:Tjekkiske
 STR_TOWNNAME_SLOVAKISH						:Slovakiske
 STR_TOWNNAME_HUNGARIAN						:Ungarske
 STR_TOWNNAME_AUSTRIAN						:Østrigske
+STR_TOWNNAME_ROMANIAN						:Rumænske
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Pund ({POUNDSIGN})
@@ -872,6 +880,7 @@ STR_CURR_RUR							:Russiske Rubel (rur)
 STR_CURR_CZK							:Tjekkiske Koruna (CZK)
 STR_CURR_ISK							:Islandske Kroner (ISK)
 STR_CURR_NOK							:Norske Kroner (NOK)
+STR_CURR_ROL							:Rumænske Lei
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Sprog
@@ -941,8 +950,13 @@ STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Skib {COMMA16} har en ugyldig havn i sin 
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Fly {COMMA16} har for få ordre i sin flyveplan
 STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Fly {COMMA16} har en ugyldig ordre
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Fly {COMMA16} har dobbelt ordre
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Fly {COMMA16} har en ugyldig station i sin flyveplan
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Automatisk fornyelse mislykkedes på tog {COMMA16} (ikke penge nok)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Automatisk fornyelse mislykkedes på lastbil {COMMA16} (ikke penge nok)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Automatisk fornyelse mislykkedes på skib {COMMA16} (ikke penge nok)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Automatisk fornyelse mislykkedes på fly {COMMA16} (ikke penge nok)
 
 STR_CONFIG_PATCHES						:{BLACK}Indstil Patches
 STR_CONFIG_PATCHES_TIP						:{BLACK}Indstil Patchesne
@@ -957,6 +971,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Aktiver bygning af meget lange tog:
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Tillad go til depot ordrer: {ORANGE}{STRING}
@@ -976,9 +991,19 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny stifindingsalgoritme til to
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Et tog er væk hvis der ikke forekommer fremskridt inden for: {ORANGE}{STRING} dage
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}{STRING} dage
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}deaktiveret
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:Nej
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:Ja, på nær ved stoppet køretøjer
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:Ja, på alle køretøjer
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatisk fornyelse når køretøj er {ORANGE}{STRING}{LTBLUE} måneder under/over max alder
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
@@ -1730,7 +1755,7 @@ STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Tilbagebetal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...maksimale størrelse af lån er {CURRENCY}
-STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Kan ikke låne felere penge...
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Kan ikke låne flere penge...
 STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...ingen lån at tilbagebetale
 STR_702E_REQUIRED						:{WHITE}...{CURRENCY} krævet
 STR_702F_CAN_T_REPAY_LOAN					:{WHITE}Kan ikke tilbagebetale lån...

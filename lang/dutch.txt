@@ -188,6 +188,7 @@ STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Origineel copyright {COPYRIGHT} 1995 Chr
 STR_00B7_VERSION						:{BLACK}OpenTTD versie {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Origineel ontworpen door Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafisch design door Simon Foster
+STR_SPECIAL_THANKS						:{BLACK}Speciale dank gaat uit naar:
 STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Voorseinen en seinpalen {COPYRIGHT} 2003 Michael Blunck
 STR_SPECIAL_THANKS_CANALS					:{BLACK}° Funderingen voor sporen op hellingen {COPYRIGHT} Marcin Grzegorczyk
 STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanaal/sluis afbeeldingen {COPYRIGHT} 2003-2004 George
@@ -763,6 +764,12 @@ STR_02DB_OFF							:{BLACK}Uit
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Toon subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Kaart
+STR_EXTRA_VIEW_PORT						:Extra zichtvenster
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Zichtvenster {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopieer naar zichtvenster
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopieer de lokatie van het algemene venster naar dit zichtvenster
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Plak van zichtvenster
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Plak de lokatie van dit zichtvenster naar het algemene venster
 
 STR_02DF_TOWN_DIRECTORY						:Stedenlijst
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valuta
@@ -845,9 +852,11 @@ STR_TOWNNAME_SWEDISH						:Zweeds
 STR_TOWNNAME_DUTCH						:Nederlands
 STR_TOWNNAME_FINNISH						:Fins
 STR_TOWNNAME_POLISH						:Pools
+STR_TOWNNAME_CZECH						:Czech
 STR_TOWNNAME_SLOVAKISH						:Slowaaks
 STR_TOWNNAME_HUNGARIAN						:Hongaars
 STR_TOWNNAME_AUSTRIAN						:Oostenrijks
+STR_TOWNNAME_ROMANIAN						:Roemeens
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Ponden ({POUNDSIGN})
@@ -871,6 +880,7 @@ STR_CURR_RUR							:Russische Rubel (rur)
 STR_CURR_CZK							:Tsjechse Koruna (CZK)
 STR_CURR_ISK							:IJslandse Kronen (ISK)
 STR_CURR_NOK							:Noorweegse Kronen (NOK)
+STR_CURR_ROL							:Roemeense Leu (Lei)
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Taal
@@ -921,13 +931,32 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Einde gedeelde orders - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Trein {COMMA16} is verdwaald.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Winst van train {COMMA16} was vorig jaar{CURRENCY}
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}Trein {COMMA16} heeft te weinig opdrachten
 STR_TRAIN_HAS_VOID_ORDER					:{WHITE}Trein {COMMA16} heeft een lege opdracht
+STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}Trein {COMMA16} heeft dubbele orders
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}Train {COMMA16} has an invalid station in the orders
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}Road Vehicle {COMMA16} has too few orders in the schedule
+STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}Road Vehicle {COMMA16} has void order
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}Road Vehicle {COMMA16} has duplicate orders
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}Road Vehicle {COMMA16} has an invalid station in the orders
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}Ship {COMMA16} has too few orders in the schedule
+STR_SHIP_HAS_VOID_ORDER						:{WHITE}Ship {COMMA16} has void order
+STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}Ship {COMMA16} has duplicate orders
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Ship {COMMA16} has an invalid station in the orders
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Aircraft {COMMA16} has too few orders in the schedule
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Aircraft {COMMA16} has void order
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Aircraft {COMMA16} has duplicate orders
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Aircraft {COMMA16} has an invalid station in the orders
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA16} (onvoldoende geld)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Automatisch vernieuwen mislukt bij voertuig {COMMA16} (onvoldoende geld)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA16} (onvoldoende geld)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA16} (onvoldoende geld)
 
 STR_CONFIG_PATCHES						:{BLACK}Kies Patches
 STR_CONFIG_PATCHES_TIP						:{BLACK}Kies welke patches je wilt gebruiken
@@ -963,8 +992,16 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nieuw algorithme voor routepla
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Een trein is verdwaald als er geen voortgang is binnen: {ORANGE}{STRING} dagen
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Een trein is verdwaald wanneer er geen vooruitgang is in: {ORANGE}uit
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE} Herzie voertuigorders: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:nee
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:ja, maar sluit gestopte voertuigen uit
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:van alle voertuigen
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Waarschuw als het inkomen van een trein negatief is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatisch vernieuw voertuig wanneer deze oud wordt
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatisch vernieuwen wanneer voertuig {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd is
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Onzichtbare bomen (met transparante gebouwen): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
@@ -984,25 +1021,41 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Schepen voor de computer uitschak
 STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Nieuwe AI inschakelen (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standaard reparatie interval bij treinen: {ORANGE}{STRING} dagen
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Standaard service interval voor treinen: {ORANGE}uit
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standaard reparatie interval bij wegvoertuigen: {ORANGE}{STRING} dagen
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Standaard service interval voor voertuigen: {ORANGE}uit
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standaard reparatie interval bij vliegtuigen: {ORANGE}{STRING} dagen
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standaard service interval voor vliegtuigen: {ORANGE}uit
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standaard reparatie interval bij schepen: {ORANGE}{STRING} dagen
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standaard service interval voor schepen: {ORANGE}uit
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Beginjaar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Wanneer slepen plaats seinen elke: {ORANGE}{STRING} tegel(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE} Positie van hoofd knoppenbalk: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Links
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Midden
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Rechts
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Constructie
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Voertuigen
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stations
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Economie
+STR_CONFIG_PATCHES_AI						:{BLACK}Tegenstanders
 
 STR_CONFIG_PATCHES_DISABLED					:uitgeschakeld
 STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Verander waarde
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Sommige of alle van de standaard service interval(len) hier onder zijn ongeldig met gekozen instelling! 5-90% en 30-800 dagen zijn geldig
 
+STR_TEMPERATE_LANDSCAPE						:gematigd landschap
+STR_SUB_ARCTIC_LANDSCAPE					:subarctisch landschap
+STR_SUB_TROPICAL_LANDSCAPE					:subtropisch landschap
+STR_TOYLAND_LANDSCAPE						:speelgoed landschap
 
 STR_CHEATS							:{WHITE}Cheats
 STR_CHEATS_TIP							:{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
@@ -1012,6 +1065,9 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spelend als speler: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Verander klimaat: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Verander datum: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Op weg naar {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Op weg naar {CHECKPOINT}, {VELOCITY}
@@ -1108,6 +1164,7 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Bouw trein om
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Kies type lading om te transporteren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Bouw trein om voor geselecteerde ladingtype
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan trein niet ombouwen...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervallen zijn in percentages: {ORANGE}{STRING}
 
 TEMP_AI_IN_PROGRESS						:{WHITE}Welkom bij deze nieuwe AI, in aanbouw. Je kan problemen verwachten. Gebeurt dat, maak een screenshot en plaats die op het forum. Veel plezier!
 TEMP_AI_ACTIVATED						:{WHITE}Waarschuwing: deze nieuwe AI is nog steeds alpha! Momenteel werken alleen vrachtwagens en bussen!
@@ -1168,6 +1225,11 @@ STR_NETWORK_6_PLAYERS						:6 spelers
 STR_NETWORK_7_PLAYERS						:7 spelers
 STR_NETWORK_8_PLAYERS						:8 spelers
 STR_NETWORK_START_GAME						:{BLACK}Start spel
+STR_NETWORK_START_GAME_TIP					:{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
+STR_NETWORK_LOAD_GAME						:{BLACK}Laad spel
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Hervat een eerder opgeslagen netwerkspel (ben er zeker van dat je verbind als de juiste speler)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Laad Scenario
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start een nieuw netwerkspel van een scenario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer lobby
 
@@ -1181,6 +1243,13 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nieuw bedrijf
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open een nieuw bedrijf
 STR_NETWORK_READY						:{BLACK}Klaar
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Kon geen enkel netwerkspel vinden
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} De server beantwoorde het verzoek niet
+STR_NETWORK_ERR_DESYNC						:{WHITE} Netwerkspel synchronisatie mislukt.
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Netwerkspel verbinding kwijt.
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Kon server-opgeslagen spel niet laden
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Verbinding #{NUMU16} duurde te lang.
 
 ############ end network gui strings
 
@@ -1362,6 +1431,7 @@ STR_2050_FUND_THE_RECONSTRUCTION				:{WHITE}{STRING}{}{YELLOW} Betaal een vernie
 STR_2051_BUILD_A_STATUE_IN_HONOR				:{WHITE}{STRING}{}{YELLOW} Bouw een standbeeld ter ere van jouw bedrijf.{} Kosten: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciele gebouwen in de stad.{}  Kosten: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze stad. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
 STR_2054_CAN_T_DO_THIS						:{WHITE}Kan dit niet doen...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056							:{TINYFONT}{WHITE}{TOWN}
@@ -1410,6 +1480,9 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Verwijder eerst vliegveld
 
 STR_3030_RENAME_STATION_LOADING					:Hernoem station/laadgebied
 STR_3031_CAN_T_RENAME_STATION					:{WHITE}Kan station niet hernoemen...
+STR_3032_RATINGS						:{BLACK}Rangen
+STR_3033_ACCEPTS						:{BLACK}Accepteerd
+STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Lokale rang van de vervoerdienst:
 
 ############ range for rating starts
 STR_3035_APPALLING						:Teleurstellend
@@ -1423,6 +1496,8 @@ STR_303C_OUTSTANDING						:Uitstekend
 ############ range for rating ends
 
 STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} accepteerd niet langer {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} accepteerd niet langer {STRING} of {STRING}
 STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Richting van bushalte
 STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Richting van vrachtwagen laadgebied
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Te dicht bij een andere bushalte

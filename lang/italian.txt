@@ -368,7 +368,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR					:Profitto dell'anno scorso
 STR_SORT_BY_PROFIT_THIS_YEAR					:Profitto di quest'anno
 STR_SORT_BY_AGE							:Età
 STR_SORT_BY_RELIABILITY						:Affidabilità
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capacità totale per tipo di carico
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Tot. capacità per tipo di carico
 STR_SORT_BY_MAX_SPEED						:Velocità massima
 
 ############ range for months starts
@@ -1005,7 +1005,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Rinnova solo se disponibile il fo
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Durata visualizzazione messaggio di errore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Copertura massima di una stazione: {ORANGE}{STRING} {RED}Attenzione: Valori elevati rallentano il gioco
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Manutenzione elicotteri direttamente all’eliporto: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
@@ -1065,7 +1065,7 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Gioca come giocatore: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Bulldozer magico (rimuove industrie e altri): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH						:{LTBLUE}I jet non si schiantano troppo frequentemente nei piccolo aeroporti: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}I jet non si schiantano troppo di frequente nei piccoli aeroporti: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Cambia paesaggio: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Cambia data: {ORANGE} {DATE_SHORT}
 
@@ -1171,7 +1171,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Attenzione: la nuova IA è ancora in alpha! Solo i
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Interfaccia di rete attualmente non completamente funzionante!{}Gli elementi non funzionanti sono stati disabilitati.
+TEMP_STRING_NO_NETWORK						:{WHITE}Interfaccia di rete attualmente in sviluppo!{}Gli elementi non funzionanti sono stati disabilitati.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
@@ -1774,7 +1774,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Quantità mare/laghi: {ORANGE}{STRING
 STR_6813_ECONOMY						:{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Inversione treni: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Disastri: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL						:{LTBLUE}Attitudine del consiglio cittadino verso i cambiamenti nel territorio: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Atteggiamento delle città verso i cambiamenti nel territorio: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE							:Nessuno
