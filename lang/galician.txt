@@ -347,6 +347,9 @@ STR_015E_QUIT_GAME						:Saír ó menu principal
 STR_015F_QUIT							:Saír do programa
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}¿Está seguro de que desexa saír da partida?
 STR_0161_QUIT_GAME						:{WHITE}Saír ó menú principal
+STR_SORT_TIP					:{BLACK}Selecciona o modo de ordenación
+STR_SORT_BY_NAME							:{BLACK}Nome
+STR_SORT_BY_DATE							:{BLACK}Data
 
 ############ range for months starts
 STR_0162_JAN							:Xan
@@ -482,8 +485,8 @@ STR_01D5_ALL							:{TINYFONT}Todo
 STR_01D6_OLD_STYLE						:{TINYFONT}Vello Estilo
 STR_01D7_NEW_STYLE						:{TINYFONT}Novo Estilo
 STR_01D8_EZY_STREET						:{TINYFONT}Ezy Street
-STR_01D9_CUSTOM_1						:{TINYFONT}Personal 1
-STR_01DA_CUSTOM_2						:{TINYFONT}Personal 2
+STR_01D9_CUSTOM_1						:{TINYFONT}Persoal 1
+STR_01DA_CUSTOM_2						:{TINYFONT}Persoal 2
 STR_01DB_MUSIC_VOLUME					:{BLACK}{TINYFONT}Volume da Música
 STR_01DC_EFFECTS_VOLUME					:{BLACK}{TINYFONT}Volume dos Efectos de Son
 STR_01DD_MIN_MAX						:{BLACK}{TINYFONT}MÍN  '  '  ' '  '  '  MÁX
@@ -511,11 +514,11 @@ STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Programa actual de pistas musicais
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM		:{BLACK}Selecciona-lo programa 'Tódalas pistas'
 STR_01F4_SELECT_OLD_STYLE_MUSIC			:{BLACK}Selecciona-lo programa 'Música vello estilo'
 STR_01F5_SELECT_NEW_STYLE_MUSIC			:{BLACK}Selecciona-lo programa 'Música novo estilo'
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED	:{BLACK}Selecciona-lo programa 'Personal 1'
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED	:{BLACK}Selecciona-lo programa 'Personal 2'
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1	:{BLACK}Limpa-lo programa actual(Só Personalizado 1 e Personalizado 2)
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED	:{BLACK}Selecciona-lo programa 'Persoal 1'
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED	:{BLACK}Selecciona-lo programa 'Persoal 2'
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1	:{BLACK}Limpa-lo programa actual(Só Persoalizado 1 e Persoalizado 2)
 STR_01F9_SAVE_MUSIC_SETTINGS_TO			:{BLACK}Graba-la configuración de música no disco
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO		:{BLACK}Pincha nunha pista de música para engadi-la ó programa actual(Sólo Personal 1 e Personal 2)
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO		:{BLACK}Pincha nunha pista de música para engadi-la ó programa actual(Sólo Persoal 1 e Persoal 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE			:{BLACK}Activar/desactivar programa aleatorio
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION		:{BLACK}Mostra-la pista musical na fiestra de selección
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER		:{BLACK}Pincha no servicio para centra-la vista na industria/cidade
@@ -550,7 +553,7 @@ STR_0218_MOGUL							:Mogul
 STR_0219_TYCOON_OF_THE_CENTURY			:Magnate da Centuria
 STR_021A								:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS				:¡{BIGFONT}{STRING}{STRING} consegue o status de '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS				:¡{BIGFONT}{STRING}{STRING} de {STRING} consigue o status de '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS				:¡{BIGFONT}{STRING}{STRING} de {STRING} consegue o status de '{STRING}'!
 STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
@@ -698,10 +701,10 @@ STR_02BB_TOWN_DIRECTORY					:Directorio de cidades
 STR_02BC_VEHICLE_DESIGN_NAMES			:{BLACK}Nomes dos deseños dos vehículos
 STR_02BD								:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Defecto
-STR_02BF_CUSTOM							:Personalizado
-STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK		:{BLACK}Graba-los nomes personalizados no disco
+STR_02BF_CUSTOM							:Persoalizado
+STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK		:{BLACK}Graba-los nomes persoalizados no disco
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION	:{BLACK}Selección de nomes dos deseños dos vehículos
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE		:{BLACK}Graba-los nomes dos deseños dos vehículos personalizados no disco
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE		:{BLACK}Graba-los nomes dos deseños dos vehículos persoalizados no disco
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS					:Opcións da Partida
@@ -767,12 +770,12 @@ STR_02FA_EVERY_12_MONTHS				:Cada 12 meses
 STR_02FB_START_A_NEW_GAME				:{BLACK}Comezar nova partida
 STR_02FC_LOAD_A_SAVED_GAME_FROM			:{BLACK}Cargar unha partida do disco
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS	:{BLACK}Ver demostracións/tutoriais
-STR_02FE_CREATE_A_CUSTOMIZED_GAME		:{BLACK}Crear un mundo/escenario personalizado
+STR_02FE_CREATE_A_CUSTOMIZED_GAME		:{BLACK}Crear un mundo/escenario persoalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME		:{BLACK}Partida para un Xogador
 STR_0300_SELECT_TWO_PLAYER_GAME			:{BLACK}Partida para dous xogadores
 STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Amosa-las opcións do xogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Amosa-las opcións de dificultade
-STR_0303_START_A_NEW_GAME_USING			:{BLACK}Comezar unha nova partida, usando un escenario personalizado
+STR_0303_START_A_NEW_GAME_USING			:{BLACK}Comezar unha nova partida, usando un escenario persoalizado
 STR_0304_QUIT							:{BLACK}Saír
 STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Deixar 'OpenTTD', e saír
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Ver demostración/tutorial
@@ -898,6 +901,24 @@ STR_END_OF_SHARED_ORDERS				:{SETX 10}- - Fin das ordes compartidas - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Perdiches o tren {COMMA16}.
 STR_TRAIN_IS_UNPROFITABLE				:{WHITE}O beneficio para o tren {COMMA16} o ano pasado foi de {CURRENCY}
+STR_EURO_INTRODUCE					:{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}¡O Euro introdúcese como a única moeda para as transaccións diarias no teu país!
+
+STR_TRAIN_AUTORENEW_FAILED				:{WHITE}Autorenovación fallida para o tren {COMMA16} (límite de diñeiro)
+STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}O tren {COMMA16} ten moi poucas ordes no seu programa
+STR_TRAIN_HAS_VOID_ORDER						:{WHITE}O tren {COMMA16} ten unha orde inválida
+STR_TRAIN_HAS_DUPLICATE_ENTRY				:{WHITE}O tren {COMMA16} ten ordes duplicadas
+STR_AIRCRAFT_AUTORENEW_FAILED				:{WHITE}Autorenovación fallida para o avión {COMMA16} (límite de diñeiro)
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS			:{WHITE}O avión {COMMA16} ten moi poucas ordes no seu programa
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}O avión {COMMA16} ten unha orde inválida
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY		:{WHITE}O avión {COMMA16} ten ordes duplicadas
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Autorenovación fallida para o vehículo de estrada {COMMA16} (límite de diñeiro)
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS	:{WHITE}O vehículo de estrada {COMMA16} ten moi poucas ordes no seu programa
+STR_ROADVEHICLE_HAS_VOID_ORDER			:{WHITE}O vehículo de estrada {COMMA16} ten unha orde inválida
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY	:{WHITE}O vehículo de estrada {COMMA16} ten ordes duplicadas
+STR_SHIP_AUTORENEW_FAILED				:{WHITE}Autorenovación fallida para o barco {COMMA16} (límite de diñeiro)
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}O barco {COMMA16} ten moi poucas ordes no seu programa
+STR_SHIP_HAS_VOID_ORDER							:{WHITE}O barco {COMMA16} ten unha orde inválida
+STR_SHIP_HAS_DUPLICATE_ENTRY				:{WHITE}O barco {COMMA16} ten ordes duplicadas
 
 STR_CONFIG_PATCHES						:{BLACK}Configuración dos Parches
 STR_CONFIG_PATCHES_TIP					:{BLACK}Configura-los parches
@@ -913,7 +934,6 @@ STR_CONFIG_PATCHES_REALISTICACCEL		:{LTBLUE}Habilita-la aceleración realista nos
 STR_CONFIG_PATCHES_JOINSTATIONS			:{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY			:{LTBLUE}Saír se calquera carga está chea,cando 'Carga chea': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION				:{LTBLUE}Inflación: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE		:{LTBLUE}Desactiva-lo servicio automático nos trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Descarga-la carga só cando haxa demanda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Permiti-la construcción de pontes moi longas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Permiti-las ordes de ir ó depósito: {ORANGE}{STRING}
@@ -933,10 +953,13 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Novo algoritmo para atopa-las rut
 STR_CONFIG_PATCHES_BUILD_IN_PAUSE		:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un tren está perdido se non progresa durante:: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED		:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Advertir se os ingresos dun tren son negativos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES	:{LTBLUE}Os vehículos nunca caducan: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE			:{LTBLUE}Autorenova-los vehículos cando envellezan
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE			:{LTBLUE}Autorenova-los vehículos cando envellezan
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS			:{LTBLUE}Autorenovar {ORANGE}{STRING}{LTBLUE} meses antes/despois da idade máxima
+STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Diñeiro mínimo necesario para a autorenovación: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Duración das mensaxes de error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Máximo tamaño da estación: {ORANGE}{STRING}
@@ -952,10 +975,14 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH	:{LTBLUE}Deshabilita-los vehículos de estra
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT	:{LTBLUE}Deshabilita-los avións para o ordenador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS		:{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS		:{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días
-STR_CONFIG_PATCHES_SERVINT_ROADVEH		:{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}{STRING} días
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT		:{LTBLUE}Intervalo de servicio para os avións: {ORANGE}{STRING} días
-STR_CONFIG_PATCHES_SERVINT_SHIPS		:{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_TRAINS							:{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED		:{LTBLUE}Intervalo de servicio para os trens: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_SERVINT_ROADVEH						:{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED		:{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT						:{LTBLUE}Intervalo de servicio para os avións: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED	:{LTBLUE}Intervalo de servicio para os avións: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}deshabilitado
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Data de aparición das noticias en color: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE		:{LTBLUE}Data de comezo: {ORANGE}{STRING}
@@ -966,9 +993,11 @@ STR_CONFIG_PATCHES_CONSTRUCTION			:{BLACK}Construcción
 STR_CONFIG_PATCHES_VEHICLES				:{BLACK}Vehículos
 STR_CONFIG_PATCHES_STATIONS				:{BLACK}Estacións
 STR_CONFIG_PATCHES_ECONOMY				:{BLACK}Economía
+STR_CONFIG_PATCHES_AI					:{BLACK}Competidores
 
 STR_CONFIG_PATCHES_DISABLED				:deshabilitado
 STR_CONFIG_PATCHES_INT32				:{INT32}
+STR_CONFIG_PATCHES_CURRENCY				:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Cambia-lo valor
 
@@ -981,10 +1010,7 @@ STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Xogar coma xogador: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Escavadora máxica(Elimina industrias, non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 
-
-STR_TOWNDIR_NAME						:{BLACK}Nome
-STR_TOWNDIR_POPULATION					:{BLACK}Poboación
-STR_TOWNDIR_SORT_TIP					:{BLACK}Selecciona o modo de ordenación
+STR_SORT_BY_POPULATION					:{BLACK}Poboación
 
 STR_HEADING_FOR_CHECKPOINT				:{LTBLUE}Diríxese a {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL			:{LTBLUE}Diríxese a {CHECKPOINT}, {VELOCITY}
@@ -1068,14 +1094,14 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP		:{BLACK}Construír Xerador de Burbullas
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP			:{BLACK}Fundar Canteira de Toffee
 STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Construír Mina de Azucre
 
-STR_INDUSTRYDIR_NAME					:{BLACK}Nome
-STR_INDUSTRYDIR_PRODUCTION				:{BLACK}Producción
-STR_INDUSTRYDIR_TYPE					:{BLACK}Tipo
-STR_INDUSTRYDIR_TRANSPORTED				:{BLACK}Transportado
+STR_SORT_BY_PRODUCTION				:{BLACK}Producción
+STR_SORT_BY_TYPE					:{BLACK}Tipo
+STR_SORT_BY_TRANSPORTED				:{BLACK}Transportado
 STR_INDUSTRYDIR_CAPTION					:{WHITE}Industrias
 STR_INDUSTRYDIR_ITEM					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO				:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD				:{ORANGE}{TOWN}: {STRING}
+
 STR_INDUSTRY_TOO_CLOSE				:{WHITE}...demasiado cerca doutra industria
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY			:{BLACK}Reaxusta-lo tren para un tipo de carga diferente
@@ -1540,12 +1566,12 @@ STR_4834_LACK_OF_NEARBY_TREES_CAUSES	:{BLACK}{BIGFONT}¡{TOWN}: A falta de árbore
 STR_4835_INCREASES_PRODUCTION			:{BLACK}{BIGFONT}¡{TOWN}: {STRING} incrementa a producción!
 STR_4836_NEW_COAL_SEAM_FOUND_AT			:{BLACK}{BIGFONT}¡{TOWN}: Nova veta de carbón atopada na {STRING}!{}¡Agárdase que a producción dóbrese!
 STR_4837_NEW_OIL_RESERVES_FOUND			:{BLACK}{BIGFONT}¡{TOWN}: Novas reservas de petróleo atopadas na {STRING}!{}¡Agárdase que a producción dóbrese!
-STR_4838_IMPROVED_FARMING_METHODS		:{BLACK}{BIGFONT}¡{TOWN}: Agárdase que os novos métodos de cultivo doblen a producción na {STRING}!
+STR_4838_IMPROVED_FARMING_METHODS		:{BLACK}{BIGFONT}¡{TOWN}: Agárdase que os novos métodos de cultivo dobren a producción na {STRING}!
 STR_4839_PRODUCTION_DOWN_BY_50			:{BLACK}{BIGFONT}¡{TOWN}: A producción de {STRING} redúcese nun 50%
 STR_483A_INSECT_INFESTATION_CAUSES		:{BLACK}{BIGFONT}¡{TOWN}: Unha infestación de insectos causa desastre na {STRING}!{}A producción redúcese nun 50%
 STR_483B_CAN_ONLY_BE_POSITIONED			:{WHITE}...só se pode emprazar cerca dos bordes do mapa
-STR_INDUSTRY_PROD_GOUP					:{BLACK}{BIGFONT}A producción de {STRING} en {TOWN} {STRING} sube un {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN				:{BLACK}{BIGFONT}A producción de {STRING} en {TOWN} {STRING} baixa un {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP					:{BLACK}{BIGFONT}¡A producción de {STRING} en {TOWN} {STRING} sube un {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN				:{BLACK}{BIGFONT}¡A producción de {STRING} en {TOWN} {STRING} baixa un {COMMA16}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL				:{WHITE}Hai un tren no túnel
@@ -1657,7 +1683,7 @@ STR_OPTIONS_SAVE_CHANGES				:{BLACK}Grabar
 STR_6801_EASY							:{BLACK}Fácil
 STR_6802_MEDIUM							:{BLACK}Medio
 STR_6803_HARD							:{BLACK}Difícil
-STR_6804_CUSTOM							:{BLACK}Personal
+STR_6804_CUSTOM							:{BLACK}Persoal
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -1724,8 +1750,7 @@ STR_683B_HOSTILE			:Hostil
 ##id 0x7000
 STR_7000								:
 STR_7001								:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER_1						: (Xogador 1)
-STR_7003_PLAYER_2						: (Xogador 2)
+STR_7002_PLAYER						: (Xogador {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nova Cara
 STR_7005_COLOR_SCHEME					:{BLACK}Esquema de Cor
 STR_7006_COLOR_SCHEME					:{GOLD}Esquema de Cor:
@@ -1763,8 +1788,8 @@ STR_7025_OPERATING_PROFIT_GRAPH			:{WHITE}Gráfica de Beneficios Operativos
 STR_7026_BANK_BALANCE					:{WHITE}Balance do Banco
 STR_7027_LOAN							:{WHITE}Préstamo
 STR_7028								:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}Solicitar {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:{BLACK}Devolver {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW							:{BLACK}Solicitar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Devolver {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN			:{WHITE}...O tamaño máximo do préstamo permitido e de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Non se pode solicitar máis diñeiro...
 STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...non queda préstamo a pagar
@@ -2041,13 +2066,13 @@ STR_80B9_WIZZOWOW_TOFFEE_TRUCK			:Camión de Tofee Wizzowow
 STR_80BA_MIGHTYMOVER_TOY_VAN			:Furgón de Xoguetes MightyMover
 STR_80BB_POWERNAUGHT_TOY_VAN			:Furgón de Xoguetes Powernaught
 STR_80BC_WIZZOWOW_TOY_VAN				:Furgón de Xoguetes Wizzowow
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK		:Camión de Caramelos MightyMover
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK		:Cam. de Caramelos MightyMover
 STR_80BE_POWERNAUGHT_CANDY_TRUCK		:Camión de Caramelos Powernaught
 STR_80BF_WIZZOWOW_CANDY_TRUCK			:Camión de Caramelos Wizzowow
 STR_80C0_MIGHTYMOVER_BATTERY_TRUCK		:Camión de Baterías MightyMover
 STR_80C1_POWERNAUGHT_BATTERY_TRUCK		:Camión de Baterías Powernaught
 STR_80C2_WIZZOWOW_BATTERY_TRUCK			:Camión de Baterías Wizzowow
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK		:Cam. de Bebidas Gaseosas MightyMover
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK		:Cam. Beb. Gaseosas MightyMover
 STR_80C4_POWERNAUGHT_FIZZY_DRINK		:Cam. de Bebidas Gaseosas Powernaught
 STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK		:Cam. de Bebidas Gaseosas Wizzowow
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK		:Camión de Plástico MightyMover
@@ -2061,11 +2086,11 @@ STR_80CD_CS_INC_OIL_TANKER				:Petroleíro CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY			:Barca de Pasaxeiros MPS
 STR_80CF_FFP_PASSENGER_FERRY			:Barca de Pasaxeiros FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT		:Aerodeslizador Bakewell 300
-STR_80D1_CHUGGER_CHUG_PASSENGER			:Barca de Pasaxeiros Chugger-Chug
+STR_80D1_CHUGGER_CHUG_PASSENGER			:Barca Pasaxeiros Chugger-Chug
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Barca de Pasaxeiros Shivershake
 STR_80D3_YATE_CARGO_SHIP				:Barco de Mercadorías Yate
 STR_80D4_BAKEWELL_CARGO_SHIP			:Barco de Mercadorías Bakewell
-STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Barco de Mercadorías Mightymover
+STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Barco Mercadorías Mightymover
 STR_80D6_POWERNAUT_CARGO_SHIP			:Barco de Mercadorías Powernaut
 STR_80D7_SAMPSON_U52					:Sampson U52
 STR_80D8_COLEMAN_COUNT					:Coleman Count
@@ -2395,7 +2420,7 @@ STR_HEADING_FOR_HANGAR_VEL				:{LTBLUE}Diríxese ó hangar de {STATION}, {VELOCITY
 STR_A014_AIRCRAFT_IS_WAITING_IN			:{WHITE}O avión {COMMA16} está a esperar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY			:{WHITE}Avión en camiño
 STR_A016_CAN_T_STOP_START_AIRCRAFT		:{WHITE}Non se pode parar/arrincar o avión...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT			:{WHITE}O vaión esta voando
+STR_A017_AIRCRAFT_IS_IN_FLIGHT			:{WHITE}O avión esta voando
 STR_A018_MUST_BUILD_AIRPORT_FIRST		:{WHITE}Debes construír un aeroporto primeiro
 STR_A019_CAPACITY						:{BLACK}Capacidade: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY						:{BLACK}Capacidade: {LTBLUE}{STRING}
