@@ -647,7 +647,7 @@ static void DrawShipDepotWindow(Window *w)
 
 	/* locate the depot struct */
 	for (d = _depots; d->xy != (TileIndex)tile; d++) {
-		assert(d < endof(_depots);
+		assert(d < endof(_depots));
 	}
 
 	SetDParam(0, d->town_index);
