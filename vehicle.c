@@ -358,7 +358,7 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 {
 	Vehicle *u;
 
-	FOR_ALL_VEHICLES(u) if (u->next == v) return u;
+	FOR_ALL_VEHICLES(u) if (u->type == VEH_Train && u->next == v) return u;
 
 	return NULL;
 }
