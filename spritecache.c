@@ -82,7 +82,7 @@ static const uint16 * const _slopes_spriteindexes[] = {
 	_slopes_spriteindexes_3,
 };
 
-static void CompactSpriteCache();
+static void CompactSpriteCache(void);
 
 static void ReadSpriteHeaderSkipData(int num, int load_index)
 {
@@ -409,7 +409,7 @@ static bool HandleCachedSpriteHeaders(const char *filename, bool read)
 #define S_FREE_MASK 1
 #define S_HDRSIZE sizeof(uint32)
 
-static uint32 GetSpriteCacheUsage()
+static uint32 GetSpriteCacheUsage(void)
 {
 	byte *s = _spritecache_ptr;
 	size_t cur_size, tot_size = 0;
@@ -425,7 +425,7 @@ static uint32 GetSpriteCacheUsage()
 }
 
 
-void IncreaseSpriteLRU()
+void IncreaseSpriteLRU(void)
 {
 	int i;
 
@@ -461,7 +461,7 @@ void IncreaseSpriteLRU()
 
 // Called when holes in the sprite cache should be removed.
 // That is accomplished by moving the cached data.
-static void CompactSpriteCache()
+static void CompactSpriteCache(void)
 {
 	byte *s, *t;
 	size_t size, sizeb, cur_size;
@@ -519,7 +519,7 @@ static void CompactSpriteCache()
 	}
 }
 
-static void DeleteEntryFromSpriteCache()
+static void DeleteEntryFromSpriteCache(void)
 {
 	int i;
 	int best = -1;
@@ -814,7 +814,7 @@ static bool FileMD5(const MD5File file, bool warn)
  * If neither are found, Windows palette is assumed.
  *
  * (Note: Also checks sample.cat for corruption) */
-void CheckExternalFiles()
+void CheckExternalFiles(void)
 {
 	int i;
 	int dos=0, win=0; // count of files from this version
@@ -845,7 +845,7 @@ void CheckExternalFiles()
 	}
 }
 
-static void LoadSpriteTables()
+static void LoadSpriteTables(void)
 {
 	int i,j;
 	FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
@@ -957,7 +957,8 @@ void GfxInitSpriteMem(byte *ptr, uint32 size)
 }
 
 
-void GfxLoadSprites() {
+void GfxLoadSprites(void)
+{
 	static byte *_sprite_mem;
 
 	// Need to reload the sprites only if the landscape changed

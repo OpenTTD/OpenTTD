@@ -104,7 +104,7 @@ struct IniFile {
 };
 
 // allocate an inifile object
-static IniFile *ini_alloc()
+static IniFile *ini_alloc(void)
 {
 	IniFile *ini;
 	MemoryPool *pool;
@@ -981,7 +981,7 @@ static void SaveList(IniFile *ini, const char *grpname, char **list, int len)
 	}
 }
 
-void LoadFromConfig()
+void LoadFromConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, load_setting_desc);
@@ -991,7 +991,7 @@ void LoadFromConfig()
 	ini_free(ini);
 }
 
-void SaveToConfig()
+void SaveToConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, save_setting_desc);

@@ -29,8 +29,8 @@
 static const uint MinDate = 0;     // 1920-01-01 (MAX_YEAR_BEGIN_REAL)
 static const uint MaxDate = 29220; // 2000-01-01
 
-extern void DoTestSave();
-extern void DoTestLoad();
+extern void DoTestSave(void);
+extern void DoTestLoad(void);
 
 extern bool disable_computer;
 
@@ -41,14 +41,15 @@ static byte _terraform_size = 1;
 static byte _last_built_railtype;
 extern void GenerateWorld(int mode);
 
-extern void GenerateIndustries();
-extern void GenerateTowns();
+extern void GenerateIndustries(void);
+extern void GenerateTowns(void);
 
-extern uint GetCurrentCurrencyRate();
+extern uint GetCurrentCurrencyRate(void);
 
 extern void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
 
-void HandleOnEditTextCancel() {
+void HandleOnEditTextCancel(void)
+{
 	switch(_rename_what) {
 #ifdef ENABLE_NETWORK
 	case 4:
@@ -364,14 +365,14 @@ void ShowNetworkGiveMoneyWindow(byte player)
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0);
 }
 
-void ShowNetworkNeedGamePassword()
+void ShowNetworkNeedGamePassword(void)
 {
 	_rename_id = NETWORK_GAME_PASSWORD;
 	_rename_what = 4;
 	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0);
 }
 
-void ShowNetworkNeedCompanyPassword()
+void ShowNetworkNeedCompanyPassword(void)
 {
 	_rename_id = NETWORK_COMPANY_PASSWORD;
 	_rename_what = 4;
@@ -404,7 +405,7 @@ void ShowRenameWaypointWindow(Waypoint *cp)
 	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
 }
 
-static void SelectSignTool()
+static void SelectSignTool(void)
 {
 	if (_cursor.sprite == 0x2D2)
 		ResetObjectToPlace();
@@ -918,7 +919,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 	return true;
 }
 
-static void MaxZoomIn()
+static void MaxZoomIn(void)
 {
 	while (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0) ) ) {}
 }
@@ -1074,7 +1075,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-static void ResetLandscape()
+static void ResetLandscape(void)
 {
 	_random_seeds[0][0] = InteractiveRandom();
 	_random_seeds[0][1] = InteractiveRandom();
@@ -1585,7 +1586,8 @@ static const Widget _scenedit_industry_candy_widgets[] = {
 
 int _industry_type_to_place;
 
-static bool AnyTownExists() {
+static bool AnyTownExists(void)
+{
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		if (t->xy)
@@ -2372,10 +2374,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 }
 
 
-void ShowSelectGameWindow();
+void ShowSelectGameWindow(void);
 extern void ShowJoinStatusWindowAfterJoin(void);
 
-void SetupColorsAndInitialWindow()
+void SetupColorsAndInitialWindow(void)
 {
 	int i;
 	byte *b;
@@ -2449,7 +2451,7 @@ void ShowVitalWindows(void)
 	WP(w,def_d).data_1 = -1280;
 }
 
-void GameSizeChanged()
+void GameSizeChanged(void)
 {
 	RelocateAllWindows(_screen.width, _screen.height);
 	ScreenSizeChanged();

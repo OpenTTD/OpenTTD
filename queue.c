@@ -212,7 +212,8 @@ void init_InsSort(Queue* q) {
 	q->freeq = false;
 }
 
-Queue* new_InsSort() {
+Queue* new_InsSort(void)
+{
 	Queue* q = malloc(sizeof(Queue));
 	init_InsSort(q);
 	q->freeq = true;

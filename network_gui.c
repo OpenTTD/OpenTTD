@@ -425,7 +425,7 @@ static const WindowDesc _network_game_window_desc = {
 	NetworkGameWindowWndProc,
 };
 
-void ShowNetworkGameWindow()
+void ShowNetworkGameWindow(void)
 {
 	uint i;
 	Window *w;
@@ -1330,7 +1330,7 @@ static const WindowDesc _network_join_status_window_desc = {
 	NetworkJoinStatusWindowWndProc,
 };
 
-void ShowJoinStatusWindow()
+void ShowJoinStatusWindow(void)
 {
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;

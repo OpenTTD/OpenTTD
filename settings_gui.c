@@ -17,7 +17,7 @@ static uint32 _difficulty_click_b;
 static byte _difficulty_timeout;
 
 extern const StringID _currency_string_list[];
-extern uint GetMaskOfAllowedCurrencies();
+extern uint GetMaskOfAllowedCurrencies(void);
 
 static const StringID _distances_dropdown[] = {
 	STR_0139_IMPERIAL_MILES,
@@ -55,7 +55,7 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 	return buf;
 }
 
-static int GetCurRes()
+static int GetCurRes(void)
 {
 	int i;
 	for(i = 0; i != _num_resolutions; i++)
@@ -269,7 +269,7 @@ static const WindowDesc _game_options_desc = {
 };
 
 
-void ShowGameOptions()
+void ShowGameOptions(void)
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_game_options_desc);
@@ -328,7 +328,7 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 	}
 }
 
-extern void StartupEconomy();
+extern void StartupEconomy(void);
 
 enum {
 	GAMEDIFF_WND_TOP_OFFSET = 45,
@@ -506,7 +506,7 @@ static const WindowDesc _game_difficulty_desc = {
 	GameDifficultyWndProc
 };
 
-void ShowGameDifficulty()
+void ShowGameDifficulty(void)
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	/*	copy current settings to temporary holding place
@@ -715,7 +715,7 @@ static const PatchPage _patches_page[] = {
 	{_patches_ai,						lengthof(_patches_ai) },
 };
 
-extern uint GetCurrentCurrencyRate();
+extern uint GetCurrentCurrencyRate(void);
 
 static int32 ReadPE(const PatchEntry*pe)
 {
@@ -1154,7 +1154,7 @@ static const WindowDesc _patches_selection_desc = {
 	PatchesSelectionWndProc,
 };
 
-void ShowPatchesSelection()
+void ShowPatchesSelection(void)
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_patches_selection_desc);
@@ -1281,7 +1281,7 @@ static const WindowDesc _newgrf_desc = {
 	NewgrfWndProc,
 };
 
-void ShowNewgrf()
+void ShowNewgrf(void)
 {
 	Window *w;
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
@@ -1509,7 +1509,7 @@ static const WindowDesc _cust_currency_desc = {
 	CustCurrencyWndProc,
 };
 
-void ShowCustCurrency()
+void ShowCustCurrency(void)
 {
 	Window *w;
 

@@ -73,7 +73,7 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	return strcmp(buf1, _bufcache);	// sort by name
 }
 
-static void GlobalSortStationList()
+static void GlobalSortStationList(void)
 {
 	const Station *st;
 	uint32 n = 0;

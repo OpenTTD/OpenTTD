@@ -140,7 +140,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 }
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
-extern void BuildFileList();
+extern void BuildFileList(void);
 extern void SetFiosType(const byte fiostype);
 
 /* Load a file-number from current dir */
@@ -1167,7 +1167,7 @@ DEF_CONSOLE_CMD(ConSet) {
 /*  debug commands and variables */
 /* ****************************************** */
 
-void IConsoleDebugLibRegister()
+void IConsoleDebugLibRegister(void)
 {
 	// debugging variables and functions
 	extern bool _stdlib_con_developer; /* XXX extern in .c */

@@ -87,7 +87,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	_textmessage_dirty = true;
 }
 
-void InitTextMessage()
+void InitTextMessage(void)
 {
 	int i;
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
@@ -98,7 +98,7 @@ void InitTextMessage()
 }
 
 // Hide the textbox
-void UndrawTextMessage()
+void UndrawTextMessage(void)
 {
 	if (_textmessage_visible) {
 		// Sometimes we also need to hide the cursor
@@ -135,7 +135,7 @@ void UndrawTextMessage()
 }
 
 // Check if a message is expired every day
-void TextMessageDailyLoop()
+void TextMessageDailyLoop(void)
 {
 	int i = 0;
 	while (i < MAX_CHAT_MESSAGES) {
@@ -151,7 +151,7 @@ void TextMessageDailyLoop()
 }
 
 // Draw the textmessage-box
-void DrawTextMessage()
+void DrawTextMessage(void)
 {
 	int i, j;
 	bool has_message;
@@ -250,7 +250,7 @@ static void MoveTextEffect(TextEffect *te)
 	MarkTextEffectAreaDirty(te);
 }
 
-void MoveAllTextEffects()
+void MoveAllTextEffects(void)
 {
 	TextEffect *te;
 
@@ -260,7 +260,7 @@ void MoveAllTextEffects()
 	}
 }
 
-void InitTextEffects()
+void InitTextEffects(void)
 {
 	TextEffect *te;
 
@@ -334,7 +334,7 @@ bool AddAnimatedTile(uint tile)
 	return false;
 }
 
-void AnimateAnimatedTiles()
+void AnimateAnimatedTiles(void)
 {
 	TileIndex *ti;
 	uint tile;
@@ -344,12 +344,12 @@ void AnimateAnimatedTiles()
 	}
 }
 
-void InitializeAnimatedTiles()
+void InitializeAnimatedTiles(void)
 {
 	memset(_animated_tile_list, 0, sizeof(_animated_tile_list));
 }
 
-static void SaveLoad_ANIT()
+static void SaveLoad_ANIT(void)
 {
 	SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_UINT16);
 }

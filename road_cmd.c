@@ -1142,7 +1142,7 @@ static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
 	}
 }
 
-void InitializeRoad()
+void InitializeRoad(void)
 {
 	_last_built_road_depot_tile = 0;
 }

@@ -11,8 +11,8 @@
 #include "network_server.h"
 #include "engine.h"
 
-extern void StartupEconomy();
-extern void InitNewsItemStructs();
+extern void StartupEconomy(void);
+extern void InitNewsItemStructs(void);
 
 byte _name_array[512][32];
 
@@ -31,7 +31,7 @@ static inline uint32 ROR(uint32 x, int n)
 
 uint32 DoRandom(uint line, char *file)
 #else
-uint32 Random()
+uint32 Random(void)
 #endif
 {
 #ifdef RANDOM_DEBUG
@@ -72,7 +72,7 @@ uint RandomRange(uint max)
 }
 #endif
 
-uint32 InteractiveRandom()
+uint32 InteractiveRandom(void)
 {
 	uint32 t = _random_seeds[1][1];
 	uint32 s = _random_seeds[1][0];
@@ -85,7 +85,7 @@ uint InteractiveRandomRange(uint max)
 	return (uint16)InteractiveRandom() * max >> 16;
 }
 
-void InitPlayerRandoms()
+void InitPlayerRandoms(void)
 {
 	int i;
 	for (i=0; i<MAX_PLAYERS; i++) {
@@ -150,40 +150,40 @@ void CSleep(int milliseconds)
 	#endif
 }
 
-void InitializeVehicles();
-void InitializeOrders();
-void InitializeClearLand();
-void InitializeRail();
-void InitializeRailGui();
-void InitializeRoad();
-void InitializeRoadGui();
-void InitializeAirportGui();
-void InitializeDock();
-void InitializeDockGui();
-void InitializeIndustries();
-void InitializeLandscape();
-void InitializeTowns();
-void InitializeTrees();
-void InitializeSigns();
-void InitializeStations();
-static void InitializeNameMgr();
-void InitializePlayers();
-static void InitializeCheats();
+void InitializeVehicles(void);
+void InitializeOrders(void);
+void InitializeClearLand(void);
+void InitializeRail(void);
+void InitializeRailGui(void);
+void InitializeRoad(void);
+void InitializeRoadGui(void);
+void InitializeAirportGui(void);
+void InitializeDock(void);
+void InitializeDockGui(void);
+void InitializeIndustries(void);
+void InitializeLandscape(void);
+void InitializeTowns(void);
+void InitializeTrees(void);
+void InitializeSigns(void);
+void InitializeStations(void);
+static void InitializeNameMgr(void);
+void InitializePlayers(void);
+static void InitializeCheats(void);
 
-void GenerateLandscape();
-void GenerateClearTile();
+void GenerateLandscape(void);
+void GenerateClearTile(void);
 
-void GenerateIndustries();
-void GenerateUnmovables();
-void GenerateTowns();
+void GenerateIndustries(void);
+void GenerateUnmovables(void);
+void GenerateTowns(void);
 
-void StartupPlayers();
-void StartupDisasters();
-void GenerateTrees();
+void StartupPlayers(void);
+void StartupDisasters(void);
+void GenerateTrees(void);
 
-void ConvertGroundTilesIntoWaterTiles();
+void ConvertGroundTilesIntoWaterTiles(void);
 
-void InitializeGame()
+void InitializeGame(void)
 {
 	// Initialize the autoreplace array. Needs to be cleared between each game
 	uint i;
@@ -319,13 +319,13 @@ byte *GetName(int id, byte *buff)
 }
 
 
-static void InitializeCheats()
+static void InitializeCheats(void)
 {
 	memset(&_cheats, 0, sizeof(Cheats));
 }
 
 
-static void InitializeNameMgr()
+static void InitializeNameMgr(void)
 {
 	memset(_name_array, 0, sizeof(_name_array));
 }
@@ -583,21 +583,21 @@ static OnNewVehicleDayProc * _on_new_vehicle_day_proc[] = {
 	OnNewDay_DisasterVehicle,
 };
 
-void EnginesDailyLoop();
-void DisasterDailyLoop();
-void PlayersMonthlyLoop();
-void EnginesMonthlyLoop();
-void TownsMonthlyLoop();
-void IndustryMonthlyLoop();
-void StationMonthlyLoop();
+void EnginesDailyLoop(void);
+void DisasterDailyLoop(void);
+void PlayersMonthlyLoop(void);
+void EnginesMonthlyLoop(void);
+void TownsMonthlyLoop(void);
+void IndustryMonthlyLoop(void);
+void StationMonthlyLoop(void);
 
-void PlayersYearlyLoop();
-void TrainsYearlyLoop();
-void RoadVehiclesYearlyLoop();
-void AircraftYearlyLoop();
-void ShipsYearlyLoop();
+void PlayersYearlyLoop(void);
+void TrainsYearlyLoop(void);
+void RoadVehiclesYearlyLoop(void);
+void AircraftYearlyLoop(void);
+void ShipsYearlyLoop(void);
 
-void WaypointsDailyLoop();
+void WaypointsDailyLoop(void);
 
 
 static const uint16 _autosave_months[] = {
@@ -608,7 +608,7 @@ static const uint16 _autosave_months[] = {
 	0x001, // every 12 months
 };
 
-void IncreaseDate()
+void IncreaseDate(void)
 {
 	const int vehicles_per_day = (1 << (sizeof(_date_fract) * 8)) / 885;
 	uint i;
@@ -738,7 +738,7 @@ int FindFirstBit(uint32 value)
 }
 
 
-static void Save_NAME()
+static void Save_NAME(void)
 {
 	int i;
 	byte *b = _name_array[0];
@@ -751,7 +751,7 @@ static void Save_NAME()
 	}
 }
 
-static void Load_NAME()
+static void Load_NAME(void)
 {
 	int index;
 
@@ -776,7 +776,7 @@ static const byte _game_opt_desc[] = {
 };
 
 // Save load game options
-static void SaveLoad_OPTS()
+static void SaveLoad_OPTS(void)
 {
 	SlObject(&_opt, _game_opt_desc);
 }
@@ -804,7 +804,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 
 // Save load date related variables as well as persistent tick counters
 // XXX: currently some unrelated stuff is just put here
-static void SaveLoad_DATE()
+static void SaveLoad_DATE(void)
 {
 	SlGlobList(_date_desc);
 }
@@ -817,16 +817,18 @@ static const SaveLoadGlobVarList _view_desc[] = {
 	{NULL,										0,					0,   0}
 };
 
-static void SaveLoad_VIEW()
+static void SaveLoad_VIEW(void)
 {
 	SlGlobList(_view_desc);
 }
 
-static void SaveLoad_MAPT() {
+static void SaveLoad_MAPT(void)
+{
   SlArray(_map_type_and_height, MapSize(), SLE_UINT8);
 }
 
-static void SaveLoad_MAP2() {
+static void SaveLoad_MAP2(void)
+{
 	if (_sl.version < 5) {
 		/* In those versions the _map2 was 8 bits */
 		SlArray(_map2, MapSize(), SLE_FILE_U8 | SLE_VAR_U16);
@@ -835,28 +837,33 @@ static void SaveLoad_MAP2() {
 	}
 }
 
-static void SaveLoad_M3LO() {
+static void SaveLoad_M3LO(void)
+{
   SlArray(_map3_lo, MapSize(), SLE_UINT8);
 }
 
-static void SaveLoad_M3HI() {
+static void SaveLoad_M3HI(void)
+{
   SlArray(_map3_hi, MapSize(), SLE_UINT8);
 }
 
-static void SaveLoad_MAPO() {
+static void SaveLoad_MAPO(void)
+{
   SlArray(_map_owner, MapSize(), SLE_UINT8);
 }
 
-static void SaveLoad_MAP5() {
+static void SaveLoad_MAP5(void)
+{
   SlArray(_map5, MapSize(), SLE_UINT8);
 }
 
-static void SaveLoad_MAPE() {
+static void SaveLoad_MAPE(void)
+{
   SlArray(_map_extra_bits, MapSize() / 4, SLE_UINT8);
 }
 
 
-static void Save_CHTS()
+static void Save_CHTS(void)
 {
 	byte count = sizeof(_cheats)/sizeof(Cheat);
 	Cheat* cht = (Cheat*) &_cheats;
@@ -869,7 +876,7 @@ static void Save_CHTS()
 	}
 }
 
-static void Load_CHTS()
+static void Load_CHTS(void)
 {
 	Cheat* cht = (Cheat*) &_cheats;
 

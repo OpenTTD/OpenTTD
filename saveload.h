@@ -3,7 +3,7 @@
 
 #include <setjmp.h>
 
-typedef void ChunkSaveLoadProc();
+typedef void ChunkSaveLoadProc(void);
 typedef void AutolengthProc(void *arg);
 
 typedef struct SaveLoadGlobVarList {
@@ -26,7 +26,7 @@ typedef struct {
 } NullStruct;
 
 typedef void WriterProc(uint len);
-typedef uint ReaderProc();
+typedef uint ReaderProc(void);
 
 typedef uint ReferenceToIntProc(void *v, uint t);
 typedef void *IntToReferenceProc(uint r, uint t);
@@ -62,7 +62,7 @@ typedef struct {
 	uint bufsize;
 	FILE *fh;
 
-	void (*excpt_uninit)();
+	void (*excpt_uninit)(void);
 	const char *excpt_msg;
 	jmp_buf excpt; // used to jump to "exception handler"
 } SaverLoader;
@@ -159,12 +159,12 @@ enum {
 
 
 void SlSetArrayIndex(uint index);
-int SlIterateArray();
+int SlIterateArray(void);
 void SlArray(void *array, uint length, uint conv);
 void SlObject(void *object, const void *desc);
 void SlAutolength(AutolengthProc *proc, void *arg);
-uint SlGetFieldLength();
-int SlReadByte();
+uint SlGetFieldLength(void);
+int SlReadByte(void);
 void SlSetLength(uint length);
 void SlWriteByte(byte v);
 void SlGlobList(const SaveLoadGlobVarList *desc);

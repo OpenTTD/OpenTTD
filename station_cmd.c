@@ -137,7 +137,7 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 	return true;
 }
 
-static Station *AllocateStation()
+static Station *AllocateStation(void)
 {
 	Station *st, *a_free = NULL;
 	int num_free = 0;
@@ -360,7 +360,7 @@ static void UpdateStationVirtCoord(Station *st)
 }
 
 // Update the virtual coords needed to draw the station sign for all stations.
-void UpdateAllStationVirtCoord()
+void UpdateAllStationVirtCoord(void)
 {
 	Station *st;
 	FOR_ALL_STATIONS(st) {
@@ -2293,7 +2293,7 @@ static void DeleteStation(Station *st)
 	DeleteSubsidyWithStation(index);
 }
 
-void DeleteAllPlayerStations()
+void DeleteAllPlayerStations(void)
 {
 	Station *st;
 
@@ -2433,7 +2433,7 @@ static void StationHandleSmallTick(Station *st)
 		UpdateStationRating(st);
 }
 
-void OnTick_Station()
+void OnTick_Station(void)
 {
 	int i;
 	Station *st;
@@ -2456,7 +2456,7 @@ void OnTick_Station()
 
 }
 
-void StationMonthlyLoop()
+void StationMonthlyLoop(void)
 {
 }
 
@@ -2772,7 +2772,7 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 
 }
 
-void InitializeStations()
+void InitializeStations(void)
 {
 	int i;
 	Station *s;
@@ -2874,7 +2874,7 @@ static void SaveLoad_STNS(Station *st)
 		SlObject(&st->goods[i], _goods_desc);
 }
 
-static void Save_STNS()
+static void Save_STNS(void)
 {
 	Station *st;
 	// Write the stations
@@ -2886,7 +2886,7 @@ static void Save_STNS()
 	}
 }
 
-static void Load_STNS()
+static void Load_STNS(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

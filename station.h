@@ -91,7 +91,7 @@ void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radi
 TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st);
 
 void ShowStationViewWindow(int station);
-void UpdateAllStationVirtCoord();
+void UpdateAllStationVirtCoord(void);
 
 VARDEF Station _stations[250];
 VARDEF uint _stations_size;

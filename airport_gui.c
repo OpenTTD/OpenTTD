@@ -14,7 +14,7 @@
 
 static byte _selected_airport_type;
 
-static void ShowBuildAirportPicker();
+static void ShowBuildAirportPicker(void);
 
 
 void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
@@ -124,7 +124,7 @@ static const WindowDesc _air_toolbar_desc = {
 	BuildAirToolbWndProc
 };
 
-void ShowBuildAirToolbar()
+void ShowBuildAirToolbar(void)
 {
 	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
@@ -232,12 +232,12 @@ static const WindowDesc _build_airport_desc = {
 	BuildAirportPickerWndProc
 };
 
-static void ShowBuildAirportPicker()
+static void ShowBuildAirportPicker(void)
 {
 	AllocateWindowDesc(&_build_airport_desc);
 }
 
-void InitializeAirportGui()
+void InitializeAirportGui(void)
 {
 	_selected_airport_type = AT_SMALL;
 	_last_built_aircraft_depot_tile = 0;

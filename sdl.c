@@ -441,7 +441,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	return (key << 16) + sym->unicode;
 }
 
-void DoExitSave();
+void DoExitSave(void);
 
 static int PollEvent(void)
 {

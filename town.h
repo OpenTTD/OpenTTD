@@ -73,15 +73,15 @@ struct Town {
 	uint16 radius[5];
 };
 
-uint32 GetWorldPopulation();
+uint32 GetWorldPopulation(void);
 
 void UpdateTownVirtCoord(Town *t);
-void InitializeTown();
+void InitializeTown(void);
 void ShowTownViewWindow(uint town);
 void DeleteTown(Town *t);
 void ExpandTown(Town *t);
 bool GrowTown(Town *t);
-Town *CreateRandomTown();
+Town *CreateRandomTown(void);
 
 enum {
 	ROAD_REMOVE = 0,

@@ -22,7 +22,7 @@ static byte AirportTestFTA(const AirportFTAClass *Airport);
 /*static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_report);
 static byte AirportBlockToString(uint32 block);*/
 
-void InitializeAirports()
+void InitializeAirports(void)
 {
 	// country airport
 	CountryAirport = malloc(sizeof(AirportFTAClass));
@@ -97,7 +97,7 @@ void InitializeAirports()
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
 }
 
-void UnInitializeAirports()
+void UnInitializeAirports(void)
 {
 	AirportFTAClass_Destructor(CountryAirport);
 	AirportFTAClass_Destructor(CityAirport);

@@ -246,7 +246,7 @@ static bool checkRadioTowerNearby(uint tile)
 	return true;
 }
 
-void GenerateUnmovables()
+void GenerateUnmovables(void)
 {
 	int i,j;
 	uint tile;

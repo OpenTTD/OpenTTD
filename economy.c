@@ -584,7 +584,7 @@ StringID GetNewsStringBankrupcy(NewsItem *ni)
 	return 0;
 }
 
-static void PlayersGenStatistics()
+static void PlayersGenStatistics(void)
 {
 	Station *st;
 	Player *p;
@@ -633,7 +633,7 @@ static void AddSingleInflation(int32 *value, uint16 *frac, int32 amt)
 	*value += (int32)(tmp >> 16) + (low >> 16);
 }
 
-static void AddInflation()
+static void AddInflation(void)
 {
 	int i;
 	int32 inf = _economy.infl_amount * 54;
@@ -661,7 +661,7 @@ static void AddInflation()
 	InvalidateWindow(WC_PAYMENT_RATES, 0);
 }
 
-static void PlayersPayInterest()
+static void PlayersPayInterest(void)
 {
 	Player *p;
 	int interest = _economy.interest_rate * 54;
@@ -680,7 +680,7 @@ static void PlayersPayInterest()
 	}
 }
 
-static void HandleEconomyFluctuations()
+static void HandleEconomyFluctuations(void)
 {
 	if (_opt.diff.economy == 0)
 		return;
@@ -756,7 +756,7 @@ static const int32 _price_base[NUM_PRICES] = {
 	1000000, // build_industry
 };
 
-void StartupEconomy()
+void StartupEconomy(void)
 {
 	int i;
 
@@ -988,7 +988,7 @@ void RemoteSubsidyAdd(Subsidy *s_new)
 	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
-static void SubsidyMonthlyHandler()
+static void SubsidyMonthlyHandler(void)
 {
 	Subsidy *s;
 	Pair pair;
@@ -1068,7 +1068,7 @@ static const byte _subsidies_desc[] = {
 	SLE_END()
 };
 
-static void Save_SUBS()
+static void Save_SUBS(void)
 {
 	int i;
 	Subsidy *s;
@@ -1082,7 +1082,7 @@ static void Save_SUBS()
 	}
 }
 
-static void Load_SUBS()
+static void Load_SUBS(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1)
@@ -1473,7 +1473,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	return result;
 }
 
-void PlayersMonthlyLoop()
+void PlayersMonthlyLoop(void)
 {
 	PlayersGenStatistics();
 	if (_patches.inflation)
@@ -1611,14 +1611,14 @@ int32 CmdBuyCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 // Prices
-static void SaveLoad_PRIC()
+static void SaveLoad_PRIC(void)
 {
 	SlArray(&_price, NUM_PRICES, SLE_INT32);
 	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
 }
 
 // Cargo payment rates
-static void SaveLoad_CAPR()
+static void SaveLoad_CAPR(void)
 {
 	SlArray(&_cargo_payment_rates, NUM_CARGO, SLE_INT32);
 	SlArray(&_cargo_payment_rates_frac, NUM_CARGO, SLE_UINT16);
@@ -1635,7 +1635,7 @@ static const byte _economy_desc[] = {
 };
 
 // Economy variables
-static void SaveLoad_ECMY()
+static void SaveLoad_ECMY(void)
 {
 	SlObject(&_economy, &_economy_desc);
 }

@@ -1234,7 +1234,7 @@ int32 CmdChangeTrainServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-void OnTick_Train()
+void OnTick_Train(void)
 {
 	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
 }
@@ -2782,7 +2782,7 @@ void OnNewDay_Train(Vehicle *v)
 	}
 }
 
-void TrainsYearlyLoop()
+void TrainsYearlyLoop(void)
 {
 	Vehicle *v;
 
@@ -2815,7 +2815,7 @@ void HandleClickOnTrain(Vehicle *v)
 	ShowTrainViewWindow(v);
 }
 
-void InitializeTrains()
+void InitializeTrains(void)
 {
 	_age_cargo_skip_counter = 1;
 }

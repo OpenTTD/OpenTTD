@@ -221,7 +221,7 @@ void NetworkCloseClient(NetworkClientState *cs);
 void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientState *cs);
 uint NetworkCalculateLag(const NetworkClientState *cs);
-byte NetworkGetCurrentLanguageIndex();
+byte NetworkGetCurrentLanguageIndex(void);
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
 NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index);
 unsigned long NetworkResolveHost(const char *hostname);

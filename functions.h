@@ -16,7 +16,7 @@ void DoClearSquare(uint tile);
 void CDECL ModifyTile(uint tile, uint flags, ...);
 void SetMapExtraBits(uint tile, byte flags);
 uint GetMapExtraBits(uint tile);
-void RunTileLoop();
+void RunTileLoop(void);
 
 uint GetPartialZ(int x, int y, int corners);
 uint GetSlopeZ(int x, int y);
@@ -58,10 +58,10 @@ static inline Point RemapCoords2(int x, int y)
 byte *GetString(byte *buffr, uint16 string);
 void InjectDparam(int amount);
 
-int32 GetParamInt32();
-int GetParamInt16();
-int GetParamInt8();
-int GetParamUint16();
+int32 GetParamInt32(void);
+int GetParamInt16(void);
+int GetParamInt8(void);
+int GetParamUint16(void);
 
 
 /* clear_land.c */
@@ -117,13 +117,13 @@ void NORETURN CDECL error(const char *str, ...);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, uint line, char *file);
 #else
-	uint32 Random();
+	uint32 Random(void);
 	uint RandomRange(uint max);
 #endif
 
-void InitPlayerRandoms();
+void InitPlayerRandoms(void);
 
-uint32 InteractiveRandom(); /* Used for random sequences that are not the same on the other end of the multiplayer link */
+uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
 uint InteractiveRandomRange(uint max);
 
 void SetDate(uint date);
@@ -131,21 +131,21 @@ void SetDate(uint date);
 void DrawPlayerFace(uint32 face, int color, int x, int y);
 
 /* texteff.c */
-void MoveAllTextEffects();
+void MoveAllTextEffects(void);
 void AddTextEffect(StringID msg, int x, int y, uint16 duration);
-void InitTextEffects();
+void InitTextEffects(void);
 void DrawTextEffects(DrawPixelInfo *dpi);
 
-void InitTextMessage();
-void DrawTextMessage();
+void InitTextMessage(void);
+void DrawTextMessage(void);
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
-void UndrawTextMessage();
-void TextMessageDailyLoop();
+void UndrawTextMessage(void);
+void TextMessageDailyLoop(void);
 
 bool AddAnimatedTile(uint tile);
 void DeleteAnimatedTile(uint tile);
-void AnimateAnimatedTiles();
-void InitializeAnimatedTiles();
+void AnimateAnimatedTiles(void);
+void InitializeAnimatedTiles(void);
 
 /* tunnelbridge_cmd.c */
 bool CheckTunnelInWay(uint tile, int z);
@@ -158,18 +158,18 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 /* network.c */
 void NetworkUDPClose(void);
-void NetworkStartUp();
+void NetworkStartUp(void);
 void NetworkShutDown(void);
 void NetworkGameLoop(void);
 void NetworkUDPGameLoop(void);
 bool NetworkServerStart(void);
 bool NetworkClientConnectGame(const byte* host, unsigned short port);
-void NetworkReboot();
-void NetworkDisconnect();
+void NetworkReboot(void);
+void NetworkDisconnect(void);
 void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 
 /* misc_cmd.c */
-void PlaceTreesRandomly();
+void PlaceTreesRandomly(void);
 
 uint GetTileDist(TileIndex xy1, TileIndex xy2);
 uint GetTileDist1D(TileIndex xy1, TileIndex xy2);
@@ -206,7 +206,7 @@ void DeleteWindowByClass(WindowClass cls);
 void SetObjectToPlaceWnd(int icon, byte mode, Window *w);
 void SetObjectToPlace(int icon, byte mode, WindowClass window_class, WindowNumber window_num);
 
-void ResetObjectToPlace();
+void ResetObjectToPlace(void);
 
 bool ScrollWindowToTile(TileIndex tile, Window * w);
 bool ScrollWindowTo(int x, int y, Window * w);
@@ -230,8 +230,8 @@ uint GetRoadBitsByTile(TileIndex tile);
 int GetTownRadiusGroup(Town *t, uint tile);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
-void ShowNetworkNeedGamePassword();
-void ShowNetworkNeedCompanyPassword();
+void ShowNetworkNeedGamePassword(void);
+void ShowNetworkNeedCompanyPassword(void);
 void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int8 rank);
@@ -252,11 +252,11 @@ enum SaveOrLoadMode {
 
 int SaveOrLoad(const char *filename, int mode);
 
-void AfterLoadTown();
-void AskExitGame();
-void AskExitToGameMenu();
+void AfterLoadTown(void);
+void AskExitGame(void);
+void AskExitToGameMenu(void);
 
-void RedrawAutosave();
+void RedrawAutosave(void);
 
 StringID RemapOldStringID(StringID s);
 
@@ -274,21 +274,21 @@ void ShowSaveLoadDialog(int mode);
 void ttd_strlcpy(char *dst, const char *src, size_t len);
 
 // callback from drivers that is called if the game size changes dynamically
-void GameSizeChanged();
+void GameSizeChanged(void);
 bool FileExists(const char *filename);
 bool ReadLanguagePack(int index);
-void InitializeLanguagePacks();
+void InitializeLanguagePacks(void);
 byte *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 int GetLanguageList(char **languages, int max);
 
-void CheckSwitchToEuro();
+void CheckSwitchToEuro(void);
 
-void LoadFromConfig();
-void SaveToConfig();
+void LoadFromConfig(void);
+void SaveToConfig(void);
 int ttd_main(int argc, char* argv[]);
-byte GetOSVersion();
+byte GetOSVersion(void);
 
-void DeterminePaths();
+void DeterminePaths(void);
 char * CDECL str_fmt(const char *str, ...);
 
 #endif /* FUNCTIONS_H */

@@ -158,7 +158,7 @@ void RedrawWaypointSign(Waypoint *cp)
 }
 
 // Called after load to update coordinates
-void AfterLoadVehicles()
+void AfterLoadVehicles(void)
 {
 	Vehicle *v;
 	Waypoint *cp;
@@ -202,7 +202,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	return v;
 }
 
-Vehicle *ForceAllocateSpecialVehicle()
+Vehicle *ForceAllocateSpecialVehicle(void)
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES_FROM(v, NUM_NORMAL_VEHICLES) {
@@ -213,7 +213,7 @@ Vehicle *ForceAllocateSpecialVehicle()
 
 }
 
-Vehicle *ForceAllocateVehicle()
+Vehicle *ForceAllocateVehicle(void)
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -226,7 +226,7 @@ Vehicle *ForceAllocateVehicle()
 	return NULL;
 }
 
-Vehicle *AllocateVehicle()
+Vehicle *AllocateVehicle(void)
 {
 	Vehicle *v;
 	int num;
@@ -327,7 +327,7 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 	}
 }
 
-void InitializeVehicles()
+void InitializeVehicles(void)
 {
 	Vehicle *v;
 	int i;
@@ -385,7 +385,7 @@ int CountVehiclesInChain(Vehicle *v)
 }
 
 
-Depot *AllocateDepot()
+Depot *AllocateDepot(void)
 {
 	Depot *dep, *free_dep = NULL;
 	int num_free = 0;
@@ -407,7 +407,7 @@ Depot *AllocateDepot()
 	return free_dep;
 }
 
-Waypoint *AllocateWaypoint()
+Waypoint *AllocateWaypoint(void)
 {
 	Waypoint *cp;
 
@@ -485,7 +485,7 @@ VehicleTickProc *_vehicle_tick_procs[] = {
 	DisasterVehicle_Tick,
 };
 
-void CallVehicleTicks()
+void CallVehicleTicks(void)
 {
 	Vehicle *v;
 
@@ -1981,7 +1981,7 @@ static const void *_veh_descs[] = {
 };
 
 // Will be called when the vehicles need to be saved.
-static void Save_VEHS()
+static void Save_VEHS(void)
 {
 	Vehicle *v;
 	// Write the vehicles
@@ -1994,7 +1994,7 @@ static void Save_VEHS()
 }
 
 // Will be called when vehicles need to be loaded.
-static void Load_VEHS()
+static void Load_VEHS(void)
 {
 	int index;
 	Vehicle *v;
@@ -2064,7 +2064,7 @@ static const byte _depot_desc[] = {
 	SLE_END()
 };
 
-static void Save_DEPT()
+static void Save_DEPT(void)
 {
 	Depot *d;
 	int i;
@@ -2076,7 +2076,7 @@ static void Save_DEPT()
 	}
 }
 
-static void Load_DEPT()
+static void Load_DEPT(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
@@ -2095,7 +2095,7 @@ static const byte _waypoint_desc[] = {
 	SLE_END()
 };
 
-static void Save_CHKP()
+static void Save_CHKP(void)
 {
 	Waypoint *cp;
 	int i;
@@ -2107,7 +2107,7 @@ static void Save_CHKP()
 	}
 }
 
-static void Load_CHKP()
+static void Load_CHKP(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

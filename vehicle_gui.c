@@ -141,7 +141,7 @@ void SortVehicleList(vehiclelist_d *vl)
 
 
 /* General Vehicle GUI based procedures that are independent of vehicle types */
-void InitializeVehiclesGuiList()
+void InitializeVehiclesGuiList(void)
 {
 }
 

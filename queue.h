@@ -113,7 +113,7 @@ int build_Fifo(void* buffer, uint size);
 void init_InsSort(Queue* q);
 
 /* Allocate a new fifo and initializes it. There is no maximum size */
-Queue* new_InsSort();
+Queue* new_InsSort(void);
 
 /*
  *  Binary Heap

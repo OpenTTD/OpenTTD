@@ -53,14 +53,14 @@ void DrawFrameRect(int left, int top, int right, int bottom, int color, int flag
 uint16 GetDrawStringPlayerColor(byte player);
 
 int GetStringWidth(const byte *str);
-void LoadStringWidthTable();
+void LoadStringWidthTable(void);
 void DrawStringMultiCenter(int x, int y, uint16 str, int maxw);
 void DrawStringMultiLine(int x, int y, uint16 str, int maxw);
-void DrawDirtyBlocks();
+void DrawDirtyBlocks(void);
 void SetDirtyBlocks(int left, int top, int right, int bottom);
-void MarkWholeScreenDirty();
+void MarkWholeScreenDirty(void);
 
-void GfxInitPalettes();
+void GfxInitPalettes(void);
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, int width, int height);
 
@@ -70,14 +70,14 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 /* spritecache.c */
 byte *GetSpritePtr(uint sprite);
 void GfxInitSpriteMem(byte *ptr, uint32 size);
-void GfxLoadSprites();
+void GfxLoadSprites(void);
 
 void SetMouseCursor(uint cursor);
 void SetAnimatedMouseCursor(const uint16 *table);
-void CursorTick();
-void DrawMouseCursor();
-void ScreenSizeChanged();
-void UndrawMouseCursor();
+void CursorTick(void);
+void DrawMouseCursor(void);
+void ScreenSizeChanged(void);
+void UndrawMouseCursor(void);
 bool ChangeResInGame(int w, int h);
 void ToggleFullScreen(const bool full_screen);
 

@@ -22,7 +22,7 @@ enum NeedLengthValues { NL_NONE = 0,NL_WANTLENGTH = 1,NL_CALCLENGTH = 2};
 SaverLoader _sl;
 
 // fill the input buffer
-static void SlReadFill()
+static void SlReadFill(void)
 {
 	uint len = _sl.read_bytes();
 	assert(len != 0);
@@ -32,13 +32,13 @@ static void SlReadFill()
 	_sl.offs_base += len;
 }
 
-static uint32 SlGetOffs()
+static uint32 SlGetOffs(void)
 {
 	return _sl.offs_base - (_sl.bufe - _sl.bufp);
 }
 
 // flush the output buffer
-static void SlWriteFill()
+static void SlWriteFill(void)
 {
 	// flush current buffer?
 	if (_sl.bufp != NULL) {
@@ -59,7 +59,7 @@ static void NORETURN SlError(const char *msg)
 	longjmp(_sl.excpt, 0);
 }
 
-int SlReadByte()
+int SlReadByte(void)
 {
 	if (_sl.bufp == _sl.bufe) SlReadFill();
 	return *_sl.bufp++;
@@ -71,19 +71,19 @@ void SlWriteByte(byte v)
 	*_sl.bufp++ = v;
 }
 
-static int SlReadUint16()
+static int SlReadUint16(void)
 {
 	int x = SlReadByte() << 8;
 	return x | SlReadByte();
 }
 
-static uint32 SlReadUint32()
+static uint32 SlReadUint32(void)
 {
 	uint32 x = SlReadUint16() << 16;
 	return x | SlReadUint16();
 }
 
-static uint64 SlReadUint64()
+static uint64 SlReadUint64(void)
 {
 	uint32 x = SlReadUint32();
 	uint32 y = SlReadUint32();
@@ -108,7 +108,7 @@ static void SlWriteUint64(uint64 x)
 	SlWriteUint32((uint32)x);
 }
 
-static int SlReadSimpleGamma()
+static int SlReadSimpleGamma(void)
 {
 	int x = SlReadByte();
 	if (x & 0x80)
@@ -131,7 +131,7 @@ static uint SlGetGammaLength(uint i) {
 	return (i>=0x80) ? 2 : 1;
 }
 
-inline int SlReadSparseIndex()
+inline int SlReadSparseIndex(void)
 {
 	return SlReadSimpleGamma();
 }
@@ -141,7 +141,7 @@ inline void SlWriteSparseIndex(uint index)
 	SlWriteSimpleGamma(index);
 }
 
-inline int SlReadArrayLength()
+inline int SlReadArrayLength(void)
 {
 	return SlReadSimpleGamma();
 }
@@ -157,7 +157,7 @@ void SlSetArrayIndex(uint index)
 	_sl.array_index = index;
 }
 
-int SlIterateArray()
+int SlIterateArray(void)
 {
 	int ind;
 	static uint32 next_offs;
@@ -249,7 +249,7 @@ void SlSkipBytes(size_t length)
 	}
 }
 
-uint SlGetFieldLength()
+uint SlGetFieldLength(void)
 {
 	return _sl.obj_len;
 }
@@ -583,7 +583,7 @@ static void SlStubSaveProc2(void *arg)
 	_tmp_proc_1();
 }
 
-static void SlStubSaveProc()
+static void SlStubSaveProc(void)
 {
 	SlAutolength(SlStubSaveProc2, NULL);
 }
@@ -623,7 +623,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 	}
 }
 
-static void SlSaveChunks()
+static void SlSaveChunks(void)
 {
 	const ChunkHandler *ch;
 	const ChunkHandler * const * chsc;
@@ -661,7 +661,7 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 	return NULL;
 }
 
-static void SlLoadChunks()
+static void SlLoadChunks(void)
 {
 	uint32 id;
 	const ChunkHandler *ch;
@@ -686,7 +686,7 @@ static void SlLoadChunks()
 
 #include "minilzo.h"
 
-static uint ReadLZO()
+static uint ReadLZO(void)
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	uint32 tmp[2];
@@ -731,20 +731,22 @@ static void WriteLZO(uint size)
 	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError("file write failed");
 }
 
-static bool InitLZO() {
+static bool InitLZO(void)
+{
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = (byte*)malloc(LZO_SIZE);
 	return true;
 }
 
-static void UninitLZO() {
+static void UninitLZO(void)
+{
 	free(_sl.buf);
 }
 
 //*******************************************
 //******** START OF NOCOMP CODE *************
 //*******************************************
-static uint ReadNoComp()
+static uint ReadNoComp(void)
 {
 	return fread(_sl.buf, 1, LZO_SIZE, _sl.fh);
 }
@@ -754,14 +756,14 @@ static void WriteNoComp(uint size)
 	fwrite(_sl.buf, 1, size, _sl.fh);
 }
 
-static bool InitNoComp()
+static bool InitNoComp(void)
 {
 	_sl.bufsize = LZO_SIZE;
 	_sl.buf = (byte*)malloc(LZO_SIZE);
 	return true;
 }
 
-static void UninitNoComp()
+static void UninitNoComp(void)
 {
 	free(_sl.buf);
 }
@@ -774,7 +776,7 @@ static void UninitNoComp()
 #include <zlib.h>
 static z_stream _z;
 
-static bool InitReadZlib()
+static bool InitReadZlib(void)
 {
 	memset(&_z, 0, sizeof(_z));
 	if (inflateInit(&_z) != Z_OK) return false;
@@ -784,7 +786,7 @@ static bool InitReadZlib()
 	return true;
 }
 
-static uint ReadZlib()
+static uint ReadZlib(void)
 {
 	int r;
 
@@ -809,13 +811,13 @@ static uint ReadZlib()
 	return 4096 - _z.avail_out;
 }
 
-static void UninitReadZlib()
+static void UninitReadZlib(void)
 {
 	inflateEnd(&_z);
 	free(_sl.buf);
 }
 
-static bool InitWriteZlib()
+static bool InitWriteZlib(void)
 {
 	memset(&_z, 0, sizeof(_z));
 	if (deflateInit(&_z, 6) != Z_OK) return false;
@@ -851,7 +853,7 @@ static void WriteZlib(uint len)
 	WriteZlibLoop(&_z, _sl.buf, len, 0);
 }
 
-static void UninitWriteZlib()
+static void UninitWriteZlib(void)
 {
 	// flush any pending output.
 	if (_sl.fh) WriteZlibLoop(&_z, NULL, 0, Z_FINISH);
@@ -958,13 +960,13 @@ typedef struct {
 	const char *name;
 	uint32 tag;
 
-	bool (*init_read)();
+	bool (*init_read)(void);
 	ReaderProc *reader;
-	void (*uninit_read)();
+	void (*uninit_read)(void);
 
-	bool (*init_write)();
+	bool (*init_write)(void);
 	WriterProc *writer;
-	void (*uninit_write)();
+	void (*uninit_write)(void);
 
 } SaveLoadFormat;
 
@@ -998,9 +1000,9 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 }
 
 // actual loader/saver function
-extern void InitializeGame();
+extern void InitializeGame(void);
 extern bool AfterLoadGame(uint version);
-extern void BeforeSaveGame();
+extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
 
 //	Save or Load files SL_LOAD, SL_SAVE, SL_OLD_LOAD
@@ -1132,13 +1134,13 @@ init_err:
 	return SL_OK;
 }
 
-bool EmergencySave()
+bool EmergencySave(void)
 {
 	SaveOrLoad("crash.sav", SL_SAVE);
 	return true;
 }
 
-void DoExitSave()
+void DoExitSave(void)
 {
 	char buf[200];
 	sprintf(buf, "%s%sexit.sav", _path.autosave_dir, PATHSEP);

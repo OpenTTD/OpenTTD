@@ -729,7 +729,7 @@ static void TileLoop_Clear(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-void GenerateClearTile()
+void GenerateClearTile(void)
 {
 	int i,j;
 	uint tile,tile_new;
@@ -801,7 +801,8 @@ static void ChangeTileOwner_Clear(uint tile, byte old_player, byte new_player)
 	return;
 }
 
-void InitializeClearLand() {
+void InitializeClearLand(void)
+{
 	_opt.snow_line = _patches.snow_line_height * 8;
 }
 

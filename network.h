@@ -214,7 +214,7 @@ VARDEF byte _network_playas; // an id to play as..
 void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const byte *b);
-void NetworkRebuildHostList();
+void NetworkRebuildHostList(void);
 void NetworkChangeCompanyPassword(const char *str);
 
 #endif /* NETWORK_H */

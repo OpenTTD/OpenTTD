@@ -510,7 +510,7 @@ void DispatchMouseWheelEvent(Window *w, uint widget, int wheel);
 /* window.c */
 void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 void CallWindowEventNP(Window *w, int event);
-void CallWindowTickEvent();
+void CallWindowTickEvent(void);
 void SetWindowDirty(Window *w);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
@@ -555,10 +555,10 @@ Window *AllocateWindowAutoPlace2(
 
 void DrawWindowViewport(Window *w);
 
-void InitWindowSystem();
+void InitWindowSystem(void);
 int GetMenuItemIndex(Window *w, int x, int y);
-void MouseLoop();
-void UpdateWindows();
+void MouseLoop(void);
+void UpdateWindows(void);
 void InvalidateWidget(Window *w, byte widget_index);
 
 void GuiShowTooltips(uint16 string_id);
@@ -575,8 +575,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 void HandleButtonClick(Window *w, byte widget);
 
-Window *GetCallbackWnd();
-void DeleteNonVitalWindows();
+Window *GetCallbackWnd(void);
+void DeleteNonVitalWindows(void);
 void DeleteAllNonVitalWindows(void);
 void HideVitalWindows(void);
 void ShowVitalWindows(void);

@@ -44,8 +44,8 @@ typedef struct AirportFTA {
 	struct AirportFTA *next_in_chain;	// possible extra movement choices from this position
 } AirportFTA;
 
-void InitializeAirports();
-void UnInitializeAirports();
+void InitializeAirports(void);
+void UnInitializeAirports(void);
 const AirportFTAClass* GetAirport(const byte airport_type);
 
 #endif /* AIRPORT_H */

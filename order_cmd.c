@@ -80,7 +80,7 @@ static void SwapOrders(Order *order1, Order *order2)
  * @return Order* if a free space is found, else NULL.
  *
  */
-static Order *AllocateOrder()
+static Order *AllocateOrder(void)
 {
 	Order *order;
 
@@ -914,7 +914,7 @@ static const byte _order_desc[] = {
 	SLE_END()
 };
 
-static void Save_ORDR()
+static void Save_ORDR(void)
 {
 	Order *order;
 
@@ -926,7 +926,7 @@ static void Save_ORDR()
 	}
 }
 
-static void Load_ORDR()
+static void Load_ORDR(void)
 {
 	if (_sl.full_version <= 0x501) {
 		/* Version older than 0x502 did not have a ->next pointer. Convert them

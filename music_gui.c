@@ -62,7 +62,7 @@ static const int midi_idx[] = {
 };
 
 
-static void SkipToPrevSong()
+static void SkipToPrevSong(void)
 {
 	byte *b = _cur_playlist;
 	byte *p = b;
@@ -86,7 +86,7 @@ static void SkipToPrevSong()
 	_song_is_active = false;
 }
 
-static void SkipToNextSong()
+static void SkipToNextSong(void)
 {
 	byte *b = _cur_playlist, t;
 
@@ -106,7 +106,7 @@ static void MusicVolumeChanged(byte new_vol)
 	_music_driver->set_volume(new_vol);
 }
 
-static void DoPlaySong()
+static void DoPlaySong(void)
 {
 	char filename[256];
 	snprintf(filename, sizeof(filename), "%sgm_tt%.2d.gm",
@@ -114,12 +114,12 @@ static void DoPlaySong()
 	_music_driver->play_song(filename);
 }
 
-static void DoStopMusic()
+static void DoStopMusic(void)
 {
 	_music_driver->stop_song();
 }
 
-static void SelectSongToPlay()
+static void SelectSongToPlay(void)
 {
 	int i;
 
@@ -142,7 +142,7 @@ static void SelectSongToPlay()
 	}
 }
 
-static void StopMusic()
+static void StopMusic(void)
 {
 	_music_wnd_cursong = 0;
 	DoStopMusic();
@@ -150,7 +150,7 @@ static void StopMusic()
 	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
 }
 
-static void PlayPlaylistSong()
+static void PlayPlaylistSong(void)
 {
 	if (_cur_playlist[0] == 0) {
 		SelectSongToPlay();
@@ -164,13 +164,13 @@ static void PlayPlaylistSong()
 	InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 9);
 }
 
-void ResetMusic()
+void ResetMusic(void)
 {
 	_music_wnd_cursong = 1;
 	DoPlaySong();
 }
 
-void MusicLoop()
+void MusicLoop(void)
 {
 	if (!msf.btn_down && _song_is_active) {
 		StopMusic();
@@ -299,7 +299,7 @@ static const WindowDesc _music_track_selection_desc = {
 	MusicTrackSelectionWndProc
 };
 
-static void ShowMusicTrackSelection()
+static void ShowMusicTrackSelection(void)
 {
 	AllocateWindowDescFront(&_music_track_selection_desc, 0);
 }
@@ -475,7 +475,7 @@ static const WindowDesc _music_window_desc = {
 	MusicWindowWndProc
 };
 
-void ShowMusicWindow()
+void ShowMusicWindow(void)
 {
 	AllocateWindowDescFront(&_music_window_desc, 0);
 }

@@ -899,7 +899,7 @@ static const WindowDesc _smallmap_desc = {
 	SmallMapWindowProc
 };
 
-void ShowSmallMap()
+void ShowSmallMap(void)
 {
 	Window *w;
 	ViewPort *vp;
@@ -997,7 +997,7 @@ static const WindowDesc _extra_view_port_desc = {
 	ExtraViewPortWndProc
 };
 
-void ShowExtraViewPortWindow()
+void ShowExtraViewPortWindow(void)
 {
 	Window *w, *v;
 	int i = 0;

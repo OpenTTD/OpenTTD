@@ -10,8 +10,8 @@
 #include "sound.h"
 #include "command.h"
 
-static void ShowBuildDockStationPicker();
-static void ShowBuildDocksDepotPicker();
+static void ShowBuildDockStationPicker(void);
+static void ShowBuildDocksDepotPicker(void);
 
 static byte _ship_depot_direction;
 
@@ -202,7 +202,7 @@ static const WindowDesc _build_docks_toolbar_desc = {
 	BuildDocksToolbWndProc
 };
 
-void ShowBuildDocksToolbar()
+void ShowBuildDocksToolbar(void)
 {
 	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
@@ -278,12 +278,12 @@ static const WindowDesc _build_dock_station_desc = {
 	BuildDockStationWndProc
 };
 
-static void ShowBuildDockStationPicker()
+static void ShowBuildDockStationPicker(void)
 {
 	AllocateWindowDesc(&_build_dock_station_desc);
 }
 
-static void UpdateDocksDirection()
+static void UpdateDocksDirection(void)
 {
 	if (_ship_depot_direction != 0) {
 		SetTileSelectSize(1, 2);
@@ -349,14 +349,14 @@ static const WindowDesc _build_docks_depot_desc = {
 };
 
 
-static void ShowBuildDocksDepotPicker()
+static void ShowBuildDocksDepotPicker(void)
 {
 	AllocateWindowDesc(&_build_docks_depot_desc);
 	UpdateDocksDirection();
 }
 
 
-void InitializeDockGui()
+void InitializeDockGui(void)
 {
 	_ship_depot_direction = 0;
 }

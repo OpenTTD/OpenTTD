@@ -1483,9 +1483,9 @@ static void GfxScalePalette(int pal, byte scaling)
 }
 #endif
 
-void DoPaletteAnimations();
+void DoPaletteAnimations(void);
 
-void GfxInitPalettes()
+void GfxInitPalettes(void)
 {
 	int pal = _use_dos_palette?1:0;
 	memcpy(_cur_palette, _palettes[pal], 256*3);
@@ -1499,7 +1499,7 @@ void GfxInitPalettes()
 #define EXTR2(p,q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
 #define COPY_TRIPLET do {d[0]=s[0+j]; d[1]=s[1+j]; d[2]=s[2+j];d+=3;}while(0)
 
-void DoPaletteAnimations()
+void DoPaletteAnimations(void)
 {
 	const byte *s;
 	byte *d;
@@ -1612,7 +1612,7 @@ void DoPaletteAnimations()
 }
 
 
-void LoadStringWidthTable()
+void LoadStringWidthTable(void)
 {
 	int i;
 	byte *b;
@@ -1633,7 +1633,7 @@ void LoadStringWidthTable()
 	}
 }
 
-void ScreenSizeChanged()
+void ScreenSizeChanged(void)
 {
 	// check the dirty rect
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
@@ -1643,7 +1643,7 @@ void ScreenSizeChanged()
 	_cursor.visible = false;
 }
 
-void UndrawMouseCursor()
+void UndrawMouseCursor(void)
 {
 	if (_cursor.visible) {
 		_cursor.visible = false;
@@ -1656,7 +1656,7 @@ void UndrawMouseCursor()
 	}
 }
 
-void DrawMouseCursor()
+void DrawMouseCursor(void)
 {
 	int x,y,w,h;
 
@@ -1739,7 +1739,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	_video_driver->make_dirty(left, top, right-left, bottom-top);
 }
 
-void DrawDirtyBlocks()
+void DrawDirtyBlocks(void)
 {
 	byte *b = _dirty_blocks;
 	int x=0,y=0;
@@ -1845,7 +1845,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	} while (--height);
 }
 
-void MarkWholeScreenDirty()
+void MarkWholeScreenDirty(void)
 {
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
@@ -1914,7 +1914,7 @@ static void SetCursorSprite(uint cursor)
 	cv->dirty = true;
 }
 
-static void SwitchAnimatedCursor()
+static void SwitchAnimatedCursor(void)
 {
 	CursorVars *cv = &_cursor;
 	const uint16 *cur;
@@ -1930,7 +1930,8 @@ static void SwitchAnimatedCursor()
 	SetCursorSprite(sprite);
 }
 
-void CursorTick() {
+void CursorTick(void)
+{
 	CursorVars *cv = &_cursor;
 	if (cv->animate_timeout && !--cv->animate_timeout)
 		SwitchAnimatedCursor();

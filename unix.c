@@ -34,7 +34,7 @@ static char *_fios_scn_path;
 static FiosItem *_fios_items;
 static int _fios_count, _fios_alloc;
 
-static FiosItem *FiosAlloc()
+static FiosItem *FiosAlloc(void)
 {
 	if (_fios_count == _fios_alloc) {
 		_fios_alloc += 256;
@@ -243,7 +243,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 
 
 // Free the list of savegames
-void FiosFreeSavegameList()
+void FiosFreeSavegameList(void)
 {
 	free(_fios_items);
 	_fios_items = NULL;
@@ -370,7 +370,7 @@ const DriverDesc _music_driver_descs[] = {
 
 /* GetOSVersion returns the minimal required version of OS to be able to use that driver.
 	 Not needed for *nix. */
-byte GetOSVersion()
+byte GetOSVersion(void)
 {
 	return 2;  // any arbitrary number bigger than 0
 				// numbers lower than 2 breaks default music selection on mac
@@ -451,7 +451,7 @@ int CDECL main(int argc, char* argv[])
 	return ttd_main(argc, argv);
 }
 
-void DeterminePaths()
+void DeterminePaths(void)
 {
 	char *s;
 

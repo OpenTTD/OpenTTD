@@ -272,7 +272,7 @@ static const WindowDesc _graph_legend_desc = {
 	GraphLegendWndProc
 };
 
-static void ShowGraphLegend()
+static void ShowGraphLegend(void)
 {
 	AllocateWindowDescFront(&_graph_legend_desc, 0);
 }
@@ -374,7 +374,7 @@ static const WindowDesc _operating_profit_desc = {
 };
 
 
-void ShowOperatingProfitGraph()
+void ShowOperatingProfitGraph(void)
 {
 	if (AllocateWindowDescFront(&_operating_profit_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
@@ -448,7 +448,7 @@ static const WindowDesc _income_graph_desc = {
 	IncomeGraphWndProc
 };
 
-void ShowIncomeGraph()
+void ShowIncomeGraph(void)
 {
 	if (AllocateWindowDescFront(&_income_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
@@ -521,7 +521,7 @@ static const WindowDesc _delivered_cargo_graph_desc = {
 	DeliveredCargoGraphWndProc
 };
 
-void ShowDeliveredCargoGraph()
+void ShowDeliveredCargoGraph(void)
 {
 	if (AllocateWindowDescFront(&_delivered_cargo_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
@@ -597,7 +597,7 @@ static const WindowDesc _performance_history_desc = {
 	PerformanceHistoryWndProc
 };
 
-void ShowPerformanceHistoryGraph()
+void ShowPerformanceHistoryGraph(void)
 {
 	if (AllocateWindowDescFront(&_performance_history_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
@@ -670,7 +670,7 @@ static const WindowDesc _company_value_graph_desc = {
 	CompanyValueGraphWndProc
 };
 
-void ShowCompanyValueGraph()
+void ShowCompanyValueGraph(void)
 {
 	if (AllocateWindowDescFront(&_company_value_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
@@ -774,7 +774,7 @@ static const WindowDesc _cargo_payment_rates_desc = {
 };
 
 
-void ShowCargoPaymentRates()
+void ShowCargoPaymentRates(void)
 {
 	AllocateWindowDescFront(&_cargo_payment_rates_desc, 0);
 }
@@ -874,7 +874,7 @@ static const WindowDesc _company_league_desc = {
 	CompanyLeagueWndProc
 };
 
-void ShowCompanyLeagueTable()
+void ShowCompanyLeagueTable(void)
 {
 	AllocateWindowDescFront(&_company_league_desc,0);
 }
@@ -1094,7 +1094,7 @@ static const WindowDesc _performance_rating_detail_desc = {
 	PerformanceRatingDetailWndProc
 };
 
-void ShowPerformanceRatingDetail()
+void ShowPerformanceRatingDetail(void)
 {
 	AllocateWindowDescFront(&_performance_rating_detail_desc, 0);
 }

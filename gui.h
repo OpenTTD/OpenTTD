@@ -4,30 +4,30 @@
 #include "window.h"
 
 /* main_gui.c */
-void SetupColorsAndInitialWindow();
+void SetupColorsAndInitialWindow(void);
 void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2);
 
 /* settings_gui.c */
-void ShowGameOptions();
-void ShowGameDifficulty();
-void ShowPatchesSelection();
-void ShowNewgrf();
-void ShowCustCurrency();
+void ShowGameOptions(void);
+void ShowGameDifficulty(void);
+void ShowPatchesSelection(void);
+void ShowNewgrf(void);
+void ShowCustCurrency(void);
 
 /* graph_gui.c */
-void ShowOperatingProfitGraph();
-void ShowIncomeGraph();
-void ShowDeliveredCargoGraph();
-void ShowPerformanceHistoryGraph();
-void ShowCompanyValueGraph();
-void ShowCargoPaymentRates();
-void ShowCompanyLeagueTable();
-void ShowPerformanceRatingDetail();
+void ShowOperatingProfitGraph(void);
+void ShowIncomeGraph(void);
+void ShowDeliveredCargoGraph(void);
+void ShowPerformanceHistoryGraph(void);
+void ShowCompanyValueGraph(void);
+void ShowCargoPaymentRates(void);
+void ShowCompanyLeagueTable(void);
+void ShowPerformanceRatingDetail(void);
 
 /* news_gui.c */
-void ShowLastNewsMessage();
-void ShowMessageOptions();
-void ShowMessageHistory();
+void ShowLastNewsMessage(void);
+void ShowMessageOptions(void);
+void ShowMessageHistory(void);
 
 /* traintoolb_gui.c */
 void ShowBuildRailToolbar(int index, int button);
@@ -42,18 +42,18 @@ void ShowOrdersWindow(Vehicle *v);
 void ShowRoadVehViewWindow(Vehicle *v);
 
 /* road_gui.c */
-void ShowBuildRoadToolbar();
-void ShowBuildRoadScenToolbar();
+void ShowBuildRoadToolbar(void);
+void ShowBuildRoadScenToolbar(void);
 void ShowPlayerRoadVehicles(int player, int station);
 
 /* dock_gui.c */
-void ShowBuildDocksToolbar();
+void ShowBuildDocksToolbar(void);
 void ShowPlayerShips(int player, int station);
 
 void ShowShipViewWindow(Vehicle *v);
 
 /* aircraft_gui.c */
-void ShowBuildAirToolbar();
+void ShowBuildAirToolbar(void);
 void ShowPlayerAircraft(int player, int station);
 
 /* terraform_gui.c */
@@ -61,16 +61,16 @@ void PlaceProc_DemolishArea(uint tile);
 void PlaceProc_LowerLand(uint tile);
 void PlaceProc_RaiseLand(uint tile);
 void PlaceProc_LevelLand(uint tile);
-void ShowTerraformToolbar();
+void ShowTerraformToolbar(void);
 
 /* misc_gui.c */
-void PlaceLandBlockInfo();
-void ShowAboutWindow();
-void ShowBuildTreesToolbar();
-void ShowBuildTreesScenToolbar();
-void ShowTownDirectory();
-void ShowIndustryDirectory();
-void ShowSubsidiesList();
+void PlaceLandBlockInfo(void);
+void ShowAboutWindow(void);
+void ShowBuildTreesToolbar(void);
+void ShowBuildTreesScenToolbar(void);
+void ShowTownDirectory(void);
+void ShowIndustryDirectory(void);
+void ShowSubsidiesList(void);
 void ShowPlayerStations(int player);
 void ShowPlayerFinances(int player);
 void ShowPlayerCompany(int player);
@@ -81,20 +81,20 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 void DrawStationCoverageAreaText(int sx, int sy, uint mask,int rad);
 void CheckRedrawStationCoverage(Window *w);
 
-void ShowSmallMap();
-void ShowExtraViewPortWindow();
+void ShowSmallMap(void);
+void ShowExtraViewPortWindow(void);
 void SetVScrollCount(Window *w, int num);
 void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
 
-void ShowCheatWindow();
-void AskForNewGameToStart();
+void ShowCheatWindow(void);
+void AskForNewGameToStart(void);
 
 void DrawEditBox(Window *w, int wid);
 void HandleEditBox(Window *w, int wid);
 
-void BuildFileList();
+void BuildFileList(void);
 void SetFiosType(const byte fiostype);
 
 /*	FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
@@ -102,7 +102,7 @@ static const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
 
 
 /* network gui */
-void ShowNetworkGameWindow();
+void ShowNetworkGameWindow(void);
 void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
 
 /* bridge_gui.c */
@@ -115,9 +115,9 @@ enum {
 };
 
 bool DoZoomInOutWindow(int how, Window * w);
-void ShowBuildIndustryWindow();
+void ShowBuildIndustryWindow(void);
 void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
-void ShowMusicWindow();
+void ShowMusicWindow(void);
 
 /* main_gui.c */
 VARDEF byte _newspaper_flag;

@@ -1323,7 +1323,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
 extern void SwitchMode(int new_mode);
 
 /* Check if we want to restart the map */
-static void NetworkCheckRestartMap()
+static void NetworkCheckRestartMap(void)
 {
 	if (_network_restart_game_date != 0 && _cur_year + MAX_YEAR_BEGIN_REAL >= _network_restart_game_date) {
 		_docommand_recursive = 0;
@@ -1342,7 +1342,7 @@ static void NetworkCheckRestartMap()
       1) If a company is not protected, it is closed after 1 year (for example)
       2) If a company is protected, protection is disabled after 3 years (for example)
            (and item 1. happens a year later) */
-static void NetworkAutoCleanCompanies()
+static void NetworkAutoCleanCompanies(void)
 {
 	NetworkClientState *cs;
 	NetworkClientInfo *ci;

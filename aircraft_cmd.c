@@ -537,7 +537,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-void AircraftYearlyLoop()
+void AircraftYearlyLoop(void)
 {
 	Vehicle *v;
 
@@ -1875,7 +1875,7 @@ void UpdateOilRig( void )
 }
 
 // need to be called to load aircraft from old version
-void UpdateOldAircraft()
+void UpdateOldAircraft(void)
 {
 	Station *st;
 	Vehicle *v_oldstyle;

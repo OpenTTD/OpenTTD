@@ -159,7 +159,7 @@ static const WindowDesc _subsidies_list_desc = {
 };
 
 
-void ShowSubsidiesList()
+void ShowSubsidiesList(void)
 {
 	AllocateWindowDescFront(&_subsidies_list_desc, 0);
 }

@@ -525,7 +525,7 @@ typedef struct LoadSavegameState {
 
 static LoadSavegameState *_cur_state;
 
-static byte GetSavegameByteFromBuffer()
+static byte GetSavegameByteFromBuffer(void)
 {
 	LoadSavegameState *lss = _cur_state;
 
@@ -544,7 +544,7 @@ static byte GetSavegameByteFromBuffer()
 	return *lss->buffer_cur++;
 }
 
-static byte DecodeSavegameByte()
+static byte DecodeSavegameByte(void)
 {
 	LoadSavegameState *lss = _cur_state;
 	int8 x;

@@ -50,7 +50,7 @@ byte _local_cargo_id_landscape[NUM_CID] = {
 
 void ShowEnginePreviewWindow(int engine);
 
-void DeleteCustomEngineNames()
+void DeleteCustomEngineNames(void)
 {
 	uint i;
 	StringID old;
@@ -64,13 +64,13 @@ void DeleteCustomEngineNames()
 	_vehicle_design_names &= ~1;
 }
 
-void LoadCustomEngineNames()
+void LoadCustomEngineNames(void)
 {
 	// XXX: not done */
 	DEBUG(misc, 1) ("LoadCustomEngineNames: not done");
 }
 
-static void SetupEngineNames()
+static void SetupEngineNames(void)
 {
 	uint i;
 
@@ -81,7 +81,7 @@ static void SetupEngineNames()
 	LoadCustomEngineNames();
 }
 
-static void AdjustAvailAircraft()
+static void AdjustAvailAircraft(void)
 {
 	uint16 date = _date;
 	byte avail = 0;
@@ -116,7 +116,7 @@ static void CalcEngineReliability(Engine *e)
 	}
 }
 
-void AddTypeToEngines()
+void AddTypeToEngines(void)
 {
 	Engine *e;
 	uint32 counter = 0;
@@ -139,7 +139,7 @@ void AddTypeToEngines()
 	}
 }
 
-void StartupEngines()
+void StartupEngines(void)
 {
 	Engine *e;
 	const EngineInfo *ei;
@@ -653,7 +653,7 @@ void AcceptEnginePreview(Engine *e, int player)
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
 }
 
-void EnginesDailyLoop()
+void EnginesDailyLoop(void)
 {
 	Engine *e;
 	int i,num;
@@ -781,7 +781,7 @@ static void NewVehicleAvailable(Engine *e)
 	}
 }
 
-void EnginesMonthlyLoop()
+void EnginesMonthlyLoop(void)
 {
 	Engine *e;
 
@@ -876,7 +876,7 @@ static const byte _engine_desc[] = {
 	SLE_END()
 };
 
-static void Save_ENGN()
+static void Save_ENGN(void)
 {
 	Engine *e;
 	int i;
@@ -886,7 +886,7 @@ static void Save_ENGN()
 	}
 }
 
-static void Load_ENGN()
+static void Load_ENGN(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
@@ -894,7 +894,7 @@ static void Load_ENGN()
 	}
 }
 
-static void LoadSave_ENGS()
+static void LoadSave_ENGS(void)
 {
 	SlArray(_engine_name_strings, lengthof(_engine_name_strings), SLE_STRINGID);
 }

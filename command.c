@@ -385,7 +385,7 @@ error:
 	return res;
 }
 
-int32 GetAvailableMoneyForCommand()
+int32 GetAvailableMoneyForCommand(void)
 {
 	uint pid = _current_player;
 	if (pid >= MAX_PLAYERS) return 0x7FFFFFFF; // max int

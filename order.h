@@ -90,7 +90,7 @@ static inline bool HasOrderPoolFree(uint amount)
 	return false;
 }
 
-static inline bool IsOrderPoolFull()
+static inline bool IsOrderPoolFull(void)
 {
 	return !HasOrderPoolFree(1);
 }

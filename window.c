@@ -663,7 +663,7 @@ Window *FindWindowFromPt(int x, int y)
 }
 
 
-void InitWindowSystem()
+void InitWindowSystem(void)
 {
 	IConsoleClose();
 	memset(&_windows, 0, sizeof(_windows));
@@ -672,7 +672,7 @@ void InitWindowSystem()
 	_active_viewports = 0;
 }
 
-static void DecreaseWindowCounters()
+static void DecreaseWindowCounters(void)
 {
 	Window *w;
 
@@ -698,12 +698,12 @@ static void DecreaseWindowCounters()
 	}
 }
 
-Window *GetCallbackWnd()
+Window *GetCallbackWnd(void)
 {
 	return FindWindowById(_thd.window_class, _thd.window_number);
 }
 
-static void HandlePlacePresize()
+static void HandlePlacePresize(void)
 {
 	Window *w;
 	WindowEvent e;
@@ -724,7 +724,7 @@ static void HandlePlacePresize()
 	w->wndproc(w, &e);
 }
 
-static bool HandleDragDrop()
+static bool HandleDragDrop(void)
 {
 	Window *w;
 	WindowEvent e;
@@ -750,7 +750,7 @@ static bool HandleDragDrop()
 	return false;
 }
 
-static bool HandlePopupMenu()
+static bool HandlePopupMenu(void)
 {
 	Window *w;
 	WindowEvent e;
@@ -778,7 +778,7 @@ static bool HandlePopupMenu()
 	return false;
 }
 
-bool HandleMouseOver()
+bool HandleMouseOver(void)
 {
 	Window *w;
 	WindowEvent e;
@@ -811,7 +811,7 @@ bool HandleMouseOver()
 	return true;
 }
 
-bool HandleWindowDragging()
+bool HandleWindowDragging(void)
 {
 	Window *w;
 	// Get out immediately if no window is being dragged at all.
@@ -1069,7 +1069,7 @@ Window *StartWindowSizing(Window *w)
 }
 
 
-static bool HandleScrollbarScrolling()
+static bool HandleScrollbarScrolling(void)
 {
 	Window *w;
 	int i;
@@ -1115,7 +1115,7 @@ static bool HandleScrollbarScrolling()
 	return false;
 }
 
-static bool HandleViewportScroll()
+static bool HandleViewportScroll(void)
 {
 	Window *w;
 	ViewPort *vp;
@@ -1257,10 +1257,10 @@ static void HandleKeypress(uint32 key)
 	}
 }
 
-extern void UpdateTileSelection();
-extern bool VpHandlePlaceSizingDrag();
+extern void UpdateTileSelection(void);
+extern bool VpHandlePlaceSizingDrag(void);
 
-void MouseLoop()
+void MouseLoop(void)
 {
 	int x,y;
 	Window *w;
@@ -1390,7 +1390,7 @@ static int _we4_timer;
 
 extern uint32 _pixels_redrawn;
 
-void UpdateWindows()
+void UpdateWindows(void)
 {
 	Window *w;
 	int t;
@@ -1481,7 +1481,7 @@ void InvalidateWindowClasses(byte cls)
 }
 
 
-void CallWindowTickEvent()
+void CallWindowTickEvent(void)
 {
 	Window *w;
 	for(w=_last_window; w != _windows;) {
@@ -1490,7 +1490,7 @@ void CallWindowTickEvent()
 	}
 }
 
-void DeleteNonVitalWindows()
+void DeleteNonVitalWindows(void)
 {
 	Window *w;
 	for(w=_windows; w!=_last_window;) {

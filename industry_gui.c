@@ -264,7 +264,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 	},
 };
 
-void ShowBuildIndustryWindow()
+void ShowBuildIndustryWindow(void)
 {
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
 }
@@ -555,7 +555,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 	return r;
 }
 
-static void MakeSortedIndustryList()
+static void MakeSortedIndustryList(void)
 {
 	Industry *i;
 	int n = 0;
@@ -691,7 +691,7 @@ static const WindowDesc _industry_directory_desc = {
 
 
 
-void ShowIndustryDirectory()
+void ShowIndustryDirectory(void)
 {
 	/* Industry List */
 	Window *w;

@@ -17,7 +17,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 void SetViewportPosition(Window *w, int x, int y);
 ViewPort *IsPtInWindowViewport(Window *w, int x, int y);
-Point GetTileBelowCursor();
+Point GetTileBelowCursor(void);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void UpdateViewportPosition(Window *w);
@@ -31,21 +31,21 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 void AddChildSpriteScreen(uint32 image, int x, int y);
 
 
-void StartSpriteCombine();
-void EndSpriteCombine();
+void StartSpriteCombine(void);
+void EndSpriteCombine(void);
 
 void HandleViewportClicked(ViewPort *vp, int x, int y);
-void PlaceObject();
+void PlaceObject(void);
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
 void VpStartPlaceSizing(uint tile, int user);
-void VpStartPreSizing();
+void VpStartPreSizing(void);
 void VpSetPresizeRange(uint from, uint to);
 void VpSetPlaceSizingLimit(int limit);
 
-Vehicle *CheckMouseOverVehicle();
+Vehicle *CheckMouseOverVehicle(void);
 
 enum {
 	VPM_X_OR_Y = 0,

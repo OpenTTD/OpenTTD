@@ -26,9 +26,9 @@ struct {
 
 
 static void HandleStationPlacement(uint start, uint end);
-static void ShowBuildTrainDepotPicker();
-static void ShowBuildWaypointPicker();
-static void ShowStationBuilder();
+static void ShowBuildTrainDepotPicker(void);
+static void ShowBuildWaypointPicker(void);
+static void ShowStationBuilder(void);
 
 typedef void OnButtonClick(Window *w);
 
@@ -322,7 +322,7 @@ static void DoRailroadTrack(int mode)
 
 
 // This function is more or less a hack because DoRailroadTrack() would otherwise screw up
-static void SwapSelection()
+static void SwapSelection(void)
 {
 	TileHighlightData *thd = &_thd;
 	Point pt = thd->selstart;
@@ -332,7 +332,7 @@ static void SwapSelection()
 }
 
 
-static void HandleAutodirPlacement()
+static void HandleAutodirPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
 	int bit;
@@ -865,7 +865,7 @@ static const WindowDesc _station_builder_desc = {
 	StationBuildWndProc
 };
 
-static void ShowStationBuilder()
+static void ShowStationBuilder(void)
 {
 	AllocateWindowDesc(&_station_builder_desc);
 }
@@ -932,7 +932,7 @@ static const WindowDesc _build_depot_desc = {
 	BuildTrainDepotWndProc
 };
 
-static void ShowBuildTrainDepotPicker()
+static void ShowBuildTrainDepotPicker(void)
 {
 	AllocateWindowDesc(&_build_depot_desc);
 }
@@ -1007,7 +1007,7 @@ static const WindowDesc _build_waypoint_desc = {
 	BuildWaypointWndProc
 };
 
-static void ShowBuildWaypointPicker()
+static void ShowBuildWaypointPicker(void)
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
 	w->hscroll.cap = 5;
@@ -1015,7 +1015,7 @@ static void ShowBuildWaypointPicker()
 }
 
 
-void InitializeRailGui()
+void InitializeRailGui(void)
 {
 	_build_depot_direction = 3;
 	_railstation.numtracks = 1;

@@ -299,13 +299,13 @@ CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 # GNU make can only test for (in)equality
 # this is a workaround to test for >=
 ifeq ($(shell if test $(CC_VERSION) -ge 29; then echo true; fi), true)
-  CFLAGS += -O -Wall -Wno-multichar -Wsign-compare
+  CFLAGS += -O -Wall -Wno-multichar -Wsign-compare -Wstrict-prototypes
 endif
 ifeq ($(shell if test $(CC_VERSION) -ge 30; then echo true; fi), true)
   CFLAGS += -W -Wno-unused-parameter
 endif
 ifeq ($(shell if test $(CC_VERSION) -ge 34; then echo true; fi), true)
-  CFLAGS += -Wdeclaration-after-statement
+  CFLAGS += -Wdeclaration-after-statement -Wold-style-definition
 endif
 
 CDEFS=-DWITH_REV

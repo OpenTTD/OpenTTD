@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "fileio.h"
 #if defined(UNIX) || defined(__OS2__)
 #include <ctype.h> // required for tolower()
 #endif
@@ -21,7 +22,7 @@ typedef struct {
 static Fio _fio;
 
 // Get current position in file
-uint32 FioGetPos()
+uint32 FioGetPos(void)
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
 }
@@ -42,7 +43,7 @@ void FioSeekToFile(uint32 pos)
 	FioSeekTo(pos & 0xFFFFFF, SEEK_SET);
 }
 
-byte FioReadByte()
+byte FioReadByte(void)
 {
 	if (_fio.buffer == _fio.buffer_end) {
 		_fio.pos += FIO_BUFFER_SIZE;
@@ -64,13 +65,13 @@ void FioSkipBytes(int n)
 }
 
 
-uint16 FioReadWord()
+uint16 FioReadWord(void)
 {
 	byte b = FioReadByte();
 	return (FioReadByte() << 8) | b;
 }
 
-uint32 FioReadDword()
+uint32 FioReadDword(void)
 {
 	uint b = FioReadWord();
 	return (FioReadWord() << 16) | b;

@@ -22,7 +22,7 @@ static void UpdateSignVirtCoords(SignStruct *ss)
  * Update the coordinates of all signs
  *
  */
-void UpdateAllSignVirtCoords()
+void UpdateAllSignVirtCoords(void)
 {
 	SignStruct *ss;
 
@@ -53,7 +53,7 @@ static void MarkSignDirty(SignStruct *ss)
  *
  * @return The pointer to the new sign, or NULL if there is no more free space
  */
-static SignStruct *AllocateSign()
+static SignStruct *AllocateSign(void)
 {
 	SignStruct *s;
 	FOR_ALL_SIGNS(s)
@@ -173,7 +173,7 @@ void PlaceProc_Sign(uint tile)
  * Initialize the signs
  *
  */
-void InitializeSigns()
+void InitializeSigns(void)
 {
 	SignStruct *s;
 	int i;
@@ -200,7 +200,7 @@ static const byte _sign_desc[] = {
  * Save all signs
  *
  */
-static void Save_SIGN()
+static void Save_SIGN(void)
 {
 	SignStruct *s;
 
@@ -218,7 +218,7 @@ static void Save_SIGN()
  * Load all signs
  *
  */
-static void Load_SIGN()
+static void Load_SIGN(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

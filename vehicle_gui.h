@@ -4,7 +4,7 @@
 struct vehiclelist_d;
 
 void DrawVehicleProfitButton(Vehicle *v, int x, int y);
-void InitializeVehiclesGuiList();
+void InitializeVehiclesGuiList(void);
 
 /* sorter stuff */
 void RebuildVehicleLists(void);

@@ -88,7 +88,7 @@ static void DoPlaceMoreTrees(uint tile)
 	} while (--i);
 }
 
-static void PlaceMoreTrees()
+static void PlaceMoreTrees(void)
 {
 	int i = (Random() & 0x1F) + 25;
 	do {
@@ -96,7 +96,7 @@ static void PlaceMoreTrees()
 	} while (--i);
 }
 
-void PlaceTreesRandomly()
+void PlaceTreesRandomly(void)
 {
 	int i;
 	uint32 r;
@@ -126,7 +126,7 @@ void PlaceTreesRandomly()
 	}
 }
 
-void GenerateTrees()
+void GenerateTrees(void)
 {
 	int i;
 
@@ -568,7 +568,7 @@ static void TileLoop_Trees(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-void OnTick_Trees()
+void OnTick_Trees(void)
 {
 	uint32 r;
 	uint tile;
@@ -638,7 +638,7 @@ static void ChangeTileOwner_Trees(uint tile, byte old_player, byte new_player)
 	/* not used */
 }
 
-void InitializeTrees()
+void InitializeTrees(void)
 {
 	_trees_tick_ctr = 0;
 }

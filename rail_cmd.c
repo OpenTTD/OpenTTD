@@ -777,7 +777,7 @@ static void DoDeleteWaypoint(Waypoint *cp)
 }
 
 // delete waypoints after a while
-void WaypointsDailyLoop()
+void WaypointsDailyLoop(void)
 {
 	Waypoint *cp;
 	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
@@ -2276,7 +2276,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 	return 0;
 }
 
-void InitializeRail()
+void InitializeRail(void)
 {
 	_last_built_train_depot_tile = 0;
 }

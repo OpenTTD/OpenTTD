@@ -413,12 +413,14 @@ typedef struct FoundRoute {
 	void *to;
 } FoundRoute;
 
-static Town *AiFindRandomTown() {
+static Town *AiFindRandomTown(void)
+{
 	Town *t = GetTown(RandomRange(_total_towns));
 	return (t->xy != 0) ? t : NULL;
 }
 
-static Industry *AiFindRandomIndustry() {
+static Industry *AiFindRandomIndustry(void)
+{
 	Industry *i = GetIndustry(RandomRange(_total_industries));
 	return (i->xy != 0) ? i : NULL;
 }

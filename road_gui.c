@@ -12,9 +12,9 @@
 #include "station.h"
 
 
-static void ShowBusStationPicker();
-static void ShowTruckStationPicker();
-static void ShowRoadDepotPicker();
+static void ShowBusStationPicker(void);
+static void ShowTruckStationPicker(void);
+static void ShowRoadDepotPicker(void);
 
 static bool _remove_button_clicked;
 static bool _build_road_flag;
@@ -302,7 +302,7 @@ static const WindowDesc _build_road_desc = {
 	BuildRoadToolbWndProc
 };
 
-void ShowBuildRoadToolbar()
+void ShowBuildRoadToolbar(void)
 {
 	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
@@ -335,7 +335,7 @@ static const WindowDesc _build_road_scen_desc = {
 	BuildRoadToolbWndProc
 };
 
-void ShowBuildRoadScenToolbar()
+void ShowBuildRoadScenToolbar(void)
 {
 	AllocateWindowDescFront(&_build_road_scen_desc, 0);
 }
@@ -398,7 +398,7 @@ static const WindowDesc _build_road_depot_desc = {
 	BuildRoadDepotWndProc
 };
 
-static void ShowRoadDepotPicker()
+static void ShowRoadDepotPicker(void)
 {
 	AllocateWindowDesc(&_build_road_depot_desc);
 }
@@ -493,7 +493,7 @@ static const WindowDesc _bus_station_picker_desc = {
 	RoadStationPickerWndProc
 };
 
-static void ShowBusStationPicker()
+static void ShowBusStationPicker(void)
 {
 	AllocateWindowDesc(&_bus_station_picker_desc);
 }
@@ -519,12 +519,12 @@ static const WindowDesc _truck_station_picker_desc = {
 	RoadStationPickerWndProc
 };
 
-static void ShowTruckStationPicker()
+static void ShowTruckStationPicker(void)
 {
 	AllocateWindowDesc(&_truck_station_picker_desc);
 }
 
-void InitializeRoadGui()
+void InitializeRoadGui(void)
 {
 	_road_depot_orientation = 3;
 	_road_station_picker_orientation = 3;

@@ -153,7 +153,7 @@ static void Place_LandInfo(uint tile)
 	#endif
 }
 
-void PlaceLandBlockInfo()
+void PlaceLandBlockInfo(void)
 {
 	if (_cursor.sprite == 0x2CF) {
 		ResetObjectToPlace();
@@ -268,7 +268,7 @@ static const WindowDesc _about_desc = {
 };
 
 
-void ShowAboutWindow()
+void ShowAboutWindow(void)
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_about_desc);
@@ -426,12 +426,12 @@ static const WindowDesc _build_trees_scen_desc = {
 };
 
 
-void ShowBuildTreesToolbar()
+void ShowBuildTreesToolbar(void)
 {
 	AllocateWindowDesc(&_build_trees_desc);
 }
 
-void ShowBuildTreesScenToolbar()
+void ShowBuildTreesScenToolbar(void)
 {
 	AllocateWindowDescFront(&_build_trees_scen_desc, 0);
 }
@@ -1075,7 +1075,7 @@ static const Widget _save_dialog_scen_widgets[] = {
 };
 
 
-void BuildFileList()
+void BuildFileList(void)
 {
 	FiosFreeSavegameList();
 	if(_saveload_mode==SLD_NEW_GAME || _saveload_mode==SLD_LOAD_SCENARIO || _saveload_mode==SLD_SAVE_SCENARIO)
@@ -1084,7 +1084,7 @@ void BuildFileList()
 		_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
 }
 
-static void DrawFiosTexts()
+static void DrawFiosTexts(void)
 {
 	const char *path;
 	StringID str;
@@ -1102,7 +1102,7 @@ static void DrawFiosTexts()
 #endif
 
 
-static void MakeSortedSaveGameList()
+static void MakeSortedSaveGameList(void)
 {
 	/*	Directories are always above the files (FIOS_TYPE_DIR)
 	 *	Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
@@ -1352,7 +1352,7 @@ void ShowSaveLoadDialog(int mode)
 	ResetObjectToPlace();
 }
 
-void RedrawAutosave()
+void RedrawAutosave(void)
 {
 	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
 }
@@ -1475,7 +1475,7 @@ static const WindowDesc _select_scenario_desc = {
 	SelectScenarioWndProc
 };
 
-void AskForNewGameToStart()
+void AskForNewGameToStart(void)
 {
 	Window *w;
 
@@ -1524,7 +1524,7 @@ int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	return _opt.landscape;
 }
 
-extern void EnginesMonthlyLoop();
+extern void EnginesMonthlyLoop(void);
 
 // p2 1 (increase) or -1 (decrease)
 int32 ClickChangeDateCheat(int32 p1, int32 p2)
@@ -1759,7 +1759,7 @@ static const WindowDesc _cheats_desc = {
 };
 
 
-void ShowCheatWindow()
+void ShowCheatWindow(void)
 {
 	Window *w;
 

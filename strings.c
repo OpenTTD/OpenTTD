@@ -114,14 +114,14 @@ void InjectDparam(int amount)
 }
 
 
-int32 GetParamInt32()
+int32 GetParamInt32(void)
 {
 	int32 result = GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
-static int64 GetParamInt64()
+static int64 GetParamInt64(void)
 {
 	int64 result = GetDParam(0) + ((uint64)GetDParam(1) << 32);
 	memmove(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));
@@ -129,21 +129,21 @@ static int64 GetParamInt64()
 }
 
 
-int GetParamInt16()
+int GetParamInt16(void)
 {
 	int result = (int16)GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
-int GetParamInt8()
+int GetParamInt8(void)
 {
 	int result = (int8)GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
-int GetParamUint16()
+int GetParamUint16(void)
 {
 	int result = GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
@@ -259,7 +259,8 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
-uint GetCurrentCurrencyRate() {
+uint GetCurrentCurrencyRate(void)
+{
     return (&_currency_specs[_opt.currency])->rate;
 }
 
@@ -777,7 +778,7 @@ bool ReadLanguagePack(int lang_index) {
 }
 
 // make a list of the available language packs. put the data in _dynlang struct.
-void InitializeLanguagePacks()
+void InitializeLanguagePacks(void)
 {
 	DynamicLanguages *dl = &_dynlang;
 	int i, j, n, m,def;

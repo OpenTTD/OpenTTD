@@ -30,16 +30,16 @@
 
 #include <stdarg.h>
 
-void IncreaseSpriteLRU();
+void IncreaseSpriteLRU(void);
 void GenerateWorld(int mode);
-void CallLandscapeTick();
-void IncreaseDate();
-void RunOtherPlayersLoop();
-void DoPaletteAnimations();
-void MusicLoop();
-void ResetMusic();
-void InitializeStations();
-void DeleteAllPlayerStations();
+void CallLandscapeTick(void);
+void IncreaseDate(void);
+void RunOtherPlayersLoop(void);
+void DoPaletteAnimations(void);
+void MusicLoop(void);
+void ResetMusic(void);
+void InitializeStations(void);
+void DeleteAllPlayerStations(void);
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern void DoStartupNewPlayer(bool is_ai);
@@ -48,7 +48,7 @@ extern void ShowOSErrorBox(const char *buf);
 void redsq_debug(int tile);
 bool LoadSavegame(const char *filename);
 
-extern void HalGameLoop();
+extern void HalGameLoop(void);
 
 uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
@@ -110,10 +110,10 @@ char * CDECL str_fmt(const char *str, ...)
 
 // NULL midi driver
 static char *NullMidiStart(char **parm) { return NULL; }
-static void NullMidiStop() {}
+static void NullMidiStop(void) {}
 static void NullMidiPlaySong(const char *filename) {}
-static void NullMidiStopSong() {}
-static bool NullMidiIsSongPlaying() { return true; }
+static void NullMidiStopSong(void) {}
+static bool NullMidiIsSongPlaying(void) { return true; }
 static void NullMidiSetVolume(byte vol) {}
 
 const HalMusicDriver _null_music_driver = {
@@ -133,9 +133,10 @@ static const char *NullVideoStart(char **parm) {
 	_null_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
 	return NULL;
 }
-static void NullVideoStop() { free(_null_video_mem); }
+static void NullVideoStop(void) { free(_null_video_mem); }
 static void NullVideoMakeDirty(int left, int top, int width, int height) {}
-static int NullVideoMainLoop() {
+static int NullVideoMainLoop(void)
+{
 	int i = 1000;
 	do {
 		GameLoop();
@@ -158,7 +159,7 @@ const HalVideoDriver _null_video_driver = {
 
 // NULL sound driver
 static char *NullSoundStart(char **parm) { return NULL; }
-static void NullSoundStop() {}
+static void NullSoundStop(void) {}
 const HalSoundDriver _null_sound_driver = {
 	NullSoundStart,
 	NullSoundStop,
@@ -289,7 +290,7 @@ void LoadDriver(int driver, const char *name)
 	*var = drv;
 }
 
-static void showhelp()
+static void showhelp(void)
 {
 	char buf[4096], *p;
 	const DriverClass *dc = _driver_classes;
@@ -512,7 +513,7 @@ static void UnInitializeDynamicVariables(void)
 }
 
 
-void LoadIntroGame()
+void LoadIntroGame(void)
 {
 	char filename[256];
 	_game_mode = GM_MENU;
@@ -546,7 +547,7 @@ void LoadIntroGame()
 }
 
 extern void DedicatedFork(void);
-extern void CheckExternalFiles();
+extern void CheckExternalFiles(void);
 
 int ttd_main(int argc, char* argv[])
 {
@@ -775,7 +776,7 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-void MakeNewGame()
+void MakeNewGame(void)
 {
 	_game_mode = GM_NORMAL;
 
@@ -807,7 +808,7 @@ void MakeNewGame()
 	MarkWholeScreenDirty();
 }
 
-static void MakeNewEditorWorld()
+static void MakeNewEditorWorld(void)
 {
 	_game_mode = GM_EDITOR;
 
@@ -830,10 +831,10 @@ static void MakeNewEditorWorld()
 	MarkWholeScreenDirty();
 }
 
-void StartupPlayers();
-void StartupDisasters();
+void StartupPlayers(void);
+void StartupDisasters(void);
 
-void StartScenario()
+void StartScenario(void)
 {
 	_game_mode = GM_NORMAL;
 
@@ -1028,7 +1029,7 @@ normal_load:
 // The state must not be changed from anywhere
 // but here.
 // That check is enforced in DoCommand.
-void StateGameLoop()
+void StateGameLoop(void)
 {
 	// dont execute the state loop during pause
 	if (_pause) return;
@@ -1078,7 +1079,7 @@ void StateGameLoop()
 	_in_state_game_loop = false;
 }
 
-static void DoAutosave()
+static void DoAutosave(void)
 {
 	char buf[200];
 
@@ -1103,7 +1104,7 @@ static void DoAutosave()
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
 
-void GameLoop()
+void GameLoop(void)
 {
 	int m;
 
@@ -1178,7 +1179,7 @@ void GameLoop()
 		MusicLoop();
 }
 
-void BeforeSaveGame()
+void BeforeSaveGame(void)
 {
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
@@ -1189,7 +1190,7 @@ void BeforeSaveGame()
 	}
 }
 
-void ConvertTownOwner()
+void ConvertTownOwner(void)
 {
 	uint tile;
 
@@ -1208,7 +1209,7 @@ void ConvertTownOwner()
 }
 
 // before savegame version 4, the name of the company determined if it existed
-void CheckIsPlayerActive()
+void CheckIsPlayerActive(void)
 {
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
@@ -1219,7 +1220,7 @@ void CheckIsPlayerActive()
 }
 
 // since savegame version 4.1, exclusive transport rights are stored at towns
-void UpdateExclusiveRights()
+void UpdateExclusiveRights(void)
 {
 	Town *t;
 	FOR_ALL_TOWNS(t) if (t->xy != 0) {
@@ -1244,14 +1245,14 @@ byte convert_currency[] = {
 	18,  2, 20, };
 
 // since savegame version 4.2 the currencies are arranged differently
-void UpdateCurrencies()
+void UpdateCurrencies(void)
 {
 	_opt.currency = convert_currency[_opt.currency];
 }
 
 // up to revision 1413, the invisible tiles at the southern border have not been MP_VOID
 // even though they should have. This is fixed by this function
-void UpdateVoidTiles()
+void UpdateVoidTiles(void)
 {
 	uint i;
 	// create void tiles on the border

@@ -24,7 +24,7 @@ static inline SignStruct *GetSign(uint index)
 
 VARDEF SignStruct *_new_sign_struct;
 
-void UpdateAllSignVirtCoords();
+void UpdateAllSignVirtCoords(void);
 void PlaceProc_Sign(uint tile);
 
 /* misc.c */

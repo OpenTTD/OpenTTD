@@ -259,12 +259,12 @@ typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
-Vehicle *AllocateVehicle();
-Vehicle *ForceAllocateVehicle();
-Vehicle *ForceAllocateSpecialVehicle();
+Vehicle *AllocateVehicle(void);
+Vehicle *ForceAllocateVehicle(void);
+Vehicle *ForceAllocateSpecialVehicle(void);
 void UpdateVehiclePosHash(Vehicle *v, int x, int y);
 void VehiclePositionChanged(Vehicle *v);
-void AfterLoadVehicles();
+void AfterLoadVehicles(void);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(Vehicle *v);
 Vehicle *GetFirstVehicleInChain(Vehicle *v);
@@ -272,14 +272,14 @@ int CountVehiclesInChain(Vehicle *v);
 void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-void CallVehicleTicks();
+void CallVehicleTicks(void);
 
-Depot *AllocateDepot();
-Waypoint *AllocateWaypoint();
+Depot *AllocateDepot(void);
+Waypoint *AllocateWaypoint(void);
 void UpdateWaypointSign(Waypoint *cp);
 void RedrawWaypointSign(Waypoint *cp);
 
-void InitializeTrains();
+void InitializeTrains(void);
 bool IsTrainDepotTile(TileIndex tile);
 bool IsRoadDepotTile(TileIndex tile);
 

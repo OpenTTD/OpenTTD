@@ -714,7 +714,7 @@ static uint32 VehicleEnter_Water(Vehicle *v, uint tile, int x, int y)
 	return 0;
 }
 
-void InitializeDock()
+void InitializeDock(void)
 {
 	_last_built_ship_depot_tile = 0;
 }

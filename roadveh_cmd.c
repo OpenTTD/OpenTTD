@@ -1509,7 +1509,7 @@ void HandleClickOnRoadVeh(Vehicle *v)
 	ShowRoadVehViewWindow(v);
 }
 
-void RoadVehiclesYearlyLoop()
+void RoadVehiclesYearlyLoop(void)
 {
 	Vehicle *v;
 

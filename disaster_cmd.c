@@ -694,10 +694,10 @@ void OnNewDay_DisasterVehicle(Vehicle *v)
 	// not used
 }
 
-typedef void DisasterInitProc();
+typedef void DisasterInitProc(void);
 
 // Zeppeliner which crashes on a small airport
-static void Disaster0_Init()
+static void Disaster0_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	Station *st;
@@ -730,7 +730,7 @@ static void Disaster0_Init()
 	}
 }
 
-static void Disaster1_Init()
+static void Disaster1_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x;
@@ -753,7 +753,7 @@ static void Disaster1_Init()
 	}
 }
 
-static void Disaster2_Init()
+static void Disaster2_Init(void)
 {
 	Industry *i, *found;
 	Vehicle *v,*u;
@@ -789,7 +789,7 @@ static void Disaster2_Init()
 	}
 }
 
-static void Disaster3_Init()
+static void Disaster3_Init(void)
 {
 	Industry *i, *found;
 	Vehicle *v,*u,*w;
@@ -831,7 +831,7 @@ static void Disaster3_Init()
 	}
 }
 
-static void Disaster4_Init()
+static void Disaster4_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x,y;
@@ -856,7 +856,7 @@ static void Disaster4_Init()
 }
 
 // Submarine type 1
-static void Disaster5_Init()
+static void Disaster5_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -877,7 +877,7 @@ static void Disaster5_Init()
 }
 
 // Submarine type 2
-static void Disaster6_Init()
+static void Disaster6_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
@@ -897,7 +897,7 @@ static void Disaster6_Init()
 	v->age = 0;
 }
 
-static void Disaster7_Init()
+static void Disaster7_Init(void)
 {
 	Industry *i;
 	int maxloop = 15;
@@ -954,7 +954,7 @@ static const DisasterYears _dis_years[8] = {
 };
 
 
-static void DoDisaster()
+static void DoDisaster(void)
 {
 	byte buf[8];
 	byte year = _cur_year;
@@ -973,12 +973,12 @@ static void DoDisaster()
 }
 
 
-static void ResetDisasterDelay()
+static void ResetDisasterDelay(void)
 {
 	_disaster_delay = (int)(Random() & 0x1FF) + 730;
 }
 
-void DisasterDailyLoop()
+void DisasterDailyLoop(void)
 {
 	if (--_disaster_delay != 0)
 		return;
@@ -989,7 +989,8 @@ void DisasterDailyLoop()
 		DoDisaster();
 }
 
-void StartupDisasters() {
+void StartupDisasters(void)
+{
 	ResetDisasterDelay();
 }
 

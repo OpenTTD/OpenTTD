@@ -14,7 +14,7 @@
 #include "sound.h"
 #include "network.h"
 
-extern void StartupEconomy();
+extern void StartupEconomy(void);
 
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,
@@ -352,7 +352,7 @@ static const byte _color_sort[16] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1
 static const byte _color_similar_1[16] = {8, 6, 255, 12,  255, 0, 1, 1, 0, 13,  11,  10, 3,   9,  15, 14};
 static const byte _color_similar_2[16] = {5, 7, 255, 255, 255, 8, 7, 6, 5, 12, 255, 255, 9, 255, 255, 255};
 
-static byte GeneratePlayerColor()
+static byte GeneratePlayerColor(void)
 {
 	byte colors[16], pcolor, t2;
 	int i,j,n;
@@ -446,7 +446,7 @@ restart:;
 
 extern int GetPlayerMaxRailtype(int p);
 
-static Player *AllocatePlayer()
+static Player *AllocatePlayer(void)
 {
 	Player *p;
 	// Find a free slot
@@ -496,13 +496,13 @@ Player *DoStartupNewPlayer(bool is_ai)
 	return p;
 }
 
-void StartupPlayers()
+void StartupPlayers(void)
 {
 	// The AI starts like in the setting with +2 month max
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
-static void MaybeStartNewPlayer()
+static void MaybeStartNewPlayer(void)
 {
 	uint n;
 	Player *p;
@@ -521,7 +521,7 @@ static void MaybeStartNewPlayer()
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
-void InitializePlayers()
+void InitializePlayers(void)
 {
 	int i;
 	memset(_players, 0, sizeof(_players));
@@ -530,7 +530,7 @@ void InitializePlayers()
 	_cur_player_tick_index = 0;
 }
 
-void OnTick_Players()
+void OnTick_Players(void)
 {
 	Player *p;
 
@@ -546,7 +546,7 @@ void OnTick_Players()
 	}
 }
 
-void RunOtherPlayersLoop()
+void RunOtherPlayersLoop(void)
 {
 	Player *p;
 
@@ -578,7 +578,7 @@ StringID GetPlayerNameString(byte player, byte index)
 
 extern void ShowPlayerFinances(int player);
 
-void PlayersYearlyLoop()
+void PlayersYearlyLoop(void)
 {
 	Player *p;
 
@@ -1040,7 +1040,7 @@ static void SaveLoad_PLYR(Player *p) {
 	}
 }
 
-static void Save_PLYR()
+static void Save_PLYR(void)
 {
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
@@ -1051,7 +1051,7 @@ static void Save_PLYR()
 	}
 }
 
-static void Load_PLYR()
+static void Load_PLYR(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {

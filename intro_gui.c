@@ -40,7 +40,7 @@ static const Widget _select_game_widgets[] = {
 };
 
 extern void HandleOnEditText(WindowEvent *e);
-extern void HandleOnEditTextCancel();
+extern void HandleOnEditTextCancel(void);
 
 static void SelectGameWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
@@ -94,7 +94,7 @@ static const WindowDesc _select_game_desc = {
 	SelectGameWndProc
 };
 
-void ShowSelectGameWindow()
+void ShowSelectGameWindow(void)
 {
 	AllocateWindowDesc(&_select_game_desc);
 }
@@ -232,7 +232,7 @@ static const WindowDesc _ask_abandon_game_desc = {
 	AskAbandonGameWndProc
 };
 
-void AskExitGame()
+void AskExitGame(void)
 {
 	AllocateWindowDescFront(&_ask_abandon_game_desc, 0);
 }
@@ -285,7 +285,7 @@ static const WindowDesc _ask_quit_game_desc = {
 };
 
 
-void AskExitToGameMenu()
+void AskExitToGameMenu(void)
 {
 	AllocateWindowDescFront(&_ask_quit_game_desc, 0);
 }

@@ -3,14 +3,14 @@
 
 typedef struct {
 	char *(*start)(char **parm);
-	void (*stop)();
+	void (*stop)(void);
 } HalCommonDriver;
 
 typedef struct {
 	const char *(*start)(char **parm);
-	void (*stop)();
+	void (*stop)(void);
 	void (*make_dirty)(int left, int top, int width, int height);
-	int (*main_loop)();
+	int (*main_loop)(void);
 	bool (*change_resolution)(int w, int h);
 } HalVideoDriver;
 
@@ -21,16 +21,16 @@ enum {
 
 typedef struct {
 	char *(*start)(char **parm);
-	void (*stop)();
+	void (*stop)(void);
 } HalSoundDriver;
 
 typedef struct {
 	char *(*start)(char **parm);
-	void (*stop)();
+	void (*stop)(void);
 
 	void (*play_song)(const char *filename);
-	void (*stop_song)();
-	bool (*is_song_playing)();
+	void (*stop_song)(void);
+	bool (*is_song_playing)(void);
 	void (*set_volume)(byte vol);
 } HalMusicDriver;
 
@@ -83,7 +83,7 @@ enum DriverType {
 	MUSIC_DRIVER = 2,
 };
 
-extern void GameLoop();
+extern void GameLoop(void);
 extern bool _dbg_screen_rect;
 
 void LoadDriver(int driver, const char *name);
@@ -141,7 +141,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode);
 // Get a list of scenarios
 FiosItem *FiosGetScenarioList(int *num, int mode);
 // Free the list of savegames
-void FiosFreeSavegameList();
+void FiosFreeSavegameList(void);
 // Browse to. Returns a filename w/path if we reached a file.
 char *FiosBrowseTo(const FiosItem *item);
 // Get descriptive texts.
@@ -153,6 +153,6 @@ void FiosDelete(const char *name);
 // Make a filename from a name
 void FiosMakeSavegameName(char *buf, const char *name);
 
-void CreateConsole();
+void CreateConsole(void);
 
 #endif /* HAL_H */

@@ -183,6 +183,6 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 
 bool IsValidCommand(uint cmd);
-int32 GetAvailableMoneyForCommand();
+int32 GetAvailableMoneyForCommand(void);
 
 #endif /* COMMAND_H */

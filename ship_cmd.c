@@ -789,7 +789,7 @@ void HandleClickOnShip(Vehicle *v)
 	ShowShipViewWindow(v);
 }
 
-void ShipsYearlyLoop()
+void ShipsYearlyLoop(void)
 {
 	Vehicle *v;
 

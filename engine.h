@@ -80,8 +80,8 @@ enum {
 };
 
 
-void AddTypeToEngines();
-void StartupEngines();
+void AddTypeToEngines(void);
+void StartupEngines(void);
 
 
 extern byte _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
@@ -130,8 +130,8 @@ void DrawAircraftEngineInfo(int engine, int x, int y, int maxw);
 
 void AcceptEnginePreview(Engine *e, int player);
 
-void LoadCustomEngineNames();
-void DeleteCustomEngineNames();
+void LoadCustomEngineNames(void);
+void DeleteCustomEngineNames(void);
 
 
 enum {

@@ -41,9 +41,9 @@ static byte _network_clients_connected = 0;
 static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 
 /* Some externs / forwards */
-extern void ShowJoinStatusWindow();
-extern void StateGameLoop();
-extern uint GetCurrentCurrencyRate();
+extern void ShowJoinStatusWindow(void);
+extern void StateGameLoop(void);
+extern uint GetCurrentCurrencyRate(void);
 
 // Function that looks up the CI for a given client-index
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
@@ -878,7 +878,7 @@ void NetworkAddServer(const byte *b)
 /* Generates the list of manually added hosts from NetworkGameList and
  * dumps them into the array _network_host_list. This array is needed
  * by the function that generates the config file. */
-void NetworkRebuildHostList()
+void NetworkRebuildHostList(void)
 {
 	uint i = 0;
 	NetworkGameList *item = _network_game_list;
