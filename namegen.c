@@ -381,7 +381,22 @@ static byte MakeSlovakTownName(byte *buf, uint32 seed)
 static byte MakeNorwegianTownName(byte *buf, uint32 seed)
 {
 	strcpy(buf, "");
-	strcat(buf, name_norwegian_1[GetNumberBasedOnSeed(0, lengthof(name_norwegian_1), seed)]);
+
+	// Use first 4 bit from seed to decide whether or not this town should
+	// have a real name 3/16 chance.  Bit 0-3
+	if (GetNumberBasedOnSeed(0, 15, seed) < 3)
+	{
+		// Use 7bit for the realname table index.  Bit 4-10
+		strcat(buf, name_norwegian_real[GetNumberBasedOnSeed(4, lengthof(name_norwegian_real), seed)]);
+	}
+	else
+	{
+		// Use 7bit for the first fake part.  Bit 4-10
+		strcat(buf, name_norwegian_1[GetNumberBasedOnSeed(4, lengthof(name_norwegian_1), seed)]);
+		// Use 7bit for the last fake part.  Bit 11-17
+		strcat(buf, name_norwegian_2[GetNumberBasedOnSeed(11, lengthof(name_norwegian_2), seed)]);
+	}
+
 	return 0;
 }
 
