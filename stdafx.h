@@ -93,6 +93,10 @@
 #       include <malloc.h>
 #endif
 
+#if defined(__MINGW32__) || defined(__CYGWIN__)
+#include <malloc.h> // alloca()
+#endif
+
 // Stuff for MSVC
 #if defined(_MSC_VER)
 #	include <malloc.h> // alloca()

@@ -35,7 +35,7 @@ static struct {
 static HINSTANCE _inst;
 static bool _has_console;
 
-#if defined(MINGW32) || defined(__CYGWIN__)
+#if defined(__MINGW32__) || defined(__CYGWIN__)
 	#define __TIMESTAMP__   __DATE__ __TIME__
 #endif
 
@@ -993,6 +993,8 @@ bool LoadLibraryList(void **proc, const char *dll)
 	return true;
 }
 
+#ifdef _MSC_VER
+
 static const char *_exception_string;
 static void *_safe_esp;
 static char *_crash_msg;
@@ -1012,18 +1014,13 @@ void ShowOSErrorBox(const char *buf)
 		*(byte*)0 = 0;
 	}
 #endif
-
 }
-
-#ifdef _MSC_VER
 
 typedef struct DebugFileInfo {
 	uint32 size;
 	uint32 crc32;
 	SYSTEMTIME file_time;
 } DebugFileInfo;
-
-
 
 static uint32 *_crc_table;
 
@@ -1461,6 +1458,15 @@ static void Win32InitializeExceptions()
 	}
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
+}
+#else
+/* Get rid of unused variable warnings.. ShowOSErrorBox
+ * is now used twice, once in MSVC, and once in all other Win 
+ * compilers (cygwin, mingw, etc.) */
+void ShowOSErrorBox(const char *buf)
+{
+	MyShowCursor(true);
+	MessageBoxA(GetActiveWindow(), buf, "Error!", MB_ICONSTOP);
 }
 #endif
 

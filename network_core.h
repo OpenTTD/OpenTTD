@@ -9,19 +9,23 @@
 
 // Windows stuff
 #if defined(WIN32)
-#	include <windows.h>
-#	include <winsock2.h>
-#	include <ws2tcpip.h>
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
 
 #ifdef _MSC_VER
-#pragma comment (lib, "ws2_32.lib")
+	#pragma comment (lib, "ws2_32.lib")
 #endif //_MSC_VER
 
-#	define ENABLE_NETWORK // On windows, the network is always enabled
-#	define GET_LAST_ERROR() WSAGetLastError()
-#	define EWOULDBLOCK WSAEWOULDBLOCK
+#if ! (defined(__MINGW32__) || defined(__CYGWIN__))
+	#define ENABLE_NETWORK // On windows, the network is always enabled
+	// Windows has some different names for some types..
+	typedef SSIZE_T ssize_t;
+#endif
+
+#define GET_LAST_ERROR() WSAGetLastError()
+#define EWOULDBLOCK WSAEWOULDBLOCK
 // Windows has some different names for some types..
-typedef SSIZE_T ssize_t;
 typedef unsigned long in_addr_t;
 typedef INTERFACE_INFO IFREQ;
 #endif // WIN32

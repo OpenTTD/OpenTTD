@@ -162,7 +162,7 @@ static void DedicatedHandleKeyInput()
 		else {
 			printf("\n");
 			IConsoleCmdExec(input_line);
-			sprintf(input_line, "");
+			input_line[0] = '\0';
 		}
 	}
 #endif
