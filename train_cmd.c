@@ -1360,7 +1360,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (HASBIT(v->current_order.flags, OF_PART_OF_ORDERS)) {
+			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 				v->u.rail.days_since_order_progr = 0;
 				v->cur_order_index++;
 			}

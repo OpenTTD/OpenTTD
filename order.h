@@ -15,6 +15,8 @@ enum {
 };
 
 /* Order flags -- please use OFB instead OF and use HASBIT/SETBIT/CLEARBIT */
+
+/* Order flag masks - these are for direct bit operations */
 enum {
 	//Flags for stations:
 	OF_UNLOAD         = 0x2,
@@ -28,7 +30,7 @@ enum {
 	OF_NON_STOP  = 0x8
 };
 
-/* Order flags bits */
+/* Order flags bits - these are for the *BIT macros */
 enum {
 	OFB_UNLOAD         = 1,
 	OFB_FULL_LOAD      = 2,
@@ -36,6 +38,7 @@ enum {
 	OFB_HALT_IN_DEPOT  = 2,
 	OFB_NON_STOP       = 3
 };
+
 
 /* Possible clone options */
 enum {
