@@ -1,5 +1,6 @@
-#include <stdarg.h>
 #include "stdafx.h"
+#include <stdio.h>
+#include <stdarg.h>
 #include "ttd.h"
 #include "console.h"
 #include "debug.h"
