@@ -572,19 +572,20 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	}
 }
 
-static void EffectInit_0(Vehicle *v)
+static void ChimneySmokeInit(Vehicle *v)
 {
 	uint32 r = Random();
-	v->cur_image = (uint16)((r & 7) + 3701);
-	v->progress = (byte)((r >> 16)&7);
+	v->cur_image = SPR_CHIMNEY_SMOKE_0 + (r & 7);
+	v->progress = (r >> 16) & 7;
 }
 
-static void EffectTick_0(Vehicle *v)
+static void ChimneySmokeTick(Vehicle *v)
 {
-	uint tile;
-	uint img;
+	if (v->progress > 0) {
+		v->progress--;
+	} else {
+		TileIndex tile;
 
-	if (--v->progress & 0x80) {
 		BeginVehicleMove(v);
 
 		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
@@ -594,36 +595,40 @@ static void EffectTick_0(Vehicle *v)
 			return;
 		}
 
-		img = v->cur_image + 1;
-		if (img > 3708) img = 3701;
-		v->cur_image = img;
+		if (v->cur_image != SPR_CHIMNEY_SMOKE_7) {
+			v->cur_image++;
+		} else {
+			v->cur_image = SPR_CHIMNEY_SMOKE_0;
+		}
 		v->progress = 7;
 		VehiclePositionChanged(v);
 		EndVehicleMove(v);
 	}
 }
 
-static void EffectInit_1(Vehicle *v)
+static void SteamSmokeInit(Vehicle *v)
 {
-	v->cur_image = 3079;
+	v->cur_image = SPR_STEAM_SMOKE_0;
 	v->progress = 12;
 }
 
-static void EffectTick_1(Vehicle *v)
+static void SteamSmokeTick(Vehicle *v)
 {
-	bool moved;
+	bool moved = false;
 
 	BeginVehicleMove(v);
 
-	moved = false;
+	v->progress++;
 
-	if ((++v->progress & 7) == 0) {
+	if ((v->progress & 7) == 0) {
 		v->z_pos++;
 		moved = true;
 	}
 
-	if ((v->progress & 0xF)==4) {
-		if (++v->cur_image > 3083) {
+	if ((v->progress & 0xF) == 4) {
+		if (v->cur_image != SPR_STEAM_SMOKE_4) {
+			v->cur_image++;
+		} else {
 			EndVehicleMove(v);
 			DeleteVehicle(v);
 			return;
@@ -637,73 +642,81 @@ static void EffectTick_1(Vehicle *v)
 	}
 }
 
-static void EffectInit_2(Vehicle *v)
+static void DieselSmokeInit(Vehicle *v)
 {
-	v->cur_image = 3073;
+	v->cur_image = SPR_DIESEL_SMOKE_0;
 	v->progress = 0;
 }
 
-static void EffectTick_2(Vehicle *v)
+static void DieselSmokeTick(Vehicle *v)
 {
-	if ((++v->progress & 3) == 0) {
+	v->progress++;
+
+	if ((v->progress & 3) == 0) {
 		BeginVehicleMove(v);
 		v->z_pos++;
 		VehiclePositionChanged(v);
 		EndVehicleMove(v);
 	} else if ((v->progress & 7) == 1) {
 		BeginVehicleMove(v);
-		if (++v->cur_image > 3078) {
-			EndVehicleMove(v);
-			DeleteVehicle(v);
-		} else {
+		if (v->cur_image != SPR_DIESEL_SMOKE_5) {
+			v->cur_image++;
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
+		} else {
+			EndVehicleMove(v);
+			DeleteVehicle(v);
 		}
 	}
 }
 
-static void EffectInit_3(Vehicle *v)
+static void ElectricSparkInit(Vehicle *v)
 {
-	v->cur_image = 3084;
+	v->cur_image = SPR_ELECTRIC_SPARK_0;
 	v->progress = 1;
 }
 
-static void EffectTick_3(Vehicle *v)
+static void ElectricSparkTick(Vehicle *v)
 {
-	if (++v->progress > 2) {
+	if (v->progress < 2) {
+		v->progress++;
+	} else {
 		v->progress = 0;
 		BeginVehicleMove(v);
-		if (++v->cur_image > 3089) {
-			EndVehicleMove(v);
-			DeleteVehicle(v);
-		} else {
+		if (v->cur_image != SPR_ELECTRIC_SPARK_5) {
+			v->cur_image++;
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
+		} else {
+			EndVehicleMove(v);
+			DeleteVehicle(v);
 		}
 	}
 }
 
-static void EffectInit_4(Vehicle *v)
+static void SmokeInit(Vehicle *v)
 {
-	v->cur_image = 2040;
+	v->cur_image = SPR_SMOKE_0;
 	v->progress = 12;
 }
 
-static void EffectTick_4(Vehicle *v)
+static void SmokeTick(Vehicle *v)
 {
-	bool moved;
+	bool moved = false;
 
 	BeginVehicleMove(v);
 
-	moved = false;
+	v->progress++;
 
-	if ((++v->progress & 3) == 0) {
+	if ((v->progress & 3) == 0) {
 		v->z_pos++;
 		moved = true;
 	}
 
-	if ((v->progress & 0xF)==4) {
-		if (++v->cur_image > 2044) {
+	if ((v->progress & 0xF) == 4) {
+		if (v->cur_image != SPR_SMOKE_4) {
+			v->cur_image++;
+		} else {
 			EndVehicleMove(v);
 			DeleteVehicle(v);
 			return;
@@ -717,64 +730,74 @@ static void EffectTick_4(Vehicle *v)
 	}
 }
 
-static void EffectInit_5(Vehicle *v)
+static void ExplosionLargeInit(Vehicle *v)
 {
-	v->cur_image = 3709;
+	v->cur_image = SPR_EXPLOSION_LARGE_0;
 	v->progress = 0;
 }
 
-static void EffectTick_5(Vehicle *v)
+static void ExplosionLargeTick(Vehicle *v)
 {
-	if (!(++v->progress & 3)) {
+	v->progress++;
+	if ((v->progress & 3) == 0) {
 		BeginVehicleMove(v);
-		if (++v->cur_image > 3724) {
-			EndVehicleMove(v);
-			DeleteVehicle(v);
-		} else {
+		if (v->cur_image != SPR_EXPLOSION_LARGE_F) {
+			v->cur_image++;
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
+		} else {
+			EndVehicleMove(v);
+			DeleteVehicle(v);
 		}
 	}
 }
 
-static void EffectInit_6(Vehicle *v)
+static void BreakdownSmokeInit(Vehicle *v)
 {
-	v->cur_image = 3737;
+	v->cur_image = SPR_BREAKDOWN_SMOKE_0;
 	v->progress = 0;
 }
 
-static void EffectTick_6(Vehicle *v)
+static void BreakdownSmokeTick(Vehicle *v)
 {
-	if (!(++v->progress & 7)) {
+	v->progress++;
+	if ((v->progress & 7) == 0) {
 		BeginVehicleMove(v);
-		if (++v->cur_image > 3740) v->cur_image = 3737;
+		if (v->cur_image != SPR_BREAKDOWN_SMOKE_3) {
+			v->cur_image++;
+		} else {
+			v->cur_image = SPR_BREAKDOWN_SMOKE_0;
+		}
 		VehiclePositionChanged(v);
 		EndVehicleMove(v);
 	}
 
-	if (!--v->u.special.unk0) {
+	v->u.special.unk0--;
+	if (v->u.special.unk0 == 0) {
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
 		DeleteVehicle(v);
 	}
 }
 
-static void EffectInit_7(Vehicle *v)
+static void ExplosionSmallInit(Vehicle *v)
 {
-	v->cur_image = 3725;
+	v->cur_image = SPR_EXPLOSION_SMALL_0;
 	v->progress = 0;
 }
 
-static void EffectTick_7(Vehicle *v)
+static void ExplosionSmallTick(Vehicle *v)
 {
-	if (!(++v->progress & 3)) {
+	v->progress++;
+	if ((v->progress & 3) == 0) {
 		BeginVehicleMove(v);
-		if (++v->cur_image > 3736) {
-			EndVehicleMove(v);
-			DeleteVehicle(v);
-		} else {
+		if (v->cur_image != SPR_EXPLOSION_SMALL_B) {
+			v->cur_image++;
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
+		} else {
+			EndVehicleMove(v);
+			DeleteVehicle(v);
 		}
 	}
 }
@@ -828,7 +851,8 @@ static const struct {
 
 static void BulldozerTick(Vehicle *v)
 {
-	if ((++v->progress & 7) == 0) {
+	v->progress++;
+	if ((v->progress & 7) == 0) {
 		const BulldozerMovement* b = &_bulldozer_movement[v->u.special.unk0];
 
 		BeginVehicleMove(v);
@@ -853,60 +877,65 @@ static void BulldozerTick(Vehicle *v)
 	}
 }
 
-static void EffectInit_9(Vehicle *v)
+static void BubbleInit(Vehicle *v)
 {
-	v->cur_image = 4751;
+	v->cur_image = SPR_BUBBLE_GENERATE_0;
 	v->spritenum = 0;
 	v->progress = 0;
 }
 
-#define MK(x,y,z,i) (x+4)+(y+4)*16,(z+4)+i*16
+typedef struct BubbleMovement {
+	int8 x:4;
+	int8 y:4;
+	int8 z:4;
+	byte image:4;
+} BubbleMovement;
 
-/* -1,0,1,2 = 2*/
-/* -1,0,1   = 2*/
-/* */
-static const byte _effecttick9_data1[] = {
+#define MK(x, y, z, i) { x, y, z, i }
+#define ME(i) { i, 4, 0, 0 }
+
+static const BubbleMovement _bubble_float_sw[] = {
 	MK(0,0,1,0),
 	MK(1,0,1,1),
 	MK(0,0,1,0),
 	MK(1,0,1,2),
-	0x81,
+	ME(1)
 };
 
 
-static const byte _effecttick9_data2[] = {
+static const BubbleMovement _bubble_float_ne[] = {
 	MK(0,0,1,0),
 	MK(-1,0,1,1),
 	MK(0,0,1,0),
 	MK(-1,0,1,2),
-	0x81,
+	ME(1)
 };
 
-static const byte _effecttick9_data3[] = {
+static const BubbleMovement _bubble_float_se[] = {
 	MK(0,0,1,0),
 	MK(0,1,1,1),
 	MK(0,0,1,0),
 	MK(0,1,1,2),
-	0x81,
+	ME(1)
 };
 
-static const byte _effecttick9_data4[] = {
+static const BubbleMovement _bubble_float_nw[] = {
 	MK(0,0,1,0),
 	MK(0,-1,1,1),
 	MK(0,0,1,0),
 	MK(0,-1,1,2),
-	0x81,
+	ME(1)
 };
 
-static const byte _effecttick9_data5[] = {
+static const BubbleMovement _bubble_burst[] = {
 	MK(0,0,1,2),
 	MK(0,0,1,7),
 	MK(0,0,1,8),
 	MK(0,0,1,9),
-	0x80,
+	ME(0)
 };
 
-static const byte _effecttick9_data6[] = {
+static const BubbleMovement _bubble_absorb[] = {
 	MK(0,0,1,0),
 	MK(0,0,1,1),
 	MK(0,0,1,0),
@@ -985,26 +1014,27 @@ static const byte _effecttick9_data6[] = {
 	MK(1,0,1,1),
 	MK(0,0,1,0),
 	MK(1,0,1,2),
-	0x82,0,
+	ME(2),
 	MK(0,0,0,0xA),
 	MK(0,0,0,0xB),
 	MK(0,0,0,0xC),
 	MK(0,0,0,0xD),
 	MK(0,0,0,0xE),
-	0x80
+	ME(0)
 };
+#undef ME
 #undef MK
 
-static const byte * const _effecttick9_data[6] = {
-	_effecttick9_data1,
-	_effecttick9_data2,
-	_effecttick9_data3,
-	_effecttick9_data4,
-	_effecttick9_data5,
-	_effecttick9_data6,
+static const BubbleMovement * const _bubble_movement[] = {
+	_bubble_float_sw,
+	_bubble_float_ne,
+	_bubble_float_se,
+	_bubble_float_nw,
+	_bubble_burst,
+	_bubble_absorb,
 };
 
-static void EffectTick_9(Vehicle *v)
+static void BubbleTick(Vehicle *v)
 {
 	/*
 	 * Warning: those effects can NOT use Random(), and have to use
@@ -1012,67 +1042,68 @@ static void EffectTick_9(Vehicle *v)
 	 *  spritenum to the savegame, and so it will cause desyncs in
 	 *  multiplayer!! (that is: in ToyLand)
 	 */
-	int et;
-	const byte *b;
+	uint et;
+	const BubbleMovement *b;
 
-	if (((++v->progress)&3) != 0)
+	v->progress++;
+	if ((v->progress & 3) != 0)
 		return;
 
 	BeginVehicleMove(v);
 
-	et = v->engine_type + 1;
-
 	if (v->spritenum == 0) {
-		if (++v->cur_image < 4754) {
+		v->cur_image++;
+		if (v->cur_image < SPR_BUBBLE_GENERATE_3) {
 			VehiclePositionChanged(v);
 			EndVehicleMove(v);
 			return;
 		}
 		if (v->u.special.unk2 != 0) {
-			v->spritenum = (byte)((InteractiveRandom()&3)+1);
+			v->spritenum = (InteractiveRandom() & 3) + 1;
 		} else {
 			v->spritenum = 6;
 		}
 		et = 0;
+	} else {
+		et = v->engine_type + 1;
 	}
 
-again:
-	v->engine_type = et;
-	b = &_effecttick9_data[v->spritenum - 1][et*2];
+	b = &_bubble_movement[v->spritenum - 1][et];
 
-	if (*b == 0x80) {
+	if (b->y == 4 && b->x == 0) {
 		EndVehicleMove(v);
 		DeleteVehicle(v);
 		return;
 	}
 
-	if (*b == 0x81) {
-		if (v->z_pos > 180 || CHANCE16I(1,96, InteractiveRandom())) {
+	if (b->y == 4 && b->x == 1) {
+		if (v->z_pos > 180 || CHANCE16I(1, 96, InteractiveRandom())) {
 			v->spritenum = 5;
 			SndPlayVehicleFx(SND_2F_POP, v);
 		}
 		et = 0;
-		goto again;
 	}
 
-	if (*b == 0x82) {
-		uint tile;
+	if (b->y == 4 && b->x == 2) {
+		TileIndex tile;
 
 		et++;
 		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
 		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
 		if (IsTileType(tile, MP_INDUSTRY) &&
-				_map5[tile]==0xA2) {
+				_map5[tile] == 0xA2) {
 			AddAnimatedTile(tile);
 		}
-		goto again;
 	}
 
-	v->x_pos += (b[0]&0xF) - 4;
-	v->y_pos += (b[0]>>4)  - 4;
-	v->z_pos += (b[1]&0xF) - 4;
-	v->cur_image = 4748 + (b[1] >> 4);
+	v->engine_type = et;
+	b = &_bubble_movement[v->spritenum - 1][et];
+
+	v->x_pos += b->x;
+	v->y_pos += b->y;
+	v->z_pos += b->z;
+	v->cur_image = SPR_BUBBLE_0 + b->image;
 
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
@@ -1083,29 +1114,29 @@ typedef void EffectInitProc(Vehicle *v);
 typedef void EffectTickProc(Vehicle *v);
 
 static EffectInitProc * const _effect_init_procs[] = {
-	EffectInit_0,
-	EffectInit_1,
-	EffectInit_2,
-	EffectInit_3,
-	EffectInit_4,
-	EffectInit_5,
-	EffectInit_6,
-	EffectInit_7,
+	ChimneySmokeInit,
+	SteamSmokeInit,
+	DieselSmokeInit,
+	ElectricSparkInit,
+	SmokeInit,
+	ExplosionLargeInit,
+	BreakdownSmokeInit,
+	ExplosionSmallInit,
 	BulldozerInit,
-	EffectInit_9,
+	BubbleInit,
 };
 
 static EffectTickProc * const _effect_tick_procs[] = {
-	EffectTick_0,
-	EffectTick_1,
-	EffectTick_2,
-	EffectTick_3,
-	EffectTick_4,
-	EffectTick_5,
-	EffectTick_6,
-	EffectTick_7,
+	ChimneySmokeTick,
+	SteamSmokeTick,
+	DieselSmokeTick,
+	ElectricSparkTick,
+	SmokeTick,
+	ExplosionLargeTick,
+	BreakdownSmokeTick,
+	ExplosionSmallTick,
 	BulldozerTick,
-	EffectTick_9,
+	BubbleTick,
 };
 
 
