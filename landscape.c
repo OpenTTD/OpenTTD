@@ -80,22 +80,14 @@ int GetTileZ(uint tile)
 	return h;
 }
 
-void FindLandscapeHeightByTile(TileInfo *ti, uint tile)
+void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 {
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
-		ti->tileh = 0;
-		ti->type = MP_VOID;
-		ti->tile = 0;
-		ti->map5 = 0;
-		ti->z = 0;
-		return;
-	}
+	assert(tile < MapSize());
 
 	ti->tile = tile;
 	ti->map5 = _map5[tile];
 	ti->type = TileType(tile);
 	ti->tileh = GetTileSlope(tile, &ti->z);
-//	ti->z = min * 8;
 }
 
 /* find the landscape height for the coordinates x y */
