@@ -462,18 +462,16 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 {
 	SpriteGroup *group;
-	uint16 overriding_engine = -1;
 	byte cargo = CID_PURCHASE;
 
 	if (v != NULL) {
-		overriding_engine = v->type == VEH_Train ? v->u.rail.first_engine : -1;
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
 	}
 
 	group = &_engine_custom_sprites[engine][cargo];
 
-	if (overriding_engine != 0xffff) {
-		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, overriding_engine);
+	if (v != NULL && v->type == VEH_Train) {
+		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
