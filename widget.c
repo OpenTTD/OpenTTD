@@ -337,7 +337,7 @@ void DrawWindowWidgets(Window *w)
 			Point pt;
 			int c1,c2;
 
-			assert(r.bottom - r.top == 13); // XXX - to ensure the same sizes are used everywhere!
+			assert(r.bottom - r.top == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL) ? 0x20 : 0);
 			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL) ? 0x20 : 0);
