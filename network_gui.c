@@ -1189,6 +1189,8 @@ void ShowClientList()
 	AllocateWindowDesc(&_client_list_desc);
 }
 
+extern void SwitchMode(int new_mode);
+
 static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -1224,8 +1226,9 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 0: case 3: /* Close 'X' | Disconnect button */
 			NetworkDisconnect();
-			ShowNetworkGameWindow();
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+			SwitchMode(SM_MENU);
+			ShowNetworkGameWindow();
 			break;
 		}
 		break;
