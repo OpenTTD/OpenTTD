@@ -497,25 +497,24 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		Player *p = DEREF_PLAYER(w->window_number);
-		uint32 dis;
+		uint32 dis = 0;
 
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
 
 			if (!_networking) w->hidden_state |= (1 << 9); // hide company-password widget
+		} else {
+			if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) dis |= 1 << 9;
+			// Also disable the buy button if 25% is not-owned by someone
+			//   and the player is not an AI
+			if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) dis |= 1 << 9;
+			if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
+			if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
 		}
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
-
-		dis = 0;
-		if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) dis |= 1 << 9;
-		// Also disable the buy button if 25% is not-owned by someone
-		//   and the player is not an AI
-		if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) dis |= 1 << 9;
-		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
-		if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
 
 		w->disabled_state = dis;
 		DrawWindowWidgets(w);
