@@ -134,7 +134,7 @@
 #define AI_CHECK_MAX_VEHICLE_PER_STATION 10
 
 // How many thick between building 2 vehicles
-#define AI_BUILD_VEHICLE_TIME_BETWEEN 74
+#define AI_BUILD_VEHICLE_TIME_BETWEEN DAY_TICKS
 
 // How many days must there between vehicle checks
 //  The more often, the less non-money-making lines there will be

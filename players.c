@@ -494,7 +494,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 void StartupPlayers()
 {
 	// The AI starts like in the setting with +2 month max
-	_next_competitor_start = _opt.diff.competitor_start_time * 90 * 74 + RandomRange(60 * 74) + 1;
+	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
 static void MaybeStartNewPlayer()
@@ -513,7 +513,7 @@ static void MaybeStartNewPlayer()
 		DoStartupNewPlayer(true);
 	
 	// The next AI starts like the difficulty setting said, with +2 month max
-	_next_competitor_start = _opt.diff.competitor_start_time * 90 * 74 + RandomRange(60 * 74) + 1;
+	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
 void InitializePlayers()

@@ -667,7 +667,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
         		if (p2->is_active)
         			UpdateCompanyRatingAndValue(p2, false);
         		
-        	w->custom[0] = 74;
+        	w->custom[0] = DAY_TICKS;
         	w->custom[1] = 5;
         	
         	w->click_state = 1 << 13;
@@ -679,7 +679,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
         {
         	// Update the player score every 5 days
             if (--w->custom[0] == 0) {
-            	w->custom[0] = 74;
+            	w->custom[0] = DAY_TICKS;
             	if (--w->custom[1] == 0) {
             		Player *p2;
             		w->custom[1] = 5;

@@ -65,8 +65,7 @@ static void AiNew_State_FirstTime(Player *p) {
 static void AiNew_State_Nothing(Player *p) {
     assert(p->ainew.state == AI_STATE_NOTHING);
     // If we are done idling, start over again
-    // There go 74 ticks in a day
-	if (p->ainew.idle == 0) p->ainew.idle = RandomRange(74 * 2) + 74;
+	if (p->ainew.idle == 0) p->ainew.idle = RandomRange(DAY_TICKS * 2) + DAY_TICKS;
 	if (--p->ainew.idle == 0) {
 		// We are done idling.. what you say? Let's do something!
 		// I mean.. the next tick ;)
@@ -831,7 +830,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	length = p->ainew.path_info.route_length;
     	// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
     	// ROAD_ENGINES_INDEX is because the first roadveh engine is ROAD_ENGINES_INDEX, and _roadveh_speed starts from 0
-    	tiles_a_day = _roadveh_speed[i-ROAD_ENGINES_INDEX] * 74 / 256 / 16;
+    	tiles_a_day = _roadveh_speed[i-ROAD_ENGINES_INDEX] * DAY_TICKS / 256 / 16;
     	// We want a vehicle in a station once a month at least, so, calculate it!
     	// (the * 2 is because we have 2 stations ;))
     	amount = ((int)(((float)length / (float)tiles_a_day / 30 * 2))) * 2;
@@ -847,7 +846,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	length = p->ainew.path_info.route_length;
     	// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
     	// ROAD_ENGINES_INDEX is because the first roadveh engine is ROAD_ENGINES_INDEX, and _roadveh_speed starts from 0
-    	tiles_a_day = _roadveh_speed[i-ROAD_ENGINES_INDEX] * 74 / 256 / 16;
+    	tiles_a_day = _roadveh_speed[i-ROAD_ENGINES_INDEX] * DAY_TICKS / 256 / 16;
     	if (p->ainew.from_deliver)
     		max_cargo = DEREF_INDUSTRY(p->ainew.from_ic)->total_production[0];
     	else
