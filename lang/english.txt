@@ -1025,6 +1025,10 @@ STR_CONFIG_PATCHES_CURRENCY				:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Change setting value
 
+STR_TEMPERATE_LANDSCAPE			:temperate landscape
+STR_SUB_ARCTIC_LANDSCAPE		:sub-arctic landscape
+STR_SUB_TROPICAL_LANDSCAPE	:sub-tropical landscape
+STR_TOYLAND_LANDSCAPE				:toyland landscape
 
 STR_CHEATS										:{WHITE}Cheats
 STR_CHEATS_TIP								:{BLACK}Checkboxes indicate if you have used this cheat before
@@ -1035,6 +1039,7 @@ STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Magic bulldozer (remove industries, unmovabl
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE			:{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH					:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE			:{LTBLUE}Switch climate: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION					:{BLACK}Population
 

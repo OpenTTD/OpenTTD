@@ -1345,6 +1345,16 @@ int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 return _local_player;
 }
 
+// p1 -1 or +1 (down/up)
+int32 ClickChangeClimateCheat(int32 p1, int32 p2)
+{
+	_opt.landscape = p1;
+	GfxLoadSprites();
+	MarkWholeScreenDirty();
+	return _opt.landscape;
+}
+
+
 typedef int32 CheckButtonClick(int32, int32);
 static CheckButtonClick * const _cheat_button_proc[] = {
 	ClickMoneyCheat,
@@ -1415,8 +1425,9 @@ static const CheatEntry _cheats_ui[] = {
 	{CE_UINT8, 0, STR_CHEAT_CHANGE_PLAYER, 	&_local_player, 								&_cheats.switch_player.been_used,	&ClickChangePlayerCheat, 0, 11, 1},
 	{CE_BOOL, 0, STR_CHEAT_EXTRA_DYNAMITE,	&_cheats.magic_bulldozer.value,	&_cheats.magic_bulldozer.been_used},
 	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used},
-	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,		&_cheats.build_in_pause.been_used},
+	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,	&_cheats.build_in_pause.been_used},
 	{CE_BOOL, 0, STR_CHEAT_NO_JETCRASH,			&_cheats.no_jetcrash.value,			&_cheats.no_jetcrash.been_used},
+	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, 	&_opt.landscape, 						&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat, 0, 3, 1},
 };
 
 
@@ -1470,13 +1481,17 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(x+35, y+1, STR_681A, 0);
 				
 				val = ReadCE(ce);
+
+				// set correct string for switch climate cheat
+				if(ce->str==STR_CHEAT_SWITCH_CLIMATE)
+					val += STR_TEMPERATE_LANDSCAPE;
+
 				SET_DPARAM16(0, val);
 				
 				// draw colored flag for change player cheat
 				if(ce->str==STR_CHEAT_CHANGE_PLAYER)
 					DrawPlayerIcon(_current_player, 156, y+2);
 
-				
 			}
 
 		DrawString(50, y+1, ce->str, 0);
