@@ -133,8 +133,8 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 	int r, r2;
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
 		// The station is pointing to a direction, add a tile towards that direction, so the H-value is more accurate
-		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl + _tiles_around[PathFinderInfo->end_direction]);
-		r2 = GetTileDist(current->tile, PathFinderInfo->end_tile_br + _tiles_around[PathFinderInfo->end_direction]);
+		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDir(PathFinderInfo->end_direction));
+		r2 = GetTileDist(current->tile, PathFinderInfo->end_tile_br + TileOffsByDir(PathFinderInfo->end_direction));
 	} else {
 		// No direction, so just get the fastest route to the station
 		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl);
@@ -175,20 +175,20 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
   	// Go through all surrounding tiles and check if they are within the limits
    	for (i=0;i<4;i++) {
-   		if (GET_TILE_X(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_X(_tiles_around[i] + current->path.node.tile) < MapMaxX() - 1 &&
-       		GET_TILE_Y(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_Y(_tiles_around[i] + current->path.node.tile) < MapMaxY() - 1) {
+   		if (GET_TILE_X(TileOffsByDir(i) + current->path.node.tile) > 1 && GET_TILE_X(TileOffsByDir(i) + current->path.node.tile) < MapMaxX() - 1 &&
+       		GET_TILE_Y(TileOffsByDir(i) + current->path.node.tile) > 1 && GET_TILE_Y(TileOffsByDir(i) + current->path.node.tile) < MapMaxY() - 1) {
        		// We also directly test if the current tile can connect to this tile..
        		//  We do this simply by just building the tile!
 
        		// If the next step is a bridge, we have to enter it the right way
-       		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile + _tiles_around[i])) {
-       			if (IS_TILETYPE(current->path.node.tile + _tiles_around[i], MP_TUNNELBRIDGE)) {
+       		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile + TileOffsByDir(i))) {
+       			if (IS_TILETYPE(current->path.node.tile + TileOffsByDir(i), MP_TUNNELBRIDGE)) {
        				// An existing bridge... let's test the direction ;)
-       				if ((_map5[current->path.node.tile + _tiles_around[i]] & 1) != (i & 1)) continue;
+       				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1) != (i & 1)) continue;
    					// This problem only is valid for tunnels:
        				// When the last tile was not yet a tunnel, check if we enter from the right side..
-       				if (!IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE) && (_map5[current->path.node.tile + _tiles_around[i]] & 0x80) == 0) {
-       					if (i != (_map5[current->path.node.tile + _tiles_around[i]] & 3)) continue;
+       				if (!IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE) && (_map5[current->path.node.tile + TileOffsByDir(i)] & 0x80) == 0) {
+       					if (i != (_map5[current->path.node.tile + TileOffsByDir(i)] & 3)) continue;
        				}
        			}
        		}
@@ -213,14 +213,14 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        			// If not, this means we are at the starting station
        			if (PathFinderInfo->start_direction != AI_PATHFINDER_NO_DIRECTION) {
 		       		// We do need a direction?
-		       		if (AiNew_GetDirection(current->path.node.tile, current->path.node.tile + _tiles_around[i]) != PathFinderInfo->start_direction)
+		       		if (AiNew_GetDirection(current->path.node.tile, current->path.node.tile + TileOffsByDir(i)) != PathFinderInfo->start_direction)
 		       			// We are not pointing the right way, invalid tile
 		       			continue;
 		       	}
        		} else if (current->path.node.user_data[0] == 0) {
        			if (PathFinderInfo->rail_or_road) {
        				// Rail check
-       				dir = AiNew_GetRailDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + _tiles_around[i]);
+       				dir = AiNew_GetRailDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
        				r = DoCommandByTile(current->path.node.tile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
        				if (r == CMD_ERROR) continue;
 #ifdef AI_PATHFINDER_NO_90DEGREES_TURN
@@ -234,7 +234,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 #endif
        			} else {
        				// Road check
-       				dir = AiNew_GetRoadDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + _tiles_around[i]);
+       				dir = AiNew_GetRoadDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
        				if (AI_PATHFINDER_IS_ROAD(current->path.node.tile)) {
        					if (IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE)) {
        						// We have a bridge, how nicely! We should mark it...
@@ -259,7 +259,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        		}
 
 			// The tile can be connected
-   			aystar->neighbours[aystar->num_neighbours].tile = _tiles_around[i] + current->path.node.tile;
+   			aystar->neighbours[aystar->num_neighbours].tile = TileOffsByDir(i) + current->path.node.tile;
    			aystar->neighbours[aystar->num_neighbours].user_data[0] = 0;
    			aystar->neighbours[aystar->num_neighbours++].direction = 0;
        	}
@@ -280,11 +280,11 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
    		// Bridges can only be build on land that is not flat
    		//  And if there is a road or rail blocking
    		if (ti.tileh != 0 ||
-     		(PathFinderInfo->rail_or_road && IS_TILETYPE(tile + _tiles_around[dir], MP_STREET)) ||
-       		(!PathFinderInfo->rail_or_road && IS_TILETYPE(tile + _tiles_around[dir], MP_RAILWAY))) {
+     		(PathFinderInfo->rail_or_road && IS_TILETYPE(tile + TileOffsByDir(dir), MP_STREET)) ||
+       		(!PathFinderInfo->rail_or_road && IS_TILETYPE(tile + TileOffsByDir(dir), MP_RAILWAY))) {
 
     		for (;;) {
-    			new_tile += _tiles_around[dir];
+    			new_tile += TileOffsByDir(dir);
 
     	    	// Precheck, is the length allowed?
     	    	if (!CheckBridge_Stuff(0,GetBridgeLength(tile, new_tile))) break;

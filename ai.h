@@ -168,13 +168,6 @@ static const byte _illegal_curves[6] = {
     3, // upright and downright are not valid
 };
 
-static const TileIndexDiff _tiles_around[4] = {
-    TILE_XY(-1,0),
-    TILE_XY(0,1),
-    TILE_XY(1,0),
-    TILE_XY(0,-1),
-};
-
 enum {
     AI_STATE_STARTUP = 0,
     AI_STATE_FIRST_TIME,
