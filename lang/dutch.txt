@@ -1498,6 +1498,8 @@ STR_303C_OUTSTANDING						:Uitstekend
 STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
 STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} accepteerd niet langer {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} accepteerd niet langer {STRING} of {STRING}
+STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} accepteert voortaan {STRING}
+STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} accepteert voortaan {STRING} en {STRING}
 STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Richting van bushalte
 STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Richting van vrachtwagen laadgebied
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Te dicht bij een andere bushalte
@@ -1516,6 +1518,7 @@ STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Selecteer lengte van station
 STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Selecteer richting van bushalte
 STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Selecteer richting van vrachtwagen laadgebied
 STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Centreer hoofdbeeld op lokatie van station
+STR_3054_SHOW_STATION_RATINGS					:{BLACK}Bekijk stationsreputaties
 STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Hernoem station
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Laat lijst van gevraagde goederen zien
 STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Station namen - klik op naam om het hoofdbeeld te centreren op het station
@@ -1533,6 +1536,9 @@ STR_3060_AIRPORT						:Vliegveld
 STR_3061_TRUCK_LOADING_AREA					:
 STR_3062_BUS_STATION						:Bushalte
 STR_3063_SHIP_DOCK						:
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Markeer het dekkingsgebied van de voorgestelde locatie
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Markeer het dekkingsgebied van de voorgestelde locatie niet
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Dekkingsgebied markeren
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Monorail stationselectie
 STR_3068_DOCK							:{WHITE}Dok
 STR_3069_BUOY							:Boei
@@ -1541,17 +1547,32 @@ STR_306B_HELIPORT						:{BLACK}Helipoort
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station te verspreid
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Scheepswerf Orientatie
+STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...moet op water gebouwd worden
+STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Kan scheepswerf hier niet bouwen...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Selecteer scheepswerf orientatie
 STR_3804_WATER							:Water
 STR_3805_COAST_OR_RIVERBANK					:Kust of rivierbed
 STR_3806_SHIP_DEPOT						:Schipdepot
+STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...Kan niet op water bouwen
 
 ##id 0x4000
+STR_4000_SAVE_GAME						:{WHITE}Spel Opslaan
+STR_4001_LOAD_GAME						:{WHITE}Spel Laden
 STR_4002_SAVE							:{BLACK}Opslaan
 STR_4003_DELETE							:{BLACK}Verwijderen
 STR_4004							:{STRING}, {DATE_LONG}
 STR_4005_BYTES_FREE						:{BLACK}{COMMA32} megabytes vrij
 STR_4006_UNABLE_TO_READ_DRIVE					:{BLACK}Kan niet lezen van schijf
+STR_4007_GAME_SAVE_FAILED					:{WHITE}Opslaan Spel Mislukt
 STR_4008_UNABLE_TO_DELETE_FILE					:{WHITE}Kan bestand niet verwijderen
+STR_4009_GAME_LOAD_FAILED					:{WHITE}Laden Spel Mislukt
+STR_400A_LIST_OF_DRIVES_DIRECTORIES				:{BLACK}Lijst van schijven, mappen, en opgeslagen spellen
+STR_400B_CURRENTLY_SELECTED_NAME				:{BLACK}Huidige gekozen naam voor opgeslagen spel
+STR_400C_DELETE_THE_CURRENTLY_SELECTED				:{BLACK}Verwijder het momenteel geselecteerde opgeslagen spel
+STR_400D_SAVE_THE_CURRENT_GAME_USING				:{BLACK}Sla het huidige spel op onder de gekozen naam
+STR_400E_SELECT_NEW_GAME_TYPE					:{WHITE}Selecteer Nieuw Spel Type
+STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Selecteer scenario (groen), vooraf ingesteld spel (blauw), or willekeurig nieuw spel
 STR_4010_GENERATE_RANDOM_NEW_GAME				:Genereer willekeurig nieuw spel
 
 ##id 0x4800
@@ -1596,26 +1617,84 @@ STR_4825_TOFFEE_QUARRY						:Toffeegroeve
 STR_4826_SUGAR_MINE						:Suikermijn
 
 ############ range for requires	starts
+STR_4827_REQUIRES						:{BLACK}Vereist: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Vereist: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Vereist: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Productie vorige maand:
 STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% getransporteerd)
+STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centreer het hoofdbeeld op de locatie van de industrie
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Nieuw {STRING} in aanbouw bij {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Nieuw {STRING} in aanplant bij {TOWN}!
 STR_482F_COST							:{BLACK}Kosten: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Kan dit type industrie hier niet bouwen...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...bossen kunnen alleen worden geplant boven de sneeuwgrens
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} kondigt dreigend faillissement aan!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Leveringsproblemen noodzaken {TOWN} {STRING} dreigend faillissement aan te kondigen!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Gebrek aan nabije bomen noodzaakt {TOWN} {STRING} dreigend faillissement aan te kondigen!
 STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} verhoogt productie!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}Nieuwe kolenader gevonden bij {TOWN} {STRING}!{}Men verwacht productieverdubbeling!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}Nieuwe oliebronnen gevonden bij {TOWN} {STRING}!{}Men verwacht productieverdubbeling!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Verbeterde landbouwmethoden bij {TOWN} {STRING} zorgen voor een verwachte productieverdubbeling!
 STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}Productie van {TOWN} {STRING} verlaagd met 50%
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Insectenplaag zorgt voor ravage bij {TOWN} {STRING}!{}Productie gezakt met 50%
+STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...kan alleen aan de rand van de kaart geplaatst worden
+STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} stijgt met {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} daalt met {COMMA16}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Trein in tunnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL					:{WHITE}Wegvoertuig in tunnel
 STR_5002							:
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY				:{WHITE}Andere tunnel in de weg
+STR_5004							:
+STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Tunnel moet eerst afgebroken worden
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Brug moet eerst afgebroken worden
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Kan niet beginnen en eindigen op dezelfde plaats
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Vlak land of water vereist onder brug
+STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Begin en einde moeten op een lijn staan
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Locatie ongeschikt voor ingang tunnel
+STR_500C							:
+STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL					:Hangbrug, Staal
+STR_500F_GIRDER_STEEL						:Vlak, Staal
+STR_5010_CANTILEVER_STEEL					:Cantilever, Staal
+STR_5011_SUSPENSION_CONCRETE					:Hangbrug, Beton
+STR_5012_WOODEN							:Hout
+STR_5013_CONCRETE						:Beton
+STR_5014_TUBULAR_STEEL						:Koker, Staal
+STR_BRIDGE_TUBULAR_SILICON					:Koker, Silicium
 STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Kan hier geen brug bouwen...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Kan hier geen tunnel bouwen...
 STR_5017_RAILROAD_TUNNEL					:Spoortunnel
+STR_5018_ROAD_TUNNEL						:Weg tunnel
 STR_5019							:
 STR_501A							:
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Stalen hangende spoorweg brug
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Steel girder rail bridge
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Stalen cantilever spoorweg brug
+STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Gewapend betonnen hangende spoorweg brug
+STR_501F_WOODEN_RAIL_BRIDGE					:Houten spoorweg brug
+STR_5020_CONCRETE_RAIL_BRIDGE					:Betonnen spoorweg brug
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Stalen hangende weg brug
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Stalen vlakke weg brug
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Stalen cantilever weg brug
+STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Gewapend betonnen hangende weg brug
+STR_5025_WOODEN_ROAD_BRIDGE					:Houten weg brug
+STR_5026_CONCRETE_ROAD_BRIDGE					:Betonnen weg brug
+STR_5027_TUBULAR_RAIL_BRIDGE					:Kokervormige spoorweg brug
+STR_5028_TUBULAR_ROAD_BRIDGE					:Kokervormige weg brug
+STR_5029_STEEL							:Staal
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Object in de weg
+STR_5801_TRANSMITTER						:Zender
 STR_5802_LIGHTHOUSE						:Vuurtoren
+STR_5803_COMPANY_HEADQUARTERS					:Bedrijfs Hoofdkwartier
+STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...bedrijfs hoofdkwartier in de weg
+STR_5805_COMPANY_OWNED_LAND					:Door een bedrijf opgekocht terrein
 STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Kan dit stuk land niet kopen...
 STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...het is al van jou!
 
@@ -1623,6 +1702,7 @@ STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...het is al van jou!
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY							:
 STR_SV_UNNAMED							:Geen naam{SKIP}
 STR_SV_TRAIN_NAME						:Trein {COMMA16}
 STR_SV_ROADVEH_NAME						:Automobiel {COMMA16}
@@ -1635,10 +1715,17 @@ STR_SV_STNAME_SOUTH						:{STRING} Zuid
 STR_SV_STNAME_EAST						:{STRING} Oost
 STR_SV_STNAME_WEST						:{STRING} West
 STR_SV_STNAME_CENTRAL						:{STRING} Centraal
+STR_SV_STNAME_TRANSFER						:{STRING} Transferium
+STR_SV_STNAME_HALT						:{STRING} Halte
 STR_SV_STNAME_VALLEY						:{STRING} Vallei
+STR_SV_STNAME_HEIGHTS						:{STRING} Hoogte
 STR_SV_STNAME_WOODS						:{STRING} Bossen
+STR_SV_STNAME_LAKESIDE						:{STRING} Meerkant
+STR_SV_STNAME_EXCHANGE						:{STRING} Uitwisseling
 STR_SV_STNAME_AIRPORT						:{STRING} Vliegveld
+STR_SV_STNAME_OILFIELD						:{STRING} Olieveld
 STR_SV_STNAME_MINES						:{STRING} Mijnen
+STR_SV_STNAME_DOCKS						:{STRING} Haven
 STR_SV_STNAME_BUOY_1						:{STRING} Boei 1
 STR_SV_STNAME_BUOY_2						:{STRING} Boei 2
 STR_SV_STNAME_BUOY_3						:{STRING} Boei 3
@@ -1648,6 +1735,13 @@ STR_SV_STNAME_BUOY_6						:{STRING} Boei 6
 STR_SV_STNAME_BUOY_7						:{STRING} Boei 7
 STR_SV_STNAME_BUOY_8						:{STRING} Boei 8
 STR_SV_STNAME_BUOY_9						:{STRING} Boei 9
+STR_SV_STNAME_ANNEXE						:{STRING} Bijbouw
+STR_SV_STNAME_SIDINGS						:{STRING} Zijspoor
+STR_SV_STNAME_BRANCH						:{STRING} Aftakking
+STR_SV_STNAME_UPPER						:Hoger {STRING}
+STR_SV_STNAME_LOWER						:Lager {STRING}
+STR_SV_STNAME_HELIPORT						:{STRING} Helihaven
+STR_SV_STNAME_FOREST						:{STRING} Bossen
 
 ############ end of	savegame specific region!
 
@@ -1672,13 +1766,18 @@ STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Startrente: {ORANGE}{COMMA16}%
 STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Brandstofkosten: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Bouwsnelheid van tegenstanders: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Intelligentie van tegenstanders: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Voertuig defecten: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Vermenigvuldigingsfactor subsidie: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION					:{LTBLUE}Bouwkosten: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE						:{LTBLUE}Terreinsoort: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Hoeveelheid zee/meren: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Economie: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING					:{LTBLUE}Treinen draaien om: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Rampen: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL						:{LTBLUE}Standpunt van gemeenteraad tegenover herstructurering van het landschap: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Geen
 STR_6816_LOW							:Laag
 STR_6817_NORMAL							:Normaal
 STR_6818_HIGH							:Hoog
@@ -1714,6 +1813,7 @@ STR_6834_AT_END_OF_LINE_AND_AT_STATIONS				:Aan het eind van het spoor, en in st
 STR_6835_AT_END_OF_LINE_ONLY					:Aan het eind van het spoor
 STR_6836_OFF							:Uit
 STR_6837_ON							:Aan
+STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Bekijk topscore lijst
 STR_6839_PERMISSIVE						:Tolerant
 STR_683A_TOLERANT						:Neutraal
 STR_683B_HOSTILE						:Negatief
@@ -1721,6 +1821,7 @@ STR_683B_HOSTILE						:Negatief
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7002_PLAYER							:(Speler {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nieuw gezicht
 STR_7005_COLOR_SCHEME						:{BLACK}Kleurenschema
 STR_7006_COLOR_SCHEME						:{GOLD}Kleurenschema:
@@ -1730,6 +1831,8 @@ STR_7009_PRESIDENT_NAME						:{BLACK}Naam van directeur
 STR_700A_COMPANY_NAME						:Bedrijfsnaam
 STR_700B_PRESIDENT_S_NAME					:Naam van directeur
 STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kan bedrijfsnaam niet veranderen...
+STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Kan naam manager niet veranderen...
+STR_700E_FINANCES						:{WHITE}{STRING} Financiën{BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Uitgaven/inkomsten
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Bouwkosten
@@ -1753,7 +1856,10 @@ STR_7022_INCOME_GRAPH						:{WHITE}Inkomstengrafiek
 STR_CURRCOMPACT32						:{CURRCOMPACT}
 STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
+STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Bedrijfswinst Grafiek
+STR_7026_BANK_BALANCE						:{WHITE}Bank Saldo
 STR_7027_LOAN							:{WHITE}Lening
+STR_MAX_LOAN							:{WHITE}Max Lening:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Betaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} terug
@@ -1763,10 +1869,14 @@ STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...geen lening om terug te betalen
 STR_702E_REQUIRED						:{WHITE}...{CURRENCY} benodigd
 STR_702F_CAN_T_REPAY_LOAN					:{WHITE}Kan geen lening terugbetalen
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT				:{BLACK}Kies nieuw gezicht voor directeur
+STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Verander het uiterlijk van de bedrijfsvoertuigen
+STR_7032_CHANGE_THE_PRESIDENT_S					:{BLACK}Verander de naam van de manager
+STR_7033_CHANGE_THE_COMPANY_NAME				:{BLACK}Verander de bedrijfsnaam
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Klik op geselecteerde nieuwe kleurenschema
 STR_7035_INCREASE_SIZE_OF_LOAN					:{BLACK}Vergroot lening
 STR_7036_REPAY_PART_OF_LOAN					:{BLACK}Betaal deel van lening terug
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Directeur)
+STR_7038_INAUGURATED						:{GOLD}Gesticht: {WHITE}{NUMU16}
 STR_7039_VEHICLES						:{GOLD}Voertuigen:
 STR_703A_TRAIN							:{WHITE}{COMMA16} trein
 STR_703B_TRAINS							:{WHITE}{COMMA16} treinen
@@ -1791,6 +1901,7 @@ STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Laat grafieklegenda zien
 STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Legenda voor bedrijfsgrafieken
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY				:{BLACK}Klik hier om dit bedrijf weer te geven of te verbergen op de grafiek
 STR_7050_UNITS_OF_CARGO_DELIVERED				:{WHITE}Eenheden van goederen afgeleverd
+STR_7051_COMPANY_PERFORMANCE_RATINGS				:{WHITE}Bedrijfs prestatie score (maximale score=1000)
 STR_7052_COMPANY_VALUES						:{WHITE}Bedrijfswaarde
 STR_7053_COMPANY_LEAGUE_TABLE					:{WHITE}Bedrijfscompetitietabel
 STR_7054							:{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRING}'
@@ -1806,8 +1917,97 @@ STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} is gesloten door s
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Nieuw transportbedrijf opgestart!
 STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} begint werkzaamheden bij {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Kan bedrijf niet kopen...
+STR_7061_CARGO_PAYMENT_RATES					:{WHITE}Betalingsverhouding Vracht
+STR_7062_DAYS_IN_TRANSIT					:{BLACK}{TINYFONT}Dagen onderweg
+STR_7063_PAYMENT_FOR_DELIVERING					:{BLACK}{TINYFONT}Betaling voor het leveren van 10 eenheden (of 10,000 liter) aan vracht over een afstand van 20 vakjes
+STR_7064_TOGGLE_GRAPH_FOR_CARGO					:{BLACK}Schakel grafiek voor vrachttype aan/uit
+STR_7065							:{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER						:Ingenieur
+STR_7067_TRAFFIC_MANAGER					:Verkeersleider
+STR_7068_TRANSPORT_COORDINATOR					:Transport Coördinator
+STR_7069_ROUTE_SUPERVISOR					:Route Opzichter
+STR_706A_DIRECTOR						:Onderdirecteur
+STR_706B_CHIEF_EXECUTIVE					:Directeur
+STR_706C_CHAIRMAN						:Voorzitter
+STR_706D_PRESIDENT						:President
+STR_706E_TYCOON							:Tycoon
+STR_706F_BUILD_HQ						:{BLACK}Bouw HQ
+STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Bouw bedrijfs hoofdkwartier / bekijk bedrijfs hoodkwartier
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Herbouw bedrijfs hoofdkwartier ergens anders voor 1% van de bedrijfswaarde
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan bedrijfs hoofdkwartier niet bouwen
+STR_7072_VIEW_HQ						:{BLACK}Bekijk HQ
+STR_RELOCATE_HQ							:{BLACK}Verplaats HQ
+STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
+STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigt!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Schakel tussen groot/klein venster
+STR_7076_COMPANY_VALUE						:{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Koop 25% aandeel in bedrijf
+STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Verkoop 25% aandeel in bedrijf
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Koop een aandeel van 25% in dit bedrijf
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY				:{BLACK}Verkoop een aandeel van 25% in dit bedrijf
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS				:{WHITE}Can't buy 25% share in this company...
+STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
+STR_707D_OWNED_BY						:{WHITE}({COMMA16}% eigendom van {STRING})
+STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% eigendom van {STRING}{}   {COMMA16}% eigendom van {STRING})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} is overgenomen door {STRING}!
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Stoom)
+STR_8001_MJS_250_DIESEL						:MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO					:Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO					:Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO					:Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL					:Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL					:Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM					:Wills 2-8-0 (Stoom)
+STR_8008_CHANEY_JUBILEE_STEAM					:Chaney 'Jubilee' (Stoom)
+STR_8009_GINZU_A4_STEAM						:Ginzu 'A4' (Stoom)
+STR_800A_SH_8P_STEAM						:SH '8P' (Stoom)
+STR_800B_MANLEY_MOREL_DMU_DIESEL				:Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL						:'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL					:SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL						:UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL					:Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL						:CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL						:CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL					:Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL					:Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL					:Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL					:MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL						:SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC						:SH '30' (Electrisch)
+STR_8018_SH_40_ELECTRIC						:SH '40' (Electrisch)
+STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Electrisch)
+STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Electrisch)
+STR_801B_PASSENGER_CAR						:Passagierswagon
+STR_801C_MAIL_VAN						:Postwagen
+STR_801D_COAL_CAR						:Kolenwagen
+STR_801E_OIL_TANKER						:Olietanker
+STR_801F_LIVESTOCK_VAN						:Veewagen
+STR_8020_GOODS_VAN						:Goederenwagen
+STR_8021_GRAIN_HOPPER						:Graanwagen
+STR_8022_WOOD_TRUCK						:Houttruck
+STR_8023_IRON_ORE_HOPPER					:IJzerertswagen
+STR_8024_STEEL_TRUCK						:Staaltruck
+STR_8025_ARMORED_VAN						:Beveiligde wagen
+STR_8026_FOOD_VAN						:Voedselwagen
+STR_8027_PAPER_TRUCK						:Papiertruck
+STR_8028_COPPER_ORE_HOPPER					:Koperertswagen
+STR_8029_WATER_TANKER						:Watertanker
+STR_802A_FRUIT_TRUCK						:Fruittruck
+STR_802B_RUBBER_TRUCK						:Rubbertruck
+STR_802C_SUGAR_TRUCK						:Suikertruck
+STR_802D_COTTON_CANDY_HOPPER					:Suikerspinwagen
+STR_802E_TOFFEE_HOPPER						:Toffeewagen
+STR_802F_BUBBLE_VAN						:Bubbelwagen
+STR_8030_COLA_TANKER						:Colatanker
+STR_8031_CANDY_VAN						:Snoepwagen
+STR_8032_TOY_VAN						:Speelgoedwagen
+STR_8033_BATTERY_TRUCK						:Batterijwagen
+STR_8034_FIZZY_DRINK_TRUCK					:Colawagen
+STR_8035_PLASTIC_TRUCK						:Plasticwagen
+STR_8036_X2001_ELECTRIC						:'X2001' (Electrisch)
+STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Electrisch)
 STR_8074_MPS_REGAL_BUS						:MPS Regal Bus
 STR_8075_HEREFORD_LEOPARD_BUS					:Hereford Leopard Bus
 STR_8076_FOSTER_BUS						:Foster Bus
