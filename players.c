@@ -13,7 +13,7 @@
 extern void StartupEconomy();
 
 static const SpriteID cheeks_table[4] = {
-	0x325, 0x326, 
+	0x325, 0x326,
 	0x390, 0x3B0,
 };
 
@@ -60,10 +60,10 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 		if (!(flag & 2)) {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 12 >> 4) + 0x832B), x, y); 			
+				DrawSprite(high+((val1 * 12 >> 4) + 0x832B), x, y);
 			} else {
 				DrawSprite(high+(val1 + 0x8337), x, y);
-			}	
+			}
 		} else {
 			if (!(flag & 1)) {
 				DrawSprite(high+((val1 * 11 >> 4) + 0x839A), x, y);
@@ -80,11 +80,11 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 		if (!(flag&1)) {
 			val2 = ((val&0xF) * 15 >> 4);
-			
+
 			if (val2 < 3) {
 				DrawSprite((flag&2 ? 0x397 : 0x367) + val2, x, y);
 				/* skip the rest */
-				goto skip_mouth;				
+				goto skip_mouth;
 			}
 
 			val2 -= 3;
@@ -148,7 +148,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		} else {
 			DrawSprite(0x378 + ((val&3)*3>>2), x, y);
 			DrawSprite(0x37B + ((val>>2)&3), x, y);
-			
+
 			val >>= 4;
 			if (val < 3) {
 				DrawSprite((flag&2 ? 0x3D1 : 0x37F) + val, x, y);
@@ -198,14 +198,14 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 {
 	p->money64 -= cost;
 	UpdatePlayerMoney32(p);
-	
+
 	p->yearly_expenses[0][_yearly_expenses_type] += cost;
 
 	if ( ( 1 << _yearly_expenses_type ) & (1<<7|1<<8|1<<9|1<<10))
 		p->cur_economy.income -= cost;
 	else if (( 1 << _yearly_expenses_type ) & (1<<2|1<<3|1<<4|1<<5|1<<6|1<<11))
 		p->cur_economy.expenses -= cost;
-		
+
 	InvalidatePlayerWindows(p);
 }
 
@@ -236,13 +236,13 @@ void UpdatePlayerMoney32(Player *p)
 	else if (p->money64 > 2000000000)
 		p->player_money = 2000000000;
 	else
-		p->player_money = (int32)p->money64; 
+		p->player_money = (int32)p->money64;
 }
 
 void GetNameOfOwner(byte owner, uint tile)
 {
 	SET_DPARAM8(2, owner);
-		
+
 	if (owner != OWNER_TOWN) {
 		if (owner >= 8)
 			SET_DPARAM16(0, STR_0150_SOMEONE);
@@ -274,10 +274,10 @@ bool CheckTileOwnership(uint tile)
 {
 	byte owner = _map_owner[tile];
 	assert(owner <= OWNER_WATER);
-	if (owner == _current_player) 
+	if (owner == _current_player)
 		return true;
 	_error_message = STR_013B_OWNED_BY;
-	
+
 	// no need to get the name of the owner unless we're the local player (saves some time)
 	if (_current_player == _local_player)
 		GetNameOfOwner(owner, tile);
@@ -330,11 +330,11 @@ set_name:;
 		return;
 	}
 bad_town_name:;
-	
+
 	if (p->president_name_1 == SPECSTR_PRESIDENT_NAME) {
 		str = SPECSTR_ANDCO_NAME;
 		strp = p->president_name_2;
-		goto set_name;	
+		goto set_name;
 	} else {
 		str = SPECSTR_ANDCO_NAME;
 		strp = Random();
@@ -371,7 +371,7 @@ static byte GeneratePlayerColor()
 	do {
 		for(j=0; j!=15; j++) {
 			if (_color_sort[colors[j]] < _color_sort[colors[j+1]]) {
-				COLOR_SWAP(j,j+1);	
+				COLOR_SWAP(j,j+1);
 			}
 		}
 	} while (--i);
@@ -382,7 +382,7 @@ static byte GeneratePlayerColor()
 		for(i=0; i!=16; i++) if (colors[i] == pcolor) {
 			colors[i] = 0xFF;
 
-			t2 = _color_similar_1[pcolor]; 
+			t2 = _color_similar_1[pcolor];
 			if (t2 == 0xFF) break;
 			for(i=0; i!=15; i++) {
 				if (colors[i] == t2) {
@@ -391,7 +391,7 @@ static byte GeneratePlayerColor()
 				}
 			}
 
-			t2 = _color_similar_2[pcolor]; 
+			t2 = _color_similar_2[pcolor];
 			if (t2 == 0xFF) break;
 			for(i=0; i!=15; i++) {
 				if (colors[i] == t2) {
@@ -422,7 +422,7 @@ restart:;
 
 		p->president_name_2 = Random();
 		p->president_name_1 = SPECSTR_PRESIDENT_NAME;
-		
+
 		SET_DPARAM32(0, p->president_name_2);
 		GetString(buffer, p->president_name_1);
 		if (strlen(buffer) >= 32 || GetStringWidth(buffer) >= 94)
@@ -464,7 +464,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 	p = AllocatePlayer();
 	if (p == NULL) return NULL;
-		
+
 	index = p->index;
 
 	// Make a color
@@ -472,7 +472,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	_player_colors[index] = p->player_color;
 	p->name_1 = STR_SV_UNNAMED;
 	p->is_active = true;
-	
+
 	p->money64 = p->player_money = p->current_loan = 100000;
 
 	p->is_ai = is_ai;
@@ -501,7 +501,7 @@ static void MaybeStartNewPlayer()
 {
 	uint n;
 	Player *p;
-	
+
 	// count number of competitors
 	n = 0;
 	for(p=_players; p!=endof(_players); p++)
@@ -511,7 +511,7 @@ static void MaybeStartNewPlayer()
 	// when there's a lot of computers in game, the probability that a new one starts is lower
 	if (n < (uint)_opt.diff.max_no_competitors && n < RandomRange(_opt.diff.max_no_competitors + 2))
 		DoStartupNewPlayer(true);
-	
+
 	// The next AI starts like the difficulty setting said, with +2 month max
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
@@ -531,20 +531,20 @@ void OnTick_Players()
 
 	if (_game_mode == GM_EDITOR)
 		return;
-	
+
 	p = DEREF_PLAYER(_cur_player_tick_index);
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
 	if (_game_mode != GM_MENU && !--_next_competitor_start) {
-		MaybeStartNewPlayer();		
+		MaybeStartNewPlayer();
 	}
 }
 
 void RunOtherPlayersLoop()
 {
 	Player *p;
-	
+
 	_is_ai_player = true;
 
 	FOR_ALL_PLAYERS(p) {
@@ -634,7 +634,7 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!(flags & DC_EXEC))
 		return 0;
-	
+
 	switch(p1 & 0xff) {
 	case 0: // make new player
 		p = DoStartupNewPlayer(false);
@@ -672,7 +672,7 @@ static const byte _player_desc[] = {
 	SLE_VAR(Player,president_name_2,SLE_UINT32),
 
 	SLE_VAR(Player,face,						SLE_UINT32),
-	
+
 	// money was changed to a 64 bit field in savegame version 1.
 	SLE_CONDVAR(Player,money64,			SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
 	SLE_CONDVAR(Player,money64,			SLE_INT64, 1, 255),
@@ -722,7 +722,7 @@ static const byte _player_economy_desc[] = {
 
 	SLE_VAR(PlayerEconomyEntry,delivered_cargo,			SLE_INT32),
 	SLE_VAR(PlayerEconomyEntry,performance_history,	SLE_INT32),
-	
+
 	SLE_END()
 };
 
@@ -817,7 +817,7 @@ static void Load_PLYR()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Player *p = DEREF_PLAYER(index);		
+		Player *p = DEREF_PLAYER(index);
 		p->is_ai = (index != 0);
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;

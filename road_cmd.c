@@ -25,7 +25,7 @@ bool HasTileRoadAt(uint tile, int i)
 	switch(GET_TILETYPE(tile)) {
 	case MP_STREET:
 		b = _map5[tile];
-		
+
 		if ((b & 0xF0) == 0) {
 		} else if ((b & 0xF0) == 0x10) {
 			b = (b&8)?5:10;
@@ -34,7 +34,7 @@ bool HasTileRoadAt(uint tile, int i)
 		} else
 			return false;
 		break;
-						
+
 	case MP_STATION:
 		b = _map5[tile];
 		if (!IS_BYTE_INSIDE(b, 0x43, 0x43+8))
@@ -93,7 +93,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 	if (blocks&0x2A && HasTileRoadAt(TILE_ADDXY(tile, 0, 1), 0)) n |= 4;
 	if (blocks&0x19 && HasTileRoadAt(TILE_ADDXY(tile, 1, 0), 3)) n |= 2;
 	if (blocks&0x16 && HasTileRoadAt(TILE_ADDXY(tile, 0,-1), 2)) n |= 1;
-	
+
 	// If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	// then allow it
 	if ((n & (n-1)) != 0 && (n & br) != 0) {
@@ -136,17 +136,17 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	uint tile;
 	Town *t;
-	/*	true if the roadpiece was always removeable, 
+	/*	true if the roadpiece was always removeable,
 			false if it was a center piece. Affects town ratings drop
 	*/
 	bool edge_road;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
 	t = ClosestTownFromTile(tile, (uint)-1); // needed for town rating penalty
-	
+
 	// allow deleting road under bridge
 	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile))
 		return CMD_ERROR;
@@ -190,26 +190,26 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			// limit the bits to delete to the existing bits.
 			if ((c &= ti.map5) == 0) goto return_error;
-			
+
 			// calculate the cost
 			t2 = c;
 			cost = 0;
 			do {
-				if (t2&1) cost += _price.remove_road;			
+				if (t2&1) cost += _price.remove_road;
 			} while(t2>>=1);
-			
+
 			// check if you're allowed to remove the street owned by a town
-			// removal allowance depends on difficulty setting			
+			// removal allowance depends on difficulty setting
 			if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
-				if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE)) 
+				if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE))
 					return CMD_ERROR;
 			}
-			
+
 			if (flags & DC_EXEC) {
-				// checks if the owner is town than decrease town rating by 50 until you have 
+				// checks if the owner is town than decrease town rating by 50 until you have
 				// a "Poor" town rating
 				if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], -100); 
+					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], -100);
 
 				_map5[tile] ^= c;
 				if ((_map5[tile]&0xF) == 0)
@@ -218,12 +218,12 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					MarkTileDirtyByTile(tile);
 
 			}
-			return cost;			
+			return cost;
 		} else if (!(ti.map5 & 0xE0)) {
 			byte c;
 
 			if (!(ti.map5 & 8)) {
-				c = 2;	
+				c = 2;
 				if (p1 & 5) goto return_error;
 			} else {
 				c = 1;
@@ -232,7 +232,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			cost = _price.remove_road * 2;
 			if (flags & DC_EXEC) {
-				ModifyTile(tile, 
+				ModifyTile(tile,
 					MP_SETTYPE(MP_RAILWAY) |
 					MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
 					_map3_hi[tile] & 0xF, /* map3_lo */
@@ -257,7 +257,7 @@ enum {
 	ROAD_NE = 8, // NE road track
 	ROAD_ALL = (ROAD_NW | ROAD_SW | ROAD_SE | ROAD_NE)
 };
- 
+
 static const byte _valid_tileh_slopes_road[3][15] = {
 	// set of normal ones
 	{
@@ -266,9 +266,9 @@ static const byte _valid_tileh_slopes_road[3][15] = {
 		ROAD_NW | ROAD_SE, 0, 0,
 		ROAD_NW | ROAD_SE, 0, 0,  // 9, 10, 11
 		ROAD_SW | ROAD_NE, 0, 0
-	},  
+	},
 	// allowed road for an evenly raised platform
-	{ 
+	{
 		0,
 		ROAD_SW | ROAD_NW,
 		ROAD_SW | ROAD_SE,
@@ -299,7 +299,7 @@ static const byte _valid_tileh_slopes_road[3][15] = {
 };
 
 
-static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)	
+static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 {
 	if (!(tileh & 0x10)) {
 		byte road_bits = *pieces | existing;
@@ -310,10 +310,10 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 			if (tileh != 0) *pieces |= _valid_tileh_slopes_road[0][tileh];
 			return 0; // no extra cost
 		}
-		
+
 		// foundation is used. Whole tile is leveled up
 		if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == 0) {
-			return existing ? 0 : _price.terraform;	
+			return existing ? 0 : _price.terraform;
 		}
 
 		// partly leveled up tile, only if there's no road on that tile
@@ -337,7 +337,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	byte pieces = (byte)p1, existing = 0;
 	uint tile;
-	
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	FindLandscapeHeight(&ti, x, y);
@@ -557,7 +557,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		uint bits = (p2 & 4) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
 		if (tile == end_tile && !(p2&2)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && (p2&1)) bits &= ROAD_SE | ROAD_SW;
-		
+
 		// try to remove the halves.
 		if (bits) {
 			ret = DoCommandByTile(tile, bits, 0, flags, CMD_REMOVE_ROAD);
@@ -578,7 +578,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-/* Build a road depot 
+/* Build a road depot
  * p1 - direction (0-3)
  * p2 - unused
  */
@@ -612,7 +612,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (dep == NULL)
 		return CMD_ERROR;
 
-	if (flags & DC_EXEC) {	
+	if (flags & DC_EXEC) {
 		if (_current_player == _local_player)
 			_last_built_road_depot_tile = (TileIndex)tile;
 
@@ -665,10 +665,10 @@ static int32 ClearTile_Road(uint tile, byte flags) {
 		ret = DoCommandByTile(tile, (m5&8)?5:10, 0, flags, CMD_REMOVE_ROAD);
 		if (ret == CMD_ERROR)
 			return CMD_ERROR;
-		
+
 		if (flags & DC_EXEC) {
 			DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		}	
+		}
 
 		return ret;
 	} else {
@@ -703,7 +703,7 @@ uint GetRoadFoundation(uint tileh, uint bits) {
 		return tileh;
 
 	// inclined sloped building
-	if ( ((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) && 
+	if ( ((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) &&
 		((bits == (ROAD_SW | ROAD_NE)) || (i++, bits == (ROAD_NW | ROAD_SE))))
 		return i + 15;
 
@@ -723,7 +723,7 @@ const byte _road_sloped_sprites[14] = {
 
 static void DrawTile_Road(TileInfo *ti)
 {
-	uint32 image;	
+	uint32 image;
 	byte m2;
 	const byte *s;
 
@@ -733,7 +733,7 @@ static void DrawTile_Road(TileInfo *ti)
 		if (ti->tileh != 0) {
 			int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
 			if (f) DrawFoundation(ti, f);
-			
+
 			// default sloped sprites..
 			if (ti->tileh != 0) {
 				image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
@@ -747,7 +747,7 @@ static void DrawTile_Road(TileInfo *ti)
 		m2 = _map2[ti->tile] & 7;
 
 		if (m2 == 0) image |= 0x3178000;
-		
+
 		if (_map3_hi[ti->tile] & 0x80) {
 			image += 19;
 		} else if (m2 > 1 && m2 != 6) {
@@ -766,7 +766,7 @@ static void DrawTile_Road(TileInfo *ti)
 		}
 
 		drts = (const DrawRoadTileStruct*)_road_display_table[m2][ti->map5 & 0xF];
-		
+
 		while ((image = drts->image) != 0) {
 			int x = ti->x | drts->subcoord_x;
 			int y = ti->y | drts->subcoord_y;
@@ -800,7 +800,7 @@ static void DrawTile_Road(TileInfo *ti)
 		uint32 ormod;
 		int player;
 		const DrawRoadSeqStruct *drss;
-		
+
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
 		ormod = 0x315;
@@ -809,7 +809,7 @@ static void DrawTile_Road(TileInfo *ti)
 			ormod = PLAYER_SPRITE_COLOR(player);
 
 		s = _road_display_datas[ti->map5 & 0xF];
-		
+
 		DrawGroundSprite(*(uint32*)s);
 		s += sizeof(uint32);
 		drss = (DrawRoadSeqStruct*)s;
@@ -818,7 +818,7 @@ static void DrawTile_Road(TileInfo *ti)
 			if (image & 0x8000)
 				image |= ormod;
 
-			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x, 
+			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
 				ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z);
 			drss++;
 		}
@@ -843,7 +843,7 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 	for(dtss = (DrawRoadSeqStruct *)t; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
-		
+
 		image = dtss->image;
 		if (image & 0x8000)
 			image |= ormod;
@@ -933,7 +933,7 @@ static void TileLoop_Road(uint tile)
 {
 	Town *t;
 	int grp;
-	
+
 	if (_opt.landscape == LT_HILLY) {
 		// Fix snow style if the road is above the snowline
 		if ((_map3_hi[tile] & 0x80) != ((GetTileZ(tile) > _opt.snow_line) ? 0x80 : 0x00)) {
@@ -961,14 +961,14 @@ static void TileLoop_Road(uint tile)
 			}
 
 			grp = GetTownRadiusGroup(t, tile);
-			
+
 			// Show an animation to indicate road work
-			if (t->road_build_months != 0 && 
+			if (t->road_build_months != 0 &&
 					!(GetTileDist(t->xy, tile) >= 8 && grp==0) &&
 					(_map5[tile]==5 || _map5[tile]==10)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
 					_map2[tile] = ((_map2[tile]&7) <= 1) ? 6 : 7;
-					
+
 					SndPlayTileFx(0x1F,tile);
 					CreateEffectVehicleAbove(
 						GET_TILE_X(tile) * 16 + 7,
@@ -987,7 +987,7 @@ static void TileLoop_Road(uint tile)
 
 			if (b == p[0])
 				return;
-			
+
 			if (b == p[1]) {
 				b = p[0];
 			} else if (b == 0) {
@@ -1000,7 +1000,7 @@ static void TileLoop_Road(uint tile)
 		}
 	} else {
 		// Handle road work
-		
+
 		byte b = _map2[tile];
 		if (b < 0x80) {
 			_map2[tile] = b + 8;
@@ -1040,10 +1040,10 @@ static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
 			/* Crossing */
 			uint32 r = 0x101;
 			if (b&8) r <<= 1;
-				
+
 			if (b&4) {
 				r *= 0x10001;
-			}			
+			}
 			return r;
 		} else if ((b&0xF0) == 0x20) {
 			/* Depot */

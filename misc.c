@@ -95,7 +95,7 @@ void InitializeGame()
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
 	_vehicle_id_ctr_day = 0;
-	
+
 	{
 		uint starting = ConvertIntDate(_patches.starting_date);
 		if ( starting == (uint)-1) starting = 10958;
@@ -119,7 +119,7 @@ void InitializeGame()
 	InitializeTrees();
 	InitializeStations();
 	InitializeIndustries();
-	
+
 	InitializeNameMgr();
 	InitializeVehiclesGuiList();
 	InitializeTrains();
@@ -153,7 +153,7 @@ void GenerateWorld(int mode)
 	} else {
 		GenerateLandscape();
 		GenerateClearTile();
-		
+
 		// only generate towns, tree and industries in newgame mode.
 		if (mode == 0) {
 			GenerateTowns();
@@ -163,7 +163,7 @@ void GenerateWorld(int mode)
 		}
 	}
 
-	// These are probably pointless when inside the scenario editor.	
+	// These are probably pointless when inside the scenario editor.
 	StartupPlayers();
 	StartupEngines();
 	StartupDisasters();
@@ -211,7 +211,7 @@ byte *GetName(int id, byte *buff)
 
 void InitializeCheats()
 {
-	memset(&_cheats, 0, sizeof(Cheats)); 
+	memset(&_cheats, 0, sizeof(Cheats));
 }
 
 
@@ -250,7 +250,7 @@ StringID AllocateName(const byte *name, byte skip)
 
 	for(i=0; (dst[i] = name[i]) != 0 && ++i != 32; ) {}
 	dst[31] = 0;
-		
+
 	return free_item | 0x7800 | (skip << 8);
 }
 
@@ -319,7 +319,7 @@ void ConvertDayToYMD(YearMonthDay *ymd, uint16 date)
 	}
 
 	ymd->year = yr;
-		
+
 	x = _month_date_from_year_day[rem];
 	ymd->month = x >> 5;
 	ymd->day = x & 0x1F;
@@ -331,7 +331,7 @@ void ConvertDayToYMD(YearMonthDay *ymd, uint16 date)
 uint ConvertYMDToDay(uint year, uint month, uint day)
 {
 	uint rem;
-	
+
 	// day in the year
 	rem = _accum_days_for_month[month] + day - 1;
 
@@ -355,11 +355,11 @@ uint ConvertIntDate(uint date)
 	if (IS_INT_INSIDE(date, 1920, 2090 + 1)) {
 		year = date - 1920;
 	} else if (IS_INT_INSIDE(date, 192001, 209012+1)) {
-		month = date % 100 - 1;	
+		month = date % 100 - 1;
 		year = date / 100 - 1920;
 	} else if (IS_INT_INSIDE(date, 19200101, 20901231+1)) {
 		day = date % 100; date /= 100;
-		month = date % 100 - 1;	
+		month = date % 100 - 1;
 		year = date / 100 - 1920;
 	} else if (IS_INT_INSIDE(date, 2091, 65536))
 		return date;
@@ -405,7 +405,7 @@ void InitializeLandscapeVariables(bool only_constants)
 
 	for(i=0; i!=NUM_CARGO; i++) {
 		_cargoc.sprites[i] = lpd->sprites[i];
-		
+
 		str = lpd->names[i];
 		_cargoc.names_s[i] = str;
 		_cargoc.names_p[i] = (str += 0x20);
@@ -413,7 +413,7 @@ void InitializeLandscapeVariables(bool only_constants)
 		_cargoc.names_long_p[i] = (str += 0x20);
 		_cargoc.names_short[i] = (str += 0x20);
 		_cargoc.weights[i] = lpd->weights[i];
-		
+
 		if (!only_constants) {
 			_cargo_payment_rates[i] = lpd->initial_cargo_payment[i];
 			_cargo_payment_rates_frac[i] = 0;
@@ -427,7 +427,7 @@ void InitializeLandscapeVariables(bool only_constants)
 // distance in Manhattan metric
 uint GetTileDist(TileIndex xy1, TileIndex xy2)
 {
-	return myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2)) + 
+	return myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2)) +
 				myabs(GET_TILE_Y(xy1) - GET_TILE_Y(xy2));
 }
 
@@ -536,7 +536,7 @@ void IncreaseDate()
 
 	/* increase day, and check if a new day is there? */
 	_tick_counter++;
-	
+
 	if ( (_date_fract += 885) >= 885)
 		return;
 
@@ -582,7 +582,7 @@ void IncreaseDate()
 		return;
 	_cur_year = ymd.year;
 
-	/* yes, call various yearly loops */ 
+	/* yes, call various yearly loops */
 
 	PlayersYearlyLoop();
 	TrainsYearlyLoop();
@@ -648,14 +648,14 @@ static void Save_NAME()
 		if (*b) {
 			SlSetArrayIndex(i);
 			SlArray(b, strlen(b), SLE_UINT8);
-		}	
+		}
 	}
 }
 
 static void Load_NAME()
 {
 	int index;
-	
+
 	while ((index = SlIterateArray()) != -1) {
 		SlArray(_name_array[index],SlGetFieldLength(),SLE_UINT8);
 	}
@@ -679,7 +679,7 @@ static const byte _game_opt_desc[] = {
 // Save load game options
 static void SaveLoad_OPTS()
 {
-	SlObject(&_opt, _game_opt_desc);	
+	SlObject(&_opt, _game_opt_desc);
 }
 
 

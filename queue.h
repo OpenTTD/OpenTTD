@@ -51,7 +51,7 @@ struct Queue{
 	Queue_ClearProc* clear;
 	/* Frees the queue, by reclaiming all memory allocated by it. After
 	 * this it is no longer usable. If free_items is true, any remaining
-	 * items are free()'d too. 
+	 * items are free()'d too.
 	 */
 	Queue_FreeProc* free;
 

@@ -36,7 +36,7 @@ struct TrackPathFinder {
 	TPFEnumProc *enum_proc;
 
 	void *userdata;
-	
+
 	RememberData rd;
 
 	int the_dir;

@@ -150,7 +150,7 @@ void InsSort_Clear(Queue* q, bool free_values) {
 		prev = node;
 		node = node->next;
 		free(prev);
-		
+
 	}
 	q->data.inssort.first = NULL;
 }
@@ -283,7 +283,7 @@ bool BinaryHeap_Push(Queue* q, void* item, int priority) {
 	if (q->data.binaryheap.size == q->data.binaryheap.max_size)
 		return false;
 	assert(q->data.binaryheap.size < q->data.binaryheap.max_size);
-	
+
 	if (q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
 		/* The currently allocated blocks are full, allocate a new one */
 		assert((q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
@@ -466,14 +466,14 @@ void delete_Hash(Hash* h, bool free_values) {
 		if (h->buckets_in_use[i]) {
 			HashNode* node;
 			/* Free the first value */
-			if (free_values) 
+			if (free_values)
 				free(h->buckets[i].value);
 			node = h->buckets[i].next;
 			while (node != NULL) {
 				HashNode* prev = node;
 				node = node->next;
 				/* Free the value */
-				if (free_values) 
+				if (free_values)
 					free(prev->value);
 				/* Free the node */
 				free(prev);

@@ -34,8 +34,8 @@ static void CcPlaySound1E(bool success, uint tile, uint32 p1, uint32 p2)
 static void GenericPlaceRail(uint tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd, CcPlaySound1E,
-		_remove_button_clicked ? 
-		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_AUTO | CMD_NO_WATER : 
+		_remove_button_clicked ?
+		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_AUTO | CMD_NO_WATER :
 		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK) | CMD_AUTO | CMD_NO_WATER
 		);
 }
@@ -76,7 +76,7 @@ static void PlaceExtraDepotRail(uint tile, uint16 extra)
 	if (b & 0xC0 || !(b & (extra >> 8)))
 		return;
 
-	DoCommandP(tile, _cur_railtype, extra & 0xFF, NULL, CMD_BUILD_SINGLE_RAIL | CMD_AUTO | CMD_NO_WATER); 
+	DoCommandP(tile, _cur_railtype, extra & 0xFF, NULL, CMD_BUILD_SINGLE_RAIL | CMD_AUTO | CMD_NO_WATER);
 }
 
 static const uint16 _place_depot_extra[12] = {
@@ -101,12 +101,12 @@ static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 4]);
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir + 8]);
 		}
-	}	
+	}
 }
 
 static void PlaceRail_Depot(uint tile)
 {
-	DoCommandP(tile, _cur_railtype, _build_depot_direction, CcDepot, 
+	DoCommandP(tile, _cur_railtype, _build_depot_direction, CcDepot,
 		CMD_BUILD_TRAIN_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT));
 }
 
@@ -252,12 +252,12 @@ static const SpriteID _depot_cursors[] = {
 
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 11, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();	
+	if (HandlePlacePushButton(w, 11, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
 }
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();	
+	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
@@ -281,10 +281,10 @@ static void BuildRailClick_Remove(Window *w)
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(0x13);
-	
+
 	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
 	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
-	
+
 	// handle station builder
 	if( w->click_state & (1 << 12) )
 	{
@@ -313,8 +313,8 @@ static void BuildRailClick_Convert(Window *w)
 
 static void DoRailroadTrack(int mode)
 {
-	DoCommandP(TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y), PACK_POINT(_thd.selend.x, _thd.selend.y), (mode << 4) | _cur_railtype, NULL, 
-		_remove_button_clicked ? 
+	DoCommandP(TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y), PACK_POINT(_thd.selend.x, _thd.selend.y), (mode << 4) | _cur_railtype, NULL,
+		_remove_button_clicked ?
 		CMD_REMOVE_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
 		CMD_BUILD_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
@@ -335,11 +335,11 @@ static const BestFitStruct _bestfit[] = {
 
 	{0, M(0,1+8+16), M(2,1+4+32), 0}, // diag1 track
 	{1, M(3,2+8+32), M(1,2+4+16), 0}, // diag2 track
-	
+
 	// one edge with rail
 	{0, M(0,1), 0, 0}, // diag1 track
 	{0, M(2,1), 0, 0}, // diag1 track
-	
+
 	{1, M(1,2), 0, 0}, // diag2 track
 	{1, M(3,2), 0, 0}, // diag2 track
 
@@ -394,7 +394,7 @@ int GetBestFit1x1(int x, int y)
 		};
 		tile += _tile_inc[i];
 		m[i] = 0;
-		if (IS_TILETYPE(tile, MP_RAILWAY) && _map5[tile] < 0x80) 
+		if (IS_TILETYPE(tile, MP_RAILWAY) && _map5[tile] < 0x80)
 			m[i] = _map5[tile]&0x3F;
 
 		// handle tracks under bridge
@@ -449,7 +449,7 @@ static bool Check2x1AutoRail(int mode)
 	int sxpy = (thd->selend.x & 0xF) + (thd->selend.y & 0xF);
 	int fxmy = _tile_fract_coords.x - _tile_fract_coords.y;
 	int sxmy = (thd->selend.x & 0xF) - (thd->selend.y & 0xF);
-	
+
 	switch(mode) {
 	case 0:
 		if (fxpy >= 20 && sxpy <= 12) { SwapSelection(); DoRailroadTrack(0); return true; }
@@ -459,7 +459,7 @@ static bool Check2x1AutoRail(int mode)
 	case 1:
 		if (fxmy > 3 && sxmy < -3) { SwapSelection(); DoRailroadTrack(0); return true; }
 		if (fxpy <= 12 && sxpy >= 20) { DoRailroadTrack(0); return true; }
-		break;	
+		break;
 
 	case 2:
 		if (fxmy > 3 && sxmy < -3) { DoRailroadTrack(3); return true; }
@@ -484,7 +484,7 @@ static void HandleAutodirPlacement()
 	if (thd->drawstyle == HT_RECT) {
 		int dx = thd->selstart.x - (thd->selend.x&~0xF);
 		int dy = thd->selstart.y - (thd->selend.y&~0xF);
-		
+
 		if (dx == 0 && dy == 0 ) {
 			// 1x1 tile
 			bit = GetBestFit1x1(thd->selend.x, thd->selend.y);
@@ -521,12 +521,12 @@ static void HandleAutoSignalPlacement()
 
 	int dx = thd->selstart.x - (thd->selend.x&~0xF);
 	int dy = thd->selstart.y - (thd->selend.y&~0xF);
-	
+
 	if (dx == 0 && dy == 0 ) // 1x1 tile signals
 		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
 	else { // signals have been dragged
 		if (thd->drawstyle == HT_RECT) { // X,Y direction
-			if (dx == 0) 
+			if (dx == 0)
 				mode = VPM_FIX_X;
 			else if (dy == 0)
 				mode = VPM_FIX_Y;
@@ -543,12 +543,12 @@ static void HandleAutoSignalPlacement()
 
 		/* _patches.drag_signals_density is given as a parameter such that each user in a network
 		 * game can specify his/her own signal density */
-		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y), 
-		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8) | (_patches.drag_signals_density << 24), 
-		CcPlaySound1E, 
+		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
+		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8) | (_patches.drag_signals_density << 24),
+		CcPlaySound1E,
 		(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-															CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );									
-	}	
+															CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
+	}
 }
 
 static OnButtonClick * const _build_railroad_button_proc[] = {
@@ -805,7 +805,7 @@ void ShowBuildRailToolbar(int index, int button)
 
 	// don't recreate the window if we're clicking on a button and the window exists.
 	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, 0)) || w->wndproc != BuildRailToolbWndProc) {
-		DeleteWindowById(WC_BUILD_TOOLBAR, 0);	
+		DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 		_cur_railtype = (byte)index;
 		w = AllocateWindowDesc(_build_rr_desc[index]);
 	}
@@ -848,7 +848,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		}
 		bits |= (1<<20) << (_station_show_coverage);
 		w->click_state = bits;
-		
+
 		if (_railstation.dragdrop) {
 			SetTileSelectSize(1, 1);
 		} else {
@@ -858,12 +858,12 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 			if(!_remove_button_clicked)
 				SetTileSelectSize(x, y);
 		}
-				
+
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-4, -4, 8, 8);
 
 		DrawWindowWidgets(w);
-		
+
 		StationPickerDrawSprite(39, 42, _cur_railtype, 2);
 		StationPickerDrawSprite(107, 42, _cur_railtype, 3);
 
@@ -874,7 +874,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 
 		DrawStationCoverageAreaText(2, 166, (uint)-1);
 	} break;
-		
+
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 0:
@@ -927,7 +927,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 	} break;
-	
+
 	case WE_MOUSELOOP: {
 		if (WP(w,def_d).close) {
 			DeleteWindow(w);
@@ -1013,7 +1013,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 	} break;
-	
+
 	case WE_MOUSELOOP:
 		if (WP(w,def_d).close)
 			DeleteWindow(w);
@@ -1047,7 +1047,7 @@ static void ShowBuildTrainDepotPicker()
 
 void InitializeRailGui()
 {
-	_build_depot_direction = 3;	
+	_build_depot_direction = 3;
 	_railstation.numtracks = 1;
 	_railstation.platlength = 1;
 	_railstation.dragdrop = true;

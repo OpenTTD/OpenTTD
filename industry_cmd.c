@@ -194,7 +194,7 @@ static void IndustryDrawTileProc1(TileInfo *ti)
 
 	if (!(_map_owner[ti->tile] & 0x80))
 		return;
-	
+
 	d = &_draw_industry_spec1[_map3_lo[ti->tile]];
 
 	AddChildSpriteScreen(0x12A7 + d->image_1, d->x, 0);
@@ -203,14 +203,14 @@ static void IndustryDrawTileProc1(TileInfo *ti)
 		AddChildSpriteScreen(0x12B0 + image - 1, 8, 41);
 
 	if ( (image = d->image_3) != 0)
-		AddChildSpriteScreen(0x12AC + image - 1, 
+		AddChildSpriteScreen(0x12AC + image - 1,
 			_drawtile_proc1_x[image-1], _drawtile_proc1_y[image-1]);
 }
 
 static void IndustryDrawTileProc2(TileInfo *ti)
 {
 	int x = 0;
-	
+
 	if (_map_owner[ti->tile] & 0x80) {
 		x = _industry_anim_offs[_map3_lo[ti->tile]];
 		if ( (byte)x == 0xFF)
@@ -224,7 +224,7 @@ static void IndustryDrawTileProc2(TileInfo *ti)
 static void IndustryDrawTileProc3(TileInfo *ti)
 {
 	if (_map_owner[ti->tile] & 0x80) {
-		AddChildSpriteScreen(0x128B, 5, 
+		AddChildSpriteScreen(0x128B, 5,
 			_industry_anim_offs_2[_map3_lo[ti->tile]]);
 	}
 	AddChildSpriteScreen(0x30B928A, 3, 67);
@@ -254,7 +254,7 @@ static void DrawCoalPlantSparkles(TileInfo *ti)
 	if (image & 0x80) {
 		image = (image >> 2) & 0x1F;
 		if (image != 0 && image < 7) {
-			AddChildSpriteScreen(image + 0x806, 
+			AddChildSpriteScreen(image + 0x806,
 				_coal_plant_sparkles_x[image-1],
 				_coal_plant_sparkles_y[image-1]
 			);
@@ -305,11 +305,11 @@ static void DrawTile_Industry(TileInfo *ti)
 
 		if (image&0x8000 && (image & 0xFFFF0000) == 0)
 			image |= ormod;
-			
+
 		if (!(_display_opt & DO_TRANS_BUILDINGS))
 			image = (image & 0x3FFF) | 0x3224000;
-		
-		AddSortableSpriteToDraw(image, 
+
+		AddSortableSpriteToDraw(image,
 			ti->x | (dits->subtile_xy>>4),
 			ti->y | (dits->subtile_xy&0xF),
 			(dits->width_height>>4)+1,
@@ -321,7 +321,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			return;
 	}
 
-	/* TTDBUG: strange code here, return if AddSortableSpriteToDraw failed?  */	
+	/* TTDBUG: strange code here, return if AddSortableSpriteToDraw failed?  */
 		{
 		int proc;
 		if ((proc=dits->proc-1) >= 0 )
@@ -406,15 +406,15 @@ int32 CmdDestroyIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// check if you're allowed to remove the industry. Minimum amount
 	// of ratings to remove the industry depends on difficulty setting
-	if (!CheckforTownRating(tile, flags, t, INDUSTRY_REMOVE)) 
+	if (!CheckforTownRating(tile, flags, t, INDUSTRY_REMOVE))
 		return CMD_ERROR;
-		
+
 	if (flags & DC_EXEC) {
 		DeleteIndustry(i);
 		CreateEffectVehicleAbove(x + 8,y + 8, 2, EV_DEMOLISH);
 		ChangeTownRating(t, -1500, -1000);	// penalty is 1500
 	}
-	
+
 	return (_price.build_industry >> 5) * _industry_type_costs[i->type]*2;
 }
 */
@@ -435,7 +435,7 @@ void TransportIndustryGoods(uint tile)
 	byte m5;
 
 	i = DEREF_INDUSTRY(_map2[tile]);
-	
+
 	type = i->type;
 	cw = min(i->cargo_waiting[0], 255);
 	if (cw > _industry_min_cargo[type]/* && i->produced_cargo[0] != 0xFF*/) {
@@ -459,9 +459,9 @@ void TransportIndustryGoods(uint tile)
 	cw = min(i->cargo_waiting[1], 255);
 	if (cw > _industry_min_cargo[type]) {
 		i->cargo_waiting[1] -= cw;
-		
+
 		if (_economy.fluct <= 0) cw = (cw + 1) >> 1;
-		
+
 		i->last_mo_production[1] += cw;
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[1], cw);
@@ -478,7 +478,7 @@ static void AnimateTile_Industry(uint tile)
 	case 174:
 		if ((_tick_counter & 1) == 0) {
 			m = _map3_lo[tile] + 1;
-			
+
 			switch(m & 7) {
 			case 2:	SndPlayTileFx(45, tile); break;
 			case 6: SndPlayTileFx(41, tile); break;
@@ -497,7 +497,7 @@ static void AnimateTile_Industry(uint tile)
 	case 165:
 		if ((_tick_counter & 3) == 0) {
 			m = _map3_lo[tile];
-			
+
 			if (_industry_anim_offs[m] == 0xFF) {
 				SndPlayTileFx(48, tile);
 			}
@@ -556,7 +556,7 @@ static void AnimateTile_Industry(uint tile)
 				_map3_hi[tile] = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_map3_lo[tile] = m;			
+			_map3_lo[tile] = m;
 			MarkTileDirtyByTile(tile);
 		}
 		break;
@@ -581,7 +581,7 @@ static void AnimateTile_Industry(uint tile)
 			if (m == 4 && (m=0,++n) == 32+1 && (n=30,b)) {
 				_map_owner[tile] = 0x83;
 				_map5[tile] = 29;
-				DeleteAnimatedTile(tile);	
+				DeleteAnimatedTile(tile);
 			} else {
 				_map5[tile] = n;
 				_map_owner[tile] = (_map_owner[tile] & ~3) | m;
@@ -648,7 +648,7 @@ static void MakeIndustryTileBigger(uint tile, byte size)
 	size = (size + 1) & 3;
 	if (size == 3) size |= 0x80;
 	_map_owner[tile] = size | b;
-	
+
 	MarkTileDirtyByTile(tile);
 
 	if (!(_map_owner[tile] & 0x80))
@@ -692,7 +692,7 @@ static void TileLoopIndustryCase161(uint tile)
 	};
 
 	SndPlayTileFx(46, tile);
-	
+
 	dir = Random() & 3;
 
 	v = CreateEffectVehicleAbove(
@@ -783,7 +783,7 @@ static void TileLoop_Industry(uint tile)
 		break;
 
 	case 49: {
-		CreateEffectVehicleAbove(GET_TILE_X(tile)*16 + 6, GET_TILE_Y(tile)*16 + 6, 43, EV_SMOKE_3); 
+		CreateEffectVehicleAbove(GET_TILE_X(tile)*16 + 6, GET_TILE_Y(tile)*16 + 6, 43, EV_SMOKE_3);
 	} break;
 
 
@@ -800,8 +800,8 @@ static void TileLoop_Industry(uint tile)
 
 	case 161:
 		TileLoopIndustryCase161(tile);
-		break;		
-	
+		break;
+
 	case 165:
 		AddAnimatedTile(tile);
 		break;
@@ -840,7 +840,7 @@ static void ChangeTileOwner_Industry(uint tile, byte old_player, byte new_player
 void DeleteIndustry(Industry *i)
 {
 	int index = i - _industries;
-	
+
 	BEGIN_TILE_LOOP(tile_cur,	i->width, i->height, i->xy);
 		if (IS_TILETYPE(tile_cur, MP_INDUSTRY)) {
 			if (_map2[tile_cur] == (byte)index) {
@@ -850,7 +850,7 @@ void DeleteIndustry(Industry *i)
 			DeleteOilRig(tile_cur);
 		}
 	END_TILE_LOOP(tile_cur,	i->width, i->height, i->xy);
-	
+
 	i->xy = 0;
 	_industry_sort_dirty = true;
 	DeleteSubsidyWithIndustry(index);
@@ -894,9 +894,9 @@ static void SetupFarmFieldFence(uint tile, int size, byte type, int direction)
 
 	do {
 		tile = TILE_MASK(tile);
-		
+
 		if (IS_TILETYPE(tile, MP_CLEAR) || IS_TILETYPE(tile, MP_TREES)) {
-			
+
 			or = type;
 			if (or == 1 && (uint16)Random() <= 9362) or = 2;
 
@@ -908,7 +908,7 @@ static void SetupFarmFieldFence(uint tile, int size, byte type, int direction)
 			}
 			_map3_hi[tile] = (_map3_hi[tile] & and) | or;
 		}
-		
+
 		tile += direction ? TILE_XY(0,1) : TILE_XY(1,0);
 	} while (--size);
 }
@@ -933,7 +933,7 @@ static void PlantFarmField(uint tile)
 
 	/* offset tile to match size */
 	tile = tile - TILE_XY(size_x>>1, size_y>>1);
-	
+
 	/* check the amount of bad tiles */
 	count = 0;
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
@@ -952,15 +952,15 @@ static void PlantFarmField(uint tile)
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsBadFarmFieldTile2(cur_tile)) {
-			ModifyTile(cur_tile, 
-				MP_SETTYPE(MP_CLEAR) | 
+			ModifyTile(cur_tile,
+				MP_SETTYPE(MP_CLEAR) |
 				MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5,
 				type2,			/* map3_lo */
 				OWNER_NONE,	/* map_owner */
 				type);			/* map5 */
 		}
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
-	
+
 	type = 3;
 	if (_opt.landscape != LT_HILLY && _opt.landscape != LT_DESERT) {
 		type = _plantfarmfield_type[Random() & 0xF];
@@ -979,13 +979,13 @@ static void MaybePlantFarmField(Industry *i)
 		tile = TileAddWrap(i->xy, ((i->width>>1) + Random() % 31 - 16), ((i->height>>1) + Random() % 31 - 16));
 		if (tile != TILE_WRAPPED)
 			PlantFarmField(tile);
-	}	
+	}
 }
 
 static void ChopLumberMillTrees(Industry *i)
 {
 	static const TileIndexDiff _chop_dir[4] = { TILE_XY(0,1), TILE_XY(1,0), TILE_XY(0,-1), TILE_XY(-1,0) };
-	
+
 	uint tile = i->xy;
 	int dir, a, j;
 
@@ -1096,9 +1096,9 @@ void OnTick_Industry()
 		_industry_sound_ctr++;
 
 		if (_industry_sound_ctr == 75) {
-			SndPlayTileFx(55, _industry_sound_tile); 
+			SndPlayTileFx(55, _industry_sound_tile);
 		} else if (_industry_sound_ctr == 160) {
-			_industry_sound_ctr = 0;	
+			_industry_sound_ctr = 0;
 			SndPlayTileFx(54, _industry_sound_tile);
 		}
 	}
@@ -1134,7 +1134,7 @@ extern bool _ignore_restrictions;
 static bool CheckNewIndustry_Oilwell(uint tile, int type)
 {
 	int x,y;
-	
+
 	if(_ignore_restrictions && _game_mode == GM_EDITOR)
 		return true;
 
@@ -1230,7 +1230,7 @@ static Town *CheckMultipleIndustryInTown(uint tile, int type)
 	Industry *i;
 
 	t = ClosestTownFromTile(tile, (uint)-1);
-	
+
 	if (_patches.multiple_industry_per_town)
 		return t;
 
@@ -1285,9 +1285,9 @@ static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, 
 				continue;
 			return false;
 		}
-			
+
 		FindLandscapeHeightByTile(&ti, cur_tile);
-		
+
 		if (it->map5 == 0xFF) {
 			if (ti.type != MP_WATER || ti.tileh != 0)
 				return false;
@@ -1310,7 +1310,7 @@ static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, 
 
 					if (bits & 0x10)
 						return false;
-					
+
 					t = ~ti.tileh;
 
 					if (bits & 1 && (t & (1+8)))
@@ -1344,7 +1344,7 @@ static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, 
 					if (ti.type != MP_HOUSE) {
 						_error_message = STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
-					}					
+					}
 				} else {
 do_clear:
 					if (DoCommandByTile(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
@@ -1366,7 +1366,7 @@ static bool CheckIfTooCloseToIndustry(uint tile, int type)
 	// accepting industries won't be close, not even with patch
 	if (_patches.same_industry_close && (spec->accepts_cargo[0] == 0xFF) )
 		return true;
-	
+
 	for(i=_industries; i != endof(_industries); i++) {
 		// check if an industry that accepts the same goods is nearby
 		if (i->xy != 0 &&
@@ -1451,7 +1451,7 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 
 	if (_generating_world == 0)
 		i->total_production[0] = i->total_production[1] = 0;
-	
+
 	i->prod_level = 0x10;
 
 	do {
@@ -1512,7 +1512,7 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if ((t=CheckMultipleIndustryInTown(tile, p1)) == NULL)
 		return CMD_ERROR;
-	
+
 	num = spec->num_table;
 	itt = spec->table;
 
@@ -1530,7 +1530,7 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC)
 		DoCreateNewIndustry(i, tile, p1, it, t, 0x10);
-	
+
 	return (_price.build_industry >> 5) * _industry_type_costs[p1];
 }
 
@@ -1567,7 +1567,7 @@ Industry *CreateNewIndustry(uint tile, int type)
 		return NULL;
 
 	DoCreateNewIndustry(i, tile, type, it, t, 0x10);
-	
+
 	return i;
 }
 
@@ -1590,7 +1590,7 @@ static void PlaceInitialIndustry(byte type, int amount)
 			int i = 2000;
 			do {
 				if (CreateNewIndustry(TILE_MASK(Random()), type) != NULL)
-					break; 
+					break;
 			} while (--i != 0);
 		} while (--num);
 	}
@@ -1627,7 +1627,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 			change = old = i->production_rate[j];
 			if (CHANCE16R(20,1024,r))change -= ((RandomRange(50) + 10)*old) >> 8;
 			if (CHANCE16I(20+(i->pct_transported[j]*20>>8),1024,r>>16)) change += ((RandomRange(50) + 10)*old) >> 8;
-			
+
 			// make sure it doesn't exceed 255 or goes below 0
 			change = clamp(change, 0, 255);
 			if (change == old) {
@@ -1640,14 +1640,14 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 			if (change >= _industry_spec[i->type].production_rate[j]/4)
 				closeit = false;
-				
+
 			mag = abs(percent);
 			if (mag >= 10) {
 				SET_DPARAM16(3, mag);
 				SET_DPARAM16(0,_cargoc.names_s[i->produced_cargo[j]]);
 				SET_DPARAM16(1, i->town->index);
 				SET_DPARAM16(2, i->type + STR_4802_COAL_MINE);
-				AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN, 
+				AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
 						NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
 						i->xy + TILE_XY(1,1), 0);
 			}
@@ -1666,13 +1666,13 @@ static void ExtChangeIndustryProduction(Industry *i)
 static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
-	
-	if (i->produced_cargo[0] != 0xFF) {		
+
+	if (i->produced_cargo[0] != 0xFF) {
 		pct = 0;
 		if (i->last_mo_production[0] != 0) {
 			i->last_prod_year = _cur_year;
 			pct = min(i->last_mo_transported[0] * 256 / i->last_mo_production[0],255);
-		} 
+		}
 		i->pct_transported[0] = pct;
 
 		i->total_production[0] = i->last_mo_production[0];
@@ -1687,7 +1687,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		if (i->last_mo_production[1] != 0) {
 			i->last_prod_year = _cur_year;
 			pct = min(i->last_mo_transported[1] * 256 / i->last_mo_production[1],255);
-		} 
+		}
 		i->pct_transported[1] = pct;
 
 		i->total_production[1] = i->last_mo_production[1];
@@ -1747,7 +1747,7 @@ static void MaybeCloseIndustry(Industry *i)
 	uint32 r;
 	StringID str;
 	int type = i->type;
-			
+
 	if (_industry_close_mode[type] == 1) {
 		/* decrease or increase */
 		if (type == IT_OIL_WELL && _opt.landscape == LT_NORMAL) goto decrease_production;
@@ -1759,14 +1759,14 @@ static void MaybeCloseIndustry(Industry *i)
 					byte b;
 
 					i->prod_level <<= 1;
-					
+
 					b = i->production_rate[0]*2;
 					if (i->production_rate[0] >= 128) b=255;
 					i->production_rate[0] = b;
 					b = i->production_rate[1]*2;
 					if (i->production_rate[1] >= 128) b=255;
 					i->production_rate[1] = b;
-					
+
 					str = _industry_prod_up_strings[type];
 					goto add_news;
 				}
@@ -1782,7 +1782,7 @@ decrease_production:
 				str = _industry_prod_down_strings[type];
 				goto add_news;
 			}
-		} 
+		}
 	} else if (_industry_close_mode[type] > 1) {
 		/* maybe close */
 		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
