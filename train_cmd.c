@@ -1330,13 +1330,12 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 
 static void FillWithStationData(TrainTrackFollowerData *fd, Vehicle *v)
 {
-	uint tile;
+        fd->dest_coords = v->dest_tile;
+        if ((v->next_order & OT_MASK) == OT_GOTO_STATION)
+                fd->station_index = v->next_order_param;
+        else
+                fd->station_index = -1;
 
-	fd->dest_coords = tile = v->dest_tile;
-	fd->station_index = -1;
-
-	if (IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) )
-		fd->station_index = _map2[tile];
 }
 
 static const byte _initial_tile_subcoord[6][4][3] = {
