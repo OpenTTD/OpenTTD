@@ -92,6 +92,9 @@ enum {
 };
 
 #define SLE_VAR(t,i,c) 0 | (offsetof(t,i) & 0xF), offsetof(t,i) >> 4, c
+#if MSC_VER == 1200 /* XXX workaround for MSVC6 */
+#define SLE_VAR2(t0,i0, t1, i1, c) 0 | ((offsetof(t0, i0) + offsetof(t1, i1)) & 0xF), (offsetof(t0, i0) + offsetof(t1, i1)) >> 4, c
+#endif
 #define SLE_REF(t,i,c) 0x10 | (offsetof(t,i) & 0xF), offsetof(t,i) >> 4, c
 #define SLE_ARR(t,i,c,l) 0x20 | (offsetof(t,i) & 0xF), offsetof(t,i) >> 4, c, l
 #define SLE_CONDVAR(t,i,c,from,to) 0x40 | (offsetof(t,i) & 0xF), offsetof(t,i) >> 4, c, from, to

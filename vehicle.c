@@ -1593,7 +1593,11 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,cur_order_index,	SLE_UINT8),
 	SLE_VAR(Vehicle,num_orders,				SLE_UINT8),
 	SLE_VAR(Vehicle,current_order,		SLE_UINT8), /* XXX hack to avoid version bump */
+	#if _MSC_VER != 1200
 	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
+	#else /* XXX workaround for MSVC6 */
+	SLE_VAR2(Vehicle, current_order, Order, station, SLE_UINT8),
+	#endif
 	SLE_REF(Vehicle,schedule_ptr,			REF_SCHEDULE),
 
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -1737,7 +1741,11 @@ static const byte _disaster_desc[] = {
 	SLE_VAR(Vehicle,z_height,					SLE_UINT8),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
+	#if _MSC_VER != 1200
 	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
+	#else /* XXX workaround for MSVC6 */
+	SLE_VAR2(Vehicle, current_order, Order, station, SLE_UINT8),
+	#endif
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
