@@ -404,7 +404,7 @@ static ClientState *AllocClient(SOCKET s)
 	cs->quited = false;
 
 	if (_network_server) {
-		ci = &_network_client_info[client_no];
+		ci = DEREF_CLIENT_INFO(cs);
 		memset(ci, 0, sizeof(*ci));
 
 		cs->index = _network_client_index++;
@@ -700,6 +700,7 @@ void NetworkInitialize(void)
 	_local_command_queue = NULL;
 
 	// Clean all client-sockets
+	memset(_clients, 0, sizeof(_clients));
 	for (cs = _clients; cs != &_clients[MAX_CLIENTS]; cs++) {
 		cs->socket = INVALID_SOCKET;
 		cs->status = STATUS_INACTIVE;

@@ -778,7 +778,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 	if (cp->cmd == CMD_PLAYER_CTRL) {
-		// UGLY! p1 is mis-used to get the client-id in CmdPlayerCtrl
+		// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
 		cp->p2 = cs - _clients;
 	}
 

@@ -27,7 +27,6 @@
 // Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1
 #define MAX_CLIENT_INFO (MAX_CLIENTS + 1)
 
-#define NETWORK_DISCOVER_PORT 3978
 #define NETWORK_DEFAULT_PORT 3979
 
 #define MAX_INTERFACES 9

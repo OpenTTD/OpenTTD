@@ -65,7 +65,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
 	NetworkSend_string(p, _openttd_revision);
 	NetworkSend_string(p, _network_player_name); // Player name
-	NetworkSend_uint8(p, _network_playas); // Password
+	NetworkSend_uint8(p, _network_playas); // PlayAs
 	NetworkSend_uint8(p, NETLANG_ANY); // Language
 	NetworkSend_string(p, _network_unique_id);
 	NetworkSend_Packet(p, MY_CLIENT);
@@ -317,15 +317,19 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
 	uint16 index = NetworkRecv_uint16(p);
+	byte playas = NetworkRecv_uint8(p);
+	char name[NETWORK_NAME_LENGTH];
+	char unique_id[NETWORK_NAME_LENGTH];
+
+	NetworkRecv_string(p, name, sizeof(name));
+	NetworkRecv_string(p, unique_id, sizeof(unique_id));
+
+	/* Do we receive a change of data? Most likely we changed playas */
+	if (index == _network_own_client_index)
+		_network_playas = playas;
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		byte playas;
-		char name[NETWORK_NAME_LENGTH];
-
-		playas = NetworkRecv_uint8(p);
-		NetworkRecv_string(p, name, sizeof(name));
-
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, name);
@@ -336,6 +340,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 		ci->client_playas = playas;
 		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
@@ -343,9 +348,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	ci = NetworkFindClientInfoFromIndex(NETWORK_EMPTY_INDEX);
 	if (ci != NULL) {
 		ci->client_index = index;
-		ci->client_playas = NetworkRecv_uint8(p);
-		NetworkRecv_string(p, ci->client_name, sizeof(ci->client_name));
-		NetworkRecv_string(p, ci->unique_id, sizeof(ci->unique_id));
+		ci->client_playas = playas;
+
+		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+		ttd_strlcpy(ci->unique_id, unique_id, sizeof(ci->unique_id));
+
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 

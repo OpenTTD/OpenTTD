@@ -662,8 +662,6 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					_docommand_recursive = 0;
 					DoCommandP(0, ci->client_playas-1, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
 				}
-			} else {
-				_network_playas = p->index + 1;
 			}
 		} else {
 			if (_network_server) {
@@ -672,8 +670,6 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				ci = &_network_client_info[p2];
 				ci->client_playas = OWNER_SPECTATOR;
 				NetworkUpdateClientInfo(ci->client_index);
-			} else {
-				_network_playas = OWNER_SPECTATOR;
 			}
 #endif /* ENABLE_NETWORK */
 		}
