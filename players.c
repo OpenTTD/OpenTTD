@@ -629,7 +629,7 @@ static void DeletePlayerStuff(int pi)
 // functionality.
 // 0 - make new player
 // 1 - make new AI player
-// 2 - delete player (p1 >> 8) & 0xFF
+// 2 - delete player (p2)
 // 3 - join player (p1 >> 8) & 0xFF with (p1 >> 16) & 0xFF
 int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -686,9 +686,23 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DoStartupNewPlayer(true);
 		break;
 	case 2: // delete player
-		pi = (byte)(p1 >> 8);
-		ChangeOwnershipOfPlayerItems(pi, 255);
-		DeletePlayerStuff(pi);
+		p = DEREF_PLAYER(p2);
+
+		/* Only allow removal of HUMAN companies */
+		if (IS_HUMAN_PLAYER(p2)) {
+			/* Delete any open window of the company */
+			DeletePlayerWindows(p2);
+
+			/* Show the bankrupt news */
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			AddNewsItem( (StringID)(p2 + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+
+			/* Remove the company */
+			ChangeOwnershipOfPlayerItems(p2, 255);
+			p->money64 = p->player_money = 100000000;
+			p->is_active = false;
+		}
 		break;
 
 	case 3: // join player

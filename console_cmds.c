@@ -214,6 +214,59 @@ DEF_CONSOLE_CMD(ConKick)
 	return NULL;
 }
 
+DEF_CONSOLE_CMD(ConResetCompany)
+{
+	Player *p;
+	ClientState *cs;
+	NetworkClientInfo *ci;
+
+	if (argc == 2) {
+		uint32 index = atoi(argv[1]);
+
+		/* Check valid range */
+		if (index < 1 || index > MAX_PLAYERS) {
+			IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-ID must be between 1 and %d.", MAX_PLAYERS);
+			return NULL;
+		}
+
+		/* Check if company does exist */
+		index--;
+		p = DEREF_PLAYER(index);
+		if (!p->is_active) {
+			IConsolePrintF(_iconsole_color_error, "Company does not exist.");
+			return NULL;
+		}
+
+		if (p->is_ai) {
+			IConsolePrintF(_iconsole_color_error, "Company is owned by an AI.");
+			return NULL;
+		}
+
+		/* Check if the company has active players */
+		FOR_ALL_CLIENTS(cs) {
+			ci = DEREF_CLIENT_INFO(cs);
+			if (ci->client_playas-1 == index) {
+				IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
+				return NULL;
+			}
+		}
+		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		if (ci->client_playas-1 == index) {
+			IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
+			return NULL;
+		}
+
+		/* It is safe to remove this company */
+		DoCommandP(0, 2, index, NULL, CMD_PLAYER_CTRL);
+		IConsolePrint(_iconsole_color_default, "Company deleted.");
+		return NULL;
+	}
+
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: reset_company <company-id>.");
+
+	return NULL;
+}
+
 DEF_CONSOLE_CMD(ConNetworkClients)
 {
 	NetworkClientInfo *ci;
@@ -720,6 +773,10 @@ DEF_CONSOLE_CMD(ConSet) {
 
 	// setting the server advertising on/off
 	if (strcmp(argv[1],"server_advertise") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
 		if (argc == 3) {
 			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
 				_network_advertise = true;
@@ -844,12 +901,16 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHook("say_client", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
 	IConsoleCmdRegister("kick",         ConKick);
 	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("reset_company",         ConResetCompany);
+	IConsoleCmdHook("reset_company", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdRegister("connect", ConNetworkConnect);
 	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
 	IConsoleCmdRegister("clients", ConNetworkClients);
 	IConsoleCmdRegister("status",   ConStatus);
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
+
+	IConsoleAliasRegister("clean_company",		"reset_company");
 
 	IConsoleVarRegister("net_frame_freq", &_network_frame_freq, ICONSOLE_VAR_UINT8);
 	IConsoleVarHook("net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
