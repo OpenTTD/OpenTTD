@@ -852,10 +852,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ENGLISH						:Engelsk
+STR_TOWNNAME_ORIGINAL_ENGLISH						:Engelsk
 STR_TOWNNAME_FRENCH						:Fransk
 STR_TOWNNAME_GERMAN						:Tysk
-STR_TOWNNAME_AMERICAN						:Amerikansk
+STR_TOWNNAME_ADDITIONAL_ENGLISH						:Amerikansk
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerikansk
 STR_TOWNNAME_SILLY						:Tåpelige
 STR_TOWNNAME_SWEDISH						:Svensk

@@ -852,10 +852,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ENGLISH						:Anglais
+STR_TOWNNAME_ORIGINAL_ENGLISH						:Anglais
 STR_TOWNNAME_FRENCH						:Français
 STR_TOWNNAME_GERMAN						:Allemand
-STR_TOWNNAME_AMERICAN						:Américan
+STR_TOWNNAME_ADDITIONAL_ENGLISH						:Américan
 STR_TOWNNAME_LATIN_AMERICAN					:Latino-Americain
 STR_TOWNNAME_SILLY						:Drôles
 STR_TOWNNAME_SWEDISH						:Suédois

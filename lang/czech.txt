@@ -852,10 +852,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ENGLISH						:Anglická
+STR_TOWNNAME_ORIGINAL_ENGLISH						:Anglická
 STR_TOWNNAME_FRENCH						:Francouzská
 STR_TOWNNAME_GERMAN						:Nemecka
-STR_TOWNNAME_AMERICAN						:Americká
+STR_TOWNNAME_ADDITIONAL_ENGLISH						:Americká
 STR_TOWNNAME_LATIN_AMERICAN					:Latinskoamerická
 STR_TOWNNAME_SILLY						:Legracni (anglická)
 STR_TOWNNAME_SWEDISH						:Svedska
