@@ -191,7 +191,8 @@ static int _num_clients;
 // keep a history of the 16 most recent seeds to be able to capture out of sync errors.
 static uint32 _my_seed_list[16][2];
 static bool _network_ready_sent;
-static uint32 _network_client_timeout;
+static uint16 _network_ready_ahead = 1;
+static uint16 _network_client_timeout;
 
 typedef struct FutureSeeds {
 	int32 frame;
@@ -539,7 +540,7 @@ static void HandleSyncPacket(SyncPacket *sp)
 	s1 = TO_LE32(sp->random_seed_1);
 	s2 = TO_LE32(sp->random_seed_2);
 
-	DEBUG(net, 2) ("[NET] sync seeds: [1]=%i rnd[2]=%i", sp->random_seed_1, sp->random_seed_2);
+	DEBUG(net, 3) ("[NET] sync seeds: [1]=%i rnd[2]=%i", sp->random_seed_1, sp->random_seed_2);
 
 	if (_frame_counter_srv <= _frame_counter) {
 		// we are ahead of the server check if the seed is in our list.
@@ -1228,6 +1229,10 @@ static _iconsole_var * NetworkConsoleCmdConnect(byte argc, byte* argv[], byte ar
 	} else if (argc==3) {
 		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s",argv[1],argv[2]);
 		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
+	} else if (argc==4) {
+		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s as player %s",argv[1],argv[2],argv[3]);
+		_network_playas = atoi(argv[3]);
+		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
 		}
 	return NULL;
 }
@@ -1504,7 +1509,8 @@ if (_network_available) {
 	// initiate network ip list
 	NetworkIPListInit();
 	IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
-	IConsoleVarRegister("cfg_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
+	IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
+	IConsoleVarRegister("net_ready_ahead",&_network_ready_ahead,ICONSOLE_VAR_UINT16);
 	} else {
 	DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
 	}
@@ -1628,9 +1634,9 @@ if (incomming) {
 
 	// outgoing
 
-	if ((_networking) && (!_networking_server) && (_frame_counter+1 >= _frame_counter_max)) {
+	if ((_networking) && (!_networking_server) && (_frame_counter+_network_ready_ahead >= _frame_counter_max)) {
 			// send the "i" am ready message to the server
-			// one frame before "i" reach the frame-limit
+			// [_network_ready_ahead] frame before "i" reach the frame-limit
 			NetworkSendReadyPacket();
 		}
 
