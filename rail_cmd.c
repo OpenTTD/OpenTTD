@@ -1151,7 +1151,7 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 RemoveTrainDepot(uint tile, uint32 flags)
 {
-	if (!CheckTileOwnership(tile) && !(_current_player==17))
+	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
 	if (!EnsureNoVehicle(tile))

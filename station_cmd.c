@@ -905,7 +905,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
 	if (!IS_TILETYPE(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
 	st = DEREF_STATION(_map2[tile]);
-	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
 	// if we reached here, it means we can actually delete it. do that.
 	if (flags & DC_EXEC) {
@@ -948,11 +948,14 @@ uint GetStationPlatforms(Station *st, uint tile)
 }
 
 
-static int32 RemoveRailroadStation(Station *st, uint32 flags)
+static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
-	uint tile;
 	int w,h;
 	int32 cost;
+
+	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
+	if (_current_player == OWNER_WATER && _patches.nonuniform_stations)
+		return DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
 
 	/* Current player owns the station? */
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
@@ -2434,7 +2437,7 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 	st = DEREF_STATION(_map2[tile]);
 
 	if (m5 < 8)
-		return RemoveRailroadStation(st, flags);
+		return RemoveRailroadStation(st, tile, flags);
 
 	// original airports < 67, new airports between 83 - 114
 	if (m5 < 0x43 || ( m5 >= 83 && m5 <= 114) )

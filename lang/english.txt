@@ -2520,6 +2520,7 @@ STR_B002_OIL_REFINERY_EXPLOSION			:{BLACK}{BIGFONT}Oil refinery explosion near {
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS:{BLACK}{BIGFONT}Factory destroyed in suspicious circumstances near {TOWN}!
 STR_B004_UFO_LANDS_NEAR					:{BLACK}{BIGFONT}'UFO' lands near {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Coal mine subsidence leaves trail of destruction near {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED		:{BLACK}{BIGFONT}Floods!{}At least {COMMA16} presumed missing or dead after deadly floods!
 
 STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator

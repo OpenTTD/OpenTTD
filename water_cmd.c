@@ -4,6 +4,9 @@
 #include "viewport.h"
 #include "command.h"
 #include "town.h"
+#include "news.h"
+
+static void FloodVehicle(Vehicle *v);
 
 bool IsShipDepotTile(TileIndex tile)
 {
@@ -506,9 +509,58 @@ static void TileLoopWaterHelper(uint tile, const int16 *offs)
 		}
 
 		_current_player = OWNER_WATER;
+		{
+			Vehicle *v = FindVehicleBetween(tile, tile, 0);
+			if (v != NULL) {FloodVehicle(v);}
+		}
 		if (DoCommandByTile(tile,0,0,DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR)
 			ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,OWNER_WATER,0);
 	}
+}
+
+static void FloodVehicle(Vehicle *v)
+{
+	Vehicle *u;
+	uint16 pass;
+	if (!(v->vehstatus & VS_CRASHED)) {
+
+		if (v->type == VEH_Road) {	// flood bus/truck
+			pass = 1;	// driver
+			if (v->cargo_type == CT_PASSENGERS)
+				pass += v->cargo_count;
+
+			v->vehstatus |= VS_CRASHED;
+			v->u.road.crashed_ctr = 2000;	// max 2220, disappear pretty fast
+			InvalidateWindow(WC_ROADVEH_LIST, v->owner);
+		}
+		
+		else if (v->type == VEH_Train) {
+			v = GetFirstVehicleInChain(v);
+			u = v;
+			pass = 4;	// driver
+
+			// crash all wagons, and count passangers
+			BEGIN_ENUM_WAGONS(v)
+				if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
+				v->vehstatus |= VS_CRASHED;
+			END_ENUM_WAGONS(v)
+
+			v = u;
+			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
+			InvalidateWindow(WC_TRAINS_LIST, v->owner);						
+		}
+
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		
+		SET_DPARAM16(0, pass);
+		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+			v->index,
+			0);
+	}
+	CreateEffectVehicleRel(v,4,4,8,EV_CRASHED_SMOKE);	// show cool destruction effects
+	SndPlayVehicleFx(16, v); // create sound
 }
 
 // called from tunnelbridge_cmd

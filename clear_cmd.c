@@ -431,7 +431,7 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TILE_FROM_XY(x,y);
 
-	if (!CheckTileOwnership(tile))
+	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
 	if (!EnsureNoVehicle(tile))

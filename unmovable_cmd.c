@@ -114,39 +114,24 @@ static uint GetSlopeTileh_Unmovable(TileInfo *ti)
 static int32 ClearTile_Unmovable(uint tile, byte flags)
 {
 	byte m5 = _map5[tile];
-	//Town *t;
 		
 	if (m5 & 0x80) {
 		if (_current_player == OWNER_WATER) 
-			return DoCommandByTile(tile, OWNER_WATER, 0, flags, CMD_DESTROY_COMPANY_HQ);
+			return DoCommandByTile(tile, OWNER_WATER, 0, DC_EXEC, CMD_DESTROY_COMPANY_HQ);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}	
 
 	if (m5 == 3)	// company owned land
 		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
 
-	//t = ClosestTownFromTile(tile, _patches.dist_local_authority + 20); 	// needed for town penalty
-
-	// checks if you're allowed to remove unmovable things. no remove under rating "%difficulty setting"
-	if (_game_mode != GM_EDITOR) {	
-		if (flags & DC_AUTO || !_cheats.magic_bulldozer.value)
-			return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
-
-		/*if (!CheckforTownRating(tile, flags, t, UNMOVEABLE_REMOVE)) 
-			return CMD_ERROR;
-		*/
-
-	}
+	// checks if you're allowed to remove unmovable things
+	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
+		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 	
 	if (flags & DC_EXEC) {	
 		DoClearSquare(tile);
-		// decreases the town rating by 250;
-		/*if (_game_mode != GM_EDITOR) 
-			ChangeTownRating(t, -250, -100);
-		*/
 	}
 
-	// return _price.build_industry*0.34; 
 	return 0;
 }
 

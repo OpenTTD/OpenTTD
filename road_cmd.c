@@ -630,7 +630,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 RemoveRoadDepot(uint tile, uint32 flags)
 {
-	if (!CheckTileOwnership(tile))
+	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
 	if (!EnsureNoVehicle(tile))

@@ -378,7 +378,14 @@ static int32 ClearTile_Industry(uint tile, byte flags)
 {
 	Industry *i = DEREF_INDUSTRY(_map2[tile]);
 
- if ((_current_player == OWNER_WATER || _game_mode != GM_EDITOR) && !_cheats.magic_bulldozer.value) {
+	/*	* water can destroy industries
+			* in editor you can bulldoze industries
+			* with magic_bulldozer cheat you can destroy industries
+			* (area around OILRIG is water, so water shouldn't flood it
+	*/
+	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
+			!_cheats.magic_bulldozer.value) ||
+			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG) ) {
  		SET_DPARAM16(0, STR_4802_COAL_MINE + i->type);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
