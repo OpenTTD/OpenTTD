@@ -385,8 +385,11 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	}
 
 	// check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards)
+#if defined(WIN32)
+	if (sym->scancode == 41) key |= WKC_BACKQUOTE;
+#else
 	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
-	
+#endif
 	// META are the command keys on mac
 	if (sym->mod & KMOD_META) key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;

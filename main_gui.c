@@ -1689,7 +1689,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
-		case WKC_BACKQUOTE: IConsoleSwitch(); e->keypress.keycode=0; break;
+		case WKC_BACKQUOTE: IConsoleSwitch(); e->keypress.cont=false; break;
 		case WKC_CTRL | WKC_ALT | 'C': if(!_networking) ShowCheatWindow(); break;
 		}
 	} break;

@@ -22,6 +22,7 @@ static byte _iconsole_color_error = 3;
 static byte _iconsole_color_debug = 5;
 static byte _iconsole_color_commands = 2;
 static Window *_iconsole_win = NULL;
+static byte _iconsole_scroll;
 
 // ** console cursor ** //
 static bool _icursor_state;
@@ -46,12 +47,8 @@ static _iconsole_cmd * _iconsole_cmds; // list of registred commands
 static _iconsole_var * _iconsole_vars; // list of registred vars
 
 // ** console std lib ** // 
-static byte _stdlib_developer=0;
+static byte _stdlib_developer=1;
 static void IConsoleStdLibRegister();
-static byte * _stdlib_temp_string;
-static byte * _stdlib_temp_pointer;
-static uint32 _stdlib_temp_uint32;
-static bool _stdlib_temp_bool;
 
 /* *************** */
 /*  end of header  */
@@ -72,13 +69,14 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		GfxFillRect(w->left,w->top,w->width,w->height-1,0);
 		{
-		int i=79;
+		int i=_iconsole_scroll;
 		int max=(w->height/12)-1;
-		while ((i>79-max) && (_iconsole_buffer[i]!=NULL)) {
-			DoDrawString(_iconsole_buffer[i],5,w->height-((81-i)*12),_iconsole_cbuffer[i]);
+		while ((i>_iconsole_scroll-max) && (_iconsole_buffer[i]!=NULL)) {
+			DoDrawString(_iconsole_buffer[i],5,w->height-(((_iconsole_scroll+2)-i)*12),_iconsole_cbuffer[i]);
 			i--;
 			}
-		DoDrawString((char *)&_iconsole_cmdline,5,w->height-12,_iconsole_color_commands);
+		DoDrawString("]",5,w->height-12,_iconsole_color_commands);
+		DoDrawString((char *)&_iconsole_cmdline,10,w->height-12,_iconsole_color_commands);
 		}
 		break;
 
@@ -97,7 +95,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 				int color;
 				_cur_dpi=&_screen;
 				if (_icursor_state) color=14; else color=0;
-				posx=5+GetStringWidth((char *)&_iconsole_cmdline);
+				posx=10+GetStringWidth((char *)&_iconsole_cmdline);
 				posy=w->height-3;
 				GfxFillRect(posx,posy,posx+5,posy+1,color);
 				_video_driver->make_dirty(posx,posy,5,1);
@@ -108,6 +106,42 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		e->keypress.cont=false;
+		if (e->keypress.keycode == WKC_PAGEUP)
+			{
+			if ((_iconsole_scroll - ((w->height/12)-1))<0) {
+				_iconsole_scroll = 0;
+				} else {
+				_iconsole_scroll -= (w->height/12)-1;
+				}
+			SetWindowDirty(w);
+			} else
+		if (e->keypress.keycode == WKC_PAGEDOWN)
+			{
+			if ((_iconsole_scroll + ((w->height/12)-1))>79) {
+				_iconsole_scroll = 79;
+				} else {
+				_iconsole_scroll += (w->height/12)-1;
+				}
+			SetWindowDirty(w);
+			} else
+		if (e->keypress.keycode == WKC_UP)
+			{
+			if ((_iconsole_scroll - 1)<0) {
+				_iconsole_scroll = 0;
+				} else {
+				_iconsole_scroll -= 1;
+				}
+			SetWindowDirty(w);
+			} else
+		if (e->keypress.keycode == WKC_DOWN)
+			{
+			if ((_iconsole_scroll + 1)>79) {
+				_iconsole_scroll = 79;
+				} else {
+				_iconsole_scroll += 1;
+				}
+			SetWindowDirty(w);
+			} else
 		if (e->keypress.keycode == WKC_BACKQUOTE)
 			{
 			IConsoleSwitch();
@@ -126,10 +160,10 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			} else
 		if (IS_INT_INSIDE((e->keypress.ascii), 32, 256))
 			{
+			_iconsole_scroll=79;
 			_iconsole_cmdline[_iconsole_cmdpos]=e->keypress.ascii;
 			if (_iconsole_cmdpos!=255) _iconsole_cmdpos++;	
 			SetWindowDirty(w);
-			e->keypress.keycode=0;
 			} else e->keypress.cont=true;	
 		break;
 
@@ -139,6 +173,10 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 void IConsoleInit()
 {
 int i;
+#if defined(WITH_REV)
+extern char _openttd_revision[];
+#endif
+_iconsole_scroll=79;
 _iconsole_inited=true;
 _iconsole_mode=ICONSOLE_CLOSED;
 _iconsole_win=NULL;
@@ -147,8 +185,14 @@ _icursor_rate=5;
 _icursor_counter=0;
 for (i=0;i<80;i++) _iconsole_buffer[i]=NULL;
 IConsoleStdLibRegister();
-IConsolePrint(12,"OpenTTD Game Console Build #");	
+#if defined(WITH_REV)
+IConsolePrintF(13,"OpenTTD Game Console %s",_openttd_revision);	
+#else
+IConsolePrint(13,"OpenTTD Game Console");	
+#endif
 IConsolePrint(12,"---------------------------------");
+IConsolePrint(12,"use \"help\" for more info");
+IConsolePrint(12,"");
 IConsoleClearCommand();
 }
 
@@ -280,7 +324,7 @@ if (item == NULL) {
 	}
 }
 
-static void* IConsoleCmdGetAddr(byte * name) {
+void* IConsoleCmdGetAddr(byte * name) {
 _iconsole_cmd * item;
 
 item = _iconsole_cmds;
@@ -309,6 +353,7 @@ item_new->_next = NULL;
 item_new->addr  = addr;
 item_new->name  = _new;
 item_new->type  = type;
+item_new->_malloc = false;
 
 item = _iconsole_vars;
 if (item == NULL) {
@@ -318,6 +363,35 @@ if (item == NULL) {
 	item->_next = item_new;
 	}
 }
+
+void IConsoleVarInsert(_iconsole_var * var, byte * name) {
+byte * _new;
+_iconsole_var * item;
+_iconsole_var * item_new;
+int i;
+
+item_new = var;
+
+// dont allow to build variable rings
+if (item_new->_next != NULL) return;
+
+	i=strlen((char *)name)+1;
+	_new=malloc(i+1);
+	memset(_new,0,i+1);
+	_new[0]='*';
+	memcpy(_new+1,name,i);
+
+item_new->name  = _new;
+
+item = _iconsole_vars;
+if (item == NULL) {
+	_iconsole_vars = item_new;
+	} else {
+	while (item->_next != NULL) { item = item->_next; };
+	item->_next = item_new;
+	}
+}
+
 
 _iconsole_var * IConsoleVarGet(byte * name) {
 _iconsole_var * item;
@@ -330,27 +404,124 @@ while (item != NULL) {
 return NULL;
 }
 
-static void IConsoleVarStringSet(_iconsole_var * var, byte * string) {
+_iconsole_var * IConsoleVarAlloc(byte type) {
+_iconsole_var * item;
+item=malloc(sizeof(_iconsole_var));
+item->_next = NULL;
+item->name  = "";
+item->type  = type;
+switch (item->type) {
+		case ICONSOLE_VAR_BOOLEAN:
+				{
+				item->addr=malloc(sizeof(bool));
+				memset(item->addr,0,sizeof(bool));
+				item->_malloc=true;
+				}
+				break;
+		case ICONSOLE_VAR_BYTE:
+				{
+				item->addr=malloc(sizeof(byte));
+				memset(item->addr,0,sizeof(byte));
+				item->_malloc=true;
+				}
+				break;
+		case ICONSOLE_VAR_UINT16:
+				{
+				item->addr=malloc(sizeof(unsigned short));
+				memset(item->addr,0,sizeof(unsigned short));
+				item->_malloc=true;
+				}
+				break;
+		case ICONSOLE_VAR_UINT32:
+				{
+				item->addr=malloc(sizeof(unsigned int));
+				memset(item->addr,0,sizeof(unsigned int));
+				item->_malloc=true;
+				}
+				break;
+		case ICONSOLE_VAR_INT16:
+				{
+				item->addr=malloc(sizeof(signed short));
+				memset(item->addr,0,sizeof(signed short));
+				item->_malloc=true;
+				}
+				break;
+		case ICONSOLE_VAR_INT32:
+				{
+				item->addr=malloc(sizeof(signed int));
+				memset(item->addr,0,sizeof(signed int));
+				item->_malloc=true;
+				}
+				break;
+		default:
+				item->addr  = NULL;
+				item->_malloc = false;
+				break;
+		}
+return item;
+}
+
+
+void IConsoleVarFree(_iconsole_var * var) {
+if (var ->_malloc) {
+	free(var ->addr);
+	}
+free(var);
+}
+
+void IConsoleVarSetString(_iconsole_var * var, byte * string) {
 int l;
 
-if (strlen((byte *) var->addr)!=0) {
+if (var->_malloc) {
 	free(var->addr);
 	}
+
 l=strlen((char *) string);
 var->addr=malloc(l+1);
+var->_malloc=true;
 memset(var->addr,0,l);
 memcpy((void *) var->addr,(void *) string, l);
 ((byte *)var->addr)[l]=0;
 }
 
-void IConsoleCmdExec(byte * cmdstr) {
-void (*function)(byte argc, byte* argv[], byte argt[]);
-byte * tokens[20];
-byte tokentypes[20];
-byte * tokenstream;
-byte * tokenstream_s;
-byte execution_mode;
-_iconsole_var * var = NULL;
+void IConsoleVarSetValue(_iconsole_var * var, int value) {
+switch (var->type) {
+		case ICONSOLE_VAR_BOOLEAN:
+				{
+				(*(bool *)var->addr)=(value!=0);
+				}
+				break;
+		case ICONSOLE_VAR_BYTE:
+				{
+				(*(byte *)var->addr)=value;
+				}
+				break;
+		case ICONSOLE_VAR_UINT16:
+				{
+				(*(unsigned short *)var->addr)=value;
+				}
+				break;
+		case ICONSOLE_VAR_UINT32:
+				{
+				(*(unsigned int *)var->addr)=value;
+				}
+				break;
+		case ICONSOLE_VAR_INT16:
+				{
+				(*(signed short *)var->addr)=value;
+				}
+				break;
+		case ICONSOLE_VAR_INT32:
+				{
+				(*(signed int *)var->addr)=value;
+				}
+				break;
+		default:
+				break;
+		}
+}
+
+void IConsoleVarDump(_iconsole_var * var, byte * dump_desc) {
 
 byte var_b; // TYPE BYTE
 unsigned short var_ui16; // TYPE UINT16
@@ -358,6 +529,75 @@ unsigned int var_ui32; // TYPE UINT32
 signed short var_i16; // TYPE INT16
 signed int var_i32; // TYPE INT32
 byte * var_s; // TYPE STRING
+
+	if (dump_desc==NULL) dump_desc = var->name;
+
+	switch (var->type) {
+		case ICONSOLE_VAR_BOOLEAN:
+				{
+				if (*(bool *)var->addr) {
+					IConsolePrintF(_iconsole_color_default, "%s = true",dump_desc);
+					} else {
+					IConsolePrintF(_iconsole_color_default, "%s = false",dump_desc);
+					}
+				}
+				break;
+		case ICONSOLE_VAR_BYTE:
+				{
+				var_b=*(byte *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %i",dump_desc,var_b);
+				}
+				break;
+		case ICONSOLE_VAR_UINT16:
+				{
+				var_ui16=*(unsigned short *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %i",dump_desc,var_ui16);
+				}
+				break;
+		case ICONSOLE_VAR_UINT32:
+				{
+				var_ui32=*(unsigned int *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %i",dump_desc,var_ui32);
+				}
+				break;
+		case ICONSOLE_VAR_INT16:
+				{
+				var_i16=*(signed short *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %i",dump_desc,var_i16);
+				}
+				break;
+		case ICONSOLE_VAR_INT32:
+				{
+				var_i32=*(signed int *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %i",dump_desc,var_i32);
+				}
+				break;
+		case ICONSOLE_VAR_STRING:
+				{
+				var_s=(byte *)var->addr;
+				IConsolePrintF(_iconsole_color_default, "%s = %s",dump_desc,var_s);
+				}
+				break;
+		case ICONSOLE_VAR_UNKNOWN:
+		case ICONSOLE_VAR_POINTER:
+				{
+				var_i32=(signed int)((byte *)var->addr);
+				IConsolePrintF(_iconsole_color_default, "%s = @%i",dump_desc,var_i32);
+				}
+				break;
+		}
+
+}
+
+void IConsoleCmdExec(byte * cmdstr) {
+_iconsole_var * (*function)(byte argc, byte* argv[], byte argt[]);
+byte * tokens[20];
+byte tokentypes[20];
+byte * tokenstream;
+byte * tokenstream_s;
+byte execution_mode;
+_iconsole_var * var = NULL;
+_iconsole_var * result = NULL;
 
 bool longtoken;
 bool valid_token;
@@ -437,14 +677,13 @@ if (!(*tokenstream==0)) {
 
 for (i=0; i<c; i++) {
 	if (i>0) if (strlen((char *) tokens[i])>0) {
+		tokentypes[i]=ICONSOLE_VAR_UNKNOWN;
 		if (tokens[i][0]=='*') {
 			var = IConsoleVarGet(tokens[i]);
 			if (var!=NULL) {
 				tokens[i]=(byte *)var->addr;
 				tokentypes[i]=var->type;
 				}
-			} else { 
-			tokentypes[i]=ICONSOLE_VAR_STRING;
 			}
 		}
 	}
@@ -458,6 +697,13 @@ if (function != NULL) {
 	var = IConsoleVarGet(tokens[0]);
 	if (var != NULL) {
 		execution_mode=2; // this is a variable
+		if (c>2) if (strcmp(tokens[1],"<<")==0) {
+			// this is command to variable mode [normal]
+			function = IConsoleCmdGetAddr(tokens[2]);
+			if (function != NULL) {
+				execution_mode=3;
+				}
+			}
 		}
 	}
 
@@ -473,7 +719,11 @@ case 0:
 case 1:
 	{
 	// execution with command syntax
-	function(c,tokens,tokentypes);
+	result = function(c,tokens,tokentypes);
+	if (result!=NULL) {
+		IConsoleVarDump(result,"result");
+		IConsoleVarFree(result);
+		}
 	}
 	break;
 case 2:
@@ -486,20 +736,20 @@ if ((c==2) || (c==3)) {
 				{
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
-						*(bool *)var->addr=(atoi((char *) tokens[2])==1);
-						c=1;
+						*(bool *)var->addr=(atoi((char *) tokens[2])!=0);
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(bool *)var->addr=false;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					*(bool *)var->addr=!*(bool *)var->addr;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					*(bool *)var->addr=!*(bool *)var->addr;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}	 
 				else { IConsoleError("operation not supported"); }
 				}
@@ -509,19 +759,19 @@ if ((c==2) || (c==3)) {
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
 						*(byte *)var->addr=atoi((char *) tokens[2]);
-						c=1;
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(byte *)var->addr=0;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					(*(byte *)var->addr)++;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(byte *)var->addr)--;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}	 
 				else { IConsoleError("operation not supported"); }
 				}
@@ -531,19 +781,19 @@ if ((c==2) || (c==3)) {
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
 						*(unsigned short *)var->addr=atoi((char *) tokens[2]);
-						c=1;
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(unsigned short *)var->addr=0;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					(*(unsigned short *)var->addr)++;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(unsigned short *)var->addr)--;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else { IConsoleError("operation not supported"); }
 				}
@@ -553,19 +803,19 @@ if ((c==2) || (c==3)) {
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
 						*(unsigned int *)var->addr=atoi((char *) tokens[2]);
-						c=1;
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(unsigned int *)var->addr=0;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					(*(unsigned int *)var->addr)++;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(unsigned int *)var->addr)--;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else { IConsoleError("operation not supported"); }
 				}
@@ -575,19 +825,19 @@ if ((c==2) || (c==3)) {
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
 						*(signed short *)var->addr=atoi((char *) tokens[2]);
-						c=1;
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(signed short *)var->addr=0;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					(*(signed short *)var->addr)++;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(signed short *)var->addr)--;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else { IConsoleError("operation not supported"); }
 				}
@@ -597,19 +847,19 @@ if ((c==2) || (c==3)) {
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
 						*(signed int *)var->addr=atoi((char *) tokens[2]);
-						c=1;
+						IConsoleVarDump(var,NULL);
 						} else {
 						*(signed int *)var->addr=0;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					(*(signed int *)var->addr)++;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					(*(signed int *)var->addr)--;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else { IConsoleError("operation not supported"); }
 				}
@@ -618,11 +868,11 @@ if ((c==2) || (c==3)) {
 				{
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
-						IConsoleVarStringSet(var, tokens[2]);
-						c=1;
+						IConsoleVarSetString(var, tokens[2]);
+						IConsoleVarDump(var,NULL);
 						} else {
-						IConsoleVarStringSet(var, "");
-						c=1;
+						IConsoleVarSetString(var, "");
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else { IConsoleError("operation not supported"); }
@@ -632,20 +882,24 @@ if ((c==2) || (c==3)) {
 				{
 				if (strcmp(tokens[1],"=")==0) {
 					if (c==3) {
-						var->addr = tokens[2];
-						c=1;
+						if (tokentypes[2]==ICONSOLE_VAR_UNKNOWN) {
+							var->addr = (void *)atoi(tokens[2]);
+							} else {
+							var->addr = (void *)tokens[2];
+							}
+						IConsoleVarDump(var,NULL);
 						} else {
 						var->addr = NULL;
-						c=1;
+						IConsoleVarDump(var,NULL);
 						}
 					}
 				else if (strcmp(tokens[1],"++")==0) {
 					var->addr = ((char *)var->addr)+1;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else if (strcmp(tokens[1],"--")==0) {
 					var->addr = ((char *)var->addr)-1;;
-					c=1;
+					IConsoleVarDump(var,NULL);
 					}
 				else { IConsoleError("operation not supported"); }
 				}
@@ -654,62 +908,88 @@ if ((c==2) || (c==3)) {
 	}
 	if (c==1) {
 		// ** variable output ** //
-		switch (var->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-				{
-				if (*(bool *)var->addr) {
-					IConsolePrintF(_iconsole_color_default, "%s = true",var->name);
-					} else {
-					IConsolePrintF(_iconsole_color_default, "%s = false",var->name);
-					}
+		IConsoleVarDump(var,NULL);
+		}
+	}
+	break;
+case 3:
+	{
+	// execute command with result
+		{
+		int i;
+		int diff;
+		void * temp;
+		byte temp2;
+
+		for (diff=0; diff<2; diff++) {
+			temp=tokens[0];
+			temp2=tokentypes[0];
+			for (i=1; i<20; i++) {
+				tokens[i-1]=tokens[i];
+				tokentypes[i-1]=tokentypes[i];
 				}
-				break;
-		case ICONSOLE_VAR_BYTE:
-				{
-				var_b=*(byte *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %i",var->name,var_b);
-				}
-				break;
-		case ICONSOLE_VAR_UINT16:
-				{
-				var_ui16=*(unsigned short *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %i",var->name,var_ui16);
-				}
-				break;
-		case ICONSOLE_VAR_UINT32:
-				{
-				var_ui32=*(unsigned int *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %i",var->name,var_ui32);
-				}
-				break;
-		case ICONSOLE_VAR_INT16:
-				{
-				var_i16=*(signed short *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %i",var->name,var_i16);
-				}
-				break;
-		case ICONSOLE_VAR_INT32:
-				{
-				var_i32=*(signed int *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %i",var->name,var_i32);
-				}
-				break;
-		case ICONSOLE_VAR_STRING:
-				{
-				var_s=(byte *)var->addr;
-				IConsolePrintF(_iconsole_color_default, "%s = %s",var->name,var_s);
-				}
-				break;
-		case ICONSOLE_VAR_UNKNOWN:
-		case ICONSOLE_VAR_VARPTR:
-		case ICONSOLE_VAR_POINTER:
-				{
-				var_i32=(signed int)((byte *)var->addr);
-				IConsolePrintF(_iconsole_color_default, "%s = @%i",var->name,var_i32);
-				}
-				break;
+			tokens[19]=temp;
+			tokentypes[19]=temp2;
 			}
 		}
+
+	result = function(c,tokens,tokentypes);
+	if (result!=NULL) {
+		if (result ->type != var -> type) {
+			IConsoleError("variable type missmatch");
+			} else {
+			switch (result->type) {
+			case ICONSOLE_VAR_BOOLEAN:
+				{
+				(*(bool *)var->addr)=(*(bool *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_BYTE:
+				{
+				(*(byte *)var->addr)=(*(byte *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_UINT16:
+				{
+				(*(unsigned short *)var->addr)=(*(unsigned short *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_UINT32:
+				{
+				(*(unsigned int *)var->addr)=(*(unsigned int *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_INT16:
+				{
+				(*(signed short *)var->addr)=(*(signed short *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_INT32:
+				{
+				(*(signed int *)var->addr)=(*(signed int *)result->addr);
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			case ICONSOLE_VAR_POINTER:
+				{
+				var->addr=result->addr;
+				IConsoleVarDump(var,NULL);
+				}
+				break;
+			default:
+				{
+				IConsoleError("variable type missmatch");
+				}
+				break;
+				}
+			}
+		}
+	
 	}
 	break;
 default:
@@ -730,27 +1010,31 @@ free(tokenstream_s);
 /* **************************** */
 
 
-static void IConsoleStdLibEcho(byte argc, byte * argv[], byte argt[]) {
-	if (argc<2) return;
+static _iconsole_var * IConsoleStdLibEcho(byte argc, byte* argv[], byte argt[]) {
+	if (argc<2) return NULL;
 	IConsolePrint(_iconsole_color_default, argv[1]);
+	return NULL;
 }
 
-static void IConsoleStdLibEchoC(byte argc, byte * argv[], byte argt[]) {
-	if (argc<3) return;
+static _iconsole_var * IConsoleStdLibEchoC(byte argc, byte* argv[], byte argt[]) {
+	if (argc<3) return NULL;
 	IConsolePrint(atoi(argv[1]), argv[2]);
+	return NULL;
 }
 
-static void IConsoleStdLibPrintF(byte argc, byte * argv[], byte argt[]) {
-	if (argc<3) return;
+static _iconsole_var * IConsoleStdLibPrintF(byte argc, byte* argv[], byte argt[]) {
+	if (argc<3) return NULL;
 	IConsolePrintF(_iconsole_color_default, argv[1] ,argv[2],argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],argv[15],argv[16],argv[17],argv[18],argv[19]);
+	return NULL;
 }
 
-static void IConsoleStdLibPrintFC(byte argc, byte * argv[], byte argt[]) {
-	if (argc<3) return;
+static _iconsole_var * IConsoleStdLibPrintFC(byte argc, byte* argv[], byte argt[]) {
+	if (argc<3) return NULL;
 	IConsolePrintF(atoi(argv[1]), argv[2] ,argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],argv[15],argv[16],argv[17],argv[18],argv[19]);
+	return NULL;
 }
 
-static void IConsoleStdLibScreenShot(byte argc, byte * argv[], byte argt[]) {
+static _iconsole_var * IConsoleStdLibScreenShot(byte argc, byte* argv[], byte argt[]) {
 	
 	if (argc<2) {
 		_make_screenshot=1;
@@ -759,18 +1043,45 @@ static void IConsoleStdLibScreenShot(byte argc, byte * argv[], byte argt[]) {
 			_make_screenshot=2;
 			}
 		}
+
+return NULL;
 }
 
-static void IConsoleStdLibDebugLevel(byte argc, byte * argv[], byte argt[]) {
-	if (argc<2) return;
+static _iconsole_var * IConsoleStdLibDebugLevel(byte argc, byte* argv[], byte argt[]) {
+	if (argc<2) return NULL;
 	SetDebugString(argv[1]);
+	return NULL;
 }
 
-static void IConsoleStdLibExit(byte argc, byte * argv[], byte argt[]) {
+static _iconsole_var * IConsoleStdLibExit(byte argc, byte* argv[], byte argt[]) {
 	_exit_game = true;
+	return NULL;
 }
 
-static void IConsoleStdLibListCommands(byte argc, byte * argv[], byte argt[]) {
+static _iconsole_var * IConsoleStdLibHelp(byte argc, byte* argv[], byte argt[]) {
+	IConsolePrint(1		,"");
+	IConsolePrint(13	," -- console help -- ");
+	IConsolePrint(1		," variables: [command to list them: list_vars]");
+	IConsolePrint(1		," *temp_string = \"my little \"");
+	IConsolePrint(1		,"");
+	IConsolePrint(1		," commands: [command to list them: list_cmds]");
+	IConsolePrint(1		," [command] [\"string argument with spaces\"] [argument 2] ...");
+	IConsolePrint(1		," printf \"%s world\" *temp_string");
+	IConsolePrint(1		,"");
+	IConsolePrint(1		," command returning a value into an variable:");
+	IConsolePrint(1		," *temp_uint16 << random");
+	IConsolePrint(1		,"");
+return NULL;
+}
+
+static _iconsole_var * IConsoleStdLibRandom(byte argc, byte* argv[], byte argt[]) {
+_iconsole_var * result;
+result = IConsoleVarAlloc(ICONSOLE_VAR_UINT16);
+IConsoleVarSetValue(result,rand());
+return result;
+}
+
+static _iconsole_var * IConsoleStdLibListCommands(byte argc, byte* argv[], byte argt[]) {
 _iconsole_cmd * item;
 int l = 0;
 
@@ -790,9 +1101,11 @@ while (item != NULL) {
 		}
 	item = item->_next;
 	}
+
+return NULL;
 }
 
-static void IConsoleStdLibListVariables(byte argc, byte * argv[], byte argt[]) {
+static _iconsole_var * IConsoleStdLibListVariables(byte argc, byte* argv[], byte argt[]) {
 _iconsole_var * item;
 int l = 0;
 
@@ -812,24 +1125,74 @@ while (item != NULL) {
 		}
 	item = item->_next;
 	}
+
+return NULL;
+}
+
+static _iconsole_var * IConsoleStdLibListDumpVariables(byte argc, byte* argv[], byte argt[]) {
+_iconsole_var * item;
+int l = 0;
+
+if (argv[1]!=NULL) l = strlen((char *) argv[1]);
+
+item = _iconsole_vars;
+while (item != NULL) { 
+	if (argv[1]!=NULL) {
+
+		if (memcmp((void *) item->name, (void *) argv[1],l)==0)
+				IConsoleVarDump(item,NULL);
+
+		} else {
+
+		IConsoleVarDump(item,NULL);
+
+		}
+	item = item->_next;
+	}
+
+return NULL;
 }
 
 static void IConsoleStdLibRegister() {
+	IConsoleCmdRegister("debug_level",IConsoleStdLibDebugLevel);
 	IConsoleCmdRegister("echo",IConsoleStdLibEcho);
 	IConsoleCmdRegister("echoc",IConsoleStdLibEchoC);
+	IConsoleCmdRegister("exit",IConsoleStdLibExit);
+	IConsoleCmdRegister("help",IConsoleStdLibHelp);
 	IConsoleCmdRegister("printf",IConsoleStdLibPrintF);
 	IConsoleCmdRegister("printfc",IConsoleStdLibPrintFC);
+	IConsoleCmdRegister("quit",IConsoleStdLibExit);
+	IConsoleCmdRegister("random",IConsoleStdLibRandom);
 	IConsoleCmdRegister("list_cmds",IConsoleStdLibListCommands);
 	IConsoleCmdRegister("list_vars",IConsoleStdLibListVariables);
+	IConsoleCmdRegister("dump_vars",IConsoleStdLibListDumpVariables);
 	IConsoleCmdRegister("screenshot",IConsoleStdLibScreenShot);
-	IConsoleCmdRegister("debug_level",IConsoleStdLibDebugLevel);
-	IConsoleCmdRegister("exit",IConsoleStdLibExit);
-	IConsoleVarRegister("developer",(void *) &_stdlib_developer,ICONSOLE_VAR_BYTE);
 	IConsoleVarRegister("cursor_rate",(void *) &_icursor_rate,ICONSOLE_VAR_BYTE);
-	IConsoleVarRegister("temp_string",(void *) &_stdlib_temp_string,ICONSOLE_VAR_STRING);
-	IConsoleVarRegister("temp_pointer",(void *) &_stdlib_temp_pointer,ICONSOLE_VAR_POINTER);
-	IConsoleVarRegister("temp_uint32",(void *) &_stdlib_temp_uint32,ICONSOLE_VAR_UINT32);
-	IConsoleVarRegister("temp_bool",(void *) &_stdlib_temp_bool,ICONSOLE_VAR_BOOLEAN);
+	IConsoleVarRegister("developer",(void *) &_stdlib_developer,ICONSOLE_VAR_BYTE);
+#if defined(_DEBUG)
+	{
+	_iconsole_var * var;
+	var = IConsoleVarAlloc(ICONSOLE_VAR_BOOLEAN);
+	IConsoleVarInsert(var,"temp_bool");
+
+	var = IConsoleVarAlloc(ICONSOLE_VAR_INT16);
+	IConsoleVarInsert(var,"temp_int16");
+	var = IConsoleVarAlloc(ICONSOLE_VAR_INT32);
+	IConsoleVarInsert(var,"temp_int32");
+
+	var = IConsoleVarAlloc(ICONSOLE_VAR_POINTER);
+	IConsoleVarInsert(var,"temp_pointer");
+
+	var = IConsoleVarAlloc(ICONSOLE_VAR_UINT16);
+	IConsoleVarInsert(var,"temp_uint16");
+	var = IConsoleVarAlloc(ICONSOLE_VAR_UINT32);
+	IConsoleVarInsert(var,"temp_uint32");
+
+
+	var = IConsoleVarAlloc(ICONSOLE_VAR_STRING);
+	IConsoleVarInsert(var,"temp_string");
+	}
+#endif
 }
 
 

@@ -107,6 +107,8 @@ static const VkMapping _vk_mapping[] = {
 	AM('A','Z','A','Z'),
 	AM('0','9','0','9'),
 
+	AS(220,				WKC_BACKQUOTE),
+
 	AS(VK_ESCAPE,		WKC_ESC),
 	AS(VK_BACK,			WKC_BACKSPACE),
 	AM(VK_INSERT,VK_DELETE,WKC_INSERT, WKC_DELETE),
@@ -136,10 +138,13 @@ static uint MapWindowsKey(uint key)
 	do {
 		map++;
 		from = map->vk_from;
-		if (from == 0) return 0; // Unknown key pressed.
+		if (from == 0) {
+			return 0; // Unknown key pressed.
+			}
 	}	while ((uint)(key - from) > map->vk_count);
 
 	key = key - from + map->map_to;
+
 	if (GetAsyncKeyState(VK_SHIFT)<0)	key |= WKC_SHIFT;
 	if (GetAsyncKeyState(VK_CONTROL)<0)	key |= WKC_CTRL;
 	if (GetAsyncKeyState(VK_MENU)<0)	key |= WKC_ALT;
@@ -275,18 +280,27 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	}
 
 	case WM_KEYDOWN:
-		_pressed_key = MapWindowsKey(wParam) << 16;
+		{         
+		// this is the rewritten ascii input function
+		// it disables windows deadkey handling --> more linux like :D
+        unsigned short w = 0;
+		int r = 0;
+		byte ks[256];
+		unsigned int scan=0;
+		GetKeyboardState(ks);
+		r=ToAscii(wParam,scan,ks,&w,0);
+		if (r=0) w=0;
+
+		_pressed_key = w | MapWindowsKey(wParam) << 16;
+		}
 		if ((_pressed_key>>16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 			_double_size ^= 1;
 			_wnd.double_size = _double_size;
 			ClientSizeChanged(_wnd.width, _wnd.height);
 			MarkWholeScreenDirty();
 		}
-		break;
+		break;	
 
-	case WM_CHAR: 
-		_pressed_key |= wParam;
-		break;
 
 	case WM_SYSKEYDOWN:
 		switch(wParam) {
