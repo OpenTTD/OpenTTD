@@ -1485,6 +1485,15 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					}
 				}
 				
+				// updates the id of the front engine in the other units, since the front engine just got a new engine_id
+				// this is needed for wagon override
+				if ( v->u.rail.first_engine == 0xffff && v->next != NULL ) {
+					Vehicle *veh = v->next;
+					do {
+						veh->u.rail.first_engine = new_engine_type;
+					} while ( (veh=veh->next) != NULL );
+				}
+				
 				break;
 				}
 			case VEH_Road:
