@@ -6,6 +6,8 @@ ifndef UNIX
 WIN32:=1
 CYGWIN:=1
 MINGW:=1
+STATIC:=1
+SKIP_STATIC_CHECK:=1
 endif
 else
 UNIX:=1
@@ -97,4 +99,10 @@ ifndef BIN_DIR
 endif
 endif
 endif
+endif
+
+# workaround
+# cygwin have problems with libpng, so we will just disable it for now until the problem is solved
+ifdef CYGWIN
+WITH_PNG:=
 endif
