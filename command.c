@@ -413,11 +413,17 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	proc = _command_proc_table[cmd & 0xFF];
 
 	// this command is a notest command?
+	// CMD_REMOVE_ROAD: This command has special local authority
+	// restrictions which may cause the test run to fail (the previous
+	// road fragments still stay there and the town won't let you
+	// disconnect the road system), but the exec will succeed and this
+	// fact will trigger an assertion failure. --pasky
 	notest =
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_CONVERT_RAIL ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
-		(cmd & 0xFF) == CMD_TRAIN_GOTO_DEPOT;
+		(cmd & 0xFF) == CMD_TRAIN_GOTO_DEPOT ||
+		(cmd & 0xFF) == CMD_REMOVE_ROAD;
 
 	if (_networking && (cmd & CMD_ASYNC)) notest = true;
 
