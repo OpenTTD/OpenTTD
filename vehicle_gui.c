@@ -90,14 +90,16 @@ void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == type && v->subtype <= subtype) {
-				const Order *ord;
-				for (ord = v->schedule_ptr; ord->type != OT_NOTHING; ++ord)
-					if (ord->type == OT_GOTO_STATION && ord->station == station) {
+				const Order *order;
+
+				FOR_VEHICLE_ORDERS(v, order) {
+					if (order->type == OT_GOTO_STATION && order->station == station) {
 						_vehicle_sort[n].index = v->index;
 						_vehicle_sort[n].owner = v->owner;
 						++n;
 						break;
 					}
+				}
 			}
 		}
 	} else {

@@ -23,13 +23,13 @@ static byte GetTileShipTrackStatus(uint tile) {
 
 void InvalidateShipWindows(const Vehicle *v)
 {
-	const Order *o;
+	const Order *order;
 
 	InvalidateWindow(WC_SHIPS_LIST, v->owner);
 
-	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++) {
-		if (o->type == OT_GOTO_STATION ) {
-			InvalidateWindow(WC_SHIPS_LIST, o->station << 16 | v->owner);
+	FOR_VEHICLE_ORDERS(v, order) {
+			if (order->type == OT_GOTO_STATION ) {
+			InvalidateWindow(WC_SHIPS_LIST, (order->station << 16) | v->owner);
 		}
 	}
 }
@@ -113,7 +113,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 			v->current_order.flags & OF_FULL_LOAD)
 		return;
 
-	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
+	if (_patches.gotodepot && VehicleHasDepotOrders(v))
 		return;
 
 	i = FindClosestShipDepot(v);
@@ -215,8 +215,7 @@ static const TileIndexDiffC _dock_offs[] = {
 
 static void ProcessShipOrder(Vehicle *v)
 {
-	Order order;
-	Station *st;
+	const Order *order;
 
 	if (v->current_order.type >= OT_GOTO_DEPOT &&
 			v->current_order.type <= OT_LEAVESTATION) {
@@ -235,36 +234,39 @@ static void ProcessShipOrder(Vehicle *v)
 	if (v->cur_order_index >= v->num_orders)
 		v->cur_order_index = 0;
 
-	order = v->schedule_ptr[v->cur_order_index];
+	order = GetVehicleOrder(v, v->cur_order_index);
 
-	if (order.type == OT_NOTHING) {
-		v->current_order.type = OT_NOTHING;
+	if (order == NULL) {
+		v->current_order.type  = OT_NOTHING;
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		return;
 	}
 
-	if (order.type == v->current_order.type &&
-			order.flags == v->current_order.flags &&
-			order.station == v->current_order.station)
+	if (order->type    == v->current_order.type &&
+			order->flags   == v->current_order.flags &&
+			order->station == v->current_order.station)
 		return;
 
-	v->current_order = order;
+	v->current_order = *order;
 
-	if (order.type == OT_GOTO_STATION) {
-		if (order.station == v->last_station_visited)
+	if (order->type == OT_GOTO_STATION) {
+		const Station *st;
+
+		if (order->station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
 
-		st = GetStation(order.station);
+		st = GetStation(order->station);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_map5[st->dock_tile]-0x4B]));
 		}
-	} else if (order.type == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order.station].xy;
+	} else if (order->type == OT_GOTO_DEPOT) {
+		v->dest_tile = _depots[order->station].xy;
 	} else {
 		v->dest_tile = 0;
 	}
-	InvalidateVehicleOrderWidget(v);
+
+	InvalidateVehicleOrder(v);
 
 	InvalidateShipWindows(v);
 }
@@ -301,7 +303,7 @@ static void HandleShipLoading(Vehicle *v)
 	}
 
 	v->cur_order_index++;
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 }
 
 static void UpdateShipDeltaXY(Vehicle *v, int dir)
@@ -692,7 +694,7 @@ static void ShipController(Vehicle *v)
 
 					v->last_station_visited = v->current_order.station;
 
-					/* Process station in the schedule. Don't do that for buoys (HVOT_BUOY) */
+					/* Process station in the orderlist. Don't do that for buoys (HVOT_BUOY) */
 					st = GetStation(v->current_order.station);
 					if (!(st->had_vehicle_of_type & HVOT_BUOY)
 							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
@@ -711,7 +713,7 @@ static void ShipController(Vehicle *v)
 						v->current_order.type = OT_LEAVESTATION;
 						v->current_order.flags = 0;
 						v->cur_order_index++;
-						InvalidateVehicleOrderWidget(v);
+						InvalidateVehicleOrder(v);
 					}
 					goto else_end;
 				}
@@ -830,7 +832,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return value;
 
 	v = AllocateVehicle();
-	if (v == NULL || _ptr_to_next_order >= endof(_order_array) ||
+	if (v == NULL || IsOrderPoolFull() ||
 			(unit_num = GetFreeUnitNumber(VEH_Ship)) > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -871,9 +873,6 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->string_id = STR_SV_SHIP_NAME;
 		v->u.ship.state = 0x80;
-		_ptr_to_next_order->type = OT_NOTHING;
-		_ptr_to_next_order->flags = 0;
-		v->schedule_ptr = _ptr_to_next_order++;
 
 		v->service_interval = _patches.servint_ships;
 		v->date_of_last_service = _date;

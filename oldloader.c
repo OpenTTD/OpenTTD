@@ -752,6 +752,22 @@ static void FixDepot(Depot *n, OldDepot *o, int num)
 	} while (n++,o++,--num);
 }
 
+static void FixOrder(uint16 *o, int num)
+{
+	Order *order;
+	int i;
+
+	for (i = 0; i < num; ++i) {
+		order = GetOrder(i);
+		AssignOrder(order, UnpackOldOrder(*o));
+		/* Recover the next list */
+		if (i > 0 && order->type != OT_NOTHING)
+			GetOrder(i - 1)->next = order;
+
+		o++;
+	}
+}
+
 static void FixVehicle(OldVehicle *o, int num)
 {
 	Vehicle *n;
@@ -767,10 +783,9 @@ static void FixVehicle(OldVehicle *o, int num)
 		n->subtype = o->subtype;
 
 		if (o->schedule_ptr == 0xFFFFFFFF || o->schedule_ptr == 0) {
-			n->schedule_ptr = NULL;
+			n->orders = NULL;
 		} else {
-			n->schedule_ptr = _order_array + REMAP_ORDER_IDX(o->schedule_ptr);
-			assert(n->schedule_ptr >= _order_array && n->schedule_ptr < _ptr_to_next_order);
+			n->orders = GetOrder(REMAP_ORDER_IDX(o->schedule_ptr));
 		}
 
 		n->current_order.type = o->next_order & 0x0f;
@@ -870,6 +885,31 @@ static void FixVehicle(OldVehicle *o, int num)
 			break;
 		}
 	} while (i++,o++,--num);
+
+	/* Check for shared orders, and link them correctly */
+	{
+		Vehicle *v;
+
+		FOR_ALL_VEHICLES(v) {
+			Vehicle *u;
+
+			if (v->type == 0)
+				continue;
+
+			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
+				if (u->type == 0)
+					continue;
+
+					/* If a vehicle has the same orders, add the link to eachother
+				in both vehicles */
+				if (v->orders == u->orders) {
+					v->next_shared = u;
+					u->prev_shared = v;
+					break;
+				}
+			}
+		}
+	}
 }
 
 static void FixSubsidy(Subsidy *n, OldSubsidy *o, int num)
@@ -1447,15 +1487,12 @@ bool LoadOldSaveGame(const char *file)
 		}
 	}
 
-	for (i = 0; i < lengthof(m->order_list); ++i)
-		_order_array[i] = UnpackOldOrder(m->order_list[i]);
-	_ptr_to_next_order = _order_array + REMAP_ORDER_IDX(m->ptr_to_next_order);
-
 	FixTown(m->town_list, lengthof(m->town_list), m->town_name_type);
 	FixIndustry(m->industries, lengthof(m->industries));
 	FixStation(m->stations, lengthof(m->stations));
 
 	FixDepot(_depots, m->depots, lengthof(m->depots));
+	FixOrder(m->order_list, lengthof(m->order_list));
 	FixVehicle(m->vehicles, lengthof(m->vehicles));
 	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));
 

@@ -14,32 +14,23 @@
 static int OrderGetSel(Window *w)
 {
 	Vehicle *v = GetVehicle(w->window_number);
-	const Order *sched = v->schedule_ptr;
 	int num = WP(w,order_d).sel;
-	int count = 0;
 
-	if (num == 0)
-		return 0;
+	if (num < 0 || num > v->num_orders)
+		return v->num_orders;
 
-	while (sched->type != OT_NOTHING) {
-		sched++;
-		count++;
-		if (--num == 0)
-			break;
-	}
-
-	return count;
+	return num;
 }
 
 static void DrawOrdersWindow(Window *w)
 {
-	Vehicle *v;
-	int num, sel;
-	const Order *sched;
-	Order ord;
-	int y, i;
+	const Vehicle *v;
+	const Order *order;
 	StringID str;
-	bool shared_schedule;
+	int sel;
+	int y, i;
+	bool shared_orders;
+	byte color;
 
 	v = GetVehicle(w->window_number);
 
@@ -57,40 +48,41 @@ static void DrawOrdersWindow(Window *w)
 		w->disabled_state |= 1 << 6;
 	}
 
-	shared_schedule = IsScheduleShared(v) != NULL;
+	shared_orders = IsOrderListShared(v);
 
-	sched = v->schedule_ptr;
-	num=0;
-	while (sched->type != OT_NOTHING) {
-		sched++;
-		num++;
-	}
-
-	if ((uint)num + shared_schedule <= (uint)WP(w,order_d).sel)
+	if ((uint)v->num_orders + shared_orders <= (uint)WP(w,order_d).sel)
 		SETBIT(w->disabled_state, 5); /* delete */
 
-	if (num == 0)
+	if (v->num_orders == 0)
 		SETBIT(w->disabled_state, 4); /* skip */
 
-	SetVScrollCount(w, num+1);
+	SetVScrollCount(w, v->num_orders + 1);
 
 	sel = OrderGetSel(w);
+	SetDParam(2, STR_8827_FULL_LOAD);
 
-	SetDParam(2,STR_8827_FULL_LOAD);
-	switch (v->schedule_ptr[sel].type) {
-	case OT_GOTO_STATION:
-		break;
-	case OT_GOTO_DEPOT:
-		SETBIT(w->disabled_state, 9);	/* unload */
-		SetDParam(2,STR_SERVICE);
-		break;
+	order = GetVehicleOrder(v, sel);
 
-	case OT_GOTO_WAYPOINT:
-		SETBIT(w->disabled_state, 8); /* full load */
-		SETBIT(w->disabled_state, 9); /* unload */
-		break;
+	if (order != NULL) {
+		switch (order->type) {
+			case OT_GOTO_STATION:
+				break;
+			case OT_GOTO_DEPOT:
+				SETBIT(w->disabled_state, 9);	/* unload */
+				SetDParam(2,STR_SERVICE);
+				break;
 
-	default:
+			case OT_GOTO_WAYPOINT:
+				SETBIT(w->disabled_state, 8); /* full load */
+				SETBIT(w->disabled_state, 9); /* unload */
+				break;
+
+			default:
+				SETBIT(w->disabled_state, 6); /* nonstop */
+				SETBIT(w->disabled_state, 8);	/* full load */
+				SETBIT(w->disabled_state, 9);	/* unload */
+		}
+	} else {
 		SETBIT(w->disabled_state, 6); /* nonstop */
 		SETBIT(w->disabled_state, 8);	/* full load */
 		SETBIT(w->disabled_state, 9);	/* unload */
@@ -102,61 +94,62 @@ static void DrawOrdersWindow(Window *w)
 
 	y = 15;
 
-	i = 0;
-	for(;;) {
-		str = ((byte)v->cur_order_index == i) ? STR_8805 : STR_8804;
+	i = w->vscroll.pos;
+	order = GetVehicleOrder(v, i);
+	while (order != NULL) {
+		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
 
-		ord = v->schedule_ptr[i];
+		if (i - w->vscroll.pos < 6) {
+			SetDParam(1, 6);
 
-		if ( (uint)(i - w->vscroll.pos) < 6) {
-
-			if (ord.type == OT_NOTHING) {
-				str = shared_schedule ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
-			} else {
-				SetDParam(1, 6);
-
-				if (ord.type == OT_GOTO_STATION) {
-					SetDParam(1, STR_8806_GO_TO + (ord.flags >> 1));
-					SetDParam(2, ord.station);
-				} else if (ord.type == OT_GOTO_DEPOT) {
-					StringID s = STR_NULL;
-					if (v->type == VEH_Aircraft) {
-						s = STR_GO_TO_AIRPORT_HANGAR;
-					  SetDParam(2, ord.station);
-					} else {
-						SetDParam(2, _depots[ord.station].town_index);
-						switch (v->type) {
-						case VEH_Train:	s = STR_880E_GO_TO_TRAIN_DEPOT; break;
-						case VEH_Road:	s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
-						case VEH_Ship:	s = STR_GO_TO_SHIP_DEPOT; break;
-						}
-					}
-					if (v->type == VEH_Train && ord.flags & OF_NON_STOP) s += 2;
-					if (ord.flags & OF_FULL_LOAD) ++s; /* XXX service */
-					SetDParam(1, s);
-				} else if (ord.type == OT_GOTO_WAYPOINT) {
-					SetDParam(2, ord.station);
-					SetDParam(1, (ord.flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-				}
-			}
-			{
-				byte color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
-				SetDParam(0, i+1);
-				if (ord.type != OT_DUMMY) {
-					DrawString(2, y, str, color);
+			if (order->type == OT_GOTO_STATION) {
+				SetDParam(1, STR_8806_GO_TO + (order->flags >> 1));
+				SetDParam(2, order->station);
+			} else if (order->type == OT_GOTO_DEPOT) {
+				StringID s = STR_NULL;
+				if (v->type == VEH_Aircraft) {
+					s = STR_GO_TO_AIRPORT_HANGAR;
+					SetDParam(2, order->station);
 				} else {
-					SetDParam(1, STR_INVALID_ORDER);
-					SetDParam(2, ord.station);
-					DrawString(2, y, str, color);
+					SetDParam(2, _depots[order->station].town_index);
+					switch (v->type) {
+						case VEH_Train: s = STR_880E_GO_TO_TRAIN_DEPOT;   break;
+						case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
+						case VEH_Ship:  s = STR_GO_TO_SHIP_DEPOT;         break;
+					}
 				}
+				if (v->type == VEH_Train && order->flags & OF_NON_STOP)
+					s += 2;
+
+				if (order->flags & OF_FULL_LOAD)
+					s++; /* XXX service */
+
+				SetDParam(1, s);
+			} else if (order->type == OT_GOTO_WAYPOINT) {
+				SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+				SetDParam(2, order->station);
+			}
+
+			color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
+			SetDParam(0, i + 1);
+			if (order->type != OT_DUMMY) {
+				DrawString(2, y, str, color);
+			} else {
+				SetDParam(1, STR_INVALID_ORDER);
+				SetDParam(2, order->station);
+				DrawString(2, y, str, color);
 			}
 			y += 10;
 		}
 
 		i++;
+		order = order->next;
+	}
 
-		if (ord.type == OT_NOTHING)
-			break;
+	if (i - w->vscroll.pos < 6) {
+		str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
+		color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
+		DrawString(2, y, str, color);
 	}
 }
 
@@ -317,12 +310,6 @@ static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
 	}
 }
 
-enum OrderFlags {
-	FULL_LOAD = 0,
-	UNLOAD = 1,
-	NON_STOP = 2
-};
-
 static void OrderClick_Goto(Window *w, Vehicle *v)
 {
 	InvalidateWidget(w, 7);
@@ -337,27 +324,27 @@ static void OrderClick_Goto(Window *w, Vehicle *v)
 
 static void OrderClick_FullLoad(Window *w, Vehicle *v)
 {
-	DoCommandP(v->tile, v->index, OrderGetSel(w) | (FULL_LOAD << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 static void OrderClick_Unload(Window *w, Vehicle *v)
 {
-	DoCommandP(v->tile, v->index, OrderGetSel(w) | (UNLOAD << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
-}
-
-static void OrderClick_Skip(Window *w, Vehicle *v)
-{
-	DoCommandP(v->tile,v->index, 0, NULL, CMD_SKIP_ORDER);
-}
-
-static void OrderClick_Delete(Window *w, Vehicle *v)
-{
-	DoCommandP(v->tile,v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 static void OrderClick_Nonstop(Window *w, Vehicle *v)
 {
-	DoCommandP(v->tile, v->index, OrderGetSel(w) | (NON_STOP << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+static void OrderClick_Skip(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile, v->index, 0, NULL, CMD_SKIP_ORDER);
+}
+
+static void OrderClick_Delete(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile, v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
 }
 
 typedef void OnButtonClick(Window *w, Vehicle *v);
@@ -399,18 +386,18 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 			sel += w->vscroll.pos;
 
-			if (_ctrl_pressed && sel < v->num_orders) { // watch out for schedule_ptr overflow
-				Order ord = v->schedule_ptr[sel];
+			if (_ctrl_pressed && sel < v->num_orders) {
+				Order *ord = GetVehicleOrder(v, sel);
 				int xy = 0;
-				switch (ord.type) {
+				switch (ord->type) {
 				case OT_GOTO_STATION:			/* station order */
-					xy = GetStation(ord.station)->xy ;
+					xy = GetStation(ord->station)->xy ;
 					break;
 				case OT_GOTO_DEPOT:				/* goto depot order */
-					xy = _depots[ord.station].xy;
+					xy = _depots[ord->station].xy;
 					break;
 				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
-					xy = _waypoints[ord.station].xy;
+					xy = _waypoints[ord->station].xy;
 				}
 
 				if (xy)
@@ -447,7 +434,6 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		case 9: /* unload button */
 			OrderClick_Unload(w, v);
 			break;
-
 		}
 	} break;
 
@@ -473,7 +459,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	case WE_RCLICK: {
 		Vehicle *v = GetVehicle(w->window_number);
 		if (e->click.widget != 8) break;
-		if (v->schedule_ptr[OrderGetSel(w)].type == OT_GOTO_DEPOT)
+		if (GetVehicleOrder(v, OrderGetSel(w))->type == OT_GOTO_DEPOT)
 			GuiShowTooltips(STR_SERVICE_HINT);
 		else
 			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);

@@ -122,7 +122,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return cost;
 
 	v = AllocateVehicle();
-	if (v == NULL || _ptr_to_next_order >= endof(_order_array))
+	if (v == NULL || IsOrderPoolFull())
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* find the first free roadveh id */
@@ -172,9 +172,6 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_new_roadveh_id = v->index;
 
 		v->string_id = STR_SV_ROADVEH_NAME;
-		_ptr_to_next_order->type = OT_NOTHING;
-		_ptr_to_next_order->flags = 0;
-		v->schedule_ptr = _ptr_to_next_order++;
 
 		v->service_interval = _patches.servint_roadveh;
 
@@ -554,11 +551,11 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 
 static void ProcessRoadVehOrder(Vehicle *v)
 {
-	Order order;
-	Station *st;
+	const Order *order;
+	const Station *st;
 
 	if (v->current_order.type >= OT_GOTO_DEPOT && v->current_order.type <= OT_LEAVESTATION) {
-		// Let a depot order in the schedule interrupt.
+		// Let a depot order in the orderlist interrupt.
 		if (v->current_order.type != OT_GOTO_DEPOT ||
 				!(v->current_order.flags & OF_UNLOAD))
 			return;
@@ -573,34 +570,35 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	if (v->cur_order_index >= v->num_orders)
 		v->cur_order_index = 0;
 
-	order = v->schedule_ptr[v->cur_order_index];
+	order = GetVehicleOrder(v, v->cur_order_index);
 
-	if (order.type == OT_NOTHING) {
+	if (order == NULL) {
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		return;
 	}
 
-	if (order.type == v->current_order.type &&
-			order.flags == v->current_order.flags &&
-			order.station == v->current_order.station)
+	if (order->type    == v->current_order.type &&
+			order->flags   == v->current_order.flags &&
+			order->station == v->current_order.station)
 		return;
 
-	v->current_order = order;
+	v->current_order = *order;
 
 	v->dest_tile = 0;
 
-	if (order.type == OT_GOTO_STATION) {
-		if (order.station == v->last_station_visited)
+	if (order->type == OT_GOTO_STATION) {
+		if (order->station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
-		st = GetStation(order.station);
-		v->dest_tile = v->cargo_type==CT_PASSENGERS ? st->bus_tile : st->lorry_tile;
-	} else if (order.type == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order.station].xy;
+
+		st = GetStation(order->station);
+		v->dest_tile = v->cargo_type == CT_PASSENGERS ? st->bus_tile : st->lorry_tile;
+	} else if (order->type == OT_GOTO_DEPOT) {
+		v->dest_tile = _depots[order->station].xy;
 	}
 
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 }
 
 static void HandleRoadVehLoading(Vehicle *v)
@@ -634,7 +632,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 	}
 
 	v->cur_order_index++;
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 }
 
 static void StartRoadVehSound(Vehicle *v)
@@ -1390,7 +1388,7 @@ void RoadVehEnterDepot(Vehicle *v)
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
 
-		// Part of the schedule?
+		// Part of the orderlist?
 		if (t.flags & OF_UNLOAD) {
 			v->cur_order_index++;
 		} else if (t.flags & OF_FULL_LOAD) {
@@ -1436,7 +1434,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
+	if (_patches.gotodepot && VehicleHasDepotOrders(v))
 		return;
 
 	// Don't interfere with a depot visit scheduled by the user, or a

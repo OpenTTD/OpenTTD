@@ -920,16 +920,13 @@ void ShowAircraftDepotWindow(uint tile)
 	}
 }
 
-static void DrawSmallSchedule(Vehicle *v, int x, int y) {
-	const Order *sched;
-	int sel;
-	Order ord;
-	int i = 0;
+static void DrawSmallOrderList(Vehicle *v, int x, int y) {
+	const Order *order;
+	int sel, i = 0;
 
-	sched = v->schedule_ptr;
 	sel = v->cur_order_index;
 
-	while ((ord = *sched++).type != OT_NOTHING) {
+	FOR_VEHICLE_ORDERS(v, order) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
 			DoDrawString( "\xAF", x-6, y, 16);
@@ -937,8 +934,8 @@ static void DrawSmallSchedule(Vehicle *v, int x, int y) {
 		}
 		sel--;
 
-		if (ord.type == OT_GOTO_STATION) {
-			SetDParam(0, ord.station);
+		if (order->type == OT_GOTO_STATION) {
+			SetDParam(0, order->station);
 			DrawString(x, y, STR_A036, 0);
 
 			y += 6;
@@ -1052,7 +1049,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				DrawString(x + 19, y, STR_01AB, 0);
 			}
 
-			DrawSmallSchedule(v, x + 136, y);
+			DrawSmallOrderList(v, x + 136, y);
 
 			y += PLY_WND_PRC__SIZE_OF_ROW_BIG;
 		}

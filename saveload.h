@@ -70,11 +70,11 @@ typedef struct {
 extern SaverLoader _sl;
 
 enum {
-	REF_SCHEDULE = 0,
-	REF_VEHICLE = 1,
-	REF_STATION = 2,
-	REF_TOWN = 3,
-	REF_VEHICLE_OLD = 4,
+	REF_ORDER       = 0,
+	REF_VEHICLE     = 1,
+	REF_STATION     = 2,
+	REF_TOWN        = 3,
+	REF_VEHICLE_OLD = 4
 };
 
 

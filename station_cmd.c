@@ -94,7 +94,7 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 	return (closest_station == -1) ? NULL : GetStation(closest_station);
 }
 
-TileIndex GetStationTileForVehicle(Vehicle *v, Station *st)
+TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 {
 	switch (v->type) {
 		case VEH_Train: 		return st->train_tile;
@@ -2257,10 +2257,11 @@ static void DeleteStation(Station *st)
 
 	index = st->index;
 	DeleteWindowById(WC_STATION_VIEW, index);
+
 	order.type = OT_GOTO_STATION;
-	order.flags = 0;
 	order.station = index;
-	DeleteCommandFromVehicleSchedule(order);
+	DeleteDestinationFromVehicleOrder(order);
+
 	DeleteSubsidyWithStation(index);
 }
 

@@ -496,6 +496,7 @@ static void InitializeDynamicVariables(void)
 	_industry_sort = NULL;
 
 	_sign_size = lengthof(_sign_list);
+	_orders_size = lengthof(_orders);
 }
 
 static void UnInitializeDynamicVariables(void)

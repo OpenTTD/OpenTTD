@@ -150,6 +150,8 @@ void CSleep(int milliseconds)
 	#endif
 }
 
+void InitializeVehicles();
+void InitializeOrders();
 void InitializeClearLand();
 void InitializeRail();
 void InitializeRailGui();
@@ -206,7 +208,7 @@ void InitializeGame()
 	}
 
 	InitializeVehicles();
-	_backup_orders_tile = 0;
+	InitializeOrders();
 
 	InitNewsItemStructs();
 	InitializeLandscape();

@@ -502,14 +502,12 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st) {
 	// Also check if we don't have already a lot of busses to this city...
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == _current_player) {
-			const Order *sched = v->schedule_ptr;
-			if (sched != NULL) {
-				for (; sched->type != OT_NOTHING; ++sched) {
-					if (sched->type == OT_GOTO_STATION &&
-							GetStation(sched->station) == st) {
-						// This vehicle has this city in his list
-						count++;
-					}
+			const Order *order;
+
+			FOR_VEHICLE_ORDERS(v, order) {
+				if (order->type == OT_GOTO_STATION && GetStation(order->station) == st) {
+					// This vehicle has this city in its list
+					count++;
 				}
 			}
 		}

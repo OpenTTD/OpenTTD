@@ -2,42 +2,7 @@
 #define VEHICLE_H
 
 #include "vehicle_gui.h"
-
-/* If you change this, keep in mind that it is saved on 3 places:
-    - Load_ORDR, all the global orders
-    - Vehicle -> current_order
-    - REF_SHEDULE (all REFs are currently limited to 16 bits!!) */
-typedef struct Order {
-	uint8 type;
-	uint8 flags;
-	uint16 station;
-} Order;
-
-static inline uint32 PackOrder(const Order *order)
-{
-	return order->station << 16 | order->flags << 8 | order->type;
-}
-
-static inline Order UnpackOrder(uint32 packed)
-{
-	Order order;
-	order.type    = (packed & 0x000000FF);
-	order.flags   = (packed & 0x0000FF00) >> 8;
-	order.station = (packed & 0xFFFF0000) >> 16;
-	return order;
-}
-
-static inline Order UnpackVersion4Order(uint16 packed)
-{
-	Order order;
-	order.type    = (packed & 0x000F);
-	order.flags   = (packed & 0x00F0) >> 4;
-	order.station = (packed & 0xFF00) >> 8;
-	return order;
-}
-
-Order UnpackOldOrder(uint16 packed);
-
+#include "order.h"
 
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
@@ -177,11 +142,16 @@ struct Vehicle {
 	byte day_counter; // increased by one for each day
 	byte tick_counter;// increased by one for each tick
 
-	// related to the current order
-	byte cur_order_index;
-	byte num_orders;
-	Order current_order;
-	Order *schedule_ptr;
+	/* Begin Order-stuff */
+	Order current_order;  //! The current order (+ status, like: loading)
+	byte cur_order_index; //! The index to the current order
+
+	Order *orders;        //! Pointer to the first order for this vehicle
+	byte num_orders;      //! How many orders there are in the list
+
+	Vehicle *next_shared; //! If not NULL, this points to the next vehicle that shared the order
+	Vehicle *prev_shared; //! If not NULL, this points to the prev vehicle that shared the order
+	/* End Order-stuff */
 
 	// Boundaries for the current position in the world and a next hash link.
 	// NOSAVE: All of those can be updated with VehiclePositionChanged()
@@ -248,25 +218,6 @@ enum {
 	VEH_Disaster = 0x15,
 };
 
-/* Order types */
-enum {
-	OT_NOTHING = 0,
-	OT_GOTO_STATION = 1,
-	OT_GOTO_DEPOT = 2,
-	OT_LOADING = 3,
-	OT_LEAVESTATION = 4,
-	OT_DUMMY = 5,
-	OT_GOTO_WAYPOINT = 6,
-};
-
-/* Order flags */
-enum {
-	OF_UNLOAD    = 0x2,
-	OF_FULL_LOAD = 0x4, // Also used when to force an aircraft into a depot
-	OF_NON_STOP  = 0x8
-};
-
-
 enum VehStatus {
 	VS_HIDDEN = 1,
 	VS_STOPPED = 2,
@@ -302,22 +253,11 @@ enum {
 typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
-typedef struct {
-	VehicleID clone;
-	byte orderindex;
-	Order order[41];
-	uint16 service_interval;
-	char name[32];
-} BackuppedOrders;
-
 void VehicleServiceInDepot(Vehicle *v);
-void BackupVehicleOrders(Vehicle *v, BackuppedOrders *order);
-void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *order);
 Vehicle *AllocateVehicle();
 Vehicle *ForceAllocateVehicle();
 Vehicle *ForceAllocateSpecialVehicle();
 void UpdateVehiclePosHash(Vehicle *v, int x, int y);
-void InitializeVehicles();
 void VehiclePositionChanged(Vehicle *v);
 void AfterLoadVehicles();
 Vehicle *GetLastVehicleInChain(Vehicle *v);
@@ -328,8 +268,6 @@ void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
-void DeleteVehicleSchedule(Vehicle *v);
-Vehicle *IsScheduleShared(Vehicle *v);
 
 Depot *AllocateDepot();
 Waypoint *AllocateWaypoint();
@@ -373,15 +311,11 @@ void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void MaybeReplaceVehicle(Vehicle *v);
 
-void DeleteCommandFromVehicleSchedule(Order cmd);
-
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
 
 bool IsAircraftHangarTile(TileIndex tile);
 void ShowAircraftViewWindow(Vehicle *v);
-
-void InvalidateVehicleOrderWidget(Vehicle *v);
 
 bool IsShipDepotTile(TileIndex tile);
 uint GetFreeUnitNumber(byte type);
@@ -396,9 +330,6 @@ void UpdateTrainAcceleration(Vehicle *v);
 int32 GetTrainRunningCost(Vehicle *v);
 
 int CheckStoppedInDepot(Vehicle *v);
-
-int ScheduleHasDepotOrders(const Order *schedule);
-int CheckOrders(Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
@@ -439,8 +370,43 @@ static inline Vehicle *GetVehicle(uint index)
 #define FOR_ALL_VEHICLES(v) for(v = _vehicles; v != &_vehicles[_vehicles_size]; v++)
 #define FOR_ALL_VEHICLES_FROM(v, from) for(v = GetVehicle(from); v != &_vehicles[_vehicles_size]; v++)
 
-VARDEF Order _order_array[5000];
-VARDEF Order *_ptr_to_next_order;
+/* Returns order 'index' of a vehicle or NULL when it doesn't exists */
+static inline Order *GetVehicleOrder(const Vehicle *v, int index)
+{
+	Order *order = v->orders;
+
+	if (index < 0)
+		return NULL;
+
+	while (order != NULL && index-- > 0)
+		order = order->next;
+
+	return order;
+}
+
+/* Returns the last order of a vehicle, or NULL if it doesn't exists */
+static inline Order *GetLastVehicleOrder(const Vehicle *v)
+{
+	Order *order = v->orders;
+
+	if (order == NULL)
+		return NULL;
+
+	while (order->next != NULL)
+		order = order->next;
+
+	return order;
+}
+
+/* Get the first vehicle of a shared-list, so we only have to walk forwards */
+static inline Vehicle *GetFirstVehicleFromSharedList(Vehicle *v)
+{
+	Vehicle *u = v;
+	while (u->prev_shared != NULL)
+		u = u->prev_shared;
+
+	return u;
+}
 
 VARDEF Depot _depots[255];
 
@@ -465,8 +431,6 @@ VARDEF TileIndex _last_built_train_depot_tile;
 VARDEF TileIndex _last_built_road_depot_tile;
 VARDEF TileIndex _last_built_aircraft_depot_tile;
 VARDEF TileIndex _last_built_ship_depot_tile;
-VARDEF TileIndex _backup_orders_tile;
-VARDEF BackuppedOrders _backup_orders_data[1];
 
 // for each player, for each vehicle type, keep a list of the vehicles.
 //VARDEF Vehicle *_vehicle_arr[8][4];

@@ -126,7 +126,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// allocate 2 or 3 vehicle structs, depending on type
 	if (!AllocateVehicles(vl, (avi->subtype & 1) == 0 ? 3 : 2) ||
-			_ptr_to_next_order >= endof(_order_array))
+				IsOrderPoolFull())
 					return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	unit_num = GetFreeUnitNumber(VEH_Aircraft);
@@ -200,9 +200,6 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		_new_aircraft_id = v->index;
 
-		_ptr_to_next_order->type = OT_NOTHING;
-		_ptr_to_next_order->flags = 0;
-		v->schedule_ptr = _ptr_to_next_order++;
 		// the AI doesn't click on a tile to build airplanes, so the below code will
 		// never work. Therefore just assume the AI's planes always come from Hangar0
 		// On hold for NewAI
@@ -490,7 +487,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 			v->current_order.flags & OF_FULL_LOAD)
 		return;
 
- 	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
+	if (_patches.gotodepot && VehicleHasDepotOrders(v))
  		return;
 
 	st = GetStation(v->current_order.station);
@@ -510,13 +507,13 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 void InvalidateAircraftWindows(const Vehicle *v)
 {
-	const Order *o;
+	const Order *order;
 
 	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
 
-	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++) {
-		if (o->type == OT_GOTO_STATION ) {
-			InvalidateWindow(WC_AIRCRAFT_LIST, o->station << 16 | v->owner);
+	FOR_VEHICLE_ORDERS(v, order) {
+		if (order->type == OT_GOTO_STATION ) {
+			InvalidateWindow(WC_AIRCRAFT_LIST, (order->station << 16) | v->owner);
 		}
 	}
 }
@@ -1024,21 +1021,9 @@ static void HandleAircraftSmoke(Vehicle *v)
 	}
 }
 
-// returns true if the vehicle does have valid orders
-// false if none are valid
-static bool CheckForValidOrders(Vehicle *v)
-{
-	int i;
-	for (i = 0; i < v->num_orders; i++) {
-		if( v->schedule_ptr[i].type != OT_DUMMY )
-			return true;
-	}
-	return false;
-}
-
 static void ProcessAircraftOrder(Vehicle *v)
 {
-	Order order;
+	Order *order;
 
 	// OT_GOTO_DEPOT, OT_LOADING
 	if (v->current_order.type == OT_GOTO_DEPOT ||
@@ -1057,32 +1042,32 @@ static void ProcessAircraftOrder(Vehicle *v)
 	if (v->cur_order_index >= v->num_orders)
 		v->cur_order_index = 0;
 
-	order = v->schedule_ptr[v->cur_order_index];
+	order = GetVehicleOrder(v, v->cur_order_index);
 
-	if (order.type == OT_NOTHING) {
+	if (order == NULL) {
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
 		return;
 	}
 
-	if ( order.type == OT_DUMMY && !CheckForValidOrders(v))
+	if (order->type == OT_DUMMY && !CheckForValidOrders(v))
 		CrashAirplane(v);
 
-	if (order.type == v->current_order.type &&
-			order.flags == v->current_order.flags &&
-			order.station == v->current_order.station)
+	if (order->type    == v->current_order.type   &&
+			order->flags   == v->current_order.flags  &&
+			order->station == v->current_order.station)
 		return;
 
-	v->current_order = order;
+	v->current_order = *order;
 
 	// orders are changed in flight, ensure going to the right station
-	if (order.type == OT_GOTO_STATION && v->u.air.state == FLYING) {
+	if (order->type == OT_GOTO_STATION && v->u.air.state == FLYING) {
 		AircraftNextAirportPos_and_Order(v);
-		v->u.air.targetairport = order.station;
+		v->u.air.targetairport = order->station;
 	}
 
-	InvalidateVehicleOrderWidget(v);
-	
+	InvalidateVehicleOrder(v);
+
 	InvalidateAircraftWindows(v);
 }
 
@@ -1116,7 +1101,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 		}
 	}
 	v->cur_order_index++;
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 }
 
 static void CrashAirplane(Vehicle *v)

@@ -3618,7 +3618,7 @@ static void AiStateRemoveStation(Player *p)
 
 	// Get a list of all stations that are in use by a vehicle
 	memset(in_use, 0, sizeof(in_use));
-	for (ord = _order_array; ord != _ptr_to_next_order; ++ord) {
+	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION)
 			in_use[ord->station] = 1;
 	}

@@ -6,27 +6,139 @@
 #include "station.h"
 #include "player.h"
 #include "news.h"
+#include "saveload.h"
 
-/* p1 & 0xFFFF = vehicle
- * p1 >> 16 = index in order list
- * p2 = order command to insert
+/**
+ *
+ * Unpacks a order from savegames made with TTD(Patch)
+ *
  */
-int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+Order UnpackOldOrder(uint16 packed)
 {
-	Vehicle *v = GetVehicle(p1 & 0xFFFF);
-	int sel = p1 >> 16;
-	Order new_order = UnpackOrder(p2);
+	Order order;
+	order.type    = (packed & 0x000F);
+	order.flags   = (packed & 0x00F0) >> 4;
+	order.station = (packed & 0xFF00) >> 8;
+	order.next    = NULL;
 
-	if (sel > v->num_orders) return_cmd_error(STR_EMPTY);
-	if (_ptr_to_next_order == endof(_order_array)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
-	if (v->num_orders >= 40) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
+	// Sanity check
+	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
+	if (order.type == OT_NOTHING && (order.flags != 0 || order.station != 0)) {
+		order.type = OT_DUMMY;
+		order.flags = 0;
+	}
 
-	// for ships, make sure that the station is not too far away from the previous destination.
+	return order;
+}
+
+/**
+ *
+ * Unpacks a order from savegames with version 4 and lower
+ *
+ */
+Order UnpackVersion4Order(uint16 packed)
+{
+	Order order;
+	order.type    = (packed & 0x000F);
+	order.flags   = (packed & 0x00F0) >> 4;
+	order.station = (packed & 0xFF00) >> 8;
+	order.next    = NULL;
+	return order;
+}
+
+/**
+ *
+ * Updates the widgets of a vehicle which contains the order-data
+ *
+ */
+void InvalidateVehicleOrder(const Vehicle *v)
+{
+	InvalidateWindow(WC_VEHICLE_VIEW,   v->index);
+	InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+}
+
+/**
+ *
+ * Swap two orders
+ *
+ */
+static void SwapOrders(Order *order1, Order *order2)
+{
+	Order temp_order;
+
+	temp_order = *order1;
+	*order1 = *order2;
+	*order2 = temp_order;
+}
+
+/**
+ *
+ * Allocate a new order
+ *
+ * @return Order* if a free space is found, else NULL.
+ *
+ */
+static Order *AllocateOrder()
+{
+	Order *order;
+
+	FOR_ALL_ORDERS(order) {
+		if (order->type == OT_NOTHING) {
+			uint index = order->index;
+			memset(order, 0, sizeof(Order));
+			order->index = index;
+			return order;
+		}
+	}
+
+	return NULL;
+}
+
+/**
+ *
+ * Assign data to an order (from an other order)
+ *   This function makes sure that the index is maintained correctly
+ *
+ */
+void AssignOrder(Order *order, Order data)
+{
+	order->type    = data.type;
+	order->flags   = data.flags;
+	order->station = data.station;
+}
+
+/**
+ *
+ * Add an order to the orderlist of a vehicle
+ *
+ * @param veh_sel      First 16 bits are the ID of the vehicle. The next 16 are the selected order (if any)
+ *                       If the lastone is given, order will be inserted above thatone
+ * @param packed_order Packed order to insert
+ *
+ */
+int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_order)
+{
+	Vehicle *v      = GetVehicle(veh_sel & 0xFFFF);
+	int sel         = veh_sel >> 16;
+	Order new_order = UnpackOrder(packed_order);
+
+	if (sel > v->num_orders)
+		return_cmd_error(STR_EMPTY);
+
+	if (IsOrderPoolFull())
+		return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+
+	/* XXX - This limit is only here because the backuppedorders can't
+	    handle any more then this.. */
+	if (v->num_orders >= 40)
+		return_cmd_error(STR_8832_TOO_MANY_ORDERS);
+
+	/* For ships, make sure that the station is not too far away from the previous destination. */
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
-			sel != 0 && v->schedule_ptr[sel - 1].type == OT_GOTO_STATION) {
+		sel != 0 && GetVehicleOrder(v, sel - 1)->type == OT_GOTO_STATION) {
 
 		int dist = GetTileDist(
-			GetStation(v->schedule_ptr[sel - 1].station)->xy,
+			GetStation(GetVehicleOrder(v, sel - 1)->station)->xy,
 			GetStation(new_order.station)->xy
 		);
 		if (dist >= 130)
@@ -34,101 +146,158 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		Order *s1;
-		Order *s2;
+		Order *new;
 		Vehicle *u;
 
-		s1 = &v->schedule_ptr[sel];
-		s2 = _ptr_to_next_order++;
-		do s2[1] = s2[0]; while (--s2 >= s1);
-		*s1 = new_order;
+		new = AllocateOrder();
+		AssignOrder(new, new_order);
 
-		s1 = v->schedule_ptr;
+		/* Create new order and link in list */
+		if (v->orders == NULL) {
+			v->orders = new;
+		} else {
+			/* Try to get the previous item (we are inserting above the
+			    selected) */
+			Order *order = GetVehicleOrder(v, sel - 1);
 
-		FOR_ALL_VEHICLES(u) {
-			if (u->type != 0 && u->schedule_ptr != NULL) {
-				if (s1 < u->schedule_ptr) {
-					u->schedule_ptr++;
-				} else if (s1 == u->schedule_ptr) { // handle shared orders
-					u->num_orders++;
-
-					if ((byte)sel <= u->cur_order_index) {
-						sel++;
-						if ((byte)sel < u->num_orders)
-							u->cur_order_index = sel;
-					}
-					InvalidateWindow(WC_VEHICLE_VIEW, u->index);
-					InvalidateWindow(WC_VEHICLE_ORDERS, u->index);
-				}
+			if (order == NULL && GetVehicleOrder(v, sel) != NULL) {
+				/* There is no previous item, so we are altering v->orders itself
+				    But because the orders can be shared, we copy the info over
+				    the v->orders, so we don't have to change the pointers of
+				    all vehicles */
+				SwapOrders(v->orders, new);
+				/* Now update the next pointers */
+				v->orders->next = new;
+			} else if (order == NULL) {
+				/* 'sel' is a non-existing order, add him to the end */
+				order = GetLastVehicleOrder(v);
+				order->next = new;
+			} else {
+				/* Put the new order in between */
+				new->next = order->next;
+				order->next = new;
 			}
 		}
 
+		u = GetFirstVehicleFromSharedList(v);
+		while (u != NULL) {
+			/* Increase amount of orders */
+			u->num_orders++;
+
+			/* If the orderlist was empty, assign it */
+			if (u->orders == NULL)
+				u->orders = v->orders;
+
+			assert(v->orders == u->orders);
+
+			/* If there is added an order before the current one, we need
+			to update the selected order */
+			if (sel <= u->cur_order_index) {
+				uint cur = u->cur_order_index + 1;
+				/* Check if we don't go out of bound */
+				if (cur < u->num_orders)
+					u->cur_order_index = cur;
+			}
+			/* Update any possible open window of the vehicle */
+			InvalidateVehicleOrder(u);
+
+			u = u->next_shared;
+		}
+
+		/* Make sure to rebuild the whole list */
 		RebuildVehicleLists();
 	}
 
 	return 0;
 }
 
+/**
+ *
+ * Declone an order-list
+ *
+ */
 static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 {
-	if (_ptr_to_next_order == endof(_order_array))
-		return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
-
 	if (flags & DC_EXEC) {
-		DeleteVehicleSchedule(dst);
+		/* Delete orders from vehicle */
+		DeleteVehicleOrders(dst);
 
-		dst->num_orders = 0;
-		_ptr_to_next_order->type = OT_NOTHING;
-		_ptr_to_next_order->flags = 0;
-		dst->schedule_ptr = _ptr_to_next_order++;
-
-		InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
-
+		InvalidateVehicleOrder(dst);
 		RebuildVehicleLists();
 	}
 	return 0;
 }
 
-/* p1 = vehicle
- * p2 = sel
+/**
+ *
+ * Delete an order from the orderlist of a vehicle
+ *
+ * @param vehicle_id The ID of the vehicle
+ * @param selected   The order to delete
+ *
  */
-int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selected)
 {
-	Vehicle *v = GetVehicle(p1), *u;
-	uint sel = (uint)p2;
+	Vehicle *v = GetVehicle(vehicle_id), *u;
+	uint sel   = selected;
+	Order *order;
 
+	/* XXX -- Why is this here? :s */
 	_error_message = STR_EMPTY;
+
+	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel >= v->num_orders)
 		return DecloneOrder(v, flags);
 
+	order = GetVehicleOrder(v, sel);
+	if (order == NULL)
+		return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
-		Order *s1 = &v->schedule_ptr[sel];
-
-		// copy all orders to get rid of the hole
-		do s1[0] = s1[1]; while (++s1 != _ptr_to_next_order);
-		_ptr_to_next_order--;
-
-		s1 = v->schedule_ptr;
-
-		FOR_ALL_VEHICLES(u) {
-			if (u->type != 0 && u->schedule_ptr != NULL) {
-				if (s1 < u->schedule_ptr) {
-					u->schedule_ptr--;
-				} else if (s1 == u->schedule_ptr) {// handle shared orders
-					u->num_orders--;
-					if ((byte)sel < u->cur_order_index)
-						u->cur_order_index--;
-
-					if ((byte)sel == u->cur_order_index &&
-							u->current_order.type == OT_LOADING &&
-							u->current_order.flags & OF_NON_STOP) {
-						u->current_order.flags = 0;
-					}
-
-					InvalidateWindow(WC_VEHICLE_VIEW, u->index);
-					InvalidateWindow(WC_VEHICLE_ORDERS, u->index);
-				}
+		if (GetVehicleOrder(v, sel - 1) == NULL) {
+			if (GetVehicleOrder(v, sel + 1) != NULL) {
+				/* First item, but not the last, so we need to alter v->orders
+				    Because we can have shared order, we copy the data
+				    from the next item over the deleted */
+				order = GetVehicleOrder(v, sel + 1);
+				SwapOrders(v->orders, order);
+			} else {
+				/* Last item, so clean the list */
+				v->orders = NULL;
 			}
+		} else {
+			GetVehicleOrder(v, sel - 1)->next = order->next;
+		}
+
+		/* Give the item free */
+		order->type = OT_NOTHING;
+
+		u = GetFirstVehicleFromSharedList(v);
+		while (u != NULL) {
+			u->num_orders--;
+
+			if (sel < u->cur_order_index)
+				u->cur_order_index--;
+
+			/* If we removed the last order, make sure the shared vehicles
+			    also set their orders to NULL */
+			if (v->orders == NULL)
+				u->orders = NULL;
+
+			assert(v->orders == u->orders);
+
+			/* NON-stop flag is misused to see if a train is in a station that is
+			    on his order list or not */
+			if (sel == u->cur_order_index &&
+					u->current_order.type == OT_LOADING &&
+					HASBIT(u->current_order.flags, OFB_NON_STOP)) {
+				u->current_order.flags = 0;
+			}
+
+			/* Update any possible open window of the vehicle */
+			InvalidateVehicleOrder(u);
+
+			u = u->next_shared;
 		}
 
 		RebuildVehicleLists();
@@ -137,321 +306,651 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* p1 = vehicle */
-int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+/**
+ *
+ * Goto next order of order-list
+ *
+ * @param vehicle_id The ID of the vehicle
+ *
+ */
+int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_used)
 {
-	Vehicle *v = GetVehicle(p1);
+	Vehicle *v = GetVehicle(vehicle_id);
 
 	if (flags & DC_EXEC) {
+		/* Goto next order */
 		{
 			byte b = v->cur_order_index + 1;
-			if (b >= v->num_orders) b = 0;
+			if (b >= v->num_orders)
+				b = 0;
+
 			v->cur_order_index = b;
 
 			if (v->type == VEH_Train)
 				v->u.rail.days_since_order_progr = 0;
 		}
 
+		/* NON-stop flag is misused to see if a train is in a station that is
+		    on his order list or not */
 		if (v->current_order.type == OT_LOADING &&
-				v->current_order.flags & OF_NON_STOP) {
+				HASBIT(v->current_order.flags, OFB_NON_STOP)) {
 			v->current_order.flags = 0;
 		}
 
-		InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+		InvalidateVehicleOrder(v);
 	}
 
-	//we have an aircraft, they have a mini-schedule, so update them all
+	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
 	if (v->type == VEH_Aircraft) InvalidateAircraftWindows(v);
-
-	//same goes for ships
 	if (v->type == VEH_Ship) InvalidateShipWindows(v);
 
 	return 0;
 }
 
-/* p1 = vehicle
- * p2&0xFF = sel
- * p2>>8 = mode
- */
-int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	Vehicle *v = GetVehicle(p1);
-	byte sel = (byte)p2;
-	Order *sched;
 
+/**
+ *
+ * Add an order to the orderlist of a vehicle
+ *
+ * @param veh_sel      First 16 bits are the ID of the vehicle. The next 16 are the selected order (if any)
+ *                       If the lastone is given, order will be inserted above thatone
+ * @param mode         Mode to change the order to
+ *
+ */
+int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
+{
+	Vehicle *v = GetVehicle(veh_sel & 0xFFFF);
+	byte sel = veh_sel >> 16;
+	Order *order;
+
+	/* Is it a valid order? */
 	if (sel >= v->num_orders)
 		return CMD_ERROR;
 
-	sched = &v->schedule_ptr[sel];
-	if (sched->type != OT_GOTO_STATION &&
-			(sched->type != OT_GOTO_DEPOT || (p2 >> 8) == 1) &&
-			(sched->type != OT_GOTO_WAYPOINT || (p2 >> 8) != 2))
+	order = GetVehicleOrder(v, sel);
+	if (order->type != OT_GOTO_STATION &&
+			(order->type != OT_GOTO_DEPOT || mode == OFB_UNLOAD) &&
+			(order->type != OT_GOTO_WAYPOINT || mode != OFB_NON_STOP))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		switch (p2 >> 8) {
-		case 0: // full load
-			sched->flags ^= OF_FULL_LOAD;
-			if (sched->type != OT_GOTO_DEPOT) sched->flags &= ~OF_UNLOAD;
+		switch (mode) {
+		case OFB_FULL_LOAD:
+			TOGGLEBIT(order->flags, OFB_FULL_LOAD);
+			if (order->type != OT_GOTO_DEPOT)
+				CLRBIT(order->flags, OFB_UNLOAD);
 			break;
-		case 1: // unload
-			sched->flags ^= OF_UNLOAD;
-			sched->flags &= ~OF_FULL_LOAD;
+		case OFB_UNLOAD:
+			TOGGLEBIT(order->flags, OFB_UNLOAD);
+			CLRBIT(order->flags, OFB_FULL_LOAD);
 			break;
-		case 2: // non stop
-			sched->flags ^= OF_NON_STOP;
+		case OFB_NON_STOP:
+			TOGGLEBIT(order->flags, OFB_NON_STOP);
 			break;
 		}
-		sched = v->schedule_ptr;
 
-		FOR_ALL_VEHICLES(v) {
-			if (v->schedule_ptr == sched)
-				InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
-		}
-
-	}
-
-	return 0;
-}
-
-// Clone an order
-// p1 & 0xFFFF is destination vehicle
-// p1 >> 16 is source vehicle
-
-// p2 is
-//   0 - clone
-//   1 - copy
-//   2 - unclone
-
-
-int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	Vehicle *dst = GetVehicle(p1 & 0xFFFF);
-
-	if (!(dst->type && dst->owner == _current_player))
-		return CMD_ERROR;
-
-	switch(p2) {
-
-	// share vehicle orders?
-	case 0: {
-		Vehicle *src = GetVehicle(p1 >> 16);
-
-		// sanity checks
-		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
-			return CMD_ERROR;
-
-		// let's see what happens with road vehicles
-		if (src->type == VEH_Road) {
-			if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
-				return CMD_ERROR;
-		}
-
-		if (flags & DC_EXEC) {
-			DeleteVehicleSchedule(dst);
-			dst->schedule_ptr = src->schedule_ptr;
-			dst->num_orders = src->num_orders;
-
-			InvalidateWindow(WC_VEHICLE_ORDERS, src->index);
-			InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
-
-			RebuildVehicleLists();
-		}
-		break;
-	}
-
-	// copy vehicle orders?
-	case 1: {
-		Vehicle *src = GetVehicle(p1 >> 16);
-		int delta;
-
-		// sanity checks
-		if (!(src->owner == _current_player && dst->type == src->type && dst != src))
-			return CMD_ERROR;
-
-		// let's see what happens with road vehicles
-		if (src->type == VEH_Road) {
-			const Order *i;
-			TileIndex required_dst;
-
-			for (i = src->schedule_ptr; i->type != OT_NOTHING; ++i) {
-				if (i->type == OT_GOTO_STATION) {
-					const Station *st = GetStation(i->station);
-					required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
-					if ( !required_dst )
-						return CMD_ERROR;
-				}
+		/* Update the windows, also for vehicles that share the same order list */
+		{
+			Vehicle *u = GetFirstVehicleFromSharedList(v);
+			while (u != NULL) {
+				InvalidateVehicleOrder(u);
+				u = u->next_shared;
 			}
 		}
-
-		// make sure there's orders available
-		delta = IsScheduleShared(dst) ? src->num_orders + 1 : src->num_orders - dst->num_orders;
-		if (delta > endof(_order_array) - _ptr_to_next_order)
-			return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
-
-		if (flags & DC_EXEC) {
-			DeleteVehicleSchedule(dst);
-			dst->schedule_ptr = _ptr_to_next_order;
-			dst->num_orders = src->num_orders;
-			_ptr_to_next_order += src->num_orders + 1;
-			memcpy(dst->schedule_ptr, src->schedule_ptr, (src->num_orders + 1) * sizeof(Order));
-
-			InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
-
-			RebuildVehicleLists();
-		}
-		break;
-	}
-
-	// declone vehicle orders?
-	case 2: return DecloneOrder(dst, flags);
 	}
 
 	return 0;
 }
 
+/**
+ *
+ * Clone/share/copy an order-list of an other vehicle
+ *
+ * @param veh1_veh2 First 16 bits are of destination vehicle, last 16 of source vehicle
+ * @param mode      Mode of cloning (CO_SHARE, CO_COPY, CO_UNSHARE)
+ *
+ */
+int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
+{
+	Vehicle *dst = GetVehicle(veh1_veh2 & 0xFFFF);
+
+	if (dst->type == 0 || dst->owner != _current_player)
+		return CMD_ERROR;
+
+	switch(mode) {
+		case CO_SHARE: {
+			Vehicle *src = GetVehicle(veh1_veh2 >> 16);
+
+			/* Sanity checks */
+			if (src->type == 0 || src->owner != _current_player || dst->type != src->type || dst == src)
+				return CMD_ERROR;
+
+			/* Trucks can't share orders with busses (and visa versa) */
+			if (src->type == VEH_Road) {
+				if (src->cargo_type != dst->cargo_type && (src->cargo_type == CT_PASSENGERS || dst->cargo_type == CT_PASSENGERS))
+					return CMD_ERROR;
+			}
+
+			/* Is the vehicle already in the shared list? */
+			{
+				Vehicle *u = GetFirstVehicleFromSharedList(src);
+				while (u != NULL) {
+					if (u == dst)
+						return CMD_ERROR;
+					u = u->next_shared;
+				}
+			}
+
+			if (flags & DC_EXEC) {
+				/* If the destination vehicle had a OrderList, destroy it */
+				DeleteVehicleOrders(dst);
+
+				dst->orders = src->orders;
+				dst->num_orders = src->num_orders;
+
+				/* Link this vehicle in the shared-list */
+				dst->next_shared = src->next_shared;
+				dst->prev_shared = src;
+				if (src->next_shared != NULL)
+					src->next_shared->prev_shared = dst;
+				src->next_shared = dst;
+
+				InvalidateVehicleOrder(dst);
+				InvalidateVehicleOrder(src);
+
+				RebuildVehicleLists();
+			}
+		} break;
+
+		case CO_COPY: {
+			Vehicle *src = GetVehicle(veh1_veh2 >> 16);
+			int delta;
+
+			/* Sanity checks */
+			if (src->type == 0 || src->owner != _current_player || dst->type != src->type || dst == src)
+				return CMD_ERROR;
+
+			/* Trucks can't copy all the orders from busses (and visa versa) */
+			if (src->type == VEH_Road) {
+				const Order *order;
+				TileIndex required_dst;
+
+				FOR_VEHICLE_ORDERS(src, order) {
+					if (order->type == OT_GOTO_STATION) {
+						const Station *st = GetStation(order->station);
+						required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
+						/* This station has not the correct road-bay, so we can't copy! */
+						if (!required_dst)
+							return CMD_ERROR;
+					}
+				}
+			}
+
+			/* make sure there are orders available */
+			delta = IsOrderListShared(dst) ? src->num_orders + 1 : src->num_orders - dst->num_orders;
+			if (!HasOrderPoolFree(delta))
+				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+
+			if (flags & DC_EXEC) {
+				const Order *order;
+				Order **order_dst;
+
+				/* If the destination vehicle had a OrderList, destroy it */
+				DeleteVehicleOrders(dst);
+
+				order_dst = &dst->orders;
+				FOR_VEHICLE_ORDERS(src, order) {
+					*order_dst = AllocateOrder();
+					AssignOrder(*order_dst, *order);
+					order_dst = &(*order_dst)->next;
+				}
+
+				dst->num_orders = src->num_orders;
+
+				InvalidateVehicleOrder(dst);
+
+				RebuildVehicleLists();
+			}
+		} break;
+
+		case CO_UNSHARE:
+			return DecloneOrder(dst, flags);
+	}
+
+	return 0;
+}
+
+/**
+ *
+ * Backup a vehicle order-list, so you can replace a vehicle
+ *  without loosing the order-list
+ *
+ */
 void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	Vehicle *u = IsScheduleShared(v);
+	bool shared = IsOrderListShared(v);
 
-	bak->orderindex = v->cur_order_index;
+	/* Save general info */
+	bak->orderindex       = v->cur_order_index;
 	bak->service_interval = v->service_interval;
 
+	/* Safe custom string, if any */
 	if ((v->string_id & 0xF800) != 0x7800) {
 		bak->name[0] = 0;
 	} else {
 		GetName(v->string_id & 0x7FF, bak->name);
 	}
 
-	// stored shared orders in this special way?
-	if (u != NULL) {
+	/* If we have shared orders, store it on a special way */
+	if (shared) {
+		Vehicle *u;
+		if (v->next_shared)
+			u = v->next_shared;
+		else
+			u = v->prev_shared;
+
 		bak->clone = u->index;
 	} else {
-		Order *sched = v->schedule_ptr;
-		Order *os = bak->order;
+		/* Else copy the orders */
+		Order *order, *dest;
 
+		dest  = bak->order;
+
+		/* We do not have shared orders */
 		bak->clone = INVALID_VEHICLE;
 
-		do {
-			*os++ = *sched++;
-		} while (sched->type != OT_NOTHING);
-		/* Make sure the last item is OT_NOTHING */
-		os->type = OT_NOTHING;
+		/* Copy the orders */
+		FOR_VEHICLE_ORDERS(v, order) {
+			*dest = *order;
+			dest++;
+		}
+		/* End the list with an OT_NOTHING */
+		dest->type = OT_NOTHING;
 	}
 }
 
+/**
+ *
+ * Restore vehicle orders that are backupped via BackupVehicleOrders
+ *
+ */
 void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
 	int i;
 
-	if (bak->name[0]) {
+	/* If we have a custom name, process that */
+	if (bak->name[0] != 0) {
 		strcpy((char*)_decode_parameters, bak->name);
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}
 
-	DoCommandP(0, v->index, bak->orderindex|(bak->service_interval<<16) , NULL, CMD_RESTORE_ORDER_INDEX);
+	/* Restore vehicle number and service interval */
+	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , NULL, CMD_RESTORE_ORDER_INDEX);
 
+	/* If we had shared orders, recover that */
 	if (bak->clone != INVALID_VEHICLE) {
-		DoCommandP(0, v->index | bak->clone << 16, 0, NULL, CMD_CLONE_ORDER);
+		DoCommandP(0, v->index | (bak->clone << 16), 0, NULL, CMD_CLONE_ORDER);
 		return;
 	}
 
-	// CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-	//  order number is one more than the current amount of orders, and because
-	//  in network the commands are queued before send, the second insert always
-	//  fails in test mode. By bypassing the test-mode, that no longer is a problem.
-	for (i = 0; bak->order[i].type != OT_NOTHING; ++i)
+	/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
+	    order number is one more than the current amount of orders, and because
+	    in network the commands are queued before send, the second insert always
+	    fails in test mode. By bypassing the test-mode, that no longer is a problem. */
+	for (i = 0; bak->order[i].type != OT_NOTHING; i++)
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 }
 
-/*	p1 = vehicle
- *	upper 16 bits p2 = service_interval
- *	lower 16 bits p2 = cur_order_index
+/**
+ *
+ * Restore the current-order-index of a vehicle and sets service-interval
+ *
+ * @param vehicle_id The ID of the vehicle
+ * @param data       First 16 bits are the current-order-index
+ *                   The last 16 bits are the service-interval
+ *
  */
-int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 vehicle_id, uint32 data)
 {
-	// nonsense to update the windows, since, train rebought will have its window deleted
 	if (flags & DC_EXEC) {
-		Vehicle *v = GetVehicle(p1);
-		v->service_interval = (uint16)(p2>>16);
-		v->cur_order_index = (byte)(p2&0xFFFF);
+		Vehicle *v = GetVehicle(vehicle_id);
+		v->service_interval = data >> 16;
+		v->cur_order_index = data & 0xFFFF;
 	}
+
 	return 0;
 }
 
-int CheckOrders(Vehicle *v)
+/**
+ *
+ * Check the orders of a vehicle, to see if there are invalid orders and stuff
+ *
+ */
+bool CheckOrders(const Vehicle *v)
 {
-	if (!_patches.order_review_system)	//User doesn't want things to be checked
-		return 0;
+	/* Does the user wants us to check things? */
+	if (_patches.order_review_system == 0)
+		return false;
 
+	/* Do nothing for crashed vehicles */
 	if(v->vehstatus & VS_CRASHED)
-		return 0;
+		return false;
 
+	/* Do nothing for stopped vehicles if setting is '1' */
 	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
-		return 0;
+		return false;
 
-	/* only check every 20 days, so that we don't flood the message log */
+	/* Only check every 20 days, so that we don't flood the message log */
 	if ( ( ( v->day_counter % 20) == 0 ) && (v->owner == _local_player) ) {
-		Order order;
-		Order old_order;
-		int i, n_st, problem_type = -1;
-		Station *st;
-		int message=0;
-		TileIndex required_tile=-1;
+		int n_st, problem_type = -1;
+		const Order *order;
+		const Station *st;
+		int message = 0;
 
-		/* check the order list */
-		order = v->schedule_ptr[0];
+		/* Check the order list */
 		n_st = 0;
 
-		old_order.type = OT_NOTHING;
-		old_order.flags = 0;
-		for (i = 0; order.type != OT_NOTHING; i++) {
-			order = v->schedule_ptr[i];
-			if (order.type == old_order.type &&
-					order.flags == old_order.flags &&
-					order.station == old_order.station) {
-				problem_type = 2;
-				break;
-			}
-			if (order.type == OT_DUMMY) {
+		FOR_VEHICLE_ORDERS(v, order) {
+			/* Dummy order? */
+			if (order->type == OT_DUMMY) {
 				problem_type = 1;
 				break;
 			}
-			if (order.type == OT_GOTO_STATION /*&& (order != old_order) */) {
-				//I uncommented this in order not to get two error messages
-				//when two identical entries are in the list
+			/* Does station have a load-bay for this vehicle? */
+			if (order->type == OT_GOTO_STATION) {
+				TileIndex required_tile;
+
 				n_st++;
-				st = GetStation(order.station);
-				required_tile = GetStationTileForVehicle(v,st);
-				if (!required_tile) problem_type = 3;
+				st = GetStation(order->station);
+				required_tile = GetStationTileForVehicle(v, st);
+				if (!required_tile)
+					problem_type = 3;
 			}
-			old_order = order; //store the old order
 		}
 
-		//Now, check the last and the first order
-		//as the last order is the end of order marker, jump back 2
-		if (i > 2 &&
-				v->schedule_ptr[0].type == v->schedule_ptr[i - 2].type &&
-				v->schedule_ptr[0].flags == v->schedule_ptr[i - 2].flags &&
-				v->schedule_ptr[0].station == v->schedule_ptr[i - 2].station)
+		/* Check if the last and the first order are the same */
+		if (v->num_orders > 1 &&
+				v->orders->type    == GetLastVehicleOrder(v)->type &&
+				v->orders->flags   == GetLastVehicleOrder(v)->flags &&
+				v->orders->station == GetLastVehicleOrder(v)->station)
 			problem_type = 2;
 
-		if ( (n_st < 2) && (problem_type == -1) ) problem_type = 0;
+		/* Do we only have 1 station in our order list? */
+		if ((n_st < 2) && (problem_type == -1))
+			problem_type = 0;
 
-		SetDParam(0, v->unitnumber);
+		/* We don't have a problem */
+		if (problem_type < 0)
+			return false;
 
 		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
 
-		if (problem_type < 0) return 0;
-
+		SetDParam(0, v->unitnumber);
 		AddNewsItem(
 			message,
-			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
+			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, 0),
 			v->index,
 			0);
 	}
-	// End of order check
 
-	return 1;
+	return true;
 }
+
+/**
+ *
+ * Delete a destination (like station, waypoint, ..) from the orders of vehicles
+ *
+ * @param dest type and station has to be set. This order will be removed from all orders of vehicles
+ *
+ */
+void DeleteDestinationFromVehicleOrder(Order dest)
+{
+	Vehicle *v;
+	Order *order;
+	bool need_invalidate;
+
+	/* Go through all vehicles */
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == 0 || v->orders == NULL)
+			continue;
+
+		/* Forget about this station if this station is removed */
+		if (v->last_station_visited == dest.station && dest.type == OT_GOTO_STATION)
+			v->last_station_visited = 0xFFFF;
+
+		/* Check the current order */
+		if (v->current_order.type    == dest.type &&
+				v->current_order.station == dest.station) {
+			/* Mark the order as DUMMY */
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
+			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+		}
+
+		/* Clear the order from the order-list */
+		need_invalidate = false;
+		FOR_VEHICLE_ORDERS(v, order) {
+			if (order->type == dest.type && order->station == dest.station) {
+				/* Mark the order as DUMMY */
+				order->type = OT_DUMMY;
+				order->flags = 0;
+
+				need_invalidate = true;
+			}
+		}
+
+		/* Only invalidate once, and if needed */
+		if (need_invalidate)
+			InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+	}
+}
+
+/**
+ *
+ * Checks if a vehicle has a GOTO_DEPOT in his order list
+ *
+ * @return True if this is true (lol ;))
+ *
+ */
+bool VehicleHasDepotOrders(const Vehicle *v)
+{
+	const Order *order;
+
+	FOR_VEHICLE_ORDERS(v, order) {
+		if (order->type == OT_GOTO_DEPOT)
+			return true;
+	}
+
+	return false;
+}
+
+/**
+ *
+ * Delete all orders from a vehicle
+ *
+ */
+void DeleteVehicleOrders(Vehicle *v)
+{
+	Order *order, *cur;
+
+	/* If we have a shared order-list, don't delete the list, but just
+	    remove our pointer */
+	if (IsOrderListShared(v)) {
+		const Vehicle *u = v;
+
+		v->orders = NULL;
+		v->num_orders = 0;
+
+		/* Unlink ourself */
+		if (v->prev_shared != NULL) {
+			v->prev_shared->next_shared = v->next_shared;
+			u = v->prev_shared;
+		}
+		if (v->next_shared != NULL) {
+			v->next_shared->prev_shared = v->prev_shared;
+			u = v->next_shared;
+		}
+		v->prev_shared = NULL;
+		v->next_shared = NULL;
+
+		/* We only need to update this-one, because if there is a third
+		    vehicle which shares the same order-list, nothing will change. If
+		    this is the last vehicle, the last line of the order-window
+		    will change from Shared order list, to Order list, so it needs
+		    an update */
+		InvalidateVehicleOrder(u);
+		return;
+	}
+
+	/* Remove the orders */
+	cur = v->orders;
+	v->orders = NULL;
+	v->num_orders = 0;
+
+	order = NULL;
+	while (cur != NULL) {
+		if (order != NULL) {
+			order->type = OT_NOTHING;
+			order->next = NULL;
+		}
+
+		order = cur;
+		cur = cur->next;
+	}
+
+	if (order != NULL) {
+		order->type = OT_NOTHING;
+		order->next = NULL;
+	}
+}
+
+/**
+ *
+ * Check if we share our orders with an other vehicle
+ *
+ * @return Returns the vehicle who has the same order
+ *
+ */
+bool IsOrderListShared(const Vehicle *v)
+{
+	if (v->next_shared != NULL)
+		return true;
+
+	if (v->prev_shared != NULL)
+		return true;
+
+	return false;
+}
+
+/**
+ *
+ * Check if a vehicle has any valid orders
+ *
+ * @return false if there are no valid orders
+ *
+ */
+bool CheckForValidOrders(Vehicle *v)
+{
+	const Order *order;
+
+	FOR_VEHICLE_ORDERS(v, order)
+		if (order->type != OT_DUMMY)
+			return true;
+
+	return false;
+}
+
+void InitializeOrders(void)
+{
+	Order *order;
+	int i;
+
+	memset(&_orders, 0, sizeof(_orders[0]) * _orders_size);
+
+	i = 0;
+	FOR_ALL_ORDERS(order)
+		order->index = i++;
+
+	_backup_orders_tile = 0;
+}
+
+static const byte _order_desc[] = {
+	SLE_VAR(Order,type,					SLE_UINT8),
+	SLE_VAR(Order,flags,				SLE_UINT8),
+	SLE_VAR(Order,station,			SLE_UINT16),
+	SLE_REF(Order,next,					REF_ORDER),
+
+	// reserve extra space in savegame here. (currently 10 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 5, 255),
+	SLE_END()
+};
+
+static void Save_ORDR()
+{
+	Order *order;
+
+	FOR_ALL_ORDERS(order) {
+		if (order->type != OT_NOTHING) {
+			SlSetArrayIndex(order->index);
+			SlObject(order, _order_desc);
+		}
+	}
+}
+
+static void Load_ORDR()
+{
+	if (_sl.full_version <= 0x501) {
+		/* Version older than 0x502 did not have a ->next pointer. Convert them
+		    (in the old days, the orderlist was 5000 items big) */
+		uint len = SlGetFieldLength();
+		uint i;
+
+		if (_sl.version < 5) {
+			/* Pre-version 5 had an other layout for orders
+			    (uint16 instead of uint32) */
+			uint16 orders[5000];
+
+			len /= sizeof(uint16);
+			assert (len <= _orders_size);
+
+			SlArray(orders, len, SLE_UINT16);
+
+			for (i = 0; i < len; ++i) {
+				AssignOrder(GetOrder(i), UnpackVersion4Order(orders[i]));
+			}
+		} else if (_sl.full_version <= 0x501) {
+			uint32 orders[5000];
+
+			len /= sizeof(uint32);
+			assert (len <= _orders_size);
+
+			SlArray(orders, len, SLE_UINT32);
+
+			for (i = 0; i < len; ++i) {
+				AssignOrder(GetOrder(i), UnpackOrder(orders[i]));
+			}
+		}
+
+		/* Update all the next pointer */
+		for (i = 1; i < len; ++i) {
+			/* The orders were built like this:
+			     Vehicle one had order[0], and as long as order++.type was not
+			     OT_NOTHING, it was part of the order-list of that vehicle */
+			if (GetOrder(i)->type != OT_NOTHING)
+				GetOrder(i - 1)->next = GetOrder(i);
+		}
+	} else {
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			Order *order = GetOrder(index);
+
+			SlObject(order, _order_desc);
+		}
+	}
+}
+
+const ChunkHandler _order_chunk_handlers[] = {
+	{ 'ORDR', Save_ORDR, Load_ORDR, CH_ARRAY | CH_LAST},
+};

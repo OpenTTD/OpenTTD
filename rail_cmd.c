@@ -768,10 +768,11 @@ static void DoDeleteWaypoint(Waypoint *cp)
 {
 	Order order;
 	cp->xy = 0;
+
 	order.type = OT_GOTO_WAYPOINT;
-	order.flags = 0;
 	order.station = cp - _waypoints;
-	DeleteCommandFromVehicleSchedule(order);
+	DeleteDestinationFromVehicleOrder(order);
+
 	if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
 	RedrawWaypointSign(cp);
 }

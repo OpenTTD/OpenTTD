@@ -395,7 +395,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!(flags & DC_QUERY_COST)) {
 		v = AllocateVehicle();
-		if (v == NULL || _ptr_to_next_order >= endof(_order_array))
+		if (v == NULL || IsOrderPoolFull())
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		unit_num = GetFreeUnitNumber(VEH_Train);
@@ -417,24 +417,13 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->u.rail.track = 0x80;
 			v->u.rail.first_engine = 0xffff;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
-//			v->subtype = 0;
 			v->spritenum = rvi->image_index;
 			v->cargo_type = rvi->cargo_type;
 			v->cargo_cap = rvi->capacity;
 			v->max_speed = rvi->max_speed;
-//			v->cargo_count = 0;
 			v->value = value;
-//			v->day_counter = 0;
-//			v->current_order = 0;
-//			v->next_station = 0;
-//			v->load_unload_time_rem = 0;
-//			v->progress = 0;
-//			v->targetairport = 0;
-//			v->crash_anim_pos = 0;
 			v->last_station_visited = 0xFFFF;
 			v->dest_tile = 0;
-//			v->profit_last_year = 0;
-//			v->profit_this_year = 0;
 
 			v->engine_type = (byte)p1;
 			e = &_engines[p1];
@@ -444,23 +433,10 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->max_age = e->lifelength * 366;
 
 			v->string_id = STR_SV_TRAIN_NAME;
-//			v->cur_speed = 0;
-//			v->subspeed = 0;
 			v->u.rail.railtype = e->railtype;
 			_new_train_id = v->index;
-//			v->cur_order_index = 0;
-//			v->num_orders = 0;
-
-			_ptr_to_next_order->type = OT_NOTHING;
-			_ptr_to_next_order->flags = 0;
-			v->schedule_ptr = _ptr_to_next_order++;
-//			v->next_in_chain = 0xffff;
-//			v->next = NULL;
 
 			v->service_interval = _patches.servint_trains;
-//			v->breakdown_ctr = 0;
-//			v->breakdowns_since_last_service = 0;
-//			v->unk4D = 0;
 			v->date_of_last_service = _date;
 			v->build_year = _cur_year;
 			v->type = VEH_Train;
@@ -680,12 +656,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// move the train to an empty line. for locomotives, we set the type to 0. for wagons, 4.
 			if (is_loco) {
 				if (src->subtype != 0) {
-					// setting the type to 0 also involves setting up the schedule_ptr field.
+					// setting the type to 0 also involves setting up the orders field.
 					src->subtype = 0;
-					assert(src->schedule_ptr == NULL);
-					_ptr_to_next_order->type = OT_NOTHING;
-					_ptr_to_next_order->flags = 0;
-					src->schedule_ptr = _ptr_to_next_order++;
+					assert(src->orders == NULL);
 					src->num_orders = 0;
 				}
 				dst_head = src;
@@ -695,9 +668,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			src->u.rail.first_engine = 0xffff;
 		} else {
 			if (src->subtype == 0) {
-				// the vehicle was previously a loco. need to free the schedule list and delete vehicle windows etc.
+				// the vehicle was previously a loco. need to free the order list and delete vehicle windows etc.
 				DeleteWindowById(WC_VEHICLE_VIEW, src->index);
-				DeleteVehicleSchedule(src);
+				DeleteVehicleOrders(src);
 			}
 
 			src->subtype = 2;
@@ -1644,13 +1617,13 @@ bad:;
 
 static bool ProcessTrainOrder(Vehicle *v)
 {
-	Order order;
+	const Order *order;
 	bool result;
 
 	// These are un-interruptible
 	if (v->current_order.type >= OT_GOTO_DEPOT &&
 			v->current_order.type <= OT_LEAVESTATION) {
-		// Let a depot order in the schedule interrupt.
+		// Let a depot order in the orderlist interrupt.
 		if (v->current_order.type != OT_GOTO_DEPOT ||
 				!(v->current_order.flags & OF_UNLOAD))
 			return false;
@@ -1676,10 +1649,11 @@ static bool ProcessTrainOrder(Vehicle *v)
 	// Get the current order
 	if (v->cur_order_index >= v->num_orders)
 		v->cur_order_index = 0;
-	order = v->schedule_ptr[v->cur_order_index];
+
+	order = GetVehicleOrder(v, v->cur_order_index);
 
 	// If no order, do nothing.
-	if (order.type == OT_NOTHING) {
+	if (order == NULL) {
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
@@ -1687,31 +1661,37 @@ static bool ProcessTrainOrder(Vehicle *v)
 	}
 
 	// If it is unchanged, keep it.
-	if (order.type == v->current_order.type &&
-			order.flags == v->current_order.flags &&
-			order.station == v->current_order.station)
+	if (order->type    == v->current_order.type &&
+			order->flags   == v->current_order.flags &&
+			order->station == v->current_order.station)
 		return false;
 
 	// Otherwise set it, and determine the destination tile.
-	v->current_order = order;
+	v->current_order = *order;
 
 	v->dest_tile = 0;
 
 	result = false;
-	if (order.type == OT_GOTO_STATION) {
-		if (order.station == v->last_station_visited)
-			v->last_station_visited = 0xFFFF;
-		v->dest_tile = GetStation(order.station)->xy;
-		result = CheckReverseTrain(v);
-	} else if (order.type == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order.station].xy;
-		result = CheckReverseTrain(v);
-	} else if (order.type == OT_GOTO_WAYPOINT) {
-		v->dest_tile = _waypoints[order.station].xy;
-		result = CheckReverseTrain(v);
+	switch (order->type) {
+		case OT_GOTO_STATION:
+			if (order->station == v->last_station_visited)
+				v->last_station_visited = 0xFFFF;
+			v->dest_tile = GetStation(order->station)->xy;
+			result = CheckReverseTrain(v);
+			break;
+
+		case OT_GOTO_DEPOT:
+			v->dest_tile = _depots[order->station].xy;
+			result = CheckReverseTrain(v);
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			v->dest_tile = _waypoints[order->station].xy;
+			result = CheckReverseTrain(v);
+			break;
 	}
 
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 
 	return result;
 }
@@ -1771,7 +1751,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 	v->u.rail.days_since_order_progr = 0;
 	v->cur_order_index++;
-	InvalidateVehicleOrderWidget(v);
+	InvalidateVehicleOrder(v);
 }
 
 static int UpdateTrainSpeed(Vehicle *v)
@@ -2669,7 +2649,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
 
-		if (t.flags & OF_UNLOAD) { // Part of the schedule?
+		if (t.flags & OF_UNLOAD) { // Part of the orderlist?
 			v->u.rail.days_since_order_progr = 0;
 			v->cur_order_index++;
 		} else if (t.flags & OF_FULL_LOAD) { // User initiated?
@@ -2701,7 +2681,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
+	if (_patches.gotodepot && VehicleHasDepotOrders(v))
 		return;
 
 	// Don't interfere with a depot visit scheduled by the user, or a
@@ -2833,12 +2813,4 @@ void HandleClickOnTrain(Vehicle *v)
 void InitializeTrains()
 {
 	_age_cargo_skip_counter = 1;
-}
-
-int ScheduleHasDepotOrders(const Order *schedule)
-{
-	for (; schedule->type != OT_NOTHING; schedule++)
-		if (schedule->type == OT_GOTO_DEPOT)
-			return true;
-	return false;
 }

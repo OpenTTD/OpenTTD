@@ -33,24 +33,6 @@ bool VehicleNeedsService(const Vehicle *v)
 		(v->date_of_last_service + v->service_interval < _date);
 }
 
-Order UnpackOldOrder(uint16 packed)
-{
-	Order order;
-	order.type    = (packed & 0x000f);
-	order.flags   = (packed & 0x00f0) >> 4;
-	order.station = (packed & 0xff00) >> 8;
-
-	// Sanity check
-	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
-	if (order.type == OT_NOTHING && (order.flags != 0 || order.station != 0)) {
-		order.type = OT_DUMMY;
-		order.flags = 0;
-	}
-
-	return order;
-}
-
-
 void VehicleInTheWayErrMsg(Vehicle *v)
 {
 	StringID id;
@@ -177,11 +159,6 @@ void AfterLoadVehicles()
 				if (v->subtype == 0)
 					UpdateTrainAcceleration(v);
 			}
-
-#if defined(_DEBUG)
-			if (!(v->schedule_ptr == NULL || (v->schedule_ptr >= _order_array && v->schedule_ptr < _ptr_to_next_order)))
-				v->schedule_ptr = NULL;
-#endif
 		}
 	}
 
@@ -196,7 +173,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	memset(v, 0, sizeof(Vehicle));
 	v->index = index;
 
-	assert(v->schedule_ptr == NULL);
+	assert(v->orders == NULL);
 
 	v->left_coord = INVALID_COORD;
 	v->next = NULL;
@@ -353,8 +330,6 @@ void InitializeVehicles()
 		v->index = i++;
 
 	memset(_vehicle_position_hash, -1, sizeof(_vehicle_position_hash));
-
-	_ptr_to_next_order = _order_array;
 }
 
 Vehicle *GetLastVehicleInChain(Vehicle *v)
@@ -439,91 +414,6 @@ uint GetWaypointByTile(uint tile)
 	return i;
 }
 
-
-Vehicle *IsScheduleShared(Vehicle *u)
-{
-	const Order *sched = u->schedule_ptr;
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->schedule_ptr == sched && u != v && v->type != 0)
-			return v;
-	}
-	return NULL;
-}
-
-void DeleteVehicleSchedule(Vehicle *v)
-{
-	Order *sched;
-	Order *cur;
-	int num;
-	Vehicle *u;
-
-	// if the schedule is shared, don't delete it.
-	if ((u = IsScheduleShared(v)) != NULL) {
-		v->schedule_ptr = NULL;
-		InvalidateWindow(WC_VEHICLE_ORDERS, u->index);
-		return;
-	}
-
-	sched = v->schedule_ptr;
-	v->schedule_ptr = NULL;
-
-	num = v->num_orders + 1;
-
-	_ptr_to_next_order -= num;
-
-	cur = sched;
-	while (cur != _ptr_to_next_order) {
-		assert(cur < _ptr_to_next_order);
-		cur[0] = cur[num];
-		cur++;
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->schedule_ptr != NULL && sched < v->schedule_ptr) {
-			v->schedule_ptr -= num;
-		}
-	}
-}
-
-void DeleteCommandFromVehicleSchedule(Order cmd)
-{
-	Vehicle *v;
-	bool need_invalidate;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0 && v->schedule_ptr != NULL) {
-			Order *sched;
-
-			// clear last station visited
-			if (v->last_station_visited == cmd.station && cmd.type == OT_GOTO_STATION)
-				v->last_station_visited = 0xFFFF;
-
-			// check the next order
-			if (v->current_order.type == cmd.type &&
-					v->current_order.station == cmd.station) {
-				v->current_order.type = OT_DUMMY;
-				v->current_order.flags = 0;
-				InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-			}
-
-			// clear the order list
-			need_invalidate = false;
-			for (sched = v->schedule_ptr; sched->type != OT_NOTHING; ++sched) {
-				if (sched->type == cmd.type && sched->station == cmd.station) {
-					sched->type = OT_DUMMY;
-					sched->flags = 0;
-					need_invalidate = true;
-				}
-			}
-
-			if (need_invalidate)
-				InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
-		}
-	}
-}
-
 void DoDeleteDepot(uint tile)
 {
 	Order order;
@@ -538,9 +428,8 @@ void DoDeleteDepot(uint tile)
 	d->xy = 0;
 
 	order.type = OT_GOTO_DEPOT;
-	order.flags = 0;
 	order.station = dep_index;
-	DeleteCommandFromVehicleSchedule(order);
+	DeleteDestinationFromVehicleOrder(order);
 
 	// Delete the depot
 	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
@@ -553,8 +442,8 @@ void DeleteVehicle(Vehicle *v)
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = 0xffff;
 
-	if (v->schedule_ptr != NULL)
-		DeleteVehicleSchedule(v);
+	if (v->orders != NULL)
+		DeleteVehicleOrders(v);
 }
 
 void DeleteVehicleChain(Vehicle *v)
@@ -1699,12 +1588,6 @@ void EndVehicleMove(Vehicle *v)
 	);
 }
 
-void InvalidateVehicleOrderWidget(Vehicle *v)
-{
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-	InvalidateWindowWidget(WC_VEHICLE_ORDERS, v->index, 2);
-}
-
 /* returns true if staying in the same tile */
 bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp)
 {
@@ -1846,7 +1729,7 @@ const byte _common_veh_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags),   SLE_UINT8,  5, 255),
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, 255),
 
-	SLE_REF(Vehicle,schedule_ptr,			REF_SCHEDULE),
+	SLE_REF(Vehicle,orders,						REF_ORDER),
 
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
 	SLE_VAR(Vehicle,max_age,					SLE_UINT16),
@@ -1869,9 +1752,11 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,random_bits,       SLE_UINT8),
 	SLE_VAR(Vehicle,waiting_triggers,  SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 14 bytes)
+	SLE_REF(Vehicle,next_shared,				REF_VEHICLE),
+	SLE_REF(Vehicle,prev_shared,				REF_VEHICLE),
+
+	// reserve extra space in savegame here. (currently 10 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255), /* 2 */
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U16 | SLE_VAR_NULL, 2, 2, 255), /* 4 */
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U32 | SLE_VAR_NULL, 2, 2, 255), /* 8 */
 
 	SLE_END()
@@ -2068,6 +1953,29 @@ static void Load_VEHS()
 			w->u.rail.first_engine = v->engine_type;
 	}
 
+	/* Check for shared order-lists (we now use pointers for that) */
+	if (_sl.full_version < 0x502) {
+		FOR_ALL_VEHICLES(v) {
+			Vehicle *u;
+
+			if (v->type == 0)
+				continue;
+
+			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
+				if (u->type == 0)
+					continue;
+
+				/* If a vehicle has the same orders, add the link to eachother
+				    in both vehicles */
+				if (v->orders == u->orders) {
+					v->next_shared = u;
+					u->prev_shared = v;
+					break;
+				}
+			}
+		}
+	}
+
 	/* This is to ensure all pointers are within the limits of
 	    _vehicles_size */
 	if (_vehicle_id_ctr_day >= _vehicles_size)
@@ -2131,55 +2039,8 @@ static void Load_CHKP()
 	}
 }
 
-
-static void Save_ORDR()
-{
-	uint32 orders[lengthof(_order_array)];
-	uint len = _ptr_to_next_order - _order_array;
-	uint i;
-
-	assert (len <= lengthof(orders));
-
-	for (i = 0; i < len; ++i)
-		orders[i] = PackOrder(&_order_array[i]);
-
-	SlArray(orders, len, SLE_UINT32);
-}
-
-static void Load_ORDR()
-{
-	uint len = SlGetFieldLength();
-	uint i;
-
-	if (_sl.version < 5) {
-		/* Older version had an other layout for orders.. convert them correctly */
-		uint16 orders[lengthof(_order_array)];
-
-		len /= sizeof(uint16);
-		assert (len <= lengthof(orders));
-
-		SlArray(orders, len, SLE_UINT16);
-
-		for (i = 0; i < len; ++i)
-			_order_array[i] = UnpackVersion4Order(orders[i]);
-	} else {
-		uint32 orders[lengthof(_order_array)];
-
-		len /= sizeof(uint32);
-		assert (len <= lengthof(orders));
-
-		SlArray(orders, len, SLE_UINT32);
-
-		for (i = 0; i < len; ++i)
-			_order_array[i] = UnpackOrder(orders[i]);
-	}
-
-	_ptr_to_next_order = _order_array + len;
-}
-
 const ChunkHandler _veh_chunk_handlers[] = {
 	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY},
-	{ 'ORDR', Save_ORDR, Load_ORDR, CH_RIFF},
 	{ 'DEPT', Save_DEPT, Load_DEPT, CH_ARRAY},
 	{ 'CHKP', Save_CHKP, Load_CHKP, CH_ARRAY | CH_LAST},
 };

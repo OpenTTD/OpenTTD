@@ -8,7 +8,7 @@
 
 enum {
 	SAVEGAME_MAJOR_VERSION = 5,
-	SAVEGAME_MINOR_VERSION = 1,
+	SAVEGAME_MINOR_VERSION = 2,
 
 	SAVEGAME_LOADABLE_VERSION = (SAVEGAME_MAJOR_VERSION << 8) + SAVEGAME_MINOR_VERSION
 };
@@ -869,6 +869,7 @@ static void UninitWriteZlib()
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
+extern const ChunkHandler _order_chunk_handlers[];
 extern const ChunkHandler _town_chunk_handlers[];
 extern const ChunkHandler _sign_chunk_handlers[];
 extern const ChunkHandler _station_chunk_handlers[];
@@ -880,6 +881,7 @@ extern const ChunkHandler _animated_tile_chunk_handlers[];
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
 	_veh_chunk_handlers,
+	_order_chunk_handlers,
 	_industry_chunk_handlers,
 	_economy_chunk_handlers,
 	_engine_chunk_handlers,
@@ -912,9 +914,7 @@ static uint ReferenceToInt(void *v, uint t)
 		case REF_VEHICLE: return ((Vehicle *)v)->index + 1;
 		case REF_STATION: return ((Station *)v)->index + 1;
 		case REF_TOWN:    return ((Town *)v)->index + 1;
-
-		case REF_SCHEDULE:
-			return ((byte*)v - (byte*)_order_array) / sizeof(_order_array[0]) + 1;
+		case REF_ORDER:   return ((Order *)v)->index + 1;
 
 		default:
 			NOT_REACHED();
@@ -935,12 +935,10 @@ void *IntToReference(uint r, uint t)
 		return NULL;
 
 	switch (t) {
+		case REF_ORDER:   return GetOrder(r - 1);
 		case REF_VEHICLE: return GetVehicle(r - 1);
 		case REF_STATION: return GetStation(r - 1);
 		case REF_TOWN:    return GetTown(r - 1);
-
-		case REF_SCHEDULE:
-			return (byte*)_order_array + (r - 1) * sizeof(_order_array[0]);
 
 		case REF_VEHICLE_OLD: {
 			/* Old vehicles were saved differently: invalid vehicle was 0xFFFF,

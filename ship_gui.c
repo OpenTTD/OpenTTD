@@ -863,15 +863,14 @@ void ShowShipDepotWindow(uint tile)
 }
 
 
-static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
-	Order *sched;
-	int sel;
-	Station *st;
-	int i = 0;
+static void DrawSmallOrderList(Vehicle *v, int x, int y) {
+	const Order *order;
+	int sel, i = 0;
 
 	sel = v->cur_order_index;
+	order = v->orders;
 
-	for (sched = v->schedule_ptr; sched->type != OT_NOTHING; ++sched) {
+	while (order != NULL) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
 			DoDrawString( "\xAF", x-6, y, 16);
@@ -879,11 +878,9 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 		}
 		sel--;
 
-		if (sched->type == OT_GOTO_STATION) {
-			st = GetStation(sched->station);
-
-			if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
-				SetDParam(0, sched->station);
+		if (order->type == OT_GOTO_STATION) {
+			if (!(GetStation(order->station)->had_vehicle_of_type & HVOT_BUOY)) {
+				SetDParam(0, order->station);
 				DrawString(x, y, STR_A036, 0);
 
 				y += 6;
@@ -891,6 +888,8 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 					break;
 			}
 		}
+
+		order = order->next;
 	}
 }
 
@@ -998,7 +997,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				DrawString(x + 12, y, STR_01AB, 0);
 			}
 
-			DrawSmallShipSchedule(v, x + 138, y);
+			DrawSmallOrderList(v, x + 138, y);
 
 			y += PLY_WND_PRC__SIZE_OF_ROW_BIG;
 		}
