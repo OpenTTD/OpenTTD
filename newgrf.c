@@ -26,7 +26,8 @@ extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 extern int _traininfo_vehicle_pitch;
 
-struct GRFFile *_cur_grffile, *_first_grffile;
+GRFFile *_cur_grffile;
+GRFFile *_first_grffile;
 int _grffile_count;
 static int _cur_spriteid;
 static int _cur_stage;
@@ -39,7 +40,7 @@ static int _param_max;
 static uint32 _ttdpatch_flags[8];
 
 
-enum grfspec_feature {
+typedef enum grfspec_feature {
 	GSF_TRAIN,
 	GSF_ROAD,
 	GSF_SHIP,
@@ -47,7 +48,7 @@ enum grfspec_feature {
 	GSF_STATION,
 	GSF_BRIDGE,
 	GSF_TOWNHOUSE,
-};
+} grfspec_feature;
 
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
@@ -83,22 +84,27 @@ static const int _vehshifts[4] = {
  */
 
 
-enum grfmsg_severity {
+typedef enum grfmsg_severity {
 	GMS_NOTICE,
 	GMS_WARN,
 	GMS_ERROR,
 	GMS_FATAL,
-};
+} grfmsg_severity;
 
-static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
+static void CDECL grfmsg(grfmsg_severity severity, const char *str, ...)
 {
-	static const char * const severitystr[4] = { "Notice", "Warning", "Error", "Fatal" };
+	static const char* const severitystr[] = {
+		"Notice",
+		"Warning",
+		"Error",
+		"Fatal"
+	};
 	int export_severity = 0;
 	char buf[1024];
 	va_list va;
 
 	va_start(va, str);
-	vsprintf(buf, str, va);
+	vsnprintf(buf, sizeof(buf), str, va);
 	va_end(va);
 
 	export_severity = 2 - (severity == GMS_FATAL ? 2 : severity);
@@ -144,25 +150,23 @@ static uint16 grf_load_dword(byte **buf)
 }
 
 
-static struct GRFFile *GetFileByGRFID(uint32 grfid)
+static GRFFile *GetFileByGRFID(uint32 grfid)
 {
-	struct GRFFile *file;
+	GRFFile *file;
 
-	file = _first_grffile;
-	while ((file != NULL) && (file->grfid != grfid))
-		file = file->next;
-
+	for (file = _first_grffile; file != NULL; file = file->next) {
+		if (file->grfid == grfid) break;
+	}
 	return file;
 }
 
-static struct GRFFile *GetFileByFilename(const char *filename)
+static GRFFile *GetFileByFilename(const char *filename)
 {
-	struct GRFFile *file;
+	GRFFile *file;
 
-	file = _first_grffile;
-	while ((file != NULL) && strcmp(file->filename, filename))
-		file = file->next;
-
+	for (file = _first_grffile; file != NULL; file = file->next) {
+		if (strcmp(file->filename, filename) == 0) break;
+	}
 	return file;
 }
 
@@ -683,7 +687,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x08:
 		{	/* Class ID */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				uint32 classid;
 
 				/* classid, for a change, is always little-endian */
@@ -714,7 +718,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x09:
 		{	/* Define sprite layout */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				int t;
 
 				stat->tiles = grf_load_byte(&buf);
@@ -759,9 +763,9 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0a:
 		{	/* Copy sprite layout */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
-				struct StationSpec *srcstat = &_cur_grffile->stations[srcid];
+				StationSpec *srcstat = &_cur_grffile->stations[srcid];
 				int t;
 
 				stat->tiles = srcstat->tiles;
@@ -805,7 +809,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0C:
 		{	/* Platforms number */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
 				stat->allowed_platforms = ~grf_load_byte(&buf);
 			}
@@ -814,7 +818,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0D:
 		{	/* Platforms length */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
 				stat->allowed_lengths = ~grf_load_byte(&buf);
 			}
@@ -823,7 +827,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0e:
 		{	/* Define custom layout */
 			FOR_EACH_OBJECT {
-				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
@@ -916,8 +920,6 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	*bufp = buf;
 	return ret;
 }
-
-#undef shift_buf
 
 
 /* Action 0x00 */
@@ -1048,7 +1050,6 @@ ignoring:
 		}
 		}
 	}
-#undef shift_buf
 }
 
 #undef FOR_EACH_OBJECT
@@ -1105,8 +1106,8 @@ static void NewSpriteGroup(byte *buf, int len)
 	/* XXX: For stations, these two are "little cargo" and "lotsa cargo" sets. */
 	uint8 numloaded;
 	uint8 numloading;
-	struct SpriteGroup *group;
-	struct RealSpriteGroup *rg;
+	SpriteGroup *group;
+	RealSpriteGroup *rg;
 	byte *loaded_ptr;
 	byte *loading_ptr;
 	int i;
@@ -1118,7 +1119,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloading = buf[4];
 
 	if (numloaded == 0x81 || numloaded == 0x82) {
-		struct DeterministicSpriteGroup *dg;
+		DeterministicSpriteGroup *dg;
 		uint16 groupid;
 		int i;
 
@@ -1132,11 +1133,11 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		if (setid >= _cur_grffile->spritegroups_count) {
 			_cur_grffile->spritegroups_count = setid + 1;
-			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
+			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
 		}
 
 		group = &_cur_grffile->spritegroups[setid];
-		memset(group, 0, sizeof(struct SpriteGroup));
+		memset(group, 0, sizeof(*group));
 		group->type = SGT_DETERMINISTIC;
 		dg = &group->g.determ;
 
@@ -1190,7 +1191,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		return;
 
 	} else if (numloaded == 0x80 || numloaded == 0x83) {
-		struct RandomizedSpriteGroup *rg;
+		RandomizedSpriteGroup *rg;
 		int i;
 
 		/* This stuff is getting actually evaluated in
@@ -1202,7 +1203,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		if (setid >= _cur_grffile->spritegroups_count) {
 			_cur_grffile->spritegroups_count = setid + 1;
-			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
+			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
 		}
 
 		group = &_cur_grffile->spritegroups[setid];
@@ -1268,10 +1269,10 @@ static void NewSpriteGroup(byte *buf, int len)
 
 	if (setid >= _cur_grffile->spritegroups_count) {
 		_cur_grffile->spritegroups_count = setid + 1;
-		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
+		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
 	}
 	group = &_cur_grffile->spritegroups[setid];
-	memset(group, 0, sizeof(struct SpriteGroup));
+	memset(group, 0, sizeof(*group));
 	group->type = SGT_REAL;
 	rg = &group->g.real;
 
@@ -1347,7 +1348,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 		for (i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
-			struct StationSpec *stat = &_cur_grffile->stations[stid];
+			StationSpec *stat = &_cur_grffile->stations[stid];
 			byte *bp = &buf[4 + idcount];
 
 			for (c = 0; c < cidcount; c++) {
@@ -1381,7 +1382,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			for (i = 0; i < idcount; i++) {
 				uint8 stid = buf[3 + i];
-				struct StationSpec *stat = &_cur_grffile->stations[stid];
+				StationSpec *stat = &_cur_grffile->stations[stid];
 
 				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
 				stat->grfid = _cur_grffile->grfid;
@@ -1639,7 +1640,7 @@ static void SkipIf(byte *buf, int len)
 			param_val = _opt.road_side << 4;
 			break;
 		case 0x88: {  /* see if specified GRFID is active */
-			struct GRFFile *file;
+			GRFFile *file;
 
 			file = GetFileByGRFID(cond_val);
 			param_val = (file != NULL);
@@ -1959,7 +1960,7 @@ static void GRFInhibit(byte *buf, int len)
 
 	for (i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
-		struct GRFFile *file = GetFileByGRFID(grfid);
+		GRFFile *file = GetFileByGRFID(grfid);
 
 		/* Unset activation flag */
 		if (file != NULL) {
@@ -1996,7 +1997,7 @@ static void InitializeGRFSpecial(void)
 
 void InitNewGRFFile(const char *filename, int sprite_offset)
 {
-	struct GRFFile *newfile;
+	GRFFile *newfile;
 
 	newfile = GetFileByFilename(filename);
 	if (newfile != NULL) {
@@ -2006,7 +2007,7 @@ void InitNewGRFFile(const char *filename, int sprite_offset)
 		return;
 	}
 
-	newfile = calloc(1, sizeof(struct GRFFile));
+	newfile = calloc(1, sizeof(*newfile));
 
 	if (newfile == NULL)
 		error ("Out of memory");

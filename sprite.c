@@ -6,7 +6,7 @@
 #include "sprite.h"
 
 
-struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup *dsg, int value)
+SpriteGroup *EvalDeterministicSpriteGroup(DeterministicSpriteGroup *dsg, int value)
 {
 	int i;
 
@@ -28,7 +28,7 @@ struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup
 	}
 
 	for (i = 0; i < dsg->num_ranges; i++) {
-		struct DeterministicSpriteGroupRange *range = &dsg->ranges[i];
+		DeterministicSpriteGroupRange *range = &dsg->ranges[i];
 
 		if (range->low <= value && value <= range->high)
 			return &range->group;
@@ -61,8 +61,7 @@ int GetDeterministicSpriteValue(byte var)
 	}
 }
 
-struct SpriteGroup *
-EvalRandomizedSpriteGroup(struct RandomizedSpriteGroup *rsg, byte random_bits)
+SpriteGroup *EvalRandomizedSpriteGroup(RandomizedSpriteGroup *rsg, byte random_bits)
 {
 	byte mask;
 	byte index;
@@ -76,8 +75,8 @@ EvalRandomizedSpriteGroup(struct RandomizedSpriteGroup *rsg, byte random_bits)
 	return &rsg->groups[index];
 }
 
-byte RandomizedSpriteGroupTriggeredBits(struct RandomizedSpriteGroup *rsg, byte triggers,
-                                        byte *waiting_triggers)
+byte RandomizedSpriteGroupTriggeredBits(RandomizedSpriteGroup *rsg,
+	byte triggers, byte *waiting_triggers)
 {
 	byte match = rsg->triggers & (*waiting_triggers | triggers);
 	bool res;

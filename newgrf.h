@@ -4,12 +4,13 @@
 #include "sprite.h"
 #include "station.h"
 
+typedef struct GRFFile GRFFile;
 struct GRFFile {
 	char *filename;
 	uint32 grfid;
 	uint16 flags;
 	uint16 sprite_offset;
-	struct GRFFile *next;
+	GRFFile *next;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
 	 * vehicles) when carrying given cargo. It consists of several sprite
@@ -28,13 +29,13 @@ struct GRFFile {
 	int spriteset_feature;
 
 	int spritegroups_count;
-	struct SpriteGroup *spritegroups;
+	SpriteGroup *spritegroups;
 
-	struct StationSpec stations[256];
+	StationSpec stations[256];
 };
 
 extern int _grffile_count;
-extern struct GRFFile *_first_grffile;
+extern GRFFile *_first_grffile;
 
 void InitNewGRFFile(const char *filename, int sprite_offset);
 void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage);

@@ -889,7 +889,7 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 }
 
 // stolen from TTDPatch
-static void GetStationLayout(byte *layout, int numtracks, int plat_len, struct StationSpec *spec)
+static void GetStationLayout(byte *layout, int numtracks, int plat_len, StationSpec *spec)
 {
 	if (spec != NULL && spec->lengths >= plat_len &&
 			spec->platforms[plat_len - 1] >= numtracks &&
@@ -1018,7 +1018,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		int tile_delta;
 		byte *layout_ptr;
 		uint station_index = st->index;
-		struct StationSpec *statspec;
+		StationSpec *statspec;
 
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
@@ -1169,11 +1169,11 @@ uint GetStationPlatforms(Station *st, uint tile)
 /* TODO: Custom classes! */
 /* Indexed by class, just STAT_CLASS_DFLT and STAT_CLASS_WAYP supported. */
 static int _statspec_highest_id[2] = {-1, -1};
-static struct StationSpec _station_spec[2][256];
+static StationSpec _station_spec[2][256];
 
-void SetCustomStation(byte local_stid, struct StationSpec *spec)
+void SetCustomStation(byte local_stid, StationSpec *spec)
 {
-	enum StationClass sclass;
+	StationClass sclass;
 	int stid = -1;
 
 	assert(spec->sclass == STAT_CLASS_DFLT || spec->sclass == STAT_CLASS_WAYP);
@@ -1209,7 +1209,7 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 	memcpy(&_station_spec[sclass][stid], spec, sizeof(*spec));
 }
 
-struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid)
+StationSpec *GetCustomStation(StationClass sclass, byte stid)
 {
 	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
 	sclass--;
@@ -1219,16 +1219,15 @@ struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid)
 	return &_station_spec[sclass][stid];
 }
 
-static struct RealSpriteGroup *
-ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
+static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Station *stat)
 {
 	switch (spritegroup->type) {
 		case SGT_REAL:
 			return &spritegroup->g.real;
 
 		case SGT_DETERMINISTIC: {
-			struct DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
-			struct SpriteGroup *target;
+			DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			SpriteGroup *target;
 			int value = -1;
 
 			if ((dsg->variable >> 6) == 0) {
@@ -1300,9 +1299,9 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 	}
 }
 
-uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype)
+uint32 GetCustomStationRelocation(StationSpec *spec, Station *stat, byte ctype)
 {
-	struct RealSpriteGroup *rsg;
+	RealSpriteGroup *rsg;
 
 	rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], stat);
 
@@ -1322,7 +1321,7 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 	return 0x42D;
 }
 
-int GetCustomStationsCount(enum StationClass sclass)
+int GetCustomStationsCount(StationClass sclass)
 {
 	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
 	sclass--;
@@ -2102,7 +2101,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (_map3_lo[ti->tile] & 0x10) {
 		// look for customization
-		struct StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _map3_hi[ti->tile]);
+		StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _map3_hi[ti->tile]);
 
 		//debug("Cust-o-mized %p", statspec);
 

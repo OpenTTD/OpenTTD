@@ -27,9 +27,9 @@ typedef struct DrawTileSprites {
 /* This is for custom sprites: */
 
 
-struct SpriteGroup;
+typedef struct SpriteGroup SpriteGroup;
 
-struct RealSpriteGroup {
+typedef struct RealSpriteGroup {
 	// XXX: Would anyone ever need more than 16 spritesets? Maybe we should
 	// use even less, now we take whole 8kb for custom sprites table, oh my!
 	byte sprites_per_set; // means number of directions - 4 or 8
@@ -45,20 +45,28 @@ struct RealSpriteGroup {
 	uint16 loaded[16]; // sprite ids
 	byte loading_count;
 	uint16 loading[16]; // sprite ids
-};
+} RealSpriteGroup;
 
 /* Shared by deterministic and random groups. */
-enum VarSpriteGroupScope {
+typedef enum VarSpriteGroupScope {
 	VSG_SCOPE_SELF,
 	// Engine of consists for vehicles, city for stations.
 	VSG_SCOPE_PARENT,
-};
+} VarSpriteGroupScope;
 
-struct DeterministicSpriteGroupRanges;
+typedef struct DeterministicSpriteGroupRanges DeterministicSpriteGroupRanges;
 
-struct DeterministicSpriteGroup {
+typedef enum DeterministicSpriteGroupOperation {
+	DSG_OP_NONE,
+	DSG_OP_DIV,
+	DSG_OP_MOD,
+} DeterministicSpriteGroupOperation;
+
+typedef struct DeterministicSpriteGroupRange DeterministicSpriteGroupRange;
+
+typedef struct DeterministicSpriteGroup {
 	// Take this variable:
-	enum VarSpriteGroupScope var_scope;
+	VarSpriteGroupScope var_scope;
 	byte variable;
 
 	// Do this with it:
@@ -66,31 +74,29 @@ struct DeterministicSpriteGroup {
 	byte and_mask;
 
 	// Then do this with it:
-	enum DeterministicSpriteGroupOperation {
-		DSG_OP_NONE,
-		DSG_OP_DIV,
-		DSG_OP_MOD,
-	} operation;
+	DeterministicSpriteGroupOperation operation;
 	byte add_val;
 	byte divmod_val;
 
 	// And apply it to this:
 	byte num_ranges;
-	struct DeterministicSpriteGroupRange *ranges; // Dynamically allocated
+	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
 	// Dynamically allocated, this is the sole owner
-	struct SpriteGroup *default_group;
-};
+	SpriteGroup *default_group;
+} DeterministicSpriteGroup;
 
-struct RandomizedSpriteGroup {
+typedef enum RandomizedSpriteGroupCompareMode {
+	RSG_CMP_ANY,
+	RSG_CMP_ALL,
+} RandomizedSpriteGroupCompareMode;
+
+typedef struct RandomizedSpriteGroup {
 	// Take this object:
-	enum VarSpriteGroupScope var_scope;
+	VarSpriteGroupScope var_scope;
 
 	// Check for these triggers:
-	enum RandomizedSpriteGroupCompareMode {
-		RSG_CMP_ANY,
-		RSG_CMP_ALL,
-	} cmp_mode;
+	RandomizedSpriteGroupCompareMode cmp_mode;
 	byte triggers;
 
 	// Look for this in the per-object randomized bitmask:
@@ -98,25 +104,27 @@ struct RandomizedSpriteGroup {
 	byte num_groups; // must be power of 2
 
 	// Take the group with appropriate index:
-	struct SpriteGroup *groups;
-};
+	SpriteGroup *groups;
+} RandomizedSpriteGroup;
+
+typedef enum SpriteGroupType {
+	SGT_REAL,
+	SGT_DETERMINISTIC,
+	SGT_RANDOMIZED,
+} SpriteGroupType;
 
 struct SpriteGroup {
-	enum SpriteGroupType {
-		SGT_REAL,
-		SGT_DETERMINISTIC,
-		SGT_RANDOMIZED,
-	} type;
+	SpriteGroupType type;
 
 	union {
-		struct RealSpriteGroup real;
-		struct DeterministicSpriteGroup determ;
-		struct RandomizedSpriteGroup random;
+		RealSpriteGroup real;
+		DeterministicSpriteGroup determ;
+		RandomizedSpriteGroup random;
 	} g;
 };
 
 struct DeterministicSpriteGroupRange {
-	struct SpriteGroup group;
+	SpriteGroup group;
 	byte low;
 	byte high;
 };
@@ -131,10 +139,10 @@ int GetDeterministicSpriteValue(byte var);
 /* This takes randomized bitmask (probably associated with
  * vehicle/station/whatever) and chooses corresponding SpriteGroup
  * accordingly to the given RandomizedSpriteGroup. */
-struct SpriteGroup *EvalRandomizedSpriteGroup(struct RandomizedSpriteGroup *rsg, byte random_bits);
+SpriteGroup *EvalRandomizedSpriteGroup(RandomizedSpriteGroup *rsg, byte random_bits);
 /* Triggers given RandomizedSpriteGroup with given bitmask and returns and-mask
  * of random bits to be reseeded, or zero if there were no triggers matched
  * (then they are |ed to @waiting_triggers instead). */
-byte RandomizedSpriteGroupTriggeredBits(struct RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
+byte RandomizedSpriteGroupTriggeredBits(RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
 
 #endif

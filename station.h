@@ -187,22 +187,24 @@ uint GetStationPlatforms(Station *st, uint tile);
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
 
-struct StationSpec {
+typedef enum StationClass {
+	STAT_CLASS_NONE, // unused station slot or so
+	STAT_CLASS_DFLT, // default station class
+	STAT_CLASS_WAYP, // waypoints
+
+	/* TODO: When we actually support custom classes, they are
+	 * going to be allocated dynamically (with some classid->sclass
+	 * mapping, there's a TTDPatch limit on 16 custom classes in
+	 * the whole game at the same time) with base at
+	 * STAT_CLASS_CUSTOM. --pasky */
+	STAT_CLASS_CUSTOM, // some custom class
+} StationClass;
+
+typedef struct StationSpec {
 	uint32 grfid;
 	int localidx; // per-GRFFile station index + 1; SetCustomStation() takes care of this
 
-	enum StationClass {
-		STAT_CLASS_NONE, // unused station slot or so
-		STAT_CLASS_DFLT, // default station class
-		STAT_CLASS_WAYP, // waypoints
-
-		/* TODO: When we actually support custom classes, they are
-		 * going to be allocated dynamically (with some classid->sclass
-		 * mapping, there's a TTDPatch limit on 16 custom classes in
-		 * the whole game at the same time) with base at
-		 * STAT_CLASS_CUSTOM. --pasky */
-		STAT_CLASS_CUSTOM, // some custom class
-	} sclass;
+	StationClass sclass;
 
 	/* Bitmask of platform numbers/lengths available for the station.  Bits
 	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms or
@@ -241,22 +243,22 @@ struct StationSpec {
 
 	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
 	 * whilst spritegroup[1] is "CID_PURCHASE". */
-	struct SpriteGroup spritegroup[2];
-};
+	SpriteGroup spritegroup[2];
+} StationSpec;
 
 /* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet
  * set, it gets new dynamically allocated global index and spec->localidx is
  * set to @stid, otherwise we take it as that we are replacing it and try to
  * search for it first (that isn't much fast but we do it only very seldom). */
-void SetCustomStation(byte stid, struct StationSpec *spec);
+void SetCustomStation(byte stid, StationSpec *spec);
 /* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
  * (lookup is therefore very fast as we do this very frequently). */
-struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid);
+StationSpec *GetCustomStation(StationClass sclass, byte stid);
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
-uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype);
-int GetCustomStationsCount(enum StationClass sclass);
+uint32 GetCustomStationRelocation(StationSpec *spec, Station *stat, byte ctype);
+int GetCustomStationsCount(StationClass sclass);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 static inline int GetRoadStopType(TileIndex tile)

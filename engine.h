@@ -103,7 +103,7 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 
-enum VehicleTrigger {
+typedef enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO = 1,
 	// Externally triggered only for the first vehicle in chain
 	VEHICLE_TRIGGER_DEPOT = 2,
@@ -111,8 +111,8 @@ enum VehicleTrigger {
 	VEHICLE_TRIGGER_EMPTY = 4,
 	// Not triggered externally (called for the whole chain if we got NEW_CARGO)
 	VEHICLE_TRIGGER_ANY_NEW_CARGO = 8,
-};
-void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger);
+} VehicleTrigger;
+void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
 void SetCustomEngineName(int engine, const char *name);
 StringID GetCustomEngineName(int engine);

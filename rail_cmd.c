@@ -1630,7 +1630,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_WAYPOINT(m5) && _map3_lo[ti->tile]&16) {
 			// look for customization
-			struct StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _map3_hi[ti->tile]);
+			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _map3_hi[ti->tile]);
 
 			if (stat) {
 				DrawTileSeqStruct const *seq;
@@ -1718,7 +1718,7 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 
 void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 {
-	struct StationSpec *stat;
+	StationSpec *stat;
 	uint32 relocation;
 	DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;

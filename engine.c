@@ -205,27 +205,29 @@ uint32 _engine_refit_masks[TOTAL_NUM_ENGINES];
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
 
-struct WagonOverride {
+typedef struct WagonOverride {
 	byte *train_id;
 	int trains;
-	struct SpriteGroup group;
-};
+	SpriteGroup group;
+} WagonOverride;
 
-static struct WagonOverrides {
+typedef struct WagonOverrides {
 	int overrides_count;
-	struct WagonOverride *overrides;
-} _engine_wagon_overrides[TOTAL_NUM_ENGINES];
+	WagonOverride *overrides;
+} WagonOverrides;
 
-void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group,
-                             byte *train_id, int trains)
+static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
+
+void SetWagonOverrideSprites(byte engine, SpriteGroup *group, byte *train_id,
+	int trains)
 {
-	struct WagonOverrides *wos;
-	struct WagonOverride *wo;
+	WagonOverrides *wos;
+	WagonOverride *wo;
 
 	wos = &_engine_wagon_overrides[engine];
 	wos->overrides_count++;
 	wos->overrides = realloc(wos->overrides,
-	                         wos->overrides_count * sizeof(struct WagonOverride));
+		wos->overrides_count * sizeof(*wos->overrides));
 
 	wo = &wos->overrides[wos->overrides_count - 1];
 	/* FIXME: If we are replacing an override, release original SpriteGroup
@@ -237,9 +239,9 @@ void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group,
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static struct SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
+static SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
 {
-	struct WagonOverrides *wos = &_engine_wagon_overrides[engine];
+	WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
 
 	// XXX: This could turn out to be a timesink on profiles. We could
@@ -248,7 +250,7 @@ static struct SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overridin
 	// that. --pasky
 
 	for (i = 0; i < wos->overrides_count; i++) {
-		struct WagonOverride *wo = &wos->overrides[i];
+		WagonOverride *wo = &wos->overrides[i];
 		int j;
 
 		for (j = 0; j < wo->trains; j++) {
@@ -265,9 +267,9 @@ byte _engine_original_sprites[TOTAL_NUM_ENGINES];
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static struct SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CID];
+static SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CID];
 
-void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
+void SetCustomEngineSprites(byte engine, byte cargo, SpriteGroup *group)
 {
 	/* FIXME: If we are replacing an override, release original SpriteGroup
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
@@ -275,11 +277,11 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
-typedef struct RealSpriteGroup *(*resolve_callback)(
-	struct SpriteGroup *spritegroup, const Vehicle *veh, void *callback); /* XXX data pointer used as function pointer */
+typedef RealSpriteGroup *(*resolve_callback)(SpriteGroup *spritegroup,
+	const Vehicle *veh, void *callback); /* XXX data pointer used as function pointer */
 
-static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
-	struct SpriteGroup *spritegroup, const Vehicle *veh, resolve_callback callback)
+static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
+	const Vehicle *veh, resolve_callback callback)
 {
 	//debug("spgt %d", spritegroup->type);
 	switch (spritegroup->type) {
@@ -287,8 +289,8 @@ static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
 			return &spritegroup->g.real;
 
 		case SGT_DETERMINISTIC: {
-			struct DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
-			struct SpriteGroup *target;
+			DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			SpriteGroup *target;
 			int value = -1;
 
 			//debug("[%p] Having fun resolving variable %x", veh, dsg->variable);
@@ -296,7 +298,6 @@ static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
 			if ((dsg->variable >> 6) == 0) {
 				/* General property */
 				value = GetDeterministicSpriteValue(dsg->variable);
-
 			} else {
 				/* Vehicle-specific property. */
 
@@ -434,7 +435,7 @@ static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
 		}
 
 		case SGT_RANDOMIZED: {
-			struct RandomizedSpriteGroup *rsg = &spritegroup->g.random;
+			RandomizedSpriteGroup *rsg = &spritegroup->g.random;
 
 			if (veh == NULL) {
 				/* Purchase list of something. Show the first one. */
@@ -458,9 +459,9 @@ static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
 	}
 }
 
-static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
+static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 {
-	struct SpriteGroup *group;
+	SpriteGroup *group;
 	uint16 overriding_engine = -1;
 	byte cargo = CID_PURCHASE;
 
@@ -472,10 +473,9 @@ static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 	group = &_engine_custom_sprites[engine][cargo];
 
 	if (overriding_engine != 0xffff) {
-		struct SpriteGroup *overset;
+		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, overriding_engine);
 
-		overset = GetWagonOverrideSpriteSet(engine, overriding_engine);
-		if (overset) group = overset;
+		if (overset != NULL) group = overset;
 	}
 
 	return group;
@@ -483,8 +483,8 @@ static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 
 int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 {
-	struct SpriteGroup *group;
-	struct RealSpriteGroup *rsg;
+	SpriteGroup *group;
+	RealSpriteGroup *rsg;
 	byte cargo = CID_PURCHASE;
 	byte loaded = 0;
 	bool in_motion = 0;
@@ -548,21 +548,23 @@ static byte _vsg_bits_to_reseed;
 
 extern int _custom_sprites_base;
 
-static struct RealSpriteGroup *
-TriggerVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
-			  resolve_callback callback)
+static RealSpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
+	Vehicle *veh, resolve_callback callback)
 {
-	if (spritegroup->type == SGT_RANDOMIZED)
-		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(&spritegroup->g.random,
-		                                                         _vsg_random_triggers,
-		                                                         &veh->waiting_triggers);
+	if (spritegroup->type == SGT_RANDOMIZED) {
+		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(
+			&spritegroup->g.random,
+			_vsg_random_triggers,
+			&veh->waiting_triggers
+		);
+	}
 
 	return ResolveVehicleSpriteGroup(spritegroup, veh, callback);
 }
 
-static void DoTriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger, byte base_random_bits, bool first)
+static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
-	struct RealSpriteGroup *rsg;
+	RealSpriteGroup *rsg;
 	byte new_random_bits;
 
 	_vsg_random_triggers = trigger;
@@ -615,7 +617,7 @@ static void DoTriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger, byte bas
 	}
 }
 
-void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger)
+void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger)
 {
 	DoTriggerVehicle(veh, trigger, 0, true);
 }

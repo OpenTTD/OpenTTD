@@ -1194,7 +1194,7 @@ void ShowPatchesSelection(void)
 	AllocateWindowDesc(&_patches_selection_desc);
 }
 
-struct GRFFile *_sel_grffile;
+GRFFile *_sel_grffile;
 
 enum {
 	NEWGRF_WND_PROC_OFFSET_TOP_WIDGET = 14,
@@ -1207,7 +1207,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int x, y = NEWGRF_WND_PROC_OFFSET_TOP_WIDGET;
 		uint16 i = 0;
-		struct GRFFile *c = _first_grffile;
+		GRFFile *c = _first_grffile;
 
 		DrawWindowWidgets(w);
 
@@ -1323,7 +1323,8 @@ void ShowNewgrf(void)
 
 	{ // little helper function to calculate _grffile_count
 	  // should be REMOVED once _grffile_count is calculated at loading
-		struct GRFFile *c = _first_grffile;
+		GRFFile *c = _first_grffile;
+
 		_grffile_count = 0;
 		while (c != NULL) {
 			_grffile_count++;
