@@ -53,7 +53,7 @@ STR_002F_PASSENGER						:Passagier
 STR_0030_COAL							:Kohle
 STR_0031_MAIL							:Post
 STR_0032_OIL							:Öl
-STR_0033_LIVESTOCK						:Vieh 
+STR_0033_LIVESTOCK						:Vieh
 STR_0034_GOODS							:Waren
 STR_0035_GRAIN							:Getreide
 STR_0036_WOOD							:Holz
@@ -104,9 +104,9 @@ STR_0062_TON_OF_WHEAT					:{COMMA16} Tonne Weizen
 STR_0063_OF_RUBBER						:{VOLUME}  Kautschuk
 STR_0064_TON_OF_SUGAR					:{COMMA16} Tonne Zucker
 STR_0065_TOY							:{COMMA16} Spiel
-STR_0066_BAG_OF_CANDY					:{COMMA16} Sack mit Bonbons 
+STR_0066_BAG_OF_CANDY					:{COMMA16} Sack mit Bonbons
 STR_0067_OF_COLA						:{VOLUME}  Cola
-STR_0068_TON_OF_COTTON_CANDY			:{COMMA16} Tonne Zuckerwatte 
+STR_0068_TON_OF_COTTON_CANDY			:{COMMA16} Tonne Zuckerwatte
 STR_0069_BUBBLE							:{COMMA16} Luftblase
 STR_006A_TON_OF_TOFFEE					:{COMMA16} Tonne Karamell
 STR_006B_BATTERY						:{COMMA16} Batterie
@@ -134,11 +134,11 @@ STR_0080_BAGS_OF_GOLD					:{COMMA16} Säcke mit Gold
 STR_0081_OF_WATER						:{VOLUME}  Wasser
 STR_0082_TONS_OF_WHEAT					:{COMMA16} Tonnen Weizen
 STR_0083_OF_RUBBER						:{VOLUME}  Kautschuk
-STR_0084_TONS_OF_SUGAR					:{COMMA16} Tonnen Zucker 
+STR_0084_TONS_OF_SUGAR					:{COMMA16} Tonnen Zucker
 STR_0085_TOYS							:{COMMA16} Spielwaren
-STR_0086_BAGS_OF_CANDY					:{COMMA16} Tonnen Bonbons 
+STR_0086_BAGS_OF_CANDY					:{COMMA16} Tonnen Bonbons
 STR_0087_OF_COLA						:{VOLUME}  Cola
-STR_0088_TONS_OF_COTTON_CANDY			:{COMMA16} Tonnen Zuckerwatte 
+STR_0088_TONS_OF_COTTON_CANDY			:{COMMA16} Tonnen Zuckerwatte
 STR_0089_BUBBLES						:{COMMA16} Luftblasen
 STR_008A_TONS_OF_TOFFEE					:{COMMA16} Tonnen Karamell
 STR_008B_BATTERIES						:{COMMA16} Batterien
@@ -218,7 +218,7 @@ STR_00DD_ORANGE							:Orange
 STR_00DE_BROWN							:Braun
 STR_00DF_GREY							:Grau
 STR_00E0_WHITE							:Weiß
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME		:{WHITE}Zu viele Fahrzeuge im Spiel 
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME		:{WHITE}Zu viele Fahrzeuge im Spiel
 STR_00E2								:{BLACK}{COMMA16}
 STR_00E3								:{RED}{COMMA16}
 STR_00E4_LOCATION						:{BLACK}Standort
@@ -317,7 +317,7 @@ STR_013E_TOTAL_CARGO				:{BLACK}Frachtübersicht
 STR_013F_CAPACITY						:{BLACK}Kapazität: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT:{BLACK}Frachtkapazität dieses Zuges:
 STR_013F_TOTAL_CAPACITY			:{LTBLUE}{CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME						:{BLACK}Neues Spiel 
+STR_0140_NEW_GAME						:{BLACK}Neues Spiel
 STR_0141_LOAD_GAME						:{BLACK}Spiel laden
 STR_0142_TUTORIAL_DEMONSTRATION			:{BLACK}Einführung / Demonstration
 STR_0143_1_PLAYER						:{BLACK}1 Spieler
@@ -376,10 +376,10 @@ STR_0177_DISPLAY_COMPANY_FINANCES		:{BLACK}Firmenfinanzen anzeigen
 STR_0178_DISPLAY_COMPANY_GENERAL		:{BLACK}Allgemeine Firmeninformationen anzeigen
 STR_0179_DISPLAY_GRAPHS					:{BLACK}Diagramm anzeigen
 STR_017A_DISPLAY_COMPANY_LEAGUE			:{BLACK}Firmentabelle anzeigen
-STR_017B_DISPLAY_LIST_OF_COMPANY		:{BLACK}Zugliste der Firmen 
-STR_017C_DISPLAY_LIST_OF_COMPANY		:{BLACK}Fahrzeugliste der Firmen 
-STR_017D_DISPLAY_LIST_OF_COMPANY		:{BLACK}Schiffsliste der Firmen 
-STR_017E_DISPLAY_LIST_OF_COMPANY		:{BLACK}Flugzeugliste der Firmen 
+STR_017B_DISPLAY_LIST_OF_COMPANY		:{BLACK}Zugliste der Firmen
+STR_017C_DISPLAY_LIST_OF_COMPANY		:{BLACK}Fahrzeugliste der Firmen
+STR_017D_DISPLAY_LIST_OF_COMPANY		:{BLACK}Schiffsliste der Firmen
+STR_017E_DISPLAY_LIST_OF_COMPANY		:{BLACK}Flugzeugliste der Firmen
 STR_017F_ZOOM_THE_VIEW_IN				:{BLACK}Heranzoomen (vergrößern)
 STR_0180_ZOOM_THE_VIEW_OUT				:{BLACK}Wegzoomen (verkleinern)
 STR_0181_BUILD_RAILROAD_TRACK			:{BLACK}Gleise legen
@@ -418,7 +418,7 @@ STR_019D_AIRCRAFT						:Flugzeug
 STR_019E_SHIP							:Schiff
 STR_019F_TRAIN							:Zug
 STR_01A0_IS_GETTING_OLD					:{WHITE}{STRING} {COMMA16} kommt in die Jahre
-STR_01A1_IS_GETTING_VERY_OLD			:{WHITE}{STRING} {COMMA16} ist veraltet 
+STR_01A1_IS_GETTING_VERY_OLD			:{WHITE}{STRING} {COMMA16} ist veraltet
 STR_01A2_IS_GETTING_VERY_OLD_AND		:{WHITE}{STRING} {COMMA16} ist völlig veraltet und sollte ersetzt werden
 STR_01A3_LAND_AREA_INFORMATION			:{WHITE}Gebiets-Information
 STR_01A4_COST_TO_CLEAR_N_A				:{BLACK}Kosten für die Räumung: {LTBLUE}N/A
@@ -484,7 +484,7 @@ STR_01D7_NEW_STYLE						:{TINYFONT}Modern
 STR_01D8_EZY_STREET						:{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1						:{TINYFONT}Individuell 1
 STR_01DA_CUSTOM_2						:{TINYFONT}Individuell 2
-STR_01DB_MUSIC_VOLUME					:{BLACK}{TINYFONT}Musiklautstärke 
+STR_01DB_MUSIC_VOLUME					:{BLACK}{TINYFONT}Musiklautstärke
 STR_01DC_EFFECTS_VOLUME					:{BLACK}{TINYFONT}Soundlautstärke
 STR_01DD_MIN_MAX						:{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK			:{BLACK}Springe zum vorherigen Titel
@@ -537,7 +537,7 @@ STR_020B_ADVICE_INFORMATION_ON_PLAYER	:{YELLOW}Rat / Informationen zu Fahrzeugen
 STR_020C_NEW_VEHICLES					:{YELLOW}Neue Fahrzeuge
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE	:{YELLOW}Änderungen akzeptierter Fracht
 STR_020E_SUBSIDIES						:{YELLOW}Subventionen
-STR_020F_GENERAL_INFORMATION			:{YELLOW}Allgemeine Nachrichten 
+STR_020F_GENERAL_INFORMATION			:{YELLOW}Allgemeine Nachrichten
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO:{WHITE}...zu weit vom vorherigen Bestimmungsort entfernt
 STR_0211_TOP_COMPANIES_WHO_REACHED		:{BIGFONT}{BLACK}Die besten Firmen, die das Jahr 2050 erreichten{}({STRING} Level)
 STR_0212								:{BIGFONT}{COMMA16}.
@@ -584,7 +584,7 @@ STR_023A_TOO_MANY_TOWNS					:{WHITE}...zu viele Städte
 STR_023B_INCREASE_SIZE_OF_TOWN			:{BLACK}Vergrößerere die Stadt
 STR_023C_EXPAND							:{BLACK}Ausdehnen
 STR_023D_RANDOM_TOWN					:{BLACK}Zufällige Stadt
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION	:{BLACK}Stadt an zufälligem Platz errichten 
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION	:{BLACK}Stadt an zufälligem Platz errichten
 STR_023F_INDUSTRY_GENERATION			:{WHITE}Industrie errichten
 STR_0240_COAL_MINE						:{BLACK}Kohlebergwerk
 STR_0241_POWER_STATION					:{BLACK}Kraftwerk
@@ -695,7 +695,7 @@ STR_02B8_SUMMARY						:{BLACK}Ticker
 STR_02B9_FULL							:{BLACK}Zeitung
 STR_02BA								:{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY					:Städteverzeichnis
-STR_02BC_VEHICLE_DESIGN_NAMES			:{BLACK}Fahrzeugnamen 
+STR_02BC_VEHICLE_DESIGN_NAMES			:{BLACK}Fahrzeugnamen
 STR_02BD								:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standard
 STR_02BF_CUSTOM							:Eigene
@@ -747,7 +747,7 @@ STR_02E1								:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION		:{BLACK}Währung auswählen
 STR_02E3_DISTANCE_UNITS					:{BLACK}Entfernungsmessung
 STR_02E4								:{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION		:{BLACK}Wähle Entfernungsmessung in 
+STR_02E5_DISTANCE_UNITS_SELECTION		:{BLACK}Wähle Entfernungsmessung in
 STR_02E6_ROAD_VEHICLES					:{BLACK}Fahrzeuge
 STR_02E7								:{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR		:{BLACK}Wähle auf welcher Straßenseite der Verkehr fließen soll
@@ -755,7 +755,7 @@ STR_02E9_DRIVE_ON_LEFT					:Linksverkehr
 STR_02EA_DRIVE_ON_RIGHT					:Rechtsverkehr
 STR_02EB_TOWN_NAMES						:{BLACK}Städtenamen
 STR_02EC								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES		:{BLACK}Wähle Städtenamen in 
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES		:{BLACK}Wähle Städtenamen in
 
 STR_02F4_AUTOSAVE						:{BLACK}Auto-Sicherung
 STR_02F5								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -782,7 +782,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}'gemässigte' Landschaft auswählen
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}'subarktische' Landschaft auswählen
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE	:{BLACK}'subtropische' Landschaft auswählen
 STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}'fantastische' Landschaft auswählen
-STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Errichtung und Finanzierung einer neuen Industrie 
+STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Errichtung und Finanzierung einer neuen Industrie
 
 ############ range for menu	starts
 STR_0313_FUND_NEW_INDUSTRY				:Neue Industrie finanzieren
@@ -1087,7 +1087,7 @@ STR_0810_DESERT							:Wüste
 
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Das Land neigt sich in die falsche Richtung
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION	:{WHITE}Unmögliche Gleisverbindung 
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION	:{WHITE}Unmögliche Gleisverbindung
 STR_1002_EXCAVATION_WOULD_DAMAGE		:{WHITE}Die Ausschachtung würde den Tunnel zerstören
 STR_1003_ALREADY_AT_SEA_LEVEL			:{WHITE}Ist bereits auf Meereshöhe
 STR_1004_TOO_HIGH						:{WHITE}Zu hoch
@@ -1169,7 +1169,7 @@ STR_2007_RENAME_TOWN					:Stadt umbenennen
 STR_2008_CAN_T_RENAME_TOWN				:{WHITE}Die Stadt kann nicht umbenannt werden...
 STR_2009_LOCAL_AUTHORITY_REFUSES		:{WHITE}{TOWN} Die Stadtverwaltung erteilt keine Genehmigung
 STR_200A_TOWN_NAMES_CLICK_ON_NAME		:{BLACK}Städtenamen - klicke auf den Namen, um die Stadt anzuzeigen
-STR_200B_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Ansicht auf Stadt zentrieren 
+STR_200B_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Ansicht auf Stadt zentrieren
 STR_200C_CHANGE_TOWN_NAME				:{BLACK}Stadt umbenennen
 STR_200D_PASSENGERS_LAST_MONTH_MAX		:{BLACK}Passagiere letzten Monat:  {ORANGE}{COMMA16}{BLACK}  max:  {ORANGE}{COMMA16}
 STR_200E_MAIL_LAST_MONTH_MAX			:{BLACK}Post letzten Monat: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
@@ -1185,7 +1185,7 @@ STR_2017_FOUNTAIN						:Springbrunnen
 STR_2018_PARK							:Park
 STR_2019_OFFICE_BLOCK					:Geschäftshaus
 STR_201A_SHOPS_AND_OFFICES				:Läden und Büros
-STR_201B_MODERN_OFFICE_BUILDING			:Modernes Geschäftshaus 
+STR_201B_MODERN_OFFICE_BUILDING			:Modernes Geschäftshaus
 STR_201C_WAREHOUSE						:Kaufhaus
 STR_201D_OFFICE_BLOCK					:Geschäftshaus
 STR_201E_STADIUM						:Stadion
@@ -1229,7 +1229,7 @@ STR_2043_LIST_OF_THINGS_TO_DO_AT		:{BLACK}Liste der verfügbaren Handlungen in di
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED		:{BLACK}Ausführung der markierten Handlung
 STR_2045_ACTIONS_AVAILABLE				:{BLACK}Verfügbare Handlungen:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN		:Kleine Werbekampagne
-STR_2047_MEDIUM_ADVERTISING_CAMPAIGN	:Mittlere Werbekampagne 
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN	:Mittlere Werbekampagne
 STR_2048_LARGE_ADVERTISING_CAMPAIGN		:Große Werbekampagne
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION	:Straßenreparaturen des Ortes finanzieren
 STR_204A_BUILD_STATUE_OF_COMPANY		:Statue des Transporteigentümers finanzieren
@@ -1379,9 +1379,9 @@ STR_4007_GAME_SAVE_FAILED				:{WHITE}Spielspeicherung fehlgeschlagen
 STR_4008_UNABLE_TO_DELETE_FILE			:{WHITE}Datei kann nicht gelöscht werden
 STR_4009_GAME_LOAD_FAILED				:{WHITE}Laden des Spieles fehlgeschlagen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES		:{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
-STR_400B_CURRENTLY_SELECTED_NAME		:{BLACK}Ausgewählter Spielname 
-STR_400C_DELETE_THE_CURRENTLY_SELECTED	:{BLACK}Lösche gewählten Spielstand 
-STR_400D_SAVE_THE_CURRENT_GAME_USING	:{BLACK}Speichere das Spiel unter dem gewählten Namen 
+STR_400B_CURRENTLY_SELECTED_NAME		:{BLACK}Ausgewählter Spielname
+STR_400C_DELETE_THE_CURRENTLY_SELECTED	:{BLACK}Lösche gewählten Spielstand
+STR_400D_SAVE_THE_CURRENT_GAME_USING	:{BLACK}Speichere das Spiel unter dem gewählten Namen
 STR_400E_SELECT_NEW_GAME_TYPE			:{WHITE}Neues Spiel auswählen
 STR_400F_SELECT_SCENARIO_GREEN_PRE		:{BLACK}Wähle Szenario (grün), vorgegebens Spiel (blau), oder ein Spiel nach dem Zufallsprinzip
 STR_4010_GENERATE_RANDOM_NEW_GAME		:Spiel nach Zufallsprinzip erstellen
@@ -1681,25 +1681,25 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Kredites aufnehmen
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Kredites abzahlen
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Manager)
 STR_7038_INAUGURATED					:{GOLD}Gegründet: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Fahrzeuge: 
+STR_7039_VEHICLES						:{GOLD}Fahrzeuge:
 STR_703A_TRAIN							:{WHITE}{COMMA16} Zug
 STR_703B_TRAINS							:{WHITE}{COMMA16} Züge
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} Fahrzeug
 STR_703D_ROAD_VEHICLES					:{WHITE}{COMMA16} Fahrzeuge
-STR_703E_AIRCRAFT						:{WHITE}{COMMA16} Flugzeug 
+STR_703E_AIRCRAFT						:{WHITE}{COMMA16} Flugzeug
 STR_703F_AIRCRAFT						:{WHITE}{COMMA16} Flugzeuge
-STR_7040_SHIP							:{WHITE}{COMMA16} Schiff 
+STR_7040_SHIP							:{WHITE}{COMMA16} Schiff
 STR_7041_SHIPS							:{WHITE}{COMMA16} Schiffe
 STR_7042_NONE							:{WHITE}Keine
 STR_7043_FACE_SELECTION					:{WHITE}Gesicht auswählen
 STR_7044_MALE							:{BLACK}Männlich
 STR_7045_FEMALE							:{BLACK}Weiblich
-STR_7046_NEW_FACE						:{BLACK}Neues Gesicht 
+STR_7046_NEW_FACE						:{BLACK}Neues Gesicht
 STR_7047_CANCEL_NEW_FACE_SELECTION		:{BLACK}Gesichtswahl abbrechen
 STR_7048_ACCEPT_NEW_FACE_SELECTION		:{BLACK}Gesichtswahl übernehmen
-STR_7049_SELECT_MALE_FACES				:{BLACK}Wähle männliches Gesicht aus 
-STR_704A_SELECT_FEMALE_FACES			:{BLACK}Wähle weibliches Gesicht aus 
-STR_704B_GENERATE_RANDOM_NEW_FACE		:{BLACK}Wähle zufälliges neues Gesicht 
+STR_7049_SELECT_MALE_FACES				:{BLACK}Wähle männliches Gesicht aus
+STR_704A_SELECT_FEMALE_FACES			:{BLACK}Wähle weibliches Gesicht aus
+STR_704B_GENERATE_RANDOM_NEW_FACE		:{BLACK}Wähle zufälliges neues Gesicht
 STR_704C_KEY							:{BLACK}Schlüssel
 STR_704D_SHOW_KEY_TO_GRAPHS				:{BLACK}Aufschlüsselung für Diagramm
 STR_704E_KEY_TO_COMPANY_GRAPHS			:{WHITE}Schlüssel für Firmen - Diagramm
@@ -1715,7 +1715,7 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED	:{BLACK}{BIGFONT}{STRING} Falls die Firmen
 STR_7058_PRESIDENT						:{BLACK}{STRING}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER		:{BLACK}{BIGFONT}Transportfirmen fusionieren!
 STR_705A_HAS_BEEN_SOLD_TO_FOR			:{BLACK}{BIGFONT}{STRING} ist verkauft worden an {STRING} für {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT	:{WHITE}Wir suchen jemanden, der die Firma übernimmt.{}{}Nehmen Sie das Angebot an und kaufen {STRING} für {CURRENCY}? 
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT	:{WHITE}Wir suchen jemanden, der die Firma übernimmt.{}{}Nehmen Sie das Angebot an und kaufen {STRING} für {CURRENCY}?
 STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Insolvenz !!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY		:{BLACK}{BIGFONT}{STRING} ist von den Gläubigern geschlossen worden, alles Vermögen wurde veräussert !
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED	:{BLACK}{BIGFONT}Neue Transportfirma gegründet !
@@ -2044,12 +2044,12 @@ STR_HEADING_FOR_TRAIN_DEPOT_VEL			:{LTBLUE}Unterwegs zu {TOWN} Zugdepot, {VELOCI
 
 STR_8812_EMPTY							:{LTBLUE}Leer
 STR_8813_FROM							:{LTBLUE}{CARGO} von {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT		:{WHITE}Zug {COMMA16} wartet im Depot 
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT		:{WHITE}Zug {COMMA16} wartet im Depot
 STR_8815_NEW_VEHICLES					:{BLACK}Neue Fahrzeuge
 STR_8816								:{BLACK}-
 STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA16}t{}{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{COMMA16} PS {}{BLACK}Betriebskosten: {GOLD}{CURRENCY}/Jahr{}{BLACK}Kapazität: {GOLD}{STRING}{}{BLACK}Entwurf: {GOLD}{NUMU16}{BLACK}  Lebensdauer: {GOLD}{COMMA16} Jahre{}{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA8}%
 STR_8818_INFORMATION					:{BLACK}Information
-STR_8819_TRAIN_TOO_LONG					:{WHITE}Zug zu lang  
+STR_8819_TRAIN_TOO_LONG					:{WHITE}Zug zu lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
 STR_881B_TRAINS							:{WHITE}{STRING} - Züge
 STR_881C_NEW_RAIL_VEHICLES				:{WHITE}Neues Schienenfahrzeug
@@ -2262,7 +2262,7 @@ STR_9838_RENAME_SHIP_TYPE				:{WHITE}Schiff umbenennen
 STR_9839_CAN_T_RENAME_SHIP_TYPE			:{WHITE}Kann das Schiff nicht umbenennen...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY		:{BLACK}Umrüstung des Schiffes zur Beförderung anderer Frachtarten
 STR_983B_REFIT							:{WHITE}{STRING} (Umrüsten)
-STR_983C_REFIT_SHIP						:{BLACK}Schiff umrüsten 
+STR_983C_REFIT_SHIP						:{BLACK}Schiff umrüsten
 STR_983D_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Wähle die Frachtart aus, die das Schiff befördern soll
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED:{BLACK}Umrüstung des Schiffes auf die ausgewählte Frachtart
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY		:{GOLD}Wähle Frachtart für die Beförderung:-
@@ -2327,7 +2327,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Kann Flugzeugname nicht vergeben...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Flugzeugname
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Die Stadt feiert . . .{}Erstes Flugzeug landet auf {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA16} sterben in einem Feuerball auf {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Bestimmungsort: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Bestimmungsort:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Umbenennen
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Flugzeug umbenennen

@@ -1008,7 +1008,7 @@ STR_TREES_RANDOM_TYPE					:{BLACK}Træer af tilfældig type
 STR_TREES_RANDOM_TYPE_TIP				:{BLACK}Placer træer af tilfældig type
 
 STR_CANT_BUILD_CANALS							:{WHITE}Kan ikke bygge en kanal her...
-STR_BUILD_CANALS_TIP							:{BLACK}Byg kanaler 
+STR_BUILD_CANALS_TIP							:{BLACK}Byg kanaler
 STR_LANDINFO_CANAL								:Kanal
 
 STR_CANT_BUILD_LOCKS							:{WHITE}Kan ikke bygge en sluse her...

@@ -71,7 +71,7 @@ STR_0041_WATER							:Vatten
 STR_0042_WHEAT							:Vete
 STR_0043_RUBBER							:Gummi
 STR_0044_SUGAR							:Socker
-STR_0045_TOY							:Leksaker 
+STR_0045_TOY							:Leksaker
 STR_0046_CANDY							:Godis
 STR_0047_COLA							:Kola
 STR_0048_COTTON_CANDY					:Spunnet socker
@@ -1681,7 +1681,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Öka lånets storlek
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Återbetala en del av lånet
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
 STR_7038_INAUGURATED					:{GOLD}Började: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Fordon: 
+STR_7039_VEHICLES						:{GOLD}Fordon:
 STR_703A_TRAIN							:{WHITE}{COMMA16} tåg
 STR_703B_TRAINS							:{WHITE}{COMMA16} tåg
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} vägfordon
@@ -2327,7 +2327,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Kan inte byta namn på flygplan...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Byt namn på flygplan
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Invånarna firar . . .{}Första flygplanet ankommer till {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Flygplanskrasch!{}{COMMA16} dör i eldklot på {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinationer: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinationer:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Byt namn på
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Byt namn på flygplanstyp

@@ -71,7 +71,7 @@ STR_0041_WATER							:Acqua
 STR_0042_WHEAT							:Frumento
 STR_0043_RUBBER							:Gomma
 STR_0044_SUGAR							:Zucchero
-STR_0045_TOY							:Giocattolo 
+STR_0045_TOY							:Giocattolo
 STR_0046_CANDY							:Caramelle
 STR_0047_COLA							:Cola
 STR_0048_COTTON_CANDY					:Cotone Candito
@@ -507,7 +507,7 @@ STR_01EE_TRACK_INDEX					:{TINYFONT}{BLACK}Indice brani
 STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Elimina
 STR_01F1_SAVE							:{TINYFONT}{BLACK}Salva
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Attuale programma musicale 
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Attuale programma musicale
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM		:{BLACK}Seleziona progrmma 'Tutti i brani'
 STR_01F4_SELECT_OLD_STYLE_MUSIC			:{BLACK}Seleziona programma 'vecchio style'
 STR_01F5_SELECT_NEW_STYLE_MUSIC			:{BLACK}Seleziona programma 'nuovo style'
@@ -759,7 +759,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES		:{BLACK}Seleziona il tipo di stile per i no
 
 STR_02F4_AUTOSAVE						:{BLACK}Salvataggi automatici
 STR_02F5								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN		:{BLACK}Seleziona intervallo salvataggi automatici 
+STR_02F6_SELECT_INTERVAL_BETWEEN		:{BLACK}Seleziona intervallo salvataggi automatici
 STR_02F7_OFF							:Off
 STR_02F8_EVERY_3_MONTHS					:Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS					:Ogni 6 mesi
@@ -779,9 +779,9 @@ STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Guarda dimostrazione/tutorial
 STR_0307_OPENTTD		:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...può essere costruito solo in città
 STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Seleziona paesaggio 'temperato'
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-artico' 
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-artico'
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-tropicale'
-STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Seleziona paesaggio 'Città dei Giocattoli' 
+STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Seleziona paesaggio 'Città dei Giocattoli'
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Finanzia la costruzione di nuove industrie
 
 ############ range for menu	starts
@@ -968,7 +968,7 @@ STR_CONFIG_PATCHES_ECONOMY				:{BLACK}Economia
 STR_CONFIG_PATCHES_DISABLED				:disabilitato
 STR_CONFIG_PATCHES_INT32				:{INT32}
 
-STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Cambia valori impostazioni 
+STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Cambia valori impostazioni
 
 
 STR_CHEATS										:{WHITE}Cheats
@@ -1005,8 +1005,8 @@ STR_CANT_REMOVE_TRAIN_CHECKPOINT		:{WHITE}Non puoi rimuovere checkpoint...
 
 STR_BUILD_AUTORAIL_TIP					:{BLACK}Costruisci binario usando la modalità automatica
 
-STR_TREES_RANDOM_TYPE					:{BLACK}Alberi di tipo casuale 
-STR_TREES_RANDOM_TYPE_TIP				:{BLACK}Pianta alberi di tipo casuale 
+STR_TREES_RANDOM_TYPE					:{BLACK}Alberi di tipo casuale
+STR_TREES_RANDOM_TYPE_TIP				:{BLACK}Pianta alberi di tipo casuale
 
 STR_CANT_BUILD_CANALS							:{WHITE}Impossibile costruire un canale qui...
 STR_BUILD_CANALS_TIP							:{BLACK}Costruisci canali
@@ -1022,22 +1022,22 @@ STR_CANT_REMOVE_PART_OF_STATION			:{WHITE}Impossibile rimuovere una porzione di 
 STR_CANT_CONVERT_RAIL					:{WHITE}Impossibile convertire il tipo di rotaie...
 STR_CONVERT_RAIL_TIP					:{BLACK}Converti/aggiorna il tipo di rotaie
 
-STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP		:{BLACK}Trascina qui la locomotiva per vendere l’intero treno 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP		:{BLACK}Trascina qui la locomotiva per vendere l’intero treno
 
 STR_DRAG_DROP							:{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP					:{BLACK}Costruisci una stazione con il drag & drop
 
-STR_FAST_FORWARD						:{BLACK}Aumenta la velocità di gioco 
+STR_FAST_FORWARD						:{BLACK}Aumenta la velocità di gioco
 STR_MESSAGE_HISTORY						:{WHITE}Cronologia messaggi
 
-STR_CONSTRUCT_COAL_MINE_TIP				:{BLACK}Costruisci Miniera di Carbone 
-STR_CONSTRUCT_FOREST_TIP				:{BLACK}Posiziona Foresta 
+STR_CONSTRUCT_COAL_MINE_TIP				:{BLACK}Costruisci Miniera di Carbone
+STR_CONSTRUCT_FOREST_TIP				:{BLACK}Posiziona Foresta
 STR_CONSTRUCT_OIL_RIG_TIP				:{BLACK}Costruisci Piattaforma Petrolifera
-STR_CONSTRUCT_FARM_TIP					:{BLACK}Fonda Fattoria 
+STR_CONSTRUCT_FARM_TIP					:{BLACK}Fonda Fattoria
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP		:{BLACK}Costruisci Miniera di Rame
-STR_CONSTRUCT_OIL_WELLS_TIP				:{BLACK}Costruisci Pozzo Petrolifero 
-STR_CONSTRUCT_GOLD_MINE_TIP				:{BLACK}Costruisci Miniera d’Oro 
-STR_CONSTRUCT_DIAMOND_MINE_TIP			:{BLACK}Costruisci Miniera di Diamanti 
+STR_CONSTRUCT_OIL_WELLS_TIP				:{BLACK}Costruisci Pozzo Petrolifero
+STR_CONSTRUCT_GOLD_MINE_TIP				:{BLACK}Costruisci Miniera d’Oro
+STR_CONSTRUCT_DIAMOND_MINE_TIP			:{BLACK}Costruisci Miniera di Diamanti
 STR_CONSTRUCT_IRON_ORE_MINE_TIP			:{BLACK}Costruisci Miniera d’Argento
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP		:{BLACK}Fonda Piantagione di Frutta
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP		:{BLACK}Fund Rubber Plantation
@@ -1048,10 +1048,10 @@ STR_CONSTRUCT_COLA_WELLS_TIP			:{BLACK}Drill for Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP		:{BLACK}Fund Plastic Fountains
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP		:{BLACK}Construct Bubble Generator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP			:{BLACK}Fund Toffee Quarry
-STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Costruisci Raffineria di Zucchero 
+STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Costruisci Raffineria di Zucchero
 
 STR_INDUSTRYDIR_NAME					:{BLACK}Nome
-STR_INDUSTRYDIR_PRODUCTION				:{BLACK}Produzione 
+STR_INDUSTRYDIR_PRODUCTION				:{BLACK}Produzione
 STR_INDUSTRYDIR_TYPE					:{BLACK}Tipo
 STR_INDUSTRYDIR_CAPTION					:{WHITE}Industrie
 STR_INDUSTRYDIR_ITEM					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING})
@@ -1059,9 +1059,9 @@ STR_INDUSTRYDIR_ITEM_NOPROD				:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE				:{WHITE}...troppo vicina ad un’altra industria.
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY			:{BLACK}Riadatta il treno per trasportare un differente tipo di carico 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY			:{BLACK}Riadatta il treno per trasportare un differente tipo di carico
 STR_RAIL_REFIT							:{WHITE}{STRING} (Riadatta)
-STR_RAIL_REFIT_VEHICLE					:{BLACK}Riadatta treno 
+STR_RAIL_REFIT_VEHICLE					:{BLACK}Riadatta treno
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Seleziona tipo di carico per il treno
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED		:{BLACK}Riadatta il treno per trasportare il tipo di carico selezionato
 STR_RAIL_CAN_T_REFIT_VEHICLE			:{WHITE}Impossibile riadattare il treno...
@@ -1086,7 +1086,7 @@ STR_080F_SNOW_COVERED_LAND				:Terreno innevato
 STR_0810_DESERT							:Deserto
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata 
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION	:{WHITE}Combinazione di binari impossibile
 STR_1002_EXCAVATION_WOULD_DAMAGE		:{WHITE}Gli scavi danneggerebbero la galleria
 STR_1003_ALREADY_AT_SEA_LEVEL			:{WHITE}Già al livello del mare
@@ -1131,7 +1131,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS	:Binario ferroviario con segnali combinati
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata 
+STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata
 STR_1801_MUST_REMOVE_ROAD_FIRST			:{WHITE}Devi rimuovere la strada prima
 STR_1802_ROAD_CONSTRUCTION				:{WHITE}Costruzioni Stradali
 STR_1803_SELECT_ROAD_BRIDGE				:{WHITE}Seleziona ponte stradale
@@ -1235,7 +1235,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION	:Finanzia ricostruzione delle strade loc
 STR_204A_BUILD_STATUE_OF_COMPANY		:Costruisci statua del propietario della società
 STR_204B_FUND_NEW_BUILDINGS				:Finanzia nuove costruzioni
 STR_204C_BUY_EXCLUSIVE_TRANSPORT		:Compra l'esclusiva sui trasporti
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Corrompi l’autorità locale 
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Corrompi l’autorità locale
 STR_204D_INITIATE_A_SMALL_LOCAL			:{WHITE}{STRING}{}{YELLOW} Inizia una piccola campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL		:{WHITE}{STRING}{}{YELLOW} Inizia una media campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL			:{WHITE}{STRING}{}{YELLOW} Inizia una grande campagnia pubblicitaria per attirare più gente e cargo ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
@@ -1278,7 +1278,7 @@ STR_3000_RAIL_STATION_SELECTION			:{WHITE}Selezione Stazione
 STR_3001_AIRPORT_SELECTION				:{WHITE}Selezione Aereoporto
 STR_3002_ORIENTATION					:{BLACK}Orientamento
 STR_3003_NUMBER_OF_TRACKS				:{BLACK}Numero binari
-STR_3004_PLATFORM_LENGTH				:{BLACK}Lunghezza 
+STR_3004_PLATFORM_LENGTH				:{BLACK}Lunghezza
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Troppo vicino a un'altra stazione
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING	:{WHITE}Unisci stazione esistente/area di carico
 STR_3007_TOO_MANY_STATIONS_LOADING		:{WHITE}Troppe stazioni/aree di carico in questa città
@@ -1464,7 +1464,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND		:{WHITE}Impossibile scavare l'uscita del tunne
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST		:{WHITE}Devi demolire il tunnel prima
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST		:{WHITE}Devi demolire il ponte prima
 STR_5008_CANNOT_START_AND_END_ON		:{WHITE}Non si può partire e finire nello stesso punto
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Sotto i ponti è richiesto terreno piano o acqua 
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Sotto i ponti è richiesto terreno piano o acqua
 STR_500A_START_AND_END_MUST_BE_IN		:{WHITE}Inizio e fine devono essere allineati
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL		:{WHITE}Sito inadatto per l'entrata del tunnel
 STR_500C								:
@@ -1476,7 +1476,7 @@ STR_5011_SUSPENSION_CONCRETE			:Sospeso in Cemento
 STR_5012_WOODEN							:Di legno
 STR_5013_CONCRETE						:In cemento
 STR_5014_TUBULAR_STEEL					:Tubolare in acciaio
-STR_BRIDGE_TUBULAR_SILICON				:Tubolare in silicone 
+STR_BRIDGE_TUBULAR_SILICON				:Tubolare in silicone
 STR_5015_CAN_T_BUILD_BRIDGE_HERE		:{WHITE}Non puoi costruire ponte qui...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE		:{WHITE}Non puoi costruire tunnel qui...
 STR_5017_RAILROAD_TUNNEL				:Tunnel ferroviario
@@ -1496,7 +1496,7 @@ STR_5024_REINFORCED_CONCRETE_SUSPENSION	:Ponte stradale sospeso in cemento armat
 STR_5025_WOODEN_ROAD_BRIDGE				:Ponte stradale in legno
 STR_5026_CONCRETE_ROAD_BRIDGE			:Ponte stradale in cemento
 STR_5027_TUBULAR_RAIL_BRIDGE			:Ponte ferroviario tubolare
-STR_5028_TUBULAR_ROAD_BRIDGE			:Ponte stradale tubolare 
+STR_5028_TUBULAR_ROAD_BRIDGE			:Ponte stradale tubolare
 STR_5029_STEEL							:Acciaio
 
 ##id 0x5800
@@ -1618,7 +1618,7 @@ STR_6831_3_MONTHS_AFTER_PLAYER			:3 mesi dopo il giocatore
 STR_6832_6_MONTHS_AFTER_PLAYER			:6 mesi dopo il giocatore
 STR_6833_9_MONTHS_AFTER_PLAYER			:9 mesi dopo il giocatore
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS	:Alla fine della linea, e alle stazioni
-STR_6835_AT_END_OF_LINE_ONLY			:Solo alla fine della linea 
+STR_6835_AT_END_OF_LINE_ONLY			:Solo alla fine della linea
 STR_6836_OFF							:Off
 STR_6837_ON								:On
 STR_6838_SHOW_HI_SCORE_CHART			:{BLACK}Mostra punteggi migliori
@@ -1681,7 +1681,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Aumenta dimensioni del debito
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Ripaga parte del debito
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
 STR_7038_INAUGURATED					:{GOLD}Inaugurata: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Veicoli: 
+STR_7039_VEHICLES						:{GOLD}Veicoli:
 STR_703A_TRAIN							:{WHITE}{COMMA16} treno
 STR_703B_TRAINS							:{WHITE}{COMMA16} treni
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} Veicolo stradale
@@ -1743,8 +1743,8 @@ STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Recessione Mondiale!{}{}Gli
 STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Recessione Finita!{}{}Rialzo negli scambi dà fiducia alle industrie per un rafforzamento economico!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_7076_COMPANY_VALUE					:{GOLD}Valore società: {WHITE}{CURRENCY}
-STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Compra il 25% delle azioni 
-STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Vendi il 25% delle azioni 
+STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Compra il 25% delle azioni
+STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Vendi il 25% delle azioni
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY	:{BLACK}Compra il 25% delle azioni della società
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY	:{BLACK}Vendi il 25% delle azioni della società
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS		:{WHITE}Non puoi comprare il 25% delle azioni della società...
@@ -1935,7 +1935,7 @@ STR_80B1_MIGHTYMOVER_COLA_TRUCK			:Autobotte-Cola MightyMover
 STR_80B2_POWERNAUGHT_COLA_TRUCK			:Autobotte-Cola Powernaught
 STR_80B3_WIZZOWOW_COLA_TRUCK			:Autobotte-Cola Wizzowow
 STR_80B4_MIGHTYMOVER_COTTON_CANDY		:Camion Cotone Can. MightyMover
-STR_80B5_POWERNAUGHT_COTTON_CANDY		:Camion Cotone Can. Powernaught 
+STR_80B5_POWERNAUGHT_COTTON_CANDY		:Camion Cotone Can. Powernaught
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Camion Cotone Can. Wizzowow
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:Camion Toffee MightyMover
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Camion Toffee Powernaught
@@ -1961,7 +1961,7 @@ STR_80CB_WIZZOWOW_BUBBLE_TRUCK			:Camion Bolle Wizzowow
 STR_80CC_MPS_OIL_TANKER					:Petroliera MPS
 STR_80CD_CS_INC_OIL_TANKER				:Petroliera CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY			:Traghetto FFP
-STR_80CF_FFP_PASSENGER_FERRY			:Traghetto FFP 
+STR_80CF_FFP_PASSENGER_FERRY			:Traghetto FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT		:Hovercraft Bakewell 300
 STR_80D1_CHUGGER_CHUG_PASSENGER			:Traghetto Chugger-Chug
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Traghetto Shivershake
@@ -2178,7 +2178,7 @@ STR_9021_SHOW_ROAD_VEHICLE_DETAILS		:{BLACK}Mostra dettagli del veicolo
 STR_9022_VEHICLES_CLICK_ON_VEHICLE		:{BLACK}Veicoli - fai clic sul veicolo per le informazioni
 STR_9023_BUILD_NEW_ROAD_VEHICLE			:{BLACK}Costruisci nuovo veicolo stradale
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE		:{BLACK}Trascina veicolo stradale qui per venderlo
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Centra visuale sul deposito 
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Centra visuale sul deposito
 STR_9026_ROAD_VEHICLE_SELECTION			:{BLACK}Lista veicoli - fai clic sul veicolo per le informazioni
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD		:{BLACK}Costruisci veicolo stradale evidenziato
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE	:{BLACK}{BIGFONT}Nuovo veicolo stradale disponibile!
@@ -2327,7 +2327,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Non puoi dare un nome all'aereo...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Nome aereo
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo aereo atterrato a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Aereo precipitato!{}{COMMA16} morti in una palla di fuoco a {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinazioni: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinazioni:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rinomina
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Rinomina tipo di aereo

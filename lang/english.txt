@@ -71,7 +71,7 @@ STR_0041_WATER							:Water
 STR_0042_WHEAT							:Wheat
 STR_0043_RUBBER							:Rubber
 STR_0044_SUGAR							:Sugar
-STR_0045_TOY							:Toy 
+STR_0045_TOY							:Toy
 STR_0046_CANDY							:Sweet
 STR_0047_COLA							:Cola
 STR_0048_COTTON_CANDY					:Candyfloss
@@ -907,7 +907,7 @@ STR_TRAIN_IS_LOST						:{WHITE}Train {COMMA16} is lost.
 STR_TRAIN_IS_UNPROFITABLE				:{WHITE}Train {COMMA16}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE					:{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
-# Start of order review system. 
+# Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}Train {COMMA16} has too few orders in the schedule
 STR_TRAIN_HAS_VOID_ORDER						:{WHITE}Train {COMMA16} has a void order
@@ -1828,7 +1828,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Increase size of loan
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Repay part of loan
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Manager)
 STR_7038_INAUGURATED					:{GOLD}Inaugurated: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Vehicles: 
+STR_7039_VEHICLES						:{GOLD}Vehicles:
 STR_703A_TRAIN							:{WHITE}{COMMA16} train
 STR_703B_TRAINS							:{WHITE}{COMMA16} trains
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} road vehicle
@@ -2475,7 +2475,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Can't name aircraft...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Name aircraft
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First aircraft arrives at {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinations: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinations:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rename
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Rename aircraft type
@@ -2503,4 +2503,4 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Coal mine subsidence leave
 
 STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator
-STR_BUILD_DATE						:{BLACK}Built in: {LTBLUE}{DATE_LONG}
+STR_BUILD_DATE						:{BLACK}Built: {LTBLUE}{DATE_LONG}

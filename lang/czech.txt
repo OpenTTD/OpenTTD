@@ -1283,7 +1283,7 @@ STR_2002								:{TINYFONT}{BLACK}{STRING}
 STR_2003								:{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED	:{WHITE}Budova musi byt nejprve znicena
 STR_2005								:{WHITE}{TOWN}
-STR_2006_POPULATION :{BLACK}Populace: {ORANGE}{COMMA32}{BLACK} Domu: {ORANGE}{COMMA32} 
+STR_2006_POPULATION :{BLACK}Populace: {ORANGE}{COMMA32}{BLACK} Domu: {ORANGE}{COMMA32}
 STR_2007_RENAME_TOWN					:Prejmenovat mesto
 STR_2008_CAN_T_RENAME_TOWN				:{WHITE}Nemohu prejmenovat mesto:
 STR_2009_LOCAL_AUTHORITY_REFUSES		:{WHITE}Místní správa mesta {TOWN} odmita vydat povoleni.
@@ -1467,7 +1467,7 @@ STR_3060_AIRPORT						:Letiste
 STR_3061_TRUCK_LOADING_AREA				:Nakladova rampa
 STR_3062_BUS_STATION					:Autobusova zastavka
 STR_3063_SHIP_DOCK						:Dok
-STR_3064_HIGHLIGHT_COVERAGE_AREA		:{BLACK}Zvyraznit oblast pokryti 
+STR_3064_HIGHLIGHT_COVERAGE_AREA		:{BLACK}Zvyraznit oblast pokryti
 STR_3065_DON_T_HIGHLIGHT_COVERAGE		:{BLACK}Nezvyraznovat oblast pokryti
 STR_3066_COVERAGE_AREA_HIGHLIGHT		:{BLACK}Zvyraznit oblast pokryti
 STR_3067_MONORAIL_STATION_SELECT		:{WHITE}Vyber nadrazi pro jednokolejku.
@@ -1578,7 +1578,7 @@ STR_INDUSTRY_PROD_GODOWN				:{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING}
 STR_5000_TRAIN_IN_TUNNEL				:{WHITE}Vlak v tunelu
 STR_5001_ROAD_VEHICLE_IN_TUNNEL			:{WHITE}Silnicni vozidlo v tunelu
 STR_5002								:
-STR_5003_ANOTHER_TUNNEL_IN_THE_WAY		:{WHITE}V ceste je jiny tunel 
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY		:{WHITE}V ceste je jiny tunel
 STR_5004								:
 STR_5005_UNABLE_TO_EXCAVATE_LAND		:{WHITE}Nemohu vyrovnat zemi na druhem konci tunelu
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST		:{WHITE}Nutno nejprve znicit tunel
@@ -1805,7 +1805,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Pujcit si vice
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Splatit cast dluhu
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Prezident)
 STR_7038_INAUGURATED					:{GOLD}Zalozeno: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Vozidla: 
+STR_7039_VEHICLES						:{GOLD}Vozidla:
 STR_703A_TRAIN							:{WHITE}{COMMA16} vlak
 STR_703B_TRAINS							:{WHITE}{COMMA16} vlaku
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} silnicni vozidlo
@@ -2131,9 +2131,9 @@ STR_80F9_PLODDYPHUT_500					:Ploddyphut 500
 STR_80FA_FLASHBANG_X1					:Flashbang X1
 STR_80FB_JUGGERPLANE_M1					:Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER				:Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER				:Vrtulnik Tricairo 
-STR_80FE_GURU_X2_HELICOPTER				:Vrtulnik Guru X2 
-STR_80FF_POWERNAUT_HELICOPTER				:Vrtulnik Powernaut 
+STR_80FD_TRICARIO_HELICOPTER				:Vrtulnik Tricairo
+STR_80FE_GURU_X2_HELICOPTER				:Vrtulnik Guru X2
+STR_80FF_POWERNAUT_HELICOPTER				:Vrtulnik Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE		:{WHITE}Zpráva od výrobce dopravních prostredku
 STR_8101_WE_HAVE_JUST_DESIGNED_A			:{GOLD}Prave jsme vyvinuli nové (novou) {STRING} - mel bys zájem o rocni výhradní právo na pouzivani tohoto dopravního prostredku, aby by otestován pred uvedením na trh?
 STR_8102_RAILROAD_LOCOMOTIVE				:lokomotivu
@@ -2158,7 +2158,7 @@ STR_880A_GO_NON_STOP_TO					:Jet bez zastavení do {STATION}
 STR_880B_GO_NON_STOP_TO_UNLOAD				:Jet bez zastavení do {STATION} (Vylozit)
 STR_880C_GO_NON_STOP_TO_LOAD				:Jet bez zastavení do {STATION} (Nalozit)
 STR_880D						:
-STR_880E_GO_TO_TRAIN_DEPOT				:Jet do zeleznicniho depa {TOWN} 
+STR_880E_GO_TO_TRAIN_DEPOT				:Jet do zeleznicniho depa {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT				:Udrzba v zeleznicnim depu {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT			:Jet bez zastavení do zelezncniho depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT			:Udrzba bez zastavení v zeleznicnim depu {TOWN}
@@ -2287,7 +2287,7 @@ STR_9013_MUST_BE_STOPPED_INSIDE			:{WHITE}...musi byt zastaven v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE		:{WHITE}Nemohu prodat silnicni vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE		:{WHITE}Nemohu zastavit/rozjet silnicni vozidlo...
 STR_9016_ROAD_VEHICLE_IS_WAITING		:{WHITE}Silnicni vozidlo {COMMA16} ceka v garazi
-STR_HEADING_FOR_ROAD_DEPOT			:{LTBLUE}Mirim do garaze {TOWN} 
+STR_HEADING_FOR_ROAD_DEPOT			:{LTBLUE}Mirim do garaze {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL			:{LTBLUE}Mirim do garaze {TOWN} , {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT		:{WHITE}Nemohu poslat silnicni vozidlo do garaze...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Nemohu najít místní garaz
@@ -2352,7 +2352,7 @@ STR_9817_CAPACITY				:{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP			:{WHITE}Nelze rozjet/zastavit lod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT		:{WHITE}Nelze poslat lod do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Nemohu najít místní depo
-STR_HEADING_FOR_SHIP_DEPOT			:{LTBLUE}Mirim do depa {TOWN} 
+STR_HEADING_FOR_SHIP_DEPOT			:{LTBLUE}Mirim do depa {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL			:{LTBLUE}Mirim do depa {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT		:{WHITE}Lod {COMMA16} ceka v depu
 STR_981D_BUILD_SHIP_DOCK			:{BLACK}Postavit pristavní molo
@@ -2451,7 +2451,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Nelze prejmenovat letadlo
 STR_A032_NAME_AIRCRAFT				:{BLACK}Prejmenovat letadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Obyvatelé oslavují...{}První letadlo pristalo v {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Pád letadla!{}{COMMA16} zahynulo v plamenech v {STATION}.
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Cíle: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Cíle:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Prejmenovat
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Prejmenovat typ letadla

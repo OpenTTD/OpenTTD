@@ -393,7 +393,7 @@ STR_0188								:{BLACK}{SMALLUPARROW}
 STR_0189								:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING		:{WHITE}Nieje mozne zmenit servisny interval...
 STR_018B_CLOSE_WINDOW			:{BLACK}Zavriet okno
-STR_018C_WINDOW_TITLE_DRAG_THIS		:{BLACK}Nadpis okna - potiahni pre posun okna 
+STR_018C_WINDOW_TITLE_DRAG_THIS		:{BLACK}Nadpis okna - potiahni pre posun okna
 STR_018D_DEMOLISH_BUILDINGS_ETC		:{BLACK}Zburanie budov, cistenie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND		:{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND		:{BLACK}Zvysit roh terenu
@@ -508,7 +508,7 @@ STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR				:{TINYFONT}{BLACK}Zmazat
 STR_01F1_SAVE				:{TINYFONT}{BLACK}Ulozit
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC	:{BLACK}Aktualny program
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM	:{BLACK}Vybrat 'Vsetko' 
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM	:{BLACK}Vybrat 'Vsetko'
 STR_01F4_SELECT_OLD_STYLE_MUSIC		:{BLACK}Vybrat 'Stary styl'
 STR_01F5_SELECT_NEW_STYLE_MUSIC		:{BLACK}Vybrat 'Novy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED	:{BLACK}Vybrat 'Vlastny 1' (uzivatelom definovany) program
@@ -932,7 +932,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS		:{LTBLUE}Roznorode stanice: {ORANGE}{STR
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND		:{LTBLUE}Novy algoritmus pre hladanie smeru: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS       :{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
- 
+
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS      :{LTBLUE}Vlak sa strati pokial nic nedosiahne za: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_WARN_INCOME_LESS     :{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
 STR_CONFIG_AUTORENEW_VEHICLE            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
@@ -1680,7 +1680,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Zvysit velkost pozicky
 STR_7036_REPAY_PART_OF_LOAN			:{BLACK}Vratit cast pozicky
 STR_7037_PRESIDENT				:{WHITE}{STRING}{}{GOLD}(Prezident)
 STR_7038_INAUGURATED				:{GOLD}Zvoleny: {WHITE}{NUMU16}
-STR_7039_VEHICLES				:{GOLD}Strojov: 
+STR_7039_VEHICLES				:{GOLD}Strojov:
 STR_703A_TRAIN					:{WHITE}{COMMA16} vlak
 STR_703B_TRAINS					:{WHITE}{COMMA16} vlakov
 STR_703C_ROAD_VEHICLE				:{WHITE}{COMMA16} automobil
@@ -1740,7 +1740,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS:	{WHITE}Sidlo spolocnosti sa neda post
 STR_7072_VIEW_HQ				:{BLACK}Pozriet sidlo
 STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
-STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Prepinac velkosti okna 
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Prepinac velkosti okna
 STR_7076_COMPANY_VALUE				:{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Kupit 25% podiel v spolocnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Predat 25% podiel v spolocnosti
@@ -2326,7 +2326,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Nemozno pomenovat lietadlo...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Pomenovat lietadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prve lietadlo pristalo na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Letecka havaria!{}{COMMA16} mrtvych pri poziari na {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Ciele: 
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Ciele:
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Premenovat
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Premenovat typ lietadla
