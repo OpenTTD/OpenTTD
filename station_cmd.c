@@ -1583,9 +1583,11 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost += _price.build_airport * w * h;
 
 	if (flags & DC_EXEC) {
+		const AirportFTAClass *afc = GetAirport(p1);
+
 		st->owner = _current_player;
-		if (_current_player == _local_player && p1 <= AT_INTERNATIONAL) {
-      _last_built_aircraft_depot_tile = tile + GetAirport(p1)->airport_depots[0];
+		if (_current_player == _local_player && afc->nof_depots != 0) {
+      _last_built_aircraft_depot_tile = tile + afc->airport_depots[0];
     }
 
 		st->airport_tile = tile;
