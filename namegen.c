@@ -318,7 +318,160 @@ static byte MakePolishTownName(char *buf, uint32 seed)
 
 static byte MakeCzechTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_czech_real[SeedChance(0, lengthof(name_czech_real), seed)]);
+	/* Probability of prefixes/suffixes */
+	/* 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */
+	int prob_tails;
+	bool do_prefix, do_suffix, dynamic_subst;
+	/* IDs of the respective parts */
+	int prefix = 0, stem = 0, postfix = 0, ending = 0, suffix = 0;
+	/* The select criteria. */
+	enum CzechGender gender;
+	enum CzechChoose choose;
+	enum CzechAllow allow;
+
+	// 1:3 chance to use a real name.
+	if (SeedChance(0, 4, seed) == 0) {
+		strcpy(buf, name_czech_real[SeedChance(1, lengthof(name_czech_real), seed)]);
+		return 0;
+	}
+
+	// NUL terminates the string for strcat()
+	strcpy(buf, "");
+
+	prob_tails = SeedChance(2, 32, seed);
+	do_prefix = prob_tails < 12;
+	do_suffix = prob_tails > 11 && prob_tails < 17;
+
+	if (do_prefix) prefix = SeedChance(5, lengthof(name_czech_adj), seed);
+	if (do_suffix) suffix = SeedChance(7, lengthof(name_czech_suffix), seed);
+	// 3:1 chance 3:1 to use dynamic substantive
+	stem = SeedChance(9, lengthof(name_czech_subst_full)
+	                     + 3 * lengthof(name_czech_subst_stem),
+	                   seed);
+	if (stem < (int) lengthof(name_czech_subst_full)) {
+		// That was easy!
+		dynamic_subst = false;
+		gender = name_czech_subst_full[stem].gender;
+		choose = name_czech_subst_full[stem].choose;
+		allow = name_czech_subst_full[stem].allow;
+
+	} else {
+		unsigned int map[lengthof(name_czech_subst_ending)];
+		int ending_start = -1, ending_stop = -1;
+		int i;
+
+		// Load the substantive
+		dynamic_subst = true;
+		stem -= lengthof(name_czech_subst_full);
+		stem %= lengthof(name_czech_subst_stem);
+		gender = name_czech_subst_stem[stem].gender;
+		choose = name_czech_subst_stem[stem].choose;
+		allow = name_czech_subst_stem[stem].allow;
+
+		// Load the postfix (1:1 chance that a postfix will be inserted)
+		postfix = SeedChance(14, lengthof(name_czech_subst_postfix) * 2, seed);
+
+		if (choose & CZC_POSTFIX) {
+			// Always get a real postfix.
+			postfix %= lengthof(name_czech_subst_postfix);
+		}
+		if (choose & CZC_NOPOSTFIX) {
+			// Always drop a postfix.
+			postfix += lengthof(name_czech_subst_postfix);
+		}
+		if (postfix < (int) lengthof(name_czech_subst_postfix))
+			choose |= CZC_POSTFIX;
+		else
+			choose |= CZC_NOPOSTFIX;
+
+		// Localize the array segment containing a good gender
+		for (ending = 0; ending < (int) lengthof(name_czech_subst_ending); ending++) {
+			const struct CzechNameSubst *e = &name_czech_subst_ending[ending];
+
+			if (gender == CZG_FREE
+			    || (gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT)
+			    || (gender == e->gender)) {
+				if (ending_start < 0)
+					ending_start = ending;
+
+			} else if (ending_start >= 0) {
+				ending_stop = ending - 1;
+				break;
+			}
+		}
+		if (ending_stop < 0) {
+			// Whoa. All the endings matched.
+			ending_stop = ending - 1;
+		}
+
+		// Make a sequential map of the items with good mask
+		i = 0;
+		for (ending = ending_start; ending <= ending_stop; ending++) {
+			const struct CzechNameSubst *e = &name_czech_subst_ending[ending];
+
+			if ((e->choose & choose) == choose && (e->allow & allow) != 0)
+				map[i++] = ending;
+		}
+		assert(i > 0);
+
+		// Load the ending
+		ending = map[SeedChance(16, i, seed)];
+		// Override possible CZG_*FREE; this must be a real gender,
+		// otherwise we get overflow when modifying the adjectivum.
+		gender = name_czech_subst_ending[ending].gender;
+		assert(gender != CZG_FREE && gender != CZG_NFREE);
+	}
+
+	if (do_prefix && (name_czech_adj[prefix].choose & choose) != choose) {
+		// Throw away non-matching prefix.
+		do_prefix = false;
+	}
+
+	// Now finally construct the name
+
+	if (do_prefix) {
+		enum CzechPattern pattern = name_czech_adj[prefix].pattern;
+		int endpos;
+
+		strcat(buf, name_czech_adj[prefix].name);
+		endpos = strlen(buf) - 1;
+		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
+			/* -ovX -> -uv */
+			buf[endpos - 2] = 'u';
+			assert(buf[endpos - 1] == 'v');
+			buf[endpos] = '\0';
+		} else {
+			buf[endpos] = name_czech_patmod[gender][pattern];
+		}
+
+		strcat(buf, " ");
+	}
+
+	if (dynamic_subst) {
+		strcat(buf, name_czech_subst_stem[stem].name);
+		if (postfix < (int) lengthof(name_czech_subst_postfix)) {
+			int postlen, endlen;
+
+			postlen = strlen(name_czech_subst_postfix[postfix]);
+			endlen = strlen(name_czech_subst_ending[ending].name);
+			// Kill the "avava" and "Jananna"-like cases
+			if (2 > postlen || postlen > endlen
+			    || (name_czech_subst_postfix[postfix][1]
+			           != name_czech_subst_ending[ending].name[1]
+			        && name_czech_subst_postfix[postfix][2]
+			           != name_czech_subst_ending[ending].name[1]))
+				strcat(buf, name_czech_subst_postfix[postfix]);
+		}
+		strcat(buf, name_czech_subst_ending[ending].name);
+	} else {
+		strcat(buf, name_czech_subst_full[stem].name);
+	}
+
+	if (do_suffix) {
+		strcat(buf, " ");
+		strcat(buf, name_czech_suffix[suffix]);
+	}
+
 	return 0;
 }
 

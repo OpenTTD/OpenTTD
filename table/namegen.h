@@ -1659,6 +1659,228 @@ static const char *name_czech_real[] = {
 	"Znojmo"
 };
 
+
+/* The advanced hyperintelligent Czech town names generator! */
+
+// Sing., pl.
+enum CzechGender {
+	CZG_SMASC,
+	CZG_SFEM,
+	CZG_SNEUT,
+	CZG_PMASC,
+	CZG_PFEM,
+	CZG_PNEUT,
+	// Special for substantive stems - the ending chooses the gender.
+	CZG_FREE,
+	// Like CZG_FREE, but disallow CZG_SNEUT.
+	CZG_NFREE
+};
+enum CzechPattern {
+	CZP_JARNI,
+	CZP_MLADY,
+	CZP_PRIVL
+};
+/* [CzechGender][CzechPattern] - replaces the last character of the adjective
+ * by this. */
+// XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv.
+static const char name_czech_patmod[6][3] = {
+	/* CZG_SMASC */ { 'í', 'ý', 'X' },
+	/* CZG_SFEM */  { 'í', 'á', 'a' },
+	/* CZG_SNEUT */ { 'í', 'é', 'o' },
+	/* CZG_PMASC */ { 'í', 'é', 'y' },
+	/* CZG_PFEM */  { 'í', 'é', 'y' },
+	/* CZG_PNEUT */ { 'í', 'á', 'a' }
+};
+
+// This way the substantives can choose only some adjectives/endings:
+// At least one of these flags must be satisfied:
+enum CzechAllow {
+	CZA_SHORT = 1,
+	CZA_MIDDLE = 2,
+	CZA_LONG = 4,
+	CZA_ALL = ~0
+};
+// All these flags must be satisfied (in the stem->others direction):
+enum CzechChoose {
+	CZC_NORMAL = 1,
+	CZC_COLOR = 2,
+	CZC_POSTFIX = 4, // Matched if postfix was inserted.
+	CZC_NOPOSTFIX = 8, // Matched if no postfix was inserted.
+	CZC_ANY = ~0
+};
+
+struct CzechNameSubst {
+	enum CzechGender gender;
+	enum CzechAllow allow;
+	enum CzechChoose choose;
+	const char *name;
+};
+
+struct CzechNameAdj {
+	enum CzechPattern pattern;
+	enum CzechChoose choose;
+	const char *name;
+};
+
+// Some of items which should be common are doubled.
+static const struct CzechNameAdj name_czech_adj[] = {
+	{ CZP_JARNI, CZC_ANY, "Horní" },
+	{ CZP_JARNI, CZC_ANY, "Horní" },
+	{ CZP_JARNI, CZC_ANY, "Dolní" },
+	{ CZP_JARNI, CZC_ANY, "Dolní" },
+	{ CZP_JARNI, CZC_ANY, "Prední" },
+	{ CZP_JARNI, CZC_ANY, "Zadní" },
+	{ CZP_JARNI, CZC_ANY, "Kostelní" },
+	{ CZP_JARNI, CZC_ANY, "Havraní" },
+	{ CZP_JARNI, CZC_ANY, "Rícní" },
+	{ CZP_MLADY, CZC_ANY, "Velký" },
+	{ CZP_MLADY, CZC_ANY, "Velký" },
+	{ CZP_MLADY, CZC_ANY, "Malý" },
+	{ CZP_MLADY, CZC_ANY, "Malý" },
+	{ CZP_MLADY, CZC_ANY, "Vysoký" },
+	{ CZP_MLADY, CZC_ANY, "Ceský" },
+	{ CZP_MLADY, CZC_ANY, "Moravský" },
+	{ CZP_MLADY, CZC_ANY, "Slovácký" },
+	{ CZP_MLADY, CZC_ANY, "Uherský" },
+	{ CZP_MLADY, CZC_ANY, "Starý" },
+	{ CZP_MLADY, CZC_ANY, "Starý" },
+	{ CZP_MLADY, CZC_ANY, "Nový" },
+	{ CZP_MLADY, CZC_ANY, "Nový" },
+	{ CZP_MLADY, CZC_ANY, "Mladý" },
+	{ CZP_MLADY, CZC_ANY, "Královský" },
+	{ CZP_MLADY, CZC_ANY, "Kamenný" },
+	{ CZP_MLADY, CZC_ANY, "Cihlový" },
+	{ CZP_MLADY, CZC_ANY, "Divný" },
+	{ CZP_MLADY, CZC_COLOR, "Cervená" },
+	{ CZP_MLADY, CZC_COLOR, "Cervená" },
+	{ CZP_MLADY, CZC_COLOR, "Zelená" },
+	{ CZP_MLADY, CZC_COLOR, "Zlutá" },
+	{ CZP_MLADY, CZC_COLOR, "Sivá" },
+	{ CZP_MLADY, CZC_COLOR, "Sedá" },
+	{ CZP_MLADY, CZC_COLOR, "Bílá" },
+	{ CZP_MLADY, CZC_COLOR, "Modrá" },
+	{ CZP_MLADY, CZC_COLOR, "Ruzová" },
+	{ CZP_MLADY, CZC_COLOR, "Cerná" },
+	{ CZP_PRIVL, CZC_ANY, "Králova" },
+	{ CZP_PRIVL, CZC_ANY, "Janova" },
+	{ CZP_PRIVL, CZC_ANY, "Karlova" },
+	{ CZP_PRIVL, CZC_ANY, "Jiríkova" },
+	{ CZP_PRIVL, CZC_ANY, "Petrova" },
+	{ CZP_PRIVL, CZC_ANY, "Sudovo" },
+};
+
+// Considered a stem for choose/allow matching purposes.
+static const struct CzechNameSubst name_czech_subst_full[] = {
+	{ CZG_SMASC, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Sedlec" },
+	{ CZG_SMASC, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Brod" },
+	{ CZG_SMASC, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Brod" },
+	{ CZG_SMASC, CZA_ALL, CZC_NORMAL, "Úval" },
+	{ CZG_SFEM,  CZA_ALL, CZC_NORMAL | CZC_COLOR, "Hora" },
+	{ CZG_SFEM,  CZA_ALL, CZC_NORMAL | CZC_COLOR, "Lhota" },
+	{ CZG_SFEM,  CZA_ALL, CZC_NORMAL | CZC_COLOR, "Lhota" },
+	{ CZG_SFEM,  CZA_ALL, CZC_NORMAL | CZC_COLOR, "Hlava" },
+	{ CZG_SNEUT, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Pole" },
+	{ CZG_SNEUT, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Zdár" },
+	{ CZG_PMASC, CZA_ALL, CZC_NORMAL, "Úvaly" },
+	{ CZG_PFEM,  CZA_ALL, CZC_NORMAL | CZC_COLOR, "Luka" },
+	{ CZG_PNEUT, CZA_ALL, CZC_NORMAL | CZC_COLOR, "Pole" },
+};
+
+// TODO: More stems needed. --pasky
+static const struct CzechNameSubst name_czech_subst_stem[] = {
+	{ CZG_SMASC,             CZA_MIDDLE,            CZC_NORMAL | CZC_COLOR, "Kostel" },
+	{ CZG_SMASC,             CZA_MIDDLE,            CZC_NORMAL | CZC_COLOR, "Kláster" },
+	{ CZG_SMASC, CZA_SHORT,                         CZC_NORMAL | CZC_COLOR, "Lhot" },
+	{ CZG_SFEM,  CZA_SHORT,                         CZC_NORMAL | CZC_COLOR, "Lhot" },
+	{ CZG_SFEM,  CZA_SHORT,                         CZC_NORMAL | CZC_COLOR, "Hur" },
+	{ CZG_FREE,              CZA_MIDDLE | CZA_LONG, CZC_NORMAL, "Sedl" },
+	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_NORMAL | CZC_COLOR, "Hrad" },
+	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NORMAL, "Pras" },
+	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NORMAL, "Baz" },
+	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NORMAL, "Tes" },
+	{ CZG_NFREE,             CZA_MIDDLE,            CZC_NORMAL, "Uz" },
+	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_NORMAL, "Br" },
+	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_NORMAL, "Vod" },
+	{ CZG_NFREE,             CZA_MIDDLE | CZA_LONG, CZC_NORMAL, "Jan" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Prach" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Kunr" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Strak" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Vit" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Vys" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Zat" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Zer" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Stred" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Harv" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Pruh" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Tach" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Písn" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Jin" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Jes" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Jar" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Sok" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Hod" },
+	{ CZG_NFREE,                          CZA_LONG, CZC_NORMAL, "Net" },
+	{ CZG_FREE,                           CZA_LONG, CZC_NORMAL, "Praz" },
+	{ CZG_FREE,                           CZA_LONG, CZC_NORMAL, "Nerat" },
+	{ CZG_FREE,                           CZA_LONG, CZC_NORMAL, "Kral" },
+	{ CZG_FREE,                           CZA_LONG, CZC_NORMAL | CZC_NOPOSTFIX, "Pan" },
+	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_NORMAL, "Odstred" },
+	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_NORMAL | CZC_COLOR, "Mrat" },
+	{ CZG_FREE,                           CZA_LONG, CZC_NORMAL | CZC_COLOR, "Hlav" },
+	{ CZG_FREE,  CZA_SHORT | CZA_MIDDLE,            CZC_NORMAL, "Mer" },
+};
+
+// Optional postfix inserted between stem and ending.
+static const char *name_czech_subst_postfix[] = {
+	"av", "an", "at",
+	"ov", "on", "ot",
+	"ev", "en", "et",
+};
+
+// This array must have the both neutral genders at the end!
+static const struct CzechNameSubst name_czech_subst_ending[] = {
+	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ec" },
+	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ín" },
+	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "ov" },
+	{ CZG_SMASC, CZA_SHORT       |        CZA_LONG, CZC_ANY, "kov" },
+	{ CZG_SMASC,                          CZA_LONG, CZC_POSTFIX, "ín" },
+	{ CZG_SMASC,                          CZA_LONG, CZC_POSTFIX, "ník" },
+	{ CZG_SFEM,  CZA_SHORT,                         CZC_ANY, "ka" },
+	{ CZG_SFEM,              CZA_MIDDLE,            CZC_ANY, "inka" },
+	{ CZG_SFEM,              CZA_MIDDLE,            CZC_NOPOSTFIX, "na" },
+	{ CZG_SFEM,              CZA_MIDDLE,            CZC_ANY, "ná" },
+	{ CZG_SFEM,                           CZA_LONG, CZC_ANY, "ava" },
+	{ CZG_PMASC,                          CZA_LONG, CZC_ANY, "íky" },
+	{ CZG_PMASC,                          CZA_LONG, CZC_ANY, "upy" },
+	{ CZG_PFEM,                           CZA_LONG, CZC_ANY, "avy" },
+	{ CZG_PFEM,  CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "ice" },
+	{ CZG_PNEUT, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "na" },
+	{ CZG_SNEUT, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "no" },
+	{ CZG_SNEUT,                          CZA_LONG, CZC_ANY, "iste" },
+};
+
+static const char *name_czech_suffix[] = {
+	"nad Cydlinou",
+	"nad Dyjí",
+	"nad Jihlavou",
+	"nad Labem",
+	"nad Lesy",
+	"nad Moravou",
+	"nad Nisou",
+	"nad Odrou",
+	"nad Ostravicí",
+	"nad Sázavou",
+	"nad Vltavou",
+	"pod Pradedem",
+	"pod Radhostem",
+	"pod Rípem",
+	"pod Snezkou",
+	"pod Spicákem",
+	"pod Sedlem",
+};
+
+
+
 static const char *name_romanian_real[]= {
 	"Adjud",
 	"Alba Iulia",
