@@ -114,9 +114,6 @@
 # Configuration
 #
 
-ifndef RELEASE
-RELEASE:=0.3.6
-endif
 
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
