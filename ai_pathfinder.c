@@ -394,7 +394,11 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	}
 
 	// We should give a penalty when the tile is going up or down.. this is one way to do so!
-	//  Too bad we have to count it from the parent.. but that is not so bad
+	//  Too bad we have to count it from the parent.. but that is not so bad.
+	// We also dislike long routes on slopes, since they do not look too realistic
+	//  when there is a flat land all around, they are more expensive to build, and
+	//  especially they essentially block the ability to connect or cross the road
+	//  from one side.
 	if (parent_ti.tileh != 0 && parent->path.parent != NULL) {
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
@@ -403,12 +407,16 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
 				if (r >= 15 || (r == 0 && (BRIDGE_NO_FOUNDATION & (1 << ti.tileh)))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
+				} else {
+					res += AI_PATHFINDER_FOUNDATION_PENALTY;
 				}
 			} else {
 				if (!(IsRoad(parent->path.node.tile) && IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE))) {
 					r = GetRoadFoundation(parent_ti.tileh, AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
 					if (r >= 15 || r == 0)
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
+					else
+						res += AI_PATHFINDER_FOUNDATION_PENALTY;
 				}
 			}
 		}

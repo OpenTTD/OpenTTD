@@ -37,6 +37,8 @@
 #define AI_PATHFINDER_PENALTY 150
 // The penalty given to a tile that is going up
 #define AI_PATHFINDER_TILE_GOES_UP_PENALTY 450
+// The penalty given to a tile which would have to use fundation
+#define AI_PATHFINDER_FOUNDATION_PENALTY 100
 // Changing direction is a penalty, to prevent curved ways (with that: slow ways)
 #define AI_PATHFINDER_DIRECTION_CHANGE_PENALTY 200
 // Same penalty, only for when road already exists
