@@ -130,7 +130,14 @@ extern uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int 
 #define SPRITE_PALETTE(x) ((x) + 0x8000)
 
 extern const byte _ffb_64[128];
+/* Returns the position of the first bit that is not zero, counted from the
+ * left. Ie, 10110100 returns 2, 00000001 returns 0, etc. When x == 0 returns
+ * 0.
+ */
 #define FIND_FIRST_BIT(x) _ffb_64[(x)]
+/* Returns x with the first bit that is not zero, counted from the left, set
+ * to zero. So, 10110100 returns 10110000, 00000001 returns 00000000, etc.
+ */
 #define KILL_FIRST_BIT(x) _ffb_64[(x)+64]
 
 static INLINE int FindFirstBit2x64(int value)
@@ -211,5 +218,7 @@ static INLINE void WRITE_LE_UINT16(const void *b, uint16 x) {
 	((byte*)b)[0] = (byte)x;
 	((byte*)b)[1] = (byte)(x >> 8);
 }
+
+#define MAX_DETOUR 6
 
 #endif /* MACROS_H */

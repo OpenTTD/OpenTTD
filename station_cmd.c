@@ -2232,8 +2232,8 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 							st->blocked_months == 0 &&
 							st->goods[type].rating != 0 && 
 							(!_patches.selectgoods || st->goods[type].last_speed) && // if last_speed is 0, no vehicle has been there.
-							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) &&
-							((st->facilities & (byte)~FACIL_TRUCK_STOP)!=0 || type!=CT_PASSENGERS)) {
+							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
+							((st->facilities & (byte)~FACIL_TRUCK_STOP)!=0 || type!=CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
 						
 						around[i] = st_index;
 						around_ptr[i] = st;

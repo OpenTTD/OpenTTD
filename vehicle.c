@@ -1458,11 +1458,18 @@ byte GetDirectionTowards(Vehicle *v, int x, int y)
 	return (dir+((dirdiff&7)<5?1:-1)) & 7;
 }
 
+/* Return value has bit 0x2 set, when the vehicle enters a station. Then,
+ * result << 8 contains the id of the station entered. If the return value has
+ * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
+ * other bits that can be set? */
 uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y)
 {	
 	uint old_tile = v->tile;
 	uint32 result = _tile_type_procs[GET_TILETYPE(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 	
+	/* When vehicle_enter_tile_proc returns 8, that apparently means that
+	 * we cannot enter the tile at all. In that case, don't call
+	 * leave_tile. */
 	if (!(result & 8) && old_tile != tile) {
 		VehicleLeaveTileProc *proc = _tile_type_procs[GET_TILETYPE(old_tile)]->vehicle_leave_tile_proc;
 		if (proc != NULL)

@@ -7,6 +7,10 @@
 #include "town.h"
 #include "gfx.h"
 
+/* When true, GetTrackStatus for roads will treat roads under reconstruction
+ * as normal roads instead of impassable. This is used when detecting whether
+ * a road can be removed. This is of course ugly, but I don't know a better
+ * solution just like that... */
 static bool _road_special_gettrackstatus;
 
 void RoadVehEnterDepot(Vehicle *v);

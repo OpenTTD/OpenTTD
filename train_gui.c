@@ -316,8 +316,10 @@ static void DrawTrainDepotWindow(Window *w)
 				--num < 0 && num >= -6) {
 
 			DrawTrainImage(v, x+21, y, 10, w->hscroll.pos, WP(w,traindepot_d).sel);
+			/* Draw the train number */
 			SET_DPARAM16(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
+			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
 
 			y += 14;

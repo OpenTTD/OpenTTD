@@ -8,7 +8,7 @@
 
 void ShowTrainDepotWindow(uint tile);
 
-enum {
+enum { /* These values are bitmasks for the map5 byte */
 	RAIL_TYPE_NORMAL = 0,
 	RAIL_TYPE_SIGNALS = 0x40,
 	RAIL_TYPE_SPECIAL = 0x80, // If this bit is set, then it's not a regular track.
@@ -40,6 +40,9 @@ enum {
  * 01 abcdef  => Rail with signals
  * 10 ??????  => Unused
  * 11 ????dd  => Depot
+ *
+ * abcdef is a bitmask, which contains ones for all present tracks. Below the
+ * value for each track is given. 
  */
 
 /*         4
@@ -77,8 +80,12 @@ enum RailMap2Lower4 {
 };
 
 
-/* MAP2 byte:    abcd???? => Signal On?
- * MAP3LO byte:  abcd???? => Signal Exists?
+/* MAP2 byte:    abcd???? => Signal On? Same coding as map3lo
+ * MAP3LO byte:  abcd???? => Signal Exists? 
+ *				 a and b are for diagonals, upper and left,
+ *				 one for each direction. (ie a == NE->SW, b ==
+ *				 SW->NE, or v.v., I don't know. b and c are
+ *				 similar for lower and right.
  * MAP2 byte:    ????abcd => Type of ground.
  * MAP3LO byte:  ????abcd => Type of rail.
  * MAP5:         00abcdef => rail
@@ -1796,6 +1803,7 @@ static uint32 GetTileTrackStatus_Track(uint tile, int mode) {
 		ret = (m5 | (m5 << 8)) & 0x3F3F;
 		if (!(m5 & RAIL_TYPE_SIGNALS)) {
 			if ( (ret & 0xFF) == 3)
+			/* Diagonal crossing? */
 				ret |= 0x40;
 		} else {
 			/* has_signals */
@@ -1805,6 +1813,10 @@ static uint32 GetTileTrackStatus_Track(uint tile, int mode) {
 
 			b &= a;
 
+			/* When signals are not present (in neither
+			 * direction), we pretend them to be green. (So if
+			 * signals are only one way, the other way will
+			 * implicitely become `red' */
 			if ((a & 0xC0) == 0) { b |= 0xC0; }
 			if ((a & 0x30) == 0) { b |= 0x30; }
 

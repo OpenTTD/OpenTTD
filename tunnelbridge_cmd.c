@@ -1388,6 +1388,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 			}
 
 			if (dir == (vdir^2) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
+				/* We're at the tunnel exit ?? */
 				v->tile = tile;
 				v->u.rail.track = _exit_tunnel_track[dir];
 				v->vehstatus &= ~VS_HIDDEN;
@@ -1413,6 +1414,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 			}
 
 			if (dir == (vdir^2) && (
+				/* We're at the tunnel exit ?? */
 					fc == _tunnel_fractcoord_6[dir] ||
 					fc == _tunnel_fractcoord_7[dir]) &&
 					z == 0) {

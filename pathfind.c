@@ -187,6 +187,9 @@ continue_here:;
 
 static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 
+/* Returns the end tile and the length of a tunnel. The length does not
+ * include the starting tile (entry), it does include the end tile (exit).
+ */
 FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction, byte type)
 {
 	FindLengthOfTunnelResult flotr;

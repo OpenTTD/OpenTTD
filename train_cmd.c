@@ -1921,6 +1921,12 @@ static int CountPassengersInTrain(Vehicle *v)
 	return num;
 }
 
+/*
+ * Checks whether the specified tried has a collision with another vehicle. If
+ * so, destroys this vehicle, and the other vehicle if its subtype is 0 (?).
+ * Reports the incident in a flashy news item, modifies station ratings and
+ * plays a sound.
+ */
 static void CheckTrainCollision(Vehicle *v)
 {
 	TrainCollideChecker tcc;
@@ -1991,18 +1997,20 @@ static void TrainController(Vehicle *v)
 	byte chosen_track;
 	byte old_z;
 
+	/* For every vehicle after and including the given vehicle */
 	for(;;) {
 		BeginVehicleMove(v);
 		
 		if (v->u.rail.track != 0x40) {
+			/* Not inside tunnel */
 			if (GetNewVehiclePos(v, &gp)) {
-				/* Statying in the old tile */
+				/* Staying in the old tile */
 				if (v->u.rail.track == 0x80) {
 					/* inside depot */
 					gp.x = v->x_pos;
 					gp.y = v->y_pos;
 				} else {
-					/* isnot inside depot */
+					/* is not inside depot */
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 					if (r & 0x8)
 						goto invalid_rail;
@@ -2079,6 +2087,8 @@ static void TrainController(Vehicle *v)
 				if (v->subtype == 0)
 					TrainMovedChangeSignals(gp.new_tile, dir>>1);
 
+				/* Signals can only change when the first
+				 * (above) or the last vehicle moves. */
 				if (v->next == NULL)
 					TrainMovedChangeSignals(gp.old_tile, (dir>>1) ^ 2);
 				
@@ -2117,24 +2127,27 @@ common:;
 		old_z = AfterSetTrainPos(v);
 		
 		if (prev == NULL) {
+			/* This is the first vehicle in the train */
 			AffectSpeedByZChange(v, old_z);
 			CheckTrainCollision(v);
 		}
 
-		/* continue with next vehicle */
 next_vehicle:;
+		/* continue with next vehicle */
 		prev = v;
 		if ((v=v->next) == NULL)
 			return;
 	}
 
 invalid_rail:
+	/* We've reached end of line?? */
 	if (prev != NULL) {
 		error("!Disconnecting train");
 	}
 	goto reverse_train_direction;
 
 red_light: {
+	/* We're in front of a red signal ?? */
 		/* find the first set bit in ts. need to do it in 2 steps, since
 		 * FIND_FIRST_BIT only handles 6 bits at a time. */
 		i = FindFirstBit2x64(ts);
@@ -2307,14 +2320,17 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 	if (IS_TILETYPE(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0)
 		return;
 
-	// determine the tracks on the next tile.
+	/* Determine the non-diagonal direction in which we will exit this tile */
 	t = v->direction >> 1;
 	if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[t]) {
 		t = (t - 1) & 3;
 	}
+	/* Calculate next tile */
 	tile += _tileoffs_by_dir[t];
+	// determine the track status on the next tile.
 	ts = GetTileTrackStatus(tile, 0) & _reachable_tracks[t];
 	
+	/* Calc position within the current tile ?? */
 	x = v->x_pos & 0xF;
 	y = v->y_pos & 0xF;
 	
