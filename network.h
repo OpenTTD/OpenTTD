@@ -47,6 +47,7 @@
 #define NETWORK_REVISION_LENGTH 10
 #define NETWORK_PASSWORD_LENGTH 20
 #define NETWORK_PLAYERS_LENGTH 200
+#define NETWORK_CLIENT_NAME_LENGTH 25
 
 // This is the struct used by both client and server
 //  some fields will be empty on the client (like game_password) by default
@@ -88,7 +89,7 @@ typedef struct NetworkPlayerInfo {
 
 typedef struct NetworkClientInfo {
 	uint16 client_index;														// Index of the client (same as ClientState->index)
-	char client_name[NETWORK_NAME_LENGTH];					// Name of the client
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];		// Name of the client
 	byte client_lang;																// The language of the client
 	byte client_playas;															// As which player is this client playing
 	uint32 client_ip;																// IP-address of the client (so he can be banned)

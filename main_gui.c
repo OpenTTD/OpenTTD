@@ -163,7 +163,7 @@ static void MenuClickSettings(int index)
 	case 2: ShowPatchesSelection(); return;
 	case 3: ShowNewgrf(); return;
 
-	case 5: DeleteAllNonVitalWindows(); return; 
+	case 5: DeleteAllNonVitalWindows(); return;
 	case 6: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
 	case 7: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
 	case 8: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
@@ -339,7 +339,7 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 {
 	_rename_id = desttype + (dest << 8);
 	_rename_what = 2;
-	ShowChatWindow(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 60, 250, 1, 0);
+	ShowChatWindow(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 150, 338, 1, 0);
 }
 
 void ShowNetworkGiveMoneyWindow(byte player)

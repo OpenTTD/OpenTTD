@@ -135,7 +135,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 
 	NetworkClientState *new_cs;
 	char str[100];
-	char client_name[NETWORK_NAME_LENGTH];
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
 	NetworkSend_uint8(p, error);
@@ -712,7 +712,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 {
 	// Client has the map, now start syncing
 	if (cs->status == STATUS_DONE_MAP && !cs->quited) {
-		char client_name[NETWORK_NAME_LENGTH];
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientState *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
@@ -849,7 +849,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkClientState *new_cs;
 	byte errorno = NetworkRecv_uint8(p);
 	char str[100];
-	char client_name[NETWORK_NAME_LENGTH];
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
 	if (cs->status < STATUS_DONE_MAP || cs->quited) {
@@ -880,7 +880,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	//  clients.
 	NetworkClientState *new_cs;
 	char str[100];
-	char client_name[NETWORK_NAME_LENGTH];
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
 	if (cs->status < STATUS_DONE_MAP || cs->quited) {
@@ -1043,17 +1043,17 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 {
-	char name[NETWORK_NAME_LENGTH];
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 
-	NetworkRecv_string(p, name, sizeof(name));
+	NetworkRecv_string(p, client_name, sizeof(client_name));
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (ci != NULL) {
 		// Display change
-		if (NetworkFindName(name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, name);
-			ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+		if (NetworkFindName(client_name)) {
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, client_name);
+			ttd_strlcpy(ci->client_name, client_name, sizeof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_index);
 		}
 	}
@@ -1229,7 +1229,7 @@ void NetworkPopulateCompanyInfo(void)
 		ttd_strlcpy(_network_player_info[ci->client_playas-1].players, ci->client_name, sizeof(_network_player_info[ci->client_playas-1].players));
 
 	FOR_ALL_CLIENTS(cs) {
-		char client_name[NETWORK_NAME_LENGTH];
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -1339,22 +1339,22 @@ static void NetworkAutoCleanCompanies()
 
 // This function changes new_name to a name that is unique (by adding #1 ...)
 //  and it returns true if that succeeded.
-bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH])
+bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
 	NetworkClientState *new_cs;
 	NetworkClientInfo *ci;
 	bool found_name = false;
 	byte number = 0;
-	char original_name[NETWORK_NAME_LENGTH];
+	char original_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	// We use NETWORK_NAME_LENGTH in here, because new_name is really a pointer
-	ttd_strlcpy(original_name, new_name, NETWORK_NAME_LENGTH);
+	ttd_strlcpy(original_name, new_name, NETWORK_CLIENT_NAME_LENGTH);
 
 	while (!found_name) {
 		found_name = true;
 		FOR_ALL_CLIENTS(new_cs) {
 			ci = DEREF_CLIENT_INFO(new_cs);
-			if (strncmp(ci->client_name, new_name, NETWORK_NAME_LENGTH) == 0) {
+			if (strncmp(ci->client_name, new_name, NETWORK_CLIENT_NAME_LENGTH) == 0) {
 				// Name already in use
 				found_name = false;
 				break;
@@ -1363,7 +1363,7 @@ bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH])
 		// Check if it is the same as the server-name
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL) {
-			if (strncmp(ci->client_name, new_name, NETWORK_NAME_LENGTH) == 0) {
+			if (strncmp(ci->client_name, new_name, NETWORK_CLIENT_NAME_LENGTH) == 0) {
 				// Name already in use
 				found_name = false;
 			}
@@ -1374,7 +1374,7 @@ bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH])
 
 			// Stop if we tried for more then 50 times..
 			if (number++ > 50) break;
-			snprintf(new_name, NETWORK_NAME_LENGTH, "%s #%d", original_name, number);
+			snprintf(new_name, NETWORK_CLIENT_NAME_LENGTH, "%s #%d", original_name, number);
 		}
 	}
 

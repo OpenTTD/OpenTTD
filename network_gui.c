@@ -1408,9 +1408,9 @@ press_ok:;
 
 static const Widget _chat_window_widgets[] = {
 {     WWT_IMGBTN,    14,     0,   639,     0,    13, 0x0,							STR_NULL}, // background
-{     WWT_IMGBTN,    14,     2,   379,     1,    12, 0x0,							STR_NULL}, // text box
-{    WWT_TEXTBTN,    14,   380,   509,     1,    12, STR_NETWORK_SEND,STR_NULL}, // send button
-{    WWT_TEXTBTN,    14,   510,   639,     1,    12, STR_012E_CANCEL,	STR_NULL}, // cancel button
+{     WWT_IMGBTN,    14,     2,   399,     1,    12, 0x0,							STR_NULL}, // text box
+{    WWT_TEXTBTN,    14,   400,   519,     1,    12, STR_NETWORK_SEND,STR_NULL}, // send button
+{    WWT_TEXTBTN,    14,   520,   639,     1,    12, STR_012E_CANCEL,	STR_NULL}, // cancel button
 {   WIDGETS_END},
 };
 
