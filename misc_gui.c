@@ -256,7 +256,7 @@ static const Widget _about_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,					STR_NULL},
 {    WWT_CAPTION,    14,    11,   399,     0,    13, STR_015B_OPENTTD,	STR_NULL},
 {      WWT_PANEL,    14,     0,   399,    14,   271, 0x0,								STR_NULL},
-{      WWT_FRAME,    14,     5,   394,    40,   245, STR_EMPTY,					STR_NULL},
+{      WWT_FRAME,    14,     5,   394,    40,   245, STR_NULL,					STR_NULL},
 {    WIDGETS_END},
 };
 

@@ -186,7 +186,7 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Non podes facer eso....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Non podes limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
 STR_00B7_VERSION						:{BLACK}OpenTTD versión {REV}
-STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}

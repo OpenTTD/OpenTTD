@@ -361,7 +361,7 @@ void DrawWindowWidgets(Window *w)
 
 		case WWT_FRAME: {
 			int c1,c2;
-			int x2 = 0;
+			int x2 = r.left; // by default the left side is the left side of the widget
 
 			if (wi->unkA != 0) {
 				x2 = DrawString(r.left+6, r.top, wi->unkA, 0);
