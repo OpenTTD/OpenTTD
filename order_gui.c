@@ -276,6 +276,26 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 			sel += w->vscroll.pos;
 
+			if (_ctrl_pressed && sel < v->num_orders) { // watch out for schedule_ptr overflow
+				int ord = v->schedule_ptr[sel];
+				int xy = 0;
+				switch (ord & OT_MASK) {
+				case OT_GOTO_STATION:			/* station order */
+					xy = _stations[ord >> 8].xy ;
+					break;
+				case OT_GOTO_DEPOT:				/* goto depot order */
+					xy = _depots[ord >> 8].xy;
+					break;
+				case OT_GOTO_CHECKPOINT:	/* goto checkpoint order */
+					xy = _checkpoints[ord >> 8].xy;
+				}
+
+				if (xy)
+					ScrollMainWindowToTile(xy);
+				
+				return;
+			}
+
 			if (sel == WP(w,order_d).sel) sel = -1;
 			WP(w,order_d).sel = sel;
 			SetWindowDirty(w);
