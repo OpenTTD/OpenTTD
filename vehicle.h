@@ -55,11 +55,11 @@ typedef struct VehicleRail {
 } VehicleRail;
 
 enum {
-	VRF_REVERSING = 1,
+	VRF_REVERSING = 0,
 
 	// used to calculate if train is going up or down
-	VRF_GOINGUP = 2,
-	VRF_GOINGDOWN = 4,
+	VRF_GOINGUP   = 1,
+	VRF_GOINGDOWN = 2,
 };
 
 typedef struct VehicleAir {

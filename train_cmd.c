@@ -102,9 +102,9 @@ static int GetRealisticAcceleration(Vehicle *v)
 		uint mass = rvi->weight + ((_cargoc.weights[u->cargo_type] * u->cargo_count) >> 4);
 		if (rvi->power) emass += mass;
 
-		if (u->u.rail.flags & VRF_GOINGUP) {
+		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
 			f += (float)mass * ( -F_GRAV * F_THETA);
-		} else if (u->u.rail.flags & VRF_GOINGDOWN) {
+		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
 			f += (float)mass * ( F_GRAV * F_THETA);
 		}
 
@@ -914,6 +914,32 @@ static void SetLastSpeed(Vehicle *v, int spd) {
 	}
 }
 
+static void SwapTrainFlags(byte *swap_flag1, byte *swap_flag2)
+{
+	byte flag1, flag2;
+
+	flag1 = *swap_flag1;
+	flag2 = *swap_flag2;
+
+	/* Clear the flags */
+	CLRBIT(*swap_flag1, VRF_GOINGUP);
+	CLRBIT(*swap_flag1, VRF_GOINGDOWN);
+	CLRBIT(*swap_flag2, VRF_GOINGUP);
+	CLRBIT(*swap_flag2, VRF_GOINGDOWN);
+
+	/* Reverse the rail-flags (if needed) */
+	if (HASBIT(flag1, VRF_GOINGUP)) {
+		SETBIT(*swap_flag2, VRF_GOINGDOWN);
+	} else if (HASBIT(flag1, VRF_GOINGDOWN)) {
+		SETBIT(*swap_flag2, VRF_GOINGUP);
+	}
+	if (HASBIT(flag2, VRF_GOINGUP)) {
+		SETBIT(*swap_flag1, VRF_GOINGDOWN);
+	} else if (HASBIT(flag2, VRF_GOINGDOWN)) {
+		SETBIT(*swap_flag1, VRF_GOINGUP);
+	}
+}
+
 static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 {
 	Vehicle *a, *b;
@@ -943,6 +969,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		swap_int16(&a->y_pos, &b->y_pos);
 		swap_tile(&a->tile, &b->tile);
 		swap_byte(&a->z_pos, &b->z_pos);
+
+		SwapTrainFlags(&a->u.rail.flags, &b->u.rail.flags);
 
 		/* update other vars */
 		UpdateVarsAfterSwap(a);
@@ -1006,7 +1034,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	if (IsTrainDepotTile(v->tile))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
-	v->u.rail.flags &= ~VRF_REVERSING;
+	CLRBIT(v->u.rail.flags, VRF_REVERSING);
 }
 
 /* p1 = vehicle */
@@ -1029,7 +1057,7 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		if (_patches.realistic_acceleration && v->cur_speed != 0) {
-			v->u.rail.flags ^= VRF_REVERSING;
+			TOGGLEBIT(v->u.rail.flags, VRF_REVERSING);
 		} else {
 			v->cur_speed = 0;
 			SetLastSpeed(v, 0);
@@ -1751,7 +1779,7 @@ static int UpdateTrainSpeed(Vehicle *v)
 	uint spd;
 	uint accel;
 
-	if (v->vehstatus & VS_STOPPED || v->u.rail.flags & VRF_REVERSING) {
+	if (v->vehstatus & VS_STOPPED || HASBIT(v->u.rail.flags, VRF_REVERSING)) {
 		accel = -v->acceleration * 2;
 	} else {
 		accel = v->acceleration;
@@ -1815,7 +1843,7 @@ static void TrainEnterStation(Vehicle *v, int station)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
-static byte AfterSetTrainPos(Vehicle *v)
+static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 {
 	byte new_z, old_z;
 
@@ -1827,10 +1855,13 @@ static byte AfterSetTrainPos(Vehicle *v)
 	old_z = v->z_pos;
 	v->z_pos = new_z;
 
-	v->u.rail.flags &= ~(VRF_GOINGUP | VRF_GOINGDOWN);
+	if (new_tile) {
+		CLRBIT(v->u.rail.flags, VRF_GOINGUP);
+		CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 
-	if (new_z != old_z) {
-		v->u.rail.flags |= (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN;
+		if (new_z != old_z) {
+			SETBIT(v->u.rail.flags, (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+		}
 	}
 
 	VehiclePositionChanged(v);
@@ -2228,7 +2259,7 @@ common:;
 		v->y_pos = gp.y;
 
 		/* update the Z position of the vehicle */
-		old_z = AfterSetTrainPos(v);
+		old_z = AfterSetTrainPos(v, (gp.new_tile != gp.old_tile));
 
 		if (prev == NULL) {
 			/* This is the first vehicle in the train */
@@ -2333,7 +2364,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);
 			v->cur_image = GetTrainImage(v, v->direction);
-			AfterSetTrainPos(v);
+			AfterSetTrainPos(v, false);
 		}
 	} while ( (v=v->next) != NULL);
 }
@@ -2536,7 +2567,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		v->breakdown_ctr--;
 	}
 
-	if (v->u.rail.flags & VRF_REVERSING && v->cur_speed == 0) {
+	if (HASBIT(v->u.rail.flags, VRF_REVERSING) && v->cur_speed == 0) {
 		ReverseTrainDirection(v);
 	}
 

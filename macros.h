@@ -99,9 +99,10 @@ uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int line);
 
 #define PACK_PPOINT(p) PACK_POINT((p).x, (p).y)
 
-#define HASBIT(x,y) ((x) & (1 << (y)))
-#define SETBIT(x,y) ((x) |= (1 << (y)))
-#define CLRBIT(x,y) ((x) &= ~(1 << (y)))
+#define HASBIT(x,y)    ((x) &   (1 << (y)))
+#define SETBIT(x,y)    ((x) |=  (1 << (y)))
+#define CLRBIT(x,y)    ((x) &= ~(1 << (y)))
+#define TOGGLEBIT(x,y) ((x) ^=  (1 << (y)))
 
 // checking more bits. Maybe unneccessary, but easy to use
 #define HASBITS(x,y) ((x) & (y))
