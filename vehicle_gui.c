@@ -176,7 +176,7 @@ int CDECL GeneralOwnerSorter(const void *a, const void *b)
 */
 int CDECL VehicleUnsortedSorter(const void *a, const void *b)
 {
-	return GetVehicle((*(const SortStruct*)a).index)->index - GetVehicle((*(const SortStruct*)b).index)->index;
+	return ((const SortStruct*)a)->index - ((const SortStruct*)b)->index;
 }
 
 // if the sorting criteria had the same value, sort vehicle by unitnumber

@@ -956,7 +956,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_9805_SHIPS;
 			} else {
 				/* Station Name -- (###) Trains */
-				SetDParam(0, GetStation(station)->index);
+				SetDParam(0, station);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_SHIPS;
 			}

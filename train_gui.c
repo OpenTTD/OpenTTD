@@ -1298,7 +1298,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_881B_TRAINS;
 			} else {
 				/* Station Name -- (###) Trains */
-				SetDParam(0, GetStation(station)->index);
+				SetDParam(0, station);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_TRAINS;
 			}

@@ -1012,7 +1012,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_A009_AIRCRAFT;
 			} else {
 				/* Station Name -- (###) Aircraft */
-				SetDParam(0, GetStation(station)->index);
+				SetDParam(0, station);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;
 			}

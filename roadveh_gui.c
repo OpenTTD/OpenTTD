@@ -799,7 +799,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 				w->widget[1].unkA = STR_9001_ROAD_VEHICLES;
 			} else {
 				/* Station Name -- (###) Road vehicles */
-				SetDParam(0, GetStation(station)->index);
+				SetDParam(0, station);
 				SetDParam(1, w->vscroll.count);
 				w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
 			}
