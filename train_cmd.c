@@ -100,10 +100,12 @@ static int GetRealisticAcceleration(Vehicle *v)
 		uint mass = rvi->weight + ((_cargoc.weights[u->cargo_type] * u->cargo_count) >> 4);
 		if (rvi->power) emass += mass;
 
-		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
-			f += (float)mass * ( -F_GRAV * F_THETA);
-		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
-			f += (float)mass * ( F_GRAV * F_THETA);
+		if (!IsTileType(u->tile, MP_TUNNELBRIDGE)) {
+			if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
+				f += (float)mass * ( -F_GRAV * F_THETA);
+			} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
+				f += (float)mass * ( F_GRAV * F_THETA);
+			}
 		}
 
 		// compute curve penalty..
