@@ -9,6 +9,8 @@
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
+ * Changes by Florian octo Forster are (c) by the OpenTTD development team.
+ *
  * Contains portions of documentation by TTDPatch team.
  * Thanks especially to Josef Drexler for the documentation as well as a lot
  * of help at #tycoon. Also thanks to Michael Blunck for is GRF files which
@@ -419,6 +421,7 @@ static int ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp
 
 #undef shift_buf
 
+/* Action 0x00 */
 static void VehicleChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
@@ -512,7 +515,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 				}
 				break;
 			}
-			case 0x07: {
+			case 0x07: { /* TODO */
 				/* Loading speed */
 				/* Hyronymus explained me what does
 				 * this mean and insists on having a
@@ -528,7 +531,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 			{
 				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
 ignoring:
-					grfmsg(GMS_WARN, "VehicleChangeInfo: Ignoring property %x.", prop);
+					grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
 				}
 				break;
 			}
@@ -558,6 +561,7 @@ static int _spriteset_feature;
 static int _spritesset_count;
 static struct SpriteSuperSet *_spritesset;
 
+/* Action 0x01 */
 static void SpriteNewSet(byte *buf, int len)
 {
 	/* <01> <feature> <num-sets> <num-ent>
@@ -584,12 +588,13 @@ static void SpriteNewSet(byte *buf, int len)
 		}
 
 		_spriteset_start = _cur_spriteid + 1;
+		_spriteset_feature = feature;
 		_spriteset_numsets = buf[2];
 		_spriteset_numents = buf[3];
-		_spriteset_feature = feature;
 	}
 }
 
+/* Action 0x02 */
 static void SpriteNewSuperset(byte *buf, int len)
 {
 	byte *bufend = buf + len;
@@ -699,10 +704,13 @@ static void SpriteNewSuperset(byte *buf, int len)
 	}
 }
 
+/* Action 0x03 */
 static void VehicleMapSpriteSuperset(byte *buf, int len)
 {
 	byte *bufend = buf + len;
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
+	 * id-list	:= [<id>] [id-list]
+	 * cargo-list	:= <cargo-type> <cid> [cargo-list]
 	 *
 	 * B feature       see action 0
 	 * B n-id          bits 0-6: how many IDs this definition applies to
@@ -797,6 +805,7 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 	}
 }
 
+/* Action 0x04 */
 static void VehicleNewName(byte *buf, int len)
 {
 	/* <04> <veh-type> <language-id> <num-veh> <offset> <data...>
@@ -840,6 +849,7 @@ static void VehicleNewName(byte *buf, int len)
 	}
 }
 
+/* Action 0x05 */
 static void GraphicsNew(byte *buf, int len)
 {
 	/* <05> <graphics-type> <num-sprites> <other data...>
@@ -848,8 +858,21 @@ static void GraphicsNew(byte *buf, int len)
 	 * B num-sprites   How many sprites are in this set?
 	 * V other data    Graphics type specific data.  Currently unused. */
 	/* TODO */
+
+	uint8 type;
+	uint8 num;
+
+	if (len != 2)
+		return;
+
+	type = buf[0];
+	num = buf[1];
+
+	grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type %x) sprite block of length %d (unimplemented, ignoring).\n",
+	       type, num);
 }
 
+/* Action 0x06 */
 static void CfgApply(byte *buf, int len)
 {
 	/* <06> <param-num> <param-size> <offset> ... <FF>
@@ -863,8 +886,11 @@ static void CfgApply(byte *buf, int len)
 	 * B offset        Offset into data from beginning of next sprite
 	 *                 to place where parameter is to be stored. */
 	/* TODO */
+	grfmsg(GMS_NOTICE, "CfgApply: Ignoring (not implemented).\n");
 }
 
+/* Action 0x07 */
+/* Action 0x09 */
 static void SkipIf(byte *buf, int len)
 {
 	/* <07/09> <param-num> <param-size> <condition-type> <value> <num-sprites>
@@ -928,7 +954,11 @@ static void GRFInfo(byte *buf, int len)
 		uint8 version = buf[1];
 		// this is de facto big endian - grf_load_dword() unsuitable
 		uint32 grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
-		DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n", _cur_grffile, version, grfid, buf+6, buf+6+strlen(buf+6)+1);
+		char *name = buf + 6;
+		char *info = name + strlen(name) + 1;
+
+		DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n",
+		               _cur_grffile, version, grfid, name, info);
 	}
 }
 
@@ -988,6 +1018,7 @@ static void GRFComment(byte *buf, int len)
 	 * V ignored       Anything following the 0C is ignored */
 }
 
+/* Action 0x0D */
 static void ParamSet(byte *buf, int len)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]
@@ -1053,6 +1084,8 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid)
 	byte action;
 	byte *buf = malloc(num);
 	int i;
+
+	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 
 	_cur_grffile = filename;
 	_cur_spriteid = spriteid;
