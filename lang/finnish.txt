@@ -342,7 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Suorituskyvyn historiakuvaaja
 STR_0158_COMPANY_VALUE_GRAPH					:Yhtiön arvon kuvaaja
 STR_0159_CARGO_PAYMENT_RATES					:Rahtimaksuliikenne
 STR_015A_COMPANY_LEAGUE_TABLE					:Yhtiökilpataulukko
-STR_PERFORMANCE_DETAIL_MENU					:Yksityiskohtasuoritustehoarvo
+STR_PERFORMANCE_DETAIL_MENU					:Suoritustehoarviointi
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}Tietoja OpenTTD:stä
@@ -448,7 +448,7 @@ STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Puhdistuksen hinta: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR						:{BLACK}Puhdistuksen hinta: {LTBLUE}{CURRENCY}
 STR_01A6_N_A							:N/A
 STR_01A7_OWNER							:{BLACK}Omistaja: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY					:{BLACK}Paikalliset viranomaiset: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY					:{BLACK}Maanomistaja: {LTBLUE}{STRING}
 STR_01A9_NONE							:Ei mitään
 STR_01AA_NAME							:{BLACK}Nimi
 STR_01AB							:{BLACK}{TINYFONT}{STRING}
@@ -551,8 +551,8 @@ STR_0202_SEND_MESSAGE						:Lähetä viesti
 STR_0203_SHOW_LAST_MESSAGE_NEWS					:{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset
 STR_0204_MESSAGE_OPTIONS					:{WHITE}Viestiasetukset
 STR_0205_MESSAGE_TYPES						:{BLACK}Viestityypit:-
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Ensimmäisen ajoneuvon saapuminen pelaajan asemalle
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Ensimmäisen ajoneuvon saapuminen kilpailijan asemalle
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Ensimmäisen ajoneuvon saapuu pelaajan asemalle
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE				:{YELLOW}Ensimmäinen ajoneuvon saapuu kilpailijan asemalle
 STR_0208_ACCIDENTS_DISASTERS					:{YELLOW}Vahingot/onnettomuudet
 STR_0209_COMPANY_INFORMATION					:{YELLOW}Yhtiön tiedot
 STR_020A_ECONOMY_CHANGES					:{YELLOW}Talouden muutokset
@@ -714,7 +714,7 @@ STR_02A5_TOWN_SIZE						:{YELLOW}Kaupungin koko:
 
 STR_02B6							:{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS				:{BLACK}Näytä viimeisin viesti tai uutisraportti
-STR_02B8_SUMMARY						:{BLACK}Yhteenveto
+STR_02B8_SUMMARY						:{BLACK}Tiivistetty
 STR_02B9_FULL							:{BLACK}Täysi
 STR_02BA							:{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY						:Kaupunkihakemisto
@@ -951,10 +951,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Lentokoneella {COMMA16} on kaksinker
 STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Lentokoneella {COMMA16} on laiton asema käskyissä
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Automaattiuudistus epäonnistui junalle {COMMA16} (rahoitusraja)
-STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Automaattiuudistus epäonnistui maantieajoneuvolle {COMMA16} (rahoitusraja)
-STR_SHIP_AUTORENEW_FAILED					:{WHITE}Automaattiuudistus epäonnistui laivalle {COMMA16} (rahoitusraja)
-STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Automaattiuudistus epäonnistui lentokoneelle {COMMA16} (rahoitusraja)
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Itseuudistus epäonnistui junalle {COMMA16} (rahoitusraja)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Itseuudistus epäonnistui maantieajoneuvolle {COMMA16} (rahoitusraja)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Itseuudistus epäonnistui laivalle {COMMA16} (rahoitusraja)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Itseuudistus epäonnistui lentokoneelle {COMMA16} (rahoitusraja)
 
 STR_CONFIG_PATCHES						:{BLACK}Muokkaa paikkauksia
 STR_CONFIG_PATCHES_TIP						:{BLACK}Muokkaa paikkauksia
@@ -975,14 +975,14 @@ STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Erittäin pitkien siltojen rakentamin
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Salli varikollemenomääräykset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Raaka-aineteollisuuden rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Salli useita samanlaisia teollisuustyyppejä kaupunkia kohti: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Samantyyppisiä teollisuustyyppejä voidaan rakentaa lähekkäin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Samantyyppistä teollisuutta voidaan rakentaa lähekkäin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Näytä merkit ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch-yhteensopiva pysähtymätön käsittely: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Maantieajoneuvojonotus (kvanttitehosteilla): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Salli paikallisten viranomaisten lahjominen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Uusi huoltoasemahaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Ei-yhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Uusi algoritmi junien tienhaulle: {ORANGE}{STRING}
@@ -997,9 +997,9 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:kyllä, mutta ei pysäytetyille ajoneu
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:kaikille ajoneuvoille
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Varoita, jos junan tuotto on negatiivinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Ajoneuvot eivät vanhene: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaattiuudista ajoneuvo, kun se vanhenee
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automaattiuudista, kun ajoneuvo on {ORANGE}{STRING}{LTBLUE} kuukauden kuluttua/mentyä vanhentunut
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automaattiuudistuksen pienin tarvittava rahamäärä: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Itseuudista ajoneuvo, kun se vanhenee
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Itseuudista {ORANGE}{STRING}{LTBLUE} kuukautta maksimi-ikää ennen/-iän jälkeen
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Itseuudistuksen pienin tarvittava rahamäärä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Näkymättömät puut (näkymättömillä rakennuksilla): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
@@ -1072,8 +1072,8 @@ STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Kohteena {CHECKPOINT}, {VELOCITY}
 
 STR_GO_TO_CHECKPOINT						:Kierrä rastin {CHECKPOINT} kautta
 
-STR_CHECKPOINTNAME_CITY						:Rasti {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Rasti {TOWN} #{COMMA16}
+STR_CHECKPOINTNAME_CITY						:Rasti: {TOWN}
+STR_CHECKPOINTNAME_CITY_SERIAL					:Rasti: {TOWN} #{COMMA16}
 STR_LANDINFO_CHECKPOINT						:Rasti
 
 STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
@@ -1120,7 +1120,7 @@ STR_CONVERT_RAIL_TIP						:{BLACK}Muunna/päivitä raidetyyppi
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP				:{BLACK}Raahaa junan veturi tähän myydäksesi koko junan
 
-STR_DRAG_DROP							:{BLACK}Raahaa ja pudota
+STR_DRAG_DROP							:{BLACK}Raahaa&pudota
 STR_STATION_DRAG_DROP						:{BLACK}Rakenna asema raahaamalla ja pudottamalla
 
 STR_FAST_FORWARD						:{BLACK}Kelaa peliä eteenpäin
@@ -1292,8 +1292,8 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE				:{WHITE}Ei voi rakentaa merkkejä...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Ei voi rakentaa rautatietä...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Ei voi siirtää rautatietä tästä...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Ei voi siirtää merkkejä tästä...
-STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Junavarikon suunnastus
-STR_1015_RAILROAD_CONSTRUCTION					:Junaradan rakentaminen
+STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Junavarikon suunn.
+STR_1015_RAILROAD_CONSTRUCTION					:Rautatien rakentaminen
 STR_1016_MONORAIL_CONSTRUCTION					:Yksiraiteisen rakentaminen
 STR_1017_MAGLEV_CONSTRUCTION					:MagLevin rakentaminen
 STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Rakenna rautatiekisko
@@ -1323,7 +1323,7 @@ STR_1802_ROAD_CONSTRUCTION					:{WHITE}Tien rakentaminen
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Valitse maantiesilta
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Ei voi rakentaa tietä...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Ei voi siirtää tietä tästä...
-STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Huoltoaseman suunnastus
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Huoltoaseman suunn.
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Ei voi rakentaa huoltoasemaa...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Ei voi rakentaa linja-autoasemaa...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Ei voi rakentaa lastauslaituria...
@@ -1376,8 +1376,8 @@ STR_201C_WAREHOUSE						:Varasto
 STR_201D_OFFICE_BLOCK						:Toimistorakennus
 STR_201E_STADIUM						:Stadioni
 STR_201F_OLD_HOUSES						:Vanhoja taloja
-STR_2020_LOCAL_AUTHORITY					:{BLACK}Paikalliset viranomaiset
-STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Näytä tietoja paikallisista viranomaisista
+STR_2020_LOCAL_AUTHORITY					:{BLACK}Viranomaiset
+STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Näytä tietoja paikallisviranomaisista
 STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN}:n paikallisviranomaiset
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
@@ -1410,7 +1410,7 @@ STR_203E_OFFICES						:Toimistoa
 STR_203F_HOUSES							:Taloa
 STR_2040_CINEMA							:Elokuvateatteri
 STR_2041_SHOPPING_MALL						:Kauppakeskus
-STR_2042_DO_IT							:{BLACK}Tee niin
+STR_2042_DO_IT							:{BLACK}Sijoita
 STR_2043_LIST_OF_THINGS_TO_DO_AT				:{BLACK}Luettelo kaupungissa tehtävistä asioista - klikkaa kohdetta saadaksesi lisätietoja
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Suorita ylläolevassa listassa tähdennetyt toiminnot
 STR_2045_ACTIONS_AVAILABLE					:{BLACK}Saatavilla olevat toiminnot:
@@ -1498,7 +1498,7 @@ STR_303E_NO_LONGER_ACCEPTS					:{WHITE}Asema {STATION} ei enää ota vastaan {STRI
 STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}Asema {STATION} ei enää ota vastaan {STRING} tai {STRING}
 STR_3040_NOW_ACCEPTS						:{WHITE}Asema {STATION} ottaa vastaan {STRING}
 STR_3041_NOW_ACCEPTS_AND					:{WHITE}Asema {STATION} ottaa vastaan {STRING} ja {STRING}
-STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Linta-autoaseman suunnastus
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Linta-autoaseman suunn.
 STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Lastauslaiturin suunnastus
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Liian lähellä toista linja-autoasemaa
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Liian lähellä toista lastauslaituria
@@ -1545,7 +1545,7 @@ STR_306B_HELIPORT						:{BLACK}Helikopterikenttä
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...asema liian levittäytynyt
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Telakan suunnastus
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Telakan suunn.
 STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...pitää rakentaa veteen
 STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Ei voi rakentaa telakkaa...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Valitse telakan suunnastus
@@ -1834,11 +1834,11 @@ STR_700E_FINANCES						:{WHITE}{STRING} Talous{BLACK}{STRING}
 STR_700F_EXPENDITURE_INCOME					:{WHITE}Menot/tulot
 STR_7010							:{WHITE}{NUMU16}
 STR_7011_CONSTRUCTION						:{GOLD}Rakentaminen
-STR_7012_NEW_VEHICLES						:{GOLD}Uusia ajoneuvoja
-STR_7013_TRAIN_RUNNING_COSTS					:{GOLD}Junien käyttökustannukset
-STR_7014_ROAD_VEH_RUNNING_COSTS					:{GOLD}Autojen käyttökustannukset
-STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Lentokoneiden käyttökustannukset
-STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Laivojen käyttökustannukset
+STR_7012_NEW_VEHICLES						:{GOLD}Uudet ajoneuvot
+STR_7013_TRAIN_RUNNING_COSTS					:{GOLD}Junien käyttökust.
+STR_7014_ROAD_VEH_RUNNING_COSTS					:{GOLD}Autojen käyttökust.
+STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Lentokoneiden käyttökust.
+STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Laivojen käyttökust.
 STR_7017_PROPERTY_MAINTENANCE					:{GOLD}Omaisuudenhallinta
 STR_7018_TRAIN_INCOME						:{GOLD}Junien tulot
 STR_7019_ROAD_VEHICLES_INCOME					:{GOLD}Maantieajoneuvojen tulot
@@ -1893,9 +1893,9 @@ STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Hyväksy uusien kasvojen valinta
 STR_7049_SELECT_MALE_FACES					:{BLACK}Valitse miehen kasvot
 STR_704A_SELECT_FEMALE_FACES					:{BLACK}Valitse naisen kasvot
 STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Luo satunnaiset kasvot
-STR_704C_KEY							:{BLACK}Näppäin
-STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Näytä kuvaajanäppäin
-STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Näppäin yhtiön kuvaajiin
+STR_704C_KEY							:{BLACK}Selite
+STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Näytä kuvaajaselite
+STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Selite yhtiön kuvaajiin
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY				:{BLACK}Klikkaa tässä saadaksesi yhtiön merkinnän graafissa päälle/pois
 STR_7050_UNITS_OF_CARGO_DELIVERED				:{WHITE}Rahtia kuljetettu (yksikköä)
 STR_7051_COMPANY_PERFORMANCE_RATINGS				:{WHITE}Yhtiön suorituskykyarvio (maksimiarvio=1000)
@@ -2225,14 +2225,14 @@ STR_8806_GO_TO							:Asemalle {STATION}
 STR_8807_GO_TO_UNLOAD						:Asemalle {STATION} (pura kuorma)
 STR_8808_GO_TO_LOAD						:Asemalle {STATION} (lastaa)
 STR_8809							:
-STR_880A_GO_NON_STOP_TO						:Pysähtymättä asemalle {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD					:Pysähtymättä asemalle {STATION} (pura kuorma)
-STR_880C_GO_NON_STOP_TO_LOAD					:Pysähtymättä asemalle {STATION} (lastaa)
+STR_880A_GO_NON_STOP_TO						:Tauotta asemalle {STATION}
+STR_880B_GO_NON_STOP_TO_UNLOAD					:Tauotta asemalle {STATION} (pura kuorma)
+STR_880C_GO_NON_STOP_TO_LOAD					:Tauotta asemalle {STATION} (lastaa)
 STR_880D							:
 STR_880E_GO_TO_TRAIN_DEPOT					:Mene {TOWN}:n junavarikolle
 STR_SERVICE_AT_TRAIN_DEPOT					:Huolto {TOWN}:n junavarikolla
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Mene pysähtymättä {TOWN}:n junavarikolle
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Huolto pysähtymättä {TOWN}:n junavarikolla
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Mene tauotta {TOWN} junavarikolle
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Huolto tauotta {TOWN} junavarikolla
 
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Suuntana {TOWN}:n junavarikko
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Suuntana {TOWN}:n junavarikko, {VELOCITY}
@@ -2258,7 +2258,7 @@ STR_8820_RENAME							:{BLACK}Uudelleennimeä
 STR_8821_COST_WEIGHT_T_T_CAPACITY				:{BLACK}Hinta: {GOLD}{CURRENCY}{}{BLACK}Paino: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapasiteetti: {GOLD}{STRING}
 STR_8823_SKIP							:{BLACK}Ohita
 STR_8824_DELETE							:{BLACK}Poista
-STR_8825_NON_STOP						:{BLACK}Pysähtymättä
+STR_8825_NON_STOP						:{BLACK}Tauotta
 STR_8826_GO_TO							:{BLACK}Mene
 STR_8827_FULL_LOAD						:{BLACK}Täysi lasti
 STR_8828_UNLOAD							:{BLACK}Pura lasti
@@ -2283,13 +2283,13 @@ STR_8838_N_A							:N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Ei voi myydä rautatieajoneuvoa...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Reittiä paikalliselle varikolle ei löydy
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Ei voi pysäyttää/käynnistää junaa...
-STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Huoltoväli: {LTBLUE}{COMMA16}päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Huoltoväli: {LTBLUE}{COMMA16} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Huoltoväli: {LTBLUE}{COMMA16}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Junat - klikkaa junaa saadaksesi tietoja
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Rakenna uusia junia (vaatii junavarikon)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Junat - klikkaa junaa saadaksesi tietoja, raahaa ajoneuvo lisätäksesi/poistaaksesi junasta
 STR_8840_BUILD_NEW_TRAIN_VEHICLE				:{BLACK}Rakenna uusi juna-ajoneuvo
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE				:{BLACK}Raahaa juna-ajoneuvä tähän myydäksesi
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE				:{BLACK}Raahaa juna-ajoneuvo tähän myydäksesi sen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Keskitä näkymä junavarikon sijaintiin
 STR_8843_TRAIN_VEHICLE_SELECTION				:{BLACK}Juna-ajoneuvon valintalista - klikkaa ajoneuvoja saadaksesi tietoja
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN				:{BLACK}Rakenna tähdennetty juna-ajoneuvo
@@ -2355,7 +2355,7 @@ STR_900C_DETAILS						:{WHITE}{STRING} (yksityiskohdat)
 STR_900D_AGE_RUNNING_COST_YR					:{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustanukset: {LTBLUE}{CURRENCY}/vuosi
 STR_900E_MAX_SPEED						:{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Tuottoa tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS					:{BLACK}Toimintavarmuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime vuollon jälkeen: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS					:{BLACK}Toimintavarmuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA16}
 STR_9011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUMU16}{BLACK} Arvo: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY						:{BLACK}Kapasiteetti: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE					:{WHITE}...pitää olla pysähtyneenä huoltoasemalle
@@ -2376,7 +2376,7 @@ STR_9020_FORCE_VEHICLE_TO_TURN_AROUND				:{BLACK}Pakota ajoneuvo kääntämään ympä
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS				:{BLACK}Näytä maantieajoneuvon tiedot
 STR_9022_VEHICLES_CLICK_ON_VEHICLE				:{BLACK}Ajoneuvot - klikkaa ajoneuvoa saadaksesi tietoja
 STR_9023_BUILD_NEW_ROAD_VEHICLE					:{BLACK}Rakenna uusi maantieajoneuvo
-STR_9024_DRAG_ROAD_VEHICLE_TO_HERE				:{BLACK}Raahaa maantieajoneuvo tähän myydäksesi
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE				:{BLACK}Raahaa maantieajoneuvo tähän myydäksesi sen
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD				:{BLACK}Keskitä päänäkymä huoltoaseman sijaintiin
 STR_9026_ROAD_VEHICLE_SELECTION					:{BLACK}Maantieajoneuvon valintalista - klikkaa ajoneuvossa saadaksesi tietoja
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD				:{BLACK}Rakenna tähdennetty maantieajoneuvo
@@ -2400,8 +2400,8 @@ STR_9038_GO_TO_ROADVEH_DEPOT					:Mene {TOWN}:n huoltoasemalle
 STR_SERVICE_AT_ROADVEH_DEPOT					:Huolto {TOWN}:n huoltoasemalla
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION					:Sataman rakennus
-STR_9801_DOCK_CONSTRUCTION					:{WHITE}Sataman rakennus
+STR_9800_DOCK_CONSTRUCTION					:Sataman rakentaminen
+STR_9801_DOCK_CONSTRUCTION					:{WHITE}Sataman rakentaminen
 STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Ei voi rakentaa satamaa tähän...
 STR_9803_SHIP_DEPOT						:{WHITE}{TOWN}:n telakka
 STR_9804_NEW_SHIPS						:{BLACK}Uusia laivoja
@@ -2434,7 +2434,7 @@ STR_981D_BUILD_SHIP_DOCK					:{BLACK}Rakenna laivasatama
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Laivat - klikkaa laivaa saadaksesi tietoja
 STR_9820_BUILD_NEW_SHIP						:{BLACK}Rakenna uusi laiva
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Raahaa laiva tähän myydäksesi
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Raahaa laiva tähän myydäksesi sen
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Keskitä näkymä telakan sijaintiin
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Laivat - klikkaa laivaa saadaksesi tietoja
 STR_9824_BUILD_NEW_SHIPS_REQUIRES				:{BLACK}Rakenna uusia laivoja (vaatii telakan)
@@ -2508,7 +2508,7 @@ STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Lentokoneet - klikkaa lentokonett
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Rakenna uusi lentokone (vaatii lentokentän lentokonehallilla)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Lentokoneet - klikkaa lentokonetta saadaksesi tietoja
 STR_A022_BUILD_NEW_AIRCRAFT					:{BLACK}Rakenna uusi lentokone
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Raahaa lentokone tähän myydäksesi
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Raahaa lentokone tähän myydäksesi sen
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR				:{BLACK}Keskitä näkymä lentokonehallin sijaintiin
 STR_A025_AIRCRAFT_SELECTION_LIST				:{BLACK}Lentokonevalintalista - klikkaa lentokonetta saadaksesi tietoja
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT				:{BLACK}Rakenna tähdennetty lentokone
