@@ -526,30 +526,30 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			byte cargo;
 			EngineInfo *info;
 				
-			if ( selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] <= SHIP_ENGINES_INDEX )
+			if ( selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] <= SHIP_ENGINES_INDEX ) {
 				cargo = RoadVehInfo(selected_id[0])->cargo_type; 
 
-			do {
-				info = &_engine_info[engine_id];
-				if (ENGINE_AVAILABLE) {
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-						DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-						y += 14;
-					}
-						
-					if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
-						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
-							DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-							y2 += 14;
+				do {
+					info = &_engine_info[engine_id];
+					if (ENGINE_AVAILABLE) {
+						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
+							DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							y += 14;
 						}
-						sel[1]--;
+					
+						if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
+							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
+								DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+								DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+								y2 += 14;
+							}
+							sel[1]--;
+						}
+					sel[0]--;
 					}
-				sel[0]--;
-				}
-			} while (++engine_id, ++e,--num);
-
+				} while (++engine_id, ++e,--num);
+			}
 			break;
 		}
 				
@@ -563,30 +563,30 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			if ( selected_id[0] != -1 ) {
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
-			}
 				
-			do {
-				info = &_engine_info[engine_id];
-				if (ENGINE_AVAILABLE) {
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-						DrawShipEngine(x+35, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-						y += 24;
-					}
-					if ( selected_id[0] != -1 ) {
-						if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-								DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-								DrawShipEngine(x2+35, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-								y2 += 24;
-							}
-							sel[1]--;
+				do {
+					info = &_engine_info[engine_id];
+					if (ENGINE_AVAILABLE) {
+						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
+							DrawShipEngine(x+35, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							y += 24;
 						}
+						if ( selected_id[0] != -1 ) {
+							if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
+								if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
+									DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+									DrawShipEngine(x2+35, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+									y2 += 24;
+								}
+								sel[1]--;
+							}
+						}
+						sel[0]--;
 					}
-					sel[0]--;
-				}
-			} while (++engine_id, ++e,--num);
-		break;
+				} while (++engine_id, ++e,--num);
+			}
+			break;
 		}   //end of ship
 			
 		case VEH_Aircraft: {
@@ -933,6 +933,7 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 			w->vscroll.cap  = 4;
 			WP(w,replaceveh_d).line_height = 24;
 			break;
+		default: return;
 	}
 	WP(w,replaceveh_d).vehicletype = vehicletype;
 	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same

@@ -76,6 +76,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			pos = x;
 			sb = &w->hscroll;
 		}
+		default: return; //this should never happen
 	}
 	if (pos <= mi+9) {
 		// Pressing the upper button?
