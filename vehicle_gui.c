@@ -373,7 +373,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
-			railtype = WP(w,replaceveh_d).railtype;
+			railtype = _railtype_selected_in_replace_gui;
 			w->widget[13].color = _player_colors[_local_player];	// sets the colour of that art thing
 			w->widget[16].color = _player_colors[_local_player];	// sets the colour of that art thing
 			for (engine_id = 0; engine_id < NUM_TRAIN_ENGINES; engine_id++) {
@@ -524,7 +524,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
-			byte railtype = WP(w,replaceveh_d).railtype;
+			byte railtype = _railtype_selected_in_replace_gui;
 			DrawString(157, 89 + (14 * w->vscroll.cap), _rail_types_list[railtype], 0x10);
 			/* draw sorting criteria string */
 
@@ -834,7 +834,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						if ( !(HASBIT(DEREF_ENGINE(NUM_NORMAL_RAIL_ENGINES)->player_avail, _local_player)))
 							engine_avail = 6;
 					}
-					ShowDropDownMenu(w, _rail_types_list, WP(w,replaceveh_d).railtype, 15, engine_avail, 1);
+					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, engine_avail, 1);
 					break;
 				}
 				case 4: {
@@ -867,7 +867,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_DROPDOWN_SELECT: { /* we have selected a dropdown item in the list */
-			WP(w,replaceveh_d).railtype = e->dropdown.index;
+			_railtype_selected_in_replace_gui = e->dropdown.index;
 			SetWindowDirty(w);
 		} break;
 

@@ -323,7 +323,6 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
 
 typedef struct {
-	byte railtype;
 	byte vehicletype;
 	byte sel_index[2];
 	int16 sel_engine[2];

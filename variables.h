@@ -434,6 +434,7 @@ VARDEF byte _vehicle_design_names;
 /* Autoreplace vehicle stuff*/
 VARDEF byte _autoreplace_array[256];
 VARDEF uint16 _player_num_engines[256];
+VARDEF byte _railtype_selected_in_replace_gui;
 
 /* Debugging levels */
 VARDEF int _debug_spritecache_level;
