@@ -1660,7 +1660,7 @@ void DrawMouseCursor()
 	memcpy_pitch(
 		_cursor_backup,
 		_screen.dst_ptr + _cursor.draw_pos.x + _cursor.draw_pos.y * _screen.pitch,
-		_cursor.draw_size.x, _cursor.draw_size.y, _screen.width, _cursor.draw_size.x);
+		_cursor.draw_size.x, _cursor.draw_size.y, _screen.pitch, _cursor.draw_size.x);
 
 	// Draw cursor on screen
 	_cur_dpi = &_screen;
@@ -1711,8 +1711,8 @@ void DrawDirtyBlocks()
 {
 	byte *b = _dirty_blocks;
 	int x=0,y=0;
-	int w = (_screen.width + 63) & ~63;
-	int h = _screen.height;
+	const int w = (_screen.width + 63) & ~63;
+	const int h = (_screen.height + 7) & ~7;
 
 	do {
 		if (*b != 0) {

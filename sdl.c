@@ -248,9 +248,8 @@ static void GetVideoModes(void) {
 		for(i = 0; modes[i]; i++) {
 			int w = modes[i]->w;
 			int h = modes[i]->h;
-			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH+1) &&
-					IS_INT_INSIDE(h, 480, MAX_SCREEN_HEIGHT+1) &&
-					w%8 == 0 && h%8 == 0) { // disable screen resolutions which are not multiples of 8
+			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH + 1) &&
+					IS_INT_INSIDE(h, 480, MAX_SCREEN_HEIGHT + 1)) {
 				int j;
 				for (j = 0; j < n; ++j)
 					if (_resolutions[j][0] == w && _resolutions[j][1] == h)
@@ -270,34 +269,41 @@ static void GetVideoModes(void) {
 static int GetAvailableVideoMode(int *w, int *h)
 {
 	int i;
-
+	int best;
+	uint delta;
 
 	// all modes available?
 	if (_all_modes)
 		return 1;
 
 	// is the wanted mode among the available modes?
-	for(i = 0; i != _num_resolutions; i++) {
+	for (i = 0; i != _num_resolutions; i++) {
 		if(*w == _resolutions[i][0] && *h == _resolutions[i][1])
 			return 1;
 	}
 
+	// use the closest possible resolution
+	best = 0;
+	delta = abs((_resolutions[0][0] - *w) * (_resolutions[0][1] - *h));
+	for (i = 1; i != _num_resolutions; ++i) {
+		uint newdelta = abs((_resolutions[i][0] - *w) * (_resolutions[i][1] - *h));
+		if (newdelta < delta) {
+			best = i;
+			delta = newdelta;
+		}
+	}
+
 	// use the default mode
-	*w = _resolutions[0][0];
-	*h = _resolutions[0][1];
+	*w = _resolutions[best][0];
+	*h = _resolutions[best][1];
 	return 2;
 }
 
 static bool CreateMainSurface(int w, int h)
 {
 	SDL_Surface *newscreen;
-	bool sizechange;
 
 	GetAvailableVideoMode(&w, &h);
-
-	sizechange = (_screen.width != w || _screen.height != h);
-	_screen.pitch = _screen.width = w;
-	_screen.height = h;
 
 	DEBUG(misc, 0) ("sdl: using mode %dx%d", w, h);
 
@@ -306,14 +312,17 @@ static bool CreateMainSurface(int w, int h)
 	if(newscreen == NULL)
 		return false;
 
+	_screen.width = newscreen->w;
+	_screen.height = newscreen->h;
+	_screen.pitch = newscreen->pitch;
+
 	_sdl_screen = newscreen;
 	InitPalette();
 
 	SDL_CALL SDL_WM_SetCaption("OpenTTD", "OpenTTD");
 	SDL_CALL SDL_ShowCursor(0);
 
-//	if(sizechange)
-		GameSizeChanged();
+	GameSizeChanged();
 
 	return true;
 }
@@ -491,8 +500,8 @@ static int PollEvent() {
 			w = ev.resize.w;
 			h = ev.resize.h;
 
-			w = clamp(w & ~0x7, 64, MAX_SCREEN_WIDTH);
-			h = clamp(h & ~0x7, 64, MAX_SCREEN_HEIGHT);
+			w = clamp(w, 64, MAX_SCREEN_WIDTH);
+			h = clamp(h, 64, MAX_SCREEN_HEIGHT);
 
 			ChangeResInGame(w, h);
 

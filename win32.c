@@ -340,8 +340,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		w = r->right - r->left - (r2.right - r2.left);
 		h = r->bottom - r->top - (r2.bottom - r2.top);
 		if (_wnd.double_size) { w >>= 1; h >>= 1; }
-		w = clamp(w & ~0x7, 64, MAX_SCREEN_WIDTH);
-		h = clamp(h & ~0x7, 64, MAX_SCREEN_HEIGHT);
+		w = clamp(w, 64, MAX_SCREEN_WIDTH);
+		h = clamp(h, 64, MAX_SCREEN_HEIGHT);
 		if (_wnd.double_size) { w <<= 1; h <<= 1; }
 		SetRect(&r2, 0, 0, w, h);
 
@@ -506,13 +506,14 @@ static bool AllocateDibSection(int w, int h)
 	BITMAPINFO *bi;
 	HDC dc;
 
-	w = clamp(w & ~7, 64, MAX_SCREEN_WIDTH);
-	h = clamp(h & ~7, 64, MAX_SCREEN_HEIGHT);
+	w = clamp(w, 64, MAX_SCREEN_WIDTH);
+	h = clamp(h, 64, MAX_SCREEN_HEIGHT);
 
 	if (w == _screen.width && h == _screen.height)
 		return false;
 
-	_screen.width = _screen.pitch = w;
+	_screen.width = w;
+	_screen.pitch = (w + 3) & ~0x3;
 	_screen.height = h;
 
 	if (_wnd.alloced_bits) {
@@ -524,16 +525,15 @@ static bool AllocateDibSection(int w, int h)
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD)*256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
-	{
-		if (_wnd.double_size) {
-			_wnd.alloced_bits = _wnd.buffer_bits = (byte*)malloc(w * h);
-			w *= 2;
-			h *= 2;
-		}
-
-		bi->bmiHeader.biWidth = _wnd.width = w;
-		bi->bmiHeader.biHeight = -(_wnd.height = h);
+	if (_wnd.double_size) {
+		w = (w + 3) & ~0x3;
+		_wnd.alloced_bits = _wnd.buffer_bits = (byte*)malloc(w * h);
+		w *= 2;
+		h *= 2;
 	}
+
+	bi->bmiHeader.biWidth = _wnd.width = w;
+	bi->bmiHeader.biHeight = -(_wnd.height = h);
 
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = 8;

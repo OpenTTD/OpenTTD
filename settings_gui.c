@@ -53,8 +53,9 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 static int GetCurRes()
 {
 	int i;
-	for(i=0; i!=_num_resolutions; i++)
-		if (_resolutions[i][0] == _cur_resolution[0] && _resolutions[i][1] == _cur_resolution[1])
+	for(i = 0; i != _num_resolutions; i++)
+		if (_resolutions[i][0] == _screen.width &&
+				_resolutions[i][1] == _screen.height)
 			break;
 	return i;
 }
