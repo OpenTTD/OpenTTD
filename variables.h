@@ -431,7 +431,8 @@ extern const TileIndexDiff _tileoffs_by_dir[4];
 /* misc */
 VARDEF byte str_buffr[512];
 VARDEF char _screenshot_name[128];
-VARDEF char _userstring[128];
+#define USERSTRING_LEN 128
+VARDEF char _userstring[USERSTRING_LEN];
 VARDEF byte _vehicle_design_names;
 
 VARDEF SignStruct _sign_list[40];

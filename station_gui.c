@@ -375,6 +375,8 @@ static void DrawStationViewWindow(Window *w)
 		b += 3;
 
 		for(i=0; i!=NUM_CARGO; i++) {
+			if (b + 5 > USERSTRING_LEN - 1)
+				break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
 				b[0] = 0x81;
 				WRITE_LE_UINT16(b+1, _cargoc.names_s[i]);

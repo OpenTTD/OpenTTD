@@ -601,7 +601,8 @@ StringID GetCustomEngineName(int engine)
 {
 	if (!_engine_custom_names[engine])
 		return _engine_name_strings[engine];
-	strcpy(_userstring, _engine_custom_names[engine]);
+	strncpy(_userstring, _engine_custom_names[engine], USERSTRING_LEN);
+	_userstring[USERSTRING_LEN - 1] = '\0';
 	return STR_SPEC_USERSTRING;
 }
 
