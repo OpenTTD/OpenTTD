@@ -655,6 +655,8 @@ DEF_CONSOLE_CMD(ConSet) {
 					NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 				}
 			}
+			/* Also keep track of the new name on the client itself */
+			ttd_strlcpy(_network_player_name, argv[2], 40);
 		} else {
 			IConsolePrint(_iconsole_color_default, "With 'set name' you can change your network-player name.");
 			IConsolePrint(_iconsole_color_warning, "Usage: set name \"<name>\".");
