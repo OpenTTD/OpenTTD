@@ -9,6 +9,7 @@
 #include "screenshot.h"
 #include "newgrf.h"
 #include "network.h"
+#include "console.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -558,6 +559,7 @@ typedef struct PatchEntry {
 	byte type;										// type of selector
 	byte flags;										// selector flags
 	StringID str;									// string with descriptive text
+	char console_name[40];				// the name this patch has in console
 	void *variable;								// pointer to the variable
 	int32 min,max;								// range for spinbox setting
 	uint32 step;									// step for spinbox
@@ -579,92 +581,92 @@ enum {
 };
 
 static const PatchEntry _patches_ui[] = {
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_VEHICLESPEED,			&_patches.vehicle_speed,						0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_LONGDATE,					&_patches.status_long_date,					0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_SHOWFINANCES,			&_patches.show_finances,						0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTOSCROLL,				&_patches.autoscroll,								0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_VEHICLESPEED,		"vehicle_speed",		&_patches.vehicle_speed,						0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_LONGDATE,				"long_date",				&_patches.status_long_date,					0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_SHOWFINANCES,		"show_finances",		&_patches.show_finances,						0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTOSCROLL,			"autoscroll",				&_patches.autoscroll,								0,  0,  0, NULL},
 
-	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	&_patches.errmsg_duration,					0, 20,  1, NULL},
+	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	"errmsg_duration",	&_patches.errmsg_duration,					0, 20,  1, NULL},
 
-	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
-	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, &_patches.window_snap_radius,     1, 32,  1, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	&_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
+	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, "toolbar_pos", &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
+	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, "window_snap_radius", &_patches.window_snap_radius,     1, 32,  1, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	"invisible_trees", &_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
 };
 
 static const PatchEntry _patches_construction[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDONSLOPES,		&_patches.build_on_slopes,					0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_EXTRADYNAMITE,		&_patches.extra_dynamite,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGBRIDGES,			&_patches.longbridges,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				&_patches.signal_side,							0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDONSLOPES,		"build_on_slopes",	&_patches.build_on_slopes,					0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_EXTRADYNAMITE,		"extra_dynamite",		&_patches.extra_dynamite,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGBRIDGES,			"long_bridges",			&_patches.longbridges,							0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				"signal_side",			&_patches.signal_side,							0,  0,  0, NULL},
 
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		&_patches.always_small_airport,			0,  0,  0, NULL},
-	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, &_patches.drag_signals_density, 1, 20,  1, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		"always_small_airport", &_patches.always_small_airport,			0,  0,  0, NULL},
+	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, "drag_signals_density", &_patches.drag_signals_density, 1, 20,  1, NULL},
 
 };
 
 static const PatchEntry _patches_vehicles[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_REALISTICACCEL,		&_patches.realistic_acceleration,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_MAMMOTHTRAINS,		&_patches.mammoth_trains,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_GOTODEPOT,				&_patches.gotodepot,								0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_ROADVEH_QUEUE,		&_patches.roadveh_queue,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_DEPOT_FINDING,&_patches.new_depot_finding,				0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND,				&_patches.new_pathfinding,	0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_REALISTICACCEL,		"realistic_acceleration", &_patches.realistic_acceleration,		0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_MAMMOTHTRAINS,		"mammoth_trains", &_patches.mammoth_trains,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_GOTODEPOT,				"goto_depot", &_patches.gotodepot,								0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_ROADVEH_QUEUE,		"roadveh_queue", &_patches.roadveh_queue,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_DEPOT_FINDING,"depot_finding", &_patches.new_depot_finding,				0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND,"new_pathfinding", &_patches.new_pathfinding,	0,  0,  0, NULL},
 
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_WARN_INCOME_LESS, &_patches.train_income_warn,				0,  0,  0, NULL},
-	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_ORDER_REVIEW,&_patches.order_review_system,0,2,  1, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,		&_patches.never_expire_vehicles,0,0,0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_WARN_INCOME_LESS, "train_income_warn", &_patches.train_income_warn,				0,  0,  0, NULL},
+	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_ORDER_REVIEW, "order_review_system", &_patches.order_review_system,0,2,  1, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, "never_expire_vehicles", &_patches.never_expire_vehicles,0,0,0, NULL},
 
-	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, &_patches.lost_train_days,	180,720, 60, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,&_patches.autorenew,								0,  0,  0, NULL},
-	{PE_INT16,	0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, &_patches.autorenew_months,				-12, 12,  1, NULL},
-	{PE_CURRENCY, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,&_patches.autorenew_money,					0, 2000000, 100000, NULL},
+	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, "lost_train_days", &_patches.lost_train_days,	180,720, 60, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,"autorenew", &_patches.autorenew,								0,  0,  0, NULL},
+	{PE_INT16,	0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, "autorenew_months", &_patches.autorenew_months,				-12, 12,  1, NULL},
+	{PE_CURRENCY, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,"autorenew_money", &_patches.autorenew_money,					0, 2000000, 100000, NULL},
 
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				&_patches.max_trains,								0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			&_patches.max_roadveh,							0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,			&_patches.max_aircraft,							0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_SHIPS,				&_patches.max_ships,								0,240, 10, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,240, 10, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,240, 10, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,			"max_aircraft", &_patches.max_aircraft,							0,240, 10, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_SHIPS,				"max_ships", &_patches.max_ships,								0,240, 10, NULL},
 
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVINT_ISPERCENT,&_patches.servint_ispercent,				0,  0,  0, &CheckInterval},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS,		&_patches.servint_trains,		5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH,	&_patches.servint_roadveh,	5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS,		&_patches.servint_ships,		5,800,  5, &InValidateDetailsWindow},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVINT_ISPERCENT,"servint_isperfect",&_patches.servint_ispercent,				0,  0,  0, &CheckInterval},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS,		"servint_trains",   &_patches.servint_trains,		5,800,  5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH,	"servint_roadveh",  &_patches.servint_roadveh,	5,800,  5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, "servint_aircraft", &_patches.servint_aircraft, 5,800,  5, &InValidateDetailsWindow},
+	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS,		"servint_ships",    &_patches.servint_ships,		5,800,  5, &InValidateDetailsWindow},
 };
 
 static const PatchEntry _patches_stations[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_JOINSTATIONS,			&_patches.join_stations,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_FULLLOADANY,			&_patches.full_load_any,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_IMPROVEDLOAD,			&_patches.improved_load,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SELECTGOODS,			&_patches.selectgoods,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_NONSTOP,			&_patches.new_nonstop,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, &_patches.nonuniform_stations,		0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		&_patches.station_spread,						4, 64,  1, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, &_patches.serviceathelipad,					0,  0,  0, NULL},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, &_patches.modified_catchment},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_JOINSTATIONS,			"join_stations", &_patches.join_stations,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_FULLLOADANY,			"full_load_any", &_patches.full_load_any,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_IMPROVEDLOAD,			"improved_load", &_patches.improved_load,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SELECTGOODS,			"select_goods",  &_patches.selectgoods,							0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_NONSTOP,			"new_nonstop", &_patches.new_nonstop,							0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, "nonuniform_stations", &_patches.nonuniform_stations,		0,  0,  0, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		"station_spread", &_patches.station_spread,						4, 64,  1, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, "service_at_helipad", &_patches.serviceathelipad,					0,  0,  0, NULL},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, "modified_catchment", &_patches.modified_catchment},
 
 };
 
 static const PatchEntry _patches_economy[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_INFLATION,				&_patches.inflation,								0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDXTRAIND,			&_patches.build_rawmaterial_ind,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_MULTIPINDTOWN,		&_patches.multiple_industry_per_town,0, 0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SAMEINDCLOSE,			&_patches.same_industry_close,			0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BRIBE,						&_patches.bribe,										0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	&_patches.snow_line_height,					2, 13,  1, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_INFLATION,				"inflation", &_patches.inflation,								0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDXTRAIND,			"build_rawmaterial", &_patches.build_rawmaterial_ind,		0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_MULTIPINDTOWN,		"multiple_industry_per_town", &_patches.multiple_industry_per_town,0, 0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SAMEINDCLOSE,			"same_industry_close", &_patches.same_industry_close,			0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_BRIBE,						"bribe", &_patches.bribe,										0,  0,  0, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	"snow_line_height", &_patches.snow_line_height,					2, 13,  1, NULL},
 
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, &_patches.colored_news_date, 1900, 2200, 5, NULL},
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, &_patches.starting_date,	 1920,2100, 1, NULL},
+	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, "colored_new_data", &_patches.colored_news_date, 1900, 2200, 5, NULL},
+	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 1920,2100, 1, NULL},
 
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		&_patches.smooth_economy,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		"smooth_economy", &_patches.smooth_economy,						0,  0,  0, NULL},
 };
 
 static const PatchEntry _patches_ai[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AINEW_ACTIVE, &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AINEW_ACTIVE, "ainew_active", &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
 
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh_train,			0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,&_patches.ai_disable_veh_roadveh,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh_aircraft,0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,	&_patches.ai_disable_veh_ship,			0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, "ai_disable_veh_train", &_patches.ai_disable_veh_train,			0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,"ai_disable_veh_roadveh",&_patches.ai_disable_veh_roadveh,		0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,"ai_disable_veh_aircraft",&_patches.ai_disable_veh_aircraft,0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,"ai_disable_veh_ship",&_patches.ai_disable_veh_ship,			0,  0,  0, NULL},
 };
 
 typedef struct PatchPage {
@@ -974,6 +976,116 @@ int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	return 0;
+}
+
+/* Those 2 functions need to be here, else we have to make some stuff non-static
+    and besides, it is also better to keep stuff like this at the same place */
+void ConsoleSetPatchSetting(char *name, char *value)
+{
+	const PatchPage *page;
+	const PatchEntry *pe;
+	bool found = false;
+	int i, j;
+	int val;
+
+	/* Search for the name in the patch-settings */
+	for (i = 0; i < lengthof(_patches_page); i++) {
+		page = &_patches_page[i];
+		for (j = 0; j < page->num; j++) {
+			pe = &page->entries[j];
+			if (strncmp(pe->console_name, name, sizeof(pe->console_name)) == 0) {
+				/* We found the name */
+				found = true;
+				break;
+			}
+		}
+		if (found)
+			break;
+	}
+
+	/* We did not found the patch setting */
+	if (!found) {
+		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch settings", name);
+		return;
+	}
+
+	val = atoi(value);
+
+	if (pe->type == PE_CURRENCY) {
+		val /= GetCurrentCurrencyRate();
+	}
+
+	// If an item is playerbased, we do not send it over the network (if any)
+	if (pe->flags & PF_PLAYERBASED) {
+		WritePE(pe, val);
+	} else {
+		// Else we do
+		DoCommandP(0, i + (j << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
+	}
+
+	switch(pe->type) {
+		case PE_BOOL:
+			if (val == 1)
+				snprintf(value, sizeof(value), "enabled");
+			else
+				snprintf(value, sizeof(value), "disabled");
+			break;
+		default:
+			break;
+	}
+
+	IConsolePrintF(_iconsole_color_warning, "'%s' changed in:", name);
+	IConsolePrintF(_iconsole_color_warning, "  '%s'", value);
+}
+
+void ConsoleGetPatchSetting(char *name)
+{
+	const PatchPage *page;
+	const PatchEntry *pe;
+	char value[50];
+	bool found = false;
+	int i, j;
+
+	/* Search for the name in the patch-settings */
+	for (i = 0; i < lengthof(_patches_page); i++) {
+		page = &_patches_page[i];
+		for (j = 0; j < page->num; j++) {
+			pe = &page->entries[j];
+			if (strncmp(pe->console_name, name, sizeof(pe->console_name)) == 0) {
+				/* We found the name */
+				found = true;
+				break;
+			}
+		}
+		if (found)
+			break;
+	}
+
+	/* We did not found the patch setting */
+	if (!found) {
+		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch settings", name);
+		return;
+	}
+
+	/* 'pe' is now the correct patch setting */
+	switch(pe->type) {
+		case PE_BOOL:
+			if (ReadPE(pe) == 1)
+				snprintf(value, sizeof(value), "enabled");
+			else
+				snprintf(value, sizeof(value), "disabled");
+			break;
+		case PE_UINT8:
+		case PE_INT16:
+		case PE_UINT16:
+		case PE_INT32:
+		case PE_CURRENCY:
+			snprintf(value, sizeof(value), "%d", ReadPE(pe));
+			break;
+	}
+
+	IConsolePrintF(_iconsole_color_warning, "Current value for '%s' is:", name);
+	IConsolePrintF(_iconsole_color_warning, "  '%s'", value);
 }
 
 static const Widget _patches_selection_widgets[] = {

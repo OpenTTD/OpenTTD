@@ -552,7 +552,6 @@ DEF_CONSOLE_CMD(ConSayClient)
 /*   the "set" command          */
 /* **************************** */
 
-
 DEF_CONSOLE_CMD(ConSet) {
 	if (argc < 2) {
 		IConsolePrint(_iconsole_color_warning, "Unknonw usage. Usage: set [setting] [value].");
@@ -656,6 +655,22 @@ DEF_CONSOLE_CMD(ConSet) {
 	}
 
 #endif
+
+	// Patch-options
+	if (strcmp(argv[1],"patch") == 0) {
+		if (_networking && !_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3)
+			ConsoleGetPatchSetting(argv[2]);
+		else if (argc == 4)
+			ConsoleSetPatchSetting(argv[2], argv[3]);
+		else
+			IConsolePrint(_iconsole_color_warning, "Usage: set patch <patch_name> [<value>].");
+		return NULL;
+	}
+
 
 	IConsolePrintF(_iconsole_color_error,"Unknown setting");
 
