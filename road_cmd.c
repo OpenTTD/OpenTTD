@@ -253,7 +253,7 @@ enum {
 	ROAD_ALL = (ROAD_NW | ROAD_SW | ROAD_SE | ROAD_NE)
 };
  
-static const byte _valid_tileh_slopes_road[2][15] = {
+static const byte _valid_tileh_slopes_road[3][15] = {
 	// set of normal ones
 	{
 		ROAD_ALL, 0, 0,
@@ -282,6 +282,14 @@ static const byte _valid_tileh_slopes_road[2][15] = {
 		ROAD_NW | ROAD_SE | ROAD_NE, // 12
 		ROAD_ALL,
 		ROAD_ALL
+	},
+	// valid railway crossings on slopes
+	{
+		1, 0, 0, // 0, 1, 2
+		0, 0, 1, // 3, 4, 5
+		0, 1, 0, // 6, 7, 8
+		0, 1, 1, // 9, 10, 11
+		0, 1, 1, // 12, 13, 14
 	}
 };
 
@@ -347,8 +355,12 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_RAILWAY) {
 		byte m5;
 
-		if (ti.tileh != 0) goto do_clear;
-		
+		if (ti.tileh & 0x10) // very steep tile
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+		if(!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
 		if (ti.map5 == 2) {
 			if (pieces & 5) goto do_clear;
 			m5 = 0x10;
@@ -371,7 +383,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_TUNNELBRIDGE) {
 
 		/* check for flat land */
-		if (ti.tileh & 0x10) //goto do_clear; // very steep tile
+		if (ti.tileh & 0x10) // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		/* is this middle part of a bridge? */
@@ -691,6 +703,10 @@ static uint GetRoadFoundation(uint tileh, uint bits) {
 		((bits == (ROAD_SW | ROAD_NE)) || (i++, bits == (ROAD_NW | ROAD_SE))))
 		return i + 15;
 
+	// rail crossing
+	if ((bits & 0x10) && _valid_tileh_slopes_road[2][tileh])
+		return tileh;
+
 	return 0;
 }
 
@@ -755,7 +771,10 @@ static void DrawTile_Road(TileInfo *ti)
 			AddSortableSpriteToDraw(image, x, y, 2, 2, 0x10, z);
 			drts++;
 		}
-	} else if ( (ti->map5 & 0xE0) == 0) {
+	} else if ( (ti->map5 & 0xE0) == 0) { // railroad crossing
+		int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
+		if (f) DrawFoundation(ti, f);
+
 		image = 0x55B;
 
 		if ( (ti->map5 & 8) != 0)
@@ -836,7 +855,7 @@ uint GetSlopeZ_Road(TileInfo *ti)
 
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		if ((ti->map5 & 0xF0) == 0) {
+		if ((ti->map5 & 0xE0) == 0) { /* road or crossing */
 			uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
 			if (f != 0) {
 				if (f < 15) {

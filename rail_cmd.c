@@ -118,7 +118,7 @@ static bool CheckTrackCombination(byte map5, byte trackbits, byte flags)
 }
 
 
-static const byte _valid_tileh_slopes[3][15] = {
+static const byte _valid_tileh_slopes[4][15] = {
 
 // set of normal ones
 {
@@ -184,6 +184,15 @@ static const byte _valid_tileh_slopes[3][15] = {
 	RAIL_BIT_DIAG2|RAIL_BIT_RIGHT|RAIL_BIT_UPPER,
 	RAIL_BIT_DIAG1|RAIL_BIT_DIAG2|RAIL_BIT_UPPER|RAIL_BIT_LOWER|RAIL_BIT_LEFT|RAIL_BIT_RIGHT,
 	RAIL_BIT_DIAG1|RAIL_BIT_DIAG2|RAIL_BIT_UPPER|RAIL_BIT_LOWER|RAIL_BIT_LEFT|RAIL_BIT_RIGHT,
+	},
+
+	// valid railway crossings on slopes
+	{
+		1, 0, 0, // 0, 1, 2
+		0, 0, 1, // 3, 4, 5
+		0, 1, 0, // 6, 7, 8
+		0, 1, 1, // 9, 10, 11
+		0, 1, 1, // 12, 13, 14
 	}
 };
 
@@ -275,8 +284,12 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_STREET) {
 		byte m5;
 /* BUILD ON STREET CODE */
-		if (ti.tileh != 0) goto need_clear;
-		
+		if (ti.tileh & 0x10) // very steep tile
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+		if (!_valid_tileh_slopes[3][ti.tileh]) // prevent certain slopes
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
 		if (!(ti.map5 & 0xF0)) {
 			if ((ti.map5 & 0x0F) == 0xA) {
 				if (rail_bit != 2) goto need_clear;
@@ -1652,7 +1665,7 @@ uint GetSlopeZ_Track(TileInfo *ti)
 {
 	uint z = ti->z;
 	int th = ti->tileh;
-	
+
 	// check if it's a foundation
 	if (ti->tileh != 0) {
 		if ((ti->map5 & 0x80) == 0) {
