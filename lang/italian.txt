@@ -342,7 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Grafico prestazioni
 STR_0158_COMPANY_VALUE_GRAPH					:Grafico valore società
 STR_0159_CARGO_PAYMENT_RATES					:Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE					:Classifica società
-STR_PERFORMANCE_DETAIL_MENU					:Dettagli valutazione delle prestazioni
+STR_PERFORMANCE_DETAIL_MENU					:Dettagli prestazionali
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -1774,6 +1774,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Quantità mare/laghi: {ORANGE}{STRING
 STR_6813_ECONOMY						:{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Inversione treni: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Disastri: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Attitudine del consiglio cittadino verso i cambiamenti nel territorio: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE							:Nessuno
@@ -1858,6 +1859,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Grafico Profitti Operazionali
 STR_7026_BANK_BALANCE						:{WHITE}Bilancio Bancario
 STR_7027_LOAN							:{WHITE}Prestito
+STR_MAX_LOAN							:{WHITE}Prestito Massimo:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:<CHECK>{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:<CHECK>{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1931,8 +1933,10 @@ STR_706D_PRESIDENT						:Presidente
 STR_706E_TYCOON							:magnate
 STR_706F_BUILD_HQ						:{BLACK}Costr. Sede
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Costruisci/guarda la sede della società
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sposta la sede della compagnia pagando 1% del valore societario
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Non puoi costruire la sede della compagnia...
 STR_7072_VIEW_HQ						:{BLACK}Guarda Sede
+STR_RELOCATE_HQ							:{BLACK}Sposta Sede
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Recessione Mondiale!{}{}Gli esperti finanziari temono la peggior crisi economica!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Recessione Finita!{}{}Rialzo negli scambi dà fiducia alle industrie per un rafforzamento economico!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Seleziona dimensione grande/piccola della finestra
@@ -2236,6 +2240,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Manutenzione non-stop a {TOWN} Deposito 
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Direzione {TOWN} Deposito
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ordine non Valido)
 
 STR_UNKNOWN_DESTINATION						:destinazione sconosciuta
 STR_8812_EMPTY							:{LTBLUE}Vuoto
@@ -2282,6 +2287,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Non puoi vendere veicolo ferrovi
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Non riesce a trovare il deposito locale
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Non puoi far fermare/ripartire il treno...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Intervallo Manutenz.: {LTBLUE}{COMMA16}giorni{BLACK}   Ultima Manut.: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Intervallo Manutenz.: {LTBLUE}{COMMA16}%{BLACK}   Ultima Manut.: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Treni - fai clic sul treno per le informazioni
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Costruisci nuovi treni (Necessario deposito)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Treni - fai clic sul treno per le informazioni, trascina i veicoli per aggiungerli/rimuoverli dal treno
@@ -2548,11 +2554,39 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Raffineria esplosa vicino a
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' atterra vicino a {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Cedimento in una miniera di carbone lascia tracce di distruzione vicino a {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Alluvione!{}{COMMA16} distrutto o disperso a seguito di una mortale alluvione!
 
 STR_BRIBE_FAILED						:{WHITE}Il tentativo di corruzione è stato
 STR_BRIBE_FAILED_2						:{WHITE}scoperto dagli ispettori regionali.
 STR_BUILD_DATE							:{BLACK}Realizzato il: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Gioco in pausa.{}Il comando non può essere eseguito
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Dettagli valutazione delle prestazioni
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Dettagli
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Veicoli:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stazioni:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Profitto Min.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Incasso Min.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Incasso Max.:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Trasportati:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Cargo:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Denaro:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Prestito:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Totale:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Numero di veicoli. Include Veicoli Stradali, Treni, Navi e Aerei.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Numero di blocchi stazione. Ogni parte di una stazione (e.g. stazione ferroviaria, fermata dell'autobus, aereoporti) viene contata, anche se insieme formano un'unica stazione.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Profitto del veicolo con l'incasso minore (tra tutti i veicoli più vecchi di 2 anni)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Ammontare di denaro guadagnato nel mese con il minimo profitto degli ultimi 12 quarti
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Ammontare di denaro guadagnato nel mese con il massimo profitto degli ultimi 12 quarti
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Unità di merce trasportata nell'ultimo quarto.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Tipi di merci trasportate nell'ultimo quarto.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Ammontare di denaro in tasca
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Hai preso un prestito troppo elevato?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totale dei punti rispetto ad un massimo di punti possibili
 

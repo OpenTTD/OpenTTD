@@ -880,7 +880,7 @@ STR_CURR_RUR							:Ruské rubly (RUR)
 STR_CURR_CZK							:Ceske koruny (CZK)
 STR_CURR_ISK							:Islandské koruny (ISK)
 STR_CURR_NOK							:Norské koruny (NOK)
-STR_CURR_ROL							:Rumunský Lei
+STR_CURR_ROL							:Rumunský Lei (ROL)
 STR_CURR_EUR							:Eura (€)
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
