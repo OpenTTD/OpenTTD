@@ -110,6 +110,16 @@ void FioOpenFile(int slot, const char *filename)
 		for(s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
+		
+#if defined SECOND_DATA_DIR
+	// tries in the 2nd data directory
+		if (f == NULL) {
+			sprintf(buf, "%s%s", _path.second_data_dir, filename);
+			for(s=buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
+			*s = tolower(*s);
+		f = fopen(buf, "rb");
+		}
+#endif
 	}
 #endif
 

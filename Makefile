@@ -89,6 +89,10 @@
 #		stored. You cannot use ~ here, define USE_HOMEDIR for that.
 # USE_HOMEDIR:	If this variable is set, PERSONAL_DIR will be prefixed with
 #		~/ at runtime (the user's homedir)
+# SECOND_DATA_PATH  Use this data dir if a file is not found in the data dir in the data path
+# CUSTOM_LANG_PATH  If this is set, it will use the path given to search for lng files 
+#		instead of the lang dir in the data path
+#   NOTE: both SECOND_DATA_PATH and CUSTOM_LANG_PATH uses paths relative to where OTTD is opened
 #
 # DEST_DIR:	make install will use this directory instead of the filesystem
 # 		root to install its files. This should normally not be used by
@@ -113,7 +117,7 @@
 
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=4
+MAKEFILE_VERSION:=5
 
 # CONFIG_WRITER have to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -444,6 +448,12 @@ ifdef OSX
 ifndef MIDI
 MIDI:=$(OSXAPP)/contents/macos/track_starter
 endif
+ifndef SECOND_DATA_PATH
+SECOND_DATA_PATH:="$(OSXAPP)/contents/data/"
+endif
+ifndef CUSTOM_LANG_DIR
+CUSTOM_LANG_DIR:="$(OSXAPP)/contents/lang/"
+endif
 endif
 
 ifdef MIDI
@@ -467,6 +477,15 @@ ifndef MORPHOS
 endif
 endif
 endif
+endif
+
+
+ifdef SECOND_DATA_PATH
+CDEFS += -DSECOND_DATA_DIR=\"$(SECOND_DATA_PATH)/\"
+endif
+
+ifdef CUSTOM_LANG_DIR
+CDEFS += -DCUSTOM_LANG_DIR=\"$(CUSTOM_LANG_DIR)/\"
 endif
 
 ifdef WITH_DIRECTMUSIC
@@ -604,8 +623,11 @@ $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
  		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
 $(OSX):
+	@rm -fr $(OSXAPP)
 	@mkdir -p $(OSXAPP)/Contents/MacOS
 	@mkdir -p $(OSXAPP)/Contents/Resources
+	@mkdir -p $(OSXAPP)/Contents/Data
+	@mkdir -p $(OSXAPP)/Contents/Lang
 	@echo "APPL????" > $(OSXAPP)/Contents/PkgInfo
 	@cp os/macos/ttd.icns $(OSXAPP)/Contents/Resources/openttd.icns
 	@os/macos/plistgen.sh $(OSXAPP) $(REV)
@@ -613,7 +635,11 @@ $(OSX):
 	@ls os/macos | grep -q "\.class" || \
 	javac os/macos/OpenTTDMidi.java
 	@cp os/macos/OpenTTDMidi.class $(OSXAPP)/contents/macos
+	@cp data/* $(OSXAPP)/Contents/data/
+	@cp lang/*.lng $(OSXAPP)/Contents/lang/
 	@cp $(TTD) $(OSXAPP)/Contents/MacOS/$(TTD)
+	
+	
 
 $(endwarnings): $(64_bit_warnings)
 

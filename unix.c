@@ -424,7 +424,7 @@ void ShowOSErrorBox(const char *buf)
 	// this creates an error in the console and then opens the console.
 	// Colourcodes are not used in the console, so they are skipped here
 	fprintf(stderr, "Error: %s", buf);
-	system("/Applications/Utilities/Console.app/Contents/MacOS/Console");
+	system("/Applications/Utilities/Console.app/Contents/MacOS/Console &");
 #else
 	// all systems, but OSX
 	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
@@ -452,7 +452,11 @@ void DeterminePaths()
 	char *s;
 
 	_path.game_data_dir = malloc( MAX_PATH );
-	strcpy(_path.game_data_dir, GAME_DATA_DIR);
+	ttd_strlcpy(_path.game_data_dir, GAME_DATA_DIR, MAX_PATH);
+	#if defined SECOND_DATA_DIR
+	_path.second_data_dir = malloc( MAX_PATH );
+	ttd_strlcpy( _path.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+	#endif
 
 #if defined(USE_HOMEDIR)
 	{
@@ -470,7 +474,7 @@ void DeterminePaths()
 #else /* not defined(USE_HOMEDIR) */
 
 	_path.personal_dir = malloc( MAX_PATH );
-	strcpy(_path.personal_dir, PERSONAL_DIR);
+	ttd_strlcpy(_path.personal_dir, PERSONAL_DIR, MAX_PATH);
 
 	// check if absolute or relative path
 	s = strchr(_path.personal_dir, '/');
@@ -480,7 +484,7 @@ void DeterminePaths()
 		getcwd(_path.personal_dir, MAX_PATH);
 		s = strchr(_path.personal_dir, 0);
 		*s++ = '/';
-		strcpy(s, PERSONAL_DIR);
+		ttd_strlcpy(s, PERSONAL_DIR, MAX_PATH);
 	}
 
 #endif /* defined(USE_HOMEDIR) */
@@ -495,9 +499,15 @@ void DeterminePaths()
 	_path.scenario_dir = str_fmt("%sscenario", _path.personal_dir);
 	_path.gm_dir = str_fmt("%sgm/", _path.game_data_dir);
 	_path.data_dir = str_fmt("%sdata/", _path.game_data_dir);
-	_path.lang_dir = str_fmt("%slang/", _path.game_data_dir);
-
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+	
+#if defined CUSTOM_LANG_DIR
+	// sets the search path for lng files to the custom one
+	_path.lang_dir = malloc( MAX_PATH );
+	ttd_strlcpy( _path.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
+#else
+	_path.lang_dir = str_fmt("%slang/", _path.game_data_dir);
+#endif
 
 	// create necessary folders
 	mkdir(_path.personal_dir, 0755);

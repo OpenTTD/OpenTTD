@@ -199,6 +199,7 @@ typedef struct Paths {
 	char *save_dir;
 	char *autosave_dir;
 	char *scenario_dir;
+	char *second_data_dir;
 } Paths;
 
 VARDEF Paths _path;
