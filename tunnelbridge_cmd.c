@@ -177,6 +177,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint direction;
 	int i;
 	int32 cost, terraformcost, ret;
+	bool allow_on_slopes;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -240,33 +241,36 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	_error_message = STR_500C;
 
-	/* try and clear the start landscape */
-	if ((ret=DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
+
+	// Towns are not allowed to use bridges on slopes.
+	allow_on_slopes = ((!_is_ai_player || _patches.ainew_active)
+	                   && _current_player != OWNER_TOWN
+			   && _patches.build_on_slopes);
+
+	/* Try and clear the start landscape */
+
+	if ((ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
 		return CMD_ERROR;
 	cost = ret;
 
-	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);	// true - bridge-start-tile, false - bridge-end-tile
-
-	// towns are not allowed to use bridges on slopes.
-	if (terraformcost == CMD_ERROR ||
-		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
+	// true - bridge-start-tile, false - bridge-end-tile
+	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);
+	if (terraformcost == CMD_ERROR || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
 	cost += terraformcost;
 
-	/* try and clear the end landscape */
+	/* Try and clear the end landscape */
+
 	if ((ret=DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
 		return CMD_ERROR;
 	cost += ret;
 
-	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);	// false - end tile slope check
-
-	// towns are not allowed to use bridges on slopes.
-	if (terraformcost == CMD_ERROR ||
-		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
+	// false - end tile slope check
+	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);
+	if (terraformcost == CMD_ERROR || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
 	cost += terraformcost;
+
 
 	/* do the drill? */
 	if (flags & DC_EXEC) {
