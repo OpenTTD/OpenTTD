@@ -48,31 +48,27 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 			ScrollbarClickHandler(w, wi, e.click.pt.x, e.click.pt.y);
 		}
 
-		w->wndproc(w, &e);
-
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (e.click.widget == 0) {
+			if (e.click.widget == 0) { /* 'X' */
 				DeleteWindow(w);
 				return;
-			} else {
-				if (e.click.widget == 1) {
-					StartWindowDrag(w);
-				}
-			}
+			} 
+			
+			if (e.click.widget == 1) /* 'Title bar' */
+				StartWindowDrag(w);
 		}
 
-		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
+		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX)
 			StartWindowSizing(w);
-		}
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
-			w->click_state ^= (1 << e.click.widget);
+			TOGGLEBIT(w->click_state, e.click.widget);
 			w->flags4 ^= WF_STICKY;
 			InvalidateWidget(w, e.click.widget);
 		}
-	} else {
-		w->wndproc(w, &e);
 	}
+
+	w->wndproc(w, &e);
 }
 
 void DispatchRightClickEvent(Window *w, int x, int y) {
@@ -771,13 +767,13 @@ static bool HandlePopupMenu()
 	if (_left_button_down) {
 		e.event = WE_POPUPMENU_OVER;
 		e.popupmenu.pt = _cursor.pos;
-		w->wndproc(w, &e);
 	} else {
 		_popup_menu_active = false;
 		e.event = WE_POPUPMENU_SELECT;
 		e.popupmenu.pt = _cursor.pos;
-		w->wndproc(w, &e);
 	}
+
+	w->wndproc(w, &e);
 
 	return false;
 }
