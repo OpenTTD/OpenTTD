@@ -83,7 +83,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(TextMessage) * (MAX_CHAT_MESSAGES - 1));
 	snprintf(_text_message_list[MAX_CHAT_MESSAGES - 1].message, MAX_TEXTMESSAGE_LENGTH, "%s", buf2);
 	_text_message_list[MAX_CHAT_MESSAGES - 1].color = color;
-	_text_message_list[i].end_date = _date + duration;
+	_text_message_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
 
 	_textmessage_dirty = true;
 }
