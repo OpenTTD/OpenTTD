@@ -569,8 +569,8 @@ static const byte _new_vehicle_direction_table[11] = {
 
 static int ShipGetNewDirectionFromTiles(uint new_tile, uint old_tile)
 {
-	uint offs = (GET_TILE_Y(new_tile) - GET_TILE_Y(old_tile) + 1) * 4 +
-							GET_TILE_X(new_tile) - GET_TILE_X(old_tile) + 1;
+	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
+							TileX(new_tile) - TileX(old_tile) + 1;
 	assert(offs < 11 && offs != 3 && offs != 7);
 	return _new_vehicle_direction_table[offs];
 }
@@ -711,9 +711,8 @@ static void ShipController(Vehicle *v)
 		}
 	} else {
 		// new tile
-		if (GET_TILE_X(gp.new_tile) == 0xFF ||
-				(byte)GET_TILE_Y(gp.new_tile) == 0xFF)
-					goto reverse_direction;
+		if (TileX(gp.new_tile) == MapMaxX() || TileY(gp.new_tile) == MapMaxY())
+			goto reverse_direction;
 
 		dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
 		assert(dir == 1 || dir == 3 || dir == 5 || dir == 7);
@@ -828,8 +827,8 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->owner = _current_player;
 		v->tile = tile;
-		x = GET_TILE_X(tile)*16 + 8;
-		y = GET_TILE_Y(tile)*16 + 8;
+		x = TileX(tile) * 16 + 8;
+		y = TileY(tile) * 16 + 8;
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x,y);

@@ -161,6 +161,7 @@ void ShowBuildBridgeWindow(uint start, uint end, byte bridge_type)
 		w->vscroll.cap = 4;
 		w->vscroll.count = (byte)j;
 	} else {
-		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, GET_TILE_X(end) * 16, GET_TILE_Y(end) * 16);
+		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE,
+			TileX(end) * 16, TileY(end) * 16);
 	}
 }

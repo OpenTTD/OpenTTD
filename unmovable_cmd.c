@@ -236,7 +236,7 @@ static bool checkRadioTowerNearby(uint tile)
 {
 	uint tile_s;
 
-	tile_s = TILE_XY( (int) GET_TILE_X(tile)-4, (int) GET_TILE_Y(tile)-4 );
+	tile_s = TILE_XY(TileX(tile) - 4, TileY(tile) - 4);
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
 		// already a radio tower here?
@@ -324,7 +324,9 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (p1)
-		cost = DoCommand(GET_TILE_X(p->location_of_house)*16, GET_TILE_Y(p->location_of_house)*16, p1&0xFF, 0, flags, CMD_DESTROY_COMPANY_HQ);
+		cost = DoCommand(
+			TileX(p->location_of_house) * 16, TileY(p->location_of_house) * 16,
+			p1 & 0xFF, 0, flags, CMD_DESTROY_COMPANY_HQ);
 
 	if (flags & DC_EXEC) {
 		score = UpdateCompanyRatingAndValue(p, false);

@@ -750,8 +750,8 @@ skip_column:
 			if (t->xy != 0) {
 				// Remap the town coordinate
 				Point pt = RemapCoords(
-					(int)(GET_TILE_X(t->xy)*16 - WP(w,smallmap_d).scroll_x) >> 4,
-					(int)(GET_TILE_Y(t->xy)*16 - WP(w,smallmap_d).scroll_y) >> 4,
+					(int)(TileX(t->xy) * 16 - WP(w,smallmap_d).scroll_x) >> 4,
+					(int)(TileY(t->xy) * 16 - WP(w,smallmap_d).scroll_y) >> 4,
 					0);
 				x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;

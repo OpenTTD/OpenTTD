@@ -266,8 +266,8 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			v->direction = (byte)(dir*2+1);
 			v->tile = (TileIndex)tile;
 
-			x = GET_TILE_X(tile)*16 | _vehicle_initial_x_fract[dir];
-			y = GET_TILE_Y(tile)*16 | _vehicle_initial_y_fract[dir];
+			x = TileX(tile) * 16 | _vehicle_initial_x_fract[dir];
+			y = TileY(tile) * 16 | _vehicle_initial_y_fract[dir];
 
 			v->x_pos = x;
 			v->y_pos = y;
@@ -1846,8 +1846,8 @@ static const byte _new_vehicle_direction_table[11] = {
 
 static int GetNewVehicleDirectionByTile(uint new_tile, uint old_tile)
 {
-	uint offs = (GET_TILE_Y(new_tile) - GET_TILE_Y(old_tile) + 1) * 4 +
-							GET_TILE_X(new_tile) - GET_TILE_X(old_tile) + 1;
+	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
+							TileX(new_tile) - TileX(old_tile) + 1;
 	assert(offs < 11);
 	return _new_vehicle_direction_table[offs];
 }

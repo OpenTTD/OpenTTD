@@ -28,7 +28,7 @@ bool TestCanBuildStationHere(uint tile, byte dir) {
 }
 
 // Checks if a tile 'a' is between the tiles 'b' and 'c'
-#define TILES_BETWEEN(a,b,c) (GET_TILE_X(a) >= GET_TILE_X(b) && GET_TILE_X(a) <= GET_TILE_X(c) && GET_TILE_Y(a) >= GET_TILE_Y(b) && GET_TILE_Y(a) <= GET_TILE_Y(c))
+#define TILES_BETWEEN(a, b, c) (TileX(a) >= TileX(b) && TileX(a) <= TileX(c) && TileY(a) >= TileY(b) && TileY(a) <= TileY(c))
 
 // Check if the current tile is in our end-area
 int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current) {
@@ -46,7 +46,7 @@ int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current) {
 // Calculates the hash
 //   Currently it is a 10 bit hash, so the hash array has a max depth of 6 bits (so 64)
 uint AiPathFinder_Hash(uint key1, uint key2) {
-	return (GET_TILE_X(key1) & 0x1F) + ((GET_TILE_Y(key1) & 0x1F) << 5);
+	return (TileX(key1) & 0x1F) + ((TileY(key1) & 0x1F) << 5);
 }
 
 // Clear the memory of all the things
@@ -90,8 +90,8 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 	start_node.node.user_data[0] = 0;
 
 	// Now we add all the starting tiles
-	for (x=GET_TILE_X(PathFinderInfo->start_tile_tl);x<=GET_TILE_X(PathFinderInfo->start_tile_br);x++) {
-		for (y=GET_TILE_Y(PathFinderInfo->start_tile_tl);y<=GET_TILE_Y(PathFinderInfo->start_tile_br);y++) {
+	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
+		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
 			start_node.node.tile = TILE_XY(x,y);
 			result->addstart(result, &start_node.node);
 		}
@@ -117,8 +117,8 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 	start_node.node.tile = PathFinderInfo->start_tile_tl;
 
 	// Now we add all the starting tiles
-	for (x=GET_TILE_X(PathFinderInfo->start_tile_tl);x<=GET_TILE_X(PathFinderInfo->start_tile_br);x++) {
-		for (y=GET_TILE_Y(PathFinderInfo->start_tile_tl);y<=GET_TILE_Y(PathFinderInfo->start_tile_br);y++) {
+	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
+		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
 			if (!(IS_TILETYPE(TILE_XY(x,y), MP_CLEAR) || IS_TILETYPE(TILE_XY(x,y), MP_TREES))) continue;
 			if (!TestCanBuildStationHere(TILE_XY(x,y),TEST_STATION_NO_DIR)) continue;
 			start_node.node.tile = TILE_XY(x,y);
@@ -175,8 +175,10 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
   	// Go through all surrounding tiles and check if they are within the limits
    	for (i=0;i<4;i++) {
-   		if (GET_TILE_X(TileOffsByDir(i) + current->path.node.tile) > 1 && GET_TILE_X(TileOffsByDir(i) + current->path.node.tile) < MapMaxX() - 1 &&
-       		GET_TILE_Y(TileOffsByDir(i) + current->path.node.tile) > 1 && GET_TILE_Y(TileOffsByDir(i) + current->path.node.tile) < MapMaxY() - 1) {
+   		if (TileX(TileOffsByDir(i) + current->path.node.tile) > 1 &&
+					TileX(TileOffsByDir(i) + current->path.node.tile) < MapMaxX() - 1 &&
+       		TileY(TileOffsByDir(i) + current->path.node.tile) > 1 &&
+					TileY(TileOffsByDir(i) + current->path.node.tile) < MapMaxY() - 1) {
        		// We also directly test if the current tile can connect to this tile..
        		//  We do this simply by just building the tile!
 

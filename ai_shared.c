@@ -15,13 +15,13 @@ int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c) {
 	int x1, x2, x3;
 	int y1, y2, y3;
 
-	x1 = GET_TILE_X(tile_a);
-	x2 = GET_TILE_X(tile_b);
-	x3 = GET_TILE_X(tile_c);
+	x1 = TileX(tile_a);
+	x2 = TileX(tile_b);
+	x3 = TileX(tile_c);
 
-	y1 = GET_TILE_Y(tile_a);
-	y2 = GET_TILE_Y(tile_b);
-	y3 = GET_TILE_Y(tile_c);
+	y1 = TileY(tile_a);
+	y2 = TileY(tile_b);
+	y3 = TileY(tile_c);
 
 	if (y1 == y2 && y2 == y3) return 0;
 	if (x1 == x2 && x2 == x3) return 1;
@@ -50,13 +50,13 @@ int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c) {
 	int y1, y2, y3;
 	int r;
 
-	x1 = GET_TILE_X(tile_a);
-	x2 = GET_TILE_X(tile_b);
-	x3 = GET_TILE_X(tile_c);
+	x1 = TileX(tile_a);
+	x2 = TileX(tile_b);
+	x3 = TileX(tile_c);
 
-	y1 = GET_TILE_Y(tile_a);
-	y2 = GET_TILE_Y(tile_b);
-	y3 = GET_TILE_Y(tile_c);
+	y1 = TileY(tile_a);
+	y2 = TileY(tile_b);
+	y3 = TileY(tile_c);
 
 	r = 0;
 
@@ -75,9 +75,9 @@ int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c) {
 
 // Get's the direction between 2 tiles seen from tile_a
 int AiNew_GetDirection(uint tile_a, uint tile_b) {
-	if (GET_TILE_Y(tile_a) < GET_TILE_Y(tile_b)) return 1;
-	if (GET_TILE_Y(tile_a) > GET_TILE_Y(tile_b)) return 3;
-	if (GET_TILE_X(tile_a) < GET_TILE_X(tile_b)) return 2;
+	if (TileY(tile_a) < TileY(tile_b)) return 1;
+	if (TileY(tile_a) > TileY(tile_b)) return 3;
+	if (TileX(tile_a) < TileX(tile_b)) return 2;
 	return 0;
 }
 

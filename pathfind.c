@@ -161,7 +161,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	if (bits == 0)
 		return;
 
-	assert(GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
+	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
 	if ( (bits & (bits - 1)) == 0 ) {
 		/* only one direction */
@@ -218,8 +218,8 @@ FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
 
 	flotr.length = 0;
 
-	x = GET_TILE_X(tile) * 16;
-	y = GET_TILE_Y(tile) * 16;
+	x = TileX(tile) * 16;
+	y = TileY(tile) * 16;
 
 	z = GetSlopeZ(x+8, y+8);
 

@@ -4,6 +4,8 @@
 #define TILE_X_BITS 8
 #define TILE_Y_BITS 8
 
+#define TILE_MASK(x) (int)((x) & ((1 << (MapLogX() + MapLogY())) - 1))
+
 extern byte   _map_type_and_height[];
 extern byte   _map5[];
 extern byte   _map3_lo[];
@@ -23,6 +25,20 @@ static inline uint MapMaxX(void) { return MapSizeX() - 1; }
 static inline uint MapMaxY(void) { return MapSizeY() - 1; }
 /* The number of tiles in the map */
 static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
+
+
+typedef uint16 TileIndex;
+
+static inline uint TileX(TileIndex tile)
+{
+	return tile & MapMaxX();
+}
+
+static inline uint TileY(TileIndex tile)
+{
+	return tile >> MapLogX();
+}
+
 
 typedef int16 TileIndexDiff;
 

@@ -30,7 +30,7 @@ static int TerraformAllowTileProcess(TerraformerState *ts, TileIndex tile)
 	TileIndex *t;
 	int count;
 
-	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY())
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY())
 		return -1;
 
 	t = ts->tile_table;
@@ -343,8 +343,8 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	ex >>= 4; ey >>= 4;
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = GET_TILE_X(p1);
-	sy = GET_TILE_Y(p1);
+	sx = TileX(p1);
+	sy = TileY(p1);
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 	tile = TILE_XY(sx,sy);

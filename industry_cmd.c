@@ -628,7 +628,7 @@ static void AnimateTile_Industry(uint tile)
 static void MakeIndustryTileBiggerCase8(uint tile)
 {
 	TileInfo ti;
-	FindLandscapeHeight(&ti, GET_TILE_X(tile)*16, GET_TILE_Y(tile)*16);
+	FindLandscapeHeight(&ti, TileX(tile) * 16, TileY(tile) * 16);
 	CreateEffectVehicle(ti.x + 15, ti.y + 14, ti.z + 59 + (ti.tileh != 0 ? 8 : 0), EV_INDUSTRYSMOKE);
 }
 
@@ -692,8 +692,8 @@ static void TileLoopIndustryCase161(uint tile)
 	dir = Random() & 3;
 
 	v = CreateEffectVehicleAbove(
-		GET_TILE_X(tile)*16 + _tileloop_ind_case_161[dir + 0],
-		GET_TILE_Y(tile)*16 + _tileloop_ind_case_161[dir + 4],
+		TileX(tile) * 16 + _tileloop_ind_case_161[dir + 0],
+		TileY(tile) * 16 + _tileloop_ind_case_161[dir + 4],
 		_tileloop_ind_case_161[dir + 8],
 		EV_INDUSTRY_SMOKE
 	);
@@ -779,7 +779,7 @@ static void TileLoop_Industry(uint tile)
 		break;
 
 	case 49: {
-		CreateEffectVehicleAbove(GET_TILE_X(tile)*16 + 6, GET_TILE_Y(tile)*16 + 6, 43, EV_SMOKE_3);
+		CreateEffectVehicleAbove(TileX(tile) * 16 + 6, TileY(tile) * 16 + 6, 43, EV_SMOKE_3);
 	} break;
 
 
@@ -1145,8 +1145,8 @@ static bool CheckNewIndustry_Oilwell(uint tile, int type)
 	if (type != IT_OIL_RIG && _game_mode == GM_EDITOR)
 		return true;
 
-	x = GET_TILE_X(tile);
-	y = GET_TILE_Y(tile);
+	x = TileX(tile);
+	y = TileY(tile);
 
 	if ( x < 15 || y < 15 || x > 238 || y > 238)
 		return true;
@@ -1217,8 +1217,8 @@ static CheckNewIndustryProc * const _check_new_industry_procs[] = {
 
 static bool CheckSuitableIndustryPos(uint tile)
 {
-	uint x = GET_TILE_X(tile);
-	uint y = GET_TILE_Y(tile);
+	uint x = TileX(tile);
+	uint y = TileY(tile);
 
 	if ( x < 2 || y < 2 || x > MapMaxX() - 3 || y > MapMaxY() - 3) {
 		_error_message = STR_0239_SITE_UNSUITABLE;

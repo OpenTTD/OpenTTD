@@ -105,10 +105,10 @@ bool EnsureNoVehicleZ(TileIndex tile, byte z)
 
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 {
-	int x1 = GET_TILE_X(from);
-	int y1 = GET_TILE_Y(from);
-	int x2 = GET_TILE_X(to);
-	int y2 = GET_TILE_Y(to);
+	int x1 = TileX(from);
+	int y1 = TileY(from);
+	int x2 = TileX(to);
+	int y2 = TileY(to);
 	Vehicle *veh;
 
 	/* Make sure x1 < x2 or y1 < y2 */
@@ -148,7 +148,7 @@ void VehiclePositionChanged(Vehicle *v)
 
 void UpdateWaypointSign(Waypoint *cp)
 {
-	Point pt = RemapCoords2(GET_TILE_X(cp->xy)*16, GET_TILE_Y(cp->xy)*16);
+	Point pt = RemapCoords2(TileX(cp->xy) * 16, TileY(cp->xy) * 16);
 	SetDParam(0, cp - _waypoints);
 	UpdateViewportSignPos(&cp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }
@@ -263,7 +263,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x,y,x2,y2;
 	VehicleID veh;
-	Point pt = RemapCoords(GET_TILE_X(tile) * 16, GET_TILE_Y(tile) * 16, 0);
+	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, 0);
 
 	x2 = ((pt.x + 104) & 0x1F80) >> 7;
 	x  = ((pt.x - 174) & 0x1F80) >> 7;

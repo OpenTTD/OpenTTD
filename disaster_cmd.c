@@ -253,8 +253,8 @@ static void DisasterTick_UFO(Vehicle *v)
 
 	if (v->current_order.station == 0) {
 // fly around randomly
-		int x = GET_TILE_X(v->dest_tile)*16;
-		int y = GET_TILE_Y(v->dest_tile)*16;
+		int x = TileX(v->dest_tile) * 16;
+		int y = TileY(v->dest_tile) * 16;
 		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
@@ -352,8 +352,8 @@ static void DisasterTick_2(Vehicle *v)
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
-			int x = GET_TILE_X(i->xy)*16;
-			int y = GET_TILE_Y(i->xy)*16;
+			int x = TileX(i->xy) * 16;
+			int y = TileY(i->xy) * 16;
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
@@ -423,8 +423,8 @@ static void DisasterTick_3(Vehicle *v)
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
-			int x = GET_TILE_X(i->xy)*16;
-			int y = GET_TILE_Y(i->xy)*16;
+			int x = TileX(i->xy) * 16;
+			int y = TileY(i->xy) * 16;
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
@@ -501,8 +501,8 @@ static void DisasterTick_4(Vehicle *v)
 	v->tick_counter++;
 
 	if (v->current_order.station == 1) {
-		int x = GET_TILE_X(v->dest_tile)*16 + 8;
-		int y = GET_TILE_Y(v->dest_tile)*16 + 8;
+		int x = TileX(v->dest_tile) * 16 + 8;
+		int y = TileY(v->dest_tile) * 16 + 8;
 		if (abs(v->x_pos - x) + abs(v->y_pos - y) >= 8) {
 			v->direction = GetDirectionTowards(v, x, y);
 
@@ -553,8 +553,8 @@ static void DisasterTick_4(Vehicle *v)
 		w->vehstatus |= VS_DISASTER;
 	} else if (v->current_order.station < 1) {
 
-		int x = GET_TILE_X(v->dest_tile)*16;
-		int y = GET_TILE_Y(v->dest_tile)*16;
+		int x = TileX(v->dest_tile) * 16;
+		int y = TileY(v->dest_tile) * 16;
 		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
@@ -702,13 +702,13 @@ static void Disaster0_Init()
 
 	/* Pick a random place, unless we find
 	    a small airport */
-	x = (GET_TILE_X(Random())) * 16 + 8;
+	x = TileX(Random()) * 16 + 8;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy && st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IS_HUMAN_PLAYER(st->owner)) {
-			x = (GET_TILE_X(st->xy) + 2) * 16;
+			x = (TileX(st->xy) + 2) * 16;
 			break;
 		}
 	}
@@ -732,7 +732,7 @@ static void Disaster1_Init()
 	if (v == NULL)
 		return;
 
-	x = (GET_TILE_X(Random())) * 16 + 8;
+	x = TileX(Random()) * 16 + 8;
 
 	InitializeDisasterVehicle(v, x, 0, 135, 3, 2);
 	v->dest_tile = TILE_XY(MapSizeX() / 2, MapSizeY() / 2);
@@ -771,7 +771,7 @@ static void Disaster2_Init()
 		return;
 
 	x = (MapSizeX() + 9) * 16 - 1;
-	y = GET_TILE_Y(found->xy)*16 + 37;
+	y = TileY(found->xy) * 16 + 37;
 
 	InitializeDisasterVehicle(v,x,y, 135,1,4);
 
@@ -807,7 +807,7 @@ static void Disaster3_Init()
 		return;
 
 	x = -16 * 16;
-	y = GET_TILE_Y(found->xy)*16 + 37;
+	y = TileY(found->xy) * 16 + 37;
 
 	InitializeDisasterVehicle(v,x,y, 135,5,6);
 
@@ -833,7 +833,7 @@ static void Disaster4_Init()
 	if (v == NULL)
 		return;
 
-	x = (GET_TILE_X(Random())) * 16 + 8;
+	x = TileX(Random()) * 16 + 8;
 
 	y = MapMaxX() * 16 - 1;
 	InitializeDisasterVehicle(v, x, y, 135, 7, 9);
@@ -861,7 +861,7 @@ static void Disaster5_Init()
 		return;
 
 	r = Random();
-	x = (GET_TILE_X(r)) * 16 + 8;
+	x = TileX(r) * 16 + 8;
 
 	y = 8;
 	dir = 3;
@@ -882,7 +882,7 @@ static void Disaster6_Init()
 		return;
 
 	r = Random();
-	x = (GET_TILE_X(r)) * 16 + 8;
+	x = TileX(r) * 16 + 8;
 
 	y = 8;
 	dir = 3;

@@ -983,8 +983,8 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* unpack end tile */
-	ex = GET_TILE_X(p1)*16;
-	ey = GET_TILE_Y(p1)*16;
+	ex = TileX(p1) * 16;
+	ey = TileY(p1) * 16;
 
 	railbit = _railbit.initial[((p2 >> 4)&0xF) + (x > ex ? 4 : 0) + (y > ey ? 8 : 0)];
 
@@ -1144,8 +1144,8 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = GET_TILE_X(p1)*16;
-	sy = GET_TILE_Y(p1)*16;
+	sx = TileX(p1) * 16;
+	sy = TileY(p1) * 16;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 

@@ -622,17 +622,17 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 
 static byte AiGetDirectionBetweenTiles(TileIndex a, TileIndex b)
 {
-	byte i = (GET_TILE_X(a) < GET_TILE_X(b)) ? 1 : 0;
-	if (GET_TILE_Y(a) >= GET_TILE_Y(b))	i ^= 3;
+	byte i = (TileX(a) < TileX(b)) ? 1 : 0;
+	if (TileY(a) >= TileY(b)) i ^= 3;
 	return i;
 }
 
 static TileIndex AiGetPctTileBetween(TileIndex a, TileIndex b, byte pct)
 {
 	return TILE_XY(
-			GET_TILE_X(a) + ((GET_TILE_X(b) - GET_TILE_X(a)) * pct >> 8),
-			GET_TILE_Y(a) + ((GET_TILE_Y(b) - GET_TILE_Y(a)) * pct >> 8)
-		);
+		TileX(a) + ((TileX(b) - TileX(a)) * pct >> 8),
+		TileY(a) + ((TileY(b) - TileY(a)) * pct >> 8)
+	);
 }
 
 static void AiWantLongIndustryRoute(Player *p)

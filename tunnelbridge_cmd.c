@@ -134,10 +134,10 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 uint32 GetBridgeLength(TileIndex begin, TileIndex end)
 {
 	int x1, y1, x2, y2;	// coordinates of starting and end tiles
-	x1 = GET_TILE_X(begin);
-	y1 = GET_TILE_Y(begin);
-	x2 = GET_TILE_X(end);
-	y2 = GET_TILE_Y(end);
+	x1 = TileX(begin);
+	y1 = TileY(begin);
+	x2 = TileX(end);
+	y2 = TileY(end);
 
 	return abs((x2 + y2 - x1 - y1)) - 1;
 }
@@ -190,8 +190,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		rail_or_road = 0;
 	}
 
-	sx = GET_TILE_X(p1) * 16;
-	sy = GET_TILE_Y(p1) * 16;
+	sx = TileX(p1) * 16;
+	sy = TileY(p1) * 16;
 
 	direction = 0;
 

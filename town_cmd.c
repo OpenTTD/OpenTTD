@@ -186,7 +186,7 @@ void UpdateTownVirtCoord(Town *t)
 	Point pt;
 
 	MarkTownSignDirty(t);
-	pt = RemapCoords2(GET_TILE_X(t->xy)*16, GET_TILE_Y(t->xy)*16);
+	pt = RemapCoords2(TileX(t->xy) * 16, TileY(t->xy) * 16);
 	SetDParam(0, t->townnametype);
 	SetDParam(1, t->townnameparts);
 	SetDParam(2, t->population);

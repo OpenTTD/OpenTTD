@@ -381,7 +381,8 @@ void ShowRenameWaypointWindow(Waypoint *cp)
 
 	/* Are we allowed to change the name of the waypoint? */
 	if (!CheckTileOwnership(cp->xy)) {
-		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME, GET_TILE_X(cp->xy) * 16, GET_TILE_Y(cp->xy) * 16);
+		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME,
+			TileX(cp->xy) * 16, TileY(cp->xy) * 16);
 		return;
 	}
 
@@ -1143,7 +1144,7 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 
 	_generating_world = true;
 
-//	tile = TILE_FROM_XY(GET_TILE_X(tile)*16+_tile_fract_coords.x + 8,GET_TILE_Y(tile)*16+_tile_fract_coords.y + 8);
+//	tile = TILE_FROM_XY(TileX(tile) * 16 + _tile_fract_coords.x + 8, TileY(tile) * 16 + _tile_fract_coords.y + 8);
 
 	if (_terraform_size == 1) {
 		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO);
@@ -1190,7 +1191,7 @@ static void PlaceProc_LowerBigLand(uint tile)
 //{
 //	if (success) {
 		//SndPlayTileFx(0x10, tile);
-		//CreateEffectVehicleAbove(GET_TILE_X(tile)*16 + 8,GET_TILE_Y(tile)*16 + 8, 2, EV_DEMOLISH);
+		//CreateEffectVehicleAbove(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8, 2, EV_DEMOLISH);
 //	}
 //}
 

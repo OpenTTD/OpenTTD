@@ -1,6 +1,8 @@
 #ifndef MACROS_H
 #define MACROS_H
 
+#include "map.h"
+
 #define MAX_INT 0x7FFFFFFF
 
 #ifdef min
@@ -96,16 +98,6 @@ extern uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int 
 
 #define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x,y))
 
-#if TILE_X_BITS == 8
-#define GET_TILE_X(t) (uint)((byte)(t))
-#define GET_TILE_Y(t) (uint)((t) >> 8)
-#define TILE_MASK(x) ((uint16)(x))
-#else
-#define GET_TILE_X(t) (uint)((t) & ((1 << TILE_X_BITS)-1))
-#define GET_TILE_Y(t) (uint)((t) >> TILE_X_BITS)
-#define TILE_MASK(x) (int)((x) & ((1 << (TILE_X_BITS + TILE_Y_BITS))-1))
-#endif
-
 //#define REMADP_COORDS(x,y,z) { int t = x; x = (y-t)*2; y+=t-z; }
 
 #define PACK_POINT(x,y) ((x) | ((y) << 16))
@@ -147,8 +139,6 @@ static inline int FindFirstBit2x64(int value)
 	return i + FIND_FIRST_BIT(value & 0x3F);
 }
 
-
-typedef uint16 TileIndex;
 
 /* [min,max), strictly less than */
 #define IS_BYTE_INSIDE(a,min,max) ((byte)((a)-(min)) < (byte)((max)-(min)))

@@ -146,8 +146,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->tile = tile;
 //		u->tile = 0;
 
-		x = GET_TILE_X(tile)*16 + 5;
-		y = GET_TILE_Y(tile)*16 + 3;
+		x = TileX(tile) * 16 + 5;
+		y = TileY(tile) * 16 + 3;
 
 		v->x_pos = u->x_pos = x;
 		v->y_pos = u->y_pos = y;
@@ -739,8 +739,8 @@ static bool Aircraft_5(Vehicle *v)
 		uint tile = st->airport_tile;
 		if (tile == 0) tile = st->xy;
 		// xy of destination
-		x = GET_TILE_X(tile)*16;
-		y = GET_TILE_Y(tile)*16;
+		x = TileX(tile) * 16;
+		y = TileY(tile) * 16;
 	}
 
 	// get airport moving data

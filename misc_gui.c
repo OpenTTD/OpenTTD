@@ -58,8 +58,8 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(140, 38, str, 0);
 
 		snprintf(_userstring, USERSTRING_LEN, "%.4X", lid->tile);
-		SetDParam(0, GET_TILE_X(lid->tile));
-		SetDParam(1, GET_TILE_Y(lid->tile));
+		SetDParam(0, TileX(lid->tile));
+		SetDParam(1, TileY(lid->tile));
 		SetDParam(2, STR_SPEC_USERSTRING);
 		DrawStringCentered(140, 49, STR_LANDINFO_COORDS, 0);
 
@@ -143,7 +143,7 @@ static void Place_LandInfo(uint tile)
 	GetTileDesc(tile, &lid.td);
 
 	#if defined(_DEBUG)
-		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
+		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
 		DEBUG(misc, 0) ("TILE: %d ", tile);
 		DEBUG(misc, 0) ("_map_type_and_height=%#x", _map_type_and_height[tile]);
 		DEBUG(misc, 0) ("_map2=%#x", _map2[tile]);

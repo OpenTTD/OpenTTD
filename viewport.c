@@ -119,8 +119,8 @@ void AssignWindowViewport(Window *w, int x, int y,
 		veh = GetVehicle(WP(w,vp_d).follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
-		int x = GET_TILE_X(follow_flags) * 16;
-		int y = GET_TILE_Y(follow_flags) * 16;
+		int x = TileX(follow_flags) * 16;
+		int y = TileY(follow_flags) * 16;
 		WP(w,vp_d).follow_vehicle = 0xFFFF;
 		z = GetSlopeZ(x,y);
 		pt = MapXYZToViewport(vp, x,y, z);
@@ -1363,7 +1363,7 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 }
 
 void MarkTileDirtyByTile(TileIndex tile) {
-	Point pt = RemapCoords(GET_TILE_X(tile) * 16, GET_TILE_Y(tile) * 16, GetTileZ(tile));
+	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, GetTileZ(tile));
 	MarkAllViewportsDirty(
 		pt.x - 31,
 		pt.y - 122,
@@ -1747,7 +1747,7 @@ bool ScrollWindowTo(int x , int y, Window * w)
 /* scrolls the viewport in a window to a given tile */
 bool ScrollWindowToTile(TileIndex tile, Window * w)
 {
-	return ScrollWindowTo(GET_TILE_X(tile)*16+8, GET_TILE_Y(tile)*16+8, w);
+	return ScrollWindowTo(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8, w);
 }
 
 
@@ -1772,7 +1772,7 @@ bool ScrollMainWindowTo(int x, int y)
 
 bool ScrollMainWindowToTile(TileIndex tile)
 {
-	return ScrollMainWindowTo(GET_TILE_X(tile)*16+8, GET_TILE_Y(tile)*16+8);
+	return ScrollMainWindowTo(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8);
 }
 
 void SetRedErrorSquare(TileIndex tile)
@@ -1872,10 +1872,10 @@ void VpStartPlaceSizing(uint tile, int user)
 
 	thd = _thd_ptr;
 	thd->userdata = user;
-	thd->selend.x = GET_TILE_X(tile)*16;
-	thd->selstart.x = GET_TILE_X(tile)*16;
-	thd->selend.y = GET_TILE_Y(tile)*16;
-	thd->selstart.y = GET_TILE_Y(tile)*16;
+	thd->selend.x = TileX(tile) * 16;
+	thd->selstart.x = TileX(tile) * 16;
+	thd->selend.y = TileY(tile) * 16;
+	thd->selstart.y = TileY(tile) * 16;
 	if (thd->place_mode == 1) {
 		thd->place_mode = 3;
 		thd->next_drawstyle = HT_RECT;
@@ -1894,10 +1894,10 @@ void VpSetPlaceSizingLimit(int limit)
 void VpSetPresizeRange(uint from, uint to)
 {
 	TileHighlightData *thd = _thd_ptr;
-	thd->selend.x = GET_TILE_X(to)*16;
-	thd->selend.y = GET_TILE_Y(to)*16;
-	thd->selstart.x = GET_TILE_X(from)*16;
-	thd->selstart.y = GET_TILE_Y(from)*16;
+	thd->selend.x = TileX(to) * 16;
+	thd->selend.y = TileY(to) * 16;
+	thd->selstart.x = TileX(from) * 16;
+	thd->selstart.y = TileY(from) * 16;
 	thd->next_drawstyle = HT_RECT;
 }
 

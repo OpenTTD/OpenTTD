@@ -155,8 +155,8 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = GET_TILE_X(p2)*16;
-	sy = GET_TILE_Y(p2)*16;
+	sx = TileX(p2) * 16;
+	sy = TileY(p2) * 16;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 

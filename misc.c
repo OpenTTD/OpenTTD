@@ -527,21 +527,21 @@ void InitializeLandscapeVariables(bool only_constants)
 // distance in Manhattan metric
 uint GetTileDist(TileIndex xy1, TileIndex xy2)
 {
-	return myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2)) +
-				myabs(GET_TILE_Y(xy1) - GET_TILE_Y(xy2));
+	return myabs(TileX(xy1) - TileX(xy2)) +
+				myabs(TileY(xy1) - TileY(xy2));
 }
 
 // maximum distance in x _or_ y
 uint GetTileDist1D(TileIndex xy1, TileIndex xy2)
 {
-	return max(myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2)),
-						 myabs(GET_TILE_Y(xy1) - GET_TILE_Y(xy2)));
+	return max(myabs(TileX(xy1) - TileX(xy2)),
+						 myabs(TileY(xy1) - TileY(xy2)));
 }
 
 uint GetTileDist1Db(TileIndex xy1, TileIndex xy2)
 {
-	int a = myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2));
-	int b = myabs(GET_TILE_Y(xy1) - GET_TILE_Y(xy2));
+	int a = myabs(TileX(xy1) - TileX(xy2));
+	int b = myabs(TileY(xy1) - TileY(xy2));
 
 	if (a > b)
 		return a*2+b;
@@ -551,15 +551,15 @@ uint GetTileDist1Db(TileIndex xy1, TileIndex xy2)
 
 uint GetTileDistAdv(TileIndex xy1, TileIndex xy2)
 {
-	uint a = myabs(GET_TILE_X(xy1) - GET_TILE_X(xy2));
-	uint b = myabs(GET_TILE_Y(xy1) - GET_TILE_Y(xy2));
+	uint a = myabs(TileX(xy1) - TileX(xy2));
+	uint b = myabs(TileY(xy1) - TileY(xy2));
 	return a*a+b*b;
 }
 
 bool CheckDistanceFromEdge(TileIndex tile, uint distance)
 {
-	return IS_INT_INSIDE(GET_TILE_X(tile), distance, MapSizeX() - distance) &&
-			IS_INT_INSIDE(GET_TILE_Y(tile), distance, MapSizeY() - distance);
+	return IS_INT_INSIDE(TileX(tile), distance, MapSizeX() - distance) &&
+			IS_INT_INSIDE(TileY(tile), distance, MapSizeY() - distance);
 }
 
 void OnNewDay_Train(Vehicle *v);
@@ -732,8 +732,8 @@ int FindFirstBit(uint32 value)
 
 extern uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, int line)
 {
-	uint x = GET_TILE_X(tile) + (signed char)(add & 0xFF);
-	uint y = GET_TILE_Y(tile) + ((((0x8080 + add)>>8) & 0xFF) - 0x80);
+	uint x = TileX(tile) + (signed char)(add & 0xFF);
+	uint y = TileY(tile) + ((((0x8080 + add)>>8) & 0xFF) - 0x80);
 
 	if (x >= MapSizeX() || y >= MapSizeY()) {
 		char buf[512];

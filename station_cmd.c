@@ -111,19 +111,19 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 {
 	uint16 station_index = st->index;
 	uint i;
-	uint x1 = GET_TILE_X(tile);
-	uint y1 = GET_TILE_Y(tile);
+	uint x1 = TileX(tile);
+	uint y1 = TileY(tile);
 	uint x2 = x1 + w - 1;
 	uint y2 = y1 + h - 1;
 	uint t;
 
 	for (i = 0; i != MapSize(); i++) {
 		if (IS_TILETYPE(i, MP_STATION) && _map2[i] == station_index) {
-			t = GET_TILE_X(i);
+			t = TileX(i);
 			if (t < x1) x1 = t;
 			if (t > x2) x2 = t;
 
-			t = GET_TILE_Y(i);
+			t = TileY(i);
 			if (t < y1) y1 = t;
 			if (t > y2) y2 = t;
 		}
@@ -286,8 +286,8 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 		};
 
 		free_names &= _direction_and_table[
-			(GET_TILE_X(tile) < GET_TILE_X(t->xy)) +
-			(GET_TILE_Y(tile) < GET_TILE_Y(t->xy))*2];
+			(TileX(tile) < TileX(t->xy)) +
+			(TileY(tile) < TileY(t->xy)) * 2];
 	}
 
 	tmp = free_names & ((1<<1)|(1<<2)|(1<<3)|(1<<4)|(1<<6)|(1<<7)|(1<<12)|(1<<26)|(1<<27)|(1<<28)|(1<<29)|(1<<30));
@@ -350,7 +350,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 // st = Station to update for.
 static void UpdateStationVirtCoord(Station *st)
 {
-	Point pt = RemapCoords2(GET_TILE_X(st->xy) * 16, GET_TILE_Y(st->xy) * 16);
+	Point pt = RemapCoords2(TileX(st->xy) * 16, TileY(st->xy) * 16);
 	pt.y -= 32;
 	if (st->facilities&FACIL_AIRPORT && st->airport_type==AT_OILRIG) pt.y -= 16;
 
@@ -412,8 +412,8 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
 
 	memset(produced, 0, NUM_CARGO * sizeof(uint));
 
-	x = GET_TILE_X(tile);
-	y = GET_TILE_Y(tile);
+	x = TileX(tile);
+	y = TileY(tile);
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
@@ -460,8 +460,8 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 
 	memset(accepts, 0, sizeof(AcceptedCargo));
 
-	x = GET_TILE_X(tile);
-	y = GET_TILE_Y(tile);
+	x = TileX(tile);
+	y = TileY(tile);
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
@@ -531,10 +531,10 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	for(i=0; i!=7; i++) {
 		uint tile = span[i];
 		if (tile) {
-			min_x = min(min_x,GET_TILE_X(tile));
-			max_x = max(max_x,GET_TILE_X(tile));
-			min_y = min(min_y,GET_TILE_Y(tile));
-			max_y = max(max_y,GET_TILE_Y(tile));
+			min_x = min(min_x, TileX(tile));
+			max_x = max(max_x, TileX(tile));
+			min_y = min(min_y, TileY(tile));
+			max_y = max(max_y, TileY(tile));
 		}
 	}
 	if (_patches.modified_catchment) {
@@ -677,10 +677,10 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 
 	if (_patches.nonuniform_stations) {
 		// determine new size of train station region..
-		int x = min(GET_TILE_X(st->train_tile), GET_TILE_X(tile));
-		int y = min(GET_TILE_Y(st->train_tile), GET_TILE_Y(tile));
-		curw = max(GET_TILE_X(st->train_tile) + curw, GET_TILE_X(tile) + w) - x;
-		curh = max(GET_TILE_Y(st->train_tile) + curh, GET_TILE_Y(tile) + h) - y;
+		int x = min(TileX(st->train_tile), TileX(tile));
+		int y = min(TileY(st->train_tile), TileY(tile));
+		curw = max(TileX(st->train_tile) + curw, TileX(tile) + w) - x;
+		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
 		tile = TILE_XY(x,y);
 	} else {
 		// check so the direction is the same

@@ -45,13 +45,13 @@ uint GetTileSlope(uint tile, int *h)
 	uint a,b,c,d,min;
 	int r;
 
-	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY()) {
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
 		if (h)
 			*h = 0;
 		return 0;
 	}
 
-	assert(tile < MapSize() && GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
+	assert(tile < MapSize() && TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
 	min = a = _map_type_and_height[tile] & 0xF;
 	b = _map_type_and_height[tile+TILE_XY(1,0)] & 0xF;
@@ -82,7 +82,7 @@ int GetTileZ(uint tile)
 
 void FindLandscapeHeightByTile(TileInfo *ti, uint tile)
 {
-	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY()) {
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
 		ti->tileh = 0;
 		ti->type = MP_VOID;
 		ti->tile = 0;
@@ -354,8 +354,8 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = GET_TILE_X(p1)*16;
-	sy = GET_TILE_Y(p1)*16;
+	sx = TileX(p1) * 16;
+	sy = TileY(p1) * 16;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
@@ -445,8 +445,8 @@ void SetMapExtraBits(uint tile, byte bits)
 
 uint GetMapExtraBits(uint tile)
 {
-	if (GET_TILE_X(tile) < MapSizeX() && GET_TILE_Y(tile) < MapSizeY() &&
-			GET_TILE_X(tile) > 0 && GET_TILE_Y(tile) > 0)
+	if (TileX(tile) < MapSizeX() && TileY(tile) < MapSizeY() &&
+			TileX(tile) > 0 && TileY(tile) > 0)
 		return (_map_extra_bits[tile >> 2] >> (tile&3)*2)&3;
 	else
 		return 0;
@@ -469,7 +469,7 @@ void RunTileLoop()
 	do {
 		_tile_type_procs[GET_TILETYPE(tile)]->tile_loop_proc(tile);
 
-		if ( GET_TILE_X(tile) < MapSizeX() - TILELOOP_SIZE) {
+		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; /* no overflow */
 		} else {
 			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE-1) + TILE_XY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
@@ -515,9 +515,9 @@ void ConvertGroundTilesIntoWaterTiles()
 			_map_owner[tile] = OWNER_WATER;
 		}
 		tile++;
-		if (GET_TILE_X(tile) == MapMaxX()) {
+		if (TileX(tile) == MapMaxX()) {
 			tile += TILE_XY(-(int)MapMaxX(), 1);
-			if (GET_TILE_Y(tile) == MapMaxY())
+			if (TileY(tile) == MapMaxY())
 				break;
 		}
 	}
@@ -735,8 +735,8 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	uint32 r = Random();
 
 	return TILE_XY(
-		GET_TILE_X(a) + ((byte)r * rn * 2 >> 8) - rn,
-		GET_TILE_Y(a) + ((byte)(r>>8) * rn * 2 >> 8) - rn
+		TileX(a) + ((byte)r * rn * 2 >> 8) - rn,
+		TileY(a) + ((byte)(r >> 8) * rn * 2 >> 8) - rn
 	);
 }
 
@@ -749,8 +749,8 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 uint TileAddWrap(TileIndex tile, int addx, int addy)
 {
 	uint x, y;
-	x = GET_TILE_X(tile) + addx;
-	y = GET_TILE_Y(tile) + addy;
+	x = TileX(tile) + addx;
+	y = TileY(tile) + addy;
 
 	// Are we about to wrap?
 	if (x < MapMaxX() && y < MapMaxY())
@@ -761,5 +761,5 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 
 bool IsValidTile(uint tile)
 {
-	return (tile < MapSizeX() * MapMaxY() && GET_TILE_X(tile) != MapMaxX());
+	return (tile < MapSizeX() * MapMaxY() && TileX(tile) != MapMaxX());
 }

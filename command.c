@@ -325,7 +325,7 @@ bool IsValidCommand(int cmd)
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
-	return DoCommand(GET_TILE_X(tile)*16, GET_TILE_Y(tile)*16, p1, p2, flags, procc);
+	return DoCommand(TileX(tile) * 16, TileY(tile) * 16, p1, p2, flags, procc);
 }
 
 
@@ -401,8 +401,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	uint32 flags;
 	bool notest;
 
-	int x = GET_TILE_X(tile)*16;
-	int y = GET_TILE_Y(tile)*16;
+	int x = TileX(tile) * 16;
+	int y = TileY(tile) * 16;
 
 	assert(_docommand_recursive == 0);
 

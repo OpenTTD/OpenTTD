@@ -246,7 +246,8 @@ int AyStarMain_Main(AyStar *aystar) {
  */
 void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node) {
 #ifdef AYSTAR_DEBUG
-	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n", GET_TILE_X(start_node->tile), GET_TILE_Y(start_node->tile), start_node->direction);
+	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
+		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
 	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, 0, 0);
 }

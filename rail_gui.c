@@ -819,10 +819,10 @@ void ShowBuildRailToolbar(int index, int button)
 
 static void HandleStationPlacement(uint start, uint end)
 {
-	uint sx = GET_TILE_X(start);
-	uint sy = GET_TILE_Y(start);
-	uint ex = GET_TILE_X(end);
-	uint ey = GET_TILE_Y(end);
+	uint sx = TileX(start);
+	uint sy = TileY(start);
+	uint ex = TileX(end);
+	uint ey = TileY(end);
 	uint w,h;
 
 	if (sx > ex) intswap(sx,ex);

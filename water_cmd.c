@@ -197,7 +197,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// move in which direction?
-	delta = (GET_TILE_X(tile) == GET_TILE_X(endtile)) ? TILE_XY(0,1) : TILE_XY(1,0);
+	delta = (TileX(tile) == TileX(endtile)) ? TILE_XY(0,1) : TILE_XY(1,0);
 	if (endtile < tile) delta = -delta;
 
 	cost = 0;
@@ -267,8 +267,8 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 			return CMD_ERROR;
 
 		// Make sure it's not an edge tile.
-		if (!(IS_INT_INSIDE(GET_TILE_X(tile), 1, MapMaxX() - 1) &&
-				IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapMaxY() - 1)))
+		if (!(IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) &&
+				IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)))
 			return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 		if (m5 == 0) {
@@ -582,8 +582,8 @@ void TileLoop_Water(uint tile)
 		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
 
-	if (IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1) &&
-			IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) {
+	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
+			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
 		for(i=0; i!=4; i++)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 	}
@@ -592,16 +592,16 @@ void TileLoop_Water(uint tile)
 	_current_player = OWNER_NONE;
 
 	// edges
-	if (GET_TILE_X(tile) == 0 && IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) //NE
+	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
 
-	if (GET_TILE_X(tile) == (MapSizeX() - 2) && IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) //SW
+	if (TileX(tile) == (MapSizeX() - 2) && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) //SW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
 
-	if (GET_TILE_Y(tile) == 0 && IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1)) //NW
+	if (TileY(tile) == 0 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) //NW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
 
-	if (GET_TILE_Y(tile) == (MapSizeY() - 2) && IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1)) //SE
+	if (TileY(tile) == (MapSizeY() - 2) && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) //SE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
 
 }
