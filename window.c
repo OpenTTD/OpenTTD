@@ -85,8 +85,7 @@ void DispatchRightClickEvent(Window *w, int x, int y) {
 
 void DispatchMouseWheelEvent(Window *w, int wheel)
 {
-	
-	if (w->vscroll.count) {
+	if (w->vscroll.count > w->vscroll.cap) {
 		int pos = clamp(w->vscroll.pos + wheel, 0, w->vscroll.count - w->vscroll.cap);
 		if (pos != w->vscroll.pos) {
 			w->vscroll.pos = pos;
