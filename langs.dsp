@@ -53,6 +53,18 @@ InputPath=.\lang\american.txt
 # End Source File
 
 # Begin Source File
+
+SOURCE=.\lang\brazilian_portuguese.txt
+# Begin Custom Build
+InputPath=.\lang\brazilian_portuguese.txt
+
+"lang\brazilian_portuguese.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\brazilian_portuguese.txt
+
+# End Custom Build
+# End Source File
+
+# Begin Source File
 SOURCE=.\lang\catalan.txt
 # Begin Custom Build
 InputPath=.\lang\catalan.txt
@@ -180,6 +192,18 @@ InputPath=.\lang\italian.txt
 
 "lang\italian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	strgen\debug\strgen.exe lang\italian.txt
+
+# End Custom Build
+# End Source File
+
+# Begin Source File
+
+SOURCE=.\lang\latvian.txt
+# Begin Custom Build
+InputPath=.\lang\latvian.txt
+
+"lang\latvian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\latvian.txt
 
 # End Custom Build
 # End Source File
