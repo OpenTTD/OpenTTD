@@ -277,6 +277,10 @@ SOURCE=.\pathfind.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\pool.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\players.c
 # End Source File
 
@@ -511,6 +515,10 @@ SOURCE=.\npf.h
 
 # Begin Source File
 SOURCE=.\pathfind.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\pool.h
 # End Source File
 
 # Begin Source File

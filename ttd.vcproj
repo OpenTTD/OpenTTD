@@ -691,6 +691,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\pool.c">
+			</File>
+			<File
 				RelativePath=".\queue.c">
 			</File>
 			<File
@@ -1222,6 +1225,9 @@
 			</File>
 			<File
 				RelativePath="player.h">
+			</File>
+			<File
+				RelativePath=".\pool.h">
 			</File>
 			<File
 				RelativePath=".\queue.h">
