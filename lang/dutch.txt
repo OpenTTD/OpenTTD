@@ -741,6 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Geef stationsnamen weer
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Geef stationsnamen weer
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Geef borden weer
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Geef borden weer
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Checkpunt weergegeven
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Checkpunt weergegeven
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Alle animatie
 STR_02D0_FULL_ANIMATION						:{SETX 12}Alle animatie
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Alle details
@@ -1079,12 +1081,20 @@ STR_GO_TO_WAYPOINT						:Ga via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Tussenstop {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Tussenstop {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Checkpunt
 
+STR_WAYPOINT							:{WHITE}Checkpunt
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Selecteer checkpunt type
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Checkpunt naam aanpassen
 
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Kan checkpunt naam niet aanpassen...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Converteer spoor naar checkpunt
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Kan hier geen trein checkpunt  bouwen...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Kan hier geen trein checkpunt weghalen...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Bouw spoor met de Autorail-methode
 

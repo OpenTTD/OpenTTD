@@ -1126,7 +1126,7 @@ STR_CONVERT_RAIL_TIP						:{BLACK}Converter/Actualizar tipo de linha
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP				:{BLACK}Arrastar locomotiva para aqui para vender todo o comboio
 
-STR_DRAG_DROP							:{BLACK}Arrastar e Largar
+STR_DRAG_DROP							:{BLACK}Arrastar
 STR_STATION_DRAG_DROP						:{BLACK}Construir estação arrastando
 
 STR_FAST_FORWARD						:{BLACK}Aumentar velocidade do jogo
