@@ -117,7 +117,7 @@
 
 
 # Makefile version tag
-# it checks if the version tag in makefile.config is the same and force update outdated config files
+# it checks if the version tag in Makefile.config is the same and force update outdated config files
 MAKEFILE_VERSION:=6
 
 # CONFIG_WRITER has to be found even for manual configuration
@@ -138,7 +138,7 @@ else
 CONFIG_INCLUDED:=1
 endif
 
-# updates makefile.config if it's outdated
+# updates Makefile.config if it's outdated
 ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
 	ifndef MANUAL_CONFIG	# manual config should not check this
 		UPDATECONFIG:=upgradeconf
@@ -160,7 +160,7 @@ else
 	endif
 endif
 
-# this is used if there aren't any makefile.config
+# this is used if there aren't any Makefile.config
 ifndef CONFIG_INCLUDED
 # sets network on by default if there aren't any config file
 ENABLE_NETWORK:=1
@@ -185,7 +185,7 @@ ifndef WIN32
 ifndef OSX
 ifndef MORPHOS
 ifndef SKIP_STATIC_CHECK
-$(error Static is only known to work on MorphOS and MacOSX!!! --- Check makefile.config for more info and howto bypass this check)
+$(error Static is only known to work on MorphOS and MacOSX!!! --- Check Makefile.config for more info and howto bypass this check)
 endif
 endif
 endif
@@ -401,7 +401,7 @@ ifdef WITH_ZLIB
 		else
 			ifndef STATIC_ZLIB_PATH
 				ifndef MANUAL_CONFIG
-					# updates makefile.config with the zlib path
+					# updates Makefile.config with the zlib path
 					UPDATECONFIG:=upgradeconf
 				endif
 				TEMP:=$(shell ls /lib 2>/dev/null | grep "zlib.a")$(shell ls /lib 2>/dev/null | grep "libz.a")
@@ -899,20 +899,20 @@ ifndef MORPHOS
 install:
 ifeq ($(INSTALL),)
 	$(error make install is highly experimental at his state and not\
-	tested very much - use at your own risk - to use run \"make install INSTALL:=1\" - make sure makefile.config\
+	tested very much - use at your own risk - to use run \"make install INSTALL:=1\" - make sure Makefile.config\
 	is set correctly up - run \"make upgradeconf\")
 endif
 
 ifeq ($(PREFIX), )
-	$(error no prefix set - check makefile.config)
+	$(error no prefix set - check Makefile.config)
 endif
 #	We compare against the non prefixed version here, so we won't install
 #	if only the prefix has been set
 ifeq ($(DATA_DIR),)
-	$(error no data path set - check makefile.config)
+	$(error no data path set - check Makefile.config)
 endif
 ifeq ($(BINARY_DIR),)
-	$(error no binary path set - check makefile.config)
+	$(error no binary path set - check Makefile.config)
 endif
 # We'll install in $DEST_DIR instead of root if it is set (we don't
 # care about extra /'s
