@@ -1426,7 +1426,7 @@ static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
 			byte *src = bp.sprite_org;
 			signed char b;
 
-			bp.sprite += (dst - src);
+			bp.sprite = dst + (bp.sprite - bp.sprite_org);
 
 			while (totpix != 0) {
 				assert(totpix > 0);
