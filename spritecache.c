@@ -22,6 +22,7 @@ int _replace_sprites_offset[16];
 static const char *_cur_grffile;
 static int _loading_stage;
 static int _skip_specials;
+uint16 _custom_sprites_base;
 static SpriteHdr _cur_sprite;
 
 
@@ -794,7 +795,6 @@ static void LoadSpriteTables()
 		// So just load all files from disk..
 
 		int load_index = 0;
-		int old_load_index = 0;
 
 		for(i=0; _filename_list[i] != NULL; i++) {
 			load_index += LoadGrfFile(_filename_list[i], load_index, (byte)i);
@@ -815,16 +815,16 @@ static void LoadSpriteTables()
 
 		/* Load newgrf sprites */
 
-		_loading_stage = 0;
-		old_load_index = load_index;
+		_custom_sprites_base = load_index;
 
+		_loading_stage = 0;
 		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
 			InitNewGRFFile(_newgrf_files[j], load_index);
 			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
 		}
 
 		_loading_stage = 1;
-		load_index = old_load_index;
+		load_index = _custom_sprites_base;
 		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++)
 			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
 

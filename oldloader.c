@@ -11,6 +11,7 @@
 
 extern byte _name_array[512][32];
 extern TileIndex _animated_tile_list[256];
+extern uint16 _custom_sprites_base;
 
 #if defined(_MSC_VER)
 #pragma pack(push, 1)
@@ -758,6 +759,8 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 		n->owner = o->owner;
 		n->tile = o->tile;
 		n->cur_image = o->cur_image;
+		if (o->cur_image >= 0x2000) // TTDPatch maps sprites from 0x2000 up.
+			n->cur_image -= 0x2000 - _custom_sprites_base;
 
 		n->vehstatus = o->vehstatus;
 		n->cur_speed = o->cur_speed;
@@ -774,7 +777,11 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 		n->build_year = o->build_year;
 		n->unitnumber = o->unitnumber;
 		n->engine_type = o->engine_type;
-		n->spritenum = o->spritenum>>1;
+		switch (o->spritenum) {
+			case 0xfd: n->spritenum = 0xfd; break;
+			case 0xff: n->spritenum = 0xfe; break;
+			default:   n->spritenum = o->spritenum >> 1; break;
+		}
 		n->day_counter = o->day_counter;
 		n->breakdowns_since_last_service = o->breakdowns_since_last_service;
 		n->breakdown_ctr = o->breakdown_ctr;
@@ -1108,7 +1115,7 @@ bool LoadOldSaveGame(const char *file)
 	_opt.currency = m->currency;
 	_opt.kilometers = m->use_kilometers;
 	_opt.town_name = m->town_name_type;
-	_opt.landscape = m->landscape_type;
+	_opt.landscape = m->landscape_type & 0xf;
 	_opt.snow_line = m->snow_line_height;
 	_opt.autosave = 0;
 	_opt.road_side = m->road_side;
