@@ -250,7 +250,7 @@ REV_NUMBER:=0
 endif
 
 # MorphOS needs builddate
-BUILDDATE=`date +%d.%m.%y`
+BUILDDATE=$(shell date +%d.%m.%y)
 
 # AMD64 needs a little more settings to work
 ifeq ($(shell uname -m), x86_64)
@@ -373,11 +373,11 @@ endif
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
-CFLAGS += `$(SDL-CONFIG) --cflags`
+CFLAGS += $(shell $(SDL-CONFIG) --cflags)
 ifdef STATIC
-LIBS += `$(SDL-CONFIG) --static-libs`
+LIBS += $(shell $(SDL-CONFIG) --static-libs)
 else
-LIBS += `$(SDL-CONFIG) --libs`
+LIBS += $(shell $(SDL-CONFIG) --libs)
 endif
 endif
 
@@ -424,19 +424,19 @@ CDEFS += -DWITH_PNG
 ifdef FREEBSD
 LIBS += -lpng
 else
-CFLAGS += `libpng-config --cflags`
+CFLAGS += $(shell libpng-config --cflags)
 
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
 ifdef OSX
 # Seems like we need a tiny hack for OSX static to work
-LIBS += `libpng-config --prefix`/lib/libpng.a
+LIBS += $(shell libpng-config --prefix)/lib/libpng.a
 else
-LIBS += `libpng-config --static $(PNGCONFIG_FLAGS)`
+LIBS += $(shell libpng-config --static $(PNGCONFIG_FLAGS))
 endif
 else
-LIBS += `libpng-config  --L_opts $(PNGCONFIG_FLAGS)`
+LIBS += $(shell libpng-config  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 endif
