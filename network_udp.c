@@ -171,9 +171,9 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 
                 /* Send 1 if there is a passord for the company else send 0 */
 		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8 (p, 1);
+			NetworkSend_uint8 (packet, 1);
 		} else {
-			NetworkSend_uint8 (p, 0);
+			NetworkSend_uint8 (packet, 0);
 		}
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
