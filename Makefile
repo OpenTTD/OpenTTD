@@ -176,25 +176,14 @@ ENABLE_NETWORK:=1
 -include $(LIB_DETECTION)
 endif
 
-# Verbose filter
-
-ifdef NOVERBOSE
-VERBOSE_FILTER =  >/dev/null 2>&1
-else
-VERBOSE_FILTER =
-endif
-
 ifdef DISPLAY_WARNINGS
 WARNING_DISPLAY:=-fstrict-aliasing
-VERBOSE_FILTER =
 else
 WARNING_DISPLAY:=-fno-strict-aliasing
 endif
 
 ifdef SUPRESS_LANG_ERRORS
-ifndef VERBOSE_FILTER
 LANG_ERRORS =  >/dev/null 2>&1
-endif
 endif
 
 ifdef STATIC
@@ -721,18 +710,18 @@ endif
 all: endian.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
-	@# Check if system is LITTLE_ENDIAN or BIG_ENDIAN
-	@echo 'Running endian_check'; \
-		./$(ENDIAN_CHECK) > $@
+	@echo '===> Testing endianness'
+	@./$(ENDIAN_CHECK) > $@
 
 $(ENDIAN_CHECK): endian_check.c
-	@echo 'Compiling and Linking $@'; \
-		$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
+	@echo '===> Compiling and Linking $@'
+	@$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
 
 
 $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
-	$(if $(VERBOSE),@echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)';,@echo 'Compiling and Linking $@';) \
- 		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
+	@echo '===> Linking $@'
+	@$(if $(VERBOSE), echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)')
+	@$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)
 
 $(OSX): $(TTD)
 	@rm -fr "$(OSXAPP)"
@@ -758,19 +747,20 @@ $(64_bit_warnings):
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c endian.h
-	@echo 'Compiling and Linking $@'; \
-		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $< $(VERBOSE_FILTER)
+	@echo '===> Compiling and Linking $@'
+	@$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $<
 
 table/strings.h: lang/english.txt $(STRGEN)
-	@echo 'Generating $@'; \
-	$(STRGEN)
+	@echo '===> Generating $@'
+	@$(STRGEN)
 
 lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
-	@echo 'Generating $@'; \
-	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER) $(LANG_ERRORS)
+	@echo '===> Compiling language $(*F)'
+	@$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS)
 
 winres.o: ttd.rc
-	windres -o $@ $<
+	@echo '===> Compiling resource $<'
+	@windres -o $@ $<
 
 ifdef MORPHOS
 release: all
@@ -855,11 +845,11 @@ FORCE:
 
 
 clean:
-	@echo 'Cleaning up...'; \
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK)
+	@echo '===> Cleaning up'
+	@rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK)
 
 mrproper: clean
-	rm -rf $(MAKE_CONFIG)
+	@rm -rf $(MAKE_CONFIG)
 
 ifndef OSX
 ifndef MORPHOS
@@ -915,8 +905,8 @@ love:
 # Export all variables set to subprocesses (a bit dirty)
 .EXPORT_ALL_VARIABLES:
 upgradeconf: $(MAKE_CONFIG)
-	rm $(MAKE_CONFIG)
-	$(MAKE) $(MAKE_CONFIG)
+	@rm $(MAKE_CONFIG)
+	@$(MAKE) $(MAKE_CONFIG)
 
 .PHONY: upgradeconf
 
@@ -934,12 +924,11 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # first compilation round as we just build everything at that time anyway,
 # therefore we do not need to watch deps.
 
-#@echo '$(C_BUILD) $<'; \
-
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
-	$(if $(VERBOSE),@echo '$(C_BUILD) $<',@echo 'Compiling $(*F).o'); \
-		       $(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp $(VERBOSE_FILTER)
+	@echo '===> Compiling $<'
+	@$(if $(VERBOSE), echo '$(C_BUILD) $<')
+	@$(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
 		tr ' ' '\012' < .deps/$(*F).pp \
 		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
@@ -948,4 +937,5 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 # For DirectMusic build and BeOS specific parts
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
-	$(CXX_BUILD) $< -o $@
+	@echo '===> Compiling $<
+	@$(CXX_BUILD) $< -o $@
