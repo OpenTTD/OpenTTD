@@ -1,6 +1,5 @@
 ##name Italian
-##ownname Italian
-
+##ownname Italian (IT)
 ##id 0x0000
 STR_NULL								:
 STR_0001_OFF_EDGE_OF_MAP				:{WHITE}Fuori dal bordo della mappa
@@ -71,7 +70,7 @@ STR_0041_WATER							:Acqua
 STR_0042_WHEAT							:Frumento
 STR_0043_RUBBER							:Gomma
 STR_0044_SUGAR							:Zucchero
-STR_0045_TOY							:Giocattolo
+STR_0045_TOY							:Giocattolo 
 STR_0046_CANDY							:Caramelle
 STR_0047_COLA							:Cola
 STR_0048_COTTON_CANDY					:Cotone Candito
@@ -184,16 +183,16 @@ STR_00B2_MESSAGE						:{YELLOW}Messaggio
 STR_00B3_MESSAGE_FROM					:{YELLOW}Messaggio da {STRING}
 STR_00B4_CAN_T_DO_THIS					:{WHITE}Non puoi fare questo....
 STR_00B5_CAN_T_CLEAR_THIS_AREA			:{WHITE}Non puoi ripulire l'area....
-STR_00B6_ORIGINAL_COPYRIGHT							:{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
-STR_00B7_VERSION												:{BLACK}OpenTTD versione {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Concepito originariamente da Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Grafica di Simon Foster
-STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B6_COPYRIGHT_1995_CHRIS_SAWYER	:{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
+STR_00B7_VERSION_3_02_011_11TH_OCTOBER	:{BLACK}OpenTTD versione {REV}
+STR_00B8_DESIGNED_PROGRAMMED_BY			:{BLACK}Concepito originariamente da Chris Sawyer
+STR_00B9_GRAPHICS_BY_SIMON_FOSTER		:{BLACK}Grafica di Simon Foster
+STR_00BA_WINDOWS_95_CONVERSION_BY		:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
 STR_00C6								:{SILVER}{CROSS}
 STR_00C7_QUIT							:{WHITE}Esci
-STR_00C8_YES							:{BLACK}Si
+STR_00C8_YES							:{BLACK}Sì
 STR_00C9_NO								:{BLACK}No
 STR_00CA_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Sei sicuro di voler uscire dal gioco e tornare a {STRING}?
 STR_00CB_1								:{BLACK}1
@@ -320,8 +319,8 @@ STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Nuovo Gioco
 STR_0141_LOAD_GAME						:{BLACK}Carica Gioco
 STR_0142_TUTORIAL_DEMONSTRATION			:{BLACK}Tutorial / Demonstrazione
-STR_0143_1_PLAYER						:{BLACK}1 Giocatore
-STR_0144_2_PLAYERS						:{BLACK}2 Giocatori
+STR_SINGLE_PLAYER						:{BLACK}Singolo giocatore
+STR_MULTIPLAYER							:{BLACK}Multiplayer
 
 STR_0148_GAME_OPTIONS					:{BLACK}Opzioni di gioco
 
@@ -340,13 +339,16 @@ STR_0159_CARGO_PAYMENT_RATES			:Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE			:Classifica società
 ############ range for menu	ends
 
-STR_015B_OPENTTD		:{WHITE}OpenTTD
+STR_015B_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Salva partita
 STR_015D_LOAD_GAME						:Carica partita
 STR_015E_QUIT_GAME						:Abbandona partita
 STR_015F_QUIT							:Esci
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Sei sicuro di voler abbandonare la partita in corso?
 STR_0161_QUIT_GAME						:{WHITE}Abbandona partita
+STR_SORT_TIP					:{BLACK}Seleziona criterio di ordinamento
+STR_SORT_BY_NAME							:{BLACK}Nome
+STR_SORT_BY_DATE							:{BLACK}Data
 
 ############ range for months starts
 STR_0162_JAN							:Gen
@@ -507,7 +509,7 @@ STR_01EE_TRACK_INDEX					:{TINYFONT}{BLACK}Indice brani
 STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Elimina
 STR_01F1_SAVE							:{TINYFONT}{BLACK}Salva
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Attuale programma musicale
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Attuale programma musicale 
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM		:{BLACK}Seleziona progrmma 'Tutti i brani'
 STR_01F4_SELECT_OLD_STYLE_MUSIC			:{BLACK}Seleziona programma 'vecchio style'
 STR_01F5_SELECT_NEW_STYLE_MUSIC			:{BLACK}Seleziona programma 'nuovo style'
@@ -555,7 +557,7 @@ STR_021D								:{BLACK}
 STR_021E								:{WHITE}
 STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Crea Scenario
-STR_0221_OPENTTD				:{YELLOW}OpenTTD
+STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Editor Scenario
 STR_0223_LAND_GENERATION				:{WHITE}Genera paesaggio
 STR_0224								:{BLACK}{UPARROW}
@@ -733,7 +735,7 @@ STR_02D5_LAND_BLOCK_INFO				:Informazioni sull'area
 STR_02D6								:
 STR_02D7_SCREENSHOT_CTRL_S				:ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G		:ScreenShot Gigante (Ctrl-G)
-STR_02D9_ABOUT_OPENTTD			:Info su 'OpenTTD'
+STR_02D9_ABOUT_TRANSPORT_TYCOON			:Info su 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON								:{BLACK}On
@@ -759,7 +761,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES		:{BLACK}Seleziona il tipo di stile per i no
 
 STR_02F4_AUTOSAVE						:{BLACK}Salvataggi automatici
 STR_02F5								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN		:{BLACK}Seleziona intervallo salvataggi automatici
+STR_02F6_SELECT_INTERVAL_BETWEEN		:{BLACK}Seleziona intervallo salvataggi automatici 
 STR_02F7_OFF							:Off
 STR_02F8_EVERY_3_MONTHS					:Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS					:Ogni 6 mesi
@@ -774,14 +776,14 @@ STR_0301_DISPLAY_GAME_OPTIONS			:{BLACK}Mostra opzioni di gioco
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS		:{BLACK}Mostra opzioni difficoltà
 STR_0303_START_A_NEW_GAME_USING			:{BLACK}Inizia una partita con uno scenario personalizzato
 STR_0304_QUIT							:{BLACK}Esci
-STR_0305_LEAVE_OPENTTD			:{BLACK}Esci da 'OpenTTD'
+STR_0305_LEAVE_TRANSPORT_TYCOON			:{BLACK}Esci da 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL	:{BLACK}Guarda dimostrazione/tutorial
-STR_0307_OPENTTD		:{WHITE}OpenTTD {REV}
+STR_0307_TRANSPORT_TYCOON_DELUXE		:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS		:{WHITE}...può essere costruito solo in città
 STR_030E_SELECT_TEMPERATE_LANDSCAPE		:{BLACK}Seleziona paesaggio 'temperato'
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-artico'
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-artico' 
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE	:{BLACK}Seleziona paesaggio 'sub-tropicale'
-STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Seleziona paesaggio 'Città dei Giocattoli'
+STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Seleziona paesaggio 'Città dei Giocattoli' 
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Finanzia la costruzione di nuove industrie
 
 ############ range for menu	starts
@@ -898,6 +900,32 @@ STR_END_OF_SHARED_ORDERS				:{SETX 10}- - Fine degli Ordini Condivisi - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Il Treno {COMMA16} si è perso.
 STR_TRAIN_IS_UNPROFITABLE				:{WHITE}Il profitto del treno {COMMA16} per l'anno scorso è stato {CURRENCY}
+STR_EURO_INTRODUCE					: {BLACK}{BIGFONT}Unione Monetaria Europea!{}{}E’ stato introdotto l’euro come unica moneta per qualsiasi transazione del tuo Paese!
+
+# Start of order review system. 
+:# DON'T ADD OR REMOVE LINES HERE
+:STR_TRAIN_HAS_TOO_FEW_ORDERS				:{WHITE}Il treno {COMMA16} non ha sufficienti ordini pianificati
+STR_TRAIN_HAS_VOID_ORDER						:{WHITE}Il treno {COMMA16} non ha alcun ordine
+STR_TRAIN_HAS_DUPLICATE_ENTRY				:{WHITE}Il treno {COMMA16} ha alcuni ordini duplicati
+STR_TRAIN_HAS_INVALID_ENTRY                           :{WHITE}Il treno {COMMA16} ha una stazione non valida negli ordini 
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS	:{WHITE}Il veicolo {COMMA16} non ha sufficienti ordini pianificati 
+STR_ROADVEHICLE_HAS_VOID_ORDER			:{WHITE}Il veicolo {COMMA16} non ha alcun ordine
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY	:{WHITE}Il veicolo {COMMA16} ha alcuni ordini duplicati 
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                             :{WHITE}Il veicolo {COMMA16} ha una stazione non valida negli ordini 
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}La nave {COMMA16} non ha sufficienti ordini pianificati 
+STR_SHIP_HAS_VOID_ORDER							:{WHITE}La nave {COMMA16} non ha alcun ordine
+STR_SHIP_HAS_DUPLICATE_ENTRY				:{WHITE}La nave {COMMA16} ha alcuni ordini duplicati
+STR_SHIP_HAS_INVALID_ENTRY                            :{WHITE}La nave {COMMA16} ha un porto non valido negli ordini 
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS			:{WHITE}L’aereo {COMMA16} non ha sufficienti ordini pianificati 
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}L’aereo {COMMA16} non ha alcun ordine
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY		:{WHITE}L’aereo {COMMA16} ha alcuni ordini duplicati 
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                :{WHITE}L’aereo {COMMA16} ha un aeroporto non valido negli ordini
+# end of order system
+:
+STR_TRAIN_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per il treno {COMMA16} (limite fondi)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per il veicolo {COMMA16} (limite fondi)
+STR_SHIP_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per la nave {COMMA16} (limite fondi)
+STR_AIRCRAFT_AUTORENEW_FAILED				:{WHITE}Rinnovo automatico fallito per l’aereo {COMMA16} (limite fondi)
 
 STR_CONFIG_PATCHES						:{BLACK}Configura patch
 STR_CONFIG_PATCHES_TIP					:{BLACK}Configura le patch
@@ -906,36 +934,44 @@ STR_CONFIG_PATCHES_CAPTION				:{WHITE}Configurazione patch
 STR_CONFIG_PATCHES_OFF					:No
 STR_CONFIG_PATCHES_ON					:Si
 STR_CONFIG_PATCHES_VEHICLESPEED			:{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES		:{LTBLUE}Consenti costruzioni sulle coste/pendii: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE		:{LTBLUE}Consenti rimozione industrie, strade speciali, ecc.: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS		:{LTBLUE}Attiva costruzione treni molto lunghi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES		:{LTBLUE}Consenti la costruzione sulle coste/pendii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE		:{LTBLUE}Consenti la rimozione industrie, strade speciali, ecc.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS		:{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL		:{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS			:{LTBLUE}Unisci stazioni ferroviarie quando sono vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY			:{LTBLUE}Lascia stazione quanto uno dei tipi di merce è a pieno carico: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE		:{LTBLUE}Disattiva la manutenzione automatica dei treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Fai arrivare le merci in stazione solo quando richieste: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Consenti costruzione ponti molto lunghi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Consenti ordine vai al Deposito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION				:{LTBLUE}Inflazione: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS			:{LTBLUE}Scarica le merci in una stazione solo se richieste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES			:{LTBLUE}Consenti la costruzione di ponti molto lunghi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT			:{LTBLUE}Consenti ordine Vai al Deposito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND			:{LTBLUE}Consenti la costruzione di industrie produttrici di materia prima: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN		:{LTBLUE}Consenti più industrie dello stessi tipo per città: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE			:{LTBLUE}Consenti costr. industrie dello stesso tipo anche se molto vicine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN		:{LTBLUE}Consenti la costruzione di più industrie uguali per città: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE			:{LTBLUE}Consenti la costruzione di industrie uguali anche se molto vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE				:{LTBLUE}Mostra sempre formato esteso della data nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE			:{LTBLUE}Mostra segnali sul lato guida: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES			:{LTBLUE}Mostra finestra info finanziare alla fine di ogni anno: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP			:{LTBLUE}Gestisci funzione 'non-stop' come la TTDPatch: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP			:{LTBLUE}Gestisci funzione 'non-stop' come TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE		:{LTBLUE}Accoda veicoli stradali quando l'area di carico è occupata: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL			:{LTBLUE}Scorri orizontalmente la finestra quanto il mouse è degli angoli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL			:{LTBLUE}Scorri orizzontalmente la visuale se il mouse è agli angoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE				:{LTBLUE}Consenti corruzione autorità locale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING	:{LTBLUE}Nuovo sistema individuazione deposito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS	:{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND	:{LTBLUE}Nuovo algoritmo pathfinding dei treni: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Consenti sempre costruzione piccoli aeroporti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Consenti la costruzione piccoli aeroporti: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un treno è ritenuto perso se non si ottengono progressi dopo: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Un treno è ritenuto perso in assenza di progressi da: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED		:{LTBLUE}Un treno è ritenuto perso in assenza di progressi da: {ORANGE}disabilitato
+STR_CONFIG_PATCHES_ORDER_REVIEW			:{LTBLUE}Controlla gli ordini dei veicoli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF			:disabilitato
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT			:escludi i veicoli fermi
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON			:per tutti i veicoli
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Avvisa se i guadagni di un treno sono in negativo: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE					:{LTBLUE}Rinnova i veicoli quando diventano troppo vecchi
-STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Durata messaggio di errore: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES	:{LTBLUE}I veicoli non invecchiano mai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE			:{LTBLUE}Rinnova un veicolo quando diventa datato
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS			:{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
+STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Rinnova solo se disponibile il fondo minimo di: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Durata visualizzazione messaggio di errore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Copertura massima di una stazione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD	:{LTBLUE}Manutenzione elicotteri direttamente all’eliporto: {ORANGE}{STRING}
@@ -945,44 +981,54 @@ STR_CONFIG_PATCHES_MAX_ROADVEH			:{LTBLUE}Max veicoli stradali per giocatore: {O
 STR_CONFIG_PATCHES_MAX_AIRCRAFT			:{LTBLUE}Max aeroplani per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS			:{LTBLUE}Max navi per giocatore: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS		:{LTBLUE}Disabilita treni per l’IA: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH	:{LTBLUE}Disabilita veicoli stradali per l’IA: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT	:{LTBLUE}Disabilita aeroplani per l’IA: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS		:{LTBLUE}Disabilita navi per l’IA: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS		:{LTBLUE}Disabilita treni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH	:{LTBLUE}Disabilita veicoli stradali: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT	:{LTBLUE}Disabilita aerei: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS		:{LTBLUE}Disabilita navi: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS		:{LTBLUE}Intervallo di servizio predefinito per i treni: {ORANGE}{STRING} giorni
-STR_CONFIG_PATCHES_SERVINT_ROADVEH		:{LTBLUE}Intervallo di servizio predefinito per i veicoli: {ORANGE}{STRING} giorni
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT		:{LTBLUE}Intervallo di servizio predefinito per gli aerei: {ORANGE}{STRING} giorni
-STR_CONFIG_PATCHES_SERVINT_SHIPS		:{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_SERVINT_TRAINS							:{LTBLUE}Intervallo di servizio predefinito per i treni: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED		:{LTBLUE}Intervallo di servizio predefinito per i treni: {ORANGE}disabilitato
+STR_CONFIG_PATCHES_SERVINT_ROADVEH						:{LTBLUE}Intervallo di servizio predefinito per i veicoli stradali: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED		:{LTBLUE}Intervallo di servizio predefinito per i veicoli stradali: {ORANGE}disabilitato
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT						:{LTBLUE}Intervallo di servizio predefinito per gli aerei: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED	:{LTBLUE}Intervallo di servizio predefinito per gli aerei: {ORANGE}disabilitato
+STR_CONFIG_PATCHES_SERVINT_SHIPS							:{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}{STRING} giorni
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}disabilitato
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE	:{LTBLUE}Notizie colorate pubblicate dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE		:{LTBLUE}Data di inizio: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY		:{LTBLUE}Abilita nuova economia stabile (diverse piccole modifiche):
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY		:{LTBLUE}Abilita nuova economia stabile (diverse piccole modifiche)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY		:{LTBLUE}Trascinando il cursore costruisci i semafori ogni: {ORANGE}{STRING} quadrato/i
+STR_CONFIG_PATCHES_TOOLBAR_POS			:{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT		:Sinistra
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER	:Centro
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT	:Destra
 
 STR_CONFIG_PATCHES_GUI					:{BLACK}Interfaccia
 STR_CONFIG_PATCHES_CONSTRUCTION			:{BLACK}Costruzione
 STR_CONFIG_PATCHES_VEHICLES				:{BLACK}Veicoli
 STR_CONFIG_PATCHES_STATIONS				:{BLACK}Stazioni
 STR_CONFIG_PATCHES_ECONOMY				:{BLACK}Economia
+STR_CONFIG_PATCHES_AI					:{BLACK}Avversari
 
 STR_CONFIG_PATCHES_DISABLED				:disabilitato
 STR_CONFIG_PATCHES_INT32				:{INT32}
+STR_CONFIG_PATCHES_CURRENCY				:{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Cambia valori impostazioni
+STR_CONFIG_PATCHES_QUERY_CAPT			:{WHITE}Cambia valori impostazioni 
 
 
-STR_CHEATS										:{WHITE}Cheats
+STR_CHEATS										:{WHITE}Trucchi
 STR_CHEATS_TIP								:{BLACK}La casella indica se hai già utilizzato questo trucco in passato
 STR_CHEATS_WARNING						:{BLACK}Attenzione! Stai per denunciare i tuoi avversari. Ricordati che un così grande disonore verrà ricordato per l’eternità.
 STR_CHEAT_MONEY								:{LTBLUE}Aumenta soldi di {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Gioca come giocatore: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Bulldozer magico (rimuove industrie e altri): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE		:{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE			:{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH					:{LTBLUE}I jet non si schiantano troppo frequentemente nei piccolo aeroporti: {ORANGE} {STRING}
 
-STR_TOWNDIR_NAME						:{BLACK}Nome
-STR_TOWNDIR_POPULATION					:{BLACK}Popolazione
-STR_TOWNDIR_SORT_TIP					:{BLACK}Seleziona il tipo di ordinamento
+STR_SORT_BY_POPULATION					:{BLACK}Popolazione
 
 STR_HEADING_FOR_CHECKPOINT				:{LTBLUE}Direzione {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL			:{LTBLUE}Direzione {CHECKPOINT}, {VELOCITY}
@@ -1005,8 +1051,21 @@ STR_CANT_REMOVE_TRAIN_CHECKPOINT		:{WHITE}Non puoi rimuovere checkpoint...
 
 STR_BUILD_AUTORAIL_TIP					:{BLACK}Costruisci binario usando la modalità automatica
 
-STR_TREES_RANDOM_TYPE					:{BLACK}Alberi di tipo casuale
-STR_TREES_RANDOM_TYPE_TIP				:{BLACK}Pianta alberi di tipo casuale
+STR_NO_TOWN_IN_SCENARIO					:{WHITE}...non ci sono città in questo scenario 
+
+STR_GENERATE_RANDOM_LANDSCAPE		:{WHITE}Sei sicuro di voler creare un terreno casuale? 
+STR_MANY_RANDOM_TOWNS						:{BLACK}Alcune città casuali 
+STR_RANDOM_TOWNS_TIP						:{BLACK}Copri la mappa con città costruite casualmente 
+STR_MANY_RANDOM_INDUSTRIES			:{BLACK}Alcune industrie casuali 
+STR_RANDOM_INDUSTRIES_TIP				:{BLACK}Copri la mappa con industrie costruite casualmente 
+STR_CAN_T_GENERATE_INDUSTRIES		:{WHITE}Impossibile generare le industrie...
+
+STR_LANDSCAPING_TOOLBAR					:{WHITE}Modella terreno
+STR_LEVEL_LAND_TOOLTIP					:{BLACK}Livella terreno 
+
+
+STR_TREES_RANDOM_TYPE					:{BLACK}Alberi casuali
+STR_TREES_RANDOM_TYPE_TIP				:{BLACK}Pianta alberi di tipo casuale 
 
 STR_CANT_BUILD_CANALS							:{WHITE}Impossibile costruire un canale qui...
 STR_BUILD_CANALS_TIP							:{BLACK}Costruisci canali
@@ -1022,49 +1081,126 @@ STR_CANT_REMOVE_PART_OF_STATION			:{WHITE}Impossibile rimuovere una porzione di 
 STR_CANT_CONVERT_RAIL					:{WHITE}Impossibile convertire il tipo di rotaie...
 STR_CONVERT_RAIL_TIP					:{BLACK}Converti/aggiorna il tipo di rotaie
 
-STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP		:{BLACK}Trascina qui la locomotiva per vendere l’intero treno
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP		:{BLACK}Trascina qui la locomotiva per vendere l’intero treno 
 
 STR_DRAG_DROP							:{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP					:{BLACK}Costruisci una stazione con il drag & drop
 
-STR_FAST_FORWARD						:{BLACK}Aumenta la velocità di gioco
-STR_MESSAGE_HISTORY						:{WHITE}Cronologia messaggi
+STR_FAST_FORWARD						:{BLACK}Aumenta la velocità di gioco 
+STR_MESSAGE_HISTORY					:{WHITE}Cronologia messaggi
+STR_MESSAGE_HISTORY_TIP			:{BLACK}Elenco delle notizie recenti
+STR_MESSAGES_DISABLE_ALL		:{BLACK}Disabilita tutti 
+STR_MESSAGES_ENABLE_ALL			:{BLACK}Abilita tutti
 
-STR_CONSTRUCT_COAL_MINE_TIP				:{BLACK}Costruisci Miniera di Carbone
-STR_CONSTRUCT_FOREST_TIP				:{BLACK}Posiziona Foresta
+STR_CONSTRUCT_COAL_MINE_TIP				:{BLACK}Costruisci Miniera di Carbone 
+STR_CONSTRUCT_FOREST_TIP				:{BLACK}Posiziona Foresta 
 STR_CONSTRUCT_OIL_RIG_TIP				:{BLACK}Costruisci Piattaforma Petrolifera
-STR_CONSTRUCT_FARM_TIP					:{BLACK}Fonda Fattoria
+STR_CONSTRUCT_FARM_TIP					:{BLACK}Fonda Fattoria 
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP		:{BLACK}Costruisci Miniera di Rame
-STR_CONSTRUCT_OIL_WELLS_TIP				:{BLACK}Costruisci Pozzo Petrolifero
-STR_CONSTRUCT_GOLD_MINE_TIP				:{BLACK}Costruisci Miniera d’Oro
-STR_CONSTRUCT_DIAMOND_MINE_TIP			:{BLACK}Costruisci Miniera di Diamanti
+STR_CONSTRUCT_OIL_WELLS_TIP				:{BLACK}Costruisci Pozzo Petrolifero 
+STR_CONSTRUCT_GOLD_MINE_TIP				:{BLACK}Costruisci Miniera d’Oro 
+STR_CONSTRUCT_DIAMOND_MINE_TIP			:{BLACK}Costruisci Miniera di Diamanti 
 STR_CONSTRUCT_IRON_ORE_MINE_TIP			:{BLACK}Costruisci Miniera d’Argento
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP		:{BLACK}Fonda Piantagione di Frutta
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP		:{BLACK}Fund Rubber Plantation
-STR_CONSTRUCT_WATER_SUPPLY_TIP			:{BLACK}Fund Water Supply
-STR_CONSTRUCT_COTTON_CANDY_TIP			:{BLACK}Plant Cotton Candy Forest
-STR_CONSTRUCT_BATTERY_FARM_TIP			:{BLACK}Fund Battery Farm
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP		:{BLACK}Fonda Rubber Plantation
+STR_CONSTRUCT_WATER_SUPPLY_TIP			:{BLACK}Fonda Water Supply
+STR_CONSTRUCT_COTTON_CANDY_TIP			:{BLACK}Pianta Cotton Candy Forest
+STR_CONSTRUCT_BATTERY_FARM_TIP			:{BLACK}Fonda Battery Farm
 STR_CONSTRUCT_COLA_WELLS_TIP			:{BLACK}Drill for Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP		:{BLACK}Fund Plastic Fountains
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP		:{BLACK}Construct Bubble Generator
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP			:{BLACK}Fund Toffee Quarry
-STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Costruisci Raffineria di Zucchero
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP		:{BLACK}Fonda Plastic Fountains
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP		:{BLACK}Costruisci Bubble Generator
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP			:{BLACK}Fonda Toffee Quarry
+STR_CONSTRUCT_SUGAR_MINE_TIP			:{BLACK}Costruisci Raffineria di Zucchero 
 
-STR_INDUSTRYDIR_NAME					:{BLACK}Nome
-STR_INDUSTRYDIR_PRODUCTION				:{BLACK}Produzione
-STR_INDUSTRYDIR_TYPE					:{BLACK}Tipo
+STR_SORT_BY_PRODUCTION				:{BLACK}Produzione
+STR_SORT_BY_TYPE					:{BLACK}Tipo
+STR_SORT_BY_TRANSPORTED				:{BLACK}Trasportato
 STR_INDUSTRYDIR_CAPTION					:{WHITE}Industrie
-STR_INDUSTRYDIR_ITEM					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING})
+STR_INDUSTRYDIR_ITEM					:<CHECK>{ORANGE}{TOWN} {STRING}{BLACK} ({STRING})
+STR_INDUSTRYDIR_ITEM_TWO				:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% trasportate)
 STR_INDUSTRYDIR_ITEM_NOPROD				:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE				:{WHITE}...troppo vicina ad un’altra industria.
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY			:{BLACK}Riadatta il treno per trasportare un differente tipo di carico
+STR_RAIL_REFIT_VEHICLE_TO_CARRY			:{BLACK}Riadatta il treno per trasportare un differente tipo di carico 
 STR_RAIL_REFIT							:{WHITE}{STRING} (Riadatta)
-STR_RAIL_REFIT_VEHICLE					:{BLACK}Riadatta treno
+STR_RAIL_REFIT_VEHICLE					:{BLACK}Riadatta treno 
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Seleziona tipo di carico per il treno
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED		:{BLACK}Riadatta il treno per trasportare il tipo di carico selezionato
 STR_RAIL_CAN_T_REFIT_VEHICLE			:{WHITE}Impossibile riadattare il treno...
+
+
+############ network gui strings
+
+TEMP_STRING_NO_NETWORK						:{WHITE}Interfaccia di rete attualmente non funzionante!{WHITE}
+
+STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
+
+STR_NETWORK_FIND_SERVER						:{BLACK}Trova server 
+STR_NETWORK_FIND_SERVER_TIP				:{BLACK}Cerca nella rete un server
+STR_NETWORK_DIRECT_CONNECT				:{BLACK}Connessione diretta 
+STR_NETWORK_ENTER_IP							:{BLACK}Digita indirizzo IP del server 
+STR_NETWORK_DIRECT_CONNECT_TIP		:{BLACK}Connetti ad un IP conosciuto 
+STR_NETWORK_START_SERVER					:{BLACK}Avvia server 
+STR_NETWORK_START_SERVER_TIP			:{BLACK}Avvia il tuo server
+
+STR_NETWORK_PLAYER_NAME						:{BLACK}Nome giocatore:
+STR_NETWORK_ENTER_NAME_TIP				:{BLACK}Questo è il nome con cui gli altri giocatori ti identificheranno 
+
+STR_NETWORK_SELECT_CONNECTION			:{BLACK}Seleziona tipo di connessione:
+STR_NETWORK_CONNECTION_TYPE_TIP		:{BLACK}Seleziona tra una partita via Internet o un gioco nella rete locale 
+STR_NETWORK_COMBO1								:{BLACK}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN										:{BLACK}LAN
+STR_NETWORK_INTERNET							:{BLACK}Internet
+
+STR_NETWORK_GAME_NAME							:{BLACK}Nome
+STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome del gioco 
+STR_NETWORK_PLAYERS								:{BLACK}#/#
+STR_NETWORK_PLAYERS_TIP						:{BLACK}Giocatori attualmente in questo gioco / Numero massimo di giocatori 
+STR_NETWORK_MAP_SIZE							:{BLACK}Dimens.
+STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Dimensione della mappa 
+STR_NETWORK_INFO_ICONS_TIP				:{BLACK}Lingua, versione server, ecc.
+STR_NETWORK_CLICK_GAME_TO_SELECT	:{BLACK}Clicca su un nome della lista per selezionarlo 
+
+STR_NETWORK_JOIN_GAME							:{BLACK}Entra nel gioco 
+
+
+STR_NETWORK_START_GAME_WINDOW			:{WHITE}Avvia nuovo gioco 
+
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome gioco:
+STR_NETWORK_NEW_GAME_NAME_TIP			:{BLACK}Il nome della partita verrà visualizzato dagli altri giocatori nel menu di selezione del gioco 
+STR_NETWORK_PASSWORD							:{BLACK}Password:
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteggi il tuo gioco con una password se non vuoi che altre persone vi entrino 
+STR_NETWORK_SELECT_MAP						:{BLACK}Seleziona una mappa:
+STR_NETWORK_SELECT_MAP_TIP				:{BLACK}Con quale mappa vuoi giocare?
+STR_NETWORK_NUMBER_OF_PLAYERS			: {BLACK}Numero di giocatori:
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP	:{BLACK}Seleziona il numero Massimo di giocatori. Non è necessario che tutti gli spazi vengano occupati.
+STR_NETWORK_COMBO2								:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_PLAYERS							:{BLACK}2 giocatori
+STR_NETWORK_3_PLAYERS							:{BLACK}3 giocatori 
+STR_NETWORK_4_PLAYERS							:{BLACK}4 giocatori 
+STR_NETWORK_5_PLAYERS							:{BLACK}5 giocatori 
+STR_NETWORK_6_PLAYERS							:{BLACK}6 giocatori 
+STR_NETWORK_7_PLAYERS							:{BLACK}7 giocatori 
+STR_NETWORK_8_PLAYERS							:{BLACK}8 giocatori 
+STR_NETWORK_START_GAME						:{BLACK}Avvia gioco 
+
+
+STR_NETWORK_GAME_LOBBY						:{WHITE}Stanza di gioco multiplayer
+
+STR_NETWORK_SEND									:{BLACK}Invia
+STR_NETWORK_SEND_TIP							:{BLACK}Invia un messaggio agli altri giocatori 
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nome compagnia:
+STR_NETWORK_COMPANY_NAME_TIP			:{BLACK}Cambia il nome della tua compagnia. Premi Invio per confermare le modifiche 
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Assisti alla partita 
+STR_NETWORK_SPECTATE_GAME_TIP			:{BLACK}Assisti al gioco come spettatore 
+STR_NETWORK_NEW_COMPANY						:{BLACK}Nuova compagnia
+STR_NETWORK_NEW_COMPANY_TIP				:{BLACK}Apri una nuova compagnia 
+STR_NETWORK_READY									:{BLACK}Pronto
+
+
+############ end network gui strings
+
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Costo: {CURRENCY}
@@ -1086,7 +1222,7 @@ STR_080F_SNOW_COVERED_LAND				:Terreno innevato
 STR_0810_DESERT							:Deserto
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata 
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION	:{WHITE}Combinazione di binari impossibile
 STR_1002_EXCAVATION_WOULD_DAMAGE		:{WHITE}Gli scavi danneggerebbero la galleria
 STR_1003_ALREADY_AT_SEA_LEVEL			:{WHITE}Già al livello del mare
@@ -1131,7 +1267,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS	:Binario ferroviario con segnali combinati
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata
+STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION	:{WHITE}Terreno inclinato nella direzione errata 
 STR_1801_MUST_REMOVE_ROAD_FIRST			:{WHITE}Devi rimuovere la strada prima
 STR_1802_ROAD_CONSTRUCTION				:{WHITE}Costruzioni Stradali
 STR_1803_SELECT_ROAD_BRIDGE				:{WHITE}Seleziona ponte stradale
@@ -1235,7 +1371,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION	:Finanzia ricostruzione delle strade loc
 STR_204A_BUILD_STATUE_OF_COMPANY		:Costruisci statua del propietario della società
 STR_204B_FUND_NEW_BUILDINGS				:Finanzia nuove costruzioni
 STR_204C_BUY_EXCLUSIVE_TRANSPORT		:Compra l'esclusiva sui trasporti
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Corrompi l’autorità locale
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Corrompi l’autorità locale 
 STR_204D_INITIATE_A_SMALL_LOCAL			:{WHITE}{STRING}{}{YELLOW} Inizia una piccola campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL		:{WHITE}{STRING}{}{YELLOW} Inizia una media campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL			:{WHITE}{STRING}{}{YELLOW} Inizia una grande campagnia pubblicitaria per attirare più gente e cargo ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
@@ -1255,6 +1391,7 @@ STR_205B_TEAPOT_HOUSE					:Casa-teiera
 STR_205C_PIGGY_BANK						:Banca-porcellino
 
 ##id 0x2800
+STR_LANDSCAPING								:Modellazione terreno
 STR_2800_PLANT_TREES					:Pianta alberi
 STR_2801_PLACE_SIGN						:Piazza cartello
 STR_2802_TREES							:{WHITE}Alberi
@@ -1278,7 +1415,7 @@ STR_3000_RAIL_STATION_SELECTION			:{WHITE}Selezione Stazione
 STR_3001_AIRPORT_SELECTION				:{WHITE}Selezione Aereoporto
 STR_3002_ORIENTATION					:{BLACK}Orientamento
 STR_3003_NUMBER_OF_TRACKS				:{BLACK}Numero binari
-STR_3004_PLATFORM_LENGTH				:{BLACK}Lunghezza
+STR_3004_PLATFORM_LENGTH				:{BLACK}Lunghezza 
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Troppo vicino a un'altra stazione
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING	:{WHITE}Unisci stazione esistente/area di carico
 STR_3007_TOO_MANY_STATIONS_LOADING		:{WHITE}Troppe stazioni/aree di carico in questa città
@@ -1464,7 +1601,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND		:{WHITE}Impossibile scavare l'uscita del tunne
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST		:{WHITE}Devi demolire il tunnel prima
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST		:{WHITE}Devi demolire il ponte prima
 STR_5008_CANNOT_START_AND_END_ON		:{WHITE}Non si può partire e finire nello stesso punto
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Sotto i ponti è richiesto terreno piano o acqua
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Sotto i ponti è richiesto terreno piano o acqua 
 STR_500A_START_AND_END_MUST_BE_IN		:{WHITE}Inizio e fine devono essere allineati
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL		:{WHITE}Sito inadatto per l'entrata del tunnel
 STR_500C								:
@@ -1476,7 +1613,7 @@ STR_5011_SUSPENSION_CONCRETE			:Sospeso in Cemento
 STR_5012_WOODEN							:Di legno
 STR_5013_CONCRETE						:In cemento
 STR_5014_TUBULAR_STEEL					:Tubolare in acciaio
-STR_BRIDGE_TUBULAR_SILICON				:Tubolare in silicone
+STR_BRIDGE_TUBULAR_SILICON				:Tubolare in silicone 
 STR_5015_CAN_T_BUILD_BRIDGE_HERE		:{WHITE}Non puoi costruire ponte qui...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE		:{WHITE}Non puoi costruire tunnel qui...
 STR_5017_RAILROAD_TUNNEL				:Tunnel ferroviario
@@ -1496,7 +1633,7 @@ STR_5024_REINFORCED_CONCRETE_SUSPENSION	:Ponte stradale sospeso in cemento armat
 STR_5025_WOODEN_ROAD_BRIDGE				:Ponte stradale in legno
 STR_5026_CONCRETE_ROAD_BRIDGE			:Ponte stradale in cemento
 STR_5027_TUBULAR_RAIL_BRIDGE			:Ponte ferroviario tubolare
-STR_5028_TUBULAR_ROAD_BRIDGE			:Ponte stradale tubolare
+STR_5028_TUBULAR_ROAD_BRIDGE			:Ponte stradale tubolare 
 STR_5029_STEEL							:Acciaio
 
 ##id 0x5800
@@ -1558,6 +1695,7 @@ STR_SV_STNAME_FOREST					:{STRING} Foresta
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL				:{WHITE}Livello di difficoltà
+STR_OPTIONS_SAVE_CHANGES				:{BLACK}Salva
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Facile
@@ -1584,8 +1722,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES			:{LTBLUE}Quantità mare/laghi: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING				:{LTBLUE}Inversione treni: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Disastri: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL				:<TODO>{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Nessuno
 STR_6816_LOW							:Basso
 STR_6817_NORMAL							:Normale
 STR_6818_HIGH							:Alto
@@ -1618,16 +1758,18 @@ STR_6831_3_MONTHS_AFTER_PLAYER			:3 mesi dopo il giocatore
 STR_6832_6_MONTHS_AFTER_PLAYER			:6 mesi dopo il giocatore
 STR_6833_9_MONTHS_AFTER_PLAYER			:9 mesi dopo il giocatore
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS	:Alla fine della linea, e alle stazioni
-STR_6835_AT_END_OF_LINE_ONLY			:Solo alla fine della linea
+STR_6835_AT_END_OF_LINE_ONLY			:Solo alla fine della linea 
 STR_6836_OFF							:Off
 STR_6837_ON								:On
 STR_6838_SHOW_HI_SCORE_CHART			:{BLACK}Mostra punteggi migliori
+STR_6839_PERMISSIVE		:Permissivo
+STR_683A_TOLERANT			:Tollerante
+STR_683B_HOSTILE			:Ostile
 
 ##id 0x7000
 STR_7000								:
 STR_7001								:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER_1						: (Giocatore 1)
-STR_7003_PLAYER_2						: (Giocatore 2)
+STR_7002_PLAYER						: (Giocatore {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nuova Faccia
 STR_7005_COLOR_SCHEME					:{BLACK}Colore Società
 STR_7006_COLOR_SCHEME					:{GOLD}Colore Società:
@@ -1665,8 +1807,8 @@ STR_7025_OPERATING_PROFIT_GRAPH			:{WHITE}Grafico Profitti Operazionali
 STR_7026_BANK_BALANCE					:{WHITE}Bilancio Bancario
 STR_7027_LOAN							:{WHITE}Prestito
 STR_7028								:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW							:<CHECK>{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:<CHECK>{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN			:{WHITE}...il prestito massimo concesso è di {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Non puoi chiedere altro denaro...
 STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...debito già ripagato
@@ -1681,7 +1823,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Aumenta dimensioni del debito
 STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Ripaga parte del debito
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
 STR_7038_INAUGURATED					:{GOLD}Inaugurata: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Veicoli:
+STR_7039_VEHICLES						:{GOLD}Veicoli: 
 STR_703A_TRAIN							:{WHITE}{COMMA16} treno
 STR_703B_TRAINS							:{WHITE}{COMMA16} treni
 STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} Veicolo stradale
@@ -1743,8 +1885,8 @@ STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Recessione Mondiale!{}{}Gli
 STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Recessione Finita!{}{}Rialzo negli scambi dà fiducia alle industrie per un rafforzamento economico!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_7076_COMPANY_VALUE					:{GOLD}Valore società: {WHITE}{CURRENCY}
-STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Compra il 25% delle azioni
-STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Vendi il 25% delle azioni
+STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Compra il 25% delle azioni 
+STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Vendi il 25% delle azioni 
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY	:{BLACK}Compra il 25% delle azioni della società
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY	:{BLACK}Vendi il 25% delle azioni della società
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS		:{WHITE}Non puoi comprare il 25% delle azioni della società...
@@ -1935,7 +2077,7 @@ STR_80B1_MIGHTYMOVER_COLA_TRUCK			:Autobotte-Cola MightyMover
 STR_80B2_POWERNAUGHT_COLA_TRUCK			:Autobotte-Cola Powernaught
 STR_80B3_WIZZOWOW_COLA_TRUCK			:Autobotte-Cola Wizzowow
 STR_80B4_MIGHTYMOVER_COTTON_CANDY		:Camion Cotone Can. MightyMover
-STR_80B5_POWERNAUGHT_COTTON_CANDY		:Camion Cotone Can. Powernaught
+STR_80B5_POWERNAUGHT_COTTON_CANDY		:Camion Cotone Can. Powernaught 
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Camion Cotone Can. Wizzowow
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:Camion Toffee MightyMover
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Camion Toffee Powernaught
@@ -1961,7 +2103,7 @@ STR_80CB_WIZZOWOW_BUBBLE_TRUCK			:Camion Bolle Wizzowow
 STR_80CC_MPS_OIL_TANKER					:Petroliera MPS
 STR_80CD_CS_INC_OIL_TANKER				:Petroliera CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY			:Traghetto FFP
-STR_80CF_FFP_PASSENGER_FERRY			:Traghetto FFP
+STR_80CF_FFP_PASSENGER_FERRY			:Traghetto FFP 
 STR_80D0_BAKEWELL_300_HOVERCRAFT		:Hovercraft Bakewell 300
 STR_80D1_CHUGGER_CHUG_PASSENGER			:Traghetto Chugger-Chug
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Traghetto Shivershake
@@ -2042,6 +2184,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT		:Manutenzione non-stop a {TOWN} Deposito Fe
 STR_HEADING_FOR_TRAIN_DEPOT				:{LTBLUE}Direzione {TOWN} Deposito
 STR_HEADING_FOR_TRAIN_DEPOT_VEL			:{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
 
+STR_UNKNOWN_DESTINATION			:destinazione sconosciuta 
 STR_8812_EMPTY							:{LTBLUE}Vuoto
 STR_8813_FROM							:{LTBLUE}{CARGO} da {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT		:{WHITE}Treno {COMMA16} stà aspettando nel deposito
@@ -2178,7 +2321,7 @@ STR_9021_SHOW_ROAD_VEHICLE_DETAILS		:{BLACK}Mostra dettagli del veicolo
 STR_9022_VEHICLES_CLICK_ON_VEHICLE		:{BLACK}Veicoli - fai clic sul veicolo per le informazioni
 STR_9023_BUILD_NEW_ROAD_VEHICLE			:{BLACK}Costruisci nuovo veicolo stradale
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE		:{BLACK}Trascina veicolo stradale qui per venderlo
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Centra visuale sul deposito
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Centra visuale sul deposito 
 STR_9026_ROAD_VEHICLE_SELECTION			:{BLACK}Lista veicoli - fai clic sul veicolo per le informazioni
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD		:{BLACK}Costruisci veicolo stradale evidenziato
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE	:{BLACK}{BIGFONT}Nuovo veicolo stradale disponibile!
@@ -2327,7 +2470,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Non puoi dare un nome all'aereo...
 STR_A032_NAME_AIRCRAFT					:{BLACK}Nome aereo
 STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo aereo atterrato a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Aereo precipitato!{}{COMMA16} morti in una palla di fuoco a {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinazioni:
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinazioni: 
 STR_A036								:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rinomina
 STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Rinomina tipo di aereo
@@ -2355,4 +2498,5 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Cedimento in una miniera d
 
 STR_BRIBE_FAILED					:{WHITE}Il tentativo di corruzione è stato
 STR_BRIBE_FAILED_2				:{WHITE}scoperto dagli ispettori regionali.
+STR_BUILD_DATE						:{BLACK}Realizzato il: {LTBLUE}{DATE_LONG}
 
