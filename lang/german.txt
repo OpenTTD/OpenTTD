@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Aktiviere realistische Einzugsgebiete:
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Erlaube die Entfernung von Industrien, weiteren Straßen usw.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Erlaube das Bauen von sehr langen Zügen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische Zugbeschleunigung aktivieren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Verbiete Zügen und Schiffen 90 Grad Kurven: {ORANGE}{STRING} {LTBLUE} (erfordert NWF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Verlasse die Station, wenn eine Fracht vollgeladen ist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Bestechen der Stadtverwaltung erlauben: {O
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Neues Wegfinden für Depots: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Neuen Algorithmus für die Züge zur Wegfindung benutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Neue globale Wegfindung (NWF, ersetzt NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
@@ -1090,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Flugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Ändere Datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Aktiviere Veränderung der Produktionswerte: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Fahre zu {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1399,8 @@ STR_NETWORK_SEND						:{BLACK}Senden
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}X-Abmessung der Karte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Y-Abmessung der Karte: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Kosten: {CURRENCY}
@@ -1616,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Zu nah an einem anderen Bahnho
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Zu viele Stationen/Ladeplätze im Stadtgebiet
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Zu viele Busbahnhöfe
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Zu viele LKW-Ladeplätze
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Stationen/Ladeplätze liegen zu dicht beisammen
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Bahnhof muss erst abgerissen werden
@@ -1689,6 +1696,7 @@ STR_3069_BUOY							:Boje
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...Boje ist im Weg
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...Bahnhof ist zu groß
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...ungleichförmige stationen deaktiviert
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Werftausrichtung

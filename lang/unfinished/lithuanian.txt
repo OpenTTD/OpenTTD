@@ -1,3 +1,284 @@
 ##name Lithuanian
 ##ownname Lietuviu
 
+##id 0x0000
+STR_NULL							:
+STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Uz zemelapio krasto
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Per arti zemelapio krasto
+STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Neuztenka lesu - reikia {CURRENCY}
+STR_0004							:{WHITE}{CURRENCY64}
+STR_0005							:{RED}{CURRENCY64}
+STR_EMPTY							:
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Flat land required
+STR_0008_WAITING						:{BLACK}Laukia: {WHITE}{STRING}
+STR_0009							:{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (marsrutas is
+STR_000B							:{YELLOW}{STATION})
+STR_000C_ACCEPTS						:{BLACK}Priima: {WHITE}
+STR_000D_ACCEPTS						:{BLACK}Priima: {GOLD}
+STR_000E							:
+STR_000F_PASSENGERS						:Keleiviai
+STR_0010_COAL							:Anglis
+STR_0011_MAIL							:Pastas
+STR_0012_OIL							:Nafta
+STR_0013_LIVESTOCK						:Galvijai
+STR_0014_GOODS							:Prekes
+STR_0015_GRAIN							:Grudai
+STR_0016_WOOD							:Mediena
+STR_0017_IRON_ORE						:Gelezies ruda
+STR_0018_STEEL							:Plienas
+STR_0019_VALUABLES						:Brangenybes
+STR_001A_COPPER_ORE						:Vario ruda
+STR_001B_MAIZE							:Kukuruzai
+STR_001C_FRUIT							:Vaisiai
+STR_001D_DIAMONDS						:Deimantai
+STR_001E_FOOD							:Maistas
+STR_001F_PAPER							:Popierius
+STR_0020_GOLD							:Auksas
+STR_0021_WATER							:Vanduo
+STR_0022_WHEAT							:Kvieciai
+STR_0023_RUBBER							:Guma
+STR_0024_SUGAR							:Cukrus
+STR_0025_TOYS							:Zaislai
+STR_0026_CANDY							:Sweets
+STR_0027_COLA							:Kola
+STR_0028_COTTON_CANDY						:Cukraus vata
+STR_0029_BUBBLES						:Burbulai
+STR_002A_TOFFEE							:Toffee
+STR_002B_BATTERIES						:Baterijos
+STR_002C_PLASTIC						:Plastmase
+STR_002D_FIZZY_DRINKS						:Gaivieji gerimai
+STR_002E							:
+STR_002F_PASSENGER						:Keleiviai
+STR_0030_COAL							:Anglis
+STR_0031_MAIL							:Pastas
+
+
+
+
+
+
+############ range for menu	starts
+############ range for menu	ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days	starts
+############ range for days	ends
+
+
+############ range for cargo acecpted starts
+############ range for cargo acecpted ends
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
