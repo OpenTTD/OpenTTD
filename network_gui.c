@@ -492,7 +492,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(11, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
 		DrawWindowWidgets(w);
 
-		GfxFillRect(11, 63, 259, 165, 0xD7);
+		GfxFillRect(11, 63, 259, 171, 0xD7);
 
 		DrawEditBox(w, 3);
 
@@ -628,8 +628,8 @@ static const Widget _network_start_server_window_widgets[] = {
 {     WWT_IMGBTN,   BGC,   100,   271,    22,    33, 0x0,														STR_NETWORK_NEW_GAME_NAME_TIP},
 { WWT_PUSHTXTBTN,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,			STR_NETWORK_PASSWORD_TIP},
 
-{          WWT_6,   BGC,    10,   271,    62,   166, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
-{  WWT_SCROLLBAR,   BGC,   260,   270,    63,   165, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{          WWT_6,   BGC,    10,   270,    62,   172, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
+{  WWT_SCROLLBAR,   BGC,   260,   270,    63,   171, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 {          WWT_6,   BGC,   280,   410,    77,    88, STR_NETWORK_COMBO1,						STR_NETWORK_CONNECTION_TIP},
 {   WWT_CLOSEBOX,   BGC,   399,   409,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
@@ -664,7 +664,7 @@ static void ShowNetworkStartServerWindow(void)
 
 	_saveload_mode = SLD_NEW_GAME;
 	BuildFileList();
-	w->vscroll.cap = 10;
+	w->vscroll.cap = 9;
 	w->vscroll.count = _fios_num+1;
 
 	WP(w,querystr_d).caret = 1;
