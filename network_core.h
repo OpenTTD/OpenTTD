@@ -52,10 +52,14 @@ typedef struct ifreq IFREQ;
 #		include <netinet/tcp.h>
 #		include <arpa/inet.h>
 #		include <net/if.h>
-#		include <ifaddrs.h>
+#		if !defined(SUNOS)
+#			include <ifaddrs.h>
 // If for any reason ifaddrs.h does not exist on a system, remove define below
 //   and an other system will be used to fetch ips from the system
-#		define HAVE_GETIFADDRS
+#			define HAVE_GETIFADDRS
+#		else
+#			define INADDR_NONE 0xffffffff
+#		endif // SUNOS
 #	endif // BEOS_NET_SERVER
 #	include <errno.h>
 #	include <sys/time.h>
