@@ -995,8 +995,10 @@ void GameLoop()
 		// client: make sure client's time is synched to the server by running frames quickly up to where the server is.
 		if (!_networking_server) {
 			while (_frame_counter < _frame_counter_srv) {
+				NetworkCoreLoop(true);
 				StateGameLoop();
 				NetworkProcessCommands(); // need to process queue to make sure that packets get executed.
+				NetworkCoreLoop(false);
 			}
 		// client: don't exceed the max count told by the server
 		if (_frame_counter < _frame_counter_max) {
@@ -1010,6 +1012,7 @@ void GameLoop()
 		if (_frame_counter < _frame_counter_max) {
 			StateGameLoop();
 			NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
+			NetworkSendFrameSyncPackets();
 			}
 		// server: wait until all clients were ready for going on
 		if (_frame_counter == _frame_counter_max) {

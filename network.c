@@ -84,6 +84,7 @@ enum {
 	PACKET_TYPE_READY,
 	PACKET_TYPE_ACK,
 	PACKET_TYPE_SYNC,
+	PACKET_TYPE_FSYNC,
 	PACKET_TYPE_XMIT,
 	PACKET_TYPE_COMMAND,
 };
@@ -114,12 +115,18 @@ typedef struct SyncPacket {
 	uint32 random_seed_2;
 } SyncPacket;
 
+typedef struct FrameSyncPacket {
+	byte packet_length;
+	byte packet_type;
+	byte frames; // where is the server currently executing? this is negatively relative to the old value of max.
+} FrameSyncPacket;
+
 // sent from server -> client as an acknowledgement that the server received the command.
 // the command will be executed at the current value of "max".
 typedef struct AckPacket {
 	byte packet_length;
 	byte packet_type;
-	byte when;
+	int16 when;
 } AckPacket;
 
 typedef struct ReadyPacket {
@@ -197,6 +204,7 @@ static uint32 _my_seed_list[16][2];
 static bool _network_ready_sent;
 static uint16 _network_ready_ahead = 1;
 static uint16 _network_client_timeout;
+static uint32 _frame_fsync_last;
 
 typedef struct FutureSeeds {
 	uint32 frame;
@@ -356,6 +364,16 @@ static void QueueClear(CommandQueue *nq) {
 	nq->last = &nq->head;
 }
 
+static int GetNextSyncFrame()
+{
+	uint32 newframe;
+	if (_frame_fsync_last == 0) return -1;
+	newframe = (_frame_fsync_last + 9);
+	if ( (newframe + 4) > _frame_counter_max) return -1;
+	return (_frame_counter_max - newframe);
+
+}
+
 // go through the player queues for each player and see if there are any pending commands
 // that should be executed this frame. if there are, execute them.
 void NetworkProcessCommands()
@@ -468,7 +486,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	qp->callback = callback;
 
 	// so the server knows when to execute it.
-	qp->frame = _frame_counter + 5;
+	qp->frame = _frame_counter_max - GetNextSyncFrame();
 
 	// calculate the amount of extra bytes.
 	nump = 8;
@@ -510,7 +528,6 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	QueuedCommand *qp;
 	ClientState *c;
 	AckPacket ap;
-	int i;
 
 	DEBUG(net, 2) ("[NET] cmd size %d", np->packet_length);
 
@@ -519,14 +536,8 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	// put it into the command queue
 	qp = AllocQueuedCommand(&_command_queue);
 	qp->cp = *np;
-
-	i = _frame_counter_max - (_frame_counter + 3);
 	
-	if (i<0) {
-		qp->frame = _frame_counter_max ;
-	} else {
-		qp->frame = _frame_counter + 3;
-	}
+	qp->frame = _frame_counter_max - GetNextSyncFrame();
 
 	qp->callback = NULL;
 
@@ -534,8 +545,9 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	memcpy(&qp->cp.dp, np->dp, np->packet_length - COMMAND_PACKET_BASE_SIZE);
 
 	ap.packet_type = PACKET_TYPE_ACK;
-	ap.when = _frame_counter_max-(qp->frame);
+	ap.when = GetNextSyncFrame();
 	ap.packet_length = sizeof(AckPacket);
+	DEBUG(net,4)("[NET] NewACK: frame=%i %i",ap.when,_frame_counter_max - GetNextSyncFrame());
 
 	// send it to the peers
 	if (_networking_server) {
@@ -595,6 +607,13 @@ static void HandleSyncPacket(SyncPacket *sp)
 			_num_future_seed++;
 		}
 	}
+}
+
+static void HandleFSyncPacket(FrameSyncPacket *fsp)
+{
+	DEBUG(net,3)("[NET] FSYNC: srv=%i %i",fsp->frames,(_frame_counter_max - fsp->frames));
+	if (fsp->frames < 4) return;
+	_frame_fsync_last = _frame_counter_srv = _frame_counter_max - fsp->frames;
 }
 
 // sent from server -> client as an acknowledgement that the server received the command.
@@ -750,6 +769,9 @@ static bool ReadPackets(ClientState *cs)
 				assert(_networking_sync || _networking_queuing);
 				assert(!_networking_server);
 				HandleSyncPacket((SyncPacket*)packet);
+				break;
+			case PACKET_TYPE_FSYNC:
+				HandleFSyncPacket((FrameSyncPacket *)packet);
 				break;
 			case PACKET_TYPE_ACK:
 				assert(!_networking_server);
@@ -916,7 +938,26 @@ void NetworkSendSyncPackets()
 	// send it to all the clients and mark them unready
 	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
 		cs->ready=false;
-		SendBytes(cs, &sp, sizeof(sp));
+		SendBytes(cs, &sp, sp.packet_length);
+	}
+
+}
+
+void NetworkSendFrameSyncPackets()
+{
+	ClientState *cs;
+	FrameSyncPacket fsp;
+	if ((_frame_counter + 4) < _frame_counter_max) if ((_frame_fsync_last + 4 < _frame_counter)) {
+		// this packet mantains some information about on which frame the server is
+		fsp.frames = _frame_counter_max - _frame_counter;
+		fsp.packet_type = PACKET_TYPE_FSYNC;
+		fsp.packet_length = sizeof (FrameSyncPacket);
+		// send it to all the clients and mark them unready
+		for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+			cs->ready=false;
+			SendBytes(cs, &fsp, fsp.packet_length);
+		}
+		_frame_fsync_last = _frame_counter;
 	}
 
 }
@@ -1293,6 +1334,7 @@ void NetworkStartSync(bool fcreset)
 	if (fcreset) {
 		_frame_counter_max = 0;
 		_frame_counter_srv = 0;
+		_frame_fsync_last = 0;
 		}
 	_num_future_seed = 0;
 	_sync_seed_1 = _sync_seed_2 = 0;
@@ -1863,6 +1905,10 @@ void NetworkSend() {}
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback) {}
 void NetworkProcessCommands() {}
 void NetworkStartSync(bool fcreset) {}
+void NetworkSendReadyPacket() {}
+void NetworkSendSyncPackets() {}
+void NetworkSendFrameSyncPackets() {}
+bool NetworkCheckClientReady() { return true; }
 void NetworkCoreInit() { _network_available=false; };
 void NetworkCoreShutdown() {};
 void NetworkCoreDisconnect() {};

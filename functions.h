@@ -134,6 +134,7 @@ void NetworkStartSync(bool fcreset);
 void NetworkClose(bool client);
 void NetworkSendReadyPacket();
 void NetworkSendSyncPackets();
+void NetworkSendFrameSyncPackets();
 bool NetworkCheckClientReady();
 
 void NetworkIPListInit();
