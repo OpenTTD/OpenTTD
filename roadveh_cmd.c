@@ -1023,22 +1023,33 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 
 	{
 		uint32 r;
-			r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+		r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
 		signal = (uint16)(r >> 16);
 		bitmask = (uint16)r;
 	}
 
-
-	/* Most of the checks that used to be here, are now integrated into
-	 * GetTileTrackStatus now. The only thing still remaining is the
-	 * owner check for stations and depots, since GetTileTrackStatus
-	 * doesn't know about owner */
-	if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile]&0xF0) == 0x20 && v->owner != _map_owner[tile])
-		/* Depot not owned by us */
-		bitmask = 0;
-	if (IS_TILETYPE(tile, MP_STATION) && _map_owner[tile] != OWNER_NONE && _map_owner[tile] != v->owner)
-		/* Station not owned by us */
-		bitmask = 0;
+	if (IS_TILETYPE(tile, MP_STREET)) {
+		if ((_map5[tile]&0xF0) == 0x20 && v->owner == _map_owner[tile])
+			/* Road crossing */
+			bitmask |= _road_veh_fp_ax_or[_map5[tile]&3];
+	} else if (IS_TILETYPE(tile, MP_STATION)) {
+		if (_map_owner[tile] == OWNER_NONE || _map_owner[tile] == v->owner) {
+			/* Our station */
+			Station *st = DEREF_STATION(_map2[tile]);
+			byte val = _map5[tile];
+			if (v->cargo_type != CT_PASSENGERS) {
+				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stop_status&3))
+					bitmask |= _road_veh_fp_ax_or[(val-0x43)&3];
+			} else {
+				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stop_status&3))
+					bitmask |= _road_veh_fp_ax_or[(val-0x47)&3];
+			}
+		}
+	}
+	/* The above lookups should be moved to GetTileTrackStatus in the
+	 * future, but that requires more changes to the pathfinder and other
+	 * stuff, probably even more arguments to GTTS.
+	 */
 
 	/* remove unreachable tracks */
 	bitmask &= _road_veh_fp_ax_and[direction];

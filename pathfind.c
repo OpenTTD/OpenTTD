@@ -212,10 +212,9 @@ FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
 		tile = TILE_FROM_XY(x,y);
 
 		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
-				(_map5[tile] & 0xF0) == 0 &&
-				//((_map5[tile]>>2)&3) == type && // This is
-				//not necesary to check, right?
-				((_map5[tile] & 3)^2) == direction &&
+				(_map5[tile] & 0xF0) == 0 &&					// tunnel entrance/exit
+				//((_map5[tile]>>2)&3) == type &&		// rail/road-tunnel <-- This is not necesary to check, right?
+				((_map5[tile] & 3)^2) == direction &&	// entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
 				GetSlopeZ(x+8, y+8) == z)
 					break;
 	}
@@ -263,7 +262,7 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	uint tile_org = tile;
 
 	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0) {
-		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
+		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>2)&3) != tpf->tracktype)
 			return;
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}

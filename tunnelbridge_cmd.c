@@ -1318,7 +1318,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 			/* Bridge middle part */
 			if (!(m5 & 0x20)) {
 				/* Clear ground or water underneath */
-				if ((m5 &= 0x18) != 8)
+				if ((m5 & 0x18) != 8)
 					/* Clear ground */
 					return result;
 				else

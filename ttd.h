@@ -104,10 +104,10 @@ typedef enum TransportTypes {
 	 * bridges. For now, you should just not change the values for road
 	 * and rail.
 	 */
-        TRANSPORT_RAIL = 0,
+  TRANSPORT_RAIL = 0,
 	TRANSPORT_ROAD = 1,
-	TRANSPORT_WATER,
-	TRANSPORT_MAX
+	TRANSPORT_WATER,	// = 2
+	TRANSPORT_MAX			// = 3
 } TransportType;
 
 typedef struct TileInfo {

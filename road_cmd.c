@@ -1047,13 +1047,6 @@ static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
 				r *= 0x10001;
 			}
 			return r;
-		} else if ((b&0xF0) == 0x20) {
-			/* Depot */
-			/* We reverse the dir because it points out of the
-			 * exit, and we want to get in. Maybe we should return
-			 * both dirs here? */
-			byte dir = _reverse_dir[b&3];
-			return 1 << _dir_to_straight_trackdir[dir];
 		}
 	}
 	return 0;
