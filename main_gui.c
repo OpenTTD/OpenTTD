@@ -1681,7 +1681,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		if (local == 0xff) local = 0; // spectator
 
 		switch(e->keypress.keycode) {
-		case WKC_F1: ToolbarPauseClick(w); break;
+		case WKC_F1:
+		case WKC_PAUSE:
+			ToolbarPauseClick(w);
+			break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
 		case WKC_F4: ShowSmallMap(); break;

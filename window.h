@@ -128,6 +128,7 @@ enum WindowKeyCodes {
 	// we only store this key here, no matter what character is really mapped to it
 	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
 	WKC_BACKQUOTE = 45,
+	WKC_PAUSE     = 46,
 
 	// 0-9 are mapped to 48-57
 	// A-Z are mapped to 65-90

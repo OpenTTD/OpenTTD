@@ -357,6 +357,7 @@ static const VkMapping _vk_mapping[] = {
 	AM(SDLK_0, SDLK_9, '0', '9'),
 
 	AS(SDLK_ESCAPE,	WKC_ESC),
+	AS(SDLK_PAUSE,  WKC_PAUSE),
 	AS(SDLK_BACKSPACE,	WKC_BACKSPACE),
 
 	AS(SDLK_SPACE,		WKC_SPACE),
