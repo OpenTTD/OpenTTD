@@ -483,7 +483,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
 				val = ((int*)&_opt_mod_temp.diff)[btn];
 				// if setting has changed, change it
-				if (val != ((int*)&_opt_mod_temp.diff)[btn])
+				if (val != ((int*)&_opt_ptr->diff)[btn])
 					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			}
 			DoCommandP(0, -1, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);

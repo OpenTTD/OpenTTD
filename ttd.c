@@ -789,8 +789,7 @@ void StartupDisasters(void);
 /**
  * Start Scenario starts a new game based on a scenario.
  * Eg 'New Game' --> select a preset scenario
- * This starts a scenario based on your current difficulty settings just
- * fix the landscape as that can be different from what is selected in the intro
+ * This starts a scenario based on your current difficulty settings
  */
 static void StartScenario(void)
 {
@@ -818,12 +817,9 @@ static void StartScenario(void)
 		ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
 	}
 
-	{
-		byte landscape = _opt.landscape; // backup loaded landscape;
-		_opt_ptr = &_opt;
-		memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
-		_opt_ptr->landscape = landscape;
-	}
+	_opt_ptr = &_opt;
+	memcpy(&_opt_ptr->diff, &_opt_newgame.diff, sizeof(GameDifficulty));
+	_opt.diff_level = _opt_newgame.diff_level;
 
 	// Inititalize data
 	StartupPlayers();
