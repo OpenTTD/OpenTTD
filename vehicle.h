@@ -107,16 +107,22 @@ struct Vehicle {
 	byte z_pos;
 	byte direction;		// facing
 
-	uint16 cur_image; // sprite number for this vehicle
 	byte spritenum; // currently displayed sprite index
 	                // 0xfd == custom sprite, 0xfe == custom second head sprite
 	                // 0xff == reserved for another custom sprite
+	uint16 cur_image; // sprite number for this vehicle
 	byte sprite_width;// width of vehicle sprite
 	byte sprite_height;// height of vehicle sprite
 	byte z_height;		// z-height of vehicle sprite
 	int8 x_offs;			// x offset for vehicle sprite
 	int8 y_offs;			// y offset for vehicle sprite
 	uint16 engine_type;
+
+	// for randomized variational spritegroups
+	// bitmask used to resolve them; parts of it get reseeded when triggers
+	// of corresponding spritegroups get matched
+	byte random_bits;
+	byte waiting_triggers; // triggers to be yet matched
 
 	uint16 max_speed;	// maximum speed
 	uint16 cur_speed;	// current speed

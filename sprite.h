@@ -82,16 +82,36 @@ struct DeterministicSpriteGroup {
 	struct SpriteGroup *default_group;
 };
 
+struct RandomizedSpriteGroup {
+	// Take this object:
+	enum VarSpriteGroupScope var_scope;
+
+	// Check for these triggers:
+	enum RandomizedSpriteGroupCompareMode {
+		RSG_CMP_ANY,
+		RSG_CMP_ALL,
+	} cmp_mode;
+	byte triggers;
+
+	// Look for this in the per-object randomized bitmask:
+	byte lowest_randbit;
+	byte num_groups; // must be power of 2
+
+	// Take the group with appropriate index:
+	struct SpriteGroup *groups;
+};
+
 struct SpriteGroup {
 	enum SpriteGroupType {
 		SGT_REAL,
 		SGT_DETERMINISTIC,
-		SGT_RANDOM, /* TODO */
+		SGT_RANDOMIZED,
 	} type;
 
 	union {
 		struct RealSpriteGroup real;
 		struct DeterministicSpriteGroup determ;
+		struct RandomizedSpriteGroup random;
 	} g;
 };
 
@@ -107,5 +127,14 @@ struct DeterministicSpriteGroupRange {
 struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup *dsg, int value);
 /* Get value of a common deterministic SpriteGroup variable. */
 int GetDeterministicSpriteValue(byte var);
+
+/* This takes randomized bitmask (probably associated with
+ * vehicle/station/whatever) and chooses corresponding SpriteGroup
+ * accordingly to the given RandomizedSpriteGroup. */
+struct SpriteGroup *EvalRandomizedSpriteGroup(struct RandomizedSpriteGroup *rsg, byte random_bits);
+/* Triggers given RandomizedSpriteGroup with given bitmask and returns and-mask
+ * of random bits to be reseeded, or zero if there were no triggers matched
+ * (then they are |ed to @waiting_triggers instead). */
+byte RandomizedSpriteGroupTriggeredBits(struct RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
 
 #endif

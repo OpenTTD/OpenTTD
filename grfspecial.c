@@ -1175,8 +1175,48 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		return;
 
-	} else if (numloaded & 0x80) {
-		grfmsg(GMS_WARN, "NewSpriteGroup(0x%x): Unsupported special group.", numloaded);
+	} else if (numloaded == 0x80 || numloaded == 0x83) {
+		struct RandomizedSpriteGroup *rg;
+		int i;
+
+		/* This stuff is getting actually evaluated in
+		 * EvalRandomizedSpriteGroup(). */
+
+		buf += 4;
+		len -= 4;
+		check_length(len, 6, "NewSpriteGroup 0x80/0x83");
+
+		if (setid >= _cur_grffile->spritegroups_count) {
+			_cur_grffile->spritegroups_count = setid + 1;
+			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
+		}
+
+		group = &_cur_grffile->spritegroups[setid];
+		memset(group, 0, sizeof(*group));
+		group->type = SGT_RANDOMIZED;
+		rg = &group->g.random;
+
+		/* XXX: We don't free() anything, assuming that if there was
+		 * some action here before, it got associated by action 3.
+		 * We should perhaps keep some refcount? --pasky */
+
+		rg->var_scope = numloaded == 0x83 ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+
+		rg->triggers = grf_load_byte(&buf);
+		rg->cmp_mode = rg->triggers & 0x80;
+		rg->triggers &= 0x7F;
+
+		rg->lowest_randbit = grf_load_byte(&buf);
+		rg->num_groups = grf_load_byte(&buf);
+
+		rg->groups = calloc(rg->num_groups, sizeof(*rg->groups));
+		for (i = 0; i < rg->num_groups; i++) {
+			uint16 groupid = grf_load_word(&buf);
+			/* XXX: If multiple surreal sets attach a surreal
+			 * set this way, we are in trouble. */
+			rg->groups[i] = _cur_grffile->spritegroups[groupid];
+		}
+
 		return;
 	}
 

@@ -60,3 +60,40 @@ int GetDeterministicSpriteValue(byte var)
 			return -1;
 	}
 }
+
+struct SpriteGroup *
+EvalRandomizedSpriteGroup(struct RandomizedSpriteGroup *rsg, byte random_bits)
+{
+	byte mask;
+	byte index;
+
+	/* Noone likes mangling with bits, but you don't get around it here.
+	 * Sorry. --pasky */
+	// rsg->num_groups is always power of 2
+	mask = (rsg->num_groups - 1) << rsg->lowest_randbit;
+	index = (random_bits & mask) >> rsg->lowest_randbit;
+	assert(index < rsg->num_groups);
+	return &rsg->groups[index];
+}
+
+byte RandomizedSpriteGroupTriggeredBits(struct RandomizedSpriteGroup *rsg, byte triggers,
+                                        byte *waiting_triggers)
+{
+	byte match = rsg->triggers & (*waiting_triggers | triggers);
+	bool res;
+
+	if (rsg->cmp_mode == RSG_CMP_ANY) {
+		res = (match != 0);
+	} else { /* RSG_CMP_ALL */
+		res = (match == rsg->triggers);
+	}
+
+	if (!res) {
+		*waiting_triggers |= triggers;
+		return 0;
+	}
+
+	*waiting_triggers &= ~match;
+
+	return (rsg->num_groups - 1) << rsg->lowest_randbit;
+}

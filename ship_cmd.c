@@ -392,6 +392,8 @@ static void ShipEnterDepot(Vehicle *v)
 
 	MaybeRenewVehicle(v, EstimateShipCost(v->engine_type));
 
+	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
+
 	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 

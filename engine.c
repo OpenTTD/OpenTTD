@@ -243,9 +243,15 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
+typedef struct RealSpriteGroup *(*resolve_callback)(struct SpriteGroup *spritegroup,
+                                                    struct Vehicle *veh,
+                                                    void *callback); /* XXX data pointer used as function pointer */
+
 static struct RealSpriteGroup *
-ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
+ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
+			  resolve_callback callback)
 {
+	//debug("spgt %d", spritegroup->type);
 	switch (spritegroup->type) {
 		case SGT_REAL:
 			return &spritegroup->g.real;
@@ -274,7 +280,7 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
 					} else {
 						target = dsg->default_group;
 					}
-					return ResolveVehicleSpriteGroup(target, NULL);
+					return callback(target, NULL, callback);
 				}
 
 				if (dsg->var_scope == VSG_SCOPE_PARENT) {
@@ -393,33 +399,44 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh)
 			}
 
 			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
-			//debug("Resolved variable %x: %d", dsg->variable, value);
-			return ResolveVehicleSpriteGroup(target, veh);
+			//debug("Resolved variable %x: %d, %p", dsg->variable, value, callback);
+			return callback(target, veh, callback);
+		}
+
+		case SGT_RANDOMIZED: {
+			struct RandomizedSpriteGroup *rsg = &spritegroup->g.random;
+
+			if (veh == NULL) {
+				/* Purchase list of something. Show the first one. */
+				assert(rsg->num_groups > 0);
+				//debug("going for %p: %d", rsg->groups[0], rsg->groups[0].type);
+				return callback(&rsg->groups[0], NULL, callback);
+			}
+
+			if (rsg->var_scope == VSG_SCOPE_PARENT) {
+				/* First engine in the vehicle chain */
+				if (veh->type == VEH_Train)
+					veh = GetFirstVehicleInChain(veh);
+			}
+
+			return callback(EvalRandomizedSpriteGroup(rsg, veh->random_bits), veh, callback);
 		}
 
 		default:
-		case SGT_RANDOM:
-			error("I don't know how to handle random spritegroups yet!");
+			error("I don't know how to handle such a spritegroup %d!", spritegroup->type);
 			return NULL;
 	}
 }
 
-int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
+static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, Vehicle *v)
 {
 	struct SpriteGroup *group;
-	struct RealSpriteGroup *rsg;
 	uint16 overriding_engine = -1;
 	byte cargo = CID_PURCHASE;
-	byte loaded = 0;
-	byte in_motion = 0;
-	int totalsets, spriteset;
-	int r;
 
 	if (v != NULL) {
 		overriding_engine = v->type == VEH_Train ? v->u.rail.first_engine : -1;
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
-		loaded = ((v->cargo_count + 1) * 100) / (v->cargo_cap + 1);
-		in_motion = !!v->cur_speed;
 	}
 
 	group = &_engine_custom_sprites[engine][cargo];
@@ -431,11 +448,35 @@ int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
 		if (overset) group = overset;
 	}
 
-	rsg = ResolveVehicleSpriteGroup(group, v);
+	return group;
+}
+
+int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
+{
+	struct SpriteGroup *group;
+	struct RealSpriteGroup *rsg;
+	byte cargo = CID_PURCHASE;
+	byte loaded = 0;
+	bool in_motion = 0;
+	int totalsets, spriteset;
+	int r;
+
+	if (v != NULL) {
+		int capacity = v->cargo_cap;
+
+		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		if (capacity == 0) capacity = 1;
+		loaded = (v->cargo_count * 100) / capacity;
+		in_motion = (v->cur_speed != 0);
+	}
+
+	group = GetVehicleSpriteGroup(engine, v);
+	rsg = ResolveVehicleSpriteGroup(group, v, (resolve_callback) ResolveVehicleSpriteGroup);
 
 	if (rsg->sprites_per_set == 0 && cargo != 29) { /* XXX magic number */
 		// This group is empty but perhaps there'll be a default one.
-		rsg = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][29], v);
+		rsg = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][29], v,
+		                                (resolve_callback) ResolveVehicleSpriteGroup);
 	}
 
 	if (!rsg->sprites_per_set) {
@@ -467,6 +508,85 @@ int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
 
 	r = (in_motion ? rsg->loaded[spriteset] : rsg->loading[spriteset]) + direction;
 	return r;
+}
+
+
+// Global variables are evil, yes, but we would end up with horribly overblown
+// calling convention otherwise and this should be 100% reentrant.
+static byte _vsg_random_triggers;
+static byte _vsg_bits_to_reseed;
+
+extern int _custom_sprites_base;
+
+static struct RealSpriteGroup *
+TriggerVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
+			  resolve_callback callback)
+{
+	if (spritegroup->type == SGT_RANDOMIZED)
+		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(&spritegroup->g.random,
+		                                                         _vsg_random_triggers,
+		                                                         &veh->waiting_triggers);
+
+	return ResolveVehicleSpriteGroup(spritegroup, veh, callback);
+}
+
+static void DoTriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger, byte base_random_bits, bool first)
+{
+	struct RealSpriteGroup *rsg;
+	byte new_random_bits;
+
+	_vsg_random_triggers = trigger;
+	_vsg_bits_to_reseed = 0;
+	rsg = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh,
+	                                (resolve_callback) TriggerVehicleSpriteGroup);
+	if (rsg->sprites_per_set == 0 && veh->cargo_type != 29) { /* XXX magic number */
+		// This group turned out to be empty but perhaps there'll be a default one.
+		rsg = TriggerVehicleSpriteGroup(&_engine_custom_sprites[veh->engine_type][29], veh,
+						(resolve_callback) TriggerVehicleSpriteGroup);
+	}
+	veh->random_bits &= ~_vsg_bits_to_reseed;
+	veh->random_bits |= (first ? (new_random_bits = Random()) : base_random_bits) & _vsg_bits_to_reseed;
+
+	switch (trigger) {
+		case VEHICLE_TRIGGER_NEW_CARGO:
+			/* All vehicles in chain get ANY_NEW_CARGO trigger now.
+			 * So we call it for the first one and they will recurse. */
+			/* Indexing part of vehicle random bits needs to be
+			 * same for all triggered vehicles in the chain (to get
+			 * all the random-cargo wagons carry the same cargo,
+			 * i.e.), so we give them all the NEW_CARGO triggered
+			 * vehicle's portion of random bits. */
+			assert(first);
+			DoTriggerVehicle(GetFirstVehicleInChain(veh), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			break;
+		case VEHICLE_TRIGGER_DEPOT:
+			/* We now trigger the next vehicle in chain recursively.
+			 * The random bits portions may be different for each
+			 * vehicle in chain. */
+			if (veh->next != NULL)
+				DoTriggerVehicle(veh->next, trigger, 0, true);
+			break;
+		case VEHICLE_TRIGGER_EMPTY:
+			/* We now trigger the next vehicle in chain
+			 * recursively.  The random bits portions must be same
+			 * for each vehicle in chain, so we give them all
+			 * first chained vehicle's portion of random bits. */
+			if (veh->next != NULL)
+				DoTriggerVehicle(veh->next, trigger, first ? new_random_bits : base_random_bits, false);
+			break;
+		case VEHICLE_TRIGGER_ANY_NEW_CARGO:
+			/* Now pass the trigger recursively to the next vehicle
+			 * in chain. */
+			assert(!first);
+			if (veh->next != NULL)
+				DoTriggerVehicle(veh->next, VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
+			break;
+	}
+}
+
+void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger)
+{
+	DoTriggerVehicle(veh, trigger, 0, true);
 }
 
 

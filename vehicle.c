@@ -164,6 +164,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->next = NULL;
 	v->next_hash = 0xffff;
 	v->string_id = 0;
+	v->random_bits = RandomRange(256);
 	return v;
 }
 
@@ -1548,6 +1549,7 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,x_offs,						SLE_INT8),
 	SLE_VAR(Vehicle,y_offs,						SLE_INT8),
 	SLE_VAR(Vehicle,engine_type,			SLE_UINT16),
+
 	SLE_VAR(Vehicle,max_speed,				SLE_UINT16),
 	SLE_VAR(Vehicle,cur_speed,				SLE_UINT16),
 	SLE_VAR(Vehicle,subspeed,					SLE_UINT8),
@@ -1590,8 +1592,13 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,profit_last_year,	SLE_INT32),
 	SLE_VAR(Vehicle,value,						SLE_UINT32),
 
-	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_VAR(Vehicle,random_bits,       SLE_UINT8),
+	SLE_VAR(Vehicle,waiting_triggers,  SLE_UINT8),
+
+	// reserve extra space in savegame here. (currently 14 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255), /* 2 */
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U16 | SLE_VAR_NULL, 2, 2, 255), /* 4 */
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U32 | SLE_VAR_NULL, 2, 2, 255), /* 8 */
 
 	SLE_END()
 };

@@ -13,6 +13,7 @@
 #include "town.h"
 #include "network.h"
 #include "sound.h"
+#include "engine.h"
 
 void UpdatePlayerHouse(Player *p, uint score)
 {
@@ -1210,6 +1211,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	int t;
 	uint count, cap;
 	byte old_player;
+	bool completely_empty = true;
 
 	assert((v->next_order&0x1F) == OT_LOADING);
 
@@ -1253,6 +1255,9 @@ int LoadUnloadVehicle(Vehicle *v)
 				result |= 2;
 				v->cargo_count = 0;
 			}
+
+			if (v->cargo_count != 0)
+				completely_empty = false;
 		}
 
 		/* don't pick up goods that we unloaded */
@@ -1272,6 +1277,18 @@ int LoadUnloadVehicle(Vehicle *v)
 		//  has capacity for it, load it on the vehicle.
 		if ((count=ge->waiting_acceptance & 0xFFF) != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
+			if (v->cargo_count == 0)
+				TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+
+			/* TODO: Regarding this, when we do gradual loading, we
+			 * should first unload all vehicles and then start
+			 * loading them. Since this will cause
+			 * VEHICLE_TRIGGER_EMPTY to be called at the time when
+			 * the whole vehicle chain is really totally empty, the
+			 * @completely_empty assignment can then be safely
+			 * removed; that's how TTDPatch behaves too. --pasky */
+			completely_empty = false;
+
 			if (cap > count) cap = count;
 			v->cargo_count += cap;
 			ge->waiting_acceptance -= cap;
@@ -1303,6 +1320,10 @@ next_vehicle:;
 	}
 
 	v->load_unload_time_rem = unloading_time;
+
+	if (completely_empty) {
+		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);
+	}
 
 	if (result != 0) {
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

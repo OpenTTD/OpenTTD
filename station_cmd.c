@@ -1082,7 +1082,7 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 		}
 
 		default:
-		case SGT_RANDOM:
+		case SGT_RANDOMIZED:
 			error("I don't know how to handle random spritegroups yet!");
 			return NULL;
 	}
