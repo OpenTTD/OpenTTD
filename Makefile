@@ -687,38 +687,13 @@ LANGS = $(LANG_TXT:%.txt=%.lng)
 #
 
 # If we are verbose, we will show commands prefixed by $(Q) (which acts as
-# @ in the non-verbose mode), and we will show the "real" cmds instead of
-# their quiet versions (which are used in the non-verbose mode).
+# @ in the non-verbose mode)
 # Inspired by the Linux kernel build system.
 ifdef VERBOSE
 	Q =
-	quiet =
 else
 	Q = @
-	quiet = quiet_
 endif
-
-# Show the command (quiet or non-quiet version based on the assignment
-# just above) and then execute it.
-cmd = @$(if $($(quiet)cmd_$(1)),echo $($(quiet)cmd_$(1)) &&) $(cmd_$(1))
-
-
-# The build commands themselves. Note that if you omit the quiet version,
-# nothing will be shown in the non-verbose mode.
-
-quiet_cmd_compile_link = '===> Compiling and Linking $@'
-      cmd_compile_link = $(CC) $(BASECFLAGS) $(CDEFS) $< -o $@
-
-quiet_cmd_ttd_link = '===> Linking $@'
-      cmd_ttd_link = $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
-
-COMPILE_PARAMS=$(CFLAGS) $(CDEFS) -MD -c $< -o $@
-
-quiet_cmd_c_compile = '===> Compiling $<'
-      cmd_c_compile = $(CC) $(COMPILE_PARAMS)
-
-quiet_cmd_cxx_compile = '===> Compiling $<'
-      cmd_cxx_compile = $(CXX) $(COMPILE_PARAMS)
 
 
 ##############################################################################
@@ -742,11 +717,13 @@ endian.h: $(ENDIAN_CHECK)
 	$(Q)./$(ENDIAN_CHECK) > $@
 
 $(ENDIAN_CHECK): endian_check.c
-	$(call cmd,compile_link)
+	@echo '===> Compiling and Linking $@'
+	$(Q)$(CC) $(BASECFLAGS) $(CDEFS) $< -o $@
 
 
 $(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
-	$(call cmd,ttd_link)
+	@echo '===> Linking $@'
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OSX): $(TTD)
 	$(Q)rm -fr "$(OSXAPP)"
@@ -772,7 +749,8 @@ $(64_bit_warnings):
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c endian.h
-	$(call cmd,compile_link)
+	@echo '===> Compiling and Linking $@'
+	$(Q)$(CC) $(BASECFLAGS) $(CDEFS) $< -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	@echo '===> Generating $@'
@@ -957,11 +935,13 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # therefore we do not need to watch deps.
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
-	$(call cmd,c_compile)
+	@echo '===> Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
-	$(call cmd,cxx_compile)
+	@echo '===> Compiling $<'
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
 # Silence stale header dependencies
@@ -970,6 +950,6 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 
 info:
-	@echo 'CFLAGS  = $(CFLAGS)'
+	@echo 'CFLAGS  = $(CFLAGS) $(CDEFS)'
 	@echo 'LDFLAGS = $(LDFLAGS)'
 	@echo 'LIBS    = $(LIBS)'

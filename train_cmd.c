@@ -2270,20 +2270,25 @@ static void TrainMovedChangeSignals(uint tile, int dir)
 
 
 typedef struct TrainCollideChecker {
-	Vehicle *v, *v_skip;
-
+	const Vehicle *v;
+	const Vehicle *v_skip;
 } TrainCollideChecker;
 
-static void *FindTrainCollideEnum(Vehicle *v, TrainCollideChecker *tcc)
+static void *FindTrainCollideEnum(Vehicle *v, void *data)
 {
-	if (v == tcc->v || v == tcc->v_skip || v->type != VEH_Train || v->u.rail.track==0x80)
-		return 0;
+	const TrainCollideChecker* tcc = data;
 
-	if ( myabs(v->z_pos - tcc->v->z_pos) > 6 ||
-			 myabs(v->x_pos - tcc->v->x_pos) >= 6 ||
-			 myabs(v->y_pos - tcc->v->y_pos) >= 6)
-				return NULL;
-	return v;
+	if (v != tcc->v &&
+			v != tcc->v_skip &&
+			v->type == VEH_Train &&
+			v->u.rail.track != 0x80 &&
+			myabs(v->z_pos - tcc->v->z_pos) <= 6 &&
+			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
+			myabs(v->y_pos - tcc->v->y_pos) < 6) {
+		return v;
+	} else {
+		return NULL;
+	}
 }
 
 static void SetVehicleCrashed(Vehicle *v)
@@ -2303,7 +2308,7 @@ static void SetVehicleCrashed(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, u->index, STATUS_BAR);
 }
 
-static int CountPassengersInTrain(Vehicle *v)
+static int CountPassengersInTrain(const Vehicle *v)
 {
 	int num = 0;
 	BEGIN_ENUM_WAGONS(v)
@@ -2313,7 +2318,7 @@ static int CountPassengersInTrain(Vehicle *v)
 }
 
 /*
- * Checks whether the specified tried has a collision with another vehicle. If
+ * Checks whether the specified train has a collision with another vehicle. If
  * so, destroys this vehicle, and the other vehicle if its subtype is 0 (TS_Front_Engine).
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
@@ -2321,34 +2326,35 @@ static int CountPassengersInTrain(Vehicle *v)
 static void CheckTrainCollision(Vehicle *v)
 {
 	TrainCollideChecker tcc;
-	Vehicle *coll,*realcoll;
+	Vehicle *coll;
+	Vehicle *realcoll;
 	int num;
 
 	/* can't collide in depot */
 	if (v->u.rail.track == 0x80)
 		return;
 
-	if ( !(v->u.rail.track == 0x40) )
-		assert((uint)TILE_FROM_XY(v->x_pos, v->y_pos) == v->tile);
+	assert(v->u.rail.track == 0x40 || TILE_FROM_XY(v->x_pos, v->y_pos) == v->tile);
 
 	tcc.v = v;
 	tcc.v_skip = v->next;
 
 	/* find colliding vehicle */
-	realcoll = coll = VehicleFromPos(TILE_FROM_XY(v->x_pos, v->y_pos), &tcc, (VehicleFromPosProc*)FindTrainCollideEnum);
-	if (coll == NULL)
+	realcoll = VehicleFromPos(TILE_FROM_XY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
+	if (realcoll == NULL)
 		return;
 
 
-	coll = GetFirstVehicleInChain(coll);
+	coll = GetFirstVehicleInChain(realcoll);
 
 	/* it can't collide with its own wagons */
-	if ( (v == coll) || ( (v->u.rail.track & 0x40) && ( (v->direction & 2) != (realcoll->direction & 2) ) ) )
+	if (v == coll ||
+			(v->u.rail.track & 0x40 && (v->direction & 2) != (realcoll->direction & 2)))
 		return;
 
 	//two drivers + passangers killed in train v
 	num = 2 + CountPassengersInTrain(v);
-	if(!(coll->vehstatus&VS_CRASHED))
+	if (!(coll->vehstatus & VS_CRASHED))
 		//two drivers + passangers killed in train coll (if it was not crashed already)
 		num += 2 + CountPassengersInTrain(coll);
 
@@ -2360,9 +2366,10 @@ static void CheckTrainCollision(Vehicle *v)
 	SetDParam(0, num);
 
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
 		v->index,
-		0);
+		0
+	);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
@@ -2398,7 +2405,7 @@ static void TrainController(Vehicle *v)
 	byte old_z;
 
 	/* For every vehicle after and including the given vehicle */
-	for(;;) {
+	for (; v != NULL; prev = v, v = v->next) {
 		BeginVehicleMove(v);
 
 		if (v->u.rail.track != 0x40) {
@@ -2536,7 +2543,7 @@ static void TrainController(Vehicle *v)
 			VehiclePositionChanged(v);
 			if (prev == NULL)
 				CheckTrainCollision(v);
-			goto next_vehicle;
+			continue;
 		}
 common:;
 
@@ -2556,12 +2563,6 @@ common:;
 			AffectSpeedByZChange(v, old_z);
 			CheckTrainCollision(v);
 		}
-
-next_vehicle:;
-		/* continue with next vehicle */
-		prev = v;
-		if ((v=v->next) == NULL)
-			return;
 	}
 
 invalid_rail:
@@ -2625,10 +2626,7 @@ static void DeleteLastWagon(Vehicle *v)
 	/* Go to the last wagon and delete the link pointing there
 	 * *u is then the one-before-last wagon, and *v the last
 	 * one which will physicially be removed */
-	while (v->next != NULL) {
-		u = v;
-		v = v->next;
-	}
+	for (; v->next != NULL; v = v->next) u = v;
 	u->next = NULL;
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -2643,7 +2641,8 @@ static void DeleteLastWagon(Vehicle *v)
 	if (!(v->u.rail.track & 0xC0))
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
 
-	/* Check if the wagon was on a road/rail-crossing and disable it if no others are on it */
+	/* Check if the wagon was on a road/rail-crossing and disable it if no
+	 * others are on it */
 	DisableTrainCrossing(v->tile);
 
 	if (v->u.rail.track == 0x40) { // inside a tunnel
