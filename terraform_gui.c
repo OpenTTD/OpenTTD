@@ -35,7 +35,6 @@ static const uint16 _terraform_keycodes[] = {
 	'Q',
 	'W',
 	'E',
-	0,
 	'Z',
 	'U',
 	'I',
@@ -65,20 +64,19 @@ void PlaceProc_PlantTree(uint tile)
 {
 }
 
-
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, 2, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, 3, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, 3, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, 4, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 4, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 5, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_BuyLand(Window *w)
@@ -101,7 +99,6 @@ static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_Lower,
 	TerraformClick_Raise,
 	TerraformClick_Level,
-	0,
 	TerraformClick_BuyLand,
 	TerraformClick_Trees,
 	TerraformClick_PlaceSign,
@@ -116,8 +113,8 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		break;
 	case WE_CLICK:
-		if (e->click.widget >= 2 && e->click.widget != 5) {
-			_terraform_button_proc[e->click.widget - 2](w);
+		if (e->click.widget >= 3) {
+			_terraform_button_proc[e->click.widget - 3](w);
 		}
 		break;
 
@@ -179,12 +176,11 @@ static const Widget _terraform_widgets[] = {
 { WWT_CLOSEBOX,     7,   0,  10,   0,  13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {  WWT_CAPTION,     7,  11, 135,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 
+{    WWT_PANEL,     7,  66,  69,  14,  35,  0x0,										STR_NULL},
+
 {    WWT_PANEL,     7,   0,  21,  14,  35,  695,										STR_018E_LOWER_A_CORNER_OF_LAND},
 {    WWT_PANEL,     7,  22,  43,  14,  35,  694,										STR_018F_RAISE_A_CORNER_OF_LAND},
 {    WWT_PANEL,     7,  44,  65,  14,  35,  SPR_OPENTTD_BASE+68,		STR_LEVEL_LAND_TOOLTIP},
-
-{    WWT_PANEL,     7,  66,  69,  14,  35,  0x0,										STR_NULL},
-
 {    WWT_PANEL,     7,  70,  91,  14,  35, 4791,										STR_0329_PURCHASE_LAND_FOR_FUTURE},
 {    WWT_PANEL,     7,  92, 113,  14,  35,  742,										STR_0185_PLANT_TREES_PLACE_SIGNS},
 {    WWT_PANEL,     7, 114, 135,  14,  35, SPR_OPENTTD_BASE+70,			STR_0289_PLACE_SIGN},
