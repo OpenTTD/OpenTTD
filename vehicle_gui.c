@@ -1011,3 +1011,8 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 	WP(w,replaceveh_d).vehicletype = vehicletype;
 	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
 }
+
+void InitializeGUI(void)
+{
+	memset(&_sorting, 0, sizeof(_sorting));
+}

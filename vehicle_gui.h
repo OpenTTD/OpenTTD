@@ -45,11 +45,25 @@ extern const StringID _vehicle_sort_listing[];
 extern const StringID _rail_types_list[];
 
 enum VehicleSortTypes {
-	VEHTRAIN		= 0,
-	VEHROAD			= 1,
-	VEHSHIP			= 2,
-	VEHAIRCRAFT		= 3
+	VEHTRAIN     = 0,
+	VEHROAD      = 1,
+	VEHSHIP      = 2,
+	VEHAIRCRAFT  = 3
 };
+
+typedef struct Listing {
+	bool order;	// Ascending/descending?
+	byte criteria;	// Sorting criteria
+} Listing;
+
+typedef struct Sorting {
+	Listing aircraft;
+	Listing roadveh;
+	Listing ship;
+	Listing train;
+} Sorting;
+
+VARDEF Sorting _sorting;
 
 enum {
   PLY_WND_PRC__OFFSET_TOP_WIDGET	= 26,

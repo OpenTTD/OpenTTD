@@ -126,4 +126,7 @@ VARDEF byte _station_show_coverage;
 VARDEF PlaceProc *_place_proc;
 VARDEF bool _no_button_sound;
 
+/* vehicle_gui.c */
+void InitializeGUI(void);
+
 #endif /* GUI_H */

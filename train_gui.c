@@ -1307,8 +1307,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		/* draw sorting criteria string */
 		DrawString(85, 15, _vehicle_sort_listing[vl->sort_type], 0x10);
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		DoDrawString(
-			vl->flags & VL_DESC ? "\xAA" : "\xA0", 69, 15, 0x10);
+		DoDrawString(vl->flags & VL_DESC ? "\xAA" : "\xA0", 69, 15, 0x10);
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
@@ -1347,6 +1346,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		case 3: /* Flip sorting method ascending/descending */
 			vl->flags ^= VL_DESC;
 			vl->flags |= VL_RESORT;
+			_sorting.train.order = !!(vl->flags & VL_DESC);
 			SetWindowDirty(w);
 			break;
 
@@ -1409,18 +1409,19 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			// value has changed -> resort
 			vl->flags |= VL_RESORT;
 			vl->sort_type = e->dropdown.index;
+			_sorting.train.criteria = vl->sort_type;
 
 			// enable 'Sort By' if a sorter criteria is chosen
 			if (vl->sort_type != SORT_BY_UNSORTED)
-				w->disabled_state &= ~(1 << 3);
+				CLRBIT(w->disabled_state, 3);
 		}
 		SetWindowDirty(w);
 		break;
 
 	case WE_CREATE: /* set up resort timer */
 		vl->sort_list = NULL;
-		vl->flags = VL_REBUILD;
-		vl->sort_type = SORT_BY_UNSORTED;
+		vl->flags = VL_REBUILD | (_sorting.train.order << (VL_DESC - 1));
+		vl->sort_type = _sorting.train.criteria;
 		vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
 

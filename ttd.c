@@ -721,6 +721,7 @@ int ttd_main(int argc, char* argv[])
 
 	// initialize the ingame console
 	IConsoleInit();
+	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
 	InitPlayerRandoms();
