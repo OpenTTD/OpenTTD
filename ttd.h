@@ -91,7 +91,7 @@ enum MapTileTypes {
 	MP_TREES,
 	MP_STATION,
 	MP_WATER,
-	MP_STRANGE,
+	MP_VOID, // invisible tiles at the SW and SE border
 	MP_INDUSTRY,
 	MP_TUNNELBRIDGE,
 	MP_UNMOVABLE

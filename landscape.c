@@ -84,7 +84,7 @@ void FindLandscapeHeightByTile(TileInfo *ti, uint tile)
 {
 	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY()) {
 		ti->tileh = 0;
-		ti->type = MP_STRANGE;
+		ti->type = MP_VOID;
 		ti->tile = 0;
 		ti->map5 = 0;
 		ti->z = 0;
@@ -108,7 +108,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 
 	if (x >= MapMaxX() * 16 - 1 || y >= MapMaxY() * 16 - 1) {
 		ti->tileh = 0;
-		ti->type = MP_STRANGE;
+		ti->type = MP_VOID;
 		ti->tile = 0;
 		ti->map5 = 0;
 		ti->z = 0;
@@ -495,8 +495,10 @@ void InitializeLandscape()
 	memset(_map_extra_bits, 0, map_size / 4);
 	memset(_map_type_and_height, MP_CLEAR << 4, map_size);
 
+	// create void tiles on the border
 	for (i = 0; i != MapMaxY(); i++)
-		memset(_map_type_and_height + i * MapSizeX(), 0,  MapSizeX() - 1);
+		_map_type_and_height[ i * MapSizeX() + MapMaxY() ] = MP_VOID << 4;
+	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
 
 	memset(_map5, 3, map_size);
 }
