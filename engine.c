@@ -56,7 +56,7 @@ void DeleteCustomEngineNames(void)
 	uint i;
 	StringID old;
 
-	for(i=0; i!=TOTAL_NUM_ENGINES; i++) {
+	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
 		old = _engine_name_strings[i];
 		_engine_name_strings[i] = i + STR_8000_KIRBY_PAUL_TANK_STEAM;
 		DeleteName(old);
@@ -73,10 +73,10 @@ void LoadCustomEngineNames(void)
 
 static void SetupEngineNames(void)
 {
-	uint i;
+	StringID *name;
 
-	for(i=0; i!=TOTAL_NUM_ENGINES; i++)
-		_engine_name_strings[i] = STR_SV_EMPTY;
+	for (name = _engine_name_strings; name != endof(_engine_name_strings); name++)
+		*name = STR_SV_EMPTY;
 
 	DeleteCustomEngineNames();
 	LoadCustomEngineNames();
@@ -200,7 +200,7 @@ void StartupEngines(void)
 	AdjustAvailAircraft();
 }
 
-uint32 _engine_refit_masks[256];
+uint32 _engine_refit_masks[TOTAL_NUM_ENGINES];
 
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
@@ -214,7 +214,7 @@ struct WagonOverride {
 static struct WagonOverrides {
 	int overrides_count;
 	struct WagonOverride *overrides;
-} _engine_wagon_overrides[256];
+} _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 
 void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group,
                              byte *train_id, int trains)
@@ -260,12 +260,12 @@ static struct SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overridin
 }
 
 
-byte _engine_original_sprites[256];
+byte _engine_original_sprites[TOTAL_NUM_ENGINES];
 // 0 - 28 are cargos, 29 is default, 30 is the advert (purchase list)
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static struct SpriteGroup _engine_custom_sprites[256][NUM_CID];
+static struct SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CID];
 
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 {
@@ -622,12 +622,20 @@ void TriggerVehicle(Vehicle *veh, enum VehicleTrigger trigger)
 	DoTriggerVehicle(veh, trigger, 0, true);
 }
 
-
-static char *_engine_custom_names[256];
+static char *_engine_custom_names[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineName(int engine, const char *name)
 {
 	_engine_custom_names[engine] = strdup(name);
+}
+
+void UnInitNewgrEngines(void)
+{
+	char **i;
+	for (i = _engine_custom_names; i != endof(_engine_custom_names); i++) {
+		free(*i);
+		*i = NULL;
+	}
 }
 
 StringID GetCustomEngineName(int engine)

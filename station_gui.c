@@ -82,8 +82,7 @@ static void GlobalSortStationList(void)
 	uint16 *i;
 
 	// reset #-of stations to 0 because ++ is used for value-assignment
-	for (i = _num_station_sort; i != endof(_num_station_sort); i++)
-		*i = 0;
+	memset(_num_station_sort, 0, sizeof(_num_station_sort));
 
 	/* Create array for sorting */
 	_station_sort = realloc(_station_sort, GetStationPoolSize() * sizeof(_station_sort[0]));

@@ -563,6 +563,8 @@ Window *AllocateWindowAutoPlace2(
 void DrawWindowViewport(Window *w);
 
 void InitWindowSystem(void);
+void UnInitWindowSystem(void);
+void ResetWindowSystem(void);
 int GetMenuItemIndex(Window *w, int x, int y);
 void MouseLoop(void);
 void UpdateWindows(void);

@@ -447,6 +447,11 @@ static void UnInitializeDynamicVariables(void)
 	free(_industry_sort);
 }
 
+static void UnInitializeGame(void)
+{
+	UnInitWindowSystem();
+	UnInitNewgrEngines();
+}
 
 static void LoadIntroGame(void)
 {
@@ -459,7 +464,7 @@ static void LoadIntroGame(void)
 	LoadStringWidthTable();
 
 	// Setup main window
-	InitWindowSystem();
+	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
 	// Generate a world.
@@ -699,6 +704,7 @@ int ttd_main(int argc, char* argv[])
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
+	UnInitializeGame();
 
 	return 0;
 }
@@ -725,7 +731,7 @@ static void MakeNewGame(void)
 	GfxLoadSprites();
 
 	// Reinitialize windows
-	InitWindowSystem();
+	ResetWindowSystem();
 	LoadStringWidthTable();
 
 	SetupColorsAndInitialWindow();
@@ -757,7 +763,7 @@ static void MakeNewEditorWorld(void)
 	GfxLoadSprites();
 
 	// Re-init the windowing system
-	InitWindowSystem();
+	ResetWindowSystem();
 
 	// Create toolbars
 	SetupColorsAndInitialWindow();
@@ -792,7 +798,7 @@ static void StartScenario(void)
 	GfxLoadSprites();
 
 	// Reinitialize windows
-	InitWindowSystem();
+	ResetWindowSystem();
 	LoadStringWidthTable();
 
 	SetupColorsAndInitialWindow();
@@ -1327,7 +1333,7 @@ bool AfterLoadGame(uint version)
 	}
 
 	// Initialize windows
-	InitWindowSystem();
+	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
 	w = FindWindowById(WC_MAIN_WINDOW, 0);

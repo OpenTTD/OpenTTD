@@ -330,7 +330,7 @@ extern const char _openttd_revision[];
 static bool CreateMainSurface(int w, int h)
 {
 	SDL_Surface *newscreen;
-	char *caption;
+	char caption[50];
 
 	GetAvailableVideoMode(&w, &h);
 
@@ -348,7 +348,7 @@ static bool CreateMainSurface(int w, int h)
 	_sdl_screen = newscreen;
 	InitPalette();
 
-	caption = str_fmt("OpenTTD %s", _openttd_revision);
+	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_CALL SDL_WM_SetCaption(caption, caption);
 	SDL_CALL SDL_ShowCursor(0);
 

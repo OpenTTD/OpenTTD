@@ -360,11 +360,10 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 			index++;
 		}
 
-		w->widget = malloc(sizeof(Widget) * index);
+		w->widget = realloc(w->widget, sizeof(Widget) * index);
 		memcpy(w->widget, widget, sizeof(Widget) * index);
-	} else {
+	} else
 		w->widget = NULL;
-	}
 }
 
 Window *AllocateWindow(
@@ -427,6 +426,7 @@ Window *AllocateWindow(
 	w->vscroll.count = 0;
 	w->hscroll.pos = 0;
 	w->hscroll.count = 0;
+	w->widget = NULL;
 	AssignWidgetToWindow(w, widget);
 	w->resize.width = width;
 	w->resize.height = height;
@@ -672,6 +672,7 @@ Window *FindWindowFromPt(int x, int y)
 void InitWindowSystem(void)
 {
 	IConsoleClose();
+
 	memset(&_windows, 0, sizeof(_windows));
 	_last_window = _windows;
 	memset(_viewports, 0, sizeof(_viewports));
@@ -679,12 +680,28 @@ void InitWindowSystem(void)
 	_no_scroll = 0;
 }
 
+void UnInitWindowSystem(void)
+{
+	Window *w;
+	// delete all malloced widgets
+	for (w = _windows; w != _last_window; w++) {
+		free(w->widget);
+		w->widget = NULL;
+	}
+}
+
+void ResetWindowSystem(void)
+{
+	UnInitWindowSystem();
+	InitWindowSystem();
+}
+
 static void DecreaseWindowCounters(void)
 {
 	Window *w;
 
 
-	for(w=_last_window; w != _windows;) {
+	for (w = _last_window; w != _windows;) {
 		--w;
 		// Unclick scrollbar buttons if they are pressed.
 		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
@@ -694,7 +711,7 @@ static void DecreaseWindowCounters(void)
 		CallWindowEventNP(w, WE_MOUSELOOP);
 	}
 
-	for(w=_last_window; w != _windows;) {
+	for (w = _last_window; w != _windows;) {
 		--w;
 
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
