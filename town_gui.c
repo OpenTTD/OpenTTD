@@ -340,8 +340,8 @@ void ShowTownViewWindow(uint town)
 static const Widget _town_directory_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    13,    11,   207,     0,    13, STR_2000_TOWNS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    13,     0,    98,    14,    25, STR_SORT_BY_NAME, STR_SORT_TIP},
-{ WWT_PUSHTXTBTN,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,STR_SORT_TIP},
+{ WWT_PUSHTXTBTN,    13,     0,    98,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,    13,     0,   196,    26,   189, 0x0, STR_200A_TOWN_NAMES_CLICK_ON_NAME},
 {  WWT_SCROLLBAR,    13,   197,   207,    14,   189, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},

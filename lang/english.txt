@@ -353,7 +353,8 @@ STR_015E_QUIT_GAME						:Abandon game
 STR_015F_QUIT							:Exit
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Are you sure you want to abandon this game?
 STR_0161_QUIT_GAME						:{WHITE}Abandon Game
-STR_SORT_TIP							:{BLACK}Select sorting order descending/ascending
+STR_SORT_ORDER_TIP						:{BLACK}Select sorting order descending/ascending
+STR_SORT_CRITERIA_TIP					:{BLACK}Select sorting criteria
 SRT_SORT_BY							:{BLACK}Sort by
 
 STR_SORT_BY_POPULATION						:{BLACK}Population
