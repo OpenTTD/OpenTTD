@@ -1199,7 +1199,7 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}A térkép mérete
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Nyelv, szerver verzió, stb.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Kattints a listában a jatékra hogy kiválaszd
 
-STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Csatlakozás a játékhoz
 
@@ -1223,8 +1223,11 @@ STR_NETWORK_6_PLAYERS						:6 játékos
 STR_NETWORK_7_PLAYERS						:7 játékos
 STR_NETWORK_8_PLAYERS						:8 játékos
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
+STR_NETWORK_START_GAME_TIP					:{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME						:{BLACK}Játék betöltése
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Korábban elmentett többfelhasználós játék folytatása (gyõzõdj meg, hogy megfelelõ játékosként kapcsolódtál)
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Pálya betöltése
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Új hálózati játék kezdése missziós alapon
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Többjátékos játék-lobby
 
@@ -2553,6 +2556,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Áradás!{}Legalább {COMMA16}
 STR_BRIBE_FAILED						:{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2						:{WHITE}lefülelte egy helyi nyomozó!
 STR_BUILD_DATE							:{BLACK}Építve: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Játék felfüggesztve.{}A parancs nem végrehajtható
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Teljesítményértékelések részletezése
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Részletek

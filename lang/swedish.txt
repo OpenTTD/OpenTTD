@@ -1117,7 +1117,7 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Storlek på kartan
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Språk, server version, mm
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klicka på ett spel från listan för att välja det
 
-STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Gå med i spelet
 

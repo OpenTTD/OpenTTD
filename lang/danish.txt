@@ -1125,6 +1125,7 @@ STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procen
 
 
 
+
 ############ end network gui strings
 
 

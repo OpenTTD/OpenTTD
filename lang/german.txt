@@ -1199,7 +1199,7 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Größe der Karte
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Sprache, Server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Ein Spiel der Liste mit Anklicken wählen
 
-STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Zum Spiel beitreten
 

@@ -587,7 +587,7 @@ STR_0226_RANDOM_LAND						:{BLACK}Náhodná zeme
 STR_0227_RESET_LAND						:{BLACK}Vymaz zemi
 STR_0228_INCREASE_SIZE_OF_LAND_AREA				:{BLACK}Zvetsit oblast zeme pro snizeni/zvyseni
 STR_0229_DECREASE_SIZE_OF_LAND_AREA				:{BLACK}Zmensit oblast zeme pro snizeni/zvyseni
-STR_022A_GENERATE_RANDOM_LAND					:{BLACK}Generovat nahodnou zemi
+STR_022A_GENERATE_RANDOM_LAND					:{BLACK}Generovat náhodnou zemi
 STR_022B_RESET_LANDSCAPE					:{BLACK}Smazat krajinu
 STR_022C_RESET_LANDSCAPE					:{WHITE}Smazat krajinu
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO				:{WHITE}Jsi si jist, ze chces smazat krajinu?
@@ -702,7 +702,7 @@ STR_0299_SAVE_SCENARIO						:{WHITE}Ulozit mapu
 STR_029A_PLAY_SCENARIO						:{BLACK}Hrát mapu
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Urcite chces opustit toto mapu?
 STR_029C_QUIT_EDITOR						:{WHITE}Ukoncit editor
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze byt vybudovano jen ve mestech s populaci 1200 lidi nebo vice
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze být budováno jen ve mestech s populací 1200 lidí a více
 STR_029E_MOVE_THE_STARTING_DATE					:{BLACK}Posunout startovní rok o rok zpet
 STR_029F_MOVE_THE_STARTING_DATE					:{BLACK}Posunout startovní rok o rok vpred
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH				:{WHITE}...oba konce mostu musí být na zemi
@@ -768,19 +768,19 @@ STR_EXTRA_VIEW_PORT						:Dalsi pohled
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohled {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit soucasne zorné pole jako pohled
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Jít na pohled
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit pohled do jako zorné pole
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Prejit na pohled
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit pohled do zorného pole
 
 STR_02DF_TOWN_DIRECTORY						:Seznam mest
 STR_02E0_CURRENCY_UNITS						:{BLACK}Jednotky meny
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Vyber jednotek meny
-STR_02E3_DISTANCE_UNITS						:{BLACK}Jednotky vzdáleností
+STR_02E3_DISTANCE_UNITS						:{BLACK}Merove jednotky
 STR_02E4							:{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Vyber jednotek vzdáleností
+STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Vyber merovych jednotek
 STR_02E6_ROAD_VEHICLES						:{BLACK}Silnicni vozidla jezdí
 STR_02E7							:{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Vyber strany na ktere jezdí silnicni vozidla
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Vyber strany, na které jezdí silnicni vozidla
 STR_02E9_DRIVE_ON_LEFT						:Vlevo
 STR_02EA_DRIVE_ON_RIGHT						:Vpravo
 STR_02EB_TOWN_NAMES						:{BLACK}Jména mest
@@ -789,7 +789,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES				:{BLACK}Vyber stylu jmen mest
 
 STR_02F4_AUTOSAVE						:{BLACK}Automatické ukládání
 STR_02F5							:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN				:{BLACK}Volba intervalu mezi automatickym ukládáním hry
+STR_02F6_SELECT_INTERVAL_BETWEEN				:{BLACK}Volba intervalu mezi automatickým ukládáním hry
 STR_02F7_OFF							:Vypnuto
 STR_02F8_EVERY_3_MONTHS						:Kazde 3 mesice
 STR_02F9_EVERY_6_MONTHS						:Kazdych 6 mesicu
@@ -797,17 +797,17 @@ STR_02FA_EVERY_12_MONTHS					:Kazdych 12 mesicu
 STR_02FB_START_A_NEW_GAME					:{BLACK}Zalozit novou hru
 STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Otevrit ulozenou hru z disku
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Prohlédnout ukázky / tutorialy
-STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Vytvorit uzivatelsky svet/scenario
+STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Vytvorit uzivatelsky svet (scenario)
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Vybrat hru pro jednoho hrace
 STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Vybrat hru pro více hracu
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Zobrazit moznosti hry
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Zobrazit nastaveni obtiznosti
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Zobrazit nastavení obtiznosti
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Zalozit novou hru, pouzit uzivatelske scenario
 STR_0304_QUIT							:{BLACK}Ukoncit
 STR_0305_LEAVE_OPENTTD						:{BLACK}Opustit 'OpenTTD' a skoncit
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Prohlednout ukazku/tutorial
+STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Prohlédnout ukázku (tutorial)
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze byt staveno jen ve mestech
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze být budováno jen ve mestech
 STR_030E_SELECT_TEMPERATE_LANDSCAPE				:{BLACK}Krajina mírného pásma
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE				:{BLACK}Subarktická krajina
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE				:{BLACK}Subtropická krajina
@@ -821,9 +821,9 @@ STR_0313_FUND_NEW_INDUSTRY					:Investovat do prumyslu
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Investovat do prumyslu
 STR_0315							:{STRING}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze byt budovano jen ve mestech
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...muze but budovano jen v pralesech
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...muze but budovano jen v poustich
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...muze být budováno jen ve mestech
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST			:{WHITE}...muze být budováno jen v pralesech
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT				:{WHITE}...muze být budováno jen v poustich
 STR_0319_PAUSED							:{YELLOW}* *  PAUZA  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY				:{WHITE}Screenshot uspesne ulozen jako '{STRING}'
@@ -1199,7 +1199,7 @@ STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Velikost mapy
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jazyk, verze serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Hru vyberes kliknutim do seznamu
 
-STR_NETWORK_PLAYERS_VAL					:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pridat se
 
@@ -1223,8 +1223,11 @@ STR_NETWORK_6_PLAYERS						:6 hracu
 STR_NETWORK_7_PLAYERS						:7 hracu
 STR_NETWORK_8_PLAYERS						:8 hracu
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
+STR_NETWORK_START_GAME_TIP					:{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME						:{BLACK}Nahrát hru
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat ve drive ulozene hre pro více hracu (ujisti se, ze se pripojujes na správného hrace)
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacit sitovou hru ze scenaria
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupni mistnost do multiplayerove hry
 
@@ -1438,23 +1441,23 @@ STR_205B_TEAPOT_HOUSE						:Dum Konvicka
 STR_205C_PIGGY_BANK						:Banka Prasatko
 
 ##id 0x2800
-STR_LANDSCAPING							:Upravy krajiny
+STR_LANDSCAPING							:Úpravy krajiny
 STR_2800_PLANT_TREES						:Vysadit stromy
-STR_2801_PLACE_SIGN						:Umistit napis
+STR_2801_PLACE_SIGN						:Umístit nápis
 STR_2802_TREES							:{WHITE}Stromy
 STR_2803_TREE_ALREADY_HERE					:{WHITE}...strom zde jiz je
-STR_2804_SITE_UNSUITABLE					:{WHITE}...nepouzitelne misto
+STR_2804_SITE_UNSUITABLE					:{WHITE}...nepouzitelne místo
 STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Zde nemuzes vysadit strom...
 STR_2806							:{WHITE}{STRING}
 STR_2807							:{TINYFONT}{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS						:{WHITE}...prilis mnoho napisu
-STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Zde nemuzes umistit napis...
-STR_280A_SIGN							:Napis
-STR_280B_EDIT_SIGN_TEXT						:{WHITE}Upravit text napis
-STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Nemuzes zmenit jméno napisu...
+STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Zde nemuzes umistit nápis...
+STR_280A_SIGN							:Nápis
+STR_280B_EDIT_SIGN_TEXT						:{WHITE}Upravit text napisu
+STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Nemuzes zmenit jméno nápisu...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Zvol typ stromu na vysazeni
 STR_280E_TREES							:Stromy
-STR_280F_RAINFOREST						:Tropicky prales
+STR_280F_RAINFOREST						:Tropický prales
 STR_2810_CACTUS_PLANTS						:Kaktusy
 
 ##id 0x3000
@@ -1462,15 +1465,15 @@ STR_3000_RAIL_STATION_SELECTION					:{WHITE}Vyber nadrazi
 STR_3001_AIRPORT_SELECTION					:{WHITE}Vyber letiste
 STR_3002_ORIENTATION						:{BLACK}Orientace
 STR_3003_NUMBER_OF_TRACKS					:{BLACK}Pocet nastupist
-STR_3004_PLATFORM_LENGTH					:{BLACK}Delka nastupiste
-STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Prilis blizko jinemu nadrazi
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Spojuje vice jak jedno existujici nadrazi/nakladovou rampu...
-STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi/nakladovych ramp v tomto meste
-STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi/nakladovych ramp
-STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Prilis blizko k jinemu nadrazi/nakladove rampe
+STR_3004_PLATFORM_LENGTH					:{BLACK}Délka nastupiste
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Prilis blízko jinému nadrazi
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Spojuje více jak jedno existující nadrazi nebo nákladovou rampu...
+STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi nebo nákladových ramp v tomto meste
+STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi nebo nákladových ramp
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Prilis blízko k jinému nadrazi nebo nákladové rampe
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Musis nejprve znicit stanici
-STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT				:{WHITE}Prilis blizko k jinemu letisti
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT				:{WHITE}Prilis blízko k jinému letisti
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Musis nejprve znicit letiste
 
 STR_3030_RENAME_STATION_LOADING					:Prejmenovat stanici
@@ -1491,33 +1494,33 @@ STR_303C_OUTSTANDING						:Uzasne
 ############ range for rating ends
 
 STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
-STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} jiz vice neprijima {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} jiz vice neprijima {STRING} nebo {STRING}
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} uz více neprijima {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} uz více neprijima {STRING} nebo {STRING}
 STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} nyní prijima {STRING}
 STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} nyní prijima {STRING} a {STRING}
 STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Orientace autobusové zastávky.
-STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Orientace nakladové rampy.
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Prilis blizko k jine autobusove zastavce
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Prilis blizko k jine nakladove rampe
-STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Musis nejprve znicit autobusovou zastavku
-STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Musis nejprve znicit nakladovou rampu
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Orientace nákladové rampy.
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Prilis blizko k jiné autobusové zastávce
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Prilis blizko k jiné nákladové rampe
+STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Musis nejprve znicit autobusovou zastávku
+STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Musis nejprve znicit nákladovou rampu
 STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} stanic
 STR_3049_0							:{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE							:{YELLOW}- Nic -
-STR_304B_SITE_UNSUITABLE					:{WHITE}...nepouzitelne misto
-STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Prilis blizko k jinemu doku
+STR_304B_SITE_UNSUITABLE					:{WHITE}...nepouzitelne místo
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Prilis blízko k jinému doku
 STR_304D_MUST_DEMOLISH_DOCK_FIRST				:{WHITE}Musis nejprve znicit dok
 STR_304E_SELECT_RAILROAD_STATION				:{BLACK}Zvolit orientaci nadrazi
 STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Zvolit pocet nastupist pro nadrazi
-STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Zvolit delku nadrazi
-STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Zvolit orientaci autobusove zastavky
-STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Zvolit orientaci nakladove rampy
+STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Zvolit délku nadrazi
+STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Zvolit orientaci autobusové zastávky
+STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Zvolit orientaci nákladové rampy
 STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Vycentrovat pohled na umisteni stanice
 STR_3054_SHOW_STATION_RATINGS					:{BLACK}Ukázat hodnocení spolecnosti
 STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Zmenit jméno stanice
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Ukázat seznam prijimaneho zbozi
-STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Jména stanic - stiskni jméno pro vycentrovani obrazu na stanici
-STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Zvol velikost/typ letiste
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Ukázat seznam prijimaneho nákladu
+STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Jména stanic - pro nahlédnutí na stanici klepni na její jméno
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Zvol velikost a typ letiste
 STR_3059_SMALL							:{BLACK}Malé
 STR_305A_LARGE							:{BLACK}Mestske
 STR_305AA_LARGE							:{BLACK}Metropolitní
@@ -1528,27 +1531,27 @@ STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION					:Nadrazi
 STR_305F_AIRCRAFT_HANGAR					:Hangár
 STR_3060_AIRPORT						:Letiste
-STR_3061_TRUCK_LOADING_AREA					:Nakladová rampa
+STR_3061_TRUCK_LOADING_AREA					:Nákladová rampa
 STR_3062_BUS_STATION						:Autobusová zastávka
 STR_3063_SHIP_DOCK						:Dok
-STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Zvyraznit oblast pokryti
-STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nezvyraznovat oblast pokryti
-STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Zvyraznit oblast pokryti
-STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Vyber nadrazi pro jednokolejku.
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Zvýraznit oblast pokrytí
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nezvyraznovat oblast pokrytí
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Zvýraznit oblast pokrytí
+STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Vyber nadrazi pro monorail.
 STR_3068_DOCK							:{WHITE}Pristav
 STR_3069_BUOY							:Bojka
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bojka v ceste
 STR_306B_HELIPORT						:{BLACK}Heliport
-STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stanice prilis rozlozena
+STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stanice je prilis rozlozita
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientace sucheho doku
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientace lodního depa
 STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...musi byt postaven na vode
-STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Zde nemuzes postavit suchy dok...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Zvolit orientaci sucheho doku
+STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Zde nemuzes postavit lodní depo...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Zvolit orientaci lodního depa
 STR_3804_WATER							:Voda
 STR_3805_COAST_OR_RIVERBANK					:Pobrezi nebo breh
-STR_3806_SHIP_DEPOT						:Suchy dok
+STR_3806_SHIP_DEPOT						:Lodní depo
 STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...nemohu stavet na vode
 
 ##id 0x4000
@@ -1567,8 +1570,8 @@ STR_400B_CURRENTLY_SELECTED_NAME				:{BLACK}Zvolene jméno ulozene hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED				:{BLACK}Smazat oznacenou ulozenou hru
 STR_400D_SAVE_THE_CURRENT_GAME_USING				:{BLACK}Ulozit aktualni hru se zvolenym jmenem
 STR_400E_SELECT_NEW_GAME_TYPE					:{WHITE}Zvolit nový typ hry
-STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Zvolit scenario (zelena), prednastavenou hru (modra), nebo nahodnou novou hru
-STR_4010_GENERATE_RANDOM_NEW_GAME				:Vytvorit nahodnou novou hru
+STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Zvolit scenario (zelená), prednastavenou hru (modrá), nebo náhodnou novou hru
+STR_4010_GENERATE_RANDOM_NEW_GAME				:Vytvorit náhodnou novou hru
 
 ##id 0x4800
 STR_4800_IN_THE_WAY						:{WHITE}{STRING} v ceste
@@ -1889,7 +1892,7 @@ STR_7047_CANCEL_NEW_FACE_SELECTION				:{BLACK}Zrusit volbu noveho obliceje
 STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Potvrdit vyber obliceje
 STR_7049_SELECT_MALE_FACES					:{BLACK}Zvolit muzske obliceje
 STR_704A_SELECT_FEMALE_FACES					:{BLACK}Zvolit zenske obliceje
-STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Vytvorit nahodnou novou tvar
+STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Vytvorit náhodnou novou tvar
 STR_704C_KEY							:{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Ukázat legendu ke grafum
 STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Legenda ke grafum spolecnosti
@@ -1934,7 +1937,7 @@ STR_RELOCATE_HQ							:{BLACK}Presidlit
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Celosvetovy hospodarsky úpadek!{}{}Financni experti se kvuli prudkému poklesu ekonomiky obávají nejhorsiho!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Konec hospodarskeho úpadku!{}{}Posílení trhu zvysilo u prumyslu duveru!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Prepnout velke/male okno
-STR_7076_COMPANY_VALUE						:{GOLD}Hodnota spolecnosti: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Hodnota spolecnosti: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Koupit 25% podíl ve spolecnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Prodat 25% podíl ve spolecnosti
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Koupit 25% podíl v této spolecnosti
@@ -2424,20 +2427,20 @@ STR_9817_CAPACITY						:{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP					:{WHITE}Nelze rozjet/zastavit lod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT				:{WHITE}Nelze poslat lod do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Nemohu najít místní depo
-STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Mirim do depa {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Mirim do depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Jedu do depa {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Jedu do depa {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT				:{WHITE}Lod {COMMA16} ceka v depu
 STR_981D_BUILD_SHIP_DOCK					:{BLACK}Postavit pristavní molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Postavit lodní depo (na nákup a servis lodí)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Lode - klepni na lod pro informace
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Lode - informace ziskas klepnutím na jméno lodi
 STR_9820_BUILD_NEW_SHIP						:{BLACK}Koupit novou lod
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Zde se dá lod prodat (pretahnutím)
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Zde se dá lod prodat (pretahnutim)
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Nastavit pohled na lodní depo
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Lode - klepni na lod pro informace
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Lode - informace ziskas klepnutím na jméno lodi
 STR_9824_BUILD_NEW_SHIPS_REQUIRES				:{BLACK}Koupit nové lode (vyzaduje lodní depo)
-STR_9825_SHIP_SELECTION_LIST_CLICK				:{BLACK}Seznam lodí - klepni na lod pro informace
+STR_9825_SHIP_SELECTION_LIST_CLICK				:{BLACK}Seznam lodí - informace ziskas klepnutím na jméno lodi
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP				:{BLACK}Koupit oznacenou lod
-STR_9827_CURRENT_SHIP_ACTION_CLICK				:{BLACK}Cinnost lodi - stiskni pro rozjetí/zastavení lodi
+STR_9827_CURRENT_SHIP_ACTION_CLICK				:{BLACK}Cinnost lodi - na rozjetí nebo zastavení lodi klepni sem
 STR_9828_SHOW_SHIP_S_ORDERS					:{BLACK}Ukázat prikazy lodi
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Nastavit pohled na lod
 STR_982A_SEND_SHIP_TO_DEPOT					:{BLACK}Poslat lod do doku
@@ -2465,8 +2468,8 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Zvolit druh nákladu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP					:{WHITE}Nelze prestavet lod...
 STR_9842_REFITTABLE						:(lze prestavet)
-STR_GO_TO_SHIP_DEPOT						:Poslat do doku {TOWN}
-SERVICE_AT_SHIP_DEPOT						:Udrzba v doku {TOWN}
+STR_GO_TO_SHIP_DEPOT						:Zajet do lodního depa {TOWN}
+SERVICE_AT_SHIP_DEPOT						:Udrzba v lodním depu {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Stavba letiste.
@@ -2553,6 +2556,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Záplavy!{}Po straslivych zá
 STR_BRIBE_FAILED						:{WHITE}Tvuj pokus o úplatek byl
 STR_BRIBE_FAILED_2						:{WHITE}odhalen místním vysetrovatelem.
 STR_BUILD_DATE							:{BLACK}Postaveno: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Hra je v pauze.{}Prikaz nemuze být proveden
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Podrobné hodnocení výkonu
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Podrobne
