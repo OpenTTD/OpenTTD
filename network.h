@@ -81,6 +81,7 @@ typedef struct NetworkPlayerInfo {
 	int64 money;																		// The amount of money the company has
 	int64 income;																		// How much did the company earned last year
 	uint16 performance;															// What was his performance last month?
+	byte use_password;													// 0: No password 1: There is a password
 	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];			// How many vehicles are there of this type?
 	uint16 num_station[NETWORK_STATION_TYPES];			// How many stations are there of this type?
 	char players[NETWORK_PLAYERS_LENGTH];						// The players that control this company (Name1, name2, ..)

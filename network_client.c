@@ -301,6 +301,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		_network_player_info[current].money = NetworkRecv_uint64(MY_CLIENT, p);
 		_network_player_info[current].income = NetworkRecv_uint64(MY_CLIENT, p);
 		_network_player_info[current].performance = NetworkRecv_uint16(MY_CLIENT, p);
+		_network_player_info[current].use_password = NetworkRecv_uint8(MY_CLIENT, p);
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			_network_player_info[current].num_vehicle[i] = NetworkRecv_uint16(MY_CLIENT, p);
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)

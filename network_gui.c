@@ -716,10 +716,18 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		pos = w->vscroll.pos;
 		while (pos < _network_lobby_company_count) {
 			byte index = NetworkLobbyFindCompanyIndex(pos);
+			bool income = false;
 			if (_selected_company_item == index)
 				GfxFillRect(11, y - 1, 139, y + 10, 155); // show highlighted item with a different colour
 
 			DoDrawString(_network_player_info[index].company_name, 13, y, 2);
+			if(_network_player_info[index].use_password != 0)
+				DrawSprite(SPR_LOCK, 120, y);
+
+			/* If the company's income was positive puts a green dot else a red dot */
+			if ((_network_player_info[index].income) > 0) 
+				income = true;
+			DrawSprite(SPR_BLOT | (income?0x30d8000:0x30b8000), 130, y); 
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW_COMPANY;

@@ -102,6 +102,13 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		NetworkSend_uint64(p, _network_player_info[player->index].income);
 		NetworkSend_uint16(p, _network_player_info[player->index].performance);
 
+		/* Send 1 if there is a passord for the company else send 0 */
+		if (_network_player_info[player->index].password[0] != '\0') {
+			NetworkSend_uint8 (p, 1);
+		} else {
+			NetworkSend_uint8 (p, 0);
+		}
+
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			NetworkSend_uint16(p, _network_player_info[player->index].num_vehicle[i]);
 
