@@ -896,7 +896,6 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 void ShowEndGameChart(void)
 {
 	Window *w;
-	const Player *p = DEREF_PLAYER(_local_player);
 
 	if (!_networking) { // pause the game and hide all windows to show end-chart
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
@@ -908,10 +907,25 @@ void ShowEndGameChart(void)
 
 	if (w != NULL) {
 		MarkWholeScreenDirty();
+
+		WP(w, highscore_d).background_img = SPR_TYCOON_IMG1_BEGIN;
+
+		if (_local_player != OWNER_SPECTATOR) {
+			const Player *p = DEREF_PLAYER(_local_player);
+			if (p->old_economy[0].performance_history == SCORE_MAX)
+				WP(w, highscore_d).background_img = SPR_TYCOON_IMG2_BEGIN;
+		}
+
 		/* In a network game show the endscores of the custom difficulty 'network' which is the last one
-		 * as well as generate a TOP5 of that game, and not an all-time top5 */
-		w->window_number = (!_networking) ? _opt.diff_level : lengthof(_highscore_table) - 1;
-		WP(w, highscore_d).background_img = (p->old_economy[0].performance_history == SCORE_MAX) ? SPR_TYCOON_IMG2_BEGIN : SPR_TYCOON_IMG1_BEGIN; // which background to show
-		WP(w, highscore_d).rank = (!_networking) ? SaveHighScoreValue(p) : SaveHighScoreValueNetwork();
-	}
+		 * as well as generate a TOP5 of that game, and not an all-time top5. */
+		if (_networking) {
+			w->window_number = lengthof(_highscore_table) - 1;
+			WP(w, highscore_d).rank = SaveHighScoreValueNetwork();
+		} else {
+			// in single player _local player is always valid
+			const Player *p = DEREF_PLAYER(_local_player);
+			w->window_number = _opt.diff_level;
+			WP(w, highscore_d).rank = SaveHighScoreValue(p);
+		}
+	}		
 }
