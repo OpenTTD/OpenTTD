@@ -628,7 +628,14 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			num = GetNumRoadStops(st, type);
 			rs = GetPrimaryRoadStop(st, type);
 
-			assert (rs != NULL);
+			if (rs == NULL) {
+				int i, validorders = 0;
+				//There is no stop left at the station, so don't even TRY to go there
+				v->cur_order_index++;
+				InvalidateVehicleOrder(v);
+
+				return;
+			}
 
 			dist = malloc(num * sizeof(int32));
 
@@ -1632,7 +1639,8 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		//We do not have a slot, so make one
 		if (v->u.road.slot == NULL) {
 			//first we need to find out how far our stations are away.
-			assert( rs != NULL);
+			if ( rs == NULL )
+				goto no_stop;
 
 			do {
 				stop->dist = 0xFFFFFFFF;
@@ -1688,6 +1696,7 @@ have_slot:
 		firststop = stop = NULL;
 	}
 
+no_stop:
 	if (v->vehstatus & VS_STOPPED)
 		return;
 

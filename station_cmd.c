@@ -166,7 +166,18 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 		case VEH_Train: 		return st->train_tile;
 		case VEH_Aircraft:	return st->airport_tile;
 		case VEH_Ship:			return st->dock_tile;
-		case VEH_Road:			return (v->cargo_type == CT_PASSENGERS) ? st->bus_stops->xy : st->truck_stops->xy;
+		case VEH_Road:
+			if (v->cargo_type == CT_PASSENGERS) {
+				if (st->bus_stops != NULL)
+					return st->bus_stops->xy;
+				else
+					return 0;
+			} else {
+				if (st->truck_stops != NULL)
+					return st->truck_stops->xy;
+				else
+					return 0;
+			}
 		default:
 			assert(false);
 			return 0;
