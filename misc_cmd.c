@@ -93,9 +93,12 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	size = p->current_loan;
 
 	// p2 is true while CTRL is pressed (repay all possible loan, or max money you have)
-	if (!p2)
-		size = min(size, IS_HUMAN_PLAYER((byte)p1) ? 10000 : 50000);
-	else {	// only repay in chunks of 10K
+	if (!p2) {
+	    if (_patches.ainew_active)
+ 		    size = min(size, 10000);
+	    else
+		    size = min(size, IS_HUMAN_PLAYER((byte)p1) ? 10000 : 50000);
+	} else {	// only repay in chunks of 10K
 		size = min(size, p->player_money);
 		size = max(size, 10000);
 		size -= size % 10000;

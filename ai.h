@@ -1,0 +1,243 @@
+#ifndef AI_H
+#define AI_H
+
+#include "aystar.h"
+
+/*
+ * These defines can be altered to change the behavoir of the AI
+ *
+ * WARNING:
+ *   This can also alter the AI in a negative way. I will never claim these settings
+ *   are perfect, but don't change them if you don't know what the effect is.
+ */
+ 
+// How many times it the H multiplied. The higher, the more it will go straight to the
+//   end point. The lower, how more it will find the route with the lowest cost.
+//   also: the lower, the longer it takes before route is calculated..
+#define AI_PATHFINDER_H_MULTIPLER 100
+
+// How many loops may AyStar do before it stops
+//   0 = infinite
+#define AI_PATHFINDER_LOOPS_PER_TICK 5
+
+// How long may the AI search for one route?
+//   0 = infinite
+// This number is the number of tiles tested.
+//  It takes (AI_PATHFINDER_MAX_SEARCH_NODES / AI_PATHFINDER_LOOPS_PER_TICK) ticks
+//  to get here.. with 5000 / 10 = 500. 500 / 74 (one day) = 8 days till it aborts
+//   (that is: if the AI is on VERY FAST! :p
+#define AI_PATHFINDER_MAX_SEARCH_NODES 5000
+
+// If you enable this, the AI is not allowed to make 90degree turns
+#define AI_PATHFINDER_NO_90DEGREES_TURN
+
+// Below are defines for the g-calculation
+
+// Standard penalty given to a tile
+#define AI_PATHFINDER_PENALTY 150
+// The penalty given to a tile that is going up
+#define AI_PATHFINDER_TILE_GOES_UP_PENALTY 450
+// Changing direction is a penalty, to prevent curved ways (with that: slow ways)
+#define AI_PATHFINDER_DIRECTION_CHANGE_PENALTY 200
+// Same penalty, only for when road already exists
+#define AI_PATHFINDER_DIRECTION_CHANGE_ON_EXISTING_ROAD_PENALTY 50
+// A diagonal track cost the same as a straigh, but a diagonal is faster... so give
+//  a bonus for using diagonal track
+#ifdef AI_PATHFINDER_NO_90DEGREES_TURN
+#define AI_PATHFINDER_DIAGONAL_BONUS 95
+#else
+#define AI_PATHFINDER_DIAGONAL_BONUS 75
+#endif
+// If a roadblock already exists, it gets a bonus
+#define AI_PATHFINDER_ROAD_ALREADY_EXISTS_BONUS 140
+// To prevent 3 direction changes in 3 tiles, this penalty is given in such situation
+#define AI_PATHFINDER_CURVE_PENALTY 200
+
+// Penalty a bridge gets per length
+#define AI_PATHFINDER_BRIDGE_PENALTY 180
+// The penalty for a bridge going up
+#define AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY 1000
+
+// Tunnels are expensive...
+//  Because of that, every tile the cost is increased with 1/8th of his value
+//  This is also true if you are building a tunnel yourself
+#define AI_PATHFINDER_TUNNEL_PENALTY 350
+
+/*
+ * Ai_New defines
+ */
+
+// How long may we search cities and industry for a new route?
+#define AI_LOCATE_ROUTE_MAX_COUNTER 200
+
+// How many days must there be between building the first station and the second station
+//  within one city. This number is in days and should be more then 4 months.
+#define AI_CHECKCITY_DATE_BETWEEN 180
+
+// How many cargo is needed for one station in a city?
+#define AI_CHECKCITY_CARGO_PER_STATION 60
+// How much cargo must there not be used in a city before we can build a new station?
+#define AI_CHECKCITY_NEEDED_CARGO 50
+// When there is already a station which takes the same good and the rating of that
+//  city is higher then this numer, we are not going to attempt to build anything
+//  there
+#define AI_CHECKCITY_CARGO_RATING 50
+// But, there is a chance of 1 out of this number, that we do ;)
+#define AI_CHECKCITY_CARGO_RATING_CHANCE 5
+// If a city is too small to contain a station, there is a small chance
+//  that we still do so.. just to make the city bigger!
+#define AI_CHECKCITY_CITY_CHANCE 5
+
+// This number indicates for every unit of cargo, how many tiles two stations maybe be away
+//  from eachother. In other words: if we have 120 units of cargo in one station, and 120 units
+//  of the cargo in the other station, both stations can be 96 units away from eachother, if the
+//  next number is 0.4.
+#define AI_LOCATEROUTE_BUS_CARGO_DISTANCE 0.4
+#define AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE 0.7
+// In whole tiles, the minimum distance for a truck route
+#define AI_LOCATEROUTE_TRUCK_MIN_DISTANCE 30
+
+// The amount of tiles in a square from -X to +X that is scanned for a station spot
+//  (so if this number is 10, 20x20 = 400 tiles are scanned for _the_ perfect spot
+// Safe values are between 15 and 5
+#define AI_FINDSTATION_TILE_RANGE 10
+
+// Building on normal speed goes very fast. Idle this amount of ticks between every
+//  building part. It is calculated like this: (4 - competitor_speed) * num + 1
+//  where competitor_speed is between 0 (very slow) to 4 (very fast)
+#define AI_BUILDPATH_PAUSE 10
+
+// Minimum % of reliabilty a vehicle has to have before the AI buys it
+#define AI_VEHICLE_MIN_RELIABILTY 60
+
+// The minimum amount of money a player should always have
+#define AI_MINIMUM_MONEY 15000
+
+// If the most cheap route is build, how much is it going to cost..
+// This is to prevent the AI from trying to build a route which can not be paid for
+#define AI_MINIMUM_BUS_ROUTE_MONEY 25000
+#define AI_MINIMUM_TRUCK_ROUTE_MONEY 35000
+
+// The minimum amount of money before we are going to repay any money
+#define AI_MINIMUM_LOAN_REPAY_MONEY 40000
+// How many repays do we do if we have enough money to do so?
+//  Every repay is 10000
+#define AI_LOAN_REPAY 2
+// How much income must we have before paying back a loan? Month-based (and looked at the last month)
+#define AI_MINIMUM_INCOME_FOR_LOAN 7000
+
+// If there is <num> time as much cargo in the station then the vehicle can handle
+//  reuse the station instead of building a new one!
+#define AI_STATION_REUSE_MULTIPLER 2
+
+// No more then this amount of vehicles per station..
+#define AI_CHECK_MAX_VEHICLE_PER_STATION 10
+
+// How many thick between building 2 vehicles
+#define AI_BUILD_VEHICLE_TIME_BETWEEN 74
+
+/*
+ * End of defines
+ */
+
+
+// This stops 90degrees curves
+static const byte _illegal_curves[6] = {
+    255, 255, // Horz and vert, don't have the effect
+    5, // upleft and upright are not valid
+    4, // downright and downleft are not valid
+    2, // downleft and upleft are not valid
+    3, // upright and downright are not valid
+};
+
+static const TileIndexDiff _tiles_around[4] = {
+    TILE_XY(-1,0),
+    TILE_XY(0,1),
+    TILE_XY(1,0),
+    TILE_XY(0,-1),
+};
+
+enum {
+    AI_STATE_STARTUP = 0,
+    AI_STATE_FIRST_TIME,
+    AI_STATE_NOTHING,
+    AI_STATE_WAKE_UP,
+    AI_STATE_LOCATE_ROUTE,
+    AI_STATE_FIND_STATION,
+    AI_STATE_FIND_PATH,
+    AI_STATE_FIND_DEPOT,
+    AI_STATE_VERIFY_ROUTE,
+    AI_STATE_BUILD_STATION,
+    AI_STATE_BUILD_PATH,
+    AI_STATE_BUILD_DEPOT,
+    AI_STATE_BUILD_VEHICLE,
+    AI_STATE_GIVE_ORDERS,
+    AI_STATE_START_VEHICLE,
+    AI_STATE_REPAY_MONEY,
+    AI_STATE_ACTION_DONE,
+    AI_STATE_STOP, // Temporary function to stop the AI
+};
+
+// Used for tbt (train/bus/truck)
+enum {
+	AI_TRAIN = 0,
+	AI_BUS,
+	AI_TRUCK,
+};
+
+enum {
+	AI_ACTION_NONE = 0,
+	AI_ACTION_BUS_ROUTE,
+	AI_ACTION_TRUCK_ROUTE,
+	AI_ACTION_REPAY_LOAN,
+};
+
+// Used for from_type/to_type
+enum {
+    AI_NO_TYPE = 0,
+	AI_CITY,
+	AI_INDUSTRY,
+};
+
+#define AI_NO_CARGO 0xFF // Means that there is no cargo defined yet (used for industry)
+#define AI_NEED_CARGO 0xFE // Used when the AI needs to find out a cargo for the route
+#define AI_STATION_RANGE TILE_XY(TILE_X_MAX, TILE_Y_MAX)
+
+#define AI_PATHFINDER_NO_DIRECTION (byte)-1
+
+// Flags used in user_data
+#define AI_PATHFINDER_FLAG_BRIDGE 1
+#define AI_PATHFINDER_FLAG_TUNNEL 2
+
+// A macro for mp_street, where 0x20 is depot
+//   mp_tunnelbridge, where 0xf0 is a bridge, and 0x4/0x2 means: roadtunnel/bridge
+#define AI_PATHFINDER_IS_ROAD(tile) ((IS_TILETYPE(tile, MP_STREET) && !(_map5[tile] & 0x20)) || \
+(IS_TILETYPE(tile, MP_TUNNELBRIDGE) && \
+	(((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) || \
+	 ((_map5[tile] & 0x80) != 0 && (_map5[tile] & 0x2) == 0x2))))
+
+typedef void AiNew_StateFunction(Player *p);
+
+// ai_new.c
+void AiNewDoGameLoop(Player *p);
+
+// ai_pathfinder.c
+AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFinderInfo);
+void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo);
+
+// ai_shared.c
+int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c);
+int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c);
+int AiNew_GetDirection(uint tile_a, uint tile_b);
+
+// ai_build.c
+bool AiNew_Build_CompanyHQ(Player *p, uint tile);
+int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtracks, byte direction, byte flag);
+int AiNew_Build_Bridge(Player *p, uint tile_a, uint tile_b, byte flag);
+int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag);
+int AiNew_PickVehicle(Player *p);
+int AiNew_Build_Vehicle(Player *p, uint tile, byte flag);
+int AiNew_Build_Depot(Player *p, uint tile, byte direction, byte flag);
+
+
+#endif

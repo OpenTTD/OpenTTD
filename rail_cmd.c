@@ -203,7 +203,7 @@ static const byte _valid_tileh_slopes[4][15] = {
 	}
 };
 
-static uint GetRailFoundation(uint tileh, uint bits)
+uint GetRailFoundation(uint tileh, uint bits)
 {
 	int i;
 
@@ -351,7 +351,7 @@ need_clear:;
 	cost += ret;
 
 	// the AI is not allowed to used foundationed tiles.
-	if (ret && (_is_ai_player || !_patches.build_on_slopes))
+	if (ret && (!_patches.build_on_slopes || (!_patches.ainew_active && _is_ai_player)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	if (flags & DC_EXEC && need_clear) {
@@ -628,7 +628,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != 0) {
-		if (_is_ai_player || !_patches.build_on_slopes || (tileh & 0x10 || !((0x4C >> p2) & tileh) ))
+		if ((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes || (tileh & 0x10 || !((0x4C >> p2) & tileh) ))
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

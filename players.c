@@ -8,6 +8,7 @@
 #include "news.h"
 #include "saveload.h"
 #include "command.h"
+#include "ai.h"
 
 extern void StartupEconomy();
 
@@ -543,13 +544,16 @@ void OnTick_Players()
 void RunOtherPlayersLoop()
 {
 	Player *p;
-
+	
 	_is_ai_player = true;
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active) {
 			_current_player = p->index;
-			AiDoGameLoop(p);
+			if (_patches.ainew_active)
+				AiNewDoGameLoop(p);
+			else
+				AiDoGameLoop(p);
 		}
 	}
 

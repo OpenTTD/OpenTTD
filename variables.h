@@ -155,6 +155,7 @@ typedef struct Patches {
 	byte wait_twoway_signal;	//waitingtime in days before a twoway signal
 
 	byte drag_signals_density; // many signals density
+	bool ainew_active;  // Is the new AI active?
 } Patches;
 
 VARDEF Patches _patches;
@@ -225,7 +226,7 @@ VARDEF uint32 _network_detected_serverport; // UDP Broadcast detected server-por
 
 VARDEF uint32 _sync_seed_1, _sync_seed_2;
 
-VARDEF bool _is_ai_player; // current player is an AI player?
+VARDEF bool _is_ai_player; // current player is an AI player? - Can be removed if new AI is done
 
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
@@ -431,6 +432,7 @@ VARDEF bool _ignore_wrong_grf;
 VARDEF int _debug_spritecache_level;
 VARDEF int _debug_misc_level;
 VARDEF int _debug_grf_level;
+VARDEF int _debug_ai_level;
 
 void CDECL debug(const char *s, ...);
 #ifdef NO_DEBUG_MESSAGES

@@ -272,7 +272,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		*(v->schedule_ptr = _ptr_to_next_order++) = 0;
 		// the AI doesn't click on a tile to build airplanes, so the below code will
 		// never work. Therefore just assume the AI's planes always come from Hangar0
-		v->u.air.pos = (_is_ai_player) ? 0:MAX_ELEMENTS;
+		// On hold for NewAI
+		v->u.air.pos = (!_patches.ainew_active && _is_ai_player) ? 0:MAX_ELEMENTS;
 
 		/* When we click on hangar we know the tile (it is in var 'tile')it is on. By that we know 
 			its position in the array of depots the airport has.....we can search 

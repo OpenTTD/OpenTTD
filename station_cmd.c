@@ -577,7 +577,7 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 		tileh = GetTileSlope(tile_cur, &z);
 
 		// steep slopes are completely prohibited
-		if (tileh & 0x10 || ((_is_ai_player || !_patches.build_on_slopes) && tileh != 0)) {
+		if (tileh & 0x10 || (((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes) && tileh != 0)) {
 			_error_message = STR_0007_FLAT_LAND_REQUIRED;
 			return CMD_ERROR;
 		}
@@ -782,8 +782,8 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_tile != 0) {
-			// check if we want to expanding an already existing station? Only human players can do this.
-			if (_is_ai_player || !_patches.join_stations || !CanExpandRailroadStation(st, finalvalues, direction))
+			// check if we want to expanding an already existing station?
+			if ((!_patches.ainew_active && _is_ai_player) || !_patches.join_stations || !CanExpandRailroadStation(st, finalvalues, direction))
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 		}
 

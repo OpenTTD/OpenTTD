@@ -670,6 +670,14 @@ int32 v_PositionMainToolbar(int32 p1)
 	return 0;
 }
 
+int32 AiNew_PatchActive_Warning(int32 p1)
+{
+    if (p1 == 1)
+    	ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
+    	
+    return 0;
+}
+
 typedef int32 PatchButtonClick(int32);
 static PatchButtonClick * const _patch_button_proc[] = {
 	&v_PositionMainToolbar,
@@ -773,6 +781,8 @@ static const PatchEntry _patches_economy[] = {
 };
 
 static const PatchEntry _patches_ai[] = {
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AINEW_ACTIVE, &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
+
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh_train},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh_roadveh},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh_aircraft},

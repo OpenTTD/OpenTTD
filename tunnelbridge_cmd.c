@@ -239,9 +239,9 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);	// true - bridge-start-tile, false - bridge-end-tile
 	
-	// the AI and towns are not allowed to use bridges on slopes.
+	// towns are not allowed to use bridges on slopes.
 	if (terraformcost == CMD_ERROR || 
-		 (terraformcost && (_is_ai_player || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
+		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	cost += terraformcost;
@@ -253,9 +253,9 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	
 	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);	// false - end tile slope check
 
-	// the AI and towns are not allowed to use bridges on slopes.
+	// towns are not allowed to use bridges on slopes.
 	if (terraformcost == CMD_ERROR || 
-		 (terraformcost && (_is_ai_player || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
+		 (terraformcost && ((!_patches.ainew_active && _is_ai_player) || _current_player == OWNER_TOWN || !_patches.build_on_slopes)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	cost += terraformcost;
@@ -377,10 +377,10 @@ not_valid_below:;
 			It's unnecessary to execute this command every time for every bridge. So it is done only
 			and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	*/
-	if (!(flags & DC_QUERY_COST)) {
+	if (!(flags & DC_QUERY_COST)) {	
 		bridge_len += 2;	// begin and end tiles/ramps
 
-		if (_current_player < MAX_PLAYERS && IS_HUMAN_PLAYER(_current_player))
+		if (_current_player < MAX_PLAYERS && !(_is_ai_player && !_patches.ainew_active))
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost += ((bridge_len * _price.build_bridge) * _bridge_type_price_mod[bridge_type]) >> 8;
@@ -887,7 +887,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 
 
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
-static uint GetBridgeHeight(const TileInfo *ti)
+uint GetBridgeHeight(const TileInfo *ti)
 {
 	uint delta;
 	TileInfo ti_end;
@@ -966,7 +966,7 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 	}
 }
 
-static uint GetBridgeFoundation(uint tileh, byte direction) {
+uint GetBridgeFoundation(uint tileh, byte direction) {
 	int i;
 	// normal level sloped building (7, 11, 13, 14)
 	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh))

@@ -16,7 +16,7 @@ static bool _road_special_gettrackstatus;
 void RoadVehEnterDepot(Vehicle *v);
 
 
-static bool HasTileRoadAt(uint tile, int i)
+bool HasTileRoadAt(uint tile, int i)
 {
 	int mask;
 	byte b;
@@ -424,8 +424,7 @@ do_clear:;
 	cost = CheckRoadSlope(ti.tileh, &pieces, existing);
 	if (cost == CMD_ERROR) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
 
-	// the AI is not allowed to used foundationed tiles.
-	if (cost && (_is_ai_player || !_patches.build_on_slopes))
+	if (cost && (!_patches.build_on_slopes || (!_patches.ainew_active && _is_ai_player)))
 		return CMD_ERROR;
 
 	if (!(ti.type == MP_STREET && (ti.map5 & 0xF0) == 0)) {
@@ -600,7 +599,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (ti.tileh != 0) {
-		if (_is_ai_player || !_patches.build_on_slopes || (ti.tileh & 0x10 || !((0x4C >> p1) & ti.tileh) ))
+		if (!_patches.build_on_slopes || (ti.tileh & 0x10 || !((0x4C >> p1) & ti.tileh) ))
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
@@ -696,7 +695,7 @@ typedef struct DrawRoadSeqStruct {
 #include "table/road_land.h"
 
 
-static uint GetRoadFoundation(uint tileh, uint bits) {
+uint GetRoadFoundation(uint tileh, uint bits) {
 	int i;
 	// normal level sloped building
 	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0)

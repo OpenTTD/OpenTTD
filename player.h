@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "aystar.h"
+
 typedef struct PlayerEconomyEntry {
 	int32 income;
 	int32 expenses;
@@ -62,6 +64,74 @@ typedef struct PlayerAI {
 	byte banned_val[16];
 } PlayerAI;
 
+typedef struct Ai_PathFinderInfo {
+	TileIndex start_tile_tl; // tl = top-left
+	TileIndex start_tile_br; // br = bottom-right
+	TileIndex end_tile_tl; // tl = top-left
+	TileIndex end_tile_br; // br = bottom-right
+	byte start_direction; // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	byte end_direction; // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+
+	TileIndex route[500];
+	byte route_extra[500]; // Some extra information about the route like bridge/tunnel
+	int route_length;
+	int position; // Current position in the build-path, needed to build the path
+	
+	bool rail_or_road; // true = rail, false = road
+} Ai_PathFinderInfo;
+
+typedef struct PlayerAiNew {
+	uint8 state;
+	uint tick;
+	uint idle;
+	
+	int temp; 	// A value used in more then one function, but it just temporary
+				// The use is pretty simple: with this we can 'think' about stuff
+				//   in more then one tick, and more then one AI. A static will not
+				//   do, because they are not saved. This way, the AI is almost human ;)
+	int counter; 	// For the same reason as temp, we have counter. It can count how
+					//  long we are trying something, and just abort if it takes too long
+	
+	// Pathfinder stuff
+	Ai_PathFinderInfo path_info;
+	AyStar *pathfinder;
+	
+	// Route stuff
+	
+	byte cargo;
+	byte tbt; // train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
+	int new_cost;
+	
+	byte action;
+	
+	uint last_id; // here is stored the last id of the searched city/industry
+	
+	TileIndex from_tile;
+	TileIndex to_tile;
+	
+	byte from_direction;
+	byte to_direction;
+	
+	bool from_deliver; // True if this is the station that GIVES cargo
+	bool to_deliver;
+	
+	TileIndex depot_tile;
+	byte depot_direction;
+	
+	byte amount_veh; // How many vehicles we are going to build in this route
+	byte cur_veh; // How many vehicles did we bought?
+	VehicleID veh_id; // Used when bought a vehicle
+	VehicleID veh_main_id; // The ID of the first vehicle, for shared copy
+	
+	int from_ic; // ic = industry/city. This is the ID of them
+	byte from_type; // AI_NO_TYPE/AI_CITY/AI_INDUSTRY
+	int to_ic;
+	byte to_type;
+	
+} PlayerAiNew;
+
+
+
 typedef struct Player {
 	uint32 name_2;
 	uint16 name_1;
@@ -99,6 +169,7 @@ typedef struct Player {
 	bool is_active;
 	byte is_ai;
 	PlayerAI ai;
+	PlayerAiNew ainew;
 	
 	int64 yearly_expenses[3][13];
 	PlayerEconomyEntry cur_economy;

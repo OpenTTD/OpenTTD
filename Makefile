@@ -434,7 +434,8 @@ ttd_SOURCES = \
 	texteff.c town_cmd.c town_gui.c train_cmd.c train_gui.c tree_cmd.c \
 	ttd.c tunnelbridge_cmd.c unmovable_cmd.c vehicle.c viewport.c \
 	water_cmd.c widget.c window.c minilzo.c screenshot.c settings.c rev.c \
-	grfspecial.c terraform_gui.c network_gui.c
+	grfspecial.c terraform_gui.c network_gui.c aystar.c queue.c \
+	ai_new.c ai_build.c ai_pathfinder.c ai_shared.c
 
 ifdef WITH_SDL
 ttd_SOURCES += sdl.c

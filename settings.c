@@ -874,6 +874,8 @@ static const SettingDesc patch_settings[] = {
 
 	{"wait_oneway_signal", SDT_UINT8, (void*)15, (void*)offsetof(Patches, wait_oneway_signal)},
 	{"wait_twoway_signal", SDT_UINT8, (void*)41, (void*)offsetof(Patches, wait_twoway_signal)},
+	
+	{"ainew_active", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ainew_active)},
 
 	{"drag_signals_density", SDT_UINT8, (void*)4, (void*)offsetof(Patches, drag_signals_density)},
 
