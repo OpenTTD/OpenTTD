@@ -1572,15 +1572,17 @@ static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 	SignalVehicleCheckStruct *dest = data;
 	TileIndex tile;
 
+	if (v->type != VEH_Train)
+		return NULL;
+
 	/* Find the tile outside the tunnel, for signalling */
-	if (v->u.rail.track == 0x40) {
+	if (v->u.rail.track == 0x40)
 		tile = GetVehicleOutOfTunnelTile(v);
-	} else {
+	else
 		tile = v->tile;
-	}
 
 	/* Wrong tile, or no train? Not a match */
-	if (tile != dest->tile || v->type != VEH_Train)
+	if (tile != dest->tile)
 		return NULL;
 
 	/* Are we on the same piece of track? */
