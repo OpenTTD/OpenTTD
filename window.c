@@ -244,7 +244,7 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 	if (w != NULL) {
 		w->flags4 |= WF_WHITE_BORDER_MASK;
 		SetWindowDirty(w);
-		BringWindowToFront(w);
+		w = BringWindowToFront(w);
 	}
 
 	return w;
