@@ -46,13 +46,13 @@ uint GetTileSlope(uint tile, int *h)
 	uint a,b,c,d,min;
 	int r;
 
+	assert(tile < MapSize());
+
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
 		if (h)
 			*h = 0;
 		return 0;
 	}
-
-	assert(tile < MapSize() && TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
 	min = a = TileHeight(tile);
 	b = TileHeight(tile + TILE_XY(1,0));
