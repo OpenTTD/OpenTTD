@@ -16,7 +16,7 @@
 #include "network_client.h"
 #endif
 
-static void DoShowPlayerFinances(int player, bool small);
+static void DoShowPlayerFinances(int player, bool show_small);
 
 
 static void DrawPlayerEconomyStats(Player *p, byte mode)
@@ -210,12 +210,12 @@ static const WindowDesc * const desc_table[2*2] = {
 	&_other_player_finances_desc,&_other_player_finances_small_desc,
 };
 
-static void DoShowPlayerFinances(int player, bool small)
+static void DoShowPlayerFinances(int player, bool show_small)
 {
 	Window *w;
 	int mode;
 
-	mode = ((byte)player != _local_player)*2 + small;
+	mode = ((byte)player != _local_player)*2 + show_small;
 	w = AllocateWindowDescFront( desc_table[mode], player);
 	if (w) {
 		w->caption_color = w->window_number;
