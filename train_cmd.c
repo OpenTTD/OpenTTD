@@ -524,15 +524,20 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v, *u;
 	byte unit_num;
 	Engine *e;
-	uint tile;
+	uint tile = TILE_FROM_XY(x,y);
 
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
+
+	/* NOTE: The AI sends build engine commands without DC_EXEC to figure out if
+	it can affort an engine before trying to buy it*/
+	if (!IsTrainDepotTile((TileIndex)tile) && flags & DC_EXEC) return CMD_ERROR;
+
+	if (_map_owner[tile] != _current_player && flags & DC_EXEC) return CMD_ERROR;
 
 	_cmd_build_rail_veh_var1 = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	tile = TILE_FROM_XY(x,y);
 	rvi = RailVehInfo(p1);
 
 	if (rvi->flags & RVI_WAGON) {
