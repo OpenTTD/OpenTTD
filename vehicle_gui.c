@@ -246,30 +246,29 @@ int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 
 int CDECL VehicleCargoSorter(const void *a, const void *b)
 {
-	// FIXME - someone write a normal cargo sorter that also works by cargo_cap,
-	// FIXME - since I seem to be unable to do so :S
 	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
 	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	const Vehicle *v;
 	int r = 0;
 	int i;
-	byte _cargo_counta[NUM_CARGO];
-	byte _cargo_countb[NUM_CARGO];
+	uint _cargo_counta[NUM_CARGO];
+	uint _cargo_countb[NUM_CARGO];
 	memset(_cargo_counta, 0, sizeof(_cargo_counta));
 	memset(_cargo_countb, 0, sizeof(_cargo_countb));
 
-	do {
-		_cargo_counta[va->cargo_type]++;
-	} while ( (va = va->next) != NULL);
+	for (v = va; v != NULL; v = v->next)
+		_cargo_counta[v->cargo_type] += v->cargo_cap;
 
-	do {
-		_cargo_countb[vb->cargo_type]++;
-	} while ( (vb = vb->next) != NULL);
+	for (v = vb; v != NULL; v = v->next)
+		_cargo_countb[v->cargo_type] += v->cargo_cap;
 
 	for (i = 0; i < NUM_CARGO; i++) {
 		r = _cargo_counta[i] - _cargo_countb[i];
 		if (r != 0)
 			break;
 	}
+
+	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
 	return (_internal_sort_order & 1) ? -r : r;
 }
