@@ -23,11 +23,11 @@ void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 	byte *sp = (byte*)s;
 
 	assert(h >= 0);
-	if (h != 0) do {
+	for (; h != 0; --h) {
 		memcpy(dp, sp, w);
 		dp += dpitch;
 		sp += spitch;
-	} while (--h);
+	}
 }
 
 
