@@ -623,7 +623,7 @@ bool NetworkListen(void)
 
 	port = _network_server_port;
 
-	DEBUG(net, 1) ("[NET] Listening on port %d", port);
+	DEBUG(net, 1) ("[NET] Listening on %s:%d", _network_server_bind_ip_host, port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET) {
@@ -652,7 +652,7 @@ bool NetworkListen(void)
 	}
 
 	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = 0;
+	sin.sin_addr.s_addr = _network_server_bind_ip;
 	sin.sin_port = htons(port);
 
 	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
@@ -841,13 +841,17 @@ bool NetworkServerStart(void)
 {
 	if (!_network_available) return false;
 
+	/* Call the pre-scripts */
+	IConsoleCmdExec("exec scripts/pre_server.scr 0");
+	if (_network_dedicated) IConsoleCmdExec("exec scripts/pre_dedicated.scr 0");
+
 	NetworkInitialize();
 	if (!NetworkListen())
 		return false;
 
 	// Try to start UDP-server
 	_network_udp_server = true;
-	_network_udp_server = NetworkUDPListen(0, _network_server_port);
+	_network_udp_server = NetworkUDPListen(_network_server_bind_ip, _network_server_port);
 
 	_network_server = true;
 	_networking = true;
@@ -1156,6 +1160,11 @@ void NetworkStartUp(void)
 	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
+
+	/* Load the ip from the openttd.cfg */
+	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);
+	/* And put the data back in it in case it was an invalid ip */
+	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 
 	/* Generate an unique id when there is none yet */
 	if (_network_unique_id[0] == '\0')

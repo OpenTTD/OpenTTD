@@ -1005,7 +1005,7 @@ void ConsoleSetPatchSetting(char *name, char *value)
 
 	/* We did not found the patch setting */
 	if (!found) {
-		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch settings", name);
+		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch setting", name);
 		return;
 	}
 
@@ -1063,7 +1063,7 @@ void ConsoleGetPatchSetting(char *name)
 
 	/* We did not found the patch setting */
 	if (!found) {
-		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch settings", name);
+		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch setting", name);
 		return;
 	}
 

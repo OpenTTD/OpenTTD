@@ -182,7 +182,7 @@ bool NetworkUDPListen(uint32 host, uint16 port)
 	sin.sin_port = htons(port);
 
 	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 1) ("[NET][UDP] error: bind failed on port %i", port);
+		DEBUG(net, 1) ("[NET][UDP] error: bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
 		return false;
 	}
 
@@ -200,7 +200,7 @@ bool NetworkUDPListen(uint32 host, uint16 port)
 	else
 		_udp_client_socket = udp;
 
-	DEBUG(net, 1)("[NET][UDP] Listening on port %d", port);
+	DEBUG(net, 1)("[NET][UDP] Listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
 
 	return true;
 }

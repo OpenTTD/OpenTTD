@@ -657,8 +657,8 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
-	// setting the server name
-	if (strcmp(argv[1],"port") == 0) {
+	// setting the server port
+	if (strcmp(argv[1],"server_port") == 0) {
 		if (argc == 3 && atoi(argv[2]) != 0) {
 			_network_server_port = atoi(argv[2]);
 			IConsolePrintF(_iconsole_color_warning, "Server-port changed to '%d'", _network_server_port);
@@ -670,7 +670,22 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
-#endif
+	// setting the server ip
+	if (strcmp(argv[1],"server_bind_ip") == 0 || strcmp(argv[1],"server_ip_bind") == 0 ||
+			strcmp(argv[1],"server_ip") == 0 || strcmp(argv[1],"server_bind") == 0) {
+		if (argc == 3) {
+			_network_server_bind_ip = inet_addr(argv[2]);
+			snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+			IConsolePrintF(_iconsole_color_warning, "Server-bind-ip changed to '%s'", _network_server_bind_ip_host);
+			IConsolePrintF(_iconsole_color_warning, "Changes will take effect the next time you start a server.");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current server-bind-ip is '%s'", _network_server_bind_ip_host);
+			IConsolePrint(_iconsole_color_warning, "Usage: set server_bind_ip <ip>.");
+		}
+		return NULL;
+	}
+
+#endif /* ENABLE_NETWORK */
 
 	// Patch-options
 	if (strcmp(argv[1],"patch") == 0) {
@@ -688,7 +703,17 @@ DEF_CONSOLE_CMD(ConSet) {
 	}
 
 
-	IConsolePrintF(_iconsole_color_error,"Unknown setting");
+	IConsolePrint(_iconsole_color_error, "Unknown setting");
+	IConsolePrint(_iconsole_color_error, "Known settings are:");
+#ifdef ENABLE_NETWORK
+	IConsolePrint(_iconsole_color_error, " - server_pw \"<password>\"");
+	IConsolePrint(_iconsole_color_error, " - company_pw \"<password>\"");
+	IConsolePrint(_iconsole_color_error, " - name \"<playername>\"");
+	IConsolePrint(_iconsole_color_error, " - servername \"<name>\"");
+	IConsolePrint(_iconsole_color_error, " - server_port <port>");
+	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
+#endif /* ENABLE_NETWORK */
+	IConsolePrint(_iconsole_color_error, " - patch <patch_name> [<value>]");
 
 	return NULL;
 }

@@ -138,6 +138,11 @@ VARDEF uint16 _network_game_count;
 VARDEF uint16 _network_lobby_company_count;
 
 VARDEF uint _network_server_port;
+/* We use bind_ip and bind_ip_host, where bind_ip_host is the readable form of
+    bind_ip_host, and bind_ip the numeric value, because we want a nice number
+    in the openttd.cfg, but we wants to use the uint32 internally.. */
+VARDEF uint32 _network_server_bind_ip;
+VARDEF char _network_server_bind_ip_host[NETWORK_HOSTNAME_LENGTH];
 VARDEF bool _is_network_server; // Does this client wants to be a network-server?
 VARDEF char _network_server_name[NETWORK_NAME_LENGTH];
 
