@@ -168,7 +168,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->next = NULL;
 	v->next_hash = 0xffff;
 	v->string_id = 0;
-	v->random_bits = RandomRange(256);
+	v->random_bits = InteractiveRandomRange(256);
 	return v;
 }
 
