@@ -19,11 +19,11 @@
 #include "network_data.h"
 
 // get a mask of the allowed currencies depending on the year
-uint GetMaskOfAllowedCurrencies()
+uint GetMaskOfAllowedCurrencies(void)
 {
 	int i;
 	uint mask = 0;
-	for(i=0; i!=lengthof(_currency_specs); i++) {
+	for (i = 0; i != lengthof(_currency_specs); i++) {
 		uint16 to_euro = _currency_specs[i].to_euro;
 		if (i == 23) mask |= (1 << 23); // always allow custom currency
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-1920)) continue;
@@ -33,7 +33,7 @@ uint GetMaskOfAllowedCurrencies()
 	return mask;
 }
 
-void CheckSwitchToEuro()
+void CheckSwitchToEuro(void)
 {
 	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&

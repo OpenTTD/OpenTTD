@@ -1185,7 +1185,7 @@ void UpdateExclusiveRights()
 	*/
 }
 
-byte covert_currency[] = {
+byte convert_currency[] = {
 	 0,  1, 12,  8,  3,
 	10, 14, 19,  4,  5,
 	 9, 11, 13,  6, 17,
@@ -1195,7 +1195,7 @@ byte covert_currency[] = {
 // since savegame version 4.2 the currencies are arranged differently
 void UpdateCurrencies()
 {
-	_opt.currency = covert_currency[_opt.currency];
+	_opt.currency = convert_currency[_opt.currency];
 }
 
 extern void UpdateOldAircraft();
