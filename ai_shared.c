@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
-#include "player.h"
 #include "ai.h"
+#include "vehicle.h"
 
 int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c) {
 	// 0 = vert
@@ -79,4 +79,39 @@ int AiNew_GetDirection(uint tile_a, uint tile_b) {
 	if (GET_TILE_X(tile_a) < GET_TILE_X(tile_b)) return 2;
 	return 0;
 }
- 
+
+// This functions looks up if this vehicle is special for this AI
+//  and returns his flag
+uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v) {
+	int i;
+	for (i=0;i<AI_MAX_SPECIAL_VEHICLES;i++) {
+		if (p->ainew.special_vehicles[i].veh_id == v->index) {
+			return p->ainew.special_vehicles[i].flag;
+		}
+	}
+
+	// Not found :(
+	return 0;
+}
+
+bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag) {
+	int i, new_id = -1;
+	for (i=0;i<AI_MAX_SPECIAL_VEHICLES;i++) {
+		if (p->ainew.special_vehicles[i].veh_id == v->index) {
+			p->ainew.special_vehicles[i].flag |= flag;
+			return true;
+		}
+		if (new_id == -1 && p->ainew.special_vehicles[i].veh_id == 0 &&
+			p->ainew.special_vehicles[i].flag == 0)
+			new_id = i;
+	}
+
+	// Out of special_vehicle spots :s
+	if (new_id == -1) {
+		DEBUG(ai, 1)("special_vehicles list is too small :(");
+		return false;
+	}
+	p->ainew.special_vehicles[new_id].veh_id = v->index;
+	p->ainew.special_vehicles[new_id].flag = flag;
+	return true;
+}

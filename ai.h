@@ -10,7 +10,7 @@
  *   This can also alter the AI in a negative way. I will never claim these settings
  *   are perfect, but don't change them if you don't know what the effect is.
  */
- 
+
 // How many times it the H multiplied. The higher, the more it will go straight to the
 //   end point. The lower, how more it will find the route with the lowest cost.
 //   also: the lower, the longer it takes before route is calculated..
@@ -136,10 +136,28 @@
 // How many thick between building 2 vehicles
 #define AI_BUILD_VEHICLE_TIME_BETWEEN 74
 
+// How many days must there between vehicle checks
+//  The more often, the less non-money-making lines there will be
+//   but the unfair it may seem to a human player
+#define AI_DAYS_BETWEEN_VEHICLE_CHECKS 30
+
+// How money profit does a vehicle needs to make to stay in order
+//  This is the profit of this year + profit of last year
+//  But also for vehicles that are just one year old. In other words:
+//   Vehicles of 2 years do easier meet this setting then vehicles
+//   of one year. This is a very good thing. New vehicles are filtered,
+//   while old vehicles stay longer, because we do get less in return.
+#define AI_MINIMUM_ROUTE_PROFIT 1000
+
+// A vehicle is considered lost when he his cargo is more then 180 days old
+#define AI_VEHICLE_LOST_DAYS 180
+
+// How many times may the AI try to find a route before it gives up
+#define AI_MAX_TRIES_FOR_SAME_ROUTE 8
+
 /*
  * End of defines
  */
-
 
 // This stops 90degrees curves
 static const byte _illegal_curves[6] = {
@@ -174,6 +192,7 @@ enum {
     AI_STATE_GIVE_ORDERS,
     AI_STATE_START_VEHICLE,
     AI_STATE_REPAY_MONEY,
+	AI_STATE_CHECK_ALL_VEHICLES,
     AI_STATE_ACTION_DONE,
     AI_STATE_STOP, // Temporary function to stop the AI
 };
@@ -190,6 +209,7 @@ enum {
 	AI_ACTION_BUS_ROUTE,
 	AI_ACTION_TRUCK_ROUTE,
 	AI_ACTION_REPAY_LOAN,
+	AI_ACTION_CHECK_ALL_VEHICLES,
 };
 
 // Used for from_type/to_type
@@ -197,6 +217,12 @@ enum {
     AI_NO_TYPE = 0,
 	AI_CITY,
 	AI_INDUSTRY,
+};
+
+// Flags for in the vehicle
+enum {
+	AI_VEHICLEFLAG_SELL = 1,
+	// Remember, flags must be in power of 2
 };
 
 #define AI_NO_CARGO 0xFF // Means that there is no cargo defined yet (used for industry)
@@ -229,6 +255,8 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c);
 int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c);
 int AiNew_GetDirection(uint tile_a, uint tile_b);
+bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag);
+uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v);
 
 // ai_build.c
 bool AiNew_Build_CompanyHQ(Player *p, uint tile);

@@ -187,7 +187,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
    					// This problem only is valid for tunnels:
        				// When the last tile was not yet a tunnel, check if we enter from the right side..
        				if (!IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE) && (_map5[current->path.node.tile + _tiles_around[i]] & 0x80) == 0) {
-       					if ((i^2) != (_map5[current->path.node.tile + _tiles_around[i]] & 3)) continue;
+       					if (i != (_map5[current->path.node.tile + _tiles_around[i]] & 3)) continue;
        				}
        			}
        		}

@@ -31,7 +31,7 @@ static void AiNew_State_FirstTime(Player *p) {
     //   With this assert, that problem can never happen.
     assert(p->ainew.state == AI_STATE_FIRST_TIME);
 	// We first have to init some things
-	
+
 	if (_current_player == 1) {
 		ShowErrorMessage(-1, TEMP_AI_IN_PROGRESS, 0, 0);
 	}
@@ -44,8 +44,9 @@ static void AiNew_State_FirstTime(Player *p) {
     p->ainew.path_info.end_tile_tl = 0;
     p->ainew.path_info.end_tile_br = 0;
 	p->ainew.pathfinder = new_AyStar_AiPathFinder(12, &p->ainew.path_info);
-	
+
 	p->ainew.idle = 0;
+	p->ainew.last_vehiclecheck_date = _date;
 
 	// We ALWAYS start with a bus route.. just some basic money ;)
 	p->ainew.action = AI_ACTION_BUS_ROUTE;
@@ -92,19 +93,23 @@ static void AiNew_State_WakeUp(Player *p) {
 		//  so we do not change any status
 		return;
 	}
-	
+
 	money = p->player_money - AI_MINIMUM_MONEY;
-	
+
 	// Let's pick an action!
 	if (p->ainew.action == AI_ACTION_NONE) {
 		c = Random() & 0xFF;
 		if (p->current_loan > 0 && p->old_economy[1].income > AI_MINIMUM_INCOME_FOR_LOAN &&
   			c < 10) {
   			p->ainew.action = AI_ACTION_REPAY_LOAN;
+		} else if (p->ainew.last_vehiclecheck_date + AI_DAYS_BETWEEN_VEHICLE_CHECKS < _date) {
+			// Check all vehicles once in a while
+			p->ainew.action = AI_ACTION_CHECK_ALL_VEHICLES;
+			p->ainew.last_vehiclecheck_date = _date;
 		} else if (c < 100 && !_patches.ai_disable_veh_roadveh) {
 			// Do we have any spots for road-vehicles left open?
 			if (GetFreeUnitNumber(VEH_Road) <= _patches.max_roadveh) {
-				if (c < 65) p->ainew.action = AI_ACTION_TRUCK_ROUTE;
+				if (c < 85) p->ainew.action = AI_ACTION_TRUCK_ROUTE;
 				else p->ainew.action = AI_ACTION_BUS_ROUTE;
 			}
 		}/* else if (c < 200 && !_patches.ai_disable_veh_train) {
@@ -112,14 +117,21 @@ static void AiNew_State_WakeUp(Player *p) {
 				p->ainew.action = AI_ACTION_TRAIN_ROUTE;
 			}
 		}*/
+
+		p->ainew.counter = 0;
 	}
-	
+
+	if (p->ainew.counter++ > AI_MAX_TRIES_FOR_SAME_ROUTE) {
+		p->ainew.action = AI_ACTION_NONE;
+		return;
+	}
+
 	if (_patches.ai_disable_veh_roadveh && (
 		p->ainew.action == AI_ACTION_BUS_ROUTE || p->ainew.action == AI_ACTION_TRUCK_ROUTE)) {
 		p->ainew.action = AI_ACTION_NONE;
 		return;
 	}
-	
+
 	if (_patches.ai_disable_veh_roadveh && (
 		p->ainew.action == AI_ACTION_BUS_ROUTE || p->ainew.action == AI_ACTION_TRUCK_ROUTE)) {
 		p->ainew.action = AI_ACTION_NONE;
@@ -131,7 +143,12 @@ static void AiNew_State_WakeUp(Player *p) {
 		p->ainew.state = AI_STATE_REPAY_MONEY;
 		return;
 	}
-	
+
+	if (p->ainew.action == AI_ACTION_CHECK_ALL_VEHICLES) {
+		p->ainew.state = AI_STATE_CHECK_ALL_VEHICLES;
+		return;
+	}
+
 	// It is useless to start finding a route if we don't have enough money
 	//  to build the route anyway..
 	if (p->ainew.action == AI_ACTION_BUS_ROUTE && money > AI_MINIMUM_BUS_ROUTE_MONEY) {
@@ -155,7 +172,7 @@ static void AiNew_State_WakeUp(Player *p) {
 		p->ainew.tbt = AI_TRUCK;
 		return;
 	}
-	
+
 	p->ainew.state = AI_STATE_NOTHING;
 }
 
@@ -171,16 +188,16 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 		Station *st;
 		int count = 0;
 		int j = 0;
-		
+
 		// We don't like roadconstructions, don't even true such a city
 		if (t->road_build_months != 0) return false;
-		
+
 		// Check if the rating in a city is high enough
 		//  If not, take a chance if we want to continue
 		if (t->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
-		
+
 		if (t->max_pass - t->act_pass < AI_CHECKCITY_NEEDED_CARGO && !CHANCE16(1,AI_CHECKCITY_CITY_CHANCE)) return false;
-		
+
 		// Check if we have build a station in this town the last 6 months
 		//  else we don't do it. This is done, because stat updates can be slow
 		//  and sometimes it takes up to 4 months before the stats are corectly.
@@ -219,12 +236,12 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 				return false;
 			}
 		}
-		
+
 		// We are about to add one...
 		count++;
 		// Check if we the city can provide enough cargo for this amount of stations..
 		if (count * AI_CHECKCITY_CARGO_PER_STATION > t->max_pass) return false;
-		
+
 		// All check are okay, so we can build here!
 		return true;
 	}
@@ -233,15 +250,15 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 		Station *st;
 		int count = 0;
 		int j = 0;
-		
+
 		if (i->town != NULL && i->town->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
-		
+
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
 		if (i->produced_cargo[0] == 0xFF || i->total_production[0] == 0) return true;
 
 		if (i->total_production[0] - i->total_transported[0] < AI_CHECKCITY_NEEDED_CARGO) return false;
-		
+
 		// Check if we have build a station in this town the last 6 months
 		//  else we don't do it. This is done, because stat updates can be slow
 		//  and sometimes it takes up to 4 months before the stats are corectly.
@@ -288,7 +305,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 		// All check are okay, so we can build here!
 		return true;
 	}
-	
+
 	return true;
 }
 
@@ -296,14 +313,14 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 static void AiNew_State_LocateRoute(Player *p) {
     assert(p->ainew.state == AI_STATE_LOCATE_ROUTE);
     // For now, we only support PASSENGERS, CITY and BUSSES
-    
+
     // We don't have a route yet
     if (p->ainew.cargo == AI_NEED_CARGO) {
     	p->ainew.new_cost = 0; // No cost yet
     	p->ainew.temp = -1;
     	// Reset the counter
     	p->ainew.counter = 0;
-    	
+
     	p->ainew.from_ic = -1;
     	p->ainew.to_ic = -1;
    	    if (p->ainew.tbt == AI_BUS) {
@@ -323,7 +340,7 @@ static void AiNew_State_LocateRoute(Player *p) {
     	// Now we are doing initing, we wait one tick
     	return;
     }
-    
+
     // Increase the counter and abort if it is taking too long!
     p->ainew.counter++;
     if (p->ainew.counter > AI_LOCATE_ROUTE_MAX_COUNTER) {
@@ -331,7 +348,7 @@ static void AiNew_State_LocateRoute(Player *p) {
     	p->ainew.state = AI_STATE_NOTHING;
     	return;
     }
-    
+
     // We are going to locate a city from where we are going to connect
     if (p->ainew.from_ic == -1) {
         if (p->ainew.temp == -1) {
@@ -341,7 +358,7 @@ static void AiNew_State_LocateRoute(Player *p) {
        		else
         		p->ainew.temp = RandomRange(_total_industries);
         }
-        
+
     	if (!AiNew_Check_City_or_Industry(p, p->ainew.temp, p->ainew.from_type)) {
     		// It was not a valid city
     		//  increase the temp with one, and return. We will come back later here
@@ -352,22 +369,22 @@ static void AiNew_State_LocateRoute(Player *p) {
         	} else {
         		if (p->ainew.temp >= _total_industries) p->ainew.temp = 0;
         	}
-        	
+
         	// Don't do an attempt if we are trying the same id as the last time...
         	if (p->ainew.last_id == p->ainew.temp) return;
         	p->ainew.last_id = p->ainew.temp;
-        	
+
     		return;
     	}
-    	
+
     	// We found a good city/industry, save the data of it
     	p->ainew.from_ic = p->ainew.temp;
-    	
+
     	// Start the next tick with finding a to-city
     	p->ainew.temp = -1;
     	return;
     }
-    
+
     // Find a to-city
     if (p->ainew.temp == -1) {
        	// First, we pick a random spot to search to
@@ -376,16 +393,16 @@ static void AiNew_State_LocateRoute(Player *p) {
        	else
        		p->ainew.temp = RandomRange(_total_industries);
 	}
-	
+
 	// The same city is not allowed
 	// Also check if the city is valid
    	if (p->ainew.temp != p->ainew.from_ic && AiNew_Check_City_or_Industry(p, p->ainew.temp, p->ainew.to_type)) {
    		// Maybe it is valid..
-   		
+
    		// We need to know if they are not to far apart from eachother..
    		// We do that by checking how much cargo we have to move and how long the route
    		//   is.
-   		
+
    		if (p->ainew.from_type == AI_CITY && p->ainew.tbt == AI_BUS) {
    			int max_cargo = DEREF_TOWN(p->ainew.from_ic)->max_pass + DEREF_TOWN(p->ainew.temp)->max_pass;
    			max_cargo -= DEREF_TOWN(p->ainew.from_ic)->act_pass + DEREF_TOWN(p->ainew.temp)->act_pass;
@@ -400,7 +417,7 @@ static void AiNew_State_LocateRoute(Player *p) {
 
    				p->ainew.from_tile = 0;
    				p->ainew.to_tile = 0;
-   				
+
    				return;
    			}
    		} else if (p->ainew.tbt == AI_TRUCK) {
@@ -469,7 +486,7 @@ static void AiNew_State_LocateRoute(Player *p) {
     } else {
     	if (p->ainew.temp >= _total_industries) p->ainew.temp = 0;
     }
-    
+
    	// Don't do an attempt if we are trying the same id as the last time...
    	if (p->ainew.last_id == p->ainew.temp) return;
    	p->ainew.last_id = p->ainew.temp;
@@ -513,7 +530,7 @@ static void AiNew_State_FindStation(Player *p) {
     Town *town = NULL;
     Industry *industry = NULL;
     assert(p->ainew.state == AI_STATE_FIND_STATION);
-    
+
     if (p->ainew.from_tile == 0) {
         // First we scan for a station in the from-city
         if (p->ainew.from_type == AI_CITY) {
@@ -626,11 +643,11 @@ static void AiNew_State_FindStation(Player *p) {
 	     		best = found_best[x];
 	    	}
 	    }
-    
+
 		// See how much it is going to cost us...
 		r = AiNew_Build_Station(p, p->ainew.tbt, new_tile, 0, 0, 0, DC_QUERY_COST);
 		p->ainew.new_cost += r;
-		
+
 		direction = AI_PATHFINDER_NO_DIRECTION;
 	} else if (new_tile == 0 && p->ainew.tbt == AI_TRUCK) {
 		// Truck station locater works differently.. a station can be on any place
@@ -659,7 +676,7 @@ static void AiNew_State_FindStation(Player *p) {
 static void AiNew_State_FindPath(Player *p) {
     int r;
     assert(p->ainew.state == AI_STATE_FIND_PATH);
-    
+
     // First time, init some data
     if (p->ainew.temp == -1) {
     	// Init path_info
@@ -683,18 +700,18 @@ static void AiNew_State_FindPath(Player *p) {
 	   	    p->ainew.path_info.end_tile_br = p->ainew.to_tile;
 	   	    p->ainew.path_info.end_direction = p->ainew.to_direction;
 	   	}
-    
+
 		if (p->ainew.tbt == AI_TRAIN)
 			p->ainew.path_info.rail_or_road = true;
 	   	else
    			p->ainew.path_info.rail_or_road = false;
-   			
+
 		// First, clean the pathfinder with our new begin and endpoints
         clean_AyStar_AiPathFinder(p->ainew.pathfinder, &p->ainew.path_info);
-   			
+
    		p->ainew.temp = 0;
 	}
-	
+
     // Start the pathfinder
 	r = p->ainew.pathfinder->main(p->ainew.pathfinder);
 	// If it return: no match, stop it...
@@ -725,7 +742,7 @@ static void AiNew_State_FindDepot(Player *p) {
 	assert(p->ainew.state == AI_STATE_FIND_DEPOT);
 
 	p->ainew.depot_tile = 0;
-	
+
 	for (i=2;i<p->ainew.path_info.route_length-2;i++) {
 		tile = p->ainew.path_info.route[i];
 		for (j=0;j<lengthof(_tileoffs_by_dir);j++) {
@@ -747,7 +764,7 @@ static void AiNew_State_FindDepot(Player *p) {
 			}
 		}
 	}
-	
+
 	// This routine let depot finding start in the middle, and work his way to the stations
 	// It makes depot placing nicer :)
 	i = p->ainew.path_info.route_length / 2;
@@ -761,7 +778,7 @@ static void AiNew_State_FindDepot(Player *p) {
 			// Bridge or tunnel.. we can't place a depot there
 			continue;
 		}
-		
+
 		tile = p->ainew.path_info.route[i];
 
 		for (j=0;j<lengthof(_tileoffs_by_dir);j++) {
@@ -835,7 +852,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     		max_cargo = DEREF_INDUSTRY(p->ainew.from_ic)->total_production[0];
     	else
     		max_cargo = DEREF_INDUSTRY(p->ainew.to_ic)->total_production[0];
-    		
+
     	// This is because moving 60% is more then we can dream of!
     	max_cargo *= 0.6;
     	// We want all the cargo to be gone in a month.. so, we know the cargo it delivers
@@ -858,16 +875,16 @@ static int AiNew_HowManyVehicles(Player *p) {
 static void AiNew_State_VerifyRoute(Player *p) {
     int res, i;
     assert(p->ainew.state == AI_STATE_VERIFY_ROUTE);
-    
+
     // Let's calculate the cost of the path..
     //  new_cost already contains the cost of the stations
     p->ainew.path_info.position = -1;
-    
+
     do {
 	    p->ainew.path_info.position++;
 	    p->ainew.new_cost += AiNew_Build_RoutePart(p, &p->ainew.path_info, DC_QUERY_COST);
 	} while (p->ainew.path_info.position != -2);
-	
+
 	// Now we know the price of build station + path. Now check how many vehicles
 	//  we need and what the price for that will be
 	res = AiNew_HowManyVehicles(p);
@@ -878,12 +895,12 @@ static void AiNew_State_VerifyRoute(Player *p) {
 	}
 	p->ainew.amount_veh = res;
 	p->ainew.cur_veh = 0;
-	
+
 	// Check how much it it going to cost us..
 	for (i=0;i<res;i++) {
 		p->ainew.new_cost += AiNew_Build_Vehicle(p, 0, DC_QUERY_COST);
 	}
-	
+
 	// Now we know how much the route is going to cost us
 	//  Check if we have enough money for it!
 	if (p->ainew.new_cost > p->player_money - AI_MINIMUM_MONEY) {
@@ -892,7 +909,7 @@ static void AiNew_State_VerifyRoute(Player *p) {
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
 	}
-	
+
 	// Now we can build the route, check the direction of the stations!
 	if (p->ainew.from_direction == AI_PATHFINDER_NO_DIRECTION) {
 		p->ainew.from_direction = AiNew_GetDirection(p->ainew.path_info.route[p->ainew.path_info.route_length-1], p->ainew.path_info.route[p->ainew.path_info.route_length-2]);
@@ -904,10 +921,10 @@ static void AiNew_State_VerifyRoute(Player *p) {
 		p->ainew.from_tile = p->ainew.path_info.route[p->ainew.path_info.route_length-1];
 	if (p->ainew.to_tile == AI_STATION_RANGE)
 		p->ainew.to_tile = p->ainew.path_info.route[0];
-		
+
 	p->ainew.state = AI_STATE_BUILD_STATION;
 	p->ainew.temp = 0;
-	
+
 	DEBUG(ai,1)("[AiNew] The route is set and buildable.. going to build it!");
 }
 
@@ -952,7 +969,7 @@ static void AiNew_State_BuildPath(Player *p) {
 	//  By let the counter count from AI_BUILDPATH_PAUSE to 0, we have a nice way :)
 	if (--p->ainew.counter != 0) return;
 	p->ainew.counter = (4 - _opt.diff.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
-	
+
 	// Increase the building position
 	p->ainew.path_info.position++;
 	// Build route
@@ -964,7 +981,7 @@ static void AiNew_State_BuildPath(Player *p) {
 			static const byte _roadbits_by_dir[4] = {2,1,8,4};
         	// If they not queue, they have to go up and down to try again at a station...
         	// We don't want that, so try building some road left or right of the station
-        	short dir1, dir2, dir3;
+        	int dir1, dir2, dir3;
         	TileIndex tile;
         	int i, r;
         	for (i=0;i<2;i++) {
@@ -983,11 +1000,11 @@ static void AiNew_State_BuildPath(Player *p) {
             		if (dir2 > 3) dir2 = 0;
             		dir3 = p->ainew.to_direction;
             	}
-            	
+
             	DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
             	DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
             	DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
-            	
+
             	dir1 = _tileoffs_by_dir[dir1];
             	dir2 = _tileoffs_by_dir[dir2];
             	dir3 = _tileoffs_by_dir[dir3];
@@ -1000,21 +1017,21 @@ static void AiNew_State_BuildPath(Player *p) {
 
              	r = CMD_ERROR;
            		if (IS_TILETYPE(tile+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2, MP_TREES))
-           			DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+           			r = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
            		if (r != CMD_ERROR)
            			if (IS_TILETYPE(tile+dir2+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2+dir2, MP_TREES))
            				DoCommandByTile(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 
            		r = CMD_ERROR;
            		if (IS_TILETYPE(tile+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3, MP_TREES))
-           			DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+           			r = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
            		if (r != CMD_ERROR)
            			if (IS_TILETYPE(tile+dir3+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3+dir3, MP_TREES))
            				DoCommandByTile(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
             }
         }
-		
-		
+
+
 		DEBUG(ai,1)("[AiNew] Done building the path (cost: %d)", p->ainew.new_cost);
 		p->ainew.state = AI_STATE_BUILD_DEPOT;
 	}
@@ -1024,7 +1041,7 @@ static void AiNew_State_BuildPath(Player *p) {
 static void AiNew_State_BuildDepot(Player *p) {
 	int res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
-	
+
 	if (IS_TILETYPE(p->ainew.depot_tile, MP_STREET) && _map5[p->ainew.depot_tile] & 0x20) {
 		if (_map_owner[p->ainew.depot_tile] == _current_player) {
 			// The depot is already builded!
@@ -1036,18 +1053,18 @@ static void AiNew_State_BuildDepot(Player *p) {
 			return;
 		}
 	}
-	
+
 	// There is a bus on the tile we want to build road on... idle till he is gone! (BAD PERSON! :p)
 	if (!EnsureNoVehicle(p->ainew.depot_tile + _tileoffs_by_dir[p->ainew.depot_direction]))
 		return;
-	
+
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);
     if (res == CMD_ERROR) {
 		DEBUG(ai,0)("[AiNew - BuildDepot] Strange but true... depot can not be build!");
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
     }
-	
+
 	p->ainew.state = AI_STATE_BUILD_VEHICLE;
 	p->ainew.idle = 1;
 	p->ainew.veh_main_id = (VehicleID)-1;
@@ -1057,7 +1074,7 @@ static void AiNew_State_BuildDepot(Player *p) {
 static void AiNew_State_BuildVehicle(Player *p) {
 	int res;
     assert(p->ainew.state == AI_STATE_BUILD_VEHICLE);
-    
+
     // Check if we need to build a vehicle
     if (p->ainew.amount_veh == 0) {
         // Nope, we are done!
@@ -1070,7 +1087,7 @@ static void AiNew_State_BuildVehicle(Player *p) {
     // It is realistic that the AI can only build 1 vehicle a day..
     // This makes sure of that!
     p->ainew.idle = AI_BUILD_VEHICLE_TIME_BETWEEN;
-    
+
     // Build the vehicle
     res = AiNew_Build_Vehicle(p, p->ainew.depot_tile, DC_EXEC);
     if (res == CMD_ERROR) {
@@ -1095,10 +1112,10 @@ static void AiNew_State_BuildVehicle(Player *p) {
 static void AiNew_State_GiveOrders(Player *p) {
     int order, flags;
     assert(p->ainew.state == AI_STATE_GIVE_ORDERS);
-    
+
     if (p->ainew.veh_main_id != (VehicleID)-1) {
         DoCommandByTile(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
-        
+
         // Skip the first order if it is a second vehicle
         //  This to make vehicles go different ways..
         if (p->ainew.veh_id & 1)
@@ -1108,7 +1125,7 @@ static void AiNew_State_GiveOrders(Player *p) {
     } else {
         p->ainew.veh_main_id = p->ainew.veh_id;
     }
-    
+
     // When more then 1 vehicle, we send them to different directions
     order = 0;
     flags = (_map2[p->ainew.from_tile] << 8) | OT_GOTO_STATION;
@@ -1136,7 +1153,7 @@ static void AiNew_State_GiveOrders(Player *p) {
 // Start the vehicle
 static void AiNew_State_StartVehicle(Player *p) {
 	assert(p->ainew.state == AI_STATE_START_VEHICLE);
-	
+
 	// 3, 2, 1... go! (give START_STOP command ;))
 	DoCommandByTile(0, p->ainew.veh_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 	// Try to build an other vehicle (that function will stop building when needed)
@@ -1149,6 +1166,62 @@ static void AiNew_State_RepayMoney(Player *p) {
     for (i=0;i<AI_LOAN_REPAY;i++)
     	DoCommandByTile(0, _current_player, 0, DC_EXEC, CMD_DECREASE_LOAN);
     p->ainew.state = AI_STATE_ACTION_DONE;
+}
+
+static void AiNew_CheckVehicle(Player *p, Vehicle *v) {
+	// When a vehicle is under the 6 months, we don't check for anything
+	if (v->age < 180) return;
+
+	// When a vehicle is older then 1 year, it should make money...
+	if (v->age > 360) {
+		// If both years together are not more then AI_MINIMUM_ROUTE_PROFIT,
+		//  it is not worth the line I guess...
+		if (v->profit_last_year + v->profit_this_year < AI_MINIMUM_ROUTE_PROFIT ||
+			(v->reliability * 100 >> 16) < 40) {
+			// There is a possibility that the route is fucked up...
+			if (v->cargo_days > AI_VEHICLE_LOST_DAYS) {
+				// The vehicle is lost.. check the route, or else, get the vehicle
+				//  back to a depot
+				// TODO: make this piece of code
+			}
+
+
+			// We are already sending him back
+			if (AiNew_GetSpecialVehicleFlag(p, v) & AI_VEHICLEFLAG_SELL) {
+				if (v->type == VEH_Road && IsRoadDepotTile(v->tile) &&
+					(v->vehstatus&VS_STOPPED)) {
+					// We are at the depot, sell the vehicle
+					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
+				}
+				return;
+			}
+
+			if (!AiNew_SetSpecialVehicleFlag(p, v, AI_VEHICLEFLAG_SELL)) return;
+			{
+				int res = 0;
+				if (v->type == VEH_Road)
+					res = DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
+				// This means we can not find a depot :s
+//				if (res == CMD_ERROR)
+			}
+		}
+	}
+}
+
+// Checks all vehicles if they are still valid and make money and stuff
+static void AiNew_State_CheckAllVehicles(Player *p) {
+	Vehicle *v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == 0) continue;
+		if (v->owner != p->index) continue;
+		// Currently, we only know how to handle road-vehicles
+		if (v->type != VEH_Road) continue;
+
+		AiNew_CheckVehicle(p, v);
+	}
+
+	p->ainew.state = AI_STATE_ACTION_DONE;
 }
 
 // Using the technique simular to the original AI
@@ -1171,6 +1244,7 @@ static AiNew_StateFunction* const _ainew_state[] = {
     AiNew_State_GiveOrders,
     AiNew_State_StartVehicle,
     AiNew_State_RepayMoney,
+	AiNew_State_CheckAllVehicles,
     AiNew_State_ActionDone,
     NULL,
 };
@@ -1184,7 +1258,7 @@ void AiNewDoGameLoop(Player *p) {
     // If it is a human player, it is not an AI, so bubye!
 	if (IS_HUMAN_PLAYER(_current_player))
 		return;
-		
+
 	if (p->ainew.state == AI_STATE_STARTUP) {
 		// The AI just got alive!
 		p->ainew.state = AI_STATE_FIRST_TIME;
@@ -1193,10 +1267,10 @@ void AiNewDoGameLoop(Player *p) {
 		// Only startup the AI
 		return;
 	}
-	
+
 	// We keep a ticker. We use it for competitor_speed
 	p->ainew.tick++;
-	
+
 	// See what the speed is
 	switch (_opt.diff.competitor_speed) {
 		case 0: // Very slow
