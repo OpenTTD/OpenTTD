@@ -484,8 +484,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
 
 		dis = 0;
-		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 8;
-		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 9;
+		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 9;
+		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
 
 		w->disabled_state = dis;
 		DrawWindowWidgets(w);
