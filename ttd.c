@@ -484,6 +484,7 @@ int ttd_main(int argc, char* argv[])
 	uint startdate = -1;
 	_ignore_wrong_grf = false;
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
+	_networking_override=false;
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -496,6 +497,7 @@ int ttd_main(int argc, char* argv[])
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
 		case 'n': {
 				network = 1; 
+				_networking_override=true;
 				if (mgo.opt) {
 					network_conn = mgo.opt; 
 					network++;
@@ -551,14 +553,17 @@ int ttd_main(int argc, char* argv[])
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != -1) _patches.starting_date = startdate;
 
+	// initialize network-core
+	NetworkCoreInit();
+
 	// enumerate language files
 	InitializeLanguagePacks();
 
 	// initialize screenshot formats
 	InitializeScreenshotFormats();
 
-  // initialize airport state machines
-  InitializeAirports();
+	// initialize airport state machines
+	InitializeAirports();
 	
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
@@ -583,25 +588,21 @@ int ttd_main(int argc, char* argv[])
 	if (_opt_mod_ptr->diff_level == 9)
 		SetDifficultyLevel(0, _opt_mod_ptr);
 
-	if (network) {
-		_networking = true;
-		
-		NetworkInitialize(network_conn);
-		if (network==1) {
-			DEBUG(misc, 1) ("Listening on port %d\n", _network_port);
-			NetworkListen(_network_port);
-			_networking_server = true;
-		} else {
-			DEBUG(misc, 1) ("Connecting to %s %d\n", network_conn, _network_port);
-			NetworkConnect(network_conn, _network_port);
+	if ((network) && (_network_available)) {
+		NetworkLobbyInit();
+		if (network_conn!=NULL) {
+			NetworkCoreConnectGame(network_conn,_network_server_port);
+			} else {
+			NetworkCoreConnectGame("auto",_network_server_port);
+			}
 		}
-	}
 
 	while (_video_driver->main_loop() == ML_SWITCHDRIVER) {}
 
-	if (network) {
-		NetworkShutdown();
-	}
+	if (_network_available) {
+		// shutdown network-core
+		NetworkCoreShutdown();
+		}
 
 	_video_driver->stop();
 	_music_driver->stop();
@@ -609,8 +610,8 @@ int ttd_main(int argc, char* argv[])
 
 	SaveToConfig();
 
-  // uninitialize airport state machines
-  UnInitializeAirports();
+	// uninitialize airport state machines
+	UnInitializeAirports();
 
 	return 0;
 }
@@ -774,14 +775,14 @@ static void SwitchMode(int new_mode)
 		break;
 
 	case SM_NEWGAME:
-		if (_networking) { NetworkStartSync(); } // UGLY HACK HACK HACK
+		if (_networking) { NetworkStartSync(true); } // UGLY HACK HACK HACK
 		MakeNewGame();
 		break;
 
 normal_load:
 	case SM_LOAD: { // Load game
 
-		if (_networking) { NetworkStartSync(); } // UGLY HACK HACK HACK
+		if (_networking) { NetworkStartSync(true); } // UGLY HACK HACK HACK
 
 		_error_message = INVALID_STRING_ID;
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
@@ -820,6 +821,10 @@ normal_load:
 
 
 	case SM_MENU: // Switch to game menu
+		
+		if ((_networking) && (!_networking_override)) NetworkCoreDisconnect();
+		_networking_override=false;
+
 		LoadIntroGame();
 		break;
 
@@ -951,10 +956,8 @@ void GameLoop()
 	_timer_counter+=8;
 	CursorTick();
 
-	if (_networking) {
-		NetworkReceive();
-		NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
-	}
+	// incomming packets
+	NetworkCoreLoop(true);
 
 	if (_networking_sync) {
 		// make sure client's time is synched to the server by running frames quickly up to where the server is.
@@ -983,8 +986,8 @@ void GameLoop()
 	MouseLoop();
 
 	// send outgoing packets.
-	if (_networking)
-		NetworkSend();
+	NetworkCoreLoop(false);
+
 
 	if (_game_mode != GM_MENU)
 		MusicLoop();

@@ -121,19 +121,36 @@ int CalcBridgeLenCostFactor(int x);
 typedef void CommandCallback(bool success, uint tile, uint32 p1, uint32 p2);
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
 
-void NetworkConnect(const char *hostname, int port);
 void NetworkReceive();
 void NetworkSend();
 void NetworkProcessCommands();
-void NetworkListen(int port);
-void NetworkInitialize(const char *hostname);
+void NetworkListen();
+void NetworkInitialize();
 void NetworkShutdown();
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
-void NetworkStartSync();
-void NetworkUDPListen(int port);
-void NetworkUDPReceive();
+void NetworkStartSync(bool fcreset);
+void NetworkClose(bool client);
+
 void NetworkIPListInit();
-bool NetworkUDPSearchServer();
+
+void NetworkCoreInit();
+void NetworkCoreShutdown();
+void NetworkCoreDisconnect();
+void NetworkCoreLoop(bool incomming);
+bool NetworkCoreConnectGame(byte* b, unsigned short port);
+bool NetworkCoreStartGame();
+
+void NetworkLobbyShutdown();
+void NetworkLobbyInit();
+
+void NetworkGameListClear();
+char * NetworkGameListAdd();
+void NetworkGameListFromLAN();
+void NetworkGameListFromInternet();
+char * NetworkGameListItem(uint16 index);
+
+void NetworkGameFillDefaults();
+void NetworkGameChangeDate(uint16 newdate);
 
 /* misc_cmd.c */
 void PlaceTreesRandomly();

@@ -542,6 +542,8 @@ void IncreaseDate()
 	/* yeah, increse day counter and call various daily loops */
 	_date++;
 
+	NetworkGameChangeDate(_date);
+
 	_vehicle_id_ctr_day = 0;
 
 	DisasterDailyLoop();

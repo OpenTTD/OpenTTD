@@ -58,7 +58,9 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 				DoCommandP(0, 0, 0, NULL, CMD_SET_SINGLE_PLAYER);
 			break;
 		case 7:
-			ShowNetworkGameWindow();
+			if (!_network_available) {
+				ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else ShowNetworkGameWindow();
 			break;
 		case 8: ShowGameOptions(); break;
 		case 9: ShowGameDifficulty(); break;
@@ -118,7 +120,7 @@ int32 CmdGenRandomNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_random_seed_1 = p1;
 	_random_seed_2 = p2;
 
-	if (_networking) { NetworkStartSync(); }
+	if (_networking) { NetworkStartSync(true); }
 
 	MakeNewGame();
 	return 0;
@@ -159,7 +161,7 @@ int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_random_seed_1 = p1;
 	_random_seed_2 = p2;
 
-	if (_networking) { NetworkStartSync(); }
+	if (_networking) { NetworkStartSync(true); }
 
 	StartScenario();
 	return 0;

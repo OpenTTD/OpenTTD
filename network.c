@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "gui.h"
 #include "command.h"
 #include "player.h"
 
@@ -180,9 +181,10 @@ typedef struct FutureSeeds {
 static FutureSeeds _future_seed[8];
 static int _num_future_seed;
 
-static SOCKET _listensocket;
-static SOCKET _udpsocket;
+static SOCKET _listensocket; // tcp socket
 
+static SOCKET _udp_client_socket; // udp server socket
+static SOCKET _udp_server_socket; // udp client socket
 
 typedef struct UDPPacket {
 	byte command_code;
@@ -194,15 +196,13 @@ typedef struct UDPPacket {
 enum {
 	NET_UDPCMD_SERVERSEARCH = 1,
 	NET_UDPCMD_SERVERACTIVE,
+	NET_UDPCMD_GETSERVERINFO,
+	NET_UDPCMD_SERVERINFO,
 };
 
-uint32 _network_ip_list[10]; // Network ips
-char * _network_detected_serverip = "255.255.255.255"; // UDP Broadcast detected server-ip
-uint32 _network_detected_serverport = 0; // UDP Broadcast detected server-port
+void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet);
 
-void NetworkUDPSend(struct sockaddr_in recv,struct UDPPacket packet);
-
-static bool _network_synced;
+uint32 _network_ip_list[10]; // network ip list
 
 // this is set to point to the savegame
 static byte *_transmit_file;
@@ -210,7 +210,50 @@ static size_t _transmit_file_size;
 
 static FILE *_recv_file;
 
+typedef struct NetworkGameInfo {	
+	char server_name[40]; // name of the game
+	char server_revision[8]; // server game version
+	byte server_lang; // langid
+	byte players_max; // max players allowed on server
+	byte players_on; // current count of players on server
+	uint16 game_date; // current date
+	char game_password[10]; // should fit ... 14 chars
+	char map_name[40]; // map which is played ["random" for a randomized map]
+	uint map_width; // map width / 8
+	uint map_height; // map height / 8
+	byte map_set; // graphical set
+} NetworkGameInfo;
+
+typedef struct NetworkGameList {
+	NetworkGameInfo item;
+	uint32 ip;
+	uint16 port;
+	char * _next;
+} NetworkGameList;
+
+static NetworkGameInfo _network_game;
+static NetworkGameList * _network_game_list = NULL;
+
+/* multi os compatible sleep function */
+void CSleep(int milliseconds) {
+#if defined(WIN32)
+Sleep(milliseconds);
+#endif
+#if defined(UNIX)
+#ifndef __BEOS__ 
+usleep(milliseconds*1000);
+#endif
+#ifdef __BEOS__
+snooze(milliseconds*1000);
+#endif
+#endif
+}
+
 //////////////////////////////////////////////////////////////////////
+
+// ****************************** //
+// * TCP Packets and Handlers   * //
+// ****************************** //
 
 static QueuedCommand *AllocQueuedCommand(CommandQueue *nq)
 {
@@ -471,12 +514,13 @@ static void HandleFilePacket(FilePacketHdr *fp)
 
 		// sync to server.
 		_networking_queuing = false;
-
+		NetworkStartSync(false);
+/*		
 		_networking_sync = true;
 		_frame_counter = 0; // start executing at frame 0.
 		_sync_seed_1 = _sync_seed_2 = 0;
 		_num_future_seed = 0;
-		memset(_my_seed_list, 0, sizeof(_my_seed_list));
+		memset(_my_seed_list, 0, sizeof(_my_seed_list)); */
 
 		if (_network_playas == 0) {
 			// send a command to make a new player
@@ -504,7 +548,7 @@ static void CloseClient(ClientState *cs)
 {
 	Packet *p, *next;
 
-	printf("CloseClient\n");
+	DEBUG(misc,1) ("[NET][TCP] closed client connection");
 
 	assert(cs->socket != INVALID_SOCKET);
 
@@ -522,6 +566,8 @@ static void CloseClient(ClientState *cs)
 		cs++;
 	}
 	cs->socket = INVALID_SOCKET;
+
+	if (_networking_server) _network_game.players_on--;
 
 	_num_clients--;
 }
@@ -683,6 +729,8 @@ static ClientState *AllocClient(SOCKET s)
 	if (_num_clients == MAX_CLIENTS)
 		return NULL;
 
+	if (_networking_server) _network_game.players_on++;
+
 	cs = &_clients[_num_clients++];
 	memset(cs, 0, sizeof(*cs));
 	cs->last = &cs->head;
@@ -779,14 +827,89 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 
 }
 
+// ************************** //
+// * TCP Networking         * //
+// ************************** //
+
+bool NetworkConnect(const char *hostname, int port)
+{
+	SOCKET s;
+	struct sockaddr_in sin;
+	int b;
+
+	DEBUG(misc, 1) ("[NET][TCP] Connecting to %s %d", hostname, port);
+
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	if (s == INVALID_SOCKET) error("socket() failed");
+
+	b = 1;
+	setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));
+	
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = inet_addr(hostname);
+	sin.sin_port = htons(port);
+
+	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
+		NetworkClose(true);
+		return false;
+		}
+
+	// set nonblocking mode for socket..
+	{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
+
+	// in client mode, only the first client field is used. it's pointing to the server.
+	AllocClient(s);
+
+	// queue packets.. because we're waiting for the savegame.
+	_networking_queuing = true;
+	_frame_counter_max = 0;
+
+	return true;
+}
+
+void NetworkListen()
+{
+		
+	SOCKET ls;
+	struct sockaddr_in sin;
+	int port;
+
+	port = _network_server_port;
+
+	DEBUG(misc, 1) ("[NET][TCP] listening on port %d", port);
+
+	ls = socket(AF_INET, SOCK_STREAM, 0);
+	if (ls == INVALID_SOCKET)
+		error("socket() on listen socket failed");
+	
+	// reuse the socket
+	{
+		int reuse = 1; if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1)
+			error("setsockopt() on listen socket failed");
+	}
+
+	// set nonblocking mode for socket
+	{ unsigned long blocking = 1; ioctlsocket(ls, FIONBIO, &blocking); }
+
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = 0;
+	sin.sin_port = htons(port);
+
+	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0)
+		error("bind() failed");
+
+	if (listen(ls, 1) != 0)
+		error("listen() failed");
+
+	_listensocket = ls;
+}
+
 void NetworkReceive()
 {
 	ClientState *cs;
 	int n;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
-
-	NetworkUDPReceive(); // udp handling
 	
 	FD_ZERO(&read_fd);
 	FD_ZERO(&write_fd);
@@ -897,95 +1020,10 @@ void NetworkSend()
 	}
 }
 
-void NetworkConnect(const char *hostname, int port)
-{
-	SOCKET s;
-	struct sockaddr_in sin;
-	int b;
 
-
-	s = socket(AF_INET, SOCK_STREAM, 0);
-	if (s == INVALID_SOCKET) error("socket() failed");
-
-	b = 1;
-	setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));
-
-	if (strcmp(hostname,"auto")==0) {
-		// autodetect server over udp broadcast [works 4 lan]
-		if (NetworkUDPSearchServer()) {
-			hostname=_network_detected_serverip;
-			port=_network_detected_serverport;
-		} else {
-			error("udp: server not found");
-		}
-	}
-	
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = inet_addr(hostname);
-	sin.sin_port = htons(port);
-
-	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0)
-		error("connect() failed");
-
-	// set nonblocking mode for socket..
-	{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
-
-	// in client mode, only the first client field is used. it's pointing to the server.
-	AllocClient(s);
-
-	// queue packets.. because we're waiting for the savegame.
-	_networking_queuing = true;
-	_frame_counter_max = 0;
-
-}
-
-void NetworkListen(int port)
-{
-		
-	SOCKET ls;
-	struct sockaddr_in sin;
-
-	ls = socket(AF_INET, SOCK_STREAM, 0);
-	if (ls == INVALID_SOCKET)
-		error("socket() on listen socket failed");
-	
-	// reuse the socket
-	{
-		int reuse = 1; if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1)
-			error("setsockopt() on listen socket failed");
-	}
-
-	// set nonblocking mode for socket
-	{ unsigned long blocking = 1; ioctlsocket(ls, FIONBIO, &blocking); }
-
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = 0;
-	sin.sin_port = htons(port);
-
-	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0)
-		error("bind() failed");
-
-	if (listen(ls, 1) != 0)
-		error("listen() failed");
-
-	_listensocket = ls;
-}
-
-void NetworkInitialize(const char *hostname)
+void NetworkInitialize()
 {
 	ClientState *cs;
-
-#if defined(WIN32)
-	WSADATA wsa;
-	if (WSAStartup(MAKEWORD(2,0), &wsa) != 0)
-		error("WSAStartup failed");
-#endif
-
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-	if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-		error("Couldn't open bsdsocket.library version 4.");
-	}
-#endif
 
 	_command_queue.last = &_command_queue.head;
 	_ack_queue.last = &_ack_queue.head;
@@ -993,69 +1031,65 @@ void NetworkInitialize(const char *hostname)
 	// invalidate all clients
 	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++)
 		cs->socket = INVALID_SOCKET;
-	
-	/*	startup udp listener
-	 *	- only if this instance is a server, so clients can find it
-	 *	OR
-	 *  - a client, wanting to find a server to connect to
-	 */
-	if (hostname == NULL  || strcmp(hostname,"auto") == 0) {
-		printf("Trying to open UDP port...\n");		
-		NetworkUDPListen(_network_port);
-	}
+
+}
+
+void NetworkClose(bool client) {
+
+	ClientState *cs;
+	// invalidate all clients
+
+	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++) if (cs->socket != INVALID_SOCKET) {
+		CloseClient(cs);
+		}
+
+	if (!client) {
+		// if in servermode --> close listener
+		closesocket(_listensocket);
+		_listensocket= INVALID_SOCKET;
+		DEBUG(misc,1) ("[NET][TCP] closed listener on port %i", _network_server_port);
+		}
 }
 
 void NetworkShutdown()
 {
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-	if (SocketBase) {
-		CloseLibrary(SocketBase);
-	}
-#endif
+
 }
 
 // switch to synced mode.
-void NetworkStartSync()
+void NetworkStartSync(bool fcreset)
 {
+	DEBUG(misc,3) ("[NET][SYNC] switching to synced game mode");
 	_networking_sync = true;
 	_frame_counter = 0;
-	_frame_counter_max = 0;
-	_frame_counter_srv = 0;
+	if (fcreset) {
+		_frame_counter_max = 0;
+		_frame_counter_srv = 0;
+		}
 	_num_future_seed = 0;
 	_sync_seed_1 = _sync_seed_2 = 0;
 	memset(_my_seed_list, 0, sizeof(_my_seed_list));
+
 }
 
 // ************************** //
 // * UDP Network Extensions * //
 // ************************** //
 
-/* multi os compatible sleep function */
-void CSleep(int milliseconds) {
-#if defined(WIN32)
-Sleep(milliseconds);
-#endif
-#if defined(UNIX)
-#ifndef __BEOS__ 
-usleep(milliseconds*1000);
-#endif
-#ifdef __BEOS__
-snooze(milliseconds*1000);
-#endif
-#endif
-}
-
-void NetworkUDPListen(int port)
+void NetworkUDPListen(bool client)
 {
 	SOCKET udp;
 	struct sockaddr_in sin;
+	int port;
 
-	DEBUG(misc,0) ("udp: listener initiated on port %i", port);
-	NetworkIPListInit();
+	if (client) { port = _network_client_port; } else { port = _network_server_port; };
+
+	DEBUG(misc,1) ("[NET][UDP] listening on port %i", port);
 
 	udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	if (udp == INVALID_SOCKET)
-		error("udp: socket() on listen socket failed");
+	
+	// this disables network
+	_network_available = !(udp == INVALID_SOCKET);
 	
 	// set nonblocking mode for socket
 	{ unsigned long blocking = 1; ioctlsocket(udp, FIONBIO, &blocking); }
@@ -1065,137 +1099,502 @@ void NetworkUDPListen(int port)
 	sin.sin_port = htons(port);
 
 	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0)
-		error("udp: bind() failed");
+		DEBUG(misc,1) ("[NET][UDP] error: bind failed on port %i", port);
+		
 
 	// enable broadcasting
 	{ unsigned long val=1; setsockopt(udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val)); }
-	
-	_udpsocket = udp;
+	// allow reusing
+	{ unsigned long val=1; setsockopt(udp, SOL_SOCKET, SO_REUSEADDR, (char *) &val , sizeof(val)); }
+
+	if (client) { _udp_client_socket = udp; } else { _udp_server_socket = udp; } ;
 
 }
 
-void NetworkUDPReceive() {
+void NetworkUDPClose(bool client) {
+	if (client) { 
+		DEBUG(misc,1) ("[NET][UDP] closed listener on port %i", _network_client_port);
+		closesocket(_udp_client_socket);
+		_udp_client_socket = INVALID_SOCKET;
+		} else {
+		DEBUG(misc,1) ("[NET][UDP] closed listener on port %i", _network_server_port);
+		closesocket(_udp_server_socket);
+		_udp_server_socket = INVALID_SOCKET;
+		};
+	}
+
+void NetworkUDPReceive(bool client) {
 	struct sockaddr_in client_addr;
 	int client_len;
 	int nbytes;
 	struct UDPPacket packet;
 	int packet_len;
 	
+	SOCKET udp;
+	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
+
 	packet_len = sizeof(packet);
 	client_len = sizeof(client_addr);	
 	
-	nbytes = recvfrom(_udpsocket, (char *) &packet, packet_len , 0, (struct sockaddr *) &client_addr, &client_len);
+	nbytes = recvfrom(udp, (char *) &packet, packet_len , 0, (struct sockaddr *) &client_addr, &client_len);
 	if (nbytes>0) {
 		if (packet.command_code==packet.command_check) switch (packet.command_code) {
 		
-		case NET_UDPCMD_SERVERSEARCH:
-			if (_networking_server) {
-				packet.command_check=packet.command_code=NET_UDPCMD_SERVERACTIVE;
-				NetworkUDPSend(client_addr, packet);
+ 		case NET_UDPCMD_SERVERSEARCH:
+ 			if (!client) {
+				packet.command_check=packet.command_code=NET_UDPCMD_SERVERINFO;
+				memcpy(&packet.data,&_network_game,sizeof(_network_game));
+				packet.data_len=sizeof(_network_game);
+ 				NetworkUDPSend(client,client_addr, packet);
+ 			}
+ 			break;
+		case NET_UDPCMD_GETSERVERINFO:
+			if (!client) {
+				packet.command_check=packet.command_code=NET_UDPCMD_SERVERINFO;
+				memcpy(&packet.data,&_network_game,sizeof(_network_game));
+				packet.data_len=sizeof(_network_game);
+				NetworkUDPSend(client,client_addr, packet);
 			}
 			break;
-		case NET_UDPCMD_SERVERACTIVE:
-			if (!_networking_server) {
-				_network_detected_serverip=inet_ntoa(*(struct in_addr *) &client_addr.sin_addr);
-				_network_detected_serverport=ntohs(client_addr.sin_port);
-			}
-			break;
+		case NET_UDPCMD_SERVERINFO:
+ 			if (client) {
+				NetworkGameList * item;
+
+				item = (NetworkGameList *) NetworkGameListAdd();
+				item -> ip = inet_addr(inet_ntoa(client_addr.sin_addr));
+				item -> port = ntohs(client_addr.sin_port);
+				
+				memcpy(item,&packet.data,packet.data_len);
+ 			}
+ 			break;
 		}
 	}
 }
 
-void NetworkIPListInit() {
-	struct hostent* he;
-	char hostname[250];
-	uint32 bcaddr;
-	int i=0;
-	
-	_network_detected_serverip="";
-	
-	gethostname(hostname,250);
-	DEBUG(misc,0) ("iplist: init for host %s", hostname);
-	he=gethostbyname((char *) hostname);
-	
-	if (he == NULL) {
-		DEBUG(misc, 0) ("iplist: gethostbyname failed for host %s...trying with IP address", hostname);
-		bcaddr = inet_addr(hostname);
-		he = gethostbyaddr(inet_ntoa(*(struct in_addr *)bcaddr), sizeof(bcaddr), AF_INET);
-	}
 
-	if (he == NULL) {
-		DEBUG(misc, 0) ("iplist: cannot resolve %s", hostname);
-	} else {
-		while(he->h_addr_list[i]) { 
-			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-			_network_ip_list[i]=bcaddr;
-			DEBUG(misc,0) ("iplist: add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-			i++;
-		}
-	}
-	_network_ip_list[i]=0;
-	
-}
 
-void NetworkUDPBroadCast(struct UDPPacket packet) {
+void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
 	int i=0, res;
 	struct sockaddr_in out_addr;
 	uint32 bcaddr;
 	byte * bcptr;
+
+	SOCKET udp;
+	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
+
 	while (_network_ip_list[i]!=0) {
 		bcaddr=_network_ip_list[i];
 		out_addr.sin_family = AF_INET;
-		out_addr.sin_port = htons(_network_port);
+		if (client) { out_addr.sin_port = htons(_network_server_port); } else { out_addr.sin_port = htons(_network_client_port); };
 		bcptr = (byte *) &bcaddr;
 		bcptr[3]=255;
 		out_addr.sin_addr.s_addr = bcaddr;
-		res=sendto(_udpsocket,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &out_addr,sizeof(out_addr));
+		res=sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &out_addr,sizeof(out_addr));
 		if (res==-1) error("udp: broadcast error: %i",GET_LAST_ERROR());
 		i++;
 	}
 	
 }
 
-void NetworkUDPSend(struct sockaddr_in recv,struct UDPPacket packet) {
-	sendto(_udpsocket,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &recv,sizeof(recv));
+void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet) {
+
+	SOCKET udp;
+	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
+	
+	sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &recv,sizeof(recv));
 }
 
-bool NetworkUDPSearchServer() {
+
+bool NetworkUDPSearchGame(byte ** _network_detected_serverip, unsigned short * _network_detected_serverport) {
 	struct UDPPacket packet;
 	int timeout=3000;
-	DEBUG(misc,0) ("udp: searching server");
-	_network_detected_serverip = "255.255.255.255";
-	_network_detected_serverport = 0;
+	
+	NetworkGameListClear();
+
+	DEBUG(misc,0) ("[NET][UDP] searching server");
+	*_network_detected_serverip = "255.255.255.255";
+	*_network_detected_serverport = 0;
 	
 	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
 	packet.data_len=0;
-	NetworkUDPBroadCast(packet);
+	NetworkUDPBroadCast(true, packet);
 	while (timeout>=0) {
 		CSleep(100);
 		timeout-=100;
-		NetworkUDPReceive();
-		if (_network_detected_serverport>0) {
-			timeout=-1;
-			DEBUG(misc,0) ("udp: server found on %s", _network_detected_serverip);
-			}
+	    NetworkUDPReceive(true);
+
+		if (_network_game_count>0) {
+			NetworkGameList * item;
+			item = (NetworkGameList *) NetworkGameListItem(0);
+			*_network_detected_serverip=inet_ntoa(*(struct in_addr *) &item->ip);
+			*_network_detected_serverport=item->port;
+ 			timeout=-1;
+ 			DEBUG(misc,0) ("[NET][UDP] server found on %s", *_network_detected_serverip);
+ 			}
+	
 		}
+
 	return (_network_detected_serverport>0);
 		
 }
 
 
+// *************************** //
+// * New Network Core System * //
+// *************************** //
+
+void NetworkIPListInit() {
+	struct hostent* he = NULL;
+	char hostname[250];
+	uint32 bcaddr;
+	int i=0;
+		
+	gethostname(hostname,250);
+	DEBUG(misc,2) ("[NET][IP] init for host %s", hostname);
+	he=gethostbyname((char *) hostname);
+
+	if (he == NULL) {
+		he = gethostbyname("localhost");
+		}
+	
+	if (he == NULL) {
+		bcaddr = inet_addr("127.0.0.1");
+		he = gethostbyaddr(inet_ntoa(*(struct in_addr *) &bcaddr), sizeof(bcaddr), AF_INET);
+		}
+
+	if (he == NULL) {
+		DEBUG(misc, 2) ("[NET][IP] cannot resolve %s", hostname);
+	} else {
+		while(he->h_addr_list[i]) { 
+			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
+			_network_ip_list[i]=bcaddr;
+			DEBUG(misc,2) ("[NET][IP] add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
+			i++;
+		}
+
+	}
+	_network_ip_list[i]=0;
+	
+}
+
+/* *************************************************** */
+
+void NetworkCoreInit() {
+
+DEBUG(misc,3) ("[NET][Core] init()");
+_network_available=true;
+
+// [win32] winsock startup
+
+#if defined(WIN32)
+{
+	WSADATA wsa;
+	DEBUG(misc,3) ("[NET][Core] using windows socket library");
+	if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
+		DEBUG(misc,3) ("[NET][Core] error: WSAStartup failed");
+		_network_available=false;
+		}
+}
+#else 
+
+// [morphos/amigaos] bsd-socket startup
+
+#if defined(__MORPHOS__) || defined(__AMIGA__)
+{
+	DEBUG(misc,3) ("[NET][Core] using bsd socket library");
+	if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
+		DEBUG(misc,3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
+		_network_available=false;
+		}
+}
+#else
+
+// [linux/macos] unix-socket startup
+
+	DEBUG(misc,3) ("[NET][Core] using unix socket library");
+
+#endif
+
+#endif
+
+
+if (_network_available) {
+	DEBUG(misc,3) ("[NET][Core] OK: multiplayer available");
+	// initiate network ip list
+	NetworkIPListInit();
+	} else {
+	DEBUG(misc,3) ("[NET][Core] FAILED: multiplayer not available");
+	}
+}
+
+/* *************************************************** */
+
+void NetworkCoreShutdown() {
+
+DEBUG(misc,3) ("[NET][Core] shutdown()");
+
+#if defined(__MORPHOS__) || defined(__AMIGA__)
+{	
+	if (SocketBase) {
+		CloseLibrary(SocketBase);
+	}
+}
+#endif
+
+
+#if defined(WIN32)
+{
+	WSACleanup();
+}
+#endif
+
+}
+
+/* *************************************************** */
+
+bool NetworkCoreConnectGame(byte* b, unsigned short port)
+{
+	if (!_network_available) return false;
+
+	if (strcmp((char *) b,"auto")==0) {
+		// do autodetect
+		NetworkUDPSearchGame(&b, &port);
+		}
+
+	if (port==0) {
+		// autodetection failed
+		if (_networking_override) NetworkLobbyShutdown();
+		ShowErrorMessage(-1, STR_NETWORK_ERR_NOSERVER, 0, 0);
+		return false;
+		}
+	NetworkInitialize();
+	_networking = NetworkConnect(b, port);
+	if (_networking) {
+		NetworkLobbyShutdown();
+		} else {
+		if (_networking_override) NetworkLobbyShutdown();
+		ShowErrorMessage(-1, STR_NETWORK_ERR_NOCONNECTION,0,0);
+		}
+	return _networking;
+}
+
+/* *************************************************** */
+
+bool NetworkCoreStartGame()
+{
+	if (!_network_available) return false;
+	NetworkLobbyShutdown();
+	NetworkInitialize();
+	NetworkListen();
+	NetworkUDPListen(false);
+	_networking_server = true;
+	_networking = true;
+	NetworkGameFillDefaults(); // clears the network game info
+	_network_game.players_on++; // the serverplayer is online
+	return true;
+}
+
+/* *************************************************** */
+
+void NetworkCoreDisconnect()
+{
+	/* terminate server */
+	if (_networking_server) {
+		NetworkUDPClose(false);
+		NetworkClose(false);
+		} 
+
+	/* terminate client connection */
+	else if (_networking) {
+		NetworkClose(true);
+		}
+	
+	_networking_server = false;	
+	_networking = false;
+	NetworkShutdown();
+}
+
+/* *************************************************** */
+
+void NetworkCoreLoop(bool incomming) {
+
+
+if (incomming) {
+
+	// incomming
+
+	if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
+	if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
+
+	if (_networking) {
+		NetworkReceive();
+		NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
+		}
+
+	} else {
+
+	// outgoing
+
+	if (_networking) {
+		NetworkSend();
+		}
+
+	}
+
+}
+
+void NetworkLobbyInit() {
+	DEBUG(misc,3) ("[NET][Lobby] init()");
+	NetworkUDPListen(true);
+}
+
+void NetworkLobbyShutdown() {
+	DEBUG(misc,3) ("[NET][Lobby] shutdown()");
+	NetworkUDPClose(true);
+}
+
+
+// ******************************** //
+// * Network Game List Extensions * //
+// ******************************** //
+
+void NetworkGameListClear() {
+NetworkGameList * item;
+NetworkGameList * next; 
+
+DEBUG(misc,4) ("[NET][G-List] cleared server list");
+
+item = _network_game_list;
+while (item != NULL) {
+	next = (NetworkGameList *) item -> _next;
+	free (item);
+	item = next;
+	}
+_network_game_list=NULL;
+_network_game_count=0;
+}
+
+char * NetworkGameListAdd() {
+NetworkGameList * item;
+NetworkGameList * before; 
+
+DEBUG(misc,4) ("[NET][G-List] added server to list");
+
+item = _network_game_list;
+before = item;
+while (item != NULL) {
+	before = item;
+	item = (NetworkGameList *) item -> _next;
+	}
+item = malloc(sizeof(NetworkGameList));
+item -> _next = NULL;
+if (before == NULL) {
+	_network_game_list = item;
+	} else {
+	before -> _next = (char *) item;
+	}
+_network_game_count++;
+return (char *) item;
+}
+
+void NetworkGameListFromLAN() {
+	struct UDPPacket packet;
+	DEBUG(misc,2) ("[NET][G-List] searching server over lan");
+	NetworkGameListClear();
+	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
+	packet.data_len=0;
+	NetworkUDPBroadCast(true,packet);
+}
+
+void NetworkGameListFromInternet() {
+	DEBUG(misc,2) ("[NET][G-List] searching servers over internet");
+	NetworkGameListClear();
+
+	// **TODO** masterserver communication [internet protocol list]
+
+}
+
+char * NetworkGameListItem(uint16 index) {
+NetworkGameList * item;
+NetworkGameList * next; 
+uint16 cnt = 0;
+
+item = _network_game_list;
+
+while ((item != NULL) && (cnt != index)) {
+	next = (NetworkGameList *) item -> _next;
+	item = next;
+	cnt++;
+	}
+
+return (char *) item;
+}
+
+// *************************** //
+// * Network Game Extensions * //
+// *************************** //
+
+void NetworkGameFillDefaults() {
+	NetworkGameInfo * game = &_network_game;
+#if defined(WITH_REV)
+	extern char _openttd_revision[];
+#endif
+	
+	DEBUG(misc,4) ("[NET][G-Info] setting defaults");
+
+	ttd_strlcpy(game->server_name,"OpenTTD Game",13);
+	game->game_password[0]='\0';
+	game->map_name[0]='\0';
+#if defined(WITH_REV)
+	ttd_strlcpy(game->server_revision,_openttd_revision,strlen(_openttd_revision));
+#else
+	ttd_strlcpy(game->server_revision,"norev000",strlen("norev000"));
+#endif
+	game->game_date=0;
+
+	game->map_height=0;
+	game->map_width=0;
+	game->map_set=0;
+
+	game->players_max=8;
+	game->players_on=0;
+	
+	game->server_lang=_dynlang.curr;
+}
+
+void NetworkGameChangeDate(uint16 newdate) {
+	if (_networking_server) {
+		_network_game.game_date = newdate;
+		}
+}
+
 #else // not ENABLE_NETWORK
 
 // stubs
-void NetworkInitialize(const char *hostname) {}
+void NetworkInitialize() {}
 void NetworkShutdown() {}
-void NetworkListen(int port) {}
+void NetworkListen() {}
 void NetworkConnect(const char *hostname, int port) {}
 void NetworkReceive() {}
 void NetworkSend() {}
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback) {}
 void NetworkProcessCommands() {}
 void NetworkStartSync() {}
-void NetworkUDPListen(int port) {}
-void NetworkUDPReceive() {}
-bool NetworkUDPSearchServer() { return false; }
-#endif // ENABLE_NETWORK
+void NetworkCoreInit() { _network_available=false; };
+void NetworkCoreShutdown() {};
+void NetworkCoreDisconnect() {};
+void NetworkCoreLoop(bool incomming) {};
+bool NetworkCoreConnectGame(byte* b, unsigned short port) {};
+bool NetworkCoreStartGame() {};
+void NetworkLobbyShutdown() {};
+void NetworkLobbyInit() {};
+void NetworkGameListClear() {};
+char * NetworkGameListAdd() {return NULL;};
+void NetworkGameListFromLAN() {};
+void NetworkGameListFromInternet() {};
+void NetworkGameFillDefaults() {};
+char * NetworkGameListItem(uint16 index) {return NULL;};
+void NetworkGameChangeDate(uint16 newdate) {};
+}
+
+#endif

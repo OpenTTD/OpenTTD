@@ -21,16 +21,6 @@ void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, b
 static byte _selected_field;
 char *direct_ip = NULL;
 
-
-void ConnectToServer(byte* b)
-{
-	_networking = true;
-	
-	NetworkInitialize(b);
-	DEBUG(misc, 1) ("Connecting to %s %d\n", b, _network_port);
-	NetworkConnect(b, _network_port);
-}
-
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN,
 	STR_NETWORK_INTERNET,
@@ -65,7 +55,15 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 0:  // close X
 		case 15: // cancel button
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
+			NetworkLobbyShutdown();
 			break;
+		case 3: // find server automaticaly
+			{
+			byte *b = "auto";
+			NetworkCoreConnectGame(b,_network_server_port);
+			}
+			break;
+
 		case 4: // connect via direct ip
 			{
 				StringID str;
@@ -111,7 +109,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		byte *b = e->edittext.str;
 		if (*b == 0)
 			return;
-		ConnectToServer(b);
+		NetworkCoreConnectGame(b,_network_server_port);
 	} break;
 
 	}
@@ -159,6 +157,8 @@ void ShowNetworkGameWindow()
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
+
+	NetworkLobbyInit();
 	
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	strcpy(_edit_str_buf, "Your name");
@@ -168,23 +168,8 @@ void ShowNetworkGameWindow()
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
 	WP(w,querystr_d).maxwidth = 240;
 	WP(w,querystr_d).buf = _edit_str_buf;
-	
-	
-	ShowErrorMessage(-1, TEMP_STRING_NO_NETWORK, 0, 0);
+	// ShowErrorMessage(-1, TEMP_STRING_NO_NETWORK, 0, 0);
 }
-
-
-void StartServer()
-{
-	_networking = true;
-	NetworkInitialize(NULL);
-	DEBUG(misc, 1) ("Listening on port %d\n", _network_port);
-	NetworkListen(_network_port);
-	_networking_server = true;
-	DoCommandP(0, 0, 0, NULL, CMD_START_NEW_GAME);
-}
-
-
 
 static const StringID _players_dropdown[] = {
 	STR_NETWORK_2_PLAYERS,
@@ -232,8 +217,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _players_dropdown, _opt_mod_ptr->currency, e->click.widget, 0);
 			return;
 		case 9: // start game
-			StartServer();
+			NetworkCoreStartGame();
 			ShowNetworkLobbyWindow();
+			DoCommandP(0, 0, 0, NULL, CMD_START_NEW_GAME);
 			break;
 		}
 
@@ -307,10 +293,6 @@ static void ShowNetworkStartServerWindow()
 	WP(w,querystr_d).maxwidth = 240;
 	WP(w,querystr_d).buf = _edit_str_buf;
 }
-
-
-
-
 
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {

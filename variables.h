@@ -218,13 +218,15 @@ VARDEF int32 _frame_counter_max; // for networking, this is the frame that we ar
 VARDEF int32 _frame_counter_srv; // for networking, this is the last known framecounter of the server. it is always less than frame_counter_max.
 
 // networking settings
-VARDEF uint _network_port;
+VARDEF bool _network_available;  // is network mode available?
+VARDEF uint32 _network_ip_list[10]; // Network IPs
+VARDEF uint16 _network_game_count;
+
+VARDEF uint _network_client_port;
+VARDEF uint _network_server_port;
+
 VARDEF uint _network_sync_freq;
 VARDEF uint _network_ahead_frames;
-
-VARDEF uint32 _network_ip_list[10]; // Network IPs
-VARDEF char * _network_detected_serverip; // UDP Broadcast detected Server
-VARDEF uint32 _network_detected_serverport; // UDP Broadcast detected server-port
 
 VARDEF uint32 _sync_seed_1, _sync_seed_2;
 
@@ -283,6 +285,8 @@ VARDEF SmallFiosItem _file_to_saveload;
 VARDEF byte _make_screenshot;
 
 VARDEF bool _networking;
+VARDEF bool _networking_override; // dont shutdown network core when the GameMenu appears.
+
 VARDEF bool _networking_sync; // if we use network mode and the games must stay in sync.
 VARDEF bool _networking_server;
 VARDEF bool _networking_queuing; // queueing only?
