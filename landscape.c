@@ -637,7 +637,7 @@ static void CreateDesertOrRainForest(void)
 	for (tile = 0; tile != MapSize(); ++tile) {
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
-			TileIndex t = tile + ToTileIndexDiff(*data);
+			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
 			if (TileHeight(t) >= 4 || IsTileType(t, MP_WATER)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
