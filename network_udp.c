@@ -19,6 +19,7 @@ typedef enum {
 	PACKET_UDP_SERVER_RESPONSE,
 	PACKET_UDP_CLIENT_DETAIL_INFO,
 	PACKET_UDP_SERVER_DETAIL_INFO, // Is not used in OpenTTD itself, only for external querying
+	PACKET_UDP_SERVER_REGISTER, // Packet to register itself to the master server
 	PACKET_UDP_END
 } PacketUDPType;
 
@@ -217,6 +218,7 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 	RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER),
 	RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE),
 	RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO),
+	NULL,
 	NULL,
 };
 
@@ -465,6 +467,39 @@ void NetworkUDPQueryServer(const byte* host, unsigned short port)
 	free(p);
 
 	UpdateNetworkGameWindow(false);
+}
+
+/* Register us to the master server
+     This function checks if it needs to send an advertise */
+void NetworkUDPAdvertise()
+{
+	struct sockaddr_in out_addr;
+	Packet *p;
+
+	/* Check if we should send an advertise */
+	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
+		return;
+
+	/* Only send once in the 450 game-days (about 15 minutes) */
+	if (_network_last_advertise_date + 450 > _date)
+		return;
+	_network_last_advertise_date = _date;
+
+	/* Find somewhere to send */
+	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
+	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+
+	DEBUG(net, 1)("[NET][UDP] Advertising to master server");
+
+	/* Send the packet */
+	p = NetworkSend_Init(PACKET_UDP_SERVER_REGISTER);
+	/* Packet is: WELCOME_MESSAGE, Version, server_port */
+	NetworkSend_string(p, NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
+	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
+	NetworkSend_uint16(p, _network_server_port);
+	NetworkSendUDP_Packet(p, &out_addr);
+	free(p);
 }
 
 void NetworkUDPInitialize(void)

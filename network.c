@@ -871,6 +871,10 @@ bool NetworkServerStart(void)
 	IConsoleCmdExec("exec scripts/on_server.scr 0");
 	// if the server is dedicated ... add some other script
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
+
+	/* Try to register us to the master server */
+	_network_last_advertise_date = 0;
+	NetworkUDPAdvertise();
 	return true;
 }
 
@@ -1163,6 +1167,8 @@ void NetworkStartUp(void)
 	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
+	_network_advertise = false;
+	_network_last_advertise_date = 0;
 
 	/* Load the ip from the openttd.cfg */
 	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);

@@ -28,6 +28,11 @@
 // Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1
 #define MAX_CLIENT_INFO (MAX_CLIENTS + 1)
 
+/* Stuff for the master-server */
+#define NETWORK_MASTER_SERVER_PORT 3978
+#define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
+#define NETWORK_MASTER_SERVER_WELCOME_MESSAGE "OpenTTDRegister"
+
 #define NETWORK_DEFAULT_PORT 3979
 
 #define MAX_INTERFACES 9
@@ -165,6 +170,9 @@ VARDEF uint8 _network_reconnect;
 
 VARDEF bool _network_udp_server;
 VARDEF uint16 _network_udp_broadcast;
+
+VARDEF bool _network_advertise;
+VARDEF uint16 _network_last_advertise_date;
 
 #endif /* ENABLE_NETWORK */
 

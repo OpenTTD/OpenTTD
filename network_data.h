@@ -18,6 +18,8 @@
 #define NETWORK_GAME_INFO_VERSION 1
 // What version of company info is this?
 #define NETWORK_COMPANY_INFO_VERSION 1
+// What version of master-server-protocol do we use?
+#define NETWORK_MASTER_SERVER_VERSION 1
 
 typedef uint16 PacketSize;
 
