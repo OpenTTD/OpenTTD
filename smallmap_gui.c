@@ -250,7 +250,17 @@ static const uint32 _map_height_bits[16] = {
 	MKCOLOR(0x27272727),
 };
 
-static const uint32 _smallmap_contours_andor[12][2] = {
+typedef struct AndOr {
+	uint32 mor;
+	uint32 mand;
+} AndOr;
+
+static inline uint32 ApplyMask(uint32 colour, const AndOr* mask)
+{
+	return (colour & mask->mand) | mask->mor;
+}
+
+static const AndOr _smallmap_contours_andor[] = {
 	{MKCOLOR(0x00000000),MKCOLOR(0xFFFFFFFF)},
 	{MKCOLOR(0x000A0A00),MKCOLOR(0xFF0000FF)},
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
@@ -265,7 +275,7 @@ static const uint32 _smallmap_contours_andor[12][2] = {
 	{MKCOLOR(0x000A0A00),MKCOLOR(0xFF0000FF)},
 };
 
-static const uint32 _smallmap_vehicles_andor[12][2] = {
+static const AndOr _smallmap_vehicles_andor[] = {
 	{MKCOLOR(0x00000000),MKCOLOR(0xFFFFFFFF)},
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
@@ -280,7 +290,7 @@ static const uint32 _smallmap_vehicles_andor[12][2] = {
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 };
 
-static const uint32 _smallmap_vegetation_andor[12][2] = {
+static const AndOr _smallmap_vegetation_andor[] = {
 	{MKCOLOR(0x00000000),MKCOLOR(0xFFFFFFFF)},
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
@@ -312,7 +322,8 @@ static inline uint32 GetSmallMapCountoursPixels(uint tile)
 		}
 	}
 
-	return (_map_height_bits[TileHeight(tile)] & _smallmap_contours_andor[t][1]) | _smallmap_contours_andor[t][0];
+	return
+		ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
 }
 
 static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
@@ -341,7 +352,7 @@ static inline uint32 GetSmallMapVehiclesPixels(uint tile)
 			t = MP_WATER;
 		}
 	}
-	return (MKCOLOR(0x54545454) & _smallmap_vehicles_andor[t][1]) | _smallmap_vehicles_andor[t][0];
+	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
 
@@ -398,7 +409,7 @@ static inline uint32 GetSmallMapIndustriesPixels(uint tile)
 				t = MP_WATER;
 			}
 		}
-		return ((MKCOLOR(0x54545454) & _smallmap_vehicles_andor[t][1]) | _smallmap_vehicles_andor[t][0]);
+		return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 	}
 }
 
@@ -438,7 +449,7 @@ static inline uint32 GetSmallMapRoutesPixels(uint tile)
 			}
 		}
 		// ground color
-		bits = ((MKCOLOR(0x54545454) & _smallmap_contours_andor[t][1]) | _smallmap_contours_andor[t][0]);
+		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
 	}
 	return bits;
 }
@@ -494,7 +505,7 @@ static inline uint32 GetSmallMapVegetationPixels(uint tile)
 				t = MP_WATER;
 			}
 		}
-		bits = ((MKCOLOR(0x54545454) & _smallmap_vehicles_andor[t][1]) | _smallmap_vehicles_andor[t][0]);
+		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 	}
 
 	return bits;
