@@ -28,6 +28,10 @@
 #include <SupportDefs.h>
 #endif
 
+#ifdef SUNOS
+#include <alloca.h>
+#endif
+
 #define BSWAP32(x) ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) << 8) & 0xFF0000) | (((x) << 24) & 0xFF000000))
 #define BSWAP16(x) ((x) >> 8 | (x) << 8)
 

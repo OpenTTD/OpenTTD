@@ -45,6 +45,7 @@
 # OSX: building on Mac OS X
 # MORPHOS: building on MorphOS
 # BEOS: building on BeOS
+# SUNOS: building on SunOS (Solaris)
 #
 # Summary of library choice defines
 # WITH_ZLIB: savegames using zlib
@@ -242,7 +243,7 @@ REV_NUMBER := $(shell if test -d .svn; then svnversion . | tr -dc 0-9; fi)
 ifdef RELEASE
 REV:=$(RELEASE)
 else
-REV := $(shell if test -d .svn; then echo -n r; svnversion .; fi)
+REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$0 }'; fi)
 tmp_test:=$(shell echo "$(REV)" | grep "M" )
 ifdef tmp_test
 REV_NUMBER:=1
@@ -338,6 +339,13 @@ ifdef WITH_NETWORK
 	ifdef BEOS_NET_SERVER
 	CDEFS += -DBEOS_NET_SERVER
 	endif
+endif
+endif
+
+ifdef SUNOS
+CDEFS += -DSUNOS
+ifdef WITH_NETWORK
+LDFLAGS += -lnsl -lsocket
 endif
 endif
 

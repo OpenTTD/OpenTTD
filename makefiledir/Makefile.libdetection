@@ -39,6 +39,13 @@ BEOS_NET_SERVER:=1
 endif
 endif
 
+# Automatically recognize if building on SunOS/Solaris
+ifeq ($(shell uname), SunOS)
+SUNOS:=1
+# SunOS uses UNIX setup too
+UNIX:=1
+endif
+
 # FreeBSD uses sdl11 instead of sdl
 ifdef FREEBSD
 SDL-CONFIG:=sdl11-config
