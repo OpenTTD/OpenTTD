@@ -146,8 +146,6 @@ void ShowBuildBridgeWindow(uint start, uint end, byte bridge_type)
 				// bridge is accepted, add to list
 				// add to terraforming & bulldozing costs the cost of the bridge itself (not computed with DC_QUERY_COST)
 				_bridge.costs[j] = ret + ((((int64)tot_bridge_len * (int64)_price.build_bridge) * (int64)_bridge_type_price_mod[bridge_type]) >> 8);
-				if (_bridge.costs[j] < 0)
-					printf("BLAAT!\n");
 				_bridge.indexes[j] = bridge_type;
 				j++;
 			}
