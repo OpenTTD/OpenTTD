@@ -20,11 +20,11 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleDisplayName</key>
         <string>Open Transport Tycoon</string>
         <key>CFBundleExecutable</key>
-        <string>ttd</string>
+        <string>openttd</string>
         <key>CFBundleGetInfoString</key>
         <string>$VERSION, Copyright 2004 The Open Transport Tycoon team</string>
         <key>CFBundleIconFile</key>
-        <string>ttd.icns</string>
+        <string>openttd.icns</string>
         <key>CFBundleIdentifier</key>
         <string>org.ludde-ottd.ludde-ottd</string>
         <key>CFBundleInfoDictionaryVersion</key>

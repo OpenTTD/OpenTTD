@@ -497,13 +497,13 @@ $(OSX):
 	@mkdir -p $(OSXAPP)/Contents/MacOS
 	@mkdir -p $(OSXAPP)/Contents/Resources
 	@echo "APPL????" > $(OSXAPP)/Contents/PkgInfo
-	@cp os/macos/ttd.icns $(OSXAPP)/Contents/Resources/
+	@cp os/macos/ttd.icns $(OSXAPP)/Contents/Resources/openttd.icns
 	@os/macos/plistgen.sh $(OSXAPP) $(REV)
 	@cp os/macos/track_starter $(OSXAPP)/contents/macos
 	@ls os/macos | grep -q "\.class" || \
 	javac os/macos/OpenTTDMidi.java
 	@cp os/macos/OpenTTDMidi.class $(OSXAPP)/contents/macos
-	@cp $(TTD) $(OSXAPP)/Contents/MacOS/ttd
+	@cp $(TTD) $(OSXAPP)/Contents/MacOS/openttd
 
 $(endwarnings): $(64_bit_warnings)
 
