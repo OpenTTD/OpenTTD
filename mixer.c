@@ -73,8 +73,8 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 static void MxCloseChannel(MixerChannel *mc)
 {
 	if (mc->flags & MX_AUTOFREE) free(mc->memory);
-	mc->memory = NULL;
 	mc->active = false;
+	mc->memory = NULL;
 }
 
 void MxMixSamples(Mixer *mx, void *buffer, uint samples)
