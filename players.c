@@ -436,7 +436,7 @@ restart:;
 			if (pp->is_active && p != pp) {
 				SetDParam(0, pp->president_name_2);
 				GetString(buffer2, pp->president_name_1);
-				if (str_eq(buffer2, buffer))
+				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
 			}
 		}

@@ -896,7 +896,8 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
-			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) && !_do_edit_on_text_even_when_no_change_to_edit_box) {
+			if (strcmp(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) == 0 &&
+					!_do_edit_on_text_even_when_no_change_to_edit_box) {
 				DeleteWindow(w);
 			} else {
 				byte *buf = WP(w,querystr_d).buf;

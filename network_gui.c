@@ -1368,7 +1368,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break; // Cancel
 		case 2: // Send
 press_ok:;
-			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN)) {
+			if (strcmp(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) == 0) {
 				DeleteWindow(w);
 			} else {
 				byte *buf = WP(w,querystr_d).buf;

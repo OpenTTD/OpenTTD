@@ -352,7 +352,7 @@ StringID RealAllocateName(const byte *name, byte skip, bool check_double)
 			if (free_item == -1)
 				free_item = i;
 		} else {
-			if (check_double && str_eq(names, name)) {
+			if (check_double && strcmp(names, name) == 0) {
 				_error_message = STR_0132_CHOSEN_NAME_IN_USE_ALREADY;
 				return 0;
 			}

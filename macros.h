@@ -26,16 +26,6 @@ static inline int clamp2(int a, int min, int max) { if (a <= min) a=min; if (a >
 static inline bool int32_add_overflow(int32 a, int32 b) { return (int32)(a^b)>=0 && (int32)(a^(a+b))<0; }
 static inline bool int32_sub_overflow(int32 a, int32 b) { return (int32)(a^b)<0 && (int32)(a^(a-b))<0; }
 
-static inline bool str_eq(const byte *a, const byte *b)
-{
-	int i=0;
-	while (a[i] == b[i]) {
-		if (a[i] == 0)
-			return true;
-		i++;
-	}
-	return false;
-}
 
 // Will crash if strings are equal
 static inline bool str_is_below(byte *a, byte *b) {

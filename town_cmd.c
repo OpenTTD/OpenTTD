@@ -879,7 +879,7 @@ restart:
 			if (t2->xy != 0) {
 				SetDParam(0, t2->townnameparts);
 				GetString(buf2, t2->townnametype);
-				if (str_eq(buf1, buf2))
+				if (strcmp(buf1, buf2) == 0)
 					goto restart;
 			}
 		}
