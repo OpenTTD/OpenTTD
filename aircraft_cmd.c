@@ -166,7 +166,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// Workaround: TODO: make AI players try to build planes in a hangar instead of just an airport tile.
 	if (!IsAircraftHangarTile((TileIndex)tile) && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
 
-	if (_map_owner[tile] != _current_player) return CMD_ERROR;
+	if (_map_owner[tile] != _current_player && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
