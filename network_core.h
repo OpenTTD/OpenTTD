@@ -140,4 +140,26 @@ typedef unsigned long in_addr_t;
 #	endif
 #endif // __MORPHOS__ || __AMIGA__
 
+static inline bool SetNonBlocking(int d)
+{
+	int nonblocking = 1;
+	#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
+	return setsockopt(d, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(nonblocking)) == 0;
+	#else
+	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;
+	#endif
+}
+
+static inline bool SetNoDelay(int d)
+{
+	// XXX should this be done at all?
+	#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server
+	int b = 1;
+	// The (const char*) cast is needed for windows
+	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) == 0;
+	#else
+	return true;
+	#endif
+}
+
 #endif // NETWORK_CORE_H

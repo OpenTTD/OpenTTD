@@ -573,14 +573,8 @@ static bool NetworkConnect(const char *hostname, int port)
 		return false;
 	}
 
-	{ // set nodelay /* XXX should this be done at all? */
-		#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server...
-		int b = 1;
-		// The (const char*) cast is needed for windows!!
-		if (setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) != 0)
-			DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
-		#endif
-	}
+	if (!SetNoDelay(s))
+		DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
@@ -592,16 +586,8 @@ static bool NetworkConnect(const char *hostname, int port)
 		return false;
 	}
 
-	{ // set nonblocking mode for socket..
-		unsigned long blocking = 1;
-		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
-		byte nonblocking = 1;
-		if (setsockopt(s, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)) != 0)
-		#else
-		if (ioctlsocket(s, FIONBIO, &blocking) != 0)
-		#endif
-			DEBUG(net, 0)("[NET] Setting non-blocking failed"); /* XXX should this be an error? */
-	}
+	if (!SetNonBlocking(s))
+		DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
 
 	// in client mode, only the first client field is used. it's pointing to the server.
 	NetworkAllocClient(s);
@@ -619,11 +605,6 @@ static void NetworkAcceptClients(void)
 	struct sockaddr_in sin;
 	SOCKET s;
 	NetworkClientState *cs;
-#ifndef __MORPHOS__
-	int sin_len;
-#else
-	LONG sin_len; // for some reason we need a 'LONG' under MorphOS
-#endif
 	uint i;
 	bool banned;
 
@@ -631,24 +612,17 @@ static void NetworkAcceptClients(void)
 	assert(_listensocket != INVALID_SOCKET);
 
 	for (;;) {
+		socklen_t sin_len;
+
 		sin_len = sizeof(sin);
 		s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
 		if (s == INVALID_SOCKET) return;
 
-		// set nonblocking mode for client socket
-		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
-		{ unsigned long blocking = 1; byte nonblocking = 1; setsockopt(s, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)); }
-		#else
-		{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
-		#endif
+		SetNonBlocking(s); // XXX error handling?
 
 		DEBUG(net, 1) ("[NET] Client connected from %s on frame %d", inet_ntoa(sin.sin_addr), _frame_counter);
 
-		// set nodelay
-		#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server...
-		// The (const char*) cast is needed for windows!!
-		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
-		#endif
+		SetNoDelay(s); // XXX error handling?
 
 		/* Check if the client is banned */
 		banned = false;
@@ -734,16 +708,8 @@ static bool NetworkListen(void)
 		}
 	}
 
-	{ // set nonblocking mode for socket
-		unsigned long blocking = 1;
-		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
-		byte nonblocking = 1;
-		if (setsockopt(ls, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)) != 0)
-		#else
-		if (ioctlsocket(ls, FIONBIO, &blocking) != 0)
-		#endif
-			DEBUG(net, 0)("[NET] Setting non-blocking failed"); /* XXX should this be an error? */
-	}
+	if (!SetNonBlocking(ls))
+		DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = _network_server_bind_ip;
