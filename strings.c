@@ -127,7 +127,7 @@ static char *str_cat(char *dst, const char *src)
 	return dst - 1;
 }
 
-static char *GetStringPtr(uint16 string)
+static const char *GetStringPtr(uint16 string)
 {
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
@@ -452,7 +452,7 @@ static char *DecodeString(char *buff, const char *str)
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
-				char *s;
+				const char *s;
 				uint16 cargo_str = _cargo_string_list[_opt.landscape][(byte)GetParamInt8()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
@@ -477,7 +477,7 @@ static char *DecodeString(char *buff, const char *str)
 			//assert(0);
 			break;
 		case 0x87: { // {VOLUME}
-			char *s;
+			const char *s;
 			buff = FormatCommaNumber(buff, GetParamInt16() * 1000);
 			memcpy(buff++, " ", 1);
 			s = GetStringPtr(STR_LITERS);
