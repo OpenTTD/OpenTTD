@@ -868,8 +868,10 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_NEWGAME:
+#ifdef ENABLE_NETWORK
 		if (_network_server)
 			snprintf(_network_game_info.map_name, 40, "Random");
+#endif /* ENABLE_NETWORK */
 		MakeNewGame();
 		break;
 
@@ -887,8 +889,10 @@ normal_load:
 			_opt_mod_ptr = &_opt;
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
+#ifdef ENABLE_NETWORK
 			if (_network_server)
 				snprintf(_network_game_info.map_name, 40, "Loaded game");
+#endif /* ENABLE_NETWORK */
 		}
 		break;
 	}
@@ -912,8 +916,10 @@ normal_load:
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
 
+#ifdef ENABLE_NETWORK
 			if (_network_server)
 				snprintf(_network_game_info.map_name, 40, "Loaded scenario");
+#endif /* ENABLE_NETWORK */
 		} else
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 

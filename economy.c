@@ -398,6 +398,7 @@ static void PlayersCheckBankrupt(Player *p)
 			} else {
 				// If we are the server, make sure it is clear that his player is no
 				//  longer with us!
+#ifdef ENABLE_NETWORK
 				if (IS_HUMAN_PLAYER(owner) && _network_server) {
 					NetworkClientInfo *ci;
 					ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
@@ -405,6 +406,7 @@ static void PlayersCheckBankrupt(Player *p)
 					// Send the new info to all the clients
 					NetworkUpdateClientInfo(_network_own_client_index);
 				}
+#endif /* ENABLE_NETWORK */
 				// Make sure the player no longer controls the company
 				if (IS_HUMAN_PLAYER(owner) && owner == _local_player) {
 					// Switch the player to spectator..
