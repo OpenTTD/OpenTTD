@@ -379,6 +379,28 @@ DEF_CONSOLE_CMD(ConBanList)
 	return NULL;
 }
 
+DEF_CONSOLE_CMD(ConPauseGame)
+{
+	if (_pause == 0) {
+		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		IConsolePrint(_iconsole_color_default, "Game paused.");
+	} else
+		IConsolePrint(_iconsole_color_default, "Game is already paused.");
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConUnPauseGame)
+{
+	if (_pause != 0) {
+		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		IConsolePrint(_iconsole_color_default, "Game unpaused.");
+	} else
+		IConsolePrint(_iconsole_color_default, "Game is already unpaused.");
+
+	return NULL;
+}
+
 DEF_CONSOLE_CMD(ConRcon)
 {
 	if (argc < 3) {
@@ -1264,6 +1286,10 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHook("unban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdRegister("banlist",   ConBanList);
 	IConsoleCmdHook("banlist", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("pause",   ConPauseGame);
+	IConsoleCmdHook("pause", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("unpause",   ConUnPauseGame);
+	IConsoleCmdHook("unpause", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 
 	IConsoleAliasRegister("clean_company",		"reset_company %A");
 
