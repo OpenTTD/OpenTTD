@@ -3,6 +3,7 @@
 #include "gui.h"
 #include "command.h"
 #include "player.h"
+#include "console.h"
 
 #if defined(WIN32)
 #	include <windows.h>
@@ -60,6 +61,15 @@
 #	define ioctlsocket(s,request,status)  IoctlSocket((LONG)s,(ULONG)request,(char*)status)
 
 struct Library *SocketBase = NULL;
+
+// usleep() implementation
+#include <devices/timer.h>
+#include <dos/dos.h>
+
+struct Device       *TimerBase    = NULL;
+struct MsgPort      *TimerPort    = NULL;
+struct timerequest  *TimerRequest = NULL;
+
 #endif /* __MORPHOS__ || __AMIGA__ */
 
 
@@ -240,12 +250,29 @@ void CSleep(int milliseconds) {
 Sleep(milliseconds);
 #endif
 #if defined(UNIX)
-#ifndef __BEOS__ 
+#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGAOS__) 
 usleep(milliseconds*1000);
 #endif
 #ifdef __BEOS__
 snooze(milliseconds*1000);
 #endif
+#if defined(__MORPHOS__) || defined(__AMIGAOS__)
+{
+	ULONG signals;
+	ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
+
+	// send IORequest
+	TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
+	TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
+	TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
+	SendIO((struct IORequest *)TimerRequest);
+
+	if ( !((signals = Wait(TimerSigBit|SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
+		AbortIO((struct IORequest *)TimerRequest);
+	}
+	WaitIO((struct IORequest *)TimerRequest);
+}
+#endif // __MORPHOS__ || __AMIGAOS__
 #endif
 }
 
@@ -831,6 +858,26 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 // * TCP Networking         * //
 // ************************** //
 
+unsigned long NetworkResolveHost(const char *hostname) {
+	struct hostent* remotehost;
+
+	if ((hostname[0]<0x30) || (hostname[0]>0x39)) {
+		// seems to be an hostname [first character is no number]
+		remotehost = gethostbyname(hostname);
+		if (remotehost == NULL) {
+			DEBUG(misc, 2) ("[NET][IP] cannot resolve %s", hostname);
+			return 0;
+		} else {
+			DEBUG(misc,2) ("[NET][IP] resolved %s to %s",hostname, inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
+			return inet_addr(inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
+			}
+	} else {
+		// seems to be an ip [first character is a number]
+		return inet_addr(hostname);
+		}
+
+}
+
 bool NetworkConnect(const char *hostname, int port)
 {
 	SOCKET s;
@@ -846,7 +893,7 @@ bool NetworkConnect(const char *hostname, int port)
 	setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));
 	
 	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = inet_addr(hostname);
+	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
 	sin.sin_port = htons(port);
 
 	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
@@ -1070,6 +1117,22 @@ void NetworkStartSync(bool fcreset)
 	_sync_seed_1 = _sync_seed_2 = 0;
 	memset(_my_seed_list, 0, sizeof(_my_seed_list));
 
+}
+
+// ********************************* //
+// * Network Core Console Commands * //
+// ********************************* //
+
+static _iconsole_var * NetworkConsoleCmdConnect(byte argc, byte* argv[], byte argt[]) {
+	if (argc<2) return NULL;
+	if (argc==2) {
+		IConsolePrintF(_iconsole_color_default, "connecting to %s",argv[1]);
+		NetworkCoreConnectGame(argv[1],_network_server_port);
+	} else if (argc==3) {
+		IConsolePrintF(_iconsole_color_default, "connecting to %s on port %s",argv[1],argv[2]);
+		NetworkCoreConnectGame(argv[1],atoi(argv[2]));
+		}
+	return NULL;
 }
 
 // ************************** //
@@ -1306,6 +1369,19 @@ _network_available=true;
 		DEBUG(misc,3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
 		_network_available=false;
 		}
+
+	// for usleep() implementation
+	if ( (TimerPort = CreateMsgPort()) ) {
+		if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
+			if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
+				if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
+					// free ressources... 
+					DEBUG(misc,3) ("[NET][Core] Couldn't initialize timer.");
+					_network_available=false;
+				}
+			}
+		}
+	}
 }
 #else
 
@@ -1322,6 +1398,7 @@ if (_network_available) {
 	DEBUG(misc,3) ("[NET][Core] OK: multiplayer available");
 	// initiate network ip list
 	NetworkIPListInit();
+	IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
 	} else {
 	DEBUG(misc,3) ("[NET][Core] FAILED: multiplayer not available");
 	}
@@ -1335,6 +1412,11 @@ DEBUG(misc,3) ("[NET][Core] shutdown()");
 
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 {	
+	// free allocated ressources
+  if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
+  if (TimerRequest) { DeleteIORequest(TimerRequest); }
+  if (TimerPort)    { DeleteMsgPort(TimerPort); }
+
 	if (SocketBase) {
 		CloseLibrary(SocketBase);
 	}
