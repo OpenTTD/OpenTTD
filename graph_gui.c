@@ -7,7 +7,7 @@
 #include "player.h"
 #include "economy.h"
 
-static uint _legend_showbits;
+static uint _legend_excludebits;
 static uint _legend_cargobits;
 
 /************************/
@@ -17,7 +17,7 @@ static uint _legend_cargobits;
 enum {GRAPH_NUM = 16};
 
 typedef struct GraphDrawer {
-	uint sel;
+	uint sel; // bitmask of the players *excluded* (e.g. 11111111 means that no players are shown)
 	byte num_dataset;
 	byte num_on_x_axis;
 	byte month;
@@ -173,7 +173,7 @@ static void DrawGraph(GraphDrawer *gw)
 	/* draw lines and dots */
 	i = 0;
 	row_ptr = gw->cost[0];
-	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_showbits)
+	sel = gw->sel; // show only selected lines. GraphDrawer qw->sel set in Graph-Legend (_legend_excludebits)
 	do {
 		if (!(sel & 1)) {
 			x = gw->left + 55;
@@ -217,9 +217,9 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		FOR_ALL_PLAYERS(p) {
 			if (!p->is_active)
-				SETBIT(_legend_showbits, p->index);
+				SETBIT(_legend_excludebits, p->index);
 		}
-		w->click_state = ((~_legend_showbits) << 3);
+		w->click_state = ((~_legend_excludebits) << 3);
 		DrawWindowWidgets(w);
 
 		FOR_ALL_PLAYERS(p) {
@@ -231,13 +231,13 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			SetDParam(2, GetPlayerNameString(p->index, 3));
-			DrawString(21,17+p->index*12,STR_7021,HASBIT(_legend_showbits, p->index) ? 0x10 : 0xC);
+			DrawString(21,17+p->index*12,STR_7021,HASBIT(_legend_excludebits, p->index) ? 0x10 : 0xC);
 		}
 		break;
 
 	case WE_CLICK:
 		if (IS_INT_INSIDE(e->click.widget, 3, 11)) {
-			_legend_showbits ^= (1 << (e->click.widget-3));
+			_legend_excludebits ^= (1 << (e->click.widget-3));
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
@@ -284,15 +284,15 @@ static void ShowGraphLegend()
 static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 {
 	Player *p;
-	uint showbits = _legend_showbits;
+	uint excludebits = _legend_excludebits;
 	int nums;
 	int mo,yr;
 
 	// Exclude the players which aren't valid
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) CLRBIT(showbits,p->index);
+		if (!p->is_active) SETBIT(excludebits,p->index);
 	}
-	gd->sel = showbits;
+	gd->sel = excludebits;
 	gd->num_vert_lines = 24;
 
 	nums = 0;
@@ -334,8 +334,9 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 
 		SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
+		numd = -1;
 		FOR_ALL_PLAYERS(p) {
+			numd++;
 			if (!p->is_active)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
@@ -343,7 +344,6 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)(p->old_economy[j].income + p->old_economy[j].expenses);
 				i++;
 			}
-			numd++;
 		}
 		gd.num_dataset=numd;
 
@@ -377,7 +377,6 @@ void ShowOperatingProfitGraph()
 {
 	if (AllocateWindowDescFront(&_operating_profit_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-		_legend_showbits = 0;
 	}
 }
 
@@ -407,8 +406,9 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
+		numd = -1;
 		FOR_ALL_PLAYERS(p) {
+			numd++;
 			if (!p->is_active)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
@@ -416,7 +416,6 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].income;
 				i++;
 			}
-			numd++;
 		}
 
 		gd.num_dataset = numd;
@@ -452,7 +451,6 @@ void ShowIncomeGraph()
 {
 	if (AllocateWindowDescFront(&_income_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-		_legend_showbits = 0;
 	}
 }
 
@@ -481,8 +479,9 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
+		numd = -1;
 		FOR_ALL_PLAYERS(p) {
+			numd++;
 			if (!p->is_active)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
@@ -490,7 +489,6 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].delivered_cargo;
 				i++;
 			}
-			numd++;
 		}
 
 		gd.num_dataset = numd;
@@ -526,7 +524,6 @@ void ShowDeliveredCargoGraph()
 {
 	if (AllocateWindowDescFront(&_delivered_cargo_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-		_legend_showbits = 0;
 	}
 }
 
@@ -775,8 +772,9 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
+		numd = -1;
 		FOR_ALL_PLAYERS(p) {
+			numd++;
 			if (!p->is_active)
 				continue;
 			gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
@@ -784,7 +782,6 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].performance_history;
 				i++;
 			}
-			numd++;
 		}
 		gd.num_dataset = numd;
 
@@ -822,7 +819,6 @@ void ShowPerformanceHistoryGraph()
 {
 	if (AllocateWindowDescFront(&_performance_history_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-		_legend_showbits = 0;
 	}
 }
 
@@ -851,8 +847,9 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.bg_line_color = 0xE;
 		SetupGraphDrawerForPlayers(&gd);
 
-		numd = 0;
+		numd = -1;
 		FOR_ALL_PLAYERS(p) {
+			numd++;
 			if (!p->is_active)
 				continue;
 
@@ -861,7 +858,6 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 				gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].company_value;
 				i++;
 			}
-			numd++;
 		}
 		gd.num_dataset = numd;
 
@@ -897,7 +893,6 @@ void ShowCompanyValueGraph()
 {
 	if (AllocateWindowDescFront(&_company_value_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-		_legend_showbits = 0;
 	}
 }
 
