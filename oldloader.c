@@ -711,8 +711,16 @@ static void FixStation(OldStation *o, int num)
 
 		s->xy = o->xy;
 		s->town = REMAP_TOWN_PTR(o->town);
-		s->bus_tile = o->bus_tile;
-		s->lorry_tile = o->lorry_tile;
+		if (o->bus_tile != 0) {
+			s->bus_stops = GetFirstFreeRoadStop();
+			s->bus_stops->xy = o->bus_tile;
+		} else
+			s->bus_stops = NULL;
+		if (o->lorry_tile != 0) {
+			s->truck_stops = GetFirstFreeRoadStop();
+			s->truck_stops->xy = o->lorry_tile;
+		} else
+			s->truck_stops = 0;
 		s->train_tile = o->train_tile;
 		s->airport_tile = o->airport_tile;
 		s->dock_tile = o->dock_tile;
@@ -734,8 +742,10 @@ static void FixStation(OldStation *o, int num)
 		s->owner = o->owner;
 		s->facilities = o->facilities;
 		s->airport_type = o->airport_type;
-		s->truck_stop_status = o->truck_stop_status;
-		s->bus_stop_status = o->bus_stop_status;
+		if (s->truck_stops != NULL)
+			s->truck_stops->status = o->truck_stop_status;
+		if (s->bus_stops != NULL)
+			s->bus_stops->status = o->bus_stop_status;
 		s->blocked_months_obsolete = o->blocked_months_obsolete;
 		s->airport_flags = o->airport_flags;
 		s->last_vehicle = o->last_vehicle;

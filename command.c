@@ -37,9 +37,7 @@ DEF_COMMAND(CmdBuildTrainWaypoint);
 DEF_COMMAND(CmdRenameWaypoint);
 DEF_COMMAND(CmdRemoveTrainWaypoint);
 
-DEF_COMMAND(CmdBuildTruckStation);
-
-DEF_COMMAND(CmdBuildBusStation);
+DEF_COMMAND(CmdBuildRoadStop);
 
 DEF_COMMAND(CmdBuildLongRoad);
 DEF_COMMAND(CmdRemoveLongRoad);
@@ -190,9 +188,9 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildTrainWaypoint,				/* 16 */
 	CmdRenameWaypoint,						/* 17 */
 	CmdRemoveTrainWaypoint,				/* 18 */
-	CmdBuildTruckStation,					/* 19 */
+	NULL,                         /* 19 */
 	NULL,													/* 20 */
-	CmdBuildBusStation,						/* 21 */
+	CmdBuildRoadStop,							/* 21 */
 	NULL,													/* 22 */
 	CmdBuildLongRoad,							/* 23 */
 	CmdRemoveLongRoad,						/* 24 */

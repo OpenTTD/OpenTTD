@@ -5,6 +5,7 @@
 #include "command.h"
 #include "ai.h"
 #include "engine.h"
+#include "station.h"
 
 // Build HQ
 //  Params:
@@ -28,9 +29,9 @@ int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtr
 	if (type == AI_TRAIN)
 		return DoCommandByTile(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 	else if (type == AI_BUS)
-		return DoCommandByTile(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_BUS_STATION);
+		return DoCommandByTile(tile, direction, RS_BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 	else
-		return DoCommandByTile(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRUCK_STATION);
+		return DoCommandByTile(tile, direction, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 // Builds a brdige. The second best out of the ones available for this player

@@ -496,6 +496,8 @@ static void InitializeDynamicVariables(void)
 	_stations_size = lengthof(_stations);
 	_station_sort = NULL;
 
+	_roadstops_size = lengthof(_roadstops);
+
 	_vehicles_size = lengthof(_vehicles);
 	_vehicle_sort = NULL;
 

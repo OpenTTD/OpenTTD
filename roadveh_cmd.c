@@ -164,6 +164,10 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //	v->u.road.unk2 = 0;
 //	v->u.road.overtaking = 0;
 
+		v->u.road.slot = NULL;
+		v->u.road.slotindex = 0;
+		v->u.road.slot_age = 0;
+
 		v->last_station_visited = 0xFFFF;
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
@@ -409,10 +413,10 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 static void ClearCrashedStation(Vehicle *v)
 {
 	uint tile = v->tile;
-	Station *st = GetStation(_map2[tile]);
 	byte *b, bb;
 
-	b = (_map5[tile] >= 0x47) ? &st->bus_stop_status : &st->truck_stop_status;
+	RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
+	b = &rs->status;
 
 	bb = *b;
 
@@ -607,9 +611,34 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	if (order->type == OT_GOTO_STATION) {
 		if (order->station == v->last_station_visited)
 			v->last_station_visited = 0xFFFF;
-
 		st = GetStation(order->station);
-		v->dest_tile = v->cargo_type == CT_PASSENGERS ? st->bus_tile : st->lorry_tile;
+
+		{
+			int32 *dist;
+			int32 mindist = 0xFFFFFFFF;
+			int num;
+			RoadStopType type;
+			RoadStop *rs;
+
+			type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+			num = GetNumRoadStops(st, type);
+			rs = GetPrimaryRoadStop(st, type);
+
+			assert (rs != NULL);
+
+			dist = malloc(num * sizeof(int32));
+
+			do {
+				*dist = GetTileDistAdv(v->tile, rs->xy);
+				if (*dist < mindist) {
+					v->dest_tile = rs->xy;
+				}
+				rs = rs->next;
+			} while ( rs != NULL );
+
+			free(dist);
+			dist = NULL;
+		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = _depots[order->station].xy;
 	}
@@ -990,10 +1019,10 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 			Station *st = GetStation(_map2[tile]);
 			byte val = _map5[tile];
 			if (v->cargo_type != CT_PASSENGERS) {
-				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stop_status&3))
+				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stops->status&3))
 					bitmask |= _road_veh_fp_ax_or[(val-0x43)&3];
 			} else {
-				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stop_status&3))
+				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stops->status&3))
 					bitmask |= _road_veh_fp_ax_or[(val-0x47)&3];
 			}
 		}
@@ -1073,6 +1102,29 @@ found_best_track:;
 	return best_track;
 }
 
+static int RoadFindPathToStation(const Vehicle *v, TileIndex tile)
+{
+	FindRoadToChooseData frd;
+	int i, best_track = -1;
+	uint best_dist = (uint) -1, best_maxlen = (uint) -1;
+
+	frd.dest = tile;
+	frd.maxtracklen = (uint) -1;
+	frd.mindist = (uint) -1;
+
+	for (i = 0; i < 4; i++) {
+		FollowTrack(v->tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
+
+		if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen )) {
+			best_dist = frd.mindist;
+			best_maxlen = frd.maxtracklen;
+			best_track = i;
+		}
+	}
+	return best_maxlen;
+}
+
+
 typedef struct RoadDriveEntry {
 	byte x,y;
 } RoadDriveEntry;
@@ -1087,6 +1139,13 @@ static const byte _road_veh_data_1[] = {
 };
 
 static const byte _roadveh_data_2[4] = { 0,1,8,9 };
+
+static inline void ClearSlot(Vehicle *v, RoadStop *rs)
+{
+	v->u.road.slot = NULL;
+	v->u.road.slot_age = 0;
+	rs->slot[v->u.road.slotindex] = INVALID_SLOT;
+}
 
 static void RoadVehEventHandler(Vehicle *v)
 {
@@ -1247,15 +1306,12 @@ again:
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
 			if ((tmp&7) >= 6) { v->cur_speed = 0; return; }
 			if (IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x4B)) {
-				Station *st = GetStation(_map2[v->tile]);
-				byte *b;
+				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
+				byte *b = &rs->status;
 
-				if (_map5[v->tile] >= 0x47) {
-					b = &st->bus_stop_status;
-				} else {
-					b = &st->truck_stop_status;
-				}
-				*b = (*b | ((v->u.road.state&2)?2:1)) & 0x7F;
+				//we have reached a loading bay, mark it as used
+				//and clear the usage bit (0x80) of the stop
+				*b = (*b | ((v->u.road.state&2)?2:1)) & ~0x80;
 			}
 		}
 
@@ -1341,10 +1397,10 @@ again:
 
 	if (v->u.road.state >= 0x20 &&
 			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
-		byte *b;
+		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
+		byte *b = &rs->status;
 
 		st = GetStation(_map2[v->tile]);
-		b = IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x47) ? &st->truck_stop_status : &st->bus_stop_status;
 
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
@@ -1384,6 +1440,17 @@ again:
 			v->current_order.flags = 0;
 		}
 		*b |= 0x80;
+
+		if (rs == v->u.road.slot) {
+			//we have arrived at the correct station
+			ClearSlot(v, rs);
+		} else if (v->u.road.slot != NULL) {
+			//we have arrived at the wrong station
+			//XXX The question is .. what to do? Actually we shouldn't be here
+			//but I guess we need to clear the slot
+			DEBUG(misc, 2) ("Multistop: Wrong station, force a slot clearing");
+			ClearSlot(v, rs);
+		}
 
 		StartRoadVehSound(v);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -1482,6 +1549,10 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 			(v->current_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) != 0)
 		return;
 
+	//If we already got a slot at a stop, use that FIRST, and go to a depot later
+	if (v->u.road.slot != NULL)
+		return;
+
 	i = FindClosestRoadDepot(v);
 
 	if (i < 0 || GetTileDist(v->tile, (&_depots[i])->xy) > 12) {
@@ -1508,11 +1579,15 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
+int dist_compare(const void *a, const void *b)
+{
+	return ( *(const uint32 *)a) - ( *(const uint32 *) b);
+}
+
 void OnNewDay_RoadVeh(Vehicle *v)
 {
 	int32 cost;
 	Station *st;
-	uint tile;
 
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
@@ -1527,9 +1602,86 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION) {
+		RoadStop *rs;
+		uint32 mindist = 0xFFFFFFFF;
+		int num;
+		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+
+		typedef struct {
+			uint32 dist;
+			RoadStop *rs;
+		} StopStruct;
+
+		StopStruct *stop, *firststop;
+
 		st = GetStation(v->current_order.station);
-		if ((tile=(v->cargo_type==CT_PASSENGERS ? st->bus_tile : st->lorry_tile)) != 0)
-			v->dest_tile = tile;
+		rs = GetPrimaryRoadStop(st, type);
+		num = GetNumRoadStops(st, type);
+
+		firststop = stop = malloc(num * sizeof(StopStruct));
+
+		//Current slot has expired
+		if ( (v->u.road.slot_age++ <= 0) && (v->u.road.slot != NULL)) {
+			ClearSlot(v, v->u.road.slot);
+		}
+
+		//We do not have a slot, so make one
+		if (v->u.road.slot == NULL) {
+			//first we need to find out how far our stations are away.
+			assert( rs != NULL);
+
+			do {
+				stop->dist = 0xFFFFFFFF;
+
+				//FIXME This doesn't fully work yet, as it only goes
+				//to one tile BEFORE the stop in question and doesn't
+				//regard the direction of the exit
+				stop->dist = RoadFindPathToStation(v, rs->xy);
+				stop->rs = rs;
+
+				if (stop->dist < mindist) {
+					mindist = stop->dist;
+				}
+
+				stop++;
+				rs = rs->next;
+			} while (rs != NULL);
+
+			if (mindist < 120) {	//if we're reasonably close, get us a slot
+				int k;
+				bubblesort(firststop, num, sizeof(StopStruct), dist_compare);
+
+				stop = firststop;
+				for (k = 0; k < num; k++) {
+					int i;
+					for (i = 0; i < NUM_SLOTS; i++) {
+						if ((stop->rs->slot[i] == INVALID_SLOT) && (stop->dist < 120)) {
+
+							//Hooray we found a free slot. Assign it
+							stop->rs->slot[i] = v->index;
+							v->u.road.slot = stop->rs;
+
+							v->dest_tile = stop->rs->xy;
+							v->u.road.slot_age = -30;
+							v->u.road.slotindex = i;
+
+							goto have_slot;	//jump out of BOTH loops
+
+						}
+					}
+					stop++;
+				}
+			}
+
+have_slot:
+		//now we couldn't assign a slot for one reason or another.
+		//so we just go to the nearest station
+		if (v->u.road.slot == NULL)
+			v->dest_tile = firststop->rs->xy;
+		}
+
+		free(firststop);
+		firststop = stop = NULL;
 	}
 
 	if (v->vehstatus & VS_STOPPED)

@@ -2567,10 +2567,10 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 		} else if (p->mode == 1) {
 			if (_want_road_truck_station) {
 				// Truck station
-				r = DoCommandByTile(c, p->attr, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_TRUCK_STATION);
+				r = DoCommandByTile(c, p->attr, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			} else {
 				// Bus station
-				r = DoCommandByTile(c, p->attr, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_BUS_STATION);
+				r = DoCommandByTile(c, p->attr, RS_BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			}
 clear_town_stuff:;
 
@@ -3627,8 +3627,8 @@ static void AiStateRemoveStation(Player *p)
 	used=in_use;
 	FOR_ALL_STATIONS(st) {
 		if (st->xy != 0 && st->owner == _current_player && !*used &&
-				((tile = st->bus_tile) != 0 ||
-					(tile = st->lorry_tile) != 0 ||
+				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
+					(st->truck_stops != NULL && (tile = st->truck_stops->xy)) != 0 ||
 					(tile = st->train_tile) != 0 ||
 					(tile = st->dock_tile) != 0 ||
 					(tile = st->airport_tile) != 0)) {

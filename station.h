@@ -14,10 +14,32 @@ typedef struct GoodsEntry {
 	byte last_age;
 } GoodsEntry;
 
+typedef enum RoadStopType {
+	RS_BUS,
+	RS_TRUCK
+} RoadStopType;
+
+enum { NUM_ROAD_STOPS = 250 };
+enum { ROAD_STOP_LIMIT = 8 };
+enum { NUM_SLOTS = 2 };
+enum { INVALID_SLOT = 0xFFFF };
+
+typedef struct RoadStop {
+	TileIndex xy;
+	bool used;
+	byte status;
+	uint32 index;
+	uint16 slot[NUM_SLOTS];
+	uint16 station;		//XXX should be StationIndex
+	uint8 type;
+	struct RoadStop *next;
+	struct RoadStop *prev;
+} RoadStop;
+
 struct Station {
 	TileIndex xy;
-	TileIndex bus_tile;
-	TileIndex lorry_tile;
+	RoadStop *bus_stops;
+	RoadStop *truck_stops;
 	TileIndex train_tile;
 	TileIndex airport_tile;
 	TileIndex dock_tile;
@@ -36,9 +58,6 @@ struct Station {
 	byte owner;
 	byte facilities;
 	byte airport_type;
-	byte truck_stop_status;
-	byte bus_stop_status;
-	byte blocked_months_obsolete;
 
 	// trainstation width/height
 	byte trainst_w, trainst_h;
@@ -53,6 +72,14 @@ struct Station {
 
 	VehicleID last_vehicle;
 	GoodsEntry goods[NUM_CARGO];
+
+	/* Stuff that is no longer used, but needed for conversion */
+	TileIndex bus_tile_obsolete;
+	TileIndex lorry_tile_obsolete;
+
+	byte truck_stop_status_obsolete;
+	byte bus_stop_status_obsolete;
+	byte blocked_months_obsolete;
 };
 
 enum {
@@ -68,7 +95,7 @@ enum {
 	HVOT_TRAIN = 1<<1,
 	HVOT_BUS = 1 << 2,
 	HVOT_TRUCK = 1 << 3,
-	HVOT_AIRCRAFT = 1<<4,
+	HVOT_AIRCRAFT = 1 << 4,
 	HVOT_SHIP = 1 << 5,
 	HVOT_BUOY = 1 << 6
 };
@@ -93,7 +120,9 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st);
 void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord(void);
 
+VARDEF RoadStop _roadstops[NUM_ROAD_STOPS * 2];
 VARDEF Station _stations[250];
+VARDEF uint _roadstops_size;
 VARDEF uint _stations_size;
 
 VARDEF SortStruct *_station_sort;
@@ -188,5 +217,11 @@ struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid);
  * structure is used for variational sprite groups. */
 uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype);
 int GetCustomStationsCount(enum StationClass sclass);
+
+RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
+inline int GetRoadStopType(TileIndex tile);
+uint GetNumRoadStops(const Station *st, RoadStopType type);
+RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
+RoadStop * GetFirstFreeRoadStop( void );
 
 #endif /* STATION_H */

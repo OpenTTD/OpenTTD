@@ -1886,6 +1886,9 @@ static const byte _roadveh_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,crashed_ctr),		SLE_UINT16),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,reverse_ctr),			SLE_UINT8),
 
+	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot), REF_ROADSTOPS, 6, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slotindex), SLE_UINT8, 6, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot_age), SLE_UINT8, 6, 255),
 	// reserve extra space in savegame here. (currently 16 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
 

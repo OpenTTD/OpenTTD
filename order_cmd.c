@@ -332,6 +332,12 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 
 			if (v->type == VEH_Train)
 				v->u.rail.days_since_order_progr = 0;
+
+			if (v->type == VEH_Road && v->u.road.slot != NULL) {
+				//Clear the slot
+				v->u.road.slot->slot[v->u.road.slotindex] = 0;
+				v->u.road.slot = NULL;
+			}
 		}
 
 		/* NON-stop flag is misused to see if a train is in a station that is
@@ -482,7 +488,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
 				FOR_VEHICLE_ORDERS(src, order) {
 					if (order->type == OT_GOTO_STATION) {
 						const Station *st = GetStation(order->station);
-						required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
+						required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_stops->xy : st->truck_stops->xy;
 						/* This station has not the correct road-bay, so we can't copy! */
 						if (!required_dst)
 							return CMD_ERROR;

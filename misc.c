@@ -743,6 +743,35 @@ int FindFirstBit(uint32 value)
 	return i;
 }
 
+//!We're writing an own sort algorithm here, as
+//!qsort isn't stable
+//!Since the number of elements will be low, a
+//!simple bubble sort will have to do :)
+
+void bubblesort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *))
+{
+	uint i,k;
+	void *buffer = malloc(size);
+	char *start = base;
+
+	nmemb--;
+
+	for (i = 0; i < nmemb; i++) {
+		for (k = 0; k < nmemb; k++) {
+			void *a, *b;
+			a = start + size * k;
+			b = start + size * (k + 1);
+			if (compar(a, b) > 0) {
+				memcpy(buffer, a, size);
+				memcpy(a, b, size);
+				memcpy(b, buffer, size);
+			}
+		}
+	}
+
+	free(buffer);
+	buffer = NULL;
+}
 
 static void Save_NAME(void)
 {

@@ -74,7 +74,8 @@ enum {
 	REF_VEHICLE     = 1,
 	REF_STATION     = 2,
 	REF_TOWN        = 3,
-	REF_VEHICLE_OLD = 4
+	REF_VEHICLE_OLD = 4,
+	REF_ROADSTOPS   = 5
 };
 
 
@@ -151,7 +152,7 @@ enum {
 #define SLE_VARX(t,c) 0x00 | ((t) & 0xF), (t) >> 4, c
 #define SLE_REFX(t,c) 0x10 | ((t) & 0xF), (t) >> 4, c
 #define SLE_CONDVARX(t,c,from,to) 0x40 | ((t) & 0xF), (t) >> 4, c, from, to
-#define SLE_CONDREFX(t,c,co) 0x50 | ((t) & 0xF), (t) >> 4, c, co
+#define SLE_CONDREFX(t,c,from,to) 0x50 | ((t) & 0xF), (t) >> 4, c, from, to
 #define SLE_WRITEBYTEX(t,b) 0x80 | ((t) & 0xF), (t) >> 4, b
 #define SLE_INCLUDEX(t,c) 0x90 | ((t) & 0xF), (t) >> 4, c
 

@@ -47,6 +47,9 @@ typedef struct VehicleRoad {
 	byte overtaking_ctr;
 	uint16 crashed_ctr;
 	byte reverse_ctr;
+	struct RoadStop *slot;
+	byte slotindex;
+	byte slot_age;
 } VehicleRoad;
 
 typedef struct VehicleSpecial {

@@ -290,4 +290,5 @@ byte GetOSVersion(void);
 void DeterminePaths(void);
 char * CDECL str_fmt(const char *str, ...);
 
+void bubblesort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *));
 #endif /* FUNCTIONS_H */

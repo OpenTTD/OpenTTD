@@ -89,12 +89,12 @@ static void PlaceRoad_Depot(uint tile)
 
 static void PlaceRoad_BusStation(uint tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, 0, CcRoadDepot, CMD_BUILD_BUS_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, RS_BUS, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 }
 
 static void PlaceRoad_TruckStation(uint tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, 0, CcRoadDepot, CMD_BUILD_TRUCK_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, RS_TRUCK, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 }
 
 static void PlaceRoad_DemolishArea(uint tile)
