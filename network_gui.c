@@ -76,6 +76,21 @@ static void NetworkTruncateString(char *name, const int max_width)
 
 extern const char _openttd_revision[];
 
+static FiosItem *selected_map = NULL; // to highlight slected map
+
+// called when a new server is found on the network
+void UpdateNetworkGameWindow(bool unselect)
+{
+	Window *w;
+	w = FindWindowById(WC_NETWORK_WINDOW, 0);
+	if (w != NULL) {
+		if (unselect)
+			_selected_item = NULL;
+		w->vscroll.count = _network_game_count;
+		SetWindowDirty(w);
+	}
+}
+
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -334,10 +349,14 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_KEYPRESS:
 		if (_selected_field != 3) {
 			if ( e->keypress.keycode == WKC_DELETE ) { // press 'delete' to remove servers
-				if (_selected_item != NULL && _selected_item->manually) {
+				if (_selected_item != NULL) {
 					NetworkGameListRemoveItem(_selected_item);
 					NetworkRebuildHostList();
 					SetWindowDirty(w);
+					_network_game_count--;
+					// reposition scrollbar
+					if (_network_game_count >= w->vscroll.cap && w->vscroll.pos > _network_game_count-w->vscroll.cap) w->vscroll.pos--;
+					UpdateNetworkGameWindow(false);
 					_selected_item = NULL;
 				}
 			}
@@ -410,21 +429,6 @@ static const WindowDesc _network_game_window_desc = {
 	_network_game_window_widgets,
 	NetworkGameWindowWndProc,
 };
-
-static FiosItem *selected_map = NULL; // to highlight slected map
-
-// called when a new server is found on the network
-void UpdateNetworkGameWindow(bool unselect)
-{
-	Window *w;
-	w = FindWindowById(WC_NETWORK_WINDOW, 0);
-	if (w != NULL) {
-		if (unselect)
-			_selected_item = NULL;
-		w->vscroll.count = _network_game_count;
-		SetWindowDirty(w);
-	}
-}
 
 void ShowNetworkGameWindow()
 {
