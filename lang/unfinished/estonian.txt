@@ -1509,8 +1509,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} kohalik võim keeldus sellest
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Linnade nimed - vajuta linna nimele, et viia vaade linnale
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Vaate viimine linnale
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Linna nime muutmine
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Reisijaid eelmisel kuul: {ORANGE}{COMMA16}{BLACK}  maksimum: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Posti eelmisel kuul: {ORANGE}{COMMA16}{BLACK}  maksimum: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Reisiaid eelmisel kuul: {ORANGE}{COMMA32}{BLACK}  maksimum: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Posti eelmisel kuul: {ORANGE}{COMMA32}{BLACK}  maksimum: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Kõrge büroohoone
 STR_2010_OFFICE_BLOCK						:Büroohoone
 STR_2011_SMALL_BLOCK_OF_FLATS					:Väike kortermaja
@@ -2218,6 +2218,29 @@ STR_8069_RUBBER_TRUCK						:Kummi vagun
 STR_806A_SUGAR_TRUCK						:Suhkru vagun
 STR_806B_COTTON_CANDY_HOPPER					:Suhkruvati vagun
 STR_806C_TOFFEE_HOPPER						:Iirise vagun
+STR_806D_BUBBLE_VAN						:Mullivagun
+STR_806E_COLA_TANKER						:Söevagun
+STR_806F_CANDY_VAN						:Maiustuste vagun
+STR_8070_TOY_VAN						:Mänguasjade vagun
+STR_8071_BATTERY_TRUCK						:Patareide vagun
+STR_8072_FIZZY_DRINK_TRUCK					:Kihisevate jookide vagun
+STR_8073_PLASTIC_TRUCK						:Plastiku vagun
+STR_8074_MPS_REGAL_BUS						:MPS kuninglik buss
+STR_8075_HEREFORD_LEOPARD_BUS					:Herefordi leopardi buss
+STR_8076_FOSTER_BUS						:Foster buss
+STR_8077_FOSTER_MKII_SUPERBUS					:Foster MkII superbuss
+STR_8078_PLODDYPHUT_MKI_BUS					:Ploddyphut MkI buss
+STR_8079_PLODDYPHUT_MKII_BUS					:Ploddyphut MkII Buss
+STR_807A_PLODDYPHUT_MKIII_BUS					:Ploddyphut MkIII Buss
+STR_807B_BALOGH_COAL_TRUCK					:Balogh söe veok.
+STR_807C_UHL_COAL_TRUCK						:Uhl söe veok
+STR_807D_DW_COAL_TRUCK						:DW söe veok
+STR_807E_MPS_MAIL_TRUCK						:MPS postiauto
+STR_807F_REYNARD_MAIL_TRUCK					:Reynard postiauto
+STR_8080_PERRY_MAIL_TRUCK					:Perry postiauto
+STR_8081_MIGHTYMOVER_MAIL_TRUCK					:MightyMover Mail Truck
+STR_8082_POWERNAUGHT_MAIL_TRUCK					:Powernaught postiauto
+STR_8083_WIZZOWOW_MAIL_TRUCK					:Wizzowow postiauto
 
 ##id 0x8800
 
