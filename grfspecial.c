@@ -30,6 +30,7 @@ struct GRFFile {
 
 static struct GRFFile *_cur_grffile, *_first_grffile;
 static int _cur_spriteid;
+static int _cur_stage;
 
 static int32 _paramlist[0x7f];
 static int _param_max;
@@ -77,7 +78,8 @@ do { \
 } while (0)
 
 
-static byte INLINE grf_load_byte(byte **buf) {
+static byte INLINE grf_load_byte(byte **buf)
+{
 	return *(*buf)++;
 }
 
@@ -115,19 +117,16 @@ static struct GRFFile *GetFileByGRFID(uint32 grfid)
 	return file;
 }
 
-#if 0
-/* Will be used very soon. */
-static struct GRFFile *GetFileByFilename(char *filename)
+static struct GRFFile *GetFileByFilename(const char *filename)
 {
 	struct GRFFile *file;
 
 	file = _first_grffile;
 	while ((file != NULL) && strcmp(file->filename, filename))
-		file = retval->next;
+		file = file->next;
 
 	return file;
 }
-#endif
 
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
@@ -900,7 +899,6 @@ static void SkipIf(byte *buf, int len)
 	 * B condition-type
 	 * V value
 	 * B num-sprites */
-	/* TODO: We only support few tests. */
 	/* TODO: More params. More condition types. */
 	uint8 param;
 	uint8 paramsize;
@@ -933,8 +931,7 @@ static void SkipIf(byte *buf, int len)
 			param_val = _opt.landscape;
 			break;
 		case 0x84:
-			/* XXX: This should be always true (at least until we get multiple loading stages?). */
-			param_val = 1;
+			param_val = _cur_stage;
 			break;
 		case 0x85:
 			param_val = _ttdpatch_flags[cond_val / 0x20];
@@ -1231,7 +1228,6 @@ static void GRFInhibit(byte *buf, int len)
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 	/* XXX: Should we handle forward deactivations? */
-	/* XXX: Even so will fully work only with stages support. */
 
 	byte num;
 	int i;
@@ -1271,7 +1267,8 @@ static void InitializeGRFSpecial(void)
 		| (1 << 0x17);		/* newstartyear */
 }
 
-void InitNewGRFFile(const char *filename, int sprite_offset) {
+void InitNewGRFFile(const char *filename, int sprite_offset)
+{
 	struct GRFFile *newfile;
 
 	newfile = malloc(sizeof(struct GRFFile));
@@ -1297,12 +1294,12 @@ void InitNewGRFFile(const char *filename, int sprite_offset) {
 
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
- * partial implementation yet; also, we ignore the stages stuff). */
+ * partial implementation yet). */
 /* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
 
-void DecodeSpecialSprite(int num, int spriteid)
+void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 {
 #define NUM_ACTIONS 0xF
 	static const SpecialSpriteHandler handlers[NUM_ACTIONS] = {
@@ -1334,17 +1331,70 @@ void DecodeSpecialSprite(int num, int spriteid)
 		initialized = 1;
 	}
 
+	_cur_stage = stage;
 	_cur_spriteid = spriteid;
 
 	for (i = 0; i != num; i++)
 		buf[i] = FioReadByte();
 
 	action = buf[0];
-	if (action < NUM_ACTIONS) {
-		if (_cur_grffile->flags & 0x0001)
+
+	/* XXX: Action 0x03 is temporarily processed together with actions 0x01
+	 * and 0x02 before it is fixed to be reentrant (probably storing the
+	 * superset information in {struct GRFFile}). --pasky */
+
+	if (stage == 0) {
+		/* During initialization, actions 0, 3, 4, 5 and 7 are ignored. */
+
+		if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04)
+		    || (action == 0x05) || (action == 0x07)) {
+			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
+			/* Do nothing. */
+
+		} else if (action < NUM_ACTIONS) {
+			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
+ 			handlers[action](buf, num);
+
+		} else {
+			grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
+		}
+
+	} else if (stage == 1) {
+		/* A .grf file is activated only if it was active when the game was
+		 * started.  If a game is loaded, only its active .grfs will be
+		 * reactivated, unless "loadallgraphics on" is used.  A .grf file is
+		 * considered active if its action 8 has been processed, i.e. its
+		 * action 8 hasn't been skipped using an action 7.
+		 *
+		 * During activation, only actions 0, 3, 4, 5, 7, 8, 9 and 0A are
+		 * carried out.  All others are ignored, because they only need to be
+		 * processed once at initialization.  */
+
+		if ((_cur_grffile == NULL) || strcmp(_cur_grffile->filename, filename))
+			_cur_grffile = GetFileByFilename(filename);
+
+		if (_cur_grffile == NULL)
+			error("File ``%s'' lost in cache.\n", filename);
+
+		if (!(_cur_grffile->flags & 0x0001)) {
+			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
+			/* Do nothing. */
+
+		} else if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04) || (action == 0x05)
+		           || (action == 0x07) || (action == 0x08) || (action == 0x09) || (action == 0x0A)) {
+			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
 			handlers[action](buf, num);
+
+		} else if (action < NUM_ACTIONS) {
+			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
+			/* Do nothing. */
+
+		} else {
+			grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
+		}
+
 	} else {
-		grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
+		error("Invalid stage %d", stage);
 	}
 
 	free(buf);

@@ -19,6 +19,8 @@ int _skip_sprites = 0;
 int _replace_sprites_count[16];
 int _replace_sprites_offset[16];
 
+static const char *_cur_grffile;
+static int _loading_stage;
 static int _skip_specials;
 static SpriteHdr _cur_sprite;
 
@@ -85,7 +87,7 @@ static const uint16 * const _slopes_spriteindexes[] = {
 static void CompactSpriteCache();
 
 void InitNewGRFFile(const char *filename, int sprite_offset);
-void DecodeSpecialSprite(int num, int load_index);
+void DecodeSpecialSprite(const char *filename, int num, int load_index, int stage);
 
 static void ReadSpriteHeaderSkipData(int num, int load_index)
 {
@@ -110,7 +112,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		if (_skip_specials || deaf) {
 			FioSkipBytes(num);
 		} else {
-			DecodeSpecialSprite(num, load_index);
+			DecodeSpecialSprite(_cur_grffile, num, load_index, _loading_stage);
 		}
 		return;
 	}
@@ -311,6 +313,7 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	int i;
 	
 	FioOpenFile(file_index, filename);
+	_cur_grffile = filename;
 	_skip_specials = 0;
 	_skip_sprites = 0;
 
@@ -772,6 +775,8 @@ static void LoadSpriteTables()
 {
 	int i,j;
 
+	_loading_stage = 1;
+
 	/*
 	 * Note for developers:
 	 *   Keep in mind that when you add a LoadGrfIndexed in the 'if'-section below
@@ -789,6 +794,8 @@ static void LoadSpriteTables()
 		// So just load all files from disk..
 
 		int load_index = 0;
+		int old_load_index = 0;
+
 		for(i=0; _filename_list[i] != NULL; i++) {
 			load_index += LoadGrfFile(_filename_list[i], load_index, (byte)i);
 		}
@@ -805,10 +812,22 @@ static void LoadSpriteTables()
 
 		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
-		for(j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
+
+		/* Load newgrf sprites */
+
+		_loading_stage = 0;
+		old_load_index = load_index;
+
+		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
 			InitNewGRFFile(_newgrf_files[j], load_index);
 			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
 		}
+
+		_loading_stage = 1;
+		load_index = old_load_index;
+		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++)
+			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+
 
 		// If needed, save the cache to file
 		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);
