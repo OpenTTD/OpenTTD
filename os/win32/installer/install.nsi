@@ -112,7 +112,7 @@ Section "!OpenTTD" Section1
   File ${PATH_ROOT}readme.txt
 
 	; Copy executable
-	File /oname=openttd.exe        ${PATH_ROOT}ReleasePNG\ttd.exe
+	File /oname=openttd.exe        ${PATH_ROOT}ReleasePNG\openttd.exe
 	File ${PATH_ROOT}strgen\Release\strgen.exe
 
 

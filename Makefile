@@ -170,7 +170,7 @@ EXE=
 endif
 
 # Set output executable names
-TTD=ttd$(EXE)
+TTD=openttd$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
 
@@ -542,8 +542,10 @@ rev.c: FORCE
 FORCE:
 
 
+# ttd$(EXE) is removed just to make sure people execute the right binary (openttd$(EXE))
+# remove this for next release!
 clean:
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS)
+	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) ttd$(EXE)
 
 mrproper: clean
 	rm -rf $(MAKE_CONFIG)
