@@ -1114,7 +1114,9 @@ static void AiNew_State_BuildVehicle(Player *p) {
 
 // Put the stations in the order list
 static void AiNew_State_GiveOrders(Player *p) {
-    int order, flags;
+		int idx;
+		Order order;
+
     assert(p->ainew.state == AI_STATE_GIVE_ORDERS);
 
     if (p->ainew.veh_main_id != (VehicleID)-1) {
@@ -1131,23 +1133,29 @@ static void AiNew_State_GiveOrders(Player *p) {
     }
 
     // When more then 1 vehicle, we send them to different directions
-    order = 0;
-    flags = (_map2[p->ainew.from_tile] << 8) | OT_GOTO_STATION;
+		idx = 0;
+		order.type = OT_GOTO_STATION;
+		order.flags = 0;
+		order.station = _map2[p->ainew.from_tile];
     if (p->ainew.tbt == AI_TRUCK && p->ainew.from_deliver)
-    	flags |= OF_FULL_LOAD;
-    DoCommandByTile(0, p->ainew.veh_id + (order << 16), flags, DC_EXEC, CMD_INSERT_ORDER);
+			order.flags |= OF_FULL_LOAD;
+		DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 
-    order = 1;
-    flags = (_map2[p->ainew.to_tile] << 8) | OT_GOTO_STATION;
+		idx = 1;
+		order.type = OT_GOTO_STATION;
+		order.flags = 0;
+		order.station = _map2[p->ainew.to_tile];
     if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
-    	flags |= OF_FULL_LOAD;
-    DoCommandByTile(0, p->ainew.veh_id + (order << 16), flags, DC_EXEC, CMD_INSERT_ORDER);
+			order.flags |= OF_FULL_LOAD;
+		DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 
 	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
     if (_patches.gotodepot) {
-    	order = 2;
-	    flags = (GetDepotByTile(p->ainew.depot_tile) << 8) | OT_GOTO_DEPOT | OF_UNLOAD;
-	    DoCommandByTile(0, p->ainew.veh_id + (order << 16), flags, DC_EXEC, CMD_INSERT_ORDER);
+			idx = 2;
+			order.type = OT_GOTO_DEPOT;
+			order.flags = OF_UNLOAD;
+			order.station = GetDepotByTile(p->ainew.depot_tile);
+			DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
     // Start the engines!

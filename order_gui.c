@@ -161,8 +161,9 @@ Vehicle *GetVehicleOnTile(TileIndex tile, byte owner)
 	return VehicleFromPos(tile, &fs, (VehicleFromPosProc*)FindVehicleCallb);
 }
 
-static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
+static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 {
+	Order order;
 	Station *st;
 	int st_index;
 
@@ -172,19 +173,28 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
 				if ((_map5[tile]&0xFC)==0xC0)
-					return (GetDepotByTile(tile)<<8) | OT_GOTO_DEPOT | OF_UNLOAD;
+					order.type = OT_GOTO_DEPOT;
+					order.flags = OF_UNLOAD;
+					order.station = GetDepotByTile(tile);
+					return order;
 			}
 			break;
 
 		case MP_STREET:
 			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player)
-				return (GetDepotByTile(tile)<<8) | OT_GOTO_DEPOT | OF_UNLOAD;
+				order.type = OT_GOTO_DEPOT;
+				order.flags = OF_UNLOAD;
+				order.station = GetDepotByTile(tile);
+				return order;
 			break;
 
 		case MP_STATION:
 			if (v->type != VEH_Aircraft) break;
 			if ( IsAircraftHangarTile(tile) && _map_owner[tile] == _local_player)
-				return (_map2[tile]<<8) | OF_UNLOAD | OT_GOTO_DEPOT | OF_NON_STOP;
+				order.type = OT_GOTO_DEPOT;
+				order.flags = OF_UNLOAD | OF_NON_STOP;
+				order.station = _map2[tile];
+				return order;
 			break;
 
 		case MP_WATER:
@@ -194,7 +204,10 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 				case 0x81: tile--; break;
 				case 0x83: tile-= TILE_XY(0,1); break;
 				}
-				return (GetDepotByTile(tile)<<8) | OT_GOTO_DEPOT | OF_UNLOAD;
+				order.type = OT_GOTO_DEPOT;
+				order.flags = OF_UNLOAD;
+				order.station = GetDepotByTile(tile);
+				return order;
 			}
 		}
 	}
@@ -203,8 +216,12 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 	if (IS_TILETYPE(tile, MP_RAILWAY)
 	&& v->type == VEH_Train 
 	&& _map_owner[tile] == _local_player
-	&& (_map5[tile]&0xFE)==0xC4)
-		return (GetWaypointByTile(tile)<<8) | OT_GOTO_WAYPOINT;
+	&& (_map5[tile]&0xFE)==0xC4) {
+		order.type = OT_GOTO_WAYPOINT;
+		order.flags = 0;
+		order.station = GetWaypointByTile(tile);
+		return order;
+	}
 
 	if (IS_TILETYPE(tile, MP_STATION)) {
 		st = DEREF_STATION(st_index = _map2[tile]);
@@ -216,13 +233,19 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 			(facil=FACIL_AIRPORT, v->type == VEH_Aircraft) ||
 			(facil=FACIL_BUS_STOP, v->type == VEH_Road && v->cargo_type == CT_PASSENGERS) ||
 			(facil=FACIL_TRUCK_STOP, 1);
-			if (st->facilities & facil)
-				return (st_index << 8) | OT_GOTO_STATION;
+			if (st->facilities & facil) {
+				order.type = OT_GOTO_STATION;
+				order.flags = 0;
+				order.station = st_index;
+				return order;
+			}
 		}
 	}
 
 	// not found
-	return (uint)-1;
+	order.type = OT_NOTHING;
+	order.flags = 0;
+	return order;
 }
 
 static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
@@ -251,7 +274,7 @@ static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
 
 static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
 {
-	uint cmd;
+	Order cmd;
 	Vehicle *u;
 
 	// check if we're clicking on a vehicle first.. clone orders in that case.
@@ -260,9 +283,9 @@ static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
 		return;
 
 	cmd = GetOrderCmdFromTile(v, tile);
-	if ( cmd == (uint)-1) return;
+	if (cmd.type == OT_NOTHING) return;
 
-	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), cmd, NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
+	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), PackOrder(&cmd), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
 		if (WP(w,order_d).sel != -1)
 			WP(w,order_d).sel++;
 		ResetObjectToPlace();

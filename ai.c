@@ -2417,15 +2417,20 @@ handle_nocash:
 
 	for(i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
-		uint flags = (AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule) << 8) + OT_GOTO_STATION;
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS ||
 							p->ai.cargo_type == CT_MAIL ||
 							(_opt.landscape==LT_NORMAL && p->ai.cargo_type == CT_VALUABLES));
+		Order order;
 
-		if (!is_pass && i == 1) flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0)) flags |= OF_FULL_LOAD;
+		order.type = OT_GOTO_STATION;
+		order.flags = 0;
+		order.station = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
 
-		DoCommandByTile(0, loco_id + (i << 16),	flags, DC_EXEC, CMD_INSERT_ORDER);
+		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+			order.flags |= OF_FULL_LOAD;
+
+		DoCommandByTile(0, loco_id + (i << 16),	PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
@@ -3164,15 +3169,20 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 	for(i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
-		uint flags  = (AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule) << 8) + OT_GOTO_STATION;
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS ||
 							p->ai.cargo_type == CT_MAIL ||
 							(_opt.landscape==LT_NORMAL && p->ai.cargo_type == CT_VALUABLES));
+		Order order;
 
-		if (!is_pass && i == 1) flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0)) flags |= OF_FULL_LOAD;
+		order.type = OT_GOTO_STATION;
+		order.flags = 0;
+		order.station = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
 
-		DoCommandByTile(0, loco_id + (i << 16),	flags, DC_EXEC, CMD_INSERT_ORDER);
+		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+			order.flags |= OF_FULL_LOAD;
+
+		DoCommandByTile(0, loco_id + (i << 16),	PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
@@ -3474,13 +3484,18 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	for(i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
-		uint flags = (AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule) << 8) + OT_GOTO_STATION;
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS || p->ai.cargo_type == CT_MAIL);
+		Order order;
 
-		if (!is_pass && i == 1) flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0)) flags |= OF_FULL_LOAD;
+		order.type = OT_GOTO_STATION;
+		order.flags = 0;
+		order.station = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
 
-		DoCommandByTile(0, loco_id + (i << 16), flags, DC_EXEC, CMD_INSERT_ORDER);
+		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+			order.flags |= OF_FULL_LOAD;
+
+		DoCommandByTile(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
