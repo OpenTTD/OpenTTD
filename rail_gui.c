@@ -744,7 +744,7 @@ static const Widget _build_monorail_widgets[] = {
 {      WWT_PANEL,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,     7,   328,   349,    14,    35, SPR_OPENTTD_BASE + 27, STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,     7,   350,   371,    14,    35, 742,	STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
 
 {   WIDGETS_END},
 };
@@ -781,7 +781,7 @@ static const Widget _build_maglev_widgets[] = {
 {      WWT_PANEL,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,     7,   328,   349,    14,    35, SPR_OPENTTD_BASE + 29, STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,     7,   350,   371,    14,    35, 742,	STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
 
 {   WIDGETS_END},
 };
