@@ -1094,8 +1094,16 @@ void IConsoleCmdExec(const char* cmdstr)
 	uint i;
 	uint l;
 
-	if (strlen(cmdstr) == 0) // only execute if there is something typed obviously
-		return;
+	for (; strchr("\n\r \t", *cmdstr) != NULL; ++cmdstr) {
+		switch (*cmdstr) {
+			case '\0':
+			case '#':
+				return;
+
+			default:
+				break;
+		}
+	}
 
 	if (_stdlib_con_developer)
 		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_cmdline: %s", cmdstr);
