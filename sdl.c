@@ -501,7 +501,7 @@ static void SdlVideoStop()
 
 static int SdlVideoMainLoop()
 {
-	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30, cur_ticks, pal_tick ;
+	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30, cur_ticks, pal_tick = 0;
 	int i;
 	uint32 mod;
 	int numkeys;
