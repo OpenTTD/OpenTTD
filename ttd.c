@@ -1163,7 +1163,7 @@ void GameLoop(void)
 	if (!_pause || _cheats.build_in_pause.value)
 		MoveAllTextEffects();
 
-	MouseLoop();
+	InputLoop();
 
 	if (_game_mode != GM_MENU)
 		MusicLoop();

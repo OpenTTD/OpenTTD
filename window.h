@@ -566,7 +566,7 @@ void InitWindowSystem(void);
 void UnInitWindowSystem(void);
 void ResetWindowSystem(void);
 int GetMenuItemIndex(Window *w, int x, int y);
-void MouseLoop(void);
+void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(Window *w, byte widget_index);
 

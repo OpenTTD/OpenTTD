@@ -1284,37 +1284,11 @@ static void HandleKeypress(uint32 key)
 extern void UpdateTileSelection(void);
 extern bool VpHandlePlaceSizingDrag(void);
 
-void MouseLoop(void)
+static void MouseLoop(int click, int mousewheel)
 {
 	int x,y;
 	Window *w;
 	ViewPort *vp;
-	int click;
-	int mousewheel;
-
-	_current_player = _local_player;
-
-	// Handle pressed keys
-	if (_pressed_key) {
-		uint32 key = _pressed_key; _pressed_key = 0;
-		HandleKeypress(key);
-	}
-
-	// Mouse event?
-	click = 0;
-	if (_left_button_down && !_left_button_clicked) {
-		_left_button_clicked = true;
-		click = 1;
-	} else if (_right_button_clicked) {
-		_right_button_clicked = false;
-		click = 2;
-	}
-
-	mousewheel = 0;
-	if (_cursor.wheel) {
-		mousewheel = _cursor.wheel;
-		_cursor.wheel = 0;
-	}
 
 	DecreaseWindowCounters();
 	HandlePlacePresize();
@@ -1409,6 +1383,39 @@ void MouseLoop(void)
 			DispatchRightClickEvent(w, x - w->left, y - w->top);
 	}
 }
+
+void InputLoop(void)
+{
+	int click;
+	int mousewheel;
+
+	_current_player = _local_player;
+
+	// Handle pressed keys
+	if (_pressed_key) {
+		uint32 key = _pressed_key; _pressed_key = 0;
+		HandleKeypress(key);
+	}
+
+	// Mouse event?
+	click = 0;
+	if (_left_button_down && !_left_button_clicked) {
+		_left_button_clicked = true;
+		click = 1;
+	} else if (_right_button_clicked) {
+		_right_button_clicked = false;
+		click = 2;
+	}
+
+	mousewheel = 0;
+	if (_cursor.wheel) {
+		mousewheel = _cursor.wheel;
+		_cursor.wheel = 0;
+	}
+
+	MouseLoop(click, mousewheel);
+}
+
 
 static int _we4_timer;
 
