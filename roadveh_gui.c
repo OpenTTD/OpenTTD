@@ -707,36 +707,41 @@ void ShowRoadDepotWindow(uint tile)
 static SortStruct _road_sort[NUM_NORMAL_VEHICLES];
 static uint16 _num_road_sort[MAX_PLAYERS];
 
-static void MakeSortedRoadList(byte owner)
+static void GlobalSortRoadVehList()
+{
+	const Vehicle *v;
+	uint16 *i;
+	uint32 n = 0;
+
+	// reset #-of roadvehicles to 0 because ++ is used for value-assignment
+	for (i = _num_road_sort; i != endof(_num_road_sort); i++) {*i = 0;}
+
+	FOR_ALL_VEHICLES(v) {
+		if(v->type == VEH_Road) {
+			_road_sort[n].index = v->index;
+			_road_sort[n++].owner = v->owner;
+			_num_road_sort[v->owner]++; // add number of roadvehicless of player
+		}
+	}
+
+	// create cumulative roadvehicle-ownership
+	// roads are stored as a cummulative index, eg 25, 41, 43. This means
+	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
+	for (i = &_num_road_sort[1]; i != endof(_num_road_sort); i++) {*i += *(i-1);}
+
+	qsort(_road_sort, n, sizeof(_road_sort[0]), GeneralOwnerSorter); // sort by owner
+
+	// since indexes are messed up after adding/removing a station, mark all lists dirty
+	memset(_road_sort_dirty, true, sizeof(_road_sort_dirty));
+	_vehicle_sort_dirty[VEHROAD] = false;
+
+	DEBUG(misc, 1) ("Resorting global roadvehicles list...");
+}
+
+static void MakeSortedRoadVehList(byte owner)
 {
 	SortStruct *firstelement;
-	Vehicle *v;
 	uint32 n = 0;
-	uint16 *i;
-
-	if (_vehicle_sort_dirty[VEHROAD]) { // only resort the whole array if vehicles have been added/removed
-		// reset to 0 just to be sure
-		for (i = _num_road_sort; i != endof(_num_road_sort); i++) {*i = 0;}
-
-		FOR_ALL_VEHICLES(v) {
-			if(v->type == VEH_Road) {
-				_road_sort[n].index = v->index;
-				_road_sort[n++].owner = v->owner;
-				_num_road_sort[v->owner]++; // add number of roads of player
-			}
-		}
-
-		// create cumulative road-ownage
-		// roads are stored as a cummulative index, eg 25, 41, 43. This means
-		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-		for (i = &_num_road_sort[1]; i != endof(_num_road_sort); i++) {*i += *(i-1);}
-
-		// sort by owner, then only subsort the requested owner-vehicles
-		qsort(_road_sort, n, sizeof(_road_sort[0]), GeneralOwnerSorter);
-
-		_last_vehicle_idx = 0; // used for "cache" in namesorting
-		_vehicle_sort_dirty[VEHROAD] = false;
-	}
 
 	if (owner == 0) { // first element starts at 0th element and has n elements as described above
 		firstelement =	&_road_sort[0];
@@ -748,7 +753,10 @@ static void MakeSortedRoadList(byte owner)
 
 	_internal_sort_order			= _road_sort_order[owner];
 	_internal_name_sorter_id	= STR_SV_ROADVEH_NAME;
+	_last_vehicle_idx = 0; // used for "cache" in namesorting
 	qsort(firstelement, n, sizeof(_road_sort[0]), _vehicle_sorter[_road_sort_type[owner]]);
+
+	_road_sort_dirty[owner] = false;
 
 	DEBUG(misc, 1) ("Resorting Roadvehicles list player %d...", owner+1);
 }
@@ -763,9 +771,12 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		if (_road_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
 			w->disabled_state |= (1 << 2);
 
-		if (_road_sort_dirty[window_number] || _vehicle_sort_dirty[VEHROAD]) {
-			_road_sort_dirty[window_number] = false;
-			MakeSortedRoadList(window_number);
+		// resort roadvehicles window if roadvehicles have been added/removed
+		if (_vehicle_sort_dirty[VEHROAD])
+			GlobalSortRoadVehList();
+
+		if (_road_sort_dirty[window_number]) {
+			MakeSortedRoadVehList(window_number);
 			/* reset sorting timeout */
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = PERIODIC_RESORT_DAYS;

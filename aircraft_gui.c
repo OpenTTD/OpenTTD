@@ -868,36 +868,41 @@ static void DrawSmallSchedule(Vehicle *v, int x, int y) {
 static SortStruct _aircraft_sort[NUM_NORMAL_VEHICLES];
 static uint16 _num_aircraft_sort[MAX_PLAYERS];
 
+static void GlobalSortAircraftList()
+{
+	const Vehicle *v;
+	uint16 *i;
+	uint32 n = 0;
+
+	// reset #-of aircraft to 0 because ++ is used for value-assignment
+	for (i = _num_aircraft_sort; i != endof(_num_aircraft_sort); i++) {*i = 0;}
+
+	FOR_ALL_VEHICLES(v) {
+		if(v->type == VEH_Aircraft && v->subtype <= 2) {
+			_aircraft_sort[n].index = v->index;
+			_aircraft_sort[n++].owner = v->owner;
+			_num_aircraft_sort[v->owner]++; // add number of aircraft of player
+		}
+	}
+
+	// create cumulative aircraft-ownership
+	// aircraft are stored as a cummulative index, eg 25, 41, 43. This means
+	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
+	for (i = &_num_aircraft_sort[1]; i != endof(_num_aircraft_sort); i++) {*i += *(i-1);}
+
+	qsort(_aircraft_sort, n, sizeof(_aircraft_sort[0]), GeneralOwnerSorter); // sort by owner
+
+	// since indexes are messed up after adding/removing a station, mark all lists dirty
+	memset(_aircraft_sort_dirty, true, sizeof(_aircraft_sort_dirty));
+	_vehicle_sort_dirty[VEHAIRCRAFT] = false;
+
+	DEBUG(misc, 1) ("Resorting global aircraft list...");	
+}
+
 static void MakeSortedAircraftList(byte owner)
 {
 	SortStruct *firstelement;
-	Vehicle *v;
 	uint32 n = 0;
-	uint16 *i;
-
-	if (_vehicle_sort_dirty[VEHAIRCRAFT]) { // only resort the whole array if vehicles have been added/removed
-		// reset to 0 just to be sure
-		for (i = _num_aircraft_sort; i != endof(_num_aircraft_sort); i++) {*i = 0;}
-
-		FOR_ALL_VEHICLES(v) {
-			if(v->type == VEH_Aircraft && v->subtype <= 2) {
-				_aircraft_sort[n].index = v->index;
-				_aircraft_sort[n++].owner = v->owner;
-				_num_aircraft_sort[v->owner]++; // add number of aircraft of player
-			}
-		}
-
-		// create cumulative aircraft-ownage
-		// aircraft are stored as a cummulative index, eg 25, 41, 43. This means
-		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-		for (i = &_num_aircraft_sort[1]; i != endof(_num_aircraft_sort); i++) {*i += *(i-1);}
-
-		// sort by owner, then only subsort the requested owner-vehicles
-		qsort(_aircraft_sort, n, sizeof(_aircraft_sort[0]), GeneralOwnerSorter);
-
-		_last_vehicle_idx = 0; // used for "cache" in namesorting
-		_vehicle_sort_dirty[VEHAIRCRAFT] = false;
-	}
 
 	if (owner == 0) { // first element starts at 0th element and has n elements as described above
 		firstelement =	&_aircraft_sort[0];
@@ -909,7 +914,10 @@ static void MakeSortedAircraftList(byte owner)
 
 	_internal_sort_order			= _aircraft_sort_order[owner];
 	_internal_name_sorter_id	= STR_SV_AIRCRAFT_NAME;
+	_last_vehicle_idx = 0; // used for "cache" in namesorting
 	qsort(firstelement, n, sizeof(_aircraft_sort[0]), _vehicle_sorter[_aircraft_sort_type[owner]]);
+
+	_aircraft_sort_dirty[owner] = false;
 
 	DEBUG(misc, 1) ("Resorting Aircraft list player %d...", owner+1);
 }
@@ -924,8 +932,11 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		if (_aircraft_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
 			w->disabled_state |= (1 << 2);
 
-		if (_aircraft_sort_dirty[window_number] || _vehicle_sort_dirty[VEHAIRCRAFT]) {
-			_aircraft_sort_dirty[window_number] = false;
+		// resort shipps window if roadvehicles have been added/removed
+		if (_vehicle_sort_dirty[VEHAIRCRAFT])
+			GlobalSortAircraftList();
+
+		if (_aircraft_sort_dirty[window_number]) {
 			MakeSortedAircraftList(window_number);
 			/* reset sorting timeout */
 			w->custom[0] = DAY_TICKS;

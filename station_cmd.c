@@ -313,7 +313,8 @@ static void StationInitialize(Station *st, TileIndex tile)
 		ge->last_speed = 0;
 		ge->last_age = 0xFF;
 	}
-	_station_sort_dirty = true;
+
+	_global_station_sort_dirty = true; // build a new station
 }
 
 // Update the virtual coords needed to draw the station sign.
@@ -2026,7 +2027,7 @@ static void DeleteStation(Station *st)
 
 	DeleteName(st->string_id);
 	MarkStationDirty(st);
-	_station_sort_dirty = true;
+	_global_station_sort_dirty = true; // delete station, remove sign
 	InvalidateWindowClasses(WC_STATION_LIST);
 
 	index = st->index;
@@ -2247,7 +2248,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->string_id = str;
 		UpdateStationVirtCoord(st);
 		DeleteName(old_str);
-		_station_sort_dirty = true;
+		_station_sort_dirty[st->owner] = true; // rename a station
 		MarkWholeScreenDirty();
 	} else {
 		DeleteName(str);
@@ -2426,7 +2427,7 @@ static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 		Station *st = DEREF_STATION(_map2[tile]);
 		_map_owner[tile] = new_player;
 		st->owner = new_player;
-		_station_sort_dirty = true;
+		_global_station_sort_dirty = true; // transfer ownership of station to another player
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -2476,11 +2477,16 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 void InitializeStations()
 {
 	int i;
+	
 	memset(_stations, 0, sizeof(_stations));
-	for(i=0;i!=lengthof(_stations); i++)
+	for(i = 0; i != lengthof(_stations); i++)
 		_stations[i].index=i;
+
 	_station_tick_ctr = 0;
-	_station_sort_dirty = true;	// set stations to be sorted on first load
+
+	// set stations to be sorted on load of savegame
+	memset(_station_sort_dirty, true, sizeof(_station_sort_dirty));
+	_global_station_sort_dirty = true; // load of savegame
 }
 
 

@@ -1140,36 +1140,41 @@ void ShowTrainDetailsWindow(Vehicle *v)
 static SortStruct _train_sort[NUM_NORMAL_VEHICLES];
 static uint16 _num_train_sort[MAX_PLAYERS];
 
+static void GlobalSortTrainList()
+{
+	const Vehicle *v;
+	uint16 *i;
+	uint32 n = 0;
+
+	// reset #-of trains to 0 because ++ is used for value-assignment
+	for (i = _num_train_sort; i != endof(_num_train_sort); i++) {*i = 0;}
+
+	FOR_ALL_VEHICLES(v) {
+		if(v->type == VEH_Train && v->subtype == 0) {
+			_train_sort[n].index = v->index;
+			_train_sort[n++].owner = v->owner;
+			_num_train_sort[v->owner]++; // add number of trains of player
+		}
+	}
+
+	// create cumulative train-ownership
+	// trains are stored as a cummulative index, eg 25, 41, 43. This means
+	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
+	for (i = &_num_train_sort[1]; i != endof(_num_train_sort); i++) {*i += *(i-1);}
+
+	qsort(_train_sort, n, sizeof(_train_sort[0]), GeneralOwnerSorter); // sort by owner
+
+	// since indexes are messed up after adding/removing a station, mark all lists dirty
+	memset(_train_sort_dirty, true, sizeof(_train_sort_dirty));
+	_vehicle_sort_dirty[VEHTRAIN] = false;
+
+	DEBUG(misc, 1) ("Resorting global trains list...");	
+}
+
 static void MakeSortedTrainList(byte owner)
 {
 	SortStruct *firstelement;
-	Vehicle *v;
 	uint32 n = 0;
-	uint16 *i;
-
-	if (_vehicle_sort_dirty[VEHTRAIN]) { // only resort the whole array if vehicles have been added/removed
-		// reset to 0 just to be sure
-		for (i = _num_train_sort; i != endof(_num_train_sort); i++) {*i = 0;}
-
-		FOR_ALL_VEHICLES(v) {
-			if(v->type == VEH_Train && v->subtype == 0) {
-				_train_sort[n].index = v->index;
-				_train_sort[n++].owner = v->owner;
-				_num_train_sort[v->owner]++; // add number of trains of player
-			}
-		}
-
-		// create cumulative train-ownage
-		// trains are stored as a cummulative index, eg 25, 41, 43. This means
-		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-		for (i = &_num_train_sort[1]; i != endof(_num_train_sort); i++) {*i += *(i-1);}
-
-		// sort by owner, then only subsort the requested owner-vehicles
-		qsort(_train_sort, n, sizeof(_train_sort[0]), GeneralOwnerSorter);
-
-		_last_vehicle_idx = 0; // used for "cache" in namesorting
-		_vehicle_sort_dirty[VEHTRAIN] = false;
-	}
 
 	if (owner == 0) { // first element starts at 0th element and has n elements as described above
 		firstelement =	&_train_sort[0];
@@ -1181,7 +1186,10 @@ static void MakeSortedTrainList(byte owner)
 
 	_internal_sort_order			= _train_sort_order[owner];
 	_internal_name_sorter_id	= STR_SV_TRAIN_NAME;
+	_last_vehicle_idx = 0; // used for "cache" in namesorting
 	qsort(firstelement, n, sizeof(_train_sort[0]), _vehicle_sorter[_train_sort_type[owner]]);
+
+	_train_sort_dirty[owner] = false;
 
 	DEBUG(misc, 1) ("Resorting Trains list player %d...", owner+1);
 }
@@ -1196,8 +1204,11 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		if (_train_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
 			w->disabled_state |= (1 << 2);
 
-		if (_train_sort_dirty[window_number] || _vehicle_sort_dirty[VEHTRAIN]) {
-			_train_sort_dirty[window_number] = false;
+		// resort trains window if roadvehicles have been added/removed
+		if (_vehicle_sort_dirty[VEHTRAIN])
+			GlobalSortTrainList();
+
+		if (_train_sort_dirty[window_number]) {
 			MakeSortedTrainList(window_number);
 			/* reset sorting timeout */
 			w->custom[0] = DAY_TICKS;

@@ -79,7 +79,8 @@ void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord();
 
 VARDEF Station _stations[250];
-VARDEF bool _station_sort_dirty;
+VARDEF bool _station_sort_dirty[MAX_PLAYERS];
+VARDEF bool _global_station_sort_dirty;
 
 #define DEREF_STATION(i) (&_stations[i])
 #define FOR_ALL_STATIONS(st) for(st=_stations; st != endof(_stations); st++)

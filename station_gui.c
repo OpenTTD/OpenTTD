@@ -73,13 +73,13 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	return strcmp(buf1, _bufcache);	// sort by name
 }
 
-static void MakeSortedStationList(byte owner)
+static void GlobalSortStationList()
 {
-	SortStruct *firstelement;
-	Station *st;
+	const Station *st;
 	uint32 n = 0;
 	uint16 *i;
-	// reset to 0 just to be sure
+
+	// reset #-of stations to 0 because ++ is used for value-assignment
 	for (i = _num_station_sort; i != endof(_num_station_sort); i++) {*i = 0;}
 
 	FOR_ALL_STATIONS(st) {
@@ -90,15 +90,24 @@ static void MakeSortedStationList(byte owner)
 		}
 	}
 
-	// create cumulative station-ownage
+	// create cumulative station-ownership
 	// stations are stored as a cummulative index, eg 25, 41, 43. This means
 	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
 	for (i = &_num_station_sort[1]; i != endof(_num_station_sort); i++) {*i += *(i-1);}
 
-	_last_station_idx = 0; // used for "cache"
+	qsort(_station_sort, n, sizeof(_station_sort[0]), GeneralOwnerSorter); // sort by owner
 
-	// sort by owner, then only subsort the requested owner-vehicles
-	qsort(_station_sort, n, sizeof(_station_sort[0]), GeneralOwnerSorter);
+	// since indexes are messed up after adding/removing a station, mark all lists dirty
+	memset(_station_sort_dirty, true, sizeof(_station_sort_dirty));
+	_global_station_sort_dirty = false;
+
+	DEBUG(misc, 1) ("Resorting global station list...");
+}
+
+static void MakeSortedStationList(byte owner)
+{
+	SortStruct *firstelement;
+	uint32 n = 0;
 
 	if (owner == 0) { // first element starts at 0th element and has n elements as described above
 		firstelement =	&_station_sort[0];
@@ -108,9 +117,12 @@ static void MakeSortedStationList(byte owner)
 		n =							_num_station_sort[owner] - _num_station_sort[owner-1];
 	}
 
-	qsort(firstelement, n, sizeof(_station_sort[0]), StationNameSorter);
+	_last_station_idx = 0; // used for "cache" in namesorting
+	qsort(firstelement, n, sizeof(_station_sort[0]), StationNameSorter); // sort by name
 
-	DEBUG(misc, 1) ("Resorting Stations list...");
+	_station_sort_dirty[owner] = false;
+
+	DEBUG(misc, 1) ("Resorting Stations list player %d...", owner+1);
 }
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
@@ -120,8 +132,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		uint32 i;
 		const byte window_number = (byte)w->window_number;
 
-		if (_station_sort_dirty) {
-			_station_sort_dirty = false;
+		// resort station window if stations have been added/removed
+		if (_global_station_sort_dirty)
+			GlobalSortStationList();
+
+		if (_station_sort_dirty[window_number]) { // resort in case of a station rename.
 			MakeSortedStationList(window_number);
 		}
 
