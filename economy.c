@@ -1533,13 +1533,18 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
 
+	/* Check if buying shares is allowed (protection against modified clients */
+	if (!_patches.allow_shares)
+		return CMD_ERROR;
+
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0)
 		return 0;
+
 	/* We can not buy out a real player in networking */
 	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai)
 		return 0;
-
+	
 	cost = CalculateCompanyValue(p) >> 2;
 	if (flags & DC_EXEC) {
 		b = p->share_owners;
@@ -1567,6 +1572,10 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
 
+	/* Check if selling shares is allowed (protection against modified clients */
+	if (!_patches.allow_shares)
+		return CMD_ERROR;
+		
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0)
 		return 0;

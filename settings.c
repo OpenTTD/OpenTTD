@@ -898,6 +898,7 @@ const SettingDesc patch_settings[] = {
 
 	{"serviceathelipad",		SDT_BOOL,		(void*)true,	&_patches.serviceathelipad,			NULL},
 	{"smooth_economy",			SDT_BOOL,		(void*)true,	&_patches.smooth_economy,				NULL},
+	{"allow_shares",				SDT_BOOL,		(void*)true,	&_patches.allow_shares,					NULL},
 	{"dist_local_authority",SDT_UINT8,	(void*)20,		&_patches.dist_local_authority, NULL},
 
 	{"wait_oneway_signal",	SDT_UINT8,	(void*)15,		&_patches.wait_oneway_signal,		NULL},

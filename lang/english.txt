@@ -1046,6 +1046,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval fo
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Coloured news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Enable smooth economy (more, smaller changes)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging, place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Left

@@ -685,6 +685,7 @@ static const PatchEntry _patches_economy[] = {
 	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 1920,2100, 1, NULL},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		"smooth_economy", &_patches.smooth_economy,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_ALLOW_SHARES,			"allow_shares", &_patches.allow_shares,						0,  0,  0, NULL},
 };
 
 static const PatchEntry _patches_ai[] = {

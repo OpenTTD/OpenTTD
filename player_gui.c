@@ -506,14 +506,19 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
 
-			if (!_networking) w->hidden_state |= (1 << 11); // hide company-password widget
+			if (!_networking) SETBIT(w->hidden_state, 11); // hide company-password widget
 		} else {
-			if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) dis |= 1 << 9;
-			// Also disable the buy button if 25% is not-owned by someone
-			//   and the player is not an AI
-			if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) dis |= 1 << 9;
-			if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
-			if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
+			if (_patches.allow_shares) { /* shares are allowed */
+				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) SETBIT(dis, 9);
+
+				/* We cannot buy out real players in a network game */
+				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) SETBIT(dis, 9);
+
+				if (GetAmountOwnedBy(p, _local_player) == 0) SETBIT(dis, 10);
+
+				if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
+			} else /* shares are not allowed, disable buy/sell buttons */
+				dis |= (1 << 9) | (1 << 10);
 		}
 
 		SetDParam(0, p->name_1);

@@ -172,6 +172,7 @@ typedef struct Patches {
 	bool auto_euro;						// automatically switch to euro in 2002
 	bool serviceathelipad;	// service helicopters at helipads automatically (no need to send to depot)
 	bool smooth_economy;		// smooth economy
+	bool allow_shares;			// allow the buying/selling of shares
 	byte dist_local_authority;		// distance for town local authority, default 20
 
 	byte wait_oneway_signal;	//waitingtime in days before a oneway signal
