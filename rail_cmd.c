@@ -1070,6 +1070,10 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 			}
 
 			m5 &= RAIL_BIT_MASK;
+			if (!(flags & DC_EXEC)) {
+				for (; m5 != 0; m5 >>= 1) if (m5 & 1) cost += _price.remove_rail;
+				return cost;
+			}
 			/* FALLTHROUGH */
 
 		case RAIL_TYPE_NORMAL: {
@@ -1077,12 +1081,8 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 			for (i = 0; m5 != 0; i++, m5 >>= 1) {
 				if (m5 & 1) {
-					if (flags & DC_EXEC) {
-						ret = DoCommandByTile(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
-						if (ret == CMD_ERROR) return CMD_ERROR;
-					} else {
-						ret = _price.remove_rail;
-					}
+					ret = DoCommandByTile(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
+					if (ret == CMD_ERROR) return CMD_ERROR;
 					cost += ret;
 				}
 			}
