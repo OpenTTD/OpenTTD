@@ -332,7 +332,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0; // do nothing
 		default: /* ALT in combination with something else */
 			_pressed_key = MapWindowsKey(wParam) << 16;
-			break;
+			return 0;
 		}
 		break;
 	case WM_NCMOUSEMOVE:
