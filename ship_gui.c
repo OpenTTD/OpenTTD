@@ -694,12 +694,16 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 static void ShipDepotClick(Window *w, int x, int y)
 {
 	Vehicle *v;
+	int mode = GetVehicleFromShipDepotWndPt(w, x, y, &v);
 
-	switch (GetVehicleFromShipDepotWndPt(w, x, y, &v)) {
-	case 1:
+	// share / copy orders
+	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+
+	switch (mode) {
+	case 1: // invalid
 		return;
 
-	case 0:
+	case 0: // start dragging of vehicle
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
@@ -708,11 +712,11 @@ static void ShipDepotClick(Window *w, int x, int y)
 		}
 		break;
 
-	case -1:
+	case -1: // show info window
 		ShowShipViewWindow(v);
 		break;
 
-	case -2:
+	case -2: // click start/stop flag
 		DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP));
 		break;
 

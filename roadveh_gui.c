@@ -562,14 +562,16 @@ static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 static void RoadDepotClickVeh(Window *w, int x, int y)
 {
 	Vehicle *v;
-	int r;
+	int mode;
 
-	r = GetVehicleFromRoadDepotWndPt(w, x, y, &v);
-	if (r > 0) return;
+	mode = GetVehicleFromRoadDepotWndPt(w, x, y, &v);
+	if (mode > 0) return;
 
-	if (_thd.place_mode) { _place_clicked_vehicle = v; return; }
-	switch (r) {
-	case 0:
+	// share / copy orders
+	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+
+	switch (mode) {
+	case 0: // start dragging of vehicle
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
@@ -577,11 +579,11 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
 		}
 		break;
 
-	case -1:
+	case -1: // show info window
 		ShowRoadVehViewWindow(v);
 		break;
 
-	case -2:
+	case -2: // click start/stop flag
 		DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE));
 		break;
 

@@ -694,12 +694,16 @@ static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **v
 static void AircraftDepotClickAircraft(Window *w, int x, int y)
 {
 	Vehicle *v;
+	int mode = GetVehicleFromAircraftDepotWndPt(w, x, y, &v);
 
-	switch(GetVehicleFromAircraftDepotWndPt(w, x, y, &v)) {
+	// share / copy orders
+	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+
+	switch(mode) {
 	case 1:
 		return;
 
-	case 0:
+	case 0: // start dragging of vehicle
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
@@ -707,11 +711,11 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 		}
 		break;
 
-	case -1:
+	case -1: // show info window
 		ShowAircraftViewWindow(v);
 		break;
 
-	case -2:
+	case -2: // click start/stop flag
 		DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT));
 		break;
 

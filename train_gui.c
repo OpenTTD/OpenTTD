@@ -442,13 +442,14 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 	Vehicle *v;
 
 	mode = GetVehicleFromTrainDepotWndPt(w, x, y, &gdvp);
-	
+
+	// share / copy orders
 	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = gdvp.head; return; }
 	
 	v = gdvp.wagon;
 
 	switch(mode) {
-	case 0:
+	case 0: // start dragging of vehicle
 		sel = (int16)WP(w,traindepot_d).sel;
 		if (sel != -1) {
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -460,11 +461,11 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 		}
 		break;
 
-	case -1:
+	case -1: // show info window
 		ShowTrainViewWindow(v);
 		break;
 
-	case -2:
+	case -2: // click start/stop flag
 		DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 		break;
 	}
