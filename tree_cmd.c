@@ -553,9 +553,9 @@ static void TileLoop_Trees(uint tile)
 
 			m5 = 3;
 			m2 = _map2[tile];
-			if ((m2&0x30) != 0) {
+			if ((m2&0x30) != 0) { // on snow/desert or rough land
 				m5 = (m2 >> 6) | 0x10;
-				if (m2 != 0x20)
+				if ((m2&0x30) != 0x20) // if not on snow/desert, then on rough land
 					m5 = 7;
 			}
 			_map_owner[tile] = OWNER_NONE;
