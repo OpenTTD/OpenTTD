@@ -743,6 +743,9 @@ static void FixStation(OldStation *o, int num)
 static void FixDepot(Depot *n, OldDepot *o, int num)
 {
 	do {
+		if (o->xy == 0)
+			continue;
+
 		n->town_index = REMAP_TOWN_IDX(o->town);
 		n->xy = o->xy;
 	} while (n++,o++,--num);
