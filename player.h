@@ -112,7 +112,7 @@ typedef struct PlayerAiNew {
 
 	byte action;
 
-	uint last_id; // here is stored the last id of the searched city/industry
+	int last_id; // here is stored the last id of the searched city/industry
 	uint last_vehiclecheck_date; // Used in CheckVehicle
 	Ai_SpecialVehicle special_vehicles[AI_MAX_SPECIAL_VEHICLES]; // Some vehicles have some special flags
 

@@ -19,7 +19,7 @@ static void UpdateSignVirtCoords(SignStruct *ss)
 
 /**
  *
- * Update all coordinates of a sign
+ * Update the coordinates of all signs
  *
  */
 void UpdateAllSignVirtCoords()
@@ -65,7 +65,7 @@ static SignStruct *AllocateSign()
 
 /**
  *
- * Place a sign at the giving x/y
+ * Place a sign at the given x/y
  *
  * @param p1 not used
  * @param p2 not used
