@@ -145,6 +145,35 @@ extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void BuildFileList(void);
 extern void SetFiosType(const byte fiostype);
 
+/* Save the map to current dir */
+static void SaveMap(const char *filename)
+{
+	char buf[200];
+
+	snprintf(buf, sizeof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, filename);
+	IConsolePrint(_iconsole_color_default, "Saving map...");
+
+	if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
+		IConsolePrint(_iconsole_color_error, "SaveMap failed");
+	} else
+		IConsolePrintF(_iconsole_color_default, "Map sucessfully saved to %s", buf);
+}
+
+/* Save the map to a file */
+DEF_CONSOLE_CMD(ConSave)
+{
+	/* We need 1 argument */
+	if (argc == 2) {
+		/* Save the map */
+		SaveMap(argv[1]);
+		return NULL;
+	}
+
+	/* Give usage */
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: save <filename>");
+	return NULL;
+}
+
 /* Load a file-number from current dir */
 static void LoadMap(uint no)
 {
@@ -1240,6 +1269,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("set",			ConSet);
 	IConsoleCmdRegister("alias",		ConAlias);
 	IConsoleCmdRegister("load",			ConLoad);
+	IConsoleCmdRegister("save",			ConSave);
 	IConsoleCmdRegister("list_files", ConListFiles);
 	IConsoleCmdRegister("scan_files", ConScanFiles);
 	IConsoleCmdRegister("goto_dir", ConGotoDir);
