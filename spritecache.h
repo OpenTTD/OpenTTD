@@ -4,9 +4,9 @@
 typedef struct Sprite {
 	byte info;
 	byte height;
-	uint16 width; // LE!
-	int16 x_offs; // LE!
-	int16 y_offs; // LE!
+	uint16 width;
+	int16 x_offs;
+	int16 y_offs;
 	byte data[VARARRAY_SIZE];
 } Sprite;
 assert_compile(sizeof(Sprite) == 8);
