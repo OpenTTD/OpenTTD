@@ -788,8 +788,8 @@ static void BulldozerInit(Vehicle *v)
 }
 
 typedef struct BulldozerMovement {
-	byte image:2;
 	byte direction:2;
+	byte image:2;
 	byte duration:3;
 } BulldozerMovement;
 
@@ -839,7 +839,7 @@ static void BulldozerTick(Vehicle *v)
 		v->y_pos += _inc_by_dir[b->direction].y;
 
 		v->u.special.unk2++;
-		if (v->u.special.unk2 < b->duration) {
+		if (v->u.special.unk2 >= b->duration) {
 			v->u.special.unk2 = 0;
 			v->u.special.unk0++;
 			if (v->u.special.unk0 == lengthof(_bulldozer_movement)) {
