@@ -282,7 +282,13 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 
 	FioOpenFile(file_index, filename);
 	_cur_grffile = filename;
-	_skip_specials = !strncmp(filename, "TRG", 3);
+
+	/* Thou shalt use LoadNewGrfFile() if thou loadeth a GRF file that
+	 * might contain some special sprites. */
+	_skip_specials = 1;
+	_skip_sprites = 0;
+
+	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", _cur_grffile);
 
  	if(file_index==0 && !_ignore_wrong_grf)
  		if(!CheckGrfFile())
@@ -295,12 +301,58 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 		}
 	}
 
+	return load_index - load_index_org;
+}
+
+static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
+{
+	/* XXX: Is it better to fervently follow the num_sprites information or
+	 * be tolerant and comply with more/less sprites too? --pasky */
+	int num_sprites = 0;
+	int i;
+	
+	FioOpenFile(file_index, filename);
+	_cur_grffile = filename;
+	_skip_specials = 0;
+	_skip_sprites = 0;
+
+	DEBUG(spritecache, 2) ("Reading newgrf-file ``%s'' [offset: %u]",
+			_cur_grffile, load_index);
+
+	{
+		int length;
+		byte type;
+
+		length = FioReadWord();
+		type = FioReadByte();
+
+		if ((length == 4) && (type == 0xFF)) {
+			num_sprites = FioReadDword();
+		} else {
+			error("Custom .grf has invalid format.");
+		}
+
+		/* Ignore last sprite, it's only used to mark end-of-file */
+		num_sprites--;
+		load_index++;
+	}
+
+	if ((load_index + num_sprites) > NUM_SPRITES)
+		error("Too many sprites (%x). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
+		      load_index + num_sprites);
+
+	for (i = 0; i < num_sprites; i++) {
+		if (!LoadNextSprite(load_index + i, file_index))
+			error("NEWGRF: Header was talking abount %d sprites, but only %d found..",
+			      num_sprites, i);
+	}
+
 	/* Clean up. */
 	_skip_sprites = 0;
 	memset(_replace_sprites_count, 0, 16 * sizeof(*_replace_sprites_count));
 	memset(_replace_sprites_offset, 0, 16 * sizeof(*_replace_sprites_offset));
 
-	return load_index - load_index_org;
+	return num_sprites;
 }
 
 static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int file_index)
@@ -309,6 +361,10 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 
 	FioOpenFile(file_index, filename);
 	_cur_grffile = filename;
+	_skip_specials = 1;
+	_skip_sprites = 0;
+
+	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", _cur_grffile);
 
 	for(;(start=*index_tbl++) != 0xffff;) {
 		int end = *index_tbl++;
@@ -753,7 +809,7 @@ static void LoadSpriteTables()
 		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
 		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
-			load_index += LoadGrfFile(_newgrf_files[j], load_index, i++);
+			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
 
 		// If needed, save the cache to file
 		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);
