@@ -896,6 +896,7 @@ static void LoadSpriteTables(void)
 		// in each loading stage, (try to) open each file specified in the config and load information from it.
 		_custom_sprites_base = load_index;
 		for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
+			load_index = _custom_sprites_base;
 			for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
 				if ( !FiosCheckFileExists(_newgrf_files[j]) )
 					continue;
