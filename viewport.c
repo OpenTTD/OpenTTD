@@ -1136,7 +1136,7 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	DrawPixelInfo *old_dpi;
 
 	byte mem[VIEWPORT_DRAW_MEM];
-	ParentSpriteToDraw *parent_list[1000];
+	ParentSpriteToDraw *parent_list[6144];
 
 	_cur_vd = &vd;
 
