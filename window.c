@@ -285,6 +285,34 @@ Window *BringWindowToFront(Window *w)
 	return v;
 }
 
+/* We have run out of windows, so find a suitable candidate for replacement.
+ * Keep all important windows intact */
+static Window *FindDeletableWindow(void)
+{
+	Window *w;
+	for (w = _windows; w < endof(_windows); w++) {
+		if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
+			  w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW &&
+				!(w->flags4 & WF_STICKY) )
+				return w;
+	}
+	return NULL;
+}
+
+/* A window must be freed, and all are marked as important windows. Ease the
+ * restriction a bit by allowing to delete sticky windows */
+static Window *ForceFindDeletableWindow(void)
+{
+	Window *w;
+	for (w = _windows;; w++) {
+		assert(w < _last_window);
+
+		if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
+			  w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW)
+				return w;
+	}
+}
+
 Window *AllocateWindow(
 							int x,
 							int y,
@@ -296,21 +324,16 @@ Window *AllocateWindow(
 {
 	Window *w;
 
-restart:;
 	w = _last_window;
 
 	if (w >= endof(_windows)) {
-		for(w=_windows; ;w++) {
-			assert(w < _last_window);
+		w = FindDeletableWindow();
 
-			if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
-			    w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW &&
-					!(w->flags4 & WF_STICKY) ) {
+		if (w == NULL) // no window found, force it!
+			w = ForceFindDeletableWindow();
 
-					DeleteWindow(w);
-					goto restart;
-			}
-		}
+		DeleteWindow(w);
+		w = _last_window;
 	}
 
 	if (w != _windows && cls != WC_NEWS_WINDOW) {
@@ -1340,6 +1363,26 @@ void DeleteNonVitalWindows()
 		} else {
 			w++;
 		}
+	}
+}
+
+/* It is possible that a stickied window gets to a position where the 
+ * 'close' button is outside the gaming area. You cannot close it then; except
+ * with this function. It closes all windows calling the standard function,
+ * then, does a little hacked loop of closing all stickied windows. Note
+ * that standard windows (status bar, etc.) are not stickied, so these aren't affected */
+void DeleteAllNonVitalWindows(void)
+{
+	Window *w;
+	// Delete every window except for stickied ones
+	DeleteNonVitalWindows();
+	// Delete all sticked windows
+	for (w = _windows; w != _last_window;) {
+		if (w->flags4 & WF_STICKY) {
+			DeleteWindow(w);
+			w = _windows;
+		} else
+			w++;
 	}
 }
 

@@ -152,26 +152,6 @@ static void ToolbarFastForwardClick(Window *w)
 	SndPlayFx(SND_15_BEEP);
 }
 
-/* It is possible that a stickied window gets to a position where the 
- * 'close' button is outside the gaming area. You cannot close it then; except
- * with this function. It closes all windows calling the standard function,
- * then, does a little hacked loop of closing all stickied windows. Note
- * that standard windows (status bar, etc.) are not stickied, so these aren't affected */
-static void CloseEveryWindow(void)
-{
-	Window *w;
-	// Delete every window except for stickied ones
-	DeleteNonVitalWindows();
-	// Delete all sticked windows
-	for (w = _windows; w != _last_window;) {
-		if (w->flags4 & WF_STICKY) {
-			DeleteWindow(w);
-			w = _windows;
-		} else
-			w++;
-	}
-}
-
 typedef void MenuClickedProc(int index);
 
 
@@ -183,7 +163,7 @@ static void MenuClickSettings(int index)
 	case 2: ShowPatchesSelection(); return;
 	case 3: ShowNewgrf(); return;
 
-	case 5: CloseEveryWindow(); return; 
+	case 5: DeleteAllNonVitalWindows(); return; 
 	case 6: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
 	case 7: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
 	case 8: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
@@ -2330,6 +2310,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 
 		case WKC_ESC: ResetObjectToPlace(); break;
 		case WKC_DELETE: DeleteNonVitalWindows(); break;
+		case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
 		case 'Q' | WKC_CTRL: AskExitGame(); break;
 		case 'Q' | WKC_META: AskExitGame(); break; // this enables command + Q on mac
 		case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
