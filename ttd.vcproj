@@ -453,10 +453,9 @@
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
 			</File>
-                        <File
-                                RelativePath=".\md5.c">
-                        </File>
-
+			<File
+				RelativePath=".\md5.c">
+			</File>
 			<File
 				RelativePath="minilzo.c">
 				<FileConfiguration
@@ -577,9 +576,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\newgrf.c">
-			</File>
-			<File
 				RelativePath=".\network_client.c">
 			</File>
 			<File
@@ -589,10 +585,13 @@
 				RelativePath=".\network_gamelist.c">
 			</File>
 			<File
+				RelativePath=".\network_server.c">
+			</File>
+			<File
 				RelativePath=".\network_udp.c">
 			</File>
 			<File
-				RelativePath=".\network_server.c">
+				RelativePath=".\newgrf.c">
 			</File>
 			<File
 				RelativePath="oldloader.c">
@@ -1173,9 +1172,6 @@
 				RelativePath=".\network.h">
 			</File>
 			<File
-				RelativePath=".\newgrf.h">
-			</File>
-			<File
 				RelativePath=".\network_client.h">
 			</File>
 			<File
@@ -1188,10 +1184,13 @@
 				RelativePath=".\network_gamelist.h">
 			</File>
 			<File
+				RelativePath=".\network_server.h">
+			</File>
+			<File
 				RelativePath=".\network_udp.h">
 			</File>
 			<File
-				RelativePath=".\network_server.h">
+				RelativePath=".\newgrf.h">
 			</File>
 			<File
 				RelativePath="news.h">

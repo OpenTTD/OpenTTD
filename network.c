@@ -783,6 +783,8 @@ bool NetworkClientConnectGame(const byte* host, unsigned short port)
 	return _networking;
 }
 
+extern const char _openttd_revision[];
+
 void NetworkInitGameInfo(void)
 {
 	NetworkClientInfo *ci;

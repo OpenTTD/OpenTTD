@@ -563,6 +563,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
 }
 
+extern const char _openttd_revision[];
+
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
 	char name[NETWORK_NAME_LENGTH];
@@ -576,10 +578,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	NetworkRecv_string(p, client_revision, sizeof(client_revision));
 
-	//  Too bad, when WITH_REV is disabled, we can not compare the version.
-#if defined(WITH_REV)
-	// Check if the client has WITH_REV enabled
-	if (strncmp("norev000", client_revision, sizeof(client_revision)) != 0) {
+	// Check if the client has revision control enabled
+	if (strncmp(NOREV_STRING, client_revision, sizeof(client_revision)) != 0) {
 		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision) - 1) != 0) {
 			// Different revisions!!
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
@@ -587,7 +587,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			return;
 		}
 	}
-#endif
 
 	NetworkRecv_string(p, name, sizeof(name));
 	playas = NetworkRecv_uint8(p);

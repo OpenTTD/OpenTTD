@@ -15,11 +15,6 @@
 
 #define SMART_PALETTE_ANIM
 
-/* Declare the revision tag for Windows */
-#ifdef WITH_REV_HACK
-	const char _openttd_revision[] = WITH_REV_HACK;
-#endif
-
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
@@ -446,6 +441,8 @@ static void RegisterWndClass()
 	}
 }
 
+extern const char _openttd_revision[];
+
 static void MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
@@ -504,10 +501,9 @@ static void MakeWindow(bool full_screen)
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
 			char Windowtitle[50] = "OpenTTD ";
-			#ifdef WITH_REV
-				// also show revision number/release in window title
-				strncat(Windowtitle, _openttd_revision, sizeof(Windowtitle)-(strlen(Windowtitle) + 1));
-			#endif
+			// also show revision number/release in window title
+			strncat(Windowtitle, _openttd_revision, sizeof(Windowtitle)-(strlen(Windowtitle) + 1));
+
 			_wnd.main_wnd = CreateWindow("TTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
 			if (_wnd.main_wnd == NULL)
 				error("CreateWindow failed");

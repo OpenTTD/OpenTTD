@@ -43,6 +43,8 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
+extern const char _openttd_revision[];
+
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 {
 	//

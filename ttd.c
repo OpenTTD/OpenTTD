@@ -28,11 +28,6 @@
 
 #include <stdarg.h>
 
-/* Define the _openttd_revision tag if it is not defined */
-#ifndef WITH_REV
-	const char _openttd_revision[] = "norev000";
-#endif
-
 void GameLoop();
 
 void IncreaseSpriteLRU();

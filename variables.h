@@ -426,13 +426,6 @@ VARDEF int _debug_grf_level;
 VARDEF int _debug_ai_level;
 VARDEF int _debug_net_level;
 
-/* Make the revision tag global */
-extern const char _openttd_revision[];
-#ifdef WITH_REV_HACK
-	/* Special rules for Windows */
-	#define WITH_REV
-#endif
-
 void CDECL debug(const char *s, ...);
 #ifdef NO_DEBUG_MESSAGES
 	#define DEBUG(name, level)

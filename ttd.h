@@ -1,6 +1,7 @@
 #ifndef TTD_H
 #define TTD_H
 
+#define NOREV_STRING "norev000"
 // FIXME: Include only where really needed.
 // include sprites
 #include "table/sprites.h"

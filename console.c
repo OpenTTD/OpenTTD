@@ -229,6 +229,8 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 	}
 }
 
+extern const char _openttd_revision[];
+
 void IConsoleInit(void)
 {
 	uint i;
@@ -253,11 +255,7 @@ void IConsoleInit(void)
 		_iconsole_cbuffer[i] = 0;
 	}
 	IConsoleStdLibRegister();
-	#if defined(WITH_REV)
 	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
-	#else
-	IConsolePrint(13, "OpenTTD Game Console Revision 6");
-	#endif
 	IConsolePrint(12, "---------------------------------");
 	IConsolePrint(12, "use \"help\" for more info");
 	IConsolePrint(12, "");
