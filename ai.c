@@ -144,7 +144,7 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex
 	return best_veh_index;
 }
 
-static int AiChooseRoadVehToBuild(byte cargo, int32 money)
+static int AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 {
 	int best_veh_index = -1;
 	int32 best_veh_cost = 0;
@@ -157,7 +157,7 @@ static int AiChooseRoadVehToBuild(byte cargo, int32 money)
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
-		r = DoCommandByTile(0, i, 0, 0, CMD_BUILD_ROAD_VEH);
+		r = DoCommandByTile(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
 		if (r != CMD_ERROR && r <= money && r >= best_veh_cost) {
 			best_veh_cost = r;
 			best_veh_index = i;
@@ -218,7 +218,7 @@ static int AiChooseShipToBuild(byte cargo, int32 money)
 static int AiChooseRoadVehToReplaceWith(Player *p, Vehicle *v)
 {
 	int32 avail_money = p->player_money + v->value;
-	return AiChooseRoadVehToBuild(v->cargo_type, avail_money);
+	return AiChooseRoadVehToBuild(v->cargo_type, avail_money, v->tile);
 }
 
 static int AiChooseAircraftToReplaceWith(Player *p, Vehicle *v)
@@ -3173,7 +3173,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 	for(;ptr->mode != 0;ptr++) {}
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
-	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money);
+	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money, tile);
 	if (veh == -1) {
 		p->ai.state = AIS_0;
 		return;

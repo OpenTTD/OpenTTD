@@ -118,6 +118,10 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_Road)) return CMD_ERROR;
 
+	if (!IsRoadDepotTile((TileIndex)tile)) return CMD_ERROR;
+
+	if (_map_owner[tile] != _current_player) return CMD_ERROR;
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	cost = EstimateRoadVehCost(p1);
