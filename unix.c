@@ -254,6 +254,7 @@ void FiosFreeSavegameList(void)
 // Browse to
 char *FiosBrowseTo(const FiosItem *item)
 {
+	static char str_buffr[512];
 	char *path = _fios_path;
 	char *s;
 
