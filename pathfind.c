@@ -131,10 +131,12 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	int owner = -1;
 
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		owner = _map_owner[tile];
-		/* Check if we are on the middle of a bridge (has no owner) */
-		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
-			owner = -1;
+		if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE))) {
+			owner = _map_owner[tile];
+			/* Check if we are on the middle of a bridge (has no owner) */
+			if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
+				owner = -1;
+		}
 	}
 
 	// This addition will sometimes overflow by a single tile.
@@ -143,11 +145,12 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	tile = TILE_MASK(tile + TileOffsByDir(direction));
 
 	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL) {
-		/* Check if we are on the middle of a bridge (has no owner) */
-		if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
-			if (owner != -1 && _map_owner[tile] != owner)
-				return;
+	if (IS_TILETYPE(tile, MP_RAILWAY) && tpf->tracktype == TRANSPORT_RAIL) {
+		if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE)))
+			/* Check if we are on the middle of a bridge (has no owner) */
+			if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+				if (owner != -1 && _map_owner[tile] != owner)
+					return;
 	}
 
 	if (++tpf->rd.cur_length > 50)
@@ -287,11 +290,13 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		/* Check if we are on a bridge (middle parts don't have an owner */
-		if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
-			if (!IS_TILETYPE(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
-				if (_map_owner[tile_org] != _map_owner[tile])
-					return;
+		if ((IS_TILETYPE(tile_org, MP_RAILWAY) || IS_TILETYPE(tile_org, MP_STATION) || IS_TILETYPE(tile_org, MP_TUNNELBRIDGE)))
+			if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE)))
+				/* Check if we are on a bridge (middle parts don't have an owner */
+				if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+					if (!IS_TILETYPE(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
+						if (_map_owner[tile_org] != _map_owner[tile])
+							return;
 	}
 
 	tpf->rd.cur_length++;
