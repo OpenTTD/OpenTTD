@@ -760,6 +760,8 @@ static const SettingDesc misc_settings[] = {
 static const SettingDesc network_settings[] = {
 	{"sync_freq",				SDT_UINT16 | SDT_NOSAVE,	(void*)100,			&_network_sync_freq,		NULL},
 	{"frame_freq",			SDT_UINT8 | SDT_NOSAVE,	(void*)0,			&_network_frame_freq,		NULL},
+	{"max_join_time",		SDT_UINT,	(void*)500,	&_network_max_join_time,	NULL},
+	{"pause_on_join",		SDT_BOOL, (void*)false, &_network_pause_on_join, NULL},
 	{"server_bind_ip",	SDT_STRINGBUF | (lengthof(_network_server_bind_ip_host) << 16),	"0.0.0.0",	&_network_server_bind_ip_host,	NULL},
 	{"server_port",			SDT_UINT,	(void*)NETWORK_DEFAULT_PORT,	&_network_server_port,	NULL},
 	{"server_advertise",SDT_BOOL, (void*)false, &_network_advertise, NULL},

@@ -4,6 +4,7 @@
 #include "strings.h"
 #include "map.h"
 #include "network_data.h"
+#include "command.h"
 
 #if defined(WITH_REV)
 	extern const char _openttd_revision[];
@@ -466,6 +467,9 @@ static NetworkClientState *NetworkAllocClient(SOCKET s)
 	cs->last_frame = 0;
 	cs->quited = false;
 
+	cs->last_frame = _frame_counter;
+	cs->last_frame_server = _frame_counter;
+
 	if (_network_server) {
 		ci = DEREF_CLIENT_INFO(cs);
 		memset(ci, 0, sizeof(*ci));
@@ -510,6 +514,12 @@ void NetworkCloseClient(NetworkClientState *cs)
 			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
 				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->index, errorno);
 			}
+		}
+
+		/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
+		if (cs->status == STATUS_PRE_ACTIVE && _network_pause_on_join) {
+			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 		}
 	}
 

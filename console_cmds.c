@@ -436,6 +436,9 @@ DEF_CONSOLE_CMD(ConStatus)
 			case STATUS_AUTH:
 				status = "authorized";
 				break;
+			case STATUS_MAP_WAIT:
+				status = "waiting";
+				break;
 			case STATUS_MAP:
 				status = "loading map";
 				break;
@@ -1061,6 +1064,20 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
+	// setting max-join-time
+	if (strcmp(argv[1],"max_join_time") == 0) {
+		if (argc == 3 && atoi(argv[2]) != 0) {
+			_network_max_join_time = atoi(argv[2]);
+			IConsolePrintF(_iconsole_color_warning, "Max-join-time changed to '%d'", _network_max_join_time);
+			IConsolePrintF(_iconsole_color_warning, "Changes will take effect immediatly.");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current max-join-time is '%d'", _network_max_join_time);
+			IConsolePrint(_iconsole_color_warning, "Usage: set max_join_time <ticks> (default = 500).");
+		}
+		return NULL;
+	}
+
+
 	// setting the server advertising on/off
 	if (strcmp(argv[1],"server_advertise") == 0) {
 		if (!_network_server) {
@@ -1078,6 +1095,25 @@ DEF_CONSOLE_CMD(ConSet) {
 		} else {
 			IConsolePrintF(_iconsole_color_default, "Current server-advertise is '%s'", (_network_advertise)?"on":"off");
 			IConsolePrint(_iconsole_color_warning, "Usage: set server_advertise on/off.");
+		}
+		return NULL;
+	}
+
+	// setting the server 'pause on client join' on/off
+	if (strcmp(argv[1],"pause_on_join") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
+				_network_pause_on_join = true;
+			else
+				_network_pause_on_join = false;
+			IConsolePrintF(_iconsole_color_warning, "Pause-on-join changed to '%s'", (_network_pause_on_join)?"on":"off");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current pause-on-join is '%s'", (_network_pause_on_join)?"on":"off");
+			IConsolePrint(_iconsole_color_warning, "Usage: set pause_on_join on/off.");
 		}
 		return NULL;
 	}
@@ -1175,7 +1211,9 @@ DEF_CONSOLE_CMD(ConSet) {
 	IConsolePrint(_iconsole_color_error, " - autoclean_protected <months>");
 	IConsolePrint(_iconsole_color_error, " - autoclean_unprotected <months>");
 	IConsolePrint(_iconsole_color_error, " - company_pw \"<password>\"");
+	IConsolePrint(_iconsole_color_error, " - max_join_time <frames>");
 	IConsolePrint(_iconsole_color_error, " - name \"<playername>\"");
+	IConsolePrint(_iconsole_color_error, " - pause_on_join on/off");
 	IConsolePrint(_iconsole_color_error, " - rcon_pw \"<password>\"");
 	IConsolePrint(_iconsole_color_error, " - server_name \"<name>\"");
 	IConsolePrint(_iconsole_color_error, " - server_advertise on/off");

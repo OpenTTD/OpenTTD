@@ -304,6 +304,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		sent_packets = 4; // We start with trying 4 packets
 
 		cs->status = STATUS_MAP;
+		/* Mark the start of download */
+		cs->last_frame = _frame_counter;
+		cs->last_frame_server = _frame_counter;
 	}
 
 	if (cs->status == STATUS_MAP) {
@@ -759,6 +762,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->index);
 			}
 		}
+
+		if (_network_pause_on_join) {
+			/* Now pause the game till the client is in sync */
+			DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", NETWORK_SERVER_INDEX);
+		}
 	} else {
 		// Wrong status for this packet, give a warning to client, and close connection
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
@@ -937,14 +947,27 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
+	uint32 frame = NetworkRecv_uint32(cs, p);
+
+	/* The client is trying to catch up with the server */
+	if (cs->status == STATUS_PRE_ACTIVE) {
+		/* The client is not yet catched up? */
+		if (frame + DAY_TICKS < _frame_counter)
+			return;
+
+		/* Now he is! Unpause the game */
+		cs->status = STATUS_ACTIVE;
+
+		if (_network_pause_on_join) {
+			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
+		}
+	}
+
 	// The client received the frame, make note of it
-	cs->last_frame = NetworkRecv_uint32(cs, p);
+	cs->last_frame = frame;
 	// With those 2 values we can calculate the lag realtime
 	cs->last_frame_server = _frame_counter;
-
-	// The client is now really active
-	if (cs->status == STATUS_PRE_ACTIVE)
-		cs->status = STATUS_ACTIVE;
 }
 
 
@@ -1527,6 +1550,12 @@ void NetworkServer_Tick(void)
 			} else {
 				cs->lag_test = 0;
 			}
+		} else if (cs->status == STATUS_PRE_ACTIVE) {
+			int lag = NetworkCalculateLag(cs);
+			if (lag > _network_max_join_time) {
+				IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+				NetworkCloseClient(cs);
+			}
 		}
 
 
@@ -1536,7 +1565,7 @@ void NetworkServer_Tick(void)
 		}
 
 		// Do we need to send the new frame-packet?
-		if (send_frame && cs->status == STATUS_ACTIVE) {
+		if (send_frame && (cs->status == STATUS_ACTIVE || cs->status == STATUS_PRE_ACTIVE)) {
 			SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
 		}
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
