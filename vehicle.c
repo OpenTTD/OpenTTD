@@ -26,7 +26,7 @@ Order UnpackOldOrder(uint16 packed)
 {
 	Order order;
 	order.type    = (packed & 0x000f);
-	order.flags   = (packed & 0x00f0) >> 4,
+	order.flags   = (packed & 0x00f0) >> 4;
 	order.station = (packed & 0xff00) >> 8;
 
 	// Sanity check
