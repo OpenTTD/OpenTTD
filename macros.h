@@ -87,7 +87,7 @@ extern uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int 
 #	define TILE_ADD(x,y) ((x)+(y))
 #else
 #	if defined(__GNUC__)
-#		define TILE_ADD(x,y) (SafeTileAdd((x),(y), "??",  __FILE__, __LINE__))
+#		define TILE_ADD(x,y) (SafeTileAdd((x),(y), #x ", " #y,  __FILE__, __LINE__))
 #	else
 #		define TILE_ADD(x,y) (SafeTileAdd((x),(y), #x ## ", " ## #y,  __FILE__, __LINE__))
 #	endif

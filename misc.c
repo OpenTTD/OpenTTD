@@ -740,7 +740,7 @@ extern uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, i
 
 		sprintf(buf, "TILE_ADD(%s) when adding 0x%.4X and %d failed", exp, tile, add);
 #if !defined(_DEBUG) || !defined(_MSC_VER)
-		printf("%s\n", buf);
+		fprintf(stderr, "%s:%d %s\n", file, line, buf);
 #else
 		_assert(buf, (char*)file, line);
 #endif
