@@ -824,7 +824,13 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			SET_DPARAM32(2, p->name_2);
 			
 			SET_DPARAM16(3, GetPlayerNameString(p->index, 4));
-			SET_DPARAM16(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			/*	WARNING ugly hack!
+					GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
+					It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
+					that because there is another param after it. 
+					So we'll just shift the rating one back if player is AI and all is fine
+				*/
+			SET_DPARAM16((IS_HUMAN_PLAYER(i) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);
