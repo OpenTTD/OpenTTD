@@ -94,7 +94,6 @@ static void CompactSpriteCache(void);
 static void ReadSpriteHeaderSkipData(int num, int load_index)
 {
 	byte type;
-	int8 i;
 	int deaf = 0;
 
 	if (_skip_sprites) {
@@ -133,18 +132,17 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 
 	if (type & 2) {
 		FioSkipBytes(num);
-		return;
-	}
-
-	while (num) {
-		i = FioReadByte();
-		if (i>=0) {
-			num -= i;
-			FioSkipBytes(i);
-		} else {
-			i = -(i >> 3);
-			num -= i;
-			FioReadByte();
+	} else {
+		while (num > 0) {
+			int8 i = FioReadByte();
+			if (i >= 0) {
+				num -= i;
+				FioSkipBytes(i);
+			} else {
+				i = -(i >> 3);
+				num -= i;
+				FioReadByte();
+			}
 		}
 	}
 }
@@ -153,9 +151,6 @@ static void ReadSprite(SpriteID id, byte *dest)
 {
 	uint num = _sprite_size[id];
 	byte type;
-	byte *rel;
-	int8 i;
-	int dist;
 
 	FioSeekToFile(_sprite_file_pos[id]);
 
@@ -175,25 +170,25 @@ static void ReadSprite(SpriteID id, byte *dest)
 	}
 
 	if (type & 2) {
-		while (num--)
+		for (; num > 0; --num)
 			*dest++ = FioReadByte();
-		return;
-	}
+	} else {
+		while (num > 0) {
+			int8 i = FioReadByte();
 
-	while (num) {
-		i = FioReadByte();
-		if (i>=0) {
-			num -= i;
-			while (i--)
-				*dest++ = FioReadByte();
-		} else {
-			dist = -(((i&7)<<8)|FioReadByte());
-			i = -(i >> 3);
-			num -= i;
+			if (i >= 0) {
+				num -= i;
+				for (; i > 0; --i)
+					*dest++ = FioReadByte();
+			} else {
+				const byte* rel = dest - (((i & 7) << 8) | FioReadByte());
 
-			rel = &dest[dist];
-			while (i--)
-				*dest++ = *rel++;
+				i = -(i >> 3);
+				num -= i;
+
+				for (; i > 0; --i)
+					*dest++ = *rel++;
+			}
 		}
 	}
 }
@@ -204,14 +199,15 @@ static bool LoadNextSprite(int load_index, byte file_index)
 	uint16 size;
 	uint32 file_pos;
 
-	if ((size = FioReadWord()) == 0)
+	size = FioReadWord();
+	if (size == 0)
 		return false;
 
 	file_pos = FioGetPos() | (file_index << 24);
 
 	ReadSpriteHeaderSkipData(size, load_index);
 
-	if ((_replace_sprites_count[0] > 0) && (_cur_sprite.info != 0xFF)) {
+	if (_replace_sprites_count[0] > 0 && _cur_sprite.info != 0xFF) {
 		int count = _replace_sprites_count[0];
 		int offset = _replace_sprites_offset[0];
 
@@ -265,16 +261,16 @@ static bool LoadNextSprite(int load_index, byte file_index)
 	return true;
 }
 
-static void SkipSprites(int count)
+static void SkipSprites(uint count)
 {
-	while(count>0)
+	for (; count > 0; --count)
 	{
-		uint16 size;
-		if ( (size = FioReadWord()) == 0)
+		uint16 size = FioReadWord();
+
+		if (size == 0)
 			return;
 
-		ReadSpriteHeaderSkipData(size, NUM_SPRITES-1);
-		count--;
+		ReadSpriteHeaderSkipData(size, NUM_SPRITES - 1);
 	}
 }
 
@@ -323,7 +319,7 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 		length = FioReadWord();
 		type = FioReadByte();
 
-		if ((length == 4) && (type == 0xFF)) {
+		if (length == 4 && type == 0xFF) {
 			FioReadDword();
 		} else {
 			error("Custom .grf has invalid format.");
@@ -354,9 +350,9 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 
 	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", filename);
 
-	for(;(start=*index_tbl++) != 0xffff;) {
+	for (; (start = *index_tbl++) != 0xffff;) {
 		int end = *index_tbl++;
-		if(start==0xfffe) { // skip sprites (amount in second var)
+		if(start == 0xfffe) { // skip sprites (amount in second var)
 			SkipSprites(end);
 		} else { // load sprites and use indexes from start to end
 			do {
@@ -367,7 +363,7 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 	}
 }
 
-typedef size_t CDECL fread_t(void*,size_t,size_t,FILE*);
+typedef size_t CDECL fread_t(void*, size_t, size_t, FILE*);
 
 static bool HandleCachedSpriteHeaders(const char *filename, bool read)
 {
@@ -448,7 +444,7 @@ void IncreaseSpriteLRU(void)
 	if (_sprite_lru_counter > 16384) {
 		DEBUG(spritecache, 2) ("fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
 
-		for(i=0; i!=NUM_SPRITES; i++)
+		for (i = 0; i != NUM_SPRITES; i++)
 			if (_sprite_ptr[i] != NULL) {
 				if (_sprite_lru_new[i] >= 0) {
 					_sprite_lru_new[i] = -1;
@@ -459,7 +455,7 @@ void IncreaseSpriteLRU(void)
 		_sprite_lru_counter = 0;
 	}
 #else
-	for(i=0; i!=NUM_SPRITES; i++)
+	for (i = 0; i != NUM_SPRITES; i++)
 		if (_sprite_ptr[i] != NULL && _sprite_lru[i] != 65535)
 			_sprite_lru[i]++;
 	// Reset the lru counter.
@@ -536,14 +532,13 @@ static void DeleteEntryFromSpriteCache(void)
 
 #if defined(WANT_NEW_LRU)
 	cur_lru = 0xffff;
-	for(i=0; i!=NUM_SPRITES; i++) {
+	for (i = 0; i != NUM_SPRITES; i++) {
 		if (_sprite_ptr[i] != 0 &&
 				_sprite_lru_new[i] < cur_lru
 #if defined(WANT_LOCKED)
-				 && !_sprite_locked[i]) {
-#else
-				) {
+				 && !_sprite_locked[i]
 #endif
+				) {
 			cur_lru = _sprite_lru_new[i];
 			best = i;
 		}
@@ -551,7 +546,7 @@ static void DeleteEntryFromSpriteCache(void)
 #else
 	{
 	uint16 cur_lru = 0, cur_lru_cur = 0xffff;
-	for(i=0; i!=NUM_SPRITES; i++) {
+	for (i = 0; i != NUM_SPRITES; i++) {
 		if (_sprite_ptr[i] == 0 ||
 #if defined(WANT_LOCKED)
 				_sprite_locked[i] ||
@@ -595,7 +590,7 @@ static void DeleteEntryFromSpriteCache(void)
 	}
 }
 
-static byte *LoadSpriteToMem(int sprite)
+static byte *LoadSpriteToMem(SpriteID sprite)
 {
 	size_t mem_req;
 
@@ -781,7 +776,7 @@ static bool FileMD5(const MD5File file, bool warn)
 	if (f == NULL) {
 		char *s;
 	// make lower case and check again
-		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+		for (s = buf + strlen(_path.data_dir) - 1; *s != '\0'; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 	}
@@ -789,11 +784,11 @@ static bool FileMD5(const MD5File file, bool warn)
 
 	if (f != NULL) {
 		md5_init(&filemd5state);
-		while ( (len = fread (buffer, 1, 1024, f)) )
+		while ((len = fread(buffer, 1, 1024, f)) != 0)
 			md5_append(&filemd5state, buffer, len);
 
 		if (ferror(f))
-			if (warn) printf ("Error Reading from %s \n", buf);
+			if (warn) printf("Error Reading from %s \n", buf);
 		fclose(f);
 
 		md5_finish(&filemd5state, digest);
@@ -810,24 +805,26 @@ static bool FileMD5(const MD5File file, bool warn)
  * (Note: Also checks sample.cat for corruption) */
 void CheckExternalFiles(void)
 {
-	int i;
-	int dos=0, win=0; // count of files from this version
+	uint i;
+	// count of files from this version
+	uint dos = 0;
+	uint win = 0;
 
-	for (i=0; i<2; i++)
-	  if ( FileMD5(files_dos.basic[i], true) )
+	for (i = 0; i < 2; i++)
+	  if (FileMD5(files_dos.basic[i], true))
 			dos++;
-	for (i=0; i<3; i++)
-	  if ( FileMD5(files_dos.landscape[i], true) )
+	for (i = 0; i < 3; i++)
+	  if (FileMD5(files_dos.landscape[i], true))
 			dos++;
 
-	for (i=0; i<2; i++)
-	  if ( FileMD5(files_win.basic[i], true) )
+	for (i = 0; i < 2; i++)
+	  if (FileMD5(files_win.basic[i], true))
 			win++;
-	for (i=0; i<3; i++)
-	  if ( FileMD5(files_win.landscape[i], true) )
+	for (i = 0; i < 3; i++)
+	  if (FileMD5(files_win.landscape[i], true))
 			win++;
 
-	if ( !FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false) )
+	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
 		printf("Your sample.cat file is corrupted or missing!");
 
 	if (win == 5) {       // always use the Windows palette if all Windows files are present
@@ -841,8 +838,9 @@ void CheckExternalFiles(void)
 
 static void LoadSpriteTables(void)
 {
-	int i,j;
-	FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
+	uint i;
+	uint j;
+	const FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
 
 	_loading_stage = 1;
 
@@ -857,7 +855,7 @@ static void LoadSpriteTables(void)
 	 *   invest that further. --octo
 	 */
 
-	files = _use_dos_palette?(&files_dos):(&files_win);
+	files = _use_dos_palette? &files_dos : &files_win;
 
 	// Try to load the sprites from cache
 	if (!HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], true)) {
@@ -866,14 +864,18 @@ static void LoadSpriteTables(void)
 
 		int load_index = 0;
 
-		for(i=0; files->basic[i].filename != NULL; i++) {
+		for (i = 0; files->basic[i].filename != NULL; i++) {
 			load_index += LoadGrfFile(files->basic[i].filename, load_index, (byte)i);
 		}
 
 		LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 
 		if (_sprite_page_to_load != 0)
-			LoadGrfIndexed(files->landscape[_sprite_page_to_load-1].filename, _landscape_spriteindexes[_sprite_page_to_load-1], i++);
+			LoadGrfIndexed(
+				files->landscape[_sprite_page_to_load - 1].filename,
+				_landscape_spriteindexes[_sprite_page_to_load - 1],
+				i++
+			);
 
 		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
@@ -886,13 +888,14 @@ static void LoadSpriteTables(void)
 		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
 
-		/* Load newgrf sprites */
-		// in each loading stage, (try to) open each file specified in the config and load information from it.
+		/* Load newgrf sprites
+		 * in each loading stage, (try to) open each file specified in the config
+		 * and load information from it. */
 		_custom_sprites_base = load_index;
 		for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
 			load_index = _custom_sprites_base;
 			for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
-				if ( !FiosCheckFileExists(_newgrf_files[j]) )
+				if (!FiosCheckFileExists(_newgrf_files[j]))
 					continue;
 				if (_loading_stage == 0)
 					InitNewGRFFile(_newgrf_files[j], load_index);
@@ -912,13 +915,13 @@ static void LoadSpriteTables(void)
 		//
 		// NOTE: the order of the files must be identical as in the section above!!
 
-		for(i = 0; files->basic[i].filename != NULL; i++)
+		for (i = 0; files->basic[i].filename != NULL; i++)
 			FioOpenFile(i,files->basic[i].filename);
 
 		FioOpenFile(i++, "openttd.grf");
 
 		if (_sprite_page_to_load != 0)
-			FioOpenFile(i++, files->landscape[_sprite_page_to_load-1].filename);
+			FioOpenFile(i++, files->landscape[_sprite_page_to_load - 1].filename);
 
 		FioOpenFile(i++, "trkfoundw.grf");
 		FioOpenFile(i++, "canalsw.grf");
@@ -927,7 +930,7 @@ static void LoadSpriteTables(void)
 		//  invalid. We should have some kind of check for this.
 		// The best solution for this is to delete the cached-sprites.. but how
 		//  do we detect it?
-		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
+		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j] != NULL; j++)
 			FioOpenFile(i++, _newgrf_files[j]);
 	}
 
@@ -972,33 +975,23 @@ void GfxLoadSprites(void)
 const SpriteDimension *GetSpriteDimension(SpriteID sprite)
 {
 	static SpriteDimension sd_static;
-	SpriteDimension *sd;
+	SpriteDimension *sd = &sd_static;
 
-#ifndef WANT_SPRITESIZES
-	const Sprite* p;
-
-	p = _sprite_ptr[sprite];
-	if (p == NULL)
-		p = GetSprite(sprite);
-
-	/* decode sprite header */
-	sd = &sd_static;
-	sd->xoffs = p->x_offs;
-	sd->yoffs = p->y_offs;
-	sd->xsize = p->width;
-	sd->ysize = p->height;
-#else
-	sd = &sd_static;
+#ifdef WANT_SPRITESIZES
 	sd->xoffs = _sprite_xoffs[sprite];
 	sd->yoffs = _sprite_yoffs[sprite];
 	sd->xsize = _sprite_xsize[sprite];
 	sd->ysize = _sprite_ysize[sprite];
+#else
+	const Sprite* p = GetSprite(sprite);
+
+	/* decode sprite header */
+	sd->xoffs = p->x_offs;
+	sd->yoffs = p->y_offs;
+	sd->xsize = p->width;
+	sd->ysize = p->height;
 #endif
-/*	sd->xoffs = _sprite_xoffs[sprite];
-	sd->yoffs = _sprite_yoffs[sprite];
-	sd->xsize = _sprite_xsize[sprite];
-	sd->ysize = _sprite_ysize[sprite];
-*/
+
 	return sd;
 }
 
