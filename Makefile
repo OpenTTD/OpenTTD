@@ -678,20 +678,19 @@ release: all
 	@rm -fr "OpenTTD $(RELEASE)"
 
 nightly_build: all
-	@mkdir -p "OpenTTD $(RELEASE)"
-	@mkdir -p "OpenTTD $(RELEASE)"/docs
-	@cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
-	@cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
-	@cp readme.txt "OpenTTD $(RELEASE)"/docs/
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	@cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
-	@cp COPYING "OpenTTD $(RELEASE)"/docs/
-	@cp revisionlog.txt "OpenTTD $(RELEASE)"/revisionlog.txt
-	@cp changelog.txt "OpenTTD $(RELEASE)"/docs/
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
-	@cp os/macos/*.webloc "OpenTTD $(RELEASE)"/
-	@hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)".dmg
-	@rm -fr "OpenTTD $(RELEASE)"
+	@mkdir -p "OpenTTD_nightly_$(DATE)"
+	@mkdir -p "OpenTTD_nightly_$(DATE)"/docs
+	@cp -R $(OSXAPP) "OpenTTD_nightly_$(DATE)"/
+	@cp docs/OSX_where_did_the_package_go.txt "OpenTTD_nightly_$(DATE)"/Where\ did\ the\ package\ go.txt
+	@cp readme.txt "OpenTTD_nightly_$(DATE)"/docs/
+	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/readme\ if\ crashed\ on\ OSX.txt
+	@cp docs/console.txt "OpenTTD_nightly_$(DATE)"/docs/
+	@cp COPYING "OpenTTD_nightly_$(DATE)"/docs/
+	@cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
+	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
+	@cp os/macos/*.webloc "OpenTTD_nightly_$(DATE)"/
+	@hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
+	@rm -fr "OpenTTD_nightly_$(DATE)"
 
 .PHONY: release nightly_build
 endif
