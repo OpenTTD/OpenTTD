@@ -315,10 +315,31 @@ static inline bool GetBitAndShift(uint32 *b)
 	return (x&1) != 0;
 }
 
-static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = {
-	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},
-	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},
-	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2},
+/*
+	A: competitors
+	B: start time in months / 3
+	C: town count (2 = high, 0 = low)
+	D: industry count (3 = high, 0 = none)
+	E: inital loan / 1000 (in GBP)
+	F: interest rate
+	G: running costs (0 = low, 2 = high)
+	H: construction speed of competitors (0 = very slow, 4 = very fast)
+	I: intelligence (0-2)
+	J: breakdowns(0 = off, 2 = normal)
+	K: subsidy multiplier (0 = 1.5, 3 = 4.0)
+	L: construction cost (0-2)
+	M: terrain type (0 = very flat, 3 = mountainous)
+	N: amount of water (0 = very low, 3 = high)
+	O: economy (0 = steady, 1 = fluctuating)
+	P: Train reversing (0 = end of line + stations, 1 = end of line)
+	Q: disasters
+	R: area restructuring (0 = permissive, 2 = hostile)
+*/
+static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
+	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
+	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},	//easy
+	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},	//medium
+	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2},	//hard
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)

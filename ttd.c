@@ -890,7 +890,6 @@ normal_load:
 			LoadIntroGame();
 			ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
-			_opt_mod_ptr = &_opt;
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
@@ -908,6 +907,7 @@ normal_load:
 
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
 			_opt_mod_ptr = &_opt;
+			_opt_mod_temp = _opt;
 
 			_local_player = OWNER_NONE;
 			_generating_world = true;
