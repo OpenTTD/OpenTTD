@@ -1,3 +1,13 @@
+enum {
+	HOUSE_TEMP_CHURCH    = 0x03,
+	HOUSE_STADIUM        = 0x14,
+	HOUSE_MODERN_STADIUM = 0x20,
+	HOUSE_ARCT_CHURCH    = 0x3c,
+	HOUSE_SNOW_CHURCH    = 0x3d,
+	HOUSE_TROP_CHURCH    = 0x53,
+	HOUSE_TOY_CHURCH     = 0x5b
+};
+
 #define M(s1, s2, sx, sy, w, h, dz, p) {s1, s2, sx, sy, w - 1, h - 1, dz, p}
 
 static const DrawTownTileStruct _town_draw_tile_data[] = {

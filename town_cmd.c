@@ -13,6 +13,11 @@
 #include "economy.h"
 #include "gui.h"
 
+enum {
+	TOWN_HAS_CHURCH     = 0x02,
+	TOWN_HAS_STADIUM    = 0x04
+};
+
 // Local
 static int _grow_town_result;
 
@@ -1133,11 +1138,22 @@ static void DoBuildTownHouse(Town *t, uint tile)
 				continue;
 
 			// Special houses that there can be only one of.
-			oneof = 0;
-			if (house == 0x5B || house == 0x53 || house == 3 ||	house == 0x3C || house == 0x3D)
-				oneof = 2;
-			else if (house == 0x20 || house == 0x14)
-				oneof = 4;
+			switch (house) {
+				case HOUSE_TEMP_CHURCH:
+				case HOUSE_ARCT_CHURCH:
+				case HOUSE_SNOW_CHURCH:
+				case HOUSE_TROP_CHURCH:
+				case HOUSE_TOY_CHURCH:
+					oneof = TOWN_HAS_CHURCH;
+					break;
+				case HOUSE_STADIUM:
+				case HOUSE_MODERN_STADIUM:
+					oneof = TOWN_HAS_STADIUM;
+					break;
+				default:
+					oneof = 0;
+					break;
+			}
 
 			if (t->flags12 & oneof)
 				continue;
@@ -1303,11 +1319,21 @@ static void ClearTownHouse(Town *t, uint tile) {
 	t->num_houses--;
 
 	// Clear flags for houses that only may exist once/town.
-	if (house == 0x5B || house == 0x53 || house == 0x3C ||
-			house == 0x3D || house == 0x03)
-		t->flags12 &= ~2;
-	if (house == 0x14 || house == 0x20)
-		t->flags12 &= ~4;
+	switch (house) {
+		case HOUSE_TEMP_CHURCH:
+		case HOUSE_ARCT_CHURCH:
+		case HOUSE_SNOW_CHURCH:
+		case HOUSE_TROP_CHURCH:
+		case HOUSE_TOY_CHURCH:
+			t->flags12 &= ~TOWN_HAS_CHURCH;
+			break;
+		case HOUSE_STADIUM:
+		case HOUSE_MODERN_STADIUM:
+			t->flags12 &= ~TOWN_HAS_STADIUM;
+			break;
+		default:
+			break;
+	}
 
 	// Do the actual clearing of tiles
 	eflags = _housetype_extra_flags[house];
