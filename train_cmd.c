@@ -2746,7 +2746,7 @@ void OnNewDay_Train(Vehicle *v)
 		CheckIfTrainNeedsService(v);
 
 		// check if train hasn't advanced in its order list for a set number of days
-		if (_patches.lost_train_days && v->num_orders && !(v->vehstatus & VS_STOPPED) && ++v->u.rail.days_since_order_progr >= _patches.lost_train_days && v->owner == _local_player) {
+		if (_patches.lost_train_days && v->num_orders && !(v->vehstatus & (VS_STOPPED | VS_CRASHED) ) && ++v->u.rail.days_since_order_progr >= _patches.lost_train_days && v->owner == _local_player) {
 			v->u.rail.days_since_order_progr = 0;
 			SetDParam(0, v->unitnumber);
 			AddNewsItem(
