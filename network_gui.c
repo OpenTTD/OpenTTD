@@ -10,16 +10,11 @@
 #define MAX_QUERYSTR_LEN 64
 static byte _edit_str_buf[MAX_QUERYSTR_LEN*2];
 static void ShowNetworkStartServerWindow();
+#if 0
 static void ShowNetworkLobbyWindow();
-
-extern void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask);
-extern int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
-
-void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
-
+#endif
 
 static byte _selected_field;
-char *direct_ip = NULL;
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN,
@@ -65,8 +60,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			NetworkLobbyShutdown();
 			break;
 		case 3: { /* Find server automaticaly */
-			byte *b = "auto";
-			NetworkCoreConnectGame(b, _network_server_port);
+			NetworkCoreConnectGame("auto", _network_server_port);
 		}	break;
 		case 4: { /* Connect via direct ip */
 				StringID str;
@@ -103,7 +97,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if(_selected_field != 6)
+		if (_selected_field != 6)
 			break;
 
 		switch (HandleEditBoxKey(w, 6, e)) {
@@ -114,7 +108,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
+		const byte *b = e->edittext.str;
 		if (*b == 0)
 			return;
 		NetworkCoreConnectGame(b,_network_server_port);
@@ -304,6 +298,7 @@ static void ShowNetworkStartServerWindow()
 	WP(w,querystr_d).buf = _edit_str_buf;
 }
 
+#if 0
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -362,33 +357,32 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_lobby_window_widgets[] = {
-{   WWT_PUSHTXTBTN, BGC,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_GAME_LOBBY },
-{     WWT_IMGBTN,   BGC,     0,   399,    14,   299, 0x0},
+{ WWT_PUSHTXTBTN,   BGC,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION,   BGC,    10,   399,     0,    13, STR_NETWORK_GAME_LOBBY,		STR_NULL},
+{     WWT_IMGBTN,   BGC,     0,   399,    14,   299, 0x0,												STR_NULL},
 
 // chat widget
-{     WWT_IMGBTN,   BGC,    10,   240,    30,   240, 0x0},
-{  WWT_SCROLLBAR,   BGC,   241,   251,    30,   240, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   BGC,    10,   240,    30,   240, 0x0,												STR_NULL},
+{  WWT_SCROLLBAR,   BGC,   241,   251,    30,   240, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 // send message prompt
-{     WWT_IMGBTN,   BGC,    10,   200,   241,   252, 0x0, STR_NETWORK_ENTER_NAME_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   201,   251,   241,   252, STR_NETWORK_SEND, STR_NETWORK_SEND_TIP},
+{     WWT_IMGBTN,   BGC,    10,   200,   241,   252, 0x0,												STR_NETWORK_ENTER_NAME_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   201,   251,   241,   252, STR_NETWORK_SEND,					STR_NETWORK_SEND_TIP},
 
 // company name
-{     WWT_IMGBTN,   BGC,   100,   251,   254,   265, 0x0, STR_NETWORK_COMPANY_NAME_TIP},
+{     WWT_IMGBTN,   BGC,   100,   251,   254,   265, 0x0,												STR_NETWORK_COMPANY_NAME_TIP},
 
 // player information
-{     WWT_IMGBTN,   BGC,   260,   379,    30,   221, 0x0},
-{  WWT_SCROLLBAR,   BGC,   380,   390,    30,   221, 0x1,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   BGC,   260,   379,    30,   221, 0x0,												STR_NULL},
+{  WWT_SCROLLBAR,   BGC,   380,   390,    30,   221, 0x1,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 // buttons
-{ WWT_PUSHTXTBTN,   BTC,   260,   390,   233,   244, STR_NETWORK_NEW_COMPANY, STR_NETWORK_NEW_COMPANY_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   260,   390,   254,   265, STR_NETWORK_SPECTATE_GAME, STR_NETWORK_SPECTATE_GAME_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   260,   390,   233,   244, STR_NETWORK_NEW_COMPANY,		STR_NETWORK_NEW_COMPANY_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   260,   390,   254,   265, STR_NETWORK_SPECTATE_GAME,	STR_NETWORK_SPECTATE_GAME_TIP},
 
-{ WWT_PUSHTXTBTN,   BTC,    80,   180,   280,   291, STR_NETWORK_READY, STR_NULL},
-{ WWT_PUSHTXTBTN,   BTC,   220,   320,   280,   291, STR_012E_CANCEL, STR_NULL},
-
-{      WWT_LAST},
+{ WWT_PUSHTXTBTN,   BTC,    80,   180,   280,   291, STR_NETWORK_READY,					STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   220,   320,   280,   291, STR_012E_CANCEL,						STR_NULL},
+{       WWT_LAST},
 };
 
 static const WindowDesc _network_lobby_window_desc = {
@@ -414,5 +408,4 @@ static void ShowNetworkLobbyWindow()
 	WP(w,querystr_d).maxwidth = 240;
 	WP(w,querystr_d).buf = _edit_str_buf;
 }
-
-
+#endif

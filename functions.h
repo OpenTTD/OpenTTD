@@ -137,7 +137,7 @@ void NetworkCoreInit();
 void NetworkCoreShutdown();
 void NetworkCoreDisconnect();
 void NetworkCoreLoop(bool incomming);
-bool NetworkCoreConnectGame(byte* b, unsigned short port);
+bool NetworkCoreConnectGame(const byte* b, unsigned short port);
 bool NetworkCoreStartGame();
 
 void NetworkLobbyShutdown();

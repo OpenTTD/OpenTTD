@@ -191,7 +191,7 @@ typedef struct FutureSeeds {
 
 // remember some future seeds that the server sent to us.
 static FutureSeeds _future_seed[8];
-static int _num_future_seed;
+static uint _num_future_seed;
 
 static SOCKET _listensocket; // tcp socket
 
@@ -683,7 +683,7 @@ static bool ReadPackets(ClientState *cs)
 			}
 		}
 
-		assert(size>=0 && size < sizeof(cs->buf));
+		assert(size < sizeof(cs->buf));
 
 		memcpy(cs->buf, network_buffer + pos, size);
 	}
@@ -1307,7 +1307,7 @@ void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet
 }
 
 
-bool NetworkUDPSearchGame(byte ** _network_detected_serverip, unsigned short * _network_detected_serverport) {
+bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned short * _network_detected_serverport) {
 	struct UDPPacket packet;
 	int timeout=3000;
 	
@@ -1336,7 +1336,7 @@ bool NetworkUDPSearchGame(byte ** _network_detected_serverip, unsigned short * _
 	
 		}
 
-	return (_network_detected_serverport>0);
+	return (*_network_detected_serverport>0);
 		
 }
 
@@ -1478,11 +1478,11 @@ DEBUG(misc,3) ("[NET][Core] shutdown()");
 
 /* *************************************************** */
 
-bool NetworkCoreConnectGame(byte* b, unsigned short port)
+bool NetworkCoreConnectGame(const byte* b, unsigned short port)
 {
 	if (!_network_available) return false;
 
-	if (strcmp((char *) b,"auto")==0) {
+	if (strcmp(b,"auto")==0) {
 		// do autodetect
 		NetworkUDPSearchGame(&b, &port);
 	}

@@ -1,6 +1,8 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "window.h"
+
 /* main_gui.c */
 void SetupColorsAndInitialWindow();
 void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2);
@@ -82,6 +84,7 @@ void ShowSmallMap();
 void ShowExtraViewPortWindow();
 void SetVScrollCount(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
+int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
 
 void ShowCheatWindow();
 void AskForNewGameToStart();
