@@ -1055,6 +1055,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	uint8 numloaded;
 	uint8 numloading;
 	struct SpriteGroup *group;
+	struct RealSpriteGroup *rg;
 	byte *loaded_ptr;
 	byte *loading_ptr;
 	int i;
@@ -1065,27 +1066,59 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloaded = buf[3];
 	numloading = buf[4];
 
-	if (numloaded == 0x81) {
-		/* XXX: This just goes for the default superset for now,
-		 * straight and safe. --pasky */
-		uint8 var = buf[4];
-		//uint8 shiftnum = buf[5];
-		//uint8 andmask = buf[6];
-		uint8 nvar = buf[7];
-		//uint32 val;
-		uint16 def;
+	if (numloaded == 0x81 || numloaded == 0x82) {
+		struct DeterministicSpriteGroup *dg;
+		int i;
 
-		grfmsg(GMS_WARN, "NewSpriteGroup(0x81): Unsupported variable %x. Using default cid.", var);
+		// Ok, this is gonna get a little wild, so hold your breath...
 
-		//val = (0xff << shiftnum) & andmask;
+		/* This stuff is getting actually evaluated in
+		 * EvalDeterministicSpriteGroup(). */
+
+		buf += 4; len -= 4;
+		check_length(len, 6, "NewSpriteGroup 0x81/0x82");
 
 		if (setid >= _cur_grffile->spritegroups_count) {
 			_cur_grffile->spritegroups_count = setid + 1;
 			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(struct SpriteGroup));
 		}
-		buf += 8 + nvar * 4;
-		def = grf_load_word(&buf);
-		_cur_grffile->spritegroups[setid] = _cur_grffile->spritegroups[def];
+
+		group = &_cur_grffile->spritegroups[setid];
+		memset(group, 0, sizeof(struct SpriteGroup));
+		group->type = SGT_DETERMINISTIC;
+		dg = &group->g.determ;
+
+		/* XXX: We don't free() anything, assuming that if there was
+		 * some action here before, it got associated by action 3.
+		 * We should perhaps keep some refcount? --pasky */
+
+		dg->var_scope = numloaded == 0x82 ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+		dg->variable = grf_load_byte(&buf);
+
+		dg->shift_num = grf_load_byte(&buf);
+		dg->and_mask = grf_load_byte(&buf);
+		dg->operation = dg->shift_num >> 6; /* w00t */
+		dg->shift_num &= 0x3F;
+		if (dg->operation != DSG_OP_NONE) {
+			dg->add_val = grf_load_byte(&buf);
+			dg->divmod_val = grf_load_byte(&buf);
+		}
+
+		dg->num_ranges = grf_load_byte(&buf);
+		dg->ranges = calloc(dg->num_ranges, sizeof(*dg->ranges));
+		for (i = 0; i < dg->num_ranges; i++) {
+			uint16 setid = grf_load_word(&buf);
+
+			/* XXX: If multiple surreal sets attach a surreal
+			 * set this way, we are in trouble. */
+			dg->ranges[i].group = _cur_grffile->spritegroups[setid];
+			dg->ranges[i].range_low = grf_load_byte(&buf);
+			dg->ranges[i].range_high = grf_load_byte(&buf);
+		}
+
+		dg->default_group = malloc(sizeof(*dg->default_group));
+		memcpy(dg->default_group, &_cur_grffile->spritegroups[grf_load_word(&buf)], sizeof(*dg->default_group));
+
 		return;
 
 	} else if (numloaded & 0x80) {
@@ -1124,25 +1157,28 @@ static void NewSpriteGroup(byte *buf, int len)
 	}
 	group = &_cur_grffile->spritegroups[setid];
 	memset(group, 0, sizeof(struct SpriteGroup));
-	group->sprites_per_set = _cur_grffile->spriteset_numents;
-	group->loaded_count  = numloaded;
-	group->loading_count = numloading;
+	group->type = SGT_REAL;
+	rg = &group->g.real;
+
+	rg->sprites_per_set = _cur_grffile->spriteset_numents;
+	rg->loaded_count  = numloaded;
+	rg->loading_count = numloading;
 
 	DEBUG(grf, 6) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
-			setid, group->sprites_per_set, group->loaded_count, group->loading_count,
+			setid, rg->sprites_per_set, rg->loaded_count, rg->loading_count,
 			_cur_grffile->spriteset_start - _cur_grffile->sprite_offset,
 			_cur_grffile->spriteset_start + (_cur_grffile->spriteset_numents * (numloaded + numloading)) - _cur_grffile->sprite_offset);
 
 	for (i = 0; i < numloaded; i++) {
 		uint16 spriteset_id = grf_load_word(&loaded_ptr);
-		group->loaded[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
-		DEBUG(grf, 8) ("NewSpriteGroup: + group->loaded[%i]  = %u (subset %u)", i, group->loaded[i], spriteset_id);
+		rg->loaded[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
+		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i], spriteset_id);
 	}
 
 	for (i = 0; i < numloading; i++) {
 		uint16 spriteset_id = grf_load_word(&loading_ptr);
-		group->loading[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
-		DEBUG(grf, 8) ("NewSpriteGroup: + group->loading[%i] = %u (subset %u)", i, group->loading[i], spriteset_id);
+		rg->loading[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
+		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i], spriteset_id);
 	}
 }
 
@@ -1214,7 +1250,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					continue;
 				}
 
-				stat->relocation[1] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
 			}
 		}
 
@@ -1232,7 +1268,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint8 stid = buf[3 + i];
 				struct StationSpec *stat = &_cur_grffile->stations[stid];
 
-				stat->relocation[0] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
 				stat->grfid = _cur_grffile->grfid;
 				SetCustomStation(stid, stat);
 				stat->classid = 0;

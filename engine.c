@@ -196,6 +196,9 @@ void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group,
 	                         wos->overrides_count * sizeof(struct WagonOverride));
 
 	wo = &wos->overrides[wos->overrides_count - 1];
+	/* FIXME: If we are replacing an override, release original SpriteGroup
+	 * to prevent leaks. But first we need to refcount the SpriteGroup.
+	 * --pasky */
 	wo->group = *group;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
@@ -207,8 +210,10 @@ static struct SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overridin
 	struct WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
 
-	// XXX: This could turn out to be a timesink on profiles. We could always just
-	// dedicate 65535 bytes for an [engine][train] trampoline.
+	// XXX: This could turn out to be a timesink on profiles. We could
+	// always just dedicate 65535 bytes for an [engine][train] trampoline
+	// for O(1). Or O(logMlogN) and searching binary tree or smt. like
+	// that. --pasky
 
 	for (i = 0; i < wos->overrides_count; i++) {
 		struct WagonOverride *wo = &wos->overrides[i];
@@ -232,7 +237,9 @@ static struct SpriteGroup _engine_custom_sprites[256][NUM_CID];
 
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 {
-	assert(group->sprites_per_set == 4 || group->sprites_per_set == 8);
+	/* FIXME: If we are replacing an override, release original SpriteGroup
+	 * to prevent leaks. But first we need to refcount the SpriteGroup.
+	 * --pasky */
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
@@ -240,6 +247,7 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
                           byte loaded, byte in_motion, byte direction)
 {
 	struct SpriteGroup *group = &_engine_custom_sprites[engine][cargo];
+	struct RealSpriteGroup *rsg;
 	int totalsets, spriteset;
 	int r;
 
@@ -250,22 +258,26 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
 		if (overset) group = overset;
 	}
 
-	if (!group->sprites_per_set && cargo != 29) {
+	/* TODO: Resolve surreal groups properly. --pasky */
+	rsg = TriviallyGetRSG(group);
+
+	if (!rsg->sprites_per_set && cargo != 29) {
 		// This group is empty but perhaps there'll be a default one.
-		group = &_engine_custom_sprites[engine][29];
+		/* TODO: Resolve surreal groups properly. --pasky */
+		rsg = TriviallyGetRSG(&_engine_custom_sprites[engine][29]);
 	}
 
-	if (!group->sprites_per_set) {
+	if (!rsg->sprites_per_set) {
 		// This group is empty. This function users should therefore
 		// look up the sprite number in _engine_original_sprites.
 		return 0;
 	}
 
 	direction %= 8;
-	if (group->sprites_per_set == 4)
+	if (rsg->sprites_per_set == 4)
 		direction %= 4;
 
-	totalsets = in_motion ? group->loaded_count : group->loading_count;
+	totalsets = in_motion ? rsg->loaded_count : rsg->loading_count;
 
 	// My aim here is to make it possible to visually determine absolutely
 	// empty and totally full vehicles. --pasky
@@ -282,7 +294,7 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
 			spriteset--;
 	}
 
-	r = (in_motion ? group->loaded[spriteset] : group->loading[spriteset]) + direction;
+	r = (in_motion ? rsg->loaded[spriteset] : rsg->loading[spriteset]) + direction;
 	return r;
 }
 

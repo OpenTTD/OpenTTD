@@ -977,6 +977,9 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 			if (_waypoint_data[i].grfid == spec->grfid
 			    && _waypoint_data[i].localidx == local_stid + 1) {
 				stid = i;
+				/* FIXME: Release original SpriteGroup to
+				 * prevent leaks. But first we need to
+				 * refcount the SpriteGroup. --pasky */
 				break;
 			}
 		}
@@ -1003,25 +1006,30 @@ struct StationSpec *GetCustomStation(uint32 classid, byte stid)
 	return &_waypoint_data[stid];
 }
 
-uint32 GetCustomStationRelocation(struct StationSpec *spec, byte ctype)
+uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype)
 {
+	struct RealSpriteGroup *rsg;
+
 	assert(spec->classid == 'WAYP');
 
 	/* In the future, variational spritegroups will kick in through this
-	 * accessor.  */
+	 * accessor, using @stat.  */
+	rsg = TriviallyGetRSG(&spec->spritegroup[ctype]);
 
-	if (spec->relocation[ctype].loading_count != 0) {
-		return spec->relocation[ctype].loading[0];
-	} else if (spec->relocation[ctype].loading_count != 0) {
-		return spec->relocation[ctype].loaded[0];
-	} else {
-		error("Custom station 0x%08x::0x%02x has no sprites associated.",
-		       spec->grfid, spec->localidx);
-		/* This is what gets subscribed of dtss->image in grfspecial.c,
-		 * so it's probably kinda "default offset". Try to use it as
-		 * emergency measure. */
-		return 0x42D;
+	if (rsg->sprites_per_set != 0) {
+		if (rsg->loading_count != 0) {
+			return rsg->loading[0];
+		} else if (rsg->loading_count != 0) {
+			return rsg->loaded[0];
+		}
 	}
+
+	error("Custom station 0x%08x::0x%02x has no sprites associated.",
+	       spec->grfid, spec->localidx);
+	/* This is what gets subscribed of dtss->image in grfspecial.c,
+	 * so it's probably kinda "default offset". Try to use it as
+	 * emergency measure. */
+	return 0x42D;
 }
 
 int GetCustomStationsCount(uint32 classid)

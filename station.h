@@ -102,9 +102,9 @@ struct StationSpec {
 	byte tiles;
 	DrawTileSprites renderdata[8];
 
-	/* Sprite offsets for renderdata->seq->image. relocation[0] is default
-	 * whilst relocation[1] is "CID_PURCHASE". */
-	struct SpriteGroup relocation[2];
+	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
+	 * whilst spritegroup[1] is "CID_PURCHASE". */
+	struct SpriteGroup spritegroup[2];
 };
 
 /* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet
@@ -115,7 +115,10 @@ void SetCustomStation(byte stid, struct StationSpec *spec);
 /* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
  * (lookup is therefore very fast as we do this very frequently). */
 struct StationSpec *GetCustomStation(uint32 classid, byte stid);
-uint32 GetCustomStationRelocation(struct StationSpec *spec, byte ctype);
+/* Get sprite offset for a given custom station and station structure (may be
+ * NULL if ctype is set - that means we are in a build dialog). The station
+ * structure is used for variational sprite groups. */
+uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype);
 int GetCustomStationsCount(uint32 classid);
 
 #endif /* STATION_H */

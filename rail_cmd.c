@@ -1551,7 +1551,8 @@ static void DrawTile_Track(TileInfo *ti)
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
 				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
-				uint32 relocation = GetCustomStationRelocation(stat, 0);
+				/* FIXME: NULL Station! --pasky */
+				uint32 relocation = GetCustomStationRelocation(stat, NULL, 0);
 
 				image = cust->ground_sprite;
 				if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
@@ -1633,7 +1634,7 @@ void DrawWaypointSprite(int x, int y, int stat_id)
 
 	assert(stat);
 
-	relocation = GetCustomStationRelocation(stat, 1);
+	relocation = GetCustomStationRelocation(stat, NULL, 1);
 	// emulate station tile - open with building
 	// add 1 to get the other direction
 	cust = &stat->renderdata[2];
