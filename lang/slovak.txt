@@ -311,6 +311,7 @@ STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
 STR_OSNAME_AMIGAOS						:AmigaOS
+STR_OSNAME_OS2							:OS/2
 
 STR_0139_IMPERIAL_MILES						:Imperial (mile)
 STR_013A_METRIC_KILOMETERS					:Metric (kilometre)
@@ -353,6 +354,8 @@ STR_015E_QUIT_GAME						:Koniec hry
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME						:{WHITE}Koniec hry
+STR_SORT_ORDER_TIP						:{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
+STR_SORT_CRITERIA_TIP						:{BLACK}Vyber, podla coho sa ma triedit
 SRT_SORT_BY							:{BLACK}Usporiadat podla
 
 STR_SORT_BY_POPULATION						:{BLACK}Populacia
@@ -417,6 +420,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nieje mozne zmenit servisny interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Zavriet okno
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Nadpis okna - potiahni pre posun okna
+STR_STICKY_BUTTON						:{BLACK}Oznacit toto okno, aby sa nedalo zatvorit klavesou 'Zavri vsetky okna'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Zburanie budov, cistenie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Zvysit roh terenu
@@ -539,6 +543,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Vybrat 'Novy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Vybrat 'Vlastny 1' (uzivatelom definovany) program
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Vybrat 'Vlastny 2' (uzivatelom definovany) program
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Vymazat aktualny program (len Vlastny 1 a Vlastny 2 program)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Ulozit nastavenie hudby
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Kliknut na stopu pre ulozenie (len Vlastny 1 a Vlastny 2 program)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Zapnut / Vypnut nahodny vyber
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Zobrazit okno pre vyber hudobnych stop
@@ -723,6 +728,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nazvy vozidiel
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Vychodzie
 STR_02BF_CUSTOM							:Vlastne
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Ulozit vlastne nazvy
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Vyber nazvu vozidiel
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Ulozit vlastne nazvy vozidiel na disk
 
@@ -737,6 +743,8 @@ STR_NEWGRF_SETTINGS						:Nastavenie newgrf
 STR_NEWGRF_SETTINGS2						:Nastavenie newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Zatvorit VSETKY okna
+STR_CLOSE_ALL_WINDOWS2						:Zatvorit VSETKY okna
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit nazvy miest
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Zobrazit nazvy miest
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazit nazvy stanic
@@ -797,13 +805,16 @@ STR_02F8_EVERY_3_MONTHS						:Kazde 3 mesiace
 STR_02F9_EVERY_6_MONTHS						:Kazdych 6 mesiacov
 STR_02FA_EVERY_12_MONTHS					:Kazdych 6 mesiacov
 STR_02FB_START_A_NEW_GAME					:{BLACK}Spustit novu hru
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Nacitat ulozenu hru
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Pozriet Vyucbu/ukazky
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Vytvorit vlastny svet / scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Vyber jednouzivatelskej hry
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Vyberte hru pre 2-8 hracov
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Zobraz nastavenia hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Zobraz nastavenia obtiaznosti
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Spustit novu hru z pouzitim vlastneho scenara
 STR_0304_QUIT							:{BLACK}Ukoncit program
+STR_0305_QUIT_OPENTTD						:{BLACK}Ukoncit 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Pozriet Vyucbu/ukazky
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...moze byt postavene len v meste
@@ -858,23 +869,31 @@ STR_TOWNNAME_ROMANIAN						:Rumunske
 STR_TOWNNAME_CZECH						:Ceske
 ############ end of	townname region
 
+STR_CURR_GBP							:Libry ({POUNDSIGN})
+STR_CURR_USD							:Dolare ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Jeny ({YENSIGN})
 STR_CURR_ATS							:Rakuske Silingy (ATS)
 STR_CURR_BEF							:Belgicke Franky (BEF)
 STR_CURR_CHF							:Svajciarske Franky (CHF)
 STR_CURR_CZK							:Ceske Koruny (CZK)
+STR_CURR_DEM							:Nemecke marky(DEM)
 STR_CURR_DKK							:Danske Koruny (DKK)
+STR_CURR_ESP							:Pesety (ESP)
 STR_CURR_FIM							:Finske Marky (FIM)
+STR_CURR_FRF							:Franky (FRF)
 STR_CURR_GRD							:Grecke Drachny (GRD)
+STR_CURR_HUF							:Madarske Forinty (HUF)
 STR_CURR_ISK							:Islandske Koruny (ISK)
 STR_CURR_ITL							:Talianske Liry (ITL)
 STR_CURR_NLG							:Danske Guldeny (NLG)
 STR_CURR_NOK							:Norske Koruny (NOK)
+STR_CURR_PLN							:Polske Zloty (PLN)
 STR_CURR_ROL							:Rumunske Lei
 STR_CURR_RUR							:Rusle Ruble (rur)
 STR_CURR_SEK							:Svedske Koruny (SEK)
 
+STR_CURR_CUSTOM							:Vlasne...
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -962,6 +981,7 @@ STR_CONFIG_PATCHES_OFF						:Vyp.
 STR_CONFIG_PATCHES_ON						:Zap.
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Zobraz rychlost vozidla v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Umoznit vystavbu na sikmine a pobrezi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Povolit v oblasti pokrytia realistickejsiu velkost: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, tunelov, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
@@ -989,7 +1009,7 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Novy algoritmus pre hladanie s
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Vlak sa strati pokial nic nedosiahne za: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Vlak bude zruzeny ak neurobi zisk za: {ORANGE}vypnute
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Vlak bude zruseny, ak neurobi zisk za: {ORANGE}vypnute
 STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Obnovenie prikazu vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:ano, okrem zastavenych vozidiel (v garazi)
@@ -1072,6 +1092,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Smeruje do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Smeruje do {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Chod cez {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Chod bez zastavky cez {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Smerovy bod {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Smerovy bod {TOWN} #{COMMA16}
@@ -1101,6 +1122,7 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Vela nahodneho priemyslu
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Pokryt mapu s nahodne umiestnenym priemyslom
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Nemozem vygenerovat priemysel
 
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Otvorit panel nastrojov pre zvysenie/znizenie terenu, vysadzby stromov, atd.
 STR_LANDSCAPING_TOOLBAR						:{WHITE}Zmena terenu
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Menit teren
 
@@ -1210,6 +1232,7 @@ STR_NETWORK_CURRENT_DATE					:{SILVER}Aktualny date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Heslo:
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVER JE PLNY
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}ROZNE VERZIE
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pripojit sa
 
@@ -1224,8 +1247,12 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ktoru mapu chces hrat?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximalny pocet klientov:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximalny pocet klientov. Moze sa ich pripojit aj menej.
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (oznamit)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienti
 STR_NETWORK_3_CLIENTS						:3 klienti
 STR_NETWORK_4_CLIENTS						:4 klienti
@@ -1237,7 +1264,7 @@ STR_NETWORK_9_CLIENTS						:9 klientov
 STR_NETWORK_10_CLIENTS						:10 klientov
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Jazyk hracov:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
 STR_NETWORK_LOAD_GAME						:{BLACK}Nacitat hru
@@ -1286,6 +1313,7 @@ STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Overovanie..
 STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Cakam..
 STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Stahovanie mapy..
 STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Spracovanie dat..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registracia..
 
 STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Prijem informacii o hre..
 STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Prijem informacii o spolocnosti..
@@ -1315,6 +1343,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revizia hry u tohto klienta nezodpov
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Chybne heslo.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Server je plny
 STR_NETWORK_ERR_KICKED						:{WHITE} Bol si vyhodeny z hry
+STR_NETWORK_ERR_CHEATER						:{WHITE} Cheatovanie nie je povolene na tomto serveri
 
 STR_NETWORK_ERR_LEFT						:opustil hru
 ############ Leave those lines in this order!!
@@ -1330,15 +1359,32 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:meno sa uz pouziva
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:chybne heslo
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:chybne id hraca v DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:vyhodeny zo servera
+STR_NETWORK_ERR_CLIENT_CHEATER					:sa pokusal cheatovat
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:vstupil do hry
 STR_NETWORK_GIVE_MONEY						:ti dal nejake peniaze ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:dal si {STRING} nejake penazi ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Tim] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Tim] pre {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Osobny] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privatny] pre {STRING}:
+STR_NETWORK_CHAT_ALL						:[Vsetci] {STRING}:
+STR_NETWORK_NAME_CHANGE						:si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Server sa restartuje...{}Cakajte prosim...
 
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Klient
+
+STR_NETWORK_CLIENTLIST_NONE					:(nikto)
+STR_NETWORK_CLIENTLIST_KICK					:Vyhodit
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Darovat peniaze
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Napisat vsetkym
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Napisat pre spolocnost
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privatna sprava
 
 
-
+STR_NETWORK_SEND						:{BLACK}Poslat
 
 ############ end network gui strings
 
@@ -2026,6 +2072,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sidlo spolocnosti mozes premiestnit
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Sidlo spolocnosti sa neda postavit...
 STR_7072_VIEW_HQ						:{BLACK}Pozriet sidlo
 STR_RELOCATE_HQ							:{BLACK}Premiestnit sidlo
+STR_COMPANY_PASSWORD						:{BLACK}Heslo
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Heslo-ochrana vasej spolocnosti proti neautorizovanemu pripojeniu hracov
+STR_SET_COMPANY_PASSWORD					:Nastavte heslo spolocnosti
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Prepinac velkosti okna
@@ -2564,6 +2613,7 @@ STR_GO_TO_SHIP_DEPOT						:Chod do {TOWN} Lodenice
 SERVICE_AT_SHIP_DEPOT						:Opravit v {TOWN} Lodenici
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Letiska
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Tu sa letisko neda postavit...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nove Lietadlo
@@ -2686,6 +2736,15 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nie su nainstalovane ziadne subory s n
 STR_NEWGRF_FILENAME						:{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
 
+STR_CURRENCY_WINDOW						:{WHITE}Vlastna mena
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Oddelovac:
+STR_CURRENCY_PREFIX						:{LTBLUE}Predpona:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Pripona:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Prechod na Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Prechod na Euro: {ORANGE}nikdy
+STR_CURRENCY_PREVIEW						:{LTBLUE}Nahlad: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Zmenit parametre vlastnej meny
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}
@@ -2697,3 +2756,7 @@ STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Auta
 STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Lietadla
 STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Lode
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Zobrazit vsetky lietadla, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku

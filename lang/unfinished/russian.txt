@@ -1,2 +1,324 @@
 ##name Russian_latin_char
 ##ownname Russkiy
+
+##id 0x0000
+STR_NULL							:
+STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Za krayami karti
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Blizko k krayu karti
+STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Ne hvataet deneg - neobhodimo {CURRENCY}
+STR_0004							:{WHITE}{CURRENCY64}
+STR_0005							:{RED}{CURRENCY64}
+STR_EMPTY							:
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Neobhodima ploskaya poverhnosty
+STR_0008_WAITING						:{BLACK}Ozhidanie: {WHITE}{STRING}
+STR_0009							:{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (marshrut iz
+STR_000B							:{YELLOW}{STATION})
+STR_000C_ACCEPTS						:{BLACK}Prinimaetsya: {WHITE}
+STR_000D_ACCEPTS						:{BLACK}Prinimaetsya: {GOLD}
+STR_000E							:
+STR_000F_PASSENGERS						:Passajiri
+STR_0010_COAL							:Ugoly
+STR_0011_MAIL							:Pochta
+STR_0012_OIL							:Nefty
+STR_0013_LIVESTOCK						:Domashniy skot
+STR_0014_GOODS							:Tovary
+STR_0015_GRAIN							:Zerno
+STR_0016_WOOD							:Derevo
+STR_0017_IRON_ORE						:Zheleznaya Ruda
+STR_0018_STEEL							:Staly
+STR_0019_VALUABLES						:Dragocennosti
+STR_001A_COPPER_ORE						:Mednaya Ruda
+STR_001B_MAIZE							:Mais
+STR_001C_FRUIT							:Frukti
+STR_001D_DIAMONDS						:Almazi
+STR_001E_FOOD							:Prodovolstvie
+STR_001F_PAPER							:Bumaga
+STR_0020_GOLD							:Zoloto
+STR_0021_WATER							:Voda
+STR_0022_WHEAT							:Pshenica
+STR_0023_RUBBER							:Rezina
+STR_0024_SUGAR							:Sahar
+STR_0025_TOYS							:Igrushki
+STR_0026_CANDY							:Sladosti
+STR_0027_COLA							:Cola
+STR_0028_COTTON_CANDY						:Saharnaya Vata
+STR_0029_BUBBLES						:Puzirki
+STR_002A_TOFFEE							:Tyanuchka
+STR_002B_BATTERIES						:Batareyki
+STR_002C_PLASTIC						:Plastik
+STR_002D_FIZZY_DRINKS						:Shipuchie Napitki
+STR_002E							:
+STR_002F_PASSENGER						:Passajiri
+STR_0030_COAL							:Ugoly
+STR_0031_MAIL							:Pochta
+STR_0032_OIL							:Nefty
+STR_0033_LIVESTOCK						:Domashniy Skot
+STR_0034_GOODS							:Tovary
+STR_0035_GRAIN							:Zerno
+STR_0036_WOOD							:Derevo
+STR_0037_IRON_ORE						:Zheleznaya Ruda
+STR_0038_STEEL							:Staly
+STR_0039_VALUABLES						:Dragocennosti
+STR_003A_COPPER_ORE						:Mednaya Ruda
+STR_003B_MAIZE							:Mais
+STR_003C_FRUIT							:Frukti
+STR_003D_DIAMOND						:Almazi
+STR_003E_FOOD							:Prodovolstvie
+STR_003F_PAPER							:Bumaga
+STR_0040_GOLD							:Zoloto
+STR_0041_WATER							:Voda
+STR_0042_WHEAT							:Pshenica
+STR_0043_RUBBER							:Rezina
+STR_0044_SUGAR							:Sahar
+STR_0045_TOY							:Igrushki
+STR_0046_CANDY							:Sladosti
+STR_0047_COLA							:Cola
+STR_0048_COTTON_CANDY						:Saharnaya Vata
+STR_0049_BUBBLE							:Puzirki
+STR_004A_TOFFEE							:Tyanuchka
+STR_004B_BATTERY						:Batareyki
+STR_004C_PLASTIC						:Plastik
+STR_004D_FIZZY_DRINK						:Shipuchie Napitki
+STR_004E							:
+STR_004F_PASSENGER						:{COMMA16} passajirov
+STR_0050_TON_OF_COAL						:{COMMA16} tonn uglya
+STR_0051_BAG_OF_MAIL						:{COMMA16} sumok s pochtoy
+STR_0052_OF_OIL							:{VOLUME} nefti
+STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} edenic skota
+STR_0054_CRATE_OF_GOODS						:{COMMA16} korobok s tovarom
+STR_0055_TON_OF_GRAIN						:{COMMA16} tonn zerna
+STR_0056_TON_OF_WOOD						:{COMMA16} tonn dereva
+STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonn zheleznoy rudi
+STR_0058_TON_OF_STEEL						:{COMMA16} tonn stali
+STR_0059_BAG_OF_VALUABLES					:{COMMA16} sumok s dragocennostyami
+STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonn mednoy rudi
+STR_005B_TON_OF_MAIZE						:{COMMA16} tonn maisa
+STR_005C_TON_OF_FRUIT						:{COMMA16} tonn fruktov
+STR_005D_BAG_OF_DIAMONDS					:{COMMA16} meshkov s almazami
+STR_005E_TON_OF_FOOD						:{COMMA16} tonn prodovolstviya
+STR_005F_TON_OF_PAPER						:{COMMA16} tonn bumagi
+STR_0060_BAG_OF_GOLD						:{COMMA16} meshkov zolota
+STR_0061_OF_WATER						:{VOLUME} vodi
+STR_0062_TON_OF_WHEAT						:{COMMA16} tonn pshenici
+STR_0063_OF_RUBBER						:{VOLUME} rezini
+
+
+
+
+
+
+############ range for menu	starts
+############ range for menu	ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days	starts
+############ range for days	ends
+
+
+############ range for cargo acecpted starts
+############ range for cargo acecpted ends
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
