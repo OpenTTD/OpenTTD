@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Niemozna tego zrobic....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nie mozna wyczyscic terenu....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}Wersja OpenTTD {REV}: Language Pack by Tom and PolPot and Spooqy
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Designed & Programmed by Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Graphics by Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Specjalne podziekowania dla:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-Signaly i Semafory {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Fundacja na rzecz torow na zboczach {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Grafika kanalow/sluz {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}

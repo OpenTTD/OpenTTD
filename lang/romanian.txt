@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Nu pot face asta....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
 STR_00B7_VERSION						:{BLACK}OpenTTD versiunea {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Design original de Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Graficã originalã de Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Multumiri speciale:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-semnalizare si semafoare {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Fundatiile pentru constructii în pantã {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Graficã pentru canale/ecluze {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 Echipa OpenTTD
 
 STR_00C5							:{BLACK}{CROSS}

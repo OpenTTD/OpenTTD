@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Tohle neumuzes udelat...
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nemuzes vycistit tuto oblast...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Puvodni copyright: {COPYRIGHT} 1995 Chris Sawyer, vsechna práva vyhrazena
 STR_00B7_VERSION						:{BLACK}OpenTTD verze {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Puvodni design: Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Puvodni grafika: Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Zvlastni podekovani:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-Signals (predo-navesti) a semafory {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Podklady pro trate a silnice na svazích: {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Grafika pro umele pruplavy a zdymadla: {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 Tým OpenTTD
 
 STR_00C5							:{BLACK}{CROSS}

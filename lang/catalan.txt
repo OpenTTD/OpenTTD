@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}No es pot fer aixó....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}No es pot netejar l'àrea....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Tots els Drets reservats
 STR_00B7_VERSION						:{BLACK}OpenTTD versió {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Disseny Original per Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Gràfics Originals per Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Agreïments especials a:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-Senyals i Semàfors {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Fonaments per Pistes en Desnivells {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Gràfics de Canals/Rescloses {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}

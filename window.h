@@ -304,6 +304,11 @@ typedef struct {
 	NewsItem *ni;
 } news_d;
 
+typedef struct {
+	int i;
+	int j;
+} general_d;
+
 typedef enum VehicleListFlags {
 	VL_DESC    = 0x01,
 	VL_RESORT  = 0x02,

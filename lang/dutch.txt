@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Kan dit niet uitvoeren....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan gebied niet ontruimen....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Origineel copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rechten voorbehouden
 STR_00B7_VERSION						:{BLACK}OpenTTD versie {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Origineel ontworpen door Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafisch design door Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Speciale dank gaat uit naar:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Voorseinen en seinpalen {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Funderingen voor sporen op hellingen {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanaal/sluis afbeeldingen {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 Het OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}

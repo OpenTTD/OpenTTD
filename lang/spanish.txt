@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}No se puede hacer eso....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}No se puede desbrozar esta zona....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
 STR_00B7_VERSION						:{BLACK}OpenTTD versión {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Diseño original de Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Gráficos originales de Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Nuestro agradecimiento especial a:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-señales y semáforos {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Carreteras en cuesta {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Gráficos de Canales {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 El equipo OpenTTD
 
 STR_00C5							:{BLACK}{CROSS}

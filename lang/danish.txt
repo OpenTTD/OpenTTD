@@ -157,12 +157,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Det kan jeg ikke....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Originalt design af Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafik af Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}En speciel tak går til:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Forsignal og armsignal grafik {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Fundament for skinner på skråninger {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanal/Sluse grafik {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
