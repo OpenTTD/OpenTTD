@@ -815,7 +815,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Selectionner l'environnement 'Jouet
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Financer la construction de nouvelles industries
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR										:Annuaire des industries
+STR_INDUSTRY_DIR						:Annuaire des industries
 STR_0313_FUND_NEW_INDUSTRY					:Financer une nouvelle industrie
 ############ range ends here
 
@@ -1932,7 +1932,7 @@ STR_RELOCATE_HQ							:{BLACK}Déménager le QG
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Récession mondiale!{}{}Les experts financiers craignent le pire!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Fin de la récession!{}{}La reprise redonne confiance aux industries!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Bascule entre une grande/petite fenêtre
-STR_7076_COMPANY_VALUE						:{GOLD}Valeur de la compagnie: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Valeur de la compagnie : {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Acheter 25% de la compagnie
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Vendre 25% de la compagnie
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Acheter 25% de la compagnie

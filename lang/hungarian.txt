@@ -815,7 +815,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Játékvilág táj kiválasztása
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Gazdasági épület építése
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR										:Gazdasági épületek listája
+STR_INDUSTRY_DIR						:Gazdasági épületek listája
 STR_0313_FUND_NEW_INDUSTRY					:Új gazdasági épület építése
 ############ range ends here
 
@@ -1932,7 +1932,7 @@ STR_RELOCATE_HQ							:{BLACK}FH áthelyezése
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erõsödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Kicsi/nagy ablakméret közötti váltás
-STR_7076_COMPANY_VALUE						:{GOLD}A vállalat értéke: {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Cég értéke: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}25% megvétele a cégbõl
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}25% eladása a cégbõl
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}25% megvétele ebbõl a cégbõl

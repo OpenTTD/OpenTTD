@@ -195,7 +195,7 @@ STR_00C6								:{SILVER}{CROSS}
 STR_00C7_QUIT							:{WHITE}Lopeta
 STR_00C8_YES							:{BLACK}Kyllä
 STR_00C9_NO								:{BLACK}Ei
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Haluatko todella hylätä pelin ja palata {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO		:{YELLOW}Haluatko todella hylätä pelin ja palata {STRING}-järjestelmään?
 STR_00CB_1								:{BLACK}1
 STR_00CC_2								:{BLACK}2
 STR_00CD_3								:{BLACK}3
@@ -307,7 +307,7 @@ STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS					:MorphOS
 
-STR_0139_IMPERIAL_MILES					:Brittiläisen imperiumin (mailit)
+STR_0139_IMPERIAL_MILES					:Brittiläinen (mailit)
 STR_013A_METRIC_KILOMETERS				:Metrinen (kilometrit)
 STR_013B_OWNED_BY						:{WHITE}...omistaja: {STRING}
 STR_013C_CARGO							:{BLACK}Rahti
@@ -328,7 +328,7 @@ STR_0148_GAME_OPTIONS					:{BLACK}Pelin asetukset
 STR_0150_SOMEONE						:joku{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD					:Maailmankartta
 STR_0152_TOWN_DIRECTORY					:Kaupunkihakemisto
-STR_0153_SUBSIDIES						:Tarjouspyynnöt
+STR_0153_SUBSIDIES						:Alennukset
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH			:Tuottokuvaaja
@@ -536,7 +536,7 @@ STR_020A_ECONOMY_CHANGES				:{YELLOW}Talouden muutokset
 STR_020B_ADVICE_INFORMATION_ON_PLAYER	:{YELLOW}Neuvoja/tietoja pelaajan ajoneuvoista
 STR_020C_NEW_VEHICLES					:{YELLOW}Uudet ajoneuvot
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE	:{YELLOW}Rahdin vastaanottamisen muutokset
-STR_020E_SUBSIDIES						:{YELLOW}Tarjouspyynnöt
+STR_020E_SUBSIDIES						:{YELLOW}Alennukset
 STR_020F_GENERAL_INFORMATION			:{YELLOW}Yleistä tietoa
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO:{WHITE}...liian kaukana edellisestä määränpäästä
 STR_0211_TOP_COMPANIES_WHO_REACHED		:{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden 2050{}({STRING} taso)
@@ -557,7 +557,7 @@ STR_021F								:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO				:{BLACK}Luo skenaario
 STR_0221_TRANSPORT_TYCOON				:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR				:{YELLOW}Skenaariomuokkain
-STR_0223_LAND_GENERATION				:{WHITE}Maan synnyttäminen
+STR_0223_LAND_GENERATION				:{WHITE}Maan luominen
 STR_0224								:{BLACK}{UPARROW}
 STR_0225								:{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND					:{BLACK}Satunnainen maa
@@ -684,7 +684,7 @@ STR_029E_MOVE_THE_STARTING_DATE			:{BLACK}Siirrä aloituspäivää vuodella taaksepä
 STR_029F_MOVE_THE_STARTING_DATE			:{BLACK}Siirrä aloituspäivää vuodella eteenpäin
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH		:{WHITE}...sillan päiden pitää molempien olla maalla
 STR_02A1_SMALL							:{BLACK}Pieni
-STR_02A2_MEDIUM							:{BLACK}Keskikokoinen
+STR_02A2_MEDIUM							:{BLACK}Keski
 STR_02A3_LARGE							:{BLACK}Suuri
 STR_02A4_SELECT_TOWN_SIZE				:{BLACK}Valitse kaupungin koko
 STR_02A5_TOWN_SIZE						:{YELLOW}Kaupungin koko:
@@ -738,8 +738,8 @@ STR_02D9_ABOUT_TRANSPORT_TYCOON			:Tietoja 'OpenTTD:stä'
 
 STR_02DA_ON								:{BLACK}Päällä
 STR_02DB_OFF							:{BLACK}Pois
-STR_02DC_DISPLAY_SUBSIDIES				:{BLACK}Näytä tarjouspyynnöt
-STR_02DD_SUBSIDIES						:Tarjouspyynnöt
+STR_02DC_DISPLAY_SUBSIDIES				:{BLACK}Näytä alennukset
+STR_02DD_SUBSIDIES						:Alennukset
 STR_02DE_MAP_OF_WORLD					:Maailmankartta
 STR_02DF_TOWN_DIRECTORY					:Kaupunkihakemisto
 STR_02E0_CURRENCY_UNITS					:{BLACK}Valuuttayksiköt
@@ -935,7 +935,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS		:{LTBLUE}Salli aina pienet lentokentät: {ORAN
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS		:{LTBLUE}Juna on menetetty, jos edistystä ei tapahdu: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_WARN_INCOME_LESS		:{LTBLUE}Varoita, jos junan tuotto on negatiivinen: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE					:{LTBLUE}Uudista ajoneuvo automaattisesti, kun se vanhenee: {ORANGE}{STRING}
+STR_CONFIG_AUTORENEW_VEHICLE					:{LTBLUE}Uudista ajoneuvo automaattisesti, kun se vanhenee
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Suurin aseman levittäytyvyys: {ORANGE}{STRING}
@@ -1101,18 +1101,18 @@ STR_100A_RAILROAD_CONSTRUCTION			:{WHITE}Rautatien rakentaminen
 STR_100B_MONORAIL_CONSTRUCTION			:{WHITE}Yksiraiteisen rakentaminen
 STR_100C_MAGLEV_CONSTRUCTION			:{WHITE}MagLevin rakentaminen
 STR_100D_SELECT_RAIL_BRIDGE				:{WHITE}Valitse rautatiesilta
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT		:{WHITE}Ei voi rakentaa junahuoltoasemaa...
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT		:{WHITE}Ei voi rakentaa junavarikkoa...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION	:{WHITE}Ei voi rakentaa rautatieasemaa...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE		:{WHITE}Ei voi rakentaa merkkejä...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK		:{WHITE}Ei voi rakentaa rautatietä...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK	:{WHITE}Ei voi siirtää rautatietä tästä...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM		:{WHITE}Ei voi siirtää merkkejä tästä...
-STR_1014_TRAIN_DEPOT_ORIENTATION		:{WHITE}Junahuoltoaseman suunnastus
+STR_1014_TRAIN_DEPOT_ORIENTATION		:{WHITE}Junavarikon suunnastus
 STR_1015_RAILROAD_CONSTRUCTION			:Junaradan rakentaminen
 STR_1016_MONORAIL_CONSTRUCTION			:Yksiraiteisen rakentaminen
 STR_1017_MAGLEV_CONSTRUCTION			:MagLevin rakentaminen
 STR_1018_BUILD_RAILROAD_TRACK			:{BLACK}Rakenna rautatiekisko
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING	:{BLACK}Rakenna junahuoltoasema (junien rakentamista ja huoltoa varten)
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING	:{BLACK}Rakenna junavarikko (junien rakentamista ja huoltoa varten)
 STR_101A_BUILD_RAILROAD_STATION			:{BLACK}Rakenna rautatieasema
 STR_101B_BUILD_RAILROAD_SIGNALS			:{BLACK}Rakenna rautatiemerkkejä
 STR_101C_BUILD_RAILROAD_BRIDGE			:{BLACK}Rakenna rautatiesilta
@@ -1122,7 +1122,7 @@ STR_101F_BRIDGE_SELECTION_CLICK			:{BLACK}Sillan valinta - klikkaa valittua silt
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO:{BLACK}Valitse junahuoltoaseman suunnastus
 STR_1021_RAILROAD_TRACK					:Rautatiekisko
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS	:Rautatiekisko sekä merkkejä
-STR_1023_RAILROAD_TRAIN_DEPOT			:Rautatiehuoltoasema
+STR_1023_RAILROAD_TRAIN_DEPOT			:Junavarikko
 STR_1024_AREA_IS_OWNED_BY_ANOTHER		:{WHITE}...alueen omistaa toinen yhtiö
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS	:Rautatiekisko tavallisin merkein
 STR_RAILROAD_TRACK_WITH_PRESIGNALS	:Rautatiekisko esimerkein
@@ -1141,7 +1141,7 @@ STR_1805_CAN_T_REMOVE_ROAD_FROM			:{WHITE}Ei voi siirtää tietä tästä...
 STR_1806_ROAD_DEPOT_ORIENTATION			:{WHITE}Huoltoaseman suunnastus
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE		:{WHITE}Ei voi rakentaa huoltoasemaa...
 STR_1808_CAN_T_BUILD_BUS_STATION		:{WHITE}Ei voi rakentaa linja-autoasemaa...
-STR_1809_CAN_T_BUILD_TRUCK_STATION		:{WHITE}Ei voi rakentaa kuorma-autoasemaa...
+STR_1809_CAN_T_BUILD_TRUCK_STATION		:{WHITE}Ei voi rakentaa lastauslaituria...
 STR_180A_ROAD_CONSTRUCTION				:Tien rakentaminen
 STR_180B_BUILD_ROAD_SECTION				:{BLACK}Rakenna tieosuus
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT		:{BLACK}Rakenna huoltoasema (ajoneuvojen rakentamista ja huoltoa varten)
@@ -1196,780 +1196,780 @@ STR_2021_SHOW_INFORMATION_ON_LOCAL		:{BLACK}Näytä tietoja paikallisista viranoma
 STR_2022_LOCAL_AUTHORITY				:{WHITE}{CITY}:n viranomaiset
 STR_2023_TRANSPORT_COMPANY_RATINGS		:{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024								:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
-STR_2025_SUBSIDIES						:{WHITE}Tarjouspyynnöt
-STR_2026_SUBSIDIES_ON_OFFER_FOR			:{BLACK}Vapaat tarjouspyynnöt palveluille:-
+STR_2025_SUBSIDIES						:{WHITE}Alennukset
+STR_2026_SUBSIDIES_ON_OFFER_FOR			:{BLACK}Vapaat alennukset palveluille:-
 STR_2027_FROM_TO						:{ORANGE}{STRING} paikasta {STRING} paikkaan {STRING}
 STR_2028_BY								:{YELLOW} ({DATE_SHORT}:n mukaan)
 STR_2029								:{STRING} {STRING}
 STR_202A_NONE							:{ORANGE}Ei mitään
-STR_202B_SERVICES_ALREADY_SUBSIDISED	:{BLACK}Täytetyt tarjouspyynnöt palvelusita:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED	:{BLACK}Täytetyt alennukset palveluista:-
 STR_202C_FROM_TO						:{ORANGE}{STRING} asemalta {STATION} asemalle {STATION}{YELLOW} ({STRING}
 STR_202D_UNTIL							:{YELLOW}, {DATE_SHORT} saakka)
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED		:{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE		:{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidised.
-STR_2030_SERVICE_SUBSIDY_OFFERED		:{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
-STR_2031_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay 50% extra for the next year!
-STR_2032_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay double rates for the next year!
-STR_2033_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
-STR_2034_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Service subsidy awarded to {STRING}!{}{}{STRING} service from {STATION} to {STATION} will pay quadruple rates for the next year!
-STR_2035_LOCAL_AUTHORITY_REFUSES		:{WHITE}{CITY} local authority refuses to allow another airport to be built in this town
-STR_2036_COTTAGES						:Cottages
-STR_2037_HOUSES							:Houses
-STR_2038_FLATS							:Flats
-STR_2039_TALL_OFFICE_BLOCK				:Tall office block
-STR_203A_SHOPS_AND_OFFICES				:Shops and offices
-STR_203B_SHOPS_AND_OFFICES				:Shops and offices
-STR_203C_THEATER						:Theater
-STR_203D_STADIUM						:Stadium
-STR_203E_OFFICES						:Offices
-STR_203F_HOUSES							:Houses
-STR_2040_CINEMA							:Cinema
-STR_2041_SHOPPING_MALL					:Shopping mall
-STR_2042_DO_IT							:{BLACK}Do it
-STR_2043_LIST_OF_THINGS_TO_DO_AT		:{BLACK}List of things to do at this town - click on item for more details
-STR_2044_CARRY_OUT_THE_HIGHLIGHTED		:{BLACK}Carry out the highlighted action in the list above
-STR_2045_ACTIONS_AVAILABLE				:{BLACK}Actions available:
-STR_2046_SMALL_ADVERTISING_CAMPAIGN		:Small advertising campaign
-STR_2047_MEDIUM_ADVERTISING_CAMPAIGN	:Medium advertising campaign
-STR_2048_LARGE_ADVERTISING_CAMPAIGN		:Large advertising campaign
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION	:Fund local road reconstruction
-STR_204A_BUILD_STATUE_OF_COMPANY		:Build statue of company owner
-STR_204B_FUND_NEW_BUILDINGS				:Fund new buildings
-STR_204C_BUY_EXCLUSIVE_TRANSPORT		:Buy exclusive transport rights
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Bribe the local authority
-STR_204D_INITIATE_A_SMALL_LOCAL			:{WHITE}{STRING}{}{YELLOW} Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL		:{WHITE}{STRING}{}{YELLOW} Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL			:{WHITE}{STRING}{}{YELLOW} Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION		:{WHITE}{STRING}{}{YELLOW} Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}  Cost: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR		:{WHITE}{STRING}{}{YELLOW} Build a statue in honor of your company.{} Cost: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF		:{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE			:{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC		:{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
-STR_2054_CAN_T_DO_THIS					:{WHITE}Can't do this...
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING:{BIGFONT}{BLACK}Traffic chaos in {CITY}!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED		:{BLACK}{BIGFONT}Alennus päättynyt:{}{}{STRING} paikasta {STRING} paikkaan {STRING} ei sisällä enää alennuksia.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE		:{BLACK}{BIGFONT}Alennus vedetty pois:{}{}{STRING}:n palvelu asemalta {STATION} asemalle {STATION} ei ole enää alennettu.
+STR_2030_SERVICE_SUBSIDY_OFFERED		:{BLACK}{BIGFONT}Palvelunalennus tarjottu:{}{}Ensimmäinen {STRING}palvelu kohteesta {STRING} kohteeseen {STRING} ansaitsee vuoden mittaisen alennuksen paikallisviranomaisilta!
+STR_2031_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa 50% enemmän seuraavan vuoden!
+STR_2032_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa tuplaten seuraavan vuoden!
+STR_2033_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa kolminkertaisesti seuraavan vuoden!
+STR_2034_SERVICE_SUBSIDY_AWARDED		:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa nelinkertaisesti seuraavan vuoden!
+STR_2035_LOCAL_AUTHORITY_REFUSES		:{WHITE}{CITY}:n paikallisviranomaiset kieltäytyvät sallimasta uuden lentokentän rakentamista tähän kaupunkiin
+STR_2036_COTTAGES						:Mökkiä
+STR_2037_HOUSES							:Taloa
+STR_2038_FLATS							:Asuntoa
+STR_2039_TALL_OFFICE_BLOCK				:Korkeata toimistorakennusta
+STR_203A_SHOPS_AND_OFFICES				:Kauppaa ja toimistoa
+STR_203B_SHOPS_AND_OFFICES				:Kauppaa ja toimistoa
+STR_203C_THEATER						:Teatteri
+STR_203D_STADIUM						:Stadioni
+STR_203E_OFFICES						:Toimistoa
+STR_203F_HOUSES							:Taloa
+STR_2040_CINEMA							:Elokuvateatteri
+STR_2041_SHOPPING_MALL					:Kauppakeskus
+STR_2042_DO_IT							:{BLACK}Tee niin
+STR_2043_LIST_OF_THINGS_TO_DO_AT		:{BLACK}Luettelo kaupungissa tehtävistä asioista - klikkaa kohdetta saadaksesi lisätietoja
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED		:{BLACK}Suorita ylläolevassa listassa tähdennetyt toiminnot
+STR_2045_ACTIONS_AVAILABLE				:{BLACK}Saatavilla olevat toiminnot:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN		:Pieni mainoskampanja
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN	:Keskikokoinen mainoskampanja
+STR_2048_LARGE_ADVERTISING_CAMPAIGN		:Suuri mainoskampanja
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION	:Rahoita paikallista tienrakentamista
+STR_204A_BUILD_STATUE_OF_COMPANY		:Rakenna patsas yhtiön omistajasta
+STR_204B_FUND_NEW_BUILDINGS				:Rahoita uusia rakennuksia
+STR_204C_BUY_EXCLUSIVE_TRANSPORT		:Osta yksinoikeudet kuljetuksiin
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY		:Lahjo viranomaisia
+STR_204D_INITIATE_A_SMALL_LOCAL			:{WHITE}{STRING}{}{YELLOW} Tee aloite pienestä mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Hinta: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL		:{WHITE}{STRING}{}{YELLOW} Tee aloite keskikokoisesta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Hinta: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL			:{WHITE}{STRING}{}{YELLOW} Tee aloite suuresta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Hinta: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION		:{WHITE}{STRING}{}{YELLOW} Rahoita kaupunkitieverkon jälleenrakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}  Hinta: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR		:{WHITE}{STRING}{}{YELLOW} Rakenna patsas yhtiösi kunniaksi.{} Hinta: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF		:{WHITE}{STRING}{}{YELLOW} Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}  Hinta: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE			:{WHITE}{STRING}{}{YELLOW} Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset sallivat matkustajien ja rahdin käyttää vain yhtiösi asemia.{} Hinta: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC		:{WHITE}{STRING}{}{YELLOW} Lahjo viranomaisia lisätäksesi arviointiasi, kuitenkin suuren rangaistuksen uhalla, jos jäät kiinni.{}  Hinta: {CURRENCY}
+STR_2054_CAN_T_DO_THIS					:{WHITE}Ei voi tehdä näin...
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING:{BIGFONT}{BLACK}Liikennekaaos kaupungissa {CITY}!{}{}Yhtiön {STRING} rahoittama teiden jälleenrakennusohjelma tuo kuuden kuukauden kurjuuden motoristeille!
 STR_2056								:{TINYFONT}{WHITE}{CITY}
 STR_2057								:{ORANGE}{CITY}{BLACK} ({COMMA32})
-STR_2058_UNDER_CONSTRUCTION				:{STRING} (under construction)
-STR_2059_IGLOO							:Igloo
-STR_205A_TEPEES							:Tepees
-STR_205B_TEAPOT_HOUSE					:Teapot-House
-STR_205C_PIGGY_BANK						:Piggy-Bank
+STR_2058_UNDER_CONSTRUCTION				:{STRING} (rakennetaan)
+STR_2059_IGLOO							:Iglu
+STR_205A_TEPEES							:Tiipiitä
+STR_205B_TEAPOT_HOUSE					:Teesalonki
+STR_205C_PIGGY_BANK						:Säästöpossu
 
 ##id 0x2800
-STR_2800_PLANT_TREES					:Plant trees
-STR_2801_PLACE_SIGN						:Place sign
-STR_2802_TREES							:{WHITE}Trees
-STR_2803_TREE_ALREADY_HERE				:{WHITE}...tree already here
-STR_2804_SITE_UNSUITABLE				:{WHITE}...site unsuitable
-STR_2805_CAN_T_PLANT_TREE_HERE			:{WHITE}Can't plant tree here...
+STR_2800_PLANT_TREES					:Istuta puita
+STR_2801_PLACE_SIGN						:Aseta kyltti
+STR_2802_TREES							:{WHITE}Puita
+STR_2803_TREE_ALREADY_HERE				:{WHITE}...puu on jo tässä
+STR_2804_SITE_UNSUITABLE				:{WHITE}...paikka sopimaton
+STR_2805_CAN_T_PLANT_TREE_HERE			:{WHITE}Ei voi istuttaa puuta...
 STR_2806								:{WHITE}{STRING}
 STR_2807								:{TINYFONT}{WHITE}{STRING}
-STR_2808_TOO_MANY_SIGNS					:{WHITE}...too many signs
-STR_2809_CAN_T_PLACE_SIGN_HERE			:{WHITE}Can't place sign here...
-STR_280A_SIGN							:Sign
-STR_280B_EDIT_SIGN_TEXT					:{WHITE}Edit sign text
-STR_280C_CAN_T_CHANGE_SIGN_NAME			:{WHITE}Can't change sign name...
-STR_280D_SELECT_TREE_TYPE_TO_PLANT		:{BLACK}Select tree type to plant
-STR_280E_TREES							:Trees
-STR_280F_RAINFOREST						:Rainforest
-STR_2810_CACTUS_PLANTS					:Cactus Plants
+STR_2808_TOO_MANY_SIGNS					:{WHITE}...liian monta kylttiä
+STR_2809_CAN_T_PLACE_SIGN_HERE			:{WHITE}Ei voi asettaa kylttiä...
+STR_280A_SIGN							:Kyltti
+STR_280B_EDIT_SIGN_TEXT					:{WHITE}Muokkaa kyltin tekstiä
+STR_280C_CAN_T_CHANGE_SIGN_NAME			:{WHITE}Ei voi muuttaa kyltin nimeä...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT		:{BLACK}Valitse istutettava puutyyppi
+STR_280E_TREES							:Puita
+STR_280F_RAINFOREST						:Sademetsää
+STR_2810_CACTUS_PLANTS					:Kaktuksia
 
 ##id 0x3000
-STR_3000_RAIL_STATION_SELECTION			:{WHITE}Rail Station Selection
-STR_3001_AIRPORT_SELECTION				:{WHITE}Airport Selection
-STR_3002_ORIENTATION					:{BLACK}Orientation
-STR_3003_NUMBER_OF_TRACKS				:{BLACK}Number of tracks
-STR_3004_PLATFORM_LENGTH				:{BLACK}Platform length
-STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Too close to another railroad station
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING	:{WHITE}Adjoins more than one existing station/loading area
-STR_3007_TOO_MANY_STATIONS_LOADING		:{WHITE}Too many stations/loading areas in this town
-STR_3008_TOO_MANY_STATIONS_LOADING		:{WHITE}Too many stations/loading areas
-STR_3009_TOO_CLOSE_TO_ANOTHER_STATION	:{WHITE}Too close to another station/loading area
+STR_3000_RAIL_STATION_SELECTION			:{WHITE}Rautatieaseman valinta
+STR_3001_AIRPORT_SELECTION				:{WHITE}Lentokentän valinta
+STR_3002_ORIENTATION					:{BLACK}Suunnastus
+STR_3003_NUMBER_OF_TRACKS				:{BLACK}Ratojen määrä
+STR_3004_PLATFORM_LENGTH				:{BLACK}Asemalaiturin pituus
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD	:{WHITE}Liian lähellä toista rautatieasemaa
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING	:{WHITE}Liitä yhteen useampi kuin yksi olemassaoleva asema/lastausalue
+STR_3007_TOO_MANY_STATIONS_LOADING		:{WHITE}Liian monta asemaa/lastausaluetta kaupungissa
+STR_3008_TOO_MANY_STATIONS_LOADING		:{WHITE}Liian monta asemaa/lastausaluetta
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION	:{WHITE}Liian lähellä toista asemaa/lastausaluetta
 STR_300A_0								:{WHITE}{STATION} {STRINL 0x30D1}
-STR_300B_MUST_DEMOLISH_RAILROAD			:{WHITE}Must demolish railroad station first
-STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT	:{WHITE}Too close to another airport
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST	:{WHITE}Must demolish airport first
+STR_300B_MUST_DEMOLISH_RAILROAD			:{WHITE}Pitää tuhota rautatieasema ensin
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT	:{WHITE}Liian lähellä toista lentokenttää
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST	:{WHITE}Pitää tuhota lentokenttä ensin
 
-STR_3030_RENAME_STATION_LOADING			:Rename station/loading area
-STR_3031_CAN_T_RENAME_STATION			:{WHITE}Can't rename station...
-STR_3032_RATINGS						:{BLACK}Ratings
-STR_3033_ACCEPTS						:{BLACK}Accepts
-STR_3034_LOCAL_RATING_OF_TRANSPORT		:{BLACK}Local rating of transport service:
+STR_3030_RENAME_STATION_LOADING			:Nimeä asema/lastausalue uudelleen
+STR_3031_CAN_T_RENAME_STATION			:{WHITE}Ei voi uudelleennimetä asemaa...
+STR_3032_RATINGS						:{BLACK}Arvioinnit
+STR_3033_ACCEPTS						:{BLACK}Ottaa vastaan
+STR_3034_LOCAL_RATING_OF_TRANSPORT		:{BLACK}Paikallinen arvio kuljetuspalvelusta:
 
 ############ range for rating starts
-STR_3035_APPALLING						:Appalling
-STR_3036_VERY_POOR						:Very Poor
-STR_3037_POOR							:Poor
-STR_3038_MEDIOCRE						:Mediocre
-STR_3039_GOOD							:Good
-STR_303A_VERY_GOOD						:Very Good
-STR_303B_EXCELLENT						:Excellent
-STR_303C_OUTSTANDING					:Outstanding
+STR_3035_APPALLING						:Tyrmistyttävä
+STR_3036_VERY_POOR						:Hyvin kehno
+STR_3037_POOR							:Kehno
+STR_3038_MEDIOCRE						:Keskinkertainen
+STR_3039_GOOD							:Hyvä
+STR_303A_VERY_GOOD						:Oikein hyvä
+STR_303B_EXCELLENT						:Mainio
+STR_303C_OUTSTANDING					:Loistava
 ############ range for rating ends
 
 STR_303D								:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
-STR_303E_NO_LONGER_ACCEPTS				:{WHITE}{STATION} no longer accepts {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR			:{WHITE}{STATION} no longer accepts {STRING} or {STRING}
-STR_3040_NOW_ACCEPTS					:{WHITE}{STATION} now accepts {STRING}
-STR_3041_NOW_ACCEPTS_AND				:{WHITE}{STATION} now accepts {STRING} and {STRING}
-STR_3042_BUS_STATION_ORIENTATION		:{WHITE}Bus Station Orientation
-STR_3043_TRUCK_STATION_ORIENT			:{WHITE}Truck Station Orient.
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS		:{WHITE}Too close to another bus station
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK		:{WHITE}Too close to another truck station
-STR_3046_MUST_DEMOLISH_BUS_STATION		:{WHITE}Must demolish bus station first
-STR_3047_MUST_DEMOLISH_TRUCK_STATION	:{WHITE}Must demolish truck station first
-STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Stations
+STR_303E_NO_LONGER_ACCEPTS				:{WHITE}Asema {STATION} ei enää ota vastaan {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR			:{WHITE}Asema {STATION} ei enää ota vastaan {STRING} tai {STRING}
+STR_3040_NOW_ACCEPTS					:{WHITE}Asema {STATION} ottaa vastaan {STRING}
+STR_3041_NOW_ACCEPTS_AND				:{WHITE}Asema {STATION} ottaa vastaan {STRING} ja {STRING}
+STR_3042_BUS_STATION_ORIENTATION		:{WHITE}Linta-autoaseman suunnastus
+STR_3043_TRUCK_STATION_ORIENT			:{WHITE}Lastauslaiturin suunnastus
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS		:{WHITE}Liian lähellä toista linja-autoasemaa
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK		:{WHITE}Liian lähellä toista lastauslaituria
+STR_3046_MUST_DEMOLISH_BUS_STATION		:{WHITE}Pitää tuhota linja-autoasema ensin
+STR_3047_MUST_DEMOLISH_TRUCK_STATION	:{WHITE}Pitää tuhota lastauslaituri ensin
+STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} asemaa
 STR_3049_0								:{YELLOW}{STATION} {STRINL 0x30D1}
-STR_304A_NONE							:{YELLOW}- None -
-STR_304B_SITE_UNSUITABLE				:{WHITE}...site unsuitable
-STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK		:{WHITE}Too close to another dock
-STR_304D_MUST_DEMOLISH_DOCK_FIRST		:{WHITE}Must demolish dock first
-STR_304E_SELECT_RAILROAD_STATION		:{BLACK}Select railroad station orientation
-STR_304F_SELECT_NUMBER_OF_PLATFORMS		:{BLACK}Select number of platforms for railroad station
-STR_3050_SELECT_LENGTH_OF_RAILROAD		:{BLACK}Select length of railroad station
-STR_3051_SELECT_BUS_STATION_ORIENTATION	:{BLACK}Select bus station orientation
-STR_3052_SELECT_TRUCK_LOADING_BAY		:{BLACK}Select truck loading bay orientation
-STR_3053_CENTER_MAIN_VIEW_ON_STATION	:{BLACK}Center main view on station location
-STR_3054_SHOW_STATION_RATINGS			:{BLACK}Show station ratings
-STR_3055_CHANGE_NAME_OF_STATION			:{BLACK}Change name of station
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO	:{BLACK}Show list of accepted cargo
-STR_3057_STATION_NAMES_CLICK_ON			:{BLACK}Station names - click on name to center main view on station
-STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT	:{BLACK}Select size/type of airport
-STR_3059_SMALL							:{BLACK}Small
-STR_305A_LARGE							:{BLACK}City
-STR_305AA_LARGE             :{BLACK}Metropolitan airport
-STR_305AB_LARGE             :{BLACK}International airport
-STR_305B_SIZE							:{BLACK}Size
+STR_304A_NONE							:{YELLOW}- Ei mitään -
+STR_304B_SITE_UNSUITABLE				:{WHITE}...paikka sopimaton
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK		:{WHITE}Liian lähellä toista satamaa
+STR_304D_MUST_DEMOLISH_DOCK_FIRST		:{WHITE}Pitää tuhota satama ensin
+STR_304E_SELECT_RAILROAD_STATION		:{BLACK}Valitse rautatieaseman suunnastus
+STR_304F_SELECT_NUMBER_OF_PLATFORMS		:{BLACK}Valitse asemalaiturien määrä rautatieasemalle
+STR_3050_SELECT_LENGTH_OF_RAILROAD		:{BLACK}Valitse rautatieaseman pituus
+STR_3051_SELECT_BUS_STATION_ORIENTATION	:{BLACK}Valitse linja-autoaseman suunnastus
+STR_3052_SELECT_TRUCK_LOADING_BAY		:{BLACK}Valitse lastauslaiturin suunnastus
+STR_3053_CENTER_MAIN_VIEW_ON_STATION	:{BLACK}Keskitä näkymä aseman sijaintiin
+STR_3054_SHOW_STATION_RATINGS			:{BLACK}Näytä aseman arviot
+STR_3055_CHANGE_NAME_OF_STATION			:{BLACK}Muuta aseman nimi
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO	:{BLACK}Näytä luettelo vastaanotettavasta rahdista
+STR_3057_STATION_NAMES_CLICK_ON			:{BLACK}Asemien nimet - klikkaa nimeä keskittääksesi näkymän asemaan
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT	:{BLACK}Valitse lentokentän koko/tyyppi
+STR_3059_SMALL							:{BLACK}Pieni
+STR_305A_LARGE							:{BLACK}Kaupunki
+STR_305AA_LARGE             :{BLACK}Suurkaupungin lentokenttä
+STR_305AB_LARGE             :{BLACK}Kansainvälinen lentokenttä
+STR_305B_SIZE							:{BLACK}Koko
 STR_305C_0								:{STATION} {STRINL 0x30D1}
 STR_305D_0								:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
-STR_305E_RAILROAD_STATION				:Railroad station
-STR_305F_AIRCRAFT_HANGAR				:Aircraft hangar
-STR_3060_AIRPORT						:Airport
-STR_3061_TRUCK_LOADING_AREA				:Truck loading area
-STR_3062_BUS_STATION					:Bus station
-STR_3063_SHIP_DOCK						:Ship dock
-STR_3064_HIGHLIGHT_COVERAGE_AREA		:{BLACK}Highlight coverage area of proposed site
-STR_3065_DON_T_HIGHLIGHT_COVERAGE		:{BLACK}Don't highlight coverage area of proposed site
-STR_3066_COVERAGE_AREA_HIGHLIGHT		:{BLACK}Coverage area highlight
-STR_3067_MONORAIL_STATION_SELECT		:{WHITE}Monorail Station Select.
-STR_3068_DOCK							:{WHITE}Dock
-STR_3069_BUOY							:Buoy
-STR_306A_BUOY_IN_THE_WAY				:{WHITE}...buoy in the way
-STR_306B_HELIPORT						:{BLACK}Heliport
-STR_306C_STATION_TOO_SPREAD_OUT			:{WHITE}...station too spread out
+STR_305E_RAILROAD_STATION				:Rautatieasema
+STR_305F_AIRCRAFT_HANGAR				:Lentokonesuoja
+STR_3060_AIRPORT						:Lentokenttä
+STR_3061_TRUCK_LOADING_AREA				:Lastauslaituri
+STR_3062_BUS_STATION					:Linja-autoasema
+STR_3063_SHIP_DOCK						:Laivasatama
+STR_3064_HIGHLIGHT_COVERAGE_AREA		:{BLACK}Tähdennä ehdotetun tontin katealue
+STR_3065_DON_T_HIGHLIGHT_COVERAGE		:{BLACK}Älä tähdennä ehdotetun tontin katealuetta
+STR_3066_COVERAGE_AREA_HIGHLIGHT		:{BLACK}Katealueen tähdennys
+STR_3067_MONORAIL_STATION_SELECT		:{WHITE}Yksiraideaseman valinta
+STR_3068_DOCK							:{WHITE}Satama
+STR_3069_BUOY							:Poiju
+STR_306A_BUOY_IN_THE_WAY				:{WHITE}...poiju on tiellä
+STR_306B_HELIPORT						:{BLACK}Helikopterikenttä
+STR_306C_STATION_TOO_SPREAD_OUT			:{WHITE}...asema liian levittäytynyt
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION			:{WHITE}Ship Depot Orientation
-STR_3801_MUST_BE_BUILT_ON_WATER			:{WHITE}...must be built on water
-STR_3802_CAN_T_BUILD_SHIP_DEPOT			:{WHITE}Can't build ship depot here...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION	:{BLACK}Select ship depot orientation
-STR_3804_WATER							:Water
-STR_3805_COAST_OR_RIVERBANK				:Coast or riverbank
-STR_3806_SHIP_DEPOT						:Ship depot
-STR_3807_CAN_T_BUILD_ON_WATER			:{WHITE}...Can't build on water
+STR_3800_SHIP_DEPOT_ORIENTATION			:{WHITE}Telakan suunnastus
+STR_3801_MUST_BE_BUILT_ON_WATER			:{WHITE}...pitää rakentaa veteen
+STR_3802_CAN_T_BUILD_SHIP_DEPOT			:{WHITE}Ei voi rakentaa telakkaa...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION	:{BLACK}Valitse telakan suunnastus
+STR_3804_WATER							:Vettä
+STR_3805_COAST_OR_RIVERBANK				:Rannikko tai joenpenkka
+STR_3806_SHIP_DEPOT						:Telakka
+STR_3807_CAN_T_BUILD_ON_WATER			:{WHITE}...ei voi rakentaa veteen
 
 ##id 0x4000
-STR_4000_SAVE_GAME						:{WHITE}Save Game
-STR_4001_LOAD_GAME						:{WHITE}Load Game
-STR_4002_SAVE							:{BLACK}Save
-STR_4003_DELETE							:{BLACK}Delete
+STR_4000_SAVE_GAME						:{WHITE}Tallenna peli
+STR_4001_LOAD_GAME						:{WHITE}Lataa peli
+STR_4002_SAVE							:{BLACK}Tallenna
+STR_4003_DELETE							:{BLACK}Poista
 STR_4004								:{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE						:{BLACK}{COMMA32} megabytes free
-STR_4006_UNABLE_TO_READ_DRIVE			:{BLACK}Unable to read drive
-STR_4007_GAME_SAVE_FAILED				:{WHITE}Game Save Failed
-STR_4008_UNABLE_TO_DELETE_FILE			:{WHITE}Unable to delete file
-STR_4009_GAME_LOAD_FAILED				:{WHITE}Game Load Failed
-STR_400A_LIST_OF_DRIVES_DIRECTORIES		:{BLACK}List of drives, directories and saved-game files
-STR_400B_CURRENTLY_SELECTED_NAME		:{BLACK}Currently selected name for saved-game
-STR_400C_DELETE_THE_CURRENTLY_SELECTED	:{BLACK}Delete the currently selected saved-game
-STR_400D_SAVE_THE_CURRENT_GAME_USING	:{BLACK}Save the current game, using the selected name
-STR_400E_SELECT_NEW_GAME_TYPE			:{WHITE}Select New Game Type
-STR_400F_SELECT_SCENARIO_GREEN_PRE		:{BLACK}Select scenario (green), pre-set game (blue), or random new game
-STR_4010_GENERATE_RANDOM_NEW_GAME		:Generate random new game
+STR_4005_BYTES_FREE						:{BLACK}{COMMA32} megatavua vapaana
+STR_4006_UNABLE_TO_READ_DRIVE			:{BLACK}Ei voi lukea asemaa
+STR_4007_GAME_SAVE_FAILED				:{WHITE}Tallennus epäonnistui
+STR_4008_UNABLE_TO_DELETE_FILE			:{WHITE}Eoi voi poistaa tiedostoa
+STR_4009_GAME_LOAD_FAILED				:{WHITE}Lataus epäonnistui
+STR_400A_LIST_OF_DRIVES_DIRECTORIES		:{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä
+STR_400B_CURRENTLY_SELECTED_NAME		:{BLACK}Valittu nimi pelitallenteelle
+STR_400C_DELETE_THE_CURRENTLY_SELECTED	:{BLACK}Poista valittu pelitallenne
+STR_400D_SAVE_THE_CURRENT_GAME_USING	:{BLACK}Tallenna nykyinen peli käyttäen valittua nimeä
+STR_400E_SELECT_NEW_GAME_TYPE			:{WHITE}Tallenna uusi pelityyppi
+STR_400F_SELECT_SCENARIO_GREEN_PRE		:{BLACK}Valitse skenaario (vihreä), alkuasetettu peli (sininen) tai satunnainen peli
+STR_4010_GENERATE_RANDOM_NEW_GAME		:Luo uusi satunnainen peli
 
 ##id 0x4800
-STR_4800_IN_THE_WAY						:{WHITE}{STRING} in the way
+STR_4800_IN_THE_WAY						:{WHITE}{STRING} on tiellä
 STR_4801								:{WHITE}{CITY} {STRING}
-STR_4802_COAL_MINE						:Coal Mine
-STR_4803_POWER_STATION					:Power Station
-STR_4804_SAWMILL						:Sawmill
-STR_4805_FOREST							:Forest
-STR_4806_OIL_REFINERY					:Oil Refinery
-STR_4807_OIL_RIG						:Oil Rig
-STR_4808_FACTORY						:Factory
-STR_4809_PRINTING_WORKS					:Printing Works
-STR_480A_STEEL_MILL						:Steel Mill
-STR_480B_FARM							:Farm
-STR_480C_COPPER_ORE_MINE				:Copper Ore Mine
-STR_480D_OIL_WELLS						:Oil Wells
-STR_480E_BANK							:Bank
-STR_480F_FOOD_PROCESSING_PLANT			:Food Processing Plant
-STR_4810_PAPER_MILL						:Paper Mill
-STR_4811_GOLD_MINE						:Gold Mine
-STR_4812_BANK							:Bank
-STR_4813_DIAMOND_MINE					:Diamond Mine
-STR_4814_IRON_ORE_MINE					:Iron Ore Mine
-STR_4815_FRUIT_PLANTATION				:Fruit Plantation
-STR_4816_RUBBER_PLANTATION				:Rubber Plantation
-STR_4817_WATER_SUPPLY					:Water Supply
-STR_4818_WATER_TOWER					:Water Tower
-STR_4819_FACTORY						:Factory
-STR_481A_FARM							:Farm
-STR_481B_LUMBER_MILL					:Lumber Mill
-STR_481C_COTTON_CANDY_FOREST			:Cotton Candy Forest
-STR_481D_CANDY_FACTORY					:Candy Factory
-STR_481E_BATTERY_FARM					:Battery Farm
-STR_481F_COLA_WELLS						:Cola Wells
-STR_4820_TOY_SHOP						:Toy Shop
-STR_4821_TOY_FACTORY					:Toy Factory
-STR_4822_PLASTIC_FOUNTAINS				:Plastic Fountains
-STR_4823_FIZZY_DRINK_FACTORY			:Fizzy Drink Factory
-STR_4824_BUBBLE_GENERATOR				:Bubble Generator
-STR_4825_TOFFEE_QUARRY					:Toffee Quarry
-STR_4826_SUGAR_MINE						:Sugar Mine
+STR_4802_COAL_MINE						:Hiilikaivos
+STR_4803_POWER_STATION					:Sähkölaitos
+STR_4804_SAWMILL						:Saha
+STR_4805_FOREST							:Metsä
+STR_4806_OIL_REFINERY					:Öljynjalostamo
+STR_4807_OIL_RIG						:Öljylautta
+STR_4808_FACTORY						:Tehdas
+STR_4809_PRINTING_WORKS					:Kirjapaino
+STR_480A_STEEL_MILL						:Teräsvalimo
+STR_480B_FARM							:Maatila
+STR_480C_COPPER_ORE_MINE				:Kuparikaivos
+STR_480D_OIL_WELLS						:Öljykenttä
+STR_480E_BANK							:Pankki
+STR_480F_FOOD_PROCESSING_PLANT			:Ruoanjalostamo
+STR_4810_PAPER_MILL						:Paperitehdas
+STR_4811_GOLD_MINE						:Kultakaivos
+STR_4812_BANK							:Pankki
+STR_4813_DIAMOND_MINE					:Timanttikaivos
+STR_4814_IRON_ORE_MINE					:Rautakaivos
+STR_4815_FRUIT_PLANTATION				:Hedelmäviljelmä
+STR_4816_RUBBER_PLANTATION				:Kumiviljelmä
+STR_4817_WATER_SUPPLY					:Lähde
+STR_4818_WATER_TOWER					:Vesitorni
+STR_4819_FACTORY						:Tehdas
+STR_481A_FARM							:Maatila
+STR_481B_LUMBER_MILL					:Hakkuualue
+STR_481C_COTTON_CANDY_FOREST			:Hattarametsä
+STR_481D_CANDY_FACTORY					:Karkkitehdas
+STR_481E_BATTERY_FARM					:Patterimaatila
+STR_481F_COLA_WELLS						:Limsakenttä
+STR_4820_TOY_SHOP						:Lelukauppa
+STR_4821_TOY_FACTORY					:Lelutehdas
+STR_4822_PLASTIC_FOUNTAINS				:Muovilähteet
+STR_4823_FIZZY_DRINK_FACTORY			:Sihijuomatehdas
+STR_4824_BUBBLE_GENERATOR				:Kuplageneraattori
+STR_4825_TOFFEE_QUARRY					:Toffeelouhos
+STR_4826_SUGAR_MINE						:Sokerikaivos
 
 ############ range for requires	starts
-STR_4827_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}
-STR_4828_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES						:{BLACK}Vaatii: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Vaatii: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Vaatii: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
-STR_482A_PRODUCTION_LAST_MONTH			:{BLACK}Production last month:
-STR_482B_TRANSPORTED					:{YELLOW}{STRING}{BLACK} ({COMMA16}% transported)
-STR_482C_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Center the main view on industry location
-STR_482D_NEW_UNDER_CONSTRUCTION			:{BLACK}{BIGFONT}New {STRING} under construction near {CITY}!
-STR_482E_NEW_BEING_PLANTED_NEAR			:{BLACK}{BIGFONT}New {STRING} being planted near {CITY}!
-STR_482F_COST							:{BLACK}Cost: {YELLOW}{CURRENCY}
-STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY	:{WHITE}Can't construct this industry type here...
-STR_4831_FOREST_CAN_ONLY_BE_PLANTED		:{WHITE}...forest can only be planted above snow-line
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE		:{BLACK}{BIGFONT}{CITY} {STRING} announces imminent closure!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO		:{BLACK}{BIGFONT}Supply problems cause {CITY} {STRING} to announce imminent closure!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES	:{BLACK}{BIGFONT}Lack of nearby trees causes {CITY} {STRING} to announce imminent closure!
-STR_4835_INCREASES_PRODUCTION			:{BLACK}{BIGFONT}{CITY} {STRING} increases production!
-STR_4836_NEW_COAL_SEAM_FOUND_AT			:{BLACK}{BIGFONT}New coal seam found at {CITY} {STRING}!{}Production is expected to double!
-STR_4837_NEW_OIL_RESERVES_FOUND			:{BLACK}{BIGFONT}New oil reserves found at {CITY} {STRING}!{}Production is expected to double!
-STR_4838_IMPROVED_FARMING_METHODS		:{BLACK}{BIGFONT}Improved farming methods at {CITY} {STRING} are expected to double production!
-STR_4839_PRODUCTION_DOWN_BY_50			:{BLACK}{BIGFONT}{CITY} {STRING} production down by 50%
-STR_483A_INSECT_INFESTATION_CAUSES		:{BLACK}{BIGFONT}Insect infestation causes havoc at {CITY} {STRING}!{}Production down by 50%
-STR_483B_CAN_ONLY_BE_POSITIONED			:{WHITE}...can only be positioned near edges of map
-STR_INDUSTRY_PROD_GOUP					:{BLACK}{BIGFONT}{STRING} production at {CITY} {STRING} goes up by {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN				:{BLACK}{BIGFONT}{STRING} production at {CITY} {STRING} goes down by {COMMA16}%!
+STR_482A_PRODUCTION_LAST_MONTH			:{BLACK}Tuotto viime kuussa:
+STR_482B_TRANSPORTED					:{YELLOW}{STRING}{BLACK} ({COMMA16}% kuljetettu)
+STR_482C_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Keskitä päänäkymä teollisuuden sijaintiin
+STR_482D_NEW_UNDER_CONSTRUCTION			:{BLACK}{BIGFONT}Uusi {STRING} rakennetaan kaupungin {CITY} lähelle!
+STR_482E_NEW_BEING_PLANTED_NEAR			:{BLACK}{BIGFONT}Uusi {STRING} istutetaan kaupungin {CITY} lähelle!
+STR_482F_COST							:{BLACK}Hinta: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY	:{WHITE}Ei voi rakentaa tätä teollisuustyyppiä...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED		:{WHITE}...metsää voi istuttaa vain lumirajan yläpuolelle
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE		:{BLACK}{BIGFONT}{CITY}: {STRING} ilmoittaa uhkaavasta sulkemisesta!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO		:{BLACK}{BIGFONT}{CITY}: Toimitusvaikeudet saavat paikan {STRING} ilmoittamaan uhkaavasta sulkemisesta!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES	:{BLACK}{BIGFONT}{CITY}: Puiden puute saa paikan {STRING} ilmoittamaan uhkaavasta sulkemisesta!
+STR_4835_INCREASES_PRODUCTION			:{BLACK}{BIGFONT}{CITY}: {STRING} lisää tuotantoa!
+STR_4836_NEW_COAL_SEAM_FOUND_AT			:{BLACK}{BIGFONT}{CITY}: Uusi hiilijuonne löydetty: {STRING}!{}Tuotannon odotetaan tuplaantuvan!
+STR_4837_NEW_OIL_RESERVES_FOUND			:{BLACK}{BIGFONT}{CITY}: Uusia öljyvaroja löydetty: {STRING}!{}Tuotannon odotetaan tuplaantuvan!
+STR_4838_IMPROVED_FARMING_METHODS		:{BLACK}{BIGFONT}{CITY}: Edistyneet maanviljelystoimet tuplaavat tuotannon: {STRING}!
+STR_4839_PRODUCTION_DOWN_BY_50			:{BLACK}{BIGFONT}{CITY}: Paikan {STRING} tuotanto alenee 50%:lla
+STR_483A_INSECT_INFESTATION_CAUSES		:{BLACK}{BIGFONT}{CITY}: Hyönteisparvet aiheuttavat kaaosta paikassa {STRING}!{}Tuotanto alenee 50%:lla
+STR_483B_CAN_ONLY_BE_POSITIONED			:{WHITE}...voidaan asettaa vain kartan reunoille
+STR_INDUSTRY_PROD_GOUP					:{BLACK}{BIGFONT}Tuotteen {STRING} tuotanto paikassa {CITY}/{STRING} alenee {COMMA16}%:lla!
+STR_INDUSTRY_PROD_GODOWN				:{BLACK}{BIGFONT}Tuotteen {STRING} tuotanto paikassa {CITY}/{STRING} alenee {COMMA16}%:lla!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL				:{WHITE}Train in tunnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL			:{WHITE}Road vehicle in tunnel
+STR_5000_TRAIN_IN_TUNNEL				:{WHITE}Juna tunnelissa
+STR_5001_ROAD_VEHICLE_IN_TUNNEL			:{WHITE}Maantieajoneuvo tunnelissa
 STR_5002								:
-STR_5003_ANOTHER_TUNNEL_IN_THE_WAY		:{WHITE}Another tunnel in the way
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY		:{WHITE}Toinen tunneli tiellä
 STR_5004								:
-STR_5005_UNABLE_TO_EXCAVATE_LAND		:{WHITE}Unable to excavate land for other end of tunnel
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST		:{WHITE}Must demolish tunnel first
-STR_5007_MUST_DEMOLISH_BRIDGE_FIRST		:{WHITE}Must demolish bridge first
-STR_5008_CANNOT_START_AND_END_ON		:{WHITE}Cannot start and end on same position
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Level land or water required under bridge
-STR_500A_START_AND_END_MUST_BE_IN		:{WHITE}Start and end must be in line
-STR_500B_SITE_UNSUITABLE_FOR_TUNNEL		:{WHITE}Site unsuitable for tunnel entrance
+STR_5005_UNABLE_TO_EXCAVATE_LAND		:{WHITE}Ei voi kaivaa maata tunnelin toisessa päässä
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST		:{WHITE}Pitää tuhota tunneli ensin
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST		:{WHITE}Pitää tuhota silta ensin
+STR_5008_CANNOT_START_AND_END_ON		:{WHITE}Ei voi aloittaa ja lopettaa samaan paikkaan
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED	:{WHITE}Tasaista maata tai vettä vaaditaan sillan alla
+STR_500A_START_AND_END_MUST_BE_IN		:{WHITE}Alun ja lopun pitää olla linjassa
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL		:{WHITE}Tontti sopimaton tunnelinsuulle
 STR_500C								:
 STR_500D								:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL				:Suspension, Steel
-STR_500F_GIRDER_STEEL					:Girder, Steel
-STR_5010_CANTILEVER_STEEL				:Cantilever, Steel
-STR_5011_SUSPENSION_CONCRETE			:Suspension, Concrete
-STR_5012_WOODEN							:Wooden
-STR_5013_CONCRETE						:Concrete
-STR_5014_TUBULAR_STEEL					:Tubular, Steel
-STR_BRIDGE_TUBULAR_SILICON				:Tubular, Silicon
-STR_5015_CAN_T_BUILD_BRIDGE_HERE		:{WHITE}Can't build bridge here...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE		:{WHITE}Can't build tunnel here...
-STR_5017_RAILROAD_TUNNEL				:Railroad tunnel
-STR_5018_ROAD_TUNNEL					:Road tunnel
+STR_500E_SUSPENSION_STEEL				:Riippusilta, terästä
+STR_500F_GIRDER_STEEL					:Palkki, terästä
+STR_5010_CANTILEVER_STEEL				:Ulokepalkki, terästä
+STR_5011_SUSPENSION_CONCRETE			:Riippusilta, betonia
+STR_5012_WOODEN							:Puuta
+STR_5013_CONCRETE						:Betonia
+STR_5014_TUBULAR_STEEL					:Putkirakenne, terästä
+STR_BRIDGE_TUBULAR_SILICON				:Putkirakenne, piitä
+STR_5015_CAN_T_BUILD_BRIDGE_HERE		:{WHITE}Ei voi rakentaa siltaa...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE		:{WHITE}Ei voi rakentaa tunnelia...
+STR_5017_RAILROAD_TUNNEL				:Rautatietunneli
+STR_5018_ROAD_TUNNEL					:Maantietunneli
 STR_5019								:
 STR_501A								:
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE	:Steel suspension rail bridge
-STR_501C_STEEL_GIRDER_RAIL_BRIDGE		:Steel girder rail bridge
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE	:Steel cantilever rail bridge
-STR_501E_REINFORCED_CONCRETE_SUSPENSION	:Reinforced concrete suspension rail bridge
-STR_501F_WOODEN_RAIL_BRIDGE				:Wooden rail bridge
-STR_5020_CONCRETE_RAIL_BRIDGE			:Concrete rail bridge
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE	:Steel suspension road bridge
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE		:Steel girder road bridge
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE	:Steel cantilever road bridge
-STR_5024_REINFORCED_CONCRETE_SUSPENSION	:Reinforced concrete suspension road bridge
-STR_5025_WOODEN_ROAD_BRIDGE				:Wooden road bridge
-STR_5026_CONCRETE_ROAD_BRIDGE			:Concrete road bridge
-STR_5027_TUBULAR_RAIL_BRIDGE			:Tubular rail bridge
-STR_5028_TUBULAR_ROAD_BRIDGE			:Tubular road bridge
-STR_5029_STEEL							:Steel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE	:Teräksinen rautatieriippusilta
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE		:Teräksinen rautatiepalkkisilta
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE	:Teräksinen rautatieulokepalkkisilta
+STR_501E_REINFORCED_CONCRETE_SUSPENSION	:Vahvennettu betoninen rautatieriippusilta
+STR_501F_WOODEN_RAIL_BRIDGE				:Puinen rautatiesilta
+STR_5020_CONCRETE_RAIL_BRIDGE			:Betoninen rautatiesilta
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE	:Teräksinen maantieriippusilta
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE		:Teräksinen maantiepalkkisilta
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE	:Teräksinen maantieulokepalkkisilta
+STR_5024_REINFORCED_CONCRETE_SUSPENSION	:Vahvennettu betoninen maantieriippusilta
+STR_5025_WOODEN_ROAD_BRIDGE				:Puinen maantiesilta
+STR_5026_CONCRETE_ROAD_BRIDGE			:Betoninen maantiesilta
+STR_5027_TUBULAR_RAIL_BRIDGE			:Putkirakenteinen rautatiesilta
+STR_5028_TUBULAR_ROAD_BRIDGE			:Putkirakenteinen maantiesilta
+STR_5029_STEEL							:Teräksinen
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY				:{WHITE}Object in the way
-STR_5801_TRANSMITTER					:Transmitter
-STR_5802_LIGHTHOUSE						:Lighthouse
-STR_5803_COMPANY_HEADQUARTERS			:Company Headquarters
-STR_5804_COMPANY_HEADQUARTERS_IN		:{WHITE}...company headquarters in the way
-STR_5805_COMPANY_OWNED_LAND				:Company-owned land
-STR_5806_CAN_T_PURCHASE_THIS_LAND		:{WHITE}Can't purchase this land area...
-STR_5807_YOU_ALREADY_OWN_IT				:{WHITE}...you already own it!
+STR_5800_OBJECT_IN_THE_WAY				:{WHITE}Esine tiellä
+STR_5801_TRANSMITTER					:Lähetin
+STR_5802_LIGHTHOUSE						:Majakka
+STR_5803_COMPANY_HEADQUARTERS			:Yhtiön päärakennus
+STR_5804_COMPANY_HEADQUARTERS_IN		:{WHITE}...yhtiön päärakennus tiellä
+STR_5805_COMPANY_OWNED_LAND				:Yhtiön omistamaa maata
+STR_5806_CAN_T_PURCHASE_THIS_LAND		:{WHITE}Ei voi hankkia tätä maa-aluetta...
+STR_5807_YOU_ALREADY_OWN_IT				:{WHITE}...omistat sen jo!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
 STR_SV_EMPTY							:
-STR_SV_UNNAMED							:Unnamed{SKIP}
-STR_SV_TRAIN_NAME						:Train {COMMA16}
-STR_SV_ROADVEH_NAME						:Road Vehicle {COMMA16}
-STR_SV_SHIP_NAME						:Ship {COMMA16}
-STR_SV_AIRCRAFT_NAME					:Aircraft {COMMA16}
+STR_SV_UNNAMED							:Nimetön{SKIP}
+STR_SV_TRAIN_NAME						:Juna {COMMA16}
+STR_SV_ROADVEH_NAME						:Maantieajoneuvo {COMMA16}
+STR_SV_SHIP_NAME						:Laiva {COMMA16}
+STR_SV_AIRCRAFT_NAME					:Lentokone {COMMA16}
 
 STR_SV_STNAME							:{STRING}
-STR_SV_STNAME_NORTH						:{STRING} North
-STR_SV_STNAME_SOUTH						:{STRING} South
-STR_SV_STNAME_EAST						:{STRING} East
-STR_SV_STNAME_WEST						:{STRING} West
-STR_SV_STNAME_CENTRAL					:{STRING} Central
-STR_SV_STNAME_TRANSFER					:{STRING} Transfer
-STR_SV_STNAME_HALT						:{STRING} Halt
-STR_SV_STNAME_VALLEY					:{STRING} Valley
-STR_SV_STNAME_HEIGHTS					:{STRING} Heights
-STR_SV_STNAME_WOODS						:{STRING} Woods
-STR_SV_STNAME_LAKESIDE					:{STRING} Lakeside
-STR_SV_STNAME_EXCHANGE					:{STRING} Exchange
-STR_SV_STNAME_AIRPORT					:{STRING} Airport
-STR_SV_STNAME_OILFIELD					:{STRING} Oilfield
-STR_SV_STNAME_MINES						:{STRING} Mines
-STR_SV_STNAME_DOCKS						:{STRING} Docks
-STR_SV_STNAME_BUOY_1					:{STRING} Buoy 1
-STR_SV_STNAME_BUOY_2					:{STRING} Buoy 2
-STR_SV_STNAME_BUOY_3					:{STRING} Buoy 3
-STR_SV_STNAME_BUOY_4					:{STRING} Buoy 4
-STR_SV_STNAME_BUOY_5					:{STRING} Buoy 5
-STR_SV_STNAME_BUOY_6					:{STRING} Buoy 6
-STR_SV_STNAME_BUOY_7					:{STRING} Buoy 7
-STR_SV_STNAME_BUOY_8					:{STRING} Buoy 8
-STR_SV_STNAME_BUOY_9					:{STRING} Buoy 9
-STR_SV_STNAME_ANNEXE					:{STRING} Annexe
-STR_SV_STNAME_SIDINGS					:{STRING} Sidings
-STR_SV_STNAME_BRANCH					:{STRING} Branch
-STR_SV_STNAME_UPPER						:Upper {STRING}
-STR_SV_STNAME_LOWER						:Lower {STRING}
-STR_SV_STNAME_HELIPORT					:{STRING} Heliport
-STR_SV_STNAME_FOREST					:{STRING} Forest
+STR_SV_STNAME_NORTH						:Pohjois-{STRING}
+STR_SV_STNAME_SOUTH						:Etelä-{STRING}
+STR_SV_STNAME_EAST						:Itä-{STRING}
+STR_SV_STNAME_WEST						:Länsi-{STRING}
+STR_SV_STNAME_CENTRAL					:Keski-{STRING}
+STR_SV_STNAME_TRANSFER					:{STRING}:n kuljetus
+STR_SV_STNAME_HALT						:{STRING}:n pysähdys
+STR_SV_STNAME_VALLEY					:{STRING}:n laakso
+STR_SV_STNAME_HEIGHTS					:{STRING}:n kukkulat
+STR_SV_STNAME_WOODS						:{STRING}:n metsä
+STR_SV_STNAME_LAKESIDE					:{STRING}:n järvenranta
+STR_SV_STNAME_EXCHANGE					:{STRING}:n vaihde ##
+STR_SV_STNAME_AIRPORT					:{STRING}:n lentokenttä
+STR_SV_STNAME_OILFIELD					:{STRING}:n öljykenttä
+STR_SV_STNAME_MINES						:{STRING}:n kaivokset
+STR_SV_STNAME_DOCKS						:{STRING}:n satamat
+STR_SV_STNAME_BUOY_1					:{STRING}:n poiju 1
+STR_SV_STNAME_BUOY_2					:{STRING}:n poiju 2
+STR_SV_STNAME_BUOY_3					:{STRING}:n poiju 3
+STR_SV_STNAME_BUOY_4					:{STRING}:n poiju 4
+STR_SV_STNAME_BUOY_5					:{STRING}:n poiju 5
+STR_SV_STNAME_BUOY_6					:{STRING}:n poiju 6
+STR_SV_STNAME_BUOY_7					:{STRING}:n poiju 7
+STR_SV_STNAME_BUOY_8					:{STRING}:n poiju 8
+STR_SV_STNAME_BUOY_9					:{STRING}:n poiju 9
+STR_SV_STNAME_ANNEXE					:{STRING}:n lisärakennus
+STR_SV_STNAME_SIDINGS					:{STRING}:n sivuraide
+STR_SV_STNAME_BRANCH					:{STRING}:n haarautuma
+STR_SV_STNAME_UPPER						:Ylä-{STRING}
+STR_SV_STNAME_LOWER						:Ala-{STRING}
+STR_SV_STNAME_HELIPORT					:{STRING}:n helikopterikenttä
+STR_SV_STNAME_FOREST					:{STRING}:n metsä
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
-STR_6800_DIFFICULTY_LEVEL				:{WHITE}Difficulty Level
+STR_6800_DIFFICULTY_LEVEL				:{WHITE}Vaikeusaste
 
 ############ range for difficulty levels starts
-STR_6801_EASY							:{BLACK}Easy
-STR_6802_MEDIUM							:{BLACK}Medium
-STR_6803_HARD							:{BLACK}Hard
-STR_6804_CUSTOM							:{BLACK}Custom
+STR_6801_EASY							:{BLACK}Helppo
+STR_6802_MEDIUM							:{BLACK}Keskitaso
+STR_6803_HARD							:{BLACK}Vaikea
+STR_6804_CUSTOM							:{BLACK}Oma
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS			:{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA16}
-STR_6806_COMPETITOR_START_TIME			:{LTBLUE}Competitor start time: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS					:{LTBLUE}No. of towns: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES				:{LTBLUE}No. of industries: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000		:{LTBLUE}Maximum initial loan: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE			:{LTBLUE}Initial interest rate: {ORANGE}{COMMA16}%
-STR_680B_VEHICLE_RUNNING_COSTS			:{LTBLUE}Vehicle running costs: {ORANGE}{STRING}
-STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR:{LTBLUE}Construction speed of competitors: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS	:{LTBLUE}Intelligence of competitors: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS				:{LTBLUE}Vehicle breakdowns: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER				:{LTBLUE}Subsidy multiplier: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION			:{LTBLUE}Cost of construction: {ORANGE}{STRING}
-STR_6811_TERRAIN_TYPE					:{LTBLUE}Terrain type: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES			:{LTBLUE}Quantity of sea/lakes: {ORANGE}{STRING}
-STR_6813_ECONOMY						:{LTBLUE}Economy: {ORANGE}{STRING}
-STR_6814_TRAIN_REVERSING				:{LTBLUE}Train reversing: {ORANGE}{STRING}
-STR_6815_DISASTERS						:{LTBLUE}Disasters: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS			:{LTBLUE}Maksimimäärä vastustajia: {ORANGE}{COMMA16}
+STR_6806_COMPETITOR_START_TIME			:{LTBLUE}Vastustajien aloitusaika: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS					:{LTBLUE}Kaupunkien määrä: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES				:{LTBLUE}Teollisuuden määrä: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000		:{LTBLUE}Maksimimäärä aloituslainaa: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE			:{LTBLUE}Korko alussa: {ORANGE}{COMMA16}%
+STR_680B_VEHICLE_RUNNING_COSTS			:{LTBLUE}Ajoneuvojen käyttökustannukset: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR:{LTBLUE}Vastustajien rakennusnopeus: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS	:{LTBLUE}Vastustajien älykkyys: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS				:{LTBLUE}Ajoneuvojen hajoaminen: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER				:{LTBLUE}Alennuskerroin: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION			:{LTBLUE}Rakentamisen hinta: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE					:{LTBLUE}Maaston tyyppi: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES			:{LTBLUE}Meren/järvien määrä: {ORANGE}{STRING}
+STR_6813_ECONOMY						:{LTBLUE}Talous: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING				:{LTBLUE}Junien peruutus: {ORANGE}{STRING}
+STR_6815_DISASTERS						:{LTBLUE}Onnettomuudet: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_6816_LOW							:Low
-STR_6817_NORMAL							:Normal
-STR_6818_HIGH							:High
+STR_6816_LOW							:Matala
+STR_6817_NORMAL							:Tavallinen
+STR_6818_HIGH							:Korkea
 STR_6819								:{BLACK}<
 STR_681A								:{BLACK}>
-STR_681B_VERY_SLOW						:Very Slow
-STR_681C_SLOW							:Slow
-STR_681D_MEDIUM							:Medium
-STR_681E_FAST							:Fast
-STR_681F_VERY_FAST						:Very Fast
-STR_VERY_LOW							:Very Low
-STR_6820_LOW							:Low
-STR_6821_MEDIUM							:Medium
-STR_6822_HIGH							:High
-STR_6823_NONE							:None
-STR_6824_REDUCED						:Reduced
-STR_6825_NORMAL							:Normal
+STR_681B_VERY_SLOW						:Hyvin hidas
+STR_681C_SLOW							:Hidas
+STR_681D_MEDIUM							:Keskitaso
+STR_681E_FAST							:Nopea
+STR_681F_VERY_FAST						:Hyvin nopea
+STR_VERY_LOW							:Hyvin matala
+STR_6820_LOW							:Matala
+STR_6821_MEDIUM							:Keskitaso
+STR_6822_HIGH							:Korkea
+STR_6823_NONE							:Ei mitään
+STR_6824_REDUCED						:Vähennetty
+STR_6825_NORMAL							:Tavallinen
 STR_6826_X1_5							:x1.5
 STR_6827_X2								:x2
 STR_6828_X3								:x3
 STR_6829_X4								:x4
-STR_682A_VERY_FLAT						:Very Flat
-STR_682B_FLAT							:Flat
-STR_682C_HILLY							:Hilly
-STR_682D_MOUNTAINOUS					:Mountainous
-STR_682E_STEADY							:Steady
-STR_682F_FLUCTUATING					:Fluctuating
-STR_6830_IMMEDIATE						:Immediate
-STR_6831_3_MONTHS_AFTER_PLAYER			:3 months after player
-STR_6832_6_MONTHS_AFTER_PLAYER			:6 months after player
-STR_6833_9_MONTHS_AFTER_PLAYER			:9 months after player
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS	:At end of line, and at stations
-STR_6835_AT_END_OF_LINE_ONLY			:At end of line only
-STR_6836_OFF							:Off
-STR_6837_ON								:On
-STR_6838_SHOW_HI_SCORE_CHART			:{BLACK}Show hi-score chart
+STR_682A_VERY_FLAT						:Hyvin tasainen
+STR_682B_FLAT							:Tasainen
+STR_682C_HILLY							:Kukkulainen
+STR_682D_MOUNTAINOUS					:Vuoristoinen
+STR_682E_STEADY							:Vakaa
+STR_682F_FLUCTUATING					:Vaihteleva
+STR_6830_IMMEDIATE						:Välitön
+STR_6831_3_MONTHS_AFTER_PLAYER			:3 kuukautta pelaajan jälkeen
+STR_6832_6_MONTHS_AFTER_PLAYER			:6 kuukautta pelaajan jälkeen
+STR_6833_9_MONTHS_AFTER_PLAYER			:9 kuukautta pelaajan jälkeen
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS	:Radan päässä ja asemilla
+STR_6835_AT_END_OF_LINE_ONLY			:Vain radan päässä
+STR_6836_OFF							:Päällä
+STR_6837_ON								:Pois
+STR_6838_SHOW_HI_SCORE_CHART			:{BLACK}Näytä pistetaulukko
 
 ##id 0x7000
 STR_7000								:
 STR_7001								:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER_1						: (Player 1)
-STR_7003_PLAYER_2						: (Player 2)
-STR_7004_NEW_FACE						:{BLACK}New Face
-STR_7005_COLOR_SCHEME					:{BLACK}Color Scheme
-STR_7006_COLOR_SCHEME					:{GOLD}Color Scheme:
-STR_7007_NEW_COLOR_SCHEME				:{WHITE}New Color Scheme
-STR_7008_COMPANY_NAME					:{BLACK}Company Name
-STR_7009_PRESIDENT_NAME					:{BLACK}President Name
-STR_700A_COMPANY_NAME					:Company Name
-STR_700B_PRESIDENT_S_NAME				:President's Name
-STR_700C_CAN_T_CHANGE_COMPANY_NAME		:{WHITE}Can't change company name...
-STR_700D_CAN_T_CHANGE_PRESIDENT			:{WHITE}Can't change president's name...
-STR_700E_FINANCES						:{WHITE}{STRING} Finances{BLACK}{STRING}
-STR_700F_EXPENDITURE_INCOME				:{WHITE}Expenditure/Income
+STR_7002_PLAYER_1						: (pelaaja 1)
+STR_7003_PLAYER_2						: (pelaaja 2)
+STR_7004_NEW_FACE						:{BLACK}Uudet kasvot
+STR_7005_COLOR_SCHEME					:{BLACK}Väriteema
+STR_7006_COLOR_SCHEME					:{GOLD}Väriteema:
+STR_7007_NEW_COLOR_SCHEME				:{WHITE}Uusi väriteema
+STR_7008_COMPANY_NAME					:{BLACK}Yhtiön nimi
+STR_7009_PRESIDENT_NAME					:{BLACK}Pääjohtajan nimi
+STR_700A_COMPANY_NAME					:Yhtiön nimi
+STR_700B_PRESIDENT_S_NAME				:Pääjohtajan nimi
+STR_700C_CAN_T_CHANGE_COMPANY_NAME		:{WHITE}Ei voi muuttaa yhtiön nimeä...
+STR_700D_CAN_T_CHANGE_PRESIDENT			:{WHITE}Ei voi muuttaa pääjohtajan nimeä...
+STR_700E_FINANCES						:{WHITE}{STRING} Talous{BLACK}{STRING}
+STR_700F_EXPENDITURE_INCOME				:{WHITE}Menot/tulot
 STR_7010								:{WHITE}{NUMU16}
-STR_7011_CONSTRUCTION					:{GOLD}Construction
-STR_7012_NEW_VEHICLES					:{GOLD}New Vehicles
-STR_7013_TRAIN_RUNNING_COSTS			:{GOLD}Train Running Costs
-STR_7014_ROAD_VEH_RUNNING_COSTS			:{GOLD}Road Veh. Running Costs
-STR_7015_AIRCRAFT_RUNNING_COSTS			:{GOLD}Aircraft Running Costs
-STR_7016_SHIP_RUNNING_COSTS				:{GOLD}Ship Running Costs
-STR_7017_PROPERTY_MAINTENANCE			:{GOLD}Property Maintenance
-STR_7018_TRAIN_INCOME					:{GOLD}Train Income
-STR_7019_ROAD_VEHICLES_INCOME			:{GOLD}Road Vehicles Income
-STR_701A_AIRCRAFT_INCOME				:{GOLD}Aircraft Income
-STR_701B_SHIP_INCOME					:{GOLD}Ship Income
-STR_701C_LOAN_INTEREST					:{GOLD}Loan Interest
-STR_701D_OTHER							:{GOLD}Other
+STR_7011_CONSTRUCTION					:{GOLD}Rakentaminen
+STR_7012_NEW_VEHICLES					:{GOLD}Uusia ajoneuvoja
+STR_7013_TRAIN_RUNNING_COSTS			:{GOLD}Junien käyttökustannukset
+STR_7014_ROAD_VEH_RUNNING_COSTS			:{GOLD}Autojen käyttökustannukset
+STR_7015_AIRCRAFT_RUNNING_COSTS			:{GOLD}Lentokoneiden käyttökustannukset
+STR_7016_SHIP_RUNNING_COSTS				:{GOLD}Laivojen käyttökustannukset
+STR_7017_PROPERTY_MAINTENANCE			:{GOLD}Omaisuudenhallinta
+STR_7018_TRAIN_INCOME					:{GOLD}Junien tulot
+STR_7019_ROAD_VEHICLES_INCOME			:{GOLD}Maantieajoneuvojen tulot
+STR_701A_AIRCRAFT_INCOME				:{GOLD}Lentokoneiden tulot
+STR_701B_SHIP_INCOME					:{GOLD}Laivojen tulot
+STR_701C_LOAN_INTEREST					:{GOLD}Lainan korko
+STR_701D_OTHER							:{GOLD}Muuta
 STR_701E								:{BLACK}-{CURRENCY64}
 STR_701F								:{BLACK}+{CURRENCY64}
-STR_7020_TOTAL							:{WHITE}Total:
+STR_7020_TOTAL							:{WHITE}Yhteensä:
 STR_7021								:{STRING}{STRING}
-STR_7022_INCOME_GRAPH					:{WHITE}Income Graph
+STR_7022_INCOME_GRAPH					:{WHITE}Tulokuvaaja
 STR_7023								:{CURRCOMPACT}
 STR_7024								:{COMMA32}
-STR_7025_OPERATING_PROFIT_GRAPH			:{WHITE}Operating Profit Graph
-STR_7026_BANK_BALANCE					:{WHITE}Bank Balance
-STR_7027_LOAN							:{WHITE}Loan
+STR_7025_OPERATING_PROFIT_GRAPH			:{WHITE}Tuottokuvaaja
+STR_7026_BANK_BALANCE					:{WHITE}Tilin kate
+STR_7027_LOAN							:{WHITE}Laina
 STR_7028								:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}Borrow {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:{BLACK}Repay {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN			:{WHITE}...maximum permitted loan size is {CURRENCY}
-STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Can't borrow any more money...
-STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...no loan to repay
-STR_702E_REQUIRED						:{WHITE}...{CURRENCY} required
-STR_702F_CAN_T_REPAY_LOAN				:{WHITE}Can't repay loan...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT	:{BLACK}Select new face for president
-STR_7031_CHANGE_THE_COMPANY_VEHICLE		:{BLACK}Change the company vehicle livery
-STR_7032_CHANGE_THE_PRESIDENT_S			:{BLACK}Change the president's name
-STR_7033_CHANGE_THE_COMPANY_NAME		:{BLACK}Change the company name
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR	:{BLACK}Click on selected new color scheme
-STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Increase size of loan
-STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Repay part of loan
-STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
-STR_7038_INAUGURATED					:{GOLD}Inaugurated: {WHITE}{NUMU16}
-STR_7039_VEHICLES						:{GOLD}Vehicles: 
-STR_703A_TRAIN							:{WHITE}{COMMA16} train
-STR_703B_TRAINS							:{WHITE}{COMMA16} trains
-STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} road vehicle
-STR_703D_ROAD_VEHICLES					:{WHITE}{COMMA16} road vehicles
-STR_703E_AIRCRAFT						:{WHITE}{COMMA16} aircraft
-STR_703F_AIRCRAFT						:{WHITE}{COMMA16} aircraft
-STR_7040_SHIP							:{WHITE}{COMMA16} ship
-STR_7041_SHIPS							:{WHITE}{COMMA16} ships
-STR_7042_NONE							:{WHITE}None
-STR_7043_FACE_SELECTION					:{WHITE}Face Selection
-STR_7044_MALE							:{BLACK}Male
-STR_7045_FEMALE							:{BLACK}Female
-STR_7046_NEW_FACE						:{BLACK}New Face
-STR_7047_CANCEL_NEW_FACE_SELECTION		:{BLACK}Cancel new face selection
-STR_7048_ACCEPT_NEW_FACE_SELECTION		:{BLACK}Accept new face selection
-STR_7049_SELECT_MALE_FACES				:{BLACK}Select male faces
-STR_704A_SELECT_FEMALE_FACES			:{BLACK}Select female faces
-STR_704B_GENERATE_RANDOM_NEW_FACE		:{BLACK}Generate random new face
-STR_704C_KEY							:{BLACK}Key
-STR_704D_SHOW_KEY_TO_GRAPHS				:{BLACK}Show key to graphs
-STR_704E_KEY_TO_COMPANY_GRAPHS			:{WHITE}Key to company graphs
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY	:{BLACK}Click here to toggle company's entry on graph on/off
-STR_7050_UNITS_OF_CARGO_DELIVERED		:{WHITE}Units of cargo delivered
-STR_7051_COMPANY_PERFORMANCE_RATINGS	:{WHITE}Company performance ratings (maximum rating=1000)
-STR_7052_COMPANY_VALUES					:{WHITE}Company values
-STR_7053_COMPANY_LEAGUE_TABLE			:{WHITE}Company League Table
+STR_7029_BORROW							:{BLACK}Lainaa {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Maksa lainaa {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN			:{WHITE}...suurin sallittu lainan suuruus on {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY	:{WHITE}Ei voi lainata lisää raahaa...
+STR_702D_LOAN_ALREADY_REPAYED			:{WHITE}...ei lainaa maksettavana
+STR_702E_REQUIRED						:{WHITE}...vaaditaan {CURRENCY}
+STR_702F_CAN_T_REPAY_LOAN				:{WHITE}Ei voi maksaa lainaa...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT	:{BLACK}Valitse uudet kasvot pääjohtajalle
+STR_7031_CHANGE_THE_COMPANY_VEHICLE		:{BLACK}Muuta yhtiön ajoneuvoammattikuntaa
+STR_7032_CHANGE_THE_PRESIDENT_S			:{BLACK}Muuta pääjohtajan nimeä
+STR_7033_CHANGE_THE_COMPANY_NAME		:{BLACK}Muuta yhtiön nimeä
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR	:{BLACK}Klikkaa valitussa väriteemassa
+STR_7035_INCREASE_SIZE_OF_LOAN			:{BLACK}Lisää lainan kokoa
+STR_7036_REPAY_PART_OF_LOAN				:{BLACK}Maksa osa lainasta
+STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(pääjohtaja)
+STR_7038_INAUGURATED					:{GOLD}Avattu: {WHITE}{NUMU16}
+STR_7039_VEHICLES						:{GOLD}Ajoneuvot: 
+STR_703A_TRAIN							:{WHITE}{COMMA16} juna
+STR_703B_TRAINS							:{WHITE}{COMMA16} junaa
+STR_703C_ROAD_VEHICLE					:{WHITE}{COMMA16} maantieajoneuvo
+STR_703D_ROAD_VEHICLES					:{WHITE}{COMMA16} maantieajoneuvoa
+STR_703E_AIRCRAFT						:{WHITE}{COMMA16} lentokone
+STR_703F_AIRCRAFT						:{WHITE}{COMMA16} lentokonetta
+STR_7040_SHIP							:{WHITE}{COMMA16} laiva
+STR_7041_SHIPS							:{WHITE}{COMMA16} kaivaa
+STR_7042_NONE							:{WHITE}Ei mitään
+STR_7043_FACE_SELECTION					:{WHITE}Kasvojen valinta
+STR_7044_MALE							:{BLACK}Mies
+STR_7045_FEMALE							:{BLACK}Nainen
+STR_7046_NEW_FACE						:{BLACK}Uudet kasvot
+STR_7047_CANCEL_NEW_FACE_SELECTION		:{BLACK}Peruuta uusien kasvojen valinta
+STR_7048_ACCEPT_NEW_FACE_SELECTION		:{BLACK}Hyväksy uusien kasvojen valinta
+STR_7049_SELECT_MALE_FACES				:{BLACK}Valitse miehen kasvot
+STR_704A_SELECT_FEMALE_FACES			:{BLACK}Valitse naisen kasvot
+STR_704B_GENERATE_RANDOM_NEW_FACE		:{BLACK}Luo satunnaiset kasvot
+STR_704C_KEY							:{BLACK}Näppäin
+STR_704D_SHOW_KEY_TO_GRAPHS				:{BLACK}Näytä kuvaajanäppäin
+STR_704E_KEY_TO_COMPANY_GRAPHS			:{WHITE}Näppäin yhtiön kuvaajiin
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY	:{BLACK}Klikkaa tässä saadaksesi yhtiön merkinnän graafissa päälle/pois
+STR_7050_UNITS_OF_CARGO_DELIVERED		:{WHITE}Rahtia kuljetettu (yksikköä)
+STR_7051_COMPANY_PERFORMANCE_RATINGS	:{WHITE}Yhtiön suorituskykyarvio (maksimiarvio=1000)
+STR_7052_COMPANY_VALUES					:{WHITE}Yhtiön arvot
+STR_7053_COMPANY_LEAGUE_TABLE			:{WHITE}Yhtiökilpataulukko
 STR_7054								:{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRING}'
 STR_7055								:{YELLOW}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING}  '{STRING}'
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE	:{BLACK}{BIGFONT}Transport company in trouble!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED	:{BLACK}{BIGFONT}{STRING} will be sold off or declared bankrupt unless performance increases soon!
-STR_7058_PRESIDENT						:{BLACK}{STRING}{}(President)
-STR_7059_TRANSPORT_COMPANY_MERGER		:{BLACK}{BIGFONT}Transport company merger!
-STR_705A_HAS_BEEN_SOLD_TO_FOR			:{BLACK}{BIGFONT}{STRING} has been sold to {STRING} for {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT	:{WHITE}We are looking for a transport company to take-over our company{}{}Do you want to purchase {STRING} for {CURRENCY}?
-STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Bankrupt!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY		:{BLACK}{BIGFONT}{STRING} has been closed down by creditors and all assets sold off!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED	:{BLACK}{BIGFONT}New transport company launched!
-STR_705F_STARTS_CONSTRUCTION_NEAR		:{BLACK}{BIGFONT}{STRING} starts construction near {CITY}!
-STR_7060_CAN_T_BUY_COMPANY				:{WHITE}Can't buy company...
-STR_7061_CARGO_PAYMENT_RATES			:{WHITE}Cargo Payment Rates
-STR_7062_DAYS_IN_TRANSIT				:{BLACK}{TINYFONT}Days in transit
-STR_7063_PAYMENT_FOR_DELIVERING			:{BLACK}{TINYFONT}Payment for delivering 10 units (or 10,000 litres) of cargo a distance of 20 squares
-STR_7064_TOGGLE_GRAPH_FOR_CARGO			:{BLACK}Toggle graph for cargo type on/off
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE	:{BLACK}{BIGFONT}Kuljetusyhtiö vaikeuksissa!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED	:{BLACK}{BIGFONT}{STRING} myydään tai julistetaan konkurssiin, ellei suorituskyky lisäänny pian!
+STR_7058_PRESIDENT						:{BLACK}{STRING}{}(pääjohtaja)
+STR_7059_TRANSPORT_COMPANY_MERGER		:{BLACK}{BIGFONT}Kuljetusyhtiösulautuminen!
+STR_705A_HAS_BEEN_SOLD_TO_FOR			:{BLACK}{BIGFONT}{STRING} on myyty yhtiölle {STRING} hintaan {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT	:{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko tilata yhtiön {STRING} hintaan {CURRENCY}?
+STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Konkurssi!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY		:{BLACK}{BIGFONT}{STRING} on suljettu velkojien käskystä ja kaikki edut myyty pois!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED	:{BLACK}{BIGFONT}Uusi kuljetusyhtiö perustettu!
+STR_705F_STARTS_CONSTRUCTION_NEAR		:{BLACK}{BIGFONT}{STRING} aloittaa rakentamisen kaupungin {CITY} lähellä!
+STR_7060_CAN_T_BUY_COMPANY				:{WHITE}Ei voi ostaa yhtiötä...
+STR_7061_CARGO_PAYMENT_RATES			:{WHITE}Rahtimaksuhinnasto
+STR_7062_DAYS_IN_TRANSIT				:{BLACK}{TINYFONT}Päivää kauttakulussa
+STR_7063_PAYMENT_FOR_DELIVERING			:{BLACK}{TINYFONT}Maksu 10 yksikön (tai 10000 litran) rahdin kuljettamisesta 20 ruudun päähän
+STR_7064_TOGGLE_GRAPH_FOR_CARGO			:{BLACK}Rahtityypin kuvaaja päälle/pois
 STR_7065								:{BLACK}{TINYFONT}{STRING}
-STR_7066_ENGINEER						:Engineer
-STR_7067_TRAFFIC_MANAGER				:Traffic Manager
-STR_7068_TRANSPORT_COORDINATOR			:Transport Coordinator
-STR_7069_ROUTE_SUPERVISOR				:Route Supervisor
-STR_706A_DIRECTOR						:Director
-STR_706B_CHIEF_EXECUTIVE				:Chief Executive
-STR_706C_CHAIRMAN						:Chairman
-STR_706D_PRESIDENT						:President
-STR_706E_TYCOON							:Tycoon
-STR_706F_BUILD_HQ						:{BLACK}Build HQ
-STR_7070_BUILD_COMPANY_HEADQUARTERS		:{BLACK}Build company headquarters / view company headquarters
-STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS:{WHITE}Can't build company headquarters...
-STR_7072_VIEW_HQ						:{BLACK}View HQ
-STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
-STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
-STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Toggle large/small window size
-STR_7076_COMPANY_VALUE					:{GOLD}Company value: {WHITE}{CURRENCY}
-STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Buy 25% share in company
-STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Sell 25% share in company
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY	:{BLACK}Buy 25% share in this company
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY	:{BLACK}Sell 25% share in this company
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS		:{WHITE}Can't buy 25% share in this company...
-STR_707C_CAN_T_SELL_25_SHARE_IN			:{WHITE}Can't sell 25% share in this company...
-STR_707D_OWNED_BY						:{WHITE}({COMMA16}% owned by {STRING})
-STR_707E_OWNED_BY_OWNED_BY				:{WHITE}({COMMA16}% owned by {STRING}{}   {COMMA16}% owned by {STRING})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY			:{BLACK}{BIGFONT}{STRING} has been taken over by {STRING}!
+STR_7066_ENGINEER						:Insinööri
+STR_7067_TRAFFIC_MANAGER				:Liikennepäällikkö
+STR_7068_TRANSPORT_COORDINATOR			:Kuljetusjohtaja
+STR_7069_ROUTE_SUPERVISOR				:Reittityönjohtaja
+STR_706A_DIRECTOR						:Johtaja
+STR_706B_CHIEF_EXECUTIVE				:Osastopäällikkö
+STR_706C_CHAIRMAN						:Puheenjohtaja
+STR_706D_PRESIDENT						:Pääjohtaja
+STR_706E_TYCOON							:Pohatta
+STR_706F_BUILD_HQ						:{BLACK}Rakenna päämaja
+STR_7070_BUILD_COMPANY_HEADQUARTERS		:{BLACK}Rakenna yhtiön päärakennus / näytä yhtiön päärakennus
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS:{WHITE}Ei voi rakentaa yhtiön päärakennusta...
+STR_7072_VIEW_HQ						:{BLACK}Näytä päämaja
+STR_7073_WORLD_RECESSION_FINANCIAL		:{BIGFONT}{BLACK}Maailmallinen laskukausi!{}{}Rahoitusasiantuntijat pelkäävät pahinta talouden laskiessa!
+STR_7074_RECESSION_OVER_UPTURN_IN		:{BIGFONT}{BLACK}Laskuakusi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW		:{BLACK}Suuri/pieni ikkunan koko
+STR_7076_COMPANY_VALUE					:{GOLD}Yhtiön arvo: {WHITE}{CURRENCY}
+STR_7077_BUY_25_SHARE_IN_COMPANY		:{BLACK}Osta 25%:n osuus yhtiöstä
+STR_7078_SELL_25_SHARE_IN_COMPANY		:{BLACK}Myy 25%:n osuus yhtiöstä
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY	:{BLACK}Osta 25%:n osuus tästä yhtiöstä
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY	:{BLACK}Myy 25%:n osuus tästä yhtiöstä
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS		:{WHITE}Ei voi ostaa 25%:n osuutta tästä yhtiöstä...
+STR_707C_CAN_T_SELL_25_SHARE_IN			:{WHITE}Ei voi myydä 25%:n osuutta tästä yhtiöstä...
+STR_707D_OWNED_BY						:{WHITE}({COMMA16}%:n omistus: {STRING})
+STR_707E_OWNED_BY_OWNED_BY				:{WHITE}({COMMA16}%:n omistus: {STRING}{}   {COMMA16}%:n omistus {STRING})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY			:{BLACK}{BIGFONT}Yhtiön {STRING} on ottanut haltuun {STRING}!
 
 ##id 0x8000
-STR_8000_KIRBY_PAUL_TANK_STEAM			:Kirby Paul Tank (Steam)
-STR_8001_MJS_250_DIESEL					:MJS 250 (Diesel)
+STR_8000_KIRBY_PAUL_TANK_STEAM			:Kirby Paul Tank (höyry)
+STR_8001_MJS_250_DIESEL					:MJS 250 (diesel)
 STR_8002_PLODDYPHUT_CHOO_CHOO			:Ploddyphut Choo-Choo
 STR_8003_POWERNAUT_CHOO_CHOO			:Powernaut Choo-Choo
 STR_8004_MIGHTYMOVER_CHOO_CHOO			:Mightymover Choo-Choo
 STR_8005_PLODDYPHUT_DIESEL				:Ploddyphut Diesel
 STR_8006_POWERNAUT_DIESEL				:Powernaut Diesel
-STR_8007_WILLS_2_8_0_STEAM				:Wills 2-8-0 (Steam)
-STR_8008_CHANEY_JUBILEE_STEAM			:Chaney 'Jubilee' (Steam)
-STR_8009_GINZU_A4_STEAM					:Ginzu 'A4' (Steam)
-STR_800A_SH_8P_STEAM					:SH '8P' (Steam)
-STR_800B_MANLEY_MOREL_DMU_DIESEL		:Manley-Morel DMU (Diesel)
-STR_800C_DASH_DIESEL					:'Dash' (Diesel)
-STR_800D_SH_HENDRY_25_DIESEL			:SH/Hendry '25' (Diesel)
-STR_800E_UU_37_DIESEL					:UU '37' (Diesel)
-STR_800F_FLOSS_47_DIESEL				:Floss '47' (Diesel)
-STR_8010_CS_4000_DIESEL					:CS 4000 (Diesel)
-STR_8011_CS_2400_DIESEL					:CS 2400 (Diesel)
-STR_8012_CENTENNIAL_DIESEL				:Centennial (Diesel)
-STR_8013_KELLING_3100_DIESEL			:Kelling 3100 (Diesel)
-STR_8014_TURNER_TURBO_DIESEL			:Turner Turbo (Diesel)
-STR_8015_MJS_1000_DIESEL				:MJS 1000 (Diesel)
-STR_8016_SH_125_DIESEL					:SH '125' (Diesel)
-STR_8017_SH_30_ELECTRIC					:SH '30' (Electric)
-STR_8018_SH_40_ELECTRIC					:SH '40' (Electric)
-STR_8019_T_I_M_ELECTRIC					:'T.I.M.' (Electric)
-STR_801A_ASIASTAR_ELECTRIC				:'AsiaStar' (Electric)
-STR_801B_PASSENGER_CAR					:Passenger Car
-STR_801C_MAIL_VAN						:Mail Van
-STR_801D_COAL_CAR						:Coal Car
-STR_801E_OIL_TANKER						:Oil Tanker
-STR_801F_LIVESTOCK_VAN					:Livestock Van
-STR_8020_GOODS_VAN						:Goods Van
-STR_8021_GRAIN_HOPPER					:Grain Hopper
-STR_8022_WOOD_TRUCK						:Wood Truck
-STR_8023_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8024_STEEL_TRUCK					:Steel Truck
-STR_8025_ARMORED_VAN					:Armored Van
-STR_8026_FOOD_VAN						:Food Van
-STR_8027_PAPER_TRUCK					:Paper Truck
-STR_8028_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8029_WATER_TANKER					:Water Tanker
-STR_802A_FRUIT_TRUCK					:Fruit Truck
-STR_802B_RUBBER_TRUCK					:Rubber Truck
-STR_802C_SUGAR_TRUCK					:Sugar Truck
-STR_802D_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
-STR_802E_TOFFEE_HOPPER					:Toffee Hopper
-STR_802F_BUBBLE_VAN						:Bubble Van
-STR_8030_COLA_TANKER					:Cola Tanker
-STR_8031_CANDY_VAN						:Candy Van
-STR_8032_TOY_VAN						:Toy Van
-STR_8033_BATTERY_TRUCK					:Battery Truck
-STR_8034_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8035_PLASTIC_TRUCK					:Plastic Truck
-STR_8036_X2001_ELECTRIC					:'X2001' (Electric)
-STR_8037_MILLENNIUM_Z1_ELECTRIC			:'Millennium Z1' (Electric)
+STR_8007_WILLS_2_8_0_STEAM				:Wills 2-8-0 (höyry)
+STR_8008_CHANEY_JUBILEE_STEAM			:Chaney 'Jubilee' (höyry)
+STR_8009_GINZU_A4_STEAM					:Ginzu 'A4' (höyry)
+STR_800A_SH_8P_STEAM					:SH '8P' (höyry)
+STR_800B_MANLEY_MOREL_DMU_DIESEL		:Manley-Morel DMU (diesel)
+STR_800C_DASH_DIESEL					:'Dash' (diesel)
+STR_800D_SH_HENDRY_25_DIESEL			:SH/Hendry '25' (diesel)
+STR_800E_UU_37_DIESEL					:UU '37' (diesel)
+STR_800F_FLOSS_47_DIESEL				:Floss '47' (diesel)
+STR_8010_CS_4000_DIESEL					:CS 4000 (diesel)
+STR_8011_CS_2400_DIESEL					:CS 2400 (diesel)
+STR_8012_CENTENNIAL_DIESEL				:Centennial (diesel)
+STR_8013_KELLING_3100_DIESEL			:Kelling 3100 (diesel)
+STR_8014_TURNER_TURBO_DIESEL			:Turner Turbo (diesel)
+STR_8015_MJS_1000_DIESEL				:MJS 1000 (diesel)
+STR_8016_SH_125_DIESEL					:SH '125' (diesel)
+STR_8017_SH_30_ELECTRIC					:SH '30' (sähkö)
+STR_8018_SH_40_ELECTRIC					:SH '40' (sähkö)
+STR_8019_T_I_M_ELECTRIC					:'T.I.M.' (sähkö)
+STR_801A_ASIASTAR_ELECTRIC				:'AsiaStar' (sähkö)
+STR_801B_PASSENGER_CAR					:Matkustajavaunu
+STR_801C_MAIL_VAN						:Postivaunu
+STR_801D_COAL_CAR						:Hiilivaunu
+STR_801E_OIL_TANKER						:Öljysäiliö
+STR_801F_LIVESTOCK_VAN					:Karjavaunu
+STR_8020_GOODS_VAN						:Tavaravaunu
+STR_8021_GRAIN_HOPPER					:Viljalaari
+STR_8022_WOOD_TRUCK						:Tukkiteli
+STR_8023_IRON_ORE_HOPPER				:Rautalaari
+STR_8024_STEEL_TRUCK					:Terästeli
+STR_8025_ARMORED_VAN					:Panssaroitu vaunu
+STR_8026_FOOD_VAN						:Ruokavaunu
+STR_8027_PAPER_TRUCK					:Paperiteli
+STR_8028_COPPER_ORE_HOPPER				:Kuparilaari
+STR_8029_WATER_TANKER					:Vesisäiliö
+STR_802A_FRUIT_TRUCK					:Hedelmäteli
+STR_802B_RUBBER_TRUCK					:Kumiteli
+STR_802C_SUGAR_TRUCK					:Sokeriteli
+STR_802D_COTTON_CANDY_HOPPER			:Hattaralaari
+STR_802E_TOFFEE_HOPPER					:Toffeelaari
+STR_802F_BUBBLE_VAN						:Kuplavaunu
+STR_8030_COLA_TANKER					:Limsasäiliö
+STR_8031_CANDY_VAN						:Karkkivaunu
+STR_8032_TOY_VAN						:Leluvaunu
+STR_8033_BATTERY_TRUCK					:Patteriteli
+STR_8034_FIZZY_DRINK_TRUCK				:Sihijuomateli
+STR_8035_PLASTIC_TRUCK					:Muoviteli
+STR_8036_X2001_ELECTRIC					:'X2001' (sähkö)
+STR_8037_MILLENNIUM_Z1_ELECTRIC			:'Millennium Z1' (sähkö)
 STR_8038_WIZZOWOW_Z99					:Wizzowow Z99
-STR_8039_PASSENGER_CAR					:Passenger Car
-STR_803A_MAIL_VAN						:Mail Van
-STR_803B_COAL_CAR						:Coal Car
-STR_803C_OIL_TANKER						:Oil Tanker
-STR_803D_LIVESTOCK_VAN					:Livestock Van
-STR_803E_GOODS_VAN						:Goods Van
-STR_803F_GRAIN_HOPPER					:Grain Hopper
-STR_8040_WOOD_TRUCK						:Wood Truck
-STR_8041_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8042_STEEL_TRUCK					:Steel Truck
-STR_8043_ARMORED_VAN					:Armored Van
-STR_8044_FOOD_VAN						:Food Van
-STR_8045_PAPER_TRUCK					:Paper Truck
-STR_8046_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8047_WATER_TANKER					:Water Tanker
-STR_8048_FRUIT_TRUCK					:Fruit Truck
-STR_8049_RUBBER_TRUCK					:Rubber Truck
-STR_804A_SUGAR_TRUCK					:Sugar Truck
-STR_804B_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
-STR_804C_TOFFEE_HOPPER					:Toffee Hopper
-STR_804D_BUBBLE_VAN						:Bubble Van
-STR_804E_COLA_TANKER					:Cola Tanker
-STR_804F_CANDY_VAN						:Candy Van
-STR_8050_TOY_VAN						:Toy Van
-STR_8051_BATTERY_TRUCK					:Battery Truck
-STR_8052_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8053_PLASTIC_TRUCK					:Plastic Truck
-STR_8054_LEV1_LEVIATHAN_ELECTRIC		:Lev1 'Leviathan' (Electric)
-STR_8055_LEV2_CYCLOPS_ELECTRIC			:Lev2 'Cyclops' (Electric)
-STR_8056_LEV3_PEGASUS_ELECTRIC			:Lev3 'Pegasus' (Electric)
-STR_8057_LEV4_CHIMAERA_ELECTRIC			:Lev4 'Chimaera' (Electric)
+STR_8039_PASSENGER_CAR					:Matkustajavaunu
+STR_803A_MAIL_VAN						:Postivaunu
+STR_803B_COAL_CAR						:Hiilivaunu
+STR_803C_OIL_TANKER						:Öljysäiliö
+STR_803D_LIVESTOCK_VAN					:Karjavaunu
+STR_803E_GOODS_VAN						:Tavaravaunu
+STR_803F_GRAIN_HOPPER					:Viljalaari
+STR_8040_WOOD_TRUCK						:Tukkiteli
+STR_8041_IRON_ORE_HOPPER				:Rautalaari
+STR_8042_STEEL_TRUCK					:Terästeli
+STR_8043_ARMORED_VAN					:Panssaroitu vaunu
+STR_8044_FOOD_VAN						:Ruokavaunu
+STR_8045_PAPER_TRUCK					:Paperiteli
+STR_8046_COPPER_ORE_HOPPER				:Kuparilaari
+STR_8047_WATER_TANKER					:Vesisäiliö
+STR_8048_FRUIT_TRUCK					:Hedelmäteli
+STR_8049_RUBBER_TRUCK					:Kumiteli
+STR_804A_SUGAR_TRUCK					:Sokeriteli
+STR_804B_COTTON_CANDY_HOPPER			:Hattaralaari
+STR_804C_TOFFEE_HOPPER					:Toffeelaari
+STR_804D_BUBBLE_VAN						:Kuplavaunu
+STR_804E_COLA_TANKER					:Limsasäiliö
+STR_804F_CANDY_VAN						:Karkkivaunu
+STR_8050_TOY_VAN						:Leluvaunu
+STR_8051_BATTERY_TRUCK					:Patteriteli
+STR_8052_FIZZY_DRINK_TRUCK				:Sihijuomateli
+STR_8053_PLASTIC_TRUCK					:Muoviteli
+STR_8054_LEV1_LEVIATHAN_ELECTRIC		:Lev1 'Leviathan' (sähkö)
+STR_8055_LEV2_CYCLOPS_ELECTRIC			:Lev2 'Cyclops' (sähkö)
+STR_8056_LEV3_PEGASUS_ELECTRIC			:Lev3 'Pegasus' (sähkö)
+STR_8057_LEV4_CHIMAERA_ELECTRIC			:Lev4 'Chimaera' (sähkö)
 STR_8058_WIZZOWOW_ROCKETEER				:Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR					:Passenger Car
-STR_805A_MAIL_VAN						:Mail Van
-STR_805B_COAL_CAR						:Coal Car
-STR_805C_OIL_TANKER						:Oil Tanker
-STR_805D_LIVESTOCK_VAN					:Livestock Van
-STR_805E_GOODS_VAN						:Goods Van
-STR_805F_GRAIN_HOPPER					:Grain Hopper
-STR_8060_WOOD_TRUCK						:Wood Truck
-STR_8061_IRON_ORE_HOPPER				:Iron Ore Hopper
-STR_8062_STEEL_TRUCK					:Steel Truck
-STR_8063_ARMORED_VAN					:Armored Van
-STR_8064_FOOD_VAN						:Food Van
-STR_8065_PAPER_TRUCK					:Paper Truck
-STR_8066_COPPER_ORE_HOPPER				:Copper Ore Hopper
-STR_8067_WATER_TANKER					:Water Tanker
-STR_8068_FRUIT_TRUCK					:Fruit Truck
-STR_8069_RUBBER_TRUCK					:Rubber Truck
-STR_806A_SUGAR_TRUCK					:Sugar Truck
-STR_806B_COTTON_CANDY_HOPPER			:Cotton Candy Hopper
-STR_806C_TOFFEE_HOPPER					:Toffee Hopper
-STR_806D_BUBBLE_VAN						:Bubble Van
-STR_806E_COLA_TANKER					:Cola Tanker
-STR_806F_CANDY_VAN						:Candy Van
-STR_8070_TOY_VAN						:Toy Van
-STR_8071_BATTERY_TRUCK					:Battery Truck
-STR_8072_FIZZY_DRINK_TRUCK				:Fizzy Drink Truck
-STR_8073_PLASTIC_TRUCK					:Plastic Truck
-STR_8074_MPS_REGAL_BUS					:MPS Regal Bus
-STR_8075_HEREFORD_LEOPARD_BUS			:Hereford Leopard Bus
-STR_8076_FOSTER_BUS						:Foster Bus
-STR_8077_FOSTER_MKII_SUPERBUS			:Foster MkII Superbus
-STR_8078_PLODDYPHUT_MKI_BUS				:Ploddyphut MkI Bus
-STR_8079_PLODDYPHUT_MKII_BUS			:Ploddyphut MkII Bus
-STR_807A_PLODDYPHUT_MKIII_BUS			:Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK				:Balogh Coal Truck
-STR_807C_UHL_COAL_TRUCK					:Uhl Coal Truck
-STR_807D_DW_COAL_TRUCK					:DW Coal Truck
-STR_807E_MPS_MAIL_TRUCK					:MPS Mail Truck
-STR_807F_REYNARD_MAIL_TRUCK				:Reynard Mail Truck
-STR_8080_PERRY_MAIL_TRUCK				:Perry Mail Truck
-STR_8081_MIGHTYMOVER_MAIL_TRUCK			:MightyMover Mail Truck
-STR_8082_POWERNAUGHT_MAIL_TRUCK			:Powernaught Mail Truck
-STR_8083_WIZZOWOW_MAIL_TRUCK			:Wizzowow Mail Truck
-STR_8084_WITCOMBE_OIL_TANKER			:Witcombe Oil Tanker
-STR_8085_FOSTER_OIL_TANKER				:Foster Oil Tanker
-STR_8086_PERRY_OIL_TANKER				:Perry Oil Tanker
-STR_8087_TALBOTT_LIVESTOCK_VAN			:Talbott Livestock Van
-STR_8088_UHL_LIVESTOCK_VAN				:Uhl Livestock Van
-STR_8089_FOSTER_LIVESTOCK_VAN			:Foster Livestock Van
-STR_808A_BALOGH_GOODS_TRUCK				:Balogh Goods Truck
-STR_808B_CRAIGHEAD_GOODS_TRUCK			:Craighead Goods Truck
-STR_808C_GOSS_GOODS_TRUCK				:Goss Goods Truck
-STR_808D_HEREFORD_GRAIN_TRUCK			:Hereford Grain Truck
-STR_808E_THOMAS_GRAIN_TRUCK				:Thomas Grain Truck
-STR_808F_GOSS_GRAIN_TRUCK				:Goss Grain Truck
-STR_8090_WITCOMBE_WOOD_TRUCK			:Witcombe Wood Truck
-STR_8091_FOSTER_WOOD_TRUCK				:Foster Wood Truck
-STR_8092_MORELAND_WOOD_TRUCK			:Moreland Wood Truck
-STR_8093_MPS_IRON_ORE_TRUCK				:MPS Iron Ore Truck
-STR_8094_UHL_IRON_ORE_TRUCK				:Uhl Iron Ore Truck
-STR_8095_CHIPPY_IRON_ORE_TRUCK			:Chippy Iron Ore Truck
-STR_8096_BALOGH_STEEL_TRUCK				:Balogh Steel Truck
-STR_8097_UHL_STEEL_TRUCK				:Uhl Steel Truck
-STR_8098_KELLING_STEEL_TRUCK			:Kelling Steel Truck
-STR_8099_BALOGH_ARMORED_TRUCK			:Balogh Armored Truck
-STR_809A_UHL_ARMORED_TRUCK				:Uhl Armored Truck
-STR_809B_FOSTER_ARMORED_TRUCK			:Foster Armored Truck
-STR_809C_FOSTER_FOOD_VAN				:Foster Food Van
-STR_809D_PERRY_FOOD_VAN					:Perry Food Van
-STR_809E_CHIPPY_FOOD_VAN				:Chippy Food Van
-STR_809F_UHL_PAPER_TRUCK				:Uhl Paper Truck
-STR_80A0_BALOGH_PAPER_TRUCK				:Balogh Paper Truck
-STR_80A1_MPS_PAPER_TRUCK				:MPS Paper Truck
-STR_80A2_MPS_COPPER_ORE_TRUCK			:MPS Copper Ore Truck
-STR_80A3_UHL_COPPER_ORE_TRUCK			:Uhl Copper Ore Truck
-STR_80A4_GOSS_COPPER_ORE_TRUCK			:Goss Copper Ore Truck
-STR_80A5_UHL_WATER_TANKER				:Uhl Water Tanker
-STR_80A6_BALOGH_WATER_TANKER			:Balogh Water Tanker
-STR_80A7_MPS_WATER_TANKER				:MPS Water Tanker
-STR_80A8_BALOGH_FRUIT_TRUCK				:Balogh Fruit Truck
-STR_80A9_UHL_FRUIT_TRUCK				:Uhl Fruit Truck
-STR_80AA_KELLING_FRUIT_TRUCK			:Kelling Fruit Truck
-STR_80AB_BALOGH_RUBBER_TRUCK			:Balogh Rubber Truck
-STR_80AC_UHL_RUBBER_TRUCK				:Uhl Rubber Truck
-STR_80AD_RMT_RUBBER_TRUCK				:RMT Rubber Truck
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK		:MightyMover Sugar Truck
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK		:Powernaught Sugar Truck
-STR_80B0_WIZZOWOW_SUGAR_TRUCK			:Wizzowow Sugar Truck
-STR_80B1_MIGHTYMOVER_COLA_TRUCK			:MightyMover Cola Truck
-STR_80B2_POWERNAUGHT_COLA_TRUCK			:Powernaught Cola Truck
-STR_80B3_WIZZOWOW_COLA_TRUCK			:Wizzowow Cola Truck
-STR_80B4_MIGHTYMOVER_COTTON_CANDY		:MightyMover Cotton Candy Truck
-STR_80B5_POWERNAUGHT_COTTON_CANDY		:Powernaught Cotton Candy Truck
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Wizzowow Cotton Candy Truck
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:MightyMover Toffee Truck
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Powernaught Toffee Truck
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK			:Wizzowow Toffee Truck
-STR_80BA_MIGHTYMOVER_TOY_VAN			:MightyMover Toy Van
-STR_80BB_POWERNAUGHT_TOY_VAN			:Powernaught Toy Van
-STR_80BC_WIZZOWOW_TOY_VAN				:Wizzowow Toy Van
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK		:MightyMover Candy Truck
-STR_80BE_POWERNAUGHT_CANDY_TRUCK		:Powernaught Candy Truck
-STR_80BF_WIZZOWOW_CANDY_TRUCK			:Wizzowow Candy Truck
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK		:MightyMover Battery Truck
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK		:Powernaught Battery Truck
-STR_80C2_WIZZOWOW_BATTERY_TRUCK			:Wizzowow Battery Truck
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK		:MightyMover Fizzy Drink Truck
-STR_80C4_POWERNAUGHT_FIZZY_DRINK		:Powernaught Fizzy Drink Truck
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK		:Wizzowow Fizzy Drink Truck
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK		:MightyMover Plastic Truck
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK		:Powernaught Plastic Truck
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK			:Wizzowow Plastic Truck
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK		:MightyMover Bubble Truck
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK		:Powernaught Bubble Truck
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK			:Wizzowow Bubble Truck
-STR_80CC_MPS_OIL_TANKER					:MPS Oil Tanker
-STR_80CD_CS_INC_OIL_TANKER				:CS-Inc. Oil Tanker
-STR_80CE_MPS_PASSENGER_FERRY			:MPS Passenger Ferry
-STR_80CF_FFP_PASSENGER_FERRY			:FFP Passenger Ferry
-STR_80D0_BAKEWELL_300_HOVERCRAFT		:Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER			:Chugger-Chug Passenger Ferry
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Shivershake Passenger Ferry
-STR_80D3_YATE_CARGO_SHIP				:Yate Cargo ship
-STR_80D4_BAKEWELL_CARGO_SHIP			:Bakewell Cargo ship
-STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Mightymover Cargo ship
-STR_80D6_POWERNAUT_CARGO_SHIP			:Powernaut Cargo ship
+STR_8059_PASSENGER_CAR					:Matkustajavaunu
+STR_805A_MAIL_VAN						:Postivaunu
+STR_805B_COAL_CAR						:Hiilivaunu
+STR_805C_OIL_TANKER						:Öljysäiliö
+STR_805D_LIVESTOCK_VAN					:Karjavaunu
+STR_805E_GOODS_VAN						:Tavaravaunu
+STR_805F_GRAIN_HOPPER					:Viljalaari
+STR_8060_WOOD_TRUCK						:Tukkiteli
+STR_8061_IRON_ORE_HOPPER				:Rautalaari
+STR_8062_STEEL_TRUCK					:Terästeli
+STR_8063_ARMORED_VAN					:Panssaroitu vaunu
+STR_8064_FOOD_VAN						:Ruokavaunu
+STR_8065_PAPER_TRUCK					:Paperiteli
+STR_8066_COPPER_ORE_HOPPER				:Kuparilaari
+STR_8067_WATER_TANKER					:Vesisäiliö
+STR_8068_FRUIT_TRUCK					:Hedelmäteli
+STR_8069_RUBBER_TRUCK					:Kumiteli
+STR_806A_SUGAR_TRUCK					:Sokeriteli
+STR_806B_COTTON_CANDY_HOPPER			:Hattaralaari
+STR_806C_TOFFEE_HOPPER					:Toffeelaari
+STR_806D_BUBBLE_VAN						:Kuplavaunu
+STR_806E_COLA_TANKER					:Limsasäiliö
+STR_806F_CANDY_VAN						:Karkkivaunu
+STR_8070_TOY_VAN						:Leluvaunu
+STR_8071_BATTERY_TRUCK					:Patteriteli
+STR_8072_FIZZY_DRINK_TRUCK				:Sihijuomateli
+STR_8073_PLASTIC_TRUCK					:Muoviteli
+STR_8074_MPS_REGAL_BUS					:MPS Regal -linja-auto
+STR_8075_HEREFORD_LEOPARD_BUS			:Hereford Leopard -linja-auto
+STR_8076_FOSTER_BUS						:Foster -linja-auto
+STR_8077_FOSTER_MKII_SUPERBUS			:Foster MkII superlinja-auto
+STR_8078_PLODDYPHUT_MKI_BUS				:Ploddyphut MkI -linja-auto
+STR_8079_PLODDYPHUT_MKII_BUS			:Ploddyphut MkII -linja-auto
+STR_807A_PLODDYPHUT_MKIII_BUS			:Ploddyphut MkIII -linja-auto
+STR_807B_BALOGH_COAL_TRUCK				:Balogh -hiilirekka
+STR_807C_UHL_COAL_TRUCK					:Uhl -hiilirekka
+STR_807D_DW_COAL_TRUCK					:DW -hiilirekka
+STR_807E_MPS_MAIL_TRUCK					:MPS -postiauto
+STR_807F_REYNARD_MAIL_TRUCK				:Reynard -postiauto
+STR_8080_PERRY_MAIL_TRUCK				:Perry -postiauto
+STR_8081_MIGHTYMOVER_MAIL_TRUCK			:MightyMover -postiauto
+STR_8082_POWERNAUGHT_MAIL_TRUCK			:Powernaught -postiauto
+STR_8083_WIZZOWOW_MAIL_TRUCK			:Wizzowow -postiauto
+STR_8084_WITCOMBE_OIL_TANKER			:Witcombe -öljysäiliöauto
+STR_8085_FOSTER_OIL_TANKER				:Foster -öljysäiliöauto
+STR_8086_PERRY_OIL_TANKER				:Perry -öljysäiliöauto
+STR_8087_TALBOTT_LIVESTOCK_VAN			:Talbott -karja-auto
+STR_8088_UHL_LIVESTOCK_VAN				:Uhl -karja-auto
+STR_8089_FOSTER_LIVESTOCK_VAN			:Foster -karja-auto
+STR_808A_BALOGH_GOODS_TRUCK				:Balogh -tavararekka
+STR_808B_CRAIGHEAD_GOODS_TRUCK			:Craighead -tavararekka
+STR_808C_GOSS_GOODS_TRUCK				:Goss -tavararekka
+STR_808D_HEREFORD_GRAIN_TRUCK			:Hereford -viljarekka
+STR_808E_THOMAS_GRAIN_TRUCK				:Thomas -viljarekka
+STR_808F_GOSS_GRAIN_TRUCK				:Goss -viljarekka
+STR_8090_WITCOMBE_WOOD_TRUCK			:Witcombe -tukkirekka
+STR_8091_FOSTER_WOOD_TRUCK				:Foster -tukkirekka
+STR_8092_MORELAND_WOOD_TRUCK			:Moreland -tukkirekka
+STR_8093_MPS_IRON_ORE_TRUCK				:MPS -rautarekka
+STR_8094_UHL_IRON_ORE_TRUCK				:Uhl -rautarekka
+STR_8095_CHIPPY_IRON_ORE_TRUCK			:Chippy -rautarekka
+STR_8096_BALOGH_STEEL_TRUCK				:Balogh -teräsrekka
+STR_8097_UHL_STEEL_TRUCK				:Uhl -teräsrekka
+STR_8098_KELLING_STEEL_TRUCK			:Kelling -teräsrekka
+STR_8099_BALOGH_ARMORED_TRUCK			:Balogh -panssarirekka
+STR_809A_UHL_ARMORED_TRUCK				:Uhl -panssarirekka
+STR_809B_FOSTER_ARMORED_TRUCK			:Foster -panssarirekka
+STR_809C_FOSTER_FOOD_VAN				:Foster -ruokarekka
+STR_809D_PERRY_FOOD_VAN					:Perry -ruokarekka
+STR_809E_CHIPPY_FOOD_VAN				:Chippy -ruokarekka
+STR_809F_UHL_PAPER_TRUCK				:Uhl -paperirekka
+STR_80A0_BALOGH_PAPER_TRUCK				:Balogh -paperirekka
+STR_80A1_MPS_PAPER_TRUCK				:MPS -paperirekka
+STR_80A2_MPS_COPPER_ORE_TRUCK			:MPS -kuparirekka
+STR_80A3_UHL_COPPER_ORE_TRUCK			:Uhl -kuparirekka
+STR_80A4_GOSS_COPPER_ORE_TRUCK			:Goss -kuparirekka
+STR_80A5_UHL_WATER_TANKER				:Uhl -vesisäiliöauto
+STR_80A6_BALOGH_WATER_TANKER			:Balogh -vesisäiliöauto
+STR_80A7_MPS_WATER_TANKER				:MPS -vesisäiliöauto
+STR_80A8_BALOGH_FRUIT_TRUCK				:Balogh -hedelmärekka
+STR_80A9_UHL_FRUIT_TRUCK				:Uhl -hedelmärekka
+STR_80AA_KELLING_FRUIT_TRUCK			:Kelling -hedelmärekka
+STR_80AB_BALOGH_RUBBER_TRUCK			:Balogh -kumirekka
+STR_80AC_UHL_RUBBER_TRUCK				:Uhl -kumirekka
+STR_80AD_RMT_RUBBER_TRUCK				:RMT -kumirekka
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK		:MightyMover -sokerirekka
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK		:Powernaught -sokerirekka
+STR_80B0_WIZZOWOW_SUGAR_TRUCK			:Wizzowow -sokerirekka
+STR_80B1_MIGHTYMOVER_COLA_TRUCK			:MightyMover -limsarekka
+STR_80B2_POWERNAUGHT_COLA_TRUCK			:Powernaught -limsarekka
+STR_80B3_WIZZOWOW_COLA_TRUCK			:Wizzowow -limsarekka
+STR_80B4_MIGHTYMOVER_COTTON_CANDY		:MightyMover -hattararekka
+STR_80B5_POWERNAUGHT_COTTON_CANDY		:Powernaught -hattararekka
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK	:Wizzowow -hattararekka
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK		:MightyMover -toffeerekka
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK		:Powernaught -toffeerekka
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK			:Wizzowow -toffeerekka
+STR_80BA_MIGHTYMOVER_TOY_VAN			:MightyMover -lelupakettiauto
+STR_80BB_POWERNAUGHT_TOY_VAN			:Powernaught -lelupakettiauto
+STR_80BC_WIZZOWOW_TOY_VAN				:Wizzowow -lelupakettiauto
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK		:MightyMover -lelurekka
+STR_80BE_POWERNAUGHT_CANDY_TRUCK		:Powernaught -lelurekka
+STR_80BF_WIZZOWOW_CANDY_TRUCK			:Wizzowow -lelurekka
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK		:MightyMover -patterirekka
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK		:Powernaught -patterirekka
+STR_80C2_WIZZOWOW_BATTERY_TRUCK			:Wizzowow -patterirekka
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK		:MightyMover -sihijuomarekka
+STR_80C4_POWERNAUGHT_FIZZY_DRINK		:Powernaught -sihijuomarekka
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK		:Wizzowow -sihijuomarekka
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK		:MightyMover -muovirekka
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK		:Powernaught -muovirekka
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK			:Wizzowow -muovirekka
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK		:MightyMover -kuplarekka
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK		:Powernaught -kuplarekka
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK			:Wizzowow -kuplarekka
+STR_80CC_MPS_OIL_TANKER					:MPS -öljytankkeri
+STR_80CD_CS_INC_OIL_TANKER				:CS-Inc. -öljytankkeri
+STR_80CE_MPS_PASSENGER_FERRY			:MPS -matkustajalautta
+STR_80CF_FFP_PASSENGER_FERRY			:FFP -matkustajalautta
+STR_80D0_BAKEWELL_300_HOVERCRAFT		:Bakewell 300 -ilmatyynyalus
+STR_80D1_CHUGGER_CHUG_PASSENGER			:Chugger-Chug -matkustajalautta
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY	:Shivershake -matkustajalautta
+STR_80D3_YATE_CARGO_SHIP				:Yate -rahtilaiva
+STR_80D4_BAKEWELL_CARGO_SHIP			:Bakewell -rahtilaiva
+STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Mightymover -rahtilaiva
+STR_80D6_POWERNAUT_CARGO_SHIP			:Powernaut -rahtilaiva
 STR_80D7_SAMPSON_U52					:Sampson U52
 STR_80D8_COLEMAN_COUNT					:Coleman Count
 STR_80D9_FFP_DART						:FFP Dart
@@ -2008,351 +2008,351 @@ STR_80F9_PLODDYPHUT_500					:Ploddyphut 500
 STR_80FA_FLASHBANG_X1					:Flashbang X1
 STR_80FB_JUGGERPLANE_M1					:Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER				:Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER			:Tricario Helicopter
-STR_80FE_GURU_X2_HELICOPTER				:Guru X2 Helicopter
-STR_80FF_POWERNAUT_HELICOPTER			:Powernaut Helicopter
-STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE:{WHITE}Message from vehicle manufacturer
-STR_8101_WE_HAVE_JUST_DESIGNED_A		:{GOLD}We have just designed a new {STRING} - would you be interested in a year's exclusive use of this vehicle, so we can see how it performs before making it universally available ?
-STR_8102_RAILROAD_LOCOMOTIVE			:railroad locomotive
-STR_8103_ROAD_VEHICLE					:road vehicle
-STR_8104_AIRCRAFT						:aircraft
-STR_8105_SHIP							:ship
-STR_8106_MONORAIL_LOCOMOTIVE			:monorail locomotive
-STR_8107_MAGLEV_LOCOMOTIVE				:maglev locomotive
+STR_80FD_TRICARIO_HELICOPTER			:Tricario -helikopteri
+STR_80FE_GURU_X2_HELICOPTER				:Guru X2 -helikopteri
+STR_80FF_POWERNAUT_HELICOPTER			:Powernaut -helikopteri
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE:{WHITE}Viesti ajoneuvovalmistajalta
+STR_8101_WE_HAVE_JUST_DESIGNED_A		:{GOLD}Olemme juuri suunnitelleet uuden {STRING} - oletteko kiinnostuneet vuoden yksinoikeutetusta kokeilusta, jotta näemme, miten tuote suoriutuu, ennenkuin teemme siitä yleisesti saatavillaolevan?
+STR_8102_RAILROAD_LOCOMOTIVE			:junaveturin
+STR_8103_ROAD_VEHICLE					:maantieajoneuvon
+STR_8104_AIRCRAFT						:lentokoneen
+STR_8105_SHIP							:laivan
+STR_8106_MONORAIL_LOCOMOTIVE			:yksiraiteisen junaveturin
+STR_8107_MAGLEV_LOCOMOTIVE				:maglev-veturin
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT					:{WHITE}{CITY} Train Depot
-STR_8801_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
-STR_8802_DETAILS						:{WHITE}{STRING} (Details)
-STR_8803_TRAIN_IN_THE_WAY				:{WHITE}Train in the way
+STR_8800_TRAIN_DEPOT					:{WHITE}Kaupungin {CITY} junavarikko
+STR_8801_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
+STR_8802_DETAILS						:{WHITE}{STRING} (yksityiskohdat)
+STR_8803_TRAIN_IN_THE_WAY				:{WHITE}Juna matkalla
 STR_8804								:{SETX 10}{COMMA8}: {STRING}
 STR_8805								:{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
-STR_8806_GO_TO							:Go to {STATION}
-STR_8807_GO_TO_UNLOAD					:Go to {STATION} (Unload)
-STR_8808_GO_TO_LOAD						:Go to {STATION} (Load)
+STR_8806_GO_TO							:Asemalle {STATION}
+STR_8807_GO_TO_UNLOAD					:Asemalle {STATION} (pura kuorma)
+STR_8808_GO_TO_LOAD						:Asemalle {STATION} (lastaa)
 STR_8809								:
-STR_880A_GO_NON_STOP_TO					:Go non-stop to {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD			:Go non-stop to {STATION} (Unload)
-STR_880C_GO_NON_STOP_TO_LOAD			:Go non-stop to {STATION} (Load)
+STR_880A_GO_NON_STOP_TO					:Pysähtymättä asemalle {STATION}
+STR_880B_GO_NON_STOP_TO_UNLOAD			:Pysähtymättä asemalle {STATION} (pura kuorma)
+STR_880C_GO_NON_STOP_TO_LOAD			:Pysähtymättä asemalle {STATION} (lastaa)
 STR_880D								:
-STR_880E_GO_TO_TRAIN_DEPOT				:Go to {CITY} Train Depot
-STR_SERVICE_AT_TRAIN_DEPOT				:Service at {CITY} Train Depot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT		:Go non-stop to {CITY} Train Depot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT		:Service non-stop at {CITY} Train Depot
+STR_880E_GO_TO_TRAIN_DEPOT				:Kaupungin {CITY} junavarikolle
+STR_SERVICE_AT_TRAIN_DEPOT				:Huolto kaupunigin {CITY} junavarikolla
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT		:Pysähtymättä kaupungin {CITY} junavarikolle
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT		:Huolto pysähtymättä kaupungin {CITY} junavarikolle
 
-STR_HEADING_FOR_TRAIN_DEPOT				:{LTBLUE}Heading for {CITY} Train Depot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL			:{LTBLUE}Heading for {CITY} Train Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT				:{LTBLUE}Suunnataan kaupungin {CITY} junavarikolle
+STR_HEADING_FOR_TRAIN_DEPOT_VEL			:{LTBLUE}Suunnataan kaupungin {CITY} junavarikolle, {VELOCITY}
 
-STR_8812_EMPTY							:{LTBLUE}Empty
-STR_8813_FROM							:{LTBLUE}{CARGO} from {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT		:{WHITE}Train {COMMA16} is waiting in depot
-STR_8815_NEW_VEHICLES					:{BLACK}New Vehicles
+STR_8812_EMPTY							:{LTBLUE}Tyhjä
+STR_8813_FROM							:{LTBLUE}{CARGO} asemalta {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT		:{WHITE}Juna {COMMA16} odottaa varikolla
+STR_8815_NEW_VEHICLES					:{BLACK}Uusia ajoneuvoja
 STR_8816								:{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA16}t{}{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA16}hp{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Capacity: {GOLD}{STRING}{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK} Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
-STR_8818_INFORMATION					:{BLACK}Information
-STR_8819_TRAIN_TOO_LONG					:{WHITE}Train too long
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Trains can only be altered when stopped inside a depot
-STR_881B_TRAINS							:{WHITE}{STRING} - Trains
-STR_881C_NEW_RAIL_VEHICLES				:{WHITE}New Rail Vehicles
-STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}New Monorail Vehicles
-STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}New Maglev Vehicles
-STR_881F_BUILD_VEHICLE					:{BLACK}Build Vehicle
-STR_8820_RENAME							:{BLACK}Rename
-STR_8821_COST_WEIGHT_T_T_CAPACITY		:{BLACK}Cost: {GOLD}{CURRENCY}{}{BLACK}Weight: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capacity: {GOLD}{STRING}
-STR_8823_SKIP							:{BLACK}Skip
-STR_8824_DELETE							:{BLACK}Delete
-STR_8825_NON_STOP						:{BLACK}Non-Stop
-STR_8826_GO_TO							:{BLACK}Go To
-STR_8827_FULL_LOAD						:{BLACK}Full Load
-STR_8828_UNLOAD							:{BLACK}Unload
-STR_8829_ORDERS							:{WHITE}{STRING} (Orders)
-STR_882A_END_OF_ORDERS					:{SETX 10}- - End of Orders - -
+STR_8817_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Hinta: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{COMMA16}t{}{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK}   Teho: {GOLD}{COMMA16}hv{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/yr{}{BLACK}Kapasiteetti: {GOLD}{STRING}{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK} Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Maksimitoimintavarmuus: {GOLD}{COMMA8}%
+STR_8818_INFORMATION					:{BLACK}Tietoja
+STR_8819_TRAIN_TOO_LONG					:{WHITE}Juna liian pitkä
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED		:{WHITE}Junia voi muunnella vain, kun pysähdyksissä varikolla
+STR_881B_TRAINS							:{WHITE}{STRING} - junat
+STR_881C_NEW_RAIL_VEHICLES				:{WHITE}Uusia rata-ajoneuvoja
+STR_881D_NEW_MONORAIL_VEHICLES			:{WHITE}Uusia yksirata-ajoneuvoja
+STR_881E_NEW_MAGLEV_VEHICLES			:{WHITE}Uusia MagLev-ajoneuvoja
+STR_881F_BUILD_VEHICLE					:{BLACK}Rakenna ajoneuvo
+STR_8820_RENAME							:{BLACK}Uudelleennimeä
+STR_8821_COST_WEIGHT_T_T_CAPACITY		:{BLACK}Hinta: {GOLD}{CURRENCY}{}{BLACK}Paino: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapasiteetti: {GOLD}{STRING}
+STR_8823_SKIP							:{BLACK}Ohita
+STR_8824_DELETE							:{BLACK}Poista
+STR_8825_NON_STOP						:{BLACK}Pysähtymättä
+STR_8826_GO_TO							:{BLACK}Mene
+STR_8827_FULL_LOAD						:{BLACK}Täysi lasti
+STR_8828_UNLOAD							:{BLACK}Pura lasti
+STR_8829_ORDERS							:{WHITE}{STRING} (määräykset)
+STR_882A_END_OF_ORDERS					:{SETX 10}- - määräysten loppu - -
 STR_FULLLOAD_OR_SERVICE					:{SKIP}{SKIP}{STRING}
-STR_SERVICE								:{BLACK}Service
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE	:{WHITE}Can't build railroad vehicle...
-STR_882C_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Built: {LTBLUE}{NUMU16}{BLACK} Value: {LTBLUE}{CURRENCY}
-STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Value: {LTBLUE}{CURRENCY}
+STR_SERVICE								:{BLACK}Huolto
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE	:{WHITE}Ei voi rakentaa rautatieajoneuvoa...
+STR_882C_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUMU16}{BLACK} Arvo: {LTBLUE}{CURRENCY}
+STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Arvo: {LTBLUE}{CURRENCY}
 STR_882E								:{WHITE}{STRING}
-STR_882F_LOADING_UNLOADING				:{LTBLUE}Loading / Unloading
-STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT		:{WHITE}Can't send train to depot...
-STR_8831_NO_MORE_SPACE_FOR_ORDERS		:{WHITE}No more space for orders
-STR_8832_TOO_MANY_ORDERS				:{WHITE}Too many orders
-STR_8833_CAN_T_INSERT_NEW_ORDER			:{WHITE}Can't insert new order...
-STR_8834_CAN_T_DELETE_THIS_ORDER		:{WHITE}Can't delete this order...
-STR_8835_CAN_T_MODIFY_THIS_ORDER		:{WHITE}Can't modify this order...
-STR_8836_MUST_BUILD_TRAIN_DEPOT			:{WHITE}Must build train depot first
-STR_8837_CAN_T_MOVE_VEHICLE				:{WHITE}Can't move vehicle...
+STR_882F_LOADING_UNLOADING				:{LTBLUE}Lastataan/puretaan
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT		:{WHITE}Ei voi lähettää junaa varikolle...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS		:{WHITE}Ei enää tilaa määräyksille
+STR_8832_TOO_MANY_ORDERS				:{WHITE}Liian monta määräystä
+STR_8833_CAN_T_INSERT_NEW_ORDER			:{WHITE}Ei voi lisätä uutta määräystä...
+STR_8834_CAN_T_DELETE_THIS_ORDER		:{WHITE}Eoi voi poistaa määräystä...
+STR_8835_CAN_T_MODIFY_THIS_ORDER		:{WHITE}Ei voi muokata määräystä...
+STR_8836_MUST_BUILD_TRAIN_DEPOT			:{WHITE}Pitää rakentaa junavarikko ensin
+STR_8837_CAN_T_MOVE_VEHICLE				:{WHITE}Ei voi siirtää ajoneuvoa...
 STR_8838_N_A							:N/A{SKIP}
-STR_8839_CAN_T_SELL_RAILROAD_VEHICLE	:{WHITE}Can't sell railroad vehicle...
-STR_883A_UNABLE_TO_FIND_ROUTE_TO		:{WHITE}Unable to find route to local depot
-STR_883B_CAN_T_STOP_START_TRAIN			:{WHITE}Can't stop/start train...
-STR_883C_SERVICING_INTERVAL_DAYS		:{BLACK}Servicing interval: {LTBLUE}{COMMA16}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_883D_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Trains - click on train for information
-STR_883E_BUILD_NEW_TRAINS_REQUIRES		:{BLACK}Build new trains (requires train depot)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
-STR_8840_BUILD_NEW_TRAIN_VEHICLE		:{BLACK}Build new train vehicle
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE		:{BLACK}Drag train vehicle to here to sell it
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Center main view on train depot location
-STR_8843_TRAIN_VEHICLE_SELECTION		:{BLACK}Train vehicle selection list - click on vehicle for information
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN	:{BLACK}Build the highlighted train vehicle
-STR_8845_RENAME_TRAIN_VEHICLE_TYPE		:{BLACK}Rename train vehicle type
-STR_8846_CURRENT_TRAIN_ACTION_CLICK		:{BLACK}Current train action - click here to stop/start train
-STR_8847_SHOW_TRAIN_S_ORDERS			:{BLACK}Show train's orders
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Center main view on train's location
-STR_8849_SEND_TRAIN_TO_DEPOT			:{BLACK}Send train to depot
-STR_884A_FORCE_TRAIN_TO_PROCEED			:{BLACK}Force train to proceed without waiting for signal to clear
-STR_884B_REVERSE_DIRECTION_OF_TRAIN		:{BLACK}Reverse direction of train
-STR_884C_SHOW_TRAIN_DETAILS				:{BLACK}Show train details
-STR_884D_INCREASE_SERVICING_INTERVAL	:{BLACK}Increase servicing interval
-STR_884E_DECREASE_SERVICING_INTERVAL	:{BLACK}Decrease servicing interval
-STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED	:{BLACK}Show details of cargo carried
-STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES	:{BLACK}Show details of train vehicles
-STR_8851_SHOW_CAPACITIES_OF_EACH		:{BLACK}Show capacities of each vehicle
-STR_8852_SHOW_TOTAL_CARGO						:{BLACK}Show total capacity of train, split by cargo type
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER		:{BLACK}Orders list - click on order to highlight it
-STR_8853_SKIP_THE_CURRENT_ORDER			:{BLACK}Skip the current order, and start the next
-STR_8854_DELETE_THE_HIGHLIGHTED			:{BLACK}Delete the highlighted order
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Make the highlighted order non-stop
-STR_8856_INSERT_A_NEW_ORDER_BEFORE		:{BLACK}Insert a new order before the highlighted order, or add to end of list
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Make the highlighted order force the vehicle to wait for a full load
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Make the highlighted order force the vehicle to unload
-STR_SERVICE_HINT						:{BLACK}Skip this order unless a service is needed
-STR_8859_NEW_NOW_AVAILABLE				:{BLACK}{BIGFONT}New {STRING} now available!
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE	:{WHITE}Ei voi myydä rautatieajoneuvoa...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO		:{WHITE}Reittiä paikalliselle varikolle ei löydy
+STR_883B_CAN_T_STOP_START_TRAIN			:{WHITE}Ei voi pysäyttää/käynnistää junaa...
+STR_883C_SERVICING_INTERVAL_DAYS		:{BLACK}Huoltoväli: {LTBLUE}{COMMA16}päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Junat - klikkaa junaa saadaksesi tietoja
+STR_883E_BUILD_NEW_TRAINS_REQUIRES		:{BLACK}Rakenna uusia junia (vaatii junavarikon)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Junat - klikkaa junaa saadaksesi tietoja, raahaa ajoneuvo lisätäksesi/poistaaksesi junasta
+STR_8840_BUILD_NEW_TRAIN_VEHICLE		:{BLACK}Rakenna uusi juna-ajoneuvo
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE		:{BLACK}Raahaa juna-ajoneuvä tähän myydäksesi
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Keskitä näkymä junavarikon sijaintiin
+STR_8843_TRAIN_VEHICLE_SELECTION		:{BLACK}Juna-ajoneuvon valintalista - klikkaa ajoneuvoja saadaksesi tietoja
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN	:{BLACK}Rakenna tähdennetty juna-ajoneuvo
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE		:{BLACK}Uudelleennimeä juna-ajoneuvotyyppi
+STR_8846_CURRENT_TRAIN_ACTION_CLICK		:{BLACK}Valitun junan toiminnot - klikkaa tässä pysäyttääksesi/käynnistääksesi
+STR_8847_SHOW_TRAIN_S_ORDERS			:{BLACK}Näytä junon määräykset
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Keskitä näykmä junan sijaintiin
+STR_8849_SEND_TRAIN_TO_DEPOT			:{BLACK}Lähetä juna varikolle
+STR_884A_FORCE_TRAIN_TO_PROCEED			:{BLACK}Pakota juna jatkamaan ilman tyhjennysmerkin odottamista
+STR_884B_REVERSE_DIRECTION_OF_TRAIN		:{BLACK}Käännä junan suunta
+STR_884C_SHOW_TRAIN_DETAILS				:{BLACK}Näytä junan tiedot
+STR_884D_INCREASE_SERVICING_INTERVAL	:{BLACK}Kasvata huoltoväliä
+STR_884E_DECREASE_SERVICING_INTERVAL	:{BLACK}Pienennä huoltoväliä
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED	:{BLACK}Näytä kuljetettavan rahdin tiedot
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES	:{BLACK}Näytä juna-ajoneuvojen tiedot
+STR_8851_SHOW_CAPACITIES_OF_EACH		:{BLACK}Näytä kunkin ajoneuvon kapasiteetti
+STR_8852_SHOW_TOTAL_CARGO						:{BLACK}Näytä junan kokonaiskapasiteetti, eritelty rahtityypin mukaan
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER		:{BLACK}Määräysluettelo - klikkaa määräystä tähdentääksesi
+STR_8853_SKIP_THE_CURRENT_ORDER			:{BLACK}Ohita nykyinen määräys ja aloita seuraava
+STR_8854_DELETE_THE_HIGHLIGHTED			:{BLACK}Poista tähdennetty määräys
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Tee tähdennetystä määräyksestä pysähtymätön
+STR_8856_INSERT_A_NEW_ORDER_BEFORE		:{BLACK}Lisää uusi määräys ennen tähdennettyä, ja lisää listan viimeiseksi
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Aseta tähdennetty määräys pakottamaan ajoneuvo odottamaan täyttä lastausta
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER		:{BLACK}Aseta tähdennetty määräys pakottamaan ajoneuvo odottamaan purkua
+STR_SERVICE_HINT						:{BLACK}Ohita tämä määräys, ellei palvelua tarvita
+STR_8859_NEW_NOW_AVAILABLE				:{BLACK}{BIGFONT}Uusi {STRING} saatavilla!
 STR_885A								:{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Cost: {CURRENCY} Weight: {COMMA16}t{}Speed: {VELOCITY}  Power: {COMMA16}hp{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING}
-STR_885C_BROKEN_DOWN					:{RED}Broken down
-STR_885D_AGE_RUNNING_COST_YR			:{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED	:{BLACK}Weight: {LTBLUE}{COMMA16}t  {BLACK}Power: {LTBLUE}{COMMA32}hp{BLACK} Max. speed: {LTBLUE}{VELOCITY}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS			:{BLACK}Reliability: {LTBLUE}{COMMA8}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA16}
-STR_8861_STOPPED						:{RED}Stopped
-STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL	:{WHITE}Can't make train pass signal at danger...
-STR_8863_CRASHED						:{RED}Crashed!
+STR_885B_COST_WEIGHT_T_SPEED_POWER		:{BLACK}Hinta: {CURRENCY} Paino: {COMMA16}t{}Nopeus: {VELOCITY}  Teho: {COMMA16}hv{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {STRING}
+STR_885C_BROKEN_DOWN					:{RED}Rikki
+STR_885D_AGE_RUNNING_COST_YR			:{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED	:{BLACK}Paino: {LTBLUE}{COMMA16}t  {BLACK}Teho: {LTBLUE}{COMMA32}hv{BLACK} Huippunopeus: {LTBLUE}{VELOCITY}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS			:{BLACK}Luotettavuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA16}
+STR_8861_STOPPED						:{RED}Pysäytetty
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL	:{WHITE}Ei voi pakottaa junaa ohittamaan vaaramerkin...
+STR_8863_CRASHED						:{RED}Kolaroitu!
 
-STR_8865_NAME_TRAIN						:{WHITE}Name train
-STR_8866_CAN_T_NAME_TRAIN				:{WHITE}Can't name train...
-STR_8867_NAME_TRAIN						:{BLACK}Name train
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Train Crash!{}{COMMA16} die in fireball after collision
-STR_8869_CAN_T_REVERSE_DIRECTION		:{WHITE}Can't reverse direction of train...
-STR_886A_RENAME_TRAIN_VEHICLE_TYPE		:{WHITE}Rename train vehicle type
-STR_886B_CAN_T_RENAME_TRAIN_VEHICLE		:{WHITE}Can't rename train vehicle type...
+STR_8865_NAME_TRAIN						:{WHITE}Nimeä juna
+STR_8866_CAN_T_NAME_TRAIN				:{WHITE}Ei voi nimetä junaa...
+STR_8867_NAME_TRAIN						:{BLACK}Nimeä juna
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Junakolari!{}{COMMA16} kuolee törmäyksenjälkeisessä tulipallossa
+STR_8869_CAN_T_REVERSE_DIRECTION		:{WHITE}Ei voi kääntää junan suuntaa...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE		:{WHITE}Uudelleennimeä juna-ajoneuvon tyyppi
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE		:{WHITE}Ei voi uudelleennimetä juna-ajoneuvon tyyppiä...
 
-STR_TRAIN_STOPPING						:{RED}Stopping
-STR_TRAIN_STOPPING_VEL					:{RED}Stopping, {VELOCITY}
+STR_TRAIN_STOPPING						:{RED}Pysäytetään
+STR_TRAIN_STOPPING_VEL					:{RED}Pysäytetään, {VELOCITY}
 
 ##id 0x9000
-STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Road vehicle in the way
-STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - Road Vehicles
+STR_9000_ROAD_VEHICLE_IN_THE_WAY		:{WHITE}Maantieajoneuvo tiellä
+STR_9001_ROAD_VEHICLES					:{WHITE}{STRING} - maantieajoneuvot
 STR_9002								:{WHITE}{STRING}
-STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}{CITY} Road Vehicle Depot
-STR_9004_NEW_VEHICLES					:{BLACK}New Vehicles
-STR_9005_INFORMATION					:{BLACK}Information
-STR_9006_NEW_ROAD_VEHICLES				:{WHITE}New Road Vehicles
-STR_9007_BUILD_VEHICLE					:{BLACK}Build Vehicle
-STR_9008_COST_SPEED_RUNNING_COST		:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Capacity: {GOLD}{STRING}{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE		:{WHITE}Can't build road vehicle...
-STR_900A_MUST_BUILD_ROAD_VEHICLE		:{WHITE}Must build road vehicle depot first
-STR_900B_ORDERS							:{WHITE}{STRING} (Orders)
-STR_900C_DETAILS						:{WHITE}{STRING} (Details)
-STR_900D_AGE_RUNNING_COST_YR			:{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_900E_MAX_SPEED						:{BLACK}Max. speed: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS			:{BLACK}Reliability: {LTBLUE}{COMMA8}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA16}
-STR_9011_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Built: {LTBLUE}{NUMU16}{BLACK} Value: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY						:{BLACK}Capacity: {LTBLUE}{STRING}
-STR_9013_MUST_BE_STOPPED_INSIDE			:{WHITE}...must be stopped inside a road vehicle depot
-STR_9014_CAN_T_SELL_ROAD_VEHICLE		:{WHITE}Can't sell road vehicle...
-STR_9015_CAN_T_STOP_START_ROAD_VEHICLE	:{WHITE}Can't stop/start road vehicle...
-STR_9016_ROAD_VEHICLE_IS_WAITING		:{WHITE}Road Vehicle {COMMA16} is waiting in depot
-STR_HEADING_FOR_ROAD_DEPOT				:{LTBLUE}Heading for {CITY} Road Depot
-STR_HEADING_FOR_ROAD_DEPOT_VEL			:{LTBLUE}Heading for {CITY} Road Depot, {VELOCITY}
-STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT	:{WHITE}Can't send vehicle to depot...
-STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Unable to find local depot
-STR_901A_ROAD_VEHICLES_CLICK_ON			:{BLACK}Road vehicles - click on vehicle for information
-STR_901B_BUILD_NEW_ROAD_VEHICLES		:{BLACK}Build new road vehicles (requires road vehicle depot)
-STR_901C_CURRENT_VEHICLE_ACTION			:{BLACK}Current vehicle action - click here to stop/start vehicle
-STR_901D_SHOW_VEHICLE_S_ORDERS			:{BLACK}Show vehicle's orders
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE	:{BLACK}Center main view on vehicle's location
-STR_901F_SEND_VEHICLE_TO_DEPOT			:{BLACK}Send vehicle to depot
-STR_9020_FORCE_VEHICLE_TO_TURN_AROUND	:{BLACK}Force vehicle to turn around
-STR_9021_SHOW_ROAD_VEHICLE_DETAILS		:{BLACK}Show road vehicle details
-STR_9022_VEHICLES_CLICK_ON_VEHICLE		:{BLACK}Vehicles - click on vehicle for information
-STR_9023_BUILD_NEW_ROAD_VEHICLE			:{BLACK}Build new road vehicle
-STR_9024_DRAG_ROAD_VEHICLE_TO_HERE		:{BLACK}Drag road vehicle to here to sell it
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Center main view on road vehicle depot location
-STR_9026_ROAD_VEHICLE_SELECTION			:{BLACK}Road vehicle selection list - click on vehicle for information
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD		:{BLACK}Build the highlighted road vehicle
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE	:{BLACK}{BIGFONT}New road vehicle now available!
+STR_9003_ROAD_VEHICLE_DEPOT				:{WHITE}{CITY} huoltoasema
+STR_9004_NEW_VEHICLES					:{BLACK}Uusia ajoneuvoja
+STR_9005_INFORMATION					:{BLACK}Tietoja
+STR_9006_NEW_ROAD_VEHICLES				:{WHITE}Uusia maantieajoneuvoja
+STR_9007_BUILD_VEHICLE					:{BLACK}Rakenna ajoneuvo
+STR_9008_COST_SPEED_RUNNING_COST		:{BLACK}Hinta: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Kapasiteetti: {GOLD}{STRING}{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}  Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Maksimitoimintavarmuus: {GOLD}{COMMA8}%
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE		:{WHITE}Ei voi rakentaa maantieajoneuvoa...
+STR_900A_MUST_BUILD_ROAD_VEHICLE		:{WHITE}Pitää rakentaa ensin huoltoasema
+STR_900B_ORDERS							:{WHITE}{STRING} (määräykset)
+STR_900C_DETAILS						:{WHITE}{STRING} (yksityiskohdat)
+STR_900D_AGE_RUNNING_COST_YR			:{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustanukset: {LTBLUE}{CURRENCY}/vuosi
+STR_900E_MAX_SPEED						:{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Tuottoa tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS			:{BLACK}Toimintavarmuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime vuollon jälkeen: {LTBLUE}{COMMA16}
+STR_9011_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUMU16}{BLACK} Arvo: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY						:{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_9013_MUST_BE_STOPPED_INSIDE			:{WHITE}...pitää olla pysähtyneenä huoltoasemalle
+STR_9014_CAN_T_SELL_ROAD_VEHICLE		:{WHITE}Ei voi myydä maantieajoneuvoa...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE	:{WHITE}Ei voi pysäyttää/käynnistää maantieajoneuvoa...
+STR_9016_ROAD_VEHICLE_IS_WAITING		:{WHITE}Maantieajoneuvo {COMMA16} odottaa huoltoasemalla
+STR_HEADING_FOR_ROAD_DEPOT				:{LTBLUE}Suunataan kaupungin {CITY} huoltoasemalle
+STR_HEADING_FOR_ROAD_DEPOT_VEL			:{LTBLUE}Suunnataan kaupungin {CITY} huoltoasemalle, {VELOCITY}
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT	:{WHITE}Ei voi lähettää ajoneuvoa huoltoasemalle...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Paikallista huoltoasemaa ei löydy
+STR_901A_ROAD_VEHICLES_CLICK_ON			:{BLACK}Maantieajoneuvot - klikkaa ajoneuvoja saadaksesi tietoja
+STR_901B_BUILD_NEW_ROAD_VEHICLES		:{BLACK}Rakenna uusi maantieajoneuvo (vaatii huoltoaseman)
+STR_901C_CURRENT_VEHICLE_ACTION			:{BLACK}Nykyisen ajoneuvon toiminnot - klikkaa tässä pysäyttääksesi/käynnistääksesi
+STR_901D_SHOW_VEHICLE_S_ORDERS			:{BLACK}Näytä ajoneuvon määräykset
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE	:{BLACK}Keskitä näkymä ajoneuvon sijaintiin
+STR_901F_SEND_VEHICLE_TO_DEPOT			:{BLACK}Lähetä ajoneuvo huoltoasemalle
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND	:{BLACK}Pakota ajoneuvo kääntämään ympäri
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS		:{BLACK}Näytä maantieajoneuvon tiedot
+STR_9022_VEHICLES_CLICK_ON_VEHICLE		:{BLACK}Ajoneuvot - klikkaa ajoneuvoa saadaksesi tietoja
+STR_9023_BUILD_NEW_ROAD_VEHICLE			:{BLACK}Rakenna uusi maantieajoneuvo
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE		:{BLACK}Raahaa maantieajoneuvo tähän myydäksesi
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Keskitä päänäkymä huoltoaseman sijaintiin
+STR_9026_ROAD_VEHICLE_SELECTION			:{BLACK}Maantieajoneuvon valintalista - klikkaa ajoneuvossa saadaksesi tietoja
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD		:{BLACK}Rakenna tähdennetty maantieajoneuvo
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE	:{BLACK}{BIGFONT}Uusi maantieajoneuvo on saatavilla!
 STR_9029								:{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST		:{BLACK}Cost: {CURRENCY}{}Speed: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST		:{BLACK}Hinta: {CURRENCY}{}Nopeus: {VELOCITY}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {STRING}
 
-STR_902C_NAME_ROAD_VEHICLE				:{WHITE}Name road vehicle
-STR_902D_CAN_T_NAME_ROAD_VEHICLE		:{WHITE}Can't name road vehicle...
-STR_902E_NAME_ROAD_VEHICLE				:{BLACK}Name road vehicle
-STR_902F_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First bus arrives at {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First truck arrives at {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER		:{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
-STR_9032_ROAD_VEHICLE_CRASH_DIE			:{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA16} die in fireball after collision with train
-STR_9033_CAN_T_MAKE_VEHICLE_TURN		:{WHITE}Can't make vehicle turn around...
-STR_9034_RENAME							:{BLACK}Rename
-STR_9035_RENAME_ROAD_VEHICLE_TYPE		:{BLACK}Rename road vehicle type
-STR_9036_RENAME_ROAD_VEHICLE_TYPE		:{WHITE}Rename road vehicle type
-STR_9037_CAN_T_RENAME_ROAD_VEHICLE		:{WHITE}Can't rename road vehicle type...
-STR_9038_GO_TO_ROADVEH_DEPOT			:Go to {CITY} Road Vehicle Depot
-STR_SERVICE_AT_ROADVEH_DEPOT			:Service at {CITY} Road Vehicle Depot
+STR_902C_NAME_ROAD_VEHICLE				:{WHITE}Nimeä maantieajoneuvo
+STR_902D_CAN_T_NAME_ROAD_VEHICLE		:{WHITE}Ei voi nimetä maantieajoneuvoa...
+STR_902E_NAME_ROAD_VEHICLE				:{BLACK}Nimeä maantieajoneuvo
+STR_902F_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen rekka saapuu asemalle {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER		:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}Kuljettaja kuolee junatöymäyksen jälkeisessä tulipallossa
+STR_9032_ROAD_VEHICLE_CRASH_DIE			:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}{COMMA16} kuolee junatöymäyksen jälkeisessä tulipallossa
+STR_9033_CAN_T_MAKE_VEHICLE_TURN		:{WHITE}Ei voi pakottaa ajoneuvoa kääntymään ympäri...
+STR_9034_RENAME							:{BLACK}Uudelleennimeä
+STR_9035_RENAME_ROAD_VEHICLE_TYPE		:{BLACK}Uudelleennimeä road vehicle type
+STR_9036_RENAME_ROAD_VEHICLE_TYPE		:{WHITE}Uudelleennimeä road vehicle type
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE		:{WHITE}Ei voi uudelleennimetä maantieajoneuvotyyppiä...
+STR_9038_GO_TO_ROADVEH_DEPOT			:Mene kaupungin {CITY} huoltoasemalle
+STR_SERVICE_AT_ROADVEH_DEPOT			:Huolto kaupungin {CITY} huoltoasemalla
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION				:Dock construction
-STR_9801_DOCK_CONSTRUCTION				:{WHITE}Dock construction
-STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Can't build dock here...
-STR_9803_SHIP_DEPOT						:{WHITE}{CITY} Ship Depot
-STR_9804_NEW_SHIPS						:{BLACK}New Ships
-STR_9805_SHIPS							:{WHITE}{STRING} - Ships
-STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}Can't build ships...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Must build ship depot first
-STR_9808_NEW_SHIPS						:{WHITE}New Ships
-STR_9809_BUILD_SHIP						:{BLACK}Build Ship
-STR_980A_COST_SPEED_CAPACITY_RUNNING	:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{STRING} {STRING}{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}   Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
-STR_980B_SHIP_MUST_BE_STOPPED_IN		:{WHITE}Ship must be stopped in depot
-STR_980C_CAN_T_SELL_SHIP				:{WHITE}Can't sell ship...
-STR_980D_CAN_T_BUILD_SHIP				:{WHITE}Can't build ship...
-STR_980E_SHIP_IN_THE_WAY				:{WHITE}Ship in the way
+STR_9800_DOCK_CONSTRUCTION				:Sataman rakennus
+STR_9801_DOCK_CONSTRUCTION				:{WHITE}Sataman rakennus
+STR_9802_CAN_T_BUILD_DOCK_HERE			:{WHITE}Ei voi rakentaa satamaa tähän...
+STR_9803_SHIP_DEPOT						:{WHITE}Kaupungin {CITY} telakka
+STR_9804_NEW_SHIPS						:{BLACK}Uusia laivoja
+STR_9805_SHIPS							:{WHITE}{STRING} - laivat
+STR_9806_CAN_T_BUILD_SHIPS				:{WHITE}Ei voi rakentaa laivoja...
+STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST	:{WHITE}Pitää rakentaa telkakka ensin
+STR_9808_NEW_SHIPS						:{WHITE}Uusia laivoja
+STR_9809_BUILD_SHIP						:{BLACK}Rakenna laivoja
+STR_980A_COST_SPEED_CAPACITY_RUNNING	:{BLACK}Hinta: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Kapasiteetti: {GOLD}{STRING} {STRING}{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}   Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Maksimitoimintavarmuus: {GOLD}{COMMA8}%
+STR_980B_SHIP_MUST_BE_STOPPED_IN		:{WHITE}Laivan pitää olla pysähdyksissä telakalla
+STR_980C_CAN_T_SELL_SHIP				:{WHITE}Ei voi myydä laivaa...
+STR_980D_CAN_T_BUILD_SHIP				:{WHITE}Ei voi rakentaa laivaa...
+STR_980E_SHIP_IN_THE_WAY				:{WHITE}Laiva tiellä
 STR_980F								:{WHITE}{STRING}
-STR_9810_ORDERS							:{WHITE}{STRING} (Orders)
-STR_9811_DETAILS						:{WHITE}{STRING} (Details)
-STR_9812_AGE_RUNNING_COST_YR			:{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_9813_MAX_SPEED						:{BLACK}Max. speed: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS			:{BLACK}Reliability: {LTBLUE}{COMMA8}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA16}
-STR_9816_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Built: {LTBLUE}{NUMU16}{BLACK} Value: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY						:{BLACK}Capacity: {LTBLUE}{STRING}
-STR_9818_CAN_T_STOP_START_SHIP			:{WHITE}Can't stop/start ship...
-STR_9819_CAN_T_SEND_SHIP_TO_DEPOT		:{WHITE}Can't send ship to depot...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Unable to find local depot
-STR_HEADING_FOR_SHIP_DEPOT				:{LTBLUE}Heading for {CITY} Ship Depot
-STR_HEADING_FOR_SHIP_DEPOT_VEL			:{LTBLUE}Heading for {CITY} Ship Depot, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT		:{WHITE}Ship {COMMA16} is waiting in depot
-STR_981D_BUILD_SHIP_DOCK				:{BLACK}Build ship dock
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING	:{BLACK}Build ship depot (for building and servicing ships)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Ships - click on ship for information
-STR_9820_BUILD_NEW_SHIP					:{BLACK}Build new ship
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL		:{BLACK}Drag ship to here to sell it
-STR_9822_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Center main view on ship depot location
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Ships - click on ship for information
-STR_9824_BUILD_NEW_SHIPS_REQUIRES		:{BLACK}Build new ships (requires ship depot)
-STR_9825_SHIP_SELECTION_LIST_CLICK		:{BLACK}Ship selection list - click on ship for information
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP		:{BLACK}Build the highlighted ship
-STR_9827_CURRENT_SHIP_ACTION_CLICK		:{BLACK}Current ship action - click here to stop/start ship
-STR_9828_SHOW_SHIP_S_ORDERS				:{BLACK}Show ship's orders
-STR_9829_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Center main view on ship's location
-STR_982A_SEND_SHIP_TO_DEPOT				:{BLACK}Send ship to depot
-STR_982B_SHOW_SHIP_DETAILS				:{BLACK}Show ship details
-STR_982C_NEW_SHIP_NOW_AVAILABLE			:{BLACK}{BIGFONT}New ship now available!
+STR_9810_ORDERS							:{WHITE}{STRING} (määräykset)
+STR_9811_DETAILS						:{WHITE}{STRING} (tiedot)
+STR_9812_AGE_RUNNING_COST_YR			:{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
+STR_9813_MAX_SPEED						:{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Tuottoa tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS			:{BLACK}Toimintavarmuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA16}
+STR_9816_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUMU16}{BLACK} Arvo: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY						:{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_9818_CAN_T_STOP_START_SHIP			:{WHITE}Ei voi pysäyttää/käynnistää laivaa...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT		:{WHITE}Ei voi lähettää laivaa telakalle...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT		:{WHITE}Paikallista telakkaa ei löydy
+STR_HEADING_FOR_SHIP_DEPOT				:{LTBLUE}Suunnataan kaupungin {CITY} telakalle
+STR_HEADING_FOR_SHIP_DEPOT_VEL			:{LTBLUE}Suunnataan kaupungin {CITY} telakalle, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT		:{WHITE}Laiva {COMMA16} odottaa telakalla
+STR_981D_BUILD_SHIP_DOCK				:{BLACK}Rakenna laivasatama
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING	:{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Laivat - klikkaa laivaa saadaksesi tietoja
+STR_9820_BUILD_NEW_SHIP					:{BLACK}Rakenna uusi laiva
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL		:{BLACK}Raahaa laiva tähän myydäksesi
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Keskitä näkymä telakan sijaintiin
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Laivat - klikkaa laivaa saadaksesi tietoja
+STR_9824_BUILD_NEW_SHIPS_REQUIRES		:{BLACK}Rakenna uusia laivoja (vaatii telakan)
+STR_9825_SHIP_SELECTION_LIST_CLICK		:{BLACK}Laivavalintalistas - klikkaa laivaa saadaksesi tietoja
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP		:{BLACK}Rakenna tähdennetty laiva
+STR_9827_CURRENT_SHIP_ACTION_CLICK		:{BLACK}Nykyisen laivat toiminnot - klikkaa tässä pysäyttääksesi/käynnistääksesi
+STR_9828_SHOW_SHIP_S_ORDERS				:{BLACK}Näytä laivan määräykset
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Keskitä näkymä laivan sijaintiin
+STR_982A_SEND_SHIP_TO_DEPOT				:{BLACK}Lähetä laiva telakalle
+STR_982B_SHOW_SHIP_DETAILS				:{BLACK}Näytä laivan tiedot
+STR_982C_NEW_SHIP_NOW_AVAILABLE			:{BLACK}{BIGFONT}Uusi laiva saatavilla!
 STR_982D								:{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY		:{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {STRING}{}Running Cost: {CURRENCY}/yr
-STR_982F_NAME_SHIP						:{BLACK}Name ship
+STR_982E_COST_MAX_SPEED_CAPACITY		:{BLACK}Hinta: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {STRING}{}Käyttökustannukset: {CURRENCY}/vuosi
+STR_982F_NAME_SHIP						:{BLACK}Nimeä laiva
 
-STR_9831_NAME_SHIP						:{WHITE}Name ship
-STR_9832_CAN_T_NAME_SHIP				:{WHITE}Can't name ship...
-STR_9833_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First ship arrives at {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN		:{BLACK}Position buoy, which can be used for additional way points
-STR_9835_CAN_T_POSITION_BUOY_HERE		:{WHITE}Can't position buoy here...
-STR_9836_RENAME							:{BLACK}Rename
-STR_9837_RENAME_SHIP_TYPE				:{BLACK}Rename ship type
-STR_9838_RENAME_SHIP_TYPE				:{WHITE}Rename ship type
-STR_9839_CAN_T_RENAME_SHIP_TYPE			:{WHITE}Can't rename ship type...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY		:{BLACK}Refit cargo ship to carry a different cargo type
-STR_983B_REFIT							:{WHITE}{STRING} (Refit)
-STR_983C_REFIT_SHIP						:{BLACK}Refit ship
-STR_983D_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Select type of cargo for ship to carry
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED:{BLACK}Refit ship to carry highlighted cargo type
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY		:{GOLD}Select cargo type to carry:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT		:{BLACK}New capacity: {GOLD}{STRING}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
-STR_9841_CAN_T_REFIT_SHIP				:{WHITE}Can't refit ship...
-STR_9842_REFITTABLE						:(refittable)
-STR_GO_TO_SHIP_DEPOT					:Go to {CITY} Ship Depot
-SERVICE_AT_SHIP_DEPOT					:Service at {CITY} Ship Depot
+STR_9831_NAME_SHIP						:{WHITE}Nimeä laiva
+STR_9832_CAN_T_NAME_SHIP				:{WHITE}Ei voi nimetä laivaa
+STR_9833_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN		:{BLACK}Aseta poiju; sitä voidaan käyttää ylimääräisenä opasteena
+STR_9835_CAN_T_POSITION_BUOY_HERE		:{WHITE}Ei voi asettaa poijua tähän...
+STR_9836_RENAME							:{BLACK}Uudelleennimeä
+STR_9837_RENAME_SHIP_TYPE				:{BLACK}Uudelleennimeä laivatyyppi
+STR_9838_RENAME_SHIP_TYPE				:{WHITE}Uudelleennimeä laivatyyppi
+STR_9839_CAN_T_RENAME_SHIP_TYPE			:{WHITE}Ei voi uudelleennimetä laivatyyppiä
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY		:{BLACK}Sovita rahtilaiva eri rahtityypille
+STR_983B_REFIT							:{WHITE}{STRING} (sovita)
+STR_983C_REFIT_SHIP						:{BLACK}Sovita laiva
+STR_983D_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Valitse laivan kuljettama rahtityyppi
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED:{BLACK}Sovita laiva tähdennetylle rahtityypille
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY		:{GOLD}Valitse kuljetettava rahtityyppi:-
+STR_9840_NEW_CAPACITY_COST_OF_REFIT		:{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen hinta: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP				:{WHITE}Ei voi sovittaa laivaa...
+STR_9842_REFITTABLE						:(sovitettava)
+STR_GO_TO_SHIP_DEPOT					:Mene kaupungin {CITY} telakalle
+SERVICE_AT_SHIP_DEPOT					:Huolto kaupungin {CITY} telakalle
 
 ##id 0xA000
-STR_A000_AIRPORT_CONSTRUCT				:{WHITE}Airport Construct.
-STR_A001_CAN_T_BUILD_AIRPORT_HERE		:{WHITE}Can't build airport here...
-STR_A002_AIRCRAFT_HANGAR				:{WHITE}{STATION} Aircraft Hangar
-STR_A003_NEW_AIRCRAFT					:{BLACK}New Aircraft
-STR_A004_INFORMATION					:{BLACK}Information
-STR_A005_NEW_AIRCRAFT					:{WHITE}New Aircraft
-STR_A006_BUILD_AIRCRAFT					:{BLACK}Build Aircraft
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
-STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Can't build aircraft...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - Aircraft
+STR_A000_AIRPORT_CONSTRUCT				:{WHITE}Rakenna lentokenttä
+STR_A001_CAN_T_BUILD_AIRPORT_HERE		:{WHITE}Ei voi rakentaa lentokenttää...
+STR_A002_AIRCRAFT_HANGAR				:{WHITE}Aseman {STATION} lentokonehalli
+STR_A003_NEW_AIRCRAFT					:{BLACK}Uusi lentokone
+STR_A004_INFORMATION					:{BLACK}Tietoja
+STR_A005_NEW_AIRCRAFT					:{WHITE}Uusi lentokone
+STR_A006_BUILD_AIRCRAFT					:{BLACK}Rakenna lentokone
+STR_A007_COST_SPEED_CAPACITY_PASSENGERS	:{BLACK}Hinta: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Kapasiteetti: {GOLD}{COMMA16} matkustajaa, {COMMA16} säkkiä postia{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}  Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Maksimitoimintavarmuus: {GOLD}{COMMA8}%
+STR_A008_CAN_T_BUILD_AIRCRAFT			:{WHITE}Ei voi rakentaa lentokonetta...
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - lentokoneet
 STR_A00A								:{WHITE}{STRING}
-STR_A00B_ORDERS							:{WHITE}{STRING} (Orders)
-STR_A00C_DETAILS						:{WHITE}{STRING} (Details)
-STR_A00D_AGE_RUNNING_COST_YR			:{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_A00E_MAX_SPEED						:{BLACK}Max. speed: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS			:{BLACK}Reliability: {LTBLUE}{COMMA8}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA16}
-STR_A011_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Built: {LTBLUE}{NUMU16}{BLACK} Value: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO			:{WHITE}Can't send aircraft to hangar...
-STR_HEADING_FOR_HANGAR					:{LTBLUE}Heading for {STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL				:{LTBLUE}Heading for {STATION} Hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN			:{WHITE}Aircraft {COMMA16} is waiting in the aircraft hangar
-STR_A015_AIRCRAFT_IN_THE_WAY			:{WHITE}Aircraft in the way
-STR_A016_CAN_T_STOP_START_AIRCRAFT		:{WHITE}Can't stop/start aircraft...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT			:{WHITE}Aircraft is in flight
-STR_A018_MUST_BUILD_AIRPORT_FIRST		:{WHITE}Must build airport first
-STR_A019_CAPACITY						:{BLACK}Capacity: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY						:{BLACK}Capacity: {LTBLUE}{STRING}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED		:{WHITE}Aircraft must be stopped in hangar
-STR_A01C_CAN_T_SELL_AIRCRAFT			:{WHITE}Can't sell aircraft...
-STR_A01D_AIRPORT_CONSTRUCTION			:Airport construction
-STR_A01E_BUILD_AIRPORT					:{BLACK}Build airport
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT		:{BLACK}Aircraft - click on aircraft for information
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES	:{BLACK}Build new aircraft (requires airport with hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT		:{BLACK}Aircraft - click on aircraft for information
-STR_A022_BUILD_NEW_AIRCRAFT				:{BLACK}Build new aircraft
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO		:{BLACK}Drag aircraft to here to sell it
-STR_A024_CENTER_MAIN_VIEW_ON_HANGAR		:{BLACK}Center main view on hangar location
-STR_A025_AIRCRAFT_SELECTION_LIST		:{BLACK}Aircraft selection list - click on aircraft for information
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT	:{BLACK}Build the highlighted aircraft
-STR_A027_CURRENT_AIRCRAFT_ACTION		:{BLACK}Current aircraft action - click here to stop/start aircraft
-STR_A028_SHOW_AIRCRAFT_S_ORDERS			:{BLACK}Show aircraft's orders
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT	:{BLACK}Center main view on aircraft's location
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR		:{BLACK}Send aircraft to hangar
-STR_A02B_SHOW_AIRCRAFT_DETAILS			:{BLACK}Show aircraft details
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE		:{BLACK}{BIGFONT}New aircraft now available!
+STR_A00B_ORDERS							:{WHITE}{STRING} (määräykset)
+STR_A00C_DETAILS						:{WHITE}{STRING} (tiedot)
+STR_A00D_AGE_RUNNING_COST_YR			:{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannuket: {LTBLUE}{CURRENCY}/vuosi
+STR_A00E_MAX_SPEED						:{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR		:{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS			:{BLACK}Luotettavuus: {LTBLUE}{COMMA8}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA16}
+STR_A011_BUILT_VALUE					:{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUMU16}{BLACK} Arvo: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO			:{WHITE}Ei voi lähettää lentokonetta lentokonehalliin...
+STR_HEADING_FOR_HANGAR					:{LTBLUE}Suunnataan aseman {STATION} lentokonehalliin
+STR_HEADING_FOR_HANGAR_VEL				:{LTBLUE}Suunnataan aseman {STATION} lentokonehalliin, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN			:{WHITE}Lentokone {COMMA16} odottaa lentokonehallissa
+STR_A015_AIRCRAFT_IN_THE_WAY			:{WHITE}Lentokone tiellä
+STR_A016_CAN_T_STOP_START_AIRCRAFT		:{WHITE}Ei voi pysäyttää/käynnistää lentokonetta...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT			:{WHITE}Lentokone on lennossa
+STR_A018_MUST_BUILD_AIRPORT_FIRST		:{WHITE}Pitää rakentaa lentokenttä ensin
+STR_A019_CAPACITY						:{BLACK}Kapasiteetti: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY						:{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED		:{WHITE}Lentokone pitää olla pysähdyksissä lentokonehallissa
+STR_A01C_CAN_T_SELL_AIRCRAFT			:{WHITE}Ei voi myydä lentokonetta...
+STR_A01D_AIRPORT_CONSTRUCTION			:Lentokentän rakentaminen
+STR_A01E_BUILD_AIRPORT					:{BLACK}Rakenna lentokenttä
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT		:{BLACK}Lentokoneet - klikkaa lentokonetta saadaksesi tietoja
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES	:{BLACK}Rakenna uusi lentokone (vaatii lentokentän lentokonehallilla)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT		:{BLACK}Lentokoneet - klikkaa lentokonetta saadaksesi tietoja
+STR_A022_BUILD_NEW_AIRCRAFT				:{BLACK}Rakenna uusi lentokone
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO		:{BLACK}Raahaa lentokone tähän myydäksesi
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR		:{BLACK}Keskitä näkymä lentokonehallin sijaintiin
+STR_A025_AIRCRAFT_SELECTION_LIST		:{BLACK}Lentokonevalintalista - klikkaa lentokonetta saadaksesi tietoja
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT	:{BLACK}Rakenna tähdennetty lentokone
+STR_A027_CURRENT_AIRCRAFT_ACTION		:{BLACK}Nykyisen lentokoneen toiminnot - klikkaa tässä pysäyttääksesi/käynnistääksesi
+STR_A028_SHOW_AIRCRAFT_S_ORDERS			:{BLACK}Näytä lentokoneen määräykset
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT	:{BLACK}Keskitä näkymä lentokoneen sijaintiin
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR		:{BLACK}Lähetä lentokone lentokonehalliin
+STR_A02B_SHOW_AIRCRAFT_DETAILS			:{BLACK}Näytä lentokoneen tiedot
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE		:{BLACK}{BIGFONT}Uusi lentokone saatavilla!
 STR_A02D								:{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY		:{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {COMMA16} passengers, {COMMA16} bags of mail{}Running Cost: {CURRENCY}/yr
+STR_A02E_COST_MAX_SPEED_CAPACITY		:{BLACK}Hinta: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {COMMA16} matkustajaa, {COMMA16} säkkiä postia{}Käyttökustannus: {CURRENCY}/vuosi
 
-STR_A030_NAME_AIRCRAFT					:{WHITE}Name aircraft
-STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Can't name aircraft...
-STR_A032_NAME_AIRCRAFT					:{BLACK}Name aircraft
-STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Citizens celebrate . . .{}First aircraft arrives at {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
-STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Destinations: 
+STR_A030_NAME_AIRCRAFT					:{WHITE}Nimeä lentokone
+STR_A031_CAN_T_NAME_AIRCRAFT			:{WHITE}Ei voi nimetä lentokonetta...
+STR_A032_NAME_AIRCRAFT					:{BLACK}Nimeä lentokone
+STR_A033_CITIZENS_CELEBRATE_FIRST		:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL	:{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA16} kuolee tulipallossa asemalla {STATION}
+STR_A035_DESTINATIONS					:{TINYFONT}{BLACK}Kohteet: 
 STR_A036								:{TINYFONT}{BLACK}{STATION}
-STR_A037_RENAME							:{BLACK}Rename
-STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Rename aircraft type
-STR_A039_RENAME_AIRCRAFT_TYPE			:{WHITE}Rename aircraft type
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE		:{WHITE}Can't rename aircraft type...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY		:{BLACK}Refit aircraft to carry a different cargo type
-STR_A03C_REFIT							:{WHITE}{STRING} (Refit)
-STR_A03D_REFIT_AIRCRAFT					:{BLACK}Refit aircraft
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Select type of cargo for aircraft to carry
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY		:{BLACK}Refit aircraft to carry highlighted cargo type
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY		:{GOLD}Select cargo type to carry:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT		:{BLACK}New capacity: {GOLD}{STRING}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT			:{WHITE}Can't refit aircraft...
-STR_A043_REFITTABLE						:(refittable)
-STR_GO_TO_AIRPORT_HANGAR				:Go to {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR				:Service at {STATION} Hangar
+STR_A037_RENAME							:{BLACK}Uudelleennimeä
+STR_A038_RENAME_AIRCRAFT_TYPE			:{BLACK}Uudelleennimeä lentokonetyyppi
+STR_A039_RENAME_AIRCRAFT_TYPE			:{WHITE}Uudelleennimeä lentokonetyyppi
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE		:{WHITE}Ei voi uudelleennimetä lentokonetyyppiä...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY		:{BLACK}Sovita lentokone eri rahtityypille
+STR_A03C_REFIT							:{WHITE}{STRING} (sovita)
+STR_A03D_REFIT_AIRCRAFT					:{BLACK}Sovita lentokone
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR		:{BLACK}Valitse kuljetettavan rahdin tyyppi
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY		:{BLACK}Sovita lentokone kuljettamaan tähdennettyä rahtityyppiä
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY		:{GOLD}Valitse kuljetettava rahtityyppi:-
+STR_A041_NEW_CAPACITY_COST_OF_REFIT		:{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen hinta: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT			:{WHITE}Ei voi sovittaa lentokonetta...
+STR_A043_REFITTABLE						:(sovitettava)
+STR_GO_TO_AIRPORT_HANGAR				:Mene aseman {STATION} lentokonehalliin
+SERVICE_AT_AIRPORT_HANGAR				:Huolto aseman {STATION} lentokonehallissa
 
 ##id 0xB000
-STR_B000_ZEPPELIN_DISASTER_AT			:{BLACK}{BIGFONT}Zeppelin disaster at {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED			:{BLACK}{BIGFONT}Road vehicle destroyed in 'UFO' collision!
-STR_B002_OIL_REFINERY_EXPLOSION			:{BLACK}{BIGFONT}Oil refinery explosion near {CITY}!
-STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS:{BLACK}{BIGFONT}Factory destroyed in suspicious circumstances near {CITY}!
-STR_B004_UFO_LANDS_NEAR					:{BLACK}{BIGFONT}'UFO' lands near {CITY}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Coal mine subsidence leaves trail of destruction near {CITY}!
+STR_B000_ZEPPELIN_DISASTER_AT			:{BLACK}{BIGFONT}Ilmalaivaonnettomuus asemalla {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED			:{BLACK}{BIGFONT}Maantieajoneuvo tuhoitui törmäyksessä UFOn kanssa!
+STR_B002_OIL_REFINERY_EXPLOSION			:{BLACK}{BIGFONT}Öljynjalostamon räjähdys kaupungin {CITY} lähellä!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS:{BLACK}{BIGFONT}Tehdas tuhoutui epäilyttävissä olosuhteissa kaupungin {CITY} lähellä!
+STR_B004_UFO_LANDS_NEAR					:{BLACK}{BIGFONT}'UFO' laskeutui kaupungin {CITY} lähelle!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Hiilikaivoksen vajoaminen jättää jälkeensä tuhoa kaupungin {CITY} lähellä!
 
-STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
-STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator.
+STR_BRIBE_FAILED					:{WHITE}Yleinen syyttäjä on saanut selville
+STR_BRIBE_FAILED_2				:{WHITE}lahjontayrityksesi.

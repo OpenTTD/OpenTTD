@@ -809,7 +809,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Select 'legetøjsland' landskab
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Betal for bygningen af nye industrier
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR										:Industrioversigt
+STR_INDUSTRY_DIR						:Industrioversigt
 STR_0313_FUND_NEW_INDUSTRY					:Opfør en ny industri
 ############ range ends here
 

@@ -188,6 +188,9 @@ STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Origineel copyright {COPYRIGHT} 1995 Chr
 STR_00B7_VERSION						:{BLACK}OpenTTD versie {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Origineel ontworpen door Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafisch design door Simon Foster
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Voorseinen en seinpalen {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS					:{BLACK}° Funderingen voor sporen op hellingen {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanaal/sluis afbeeldingen {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 Het OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
@@ -338,6 +341,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Prestatiegrafiek
 STR_0158_COMPANY_VALUE_GRAPH					:Bedrijfswaardegrafiek
 STR_0159_CARGO_PAYMENT_RATES					:Ladingsprijzen
 STR_015A_COMPANY_LEAGUE_TABLE					:Bedrijfscompetitietabel
+STR_PERFORMANCE_DETAIL_MENU					:Gedetaileerde prestatiewaarde
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -348,13 +352,23 @@ STR_015F_QUIT							:Afsluiten
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Weet u zeker dat u dit spel wilt afsluiten?
 STR_0161_QUIT_GAME						:{WHITE}Spel stoppen
 STR_SORT_TIP							:{BLACK}Selecteer sorteervolgorde
+SRT_SORT_BY							:{BLACK}Sorteer op
 
 STR_SORT_BY_POPULATION						:{BLACK}Inwoners
 STR_SORT_BY_PRODUCTION						:{BLACK}Productie
 STR_SORT_BY_TYPE						:{BLACK}Soort
 STR_SORT_BY_TRANSPORTED						:{BLACK}Vervoerd
 STR_SORT_BY_NAME						:{BLACK}Naam
+STR_SORT_BY_DROPDOWN_NAME					:Naam
 STR_SORT_BY_DATE						:{BLACK}Datum
+STR_SORT_BY_UNSORTED						:Ongesorteerd
+STR_SORT_BY_NUMBER						:Number
+STR_SORT_BY_PROFIT_LAST_YEAR					:Winst vorig jaar
+STR_SORT_BY_PROFIT_THIS_YEAR					:Winst dit jaar
+STR_SORT_BY_AGE							:Leeftijd
+STR_SORT_BY_RELIABILITY						:Betrouwbaarheid
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Totale capaciteit per vrachttype
+STR_SORT_BY_MAX_SPEED						:Maximale snelheid
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -794,7 +808,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Kies 'speelgoedland'
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Betaal plaatsing van nieuwe industrie
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR										:Industrielijst
+STR_INDUSTRY_DIR						:Industrielijst
 STR_0313_FUND_NEW_INDUSTRY					:Subsidieer nieuwe industrie
 ############ range ends here
 
@@ -910,6 +924,8 @@ STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Winst van train {COMMA16} was vorig jaar{C
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}Trein {COMMA16} heeft te weinig opdrachten
+STR_TRAIN_HAS_VOID_ORDER					:{WHITE}Trein {COMMA16} heeft een lege opdracht
 # end of order system
 
 
