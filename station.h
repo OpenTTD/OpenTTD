@@ -93,6 +93,10 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h);
 uint GetStationPlatforms(Station *st, uint tile);
 
 
+/* Station layout for given dimensions - it is a two-dimensional array
+ * where index is computed as (x * platforms) + platform. */
+typedef byte *StationLayout;
+
 struct StationSpec {
 	uint32 grfid;
 	int localidx; // per-GRFFile station index + 1; SetCustomStation() takes care of this
@@ -110,8 +114,40 @@ struct StationSpec {
 		STAT_CLASS_CUSTOM, // some custom class
 	} sclass;
 
+	/* Bitmask of platform numbers/lengths available for the station.  Bits
+	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms or
+	 * lenght. */
+	byte allowed_platforms;
+	byte allowed_lengths;
+
+	/* Custom sprites */
 	byte tiles;
+	/* 00 = plain platform
+	 * 02 = platform with building
+	 * 04 = platform with roof, left side
+	 * 06 = platform with roof, right side
+	 *
+	 * These numbers are used for stations in NE-SW direction, or these
+	 * numbers plus one for stations in the NW-SE direction.  */
 	DrawTileSprites renderdata[8];
+
+	/* Custom layouts */
+	/* The layout array is organized like [lenghts][platforms], both being
+	 * dynamic arrays, the field itself is length*platforms array containing
+	 * indexes to @renderdata (only even numbers allowed) for the given
+	 * station tile. */
+	/* @lengths is length of the @platforms and @layouts arrays, that is
+	 * number of maximal length for which the layout is defined (since
+	 * arrays are indexed from 0, the length itself is at [length - 1]). */
+	byte lengths;
+	/* @platforms is array of number of platforms defined for each length.
+	 * Zero means no platforms defined. */
+	byte *platforms;
+	/* @layout is @layouts-sized array of @platforms-sized arrays,
+	 * containing pointers to length*platforms-sized arrays or NULL if
+	 * default OTTD station layout should be used for stations of these
+	 * dimensions. */
+	StationLayout **layouts;
 
 	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
 	 * whilst spritegroup[1] is "CID_PURCHASE". */

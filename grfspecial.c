@@ -702,11 +702,6 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	/* This is one single huge TODO. It doesn't handle anything more than
 	 * just waypoints for now. */
 
-	/* TODO: Differentiate between railtypes. This is missing in the new
-	 * GRF file specification yet, though, so I need to agree on this with
-	 * patchman yet. We just assume all the station stuff is for railtype 0
-	 * (railroad) for now. --pasky */
-
 	//printf("sci %d %d [0x%02x]\n", stid, numinfo, prop);
 	switch (prop) {
 		case 0x08:
@@ -729,7 +724,12 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						stat->sclass = STAT_CLASS_WAYP;
 						break;
 					default:
-						stat->sclass = STAT_CLASS_CUSTOM;
+						/* TODO: No support for custom
+						 * classes for now, so stuff
+						 * everything to the single
+						 * default one. --pasky */
+						stat->sclass = STAT_CLASS_DFLT;
+						//stat->sclass = STAT_CLASS_CUSTOM;
 						break;
 				}
 			}
@@ -826,38 +826,72 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			ret = 1;
 			break;
 		}
-		case 0x0c:
+		case 0x0C:
 		{	/* Platforms number */
-			/* TODO */
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+
+				stat->allowed_platforms = ~grf_load_byte(&buf);
 			}
-			ret = 1;
 			break;
 		}
-		case 0x0d:
+		case 0x0D:
 		{	/* Platforms length */
-			/* TODO */
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+
+				stat->allowed_lengths = ~grf_load_byte(&buf);
 			}
-			ret = 1;
 			break;
 		}
 		case 0x0e:
 		{	/* Define custom layout */
-			/* TODO */
 			FOR_EACH_OBJECT {
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
 					byte number = grf_load_byte(&buf);
-					int k = length * number;
+					StationLayout layout;
+					int l, p;
 
-					if (!length && !number) break;
-					while (k--) grf_load_byte(&buf);
+					if (length == 0 || number == 0) break;
+
+					//debug("l %d > %d ?", length, stat->lengths);
+					if (length > stat->lengths) {
+						stat->platforms = realloc(stat->platforms, length);
+						memset(stat->platforms + stat->lengths, 0, length - stat->lengths);
+
+						stat->layouts = realloc(stat->layouts, length * sizeof(*stat->layouts));
+						memset(stat->layouts + stat->lengths, 0,
+						       (length - stat->lengths) * sizeof(*stat->layouts));
+
+						stat->lengths = length;
+					}
+					l = length - 1; // index is zero-based
+
+					//debug("p %d > %d ?", number, stat->platforms[l]);
+					if (number > stat->platforms[l]) {
+						stat->layouts[l] = realloc(stat->layouts[l],
+						                               number * sizeof(**stat->layouts));
+						// We expect NULL being 0 here, but C99 guarantees that.
+						memset(stat->layouts[l] + stat->platforms[l], 0,
+						       (number - stat->platforms[l]) * sizeof(**stat->layouts));
+
+						stat->platforms[l] = number;
+					}
+
+					layout = malloc(length * number);
+					for (l = 0; l < length; l++)
+						for (p = 0; p < number; p++)
+							layout[l * number + p] = grf_load_byte(&buf);
+
+					l--;
+					p--;
+					free(stat->layouts[l][p]);
+					stat->layouts[l][p] = layout;
 				}
 			}
-			ret = 1;
 			break;
 		}
 		case 0x0f:

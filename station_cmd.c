@@ -700,8 +700,16 @@ static byte FORCEINLINE *CreateMulti(byte *layout, int n, byte b)
 }
 
 // stolen from TTDPatch
-static void GetStationLayout(byte *layout, int numtracks, int plat_len)
+static void GetStationLayout(byte *layout, int numtracks, int plat_len, struct StationSpec *spec)
 {
+	if (spec != NULL && spec->lengths >= plat_len && spec->platforms[plat_len - 1] >= numtracks
+	    && spec->layouts[plat_len - 1][numtracks - 1]) {
+		/* Custom layout defined, follow it. */
+		memcpy(layout, spec->layouts[plat_len - 1][numtracks - 1],
+		       plat_len * numtracks);
+		return;
+	}
+
 	if (plat_len == 1) {
 		CreateSingle(layout, numtracks);
 	} else {
@@ -720,7 +728,9 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len)
  * p1 & 1 - orientation
  * (p1 >> 8) & 0xFF - numtracks
  * (p1 >> 16) & 0xFF - platform length
- * p2  - railtype
+ * p2 & 0xF  - railtype
+ * p2 & 0x10 - set for custom station
+ * p2 >> 8   - custom station id
  */
 
 int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uint32 p2)
@@ -815,6 +825,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		int tile_delta;
 		byte *layout_ptr;
 		uint station_index = st->index;
+		struct StationSpec *statspec;
 
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
@@ -833,8 +844,9 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 		tile_delta = direction ? TILE_XY(0,1) : TILE_XY(1,0);
 
+		statspec = (p2 & 0x10) != 0 ? GetCustomStation(STAT_CLASS_DFLT, p2 >> 8) : NULL;
 		layout_ptr = alloca(numtracks * plat_len);
-		GetStationLayout(layout_ptr, numtracks, plat_len);
+		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
 		do {
 			int tile = tile_org;
@@ -843,9 +855,10 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 				ModifyTile(tile,
 					MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-					MP_MAP2 | MP_MAP5 | MP_MAP3LO | MP_MAP3HI_CLEAR,
+					MP_MAP2 | MP_MAP5 | MP_MAP3LO | MP_MAP3HI,
 					station_index, /* map2 parameter */
-					p2,				/* map3lo parameter */
+					p2 & 0xFF,     /* map3lo parameter */
+					p2 >> 8,       /* map3hi parameter */
 					(*layout_ptr++) + direction   /* map5 parameter */
 				);
 
@@ -958,24 +971,26 @@ uint GetStationPlatforms(Station *st, uint tile)
 }
 
 
-/* TODO: Multiple classes! */
-
-static int _waypoint_highest_id = -1;
-static struct StationSpec _waypoint_data[256];
+/* TODO: Custom classes! */
+/* Indexed by class, just STAT_CLASS_DFLT and STAT_CLASS_WAYP supported. */
+static int _statspec_highest_id[2] = {-1, -1};
+static struct StationSpec _station_spec[2][256];
 
 void SetCustomStation(byte local_stid, struct StationSpec *spec)
 {
+	enum StationClass sclass;
 	int stid = -1;
 
-	assert(spec->sclass == STAT_CLASS_WAYP);
+	assert(spec->sclass == STAT_CLASS_DFLT || spec->sclass == STAT_CLASS_WAYP);
+	sclass = spec->sclass - 1;
 
 	if (spec->localidx != 0) {
 		/* Already allocated, try to resolve to global stid */
 		int i;
 
-		for (i = 0; i <= _waypoint_highest_id; i++) {
-			if (_waypoint_data[i].grfid == spec->grfid
-			    && _waypoint_data[i].localidx == local_stid + 1) {
+		for (i = 0; i <= _statspec_highest_id[sclass]; i++) {
+			if (_station_spec[sclass][i].grfid == spec->grfid
+			    && _station_spec[sclass][i].localidx == local_stid + 1) {
 				stid = i;
 				/* FIXME: Release original SpriteGroup to
 				 * prevent leaks. But first we need to
@@ -987,23 +1002,26 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 
 	if (stid == -1) {
 		/* Allocate new one. */
-		if (_waypoint_highest_id >= 255) {
+		if (_statspec_highest_id[sclass] >= 255) {
 			error("Too many custom stations allocated.");
 			return;
 		}
-		stid = ++_waypoint_highest_id;
+		stid = ++_statspec_highest_id[sclass];
 		spec->localidx = local_stid + 1;
 	}
 
-	memcpy(&_waypoint_data[stid], spec, sizeof(*spec));
+	//debug("Registering station #%d of class %d", stid, sclass);
+	memcpy(&_station_spec[sclass][stid], spec, sizeof(*spec));
 }
 
 struct StationSpec *GetCustomStation(enum StationClass sclass, byte stid)
 {
-	assert(sclass == STAT_CLASS_WAYP);
-	if (stid > _waypoint_highest_id)
+	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
+	sclass--;
+	//debug("Asking for station #%d of class %d", stid, sclass);
+	if (stid > _statspec_highest_id[sclass])
 		return NULL;
-	return &_waypoint_data[stid];
+	return &_station_spec[sclass][stid];
 }
 
 static struct RealSpriteGroup *
@@ -1092,8 +1110,6 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 {
 	struct RealSpriteGroup *rsg;
 
-	assert(spec->sclass == STAT_CLASS_WAYP);
-
 	rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], stat);
 
 	if (rsg->sprites_per_set != 0) {
@@ -1114,8 +1130,9 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 
 int GetCustomStationsCount(enum StationClass sclass)
 {
-	assert(sclass == STAT_CLASS_WAYP);
-	return _waypoint_highest_id + 1;
+	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
+	sclass--;
+	return _statspec_highest_id[sclass] + 1;
 }
 
 
@@ -1879,17 +1896,16 @@ static int32 RemoveDock(Station *st, uint32 flags)
 #include "table/station_land.h"
 
 
+extern uint16 _custom_sprites_base;
 
 static void DrawTile_Station(TileInfo *ti)
 {
 	uint32 image_or_modificator;
-	uint32 base_img, image;
+	uint32 image;
 	const DrawTileSeqStruct *dtss;
-	const DrawTileSprites *t;
-
-	// station_land array has been increased from 82 elements to 114
-	// but this is something else. If AI builds station with 114 it looks all weird
-	base_img = (_map3_lo[ti->tile] & 0xF) * 82;
+	const DrawTileSprites *t = NULL;
+	byte railtype = _map3_lo[ti->tile] & 0xF;
+	uint32 relocation = 0;
 
 	{
 		uint owner = _map_owner[ti->tile];
@@ -1902,15 +1918,36 @@ static void DrawTile_Station(TileInfo *ti)
 	if (ti->tileh != 0 && (ti->map5 < 0x4C || ti->map5 > 0x51))
 		DrawFoundation(ti, ti->tileh);
 
-	t = &_station_display_datas[ti->map5];
+	if (_map3_lo[ti->tile] & 0x10) {
+		// look for customization
+		struct StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _map3_hi[ti->tile]);
+
+		//debug("Cust-o-mized %p", statspec);
+
+		if (statspec != NULL) {
+			Station *st = DEREF_STATION(_map2[ti->tile]);
+
+			relocation = GetCustomStationRelocation(statspec, st, 0);
+			//debug("Relocation %d", relocation);
+			t = &statspec->renderdata[ti->map5];
+		}
+	}
+
+	if (t == NULL) t = &_station_display_datas[ti->map5];
 
 	image = t->ground_sprite;
 	if (image & 0x8000)
 		image |= image_or_modificator;
-	DrawGroundSprite(image + base_img);
+
+	// station_land array has been increased from 82 elements to 114
+	// but this is something else. If AI builds station with 114 it looks all weird
+	image += railtype * ((image < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
+	DrawGroundSprite(image);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
-		image =	dtss->image + base_img;
+		image =	dtss->image + relocation;
+		// XXX: Do we want to do this for custom stations? --pasky
+		image += railtype * ((image < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			if (image&0x8000) image |= image_or_modificator;	
 		} else {
