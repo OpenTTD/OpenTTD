@@ -506,7 +506,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 				exitdir = GetDepotDirection(src_tile, type);
 
 			/* Let's see if were headed the right way */
-			if (src_trackdir != _dir_to_diag_trackdir[exitdir])
+			if (src_trackdir == _dir_to_diag_trackdir[_reverse_dir[exitdir]])
 				/* We are headed inwards. We can only reverse here, so we'll not
 				 * consider this direction, but jump ahead to the reverse direction.
 				 * It would be nicer to return one neighbour here (the reverse
@@ -540,18 +540,18 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 			return;
 
 	/* Determine available tracks */
-	if (type == TRANSPORT_ROAD && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, TRANSPORT_ROAD))){
-		/* Road stations and depots return 0 on GTTS, so we have to do this by hand... */
+	if (type != TRANSPORT_WATER && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, type))){
+		/* Road stations and road and train depots return 0 on GTTS, so we have to do this by hand... */
 		byte exitdir;
 		if (IsRoadStationTile(dst_tile))
 			exitdir = GetRoadStationDir(dst_tile);
-		else /* Road depot */
+		else /* Road or train depot */
 			exitdir = GetDepotDirection(dst_tile, type);
 		/* Find the trackdirs that are available for a depot or station with this
 		 * orientation. They are only "inwards", since we are reaching this tile
 		 * from some other tile. This prevents vehicles driving into depots from
 		 * the back */
-		ts = (1 << _dir_to_diag_trackdir[exitdir]);
+		ts = (1 << _dir_to_diag_trackdir[_reverse_dir[exitdir]]);
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}
