@@ -369,7 +369,10 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	//TODO
+	if (current->direction != parent->path.node.direction)
+		cost += _patches.npf_rail_curve_penalty;
+	//TODO, with realistic acceleration, also the amount of straight track between
+	//      curves should be taken into account, as this affects the speed limit.
 
 	/* Check for occupied track */
 	//TODO

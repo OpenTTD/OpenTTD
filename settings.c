@@ -949,6 +949,7 @@ const SettingDesc patch_settings[] = {
 	*/
 	{"npf_rail_station_penalty",		SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_station_penalty, 		NULL},
 	{"npf_rail_slope_penalty",			SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_slope_penalty,				NULL},
+	{"npf_rail_curve_penalty",			SDT_UINT32, (void*)(1),		&_patches.npf_rail_curve_penalty,				NULL},
 
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
