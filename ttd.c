@@ -60,6 +60,10 @@ bool _dbg_screen_rect;
 bool disable_computer; // We should get ride of this thing.. is only used for a debug-cheat
 static byte _os_version = 0;
 
+/* TODO: usrerror() for errors which are not of an internal nature but
+ * caused by the user, i.e. missing files or fatal configuration errors.
+ * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */
+
 void CDECL error(const char *s, ...) {
 	va_list va;
 	char buf[512];
