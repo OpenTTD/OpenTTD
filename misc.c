@@ -49,20 +49,20 @@ uint32 t;
 	if (_current_player>=MAX_PLAYERS || !_networking) {
 		s = _random_seeds[0][0];
 		t = _random_seeds[0][1];
-		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
-		return _random_seeds[0][1] = ROR(s, 3);
+		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
+		return _random_seeds[0][1] = ROR(s, 3) - 1;
 	} else {
 		uint32 s = _player_seeds[_current_player][0];
 		uint32 t = _player_seeds[_current_player][1];
-		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7);
+		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
 		DEBUG(net, 1)("[NET-Seeds] Player seed called!");
-		return _player_seeds[_current_player][1] = ROR(s, 3);
+		return _player_seeds[_current_player][1] = ROR(s, 3) - 1;
 	}
 #else
 	s = _random_seeds[0][0];
 	t = _random_seeds[0][1];
-	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
-	return _random_seeds[0][1] = ROR(s, 3);
+	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
+	return _random_seeds[0][1] = ROR(s, 3) - 1;
 #endif
 }
 
@@ -82,8 +82,8 @@ uint32 InteractiveRandom(void)
 {
 	uint32 t = _random_seeds[1][1];
 	uint32 s = _random_seeds[1][0];
-	_random_seeds[1][0] = s + ROR(t ^ 0x1234567F, 7);
-	return _random_seeds[1][1] = ROR(s, 3);
+	_random_seeds[1][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
+	return _random_seeds[1][1] = ROR(s, 3) - 1;
 }
 
 uint InteractiveRandomRange(uint max)
