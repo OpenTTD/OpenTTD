@@ -128,7 +128,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	uint bits;
 	int i;
 	RememberData rd;
-	int owner;
+	int owner = -1;
 
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		owner = _map_owner[tile];
