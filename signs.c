@@ -122,7 +122,8 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * Rename a sign
  *
  * @param sign_id Index of the sign
- * @param new owner, if OWNER_NONE, sign will be removed
+ * @param new owner, if OWNER_NONE, sign will be removed, except in scenario editor, where signs have no owner
+ * and ownership has no influence of any kind
  */
 int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 {
@@ -130,7 +131,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 	SignStruct *ss;
 
 	/* If GetDParam(0) == nothing, we delete the sign */
-	if (GetDParam(0) != 0 && owner != OWNER_NONE) {
+	if (GetDParam(0) != 0 && (_game_mode == GM_EDITOR || owner != OWNER_NONE)) {
 		/* Create the name */
 		str = AllocateName((const char*)_decode_parameters, 0);
 		if (str == 0)
