@@ -8,10 +8,29 @@
 #include "news.h"
 #include "vehicle.h"
 
-static NewsItem _news_items[10];
-static NewsItem _active_news_items[20];
+/* News system
+News system is realized as a FIFO queue (in an array)
+The positions in the queue can't be rearranged, we only access
+the array elements through pointers to the elements. Once the
+array is full, the oldest entry (_oldest_news) is being overwritten 
+by the newest (_latest news).
 
-void ExpireNewsItem();
+oldest                   current   lastest
+ |                          |         |
+[O------------F-------------C---------L           ]
+              |
+           forced
+*/
+
+# define MAX_NEWS 30
+
+static NewsItem _news_items[MAX_NEWS];
+static byte _current_news = 255; // points to news item that should be shown next
+static byte _oldest_news = 0;    // points to first item in fifo queue
+static byte _latest_news = 255;  // points to last item in fifo queue
+static byte _forced_news = 255;  // points to a forced-to-be-shown item (255 for none)
+
+static byte _total_news = 0; // total news count
 
 void DrawNewsNewTrainAvail(Window *w);
 void DrawNewsNewRoadVehAvail(Window *w);
@@ -41,6 +60,10 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 	GetNewsStringBankrupcy, /* DNC_BANKRUPCY */
 };
 
+void InitNewsItemStructs()
+{
+	memset(_news_items, 0, sizeof(_news_items));
+}
 
 void DrawNewsBorder(Window *w)
 {
@@ -68,7 +91,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 		if (ni->display_mode == NM_NORMAL || ni->display_mode == NM_THIN) {
 			DrawNewsBorder(w);
-			
+
 			DrawString(2, 1, STR_00C6, 0);
 
 			SET_DPARAM16(0, ni->date);
@@ -88,7 +111,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 				GfxFillRect(vp->left - w->left, vp->top - w->top, vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1, 
 					ni->flags & NF_INCOLOR ? 0x4322:0x4323
 				);
-				
+
 				COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
 				DrawStringMultiCenter((w->width>>1), 20, ni->string_id, 428);
 			}
@@ -109,7 +132,12 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 1:DeleteWindow(w); ExpireNewsItem(); break;
+		case 1: {
+			DeleteWindow(w); 
+			NewsItem *ni = WP(w,news_d).ni;
+			ni->duration = 0;
+			if(_forced_news!=255) _forced_news = 255;
+		} break;
 		case 0: {
 			NewsItem *ni = WP(w,news_d).ni;
 			if (ni->flags & NF_VEHICLE) {
@@ -128,7 +156,6 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			// Don't continue.
 			e->keypress.cont = false;
 			DeleteWindow(w);
-			ExpireNewsItem();
 		}
 		break;
 
@@ -147,101 +174,65 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	}
 }
 
+// returns the correct index in the array
+// (to deal with overflows)
+byte getIndex(byte i)
+{
+	if(i==255) {
+		if(_oldest_news <= _latest_news)
+			return _latest_news;
+		else
+			return MAX_NEWS;
+	}
+	if(i >= MAX_NEWS) i %= MAX_NEWS;
+	return i;
+}
+
 
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
 	NewsItem *ni;
+	Window *w;
 
 	if (_game_mode == GM_MENU)
 		return;
 
-	// Find a free place and add it there.
-	for(ni=_news_items; ni!=endof(_news_items); ni++) {
-		if (ni->string_id==0) {
-			ni->string_id = string;
-			ni->display_mode = (byte)flags;
-			ni->flags = (byte)(flags >> 8) | NF_NOEXPIRE;
-			
-			// show this news message in color?
-			if (_date >= ConvertIntDate(_patches.colored_news_date))
-				ni->flags |= NF_INCOLOR;
+	_forced_news = 255;
+	if(_total_news < MAX_NEWS) _total_news++;
 
-			ni->type = (byte)(flags >> 16);
-			ni->callback = (byte)(flags >> 24);
-			ni->duration = 555;
-			ni->data_a = data_a;
-			ni->data_b = data_b;
-			ni->date = _date;
-			COPY_OUT_DPARAM(ni->params, 0, lengthof(ni->params));
-			break;
-		}
-	}
+	// make sure our pointer isn't overflowing
+	_latest_news = getIndex(++_latest_news);
+
+	// overwrite oldest news entry
+	if( _oldest_news == _latest_news && _news_items[_oldest_news].string_id != 0)
+		_oldest_news = getIndex(++_oldest_news); // but make sure we're not overflowing here
+
+	// add news to _latest_news
+	ni = &_news_items[_latest_news];
+
+	ni->string_id = string;
+	ni->display_mode = (byte)flags;
+	ni->flags = (byte)(flags >> 8) | NF_NOEXPIRE;
+
+	// show this news message in color?
+	if (_date >= ConvertIntDate(_patches.colored_news_date))
+		ni->flags |= NF_INCOLOR;
+
+	ni->type = (byte)(flags >> 16);
+	ni->callback = (byte)(flags >> 24);
+	ni->data_a = data_a;
+	ni->data_b = data_b;
+	ni->date = _date;
+	COPY_OUT_DPARAM(ni->params, 0, lengthof(ni->params));
+
+	w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+	if(w==NULL) return;
+	SetWindowDirty(w);
+	w->vscroll.count = _total_news;
 }
 
-// _active_news_items 0..9 are the ones that have already been shown
-// _active_news_items 10..19 are the ones that are to be shown next
-
-static void MoveNewsItems()
-{
-	Window *w;
-	NewsItem *ni;
-
-	// No new news item?
-	if (_news_items[0].string_id == 0)
-		return;
-
-	// Check if the status bar message is still being displayed?
-	w = FindWindowById(WC_STATUS_BAR, 0);
-	if (w != NULL && WP(w,def_d).data_1 > -1280)
-		return;
-
-	// Add the news items to the list of pending ones.
-	for(ni=_active_news_items + 10; ni != _active_news_items + 20; ni++) {
-		if (ni->string_id == 0) {
-			*ni = _news_items[0];
-			memcpy_overlapping(_news_items, _news_items+1, sizeof(_news_items) - sizeof(_news_items[0]) * 1);
-			endof(_news_items)[-1].string_id = 0;
-			break;
-		}
-	}
-}
-
-void ExpireNewsItem()
-{
-	memcpy_overlapping(_active_news_items, _active_news_items + 1, sizeof(_active_news_items) - sizeof(_active_news_items[0]));
-	endof(_active_news_items)[-1].string_id = 0;
-}
-
+// don't show item if it's older than x days
 static const byte _news_items_age[] = {60, 60, 90, 60, 90, 30, 150, 30, 90, 180};
-
-static void RemoveOldNewsItems()
-{
-	NewsItem *ni, *nit;
-
-	ni = _active_news_items;
-	do {
-		if (ni->string_id != 0 &&
-				ni != _active_news_items + 10 &&
-				_date - _news_items_age[ni->type] > ni->date) {
-			
-			if (ni >= _active_news_items + 10) {
-				nit = ni;
-				while (nit != _active_news_items + 19) {
-					nit[0] = nit[1];
-					nit++;
-				}
-				nit->string_id = 0;
-			} else {
-				nit = ni + 1;
-				while (nit != _active_news_items + 1) {
-					nit--;
-					nit[0] = nit[-1];
-				}
-				_active_news_items[0].string_id = 0;
-			}
-		}
-	} while (++ni != endof(_active_news_items) );
-}
 
 static const Widget _news_type13_widgets[] = {
 {      WWT_PANEL,    15,     0,   429,     0,   169, 0x0},
@@ -289,105 +280,144 @@ static WindowDesc _news_type0_desc = {
 
 static byte _news_sounds[] = { 27, 27, 0, 0, 0, 0, 28, 0, 0, 0 };
 
-static void ProcessNewsItem(NewsItem *ni)
+// open up an own newspaper window for the news item
+static void ShowNewspaper(NewsItem *ni)
 {
 	Window *w;
 	int sound;
+	int top;
+	ni->flags &= ~(NF_NOEXPIRE|NF_FORCE_BIG);
+	ni->duration = 555;
 
-	// No news item, quit
-	if (ni->string_id == 0)
-		return;
+	sound = _news_sounds[ni->type];
+	if (sound != 0)
+		SndPlayFx(sound);
 
-	// Delete the item once the duration reaches 0
-	if (ni->duration == 0) {
-		DeleteWindowById(WC_NEWS_WINDOW, 0);
-		ExpireNewsItem();
-		return;
-	}
-	ni->duration--;
-	
-	// As long as the window still is shown, don't go further
-	w = FindWindowById(WC_NEWS_WINDOW, 0);
-	if (w != NULL)
-		return;
-
-	// Expire the item if NF_NOEXPIRE was removed
-	if (!(ni->flags & NF_NOEXPIRE)) {
-		ExpireNewsItem();
-		return;
-	}
-
-	if (!HASBIT(_news_display_opt, ni->type) && !(ni->flags&NF_FORCE_BIG)) {
-		SndPlayFx(20);
-		_statusbar_news_item = *ni;
-		w = FindWindowById(WC_STATUS_BAR, 0);
-		if (w != 0)
-			WP(w,def_d).data_1 = 360;
-		ExpireNewsItem();
-	} else {
-		int top;
-
-		ni->flags &= ~(NF_NOEXPIRE|NF_FORCE_BIG);
-
-		sound = _news_sounds[ni->type];
-		if (sound != 0)
-			SndPlayFx(sound);
-
-		top = _screen.height - 4;
-		if (ni->display_mode == NM_NORMAL || ni->display_mode == NM_CALLBACK) {
-			_news_type13_desc.top = top;
-			w = AllocateWindowDesc(&_news_type13_desc);
-			if (ni->flags & NF_VIEWPORT) {
-				AssignWindowViewport(w, 2, 58, 0x1AA, 0x6E, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
-			}
-		} else if (ni->display_mode == NM_THIN) {
-			_news_type2_desc.top = top;
-			w = AllocateWindowDesc(&_news_type2_desc);
-			if (ni->flags & NF_VIEWPORT) {
-				AssignWindowViewport(w, 2, 58, 0x1AA, 0x46, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
-			}			
-		} else {
-			_news_type0_desc.top = top;
-			w = AllocateWindowDesc(&_news_type0_desc);
-			if (ni->flags & NF_VIEWPORT) {
-				AssignWindowViewport(w, 3, 17, 0x112, 0x2F, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
-			}
+	top = _screen.height - 4;
+	if (ni->display_mode == NM_NORMAL || ni->display_mode == NM_CALLBACK) {
+		_news_type13_desc.top = top;
+		w = AllocateWindowDesc(&_news_type13_desc);
+		if (ni->flags & NF_VIEWPORT) {
+			AssignWindowViewport(w, 2, 58, 0x1AA, 0x6E, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
 		}
-		WP(w,news_d).ni = _active_news_items + 10;
-		w->flags4 |= WF_DISABLE_VP_SCROLL;
+	} else if (ni->display_mode == NM_THIN) {
+		_news_type2_desc.top = top;
+		w = AllocateWindowDesc(&_news_type2_desc);
+		if (ni->flags & NF_VIEWPORT) {
+			AssignWindowViewport(w, 2, 58, 0x1AA, 0x46, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
+		}
+	} else {
+		_news_type0_desc.top = top;
+		w = AllocateWindowDesc(&_news_type0_desc);
+		if (ni->flags & NF_VIEWPORT) {
+			AssignWindowViewport(w, 3, 17, 0x112, 0x2F, ni->data_a | ((ni->flags&NF_VEHICLE) ? 0x80000000 : 0), 0);
+		}
 	}
-} 
+	WP(w,news_d).ni = &_news_items[(_forced_news==255)?_current_news:_forced_news];
+	w->flags4 |= WF_DISABLE_VP_SCROLL;
+}
+
+// show news item in the ticker
+static void ShowTicker(NewsItem *ni)
+{
+	Window *w;
+
+	SndPlayFx(20);
+	_statusbar_news_item = *ni;
+	w = FindWindowById(WC_STATUS_BAR, 0);
+	if (w != 0)
+		WP(w,def_d).data_1 = 360;
+}
+
+
+// Are we ready to show another news item?
+// Only if nothing is in the newsticker and no newspaper is displayed
+static bool ReadyForNextItem()
+{
+	Window *w;
+	NewsItem *ni = &_news_items[(_forced_news==255)?_current_news:_forced_news];
+
+	// Ticker message
+	// Check if the status bar message is still being displayed?
+	w = FindWindowById(WC_STATUS_BAR, 0);
+	if (w != NULL && WP(w,def_d).data_1 > -1280)
+	{
+		return false;
+	}
+
+	// Newspaper message
+	// Wait until duration reaches 0
+	if (ni->duration != 0) {
+		ni->duration--;
+		return false;
+	}
+
+	// neither newsticker nor newspaper are running
+	return true;
+}
+
+static void MoveToNexItem()
+{
+	DeleteWindowById(WC_NEWS_WINDOW, 0);
+
+	// if we're not at the last item, than move on
+	if(_current_news != _latest_news)
+	{
+		NewsItem *ni;
+
+		_current_news = getIndex(++_current_news);
+		ni = &_news_items[_current_news];
+
+		// check the date, don't show too old items
+		if(_date - _news_items_age[ni->type] > ni->date)
+			return;
+
+		// show newspaper or send to ticker?
+		if(!HASBIT(_news_display_opt, ni->type) && !(ni->flags&NF_FORCE_BIG))
+			ShowTicker(ni);
+		else
+			ShowNewspaper(ni);
+	}
+}
 
 void NewsLoop()
 {
-	RemoveOldNewsItems();
-	MoveNewsItems();
-	ProcessNewsItem(_active_news_items + 10);
+	// no news item yet
+	if(_total_news==0)
+		return;
+
+	if( ReadyForNextItem() )
+		MoveToNexItem();
+}
+
+/* Do a forced show of a specific message */
+void ShowNewsMessage(byte i)
+{
+	// Delete the news window
+	DeleteWindowById(WC_NEWS_WINDOW, 0);
+
+	// setup forced news item
+	_forced_news = i;
+
+	if(_forced_news!=255)
+	{
+		NewsItem *ni = &_news_items[_forced_news];
+		ni->duration = 555;
+		ni->flags |= NF_NOEXPIRE | NF_FORCE_BIG;
+		DeleteWindowById(WC_NEWS_WINDOW, 0);
+		ShowNewspaper(ni);
+	}
 }
 
 void ShowLastNewsMessage()
 {
-	// No news item immediately before 10?
-	if (_active_news_items[9].string_id == 0)
-		return;
-
-	// Delete the news window
-	DeleteWindowById(WC_NEWS_WINDOW, 0);
-	
-	// Move all items one step
-	memmove(_active_news_items+1, _active_news_items, sizeof(NewsItem)*19);
-	_active_news_items[0].string_id = 0;
-
-	// Default duration and flags for re-shown items
-	_active_news_items[10].duration = 555;
-	_active_news_items[10].flags |= NF_NOEXPIRE | NF_FORCE_BIG;
+	if(_forced_news==255)
+		ShowNewsMessage(_current_news);
+	else
+		ShowNewsMessage( getIndex(_forced_news-1) );
 }
 
-void InitNewsItemStructs()
-{
-	memset(_news_items, 0, sizeof(_news_items));
-	memset(_active_news_items, 0, sizeof(_active_news_items));
-}
+
 
 static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 {
@@ -407,7 +437,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		DrawStringCentered(185, 15, STR_0205_MESSAGE_TYPES, 0);
-		
+
 		y = 27;
 		for(i=STR_0206_ARRIVAL_OF_FIRST_VEHICLE; i <= STR_020F_GENERAL_INFORMATION; i++) {
 			DrawString(124, y, i, 0);
@@ -426,7 +456,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				_news_display_opt |= (1 << (wid>>1));
 			}
 			SetWindowDirty(w);
-			/* XXX: write settings */
+			// XXX: write settings
 		}
 		if( e->click.widget == 23) {
 			_news_display_opt = 0;
@@ -481,15 +511,30 @@ static const WindowDesc _message_options_desc = {
 	MessageOptionsWndProc
 };
 
-
-
-
 void ShowMessageOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_message_options_desc);
 }
 
+
+
+/* return news by number, with 0 being the most
+recent news. Returns false if end of queue reached. */
+static byte getNews(byte i)
+{
+	if(i>=MAX_NEWS) 
+	{ 
+		return -1;
+	}
+
+	i = _latest_news - i;
+	i = i % MAX_NEWS;
+
+	if(_news_items[i].string_id == 0) return -1;
+
+	return i;
+}
 
 static void GetNewsString(NewsItem *ni, byte *buffer)
 {
@@ -535,23 +580,20 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		uint n, y, i;
-		char buffer[256];
+		byte buffer[256];
+		int y=19;
+		byte p, show;
 		NewsItem *ni;
 
-		for(n=10; n!=0; n--)
-			if (!_active_news_items[n - 1].string_id)
-				break;
-		n = 10 - n;
-
-		SetVScrollCount(w, n);
 		DrawWindowWidgets(w);
 
-		y = 18;
-		for(i=w->vscroll.pos; i!=n; i++) {
-			ni = &_active_news_items[i + (10 - n)];
+		if(_total_news==0) break;
+		show = min(_total_news, 10);
 
-			assert(ni->string_id);
+		for(p=w->vscroll.pos; p<w->vscroll.pos+show; p++)
+		{
+			// get news in correct order
+			ni = &_news_items[ getNews(p) ];
 
 			SET_DPARAM16(0, ni->date);
 			DrawString(4, y, STR_00AF, 16);
@@ -560,22 +602,23 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			DoDrawString(buffer, 85, y, 16);
 			y += 12;
 		}
+
 		break;
 	}
 
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: {
-			uint y = (e->click.pt.y - 18) / 12;
-			NewsItem *ni;
+			int y = (e->click.pt.y - 19) / 12;
+			byte p, q;
 
-			if (y >= (uint)w->vscroll.count)
-				return;
+			p = y + w->vscroll.pos;
+			if( p > _total_news-1 ) break;
 
-			ni = &_active_news_items[w->vscroll.pos + y + (10 - w->vscroll.count)];
+			if(_latest_news >= p) q=_latest_news - p;
+			else q=_latest_news + MAX_NEWS - p;
 
-//    NOT YET...
-//			ShowNewsMessage(y);
+			ShowNewsMessage(q);
 
 			break;
 		}
@@ -587,13 +630,13 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 static const Widget _message_history_widgets[] = {
 {   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   388,    14,   147, 0x0, STR_MESSAGE_HISTORY_TIP},
-{  WWT_SCROLLBAR,    13,   389,   399,    14,   147, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    13,     0,   388,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
+{  WWT_SCROLLBAR,    13,   389,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
 };
 
 static const WindowDesc _message_history_desc = {
-	240, 22, 400, 148,
+	240, 22, 400, 140,
 	WC_MESSAGE_HISTORY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_history_widgets,
@@ -603,12 +646,13 @@ static const WindowDesc _message_history_desc = {
 void ShowMessageHistory()
 {
 	Window *w;
-	
+
 	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
 	w = AllocateWindowDesc(&_message_history_desc);
 
 	if (w) {
-		w->vscroll.cap = 11;
+		w->vscroll.cap = 10;
+		w->vscroll.count = _total_news;
 		SetWindowDirty(w);
 	}
 }
