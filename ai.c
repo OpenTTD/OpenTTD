@@ -3640,7 +3640,7 @@ static void AiStateRemoveStation(Player *p)
 
 }
 
-static void AiRemovePlayerRailOrRoad(Player *p, uint tile)
+static void AiRemovePlayerRailOrRoad(Player *p, TileIndex tile)
 {
 	byte m5;
 
@@ -3758,10 +3758,11 @@ pos_3:
 
 static void AiStateRemoveTrack(Player *p)
 {
-	int num = 1000;
+	/* Was 1000 for standard 8x8 maps. */
+	int num = MapSizeX() * 4;
 
 	do {
-		uint tile = ++p->ai.state_counter;
+		TileIndex tile = ++p->ai.state_counter;
 
 		// Iterated all tiles?
 		if (tile >= MapSize()) {

@@ -974,7 +974,8 @@ static const byte _player_economy_desc[] = {
 static const byte _player_ai_desc[] = {
 	SLE_VAR(PlayerAI,state,							SLE_UINT8),
 	SLE_VAR(PlayerAI,tick,							SLE_UINT8),
-	SLE_VAR(PlayerAI,state_counter,			SLE_UINT16),
+	SLE_CONDVAR(PlayerAI,state_counter, SLE_FILE_U16 | SLE_VAR_U32, 0, 12),
+	SLE_CONDVAR(PlayerAI,state_counter, SLE_UINT32, 13, 255),
 	SLE_VAR(PlayerAI,timeout_counter,		SLE_UINT16),
 
 	SLE_VAR(PlayerAI,state_mode,				SLE_UINT8),

@@ -27,7 +27,7 @@ typedef struct AiBuildRec {
 typedef struct PlayerAI {
 	byte state;
 	byte tick; // Used to determine how often to move
-	uint16 state_counter;
+	uint32 state_counter; // Can hold tile index!
 	uint16 timeout_counter;
 
 	byte state_mode;
