@@ -4,6 +4,7 @@
 #include "signs.h"
 #include "saveload.h"
 #include "command.h"
+#include "strings.h"
 
 enum {
 	/* Max signs: 64000 (4 * 16000) */
@@ -75,10 +76,17 @@ static void MarkSignDirty(SignStruct *ss)
  */
 static SignStruct *AllocateSign(void)
 {
-	SignStruct *s;
-	FOR_ALL_SIGNS(s)
-		if (s->str == 0)
-			return s;
+	SignStruct *ss;
+	FOR_ALL_SIGNS(ss) {
+		if (ss->str == 0) {
+			uint index = ss->index;
+
+			memset(ss, 0, sizeof(SignStruct));
+			ss->index = index;
+
+			return ss;
+		}
+	}
 
 	/* Check if we can add a block to the pool */
 	if (AddBlockToPool(&_sign_pool))
@@ -112,6 +120,8 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ss->z = GetSlopeZ(x,y);
 		UpdateSignVirtCoords(ss);
 		MarkSignDirty(ss);
+		InvalidateWindow(WC_SIGN_LIST, 0);
+		_sign_sort_dirty = true;
 		_new_sign_struct = ss;
 	}
 
@@ -151,6 +161,8 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 			/* Update */
 			UpdateSignVirtCoords(ss);
 			MarkSignDirty(ss);
+			InvalidateWindow(WC_SIGN_LIST, 0);
+			_sign_sort_dirty = true;
 		} else {
 			/* Free the name, because we did not assign it yet */
 			DeleteName(str);
@@ -165,6 +177,8 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 			ss->str = 0;
 
 			MarkSignDirty(ss);
+			InvalidateWindow(WC_SIGN_LIST, 0);
+			_sign_sort_dirty = true;
 		}
 	}
 
@@ -252,6 +266,8 @@ static void Load_SIGN(void)
 		ss = GetSign(index);
 		SlObject(ss, _sign_desc);
 	}
+
+	_sign_sort_dirty = true;
 }
 
 const ChunkHandler _sign_chunk_handlers[] = {

@@ -46,6 +46,9 @@ static inline uint16 GetSignPoolSize(void)
 
 VARDEF SignStruct *_new_sign_struct;
 
+VARDEF bool _sign_sort_dirty;
+VARDEF uint16 *_sign_sort;
+
 void UpdateAllSignVirtCoords(void);
 void PlaceProc_Sign(uint tile);
 

@@ -233,6 +233,7 @@ static void MenuClickMap(int index)
 	switch(index) {
 	case 0: ShowSmallMap(); break;
 	case 1: ShowExtraViewPortWindow(); break;
+	case 2: ShowSignList(); break;
 	}
 }
 
@@ -778,7 +779,7 @@ static void ToolbarSaveClick(Window *w)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 2);
+	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 3);
 }
 
 static void ToolbarTownClick(Window *w)

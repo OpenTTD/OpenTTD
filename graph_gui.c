@@ -6,6 +6,9 @@
 #include "gfx.h"
 #include "player.h"
 #include "economy.h"
+#include "signs.h"
+#include "strings.h"
+#include "debug.h"
 
 static uint _legend_excludebits;
 static uint _legend_cargobits;
@@ -1097,4 +1100,150 @@ static const WindowDesc _performance_rating_detail_desc = {
 void ShowPerformanceRatingDetail(void)
 {
 	AllocateWindowDescFront(&_performance_rating_detail_desc, 0);
+}
+
+
+static uint16 _num_sign_sort;
+
+static char _bufcache[64];
+static uint16 _last_sign_idx;
+
+static int CDECL SignNameSorter(const void *a, const void *b)
+{
+	char buf1[64];
+	SignStruct *ss;
+	const uint16 cmp1 = *(const uint16 *)a;
+	const uint16 cmp2 = *(const uint16 *)b;
+
+	ss = GetSign(cmp1);
+	GetString(buf1, ss->str);
+
+	if (cmp2 != _last_sign_idx) {
+		_last_sign_idx = cmp2;
+		ss = GetSign(cmp2);
+		GetString(_bufcache, ss->str);
+	}
+
+	return strcmp(buf1, _bufcache);	// sort by name
+}
+
+static void GlobalSortSignList(void)
+{
+	const SignStruct *ss;
+	uint32 n = 0;
+
+	_num_sign_sort = 0;
+
+	/* Create array for sorting */
+	_sign_sort = realloc(_sign_sort, GetSignPoolSize() * sizeof(_sign_sort[0]));
+	if (_sign_sort == NULL)
+		error("Could not allocate memory for the sign-sorting-list");
+
+	FOR_ALL_SIGNS(ss) {
+		if(ss->str != STR_NULL) {
+			_sign_sort[n++] = ss->index;
+			_num_sign_sort++;
+		}
+	}
+
+	qsort(_sign_sort, n, sizeof(_sign_sort[0]), SignNameSorter);
+
+	_sign_sort_dirty = false;
+
+	DEBUG(misc, 1) ("Resorting global sign list...");
+}
+
+static void SignListWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT: {
+		uint32 i;
+		int y = 16; // offset from top of widget
+
+		if (_sign_sort_dirty)
+			GlobalSortSignList();
+
+		SetVScrollCount(w, _num_sign_sort);
+
+		SetDParam(0, w->vscroll.count);
+		DrawWindowWidgets(w);
+
+		/* No signs? */
+		if (w->vscroll.count == 0) {
+			DrawString(2, y, STR_304A_NONE, 0);
+			return;
+		}
+
+		{
+			SignStruct *ss;
+
+			/* Start drawing the signs */
+			i = 0;
+			for (i = w->vscroll.pos; i < (uint)w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
+				ss = GetSign(_sign_sort[i]);
+
+				if (ss->owner != OWNER_NONE)
+					DrawPlayerIcon(ss->owner, 4, y + 1);
+
+				DrawString(22, y, ss->str, 8);
+				y += 10;
+			}
+		}
+	} break;
+
+	case WE_CLICK: {
+		switch (e->click.widget) {
+		case 3: {
+			uint32 id_v = (e->click.pt.y - 15) / 10;
+			SignStruct *ss;
+
+			if (id_v >= w->vscroll.cap)
+				return;
+
+			id_v += w->vscroll.pos;
+
+			if (id_v >= w->vscroll.count)
+				return;
+
+			ss = GetSign(_sign_sort[id_v]);
+			ScrollMainWindowToTile(TILE_FROM_XY(ss->x, ss->y));
+		} break;
+		}
+	} break;
+
+	case WE_RESIZE:
+		w->vscroll.cap += e->sizing.diff.y / 10;
+		break;
+	}
+}
+
+static const Widget _sign_list_widget[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   345,     0,    13, STR_SIGN_LIST_CAPTION,		STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   346,   357,     0,    13, 0x0,											STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   345,    14,   137, 0x0,											STR_NULL},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   346,   357,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   346,   357,   126,   137, 0x0,											STR_RESIZE_BUTTON},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _sign_list_desc = {
+	-1, -1, 358, 138,
+	WC_SIGN_LIST,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_sign_list_widget,
+	SignListWndProc
+};
+
+
+void ShowSignList(void)
+{
+	Window *w;
+
+	w = AllocateWindowDescFront(&_sign_list_desc, 0);
+	if (w != NULL) {
+		w->vscroll.cap = 12;
+		w->resize.step_height = 10;
+		w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
+	}
 }

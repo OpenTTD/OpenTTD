@@ -75,6 +75,7 @@ void ShowSubsidiesList(void);
 void ShowPlayerStations(int player);
 void ShowPlayerFinances(int player);
 void ShowPlayerCompany(int player);
+void ShowSignList(void);
 
 void ShowEstimatedCostOrIncome(int32 cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);

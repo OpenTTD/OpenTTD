@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Display subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Map of world
 STR_EXTRA_VIEW_PORT						:Extra viewport
+STR_SIGN_LIST									:Sign list
 STR_02DF_TOWN_DIRECTORY						:Town directory
 STR_TOWN_POPULATION						:{BLACK}World population: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left sele
 STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION				:{WHITE}Sign List - {COMMA16} Signs
 
 ############ Lists rail types
 
