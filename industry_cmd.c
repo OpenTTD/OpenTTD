@@ -1681,42 +1681,44 @@ static void ExtChangeIndustryProduction(Industry *i)
 			return;
 
 		case INDUSTRY_CLOSABLE:
-			if ( (byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1,180))
+			if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180))
 				closeit = false;
 			break;
 
 		default: /* INDUSTRY_PRODUCTION */
-			for (j=0; j != 2 && i->produced_cargo[j]!=255; j++){
-				uint32 r;
-				int change,percent,old;
+			for (j = 0; j < 2 && i->produced_cargo[j] != 255; j++){
+				uint32 r = Random();
+				int old, new, percent;
 				int mag;
 
-				change = old = i->production_rate[j];
-				if (CHANCE16R(20,1024,r))change -= ((RandomRange(50) + 10)*old) >> 8;
-				if (CHANCE16I(20+(i->pct_transported[j]*20>>8),1024,r>>16)) change += ((RandomRange(50) + 10)*old) >> 8;
+				new = old = i->production_rate[j];
+				if (CHANCE16I(20, 1024, r))
+					new -= ((RandomRange(50) + 10) * old) >> 8;
+				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16))
+					new += ((RandomRange(50) + 10) * old) >> 8;
 
 				// make sure it doesn't exceed 255 or goes below 0
-				change = clamp(change, 0, 255);
-				if (change == old) {
+				new = clamp(new, 0, 255);
+				if (new == old) {
 					closeit = false;
 					continue;
 				}
 
-				percent = change*100/old - 100;
-				i->production_rate[j] = change;
+				percent = new * 100 / old - 100;
+				i->production_rate[j] = new;
 
-				if (change >= _industry_spec[i->type].production_rate[j]/4)
+				if (new >= _industry_spec[i->type].production_rate[j] / 4)
 					closeit = false;
 
 				mag = abs(percent);
 				if (mag >= 10) {
 					SetDParam(3, mag);
-					SetDParam(0,_cargoc.names_s[i->produced_cargo[j]]);
+					SetDParam(0, _cargoc.names_s[i->produced_cargo[j]]);
 					SetDParam(1, i->town->index);
 					SetDParam(2, i->type + STR_4802_COAL_MINE);
-					AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-							NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
-							i->xy + TILE_XY(1,1), 0);
+					AddNewsItem(percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+					            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
+					            i->xy + TILE_XY(1,1), 0);
 				}
 			}
 			break;
@@ -1726,7 +1728,9 @@ static void ExtChangeIndustryProduction(Industry *i)
 		i->prod_level = 0;
 		SetDParam(1, i->type + STR_4802_COAL_MINE);
 		SetDParam(0, i->town->index);
-		AddNewsItem(_industry_close_strings[i->type], NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
+		AddNewsItem(_industry_close_strings[i->type],
+		            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
+		            i->xy + TILE_XY(1,1), 0);
 	}
 }
 
