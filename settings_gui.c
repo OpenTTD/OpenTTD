@@ -783,11 +783,45 @@ static void WritePE(const PatchEntry *pe, int32 val)
 {
 	switch(pe->type) {
 	case PE_BOOL: *(bool*)pe->variable = (bool)val; break;
-	case PE_BYTE: *(byte*)pe->variable = (byte)val; break;
-	case PE_UINT8: *(uint8*)pe->variable = (uint8)val; break;
-	case PE_INT16: *(int16*)pe->variable = (int16)val; break;
-	case PE_UINT16: *(uint16*)pe->variable = (uint16)val; break;
-	case PE_INT32: *(int32*)pe->variable = val; break;
+	case PE_BYTE: if ((byte)val > (byte)pe->max) 
+									*(byte*)pe->variable = (byte)pe->max;
+								else if ((byte)val < (byte)pe->min)
+									*(byte*)pe->variable = (byte)pe->min;
+								else
+									*(byte*)pe->variable = (byte)val;
+								break;
+
+	case PE_UINT8: if ((uint8)val > (uint8)pe->max) 
+									*(uint8*)pe->variable = (uint8)pe->max;
+								else if ((uint8)val < (uint8)pe->min)
+									*(uint8*)pe->variable = (uint8)pe->min;
+								else
+									*(uint8*)pe->variable = (uint8)val; 
+								break;
+
+	case PE_INT16: if ((int16)val > (int16)pe->max) 
+									*(int16*)pe->variable = (int16)pe->max;
+								else if ((int16)val < (int16)pe->min)
+									*(int16*)pe->variable = (int16)pe->min;
+								else
+									*(int16*)pe->variable = (int16)val; 
+								break;
+
+	case PE_UINT16: if ((uint16)val > (uint16)pe->max) 
+									*(uint16*)pe->variable = (uint16)pe->max;
+								else if ((uint16)val < (uint16)pe->min)
+									*(uint16*)pe->variable = (uint16)pe->min;
+								else
+									*(uint16*)pe->variable = (uint16)val; 
+								break;
+
+	case PE_INT32: if ((int32)val > (int32)pe->max) 
+									*(int32*)pe->variable = (int32)pe->max;
+								else if ((int32)val < (int32)pe->min)
+									*(int32*)pe->variable = (int32)pe->min;
+								else
+									*(int32*)pe->variable = val; 
+								break;
 	default:
 		NOT_REACHED();
 	}
