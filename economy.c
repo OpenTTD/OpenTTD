@@ -1346,6 +1346,9 @@ int LoadUnloadVehicle(Vehicle *v)
 	assert(v->current_order.type == OT_LOADING);
 
 	v->cur_speed = 0;
+	old_player = _current_player;
+	_current_player = v->owner;
+
 	st = GetStation(last_visited = v->last_station_visited);
 
 	for (; v != NULL; v = v->next) {
@@ -1451,9 +1454,6 @@ int LoadUnloadVehicle(Vehicle *v)
 	if (completely_empty) {
 		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);
 	}
-
-	old_player = _current_player;
-	_current_player = v->owner;
 
 	if (result != 0) {
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

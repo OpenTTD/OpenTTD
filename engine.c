@@ -567,8 +567,6 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 	RealSpriteGroup *rsg;
 	byte new_random_bits;
 
-	assert(_current_player >= MAX_PLAYERS);
-
 	_vsg_random_triggers = trigger;
 	_vsg_bits_to_reseed = 0;
 	rsg = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh,
