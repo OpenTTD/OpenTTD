@@ -399,8 +399,12 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = vehicle
-// p2 = if set, the aircraft will try to goto a depot, but not stop
+/*  Send an aircraft to the hangar in the next station
+	p1 = index of the aircraft
+	p2 = bit 0..15 = index of station with hangar to use (only used if bit 17 is set)
+		 bit 16 = set v->set_for_replacement & do not stop in hangar
+		 bit 17 = goto the hangar in airport given in bit 0..15 instead of next stop
+		 bit 18 = clear v->set_for_replacement */
 int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -409,10 +413,15 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (HASBIT(p2, 16)) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
-
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
+
+	if (HASBIT(p2, 16)) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
+
+	if (HASBIT(p2, 18)) {
+		v->set_for_replacement = false;
+		return CMD_ERROR; // no need to send aircraft to a depot. We just told that it don't have to anymore
+	}
 
 	if (v->current_order.type == OT_GOTO_DEPOT && p2 == 0) {
 		if (flags & DC_EXEC) {
@@ -1525,6 +1534,13 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 				DoCommandP(v->tile, v->index, next_airport, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 				_current_player = OWNER_NONE;
 			}
+		} else { // no need to go to a depot
+			if (v->set_for_replacement) {
+				// it seems that the user clicked "Stop replacing"
+				_current_player = _local_player;
+				DoCommandP(v->tile, v->index, (1 | (1 << 2)) << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+				_current_player = OWNER_NONE;
+			}
 		}
 	}
 }
@@ -1589,6 +1605,13 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airp
 			_current_player = _local_player;
 			DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 			_current_player = OWNER_NONE;
+		} else { // no need to go to a depot
+			if (v->set_for_replacement) {
+				// it seems that the user clicked "Stop replacing"
+				_current_player = _local_player;
+				DoCommandP(v->tile, v->index, (1 | (1 << 2)) << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+				_current_player = OWNER_NONE;
+			}
 		}
 	}
 }

@@ -293,7 +293,9 @@ static int FindClosestRoadDepot(Vehicle *v)
 
 /*  Send a road vehicle to the nearest depot
 	p1 = index of the road vehicle
-	p2 = bit 0 = do not stop in depot, bit 1 = have depot in orders */
+	p2 = bit 0 = do not stop in depot
+		 bit 1 = set v->set_for_replacement
+		 bit 2 = clear v->set_for_replacement */
 int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v = GetVehicle(p1);
@@ -303,8 +305,9 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (HASBIT(p2, 0)) v->set_for_replacement = true;
+	if (HASBIT(p2, 2)) v->set_for_replacement = false;
 
-	if (HASBIT(p2, 1)) return CMD_ERROR;   // vehicle has a depot in schedule. It just needed to set set_for_replacement
+	if (HASBIT(p2, 1) || HASBIT(p2, 2)) return CMD_ERROR;   // vehicle has a depot in schedule. It just needed to alter set_for_replacement
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
@@ -656,6 +659,13 @@ static void HandleRoadVehLoading(Vehicle *v)
 			if (!(HASBIT(flags, 1) && v->set_for_replacement)) {
 				_current_player = _local_player;
 				DoCommandP(v->tile, v->index, flags, NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_SHOW_NO_ERROR);
+				_current_player = OWNER_NONE;
+			}
+		} else { // no need to go to a depot
+			if (v->set_for_replacement) {
+				// it seems that the user clicked "Stop replacing"
+				_current_player = _local_player;
+				DoCommandP(v->tile, v->index, 1 | (1 << 2), NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_SHOW_NO_ERROR);
 				_current_player = OWNER_NONE;
 			}
 		}
