@@ -852,11 +852,11 @@ STR_TOWNNAME_SWEDISH						:Svedese
 STR_TOWNNAME_DUTCH						:Olandese
 STR_TOWNNAME_FINNISH						:Finlandese
 STR_TOWNNAME_POLISH						:Polacco
-STR_TOWNNAME_CZECH						:Cechi
 STR_TOWNNAME_SLOVAKISH						:Slovacco
 STR_TOWNNAME_HUNGARIAN						:Ungherese
 STR_TOWNNAME_AUSTRIAN						:Austriaci
 STR_TOWNNAME_ROMANIAN						:Rumeni
+STR_TOWNNAME_CZECH						:Cechi
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Sterline ({POUNDSIGN})

@@ -852,11 +852,11 @@ STR_TOWNNAME_SWEDISH						:Svedska
 STR_TOWNNAME_DUTCH						:Holandská
 STR_TOWNNAME_FINNISH						:Finská
 STR_TOWNNAME_POLISH						:Polská
-STR_TOWNNAME_CZECH						:Ceska
 STR_TOWNNAME_SLOVAKISH						:Slovenská
 STR_TOWNNAME_HUNGARIAN						:Madarska
 STR_TOWNNAME_AUSTRIAN						:Rakouská
 STR_TOWNNAME_ROMANIAN						:Rumunská
+STR_TOWNNAME_CZECH						:Ceska
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Anglické libry ({POUNDSIGN})

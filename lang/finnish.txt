@@ -852,11 +852,11 @@ STR_TOWNNAME_SWEDISH						:Ruotsalainen
 STR_TOWNNAME_DUTCH						:Hollantilainen
 STR_TOWNNAME_FINNISH						:Suomalainen
 STR_TOWNNAME_POLISH						:Puolalainen
-STR_TOWNNAME_CZECH						:Tsekki
 STR_TOWNNAME_SLOVAKISH						:Slovakialainen
 STR_TOWNNAME_HUNGARIAN						:Unkarilainen
 STR_TOWNNAME_AUSTRIAN						:Itävaltalainen
 STR_TOWNNAME_ROMANIAN						:Romania
+STR_TOWNNAME_CZECH						:Tsekki
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Punnat ({POUNDSIGN})
@@ -1385,20 +1385,20 @@ STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Alennukset
 STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Vapaat alennukset palveluille:-
-STR_2027_FROM_TO						:{ORANGE}{STRING} paikasta {STRING} paikkaan {STRING}
+STR_2027_FROM_TO						:{ORANGE}{STRING} välille {STRING}-{STRING}
 STR_2028_BY							:{YELLOW} ({DATE_SHORT})
 STR_2029							:{STRING} {STRING}
 STR_202A_NONE							:{ORANGE}Ei mitään
 STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Täytetyt alennukset palveluista:-
 STR_202C_FROM_TO						:{ORANGE}{STRING} asemalta {STATION} asemalle {STATION}{YELLOW} ({STRING}
 STR_202D_UNTIL							:{YELLOW}, {DATE_SHORT} asti)
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Alennus päättynyt:{}{}{STRING} paikasta {STRING} paikkaan {STRING} ei sisällä enää alennuksia.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Alennus vedetty pois:{}{}{STRING} kuljetuspalvelupalvelu {STATION} -> {STATION} ei ole enää alennettu.
-STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Palvelunalennus tarjottu:{}{}Ensimmäinen {STRING}palvelu kohteesta {STRING} kohteeseen {STRING} ansaitsee vuoden mittaisen alennuksen paikallisviranomaisilta!
-STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa 50% enemmän seuraavan vuoden!
-STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa tuplaten seuraavan vuoden!
-STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa kolminkertaisesti seuraavan vuoden!
-STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa nelinkertaisesti seuraavan vuoden!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Alennus päättynyt:{}{}{STRING} väli {STRING}-{STRING} ei sisällä enää alennuksia.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Alennus vedetty pois:{}{}{STRING} kuljetuspalvelupalvelu välille {STATION}-{STATION} ei ole enää alennettu.
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Palvelunalennus tarjottu:{}{}Ensimmäinen {STRING}palvelu välille {STRING}-{STRING} saa vuoden mittaisen alennuksen paikallisviranomaisilta!
+STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu välille {STATION}-{STATION} tuottaa 50% enemmän seuraavan vuoden!
+STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu välille {STATION}-{STATION} tuottaa tuplaten seuraavan vuoden!
+STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu välille {STATION}-{STATION} tuottaa kolminkertaisesti seuraavan vuoden!
+STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu välille {STATION}-{STATION} tuottaa nelinkertaisesti seuraavan vuoden!
 STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät sallimasta toisen lentokentän rakentamista tähän kaupunkiin
 STR_2036_COTTAGES						:Mökkiä
 STR_2037_HOUSES							:Taloa
@@ -1630,15 +1630,15 @@ STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Uusi {STRING} istutetaan {T
 STR_482F_COST							:{BLACK}Hinta: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Ei voi rakentaa tätä teollisuustyyppiä...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...metsää voi istuttaa vain lumirajan yläpuolelle
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN}: {STRING} ilmoittaa uhkaavasta sulkemisesta!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}{TOWN}: Toimitusongelmista johtuen {STRING} ilmoittaa uhkaavasta sulkemisesta!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}{TOWN}: Puiden puutteesta johtuen {STRING} ilmoittaa uhkaavasta sulkemisesta!
-STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN}: {STRING} lisää tuotantoa!
-STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}{TOWN}: uusi hiilijuonne löytynyt: {STRING}!{}Tuotannon odotetaan kaksinkertaistuvan!
-STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}{TOWN}: uusia öljyvaroja löydetty: {STRING}!{}Tuotannon odotetaan kaksinkertaistuvan!
-STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}{TOWN}: Viljelytapoja edistetty: {STRING}! Tuotannon odotetaan kaksinkertaistuvan!
-STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}{TOWN}: {STRING}:n tuotto vähenee 50%:lla
-STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}{TOWN}: hyönteisparvet aiheuttavat tuhoa: {STRING}!{}Tuotanto vähenee 50%:lla
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} ({STRING}): sulkeminen uhkaavan lähellä!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}{TOWN} ({STRING}): Toimitusongelmista johtuen sulkeminen uhkaavan lähellä!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}{TOWN} ({STRING}): Puiden puutteesta johtuen sulkeminen uhkaavan lähellä!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} ({STRING}): tuotantoa lisätään!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}{TOWN} ({STRING}): uusi hiilijuonne löytynyt!{}Tuotannon odotetaan kaksinkertaistuvan!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}{TOWN} ({STRING}): uusia öljyvaroja löydetty!{}Tuotannon odotetaan kaksinkertaistuvan!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}{TOWN} ({STRING}): Viljelytapoja kehitetty! Tuotannon odotetaan kaksinkertaistuvan!
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}{TOWN} ({STRING}): tuotanto vähenee 50%:lla
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}{TOWN} ({STRING}): hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50%:lla
 STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...voidaan asettaa vain kartan reunoille
 STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING}:n tuotanto kaupungin {TOWN} {STRING}:ssa lisääntyy {COMMA16}%:lla!
 STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING}:n tuotanto kaupungin {TOWN} {STRING}:ssa vähenee {COMMA16}%:lla!
@@ -2219,7 +2219,7 @@ STR_8107_MAGLEV_LOCOMOTIVE					:maglev-veturin
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN}:n junavarikko
-STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
+STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle!
 STR_8802_DETAILS						:{WHITE}{STRING} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Juna matkalla
 STR_8804							:{SETX 10}{COMMA8}: {STRING}
@@ -2390,8 +2390,8 @@ STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Hinta: {CURRENCY}{}Nopeus: {VELOCITY
 STR_902C_NAME_ROAD_VEHICLE					:{WHITE}Nimeä maantieajoneuvo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE				:{WHITE}Ei voi nimetä maantieajoneuvoa...
 STR_902E_NAME_ROAD_VEHICLE					:{BLACK}Nimeä maantieajoneuvo
-STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen rekka saapuu asemalle {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle!
+STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen rekka saapuu asemalle!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}Kuljettaja kuolee junatöymäyksen jälkeisessä tulipallossa
 STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}{COMMA16} kuolee junatöymäyksen jälkeisessä tulipallossa
 STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Ei voi pakottaa ajoneuvoa kääntymään ympäri...
@@ -2455,7 +2455,7 @@ STR_982F_NAME_SHIP						:{BLACK}Nimeä laiva
 
 STR_9831_NAME_SHIP						:{WHITE}Nimeä laiva
 STR_9832_CAN_T_NAME_SHIP					:{WHITE}Ei voi nimetä laivaa
-STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle {STATION}!
+STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle!
 STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Aseta poiju; sitä voidaan käyttää ylimääräisenä opasteena
 STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Ei voi asettaa poijua tähän...
 STR_9836_RENAME							:{BLACK}Uudelleennimeä
@@ -2527,7 +2527,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Hinta: {CURRENCY} Huippunopeus: {VEL
 STR_A030_NAME_AIRCRAFT						:{WHITE}Nimeä lentokone
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Ei voi nimetä lentokonetta...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nimeä lentokone
-STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kansalaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
+STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA16} kuolee tulipallossa asemalla {STATION}
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Kohteet:
 STR_A036							:{TINYFONT}{BLACK}{STATION}

@@ -229,7 +229,7 @@ STR_00E4_LOCATION						:{BLACK}Placering
 STR_00E5_CONTOURS						:Konturer
 STR_00E6_VEHICLES						:Køretøjer
 STR_00E7_INDUSTRIES						:Industrier
-STR_00E8_ROUTES							:Router
+STR_00E8_ROUTES							:Ruter
 STR_00E9_VEGETATION						:Vegetation
 STR_00EA_OWNERS							:Ejere
 STR_00EB_ROADS							:{BLACK}{TINYFONT}Veje
@@ -246,7 +246,7 @@ STR_00F5_TRAINS							:{BLACK}{TINYFONT}Toge
 STR_00F6_ROAD_VEHICLES						:{BLACK}{TINYFONT}Lastbiler
 STR_00F7_SHIPS							:{BLACK}{TINYFONT}Skibe
 STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Fly
-STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Transport Router
+STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Transport Ruter
 STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Kulmine
 STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Kraftværk
 STR_00FC_FOREST							:{BLACK}{TINYFONT}Skov
@@ -852,11 +852,11 @@ STR_TOWNNAME_SWEDISH						:Svenske
 STR_TOWNNAME_DUTCH						:Hollandske
 STR_TOWNNAME_FINNISH						:Finske
 STR_TOWNNAME_POLISH						:Polske
-STR_TOWNNAME_CZECH						:Tjekkiske
 STR_TOWNNAME_SLOVAKISH						:Slovakiske
 STR_TOWNNAME_HUNGARIAN						:Ungarske
 STR_TOWNNAME_AUSTRIAN						:Østrigske
 STR_TOWNNAME_ROMANIAN						:Rumænske
+STR_TOWNNAME_CZECH						:Tjekkiske
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Pund ({POUNDSIGN})
@@ -1097,7 +1097,10 @@ STR_MANY_RANDOM_TOWNS						:{BLACK}Many random towns
 STR_RANDOM_TOWNS_TIP						:{BLACK}Cover the map with randomly placed towns
 STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Many random industries
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Cover the map with randomly placed industries
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Can't generate industries...
 
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Landscaping
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Level land
 
 
 STR_TREES_RANDOM_TYPE						:{BLACK}Træer af tilfældig type
@@ -1124,6 +1127,9 @@ STR_STATION_DRAG_DROP						:{BLACK}Byg en station via træk & slip
 
 STR_FAST_FORWARD						:{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY						:{WHITE}Tidligere beskeder
+STR_MESSAGE_HISTORY_TIP						:{BLACK}A list of the recent news messages
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Disable all
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Enable all
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Byg Kulmine
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Plant Skov
@@ -1147,6 +1153,7 @@ STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Byg Sukkermine
 
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrier
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporteret)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}...for tæt på en anden industribygning
@@ -1159,18 +1166,36 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Ombyg toget til at køre med den m
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
+TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 
 ############ network gui strings
 
+TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not yet fully operational!{}Not working items have been disabled.
 
+STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
+STR_NETWORK_FIND_SERVER						:{BLACK}Find server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
+STR_NETWORK_DIRECT_CONNECT					:{BLACK}Direkte forbindelse
+STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
+STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Connect to a known IP
+STR_NETWORK_START_SERVER					:{BLACK}Start server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en ny server
 
+STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
 
+STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vælg forbindelses type
+STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Choose between an internet game or a local area nework game
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_GAME_NAME						:{BLACK}Navn
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Spillets navn
 STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Players currently in this game / Maximum number of players
+STR_NETWORK_PLAYERS_TIP						:{BLACK}Spillere i spillet i øjeblikket / Maximum antal spillere
 STR_NETWORK_MAP_SIZE						:{BLACK}Størrelse
 STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Size of the map
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Sprog, server version, osv.

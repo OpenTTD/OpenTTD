@@ -5,7 +5,7 @@
 STR_NULL							:
 STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Utanför kanten
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}För nära kanten
-STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Inte tillräckligt med pengar - kräver {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Inte tillräckligt med pengar - krävs {CURRENCY}
 STR_0004							:{WHITE}{CURRENCY64}
 STR_0005							:{RED}{CURRENCY64}
 STR_EMPTY							:
@@ -188,6 +188,10 @@ STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Ursprungligen designat av Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafik av Simon Foster
+STR_SPECIAL_THANKS						:{BLACK}Speciella tack till:
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Försignaler och Semaforer {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS					:{BLACK}° Grunden för järnväg på sluttningar {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanal- och slussgrafik {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD-teamet
 
 STR_00C5							:{BLACK}{CROSS}
@@ -338,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf över prestationshistorik
 STR_0158_COMPANY_VALUE_GRAPH					:Graf över företagets värde
 STR_0159_CARGO_PAYMENT_RATES					:Fraktförtjänster
 STR_015A_COMPANY_LEAGUE_TABLE					:Tabell över ledande företag
+STR_PERFORMANCE_DETAIL_MENU					:Detaljerade prestandabetyg
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -347,7 +352,24 @@ STR_015E_QUIT_GAME						:Avsluta spelet
 STR_015F_QUIT							:Avsluta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vill du verkligen avsluta spelet?
 STR_0161_QUIT_GAME						:{WHITE}Avsluta spelet
+STR_SORT_TIP							:{BLACK}Välj sorteringsordning (stigande/fallande)
+SRT_SORT_BY							:{BLACK}Sortera efter
 
+STR_SORT_BY_POPULATION						:{BLACK}Befolkning
+STR_SORT_BY_PRODUCTION						:{BLACK}Produktion
+STR_SORT_BY_TYPE						:{BLACK}Typ
+STR_SORT_BY_TRANSPORTED						:{BLACK}Transporterat
+STR_SORT_BY_NAME						:{BLACK}Namn
+STR_SORT_BY_DROPDOWN_NAME					:Namn
+STR_SORT_BY_DATE						:{BLACK}Datum
+STR_SORT_BY_UNSORTED						:Osorterat
+STR_SORT_BY_NUMBER						:Nummer
+STR_SORT_BY_PROFIT_LAST_YEAR					:Vinst förra året
+STR_SORT_BY_PROFIT_THIS_YEAR					:Vinst i år
+STR_SORT_BY_AGE							:Ålder
+STR_SORT_BY_RELIABILITY						:Pålitlighet
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Total kapacitet per godstyp
+STR_SORT_BY_MAX_SPEED						:Maximal hastighet
 
 ############ range for months starts
 STR_0162_JAN							:jan
@@ -725,8 +747,8 @@ STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION						:{SETX 12}Full animation
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Full detaljnivå
 STR_02D2_FULL_DETAIL						:{SETX 12}Full detaljnivå
-STR_02D3_TRANSPARENT_BUILDINGS					:{CHECKMARK}{SETX 12}Transparenta byggnader
-STR_02D4_TRANSPARENT_BUILDINGS					:{SETX 12}Transparenta byggnader
+STR_02D3_TRANSPARENT_BUILDINGS					:{CHECKMARK}{SETX 12}Genomskinliga byggnader
+STR_02D4_TRANSPARENT_BUILDINGS					:{SETX 12}Genomskinliga byggnader
 ############ range ends	here
 
 ############ range for menu	starts
@@ -742,6 +764,12 @@ STR_02DB_OFF							:{BLACK}Av
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Visa subventioner
 STR_02DD_SUBSIDIES						:Subventioner
 STR_02DE_MAP_OF_WORLD						:Världskarta
+STR_EXTRA_VIEW_PORT						:Nytt vy fönster
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vy fönster {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopiera till vy
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopiera kartans position till detta Vyfönster
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Klistra in vyn
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Flytta kartans position till den här vyn
 
 STR_02DF_TOWN_DIRECTORY						:Lista av städer
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valutaenheter
@@ -827,6 +855,8 @@ STR_TOWNNAME_POLISH						:Polska
 STR_TOWNNAME_SLOVAKISH						:Slovakiska
 STR_TOWNNAME_HUNGARIAN						:Hungarianska
 STR_TOWNNAME_AUSTRIAN						:Australienska
+STR_TOWNNAME_ROMANIAN						:Rumänska
+STR_TOWNNAME_CZECH						:Tjeckiska
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Pund ({POUNDSIGN})
@@ -850,6 +880,7 @@ STR_CURR_RUR							:Ryska rubel (rur)
 STR_CURR_CZK							:Tjeckiska kronor (CZK)
 STR_CURR_ISK							:Isländska kronor (ISK)
 STR_CURR_NOK							:Norska kronor (NOK)
+STR_CURR_ROL							:Rumänsk Leu
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Språk
@@ -900,11 +931,32 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Slut på delade order - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Tåg {COMMA16} har tappat bort sig.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Tåg {COMMA16}s vinst förra året var {CURRENCY}
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}Tåg {COMMA16} har för få destinationer
+STR_TRAIN_HAS_VOID_ORDER					:{WHITE}Tåg {COMMA16} har en bruten destination
+STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}Tåg {COMMA16} har dubblerade destinationer
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}Tåg {COMMA16} har en felaktig station ibland destinationerna
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}Vägfordon {COMMA16} har för få destinationer
+STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}Vägfordon {COMMA16} har en bruten destination
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}Vägfordon {COMMA16} har dubblerade destinationer
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}Vägfordon {COMMA16} har en felaktig station ibland destinationerna
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}Skepp {COMMA16} har för få destinationer
+STR_SHIP_HAS_VOID_ORDER						:{WHITE}Skepp {COMMA16} har en bruten destination
+STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}Skepp {COMMA16} har dubblerade destinationer
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Skepp {COMMA16} har en felaktig station ibland destinationerna
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Flygplan {COMMA16} har för få destinationer
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Flygplan {COMMA16} har en bruten destination
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Flygplan {COMMA16} har dubblerade destinationer
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Flygplan {COMMA16} har en felaktig station ibland destinationerna
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Automatiska förnyandet av tåg {COMMA16} misslyckades (inte tillräckligt med pengar)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Automatiska förnyandet av vägfordon {COMMA16} misslyckades (inte tillräckligt med pengar)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Automatiska förnyandet av skepp {COMMA16} misslyckades (inte tillräckligt med pengar)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Automatiska förnyandet av flygplan {COMMA16} misslyckades (inte tillräckligt med pengar)
 
 STR_CONFIG_PATCHES						:{BLACK}Konfigurera patchar
 STR_CONFIG_PATCHES_TIP						:{BLACK}Konfigurera patcharna
@@ -940,11 +992,20 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Ny algoritm för att hitta rutt
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}disabled
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:nej
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:ja, förutom stannade fordon
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:ja, på alla fordon
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Varna om ett tågs inkomst är negativ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Förnya fordon automatiskt när dom blir gamla
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minst mängd pengar i kassan för automatisk förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Osynliga träd (när genomskinliga byggnader är valt): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max stationsspridning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximal spridning av en station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
@@ -957,27 +1018,44 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Förbjud vägfordon för datorn: {
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Förbjud flygplan för datorn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Dator med ny AI (alpha): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard-serviceintervall för tåg: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard-serviceintervall för vägfordon: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard-serviceintervall för flygplan: {ORANGE}{STRING} days
-STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard-serviceintervall för skepp: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard serviceintervall för tåg: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Standard serviceintervall för tåg: {ORANGE}av
+STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}av
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}av
+STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}av
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Lugn ekonomi (flera små ändringar)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vänster
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centrerad
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Höger
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Fordon
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stationer
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Ekonomi
+STR_CONFIG_PATCHES_AI						:{BLACK}Motståndare
 
 STR_CONFIG_PATCHES_DISABLED					:Avaktiverat
 STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Ändra inställningsvärde
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Några eller alla av standard serviceintervalls-inställningarna är felaktiga! (5-90% och 30-800 dagar är giltiga inställningar)
 
+STR_TEMPERATE_LANDSCAPE						:tempererat landskap
+STR_SUB_ARCTIC_LANDSCAPE					:sub-arktiskt landskap
+STR_SUB_TROPICAL_LANDSCAPE					:sub-tropiskt landskap
+STR_TOYLAND_LANDSCAPE						:leksakslandskap
 
 STR_CHEATS							:{WHITE}Fusk
 STR_CHEATS_TIP							:{BLACK}Checkboxar indikerar om du använt det här fusket förut
@@ -987,6 +1065,9 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spelar som: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}trimmad bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Byggnation i pause-läge: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetplan kommer inte att störta (frekvent) på små flygplatser: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Byt klimat: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}På väg mot {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}På väg mot {CHECKPOINT}, {VELOCITY}
@@ -1071,8 +1152,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Bygg knäckbrott
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Bygg sockergruva
 
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM						:{ORANGE}{CITY} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporterat)
-STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{CITY} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transporterat)
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transporterat)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transporterat)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}... för nära annan industri
@@ -1083,7 +1164,10 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Anpassa tåg
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Välj godstyp för tåget att bära
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Anpassa tåg för att bära vald godstyp
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ej anpassa tåg...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Visa serviceintervall i procent: {ORANGE}{STRING}
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Välkommen till denna nya AI, under uppbyggnad. Du kan räkna med att det finns problem med den. När något sådant händer, ta en skärmdump och lägg ut den på forumet. Mycket nöje!
+TEMP_AI_ACTIVATED						:{WHITE}Varning: den nya AI:n är fortfarande i alpha-stadiet! Just nu funkar bara vägfordon!
 
 ############ network gui strings
 
@@ -1141,6 +1225,11 @@ STR_NETWORK_6_PLAYERS						:6 spelare
 STR_NETWORK_7_PLAYERS						:7 spelare
 STR_NETWORK_8_PLAYERS						:8 spelare
 STR_NETWORK_START_GAME						:{BLACK}Starta spelet
+STR_NETWORK_START_GAME_TIP					:{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
+STR_NETWORK_LOAD_GAME						:{BLACK}Ladda spel
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Återuppta ett tidigare sparat spel för flera spelare (tänk på att välja rätt spelare vid start)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Ladda scenario
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Starta ett nätverksspel från ett scenario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Nätverksspel
 
@@ -1154,6 +1243,13 @@ STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Starta ett nytt företag
 STR_NETWORK_READY						:{BLACK}Klar
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE}Kunde inte hitta några nätverksspel
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE}Servern svarade inte på förfrågan
+STR_NETWORK_ERR_DESYNC						:{WHITE}Nätverk, Spelsynkronisering misslyckades
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE}Nätverk, koppling förlorad
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE}Kunde inte ladda det sparade spelet från servern
+STR_NETWORK_ERR_TIMEOUT						:{WHITE}Nätverkskoppling #{NUMU16} förlorad (klient slutade svara)
 
 ############ end network gui strings
 
@@ -1596,8 +1692,8 @@ STR_5029_STEEL							:Stål
 STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Objekt i vägen
 STR_5801_TRANSMITTER						:Radiosändare
 STR_5802_LIGHTHOUSE						:Fyrtorn
-STR_5803_COMPANY_HEADQUARTERS					:Företags högkvarter
-STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...företags högkvarter i vägen
+STR_5803_COMPANY_HEADQUARTERS					:Företagets huvudkontor
+STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...företagets huvudkontor i vägen
 STR_5805_COMPANY_OWNED_LAND					:Mark som ägs av företag
 STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Kan inte köpa denna mark...
 STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...du äger den redan!
@@ -1651,6 +1747,7 @@ STR_SV_STNAME_FOREST						:{STRING} Skog
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Svårighetsgrad
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Spara
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Lätt
@@ -1677,8 +1774,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Mängd sjöar/hav: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Ekonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Tåg kan vända: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Stadens attityd mot områdesombyggnad: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Ingen
 STR_6816_LOW							:Låg
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:Hög
@@ -1715,10 +1814,14 @@ STR_6835_AT_END_OF_LINE_ONLY					:Enbart vid slut på linjen
 STR_6836_OFF							:Av
 STR_6837_ON							:På
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Visa highscore-lista
+STR_6839_PERMISSIVE						:Eftergiven
+STR_683A_TOLERANT						:Tolerant
+STR_683B_HOSTILE						:Fientlig
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7002_PLAYER							:(Spelare {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nytt ansikte
 STR_7005_COLOR_SCHEME						:{BLACK}Färgval
 STR_7006_COLOR_SCHEME						:{GOLD}Färgval:
@@ -1756,6 +1859,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graf över vinst
 STR_7026_BANK_BALANCE						:{WHITE}Banksaldo
 STR_7027_LOAN							:{WHITE}Lån
+STR_MAX_LOAN							:{WHITE}Max lån:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Låna {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Återbetala {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1828,9 +1932,11 @@ STR_706C_CHAIRMAN						:Ordförande
 STR_706D_PRESIDENT						:President
 STR_706E_TYCOON							:Tycoon
 STR_706F_BUILD_HQ						:{BLACK}Bygg Högkvarter
-STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Bygg högkvarter / visa företagets högkvarter
-STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan inte bygga högkvarter...
+STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Bygg huvudkontor / visa företagets huvudkontor
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Bygg om huvudkontor på annan plats (kostar 1% av företagets värde)
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan inte bygga huvudkontor här...
 STR_7072_VIEW_HQ						:{BLACK}Visa högkvarter
+STR_RELOCATE_HQ							:{BLACK}Omlokalisera huvudkontor
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Växla stor/liten fönsterstorlek
@@ -2134,7 +2240,9 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Servning non-stop {TOWN} Tåg depå
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}På väg mot {TOWN} depå
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}På väg mot {TOWN} depå, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ogiltig order)
 
+STR_UNKNOWN_DESTINATION						:okänd destination
 STR_8812_EMPTY							:{LTBLUE}Tom
 STR_8813_FROM							:{LTBLUE}{CARGO} från {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tåg {COMMA16} väntar i depå
@@ -2179,6 +2287,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Kan inte sälja järnvägfordon...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Kan inte hitta rutt till närmaste depå
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Kan inte stoppa/starta tåg...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Serviceintervall: {LTBLUE}{COMMA16}dagar{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Serviceintervall: {LTBLUE}{COMMA16}%{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tåg - klicka på tåg för information
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Bygg nytt tåg (kräver depå)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tåg - klicka på tåg för info, drag vagn för att lägga till/ta bort från tåg
@@ -2341,7 +2450,7 @@ STR_982A_SEND_SHIP_TO_DEPOT					:{BLACK}Skicka skepp till depå
 STR_982B_SHOW_SHIP_DETAILS					:{BLACK}Visa skeppdetaljer
 STR_982C_NEW_SHIP_NOW_AVAILABLE					:{BLACK}{BIGFONT}Nytt skepp tillgängligt!
 STR_982D							:{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY				:{BLACK}Kostnad: {CURRENCY} Max. Hastighet: {VELOCITY}{}Kapacitet: {STRING}{}Löpande kostnad: {CURRENCY}/yr
+STR_982E_COST_MAX_SPEED_CAPACITY				:{BLACK}Kostnad: {CURRENCY} Max hastighet: {VELOCITY}{}Kapacitet: {STRING}{}Löpande kostnad: {CURRENCY}/år
 STR_982F_NAME_SHIP						:{BLACK}Byt namn på skepp
 
 STR_9831_NAME_SHIP						:{WHITE}Byt namn på skepp
@@ -2413,7 +2522,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Skicka flygplan till hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Visa flygplan detaljer
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}Nytt flygplan tillgängligt!
 STR_A02D							:{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Kostnad: {CURRENCY} Max. Hastighet: {VELOCITY}{}Kapacitet: {COMMA16} passagerare, {COMMA16} postsäckar{}Löpande kostnad: {CURRENCY}/yr
+STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Kostnad: {CURRENCY} Max hastighet: {VELOCITY}{}Kapacitet: {COMMA16} passagerare, {COMMA16} postsäckar{}Löpande kostnad: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT						:{WHITE}Byt namn på flygplan
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kan inte byta namn på flygplan...
@@ -2445,10 +2554,39 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Oljeraffinaderi exploderade
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Fabrik förstörd i misstänkta omständigheter nära {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' landar nära {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Kolgruva sjunker - lämnar spår av katastrof nära {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Översvämning!{}Minst {COMMA16} förmodas saknade eller döda efter dödlig översvämning!
 
 STR_BRIBE_FAILED						:{WHITE}Ditt mutningsförsök har blivit
 STR_BRIBE_FAILED_2						:{WHITE}uppdagat av en regional utredare.
+STR_BUILD_DATE							:{BLACK}Byggt: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Spelet är pausat.{}Går ej att göra
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Detaljerade prestandabetyg
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detaljerat
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Vägfordon:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stationer:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Min. vinst:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Min. inkomst:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Max. inkomst:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Levererat:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Gods:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Pengar:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Lån:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Totalt:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Totalt antal fordon. Inkluderar vägfordon, tåg, skepp och flygplan.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Antalet stationsdelar. Varje del av en station (ex: tågstation, bushållplats, flygplats) är räknad, även om dom är ihopkopplade till en station.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Vinsten för det fordon med lägst inkomst (av alla fordon äldre än 2 år).
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Mängden tjänade pengar den månad med lägst vinst de senaste 12 kvartalen.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Mängden tjänade pengar den månad med högsta vinsten de senaste 12 kvartalen.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Enheter av gods levererat de senaste fyra kvartalen.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Typer av gods levererat det senaste kvartalet.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mängden pengar på hand
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du ett stort lån?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totalt antal poäng utav möjligt antal poäng
 
