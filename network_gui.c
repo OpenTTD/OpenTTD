@@ -119,12 +119,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 			{
 				NetworkGameList *cur_item = _network_game_list;
-				int32 n = 0;
-				while (cur_item != NULL) {
-					if (n++ == id_v) { break;} // found clicked item
-
+				for (; id_v > 0 && cur_item != NULL; id_v--)
 					cur_item = cur_item->_next;
-				}
 
 				if (cur_item == NULL) { return;} // click out of vehicle bounds
 
