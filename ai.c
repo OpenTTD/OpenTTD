@@ -1962,7 +1962,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		// Allow bridges directly over bottom tiles
 		flag = arf->ti.z == 0;
 		for(;;) {
-			if (tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
+			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			FindLandscapeHeightByTile(&arf->ti, tile_new);
 			if (arf->ti.tileh != 0 || arf->ti.type == MP_CLEAR || arf->ti.type == MP_TREES) {
@@ -2851,7 +2851,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 		// Allow bridges directly over bottom tiles
 		flag = arf->ti.z == 0;
 		for(;;) {
-			if (tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
+			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			FindLandscapeHeightByTile(&arf->ti, tile_new);
 			if (arf->ti.tileh != 0 || arf->ti.type == MP_CLEAR || arf->ti.type == MP_TREES) {
