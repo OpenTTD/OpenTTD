@@ -2559,7 +2559,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Overstromingen!{}Minstens {
 STR_BRIBE_FAILED						:{WHITE}Je poging tot omkopen is
 STR_BRIBE_FAILED_2						:{WHITE}ondekt door regionale onderzoekers
 STR_BUILD_DATE							:{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED						:{WHITE}Spel is gepauseerd.{}Opdracht kan niet uigevoerd worden
+STR_MULTIPLAYER_PAUSED						:{WHITE}Spel is gepauseerd.{}Opdracht kan niet uitgevoerd worden
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Detail van de prestatiewaarde
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detail

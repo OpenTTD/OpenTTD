@@ -1443,6 +1443,7 @@ STR_205B_TEAPOT_HOUSE						:Tepottehus
 STR_205C_PIGGY_BANK						:Sparegris
 
 ##id 0x2800
+STR_LANDSCAPING							:Landskabsværktøjer
 STR_2800_PLANT_TREES						:Plant træer
 STR_2801_PLACE_SIGN						:Placer skilt
 STR_2802_TREES							:{WHITE}Træer
@@ -1746,6 +1747,7 @@ STR_SV_STNAME_FOREST						:{STRING} Skov
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Sværhedsgrad
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Gem
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Nem
@@ -1772,8 +1774,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Antal søer/floder: {ORANGE}{STRING}
 STR_6813_ECONOMY						:{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Tog vender: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katastrofer: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Byråds holdning overfor ændring i landskabet: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Ingen
 STR_6816_LOW							:Lav
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:Høj
@@ -1810,10 +1814,14 @@ STR_6835_AT_END_OF_LINE_ONLY					:Kun ved slutningen af jernbanespor
 STR_6836_OFF							:Fra
 STR_6837_ON							:Til
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Vis higscoreliste
+STR_6839_PERMISSIVE						:Passiv
+STR_683A_TOLERANT						:Tolerant
+STR_683B_HOSTILE						:Fjendtlig
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7002_PLAYER							:(Spiller {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nyt Ansigt
 STR_7005_COLOR_SCHEME						:{BLACK}Farvetema
 STR_7006_COLOR_SCHEME						:{GOLD}Farvetema:
@@ -1851,6 +1859,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Profit Garf
 STR_7026_BANK_BALANCE						:{WHITE}Bank Balance
 STR_7027_LOAN							:{WHITE}Lån
+STR_MAX_LOAN							:{WHITE}Max Lån:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Tilbagebetal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -2231,7 +2240,9 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Service non-stop i {TOWN} remise
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Retning mod {TOWN} remise
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Retning mod {TOWN} remise, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Ugyldig Order)
 
+STR_UNKNOWN_DESTINATION						:ukendt destination
 STR_8812_EMPTY							:{LTBLUE}Tom
 STR_8813_FROM							:{LTBLUE}{CARGO} fra {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Tog {COMMA16} Venter i depot
@@ -2276,6 +2287,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Kan ikke sælge jernbanekøretøjet
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Kan ikke finde en route til en lokal remise
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Kan ikke stoppe/starte toget...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Serviceinterval: {LTBLUE}{COMMA16}dage{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Serviceinterval: {LTBLUE}{COMMA16}%{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - klik på et tog for information
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Byg nye tog (kræver en remise)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
@@ -2542,14 +2554,27 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Eksplosion af olieraffinade
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Fabrik ødelagt under mystiske omstændigheder ved {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}En UFO lander tæt på {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Sammenstyrtning af kulmine efterlader et spor af katastrofe ved {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Oversvømmelse!{}Mindst {COMMA16} antaget savnet eller omkommet efter pludslig oversvømmelse!
 
 STR_BRIBE_FAILED						:{WHITE}Dit forsøg på bestikkelse er blevet
 STR_BRIBE_FAILED_2						:{WHITE}opdaget af en inspektør.
+STR_BUILD_DATE							:{BLACK}Produceret: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Spillet er i pause.{}Kommandoen kan ikke køres
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Præstations oversigt
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detail
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Køretøjer:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stationer:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Minimum profit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Minimum indkomst:
 STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Max. indtægt:
 STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Afleveret:
-STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Cargo:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Last:
 STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Penge:
 STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total:
