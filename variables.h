@@ -429,6 +429,10 @@ VARDEF int _debug_misc_level;
 VARDEF int _debug_grf_level;
 
 void CDECL debug(const char *s, ...);
-#define DEBUG(name, level) if (level == 0 || _debug_ ## name ## _level >= level) debug
+#ifdef NO_DEBUG_MESSAGES
+	#define DEBUG(name, level)
+#else
+	#define DEBUG(name, level) if (level == 0 || _debug_ ## name ## _level >= level) debug
+#endif
 
 #endif /* VARIABLES_H */

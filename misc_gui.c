@@ -150,7 +150,6 @@ static void Place_LandInfo(uint tile)
 	GetTileDesc(tile, &lid.td);
 	
 	#if defined(_DEBUG)
-	{
 		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
 		DEBUG(misc, 0) ("_map_type_and_height=%#x", _map_type_and_height[tile]);
 		DEBUG(misc, 0) ("_map2=%#x", _map2[tile]);
@@ -158,7 +157,6 @@ static void Place_LandInfo(uint tile)
 		DEBUG(misc, 0) ("_map3_hi=%#x", _map3_hi[tile]);
 		DEBUG(misc, 0) ("_map5=%#x", _map5[tile]);
 		DEBUG(misc, 0) ("_map_owner=%#x", _map_owner[tile]);
-	}
 	#endif
 }
 
