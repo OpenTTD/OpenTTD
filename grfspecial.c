@@ -348,13 +348,15 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].engclass = engclass;
 			}
 		}	break;
+		case 0x1D: {	/* Refit cargo */
+			FOR_EACH_OBJECT {
+				uint32 refit_mask = grf_load_dword(&buf);
+
+				_engine_refit_masks[engine + i] = refit_mask;
+			}
+		}	break;
 
 		/* TODO */
-		/* Fall-through for unimplemented four bytes long properties. */
-		case 0x1D:	/* Refit cargo */
-			FOR_EACH_OBJECT {
-				grf_load_word(&buf);
-			}
 		/* Fall-through for unimplemented two bytes long properties. */
 		case 0x1B:	/* Powered wagons power bonus */
 			FOR_EACH_OBJECT {
