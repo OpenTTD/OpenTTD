@@ -527,16 +527,13 @@ void LoadIntroGame()
 
 	// Generate a world.
 	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
-	if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
+	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
 #if defined SECOND_DATA_DIR
-		{
 		sprintf(filename, "%sopntitle.dat",  _path.second_data_dir);
 		if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
 #endif
 			GenerateWorld(1); // if failed loading, make empty world.
-#if defined SECOND_DATA_DIR
-		}
-#endif
+	}
 	_opt.currency = _new_opt.currency;
 
 	_pause = 0;
