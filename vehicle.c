@@ -1488,6 +1488,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		/* We do not really buy a new vehicle, we upgrade the old one */
 		if (v->engine_type != new_engine_type) {
+			byte old_engine = v->engine_type;
+			byte sprite = v->spritenum;
 			byte cargo_type = v->cargo_type;
 			v->engine_type = new_engine_type;
 			v->max_age = e->lifelength * 366;
@@ -1498,13 +1500,13 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// using if (true) to declare the const
 				{
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
+				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine);
 				byte capacity = rvi->capacity;
 
-				if (rvi->flags & RVI_MULTIHEAD && v->next == NULL ) {
-					v->spritenum = rvi->image_index + 1;	// +1 is the mirrored end of the dualheaded engines
-				} else {
-					v->spritenum = rvi->image_index;
-				}
+				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
+				if it is a multiheaded engine (rear engine)
+				(sprite - rvi2->image_index) is 1 if the engine is heading the other way, otherwise 0*/
+				v->spritenum = rvi->image_index + (sprite - rvi2->image_index);
 				
 				v->cargo_type = rvi->cargo_type;
 				v->cargo_cap = rvi->capacity;
