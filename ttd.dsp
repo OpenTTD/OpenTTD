@@ -216,6 +216,10 @@ SOURCE=.\landscape.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\map.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\md5.c
 # End Source File
 # Begin Source File
@@ -467,6 +471,10 @@ SOURCE=.\industry.h
 # Begin Source File
 
 SOURCE=.\macros.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\map.h
 # End Source File
 # Begin Source File
 
