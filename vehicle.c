@@ -1415,7 +1415,17 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	
+	
+	// first we make sure that it's a valid type the user requested
+	// check that it's an engine that is in the engine array
+	if (new_engine_type >= TOTAL_NUM_ENGINES ) return CMD_ERROR;
+	
+	// check that the new vehicle type is the same as the original one
 	if (v->type != _engines[new_engine_type].type) return CMD_ERROR;
+
+	// check that it's the vehicle's owner that requested the replace
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+
 
 	switch (v->type) {
 		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
