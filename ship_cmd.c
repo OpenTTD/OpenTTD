@@ -919,7 +919,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (!IsShipDepotTile(v->tile) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))

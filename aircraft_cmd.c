@@ -364,7 +364,7 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
