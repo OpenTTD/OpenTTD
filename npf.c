@@ -179,12 +179,13 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
 	TileIndex from = current->tile;
 	TileIndex to = fstd->dest_coords;
+	uint dist;
 
 	// for train-stations, we are going to aim for the closest station tile
 	if ((as->user_data[NPF_TYPE] == TRANSPORT_RAIL) && (fstd->station_index != -1))
-	 to = CalcClosestStationTile(fstd->station_index, from);
+		to = CalcClosestStationTile(fstd->station_index, from);
 
-	uint dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
+	dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
 
 	if (dist < ftd->best_bird_dist) {
 		ftd->best_bird_dist = dist;
