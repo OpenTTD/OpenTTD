@@ -776,11 +776,12 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		last = GetLastVehicleInChain(first);
 		//now if:
 		// 1) we delete a whole a chain, and
-		// 2) the first and the last vehicle of that train are of the same type, and
-		// 3) the first and the last vehicle of the chain are not identical, and
-		// 4) and of "engine" type (i.e. not a carriage)
+		// 2) we don't actually try to delete the last engine
+		// 3) the first and the last vehicle of that train are of the same type, and
+		// 4) the first and the last vehicle of the chain are not identical
+		// 5) and of "engine" type (i.e. not a carriage)
 		// then let the last vehicle live
-		if ( (p2 == 1) && ( last->engine_type == first->engine_type ) && (last != first) && (first->subtype == 0) )
+		if ( (p2 == 1) && (v != last) && ( last->engine_type == first->engine_type ) && (last != first) && (first->subtype == 0) )
 			last = GetPrevVehicleInChain(last);
 		else
 			last = NULL;
@@ -833,9 +834,12 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			first = UnlinkWagon(v, first);
 			cost -= v->value;
 			tmp = v;
-			v = v->next;
 			DeleteVehicle(tmp);
-			if (v == last || p2 != 1) break;
+			if ( v == last ) {
+				last = NULL;
+				break;
+			}
+			if ( (v=v->next) == last || p2 != 1) break;
 		}
 
 		// delete last vehicle of multiheaded train?
@@ -854,7 +858,11 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		cost = 0;
 		for(;;) {
 			cost -= v->value;
-			if ((v=v->next) == last || p2 != 1) break;
+			if ( v == last ) {
+				last = NULL;
+				break;
+			}
+			if ( (v=v->next) == last || p2 != 1) break;
 		}
 		if (last) cost -= last->value;
 	}
