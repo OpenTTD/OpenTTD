@@ -4,7 +4,7 @@
 #include "ttd.h"
 #include "debug.h"
 #include "gfx.h"
-#include "sound.h"
+#include "mixer.h"
 #include "window.h"
 #include <SDL.h>
 #include "player.h"

@@ -8,6 +8,7 @@
 
 #define VARDEF
 #include "ttd.h"
+#include "mixer.h"
 #include "spritecache.h"
 #include "gfx.h"
 #include "gui.h"
@@ -626,7 +627,8 @@ int ttd_main(int argc, char* argv[])
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
 	_os_version = GetOSVersion();
-	MxInitialize(11025, "sample.cat");
+	MxInitialize(11025);
+	SoundInitialize("sample.cat");
 
 	// This must be done early, since functions use the InvalidateWindow* calls
 	InitWindowSystem();

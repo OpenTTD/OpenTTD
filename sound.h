@@ -1,8 +1,6 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-typedef struct Mixer Mixer;
-
 typedef struct MusicFileSettings {
 	byte playlist;
 	byte music_vol;
@@ -17,10 +15,8 @@ VARDEF byte _music_wnd_cursong;
 VARDEF bool _song_is_active;
 VARDEF byte _cur_playlist[33];
 VARDEF MusicFileSettings msf;
-VARDEF Mixer *_mixer;
 
-bool MxInitialize(uint rate, const char *filename);
-void MxMixSamples(Mixer *mx, void *buffer, uint samples);
+bool SoundInitialize(const char *filename);
 
 typedef enum SoundFx {
 	SND_02_SPLAT,                          //  0 == 0x00 !

@@ -600,6 +600,7 @@ C_SOURCES += minilzo.c
 C_SOURCES += misc.c
 C_SOURCES += misc_cmd.c
 C_SOURCES += misc_gui.c
+C_SOURCES += mixer.c
 C_SOURCES += music_gui.c
 C_SOURCES += namegen.c
 C_SOURCES += network.c

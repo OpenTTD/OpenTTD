@@ -4,7 +4,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "gfx.h"
-#include "sound.h"
+#include "mixer.h"
 #include "window.h"
 #include "gui.h"
 #include <windows.h>
