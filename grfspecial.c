@@ -192,7 +192,7 @@ static struct GRFFile *GetFileByFilename(const char *filename)
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
-#define FOR_EACH_ENGINE for (i = 0; i < numinfo; i++)
+#define FOR_EACH_OBJECT for (i = 0; i < numinfo; i++)
 
 static void dewagonize(int condition, int engine)
 {
@@ -218,7 +218,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 	switch (prop) {
 		case 0x05: {	/* Track type */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 tracktype = grf_load_byte(&buf);
 
 				ei[i].railtype_climates &= 0xf;
@@ -227,13 +227,13 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		}	break;
 		case 0x08: {	/* AI passenger service */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
 		}	break;
 		case 0x09: {	/* Speed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
 
 				rvi[i].max_speed = speed;
@@ -241,7 +241,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x0B: {	/* Power */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
 				rvi[i].power = power;
@@ -249,7 +249,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x0D: {	/* Running cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
 				rvi[i].running_cost_base = runcostfact;
@@ -257,7 +257,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x0E: {	/* Running cost base */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint32 base = grf_load_dword(&buf);
 
 				switch (base) {
@@ -275,7 +275,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x12: {	/* Sprite ID */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
 				if (spriteid == 0xFD && rvi[i].image_index != 0xFD)
@@ -284,7 +284,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x13: {	/* Dual-headed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 dual = grf_load_byte(&buf);
 
 				if (dual != 0) {
@@ -295,28 +295,28 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x14: {	/* Cargo capacity */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 capacity = grf_load_byte(&buf);
 
 				rvi[i].capacity = capacity;
 			}
 		}	break;
 		case 0x15: {	/* Cargo type */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 ctype = grf_load_byte(&buf);
 
 				rvi[i].cargo_type = ctype;
 			}
 		}	break;
 		case 0x16: {	/* Weight */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 weight = grf_load_byte(&buf);
 
 				rvi[i].weight = weight;
 			}
 		}	break;
 		case 0x17: {	/* Cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cfactor = grf_load_byte(&buf);
 
 				rvi[i].base_cost = cfactor;
@@ -324,7 +324,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		}	break;
 		case 0x18: {	/* AI rank */
 			/* TODO: _railveh_score should be merged to _rail_vehicle_info. */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
@@ -332,7 +332,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x19: { /* Engine traction type */
 			/* TODO: What do the individual numbers mean?
 			 * XXX: And in what base are they, in fact? --pasky */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 traction = grf_load_byte(&buf);
 				int engclass;
 
@@ -352,12 +352,12 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		/* TODO */
 		/* Fall-through for unimplemented four bytes long properties. */
 		case 0x1D:	/* Refit cargo */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_word(&buf);
 			}
 		/* Fall-through for unimplemented two bytes long properties. */
 		case 0x1B:	/* Powered wagons power bonus */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 		/* Fall-through for unimplemented one byte long properties. */
@@ -369,7 +369,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x22:	/* Visual */
 		case 0x23: {/* Powered wagons weight bonus */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
@@ -390,14 +390,14 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 	switch (prop) {
 		case 0x08: {	/* Speed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 speed = grf_load_byte(&buf);
 
 				rvi[i].max_speed = speed; // ?? units
 			}
 		}	break;
 		case 0x09: {	/* Running cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 runcost = grf_load_byte(&buf);
 
 				rvi[i].running_cost = runcost;
@@ -405,13 +405,13 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		}	break;
 		case 0x0A:	/* Running cost base */
 			/* TODO: I have no idea. --pasky */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
 			break;
 		case 0x0E: {	/* Sprite ID */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
 				if (spriteid == 0xFF)
@@ -426,28 +426,28 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x0F: {	/* Cargo capacity */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 capacity = grf_load_word(&buf);
 
 				rvi[i].capacity = capacity;
 			}
 		}	break;
 		case 0x10: { /* Cargo type */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
 				rvi[i].cargo_type = cargo;
 			}
 		}	break;
 		case 0x11: {	/* Cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cost_factor = grf_load_byte(&buf);
 
 				rvi[i].base_cost = cost_factor; // ?? is it base_cost?
 			}
 		}	break;
 		case 0x12: {	/* SFX */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 sfx = grf_load_byte(&buf);
 
 				rvi[i].sfx = sfx;
@@ -459,13 +459,13 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			/* TODO: Support for road vehicles realistic power
 			 * computations (called rvpower in TTDPatch) is just
 			 * missing in OTTD yet. --pasky */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
 			break;
 		case 0x16: {	/* Cargos available for refitting */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
 				_engine_refit_masks[ROAD_ENGINES_INDEX + engine + i] = refit_mask;
@@ -474,7 +474,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x17:      /* Callback */
 		case 0x18:      /* Tractive effort */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
@@ -497,7 +497,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	//printf("e %x prop %x?\n", engine, prop);
 	switch (prop) {
 		case 0x08: {	/* Sprite ID */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
 				if (spriteid == 0xFF)
@@ -512,28 +512,28 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x09: {	/* Refittable */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 refittable = grf_load_byte(&buf);
 
 				svi[i].refittable = refittable;
 			}
 		}	break;
 		case 0x0A: {	/* Cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cost_factor = grf_load_byte(&buf);
 
 				svi[i].base_cost = cost_factor; // ?? is it base_cost?
 			}
 		}	break;
 		case 0x0B: {	/* Speed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 speed = grf_load_byte(&buf);
 
 				svi[i].max_speed = speed; // ?? units
 			}
 		}	break;
 		case 0x0C: { /* Cargo type */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
 				// XXX: Need to consult this with patchman yet.
@@ -547,28 +547,28 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 		}	break;
 		case 0x0D: {	/* Cargo capacity */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 capacity = grf_load_word(&buf);
 
 				svi[i].capacity = capacity;
 			}
 		}	break;
 		case 0x0F: {	/* Running cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 runcost = grf_load_byte(&buf);
 
 				svi[i].running_cost = runcost;
 			}
 		} break;
 		case 0x10: {	/* SFX */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 sfx = grf_load_byte(&buf);
 
 				svi[i].sfx = sfx;
 			}
 		}	break;
 		case 0x11: {	/* Cargos available for refitting */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
 				_engine_refit_masks[SHIP_ENGINES_INDEX + engine + i] = refit_mask;
@@ -595,7 +595,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 	//printf("e %x prop %x?\n", engine, prop);
 	switch (prop) {
 		case 0x08: {	/* Sprite ID */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
 				if (spriteid == 0xFF)
@@ -610,70 +610,70 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			}
 		}	break;
 		case 0x09: {	/* Helicopter */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 heli = grf_load_byte(&buf);
 
 				avi[i].subtype = (heli == 0) ? 0 : 1;
 			}
 		}	break;
 		case 0x0A: {	/* Large */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 large = grf_load_byte(&buf);
 
 				avi[i].subtype = (large == 1) ? 3 : 1;
 			}
 		}	break;
 		case 0x0B: {	/* Cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 cost_factor = grf_load_byte(&buf);
 
 				avi[i].base_cost = cost_factor; // ?? is it base_cost?
 			}
 		}	break;
 		case 0x0C: {	/* Speed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 speed = grf_load_byte(&buf);
 
 				avi[i].max_speed = speed; // ?? units
 			}
 		}	break;
 		case 0x0D: {	/* Acceleration */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 accel = grf_load_byte(&buf);
 
 				avi[i].acceleration = accel;
 			}
 		} break;
 		case 0x0E: {	/* Running cost factor */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 runcost = grf_load_byte(&buf);
 
 				avi[i].running_cost = runcost;
 			}
 		} break;
 		case 0x0F: {	/* Passenger capacity */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 capacity = grf_load_word(&buf);
 
 				avi[i].passanger_capacity = capacity;
 			}
 		}	break;
 		case 0x11: {	/* Mail capacity */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 capacity = grf_load_byte(&buf);
 
 				avi[i].mail_capacity = capacity;
 			}
 		}	break;
 		case 0x12: {	/* SFX */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 sfx = grf_load_byte(&buf);
 
 				avi[i].sfx = sfx;
 			}
 		}	break;
 		case 0x13: {	/* Cargos available for refitting */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
 				_engine_refit_masks[AIRCRAFT_ENGINES_INDEX + engine + i] = refit_mask;
@@ -708,7 +708,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	switch (prop) {
 		case 0x08:
 		{	/* Class ID */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
 				uint32 classid;
 
@@ -734,7 +734,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		}
 		case 0x09:
 		{	/* Define sprite layout */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
 				int t;
 
@@ -779,7 +779,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		}
 		case 0x0a:
 		{	/* Copy sprite layout */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
 				struct StationSpec *srcstat = &_cur_grffile->stations[srcid];
@@ -817,7 +817,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0b:
 		{	/* Callback */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = 1;
@@ -826,7 +826,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0c:
 		{	/* Platforms number */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = 1;
@@ -835,7 +835,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0d:
 		{	/* Platforms length */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = 1;
@@ -844,7 +844,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0e:
 		{	/* Define custom layout */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
 					byte number = grf_load_byte(&buf);
@@ -860,7 +860,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0f:
 		{	/* Copy custom layout */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = 1;
@@ -869,8 +869,26 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x10:
 		{	/* Little/lots cargo threshold */
 			/* TODO */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_word(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x11:
+		{	/* Pylon placement */
+			/* TODO; makes sense only for electrified tracks */
+			FOR_EACH_OBJECT {
+				grf_load_word(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x12:
+		{	/* Cargo types for random triggers */
+			/* TODO */
+			FOR_EACH_OBJECT {
+				grf_load_dword(&buf);
 			}
 			ret = 1;
 			break;
@@ -955,14 +973,14 @@ static void VehicleChangeInfo(byte *buf, int len)
 
 		switch (prop) {
 		case 0x00: { /* Introduction date */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint16 date = grf_load_word(&buf);
 
 				ei[i].base_intro = date;
 			}
 		}	break;
 		case 0x02: { /* Decay speed */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 decay = grf_load_byte(&buf);
 
 				ei[i].unk2 &= 0x80;
@@ -970,21 +988,21 @@ static void VehicleChangeInfo(byte *buf, int len)
 			}
 		}	break;
 		case 0x03: { /* Vehicle life */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 life = grf_load_byte(&buf);
 
 				ei[i].lifelength = life;
 			}
 		}	break;
 		case 0x04: { /* Model life */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 life = grf_load_byte(&buf);
 
 				ei[i].base_life = life;
 			}
 		}	break;
 		case 0x06: { /* Climates available */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				uint8 climates = grf_load_byte(&buf);
 
 				ei[i].railtype_climates &= 0xf0;
@@ -998,7 +1016,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 			 * credit ;-). --pasky */
 			/* TODO: This needs to be supported by
 			 * LoadUnloadVehicle() first. */
-			FOR_EACH_ENGINE {
+			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			goto ignoring;
@@ -1015,6 +1033,8 @@ ignoring:
 	}
 #undef shift_buf
 }
+
+#undef FOR_EACH_OBJECT
 
 
 /* Action 0x01 */
