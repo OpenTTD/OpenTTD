@@ -243,7 +243,7 @@ REV_NUMBER := $(shell if test -d .svn; then svnversion . | tr -dc 0-9; fi)
 ifdef RELEASE
 REV:=$(RELEASE)
 else
-REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$0 }'; fi)
+REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$$0 }'; fi)
 tmp_test:=$(shell echo "$(REV)" | grep "M" )
 ifdef tmp_test
 REV_NUMBER:=1
