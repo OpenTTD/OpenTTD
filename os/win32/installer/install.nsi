@@ -1,7 +1,7 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.3.3.0"
-!define APPVERSION "0.3.3.0"
+!define APPNAMEANDVERSION "OpenTTD 0.3.4.0"
+!define APPVERSION "0.3.4.0"
 !define INSTALLERVERSION 11
 
 BrandingText "OpenTTD Installer"
@@ -9,7 +9,7 @@ BrandingText "OpenTTD Installer"
 
 ; Version Info
 Var AddWinPrePopulate
-VIProductVersion "0.3.3.0"
+VIProductVersion "${APPVERSION}"
 VIAddVersionKey "ProductName" "OpenTTD Installer"
 VIAddVersionKey "Comments" "Installs ${APPNAMEANDVERSION}"
 VIAddVersionKey "CompanyName" "OpenTTD Developers"
@@ -97,22 +97,22 @@ Section "!OpenTTD" Section1
 
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
+  File ${PATH_ROOT}data\canalsw.grf
+  File ${PATH_ROOT}data\openttd.grf
   File ${PATH_ROOT}data\opntitle.dat
   File ${PATH_ROOT}data\signalsw.grf
-  File ${PATH_ROOT}data\openttd.grf
-  File ${PATH_ROOT}data\canalsw.grf
-  File ${PATH_ROOT}ReleasePNG\ttd.map
+  File ${PATH_ROOT}data\trkfoundw.grf
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
 
 	;Copy text files
   File ${PATH_ROOT}changelog.txt
-;  File "gpl.txt"
+  File ${PATH_ROOT}COPYING
   File ${PATH_ROOT}readme.txt
 
 	; Copy executable
-	File /oname=openttd.exe        ${PATH_ROOT}ReleasePNG\openttd.exe
+	File /oname=openttd.exe        ${PATH_ROOT}Release\openttd.exe
 	File ${PATH_ROOT}strgen\Release\strgen.exe
 
 
@@ -212,8 +212,7 @@ Section Uninstall
 	Delete "$INSTDIR\readme.txt"
 	Delete "$INSTDIR\openttd.exe"
 	Delete "$INSTDIR\strgen.exe"
-	Delete "$INSTDIR\data\ttd.map"
-	Delete "$INSTDIR\gpl.txt"
+	Delete "$INSTDIR\COPYING"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\openttd.cfg"
@@ -223,6 +222,7 @@ Section Uninstall
 	Delete "$INSTDIR\data\signalsw.grf"
 	Delete "$INSTDIR\data\openttd.grf"
 	Delete "$INSTDIR\data\canalsw.grf"
+	Delete "$INSTDIR\data\trkfoundw.grf"
 	Delete "$INSTDIR\data\trg1r.grf"
 	Delete "$INSTDIR\data\trghr.grf"
 	Delete "$INSTDIR\data\trgtr.grf"

@@ -741,7 +741,7 @@ void write_langfile(const char *filename, int show_todo)
 	fclose(f);
 }
 
-int main(int argc, char* argv[])
+int CDECL main(int argc, char* argv[])
 {
 	char *r;
 	char buf[256];

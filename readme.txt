@@ -1,6 +1,6 @@
 OpenTTD README
 Last updated:    $LastChangedDate: 2004-07-25 21:22:11 +0200 (Sun, 25 Jul 2004) $
-Release version: 0.3.3
+Release version: 0.3.4
 ------------------------------------------------------------------------
 
 
@@ -34,7 +34,7 @@ The easiest way to contact the OpenTTD team is by submitting bug reports or
 posting comments in our forums. You can also chat with us on IRC (#openttd
 on irc.freenode.net).
 
-The OpenTTD homepage is http://www.openttd.com/.
+The OpenTTD homepage is http://www.openttd.org/.
 
 You can find a forum for OpenTTD at
 http://www.tt-forums.net/index.php?c=20
@@ -152,7 +152,15 @@ MorphOS
 
 8.0) Translating:
 ---- -------------------
-See http://www.openttd.com/translating.php for up-to-date information.
+See http://www.openttd.org/translating.php for up-to-date information.
+
+The use of the online Translator service, located at http://translator.openttd.org. 
+For a username password combo you should contact the development team, either by mail, irc
+or the forums. The system is straight-forward to use, if you have any troubles, read the 
+online help located there.
+
+If for some reason the website is down for a longer period of time, the information below
+might be of help.
 
 8.1) Guidelines:
 ---- -------------------
@@ -200,26 +208,32 @@ That's all! You should now be able to select the language in the game options.
 X.X) Credits:
 ---- --------
 The OpenTTD team:
-  Ludvig Strigeus (ludde)        - OpenTTD author, main coder.
-  Serge Paquet (vurlix)          - Assistant project manager, coder and webmaster.
+  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
+  Serge Paquet (vurlix)          - Assistant project manager, coder
   Dominik Scherer (dominik81)    - Coder
   Tamas Farago (Darkvater)       - Coder
-  Owen Rudge (orudge)            - Contributor, forum host.
+  Patric Stout (TrueLight)       - Coder, SVN-repository and website host
+  Stefan Meiﬂner (sign_de)       - Network and Console coder
+  Owen Rudge (orudge)            - Contributor, forum host
   Bjarni Corfitzen (Bjarni)      - MacOS port
+  Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Cian Duffy (MYOB)              - BeOS port / manual writing
   Christian Rosentreter (tokaiz) - MorphOS/AmigaOS port
-  Viktor Strigeus (wiggo)        - Web hosting services
-
+  
 Thanks to:
   Josef Drexler - For his great work on TTDPatch.
   Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations).
   Mike Ragsdale - OpenTTD installer
+  Celestar - for his many patches, suggestions and fixes
+  blathijs - for his many patches, suggestions and code documentation
   pasky - Many patches, newgrf support, etc.
+  Tron - relentless correcting of the code
+  mivlad - some patches
   truesatan - Some patches
-  TrueLight - Some patches
   Michael Polnick - Some patches
   Michael Blunck - Nice graphics
   George - Canal graphics
+  All Translators - For their support to make OpenTTD a truly international game
   Bug Reporters - Thanks for all bug reports.
-  Chris Sawyer - For an amazing game.
-
+  Moriarty - for the tons of (annoying) bugreports
+  Chris Sawyer - For an amazing game!.
