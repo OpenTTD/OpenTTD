@@ -2589,10 +2589,9 @@ red_light: {
 			v->progress = 255-10;
 			if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
 				TileIndex o_tile = gp.new_tile + TileOffsByDir(enterdir);
-				VehicleAtSignalData vasd = {
-					o_tile,
-					dir ^ 4
-				};
+				VehicleAtSignalData vasd;
+				vasd.tile = o_tile;
+				vasd.direction = dir ^ 4;
 
 				/* check if a train is waiting on the other side */
 				if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL)

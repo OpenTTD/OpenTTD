@@ -111,6 +111,7 @@ typedef struct ifreq IFREQ;
 #	include <nerrno.h>
 #	define INADDR_NONE 0xffffffff
 
+typedef int socklen_t;
 typedef unsigned long in_addr_t;
 #endif // OS/2
 

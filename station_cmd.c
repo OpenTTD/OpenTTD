@@ -634,10 +634,13 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	uint old_acc, new_acc;
 	const RoadStop *cur_rs;
 	int i;
-	Rectangle rect = { MapSizeX(), MapSizeY(), 0, 0 };
+	Rectangle rect;
 	int rad;
 	AcceptedCargo accepts;
 
+	rect.min_x = MapSizeX();
+	rect.min_y = MapSizeY();
+	rect.max_x = rect.max_y = 0;
 	// Don't update acceptance for a buoy
 	if (st->had_vehicle_of_type & HVOT_BUOY)
 		return;
