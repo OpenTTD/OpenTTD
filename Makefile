@@ -680,15 +680,6 @@ DEPS = $(DEPS1:%.o=%.P)
 LANG_TXT = $(filter-out %.unfinished.txt,$(wildcard lang/*.txt))
 LANGS = $(LANG_TXT:%.txt=%.lng)
 
-C_COMPILE = $(CC) $(CFLAGS) $(CDEFS)
-CXX_COMPILE = $(CXX) $(CFLAGS) $(CDEFS)
-
-C_BUILD = $(C_COMPILE) -c
-CXX_BUILD = $(CXX_COMPILE) -c
-
-C_LINK = $(CC) $(LDFLAGS) -o
-
-
 
 ##############################################################################
 #
@@ -717,7 +708,7 @@ $(ENDIAN_CHECK): endian_check.c
 
 $(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
-	@$(C_LINK) $@ $(TTDLDFLAGS) $(OBJS) $(LIBS)
+	@$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OSX): $(TTD)
 	@rm -fr "$(OSXAPP)"
@@ -931,7 +922,7 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
-	@$(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp
+	@$(CC) $(CFLAGS) $(CDEFS) -Wp,-MD,.deps/$(*F).pp -c $< -o $@
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
 		tr ' ' '\012' < .deps/$(*F).pp \
 		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
@@ -941,7 +932,7 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # For DirectMusic build and BeOS specific parts
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
-	@$(CXX_BUILD) $< -o $@
+	@$(CXX) $(CFLAGS) $(CDEFS) -c $< -o $@
 
 
 info:
