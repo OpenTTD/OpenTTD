@@ -925,11 +925,7 @@ static void NetworkInitGameInfo(void)
 	_network_game_info.map_height = MapSizeY();
 	_network_game_info.map_set = _opt.landscape;
 
-	if (_network_game_info.server_password[0] == '\0') {
-		_network_game_info.use_password = 0;
-	} else {
-		_network_game_info.use_password = 1;
-	}
+	_network_game_info.use_password = (_network_server_password[0] == '\0') ? 0 : 1;
 
 	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
 	//  The index is NETWORK_SERVER_INDEX ( = 1)

@@ -96,7 +96,11 @@ void UpdateNetworkGameWindow(bool unselect)
 
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
+	case WE_CREATE: /* focus input box */
+		_selected_field = 3;
+		_selected_item = NULL;
+		break;
 	case WE_PAINT: {
 		w->disabled_state = 0;
 
@@ -381,10 +385,6 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		NetworkAddServer(e->edittext.str);
 		NetworkRebuildHostList();
 	} break;
-
-	case WE_CREATE: {
-		_selected_item = NULL;
-	} break;
 	}
 }
 
@@ -486,7 +486,12 @@ enum {
 
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
+	case WE_CREATE: /* focus input box */
+		_selected_field = 3;
+		_network_game_info.use_password = (_network_server_password[0] == '\0') ? 0 : 1;
+		break;
+
 	case WE_PAINT: {
 		int y = NSSWND_START, pos;
 		const FiosItem *item;
@@ -506,6 +511,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		DrawString(280, 63, STR_NETWORK_CONNECTION, 2);
 		DrawString(280, 95, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
 		DrawString(280, 127, STR_NETWORK_LANGUAGE_SPOKEN, 2);
+
+		if (_network_game_info.use_password) DoDrawString("*", 408, 23, 3);
 
 		// draw list of maps
 		pos = w->vscroll.pos;
@@ -599,29 +606,20 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if(_selected_field == 3 || _selected_field == 4)
-			HandleEditBox(w, _selected_field);
-
+		if (_selected_field == 3)
+			HandleEditBox(w, 3);
 		break;
 
 	case WE_KEYPRESS:
-		if(_selected_field != 3)
-			break;
-		switch (HandleEditBoxKey(w, _selected_field, e)) {
-		case 1:
-			HandleButtonClick(w, 9);
-			break;
-		}
+		if (_selected_field == 3)
+			HandleEditBoxKey(w, 3, e);
 		break;
 
 	case WE_ON_EDIT_TEXT: {
 		const char *b = e->edittext.str;
 		ttd_strlcpy(_network_server_password, b, sizeof(_network_server_password));
-		if (_network_server_password[0] == '\0') {
-			_network_game_info.use_password = 0;
-		} else {
-			_network_game_info.use_password = 1;
-		}
+		_network_game_info.use_password = (_network_server_password[0] == '\0') ? 0 : 1;
+		SetWindowDirty(w);
 	} break;
 	}
 }
