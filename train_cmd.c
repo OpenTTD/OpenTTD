@@ -2040,7 +2040,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 
 	// Did we reach the final destination?
 	if (v->current_order.type == OT_GOTO_STATION &&
-			v->current_order.station == (byte)station) {
+			v->current_order.station == station) {
 		// Yeah, keep the load/unload flags
 		// Non Stop now means if the order should be increased.
 		v->current_order.type = OT_LOADING;
