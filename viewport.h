@@ -99,7 +99,8 @@ typedef struct TileHighlightData {
 bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc);
 
 /* viewport.c */
-VARDEF ViewPort _viewports[18];
+// XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
+VARDEF ViewPort _viewports[25 - 2];
 VARDEF TileHighlightData _thd;
 VARDEF uint32 _active_viewports;
 
