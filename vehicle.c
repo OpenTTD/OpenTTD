@@ -82,10 +82,7 @@ static inline uint Correct_Z(uint tileh)
 
 uint GetCorrectTileHeight(TileIndex tile)
 {
-	TileInfo ti;
-
-	FindLandscapeHeightByTile(&ti, tile);
-	return Correct_Z(ti.tileh);
+	return Correct_Z(GetTileSlope(tile, NULL));
 }
 
 bool EnsureNoVehicleZ(TileIndex tile, byte z)

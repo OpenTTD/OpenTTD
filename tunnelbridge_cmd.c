@@ -905,9 +905,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 static uint GetBridgeHeight(const TileInfo *ti)
 {
 	uint delta;
-	TileInfo ti_end;
-	uint tile = ti->tile;
-	uint z_correction = 0;
+	TileIndex tile = ti->tile;
 
 	// find the end tile of the bridge.
 	delta = (_map5[tile] & 1) ? TILE_XY(0,1) : TILE_XY(1,0);
@@ -916,14 +914,10 @@ static uint GetBridgeHeight(const TileInfo *ti)
 		tile += delta;
 	} while (_map5[tile] & 0x40);	// while bridge middle parts
 
-	// if the end of the bridge is on a tileh 7, the z coordinate is 1 tile too low
-	// correct it.
-	FindLandscapeHeightByTile(&ti_end, tile);
-	if (HASBIT(1 << 7, ti_end.tileh))
-		z_correction += 8;
-
-	// return the height there (the height of the NORTH CORNER)
-	return TilePixelHeight(tile) + z_correction;
+	/* Return the height there (the height of the NORTH CORNER)
+	 * If the end of the bridge is on a tileh 7 (all raised, except north corner),
+	 * the z coordinate is 1 height level too low. Compensate for that */
+	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == 7 ? 8 : 0);
 }
 
 static const byte _bridge_foundations[2][16] = {
