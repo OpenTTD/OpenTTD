@@ -741,8 +741,6 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostra nomi stazioni
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostra nomi stazioni
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostra cartelli
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostra cartelli
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostra Checkpoint
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Mostra Checkpoints
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animazione completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animazione completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Massimo dettaglio
@@ -1081,15 +1079,11 @@ STR_WAYPOINTNAME_CITY						:Waypoint {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Waypoint {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Waypoint
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Modifica nome checkpoint
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Non puoi cambiare il nome del checkpoint...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Converti binario in checkpoint
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Non puoi costruire checkpoint qui...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Non puoi rimuovere checkpoint...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Costruisci binario usando la modalità automatica
 

@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Wyswietlanie nazw stacj
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Wyswietlanie nazw stacji
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Wyswietlanie znakow
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Wyswietlanie znakow
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Wyswietlanie punktow kontrolnych
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Wyswietlanie punktow kontrolnych
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Wyswietlanie punktow kontrolnych
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Pelna animacja
 STR_02D0_FULL_ANIMATION						:{SETX 12}Pelna animacja
@@ -1081,15 +1081,16 @@ STR_WAYPOINTNAME_CITY						:Pkt. kontrolny {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Pkt. kontrolny  {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Pkt. kontrolny
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Edytuj nazwe pkt. kontrolnego
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Edytuj nazwe pkt. kontrolnego
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nie mozna zmienic nazwy pkt. kontrolnego...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Zmiana torow na pkt. kontrolny
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nie mozna zbudowac pkt. kontolnego tutaj...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nie mozna usunac pkt. kontolnego z tego miejsca...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Nie mozna usunac pkt. kontolnego z tego miejsca...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Budowanie torow uzywajac trybu Autorail
 

@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Station names displayed
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Station names displayed
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Signs displayed
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Signs displayed
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Waypoints displayed
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Waypoints displayed
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Waypoints displayed
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION						:{SETX 12}Full animation
@@ -1081,15 +1081,16 @@ STR_WAYPOINTNAME_CITY						:Waypoint {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Waypoint {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Waypoint
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Edit waypoint name
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Edit waypoint name
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Can't change waypoint name...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Convert rail to waypoint
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Can't build train waypoint here...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Can't remove train waypoint here...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Can't remove train waypoint here...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Build railroad track using the Autorail mode
 

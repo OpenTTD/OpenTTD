@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazení jmen stanic
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Zobrazení jmen stanic
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení napisu
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazení napisu
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Zobrazení kontrolních bodu
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Plné animace
 STR_02D0_FULL_ANIMATION						:{SETX 12}Plné animace
@@ -1079,22 +1079,22 @@ STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Mirim do {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Jet pres {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY						:Kontrolni bod {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL					:Kontrolni bod {TOWN} #{COMMA16}
-STR_LANDINFO_WAYPOINT						:Kontrolni bod
+STR_WAYPOINTNAME_CITY						:Kontrolní bod {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Kontrolní bod {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontrolní bod
 
-STR_WAYPOINT					:{WHITE}Kontrolní bod
-STR_WAYPOINT_GRAPHICS_TIP			:{BLACK}Vyber typ kontrolního bodu
+STR_WAYPOINT							:{WHITE}Kontrolní bod
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Vyber typ kontrolního bodu
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Zmenit jméno kontrolniho bodu
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Zmenit jméno kontrolního bodu
 
-STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nemohu zmenit jméno kontrolniho bodu...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Zmenit koleje v kontrolni bod
-STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nemohu zde vybudovat zeleznicni kontrolni bod...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nemohu zde zrusit zeleznicni kontrolni bod...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nemohu zmenit jméno kontrolního bodu...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Zmenit koleje v kontrolní bod
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nemohu zde vybudovat zeleznicni kontrolní bod...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Nemohu zde zrusit zeleznicni kontrolní bod...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Budovat koleje pouzitim rezimu Autokoleje
 

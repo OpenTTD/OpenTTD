@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stationsnamn visas
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Stationsnamn visas
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Skyltar visas
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Skyltar visas
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Kontrollstationer visas
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Kontrollstationer visas
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Kontrollstationer visas
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION						:{SETX 12}Full animation
@@ -1081,15 +1081,16 @@ STR_WAYPOINTNAME_CITY						:Kontrollstation {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollstation {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Kontrollpunkt
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Ändra namn på kontrollstation
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Ändra namn på kontrollstation
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Kan inte ändra kontrollstationens namn...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Ändra räls till kontrollstation
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Kan inte bygga tågkontrollstation här...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Kan inte ta bort tågkontrollstation här...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Kan inte ta bort tågkontrollstation här...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen
 

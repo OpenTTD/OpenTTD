@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Állomásnevek mutatása
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Állomásnevek mutatása
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Feliratok mutatása
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Feliratok mutatása
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Ellenõrzõ pontok mutatása
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Ellenõrzõ pontok mutatása
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Ellenõrzõ pontok mutatása
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Teljes animáció
 STR_02D0_FULL_ANIMATION						:{SETX 12}Teljes animáció
@@ -1083,15 +1083,18 @@ STR_WAYPOINTNAME_CITY						:{TOWN}i ellenõrzõ pont
 STR_WAYPOINTNAME_CITY_SERIAL					:{TOWN}i {COMMA16}. ellenõrzõ pont
 STR_LANDINFO_WAYPOINT						:Ellenõrzõ pont
 
+STR_WAYPOINT							:{WHITE}Útipont
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Válassz útipont tipust
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Módosítd az ellenõrzõ pont nevét
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Módosítd az ellenõrzõ pont nevét
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nem lehet megváltoztatni az ellenõrzõ pont nevét...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Sín átalakítása ellenõrzõ ponttá
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nem lehet vonat ellenõrzõ pontot építeni ide...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nem lehet eltávolítani az ellenõrzõ pontot...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Nem lehet eltávolítani az ellenõrzõ pontot...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Sín építése egyszerûsített módón
 

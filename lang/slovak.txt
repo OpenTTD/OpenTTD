@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazit nazvy stanic
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Zobrazit nazvy stanic
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit popisy
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazit popisy
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit navigacne body
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Zobrazit navigacne body
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Zobrazit navigacne body
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Plna animacia
 STR_02D0_FULL_ANIMATION						:{SETX 12}Plna animacia
@@ -1081,15 +1081,16 @@ STR_WAYPOINTNAME_CITY						:Smerovy bod {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Smerovy bod {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Smerovy bod
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Upravit nazvy smerovych bodov
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Upravit nazvy smerovych bodov
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Meno smeroveho bodu sa neda zmenit...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Konvertovat zeleznicu na smerove body
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Tu nie je mozne postavit zeleznicny smerovy bod...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Automaticka stavba zeleznicnych kolaji
 

@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Afiseazã numele statiil
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Afiseazã numele statiilor
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Afiseazã semnele de pe hartã
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Afiseazã semnele de pe hartã
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Afiseazã checkpoint-urile
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Afiseazã checkpoint-urile
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Afisare puncte de tranzit
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Afisare puncte de tranzit
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animatie completã
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animatie completã
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Detalii grafice complete
@@ -1040,6 +1040,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Pozitia listei cu instrumente: {ORAN
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:stânga
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:centru
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:dreapta
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}dezactivata
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interfatã
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Constructie
@@ -1081,15 +1083,18 @@ STR_WAYPOINTNAME_CITY						:Halta {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Halta {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Haltã de miscare
 
+STR_WAYPOINT							:{WHITE}Punct de tranzit
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Alege tipul de punct de tranzit
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Editeazã numele haltei
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Editeazã numele haltei
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nu pot schimba numele haltei...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Converteste linia în haltã de miscare (waypoint)
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nu pot plasa o haltã aici...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nu pot sterge halta de aici...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Nu pot sterge halta de aici...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construieste cale feratã în modul automat
 

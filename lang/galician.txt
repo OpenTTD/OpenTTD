@@ -739,7 +739,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Amosar nomes de estació
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Amosae nomes de estacións
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Amosa-los sinais
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Amosa-los sinais
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Amosar puntos de control
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Amosar puntos de control
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Amosar puntos de control
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animacións completas
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animación completa
@@ -1062,15 +1062,16 @@ STR_WAYPOINTNAME_CITY						:Punto de Control {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Punto de control {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Punto de control
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Edita-lo nome do punto de control
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Edita-lo nome do punto de control
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Non se pode cambia-lo nome do punto de control...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Convertir raíl a punto de control
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Non se pode construír un punto de control de tren aí...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Non se pode eliminar-lo punto de control...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Non se pode eliminar-lo punto de control...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construí-la vía de ferrocarril usando o modo Autoraíl
 

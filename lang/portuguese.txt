@@ -741,7 +741,7 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estaçõ
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrar nomes de estações
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar indicações
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostrar indicações
-STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar pontos de passagem
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Mostrar pontos de passagem
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Mostrar pontos de passagem
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animação completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animação completa
@@ -1081,15 +1081,16 @@ STR_WAYPOINTNAME_CITY						:Ponto de passagem {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Ponto de passagem {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Ponto de passagem
 
+
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME					:{WHITE}Editar nome do ponto de passagem
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Editar nome do ponto de passagem
 
 STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Não é possível alterar o nome do ponto de passagem...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Converter linha em ponto de passagem
 STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Não é possível construir ponto de passagem de comboio aqui...
-STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Não é possível remover ponto de passagem de comboio aqui...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Não é possível remover ponto de passagem de comboio aqui...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construir caminhos-de-ferro usando o modo automático
 
