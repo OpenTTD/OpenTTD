@@ -686,7 +686,7 @@ release: all
 	@cp changelog.txt "OpenTTD $(RELEASE)"/docs/
 	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
 	@cp os/macos/*.webloc "OpenTTD $(RELEASE)"
-	@hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
+	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
 	@rm -fr "OpenTTD $(RELEASE)"
 
 nightly_build: all
@@ -701,7 +701,7 @@ nightly_build: all
 	@cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
 	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
 	@cp os/macos/*.webloc "OpenTTD_nightly_$(DATE)"/
-	@hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
+	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
 	@rm -fr "OpenTTD_nightly_$(DATE)"
 
 .PHONY: release nightly_build
