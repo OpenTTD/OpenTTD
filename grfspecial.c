@@ -20,7 +20,15 @@ extern int _skip_sprites;
 extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 
-static const char *_cur_grffile;
+struct GRFFile {
+	char *filename;
+	uint32 grfid;
+	uint16 flags;
+	uint16 sprite_offset;
+	struct GRFFile *next;
+};
+
+static struct GRFFile *_cur_grffile, *_first_grffile;
 static int _cur_spriteid;
 
 static int32 _paramlist[0x7f];
@@ -56,7 +64,7 @@ static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 	va_start(va, str);
 	vsprintf(buf, str, va);
 	va_end(va);
-	DEBUG(grf, 2) ("[%s][%s] %s", _cur_grffile, severitystr[severity], buf);
+	DEBUG(grf, 2) ("[%s][%s] %s", _cur_grffile->filename, severitystr[severity], buf);
 }
 
 
@@ -94,6 +102,32 @@ static uint16 grf_load_dword(byte **buf)
 	*buf = p + 4;
 	return val;
 }
+
+
+static struct GRFFile *GetFileByGRFID(uint32 grfid)
+{
+	struct GRFFile *file;
+
+	file = _first_grffile;
+	while ((file != NULL) && (file->grfid != grfid))
+		file = file->next;
+
+	return file;
+}
+
+#if 0
+/* Will be used very soon. */
+static struct GRFFile *GetFileByFilename(char *filename)
+{
+	struct GRFFile *file;
+
+	file = _first_grffile;
+	while ((file != NULL) && strcmp(file->filename, filename))
+		file = retval->next;
+
+	return file;
+}
+#endif
 
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
@@ -909,6 +943,12 @@ static void SkipIf(byte *buf, int len)
 		case 0x86:
 			param_val = _opt.road_side << 4;
 			break;
+		case 0x88: {
+			struct GRFFile *file;
+
+			file = GetFileByGRFID(cond_val);
+			param_val = (file != NULL);
+		}	break;
 		default:
 			if (param >= 0x80) {
 				/* In-game variable. */
@@ -933,6 +973,10 @@ static void SkipIf(byte *buf, int len)
 		case 4: result = (param_val < cond_val);
 			break;
 		case 5: result = (param_val > cond_val);
+			break;
+		case 6: result = param_val; /* GRFID is active (only for param-num=88) */
+			break;
+		case 7: result = !param_val; /* GRFID is not active (only for param-num=88) */
 			break;
 		default:
 			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
@@ -965,17 +1009,22 @@ static void GRFInfo(byte *buf, int len)
 	 * S info          string describing the set, and e.g. author and copyright */
 	/* TODO: Check version. (We should have own versioning done somehow.) */
 	uint8 version;
-	uint32 grfid; /* this is de facto big endian - grf_load_dword() unsuitable */
+	uint32 grfid;
 	char *name;
 	char *info;
 
 	check_length(len, 9, "GRFInfo");
 	version = buf[1];
+	/* this is de facto big endian - grf_load_dword() unsuitable */
 	grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
 	name = buf + 6;
 	info = name + strlen(name) + 1;
+
+	_cur_grffile->grfid = grfid;
+	_cur_grffile->flags |= 0x0001; /* set active flag */
+
 	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n",
-	               _cur_grffile, version, grfid, name, info);
+	               _cur_grffile->filename, version, grfid, name, info);
 }
 
 static void SpriteReplace(byte *buf, int len)
@@ -1203,6 +1252,29 @@ static void InitializeGRFSpecial(void)
 		| (1 << 0x17);		/* newstartyear */
 }
 
+void InitNewGRFFile(const char *filename, int sprite_offset) {
+	struct GRFFile *newfile;
+
+	newfile = malloc(sizeof(struct GRFFile));
+
+	if (newfile == NULL)
+		error ("Out of memory");
+
+	newfile->filename = strdup(filename);
+	newfile->grfid = 0;
+	newfile->flags = 0x0000;
+	newfile->sprite_offset = sprite_offset;
+	newfile->next = NULL;
+
+	if (_first_grffile == NULL) {
+		_cur_grffile = newfile;
+		_first_grffile = newfile;
+	} else {
+		_cur_grffile->next = newfile;
+		_cur_grffile = newfile;
+	}
+}
+
 
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
@@ -1211,7 +1283,7 @@ static void InitializeGRFSpecial(void)
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
 
-void DecodeSpecialSprite(const char *filename, int num, int spriteid)
+void DecodeSpecialSprite(int num, int spriteid)
 {
 #define NUM_ACTIONS 0xF
 	static const SpecialSpriteHandler handlers[NUM_ACTIONS] = {
@@ -1243,7 +1315,6 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid)
 		initialized = 1;
 	}
 
-	_cur_grffile = filename;
 	_cur_spriteid = spriteid;
 
 	for (i = 0; i != num; i++)

@@ -19,7 +19,6 @@ int _skip_sprites = 0;
 int _replace_sprites_count[16];
 int _replace_sprites_offset[16];
 
-static const char *_cur_grffile;
 static int _skip_specials;
 static SpriteHdr _cur_sprite;
 
@@ -85,7 +84,8 @@ static const uint16 * const _slopes_spriteindexes[] = {
 
 static void CompactSpriteCache();
 
-void DecodeSpecialSprite(const char *filename, int num, int load_index);
+void InitNewGRFFile(const char *filename, int sprite_offset);
+void DecodeSpecialSprite(int num, int load_index);
 
 static void ReadSpriteHeaderSkipData(int num, int load_index)
 {
@@ -110,7 +110,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		if (_skip_specials || deaf) {
 			FioSkipBytes(num);
 		} else {
-			DecodeSpecialSprite(_cur_grffile, num, load_index);
+			DecodeSpecialSprite(num, load_index);
 		}
 		return;
 	}
@@ -281,14 +281,13 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 	int load_index_org = load_index;
 
 	FioOpenFile(file_index, filename);
-	_cur_grffile = filename;
 
 	/* Thou shalt use LoadNewGrfFile() if thou loadeth a GRF file that
 	 * might contain some special sprites. */
 	_skip_specials = 1;
 	_skip_sprites = 0;
 
-	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", _cur_grffile);
+	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", filename);
 
  	if(file_index==0 && !_ignore_wrong_grf)
  		if(!CheckGrfFile())
@@ -312,12 +311,11 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	int i;
 	
 	FioOpenFile(file_index, filename);
-	_cur_grffile = filename;
 	_skip_specials = 0;
 	_skip_sprites = 0;
 
 	DEBUG(spritecache, 2) ("Reading newgrf-file ``%s'' [offset: %u]",
-			_cur_grffile, load_index);
+			filename, load_index);
 
 	{
 		int length;
@@ -360,11 +358,10 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 	int start;
 
 	FioOpenFile(file_index, filename);
-	_cur_grffile = filename;
 	_skip_specials = 1;
 	_skip_sprites = 0;
 
-	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", _cur_grffile);
+	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", filename);
 
 	for(;(start=*index_tbl++) != 0xffff;) {
 		int end = *index_tbl++;
@@ -808,8 +805,10 @@ static void LoadSpriteTables()
 
 		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
-		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
+		for(j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
+			InitNewGRFFile(_newgrf_files[j], load_index);
 			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+		}
 
 		// If needed, save the cache to file
 		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);
@@ -823,7 +822,7 @@ static void LoadSpriteTables()
 		//
 		// NOTE: the order of the files must be identical as in the section above!!
 
-		for(i=0; _filename_list[i] != NULL; i++)
+		for(i = 0; _filename_list[i] != NULL; i++)
 			FioOpenFile(i,_filename_list[i]);
 
 		FioOpenFile(i++, "openttd.grf");
