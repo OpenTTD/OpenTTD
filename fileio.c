@@ -83,16 +83,20 @@ void FioReadBlock(void *ptr, uint size)
 	fread(ptr, 1, size, _fio.cur_fh);
 }
 
+static inline void FioCloseFile(int slot)
+{
+	if (_fio.handles[slot] != NULL) {
+		fclose(_fio.handles[slot]); 
+		_fio.handles[slot] = NULL;
+	}
+}
+
 void FioCloseAll(void)
 {
 	int i;
 
-	for (i = 0; i != lengthof(_fio.handles); i++) {
-		if (_fio.handles[i] != NULL) {
-			fclose(_fio.handles[i]);
-			_fio.handles[i] = NULL;
-		}
-	}
+	for (i = 0; i != lengthof(_fio.handles); i++)
+		FioCloseFile(i);
 }
 
 void FioOpenFile(int slot, const char *filename)
@@ -126,6 +130,7 @@ void FioOpenFile(int slot, const char *filename)
 	if (f == NULL)
 		error("Cannot open file '%s'", buf);
 
+	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
 	FioSeekToFile(slot << 24);
 }
