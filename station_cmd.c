@@ -2398,6 +2398,43 @@ static void StationHandleBigTick(Station *st)
 		if (++st->delete_ctr >= 8)
 			DeleteStation(st);
 	}
+
+	//Here we saveguard against orphaned slots
+	{
+		RoadStop *rs;
+
+		for (rs = GetPrimaryRoadStop(st, RS_BUS); rs != NULL; rs = rs->next) {
+			int k;
+			for (k = 0; k < NUM_SLOTS; k++) {
+				if (rs->slot[k] != INVALID_SLOT) {
+					Vehicle *v = GetVehicle(rs->slot[k]);
+
+					if (v->u.road.slot != rs) {
+						DEBUG(misc, 1) ("Bus Slot Desync! cleaning up (Don't panic)");
+						v->u.road.slot = NULL;
+						v->u.road.slot_age = 0;
+						rs->slot[k] = INVALID_SLOT;
+					}
+				}
+			}
+		}
+
+		for (rs = GetPrimaryRoadStop(st, RS_TRUCK); rs != NULL; rs = rs->next) {
+			int k;
+			for (k = 0; k < NUM_SLOTS; k++) {
+				if (rs->slot[k] != INVALID_SLOT) {
+					Vehicle *v = GetVehicle(rs->slot[k]);
+
+					if (v->u.road.slot != rs) {
+						DEBUG(misc, 1) ("Truck Slot Desync! cleaning up (Don't panic)");
+						v->u.road.slot = NULL;
+						v->u.road.slot_age = 0;
+						rs->slot[k] = INVALID_SLOT;
+					}
+				}
+			}
+		}
+	}
 }
 
 static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }

@@ -1470,8 +1470,8 @@ again:
 			//we have arrived at the wrong station
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
-			DEBUG(misc, 2) ("Multistop: Wrong station, force a slot clearing");
-			ClearSlot(v, rs);
+ 			DEBUG(misc, 1) ("Multistop: Wrong station, force a slot clearing. Vehicle %d at 0x%x, should go to 0x%x of station %d (%x), destination 0x%x", v->unitnumber, v->tile, v->u.road.slot->xy, st->index, st->xy, v->dest_tile);
+			ClearSlot(v, v->u.road.slot);
 		}
 
 		StartRoadVehSound(v);
