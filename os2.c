@@ -11,8 +11,8 @@
 #include <dos.h>
 
 #define INCL_DOS
-#define INCL_WINDIALOGS
 #define INCL_OS2MM
+#define INCL_WIN
 
 #include <os2.h>
 #include <os2me.h>
@@ -481,15 +481,38 @@ static void ChangeWorkingDirectory(char *exe)
 	}
 }
 
-// for some reason these calls don't actually work properly :/
 void ShowInfo(const char *str)
 {
-	WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, "OpenTTD", 0, MB_OK | MB_SYSTEMMODAL | MB_MOVEABLE | MB_INFORMATION);
+	HAB hab;
+	HMQ hmq;
+	ULONG rc;
+   
+	// init PM env.
+	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
+
+	// display the box
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, "OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
+
+	// terminate PM env.
+	WinDestroyMsgQueue(hmq);
+	WinTerminate(hab);
 }
 
 void ShowOSErrorBox(const char *buf)
 {
-	WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, "OpenTTD", 0, MB_OK | MB_SYSTEMMODAL | MB_MOVEABLE | MB_ERROR);
+	HAB hab;
+	HMQ hmq;
+	ULONG rc;
+   
+	// init PM env.
+	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
+
+	// display the box
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, "OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
+
+	// terminate PM env.
+	WinDestroyMsgQueue(hmq);
+	WinTerminate(hab);
 }
 
 int CDECL main(int argc, char* argv[])
@@ -587,7 +610,6 @@ void OS2_SwitchToConsoleMode()
 	// Change flag from PM to VIO
 	pib->pib_ultype = 3;
 }
-
 
 /**********************
  * OS/2 MIDI PLAYER
