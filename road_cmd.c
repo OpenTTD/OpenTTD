@@ -149,7 +149,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
-	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+	if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
 		t = GetTown(_map2[tile]); // needed for town rating penalty
 	else
 		t = NULL;
@@ -207,7 +207,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			// check if you're allowed to remove the street owned by a town
 			// removal allowance depends on difficulty setting
-			if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
+			if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
 				if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE))
 					return CMD_ERROR;
 			}
@@ -215,7 +215,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				// checks if the owner is town than decrease town rating by 50 until you have
 				// a "Poor" town rating
-				if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+				if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
 					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 				_map5[tile] ^= c;
@@ -967,10 +967,7 @@ static void TileLoop_Road(uint tile)
 		return;
 
 	if (((_map3_hi[tile] & 0x70) >> 4) < 6) {
-		if(_map_owner[tile] == OWNER_TOWN)
-			t = GetTown(_map2[tile]);
-		else
-			t = ClosestTownFromTile(tile, (uint)-1);
+		t = ClosestTownFromTile(tile, (uint)-1);
 
 		grp = 0;
 		if (t != NULL) {
