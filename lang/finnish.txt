@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Aluetta ei voi puhdistaa....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Alkuper‰inen {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pid‰tet‰‰n
 STR_00B7_VERSION						:{BLACK}OpenTTD versio {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-ryhm‰
+STR_TRANSLATED_BY						:{BLACK}  K‰‰nt‰j‰(t) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Huoltov‰li‰ ei voi muuttaa...
 STR_018B_CLOSE_WINDOW						:{BLACK}Sulje ikkuna
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Ikkunan otsake - ved‰ t‰st‰ siirt‰‰ksesi ikkunaa
 STR_STICKY_BUTTON						:{BLACK}Merkitse t‰m‰ ikkuna ei-suljettavaksi 'Sulje kaikki ikkunat' n‰pp‰imelle
+STR_RESIZE_BUTTON						:{BLACK}Klikkaa ja ved‰ muuttaaksesi t‰m‰n ikkunan kokoa
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Tuhoa rakennuksia jne. maa-alaruudulla
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Madalla maanurkkausta
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Korota maanurkkausta
@@ -849,6 +851,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Englantilainen
 STR_TOWNNAME_FRENCH						:Ranskalainen
 STR_TOWNNAME_GERMAN						:Saksalainen
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Englanti (lis‰ke)
 STR_TOWNNAME_LATIN_AMERICAN					:Latinalais-Amerikkalainen
 STR_TOWNNAME_SILLY						:Hassu
 STR_TOWNNAME_SWEDISH						:Ruotsalainen
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Itseuudista ajoneuvo, kun se va
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Itseuudista {ORANGE}{STRING}{LTBLUE} kuukautta maksimi-ik‰‰ ennen/-i‰n j‰lkeen
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Itseuudistuksen pienin tarvittava raham‰‰r‰: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}N‰yt‰ kaupungin asukasluku kaupungin nimess‰: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}N‰kym‰ttˆm‰t puut (n‰kym‰ttˆmill‰ rakennuksilla): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Suurin aseman levitt‰ytyminen: {ORANGE}{STRING} {RED}Varoitus, korkea asetus hidastaa peli‰
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Teimme protokollavirheen ja yhteys kat
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} T‰m‰n asiakkaan revisio ei vastaa palvelimen revisiota.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} V‰‰r‰ salasana.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Palvelin on t‰ynn‰
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Sinut on suljettu pois palvelimelta
 STR_NETWORK_ERR_KICKED						:{WHITE} Sinut potkittiin pihalle palvelimelta
 STR_NETWORK_ERR_CHEATER						:{WHITE} Huijaaminen ei ole sallittua t‰ll‰ palvelimella
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Tie/rautatietasoliittym‰
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Kaupungit
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Lentokonetta ei voi nimet‰...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nime‰ lentokone
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimm‰inen lentokone saapuu asemalle ({STATION})!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA16} kuolee tulipallossa asemalla {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Lentokoneonnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA16} kuolee tulipallossa!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Kohteet:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Uudelleennime‰
@@ -2754,9 +2761,25 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}N‰yt‰ kaikki autot, joilla on asema 
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}N‰yt‰ kaikki lentokoneet, joilla on asema aikataulussaan
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}N‰yt‰ kaikki laivat, joilla on asema aikataulussaan
 
+STR_REPLACE_VEHICLES						:{BLACK}Korvaa ajoneuvoja
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Korvaa ajoneuvoja
+STR_REPLACE_VEHICLES_START					:{BLACK}Aloita ajoneuvojen korvaaminen
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Lopeta ajoneuvojen korvaaminen
+STR_NOT_REPLACING						:{BLACK}Ei korvata
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Ajoneuvoa ei valittuna
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Valitse korvattava veturityyppi
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Valitse vasemmalla n‰kyv‰n veturityypinn korvaava uusi veturityyppi
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Paina pys‰ytt‰‰ksesi vasemmalta valitun veturityypin korvauksen
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Paina aloittaaksesi vasemmalta valitun veturityypin korvauksen oikealta valitulla veturityypill‰
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehd‰‰n
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}N‰ytt‰‰, mill‰ vasemmalta valittu veturi korvataan, jos mill‰‰n
+STR_REPLACE_HELP						:{BLACK}T‰ll‰ voit korvata yhden veturityypin toisella, kun alkuper‰isen tyypin junat menev‰t varikolle
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Rautatiejunat
+STR_MONORAIL_VEHICLES						:Yksiraidejunat
+STR_MAGLEV_VEHICLES						:Maglev-junat
 
 ############ End of list of rail types
 

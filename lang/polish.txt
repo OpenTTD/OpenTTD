@@ -2767,13 +2767,13 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Rozpocznij zastepowanie
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Zatrzymaj zastepowanie
 STR_NOT_REPLACING						:{BLACK}Brak zastapien
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Brak zaznaczonych pojazdow
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Wybierz typ lokomotywy jaki ma byc zastapiony{}Wybierz lokomotywe po prawej stronie na jaka ma zastapic
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Wybierz typ lokomotywy jaki ma{} zastapic lokomotywe zaznaczona po lewej stronie
-STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Wcisnij ten klawisz jesli nie chcesz zmieniac lokomotyw ktore zaznaczono po lewej stronie
-STR_REPLACE_HELP_START_BUTTON					:{BLACK}Wcisnij ten klawisz jesli chcesz zastapic lokomotywy zaznaczone po lewej stronie na wybrana po prawej stronie
-STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic lokomotywy
-STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Wyswietla typ lokomotywy na jaki bedzie zastapiona  lokomotywa zaznaczona po lewej stronie
-STR_REPLACE_HELP						:{BLACK}Ta funkcja pozwala wybrac typ lokomotywy i zastapic ja inna. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Wybierz typ pojazdu jaki chcesz zamienic
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Wybierz typ pojazdu jakim chcesz zastapic pojazd zaznaczony po lewej stronie
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Wcisnij ten klawisz jesli nie chcesz zmieniac pojazdu ktory zaznaczono po lewej stronie
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Wcisnij ten klawisz jesli chcesz zastapic pojazd zaznaczony po lewej stronie wybranym pojazdem po prawej stronie
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic pojazdy
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
+STR_REPLACE_HELP						:{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 
 ############ Lists rail types
 

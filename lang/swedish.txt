@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan inte röja området...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter reserverade
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-teamet
+STR_TRANSLATED_BY						:{BLACK}  Översättare -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan inte ändra service-intervall...
 STR_018B_CLOSE_WINDOW						:{BLACK}Stäng fönster
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Fönstertitel - dra för att flytta fönstret
 STR_STICKY_BUTTON						:{BLACK}Markera detta fönster så att det finns kvar även fast man använder 'Stäng alla fönster' knappen
+STR_RESIZE_BUTTON						:{BLACK}Klicka och dra för att förstora fönstret
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Riv ned byggnader etc. på en ruta mark
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Sänk ett hörn av marken
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Höj upp ett hörn av marken
@@ -849,6 +851,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Engelska
 STR_TOWNNAME_FRENCH						:Franska
 STR_TOWNNAME_GERMAN						:Tyska
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Engelska (Extra)
 STR_TOWNNAME_LATIN_AMERICAN					:Latinamerikanska
 STR_TOWNNAME_SILLY						:Löjliga
 STR_TOWNNAME_SWEDISH						:Svenska
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Förnya fordon automatiskt när d
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minst mängd pengar i kassan för automatisk förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Visa befolkningsmängd i stadsnamnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Osynliga träd (när genomskinliga byggnader är valt): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximal spridning av en station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Vi gjorde ett protokollfel och vår ans
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Servern har en annan version än denna klient.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Fel lösenord.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Servern är full
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Du är bannlyst från den här servern
 STR_NETWORK_ERR_KICKED						:{WHITE} Du är utkastad från servern
 STR_NETWORK_ERR_CHEATER						:{WHITE} Fusk är inte tillåtet på denna server
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Järnvägskorsning
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Städer
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2385,7 +2391,7 @@ STR_8819_TRAIN_TOO_LONG						:{WHITE}Tåg för långt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Tåg kan bara ändras när det står still inuti en depå
 STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Tåg
 STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Nytt tågfordon
-STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nytt monorail-Fordon
+STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nytt monorail-fordon
 STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}Nytt maglev-Fordon
 STR_881F_BUILD_VEHICLE						:{BLACK}Bygg fordon
 STR_8820_RENAME							:{BLACK}Byt namn på
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kan inte byta namn på flygplan...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Byt namn på flygplan
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Invånarna firar . . .{}Första flygplanet ankommer till {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flygplanskrasch!{}{COMMA16} dör i eldklot på {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA16} dör i eldklot!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinationer:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Byt namn på
@@ -2754,9 +2761,25 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Visa alla vägfordon där denna statio
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Visa alla flygplan där denna station finns med i rutten
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Visa alla skepp där denna station finns med i rutten
 
+STR_REPLACE_VEHICLES						:{BLACK}Byt ut fordon
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Byt ut fordon
+STR_REPLACE_VEHICLES_START					:{BLACK}Börja byta ut fordon
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Sluta byta ut fordon
+STR_NOT_REPLACING						:{BLACK}Byter inte ut
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Inget fordon valt
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Välj fordonstyp att byta ut
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Välj den nya fordonstyp du vill använda i stället för den till vänster valda typen
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Tryck för att sluta byta ut fordonstypen vald på vänster sida
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Tryck för att börja byta ut fordonstypen vald på vänster sida med fordonstypen på höger sida
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Välj järnvägstyp för att byta ut fordon
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Visa vilket fordon, det vänstra fordonet byts ut till, om något
+STR_REPLACE_HELP						:{BLACK}Detta gör det möjligt att byta ut en fordonstyp med en annan typ, när tågen av den ursprungliga typen anländer till en depå
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Järnvägsfordon
+STR_MONORAIL_VEHICLES						:Monorail-fordon
+STR_MAGLEV_VEHICLES						:Maglevfordon
 
 ############ End of list of rail types
 

@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}No se puede desbrozar esta zona....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Todos los derechos reservados
 STR_00B7_VERSION						:{BLACK}OpenTTD versión {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 El equipo OpenTTD
+STR_TRANSLATED_BY						:{BLACK}  Traductor(es) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}No es posible cambiar el intervalo d
 STR_018B_CLOSE_WINDOW						:{BLACK}Cerrar ventana
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título de la ventana - arrastrelo para mover la ventana
 STR_STICKY_BUTTON						:{BLACK}Marcar esta ventana como no borrable para el comando de 'Cerrar Todas las Ventanas'
+STR_RESIZE_BUTTON						:{BLACK}Pulse y arrastre para redimensionar la ventana
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demoler edificios, etc. en un bloque de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Bajar una esquina del terreno
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Subir una esquina del terreno
@@ -2664,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}No se puede nombrar aeronave...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nombrar aeronave
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primera aeronave llega a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}¡Avión siniestrado!{}{COMMA16} fallecidos en la explosión en {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Accidente aéreo!{}La aeronave se quedó sin combustible, {COMMA16} personas mueren en la tragedia!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinos:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Renombrar
@@ -2759,12 +2762,13 @@ STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar todos las aeronaves que tienen es
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar todos los barcos que tienen esta estación en su horario
 
 STR_REPLACE_VEHICLES						:{BLACK}Reemplazar vehículos
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Reemplazar vehículos
 STR_REPLACE_VEHICLES_START					:{BLACK}Empezar a reemplazar vehículos
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Parar de reemplazar vehículos
 STR_NOT_REPLACING						:{BLACK}No reemplazar
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No hay vehículos seleccionados
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Seleccione tipo de locomotora a reemplazar{}Seleccione una locomotora de la derecha para reemplazarla
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Seleccione tipo de locomotora a reemplazar{}Reemplazará la locomotora seleccionada en la izquierda
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Seleccione tipo de locomotora a reemplazar
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Seleccione nuevo tipo de locomotora a usar en vez de la locomotora seleccionada a la izquierda
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Presiona este botón si no quieres reemplazar la locomotora seleccionada en la izquierda
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Presiona este botón si quieres reemplazar la locomotora seleccionada a la izquierda por la seleccionada en la derecha
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Seleccione tipo de rail para seleccionar locomotoras para ese tipo
@@ -2773,9 +2777,9 @@ STR_REPLACE_HELP						:{BLACK}Esta función permite seleccionar un tipo de locomo
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES						:{BLACK}Vehículos de rail
-STR_MONORAIL_VEHICLES						:{BLACK}Vehículos Monorail
-STR_MAGLEV_VEHICLES						:{BLACK}Vehículos Maglev
+STR_RAIL_VEHICLES						:Vehículos de rail
+STR_MONORAIL_VEHICLES						:Vehículos monorail
+STR_MAGLEV_VEHICLES						:Vehículos de Lev. Mag.
 
 ############ End of list of rail types
 

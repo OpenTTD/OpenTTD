@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Bytt automatisk ut kjøretøy når
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE} måneder før/etter maks alder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autoforny minimum penger trengst for fornying: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Varighet til feilmelding: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Vis byers befolkning i tittel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Usynlige trær (med gjennomsiktige bygninger): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snøhøyde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir treger spill
@@ -1339,6 +1340,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Det skjedde en protokoll-feil, så forb
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Klientversjonen er ikke den samme som tjenerversjonen.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Feil passord.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Tjeneren er full
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Du er bannlyst fra denne serveren
 STR_NETWORK_ERR_KICKED						:{WHITE} Du ble sparket ut av tjeneren
 STR_NETWORK_ERR_CHEATER						:{WHITE} Juksing er forbudt på denne serveren
 
@@ -2665,6 +2667,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kan ikke navngi fly...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Navngi fly
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første fly ankommer {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flykrasj!{}{COMMA16} dør ved {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA16} døde i eksplosjon!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Stoppested:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Endre navn
@@ -2765,8 +2768,8 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Begynn å bytte ut kjøretøy
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Slutt å bytte ut kjøretøy
 STR_NOT_REPLACING						:{BLACK}Byttes ikke ut
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Inget lokomotiv valgt
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Velg en type lokomotiv å bytte ut{}Velg en type lokomotiv på høyresiden å bytte ut til
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Velg et lokomotiv å bytte ut til{}Det vil ta over for lokomotivet som er valgt på venstresiden.
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Velg lokomotivtype å bytte ut
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Velg den nye lokomotivtypen du vil skal ta over for den du har valgt til venstre
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Klikk denne knappen hvis du ikke vil bytte ut lokomotivet som er valgt på venstresiden
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Klikk denne knappen hvis du vil bytte ut det valgte lokomotivet på venstresiden med det valgte lokomotivet på høyresiden
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Velg jernbanetypen du vil velge lokomotiv fra

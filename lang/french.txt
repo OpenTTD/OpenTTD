@@ -1046,6 +1046,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Maintenance des navires tou
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Les journeaux en couleurs apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Date de départ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Permettre une économie stable (plus de petits changements)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Permettre d'acheter des actions d'autres compagnies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Espacements des signaux en mode drag & drop : {ORANGE}{STRING} case(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Gauche
@@ -2666,6 +2667,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Impossible de nommer l'aéronef...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nommer l'aéronef
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier aéronef à {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Écrasement d'un aéronef!{}{COMMA16} meurent brulés vifs à {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Crash d'avion !{}L'aéronef n'avait plus de carburant, {COMMA16} meurent de manière horrible !
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinations:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Renommer
@@ -2766,8 +2768,8 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Commencer le remplacement
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Stopper le remplacement
 STR_NOT_REPLACING						:{BLACK}Pas en cours de remplacement
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Aucun véhicule selectionné
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Choisissez un type de locomotive à remplacer{}Choisissez un type de locomotive cible à droite
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Choisissez le type de locomotive cible{}Celui-ci remplacera le type sélectionné à gauche
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Choisissez le type de locomotive à remplacer
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Choisissez le nouveau type de locomotive que vous voudriez utiliser à la place du type de locomotive sélectionné à gauche
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Appuyez sur ce bouton si vous ne voulez pas remplacer la locomotive que vous avez choisi à gauche
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Appuyez sur ce bouton si vous voulez remplacer la locomotive de gauche par celle sélectionnée à droite
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Choisissez un type de rail pour le remplacement de locomotives

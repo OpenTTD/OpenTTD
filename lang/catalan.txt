@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}No es pot netejar l'àrea....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Tots els Drets reservats
 STR_00B7_VERSION						:{BLACK}OpenTTD versió {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY						:{BLACK}  Traductor(s) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}No es pot canviar l'interval del man
 STR_018B_CLOSE_WINDOW						:{BLACK}Tancar finestra
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Títol de finestra - arrosega aixó per moure la finestra
 STR_STICKY_BUTTON						:{BLACK}Marca aquesta finestra com a no eliminable per a la clau 'Tancar totes les Finestres'
+STR_RESIZE_BUTTON						:{BLACK}Prem i arrosega per canviar el tamany de la finestra
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolició d'edificis etc. en un quadre de terreny
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Rebaixar una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Elevar una cantonada del terreny
@@ -849,6 +851,7 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH					:Anglès
 STR_TOWNNAME_FRENCH						:Francès
 STR_TOWNNAME_GERMAN						:Alemany
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Anglès (Adicional)
 STR_TOWNNAME_LATIN_AMERICAN					:Latinoamericà
 STR_TOWNNAME_SILLY						:Tonto
 STR_TOWNNAME_SWEDISH						:Suec
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autorenova el vehicle quan sigu
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mesos abans/després antig. max.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenovació: mínim de diners per renovar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duració del missatge d'error: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Mostra els habitants a la etiqueta del nom de població: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Arbres invisibles (amb edificis transparents): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} S'ha obtingut un error de protocol i s
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La revisió d'aquest client no concorda amb la revisió del servidor.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contrasenya incorrecta.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} El servidor és plé
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Estàs exclòs d'aquest servidor
 STR_NETWORK_ERR_KICKED						:{WHITE} T'han fet fora del servidor
 STR_NETWORK_ERR_CHEATER						:{WHITE} No es permet usar codis trampa en aquest servidor
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Pas a nivell
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Poblacions
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}No es pot anomenar aeronaus...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Anomenar aeronaus
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Celebració popular . . .{}La primera aeronau arriba a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Accident d'avió!{}{COMMA16} moren en una bola de foc a {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Accident d'aviació!{}Aeronau sense combustible, {COMMA16} morts en una bola de foc!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinacions:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Reanomena
@@ -2754,9 +2761,25 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostra tots els vehicles que tinguin
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostra totes les aeronaus que tinguin aquest aeroport al seu itinerari
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostra tots els vaixells que tinguin aquest port al seu itinerari
 
+STR_REPLACE_VEHICLES						:{BLACK}Reemplaçar Vehicles
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Reemplaçar Vehicles
+STR_REPLACE_VEHICLES_START					:{BLACK}Inici de reemplaçament de Vehicles
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Fi de reemplaçament de Vehicles
+STR_NOT_REPLACING						:{BLACK}No reemplaçar
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No hi ha cap vehicle seleccionat
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Selecciona el tipus de motor a reemplaçar
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Selecciona el nou tipus de motor que vols fer servir en lloc del seleccionat
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Tria el tipus de via pel que vols reemplaçar motors
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
+STR_REPLACE_HELP						:{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Trens
+STR_MONORAIL_VEHICLES						:Monorrails
+STR_MAGLEV_VEHICLES						:Vehicles Maglev
 
 ############ End of list of rail types
 

@@ -2666,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kan vliegtuig niet hernoemen...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Hernoem vliegtuig
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vliegtuig arriveert in {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Vliegtuig neergestort!{}{COMMA16} sterven in een vuurbal bij {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA16} komen om in explosie!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Doelen:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Hernoem
@@ -2766,8 +2767,8 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Start het Vervangen
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop het Vervangen
 STR_NOT_REPLACING						:{BLACK}Niet aan het vervangen
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Geen voertuig geselecteerd
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Selecteer een type locomotief om te vervangen{}Selecteer een locomotief aan de rechterkant om mee te vervangen
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Selecteer een locomotief om mee te vervangen{}Deze zal alle aan de linkerkant geselecteerde locomotieven vervangen
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Selecteer het type locmotief om te vervangen
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Selecteer een nieuw type locomotief die je wil gebruiken om het links geselecteerde type locomotief te vervangen
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wil vervangen
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Klik op deze knop als je de aan de linkerkant geseleteerde locomotief wil vervangen met die aan de rechterkant
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Selecteer een railtype waar je locomotieven voor wil selecteren

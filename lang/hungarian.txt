@@ -1046,6 +1046,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Alap szervízelési idõ a haj
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Egyenletes gazdaság (több, kisebb változás)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Másik cégekbõl részvényt lehet vásárolni
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezõre
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}A fõ eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Balra
@@ -2767,8 +2768,8 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Jármûcsere elkezdése
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Jármûcsere befejezése
 STR_NOT_REPLACING						:{BLACK}Nem cserélendõ
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Nincs kiválasztva jármû
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Válaszd ki a cserélendõ mozdony típusát{}Válassz egy mozdonyt a jobb oldalról, hogy lecseréld õket arra
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Válaszd ki mire cseréled a mozdonyt{}Kicseréli a bal oldalon kiválasztott mozdonyokat erre
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Válaszd ki mely mozdonyokat cseréljük
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}A bal oldalon kiválasztott mozdonyok ilyen típusuakra lesznek lecserélve
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Nyomd meg ezt a gombot, ha nem akarod kicserélni a mozdonyt a bal oldalon kiválasztottakra
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott mozdonyokat lecseréld a jobb oldalon kiválasztottra
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Válaszd ki a cserélendõ vasúttípust

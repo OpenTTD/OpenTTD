@@ -1046,6 +1046,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Základní servisní interval 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Pocatecni datum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Plynulé zmeny ekonomiky (více mensich zmen)
+STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Povolit kupování podilu z ostatních spolecnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Pri tazeni umistovat signály kazdych(e): {ORANGE}{STRING} dilku(y)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Umisteni hlavní listy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vlevo
@@ -2767,8 +2768,8 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Spustit zamenovani vozidel
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Vypnout zamenovani vozidel
 STR_NOT_REPLACING						:{BLACK}Nezamenuje se
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Není oznaceno zadne vozidlo
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Vyber typ lokomotivy k vymene{}Vyber lokomotivu, která bude nahrazena lokomovitou ze seznamu vpravo
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Vyber typ lokomotivy, za kterou se zameni{}Nahradí lokomotivu oznacenou v levém seznamu
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Vyber typ lokomotivy na vymenu
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Vyber typ nové lokomotivy, kterou chces pouzit místo vybrané v levém seznamu
 STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Zmackni toto tlacitko, kdyz nechces zamenovat typ lokomotivy vybraný v levém seznamu
 STR_REPLACE_HELP_START_BUTTON					:{BLACK}Zmackni toto tlacitko, kdyz chces zamenovat typ lokomotivy vybraný v levém seznamu lokomotivou vybranou v pravém seznamu
 STR_REPLACE_HELP_RAILTYPE					:{BLACK}Vyber typ kolejí, pro které chces vybírat lokomotivy na zamenu
