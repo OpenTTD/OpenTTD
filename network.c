@@ -1130,7 +1130,7 @@ void NetworkGenerateUniqueId()
 	char coding_string[NETWORK_NAME_LENGTH];
 	int di;
 
-	snprintf(coding_string, sizeof(coding_string), "%d%s%d", InteractiveRandom(), "OpenTTD Unique ID", InteractiveRandom());
+	snprintf(coding_string, sizeof(coding_string), "%d%s", (uint)Random(), "OpenTTD Unique ID");
 
 	/* Generate the MD5 hash */
 	md5_init(&state);
