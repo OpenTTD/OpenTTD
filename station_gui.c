@@ -401,27 +401,21 @@ static void DrawStationViewWindow(Window *w)
 		char *b;
 
 		b = _userstring;
-		b[0] = 0x81;
-		b[1] = STR_000C_ACCEPTS;
-		b[2] = STR_000C_ACCEPTS >> 8;
-		b += 3;
+		b = InlineString(b, STR_000C_ACCEPTS);
 
 		for(i=0; i!=NUM_CARGO; i++) {
 			if ((b - _userstring) + 5 > USERSTRING_LEN - 1)
 				break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
-				b[0] = 0x81;
-				WRITE_LE_UINT16(b+1, _cargoc.names_s[i]);
-				WRITE_LE_UINT16(b+3, 0x202C);
-				b += 5;
+				b = InlineString(b, _cargoc.names_s[i]);
+				WRITE_LE_UINT16(b, 0x202C);
+				b += 2;
 			}
 		}
 
 		if (b == &_userstring[3]) {
-			b[0] = 0x81;
-			b[1] = (char)STR_00D0_NOTHING;
-			b[2] = STR_00D0_NOTHING >> 8;
-			b[3] = 0;
+			b = InlineString(b, STR_00D0_NOTHING);
+			*b++ = '\0';
 		} else {
 			b[-2] = 0;
 		}

@@ -669,28 +669,20 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 	char *b;
 
 	b = _userstring;
-	b[0] = 0x81;
-	b[1] = STR_000D_ACCEPTS;
-	b[2] = STR_000D_ACCEPTS >> 8;
-	b += 3;
+	b = InlineString(b, STR_000D_ACCEPTS);
 
 	for(i=0; i!=NUM_CARGO; i++,mask>>=1) {
 		if (accepts[i] >= 8 && (mask&1) ) {
 			StringID id = _cargoc.names_s[i];
-			b[0] = 0x81;
-			b[1] = (byte)(id & 255);
-			b[2] = (byte)(id >> 8);
-			b[3] = ',';
-			b[4] = ' ';
-			b += 5;
+			b = InlineString(b, id);
+			*b++ = ',';
+			*b++ = ' ';
 		}
 	}
 
 	if (b == &_userstring[3]) {
-		b[0] = 0x81;
-		b[1] = (char)STR_00D0_NOTHING;
-		b[2] = STR_00D0_NOTHING >> 8;
-		b[3] = 0;
+		b = InlineString(b, STR_00D0_NOTHING);
+		*b++ = '\0';
 	} else {
 		b[-2] = 0;
 	}
