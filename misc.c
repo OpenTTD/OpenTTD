@@ -15,9 +15,14 @@ static INLINE uint32 ROR(uint32 x, int n)
 	return (x >> n) + (x << ((sizeof(x)*8)-n));
 }
 
-
+/* Fuck bitch code, most probably one of the loops (tileloop, vehicleloop, etc.) 
+ * doesn't set up/reset _current_player so the normal random below fails #$%@$#!
+ * The old code below is prune to desyncs because randoms interfere.
+ * SO FIND THE OFFENDING LOOP AND FIX IT ONCE AND FOR ALL */
+#undef NORMAL_RANDOM // unuseable game, desyncs way too fast
 uint32 Random()
 {
+#ifdef NORMAL_RANDOM
 	if (_current_player>=MAX_PLAYERS) {
 		uint32 s = _random_seeds[0][0];
 		uint32 t = _random_seeds[0][1];
@@ -29,6 +34,12 @@ uint32 Random()
 		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7);
 		return _player_seeds[_current_player][1] = ROR(s, 3);
 	}
+#else
+	uint32 s = _random_seeds[0][0];
+	uint32 t = _random_seeds[0][1];
+	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);
+	return _random_seeds[0][1] = ROR(s, 3);
+#endif
 }
 
 uint RandomRange(uint max)
