@@ -68,11 +68,11 @@ void DedicatedFork(void)
 			}
 			/* Redirect stdout and stderr to log-file */
 			if (dup2(fileno(_log_file_fd), fileno(stdout)) == -1) {
-				perror("Re-routing stdout");
+				perror("Rerouting stdout");
 				exit(1);
 			}
 			if (dup2(fileno(_log_file_fd), fileno(stderr)) == -1) {
-				perror("Re-routing stderr");
+				perror("Rerouting stderr");
 				exit(1);
 			}
 			break;
@@ -271,7 +271,7 @@ static int DedicatedVideoMainLoop(void)
 		 *  intro game... */
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
 			/* Loading failed, pop out.. */
-			DEBUG(net, 0)("Loading request map failed. Aborting..");
+			DEBUG(net, 0)("Loading requested map failed. Aborting.");
 			_networking = false;
 		} else {
 			/* We can load this game, so go ahead */
@@ -282,7 +282,7 @@ static int DedicatedVideoMainLoop(void)
 	// Done loading, start game!
 
 	if (!_networking) {
-		DEBUG(net, 1)("Dedicated server could not be launced. Aborting..");
+		DEBUG(net, 1)("Dedicated server could not be launched. Aborting.");
 		return ML_QUIT;
 	}
 
@@ -329,7 +329,7 @@ static void *_dedicated_video_mem;
 
 static const char *DedicatedVideoStart(const char * const *parm)
 {
-	DEBUG(misc, 0) ("OpenTTD compiled without network-support, exiting...");
+	DEBUG(misc, 0) ("OpenTTD compiled without network support, exiting.");
 
 	return NULL;
 }
