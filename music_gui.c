@@ -181,7 +181,7 @@ void MusicLoop(void)
 	if (_song_is_active == false)
 		return;
 
-	if (!_music_driver->is_song_playing()) {
+	if (!_music_driver->is_song_playing() && _game_mode != GM_MENU) {
 		StopMusic();
 		SkipToNextSong();
 		PlayPlaylistSong();
