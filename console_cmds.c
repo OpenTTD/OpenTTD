@@ -364,6 +364,13 @@ DEF_CONSOLE_CMD(ConPrintFC)
 	return NULL;
 }
 
+DEF_CONSOLE_CMD(ConAlias)
+{
+	if (argc < 3) return NULL;
+	IConsoleAliasRegister(argv[1],argv[2]);
+	return NULL;
+}
+
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc < 2) {
@@ -485,6 +492,20 @@ DEF_CONSOLE_CMD(ConListVariables)
 	for (item = _iconsole_vars; item != NULL; item = item->_next)
 		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
 			IConsolePrintF(_iconsole_color_default, "%s", item->name);
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConListAliases)
+{
+	const _iconsole_alias* item;
+	size_t l = 0;
+
+	if (argv[1] != NULL) l = strlen(argv[1]);
+
+	for (item = _iconsole_aliases; item != NULL; item = item->_next)
+		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
+			IConsolePrintF(_iconsole_color_default, "%s => %s", item->name, item->cmdline);
 
 	return NULL;
 }
@@ -740,6 +761,8 @@ void IConsoleDebugLibRegister()
 	IConsoleVarMemRegister("temp_uint16_2", ICONSOLE_VAR_UINT16);
 	IConsoleVarMemRegister("temp_uint32", ICONSOLE_VAR_UINT32);
 	IConsoleCmdRegister("resettile", ConResetTile);
+	IConsoleAliasRegister("dbg_echo","echo %A; echo %B");
+	IConsoleAliasRegister("dbg_echo2","echo %+");
 }
 #endif
 
@@ -764,10 +787,8 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("info_var",     ConInfoVar);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
+	IConsoleCmdRegister("list_aliases",    ConListAliases);
 	IConsoleCmdRegister("newgame",         ConNewGame);
-	IConsoleCmdRegister("new_game",         ConNewGame);
-	IConsoleCmdRegister("newmap",         ConNewGame);
-	IConsoleCmdRegister("new_map",         ConNewGame);
 	IConsoleCmdRegister("printf",       ConPrintF);
 	IConsoleCmdRegister("printfc",      ConPrintFC);
 	IConsoleCmdRegister("quit",         ConExit);
@@ -778,6 +799,10 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("script",     ConScript);
 	IConsoleCmdRegister("scrollto",   ConScrollToTile);
 	IConsoleCmdRegister("set",			ConSet);
+	IConsoleCmdRegister("alias",		ConAlias);
+	IConsoleAliasRegister("new_game",		"newgame");
+	IConsoleAliasRegister("newmap",		"newgame");
+	IConsoleAliasRegister("new_map",		"newgame");
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
 

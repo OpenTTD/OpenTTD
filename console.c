@@ -22,6 +22,7 @@
 #define ICON_LINE_HEIGHT 12
 #define ICON_RIGHT_BORDERWIDTH 10
 #define ICON_BOTTOM_BORDERWIDTH 12
+#define ICON_MAX_ALIAS_LINES 40
 
 // ** main console ** //
 static bool _iconsole_inited;
@@ -261,9 +262,9 @@ void IConsoleInit(void)
 	}
 	IConsoleStdLibRegister();
 	#if defined(WITH_REV)
-	IConsolePrintF(13, "OpenTTD Game Console Revision 5 - %s", _openttd_revision);
+	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
 	#else
-	IConsolePrint(13, "OpenTTD Game Console Revision 5");
+	IConsolePrint(13, "OpenTTD Game Console Revision 6");
 	#endif
 	IConsolePrint(12, "---------------------------------");
 	IConsolePrint(12, "use \"help\" for more info");
@@ -503,6 +504,164 @@ _iconsole_cmd* IConsoleCmdGet(const char* name)
 		item = item->_next;
 	}
 	return NULL;
+}
+
+void IConsoleAliasRegister(const char* name, const char* cmdline)
+{
+	char* _new;
+	char* _newcmd;
+	_iconsole_alias* item;
+	_iconsole_alias* item_new;
+	_iconsole_alias* item_before;
+
+	_new = strdup(name);
+	_newcmd = strdup(cmdline);
+
+	item_new = malloc(sizeof(_iconsole_alias));
+
+	item_new->_next = NULL;
+	item_new->cmdline = _newcmd;
+	item_new->name = _new;
+
+	item_before = NULL;
+	item = _iconsole_aliases;
+
+	if (item == NULL) {
+		_iconsole_aliases = item_new;
+	} else {
+		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
+			item_before = item;
+			item = item->_next;
+			}
+// insertion sort
+		if (item_before==NULL) {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting as startitem
+				_iconsole_aliases = item_new;
+				item_new ->_next = item;
+			}
+		} else {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting
+				item_new ->_next = item_before->_next;
+				item_before ->_next = item_new;
+			}
+		}
+// insertion sort end
+	}
+
+}
+
+_iconsole_alias* IConsoleAliasGet(const char* name)
+{
+	_iconsole_alias* item;
+
+	item = _iconsole_aliases;
+	while (item != NULL) {
+		if (strcmp(item->name, name) == 0) return item;
+		item = item->_next;
+	}
+	return NULL;
+}
+
+void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20]) {
+	char* lines[ICON_MAX_ALIAS_LINES];
+	char* linestream;
+	char* linestream_s;
+
+	int c;
+	int i;
+	int l;
+	int x;
+	byte t;
+
+	//** clearing buffer **//
+
+	for (i = 0; i < 40; i++) {
+		lines[0] = NULL;
+	}
+	linestream_s = linestream = malloc(1024*ICON_MAX_ALIAS_LINES);
+	memset(linestream, 0, 1024*ICON_MAX_ALIAS_LINES);
+
+	//** parsing **//
+
+	l = strlen(cmdline);
+	i = 0;
+	c = 0;
+	x = 0;
+	t = 0;
+	lines[c] = linestream;
+
+	while (i < l && c < ICON_MAX_ALIAS_LINES - 1) {
+		if (cmdline[i] == '%') {
+			i++;
+			if (cmdline[i] == '+') {
+				t=1;
+				while ((tokens[t]!=NULL) && (t<20)) {
+					int l2 = strlen(tokens[t]);
+					*linestream = '"';
+					linestream++;
+					memcpy(linestream,tokens[t],l2);
+					linestream += l2;
+					*linestream = '"';
+					linestream++;
+					*linestream = ' ';
+					linestream++;
+					x += l2+3;
+					t++;
+				}
+			} else {
+				int l2;
+				t = ((byte)cmdline[i]) - 64;
+				if ((t<20) && (tokens[t]!=NULL)) {
+					l2 = strlen(tokens[t]);
+					memcpy(linestream,tokens[t],l2);
+					x += l2;
+					linestream += l2;
+				}
+			}
+		} else if (cmdline[i] == '\\') {
+			i++;
+			if (cmdline[i] == '\\') {
+				*linestream = '\\';
+				linestream++;
+			} else if (cmdline[i] == '\'') {
+				*linestream = '\'';
+				linestream++;
+			}
+		} else if (cmdline[i] == '\'') {
+			*linestream = '"';
+			linestream++;
+		} else if (cmdline[i] == ';') {
+			c++;
+			*linestream = '\0';
+			linestream += 1024 - (x % 1024);
+			x += 1024 - (x % 1024);
+			lines[c] = linestream;
+		} else {
+			*linestream = cmdline[i];
+			linestream++;
+			x++;
+		}
+		i++;
+	}
+
+	linestream--;
+	if (*linestream != '\0') {
+		c++;
+		linestream++;
+		*linestream = '\0';
+	}
+
+	free(linestream_s);
+
+	for (i=0; i<c; i++)	IConsoleCmdExec(lines[i]);
 }
 
 void IConsoleVarInsert(_iconsole_var* item_new, const char* name)
@@ -863,9 +1022,10 @@ void IConsoleCmdExec(const char* cmdstr)
 	char* tokenstream;
 	char* tokenstream_s;
 	byte  execution_mode;
-	_iconsole_var* var    = NULL;
-	_iconsole_var* result = NULL;
-	_iconsole_cmd* cmd    = NULL;
+	_iconsole_var* var     = NULL;
+	_iconsole_var* result  = NULL;
+	_iconsole_cmd* cmd     = NULL;
+	_iconsole_alias* alias = NULL;
 
 	bool longtoken;
 	bool valid_token;
@@ -983,7 +1143,12 @@ void IConsoleCmdExec(const char* cmdstr)
 
 	function = NULL;
 	cmd = IConsoleCmdGet(tokens[0]);
-	if (cmd != NULL) function = cmd->addr;
+	if (cmd != NULL) {
+		function = cmd->addr;
+	} else {
+		alias = IConsoleAliasGet(tokens[0]);
+		if (alias != NULL) execution_mode = 5; // alias handling
+	}
 
 	if (function != NULL) {
 		execution_mode = 1; // this is a command
@@ -1003,7 +1168,7 @@ void IConsoleCmdExec(const char* cmdstr)
 				} else {
 					result = IConsoleVarGet(tokens[2]);
 					if (result != NULL)
-						execution_mode=4;
+						execution_mode = 4;
 				}
 			}
 		}
@@ -1280,6 +1445,11 @@ void IConsoleCmdExec(const char* cmdstr)
 			}
 			break;
 		}
+		case 5: {
+			// execute an alias
+			IConsoleAliasExec(alias->cmdline, tokens,tokentypes);
+			}
+			break;
 		default:
 			// execution mode invalid
 			IConsoleError("invalid execution mode");

@@ -76,10 +76,20 @@ typedef struct _iconsole_cmd {
 	void* _next;
 } _iconsole_cmd;
 
+void IConsoleAliasRegister(const char* name, const char* cmdline);
+
+typedef struct _iconsole_alias {
+	// -------------- //
+	char * cmdline;
+	char* name;
+	void* _next;
+} _iconsole_alias;
+
 // ** console parser ** //
 
 _iconsole_cmd* _iconsole_cmds; // list of registred commands
 _iconsole_var* _iconsole_vars; // list of registred vars
+_iconsole_alias* _iconsole_aliases; // list of registred aliases
 
 // ** console colors ** //
 VARDEF byte _iconsole_color_default;
