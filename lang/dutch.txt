@@ -1944,7 +1944,7 @@ STR_683B_HOSTILE						:Negatief
 
 ##id 0x7000
 STR_7000							:
-STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7001							:{WHITE}{STRING} {BLACK}{STRING}
 STR_7002_PLAYER							:(Speler {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Nieuw gezicht
 STR_7005_COLOR_SCHEME						:{BLACK}Kleurenschema

@@ -9,6 +9,12 @@
 #include "command.h"
 #include "vehicle.h"
 #include "economy.h"
+#include "network.h"
+
+#ifdef ENABLE_NETWORK
+#include "network_data.h"
+#include "network_client.h"
+#endif
 
 static void DoShowPlayerFinances(int player, bool small);
 
@@ -349,14 +355,16 @@ static const WindowDesc _select_player_face_desc = {
 };
 
 static const Widget _my_player_company_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,								STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,				STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
-{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,		STR_7031_CHANGE_THE_COMPANY_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME,	STR_7032_CHANGE_THE_PRESIDENT_S},
-{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,		STR_7033_CHANGE_THE_COMPANY_NAME},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_706F_BUILD_HQ,				STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
+{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
+{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
+{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
+{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_706F_BUILD_HQ,       STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,    14,   266,   355,    32,    43, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
 
@@ -376,15 +384,16 @@ static const Widget _other_player_company_widgets[] = {
 };
 
 static const Widget _my_player_company_bh_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,					STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE, STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
-{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,		STR_7031_CHANGE_THE_COMPANY_VEHICLE},
-{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME,	STR_7032_CHANGE_THE_PRESIDENT_S},
-{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,		STR_7033_CHANGE_THE_COMPANY_NAME},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,	STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{ WWT_PUSHTXTBTN,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,		STR_RELOCATE_COMPANY_HEADQUARTERS},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   359,     0,    13, STR_7001,                STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   359,    14,   157, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    89,   158,   169, STR_7004_NEW_FACE,       STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT},
+{ WWT_PUSHTXTBTN,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,   STR_7031_CHANGE_THE_COMPANY_VEHICLE},
+{ WWT_PUSHTXTBTN,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME, STR_7032_CHANGE_THE_PRESIDENT_S},
+{ WWT_PUSHTXTBTN,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,   STR_7033_CHANGE_THE_COMPANY_NAME},
+{ WWT_PUSHTXTBTN,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,        STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{ WWT_PUSHTXTBTN,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,         STR_RELOCATE_COMPANY_HEADQUARTERS},
+{ WWT_PUSHTXTBTN,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,    STR_COMPANY_PASSWORD_TOOLTIP},
 {   WIDGETS_END},
 };
 
@@ -481,8 +490,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		Player *p = DEREF_PLAYER(w->window_number);
 		uint32 dis;
 
-		if (w->widget != _other_player_company_widgets)
-					w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
+		if (w->widget != _other_player_company_widgets) {
+			w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
+			if (!_networking) w->hidden_state |= (1 << 9); // hide company-password widget
+		}
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
@@ -569,9 +580,19 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			SetObjectToPlaceWnd(0x2D0, 1, w);
 			SetTileSelectSize(2, 2);
 			break;
-		case 9: /* buy 25% */
-			DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
-			break;
+		case 9: {/* buy 25% or password protect your company */
+			#ifdef ENABLE_NETWORK
+			if (w->widget != _other_player_company_widgets) {
+				StringID str;
+				WP(w,def_d).byte_1 = 2;
+				str = AllocateName(_network_player_info[_local_player].password, 0);
+				ShowQueryString(str, STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number);
+				DeleteName(str);
+			} else
+			#endif
+				DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
+
+		} break;
 
 		case 10: /* sell 25% */
 			DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
@@ -600,14 +621,24 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		byte *b = e->edittext.str;
-		if (*b == 0)
+		char *b = (char*)e->edittext.str;
+
+		if (*b == 0 && WP(w,def_d).byte_1 != 2) // empty string is allowed for password
 			return;
+
 		memcpy(_decode_parameters, b, 32);
-		if (WP(w,def_d).byte_1) {
-			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
-		} else {
+		switch (WP(w,def_d).byte_1) {
+		case 0: /* Change president name */
 			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
+			break;
+		case 1: /* Change company name */
+			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
+			break;
+		#ifdef ENABLE_NETWORK
+		case 2: /* Change company password */
+			if (*b == 0) *b = '*'; // empty password is a '*' because of console argument
+			NetworkChangeCompanyPassword(b);
+		#endif
 		}
 	} break;
 

@@ -682,17 +682,11 @@ DEF_CONSOLE_CMD(ConSet) {
 			return NULL;
 		}
 		if (argc == 3) {
-			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
-				_network_player_info[_local_player].password[0] = '\0';
-			} else {
-				ttd_strlcpy(_network_player_info[_local_player].password, argv[2], sizeof(_network_player_info[_local_player].password));
-			}
-			if (!_network_server)
-				SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
-			IConsolePrintF(_iconsole_color_warning, "Company protected with '%s'", _network_player_info[_local_player].password);
+			NetworkChangeCompanyPassword(argv[2]);
 		} else {
-			IConsolePrint(_iconsole_color_default, "'set company_pw' sets a password on your company, so no-one without the correct password can join.");
+			IConsolePrint(_iconsole_color_default, "'set company_pw' sets a password for your company, so no-one without the correct password can join.");
 			IConsolePrint(_iconsole_color_warning, "Usage: set company_pw \"<password>\".   Use * as <password> to set no password.");
+			IConsolePrintF(_iconsole_color_warning, "Current password is: '%s'", _network_player_info[_local_player].password);
 		}
 		return NULL;
 	}

@@ -1954,7 +1954,7 @@ STR_683B_HOSTILE						:Hostile
 
 ##id 0x7000
 STR_7000							:
-STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7001							:{WHITE}{STRING} {BLACK}{STRING}
 STR_7002_PLAYER							:(Player {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}New Face
 STR_7005_COLOR_SCHEME						:{BLACK}Colour Scheme
@@ -2071,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Rebuild company headquarters elsewh
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Can't build company headquarters...
 STR_7072_VIEW_HQ						:{BLACK}View HQ
 STR_RELOCATE_HQ							:{BLACK}Relocate HQ
+STR_COMPANY_PASSWORD          :{BLACK}Password
+STR_COMPANY_PASSWORD_TOOLTIP  :{BLACK}Password-protect your company to prevent unauthorised users from joining. Use '*' to empty password.
+STR_SET_COMPANY_PASSWORD      :Set company password
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Toggle large/small window size

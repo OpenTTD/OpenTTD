@@ -200,5 +200,6 @@ void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const byte *b);
 void NetworkRebuildHostList();
 NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
+void NetworkChangeCompanyPassword(const char *str);
 
 #endif /* NETWORK_H */

@@ -13,7 +13,7 @@
 #	include <winsock2.h>
 #	include <ws2tcpip.h>
 #	pragma comment (lib, "ws2_32.lib")
-#	define ENABLE_NETWORK // On windows, the network is always enabled
+//#	define ENABLE_NETWORK // On windows, the network is always enabled
 #	define GET_LAST_ERROR() WSAGetLastError()
 #	define EWOULDBLOCK WSAEWOULDBLOCK
 // Windows has some different names for some types..
