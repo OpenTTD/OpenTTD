@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "table/strings.h"
 #include "map.h"
+#include "tile.h"
 #include "viewport.h"
 #include "command.h"
 #include "town.h"

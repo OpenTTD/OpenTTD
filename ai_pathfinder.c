@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "map.h"
+#include "tile.h"
 #include "command.h"
 #include "ai.h"
 

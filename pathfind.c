@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "map.h"
+#include "tile.h"
 #include "pathfind.h"
 
 // remember which tiles we have already visited so we don't visit them again.

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "table/strings.h"
 #include "map.h"
+#include "tile.h"
 
 #define VARDEF
 #include "ttd.h"

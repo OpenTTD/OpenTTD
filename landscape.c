@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "map.h"
+#include "tile.h"
 #include <stdarg.h>
 #include "gfx.h"
 #include "viewport.h"
