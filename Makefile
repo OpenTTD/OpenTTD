@@ -98,6 +98,7 @@
 # 		ordinary users, currently it is only used for the debian
 # 		packaging. This value should only be set when calling `make
 # 		install' and is not saved in Makefile.config
+#               (Note that DESTDIR is checked if DEST_DIR is not set.)
 #
 # STATIC: link statically
 # CYGWIN: build in Cygwin environment
@@ -512,6 +513,10 @@ endif
 ifdef WIN32
 LIBS += -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32 -lstdc++
 TTDLDFLAGS += -Wl,--subsystem,windows
+endif
+
+ifndef DEST_DIR
+DEST_DIR = $(DESTDIR)
 endif
 
 # sets up the paths for use for make install
