@@ -483,12 +483,12 @@ void InitializeLandscape()
 	uint map_size = MapSize();
 	int i;
 
-	memset(_map_owner, OWNER_WATER, map_size);
+	memset(_map_owner, OWNER_NONE, map_size);
 	memset(_map2, 0, map_size * sizeof(uint16));
 	memset(_map3_lo, 0, map_size);
 	memset(_map3_hi, 0, map_size);
 	memset(_map_extra_bits, 0, map_size / 4);
-	memset(_map_type_and_height, MP_WATER << 4, map_size);
+	memset(_map_type_and_height, MP_CLEAR << 4, map_size);
 
 	for(i=0; i!=TILES_Y-1; i++)
 		memset(_map_type_and_height + i*TILES_X, 0, TILES_X-1);

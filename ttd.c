@@ -1241,6 +1241,8 @@ bool AfterLoadGame(uint version)
 		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
 			if (IS_TILETYPE(tile_cur, MP_WATER) && _map_owner[tile_cur] != OWNER_WATER)
 				_map_owner[tile_cur] = OWNER_WATER;
+			if (!IS_TILETYPE(tile_cur, MP_WATER) && _map_owner[tile_cur] == OWNER_WATER)
+				_map_owner[tile_cur] = OWNER_NONE;
 		END_TILE_LOOP(tile_cur, w, h, tile)
 	}
 
