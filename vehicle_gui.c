@@ -867,7 +867,6 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_DROPDOWN_SELECT: { /* we have selected a dropdown item in the list */
-			//potiential bug: railtypes needs to be activated 0, 1, 2... If one is skipped, it messes up
 			WP(w,replaceveh_d).railtype = e->dropdown.index;
 			SetWindowDirty(w);
 		} break;

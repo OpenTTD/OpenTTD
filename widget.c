@@ -452,6 +452,7 @@ static WindowClass _dropdown_windowclass;
 static WindowNumber _dropdown_windownum;
 static byte _dropdown_var1;
 static byte _dropdown_var2;
+static uint32 _dropdown_disabled_items;
 
 static const Widget _dropdown_menu_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
@@ -472,7 +473,7 @@ static int GetDropdownItem(Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= _dropdown_item_count || HASBIT(_dropdown_disabled,item) || _dropdown_items[item] == 0)
+	if (item >= _dropdown_item_count || (HASBIT(_dropdown_disabled,item) && !_dropdown_disabled_items) || _dropdown_items[item] == 0)
 		return - 1;
 
 	return item;
@@ -485,46 +486,48 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 		case WE_PAINT: {
 			int x,y,i,sel;
-			uint32 dis;
-			bool hidden;
 
 			DrawWindowWidgets(w);
 
 			x = 1;
 			y = 2;
 			sel    = _dropdown_selindex;
-			dis    = _dropdown_disabled;
-			hidden = _dropdown_hide_disabled;
-
 
 			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
-				if (!(hidden && (dis & 1))) {
-					if (_dropdown_items[i] != 0) {
-						if (sel == 0) {
-							GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
-						}
-						DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
-
-						if (dis & 1) {
-							GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
-							_color_list[w->widget[0].color].window_color_bga);
-						}
-					} else {
-						int color_1 = _color_list[w->widget[0].color].window_color_1a;
-						int color_2 = _color_list[w->widget[0].color].window_color_2;
-						GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
-						GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
-					}
-					y += 10;
+				if (HASBIT(_dropdown_disabled_items, i)) {
 					sel--;
+					continue;
 				}
-				dis>>=1;
+				if (_dropdown_items[i] != 0) {
+					if (sel == 0) {
+						GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
+					}
+					DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
+
+					if (HASBIT(_dropdown_disabled, i) && !_dropdown_disabled_items) {
+						GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
+									_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
+					}
+				} else {
+					int color_1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
+					int color_2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
+					GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
+					GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
+				}
+				y += 10;
+				sel--;
 			}
 		} break;
 
 		case WE_CLICK: {
 			item = GetDropdownItem(w);
 			if (item >= 0) {
+				// make sure that item match the index of the string, that was clicked
+				// basically we just add one for each hidden item before the clicked one
+				byte counter;
+				for (counter = 0 ; item >= counter; ++counter) {
+					if (HASBIT(_dropdown_disabled_items, counter)) item++;
+				}
 				_dropdown_var1 = 4;
 				_dropdown_selindex = item;
 				SetWindowDirty(w);
@@ -639,6 +642,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2->widget[0].color = wi->color;
 	w2->widget[0].right = wi->right - wi[-1].left;
 	w2->widget[0].bottom = i * 10 + 3;
+	_dropdown_disabled_items = remove_filtered_strings ? disabled_mask : 0;
 
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 }
