@@ -1280,8 +1280,11 @@ static void HandleKeypress(uint32 key)
 			break;
 	}
 
-	if (we.keypress.cont)
-		FindWindowById(WC_MAIN_TOOLBAR, 0)->wndproc(w, &we);
+	if (we.keypress.cont) {
+		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		// When there is no toolbar w is null, check for that
+		if (w != NULL) w->wndproc(w, &we);
+	}
 }
 
 extern void UpdateTileSelection(void);
