@@ -285,12 +285,12 @@ void GenerateUnmovables()
 restart:
 		r = Random();
 		dir = r >> 30;
-		r = r%((dir==0 || dir== 2)?TILE_Y_MAX:TILE_X_MAX);
+		r %= (dir == 0 || dir == 2) ? MapMaxY() : MapMaxX();
 		tile =
           (dir==0)?TILE_XY(0,r):0 +             // left
           (dir==1)?TILE_XY(r,0):0 +             // top
-          (dir==2)?TILE_XY(TILE_X_MAX,r):0 +    // right
-          (dir==3)?TILE_XY(r,TILE_Y_MAX):0;     // bottom
+			(dir == 2) ? TILE_XY(MapMaxX(), r) : 0 + // right
+			(dir == 3) ? TILE_XY(r, MapMaxY()) : 0;  // bottom
 		j = 20;
 		do {
 			if (--j == 0)

@@ -431,7 +431,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 	TileInfo ti;
 	uint z;
 
-	if ( (uint) x > TILE_X_MAX * 16 - 1 ||  (uint) y > TILE_X_MAX * 16 - 1)
+	if ((uint)x > MapMaxX() * 16 - 1 || (uint)y > MapMaxY() * 16 - 1)
 		return CMD_ERROR;
 
 	/* check if valid, and make sure that (x,y) is smaller than (x2,y2) */

@@ -565,8 +565,8 @@ uint GetTileDistAdv(TileIndex xy1, TileIndex xy2)
 
 bool CheckDistanceFromEdge(TileIndex tile, uint distance)
 {
-	return IS_INT_INSIDE(GET_TILE_X(tile), distance, TILE_X_MAX + 1 - distance) &&
-			IS_INT_INSIDE(GET_TILE_Y(tile), distance, TILE_Y_MAX + 1 - distance);
+	return IS_INT_INSIDE(GET_TILE_X(tile), distance, MapSizeX() - distance) &&
+			IS_INT_INSIDE(GET_TILE_Y(tile), distance, MapSizeY() - distance);
 }
 
 void OnNewDay_Train(Vehicle *v);

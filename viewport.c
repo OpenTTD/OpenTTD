@@ -295,7 +295,7 @@ Point TranslateXYToTileCoord(ViewPort *vp, int x, int y) {
 	pt.x = a+z;
 	pt.y = b+z;
 
-	if ((uint)pt.x >= TILE_X_MAX*16 || (uint)pt.y >= TILE_Y_MAX*16) {
+	if ((uint)pt.x >= MapMaxX() * 16 || (uint)pt.y >= MapMaxY() * 16) {
 		pt.x = pt.y = -1;
 	}
 
@@ -1289,8 +1289,8 @@ void UpdateViewportPosition(Window *w)
 		vx = -x + y * 2;
 		vy =  x + y * 2;
 		// clamp to size of map
-		vx = clamp(vx, 0 * 4, TILE_X_MAX * 16 * 4);
-		vy = clamp(vy, 0 * 4, TILE_Y_MAX * 16 * 4);
+		vx = clamp(vx, 0 * 4, MapMaxX() * 16 * 4);
+		vy = clamp(vy, 0 * 4, MapMaxY() * 16 * 4);
 		// Convert map coordinates to viewport coordinates
 		x = (-vx + vy) / 2;
 		y = ( vx + vy) / 4;

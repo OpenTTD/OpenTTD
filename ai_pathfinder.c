@@ -175,8 +175,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
   	// Go through all surrounding tiles and check if they are within the limits
    	for (i=0;i<4;i++) {
-   		if (GET_TILE_X(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_X(_tiles_around[i] + current->path.node.tile) < TILE_X_MAX - 1 &&
-       		GET_TILE_Y(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_Y(_tiles_around[i] + current->path.node.tile) < TILE_Y_MAX - 1) {
+   		if (GET_TILE_X(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_X(_tiles_around[i] + current->path.node.tile) < MapMaxX() - 1 &&
+       		GET_TILE_Y(_tiles_around[i] + current->path.node.tile) > 1 && GET_TILE_Y(_tiles_around[i] + current->path.node.tile) < MapMaxY() - 1) {
        		// We also directly test if the current tile can connect to this tile..
        		//  We do this simply by just building the tile!
 

@@ -227,7 +227,7 @@ enum {
 
 #define AI_NO_CARGO 0xFF // Means that there is no cargo defined yet (used for industry)
 #define AI_NEED_CARGO 0xFE // Used when the AI needs to find out a cargo for the route
-#define AI_STATION_RANGE TILE_XY(TILE_X_MAX, TILE_Y_MAX)
+#define AI_STATION_RANGE TILE_XY(MapMaxX(), MapMaxY())
 
 #define AI_PATHFINDER_NO_DIRECTION (byte)-1
 

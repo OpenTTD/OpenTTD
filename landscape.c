@@ -45,13 +45,13 @@ uint GetTileSlope(uint tile, int *h)
 	uint a,b,c,d,min;
 	int r;
 
-	if (GET_TILE_X(tile) == TILE_X_MAX || GET_TILE_Y(tile) == TILE_Y_MAX) {
+	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY()) {
 		if (h)
 			*h = 0;
 		return 0;
 	}
 
-	assert(tile < TILES_X * TILES_Y && GET_TILE_X(tile) != TILE_X_MAX && GET_TILE_Y(tile) != TILE_Y_MAX);
+	assert(tile < TILES_X * TILES_Y && GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
 
 	min = a = _map_type_and_height[tile] & 0xF;
 	b = _map_type_and_height[tile+TILE_XY(1,0)] & 0xF;
@@ -82,8 +82,7 @@ int GetTileZ(uint tile)
 
 void FindLandscapeHeightByTile(TileInfo *ti, uint tile)
 {
-	if (GET_TILE_X(tile) == TILE_X_MAX ||
-			GET_TILE_Y(tile) == TILE_Y_MAX) {
+	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY()) {
 		ti->tileh = 0;
 		ti->type = MP_STRANGE;
 		ti->tile = 0;
@@ -107,7 +106,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 	ti->x = x;
 	ti->y = y;
 
-	if (x >= TILE_X_MAX*16-1 || y >= TILE_Y_MAX*16-1) {
+	if (x >= MapMaxX() * 16 - 1 || y >= MapMaxY() * 16 - 1) {
 		ti->tileh = 0;
 		ti->type = MP_STRANGE;
 		ti->tile = 0;
@@ -512,9 +511,9 @@ void ConvertGroundTilesIntoWaterTiles()
 			_map_owner[tile] = OWNER_WATER;
 		}
 		tile++;
-		if (GET_TILE_X(tile) == TILE_X_MAX) {
-			tile += TILE_XY(-TILE_X_MAX, 1);
-			if (GET_TILE_Y(tile) == TILE_Y_MAX)
+		if (GET_TILE_X(tile) == MapMaxX()) {
+			tile += TILE_XY(-MapMaxX(), 1);
+			if (GET_TILE_Y(tile) == MapMaxY())
 				break;
 		}
 	}
@@ -534,8 +533,8 @@ static void GenerateTerrain(int type, int flag)
 	r = Random();
 	p = GetSpritePtr((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
-	x = r & TILE_X_MAX;
-	y = (r >> TILE_X_BITS) & TILE_Y_MAX;
+	x = r & MapMaxX();
+	y = (r >> TILE_X_BITS) & MapMaxY();
 
 
 	if (x < 2 || y < 2)
@@ -567,10 +566,10 @@ static void GenerateTerrain(int type, int flag)
 		}
 	}
 
-	if (x + w >= TILE_X_MAX-1)
+	if (x + w >= MapMaxX() - 1)
 		return;
 
-	if (y + h >= TILE_Y_MAX-1)
+	if (y + h >= MapMaxY() - 1)
 		return;
 
 	tile = &_map_type_and_height[TILE_XY(x,y)];
@@ -753,7 +752,7 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 	y = GET_TILE_Y(tile) + addy;
 
 	// Are we about to wrap?
-	if (x > 0 && x < TILE_X_MAX && y > 0 && y < TILE_Y_MAX)
+	if (x > 0 && x < MapMaxX() && y > 0 && y < MapMaxY())
 		return tile + TILE_XY(addx, addy);
 
 	return TILE_WRAPPED;
@@ -761,5 +760,5 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 
 bool IsValidTile(uint tile)
 {
-	return (tile < TILES_X * TILE_Y_MAX && GET_TILE_X(tile) != TILE_X_MAX);
+	return (tile < TILES_X * MapMaxY() && GET_TILE_X(tile) != MapMaxX());
 }

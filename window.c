@@ -1042,9 +1042,9 @@ stop_capt:;
 		hvx = hx * -4 + hy * 8;
 		hvy = hx *  4 + hy * 8;
 		if (x < -hvx) { x = -hvx; sub = 0; }
-		if (x > TILE_X_MAX * 16 - hvx)  { x = TILE_X_MAX * 16 - hvx; sub = 0; }
+		if (x > MapMaxX() * 16 - hvx) { x = MapMaxX() * 16 - hvx; sub = 0; }
 		if (y < -hvy) { y = -hvy; sub = 0; }
-		if (y > TILE_Y_MAX * 16 - hvy)  { y = TILE_Y_MAX * 16 - hvy; sub = 0; }
+		if (y > MapMaxY() * 16 - hvy) { y = MapMaxY() * 16 - hvy; sub = 0; }
 
 		WP(w,smallmap_d).scroll_x = x;
 		WP(w,smallmap_d).scroll_y = y;

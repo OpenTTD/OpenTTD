@@ -7,9 +7,6 @@
 #define TILES_X (1 << TILE_X_BITS)
 #define TILES_Y (1 << TILE_Y_BITS)
 
-#define TILE_X_MAX (TILES_X - 1)
-#define TILE_Y_MAX (TILES_Y - 1)
-
 extern byte   _map_type_and_height[];
 extern byte   _map5[];
 extern byte   _map3_lo[];

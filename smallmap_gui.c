@@ -356,7 +356,7 @@ static inline uint32 GetSmallMapCountoursPixels(uint tile)
 static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 		    if (dst > _screen.dst_ptr && dst < (_screen.dst_ptr + _screen.width * _screen.height - _screen.width) )
 		        WRITE_PIXELS_OR( dst, GetSmallMapCountoursPixels(TILE_XY(xc,yc)) & mask );
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
@@ -386,7 +386,7 @@ static inline uint32 GetSmallMapVehiclesPixels(uint tile)
 static void DrawSmallMapVehicles(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 			WRITE_PIXELS_OR( dst, GetSmallMapVehiclesPixels(TILE_XY(xc,yc)) & mask );
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
@@ -443,7 +443,7 @@ static inline uint32 GetSmallMapIndustriesPixels(uint tile)
 static void DrawSmallMapIndustries(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 			WRITE_PIXELS_OR(dst, GetSmallMapIndustriesPixels(TILE_XY(xc,yc)) & mask);
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
@@ -484,7 +484,7 @@ static inline uint32 GetSmallMapRoutesPixels(uint tile)
 static void DrawSmallMapRoutes(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 			WRITE_PIXELS_OR(dst, GetSmallMapRoutesPixels(TILE_XY(xc,yc)) & mask);
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
@@ -542,7 +542,7 @@ static inline uint32 GetSmallMapVegetationPixels(uint tile)
 static void DrawSmallMapVegetation(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 			WRITE_PIXELS_OR(dst, GetSmallMapVegetationPixels(TILE_XY(xc,yc)) & mask);
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
@@ -570,7 +570,7 @@ static inline uint32 GetSmallMapOwnerPixels(uint tile)
 static void DrawSmallMapOwners(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
 {
 	do {
-		if (xc < TILE_X_MAX && yc < TILE_Y_MAX)
+		if (xc < MapMaxX() && yc < MapMaxY())
 			WRITE_PIXELS_OR(dst, GetSmallMapOwnerPixels(TILE_XY(xc,yc)) & mask);
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }

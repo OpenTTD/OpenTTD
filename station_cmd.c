@@ -414,10 +414,10 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w + rad, TILE_X_MAX+1);
+	x2 = min(x + w + rad, MapSizeX());
 	x1 = max(x-rad, 0);
 
-	y2 = min(y + h + rad, TILE_Y_MAX+1);
+	y2 = min(y + h + rad, MapSizeY());
 	y1 = max(y-rad, 0);
 
 	assert(x1 < x2);
@@ -462,8 +462,8 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w + rad, TILE_X_MAX+1);
-	y2 = min(y + h + rad, TILE_Y_MAX+1);
+	x2 = min(x + w + rad, MapSizeX());
+	y2 = min(y + h + rad, MapSizeY());
 	x1 = max(x-rad, 0);
 	y1 = max(y-rad, 0);
 

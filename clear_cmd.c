@@ -30,7 +30,7 @@ static int TerraformAllowTileProcess(TerraformerState *ts, TileIndex tile)
 	TileIndex *t;
 	int count;
 
-	if ((GET_TILE_X(tile) == TILE_X_MAX) || (GET_TILE_Y(tile) == TILE_Y_MAX))
+	if (GET_TILE_X(tile) == MapMaxX() || GET_TILE_Y(tile) == MapMaxY())
 		return -1;
 
 	t = ts->tile_table;

@@ -265,8 +265,8 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 			return CMD_ERROR;
 
 		// Make sure it's not an edge tile.
-		if (!(IS_INT_INSIDE(GET_TILE_X(tile),1,TILE_X_MAX-1) &&
-				IS_INT_INSIDE(GET_TILE_Y(tile),1,TILE_Y_MAX-1)))
+		if (!(IS_INT_INSIDE(GET_TILE_X(tile), 1, MapMaxX() - 1) &&
+				IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapMaxY() - 1)))
 			return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 		if (m5 == 0) {

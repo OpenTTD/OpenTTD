@@ -1215,7 +1215,7 @@ static bool CheckSuitableIndustryPos(uint tile)
 	int x = GET_TILE_X(tile);
 	int y = GET_TILE_Y(tile);
 
-	if ( x < 2 || y < 2 || x > TILE_X_MAX - 3 || y > TILE_Y_MAX - 3) {
+	if ( x < 2 || y < 2 || x > MapMaxX() - 3 || y > MapMaxY() - 3) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		return false;
 	}
