@@ -1596,7 +1596,7 @@ static void PlaceInitialIndustry(byte type, int amount)
 			} while (--i != 0);
 		} while (--num);
 
-		_current_player = OWNER_NONE;
+		_current_player = old_player;
 	}
 }
 
