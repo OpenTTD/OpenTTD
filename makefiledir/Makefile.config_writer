@@ -27,6 +27,10 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,SUPRESS_LANG_ERRORS:=$(SUPRESS_LANG_ERRORS))
 	$(call CONFIG_LINE,)
 	
+	$(call CONFIG_LINE,\# Enable asserts)
+	$(call CONFIG_LINE,ENABLE_ASSERTS:=$(ENABLE_ASSERTS))
+	$(call CONFIG_LINE,)
+	
 	$(call CONFIG_LINE,\# See Makefile for details on these paths)
 	$(call CONFIG_LINE,\# Folders should not end with /)
 	$(call CONFIG_LINE,INSTALL:=$(INSTALL))
