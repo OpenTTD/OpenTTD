@@ -41,6 +41,13 @@ static uint32 _ttdpatch_flags[8];
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
+static const int _vehcounts[4] = {
+	NUM_TRAIN_ENGINES,
+	NUM_ROAD_ENGINES,
+	NUM_SHIP_ENGINES,
+	NUM_AIRCRAFT_ENGINES
+};
+
 static const int _vehshifts[4] = {
 	0,
 	ROAD_ENGINES_INDEX,
@@ -59,13 +66,16 @@ enum grfmsg_severity {
 static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 {
 	static const char * const severitystr[4] = { "Notice", "Warning", "Error", "Fatal" };
+	int export_severity = 0;
 	char buf[1024];
 	va_list va;
 
 	va_start(va, str);
 	vsprintf(buf, str, va);
 	va_end(va);
-	DEBUG(grf, 2) ("[%s][%s] %s", _cur_grffile->filename, severitystr[severity], buf);
+
+	export_severity = 2 - (severity == GMS_FATAL ? 2 : severity);
+	DEBUG(grf, export_severity) ("[%s][%s] %s", _cur_grffile->filename, severitystr[severity], buf);
 }
 
 
@@ -138,7 +148,7 @@ static void dewagonize(int condition, int engine)
 	EngineInfo *ei = &_engine_info[engine];
 	RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
 
-	if (condition) {
+	if (condition != 0) {
 		ei->unk2 &= ~0x80;
 		rvi->flags &= ~2;
 	} else {
@@ -226,7 +236,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_ENGINE {
 				uint8 dual = grf_load_byte(&buf);
 
-				if (dual) {
+				if (dual != 0) {
 					rvi[i].flags |= 1;
 				} else {
 					rvi[i].flags &= ~1;
@@ -571,12 +581,12 @@ static void NewSpriteSet(byte *buf, int len)
 	/* TODO: No stations support. */
 	uint8 feature;
 
-	check_length(len, 4, "SpriteNewSet");
+	check_length(len, 4, "NewSpriteSet");
 	feature = buf[1];
 
 	if (feature == 4) {
 		_spriteset_start = 0;
-		grfmsg(GMS_WARN, "SpriteNewSet: Stations unsupported, skipping.");
+		grfmsg(GMS_WARN, "NewSpriteSet: Stations unsupported, skipping.");
 		return;
 	}
 
@@ -610,16 +620,18 @@ static void NewSpriteGroup(byte *buf, int len)
 	uint8 numloaded;
 	uint8 numloading;
 	struct SpriteGroup *group;
+	byte *loaded_ptr;
+	byte *loading_ptr;
 	int i;
 
-	check_length(len, 5, "SpriteNewGroup");
+	check_length(len, 5, "NewSpriteGroup");
 	feature = buf[1];
 	setid = buf[2];
 	numloaded = buf[3];
 	numloading = buf[4];
 
 	if (feature == 4) {
-		grfmsg(GMS_WARN, "SpriteNewGroup: Stations unsupported, skipping.");
+		grfmsg(GMS_WARN, "NewSpriteGroup: Stations unsupported, skipping.");
 		return;
 	}
 
@@ -638,7 +650,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		//uint32 val;
 		uint16 def;
 
-		grfmsg(GMS_WARN, "SpriteNewGroup(0x81): Unsupported variable %x. Using default cid.", var);
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x81): Unsupported variable %x. Using default cid.", var);
 
 		//val = (0xff << shiftnum) & andmask;
 
@@ -653,18 +665,33 @@ static void NewSpriteGroup(byte *buf, int len)
 		return;
 
 	} else if (numloaded & 0x80) {
-		grfmsg(GMS_WARN, "SpriteNewGroup(0x%x): Unsupported special group.", numloaded);
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x%x): Unsupported special group.", numloaded);
 		return;
 	}
 
 	if (!_spriteset_start) {
-		grfmsg(GMS_WARN, "SpriteNewGroup: No sprite set to work on! Skipping.");
+		grfmsg(GMS_ERROR, "NewSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
 
 	if (_spriteset_feature != feature) {
-		grfmsg(GMS_WARN, "SpriteNewGroup: Group feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
+		grfmsg(GMS_ERROR, "NewSpriteGroup: Group feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
 		return;
+	}
+
+	check_length(bufend - buf, 5, "NewSpriteGroup");
+	buf += 5;
+	check_length(bufend - buf, 2 * numloaded, "NewSpriteGroup");
+	loaded_ptr = buf;
+	loading_ptr = buf + 2 * numloaded;
+
+	if (numloaded > 16) {
+		grfmsg(GMS_WARN, "NewSpriteGroup: More than 16 sprites in group %x, skipping the rest.", setid);
+		numloaded = 16;
+	}
+	if (numloading > 16) {
+		grfmsg(GMS_WARN, "NewSpriteGroup: More than 16 sprites in group %x, skipping the rest.", setid);
+		numloading = 16;
 	}
 
 	if (setid >= _spritesset_count) {
@@ -674,28 +701,24 @@ static void NewSpriteGroup(byte *buf, int len)
 	group = &_spritesset[setid];
 	memset(group, 0, sizeof(struct SpriteGroup));
 	group->sprites_per_set = _spriteset_numents;
+	group->loaded_count  = numloaded;
+	group->loading_count = numloading;
 
-	buf += 5;
+	DEBUG(grf, 7) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
+			setid, group->sprites_per_set, group->loaded_count, group->loading_count,
+			_spriteset_start - _cur_grffile->sprite_offset,
+			_spriteset_start + (_spriteset_numents * (numloaded + numloading)) - _cur_grffile->sprite_offset);
 
-	for (i = 0; buf < bufend && i < numloaded; i++) {
-		uint16 spriteset_id = grf_load_word(&buf);
-
-		if (_spritesset[setid].loaded_count > 16) {
-			grfmsg(GMS_WARN, "SpriteNewGroup: More than 16 sprites in group %x, skipping.", setid);
-			return;
-		}
-		group->loaded[group->loaded_count++]
-			= _spriteset_start + spriteset_id * _spriteset_numents;
+	for (i = 0; i < numloaded; i++) {
+		uint16 spriteset_id = grf_load_word(&loaded_ptr);
+		group->loaded[i] = _spriteset_start + spriteset_id * _spriteset_numents;
+		DEBUG(grf, 8) ("NewSpriteGroup: + group->loaded[%i]  = %u (subset %u)", i, group->loaded[i], spriteset_id);
 	}
 
-	for (i = 0; buf < bufend && i < numloading; i++) {
-		uint16 spriteset_id = grf_load_word(&buf);
-
-		if (_spritesset[setid].loading_count > 16) {
-			grfmsg(GMS_WARN, "SpriteNewGroup: More than 16 sprites in group %x, skipping.", setid);
-			return;
-		}
-		group->loading[group->loading_count++] = _spriteset_start + spriteset_id * _spriteset_numents;
+	for (i = 0; i < numloading; i++) {
+		uint16 spriteset_id = grf_load_word(&loading_ptr);
+		group->loading[i] = _spriteset_start + spriteset_id * _spriteset_numents;
+		DEBUG(grf, 8) ("NewSpriteGroup: + group->loading[%i] = %u (subset %u)", i, group->loading[i], spriteset_id);
 	}
 }
 
@@ -731,10 +754,20 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
 	wagover = buf[2] & 0x80;
+	check_length(len, 3 + idcount, "VehicleMapSpriteGroup");
 	cidcount = buf[3 + idcount];
+	check_length(len, 4 + idcount + cidcount * 3, "VehicleMapSpriteGroup");
 
 	if (feature == 4) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Stations unsupported, skipping.");
+		return;
+	}
+
+	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
+	 * callback''. I have no idea how this works, so we will ignore it for
+	 * now.  --octo */
+	if (idcount == 0) {
+		grfmsg(GMS_NOTICE, "NewMapping: Feature callbacks not implemented yet.");
 		return;
 	}
 
@@ -752,9 +785,27 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 		last_engines_count = idcount;
 	}
 
+	if (wagover != 0) {
+		if (last_engines_count == 0) {
+			grfmsg(GMS_ERROR, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with.");
+			return;
+		} else {
+			DEBUG(grf, 4) ("VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
+					last_engines_count, idcount);
+		}
+	}
+	
+
 	for (i = 0; i < idcount; i++) {
-		uint8 engine = buf[3 + i] + _vehshifts[feature];
+		uint8 engine_id = buf[3 + i];
+		uint8 engine = engine_id + _vehshifts[feature];
 		byte *bp = &buf[4 + idcount];
+
+		if (engine_id > _vehcounts[feature]) {
+			grfmsg(GMS_ERROR, "Id %u for feature %x is out of bounds.",
+					engine_id, feature);
+			return;
+		}
 
 		for (c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
@@ -768,7 +819,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			if (ctype == 0xFF)
 				ctype = CID_PURCHASE;
 
-			if (wagover) {
+			if (wagover != 0) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
 				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
@@ -791,7 +842,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				return;
 			}
 
-			if (wagover) {
+			if (wagover != 0) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
 				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
@@ -980,7 +1031,7 @@ static void SkipIf(byte *buf, int len)
 			return;
 	}
 
-	if (!result) {
+	if (result == 0) {
 		grfmsg(GMS_NOTICE, "Not skipping sprites, test was false.");
 		return;
 	}
@@ -1326,7 +1377,7 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 
 	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 
-	if (!initialized) {
+	if (initialized == 0) {
 		InitializeGRFSpecial();
 		initialized = 1;
 	}
