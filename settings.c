@@ -826,6 +826,8 @@ static const SettingDesc patch_settings[] = {
 	{"nonuniform_stations", SDT_BOOL, (void*)false, (void*)offsetof(Patches, nonuniform_stations)},
 	{"always_small_airport", SDT_BOOL, (void*)false, (void*)offsetof(Patches, always_small_airport)},
 	{"realistic_acceleration", SDT_BOOL, (void*)false, (void*)offsetof(Patches, realistic_acceleration)},
+	
+	{"toolbar_pos", SDT_UINT8, (void*)0, (void*)offsetof(Patches, toolbar_pos)},
 
 	{"max_trains", SDT_UINT8, (void*)80,(void*)offsetof(Patches, max_trains)},
 	{"max_roadveh", SDT_UINT8, (void*)80,(void*)offsetof(Patches, max_roadveh)},

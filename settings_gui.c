@@ -661,13 +661,28 @@ void ShowHighscoreTable(int tbl)
 	ShowInfoF("ShowHighscoreTable(%d) not implemented", tbl);
 }
 
+// virtual PositionMainToolbar function, calls the right one.
+int32 v_PositionMainToolbar(int32 p1)
+{
+	if (_game_mode != GM_MENU)
+		PositionMainToolbar(NULL);
+
+	return 0;
+}
+
+typedef int32 PatchButtonClick(int32);
+static PatchButtonClick * const _patch_button_proc[] = {
+	&v_PositionMainToolbar,
+};
+
 typedef struct PatchEntry {
-	byte type;    // type of selector
-	byte flags;		// selector flags
-	StringID str; // string with descriptive text
-	void *variable; // pointer to the variable
-	int32 min,max; // range for spinbox setting
-	uint32 step;   // step for spinbox
+	byte type;										// type of selector
+	byte flags;										// selector flags
+	StringID str;									// string with descriptive text
+	void *variable;								// pointer to the variable
+	int32 min,max;								// range for spinbox setting
+	uint32 step;									// step for spinbox
+	PatchButtonClick *click_proc;	// callback procedure
 } PatchEntry;
 
 enum {
@@ -691,6 +706,7 @@ static const PatchEntry _patches_ui[] = {
 
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION, &_patches.errmsg_duration, 0, 20, 1},
 	
+	{PE_UINT8, PF_MULTISTRING, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos, 0, 2, 1, &v_PositionMainToolbar},
 };
 
 static const PatchEntry _patches_construction[] = {
@@ -927,7 +943,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			x = e->click.pt.x - 5;
 			if (x < 0) return;
 
-			if (x < 21) {
+			if (x < 21) { // clicked on the icon on the left side. Either scroller or bool on/off
 				int32 val = ReadPE(pe), oval = val;
 
 				switch(pe->type) {
@@ -972,9 +988,12 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				if (val != oval) {
 					WritePE(pe, val);
 					SetWindowDirty(w);
+
+					if (pe->click_proc != NULL) // call callback function
+						pe->click_proc(val);
 				}
 			} else {
-				if (pe->type != PE_BOOL) {
+				if (pe->type != PE_BOOL && !(pe->flags & PF_MULTISTRING)) { // do not open editbox
 					WP(w,def_d).data_3 = btn;
 					SET_DPARAM32(0, ReadPE(pe));
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0);
@@ -999,8 +1018,12 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: {
 		if (*e->edittext.str) {
 			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
-			WritePE(&page->entries[WP(w,def_d).data_3], atoi(e->edittext.str)); 
+			const PatchEntry *pe = &page->entries[WP(w,def_d).data_3];
+			WritePE(pe, atoi(e->edittext.str)); 
 			SetWindowDirty(w);
+
+			if (pe->click_proc != NULL) // call callback function
+				pe->click_proc(*(int32*)pe->variable);
 		}
 		break;
 	}

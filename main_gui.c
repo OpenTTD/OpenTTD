@@ -2207,6 +2207,8 @@ void SetupColorsAndInitialWindow()
 		w = AllocateWindowDesc(&_toolb_normal_desc);
 		w->disabled_state = 1 << 17;
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
+		
+		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
 
 		_main_status_desc.top = height - 12;
 		w = AllocateWindowDesc(&_main_status_desc);
@@ -2222,6 +2224,8 @@ void SetupColorsAndInitialWindow()
 		w = AllocateWindowDesc(&_toolb_scen_desc);
 		w->disabled_state = 1 << 9;
 		w->flags4 &= ~WF_WHITE_BORDER_MASK;
+		
+		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_scen_desc)
 		break;
 	default:
 		NOT_REACHED();

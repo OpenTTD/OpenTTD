@@ -531,6 +531,16 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 		if (pt.x > _screen.width + 10 - desc->width)
 			pt.x = (_screen.width + 10 - desc->width) - 20;
 		pt.y = w->top + 10;
+	// open Build Toolbars and Terraforming Toolbar aligned
+	} else if (desc->cls == WC_BUILD_TOOLBAR || desc->cls == WC_SCEN_LAND_GEN) {
+		/* Override the position if a toolbar is opened according to the place of the maintoolbar
+		 * The main toolbar (WC_MAIN_TOOLBAR) is 640px in width */
+		switch (_patches.toolbar_pos) {
+		case 1:		pt.x = ((_screen.width + 640) >> 1) - desc->width; break;
+		case 2:		pt.x = _screen.width - desc->width; break;
+		default:	pt.x = 640 - desc->width;
+		}
+		pt.y = desc->top;
 	} else {
 		pt.x = desc->left;
 		pt.y = desc->top;
@@ -1013,7 +1023,7 @@ void MouseLoop()
 		}
 
 		if (click == 1) {
-			DEBUG(misc, 1) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
+			//DEBUG(misc, 1) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 			if (_thd.place_mode != 0 &&
 					// query button and place sign button work in pause mode
 					!(_cursor.sprite == 0x2CF || _cursor.sprite == 0x2D2) &&
@@ -1164,6 +1174,22 @@ void DeleteNonVitalWindows()
 	}
 }
 
+int PositionMainToolbar(Window *w) 
+{
+	//DEBUG(misc, 1) ("Repositioning Main Toolbar...");
+
+	if (w == NULL || w->window_class != WC_MAIN_TOOLBAR)
+		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+
+	switch (_patches.toolbar_pos) {
+		case 1:		w->left = (_screen.width - w->width) >> 1; break;
+		case 2:		w->left = _screen.width - w->width; break;
+		default:	w->left = 0;
+	}
+	SetDirtyBlocks(0, 0, _screen.width, w->height); // invalidate the whole top part
+	return w->left;
+}
+
 void RelocateAllWindows(int neww, int newh)
 {
 	Window *w;
@@ -1182,7 +1208,7 @@ void RelocateAllWindows(int neww, int newh)
 
 		if (w->window_class == WC_MAIN_TOOLBAR) {
 			top = w->top;
-			left = (neww - w->width) >> 1;
+			left = PositionMainToolbar(w); // changes toolbar orientation
 		} else if (w->window_class == WC_SELECT_GAME || w->window_class == WC_GAME_OPTIONS || w->window_class == WC_NETWORK_WINDOW){	
 			top = (newh - w->height) >> 1;
 			left = (neww - w->width) >> 1;
@@ -1208,4 +1234,3 @@ void RelocateAllWindows(int neww, int newh)
 		w->top = top;
 	}
 }
-

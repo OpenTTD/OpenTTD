@@ -109,6 +109,8 @@ typedef struct Patches {
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
+	
+	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 
 	byte max_trains;				//max trains in game per player (these are 8bit because the unitnumber field can't hold more)
 	byte max_roadveh;				//max trucks in game per player
