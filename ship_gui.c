@@ -646,7 +646,9 @@ static void DrawShipDepotWindow(Window *w)
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	/* locate the depot struct */
-	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
+	for (d = _depots; d->xy != (TileIndex)tile; d++) {
+		assert(d < endof(_depots);
+	}
 
 	SetDParam(0, d->town_index);
 	DrawWindowWidgets(w);
