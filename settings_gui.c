@@ -717,11 +717,6 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH, &_patches.servint_roadveh, 30, 1200, 10},
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 30, 1200, 10},
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 30, 1200, 10},
-
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh_train},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh_roadveh},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh_aircraft},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS, &_patches.ai_disable_veh_ship},
 };
 
 static const PatchEntry _patches_stations[] = {
@@ -748,6 +743,13 @@ static const PatchEntry _patches_economy[] = {
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY, &_patches.smooth_economy},
 };
 
+static const PatchEntry _patches_ai[] = {
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh_train},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh_roadveh},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh_aircraft},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS, &_patches.ai_disable_veh_ship},
+};
+
 typedef struct PatchPage {
 	const PatchEntry *entries;
 	uint num;
@@ -759,6 +761,7 @@ static const PatchPage _patches_page[] = {
 	{_patches_vehicles, lengthof(_patches_vehicles) },
 	{_patches_stations, lengthof(_patches_stations) },
 	{_patches_economy, lengthof(_patches_economy) },
+	{_patches_ai, lengthof(_patches_ai) },
 };
 
 static int32 ReadPE(const PatchEntry*pe)
@@ -939,7 +942,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			
 			break;
 		}
-		case 4: case 5: case 6: case 7: case 8:
+		case 4: case 5: case 6: case 7: case 8: case 9:
 			WP(w,def_d).data_1 = e->click.widget - 4;
 			DeleteWindowById(WC_QUERY_STRING, 0);
 			SetWindowDirty(w);
@@ -978,6 +981,7 @@ static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,     3,   184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES, 0},
 {   WWT_CLOSEBOX,     3,   271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS, 0},
 {   WWT_CLOSEBOX,     3,    10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY, 0},
+{   WWT_CLOSEBOX,     3,    97,   183,    28,    39, STR_CONFIG_PATCHES_AI, 0},
 {      WWT_LAST},
 };
 

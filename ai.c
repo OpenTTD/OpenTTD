@@ -1490,8 +1490,6 @@ static void AiStateWantNewRoute(Player *p)
 
 	i = 200;
 	for(;;) {
-		byte dis;
-
 		r = (uint16)Random();
 		
 		if (r < 0x7626) {
