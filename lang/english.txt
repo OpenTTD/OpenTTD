@@ -1353,6 +1353,8 @@ STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT					:{WHITE} The server is restarting...{}Please wait...
 
+STR_NETWORK_SEND										:{BLACK}Send
+
 ############ end network gui strings
 
 

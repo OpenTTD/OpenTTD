@@ -1150,7 +1150,6 @@ void DoExitSave()
 {
 	char buf[200];
 	sprintf(buf, "%s%sexit.sav", _path.autosave_dir, PATHSEP);
-	debug(buf);
 	SaveOrLoad(buf, SL_SAVE);
 }
 

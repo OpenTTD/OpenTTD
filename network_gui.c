@@ -1285,4 +1285,134 @@ void ShowJoinStatusWindow()
 }
 
 
+
+
+#define MAX_QUERYSTR_LEN 64
+
+static void ChatWindowWndProc(Window *w, WindowEvent *e)
+{
+	static bool closed = false;
+	switch(e->event) {
+	case WE_PAINT: {
+
+		DrawWindowWidgets(w);
+
+		DrawEditBox(w, 1);
+	} break;
+
+	case WE_CLICK:
+		switch(e->click.widget) {
+		case 3: DeleteWindow(w); break; // Cancel
+		case 2: // Send
+press_ok:;
+			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN)) {
+				DeleteWindow(w);
+			} else {
+				byte *buf = WP(w,querystr_d).buf;
+				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
+				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
+				Window *parent;
+
+				// Mask the edit-box as closed, so we don't send out a CANCEL
+				closed = true;
+
+				DeleteWindow(w);
+
+				parent = FindWindowById(wnd_class, wnd_num);
+				if (parent != NULL) {
+					WindowEvent e;
+					e.event = WE_ON_EDIT_TEXT;
+					e.edittext.str = buf;
+					parent->wndproc(parent, &e);
+				}
+			}
+			break;
+		}
+		break;
+
+	case WE_MOUSELOOP: {
+		if (!FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num)) {
+			DeleteWindow(w);
+			return;
+		}
+		HandleEditBox(w, 1);
+	} break;
+
+	case WE_KEYPRESS: {
+		switch(HandleEditBoxKey(w, 1, e)) {
+		case 1: // Return
+			goto press_ok;
+		case 2: // Escape
+			DeleteWindow(w);
+			break;
+		}
+	} break;
+
+	case WE_CREATE:
+		closed = false;
+		break;
+
+	case WE_DESTROY:
+		// If the window is not closed yet, it means it still needs to send a CANCEL
+		if (!closed) {
+			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
+			if (parent != NULL) {
+				WindowEvent e;
+				e.event = WE_ON_EDIT_TEXT_CANCEL;
+				parent->wndproc(parent, &e);
+			}
+		}
+		break;
+	}
+}
+
+static const Widget _chat_window_widgets[] = {
+{     WWT_IMGBTN,    14,     0,   639,     0,    13, 0x0,							STR_NULL}, // background
+{     WWT_IMGBTN,    14,     2,   379,     1,    12, 0x0,							STR_NULL}, // text box
+{    WWT_TEXTBTN,    14,   380,   509,     1,    12, STR_NETWORK_SEND,STR_NULL}, // send button
+{    WWT_TEXTBTN,    14,   510,   639,     1,    12, STR_012E_CANCEL,	STR_NULL}, // cancel button
+{   WIDGETS_END},
+};
+
+static const WindowDesc _chat_window_desc = {
+	WDP_CENTER, -26, 640, 14, // x, y, width, height
+	WC_SEND_NETWORK_MSG,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_chat_window_widgets,
+	ChatWindowWndProc
+};
+
+static byte _edit_str_buf[MAX_QUERYSTR_LEN*2];
+
+void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number)
+{
+	Window *w;
+
+#define _orig_edit_str_buf (_edit_str_buf+MAX_QUERYSTR_LEN)
+
+	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
+
+	if (str == 0xFFFF) {
+		memcpy(_orig_edit_str_buf, str_buffr, MAX_QUERYSTR_LEN);
+	} else {
+		GetString(_orig_edit_str_buf, str);
+	}
+
+	_orig_edit_str_buf[maxlen] = 0;
+
+	memcpy(_edit_str_buf, _orig_edit_str_buf, MAX_QUERYSTR_LEN);
+
+	w = AllocateWindowDesc(&_chat_window_desc);
+
+	w->click_state = 1 << 1;
+	WP(w,querystr_d).caption = caption;
+	WP(w,querystr_d).wnd_class = window_class;
+	WP(w,querystr_d).wnd_num = window_number;
+	WP(w,querystr_d).caret = 0;
+	WP(w,querystr_d).maxlen = maxlen;
+	WP(w,querystr_d).maxwidth = maxwidth;
+	WP(w,querystr_d).buf = _edit_str_buf;
+}
+
+
 #endif /* ENABLE_NETWORK */

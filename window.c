@@ -554,6 +554,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 		} else {
 			if (pt.x == WDP_CENTER) pt.x = (_screen.width - desc->width) >> 1;
 			if (pt.y == WDP_CENTER) pt.y = (_screen.height - desc->height) >> 1;
+			else if(pt.y < 0) pt.y = _screen.height + pt.y; // if y is negative, it's from the bottom of the screen
 		}
 	}
 
@@ -1365,6 +1366,9 @@ void RelocateAllWindows(int neww, int newh)
 			left = (neww - w->width) >> 1;
 		} else if (w->window_class == WC_STATUS_BAR) {
 			top = newh - w->height;
+			left = (neww - w->width) >> 1;
+		} else if (w->window_class == WC_SEND_NETWORK_MSG) {
+			top = (newh - 26); // 26 = height of status bar + height of chat bar
 			left = (neww - w->width) >> 1;
 		} else {
 			left = w->left;

@@ -102,7 +102,7 @@ static const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
 
 /* network gui */
 void ShowNetworkGameWindow();
-
+void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
 
 /* bridge_gui.c */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);

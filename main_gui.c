@@ -334,11 +334,12 @@ static void MenuClickBuildAir(int index)
 }
 
 #ifdef ENABLE_NETWORK
+
 void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 {
 	_rename_id = desttype + (dest << 8);
 	_rename_what = 2;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 60, 250, 1, 0);
+	ShowChatWindow(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 60, 250, 1, 0);
 }
 
 void ShowNetworkGiveMoneyWindow(byte player)
@@ -2337,8 +2338,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			break;
 
 #ifdef ENABLE_NETWORK
+		case WKC_RETURN:
 		case 'T' | WKC_SHIFT:
-			ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+			if(_networking)
+				ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
 			break;
 #endif /* ENABLE_NETWORK */
 
