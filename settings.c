@@ -937,15 +937,18 @@ const SettingDesc patch_settings[] = {
 	* again, just because the sign at the right side was red. If we take
 	* a typical 5 length station, this detour is 10 or 11 tiles (not
 	* sure), so we set the default penalty at 10 (the station tile
-	* penalty will further prevent this */
-	{"npf_rail_firstred_penalty",		SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),	&_patches.npf_rail_firstred_penalty,		NULL},
+	* penalty will further prevent this.
+	* We give presignal exits (and combo's) a different (larger) penalty, because we really
+	* don't want trains waiting in front of a presignal exit. */
+	{"npf_rail_firstred_penalty",   SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_firstred_penalty,		NULL},
+	{"npf_rail_firstred_exit_penalty", SDT_UINT32, (void*)(100 * NPF_TILE_LENGTH),	&_patches.npf_rail_firstred_exit_penalty,		NULL},
 	/* This penalty is for when the last signal before the target is red.
 	 * This is useful for train stations, where there are multiple
 	 * platforms to choose from, which lie in different signal blocks.
 	 * Every target in a occupied signal block (ie an occupied platform)
 	 * will get this penalty.
 	 */
-	{"npf_rail_lastred_penalty",		SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),	&_patches.npf_rail_lastred_penalty,		NULL},
+	{"npf_rail_lastred_penalty",    SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_lastred_penalty,		NULL},
 	/* When a train plans a route over a station tile, this penalty is
 	* applied. We want that trains plan a route around a typical, 4x5
 	* station, which means two tiles to the right, and two tiles back to
@@ -953,9 +956,9 @@ const SettingDesc patch_settings[] = {
 	* a penalty of 1 tile for every station tile passed, the route will
 	* be around it.
 	*/
-	{"npf_rail_station_penalty",		SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_station_penalty, 		NULL},
-	{"npf_rail_slope_penalty",			SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),		&_patches.npf_rail_slope_penalty,				NULL},
-	{"npf_rail_curve_penalty",			SDT_UINT32, (void*)(1),		&_patches.npf_rail_curve_penalty,				NULL},
+	{"npf_rail_station_penalty",    SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_station_penalty, 		NULL},
+	{"npf_rail_slope_penalty",      SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_slope_penalty,				NULL},
+	{"npf_rail_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_rail_curve_penalty,				NULL},
 
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };

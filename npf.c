@@ -373,7 +373,13 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 			if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
 				/* Penalize the first signal we
 				 * encounter, if it is red */
-				cost += _patches.npf_rail_firstred_penalty;
+
+				/* Is this a presignal exit or combo? */
+				if ((_map3_hi[tile] & 0x3) == 0x2 || (_map3_hi[tile] & 0x3) == 0x3)
+					/* Penalise exit and combo signals differently (heavier) */
+					cost += _patches.npf_rail_firstred_exit_penalty;
+				else
+					cost += _patches.npf_rail_firstred_penalty;
 			}
 			/* Record the state of this signal */
 			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, true);
