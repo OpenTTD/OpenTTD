@@ -337,8 +337,8 @@ void DrawWindowWidgets(Window *w)
 			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL) ? 0x20 : 0);
 
 			// draw icons in up/down buttons
-			DoDrawString("\xA0", r.left+1, r.top+1, 0x10);
-			DoDrawString("\xAA", r.right-8, r.top+1, 0x10);
+			DrawSprite(SPR_ARROW_LEFT, r.left + 3, r.top + 2);
+			DrawSprite(SPR_ARROW_RIGHT, r.right - 6, r.top + 2);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;

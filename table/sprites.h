@@ -51,6 +51,11 @@ enum Sprites {
 	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon
 	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 63,
 	SPR_WINDOW_RESIZE = SPR_OPENTTD_BASE + 94,   // resize icon
+	// arrow icons pointing in all 4 directions
+	SPR_ARROW_DOWN    = SPR_OPENTTD_BASE + 95,
+	SPR_ARROW_UP      = SPR_OPENTTD_BASE + 96,
+	SPR_ARROW_LEFT    = SPR_OPENTTD_BASE + 97,
+	SPR_ARROW_RIGHT   = SPR_OPENTTD_BASE + 98,
 
 
 	/* Network GUI sprites */
