@@ -983,7 +983,7 @@ int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 void ConsoleSetPatchSetting(char *name, char *value)
 {
 	const PatchPage *page;
-	const PatchEntry *pe;
+	const PatchEntry *pe = NULL;
 	bool found = false;
 	int i, j;
 	int val;
@@ -1004,7 +1004,7 @@ void ConsoleSetPatchSetting(char *name, char *value)
 	}
 
 	/* We did not found the patch setting */
-	if (!found) {
+	if (!found || pe == NULL) {
 		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch setting", name);
 		return;
 	}
@@ -1041,7 +1041,7 @@ void ConsoleSetPatchSetting(char *name, char *value)
 void ConsoleGetPatchSetting(char *name)
 {
 	const PatchPage *page;
-	const PatchEntry *pe;
+	const PatchEntry *pe = NULL;
 	char value[50];
 	bool found = false;
 	int i, j;
@@ -1062,7 +1062,7 @@ void ConsoleGetPatchSetting(char *name)
 	}
 
 	/* We did not found the patch setting */
-	if (!found) {
+	if (!found || pe == NULL) {
 		IConsolePrintF(_iconsole_color_warning, "'%s' is an unkown patch setting", name);
 		return;
 	}
