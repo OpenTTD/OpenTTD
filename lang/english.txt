@@ -2707,3 +2707,8 @@ STR_SCHEDULED_TRAINS								:{WHITE}{STATION} - {COMMA16} Trains
 STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Road Vehicles
 STR_SCHEDULED_AIRCRAFT							:{WHITE}{STATION} - {COMMA16} Aircraft
 STR_SCHEDULED_SHIPS									:{WHITE}{STATION} - {COMMA16} Ships
+
+STR_SCHEDULED_TRAINS_TIP						:{BLACK}Show all trains which have this station on their schedule
+STR_SCHEDULED_ROAD_VEHICLES_TIP			:{BLACK}Show all road vehicles which have this station on their schedule
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Show all aircraft which have this station on their schedule
+STR_SCHEDULED_SHIPS_TIP							:{BLACK}Show all ships which have this station on their schedule
