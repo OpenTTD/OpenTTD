@@ -2368,16 +2368,23 @@ static void CheckTrainCollision(Vehicle *v)
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 }
 
+typedef struct VehicleAtSignalData {
+	TileIndex tile;
+	byte direction;
+} VehicleAtSignalData;
+
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
-	uint32 d = (uint32)data;
+	const VehicleAtSignalData* vasd = data;
 
-	if (v->type == VEH_Train && v->subtype == TS_Front_Engine && v->tile == (TileIndex)(d >> 8)) {
-		byte diff = (v->direction - (byte)d + 2) & 7;
+	if (v->type == VEH_Train && v->subtype == TS_Front_Engine &&
+			v->tile == vasd->tile) {
+		byte diff = (v->direction - vasd->direction + 2) & 7;
+
 		if (diff == 2 || (v->cur_speed <= 5 && diff <= 4))
-			return (void*)1;
+			return v;
 	}
-	return 0;
+	return NULL;
 }
 
 static void TrainController(Vehicle *v)
@@ -2581,9 +2588,14 @@ red_light: {
 			v->subspeed = 0;
 			v->progress = 255-10;
 			if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
-				uint o_tile = gp.new_tile + TileOffsByDir(enterdir);
+				TileIndex o_tile = gp.new_tile + TileOffsByDir(enterdir);
+				VehicleAtSignalData vasd = {
+					o_tile,
+					dir ^ 4
+				};
+
 				/* check if a train is waiting on the other side */
-				if (VehicleFromPos(o_tile, (void*)( (o_tile<<8) | (dir^4)), (VehicleFromPosProc*)CheckVehicleAtSignal) == NULL)
+				if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL)
 					return;
 			}
 		}
