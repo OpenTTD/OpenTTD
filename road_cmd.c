@@ -855,7 +855,7 @@ void DrawRoadDepotSprite(int x, int y, int image)
 	}
 }
 
-uint GetSlopeZ_Road(TileInfo *ti)
+static uint GetSlopeZ_Road(TileInfo *ti)
 {
 	uint z = ti->z;
 	int th = ti->tileh;

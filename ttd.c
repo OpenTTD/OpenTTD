@@ -288,10 +288,6 @@ void LoadDriver(int driver, const char *name)
 	*var = drv;
 }
 
-void PrintDriverList()
-{
-}
-
 static void showhelp()
 {
 	char buf[4096], *p;
@@ -640,7 +636,7 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-void LoadIntroGame()
+static void LoadIntroGame()
 {
 	char filename[256];
 	_game_mode = GM_MENU;
@@ -696,7 +692,7 @@ void MakeNewGame()
 	MarkWholeScreenDirty();
 }
 
-void MakeNewEditorWorld()
+static void MakeNewEditorWorld()
 {
 	_game_mode = GM_EDITOR;
 
@@ -768,7 +764,7 @@ void StartScenario()
 	MarkWholeScreenDirty();
 }
 
-bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
+static bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 {
 	byte ogm = _game_mode;
 	int r;
@@ -879,7 +875,7 @@ normal_load:
 // The state must not be changed from anywhere
 // but here.
 // That check is enforced in DoCommand.
-void StateGameLoop()
+static void StateGameLoop()
 {
 	// dont execute the state loop during pause
 	if (_pause) return;

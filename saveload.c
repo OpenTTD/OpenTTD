@@ -113,38 +113,38 @@ void SlWriteByte(byte v)
 	*_sl.bufp++ = v;
 }
 
-int SlReadUint16()
+static int SlReadUint16()
 {
 	int x = SlReadByte() << 8;
 	return x | SlReadByte();
 }
 
-uint32 SlReadUint32()
+static uint32 SlReadUint32()
 {
 	uint32 x = SlReadUint16() << 16;
 	return x | SlReadUint16();
 }
 
-uint64 SlReadUint64()
+static uint64 SlReadUint64()
 {
 	uint32 x = SlReadUint32();
 	uint32 y = SlReadUint32();
 	return (uint64)x << 32 | y;
 }
 
-void SlWriteUint16(uint16 v)
+static void SlWriteUint16(uint16 v)
 {
 	SlWriteByte((byte)(v >> 8));
 	SlWriteByte((byte)v);
 }
 
-void SlWriteUint32(uint32 v)
+static void SlWriteUint32(uint32 v)
 {
 	SlWriteUint16((uint16)(v >> 16));
 	SlWriteUint16((uint16)v);
 }
 
-void SlWriteUint64(uint64 x)
+static void SlWriteUint64(uint64 x)
 {
 	SlWriteUint32((uint32)(x >> 32));
 	SlWriteUint32((uint32)x);
@@ -260,7 +260,7 @@ void SlSetLength(uint length)
 	}
 }
 
-void SlCopyBytes(void *ptr, size_t length)
+static void SlCopyBytes(void *ptr, size_t length)
 {
 	byte *p = (byte*)ptr;
 
@@ -664,7 +664,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 	}
 }
 
-void SlSaveChunks()
+static void SlSaveChunks()
 {
 	const ChunkHandler *ch;
 	const ChunkHandler * const * chsc;
@@ -702,7 +702,7 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 	return NULL;
 }
 
-void SlLoadChunks()
+static void SlLoadChunks()
 {
 	uint32 id;
 	const ChunkHandler *ch;
@@ -953,7 +953,7 @@ static const ReferenceSetup _ref_setup[] = {
 	{_towns,sizeof(_towns[0])},
 };
 
-uint ReferenceToInt(void *v, uint t)
+static uint ReferenceToInt(void *v, uint t)
 {
 	if (v == NULL) return 0;
 	return ((byte*)v - (byte*)_ref_setup[t].base) / _ref_setup[t].size + 1;

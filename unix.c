@@ -401,7 +401,7 @@ int GetLanguageList(char **languages, int max)
 	return num;
 }
 
-void ChangeWorkingDirectory(char *exe)
+static void ChangeWorkingDirectory(char *exe)
 {
 	char *s = strrchr(exe, '/');
 	if (s != NULL) {

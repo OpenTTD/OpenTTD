@@ -514,7 +514,7 @@ void Aircraft_Tick(Vehicle *v);
 void RoadVeh_Tick(Vehicle *v);
 void Ship_Tick(Vehicle *v);
 void Train_Tick(Vehicle *v);
-void EffectVehicle_Tick(Vehicle *v);
+static void EffectVehicle_Tick(Vehicle *v);
 void DisasterVehicle_Tick(Vehicle *v);
 
 VehicleTickProc *_vehicle_tick_procs[] = {
@@ -1196,7 +1196,7 @@ Vehicle *CreateEffectVehicleRel(Vehicle *v, int x, int y, int z, int type)
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }
 
-void EffectVehicle_Tick(Vehicle *v)
+static void EffectVehicle_Tick(Vehicle *v)
 {
 	_effect_tick_procs[v->subtype](v);
 }

@@ -374,7 +374,7 @@ void SetScreenshotFormat(int i)
 }
 
 // screenshot generator that dumps the current video buffer
-void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
 {
 	for (; n > 0; --n)
 	{
@@ -387,7 +387,7 @@ void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch, uint n
 extern void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom);
 
 // generate a large piece of the world
-void LargeWorldCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
+static void LargeWorldCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
 {
 	ViewPort *vp = (ViewPort *)userdata;
 	DrawPixelInfo dpi, *old_dpi;

@@ -122,7 +122,7 @@ extern void dbg_push_tile(uint tile, int track);
 extern void dbg_pop_tile();
 #endif
 
-void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
+static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 {
 	uint bits;
 	int i;
@@ -254,7 +254,7 @@ const byte _ffb_64[128] = {
 48,56,56,58,56,60,60,62,
 };
 
-void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
+static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 {
 	uint bits;
 	int i;
@@ -581,7 +581,7 @@ static bool NtpCheck(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 
 
 // new more optimized pathfinder for trains...
-void NTPEnum(NewTrackPathFinder *tpf, uint tile, uint direction)
+static void NTPEnum(NewTrackPathFinder *tpf, uint tile, uint direction)
 {
 	uint bits, tile_org;
 	int i;

@@ -564,7 +564,7 @@ static const uint16 _dbg_track_sprite[] = {
 	0x3F7,
 };
 
-int dbg_draw_pushed(const TileInfo *ti)
+static int dbg_draw_pushed(const TileInfo *ti)
 {
 	int i;
 	if (ti->tile==0)
@@ -663,7 +663,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	}
 }
 
-void ViewportAddLandscape()
+static void ViewportAddLandscape()
 {
 	ViewportDrawer *vd = _cur_vd;
 	int x, y, width, height;
@@ -728,7 +728,7 @@ void ViewportAddLandscape()
 }
 
 
-void ViewportAddTownNames(DrawPixelInfo *dpi)
+static void ViewportAddTownNames(DrawPixelInfo *dpi)
 {
 	Town *t;
 	int left, top, right, bottom;
@@ -785,7 +785,7 @@ void ViewportAddTownNames(DrawPixelInfo *dpi)
 	}
 }
 
-void ViewportAddStationNames(DrawPixelInfo *dpi)
+static void ViewportAddStationNames(DrawPixelInfo *dpi)
 {
 	int left, top, right, bottom;
 	Station *st;
@@ -856,7 +856,7 @@ void ViewportAddStationNames(DrawPixelInfo *dpi)
 	}
 }
 
-void ViewportAddSigns(DrawPixelInfo *dpi)
+static void ViewportAddSigns(DrawPixelInfo *dpi)
 {
 	SignStruct *ss;
 	int left, top, right, bottom;
@@ -923,7 +923,7 @@ void ViewportAddSigns(DrawPixelInfo *dpi)
 	}
 }
 
-void ViewportAddWaypoints(DrawPixelInfo *dpi)
+static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 {
 	Waypoint *cp;
 
@@ -1010,7 +1010,7 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 }
 
 
-void ViewportDrawTileSprites(TileSpriteToDraw *ts)
+static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 {
 	do {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
@@ -1018,7 +1018,7 @@ void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 	} while ( (ts = ts->next) != NULL);
 }
 
-void ViewportSortParentSprites(ParentSpriteToDraw **psd)
+static void ViewportSortParentSprites(ParentSpriteToDraw **psd)
 {
 	ParentSpriteToDraw *ps, *ps2,*ps3, **psd2, **psd3;
 
@@ -1054,7 +1054,7 @@ void ViewportSortParentSprites(ParentSpriteToDraw **psd)
 	}
 }
 
-void ViewportDrawParentSprites(ParentSpriteToDraw **psd)
+static void ViewportDrawParentSprites(ParentSpriteToDraw **psd)
 {
 	ParentSpriteToDraw *ps;
 	ChildScreenSpriteToDraw *cs;
@@ -1071,7 +1071,7 @@ void ViewportDrawParentSprites(ParentSpriteToDraw **psd)
 	}
 }
 
-void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
+static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 {
 	DrawPixelInfo dp;
 	byte zoom;
@@ -1309,7 +1309,7 @@ void UpdateViewportPosition(Window *w)
 	}
 }
 
-void MarkViewportDirty(ViewPort *vp, int left, int top, int right, int bottom)
+static void MarkViewportDirty(ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if ( (right -= vp->virtual_left) <= 0)
 		return;
@@ -1375,7 +1375,7 @@ void MarkTileDirty(int x, int y)
 	);
 }
 
-void SetSelectionTilesDirty()
+static void SetSelectionTilesDirty()
 {
 	int y_size, x_size;
 	TileHighlightData *thd = _thd_ptr;

@@ -585,7 +585,7 @@ void InitWindowSystem()
 	_active_viewports = 0;
 }
 
-void DecreaseWindowCounters()
+static void DecreaseWindowCounters()
 {
 	Window *w;
 
@@ -616,7 +616,7 @@ Window *GetCallbackWnd()
 	return FindWindowById(_thd.window_class, _thd.window_number);
 }
 
-void HandlePlacePresize()
+static void HandlePlacePresize()
 {
 	Window *w;
 	WindowEvent e;
@@ -637,7 +637,7 @@ void HandlePlacePresize()
 	w->wndproc(w, &e);
 }
 
-bool HandleDragDrop()
+static bool HandleDragDrop()
 {
 	Window *w;
 	WindowEvent e;
@@ -663,7 +663,7 @@ bool HandleDragDrop()
 	return false;
 }
 
-bool HandlePopupMenu()
+static bool HandlePopupMenu()
 {
 	Window *w;
 	WindowEvent e;
@@ -691,7 +691,7 @@ bool HandlePopupMenu()
 	return false;
 }
 
-bool HandleWindowDragging()
+static bool HandleWindowDragging()
 {
 	Window *w;
 	// Get out immediately if no window is being dragged at all.
@@ -861,7 +861,7 @@ Window *StartWindowSizing(Window *w)
 }
 
 
-bool HandleScrollbarScrolling()
+static bool HandleScrollbarScrolling()
 {
 	Window *w;
 	int i;
@@ -904,7 +904,7 @@ bool HandleScrollbarScrolling()
 	return false;
 }
 
-bool HandleViewportScroll()
+static bool HandleViewportScroll()
 {
 	Window *w;
 	ViewPort *vp;

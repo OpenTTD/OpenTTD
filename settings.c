@@ -899,7 +899,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 	proc(ini, debug_settings,		"debug",		NULL);
 }
 
-void LoadGrfSettings(IniFile *ini)
+static void LoadGrfSettings(IniFile *ini)
 {
 	IniGroup *group = ini_getgroup(ini, "newgrf", -1);
 	IniItem *item;

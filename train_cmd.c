@@ -82,7 +82,7 @@ void UpdateTrainAcceleration(Vehicle *v)
 
 #define F_CURVE_FACTOR (1/96.f)
 
-bool IsTunnelTile(TileIndex tile);
+static bool IsTunnelTile(TileIndex tile);
 
 static int GetRealisticAcceleration(Vehicle *v)
 {
@@ -219,7 +219,7 @@ void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 }
 
 
-int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
+static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 {
 	int32 value;
 	Vehicle *v;
@@ -513,7 +513,7 @@ bool IsTrainDepotTile(TileIndex tile)
 					(_map5[tile] & 0xFC) == 0xC0;
 }
 
-bool IsTunnelTile(TileIndex tile)
+static bool IsTunnelTile(TileIndex tile)
 {
 	return IS_TILETYPE(tile, MP_TUNNELBRIDGE) &&
 				 (_map5[tile]&0x80) == 0;

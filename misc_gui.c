@@ -1338,14 +1338,14 @@ void AskForNewGameToStart()
 	w->vscroll.cap = 27;
 }
 
-int32 ClickMoneyCheat(int32 p1, int32 p2)
+static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
 		DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
 		return true;
 }
 
 // p1 player to set to, p2 is -1 or +1 (down/up)
-int32 ClickChangePlayerCheat(int32 p1, int32 p2)
+static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
 	while(p1 >= 0 && p1 < MAX_PLAYERS) {
 		if (_players[p1].is_active)	{

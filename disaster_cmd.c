@@ -940,7 +940,7 @@ static const DisasterYears _dis_years[8] = {
 };
 
 
-void DoDisaster()
+static void DoDisaster()
 {
 	byte buf[8];
 	byte year = _cur_year;

@@ -234,7 +234,7 @@ static const TileIndexDiff _tile_add[4] = {
 };
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
-bool checkRadioTowerNearby(uint tile)
+static bool checkRadioTowerNearby(uint tile)
 {
 	uint tile_s;
 

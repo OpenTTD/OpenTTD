@@ -209,7 +209,7 @@ static const WindowDesc _town_authority_desc = {
 	TownAuthorityWndProc
 };
 
-void ShowTownAuthorityWindow(uint town)
+static void ShowTownAuthorityWindow(uint town)
 {
 	Window *w;
 

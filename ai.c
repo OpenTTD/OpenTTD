@@ -2772,7 +2772,7 @@ static const uint16 _ai_road_table_and[4] = {
 	0x2A00,
 };
 
-bool AiCheckRoadFinished(Player *p)
+static bool AiCheckRoadFinished(Player *p)
 {
 	AiRoadEnum are;
 	uint tile;

@@ -98,9 +98,9 @@ void InitializeLandscape();
 void InitializeTowns();
 void InitializeTrees();
 void InitializeStations();
-void InitializeNameMgr();
+static void InitializeNameMgr();
 void InitializePlayers();
-void InitializeCheats();
+static void InitializeCheats();
 
 void GenerateLandscape();
 void GenerateClearTile();
@@ -240,13 +240,13 @@ byte *GetName(int id, byte *buff)
 }
 
 
-void InitializeCheats()
+static void InitializeCheats()
 {
 	memset(&_cheats, 0, sizeof(Cheats));
 }
 
 
-void InitializeNameMgr()
+static void InitializeNameMgr()
 {
 	memset(_name_array, 0, sizeof(_name_array));
 }

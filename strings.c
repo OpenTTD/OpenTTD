@@ -186,7 +186,7 @@ int32 GetParamInt32()
 	return result;
 }
 
-int64 GetParamInt64()
+static int64 GetParamInt64()
 {
 	int64 result = GET_DPARAM32(0) + ((uint64)GET_DPARAM32(1) << 32);
 	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));

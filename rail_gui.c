@@ -377,7 +377,7 @@ static int GetBestArea(int x, int y)
 	return r;
 }
 
-int GetBestFit1x1(int x, int y)
+static int GetBestFit1x1(int x, int y)
 {
 	byte m[5];
 	const BestFitStruct *bfs;

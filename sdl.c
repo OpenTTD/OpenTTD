@@ -659,7 +659,7 @@ void redsq_debug(int tile)
 	DrawSurfaceToScreen();
 }
 
-void DbgRedraw()
+static void DbgRedraw()
 {
 	SdlVideoMakeDirty(0,0,_screen.width,_screen.height);
 	DrawSurfaceToScreen();

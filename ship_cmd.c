@@ -759,12 +759,6 @@ void Ship_Tick(Vehicle *v)
 	ShipController(v);
 }
 
-void OnTick_Ship()
-{
-	// unused
-}
-
-
 void HandleClickOnShip(Vehicle *v)
 {
 	ShowShipViewWindow(v);

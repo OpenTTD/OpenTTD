@@ -404,7 +404,7 @@ bool isWagon(byte index)
 	return false;
 }
 
-void NewVehicleAvailable(Engine *e)
+static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
 	Player *p;

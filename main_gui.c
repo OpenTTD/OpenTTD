@@ -104,7 +104,7 @@ static void ToolbarFastForwardClick(Window *w)
 typedef void MenuClickedProc(int index);
 
 
-void MenuClickSettings(int index)
+static void MenuClickSettings(int index)
 {
 	switch(index) {
 	case 0: ShowGameOptions(); return;
@@ -120,7 +120,7 @@ void MenuClickSettings(int index)
 	}
 }
 
-void MenuClickSaveLoad(int index)
+static void MenuClickSaveLoad(int index)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch(index) {
@@ -155,7 +155,7 @@ void MenuClickSaveLoad(int index)
 	}
 }
 
-void MenuClickMap(int index)
+static void MenuClickMap(int index)
 {
 	switch(index) {
 	case 0: ShowSmallMap(); break;
@@ -163,12 +163,12 @@ void MenuClickMap(int index)
 	}
 }
 
-void MenuClickTown(int index)
+static void MenuClickTown(int index)
 {
 	ShowTownDirectory();
 }
 
-void MenuClickScenMap(int index)
+static void MenuClickScenMap(int index)
 {
 	switch(index) {
 	case 0: ShowSmallMap(); break;
@@ -177,28 +177,28 @@ void MenuClickScenMap(int index)
 	}
 }
 
-void MenuClickSubsidies(int index)
+static void MenuClickSubsidies(int index)
 {
 	ShowSubsidiesList();
 }
 
-void MenuClickStations(int index)
+static void MenuClickStations(int index)
 {
 	ShowPlayerStations(index);
 }
 
-void MenuClickFinances(int index)
+static void MenuClickFinances(int index)
 {
 	ShowPlayerFinances(index);
 }
 
-void MenuClickCompany(int index)
+static void MenuClickCompany(int index)
 {
 	ShowPlayerCompany(index);
 }
 
 
-void MenuClickGraphs(int index)
+static void MenuClickGraphs(int index)
 {
 	switch(index) {
 	case 0: ShowOperatingProfitGraph(); return;
@@ -210,7 +210,7 @@ void MenuClickGraphs(int index)
 	}
 }
 
-void MenuClickLeague(int index)
+static void MenuClickLeague(int index)
 {
 	switch(index) {
 	case 0: ShowCompanyLeagueTable(); return;
@@ -218,7 +218,7 @@ void MenuClickLeague(int index)
 	}
 }
 
-void MenuClickIndustry(int index)
+static void MenuClickIndustry(int index)
 {
 	switch(index) {
 	case 0: ShowIndustryDirectory(); break;
@@ -226,44 +226,44 @@ void MenuClickIndustry(int index)
 	}
 }
 
-void MenuClickShowTrains(int index)
+static void MenuClickShowTrains(int index)
 {
 	ShowPlayerTrains(index);
 }
 
-void MenuClickShowRoad(int index)
+static void MenuClickShowRoad(int index)
 {
 	ShowPlayerRoadVehicles(index);
 }
 
-void MenuClickShowShips(int index)
+static void MenuClickShowShips(int index)
 {
 	ShowPlayerShips(index);
 }
 
-void MenuClickShowAir(int index)
+static void MenuClickShowAir(int index)
 {
 	ShowPlayerAircraft(index);
 }
 
-void MenuClickBuildRail(int index)
+static void MenuClickBuildRail(int index)
 {
 	Player *p = DEREF_PLAYER(_local_player);
 	_last_built_railtype = min(index, p->max_railtype-1);
 	ShowBuildRailToolbar(_last_built_railtype, -1);
 }
 
-void MenuClickBuildRoad(int index)
+static void MenuClickBuildRoad(int index)
 {
 	ShowBuildRoadToolbar();
 }
 
-void MenuClickBuildWater(int index)
+static void MenuClickBuildWater(int index)
 {
 	ShowBuildDocksToolbar();
 }
 
-void MenuClickBuildAir(int index)
+static void MenuClickBuildAir(int index)
 {
 	ShowBuildAirToolbar();
 }
@@ -307,7 +307,7 @@ static void SelectSignTool()
 	}
 }
 
-void MenuClickForest(int index)
+static void MenuClickForest(int index)
 {
 	switch(index) {
 	case 0: ShowTerraformToolbar(); break;
@@ -316,12 +316,12 @@ void MenuClickForest(int index)
 	}
 }
 
-void MenuClickMusicWindow(int index)
+static void MenuClickMusicWindow(int index)
 {
 	ShowMusicWindow();
 }
 
-void MenuClickNewspaper(int index)
+static void MenuClickNewspaper(int index)
 {
 	switch(index) {
 	case 0: ShowLastNewsMessage(); break;
@@ -331,7 +331,7 @@ void MenuClickNewspaper(int index)
 	}
 }
 
-void MenuClickHelp(int index)
+static void MenuClickHelp(int index)
 {
 	switch(index) {
 	case 0: PlaceLandBlockInfo(); break;
@@ -926,7 +926,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-void ResetLandscape()
+static void ResetLandscape()
 {
 	_random_seeds[0][0] = InteractiveRandom();
 	_random_seeds[0][1] = InteractiveRandom();
@@ -1037,12 +1037,12 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 	_generating_world = false;
 }
 
-void PlaceProc_RaiseBigLand(uint tile)
+static void PlaceProc_RaiseBigLand(uint tile)
 {
 	CommonRaiseLowerBigLand(tile, 1);
 }
 
-void PlaceProc_LowerBigLand(uint tile)
+static void PlaceProc_LowerBigLand(uint tile)
 {
 	CommonRaiseLowerBigLand(tile, 0);
 }
@@ -1061,7 +1061,7 @@ void PlaceProc_LowerBigLand(uint tile)
 //}
 
 
-void PlaceProc_RockyArea(uint tile)
+static void PlaceProc_RockyArea(uint tile)
 {
 	if (!IS_TILETYPE(tile, MP_CLEAR))
 		return;
@@ -1071,7 +1071,7 @@ void PlaceProc_RockyArea(uint tile)
 	SndPlayTileFx(0x1D, tile);
 }
 
-void PlaceProc_LightHouse(uint tile)
+static void PlaceProc_LightHouse(uint tile)
 {
 	TileInfo ti;
 
@@ -1083,7 +1083,7 @@ void PlaceProc_LightHouse(uint tile)
 	SndPlayTileFx(0x1D, tile);
 }
 
-void PlaceProc_Transmitter(uint tile)
+static void PlaceProc_Transmitter(uint tile)
 {
 	TileInfo ti;
 
@@ -1095,7 +1095,7 @@ void PlaceProc_Transmitter(uint tile)
 	SndPlayTileFx(0x1D, tile);
 }
 
-void PlaceProc_Desert(uint tile)
+static void PlaceProc_Desert(uint tile)
 {
 	SetMapExtraBits(tile, GetMapExtraBits(tile) == 1 ? 0 : 1);
 }
@@ -1263,7 +1263,7 @@ static void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-void PlaceProc_Town(uint tile)
+static void PlaceProc_Town(uint tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
@@ -1999,7 +1999,7 @@ static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 	return x > 0;
 }
 
-void StatusBarWndProc(Window *w, WindowEvent *e)
+static void StatusBarWndProc(Window *w, WindowEvent *e)
 {
 	Player *p;
 

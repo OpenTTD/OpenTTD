@@ -1026,7 +1026,7 @@ static void FixEngine(Engine *n, OldEngine *o, int num)
 	} while (n++,o++,i++,--num);
 }
 
-void FixGameDifficulty(GameDifficulty *n, OldGameSettings *o)
+static void FixGameDifficulty(GameDifficulty *n, OldGameSettings *o)
 {
 	n->max_no_competitors = o->max_no_competitors;
 	n->competitor_start_time = o->competitor_start_time;

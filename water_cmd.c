@@ -14,7 +14,7 @@ bool IsShipDepotTile(TileIndex tile)
 	return IS_TILETYPE(tile, MP_WATER) &&	(_map5[tile]&~3) == 0x80;
 }
 
-bool IsClearWaterTile(uint tile)
+static bool IsClearWaterTile(uint tile)
 {
 	TileInfo ti;
 	FindLandscapeHeightByTile(&ti, tile);
@@ -440,12 +440,12 @@ void DrawShipDepotSprite(int x, int y, int image)
 }
 
 
-uint GetSlopeZ_Water(TileInfo *ti)
+static uint GetSlopeZ_Water(TileInfo *ti)
 {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-uint GetSlopeTileh_Water(TileInfo *ti)
+static uint GetSlopeTileh_Water(TileInfo *ti)
 {
 	return ti->tileh;
 }

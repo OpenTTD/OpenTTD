@@ -687,7 +687,7 @@ restart:
 #define MAP(from,to,map) else if (s >= from && s <= to) { s = map[s - from] + from; }
 
 
-uint RotateSprite(uint s)
+static uint RotateSprite(uint s)
 {
 	static const byte _rotate_tile_sprite[19] = { 0,2,4,6,8,10,12,14,1,3,5,7,9,11,13,17,18,16,15 };
 	static const byte _coast_map[9] = {0, 4, 3, 1, 2, 6, 8, 5, 7};

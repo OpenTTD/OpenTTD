@@ -428,7 +428,7 @@ static const byte _industry_min_cargo[] = {
 	5, 5, 5, 5, 5,
 };
 
-void TransportIndustryGoods(uint tile)
+static void TransportIndustryGoods(uint tile)
 {
 	Industry *i;
 	int type;

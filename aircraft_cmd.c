@@ -77,7 +77,7 @@ void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 }
 
 /* Allocate many vehicles */
-bool AllocateVehicles(Vehicle **vl, int num)
+static bool AllocateVehicles(Vehicle **vl, int num)
 {
 	int i;
 	Vehicle *v;
@@ -293,7 +293,7 @@ static bool CheckStoppedInHangar(Vehicle *v)
 }
 
 
-void DoDeleteAircraft(Vehicle *v)
+static void DoDeleteAircraft(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 	_vehicle_sort_dirty[VEHAIRCRAFT] = true; // delete aircraft

@@ -160,7 +160,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color) {
 	}
 }
 
-void GfxSetPixel(int x, int y, int color)
+static void GfxSetPixel(int x, int y, int color)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if ((x-=dpi->left) < 0 || x>=dpi->width || (y-=dpi->top)<0 || y>=dpi->height)
@@ -1455,7 +1455,7 @@ static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
 }
 
 
-void GfxScalePalette(int pal, byte scaling)
+static void GfxScalePalette(int pal, byte scaling)
 {
 	byte *dst, *src;
 	size_t count;
@@ -1661,7 +1661,7 @@ void DrawMouseCursor()
 	_cursor.dirty = false;
 }
 
-void DbgScreenRect(int left, int top, int right, int bottom)
+static void DbgScreenRect(int left, int top, int right, int bottom)
 {
 	DrawPixelInfo dp,*old;
 

@@ -35,7 +35,7 @@ typedef struct GraphDrawer {
 
 #define INVALID_VALUE 0x80000000
 
-void DrawGraph(GraphDrawer *gw)
+static void DrawGraph(GraphDrawer *gw)
 {
 
 	int i,j,k;

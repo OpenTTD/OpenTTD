@@ -1868,7 +1868,7 @@ void SetSignalsOnBothDir(uint tile, byte track)
 	UpdateSignalsOnSegment(tile, _search_dir_2[track]);
 }
 
-uint GetSlopeZ_Track(TileInfo *ti)
+static uint GetSlopeZ_Track(TileInfo *ti)
 {
 	uint z = ti->z;
 	int th = ti->tileh;
@@ -2111,7 +2111,7 @@ static const byte _enter_directions[4] = {5, 7, 1, 3};
 static const byte _leave_directions[4] = {1, 3, 5, 7};
 static const byte _depot_track_mask[4] = {1, 2, 1, 2};
 
-uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 {
 	byte fract_coord;
 	int dir;
