@@ -44,6 +44,11 @@ uint32 InteractiveRandom()
 	return _random_seeds[1][1] = ROR(s, 3);
 }
 
+uint InteractiveRandomRange(uint max)
+{
+	return (uint16)InteractiveRandom() * max >> 16;
+}
+
 void InitPlayerRandoms()
 {
 	int i;

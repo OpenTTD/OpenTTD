@@ -4,6 +4,7 @@
 #include "command.h"
 #include "player.h"
 #include "console.h"
+#include "economy.h"
 
 #if defined(WIN32)
 #	include <windows.h>
@@ -87,6 +88,7 @@ enum {
 	PACKET_TYPE_FSYNC,
 	PACKET_TYPE_XMIT,
 	PACKET_TYPE_COMMAND,
+	PACKET_TYPE_EVENT,
 };
 
 // sent from client -> server whenever the client wants to exec a command.
@@ -101,6 +103,13 @@ typedef struct CommandPacket {
 	byte when;  // offset from the current max_frame value minus 1. this is set by the server.
 	uint32 dp[8];
 } CommandPacket;
+
+typedef struct EventPacket {
+	byte packet_length;
+	byte packet_type;
+	byte event_type;
+	byte data_start;
+} EventPacket;
 
 #define COMMAND_PACKET_BASE_SIZE (sizeof(CommandPacket) - 8 * sizeof(uint32))
 
@@ -343,9 +352,9 @@ static void QueueClear(CommandQueue *nq)
 static int GetNextSyncFrame()
 {
 	uint32 newframe;
-	if (_frame_fsync_last == 0) return -1;
-	newframe = (_frame_fsync_last + 9);
-	if ( (newframe + 4) > _frame_counter_max) return -1;
+	if (_frame_fsync_last == 0) return -5;
+	newframe = (_frame_fsync_last + 16);
+	if ( (newframe + 4) > _frame_counter_max) return -5;
 	return (_frame_counter_max - newframe);
 
 }
@@ -367,7 +376,7 @@ void NetworkProcessCommands()
 		if (!(nq->head = qp->next)) nq->last = &nq->head;
 
 		if (qp->frame < _frame_counter && _networking_sync) {
-			DEBUG(net,0) ("error: !qp->cp.frame < _frame_counter, %d < %d\n", qp->frame, _frame_counter);
+			DEBUG(net,0) ("warning: !qp->cp.frame < _frame_counter, %d < %d [%d]\n", qp->frame, _frame_counter, _frame_counter_srv+4);
 		}
 
 		// run the command
@@ -495,6 +504,25 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	}
 }
 
+void NetworkSendEvent(uint16 type, uint16 data_len, void * data)
+{
+	EventPacket * ep;
+	ClientState *cs;
+	
+	// encode the event ... add its data
+	ep=malloc(data_len+sizeof(EventPacket)-1);
+	ep->event_type = type;
+	ep->packet_length = data_len+sizeof(EventPacket)-1;
+	ep->packet_type = PACKET_TYPE_EVENT;
+	memcpy(&ep->data_start,data,data_len);
+
+	// send it to the peers
+	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, ep, ep->packet_length);
+
+	// free the temp packet
+	free(ep);
+}
+
 // client:
 //   server sends a command from another player that we should execute.
 //   put it in the command queue.
@@ -570,6 +598,15 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 		free(qp);
 		_current_player = p;
 		}
+}
+
+static void HandleEventPacket(EventPacket *ep)
+{
+	switch (ep->event_type) {
+		case NET_EVENT_SUBSIDY:
+			RemoteSubsidyAdd((Subsidy *)&ep->data_start);
+			break;
+	}
 }
 
 // sent from server -> client periodically to tell the client about the current tick in the server
@@ -784,6 +821,9 @@ static bool ReadPackets(ClientState *cs)
 				break;
 			case PACKET_TYPE_READY:
 				HandleReadyPacket((ReadyPacket*)packet, cs);
+				break;
+			case PACKET_TYPE_EVENT:
+				HandleEventPacket((EventPacket*)packet);
 				break;
 			default:
 				DEBUG (net,0) ("net: unknown packet type");
@@ -1907,6 +1947,7 @@ void NetworkConnect(const char *hostname, int port) {}
 void NetworkReceive() {}
 void NetworkSend() {}
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback) {}
+void NetworkSendEvent(uint16 type, uint16 data_len, void * data) {};
 void NetworkProcessCommands() {}
 void NetworkStartSync(bool fcreset) {}
 void NetworkSendReadyPacket() {}

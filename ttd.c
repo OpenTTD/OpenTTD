@@ -889,7 +889,7 @@ void StateGameLoop()
 	// store the random seed to be able to detect out of sync errors
 	_sync_seed_1 = _random_seeds[0][0];
 	_sync_seed_2 = _random_seeds[0][1];
-	if (_networking) disable_computer=true;
+ 	if (_networking) disable_computer=true;
 
 	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
 		char buf[100];

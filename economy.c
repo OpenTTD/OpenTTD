@@ -11,6 +11,7 @@
 #include "economy.h"
 #include "industry.h"
 #include "town.h"
+#include "network.h"
 
 void UpdatePlayerHouse(Player *p, uint score)
 {
@@ -807,11 +808,11 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = from = DEREF_TOWN(RandomRange(_total_towns));
+	fr->from = from = DEREF_TOWN(InteractiveRandomRange(_total_towns));
 	if (from->xy == 0 || from->population < 400)
 		return;
 
-	fr->to = to = DEREF_TOWN(RandomRange(_total_towns));
+	fr->to = to = DEREF_TOWN(InteractiveRandomRange(_total_towns));
 	if (from==to || to->xy == 0 || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
@@ -826,12 +827,12 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = i = DEREF_INDUSTRY(RandomRange(_total_industries));
+	fr->from = i = DEREF_INDUSTRY(InteractiveRandomRange(_total_industries));
 	if (i->xy == 0)
 		return;
 
 	// Randomize cargo type
-	if (Random()&1 && i->produced_cargo[1] != 0xFF) {
+	if (InteractiveRandom()&1 && i->produced_cargo[1] != 0xFF) {
 		cargo = i->produced_cargo[1];
 		trans = i->pct_transported[1];
 		total = i->total_production[1];
@@ -851,7 +852,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		// The destination is a town
-		Town *t = DEREF_TOWN(RandomRange(_total_towns));
+		Town *t = DEREF_TOWN(InteractiveRandomRange(_total_towns));
 
 		// Only want big towns
 		if (t->xy == 0 || t->population < 900)
@@ -860,7 +861,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		fr->to = t;
 	} else {
 		// The destination is an industry
-		Industry *i2 = DEREF_INDUSTRY(RandomRange(_total_industries));
+		Industry *i2 = DEREF_INDUSTRY(InteractiveRandomRange(_total_industries));
 
 		// The industry must accept the cargo
 		if (i == i2 || i2->xy == 0 ||
@@ -888,6 +889,25 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 		}
 	}
 	return false;
+}
+
+void RemoteSubsidyAdd(Subsidy *s_new)
+{
+	Subsidy *s;
+	Pair pair;
+
+	// search the first free subsidy
+	for(s=_subsidies; s != endof(_subsidies); s++) 
+		if (s->cargo_type == 0xFF)
+			break;
+
+	memcpy(s,s_new,sizeof(Subsidy));
+
+	pair = SetupSubsidyDecodeParam(s, 0);
+	AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
+
+	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+
 }
 
 static void SubsidyMonthlyHandler()
@@ -921,8 +941,10 @@ static void SubsidyMonthlyHandler()
 		}
 	}
 
+	if ((_networking) && (!_networking_server)) return;
+
 	// 25% chance to go on
-	if (CHANCE16(1,4)) {
+	if (ICHANCE16(1,4)) {
 		// Find a free slot
 		s = _subsidies;
 		while (s->cargo_type != 0xFF) {
@@ -948,12 +970,13 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
+					if (_networking_server) NetworkSendEvent(NET_EVENT_SUBSIDY,sizeof(Subsidy),s);
 					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
 					modified = true;
 					break;
 				}
 			}
-		} while (--n);
+		} while (n--);
 	}
 no_add:;
 	if (modified)

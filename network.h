@@ -24,6 +24,10 @@ typedef struct NetworkGameList {
 	struct NetworkGameList * _next;
 } NetworkGameList;
 
+enum {
+	NET_EVENT_SUBSIDY = 0,
+};
+
 NetworkGameInfo _network_game;
 NetworkGameList * _network_game_list;
 
