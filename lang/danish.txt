@@ -976,6 +976,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Aktiver bygning af meget lange tog:
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
@@ -2586,9 +2587,11 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Units of cargo delivered in the 
 STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Types of cargo delivered in the last quarter.
 STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et stort lån?
-STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total points out of possible points
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Samlet point af max point
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf indstillinger
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Anvend ændringer
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Indstil parametre
 STR_NEWGRF_TIP							:{BLACK}Liste med alle Newgrf sæt du har installeret. Marker et sæt for at ændre indstilliger.
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
