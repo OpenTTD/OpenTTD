@@ -26,7 +26,6 @@ enum {
 	INVALID_SLOT = 0xFFFF,
 	NUM_SLOTS = 2,
 	ROAD_STOP_LIMIT = 8,
-	NUM_ROAD_STOPS = 250,
 };
 
 typedef struct RoadStop {
