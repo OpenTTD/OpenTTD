@@ -72,8 +72,8 @@ static const CurrencySpec _currency_specs[] = {
 	{ 50,  ',', 0,              "",     " Kc" },
 	{ 130, '.', 0,              "",     " kr" },
 	{ 11,  '.', 0,              "",     " kr" },
-	{ 6,   '.', 0,              "",     " Lei" },
 	{ 2,   ',', CF_ISEURO,      "€",    "" },
+	{ 6,   '.', 0,              "",     " Lei" },
 };
 
 const uint16 _currency_string_list[] = {
@@ -98,8 +98,8 @@ const uint16 _currency_string_list[] = {
 	STR_CURR_CZK,
 	STR_CURR_ISK,
 	STR_CURR_NOK,
-	STR_CURR_ROL,
 	STR_CURR_EUR,
+	STR_CURR_ROL,
 	INVALID_STRING_ID
 };
 
