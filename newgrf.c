@@ -1990,7 +1990,7 @@ void InitNewGRFFile(const char *filename, int sprite_offset)
 	struct GRFFile *newfile;
 
 	newfile = GetFileByFilename(filename);
-	if (newfile) {
+	if (newfile != NULL) {
 		/* We already loaded it once. */
 		newfile->sprite_offset = sprite_offset;
 		_cur_grffile = newfile;
