@@ -46,16 +46,12 @@ void RebuildVehicleLists(void)
 
 	for (w = _windows; w != _last_window; ++w)
 		switch (w->window_class) {
-			case WC_TRAINS_LIST:
-			case WC_ROADVEH_LIST:
-			case WC_SHIPS_LIST:
-			case WC_AIRCRAFT_LIST:
-				WP(w, vehiclelist_d).flags |= VL_REBUILD;
-				SetWindowDirty(w);
-				break;
-
-			default:
-				break;
+		case WC_TRAINS_LIST: case WC_ROADVEH_LIST:
+		case WC_SHIPS_LIST:  case WC_AIRCRAFT_LIST:
+			WP(w, vehiclelist_d).flags |= VL_REBUILD;
+			SetWindowDirty(w);
+			break;
+		default: break;
 		}
 }
 
@@ -65,16 +61,12 @@ void ResortVehicleLists(void)
 
 	for (w = _windows; w != _last_window; ++w)
 		switch (w->window_class) {
-			case WC_TRAINS_LIST:
-			case WC_ROADVEH_LIST:
-			case WC_SHIPS_LIST:
-			case WC_AIRCRAFT_LIST:
-				WP(w, vehiclelist_d).flags |= VL_RESORT;
-				SetWindowDirty(w);
-				break;
-
-			default:
-				break;
+		case WC_TRAINS_LIST: case WC_ROADVEH_LIST:
+		case WC_SHIPS_LIST:  case WC_AIRCRAFT_LIST:
+			WP(w, vehiclelist_d).flags |= VL_RESORT;
+			SetWindowDirty(w);
+			break;
+		default: break;
 		}
 }
 
