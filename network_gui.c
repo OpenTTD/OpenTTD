@@ -88,7 +88,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		else if (_selected_item->info.clients_on == _selected_item->info.clients_max)
 			w->disabled_state = (1<<17); // Server full, join button disabled
 #ifdef WITH_REV
-		else if (strncmp(_selected_item->info.server_revision, _openttd_revision, 10) != 0) {
+		else if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
 			if (strncmp(_selected_item->info.server_revision, "norev000", sizeof(_selected_item->info.server_revision)) != 0)
 				w->disabled_state = (1<<17); // Revision mismatch, join button disabled
 		}
@@ -115,7 +115,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			const NetworkGameList *cur_item = _network_game_list;
 			while (cur_item != NULL) {
 #ifdef WITH_REV
-				bool compatible = (strncmp(cur_item->info.server_revision, _openttd_revision, 10) == 0);
+				bool compatible = (strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) == 0);
 #else
 				bool compatible = true; // We have no idea if we are compatible...
 #endif
@@ -210,7 +210,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			y+=2;
 
 #ifdef WITH_REV
-			if (strncmp(_selected_item->info.server_revision, _openttd_revision, 10) != 0) {
+			if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
 				if (strncmp(_selected_item->info.server_revision, "norev000", sizeof(_selected_item->info.server_revision)) != 0)
 					DrawStringMultiCenter(360, y, STR_NETWORK_VERSION_MISMATCH, 2); // server mismatch
 			} else

@@ -580,7 +580,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 #if defined(WITH_REV) || defined (WITH_REV_HACK)
 	// Check if the client has WITH_REV enabled
 	if (strncmp("norev000", client_revision, sizeof(client_revision)) != 0) {
-		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision)) != 0) {
+		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision) - 1) != 0) {
 			// Different revisions!!
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 
