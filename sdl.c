@@ -235,19 +235,19 @@ static void GetVideoModes(void) {
 	modes = SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE + (_fullscreen ? SDL_FULLSCREEN : 0));
 
 	_all_modes = (int)modes == -1;
-	
-	if(modes == NULL) {
+
+	if(!modes) {
 		error("sdl: no modes available");
 	} else if((int) modes == -1) {
 		// all modes available, put some default ones here
 		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
 		_num_resolutions = sizeof(default_resolutions) / (sizeof(uint16)*2);
 	} else {
-		int n = 0;
-
-		for(i = 0; modes[i] != NULL; i++) {
-			int w = modes[i]->w;
-			int h = modes[i]->h;
+		int n = 0,  w = 0,  h = 0;
+		for(i = 0; modes[i]; i++) {
+			if(w == modes[i]->w && h == modes[i]->h) continue; // don't show same resolutions multiple times
+			w = modes[i]->w;
+			h = modes[i]->h;
 			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH+1) && 
 					IS_INT_INSIDE(h, 480, MAX_SCREEN_HEIGHT+1) &&
 					w%8 == 0 && h%8 == 0) { // disable screen resolutions which are not multiples of 8
