@@ -190,11 +190,12 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 
 		case MP_STATION:
 			if (v->type != VEH_Aircraft) break;
-			if ( IsAircraftHangarTile(tile) && _map_owner[tile] == _local_player)
+			if ( IsAircraftHangarTile(tile) && _map_owner[tile] == _local_player) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_UNLOAD | OF_NON_STOP;
 				order.station = _map2[tile];
 				return order;
+				}
 			break;
 
 		case MP_WATER:
