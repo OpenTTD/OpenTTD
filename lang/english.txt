@@ -342,7 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH		:Performance history graph
 STR_0158_COMPANY_VALUE_GRAPH			:Company value graph
 STR_0159_CARGO_PAYMENT_RATES			:Cargo payment rates
 STR_015A_COMPANY_LEAGUE_TABLE			:Company league table
-STR_PERFORMANCE_DETAIL_MENU				:Detail performance rating
+STR_PERFORMANCE_DETAIL_MENU				:Detailed performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD									:{WHITE}About OpenTTD

@@ -64,8 +64,34 @@
 # NOVERBOSE: supress all warnings and errors during compilation.
 #  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
 #
-# DATA_DIR_PREFIX: This sets the dir OpenTTD looks for the needed files.
-#   MUST END WITH / if defined
+# Paths:
+# INSTALL: If not set, the game uses the directory of the binary to
+# store everything (lang, data, gm, save and openttd.cfg), this is the `old' behaviour. 
+# In this case, none of the following paths are used, you also should _not_
+# use `make install', but copy the required stuff yourself (or just play out
+# of you source directory, which should work fine).
+# If you want to use `make install' to install the game globally, you should
+# define it _before_ you build the game. If you only define INSTALL when you
+# do `make install', the game won't be able to find it's files (so you should
+# also define all the following paths before building).
+#
+# So, the following paths should be defined if INSTALL is defined.
+# None of these paths have to end with /
+# PREFIX:	Normally /usr/local
+# BINARY_DIR:	The location of the binary, normally games. (Will be prefixed
+#		with $PREFIX)
+# DATA_DIR: 	The location of the data (lang, data and gm), normally 
+#		share/games/openttd. (Will be prefixed with $PREFIX)
+# PERSONAL_DIR:	The directory where openttd.cfg and the save folder will be
+#		stored. You cannot use ~ here, define USE_HOMEDIR for that.
+# USE_HOMEDIR:	If this variable is set, PERSONAL_DIR will be prefixed with
+#		~/ at runtime (the user's homedir)
+#
+# DEST_DIR:	make install will use this directory instead of the filesystem
+# 		root to install its files. This should normally not be used by
+# 		ordinary users, currently it is only used for the debian
+# 		packaging. This value should only be set when calling `make
+# 		install' and is not saved in Makefile.config
 #
 # STATIC: link statically
 # CYGWIN: build in Cygwin environment
@@ -127,7 +153,17 @@ endif
 
 # this is used if there aren't any makefile.config
 ifndef CONFIG_INCLUDED
-ENABLE_NETWORK:=1   # sets network on by default if there aren't any config file
+# sets network on by default if there aren't any config file
+ENABLE_NETWORK:=1   
+
+# paths for make install
+# disabled as they would break it for some (many?) people if they were default
+#PREFIX:=/usr/local
+#DATA_DIR:=share/games/openttd
+#BINARY_DIR:=games
+#PERSONAL_DIR:=.openttd
+#USE_HOMEDIR:=1
+
 -include $(LIB_DETECTION)
 endif
 
@@ -375,18 +411,6 @@ else
 STRGEN_FLAGS=
 endif
 
-# file paths setup
-ifdef GAME_DATA_DIR
-CDEFS += -DGAME_DATA_DIR=\"$(GAME_DATA_DIR)\"
-endif
-
-ifdef PERSONAL_DIR
-CDEFS += -DPERSONAL_DIR=\"$(PERSONAL_DIR)\"
-endif
-
-ifdef USE_HOMEDIR
-CDEFS += -DUSE_HOMEDIR
-endif
 
 # MIDI setup
 ifdef OSX
@@ -426,15 +450,27 @@ TTDLDFLAGS += -Wl,--subsystem,windows
 endif
 
 # sets up the paths for use for make install
-ifdef BINARY_DIR
-BINARY_INSTALL:=$(BINARY_DIR)$(TTD)
-else
-BINARY_INSTALL:=$(INSTALL_DIR)$(TTD)
+ifdef INSTALL
+# We use _PREFIXED vars here, so the paths are recalculated every time, and
+# the prefix is not prepended in the makefile config
+BINARY_DIR_PREFIXED:=$(PREFIX)/$(BINARY_DIR)
+DATA_DIR_PREFIXED:=$(PREFIX)/$(DATA_DIR)
+# We use _INSTALL vars here, these vars are the locations where the files will
+# be installed
+DATA_DIR_INSTALL=$(DEST_DIR)/$(DATA_DIR_PREFIXED)
+BINARY_DIR_INSTALL=$(DEST_DIR)/$(BINARY_DIR_PREFIXED)
+# Let the code know where to find stuff
+ifdef DATA_DIR_PREFIXED
+CDEFS += -DGAME_DATA_DIR=\"$(DATA_DIR_PREFIXED)/\"
 endif
-ifdef DATA_DIR_PREFIX
-DATA_DIR:=$(DATA_DIR_PREFIX)
-else
-DATA_DIR:=$(INSTALL_DIR)
+
+ifdef PERSONAL_DIR
+CDEFS += -DPERSONAL_DIR=\"$(PERSONAL_DIR)/\"
+endif
+
+ifdef USE_HOMEDIR
+CDEFS += -DUSE_HOMEDIR
+endif
 endif
 
 ##############################################################################
@@ -594,15 +630,34 @@ mrproper: clean
 ifndef OSX
 ifndef MORPHOS
 install:
-	@if [ "$(INSTALL)" == "" ]; then $(error make install is highly experimental at his state and not\
+ifeq ($(INSTALL),)
+	$(error make install is highly experimental at his state and not\
 	tested very much - use at your own risk - to use run \"make install INSTALL:=1\" - make sure makefile.config\
 	is set correctly up - run \"make upgradeconf\")
-	@if [ "$(DATA_DIR)" == "" ]; then $(error no install path set - check makefile.config)
-	mkdir -p $(DATA_DIR)/lang
-	mkdir -p $(DATA_DIR)/data
-	cp $(TTD) $(BINARY_INSTALL)
-	cp lang/*.lng $(DATA_DIR)/lang
-	cp data/*.grf $(DATA_DIR)/data
+endif
+
+ifeq ($(PREFIX), ) 
+	$(error no prefix set - check makefile.config) 
+endif
+#	We compare against the non prefixed version here, so we won't install
+#	if only the prefix has been set
+ifeq ($(DATA_DIR),)
+	$(error no data path set - check makefile.config)
+endif
+ifeq ($(BINARY_DIR),)
+	$(error no binary path set - check makefile.config)
+endif
+# We'll install in $DEST_DIR instead of root if it is set (we don't
+# care about extra /'s
+	mkdir -p $(DATA_DIR_INSTALL)/lang
+	mkdir -p $(DATA_DIR_INSTALL)/data
+	mkdir -p $(DATA_DIR_INSTALL)/gm
+	mkdir -p $(BINARY_DIR_INSTALL)
+	cp $(TTD) $(BINARY_DIR_INSTALL)
+	cp lang/*.lng $(DATA_DIR_INSTALL)/lang
+	cp data/*.grf $(DATA_DIR_INSTALL)/data
+	cp data/opntitle.dat $(DATA_DIR_INSTALL)/data
+	cp media/openttd.64.png $(DATA_DIR_INSTALL)
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)

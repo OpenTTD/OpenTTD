@@ -1,0 +1,19 @@
+openttd for Debian
+------------------
+
+To properly play this game, original data files are needed.
+You should copy the data files from the original TTD into the data directory
+(/usr/share/games/openttd/data). You should copy all .grf files there.
+
+-Music
+	For in game music (optional), you should copy all files in the data/gm
+	folder of you ttd installation to /usr/share/games/openttd/gm.  You
+	should also install timdity and a soundfont (freepats is packaged in
+	debian and works out of the box).
+
+	Don't forget to use -m extmidi if you want music, and if you have
+	problems, remember that not all audio devices support multiple
+	audiostreams (music and sound), so you might have to use software
+	mixing. AC97 codec cannot do hardware mixing, for example.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>, Wed, 15 Sep 2004 00:24:01 +0200
