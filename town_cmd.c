@@ -666,7 +666,7 @@ static int GrowTownAtRoad(Town *t, uint tile)
 	TILE_ASSERT(tile);
 
 	// Number of times to search.
-	_grow_town_result = 20;
+	_grow_town_result = 10 + t->num_houses * 4 / 9;
 
 	do {
 		// Get a bitmask of the road blocks on a tile
@@ -773,32 +773,46 @@ bool GrowTown(Town *t)
 static void UpdateTownRadius(Town *t)
 {
 	static const uint16 _town_radius_data[23][5] = {
-		{ 4,  0,  0,  0,  0},
+		{ 4,  0,  0,  0,  0}, // 0
 		{16,  0,  0,  0,  0},
 		{25,  0,  0,  0,  0},
 		{36,  0,  0,  0,  0},
 		{49,  0,  4,  0,  0},
-		{64,  0,  4,  0,  0},
+		{64,  0,  4,  0,  0}, // 20
 		{64,  0,  9,  0,  1},
 		{64,  0,  9,  0,  4},
 		{64,  0, 16,  0,  4},
 		{81,  0, 16,  0,  4},
-		{81,  0, 16,  0,  4},
+		{81,  0, 16,  0,  4}, // 40
 		{81,  0, 25,  0,  9},
 		{81, 36, 25,  0,  9},
 		{81, 36, 25, 16,  9},
 		{81, 49,  0, 25,  9},
-		{81, 64,  0, 25,  9},
+		{81, 64,  0, 25,  9}, // 60
 		{81, 64,  0, 36,  9},
 		{81, 64,  0, 36, 16},
-		{ 0, 81,  0, 49, 16},
-		{ 0, 81,  0, 49, 25},
-		{ 0,100,  0, 49, 25},
-		{ 0,100,  0, 64, 25},
-		{ 0,100,  0, 64, 36},
+		{100, 81,  0, 49, 16},
+		{100, 81,  0, 49, 25},
+		{121, 81,  0, 49, 25}, // 80
+		{121, 81,  0, 49, 25},
+		{121, 81,  0, 49, 36}, // 88
 	};
-	int i = min(t->num_houses, 88) >> 2;
-	memcpy(t->radius, _town_radius_data[i], sizeof(t->radius));
+
+	if (t->num_houses < 92) {
+		memcpy(t->radius, _town_radius_data[t->num_houses / 4], sizeof(t->radius));
+	} else {
+		int mass = t->num_houses / 8;
+		// At least very roughly extrapolate. Empirical numbers dancing between
+		// overwhelming by cottages and skyscrapers outskirts.
+		t->radius[0] = mass * mass;
+		// Actually we are proportional to sqrt() but that's right because
+		// we are covering an area.
+		t->radius[1] = mass * 7;
+		t->radius[2] = 0;
+		t->radius[3] = mass * 4;
+		t->radius[4] = mass * 3;
+		//debug("%d (->%d): %d %d %d %d\n", t->num_houses, mass, t->radius[0], t->radius[1], t->radius[3], t->radius[4]);
+	}
 }
 
 static void UpdateTownVirtCoord(Town *t)
@@ -1598,8 +1612,11 @@ static void UpdateTownGrowRate(Town *t)
 	t->flags12 &= ~1;
 
 	if (t->fund_buildings_months != 0) {
+		static const byte _grow_count_values[6] = {
+			60, 60, 60, 50, 40, 30
+		};
+		m = _grow_count_values[min(n, 5)];
 		t->fund_buildings_months--;
-		m = 60;
 	} else if (n == 0) {
 		m = 160;
 		if (!CHANCE16(1, 12))
@@ -1619,7 +1636,7 @@ static void UpdateTownGrowRate(Town *t)
 			return;
 	}
 
-	t->growth_rate = m;
+  	t->growth_rate = m / (t->num_houses / 50 + 1);
 	if (m <= t->grow_counter)
 		t->grow_counter = m;
 
