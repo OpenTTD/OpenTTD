@@ -133,8 +133,8 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 1: {
-			DeleteWindow(w); 
 			NewsItem *ni = WP(w,news_d).ni;
+			DeleteWindow(w);
 			ni->duration = 0;
 			if(_forced_news!=255) _forced_news = 255;
 		} break;
