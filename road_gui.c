@@ -310,7 +310,8 @@ void ShowBuildRoadToolbar()
 
 static const Widget _build_road_scen_widgets[] = {
 {    WWT_TEXTBTN,     7,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   173,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   162,   173,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 
 {     WWT_IMGBTN,     7,     0,    21,    14,    35, 0x51D,			STR_180B_BUILD_ROAD_SECTION},
 {     WWT_IMGBTN,     7,    22,    43,    14,    35, 0x51E,			STR_180B_BUILD_ROAD_SECTION},
@@ -328,7 +329,7 @@ static const Widget _build_road_scen_widgets[] = {
 static const WindowDesc _build_road_scen_desc = {
 	-1, -1, 174, 36,
 	WC_SCEN_BUILD_ROAD,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,
 	BuildRoadToolbWndProc
 };
