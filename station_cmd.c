@@ -2072,22 +2072,30 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 }
 
 
-static const byte _tile_track_status_rail[8] = { 1,2,1,2,1,2,1,2 };
-
 static uint32 GetTileTrackStatus_Station(uint tile, TransportType mode) {
 	uint i = _map5[tile];
 	uint j = 0;
 
-	if (mode == TRANSPORT_RAIL) {
-		if (i < 8)
-			j = _tile_track_status_rail[i];
-		j += (j << 8);
-	} else if (mode == TRANSPORT_WATER) {
-		// buoy is coded as a station, it is always on open water
-		// (0x3F, all tracks available)
-		if (i == 0x52) j = 0x3F;
-		j += (j << 8);
+	switch (mode) {
+		case TRANSPORT_RAIL:
+			if (i < 8) {
+				const byte tile_track_status_rail[8] = { 1, 2, 1, 2, 1, 2, 1, 2 };
+				j = tile_track_status_rail[i];
+			}
+			j += (j << 8);
+			break;
+
+		case TRANSPORT_WATER:
+			// buoy is coded as a station, it is always on open water
+			// (0x3F, all tracks available)
+			if (i == 0x52) j = 0x3F;
+			j += (j << 8);
+			break;
+
+		default:
+			break;
 	}
+
 	return j;
 }
 
