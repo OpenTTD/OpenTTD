@@ -52,7 +52,7 @@ typedef struct ifreq IFREQ;
 #		include <netinet/tcp.h>
 #		include <arpa/inet.h>
 #		include <net/if.h>
-#		if !defined(SUNOS)
+#		if !defined(SUNOS) && !defined(__MORPHOS__)
 #			include <ifaddrs.h>
 // If for any reason ifaddrs.h does not exist on a system, remove define below
 //   and an other system will be used to fetch ips from the system
@@ -71,7 +71,8 @@ typedef struct ifreq IFREQ;
 #	include <exec/types.h>
 #	include <proto/exec.h>		// required for Open/CloseLibrary()
 #	if defined(__MORPHOS__)
-#		include <sys/filio.h> 	// FION#? defines
+#		include <sys/filio.h> 	// FIO* defines
+#		include <sys/sockio.h>  // SIO* defines
 #	else // __AMIGA__
 #		include	<proto/socket.h>
 #	endif
@@ -80,8 +81,17 @@ typedef struct ifreq IFREQ;
 #	define closesocket(s) CloseSocket(s)
 #	define GET_LAST_ERROR() Errno()
 #	define ioctlsocket(s,request,status) IoctlSocket((LONG)s,(ULONG)request,(char*)status)
+#	define ioctl ioctlsocket
 
-	struct Library *SocketBase = NULL;
+	typedef unsigned int in_addr_t;
+	extern struct Library *SocketBase;
+
+#	ifdef __AMIGA__
+	// for usleep() implementation
+	extern struct Device      *TimerBase;
+	extern struct MsgPort     *TimerPort;
+	extern struct timerequest *TimerRequest;
+#	endif
 #endif // __MORPHOS__ || __AMIGA__
 
 #endif // NETWORK_CORE_H

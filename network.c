@@ -23,6 +23,11 @@
 #include <stdarg.h> /* va_list */
 #include "md5.h"
 
+#ifdef __MORPHOS__
+// the library base is required here
+struct Library *SocketBase = NULL;
+#endif
+
 // The listen socket for the server
 static SOCKET _listensocket;
 
@@ -1255,7 +1260,39 @@ static void NetworkGenerateUniqueId(void)
 void NetworkStartUp(void)
 {
 	DEBUG(net, 3) ("[NET][Core] Starting network...");
-	// Network is available
+
+	#if defined(__MORPHOS__) || defined(__AMIGA__)
+	/* 
+	 *  IMPORTANT NOTE: SocketBase needs to be initialized before we use _any_
+	 *  network related function, else: crash.
+	 */	
+	{
+		DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
+		if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
+			DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
+			_network_available = false;
+			return;
+		}
+
+		#if defined(__AMIGA__)
+		// for usleep() implementation (only required for legacy AmigaOS builds)
+		if ( (TimerPort = CreateMsgPort()) ) {
+			if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
+				if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
+					if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
+						// free ressources...
+						DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
+						_network_available = false;
+						return;
+					}
+				}
+			}
+		}
+		#endif // __AMIGA__
+	}
+	#endif // __MORPHOS__ / __AMIGA__
+     
+    // Network is available
 	_network_available = true;
 	_network_dedicated = false;
 	_network_last_advertise_date = 0;
@@ -1287,33 +1324,6 @@ void NetworkStartUp(void)
 			return;
 		}
 	}
-	#else
-		#if defined(__MORPHOS__) || defined(__AMIGA__)
-		{
-			DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
-			if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-				DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
-				_network_available = false;
-				return;
-			}
-
-			#if defined(__AMIGA__)
-			// for usleep() implementation (only required for legacy AmigaOS builds)
-			if ( (TimerPort = CreateMsgPort()) ) {
-				if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
-					if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
-						if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
-							// free ressources...
-							DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
-							_network_available = false;
-							return;
-						}
-					}
-				}
-			}
-			#endif // __AMIGA__
-		}
-		#endif // __MORPHOS__ / __AMIGA__
 	#endif // WIN32
 
 	NetworkInitialize();
@@ -1331,7 +1341,7 @@ void NetworkShutDown(void)
 	#if defined(__MORPHOS__) || defined(__AMIGA__)
 	{
 		// free allocated ressources
-		#if !defined(__MORPHOS__)
+		#if defined(__AMIGA__)
 			if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
 			if (TimerRequest) { DeleteIORequest(TimerRequest); }
 			if (TimerPort)    { DeleteMsgPort(TimerPort); }

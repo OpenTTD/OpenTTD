@@ -23,6 +23,11 @@
 ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 #endif /* __MORPHOS__ */
 
+#ifdef __AMIGA__
+#warning add stack symbol to avoid that user needs to set stack manually (tokai)
+// ULONG __stack = 
+#endif
+
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;

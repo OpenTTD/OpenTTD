@@ -314,7 +314,9 @@ static void showhelp()
 		"  -G seed             = Set random seed\n"
 		"  -n [ip#player:port] = Start networkgame\n"
 		"  -D                  = Start dedicated server\n"
+		#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 		"  -f                  = Fork into the background (dedicated only)\n"
+		#endif
 		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
 		"  -p #player          = Player as #player (deprecated) (network only)\n"
 	);
@@ -526,6 +528,7 @@ int ttd_main(int argc, char* argv[])
 	bool network = false;
 	char *network_conn = NULL;
 	char *language = NULL;
+	char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
@@ -541,7 +544,13 @@ int ttd_main(int argc, char* argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hDfn::l:eit:d::r:g::G:p:");
+	#if !defined(__MORPHOS__) && !defined(__AMIGA__)
+		optformat = "m:s:v:hDfn::l:eit:d::r:g::G:p:";
+	#else
+		optformat = "m:s:v:hDn::l:eit:d::r:g::G:p:"; // no fork option
+	#endif
+
+	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch(i) {
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;

@@ -748,6 +748,38 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 winres.o: ttd.rc
 	windres -o $@ $<
 
+ifdef MORPHOS
+release: all
+	@rm -fr "/t/openttd-$(RELEASE)-morphos.lha"
+	@mkdir -p "/t/"
+	@mkdir -p "/t/openttd-$(RELEASE)-morphos"
+	@mkdir -p "/t/openttd-$(RELEASE)-morphos/docs"
+	@mkdir -p "/t/openttd-$(RELEASE)-morphos/data"
+	@mkdir -p "/t/openttd-$(RELEASE)-morphos/lang"
+	@cp -R $(TTD)                      "/t/openttd-$(RELEASE)-morphos/"
+	@cp data/*                         "/t/openttd-$(RELEASE)-morphos/data/"
+	@cp lang/*.lng                     "/t/openttd-$(RELEASE)-morphos/lang/"
+	@cp readme.txt                     "/t/openttd-$(RELEASE)-morphos/docs/ReadMe"
+	@cp docs/console.txt               "/t/openttd-$(RELEASE)-morphos/docs/Console"
+	@cp COPYING                        "/t/openttd-$(RELEASE)-morphos/docs/"
+	@cp changelog.txt                  "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog"
+	@cp os/morphos/icons/openttd.info  "/t/openttd-$(RELEASE)-morphos/$(TTD).info"
+	@cp os/morphos/icons/docs.info     "/t/openttd-$(RELEASE)-morphos/docs.info"
+	@cp os/morphos/icons/drawer.info   "/t/openttd-$(RELEASE)-morphos.info"
+	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ReadMe.info"
+	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/Console.info"
+	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/COPYING.info"
+	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog.info"
+	@strip --strip-all --strip-unneeded --remove-section .comment "/t/openttd-$(RELEASE)-morphos/$(TTD)"
+	@lha a -r "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos" 
+	@lha a    "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos.info"
+	@rm -fr "/t/openttd-$(RELEASE)-morphos"
+	@rm -fr "/t/openttd-$(RELEASE)-morphos.info"
+	@echo "Release archive can be found in RAM:t/ now."
+
+.PHONY: release 
+endif
+
 ifdef OSX
 release: all
 	@mkdir -p "OpenTTD $(RELEASE)"

@@ -32,6 +32,27 @@
 #include <alloca.h>
 #endif
 
+#ifdef __MORPHOS__
+// morphos defines certain amiga defines per default, we undefine them 
+// here to make the rest of source less messy and more clear what is
+// required for morphos and what for amigaos
+#	ifdef amigaos
+#		undef amigaos
+#	endif
+#	ifdef __amigaos__
+#		undef __amigaos__
+#	endif
+#	ifdef __AMIGA__
+#		undef __AMIGA__
+#	endif
+#	ifdef AMIGA
+#		undef AMIGA
+#	endif
+#	ifdef amiga
+#   	undef amiga
+#	endif
+#endif /* __MORPHOS__ */
+
 #define BSWAP32(x) ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) << 8) & 0xFF0000) | (((x) << 24) & 0xFF000000))
 #define BSWAP16(x) ((x) >> 8 | (x) << 8)
 
@@ -182,7 +203,7 @@ assert_compile(sizeof(uint8)	== 1);
 #define CloseConnection OTTD_CloseConnection
 #endif
 
-#if !(defined(__AMIGA__) && !defined(__MORPHOS__))
+#ifdef __AMIGA__
 // it seems AmigaOS already have a Point declared
 #define Point OTTD_AMIGA_POINT
 #endif

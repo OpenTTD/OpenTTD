@@ -20,6 +20,13 @@
 #	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
 #endif
+#ifdef __MORPHOS__
+/*  voids the fork, option will be disabled for morphos build anyway, because MorphOS 
+ *  doesn't support forking (could only implemented with lots of code changes here).
+ */
+int morphos_dummy_fork() { return -1; }
+#define fork morphos_dummy_fork
+#endif
 
 // This file handles all dedicated-server in- and outputs
 
@@ -167,7 +174,7 @@ static int DedicatedVideoMainLoop()
 	next_tick = (tim.tv_usec / 1000) + 30 + (tim.tv_sec * 1000);
 #endif
 
-	/* Siganl handlers */
+	/* Signal handlers */
 #ifdef UNIX
 	signal(SIGTERM, DedicatedSignalHandler);
 	signal(SIGINT, DedicatedSignalHandler);
