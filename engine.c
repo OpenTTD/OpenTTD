@@ -906,5 +906,29 @@ const ChunkHandler _engine_chunk_handlers[] = {
 	{ 'ENGS', LoadSave_ENGS, LoadSave_ENGS, CH_RIFF | CH_LAST},
 };
 
+/*
+ * returns true if an engine is valid, and it is of the specified type, and buildable by the current player, false otherwise
+ *
+ * engine = index of the engine to check
+ * type   = the type the engine should be of (VEH_xxx)
+ */
+bool IsEngineBuildable(int engine, byte type) {
+	Engine *e;
+
+	// check if it's an engine that is in the engine array
+	if (0 > engine || engine >= TOTAL_NUM_ENGINES ) return false;
+
+	e = DEREF_ENGINE(engine);
+
+	// check if it's an engine of specified type
+	if (e->type != type) return false;
+
+	// check if it's available
+	if (!HASBIT(e->player_avail, _current_player)) return false;
+
+	return true;
+}
+
+
 
 

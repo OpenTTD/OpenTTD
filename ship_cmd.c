@@ -816,6 +816,8 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tile = TILE_FROM_XY(x,y);
 	Engine *e;
 
+	if (!(IsEngineBuildable(p1, VEH_Ship))) return CMD_ERROR;
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	value = EstimateShipCost(p1);

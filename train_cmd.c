@@ -525,6 +525,8 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Engine *e;
 	uint tile;
 
+	if (!(IsEngineBuildable(p1, VEH_Train))) return CMD_ERROR;
+
 	_cmd_build_rail_veh_var1 = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);

@@ -161,6 +161,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	Engine *e;
 
+	if (!(IsEngineBuildable(p1, VEH_Aircraft))) return CMD_ERROR;
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	value = EstimateAircraftCost(p1);
