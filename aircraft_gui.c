@@ -21,7 +21,7 @@ void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
 
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
 	SetDParam(1, avi->max_speed * 8);
-	SetDParam(2, avi->passanger_capacity);
+	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
 	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
 

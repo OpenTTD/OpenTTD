@@ -71,7 +71,7 @@ void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 	SetDParam(0, ((_price.aircraft_base >> 3) * avi->base_cost) >> 5);
 	SetDParam(1, avi->max_speed << 3);
-	SetDParam(2, avi->passanger_capacity);
+	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
 	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
 
@@ -170,7 +170,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->spritenum = avi->image_index;
 //		v->cargo_count = u->number_of_pieces = 0;
 
-		v->cargo_cap = avi->passanger_capacity;
+		v->cargo_cap = avi->passenger_capacity;
 		u->cargo_cap = avi->mail_capacity;
 
 		v->cargo_type = CT_PASSENGERS;
@@ -423,7 +423,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
 		return CMD_ERROR;
 
-	pass = AircraftVehInfo(v->engine_type)->passanger_capacity;
+	pass = AircraftVehInfo(v->engine_type)->passenger_capacity;
 	if (new_cargo_type != CT_PASSENGERS) {
 		pass >>= 1;
 		if (new_cargo_type != CT_GOODS)

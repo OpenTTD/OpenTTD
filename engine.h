@@ -36,7 +36,7 @@ typedef struct AircraftVehicleInfo {
 	byte acceleration;
 	byte max_speed;
 	byte mail_capacity;
-	uint16 passanger_capacity;
+	uint16 passenger_capacity;
 } AircraftVehicleInfo;
 
 typedef struct RoadVehicleInfo {

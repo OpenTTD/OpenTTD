@@ -632,7 +632,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT {
 				uint16 capacity = grf_load_word(&buf);
 
-				avi[i].passanger_capacity = capacity;
+				avi[i].passenger_capacity = capacity;
 			}
 		}	break;
 		case 0x11: {	/* Mail capacity */

@@ -413,7 +413,7 @@ AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 	// image_index         sfx                         acceleration
 	// |   base_cost       |                           |   max_speed
 	// |   |    running_cost                           |   |    mail_capacity
-	// |   |    |  subtype |                           |   |    |    passanger_capacity
+	// |   |    |  subtype |                           |   |    |    passenger_capacity
 	// |   |    |  |       |                           |   |    |    |
 	{  1, 14,  85, 1, SND_08_PLANE_TAKE_OFF,          18,  37,  4,  25 }, /*  0 */
 	{  0, 15, 100, 1, SND_08_PLANE_TAKE_OFF,          20,  37,  8,  65 }, /*  1 */

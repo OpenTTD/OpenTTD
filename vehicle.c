@@ -1548,7 +1548,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->spritenum = avi->image_index;
 
 					if ( cargo_type == CT_PASSENGERS ) {
-						v->cargo_cap = avi->passanger_capacity;
+						v->cargo_cap = avi->passenger_capacity;
 						u = v->next;
 						u->cargo_cap = avi->mail_capacity;
 					} else {
