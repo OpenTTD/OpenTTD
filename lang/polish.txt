@@ -1629,7 +1629,7 @@ STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Wyprodukowano w ostatnim miesiacu:
 STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% przetransportowano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centruj glowny widok na przedsiebiorstwie
 STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Rozpoczeto budowe nowego {STRING} blisko {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Nowa {STRING} zostala obsadzona blisko {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Nowy {STRING} zostal obsadzony blisko {TOWN}!
 STR_482F_COST							:{BLACK}Koszt: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Nie mozna tutaj wybudowac tego przedsiebiorstwa...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...las moze byc posadzony tylko ponizej lini wiecznego lodu
@@ -1988,7 +1988,7 @@ STR_801D_COAL_CAR						:Wagon na wegiel
 STR_801E_OIL_TANKER						:Cysterna
 STR_801F_LIVESTOCK_VAN						:Wagon na zywiec
 STR_8020_GOODS_VAN						:Wagon towarowy
-STR_8021_GRAIN_HOPPER						:Wagon na zboze
+STR_8021_GRAIN_HOPPER						:Wagon na ziarno
 STR_8022_WOOD_TRUCK						:Wagon na drewno
 STR_8023_IRON_ORE_HOPPER					:Wagon na rude zelaza
 STR_8024_STEEL_TRUCK						:Wagon na stal
@@ -2018,7 +2018,7 @@ STR_803B_COAL_CAR						:Wagon na wegiel
 STR_803C_OIL_TANKER						:Cysterna
 STR_803D_LIVESTOCK_VAN						:Wagon na zywiec
 STR_803E_GOODS_VAN						:Wagon towarowy
-STR_803F_GRAIN_HOPPER						:Wagon na zboze
+STR_803F_GRAIN_HOPPER						:Wagon na ziarno
 STR_8040_WOOD_TRUCK						:Wagon na drewno
 STR_8041_IRON_ORE_HOPPER					:Wagon na rude zelaza
 STR_8042_STEEL_TRUCK						:Wagon na stal
@@ -2050,7 +2050,7 @@ STR_805B_COAL_CAR						:Wagon na wegiel
 STR_805C_OIL_TANKER						:Wagon na rope
 STR_805D_LIVESTOCK_VAN						:Wagon na zywiec
 STR_805E_GOODS_VAN						:Wagon towarowy
-STR_805F_GRAIN_HOPPER						:Wagon na zboze
+STR_805F_GRAIN_HOPPER						:Wagon na ziarno
 STR_8060_WOOD_TRUCK						:Wagon na drewno
 STR_8061_IRON_ORE_HOPPER					:Wagon na rude zelaza
 STR_8062_STEEL_TRUCK						:Wagon na stal
@@ -2096,9 +2096,9 @@ STR_8089_FOSTER_LIVESTOCK_VAN					:Samochod do zywca Foster
 STR_808A_BALOGH_GOODS_TRUCK					:Samochod towarowy Balogh
 STR_808B_CRAIGHEAD_GOODS_TRUCK					:Samochod towarowy Craighead
 STR_808C_GOSS_GOODS_TRUCK					:Samochod towarowy Goss
-STR_808D_HEREFORD_GRAIN_TRUCK					:Samochod do zboza Hereford
-STR_808E_THOMAS_GRAIN_TRUCK					:Samochod do zboza Thomas
-STR_808F_GOSS_GRAIN_TRUCK					:Samochod do zboza Goss
+STR_808D_HEREFORD_GRAIN_TRUCK					:Samochod do ziarna Hereford
+STR_808E_THOMAS_GRAIN_TRUCK					:Samochod do ziarna Thomas
+STR_808F_GOSS_GRAIN_TRUCK					:Samochod do ziarna Goss
 STR_8090_WITCOMBE_WOOD_TRUCK					:Samochod do drewna Witcombe
 STR_8091_FOSTER_WOOD_TRUCK					:Samochod do drewna Foster
 STR_8092_MORELAND_WOOD_TRUCK					:Samochod do drewna Moreland

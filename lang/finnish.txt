@@ -1886,7 +1886,7 @@ STR_703D_ROAD_VEHICLES						:{WHITE}{COMMA16} maantieajoneuvoa
 STR_703E_AIRCRAFT						:{WHITE}{COMMA16} lentokone
 STR_703F_AIRCRAFT						:{WHITE}{COMMA16} lentokonetta
 STR_7040_SHIP							:{WHITE}{COMMA16} laiva
-STR_7041_SHIPS							:{WHITE}{COMMA16} kaivaa
+STR_7041_SHIPS							:{WHITE}{COMMA16} laivaa
 STR_7042_NONE							:{WHITE}Ei mit‰‰n
 STR_7043_FACE_SELECTION						:{WHITE}Kasvojen valinta
 STR_7044_MALE							:{BLACK}Mies

@@ -887,6 +887,8 @@ STR_OPTIONS_LANG						:{BLACK}Jazyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Zvolit jazyk uzivatelskeho rozhraní
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Na celou obrazovku
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Kdyz chcete hrát na celé obrazovce, zaskrtnete tuto volbu
 
 STR_OPTIONS_RES							:{BLACK}Rozliseni obrazovky
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

@@ -887,6 +887,8 @@ STR_OPTIONS_LANG						:{BLACK}Langue
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Selectionner la langue d'interface à utiliser
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Plein écran
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Cochez cette case pour jouer à OpenTTD en plein écran
 
 STR_OPTIONS_RES							:{BLACK}Résolution
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

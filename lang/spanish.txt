@@ -42,12 +42,12 @@ STR_0024_SUGAR							:Azúcar
 STR_0025_TOYS							:Juguetes
 STR_0026_CANDY							:Dulces
 STR_0027_COLA							:Cola
-STR_0028_COTTON_CANDY						:Caramelo
+STR_0028_COTTON_CANDY						:Algodón de azúcar
 STR_0029_BUBBLES						:Burbujas
-STR_002A_TOFFEE							:Tofe
+STR_002A_TOFFEE							:Caramelo
 STR_002B_BATTERIES						:Baterías
 STR_002C_PLASTIC						:Plástico
-STR_002D_FIZZY_DRINKS						:Bebidas gaseosas
+STR_002D_FIZZY_DRINKS						:Refrescos
 STR_002E							:
 STR_002F_PASSENGER						:Pasajero
 STR_0030_COAL							:Carbón
@@ -74,9 +74,9 @@ STR_0044_SUGAR							:Azúcar
 STR_0045_TOY							:Juguete
 STR_0046_CANDY							:Dulce
 STR_0047_COLA							:Cola
-STR_0048_COTTON_CANDY						:Caramelo
+STR_0048_COTTON_CANDY						:Algodón de azúcar
 STR_0049_BUBBLE							:Burbuja
-STR_004A_TOFFEE							:Tofe
+STR_004A_TOFFEE							:Caramelo
 STR_004B_BATTERY						:Pilas
 STR_004C_PLASTIC						:Plástico
 STR_004D_FIZZY_DRINK						:Refresco
@@ -106,9 +106,9 @@ STR_0064_TON_OF_SUGAR						:{COMMA16} tonelada de azucar
 STR_0065_TOY							:{COMMA16} juguete
 STR_0066_BAG_OF_CANDY						:{COMMA16} bolsa de dulces
 STR_0067_OF_COLA						:{VOLUME} de cola
-STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonelada de caramelo
+STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonelada de algodón de azúcar
 STR_0069_BUBBLE							:{COMMA16} burbuja
-STR_006A_TON_OF_TOFFEE						:{COMMA16} tonelada de tofe
+STR_006A_TON_OF_TOFFEE						:{COMMA16} tonelada de caramelo
 STR_006B_BATTERY						:{COMMA16} pila
 STR_006C_OF_PLASTIC						:{VOLUME} de plástico
 STR_006D_FIZZY_DRINK						:{COMMA16} refresco
@@ -138,9 +138,9 @@ STR_0084_TONS_OF_SUGAR						:{COMMA16} toneladas de azúcar
 STR_0085_TOYS							:{COMMA16} juguetes
 STR_0086_BAGS_OF_CANDY						:{COMMA16} bolsas de dulces
 STR_0087_OF_COLA						:{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} toneladas de caramelos
+STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} toneladas de algodón de azúcar
 STR_0089_BUBBLES						:{COMMA16} burbujas
-STR_008A_TONS_OF_TOFFEE						:{COMMA16} toneladas de tofes
+STR_008A_TONS_OF_TOFFEE						:{COMMA16} toneladas de caramelos
 STR_008B_BATTERIES						:{COMMA16} pilas
 STR_008C_OF_PLASTIC						:{VOLUME} de plástico
 STR_008D_FIZZY_DRINKS						:{COMMA16} refrescos
@@ -245,7 +245,7 @@ STR_00F4_500M							:{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS							:{BLACK}{TINYFONT}Trenes
 STR_00F6_ROAD_VEHICLES						:{BLACK}{TINYFONT}Vehículos de carretera
 STR_00F7_SHIPS							:{BLACK}{TINYFONT}Barcos
-STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Aviones
+STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Rutas de transporte
 STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Mina de carbón
 STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Central eléctica
@@ -268,8 +268,8 @@ STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Plantación de fruta
 STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Plantación de caucho
 STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Abastecimiento de agua
 STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Torre de agua
-STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Molino de madera
-STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Bosque de caramelos
+STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Cabaña de madera
+STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Bosque de algodón de azúcar
 STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Fábrica de dulces
 STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Granja de pilas
 STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Pozos de cola
@@ -278,7 +278,7 @@ STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Fábrica de juguetes
 STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Fuentes de plástico
 STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Fábrica de refrescos
 STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Generador de burbujas
-STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Cantera de tofes
+STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Cantera de caramelos
 STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Mina de azúcar
 STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Estación de ferrocarril
 STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Muelle de carga de camiones
@@ -402,7 +402,7 @@ STR_017A_DISPLAY_COMPANY_LEAGUE					:{BLACK}Mostrar tabla de ranking de empresas
 STR_017B_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de trenes de la empresa
 STR_017C_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de vehículos de carretera de la empresa
 STR_017D_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de barcos de la empresa
-STR_017E_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de aviones de la empresa
+STR_017E_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de aeronaves de la empresa
 STR_017F_ZOOM_THE_VIEW_IN					:{BLACK}Acercar vista
 STR_0180_ZOOM_THE_VIEW_OUT					:{BLACK}Alejar vista
 STR_0181_BUILD_RAILROAD_TRACK					:{BLACK}Construir vías de ferrocarril
@@ -437,7 +437,7 @@ STR_019B_YEARS							:{RED}{COMMA16} años ({COMMA16})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE						:Vehículo de carretera
-STR_019D_AIRCRAFT						:Avión
+STR_019D_AIRCRAFT						:Aeronave
 STR_019E_SHIP							:Barco
 STR_019F_TRAIN							:Tren
 STR_01A0_IS_GETTING_OLD						:{WHITE}{STRING} {COMMA16} se está volviendo viejo
@@ -625,14 +625,14 @@ STR_024C_PAPER_MILL						:{BLACK}Papelera
 STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Planta procesadora de alimentos
 STR_024E_PRINTING_WORKS						:{BLACK}Imprenta
 STR_024F_GOLD_MINE						:{BLACK}Mina de Oro
-STR_0250_LUMBER_MILL						:{BLACK}Molino de Madera
+STR_0250_LUMBER_MILL						:{BLACK}Cabaña de Madera
 STR_0251_FRUIT_PLANTATION					:{BLACK}Plantación de Fruta
 STR_0252_RUBBER_PLANTATION					:{BLACK}Plantación de Trigo
 STR_0253_WATER_SUPPLY						:{BLACK}Abastecimiento de Agua
 STR_0254_WATER_TOWER						:{BLACK}Torre de Agua
 STR_0255_DIAMOND_MINE						:{BLACK}Mina de Diamantes
 STR_0256_COPPER_ORE_MINE					:{BLACK}Mina de Cobre
-STR_0257_COTTON_CANDY_FOREST					:{BLACK}Bosque de Caramelos
+STR_0257_COTTON_CANDY_FOREST					:{BLACK}Bosque de Algodón de azúcar
 STR_0258_CANDY_FACTORY						:{BLACK}Fábrica de Dulces
 STR_0259_BATTERY_FARM						:{BLACK}Granja de Pilas
 STR_025A_COLA_WELLS						:{BLACK}Pozos de Cola
@@ -641,7 +641,7 @@ STR_025C_TOY_FACTORY						:{BLACK}Fábrica de juguetes
 STR_025D_PLASTIC_FOUNTAINS					:{BLACK}Fuentes de plástico
 STR_025E_FIZZY_DRINK_FACTORY					:{BLACK}Fábrica de refrescos
 STR_025F_BUBBLE_GENERATOR					:{BLACK}Generador de burbujas
-STR_0260_TOFFEE_QUARRY						:{BLACK}Cantera de tofes
+STR_0260_TOFFEE_QUARRY						:{BLACK}Cantera de caramelos
 STR_0261_SUGAR_MINE						:{BLACK}Mina de azúcar
 STR_0262_CONSTRUCT_COAL_MINE					:{BLACK}Construir Mina de Carbón
 STR_0263_CONSTRUCT_POWER_STATION				:{BLACK}Construir Central Eléctrica
@@ -660,14 +660,14 @@ STR_026F_CONSTRUCT_FOOD_PROCESSING				:{BLACK}Construir Planta procesadora de Al
 STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Construir Imprenta
 STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Construir Mina de Oro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construir Banco (Solo puede ser construido en poblaciones)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construir Molino de Madera (para limpiar el bosque y producir madera)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construir Cabaña de Madera (para limpiar la selva y producir madera)
 STR_0274_PLANT_FRUIT_PLANTATION					:{BLACK}Plantar fruta
 STR_0275_PLANT_RUBBER_PLANTATION				:{BLACK}Plantar trigo
 STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Construir Abastecimiento de agua
 STR_0277_CONSTRUCT_WATER_TOWER_CAN				:{BLACK}Construir Torre de Agua Tower (Solo puede ser construido en poblaciones)
 STR_0278_CONSTRUCT_DIAMOND_MINE					:{BLACK}Construir Mina de Diamantes
 STR_0279_CONSTRUCT_COPPER_ORE_MINE				:{BLACK}Construir Mina de Cobre
-STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Plantar Bosque de Caramelos
+STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Plantar Bosque de Algodón de azúcar
 STR_027B_CONSTRUCT_CANDY_FACTORY				:{BLACK}Construir Fábrica de Dulces
 STR_027C_CONSTRUCT_BATTERY_FARM					:{BLACK}Construir Granja de Pilas
 STR_027D_CONSTRUCT_COLA_WELLS					:{BLACK}Construir Pozos de Cola
@@ -676,7 +676,7 @@ STR_027F_CONSTRUCT_TOY_FACTORY					:{BLACK}Construir Fábrica de Juguetes
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS				:{BLACK}Construir Fuentes de Plástico
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY				:{BLACK}Construir Fábrica de Refrescos
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR				:{BLACK}Construir Generador de Burbujas
-STR_0283_CONSTRUCT_TOFFEE_QUARRY				:{BLACK}Construir Cantera de Tofes
+STR_0283_CONSTRUCT_TOFFEE_QUARRY				:{BLACK}Construir cantera de caramelos
 STR_0284_CONSTRUCT_SUGAR_MINE					:{BLACK}Construir Mina de Azúcar
 STR_0285_CAN_T_BUILD_HERE					:{WHITE}No se puede construir {STRING} aquí...
 STR_0286_MUST_BUILD_TOWN_FIRST					:{WHITE}...debe constuirse la población primero
@@ -934,7 +934,7 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Fin de órdenes compartidas - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Tren {COMMA16} está perdido.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}El beneficio del tren {COMMA16} para el pasado año fué {CURRENCY}
-STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}El Euro es introducido como la moneda oficial para todas las transacciones de tu país!
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}El Euro es introducido como la moneda oficial para todas las transacciones de su país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -950,16 +950,16 @@ STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}El barco {COMMA16} tienes muy pocas órde
 STR_SHIP_HAS_VOID_ORDER						:{WHITE}Ship {COMMA16} tiene una orden vacía
 STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}Ship {COMMA16} tiene órdenes duplicadas
 STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Ship {COMMA16} tiene una estación no válida en sus órdenes
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}El avión {COMMA16} tienes muy pocas órdenes en su calendario
-STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}El avión {COMMA16} tiene una orden vacía
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}El avión {COMMA16} tiene órdenes duplicadas
-STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}El avión {COMMA16} tiene una estación no válida en sus órdenes
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}La aeronave {COMMA16} tiene muy pocas órdenes en su calendario
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}La aeronave {COMMA16} tiene una orden vacía
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}La aeronave {COMMA16} tiene órdenes duplicadas
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}La aeronave {COMMA16} tiene una estación no válida en sus órdenes
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Auto renovar ha fallado con el tren {COMMA16} (límite de dinero)
 STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}AAuto renovar ha fallado con el vehículo de carretera {COMMA16} (límite de dinero)
 STR_SHIP_AUTORENEW_FAILED					:{WHITE}Auto renovar ha fallado con el barco {COMMA16} (límite de dinero)
-STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Auto renovar ha fallado con el avión {COMMA16} (límite de dinero)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Auto renovar ha fallado con la aeronave {COMMA16} (límite de dinero)
 
 STR_CONFIG_PATCHES						:{BLACK}Configurar Parches
 STR_CONFIG_PATCHES_TIP						:{BLACK}Configurar los parches
@@ -1013,12 +1013,12 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Mantener los helicópteros en hel
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH					:{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT					:{LTBLUE}Máx aviones por jugador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT					:{LTBLUE}Máx aeroplanos por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS					:{LTBLUE}Máx barcos por jugador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS				:{LTBLUE}Desactivar trenes para el ordenador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Desactivar vehículos de carretera para el ordenador: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Desactivar aviones para el ordenador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Desactivar aeroplanos para el ordenador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Desactivar barcos para el ordenador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Activar nueva IA (alpha): {ORANGE}{STRING}
@@ -1027,7 +1027,7 @@ STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Intervalo de despacho por defecto 
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}no
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}no
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Intervalo de despacho por defecto para aviones: {ORANGE}{STRING} días
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Intervalo de despacho por defecto para aeroplanos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Intervalo de despacho por defecto para aviones: {ORANGE}no
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}no
@@ -1146,12 +1146,12 @@ STR_CONSTRUCT_IRON_ORE_MINE_TIP					:{BLACK}Construir mina de hierro
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP				:{BLACK}Fundar plantación de frutas
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP				:{BLACK}Fundar plantación de caucho
 STR_CONSTRUCT_WATER_SUPPLY_TIP					:{BLACK}Fundar suministro de agua
-STR_CONSTRUCT_COTTON_CANDY_TIP					:{BLACK}Plantar bosque de caramelos
+STR_CONSTRUCT_COTTON_CANDY_TIP					:{BLACK}Plantar bosque de Algodón de azúcar
 STR_CONSTRUCT_BATTERY_FARM_TIP					:{BLACK}Fundar granja de pilas
 STR_CONSTRUCT_COLA_WELLS_TIP					:{BLACK}Taladrar para buscar cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP				:{BLACK}Fundar fuentes de plástico
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Construir generador de burbujas
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Fundar cantera de tofe
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Fundar cantera de caramelos
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Construir mina de azúcar
 
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Industrias
@@ -1534,7 +1534,7 @@ STR_305B_SIZE							:{BLACK}Tamaño
 STR_305C_0							:{STATION} {STRINL 0x30D1}
 STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION					:Estación de tren
-STR_305F_AIRCRAFT_HANGAR					:Hangar de aviones
+STR_305F_AIRCRAFT_HANGAR					:Hangar de aeroplanos
 STR_3060_AIRPORT						:Aeropuerto
 STR_3061_TRUCK_LOADING_AREA					:Zona de carga de camiones
 STR_3062_BUS_STATION						:Estación de autobús
@@ -1606,8 +1606,8 @@ STR_4817_WATER_SUPPLY						:Suministro de Agua
 STR_4818_WATER_TOWER						:Torre de Agua
 STR_4819_FACTORY						:Fábrica
 STR_481A_FARM							:Granja
-STR_481B_LUMBER_MILL						:Molino de Madera
-STR_481C_COTTON_CANDY_FOREST					:Bosque de Caramelo
+STR_481B_LUMBER_MILL						:Cabaña de Madera
+STR_481C_COTTON_CANDY_FOREST					:Bosque de Algodón de azúcar
 STR_481D_CANDY_FACTORY						:Fábrica de Dulces
 STR_481E_BATTERY_FARM						:Granja de Pilas
 STR_481F_COLA_WELLS						:Pozos de Cola
@@ -1616,7 +1616,7 @@ STR_4821_TOY_FACTORY						:Fábrica de Juguetes
 STR_4822_PLASTIC_FOUNTAINS					:Fuestes de Plástico
 STR_4823_FIZZY_DRINK_FACTORY					:Fábrica de Refrescos
 STR_4824_BUBBLE_GENERATOR					:Generador de Burbujas
-STR_4825_TOFFEE_QUARRY						:Cantera de Tofe
+STR_4825_TOFFEE_QUARRY						:Cantera de caramelos
 STR_4826_SUGAR_MINE						:Mina de Azúcar
 
 ############ range for requires	starts
@@ -1699,7 +1699,7 @@ STR_5803_COMPANY_HEADQUARTERS					:Sede de la empresa
 STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...la sede de la empresa está en medio
 STR_5805_COMPANY_OWNED_LAND					:Terreno propiedad de una empresa
 STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}No es posible comprar este terreno...
-STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...ya es de tu propiedad!
+STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...ya es de su propiedad!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1710,7 +1710,7 @@ STR_SV_UNNAMED							:Sin nombre{SKIP}
 STR_SV_TRAIN_NAME						:Tren {COMMA16}
 STR_SV_ROADVEH_NAME						:Vehículo de carretera {COMMA16}
 STR_SV_SHIP_NAME						:Barco {COMMA16}
-STR_SV_AIRCRAFT_NAME						:Avión {COMMA16}
+STR_SV_AIRCRAFT_NAME						:Aeronave {COMMA16}
 
 STR_SV_STNAME							:{STRING}
 STR_SV_STNAME_NORTH						:{STRING} Norte
@@ -1842,12 +1842,12 @@ STR_7011_CONSTRUCTION						:{GOLD}Construcción
 STR_7012_NEW_VEHICLES						:{GOLD}Nuevos vehículos
 STR_7013_TRAIN_RUNNING_COSTS					:{GOLD}Coste de operación de Trenes
 STR_7014_ROAD_VEH_RUNNING_COSTS					:{GOLD}Coste de operacion de Vehículos
-STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Coste de operación de Aviones
+STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Coste de operación de aeroplanos
 STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Coste de operación de Barcos
 STR_7017_PROPERTY_MAINTENANCE					:{GOLD}Mantenimiento de inmuebles
 STR_7018_TRAIN_INCOME						:{GOLD}Ingresos Trenes
 STR_7019_ROAD_VEHICLES_INCOME					:{GOLD}Ingresos Vehículos Carretera
-STR_701A_AIRCRAFT_INCOME					:{GOLD}Ingresos Aviones
+STR_701A_AIRCRAFT_INCOME					:{GOLD}Ingresos Aeroplanos
 STR_701B_SHIP_INCOME						:{GOLD}Ingresos Barcos
 STR_701C_LOAN_INTEREST						:{GOLD}Intereses de Préstamo
 STR_701D_OTHER							:{GOLD}Otros
@@ -1885,8 +1885,8 @@ STR_703A_TRAIN							:{WHITE}{COMMA16} tren
 STR_703B_TRAINS							:{WHITE}{COMMA16} trenes
 STR_703C_ROAD_VEHICLE						:{WHITE}{COMMA16} veh. carretera
 STR_703D_ROAD_VEHICLES						:{WHITE}{COMMA16} vehs. carreta
-STR_703E_AIRCRAFT						:{WHITE}{COMMA16} avion
-STR_703F_AIRCRAFT						:{WHITE}{COMMA16} aviones
+STR_703E_AIRCRAFT						:{WHITE}{COMMA16} aeroplano
+STR_703F_AIRCRAFT						:{WHITE}{COMMA16} aeroplanos
 STR_7040_SHIP							:{WHITE}{COMMA16} barco
 STR_7041_SHIPS							:{WHITE}{COMMA16} barcos
 STR_7042_NONE							:{WHITE}Ninguno
@@ -2000,8 +2000,8 @@ STR_8029_WATER_TANKER						:Cisterna de Agua
 STR_802A_FRUIT_TRUCK						:Vagón de Fruta
 STR_802B_RUBBER_TRUCK						:Vagón de Caucho
 STR_802C_SUGAR_TRUCK						:Vagón de Azúcar
-STR_802D_COTTON_CANDY_HOPPER					:Vagoneta de Caramelos
-STR_802E_TOFFEE_HOPPER						:Vagoneta de Tofes
+STR_802D_COTTON_CANDY_HOPPER					:Vagoneta de Algodón de azúcar
+STR_802E_TOFFEE_HOPPER						:Vagoneta de caramelos
 STR_802F_BUBBLE_VAN						:Vagón de Burbujas
 STR_8030_COLA_TANKER						:Cisterna de Cola
 STR_8031_CANDY_VAN						:Vagón de Dulces
@@ -2030,8 +2030,8 @@ STR_8047_WATER_TANKER						:Cisterna de Agua
 STR_8048_FRUIT_TRUCK						:Vagón de Fruta
 STR_8049_RUBBER_TRUCK						:Vagón de Caucho
 STR_804A_SUGAR_TRUCK						:Vagón de Azúcar
-STR_804B_COTTON_CANDY_HOPPER					:Vagoneta de Caramelos
-STR_804C_TOFFEE_HOPPER						:Vagoneta de Tofes
+STR_804B_COTTON_CANDY_HOPPER					:Vagoneta de Algodón de azúcar
+STR_804C_TOFFEE_HOPPER						:Vagoneta de caramelos
 STR_804D_BUBBLE_VAN						:Vagón de Burbujas
 STR_804E_COLA_TANKER						:Cisterna de Cola
 STR_804F_CANDY_VAN						:Vagón de Dulces
@@ -2062,8 +2062,8 @@ STR_8067_WATER_TANKER						:Cisterna de Agua
 STR_8068_FRUIT_TRUCK						:Vagón de Fruta
 STR_8069_RUBBER_TRUCK						:Vagón de Caucho
 STR_806A_SUGAR_TRUCK						:Vagón de Azúcar
-STR_806B_COTTON_CANDY_HOPPER					:Vagoneta de Caramelos
-STR_806C_TOFFEE_HOPPER						:Vagoneta de Tofes
+STR_806B_COTTON_CANDY_HOPPER					:Vagoneta de Algodón de azúcar
+STR_806C_TOFFEE_HOPPER						:Vagoneta de caramelos
 STR_806D_BUBBLE_VAN						:Vagón de Burbujas
 STR_806E_COLA_TANKER						:Cisterna de Cola
 STR_806F_CANDY_VAN						:Vagón de Dulces
@@ -2135,12 +2135,12 @@ STR_80B0_WIZZOWOW_SUGAR_TRUCK					:Wizzowow Camión de azúcar
 STR_80B1_MIGHTYMOVER_COLA_TRUCK					:MightyMover Camión de cola
 STR_80B2_POWERNAUGHT_COLA_TRUCK					:Powernaught Camión de cola
 STR_80B3_WIZZOWOW_COLA_TRUCK					:Wizzowow Camión de cola
-STR_80B4_MIGHTYMOVER_COTTON_CANDY				:MightyMover Camión de caramelos
-STR_80B5_POWERNAUGHT_COTTON_CANDY				:Powernaught Camión de caramelos
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK				:Wizzowow Camión de caramelos
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK				:MightyMover Camión de tofe
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK				:Powernaught Camión de tofe
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK					:Wizzowow Camión de tofe
+STR_80B4_MIGHTYMOVER_COTTON_CANDY				:MightyMover Camión de Algodón de azúcar
+STR_80B5_POWERNAUGHT_COTTON_CANDY				:Powernaught Camión de Algodón de azúcar
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK				:Wizzowow Camión de Algodón de azúcar
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK				:MightyMover Camión de caramelos
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK				:Powernaught Camión de caramelos
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK					:Wizzowow Camión de caramelos
 STR_80BA_MIGHTYMOVER_TOY_VAN					:MightyMover Furgón de juguetes
 STR_80BB_POWERNAUGHT_TOY_VAN					:Powernaught Furgón de juguetes
 STR_80BC_WIZZOWOW_TOY_VAN					:Wizzowow Furgón de juguetes
@@ -2215,7 +2215,7 @@ STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE			:{WHITE}Mensaje del fabricante de ve
 STR_8101_WE_HAVE_JUST_DESIGNED_A				:{GOLD}WHemos diseñado un nuevo vehículo: {STRING} - ¿estás interesado en el uso exclusivo por un año de este vehículo, para que podamos ver cómo rinde antes de ponerlo universalmente disponible?
 STR_8102_RAILROAD_LOCOMOTIVE					:locomotora
 STR_8103_ROAD_VEHICLE						:vehículo de carretera
-STR_8104_AIRCRAFT						:avión
+STR_8104_AIRCRAFT						:aeronave
 STR_8105_SHIP							:barco
 STR_8106_MONORAIL_LOCOMOTIVE					:locomotora de monorraíl
 STR_8107_MAGLEV_LOCOMOTIVE					:locomotora maglev
@@ -2480,14 +2480,14 @@ SERVICE_AT_SHIP_DEPOT						:Ir al astillero de {TOWN} para mantenimiento
 ##id 0xA000
 STR_A000_AIRPORT_CONSTRUCT					:{WHITE}Construir aeropuerto
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}No se puede construir aeropuerto aquí...
-STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar de aviones
-STR_A003_NEW_AIRCRAFT						:{BLACK}Nuevo avión
+STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Hangar de aeroplanos
+STR_A003_NEW_AIRCRAFT						:{BLACK}Nueva aeronave
 STR_A004_INFORMATION						:{BLACK}Información
 STR_A005_NEW_AIRCRAFT						:{WHITE}Nuevo avilón
-STR_A006_BUILD_AIRCRAFT						:{BLACK}Construir avión
+STR_A006_BUILD_AIRCRAFT						:{BLACK}Construir aeronave
 STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}{}{BLACK}Capacidad: {GOLD}{COMMA16} pasajeros, {COMMA16} bolsas de correo{}{BLACK}Coste Operativo: {GOLD}{CURRENCY}/año{}{BLACK}Diseño: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} años{}{BLACK}Fiabilidad máxima: {GOLD}{COMMA8}%
-STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}No se puede construir avión...
-STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Avión
+STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}No se puede construir aeronave...
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Aeronave
 STR_A00A							:{WHITE}{STRING}
 STR_A00B_ORDERS							:{WHITE}{STRING} (Órdenes)
 STR_A00C_DETAILS						:{WHITE}{STRING} (Detalles)
@@ -2496,56 +2496,56 @@ STR_A00E_MAX_SPEED						:{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Fiabilidad: {LTBLUE}{COMMA8}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA16}
 STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Const.: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}No se puede enviar el avión al hangar
+STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}No se puede enviar la aeronave al hangar
 STR_HEADING_FOR_HANGAR						:{LTBLUE}Ir al hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Ir al hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}El avión {COMMA16} está esperando en el hangar
-STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Avión en camino
-STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}No se puede detener/arrancar avión...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT					:{WHITE}Avión está en vuelo
+STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}La aeronave {COMMA16} está esperando en el hangar
+STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Aeronave en camino
+STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}No se puede detener/arrancar aeronave...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT					:{WHITE}La aeronave está en vuelo
 STR_A018_MUST_BUILD_AIRPORT_FIRST				:{WHITE}Primero debe construirse aeropuerto
 STR_A019_CAPACITY						:{BLACK}Capacidad: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY						:{BLACK}Capacidad: {LTBLUE}{STRING}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED				:{WHITE}El avión debe estar parado en hangar
-STR_A01C_CAN_T_SELL_AIRCRAFT					:{WHITE}No se puede vender avión...
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED				:{WHITE}La aeronave debe estar parada en hangar
+STR_A01C_CAN_T_SELL_AIRCRAFT					:{WHITE}No se puede vender la aeronave...
 STR_A01D_AIRPORT_CONSTRUCTION					:Construir aeropuerto
 STR_A01E_BUILD_AIRPORT						:{BLACK}Construir aeropuerto
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Avión - click en avión para información
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Construir nuevo avión (requiere aeropuerto con hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Avión - click en avión para información
-STR_A022_BUILD_NEW_AIRCRAFT					:{BLACK}Construir avión
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Arrastra avión aquí para venderlo
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}La aeronave - click en la aeronave para información
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Construir nueva aeronave (requiere aeropuerto con hangar)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Aeronave - click en la aeronave para información
+STR_A022_BUILD_NEW_AIRCRAFT					:{BLACK}Construir aeronave
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Arrastra aeronave aquí para venderla
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR				:{BLACK}Centrar vista en posición del hangar
-STR_A025_AIRCRAFT_SELECTION_LIST				:{BLACK}Lista de selección de aviones - click en avión para información
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT				:{BLACK}Construir el avión resaltado
-STR_A027_CURRENT_AIRCRAFT_ACTION				:{BLACK}Acción actual del avión - click aquí para detener/arrancar aviones
-STR_A028_SHOW_AIRCRAFT_S_ORDERS					:{BLACK}Ver órdenes del avión
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT				:{BLACK}Centrar vista en posición del avión
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Enviar avión al hangar
-STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Mostrar detalles del avión
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}¡Nuevo avión ya disponible!
+STR_A025_AIRCRAFT_SELECTION_LIST				:{BLACK}Lista de selección de aeronaves- click en aeronave para información
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT				:{BLACK}Construir la aeronave resaltada
+STR_A027_CURRENT_AIRCRAFT_ACTION				:{BLACK}Acción actual de la aeronave - click aquí para detener/arrancar aeronaves
+STR_A028_SHOW_AIRCRAFT_S_ORDERS					:{BLACK}Ver órdenes de la aeronave
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT				:{BLACK}Centrar vista en posición de la aeronave
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Enviar aeronave al hangar
+STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Mostrar detalles de la aeronave
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}¡Nueva aeronave ya disponible!
 STR_A02D							:{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA16} pasajeros, {COMMA16} bolsas de correo{}Coste Operativo: {CURRENCY}/año
 
-STR_A030_NAME_AIRCRAFT						:{WHITE}Nombrar avión
-STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}No se puede nombrar avión...
-STR_A032_NAME_AIRCRAFT						:{BLACK}Nombrar avión
-STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primera avión llega a {STATION}!
+STR_A030_NAME_AIRCRAFT						:{WHITE}Nombrar aeronave
+STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}No se puede nombrar aeronave...
+STR_A032_NAME_AIRCRAFT						:{BLACK}Nombrar aeronave
+STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primera aeronave llega a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}¡Avión siniestrado!{}{COMMA16} fallecidos en la explosión en {STATION}
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinos:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Renombrar
-STR_A038_RENAME_AIRCRAFT_TYPE					:{BLACK}Renombrar tipo de avión
-STR_A039_RENAME_AIRCRAFT_TYPE					:{WHITE}Renombrar tipo de avión
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}No se puede renombrar el tipo de avión...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Reformar avión para llevar otro tipo de carga
+STR_A038_RENAME_AIRCRAFT_TYPE					:{BLACK}Renombrar tipo de aeronave
+STR_A039_RENAME_AIRCRAFT_TYPE					:{WHITE}Renombrar tipo de aeronave
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}No se puede renombrar el tipo de aeronave...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Reformar aeronave para llevar otro tipo de carga
 STR_A03C_REFIT							:{WHITE}{STRING} (Reformar)
-STR_A03D_REFIT_AIRCRAFT						:{BLACK}Reformar avión
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Seleccione tipo de carga para que el avión la lleve
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Reformar avión para que lleve el tipo de carga resaltado
+STR_A03D_REFIT_AIRCRAFT						:{BLACK}Reformar aeronave
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Seleccione tipo de carga para que la aeronave la lleve
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Reformar aeronave para que lleve el tipo de carga resaltado
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Elige tipo de carga para llevar:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nueva capacidad: {GOLD}{STRING}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT					:{WHITE}No se puede reformar avión...
+STR_A042_CAN_T_REFIT_AIRCRAFT					:{WHITE}No se puede reformar aeronave...
 STR_A043_REFITTABLE						:(reformable)
 STR_GO_TO_AIRPORT_HANGAR					:Ir al hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR					:Ir al hangar de {STATION} para mantenimiento
@@ -2559,7 +2559,7 @@ STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}¡OVNI aterriza cerca de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}¡Hundimiento de mina de carbón deja ola de destrucción en {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}¡Inundación!{}Al menos {COMMA16} desaparecidos o muertos después de las terribles inundaciones!
 
-STR_BRIBE_FAILED						:{WHITE}Tu intento de soborno ha sido
+STR_BRIBE_FAILED						:{WHITE}Su intento de soborno ha sido
 STR_BRIBE_FAILED_2						:{WHITE}descubierto por un investigador regional.
 STR_BUILD_DATE							:{BLACK}Construido: {LTBLUE}{DATE_LONG}
 STR_MULTIPLAYER_PAUSED						:{WHITE}Juego pausado.{}El comando no puede ser ejecutado
@@ -2582,7 +2582,7 @@ STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Dinero:
 STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Préstamo:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Cantidad de vehículos. Incluye vehículos de carretera, trenes, barcos y aviones.
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Cantidad de vehículos. Incluye vehículos de carretera, trenes, barcos y aeroplanos.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Cantidad de segmentos de estaciones. Cada segmento de una estación (ej. estaciones de tren, paradas de autobús, aeropuertos, etc) es contabilizado, incluso si está conectado a una estación.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}El beneficio del vehículo con menores ingresos (de todos los vehículos mayores de 2 años)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Cantidad de dinero ganado en un mes con el beneficio más bajo en los pasados 12 cuartos
