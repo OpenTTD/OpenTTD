@@ -287,21 +287,16 @@ void IConsoleSwitch(void)
 			_iconsole_mode = ICONSOLE_CLOSED;
 			break;
 	}
-	MarkWholeScreenDirty();
-	MarkAllViewportsDirty(0, 0, _screen.width, _screen.height);
-	_video_driver->make_dirty(0, 0, _screen.width, _screen.height);
 }
 
 void IConsoleClose(void)
 {
 	if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();
-	_iconsole_mode = ICONSOLE_CLOSED;
 }
 
 void IConsoleOpen(void)
 {
 	if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();
-	_iconsole_mode = ICONSOLE_OPENED;
 }
 
 void IConsoleCmdBufferAdd(const char* cmd)
