@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH		:Performance history graph
 STR_0158_COMPANY_VALUE_GRAPH			:Company value graph
 STR_0159_CARGO_PAYMENT_RATES			:Cargo payment rates
 STR_015A_COMPANY_LEAGUE_TABLE			:Company league table
+STR_PERFORMANCE_DETAIL_MENU				:Detail performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD									:{WHITE}About OpenTTD
@@ -2518,3 +2519,33 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Coal mine subsidence leave
 STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator
 STR_BUILD_DATE						:{BLACK}Built: {LTBLUE}{DATE_LONG}
+
+STR_PERFORMANCE_DETAIL			:{WHITE}Detail performance rating
+STR_PERFORMANCE_DETAIL_KEY		:{BLACK}Detail
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY	:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT	:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT		:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT			:{BLACK}{INT32}
+############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES	:{BLACK}Vehicles:
+STR_PERFORMANCE_DETAIL_STATIONS	:{BLACK}Stations:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT	:{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME	:{BLACK}Min. income:
+STR_PERFORMANCE_DETAIL_MAX_INCOME	:{BLACK}Max. income:
+STR_PERFORMANCE_DETAIL_DELIVERED	:{BLACK}Delivered:
+STR_PERFORMANCE_DETAIL_CARGO	:{BLACK}Cargo:
+STR_PERFORMANCE_DETAIL_MONEY	:{BLACK}Money:
+STR_PERFORMANCE_DETAIL_LOAN		:{BLACK}Loan:
+STR_PERFORMANCE_DETAIL_TOTAL	:{BLACK}Total:
+############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP		:{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP		:{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP	:{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP	:{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP	:{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP	:{BLACK}Units of cargo delivered in the past four quarters.
+STR_PERFORMANCE_DETAIL_CARGO_TIP			:{BLACK}Types of cargo delivered in the last quarter.
+STR_PERFORMANCE_DETAIL_MONEY_TIP			:{BLACK}Amount of cash on hand
+STR_PERFORMANCE_DETAIL_LOAN_TIP				:{BLACK}Do you have a high loan?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP			:{BLACK}Total points out of possible points
+

@@ -705,6 +705,9 @@ void MakeNewEditorWorld()
 	MarkWholeScreenDirty();
 }
 
+void StartupPlayers();
+void StartupDisasters();
+
 void StartScenario()
 {
 	_game_mode = GM_NORMAL;

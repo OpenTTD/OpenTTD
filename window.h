@@ -293,6 +293,7 @@ enum WindowEvents {
 	WE_DROPDOWN_SELECT = 16,
 	WE_RCLICK = 17,
 	WE_KEYPRESS = 18,
+	WE_CREATE = 19,
 };
 
 

@@ -346,6 +346,8 @@ restart:;
 	_last_window++;
 
 	SetWindowDirty(w);
+	
+	CallWindowEventNP(w, WE_CREATE);
 
 	return w;
 }

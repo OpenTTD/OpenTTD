@@ -80,10 +80,14 @@ uint32 CalculateCompanyValue(Player *p) {
 	return value;
 }
 
-static void UpdateCompanyRatingAndValue(Player *p)
+// if update is set to true, the economy is updated with this score
+//  (also the house is updated, should only be true in the on-tick event)
+void UpdateCompanyRatingAndValue(Player *p, bool update)
 {
 	byte owner = p->index;
-	uint score;
+	int score = 0;
+
+	memset(_score_part[owner], 0, sizeof(_score_part[owner]));
 
 /* Count vehicles */
 	{
@@ -100,16 +104,16 @@ static void UpdateCompanyRatingAndValue(Player *p)
 					v->type == VEH_Ship) {
 				num++;
 				if (v->age > 730) {
-					if (min_profit >= v->profit_last_year)
+					if (min_profit > v->profit_last_year)
 						min_profit = v->profit_last_year;
 				}
 			}
 		}
 
-		score = (num < 120) ? num * 100 / 120 : 100;
+		_score_part[owner][SCORE_VEHICLES] = num;
 
 		if (min_profit != MAX_INT && min_profit > 0)
-			score += (min_profit < 10000) ? min_profit/100 : 100;
+			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
 	}
 
 /* Count stations */
@@ -123,7 +127,7 @@ static void UpdateCompanyRatingAndValue(Player *p)
 				do num += facil&1; while (facil>>=1);
 			}
 		}
-		score += (num < 80) ? num * 100 / 80 : 100;
+		_score_part[owner][SCORE_STATIONS] = num;
 	}
 
 /* Generate statistics depending on recent income statistics */
@@ -144,9 +148,9 @@ static void UpdateCompanyRatingAndValue(Player *p)
 			} while (++pee,--numec);
 
 			if (min_income > 0)
-				score += min_income >= 50000 ? 50 : min_income / 1000;
+				_score_part[owner][SCORE_MIN_INCOME] = min_income;
 
-			score += max_income >= 100000 ? 100 : max_income / 1000;
+			_score_part[owner][SCORE_MAX_INCOME] = max_income;
 		}
 	}
 
@@ -164,35 +168,63 @@ static void UpdateCompanyRatingAndValue(Player *p)
 				total_delivered += pee->delivered_cargo;
 			} while (++pee,--numec);
 
-			score += total_delivered >= 40000 ? 400 : total_delivered / 100;
+			_score_part[owner][SCORE_DELIVERED] = total_delivered;
 		}
 	}
-	
+
 /* Generate score for variety of cargo */
 	{
 		uint cargo = p->cargo_types;
 		uint num = 0;
 		do num += cargo&1; while (cargo>>=1);
-		score += num < 8 ? num * 50 / 8 : 50;
-		p->cargo_types = 0;
+		_score_part[owner][SCORE_CARGO] = num;
+		if (update)
+			p->cargo_types = 0;
 	}
 
 /* Generate score for player money */
 	{
 		int32 money = p->player_money;
 		if (money > 0) {
-			score += money < 10000000 ? money / (10000000/50) : 50;
+			_score_part[owner][SCORE_MONEY] = money;
 		}
 	}
 
 /* Generate score for loan */
 	{
-		score += (250000 - p->current_loan) >= 0 ? (250000 - p->current_loan) / 5000 : 0;
+		_score_part[owner][SCORE_LOAN] = score_info[SCORE_LOAN].needed - p->current_loan;
+	}
+	
+	// Now we calculate the score for each item..
+	{
+		int i;
+		int total_score = 0;
+		int s;
+		score = 0;
+		for (i=0;i<NUM_SCORE;i++) {
+			// Skip the total
+			if (i == SCORE_TOTAL) continue;
+			// Check the score
+			s = (_score_part[owner][i] >= score_info[i].needed) ? score_info[i].score : ((_score_part[owner][i] * score_info[i].score) / score_info[i].needed);
+			if (s < 0) s = 0;
+			score += s;
+			total_score += score_info[i].score;
+		}
+		
+		_score_part[owner][SCORE_TOTAL] = score;
+		
+		// We always want the score scaled to SCORE_MAX (1000)
+		if (total_score != SCORE_MAX)
+			score = score * SCORE_MAX / total_score;
 	}
 
-	p->old_economy[0].performance_history = score;
-	UpdatePlayerHouse(p, score);
-	p->old_economy[0].company_value = CalculateCompanyValue(p);
+	if (update) {
+    	p->old_economy[0].performance_history = score;
+    	UpdatePlayerHouse(p, score);
+    	p->old_economy[0].company_value = CalculateCompanyValue(p);
+    }
+	
+	InvalidateWindow(WC_PERFORMANCE_DETAIL, 0);
 }
 
 // use 255 as new_player to delete the player.
@@ -495,7 +527,7 @@ static void PlayersGenStatistics()
 			if (p->num_valid_stat_ent != 24)
 				p->num_valid_stat_ent++;
 
-			UpdateCompanyRatingAndValue(p);
+			UpdateCompanyRatingAndValue(p, true);
 			PlayersCheckBankrupt(p);
 
 			if (p->block_preview != 0)

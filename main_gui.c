@@ -202,7 +202,10 @@ void MenuClickGraphs(int index)
 
 void MenuClickLeague(int index)
 {
-	ShowCompanyLeagueTable();
+	switch(index) {
+	case 0: ShowCompanyLeagueTable(); return;
+	case 1: ShowPerformanceRatingDetail(); return;
+	}
 }
 
 void MenuClickIndustry(int index)
@@ -648,7 +651,7 @@ static void ToolbarGraphsClick(Window *w)
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, 258, 11, STR_015A_COMPANY_LEAGUE_TABLE, 1);
+	PopupMainToolbMenu(w, 258, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2);
 }
 
 static void ToolbarIndustryClick(Window *w)

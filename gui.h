@@ -19,6 +19,7 @@ void ShowPerformanceHistoryGraph();
 void ShowCompanyValueGraph();
 void ShowCargoPaymentRates();
 void ShowCompanyLeagueTable();
+void ShowPerformanceRatingDetail();
 
 /* news_gui.c */
 void ShowLastNewsMessage();
