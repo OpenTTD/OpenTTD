@@ -427,8 +427,8 @@ extern const TileTypeProcs * const _tile_type_procs[16];
 /* station_cmd.c */
 // there are 5 types of airport (Country (3x4) , City(6x6), Metropolitan(6x6), International(7x7), Heliport(1x1)
 // will become obsolete once airports are loaded from seperate file
-extern const byte _airport_size_x[5];
-extern const byte _airport_size_y[5];
+extern const byte _airport_size_x[];
+extern const byte _airport_size_y[];
 
 /* misc */
 VARDEF char _screenshot_name[128];

@@ -60,8 +60,8 @@ MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POO
 
 // FIXME -- need to be embedded into Airport variable. Is dynamically
 // deducteable from graphics-tile array, so will not be needed
-const byte _airport_size_x[5] = {4, 6, 1, 6, 7 };
-const byte _airport_size_y[5] = {3, 6, 1, 6, 7 };
+const byte _airport_size_x[] = {4, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+const byte _airport_size_y[] = {3, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
 void ShowAircraftDepotWindow(uint tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
