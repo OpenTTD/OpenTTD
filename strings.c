@@ -182,14 +182,14 @@ void InjectDparam(int amount)
 int32 GetParamInt32()
 {
 	int32 result = GET_DPARAM32(0);
-	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
+	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 static int64 GetParamInt64()
 {
 	int64 result = GET_DPARAM32(0) + ((uint64)GET_DPARAM32(1) << 32);
-	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));
+	memmove(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));
 	return result;
 }
 
@@ -197,21 +197,21 @@ static int64 GetParamInt64()
 int GetParamInt16()
 {
 	int result = (int16)GET_DPARAM16(0);
-	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
+	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 int GetParamInt8()
 {
 	int result = (int8)GET_DPARAM8(0);
-	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
+	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 int GetParamUint16()
 {
 	int result = GET_DPARAM16(0);
-	memcpy_overlapping(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
+	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 

@@ -398,7 +398,7 @@ void NetworkProcessCommands()
 			assert(_future_seed[0].frame >= _frame_counter);
 			if (_future_seed[0].frame != _frame_counter) break;
 			if (_future_seed[0].seed[0] != _sync_seed_1 ||_future_seed[0].seed[1] != _sync_seed_2) NetworkHandleDeSync();
-			memcpy_overlapping(_future_seed, _future_seed + 1, --_num_future_seed * sizeof(FutureSeeds));
+			memmove(_future_seed, _future_seed + 1, --_num_future_seed * sizeof(FutureSeeds));
 		}
 	}
 }

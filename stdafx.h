@@ -95,12 +95,6 @@ typedef unsigned int uint32;
 	typedef unsigned int uint;
 #endif
 
-#if defined(_MSC_VER)
-#define memcpy_overlapping memcpy
-#else
-#define memcpy_overlapping memmove
-#endif
-
 #ifndef __BEOS__
 typedef signed char int8;
 typedef signed short int16;

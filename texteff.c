@@ -126,7 +126,7 @@ void DeleteAnimatedTile(uint tile)
 	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list); ti++) {
 		if ( (TileIndex)tile == *ti) {
 			/* remove the hole */
-			memcpy_overlapping(ti, ti+1, endof(_animated_tile_list) - 1 - ti);
+			memmove(ti, ti+1, endof(_animated_tile_list) - 1 - ti);
 			/* and clear last item */
 			endof(_animated_tile_list)[-1] = 0;
 			MarkTileDirtyByTile(tile);

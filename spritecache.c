@@ -524,7 +524,7 @@ static void CompactSpriteCache()
 				_sprite_ptr[i] -= size;
 
 				// Move the memory
-				memcpy_overlapping(s+S_HDRSIZE, s+S_HDRSIZE+size, sizeb - S_HDRSIZE );
+				memmove(s + S_HDRSIZE, s + S_HDRSIZE + size, sizeb - S_HDRSIZE);
 
 				// What we just did had the effect of swapping the allocated block with the free block, so we need to update
 				//  the block pointers. First update the allocated one. It is in use.
