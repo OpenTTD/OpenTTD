@@ -2591,15 +2591,15 @@ STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Hotovost:
 STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Dluh:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Celkem:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Pocet dopravních prostredku, tzn. silnicnich vozidel, vlaku, lodí a letadel.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet soucasti stanic. Kazda soucast stanice (napr. nadrazi, autobusové zastávky, letiste) se zapocitava, i kdyz patri jediné stanici.
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Pocet dopravních prostredku, tzn. silnicnich vozidel, vlaku, lodí a letadel
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet soucasti stanic. Kazda soucast stanice (napr. nadrazi, autobusová zastávka, letiste) se zapocitava, i kdyz patri jediné stanici
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Minimální hrubý zisk (= s provoz. náklady) vozidla s nejnizsim prijmem (starsiho 2 let)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Cisty zisk (= bez provoz. nakladu) v nejslabsim mesici za posledních 12 ctvrtleti
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Cisty zisk v mesici s nejvetsim prijmem za posledních 12 ctvrtleti.
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Pocet dorucenych jednotek nákladu za poslední rok (4Q).
-STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Pocet dorucenych druhu nákladu za poslední 3 mesice (1Q).
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Cisty zisk v mesici s nejvetsim prijmem za posledních 12 ctvrtleti
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Pocet dorucenych jednotek nákladu za poslední rok (4Q)
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Pocet dorucenych druhu nákladu za poslední 3 mesice (1Q)
 STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Soucasna hotovost spolecnosti
-STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Mas velký dluh?
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Má spolecnost velký dluh?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Celkový pocet bodu z 1000 moznych
 
 STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Nastavení nových grafických souboru

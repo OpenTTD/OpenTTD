@@ -522,7 +522,7 @@ STR_01E7							:{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE						:{BLACK}{TINYFONT}Lag{SETX 88}Titill
 STR_01E9_SHUFFLE						:{TINYFONT}Stokka
 STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Listar
-STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Tónlistarlistar
+STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Lagalistar
 STR_01EC_0							:{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
 STR_01ED							:{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
 STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Laganúmer
@@ -532,9 +532,9 @@ STR_01F1_SAVE							:{TINYFONT}{BLACK}Vista
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC				:{BLACK}Núverandi lagalisti
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM				:{BLACK}Velja 'öll lög' listann
 STR_01F4_SELECT_OLD_STYLE_MUSIC					:{BLACK}Velja 'gamli stíll' listann
-STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Select 'nýji stíll' program
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Select 'Sérval 1' (valið af notanda) listann
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Select 'Sérval 2' (valið af notanda) program
+STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Velja 'nýji stíll' listann
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Velja 'Sérval 1' (valið af notanda) listann
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Velja 'Sérval 2' (valið af notanda) listann
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Hreinsa núverandi lista (aðeins Sérval1 eða Sérval2)
 STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Vista tónlistarstillingar á disk
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Veldu lag til að bæta í núverandi lista (aðeins Sérval1 eða Sérval2)
@@ -708,7 +708,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH				:{WHITE}...báðir endar brúarinnar verða að 
 STR_02A1_SMALL							:{BLACK}Lítill
 STR_02A2_MEDIUM							:{BLACK}Miðlungs
 STR_02A3_LARGE							:{BLACK}Stór
-STR_02A4_SELECT_TOWN_SIZE					:{BLACK}Select town size
+STR_02A4_SELECT_TOWN_SIZE					:{BLACK}Velja stærð bæjar
 STR_02A5_TOWN_SIZE						:{YELLOW}Stærð bæjar:
 
 STR_02B6							:{STRING}  -  {STRING}
@@ -765,7 +765,13 @@ STR_02DB_OFF							:{BLACK}Af
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Sýna samstarfssamninga
 STR_02DD_SUBSIDIES						:Samstarfssamningar
 STR_02DE_MAP_OF_WORLD						:Heimskort
+STR_EXTRA_VIEW_PORT						:Auka sjónarhorn
 STR_02DF_TOWN_DIRECTORY						:Bæjarmappa
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Sjónarhorn {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Afrita í sjónarhorn
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Afrita aðalsjónarhornið í sjónarhornsrammann
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Afrita frá sjónarhorni
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Afrita sjónarhornið í rammanum í aðalsjónarhornið
 
 STR_02E0_CURRENCY_UNITS						:{BLACK}Gjaldeyriseining
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -775,7 +781,7 @@ STR_02E4							:{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Val á fjarlægðareiningu
 STR_02E6_ROAD_VEHICLES						:{BLACK}Götufarartæki
 STR_02E7							:{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Veldu hlið fyrir ökufarartæki til að keyra á
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Veldu vegarhelming fyrir bifreiðir
 STR_02E9_DRIVE_ON_LEFT						:Keyra vinstra megin
 STR_02EA_DRIVE_ON_RIGHT						:Keyra hægra megin
 STR_02EB_TOWN_NAMES						:{BLACK}Bæjarnöfn
@@ -793,8 +799,8 @@ STR_02FB_START_A_NEW_GAME					:{BLACK}Byrja nýjan leik
 STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Opna leik frá disk
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Sjá sýnikennslu/leiðbeiningar
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Búa til eigið land
-STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Velja eins leik fyrir einn
-STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Velja leik fyrir tvo
+STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Velja einspilunarleik
+STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Velja fjölspilunaraleik fyrir 2-8 leikmenn
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Sýna Leikjastillingar
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Sýna Erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Byrja nýjan leik, í eigin landi
@@ -803,7 +809,10 @@ STR_0305_LEAVE_OPENTTD						:{BLACK}Fara úr 'OpenTTD', og hætta
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Sjá sýnikennslu/leiðbeiningar
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...aðeins hægt að byggja í bæjum
-STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Velja 'leikfangaland' landslagsstíl
+STR_030E_SELECT_TEMPERATE_LANDSCAPE				:{BLACK}Velja temprað landslag
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE				:{BLACK}Velja heimskautalandslag
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE				:{BLACK}Velja eyðimerkurlandslag
+STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Velja leikfangalandslag
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Fjármagna byggingu nýs iðnaðars
 
 ############ range for menu	starts
@@ -856,6 +865,7 @@ STR_CURR_FF							:Frankar (FF)
 STR_CURR_DM							:Þýsk mörk (DM)
 STR_CURR_YEN							:Jen ({YENSIGN})
 STR_CURR_PT							:Pesetar (Pt)
+STR_CURR_FT							:Ungverskar Forintur (Ft)
 STR_CURR_ATS							:Austurrískur skildingur (ATS)
 STR_CURR_BEF							:Belgískur Franki (BEF)
 STR_CURR_DKK							:Dönsk Króna (DKK)
@@ -1235,7 +1245,7 @@ STR_1009_TOO_MANY_DEPOTS					:{WHITE}Of mörg skýli
 STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Járnbrautarlestarframkvæmdir
 STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Monorail framkvæmdir
 STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}MagLev framkvæmdir
-STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Veldu lestarbrú
+STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Veldu tegund brúar
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Get ekki byggt lestarskýli hér...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Get ekki byggt lestarstöð hér...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE				:{WHITE}Get ekki byggt umferðarljós hér...

@@ -2602,6 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Bargeld
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Schuldenfalle?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf Einstellungen
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Änderungen anwenden
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Parameter setzen
 STR_NEWGRF_TIP							:{BLACK}Eine Liste aller Newgrf-Sets, die installiert sind. Per Klick auswählen.

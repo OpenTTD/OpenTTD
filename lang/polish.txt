@@ -537,11 +537,11 @@ STR_01F3_SELECT_ALL_TRACKS_PROGRAM				:{BLACK}Wybierz program 'Wszystko'
 STR_01F4_SELECT_OLD_STYLE_MUSIC					:{BLACK}Wybierz program 'Stary styl'
 STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Wybierz program 'Nowy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Wybierz program 'Wlasny 1' (definiowany)
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Wybierz program 'Custom 2' (definiowany)
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Wybierz program 'Wlasny 2' (definiowany)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Wyczysc obecny program (tylko Wlasny1 lub Wlasny2)
 STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Zapisz ustawienia na dysk
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klik na sciezce aby dodac do obecnego programu (Wlasny1 i Wlasny2)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Przelacz przypandkowo on/off
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Przelacz przypadkowo on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Pokaz okno wyboru sciezek
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER				:{BLACK}Klik na usludze zeby wysrodkowac widok na Fabryke/Miasto
 STR_01FE_DIFFICULTY						:{BLACK}Trudnosc ({STRING})
@@ -610,7 +610,7 @@ STR_023B_INCREASE_SIZE_OF_TOWN					:{BLACK}Zwieksz rozmar miasta
 STR_023C_EXPAND							:{BLACK}Rozszerz
 STR_023D_RANDOM_TOWN						:{BLACK}Dowolne miasto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}Budowanie miasta w przyadkowym miejsu
-STR_023F_INDUSTRY_GENERATION					:{WHITE}Generacja Fabryk
+STR_023F_INDUSTRY_GENERATION					:{WHITE}Generacja fabryk
 STR_0240_COAL_MINE						:{BLACK}Kopalnia wegla
 STR_0241_POWER_STATION						:{BLACK}Elektrownia
 STR_0242_SAWMILL						:{BLACK}Tartak
@@ -916,7 +916,7 @@ STR_MONTH_AUG							:Sierpien
 STR_MONTH_SEP							:Wrzesien
 STR_MONTH_OCT							:Pazdziernik
 STR_MONTH_NOV							:Listopad
-STR_MONTH_DEC							:grudzien
+STR_MONTH_DEC							:Grudzien
 
 STR_HEADING_FOR_STATION						:{LTBLUE}Zmierza do {STATION}
 STR_HEADING_FOR_STATION_VEL					:{LTBLUE}Zmierza do {STATION}, {VELOCITY}
