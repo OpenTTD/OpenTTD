@@ -302,17 +302,22 @@ int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 	int max_speed_a = 0xFFFF, max_speed_b = 0xFFFF;
 	int r;
 	const Vehicle *ua = va, *ub = vb;
-	do {
-		if (RailVehInfo(ua->engine_type)->max_speed != 0)
-			max_speed_a = min(max_speed_a, RailVehInfo(ua->engine_type)->max_speed);
-	} while ((ua = ua->next) != NULL);
 
-	do {
-		if (RailVehInfo(ub->engine_type)->max_speed != 0)
-			max_speed_b = min(max_speed_b, RailVehInfo(ub->engine_type)->max_speed);
-	} while ((ub = ub->next) != NULL);
+	if (va->type == VEH_Train && vb->type == VEH_Train) {
+		do {
+			if (RailVehInfo(ua->engine_type)->max_speed != 0)
+				max_speed_a = min(max_speed_a, RailVehInfo(ua->engine_type)->max_speed);
+		} while ((ua = ua->next) != NULL);
 
-	r = max_speed_a - max_speed_b;
+		do {
+			if (RailVehInfo(ub->engine_type)->max_speed != 0)
+				max_speed_b = min(max_speed_b, RailVehInfo(ub->engine_type)->max_speed);
+		} while ((ub = ub->next) != NULL);
+
+		r = max_speed_a - max_speed_b;
+	} else {
+		r = va->max_speed - vb->max_speed;
+	}
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
