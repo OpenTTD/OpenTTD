@@ -141,6 +141,8 @@ void FiosDelete(const char *name);
 // Make a filename from a name
 void FiosMakeSavegameName(char *buf, const char *name);
 
+int CDECL compare_FiosItems(const void *a, const void *b);
+
 void CreateConsole(void);
 
 #endif /* HAL_H */

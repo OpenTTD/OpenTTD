@@ -507,7 +507,6 @@ enum SpecialStrings {
 
 typedef void PlaceProc(uint tile);
 
-VARDEF bool _savegame_sort_dirty;
 VARDEF byte _savegame_sort_order;
 
 #define INVALID_UINT_TILE (uint)0xFFFFFFFF

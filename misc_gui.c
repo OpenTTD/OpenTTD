@@ -20,6 +20,8 @@
 
 #include "hal.h" // for file list
 
+static bool _savegame_sort_dirty;
+
 bool _query_string_active;
 
 typedef struct LandInfoData {
@@ -1141,12 +1143,6 @@ static void DrawFiosTexts(void)
 		DrawString(2, 37, str, 0);
 	DoDrawString(path, 2, 27, 16);
 }
-
-#if defined(_WIN32)
-	extern int CDECL compare_FiosItems (const void *a, const void *b);
-#else
-	extern int compare_FiosItems (const void *a, const void *b);
-#endif
 
 
 static void MakeSortedSaveGameList(void)
