@@ -2612,8 +2612,6 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 		UpdateStationWaiting(st1, type, moved);
 	}
 
-	assert(amount >= 0);
-
 	if (amount != 0) {
 		moved += (amount = (amount * best_rating2 >> 8) + 1);
 		UpdateStationWaiting(st2, type, amount);
