@@ -209,6 +209,13 @@ endif
 endif
 endif
 
+ifdef RELEASE
+ifdef OSX
+ifndef STATIC
+$(error do not make dynamically linked releases. Most users can't use those)
+endif
+endif
+endif
 
 # Force SDL on UNIX platforms
 ifndef WITH_SDL
