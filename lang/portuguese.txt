@@ -1064,11 +1064,11 @@ STR_CHEATS							:{WHITE}Truques
 STR_CHEATS_TIP							:{BLACK}As caixas de verificação indicam se já usou este truque antes
 STR_CHEATS_WARNING						:{BLACK}Atenção! Está prestes a trair os seus oponentes. Tenha em conta que isto ficará registado para sempre.
 STR_CHEAT_MONEY							:{LTBLUE}Aumentar dinheiro em {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Jogar como o jogador: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Jogar pelo jogador: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH						:{LTBLUE}Os aviões a jacto não irão ter acidentes (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Aviões a jacto não irão ter acidentes em aeroportos pequenos: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Mudar de clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 

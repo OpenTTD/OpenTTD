@@ -1022,6 +1022,9 @@ STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Data de aparición das noticias 
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data de comezo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Esquerda
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centro
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Dereita
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Construcción
@@ -1036,6 +1039,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Cambia-lo valor
 
+STR_TEMPERATE_LANDSCAPE						:escenario templado
+STR_SUB_ARCTIC_LANDSCAPE					:escenario sub-ártico
+STR_SUB_TROPICAL_LANDSCAPE					:escenario sub-tropical
+STR_TOYLAND_LANDSCAPE						:escenario xoguetelandia
 
 STR_CHEATS							:{WHITE}Trampas
 STR_CHEATS_TIP							:{BLACK}As caixas de confirmación indican se usaches esta trampa antes
@@ -1199,6 +1206,8 @@ STR_NETWORK_6_PLAYERS						:6 xogadores
 STR_NETWORK_7_PLAYERS						:7 xogadores
 STR_NETWORK_8_PLAYERS						:8 xogadores
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Partida
+STR_NETWORK_LOAD_GAME						:{BLACK}Cargar Partida
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Cargar Escenario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de partida multixogador
 
@@ -1739,6 +1748,7 @@ STR_6815_DISASTERS						:{LTBLUE}Desastres: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL						:{LTBLUE}Actitude do consello sobre a reestructuración de áreas: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Ningún
 STR_6816_LOW							:Baixo
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:Alto
@@ -1820,6 +1830,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Gráfica de Beneficios Operativos
 STR_7026_BANK_BALANCE						:{WHITE}Balance do Banco
 STR_7027_LOAN							:{WHITE}Préstamo
+STR_MAX_LOAN							:{WHITE}Préstamo Max:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Solicitar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Devolver {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1895,6 +1906,7 @@ STR_706F_BUILD_HQ						:{BLACK}Construír CX
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Construír/ver cuartel xeral da compañía
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Non se pode construí-lo cuartel xeral...
 STR_7072_VIEW_HQ						:{BLACK}Ve-lo CX
+STR_RELOCATE_HQ							:{BLACK}Reposicionar CX
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Os expertos en finanzas témense o peor a medida que a economía afúndese!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}¡Fin da Recesión!{}{}¡A mellora no comercio inspira confianza nas industrias a media que a economía reforzase!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Intercambiar entre fiestra grande/pequena
@@ -2198,7 +2210,9 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Face-lo servicio sen paradas no Depósito
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}En camiño ó Depósito de Trens de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}En camiño ó Depósito de Trens de {TOWN}, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Orde Inválida)
 
+STR_UNKNOWN_DESTINATION						:destino descoñecido
 STR_8812_EMPTY							:{LTBLUE}Valeiro
 STR_8813_FROM							:{LTBLUE}{CARGO} de {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}O tren {COMMA16} está a esperar no depósito
@@ -2512,7 +2526,18 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}¡Afundimento dunha Mina
 
 STR_BRIBE_FAILED						:{WHITE}O tento de suborno foi
 STR_BRIBE_FAILED_2						:{WHITE}descuberto por un investigador rexional.
+STR_BUILD_DATE							:{BLACK}construído: {LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detalle
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Vehículos:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Estacións:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Entregado:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Carga:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Diñeiro:
 ############ End of order list
 
