@@ -737,7 +737,18 @@ static void WritePE(const PatchEntry *pe, int32 val)
 {
 
 	if ((pe->flags & PF_0ISDIS) && val <= 0) {
-		*(bool*)pe->variable = 0; // "clamp" 'disabled' value to smallest type, PE_BOOL
+		// "clamp" 'disabled' value to smallest type
+		switch (pe->type) {
+			case PE_BOOL: case PE_UINT8:
+				*(bool*)pe->variable = 0;
+				break;
+			case PE_INT16: case PE_UINT16:
+				*(int16*)pe->variable = 0;
+				break;
+			case PE_CURRENCY: case PE_INT32:
+				*(int32*)pe->variable = 0;
+				break;
+		}
 		return;
 	}
 
