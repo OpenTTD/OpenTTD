@@ -1338,9 +1338,9 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		bool edittext = false;
 		int line = (e->click.pt.y - 20)/12;
-		int len;
+		int len = 0;
 		int x = e->click.pt.x;
-		StringID str;
+		StringID str = 0;
 
 		switch ( line ) {
 			case 0: // rate
