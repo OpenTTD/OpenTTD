@@ -671,6 +671,8 @@ static void HandleAckPacket(AckPacket * ap)
 static void HandleFilePacket(FilePacketHdr *fp)
 {
 	int n = fp->packet_length - sizeof(FilePacketHdr);
+	char *tempfile = str_fmt("%s/networkc.tmp", _path.personal_dir);
+
 	if (n == 0) {
 		assert(_networking_queuing);
 		assert(!_networking_sync);
@@ -679,7 +681,7 @@ static void HandleFilePacket(FilePacketHdr *fp)
 
 		// attempt loading the game.
 		_game_mode = GM_NORMAL;
-		if (SaveOrLoad("networkc.tmp", SL_LOAD) != SL_OK) {
+		if (SaveOrLoad(tempfile, SL_LOAD) != SL_OK) {
 				NetworkCoreDisconnect();
 				NetworkHandleSaveGameError();
 				return;
@@ -703,7 +705,7 @@ static void HandleFilePacket(FilePacketHdr *fp)
 
 	} else {
 		if(!_recv_file) {
-			_recv_file = fopen("networkc.tmp", "wb");
+			_recv_file = fopen(tempfile, "wb");
 			if (!_recv_file) error("can't open savefile");
 		}
 		fwrite( (char*)fp + sizeof(*fp), n, 1, _recv_file);
