@@ -262,8 +262,8 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y);
 void VehiclePositionChanged(Vehicle *v);
 void AfterLoadVehicles(void);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
-Vehicle *GetPrevVehicleInChain(Vehicle *v);
-Vehicle *GetFirstVehicleInChain(Vehicle *v);
+Vehicle *GetPrevVehicleInChain(const Vehicle *v);
+Vehicle *GetFirstVehicleInChain(const Vehicle *v);
 int CountVehiclesInChain(Vehicle *v);
 void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
@@ -285,7 +285,7 @@ void TrainEnterDepot(Vehicle *v, uint tile);
 void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) ;
 
 /* train_cmd.h */
-int GetTrainImage(Vehicle *v, byte direction);
+int GetTrainImage(const Vehicle *v, byte direction);
 int GetAircraftImage(Vehicle *v, byte direction);
 int GetRoadVehImage(Vehicle *v, byte direction);
 int GetShipImage(Vehicle *v, byte direction);

@@ -99,7 +99,7 @@ extern byte _engine_original_sprites[256];
 void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
-int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction);
+int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 

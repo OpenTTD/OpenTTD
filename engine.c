@@ -275,13 +275,11 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
-typedef struct RealSpriteGroup *(*resolve_callback)(struct SpriteGroup *spritegroup,
-                                                    struct Vehicle *veh,
-                                                    void *callback); /* XXX data pointer used as function pointer */
+typedef struct RealSpriteGroup *(*resolve_callback)(
+	struct SpriteGroup *spritegroup, const Vehicle *veh, void *callback); /* XXX data pointer used as function pointer */
 
-static struct RealSpriteGroup *
-ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
-			  resolve_callback callback)
+static struct RealSpriteGroup* ResolveVehicleSpriteGroup(
+	struct SpriteGroup *spritegroup, const Vehicle *veh, resolve_callback callback)
 {
 	//debug("spgt %d", spritegroup->type);
 	switch (spritegroup->type) {
@@ -460,7 +458,7 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
 	}
 }
 
-static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, Vehicle *v)
+static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 {
 	struct SpriteGroup *group;
 	uint16 overriding_engine = -1;
@@ -483,7 +481,7 @@ static struct SpriteGroup *GetVehicleSpriteGroup(byte engine, Vehicle *v)
 	return group;
 }
 
-int GetCustomEngineSprite(byte engine, Vehicle *v, byte direction)
+int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 {
 	struct SpriteGroup *group;
 	struct RealSpriteGroup *rsg;

@@ -281,7 +281,7 @@ void UpdateTrainAcceleration(Vehicle *v)
 	v->acceleration = clamp(power / weight * 4, 1, 255);
 }
 
-int GetTrainImage(Vehicle *v, byte direction)
+int GetTrainImage(const Vehicle *v, byte direction)
 {
 	int img = v->spritenum;
 	int base;

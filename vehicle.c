@@ -365,29 +365,28 @@ Vehicle *GetLastVehicleInChain(Vehicle *v)
 	return v;
 }
 
-Vehicle *GetPrevVehicleInChain(Vehicle *v)
+Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 {
-	Vehicle *org = v;
+	const Vehicle *org = v;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && org == v->next)
-			return v;
+			return (Vehicle*)v;
 	}
 
 	return NULL;
 }
 
-Vehicle *GetFirstVehicleInChain(Vehicle *v)
+Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 {
-	Vehicle *u;
-
 	while (true) {
-		u = v;
+		const Vehicle* u = v;
+
 		v = GetPrevVehicleInChain(v);
 		/* If there is no such vehicle,
 		    'v' == NULL and so 'u' is the first vehicle in chain */
 		if (v == NULL)
-			return u;
+			return (Vehicle*)u;
 	}
 }
 
