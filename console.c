@@ -284,6 +284,7 @@ bool CloseConsoleLogIfActive(void)
 	if (_iconsole_output_file != NULL) {
 		IConsolePrintF(_iconsole_color_default, "file output complete");
 		fclose(_iconsole_output_file);
+		_iconsole_output_file = NULL;
 		return true;
 	}
 
