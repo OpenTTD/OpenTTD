@@ -63,7 +63,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = _map2[ti->tile];
+		byte gfx   = (byte)_map2[ti->tile];
 		byte stage = _map3_lo[ti->tile] >> 6;
 		uint variant;
 		variant  = ti->x >> 4;

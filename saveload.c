@@ -5,7 +5,6 @@
 #include "town.h"
 #include "player.h"
 #include "saveload.h"
-#include <setjmp.h>
 
 enum {
 	SAVEGAME_MAJOR_VERSION = 4,
@@ -17,47 +16,6 @@ enum {
 /******************************************************/
 /******************************************************/
 /******************************************************/
-
-typedef void WriterProc(uint len);
-typedef uint ReaderProc();
-
-typedef uint ReferenceToIntProc(void *v, uint t);
-typedef void *IntToReferenceProc(uint r, uint t);
-
-typedef struct {
-	bool save;
-	byte need_length;
-	byte block_mode;
-	bool error;
-	byte version;
-
-	int obj_len;
-	int array_index, last_array_index;
-
-	uint32 offs_base;
-
-	WriterProc *write_bytes;
-	ReaderProc *read_bytes;
-
-	ReferenceToIntProc *ref_to_int_proc;
-	IntToReferenceProc *int_to_ref_proc;
-
-	const ChunkHandler * const * chs;
-	const byte * const *includes;
-
-	byte *bufp, *bufe;
-
-	int tmp;
-
-	// these 3 may be used by compressor/decompressors.
-	byte *buf; // pointer and size to read/write, initialized by init
-	uint bufsize;
-	FILE *fh;
-
-	void (*excpt_uninit)();
-	const char *excpt_msg;
-	jmp_buf excpt; // used to jump to "exception handler"
-} SaverLoader;
 
 enum NeedLengthValues { NL_NONE = 0,NL_WANTLENGTH = 1,NL_CALCLENGTH = 2};
 

@@ -433,7 +433,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //			v->progress = 0;
 //			v->targetairport = 0;
 //			v->crash_anim_pos = 0;
-			v->last_station_visited = 0xff;
+			v->last_station_visited = 0xFFFF;
 			v->dest_tile = 0;
 //			v->profit_last_year = 0;
 //			v->profit_this_year = 0;
@@ -1666,7 +1666,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	result = false;
 	if (order.type == OT_GOTO_STATION) {
 		if (order.station == v->last_station_visited)
-			v->last_station_visited = 0xFF;
+			v->last_station_visited = 0xFFFF;
 		v->dest_tile = DEREF_STATION(order.station)->xy;
 		result = CheckReverseTrain(v);
 	} else if (order.type == OT_GOTO_DEPOT) {

@@ -302,7 +302,7 @@ static void DrawStationViewWindow(Window *w)
 	int x,y;
 	int pos;
 	StringID str;
-	byte station_id;
+	uint16 station_id;
 	byte *b;
 
 

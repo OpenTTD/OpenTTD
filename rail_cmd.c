@@ -1836,7 +1836,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	for(i=0; i!=ssd->cur; i++) {
 		uint tile = ssd->tile[i];
 		byte bit = _signals_table[ssd->bit[i]];
-		byte m2 = _map2[tile];
+		uint16 m2 = _map2[tile];
 
 		// presignals don't turn green if there is at least one presignal exit and none are free
 		if (_map3_hi[tile] & 1) {
@@ -1985,7 +1985,7 @@ static void TileLoop_Track(uint tile)
 {
 	byte a2;
 	byte rail;
-	byte m2;
+	uint16 m2;
 	byte owner;
 
 	m2 = _map2[tile] & 0xF;
@@ -2068,7 +2068,8 @@ modify_me:;
 
 
 static uint32 GetTileTrackStatus_Track(uint tile, TransportType mode) {
-	byte m5, a, b;
+	byte m5, a;
+	uint16 b;
 	uint32 ret;
 
 	if (mode != TRANSPORT_RAIL)

@@ -490,7 +490,7 @@ void DeleteCommandFromVehicleSchedule(Order cmd)
 
 			// clear last station visited
 			if (v->last_station_visited == cmd.station && cmd.type == OT_GOTO_STATION)
-				v->last_station_visited = 0xFF;
+				v->last_station_visited = 0xFFFF;
 
 			// check the next order
 			if (v->current_order.type == cmd.type &&
@@ -1655,7 +1655,8 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,progress,					SLE_UINT8),
 
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
-	SLE_VAR(Vehicle,last_station_visited,SLE_UINT8),
+	SLE_CONDVAR(Vehicle,last_station_visited, SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVAR(Vehicle,last_station_visited, SLE_UINT16, 5, 255),
 
 	SLE_VAR(Vehicle,cargo_type,				SLE_UINT8),
 	SLE_VAR(Vehicle,cargo_days,				SLE_UINT8),
@@ -1756,7 +1757,10 @@ static const byte _aircraft_desc[] = {
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,crashed_counter),	SLE_UINT16),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,pos),							SLE_UINT8),
-	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_UINT8),
+
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_UINT16, 5, 255),
+
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,state),						SLE_UINT8),
 
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,previous_pos),			SLE_UINT8, 2, 255),
@@ -1854,6 +1858,10 @@ static void Save_VEHS()
 	// Write the vehicles
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0) {
+			/* XXX - Here for now, because we did not bump the savegame to version 5 yet */
+			if (_sl.version < 5 && v->last_station_visited == 0xFFFF)
+				v->last_station_visited = 0xFF;
+
 			SlSetArrayIndex(v->index);
 			v->next_in_chain_old = v->next ? v->next->index : INVALID_VEHICLE;
 			SlObject(v, _veh_descs[v->type - 0x10]);
@@ -1874,6 +1882,10 @@ static void Load_VEHS()
 		v->next = v->next_in_chain_old == INVALID_VEHICLE ? NULL : &_vehicles[v->next_in_chain_old];
 		if (v->type == VEH_Train)
 			v->u.rail.first_engine = 0xffff;
+
+		/* Old savegames used 'last_station_visited = 0xFF', should be 0xFFFF */
+		if (_sl.version < 5 && v->last_station_visited == 0xFF)
+			v->last_station_visited = 0xFFFF;
 	}
 
 	// Iterate through trains and set first_engine appropriately.

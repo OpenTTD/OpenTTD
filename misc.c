@@ -837,7 +837,12 @@ static void SaveLoad_MAPT() {
 }
 
 static void SaveLoad_MAP2() {
-  SlArray(_map2, MapSize(), SLE_UINT8);
+	if (_sl.version < 5) {
+		/* In those versions the _map2 was 8 bits */
+		SlArray(_map2, MapSize(), SLE_FILE_U8 | SLE_VAR_U16);
+	} else {
+		SlArray(_map2, MapSize(), SLE_UINT16);
+	}
 }
 
 static void SaveLoad_M3LO() {

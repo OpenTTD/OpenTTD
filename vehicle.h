@@ -11,7 +11,7 @@ typedef struct Order {
 	uint8 flags:4;
 	uint8 type:4;
 #endif
-	uint8 station;
+	uint16 station;
 } Order;
 
 static inline uint16 PackOrder(const Order *order)
@@ -62,7 +62,7 @@ typedef struct VehicleAir {
 	uint16 crashed_counter;
 	byte pos;
   byte previous_pos;
-	byte targetairport;
+	uint16 targetairport;
 	byte state;
 } VehicleAir;
 
@@ -159,7 +159,7 @@ struct Vehicle {
 	byte progress;
 
 	byte vehstatus;		// Status
-	byte last_station_visited;
+	uint16 last_station_visited;
 
 	byte cargo_type;	// type of cargo this vehicle is carrying
 	byte cargo_days; // how many days have the pieces been in transit

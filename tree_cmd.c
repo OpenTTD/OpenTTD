@@ -240,7 +240,7 @@ typedef struct TreeListEnt {
 
 static void DrawTile_Trees(TileInfo *ti)
 {
-	byte m2;
+	uint16 m2;
 	const uint32 *s;
 	const byte *d;
 	byte z;
@@ -459,7 +459,8 @@ static void TileLoopTreesAlps(uint tile)
 
 static void TileLoop_Trees(uint tile)
 {
-	byte m5, m2;
+	byte m5;
+	uint16 m2;
 
 	static const TileIndexDiff _tileloop_trees_dir[] = {
 		TILE_XY(-1,-1),
@@ -482,7 +483,7 @@ static void TileLoop_Trees(uint tile)
 
 	/* increase counter */
 	{
-		byte m2 = _map2[tile];
+		uint16 m2 = _map2[tile];
 		_map2[tile] = m2 = (m2 & 0xF0) | ((m2+1)&0xF);
 		if (m2 & 0xF)
 			return;

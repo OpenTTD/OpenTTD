@@ -1383,10 +1383,10 @@ bool LoadOldSaveGame(const char *file)
 	// copy sections of it to our datastructures.
 	map_size = MapSize();
 	memcpy(_map_owner, m->map_owner, map_size);
-	memcpy(_map2, m->map2, map_size);
 	memcpy(_map_type_and_height, m->map_type_and_height, map_size);
 	memcpy(_map5, m->map5, map_size);
 	for (i = 0; i != map_size; i++) {
+		_map2[i]    = m->map2[i];
 		_map3_lo[i] = m->map3[i] & 0xFF;
 		_map3_hi[i] = m->map3[i] >> 8;
 	}

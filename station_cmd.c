@@ -105,7 +105,7 @@ TileIndex GetStationTileForVehicle(Vehicle *v, Station *st)
 
 static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 {
-	byte station_index = st->index;
+	uint16 station_index = st->index;
 	uint i;
 	uint x1 = GET_TILE_X(tile);
 	uint y1 = GET_TILE_Y(tile);
@@ -2168,7 +2168,7 @@ static const byte _enter_station_speedtable[12] = {
 
 static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 {
-	byte station_id;
+	uint16 station_id;
 	byte dir;
 	uint16 spd;
 
@@ -2482,7 +2482,8 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 {
 	Station *around_ptr[8];
-	byte around[8], st_index;
+	byte around[8];
+	uint16 st_index;
 	int i;
 	Station *st;
 	uint moved;

@@ -727,7 +727,7 @@ const byte _road_sloped_sprites[14] = {
 static void DrawTile_Road(TileInfo *ti)
 {
 	uint32 image;
-	byte m2;
+	uint16 m2;
 	const byte *s;
 
 	if ( (ti->map5 & 0xF0) == 0) { // if it is a road the upper 4 bits are 0
@@ -1006,7 +1006,7 @@ static void TileLoop_Road(uint tile)
 	} else {
 		// Handle road work
 
-		byte b = _map2[tile];
+		uint16 b = _map2[tile];
 		if (b < 0x80) {
 			_map2[tile] = b + 8;
 			return;

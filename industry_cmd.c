@@ -837,7 +837,7 @@ void DeleteIndustry(Industry *i)
 
 	BEGIN_TILE_LOOP(tile_cur,	i->width, i->height, i->xy);
 		if (IS_TILETYPE(tile_cur, MP_INDUSTRY)) {
-			if (_map2[tile_cur] == (byte)index) {
+			if (_map2[tile_cur] == (uint16)index) {
 				DoClearSquare(tile_cur);
 			}
 		} else if (IS_TILETYPE(tile_cur, MP_STATION) && _map5[tile_cur] == 0x4B) {
