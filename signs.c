@@ -193,7 +193,7 @@ static const byte _sign_desc[] = {
 	SLE_CONDVAR(SignStruct,y,					SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
 	SLE_CONDVAR(SignStruct,x,					SLE_INT32, 5, 255),
 	SLE_CONDVAR(SignStruct,y,					SLE_INT32, 5, 255),
-// 	SLE_CONDVAR(SignStruct,owner,			SLE_INT32, 6, 255), // TODO: uncomment this after the savegame bump to version 6.0
+	SLE_CONDVAR(SignStruct,owner,			SLE_INT32, 6, 255),
 	SLE_VAR(SignStruct,z,							SLE_UINT8),
 	SLE_END()
 };
