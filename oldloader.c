@@ -14,7 +14,7 @@ extern byte _name_array[512][32];
 extern TileIndex _animated_tile_list[256];
 extern uint16 _custom_sprites_base;
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(push, 1)
 #endif
 
@@ -499,7 +499,7 @@ typedef struct {
 } GCC_PACK OldMain;
 assert_compile(sizeof(OldMain) == 487801 + 256*256*2);
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(pop)
 #endif
 

@@ -20,7 +20,7 @@ typedef struct {
 //************************************************
 //*** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
 //************************************************
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(push, 1)
 #endif
 
@@ -32,7 +32,7 @@ typedef struct BitmapFileHeader {
 } GCC_PACK BitmapFileHeader;
 assert_compile(sizeof(BitmapFileHeader) == 14);
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(__WATCOMC__)
 #pragma pack(pop)
 #endif
 
