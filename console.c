@@ -399,6 +399,12 @@ void IConsolePrint(uint16 color_code, const char* string)
 	}
 	free(_ex);
 
+	if (_iconsole_output_file != NULL) {
+		// if there is an console output file ... also print it there
+		fwrite(string, strlen(string), 1, _iconsole_output_file);
+		fwrite("\n", 1, 1, _iconsole_output_file);
+	}
+
 	if (_iconsole_win != NULL) SetWindowDirty(_iconsole_win);
 }
 
@@ -414,12 +420,6 @@ void CDECL IConsolePrintF(uint16 color_code, const char* s, ...)
 	va_end(va);
 
 	IConsolePrint(color_code, buf);
-
-	if (_iconsole_output_file != NULL) {
-		// if there is an console output file ... also print it there
-		fwrite(buf, len, 1, _iconsole_output_file);
-		fwrite("\n", 1, 1, _iconsole_output_file);
-	}
 }
 
 void IConsoleDebug(const char* string)
