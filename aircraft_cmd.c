@@ -269,6 +269,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
 
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
+
 	return value;
 }
 
@@ -321,6 +323,8 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DoDeleteAircraft(v);
 
 	}
+
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
 
 	return -(int32)v->value;
 }

@@ -324,6 +324,8 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const EngineInfo *info = &_engine_info[i];
 
+		if ( _player_num_engines[i] == 0 && show_outdated ) continue;
+
 		if ( rvi->power == 0 && !(show_cars) )   // disables display of cars (works since they do not have power)
 			continue;
 
@@ -346,6 +348,10 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 				colour);
 			DrawTrainEngine(*x + 29, *y + 6, i,
 				SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+			if ( show_outdated ) {
+				SetDParam(0, _player_num_engines[i]);
+				DrawStringRightAligned(213, *y+5, STR_TINY_BLACK, 0);
+			}
 			*y += 14;
 		}
 		--*sel;
@@ -374,19 +380,21 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const Engine *e = DEREF_ENGINE(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
 
-				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype) {
+				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype ) {
 					count++;
-					if (sel[0]==0)  selected_id[0] = engine_id;
-					sel[0]--;
+					if ( _player_num_engines[engine_id] ) {
+						if (sel[0]==0)  selected_id[0] = engine_id;
+						sel[0]--;
+					}
 					if (HASBIT(e->player_avail, _local_player)) {
 						if (sel[1]==0)  selected_id[1] = engine_id;
-							count2++;
-							sel[1]--;
-						}
+						count2++;
+						sel[1]--;
 					}
 				}
-			break;
 			}
+			break;
+		}
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
 			Engine *e = DEREF_ENGINE(ROAD_ENGINES_INDEX);
@@ -396,7 +404,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			do {
 				info = &_engine_info[engine_id];
-				if (ENGINE_AVAILABLE) {
+				if (_player_num_engines[engine_id] ) {
 					if (sel[0]==0)  selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
@@ -429,7 +437,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			do {
 				info = &_engine_info[engine_id];
-				if (ENGINE_AVAILABLE) {
+				if (_player_num_engines[engine_id] ) {
 					if ( sel[0] == 0 )  selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
@@ -465,7 +473,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			do {
 				info = &_engine_info[engine_id];
-				if (ENGINE_AVAILABLE) {
+				if (_player_num_engines[engine_id]) {
 					count++;
 					if (sel[0]==0)  selected_id[0] = engine_id;
 					sel[0]--;
@@ -543,22 +551,24 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 				do {
 					info = &_engine_info[engine_id];
-					if (ENGINE_AVAILABLE) {
+					if (_player_num_engines[engine_id]) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							SetDParam(0, _player_num_engines[engine_id]);
+							DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
 							y += 14;
 						}
-
-						if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
-							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
-								DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-								DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-								y2 += 14;
-							}
-							sel[1]--;
-						}
 					sel[0]--;
+					}
+
+					if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
+						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
+							DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+							DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							y2 += 14;
+						}
+						sel[1]--;
 					}
 				} while (++engine_id, ++e,--num);
 			}
@@ -578,23 +588,25 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 				do {
 					info = &_engine_info[engine_id];
-					if (ENGINE_AVAILABLE) {
+					if (_player_num_engines[engine_id]) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawShipEngine(x+35, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							SetDParam(0, _player_num_engines[engine_id]);
+							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
 						}
-						if ( selected_id[0] != -1 ) {
-							if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-								if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-									DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-									DrawShipEngine(x2+35, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-									y2 += 24;
-								}
-								sel[1]--;
-							}
-						}
 						sel[0]--;
+					}
+					if ( selected_id[0] != -1 ) {
+						if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
+							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
+								DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+								DrawShipEngine(x2+35, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+								y2 += 24;
+							}
+							sel[1]--;
+						}
 					}
 				} while (++engine_id, ++e,--num);
 			}
@@ -611,24 +623,26 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 				do {
 					info = &_engine_info[engine_id];
-					if (ENGINE_AVAILABLE) {
+					if (_player_num_engines[engine_id]) {
 						if (sel[0]==0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawAircraftEngine(x+29, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							SetDParam(0, _player_num_engines[engine_id]);
+							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
 						}
-						if ( ((subtype && AircraftVehInfo(engine_id)->subtype) || (!(subtype) && !AircraftVehInfo(engine_id)->subtype))
-							&& HASBIT(e->player_avail, _local_player) ) {
-							if (sel[1]==0) selected_id[1] = engine_id;
-							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-								DrawString(x2+62, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-								DrawAircraftEngine(x2+29, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
-								y2 += 24;
-							}
-						sel[1]--;
+						sel[0]--;
+					}
+					if ( ((subtype && AircraftVehInfo(engine_id)->subtype) || (!(subtype) && !AircraftVehInfo(engine_id)->subtype))
+						&& HASBIT(e->player_avail, _local_player) ) {
+						if (sel[1]==0) selected_id[1] = engine_id;
+						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
+							DrawString(x2+62, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+							DrawAircraftEngine(x2+29, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							y2 += 24;
 						}
-					sel[0]--;
+						sel[1]--;
 					}
 				} while (++engine_id, ++e,--num);
 			}
@@ -657,6 +671,27 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int sel[2];
 				sel[0] = WP(w,replaceveh_d).sel_index[0];
 				sel[1] = WP(w,replaceveh_d).sel_index[1];
+
+				{
+					uint i;
+					const Vehicle *vehicle;
+
+					for (i = 0; i < lengthof(_player_num_engines); i++) {
+						_player_num_engines[i] = 0;
+					}
+					FOR_ALL_VEHICLES(vehicle) {
+						if ( vehicle->owner == _local_player ) {
+							if (vehicle->type == VEH_Aircraft && vehicle->subtype > 2) continue;
+
+							// do not count the vehicles, that contains only 0 in all var
+							if (vehicle->engine_type == 0 && vehicle->spritenum == 0 ) continue;
+
+							if (vehicle->type != DEREF_ENGINE(vehicle->engine_type)->type) continue;
+
+							_player_num_engines[vehicle->engine_type]++;
+						}
+					}
+				}
 
 				SetupScrollStuffForReplaceWindow(w);
 

@@ -188,6 +188,8 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
 
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
+
 	return cost;
 }
 
@@ -234,6 +236,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteVehicle(v);
 	}
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
 
 	return -(int32)v->value;
 }

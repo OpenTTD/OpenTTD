@@ -1449,6 +1449,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				byte capacity = rvi->capacity;
 				Vehicle *first = GetFirstVehicleInChain(v);
 
+				//if (v->owner == _local_player) InvalidateWindowClasses(WC_TRAINS_LIST);
 				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
 				if it is a multiheaded engine (rear engine)
 				(rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) is true if the engine is heading the other way, otherwise 0*/
@@ -1507,7 +1508,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						veh->u.rail.first_engine = new_engine_type;
 					} while ( (veh=veh->next) != NULL );
 				}
-
+				InvalidateWindowClasses(WC_TRAINS_LIST);
 				break;
 				}
 			case VEH_Road:
@@ -1518,6 +1519,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->cargo_type = rvi->cargo_type;
 				v->cargo_cap = rvi->capacity;
 				v->max_speed = rvi->max_speed;
+				InvalidateWindowClasses(WC_ROADVEH_LIST);
 				break;
 				}
 			case VEH_Ship:
@@ -1533,6 +1535,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				// since we do not stop it for autorefitting
 				if (v->cargo_type != cargo_type)
 					CmdRefitShip(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
+				InvalidateWindowClasses(WC_SHIPS_LIST);
 				break;
 				}
 			case VEH_Aircraft:
@@ -1553,6 +1556,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						// since we do not stop it for autorefitting
 						CmdRefitAircraft(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
 					}
+				InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 				break;
 				}
 			default: return CMD_ERROR;
@@ -1565,6 +1569,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					v->cargo_count = v->cargo_cap;
 			}
 		}
+		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
+		ResortVehicleLists();
 	}
 	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);

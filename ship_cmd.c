@@ -877,6 +877,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 	}
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 
 	return value;
 }
@@ -902,6 +903,8 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteVehicle(v);
 	}
+
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 
 	return -(int32)v->value;
 }

@@ -431,7 +431,8 @@ VARDEF byte _vehicle_design_names;
 #define MAX_BRIDGES 13
 
 /* Autoreplace vehicle stuff*/
-VARDEF byte _autoreplace_array[255];
+VARDEF byte _autoreplace_array[256];
+VARDEF uint16 _player_num_engines[256];
 
 /* Debugging levels */
 VARDEF int _debug_spritecache_level;

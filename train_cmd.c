@@ -486,6 +486,9 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_cmd_build_rail_veh_var1 = _railveh_unk1[p1];
 	_cmd_build_rail_veh_score = _railveh_score[p1];
+
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
+
 	return value;
 }
 
@@ -847,6 +850,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 		if (last) cost -= last->value;
 	}
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
 
 	return cost;
 }
@@ -2399,8 +2403,10 @@ static void HandleCrashedTrain(Vehicle *v)
 		ChangeTrainDirRandomly(v);
 	}
 
-	if (state >= 4440 && !(v->tick_counter&0x1F))
+	if (state >= 4440 && !(v->tick_counter&0x1F)) {
 		DeleteLastWagon(v);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
+	}
 }
 
 static void HandleBrokenTrain(Vehicle *v)
