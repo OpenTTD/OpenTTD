@@ -27,17 +27,6 @@ static inline bool int32_add_overflow(int32 a, int32 b) { return (int32)(a^b)>=0
 static inline bool int32_sub_overflow(int32 a, int32 b) { return (int32)(a^b)<0 && (int32)(a^(a-b))<0; }
 
 
-// Will crash if strings are equal
-static inline bool str_is_below(byte *a, byte *b) {
-	while (*a <= *b) {
-		if (*a < *b) return true;
-		a++;
-		b++;
-	}
-	return false;
-}
-
-
 static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
 	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
 }
