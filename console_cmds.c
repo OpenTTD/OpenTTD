@@ -304,7 +304,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (argc == 2) {
 		uint32 index = atoi(argv[1]);
-		if (index == NETWORK_SERVER_INDEX && !_network_dedicated) {
+		if (index == NETWORK_SERVER_INDEX) {
 			IConsolePrint(_iconsole_color_default, "Silly boy, you can not ban yourself!");
 			return NULL;
 		}
