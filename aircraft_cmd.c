@@ -1132,7 +1132,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (st->airport_type == AT_SMALL && (_aircraft_subtype[v->engine_type - AIRCRAFT_ENGINES_INDEX]&2)) {
+	if (st->airport_type == AT_SMALL && (_aircraft_subtype[v->engine_type - AIRCRAFT_ENGINES_INDEX]&2) && !_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
 
@@ -1391,8 +1391,8 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *A
 
 static void AircraftEventHandler_General(Vehicle *v, const AirportFTAClass *Airport)
 {
-	printf("OK, you shouldn't be here, check your Airport Scheme!\n");
-	assert(1 == v->u.air.state); // when here state is 0, so this always fails
+	DEBUG(misc, 0) ("OK, you shouldn't be here, check your Airport Scheme!");
+	assert(0);
 }
 
 static void AircraftEventHandler_TakeOff(Vehicle *v, const AirportFTAClass *Airport) {
@@ -1565,7 +1565,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 
 	// error handling
 	if (v->u.air.pos >= Airport->nofelements) {
-		printf("position %d is not valid for current airport. Max position is %d\n", v->u.air.pos, Airport->nofelements-1);
+		DEBUG(misc, 0) ("position %d is not valid for current airport. Max position is %d", v->u.air.pos, Airport->nofelements-1);
 		assert(v->u.air.pos < Airport->nofelements);
 	}
 
@@ -1600,8 +1600,8 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 		current = current->next_in_chain;
 	} while (current != NULL);
 
-	printf("Cannot move further on Airport...! pos:%d state:%d\n", v->u.air.pos, v->u.air.state);
-	printf("Airport entry point: %d, Vehicle: %d\n", Airport->entry_point, v->index);
+	DEBUG(misc, 0) ("Cannot move further on Airport...! pos:%d state:%d", v->u.air.pos, v->u.air.state);
+	DEBUG(misc, 0) ("Airport entry point: %d, Vehicle: %d", Airport->entry_point, v->index);
 	assert(0);
 	return false;
 }

@@ -1027,6 +1027,7 @@ STR_CHEAT_CHANGE_PLAYER				:{LTBLUE}Playing as player: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE			:{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS			:{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE			:{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH					:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 
 STR_SORT_BY_POPULATION					:{BLACK}Population
 

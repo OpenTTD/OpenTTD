@@ -176,6 +176,7 @@ typedef struct Cheats {
 	Cheat money;							// get rich
 	Cheat crossing_tunnels;		// allow tunnels that cross each other
 	Cheat	build_in_pause;			// build while in pause mode
+	Cheat	no_jetcrash;				// no jet will crash on small airports anymore
 } Cheats;
 
 VARDEF Cheats _cheats;
