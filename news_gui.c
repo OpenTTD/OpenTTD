@@ -108,7 +108,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 				DrawString(2, 1, STR_00C6, 0);
 
-				SET_DPARAM16(0, ni->date);
+				SetDParam(0, ni->date);
 				DrawStringRightAligned(428, 1, STR_01FF, 0);
 
 				if (!(ni->flags & NF_VIEWPORT)) {
@@ -547,7 +547,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			// get news in correct order
 			ni = &_news_items[getNews(p)];
 
-			SET_DPARAM16(0, ni->date);
+			SetDParam(0, ni->date);
 			DrawString(4, y, STR_00AF, 16);
 
 			GetNewsString(ni, buffer);

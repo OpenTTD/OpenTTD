@@ -35,8 +35,8 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		if (!_patches.servint_roadveh) // disable service-scroller when interval is set to disabled
 			w->disabled_state |= (1 << 5) | (1 << 6);
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -44,7 +44,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			int year = v->age / 366;
 			StringID str;
 
-			SET_DPARAM16(1, year);
+			SetDParam(1, year);
 
 			str = STR_0199_YEAR;
 			if (year != 1) {
@@ -52,55 +52,55 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 				if (v->max_age - 366 < v->age)
 					str++;
 			}
-			SET_DPARAM16(0, str);
-			SET_DPARAM16(2, v->max_age / 366);
-			SET_DPARAM32(3, road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running >> 8);
+			SetDParam(0, str);
+			SetDParam(2, v->max_age / 366);
+			SetDParam(3, road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running >> 8);
 			DrawString(2, 15, STR_900D_AGE_RUNNING_COST_YR, 0);
 		}
 
 		/* Draw max speed */
 		{
-			SET_DPARAM16(0, v->max_speed * 10 >> 5);
+			SetDParam(0, v->max_speed * 10 >> 5);
 			DrawString(2, 25, STR_900E_MAX_SPEED, 0);
 		}
 
 		/* Draw profit */
 		{
-			SET_DPARAM32(0, v->profit_this_year);
-			SET_DPARAM32(1, v->profit_last_year);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
 			DrawString(2, 35, STR_900F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
 		/* Draw breakdown & reliability */
 		{
-			SET_DPARAM8(0, v->reliability * 100 >> 16);
-			SET_DPARAM16(1, v->breakdowns_since_last_service);
+			SetDParam(0, v->reliability * 100 >> 16);
+			SetDParam(1, v->breakdowns_since_last_service);
 			DrawString(2, 45, STR_9010_RELIABILITY_BREAKDOWNS, 0);
 		}
 
 		/* Draw service interval text */
 		{
-			SET_DPARAM16(0, v->service_interval);
-			SET_DPARAM16(1, v->date_of_last_service);
+			SetDParam(0, v->service_interval);
+			SetDParam(1, v->date_of_last_service);
 			DrawString(13, 90, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
 		DrawRoadVehImage(v, 3, 57, INVALID_VEHICLE);
 
-		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
-		SET_DPARAM16(1, 1920 + v->build_year);
-		SET_DPARAM32(2, v->value);
+		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(1, 1920 + v->build_year);
+		SetDParam(2, v->value);
 		DrawString(34, 57, STR_9011_BUILT_VALUE, 0);
 
-		SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
-		SET_DPARAM16(1, v->cargo_cap);
+		SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
+		SetDParam(1, v->cargo_cap);
 		DrawString(34, 67, STR_9012_CAPACITY, 0);
 
 		str = STR_8812_EMPTY;
 		if (v->cargo_count != 0) {
-			SET_DPARAM8(0, v->cargo_type);
-			SET_DPARAM16(1, v->cargo_count);
-			SET_DPARAM16(2, v->cargo_source);
+			SetDParam(0, v->cargo_type);
+			SetDParam(1, v->cargo_count);
+			SetDParam(2, v->cargo_source);
 			str = STR_8813_FROM;
 		}
 		DrawString(34, 78, str, 0);
@@ -109,7 +109,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: /* rename */
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_902C_NAME_ROAD_VEHICLE, 31, 150, w->window_class, w->window_number);
 			break;
 
@@ -190,8 +190,8 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = (v->owner != _local_player) ? (1<<7 | 1<<6) : 0;
 
 		/* draw widgets & caption */
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* draw the flag */
@@ -206,15 +206,15 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		} else {
 			switch(v->next_order & OT_MASK) {
 			case OT_GOTO_STATION: {
-				SET_DPARAM16(0, v->next_order_param);
-				SET_DPARAM16(1, v->cur_speed * 10 >> 5);
+				SetDParam(0, v->next_order_param);
+				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *dep = &_depots[v->next_order_param];
-				SET_DPARAM16(0, dep->town_index);
-				SET_DPARAM16(1, v->cur_speed * 10 >> 5);
+				SetDParam(0, dep->town_index);
+				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
 			} break;
 
@@ -226,7 +226,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SET_DPARAM16(0, v->cur_speed * 10 >> 5);
+					SetDParam(0, v->cur_speed * 10 >> 5);
 				} else
 					str = STR_EMPTY;
 				break;
@@ -350,17 +350,17 @@ static void DrawNewRoadVehWindow(Window *w)
 		if (selected_id != -1) {
 			Engine *e;
 
-			SET_DPARAM32(0, road_vehicle_info(selected_id)->base_cost * (_price.roadveh_base>>3)>>5);
-			SET_DPARAM16(1, road_vehicle_info(selected_id)->max_speed * 10 >> 5);
-			SET_DPARAM32(2, road_vehicle_info(selected_id)->running_cost * _price.roadveh_running >> 8);
-			SET_DPARAM16(4, road_vehicle_info(selected_id)->capacity);
-			SET_DPARAM16(3, _cargoc.names_long_p[road_vehicle_info(selected_id)->cargo_type]);
+			SetDParam(0, road_vehicle_info(selected_id)->base_cost * (_price.roadveh_base>>3)>>5);
+			SetDParam(1, road_vehicle_info(selected_id)->max_speed * 10 >> 5);
+			SetDParam(2, road_vehicle_info(selected_id)->running_cost * _price.roadveh_running >> 8);
+			SetDParam(4, road_vehicle_info(selected_id)->capacity);
+			SetDParam(3, _cargoc.names_long_p[road_vehicle_info(selected_id)->cargo_type]);
 
 			e = &_engines[selected_id];
-			SET_DPARAM16(6, e->lifelength);
-			SET_DPARAM8(7, e->reliability * 100 >> 16);
+			SetDParam(6, e->lifelength);
+			SetDParam(7, e->reliability * 100 >> 16);
 			ConvertDayToYMD(&ymd, e->intro_date);
-			SET_DPARAM16(5, ymd.year + 1920);
+			SetDParam(5, ymd.year + 1920);
 
 			DrawString(2, 127, STR_9008_COST_SPEED_RUNNING_COST, 0);
 		}
@@ -494,7 +494,7 @@ static void DrawRoadDepotWindow(Window *w)
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
 
-	SET_DPARAM16(0, d->town_index);
+	SetDParam(0, d->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -509,7 +509,7 @@ static void DrawRoadDepotWindow(Window *w)
 
 			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
 
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x + 16, y);
@@ -785,9 +785,9 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		{
 			Player *p = DEREF_PLAYER(window_number);
 			/* Company Name -- (###) Roadvehicles */
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, w->vscroll.count);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
@@ -812,7 +812,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 				DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				if (IsRoadDepotTile(v->tile)) {
 					str = STR_021F;
 				} else {
@@ -820,12 +820,12 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 				}
 				DrawString(x, y+2, str, 0);
 
-				SET_DPARAM32(0, v->profit_this_year);
-				SET_DPARAM32(1, v->profit_last_year);
+				SetDParam(0, v->profit_this_year);
+				SetDParam(1, v->profit_last_year);
 				DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 				if (v->string_id != STR_SV_ROADVEH_NAME) {
-					SET_DPARAM16(0, v->string_id);
+					SetDParam(0, v->string_id);
 					DrawString(x+24, y, STR_01AB, 0);
 				}
 

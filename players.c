@@ -188,7 +188,7 @@ bool CheckPlayerHasMoney(int32 cost)
 	if (cost > 0) {
 		uint pid = _current_player;
 		if (pid < MAX_PLAYERS && cost > DEREF_PLAYER(pid)->player_money) {
-			SET_DPARAM32(0, cost);
+			SetDParam(0, cost);
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
 		}
@@ -243,20 +243,20 @@ void UpdatePlayerMoney32(Player *p)
 
 void GetNameOfOwner(byte owner, uint tile)
 {
-	SET_DPARAM8(2, owner);
+	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
 		if (owner >= 8)
-			SET_DPARAM16(0, STR_0150_SOMEONE);
+			SetDParam(0, STR_0150_SOMEONE);
 		else {
 			Player *p = DEREF_PLAYER(owner);
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
 		}
 	} else {
 		Town *t = ClosestTownFromTile(tile, (uint)-1);
-		SET_DPARAM16(0, t->townnametype);
-		SET_DPARAM32(1, t->townnameparts);
+		SetDParam(0, t->townnametype);
+		SetDParam(1, t->townnameparts);
 	}
 }
 
@@ -326,7 +326,7 @@ set_name:;
 		MarkWholeScreenDirty();
 
 		if (!IS_HUMAN_PLAYER(p->index)) {
-			SET_DPARAM16(0, t->index);
+			SetDParam(0, t->index);
 			AddNewsItem(p->index + (4 << 4), NEWS_FLAGS(NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY), p->last_build_coordinate, 0);
 		}
 		return;
@@ -425,14 +425,14 @@ restart:;
 		p->president_name_2 = Random();
 		p->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
-		SET_DPARAM32(0, p->president_name_2);
+		SetDParam(0, p->president_name_2);
 		GetString(buffer, p->president_name_1);
 		if (strlen(buffer) >= 32 || GetStringWidth(buffer) >= 94)
 			continue;
 
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->is_active && p != pp) {
-				SET_DPARAM32(0, pp->president_name_2);
+				SetDParam(0, pp->president_name_2);
 				GetString(buffer2, pp->president_name_1);
 				if (str_eq(buffer2, buffer))
 					goto restart;
@@ -567,7 +567,7 @@ void RunOtherPlayersLoop()
 StringID GetPlayerNameString(byte player, byte index)
 {
 	if (IS_HUMAN_PLAYER(player) && player < MAX_PLAYERS) {
-		SET_DPARAM16(index, player+1);
+		SetDParam(index, player+1);
 		return STR_7002_PLAYER;
 	}
 	return STR_EMPTY;

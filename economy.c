@@ -381,8 +381,8 @@ year_4:
 		}
 
 // Show bankrupt news
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
 		AddNewsItem( (StringID)(owner + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 		if (IS_HUMAN_PLAYER(owner)) {
@@ -406,8 +406,8 @@ void DrawNewsBankrupcy(Window *w)
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3+91, 23+118, 0x4323);
 
-	SET_DPARAM16(0, p->president_name_1);
-	SET_DPARAM32(1, p->president_name_2);
+	SetDParam(0, p->president_name_1);
+	SetDParam(1, p->president_name_2);
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
@@ -415,8 +415,8 @@ void DrawNewsBankrupcy(Window *w)
 	case 1:
 		DrawStringCentered(w->width>>1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
 
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
 
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
@@ -430,10 +430,10 @@ void DrawNewsBankrupcy(Window *w)
 
 		DrawStringCentered(w->width>>1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
 		COPY_IN_DPARAM(0,WP(w,news_d).ni->params, 2);
-		SET_DPARAM16(2, p->name_1);
-		SET_DPARAM32(3, p->name_2);
+		SetDParam(2, p->name_1);
+		SetDParam(3, p->name_2);
 		price = WP(w,news_d).ni->params[2];
-		SET_DPARAM32(4, price);
+		SetDParam(4, price);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -454,8 +454,8 @@ void DrawNewsBankrupcy(Window *w)
 
 	case 4:
 		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
 		COPY_IN_DPARAM(2,WP(w,news_d).ni->params, 2);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
@@ -475,29 +475,29 @@ StringID GetNewsStringBankrupcy(NewsItem *ni)
 
 	switch(ni->string_id >> 4) {
 	case 1:
-		SET_DPARAM16(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
-		SET_DPARAM16(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
-		SET_DPARAM16(2, p->name_1);
-		SET_DPARAM32(3, p->name_2);
+		SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
+		SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
+		SetDParam(2, p->name_1);
+		SetDParam(3, p->name_2);
 		return STR_02B6;
 	case 2:
-		SET_DPARAM16(0, STR_7059_TRANSPORT_COMPANY_MERGER);
-		SET_DPARAM16(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
+		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
+		SetDParam(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
 		COPY_IN_DPARAM(2,ni->params, 2);
-		SET_DPARAM16(4, p->name_1);
-		SET_DPARAM32(5, p->name_2);
+		SetDParam(4, p->name_1);
+		SetDParam(5, p->name_2);
 		COPY_IN_DPARAM(6,ni->params + 2, 1);
 		return STR_02B6;
 	case 3:
-		SET_DPARAM16(0, STR_705C_BANKRUPT);
-		SET_DPARAM16(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+		SetDParam(0, STR_705C_BANKRUPT);
+		SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
 		COPY_IN_DPARAM(2,ni->params, 2);
 		return STR_02B6;
 	case 4:
-		SET_DPARAM16(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
-		SET_DPARAM16(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
-		SET_DPARAM16(2, p->name_1);
-		SET_DPARAM32(3, p->name_2);
+		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
+		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
+		SetDParam(2, p->name_1);
+		SetDParam(3, p->name_2);
 		COPY_IN_DPARAM(4,ni->params, 2);
 		return STR_02B6;
 	default:
@@ -716,50 +716,50 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 	Pair tp;
 
 	/* if mode is false, convert into plural */
-	SET_DPARAM16(0, _cargoc.names_s[s->cargo_type] + (mode?0:32));
+	SetDParam(0, _cargoc.names_s[s->cargo_type] + (mode?0:32));
 
 	if (s->age < 12) {
 		if (!(s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL)) {
-			SET_DPARAM16(1, STR_2029);
+			SetDParam(1, STR_2029);
 			i = DEREF_INDUSTRY(s->from);
 			tile = i->xy;
-			SET_DPARAM16(2, i->town->townnametype);
-			SET_DPARAM32(3, i->town->townnameparts);
+			SetDParam(2, i->town->townnametype);
+			SetDParam(3, i->town->townnameparts);
 
-			SET_DPARAM16(4, i->type + STR_4802_COAL_MINE);
+			SetDParam(4, i->type + STR_4802_COAL_MINE);
 
 			if (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD) {
-				SET_DPARAM16(5, STR_2029);
+				SetDParam(5, STR_2029);
 				i = DEREF_INDUSTRY(s->to);
 				tile2 = i->xy;
-				SET_DPARAM16(8, i->type + STR_4802_COAL_MINE);
-				SET_DPARAM16(6, i->town->townnametype);
-				SET_DPARAM32(7, i->town->townnameparts);
+				SetDParam(8, i->type + STR_4802_COAL_MINE);
+				SetDParam(6, i->town->townnametype);
+				SetDParam(7, i->town->townnameparts);
 			} else {
 				t = DEREF_TOWN(s->to);
 				tile2 = t->xy;
-				SET_DPARAM16(5, t->townnametype);
-				SET_DPARAM32(6, t->townnameparts);
+				SetDParam(5, t->townnametype);
+				SetDParam(6, t->townnameparts);
 			}
 		} else {
 			t = DEREF_TOWN(s->from);
 			tile = t->xy;
-			SET_DPARAM16(1, t->townnametype);
-			SET_DPARAM32(2, t->townnameparts);
+			SetDParam(1, t->townnametype);
+			SetDParam(2, t->townnameparts);
 
 			t = DEREF_TOWN(s->to);
 			tile2 = t->xy;
-			SET_DPARAM16(3, t->townnametype);
-			SET_DPARAM32(4, t->townnameparts);
+			SetDParam(3, t->townnametype);
+			SetDParam(4, t->townnameparts);
 		}
 	} else {
 		st = DEREF_STATION(s->from);
 		tile = st->xy;
-		SET_DPARAM16(1, st->index);
+		SetDParam(1, st->index);
 
 		st = DEREF_STATION(s->to);
 		tile2 = st->xy;
-		SET_DPARAM16(2, st->index);
+		SetDParam(2, st->index);
 	}
 
 	tp.a = tile;
@@ -1118,8 +1118,8 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			INJECT_DPARAM(2);
 
 			p = DEREF_PLAYER(_current_player);
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
 				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
@@ -1416,9 +1416,9 @@ static void DoAcquireCompany(Player *p)
 	int i,pi;
 	int64 value;
 
-	SET_DPARAM16(0, p->name_1);
-	SET_DPARAM32(1, p->name_2);
-	SET_DPARAM32(2, p->bankrupt_value);
+	SetDParam(0, p->name_1);
+	SetDParam(1, p->name_2);
+	SetDParam(2, p->bankrupt_value);
 	AddNewsItem( (StringID)(_current_player + 16*2), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	// original code does this a little bit differently

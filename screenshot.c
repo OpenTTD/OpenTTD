@@ -479,9 +479,9 @@ static char *MakeScreenshotName(const char *ext)
 		sprintf(_screenshot_name, "screenshot");
 	} else {
 		Player *p = &_players[_local_player];
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, _date);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		SetDParam(2, _date);
 		GetString(_screenshot_name, STR_4004);
 	}
 

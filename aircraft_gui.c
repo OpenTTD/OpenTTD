@@ -90,17 +90,17 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			if (selected_id != -1) {
 				Engine *e;
 
-				SET_DPARAM32(0, aircraft_vehinfo(selected_id).base_cost * (_price.aircraft_base>>3)>>5);
-				SET_DPARAM16(1, aircraft_vehinfo(selected_id).max_speed * 8);
-				SET_DPARAM16(2, aircraft_vehinfo(selected_id).passanger_capacity);
-				SET_DPARAM16(3, aircraft_vehinfo(selected_id).mail_capacity);
-				SET_DPARAM32(4, aircraft_vehinfo(selected_id).running_cost * _price.aircraft_running >> 8);
+				SetDParam(0, aircraft_vehinfo(selected_id).base_cost * (_price.aircraft_base>>3)>>5);
+				SetDParam(1, aircraft_vehinfo(selected_id).max_speed * 8);
+				SetDParam(2, aircraft_vehinfo(selected_id).passanger_capacity);
+				SetDParam(3, aircraft_vehinfo(selected_id).mail_capacity);
+				SetDParam(4, aircraft_vehinfo(selected_id).running_cost * _price.aircraft_running >> 8);
 
 				e = &_engines[selected_id];
-				SET_DPARAM16(6, e->lifelength);
-				SET_DPARAM8(7, e->reliability * 100 >> 16);
+				SetDParam(6, e->lifelength);
+				SetDParam(7, e->reliability * 100 >> 16);
 				ConvertDayToYMD(&ymd, e->intro_date);
-				SET_DPARAM16(5, ymd.year + 1920);
+				SetDParam(5, ymd.year + 1920);
 
 				DrawString(2, 111, STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
 			}
@@ -208,8 +208,8 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 		byte color;
 		int cargo;
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		DrawString(1, 15, STR_A040_SELECT_CARGO_TYPE_TO_CARRY, 0);
@@ -259,9 +259,9 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 		if (cargo != -1) {
 			int32 cost = DoCommandByTile(v->tile, v->index, cargo, DC_QUERY_COST, CMD_REFIT_AIRCRAFT);
 			if (cost != CMD_ERROR) {
-				SET_DPARAM32(2, cost);
-				SET_DPARAM16(0, _cargoc.names_long_p[cargo]);
-				SET_DPARAM16(1, _aircraft_refit_capacity);
+				SetDParam(2, cost);
+				SetDParam(0, _cargoc.names_long_p[cargo]);
+				SetDParam(1, _aircraft_refit_capacity);
 				DrawString(1, 137, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
@@ -331,8 +331,8 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		if (!_patches.servint_aircraft) // disable service-scroller when interval is set to disabled
 			w->disabled_state |= (1 << 5) | (1 << 6);
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -340,7 +340,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			int year = v->age / 366;
 			StringID str;
 
-			SET_DPARAM16(1, year);
+			SetDParam(1, year);
 
 			str = STR_0199_YEAR;
 			if (year != 1) {
@@ -348,36 +348,36 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 				if (v->max_age - 366 < v->age)
 					str++;
 			}
-			SET_DPARAM16(0, str);
-			SET_DPARAM16(2, v->max_age / 366);
-			SET_DPARAM32(3, _price.aircraft_running * aircraft_vehinfo(v->engine_type).running_cost >> 8);
+			SetDParam(0, str);
+			SetDParam(2, v->max_age / 366);
+			SetDParam(3, _price.aircraft_running * aircraft_vehinfo(v->engine_type).running_cost >> 8);
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);
 		}
 
 		/* Draw max speed */
 		{
-			SET_DPARAM16(0, v->max_speed * 8);
+			SetDParam(0, v->max_speed * 8);
 			DrawString(2, 25, STR_A00E_MAX_SPEED, 0);
 		}
 
 		/* Draw profit */
 		{
-			SET_DPARAM32(0, v->profit_this_year);
-			SET_DPARAM32(1, v->profit_last_year);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
 			DrawString(2, 35, STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
 		/* Draw breakdown & reliability */
 		{
-			SET_DPARAM8(0, v->reliability * 100 >> 16);
-			SET_DPARAM16(1, v->breakdowns_since_last_service);
+			SetDParam(0, v->reliability * 100 >> 16);
+			SetDParam(1, v->breakdowns_since_last_service);
 			DrawString(2, 45, STR_A010_RELIABILITY_BREAKDOWNS, 0);
 		}
 
 		/* Draw service interval text */
 		{
-			SET_DPARAM16(0, v->service_interval);
-			SET_DPARAM16(1, v->date_of_last_service);
+			SetDParam(0, v->service_interval);
+			SetDParam(1, v->date_of_last_service);
 			DrawString(13, 103, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
@@ -388,17 +388,17 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 			do {
 				if (v->subtype <= 2) {
-					SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
-					SET_DPARAM16(1, 1920 + v->build_year);
-					SET_DPARAM32(2, v->value);
+					SetDParam(0, GetCustomEngineName(v->engine_type));
+					SetDParam(1, 1920 + v->build_year);
+					SetDParam(2, v->value);
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;
 
-					SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
-					SET_DPARAM16(1, v->cargo_cap);
+					SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
+					SetDParam(1, v->cargo_cap);
 					u = v->next;
-					SET_DPARAM16(2, _cargoc.names_long_p[u->cargo_type]);
-					SET_DPARAM16(3, u->cargo_cap);
+					SetDParam(2, _cargoc.names_long_p[u->cargo_type]);
+					SetDParam(3, u->cargo_cap);
 					DrawString(60, y, STR_A019_CAPACITY + (u->cargo_cap == 0), 0);
 					y += 14;
 				}
@@ -406,9 +406,9 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 				if (v->cargo_count != 0) {
 
 					/* Cargo names (fix pluralness) */
-					SET_DPARAM8(0, v->cargo_type);
-					SET_DPARAM16(1, v->cargo_count);
-					SET_DPARAM16(2, v->cargo_source);
+					SetDParam(0, v->cargo_type);
+					SetDParam(1, v->cargo_count);
+					SetDParam(2, v->cargo_source);
 					DrawString(60, y, STR_8813_FROM, 0);
 
 					y += 10;
@@ -420,7 +420,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: /* rename */
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_A030_NAME_AIRCRAFT, 31, 150, w->window_class, w->window_number);
 			break;
 
@@ -534,8 +534,8 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* draw the flag */
@@ -548,14 +548,14 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		} else {
 			switch(v->next_order & OT_MASK) {
 			case OT_GOTO_STATION: {
-				SET_DPARAM16(0, v->next_order_param);
-				SET_DPARAM16(1, v->cur_speed * 8);
+				SetDParam(0, v->next_order_param);
+				SetDParam(1, v->cur_speed * 8);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				SET_DPARAM16(0, v->next_order_param);
-				SET_DPARAM16(1, v->cur_speed * 8);
+				SetDParam(0, v->next_order_param);
+				SetDParam(1, v->cur_speed * 8);
 				str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 			} break;
 
@@ -566,7 +566,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SET_DPARAM16(0, v->cur_speed * 8);
+					SetDParam(0, v->cur_speed * 8);
 				} else
 					str = STR_EMPTY;
 				break;
@@ -651,7 +651,7 @@ static void DrawAircraftDepotWindow(Window *w)
 	}
 	SetVScrollCount(w, (num + 3) >> 2);
 
-	SET_DPARAM16(0, _map2[tile]);
+	SetDParam(0, _map2[tile]);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -667,7 +667,7 @@ static void DrawAircraftDepotWindow(Window *w)
 
 			DrawAircraftImage(v, x+12, y, WP(w,traindepot_d).sel);
 
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x, y+12);
@@ -873,7 +873,7 @@ static void DrawSmallSchedule(Vehicle *v, int x, int y) {
 		sel--;
 
 		if ((ord & OT_MASK) == OT_GOTO_STATION) {
-			SET_DPARAM16(0, ord >> 8);
+			SetDParam(0, ord >> 8);
 			DrawString(x, y, STR_A036, 0);
 
 			y += 6;
@@ -971,9 +971,9 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		{
 			Player *p = DEREF_PLAYER(window_number);
 			/* Company Name -- (###) Aircraft */
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, w->vscroll.count);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
@@ -998,7 +998,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				if (IsAircraftHangarTile(v->tile)) {
 					str = STR_021F;
 				} else {
@@ -1007,12 +1007,12 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				DrawString(x, y+2, str, 0);
 
 
-				SET_DPARAM32(0, v->profit_this_year);
-				SET_DPARAM32(1, v->profit_last_year);
+				SetDParam(0, v->profit_this_year);
+				SetDParam(1, v->profit_last_year);
 				DrawString(x+19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 				if (v->string_id != STR_SV_AIRCRAFT_NAME) {
-					SET_DPARAM16(0, v->string_id);
+					SetDParam(0, v->string_id);
 					DrawString(x+19, y, STR_01AB, 0);
 				}
 

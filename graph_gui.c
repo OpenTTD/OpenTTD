@@ -130,8 +130,8 @@ static void DrawGraph(GraphDrawer *gw)
 	y = gw->top - 3;
 	i = 9;
 	do {
-		SET_DPARAM16(0, gw->format_str_y_axis);
-		SET_DPARAM64(1, (int64)tmp);
+		SetDParam(0, gw->format_str_y_axis);
+		SetDParam64(1, (int64)tmp);
 		tmp -= (value >> 3);
 		DrawStringRightAligned(x, y, STR_0170, gw->color_3);
 		y += gw->height >> 3;
@@ -145,9 +145,9 @@ static void DrawGraph(GraphDrawer *gw)
 		k = gw->year + 1920;
 		i = gw->num_on_x_axis;assert(i>0);
 		do {
-			SET_DPARAM16(2, k);
-			SET_DPARAM16(0, j + STR_0162_JAN);
-			SET_DPARAM16(1, j + STR_0162_JAN + 2);
+			SetDParam(2, k);
+			SetDParam(0, j + STR_0162_JAN);
+			SetDParam(1, j + STR_0162_JAN + 2);
 			DrawString(x, y, j == 0 ? STR_016F : STR_016E, gw->color_3);
 
 			j += 3;
@@ -163,7 +163,7 @@ static void DrawGraph(GraphDrawer *gw)
 		j = gw->unk61A;
 		i = gw->num_on_x_axis;assert(i>0);
 		do {
-			SET_DPARAM16(0, j);
+			SetDParam(0, j);
 			DrawString(x, y, STR_01CB, gw->color_3);
 			j += gw->unk61C;
 			x += 22;
@@ -228,9 +228,9 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 			DrawPlayerIcon(p->index, 4, 18+p->index*12);
 
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, GetPlayerNameString(p->index, 3));
 			DrawString(21,17+p->index*12,STR_7021,HASBIT(_legend_showbits, p->index) ? 0x10 : 0xC);
 		}
 		break;
@@ -598,7 +598,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
     		DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
 
     		// Draw the score
-    		SET_DPARAM32(0, score);
+    		SetDParam(0, score);
     		DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
 
     		// Calculate the %-bar
@@ -625,7 +625,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
     			x = 0;
 
     		// Draw it
-    		SET_DPARAM32(0, x);
+    		SetDParam(0, x);
     		DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
 
     		// SCORE_LOAN is inversed
@@ -634,8 +634,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
     		// Draw the amount we have against what is needed
     		//  For some of them it is in currency format
-    		SET_DPARAM32(0, val);
-    		SET_DPARAM32(1, needed);
+    		SetDParam(0, val);
+    		SetDParam(1, needed);
     		switch (i) {
     			case SCORE_MIN_PROFIT:
     			case SCORE_MIN_INCOME:
@@ -924,7 +924,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		for(i=0; i!=NUM_CARGO; i++) {
 			GfxFillRect(x, y, x+8, y+5, 0);
 			GfxFillRect(x+1, y+1, x+7, y+4, _cargo_legend_colors[i]);
-			SET_DPARAM16(0, _cargoc.names_s[i]);
+			SetDParam(0, _cargoc.names_s[i]);
 			DrawString(x+14, y, STR_7065, 0);
 			y += 8;
 		}
@@ -1059,19 +1059,19 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 
 		i = 0;
 		do {
-			SET_DPARAM16(0, i + 1 + STR_01AB);
+			SetDParam(0, i + 1 + STR_01AB);
 			p = plist[i];
-			SET_DPARAM16(1, p->name_1);
-			SET_DPARAM32(2, p->name_2);
+			SetDParam(1, p->name_1);
+			SetDParam(2, p->name_2);
 
-			SET_DPARAM16(3, GetPlayerNameString(p->index, 4));
+			SetDParam(3, GetPlayerNameString(p->index, 4));
 			/*	WARNING ugly hack!
 					GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
 					It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
 					that because there is another param after it.
 					So we'll just shift the rating one back if player is AI and all is fine
 				*/
-			SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			SetDParam((IS_HUMAN_PLAYER(p->index) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);

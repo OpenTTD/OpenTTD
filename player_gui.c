@@ -33,7 +33,7 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 		tbl = p->yearly_expenses + 2;
 		do {
 			if (year >= p->inaugurated_year) {
-				SET_DPARAM16(0, year + 1920);
+				SetDParam(0, year + 1920);
 				DrawStringCenterUnderline(x-17, 15, STR_7010, 0);
 				sum = 0;
 				for(i=0; i!=13; i++) {
@@ -44,14 +44,14 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
-						SET_DPARAM64(0, cost);
+						SetDParam64(0, cost);
 						DrawStringRightAligned(x, 27+i*10, str, 0);
 					}
 				}
 
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
-				SET_DPARAM64(0, sum);
+				SetDParam64(0, sum);
 				DrawStringRightAligned(x, 27 + 13*10 + 2, str, 0);
 
 				GfxFillRect(x - 75, 27 + 10*13, x, 27 + 10*13, 215);
@@ -64,27 +64,27 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 		y = 171;
 
 		// draw max loan aligned to loan below (y += 10)
-		SET_DPARAM64(0, (uint64)_economy.max_loan);
+		SetDParam64(0, (uint64)_economy.max_loan);
 		DrawString(202, y+10, STR_MAX_LOAN, 0);
 
 	} else
 		y = 15;
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
-	SET_DPARAM64(0, p->money64);
+	SetDParam64(0, p->money64);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 
 	y += 10;
 
 	DrawString(2, y, STR_7027_LOAN, 0);
-	SET_DPARAM64(0, p->current_loan);
+	SetDParam64(0, p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 
 	y += 12;
 
 	GfxFillRect(182 - 75, y-2, 182, y-2, 215);
 
-	SET_DPARAM64(0, p->money64 - p->current_loan);
+	SetDParam64(0, p->money64 - p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 }
 
@@ -137,10 +137,10 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 
 		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 6);
 
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
-		SET_DPARAM32(4, 10000);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
+		SetDParam(4, 10000);
 		DrawWindowWidgets(w);
 
 		DrawPlayerEconomyStats(p, (byte)WP(w,def_d).data_1);
@@ -419,25 +419,25 @@ static void DrawPlayerVehiclesAmount(int player)
 		DrawString(x+70, y, STR_7042_NONE, 0);
 	} else {
 		if (train != 0) {
-			SET_DPARAM16(0, train);
+			SetDParam(0, train);
 			DrawString(x + 70, y, train==1 ? STR_703A_TRAIN : STR_703B_TRAINS, 0);
 			y += 10;
 		}
 
 		if (road != 0) {
-			SET_DPARAM16(0, road);
+			SetDParam(0, road);
 			DrawString(x + 70, y, road==1 ? STR_703C_ROAD_VEHICLE : STR_703D_ROAD_VEHICLES, 0);
 			y += 10;
 		}
 
 		if (air != 0) {
-			SET_DPARAM16(0, air);
+			SetDParam(0, air);
 			DrawString(x + 70, y, air==1 ? STR_703E_AIRCRAFT : STR_703F_AIRCRAFT, 0);
 			y += 10;
 		}
 
 		if (ship != 0) {
-			SET_DPARAM16(0, ship);
+			SetDParam(0, ship);
 			DrawString(x + 70, y, ship==1 ? STR_7040_SHIP : STR_7041_SHIPS, 0);
 		}
 	}
@@ -461,9 +461,9 @@ static void DrawCompanyOwnerText(Player *p)
 		if ((amt=GetAmountOwnedBy(p, p2->index)) != 0) {
 			num++;
 
-			SET_DPARAM16(num*3+0, amt*25);
-			SET_DPARAM16(num*3+1, p2->name_1);
-			SET_DPARAM32(num*3+2, p2->name_2);
+			SetDParam(num*3+0, amt*25);
+			SetDParam(num*3+1, p2->name_1);
+			SetDParam(num*3+2, p2->name_2);
 
 			if (num != 0)
 				break;
@@ -484,9 +484,9 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		if (w->widget != _other_player_company_widgets)
 					w->widget = (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets;
 
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, GetPlayerNameString((byte)w->window_number, 3));
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
 
 		dis = 0;
 		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 9;
@@ -495,7 +495,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = dis;
 		DrawWindowWidgets(w);
 
-		SET_DPARAM16(0, p->inaugurated_year + 1920);
+		SetDParam(0, p->inaugurated_year + 1920);
 		DrawString(110, 25, STR_7038_INAUGURATED, 0);
 
 		DrawPlayerVehiclesAmount(w->window_number);
@@ -505,11 +505,11 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-		SET_DPARAM16(0, p->president_name_1);
-		SET_DPARAM32(1, p->president_name_2);
+		SetDParam(0, p->president_name_1);
+		SetDParam(1, p->president_name_2);
 		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
-		SET_DPARAM64(0, CalculateCompanyValue(p));
+		SetDParam64(0, CalculateCompanyValue(p));
 		DrawString(110, 114, STR_7076_COMPANY_VALUE, 0);
 
 		DrawCompanyOwnerText(p);
@@ -537,14 +537,14 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		case 5: {/* change president name */
 			Player *p = DEREF_PLAYER(w->window_number);
 			WP(w,def_d).byte_1 = 0;
-			SET_DPARAM32(0, p->president_name_2);
+			SetDParam(0, p->president_name_2);
 			ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w->window_class, w->window_number);
 		} break;
 
 		case 6: {/* change company name */
 			Player *p = DEREF_PLAYER(w->window_number);
 			WP(w,def_d).byte_1 = 1;
-			SET_DPARAM32(0, p->name_2);
+			SetDParam(0, p->name_2);
 			ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w->window_class, w->window_number);
 		} break;
 
@@ -641,15 +641,15 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		Player *p = DEREF_PLAYER(w->window_number);
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
 		DrawWindowWidgets(w);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM32(2, p->bankrupt_value);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		SetDParam(2, p->bankrupt_value);
 		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
 		break;
 	}

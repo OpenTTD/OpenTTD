@@ -626,7 +626,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	// removal allowal depends on difficulty settings
 	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR ) {
 		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE)) {
-			SET_DPARAM16(0, t->index);
+			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
 		}
 	}

@@ -71,7 +71,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		engine = w->window_number;
 
-		SET_DPARAM16(0, GetEngineCategoryName(engine));
+		SetDParam(0, GetEngineCategoryName(engine));
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		DrawStringCentered(w->width >> 1, 80, GetCustomEngineName(engine), 0x10);
@@ -123,12 +123,12 @@ void DrawNewsNewTrainAvail(Window *w)
 	DrawNewsBorder(w);
 
 	engine = WP(w,news_d).ni->string_id;
-	SET_DPARAM16(0, GetEngineCategoryName(engine));
+	SetDParam(0, GetEngineCategoryName(engine));
 	DrawStringMultiCenter(w->width >> 1, 20, STR_8859_NEW_NOW_AVAILABLE, w->width - 2);
 
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
-	SET_DPARAM16(0, GetCustomEngineName(engine));
+	SetDParam(0, GetCustomEngineName(engine));
 	DrawStringMultiCenter(w->width >> 1, 57, STR_885A, w->width - 2);
 
 	DrawTrainEngine(w->width >> 1, 88, engine, 0);
@@ -139,9 +139,9 @@ void DrawNewsNewTrainAvail(Window *w)
 StringID GetNewsStringNewTrainAvail(NewsItem *ni)
 {
 	int engine = ni->string_id;
-	SET_DPARAM16(0, STR_8859_NEW_NOW_AVAILABLE);
-	SET_DPARAM16(1, GetEngineCategoryName(engine));
-	SET_DPARAM16(2, GetCustomEngineName(engine));
+	SetDParam(0, STR_8859_NEW_NOW_AVAILABLE);
+	SetDParam(1, GetEngineCategoryName(engine));
+	SetDParam(2, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
@@ -156,7 +156,7 @@ void DrawNewsNewAircraftAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 20, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE, w->width - 2);
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
-	SET_DPARAM16(0, GetCustomEngineName(engine));
+	SetDParam(0, GetCustomEngineName(engine));
 	DrawStringMultiCenter(w->width >> 1, 57, STR_A02D, w->width - 2);
 
 	DrawAircraftEngine(w->width >> 1, 93, engine, 0);
@@ -167,8 +167,8 @@ void DrawNewsNewAircraftAvail(Window *w)
 StringID GetNewsStringNewAircraftAvail(NewsItem *ni)
 {
 	int engine = ni->string_id;
-	SET_DPARAM16(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
-	SET_DPARAM16(1, GetCustomEngineName(engine));
+	SetDParam(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
+	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
@@ -182,7 +182,7 @@ void DrawNewsNewRoadVehAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 20, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE, w->width - 2);
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
-	SET_DPARAM16(0, GetCustomEngineName(engine));
+	SetDParam(0, GetCustomEngineName(engine));
 	DrawStringMultiCenter(w->width >> 1, 57, STR_9029, w->width - 2);
 
 	DrawRoadVehEngine(w->width >> 1, 88, engine, 0);
@@ -193,8 +193,8 @@ void DrawNewsNewRoadVehAvail(Window *w)
 StringID GetNewsStringNewRoadVehAvail(NewsItem *ni)
 {
 	int engine = ni->string_id;
-	SET_DPARAM16(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
-	SET_DPARAM16(1, GetCustomEngineName(engine));
+	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
+	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
@@ -209,7 +209,7 @@ void DrawNewsNewShipAvail(Window *w)
 	DrawStringMultiCenter(w->width >> 1, 20, STR_982C_NEW_SHIP_NOW_AVAILABLE, w->width - 2);
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
-	SET_DPARAM16(0, GetCustomEngineName(engine));
+	SetDParam(0, GetCustomEngineName(engine));
 	DrawStringMultiCenter(w->width >> 1, 57, STR_982D, w->width - 2);
 
 	DrawShipEngine(w->width >> 1, 93, engine, 0);
@@ -220,7 +220,7 @@ void DrawNewsNewShipAvail(Window *w)
 StringID GetNewsStringNewShipAvail(NewsItem *ni)
 {
 	int engine = ni->string_id;
-	SET_DPARAM16(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);
-	SET_DPARAM16(1, GetCustomEngineName(engine));
+	SetDParam(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);
+	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
 }

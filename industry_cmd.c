@@ -362,7 +362,7 @@ static void GetTileDesc_Industry(uint tile, TileDesc *td)
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
 	if ((_map_owner[tile] & 0x80) == 0) {
-		SET_DPARAMX16(td->dparam, 0, td->str);
+		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
 }
@@ -379,7 +379,7 @@ static int32 ClearTile_Industry(uint tile, byte flags)
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
 			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG) ) {
- 		SET_DPARAM16(0, STR_4802_COAL_MINE + i->type);
+ 		SetDParam(0, STR_4802_COAL_MINE + i->type);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
@@ -1643,10 +1643,10 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 			mag = abs(percent);
 			if (mag >= 10) {
-				SET_DPARAM16(3, mag);
-				SET_DPARAM16(0,_cargoc.names_s[i->produced_cargo[j]]);
-				SET_DPARAM16(1, i->town->index);
-				SET_DPARAM16(2, i->type + STR_4802_COAL_MINE);
+				SetDParam(3, mag);
+				SetDParam(0,_cargoc.names_s[i->produced_cargo[j]]);
+				SetDParam(1, i->town->index);
+				SetDParam(2, i->type + STR_4802_COAL_MINE);
 				AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
 						NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
 						i->xy + TILE_XY(1,1), 0);
@@ -1656,8 +1656,8 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 	if (closeit) {
 		i->prod_level = 0;
-		SET_DPARAM16(1, i->type + STR_4802_COAL_MINE);
-		SET_DPARAM16(0, i->town->index);
+		SetDParam(1, i->type + STR_4802_COAL_MINE);
+		SetDParam(0, i->town->index);
 		AddNewsItem(_industry_close_strings[i->type], NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
 	}
 }
@@ -1736,8 +1736,8 @@ static void MaybeNewIndustry(uint32 r)
 			return;
 	}
 
-	SET_DPARAM16(0, type + STR_4802_COAL_MINE);
-	SET_DPARAM16(1, i->town->index);
+	SetDParam(0, type + STR_4802_COAL_MINE);
+	SetDParam(1, i->town->index);
 	AddNewsItem(	STR_482D_NEW_UNDER_CONSTRUCTION + (type == IT_FOREST), NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ECONOMY,0), i->xy, 0);
 }
 
@@ -1789,8 +1789,8 @@ close_industry:
 			i->prod_level = 0;
 			str = _industry_close_strings[type];
 add_news:
-			SET_DPARAM16(1, type + STR_4802_COAL_MINE);
-			SET_DPARAM16(0, i->town->index);
+			SetDParam(1, type + STR_4802_COAL_MINE);
+			SetDParam(0, i->town->index);
 			AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
 		}
 	}

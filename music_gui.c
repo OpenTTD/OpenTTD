@@ -204,13 +204,13 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 
 		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, 0);
 
-		SET_DPARAM16(0, STR_01D5_ALL + msf.playlist);
+		SetDParam(0, STR_01D5_ALL + msf.playlist);
 		DrawStringCentered(340, 15, STR_01EF_PROGRAM, 0);
 
 		for(i=1; (uint)i <= NUM_SONGS_AVAILABLE; i++) {
-			SET_DPARAM16(0, i);
-			SET_DPARAM16(2, i);
-			SET_DPARAM16(1, SPECSTR_SONGNAME);
+			SetDParam(0, i);
+			SetDParam(2, i);
+			SetDParam(1, SPECSTR_SONGNAME);
 			DrawString(4, 23+(i-1)*6, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
 		}
 
@@ -223,9 +223,9 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 
 		y = 23;
 		for(p = _playlists[msf.playlist],i=0; (i=*p) != 0; p++) {
-			SET_DPARAM16(0, i);
-			SET_DPARAM16(2, i);
-			SET_DPARAM16(1, SPECSTR_SONGNAME);
+			SetDParam(0, i);
+			SetDParam(2, i);
+			SetDParam(1, SPECSTR_SONGNAME);
 			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
 			y += 6;
 		}
@@ -333,7 +333,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		str = STR_01E3;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 			str = STR_01E4_0;
-			SET_DPARAM8(0, _music_wnd_cursong);
+			SetDParam(0, _music_wnd_cursong);
 			if (_music_wnd_cursong >= 10)
 				str = STR_01E5;
 		}
@@ -342,8 +342,8 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		str = STR_01E6;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
 			str = STR_01E7;
-			SET_DPARAM16(0, SPECSTR_SONGNAME);
-			SET_DPARAM16(1, _music_wnd_cursong);
+			SetDParam(0, SPECSTR_SONGNAME);
+			SetDParam(1, _music_wnd_cursong);
 		}
 		DrawStringCentered(155, 46, str, 0);
 

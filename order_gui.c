@@ -60,13 +60,13 @@ static void DrawOrdersWindow(Window *w)
 
 	sel = OrderGetSel(w);
 
-	SET_DPARAM16(2,STR_8827_FULL_LOAD);
+	SetDParam(2,STR_8827_FULL_LOAD);
 	switch(v->schedule_ptr[sel] & 0x1F) {
 	case OT_GOTO_STATION:
 		break;
 	case OT_GOTO_DEPOT:
 		SETBIT(w->disabled_state, 9);	/* unload */
-		SET_DPARAM16(2,STR_SERVICE);
+		SetDParam(2,STR_SERVICE);
 		break;
 	default:
 		SETBIT(w->disabled_state, 6); /* nonstop */
@@ -74,8 +74,8 @@ static void DrawOrdersWindow(Window *w)
 		SETBIT(w->disabled_state, 9);	/* unload */
 	}
 
-	SET_DPARAM16(0, v->string_id);
-	SET_DPARAM16(1, v->unitnumber);
+	SetDParam(0, v->string_id);
+	SetDParam(1, v->unitnumber);
 	DrawWindowWidgets(w);
 
 	y = 15;
@@ -91,18 +91,18 @@ static void DrawOrdersWindow(Window *w)
 			if (ord == 0) {
 				str = shared_schedule ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
 			} else {
-				SET_DPARAM16(1, 6);
+				SetDParam(1, 6);
 
 				if ( (ord & OT_MASK) == OT_GOTO_STATION) {
-					SET_DPARAM16(1, STR_8806_GO_TO + ((ord >> 5) & 7));
-					SET_DPARAM16(2, ord >> 8);
+					SetDParam(1, STR_8806_GO_TO + ((ord >> 5) & 7));
+					SetDParam(2, ord >> 8);
 				} else if ((ord & OT_MASK) == OT_GOTO_DEPOT) {
 					StringID s = STR_NULL;
 					if (v->type == VEH_Aircraft) {
 						s = STR_GO_TO_AIRPORT_HANGAR;
-					  SET_DPARAM16(2, ord>>8);
+					  SetDParam(2, ord>>8);
 					} else {
-						SET_DPARAM16(2, _depots[ord >> 8].town_index);
+						SetDParam(2, _depots[ord >> 8].town_index);
 						switch (v->type) {
 						case VEH_Train:	s = STR_880E_GO_TO_TRAIN_DEPOT; break;
 						case VEH_Road:	s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
@@ -111,20 +111,20 @@ static void DrawOrdersWindow(Window *w)
 					}
 					if (v->type == VEH_Train)
 						s += (ord>>6)&2;
-					SET_DPARAM16(1, s + ((ord>>6)&1) );
+					SetDParam(1, s + ((ord>>6)&1) );
 				} else if ((ord & OT_MASK) == OT_GOTO_WAYPOINT) {
-					SET_DPARAM16(2, ord >> 8);
-					SET_DPARAM16(1, STR_GO_TO_WAYPOINT);
+					SetDParam(2, ord >> 8);
+					SetDParam(1, STR_GO_TO_WAYPOINT);
 				}
 			}
 			{
 				byte color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
-				SET_DPARAM(0, i+1);
+				SetDParam(0, i+1);
 				if ((ord & OT_MASK) != OT_DUMMY) {
 					DrawString(2, y, str, color);
 				} else {
-					SET_DPARAM16(1, STR_INVALID_ORDER);
-					SET_DPARAM16(2, ord >> 8);
+					SetDParam(1, STR_INVALID_ORDER);
+					SetDParam(2, ord >> 8);
 					DrawString(2, y, str, color);
 				}
 			}

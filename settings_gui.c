@@ -70,16 +70,16 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		StringID str = STR_02BE_DEFAULT;
 		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
-		SET_DPARAM16(0, str);
-		SET_DPARAM16(1, _currency_string_list[_opt_mod_ptr->currency]);
-		SET_DPARAM16(2, _opt_mod_ptr->kilometers + STR_0139_IMPERIAL_MILES);
-		SET_DPARAM16(3, STR_02E9_DRIVE_ON_LEFT + _opt_mod_ptr->road_side);
-		SET_DPARAM16(4, STR_TOWNNAME_ENGLISH + _opt_mod_ptr->town_name);
-		SET_DPARAM16(5, _autosave_dropdown[_opt_mod_ptr->autosave]);
-		SET_DPARAM16(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
+		SetDParam(0, str);
+		SetDParam(1, _currency_string_list[_opt_mod_ptr->currency]);
+		SetDParam(2, _opt_mod_ptr->kilometers + STR_0139_IMPERIAL_MILES);
+		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_mod_ptr->road_side);
+		SetDParam(4, STR_TOWNNAME_ENGLISH + _opt_mod_ptr->town_name);
+		SetDParam(5, _autosave_dropdown[_opt_mod_ptr->autosave]);
+		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		i = GetCurRes();
-		SET_DPARAM16(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
-		SET_DPARAM16(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
+		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
+		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
 		(_fullscreen) ? SETBIT(w->click_state, 28) : CLRBIT(w->click_state, 28); // fullscreen button
 
 		DrawWindowWidgets(w);
@@ -352,7 +352,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 			value = _game_setting_info[i].str + ((int*)&_opt_mod_temp.diff)[i];
 			if (i == 4) value *= 1000; // handle currency option
-			SET_DPARAM32(0, value);
+			SetDParam(0, value);
 			DrawString(x+30, y+1, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
 
 			y += 11;
@@ -764,7 +764,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			bool disabled = false;
 			if (pe->type == PE_BOOL) {
 				DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
-				SET_DPARAM16(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+				SetDParam(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
 				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
 				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
@@ -776,16 +776,16 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					val /= GetCurrentCurrencyRate();
 				disabled = ((val == 0) && (pe->flags & PF_0ISDIS));
 				if (disabled) {
-					SET_DPARAM16(0, STR_CONFIG_PATCHES_DISABLED);
+					SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
 				} else {
-					SET_DPARAM32(1, val);
+					SetDParam(1, val);
 					if (pe->type == PE_CURRENCY)
-						SET_DPARAM16(0, STR_CONFIG_PATCHES_CURRENCY);
+						SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
 					else {
 						if (pe->flags & PF_MULTISTRING)
-							SET_DPARAM16(0, pe->str + val + 1);
+							SetDParam(0, pe->str + val + 1);
 						else
-							SET_DPARAM16(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+							SetDParam(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
 					}
 				}
 			}
@@ -868,7 +868,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			} else {
 				if (pe->type != PE_BOOL && !(pe->flags & PF_MULTISTRING)) { // do not open editbox
 					WP(w,def_d).data_3 = btn;
-					SET_DPARAM32(0, ReadPE(pe));
+					SetDParam(0, ReadPE(pe));
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0);
 				}
 			}

@@ -59,15 +59,15 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	const SortStruct *cmp2 = (const SortStruct*)b;
 
 	st = DEREF_STATION(cmp1->index);
-	SET_DPARAM16(0, st->town->townnametype);
-	SET_DPARAM32(1, st->town->townnameparts);
+	SetDParam(0, st->town->townnametype);
+	SetDParam(1, st->town->townnameparts);
 	GetString(buf1, st->string_id);
 
 	if ( cmp2->index != _last_station_idx) {
 		_last_station_idx = cmp2->index;
 		st = DEREF_STATION(cmp2->index);
-		SET_DPARAM16(0, st->town->townnametype);
-		SET_DPARAM32(1, st->town->townnameparts);
+		SetDParam(0, st->town->townnametype);
+		SetDParam(1, st->town->townnameparts);
 		GetString(_bufcache, st->string_id);
 	}
 
@@ -149,9 +149,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		/* draw widgets, with player's name in the caption */
 		{
 			Player *p = DEREF_PLAYER(window_number);
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, w->vscroll.count);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
 		}
 
@@ -175,8 +175,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				assert(st->xy && st->owner == window_number);
 
-				SET_DPARAM16(0, st->index);
-				SET_DPARAM8(1, st->facilities);
+				SetDParam(0, st->index);
+				SetDParam(1, st->facilities);
 				x = DrawString(xb, y, STR_3049_0, 0) + 5;
 
 				// show cargo waiting and station ratings
@@ -310,8 +310,8 @@ static void DrawStationViewWindow(Window *w)
 	SetVScrollCount(w, num);
 
 	w->disabled_state = st->owner == _local_player ? 0 : (1 << 8);
-	SET_DPARAM16(0, st->index);
-	SET_DPARAM8(1, st->facilities);
+	SetDParam(0, st->index);
+	SetDParam(1, st->facilities);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -323,7 +323,7 @@ static void DrawStationViewWindow(Window *w)
 		for(i=0; i!=NUM_CARGO; i++)
 			if (st->goods[i].waiting_acceptance & 0xFFF)
 				str = STR_EMPTY;
-		SET_DPARAM16(0, str);
+		SetDParam(0, str);
 		DrawString(x, y, STR_0008_WAITING, 0);
 		y += 10;
 	}
@@ -346,22 +346,22 @@ static void DrawStationViewWindow(Window *w)
 
 		if ( st->goods[i].enroute_from == station_id) {
 			if (--pos < 0) {
-				SET_DPARAM16(1, waiting);
-				SET_DPARAM16(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
+				SetDParam(1, waiting);
+				SetDParam(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
 				DrawStringRightAligned(x + 234, y, STR_0009, 0);
 				y += 10;
 			}
 		} else {
 			/* enroute */
 			if (--pos < 0) {
-				SET_DPARAM16(1, waiting);
-				SET_DPARAM16(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
+				SetDParam(1, waiting);
+				SetDParam(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
 				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, 0);
 				y += 10;
 			}
 
 			if (pos > -5 && --pos < 0) {
-				SET_DPARAM16(0, st->goods[i].enroute_from);
+				SetDParam(0, st->goods[i].enroute_from);
 				DrawStringRightAligned(x + 234, y, STR_000B, 0);
 				y += 10;
 			}
@@ -403,9 +403,9 @@ static void DrawStationViewWindow(Window *w)
 		y = 77;
 		for(i=0; i!=NUM_CARGO; i++) {
 			if (st->goods[i].enroute_from != 0xFF) {
-				SET_DPARAM16(0, _cargoc.names_s[i]);
-				SET_DPARAM8(2, st->goods[i].rating * 101 >> 8);
-				SET_DPARAM16(1, STR_3035_APPALLING + (st->goods[i].rating >> 5));
+				SetDParam(0, _cargoc.names_s[i]);
+				SetDParam(2, st->goods[i].rating * 101 >> 8);
+				SetDParam(1, STR_3035_APPALLING + (st->goods[i].rating >> 5));
 				DrawString(8, y, STR_303D, 0);
 				y += 10;
 			}
@@ -439,8 +439,8 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case 8: {
 			Station *st = DEREF_STATION(w->window_number);
-			SET_DPARAM16(0, st->town->townnametype);
-			SET_DPARAM32(1, st->town->townnameparts);
+			SetDParam(0, st->town->townnametype);
+			SetDParam(1, st->town->townnameparts);
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		}	break;
 		}

@@ -106,7 +106,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			SetVScrollCount(w, count);
 		}
 
-		SET_DPARAM16(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
+		SetDParam(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
 		DrawWindowWidgets(w);
 
 		{
@@ -136,36 +136,36 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					/* it's an engine */
 					int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 
-					SET_DPARAM32(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
-					SET_DPARAM16(2, rvi->max_speed * 10 >> 4);
-					SET_DPARAM16(3, rvi->power << multihead);
-					SET_DPARAM16(1, rvi->weight << multihead);
-					SET_DPARAM32(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
+					SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
+					SetDParam(2, rvi->max_speed * 10 >> 4);
+					SetDParam(3, rvi->power << multihead);
+					SetDParam(1, rvi->weight << multihead);
+					SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
 
-					SET_DPARAM16(5, STR_8838_N_A);
+					SetDParam(5, STR_8838_N_A);
 					if (rvi->capacity != 0) {
-						SET_DPARAM16(6, rvi->capacity << multihead);
-						SET_DPARAM16(5, _cargoc.names_long_p[rvi->cargo_type]);
+						SetDParam(6, rvi->capacity << multihead);
+						SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
 					}
 
 					e = &_engines[selected_id];
 
-					SET_DPARAM16(8, e->lifelength);
-					SET_DPARAM8(9, e->reliability * 100 >> 16);
+					SetDParam(8, e->lifelength);
+					SetDParam(9, e->reliability * 100 >> 16);
 					ConvertDayToYMD(&ymd, e->intro_date);
-					SET_DPARAM16(7, ymd.year + 1920);
+					SetDParam(7, ymd.year + 1920);
 
 					DrawString(2, 0x7F, STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
 				} else {
 					/* it's a wagon */
 
-					SET_DPARAM32(0,
+					SetDParam(0,
 						DoCommandByTile(w->window_number, selected_id, 0, DC_QUERY_COST, CMD_BUILD_RAIL_VEHICLE)
 					);
-					SET_DPARAM16(4, rvi->capacity);
-					SET_DPARAM16(1, rvi->weight);
-					SET_DPARAM16(3, _cargoc.names_long_p[rvi->cargo_type]);
-					SET_DPARAM16(2, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+					SetDParam(4, rvi->capacity);
+					SetDParam(1, rvi->weight);
+					SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+					SetDParam(2, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
 					DrawString(2, 0x7F, STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
 				}
 			}
@@ -309,7 +309,7 @@ static void DrawTrainDepotWindow(Window *w)
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
 
-	SET_DPARAM16(0,d->town_index);
+	SetDParam(0,d->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -326,7 +326,7 @@ static void DrawTrainDepotWindow(Window *w)
 
 			DrawTrainImage(v, x+21, y, 10, w->hscroll.pos, WP(w,traindepot_d).sel);
 			/* Draw the train number */
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
 			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
@@ -622,8 +622,8 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 		byte color;
 		int cargo;
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
@@ -671,9 +671,9 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 		if (cargo != -1) {
 			int32 cost = DoCommandByTile(v->tile, v->index, cargo, 0, CMD_REFIT_RAIL_VEHICLE);
 			if (cost != CMD_ERROR) {
-				SET_DPARAM32(2, cost);
-				SET_DPARAM16(0, _cargoc.names_long_p[cargo]);
-				SET_DPARAM16(1, _returned_refit_amount);
+				SetDParam(2, cost);
+				SetDParam(0, _cargoc.names_long_p[cargo]);
+				SetDParam(1, _returned_refit_amount);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
@@ -759,8 +759,8 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 
 		/* draw widgets & caption */
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* draw the flag */
@@ -774,22 +774,22 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			if (v->u.rail.last_speed == 0) {
 				str = STR_8861_STOPPED;
 			} else {
-				SET_DPARAM16(0, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(0, v->u.rail.last_speed * 10 >> 4);
 				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
 			}
 		} else {
 			switch(v->next_order & OT_MASK) {
 			case OT_GOTO_STATION: {
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
-				SET_DPARAM16(0, v->next_order_param);
-				SET_DPARAM16(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(0, v->next_order_param);
+				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *dep = &_depots[v->next_order_param];
-				SET_DPARAM16(0, dep->town_index);
+				SetDParam(0, dep->town_index);
 				str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
-				SET_DPARAM16(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
 			} break;
 
 			case OT_LOADING:
@@ -798,16 +798,16 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case OT_GOTO_WAYPOINT: {
-				SET_DPARAM16(0, v->next_order_param);
+				SetDParam(0, v->next_order_param);
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
-				SET_DPARAM16(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
 				break;
 			}
 
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SET_DPARAM16(0, v->u.rail.last_speed * 10 >> 4);
+					SetDParam(0, v->u.rail.last_speed * 10 >> 4);
 				} else
 					str = STR_EMPTY;
 				break;
@@ -901,9 +901,9 @@ static void TrainDetailsCargoTab(Vehicle *v, int x, int y)
 		num = v->cargo_count;
 		str = STR_8812_EMPTY;
 		if (num != 0) {
-			SET_DPARAM8(0, v->cargo_type);
-			SET_DPARAM16(1, num);
-			SET_DPARAM16(2, v->cargo_source);
+			SetDParam(0, v->cargo_type);
+			SetDParam(1, num);
+			SetDParam(2, v->cargo_source);
 			str = STR_8813_FROM;
 		}
 		DrawString(x, y, str, 0);
@@ -917,13 +917,13 @@ static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
 	rvi = &_rail_vehicle_info[v->engine_type];
 
 	if (!(rvi->flags & RVI_WAGON)) {
-		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
-		SET_DPARAM16(1, v->build_year + 1920);
-		SET_DPARAM32(2, v->value);
+		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(1, v->build_year + 1920);
+		SetDParam(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);
 	} else {
-		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
-		SET_DPARAM32(1, v->value);
+		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(1, v->value);
 		DrawString(x, y, STR_882D_VALUE, 0x10);
 	}
 }
@@ -931,8 +931,8 @@ static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
 static void TrainDetailsCapacityTab(Vehicle *v, int x, int y)
 {
 	if (v->cargo_cap != 0) {
-		SET_DPARAM16(1, v->cargo_cap);
-		SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
+		SetDParam(1, v->cargo_cap);
+		SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
 		DrawString(x, y, STR_013F_CAPACITY, 0);
 	}
 }
@@ -990,12 +990,12 @@ static void DrawTrainDetailsWindow(Window *w)
 	if (!_patches.servint_trains) // disable service-scroller when interval is set to disabled
 		w->disabled_state |= (1 << 6) | (1 << 7);
 
-	SET_DPARAM16(0, v->string_id);
-	SET_DPARAM16(1, v->unitnumber);
+	SetDParam(0, v->string_id);
+	SetDParam(1, v->unitnumber);
 	DrawWindowWidgets(w);
 
 	num = v->age / 366;
-	SET_DPARAM16(1, num);
+	SetDParam(1, num);
 
 	x = 2;
 
@@ -1005,26 +1005,26 @@ static void DrawTrainDetailsWindow(Window *w)
 		if ((uint16)(v->max_age - 366) < v->age)
 			str += STR_019B_YEARS - STR_019A_YEARS;
 	}
-	SET_DPARAM16(0, str);
-	SET_DPARAM16(2, v->max_age / 366);
-	SET_DPARAM32(3, GetTrainRunningCost(v) >> 8);
+	SetDParam(0, str);
+	SetDParam(2, v->max_age / 366);
+	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
-	SET_DPARAM16(2, v->max_speed * 10 >> 4);
-	SET_DPARAM32(1, v->u.rail.cached_power);
-	SET_DPARAM16(0, v->u.rail.cached_weight);
+	SetDParam(2, v->max_speed * 10 >> 4);
+	SetDParam(1, v->u.rail.cached_power);
+	SetDParam(0, v->u.rail.cached_weight);
 	DrawString(x, 25, STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED, 0);
 
-	SET_DPARAM32(0, v->profit_this_year);
-	SET_DPARAM32(1, v->profit_last_year);
+	SetDParam(0, v->profit_this_year);
+	SetDParam(1, v->profit_last_year);
 	DrawString(x, 35, STR_885F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-	SET_DPARAM8(0, 100 * (v->reliability>>8) >> 8);
-	SET_DPARAM16(1, v->breakdowns_since_last_service);
+	SetDParam(0, 100 * (v->reliability>>8) >> 8);
+	SetDParam(1, v->breakdowns_since_last_service);
 	DrawString(x, 45, STR_8860_RELIABILITY_BREAKDOWNS, 0);
 
-	SET_DPARAM16(0, v->service_interval);
-	SET_DPARAM16(1, v->date_of_last_service);
+	SetDParam(0, v->service_interval);
+	SetDParam(1, v->date_of_last_service);
 	DrawString(x + 11, 141, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 
 	x = 1;
@@ -1050,10 +1050,10 @@ static void DrawTrainDetailsWindow(Window *w)
 			if (tot_cargo[i][1] > 0 && --sel < 0 && sel >= -5) {
 				y += 14;
 				// STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
-				SET_DPARAM8(0, i);								// {CARGO} #1
-				SET_DPARAM16(1, tot_cargo[i][0]);	// {CARGO} #2
-				SET_DPARAM8(2, i);								// {SHORTCARGO} #1
-				SET_DPARAM16(3, tot_cargo[i][1]);	// {SHORTCARGO} #2
+				SetDParam(0, i);								// {CARGO} #1
+				SetDParam(1, tot_cargo[i][0]);	// {CARGO} #2
+				SetDParam(2, i);								// {SHORTCARGO} #1
+				SetDParam(3, tot_cargo[i][1]);	// {SHORTCARGO} #2
 				DrawString(x, y, STR_013F_TOTAL_CAPACITY, 0);
 			}
 		} while (++i != NUM_CARGO);
@@ -1072,7 +1072,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 2: /* name train */
 			v = &_vehicles[w->window_number];
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w->window_class, w->window_number);
 			break;
 		case 6:	/* inc serv interval */
@@ -1256,9 +1256,9 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		{
 			Player *p = DEREF_PLAYER(window_number);
 			/* Company Name -- (###) Trains */
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, w->vscroll.count);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
@@ -1283,7 +1283,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				DrawTrainImage(v, x + 21, y + 6 + _traininfo_vehicle_pitch, 10, 0, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				if (IsTrainDepotTile(v->tile)) {
 					str = STR_021F;
 				} else {
@@ -1291,12 +1291,12 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				}
 				DrawString(x, y+2, str, 0);
 
-				SET_DPARAM32(0, v->profit_this_year);
-				SET_DPARAM32(1, v->profit_last_year);
+				SetDParam(0, v->profit_this_year);
+				SetDParam(1, v->profit_last_year);
 				DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 				if (v->string_id != STR_SV_TRAIN_NAME) {
-					SET_DPARAM16(0, v->string_id);
+					SetDParam(0, v->string_id);
 					DrawString(x+21, y, STR_01AB, 0);
 				}
 

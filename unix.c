@@ -299,14 +299,14 @@ StringID FiosGetDescText(const char **path)
 	if (statvfs(*path, &s) == 0)
 	{
 		uint64 tot = (uint64)s.f_bsize * s.f_bavail;
-		SET_DPARAM32(0, (uint32)(tot >> 20));
+		SetDParam(0, (uint32)(tot >> 20));
 		return STR_4005_BYTES_FREE;
 	}
 	else
 		return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
 #else
-	SET_DPARAM32(0, 0);
+	SetDParam(0, 0);
 	return STR_4005_BYTES_FREE;
 #endif
 }

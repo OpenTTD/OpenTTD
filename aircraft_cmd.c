@@ -66,11 +66,11 @@ void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 {
-	SET_DPARAM32(0, ((_price.aircraft_base >> 3) * aircraft_vehinfo(engine).base_cost) >> 5);
-	SET_DPARAM16(1, aircraft_vehinfo(engine).max_speed << 3);
-	SET_DPARAM16(2, aircraft_vehinfo(engine).passanger_capacity);
-	SET_DPARAM16(3, aircraft_vehinfo(engine).mail_capacity);
-	SET_DPARAM32(4, aircraft_vehinfo(engine).running_cost * _price.aircraft_running >> 8);
+	SetDParam(0, ((_price.aircraft_base >> 3) * aircraft_vehinfo(engine).base_cost) >> 5);
+	SetDParam(1, aircraft_vehinfo(engine).max_speed << 3);
+	SetDParam(2, aircraft_vehinfo(engine).passanger_capacity);
+	SetDParam(3, aircraft_vehinfo(engine).mail_capacity);
+	SetDParam(4, aircraft_vehinfo(engine).running_cost * _price.aircraft_running >> 8);
 
 	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
 }
@@ -1084,12 +1084,12 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	amt = 2;
 	if (v->cargo_type == CT_PASSENGERS) amt += v->cargo_count;
-	SET_DPARAM16(0, amt);
+	SetDParam(0, amt);
 
 	v->cargo_count = 0;
 	v->next->cargo_count = 0,
 
-	SET_DPARAM16(1, st->index);
+	SetDParam(1, st->index);
 	AddNewsItem(STR_A034_PLANE_CRASH_DIE_IN_FIREBALL,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 		v->index,
@@ -1116,7 +1116,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 		uint32 flags;
 
 		st->had_vehicle_of_type |= HVOT_AIRCRAFT;
-		SET_DPARAM16(0, st->index);
+		SetDParam(0, st->index);
 		// show newsitem of celebrating citizens
 		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
@@ -1161,7 +1161,7 @@ static void AircraftEnterHangar(Vehicle *v)
 			v->vehstatus |= VS_STOPPED;
 
 			if (v->owner == _local_player) {
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_A014_AIRCRAFT_IS_WAITING_IN,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),

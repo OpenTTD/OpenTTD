@@ -60,7 +60,7 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	p = DEREF_PLAYER(p1);
 
 	if (p->current_loan >= _economy.max_loan) {
-		SET_DPARAM32(0, _economy.max_loan);
+		SetDParam(0, _economy.max_loan);
 		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
 	}
 
@@ -106,7 +106,7 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (p->player_money < size) {
-		SET_DPARAM32(0, size);
+		SetDParam(0, size);
 		return_cmd_error(STR_702E_REQUIRED);
 	}
 
@@ -174,7 +174,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 static void UpdateSignVirtCoords(SignStruct *ss)
 {
 	Point pt = RemapCoords(ss->x, ss->y, ss->z);
-	SET_DPARAM16(0, ss->str);
+	SetDParam(0, ss->str);
 	UpdateViewportSignPos(&ss->sign, pt.x, pt.y - 6, STR_2806);
 }
 

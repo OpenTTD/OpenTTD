@@ -43,8 +43,8 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	te->duration = duration;
 	te->y = y - 5;
 	te->bottom = y + 5;
-	te->params_1 = GET_DPARAM32(0);
-	te->params_2 = GET_DPARAM32(4);
+	te->params_1 = GetDParam(0);
+	te->params_2 = GetDParam(4);
 
 	GetString(buffer, msg);
 	w = GetStringWidth(buffer);

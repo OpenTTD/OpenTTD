@@ -630,7 +630,7 @@ int ttd_main(int argc, char* argv[])
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
-		SET_DPARAM16(0, STR_SPEC_SCREENSHOT_NAME);
+		SetDParam(0, STR_SPEC_SCREENSHOT_NAME);
 		ShowErrorMessage(INVALID_STRING_ID, STR_031B_SCREENSHOT_SUCCESSFULLY, 0, 0);
 	} else {
 		ShowErrorMessage(INVALID_STRING_ID, STR_031C_SCREENSHOT_FAILED, 0, 0);
@@ -934,9 +934,9 @@ static void DoAutosave()
 		char *s;
 		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);
 		p = DEREF_PLAYER(_local_player);
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, _date);
+		SetDParam(0, p->name_1);
+		SetDParam(1, p->name_2);
+		SetDParam(2, _date);
 		s= (char*)GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP) - 1, STR_4004);
 		strcpy(s, ".sav");
 	} else {

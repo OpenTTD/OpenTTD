@@ -558,7 +558,7 @@ static void FloodVehicle(Vehicle *v)
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
-		SET_DPARAM16(0, pass);
+		SetDParam(0, pass);
 		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 			v->index,

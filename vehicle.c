@@ -112,7 +112,7 @@ void VehiclePositionChanged(Vehicle *v)
 void UpdateWaypointSign(Waypoint *cp)
 {
 	Point pt = RemapCoords2(GET_TILE_X(cp->xy)*16, GET_TILE_Y(cp->xy)*16);
-	SET_DPARAM16(0, cp - _waypoints);
+	SetDParam(0, cp - _waypoints);
 	UpdateViewportSignPos(&cp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }
 
@@ -1309,8 +1309,8 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 	if (_patches.autorenew)
 		return;
 
-	SET_DPARAM16(0, _vehicle_type_names[v->type - 0x10]);
-	SET_DPARAM16(1, v->unitnumber);
+	SetDParam(0, _vehicle_type_names[v->type - 0x10]);
+	SetDParam(1, v->unitnumber);
 	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 }
 
@@ -1350,7 +1350,7 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
 		if (v->owner == _local_player) {
 			int message;
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			switch (v->type) {
 				case VEH_Train: message = STR_TRAIN_AUTORENEW_FAILED; break;
 				case VEH_Road: message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;

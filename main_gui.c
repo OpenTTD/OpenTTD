@@ -282,7 +282,7 @@ void ShowRenameWaypointWindow(Waypoint *cp)
 	int id = cp - _waypoints;
 	_rename_id = id;
 	_rename_what = 1;
-	SET_DPARAM16(0, id);
+	SetDParam(0, id);
 	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
 }
 
@@ -517,9 +517,9 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 				}
 				DrawSprite( ((p->player_color + 0x307)<<16)+0x82EB, x+2, y+1);
 
-				SET_DPARAM16(0, p->name_1);
-				SET_DPARAM32(1, p->name_2);
-				SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
+				SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
+				SetDParam(2, GetPlayerNameString(p->index, 3));
 
 				color = (byte)((p->index==sel) ? 0xC : 0x10);
 				if (chk&1) color = 14;
@@ -1525,7 +1525,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		// Show error if no town exists at all
 		type = _industry_type_to_place;
 		if (!AnyTownExists()) {
-			SET_DPARAM16(0, type + STR_4802_COAL_MINE);
+			SetDParam(0, type + STR_4802_COAL_MINE);
 			ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST,STR_0285_CAN_T_BUILD_HERE,e->place.pt.x, e->place.pt.y);
 			return;
 		}
@@ -1534,7 +1534,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		_generating_world = true;
 		_ignore_restrictions = true;
 		if (!TryBuildIndustry(e->place.tile,type)) {
-			SET_DPARAM16(0, type + STR_4802_COAL_MINE);
+			SetDParam(0, type + STR_4802_COAL_MINE);
 			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE,e->place.pt.x, e->place.pt.y);
 		}
 		_ignore_restrictions = false;
@@ -1888,10 +1888,10 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		SET_DPARAM16(0, _date);
+		SetDParam(0, _date);
 		DrawStringCentered(298, 6, STR_00AF, 0);
 
-		SET_DPARAM16(0, _date);
+		SetDParam(0, _date);
 		DrawStringCentered(161, 1, STR_0221_OPENTTD, 0);
 		DrawStringCentered(161, 11,STR_0222_SCENARIO_EDITOR, 0);
 
@@ -2011,14 +2011,14 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		SET_DPARAM16(0, _date);
+		SetDParam(0, _date);
 		DrawStringCentered(70, 1, ((_pause||_patches.status_long_date)?STR_00AF:STR_00AE), 0);
 
 		p = _local_player == OWNER_SPECTATOR ? NULL : DEREF_PLAYER(_local_player);
 
 		if (p) {
 			// Draw player money
-			SET_DPARAM64(0, p->money64);
+			SetDParam64(0, p->money64);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
 		}
 
@@ -2034,8 +2034,8 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		} else {
 			if (p) {
 				// This is the default text
-				SET_DPARAM16(0, p->name_1);
-				SET_DPARAM32(1, p->name_2);
+				SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
 				DrawStringCentered(320, 1,	STR_02BA, 0);
 			}
 		}

@@ -26,7 +26,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
 			int ind_type = _build_industry_types[_opt.landscape][WP(w,def_d).data_1];
 
-			SET_DPARAM32(0, (_price.build_industry >> 5) * _industry_type_costs[ind_type]);
+			SetDParam(0, (_price.build_industry >> 5) * _industry_type_costs[ind_type]);
 			DrawStringCentered(85, w->height - 21, STR_482F_COST, 0);
 		}
 		break;
@@ -275,18 +275,18 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		// Destroy Industry button costing money removed per request of dominik
 		//w->disabled_state = (_patches.extra_dynamite && !_networking && _game_mode != GM_EDITOR) ? 0 : (1 << 6);
 		i = DEREF_INDUSTRY(w->window_number);
-		SET_DPARAM16(0, i->town->index);
-		SET_DPARAM16(1, i->type + STR_4802_COAL_MINE);
+		SetDParam(0, i->town->index);
+		SetDParam(1, i->type + STR_4802_COAL_MINE);
 		DrawWindowWidgets(w);
 
 		if (i->accepts_cargo[0] != 0xFF) {
-			SET_DPARAM16(0, _cargoc.names_s[i->accepts_cargo[0]]);
+			SetDParam(0, _cargoc.names_s[i->accepts_cargo[0]]);
 			str = STR_4827_REQUIRES;
 			if (i->accepts_cargo[1] != 0xFF) {
-				SET_DPARAM16(1, _cargoc.names_s[i->accepts_cargo[1]]);
+				SetDParam(1, _cargoc.names_s[i->accepts_cargo[1]]);
 				str++;
 				if (i->accepts_cargo[2] != 0xFF) {
-					SET_DPARAM16(2, _cargoc.names_s[i->accepts_cargo[2]]);
+					SetDParam(2, _cargoc.names_s[i->accepts_cargo[2]]);
 					str++;
 				}
 			}
@@ -296,15 +296,15 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		if (i->produced_cargo[0] != 0xFF) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
-			SET_DPARAM16(1, i->total_production[0]);
-			SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
-			SET_DPARAM16(2, i->pct_transported[0] * 100 >> 8);
+			SetDParam(1, i->total_production[0]);
+			SetDParam(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
+			SetDParam(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4, 127, STR_482B_TRANSPORTED, 0);
 
 			if (i->produced_cargo[1] != 0xFF) {
-				SET_DPARAM16(1, i->total_production[1]);
-				SET_DPARAM16(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
-				SET_DPARAM16(2, i->pct_transported[1] * 100 >> 8);
+				SetDParam(1, i->total_production[1]);
+				SetDParam(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
+				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4, 137, STR_482B_TRANSPORTED, 0);
 			}
 		}
@@ -435,12 +435,12 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 
 	// default to string sorting if they are otherwise equal
 	if (r == 0) {
-		SET_DPARAM32(0, i->town->townnameparts);
+		SetDParam(0, i->town->townnameparts);
 		GetString(buf1, i->town->townnametype);
 
 		if ( (val=*(const byte*)b) != _last_industry_idx) {
 			_last_industry_idx = val;
-			SET_DPARAM32(0, j->town->townnameparts);
+			SetDParam(0, j->town->townnameparts);
 			GetString(_bufcache, j->town->townnametype);
 		}
 		r = strcmp(buf1, _bufcache);
@@ -492,20 +492,20 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 		while (p < _num_industry_sort) {
 			i = DEREF_INDUSTRY(_industry_sort[p]);
-			SET_DPARAM16(0, i->town->index);
-			SET_DPARAM16(1, i->type + STR_4802_COAL_MINE);
+			SetDParam(0, i->town->index);
+			SetDParam(1, i->type + STR_4802_COAL_MINE);
 			if (i->produced_cargo[0] != 0xFF) {
-				SET_DPARAM16(3, i->total_production[0]);
-				SET_DPARAM16(2, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
+				SetDParam(3, i->total_production[0]);
+				SetDParam(2, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 
 				if (i->produced_cargo[1] != 0xFF) {
-					SET_DPARAM16(5, i->total_production[1]);
-					SET_DPARAM16(4, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
-					SET_DPARAM16(6, i->pct_transported[0] * 100 >> 8);
-					SET_DPARAM16(7, i->pct_transported[1] * 100 >> 8);
+					SetDParam(5, i->total_production[1]);
+					SetDParam(4, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
+					SetDParam(6, i->pct_transported[0] * 100 >> 8);
+					SetDParam(7, i->pct_transported[1] * 100 >> 8);
 					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_TWO, 0);
 				} else {
-					SET_DPARAM16(4, i->pct_transported[0] * 100 >> 8);
+					SetDParam(4, i->pct_transported[0] * 100 >> 8);
 					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM, 0);
 				}
 			} else {

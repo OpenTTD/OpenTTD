@@ -203,18 +203,18 @@ void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 	int cap;
 	uint multihead = ((rvi->flags & RVI_MULTIHEAD) ? 1 : 0);
 
-	SET_DPARAM32(0, ((_price.build_railvehicle >> 3) * rvi->base_cost) >> 5);
-	SET_DPARAM16(2, rvi->max_speed * 10 >> 4);
-	SET_DPARAM16(3, rvi->power << multihead);
-	SET_DPARAM16(1, rvi->weight << multihead);
+	SetDParam(0, ((_price.build_railvehicle >> 3) * rvi->base_cost) >> 5);
+	SetDParam(2, rvi->max_speed * 10 >> 4);
+	SetDParam(3, rvi->power << multihead);
+	SetDParam(1, rvi->weight << multihead);
 
-	SET_DPARAM32(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
+	SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
 
 	cap = rvi->capacity;
-	SET_DPARAM16(5, STR_8838_N_A);
+	SetDParam(5, STR_8838_N_A);
 	if (cap != 0) {
-		SET_DPARAM16(6, cap << multihead);
-		SET_DPARAM16(5, _cargoc.names_long_p[rvi->cargo_type]);
+		SetDParam(6, cap << multihead);
+		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
 	}
 	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
 }
@@ -1724,7 +1724,7 @@ static void TrainEnterStation(Vehicle *v, int station)
 	st = DEREF_STATION(station);
 	if (!(st->had_vehicle_of_type & HVOT_TRAIN)) {
 		st->had_vehicle_of_type |= HVOT_TRAIN;
-		SET_DPARAM16(0, st->index);
+		SetDParam(0, st->index);
 		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
 			STR_8801_CITIZENS_CELEBRATE_FIRST,
@@ -1999,7 +1999,7 @@ static void CheckTrainCollision(Vehicle *v)
 		SetVehicleCrashed(coll);
 
 
-	SET_DPARAM16(0, num);
+	SetDParam(0, num);
 
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
@@ -2558,7 +2558,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 		else if (t & OF_FULL_LOAD) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_8814_TRAIN_IS_WAITING_IN_DEPOT,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
@@ -2645,7 +2645,7 @@ void OnNewDay_Train(Vehicle *v)
 		// check if train hasn't advanced in its order list for a set number of days
 		if (_patches.lost_train_days && v->num_orders && !(v->vehstatus & VS_STOPPED) && ++v->u.rail.days_since_order_progr >= _patches.lost_train_days && v->owner == _local_player) {
 			v->u.rail.days_since_order_progr = 0;
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			AddNewsItem(
 				STR_TRAIN_IS_LOST,
 				NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
@@ -2684,8 +2684,8 @@ void TrainsYearlyLoop()
 
 			// show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list)
 			if (_patches.train_income_warn && v->owner == _local_player && v->age >= 730 && v->profit_this_year < 0) {
-				SET_DPARAM32(1, v->profit_this_year);
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(1, v->profit_this_year);
+				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_UNPROFITABLE,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),

@@ -406,7 +406,7 @@ int CheckOrders(Vehicle *v)
 
 		if ( (n_st < 2) && (problem_type == -1) ) problem_type = 0;
 
-		SET_DPARAM16(0, v->unitnumber);
+		SetDParam(0, v->unitnumber);
 
 		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
 

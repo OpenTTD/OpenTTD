@@ -29,44 +29,42 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 {
 	LandInfoData *lid;
 	StringID str;
-	uint32 *b;
 
 	if (e->event == WE_PAINT) {
+		int idx = 0;
 		int i;
 
 		DrawWindowWidgets(w);
 
 		lid = WP(w,void_d).data;
 
-		SET_DPARAM32(0, lid->td.dparam[0]);
+		SetDParam(0, lid->td.dparam[0]);
 		DrawStringCentered(140, 16, lid->td.str, 13);
 
-		SET_DPARAM16(0, STR_01A6_N_A);
+		SetDParam(0, STR_01A6_N_A);
 		if (lid->td.owner != OWNER_NONE && lid->td.owner != OWNER_WATER)
 			GetNameOfOwner(lid->td.owner, lid->tile);
 		DrawStringCentered(140, 27, STR_01A7_OWNER, 0);
 
 		str = STR_01A4_COST_TO_CLEAR_N_A;
 		if (lid->costclear != CMD_ERROR) {
-			SET_DPARAM32(0, lid->costclear);
+			SetDParam(0, lid->costclear);
 			str = STR_01A5_COST_TO_CLEAR;
 		}
 		DrawStringCentered(140, 38, str, 0);
 
 		snprintf(_userstring, USERSTRING_LEN, "%.4X", lid->tile);
-		SET_DPARAM16(0, GET_TILE_X(lid->tile));
-		SET_DPARAM16(1, GET_TILE_Y(lid->tile));
-		SET_DPARAM16(2, STR_SPEC_USERSTRING);
+		SetDParam(0, GET_TILE_X(lid->tile));
+		SetDParam(1, GET_TILE_Y(lid->tile));
+		SetDParam(2, STR_SPEC_USERSTRING);
 		DrawStringCentered(140, 49, STR_LANDINFO_COORDS, 0);
 
-		SET_DPARAM16(0, STR_01A9_NONE);
+		SetDParam(0, STR_01A9_NONE);
 		if (lid->town != NULL) {
-			SET_DPARAM16(0, lid->town->townnametype);
-			SET_DPARAM32(1, lid->town->townnameparts);
+			SetDParam(0, lid->town->townnametype);
+			SetDParam(1, lid->town->townnameparts);
 		}
 		DrawStringCentered(140,60, STR_01A8_LOCAL_AUTHORITY, 0);
-
-		b = &GET_DPARAM(0);
 
 		str = STR_01CE_CARGO_ACCEPTED - 1;
 
@@ -75,12 +73,10 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i < NUM_CARGO; ++i) {
 			if (lid->ac[i] > 0) {
 				if (lid->ac[i] < 8) {
-					SET_DPARAMX16(b, 0, STR_01D1_8);
-					SET_DPARAMX8(b, 1, lid->ac[i]);
-					b += 2;
+					SetDParam(idx++, STR_01D1_8);
+					SetDParam(idx++, lid->ac[i]);
 				}
-				SET_DPARAMX16(b, 0, _cargoc.names_s[i]);
-				b++;
+				SetDParam(idx++, _cargoc.names_s[i]);
 				str++;
 			}
 		}
@@ -89,7 +85,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 			DrawStringMultiCenter(140, 76, str, 276);
 
 		if (lid->td.build_date != 0) {
-			SET_DPARAM16(0,lid->td.build_date);
+			SetDParam(0,lid->td.build_date);
 			DrawStringCentered(140,71, STR_BUILD_DATE, 0);
 		}
 	}
@@ -413,7 +409,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					238);
 		} else {
-			Player *p = DEREF_PLAYER(GET_DPARAMX8(_errmsg_decode_params,2));
+			Player *p = DEREF_PLAYER(GetDParamX(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
 			DrawStringMultiCenter(
@@ -476,7 +472,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	if (!_errmsg_duration)
 		return;
 
-	if (_errmsg_message_1 != STR_013B_OWNED_BY || GET_DPARAMX8(_errmsg_decode_params,2) >= 8) {
+	if (_errmsg_message_1 != STR_013B_OWNED_BY || GetDParamX(_errmsg_decode_params,2) >= 8) {
 
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -522,7 +518,7 @@ void ShowEstimatedCostOrIncome(int32 cost, int x, int y)
 		cost = -cost;
 		msg = STR_0807_ESTIMATED_INCOME;
 	}
-	SET_DPARAM32(0, cost);
+	SetDParam(0, cost);
 	ShowErrorMessage(-1, msg, x, y);
 }
 
@@ -536,7 +532,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
 		cost = -cost;
 		msg = STR_0803_INCOME;
 	}
-	SET_DPARAM32(0, cost);
+	SetDParam(0, cost);
 	AddTextEffect(msg, pt.x, pt.y, 0x250);
 }
 
@@ -772,7 +768,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 //		int x;
 
-		SET_DPARAM16(0, WP(w,querystr_d).caption);
+		SetDParam(0, WP(w,querystr_d).caption);
 		DrawWindowWidgets(w);
 
 		DrawEditBox(w, 5);
@@ -999,9 +995,9 @@ static void MakeSortedSaveGameList()
 static void GenerateFileName(void)
 {
 	const Player *p = DEREF_PLAYER(_local_player);
-	SET_DPARAM16(0, p->name_1);
-	SET_DPARAM32(1, p->name_2);
-	SET_DPARAM16(2, _date);
+	SetDParam(0, p->name_1);
+	SetDParam(1, p->name_2);
+	SetDParam(2, _date);
 	GetString(_edit_str_buf, STR_4004);
 }
 
@@ -1475,14 +1471,14 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 			if (ce->type == CE_BOOL) {
 				DrawFrameRect(x+20, y+1, x+30+9, y+9, (*(bool*)ce->variable)?6:4, (*(bool*)ce->variable)?0x20:0);
-				SET_DPARAM16(0, *(bool*)ce->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+				SetDParam(0, *(bool*)ce->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 
 			}	else if (ce->type == CE_CLICK) {
 				DrawFrameRect(x+20, y+1, x+30+9, y+9, 0, (WP(w,def_d).data_1==i*2+1)?0x20:0x00);
 				if(i==0)
-					SET_DPARAM64(0, (int64) 10000000);
+					SetDParam64(0, (int64) 10000000);
 				else
-					SET_DPARAM16(0, false);
+					SetDParam(0, false);
 
 			} else {
 				DrawFrameRect(x+20, y+1, x+20+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
@@ -1496,11 +1492,11 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				if(ce->str==STR_CHEAT_SWITCH_CLIMATE)
 					val += STR_TEMPERATE_LANDSCAPE;
 
-				SET_DPARAM16(0, val);
+				SetDParam(0, val);
 
 				// display date for change date cheat
 				if(ce->str==STR_CHEAT_CHANGE_DATE)
-					SET_DPARAM16(0, _date);
+					SetDParam(0, _date);
 
 				// draw colored flag for change player cheat
 				if(ce->str==STR_CHEAT_CHANGE_PLAYER)

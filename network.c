@@ -1127,7 +1127,7 @@ bool NetworkCheckClientReady()
 		ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
 		if (!cs->ready) cs->timeout-=1;
 		if (cs->timeout == 0) {
-			SET_DPARAM16(0,count);
+			SetDParam(0,count);
 			ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
 			CloseClient(cs);
 			}

@@ -168,7 +168,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				v->next_order = 1;
 				v->age = 0;
 
-				SET_DPARAM16(0, _map2[tile]);
+				SetDParam(0, _map2[tile]);
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
 					NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 					v->index,
@@ -372,7 +372,7 @@ static void DisasterTick_2(Vehicle *v)
 			i = DEREF_INDUSTRY(v->dest_tile);
 			DestructIndustry(i);
 
-			SET_DPARAM16(0, i->town->index);
+			SetDParam(0, i->town->index);
 			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
 			SndPlayTileFx(0x10, i->xy);
 		}
@@ -442,7 +442,7 @@ static void DisasterTick_3(Vehicle *v)
 			i = DEREF_INDUSTRY(v->dest_tile);
 			DestructIndustry(i);
 
-			SET_DPARAM16(0, i->town->index);
+			SetDParam(0, i->town->index);
 			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
 			SndPlayTileFx(0x10, i->xy);
 		}
@@ -525,7 +525,7 @@ static void DisasterTick_4(Vehicle *v)
 		}
 
 		t = ClosestTownFromTile(v->dest_tile, (uint)-1);
-		SET_DPARAM16(0, t->index);
+		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ACCIDENT, 0),
 			v->tile,
@@ -894,7 +894,7 @@ static void Disaster7_Init()
 		for(i=_industries; i != endof(_industries); i++) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE	&& --index < 0) {
 
-				SET_DPARAM16(0, i->town->index);
+				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TILE_XY(1,1), 0);
 

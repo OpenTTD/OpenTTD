@@ -106,7 +106,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 			return true;
 
 		t = ClosestTownFromTile(tile, (uint)-1);
-		SET_DPARAM16(0, t->index);
+		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
 	}

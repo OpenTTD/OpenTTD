@@ -33,8 +33,8 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 		byte color;
 		int cargo;
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
@@ -82,9 +82,9 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 		if (cargo != -1) {
 			int32 cost = DoCommandByTile(v->tile, v->index, cargo, 0, CMD_REFIT_SHIP);
 			if (cost != CMD_ERROR) {
-				SET_DPARAM32(2, cost);
-				SET_DPARAM16(0, _cargoc.names_long_p[cargo]);
-				SET_DPARAM16(1, v->cargo_cap);
+				SetDParam(2, cost);
+				SetDParam(0, _cargoc.names_long_p[cargo]);
+				SetDParam(1, v->cargo_cap);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
@@ -156,8 +156,8 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		if (!_patches.servint_ships) // disable service-scroller when interval is set to disabled
 			w->disabled_state |= (1 << 5) | (1 << 6);
 
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -165,7 +165,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			int year = v->age / 366;
 			StringID str;
 
-			SET_DPARAM16(1, year);
+			SetDParam(1, year);
 
 			str = STR_0199_YEAR;
 			if (year != 1) {
@@ -173,55 +173,55 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 				if (v->max_age - 366 < v->age)
 					str++;
 			}
-			SET_DPARAM16(0, str);
-			SET_DPARAM16(2, v->max_age / 366);
-			SET_DPARAM32(3, ship_vehicle_info(v->engine_type).running_cost * _price.ship_running >> 8);
+			SetDParam(0, str);
+			SetDParam(2, v->max_age / 366);
+			SetDParam(3, ship_vehicle_info(v->engine_type).running_cost * _price.ship_running >> 8);
 			DrawString(2, 15, STR_9812_AGE_RUNNING_COST_YR, 0);
 		}
 
 		/* Draw max speed */
 		{
-			SET_DPARAM16(0, v->max_speed * 10 >> 5);
+			SetDParam(0, v->max_speed * 10 >> 5);
 			DrawString(2, 25, STR_9813_MAX_SPEED, 0);
 		}
 
 		/* Draw profit */
 		{
-			SET_DPARAM32(0, v->profit_this_year);
-			SET_DPARAM32(1, v->profit_last_year);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
 			DrawString(2, 35, STR_9814_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
 		/* Draw breakdown & reliability */
 		{
-			SET_DPARAM8(0, v->reliability * 100 >> 16);
-			SET_DPARAM16(1, v->breakdowns_since_last_service);
+			SetDParam(0, v->reliability * 100 >> 16);
+			SetDParam(1, v->breakdowns_since_last_service);
 			DrawString(2, 45, STR_9815_RELIABILITY_BREAKDOWNS, 0);
 		}
 
 		/* Draw service interval text */
 		{
-			SET_DPARAM16(0, v->service_interval);
-			SET_DPARAM16(1, v->date_of_last_service);
+			SetDParam(0, v->service_interval);
+			SetDParam(1, v->date_of_last_service);
 			DrawString(13, 90, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 		}
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
 
-		SET_DPARAM16(1, 1920 + v->build_year);
-		SET_DPARAM16(0, GetCustomEngineName(v->engine_type));
-		SET_DPARAM32(2, v->value);
+		SetDParam(1, 1920 + v->build_year);
+		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);
 
-		SET_DPARAM16(0, _cargoc.names_long_p[v->cargo_type]);
-		SET_DPARAM16(1, v->cargo_cap);
+		SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
+		SetDParam(1, v->cargo_cap);
 		DrawString(74, 67, STR_9817_CAPACITY, 0);
 
 		str = STR_8812_EMPTY;
 		if (v->cargo_count != 0) {
-			SET_DPARAM8(0, v->cargo_type);
-			SET_DPARAM16(1, v->cargo_count);
-			SET_DPARAM16(2, v->cargo_source);
+			SetDParam(0, v->cargo_type);
+			SetDParam(1, v->cargo_count);
+			SetDParam(2, v->cargo_source);
 			str = STR_8813_FROM;
 		}
 		DrawString(74, 78, str, 0);
@@ -230,7 +230,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: /* rename */
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w->window_class, w->window_number);
 			break;
 		case 5: /* increase int */
@@ -363,18 +363,18 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			if (selected_id != -1) {
 				Engine *e;
 
-				SET_DPARAM32(0, ship_vehicle_info(selected_id).base_cost * (_price.ship_base>>3)>>5);
-				SET_DPARAM16(1, ship_vehicle_info(selected_id).max_speed * 10 >> 5);
-				SET_DPARAM16(2, _cargoc.names_long_p[ship_vehicle_info(selected_id).cargo_type]);
-				SET_DPARAM16(3, ship_vehicle_info(selected_id).capacity);
-				SET_DPARAM16(4, ship_vehicle_info(selected_id).refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-				SET_DPARAM32(5, ship_vehicle_info(selected_id).running_cost * _price.ship_running >> 8);
+				SetDParam(0, ship_vehicle_info(selected_id).base_cost * (_price.ship_base>>3)>>5);
+				SetDParam(1, ship_vehicle_info(selected_id).max_speed * 10 >> 5);
+				SetDParam(2, _cargoc.names_long_p[ship_vehicle_info(selected_id).cargo_type]);
+				SetDParam(3, ship_vehicle_info(selected_id).capacity);
+				SetDParam(4, ship_vehicle_info(selected_id).refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+				SetDParam(5, ship_vehicle_info(selected_id).running_cost * _price.ship_running >> 8);
 
 				e = &_engines[selected_id];
-				SET_DPARAM16(7, e->lifelength);
-				SET_DPARAM8(8, e->reliability * 100 >> 16);
+				SetDParam(7, e->lifelength);
+				SetDParam(8, e->reliability * 100 >> 16);
 				ConvertDayToYMD(&ymd, e->intro_date);
-				SET_DPARAM16(6, ymd.year + 1920);
+				SetDParam(6, ymd.year + 1920);
 
 				DrawString(2, 111, STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
 			}
@@ -485,8 +485,8 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
-		SET_DPARAM16(0, v->string_id);
-		SET_DPARAM16(1, v->unitnumber);
+		SetDParam(0, v->string_id);
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		/* draw the flag */
@@ -499,15 +499,15 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		} else {
 			switch(v->next_order & OT_MASK) {
 			case OT_GOTO_STATION: {
-				SET_DPARAM16(0, v->next_order_param);
-				SET_DPARAM16(1, v->cur_speed * 10 >> 5);
+				SetDParam(0, v->next_order_param);
+				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *dep = &_depots[v->next_order_param];
-				SET_DPARAM16(0, dep->town_index);
-				SET_DPARAM16(1, v->cur_speed * 10 >> 5);
+				SetDParam(0, dep->town_index);
+				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
 			} break;
 
@@ -519,7 +519,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SET_DPARAM16(0, v->cur_speed * 10 >> 5);
+					SetDParam(0, v->cur_speed * 10 >> 5);
 				} else
 					str = STR_EMPTY;
 				break;
@@ -632,7 +632,7 @@ static void DrawShipDepotWindow(Window *w)
 	/* locate the depot struct */
 	for(d=_depots; d->xy != (TileIndex)tile; d++) {}
 
-	SET_DPARAM16(0, d->town_index);
+	SetDParam(0, d->town_index);
 	DrawWindowWidgets(w);
 
 	x = 2;
@@ -647,7 +647,7 @@ static void DrawShipDepotWindow(Window *w)
 
 			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
 
-			SET_DPARAM16(0, v->unitnumber);
+			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
 			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x, y + 9);
@@ -856,7 +856,7 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 			st = DEREF_STATION(ord >> 8);
 
 			if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
-				SET_DPARAM16(0, ord >> 8);
+				SetDParam(0, ord >> 8);
 				DrawString(x, y, STR_A036, 0);
 
 				y += 6;
@@ -955,9 +955,9 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		{
 			Player *p = DEREF_PLAYER(window_number);
 			/* Company Name -- (###) Ships */
-			SET_DPARAM16(0, p->name_1);
-			SET_DPARAM32(1, p->name_2);
-			SET_DPARAM16(2, w->vscroll.count);
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
 			DrawWindowWidgets(w);
 		}
 		/* draw sorting criteria string */
@@ -982,7 +982,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				if (IsShipDepotTile(v->tile)) {
 					str = STR_021F;
 				} else {
@@ -990,12 +990,12 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 				}
 				DrawString(x, y+2, str, 0);
 
-				SET_DPARAM32(0, v->profit_this_year);
-				SET_DPARAM32(1, v->profit_last_year);
+				SetDParam(0, v->profit_this_year);
+				SetDParam(1, v->profit_last_year);
 				DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 				if (v->string_id != STR_SV_SHIP_NAME) {
-					SET_DPARAM16(0, v->string_id);
+					SetDParam(0, v->string_id);
 					DrawString(x+12, y, STR_01AB, 0);
 				}
 

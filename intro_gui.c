@@ -44,7 +44,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 	case WE_PAINT:
 		w->click_state = (w->click_state & ~(0xC0) & ~(0xF << 12)) | (1 << (_new_opt.landscape+12)) | (!_networking?(1<<6):(1<<7));
 		w->disabled_state = _networking ? 0x30 : 0;
-		SET_DPARAM16(0, STR_6801_EASY + _new_opt.diff_level);
+		SetDParam(0, STR_6801_EASY + _new_opt.diff_level);
 		DrawWindowWidgets(w);
 		break;
 
@@ -190,15 +190,15 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 #if defined(_WIN32)
-		SET_DPARAM16(0, STR_0133_WINDOWS);
+		SetDParam(0, STR_0133_WINDOWS);
 #elif defined(__APPLE__)
-		SET_DPARAM16(0, STR_0135_OSX);
+		SetDParam(0, STR_0135_OSX);
 #elif defined(__BEOS__)
-		SET_DPARAM16(0, STR_OSNAME_BEOS);
+		SetDParam(0, STR_OSNAME_BEOS);
 #elif defined(__MORPHOS__)
-		SET_DPARAM16(0, STR_OSNAME_MORPHOS);
+		SetDParam(0, STR_OSNAME_MORPHOS);
 #else
-		SET_DPARAM16(0, STR_0134_UNIX);
+		SetDParam(0, STR_0134_UNIX);
 #endif
 		DrawStringMultiCenter(0x5A, 0x26, STR_00CA_ARE_YOU_SURE_YOU_WANT_TO, 178);
 		return;

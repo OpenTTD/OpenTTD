@@ -291,7 +291,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 
 	if (_current_player < MAX_PLAYERS) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
-			SET_DPARAM16(0, t->index);
+			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
 		}
 	}
@@ -318,7 +318,7 @@ static void GetTileDesc_Town(uint tile, TileDesc *td)
 {
 	td->str = _town_tile_names[_map2[tile]];
 	if ((_map3_lo[tile] & 0xC0) != 0xC0) {
-		SET_DPARAMX16(td->dparam, 0, td->str);
+		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
 
@@ -815,7 +815,7 @@ static void UpdateTownRadius(Town *t)
 static void UpdateTownVirtCoord(Town *t)
 {
 	Point pt = RemapCoords2(GET_TILE_X(t->xy)*16, GET_TILE_Y(t->xy)*16);
-	SET_DPARAM32(0, t->townnameparts);
+	SetDParam(0, t->townnameparts);
 	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24, t->townnametype);
 }
 
@@ -832,7 +832,7 @@ static void CreateTownName(Town *t1)
 restart:
 		r = Random();
 
-		SET_DPARAM32(0, r);
+		SetDParam(0, r);
 		GetString(buf1, t1->townnametype);
 
 		// Check size and width
@@ -841,7 +841,7 @@ restart:
 
 		FOR_ALL_TOWNS(t2) {
 			if (t2->xy != 0) {
-				SET_DPARAM32(0, t2->townnameparts);
+				SetDParam(0, t2->townnameparts);
 				GetString(buf2, t2->townnametype);
 				if (str_eq(buf1, buf2))
 					goto restart;
@@ -1440,11 +1440,11 @@ static void TownActionRoadRebuild(Town *t, int action)
 
 	t->road_build_months = 6;
 
-	SET_DPARAM16(0, t->index);
+	SetDParam(0, t->index);
 
 	p = DEREF_PLAYER(_current_player);
-	SET_DPARAM16(1, p->name_1);
-	SET_DPARAM32(2, p->name_2);
+	SetDParam(1, p->name_1);
+	SetDParam(2, p->name_2);
 
 	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
 		NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_GENERAL, 0), t->xy, 0);
@@ -1704,7 +1704,7 @@ bool CheckIfAuthorityAllows(uint tile)
 		return true;
 
 	_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
-	SET_DPARAM16(0, t->index);
+	SetDParam(0, t->index);
 
 	return false;
 }
@@ -1778,7 +1778,7 @@ bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type)
 	modemod = _default_rating_settings[_opt_mod_ptr->diff.town_council_tolerance][type];
 
 	if (t->ratings[_current_player] < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
-		SET_DPARAM16(0, t->index);
+		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
 	}

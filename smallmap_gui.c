@@ -798,7 +798,7 @@ skip_column:
 						y + 6 > dpi->top &&
 						y < dpi->top + dpi->height) {
 					// And draw it.
-					SET_DPARAM16(0, t->index);
+					SetDParam(0, t->index);
 					DrawString(x, y, STR_2056, 12);
 				}
 			}
@@ -846,7 +846,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 
 		/* draw the window */
-		SET_DPARAM16(0, STR_00E5_CONTOURS + _smallmap_type);
+		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
 		DrawWindowWidgets(w);
 
 		/* draw the legend */
@@ -1019,7 +1019,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		// set the number in the title bar
-		SET_DPARAM16(0, (w->window_number+1));
+		SetDParam(0, (w->window_number+1));
 
 		DrawWindowWidgets(w);
 		DrawWindowViewport(w);

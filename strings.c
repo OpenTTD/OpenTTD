@@ -183,14 +183,14 @@ void InjectDparam(int amount)
 
 int32 GetParamInt32()
 {
-	int32 result = GET_DPARAM32(0);
+	int32 result = GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 static int64 GetParamInt64()
 {
-	int64 result = GET_DPARAM32(0) + ((uint64)GET_DPARAM32(1) << 32);
+	int64 result = GetDParam(0) + ((uint64)GetDParam(1) << 32);
 	memmove(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));
 	return result;
 }
@@ -198,21 +198,21 @@ static int64 GetParamInt64()
 
 int GetParamInt16()
 {
-	int result = (int16)GET_DPARAM16(0);
+	int result = (int16)GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 int GetParamInt8()
 {
-	int result = (int8)GET_DPARAM8(0);
+	int result = (int8)GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
 
 int GetParamUint16()
 {
-	int result = GET_DPARAM16(0);
+	int result = GetDParam(0);
 	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
 	return result;
 }
@@ -493,7 +493,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 			//   16-bit - cargo count
 			int cargo_str = _cargoc.names_long_s[GetParamInt8()];
 			// Now check if the cargo count is 1, if it is, increase string by 32.
-			if (GET_DPARAM16(0) != 1) cargo_str += 32;
+			if (GetDParam(0) != 1) cargo_str += 32;
 			buff = GetString(buff, cargo_str);
 			break;
 		}
@@ -501,21 +501,21 @@ static byte *DecodeString(byte *buff, const byte *str)
 		case 0x9A: { // {STATION}
 			Station *st;
 			InjectDparam(1);
-			st = DEREF_STATION(GET_DPARAM16(1));
+			st = DEREF_STATION(GetDParam(1));
 			if (!st->xy) { // station doesn't exist anymore
 				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
 				break;
 			}
-			SET_DPARAM16(0, st->town->townnametype);
-			SET_DPARAM32(1, st->town->townnameparts);
+			SetDParam(0, st->town->townnametype);
+			SetDParam(1, st->town->townnameparts);
 			buff = GetString(buff, st->string_id);
 			break;
 		}
 		case 0x9B: { // {TOWN}
 			Town *t;
-			t = DEREF_TOWN(GET_DPARAM16(0));
+			t = DEREF_TOWN(GetDParam(0));
 			assert(t->xy);
-			SET_DPARAM32(0, t->townnameparts);
+			SetDParam(0, t->townnameparts);
 			buff = GetString(buff, t->townnametype);
 			break;
 		}
@@ -526,7 +526,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 		}
 
 		case 0x9D: { // {WAYPOINT}
-			Waypoint *cp = &_waypoints[GET_DPARAM16(0)];
+			Waypoint *cp = &_waypoints[GetDParam(0)];
 			StringID str;
 			int idx;
 			if (~cp->town_or_string & 0xC000) {
@@ -538,10 +538,10 @@ static byte *DecodeString(byte *buff, const byte *str)
 					str = STR_WAYPOINTNAME_CITY;
 				} else {
 					InjectDparam(1);
-					SET_DPARAM16(1, idx + 1);
+					SetDParam(1, idx + 1);
 					str = STR_WAYPOINTNAME_CITY_SERIAL;
 				}
-				SET_DPARAM16(0, cp->town_or_string & 0xFF);
+				SetDParam(0, cp->town_or_string & 0xFF);
 			}
 
 			buff = GetString(buff, str);

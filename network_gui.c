@@ -47,8 +47,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 
-		SET_DPARAM16(0, 0x00);
-		SET_DPARAM16(2, STR_NETWORK_LAN + _network_connection);
+		SetDParam(0, 0x00);
+		SetDParam(2, STR_NETWORK_LAN + _network_connection);
 		DrawWindowWidgets(w);
 
 		DrawEditBox(w, 6);
@@ -70,8 +70,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 				DoDrawString(cur_item->item.server_name, 15, y, 16); // server name
 
-				SET_DPARAM8(0, cur_item->item.players_on);
-				SET_DPARAM8(1, cur_item->item.players_max);
+				SetDParam(0, cur_item->item.players_on);
+				SetDParam(1, cur_item->item.players_max);
 				DrawString(238, y, STR_NETWORK_PLAYERS_VAL, 2); // #/#
 
 				DoDrawString(cur_item->item.map_name, 288, y, 16); // map size
@@ -268,7 +268,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 
-		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _players_max);
+		SetDParam(7, STR_NETWORK_2_PLAYERS + _players_max);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 237, 168, 0xD7);
@@ -389,7 +389,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 
-		SET_DPARAM16(7, STR_NETWORK_2_PLAYERS + _opt_mod_ptr->road_side);
+		SetDParam(7, STR_NETWORK_2_PLAYERS + _opt_mod_ptr->road_side);
 		DrawWindowWidgets(w);
 
 		GfxFillRect( 11,  31, 239, 239, 0xD7);

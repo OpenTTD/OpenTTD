@@ -327,8 +327,8 @@ static void UpdateStationVirtCoord(Station *st)
 	pt.y -= 32;
 	if (st->facilities&FACIL_AIRPORT && st->airport_type==AT_OILRIG) pt.y -= 16;
 
-	SET_DPARAM16(0, st->index);
-	SET_DPARAM8(1, st->facilities);
+	SetDParam(0, st->index);
+	SetDParam(1, st->facilities);
 	UpdateViewportSignPos(&st->sign, pt.x, pt.y, STR_305C_0);
 }
 
@@ -368,9 +368,9 @@ static uint GetAcceptanceMask(Station *st)
 static void ShowRejectOrAcceptNews(Station *st, uint32 items, StringID msg)
 {
 	if (items) {
-		SET_DPARAM32(2, items >> 16);
-		SET_DPARAM32(1, items & 0xFFFF);
-		SET_DPARAM16(0, st->index);
+		SetDParam(2, items >> 16);
+		SetDParam(1, items & 0xFFFF);
+		SetDParam(0, st->index);
 		AddNewsItem(msg + ((items >> 16)?1:0), NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 	}
 }
@@ -1517,7 +1517,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				num++;
 		}
 		if (num >= 2) {
-			SET_DPARAM16(0, t->index);
+			SetDParam(0, t->index);
 			return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
 		}
 	}
@@ -2622,7 +2622,7 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 		if (m5 < 0x4B) return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
 		if (m5 == 0x52) return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
 		if (m5 != 0x4B && m5 < 0x53) return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
-		SET_DPARAM16(0, STR_4807_OIL_RIG);
+		SetDParam(0, STR_4807_OIL_RIG);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 

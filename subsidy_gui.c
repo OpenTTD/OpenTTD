@@ -92,7 +92,7 @@ static void DrawSubsidiesWindow(Window *w)
 			SetupSubsidyDecodeParam(s, 1);
 			x2 = DrawString(x+2, y, STR_2027_FROM_TO, 0);
 
-			SET_DPARAM16(0, _date - ymd.day + 384 - s->age * 32);
+			SetDParam(0, _date - ymd.day + 384 - s->age * 32);
 			DrawString(x2, y, STR_2028_BY, 0);
 			y += 10;
 			num++;
@@ -113,12 +113,12 @@ static void DrawSubsidiesWindow(Window *w)
 			SetupSubsidyDecodeParam(s, 1);
 
 			p = DEREF_PLAYER(DEREF_STATION(s->to)->owner);
-			SET_DPARAM16(3, p->name_1);
-			SET_DPARAM32(4, p->name_2);
+			SetDParam(3, p->name_1);
+			SetDParam(4, p->name_2);
 
 			xt = DrawString(x+2, y, STR_202C_FROM_TO, 0);
 
-			SET_DPARAM16(0, _date - ymd.day + 768 - s->age * 32);
+			SetDParam(0, _date - ymd.day + 768 - s->age * 32);
 			DrawString(xt, y, STR_202D_UNTIL, 0);
 			y += 10;
 			num++;

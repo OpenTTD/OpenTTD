@@ -39,11 +39,11 @@ void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 void DrawShipEngineInfo(int engine, int x, int y, int maxw)
 {
 	ShipVehicleInfo *svi = &ship_vehicle_info(engine);
-	SET_DPARAM32(0, svi->base_cost * (_price.ship_base>>3)>>5);
-	SET_DPARAM16(1, svi->max_speed * 10 >> 5);
-	SET_DPARAM16(2, _cargoc.names_long_p[svi->cargo_type]);
-	SET_DPARAM16(3, svi->capacity);
-	SET_DPARAM32(4, svi->running_cost * _price.ship_running >> 8);
+	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
+	SetDParam(1, svi->max_speed * 10 >> 5);
+	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(3, svi->capacity);
+	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
@@ -406,7 +406,7 @@ static void ShipEnterDepot(Vehicle *v)
 		else if (t & 0x40) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_981C_SHIP_IS_WAITING_IN_DEPOT,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
@@ -423,7 +423,7 @@ static void ShipArrivesAt(Vehicle *v, Station *st)
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
 		uint32 flags;
 		st->had_vehicle_of_type |= HVOT_SHIP;
-		SET_DPARAM16(0, st->index);
+		SetDParam(0, st->index);
 		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
 			STR_9833_CITIZENS_CELEBRATE_FIRST,

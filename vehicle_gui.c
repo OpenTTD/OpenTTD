@@ -95,7 +95,7 @@ int CDECL VehicleNameSorter(const void *a, const void *b)
 	int r;
 
 	if (va->string_id != _internal_name_sorter_id) {
-		SET_DPARAM16(0, va->string_id);
+		SetDParam(0, va->string_id);
 		GetString(buf1, STR_0315);
 	}
 
@@ -103,7 +103,7 @@ int CDECL VehicleNameSorter(const void *a, const void *b)
 		_last_vehicle_idx = cmp2->index;
 		_bufcache[0] = '\0';
 		if (vb->string_id != _internal_name_sorter_id) {
-			SET_DPARAM16(0, vb->string_id);
+			SetDParam(0, vb->string_id);
 			GetString(_bufcache, STR_0315);
 		}
 	}

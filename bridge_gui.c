@@ -46,9 +46,9 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 		for(i=0; i < 4 && i + w->vscroll.pos < _bridge.count; i++) {
 			int ind = _bridge.indexes[i + w->vscroll.pos];
 
-			SET_DPARAM32(2, _bridge.costs[i + w->vscroll.pos]);
-			SET_DPARAM16(1, (_bridge_speeds[ind] >> 4) * 10);
-			SET_DPARAM16(0, _bridge_material[ind]);
+			SetDParam(2, _bridge.costs[i + w->vscroll.pos]);
+			SetDParam(1, (_bridge_speeds[ind] >> 4) * 10);
+			SetDParam(0, _bridge_material[ind]);
 			DrawSprite(_bridge_sprites[ind], 3, 15 + i * 22);
 
 			DrawString(44, 15 + i*22 , STR_500D, 0);

@@ -367,36 +367,36 @@ VARDEF CargoConst _cargoc;
 typedef byte TownNameGenerator(byte *buf, uint32 seed);
 extern TownNameGenerator * const _town_name_generators[];
 
-#define SET_DPARAM32(n, v) (_decode_parameters[n] = (v))
-#define SET_DPARAMX32(s, n, v) ((s)[n] = (v))
-#define GET_DPARAM32(n) (_decode_parameters[n])
 
-#define SET_DPARAM(n, v) (_decode_parameters[n] = (v))
-#define SET_DPARAMX(s, n, v) ((s)[n] = (v))
-#define GET_DPARAM(n) (_decode_parameters[n])
-
-static void FORCEINLINE SET_DPARAM64(int n, int64 v)
+static inline void SetDParamX(uint32 *s, uint n, uint32 v)
 {
-	_decode_parameters[n] = (uint32)v;
-	_decode_parameters[n+1] = (uint32)((uint64)v >> 32);
+	s[n] = v;
 }
 
-#if defined(TTD_LITTLE_ENDIAN)
-#define SET_DPARAMX16(s, n, v) ( ((uint16*)(s+n))[0] = (v))
-#define SET_DPARAMX8(s, n, v) ( ((uint8*)(s+n))[0] = (v))
-#define GET_DPARAMX16(s, n) ( ((uint16*)(s+n))[0])
-#define GET_DPARAMX8(s, n) ( ((uint8*)(s+n))[0])
-#elif defined(TTD_BIG_ENDIAN)
-#define SET_DPARAMX16(s, n, v) ( ((uint16*)(s+n))[1] = (v))
-#define SET_DPARAMX8(s, n, v) ( ((uint8*)(s+n))[3] = (v))
-#define GET_DPARAMX16(s, n) ( ((uint16*)(s+n))[1])
-#define GET_DPARAMX8(s, n) ( ((uint8*)(s+n))[3])
-#endif
+static inline uint32 GetDParamX(const uint32 *s, uint n)
+{
+	return s[n];
+}
 
-#define SET_DPARAM16(n, v) SET_DPARAMX16(_decode_parameters, n, v)
-#define SET_DPARAM8(n, v)  SET_DPARAMX8(_decode_parameters, n, v)
-#define GET_DPARAM16(n)    GET_DPARAMX16(_decode_parameters, n)
-#define GET_DPARAM8(n)     GET_DPARAMX8(_decode_parameters, n)
+static inline void SetDParam(uint n, uint32 v)
+{
+	assert(n < lengthof(_decode_parameters));
+	_decode_parameters[n] = v;
+}
+
+static inline void SetDParam64(uint n, uint64 v)
+{
+	assert(n + 1 < lengthof(_decode_parameters));
+	_decode_parameters[n + 0] = v & 0xffffffff;
+	_decode_parameters[n + 1] = v >> 32;
+}
+
+static inline uint32 GetDParam(uint n)
+{
+	assert(n < lengthof(_decode_parameters));
+	return _decode_parameters[n];
+}
+
 
 #define COPY_IN_DPARAM(offs,src,num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
 #define COPY_OUT_DPARAM(dst,offs,num) memcpy(dst,_decode_parameters + offs, sizeof(uint32) * (num))

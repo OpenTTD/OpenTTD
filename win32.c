@@ -1761,7 +1761,7 @@ StringID FiosGetDescText(const char **path)
 	root[3] = 0;
 	if (GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		uint32 tot = ((spc*bps)*(uint64)nfc) >> 20;
-		SET_DPARAM32(0, tot);
+		SetDParam(0, tot);
 		return STR_4005_BYTES_FREE;
 	} else {
 		return STR_4006_UNABLE_TO_READ_DRIVE;

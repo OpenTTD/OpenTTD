@@ -493,7 +493,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		if (res2 != 0)
 			ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
-			SET_DPARAM32(0, _additional_cash_required);
+			SetDParam(0, _additional_cash_required);
 			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, _error_message_2, x,y);
 			if (res2 == 0) goto callb_err;
 		}

@@ -87,12 +87,12 @@ void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 {
-	SET_DPARAM32(0, ((_price.roadveh_base >> 3) * road_vehicle_info(engine)->base_cost) >> 5);
-	SET_DPARAM16(1, road_vehicle_info(engine)->max_speed * 10 >> 5);
-	SET_DPARAM32(2, road_vehicle_info(engine)->running_cost * _price.roadveh_running >> 8);
+	SetDParam(0, ((_price.roadveh_base >> 3) * road_vehicle_info(engine)->base_cost) >> 5);
+	SetDParam(1, road_vehicle_info(engine)->max_speed * 10 >> 5);
+	SetDParam(2, road_vehicle_info(engine)->running_cost * _price.roadveh_running >> 8);
 
-	SET_DPARAM16(4, road_vehicle_info(engine)->capacity);
-	SET_DPARAM16(3, _cargoc.names_long_p[road_vehicle_info(engine)->cargo_type]);
+	SetDParam(4, road_vehicle_info(engine)->capacity);
+	SetDParam(3, _cargoc.names_long_p[road_vehicle_info(engine)->cargo_type]);
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
@@ -491,7 +491,7 @@ static void RoadVehCrash(Vehicle *v)
 	if (v->cargo_type == 0)
 		pass += v->cargo_count;
 	v->cargo_count = 0;
-	SET_DPARAM16(0, pass);
+	SetDParam(0, pass);
 
 	AddNewsItem(STR_9031_ROAD_VEHICLE_CRASH_DRIVER+(pass!=1),
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
@@ -703,7 +703,7 @@ static void RoadVehArrivesAt(Vehicle *v, Station *st)
 			uint32 flags;
 
 			st->had_vehicle_of_type |= HVOT_BUS;
-			SET_DPARAM16(0, st->index);
+			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
 				STR_902F_CITIZENS_CELEBRATE_FIRST,
@@ -717,7 +717,7 @@ static void RoadVehArrivesAt(Vehicle *v, Station *st)
 			uint32 flags;
 
 			st->had_vehicle_of_type |= HVOT_TRUCK;
-			SET_DPARAM16(0, st->index);
+			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
 				STR_9030_CITIZENS_CELEBRATE_FIRST,
@@ -1381,7 +1381,7 @@ void RoadVehEnterDepot(Vehicle *v)
 		else if (t & OF_FULL_LOAD) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
-				SET_DPARAM16(0, v->unitnumber);
+				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_9016_ROAD_VEHICLE_IS_WAITING,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),

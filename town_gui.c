@@ -102,7 +102,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			int r;
 			StringID str;
 
-			SET_DPARAM16(0, w->window_number);
+			SetDParam(0, w->window_number);
 			DrawWindowWidgets(w);
 
 			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, 0);
@@ -113,9 +113,9 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity==p->index)) {
 					DrawPlayerIcon(p->index, 2, y);
 
-					SET_DPARAM16(0, p->name_1);
-					SET_DPARAM32(1, p->name_2);
-					SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
+					SetDParam(0, p->name_1);
+					SetDParam(1, p->name_2);
+					SetDParam(2, GetPlayerNameString(p->index, 3));
 
 					r = t->ratings[p->index];
 					(str = STR_3035_APPALLING, r <= -400) ||	// Apalling
@@ -133,7 +133,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 							that because there is another param after it.
 							So we'll just shift the rating one back if player is AI and all is fine
 						*/
-					SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
+					SetDParam((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
 					if (t->exclusivity == p->index) // red icon for player with exclusive rights
 						DrawSprite((SPR_OPENTTD_BASE + 10) | 0x30b8000, 18, y);
 
@@ -166,8 +166,8 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		{
 			int i;
 			if ((i=WP(w,def_d).data_1) != -1) {
-				SET_DPARAM32(1, (_price.build_industry >> 8) * _town_action_costs[i]);
-				SET_DPARAM16(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
+				SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
+				SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
 				DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
 			}
 		}
@@ -227,19 +227,19 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 	switch(e->event) {
 	case WE_PAINT:
-		SET_DPARAM16(0, t->index);
+		SetDParam(0, t->index);
 		DrawWindowWidgets(w);
 
-		SET_DPARAM32(0, t->population);
-		SET_DPARAM32(1, t->num_houses);
+		SetDParam(0, t->population);
+		SetDParam(1, t->num_houses);
 		DrawString(2,107,STR_2006_POPULATION,0);
 
-		SET_DPARAM16(0, t->act_pass);
-		SET_DPARAM16(1, t->max_pass);
+		SetDParam(0, t->act_pass);
+		SetDParam(1, t->max_pass);
 		DrawString(2,117,STR_200D_PASSENGERS_LAST_MONTH_MAX,0);
 
-		SET_DPARAM16(0, t->act_mail);
-		SET_DPARAM16(1, t->max_mail);
+		SetDParam(0, t->act_mail);
+		SetDParam(1, t->max_mail);
 		DrawString(2,127,STR_200E_MAIL_LAST_MONTH_MAX,0);
 
 		DrawWindowViewport(w);
@@ -254,7 +254,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			ShowTownAuthorityWindow(w->window_number);
 			break;
 		case 7: /* rename */
-			SET_DPARAM32(0, t->townnameparts);
+			SetDParam(0, t->townnameparts);
 			ShowQueryString(t->townnametype, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
 			break;
 		case 8: /* expand town */
@@ -363,13 +363,13 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	int r;
 
 	t = DEREF_TOWN(*(const byte*)a);
-	SET_DPARAM32(0, t->townnameparts);
+	SetDParam(0, t->townnameparts);
 	GetString(buf1, t->townnametype);
 
 	if ( (val=*(const byte*)b) != _last_town_idx) {
 		_last_town_idx = val;
 		t = DEREF_TOWN(val);
-		SET_DPARAM32(0, t->townnameparts);
+		SetDParam(0, t->townnameparts);
 		GetString(_bufcache, t->townnametype);
 	}
 
@@ -427,8 +427,8 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 				assert(t->xy);
 
-				SET_DPARAM16(0, t->index);
-				SET_DPARAM32(1, t->population);
+				SetDParam(0, t->index);
+				SetDParam(1, t->population);
 				DrawString(2, y, STR_2057, 0);
 
 				y += 10;
