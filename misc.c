@@ -25,6 +25,9 @@ static INLINE uint32 ROR(uint32 x, int n)
 	#undef PLAYER_SEED_RANDOM
 #endif
 
+// its for now not used at all because it is still desyncing :(
+#undef PLAYER_SEED_RANDOM
+
 uint32 Random()
 {
 #ifdef PLAYER_SEED_RANDOM
