@@ -1,71 +1,112 @@
-Multiplayer Manual for OpenTTD
-----------------------------------------
+Multiplayer Manual for OpenTTD (0.3.5)
+=======================================
 
 1. Starting a Server
+---------------------
 
- - click "multiplayer" on the startup screen
- - click "start server"
- - type in a game name
- - click "start game" ,"load game" or "load scenario"
- 
+ - Click "multiplayer" on the startup screen
+ - Click "start server"
+ - Type in a game name
+ - Select the type of game ('LAN/Internet' or 'Internet (advertise)'. With the last one
+    other people are able to see you online. Else they need your IP and port to join)
+ - Click "start game" ,"load game" or "load scenario"
+ - Start playing
+
+
 2. Connecting to a Server
- 
- - click "multiplayer" on the startup screen
- 
- - if you want to connect to any network game in your LAN click "find server"
- 
- - if there were more then one server 
-   - select one in the list below the buttons
-   - click on "join game".
+--------------------------
 
- - if you want to play over the internet you should have the ip or hostname of the game server you want connect to.
+ - Click "multiplayer" on the startup screen
+
+ - If you want to connect to any network game in your LAN click on 'LAN', then on
+    'Find Server'
+ - If you want to see which servers all online on the Internet, click on 'Internet'
+    and 'Find Server'
+
+ - If there were more then one server
+   - select one in the list below the buttons
+   - click on 'join game'
+
+ - If you want to play and you have the ip or hostname of the game server you want connect to.
    - click add server
    - type in the ip address or hostname
    - if you want to add a port use :<port>
-   
- - now you can select a company and press: "Join company", to help that company
- - or you can press "Spectate game", to spectate the game
- - or you can press "New company", and start your own company (if there are slots free)
- 
- - you see a progressbar how far you are with joining the server.
- 
- - happy playing
-   
-3. Connecting to a Server over the Console
 
- - open the console and type in the following command:
-  
+ - Now you can select a company and press: "Join company", to help that company
+ - Or you can press "Spectate game", to spectate the game
+ - Or you can press "New company", and start your own company (if there are slots free)
+
+ - You see a progressbar how far you are with joining the server.
+
+ - Happy playing
+
+
+3. Connecting to a Server over the Console
+-------------------------------------------
+
+ - Open the console and type in the following command:
+
     ]connect <ip/host>:<port>#<player-no>
 
 
 4. Playing Internet-Games
+--------------------------
 
- - since OpenTTD 0.3.5 the network protocol has been rewritten and is very stable, even over slow connections.
- 
- - it can happen that a connection is that slow, or you have that many clients connected to your server, that your clients start to loose their connection. Some things you can do about it:
- 
- - net_frame_freq:
-    change it in console with: net_frame_freq = <number>
-	the number should be between the 0 and 10, not much higher. It indicates the delay between clicking and showing up. The higher, the more you notice it, but the less bandwidth you use.
-	
- - net_sync_freq:
-    change it in console with: net_sync_freq = <number>
-	the number should be between the 50 and 1000, not much lower, not much higer. It indicates the time between sync-frames. A sync-frame is a frame which checks if all clients are still in sync. When the value it too high, clients can desync in 1960, but the server detects it in 1970. Not really handy. The lower the value, the more bandwidth it uses.
-	
- NB: changing net_frame_freq has more effect on the bandwidth then net_sync_freq. You should never change net_sync_freq!
- 
+ - Since OpenTTD 0.3.5 the network protocol has been rewritten and is very stable, even over slow connections.
 
-5. Some useful things
+ - Server with a red dot behind it have a different version then you have. You will not be able to join those servers.
 
- - You can protect your company so nobody else can join uninvited. You do this with opening the console and then enter: protect <password>, where <password> is your password.
- 
+ - It can happen that a connection is that slow, or you have that many clients connected to your server, that your clients start to loose their connection. Some things you can do about it:
+
+   - net_frame_freq:
+      change it in console with: net_frame_freq = <number>
+     the number should be between the 0 and 10, not much higher. It indicates the delay between clicking and showing up. The higher, the more you notice it, but the less bandwidth you use.
+     A good value for Internet-games is 2 or 3.
+
+   - net_sync_freq:
+      change it in console with: net_sync_freq = <number>
+     the number should be between the 50 and 1000, not much lower, not much higer. It indicates the time between sync-frames. A sync-frame is a frame which checks if all clients are still in sync. When the value it too high, clients can desync in 1960, but the server detects it in 1970. Not really handy. The lower the value, the more bandwidth it uses.
+
+   NB: changing net_frame_freq has more effect on the bandwidth then net_sync_freq. You should never change net_sync_freq!
+
+
+5. Tips for servers
+--------------------
+
+ - You can launch a dedicated server by adding -D as parameter
+ - In UNIX like systems, you can fork your dedicated server by adding -f as parameter
+
+ - You can automaticly clean companies that do not have a client connected to them, for, let's say,
+      3 years. You can do this via: 'set autoclean_companies' and 'set autoclean_protected' and
+      'set autoclean_unprotected'. Unprotected removes a password from a company when it is
+      not used for more then the defined amount of months.
+ - You can also do this manually via the console: 'reset_company'.
+    Both ways, the company will go bankrupt.
+
+ - You can let your server automaticly restart a map when, let's say, year 2030 is reached.
+    See 'set restart_game_date' for detail.
+ - If you want to be on the server-list, enable Advertising. To do this, select 'Internet (advertise)'
+    in the Start Server menu, or type in console: 'set server_advertise 1'.
+
+ - You can protect your server with a password via the console: 'set server_pw', or via the
+    Start Server menu.
+
+ - When you have many clients connected to your server via Internet, watch your bandwidth (if
+    you have any limit on it, set by your ISP). 1 client uses +/- 3 kb/s up and down. To decrease
+    this amount, set 'net_frame_freq' to 1 for example. This will reduce it to 1.5 kb/s per client.
+
+
+6. Some useful things
+----------------------
+
+ - You can protect your company so nobody else can join uninvited. To do this, check your Company Screen
+
  - You can give other players some money via the ClientList (under the 'head' in the mainbar).
- 
- - You can chat with other players via SHIFT+T or via the ClientList
- 
+
+ - You can chat with other players via ENTER or via SHIFT+T or via the ClientList
+
  - Servers can now kick players, so don't make them use it!
- 
+
  - From 0.3.5, desyncs should not happen anymore
- 
+
  - From 0.3.5, patch-settings are also synced. You can now play without deleting openttd.cfg, and with, for example, extra large trains enabled.
- 
