@@ -56,10 +56,15 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	//    String: Unique id to find the player back in server-listing
 	//
 
-#if defined(WITH_REV)
-		extern char _openttd_revision[];
+#ifdef WITH_REV_HACK
+	#define WITH_REV
+	const char _openttd_revision[] = WITH_REV_HACK;
 #else
+	#if defined(WITH_REV)
+		extern char _openttd_revision[];
+	#else
 		const char _openttd_revision[] = "norev000";
+	#endif
 #endif
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;

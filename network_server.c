@@ -577,7 +577,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	NetworkRecv_string(p, client_revision, sizeof(client_revision));
 
 	//  Too bad, when WITH_REV is disabled, we can not compare the version.
-#if defined(WITH_REV)
+#if defined(WITH_REV) || defined (WITH_REV_HACK)
 	// Check if the client has WITH_REV enabled
 	if (strncmp("norev000", client_revision, sizeof(client_revision)) != 0) {
 		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision)) != 0) {

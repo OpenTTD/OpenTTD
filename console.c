@@ -231,9 +231,14 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 void IConsoleInit(void)
 {
 	uint i;
+#ifdef WITH_REV_HACK
+	#define WITH_REV
+	const char _openttd_revision[] = WITH_REV_HACK;
+#else
 	#if defined(WITH_REV)
 	extern char _openttd_revision[];
 	#endif
+#endif
 	_iconsole_output_file = NULL;
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
@@ -588,7 +593,7 @@ void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
 	item_new->hook_access = NULL;
 	item_new->hook_after_change = NULL;
 	item_new->hook_before_change = NULL;
-	
+
 }
 
 void IConsoleVarMemRegister(const char* name, _iconsole_var_types type)
