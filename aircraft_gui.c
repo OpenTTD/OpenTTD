@@ -735,7 +735,7 @@ static void DrawAircraftDepotWindow(Window *w)
 }
 
 static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **veh) {
-	uint xt,yt,xm,ym;
+	uint xt,row,xm,ym;
 	Vehicle *v;
 	uint tile;
 	int pos;
@@ -745,12 +745,12 @@ static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **v
 	if (xt >= 4)
 		return 1;
 
-	yt = (y - 14) / 24;
+	row = (y - 14) / 24;
 	ym = (y - 14) % 24;
-	if (yt >= 2)
+	if (row >= w->vscroll.cap)
 		return 1;
 
-	pos = (yt + w->vscroll.pos) * 4 + xt;
+	pos = (row + w->vscroll.pos) * 4 + xt;
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {

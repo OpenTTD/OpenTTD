@@ -544,7 +544,7 @@ static void DrawRoadDepotWindow(Window *w)
 
 static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 {
-	uint xt,yt,xm;
+	uint xt,row,xm;
 	TileIndex tile;
 	Vehicle *v;
 	int pos;
@@ -554,11 +554,11 @@ static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 	if (xt >= 5)
 		return 1;
 
-	yt = (y - 14) / 14;
-	if (yt >= 3)
+	row = (y - 14) / 14;
+	if (row >= w->vscroll.cap)
 		return 1;
 
-	pos = (yt + w->vscroll.pos) * 5 + xt;
+	pos = (row + w->vscroll.pos) * 5 + xt;
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
