@@ -503,11 +503,13 @@ endif
 all: endian.h $(UPDATECONFIG) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
-	# Check if system is LITTLE_ENDIAN or BIG_ENDIAN 
-	./$(ENDIAN_CHECK) > $@
+	@# Check if system is LITTLE_ENDIAN or BIG_ENDIAN 
+	@echo 'Running endian_check'; \
+		./$(ENDIAN_CHECK) > $@
 
 $(ENDIAN_CHECK): endian_check.c
-	$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
+	@echo 'Compiling and Linking $@'; \
+		$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
 	
 
 $(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
@@ -570,7 +572,7 @@ FORCE:
 # remove this for next release!
 clean:
 	@echo 'Cleaning up...'; \
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) ttd$(EXE)
+	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK) ttd$(EXE)
 
 mrproper: clean
 	rm -rf $(MAKE_CONFIG)
