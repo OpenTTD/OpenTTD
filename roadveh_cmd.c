@@ -1481,7 +1481,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	AgeVehicle(v);
 	CheckIfRoadVehNeedsService(v);
 
-	CheckOrders(v);
+	CheckOrders(v->index, OC_INIT);
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION) {

@@ -2756,7 +2756,7 @@ void OnNewDay_Train(Vehicle *v)
 				0);
 		}
 
-		CheckOrders(v);
+		CheckOrders(v->index, OC_INIT);
 
 		/* update destination */
 		if (v->current_order.type == OT_GOTO_STATION &&

@@ -629,8 +629,9 @@ int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 vehicle_id, uint32
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
  *
  */
-bool CheckOrders(const Vehicle *v)
+bool CheckOrders(uint data_a, uint data_b)
 {
+	Vehicle *v = GetVehicle(data_a);
 	/* Does the user wants us to check things? */
 	if (_patches.order_review_system == 0)
 		return false;
@@ -643,6 +644,10 @@ bool CheckOrders(const Vehicle *v)
 	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
 		return false;
 
+	/* do nothing we we're not the first vehicle in a share-chain */
+	if (v->next_shared != NULL)
+		return false;
+
 	/* Only check every 20 days, so that we don't flood the message log */
 	if ( ( ( v->day_counter % 20) == 0 ) && (v->owner == _local_player) ) {
 		int n_st, problem_type = -1;
@@ -653,6 +658,12 @@ bool CheckOrders(const Vehicle *v)
 		/* Check the order list */
 		n_st = 0;
 
+		/*if (data_b == OC_INIT) {
+			DEBUG(misc, 3) ("CheckOrder called in mode 0 (initiation mode) for %d", v->index);
+		} else {
+			DEBUG(misc, 3) ("CheckOrder called in mode 1 (validation mode) for %d", v->index);
+		}*/
+		
 		FOR_VEHICLE_ORDERS(v, order) {
 			/* Dummy order? */
 			if (order->type == OT_DUMMY) {
@@ -683,17 +694,32 @@ bool CheckOrders(const Vehicle *v)
 			problem_type = 0;
 
 		/* We don't have a problem */
-		if (problem_type < 0)
+		if (problem_type < 0) {
+			/*if (data_b == OC_INIT) {
+				DEBUG(misc, 3) ("CheckOrder mode 0: no problems found for %d", v->index);
+			} else {
+				DEBUG(misc, 3) ("CheckOrder mode 1: news item surpressed for %d", v->index);
+			}*/
 			return false;
+		}
+
+		/* we have a problem, are we're just in the validation process
+		   so don't display an error message */
+		if (data_b == OC_VALIDATE) {
+			/*DEBUG(misc, 3) ("CheckOrder mode 1: new item validated for %d", v->index);*/
+			return true;
+		}
 
 		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
+		/*DEBUG(misc, 3) ("Checkorder mode 0: Triggered News Item for %d", v->index);*/
 
 		SetDParam(0, v->unitnumber);
-		AddNewsItem(
+		AddValidatedNewsItem(
 			message,
 			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, 0),
 			v->index,
-			0);
+			OC_VALIDATE,	//next time, just validate the orders
+			CheckOrders);
 	}
 
 	return true;
