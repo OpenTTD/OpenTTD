@@ -21,11 +21,9 @@
 #include "signs.h"
 #include "waypoint.h"
 
-#ifdef ENABLE_NETWORK
 #include "network_data.h"
 #include "network_client.h"
 #include "network_server.h"
-#endif /* ENABLE_NETWORK */
 
 #include "table/animcursors.h"
 
