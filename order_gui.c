@@ -172,20 +172,22 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 		switch(GET_TILETYPE(tile)) {
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
-				if ((_map5[tile]&0xFC)==0xC0)
+				if ((_map5[tile]&0xFC)==0xC0) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_UNLOAD;
 					order.station = GetDepotByTile(tile);
 					return order;
+				}
 			}
 			break;
 
 		case MP_STREET:
-			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player)
+			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_UNLOAD;
 				order.station = GetDepotByTile(tile);
 				return order;
+			}
 			break;
 
 		case MP_STATION:
@@ -195,7 +197,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 				order.flags = OF_UNLOAD | OF_NON_STOP;
 				order.station = _map2[tile];
 				return order;
-				}
+			}
 			break;
 
 		case MP_WATER:
