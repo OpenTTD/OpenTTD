@@ -36,19 +36,28 @@ enum { /* These values are bitmasks for the map5 byte */
 
 	RAIL_DEPOT_TRACK_MASK = 1,
 	RAIL_DEPOT_DIR = 3,
-	RAIL_DEPOT_UNUSED_BITS = 0x3C,
 
 	RAIL_TYPE_WAYPOINT = 0xC4,
 	RAIL_WAYPOINT_TRACK_MASK = 1,
-	RAIL_WAYPOINT_UNUSED_BITS = 0x3E,
 
 	RAIL_SUBTYPE_MASK     = 0x3C,
 	RAIL_SUBTYPE_DEPOT    = 0x00,
 	RAIL_SUBTYPE_WAYPOINT = 0x04
 };
 
-#define IS_RAIL_DEPOT(x) (((x) & (RAIL_TYPE_DEPOT|RAIL_DEPOT_UNUSED_BITS)) == RAIL_TYPE_DEPOT)
-#define IS_RAIL_WAYPOINT(x) (((x) & (RAIL_TYPE_WAYPOINT|RAIL_WAYPOINT_UNUSED_BITS)) == RAIL_TYPE_WAYPOINT)
+static inline bool IsRailDepot(byte m5)
+{
+	return
+		(m5 & RAIL_TYPE_MASK) == RAIL_TYPE_DEPOT &&
+		(m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT;
+}
+
+static inline bool IsRailWaypoint(byte m5)
+{
+	return
+		(m5 & RAIL_TYPE_MASK) == RAIL_TYPE_DEPOT &&
+		(m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_WAYPOINT;
+}
 
 /* Format of rail map5 byte.
  * 00 abcdef  => Normal rail
@@ -800,7 +809,7 @@ static int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
 	Waypoint *cp;
 
 	// make sure it's a waypoint
-	if (!IsTileType(tile, MP_RAILWAY) || !IS_RAIL_WAYPOINT(_map5[tile]))
+	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(_map5[tile]))
 		return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile) && !(_current_player==17))
@@ -1621,7 +1630,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_WAYPOINT(m5) && _map3_lo[ti->tile]&16) {
+		if (IsRailWaypoint(m5) && _map3_lo[ti->tile] & 16) {
 			// look for customization
 			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _map3_hi[ti->tile]);
 
@@ -1813,7 +1822,7 @@ static bool SetSignalsEnumProc(uint tile, SetSignalsData *ssd, int track, uint l
 
 				return true;
 			}
-		} else if (IS_RAIL_DEPOT(_map5[tile]))
+		} else if (IsRailDepot(_map5[tile]))
 			return true; // don't look further if the tile is a depot
 	}
 	return false;
@@ -2163,9 +2172,9 @@ static uint32 GetTileTrackStatus_Track(uint tile, TransportType mode) {
 
 static void ClickTile_Track(uint tile)
 {
-	if (IS_RAIL_DEPOT(_map5[tile]))
+	if (IsRailDepot(_map5[tile]))
 		ShowTrainDepotWindow(tile);
-	else if (IS_RAIL_WAYPOINT(_map5[tile]))
+	else if (IsRailWaypoint(_map5[tile]))
 		ShowRenameWaypointWindow(&_waypoints[GetWaypointByTile(tile)]);
 
 }
@@ -2221,7 +2230,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 	int dir;
 
 	// this routine applies only to trains in depot tiles
-	if (v->type != VEH_Train || !IS_RAIL_DEPOT(_map5[tile]))
+	if (v->type != VEH_Train || !IsRailDepot(_map5[tile]))
 		return 0;
 
 	/* depot direction */
