@@ -590,6 +590,9 @@ static void FixTown(OldTown *o, int num, byte town_name_type)
 	uint i = 0;
 
 	do {
+		if (o->xy == 0)
+			continue;
+
 		t = GetTown(i);
 
 		t->xy = o->xy;
@@ -636,6 +639,9 @@ static void FixIndustry(OldIndustry *o, int num)
 	uint j = 0;
 
 	do {
+		if (o->xy == 0)
+			continue;
+
 		i = GetIndustry(j);
 
 		i->xy = o->xy;
@@ -696,6 +702,9 @@ static void FixStation(OldStation *o, int num)
 	uint i = 0;
 
 	do {
+		if (o->xy == 0)
+			continue;
+
 		s = GetStation(i);
 
 		s->xy = o->xy;
@@ -745,6 +754,9 @@ static void FixVehicle(OldVehicle *o, int num)
 	uint i = 0;
 
 	do {
+		if (o->type == 0)
+			continue;
+
 		n = GetVehicle(i);
 
 		n->type = o->type;
