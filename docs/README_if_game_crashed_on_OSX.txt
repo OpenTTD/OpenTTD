@@ -2,10 +2,8 @@ Since you are reading this, OpenTTD have crashed. This file tells you how
 to fix the most common problems or make to make a bug report, that the 
 developers can use to track down the problem
 
-The first thing you need to do is to get the error message. You can access OSX's build-in log by double-clicking Crash_Log_Opener. OTTD will do that if that file is present in the same folder as OTTD and is not renamed. However, major crashes can prevent the autoopen feature and you have to do it manually then 
-If Crash_Log_Opener doesn't work you can view the log by opening Console inside Applications/utilities.
-
-If you use the Console app, you should look at the buttom of the console.log window
+If it is an assert, OpenTTD will open the console for you, if it is truly a crash, you have to do it yourself. The Console is located at /Applications/Utilities/Console.
+The problem is near the button of the page
 
 The problems are as follows:
 NOTE: build from source means to download the source and compile 

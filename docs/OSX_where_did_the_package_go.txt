@@ -1,0 +1,22 @@
+It's gone
+
+The main goal with the package system was to make it as simple as possible to update. The problem was that some files inside the data folder should be updated and not others. Now the data files have been moved inside OpenTTD itself and to make it even easier, the same goes for the lang dir. There will no longer be an issue where people have different versions of grf files, language files and OpenTTD.
+
+To install simply copy OpenTTD into the folder you want
+If it is your current folder with outdated grf files, you should remove
+canalsw.grf
+openttd.grf
+opntitle.dat
+signalsw.grf
+trkfoundw.grf
+
+THE WINDOWS GRF FILES ARE STILL NEEDED!
+they need to be inside a folder called "data" in the same folder as OpenTTD. Create it if you have none. It should contain:
+sample.cat
+trg1r.grf
+trgcr.grf
+trghr.grf
+trgir.grf
+trgtr.grf
+
+You should also use the data folder to add any custom grf files if you like
