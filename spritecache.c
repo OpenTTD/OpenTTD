@@ -308,9 +308,6 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 
 static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 {
-	/* XXX: Is it better to fervently follow the num_sprites information or
-	 * be tolerant and comply with more/less sprites too? --pasky */
-	int num_sprites = 0;
 	int i;
 	
 	FioOpenFile(file_index, filename);
@@ -321,6 +318,9 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	DEBUG(spritecache, 2) ("Reading newgrf-file ``%s'' [offset: %u]",
 			filename, load_index);
 
+	/* Skip the first sprite; we don't care about how many sprites this
+	 * does contain; newest TTDPatches and George's longvehicles don't
+	 * neither, apparently. */
 	{
 		int length;
 		byte type;
@@ -329,24 +329,16 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 		type = FioReadByte();
 
 		if ((length == 4) && (type == 0xFF)) {
-			num_sprites = FioReadDword();
+			FioReadDword();
 		} else {
 			error("Custom .grf has invalid format.");
 		}
-
-		/* Ignore last sprite, it's only used to mark end-of-file */
-		num_sprites--;
-		load_index++;
 	}
 
-	if ((load_index + num_sprites) > NUM_SPRITES)
-		error("Too many sprites (%x). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
-		      load_index + num_sprites);
-
-	for (i = 0; i < num_sprites; i++) {
-		if (!LoadNextSprite(load_index + i, file_index))
-			error("NEWGRF: Header was talking abount %d sprites, but only %d found..",
-			      num_sprites, i);
+	for (i = 0; LoadNextSprite(load_index + i, file_index); i++) {
+		if (load_index + i >= NUM_SPRITES)
+			error("Too many sprites (%x). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
+			      load_index + i);
 	}
 
 	/* Clean up. */
@@ -354,7 +346,7 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	memset(_replace_sprites_count, 0, 16 * sizeof(*_replace_sprites_count));
 	memset(_replace_sprites_offset, 0, 16 * sizeof(*_replace_sprites_offset));
 
-	return num_sprites;
+	return i;
 }
 
 static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int file_index)
