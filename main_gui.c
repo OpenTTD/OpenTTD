@@ -19,6 +19,7 @@
 #include "sound.h"
 #include "network.h"
 #include "signs.h"
+#include "waypoint.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"
@@ -390,14 +391,14 @@ void ShowRenameSignWindow(SignStruct *ss)
 	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0);
 }
 
-void ShowRenameWaypointWindow(Waypoint *cp)
+void ShowRenameWaypointWindow(Waypoint *wp)
 {
-	int id = cp - _waypoints;
+	int id = wp->index;
 
 	/* Are we allowed to change the name of the waypoint? */
-	if (!CheckTileOwnership(cp->xy)) {
+	if (!CheckTileOwnership(wp->xy)) {
 		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME,
-			TileX(cp->xy) * 16, TileY(cp->xy) * 16);
+			TileX(wp->xy) * 16, TileY(wp->xy) * 16);
 		return;
 	}
 

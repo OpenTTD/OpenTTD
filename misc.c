@@ -157,6 +157,7 @@ void CSleep(int milliseconds)
 }
 
 void InitializeVehicles(void);
+void InitializeWaypoints(void);
 void InitializeDepot(void);
 void InitializeOrders(void);
 void InitializeClearLand(void);
@@ -218,6 +219,7 @@ void InitializeGame(uint log_x, uint log_y)
 	}
 
 	InitializeVehicles();
+	InitializeWaypoints();
 	InitializeDepot();
 	InitializeOrders();
 

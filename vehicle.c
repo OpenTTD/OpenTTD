@@ -159,27 +159,10 @@ void VehiclePositionChanged(Vehicle *v)
 	v->bottom_coord = pt.y + sd->ysize + 2;
 }
 
-void UpdateWaypointSign(Waypoint *cp)
-{
-	Point pt = RemapCoords2(TileX(cp->xy) * 16, TileY(cp->xy) * 16);
-	SetDParam(0, cp - _waypoints);
-	UpdateViewportSignPos(&cp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
-}
-
-void RedrawWaypointSign(Waypoint *cp)
-{
-	MarkAllViewportsDirty(
-		cp->sign.left - 6,
-		cp->sign.top,
-		cp->sign.left + (cp->sign.width_1 << 2) + 12,
-		cp->sign.top + 48);
-}
-
 // Called after load to update coordinates
 void AfterLoadVehicles(void)
 {
 	Vehicle *v;
-	Waypoint *cp;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0) {
@@ -192,11 +175,7 @@ void AfterLoadVehicles(void)
 			}
 		}
 	}
-
-	// update waypoint signs
-	for(cp=_waypoints; cp != endof(_waypoints); cp++) if (cp->xy) UpdateWaypointSign(cp);
 }
-
 
 static Vehicle *InitializeVehicle(Vehicle *v)
 {
@@ -353,8 +332,6 @@ void InitializeVehicles(void)
 		AddBlockToPool(&_vehicle_pool);
 
 	// clear it...
-	memset(&_waypoints, 0, sizeof(_waypoints));
-
 	memset(_vehicle_position_hash, -1, sizeof(_vehicle_position_hash));
 }
 
@@ -394,26 +371,6 @@ int CountVehiclesInChain(Vehicle *v)
 	int count = 0;
 	do count++; while ( (v=v->next) != NULL);
 	return count;
-}
-
-Waypoint *AllocateWaypoint(void)
-{
-	Waypoint *cp;
-
-	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-		if (cp->xy == 0)
-			return cp;
-	}
-
-	return NULL;
-}
-
-uint GetWaypointByTile(uint tile)
-{
-	Waypoint *cp;
-	int i=0;
-	for(cp=_waypoints; cp->xy != (TileIndex)tile; cp++) { i++; }
-	return i;
 }
 
 void DeleteVehicle(Vehicle *v)
@@ -2097,41 +2054,8 @@ static void Load_VEHS(void)
 		_vehicle_id_ctr_day = 0;
 }
 
-static const byte _waypoint_desc[] = {
-	SLE_CONDVAR(Waypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, 255),
-	SLE_VAR(Waypoint,town_or_string,		SLE_UINT16),
-	SLE_VAR(Waypoint,deleted,						SLE_UINT8),
-
-	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16, 3, 255),
-	SLE_CONDVAR(Waypoint, stat_id, SLE_UINT8, 3, 255),
-
-	SLE_END()
-};
-
-static void Save_CHKP(void)
-{
-	Waypoint *cp;
-	int i;
-	for(i=0,cp=_waypoints; i!=lengthof(_waypoints); i++,cp++) {
-		if (cp->xy != 0) {
-			SlSetArrayIndex(i);
-			SlObject(cp, _waypoint_desc);
-		}
-	}
-}
-
-static void Load_CHKP(void)
-{
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		SlObject(&_waypoints[index], _waypoint_desc);
-	}
-}
-
 const ChunkHandler _veh_chunk_handlers[] = {
-	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY},
-	{ 'CHKP', Save_CHKP, Load_CHKP, CH_ARRAY | CH_LAST},
+	{ 'VEHS', Save_VEHS, Load_VEHS, CH_SPARSE_ARRAY | CH_LAST},
 };
 
 

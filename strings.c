@@ -9,6 +9,7 @@
 #include "vehicle.h"
 #include "news.h"
 #include "screenshot.h"
+#include "waypoint.h"
 
 static char *StationGetSpecialString(char *buff);
 static char *GetSpecialTownNameString(char *buff, int ind);
@@ -545,14 +546,14 @@ static char *DecodeString(char *buff, const char *str)
 		}
 
 		case 0x9D: { // {WAYPOINT}
-			Waypoint *cp = &_waypoints[GetDParam(0)];
+			Waypoint *wp = GetWaypoint(GetDParam(0));
 			StringID str;
 			int idx;
-			if (~cp->town_or_string & 0xC000) {
+			if (wp->string != STR_NULL) {
 				GetParamInt32(); // skip it
-				str = cp->town_or_string;
+				str = wp->string;
 			} else {
-				idx = (cp->town_or_string >> 8) & 0x3F;
+				idx = wp->town_cn;
 				if (idx == 0) {
 					str = STR_WAYPOINTNAME_CITY;
 				} else {
@@ -560,7 +561,7 @@ static char *DecodeString(char *buff, const char *str)
 					SetDParam(1, idx + 1);
 					str = STR_WAYPOINTNAME_CITY_SERIAL;
 				}
-				SetDParam(0, cp->town_or_string & 0xFF);
+				SetDParam(0, wp->town_index);
 			}
 
 			buff = GetString(buff, str);

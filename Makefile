@@ -658,6 +658,7 @@ C_SOURCES += vehicle.c
 C_SOURCES += vehicle_gui.c
 C_SOURCES += viewport.c
 C_SOURCES += water_cmd.c
+C_SOURCES += waypoint.c
 C_SOURCES += widget.c
 C_SOURCES += window.c
 

@@ -13,6 +13,7 @@
 #include "command.h"
 #include "viewport.h"
 #include "depot.h"
+#include "waypoint.h"
 
 static int OrderGetSel(Window *w)
 {
@@ -219,7 +220,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 	&& (_map5[tile]&0xFE)==0xC4) {
 		order.type = OT_GOTO_WAYPOINT;
 		order.flags = 0;
-		order.station = GetWaypointByTile(tile);
+		order.station = GetWaypointByTile(tile)->index;
 		return order;
 	}
 
@@ -379,7 +380,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					xy = GetDepot(ord->station)->xy;
 					break;
 				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
-					xy = _waypoints[ord->station].xy;
+					xy = GetWaypoint(ord->station)->xy;
 				}
 
 				if (xy)

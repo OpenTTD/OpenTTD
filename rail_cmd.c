@@ -14,6 +14,7 @@
 #include "station.h"
 #include "sprite.h"
 #include "depot.h"
+#include "waypoint.h"
 
 extern uint16 _custom_sprites_base;
 
@@ -37,9 +38,6 @@ enum { /* These values are bitmasks for the map5 byte */
 	RAIL_DEPOT_TRACK_MASK = 1,
 	RAIL_DEPOT_DIR = 3,
 
-	RAIL_TYPE_WAYPOINT = 0xC4,
-	RAIL_WAYPOINT_TRACK_MASK = 1,
-
 	RAIL_SUBTYPE_MASK     = 0x3C,
 	RAIL_SUBTYPE_DEPOT    = 0x00,
 	RAIL_SUBTYPE_WAYPOINT = 0x04
@@ -50,13 +48,6 @@ static inline bool IsRailDepot(byte m5)
 	return
 		(m5 & RAIL_TYPE_MASK) == RAIL_TYPE_DEPOT &&
 		(m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT;
-}
-
-static inline bool IsRailWaypoint(byte m5)
-{
-	return
-		(m5 & RAIL_TYPE_MASK) == RAIL_TYPE_DEPOT &&
-		(m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_WAYPOINT;
 }
 
 /* Format of rail map5 byte.
@@ -689,196 +680,6 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_train_depot;
 }
 
-static void MakeDefaultWaypointName(Waypoint *cp)
-{
-	int townidx = ClosestTownFromTile(cp->xy, (uint)-1)->index;
-	Waypoint *cc;
-	bool used_waypoint[64];
-	int i;
-
-	memset(used_waypoint, 0, sizeof(used_waypoint));
-
-	// find an unused waypoint number belonging to this town
-	for(cc = _waypoints; cc != endof(_waypoints); cc++) {
-		if (cc->xy && cc->town_or_string & 0xC000 && (cc->town_or_string & 0xFF) == townidx)
-			used_waypoint[(cc->town_or_string >> 8) & 0x3F] = true;
-	}
-
-	for(i=0; used_waypoint[i] && i!=lengthof(used_waypoint)-1; i++) {}
-	cp->town_or_string = 0xC000 + (i << 8) + townidx;
-}
-
-// find a deleted waypoint close to a tile.
-static Waypoint *FindDeletedWaypointCloseTo(uint tile)
-{
-	Waypoint *cp,*best = NULL;
-	uint thres = 8, cur_dist;
-
-	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-		if (cp->deleted && cp->xy) {
-			cur_dist = DistanceManhattan(tile, cp->xy);
-			if (cur_dist < thres) {
-				thres = cur_dist;
-				best = cp;
-			}
-		}
-	}
-	return best;
-}
-
-/* Convert existing rail to waypoint */
-
-int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	uint tile = TILE_FROM_XY(x,y);
-	Waypoint *cp;
-	uint tileh;
-	uint dir;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _map5[tile] != 1) && (dir = 1, _map5[tile] != 2)))
-		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
-
-	if (!CheckTileOwnership(tile))
-		return CMD_ERROR;
-
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
-	tileh = GetTileSlope(tile, NULL);
-	if (tileh != 0) {
-		if (!_patches.build_on_slopes || tileh & 0x10 || !(tileh & (0x3 << dir)) || !(tileh & ~(0x3 << dir)))
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
-	}
-
-	// check if there is an already existing, deleted, waypoint close to us that we can reuse.
-	cp = FindDeletedWaypointCloseTo(tile);
-	if (cp == NULL) {
-		cp = AllocateWaypoint();
-		if (cp == NULL) return CMD_ERROR;
-		cp->town_or_string = 0;
-	}
-
-	if (flags & DC_EXEC) {
-		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
-		if (--p1 & 0x100) { // waypoint type 0 uses default graphics
-			// custom graphics
-			_map3_lo[tile] |= 16;
-			_map3_hi[tile] = p1 & 0xff;
-		}
-
-		cp->deleted = 0;
-		cp->xy = tile;
-		cp->build_date = _date;
-
-		if (cp->town_or_string == 0) MakeDefaultWaypointName(cp); else RedrawWaypointSign(cp);
-		UpdateWaypointSign(cp);
-		RedrawWaypointSign(cp);
-		SetSignalsOnBothDir(tile, dir ? 2 : 1);
-	}
-
-	return _price.build_train_depot;
-}
-
-static void DoDeleteWaypoint(Waypoint *cp)
-{
-	Order order;
-	cp->xy = 0;
-
-	order.type = OT_GOTO_WAYPOINT;
-	order.station = cp - _waypoints;
-	DeleteDestinationFromVehicleOrder(order);
-
-	if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
-	RedrawWaypointSign(cp);
-}
-
-// delete waypoints after a while
-void WaypointsDailyLoop(void)
-{
-	Waypoint *cp;
-	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-		if (cp->deleted && !--cp->deleted) {
-			DoDeleteWaypoint(cp);
-		}
-	}
-}
-
-static int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
-{
-	Waypoint *cp;
-
-	// make sure it's a waypoint
-	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(_map5[tile]))
-		return CMD_ERROR;
-
-	if (!CheckTileOwnership(tile) && !(_current_player==17))
-		return CMD_ERROR;
-
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		int direction = _map5[tile] & RAIL_WAYPOINT_TRACK_MASK;
-
-		// mark the waypoint deleted
-		for(cp=_waypoints; cp->xy != (TileIndex)tile; cp++) {}
-		cp->deleted = 30; // let it live for this many days before we do the actual deletion.
-		RedrawWaypointSign(cp);
-
-		if (justremove) {
-			ModifyTile(tile, MP_MAP5, 1<<direction);
-			_map3_lo[tile] &= ~16;
-			_map3_hi[tile] = 0;
-		} else {
-			DoClearSquare(tile);
-			SetSignalsOnBothDir(tile, direction);
-		}
-	}
-
-	return _price.remove_train_depot;
-}
-
-int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	uint tile = TILE_FROM_XY(x,y);
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-	return RemoveTrainWaypoint(tile, flags, true);
-}
-
-
-// p1 = id of waypoint
-int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	Waypoint *cp;
-	StringID str;
-
-	if (_decode_parameters[0] != 0) {
-		str = AllocateNameUnique((const char*)_decode_parameters, 0);
-		if (str == 0) return CMD_ERROR;
-
-		if (flags & DC_EXEC) {
-			cp = &_waypoints[p1];
-			if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
-			cp->town_or_string = str;
-			UpdateWaypointSign(cp);
-			MarkWholeScreenDirty();
-		} else {
-			DeleteName(str);
-		}
-	}	else {
-		if (flags & DC_EXEC) {
-			cp = &_waypoints[p1];
-			if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
-			MakeDefaultWaypointName(cp);
-			UpdateWaypointSign(cp);
-			MarkWholeScreenDirty();
-		}
-	}
-	return 0;
-}
-
-
 /* build signals, alternate between double/single, signal/semaphore,
  * pre/exit/combo-signals
  * p1 bits 0-2 - track-orientation, valid values: 0-5
@@ -1300,14 +1101,6 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 
 
-typedef struct DrawTrackSeqStruct {
-	uint16 image;
-	byte subcoord_x;
-	byte subcoord_y;
-	byte width;
-	byte height;
-} DrawTrackSeqStruct;
-
 #include "table/track_land.h"
 
 // used for presignals
@@ -1498,22 +1291,6 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
 	if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
 		image = (image & 0x3FFF) | 0x3224000;
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
-}
-
-/* This hacks together some dummy one-shot Station structure for a waypoint. */
-static Station *ComposeWaypointStation(uint tile)
-{
-	Waypoint *waypt = &_waypoints[GetWaypointByTile(tile)];
-	static Station stat;
-
-	stat.train_tile = stat.xy = waypt->xy;
-	/* FIXME - We should always keep town. */
-	stat.town = waypt->town_or_string & 0xC000 ? GetTown(waypt->town_or_string & 0xFF) : NULL;
-	stat.string_id = waypt->town_or_string & 0xC000 ? /* FIXME? */ 0 : waypt->town_or_string;
-	stat.build_date = waypt->build_date;
-	stat.class_id = 6; stat.stat_id = waypt->stat_id;
-
-	return &stat;
 }
 
 static void DrawTile_Track(TileInfo *ti)
@@ -1718,58 +1495,6 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 		DrawSprite(image + railtype, x + pt.x, y + pt.y);
 	}
 }
-
-void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
-{
-	StationSpec *stat;
-	uint32 relocation;
-	DrawTileSprites *cust;
-	DrawTileSeqStruct const *seq;
-	uint32 ormod, img;
-
-	ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
-
-	x += 33;
-	y += 17;
-
-	// draw default waypoint graphics of ID 0
-	if (stat_id == 0) {
-		const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
-
-		img = dtss++->image;
-		if (img & 0x8000) img = (img & 0x7FFF) + railtype*TRACKTYPE_SPRITE_PITCH;
-		DrawSprite(img, x, y);
-
-		for (; dtss->image != 0; dtss++) {
-			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
-			img = dtss->image;
-			if (img & 0x8000) img |= ormod;
-			DrawSprite(img, x + pt.x, y + pt.y);
-		}
-		return;
-	}
-
-	stat = GetCustomStation(STAT_CLASS_WAYP, stat_id - 1);
-	assert(stat);
-	relocation = GetCustomStationRelocation(stat, NULL, 1);
-	// emulate station tile - open with building
-	// add 1 to get the other direction
-	cust = &stat->renderdata[2];
-
-	img = cust->ground_sprite;
-	img += railtype*((img<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
-
-	if (img & 0x8000) img = (img & 0x7FFF);
-	DrawSprite(img, x, y);
-
-	foreach_draw_tile_seq(seq, cust->seq) {
-		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
-		uint32 image = seq->image + relocation;
-
-		DrawSprite((image&0x3FFF) | ormod, x + pt.x, y + pt.y);
-	}
-}
-
 
 #define NUM_SSD_ENTRY 256
 #define NUM_SSD_STACK 32
@@ -2176,7 +1901,7 @@ static void ClickTile_Track(uint tile)
 	if (IsRailDepot(_map5[tile]))
 		ShowTrainDepotWindow(tile);
 	else if (IsRailWaypoint(_map5[tile]))
-		ShowRenameWaypointWindow(&_waypoints[GetWaypointByTile(tile)]);
+		ShowRenameWaypointWindow(GetWaypointByTile(tile));
 
 }
 

@@ -34,6 +34,7 @@
 #include "network.h"
 #include "signs.h"
 #include "depot.h"
+#include "waypoint.h"
 
 #include <stdarg.h>
 
@@ -1318,6 +1319,13 @@ bool AfterLoadGame(uint version)
 
 	// Update all vehicles
 	AfterLoadVehicles();
+
+	// Update all waypoints
+	if (version < 0x0C00)
+		FixOldWaypoints();
+
+	UpdateAllWaypointSigns();
+
 	// in version 2.2 of the savegame, we have new airports
 	if (version <= 0x201) {
 		UpdateOldAircraft();

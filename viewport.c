@@ -13,6 +13,7 @@
 #include "gfx.h"
 #include "town.h"
 #include "signs.h"
+#include "waypoint.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
@@ -978,7 +979,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 {
-	Waypoint *cp;
+	Waypoint *wp;
 
 	int left, top, right, bottom;
 	StringSpriteToDraw *sstd;
@@ -992,34 +993,34 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	if (dpi->zoom < 1) {
-		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-					bottom > cp->sign.top &&
-					top < cp->sign.top + 12 &&
-					right > cp->sign.left &&
-					left < cp->sign.left + cp->sign.width_1) {
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+					bottom > wp->sign.top &&
+					top < wp->sign.top + 12 &&
+					right > wp->sign.left &&
+					left < wp->sign.left + wp->sign.width_1) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0, 0);
+				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT, wp->index, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = cp->sign.width_1;
-					sstd->color = (cp->deleted ? 0xE : 11);
+					sstd->width = wp->sign.width_1;
+					sstd->color = (wp->deleted ? 0xE : 11);
 				}
 			}
 		}
 	} else if (dpi->zoom == 1) {
 		right += 2;
 		bottom += 2;
-		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-					bottom > cp->sign.top &&
-					top < cp->sign.top + 24 &&
-					right > cp->sign.left &&
-					left < cp->sign.left + cp->sign.width_1*2) {
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+					bottom > wp->sign.top &&
+					top < wp->sign.top + 24 &&
+					right > wp->sign.left &&
+					left < wp->sign.left + wp->sign.width_1*2) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0, 0);
+				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT, wp->index, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = cp->sign.width_1;
-					sstd->color = (cp->deleted ? 0xE : 11);
+					sstd->width = wp->sign.width_1;
+					sstd->color = (wp->deleted ? 0xE : 11);
 				}
 			}
 		}
@@ -1027,17 +1028,17 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 		right += 4;
 		bottom += 5;
 
-		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-					bottom > cp->sign.top &&
-					top < cp->sign.top + 24 &&
-					right > cp->sign.left &&
-					left < cp->sign.left + cp->sign.width_2*4) {
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+					bottom > wp->sign.top &&
+					top < wp->sign.top + 24 &&
+					right > wp->sign.left &&
+					left < wp->sign.left + wp->sign.width_2*4) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, cp - _waypoints, 0, 0);
+				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, wp->index, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = cp->sign.width_2 | 0x8000;
-					sstd->color = (cp->deleted ? 0xE : 11);
+					sstd->width = wp->sign.width_2 | 0x8000;
+					sstd->color = (wp->deleted ? 0xE : 11);
 				}
 			}
 		}
@@ -1624,7 +1625,7 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 
 static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
 {
-	Waypoint *cp;
+	Waypoint *wp;
 
 	if (!(_display_opt & DO_WAYPOINTS))
 		return false;
@@ -1633,39 +1634,39 @@ static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
 		x = x - vp->left + vp->virtual_left;
 		y = y - vp->top + vp->virtual_top;
 
-		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-			    y >= cp->sign.top &&
-					y < cp->sign.top + 12 &&
-					x >= cp->sign.left &&
-					x < cp->sign.left + cp->sign.width_1) {
-				ShowRenameWaypointWindow(cp);
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+			    y >= wp->sign.top &&
+					y < wp->sign.top + 12 &&
+					x >= wp->sign.left &&
+					x < wp->sign.left + wp->sign.width_1) {
+				ShowRenameWaypointWindow(wp);
 				return true;
 			}
 		}
 	} else if (vp->zoom == 1) {
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-			    y >= cp->sign.top &&
-					y < cp->sign.top + 24 &&
-					x >= cp->sign.left &&
-					x < cp->sign.left + cp->sign.width_1 * 2) {
-				ShowRenameWaypointWindow(cp);
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+			    y >= wp->sign.top &&
+					y < wp->sign.top + 24 &&
+					x >= wp->sign.left &&
+					x < wp->sign.left + wp->sign.width_1 * 2) {
+				ShowRenameWaypointWindow(wp);
 				return true;
 			}
 		}
 	} else {
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
-			if (cp->xy &&
-			    y >= cp->sign.top &&
-					y < cp->sign.top + 24 &&
-					x >= cp->sign.left &&
-					x < cp->sign.left + cp->sign.width_2 * 4) {
-				ShowRenameWaypointWindow(cp);
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy &&
+			    y >= wp->sign.top &&
+					y < wp->sign.top + 24 &&
+					x >= wp->sign.left &&
+					x < wp->sign.left + wp->sign.width_2 * 4) {
+				ShowRenameWaypointWindow(wp);
 				return true;
 			}
 		}

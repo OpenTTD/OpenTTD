@@ -15,6 +15,7 @@
 #include "player.h"
 #include "sound.h"
 #include "depot.h"
+#include "waypoint.h"
 
 #define is_firsthead_sprite(spritenum) \
 	(is_custom_sprite(spritenum) \
@@ -1916,7 +1917,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = _waypoints[order->station].xy;
+			v->dest_tile = GetWaypoint(order->station)->xy;
 			result = CheckReverseTrain(v);
 			break;
 	}

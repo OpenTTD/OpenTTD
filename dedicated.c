@@ -302,7 +302,7 @@ static int DedicatedVideoMainLoop(void)
 #endif
 
 		if (cur_ticks >= next_tick) {
-			next_tick += 30;
+//			next_tick += 30;
 
 			GameLoop();
 			_screen.dst_ptr = _dedicated_video_mem;

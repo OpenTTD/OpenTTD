@@ -12,6 +12,7 @@
 #include "command.h"
 #include "vehicle.h"
 #include "station.h"
+#include "waypoint.h"
 
 static uint _cur_railtype;
 static bool _remove_button_clicked;

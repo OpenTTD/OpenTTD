@@ -8,7 +8,7 @@
 #include "saveload.h"
 
 enum {
-	SAVEGAME_MAJOR_VERSION = 0xB,
+	SAVEGAME_MAJOR_VERSION = 0xC,
 	SAVEGAME_MINOR_VERSION = 0x1,
 
 	SAVEGAME_LOADABLE_VERSION = (SAVEGAME_MAJOR_VERSION << 8) + SAVEGAME_MINOR_VERSION
@@ -871,6 +871,7 @@ static void UninitWriteZlib(void)
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
+extern const ChunkHandler _waypoint_chunk_handlers[];
 extern const ChunkHandler _depot_chunk_handlers[];
 extern const ChunkHandler _order_chunk_handlers[];
 extern const ChunkHandler _town_chunk_handlers[];
@@ -884,6 +885,7 @@ extern const ChunkHandler _animated_tile_chunk_handlers[];
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
 	_veh_chunk_handlers,
+	_waypoint_chunk_handlers,
 	_depot_chunk_handlers,
 	_order_chunk_handlers,
 	_industry_chunk_handlers,

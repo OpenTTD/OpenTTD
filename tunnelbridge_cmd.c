@@ -930,9 +930,9 @@ static const byte _bridge_foundations[2][16] = {
 	{1,15,17,0,19,5,6,7,21,9,10,11, 0,13,14},
 };
 
-extern const byte _track_sloped_sprites[14];
 extern const byte _road_sloped_sprites[14];
 
+#include "table/track_land.h"
 #include "table/bridge_land.h"
 #include "table/tunnel_land.h"
 #include "table/water_land.h"
