@@ -2622,10 +2622,7 @@ static const byte _depot_track_ind[4] = {0,1,0,1};
 bool ValidateTrainInDepot( uint data_a, uint data_b )
 {
 	Vehicle *v = GetVehicle(data_a);
-	if (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED))
-		return true;
-	else
-		return false;
+	return  (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED));
 }
 
 void TrainEnterDepot(Vehicle *v, uint tile)

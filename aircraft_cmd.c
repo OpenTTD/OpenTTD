@@ -1199,6 +1199,13 @@ static void AircraftEntersTerminal(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
+static bool ValidateAircraftInHangar( uint data_a, uint data_b )
+{
+	Vehicle *v = GetVehicle(data_a);
+
+	return (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_STOPPED));
+}
+
 static void AircraftEnterHangar(Vehicle *v)
 {
 	Order old_order;
@@ -1225,11 +1232,12 @@ static void AircraftEnterHangar(Vehicle *v)
 
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
-				AddNewsItem(
+				AddValidatedNewsItem(
 					STR_A014_AIRCRAFT_IS_WAITING_IN,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
 					v->index,
-					0);
+					0,
+					ValidateAircraftInHangar);
 			}
 		}
 	}
