@@ -934,11 +934,12 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 	// (necessary for cantilever bridges)
 	image = b[12 + (ti->map5&0x01)];
 	piece = _map2[ti->tile]&0xF;
-	if( image!=0 && piece!=0 )
-		DrawGroundSpriteAt(image, x,y, z);
+	if (image != 0 && piece != 0) {
+		if (!(_display_opt & DO_TRANS_BUILDINGS)) image = (image & 0x3FFF) | 0x03224000;
+		DrawGroundSpriteAt(image, x, y, z);
+	}
 
 	image = b[(ti->map5&0x01)*6 + piece];
-	if (!(_display_opt & DO_TRANS_BUILDINGS)) image = (image & 0x3FFF) | 0x03224000;
 
 	if (image != 0) {
 		int back_height, front_height, i=z;
@@ -950,6 +951,8 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 			{4,8,1,2,  16,11,0,9},
 			{2,4,8,1,  11,16,9,0},
 		};
+
+		if (!(_display_opt & DO_TRANS_BUILDINGS)) image = (image & 0x3FFF) | 0x03224000;
 
 		p = _tileh_bits[(image & 1) * 2 + (ti->map5&0x01)];
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
