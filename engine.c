@@ -105,7 +105,10 @@ static void CalcEngineReliability(Engine *e)
 		uint max = e->reliability_max;
 		e->reliability = (int)age * (int)(e->reliability_final - max) / e->duration_phase_3 + max;
 	} else {
-		e->player_avail = _patches.never_expire_vehicles ? -1 : 0;
+		// time's up for this engine
+		// make it either available to all players (if never_expire_vehicles is enabled and if it was available earlier)
+		// or disable this engine completely
+		e->player_avail = (_patches.never_expire_vehicles && e->player_avail)? -1 : 0;
 		e->reliability = e->reliability_final;
 	}
 }
