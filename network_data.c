@@ -183,22 +183,54 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 // Receiving commands
 // Again, the next couple of functions are endian-safe
 //  see the comment around NetworkSend_uint8 for more info.
-uint8 NetworkRecv_uint8(Packet *packet)
+uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet)
 {
+	/* Don't allow reading from a closed socket */
+	if (cs->quited)
+		return 0;
+
+	/* Check if variable is within packet-size */
+	if (packet->pos + 1 > packet->size) {
+		CloseConnection(cs);
+		return 0;
+	}
+
 	return packet->buffer[packet->pos++];
 }
 
-uint16 NetworkRecv_uint16(Packet *packet)
+uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet)
 {
 	uint16 n;
+
+	/* Don't allow reading from a closed socket */
+	if (cs->quited)
+		return 0;
+
+	/* Check if variable is within packet-size */
+	if (packet->pos + 2 > packet->size) {
+		CloseConnection(cs);
+		return 0;
+	}
+
 	n  = (uint16)packet->buffer[packet->pos++];
 	n += (uint16)packet->buffer[packet->pos++] << 8;
 	return n;
 }
 
-uint32 NetworkRecv_uint32(Packet *packet)
+uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet)
 {
 	uint32 n;
+
+	/* Don't allow reading from a closed socket */
+	if (cs->quited)
+		return 0;
+
+	/* Check if variable is within packet-size */
+	if (packet->pos + 4 > packet->size) {
+		CloseConnection(cs);
+		return 0;
+	}
+
 	n  = (uint32)packet->buffer[packet->pos++];
 	n += (uint32)packet->buffer[packet->pos++] << 8;
 	n += (uint32)packet->buffer[packet->pos++] << 16;
@@ -206,9 +238,20 @@ uint32 NetworkRecv_uint32(Packet *packet)
 	return n;
 }
 
-uint64 NetworkRecv_uint64(Packet *packet)
+uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 {
 	uint64 n;
+
+	/* Don't allow reading from a closed socket */
+	if (cs->quited)
+		return 0;
+
+	/* Check if variable is within packet-size */
+	if (packet->pos + 8 > packet->size) {
+		CloseConnection(cs);
+		return 0;
+	}
+
 	n  = (uint64)packet->buffer[packet->pos++];
 	n += (uint64)packet->buffer[packet->pos++] << 8;
 	n += (uint64)packet->buffer[packet->pos++] << 16;
@@ -221,9 +264,14 @@ uint64 NetworkRecv_uint64(Packet *packet)
 }
 
 // Reads a string till it finds a '\0' in the stream
-void NetworkRecv_string(Packet *p, char* buffer, size_t size)
+void NetworkRecv_string(NetworkClientState *cs, Packet *p, char* buffer, size_t size)
 {
 	int pos;
+
+	/* Don't allow reading from a closed socket */
+	if (cs->quited)
+		return;
+
 	pos = p->pos;
 	while (--size > 0 && pos < p->size && (*buffer++ = p->buffer[pos++]) != '\0') {}
 	if (size == 0 || pos == p->size)

@@ -312,6 +312,17 @@ static CommandProc * const _command_proc_table[] = {
 	CmdReplaceVehicle,							/* 114 */
 };
 
+/* This function range-checks a cmd, and checks if the cmd is not NULL */
+bool IsValidCommand(int cmd)
+{
+	cmd = cmd & 0xFF;
+
+	if (cmd < 0 || cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd] == NULL)
+		return false;
+
+	return true;
+}
+
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	return DoCommand(GET_TILE_X(tile)*16, GET_TILE_Y(tile)*16, p1, p2, flags, procc);

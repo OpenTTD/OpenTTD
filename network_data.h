@@ -203,11 +203,11 @@ void NetworkSend_uint64(Packet *packet, uint64 data);
 void NetworkSend_string(Packet *packet, const char* data);
 void NetworkSend_Packet(Packet *packet, NetworkClientState *cs);
 
-uint8 NetworkRecv_uint8(Packet *packet);
-uint16 NetworkRecv_uint16(Packet *packet);
-uint32 NetworkRecv_uint32(Packet *packet);
-uint64 NetworkRecv_uint64(Packet *packet);
-void NetworkRecv_string(Packet *packet, char* buffer, size_t size);
+uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet);
+uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet);
+uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet);
+uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet);
+void NetworkRecv_string(NetworkClientState *cs, Packet *packet, char* buffer, size_t size);
 Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status);
 
 bool NetworkSend_Packets(NetworkClientState *cs);

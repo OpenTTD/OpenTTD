@@ -482,7 +482,10 @@ void NetworkCloseClient(NetworkClientState *cs)
 {
 	NetworkClientInfo *ci;
 	// Socket is already dead
-	if (cs->socket == INVALID_SOCKET) return;
+	if (cs->socket == INVALID_SOCKET) {
+		cs->quited = true;
+		return;
+	}
 
 	DEBUG(net, 1) ("[NET] Closed client connection");
 
@@ -509,6 +512,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 	closesocket(cs->socket);
 	cs->writable = false;
+	cs->quited = true;
 
 	// Free all pending and partially received packets
 	while (cs->packet_queue != NULL) {

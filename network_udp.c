@@ -38,6 +38,8 @@ enum {
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
 void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
 
+NetworkClientState _udp_cs;
+
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
 	Packet *packet;
@@ -86,8 +88,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	if (_network_udp_server)
 		return;
 
-	game_info_version = NetworkRecv_uint8(p);
+	game_info_version = NetworkRecv_uint8(&_udp_cs, p);
 
+	if (_udp_cs.quited)
+		return;
 
 	DEBUG(net, 6)("[NET][UDP] Server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
@@ -95,20 +99,20 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
 	if (game_info_version == 1) {
-		NetworkRecv_string(p, item->info.server_name, sizeof(item->info.server_name));
-		NetworkRecv_string(p, item->info.server_revision, sizeof(item->info.server_revision));
-		item->info.server_lang = NetworkRecv_uint8(p);
-		item->info.use_password = NetworkRecv_uint8(p);
-		item->info.clients_max = NetworkRecv_uint8(p);
-		item->info.clients_on = NetworkRecv_uint8(p);
-		item->info.spectators_on = NetworkRecv_uint8(p);
-		item->info.game_date = NetworkRecv_uint16(p);
-		item->info.start_date = NetworkRecv_uint16(p);
-		NetworkRecv_string(p, item->info.map_name, sizeof(item->info.map_name));
-		item->info.map_width = NetworkRecv_uint16(p);
-		item->info.map_height = NetworkRecv_uint16(p);
-		item->info.map_set = NetworkRecv_uint8(p);
-		item->info.dedicated = NetworkRecv_uint8(p);
+		NetworkRecv_string(&_udp_cs, p, item->info.server_name, sizeof(item->info.server_name));
+		NetworkRecv_string(&_udp_cs, p, item->info.server_revision, sizeof(item->info.server_revision));
+		item->info.server_lang   = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.use_password  = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.clients_max   = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.clients_on    = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.spectators_on = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p);
+		item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p);
+		NetworkRecv_string(&_udp_cs, p, item->info.map_name, sizeof(item->info.map_name));
+		item->info.map_width     = NetworkRecv_uint16(&_udp_cs, p);
+		item->info.map_height    = NetworkRecv_uint16(&_udp_cs, p);
+		item->info.map_set       = NetworkRecv_uint8(&_udp_cs, p);
+		item->info.dedicated     = NetworkRecv_uint8(&_udp_cs, p);
 
 		if (item->info.hostname[0] == '\0')
 			snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
@@ -237,12 +241,15 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST) {
 	 * an uint32 (ip) and an uint16 (port) for each pair
 	 */
 
-	ver = NetworkRecv_uint8(p);
+	ver = NetworkRecv_uint8(&_udp_cs, p);
+
+	if (_udp_cs.quited)
+		return;
 
 	if (ver == 1) {
-		for (i = NetworkRecv_uint16(p); i != 0 ; i--) {
-			ip.s_addr = TO_LE32(NetworkRecv_uint32(p));
-			port = NetworkRecv_uint16(p);
+		for (i = NetworkRecv_uint16(&_udp_cs, p); i != 0 ; i--) {
+			ip.s_addr = TO_LE32(NetworkRecv_uint32(&_udp_cs, p));
+			port = NetworkRecv_uint16(&_udp_cs, p);
 			NetworkUDPQueryServer(inet_ntoa(ip), port);
 		}
 	}
@@ -282,9 +289,13 @@ void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
 {
 	byte type;
 
-	type = NetworkRecv_uint8(p);
+	/* Fake a client, so we can see when there is an illegal packet */
+	_udp_cs.socket = INVALID_SOCKET;
+	_udp_cs.quited = false;
 
-	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL) {
+	type = NetworkRecv_uint8(&_udp_cs, p);
+
+	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL && !_udp_cs.quited) {
 		_network_udp_packet[type](p, client_addr);
 	}	else {
 		DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);

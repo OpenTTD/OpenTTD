@@ -580,7 +580,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	char client_revision[NETWORK_REVISION_LENGTH];
 
 
-	NetworkRecv_string(p, client_revision, sizeof(client_revision));
+	NetworkRecv_string(cs, p, client_revision, sizeof(client_revision));
 
 #if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
@@ -594,10 +594,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	}
 #endif
 
-	NetworkRecv_string(p, name, sizeof(name));
-	playas = NetworkRecv_uint8(p);
-	client_lang = NetworkRecv_uint8(p);
-	NetworkRecv_string(p, unique_id, sizeof(unique_id));
+	NetworkRecv_string(cs, p, name, sizeof(name));
+	playas = NetworkRecv_uint8(cs, p);
+	client_lang = NetworkRecv_uint8(cs, p);
+	NetworkRecv_string(cs, p, unique_id, sizeof(unique_id));
+
+	if (cs->quited)
+		return;
 
 	// Check if someone else already has that name
 	snprintf(test_name, sizeof(test_name), "%s", name);
@@ -644,8 +647,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	NetworkClientInfo *ci;
 
-	type = NetworkRecv_uint8(p);
-	NetworkRecv_string(p, password, sizeof(password));
+	type = NetworkRecv_uint8(cs, p);
+	NetworkRecv_string(cs, p, password, sizeof(password));
 
 	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
@@ -761,21 +764,30 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	cp->player = NetworkRecv_uint8(p);
-	cp->cmd = NetworkRecv_uint32(p);
-	cp->p1 = NetworkRecv_uint32(p);
-	cp->p2 = NetworkRecv_uint32(p);
-	cp->tile = NetworkRecv_uint32(p);
+	cp->player = NetworkRecv_uint8(cs, p);
+	cp->cmd    = NetworkRecv_uint32(cs, p);
+	cp->p1     = NetworkRecv_uint32(cs, p);
+	cp->p2     = NetworkRecv_uint32(cs, p);
+	cp->tile   = NetworkRecv_uint32(cs, p);
 	/* We are going to send them byte by byte, because dparam is misused
 	    for chars (if it is used), and else we have a BigEndian / LittleEndian
 	    problem.. we should fix the misuse of dparam... -- TrueLight */
 	dparam_char = (char *)&cp->dp[0];
 	for (i = 0; i < lengthof(cp->dp) * 4; i++) {
-		*dparam_char = NetworkRecv_uint8(p);
+		*dparam_char = NetworkRecv_uint8(cs, p);
 		dparam_char++;
 	}
 
-	callback = NetworkRecv_uint8(p);
+	callback = NetworkRecv_uint8(cs, p);
+
+	if (cs->quited)
+		return;
+
+	/* Check if cp->cmd is valid */
+	if (!IsValidCommand(cp->cmd)) {
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return;
+	}
 
 	ci = DEREF_CLIENT_INFO(cs);
 	// Only CMD_PLAYER_CTRL is always allowed, for the rest, playas needs
@@ -814,7 +826,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	// The frame can be executed in the same frame as the next frame-packet
 	//  That frame just before that frame is saved in _frame_counter_max
 	cp->frame = _frame_counter_max + 1;
-	cp->next = NULL;
+	cp->next  = NULL;
 
 	// Queue the command for the clients (are send at the end of the frame
 	//   if they can handle it ;))
@@ -826,6 +838,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 				cp->callback = 0;
 			else
 				cp->callback = callback;
+
 			NetworkAddCommandQueue(new_cs, cp);
 		}
 	}
@@ -847,7 +860,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	// This packets means a client noticed an error and is reporting this
 	//  to us. Display the error and report it to the other clients
 	NetworkClientState *new_cs;
-	byte errorno = NetworkRecv_uint8(p);
+	byte errorno = NetworkRecv_uint8(cs, p);
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
@@ -888,7 +901,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		return;
 	}
 
-	NetworkRecv_string(p, str, 100);
+	NetworkRecv_string(cs, p, str, 100);
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -906,7 +919,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
 	// The client received the frame, make note of it
-	cs->last_frame = NetworkRecv_uint32(p);
+	cs->last_frame = NetworkRecv_uint32(cs, p);
 	// With those 2 values we can calculate the lag realtime
 	cs->last_frame_server = _frame_counter;
 
@@ -1018,12 +1031,12 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
-	NetworkAction action = NetworkRecv_uint8(p);
-	DestType desttype = NetworkRecv_uint8(p);
-	int dest = NetworkRecv_uint8(p);
+	NetworkAction action = NetworkRecv_uint8(cs, p);
+	DestType desttype = NetworkRecv_uint8(cs, p);
+	int dest = NetworkRecv_uint8(cs, p);
 	char msg[MAX_TEXT_MSG_LEN];
 
-	NetworkRecv_string(p, msg, MAX_TEXT_MSG_LEN);
+	NetworkRecv_string(cs, p, msg, MAX_TEXT_MSG_LEN);
 
 	NetworkServer_HandleChat(action, desttype, dest, msg, cs->index);
 }
@@ -1033,7 +1046,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	NetworkClientInfo *ci;
 
-	NetworkRecv_string(p, password, sizeof(password));
+	NetworkRecv_string(cs, p, password, sizeof(password));
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (ci->client_playas <= MAX_PLAYERS) {
@@ -1046,8 +1059,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 
-	NetworkRecv_string(p, client_name, sizeof(client_name));
+	NetworkRecv_string(cs, p, client_name, sizeof(client_name));
 	ci = DEREF_CLIENT_INFO(cs);
+
+	if (cs->quited)
+		return;
 
 	if (ci != NULL) {
 		// Display change
@@ -1388,8 +1404,8 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 	Packet *p;
 	NetworkRecvStatus res;
 	while((p = NetworkRecv_Packet(cs, &res)) != NULL) {
-		byte type = NetworkRecv_uint8(p);
-		if (type < PACKET_END && _network_server_packet[type] != NULL)
+		byte type = NetworkRecv_uint8(cs, p);
+		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->quited)
 			_network_server_packet[type](cs, p);
 		else
 			DEBUG(net, 0)("[NET][Server] Received invalid packet type %d", type);

@@ -22,7 +22,7 @@ extern const char _openttd_revision[];
 
 static uint32 last_ack_frame;
 
-void NetworkRecvPatchSettings(Packet *p);
+void NetworkRecvPatchSettings(NetworkClientState *cs, Packet *p);
 
 // **********
 // Sending functions
@@ -277,36 +277,36 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	byte company_info_version;
 	int i;
 
-	company_info_version = NetworkRecv_uint8(p);
+	company_info_version = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (company_info_version == 1) {
+	if (!MY_CLIENT->quited && company_info_version == 1) {
 		byte total;
 		byte current;
 
-		total = NetworkRecv_uint8(p);
+		total = NetworkRecv_uint8(MY_CLIENT, p);
 
 		// There is no data at all..
 		if (total == 0)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		current = NetworkRecv_uint8(p);
+		current = NetworkRecv_uint8(MY_CLIENT, p);
 		if (current >= MAX_PLAYERS)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		_network_lobby_company_count++;
 
-		NetworkRecv_string(p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
-		_network_player_info[current].inaugurated_year = NetworkRecv_uint8(p);
-		_network_player_info[current].company_value = NetworkRecv_uint64(p);
-		_network_player_info[current].money = NetworkRecv_uint64(p);
-		_network_player_info[current].income = NetworkRecv_uint64(p);
-		_network_player_info[current].performance = NetworkRecv_uint16(p);
+		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
+		_network_player_info[current].inaugurated_year = NetworkRecv_uint8(MY_CLIENT, p);
+		_network_player_info[current].company_value = NetworkRecv_uint64(MY_CLIENT, p);
+		_network_player_info[current].money = NetworkRecv_uint64(MY_CLIENT, p);
+		_network_player_info[current].income = NetworkRecv_uint64(MY_CLIENT, p);
+		_network_player_info[current].performance = NetworkRecv_uint16(MY_CLIENT, p);
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			_network_player_info[current].num_vehicle[i] = NetworkRecv_uint16(p);
+			_network_player_info[current].num_vehicle[i] = NetworkRecv_uint16(MY_CLIENT, p);
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
-			_network_player_info[current].num_station[i] = NetworkRecv_uint16(p);
+			_network_player_info[current].num_station[i] = NetworkRecv_uint16(MY_CLIENT, p);
 
-		NetworkRecv_string(p, _network_player_info[current].players, sizeof(_network_player_info[current].players));
+		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].players, sizeof(_network_player_info[current].players));
 
 		InvalidateWindow(WC_NETWORK_WINDOW, 0);
 
@@ -322,13 +322,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
-	uint16 index = NetworkRecv_uint16(p);
-	byte playas = NetworkRecv_uint8(p);
+	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
+	byte playas = NetworkRecv_uint8(MY_CLIENT, p);
 	char name[NETWORK_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 
-	NetworkRecv_string(p, name, sizeof(name));
-	NetworkRecv_string(p, unique_id, sizeof(unique_id));
+	NetworkRecv_string(MY_CLIENT, p, name, sizeof(name));
+	NetworkRecv_string(MY_CLIENT, p, unique_id, sizeof(unique_id));
+
+	if (MY_CLIENT->quited)
+		return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* Do we receive a change of data? Most likely we changed playas */
 	if (index == _network_own_client_index)
@@ -372,7 +375,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 {
-	NetworkErrorCode error = NetworkRecv_uint8(p);
+	NetworkErrorCode error = NetworkRecv_uint8(MY_CLIENT, p);
 
 	if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED ||
 			error == NETWORK_ERROR_PLAYER_MISMATCH) {
@@ -398,7 +401,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 {
 	NetworkPasswordType type;
-	type = NetworkRecv_uint8(p);
+	type = NetworkRecv_uint8(MY_CLIENT, p);
 
 	if (type == NETWORK_GAME_PASSWORD) {
 		ShowNetworkNeedGamePassword();
@@ -413,7 +416,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 {
-	_network_own_client_index = NetworkRecv_uint16(p);
+	_network_own_client_index = NetworkRecv_uint16(MY_CLIENT, p);
 
 	// Start receiving the map
 	SEND_COMMAND(PACKET_CLIENT_GETMAP)();
@@ -423,7 +426,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 {
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
-	_network_join_waiting = NetworkRecv_uint8(p);
+	_network_join_waiting = NetworkRecv_uint8(MY_CLIENT, p);
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 	// We are put on hold for receiving the map.. we need GUI for this ;)
@@ -440,7 +443,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	byte maptype;
 
-	maptype = NetworkRecv_uint8(p);
+	maptype = NetworkRecv_uint8(MY_CLIENT, p);
+
+	if (MY_CLIENT->quited)
+		return NETWORK_RECV_STATUS_CONN_LOST;
 
 	// First packet, init some stuff
 	if (maptype == MAP_PACKET_START) {
@@ -453,11 +459,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
-		_frame_counter = _frame_counter_server = _frame_counter_max = NetworkRecv_uint32(p);
+		_frame_counter = _frame_counter_server = _frame_counter_max = NetworkRecv_uint32(MY_CLIENT, p);
 
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
 		_network_join_kbytes = 0;
-		_network_join_kbytes_total = NetworkRecv_uint32(p) / 1024;
+		_network_join_kbytes_total = NetworkRecv_uint32(MY_CLIENT, p) / 1024;
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 		// The first packet does not contain any more data
@@ -473,7 +479,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 	}
 
 	if (maptype == MAP_PACKET_PATCH) {
-		NetworkRecvPatchSettings(p);
+		NetworkRecvPatchSettings(MY_CLIENT, p);
 	}
 
 	// Check if this was the last packet
@@ -481,8 +487,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		// We also get, very nice, the player_seeds in this packet
 		int i;
 		for (i = 0; i < MAX_PLAYERS; i++) {
-			_player_seeds[i][0] = NetworkRecv_uint32(p);
-			_player_seeds[i][1] = NetworkRecv_uint32(p);
+			_player_seeds[i][0] = NetworkRecv_uint32(MY_CLIENT, p);
+			_player_seeds[i][1] = NetworkRecv_uint32(MY_CLIENT, p);
 		}
 
 		fclose(file_pointer);
@@ -527,16 +533,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 {
-	_frame_counter_server = NetworkRecv_uint32(p);
-	_frame_counter_max = NetworkRecv_uint32(p);
+	_frame_counter_server = NetworkRecv_uint32(MY_CLIENT, p);
+	_frame_counter_max = NetworkRecv_uint32(MY_CLIENT, p);
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	// Test if the server supports this option
 	//  and if we are at the frame the server is
 	if (p->pos < p->size) {
 		_sync_frame = _frame_counter_server;
-		_sync_seed_1 = NetworkRecv_uint32(p);
+		_sync_seed_1 = NetworkRecv_uint32(MY_CLIENT, p);
 #ifdef NETWORK_SEND_DOUBLE_SEED
-		_sync_seed_2 = NetworkRecv_uint32(p);
+		_sync_seed_2 = NetworkRecv_uint32(MY_CLIENT, p);
 #endif
 	}
 #endif
@@ -555,10 +561,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 {
-	_sync_frame = NetworkRecv_uint32(p);
-	_sync_seed_1 = NetworkRecv_uint32(p);
+	_sync_frame = NetworkRecv_uint32(MY_CLIENT, p);
+	_sync_seed_1 = NetworkRecv_uint32(MY_CLIENT, p);
 #ifdef NETWORK_SEND_DOUBLE_SEED
-	_sync_seed_2 = NetworkRecv_uint32(p);
+	_sync_seed_2 = NetworkRecv_uint32(MY_CLIENT, p);
 #endif
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -569,21 +575,21 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 	int i;
 	char *dparam_char;
 	CommandPacket *cp = malloc(sizeof(CommandPacket));
-	cp->player = NetworkRecv_uint8(p);
-	cp->cmd = NetworkRecv_uint32(p);
-	cp->p1 = NetworkRecv_uint32(p);
-	cp->p2 = NetworkRecv_uint32(p);
-	cp->tile = NetworkRecv_uint32(p);
+	cp->player = NetworkRecv_uint8(MY_CLIENT, p);
+	cp->cmd = NetworkRecv_uint32(MY_CLIENT, p);
+	cp->p1 = NetworkRecv_uint32(MY_CLIENT, p);
+	cp->p2 = NetworkRecv_uint32(MY_CLIENT, p);
+	cp->tile = NetworkRecv_uint32(MY_CLIENT, p);
 	/* We are going to send them byte by byte, because dparam is misused
 	    for chars (if it is used), and else we have a BigEndian / LittleEndian
 	    problem.. we should fix the misuse of dparam... -- TrueLight */
 	dparam_char = (char *)&cp->dp[0];
 	for (i = 0; i < lengthof(cp->dp) * 4; i++) {
-		*dparam_char = NetworkRecv_uint8(p);
+		*dparam_char = NetworkRecv_uint8(MY_CLIENT, p);
 		dparam_char++;
 	}
-	cp->callback = NetworkRecv_uint8(p);
-	cp->frame = NetworkRecv_uint32(p);
+	cp->callback = NetworkRecv_uint8(MY_CLIENT, p);
+	cp->frame = NetworkRecv_uint32(MY_CLIENT, p);
 	cp->next = NULL;
 
 	// The server did send us this command..
@@ -603,16 +609,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 {
-	NetworkAction action = NetworkRecv_uint8(p);
+	NetworkAction action = NetworkRecv_uint8(MY_CLIENT, p);
 	char msg[MAX_TEXT_MSG_LEN];
 	NetworkClientInfo *ci = NULL, *ci_to;
 	uint16 index;
 	char name[NETWORK_NAME_LENGTH];
 	bool self_send;
 
-	index = NetworkRecv_uint16(p);
-	self_send = NetworkRecv_uint8(p);
-	NetworkRecv_string(p, msg, MAX_TEXT_MSG_LEN);
+	index = NetworkRecv_uint16(MY_CLIENT, p);
+	self_send = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkRecv_string(MY_CLIENT, p, msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
@@ -656,8 +662,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(p);
-	errorno = NetworkRecv_uint8(p);
+	index = NetworkRecv_uint16(MY_CLIENT, p);
+	errorno = NetworkRecv_uint8(MY_CLIENT, p);
 
 	GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
@@ -680,8 +686,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(p);
-	NetworkRecv_string(p, str, 100);
+	index = NetworkRecv_uint16(MY_CLIENT, p);
+	NetworkRecv_string(MY_CLIENT, p, str, 100);
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
@@ -704,7 +710,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = NetworkRecv_uint16(p);
+	index = NetworkRecv_uint16(MY_CLIENT, p);
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL)
@@ -785,7 +791,7 @@ extern const SettingDesc patch_settings[];
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
 //  this should be removed!!
-void NetworkRecvPatchSettings(Packet *p)
+void NetworkRecvPatchSettings(NetworkClientState *cs, Packet *p)
 {
 	const SettingDesc *item;
 
@@ -796,15 +802,15 @@ void NetworkRecvPatchSettings(Packet *p)
 			case SDT_BOOL:
 			case SDT_INT8:
 			case SDT_UINT8:
-				*(uint8 *)(item->ptr) = NetworkRecv_uint8(p);
+				*(uint8 *)(item->ptr) = NetworkRecv_uint8(cs, p);
 				break;
 			case SDT_INT16:
 			case SDT_UINT16:
-				*(uint16 *)(item->ptr) = NetworkRecv_uint16(p);
+				*(uint16 *)(item->ptr) = NetworkRecv_uint16(cs, p);
 				break;
 			case SDT_INT32:
 			case SDT_UINT32:
-				*(uint32 *)(item->ptr) = NetworkRecv_uint32(p);
+				*(uint32 *)(item->ptr) = NetworkRecv_uint32(cs, p);
 				break;
 		}
 		item++;
@@ -829,8 +835,8 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs)
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
 
 	while (res == NETWORK_RECV_STATUS_OKAY && (p = NetworkRecv_Packet(cs, &res)) != NULL) {
-		byte type = NetworkRecv_uint8(p);
-		if (type < PACKET_END && _network_client_packet[type] != NULL) {
+		byte type = NetworkRecv_uint8(MY_CLIENT, p);
+		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->quited) {
 			res = _network_client_packet[type](p);
 		}	else {
 			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;
