@@ -1862,7 +1862,8 @@ void IndustryMonthlyLoop(void)
 		MaybeNewIndustry(Random());
 	} else if (!_patches.smooth_economy && _total_industries > 0) {
 		i = GetIndustry(RandomRange(_total_industries));
-		MaybeCloseIndustry(i);
+		if (i->xy != 0)
+			MaybeCloseIndustry(i);
 	}
 
 	_current_player = old_player;
