@@ -1554,47 +1554,80 @@ static bool SetSignalsEnumProc(uint tile, SetSignalsData *ssd, int track, uint l
 	return false;
 }
 
+/* Struct to parse data from VehicleFromPos to SignalVehicleCheckProc */
+typedef struct SignalVehicleCheckStruct {
+	TileIndex tile;
+	uint track;
+} SignalVehicleCheckStruct;
+
+static void *SignalVehicleCheckProc(Vehicle *v, void *data)
+{
+	SignalVehicleCheckStruct *dest = data;
+	TileIndex tile;
+
+	/* Find the tile outside the tunnel, for signalling */
+	if (v->u.rail.track == 0x40) {
+		tile = GetVehicleOutOfTunnelTile(v);
+	} else {
+		tile = v->tile;
+	}
+
+	/* Wrong tile, or no train? Not a match */
+	if (tile != dest->tile || v->type != VEH_Train)
+		return NULL;
+
+	/* Are we on the same piece of track? */
+	if (dest->track & (v->u.rail.track + (v->u.rail.track<<8)))
+		return v;
+
+	return NULL;
+}
+
+/* Special check for SetSignalsAfterProc, to see if there is a vehicle on this tile */
+bool SignalVehicleCheck(TileIndex tile, uint track)
+{
+	SignalVehicleCheckStruct dest;
+
+	dest.tile = tile;
+	dest.track = track;
+
+	return VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL;
+}
+
 static void SetSignalsAfterProc(TrackPathFinder *tpf)
 {
 	SetSignalsData *ssd = tpf->userdata;
-	Vehicle *v;
-	uint tile, hash, val, offs;
 	TrackPathFinderLink *link;
+	uint offs;
+	uint i;
 
 	ssd->stop = false;
 
-	// for each train, check if it is in the segment.
-	// then we know that the signal should be red.
-	FOR_ALL_VEHICLES(v) {
-		if (v->type != VEH_Train)
+	/* Go through all the PF tiles */
+	for (i = 0; i < lengthof(tpf->hash_head); i++) {
+		/* Empty hash item */
+		if (tpf->hash_head[i] == 0)
 			continue;
 
-		tile = v->tile;
-		if (v->u.rail.track == 0x40) { tile = GetVehicleOutOfTunnelTile(v); }
-
-		hash = PATHFIND_HASH_TILE(tile);
-
-		val = tpf->hash_head[hash];
-		if (val == 0)
-			continue;
-
-		if (!(val & 0x8000)) {
-			if ((TileIndex)tile == tpf->hash_tile[hash])
-				goto check_val;
+		/* If 0x8000 is not set, there is only 1 item */
+		if (!(tpf->hash_head[i] & 0x8000)) {
+			/* Check if there is a vehicle on this tile */
+			if (SignalVehicleCheck(tpf->hash_tile[i], tpf->hash_head[i])) {
+				ssd->stop = true;
+				return;
+			}
 		} else {
-			offs = tpf->hash_tile[hash];
+			/* There are multiple items, where hash_tile points to the first item in the list */
+			offs = tpf->hash_tile[i];
 			do {
+				/* Find the next item */
 				link = PATHFIND_GET_LINK_PTR(tpf, offs);
-				if ( (TileIndex)tile == link->tile) {
-					val = link->flags;
-check_val:;
-					// the train is on the track, in either direction?
-					if (val & (v->u.rail.track + (v->u.rail.track<<8))) {
-						ssd->stop = true;
-						return;
-					}
-					break;
+				/* Check if there is a vehicle on this tile */
+				if (SignalVehicleCheck(link->tile, link->flags)) {
+					ssd->stop = true;
+					return;
 				}
+				/* Goto the next item */
 			} while ((offs=link->next) != 0xFFFF);
 		}
 	}
