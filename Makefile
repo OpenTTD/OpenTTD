@@ -36,6 +36,7 @@
 # mrproper: remove intermediate files and makefile configuration
 # upgradeconf: add new options to old Makefile.config
 # osx: OS X application
+# release: used by OSX to make a dmg file ready to release
 
 # Options:
 #
@@ -622,7 +623,7 @@ $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
 	$(if $(VERBOSE),@echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)';,@echo 'Compiling and Linking $@';) \
  		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
-$(OSX):
+$(OSX): 
 	@rm -fr $(OSXAPP)
 	@mkdir -p $(OSXAPP)/Contents/MacOS
 	@mkdir -p $(OSXAPP)/Contents/Resources
@@ -638,8 +639,6 @@ $(OSX):
 	@cp data/* $(OSXAPP)/Contents/data/
 	@cp lang/*.lng $(OSXAPP)/Contents/lang/
 	@cp $(TTD) $(OSXAPP)/Contents/MacOS/$(TTD)
-	
-	
 
 $(endwarnings): $(64_bit_warnings)
 
@@ -662,6 +661,24 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 winres.o: ttd.rc
 	windres -o $@ $<
 
+ifdef OSX
+release: all
+	@mkdir -p OpenTTD\ $(RELEASE)
+	@mkdir -p OpenTTD\ $(RELEASE)/docs
+	@cp -R $(OSXAPP) OpenTTD\ $(RELEASE)/
+	@cp docs/OSX_where_did_the_package_go.txt OpenTTD\ $(RELEASE)/Where\ did\ the\ package\ go.txt
+	@cp readme.txt OpenTTD\ $(RELEASE)/docs/
+	@cp docs/README_if_game_crashed_on_OSX.txt OpenTTD\ $(RELEASE)/docs/readme\ if\ crashed\ on\ OSX.txt
+	@cp docs/console.txt OpenTTD\ $(RELEASE)/docs/
+	@cp COPYING OpenTTD\ $(RELEASE)/docs/
+	@cp changelog.txt OpenTTD\ $(RELEASE)/docs/
+	@cp docs/README_if_game_crashed_on_OSX.txt OpenTTD\ $(RELEASE)/docs/
+	@cp os/macos/*.webloc OpenTTD\ $(RELEASE)/
+	@hdiutil create -ov -format UDZO -srcfolder OpenTTD\ $(RELEASE) openttd-$(RELEASE)-osx.dmg
+	@rm -fr OpenTTD\ $(RELEASE)
+
+.PHONY: release
+endif
 
 rev.c: FORCE
 	@# setting the revision number in a place, there the binary can read it
