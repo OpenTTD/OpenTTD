@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "gfx.h"
 #include "fileio.h"
+#include "newgrf.h"
 #include <ctype.h>
 
 #define SPRITECACHE_ID 0xF00F0006
@@ -86,9 +87,6 @@ static const uint16 * const _slopes_spriteindexes[] = {
 };
 
 static void CompactSpriteCache();
-
-void InitNewGRFFile(const char *filename, int sprite_offset);
-void DecodeSpecialSprite(const char *filename, int num, int load_index, int stage);
 
 static void ReadSpriteHeaderSkipData(int num, int load_index)
 {

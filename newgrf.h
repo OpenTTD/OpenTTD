@@ -1,6 +1,9 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
+#include "sprite.h"
+#include "station.h"
+
 struct GRFFile {
 	char *filename;
 	uint32 grfid;
@@ -32,6 +35,9 @@ struct GRFFile {
 
 extern int _grffile_count;
 extern struct GRFFile *_first_grffile;
+
+void InitNewGRFFile(const char *filename, int sprite_offset);
+void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage);
 
 
 #endif /* NEWGRF_H */
