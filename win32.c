@@ -226,15 +226,14 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	}
 
 	case WM_CLOSE:
-		// do not ask to quit on the main screen
-		if (_game_mode != GM_MENU) {
-			if(_patches.autosave_on_exit) {
+		if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
+			_exit_game = true;
+		} else if (_patches.autosave_on_exit) {
 				DoExitSave();
 				_exit_game = true;
-			} else
-				AskExitGame();
 		} else
-			return ML_QUIT;
+			AskExitGame();
+
 		return 0;
 
 	case WM_LBUTTONDOWN:
