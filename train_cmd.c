@@ -2599,11 +2599,20 @@ reverse_train_direction:
 
 extern uint CheckTunnelBusy(uint tile, int *length);
 
+/**
+ * Deletes/Clears the last wagon of a crashed train. It takes the engine of the
+ * train, then goes to the last wagon and deletes that. Each call to this function
+ * will remove the last wagon of a crashed train. If this wagon was on a crossing,
+ * or inside a tunnel, recalculate the signals as they might need updating
+ * @param v the @Vehicle of which last wagon is to be removed
+ */
 static void DeleteLastWagon(Vehicle *v)
 {
 	Vehicle *u = v;
-	int t;
 
+	/* Go to the last wagon and delete the link pointing there
+	 * *u is then the one-before-last wagon, and *v the last
+	 * one which will physicially be removed */
 	while (v->next != NULL) {
 		u = v;
 		v = v->next;
@@ -2619,22 +2628,25 @@ static void DeleteLastWagon(Vehicle *v)
 	EndVehicleMove(v);
 	DeleteVehicle(v);
 
-	if (!((t=v->u.rail.track) & 0xC0)) {
-		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(t));
-	}
+	if (!(v->u.rail.track & 0xC0))
+		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
 
 	/* Check if the wagon was on a road/rail-crossing and disable it if no others are on it */
 	DisableTrainCrossing(v->tile);
 
-	if (v->u.rail.track == 0x40) {
+	if (v->u.rail.track == 0x40) { // inside a tunnel
 		int length;
 		TileIndex endtile = CheckTunnelBusy(v->tile, &length);
+
+		if (endtile == (uint)-1) // tunnel is busy (error returned)
+			return;
+
 		if ((v->direction == 1) || (v->direction == 5) )
-			SetSignalsOnBothDir(v->tile,0);
-			SetSignalsOnBothDir(endtile,0);
+			SetSignalsOnBothDir(v->tile, 0);
+			SetSignalsOnBothDir(endtile, 0);
 		if ((v->direction == 3) || (v->direction == 7) )
-			SetSignalsOnBothDir(v->tile,1);
-			SetSignalsOnBothDir(endtile,1);
+			SetSignalsOnBothDir(v->tile, 1);
+			SetSignalsOnBothDir(endtile, 1);
 	}
 }
 
