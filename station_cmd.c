@@ -764,7 +764,9 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 	// Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station)
 	est = -1;
-	if ((ret=CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << direction, _patches.nonuniform_stations ? &est : NULL)) == CMD_ERROR) return CMD_ERROR;
+	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
+	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
+	if ((ret=CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << direction, _patches.nonuniform_stations ? &est : NULL)) == CMD_ERROR) return CMD_ERROR;
 	cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
 	// Make sure there are no similar stations around us.
@@ -812,6 +814,11 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		int tile_delta;
 		byte *layout_ptr;
 		uint station_index = st->index;
+
+		// Now really clear the land below the station
+		// It should never return CMD_ERROR.. but you never know ;)
+		//  (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags)
+		if (CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << direction, _patches.nonuniform_stations ? &est : NULL) == CMD_ERROR) return CMD_ERROR;
 
 		st->train_tile = finalvalues[0];
 		if (!st->facilities) st->xy = finalvalues[0];
