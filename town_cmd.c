@@ -416,6 +416,7 @@ static bool IsRoadAllowedHere(uint tile, int dir)
 
 		slope = GetTileSlope(tile, NULL);
 		if (slope == 0) {
+no_slope:
 			// Tile has no slope
 			// Disallow the road if any neighboring tile has a road.
 			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, _roadblock_tileadd[dir+1])), dir^2) ||
@@ -434,10 +435,17 @@ static bool IsRoadAllowedHere(uint tile, int dir)
 			uint32 r = Random();
 
 			if (CHANCE16I(1,8, r) && !_generating_world) {
+				int32 res;
+
 				if (CHANCE16I(1,16,r))
-					DoCommandByTile(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
+					res = DoCommandByTile(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					                      CMD_TERRAFORM_LAND);
 				else
-					DoCommandByTile(tile, slope^0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
+					res = DoCommandByTile(tile, slope^0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					                      CMD_TERRAFORM_LAND);
+				if (res == CMD_ERROR && CHANCE16I(1,3,r))
+					// We can consider building on the slope, though.
+					goto no_slope;
 			}
 			return false;
 		}
