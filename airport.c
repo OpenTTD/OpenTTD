@@ -10,8 +10,7 @@ AirportFTAClass *MetropolitanAirport;
 AirportFTAClass *InternationalAirport;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
-																				const byte nofterminals, const byte nofterminalgroups,
-																				const byte nofhelipads,  const byte nofhelipadgroups,
+																				const byte *terminals, const byte *helipads,
 																				const byte entry_point,  const byte acc_planes,
 																				const AirportFTAbuildup *FA,
 																				const TileIndexDiffC *depots, const byte nof_depots);
@@ -26,24 +25,75 @@ static byte AirportBlockToString(uint32 block);*/
 void InitializeAirports()
 {
 	// country airport
-	CountryAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	AirportFTAClass_Constructor(CountryAirport, 2, 1, 0, 0, 16, ALL, _airport_fta_country, _airport_depots_country, lengthof(_airport_depots_country));
+	CountryAirport = malloc(sizeof(AirportFTAClass));
+	
+	AirportFTAClass_Constructor(
+		CountryAirport, 
+		_airport_terminal_country, 
+		NULL, 
+		16, 
+		ALL, 
+		_airport_fta_country, 
+		_airport_depots_country, 
+		lengthof(_airport_depots_country)
+	);
 
 	// city airport
-	CityAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	AirportFTAClass_Constructor(CityAirport, 3, 1, 0, 0, 19, ALL, _airport_fta_city, _airport_depots_city, lengthof(_airport_depots_city));
+	CityAirport = malloc(sizeof(AirportFTAClass));
+	
+	AirportFTAClass_Constructor(
+		CityAirport, 
+		_airport_terminal_city, 
+		NULL, 
+		19, 
+		ALL, 
+		_airport_fta_city, 
+		_airport_depots_city, 
+		lengthof(_airport_depots_city)
+	);
 
 	// metropolitan airport
-	MetropolitanAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	AirportFTAClass_Constructor(MetropolitanAirport, 3, 1, 0, 0, 20, ALL, _airport_fta_metropolitan, _airport_depots_metropolitan, lengthof(_airport_depots_metropolitan));
+	MetropolitanAirport = malloc(sizeof(AirportFTAClass));
+	
+	AirportFTAClass_Constructor(
+		MetropolitanAirport, 
+		_airport_terminal_metropolitan, 
+		NULL, 
+		20, 
+		ALL, 
+		_airport_fta_metropolitan, 
+		_airport_depots_metropolitan, 
+		lengthof(_airport_depots_metropolitan)
+	);
 
 	// international airport
 	InternationalAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	AirportFTAClass_Constructor(InternationalAirport, 6, 2, 2, 1, 37, ALL, _airport_fta_international, _airport_depots_international, lengthof(_airport_depots_international));
+	
+	AirportFTAClass_Constructor(
+		InternationalAirport, 
+		_airport_terminal_international, 
+		_airport_helipad_international, 
+		37, 
+		ALL, 
+		_airport_fta_international, 
+		_airport_depots_international, 
+		lengthof(_airport_depots_international)
+	);
 
 	// heliport, oilrig
 	Heliport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	AirportFTAClass_Constructor(Heliport, 0, 0, 1, 1, 7, HELICOPTERS_ONLY, _airport_fta_heliport_oilrig, NULL, 0);
+	
+	AirportFTAClass_Constructor(
+		Heliport, 
+		NULL, 
+		_airport_helipad_heliport_oilrig, 
+		7, 
+		HELICOPTERS_ONLY, 
+		_airport_fta_heliport_oilrig, 
+		NULL, 
+		0
+	);
+	
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
 }
 
@@ -57,12 +107,46 @@ void UnInitializeAirports()
 }
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
-																				const byte nofterminals, const byte nofterminalgroups,
-																				const byte nofhelipads, const byte nofhelipadgroups,
+																				const byte *terminals, const byte *helipads,
 																				const byte entry_point, const byte acc_planes,
 																				const AirportFTAbuildup *FA,
 																				const TileIndexDiffC *depots, const byte nof_depots)
 {
+	byte nofterminals, nofhelipads;
+	byte nofterminalgroups = 0;
+	byte nofhelipadgroups = 0;
+	const byte * curr;
+	int i;
+	nofterminals = nofhelipads = 0;
+	
+	//now we read the number of terminals we have
+	if (terminals != NULL) {
+		i = terminals[0];
+		nofterminalgroups = i;
+		curr = terminals;
+		while (i-- > 0) {
+			curr++;
+			assert(*curr != 0);	//we don't want to have an empty group
+			nofterminals += *curr;
+		}
+	
+	}
+	Airport->terminals = terminals;
+
+	//read helipads	
+	if (helipads != NULL) {
+		i = helipads[0];
+		nofhelipadgroups = i;
+		curr = helipads;
+		while (i-- > 0) {
+			curr++;
+			assert(*curr != 0); //no empty groups please
+			nofhelipads += *curr;
+		}
+	
+	}
+	Airport->helipads = helipads;
+
 	// if there are more terminals than 6, internal variables have to be changed, so don't allow that
 	// same goes for helipads
 	if (nofterminals > MAX_TERMINALS) { printf("Currently only maximum of %2d terminals are supported (you wanted %2d)\n", MAX_TERMINALS, nofterminals);}
@@ -70,23 +154,15 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	// terminals/helipads are divided into groups. Groups are computed by dividing the number
 	// of terminals by the number of groups. Half in half. If #terminals is uneven, first group
 	// will get the less # of terminals
-	if (nofterminalgroups > nofterminals) { printf("# of terminalgroups (%2d) must be less or equal to terminals (%2d)", nofterminals, nofterminalgroups);}
-	if (nofhelipadgroups > nofhelipads) { printf("# of helipadgroups (%2d) must be less or equal to helipads (%2d)", nofhelipads, nofhelipadgroups);}
 
 	assert(nofterminals <= MAX_TERMINALS);
 	assert(nofhelipads <= MAX_HELIPADS);
-	assert(nofterminalgroups <= nofterminals);
-	assert(nofhelipadgroups <= nofhelipads);
 
 	Airport->nofelements = AirportGetNofElements(FA);
 	// check
 	if (entry_point >= Airport->nofelements) {printf("Entry point (%2d) must be within the airport positions (which is max %2d)\n", entry_point, Airport->nofelements);}
 	assert(entry_point < Airport->nofelements);
 
-	Airport->nofterminals = nofterminals;
-	Airport->nofterminalgroups = nofterminalgroups;
-	Airport->nofhelipads = nofhelipads;
-	Airport->nofhelipadgroups = nofhelipadgroups;
 	Airport->acc_planes = acc_planes;
 	Airport->entry_point = entry_point;
 	Airport->airport_depots = depots;
@@ -95,8 +171,8 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 
 	// build the state machine
 	AirportBuildAutomata(Airport, FA);
-		DEBUG(misc, 1) ("#Elements %2d; #Terminals %2d in %d group(s); #Helipads %2d in %d group(s)", Airport->nofelements,
-				  Airport->nofterminals, Airport->nofterminalgroups, Airport->nofhelipads, Airport->nofhelipadgroups);
+		DEBUG(misc, 1) ("#Elements %2d; #Terminals %2d in %d group(s); #Helipads %2d in %d group(s); Entry Point %d", Airport->nofelements,
+				  nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups, Airport->entry_point);
 
 
 	{

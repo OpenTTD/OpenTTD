@@ -1250,13 +1250,14 @@ void UpdateVoidTiles()
 	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
 }
 
-extern void UpdateOldAircraft();
+extern void UpdateOldAircraft( void );
+extern void UpdateOilRig( void );
 
 bool AfterLoadGame(uint version)
 {
 	Window *w;
 	ViewPort *vp;
-
+	
 	// in version 2.1 of the savegame, town owner was unified.
 	if (version <= 0x200) {
 		ConvertTownOwner();
@@ -1353,6 +1354,11 @@ bool AfterLoadGame(uint version)
 
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
+
+	//In 5.1, Oilrigs have been moved (again)
+	if (version <= 0x500) {
+		UpdateOilRig();
+	}
 
 	return true;
 }

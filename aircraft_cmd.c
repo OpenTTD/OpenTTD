@@ -373,7 +373,7 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st = GetStation(v->u.air.targetairport);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
-		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->nofterminals == 0)
+		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL)
 					return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
@@ -495,7 +495,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	st = GetStation(v->current_order.station);
 	// only goto depot if the target airport has terminals (eg. it is airport)
-	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->nofterminals != 0) {
+	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;
@@ -1356,7 +1356,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *A
 		// on an airport with helipads, a helicopter will always land there
 		// and get serviced at the same time - patch setting
 		if (_patches.serviceathelipad) {
-			if (v->subtype == 0 && Airport->nofhelipads > 0) {
+			if (v->subtype == 0 && Airport->helipads != NULL) {
 				// an exerpt of ServiceAircraft, without the invisibility stuff
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
@@ -1518,7 +1518,7 @@ static void AircraftEventHandler_HeliEndLanding(Vehicle *v, const AirportFTAClas
 	if (v->current_order.type == OT_GOTO_STATION) {
 		if (AirportFindFreeHelipad(v, Airport)) {return;}
 	}
-	v->u.air.state = (Airport->nofterminals != 0) ? HANGAR : HELITAKEOFF;
+	v->u.air.state = (Airport->terminals != NULL) ? HANGAR : HELITAKEOFF;
 }
 
 typedef void AircraftStateHandler(Vehicle *v, const AirportFTAClass *Airport);
@@ -1696,9 +1696,18 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 	return false;
 }
 
+static int GetNumTerminals(const AirportFTAClass *Airport)
+{
+	int i, num = 0;
+	
+	for (i = Airport->terminals[0]; i > 0; i--)
+		num += Airport->terminals[i];
+		
+	return num;
+}
+
 static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 {
-	byte nofterminalspergroup, i;
 	AirportFTA *temp;
 	Station *st;
 
@@ -1712,18 +1721,29 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 		possible groups are checked	(in this case group 1, since that is after group 0). If that
 		fails, then attempt fails and plane waits
 	*/
-	if (Airport->nofterminalgroups > 1) {
+	if (Airport->terminals[0] > 1) {
 		st = GetStation(v->u.air.targetairport);
-		nofterminalspergroup = Airport->nofterminals / Airport->nofterminalgroups;
 		temp = Airport->layout[v->u.air.pos].next_in_chain;
 		while (temp != NULL) {
 			if (temp->heading == 255) {
 				if (!HASBITS(st->airport_flags, temp->block)) {
-					i = temp->next_position * nofterminalspergroup; // next_position denotes the group to check
-					// only that group will be checked (eg 6 terms, 2 groups)
-					// with i = 0 terms 1 - 3 and
-					// with i = 1 terms 4 - 6
-					if (FreeTerminal(v, i, i + nofterminalspergroup)) {return true;}
+					int target_group;
+					int i;
+					int group_start = 0;
+					int group_end;
+
+					//read which group do we want to go to?
+					//(the first free group)
+					target_group = temp->next_position + 1;
+
+					//at what terminal does the group start?
+					//that means, sum up all terminals of
+					//groups with lower number
+					for(i = 1; i < target_group; i++)
+						group_start += Airport->terminals[i];
+
+					group_end = group_start + Airport->terminals[target_group];
+					if (FreeTerminal(v, group_start, group_end)) {return true;}
 				}
 			}
 			else {return false;} // once the heading isn't 255, we've exhausted the possible blocks. So we cannot move
@@ -1732,29 +1752,52 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 	}
 
 	// if there is only 1 terminalgroup, all terminals are checked (starting from 0 to max)
-	return FreeTerminal(v, 0, Airport->nofterminals);
+	return FreeTerminal(v, 0, GetNumTerminals(Airport));
 }
+
+static int GetNumHelipads(const AirportFTAClass *Airport)
+{
+	int i, num = 0;
+	
+	for (i = Airport->helipads[0]; i > 0; i--)
+		num += Airport->helipads[i];
+		
+	return num;
+}
+
 
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 {
   Station *st;
-  byte nofhelipadspergroup,  i;
   AirportFTA *temp;
 
 	// if an airport doesn't have helipads, use terminals
-	if (Airport->nofhelipads == 0) {return AirportFindFreeTerminal(v, Airport);}
+	if (Airport->helipads == NULL) {return AirportFindFreeTerminal(v, Airport);}
 
 	// if there are more helicoptergroups, pick one, just as in AirportFindFreeTerminal()
-	if (Airport->nofhelipadgroups > 1) {
+	if (Airport->helipads[0] > 1) {
 		st = GetStation(v->u.air.targetairport);
-		nofhelipadspergroup = Airport->nofhelipads / Airport->nofhelipadgroups;
 		temp = Airport->layout[v->u.air.pos].next_in_chain;
 		while (temp != NULL) {
 			if (temp->heading == 255) {
 				if (!HASBITS(st->airport_flags, temp->block)) {
-					i = temp->next_position * nofhelipadspergroup; // next position is the group to check
-					// heliports start from after TERMINALS, so MAX_TERMINALS needs to be added
-					if (FreeTerminal(v, i + MAX_TERMINALS, i + MAX_TERMINALS + nofhelipadspergroup)) {return true;}
+					int target_group;
+					int i;
+					int group_start = 0;
+					int group_end;
+
+					//read which group do we want to go to?
+					//(the first free group)
+					target_group = temp->next_position + 1;
+
+					//at what terminal does the group start?
+					//that means, sum up all terminals of
+					//groups with lower number
+					for(i = 1; i < target_group; i++)
+						group_start += Airport->helipads[i];
+
+					group_end = group_start + Airport->helipads[target_group];
+					if (FreeTerminal(v, group_start, group_end)) {return true;}
 				}
 			}
 			else {return false;} // once the heading isn't 255, we've exhausted the possible blocks. So we cannot move
@@ -1763,7 +1806,7 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 	}
 	// only 1 helicoptergroup, check all helipads
 	// The blocks for helipads start after the last terminal (MAX_TERMINALS)
-	else {return FreeTerminal(v, MAX_TERMINALS, Airport->nofhelipads + MAX_TERMINALS);}
+	else {return FreeTerminal(v, MAX_TERMINALS, GetNumHelipads(Airport) + MAX_TERMINALS);}
 	return false;	// it shouldn't get here anytime, but just to be sure
 }
 
@@ -1818,6 +1861,15 @@ void Aircraft_Tick(Vehicle *v)
 		AircraftEventHandler(v, i);
 		if (v->type != VEH_Aircraft) // In case it was deleted
 			break;
+	}
+}
+
+void UpdateOilRig( void )
+{
+	Station *st;
+	
+	FOR_ALL_STATIONS(st) {
+		if (st->airport_type == 5) st->airport_type = AT_OILRIG;
 	}
 }
 
