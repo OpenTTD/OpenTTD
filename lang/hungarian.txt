@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Állami támogatások
 STR_02DD_SUBSIDIES						:Támogatások
 STR_02DE_MAP_OF_WORLD						:Világtérkép
 STR_EXTRA_VIEW_PORT						:Extra látkép
+STR_SIGN_LIST							:Feliratok listája
 STR_02DF_TOWN_DIRECTORY						:Városlista
 STR_TOWN_POPULATION						:{BLACK}Világnépesség: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}{COMMA16}. látkép
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Megmutatja, hogy melyik bal oldali 
 STR_REPLACE_HELP						:{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Feliratok listája ({COMMA16} db)
 
 ############ Lists rail types
 

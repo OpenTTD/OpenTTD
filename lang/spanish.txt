@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Mostras subvenciones
 STR_02DD_SUBSIDIES						:Subvenciones
 STR_02DE_MAP_OF_WORLD						:Mapa del mundo
 STR_EXTRA_VIEW_PORT						:Punto de vista extra
+STR_SIGN_LIST							:Lista de señales
 STR_02DF_TOWN_DIRECTORY						:Listado de poblaciones
 STR_TOWN_POPULATION						:{BLACK}Población mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vista {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Muestra que locomotora será reempla
 STR_REPLACE_HELP						:{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Lista de señales - {COMMA16} Señales
 
 ############ Lists rail types
 

@@ -10,7 +10,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Neuztenka lesu - reikia {CURRENCY}
 STR_0004							:{WHITE}{CURRENCY64}
 STR_0005							:{RED}{CURRENCY64}
 STR_EMPTY							:
-STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Flat land required
+STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Reikia lygaus pavirsiaus
 STR_0008_WAITING						:{BLACK}Laukia: {WHITE}{STRING}
 STR_0009							:{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (marsrutas is
@@ -18,69 +18,69 @@ STR_000B							:{YELLOW}{STATION})
 STR_000C_ACCEPTS						:{BLACK}Priima: {WHITE}
 STR_000D_ACCEPTS						:{BLACK}Priima: {GOLD}
 STR_000E							:
-STR_000F_PASSENGERS						:Keleiviai
-STR_0010_COAL							:Anglis
-STR_0011_MAIL							:Pastas
-STR_0012_OIL							:Nafta
+STR_000F_PASSENGERS						:Keleiviu
+STR_0010_COAL							:Anglies
+STR_0011_MAIL							:Pasto
+STR_0012_OIL							:Naftos
 STR_0013_LIVESTOCK						:Galviju
-STR_0014_GOODS							:Prekes
-STR_0015_GRAIN							:Grudai
-STR_0016_WOOD							:Mediena
-STR_0017_IRON_ORE						:Gelezies ruda
-STR_0018_STEEL							:Plienas
-STR_0019_VALUABLES						:Brangenybes
-STR_001A_COPPER_ORE						:Vario ruda
-STR_001B_MAIZE							:Kukuruzai
-STR_001C_FRUIT							:Vaisiai
-STR_001D_DIAMONDS						:Deimantai
-STR_001E_FOOD							:Maistas
-STR_001F_PAPER							:Popierius
-STR_0020_GOLD							:Auksas
-STR_0021_WATER							:Vanduo
-STR_0022_WHEAT							:Kvieciai
-STR_0023_RUBBER							:Guma
-STR_0024_SUGAR							:Cukrus
-STR_0025_TOYS							:Zaislai
-STR_0026_CANDY							:Sweets
-STR_0027_COLA							:Kola
-STR_0028_COTTON_CANDY						:Cukraus vata
-STR_0029_BUBBLES						:Burbulai
-STR_002A_TOFFEE							:Karamele
-STR_002B_BATTERIES						:Baterijos
-STR_002C_PLASTIC						:Plastmase
-STR_002D_FIZZY_DRINKS						:Gaivieji gerimai
+STR_0014_GOODS							:Prekiu
+STR_0015_GRAIN							:Grudu
+STR_0016_WOOD							:Medienos
+STR_0017_IRON_ORE						:Gelezies rudos
+STR_0018_STEEL							:Plieno
+STR_0019_VALUABLES						:Brangenybiu
+STR_001A_COPPER_ORE						:Vario rudos
+STR_001B_MAIZE							:Kukuruzu
+STR_001C_FRUIT							:Vaisiu
+STR_001D_DIAMONDS						:Deimantu
+STR_001E_FOOD							:Maisto
+STR_001F_PAPER							:Popieriaus
+STR_0020_GOLD							:Aukso
+STR_0021_WATER							:Vandens
+STR_0022_WHEAT							:Kvieciu
+STR_0023_RUBBER							:Gumos
+STR_0024_SUGAR							:Cukraus
+STR_0025_TOYS							:Zaislu
+STR_0026_CANDY							:Saldumynu
+STR_0027_COLA							:Kolos
+STR_0028_COTTON_CANDY						:Cukraus vatos
+STR_0029_BUBBLES						:Burbulu
+STR_002A_TOFFEE							:Karameles
+STR_002B_BATTERIES						:Bateriju
+STR_002C_PLASTIC						:Plastmases
+STR_002D_FIZZY_DRINKS						:Gaivuju gerimu
 STR_002E							:
-STR_002F_PASSENGER						:Keleiviai
-STR_0030_COAL							:Anglis
-STR_0031_MAIL							:Pastas
-STR_0032_OIL							:Nafta
+STR_002F_PASSENGER						:Keleiviu
+STR_0030_COAL							:Anglies
+STR_0031_MAIL							:Pasto
+STR_0032_OIL							:Naftos
 STR_0033_LIVESTOCK						:Galviju
-STR_0034_GOODS							:Prekes
-STR_0035_GRAIN							:Grudai
-STR_0036_WOOD							:Mediena
-STR_0037_IRON_ORE						:Gelezies ruda
-STR_0038_STEEL							:Plienas
-STR_0039_VALUABLES						:Brangenybes
-STR_003A_COPPER_ORE						:Vario ruda
-STR_003B_MAIZE							:Kukuruzai
-STR_003C_FRUIT							:Vaisiai
-STR_003D_DIAMOND						:Deimantai
-STR_003E_FOOD							:Maistas
-STR_003F_PAPER							:Popierius
-STR_0040_GOLD							:Auksas
-STR_0041_WATER							:Vanduo
-STR_0042_WHEAT							:Kvieciai
-STR_0043_RUBBER							:Kauciukas
-STR_0044_SUGAR							:Cukrus
-STR_0045_TOY							:Zaislai
-STR_0046_CANDY							:Saldumynai
-STR_0047_COLA							:Kokakola
-STR_0048_COTTON_CANDY						:Cukraus vata
-STR_0049_BUBBLE							:Burbulai
-STR_004A_TOFFEE							:Karamele
-STR_004B_BATTERY						:Battery
+STR_0034_GOODS							:Prekiu
+STR_0035_GRAIN							:Grudu
+STR_0036_WOOD							:Medienos
+STR_0037_IRON_ORE						:Gelezies rudos
+STR_0038_STEEL							:Plieno
+STR_0039_VALUABLES						:Brangenybiu
+STR_003A_COPPER_ORE						:Vario rudos
+STR_003B_MAIZE							:Kukuruzu
+STR_003C_FRUIT							:Vaisiu
+STR_003D_DIAMOND						:Deimantu
+STR_003E_FOOD							:Maisto
+STR_003F_PAPER							:Popieriaus
+STR_0040_GOLD							:Aukso
+STR_0041_WATER							:Vandens
+STR_0042_WHEAT							:Kvieciu
+STR_0043_RUBBER							:Kauciuko
+STR_0044_SUGAR							:Cukraus
+STR_0045_TOY							:Zaislu
+STR_0046_CANDY							:Saldumynu
+STR_0047_COLA							:Kolos
+STR_0048_COTTON_CANDY						:Cukraus vatos
+STR_0049_BUBBLE							:Burbulu
+STR_004A_TOFFEE							:Karameles
+STR_004B_BATTERY						:Bateriju
 STR_004C_PLASTIC						:Plastic
-STR_004D_FIZZY_DRINK						:Gaivieji gerimai
+STR_004D_FIZZY_DRINK						:Gaiviuju gerimu
 STR_004E							:
 STR_004F_PASSENGER						:{COMMA16} keleiviai
 STR_0050_TON_OF_COAL						:{COMMA16} tonu anglies
@@ -118,13 +118,13 @@ STR_006F_PASSENGERS						:{COMMA16} keleiviu
 STR_0070_TONS_OF_COAL						:{COMMA16} tonu anglies
 STR_0071_BAGS_OF_MAIL						:{COMMA16} pasto maisu
 STR_0072_OF_OIL							:{VOLUME} naftos
-STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} galviju vienetu
-STR_0074_CRATES_OF_GOODS					:{COMMA16} prekiu dezes
+STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} galviju
+STR_0074_CRATES_OF_GOODS					:{COMMA16} prekiu deziu
 STR_0075_TONS_OF_GRAIN						:{COMMA16} tonu grudu
 STR_0076_TONS_OF_WOOD						:{COMMA16} tonu medienos
 STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonu gelezies rudos
 STR_0078_TONS_OF_STEEL						:{COMMA16} tonu plieno
-STR_0079_BAGS_OF_VALUABLES					:{COMMA16} bags of valuables
+STR_0079_BAGS_OF_VALUABLES					:{COMMA16} brangenybiu maisu
 STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tonu vario rudos
 STR_007B_TONS_OF_MAIZE						:{COMMA16} tonu kukuruzu
 STR_007C_TONS_OF_FRUIT						:{COMMA16} tonu vaisiu
@@ -769,6 +769,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Rodyti subsidijas
 STR_02DD_SUBSIDIES						:Subsidijos
 STR_02DE_MAP_OF_WORLD						:Zemelapis
 STR_EXTRA_VIEW_PORT						:Papildomas perziuros langas
+STR_SIGN_LIST							:Sign list
 STR_02DF_TOWN_DIRECTORY						:Miestu sarasas
 STR_TOWN_POPULATION						:{BLACK}Pasaulio populiacija: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Perziuros langas {COMMA16}
@@ -931,7 +932,7 @@ STR_NO_ORDERS_VEL						:{LTBLUE}Neturi uzduociu, {VELOCITY}
 STR_PASSENGERS							:keleiviai
 STR_BAGS							:maisai
 STR_TONS							:tonos
-STR_LITERS							:litrai
+STR_LITERS							:litru
 STR_ITEMS							:vienetu
 STR_CRATES							:deziu
 STR_RES_OTHER							:kiti
@@ -989,7 +990,7 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Naudoti patobulinta krovimo algorit
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Infliafija: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Pristatyti krovini stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Leisti statyti labai ilgus tiltus: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Leisti nurodyti uzduoti 'keliauti i garaza': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Leisti nurodyti uzduoti 'keliauti i depa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Leisti statyti neperdirbta produkcija gaminancius fabrikus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Industries of the same type can be built close to each other: {ORANGE}{STRING}
@@ -1000,7 +1001,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch compatible nonstop handling
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}New depot finding: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Naujo depo radimas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding (NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
@@ -1011,7 +1012,7 @@ STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}A train is lost if no progress is
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
 STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Review vehicles' orders: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:no
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:yes, but exclude stopped vehicles
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:taip, bet isskyrus sustabdytas tr. priemones
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:of all vehicles
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
@@ -1452,10 +1453,10 @@ STR_101C_BUILD_RAILROAD_BRIDGE					:{BLACK}Statyti gelezinkelio tilta
 STR_101D_BUILD_RAILROAD_TUNNEL					:{BLACK}Statyti gelezinkelio tuneli
 STR_101E_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Pasalina begius/sviesoforus
 STR_101F_BRIDGE_SELECTION_CLICK					:{BLACK}Tilto statymas - parink kur statyti tilta
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Pasirink gelezinkelio garazo orientacija
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Pasirink gelezinkelio depo orientacija
 STR_1021_RAILROAD_TRACK						:Genezinkelio begiai
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Gelezinkelio begiai su sviesoforu
-STR_1023_RAILROAD_TRAIN_DEPOT					:Traukinio garazas
+STR_1023_RAILROAD_TRAIN_DEPOT					:Traukiniu depas
 STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...sis langelis priklauso kitai kompanijai
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Gelezinkelio begiai su paprastais sviesoforais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Gelezinkelio begiai su pre-sviesoforais
@@ -1539,9 +1540,9 @@ STR_202A_NONE							:{ORANGE}Niekas
 STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Jau subsidijuojama:-
 STR_202C_FROM_TO						:{ORANGE}{STRING} is {STATION} i {STATION}{YELLOW} ({STRING}
 STR_202D_UNTIL							:{YELLOW}, iki {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Subsidiju pasiulymas baigesi:{}{}{STRING} is {STRING} i {STRING} daugiau nebesubsidijuojama.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Subsidiju pasiulymas baigesi:{}{}{STRING} pervezimas is {STRING} i {STRING} daugiau nebesubsidijuojamas.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Subsidiju laikas baigesi:{}{}{STRING} transportavimas is {STATION} i {STATION} daugiau nebesubsidijuojama.
-STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsidiju pasiulymas:{}{}Pirmasis pervezes {STRING} is {STRING} to {STRING} gaus metine vietines valdzios subsidija!
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsidiju pasiulymas:{}{}Pirmasis pervezes {STRING} is {STRING} i {STRING} gaus metine vietines valdzios subsidija!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervezimas is {STATION} i {STATION} metams bus 50% daugiau apmokama!
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervezimas is {STATION} i {STATION} bus metus apmokamas padidintu 200% tarifu!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING}  pervezimas is {STATION} i {STATION} bus metus apmokamas padidintu 300% tarifu!
@@ -1697,13 +1698,13 @@ STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station too spread out
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...nonuniform stations disabled
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Prieplaukos orientacija
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Laivu depo orientacija
 STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...turi buti statoma ant vandens
-STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Laivo depo statyti cia negalima...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Pasirink laivo depo orientacija
+STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}DLaivu depo statyti negalima...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Pasirink laivu depo orientacija
 STR_3804_WATER							:Vanduo
 STR_3805_COAST_OR_RIVERBANK					:Juros ar upes krantas
-STR_3806_SHIP_DEPOT						:Laivo depas
+STR_3806_SHIP_DEPOT						:Laivu depas
 STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...Negalima statyti ant vandens
 
 ##id 0x4000
@@ -1728,60 +1729,60 @@ STR_4010_GENERATE_RANDOM_NEW_GAME				:Atsitiktinai generuoti nauja zaidima
 ##id 0x4800
 STR_4800_IN_THE_WAY						:{WHITE}{STRING} kelyje
 STR_4801							:{WHITE}{TOWN} {STRING}
-STR_4802_COAL_MINE						:Anglies kasykla
-STR_4803_POWER_STATION						:Elektrine
-STR_4804_SAWMILL						:Lentpjuve
-STR_4805_FOREST							:Miskas
-STR_4806_OIL_REFINERY						:Naftos perdirbimo imone
-STR_4807_OIL_RIG						:Naftos grezinys juroje
-STR_4808_FACTORY						:Gamykla
-STR_4809_PRINTING_WORKS						:Spaustuve
-STR_480A_STEEL_MILL						:Plieno liejykla
-STR_480B_FARM							:Ferma
-STR_480C_COPPER_ORE_MINE					:Vario rudos kasykla
-STR_480D_OIL_WELLS						:Naftos greziniai
-STR_480E_BANK							:Bankas
-STR_480F_FOOD_PROCESSING_PLANT					:Maisto perdirbimo imone
-STR_4810_PAPER_MILL						:Popieriaus fabrikas
-STR_4811_GOLD_MINE						:Aukso kasykla
-STR_4812_BANK							:Bankas
-STR_4813_DIAMOND_MINE						:Deimantu kasykla
-STR_4814_IRON_ORE_MINE						:Gelezies rudos kasykla
-STR_4815_FRUIT_PLANTATION					:Vaisiu plantacija
-STR_4816_RUBBER_PLANTATION					:Kauciuko plantacija
-STR_4817_WATER_SUPPLY						:Vandens saugykla
-STR_4818_WATER_TOWER						:Water Tower
-STR_4819_FACTORY						:Factory
-STR_481A_FARM							:Farm
+STR_4802_COAL_MINE						:anglies kasykloje
+STR_4803_POWER_STATION						:elektrineje
+STR_4804_SAWMILL						:lentpjuveje
+STR_4805_FOREST							:miske
+STR_4806_OIL_REFINERY						:naftos perdirbimo imoneje
+STR_4807_OIL_RIG						:naftos platformoje
+STR_4808_FACTORY						:gamykloje
+STR_4809_PRINTING_WORKS						:spaustuveje
+STR_480A_STEEL_MILL						:plieno liejykloje
+STR_480B_FARM							:ferma
+STR_480C_COPPER_ORE_MINE					:vario rudos kasykloje
+STR_480D_OIL_WELLS						:naftos grezinyje
+STR_480E_BANK							:banke
+STR_480F_FOOD_PROCESSING_PLANT					:maisto perdirbimo imoneje
+STR_4810_PAPER_MILL						:popieriaus fabrike
+STR_4811_GOLD_MINE						:aukso kasykloje
+STR_4812_BANK							:banke
+STR_4813_DIAMOND_MINE						:deimantu kasykloje
+STR_4814_IRON_ORE_MINE						:gelezies rudos kasykloje
+STR_4815_FRUIT_PLANTATION					:vaisiu plantacijoje
+STR_4816_RUBBER_PLANTATION					:kauciuko plantacijoje
+STR_4817_WATER_SUPPLY						:vandens saugykloje
+STR_4818_WATER_TOWER						:vandentiekio bokste
+STR_4819_FACTORY						:gamykloje
+STR_481A_FARM							:ferma
 STR_481B_LUMBER_MILL						:Lumber Mill
-STR_481C_COTTON_CANDY_FOREST					:Candyfloss Forest
-STR_481D_CANDY_FACTORY						:Sweet Factory
+STR_481C_COTTON_CANDY_FOREST					:ledinuku miske
+STR_481D_CANDY_FACTORY						:saldumynu fabrike
 STR_481E_BATTERY_FARM						:Battery Farm
-STR_481F_COLA_WELLS						:Cola Wells
-STR_4820_TOY_SHOP						:Toy Shop
-STR_4821_TOY_FACTORY						:Toy Factory
+STR_481F_COLA_WELLS						:kolos sulinyje
+STR_4820_TOY_SHOP						:zaislu parduotuveje
+STR_4821_TOY_FACTORY						:zaislu fabrile
 STR_4822_PLASTIC_FOUNTAINS					:Plastic Fountains
 STR_4823_FIZZY_DRINK_FACTORY					:Fizzy Drink Factory
-STR_4824_BUBBLE_GENERATOR					:Bubble Generator
-STR_4825_TOFFEE_QUARRY						:Toffee Quarry
-STR_4826_SUGAR_MINE						:Sugar Mine
+STR_4824_BUBBLE_GENERATOR					:burbulu generatoriuje
+STR_4825_TOFFEE_QUARRY						:saldainiu fabrike
+STR_4826_SUGAR_MINE						:cukraus kasykloje
 
 ############ range for requires	starts
-STR_4827_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}
-STR_4828_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}
+STR_4827_REQUIRES						:{BLACK}Superka: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Superka: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
-STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Production last month:
-STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% transported)
-STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centre the main view on industry location
-STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Statomas(-a) naujas(-a) {STRING} prie {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Sodinamas(-a) naujas(-a){STRING} prie {TOWN}!
-STR_482F_COST							:{BLACK}Cost: {YELLOW}{CURRENCY}
+STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Progukcija praeita menesi:
+STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% isvezta)
+STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Rodyti gamykla ekrano centre
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Statomas naujas {STRING} netoli miesto: {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Sodinamas naujas {STRING} netoli miesto: {TOWN}!
+STR_482F_COST							:{BLACK}Kaina: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Neimanoma cia pastatyti sio tipo pramones imones...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...miskas gali buti pasodintas tik zemiau sniego ribos
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} pranesa apie neatideliotina uzdaryma!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Tiekimo problemos vercia {TOWN} {STRING} paskelbti apie neatideliotina uzdaryma!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Tiekimo problemos vercia {TOWN} {STRING} paskelbti apie uzdaryma!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Medziu trukumas vercia {TOWN} {STRING} pasklebti apie neatideliotina uzdaryma!
 STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} didina produkcijos apimtis!
 STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}{TOWN} {STRING} pranesa apie rastus naujus anglies isteklius!{}Produkcija tikimasi dvigubinti!
@@ -2060,40 +2061,747 @@ STR_7056_TRANSPORT_COMPANY_IN_TROUBLE				:{BLACK}{BIGFONT}Transport company in t
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED				:{BLACK}{BIGFONT}{STRING} will be sold off or declared bankrupt unless performance increases soon!
 STR_7058_PRESIDENT						:{BLACK}{STRING}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}Transport company merger!
+STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}{STRING} buvo parduota {STRING} uz {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}Mes ieskome, kas galetu perimti musu kompanija.{}{}Ar jus noretumete pirkti {STRING} uz {CURRENCY}?
+STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Bankrotas!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}Kreditoriu susirinkimas nusprende uzdaryti {STRING} ir parduoti visa turta!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Ikurta nauja transporto kompanija!
+STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} pradeda statybas prie {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Neimanoma pirkti kompanijos...
+STR_7061_CARGO_PAYMENT_RATES					:{WHITE}Kroviniu pervezimo tarifai
+STR_7062_DAYS_IN_TRANSIT					:{BLACK}{TINYFONT}Dienu kelyje
+STR_7063_PAYMENT_FOR_DELIVERING					:{BLACK}{TINYFONT}Tarifai pervezant 10 vienetu (ar 10000 litru) kroviniu 20 kvadraciuku atstumu
+STR_7064_TOGGLE_GRAPH_FOR_CARGO					:{BLACK}Ijungti/isjungti grafika kroviniu tipui
+STR_7065							:{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER						:Inzinierius
+STR_7067_TRAFFIC_MANAGER					:Eismo reguliuotojas
+STR_7068_TRANSPORT_COORDINATOR					:Transporto koordinatorius
+STR_7069_ROUTE_SUPERVISOR					:Marsrutu priziuretojas
+STR_706A_DIRECTOR						:Direktorius
+STR_706B_CHIEF_EXECUTIVE					:Chief Executive
+STR_706C_CHAIRMAN						:Pirmininkas
+STR_706D_PRESIDENT						:Prezidentas
+STR_706E_TYCOON							:Magnatas
+STR_706F_BUILD_HQ						:{BLACK}Pastatyti firmos bustine
+STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Statyti/apziureti kompanijos bustine
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Perstatyti kompanijos bustine kitur uz 1% kompanijos vertes
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Neimanoma pastatyti kompanijos bustines...
+STR_7072_VIEW_HQ						:{BLACK}Apziureti bustine
+STR_RELOCATE_HQ							:{BLACK}Perkelti bustine
+STR_COMPANY_PASSWORD						:{BLACK}Slaptazodis
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Slaptazodis apsaugo tavo kompanija nuo neleistinu vartotoju prisijungimo.
+STR_SET_COMPANY_PASSWORD					:Ivesti slaptazodi
+STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Pasauline krize!{}{}Ekonomikai griuvant, finansu ekspertai bijo paties blogiausio!
+STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Krize iveikta!{}{}Prekybos pagyvejimas suteikia naujas viltis pramones imonems!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Pakeisti lango dydi
+STR_7076_COMPANY_VALUE						:{GOLD}Kompanijos verte: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Pirkti 25% kompanijos akciju
+STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Parduoti 25% kompanijos akciju
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Pirkti 25% sios kompanijos akciju
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY				:{BLACK}Parduoti 25% sios kompanijos akciju
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS				:{WHITE}Negalima nusipirkti 25% sios kompanijos akciju...
+STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Negalima parduoti 25% sios kompanijos akciju...
+STR_707D_OWNED_BY						:{WHITE}({COMMA16}% priklauso {STRING})
+STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% priklauso {STRING}{}   {COMMA16}% priklauso {STRING})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} buvo perimta {STRING}!
+STR_7080_PROTECTED						:{WHITE}Si kompanija dar pernelyg jauna, kad galetu pardavineti savo akcijas...
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Garai)
+STR_8001_MJS_250_DIESEL						:MJS 250 (Dyzelis)
+STR_8002_PLODDYPHUT_CHOO_CHOO					:Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO					:Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO					:Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL					:Ploddyphut Dyzelis
+STR_8006_POWERNAUT_DIESEL					:Powernaut Dyzelis
+STR_8007_WILLS_2_8_0_STEAM					:Wills 2-8-0 (Garai)
+STR_8008_CHANEY_JUBILEE_STEAM					:Chaney 'Jubilee' (Garai)
+STR_8009_GINZU_A4_STEAM						:Ginzu 'A4' (Garai)
+STR_800A_SH_8P_STEAM						:SH '8P' (Garai)
+STR_800B_MANLEY_MOREL_DMU_DIESEL				:Manley-Morel DMU (Dyzelis)
+STR_800C_DASH_DIESEL						:'Dash' (Dyzelis)
+STR_800D_SH_HENDRY_25_DIESEL					:SH/Hendry '25' (Dyzelis)
+STR_800E_UU_37_DIESEL						:UU '37' (Dyzelis)
+STR_800F_FLOSS_47_DIESEL					:Floss '47' (Dyzelis)
+STR_8010_CS_4000_DIESEL						:CS 4000 (Dyzelis)
+STR_8011_CS_2400_DIESEL						:CS 2400 (Dyzelis)
+STR_8012_CENTENNIAL_DIESEL					:Centennial (Dyzelis)
+STR_8013_KELLING_3100_DIESEL					:Kelling 3100 (Dyzelis)
+STR_8014_TURNER_TURBO_DIESEL					:Turner Turbo (Dyzelis)
+STR_8015_MJS_1000_DIESEL					:MJS 1000 (Dyzelis)
+STR_8016_SH_125_DIESEL						:SH '125' (Dyzelis)
+STR_8017_SH_30_ELECTRIC						:SH '30' (Elektra)
+STR_8018_SH_40_ELECTRIC						:SH '40' (Elektra)
+STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Elektra)
+STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Elektra)
+STR_801B_PASSENGER_CAR						:Keleiviu vagonas
+STR_801C_MAIL_VAN						:Pasto vagonas
+STR_801D_COAL_CAR						:Anglies vagonas
+STR_801E_OIL_TANKER						:Naftos cisterna
+STR_801F_LIVESTOCK_VAN						:Gyvuliu vagonas
+STR_8020_GOODS_VAN						:Prekiu vagonas
+STR_8021_GRAIN_HOPPER						:Grudu vagonas
+STR_8022_WOOD_TRUCK						:Medienos vagonas
+STR_8023_IRON_ORE_HOPPER					:Gelezies rudos vagonas
+STR_8024_STEEL_TRUCK						:Plieno vagonas
+STR_8025_ARMORED_VAN						:Sarvuotas vagonas
+STR_8026_FOOD_VAN						:Maisto vagonas
+STR_8027_PAPER_TRUCK						:Popieriaus vagonas
+STR_8028_COPPER_ORE_HOPPER					:Vario rudos vagonas
+STR_8029_WATER_TANKER						:Vandens cisterna
+STR_802A_FRUIT_TRUCK						:Vaisiu sunkvezimis
+STR_802B_RUBBER_TRUCK						:Kauciuko sunkvezimis
+STR_802C_SUGAR_TRUCK						:Cukraus sunkvezimis
+STR_802D_COTTON_CANDY_HOPPER					:Ledinuku sunkvezimis
+STR_802E_TOFFEE_HOPPER						:Saldainiu sunkvezimis
+STR_802F_BUBBLE_VAN						:Burbulu sunkvezimis
+STR_8030_COLA_TANKER						:Kolos sunkvezimis
+STR_8031_CANDY_VAN						:Saldumynu sunkvezimis
+STR_8032_TOY_VAN						:Zaislu sunkvezimis
+STR_8033_BATTERY_TRUCK						:Bateriju sunkvezimis
+STR_8034_FIZZY_DRINK_TRUCK					:Putojanciu gerimu sunkvezimis
+STR_8035_PLASTIC_TRUCK						:Plastic Truck
+STR_8036_X2001_ELECTRIC						:'X2001' (Elektra)
+STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Elektra)
+STR_8038_WIZZOWOW_Z99						:Wizzowow Z99
+STR_8039_PASSENGER_CAR						:Passenger Carriage
+STR_803A_MAIL_VAN						:Mail Van
+STR_803B_COAL_CAR						:Coal Truck
+STR_803C_OIL_TANKER						:Oil Tanker
+STR_803D_LIVESTOCK_VAN						:Livestock Van
+STR_803E_GOODS_VAN						:Goods Van
+STR_803F_GRAIN_HOPPER						:Grain Hopper
+STR_8040_WOOD_TRUCK						:Medienos sunkvezimis
+STR_8041_IRON_ORE_HOPPER					:Iron Ore Hopper
+STR_8042_STEEL_TRUCK						:Steel Truck
+STR_8043_ARMORED_VAN						:Armoured Van
+STR_8044_FOOD_VAN						:Food Van
+STR_8045_PAPER_TRUCK						:Paper Truck
+STR_8046_COPPER_ORE_HOPPER					:Copper Ore Hopper
+STR_8047_WATER_TANKER						:Water Tanker
+STR_8048_FRUIT_TRUCK						:Fruit Truck
+STR_8049_RUBBER_TRUCK						:Rubber Truck
+STR_804A_SUGAR_TRUCK						:Sugar Truck
+STR_804B_COTTON_CANDY_HOPPER					:Candyfloss Hopper
+STR_804C_TOFFEE_HOPPER						:Toffee Hopper
+STR_804D_BUBBLE_VAN						:Bubble Van
+STR_804E_COLA_TANKER						:Cola Tanker
+STR_804F_CANDY_VAN						:Sweet Van
+STR_8050_TOY_VAN						:Toy Van
+STR_8051_BATTERY_TRUCK						:Battery Truck
+STR_8052_FIZZY_DRINK_TRUCK					:Fizzy Drink Truck
+STR_8053_PLASTIC_TRUCK						:Plastic Truck
+STR_8054_LEV1_LEVIATHAN_ELECTRIC				:Lev1 'Leviathan' (Electric)
+STR_8055_LEV2_CYCLOPS_ELECTRIC					:Lev2 'Cyclops' (Electric)
+STR_8056_LEV3_PEGASUS_ELECTRIC					:Lev3 'Pegasus' (Electric)
+STR_8057_LEV4_CHIMAERA_ELECTRIC					:Lev4 'Chimaera' (Electric)
+STR_8058_WIZZOWOW_ROCKETEER					:Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR						:Passenger Carriage
+STR_805A_MAIL_VAN						:Mail Van
+STR_805B_COAL_CAR						:Coal Truck
+STR_805C_OIL_TANKER						:Oil Tanker
+STR_805D_LIVESTOCK_VAN						:Livestock Van
+STR_805E_GOODS_VAN						:Goods Van
+STR_805F_GRAIN_HOPPER						:Grain Hopper
+STR_8060_WOOD_TRUCK						:Wood Truck
+STR_8061_IRON_ORE_HOPPER					:Iron Ore Hopper
+STR_8062_STEEL_TRUCK						:Steel Truck
+STR_8063_ARMORED_VAN						:Armoured Van
+STR_8064_FOOD_VAN						:Food Van
+STR_8065_PAPER_TRUCK						:Paper Truck
+STR_8066_COPPER_ORE_HOPPER					:Copper Ore Hopper
+STR_8067_WATER_TANKER						:Water Tanker
+STR_8068_FRUIT_TRUCK						:Fruit Truck
+STR_8069_RUBBER_TRUCK						:Rubber Truck
+STR_806A_SUGAR_TRUCK						:Sugar Truck
+STR_806B_COTTON_CANDY_HOPPER					:Candyfloss Hopper
+STR_806C_TOFFEE_HOPPER						:Toffee Hopper
+STR_806D_BUBBLE_VAN						:Bubble Van
+STR_806E_COLA_TANKER						:Cola Tanker
+STR_806F_CANDY_VAN						:Sweet Van
+STR_8070_TOY_VAN						:Toy Van
+STR_8071_BATTERY_TRUCK						:Battery Truck
+STR_8072_FIZZY_DRINK_TRUCK					:Fizzy Drink Truck
+STR_8073_PLASTIC_TRUCK						:Plastic Truck
+STR_8074_MPS_REGAL_BUS						:MPS karaliskas autobusas
+STR_8075_HEREFORD_LEOPARD_BUS					:Hereford Leopard autobusas
+STR_8076_FOSTER_BUS						:Foster autobusas
+STR_8077_FOSTER_MKII_SUPERBUS					:Foster MkII superautobusas
+STR_8078_PLODDYPHUT_MKI_BUS					:Ploddyphut MkI autobusas
+STR_8079_PLODDYPHUT_MKII_BUS					:Ploddyphut MkII autobusas
+STR_807A_PLODDYPHUT_MKIII_BUS					:Ploddyphut MkIII autobusas
+STR_807B_BALOGH_COAL_TRUCK					:Balogh Coal Truck
+STR_807C_UHL_COAL_TRUCK						:Uhl Coal Truck
+STR_807D_DW_COAL_TRUCK						:DW Coal Truck
+STR_807E_MPS_MAIL_TRUCK						:MPS Mail Truck
+STR_807F_REYNARD_MAIL_TRUCK					:Reynard Mail Truck
+STR_8080_PERRY_MAIL_TRUCK					:Perry Mail Truck
+STR_8081_MIGHTYMOVER_MAIL_TRUCK					:MightyMover Mail Truck
+STR_8082_POWERNAUGHT_MAIL_TRUCK					:Powernaught Mail Truck
+STR_8083_WIZZOWOW_MAIL_TRUCK					:Wizzowow Mail Truck
+STR_8084_WITCOMBE_OIL_TANKER					:Witcombe naftos tanklaivis
+STR_8085_FOSTER_OIL_TANKER					:Foster naftos tanklaivis
+STR_8086_PERRY_OIL_TANKER					:Perry naftos tanklaivis
+STR_8087_TALBOTT_LIVESTOCK_VAN					:Talbott Livestock Van
+STR_8088_UHL_LIVESTOCK_VAN					:Uhl Livestock Van
+STR_8089_FOSTER_LIVESTOCK_VAN					:Foster Livestock Van
+STR_808A_BALOGH_GOODS_TRUCK					:Balogh Goods Truck
+STR_808B_CRAIGHEAD_GOODS_TRUCK					:Craighead Goods Truck
+STR_808C_GOSS_GOODS_TRUCK					:Goss Goods Truck
+STR_808D_HEREFORD_GRAIN_TRUCK					:Hereford Grain Truck
+STR_808E_THOMAS_GRAIN_TRUCK					:Thomas Grain Truck
+STR_808F_GOSS_GRAIN_TRUCK					:Goss Grain Truck
+STR_8090_WITCOMBE_WOOD_TRUCK					:Witcombe Wood Truck
+STR_8091_FOSTER_WOOD_TRUCK					:Foster Wood Truck
+STR_8092_MORELAND_WOOD_TRUCK					:Moreland Wood Truck
+STR_8093_MPS_IRON_ORE_TRUCK					:MPS Iron Ore Truck
+STR_8094_UHL_IRON_ORE_TRUCK					:Uhl Iron Ore Truck
+STR_8095_CHIPPY_IRON_ORE_TRUCK					:Chippy Iron Ore Truck
+STR_8096_BALOGH_STEEL_TRUCK					:Balogh Steel Truck
+STR_8097_UHL_STEEL_TRUCK					:Uhl Steel Truck
+STR_8098_KELLING_STEEL_TRUCK					:Kelling Steel Truck
+STR_8099_BALOGH_ARMORED_TRUCK					:Balogh Armoured Truck
+STR_809A_UHL_ARMORED_TRUCK					:Uhl Armoured Truck
+STR_809B_FOSTER_ARMORED_TRUCK					:Foster Armoured Truck
+STR_809C_FOSTER_FOOD_VAN					:Foster Food Van
+STR_809D_PERRY_FOOD_VAN						:Perry Food Van
+STR_809E_CHIPPY_FOOD_VAN					:Chippy Food Van
+STR_809F_UHL_PAPER_TRUCK					:Uhl Paper Truck
+STR_80A0_BALOGH_PAPER_TRUCK					:Balogh Paper Truck
+STR_80A1_MPS_PAPER_TRUCK					:MPS Paper Truck
+STR_80A2_MPS_COPPER_ORE_TRUCK					:MPS Copper Ore Truck
+STR_80A3_UHL_COPPER_ORE_TRUCK					:Uhl Copper Ore Truck
+STR_80A4_GOSS_COPPER_ORE_TRUCK					:Goss Copper Ore Truck
+STR_80A5_UHL_WATER_TANKER					:Uhl vandens tankeris
+STR_80A6_BALOGH_WATER_TANKER					:Balogh vandens tankeris
+STR_80A7_MPS_WATER_TANKER					:MPS vandens tanklaivis
+STR_80A8_BALOGH_FRUIT_TRUCK					:Balogh Fruit Truck
+STR_80A9_UHL_FRUIT_TRUCK					:Uhl Fruit Truck
+STR_80AA_KELLING_FRUIT_TRUCK					:Kelling Fruit Truck
+STR_80AB_BALOGH_RUBBER_TRUCK					:Balogh Rubber Truck
+STR_80AC_UHL_RUBBER_TRUCK					:Uhl Rubber Truck
+STR_80AD_RMT_RUBBER_TRUCK					:RMT Rubber Truck
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK				:MightyMover Sugar Truck
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK				:Powernaught Sugar Truck
+STR_80B0_WIZZOWOW_SUGAR_TRUCK					:Wizzowow Sugar Truck
+STR_80B1_MIGHTYMOVER_COLA_TRUCK					:MightyMover Cola Truck
+STR_80B2_POWERNAUGHT_COLA_TRUCK					:Powernaught Cola Truck
+STR_80B3_WIZZOWOW_COLA_TRUCK					:Wizzowow Cola Truck
+STR_80B4_MIGHTYMOVER_COTTON_CANDY				:MightyMover Candyfloss Truck
+STR_80B5_POWERNAUGHT_COTTON_CANDY				:Powernaught Candyfloss Truck
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK				:Wizzowow Candyfloss Truck
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK				:MightyMover Toffee Truck
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK				:Powernaught Toffee Truck
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK					:Wizzowow Toffee Truck
+STR_80BA_MIGHTYMOVER_TOY_VAN					:MightyMover Toy Van
+STR_80BB_POWERNAUGHT_TOY_VAN					:Powernaught Toy Van
+STR_80BC_WIZZOWOW_TOY_VAN					:Wizzowow Toy Van
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK				:MightyMover Sweet Truck
+STR_80BE_POWERNAUGHT_CANDY_TRUCK				:Powernaught Sweet Truck
+STR_80BF_WIZZOWOW_CANDY_TRUCK					:Wizzowow Sweet Truck
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK				:MightyMover Battery Truck
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK				:Powernaught Battery Truck
+STR_80C2_WIZZOWOW_BATTERY_TRUCK					:Wizzowow Battery Truck
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK				:MightyMover Fizzy Drink Truck
+STR_80C4_POWERNAUGHT_FIZZY_DRINK				:Powernaught Fizzy Drink Truck
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK				:Wizzowow Fizzy Drink Truck
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK				:MightyMover Plastic Truck
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK				:Powernaught Plastic Truck
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK					:Wizzowow Plastic Truck
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK				:MightyMover Bubble Truck
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK				:Powernaught Bubble Truck
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK					:Wizzowow Bubble Truck
+STR_80CC_MPS_OIL_TANKER						:MPS naftos tankeris
+STR_80CD_CS_INC_OIL_TANKER					:CS-Inc. naftos tankeris
+STR_80CE_MPS_PASSENGER_FERRY					:MPS zmoniu keltas
+STR_80CF_FFP_PASSENGER_FERRY					:FFP zmoniu keltas
+STR_80D0_BAKEWELL_300_HOVERCRAFT				:Bakewell 300 Hovercraft
+STR_80D1_CHUGGER_CHUG_PASSENGER					:Chugger-Chug zmoniu keltas
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY				:Shivershake zmoniu keltas
+STR_80D3_YATE_CARGO_SHIP					:Yate krovininis laivas
+STR_80D4_BAKEWELL_CARGO_SHIP					:Bakewell krovininis laivas
+STR_80D5_MIGHTYMOVER_CARGO_SHIP					:Mightymover krovininis laivas
+STR_80D6_POWERNAUT_CARGO_SHIP					:Powernaut krovininis laivas
+STR_80D7_SAMPSON_U52						:Sampson U52
+STR_80D8_COLEMAN_COUNT						:Coleman Count
+STR_80D9_FFP_DART						:FFP Dart
+STR_80DA_YATE_HAUGAN						:Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3					:Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8					:Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9					:Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80					:Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10					:Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11					:Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11				:Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100						:Darwin 100
+STR_80E3_DARWIN_200						:Darwin 200
+STR_80E4_DARWIN_300						:Darwin 300
+STR_80E5_DARWIN_400						:Darwin 400
+STR_80E6_DARWIN_500						:Darwin 500
+STR_80E7_DARWIN_600						:Darwin 600
+STR_80E8_GURU_GALAXY						:Guru Galaxy
+STR_80E9_AIRTAXI_A21						:Airtaxi A21
+STR_80EA_AIRTAXI_A31						:Airtaxi A31
+STR_80EB_AIRTAXI_A32						:Airtaxi A32
+STR_80EC_AIRTAXI_A33						:Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46					:Yate Aerospace YAe46
+STR_80EE_DINGER_100						:Dinger 100
+STR_80EF_AIRTAXI_A34_1000					:AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE						:Yate Z-Shuttle
+STR_80F1_KELLING_K1						:Kelling K1
+STR_80F2_KELLING_K6						:Kelling K6
+STR_80F3_KELLING_K7						:Kelling K7
+STR_80F4_DARWIN_700						:Darwin 700
+STR_80F5_FFP_HYPERDART_2					:FFP Hyperdart 2
+STR_80F6_DINGER_200						:Dinger 200
+STR_80F7_DINGER_1000						:Dinger 1000
+STR_80F8_PLODDYPHUT_100						:Ploddyphut 100
+STR_80F9_PLODDYPHUT_500						:Ploddyphut 500
+STR_80FA_FLASHBANG_X1						:Flashbang X1
+STR_80FB_JUGGERPLANE_M1						:Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER					:Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER					:Tricario malunsparnis
+STR_80FE_GURU_X2_HELICOPTER					:Guru X2 malunsparnis
+STR_80FF_POWERNAUT_HELICOPTER					:Powernaut malunsparnis
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE			:{WHITE}Automobiliu gamintojo zinute
+STR_8101_WE_HAVE_JUST_DESIGNED_A				:{GOLD}Mes ka tik sukonstravome nauja masina {STRING} - ar tu noretum vienerius metus isskirtinemis teisemis bandyti si gamini pries pradedant serijine gamyba?
+STR_8102_RAILROAD_LOCOMOTIVE					:lokomotyvas
+STR_8103_ROAD_VEHICLE						:automobilis
+STR_8104_AIRCRAFT						:lektuvas
+STR_8105_SHIP							:laivas
+STR_8106_MONORAIL_LOCOMOTIVE					:vienbegis lokomotyvas
+STR_8107_MAGLEV_LOCOMOTIVE					:magnetinis lokomotyvas
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} Traukiniu depas
+STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
+STR_8802_DETAILS						:{WHITE}{STRING} (Details)
+STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Train in the way
+STR_8804							:{SETX 10}{COMMA8}: {STRING}
+STR_8805							:{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8806_GO_TO							:Vaziuoja i {STATION}
+STR_8807_GO_TO_UNLOAD						:Vaziuoja i {STATION} (Iskrauna)
+STR_8808_GO_TO_LOAD						:Vaziuoja i {STATION} (Pakrauna)
+STR_8809							:
+STR_880A_GO_NON_STOP_TO						:Vaziuoja nestojant i {STATION}
+STR_880B_GO_NON_STOP_TO_UNLOAD					:Vaziuoja nestojant i {STATION} (Iskrauti)
+STR_880C_GO_NON_STOP_TO_LOAD					:Vaziuoja nestojant i {STATION} (Pakrauti)
+STR_880D							:
+STR_880E_GO_TO_TRAIN_DEPOT					:Vaziuoja i {TOWN} traukiniu depa
+STR_SERVICE_AT_TRAIN_DEPOT					:Remontas {TOWN} traukiniu depe
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Vaziuoti nestojant i {TOWN} traukiniu depa
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Remontas nestojant {TOWN} traukiniu depe
 
+STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Kursas i {TOWN} depa
+STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Kursas i {TOWN} depa, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Neteisinga tvarka)
 
+STR_UNKNOWN_DESTINATION						:nezinomas tikslas
+STR_8812_EMPTY							:{LTBLUE}Tuscias
+STR_8813_FROM							:{LTBLUE}{CARGO} is {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Traukinys {COMMA16} laukia depe
+STR_8815_NEW_VEHICLES						:{BLACK}Naujos tr. priemones
+STR_8816							:{BLACK}-
+STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Svoris: {GOLD}{COMMA16}t{}{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK}   Galia: {GOLD}{COMMA32}hp{}{BLACK}Darbo sanaudos: {GOLD}{CURRENCY}/met.{}{BLACK}Talpa: {GOLD}{STRING}{}{BLACK}Suprojektuota: {GOLD}{NUMU16}{BLACK} Amzius: {GOLD}{COMMA16} metai{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
+STR_8818_INFORMATION						:{BLACK}Informacijs
+STR_8819_TRAIN_TOO_LONG						:{WHITE}Traukinys per ilgas
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
+STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} traukiniai
+STR_881C_NEW_RAIL_VEHICLES					:{WHITE}New Rail Vehicles
+STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}New Monorail Vehicles
+STR_881E_NEW_MAGLEV_VEHICLES					:{WHITE}New Maglev Vehicles
+STR_881F_BUILD_VEHICLE						:{BLACK}Pirkti
+STR_8820_RENAME							:{BLACK}Pervardinti
+STR_8821_COST_WEIGHT_T_T_CAPACITY				:{BLACK}Kaina: {GOLD}{CURRENCY}{}{BLACK}Svoris: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Talpa: {GOLD}{STRING}
+STR_8823_SKIP							:{BLACK}Praleisti
+STR_8824_DELETE							:{BLACK}Istrinti
+STR_8825_NON_STOP						:{BLACK}Nestoti
+STR_8826_GO_TO							:{BLACK}Vaziuoti
+STR_8827_FULL_LOAD						:{BLACK}Pakrauti
+STR_8828_UNLOAD							:{BLACK}Iskrauti
+STR_8829_ORDERS							:{WHITE}{STRING} (Uzduotys)
+STR_882A_END_OF_ORDERS						:{SETX 10}- - Uzduociu pabaiga- -
+STR_FULLLOAD_OR_SERVICE						:{SKIP}{SKIP}{STRING}
+STR_SERVICE							:{BLACK}Remontas
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE				:{WHITE}Gelezinkelio transporto priemones nupirkti negalima...
+STR_882C_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Pastatyta: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
+STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Verte: {LTBLUE}{CURRENCY}
+STR_882E							:{WHITE}{STRING}
+STR_882F_LOADING_UNLOADING					:{LTBLUE}Pasikrauna / Issikrauna
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT				:{WHITE}Traukinio pasiusti i depa negalima...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS				:{WHITE}Truksta vietos uzduotims
+STR_8832_TOO_MANY_ORDERS					:{WHITE}Per daug uzduociu
+STR_8833_CAN_T_INSERT_NEW_ORDER					:{WHITE}Negali iterpti naujos uzduoties...
+STR_8834_CAN_T_DELETE_THIS_ORDER				:{WHITE}Sios uzduoties negalima istrinti...
+STR_8835_CAN_T_MODIFY_THIS_ORDER				:{WHITE}Sios uzduoties negalima keisti...
+STR_8836_MUST_BUILD_TRAIN_DEPOT					:{WHITE}Pirmiausia pastatyk traukiniu depa
+STR_8837_CAN_T_MOVE_VEHICLE					:{WHITE}Transporto priemones perkelti negalima...
+STR_8838_N_A							:N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Priemones negalima parduoti...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Neranda kelio iki artimiausio garazo
+STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Traukinio sustabdyti/paleisti negalima...
+STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Remonto intervalas: {LTBLUE}{COMMA16}dienos{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Remonto intervalas: {LTBLUE}{COMMA16}%{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Traukiniai - spausk ant traukinio, jei nori detalesnes informacijos
+STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Isigyti nauju traukiniu (reikia traukiniu depo)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Traukiniai - paspausk ant traukinio jei nori detalesnes informacijos, tempk vagona, jei nori ji prikabinti/pasalinti nuo traukinio
+STR_8840_BUILD_NEW_TRAIN_VEHICLE				:{BLACK}Isigyti nauja gelezinkelio transporto priemone
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE				:{BLACK}Nutempk transporto priemone cia, jei nori ja parduoti
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Parodyti traukiniu depa ekrano centre
+STR_8843_TRAIN_VEHICLE_SELECTION				:{BLACK}Transporto priemoniu pasirinkimo sarasas - paspausk ant priemones, kad gautum daugiau informacijos
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN				:{BLACK}Isigyti pazymeta transporto priemone
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE				:{BLACK}Rename train vehicle type
+STR_8846_CURRENT_TRAIN_ACTION_CLICK				:{BLACK}Dabartine traukinio uzduotis - paspausk cia, jei nori sustabdyti.paleisti traukini
+STR_8847_SHOW_TRAIN_S_ORDERS					:{BLACK}Parodyti traukinio uzduotis
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Parodyti traukini ekrano centre
+STR_8849_SEND_TRAIN_TO_DEPOT					:{BLACK}Siusti traukini i depa
+STR_884A_FORCE_TRAIN_TO_PROCEED					:{BLACK}Force train to proceed without waiting for signal to clear it
+STR_884B_REVERSE_DIRECTION_OF_TRAIN				:{BLACK}Pakeisti traukinio vaziavimo krypti
+STR_884C_SHOW_TRAIN_DETAILS					:{BLACK}Rodyti detalia traukinio informacija
+STR_884D_INCREASE_SERVICING_INTERVAL				:{BLACK}Didinti intervala tarp remontu
+STR_884E_DECREASE_SERVICING_INTERVAL				:{BLACK}Mazinti intervala tarp remontu
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED				:{BLACK}Rodyti detalia kroviniu informacija
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES				:{BLACK}Rodyti detalia vagonu informacija
+STR_8851_SHOW_CAPACITIES_OF_EACH				:{BLACK}Rodyti detalia vagonu talpos informacija
+STR_8852_SHOW_TOTAL_CARGO					:{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Orders list - click on an order to highlight it. CTRL + click scrolls to the station
+STR_8853_SKIP_THE_CURRENT_ORDER					:{BLACK}Praleisti esama uzduoti, vygdyti sekancia
+STR_8854_DELETE_THE_HIGHLIGHTED					:{BLACK}Istrinti pazymeta uzduoti
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Nestoti pazymetoje stoteleje
+STR_8856_INSERT_A_NEW_ORDER_BEFORE				:{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Pazymetoje stoteleje laukti, kol transporto priemone pilnai pasikraus
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Iskrauti krovini pazymetoje stoteleje
+STR_SERVICE_HINT						:{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
+STR_8859_NEW_NOW_AVAILABLE					:{BLACK}{BIGFONT}Naujas {STRING} atsirado!
+STR_885A							:{BLACK}{BIGFONT}{STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Kaina: {CURRENCY} Svoris: {COMMA16}t{}Greitis: {VELOCITY}  Galia: {COMMA16}aj{}Eksploatacijos islaidos: {CURRENCY}/met{}Talpa: {STRING}
+STR_885C_BROKEN_DOWN						:{RED}Sugedo
+STR_885D_AGE_RUNNING_COST_YR					:{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED				:{BLACK}Svoris: {LTBLUE}{COMMA16}t  {BLACK}Galia: {LTBLUE}{COMMA32}aj{BLACK} Maks. greitis: {LTBLUE}{VELOCITY}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Siu metu pelnas : {LTBLUE}{CURRENCY}  (praeitu metu: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS					:{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA16}
+STR_8861_STOPPED						:{RED}Sustabdyta
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL				:{WHITE}Can't make train pass signal at danger...
+STR_8863_CRASHED						:{RED}Avarija!
 
+STR_8865_NAME_TRAIN						:{WHITE}Traukinio vardas
+STR_8866_CAN_T_NAME_TRAIN					:{WHITE}Negali pakeisti traukinio vardo...
+STR_8867_NAME_TRAIN						:{BLACK}Traukinio vardas
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Traukinio avarija!{}{COMMA16} zuvo liepsnose po katastrofos
+STR_8869_CAN_T_REVERSE_DIRECTION				:{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE				:{WHITE}Rename train vehicle type
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE				:{WHITE}Can't rename train vehicle type...
 
+STR_TRAIN_STOPPING						:{RED}Stabdoma
+STR_TRAIN_STOPPING_VEL						:{RED}Stabdomas, {VELOCITY}
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY				:{WHITE}Automobilis kelyje
+STR_9001_ROAD_VEHICLES						:{WHITE}{STRING} - {COMMA16} Automobiliai
+STR_9002							:{WHITE}{STRING}
+STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}{TOWN} Automobiliu garazas
+STR_9004_NEW_VEHICLES						:{BLACK}Naujos tr. priemones
+STR_9005_INFORMATION						:{BLACK}Informacija
+STR_9006_NEW_ROAD_VEHICLES					:{WHITE}Nauji automobiliai
+STR_9007_BUILD_VEHICLE						:{BLACK}Isigyti priemone
+STR_9008_COST_SPEED_RUNNING_COST				:{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Eksploatacijos islaidos: {GOLD}{CURRENCY}/met{}{BLACK}Talpa: {GOLD}{STRING}{}{BLACK}Suprojektuotas: {GOLD}{NUMU16}{BLACK}  Amzius: {GOLD}{COMMA16} met.{}{BLACK}Maksimalus patikimumas: {GOLD}{COMMA8}%
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Automobilio isigyti negalima...
+STR_900A_MUST_BUILD_ROAD_VEHICLE				:{WHITE}Pirmiausia pastatyk automobiliu garaza
+STR_900B_ORDERS							:{WHITE}{STRING} (Uzduotys)
+STR_900C_DETAILS						:{WHITE}{STRING} (Detaliau)
+STR_900D_AGE_RUNNING_COST_YR					:{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
+STR_900E_MAX_SPEED						:{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praejusiais metais: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS					:{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_9011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY						:{BLACK}Talpa: {LTBLUE}{STRING}
+STR_9013_MUST_BE_STOPPED_INSIDE					:{WHITE}...automobilis turi buti sustabdytas garaze
+STR_9014_CAN_T_SELL_ROAD_VEHICLE				:{WHITE}Automobilio parduoti negalima...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE				:{WHITE}Automobilio sustabdyti/paleisti negalima...
+STR_9016_ROAD_VEHICLE_IS_WAITING				:{WHITE}Automobilis {COMMA16} laukia garaze
+STR_HEADING_FOR_ROAD_DEPOT					:{LTBLUE}Uzduotis: {TOWN} garazas
+STR_HEADING_FOR_ROAD_DEPOT_VEL					:{LTBLUE}Uzduotis: {TOWN} garazas, {VELOCITY}
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT				:{WHITE}Negalima rasti automobilio garazo...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Negalima rasti garazo
+STR_901A_ROAD_VEHICLES_CLICK_ON					:{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
+STR_901B_BUILD_NEW_ROAD_VEHICLES				:{BLACK}Isigyti nauja automobili (reikia automobiliu garazo)
+STR_901C_CURRENT_VEHICLE_ACTION					:{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
+STR_901D_SHOW_VEHICLE_S_ORDERS					:{BLACK}Rodyti automobilio uzduotis
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE				:{BLACK}Rodyti automobili ekrano centre
+STR_901F_SEND_VEHICLE_TO_DEPOT					:{BLACK}Siusti automobili i artimiausia garaza
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND				:{BLACK}Apgrezti automobili
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS				:{BLACK}Rodyti detalia automobilio informacija
+STR_9022_VEHICLES_CLICK_ON_VEHICLE				:{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
+STR_9023_BUILD_NEW_ROAD_VEHICLE					:{BLACK}Isigyti nauja automobili
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE				:{BLACK}Nutempk automobili cia, jei nori ji parduoti
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD				:{BLACK}Rodyti automobiliu garaza ekrano centre
+STR_9026_ROAD_VEHICLE_SELECTION					:{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD				:{BLACK}Isigyti pazymeta automobili
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE				:{BLACK}{BIGFONT}Atsirado naujas automobilis!
+STR_9029							:{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {STRING}
 
+STR_902C_NAME_ROAD_VEHICLE					:{WHITE}Pavadinti automobili
+STR_902D_CAN_T_NAME_ROAD_VEHICLE				:{WHITE}Automobilio pavadinti nepavyko...
+STR_902E_NAME_ROAD_VEHICLE					:{BLACK}Pavadinti automobili
+STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Gyventojai svencia. . .{}Pirmas autobusas atvyko i {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Gyventojai svencia. . .{}Pirmas traukinys atvyko i {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo liepsnose po susidurimo su traukiniu
+STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Automobilio avarija!{}{COMMA16} sudege liepsnose po susidurimo su traukiniu
+STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Automobilis negali apsisukti...
+STR_9034_RENAME							:{BLACK}Pervardinti
+STR_9035_RENAME_ROAD_VEHICLE_TYPE				:{BLACK}Rename road vehicle type
+STR_9036_RENAME_ROAD_VEHICLE_TYPE				:{WHITE}Rename road vehicle type
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE				:{WHITE}Can't rename road vehicle type...
+STR_9038_GO_TO_ROADVEH_DEPOT					:Kursas: {TOWN} automobiliu garazas
+STR_SERVICE_AT_ROADVEH_DEPOT					:Remontas: {TOWN} garaze
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION					:Dock construction
+STR_9801_DOCK_CONSTRUCTION					:{WHITE}Dock construction
+STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Can't build dock here...
+STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Laivu depas
+STR_9804_NEW_SHIPS						:{BLACK}Naujas laivas
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Laivai
+STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Negalima isigyti laivo...
+STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Pirmiausia reikia pastatyti laivu depa
+STR_9808_NEW_SHIPS						:{WHITE}New Ships
+STR_9809_BUILD_SHIP						:{BLACK}Build Ship
+STR_980A_COST_SPEED_CAPACITY_RUNNING				:{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Talpa: {GOLD}{STRING} {STRING}{}{BLACK}Eksploatacijos kaina: {GOLD}{CURRENCY}/met{}{BLACK}Suprojektuotas: {GOLD}{NUMU16}{BLACK}   Amzius: {GOLD}{COMMA16} met.{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
+STR_980B_SHIP_MUST_BE_STOPPED_IN				:{WHITE}Laivas turi buti sustabdytas garaze
+STR_980C_CAN_T_SELL_SHIP					:{WHITE}Laivo parduoti negalima...
+STR_980D_CAN_T_BUILD_SHIP					:{WHITE}Laivo isigyti negalima...
+STR_980E_SHIP_IN_THE_WAY					:{WHITE}Laivas kelyje
+STR_980F							:{WHITE}{STRING}
+STR_9810_ORDERS							:{WHITE}{STRING} (Uzduotys)
+STR_9811_DETAILS						:{WHITE}{STRING} (Detaliau)
+STR_9812_AGE_RUNNING_COST_YR					:{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatavimo islaidos: {LTBLUE}{CURRENCY}/met
+STR_9813_MAX_SPEED						:{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praeitais metais: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS					:{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_9816_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY						:{BLACK}Talpa: {LTBLUE}{STRING}
+STR_9818_CAN_T_STOP_START_SHIP					:{WHITE}Sustabdyti/paleisti laivo negalima...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT				:{WHITE}Nusiusti i laivu depa negalima...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Negali rasti artimiausio laivu depo
+STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Kursas: {TOWN} laivu depas
+STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Kursas: {TOWN} laivu depas, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT				:{WHITE}Laivas laukia depe: {COMMA16}
+STR_981D_BUILD_SHIP_DOCK					:{BLACK}Statyti laivu doka
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
+STR_9820_BUILD_NEW_SHIP						:{BLACK}Statyti nauja laiva
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Nutempk laiva cia, jei nori ji parduoti
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Rodyti laivu depa ekrano centre
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
+STR_9824_BUILD_NEW_SHIPS_REQUIRES				:{BLACK}Statyti naujus laivus (reikia laivu depo)
+STR_9825_SHIP_SELECTION_LIST_CLICK				:{BLACK}Laivu sarasas - paspausk ant laivo, jei nori detalesnes informacijos
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP				:{BLACK}Statyti pazymeta laiva
+STR_9827_CURRENT_SHIP_ACTION_CLICK				:{BLACK}Dabartine laivo uzduotis - paspausk cia, jei nori sustabdyti/paleisti laiva
+STR_9828_SHOW_SHIP_S_ORDERS					:{BLACK}Rodyti laivo uzduotis
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Rodyti laiva ekrano centre
+STR_982A_SEND_SHIP_TO_DEPOT					:{BLACK}Nukreipti laiva i depa
+STR_982B_SHOW_SHIP_DETAILS					:{BLACK}Rodyti laivo informacija
+STR_982C_NEW_SHIP_NOW_AVAILABLE					:{BLACK}{BIGFONT}Atsirado naujas laivas!
+STR_982D							:{BLACK}{BIGFONT}{STRING}
+STR_982E_COST_MAX_SPEED_CAPACITY				:{BLACK}Cost: {CURRENCY} Max. Speed: {VELOCITY}{}Capacity: {STRING}{}Running Cost: {CURRENCY}/yr
+STR_982F_NAME_SHIP						:{BLACK}Laivo vardas
 
+STR_9831_NAME_SHIP						:{WHITE}Laivo vardas
+STR_9832_CAN_T_NAME_SHIP					:{WHITE}Negalima pervardyti laivo...
+STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Zmones dziaugiasi...{}Pirmas laivas atvyko i {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Statyti pludura, kuris bus naudojamas kaip tarpine stotele
+STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Negalima cia statyti pluduro...
+STR_9836_RENAME							:{BLACK}Pervardinti
+STR_9837_RENAME_SHIP_TYPE					:{BLACK}Pakeisti laivo tipa
+STR_9838_RENAME_SHIP_TYPE					:{WHITE}Pakeisti laivo varda
+STR_9839_CAN_T_RENAME_SHIP_TYPE					:{WHITE}Laivo vardo pakeisti negalima...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Perorientuoti laivo pervezamo krovinio tipa
+STR_983B_REFIT							:{WHITE}{STRING} (Perorientuoti)
+STR_983C_REFIT_SHIP						:{BLACK}Perorientuoti laiva
+STR_983D_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Pasirink krovinio tipa, kuri laivas tures 'sergeti'
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED			:{BLACK}Pakeisti pervezamo krovinio tipa
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Pasirink 'sergimo' krovinio tipa:-
+STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP					:{WHITE}Negalima perorientuotilaivo...
+STR_9842_REFITTABLE						:(perorientuotinas)
+STR_GO_TO_SHIP_DEPOT						:Uzduotis: laivu depas {TOWN}
+SERVICE_AT_SHIP_DEPOT						:Remontas laivu depe {TOWN}
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Oro uostai
+STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Negalima cia statyti oro uosto...
+STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Lektuvu angaras
+STR_A003_NEW_AIRCRAFT						:{BLACK}Naujas lektuvas
+STR_A004_INFORMATION						:{BLACK}Informacija
+STR_A005_NEW_AIRCRAFT						:{WHITE}Naujas lektuvas
+STR_A006_BUILD_AIRCRAFT						:{BLACK}Isigyti lektuva
+STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Talpumas: {GOLD}{COMMA16} keleiviu, {COMMA16} pasto maisu{}{BLACK}EDksploatacijos islaidos: {GOLD}{CURRENCY}/met.{}{BLACK}Suprojektuota: {GOLD}{NUMU16}{BLACK}  Amzius: {GOLD}{COMMA16} metai{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
+STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Negalima isigyti lektuvo...
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Lektuvai
+STR_A00A							:{WHITE}{STRING}
+STR_A00B_ORDERS							:{WHITE}{STRING} (Uzduotys)
+STR_A00C_DETAILS						:{WHITE}{STRING} (Detaliau)
+STR_A00D_AGE_RUNNING_COST_YR					:{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met.
+STR_A00E_MAX_SPEED						:{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praeitais metais: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}Negalima lektuvo nusiusti i angara...
+STR_HEADING_FOR_HANGAR						:{LTBLUE}Kursas: {STATION} angaras
+STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Kursas: {STATION} angarasangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}Lektuvas {COMMA16} laukia angare
+STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Oro uostai
+STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}Negalima cia statyti oro uosto...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT					:{WHITE}Lektuvas dabar skrenda
+STR_A018_MUST_BUILD_AIRPORT_FIRST				:{WHITE}Pirmiausia reikia pastatyti oro uosta
+STR_A019_CAPACITY						:{BLACK}Talpa: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY						:{BLACK}Talpa: {LTBLUE}{STRING}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED				:{WHITE}Lektuvas turi buti sustabdytas angare
+STR_A01C_CAN_T_SELL_AIRCRAFT					:{WHITE}Negalima parduoti lektuvo...
+STR_A01D_AIRPORT_CONSTRUCTION					:Oro uostu konstr.
+STR_A01E_BUILD_AIRPORT						:{BLACK}Statyti opo uosta
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Aircraft - click on aircraft for information
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Statyti nauja lektuva (reikia oro uosto su angaru)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Lektuvas - paspausk ant lektuvo, jei nori daugiau informacijos
+STR_A022_BUILD_NEW_AIRCRAFT					:{BLACK}Statyti nauja lektuva
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Nutempk lektuva cia, jei nori parduoti
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR				:{BLACK}Rodyti lektuvu angara ekrano centre
+STR_A025_AIRCRAFT_SELECTION_LIST				:{BLACK}Lektuvu sarasas - paspausk ant lektuvo, jei nori daugiau informacijos
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT				:{BLACK}Statyti pazymeta lektuva
+STR_A027_CURRENT_AIRCRAFT_ACTION				:{BLACK}Dabartine lektuvo uzduotis - spausk cia, jei nori sustabryti.paleisti lektuva
+STR_A028_SHOW_AIRCRAFT_S_ORDERS					:{BLACK}Rodyti lektuvo uzduotis
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT				:{BLACK}Rodyti lektuva ektrano centre
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Siusti lektuva i angara
+STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Rodyti lektuvo informacija
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}Atsirado naujas lektuvas!
+STR_A02D							:{BLACK}{BIGFONT}{STRING}
+STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Kaina: {CURRENCY} Maks. greitis: {VELOCITY}{}Talpa: {COMMA16} keleiviu, {COMMA16} pasto maisail{}Eksploatacijos islaidos: {CURRENCY}/met.
 
+STR_A030_NAME_AIRCRAFT						:{WHITE}Pervardinti lektuva
+STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Negalima pervardinti lektuvo...
+STR_A032_NAME_AIRCRAFT						:{BLACK}Pervardinti lektuva
+STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Gyventokai dziugauja. . .{}Pirmas lektuvas atvyko i {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lektuvo katastrofa!{}{COMMA16} sudege liepsnose prie {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Lektuvo katastrofa!{}Lektuvas pritruko degalu, {COMMA16} nukrito ant zemes!
+STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Paskirtis:
+STR_A036							:{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME							:{BLACK}Pervardinti
+STR_A038_RENAME_AIRCRAFT_TYPE					:{BLACK}Pakeisti lektuvo varda
+STR_A039_RENAME_AIRCRAFT_TYPE					:{WHITE}Pakeisti lektuvo varda
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}Negalima pakeisti lektuvo vardo...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Pakeisti lektuvo pervezamu kroviniu tipa
+STR_A03C_REFIT							:{WHITE}{STRING} (Keisti)
+STR_A03D_REFIT_AIRCRAFT						:{BLACK}Keisti krovinio tipa
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Pasirink nauja krovinio tipa
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Pakeisti lektuvo pervezamo krovinio tipa pazymetu
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Pasirink nauja kroviniu tipa:-
+STR_A041_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Pakeitimo kaina: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT					:{WHITE}Negalima pakeisti krovinio tipo...
+STR_A043_REFITTABLE						:(keiciami kroviniai)
+STR_GO_TO_AIRPORT_HANGAR					:Kursas: {STATION} angaras
+SERVICE_AT_AIRPORT_HANGAR					:Remontas angare: {STATION}
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT					:{BLACK}{BIGFONT} Dirizablio katastrofa {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED					:{BLACK}{BIGFONT}Automobilis sunaikintas ateiviu!
+STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Naftos perdirbimo fabriko sprogimas salia {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT} Del neaiskiu aplinkybiu sunaikinta ferma salia {TOWN}!
+STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}Ateiviai nusileido salia {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Anglies kasyklose salia {TOWN} sedantis gruntas sukele katastrofa - kasykla nenaudojama!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Potvynis!{}Automobilio {COMMA16} buvo pasigesta, kaip spejama, tai susije su potvyniu!
 
+STR_BRIBE_FAILED						:{WHITE}Tavo meginimas papirkti buvo
+STR_BRIBE_FAILED_2						:{WHITE}issaiskinta vietiniu pareigunu
+STR_BUILD_DATE							:{BLACK}Pastatytas: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Zaidimas sustabdytas.{}Veiksmas negali buti atliktas
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Issamus veiklos ivertinimas
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detaliai
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Automobiliai:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stoteles:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}MIn. pelnas:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Min. pajamos:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Maks. pajamos:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Pristatyta:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Kroviniai:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Pinigai:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Skola:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Viso:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Transporto priemoniu skaicius; sis skaicius susideda is automoboliu, traukiniu, laivu ir lektuvu
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Stoteliu kiekis. Kiekviena stotele (pvz. traukiniu, autobusu ar lektuvu) yra skaiciuojama, net jei jos ir yra apjungtos i viena bendra stoti
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Maziausiai pajamu atnesusios tr. priemones pelnas (is visu tr. priermoniu, senesniu nei 2 metai)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Kiekis uzdirbtu pinigu per menesi su zemiausiu pelno rodikliu per paskutinius 12 ketvirciu
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Kiekis uzdirbtu pinigu per menesi su didziausiu paskutiniu 12 menesiu pelnu
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Per paskutinius metus (4 ketv.) kroviniu kiekis
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Per paskutini ketvirti perveztu kroviniu rusiu kiekis
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Kompanijos pinigu kiekis banko saskaitoje
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Kompanijos pasiskolintu pinigu kiekis
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Viso tasku (is visu galimu)
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf settings
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Pakeitimai isigalioja
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Set parameters
+STR_NEWGRF_TIP							:{BLACK}Instaliuotu NewGRF sarasas. Spustelk ant norimos eilutes, jei nori keisti jos nustatymus
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nera instaliuota NewGRF failu! Prasau skaityti vartotojo vadove apie tai, kaip instaliuoti naujus grafinus elementus (NewGRF)
+STR_NEWGRF_FILENAME						:{BLACK}Failo vardas:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Pasirinkti valiuta
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Skyriklis:
+STR_CURRENCY_PREFIX						:{LTBLUE}Priesdelis:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Priesaga:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Pereiti prie Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Pereiti prie Euro: {ORANGE}niekada
+STR_CURRENCY_PREVIEW						:{LTBLUE}Perziura: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Keisti pasirinktos valiutos nustatymus
 
+STR_TRAIN							:{BLACK}{TRAIN}
+STR_LORRY							:{BLACK}{LORRY}
+STR_PLANE							:{BLACK}{PLANE}
+STR_SHIP							:{BLACK}{SHIP}
 
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Traukiniai
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Automobiliai
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Lektuvai
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Laivai
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Rodyti visus traukinius, kuriu uzduotuse yra itraukta si stotele
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Rodyti visus automobilius, kuriu uzduotyse yra pamineta si stotele
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Rodyti visus lektuvus, kuriu uzduotyse yra pamineta si stotele
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Rodyti visus laivus, kuriu uzduotyse yra pamineta si stotele
 
+STR_REPLACE_VEHICLES						:{BLACK}Keisti tr. priemones
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Keisti tr. priemones
+STR_REPLACE_VEHICLES_START					:{BLACK}Pradeti keitima
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Sustabdyti keitima
+STR_NOT_REPLACING						:{BLACK}Nekeiciama
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Nera pazymeta nei viena tr. priemone
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Pasirink tr. priemones tipa, kuriuo reikes keisti
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Pasirink tr. priemones tipa, kuria bus keiciamos pasirinktos tr. priemones
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Spustelk, jei nori sustabdyti siuo metu vykdoma keitimo procedura
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Spustelk, jei nori pradeti pazymeto tipo tr. priemoniu keitimo procedura
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Pasirink norimu keisti traukiniu begiu tipa
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
+STR_REPLACE_HELP						:{BLACK}Tai leidzia tau keisti viena tr. priemoniu tipa kitu, kai pirmojo tipo traukinys uzsuka i depa
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Zenklu sarasas - {COMMA16} Zenklai
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Paprasti traukiniai
+STR_MONORAIL_VEHICLES						:Vienbegiai traukiniai
+STR_MAGLEV_VEHICLES						:Magnetiniai traukiniai
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

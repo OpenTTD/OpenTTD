@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Subventionen anzeigen
 STR_02DD_SUBSIDIES						:Subventionen
 STR_02DE_MAP_OF_WORLD						:Weltkarte
 STR_EXTRA_VIEW_PORT						:Zusatzansicht
+STR_SIGN_LIST							:Schilderliste
 STR_02DF_TOWN_DIRECTORY						:Städteverzeichnis
 STR_TOWN_POPULATION						:{BLACK}Weltbevölkerung: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Ansicht {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Hier wird angezeigt, gegen welches 
 STR_REPLACE_HELP						:{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Schilderliste - {COMMA16} Schild(er)
 
 ############ Lists rail types
 

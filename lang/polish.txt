@@ -992,7 +992,7 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Uzyj ulepszonego algorytmu zaladunk
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT					:
+STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Zezwalaj na wysy&#322;anie do zajezdni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}

@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}N‰yt‰ alennukset
 STR_02DD_SUBSIDIES						:Alennukset
 STR_02DE_MAP_OF_WORLD						:Maailmankartta
 STR_EXTRA_VIEW_PORT						:Ylim‰‰r‰inen n‰kym‰
+STR_SIGN_LIST							:Kylttilista
 STR_02DF_TOWN_DIRECTORY						:Kaupunkihakemisto
 STR_TOWN_POPULATION						:{BLACK}Maailman asukasluku: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}VN‰kym‰ {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}N‰ytt‰‰, mill‰ vasemmalta valittu v
 STR_REPLACE_HELP						:{BLACK}T‰ll‰ voit korvata yhden veturityypin toisella, kun alkuper‰isen tyypin junat menev‰t varikolle
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Kylttilista - {COMMA16} kyltti‰
 
 ############ Lists rail types
 

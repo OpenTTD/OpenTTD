@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Display subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Map of world
 STR_EXTRA_VIEW_PORT						:Extra viewport
+STR_SIGN_LIST							:Sign list
 STR_02DF_TOWN_DIRECTORY						:Town directory
 STR_TOWN_POPULATION						:{BLACK}World population: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
@@ -985,6 +986,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Allow more realistically sized catchme
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
@@ -1005,6 +1007,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Allow bribing the local authority: {ORANGE
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}New depot finding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
@@ -1091,6 +1094,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Build while in pause mode: {ORANGE}{STRING
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Heading for {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
@@ -1397,6 +1401,8 @@ STR_NETWORK_SEND						:{BLACK}Send
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}X-size of map: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Y-size of map: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cost: {CURRENCY}
@@ -1504,8 +1510,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} local authority refuses to al
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Town names - click on name to center main view on town
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Center the main view on town location
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Change town name
-STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passengers last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Mail last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Passengers last month: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Mail last month: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK					:Tall office block
 STR_2010_OFFICE_BLOCK						:Office block
 STR_2011_SMALL_BLOCK_OF_FLATS					:Small block of apartments
@@ -1617,6 +1623,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Too close to another railroad 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Adjoins more than one existing station/loading area
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Too many stations/loading areas
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Too many bus stops
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Too many truck stations
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Too close to another station/loading area
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Must demolish railroad station first
@@ -1690,6 +1698,7 @@ STR_3069_BUOY							:Buoy
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...buoy in the way
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station too spread out
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...nonuniform stations disabled
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Ship Depot Orientation
@@ -2788,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left sele
 STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Sign List - {COMMA16} Signs
 
 ############ Lists rail types
 

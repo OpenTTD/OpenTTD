@@ -188,7 +188,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nemuzes vycistit tuto oblast...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Puvodni copyright: {COPYRIGHT} 1995 Chris Sawyer, vsechna práva vyhrazena
 STR_00B7_VERSION						:{BLACK}OpenTTD verze {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 Tým OpenTTD
-STR_TRANSLATED_BY						:{BLACK}  Prekladatel(e) - Hadez, iSteve (kdo jste byli driv, napiste Hádovi PM na tt-forums.net)
+STR_TRANSLATED_BY						:{BLACK}  Prekladatel(e) - Hadez, iSteve
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -687,7 +687,7 @@ STR_0285_CAN_T_BUILD_HERE					:{WHITE}Nemuzes zde stavet {STRING} ...
 STR_0286_MUST_BUILD_TOWN_FIRST					:{WHITE}...musis postavit nejprve mesto
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN				:{WHITE}...povolena jen jedna na mesto
 STR_0288_PLANT_TREES						:{BLACK}Vysadit stromy
-STR_0289_PLACE_SIGN						:{BLACK}Umistit napis
+STR_0289_PLACE_SIGN						:{BLACK}Umistit popisku
 STR_028A_RANDOM_TREES						:{BLACK}Nahodne stromy
 STR_028B_PLANT_TREES_RANDOMLY_OVER				:{BLACK}Umistit stromy nahodne po krajine
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Umistit kamenita uzemi po mape
@@ -746,8 +746,8 @@ STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení jmen mest
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Zobrazení jmen mest
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazení jmen stanic
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Zobrazení jmen stanic
-STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení napisu
-STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazení napisu
+STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení popisku
+STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazení popisku
 STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
 STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Zobrazení kontrolních bodu
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Plné animace
@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Zobrazit nabidky dotaci
 STR_02DD_SUBSIDIES						:Dotace
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
 STR_EXTRA_VIEW_PORT						:Dalsi pohled
+STR_SIGN_LIST							:Seznam popisku
 STR_02DF_TOWN_DIRECTORY						:Seznam mest
 STR_TOWN_POPULATION						:{BLACK}Populace sveta: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohled {COMMA16}
@@ -1602,10 +1603,10 @@ STR_2804_SITE_UNSUITABLE					:{WHITE}...nepouzitelne místo
 STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Zde nemuzes vysadit strom...
 STR_2806							:{WHITE}{STRING}
 STR_2807							:{TINYFONT}{WHITE}{STRING}
-STR_2808_TOO_MANY_SIGNS						:{WHITE}...prilis mnoho napisu
+STR_2808_TOO_MANY_SIGNS						:{WHITE}...prilis mnoho popisku
 STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Zde nemuzes umistit nápis...
 STR_280A_SIGN							:Nápis
-STR_280B_EDIT_SIGN_TEXT						:{WHITE}Upravit text napisu
+STR_280B_EDIT_SIGN_TEXT						:{WHITE}Upravit text popisku
 STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Nemuzes zmenit jméno nápisu...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Zvol typ stromu na vysazeni
 STR_280E_TREES							:Stromy
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Tady je zobrazeno, za jakou lokomot
 STR_REPLACE_HELP						:{BLACK}Tato moznost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdyz lokomotiva zajede do depa.
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Seznam popisku - {COMMA16} popisku
 
 ############ Lists rail types
 

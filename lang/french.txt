@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES						:Subventions
 STR_02DE_MAP_OF_WORLD						:Carte du monde
 STR_EXTRA_VIEW_PORT						:Vue supplémentaire
+STR_SIGN_LIST							:Liste des panneaux
 STR_02DF_TOWN_DIRECTORY						:Annuaire des villes
 STR_TOWN_POPULATION						:{BLACK}Population mondiale : {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vue {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Ceci affiche par quelle locomotive 
 STR_REPLACE_HELP						:{BLACK}Cette caractéristique permet de choisir un type de locomotive et de le remplacer par un autre. Ceci sera fait automatiquement  quand le véhicule rentre dans un dépôt
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Liste des panneaux - {COMMA16} panneaux
 
 ############ Lists rail types
 

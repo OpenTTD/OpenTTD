@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Sýna samstarfssamninga
 STR_02DD_SUBSIDIES						:Samstarfssamningar
 STR_02DE_MAP_OF_WORLD						:Heimskort
 STR_EXTRA_VIEW_PORT						:Auka sjónarhorn
+STR_SIGN_LIST							:Skiltalisti
 STR_02DF_TOWN_DIRECTORY						:Bæjarmappa
 STR_TOWN_POPULATION						:{BLACK}Heildaríbúafjöldi: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Sjónarhorn {COMMA16}
@@ -1519,7 +1520,7 @@ STR_2013_LARGE_OFFICE_BLOCK					:Stór skrifstofubygging
 STR_2014_TOWN_HOUSES						:Íbúarhús
 STR_2015_HOTEL							:Hótel
 STR_2016_STATUE							:Stytta
-STR_2017_FOUNTAIN						:Brunnur
+STR_2017_FOUNTAIN						:Gosbrunnur
 STR_2018_PARK							:Almenningsgarður
 STR_2019_OFFICE_BLOCK						:Skrifstofubygging
 STR_201A_SHOPS_AND_OFFICES					:Verslanir og skrifstofur
@@ -1770,9 +1771,9 @@ STR_4825_TOFFEE_QUARRY						:Karamellunáma
 STR_4826_SUGAR_MINE						:Sykurnáma
 
 ############ range for requires	starts
-STR_4827_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}
-STR_4828_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES						:{BLACK}Þarfnast: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES						:{BLACK}Tekur við: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Tekur við: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Tekur við: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Framleiðsla síðasta mánaðar:
@@ -2025,7 +2026,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT				:{BLACK}Velja nýtt andlit á forstöðuma
 STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Breyta útliti á farartækjum fyrirtækisins
 STR_7032_CHANGE_THE_PRESIDENT_S					:{BLACK}Breyta nafni forstöðumanns
 STR_7033_CHANGE_THE_COMPANY_NAME				:{BLACK}Breyta nafni fyrirtækisins
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Smelltu á litaskemað sem þú vilt
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Smelltu á litinn sem þú vilt
 STR_7035_INCREASE_SIZE_OF_LOAN					:{BLACK}Auka lán
 STR_7036_REPAY_PART_OF_LOAN					:{BLACK}Borga til baka hluta af láni
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Manager)
@@ -2376,8 +2377,8 @@ STR_8107_MAGLEV_LOCOMOTIVE					:segul lest
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} Lestar Bygging
-STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Borgarar fagna . . .{}Fyrsta lestin stöðvar í {STATION}!
-STR_8802_DETAILS						:{WHITE}{STRING} (Nánar)
+STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
+STR_8802_DETAILS						:{WHITE}{STRING} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Lest fyrir
 STR_8804							:{SETX 10}{COMMA8}: {STRING}
 STR_8805							:{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
@@ -2445,7 +2446,7 @@ STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Get ekki fundið leit til staðbundins
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Get ekki ræst/stöðva lest...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Skoðanamillibil: {LTBLUE}{COMMA16}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Skoðanamillibil: {LTBLUE}{COMMA16}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
-STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Lestir - ýttu á lest fyrir upplýsingar
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Búa til nýjar lestir (þarfnast lestarskýlis)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
 STR_8840_BUILD_NEW_TRAIN_VEHICLE				:{BLACK}Byggja nýja lest
@@ -2454,7 +2455,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Miðstilla sjónarhorn á staðsetning
 STR_8843_TRAIN_VEHICLE_SELECTION				:{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN				:{BLACK}Búa til valinn lestarvagn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE				:{BLACK}Endurnefna lestarvagnstegund
-STR_8846_CURRENT_TRAIN_ACTION_CLICK				:{BLACK}Núverandi aðgerð lestar - ýttu hér til að stöðva/ræsa lestina
+STR_8846_CURRENT_TRAIN_ACTION_CLICK				:{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina
 STR_8847_SHOW_TRAIN_S_ORDERS					:{BLACK}Sýna lestarskipanir
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Miðstilla sjónarhorn á staðsetningu lestar
 STR_8849_SEND_TRAIN_TO_DEPOT					:{BLACK}Senda lest í skýli
@@ -2467,7 +2468,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED				:{BLACK}Sýna nánari upplýsingar um núv
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES				:{BLACK}Sýna nánari upplýsingar um lestir
 STR_8851_SHOW_CAPACITIES_OF_EACH				:{BLACK}Sýna burðargetu hvers farartækis
 STR_8852_SHOW_TOTAL_CARGO					:{BLACK}Sýna heildar burðargetu lestar, raðar eftir tegund farms
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Skipanalisti - smelltu á til að velja skipun. CTRL + smelltu á til að sýna stöðina
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Skipanalisti - smelltu til að velja skipun. CTRL + músartakki færir sjónarhorn að stöðinni
 STR_8853_SKIP_THE_CURRENT_ORDER					:{BLACK}Sleppa núverandi skipun, og byrja á næstu
 STR_8854_DELETE_THE_HIGHLIGHTED					:{BLACK}Eyða valdri skipun
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER				:{BLACK}Gera valda skipun viðstöðulausa
@@ -2511,7 +2512,7 @@ STR_9008_COST_SPEED_RUNNING_COST				:{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hraði:
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Get ekki byggt bíl...
 STR_900A_MUST_BUILD_ROAD_VEHICLE				:{WHITE}Verður að bygga bílastöð fyrst
 STR_900B_ORDERS							:{WHITE}{STRING} (Skipanir)
-STR_900C_DETAILS						:{WHITE}{STRING} (Nánar)
+STR_900C_DETAILS						:{WHITE}{STRING} (Upplýsingar)
 STR_900D_AGE_RUNNING_COST_YR					:{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Keyrslukostnaður: {LTBLUE}{CURRENCY}/ár
 STR_900E_MAX_SPEED						:{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
@@ -2526,15 +2527,15 @@ STR_HEADING_FOR_ROAD_DEPOT					:{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL					:{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT				:{WHITE}Get ekki sent bifreið í skýli...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Finnur ekkert nálægt skýli
-STR_901A_ROAD_VEHICLES_CLICK_ON					:{BLACK}Bifreið - ýttu á bifreiðina fyrir upplýsingar
+STR_901A_ROAD_VEHICLES_CLICK_ON					:{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
 STR_901B_BUILD_NEW_ROAD_VEHICLES				:{BLACK}Smíða nýja bifreið (þarfnast bifreiðaskýlis)
-STR_901C_CURRENT_VEHICLE_ACTION					:{BLACK}Núverandi aðgerð bifreiðar - ýttu hér til að stöðva/ræsa bifreið
+STR_901C_CURRENT_VEHICLE_ACTION					:{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
 STR_901D_SHOW_VEHICLE_S_ORDERS					:{BLACK}Sýna skipanir bifreiðar
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE				:{BLACK}Miðja aðalsjónarhornið á bifreið
 STR_901F_SEND_VEHICLE_TO_DEPOT					:{BLACK}Senda bifreið í skýli
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND				:{BLACK}Þvinga bifreið til að snúa við
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS				:{BLACK}Sýna upplýsingar um bifreið
-STR_9022_VEHICLES_CLICK_ON_VEHICLE				:{BLACK}Bifreið - smelltu á bifreið fyrir upplýsingar
+STR_9022_VEHICLES_CLICK_ON_VEHICLE				:{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
 STR_9023_BUILD_NEW_ROAD_VEHICLE					:{BLACK}Smíða nýja bifreið
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE				:{BLACK}Dragðu bifreið hingað til að selja hana
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD				:{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
@@ -2547,6 +2548,8 @@ STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{
 STR_902C_NAME_ROAD_VEHICLE					:{WHITE}Nefna bifreið
 STR_902D_CAN_T_NAME_ROAD_VEHICLE				:{WHITE}Get ekki nefnt bifreið...
 STR_902E_NAME_ROAD_VEHICLE					:{BLACK}Nefna bifreið
+STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti vörubíll kemur við á {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Bílslys!{}{COMMA16} deyja í sprengingu eftir árekstur við lest
 STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Get ekki snúið bifreið við...
@@ -2569,7 +2572,54 @@ STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Verður að smíða skip í slippnum 
 STR_9808_NEW_SHIPS						:{WHITE}Ný skip
 STR_9809_BUILD_SHIP						:{BLACK}Smíða skip
 STR_980A_COST_SPEED_CAPACITY_RUNNING				:{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}{}{BLACK}Burðargeta: {GOLD}{STRING} {STRING}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Hannað: {GOLD}{NUMU16}{BLACK}   Endingartími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
+STR_980B_SHIP_MUST_BE_STOPPED_IN				:{WHITE}Skip verður að vera stöðvað í skýli
+STR_980C_CAN_T_SELL_SHIP					:{WHITE}Get ekki selt skip...
+STR_980D_CAN_T_BUILD_SHIP					:{WHITE}Get ekki smíðað skip...
+STR_980E_SHIP_IN_THE_WAY					:{WHITE}Skip er fyrir
+STR_980F							:{WHITE}{STRING}
+STR_9810_ORDERS							:{WHITE}{STRING} (Skipanir)
+STR_9811_DETAILS						:{WHITE}{STRING} (Upplýsingar)
+STR_9812_AGE_RUNNING_COST_YR					:{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
+STR_9813_MAX_SPEED						:{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Tekjur þessa árs: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS					:{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA16}
+STR_9816_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Smíðað: {LTBLUE}{NUMU16}{BLACK} Verðmæti: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY						:{BLACK}Flutningsgeta: {LTBLUE}{STRING}
+STR_9818_CAN_T_STOP_START_SHIP					:{WHITE}Get ekki stöðvað/ræst skip...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT				:{WHITE}Get ekki sent skip í skýli...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Finnur ekkert nálægt skýli
+STR_HEADING_FOR_SHIP_DEPOT					:{LTBLUE}Stefnir að {TOWN} skipaskýlinu
+STR_HEADING_FOR_SHIP_DEPOT_VEL					:{LTBLUE}Stefnir að {TOWN} skipaskýlinu, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT				:{WHITE}Skip {COMMA16} bíður í skýli
+STR_981D_BUILD_SHIP_DOCK					:{BLACK}Byggja höfn
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING				:{BLACK}Reisa skipaskýli (til að smíða og skoða skip)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
+STR_9820_BUILD_NEW_SHIP						:{BLACK}Smíða nýtt skip
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL				:{BLACK}Dragðu skip hingað til að selja það
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Miðja aðalsjónarhorn á skipaskýli
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR				:{BLACK}Skip - smelltu fyrir nánari upplýsingar
+STR_9824_BUILD_NEW_SHIPS_REQUIRES				:{BLACK}Smíða nýtt skip (þarfnast skipaskýlis)
+STR_9825_SHIP_SELECTION_LIST_CLICK				:{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP				:{BLACK}Smíða valið skip
+STR_9827_CURRENT_SHIP_ACTION_CLICK				:{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
+STR_9828_SHOW_SHIP_S_ORDERS					:{BLACK}Sýna skipanir skips
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP				:{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
+STR_982A_SEND_SHIP_TO_DEPOT					:{BLACK}Senda skipið í skipaskýli
+STR_982B_SHOW_SHIP_DETAILS					:{BLACK}Sýna nánari upplýsingar um skip
+STR_982C_NEW_SHIP_NOW_AVAILABLE					:{BLACK}{BIGFONT}Nýtt skip fáanlegt!
+STR_982D							:{BLACK}{BIGFONT}{STRING}
+STR_982E_COST_MAX_SPEED_CAPACITY				:{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {STRING}{}Rekstrarkostnaður: {CURRENCY}á ári
+STR_982F_NAME_SHIP						:{BLACK}Nefna skip
 
+STR_9831_NAME_SHIP						:{WHITE}Nefna skip
+STR_9832_CAN_T_NAME_SHIP					:{WHITE}Get ekki nefnt skip...
+STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta skip kemur við á {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Setja niður bauju sem hægt er að nota sem leiðarvísi fyrir skip
+STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Get ekki sett bauju hér...
+STR_9836_RENAME							:{BLACK}Endurnefna
+STR_9837_RENAME_SHIP_TYPE					:{BLACK}Endurnefna skipategund
+STR_9838_RENAME_SHIP_TYPE					:{WHITE}Endurnefna skipategund
+STR_9839_CAN_T_RENAME_SHIP_TYPE					:{WHITE}Get ekki endurnefnt skipategund...
 
 ##id 0xA000
 

@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Toon subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Kaart
 STR_EXTRA_VIEW_PORT						:Extra kijkvenster
+STR_SIGN_LIST							:Bordjes lijst
 STR_02DF_TOWN_DIRECTORY						:Stedenlijst
 STR_TOWN_POPULATION						:{BLACK}Wereld populatie: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Kijkvenster {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Dit geeft weer waarmee de aan de li
 STR_REPLACE_HELP						:{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Bordjes lijst - {COMMA16} Bordjes
 
 ############ Lists rail types
 
