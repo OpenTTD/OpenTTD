@@ -2328,14 +2328,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			DebugProc(e->keypress.keycode - ('0' | WKC_ALT));
 #endif
 			break;
-		case 'A' | WKC_CTRL:
-			disable_computer^=1;
-			ShowInfoF("Disable Computer: %s", disable_computer?"ON":"OFF");
-			break;
-		case 'B' | WKC_CTRL:
-			_local_player^=1;
-			ShowInfoF("Play as computer: %s", _local_player?"ON":"OFF");
-			break;
 
 		// invoke autorail
 		case 'A':
