@@ -250,7 +250,7 @@ REV_NUMBER:=0
 endif
 
 # MorphOS needs builddate
-BUILDDATE=$(shell date +%d.%m.%y)
+BUILDDATE=`date +%d.%m.%y`
 
 # AMD64 needs a little more settings to work
 ifeq ($(shell uname -m), x86_64)
