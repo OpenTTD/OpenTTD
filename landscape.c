@@ -730,10 +730,10 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	int rn = rng;
 	uint32 r = Random();
 
-	return TILE_XY(
+	return TILE_MASK(TILE_XY(
 		TileX(a) + ((byte)r * rn * 2 >> 8) - rn,
 		TileY(a) + ((byte)(r >> 8) * rn * 2 >> 8) - rn
-	);
+	));
 }
 
 // This function checks if we add addx/addy to tile, if we

@@ -102,8 +102,8 @@ struct Vehicle {
 	TileIndex tile;		// Current tile index
 	TileIndex dest_tile; // Heading for this tile
 
-	int16 x_pos;			// coordinates
-	int16 y_pos;
+	int32 x_pos;			// coordinates
+	int32 y_pos;
 	byte z_pos;
 	byte direction;		// facing
 

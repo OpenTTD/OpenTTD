@@ -1876,7 +1876,8 @@ const TileTypeProcs _tile_type_industry_procs = {
 };
 
 static const byte _industry_desc[] = {
-	SLE_VAR(Industry,xy,							SLE_UINT16),
+	SLE_CONDVAR(Industry, xy,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Industry, xy,					SLE_UINT32, 6, 255),
 	SLE_VAR(Industry,width,						SLE_UINT8),
 	SLE_VAR(Industry,height,					SLE_UINT8),
 	SLE_REF(Industry,town,						REF_TOWN),

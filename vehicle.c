@@ -1765,11 +1765,15 @@ const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,string_id,				SLE_STRINGID),
 	SLE_VAR(Vehicle,unitnumber,				SLE_UINT8),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
-	SLE_VAR(Vehicle,tile,							SLE_UINT16),
-	SLE_VAR(Vehicle,dest_tile,				SLE_UINT16),
+	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, 255),
 
-	SLE_VAR(Vehicle,x_pos,						SLE_INT16),
-	SLE_VAR(Vehicle,y_pos,						SLE_INT16),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_UINT32, 6, 255),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 	SLE_VAR(Vehicle,direction,				SLE_UINT8),
 
@@ -1918,10 +1922,13 @@ static const byte _special_desc[] = {
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 
-	SLE_VAR(Vehicle,tile,							SLE_UINT16),
+	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
 
-	SLE_VAR(Vehicle,x_pos,						SLE_INT16),
-	SLE_VAR(Vehicle,y_pos,						SLE_INT16),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, 255),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
@@ -1948,11 +1955,15 @@ static const byte _disaster_desc[] = {
 	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
-	SLE_VAR(Vehicle,tile,							SLE_UINT16),
-	SLE_VAR(Vehicle,dest_tile,				SLE_UINT16),
+	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, 255),
 
-	SLE_VAR(Vehicle,x_pos,						SLE_INT16),
-	SLE_VAR(Vehicle,y_pos,						SLE_INT16),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, 255),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 	SLE_VAR(Vehicle,direction,				SLE_UINT8),
 
@@ -2069,7 +2080,8 @@ static void Load_VEHS(void)
 }
 
 static const byte _depot_desc[] = {
-	SLE_VAR(Depot,xy,						SLE_UINT16),
+	SLE_CONDVAR(Depot, xy,			SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Depot, xy,			SLE_UINT32, 6, 255),
 	SLE_VAR(Depot,town_index,		SLE_UINT16),
 	SLE_END()
 };
@@ -2095,7 +2107,8 @@ static void Load_DEPT(void)
 }
 
 static const byte _waypoint_desc[] = {
-	SLE_VAR(Waypoint,xy,								SLE_UINT16),
+	SLE_CONDVAR(Waypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, 255),
 	SLE_VAR(Waypoint,town_or_string,		SLE_UINT16),
 	SLE_VAR(Waypoint,deleted,						SLE_UINT8),
 

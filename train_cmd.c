@@ -947,8 +947,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		if (!(b->u.rail.track & 0x80)) b->direction ^= 4;
 
 		/* swap more variables */
-		swap_int16(&a->x_pos, &b->x_pos);
-		swap_int16(&a->y_pos, &b->y_pos);
+		swap_int32(&a->x_pos, &b->x_pos);
+		swap_int32(&a->y_pos, &b->y_pos);
 		swap_tile(&a->tile, &b->tile);
 		swap_byte(&a->z_pos, &b->z_pos);
 

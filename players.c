@@ -923,8 +923,10 @@ static const byte _player_desc[] = {
 	SLE_VAR(Player,block_preview,		SLE_UINT8),
 
 	SLE_VAR(Player,cargo_types,			SLE_UINT16),
-	SLE_VAR(Player,location_of_house,SLE_UINT16),
-	SLE_VAR(Player,last_build_coordinate,SLE_UINT16),
+	SLE_CONDVAR(Player, location_of_house,     SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Player, location_of_house,     SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Player, last_build_coordinate, SLE_UINT32, 6, 255),
 	SLE_VAR(Player,inaugurated_year,SLE_UINT8),
 
 	SLE_ARR(Player,share_owners,		SLE_UINT8, 4),
@@ -983,13 +985,17 @@ static const byte _player_ai_desc[] = {
 
 	SLE_VAR(PlayerAI,route_type_mask,		SLE_UINT8),
 
-	SLE_VAR(PlayerAI,start_tile_a,			SLE_UINT16),
-	SLE_VAR(PlayerAI,cur_tile_a,				SLE_UINT16),
+	SLE_CONDVAR(PlayerAI, start_tile_a, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(PlayerAI, start_tile_a, SLE_UINT32, 6, 255),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,   SLE_UINT32, 6, 255),
 	SLE_VAR(PlayerAI,start_dir_a,				SLE_UINT8),
 	SLE_VAR(PlayerAI,cur_dir_a,					SLE_UINT8),
 
-	SLE_VAR(PlayerAI,start_tile_b,			SLE_UINT16),
-	SLE_VAR(PlayerAI,cur_tile_b,				SLE_UINT16),
+	SLE_CONDVAR(PlayerAI, start_tile_b, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(PlayerAI, start_tile_b, SLE_UINT32, 6, 255),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,   SLE_UINT32, 6, 255),
 	SLE_VAR(PlayerAI,start_dir_b,				SLE_UINT8),
 	SLE_VAR(PlayerAI,cur_dir_b,					SLE_UINT8),
 
@@ -1004,8 +1010,10 @@ static const byte _player_ai_desc[] = {
 };
 
 static const byte _player_ai_build_rec_desc[] = {
-	SLE_VAR(AiBuildRec,spec_tile,			SLE_UINT16),
-	SLE_VAR(AiBuildRec,use_tile,			SLE_UINT16),
+	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_UINT32, 6, 255),
+	SLE_CONDVAR(AiBuildRec,use_tile,  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec,use_tile,  SLE_UINT32, 6, 255),
 	SLE_VAR(AiBuildRec,rand_rng,			SLE_UINT8),
 	SLE_VAR(AiBuildRec,cur_building_rule,SLE_UINT8),
 	SLE_VAR(AiBuildRec,unk6,					SLE_UINT8),

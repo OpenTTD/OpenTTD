@@ -3762,7 +3762,7 @@ static void AiStateRemoveTrack(Player *p)
 		uint tile = ++p->ai.state_counter;
 
 		// Iterated all tiles?
-		if (tile == 0) {
+		if (tile >= MapSize()) {
 			p->ai.state = AIS_REMOVE_STATION;
 			return;
 		}
