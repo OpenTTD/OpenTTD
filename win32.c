@@ -1774,10 +1774,10 @@ const DriverDesc _sound_driver_descs[] = {
 
 const DriverDesc _music_driver_descs[] = {
 	{"null", "Null Music Driver",		&_null_music_driver,	0},
-	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,	1},
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
-	{"dmusic", "DirectMusic MIDI Driver",	&_dmusic_midi_driver,	2},
+	{"dmusic", "DirectMusic MIDI Driver",	&_dmusic_midi_driver,	1},
 #endif
+	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,	2},
 	{NULL}
 };
 

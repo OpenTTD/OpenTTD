@@ -62,8 +62,10 @@ bool seeking = false;
 
 static char * DMusicMidiStart(char **parm)
 {
-	InitDirectMusic();
-	return 0;
+	if (InitDirectMusic() == true)
+		return(0);
+	else
+		return(false);
 }
 
 static void DMusicMidiStop()
