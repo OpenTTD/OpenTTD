@@ -1093,10 +1093,6 @@ bool AfterLoadGame(uint version)
 		CheckIsPlayerActive();
 	}
 
-	// in case the player doesn't exist, create one (for scenario)
-	if (!_players[0].is_active)
-		DoStartupNewPlayer(false);
-
 	DoZoomInOut(ZOOM_NONE); // update button status
 	MarkWholeScreenDirty();
 
