@@ -110,7 +110,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
 				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity==p->index)) {
-					if(t->exclusivity==p->index) DrawPlayerIcon(p->index, 2, y);
+					DrawPlayerIcon(p->index, 2, y);
 
 					SET_DPARAM16(0, p->name_1);
 					SET_DPARAM32(1, p->name_2);
