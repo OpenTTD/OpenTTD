@@ -74,8 +74,8 @@ int CDECL VehicleNumberSorter(const void *a, const void *b)
 static char _bufcache[64];	// used together with _last_vehicle_idx to hopefully speed up stringsorting
 int CDECL VehicleNameSorter(const void *a, const void *b)
 {
-	const SortStruct *cmp1 = (SortStruct*)a;
-	const SortStruct *cmp2 = (SortStruct*)b;
+	const SortStruct *cmp1 = (const SortStruct*)a;
+	const SortStruct *cmp2 = (const SortStruct*)b;
 	const Vehicle *va = DEREF_VEHICLE(cmp1->index);
 	const Vehicle *vb = DEREF_VEHICLE(cmp2->index);
 	char buf1[64] = "\0";
@@ -110,7 +110,7 @@ int CDECL VehicleAgeSorter(const void *a, const void *b)
 	int r = va->age - vb->age;
 
 	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
-	r = va->unitnumber - vb->unitnumber;
+		r = va->unitnumber - vb->unitnumber;
 
 	return (_internal_sort_order & 1) ? -r : r;
 }
