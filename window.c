@@ -1021,7 +1021,7 @@ void MouseLoop()
 			return;
 
 		if (mousewheel && !(w->flags4 & WF_DISABLE_VP_SCROLL)) {
-			ZoomInOrOutToCursor(mousewheel < 0);
+			ZoomInOrOutToCursorWindow(mousewheel < 0,w);
 		}
 
 		if (click == 1) {

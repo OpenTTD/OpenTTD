@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
-
+#include "gui.h"
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"
@@ -995,4 +995,98 @@ static void DoShowSmallMap(int big)
 void ShowSmallMap()
 {
 	DoShowSmallMap(_smallmap_size);
+}
+
+/* Extra ViewPort Window Stuff */
+static Widget _extra_view_port_widgets[] = {
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   299,     0,    13, STR_EXTRA_VIEW_PORT_TITLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,    14,     0,   299,    14,   233, 0x0, 0},
+{          WWT_6,    14,     2,   297,    16,   231, 0, 0},
+{      WWT_PANEL,    14,     0,    21,   234,   255, 0x2DF, STR_017F_ZOOM_THE_VIEW_IN},
+{      WWT_PANEL,    14,    22,    43,   234,   255, 0x2E0, STR_0180_ZOOM_THE_VIEW_OUT},
+{ WWT_PUSHTXTBTN,    14,    44,   171,   234,   255, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
+{ WWT_PUSHTXTBTN,    14,   172,   299,   234,   255, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
+{      WWT_LAST},
+};
+
+static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
+{
+	ViewPort *vp = w->viewport;
+	int button = 4;
+
+	switch(e->event) {
+	case WE_PAINT: {
+		// set the number in the title bar
+		SET_DPARAM16(0, (w->window_number+1));
+
+		DrawWindowWidgets(w);
+		DrawWindowViewport(w);
+	}	break;
+	case WE_CLICK: {
+		switch(e->click.widget) {
+		case 4: { /* zoom in */
+			DoZoomInOutWindow(ZOOM_IN,w);
+		} break;
+
+		case 5: { /* zoom out */
+			DoZoomInOutWindow(ZOOM_OUT,w);
+		} break;
+
+		case 6: { /* location button (move main view to same spot as this view) */
+			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			int x = WP(w,vp_d).scrollpos_x; // Where is the main looking at
+			int y = WP(w,vp_d).scrollpos_y;
+
+			// set this view to same location. Based on the center, adjusting for zoom
+			WP(w2,vp_d).scrollpos_x =  x - (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
+			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (214 << vp->zoom) )/2;			
+		} break;
+		case 7: { /* inverse location button (move this view to same spot as main view) */
+			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			int x = WP(w2,vp_d).scrollpos_x;
+			int y = WP(w2,vp_d).scrollpos_y;
+
+			WP(w,vp_d).scrollpos_x =  x + (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
+			WP(w,vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - (214 << vp->zoom) )/2;			
+		} break;
+		}	
+	} break;
+	}
+}
+
+static const WindowDesc _extra_view_port_desc = {
+	-1,-1, 300, 256,
+	WC_EXTRA_VIEW_PORT,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_extra_view_port_widgets,
+	ExtraViewPortWndProc
+};
+
+void ShowExtraViewPortWindow()
+{
+	Window *w, *v;
+	int i = 0;
+	
+	// find next free window number for extra viewport
+	while (FindWindowById(WC_EXTRA_VIEW_PORT,i) ) {
+		i++;
+	}
+
+	w = AllocateWindowDescFront(&_extra_view_port_desc,i);
+	if (w) {
+		int x,y;
+		// disable zoom in button
+		w->disabled_state = 1 << 4;
+		// the main window with the main view
+		v = FindWindowById(WC_MAIN_WINDOW, 0); 
+		// New viewport start ats (zero,zero) 
+		AssignWindowViewport(w, 3, 17, 294, 214, 0 , 0);
+
+		// center on same place as main window (zoom is maximum, no adjustment needed)
+		x = WP(v,vp_d).scrollpos_x;
+		y = WP(v,vp_d).scrollpos_y;
+		WP(w,vp_d).scrollpos_x =  x + (v->viewport->virtual_width - (294) )/2;
+		WP(w,vp_d).scrollpos_y =  y + (v->viewport->virtual_height - (214)  )/2;
+	}
 }

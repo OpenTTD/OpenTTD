@@ -749,6 +749,13 @@ STR_02DB_OFF							:{BLACK}Off
 STR_02DC_DISPLAY_SUBSIDIES				:{BLACK}Display subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD					:Map of world
+STR_EXTRA_VIEW_PORT						:Extra viewport
+STR_EXTRA_VIEW_PORT_TITLE				:{WHITE}Viewport {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN		:{BLACK}Copy to viewport
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT		:{BLACK}Copy the location of the global view to this viewport
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW		:{BLACK}Paste from viewport
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT		:{BLACK}Paste the location of this viewport to the global view
+
 STR_02DF_TOWN_DIRECTORY					:Town directory
 STR_02E0_CURRENCY_UNITS					:{BLACK}Currency units
 STR_02E1								:{BLACK}{SKIP}{STRING}

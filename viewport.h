@@ -18,7 +18,8 @@ void AssignWindowViewport(Window *w, int x, int y,
 void SetViewportPosition(Window *w, int x, int y);
 ViewPort *IsPtInWindowViewport(Window *w, int x, int y);
 Point GetTileBelowCursor();
-Point GetTileZoomCenter(bool in);
+void ZoomInOrOutToCursorWindow(bool in, Window * w);
+Point GetTileZoomCenterWindow(bool in, Window * w);
 void UpdateViewportPosition(Window *w);
 
 void OffsetGroundSprite(int x, int y);

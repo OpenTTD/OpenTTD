@@ -79,6 +79,7 @@ void DrawStationCoverageAreaText(int sx, int sy, uint mask);
 void CheckRedrawStationCoverage(Window *w);
 
 void ShowSmallMap();
+void ShowExtraViewPortWindow();
 void SetVScrollCount(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 
@@ -102,7 +103,7 @@ enum {
 	ZOOM_NONE = 2, // hack, used to update the button status
 };
 
-bool DoZoomInOut(int how);
+bool DoZoomInOutWindow(int how, Window * w);
 void ShowBuildIndustryWindow();
 void ShowQueryString(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number);
 void ShowMusicWindow();

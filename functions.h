@@ -185,6 +185,10 @@ void SetObjectToPlaceWnd(int icon, byte mode, Window *w);
 void SetObjectToPlace(int icon, byte mode, byte window_class, uint16 window_num);
 
 void ResetObjectToPlace();
+
+bool ScrollWindowToTile(TileIndex tile, Window * w);
+bool ScrollWindowTo(int x, int y, Window * w);
+
 bool ScrollMainWindowToTile(TileIndex tile);
 bool ScrollMainWindowTo(int x, int y);
 void DrawSprite(uint32 img, int x, int y);
@@ -246,7 +250,6 @@ void ttd_strlcpy(char *dst, const char *src, size_t len);
 
 // callback from drivers that is called if the game size changes dynamically
 void GameSizeChanged();
-void ZoomInOrOutToCursor(bool in);
 bool MakeScreenshot();
 bool MakeWorldScreenshot(int left, int top, int width, int height, int zoom);
 bool FileExists(const char *filename);

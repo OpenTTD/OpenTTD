@@ -312,19 +312,23 @@ Point GetTileBelowCursor()
 	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y);
 }
 
-Point GetTileZoomCenter(bool in)
+
+Point GetTileZoomCenterWindow(bool in, Window * w)
 {
 	int x, y;
-	
+	ViewPort * vp;
+
+	vp = w->viewport;
+
 	if (in)	{
-		x = (_cursor.pos.x >> 1) + (_screen.width >> 2);
-		y = (_cursor.pos.y >> 1) + (_screen.height >> 2);
+		x = ( (_cursor.pos.x - vp->left ) >> 1) + (vp->width >> 2);
+		y = ( (_cursor.pos.y - vp->top ) >> 1) + (vp->height >> 2);
 	}
 	else {
-		x = _screen.width - _cursor.pos.x;
-		y = _screen.height - _cursor.pos.y;
+		x = vp->width - (_cursor.pos.x - vp->left);
+		y = vp->height - (_cursor.pos.y - vp->top);
 	}
-	return GetTileFromScreenXY(x, y);
+	return GetTileFromScreenXY(x+vp->left, y+vp->top);
 }
 
 void DrawGroundSpriteAt(uint32 image, int16 x, int16 y, byte z)
@@ -1707,6 +1711,32 @@ void PlaceObject()
 		w->wndproc(w, &e);
 	}
 }
+
+
+/* scrolls the viewport in a window to a given location */
+bool ScrollWindowTo(int x , int y, Window * w)
+{
+	Point pt;
+
+	pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(x, y));
+	WP(w,vp_d).follow_vehicle = -1;
+
+	if (WP(w,vp_d).scrollpos_x == pt.x &&
+			WP(w,vp_d).scrollpos_y == pt.y)
+				return false;
+
+	WP(w,vp_d).scrollpos_x = pt.x;
+	WP(w,vp_d).scrollpos_y = pt.y;
+	return true;
+}
+
+/* scrolls the viewport in a window to a given tile */
+bool ScrollWindowToTile(TileIndex tile, Window * w)
+{
+	return ScrollWindowTo(GET_TILE_X(tile)*16+8, GET_TILE_Y(tile)*16+8, w);
+}
+
+
 
 bool ScrollMainWindowTo(int x, int y)
 {

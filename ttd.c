@@ -1141,7 +1141,7 @@ bool AfterLoadGame(uint version)
 	if (!_players[0].is_active)
 		DoStartupNewPlayer(false);
 
-	DoZoomInOut(ZOOM_NONE); // update button status
+	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
 	return true;

@@ -152,6 +152,7 @@ void MenuClickMap(int index)
 {
 	switch(index) {
 	case 0: ShowSmallMap(); break;
+	case 1: ShowExtraViewPortWindow(); break;
 	}
 }
 
@@ -617,7 +618,7 @@ static void ToolbarSaveClick(Window *w)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 1);
+	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 2);
 }
 
 static void ToolbarTownClick(Window *w)
@@ -696,10 +697,11 @@ static void ToolbarAirClick(Window *w)
 	PopupMainPlayerToolbMenu(w, 376, 16, dis);
 }
 
-bool DoZoomInOut(int how)
+/* Zooms a viewport in a window in or out */
+/* No button handling or what so ever */
+bool DoZoomInOutWindow(int how, Window *w)
 {
 	ViewPort *vp;
-	Window *w, *wt;
 	int button;
 	
 	switch(_game_mode) {
@@ -708,12 +710,8 @@ bool DoZoomInOut(int how)
 	default: return false;
 	}
 
-	w = FindWindowById(WC_MAIN_WINDOW, 0);
 	assert(w);
 	vp = w->viewport;
-
-	wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	assert(wt);
 
 	if (how == ZOOM_IN) {
 		if (vp->zoom == 0) return false;
@@ -738,24 +736,40 @@ bool DoZoomInOut(int how)
 		SetWindowDirty(w);
 	}
 
-	// update the toolbar button too
-	CLRBIT(wt->disabled_state, button);
-	CLRBIT(wt->disabled_state, button + 1);
-	if (vp->zoom == 0) SETBIT(wt->disabled_state, button);
-	else if (vp->zoom == 2) SETBIT(wt->disabled_state, button + 1);
-	SetWindowDirty(wt);
+	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
+	{
+		Window * wt;
+		switch (w->window_class) {
+		case WC_MAIN_WINDOW:
+			wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+			break;
+		case WC_EXTRA_VIEW_PORT:
+			wt = FindWindowById(WC_EXTRA_VIEW_PORT, w->window_number);
+			button = 4;
+			break;
+		}
 
+		assert(wt);
+
+		// update the toolbar button too
+		CLRBIT(wt->disabled_state, button);
+		CLRBIT(wt->disabled_state, button + 1);
+		if (vp->zoom == 0) SETBIT(wt->disabled_state, button);
+		else if (vp->zoom == 2) SETBIT(wt->disabled_state, button + 1);
+		SetWindowDirty(wt);
+	}
+	
 	return true;
 }
 
 static void MaxZoomIn()
 {
-	while (DoZoomInOut(ZOOM_IN)) {}
+	while (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0) ) ) {}
 }
 
 static void ToolbarZoomInClick(Window *w)
 {
-	if (DoZoomInOut(ZOOM_IN)) {
+	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 17);
 		SndPlayFx(0x13);
 	}
@@ -763,7 +777,7 @@ static void ToolbarZoomInClick(Window *w)
 
 static void ToolbarZoomOutClick(Window *w)
 {
-	if (DoZoomInOut(ZOOM_OUT)) {
+	if (DoZoomInOutWindow(ZOOM_OUT,FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 18);
 		SndPlayFx(0x13);
 	}
@@ -870,7 +884,7 @@ static void ToolbarScenMapTownDir(Window *w)
 
 static void ToolbarScenZoomIn(Window *w)
 {
-	if (DoZoomInOut(ZOOM_IN)) {
+	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 9);
 		SndPlayFx(0x13);
 	}
@@ -878,19 +892,17 @@ static void ToolbarScenZoomIn(Window *w)
 
 static void ToolbarScenZoomOut(Window *w)
 {
-	if (DoZoomInOut(ZOOM_OUT)) {
+	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 10);
 		SndPlayFx(0x13);
 	}
 }
 
-void ZoomInOrOutToCursor(bool in)
+void ZoomInOrOutToCursorWindow(bool in, Window *w) 
 {
+	ViewPort * vp;
 	Point pt;
-	Window* w;
-	ViewPort* vp;
 
-	w = FindWindowById(WC_MAIN_WINDOW, 0);
 	assert(w != 0);
 
 	vp = w->viewport;
@@ -899,11 +911,11 @@ void ZoomInOrOutToCursor(bool in)
 		if ((in && vp->zoom == 0) || (!in && vp->zoom == 2))
 			return;
 
-		pt = GetTileZoomCenter(in);
+		pt = GetTileZoomCenterWindow(in,w);
 		if (pt.x != -1) {
-			ScrollMainWindowTo(pt.x, pt.y);
+			ScrollWindowTo(pt.x, pt.y, w);
 
-			DoZoomInOut(in ? ZOOM_IN : ZOOM_OUT);
+			DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
 		}
 	}
 }
