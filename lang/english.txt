@@ -2499,3 +2499,4 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES	:{BLACK}{BIGFONT}Coal mine subsidence leave
 
 STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator
+STR_BUILD_DATE						:{BLACK}Built in: {LTBLUE}{DATE_LONG}

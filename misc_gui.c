@@ -102,6 +102,11 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		if (str != (STR_01CE_CARGO_ACCEPTED - 1))
 			DrawStringMultiCenter(140, 76, str, 276);
+			
+		if (lid->td.build_date != 0) {
+			SET_DPARAM16(0,lid->td.build_date);
+			DrawStringCentered(140,71, STR_BUILD_DATE, 0);
+		}
 	}
 }
 
@@ -145,7 +150,10 @@ static void Place_LandInfo(uint tile)
 	lid.costclear = DoCommandByTile(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->money64 = old_money;
 	UpdatePlayerMoney32(p);
-
+	
+	// Becuase build_date is not set yet in every TileDesc, we make sure it is empty
+	lid.td.build_date = 0;
+	
 	GetAcceptedCargo(tile, &lid.ac);
 	GetTileDesc(tile, &lid.td);
 	

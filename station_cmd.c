@@ -820,6 +820,8 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		st->trainst_w = finalvalues[1];
 		st->trainst_h = finalvalues[2];
 		
+		st->build_date = _date;
+		
 		tile_delta = direction ? TILE_XY(0,1) : TILE_XY(1,0);
 		
 		layout_ptr = alloca(numtracks * plat_len);
@@ -1086,6 +1088,8 @@ int32 CmdBuildBusStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->facilities |= FACIL_BUS_STOP;
 		st->bus_stop_status = 3;
 		st->owner = _current_player;
+		
+		st->build_date = _date;
 
 		ModifyTile(tile, 
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
@@ -1196,6 +1200,8 @@ int32 CmdBuildTruckStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->facilities |= FACIL_TRUCK_STOP;
 		st->truck_stop_status = 3;
 		st->owner = _current_player;
+
+		st->build_date = _date;
 
 		ModifyTile(tile, 
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT | 
@@ -1388,6 +1394,8 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->facilities |= FACIL_AIRPORT;
 		st->airport_type = (byte)p1;
 		st->airport_flags = 0;
+		
+		st->build_date = _date;
 
 		/*	if airport was demolished while planes were en-route to it, the positions can no longer
 				be the same (v->u.air.pos), since different airports have different indexes. So update
@@ -1488,6 +1496,8 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->facilities |= FACIL_DOCK;
 		st->had_vehicle_of_type |= HVOT_BUOY;
 		st->owner = OWNER_NONE;
+		
+		st->build_date = _date;
 
 		ModifyTile(ti.tile,
 			MP_SETTYPE(MP_STATION) |
@@ -1637,6 +1647,8 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!st->facilities) st->xy = tile;
 		st->facilities |= FACIL_DOCK;
 		st->owner = _current_player;
+		
+		st->build_date = _date;
 
 		ModifyTile(tile, 
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT | 
@@ -1806,6 +1818,7 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 	StringID str;
 
 	td->owner = _map_owner[tile];
+	td->build_date = DEREF_STATION(_map2[tile])->build_date;
 
 	m5 = _map5[tile];
 	(str=STR_305E_RAILROAD_STATION, m5 < 8) ||
@@ -2364,6 +2377,7 @@ void BuildOilRig(uint tile)
 			st->delete_ctr = 0;
 			st->last_vehicle = INVALID_VEHICLE;
 			st->facilities = FACIL_AIRPORT | FACIL_DOCK;
+			st->build_date = _date;
 			for(j=0; j!=NUM_CARGO; j++) {
 				st->goods[j].waiting_acceptance = 0;
 				st->goods[j].days_since_pickup = 0;

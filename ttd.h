@@ -207,6 +207,7 @@ typedef struct AcceptedCargo {
 typedef struct TileDesc {
 	StringID str;
 	byte owner;
+	uint16 build_date;
 	uint32 dparam[2];
 } TileDesc;
 
