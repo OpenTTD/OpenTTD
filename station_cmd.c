@@ -283,7 +283,7 @@ static Station *GetClosestStationFromTile(uint tile, uint threshold, byte owner)
 
 	FOR_ALL_STATIONS(st) {
 		cur_dist = GetTileDist(tile, st->xy);
-		if (cur_dist < threshold && (owner == 0xFF || st->owner == owner)) {
+		if (cur_dist < threshold && (owner == 0xFF || st->owner == owner) && (st->xy != 0)) {
 			threshold = cur_dist;
 			best_station = st;
 		}
