@@ -1689,6 +1689,7 @@ STR_3069_BUOY							:Buoy
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...buoy in the way
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station too spread out
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED  :{WHITE}...nonuniform stations disabled
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Ship Depot Orientation

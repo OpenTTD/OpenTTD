@@ -76,6 +76,7 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 		if (IsTileType(tile_cur, MP_STATION)) {
 			int t;
 			t = _map2[tile_cur];
+			DEBUG(misc, 0) ("%x, %d", tile_cur, t);
 			{
 				Station *st = GetStation(t);
 				// you cannot take control of an oilrig!!
@@ -686,7 +687,10 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 		tile = TILE_XY(x,y);
 	} else {
 		// check so the direction is the same
-		if ((_map5[st->train_tile] & 1) != direction) return false;
+		if ((_map5[st->train_tile] & 1) != direction) {
+			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
+			return false;
+		}
 
 		// check if the new station adjoins the old station in either direction
 		if (curw == w && st->train_tile == tile + TILE_XY(0, h)) {
@@ -703,11 +707,16 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 			// to the right
 			tile -= TILE_XY(curw, 0);
 			curw += w;
-		} else
+		} else {
+			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
+		}
 	}
 	// make sure the final size is not too big.
-	if (curw > _patches.station_spread || curh > _patches.station_spread) return false;
+	if (curw > _patches.station_spread || curh > _patches.station_spread) {
+		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+		return false;
+	}
 
 	// now tile contains the new value for st->train_tile
 	// curw, curh contain the new value for width and height
@@ -834,10 +843,13 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 		if (st->train_tile != 0) {
 			// check if we want to expanding an already existing station?
-			if ((!_patches.ainew_active && _is_ai_player) || !_patches.join_stations || !CanExpandRailroadStation(st, finalvalues, direction))
+			if ((!_patches.ainew_active && _is_ai_player) || !_patches.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
+			if (!CanExpandRailroadStation(st, finalvalues, direction))
+				return CMD_ERROR;
 		}
 
+		//XXX can't we pack this in the "else" part of the if above?
 		if (!CheckStationSpreadOut(st, tile_org, w_org, h_org))
 			return CMD_ERROR;
 
