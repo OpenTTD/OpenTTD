@@ -67,8 +67,6 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	Packet *p;
 
 	byte active = 0;
-	byte current = 0;
-
 
 	FOR_ALL_PLAYERS(player) {
 		if (player->is_active)
@@ -91,13 +89,11 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		if (!player->is_active)
 			continue;
 
-		current++;
-
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 		NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
 		NetworkSend_uint8 (p, active);
-		NetworkSend_uint8 (p, current);
+		NetworkSend_uint8 (p, player->index);
 
 		NetworkSend_string(p, _network_player_info[player->index].company_name);
 		NetworkSend_uint8 (p, _network_player_info[player->index].inaugurated_year);
@@ -119,6 +115,13 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		NetworkSend_Packet(p, cs);
 	}
+
+	p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
+
+	NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
+	NetworkSend_uint8 (p, 0);
+
+	NetworkSend_Packet(p, cs);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, NetworkErrorCode error)

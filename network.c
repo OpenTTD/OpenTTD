@@ -762,6 +762,7 @@ static void NetworkInitialize(void)
 	// Clean the client_info memory
 	memset(_network_client_info, 0, sizeof(_network_client_info));
 	memset(_network_player_info, 0, sizeof(_network_player_info));
+	_network_lobby_company_count = 0;
 
 	_sync_frame = 0;
 	_network_first_time = true;

@@ -275,15 +275,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		byte current;
 
 		total = NetworkRecv_uint8(p);
-		_network_lobby_company_count = total;
 
 		// There is no data at all..
 		if (total == 0)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		current = NetworkRecv_uint8(p) - 1;
+		current = NetworkRecv_uint8(p);
 		if (current >= MAX_PLAYERS)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
+
+		_network_lobby_company_count++;
 
 		NetworkRecv_string(p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
 		_network_player_info[current].inaugurated_year = NetworkRecv_uint8(p);
@@ -300,11 +301,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		InvalidateWindow(WC_NETWORK_WINDOW, 0);
 
-		if (total == current + 1)
-			// This was the last one
-			return NETWORK_RECV_STATUS_CLOSE_QUERY;
-		else
-			return NETWORK_RECV_STATUS_OKAY;
+		return NETWORK_RECV_STATUS_OKAY;
 	}
 
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;

@@ -614,6 +614,21 @@ static void ShowNetworkStartServerWindow(void)
 	WP(w,querystr_d).buf = _edit_str_buf;
 }
 
+static byte NetworkLobbyFindCompanyIndex(byte pos)
+{
+	byte i;
+	/* Scroll through all _network_player_info and get the 'pos' item
+	    that is not empty */
+	for (i = 0; i < MAX_PLAYERS; i++) {
+		if (_network_player_info[i].company_name[0] != '\0') {
+			if (pos-- == 0)
+				return i;
+		}
+	}
+
+	return 0;
+}
+
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -638,10 +653,11 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(11, 41, 139, 165, 0xD7);
 		pos = w->vscroll.pos;
 		while (pos < _network_lobby_company_count) {
-			if (_selected_company_item == pos)
+			byte index = NetworkLobbyFindCompanyIndex(pos);
+			if (_selected_company_item == index)
 				GfxFillRect(11, y - 1, 139, y + 10, 155); // show highlighted item with a different colour
 
-			DoDrawString(_network_player_info[pos].company_name, 13, y, 2);
+			DoDrawString(_network_player_info[index].company_name, 13, y, 2);
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW_COMPANY;
@@ -727,6 +743,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 				return;
 			}
+
+			_selected_company_item = NetworkLobbyFindCompanyIndex(_selected_company_item);
 
 			SetWindowDirty(w);
 			break;
