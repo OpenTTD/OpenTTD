@@ -377,6 +377,17 @@ int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+// Determine if an engine type is a wagon (and not a loco)
+bool isWagon(byte index)
+{
+	if (index < NUM_TRAIN_ENGINES) {
+		const RailVehicleInfo *rvi = &_rail_vehicle_info[index];
+		if(rvi->flags & RVI_WAGON)
+			return true;
+	}
+	return false;
+}
+
 void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
@@ -410,11 +421,8 @@ void NewVehicleAvailable(Engine *e)
 	e->player_avail = (byte)-1;
 
 	// Do not introduce new rail wagons
-	if ((byte)index < NUM_TRAIN_ENGINES) {
-		const RailVehicleInfo *rvi = &_rail_vehicle_info[index];
-		if(rvi->flags & RVI_WAGON)
-			return;
-	}
+	if(isWagon(index))
+		return;
 
 	// make maglev / monorail available
 	FOR_ALL_PLAYERS(p) {
@@ -451,7 +459,10 @@ void EnginesMonthlyLoop()
 			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_INTRODUCING)) && _date >= e->intro_date) {
 				// Introduction date has passed.. show introducing dialog to one player.
 				e->flags |= ENGINE_INTRODUCING;
-				e->preview_player = 1; // Give to the player with the highest rating.
+
+				// Do not introduce new rail wagons
+				if(!isWagon(e - _engines))
+					e->preview_player = 1; // Give to the player with the highest rating.
 			}
 		}
 	}
