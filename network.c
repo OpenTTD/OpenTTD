@@ -313,11 +313,11 @@ static void NetworkHandleConnectionLost()
 
 static void NetworkHandleDeSync()
 {
-	DEBUG(net, 0) ("[NET] Fatal ERROR: network sync error at frame %i", _frame_counter);
+	DEBUG(net, 0) ("NET: error: network sync error at frame %i", _frame_counter);
 	{
 		int i;
-		for (i=15; i>=0; i--) DEBUG(net,0) ("[NET] frame %i: [0]=%i, [1]=%i",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
-		for (i=0; i<8; i++) DEBUG(net,0) ("[NET] frame %i: [0]=%i, [1]=%i",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
+		for (i=15; i>=0; i--) DEBUG(net,0) ("NET frame %i: [0]=%i, [1]=%i",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
+		for (i=0; i<8; i++) DEBUG(net,0) ("NET frame %i: [0]=%i, [1]=%i",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
 	}
 	_networking_sync = false;
 	_networking_queuing = true;
@@ -446,7 +446,7 @@ static void SendDirectBytes(ClientState *cs, void *bytes, uint len)
 	n = send(cs->socket, buf, len, 0);
 	if (n == -1) {
 				int err = GET_LAST_ERROR();
-				DEBUG(net, 0) ("[NET] send() failed with error %d", err);
+				DEBUG(net, 0) ("NET: %i] send() failed with error %d", _frame_counter, err);
 				CloseClient(cs);
 			}
 }
@@ -543,7 +543,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	AckPacket ap;
 	uint16 cmd;
 
-	DEBUG(net, 2) ("[NET] cmd size %d", np->packet_length);
+	DEBUG(net, 2) ("NET: %i] cmd size %d", _frame_counter, np->packet_length);
 	assert(np->packet_length >= COMMAND_PACKET_BASE_SIZE);
 
 	cmd = np->cmd;
@@ -569,7 +569,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	ap.packet_type = PACKET_TYPE_ACK;
 	ap.when = GetNextSyncFrame();
 	ap.packet_length = sizeof(AckPacket);
-	DEBUG(net,4)("[NET] NewACK: frame=%i %i",ap.when,_frame_counter_max - GetNextSyncFrame());
+	DEBUG(net,4)("NET: %i] NewACK: frame=%i %i",_frame_counter, ap.when,_frame_counter_max - GetNextSyncFrame());
 
 	// send it to the peers
 	if (_networking_server) {
@@ -630,7 +630,7 @@ static void HandleSyncPacket(SyncPacket *sp)
 	s1 = TO_LE32(sp->random_seed_1);
 	s2 = TO_LE32(sp->random_seed_2);
 
-	DEBUG(net, 3) ("[NET] sync seeds: frame=%i 1=%i 2=%i",_frame_counter, sp->random_seed_1, sp->random_seed_2);
+	DEBUG(net, 3) ("NET: %i] sync seeds: 1=%i 2=%i",_frame_counter, sp->random_seed_1, sp->random_seed_2);
 
 	if (_frame_counter_srv <= _frame_counter) {
 		// we are ahead of the server check if the seed is in our list.
@@ -651,8 +651,8 @@ static void HandleSyncPacket(SyncPacket *sp)
 
 static void HandleFSyncPacket(FrameSyncPacket *fsp)
 {
-	DEBUG(net,3)("[NET] FSYNC: srv=%i %i",fsp->frames,(_frame_counter_max - fsp->frames));
-	if (fsp->frames < 4) return;
+	DEBUG(net,3)("NET: %i] FSYNC: srv=%i %i",_frame_counter, fsp->frames,(_frame_counter_max - fsp->frames));
+	if (fsp->frames < 1) return;
 	_frame_fsync_last = _frame_counter_srv = _frame_counter_max - fsp->frames;
 }
 
@@ -671,7 +671,7 @@ static void HandleAckPacket(AckPacket * ap)
 	*_command_queue.last = q;
 	_command_queue.last = &q->next;
 
-	DEBUG(net, 2) ("[NET] ack [frame=%i]",q->frame);
+	DEBUG(net, 2) ("NET %i] ack [frame=%i]",_frame_counter,q->frame);
 }
 
 static void HandleFilePacket(FilePacketHdr *fp)
@@ -736,6 +736,7 @@ static void HandleReadyPacket(ReadyPacket *rp, ClientState *cs)
 {
 	cs->ready=true;
 	cs->timeout=_network_client_timeout;
+	DEBUG(net,1) ("NET: %i] ready packet recv", _frame_counter);
 }
 
 
@@ -828,7 +829,7 @@ static bool ReadPackets(ClientState *cs)
 				HandleEventPacket((EventPacket*)packet);
 				break;
 			default:
-				DEBUG (net,0) ("net: unknown packet type");
+				DEBUG (net,0) ("NET: %i] unknown packet type",_frame_counter);
 			}
 		}
 
@@ -954,6 +955,8 @@ void NetworkSendReadyPacket()
 		ReadyPacket *rp	= malloc(sizeof(rp));
 		ClientState *c	= _clients;
 
+		DEBUG(net,1) ("NET: %i] ready packet sent", _frame_counter);
+
 		rp->packet_type = PACKET_TYPE_READY;
 		rp->packet_length = sizeof(rp);
 		SendBytes(c, rp, sizeof(rp));
@@ -969,7 +972,7 @@ void NetworkSendSyncPackets()
 
 	new_max = _frame_counter + (int)_network_sync_freq;
 
-	DEBUG(net,3) ("net: serv: sync frame=%i,max=%i, seed1=%i, seed2=%i",new_max,_sync_seed_1,_sync_seed_2);
+	DEBUG(net,3) ("NET: %i] serv: sync max=%i, seed1=%i, seed2=%i",_frame_counter,new_max,_sync_seed_1,_sync_seed_2);
 
 	sp.packet_length = sizeof(sp);
 	sp.packet_type = PACKET_TYPE_SYNC;
@@ -998,7 +1001,6 @@ void NetworkSendFrameSyncPackets()
 		fsp.packet_length = sizeof (FrameSyncPacket);
 		// send it to all the clients and mark them unready
 		for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-			cs->ready=false;
 			SendBytes(cs, &fsp, fsp.packet_length);
 		}
 		_frame_fsync_last = _frame_counter;
@@ -1049,7 +1051,7 @@ static void NetworkAcceptClients()
 		// set nonblocking mode for client socket
 		{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
 
-		DEBUG(net, 1) ("[NET] got client from %s", inet_ntoa(sin.sin_addr));
+		DEBUG(net, 1) ("NET: %i] got client from %s", _frame_counter, inet_ntoa(sin.sin_addr));
 
 		// set nodelay
 		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
@@ -1087,7 +1089,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	SyncPacket sp;
 	uint32 frame;
 
-	DEBUG(net, 2) ("[NET] sending queued commands to client");
+	DEBUG(net, 2) ("NET: %i] sending queued commands to client",_frame_counter);
 
 	sp.packet_length = sizeof(sp);
 	sp.packet_type = PACKET_TYPE_SYNC;
@@ -1097,7 +1099,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	frame = _frame_counter;
 
 	for(qp=_command_queue.head; qp; qp = qp->next) {
-		DEBUG(net, 4) ("[NET] sending cmd to be executed at %d (old %d)", qp->frame, frame);
+		DEBUG(net, 4) ("NET: %i] sending cmd to be executed at %d (old %d)", _frame_counter, qp->frame, frame);
 		if (qp->frame > frame) {
 			assert(qp->frame <= _frame_counter_max);
 			sp.frames = qp->frame - frame;
@@ -1108,7 +1110,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	}
 
 	if (frame < _frame_counter_max) {
-		DEBUG(net, 4) ("[NET] sending queued sync %d (%d)", _frame_counter_max, frame);
+		DEBUG(net, 4) ("NET: %i] sending queued sync %d (%d)",_frame_counter, _frame_counter_max, frame);
 		sp.frames = _frame_counter_max - frame;
 		SendBytes(cs, &sp, sizeof(sp));
 	}
