@@ -2320,7 +2320,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 
 		// invoke autorail
 		case 'A':
-			ShowBuildRailToolbar(_last_built_railtype, 0);
+			ShowBuildRailToolbar(_last_built_railtype, 4);
 			break;
 
 		case 'L': 
