@@ -19,7 +19,8 @@ void InitMap(uint log_x, uint log_y)
 {
 	uint map_size;
 
-	assert(log_x <= 15 && log_y <= 15);
+	if (log_x < 6 || log_x > 11 || log_y < 6 || log_y > 11)
+		error("Invalid map size");
 
 	DEBUG(map, 1)("Allocating map of size %dx%d", log_x, log_y);
 
