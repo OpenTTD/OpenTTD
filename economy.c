@@ -657,6 +657,7 @@ static void AddInflation(void)
 	}
 
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
+	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
 	InvalidateWindow(WC_PAYMENT_RATES, 0);
 }
