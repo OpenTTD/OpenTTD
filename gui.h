@@ -64,6 +64,7 @@ void PlaceProc_LevelLand(uint tile);
 void ShowTerraformToolbar(void);
 
 /* misc_gui.c */
+VARDEF Window *_editbox_win; // pointer to querystringwindow to prevent scrolling when focussed
 void PlaceLandBlockInfo(void);
 void ShowAboutWindow(void);
 void ShowBuildTreesToolbar(void);
@@ -86,13 +87,22 @@ void ShowExtraViewPortWindow(void);
 void SetVScrollCount(Window *w, int num);
 void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
-int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
 
 void ShowCheatWindow(void);
 void AskForNewGameToStart(void);
 
 void DrawEditBox(Window *w, int wid);
 void HandleEditBox(Window *w, int wid);
+int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
+bool HandleCaret(Textbuf *tb);
+
+bool DeleteTextBufferChar(Textbuf *tb, int delmode);
+bool InsertTextBufferChar(Textbuf *tb, byte key);
+bool InsertTextBufferClipboard(Textbuf *tb);
+bool MoveTextBufferPos(Textbuf *tb, int navmode);
+void UpdateTextBufferSize(Textbuf *tb);
+/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+static inline bool IsValidAsciiChar(byte key) {return IS_INT_INSIDE(key, ' ', 256);}
 
 void BuildFileList(void);
 void SetFiosType(const byte fiostype);

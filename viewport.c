@@ -1056,10 +1056,11 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 	sign->width_1 = w;
 	sign->left = left - (w >> 1);
 
+	// zoomed out version
 	_stringwidth_base = 0xE0;
-	w = GetStringWidth(buffer);
+	w = GetStringWidth(buffer) + 3;
 	_stringwidth_base = 0;
-	sign->width_2 = w + 1;
+	sign->width_2 = w;
 }
 
 

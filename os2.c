@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "window.h"
 #include "string.h"
 #include "table/strings.h"
 #include "hal.h"
@@ -529,7 +530,7 @@ int CDECL main(int argc, char* argv[])
 	return ttd_main(argc, argv);
 }
 
-void DeterminePaths()
+void DeterminePaths(void)
 {
 	char *s;
 
@@ -678,4 +679,4 @@ const HalMusicDriver _os2_music_driver = {
 	OS2MidiSetVolume,
 };
 
-
+bool InsertTextBufferClipboard(Textbuf *tb) {return false;}

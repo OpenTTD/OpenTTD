@@ -69,8 +69,10 @@ bool ChangeResInGame(int w, int h);
 void ToggleFullScreen(const bool full_screen);
 
 /* gfx.c */
+#define ASCII_LETTERSTART 32
 VARDEF int _stringwidth_base;
 VARDEF byte _stringwidth_table[0x2A0];
+static inline byte GetCharacterWidth(int key) { return _stringwidth_table[key - ASCII_LETTERSTART];}
 
 VARDEF DrawPixelInfo _screen;
 VARDEF DrawPixelInfo *_cur_dpi;

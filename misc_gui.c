@@ -16,11 +16,7 @@
 #include "town.h"
 #include "sound.h"
 #include "network.h"
-
-// Windows stuff for Clipboard
-#if defined(WIN32)
-#include <windows.h>
-#endif
+#include "string.h"
 
 #include "hal.h" // for file list
 
@@ -779,77 +775,140 @@ void SetHScrollCount(Window *w, int num)
 	if (num < w->hscroll.pos) w->hscroll.pos = num;
 }
 
-/* Get the count of characters in the string as well as the width in pixels
- * [IN]buf: string to be checked
- * [OUT]count: gets set to the count of characters
- * [OUT]width: gets set to the pixels width */
-static void GetCurrentStringSize(const char *buf, int *count, int *width)
+static void DelChar(Textbuf *tb)
 {
-	*count = 0;
-	*width = -1;
+	tb->width -= GetCharacterWidth(tb->buf[tb->caretpos]);
+	memmove(tb->buf + tb->caretpos, tb->buf + tb->caretpos + 1, tb->length - tb->caretpos);
+	tb->length--;
+}
 
-	do {
-		if (*++buf == 0)
-			break;
-		(*count)++;
-		(*width) += _stringwidth_table[(byte)*buf - 32];
-	} while (1);
+/**
+ * Delete a character from a textbuffer, either with 'Delete' or 'Backspace'
+ * The character is delete from the position the caret is at
+ * @param tb @Textbuf type to be changed
+ * @param delmode Type of deletion, either @WKC_BACKSPACE or @WKC_DELETE
+ * @return Return true on successfull change of Textbuf, or false otherwise
+ */
+bool DeleteTextBufferChar(Textbuf *tb, int delmode)
+{
+	if (delmode == WKC_BACKSPACE && tb->caretpos != 0) {
+		tb->caretpos--;
+		tb->caretxoffs -= GetCharacterWidth(tb->buf[tb->caretpos]);
+
+		DelChar(tb);
+		return true;
+	} else if (delmode == WKC_DELETE && tb->caretpos < tb->length) {
+		DelChar(tb);
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Insert a character to a textbuffer. If maxlength is zero, we don't care about
+ * the screenlength but only about the physical length of the string
+ * @param tb @Textbuf type to be changed
+ * @param key Character to be inserted
+ * @return Return true on successfull change of Textbuf, or false otherwise
+ */
+bool InsertTextBufferChar(Textbuf *tb, byte key)
+{
+	const byte charwidth = GetCharacterWidth(key);
+	if (tb->length < tb->maxlength && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
+		memmove(tb->buf + tb->caretpos + 1, tb->buf + tb->caretpos, tb->length - tb->caretpos);
+		tb->buf[tb->caretpos] = key;
+		tb->length++;
+		tb->width += charwidth;
+
+		tb->caretpos++;
+		tb->caretxoffs += charwidth;
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Handle text navigation with arrow keys left/right.
+ * This defines where the caret will blink and the next characer interaction will occur
+ * @param tb @Textbuf type where navigation occurs
+ * @param navmode Direction in which navigation occurs @WKC_LEFT, @WKC_RIGHT, @WKC_END, @WKC_HOME
+ * @return Return true on successfull change of Textbuf, or false otherwise
+ */
+bool MoveTextBufferPos(Textbuf *tb, int navmode)
+{
+	switch (navmode) {
+	case WKC_LEFT:
+		if (tb->caretpos != 0) {
+			tb->caretpos--;
+			tb->caretxoffs -= GetCharacterWidth(tb->buf[tb->caretpos]);
+			return true;
+		}
+		break;
+	case WKC_RIGHT:
+		if (tb->caretpos < tb->length) {
+			tb->caretxoffs += GetCharacterWidth(tb->buf[tb->caretpos]);
+			tb->caretpos++;
+			return true;
+		}
+		break;
+	case WKC_HOME:
+		tb->caretpos = 0;
+		tb->caretxoffs = 0;
+		return true;
+	case WKC_END:
+		tb->caretpos = tb->length;
+		tb->caretxoffs = tb->width;
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Update @Textbuf type with its actual physical character and screenlength
+ * Get the count of characters in the string as well as the width in pixels.
+ * Useful when copying in a larger amount of text at once
+ * @param tb @Textbuf type which length is calculated
+ */
+void UpdateTextBufferSize(Textbuf *tb)
+{
+	char *buf;
+	tb->length = 0;
+	tb->width = 0;
+
+	for (buf = tb->buf; *buf != '\0' && tb->length <= tb->maxlength; buf++) {
+		tb->length++;
+		tb->width += GetCharacterWidth((byte)*buf);
+	}
+
+	tb->caretpos = tb->length;
+	tb->caretxoffs = tb->width;
 }
 
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 {
-	int width,count;
-	int key = we->keypress.ascii;
-
 	we->keypress.cont = false;
 
-	if (we->keypress.keycode == WKC_ESC) {
-		return 2;
-	} else if (we->keypress.keycode == WKC_RETURN) {
-		return 1;
-#ifdef WIN32
-	} else if (we->keypress.keycode == (WKC_CTRL | 'V')) {
-		if (IsClipboardFormatAvailable(CF_TEXT)) {
-			const byte* data;
-			HGLOBAL cbuf;
-
-			OpenClipboard(NULL);
-			cbuf = GetClipboardData(CF_TEXT);
-			data = GlobalLock(cbuf); // clipboard data
-
-			GetCurrentStringSize(WP(w,querystr_d).buf - 1, &count, &width);
-
-			/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
-			for (; (IS_INT_INSIDE(*data, ' ', 256)) && // valid ASCII char
-					(count < WP(w,querystr_d).maxlen - 1 && // max charcount; always allow for terminating '\0'
-					width + _stringwidth_table[(int)(*data) - 32] <= WP(w,querystr_d).maxwidth); ++data) { // max screensize
-
-				// append data and update size parameters
-				WP(w,querystr_d).buf[count] = *data;
-				count++;
-				width += _stringwidth_table[*data - 32];
-			}
-			WP(w,querystr_d).buf[count + 1] = '\0';
-
-			GlobalUnlock(cbuf);
-			CloseClipboard();
+	switch (we->keypress.keycode) {
+	case WKC_ESC: return 2;
+	case WKC_RETURN: case WKC_NUM_ENTER: return 1;
+	case (WKC_CTRL | 'V'):
+		if (InsertTextBufferClipboard(&WP(w, querystr_d).text))
 			InvalidateWidget(w, wid);
-		}
-#endif
-	} else {
-		GetCurrentStringSize(WP(w,querystr_d).buf - 1, &count, &width);
-
-		if (we->keypress.keycode == WKC_BACKSPACE) {
-			if (count != 0) {
-				WP(w,querystr_d).buf[count-1] = 0;
+		break;
+	case WKC_BACKSPACE: case WKC_DELETE:
+		if (DeleteTextBufferChar(&WP(w, querystr_d).text, we->keypress.keycode))
+			InvalidateWidget(w, wid);
+		break;
+	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+		if (MoveTextBufferPos(&WP(w, querystr_d).text, we->keypress.keycode))
+			InvalidateWidget(w, wid);
+  	break;
+	default:
+		if (IsValidAsciiChar(we->keypress.ascii)) {
+			if (InsertTextBufferChar(&WP(w, querystr_d).text, we->keypress.ascii))
 				InvalidateWidget(w, wid);
-			}
-		} else if (IS_INT_INSIDE((key = we->keypress.ascii), 32, 256)) {
-			if (count < WP(w,querystr_d).maxlen && width + _stringwidth_table[key - 32] <= WP(w,querystr_d).maxwidth) {
-				WP(w,querystr_d).buf[count] = key;
-				WP(w,querystr_d).buf[count + 1] = '\0';
-				InvalidateWidget(w, wid);
-			}
 		} else // key wasn't caught
 			we->keypress.cont = true;
 	}
@@ -857,42 +916,45 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 	return 0;
 }
 
+bool HandleCaret(Textbuf *tb)
+{
+	/* caret changed? */
+	bool b = !!(_caret_timer & 0x20);
+
+	if (b != tb->caret) {
+		tb->caret = b;
+		return true;
+	}
+	return false;
+}
+
 void HandleEditBox(Window *w, int wid)
 {
-	bool b;
-
-	/* caret changed? */
-	b = !!(_caret_timer & 0x20);
-	if (b != WP(w,querystr_d).caret) {
-		WP(w,querystr_d).caret = b;
+	if (HandleCaret(&WP(w, querystr_d).text))
 		InvalidateWidget(w, wid);
-	}
 }
 
 void DrawEditBox(Window *w, int wid)
 {
 	const Widget *wi = w->widget + wid;
-	int x;
+	const Textbuf *tb = &WP(w,querystr_d).text;
 
 	GfxFillRect(wi->left+1, wi->top+1, wi->right-1, wi->bottom-1, 215);
-	x = DoDrawString(WP(w,querystr_d).buf, wi->left+2, wi->top+1, 8);
-	if (WP(w,querystr_d).caret)
-		DoDrawString("_", x, wi->top+1, 12);
+	DoDrawString(tb->buf, wi->left+2, wi->top+1, 8);
+	if (tb->caret)
+		DoDrawString("_", wi->left + 2 + tb->caretxoffs, wi->top + 1, 12);
 }
-
 
 static void QueryStringWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
 	switch(e->event) {
-	case WE_PAINT: {
-//		int x;
-
+	case WE_PAINT:
 		SetDParam(0, WP(w,querystr_d).caption);
 		DrawWindowWidgets(w);
 
 		DrawEditBox(w, 5);
-	} break;
+		break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
@@ -900,10 +962,10 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case 4:
 press_ok:;
 			if (WP(w, querystr_d).orig != NULL &&
-					strcmp(WP(w, querystr_d).buf, WP(w, querystr_d).orig) == 0) {
+					strcmp(WP(w, querystr_d).text.buf, WP(w, querystr_d).orig) == 0) {
 				DeleteWindow(w);
 			} else {
-				char *buf = WP(w,querystr_d).buf;
+				char *buf = WP(w,querystr_d).text.buf;
 				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
 				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
 				Window *parent;
@@ -945,6 +1007,7 @@ press_ok:;
 
 	case WE_CREATE:
 		closed = false;
+		_editbox_win = w;
 		break;
 
 	case WE_DESTROY:
@@ -958,6 +1021,7 @@ press_ok:;
 			}
 		}
 		_query_string_active = false;
+		_editbox_win = NULL;
 		break;
 	}
 }
@@ -986,8 +1050,9 @@ static char _orig_str_buf[lengthof(_edit_str_buf)];
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number)
 {
 	Window *w;
+	uint realmaxlen = maxlen & ~0x1000;
 
-	assert(maxlen < lengthof(_edit_str_buf));
+	assert(realmaxlen < lengthof(_edit_str_buf));
 
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
@@ -995,24 +1060,24 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	w = AllocateWindowDesc(&_query_string_desc);
 
 	GetString(_edit_str_buf, str);
-	_edit_str_buf[maxlen] = '\0';
+	_edit_str_buf[realmaxlen] = '\0';
 
 	if (maxlen & 0x1000) {
 		WP(w, querystr_d).orig = NULL;
-		maxlen &= ~0x1000;
 	} else {
 		strcpy(_orig_str_buf, _edit_str_buf);
 		WP(w, querystr_d).orig = _orig_str_buf;
 	}
 
 	w->click_state = 1 << 5;
-	WP(w,querystr_d).caption = caption;
-	WP(w,querystr_d).wnd_class = window_class;
-	WP(w,querystr_d).wnd_num = window_number;
-	WP(w,querystr_d).caret = 0;
-	WP(w,querystr_d).maxlen = maxlen;
-	WP(w,querystr_d).maxwidth = maxwidth;
-	WP(w,querystr_d).buf = _edit_str_buf;
+	WP(w, querystr_d).caption = caption;
+	WP(w, querystr_d).wnd_class = window_class;
+	WP(w, querystr_d).wnd_num = window_number;
+	WP(w, querystr_d).text.caret = false;
+	WP(w, querystr_d).text.maxlength = realmaxlen - 1;
+	WP(w, querystr_d).text.maxwidth = maxwidth;
+	WP(w, querystr_d).text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, querystr_d).text);
 
 	_query_string_active = true;
 }
@@ -1220,7 +1285,8 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					DeleteWindow(w);
 				} else {
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
-					strcpy(WP(w,querystr_d).buf, file->title[0] ? file->title : file->name);
+					ttd_strlcpy(WP(w, querystr_d).text.buf, (file->title[0] != '\0') ? file->title : file->name, WP(w, querystr_d).text.maxlength);
+					UpdateTextBufferSize(&WP(w, querystr_d).text);
 					InvalidateWidget(w, 9);
 				}
 			} else {
@@ -1246,14 +1312,14 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_TIMEOUT:
 		if (HASBIT(w->click_state, 10)) { /* Delete button clicked */
-			FiosDelete(WP(w,querystr_d).buf);
+			FiosDelete(WP(w,querystr_d).text.buf);
 			SetWindowDirty(w);
 			BuildFileList();
 			if (_saveload_mode == SLD_SAVE_GAME)
 				GenerateFileName(); /* Reset file name to current date */
 		} else if (HASBIT(w->click_state, 11)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
-			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).buf);
+			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf);
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */
 			if (_game_mode == GM_EDITOR) StartupEngines();
@@ -1339,17 +1405,17 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.step_width = 2;
 	w->resize.step_height = 10;
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
-	w->click_state |= (1 << 6);
-	WP(w,querystr_d).caret = 0;
-	WP(w,querystr_d).maxlen = lengthof(_edit_str_buf);
-	WP(w,querystr_d).maxwidth = 240;
-	WP(w,querystr_d).buf = _edit_str_buf;
+	SETBIT(w->click_state, 6);
+	WP(w,querystr_d).text.caret = false;
+	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf) - 1;
+	WP(w,querystr_d).text.maxwidth = 240;
+	WP(w,querystr_d).text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, querystr_d).text);
 
 	if (mode == SLD_SAVE_GAME) {
 		GenerateFileName();
-	} else if (mode == SLD_SAVE_SCENARIO) {
+	} else if (mode == SLD_SAVE_SCENARIO)
 		strcpy(_edit_str_buf, "UNNAMED");
-	}
 
 	// pause is only used in single-player, non-editor mode, non-menu mode. It
 	// will be unpaused in the WE_DESTROY event handler.

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "window.h"
 #include "string.h"
 #include "table/strings.h"
 #include "hal.h"
@@ -525,3 +526,4 @@ void DeterminePaths(void)
 	mkdir(_path.scenario_dir, 0755);
 }
 
+bool InsertTextBufferClipboard(Textbuf *tb) {return false;}

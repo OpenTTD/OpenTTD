@@ -244,8 +244,6 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 
 
 enum {
-	ASCII_LETTERSTART = 32,
-
 	ASCII_SETX = 1,
 	ASCII_SETXY = 2,
 
@@ -309,10 +307,10 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 
 		for(;;) {
 			c = *str++;
-			if (c == ' ') last_space = str;
+			if (c == ASCII_LETTERSTART) last_space = str;
 
 			if (c >= ASCII_LETTERSTART) {
-				w += _stringwidth_table[base + ((byte)c) - 0x20];
+				w += GetCharacterWidth(base + (byte)c);
 				if (w > maxw) {
 					str = last_space;
 					if (str == NULL)
@@ -428,16 +426,12 @@ void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
 
 int GetStringWidth(const char *str)
 {
-	int w = -1;
+	int w = 0;
 	byte c;
 	int base = _stringwidth_base;
-
-	for(;;) {
-		c = *str++;
-		if (c == 0)
-			return w;
+	for (c = *str; c != '\0'; c = *(++str)) {
 		if (c >= ASCII_LETTERSTART) {
-			w += _stringwidth_table[base + c - ASCII_LETTERSTART];
+			w += GetCharacterWidth(base + c);
 		} else {
 			if (c == ASCII_SETX) str++;
 			else if (c == ASCII_SETXY) str += 2;
@@ -445,6 +439,7 @@ int GetStringWidth(const char *str)
 			else if (c == ASCII_BIGFONT) base = 448;
 		}
 	}
+	return w;
 }
 
 void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags) {
@@ -531,7 +526,7 @@ skip_cont:;
 			if (x + 26 >= dpi->left) {
 				GfxMainBlitter(GetSprite(base + 2 + c - ASCII_LETTERSTART), x, y, 1);
 			}
-			x += _stringwidth_table[base + c - ' '];
+			x += GetCharacterWidth(base + c);
 		} else if (c == ASCII_NL) { // newline = {}
 			x = xo;
 			y += 10;

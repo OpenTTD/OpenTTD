@@ -6,6 +6,7 @@
 #include "gfx.h"
 #include "sound.h"
 #include "window.h"
+#include "gui.h"
 #include <windows.h>
 #include <mmsystem.h>
 #include "hal.h"
@@ -2061,7 +2062,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPTSTR lpCmdLin
 	return 0;
 }
 
-void DeterminePaths()
+void DeterminePaths(void)
 {
 	char *s;
 	char *cfg;
@@ -2107,4 +2108,49 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 	ret = _vsnprintf(str, size, format, ap);
 	if (ret < 0) str[size - 1] = '\0';
 	return ret;
+}
+
+/**
+ * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
+ * and append this up to the maximum length (either absolute or screenlength). If maxlength
+ * is zero, we don't care about the screenlength but only about the physical length of the string
+ * @param tb @Textbuf type to be changed
+ * @return Return true on successfull change of Textbuf, or false otherwise
+ */
+bool InsertTextBufferClipboard(Textbuf *tb)
+{
+	if (IsClipboardFormatAvailable(CF_TEXT)) {
+		HGLOBAL cbuf;
+		const byte *data, *dataptr;
+		uint16 width = 0;
+		uint16 length = 0;
+
+		OpenClipboard(NULL);
+		cbuf = GetClipboardData(CF_TEXT);
+		data = GlobalLock(cbuf); // clipboard data
+		dataptr = data;
+
+		for (; IsValidAsciiChar(*dataptr) && (tb->length + length) < tb->maxlength - 1 &&
+				(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth((byte)*dataptr) <= tb->maxwidth); dataptr++) {
+					width += GetCharacterWidth((byte)*dataptr);
+			length++;
+		}
+
+		if (length == 0)
+			return false;
+
+		memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
+		memcpy(tb->buf + tb->caretpos, data, length);
+		tb->width += width;
+		tb->caretxoffs += width;
+
+		tb->length += length;
+		tb->caretpos += length;
+		tb->buf[tb->length + 1] = '\0'; // terminating zero
+
+		GlobalUnlock(cbuf);
+		CloseClipboard();
+		return true;
+	}
+	return false;
 }

@@ -222,13 +222,20 @@ enum {
 	WDP_CENTER = -2,
 };
 
+typedef struct Textbuf {
+	char *buf;                  /* buffer in which text is saved */
+	uint16 maxlength, maxwidth; /* the maximum size of the buffer. Maxwidth specifies screensize in pixels */
+	uint16 length, width;       /* the current size of the buffer. Width specifies screensize in pixels */
+	bool caret;                 /* is the caret ("_") visible or not */
+	uint16 caretpos;            /* the current position of the caret in the buffer */
+	uint16 caretxoffs;          /* the current position of the caret in pixels */
+} Textbuf;
+
 typedef struct {
 	StringID caption;
-	bool caret;
 	WindowClass wnd_class;
 	WindowNumber wnd_num;
-	uint16 maxlen, maxwidth;
-	char *buf;
+	Textbuf text;
 	const char* orig;
 } querystr_d;
 

@@ -539,7 +539,7 @@ static void GetNewsString(NewsItem *ni, char *buffer, uint max)
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
 		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
-			len += _stringwidth_table[(byte)*s - 32];
+			len += GetCharacterWidth((byte)*s);
 			*d++ = *s;
 		}
 	}

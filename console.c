@@ -6,6 +6,7 @@
 #include "gfx.h"
 #include "player.h"
 #include "variables.h"
+#include "string.h"
 #include "hal.h"
 #include <stdarg.h>
 #include <string.h>
@@ -13,10 +14,6 @@
 #include "network.h"
 #include "network_data.h"
 #include "network_server.h"
-
-#ifdef WIN32
-#include <windows.h>
-#endif
 
 #define ICON_BUFFER 79
 #define ICON_CMDBUF_SIZE 20
@@ -30,8 +27,7 @@
 static bool _iconsole_inited;
 static char* _iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
-static char _iconsole_cmdline[ICON_CMDLN_SIZE];
-static byte _iconsole_cmdpos;
+static Textbuf _iconsole_cmdline;
 static byte _iconsole_scroll;
 
 // ** console cursor ** //
@@ -48,56 +44,25 @@ FILE* _iconsole_output_file;
 static char* _iconsole_cmdbuffer[ICON_CMDBUF_SIZE];
 static byte _iconsole_cmdbufferpos;
 
-// ** console window ** //
-static void IConsoleWndProc(Window* w, WindowEvent* e);
-static const Widget _iconsole_window_widgets[] = {
-	{WIDGETS_END}
-};
-static const WindowDesc _iconsole_window_desc = {
-	0, 0, 2, 2,
-	WC_CONSOLE, 0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_iconsole_window_widgets,
-	IConsoleWndProc,
-};
-
 /* *************** */
 /*  end of header  */
 /* *************** */
 
-static void IConsoleAppendClipboard(void)
-{
-#ifdef WIN32
-	if (IsClipboardFormatAvailable(CF_TEXT)) {
-		const char* data;
-		HGLOBAL cbuf;
-
-		OpenClipboard(NULL);
-		cbuf = GetClipboardData(CF_TEXT);
-		data = GlobalLock(cbuf);
-
-		/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
-		for (; (IS_INT_INSIDE(*data, ' ', 256)) && (_iconsole_cmdpos < lengthof(_iconsole_cmdline) - 1); ++data)
-			_iconsole_cmdline[_iconsole_cmdpos++] = *data;
-
-		GlobalUnlock(cbuf);
-		CloseClipboard();
-	}
-#endif
-}
-
 static void IConsoleClearCommand(void)
 {
-	memset(_iconsole_cmdline, 0, sizeof(_iconsole_cmdline));
-	_iconsole_cmdpos = 0;
+	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
+	_iconsole_cmdline.length = 0;
+	_iconsole_cmdline.width = 0;
+	_iconsole_cmdline.caretpos = 0;
+	_iconsole_cmdline.caretxoffs = 0;
 	SetWindowDirty(_iconsole_win);
 }
 
+// ** console window ** //
 static void IConsoleWndProc(Window* w, WindowEvent* e)
 {
 	switch(e->event) {
-		case WE_PAINT:
-		{
+		case WE_PAINT: {
 			int i = _iconsole_scroll;
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
 			int delta = 0;
@@ -107,47 +72,30 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					w->height - (_iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
 				i--;
 			}
-			delta = w->width - 10 - GetStringWidth(_iconsole_cmdline) - ICON_RIGHT_BORDERWIDTH;
+			/* If the text is longer than the window, don't show the starting ']' */
+			delta = w->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 			if (delta > 0) {
 				DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
 				delta = 0;
 			}
 
-			DoDrawString(_iconsole_cmdline, 10 + delta, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+			DoDrawString(_iconsole_cmdline.buf, 10 + delta, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+
+			if (_iconsole_cmdline.caret)
+				DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, w->height - ICON_LINE_HEIGHT, 12);
 			break;
 		}
-		case WE_TICK:
-			_icursor_counter++;
-			if (_icursor_counter > _icursor_rate) {
-				int posx;
-				int posy;
-				int delta;
-
-				_icursor_state = !_icursor_state;
-
-				_cur_dpi = &_screen;
-				delta = w->width - 10 - GetStringWidth(_iconsole_cmdline) - ICON_RIGHT_BORDERWIDTH;
-				if (delta > 0)
-					delta = 0;
-				posx = 10 + GetStringWidth(_iconsole_cmdline) + delta;
-				posy = w->height - 3;
-				GfxFillRect(posx, posy, posx + 5, posy + 1, _icursor_state ? 14 : 0);
-				_video_driver->make_dirty(posx, posy, 5, 1);
-				_icursor_counter = 0;
-			}
+		case WE_MOUSELOOP:
+			if (HandleCaret(&_iconsole_cmdline))
+				SetWindowDirty(w);
 			break;
 		case WE_DESTROY:
 			_iconsole_win = NULL;
 			_iconsole_mode = ICONSOLE_CLOSED;
 			break;
 		case WE_KEYPRESS:
-		{
 			e->keypress.cont = false;
 			switch (e->keypress.keycode) {
-				case WKC_CTRL | 'V':
-					IConsoleAppendClipboard();
-					SetWindowDirty(w);
-					break;
 				case WKC_UP:
 					IConsoleCmdBufferNavigate(+1);
 					SetWindowDirty(w);
@@ -187,46 +135,56 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 				case WKC_BACKQUOTE:
 					IConsoleSwitch();
 					break;
-				case WKC_RETURN:
-					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline);
-					_iconsole_cmdbufferpos = 19;
-					IConsoleCmdBufferAdd(_iconsole_cmdline);
+				case WKC_RETURN: case WKC_NUM_ENTER:
+					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline.buf);
+					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+					IConsoleCmdBufferAdd(_iconsole_cmdline.buf);
 
-					IConsoleCmdExec(_iconsole_cmdline);
+					IConsoleCmdExec(_iconsole_cmdline.buf);
 					IConsoleClearCommand();
 					break;
 				case WKC_CTRL | WKC_RETURN:
-					if (_iconsole_mode == ICONSOLE_FULL) {
-						_iconsole_mode = ICONSOLE_OPENED;
-					} else {
-						_iconsole_mode = ICONSOLE_FULL;
-					}
+					_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
 					IConsoleResize();
 					MarkWholeScreenDirty();
 					break;
-				case WKC_BACKSPACE:
-					if (_iconsole_cmdpos != 0) _iconsole_cmdpos--;
-					_iconsole_cmdline[_iconsole_cmdpos] = 0;
-					SetWindowDirty(w);
-					_iconsole_cmdbufferpos = 19;
+				case (WKC_CTRL | 'V'):
+					if (InsertTextBufferClipboard(&_iconsole_cmdline))
+						SetWindowDirty(w);
+					break;
+				case WKC_BACKSPACE: case WKC_DELETE:
+					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode))
+						SetWindowDirty(w);
+					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+					break;
+				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode))
+						SetWindowDirty(w);
 					break;
 				default:
-					/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
-					if (IS_INT_INSIDE(e->keypress.ascii, ' ', 256)) {
+					if (IsValidAsciiChar(e->keypress.ascii)) {
 						_iconsole_scroll = ICON_BUFFER;
-						_iconsole_cmdline[_iconsole_cmdpos] = e->keypress.ascii;
-						if (_iconsole_cmdpos != lengthof(_iconsole_cmdline))
-							_iconsole_cmdpos++;
-						SetWindowDirty(w);
+						InsertTextBufferChar(&_iconsole_cmdline, e->keypress.ascii);
 						_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
-					}
-					else
+						SetWindowDirty(w);
+					} else
 						e->keypress.cont = true;
-			}
 			break;
 		}
 	}
 }
+
+static const Widget _iconsole_window_widgets[] = {
+	{WIDGETS_END}
+};
+
+static const WindowDesc _iconsole_window_desc = {
+	0, 0, 2, 2,
+	WC_CONSOLE, 0,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_iconsole_window_widgets,
+	IConsoleWndProc,
+};
 
 extern const char _openttd_revision[];
 
@@ -254,6 +212,8 @@ void IConsoleInit(void)
 	memset(_iconsole_cmdbuffer, 0, sizeof(_iconsole_cmdbuffer));
 	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
 	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
+	_iconsole_cmdline.buf = calloc(ICON_CMDLN_SIZE, sizeof(*_iconsole_cmdline.buf)); // create buffer and zero it
+	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE - 1;
 
 	IConsoleStdLibRegister();
 	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
@@ -269,6 +229,8 @@ void IConsoleClear(void)
 	uint i;
 	for (i = 0; i <= ICON_BUFFER; i++)
 		free(_iconsole_buffer[i]);
+
+	free(_iconsole_cmdline.buf);
 }
 
 static void IConsoleWriteToLogFile(const char* string)
@@ -357,9 +319,9 @@ void IConsoleOpen(void)
 void IConsoleCmdBufferAdd(const char* cmd)
 {
 	int i;
-	if (_iconsole_cmdbufferpos != 19) return;
-	free(_iconsole_cmdbuffer[18]);
-	for (i = 18; i > 0; i--) _iconsole_cmdbuffer[i] = _iconsole_cmdbuffer[i - 1];
+	if (_iconsole_cmdbufferpos != (ICON_CMDBUF_SIZE - 1)) return;
+	free(_iconsole_cmdbuffer[ICON_CMDBUF_SIZE - 2]);
+	for (i = (ICON_CMDBUF_SIZE - 2); i > 0; i--) _iconsole_cmdbuffer[i] = _iconsole_cmdbuffer[i - 1];
 	_iconsole_cmdbuffer[0] = strdup(cmd);
 }
 
@@ -367,23 +329,22 @@ void IConsoleCmdBufferNavigate(signed char direction)
 {
 	int i;
 	i = _iconsole_cmdbufferpos + direction;
-	if (i < 0) i = 19;
-	if (i > 19) i = 0;
+	if (i < 0) i = ICON_CMDBUF_SIZE - 1;
+	if (i >= ICON_CMDBUF_SIZE) i = 0;
 	if (direction > 0)
 		while (_iconsole_cmdbuffer[i] == NULL) {
-			++i;
-			if (i > 19) i = 0;
+			i++;
+			if (i >= ICON_CMDBUF_SIZE) i = 0;
 		}
 	if (direction < 0)
 		while (_iconsole_cmdbuffer[i] == NULL) {
 			--i;
-			if (i < 0) i = 19;
+			if (i < 0) i = ICON_CMDBUF_SIZE - 1;
 		}
 	_iconsole_cmdbufferpos = i;
 	IConsoleClearCommand();
-	memcpy(_iconsole_cmdline, _iconsole_cmdbuffer[i],
-		strlen(_iconsole_cmdbuffer[i]));
-	_iconsole_cmdpos = strlen(_iconsole_cmdbuffer[i]);
+	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_cmdbuffer[i], _iconsole_cmdline.maxlength);
+	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 
 void IConsolePrint(uint16 color_code, const char* string)

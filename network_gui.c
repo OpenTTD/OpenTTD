@@ -449,10 +449,11 @@ void ShowNetworkGameWindow(void)
 	ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
 	w->vscroll.cap = 8;
 
-	WP(w,querystr_d).caret = 1;
-	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
-	WP(w,querystr_d).maxwidth = 120;
-	WP(w,querystr_d).buf = _edit_str_buf;
+	WP(w, querystr_d).text.caret = true;
+	WP(w, querystr_d).text.maxlength = MAX_QUERYSTR_LEN - 1;
+	WP(w, querystr_d).text.maxwidth = 120;
+	WP(w, querystr_d).text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, querystr_d).text);
 
 	UpdateNetworkGameWindow(true);
 }
@@ -553,7 +554,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			return;
 		case 13: /* Start game */
 			_is_network_server = true;
-			ttd_strlcpy(_network_server_name, WP(w,querystr_d).buf, sizeof(_network_server_name));
+			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
+			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			if(selected_map==NULL) { // start random new game
 				DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
 			} else { // load a scenario
@@ -569,7 +571,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 14: /* Load game */
 			_is_network_server = true;
-			ttd_strlcpy(_network_server_name, WP(w,querystr_d).buf, sizeof(_network_server_name));
+			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
+			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			snprintf(_network_game_info.map_name, sizeof(_network_game_info.map_name), "Loaded game");
 			/* XXX - WC_NETWORK_WINDOW should stay, but if it stays, it gets
 			 * copied all the elements of 'load game' and upon closing that, it segfaults */
@@ -670,10 +673,11 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.cap = 9;
 	w->vscroll.count = _fios_num+1;
 
-	WP(w,querystr_d).caret = 1;
-	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
-	WP(w,querystr_d).maxwidth = 160;
-	WP(w,querystr_d).buf = _edit_str_buf;
+	WP(w, querystr_d).text.caret = true;
+	WP(w, querystr_d).text.maxlength = MAX_QUERYSTR_LEN - 1;
+	WP(w, querystr_d).text.maxwidth = 160;
+	WP(w, querystr_d).text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
 
 static byte NetworkLobbyFindCompanyIndex(byte pos)
@@ -1371,12 +1375,12 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break; // Cancel
 		case 2: // Send
 press_ok:;
-			if (strcmp(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) == 0) {
+			if (strcmp(WP(w, querystr_d).text.buf, WP(w, querystr_d).text.buf + MAX_QUERYSTR_LEN) == 0) {
 				DeleteWindow(w);
 			} else {
-				char *buf = WP(w,querystr_d).buf;
-				WindowClass wnd_class = WP(w,querystr_d).wnd_class;
-				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
+				char *buf = WP(w, querystr_d).text.buf;
+				WindowClass wnd_class = WP(w, querystr_d).wnd_class;
+				WindowNumber wnd_num = WP(w, querystr_d).wnd_num;
 				Window *parent;
 
 				// Mask the edit-box as closed, so we don't send out a CANCEL
@@ -1458,7 +1462,7 @@ void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, by
 
 	GetString(_orig_edit_str_buf, str);
 
-	_orig_edit_str_buf[maxlen] = 0;
+	_orig_edit_str_buf[maxlen] = '\0';
 
 	memcpy(_edit_str_buf, _orig_edit_str_buf, MAX_QUERYSTR_LEN);
 
@@ -1468,10 +1472,11 @@ void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, by
 	WP(w,querystr_d).caption = caption;
 	WP(w,querystr_d).wnd_class = window_class;
 	WP(w,querystr_d).wnd_num = window_number;
-	WP(w,querystr_d).caret = 0;
-	WP(w,querystr_d).maxlen = maxlen;
-	WP(w,querystr_d).maxwidth = maxwidth;
-	WP(w,querystr_d).buf = _edit_str_buf;
+	WP(w,querystr_d).text.caret = false;
+	WP(w,querystr_d).text.maxlength = maxlen - 1;
+	WP(w,querystr_d).text.maxwidth = maxwidth;
+	WP(w,querystr_d).text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
 
 #else

@@ -2252,7 +2252,7 @@ static const int8 scrollamt[16][2] = {
 
 void HandleKeyScrolling(void)
 {
-	if (_dirkeys && _iconsole_win == NULL) {
+	if (_dirkeys && _iconsole_win == NULL && _editbox_win == NULL) {
 		int factor = _shift_pressed ? 50 : 10;
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
 	}
