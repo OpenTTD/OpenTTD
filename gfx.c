@@ -5,7 +5,7 @@
 #include "table/palettes.h"
 #include "hal.h"
 
-static void GfxMainBlitter(byte *sprite, int x, int y, int mode);
+static void GfxMainBlitter(Sprite *sprite, int x, int y, int mode);
 
 static int _stringwidth_out;
 static byte _cursor_backup[64*64];
@@ -1312,7 +1312,7 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 
 typedef void (*BlitZoomFunc)(BlitterParams *bp);
 
-static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
+static void GfxMainBlitter(Sprite *sprite, int x, int y, int mode)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	int start_x, start_y;
@@ -1334,13 +1334,13 @@ static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
 	};
 
 	/* decode sprite header */
-	x += (int16)READ_LE_UINT16(&((SpriteHdr*)sprite)->x_offs);
-	y += (int16)READ_LE_UINT16(&((SpriteHdr*)sprite)->y_offs);
-	bp.width_org = bp.width = READ_LE_UINT16(&((SpriteHdr*)sprite)->width);
-	bp.height_org = bp.height = ((SpriteHdr*)sprite)->height;
-	info = ((SpriteHdr*)sprite)->info;
+	x += (int16)TO_LE16(sprite->x_offs);
+	y += (int16)TO_LE16(sprite->y_offs);
+	bp.width_org = bp.width = TO_LE16(sprite->width);
+	bp.height_org = bp.height = sprite->height;
+	info = sprite->info;
 	bp.info = info;
-	bp.sprite_org = bp.sprite = sprite + sizeof(SpriteHdr);
+	bp.sprite_org = bp.sprite = sprite->data;
 	bp.dst = dpi->dst_ptr;
 	bp.mode = mode;
 	bp.pitch = dpi->pitch;
@@ -1905,17 +1905,17 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 static void SetCursorSprite(uint cursor)
 {
 	CursorVars *cv = &_cursor;
-	byte *p;
+	const Sprite *p;
 
 	if (cv->sprite == cursor)
 		return;
 
 	p =	GetSpritePtr(cursor & 0x3FFF);
 	cv->sprite = cursor;
-	cv->size.y = *(byte*)(p+1);
-	cv->size.x = READ_LE_UINT16(p+2);
-	cv->offs.x = (int16)READ_LE_UINT16(p+4);
-	cv->offs.y = (int16)READ_LE_UINT16(p+6);
+	cv->size.y = p->height;
+	cv->size.x = TO_LE16(p->width);
+	cv->offs.x = (int16)TO_LE16(p->x_offs);
+	cv->offs.y = (int16)TO_LE16(p->y_offs);
 
 	cv->dirty = true;
 }

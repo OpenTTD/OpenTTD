@@ -26,7 +26,7 @@ static const char *_cur_grffile;
 static int _loading_stage;
 static int _skip_specials;
 uint16 _custom_sprites_base;
-static SpriteHdr _cur_sprite;
+static Sprite _cur_sprite;
 
 
 static byte *_sprite_ptr[NUM_SPRITES];
@@ -982,7 +982,7 @@ const SpriteDimension *GetSpriteDimension(uint sprite)
 	SpriteDimension *sd;
 
 #ifndef WANT_SPRITESIZES
-	byte *p;
+	const Sprite* p;
 
 	p = _sprite_ptr[sprite];
 	if (p == NULL)
@@ -990,10 +990,10 @@ const SpriteDimension *GetSpriteDimension(uint sprite)
 
 	/* decode sprite header */
 	sd = &sd_static;
-	sd->xoffs = (int16)READ_LE_UINT16(&((SpriteHdr*)p)->x_offs);
-	sd->yoffs = (int16)READ_LE_UINT16(&((SpriteHdr*)p)->y_offs);
-	sd->xsize = READ_LE_UINT16(&((SpriteHdr*)p)->width);
-	sd->ysize = ((SpriteHdr*)p)->height;
+	sd->xoffs = (int16)TO_LE16(p->x_offs);
+	sd->yoffs = (int16)TO_LE16(p->y_offs);
+	sd->xsize = TO_LE16(p->width);
+	sd->ysize = p->height;
 #else
 	sd = &sd_static;
 	sd->xoffs = _sprite_xoffs[sprite];

@@ -17,13 +17,15 @@ struct DrawPixelInfo {
 };
 
 
-typedef struct SpriteHdr {
+typedef struct Sprite {
 	byte info;
 	byte height;
-	uint16 width;
-	int16 x_offs, y_offs;
-} SpriteHdr;
-assert_compile(sizeof(SpriteHdr) == 8);
+	uint16 width; // LE!
+	int16 x_offs; // LE!
+	int16 y_offs; // LE!
+	byte data[VARARRAY_SIZE];
+} Sprite;
+assert_compile(sizeof(Sprite) == 8);
 
 typedef struct CursorVars {
 	Point pos, size, offs, delta;
