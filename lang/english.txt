@@ -1,5 +1,6 @@
 ##name English
 ##ownname English (UK)
+##isocode en_GB
 
 ##id 0x0000
 STR_NULL							:

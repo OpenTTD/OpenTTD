@@ -1,5 +1,6 @@
 ##name Spanish
 ##ownname Español (ES)
+##isocode es
 
 ##id 0x0000
 STR_NULL							:

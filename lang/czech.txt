@@ -1,5 +1,6 @@
 ##name Czech
 ##ownname Cesky
+##isocode cs
 
 ##id 0x0000
 STR_NULL							:

@@ -1,5 +1,6 @@
 ##name Swedish
 ##ownname Svenska
+##isocode sv
 
 ##id 0x0000
 STR_NULL							:

@@ -1,5 +1,6 @@
 ##name Italian
 ##ownname Italian (IT)
+##isocode it
 
 ##id 0x0000
 STR_NULL							:

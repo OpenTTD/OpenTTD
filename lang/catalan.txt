@@ -1,5 +1,6 @@
 ##name Catalan
 ##ownname Català
+##isocode ca
 
 ##id 0x0000
 STR_NULL							:

@@ -26,6 +26,7 @@ typedef struct {
 	uint32 version;			// 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];			// the international name of this language
 	char own_name[32];	// the localized name of this language
+	char isocode[16];	// the ISO code for the language (not country code)
 	uint16 offsets[32];	// the offsets
 } LanguagePackHeader;
 
@@ -45,7 +46,7 @@ int _cur_line;
 bool _warnings;
 
 uint32 _hash;
-char _lang_name[32], _lang_ownname[32];
+char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 
 #define HASH_SIZE 1023
 LineName *_hash_head[HASH_SIZE];
@@ -362,6 +363,8 @@ void handle_pragma(char *str)
 		ttd_strlcpy(_lang_name, str + 5, sizeof(_lang_name));
 	} else if (!memcmp(str, "ownname ", 8)) {
 		ttd_strlcpy(_lang_ownname, str + 8, sizeof(_lang_ownname));
+	} else if (!memcmp(str, "isocode ", 8)) {
+		ttd_strlcpy(_lang_isocode, str + 8, sizeof(_lang_isocode));
 	} else {
 		error("unknown pragma '%s'", str);
 	}
@@ -700,6 +703,7 @@ void write_langfile(const char *filename, int show_todo)
 	hdr.version = TO_LE32(_hash);
 	strcpy(hdr.name, _lang_name);
 	strcpy(hdr.own_name, _lang_ownname);
+	strcpy(hdr.isocode, _lang_isocode);
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 

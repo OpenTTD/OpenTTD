@@ -1,5 +1,6 @@
 ##name Romanian
 ##ownname Românã
+##isocode ro
 
 ##id 0x0000
 STR_NULL							:

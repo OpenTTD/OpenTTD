@@ -1,5 +1,6 @@
 ##name American
 ##ownname English (US)
+##isocode en_US
 
 ##id 0x0000
 STR_NULL							:

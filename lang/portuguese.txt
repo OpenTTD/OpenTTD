@@ -1,5 +1,6 @@
 ##name Portuguese
 ##ownname Português
+##isocode pt
 
 ##id 0x0000
 STR_NULL							:

@@ -1,5 +1,6 @@
 ##name Danish
 ##ownname Dansk
+##isocode da
 
 ##id 0x0000
 STR_NULL							:
