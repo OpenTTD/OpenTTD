@@ -846,7 +846,7 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Anglicke
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Anglicke
 STR_TOWNNAME_FRENCH						:Francuzke
 STR_TOWNNAME_GERMAN						:Nemecke
 STR_TOWNNAME_LATIN_AMERICAN					:Latinsko-Americke
@@ -2753,3 +2753,10 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stan
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Zobrazit vsetky lietadla, ktore maju tuto stanicu v cestovnom poriadku
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+

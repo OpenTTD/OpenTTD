@@ -846,9 +846,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Inglés
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Inglés
 STR_TOWNNAME_FRENCH						:Francés
 STR_TOWNNAME_GERMAN						:Alemán
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Inglés (Adicional)
 STR_TOWNNAME_LATIN_AMERICAN					:Latinoamericano
 STR_TOWNNAME_SILLY						:Tontos
 STR_TOWNNAME_SWEDISH						:Sueco
@@ -1013,6 +1014,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Renovación automática de vehícu
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Renovación aut. si tiene {ORANGE}{STRING}{LTBLUE} meses antes/después edad max
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Renovar automát. usando la menor cantidad de dinero: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Muestra la población de esta población en esta etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Árboles invisibles (con edificios transparentes): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altura de la línea de nieve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
@@ -1335,6 +1337,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Se ha producido un error de protocolo 
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La versión de este cliente no corresponde con la versión de este servidor.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contraseña incorrecta.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} El servidor está lleno
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Has sido baneado de este servidor
 STR_NETWORK_ERR_KICKED						:{WHITE} Has sido expulsado de este servidor
 STR_NETWORK_ERR_CHEATER						:{WHITE} Los cheats (trucos) no son permitidos en este servidor
 
@@ -1475,6 +1478,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Paso a nivel
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Poblaciones
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2753,3 +2757,25 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Mostrar todos los trenes que tienen esta es
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostrar todos los vehículos de carretera que tienen esta estación en su horario
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar todos las aeronaves que tienen esta estación en su horario
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar todos los barcos que tienen esta estación en su horario
+
+STR_REPLACE_VEHICLES						:{BLACK}Reemplazar vehículos
+STR_REPLACE_VEHICLES_START					:{BLACK}Empezar a reemplazar vehículos
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Parar de reemplazar vehículos
+STR_NOT_REPLACING						:{BLACK}No reemplazar
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No hay vehículos seleccionados
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Seleccione tipo de locomotora a reemplazar{}Seleccione una locomotora de la derecha para reemplazarla
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Seleccione tipo de locomotora a reemplazar{}Reemplazará la locomotora seleccionada en la izquierda
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Presiona este botón si no quieres reemplazar la locomotora seleccionada en la izquierda
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Presiona este botón si quieres reemplazar la locomotora seleccionada a la izquierda por la seleccionada en la derecha
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Seleccione tipo de rail para seleccionar locomotoras para ese tipo
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Muestra que locomotora será reemplazada
+STR_REPLACE_HELP						:{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES						:{BLACK}Vehículos de rail
+STR_MONORAIL_VEHICLES						:{BLACK}Vehículos Monorail
+STR_MAGLEV_VEHICLES						:{BLACK}Vehículos Maglev
+
+############ End of list of rail types
+

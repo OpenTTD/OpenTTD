@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kan ikke rydde feltet....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Opprinnelig copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION						:{BLACK}OpenTTD versjon {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-teamet
+STR_TRANSLATED_BY						:{BLACK}  Oversetter(e) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan ikke endre service-intervall
 STR_018B_CLOSE_WINDOW						:{BLACK}Lukk vindu
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Vindustittel - dra her for å flytte vindu
 STR_STICKY_BUTTON						:{BLACK}Merk dette vinduet som ulukkbart for 'Lukk alle vinduer'-knappen
+STR_RESIZE_BUTTON						:{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Riv bygninger o.l.
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Senk et hjørne av et landstykke
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Hev et hjørne av et landstykke
@@ -846,9 +848,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Engelsk
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Engelsk
 STR_TOWNNAME_FRENCH						:Fransk
 STR_TOWNNAME_GERMAN						:Tysk
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Engelsk (Utvidet)
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerikansk
 STR_TOWNNAME_SILLY						:Tåpelige
 STR_TOWNNAME_SWEDISH						:Svensk
@@ -1475,6 +1478,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Jernbaneovergang
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Byer
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2753,3 +2757,26 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Vis alle tog som har denne stasjonen på der
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Vis alle kjøretøy som har denne stasjonen på deres timeplan
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Vis alle fly som har denne stasjonen på deres timeplan
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Vis alle skip som har denne stasjonen på deres timeplan
+
+STR_REPLACE_VEHICLES						:{BLACK}Bytt ut kjøretøy
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Bytt ut kjøretøy
+STR_REPLACE_VEHICLES_START					:{BLACK}Begynn å bytte ut kjøretøy
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Slutt å bytte ut kjøretøy
+STR_NOT_REPLACING						:{BLACK}Byttes ikke ut
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Inget lokomotiv valgt
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Velg en type lokomotiv å bytte ut{}Velg en type lokomotiv på høyresiden å bytte ut til
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Velg et lokomotiv å bytte ut til{}Det vil ta over for lokomotivet som er valgt på venstresiden.
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Klikk denne knappen hvis du ikke vil bytte ut lokomotivet som er valgt på venstresiden
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Klikk denne knappen hvis du vil bytte ut det valgte lokomotivet på venstresiden med det valgte lokomotivet på høyresiden
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Velg jernbanetypen du vil velge lokomotiv fra
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
+STR_REPLACE_HELP						:{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES						:Jernbane-lokomotiv
+STR_MONORAIL_VEHICLES						:Monorail-lokomotiv
+STR_MAGLEV_VEHICLES						:Maglev-lokomotiv
+
+############ End of list of rail types
+

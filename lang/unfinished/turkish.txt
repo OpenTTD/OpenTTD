@@ -186,12 +186,6 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Bunu yapamazsiniz..
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Bu bölgeyi temizleyemezsiniz...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Orjinal telif hakki {COPYRIGHT} 1995 Chris Sawyer, Tüm haklari saklidir
 STR_00B7_VERSION						:{BLACK}OpenTTD versiyon {REV}
-STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Orjinal tasarim: Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Orjinal grafikler: Simon Foster
-STR_SPECIAL_THANKS						:{BLACK}Özel Tesekkürler:
-STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Ön-Sinyaller ve Semaforlar {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS					:{BLACK}° Egimlerdeki Yollarin Temelleri {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Kanal/Kilit grafikleri {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD ekibi
 
 STR_00C5							:{BLACK}{CROSS}
@@ -470,4 +464,11 @@ STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Petrol Rafinerisi
 
 
 
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
 

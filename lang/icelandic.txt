@@ -845,7 +845,7 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Ensk
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Ensk
 STR_TOWNNAME_FRENCH						:Frönsk
 STR_TOWNNAME_GERMAN						:Þýsk
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerísk
@@ -1777,4 +1777,11 @@ STR_5013_CONCRETE						:Steypubrú
 
 
 
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
 

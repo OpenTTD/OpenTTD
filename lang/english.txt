@@ -187,7 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Can't clear this area....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
-STR_TRANSLATED_BY			:{BLACK}  Translator(s) -
+STR_TRANSLATED_BY						:{BLACK}  Translator(s) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -848,21 +848,21 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH 		:English (Original)
-STR_TOWNNAME_FRENCH								:French
-STR_TOWNNAME_GERMAN								:German
-STR_TOWNNAME_ADDITIONAL_ENGLISH		:English (Additional)
-STR_TOWNNAME_LATIN_AMERICAN				:Latin-American
-STR_TOWNNAME_SILLY								:Silly
-STR_TOWNNAME_SWEDISH							:Swedish
-STR_TOWNNAME_DUTCH								:Dutch
-STR_TOWNNAME_FINNISH							:Finnish
-STR_TOWNNAME_POLISH								:Polish
+STR_TOWNNAME_ORIGINAL_ENGLISH					:English (Original)
+STR_TOWNNAME_FRENCH						:French
+STR_TOWNNAME_GERMAN						:German
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:English (Additional)
+STR_TOWNNAME_LATIN_AMERICAN					:Latin-American
+STR_TOWNNAME_SILLY						:Silly
+STR_TOWNNAME_SWEDISH						:Swedish
+STR_TOWNNAME_DUTCH						:Dutch
+STR_TOWNNAME_FINNISH						:Finnish
+STR_TOWNNAME_POLISH						:Polish
 STR_TOWNNAME_SLOVAKISH						:Slovakish
 STR_TOWNNAME_HUNGARIAN						:Hungarian
-STR_TOWNNAME_AUSTRIAN							:Austrian
-STR_TOWNNAME_ROMANIAN							:Romanian
-STR_TOWNNAME_CZECH								:Czech
+STR_TOWNNAME_AUSTRIAN						:Austrian
+STR_TOWNNAME_ROMANIAN						:Romanian
+STR_TOWNNAME_CZECH						:Czech
 ############ end of	townname region
 
 STR_CURR_GBP							:Pounds ({POUNDSIGN})
@@ -1016,7 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autorenew vehicle when it gets 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duration of error message: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL		:{LTBLUE}Show the population of a town in his label: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Show town population in the town name label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
@@ -1197,7 +1197,7 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 STR_NETWORK_PLAYER_NAME						:{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
 STR_NETWORK_CONNECTION						:{BLACK}Connection:
-STR_NETWORK_CONNECTION_TIP					:{BLACK}Choose between an internet game or a local area network game
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Choose between an internet game or a Local Area Network (LAN) game
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start your own server
@@ -1339,7 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} A protocol-error was made and the conn
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} The revision of this client does not match the server's revision
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Wrong password
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} The server is full
-STR_NETWORK_ERR_SERVER_BANNED				:{WHITE} You are banned from this server
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} You are banned from this server
 STR_NETWORK_ERR_KICKED						:{WHITE} You were kicked out of the game
 STR_NETWORK_ERR_CHEATER						:{WHITE} Cheating is not allowed on this server
 
@@ -1367,7 +1367,7 @@ STR_NETWORK_CHAT_TO_COMPANY					:[Team] To {STRING}:
 STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
 STR_NETWORK_CHAT_TO_CLIENT					:[Private] To {STRING}:
 STR_NETWORK_CHAT_ALL						:[All] {STRING}:
-STR_NETWORK_NAME_CHANGE						:has changed his name to
+STR_NETWORK_NAME_CHANGE						:has changed his/her name to
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT					:{WHITE} The server is restarting...{}Please wait...
 
@@ -1480,7 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Road/rail level crossing
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Towns
-STR_TOWN_LABEL_POP					:{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -1786,7 +1786,7 @@ STR_5004							:
 STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Unable to excavate land for other end of tunnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Must demolish tunnel first
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Must demolish bridge first
-STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Cannot start and end in same spot
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Cannot start and end in the same spot
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Level land or water required under bridge
 STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Start and end must be in line
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Site unsuitable for tunnel entrance
@@ -2593,7 +2593,7 @@ STR_982F_NAME_SHIP						:{BLACK}Name ship
 STR_9831_NAME_SHIP						:{WHITE}Name ship
 STR_9832_CAN_T_NAME_SHIP					:{WHITE}Can't name ship...
 STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Citizens celebrate . . .{}First ship arrives at {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Place a buoy, which can be used as a waypoint
+STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Place a buoy which can be used as a waypoint
 STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Can't place buoy here...
 STR_9836_RENAME							:{BLACK}Rename
 STR_9837_RENAME_SHIP_TYPE					:{BLACK}Rename ship type
@@ -2665,8 +2665,8 @@ STR_A030_NAME_AIRCRAFT						:{WHITE}Name aircraft
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Can't name aircraft...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Name aircraft
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Citizens celebrate . . .{}First aircraft arrives at {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL		:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL							:{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA16} die in fireball!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA16} die in fireball!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinations:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rename
@@ -2767,13 +2767,13 @@ STR_REPLACE_VEHICLES_START					:{BLACK}Start Replacing Vehicles
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop Replacing Vehicles
 STR_NOT_REPLACING						:{BLACK}Not replacing
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No vehicle selected
-STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Select a type of engine to replace{}Select an engine on the right side to replace to
-STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Select an engine to replace to{}It will replace the engines selected on the left side
-STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Press this button if you don't want to replace the engine, you selected on the left
-STR_REPLACE_HELP_START_BUTTON					:{BLACK}Press this button if you want to replace the engine selected on the left with the one selected on the right
-STR_REPLACE_HELP_RAILTYPE					:{BLACK}Select a railtype you want to select engines for
-STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}This displays what engine the selected engine on the left are being replaced to
-STR_REPLACE_HELP						:{BLACK}This feature allows you to select an enginetype and replace that one with another one. This will then be done automatically when the vehicles enters a depot anyway
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Select the engine type to replace
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Select the new engine type you would like to use in place of the left selected engine type
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Press to stop the replacement of the engine type selected on the left
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Choose the railtype you want to replace engines for
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Displays which engine the left selected engine is being replaced with, if any
+STR_REPLACE_HELP						:{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 
 ############ Lists rail types
 

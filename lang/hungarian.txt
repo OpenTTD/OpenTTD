@@ -186,7 +186,8 @@ STR_00B4_CAN_T_DO_THIS						:{WHITE}Nem teheted ezt...
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nem tisztíthatod meg a területet...
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 Az OpenTTD csapat
+STR_TRANSLATED_BY						:{BLACK}  Fordítók(s) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nem változtathatod meg a javítási id
 STR_018B_CLOSE_WINDOW						:{BLACK}Az ablak bezárása
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
 STR_STICKY_BUTTON						:{BLACK}Ez az ablak akkor se legyen becsukható ha az összes ablakot bezárjuk (Delete gomb)
+STR_RESIZE_BUTTON						:{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Tárgyak lerombolása egy mezõrõl
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Egy pont lesüllyesztése
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Egy pont megemelése
@@ -846,9 +848,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Angol
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Angol (Eredeti)
 STR_TOWNNAME_FRENCH						:Francia
 STR_TOWNNAME_GERMAN						:Német
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Angol (További)
 STR_TOWNNAME_LATIN_AMERICAN					:Latin-Amerikai
 STR_TOWNNAME_SILLY						:Komolytalan
 STR_TOWNNAME_SWEDISH						:Svéd
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatán felújítja a jármûvet 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatán felújítja a jármûvet {ORANGE}{STRING}{LTBLUE} hónappal a max életkora elõtt/után
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automata megújításhoz szükséges minimális pénz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Mutassa a lakosságot a feliratban: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Protokoll-hibát csináltunk, és megszak
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} A te gépeden lévõ és a szerveren lévõ programnak nem egyezik meg a verziója.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rossz jelszó.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} A szerver tele van
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Ki vagy tiltva errõl a szerverrõl
 STR_NETWORK_ERR_KICKED						:{WHITE} Ki lettél rúgva a szerverrõl
 STR_NETWORK_ERR_CHEATER						:{WHITE} Ez a szerver nem engedi a csalást
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Út/vasút keresztezõdés
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Városok
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Nem nevezheted át a repülõgépet...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Repülõgép átnevezése
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ repülõgép {STATION} állomásra!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lezuhant egy repülõgép!{}{COMMA16} ember halt meg a zuhanás után {STATION} állomáson
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Repülõ baleset!{}A repülõnek elfogyott az üzemanyaga, {COMMA16} ember halt meg a zuhanásban!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Célpontok:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Átnevez
@@ -2753,3 +2760,26 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Kilistázza az összes vonatot, aminek a mene
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Kilistázza az összes közúti jármûvet, aminek a menetrendjében szerepel ez az állomás
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Kilistázza az összes repülõt, aminek a menetrendjében szerepel ez az állomás
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Kilistázza az összes hajót, aminek a menetrendjében szerepel ez az állomás
+
+STR_REPLACE_VEHICLES						:{BLACK}Jármûvek lecserélése
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Jármûcsere
+STR_REPLACE_VEHICLES_START					:{BLACK}Jármûcsere elkezdése
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Jármûcsere befejezése
+STR_NOT_REPLACING						:{BLACK}Nem cserélendõ
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Nincs kiválasztva jármû
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Válaszd ki a cserélendõ mozdony típusát{}Válassz egy mozdonyt a jobb oldalról, hogy lecseréld õket arra
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Válaszd ki mire cseréled a mozdonyt{}Kicseréli a bal oldalon kiválasztott mozdonyokat erre
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Nyomd meg ezt a gombot, ha nem akarod kicserélni a mozdonyt a bal oldalon kiválasztottakra
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott mozdonyokat lecseréld a jobb oldalon kiválasztottra
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Válaszd ki a cserélendõ vasúttípust
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Megmutatja, hogy melyik bal oldali mozdonyt akarod kicserélni
+STR_REPLACE_HELP						:{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES						:Normál Vasutak
+STR_MONORAIL_VEHICLES						:Egysínû Vasutak
+STR_MAGLEV_VEHICLES						:Maglev Vasutak
+
+############ End of list of rail types
+

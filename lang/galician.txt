@@ -845,7 +845,7 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Inglés
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Inglés
 STR_TOWNNAME_FRENCH						:Francés
 STR_TOWNNAME_GERMAN						:Alemán
 STR_TOWNNAME_LATIN_AMERICAN					:Latino-Americano
@@ -2697,3 +2697,10 @@ STR_NEWGRF_FILENAME						:{BLACK}Ficheiro:
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar tódolos avións que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+

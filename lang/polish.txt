@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nie mozna wyczyscic terenu....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}Wersja OpenTTD {REV}: Language Pack by Tom and PolPot and Spooqy
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY						:{BLACK}  Tlumacz(e) -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nie mozna zmienic okresu miedzy serw
 STR_018B_CLOSE_WINDOW						:{BLACK}Zamkniecie okna
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
 STR_STICKY_BUTTON						:{BLACK}Zaznacza to okno jako niezamykalne dla funkcji 'Zamknij wszystkie okna'
+STR_RESIZE_BUTTON						:{BLACK}Kliknij i przeciagnij by zmienic rozmiar okna
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Niszczenie budynkow itp w danym kwadracie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Obnizenie naroznika terenu
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Wywyzszenie naroznika terenu
@@ -846,9 +848,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Angielskie
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Angielski (Oryginal)
 STR_TOWNNAME_FRENCH						:Francuskie
 STR_TOWNNAME_GERMAN						:Niemieckie
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:Angielski (Rozszezone)
 STR_TOWNNAME_LATIN_AMERICAN					:Poludniowoamerykanskie
 STR_TOWNNAME_SILLY						:Glupie
 STR_TOWNNAME_SWEDISH						:Szwedzkie
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autoodnowienie pojazdu gdy staj
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autoodnowienie nastepuje {ORANGE}{STRING}{LTBLUE} miesiecy przed/po maks wieku
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimalna ilosc pieniedzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Niewidoczne drzewa (razem z przezroczystymi budynkami): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maks wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Blad protokolu, polaczenie zostalo prz
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Wersja gry nie zgadza sie z wersja gry na serwerze.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Zle haslo.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serwer jest pelen
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Masz zabroniony dostep do tego serwera
 STR_NETWORK_ERR_KICKED						:{WHITE} Zostales wyrzucony z serwera
 STR_NETWORK_ERR_CHEATER						:{WHITE} Ulatwienia sa niedozwolone na tym serwerze
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Poziom przecinania sie drog/torow
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Miasta
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Nie mozna zmienic nazwy samolotu...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nazwa samolotu
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}pierwszy samolot przylecial do {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA16} ofiar na {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbil sie z braku paliwa, zginelo {COMMA16} osob!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Cele:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Zmien nazwe
@@ -2753,3 +2760,26 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Pokazuje wszystkie pociagi ktore maja ta st
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Pokazuje wszystkie samochody ktore maja ta stacje w swoim rozkladzie
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Pokazuje wszystkie samoloty ktore maja ta stacje w swoim rozkladzie
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Pokazuje wszystkie statki ktore maja ta stacje w swoim rozkladzie
+
+STR_REPLACE_VEHICLES						:{BLACK}Zastap pojazdy
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Zastap pojazdy
+STR_REPLACE_VEHICLES_START					:{BLACK}Rozpocznij zastepowanie
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Zatrzymaj zastepowanie
+STR_NOT_REPLACING						:{BLACK}Brak zastapien
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Brak zaznaczonych pojazdow
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Wybierz typ lokomotywy jaki ma byc zastapiony{}Wybierz lokomotywe po prawej stronie na jaka ma zastapic
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Wybierz typ lokomotywy jaki ma{} zastapic lokomotywe zaznaczona po lewej stronie
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Wcisnij ten klawisz jesli nie chcesz zmieniac lokomotyw ktore zaznaczono po lewej stronie
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Wcisnij ten klawisz jesli chcesz zastapic lokomotywy zaznaczone po lewej stronie na wybrana po prawej stronie
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic lokomotywy
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Wyswietla typ lokomotywy na jaki bedzie zastapiona  lokomotywa zaznaczona po lewej stronie
+STR_REPLACE_HELP						:{BLACK}Ta funkcja pozwala wybrac typ lokomotywy i zastapic ja inna. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES						:Pojazdy kolejowe
+STR_MONORAIL_VEHICLES						:Pojazdy jednoszyn.
+STR_MAGLEV_VEHICLES						:Pojazdy Maglew
+
+############ End of list of rail types
+

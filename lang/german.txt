@@ -187,6 +187,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Kann das Gebiet nicht räumen....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle Rechte vorbehalten
 STR_00B7_VERSION						:{BLACK}OpenTTD Version {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-Team
+STR_TRANSLATED_BY						:{BLACK}  Übersetzer -
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -415,6 +416,7 @@ STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Das Wartungsintervall kann nicht geä
 STR_018B_CLOSE_WINDOW						:{BLACK}Fenster schließen
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Titelleiste verschieben um das Fenster zu bewegen
 STR_STICKY_BUTTON						:{BLACK}Diese Fenster markieren, damit es nicht durch die
+STR_RESIZE_BUTTON						:{BLACK}Klicken und Ziehen zum Größe ändern
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Land absenken
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Land anheben
@@ -846,9 +848,10 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH						:Englisch
+STR_TOWNNAME_ORIGINAL_ENGLISH					:Englisch
 STR_TOWNNAME_FRENCH						:Französisch
 STR_TOWNNAME_GERMAN						:Deutsch
+STR_TOWNNAME_ADDITIONAL_ENGLISH					:English (Zusätzlich)
 STR_TOWNNAME_LATIN_AMERICAN					:Lateinamerikanisch
 STR_TOWNNAME_SILLY						:Verrückt
 STR_TOWNNAME_SWEDISH						:Schwedisch
@@ -1013,6 +1016,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Fahrzeug erneuern, wenn es vera
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximalalter
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL				:{LTBLUE}Zeige die Einwohnerzahl der Stadt im Label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel
@@ -1335,6 +1339,7 @@ STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Protokollfehler: Die Verbindung musste
 STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Ihre Version entspricht nicht der Serverversion.
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Falsches Passwort.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Der Server ist voll.
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE}Du bist von diesem Server verbannt
 STR_NETWORK_ERR_KICKED						:{WHITE} Sie wurden vom Server gekickt.
 STR_NETWORK_ERR_CHEATER						:{WHITE} Cheating ist auf diesem Server nicht erlaubt
 
@@ -1475,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Bahnübergang
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Städte
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}
@@ -2660,6 +2666,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Kann Flugzeugname nicht vergeben...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Flugzeugname
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Die Stadt feiert . . .{}Erstes Flugzeug landet auf {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA16} sterben in einem Feuerball auf {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA16} sterben in einem Feuerball!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Bestimmungsort:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Umbenennen
@@ -2753,3 +2760,26 @@ STR_SCHEDULED_TRAINS_TIP					:{BLACK}Zeige alle Züge, die diesen Bahnhof anfahre
 STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Zeige alle Fahrzeuge, die diese Station anfahren
 STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Zeige alle Flugzeuge, die diesen Flughafen anfliegen
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Zeige alle Schiffe, die diesen Hafen ansteuern
+
+STR_REPLACE_VEHICLES						:{BLACK}Ersetze Fahrzeuge
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Ersetze Fahrzeuge
+STR_REPLACE_VEHICLES_START					:{BLACK}Fahrzeugersetzung aktivieren
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Fahrzeugersetzung deaktivieren
+STR_NOT_REPLACING						:{BLACK}Keine Ersetzung
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Kein Fahrzeug gewählt
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Zu ersetzendes Fahrzeug wählen{}Ersatzfahrzeug auf der rechten Seite wählen
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Ersatzfahrzeug wählen{}Es ersetzt das gewählte Fahrzeug auf der linken Seite
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite nicht ersetzt werden soll
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite durch das auf der rechten Seite gewählte ersetzt werden soll
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Wähle einen Schienentyp für den Loks ersetzt werden sollen
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
+STR_REPLACE_HELP						:{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES						:Eisenbahn
+STR_MONORAIL_VEHICLES						:Monorail
+STR_MAGLEV_VEHICLES						:Magnetschwebebahn
+
+############ End of list of rail types
+
