@@ -161,14 +161,14 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 value;
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft)) return CMD_ERROR;
 
 	// Workaround: TODO: make AI players try to build planes in a hangar instead of just an airport tile.
-	if (!IsAircraftHangarTile((TileIndex)tile) && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
+	if (!IsAircraftHangarTile(tile) && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
 
 	if (_map_owner[tile] != _current_player && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
 
@@ -265,19 +265,16 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			->layout for #th position of depot. Since layout must start with depots, it is simple
 		*/
 		{
-			Station *st;
-			const AirportFTAClass *Airport;
-			const TileIndexDiffC *cur_depot;
-			byte i = 0;
-			st = GetStation(_map2[tile]);
-			Airport = GetAirport(st->airport_type);
-			for (cur_depot = Airport->airport_depots; i != Airport->nof_depots; cur_depot++) {
-				if ((uint)(st->airport_tile + ToTileIndexDiff(*cur_depot)) == tile) {
+			const Station* st = GetStation(_map2[tile]);
+			const AirportFTAClass* Airport = GetAirport(st->airport_type);
+			uint i;
+
+			for (i = 0; i < Airport->nof_depots; i++) {
+				if (st->airport_tile + ToTileIndexDiff(Airport->airport_depots[i]) == tile) {
 					assert(Airport->layout[i].heading == HANGAR);
 					v->u.air.pos = Airport->layout[i].position;
 					break;
 				}
-				i++;
 			}
 			// to ensure v->u.air.pos has been given a value
 			assert(v->u.air.pos != MAX_ELEMENTS);
@@ -340,8 +337,7 @@ bool IsAircraftHangarTile(TileIndex tile)
 
 static bool CheckStoppedInHangar(Vehicle *v)
 {
-	if (!(v->vehstatus&VS_STOPPED) ||
-			!IsAircraftHangarTile(v->tile)) {
+	if (!(v->vehstatus & VS_STOPPED) || !IsAircraftHangarTile(v->tile)) {
 		_error_message = STR_A01B_AIRCRAFT_MUST_BE_STOPPED;
 		return false;
 	}
@@ -376,9 +372,7 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-
 		DoDeleteAircraft(v);
-
 	}
 
 	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
