@@ -62,6 +62,7 @@
 
 struct Library *SocketBase = NULL;
 
+#if !defined(__MORPHOS__)
 // usleep() implementation
 #include <devices/timer.h>
 #include <dos/dos.h>
@@ -69,6 +70,7 @@ struct Library *SocketBase = NULL;
 struct Device       *TimerBase    = NULL;
 struct MsgPort      *TimerPort    = NULL;
 struct timerequest  *TimerRequest = NULL;
+#endif
 
 #endif /* __MORPHOS__ || __AMIGA__ */
 
@@ -256,8 +258,11 @@ usleep(milliseconds*1000);
 #ifdef __BEOS__
 snooze(milliseconds*1000);
 #endif
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-{
+#if defined(__MORPHOS__) 
+usleep(milliseconds*1000);
+#endif
+#if defined(__AMIGAOS__) && !defined(__MORPHOS__) 
+{ 
 	ULONG signals;
 	ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
 
@@ -272,7 +277,7 @@ snooze(milliseconds*1000);
 	}
 	WaitIO((struct IORequest *)TimerRequest);
 }
-#endif // __MORPHOS__ || __AMIGAOS__
+#endif // __AMIGAOS__ && !__MORPHOS__
 #endif
 }
 
@@ -1218,7 +1223,11 @@ void NetworkUDPClose(bool client) {
 
 void NetworkUDPReceive(bool client) {
 	struct sockaddr_in client_addr;
+#ifndef __MORPHOS__
 	int client_len;
+#else
+	LONG client_len; // for some reason we need a 'LONG' under MorphOS
+#endif
 	int nbytes;
 	struct UDPPacket packet;
 	int packet_len;
@@ -1400,7 +1409,8 @@ _network_available=true;
 		_network_available=false;
 		}
 
-	// for usleep() implementation
+	#if !defined(__MORPHOS__)
+	// for usleep() implementation (only required for legacy AmigaOS builds)
 	if ( (TimerPort = CreateMsgPort()) ) {
 		if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
 			if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
@@ -1412,6 +1422,8 @@ _network_available=true;
 			}
 		}
 	}
+	#endif 
+
 }
 #else
 
@@ -1443,9 +1455,11 @@ DEBUG(misc,3) ("[NET][Core] shutdown()");
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 {	
 	// free allocated ressources
+	#if !defined(__MORPHOS__) 
   if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
   if (TimerRequest) { DeleteIORequest(TimerRequest); }
   if (TimerPort)    { DeleteMsgPort(TimerPort); }
+	#endif
 
 	if (SocketBase) {
 		CloseLibrary(SocketBase);
