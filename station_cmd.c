@@ -606,19 +606,34 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 	} while (++yc != y2);
 }
 
+typedef struct Rectangle {
+	uint min_x;
+	uint min_y;
+	uint max_x;
+	uint max_y;
+} Rectangle;
+
+static void MergePoint(Rectangle* rect, TileIndex tile)
+{
+	uint x = TileX(tile);
+	uint y = TileY(tile);
+
+	if (rect->min_x > x) rect->min_x = x;
+	if (rect->min_y > y) rect->min_y = y;
+	if (rect->max_x < x) rect->max_x = x;
+	if (rect->max_y < y) rect->max_y = y;
+}
+
 // Update the acceptance for a station.
 // show_msg controls whether to display a message that acceptance was changed.
 static void UpdateStationAcceptance(Station *st, bool show_msg)
 {
 	uint old_acc, new_acc;
-	TileIndex *span;
-	RoadStop *cur_rs;
+	const RoadStop *cur_rs;
 	int i;
-	int min_x, min_y, max_x, max_y;
-	int rad = 4;	//Put this to surpress a compiler warning
-	int num = 0;
-	int num_bus, num_truck;
-	uint accepts[NUM_CARGO];
+	Rectangle rect = { MapSizeX(), MapSizeY(), 0, 0 };
+	int rad;
+	AcceptedCargo accepts;
 
 	// Don't update acceptance for a buoy
 	if (st->had_vehicle_of_type & HVOT_BUOY)
@@ -627,61 +642,33 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* old accepted goods types */
 	old_acc = GetAcceptanceMask(st);
 
-	if (st->train_tile != 0) num += 2;
-	if (st->airport_tile != 0) num += 2;
-	if (st->dock_tile != 0) num++;
-
-	num_bus = GetNumRoadStops(st, RS_BUS);
-	num_truck = GetNumRoadStops(st, RS_TRUCK);
-
-	num += (num_bus + num_truck);
-
-	span = malloc(num * sizeof(*span));
-	if (span == NULL)
-		error("UpdateStationAcceptance: Could not allocate memory");
-
 	// Put all the tiles that span an area in the table.
 	if (st->train_tile != 0) {
-		*span++ = st->train_tile;
-		*span++ = st->train_tile + TILE_XY(st->trainst_w-1, st->trainst_h-1);
+		MergePoint(&rect, st->train_tile);
+		MergePoint(&rect,
+			st->train_tile + TILE_XY(st->trainst_w - 1, st->trainst_h - 1)
+		);
 	}
 
 	if (st->airport_tile != 0) {
-		*span++ = st->airport_tile;
-		*span++ = st->airport_tile + TILE_XY(_airport_size_x[st->airport_type]-1, _airport_size_y[st->airport_type]-1);
+		MergePoint(&rect, st->airport_tile);
+		MergePoint(&rect,
+			st->airport_tile + TILE_XY(
+				_airport_size_x[st->airport_type] - 1,
+				_airport_size_y[st->airport_type] - 1
+			)
+		);
 	}
 
-	if (st->dock_tile != 0)
-		*span++ = st->dock_tile;
+	if (st->dock_tile != 0) MergePoint(&rect, st->dock_tile);
 
-	cur_rs = st->bus_stops;
-	for (i = 0; i < num_bus; i++) {
-		*span++ = cur_rs->xy;
-		cur_rs = cur_rs->next;
+	for (cur_rs = st->bus_stops; cur_rs != NULL; cur_rs = cur_rs->next) {
+		MergePoint(&rect, cur_rs->xy);
 	}
 
-	cur_rs = st->truck_stops;
-	for (i = 0; i < num_truck; i++) {
-		*span++ = cur_rs->xy;
-		cur_rs = cur_rs->next;
+	for (cur_rs = st->truck_stops; cur_rs != NULL; cur_rs = cur_rs->next) {
+		MergePoint(&rect, cur_rs->xy);
 	}
-
-	// Construct a rectangle from those points
-	min_x = min_y = 0x7FFFFFFF;
-	max_x = max_y = 0;
-
-	for(; num != 0; num--) {
-		TileIndex tile = *(--span);
-		if (tile != 0) {	//assume there is no station at (0, 0)
-			min_x = min(min_x, TileX(tile));
-			max_x = max(max_x, TileX(tile));
-			min_y = min(min_y, TileY(tile));
-			max_y = max(max_y, TileY(tile));
-		}
-	}
-
-	free(span);
- span = NULL;
 
 	if (_patches.modified_catchment) {
 		rad = FindCatchmentRadius(st);
@@ -690,8 +677,14 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	// And retrieve the acceptance.
-	if (max_x != 0) {
-		GetAcceptanceAroundTiles(accepts, TILE_XY(min_x, min_y), max_x - min_x + 1, max_y-min_y+1, rad);
+	if (rect.max_x >= rect.min_x) {
+		GetAcceptanceAroundTiles(
+			accepts,
+			TILE_XY(rect.min_x, rect.min_y),
+			rect.max_x - rect.min_x + 1,
+			rect.max_y - rect.min_y + 1,
+			rad
+		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
 	}
