@@ -122,11 +122,10 @@ void ShowBuildAirToolbar()
 
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
-	int rad;
-	
 	switch(e->event) {
 	case WE_PAINT: {
 		int sel;
+		int rad = 4; // default catchment radious
 
 		if (WP(w,def_d).close)
 			return;
@@ -154,12 +153,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
          case AT_LARGE:    rad = CA_AIR_LARGE; break;
          case AT_METROPOLITAN: rad = CA_AIR_METRO; break;
          case AT_INTERNATIONAL: rad = CA_AIR_INTER; break;
-				 default: rad = 4; break;
        }
-     } else {
-       rad = 4;
-     }
-
+		 }
 	
 		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 

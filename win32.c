@@ -1533,7 +1533,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	if (h != INVALID_HANDLE_VALUE) {
 		do {
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					!(fd.cFileName[0]=='.' && (fd.cFileName[1]==0 || fd.cFileName[1]=='.' && fd.cFileName[2]==0))) {
+					!(fd.cFileName[0] == '.' && (fd.cFileName[1] == 0 || (fd.cFileName[1] == '.' && fd.cFileName[2] == 0)))) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				strcpy(fios->name, fd.cFileName);
@@ -1631,7 +1631,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	if (h != INVALID_HANDLE_VALUE && mode != SLD_NEW_GAME) {
 		do {
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					!(fd.cFileName[0]=='.' && (fd.cFileName[1]==0 || fd.cFileName[1]=='.' && fd.cFileName[2]==0))) {
+					!(fd.cFileName[0] == '.' && (fd.cFileName[1] == 0 || (fd.cFileName[1] == '.' && fd.cFileName[2] == 0)))) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				strcpy(fios->name, fd.cFileName);

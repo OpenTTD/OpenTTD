@@ -12,7 +12,11 @@
 #	include <windows.h>
 #	include <winsock2.h>
 #	include <ws2tcpip.h>
-#	pragma comment (lib, "ws2_32.lib")
+
+#ifdef _MSC_VER
+#pragma comment (lib, "ws2_32.lib")
+#endif //_MSC_VER
+
 #	define ENABLE_NETWORK // On windows, the network is always enabled
 #	define GET_LAST_ERROR() WSAGetLastError()
 #	define EWOULDBLOCK WSAEWOULDBLOCK
