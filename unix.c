@@ -45,7 +45,7 @@ int compare_FiosItems (const void *a, const void *b) {
 	if (_savegame_sort_order < 2) // sort by date
     r = da->mtime < db->mtime ? -1 : 1;
 	else
-		r = strcmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
+		r = strcasecmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
 
 	if (_savegame_sort_order & 1) r = -r;
 	return r;
@@ -124,7 +124,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 			if (!stat(filename, &sb)) {
 				if (!S_ISDIR(sb.st_mode)) {
 					char *t = strrchr(dirent->d_name, '.');
-					if (t && !strcmp(t, ".sav")) { // OpenTTD
+					if (t && !strcasecmp(t, ".sav")) { // OpenTTD
 						*t = 0; // cut extension
 						fios = FiosAlloc();
 						fios->type = FIOS_TYPE_FILE;
@@ -133,7 +133,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 						ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
 					} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 						int ext = 0; // start of savegame extensions in _old_extensions[]
-						if (t && ((ext++, !strcmp(t, ".ss1")) || (ext++, !strcmp(t, ".sv1")) || (ext++, !strcmp(t, ".sv2"))) ) { // TTDLX(Patch)
+						if (t && ((ext++, !strcasecmp(t, ".ss1")) || (ext++, !strcasecmp(t, ".sv1")) || (ext++, !strcasecmp(t, ".sv2"))) ) { // TTDLX(Patch)
 							*t = 0; // cut extension
 							fios = FiosAlloc();
 							fios->old_extension = ext-1;
@@ -205,7 +205,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			if (!stat(filename, &sb)) {
 				if (!S_ISDIR(sb.st_mode)) {
 					char *t = strrchr(dirent->d_name, '.');
-					if (t && !strcmp(t, ".scn")) { // OpenTTD
+					if (t && !strcasecmp(t, ".scn")) { // OpenTTD
 						*t = 0; // cut extension
 						fios = FiosAlloc();
 						fios->type = FIOS_TYPE_SCENARIO;
@@ -214,7 +214,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 						ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
 					} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
 						int ext = 3; // start of scenario extensions in _old_extensions[]
-						if (t && ((ext++, !strcmp(t, ".sv0")) || (ext++, !strcmp(t, ".ss0"))) ) { // TTDLX(Patch)
+						if (t && ((ext++, !strcasecmp(t, ".sv0")) || (ext++, !strcasecmp(t, ".ss0"))) ) { // TTDLX(Patch)
 							*t = 0; // cut extension
 							fios = FiosAlloc();
 							fios->old_extension = ext-1;
