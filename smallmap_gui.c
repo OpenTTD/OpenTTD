@@ -1003,7 +1003,8 @@ void ShowSmallMap()
 /* Extra ViewPort Window Stuff */
 static Widget _extra_view_port_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   299,     0,    13, STR_EXTRA_VIEW_PORT_TITLE,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   287,     0,    13, STR_EXTRA_VIEW_PORT_TITLE,				STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   288,   299,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {      WWT_PANEL,    14,     0,   299,    14,   233, 0x0,				STR_NULL},
 {          WWT_6,    14,     2,   297,    16,   231, 0x0,				STR_NULL},
 {      WWT_PANEL,    14,     0,    21,   234,   255, 0x2DF,			STR_017F_ZOOM_THE_VIEW_IN},
@@ -1027,15 +1028,15 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 	}	break;
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 4: { /* zoom in */
+		case 5: { /* zoom in */
 			DoZoomInOutWindow(ZOOM_IN,w);
 		} break;
 
-		case 5: { /* zoom out */
+		case 6: { /* zoom out */
 			DoZoomInOutWindow(ZOOM_OUT,w);
 		} break;
 
-		case 6: { /* location button (move main view to same spot as this view) */
+		case 7: { /* location button (move main view to same spot as this view) */
 			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w,vp_d).scrollpos_x; // Where is the main looking at
 			int y = WP(w,vp_d).scrollpos_y;
@@ -1044,7 +1045,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			WP(w2,vp_d).scrollpos_x =  x - (w2->viewport->virtual_width - (294 <<vp->zoom) )/2;
 			WP(w2,vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - (214 << vp->zoom) )/2;
 		} break;
-		case 7: { /* inverse location button (move this view to same spot as main view) */
+		case 8: { /* inverse location button (move this view to same spot as main view) */
 			Window * w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w2,vp_d).scrollpos_x;
 			int y = WP(w2,vp_d).scrollpos_y;
@@ -1060,7 +1061,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _extra_view_port_desc = {
 	-1,-1, 300, 256,
 	WC_EXTRA_VIEW_PORT,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_extra_view_port_widgets,
 	ExtraViewPortWndProc
 };

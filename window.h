@@ -157,11 +157,12 @@ typedef struct WindowDesc {
 } WindowDesc;
 
 enum {
-	WDF_STD_TOOLTIPS = 1,		/* use standard routine when displaying tooltips */
-	WDF_DEF_WIDGET = 2,			/* default widget control for some widgets in the on click event */
-	WDF_STD_BTN = 4,				/* default handling for close and drag widgets (widget no 0 and 1) */
+	WDF_STD_TOOLTIPS   = 1, /* use standard routine when displaying tooltips */
+	WDF_DEF_WIDGET     = 2,	/* default widget control for some widgets in the on click event */
+	WDF_STD_BTN        = 4,	/* default handling for close and drag widgets (widget no 0 and 1) */
 	WDF_RESTORE_DPARAM = 8, /* when drawing widgets, restore the dparam so all widgets recieve the same set of them */
 	WDF_UNCLICK_BUTTONS=16, /* Unclick buttons when the window event times out */
+	WDF_STICKY_BUTTON  =32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
@@ -356,7 +357,8 @@ enum WindowWidgetTypes {
 	WWT_CAPTION = 10,
 
 	WWT_HSCROLLBAR = 11,
-	WWT_LAST = 12,						/* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_STICKYBOX = 12,
+	WWT_LAST = 13,						/* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK = 31,
 
@@ -376,7 +378,8 @@ enum WindowFlags {
 	WF_SCROLL_MIDDLE = 1 << 6,
 	WF_HSCROLL = 1 << 7,
 	WF_SIZING = 1 << 8,
-
+	WF_STICKY = 1 << 9,
+	
 	WF_DISABLE_VP_SCROLL = 1 << 10,
 
 	WF_WHITE_BORDER_ONE = 1 << 11,
@@ -458,7 +461,7 @@ Window *GetCallbackWnd();
 void DeleteNonVitalWindows();
 
 /* window.c */
-VARDEF Window _windows[20];
+VARDEF Window _windows[25];
 VARDEF Window *_last_window;
 
 VARDEF Point _cursorpos_drag_start;

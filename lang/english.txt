@@ -418,6 +418,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Can't change servicing interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Close window
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Window title - drag this to move window
+STR_STICKY_BUTTON                       :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolish buildings etc. on a square of land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Raise a corner of land

@@ -61,6 +61,14 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 				}
 			}
 		}
+		
+		if (w->desc_flags & WDF_STICKY_BUTTON) {
+			if (e.click.widget == 2) {
+				w->click_state ^= (1 << e.click.widget);
+				w->flags4 ^= WF_STICKY;
+				InvalidateWidget(w, e.click.widget);
+			}
+		}
 	} else {
 		w->wndproc(w, &e);
 	}
@@ -296,7 +304,8 @@ restart:;
 			assert(w < _last_window);
 
 			if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
-			    w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW) {
+			    w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW &&
+					!(w->flags4 & WF_STICKY) ) {
 
 					DeleteWindow(w);
 					goto restart;
@@ -1324,7 +1333,8 @@ void DeleteNonVitalWindows()
 				w->window_class != WC_MAIN_TOOLBAR &&
 				w->window_class != WC_STATUS_BAR &&
 				w->window_class != WC_TOOLBAR_MENU &&
-				w->window_class != WC_TOOLTIPS) {
+				w->window_class != WC_TOOLTIPS &&
+				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 			DeleteWindow(w);
 			w = _windows;
 		} else {

@@ -888,7 +888,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 			break;
 		case WC_EXTRA_VIEW_PORT:
 			wt = FindWindowById(WC_EXTRA_VIEW_PORT, w->window_number);
-			button = 4;
+			button = 5;
 			break;
 		}
 

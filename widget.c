@@ -348,6 +348,12 @@ void DrawWindowWidgets(Window *w)
 			goto restore_dparam;
 		}
 
+		case WWT_STICKYBOX: {
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (cur_click & 1) ? 0x20 : 0);
+			DrawSprite((cur_click & 1) ? SPR_PIN_UP :SPR_PIN_DOWN, r.left + 2, r.top + 3);
+			break;
+		}
+		
 		case WWT_CAPTION: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0x10);
 			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? 0x60 : 0x70);

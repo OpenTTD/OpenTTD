@@ -456,6 +456,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\map.c">
+			</File>
+			<File
 				RelativePath=".\md5.c">
 			</File>
 			<File
@@ -1166,6 +1169,9 @@
 			</File>
 			<File
 				RelativePath="macros.h">
+			</File>
+			<File
+				RelativePath=".\map.h">
 			</File>
 			<File
 				RelativePath="md5.h">

@@ -48,8 +48,8 @@ enum Sprites {
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
-	SPR_PIN_UP = SPR_OPENTTD_BASE + 62,   // pin icon 
-	SPR_PIN_DOWN = SPR_OPENTTD_BASE + 63,
+	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon 
+	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 63,
 	
 	
 	/* Network GUI sprites */
