@@ -572,7 +572,7 @@ extern __inline__ unsigned short lzo_rotr16(unsigned short value, int shift)
  * copyright string in the executable of your product.
  */
 
-static const lzo_byte __lzo_copyright[] =
+const lzo_byte __lzo_copyright[] =
 #if !defined(__LZO_IN_MINLZO)
 	LZO_VERSION_STRING;
 #else
