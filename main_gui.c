@@ -376,6 +376,13 @@ void ShowRenameSignWindow(SignStruct *ss)
 void ShowRenameWaypointWindow(Waypoint *cp)
 {
 	int id = cp - _waypoints;
+
+	/* Are we allowed to change the name of the waypoint? */
+	if (!CheckTileOwnership(cp->xy)) {
+		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME, GET_TILE_X(cp->xy) * 16, GET_TILE_Y(cp->xy) * 16);
+		return;
+	}
+
 	_rename_id = id;
 	_rename_what = 1;
 	SetDParam(0, id);
