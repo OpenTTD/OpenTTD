@@ -762,8 +762,8 @@ static const SettingDesc misc_settings[] = {
 static const SettingDesc network_settings[] = {
 	{"port",					SDT_UINT | SDT_NOSAVE,	(void*)3978,	&_network_client_port,	NULL},
 	{"server_port",		SDT_UINT | SDT_NOSAVE,	(void*)3979,	&_network_server_port,	NULL},
-	{"sync_freq",			SDT_UINT | SDT_NOSAVE,	(void*)4,			&_network_sync_freq,		NULL},
-	{"ahead_frames",	SDT_UINT | SDT_NOSAVE,	(void*)5,			&_network_ahead_frames, NULL},
+	{"sync_freq",			SDT_UINT16 | SDT_NOSAVE,	(void*)4,			&_network_sync_freq,		NULL},
+	{"ahead_frames",	SDT_UINT16 | SDT_NOSAVE,	(void*)5,			&_network_ahead_frames, NULL},
 	{NULL,						0,											NULL,					NULL,										NULL}
 };
 

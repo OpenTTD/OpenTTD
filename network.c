@@ -1096,6 +1096,7 @@ void NetworkSend()
 			SyncPacket sp;
 			uint new_max;
 
+			_network_ahead_frames = _network_sync_freq + 1;
 
 			ready_all=false;
 
@@ -1106,7 +1107,7 @@ void NetworkSend()
 				for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
 					count++;
 					ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
-					cs->timeout-=5;
+					if (!cs->ready) cs->timeout-=5;
 					if (cs->timeout == 0) {
 						SET_DPARAM16(0,count);
 						ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
@@ -1122,7 +1123,9 @@ void NetworkSend()
 			_not_packet = 0;
 
 			new_max = max(_frame_counter + (int)_network_ahead_frames, _frame_counter_max);
-
+			
+			DEBUG(net,3) ("net: serv: sync max=%i, seed1=%i, seed2=%i",new_max,_sync_seed_1,_sync_seed_2);
+			
 			sp.packet_length = sizeof(sp);
 			sp.packet_type = 1;
 			sp.frames = new_max - _frame_counter_max;
@@ -1511,6 +1514,7 @@ if (_network_available) {
 	IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
 	IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
 	IConsoleVarRegister("net_ready_ahead",&_network_ready_ahead,ICONSOLE_VAR_UINT16);
+	IConsoleVarRegister("net_sync_freq",&_network_sync_freq,ICONSOLE_VAR_UINT16);
 	} else {
 	DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
 	}
@@ -1636,7 +1640,7 @@ if (incomming) {
 
 	if ((_networking) && (!_networking_server) && (_frame_counter+_network_ready_ahead >= _frame_counter_max)) {
 			// send the "i" am ready message to the server
-			// [_network_ready_ahead] frame before "i" reach the frame-limit
+			// [_network_ready_ahead] frames before "i" reach the frame-limit
 			NetworkSendReadyPacket();
 		}
 

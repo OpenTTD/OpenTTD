@@ -227,8 +227,8 @@ VARDEF uint16 _network_game_count;
 VARDEF uint _network_client_port;
 VARDEF uint _network_server_port;
 
-VARDEF uint _network_sync_freq;
-VARDEF uint _network_ahead_frames;
+VARDEF uint16 _network_sync_freq;
+VARDEF uint16 _network_ahead_frames;
 
 VARDEF uint32 _sync_seed_1, _sync_seed_2;
 
