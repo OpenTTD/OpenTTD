@@ -169,6 +169,17 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\origveh.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating Original Vehicle names file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;"
+					Outputs="lang\origveh.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\polish.txt">
 			<FileConfiguration
 				Name="Debug|Win32">

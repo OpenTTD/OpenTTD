@@ -487,6 +487,8 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 	}
 }
 
+extern void StartupEconomy();
+
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {

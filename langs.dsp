@@ -110,8 +110,8 @@ SOURCE=.\lang\galician.txt
 # Begin Custom Build
 InputPath=.\lang\galician.txt
 
-"lang\galican.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	strgen\debug\strgen.exe lang\galican.txt
+"lang\galician.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\galician.txt
 
 # End Custom Build
 # End Source File
@@ -156,6 +156,17 @@ InputPath=.\lang\norwegian.txt
 
 "lang\norwegian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	strgen\debug\strgen.exe lang\norwegian.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=.\lang\origveh.txt
+# Begin Custom Build
+InputPath=.\lang\origveh.txt
+
+"lang\origveh.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\origveh.txt
 
 # End Custom Build
 # End Source File
