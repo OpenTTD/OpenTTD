@@ -34,6 +34,32 @@ static byte * const _playlists[] = {
 	msf.custom_2,
 };
 
+// Map the order of the song names to the numbers of the midi filenames
+static const int midi_idx[] = {
+	 0, // Tycoon DELUXE Theme
+	 2, // Easy Driver
+	 3, // Little Red Diesel
+	17, // Cruise Control
+	 7, // Don't Walk!
+	 9, // Fell Apart On Me
+	 4, // City Groove
+	19, // Funk Central
+	 6, // Stoke It
+	12, // Road Hog
+	 5, // Aliens Ate My Railway
+	 1, // Snarl Up
+	18, // Stroll On
+	10, // Can't Get There From Here
+	 8, // Sawyer's Tune
+	13, // Hold That Train!
+	21, // Movin' On
+	15, // Goss Groove
+	16, // Small Town
+	14, // Broomer's Oil Rag
+	20, // Jammit
+	11  // Hard Drivin'
+};
+
 
 static void SkipToPrevSong()
 {
@@ -82,7 +108,8 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[256];
-	sprintf(filename, "%sgm_tt%.2d.gm",  _path.gm_dir, _music_wnd_cursong - 1);
+	snprintf(filename, sizeof(filename), "%sgm_tt%.2d.gm",
+		_path.gm_dir, midi_idx[_music_wnd_cursong - 1]);
 	_music_driver->play_song(filename);
 }
 
