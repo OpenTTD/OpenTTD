@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "string.h"
 #include "strings.h"
+#include "table/sprites.h"
 #include "network.h"
 #include "saveload.h"
 

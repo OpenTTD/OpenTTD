@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "spritecache.h"
 #include "strings.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
 #include "viewport.h"

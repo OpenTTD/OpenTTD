@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "gfx.h"
 #include "spritecache.h"
+#include "table/sprites.h"
 #include "fileio.h"
 #include "newgrf.h"
 #include "md5.h"

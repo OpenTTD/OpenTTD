@@ -1,10 +1,6 @@
 #ifndef TTD_H
 #define TTD_H
 
-// FIXME: Include only where really needed.
-// include sprites
-#include "table/sprites.h"
-
 #ifndef VARDEF
 #define VARDEF extern
 #endif

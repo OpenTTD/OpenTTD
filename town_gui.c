@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "debug.h"
 #include "strings.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "town.h"
 #include "window.h"
