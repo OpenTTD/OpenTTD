@@ -9,6 +9,10 @@
 #include <stdarg.h>
 #include "console.h"
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 // ** main console ** //
 static bool _iconsole_inited;
 static byte* _iconsole_buffer[80];
@@ -48,7 +52,32 @@ static const WindowDesc _iconsole_window_desc = {
 /*  end of header  */
 /* *************** */
 
-void IConsoleClearCommand()
+static void IConsoleAppendClipboard()
+{
+#ifdef WIN32
+	if (IsClipboardFormatAvailable(CF_TEXT)) {
+		byte * data;
+		HGLOBAL cbuf;
+		int i;
+
+		OpenClipboard(NULL);
+		cbuf = GetClipboardData(CF_TEXT);
+		data = (byte *) GlobalLock(cbuf);
+
+		i=0;
+		while (IS_INT_INSIDE(data[i], 32, 256)) {
+			_iconsole_cmdline[_iconsole_cmdpos]=data[i];
+			i++;
+			_iconsole_cmdpos++;
+			}
+
+		GlobalUnlock(cbuf);
+		CloseClipboard();
+	}
+#endif
+}
+
+static void IConsoleClearCommand()
 {
 int i;
 for (i=0; i<255; i++) _iconsole_cmdline[i]=0;
@@ -104,6 +133,11 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		e->keypress.cont=false;
+		if (e->keypress.keycode == (WKC_CTRL | 'V'))
+			{
+			IConsoleAppendClipboard();
+			SetWindowDirty(w);
+			} else
 		if (e->keypress.keycode == (WKC_UP))
 			{
 			IConsoleCmdBufferNavigate(+1);
