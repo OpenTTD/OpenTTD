@@ -234,14 +234,15 @@ static void GetVideoModes(void) {
 
 	modes = SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE + (_fullscreen ? SDL_FULLSCREEN : 0));
 
-	_all_modes = (int)modes == -1;
-
-	if(!modes) {
+	if(modes == NULL)
 		error("sdl: no modes available");
-	} else if((int) modes == -1) {
+
+	_all_modes = (modes == (void*)-1);
+
+	if (_all_modes) {
 		// all modes available, put some default ones here
 		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
-		_num_resolutions = sizeof(default_resolutions) / (sizeof(uint16)*2);
+		_num_resolutions = lengthof(default_resolutions);
 	} else {
 		int n = 0;
 		for(i = 0; modes[i]; i++) {
@@ -257,12 +258,12 @@ static void GetVideoModes(void) {
 				if (j == n) {
 					_resolutions[n][0] = w;
 					_resolutions[n][1] = h;
-					if (++n == sizeof(_resolutions) / (sizeof(uint16)*2)) break;
+					if (++n == lengthof(_resolutions)) break;
 				}
 			}
 		}
 		_num_resolutions = n;
-		qsort(_resolutions, n, sizeof(uint16)*2, compare_res);
+		qsort(_resolutions, n, sizeof(_resolutions[0]), compare_res);
 	}
 }
 
