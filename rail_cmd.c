@@ -113,29 +113,36 @@ static bool CheckTrackCombination(byte map5, byte trackbits, byte flags)
 {
 	_error_message = STR_1001_IMPOSSIBLE_TRACK_COMBINATION;
 
-	if ((map5&RAIL_TYPE_MASK) == RAIL_TYPE_SIGNALS) {
+	switch (map5 & RAIL_TYPE_MASK) {
+		case RAIL_TYPE_NORMAL:
+			if (map5 & trackbits) {
+				_error_message = STR_1007_ALREADY_BUILT;
+				return false;
+			}
 
-		if (map5 & trackbits) {
-			_error_message = STR_1007_ALREADY_BUILT;
+			if (flags & DC_NO_RAIL_OVERLAP) {
+				// Computer players are not allowed to intersect pieces of rail.
+				map5 |= trackbits;
+				return
+					map5 == (RAIL_BIT_UPPER | RAIL_BIT_LOWER) ||
+					map5 == (RAIL_BIT_LEFT  | RAIL_BIT_RIGHT);
+			} else {
+				return true;
+			}
+
+		case RAIL_TYPE_SIGNALS:
+			if (map5 & trackbits) {
+				_error_message = STR_1007_ALREADY_BUILT;
+				return false;
+			}
+
+			map5 |= trackbits;
+			return
+				map5 == (RAIL_TYPE_SIGNALS | RAIL_BIT_UPPER | RAIL_BIT_LOWER) ||
+				map5 == (RAIL_TYPE_SIGNALS | RAIL_BIT_LEFT  | RAIL_BIT_RIGHT);
+
+		default:
 			return false;
-		}
-
-		map5 |= trackbits;
-		return (map5 == (RAIL_TYPE_SIGNALS|RAIL_BIT_UPPER|RAIL_BIT_LOWER) || map5 == (RAIL_TYPE_SIGNALS|RAIL_BIT_LEFT|RAIL_BIT_RIGHT));
-
-	} else if ((map5&RAIL_TYPE_MASK) == RAIL_TYPE_NORMAL) {
-		_error_message = STR_1007_ALREADY_BUILT;
-		if (map5 & trackbits)
-			return false;
-
-		// Computer players are not allowed to intersect pieces of rail.
-		if (!(flags&DC_NO_RAIL_OVERLAP))
-			return true;
-
-		map5 |= trackbits;
-		return (map5 == (RAIL_BIT_UPPER|RAIL_BIT_LOWER) || map5 == (RAIL_BIT_LEFT|RAIL_BIT_RIGHT));
-	} else {
-		return false;
 	}
 }
 
