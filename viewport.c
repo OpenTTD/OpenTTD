@@ -20,7 +20,7 @@ typedef struct StringSpriteToDraw {
 	struct StringSpriteToDraw *next;
 	int16 x;
 	int16 y;
-	uint32 params[2];
+	uint32 params[3];
 	uint16 width;
 } StringSpriteToDraw;
 
@@ -499,7 +499,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 }
 
 /* Returns a StringSpriteToDraw */
-void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2)
+void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2, uint32 params_3)
 {
 	ViewportDrawer *vd = _cur_vd;
 	StringSpriteToDraw *ss;
@@ -518,6 +518,7 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	ss->y = y;
 	ss->params[0] = params_1;
 	ss->params[1] = params_2;
+	ss->params[2] = params_3;
 	ss->width = 0;
 
 	*vd->last_string = ss;
@@ -751,7 +752,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1) {
 
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, STR_2001, t->townnametype, t->townnameparts);
+				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001, t->townnametype, t->townnameparts, t->population);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -765,7 +766,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1*2) {
 
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, STR_2001, t->townnametype, t->townnameparts);
+				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001, t->townnametype, t->townnameparts, t->population);
 			}
 		}
 	} else {
@@ -780,8 +781,8 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_2*4) {
 
-				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_2002, t->townnametype, t->townnameparts);
-				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_2003, t->townnametype, t->townnameparts);
+				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_2002, t->townnametype, t->townnameparts, 0);
+				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_2003, t->townnametype, t->townnameparts, 0);
 			}
 		}
 	}
@@ -809,7 +810,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1) {
 
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities);
+				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities, 0);
 				if (sstd != NULL) {
 					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
 					sstd->width = st->sign.width_1;
@@ -827,7 +828,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1*2) {
 
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities);
+				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities, 0);
 				if (sstd != NULL) {
 					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
 					sstd->width = st->sign.width_1;
@@ -848,7 +849,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_2*4) {
 
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305D_0, st->index, st->facilities);
+				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305D_0, st->index, st->facilities, 0);
 				if (sstd != NULL) {
 					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
 					sstd->width = st->sign.width_2 | 0x8000;
@@ -880,7 +881,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_1) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0);
+				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = ss->sign.width_1;
 					sstd->color = 14;
@@ -897,7 +898,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_1*2) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0);
+				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = ss->sign.width_1;
 					sstd->color = 14;
@@ -915,7 +916,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_2*4) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2807, ss->str, 0);
+				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2807, ss->str, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = ss->sign.width_2 | 0x8000;
 					sstd->color = 14;
@@ -948,7 +949,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_1) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_1;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -965,7 +966,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_1*2) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_1;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -983,7 +984,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_2*4) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, cp - _waypoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, cp - _waypoints, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_2 | 0x8000;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -1111,9 +1112,10 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
+		SetDParam(2, ss->params[2]);
 		if (_display_opt & DO_TRANS_BUILDINGS && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag, otherwise colors from _string_colormap are assumed. */
-			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, 
+			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string,
 			           (_color_list[ss->color].window_color_bgb | IS_PALETTE_COLOR));
 		} else {
 			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, 16);

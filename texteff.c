@@ -281,7 +281,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 					(int16)(dpi->left + dpi->width) <= te->x ||
 					(int16)(dpi->top + dpi->height) <= te->y)
 						continue;
-			AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2);
+			AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
 		}
 	} else if (dpi->zoom == 1) {
 		for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
@@ -294,7 +294,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 					(dpi->left + dpi->width) <= te->x ||
 					(dpi->top + dpi->height) <= te->y)
 						continue;
-			AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2);
+			AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2, 0);
 		}
 
 	}

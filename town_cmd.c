@@ -171,11 +171,32 @@ static bool IsCloseToTown(uint tile, uint dist)
 	return false;
 }
 
+static void MarkTownSignDirty(Town *t)
+{
+	MarkAllViewportsDirty(
+		t->sign.left-6,
+		t->sign.top-3,
+		t->sign.left+t->sign.width_1*4+12,
+		t->sign.top + 45
+	);
+}
+
+void UpdateTownVirtCoord(Town *t)
+{
+	MarkTownSignDirty(t);
+	Point pt = RemapCoords2(GET_TILE_X(t->xy)*16, GET_TILE_Y(t->xy)*16);
+	SetDParam(0, t->townnametype);
+	SetDParam(1, t->townnameparts);
+	SetDParam(2, t->population);
+	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001);
+	MarkTownSignDirty(t);
+}
 
 static void ChangePopulation(Town *t, int mod)
 {
 	t->population += mod;
 	InvalidateWindow(WC_TOWN_VIEW, t->index);
+	UpdateTownVirtCoord(t);
 
 	if (_town_sort_order & 2) _town_sort_dirty = true;
 }
@@ -456,7 +477,9 @@ no_slope:
 			return false;
 		}
 
-		tile = TILE_ADD(tile, _roadblock_tileadd[dir]);
+		/* Can somebody explain for what this is needed? :s */
+		// tile = TILE_ADD(tile, _roadblock_tileadd[dir]);
+		return true;
 	}
 }
 
@@ -812,13 +835,6 @@ static void UpdateTownRadius(Town *t)
 		t->radius[4] = mass * 3;
 		//debug("%d (->%d): %d %d %d %d\n", t->num_houses, mass, t->radius[0], t->radius[1], t->radius[3], t->radius[4]);
 	}
-}
-
-static void UpdateTownVirtCoord(Town *t)
-{
-	Point pt = RemapCoords2(GET_TILE_X(t->xy)*16, GET_TILE_Y(t->xy)*16);
-	SetDParam(0, t->townnameparts);
-	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24, t->townnametype);
 }
 
 static void CreateTownName(Town *t1)
@@ -1407,11 +1423,12 @@ void ExpandTown(Town *t)
 
 	_generating_world = true;
 
-	amount = ((int)Random()&3) + 3;
+	/* The more houses, the faster we grow */
+	amount = RandomRange(t->num_houses / 10) + 3;
 	t->num_houses += amount;
 	UpdateTownRadius(t);
 
-	n = amount * 4;
+	n = amount * 10;
 	do GrowTown(t); while (--n);
 
 	t->num_houses -= amount;

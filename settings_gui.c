@@ -10,6 +10,7 @@
 #include "newgrf.h"
 #include "network.h"
 #include "console.h"
+#include "town.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -526,6 +527,19 @@ int32 AiNew_PatchActive_Warning(int32 p1)
   return 0;
 }
 
+int32 PopulationInLabelActive(int32 p1)
+{
+	Town *t;
+
+	FOR_ALL_TOWNS(t) {
+		if (t->xy) {
+			UpdateTownVirtCoord(t);
+		}
+	}
+
+	return 0;
+}
+
 int32 InvisibleTreesActive(int32 p1)
 {
 	MarkWholeScreenDirty();
@@ -598,6 +612,7 @@ static const PatchEntry _patches_ui[] = {
 	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, "toolbar_pos", &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
 	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, "window_snap_radius", &_patches.window_snap_radius,     1, 32,  1, NULL},
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	"invisible_trees", &_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_POPULATION_IN_LABEL, "population_in_label", &_patches.population_in_label, 0, 1, 1, &PopulationInLabelActive},
 };
 
 static const PatchEntry _patches_construction[] = {

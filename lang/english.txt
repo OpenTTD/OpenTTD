@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autorenew vehicle when it gets 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duration of error message: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL		:{LTBLUE}Show the population of a town in his label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
@@ -1482,6 +1483,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Road/rail level crossing
 
 ##id 0x2000
 STR_2000_TOWNS							:{WHITE}Towns
+STR_TOWN_LABEL_POP					:{WHITE}{STRING} ({COMMA16})
 STR_2001							:{WHITE}{STRING}
 STR_2002							:{TINYFONT}{BLACK}{STRING}
 STR_2003							:{TINYFONT}{WHITE}{STRING}

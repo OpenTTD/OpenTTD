@@ -179,6 +179,8 @@ typedef struct Patches {
 
 	byte drag_signals_density; // many signals density
 	bool ainew_active;  // Is the new AI active?
+
+	bool population_in_label; // Show the population of a town in his label?
 } Patches;
 
 VARDEF Patches _patches;

@@ -74,6 +74,7 @@ struct Town {
 };
 
 
+void UpdateTownVirtCoord(Town *t);
 void InitializeTown();
 void ShowTownViewWindow(uint town);
 void DeleteTown(Town *t);
