@@ -883,6 +883,9 @@ static void LoadSpriteTables()
 
 		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
+		load_index = SPR_AUTORAIL_BASE;
+		load_index += LoadGrfFile("autorail.grf", load_index, i++);
+
 		load_index = SPR_CANALS_BASE;
 		load_index += LoadGrfFile("canalsw.grf", load_index, i++);
 

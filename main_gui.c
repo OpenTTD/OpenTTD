@@ -111,7 +111,19 @@ void HandleOnEditText(WindowEvent *e) {
 	}
 }
 
-// this code is shared for the majority of the pushbuttons
+/**
+ * This code is shared for the majority of the pushbuttons.
+ * Handles e.g. the pressing of a button (to build things), playing of click sound and sets certain parameters
+ *
+ * @param w Window which called the function
+ * @param widget ID of the widget (=button) that called this function
+ * @param cursor How should the cursor image change? E.g. cursor with depot image in it
+ * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
+ * @param placeproc Procedure which will be called when someone clicks on the map
+ 
+ * @return true if the button is clicked, false if it's unclicked
+ */
+
 bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc)
 {
 	uint32 mask = 1 << widget;

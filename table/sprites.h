@@ -44,7 +44,8 @@ enum Sprites {
 	/* Extra graphic spritenumbers */
 	SPR_CANALS_BASE		= 5126,
 	SPR_SLOPES_BASE		= SPR_CANALS_BASE + 70,
-	SPR_OPENTTD_BASE	= SPR_SLOPES_BASE + 74,		//5270
+	SPR_AUTORAIL_BASE		= SPR_SLOPES_BASE + 78,
+	SPR_OPENTTD_BASE	= SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 

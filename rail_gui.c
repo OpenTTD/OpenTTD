@@ -232,7 +232,7 @@ static void BuildRailClick_NW(Window *w)
 
 static void BuildRailClick_AutoRail(Window *w)
 {
-	HandlePlacePushButton(w, 8, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
+	HandlePlacePushButton(w, 8, _cur_railtype + SPR_CURSOR_AUTORAIL, VHM_RAIL, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
@@ -266,7 +266,7 @@ static void BuildRailClick_Station(Window *w)
 
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
+	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
 }
 
 static void BuildRailClick_Bridge(Window *w)
@@ -319,6 +319,10 @@ static void DoRailroadTrack(int mode)
 		CMD_BUILD_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
 }
+
+/* This code was used for ludde's special autorail autocomplete.
+ * It analyzes the adjecent tiles and bases it's decision which
+ * rail piece to place on this.
 
 typedef struct {
 	byte bit, a,b, mouse;
@@ -432,7 +436,9 @@ static int GetBestFit1x1(int x, int y)
 
 	return best;
 }
+*/
 
+// This function is more or less a hack because DoRailroadTrack() would otherwise screw up
 static void SwapSelection()
 {
 	TileHighlightData *thd = &_thd;
@@ -441,6 +447,8 @@ static void SwapSelection()
 	thd->selstart.y = thd->selend.y & ~0xF;
 	thd->selend = pt;
 }
+
+/* see above, residue from ludde's special autorail autocomplete
 
 static bool Check2x1AutoRail(int mode)
 {
@@ -474,46 +482,61 @@ static bool Check2x1AutoRail(int mode)
 
 	return false;
 }
-
+*/
 
 static void HandleAutodirPlacement()
 {
 	TileHighlightData *thd = &_thd;
 	int bit;
+	int dx = thd->selstart.x - (thd->selend.x&~0xF);
+	int dy = thd->selstart.y - (thd->selend.y&~0xF);
 
-	if (thd->drawstyle == HT_RECT) {
-		int dx = thd->selstart.x - (thd->selend.x&~0xF);
-		int dy = thd->selstart.y - (thd->selend.y&~0xF);
-
-		if (dx == 0 && dy == 0 ) {
-			// 1x1 tile
-			bit = GetBestFit1x1(thd->selend.x, thd->selend.y);
-			if (bit == -1) return;
-			GenericPlaceRail(TILE_FROM_XY(thd->selend.x, thd->selend.y), bit);
-		} else if (dx == 0) {
-			if (dy == -16) {
-				if (Check2x1AutoRail(0)) return;
-			} else if (dy == 16) {
-				if (Check2x1AutoRail(1)) return;
-			}
-			// same x coordinate
-			DoRailroadTrack(VPM_FIX_X);
+	if (thd->drawstyle & HT_RAIL) { // one tile case
+		bit = thd->drawstyle & 0xF;
+		GenericPlaceRail(TILE_FROM_XY(thd->selend.x, thd->selend.y), bit);
+	} else if ( !(thd->drawstyle & 0xE) ) { // x/y dir
+		if (dx == 0) { // Y dir
+			DoRailroadTrack(1);
 		} else {
-			// same y coordinate
-			// check it's it -16 or 16, then we must check if it should be normal tiles or special tiles.
-			if (dx == -16) {
-				if (Check2x1AutoRail(2)) return;
-			} else if (dx == 16) {
-				if (Check2x1AutoRail(3)) return;
-			}
-			DoRailroadTrack(VPM_FIX_Y);
+			DoRailroadTrack(2);
 		}
-	} else {
-		DoRailroadTrack(thd->drawstyle & 1 ? 0 : 3);
+	} else if (myabs(dx)+myabs(dy) >= 32) { // long line (more than 2 tiles)
+		if(thd->drawstyle == (HT_LINE | HT_DIR_HU))
+			DoRailroadTrack(0);
+		if(thd->drawstyle == (HT_LINE | HT_DIR_HL))
+			DoRailroadTrack(3);
+		if(thd->drawstyle == (HT_LINE | HT_DIR_VL))
+			DoRailroadTrack(3);
+		if(thd->drawstyle == (HT_LINE | HT_DIR_VR))
+			DoRailroadTrack(0);
+	} else { // 2x1 pieces line
+		if(thd->drawstyle == (HT_LINE | HT_DIR_HU)) {
+			DoRailroadTrack(0);
+		} else if (thd->drawstyle == (HT_LINE | HT_DIR_HL)) {
+			SwapSelection();
+			DoRailroadTrack(0);
+			SwapSelection();
+		} else if (thd->drawstyle == (HT_LINE | HT_DIR_VL)) {
+			if(dx == 0) {
+				SwapSelection();
+				DoRailroadTrack(0);
+				SwapSelection();
+			} else {
+				DoRailroadTrack(3);
+			}
+		} else if (thd->drawstyle == (HT_LINE | HT_DIR_VR)) {
+			if(dx == 0) {
+				DoRailroadTrack(0);
+			} else {
+				SwapSelection();
+				DoRailroadTrack(3);
+				SwapSelection();
+			}
+		}
 	}
 }
 
-static void HandleAutoSignalPlacement()
+static void HandleAutoSignalPlacement(void)
 {
 	TileHighlightData *thd = &_thd;
 	int mode = 0;
@@ -525,7 +548,7 @@ static void HandleAutoSignalPlacement()
 	if (dx == 0 && dy == 0 ) // 1x1 tile signals
 		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
 	else { // signals have been dragged
-		if (thd->drawstyle == HT_RECT) { // X,Y direction
+		if (!(thd->drawstyle & 0xE)) { // X,Y direction
 			if (dx == 0)
 				mode = VPM_FIX_X;
 			else if (dy == 0)
@@ -533,16 +556,18 @@ static void HandleAutoSignalPlacement()
 
 			trackstat = 0xC0;
 		}	else { // W-E or N-S direction
-			mode = thd->drawstyle & 1 ? 0 : 3;
+			if ((thd->drawstyle & 0xF) == 2 || (thd->drawstyle & 0xF) == 5)
+				mode = 0;
+			else
+				mode = 3;
 
 			if (dx == dy || abs(dx - dy) == 16) // North<->South track |
 				trackstat = (thd->drawstyle & 1) ? 0x20 : 0x10;
 			else if (dx == -dy || abs(dx + dy) == 16) // East<->West track --
-				trackstat = (thd->drawstyle & 1) ? 4 : 8;
+				trackstat = (thd->drawstyle & 1) ? 8 : 4;
 		}
-
-		/* _patches.drag_signals_density is given as a parameter such that each user in a network
-		 * game can specify his/her own signal density */
+		// _patches.drag_signals_density is given as a parameter such that each user in a network
+		// game can specify his/her own signal density
 		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
 		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8) | (_patches.drag_signals_density << 24),
 		CcPlaySound1E,
