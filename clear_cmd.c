@@ -562,6 +562,7 @@ void TileLoopClearHelper(TileIndex tile)
 				img_1 = 1;
 			else
 				img_1 = 0;
+			break;
 
 		default:
 			img_1 = 0;
@@ -599,7 +600,7 @@ void TileLoopClearHelper(TileIndex tile)
 
 	switch (GetTileType(TILE_ADDXY(tile, 0, 1))) {
 		case MP_CLEAR:
-			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
+			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 0, 1)] & 0x1C) >> 2];
 			break;
 
 		case MP_TREES:
