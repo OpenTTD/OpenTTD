@@ -4,6 +4,7 @@
 #include "viewport.h"
 #include "player.h"
 #include "gui.h"
+#include "station.h"
 #include "economy.h"
 #include "town.h"
 
@@ -16,15 +17,6 @@ typedef struct DrawTileUnmovableStruct {
 	byte z_size;
 	byte unused;
 } DrawTileUnmovableStruct;
-
-typedef struct DrawTileSeqStruct {
-	int8 delta_x;
-	int8 delta_y;
-	int8 delta_z;
-	byte width,height;
-	byte unk;
-	SpriteID image;
-} DrawTileSeqStruct;
 
 #include "table/unmovable_land.h"
 
@@ -77,18 +69,16 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		}
 	} else {
 		const DrawTileSeqStruct *dtss;
-		const byte *t;
+		const DrawTileSprites *t;
 
 		if (ti->tileh) DrawFoundation(ti, ti->tileh);
 
 		ormod = PLAYER_SPRITE_COLOR(_map_owner[ti->tile]);
 
-		t = _unmovable_display_datas[ti->map5 & 0x7F];
-		DrawGroundSprite(*(const uint16*)t | ormod);
+		t = &_unmovable_display_datas[ti->map5 & 0x7F];
+		DrawGroundSprite(t->ground_sprite | ormod);
 
-		t += sizeof(uint16);
-
-		for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
+		foreach_draw_tile_seq(dtss, t->seq) {
 			image =	dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
 				image |= ormod;

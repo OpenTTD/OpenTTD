@@ -1717,22 +1717,13 @@ static int32 RemoveDock(Station *st, uint32 flags)
 #include "table/station_land.h"
 
 
-typedef struct DrawTileSeqStruct {
-	int8 delta_x;
-	int8 delta_y;
-	int8 delta_z;
-	byte width,height;
-	byte unk;
-	SpriteID image;
-} DrawTileSeqStruct;
-
 
 static void DrawTile_Station(TileInfo *ti)
 {
 	uint32 image_or_modificator;
 	uint32 base_img, image;
 	const DrawTileSeqStruct *dtss;
-	const byte *t;
+	const DrawTileSprites *t;
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
@@ -1749,32 +1740,24 @@ static void DrawTile_Station(TileInfo *ti)
 	if (ti->tileh != 0 && (ti->map5 < 0x4C || ti->map5 > 0x51))
 		DrawFoundation(ti, ti->tileh);
 
-	t = _station_display_datas[ti->map5];
+	t = &_station_display_datas[ti->map5];
 
-	image = *(const uint32*)t;
-	t += sizeof(uint32);
+	image = t->ground_sprite;
 	if (image & 0x8000)
 		image |= image_or_modificator;
 	DrawGroundSprite(image + base_img);
 
-	for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
-		if ((byte)dtss->delta_z != 0x80) {
-			image =	dtss->image + base_img;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
-				if (image&0x8000) image |= image_or_modificator;
-			} else {
-				image = (image & 0x3FFF) | 0x03224000;
-			}
+	foreach_draw_tile_seq(dtss, t->seq) {
+		image =	dtss->image + base_img;
+		if (_display_opt & DO_TRANS_BUILDINGS) {
+			if (image&0x8000) image |= image_or_modificator;	
+		} else {
+			image = (image & 0x3FFF) | 0x03224000;
+		}
 
+		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y, dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
 		} else {
-			image = *(const uint32*)&dtss->height + base_img; /* endian ok */
-
-			if (_display_opt & DO_TRANS_BUILDINGS) {
-				if (image&0x8000) image |= image_or_modificator;
-			} else {
-				image = (image & 0x3FFF) | 0x03224000;
-			}
 			AddChildSpriteScreen(image, dtss->delta_x, dtss->delta_y);
 		}
 	}
@@ -1784,22 +1767,21 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image)
 {
 	uint32 ormod, img;
 	const DrawTileSeqStruct *dtss;
-	const byte *t;
+	const DrawTileSprites *t;
 
 	/* baseimage */
 	railtype *= TRACKTYPE_SPRITE_PITCH;
 
 	ormod = PLAYER_SPRITE_COLOR(_local_player);
 
-	t = _station_display_datas[image];
+	t = &_station_display_datas[image];
 
-	img = *(const uint32*)t;
-	t += sizeof(uint32);
+	img = t->ground_sprite;
 	if (img & 0x8000)
 		img |= ormod;
 	DrawSprite(img + railtype, x, y);
 
-	for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
+	foreach_draw_tile_seq(dtss, t->seq) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		DrawSprite((dtss->image | ormod) + railtype, x + pt.x, y + pt.y);
 	}
