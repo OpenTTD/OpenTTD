@@ -1352,8 +1352,12 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	// makes sure that we do not replace a plane with a helicopter or vise versa
-	if (HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0)) return CMD_ERROR;
+	if (v->type == VEH_Aircraft) {
+		if (HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0)) return CMD_ERROR;
+	}
 
+	// makes sure that the player can actually buy the new engine. Renewing is still allowed to outdated engines
+	if (!HASBIT(DEREF_ENGINE(new_engine_type)->player_avail, v->owner) && old_engine_type != new_engine_type) return CMD_ERROR;
 
 	switch (v->type) {
 		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
