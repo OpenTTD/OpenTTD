@@ -100,6 +100,14 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		closedir(dir);
 	}
 
+	{
+		/* XXX ugly global variables ... */
+		byte order = _savegame_sort_order;
+		_savegame_sort_order = 2; // sort ascending by name
+		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
+		_savegame_sort_order = order;
+	}
+
 	// this is where to start sorting
 	sort_start = _fios_count;
 
