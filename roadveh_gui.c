@@ -155,15 +155,15 @@ change_int:
 }
 
 static const Widget _roadveh_details_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   339,     0,    13, STR_900C_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,   340,   379,     0,    13, STR_01AA_NAME, STR_902E_NAME_ROAD_VEHICLE},
-{     WWT_IMGBTN,    14,     0,   379,    14,    55, 0x0},
-{     WWT_IMGBTN,    14,     0,   379,    56,    88, 0x0},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    89,    94, STR_0188, STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    95,   100, STR_0189, STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,    14,    11,   379,    89,   100, 0x0},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   339,     0,    13, STR_900C_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,    14,   340,   379,     0,    13, STR_01AA_NAME,		STR_902E_NAME_ROAD_VEHICLE},
+{     WWT_IMGBTN,    14,     0,   379,    14,    55, 0x0,							STR_NULL},
+{     WWT_IMGBTN,    14,     0,   379,    56,    88, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,    14,    11,   379,    89,   100, 0x0,							STR_NULL},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _roadveh_details_desc = {
@@ -276,17 +276,17 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _roadveh_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_9002, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0},
-{          WWT_6,    14,     2,   229,    16,   101, 0},
-{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0, STR_901C_CURRENT_VEHICLE_ACTION},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB, STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2AE, STR_901F_SEND_VEHICLE_TO_DEPOT},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2CB, STR_9020_FORCE_VEHICLE_TO_TURN_AROUND},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2, STR_901D_SHOW_VEHICLE_S_ORDERS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3, STR_9021_SHOW_ROAD_VEHICLE_DETAILS},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_9002,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
+{          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
+{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_901C_CURRENT_VEHICLE_ACTION},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB,			STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2AE,			STR_901F_SEND_VEHICLE_TO_DEPOT},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2CB,			STR_9020_FORCE_VEHICLE_TO_TURN_AROUND},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2,			STR_901D_SHOW_VEHICLE_S_ORDERS},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3,			STR_9021_SHOW_ROAD_VEHICLE_DETAILS},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _roadveh_view_desc = {
@@ -441,14 +441,14 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _new_road_veh_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   247,     0,    13, STR_9006_NEW_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   236,    14,   125, 0x801, STR_9026_ROAD_VEHICLE_SELECTION},
-{  WWT_SCROLLBAR,    14,   237,   247,    14,   125, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   247,   126,   177, 0x0, 0},
-{ WWT_PUSHTXTBTN,    14,     0,   123,   178,   189, STR_9007_BUILD_VEHICLE, STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
-{ WWT_PUSHTXTBTN,    14,   124,   247,   178,   189, STR_9034_RENAME, STR_9035_RENAME_ROAD_VEHICLE_TYPE},
-{      WWT_LAST},
+{     WWT_MATRIX,    14,     0,   236,    14,   125, 0x801,									STR_9026_ROAD_VEHICLE_SELECTION},
+{  WWT_SCROLLBAR,    14,   237,   247,    14,   125, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    14,     0,   247,   126,   177, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,   123,   178,   189, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
+{ WWT_PUSHTXTBTN,    14,   124,   247,   178,   189, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _new_road_veh_desc = {
@@ -679,7 +679,7 @@ static const Widget _road_depot_widgets[] = {
 {  WWT_SCROLLBAR,    14,   304,   314,    14,    55, 0x0,  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   156,    56,    67, STR_9004_NEW_VEHICLES, STR_9023_BUILD_NEW_ROAD_VEHICLE},
 { WWT_PUSHTXTBTN,    14,   157,   314,    56,    67, STR_00E4_LOCATION, STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _road_depot_desc = {
@@ -917,12 +917,12 @@ static const Widget _player_roadveh_widgets[] = {
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											0},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
 {     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_883E_BUILD_NEW_TRAINS_REQUIRES},
-{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											0},
-{      WWT_LAST},
+{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											STR_NULL},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _player_roadveh_desc = {
@@ -939,10 +939,10 @@ static const Widget _other_player_roadveh_widgets[] = {
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
 {      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											0},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											STR_NULL},
 {     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _other_player_roadveh_desc = {

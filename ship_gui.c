@@ -115,12 +115,12 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _ship_refit_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   239,     0,    13, STR_983B_REFIT, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   239,    14,   135, 0x0, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,    14,     0,   239,   136,   157, 0x0},
-{ WWT_PUSHTXTBTN,    14,     0,   239,   158,   169, STR_983C_REFIT_SHIP, STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   239,     0,    13, STR_983B_REFIT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   239,    14,   135, 0x0,									STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+{     WWT_IMGBTN,    14,     0,   239,   136,   157, 0x0,									STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,   239,   158,   169, STR_983C_REFIT_SHIP,	STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _ship_refit_desc = {
@@ -270,15 +270,15 @@ change_int:
 
 
 static const Widget _ship_details_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   364,     0,    13, STR_9811_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,    14,   365,   404,     0,    13, STR_01AA_NAME, STR_982F_NAME_SHIP},
-{     WWT_IMGBTN,    14,     0,   404,    14,    55, 0x0},
-{     WWT_IMGBTN,    14,     0,   404,    56,    88, 0x0},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    89,    94, STR_0188,STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,    14,     0,    10,    95,   100, STR_0189,STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,    14,    11,   404,    89,   100, 0x0},
-{      WWT_LAST},
+{ WWT_PUSHTXTBTN,    14,   365,   404,     0,    13, STR_01AA_NAME,		STR_982F_NAME_SHIP},
+{     WWT_IMGBTN,    14,     0,   404,    14,    55, 0x0,							STR_NULL},
+{     WWT_IMGBTN,    14,     0,   404,    56,    88, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,    14,    11,   404,    89,   100, 0x0,							STR_NULL},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _ship_details_desc = {
@@ -428,14 +428,14 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _new_ship_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   243,    14,   109, 0x401, STR_9825_SHIP_SELECTION_LIST_CLICK},
-{  WWT_SCROLLBAR,    14,   244,   254,    14,   109, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   254,   110,   161, 0x0},
-{ WWT_PUSHTXTBTN,    14,     0,   126,   162,   173, STR_9809_BUILD_SHIP, STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
-{ WWT_PUSHTXTBTN,    14,   127,   254,   162,   173, STR_9836_RENAME, STR_9837_RENAME_SHIP_TYPE},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX,    14,     0,   243,    14,   109, 0x401,								STR_9825_SHIP_SELECTION_LIST_CLICK},
+{  WWT_SCROLLBAR,    14,   244,   254,    14,   109, 0x0,									STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    14,     0,   254,   110,   161, 0x0,									STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,   126,   162,   173, STR_9809_BUILD_SHIP,	STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
+{ WWT_PUSHTXTBTN,    14,   127,   254,   162,   173, STR_9836_RENAME,			STR_9837_RENAME_SHIP_TYPE},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _new_ship_desc = {
@@ -564,17 +564,17 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _ship_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_980F, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0},
-{          WWT_6,    14,     2,   229,    16,   101, 0},
-{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0, STR_9827_CURRENT_SHIP_ACTION_CLICK},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB, STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2B0, STR_982A_SEND_SHIP_TO_DEPOT},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2B4, STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2, STR_9828_SHOW_SHIP_S_ORDERS},
-{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3, STR_982B_SHOW_SHIP_DETAILS},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   249,     0,    13, STR_980F,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
+{          WWT_6,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
+{ WWT_PUSHIMGBTN,    14,     0,   249,   104,   115, 0x0,				STR_9827_CURRENT_SHIP_ACTION_CLICK},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    14,    31, 0x2AB,			STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    32,    49, 0x2B0,			STR_982A_SEND_SHIP_TO_DEPOT},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    50,    67, 0x2B4,			STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    68,    85, 0x2B2,			STR_9828_SHOW_SHIP_S_ORDERS},
+{ WWT_PUSHIMGBTN,    14,   232,   249,    86,   103, 0x2B3,			STR_982B_SHOW_SHIP_DETAILS},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _ship_view_desc = {
@@ -809,7 +809,7 @@ static const Widget _ship_depot_widgets[] = {
 {  WWT_SCROLLBAR,    14,   294,   304,    14,    61, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   151,    62,    73, STR_9804_NEW_SHIPS, STR_9820_BUILD_NEW_SHIP},
 { WWT_PUSHTXTBTN,    14,   152,   304,    62,    73, STR_00E4_LOCATION, STR_9822_CENTER_MAIN_VIEW_ON_SHIP},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _ship_depot_desc = {
@@ -1082,14 +1082,14 @@ static const Widget _player_ships_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										0},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										0},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_9804_NEW_SHIPS,		STR_9824_BUILD_NEW_SHIPS_REQUIRES},
-{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										0},
-{      WWT_LAST},
+{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										STR_NULL},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _player_ships_desc = {
@@ -1104,12 +1104,12 @@ static const Widget _other_player_ships_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_TIP},
-{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										0},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,										STR_NULL},
 {   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,							STR_SORT_TIP},
-{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										0},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _other_player_ships_desc = {

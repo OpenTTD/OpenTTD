@@ -183,7 +183,7 @@ static const Widget _build_docks_toolb_widgets[] = {
 {      WWT_PANEL,     7,   132,   153,    14,    35, 4791,												STR_0329_PURCHASE_LAND_FOR_FUTURE},
 {      WWT_PANEL,     7,   154,   175,    14,    35, SPR_OPENTTD_BASE+65,					STR_BUILD_CANALS_TIP},
 {      WWT_PANEL,     7,   176,   197,    14,    35, SPR_CANALS_BASE+69,					STR_BUILD_LOCKS_TIP},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
@@ -231,8 +231,8 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 static const Widget _build_dock_station_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   147,     0,    13, STR_3068_DOCK,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   147,    14,    45, 0x0,						0},
-{      WWT_LAST},
+{      WWT_PANEL,     7,     0,   147,    14,    45, 0x0,						STR_NULL},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_dock_station_desc = {
@@ -295,10 +295,10 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 static const Widget _build_docks_depot_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,												STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   203,    14,    85, 0x0,															0},
+{      WWT_PANEL,     7,     0,   203,    14,    85, 0x0,															STR_NULL},
 {      WWT_PANEL,    14,     3,   100,    17,    82, 0x0,															STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
 {      WWT_PANEL,    14,   103,   200,    17,    82, 0x0,															STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_depot_desc = {

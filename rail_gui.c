@@ -681,33 +681,33 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_railroad_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{      WWT_PANEL,     7,    110,  113,    14,    35, 0x0, 0x0},
+{      WWT_PANEL,     7,    110,  113,    14,    35, 0x0,			STR_NULL},
 {      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 0, STR_BUILD_AUTORAIL_TIP},
 
-{      WWT_PANEL,     7,    0,     21,    14,    35, 0x4E3, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E4, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E5, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4E6, STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    0,     21,    14,    35, 0x4E3,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E4,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E5,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4E6,		STR_1018_BUILD_RAILROAD_TRACK},
 
-{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF, STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7, STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6, STR_018F_RAISE_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   180,   201,    14,    35, 0x50E, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   180,   201,    14,    35, 0x50E,		STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512, STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B, STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22, STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97E, STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA, STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7, STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97E,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
 {      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 25, STR_CONVERT_RAIL_TIP},
 
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_railroad_desc = {
@@ -719,32 +719,32 @@ static const WindowDesc _build_railroad_desc = {
 };
 
 static const Widget _build_monorail_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100B_MONORAIL_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{      WWT_PANEL,     7,   110,   113,    14,    35, 0x0, 0x0},
+{      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 {      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 1, STR_BUILD_AUTORAIL_TIP},
 
-{      WWT_PANEL,     7,     0,    21,    14,    35, 0x4E7, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E8, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E9, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4EA, STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,     0,    21,    14,    35, 0x4E7,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4E8,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4E9,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4EA,		STR_1018_BUILD_RAILROAD_TRACK},
 
-{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF, STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7, STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6, STR_018F_RAISE_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
 {      WWT_PANEL,     7,   180,   201,    14,    35, SPR_OPENTTD_BASE + 12, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512, STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B, STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22, STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97F, STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA, STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7, STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   330,   351,    14,    35, 0x97F,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
 {      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 27, STR_CONVERT_RAIL_TIP},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_monorail_desc = {
@@ -756,32 +756,32 @@ static const WindowDesc _build_monorail_desc = {
 };
 
 static const Widget _build_maglev_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   417,     0,    13, STR_100C_MAGLEV_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{      WWT_PANEL,     7,   110,   113,    14,    35, 0x0, 0x0},
+{      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 {      WWT_PANEL,     7,    88,   109,    14,    35, SPR_OPENTTD_BASE + 2, STR_BUILD_AUTORAIL_TIP},
 
-{      WWT_PANEL,     7,     0,    21,    14,    35, 0x4EB, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4EC, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4EE, STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4ED, STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,     0,    21,    14,    35, 0x4EB,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    22,    43,    14,    35, 0x4EC,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    44,    65,    14,    35, 0x4EE,		STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,     7,    66,    87,    14,    35, 0x4ED,		STR_1018_BUILD_RAILROAD_TRACK},
 
-{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF, STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7, STR_018E_LOWER_A_CORNER_OF_LAND},
-{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6, STR_018F_RAISE_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,     7,   136,   157,    14,    35, 0x2B7,		STR_018E_LOWER_A_CORNER_OF_LAND},
+{      WWT_PANEL,     7,   158,   179,    14,    35, 0x2B6,		STR_018F_RAISE_A_CORNER_OF_LAND},
 {      WWT_PANEL,     7,   180,   201,    14,    35, SPR_OPENTTD_BASE + 13, STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
 
-{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512, STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B, STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22, STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,     7,   330,   351,    14,    35, 0x980, STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA, STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7, STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{      WWT_PANEL,     7,   224,   265,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,     7,   266,   287,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,     7,   288,   329,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,     7,   330,   351,    14,    35, 0x980,		STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
 {      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 29, STR_CONVERT_RAIL_TIP},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_maglev_desc = {
@@ -939,34 +939,34 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _station_builder_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   147,    14,   199, 0x0, 0},
-{      WWT_PANEL,    14,     7,    72,    26,    73, 0x0, STR_304E_SELECT_RAILROAD_STATION},
-{      WWT_PANEL,    14,    75,   140,    26,    73, 0x0, STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,     7,     0,   147,    14,   199, 0x0,					STR_NULL},
+{      WWT_PANEL,    14,     7,    72,    26,    73, 0x0,					STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,    14,    75,   140,    26,    73, 0x0,					STR_304E_SELECT_RAILROAD_STATION},
 
-{   WWT_CLOSEBOX,    14,    22,    36,    87,    98, STR_00CB_1, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,    37,    51,    87,    98, STR_00CC_2, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,    52,    66,    87,    98, STR_00CD_3, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,    67,    81,    87,    98, STR_00CE_4, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,    82,    96,    87,    98, STR_00CF_5, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,    97,   111,    87,    98, STR_0335_6, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{   WWT_CLOSEBOX,    14,   112,   126,    87,    98, STR_0336_7, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    22,    36,    87,    98, STR_00CB_1,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    37,    51,    87,    98, STR_00CC_2,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    52,    66,    87,    98, STR_00CD_3,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    67,    81,    87,    98, STR_00CE_4,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    82,    96,    87,    98, STR_00CF_5,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,    97,   111,    87,    98, STR_0335_6,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{   WWT_CLOSEBOX,    14,   112,   126,    87,    98, STR_0336_7,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
 
-{   WWT_CLOSEBOX,    14,    22,    36,   112,   123, STR_00CB_1, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,    37,    51,   112,   123, STR_00CC_2, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,    52,    66,   112,   123, STR_00CD_3, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,    67,    81,   112,   123, STR_00CE_4, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,    82,    96,   112,   123, STR_00CF_5, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,    97,   111,   112,   123, STR_0335_6, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{   WWT_CLOSEBOX,    14,   112,   126,   112,   123, STR_0336_7, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    22,    36,   112,   123, STR_00CB_1,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    37,    51,   112,   123, STR_00CC_2,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    52,    66,   112,   123, STR_00CD_3,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    67,    81,   112,   123, STR_00CE_4,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    82,    96,   112,   123, STR_00CF_5,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,    97,   111,   112,   123, STR_0335_6,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{   WWT_CLOSEBOX,    14,   112,   126,   112,   123, STR_0336_7,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
 
 //{   WWT_CLOSEBOX,    14,    14,    73,   137,   148, STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 //{   WWT_CLOSEBOX,    14,    74,   133,   137,   148, STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WWT_CLOSEBOX,    14,    37,   111,   126,   137, STR_DRAG_DROP, STR_STATION_DRAG_DROP},
 {   WWT_CLOSEBOX,    14,    14,    73,   152,   163, STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {   WWT_CLOSEBOX,    14,    74,   133,   152,   163, STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _station_builder_desc = {
@@ -1022,14 +1022,14 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_depot_widgets[] = {
-{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   139,     0,    13, STR_1014_TRAIN_DEPOT_ORIENTATION,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   139,    14,   121, 0x0, 0},
-{      WWT_PANEL,    14,    71,   136,    17,    66, 0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,    14,    71,   136,    69,   118, 0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,    14,     3,    68,    69,   118, 0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,    14,     3,    68,    17,    66, 0x0, STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_LAST},
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,     7,    11,   139,     0,    13, STR_1014_TRAIN_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     7,     0,   139,    14,   121, 0x0,			STR_NULL},
+{      WWT_PANEL,    14,    71,   136,    17,    66, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,    14,    71,   136,    69,   118, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,    14,     3,    68,    69,   118, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,    14,     3,    68,    17,    66, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_depot_desc = {

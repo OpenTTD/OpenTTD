@@ -183,20 +183,19 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _terraform_widgets[] = {
-{ WWT_CLOSEBOX,     7,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION,     7,  11, 157,   0,  13, STR_LANDSCAPING_TOOLBAR, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_CLOSEBOX,     7,   0,  10,   0,  13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{  WWT_CAPTION,     7,  11, 157,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 
+{    WWT_PANEL,     7,   0,  21,  14,  35,  703,										STR_018D_DEMOLISH_BUILDINGS_ETC},
+{    WWT_PANEL,     7,  22,  43,  14,  35,  695,										STR_018E_LOWER_A_CORNER_OF_LAND},
+{    WWT_PANEL,     7,  44,  65,  14,  35,  694,										STR_018F_RAISE_A_CORNER_OF_LAND},
+{    WWT_PANEL,     7,  66,  87,  14,  35,  SPR_OPENTTD_BASE+68,		STR_LEVEL_LAND_TOOLTIP},
+{    WWT_PANEL,     7,  88, 109,  14,  35, 4791,										STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{    WWT_PANEL,     7, 110, 113,  14,  35,  0x0,										STR_NULL},
+{    WWT_PANEL,     7, 114, 135,  14,  35,  742,										STR_0185_PLANT_TREES_PLACE_SIGNS},
+{    WWT_PANEL,     7, 136, 157,  14,  35, SPR_OPENTTD_BASE+70,			STR_0289_PLACE_SIGN},
 
-{    WWT_PANEL,     7,   0,  21,  14,  35,  703, STR_018D_DEMOLISH_BUILDINGS_ETC},
-{    WWT_PANEL,     7,  22,  43,  14,  35,  695, STR_018E_LOWER_A_CORNER_OF_LAND},
-{    WWT_PANEL,     7,  44,  65,  14,  35,  694, STR_018F_RAISE_A_CORNER_OF_LAND},
-{    WWT_PANEL,     7,  66,  87,  14,  35,  SPR_OPENTTD_BASE+68, STR_LEVEL_LAND_TOOLTIP},
-{    WWT_PANEL,     7,  88, 109,  14,  35, 4791, STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{    WWT_PANEL,     7, 110, 113,  14,  35,    0, 0x0},
-{    WWT_PANEL,     7, 114, 135,  14,  35,  742, STR_0185_PLANT_TREES_PLACE_SIGNS},
-{    WWT_PANEL,     7, 136, 157,  14,  35, SPR_OPENTTD_BASE+70, STR_0289_PLACE_SIGN},
-
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _terraform_desc = {

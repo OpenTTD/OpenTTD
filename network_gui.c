@@ -142,7 +142,7 @@ static const Widget _network_game_window_widgets[] = {
 
 { WWT_PUSHTXTBTN,   BTC,   145,   255,   180,   191, STR_012E_CANCEL,							STR_NULL},
 { WWT_PUSHTXTBTN,   BTC,   270,   392,   180,   191, STR_NETWORK_JOIN_GAME,				STR_NULL},
-{       WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _network_game_window_desc = {
@@ -273,7 +273,7 @@ static const Widget _network_start_server_window_widgets[] = {
 { WWT_PUSHTXTBTN,   BTC,   110,   200,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NULL},
 { WWT_PUSHTXTBTN,   BTC,   210,   300,   180,   191, STR_NETWORK_LOAD_SCENARIO,			STR_NULL},
 { WWT_PUSHTXTBTN,   BTC,   310,   390,   180,   191, STR_012E_CANCEL,								STR_NULL},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _network_start_server_window_desc = {
@@ -382,7 +382,7 @@ static const Widget _network_lobby_window_widgets[] = {
 
 { WWT_PUSHTXTBTN,   BTC,    80,   180,   280,   291, STR_NETWORK_READY,					STR_NULL},
 { WWT_PUSHTXTBTN,   BTC,   220,   320,   280,   291, STR_012E_CANCEL,						STR_NULL},
-{       WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _network_lobby_window_desc = {

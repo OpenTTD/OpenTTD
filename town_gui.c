@@ -9,14 +9,14 @@
 #include "player.h"
 
 static const Widget _town_authority_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   316,    14,   105, 0x0, 0},
-{     WWT_IMGBTN,    13,     0,   305,   106,   157, 0x0, STR_2043_LIST_OF_THINGS_TO_DO_AT},
-{  WWT_SCROLLBAR,    13,   306,   316,   106,   157, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    13,     0,   316,   158,   209, 0x0, 0},
-{ WWT_PUSHTXTBTN,    13,     0,   316,   210,   221, STR_2042_DO_IT, STR_2044_CARRY_OUT_THE_HIGHLIGHTED},
-{      WWT_LAST},
+{     WWT_IMGBTN,    13,     0,   316,    14,   105, 0x0,							STR_NULL},
+{     WWT_IMGBTN,    13,     0,   305,   106,   157, 0x0,							STR_2043_LIST_OF_THINGS_TO_DO_AT},
+{  WWT_SCROLLBAR,    13,   306,   316,   106,   157, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    13,     0,   316,   158,   209, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,    13,     0,   316,   210,   221, STR_2042_DO_IT,	STR_2044_CARRY_OUT_THE_HIGHLIGHTED},
+{   WIDGETS_END},
 };
 
 extern const byte _town_action_costs[8];
@@ -276,13 +276,13 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 static const Widget _town_view_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    13,    11,   259,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,      0},
-{          WWT_6,    13,     2,   257,    16,   103, 0x0,      0},
-{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,      0},
-{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION, STR_200B_CENTER_THE_MAIN_VIEW_ON},
-{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL},
-{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0130_RENAME, STR_200C_CHANGE_TOWN_NAME},
-{      WWT_LAST},
+{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,      STR_NULL},
+{          WWT_6,    13,     2,   257,    16,   103, 0x0,      STR_NULL},
+{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,      STR_NULL},
+{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION,				STR_200B_CENTER_THE_MAIN_VIEW_ON},
+{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY,STR_2021_SHOW_INFORMATION_ON_LOCAL},
+{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0130_RENAME,					STR_200C_CHANGE_TOWN_NAME},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _town_view_desc = {
@@ -294,17 +294,17 @@ static const WindowDesc _town_view_desc = {
 };
 
 static const Widget _town_view_scen_widgets[] = {
-{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   184,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0},
-{          WWT_6,    13,     2,   257,    16,   103, 0x0},
-{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0},
-{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION, STR_200B_CENTER_THE_MAIN_VIEW_ON},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0},
-{ WWT_PUSHTXTBTN,    13,   185,   259,     0,    13, STR_0130_RENAME, STR_200C_CHANGE_TOWN_NAME},
-{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_023C_EXPAND, STR_023B_INCREASE_SIZE_OF_TOWN},
-{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0290_DELETE, STR_0291_DELETE_THIS_TOWN_COMPLETELY},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    13,    11,   184,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,								STR_NULL},
+{          WWT_6,    13,     2,   257,    16,   103, 0x0,								STR_NULL},
+{     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION,	STR_200B_CENTER_THE_MAIN_VIEW_ON},
+{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
+{ WWT_PUSHTXTBTN,    13,   185,   259,     0,    13, STR_0130_RENAME,		STR_200C_CHANGE_TOWN_NAME},
+{ WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_023C_EXPAND,		STR_023B_INCREASE_SIZE_OF_TOWN},
+{ WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0290_DELETE,		STR_0291_DELETE_THIS_TOWN_COMPLETELY},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _town_view_scen_desc = {
@@ -340,7 +340,7 @@ static const Widget _town_directory_widgets[] = {
 { WWT_PUSHTXTBTN,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,STR_SORT_TIP},
 {     WWT_IMGBTN,    13,     0,   196,    26,   189, 0x0, STR_200A_TOWN_NAMES_CLICK_ON_NAME},
 {  WWT_SCROLLBAR,    13,   197,   207,    14,   189, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 

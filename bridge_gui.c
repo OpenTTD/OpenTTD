@@ -79,7 +79,7 @@ static const Widget _build_bridge_widgets[] = {
 {    WWT_CAPTION,     7,    11,   199,     0,    13, STR_100D_SELECT_RAIL_BRIDGE,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX,     7,     0,   188,    14,   101, 0x401,												STR_101F_BRIDGE_SELECTION_CLICK},
 {  WWT_SCROLLBAR,     7,   189,   199,    14,   101, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_bridge_desc = {
@@ -96,7 +96,7 @@ static const Widget _build_road_bridge_widgets[] = {
 {    WWT_CAPTION,     7,    11,   199,     0,    13, STR_1803_SELECT_ROAD_BRIDGE,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX,     7,     0,   188,    14,   101, 0x401,												STR_101F_BRIDGE_SELECTION_CLICK},
 {  WWT_SCROLLBAR,     7,   189,   199,    14,   101, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_bridge_desc = {

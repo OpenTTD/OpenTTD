@@ -244,9 +244,9 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 static const byte _news_items_age[] = {60, 60, 90, 60, 90, 30, 150, 30, 90, 180};
 
 static const Widget _news_type13_widgets[] = {
-{      WWT_PANEL,    15,     0,   429,     0,   169, 0x0},
-{      WWT_PANEL,    15,     0,    10,     0,    11, 0x0},
-{      WWT_LAST},
+{      WWT_PANEL,    15,     0,   429,     0,   169, 0x0,	STR_NULL},
+{      WWT_PANEL,    15,     0,    10,     0,    11, 0x0,	STR_NULL},
+{   WIDGETS_END},
 };
 
 static WindowDesc _news_type13_desc = {
@@ -258,9 +258,9 @@ static WindowDesc _news_type13_desc = {
 };
 
 static const Widget _news_type2_widgets[] = {
-{      WWT_PANEL,    15,     0,   429,     0,   129, 0x0},
-{      WWT_PANEL,    15,     0,    10,     0,    11, 0x0},
-{      WWT_LAST},
+{      WWT_PANEL,    15,     0,   429,     0,   129, 0x0,	STR_NULL},
+{      WWT_PANEL,    15,     0,    10,     0,    11, 0x0,	STR_NULL},
+{   WIDGETS_END},
 };
 
 static WindowDesc _news_type2_desc = {
@@ -272,11 +272,11 @@ static WindowDesc _news_type2_desc = {
 };
 
 static const Widget _news_type0_widgets[] = {
-{      WWT_PANEL,     5,     0,   279,    14,    86, 0x0},
-{   WWT_CLOSEBOX,     5,     0,    10,     0,    13, STR_00C5},
-{    WWT_CAPTION,     5,    11,   279,     0,    13, STR_012C_MESSAGE},
-{          WWT_6,     5,     2,   277,    16,    64, 0},
-{      WWT_LAST},
+{      WWT_PANEL,     5,     0,   279,    14,    86, 0x0,								STR_NULL},
+{   WWT_CLOSEBOX,     5,     0,    10,     0,    13, STR_00C5,					STR_NULL},
+{    WWT_CAPTION,     5,    11,   279,     0,    13, STR_012C_MESSAGE,	STR_NULL},
+{          WWT_6,     5,     2,   277,    16,    64, 0x0,								STR_NULL},
+{   WIDGETS_END},
 };
 
 static WindowDesc _news_type0_desc = {
@@ -562,7 +562,7 @@ static const Widget _message_history_widgets[] = {
 {    WWT_CAPTION,    13,    11,   399,     0,    13, STR_MESSAGE_HISTORY,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,    13,     0,   388,    14,   139, 0x0, STR_MESSAGE_HISTORY_TIP},
 {  WWT_SCROLLBAR,    13,   389,   399,    14,   139, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _message_history_desc = {
@@ -642,34 +642,34 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _message_options_widgets[] = {
-{   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   369,     0,    13, STR_0204_MESSAGE_OPTIONS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    13,     0,   369,    14,   172, 0x0},
-{   WWT_CLOSEBOX,     3,     2,    61,    26,    37, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    26,    37, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    38,    49, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    38,    49, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    50,    61, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    50,    61, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    62,    73, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    62,    73, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    74,    85, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    74,    85, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    86,    97, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    86,    97, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,    98,   109, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,    98,   109, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,   110,   121, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,   110,   121, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,   122,   133, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,   122,   133, STR_02B9_FULL},
-{   WWT_CLOSEBOX,     3,     2,    61,   134,   145, STR_02B8_SUMMARY},
-{   WWT_CLOSEBOX,     3,    62,   121,   134,   145, STR_02B9_FULL},
+{   WWT_CLOSEBOX,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    13,    11,   369,     0,    13, STR_0204_MESSAGE_OPTIONS,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,    13,     0,   369,    14,   172, 0x0,											STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    26,    37, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    26,    37, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    38,    49, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    38,    49, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    50,    61, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    50,    61, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    62,    73, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    62,    73, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    74,    85, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    74,    85, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    86,    97, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    86,    97, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,    98,   109, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,    98,   109, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,   110,   121, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,   110,   121, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,   122,   133, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,   122,   133, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     2,    61,   134,   145, STR_02B8_SUMMARY,				STR_NULL},
+{   WWT_CLOSEBOX,     3,    62,   121,   134,   145, STR_02B9_FULL,						STR_NULL},
 
-{ WWT_PUSHTXTBTN,     3,    15,   170,   154,   165, STR_MESSAGES_DISABLE_ALL, STR_NULL },
-{ WWT_PUSHTXTBTN,     3,   200,   355,   154,   165, STR_MESSAGES_ENABLE_ALL, STR_NULL },
+{ WWT_PUSHTXTBTN,     3,    15,   170,   154,   165, STR_MESSAGES_DISABLE_ALL,STR_NULL },
+{ WWT_PUSHTXTBTN,     3,   200,   355,   154,   165, STR_MESSAGES_ENABLE_ALL,	STR_NULL },
 
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _message_options_desc = {

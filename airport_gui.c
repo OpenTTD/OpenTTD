@@ -113,7 +113,7 @@ static const Widget _air_toolbar_widgets[] = {
 {      WWT_PANEL,     7,    64,    85,    14,    35, 0x2B7,												STR_018E_LOWER_A_CORNER_OF_LAND},
 {      WWT_PANEL,     7,    86,   107,    14,    35, 0x2B6,												STR_018F_RAISE_A_CORNER_OF_LAND},
 {      WWT_PANEL,     7,   108,   129,    14,    35, 0x12B7,											STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 
@@ -196,7 +196,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 static const Widget _build_airport_picker_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   147,    14,   130, 0x0,													0},
+{      WWT_PANEL,     7,     0,   147,    14,   130, 0x0,													STR_NULL},
 {WWT_NODISTXTBTN,    14,     2,    73,    27,    38, STR_3059_SMALL,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {WWT_NODISTXTBTN,    14,    74,   145,    27,    38, STR_305A_LARGE,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {WWT_NODISTXTBTN,    14,     2,   145,    63,    74, STR_306B_HELIPORT,						STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
@@ -204,7 +204,7 @@ static const Widget _build_airport_picker_widgets[] = {
 {WWT_NODISTXTBTN,    14,     2,   145,    51,    62, STR_305AB_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {   WWT_CLOSEBOX,    14,    14,    73,    88,    98, STR_02DB_OFF,								STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {   WWT_CLOSEBOX,    14,    74,   133,    88,    98, STR_02DA_ON,									STR_3064_HIGHLIGHT_COVERAGE_AREA},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _build_airport_desc = {

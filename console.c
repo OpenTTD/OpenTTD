@@ -31,7 +31,7 @@ static byte _icursor_counter;
 
 // ** console window ** //
 static void IConsoleWndProc(Window *w, WindowEvent *e);
-static const Widget _iconsole_window_widgets[] = {{WWT_LAST}};
+static const Widget _iconsole_window_widgets[] = {{WIDGETS_END}};
 static const WindowDesc _iconsole_window_desc = {
 	0, 0, 2, 2,
 	WC_CONSOLE,0,

@@ -219,7 +219,7 @@ static const Widget _player_stations_widgets[] = {
 {    WWT_CAPTION,    14,    11,   357,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,    14,     0,   346,    14,   137, 0x0, STR_3057_STATION_NAMES_CLICK_ON},
 {  WWT_SCROLLBAR,    14,   347,   357,    14,   137, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_LAST},
+{   WIDGETS_END},
 };
 
 static const WindowDesc _player_stations_desc = {
@@ -243,29 +243,29 @@ void ShowPlayerStations(int player)
 }
 
 static const Widget _station_view_expanded_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0, 0},
-{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0, 0},
-{     WWT_IMGBTN,    14,     0,   248,    66,   197, 0x0, 0},
-{ WWT_PUSHTXTBTN,    14,     0,    82,   198,   209, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    83,   165,   198,   209, STR_3033_ACCEPTS, STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
-{ WWT_PUSHTXTBTN,    14,   166,   248,   198,   209, STR_0130_RENAME, STR_3055_CHANGE_NAME_OF_STATION},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
+{     WWT_IMGBTN,    14,     0,   248,    66,   197, 0x0,					STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    82,   198,   209, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,    14,    83,   165,   198,   209, STR_3033_ACCEPTS,	STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO},
+{ WWT_PUSHTXTBTN,    14,   166,   248,   198,   209, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{   WIDGETS_END},
 };
 
 static const Widget _station_view_widgets[] = {
-{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0, 0},
-{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,    14,     0,   248,    66,    97, 0x0, 0},
-{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0, 0},
-{ WWT_PUSHTXTBTN,    14,     0,    82,    98,   109, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION},
-{ WWT_PUSHTXTBTN,    14,    83,   165,    98,   109, STR_3032_RATINGS, STR_3054_SHOW_STATION_RATINGS},
-{ WWT_PUSHTXTBTN,    14,   166,   248,    98,   109, STR_0130_RENAME, STR_3055_CHANGE_NAME_OF_STATION},
-{      WWT_LAST},
+{    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
+{  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
+{      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
+{ WWT_PUSHTXTBTN,    14,     0,    82,    98,   109, STR_00E4_LOCATION,	STR_3053_CENTER_MAIN_VIEW_ON_STATION},
+{ WWT_PUSHTXTBTN,    14,    83,   165,    98,   109, STR_3032_RATINGS,	STR_3054_SHOW_STATION_RATINGS},
+{ WWT_PUSHTXTBTN,    14,   166,   248,    98,   109, STR_0130_RENAME,		STR_3055_CHANGE_NAME_OF_STATION},
+{   WIDGETS_END},
 };
 
 static void DrawStationViewWindow(Window *w)

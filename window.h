@@ -315,29 +315,31 @@ enum WindowWidgetBehaviours {
 enum WindowWidgetTypes {
 	WWT_EMPTY = 0,
 
-	WWT_IMGBTN = 1, /* button with image */
+	WWT_IMGBTN = 1,						/* button with image */
 	WWT_PANEL = WWT_IMGBTN,
-	WWT_PANEL_2 = 2,/* button with diff image when clicked */
+	WWT_PANEL_2 = 2,					/* button with diff image when clicked */
 
-	WWT_TEXTBTN = 3,/* button with text */
+	WWT_TEXTBTN = 3,					/* button with text */
 	WWT_CLOSEBOX = WWT_TEXTBTN,
-	WWT_4 = 4, /* button with diff text when clicked */
-	WWT_5 = 5, /* label */
-	WWT_6 = 6, /* combo box text area */
+	WWT_4 = 4,								/* button with diff text when clicked */
+	WWT_5 = 5,								/* label */
+	WWT_6 = 6,								/* combo box text area */
 	WWT_MATRIX = 7,
 	WWT_SCROLLBAR = 8,
-	WWT_FRAME = 9, /* frame */
+	WWT_FRAME = 9,						/* frame */
 	WWT_CAPTION = 10,
 
 	WWT_HSCROLLBAR = 11,
-	WWT_LAST = 12,
+	WWT_LAST = 12,						/* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK = 31,
 
-	WWT_PUSHTXTBTN = WWT_TEXTBTN | WWB_PUSHBUTTON,
-	WWT_PUSHIMGBTN = WWT_IMGBTN | WWB_PUSHBUTTON,
-	WWT_NODISTXTBTN = WWT_TEXTBTN | WWB_NODISBUTTON,
+	WWT_PUSHTXTBTN	= WWT_TEXTBTN	| WWB_PUSHBUTTON,
+	WWT_PUSHIMGBTN	= WWT_IMGBTN	| WWB_PUSHBUTTON,
+	WWT_NODISTXTBTN = WWT_TEXTBTN	| WWB_NODISBUTTON,
 };
+
+#define WIDGETS_END WWT_LAST,     0,     0,     0,     0,     0, 0, STR_NULL
 
 enum WindowFlags {
 	WF_TIMEOUT_SHL = 0,

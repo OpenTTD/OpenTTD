@@ -19,24 +19,24 @@ static void ShowSelectTutorialWindow()
 */
 
 static const Widget _select_game_widgets[] = {
-{    WWT_CAPTION,    13,     0,   335,     0,    13, STR_0307_OPENTTD},
-{     WWT_IMGBTN,    13,     0,   335,    14,   196, 0x0},
-{ WWT_PUSHTXTBTN,    12,    10,   167,    22,    33, STR_0140_NEW_GAME, STR_02FB_START_A_NEW_GAME},
-{ WWT_PUSHTXTBTN,    12,   168,   325,    22,    33, STR_0141_LOAD_GAME, STR_02FC_LOAD_A_SAVED_GAME_FROM},
+{    WWT_CAPTION,    13,     0,   335,     0,    13, STR_0307_OPENTTD,				STR_NULL},
+{     WWT_IMGBTN,    13,     0,   335,    14,   196, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,    12,    10,   167,    22,    33, STR_0140_NEW_GAME,				STR_02FB_START_A_NEW_GAME},
+{ WWT_PUSHTXTBTN,    12,   168,   325,    22,    33, STR_0141_LOAD_GAME,			STR_02FC_LOAD_A_SAVED_GAME_FROM},
 //{ WWT_PUSHTXTBTN,    12,    10,   167,   177,   188, STR_0142_TUTORIAL_DEMONSTRATION, STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS},
-{ WWT_PUSHTXTBTN,    12,    10,   167,   177,   188, STR_CONFIG_PATCHES, STR_CONFIG_PATCHES_TIP},
-{ WWT_PUSHTXTBTN,    12,    10,   167,    40,    51, STR_0220_CREATE_SCENARIO, STR_02FE_CREATE_A_CUSTOMIZED_GAME},
-{ WWT_PUSHTXTBTN,    12,    10,   167,   136,   147, STR_SINGLE_PLAYER, STR_02FF_SELECT_SINGLE_PLAYER_GAME},
-{ WWT_PUSHTXTBTN,    12,   168,   325,   136,   147, STR_MULTIPLAYER, STR_0300_SELECT_TWO_PLAYER_GAME},
-{ WWT_PUSHTXTBTN,    12,    10,   167,   159,   170, STR_0148_GAME_OPTIONS, STR_0301_DISPLAY_GAME_OPTIONS},
-{ WWT_PUSHTXTBTN,    12,   168,   325,   159,   170, STR_01FE_DIFFICULTY,STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
-{ WWT_PUSHTXTBTN,    12,   168,   325,    40,    51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
-{ WWT_PUSHTXTBTN,    12,   168,   325,   177,   188, STR_0304_QUIT, STR_0305_LEAVE_OPENTTD},
-{    WWT_PANEL_2,    12,    10,    85,    69,   122, 0x1312, STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2,    12,    90,   165,    69,   122, 0x1314, STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2,    12,   170,   245,    69,   122, 0x1316, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2,    12,   250,   325,    69,   122, 0x1318, STR_0311_SELECT_TOYLAND_LANDSCAPE},
-{      WWT_LAST},
+{ WWT_PUSHTXTBTN,    12,    10,   167,   177,   188, STR_CONFIG_PATCHES,			STR_CONFIG_PATCHES_TIP},
+{ WWT_PUSHTXTBTN,    12,    10,   167,    40,    51, STR_0220_CREATE_SCENARIO,STR_02FE_CREATE_A_CUSTOMIZED_GAME},
+{ WWT_PUSHTXTBTN,    12,    10,   167,   136,   147, STR_SINGLE_PLAYER,				STR_02FF_SELECT_SINGLE_PLAYER_GAME},
+{ WWT_PUSHTXTBTN,    12,   168,   325,   136,   147, STR_MULTIPLAYER,					STR_0300_SELECT_TWO_PLAYER_GAME},
+{ WWT_PUSHTXTBTN,    12,    10,   167,   159,   170, STR_0148_GAME_OPTIONS,		STR_0301_DISPLAY_GAME_OPTIONS},
+{ WWT_PUSHTXTBTN,    12,   168,   325,   159,   170, STR_01FE_DIFFICULTY,			STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
+{ WWT_PUSHTXTBTN,    12,   168,   325,    40,    51, STR_029A_PLAY_SCENARIO,	STR_0303_START_A_NEW_GAME_USING},
+{ WWT_PUSHTXTBTN,    12,   168,   325,   177,   188, STR_0304_QUIT,						STR_0305_LEAVE_OPENTTD},
+{    WWT_PANEL_2,    12,    10,    85,    69,   122, 0x1312,									STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{    WWT_PANEL_2,    12,    90,   165,    69,   122, 0x1314,									STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{    WWT_PANEL_2,    12,   170,   245,    69,   122, 0x1316,									STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{    WWT_PANEL_2,    12,   250,   325,    69,   122, 0x1318,									STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{   WIDGETS_END},
 };
 
 static void SelectGameWndProc(Window *w, WindowEvent *e) {
@@ -177,12 +177,12 @@ int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 static const Widget _ask_abandon_game_widgets[] = {
-{    WWT_TEXTBTN,     4,     0,    10,     0,    13, STR_00C5},
-{    WWT_CAPTION,     4,    11,   179,     0,    13, STR_00C7_QUIT},
-{     WWT_IMGBTN,     4,     0,   179,    14,    91, 0x0},
-{    WWT_TEXTBTN,    12,    25,    84,    72,    83, STR_00C9_NO},
-{    WWT_TEXTBTN,    12,    95,   154,    72,    83, STR_00C8_YES},
-{      WWT_LAST},
+{    WWT_TEXTBTN,     4,     0,    10,     0,    13, STR_00C5,			STR_NULL},
+{    WWT_CAPTION,     4,    11,   179,     0,    13, STR_00C7_QUIT,	STR_NULL},
+{     WWT_IMGBTN,     4,     0,   179,    14,    91, 0x0,						STR_NULL},
+{    WWT_TEXTBTN,    12,    25,    84,    72,    83, STR_00C9_NO,		STR_NULL},
+{    WWT_TEXTBTN,    12,    95,   154,    72,    83, STR_00C8_YES,	STR_NULL},
+{   WIDGETS_END},
 };
 
 static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
@@ -235,12 +235,12 @@ void AskExitGame()
 
 
 static const Widget _ask_quit_game_widgets[] = {
-{    WWT_TEXTBTN,     4,     0,    10,     0,    13, STR_00C5},
-{    WWT_CAPTION,     4,    11,   179,     0,    13, STR_0161_QUIT_GAME},
-{     WWT_IMGBTN,     4,     0,   179,    14,    91, 0x0},
-{    WWT_TEXTBTN,    12,    25,    84,    72,    83, STR_00C9_NO},
-{    WWT_TEXTBTN,    12,    95,   154,    72,    83, STR_00C8_YES},
-{      WWT_LAST},
+{    WWT_TEXTBTN,     4,     0,    10,     0,    13, STR_00C5,						STR_NULL},
+{    WWT_CAPTION,     4,    11,   179,     0,    13, STR_0161_QUIT_GAME,	STR_NULL},
+{     WWT_IMGBTN,     4,     0,   179,    14,    91, 0x0,									STR_NULL},
+{    WWT_TEXTBTN,    12,    25,    84,    72,    83, STR_00C9_NO,					STR_NULL},
+{    WWT_TEXTBTN,    12,    95,   154,    72,    83, STR_00C8_YES,				STR_NULL},
+{   WIDGETS_END},
 };
 
 static void AskQuitGameWndProc(Window *w, WindowEvent *e) {

@@ -385,8 +385,8 @@ static byte _dropdown_var1;
 static byte _dropdown_var2;
 
 static Widget _dropdown_menu_widgets[] = {
-{     WWT_IMGBTN,     0,     0, 0,     0, 0, 0x0},
-{      WWT_LAST},
+{     WWT_IMGBTN,     0,     0, 0,     0, 0, 0x0, STR_NULL},
+{   WIDGETS_END},
 };
 
 static int GetDropdownItem(Window *w)
