@@ -864,21 +864,28 @@ static void UpdateTownRadius(Town *t)
 	}
 }
 
-static void CreateTownName(Town *t1)
+static bool CreateTownName(uint32 *townnameparts)
 {
 	Town *t2;
 	char buf1[64];
 	char buf2[64];
 	uint32 r;
+	/* Do not set too low tries, since when we run out of names, we loop
+	 * for #tries only one time anyway - then we stop generating more
+	 * towns. Do not show it too high neither, since looping through all
+	 * the other towns may take considerable amount of time (10000 is
+	 * too much). */
+	int tries = 1000;
+	uint16 townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
 
-	t1->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+	assert(townnameparts);
 
 	for(;;) {
 restart:
 		r = Random();
 
 		SetDParam(0, r);
-		GetString(buf1, t1->townnametype);
+		GetString(buf1, townnametype);
 
 		// Check size and width
 		if (strlen(buf1) >= 31 || GetStringWidth(buf1) > 130)
@@ -886,15 +893,19 @@ restart:
 
 		FOR_ALL_TOWNS(t2) {
 			if (t2->xy != 0) {
+				// We can't just compare the numbers since
+				// several numbers may map to a single name.
 				SetDParam(0, t2->townnameparts);
 				GetString(buf2, t2->townnametype);
-				if (strcmp(buf1, buf2) == 0)
+				if (strcmp(buf1, buf2) == 0) {
+					if (tries-- < 0)
+						return false;
 					goto restart;
+				}
 			}
 		}
-		t1->townnameparts = r;
-
-		return;
+		*townnameparts = r;
+		return true;
 	}
 }
 
@@ -904,7 +915,7 @@ void UpdateTownMaxPass(Town *t)
 	t->max_mail = t->population >> 4;
 }
 
-static void DoCreateTown(Town *t, TileIndex tile)
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts)
 {
 	int x, i;
 
@@ -946,7 +957,8 @@ static void DoCreateTown(Town *t, TileIndex tile)
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
-	CreateTownName(t);
+	t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+	t->townnameparts = townnameparts;
 
 	UpdateTownVirtCoord(t);
 	_town_sort_dirty = true;
@@ -997,6 +1009,7 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tile = TILE_FROM_XY(x,y);
 	TileInfo ti;
 	Town *t;
+	uint32 townnameparts;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -1013,6 +1026,10 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (IsCloseToTown(tile, 20))
 		return_cmd_error(STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN);
 
+	// Get a unique name for the town.
+	if (!CreateTownName(&townnameparts))
+		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
+
 	// Allocate town struct
 	t = AllocateTown();
 	if (t == NULL)
@@ -1021,7 +1038,7 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// Create the town
 	if (flags & DC_EXEC) {
 		_generating_world = true;
-		DoCreateTown(t, tile);
+		DoCreateTown(t, tile, townnameparts);
 		_generating_world = false;
 	}
 	return 0;
@@ -1032,6 +1049,7 @@ Town *CreateRandomTown(uint attempts)
 	uint tile;
 	TileInfo ti;
 	Town *t;
+	uint32 townnameparts;
 
 	do {
 		// Generate a tile index not too close from the edge
@@ -1048,12 +1066,16 @@ Town *CreateRandomTown(uint attempts)
 		if (IsCloseToTown(tile, 20))
 			continue;
 
+		// Get a unique name for the town.
+		if (!CreateTownName(&townnameparts))
+			break;
+
 		// Allocate a town struct
 		t = AllocateTown();
 		if (t == NULL)
 			break;
 
-		DoCreateTown(t, tile);
+		DoCreateTown(t, tile, townnameparts);
 		return t;
 	} while (--attempts);
 	return NULL;
