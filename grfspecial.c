@@ -39,20 +39,29 @@ static int _param_max;
 static uint32 _ttdpatch_flags[8];
 
 
+enum grfspec_feature {
+	GSF_TRAIN,
+	GSF_ROAD,
+	GSF_SHIP,
+	GSF_AIRCRAFT,
+	GSF_STATION,
+};
+
+
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
 static const int _vehcounts[4] = {
-	NUM_TRAIN_ENGINES,
-	NUM_ROAD_ENGINES,
-	NUM_SHIP_ENGINES,
-	NUM_AIRCRAFT_ENGINES
+	/* GSF_TRAIN */    NUM_TRAIN_ENGINES,
+	/* GSF_ROAD */     NUM_ROAD_ENGINES,
+	/* GSF_SHIP */     NUM_SHIP_ENGINES,
+	/* GSF_AIRCRAFT */ NUM_AIRCRAFT_ENGINES
 };
 
 static const int _vehshifts[4] = {
-	0,
-	ROAD_ENGINES_INDEX,
-	SHIP_ENGINES_INDEX,
-	AIRCRAFT_ENGINES_INDEX,
+	/* GSF_TRAIN */    0,
+	/* GSF_ROAD */     ROAD_ENGINES_INDEX,
+	/* GSF_SHIP */     SHIP_ENGINES_INDEX,
+	/* GSF_AIRCRAFT */ AIRCRAFT_ENGINES_INDEX,
 };
 
 
@@ -450,11 +459,11 @@ static void VehicleChangeInfo(byte *buf, int len)
 	/* TODO: Only trains and ships are supported for now. */
 
 	static const VCI_Handler handler[5] = {
-		RailVehicleChangeInfo,
-		NULL,
-		ShipVehicleChangeInfo,
-		NULL,
-		NULL,
+		/* GSF_TRAIN */    RailVehicleChangeInfo,
+		/* GSF_ROAD */     NULL,
+		/* GSF_SHIP */     ShipVehicleChangeInfo,
+		/* GSF_AIRCRAFT */ NULL,
+		/* GSF_STATION */  NULL,
 	};
 
 	uint8 feature;
@@ -469,7 +478,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 	numinfo = buf[3];
 	engine = buf[4];
 
-	if (feature != 0 && feature != 2) {
+	if (feature != GSF_TRAIN && feature != GSF_SHIP) {
 		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported vehicle type %x, skipping.", feature);
 		return;
 	}
@@ -584,7 +593,7 @@ static void NewSpriteSet(byte *buf, int len)
 	check_length(len, 4, "NewSpriteSet");
 	feature = buf[1];
 
-	if (feature == 4) {
+	if (feature == GSF_STATION) {
 		_spriteset_start = 0;
 		grfmsg(GMS_WARN, "NewSpriteSet: Stations unsupported, skipping.");
 		return;
@@ -630,7 +639,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloaded = buf[3];
 	numloading = buf[4];
 
-	if (feature == 4) {
+	if (feature == GSF_STATION) {
 		grfmsg(GMS_WARN, "NewSpriteGroup: Stations unsupported, skipping.");
 		return;
 	}
@@ -758,7 +767,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	cidcount = buf[3 + idcount];
 	check_length(len, 4 + idcount + cidcount * 3, "VehicleMapSpriteGroup");
 
-	if (feature == 4) {
+	if (feature == GSF_STATION) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Stations unsupported, skipping.");
 		return;
 	}
