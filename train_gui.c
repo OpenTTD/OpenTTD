@@ -809,16 +809,29 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v;
+		Vehicle *v, *u;
 		StringID str;
 
 		v = GetVehicle(w->window_number);
 
 		w->disabled_state = (v->owner == _local_player) ? 0 : 0x380;
 
-		if (v->cargo_cap == 0) {
-			//we cannot refit this engine
-			SETBIT(w->disabled_state, 12);
+		SETBIT(w->disabled_state, 12);
+
+		/* See if any carriage can be refitted */
+		for ( u = v; u != NULL; u = u->next) {
+			if (_engine_refit_masks[u->engine_type] != 0) {
+				CLRBIT(w->disabled_state, 12);
+				/* We have a refittable carriage, bail out */
+				break;
+			}
+		}
+
+		/* Above code doesn't seem to handle non-newgrf engines, do it separately
+		TODO: handle engines which are NOT the head of the train, but don't break wagons */
+		if (v->cargo_cap != 0) {
+			/* we can refit this engine */
+			CLRBIT(w->disabled_state, 12);
 		}
 
 		/* draw widgets & caption */

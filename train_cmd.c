@@ -841,8 +841,12 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (dst_head->subtype == TS_Front_Engine)
 				UpdateTrainAcceleration(dst_head);
 			InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
+			/* Update the refit button */
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
 		}
 
+		/* I added this to so that the refit buttons get updated */
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, 12);
 		InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
 		RebuildVehicleLists();
 	}
