@@ -448,6 +448,7 @@ void SetDebugString(const char *s)
 		_debug_grf_level = v;
 		_debug_ai_level = v;
 		_debug_net_level = v;
+		_debug_map_level = v;
 	}
 
 	// individual levels
@@ -466,6 +467,7 @@ void SetDebugString(const char *s)
 		else if IS_LVL("grf") p = &_debug_grf_level;
 		else if IS_LVL("ai") p = &_debug_ai_level;
 		else if IS_LVL("net") p = &_debug_net_level;
+		else if IS_LVL("map") p = &_debug_map_level;
 		else {
 			ShowInfoF("Unknown debug level '%.*s'", s-t, t);
 			return;
