@@ -199,6 +199,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 			{
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DRIVE;
+				sprintf(fios->name, "%c:", 'A' + disk - 1);
 				sprintf(fios->title, "%c:", 'A' + disk - 1);
 			}
 		}
@@ -316,9 +317,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			{
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DRIVE;
-				fios->title[0] = disk + 'A'-1;
-				fios->title[1] = ':';
-				fios->title[2] = 0;
+				sprintf(fios->name, "%c:", 'A' + disk - 1);
+				sprintf(fios->title, "%c:", 'A' + disk - 1);
 			}
 		}
 

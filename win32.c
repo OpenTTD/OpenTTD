@@ -1673,6 +1673,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		for (s = drives; *s != '\0';) {
 			fios = FiosAlloc();
 			fios->type = FIOS_TYPE_DRIVE;
+			sprintf(fios->name, "%c:", s[0]);
 			sprintf(fios->title, "%c:", s[0]);
 			while (*s++ != '\0') {}
 		}
@@ -1777,6 +1778,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		for (s = drives; *s != '\0';) {
 			fios = FiosAlloc();
 			fios->type = FIOS_TYPE_DRIVE;
+			sprintf(fios->name, "%c:", s[0]);
 			sprintf(fios->title, "%c:", s[0]);
 			while (*s++ != '\0') {}
 		}
