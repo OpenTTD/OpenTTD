@@ -540,6 +540,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Selecteer 'nieuwe stijl muziek' prog
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Selecteer 'aangepast 1' programma
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Selecteer 'aangepast 2' programma
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Leeg huidig programma (alleen Aangepast 1 en Aangepast 2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Sla muziekinstellingen op
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klik op het nummer om aan programma toe te voegen (alleen Aangepast 1 en Aangepast 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Programmashuffle aan/uit
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Toon nummerselectiescherm
@@ -724,6 +725,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Voertuignamen
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standaard
 STR_02BF_CUSTOM							:Aangepast
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Sla aangepaste namen op
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Keuze van voertuignamen
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Sla aangepaste voertuignamen op
 
@@ -798,13 +800,16 @@ STR_02F8_EVERY_3_MONTHS						:Iedere 3 maanden
 STR_02F9_EVERY_6_MONTHS						:Iedere 6 maanden
 STR_02FA_EVERY_12_MONTHS					:Iedere 12 maanden
 STR_02FB_START_A_NEW_GAME					:{BLACK}Start een nieuw spel
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Laad een opgeslagen spel
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Bekijk voorbeelden
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Maak een eigen spelwereld/scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Kies een éénspelerspel
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Selecteer multipler spel van 2-8 spelers
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Bekijk opties
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Bekijk moeilijkheidsgraad
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Start een nieuw spel, gebaseerd op een scenario
 STR_0304_QUIT							:{BLACK}Afsluiten
+STR_0305_QUIT_OPENTTD						:{BLACK}Verlaat 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Bekijk voorbeeld
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...kan alleen in steden gebouwd worden
@@ -1348,6 +1353,7 @@ STR_NETWORK_GIVE_MONEY						:heeft je geld gegeven ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT					:{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
 
+STR_NETWORK_SEND						:{BLACK}Verstuur
 
 ############ end network gui strings
 

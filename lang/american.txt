@@ -540,6 +540,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Select 'new style music' program
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Select 'Custom 1' (user-defined) program
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Select 'Custom 2' (user-defined) program
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Clear current program (Custom1 or Custom2 only)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Save music settings
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Click on music track to add to current program (Custom1 or Custom2 only)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Toggle program shuffle on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Show music track selection window
@@ -724,6 +725,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Vehicle design names
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Default
 STR_02BF_CUSTOM							:Custom
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Save custom names
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Vehicle design names selection
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Save customized vehicle design names to disk
 
@@ -798,13 +800,16 @@ STR_02F8_EVERY_3_MONTHS						:Every 3 months
 STR_02F9_EVERY_6_MONTHS						:Every 6 months
 STR_02FA_EVERY_12_MONTHS					:Every 12 months
 STR_02FB_START_A_NEW_GAME					:{BLACK}Start a new game
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Load a saved game
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}View demonstrations/tutorials
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Create a customized game world/scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Select single-player game
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Select multiplayer game of 2-8 players
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Display game options
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Display difficulty options
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Start a new game, using a customized scenario
 STR_0304_QUIT							:{BLACK}Quit
+STR_0305_QUIT_OPENTTD						:{BLACK}Quit 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}View demonstration/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...can only be built in towns
@@ -1222,6 +1227,7 @@ STR_NETWORK_CURRENT_DATE					:{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Password protected!
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVER FULL
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}VERSION MISMATCH
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Join game
 
@@ -1347,6 +1353,7 @@ STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT					:{WHITE} The server is restarting...{}Please wait...
 
+STR_NETWORK_SEND						:{BLACK}Send
 
 ############ end network gui strings
 

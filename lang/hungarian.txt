@@ -809,7 +809,7 @@ STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Új játék kezdése saját pályán
 STR_0304_QUIT							:{BLACK}Kilépés
-STR_0305_QUIT_OPENTTD						:{BLACK}Kilépés OpenTTD-böl
+STR_0305_QUIT_OPENTTD						:{BLACK}Kilépés az OpenTTD-bõl
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Demonstráció/tanítás megnézése
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...csak városban építhetõ

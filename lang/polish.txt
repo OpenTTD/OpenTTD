@@ -540,6 +540,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Wybierz program 'Nowy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Wybierz program 'Wlasny 1' (definiowany)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Wybierz program 'Wlasny 2' (definiowany)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Wyczysc obecny program (tylko Wlasny1 lub Wlasny2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Zapisz ustawienia muzyki
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klik na sciezce aby dodac do obecnego programu (Wlasny1 i Wlasny2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Przelacz przypadkowo on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Pokaz okno wyboru sciezek
@@ -724,6 +725,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nazwy pojazdow
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Domyslne
 STR_02BF_CUSTOM							:Wlasne
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Zapisz wlasne nazwy
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Wybor nazw pojazdow
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Zapisz niestandardowe nazwy pojazdow na dysk
 
@@ -798,13 +800,16 @@ STR_02F8_EVERY_3_MONTHS						:Co 3 miesiace
 STR_02F9_EVERY_6_MONTHS						:Co 6 miesiecy
 STR_02FA_EVERY_12_MONTHS					:Co 12 miesiecy
 STR_02FB_START_A_NEW_GAME					:{BLACK}Rozpocznij nowa gre
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Wczytaj zapisana gre
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Zobacz demo/tutorial
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Stworz wlasny swiat/scenariusz
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Wybor jednego gracza
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Wybierz gre wieloosobowa dla 2-8 graczy
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Wyswietl opcje gry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Wyswietl opcje trudnosci
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Rozpocznij gre uzywajac wlasnego scenariusza
 STR_0304_QUIT							:{BLACK}Wyjscie
+STR_0305_QUIT_OPENTTD						:{BLACK}Wyjdz z 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Zobacz demo/wprowadzenie
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...moze byc wybudowane tylko w miescie
@@ -1348,6 +1353,7 @@ STR_NETWORK_GIVE_MONEY						:dal Ci troche pieniedzy ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serwer zamknal sesje
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Restart serwera...{}Prosze czekac...
 
+STR_NETWORK_SEND						:{BLACK}Wyslij
 
 ############ end network gui strings
 
