@@ -623,17 +623,39 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 		x = 6;
 		y = 25;
 		sel = WP(w,refit_d).sel;
-		b = _rail_vehicle_refit_types[_opt.landscape];
-		do {
-			color = 16;
-			if (sel == 0) {
-				cargo = *b;
-				color = 12;
+
+#define show_cargo(ctype) { \
+		color = 16; \
+		if (sel == 0) { \
+			cargo = ctype; \
+			color = 12; \
+		} \
+		sel--; \
+		DrawString(x, y, _cargoc.names_s[ctype], color); \
+		y += 10; \
+		}
+
+		if (_engine_refit_masks[v->engine_type]) {
+			uint32 mask = _engine_refit_masks[v->engine_type];
+			int cid = 0;
+
+			for (; mask; mask >>= 1, cid++) {
+				if (!(mask & 1)) // not this cid
+					continue;
+				if (!(_local_cargo_id_landscape[cid] & (1 << _opt.landscape))) // not in this landscape
+					continue;
+
+				show_cargo(_local_cargo_id_ctype[cid]);
 			}
-			sel--;
-			DrawString(x,y,_cargoc.names_s[*b], color);
-			y += 10;
-		} while (*++b != 255);
+
+		} else { // generic refit list
+			b = _rail_vehicle_refit_types[_opt.landscape];
+			do {
+				show_cargo(*b);
+			} while (*++b != 255);
+		}
+
+#undef show_cargo
 
 		WP(w,refit_d).cargo = cargo;
 
