@@ -1797,7 +1797,7 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image)
 	t += sizeof(uint32);
 	if (img & 0x8000)
 		img |= ormod;
-	DrawSprite(img, x, y);
+	DrawSprite(img + railtype, x, y);
 
 	for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
