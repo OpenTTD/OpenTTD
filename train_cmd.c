@@ -2361,7 +2361,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 	do {
 		//I need to buffer the train direction
 		if (!(v->u.rail.track & 0x40))
-			v->direction = (v->direction + _random_dir_change[InteractiveRandom()&3]) & 7;
+			v->direction = (v->direction + _random_dir_change[Random()&3]) & 7;
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);
@@ -2381,13 +2381,13 @@ static void HandleCrashedTrain(Vehicle *v)
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
 	}
 
-	if (state <= 200 && (uint16)(r=InteractiveRandom()) <= 0x2492) {
+	if (state <= 200 && (uint16)(r=Random()) <= 0x2492) {
 		index = (r * 10 >> 16);
 
 		u = v;
 		do {
 			if (--index < 0) {
-				r = InteractiveRandom();
+				r = Random();
 
 				CreateEffectVehicleRel(u,
 					2 + ((r>>8)&7),
