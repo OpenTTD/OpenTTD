@@ -45,8 +45,8 @@ typedef struct {
 	uint16 rate;
 	char separator;
 	uint16 to_euro;
-	char pre[16];
-	char post[16];
+	char prefix[16];
+	char suffix[16];
 } CurrencySpec;
 
 VARDEF CurrencySpec _currency_specs[24];

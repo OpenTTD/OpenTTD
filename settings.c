@@ -910,8 +910,8 @@ static const SettingDesc currency_settings[] = {
 	{"rate",			SDT_UINT16,										(void*)1,		&_currency_specs[23].rate,			NULL},
 	{"separator", SDT_STRINGQUOT | (2) << 16,		".", 				&_currency_specs[23].separator,	NULL},
 	{"to_euro",		SDT_UINT16,										(void*)0,		&_currency_specs[23].to_euro,		NULL},
-	{"pre",				SDT_STRINGQUOT | (16) << 16,	NULL,				&_currency_specs[23].pre,				NULL},
-	{"post",			SDT_STRINGQUOT | (16) << 16,	" credits",	&_currency_specs[23].post,			NULL},
+	{"prefix",		SDT_STRINGQUOT | (16) << 16,	NULL,				&_currency_specs[23].prefix,		NULL},
+	{"suffix",		SDT_STRINGQUOT | (16) << 16,	" credits",	&_currency_specs[23].suffix,		NULL},
 	{NULL,				0,														NULL,				NULL,														NULL}
 };
 

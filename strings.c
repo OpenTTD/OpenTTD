@@ -276,9 +276,9 @@ static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 n
 	// convert from negative
 	if (number < 0) { *buff++ = '-'; number = -number; }
 
-	// add pre part
-	s = spec->pre;
-	while (s != spec->pre + lengthof(spec->pre) && (c=*s++)) *buff++ = c;
+	// add prefix part
+	s = spec->prefix;
+	while (s != spec->prefix + lengthof(spec->prefix) && (c=*s++)) *buff++ = c;
 
 	// for huge numbers, compact the number into k or M
 	if (compact) {
@@ -303,9 +303,9 @@ static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 n
 
 	if (compact) *buff++ = compact;
 
-	// add post part
-	s = spec->post;
-	while (s != spec->post + lengthof(spec->post) && (c=*s++)) *buff++ = c;
+	// add suffix part
+	s = spec->suffix;
+	while (s != spec->suffix + lengthof(spec->suffix) && (c=*s++)) *buff++ = c;
 
 	return buff;
 }

@@ -1308,15 +1308,15 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		// prefix
 		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
 		x = DrawString(x, y + 1, STR_CURRENCY_PREFIX, 0);
-		DoDrawString(_currency_specs[23].pre, x + 4, y + 1, 6);
+		DoDrawString(_currency_specs[23].prefix, x + 4, y + 1, 6);
 		x = 35;
 		y+=12;
 		i++;
 
-		// postfix
+		// suffix
 		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
-		x = DrawString(x, y + 1, STR_CURRENCY_POSTFIX, 0);
-		DoDrawString(_currency_specs[23].post, x + 4, y + 1, 6);
+		x = DrawString(x, y + 1, STR_CURRENCY_SUFFIX, 0);
+		DoDrawString(_currency_specs[23].suffix, x + 4, y + 1, 6);
 		x = 35;
 		y+=12;
 		i++;
@@ -1369,14 +1369,14 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			case 2: // prefix
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(_currency_specs[23].pre, 0);
+				str = AllocateName(_currency_specs[23].prefix, 0);
 				len = 12;
 				edittext = true;
 			break;
-			case 3: // postfix
+			case 3: // suffix
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(_currency_specs[23].post, 0);
+				str = AllocateName(_currency_specs[23].suffix, 0);
 				len = 12;
 				edittext = true;
 			break;
@@ -1431,10 +1431,10 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					ttd_strlcpy(str_separator, b, 16);
 				break;
 				case 2:
-					ttd_strlcpy(_currency_specs[23].pre, b, 16);
+					ttd_strlcpy(_currency_specs[23].prefix, b, 16);
 				break;
 				case 3:
-					ttd_strlcpy(_currency_specs[23].post, b, 16);
+					ttd_strlcpy(_currency_specs[23].suffix, b, 16);
 				break;
 				case 4:
 					val = atoi(b);
