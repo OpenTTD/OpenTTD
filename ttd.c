@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "table/strings.h"
 
 #define VARDEF
 #include "ttd.h"

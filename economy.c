@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "table/strings.h"
 #include "news.h"
 #include "player.h"
 #include "station.h"

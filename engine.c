@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "table/strings.h"
 #include "engine.h"
 #include "table/engines.h"
 #include "player.h"

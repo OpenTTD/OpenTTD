@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
-
+#include "table/strings.h"
 #include "vehicle.h"
 
 VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {

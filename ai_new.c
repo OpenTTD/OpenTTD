@@ -15,6 +15,7 @@
 
 #include "stdafx.h"
 #include "ttd.h"
+#include "table/strings.h"
 #include "command.h"
 #include "ai.h"
 #include "town.h"

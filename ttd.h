@@ -1,9 +1,6 @@
 #ifndef TTD_H
 #define TTD_H
 
-// include strings
-#include "table/strings.h"
-
 #ifndef VARDEF
 #define VARDEF extern
 #endif
