@@ -1266,14 +1266,14 @@ static void HandleKeypress(uint32 key)
 	we.keypress.cont = true;
 
 	// check if we have a query string window open before allowing hotkeys
-	if(FindWindowById(WC_QUERY_STRING, 0)!=NULL || FindWindowById(WC_SEND_NETWORK_MSG, 0)!=NULL || FindWindowById(WC_CONSOLE, 0)!=NULL)
+	if(FindWindowById(WC_QUERY_STRING, 0)!=NULL || FindWindowById(WC_SEND_NETWORK_MSG, 0)!=NULL || FindWindowById(WC_CONSOLE, 0)!=NULL || FindWindowById(WC_SAVELOAD, 0)!=NULL)
 		query_open = true;
 
 	// Call the event, start with the uppermost window.
 	for(w=_last_window; w != _windows;) {
 		--w;
 		// if a query window is open, only call the event for certain window types
-		if(query_open && w->window_class!=WC_QUERY_STRING && w->window_class!=WC_SEND_NETWORK_MSG && w->window_class!=WC_CONSOLE)
+		if(query_open && w->window_class!=WC_QUERY_STRING && w->window_class!=WC_SEND_NETWORK_MSG && w->window_class!=WC_CONSOLE && w->window_class!=WC_SAVELOAD)
 			continue;
 		w->wndproc(w, &we);
 		if (!we.keypress.cont)
