@@ -171,6 +171,8 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tile = TILE_FROM_XY(x,y);
 	int32 ret;
 	uint th;
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	th = GetTileSlope(tile, NULL);
 
 	if (th==3 || th==6 || th==9 || th==12) {

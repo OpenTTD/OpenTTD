@@ -351,6 +351,8 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	int x,y;
 	bool success = false;
 
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
 	// make sure sx,sy are smaller than ex,ey
 	sx = GET_TILE_X(p1)*16;
 	sy = GET_TILE_Y(p1)*16;

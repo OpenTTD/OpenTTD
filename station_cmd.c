@@ -957,6 +957,8 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 	uint tile = TILE_FROM_XY(x, y);
 	Station *st;
 
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
 	if (!IS_TILETYPE(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
 	st = DEREF_STATION(_map2[tile]);

@@ -398,6 +398,8 @@ int32 CmdDestroyIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Industry *i = DEREF_INDUSTRY((uint16)p1);
   Town *t = ClosestTownFromTile(tile, (uint)-1); // find closest town to penaltize (ALWAYS penaltize)
 
+	SET_EXPENSES_TYPE(EXPENSES_OTHER);
+
 	// check if you're allowed to remove the industry. Minimum amount
 	// of ratings to remove the industry depends on difficulty setting
 	if (!CheckforTownRating(tile, flags, t, INDUSTRY_REMOVE))

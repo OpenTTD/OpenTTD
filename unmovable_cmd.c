@@ -318,6 +318,8 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int score;
 	int32 cost = 0;
 
+	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
+
 	if (CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL) == CMD_ERROR)
 		return CMD_ERROR;
 
@@ -360,6 +362,8 @@ int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
 	Player *p;
+
+	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
 	if ((int)p1 != OWNER_WATER)	// destruction was initiated by player
 		p = DEREF_PLAYER((byte)p1);

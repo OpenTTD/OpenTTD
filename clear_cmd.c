@@ -330,6 +330,8 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	uint tile;
 	int32 ret, cost, money;
 
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
 	// remember level height
 	h = _map_type_and_height[p1]&0xF;
 

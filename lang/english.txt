@@ -2763,7 +2763,7 @@ STR_SCHEDULED_SHIPS_TIP						:{BLACK}Show all ships which have this station on t
 STR_REPLACE_VEHICLES						:{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE					:{WHITE}Replace Vehicles
 STR_REPLACE_VEHICLES_START					:{BLACK}Start Replacing Vehicles
-STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop Replaing Vehicles
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop Replacing Vehicles
 STR_NOT_REPLACING						:{BLACK}Not replacing
 STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}No vehicle selected
 STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Select a type of engine to replace{}Select an engine on the right side to replace to

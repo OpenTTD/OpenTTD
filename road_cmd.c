@@ -494,6 +494,8 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int mode;
 	int32 cost,ret;
 
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
 	start_tile = p1;
 	end_tile = TILE_FROM_XY(x, y);
 
@@ -544,6 +546,8 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint start_tile, end_tile, tile;
 	int32 cost,ret;
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	start_tile = p1;
 	end_tile = TILE_FROM_XY(x, y);

@@ -542,6 +542,8 @@ int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 ret, total_cost = 0;
 	int railbit;
 
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
 	if (flags & DC_EXEC)
 		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
 
@@ -591,6 +593,8 @@ int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int sx, sy;
 	int32 ret, total_cost = 0;
 	int railbit;
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (flags & DC_EXEC)
 		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
@@ -820,6 +824,7 @@ static int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
 int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 
@@ -974,6 +979,8 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	byte signal_density = (mode == 1 || mode == 2) ? (p2 >> 24) : (p2 >> 24) * 2;
 	byte signals = (p2 >> 8)&0xFF;
 	mode = p2 & 0x1;  // build/remove signals
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* unpack end tile */
 	ex = GET_TILE_X(p1)*16;
@@ -1133,6 +1140,8 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 ret, cost, money;
 	int sx,sy,x,y;
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
 	sx = GET_TILE_X(p1)*16;

@@ -356,8 +356,8 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 		}
 	}
 
-	// execute the command here.
-	_yearly_expenses_type = 0;
+	/* Execute the command here. All cost-relevant functions set the expenses type
+	 * themselves with "SET_EXPENSES_TYPE(...);" at the beginning of the function */
 	res = proc(x, y, flags, p1, p2);
 	if ((uint32)res >> 16 == 0x8000) {
 		if (res & 0xFFFF) _error_message = res & 0xFFFF;
@@ -470,8 +470,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	// update last build coordinate of player.
 	if ( tile != 0 && _current_player < MAX_PLAYERS) DEREF_PLAYER(_current_player)->last_build_coordinate = tile;
 
-	// actually try and execute the command.
-	_yearly_expenses_type = 0;
+	/* Actually try and execute the command. If no cost-type is given
+	 * use the construction one */
+	_yearly_expenses_type = EXPENSES_CONSTRUCTION;
 	res2 = proc(x,y, flags|DC_EXEC, p1, p2);
 
 	// If notest is on, it means the result of the test can be different than

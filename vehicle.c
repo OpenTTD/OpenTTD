@@ -1412,6 +1412,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint32 autorefit_money = (p2  >> 16) * 100000; 
 	Vehicle *v = DEREF_VEHICLE(p1);
 	int cost, build_cost;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	
 	if (v->type != _engines[new_engine_type].type) return CMD_ERROR;
 

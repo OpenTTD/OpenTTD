@@ -399,7 +399,7 @@ static inline uint32 GetDParam(uint n)
 
 #define INJECT_DPARAM(n) InjectDparam(n);
 
-#define SET_EXPENSES_TYPE(x) if (x) _yearly_expenses_type=x;
+#define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;
 
 /* landscape.c */
 extern const byte _tileh_to_sprite[32];

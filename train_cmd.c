@@ -231,6 +231,8 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 	const Engine *e;
 	int x,y;
 
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+
 	rvi = RailVehInfo(engine);
 	value = (rvi->base_cost * _price.build_railwagon) >> 8;
 
@@ -1069,7 +1071,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	p2 = p2 & 0xFF;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 	
 	v = &_vehicles[p1];
 	if (!CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
