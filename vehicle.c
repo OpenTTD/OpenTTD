@@ -73,17 +73,27 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
+static inline uint Correct_Z(uint tileh)
+{
+	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
+	// 1, 2, 3, 4, 5, 6 and 7
+	return (CORRECT_Z(tileh)) ? 8 : 0;
+}
+
+uint GetCorrectTileHeight(TileIndex tile)
+{
+	TileInfo ti;
+
+	FindLandscapeHeightByTile(&ti, tile);
+	return Correct_Z(ti.tileh);
+}
+
 bool EnsureNoVehicleZ(TileIndex tile, byte z)
 {
 	TileInfo ti;
 
 	FindLandscapeHeightByTile(&ti, tile);
-	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
-	// 1, 2, 3, 4, 5, 6 and 7
-	if (CORRECT_Z(ti.tileh))
-		z += 8;
-
-	ti.z = z;
+	ti.z = z + Correct_Z(ti.tileh);
 
 	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ) == NULL;
 }

@@ -742,7 +742,8 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	*/
 	tile		+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
 	endtile	-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
-	if ((v = FindVehicleBetween(tile, endtile, TilePixelHeight(tile) + 8)) != NULL) {
+	/* Bridges on slopes might have their Z-value offset..correct this */
+	if ((v = FindVehicleBetween(tile, endtile, TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile))) != NULL) {
 		VehicleInTheWayErrMsg(v);
 		return CMD_ERROR;
 	}
@@ -804,25 +805,21 @@ clear_it:;
 }
 
 static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
-	int32 ret;
 	byte m5 = _map5[tile];
 
 	if ((m5 & 0xF0) == 0) {
 		if (flags & DC_AUTO)
 			return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
+
 		return DoClearTunnel(tile, flags);
 	} else if (m5 & 0x80) {
 		if (flags & DC_AUTO)
 			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
-		ret = DoClearBridge(tile, flags);
-		if (ret == CMD_ERROR)
-			return CMD_ERROR;
-
-		return ret;
-	} else {
-		return CMD_ERROR;
-	}
+		return DoClearBridge(tile, flags);
+	} 
+	
+	return CMD_ERROR;
 }
 
 int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)

@@ -214,6 +214,7 @@ bool ScrollWindowTo(int x, int y, Window * w);
 bool ScrollMainWindowToTile(TileIndex tile);
 bool ScrollMainWindowTo(int x, int y);
 void DrawSprite(uint32 img, int x, int y);
+uint GetCorrectTileHeight(TileIndex tile);
 bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleZ(TileIndex tile, byte z);
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
