@@ -200,7 +200,7 @@ struct Window {
 	int left,top;
 	int width,height;
 
-	Scrollbar hscroll, vscroll;
+	Scrollbar hscroll, vscroll, vscroll2;
 
 	byte caption_color;
 
@@ -253,6 +253,15 @@ typedef struct {
 	int16 sel_engine;
 	int16 rename_engine;
 } buildtrain_d;
+
+typedef struct {
+	byte railtype;
+	byte vehicletype;
+	byte sel_index[2];
+	int16 sel_engine[2];
+	uint16 count[2];
+	byte line_height;
+} replaceveh_d;
 
 typedef struct {
 	VehicleID sel;
@@ -358,7 +367,8 @@ enum WindowWidgetTypes {
 
 	WWT_HSCROLLBAR = 11,
 	WWT_STICKYBOX = 12,
-	WWT_LAST = 13,						/* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_SCROLL2BAR = 13,				/* 2nd vertical scrollbar*/
+	WWT_LAST = 14,						/* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK = 31,
 
@@ -384,6 +394,7 @@ enum WindowFlags {
 
 	WF_WHITE_BORDER_ONE = 1 << 11,
 	WF_WHITE_BORDER_MASK = 3 << 11,
+	WF_SCROLL2 = 1 << 13,
 };
 
 
@@ -453,7 +464,7 @@ int PositionMainToolbar(Window *w);
 /* widget.c */
 int GetWidgetFromPos(Window *w, int x, int y);
 void DrawWindowWidgets(Window *w);
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask);
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, bool remove_filtered_strings);
 
 void HandleButtonClick(Window *w, byte widget);
 

@@ -85,6 +85,7 @@ void CheckRedrawStationCoverage(Window *w);
 void ShowSmallMap();
 void ShowExtraViewPortWindow();
 void SetVScrollCount(Window *w, int num);
+void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
 

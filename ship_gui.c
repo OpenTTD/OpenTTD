@@ -12,6 +12,25 @@
 #include "player.h"
 #include "engine.h"
 
+void Set_DPARAM_Ship_Build_Window(uint16 engine_number)
+{
+	YearMonthDay ymd;
+	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
+	Engine *e;
+
+	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
+	SetDParam(1, svi->max_speed * 10 >> 5);
+	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(3, svi->capacity);
+	SetDParam(4, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	SetDParam(5, svi->running_cost * _price.ship_running >> 8);
+
+	e = &_engines[engine_number];
+	SetDParam(7, e->lifelength);
+	SetDParam(8, e->reliability * 100 >> 16);
+	ConvertDayToYMD(&ymd, e->intro_date);
+	SetDParam(6, ymd.year + 1920);
+}
 
 static void DrawShipImage(Vehicle *v, int x, int y, VehicleID selection);
 
@@ -317,7 +336,6 @@ void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void NewShipWndProc(Window *w, WindowEvent *e)
 {
-	YearMonthDay ymd;
 	switch(e->event) {
 	case WE_PAINT:
 		if (w->window_number == 0)
@@ -362,21 +380,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				const ShipVehicleInfo *svi = ShipVehInfo(selected_id);
-				Engine *e;
-
-				SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
-				SetDParam(1, svi->max_speed * 10 >> 5);
-				SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
-				SetDParam(3, svi->capacity);
-				SetDParam(4, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-				SetDParam(5, svi->running_cost * _price.ship_running >> 8);
-
-				e = &_engines[selected_id];
-				SetDParam(7, e->lifelength);
-				SetDParam(8, e->reliability * 100 >> 16);
-				ConvertDayToYMD(&ymd, e->intro_date);
-				SetDParam(6, ymd.year + 1920);
+				Set_DPARAM_Ship_Build_Window(selected_id);
 
 				DrawString(2, 111, STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
 			}
@@ -881,7 +885,7 @@ static Widget _player_ships_widgets[] = {
 {     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_9804_NEW_SHIPS,		STR_9824_BUILD_NEW_SHIPS_REQUIRES},
-{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,    14,   130,   259,   170,   181, STR_REPLACE_VEHICLES,					STR_REPLACE_HELP},
 {   WIDGETS_END},
 };
 
@@ -986,7 +990,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0, 0);
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
@@ -1024,7 +1028,12 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			ShowBuildShipWindow(0);
 		} break;
+		
+		case 10: {
+			ShowReplaceVehicleWindow(VEH_Ship);
+			break;
 		}
+	}
 	}	break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */

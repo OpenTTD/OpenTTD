@@ -431,6 +431,9 @@ VARDEF SignStruct *_new_sign_struct;
 /* tunnelbridge */
 #define MAX_BRIDGES 13
 
+/* Autoreplace vehicle stuff*/
+VARDEF byte _autoreplace_array[255];
+
 /* Debugging levels */
 VARDEF int _debug_spritecache_level;
 VARDEF int _debug_misc_level;

@@ -16,6 +16,44 @@
 
 int _traininfo_vehicle_pitch = 0;
 
+void Set_DPARAM_Train_Engine_Build_Window(uint16 engine_number)
+{
+	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
+	Engine *e;
+	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
+	YearMonthDay ymd;
+
+
+	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
+	SetDParam(2, rvi->max_speed * 10 >> 4);
+	SetDParam(3, rvi->power << multihead);
+	SetDParam(1, rvi->weight << multihead);
+	SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
+
+	SetDParam(5, STR_8838_N_A);
+	if (rvi->capacity != 0) {
+		SetDParam(6, rvi->capacity << multihead);
+		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
+	}
+
+	e = &_engines[engine_number];
+
+	SetDParam(8, e->lifelength);
+	SetDParam(9, e->reliability * 100 >> 16);
+	ConvertDayToYMD(&ymd, e->intro_date);
+	SetDParam(7, ymd.year + 1920);
+}
+
+void Set_DPARAM_Train_Car_Build_Window(Window *w, uint16 engine_number)
+{
+	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
+	
+	SetDParam(0, DoCommandByTile(w->window_number, engine_number, 0, DC_QUERY_COST, CMD_BUILD_RAIL_VEHICLE) );
+	SetDParam(4, rvi->capacity);
+	SetDParam(1, rvi->weight);
+	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+	SetDParam(2, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+}
 
 void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 {
@@ -131,43 +169,16 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 			if (selected_id != -1) {
 				const RailVehicleInfo *rvi = RailVehInfo(selected_id);
-				Engine *e;
-				YearMonthDay ymd;
 
 				if (!(rvi->flags & RVI_WAGON)) {
 					/* it's an engine */
-					int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
-
-					SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
-					SetDParam(2, rvi->max_speed * 10 >> 4);
-					SetDParam(3, rvi->power << multihead);
-					SetDParam(1, rvi->weight << multihead);
-					SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
-
-					SetDParam(5, STR_8838_N_A);
-					if (rvi->capacity != 0) {
-						SetDParam(6, rvi->capacity << multihead);
-						SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
-					}
-
-					e = &_engines[selected_id];
-
-					SetDParam(8, e->lifelength);
-					SetDParam(9, e->reliability * 100 >> 16);
-					ConvertDayToYMD(&ymd, e->intro_date);
-					SetDParam(7, ymd.year + 1920);
+					Set_DPARAM_Train_Engine_Build_Window(selected_id);
 
 					DrawString(2, 0x7F, STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
 				} else {
 					/* it's a wagon */
-
-					SetDParam(0,
-						DoCommandByTile(w->window_number, selected_id, 0, DC_QUERY_COST, CMD_BUILD_RAIL_VEHICLE)
-					);
-					SetDParam(4, rvi->capacity);
-					SetDParam(1, rvi->weight);
-					SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
-					SetDParam(2, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+					Set_DPARAM_Train_Car_Build_Window(w, selected_id);
+					
 					DrawString(2, 0x7F, STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
 				}
 			}
@@ -1183,7 +1194,7 @@ static Widget _player_trains_widgets[] = {
 {     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   161,   208,   219, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
-{      WWT_PANEL,    14,   162,   324,   208,   219, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,    14,   162,   324,   208,   219, STR_REPLACE_VEHICLES,					STR_REPLACE_HELP},
 {   WIDGETS_END},
 };
 
@@ -1289,7 +1300,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0, 0);
 			return;
 
 		case 7: { /* Matrix to show vehicles */
@@ -1328,6 +1339,11 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			ShowBuildTrainWindow(0);
 		} break;
+		case 10: {
+			ShowReplaceVehicleWindow(VEH_Train);
+			break;
+ 		}
+
 		}
 	}	break;
 

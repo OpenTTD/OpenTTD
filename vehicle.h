@@ -361,7 +361,7 @@ Vehicle *CheckClickOnVehicle(ViewPort *vp, int x, int y);
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
-void MaybeRenewVehicle(Vehicle *v);
+void MaybeReplaceVehicle(Vehicle *v);
 
 void DeleteCommandFromVehicleSchedule(Order cmd);
 

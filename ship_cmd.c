@@ -400,7 +400,7 @@ static void ShipEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	MaybeRenewVehicle(v);
+	MaybeReplaceVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
@@ -975,30 +975,38 @@ int32 CmdChangeShipServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 // p1 = vehicle
-// p2 = new cargo
+// p2 = new cargo (0xFF)
+// p2 = skip check for stopped in hanger (0x0100)
 int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;
+	byte SkipStoppedInDepotCheck = (p2 & 0x100) >> 8; //excludes the cargo value
 
+	p2 = p2 & 0xFF;
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
 	v = &_vehicles[p1];
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	if (!IsShipDepotTile(v->tile) ||
-			!(v->vehstatus&VS_STOPPED) ||
-			v->u.ship.state != 0x80)
-		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
-
+	if (!( SkipStoppedInDepotCheck )) {
+		if (!IsShipDepotTile(v->tile) ||
+				!(v->vehstatus&VS_STOPPED) ||
+				v->u.ship.state != 0x80)
+			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+		}
+		
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && (byte)p2 != v->cargo_type) {
 		cost = _price.ship_base >> 7;
 	}
 
 	if (flags & DC_EXEC) {
-		v->cargo_count = 0;
+		//autorefitted ships wants to keep the cargo
+		//it will be checked if the cargo is valid in CmdRenewVehicle
+		if (!(SkipStoppedInDepotCheck))
+			v->cargo_count = 0;	
 		v->cargo_type = (byte)p2;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}

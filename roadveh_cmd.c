@@ -105,6 +105,8 @@ int32 EstimateRoadVehCost(byte engine_type)
 	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
 }
 
+// p1 = engine_type
+// p2 not used
 int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
@@ -211,6 +213,8 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+//  p1 = vehicle index in &_vehicles[]
+//  p2 not used
 int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -1379,7 +1383,7 @@ void RoadVehEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	MaybeRenewVehicle(v);
+	MaybeReplaceVehicle(v);
 
 	VehicleServiceInDepot(v);
 

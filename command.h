@@ -149,7 +149,7 @@ enum {
 	CMD_GIVE_MONEY = 112,
 	CMD_CHANGE_PATCH_SETTING = 113,
 
-	CMD_RENEW_VEHICLE = 114,
+	CMD_REPLACE_VEHICLE = 114,
 };
 
 enum {
@@ -172,6 +172,7 @@ enum {
 	CMD_NO_WATER = 0x400,
 	CMD_NETWORK_COMMAND = 0x800,		// execute the command without sending it on the network
 	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, // When enabled, the command will bypass the no-DC_EXEC round if in network
+	CMD_SHOW_NO_ERROR = 0x2000,
 };
 
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)

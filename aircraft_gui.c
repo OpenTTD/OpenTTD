@@ -13,6 +13,26 @@
 #include "player.h"
 
 
+void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
+{
+	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
+	Engine *e;
+	YearMonthDay ymd;
+	
+	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
+	SetDParam(1, avi->max_speed * 8);
+	SetDParam(2, avi->passanger_capacity);
+	SetDParam(3, avi->mail_capacity);
+	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
+
+	e = &_engines[engine_number];
+	SetDParam(6, e->lifelength);
+	SetDParam(7, e->reliability * 100 >> 16);
+	ConvertDayToYMD(&ymd, e->intro_date);
+	SetDParam(5, ymd.year + 1920);
+	
+}
+
 static void DrawAircraftImage(Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetAircraftImage(v, 6);
@@ -43,8 +63,6 @@ void CcBuildAircraft(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void NewAircraftWndProc(Window *w, WindowEvent *e)
 {
-	YearMonthDay ymd;
-
 	switch(e->event) {
 
 	case WE_PAINT: {
@@ -89,20 +107,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				const AircraftVehicleInfo *avi = AircraftVehInfo(selected_id);
-				Engine *e;
-
-				SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
-				SetDParam(1, avi->max_speed * 8);
-				SetDParam(2, avi->passanger_capacity);
-				SetDParam(3, avi->mail_capacity);
-				SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
-
-				e = &_engines[selected_id];
-				SetDParam(6, e->lifelength);
-				SetDParam(7, e->reliability * 100 >> 16);
-				ConvertDayToYMD(&ymd, e->intro_date);
-				SetDParam(5, ymd.year + 1920);
+				Set_DPARAM_Aircraft_Build_Window(selected_id);
 
 				DrawString(2, 111, STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
 			}
@@ -899,7 +904,7 @@ static Widget _player_aircraft_widgets[] = {
 {     WWT_MATRIX,    14,     0,   248,    26,   169, 0x401,									STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   129,   170,   181, STR_A003_NEW_AIRCRAFT,	STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES},
-{      WWT_PANEL,    14,   130,   259,   170,   181, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,    14,   130,   259,   170,   181, STR_REPLACE_VEHICLES,						STR_REPLACE_HELP},
 {   WIDGETS_END},
 };
 
@@ -1005,7 +1010,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0, 0);
 			return;
 
 		case 7: { /* Matrix to show vehicles */
@@ -1044,6 +1049,11 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 			ShowBuildAircraftWindow(0);
 		} break;
+		
+		case 10: 
+			ShowReplaceVehicleWindow(VEH_Aircraft);
+			break;
+		
 		}
 	}	break;
 

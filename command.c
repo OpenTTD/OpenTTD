@@ -167,7 +167,7 @@ DEF_COMMAND(CmdStartScenario);
 
 DEF_COMMAND(CmdBuildManySignals);
 
-DEF_COMMAND(CmdRenewVehicle);
+DEF_COMMAND(CmdReplaceVehicle);
 
 /* The master command table */
 static CommandProc * const _command_proc_table[] = {
@@ -309,7 +309,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdDestroyCompanyHQ,					/* 111 */
 	CmdGiveMoney,									/* 112 */
 	CmdChangePatchSetting,				/* 113 */
-	CmdRenewVehicle,							/* 114 */
+	CmdReplaceVehicle,							/* 114 */
 };
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
@@ -431,7 +431,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 1;
 
 	// cost estimation only?
-	if (_shift_pressed && _current_player == _local_player && !(cmd & CMD_NETWORK_COMMAND)) {
+	if (_shift_pressed && _current_player == _local_player && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
 		// estimate the cost.
 		res = proc(x, y, flags, p1, p2);
 		if ((uint32)res >> 16 == 0x8000) {

@@ -12,6 +12,25 @@
 #include "player.h"
 #include "engine.h"
 
+void Set_DPARAM_Road_Veh_Build_Window(uint16 engine_number)
+{
+	const RoadVehicleInfo *rvi = RoadVehInfo(engine_number);
+	Engine *e;
+	YearMonthDay ymd;
+
+	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
+	SetDParam(1, rvi->max_speed * 10 >> 5);
+	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
+	SetDParam(4, rvi->capacity);
+	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+
+	e = &_engines[engine_number];
+	SetDParam(6, e->lifelength);
+	SetDParam(7, e->reliability * 100 >> 16);
+	ConvertDayToYMD(&ymd, e->intro_date);
+	SetDParam(5, ymd.year + 1920);
+}
+
 static void DrawRoadVehImage(Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetRoadVehImage(v, 6);
@@ -307,8 +326,6 @@ void ShowRoadVehViewWindow(Vehicle *v)
 
 static void DrawNewRoadVehWindow(Window *w)
 {
-	YearMonthDay ymd;
-
 	if (w->window_number == 0)
 		w->disabled_state = 1 << 5;
 
@@ -350,20 +367,7 @@ static void DrawNewRoadVehWindow(Window *w)
 
 		WP(w,buildtrain_d).sel_engine = selected_id;
 		if (selected_id != -1) {
-			const RoadVehicleInfo *rvi = RoadVehInfo(selected_id);
-			Engine *e;
-
-			SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
-			SetDParam(1, rvi->max_speed * 10 >> 5);
-			SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
-			SetDParam(4, rvi->capacity);
-			SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
-
-			e = &_engines[selected_id];
-			SetDParam(6, e->lifelength);
-			SetDParam(7, e->reliability * 100 >> 16);
-			ConvertDayToYMD(&ymd, e->intro_date);
-			SetDParam(5, ymd.year + 1920);
+			Set_DPARAM_Road_Veh_Build_Window(selected_id);
 
 			DrawString(2, 127, STR_9008_COST_SPEED_RUNNING_COST, 0);
 		}
@@ -714,7 +718,7 @@ static Widget _player_roadveh_widgets[] = {
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 /* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
 { WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
-{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,    14,   130,   259,   208,   219, STR_REPLACE_VEHICLES,		STR_REPLACE_HELP},
 {   WIDGETS_END},
 };
 
@@ -818,7 +822,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0);
+			ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0, 0);
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
@@ -856,6 +860,10 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			ShowBuildRoadVehWindow(0);
 		} break;
+		case 10: {
+			ShowReplaceVehicleWindow(VEH_Road);
+			break;
+		}
 		}
 	}	break;
 

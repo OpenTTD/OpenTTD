@@ -9,6 +9,7 @@
 #include "network.h"
 #include "network_data.h"
 #include "network_server.h"
+#include "engine.h"
 
 extern void StartupEconomy();
 extern void InitNewsItemStructs();
@@ -182,6 +183,13 @@ void ConvertGroundTilesIntoWaterTiles();
 
 void InitializeGame()
 {
+	// Initialize the autoreplace array. Needs to be cleared between each game
+	int i;
+	for (i = 0; i < 256; i++) {
+		_autoreplace_array[i] = i;
+	}
+	AddTypeToEngines(); // make sure all engines have a type
+	
 	SetObjectToPlace(1, 0, 0, 0);
 
 	_pause = 0;

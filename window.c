@@ -44,7 +44,7 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 			case WWT_NODISTXTBTN:
 				break;
 			}
-		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_HSCROLLBAR) {
+		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, e.click.pt.x, e.click.pt.y);
 		}
 
@@ -953,6 +953,9 @@ static bool HandleScrollbarScrolling()
 			if (w->flags4 & WF_HSCROLL) {
 				sb = &w->hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
+			} else if (w->flags4 & WF_SCROLL2){
+				sb = &w->vscroll2;
+				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			} else {
 				sb = &w->vscroll;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;

@@ -692,6 +692,14 @@ void SetVScrollCount(Window *w, int num)
 	if (num < w->vscroll.pos) w->vscroll.pos = num;
 }
 
+void SetVScroll2Count(Window *w, int num)
+{ 
+	w->vscroll2.count = num;
+	num -= w->vscroll2.cap;
+	if (num < 0) num = 0;
+	if (num < w->vscroll2.pos) w->vscroll2.pos = num;
+}
+
 void SetHScrollCount(Window *w, int num)
 {
 	w->hscroll.count = num;
@@ -699,7 +707,6 @@ void SetHScrollCount(Window *w, int num)
 	if (num < 0) num = 0;
 	if (num < w->hscroll.pos) w->hscroll.pos = num;
 }
-
 
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 {

@@ -1057,23 +1057,27 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 // p1 = vehicle to refit
-// p2 = new cargo
-
+// p2 = new cargo (0xFF)
+// p2 = skip check for stopped in hanger (0x0100)
 int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;
 	uint num;
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	byte SkipStoppedInDepotCheck = (p2 & 0x100) >> 8;
 
+	p2 = p2 & 0xFF;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	
 	v = &_vehicles[p1];
-	if (!CheckOwnership(v->owner) || CheckStoppedInDepot(v) < 0)
+	if (!CheckOwnership(v->owner) || ((CheckStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
 		return CMD_ERROR;
 
 	cost = 0;
 	num = 0;
-
+	
 	do {
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
@@ -1084,12 +1088,16 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			cost += (_price.build_railvehicle >> 8);
 			num += v->cargo_cap;
 			if (flags & DC_EXEC) {
-				v->cargo_count = 0;
+		//autorefitted train cars wants to keep the cargo
+		//it will be checked if the cargo is valid in CmdReplaceVehicle
+				if (!(SkipStoppedInDepotCheck))
+					v->cargo_count = 0;
 				v->cargo_type = (byte)p2;
 				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			}
 		}
-	} while ( (v=v->next) != NULL);
+	// SkipStoppedInDepotCheck is called by CmdReplace and it should only apply to the single car it is called for
+	} while ( (v=v->next) != NULL || SkipStoppedInDepotCheck );
 
 	_returned_refit_amount = num;
 
@@ -2618,7 +2626,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 	v->load_unload_time_rem = 0;
 	v->cur_speed = 0;
 
-	MaybeRenewVehicle(v);
+	MaybeReplaceVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

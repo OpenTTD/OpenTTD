@@ -92,35 +92,35 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 5:
-			ShowDropDownMenu(w, _currency_string_list, _opt_mod_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies());
+			ShowDropDownMenu(w, _currency_string_list, _opt_mod_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 			return;
 		case 8:
-			ShowDropDownMenu(w, _distances_dropdown, _opt_mod_ptr->kilometers, e->click.widget, 0);
+			ShowDropDownMenu(w, _distances_dropdown, _opt_mod_ptr->kilometers, e->click.widget, 0, 0);
 			return;
 		case 11: {
 			int i = _opt_mod_ptr->road_side;
-			ShowDropDownMenu(w, _driveside_dropdown, i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i));
+			ShowDropDownMenu(w, _driveside_dropdown, i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
 			return;
 		}
 		case 14: {
 			int i = _opt_mod_ptr->town_name;
-			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i));
+			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
 			return;
 		}
 		case 17:
-			ShowDropDownMenu(w, _autosave_dropdown, _opt_mod_ptr->autosave, e->click.widget, 0);
+			ShowDropDownMenu(w, _autosave_dropdown, _opt_mod_ptr->autosave, e->click.widget, 0, 0);
 			return;
 		case 20:
-			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names&1)?1:0, e->click.widget, (_vehicle_design_names&2)?0:2);
+			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names&1)?1:0, e->click.widget, (_vehicle_design_names&2)?0:2, 0);
 			return;
 		case 21:
 			return;
 		case 24:
-			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, e->click.widget, 0);
+			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, e->click.widget, 0, 0);
 			return;
 		case 27:
 			// setup resolution dropdown
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), e->click.widget, 0);
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), e->click.widget, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
 			(_fullscreen) ? CLRBIT(w->click_state, 28) : SETBIT(w->click_state, 28);
@@ -128,7 +128,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			return;
 		case 31: /* Setup screenshot format dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0);
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0, 0);
 			return;
 
 		}

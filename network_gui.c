@@ -231,7 +231,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
 		case 4: case 5:
-			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0); // do it for widget 5
+			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0, 0); // do it for widget 5
 			break;
 		case 10: { /* Matrix to show networkgames */
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
@@ -540,13 +540,13 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			} break;
 		case 7: case 8: /* Connection type */
-			ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, 8, 0); // do it for widget 8
+			ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, 8, 0, 0); // do it for widget 8
 			break;
 		case 9: case 10: /* Number of Players */
-			ShowDropDownMenu(w, _players_dropdown, _network_game_info.clients_max - 2, 10, 0); // do it for widget 10
+			ShowDropDownMenu(w, _players_dropdown, _network_game_info.clients_max - 2, 10, 0, 0); // do it for widget 10
 			return;
 		case 11: case 12: /* Language */
-			ShowDropDownMenu(w, _language_dropdown, _network_game_info.server_lang, 12, 0); // do it for widget 12
+			ShowDropDownMenu(w, _language_dropdown, _network_game_info.server_lang, 12, 0, 0); // do it for widget 12
 			return;
 		case 13: /* Start game */
 			_is_network_server = true;

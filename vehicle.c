@@ -4,7 +4,6 @@
 #include "map.h"
 #include "vehicle.h"
 #include "gfx.h"
-//#include "station.h"
 #include "viewport.h"
 #include "news.h"
 #include "command.h"
@@ -1394,35 +1393,45 @@ extern int32 EstimateTrainCost(const RailVehicleInfo *rvi);
 extern int32 EstimateRoadVehCost(byte engine_type);
 extern int32 EstimateShipCost(uint16 engine_type);
 extern int32 EstimateAircraftCost(uint16 engine_type);
+extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
-/* Renews a vehicle
+/* Replaces a vehicle (used to be called autorenew)
     p1 - Index of vehicle
     p2 - Type of new engine */
-int32 CmdRenewVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	byte new_engine_type = p2;
+	/* makesvariables to inform about how much money the player wants to have left after replacing
+	 and which engine to replace with out of p2.
+	 the first 16 bit is the money. The last 5 digits (all 0) were removed when sent, so we add them again.
+	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
+	 This is a nice way to send 32 bit and only use 16 bit
+	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
+	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
+	uint32 autorefit_money = (p2  >> 16) * 100000; 
 	Vehicle *v = DEREF_VEHICLE(p1);
 	int cost, build_cost;
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	
+	if (v->type != _engines[new_engine_type].type) return CMD_ERROR;
 
 	switch (v->type) {
-		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(v->engine_type)); break;
-		case VEH_Road:     build_cost = EstimateRoadVehCost(new_engine_type);           break;
-		case VEH_Ship:     build_cost = EstimateShipCost(v->engine_type);               break;
-		case VEH_Aircraft: build_cost = EstimateAircraftCost(new_engine_type);          break;
+		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
+		case VEH_Road:     build_cost = EstimateRoadVehCost(new_engine_type);            break;
+		case VEH_Ship:     build_cost = EstimateShipCost(new_engine_type);               break;
+		case VEH_Aircraft: build_cost = EstimateAircraftCost(new_engine_type);           break;
 		default: return CMD_ERROR;
 	}
 
 	/* In a rare situation, when 2 clients are connected to 1 company and have the same
 	    settings, a vehicle can be replaced twice.. check if this is the situation here */
-	if (v->age == 0)
+	if (v->engine_type == new_engine_type && v->age == 0)
 		return CMD_ERROR;
 
 	/* Check if there is money for the upgrade.. if not, give a nice news-item
 	    (that is needed, because this CMD is called automaticly) */
-	if (DEREF_PLAYER(v->owner)->money64 < _patches.autorenew_money + build_cost - v->value) {
-		if (_local_player == v->owner) {
+	if ( DEREF_PLAYER(v->owner)->money64 < (int32)(autorefit_money + build_cost - v->value)) {
+		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
 			int message;
 			SetDParam(0, v->unitnumber);
 			switch (v->type) {
@@ -1439,21 +1448,106 @@ int32 CmdRenewVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		return CMD_ERROR;
 	}
-
 	cost = build_cost - v->value;
 
-	if (flags & DC_QUERY_COST)
-		return cost;
 
 	if (flags & DC_EXEC) {
 		Engine *e;
+		e = &_engines[new_engine_type];
+		
+		// TODO make it check if refit is possible before actually doing it
 
 		/* We do not really buy a new vehicle, we upgrade the old one */
 		if (v->engine_type != new_engine_type) {
-			/* XXX - We need to do some more stuff here, when we are going to upgrade
-			    to a new engine! */
+			byte cargo_type = v->cargo_type;
+			v->engine_type = new_engine_type;
+			v->max_age = e->lifelength * 366;
+		
+			/* Update limits of the vehicle (for when upgraded) */
+			switch (v->type) {
+			case VEH_Train:
+			// using if (true) to declare the const
+				{
+				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
+				byte capacity = rvi->capacity;
+
+				v->spritenum = rvi->image_index;
+				v->cargo_type = rvi->cargo_type;
+				v->cargo_cap = rvi->capacity;
+				v->max_speed = rvi->max_speed;
+
+				v->u.rail.railtype = e->railtype;
+				
+				// 0x0100 means that we skip the check for being stopped inside the depot
+				// since we do not stop it for autorefitting
+				if (v->cargo_type != cargo_type && capacity) {
+					// BUG: somehow v->index is not transfered properly
+					//CmdRefitRailVehicle(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
+					v->cargo_type = cargo_type; // workaround, but it do not check the refit table
+				} else {
+					v->cargo_type = rvi->cargo_type;
+				}
+				break;
+				}
+			case VEH_Road:
+			// using if (true) to declare the const
+				if (true) {
+				const RoadVehicleInfo *rvi = RoadVehInfo(new_engine_type);
+
+				v->spritenum = rvi->image_index;
+				v->cargo_type = rvi->cargo_type;
+				v->cargo_cap = rvi->capacity;
+				v->max_speed = rvi->max_speed;
+				break;
+				}
+			case VEH_Ship:
+			// using if (true) to declare the const
+				if (true) {
+				const ShipVehicleInfo *svi = ShipVehInfo(new_engine_type);
+
+				v->spritenum = svi->image_index;
+				v->cargo_type = svi->cargo_type;
+				v->cargo_cap = svi->capacity;
+				v->max_speed = svi->max_speed;
+				
+				// 0x0100 means that we skip the check for being stopped inside the depot
+				// since we do not stop it for autorefitting
+				if (v->cargo_type != cargo_type)
+					CmdRefitShip(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
+				break;
+				}
+			case VEH_Aircraft:
+			// using if (true) to declare the const
+				if (true) {
+				const AircraftVehicleInfo *avi = AircraftVehInfo(new_engine_type);
+				Vehicle *u;
+
+				v->max_speed = avi->max_speed;
+				v->acceleration = avi->acceleration;
+				v->spritenum = avi->image_index;
+
+					if ( cargo_type == CT_PASSENGERS ) {
+						v->cargo_cap = avi->passanger_capacity;
+						u = v->next;
+						u->cargo_cap = avi->mail_capacity;
+					} else {
+						// 0x0100 means that we skip the check for being stopped inside the hangar
+						// since we do not stop it for autorefitting
+						CmdRefitAircraft(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
+					}
+				break;
+				}
+			default: return CMD_ERROR;
+			}
+			// makes sure that the cargo is still valid compared to new capacity
+			if (v->cargo_count != 0) {
+				if ( v->cargo_type != cargo_type )
+					v->cargo_count = 0;
+				else if ( v->cargo_count > v->cargo_cap )
+					v->cargo_count = v->cargo_cap;
+			}
 		}
-		e = &_engines[new_engine_type];
+		
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->age = 0;
@@ -1465,26 +1559,58 @@ int32 CmdRenewVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
+	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	return cost;
 }
 
-void MaybeRenewVehicle(Vehicle *v)
+void MaybeReplaceVehicle(Vehicle *v)
 {
+	uint32 new_engine_and_autoreplace_money;
+	
 	if (v->owner != _local_player)
 		return;
+	// uncomment next line if you want to see what engine type just entered a depot
+	//printf("engine type: %d\n", v->engine_type);
 
 	// A vehicle is autorenewed when it it gets the amount of months
 	//  give by _patches.autorenew_months away for his max age.
 	//  Standard is -6, meaning 6 months before his max age
 	//  It can be any value between -12 and 12.
-	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30))
-		return;
-
+	//  Here it also checks if the vehicles is listed for replacement
+	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30)) {  //replace if engine is too old
+		if (_autoreplace_array[v->engine_type] == v->engine_type && v->type != VEH_Train) //updates to a new model
+			return;
+	}
+	/* Now replace the vehicle */
 	_current_player = v->owner;
-
-	/* Now renew the vehicle */
-	DoCommandP(v->tile, v->index, v->engine_type, NULL, CMD_RENEW_VEHICLE);
+	
+	/* makes the variable to inform about how much money the player wants to have left after replacing
+	 and which engine to replace with
+	 the first 16 bit is the money. Since we know the last 5 digits is 0, they are thrown away.
+	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
+	 This is a nice way to send 32 bit and only use 16 bit
+	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
+	new_engine_and_autoreplace_money = (((_patches.autorenew_money / 100000) & 0xFFFF) << 16)
+	 + _autoreplace_array[v->engine_type];
+	
+	assert(v->type == _engines[ _autoreplace_array[v->engine_type] ].type);
+	
+	if ( v->type != VEH_Train ) {
+		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+	} else {
+	// checks if the front engine is outdated
+		if (v->engine_type != _autoreplace_array[v->engine_type] )  
+			DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+	//we will check all the cars and engines if they should be replaced
+		while (v->next != NULL){
+			v = v->next;
+			if (v->engine_type != _autoreplace_array[v->engine_type] || v->age - v->max_age < (_patches.autorenew_months * 30))
+				DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money , NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+			}
+	}
+	_current_player = OWNER_NONE;
 }
 
 

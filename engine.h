@@ -80,6 +80,7 @@ enum {
 };
 
 
+void AddTypeToEngines();
 void StartupEngines();
 
 

@@ -406,29 +406,32 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
 }
 
 // p1 = vehicle
-// p2 = new cargo type
+// p2 = new cargo type(0xFF)
+// p2 = skip check for stopped in hanger (0x0100)
 int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v,*u;
 	int pass, mail;
 	int32 cost;
+	byte SkipStoppedInHangerCheck = (p2 & 0x100) >> 8; //excludes the cargo value
+	byte new_cargo_type = p2 & 0xFF; //gets the cargo number
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
 	v = &_vehicles[p1];
-	if (!CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
+	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
 		return CMD_ERROR;
 
 	pass = AircraftVehInfo(v->engine_type)->passanger_capacity;
-	if (p2 != 0) {
+	if (new_cargo_type != CT_PASSENGERS) {
 		pass >>= 1;
-		if (p2 != 5)
+		if (new_cargo_type != CT_GOODS)
 			pass >>= 1;
 	}
 	_aircraft_refit_capacity = pass;
 
 	cost = 0;
-	if (IS_HUMAN_PLAYER(v->owner) && (byte)p2 != v->cargo_type) {
+	if (IS_HUMAN_PLAYER(v->owner) && new_cargo_type != v->cargo_type) {
 		cost = _price.aircraft_base >> 7;
 	}
 
@@ -437,12 +440,15 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		u = v->next;
 		mail = AircraftVehInfo(v->engine_type)->mail_capacity;
-		if (p2 != 0) {
+		if (new_cargo_type != CT_PASSENGERS) {
 			mail = 0;
 		}
 		u->cargo_cap = mail;
-		v->cargo_count = u->cargo_count = 0;
-		v->cargo_type = (byte)p2;
+		//autorefitted planes wants to keep the cargo
+		//it will be checked if the cargo is valid in CmdReplaceVehicle
+		if (!(SkipStoppedInHangerCheck))
+			v->cargo_count = u->cargo_count = 0;
+		v->cargo_type = new_cargo_type;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
 
@@ -1157,7 +1163,7 @@ static void AircraftEnterHangar(Vehicle *v)
 
 	ServiceAircraft(v);
 
-	MaybeRenewVehicle(v);
+	MaybeReplaceVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

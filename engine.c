@@ -115,6 +115,29 @@ static void CalcEngineReliability(Engine *e)
 	}
 }
 
+void AddTypeToEngines()
+{
+	Engine *e;
+	uint32 counter = 0;
+	
+	for(e=_engines; e != endof(_engines); e++, counter++) {
+
+		e->type = VEH_Train;
+		if 	(counter >= ROAD_ENGINES_INDEX) {
+			e->type = VEH_Road;
+			if 	(counter >= SHIP_ENGINES_INDEX) {
+				e->type = VEH_Ship;
+				if 	(counter >= AIRCRAFT_ENGINES_INDEX) {
+					e->type = VEH_Aircraft;
+					if 	(counter >= TOTAL_NUM_ENGINES) {
+						e->type = VEH_Special;
+					}
+				}
+			}
+		}
+	}
+}
+
 void StartupEngines()
 {
 	Engine *e;
@@ -123,8 +146,8 @@ void StartupEngines()
 
 	SetupEngineNames();
 
-
 	for(e=_engines, ei=_engine_info; e != endof(_engines); e++, ei++, counter++) {
+
 		e->age = 0;
 		e->railtype = ei->railtype_climates >> 4;
 		e->flags = 0;
@@ -170,19 +193,6 @@ void StartupEngines()
 		   It should hopefully be the same as when you ask a vehicle what it is
 		   but using this, you can ask what type an engine number is
 		   even if it is not a vehicle (yet)*/
-		e->type = VEH_Train;
-		if 	(counter >= ROAD_ENGINES_INDEX) {
-			e->type = VEH_Road;
-			if 	(counter >= SHIP_ENGINES_INDEX) {
-				e->type = VEH_Ship;
-				if 	(counter >= AIRCRAFT_ENGINES_INDEX) {
-					e->type = VEH_Aircraft;
-					if 	(counter >= TOTAL_NUM_ENGINES) {
-						e->type = VEH_Special;
-					}
-				}
-			}
-		}
 	}
 
 	AdjustAvailAircraft();

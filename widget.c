@@ -46,23 +46,37 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 	int mi, ma, pos;
 	Scrollbar *sb;
 
-	if (wi->type == WWT_SCROLLBAR) {
-		// vertical scroller
-		w->flags4 &= ~WF_HSCROLL;
-		mi = wi->top;
-		ma = wi->bottom;
-		pos = y;
-		sb = &w->vscroll;
-	} else {
-		// horizontal scroller
-		assert(wi->type == WWT_HSCROLLBAR);
-		w->flags4 |= WF_HSCROLL;
-		mi = wi->left;
-		ma = wi->right;
-		pos = x;
-		sb = &w->hscroll;
+	switch (wi->type) {
+		case WWT_SCROLLBAR: {
+			// vertical scroller
+			w->flags4 &= ~WF_HSCROLL;
+			w->flags4 &= ~WF_SCROLL2;
+			mi = wi->top;
+			ma = wi->bottom;
+			pos = y;
+			sb = &w->vscroll;
+			break;
+		}
+		case WWT_SCROLL2BAR: {
+			// 2nd vertical scroller
+			w->flags4 &= ~WF_HSCROLL;
+			w->flags4 |= WF_SCROLL2;
+			mi = wi->top;
+			ma = wi->bottom;
+			pos = y;
+			sb = &w->vscroll2;
+			break;
+		}
+		case  WWT_HSCROLLBAR: {
+			// horizontal scroller
+			assert(wi->type == WWT_HSCROLLBAR);
+			w->flags4 |= WF_HSCROLL;
+			mi = wi->left;
+			ma = wi->right;
+			pos = x;
+			sb = &w->hscroll;
+		}
 	}
-
 	if (pos <= mi+9) {
 		// Pressing the upper button?
 		if (!_demo_mode) {
@@ -258,8 +272,8 @@ void DrawWindowWidgets(Window *w)
 			int c1,c2;
 
 			// draw up/down buttons
-			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == WF_SCROLL_UP ? 0x20 : 0);
-			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == WF_SCROLL_DOWN ? 0x20 : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP ? 0x20 : 0);
+			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN ? 0x20 : 0);
 
 			// draw icons in up/down buttons
 			DoDrawString("\xA0", r.left+2, r.top, 0x10);
@@ -279,7 +293,36 @@ void DrawWindowWidgets(Window *w)
 			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
 
 			pt = HandleScrollbarHittest(&w->vscroll, r.top, r.bottom);
-			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == WF_SCROLL_MIDDLE ? 0x20 : 0);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? 0x20 : 0);
+			break;
+		}
+		case WWT_SCROLL2BAR: {
+			Point pt;
+			int c1,c2;
+
+			// draw up/down buttons
+			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2) ? 0x20 : 0);
+			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2) ? 0x20 : 0);
+
+			// draw icons in up/down buttons
+			DoDrawString("\xA0", r.left+2, r.top, 0x10);
+			DoDrawString("\xAA", r.left+2, r.bottom-9, 0x10);
+
+			c1 = _color_list[wi->color&0xF].window_color_1a;
+			c2 = _color_list[wi->color&0xF].window_color_2;
+
+			// draw "shaded" background
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | 0x8000);
+
+			// draw shaded lines
+			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
+			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
+			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
+			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
+
+			pt = HandleScrollbarHittest(&w->vscroll2, r.top, r.bottom);
+			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? 0x20 : 0);
 			break;
 		}
 
@@ -383,6 +426,7 @@ draw_default:;
 
 static uint _dropdown_item_count;
 static uint32 _dropdown_disabled;
+static bool _dropdown_hide_disabled;
 static const StringID *_dropdown_items;
 static int _dropdown_selindex;
 static byte _dropdown_button;
@@ -421,95 +465,100 @@ void DropdownMenuWndProc(Window *w, WindowEvent *e)
 	int item;
 
 	switch(e->event) {
-	case WE_PAINT: {
-		int x,y,i,sel;
-		uint32 dis;
+		case WE_PAINT: {
+			int x,y,i,sel;
+			uint32 dis;
+			bool hidden;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		x = 1;
-		y = 2;
-		sel = _dropdown_selindex;
-		dis = _dropdown_disabled;
+			x = 1;
+			y = 2;
+			sel    = _dropdown_selindex;
+			dis    = _dropdown_disabled;
+			hidden = _dropdown_hide_disabled;
+		
 
-		for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
-			if (_dropdown_items[i] != 0) {
-				if (sel == 0) {
-					GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
+			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
+				if (!(hidden) | !(dis & 1)) {
+					if (_dropdown_items[i] != 0) {
+						if (sel == 0) {
+							GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
+						}
+						DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
+
+						if (dis & 1) {
+							GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
+							_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
+						}
+					} else {
+						int color_1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
+						int color_2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
+						GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
+						GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
+					}
+					y += 10;
+					sel--;
 				}
-				DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
-
-				if (dis & 1) {
-					GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
-						_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
-				}
-			} else {
-				int color_1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
-				int color_2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
-				GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
-				GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
+				dis>>=1;
 			}
-			y += 10;
-			sel--;
-			dis>>=1;
-		}
-	} break;
+		} break;
 
-	case WE_CLICK: {
-		item = GetDropdownItem(w);
-		if (item >= 0) {
-			_dropdown_var1 = 4;
-			_dropdown_selindex = item;
-			SetWindowDirty(w);
-		}
-	} break;
-
-	case WE_MOUSELOOP: {
-		Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
-		if (w2 == NULL) {
-			DeleteWindow(w);
-			return;
-		}
-
-		if (_dropdown_var1 != 0 && --_dropdown_var1 == 0) {
-			WindowEvent e;
-			e.event = WE_DROPDOWN_SELECT;
-			e.dropdown.button = _dropdown_button;
-			e.dropdown.index = _dropdown_selindex;
-			w2->wndproc(w2, &e);
-			DeleteWindow(w);
-			return;
-		}
-
-		if (_dropdown_var2 != 0) {
+		case WE_CLICK: {
 			item = GetDropdownItem(w);
+			if (item >= 0) {
+				_dropdown_var1 = 4;
+				_dropdown_selindex = item;
+				SetWindowDirty(w);
+			}
+		} break;
 
-			if (!_left_button_clicked) {
-				_dropdown_var2 = 0;
-				if (item < 0)
-					return;
-				_dropdown_var1 = 2;
-			} else {
-				if (item < 0)
-					return;
+		case WE_MOUSELOOP: {
+			Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
+			if (w2 == NULL) {
+				DeleteWindow(w);
+				return;
 			}
 
-			_dropdown_selindex = item;
-			SetWindowDirty(w);
-		}
-	} break;
+			if (_dropdown_var1 != 0 && --_dropdown_var1 == 0) {
+				WindowEvent e;
+				e.event = WE_DROPDOWN_SELECT;
+				e.dropdown.button = _dropdown_button;
+				e.dropdown.index = _dropdown_selindex;
+				w2->wndproc(w2, &e);
+				DeleteWindow(w);
+				return;
+			}
 
-	case WE_DESTROY: {
-		Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
-		if (w2 != NULL) {
-			CLRBIT(w2->click_state, _dropdown_button);
-			InvalidateWidget(w2, _dropdown_button);
-		}
-	} break;
+			if (_dropdown_var2 != 0) {
+				item = GetDropdownItem(w);
+
+				if (!_left_button_clicked) {
+					_dropdown_var2 = 0;
+					if (item < 0)
+						return;
+					_dropdown_var1 = 2;
+				} else {
+					if (item < 0)
+						return;
+				}
+
+				_dropdown_selindex = item;
+				SetWindowDirty(w);
+			}
+		} break;
+
+		case WE_DESTROY: {
+			Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
+			if (w2 != NULL) {
+				CLRBIT(w2->click_state, _dropdown_button);
+				InvalidateWidget(w2, _dropdown_button);
+			}
+		} break;
 	}
 }
 
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, bool remove_filtered_strings)
 {
 	WindowNumber num;
 	WindowClass cls;
@@ -519,6 +568,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	uint32 old_click_state = w->click_state;
 
 	_dropdown_disabled = disabled_mask;
+	_dropdown_hide_disabled = remove_filtered_strings;
 
 	cls = w->window_class;
 	num = w->window_number;
@@ -548,6 +598,16 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	_dropdown_var2 = 1;
 
 	wi = &w->widget[button];
+
+	if ( remove_filtered_strings ) {
+		int j;
+		for(j=0; _dropdown_items[j] != INVALID_STRING_ID; j++) {
+			if ( disabled_mask & ( 1 << j )) {
+				_dropdown_item_count--;
+				i--;
+			}
+		}
+	}
 
 	_dropdown_menu_widgets[0].color = wi->color;
 
