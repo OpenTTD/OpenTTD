@@ -386,7 +386,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			}
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
-			Engine *e = &_engines[ROAD_ENGINES_INDEX];
+			Engine *e = DEREF_ENGINE(ROAD_ENGINES_INDEX);
 			byte cargo;
 			EngineInfo *info;
 			engine_id = ROAD_ENGINES_INDEX;
@@ -403,7 +403,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			if ( selected_id[0] != -1 ) {   // only draw right array if we have anything in the left one
 				num = NUM_ROAD_ENGINES;
 				engine_id = ROAD_ENGINES_INDEX;
-				e = &_engines[ROAD_ENGINES_INDEX];
+				e = DEREF_ENGINE(ROAD_ENGINES_INDEX);
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
@@ -419,7 +419,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = &_engines[SHIP_ENGINES_INDEX];
+			Engine *e = DEREF_ENGINE(SHIP_ENGINES_INDEX);
 			byte cargo, refittable;
 			EngineInfo *info;
 			engine_id = SHIP_ENGINES_INDEX;
@@ -435,7 +435,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			if ( selected_id[0] != -1 ) {
 				num = NUM_SHIP_ENGINES;
-				e = &_engines[SHIP_ENGINES_INDEX];
+				e = DEREF_ENGINE(SHIP_ENGINES_INDEX);
 				engine_id = SHIP_ENGINES_INDEX;
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
@@ -456,7 +456,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Aircraft:{
 			int num = NUM_AIRCRAFT_ENGINES;
 			byte subtype;
-			Engine *e = &_engines[AIRCRAFT_ENGINES_INDEX];
+			Engine *e = DEREF_ENGINE(AIRCRAFT_ENGINES_INDEX);
 			EngineInfo *info;
 			engine_id = AIRCRAFT_ENGINES_INDEX;
 
@@ -471,7 +471,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			if ( selected_id[0] != -1 ) {
 				num = NUM_AIRCRAFT_ENGINES;
-				e = &_engines[AIRCRAFT_ENGINES_INDEX];
+				e = DEREF_ENGINE(AIRCRAFT_ENGINES_INDEX);
 				subtype = AircraftVehInfo(selected_id[0])->subtype;
 				engine_id = AIRCRAFT_ENGINES_INDEX;
 				do {
@@ -523,7 +523,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
-			Engine *e = &_engines[ROAD_ENGINES_INDEX];
+			Engine *e = DEREF_ENGINE(ROAD_ENGINES_INDEX);
 			int engine_id = ROAD_ENGINES_INDEX;
 			byte cargo;
 			EngineInfo *info;
@@ -557,7 +557,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = &_engines[SHIP_ENGINES_INDEX];
+			Engine *e = DEREF_ENGINE(SHIP_ENGINES_INDEX);
 			int engine_id = SHIP_ENGINES_INDEX;
 			byte cargo, refittable;
 			EngineInfo *info;
@@ -594,7 +594,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 		case VEH_Aircraft: {
 			if ( selected_id[0] != -1 ) {
 				int num = NUM_AIRCRAFT_ENGINES;
-				Engine *e = &_engines[AIRCRAFT_ENGINES_INDEX];
+				Engine *e = DEREF_ENGINE(AIRCRAFT_ENGINES_INDEX);
 				int engine_id = AIRCRAFT_ENGINES_INDEX;
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
 				EngineInfo *info;
@@ -782,9 +782,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				// finds mask for available engines
 				{
 					int engine_avail = 0;
-					if ( !(HASBIT(_engines[NUM_NORMAL_RAIL_ENGINES + NUM_MONORAIL_ENGINES].player_avail, _local_player))) {
+					if ( !(HASBIT(DEREF_ENGINE(NUM_NORMAL_RAIL_ENGINES + NUM_MONORAIL_ENGINES)->player_avail, _local_player))) {
 						engine_avail = 4;
-						if ( !(HASBIT(_engines[NUM_NORMAL_RAIL_ENGINES].player_avail, _local_player)))
+						if ( !(HASBIT(DEREF_ENGINE(NUM_NORMAL_RAIL_ENGINES)->player_avail, _local_player)))
 							engine_avail = 6;
 					}
 					ShowDropDownMenu(w, _rail_types_list, WP(w,replaceveh_d).railtype, 15, engine_avail, 1);

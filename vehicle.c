@@ -1421,7 +1421,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (new_engine_type >= TOTAL_NUM_ENGINES ) return CMD_ERROR;
 	
 	// check that the new vehicle type is the same as the original one
-	if (v->type != _engines[new_engine_type].type) return CMD_ERROR;
+	if (v->type != DEREF_ENGINE(new_engine_type)->type) return CMD_ERROR;
 
 	// check that it's the vehicle's owner that requested the replace
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -1465,7 +1465,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		Engine *e;
-		e = &_engines[new_engine_type];
+		e = DEREF_ENGINE(new_engine_type);
 		
 		// TODO make it check if refit is possible before actually doing it
 
@@ -1606,14 +1606,14 @@ void MaybeReplaceVehicle(Vehicle *v)
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	new_engine_and_autoreplace_money = ((_patches.autorenew_money / 100000) << 16) + _autoreplace_array[v->engine_type];
 	
-	assert(v->type == _engines[ _autoreplace_array[v->engine_type] ].type);
+	assert(v->type == DEREF_ENGINE(_autoreplace_array[v->engine_type])->type);
 	
 	if ( v->type != VEH_Train ) {
 		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
 	} else {
 	// checks if any of the engines in the train are either old or listed for replacement
 		do {
-			if ( v->engine_type != _autoreplace_array[v->engine_type] || (v->age - v->max_age) > (_patches.autorenew_months * 30)) {
+			if ( v->engine_type != _autoreplace_array[v->engine_type] || (_patches.autorenew && (v->age - v->max_age) > (_patches.autorenew_months * 30))) {
 				new_engine_and_autoreplace_money = (new_engine_and_autoreplace_money & 0xFFFF0000) + _autoreplace_array[v->engine_type]; // sets the new engine replacement type
 				DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
 			}
