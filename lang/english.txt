@@ -189,9 +189,9 @@ STR_00B7_VERSION												:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Original design by Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Original graphics by Simon Foster
 STR_SPECIAL_THANKS											:{BLACK}Special thanks go out to:
-STR_SPECIAL_THANKS_SIGNALS							:{BLACK} Pre-Signals and Semaphores {COPYRIGHT} 2003 Michael Blunck
-STR_SPECIAL_THANKS_CANALS								:{BLACK} Foundations for Tracks on Slopes {COPYRIGHT} Marcin Grzegorczyk
-STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK} Canal/Lock graphics {COPYRIGHT} 2003-2004 George
+STR_SPECIAL_THANKS_SIGNALS							:{BLACK}° Pre-Signals and Semaphores {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS								:{BLACK}° Foundations for Tracks on Slopes {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Canal/Lock graphics {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5								:{BLACK}{CROSS}
@@ -729,30 +729,30 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION	:{BLACK}Vehicle design names selection
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE		:{BLACK}Save customized vehicle design names to disk
 
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS							:Game options
-STR_02C4_GAME_OPTIONS							:Game options
+STR_02C3_GAME_OPTIONS					:Game options
+STR_02C4_GAME_OPTIONS					:Game options
 STR_02C5_DIFFICULTY_SETTINGS			:Difficulty settings
 STR_02C6_DIFFICULTY_SETTINGS			:Difficulty settings
-STR_02C7_CONFIG_PATCHES						:Configure patches
-STR_02C8_CONFIG_PATCHES						:Configure patches
+STR_02C7_CONFIG_PATCHES					:Configure patches
+STR_02C8_CONFIG_PATCHES					:Configure patches
 STR_NEWGRF_SETTINGS								:Newgrf settings
 STR_NEWGRF_SETTINGS2							:Newgrf settings
-STR_GAMEOPTMENU_0A								:
-STR_GAMEOPTMENU_0B								:
+STR_GAMEOPTMENU_0A						:
+STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED			:{CHECKMARK}{SETX 12}Town names displayed
 STR_02CA_TOWN_NAMES_DISPLAYED			:{SETX 12}Town names displayed
-STR_02CB_STATION_NAMES_DISPLAYED	:{CHECKMARK}{SETX 12}Station names displayed
-STR_02CC_STATION_NAMES_DISPLAYED	:{SETX 12}Station names displayed
-STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Signs displayed
-STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Signs displayed
-STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Waypoints displayed
-STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Waypoints displayed
-STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Full animation
-STR_02D0_FULL_ANIMATION						:{SETX 12}Full animation
-STR_02D1_FULL_DETAIL							:{CHECKMARK}{SETX 12}Full detail
-STR_02D2_FULL_DETAIL							:{SETX 12}Full detail
-STR_02D3_TRANSPARENT_BUILDINGS		:{CHECKMARK}{SETX 12}Transparent buildings
-STR_02D4_TRANSPARENT_BUILDINGS		:{SETX 12}Transparent buildings
+STR_02CB_STATION_NAMES_DISPLAYED		:{CHECKMARK}{SETX 12}Station names displayed
+STR_02CC_STATION_NAMES_DISPLAYED		:{SETX 12}Station names displayed
+STR_02CD_SIGNS_DISPLAYED				:{CHECKMARK}{SETX 12}Signs displayed
+STR_02CE_SIGNS_DISPLAYED				:{SETX 12}Signs displayed
+STR_WAYPOINTS_DISPLAYED				:{CHECKMARK}{SETX 12}Waypoints displayed
+STR_WAYPOINTS_DISPLAYED2				:{SETX 12}Waypoints displayed
+STR_02CF_FULL_ANIMATION					:{CHECKMARK}{SETX 12}Full animation
+STR_02D0_FULL_ANIMATION					:{SETX 12}Full animation
+STR_02D1_FULL_DETAIL					:{CHECKMARK}{SETX 12}Full detail
+STR_02D2_FULL_DETAIL					:{SETX 12}Full detail
+STR_02D3_TRANSPARENT_BUILDINGS			:{CHECKMARK}{SETX 12}Transparent buildings
+STR_02D4_TRANSPARENT_BUILDINGS			:{SETX 12}Transparent buildings
 ############ range ends	here
 
 ############ range for menu	starts
@@ -885,7 +885,7 @@ STR_CURR_CZK							:Czech Koruna (CZK)
 STR_CURR_ISK							:Icelandic Krona (ISK)
 STR_CURR_NOK							:Norwegian Krone (NOK)
 STR_CURR_ROL							:Romanian Leu (Lei)
-STR_CURR_EUR							:Euro ()
+STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Language
 STR_OPTIONS_LANG_CBO					:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
