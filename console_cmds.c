@@ -740,6 +740,9 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
 	IConsoleCmdRegister("newgame",         ConNewGame);
+	IConsoleCmdRegister("new_game",         ConNewGame);
+	IConsoleCmdRegister("newmap",         ConNewGame);
+	IConsoleCmdRegister("new_map",         ConNewGame);
 	IConsoleCmdRegister("printf",       ConPrintF);
 	IConsoleCmdRegister("printfc",      ConPrintFC);
 	IConsoleCmdRegister("quit",         ConExit);
