@@ -61,6 +61,10 @@ typedef struct Widget {
 	uint16 tooltips;
 } Widget;
 
+/* XXX - outside "byte event" so you can set event directly without going into
+ * the union elements at first. Because of this every first element of the union
+ * MUST BE 'byte event'. Whoever did this must get shot! Scheduled for immediate
+ * rewrite after 0.4.0 */
 union WindowEvent {
 	byte event;
 	struct {
@@ -117,6 +121,13 @@ union WindowEvent {
 		byte ascii;  // 8-bit ASCII-value of the key
 		uint16 keycode;// untranslated key (including shift-state)
 	} keypress;
+
+	struct {
+		byte event;
+		uint msg;    // message to be sent
+		uint wparam; // additional message-specific information
+		uint lparam; // additional message-specific information
+	} message;
 };
 
 enum WindowKeyCodes {
@@ -259,6 +270,12 @@ typedef struct {
 	uint step_height;
 } ResizeInfo;
 
+typedef struct {
+		int msg;
+		int wparam;
+		int lparam;
+} Message;
+
 struct Window {
 	uint16 flags4;
 	WindowClass window_class;
@@ -280,6 +297,7 @@ struct Window {
 	//const WindowDesc *desc;
 	uint32 desc_flags;
 
+	Message message;
 	byte custom[WINDOW_CUSTOM_SIZE];
 };
 
@@ -425,6 +443,13 @@ typedef struct vehiclelist_d {
 } vehiclelist_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
+typedef struct message_d {
+	int msg;
+	int wparam;
+	int lparam;
+} message_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
+
 enum WindowEvents {
 	WE_CLICK = 0,
 	WE_PAINT = 1,
@@ -449,6 +474,7 @@ enum WindowEvents {
 	WE_MOUSEOVER = 20,
 	WE_ON_EDIT_TEXT_CANCEL = 21,
 	WE_RESIZE = 22,
+	WE_MESSAGE = 23
 };
 
 
@@ -519,6 +545,8 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(Window *w);
+void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam);
+void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);

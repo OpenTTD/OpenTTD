@@ -1362,13 +1362,16 @@ void ShowJoinStatusWindowAfterJoin(void)
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
-	switch(e->event) {
-	case WE_PAINT: {
+	switch (e->event) {
+	case WE_CREATE:
+		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
+		closed = false;
+		break;
 
+	case WE_PAINT:
 		DrawWindowWidgets(w);
-
 		DrawEditBox(w, 1);
-	} break;
+		break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
@@ -1418,11 +1421,8 @@ press_ok:;
 		}
 	} break;
 
-	case WE_CREATE:
-		closed = false;
-		break;
-
 	case WE_DESTROY:
+		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
 		// If the window is not closed yet, it means it still needs to send a CANCEL
 		if (!closed) {
 			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);

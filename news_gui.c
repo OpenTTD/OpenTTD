@@ -98,6 +98,11 @@ void DrawNewsBorder(const Window *w)
 static void NewsWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: { /* If chatbar is open at creation time, we need to go above it */
+		const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
+		w->message.msg = (w1 != NULL) ? w1->height : 0;
+	} break;
+
 	case WE_PAINT: {
 		const NewsItem *ni = WP(w, news_d).ni;
 		ViewPort *vp;
@@ -184,17 +189,26 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_TICK: {
-		int y = max(w->top - 4, _screen.height - w->height);
-		if (y == w->top)
-			return;
+	case WE_MESSAGE: /* The chatbar has notified us that is was either created or closed */
+		switch (e->message.msg) {
+			case WE_CREATE: w->message.msg = e->message.wparam; break;
+			case WE_DESTROY: w->message.msg = 0; break;
+			break;
+		}
+		break;
+
+	case WE_TICK: { /* Scroll up newsmessages from the bottom in steps of 4 pixels */
+		int diff;
+		int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
+		if (y == w->top) return;
 
 		if (w->viewport != NULL)
 			w->viewport->top += y - w->top;
 
+		diff = abs(w->top - y);
 		w->top = y;
 
-		SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height + 4);
+		SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
 	} break;
 	}
 }
@@ -339,7 +353,7 @@ static void ShowNewspaper(NewsItem *ni)
 	if (sound != 0)
 		SndPlayFx(sound);
 
-	top = _screen.height - 4;
+	top = _screen.height;
 	switch (ni->display_mode) {
 		case NM_NORMAL:
 		case NM_CALLBACK: {

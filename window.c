@@ -289,6 +289,18 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 	return w;
 }
 
+static inline bool IsVitalWindow(const Window *w)
+{
+	WindowClass wc = w->window_class;
+	return (wc == WC_MAIN_TOOLBAR || wc == WC_STATUS_BAR || wc == WC_NEWS_WINDOW || wc == WC_SEND_NETWORK_MSG);
+}
+
+/** On clicking on a window, make it the frontmost window of all. However
+ * there are certain windows that always need to be on-top; these include
+ * - Toolbar, Statusbar (always on)
+ * - New window, Chatbar (only if open)
+ * @param w window that is put into the foreground
+ */
 Window *BringWindowToFront(Window *w)
 {
 	Window *v;
@@ -298,7 +310,7 @@ Window *BringWindowToFront(Window *w)
 	do {
 		if (--v < _windows)
 			return w;
-	} while (v->window_class == WC_MAIN_TOOLBAR || v->window_class == WC_STATUS_BAR || v->window_class == WC_NEWS_WINDOW);
+	} while (IsVitalWindow(v));
 
 	if (w == v)
 		return w;
@@ -314,30 +326,36 @@ Window *BringWindowToFront(Window *w)
 	return v;
 }
 
-/* We have run out of windows, so find a suitable candidate for replacement.
- * Keep all important windows intact */
+/** We have run out of windows, so find a suitable candidate for replacement.
+ * Keep all important windows intact. These are
+ * - Main window (gamefield), Toolbar, Statusbar (always on)
+ * - News window, Chatbar (when on)
+ * - Any sticked windows since we wanted to keep these
+ * @return w pointer to the window that is going to be deleted
+ */
 static Window *FindDeletableWindow(void)
 {
 	Window *w;
 	for (w = _windows; w < endof(_windows); w++) {
-		if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
-			  w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW &&
-				!(w->flags4 & WF_STICKY) )
+		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w) && !(w->flags4 & WF_STICKY) )
 				return w;
 	}
 	return NULL;
 }
 
-/* A window must be freed, and all are marked as important windows. Ease the
- * restriction a bit by allowing to delete sticky windows */
+/** A window must be freed, and all are marked as important windows. Ease the
+ * restriction a bit by allowing to delete sticky windows. Keep important/vital
+ * windows intact (Main window, Toolbar, Statusbar, News Window, Chatbar)
+ * @see FindDeletableWindow()
+ * @return w Pointer to the window that is being deleted
+ */
 static Window *ForceFindDeletableWindow(void)
 {
 	Window *w;
 	for (w = _windows;; w++) {
 		assert(w < _last_window);
 
-		if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
-			  w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW)
+		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w))
 				return w;
 	}
 }
@@ -347,7 +365,7 @@ bool IsWindowOfPrototype(Window *w, const Widget *widget)
 	return (w->original_widget == widget);
 }
 
-/* Copies 'widget' to 'w->widget' */
+/* Copies 'widget' to 'w->widget' to allow for resizable windows */
 void AssignWidgetToWindow(Window *w, const Widget *widget)
 {
 	w->original_widget = widget;
@@ -366,19 +384,26 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 		w->widget = NULL;
 }
 
+/** Open a new window. If there is no space for a new window, close an open
+ * window. Try to avoid stickied windows, but if there is no else, close one of
+ * those as well. Then make sure all created windows are below some always-on-top
+ * ones. Finally set all variables and call the WE_CREATE event
+ * @param x offset in pixels from the left of the screen
+ * @param y offset in pixels from the top of the screen
+ * @param width width in pixels of the window
+ * @param height height in pixels of the window
+ * @param *proc @see WindowProc function to call when any messages/updates happen to the window
+ * @param cls @see WindowClass class of the window, used for identification and grouping
+ * @param *widget @see Widget pointer to the window layout and various elements
+ * @return @see Window pointer of the newly created window
+ */
 Window *AllocateWindow(
-							int x,
-							int y,
-							int width,
-							int height,
-							WindowProc *proc,
-							WindowClass cls,
-							const Widget *widget)
+							int x, int y, int width, int height,
+							WindowProc *proc, WindowClass cls, const Widget *widget)
 {
-	Window *w;
+	Window *w = _last_window; // last window keeps track of the highest open window
 
-	w = _last_window;
-
+	// We have run out of windows, close one and use that as the place for our new one
 	if (w >= endof(_windows)) {
 		w = FindDeletableWindow();
 
@@ -389,55 +414,52 @@ Window *AllocateWindow(
 		w = _last_window;
 	}
 
-	if (w != _windows && cls != WC_NEWS_WINDOW) {
+	/* XXX - This very strange construction makes sure that the chatbar is always
+	 * on top of other windows. Why? It is created as last_window (so, on top).
+	 * Any other window will go below toolbar/statusbar/news window, which implicitely
+	 * also means it is below the chatbar. Very likely needs heavy improvement
+	 * to de-braindeadize */
+	if (w != _windows && cls != WC_SEND_NETWORK_MSG) {
 		Window *v;
 
+		/* XXX - if not this order (toolbar/statusbar and then news), game would
+		 * crash because it will try to copy a negative size for the news-window.
+		 * Eg. window was already moved BELOW news (which is below toolbar/statusbar)
+		 * and now needs to move below those too. That is a negative move. */
 		v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		if (v) {
+		if (v != NULL) {
 			memmove(v+1, v, (byte*)w - (byte*)v);
 			w = v;
 		}
 
 		v = FindWindowById(WC_STATUS_BAR, 0);
-		if (v) {
+		if (v != NULL) {
+			memmove(v+1, v, (byte*)w - (byte*)v);
+			w = v;
+		}
+
+		v = FindWindowById(WC_NEWS_WINDOW, 0);
+		if (v != NULL) {
 			memmove(v+1, v, (byte*)w - (byte*)v);
 			w = v;
 		}
 	}
 
-	/* XXX: some more code here */
+	// Set up window properties
+	memset(w, 0, sizeof(Window));
 	w->window_class = cls;
-	w->flags4 = WF_WHITE_BORDER_MASK;
+	w->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
 	w->caption_color = 0xFF;
-	w->window_number = 0;
 	w->left = x;
 	w->top = y;
 	w->width = width;
 	w->height = height;
-	w->viewport = NULL;
-	w->desc_flags = 0;
-//	w->landscape_assoc = 0xFFFF;
 	w->wndproc = proc;
-	w->click_state = 0;
-	w->disabled_state = 0;
-	w->hidden_state = 0;
-//	w->unk22 = 0xFFFF;
-	w->vscroll.pos = 0;
-	w->vscroll.count = 0;
-	w->hscroll.pos = 0;
-	w->hscroll.count = 0;
-	w->widget = NULL;
 	AssignWidgetToWindow(w, widget);
 	w->resize.width = width;
 	w->resize.height = height;
 	w->resize.step_width = 1;
 	w->resize.step_height = 1;
-
-	{
-		uint i;
-		for (i=0;i<lengthof(w->custom);i++)
-			w->custom[i] = 0;
-	}
 
 	_last_window++;
 
@@ -1225,17 +1247,13 @@ static Window *MaybeBringWindowToFront(Window *w)
 {
 	Window *u;
 
-	if (w->window_class == WC_MAIN_WINDOW ||
-			w->window_class == WC_MAIN_TOOLBAR ||
-			w->window_class == WC_STATUS_BAR ||
-			w->window_class == WC_NEWS_WINDOW ||
-			w->window_class == WC_TOOLTIPS ||
-			w->window_class == WC_DROPDOWN_MENU)
+	if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) ||
+			w->window_class == WC_TOOLTIPS    || w->window_class == WC_DROPDOWN_MENU)
 				return w;
 
-	for(u=w; ++u != _last_window;) {
-		if (u->window_class == WC_MAIN_WINDOW || u->window_class==WC_MAIN_TOOLBAR || u->window_class==WC_STATUS_BAR ||
-				u->window_class == WC_NEWS_WINDOW || u->window_class == WC_TOOLTIPS || u->window_class == WC_DROPDOWN_MENU)
+	for (u = w; ++u != _last_window;) {
+		if (u->window_class == WC_MAIN_WINDOW || IsVitalWindow(u) ||
+			  u->window_class == WC_TOOLTIPS    || u->window_class == WC_DROPDOWN_MENU)
 				continue;
 
 		if (w->left + w->width <= u->left ||
@@ -1248,6 +1266,37 @@ static Window *MaybeBringWindowToFront(Window *w)
 	}
 
 	return w;
+}
+
+/** Send a message from one window to another. The receiving window is found by
+ * @param w @see Window pointer pointing to the other window
+ * @param msg Specifies the message to be sent
+ * @param wparam Specifies additional message-specific information
+ * @param lparam Specifies additional message-specific information
+ */
+void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
+{
+	WindowEvent e;
+
+	e.message.event  = WE_MESSAGE;
+	e.message.msg    = msg;
+	e.message.wparam = wparam;
+	e.message.lparam = lparam;
+
+	w->wndproc(w, &e);
+}
+
+/** Send a message from one window to another. The receiving window is found by
+ * @param wnd_class @see WindowClass class AND
+ * @param wnd_num @see WindowNumber number, mostly 0
+ * @param msg Specifies the message to be sent
+ * @param wparam Specifies additional message-specific information
+ * @param lparam Specifies additional message-specific information
+ */
+void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam)
+{
+	Window *w = FindWindowById(wnd_class, wnd_num);
+	if (w != NULL) SendWindowMessageW(w, msg, wparam, lparam);
 }
 
 static void HandleKeypress(uint32 key)
