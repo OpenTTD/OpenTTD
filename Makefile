@@ -627,7 +627,7 @@ table/strings.h: lang/english.txt $(STRGEN)
 	@echo 'Generating $@'; \
 	$(STRGEN)
 
-lang/%.lng: lang/%.txt $(STRGEN) table/strings.h
+lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo 'Generating $@'; \
 	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER) $(LANG_ERRORS)
 
