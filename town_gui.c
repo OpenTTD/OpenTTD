@@ -8,6 +8,7 @@
 #include "gui.h"
 #include "command.h"
 #include "player.h"
+#include "network.h"
 
 static const Widget _town_authority_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
@@ -227,6 +228,9 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 	switch(e->event) {
 	case WE_PAINT:
+		// disable renaming town in network games if you are not the server
+		if (_networking && !_network_server) SETBIT(w->disabled_state, 8);
+
 		SetDParam(0, t->index);
 		DrawWindowWidgets(w);
 
