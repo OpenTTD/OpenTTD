@@ -216,6 +216,8 @@ endif
 #
 # Compiler configuration
 #
+CC  ?= gcc
+CXX ?= g++
 
 # Executable file extension
 ifdef WIN32
