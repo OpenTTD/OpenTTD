@@ -13,7 +13,7 @@ static uint GetSlopeZ_Dummy(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeZ_Dummy(TileInfo *ti) {
+static uint GetSlopeTileh_Dummy(TileInfo *ti) {
 	return ti->tileh;
 }
 
