@@ -930,7 +930,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0, 0);
 				if (sstd != NULL) {
 					sstd->width = ss->sign.width_1;
-					sstd->color = 14;
+					sstd->color = (ss->owner==OWNER_NONE)?14:_player_colors[ss->owner];
 				}
 			}
 		}

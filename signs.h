@@ -7,6 +7,8 @@ typedef struct SignStruct {
 	int32        x;
 	int32        y;
 	byte         z;
+	byte owner; // placed by this player. Anyone can delete them though.
+							// OWNER_NONE for gray signs from old games.
 
 	uint16       index;
 } SignStruct;

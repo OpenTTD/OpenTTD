@@ -6,6 +6,9 @@
 #include "player.h"
 #include "saveload.h"
 
+/* TODO when upgrading to version 6.0:
+ * - uncomment "SLE_CONDVAR(SignStruct,owner..." in _sign_desc (signs.c) */
+
 enum {
 	SAVEGAME_MAJOR_VERSION = 5,
 	SAVEGAME_MINOR_VERSION = 2,

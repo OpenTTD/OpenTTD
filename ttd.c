@@ -1269,6 +1269,15 @@ static void UpdateVoidTiles(void)
 	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
 }
 
+// since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)
+static void UpdateSignOwner(void)
+{
+	SignStruct *ss;
+	FOR_ALL_SIGNS(ss) {
+		ss->owner = OWNER_NONE; // no owner
+	}
+}
+
 extern void UpdateOldAircraft( void );
 extern void UpdateOilRig( void );
 
@@ -1290,6 +1299,11 @@ bool AfterLoadGame(uint version)
 	// from version 4.2 of the savegame, currencies are in a different order
 	if (version <= 0x401) {
 		UpdateCurrencies();
+	}
+
+	// from version 6.0 of the savegame, signs have an "owner"
+	if (version <= 0x600) {
+		UpdateSignOwner();
 	}
 
 	/* In old version there seems to be a problem that water is owned by

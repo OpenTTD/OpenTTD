@@ -67,7 +67,7 @@ static SignStruct *AllocateSign(void)
  *
  * Place a sign at the given x/y
  *
- * @param p1 not used
+ * @param p1 player number
  * @param p2 not used
  */
 int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -84,6 +84,7 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ss->str = STR_280A_SIGN;
 		ss->x = x;
 		ss->y = y;
+		ss->owner = p1;
 		ss->z = GetSlopeZ(x,y);
 		UpdateSignVirtCoords(ss);
 		MarkSignDirty(ss);
@@ -97,15 +98,15 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * Rename a sign
  *
  * @param sign_id Index of the sign
- * @param remove  If 1, sign will be removed
+ * @param new owner, if OWNER_NONE, sign will be removed
  */
-int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 remove)
+int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 {
 	StringID str;
 	SignStruct *ss;
 
 	/* If GetDParam(0) == nothing, we delete the sign */
-	if (GetDParam(0) != 0 && remove != 1) {
+	if (GetDParam(0) != 0 && owner != OWNER_NONE) {
 		/* Create the name */
 		str = AllocateName((byte*)_decode_parameters, 0);
 		if (str == 0)
@@ -120,6 +121,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 remove)
 			DeleteName(ss->str);
 			/* Assign the new one */
 			ss->str = str;
+			ss->owner = owner;
 
 			/* Update */
 			UpdateSignVirtCoords(ss);
@@ -165,7 +167,7 @@ void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
  */
 void PlaceProc_Sign(uint tile)
 {
-	DoCommandP(tile, 0, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
+	DoCommandP(tile, _current_player, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
 }
 
 /**
@@ -191,6 +193,7 @@ static const byte _sign_desc[] = {
 	SLE_CONDVAR(SignStruct,y,					SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
 	SLE_CONDVAR(SignStruct,x,					SLE_INT32, 5, 255),
 	SLE_CONDVAR(SignStruct,y,					SLE_INT32, 5, 255),
+// 	SLE_CONDVAR(SignStruct,owner,			SLE_INT32, 6, 255), // TODO: uncomment this after the savegame bump to version 6.0
 	SLE_VAR(SignStruct,z,							SLE_UINT8),
 	SLE_END()
 };

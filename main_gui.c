@@ -70,7 +70,7 @@ void HandleOnEditText(WindowEvent *e) {
 	switch(_rename_what) {
 	case 0:
 		// for empty string send "remove sign" parameter
-		DoCommandP(0, id, (*b==0)?1:0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
+		DoCommandP(0, id, (*b==0)?OWNER_NONE:_current_player, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
 		break;
 	case 1:
 		if(*b == 0)
