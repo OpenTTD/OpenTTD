@@ -184,22 +184,19 @@ static byte MakeGermanTownName(byte *buf, uint32 seed)
 
 static byte MakeSpanishTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_spanish_1[GetNumberBasedOnSeed(0, lengthof(name_spanish_1), seed)]);
+	strcpy(buf, name_spanish_1[GetNumberBasedOnSeed(0, lengthof(name_spanish_1), seed)]);
 	return 0;
 }
 
 static byte MakeFrenchTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_french_1[GetNumberBasedOnSeed(0, lengthof(name_french_1), seed)]);
+	strcpy(buf, name_french_1[GetNumberBasedOnSeed(0, lengthof(name_french_1), seed)]);
 	return 0;
 }
 
 static byte MakeSillyTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_silly_1[GetNumberBasedOnSeed( 0, lengthof(name_silly_1), seed)]);
+	strcpy(buf, name_silly_1[GetNumberBasedOnSeed( 0, lengthof(name_silly_1), seed)]);
 	strcat(buf, name_silly_2[GetNumberBasedOnSeed(16, lengthof(name_silly_2), seed)]);
 	return 0;
 }
@@ -316,22 +313,19 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 
 static byte MakeCzechTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_czech_1[GetNumberBasedOnSeed(0, lengthof(name_czech_1), seed)]);
+	strcpy(buf, name_czech_1[GetNumberBasedOnSeed(0, lengthof(name_czech_1), seed)]);
 	return 0;
 }
 
 static byte MakeRomanianTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_romanian_1[GetNumberBasedOnSeed(0, lengthof(name_romanian_1), seed)]);
+	strcpy(buf, name_romanian_1[GetNumberBasedOnSeed(0, lengthof(name_romanian_1), seed)]);
 	return 0;
 }
 
 static byte MakeSlovakTownName(byte *buf, uint32 seed)
 {
-	strcpy(buf, "");
-	strcat(buf, name_slovakish_1[GetNumberBasedOnSeed(0, lengthof(name_slovakish_1), seed)]);
+	strcpy(buf, name_slovakish_1[GetNumberBasedOnSeed(0, lengthof(name_slovakish_1), seed)]);
 	return 0;
 }
 
