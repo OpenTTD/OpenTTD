@@ -735,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Vaikeusasetukset
 STR_02C6_DIFFICULTY_SETTINGS					:Vaikeusasetukset
 STR_02C7_CONFIG_PATCHES						:Muokkaa paikkauksia
 STR_02C8_CONFIG_PATCHES						:Muokkaa paikkauksia
+STR_NEWGRF_SETTINGS						:Newgrf-asetukset
+STR_NEWGRF_SETTINGS2						:Newgrf-asetukset
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Kaupunkien nimet näkyvissä
@@ -2600,3 +2602,10 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Käteisvarat
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Onko sinulla kova laina?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Yhteispistemäärä kaikista mahdollisista pisteistä
 
+STR_NEWGRF_SETINGS_CAPTION					:{WHITE}Newgrf-asetukset
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Ota käyttöön
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Aseta parametrit
+STR_NEWGRF_TIP							:{BLACK}Lista kaikista asentamistasi Newgrf-paketeista. Klikkaa pakettia muuttaaksesi asetuksia.
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Yhtään Newgrf-tiedostoa ei ole asennettuna! Ole hyvä ja katso manuaalista ohjeet uusien grafiikoiden asentamiseksi.
+STR_NEWGRF_FILENAME						:{BLACK}Tiedostonimi:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
