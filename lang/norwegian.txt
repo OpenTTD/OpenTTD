@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Vis stasjonsnavn
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Vis stasjonsnavn
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Vis skilt
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Vis skilt
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Vis kontrollpunkt
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Vis kontrollpunkt
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Vis kontrollpunkt
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Vis kontrollpunkt
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Fullstending animasjon
 STR_02D0_FULL_ANIMATION						:{SETX 12}Fullstending animasjon
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Maksimalt med detaljer
@@ -1072,24 +1072,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetfly vil ikke krasje (hele tiden) på små f
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Bytt klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Bytt dato: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Har kurs for {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Har kurs for {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Har kurs for {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Har kurs for {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Kjør via {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Kjør via {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Kontrollpunkt {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Kontrollpunkt {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Kontrollpunkt
+STR_WAYPOINTNAME_CITY						:Kontrollpunkt {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollpunkt {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontrollpunkt
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Endre navnet til kontrollpunkt...
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Endre navnet til kontrollpunkt...
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Kan ikke endre navnet til kontrollpunktet...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Konverter jernbane til kontrollpunkt
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Kan ikke bygge kontrollpunkt for tog her...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Kan ikke fjerne kontrollpunktet...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Kan ikke endre navnet til kontrollpunktet...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Konverter jernbane til kontrollpunkt
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Kan ikke bygge kontrollpunkt for tog her...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Kan ikke fjerne kontrollpunktet...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Bygg jernbane ved hjelp av Autobane modusen
 

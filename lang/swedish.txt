@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stationsnamn visas
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Stationsnamn visas
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Skyltar visas
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Skyltar visas
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Kontrollstationer visas
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Kontrollstationer visas
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Kontrollstationer visas
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Kontrollstationer visas
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION						:{SETX 12}Full animation
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Full detaljnivå
@@ -1072,24 +1072,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetplan kommer inte att störta (frekvent) på
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Byt klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}På väg mot {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}På väg mot {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}På väg mot {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}På väg mot {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Gå via {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Gå via {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Kontrollstation {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Kontrollstation {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Kontrollpunkt
+STR_WAYPOINTNAME_CITY						:Kontrollstation {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollstation {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontrollpunkt
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Ändra namn på kontrollstation
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Ändra namn på kontrollstation
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Kan inte ändra kontrollstationens namn...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Ändra räls till kontrollstation
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Kan inte bygga tågkontrollstation här...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Kan inte ta bort tågkontrollstation här...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Kan inte ändra kontrollstationens namn...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Ändra räls till kontrollstation
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Kan inte bygga tågkontrollstation här...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Kan inte ta bort tågkontrollstation här...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen
 

@@ -28,14 +28,14 @@ static const byte _track_depot_layout_table_3[] = {
 	TILE_SEQ_END()
 };
 
-static const byte _track_checkpoint_table_0[] = {
+static const byte _track_waypoint_table_0[] = {
 	TILE_SEQ_BEGIN(0x83F4)
 	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+18,  0,  0,  16,  5)
 	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+19,  0, 11,  16,  5)
 	TILE_SEQ_END()
 };
 
-static const byte _track_checkpoint_table_1[] = {
+static const byte _track_waypoint_table_1[] = {
 	TILE_SEQ_BEGIN(0x83F3)
 	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+20,   0,  0, 5, 16)
 	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+21,  11,  0, 5, 16)
@@ -49,8 +49,8 @@ static const byte * const _track_depot_layout_table[6] = {
 	_track_depot_layout_table_2,
 	_track_depot_layout_table_3,
 
-	_track_checkpoint_table_0,
-	_track_checkpoint_table_1,
+	_track_waypoint_table_0,
+	_track_waypoint_table_1,
 };
 
 const byte _track_sloped_sprites[14] = {

@@ -788,9 +788,9 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				str = STR_882F_LOADING_UNLOADING;
 				break;
 
-			case OT_GOTO_CHECKPOINT: {
+			case OT_GOTO_WAYPOINT: {
 				SET_DPARAM16(0, v->next_order_param);
-				str = STR_HEADING_FOR_CHECKPOINT + _patches.vehicle_speed;
+				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
 				SET_DPARAM16(1, v->u.rail.last_speed * 10 >> 4);
 				break;
 			}

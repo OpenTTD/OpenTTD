@@ -29,13 +29,13 @@ enum { /* These values are bitmasks for the map5 byte */
 	RAIL_DEPOT_DIR = 3,
 	RAIL_DEPOT_UNUSED_BITS = 0x3C,
 
-	RAIL_TYPE_CHECKPOINT = 0xC4,
-	RAIL_CHECKPOINT_TRACK_MASK = 1,
-	RAIL_CHECKPOINT_UNUSED_BITS = 0x3E,
+	RAIL_TYPE_WAYPOINT = 0xC4,
+	RAIL_WAYPOINT_TRACK_MASK = 1,
+	RAIL_WAYPOINT_UNUSED_BITS = 0x3E,
 };
 
 #define IS_RAIL_DEPOT(x) (((x) & (RAIL_TYPE_DEPOT|RAIL_DEPOT_UNUSED_BITS)) == RAIL_TYPE_DEPOT)
-#define IS_RAIL_CHECKPOINT(x) (((x) & (RAIL_TYPE_CHECKPOINT|RAIL_CHECKPOINT_UNUSED_BITS)) == RAIL_TYPE_CHECKPOINT)
+#define IS_RAIL_WAYPOINT(x) (((x) & (RAIL_TYPE_WAYPOINT|RAIL_WAYPOINT_UNUSED_BITS)) == RAIL_TYPE_WAYPOINT)
 
 /* Format of rail map5 byte.
  * 00 abcdef  => Normal rail
@@ -663,32 +663,32 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_train_depot;
 }
 
-static void MakeDefaultCheckpointName(Checkpoint *cp)
+static void MakeDefaultWaypointName(Waypoint *cp)
 {
 	int townidx = ClosestTownFromTile(cp->xy, (uint)-1)->index;
-	Checkpoint *cc;
-	bool used_checkpoint[64];
+	Waypoint *cc;
+	bool used_waypoint[64];
 	int i;
 
-	memset(used_checkpoint, 0, sizeof(used_checkpoint));
+	memset(used_waypoint, 0, sizeof(used_waypoint));
 
-	// find an unused checkpoint number belonging to this town
-	for(cc = _checkpoints; cc != endof(_checkpoints); cc++) {
+	// find an unused waypoint number belonging to this town
+	for(cc = _waypoints; cc != endof(_waypoints); cc++) {
 		if (cc->xy && cc->town_or_string & 0xC000 && (cc->town_or_string & 0xFF) == townidx)
-			used_checkpoint[(cc->town_or_string >> 8) & 0x3F] = true;
+			used_waypoint[(cc->town_or_string >> 8) & 0x3F] = true;
 	}
 
-	for(i=0; used_checkpoint[i] && i!=lengthof(used_checkpoint)-1; i++) {}
+	for(i=0; used_waypoint[i] && i!=lengthof(used_waypoint)-1; i++) {}
 	cp->town_or_string = 0xC000 + (i << 8) + townidx;
 }
 
-// find a deleted checkpoint close to a tile.
-static Checkpoint *FindDeletedCheckpointCloseTo(uint tile)
+// find a deleted waypoint close to a tile.
+static Waypoint *FindDeletedWaypointCloseTo(uint tile)
 {
-	Checkpoint *cp,*best = NULL;
+	Waypoint *cp,*best = NULL;
 	uint thres = 8, cur_dist;
 
-	for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 		if (cp->deleted && cp->xy) {
 			cur_dist = GetTileDist(tile, cp->xy);
 			if (cur_dist < thres) {
@@ -700,12 +700,12 @@ static Checkpoint *FindDeletedCheckpointCloseTo(uint tile)
 	return best;
 }
 
-/* Convert existing rail to checkpoint */
+/* Convert existing rail to waypoint */
 
-int32 CmdBuildTrainCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
-	Checkpoint *cp;
+	Waypoint *cp;
 	uint tileh;
 	uint dir;
 
@@ -725,16 +725,16 @@ int32 CmdBuildTrainCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
-	// check if there is an already existing, deleted, checkpoint close to us that we can reuse.
-	cp = FindDeletedCheckpointCloseTo(tile);
+	// check if there is an already existing, deleted, waypoint close to us that we can reuse.
+	cp = FindDeletedWaypointCloseTo(tile);
 	if (cp == NULL) {
-		cp = AllocateCheckpoint();
+		cp = AllocateWaypoint();
 		if (cp == NULL) return CMD_ERROR;
 		cp->town_or_string = 0;
 	}
 
 	if (flags & DC_EXEC) {
-		ModifyTile(tile, MP_MAP5, RAIL_TYPE_CHECKPOINT | dir);
+		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
 		if (p1 & 0x100) {
 			// custom graphics
 			_map3_lo[tile] |= 16;
@@ -744,40 +744,40 @@ int32 CmdBuildTrainCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		cp->deleted = 0;
 		cp->xy = tile;
 
-		if (cp->town_or_string == 0) MakeDefaultCheckpointName(cp); else RedrawCheckpointSign(cp);
-		UpdateCheckpointSign(cp);
-		RedrawCheckpointSign(cp);
+		if (cp->town_or_string == 0) MakeDefaultWaypointName(cp); else RedrawWaypointSign(cp);
+		UpdateWaypointSign(cp);
+		RedrawWaypointSign(cp);
 		SetSignalsOnBothDir(tile, dir ? 2 : 1);
 	}
 
 	return _price.build_train_depot;
 }
 
-static void DoDeleteCheckpoint(Checkpoint *cp)
+static void DoDeleteWaypoint(Waypoint *cp)
 {
 	cp->xy = 0;
-	DeleteCommandFromVehicleSchedule(((cp-_checkpoints) << 8) + OT_GOTO_CHECKPOINT);
+	DeleteCommandFromVehicleSchedule(((cp-_waypoints) << 8) + OT_GOTO_WAYPOINT);
 	if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
-	RedrawCheckpointSign(cp);
+	RedrawWaypointSign(cp);
 }
 
-// delete checkpoints after a while
-void CheckpointsDailyLoop()
+// delete waypoints after a while
+void WaypointsDailyLoop()
 {
-	Checkpoint *cp;
-	for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+	Waypoint *cp;
+	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 		if (cp->deleted && !--cp->deleted) {
-			DoDeleteCheckpoint(cp);
+			DoDeleteWaypoint(cp);
 		}
 	}
 }
 
-static int32 RemoveTrainCheckpoint(uint tile, uint32 flags, bool justremove)
+static int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 
-	// make sure it's a checkpoint
-	if (!IS_TILETYPE(tile, MP_RAILWAY) || !IS_RAIL_CHECKPOINT(_map5[tile]))
+	// make sure it's a waypoint
+	if (!IS_TILETYPE(tile, MP_RAILWAY) || !IS_RAIL_WAYPOINT(_map5[tile]))
 		return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile) && !(_current_player==17))
@@ -787,12 +787,12 @@ static int32 RemoveTrainCheckpoint(uint tile, uint32 flags, bool justremove)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		int direction = _map5[tile] & RAIL_CHECKPOINT_TRACK_MASK;
+		int direction = _map5[tile] & RAIL_WAYPOINT_TRACK_MASK;
 
-		// mark the checkpoint deleted
-		for(cp=_checkpoints; cp->xy != (TileIndex)tile; cp++) {}
+		// mark the waypoint deleted
+		for(cp=_waypoints; cp->xy != (TileIndex)tile; cp++) {}
 		cp->deleted = 30; // let it live for this many days before we do the actual deletion.
-		RedrawCheckpointSign(cp);
+		RedrawWaypointSign(cp);
 
 		if (justremove) {
 			ModifyTile(tile, MP_MAP5, 1<<direction);
@@ -807,17 +807,17 @@ static int32 RemoveTrainCheckpoint(uint tile, uint32 flags, bool justremove)
 	return _price.remove_train_depot;
 }
 
-int32 CmdRemoveTrainCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint tile = TILE_FROM_XY(x,y);
-	return RemoveTrainCheckpoint(tile, flags, true);
+	return RemoveTrainWaypoint(tile, flags, true);
 }
 
 
-// p1 = id of checkpoint
-int32 CmdRenameCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+// p1 = id of waypoint
+int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 	StringID str;
 
 	if (_decode_parameters[0] != 0) {
@@ -825,20 +825,20 @@ int32 CmdRenameCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			cp = &_checkpoints[p1];
+			cp = &_waypoints[p1];
 			if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
 			cp->town_or_string = str;
-			UpdateCheckpointSign(cp);
+			UpdateWaypointSign(cp);
 			MarkWholeScreenDirty();
 		} else {
 			DeleteName(str);
 		}
 	}	else {
 		if (flags & DC_EXEC) {
-			cp = &_checkpoints[p1];
+			cp = &_waypoints[p1];
 			if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
-			MakeDefaultCheckpointName(cp);
-			UpdateCheckpointSign(cp);
+			MakeDefaultWaypointName(cp);
+			UpdateWaypointSign(cp);
 			MarkWholeScreenDirty();
 		}
 	}
@@ -1218,8 +1218,8 @@ regular_track:;
 		return cost + _price.remove_rail;
 	} else if ( (m5 & (RAIL_TYPE_MASK|RAIL_DEPOT_UNUSED_BITS)) == RAIL_TYPE_DEPOT) {
 		return RemoveTrainDepot(tile, flags);
-	} else if ( (m5 & (RAIL_TYPE_MASK|RAIL_CHECKPOINT_UNUSED_BITS)) == RAIL_TYPE_CHECKPOINT) {
-		return RemoveTrainCheckpoint(tile, flags, false);
+	} else if ( (m5 & (RAIL_TYPE_MASK|RAIL_WAYPOINT_UNUSED_BITS)) == RAIL_TYPE_WAYPOINT) {
+		return RemoveTrainWaypoint(tile, flags, false);
 	} else
 		return CMD_ERROR;
 }
@@ -1532,17 +1532,17 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 		}
 	} else {
-		/* draw depots / checkpoints */
+		/* draw depots / waypoints */
 		const byte *s;
 		const DrawTrackSeqStruct *drss;
-		byte type = m5 & 0x3F; // 0-3: depots, 4-5: checkpoints
+		byte type = m5 & 0x3F; // 0-3: depots, 4-5: waypoints
 
 		if (!(m5 & (RAIL_TYPE_MASK&~RAIL_TYPE_SPECIAL)))
 			return;
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_CHECKPOINT(m5) && _map3_lo[ti->tile]&16) {
+		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_WAYPOINT(m5) && _map3_lo[ti->tile]&16) {
 			// look for customization
 			DrawTileSprites *cust = GetCustomStation('WAYP', _map3_hi[ti->tile]);
 
@@ -1620,7 +1620,7 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	}
 }
 
-void DrawCheckpointSprite(int x, int y, int stat_id)
+void DrawWaypointSprite(int x, int y, int stat_id)
 {
 	// TODO: We should use supersets with cargo-id FF, if available. --pasky
 	DrawTileSprites *cust = GetCustomStation('WAYP', stat_id);
@@ -1878,7 +1878,7 @@ uint GetSlopeZ_Track(TileInfo *ti)
 				th = _inclined_tileh[f - 15];
 			}
 		} else if ((ti->map5 & 0xC0) == 0xC0) {
-			// depot or checkpoint
+			// depot or waypoint
 			return z + 8;
 		}
 		return GetPartialZ(ti->x&0xF, ti->y&0xF, th) + z;
@@ -1901,7 +1901,7 @@ uint GetSlopeTileh_Track(TileInfo *ti)
 				return _inclined_tileh[f - 15];
 			}
 		} else if ((ti->map5 & 0xC0) == 0xC0) {
-			// depot or checkpoint
+			// depot or waypoint
 			return 0;
 		}
 	}
@@ -2053,8 +2053,8 @@ static void ClickTile_Track(uint tile)
 {
 	if (IS_RAIL_DEPOT(_map5[tile]))
 		ShowTrainDepotWindow(tile);
-	else if (IS_RAIL_CHECKPOINT(_map5[tile]))
-		ShowRenameCheckpointWindow(&_checkpoints[GetCheckpointByTile(tile)]);
+	else if (IS_RAIL_WAYPOINT(_map5[tile]))
+		ShowRenameWaypointWindow(&_waypoints[GetWaypointByTile(tile)]);
 
 }
 
@@ -2079,7 +2079,7 @@ static void GetTileDesc_Track(uint tile, TileDesc *td)
 			}
 		}
 	} else {
-		td->str = m5 < 0xC4 ? STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_CHECKPOINT;
+		td->str = m5 < 0xC4 ? STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
 	}
 	td->owner = _map_owner[tile];
 }

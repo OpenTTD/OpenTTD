@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrats noms d'estacio
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrats noms d'estacions
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrades senyals
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostrades senyals
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrats punts de control
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Mostrats punts de control
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrats punts de control
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Mostrats punts de control
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animació completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animació completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Detall complet
@@ -1072,24 +1072,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Els avions a reacció no tenen (frecuents) ac
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Canviar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Canviar data: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Cap a {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Cap a {CHECKPOINT}, a {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Cap a {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Anar vía {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Anar vía {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Punt de Control {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Punt de Control {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Punt de Control
+STR_WAYPOINTNAME_CITY						:Punt de Control {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Punt de Control {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Punt de Control
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Editar nom de punt de control
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Editar nom de punt de control
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}No es pot canviar el nom del punt de control...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Convertir vía a punt de control
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}No es pot construir punt de control de tren aqui...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}No es pot treure punt de control de tren aqui...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}No es pot canviar el nom del punt de control...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Convertir vía a punt de control
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}No es pot construir punt de control de tren aqui...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}No es pot treure punt de control de tren aqui...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construir via de tren usant el mode Autorail
 

@@ -739,8 +739,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Amosar nomes de estació
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Amosae nomes de estacións
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Amosa-los sinais
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Amosa-los sinais
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Amosar puntos de control
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Amosar puntos de control
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Amosar puntos de control
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Amosar puntos de control
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animacións completas
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animación completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Detalle completo
@@ -1053,24 +1053,24 @@ STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Escavadora máxica(Elimina industrias, non 
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Diríxese a {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Diríxese a {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Diríxese a {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Diríxese a {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Ir vía {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Ir vía {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Punto de Control {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Punto de control {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Punto de control
+STR_WAYPOINTNAME_CITY						:Punto de Control {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Punto de control {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Punto de control
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Edita-lo nome do punto de control
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Edita-lo nome do punto de control
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Non se pode cambia-lo nome do punto de control...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Convertir raíl a punto de control
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Non se pode construír un punto de control de tren aí...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Non se pode eliminar-lo punto de control...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Non se pode cambia-lo nome do punto de control...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Convertir raíl a punto de control
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Non se pode construír un punto de control de tren aí...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Non se pode eliminar-lo punto de control...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construí-la vía de ferrocarril usando o modo Autoraíl
 

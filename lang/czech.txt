@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazení jmen stanic
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Zobrazení jmen stanic
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení napisu
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazení napisu
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Zobrazení kontrolních bodu
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Zobrazení kontrolních bodu
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Plné animace
 STR_02D0_FULL_ANIMATION						:{SETX 12}Plné animace
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Plné detaily
@@ -1074,27 +1074,27 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Letadla nebudou na malých letistich (tak cas
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit podnebí: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Mirim do {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Mirim do {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Mirim do {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Mirim do {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Jet pres {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Jet pres {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Kontrolni bod {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Kontrolni bod {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Kontrolni bod
+STR_WAYPOINTNAME_CITY						:Kontrolni bod {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Kontrolni bod {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontrolni bod
 
-STR_CHECKPOINT					:{WHITE}Kontrolní bod
-STR_CHECKPOINT_GRAPHICS_TIP			:{BLACK}Vyber typ kontrolního bodu
+STR_WAYPOINT					:{WHITE}Kontrolní bod
+STR_WAYPOINT_GRAPHICS_TIP			:{BLACK}Vyber typ kontrolního bodu
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Zmenit jméno kontrolniho bodu
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Zmenit jméno kontrolniho bodu
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Nemohu zmenit jméno kontrolniho bodu...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Zmenit koleje v kontrolni bod
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Nemohu zde vybudovat zeleznicni kontrolni bod...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Nemohu zde zrusit zeleznicni kontrolni bod...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nemohu zmenit jméno kontrolniho bodu...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Zmenit koleje v kontrolni bod
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nemohu zde vybudovat zeleznicni kontrolni bod...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nemohu zde zrusit zeleznicni kontrolni bod...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Budovat koleje pouzitim rezimu Autokoleje
 

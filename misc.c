@@ -525,7 +525,7 @@ void RoadVehiclesYearlyLoop();
 void AircraftYearlyLoop();
 void ShipsYearlyLoop();
 
-void CheckpointsDailyLoop();
+void WaypointsDailyLoop();
 
 
 static const uint16 _autosave_months[] = {
@@ -579,7 +579,7 @@ void IncreaseDate()
 	_vehicle_id_ctr_day = 0;
 
 	DisasterDailyLoop();
-	CheckpointsDailyLoop();
+	WaypointsDailyLoop();
 
 	if (_game_mode != GM_MENU) {
 		InvalidateWindowWidget(WC_STATUS_BAR, 0, 0);

@@ -50,7 +50,7 @@ static void HandleOnEditText(WindowEvent *e) {
 	case 1:
 		if(*b == 0)
 			return;
-		DoCommandP(0, id, 0, NULL, CMD_RENAME_CHECKPOINT | CMD_MSG(STR_CANT_CHANGE_CHECKPOINT_NAME));
+		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 	}
 }
@@ -113,7 +113,7 @@ void MenuClickSettings(int index)
 	case 4: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
 	case 5: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
 	case 6: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
-	case 7: _display_opt ^= DO_CHECKPOINTS; MarkWholeScreenDirty(); return;
+	case 7: _display_opt ^= DO_WAYPOINTS; MarkWholeScreenDirty(); return;
 	case 8: _display_opt ^= DO_FULL_ANIMATION; MarkWholeScreenDirty(); return;
 	case 9: _display_opt ^= DO_FULL_DETAIL; MarkWholeScreenDirty(); return;
 	case 10: _display_opt ^= DO_TRANS_BUILDINGS; MarkWholeScreenDirty(); return;
@@ -275,13 +275,13 @@ void ShowRenameSignWindow(SignStruct *ss)
 	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0);
 }
 
-void ShowRenameCheckpointWindow(Checkpoint *cp)
+void ShowRenameWaypointWindow(Waypoint *cp)
 {
-	int id = cp - _checkpoints;
+	int id = cp - _waypoints;
 	_rename_id = id;
 	_rename_what = 1;
 	SET_DPARAM16(0, id);
-	ShowQueryString(STR_CHECKPOINT_RAW, STR_EDIT_CHECKPOINT_NAME, 30, 180, 1, 0);
+	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
 }
 
 static void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
@@ -844,7 +844,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<4);
 	if (_display_opt & DO_SHOW_STATION_NAMES) x &= ~(1<<5);
 	if (_display_opt & DO_SHOW_SIGNS) x &= ~(1<<6);
-	if (_display_opt & DO_CHECKPOINTS) x &= ~(1<<7);
+	if (_display_opt & DO_WAYPOINTS) x &= ~(1<<7);
 	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<8);
 	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<9);
 	if (!(_display_opt & DO_TRANS_BUILDINGS)) x &= ~(1<<10);

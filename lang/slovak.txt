@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Zobrazit nazvy stanic
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Zobrazit nazvy stanic
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit popisy
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Zobrazit popisy
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit navigacne body
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Zobrazit navigacne body
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Zobrazit navigacne body
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Zobrazit navigacne body
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Plna animacia
 STR_02D0_FULL_ANIMATION						:{SETX 12}Plna animacia
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Plne detaily
@@ -1072,24 +1072,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Triskove lietadla nebudu havarovat (casto) n
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Smeruje do {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Smeruje do {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Smeruje do {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Smeruje do {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Chod cez {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Chod cez {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Smerovy bod {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Smerovy bod {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Smerovy bod
+STR_WAYPOINTNAME_CITY						:Smerovy bod {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Smerovy bod {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Smerovy bod
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Upravit nazvy smerovych bodov
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Upravit nazvy smerovych bodov
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Meno smeroveho bodu sa neda zmenit...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Konvertovat zeleznicu na smerove body
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Tu nie je mozne postavit zeleznicny smerovy bod...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Meno smeroveho bodu sa neda zmenit...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Konvertovat zeleznicu na smerove body
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Tu nie je mozne postavit zeleznicny smerovy bod...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Automaticka stavba zeleznicnych kolaji
 

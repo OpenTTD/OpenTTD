@@ -111,9 +111,9 @@ static void DrawOrdersWindow(Window *w)
 					if (v->type == VEH_Train)
 						s += (ord>>6)&2;
 					SET_DPARAM16(1, s + ((ord>>6)&1) );
-				} else if ((ord & OT_MASK) == OT_GOTO_CHECKPOINT) {
+				} else if ((ord & OT_MASK) == OT_GOTO_WAYPOINT) {
 					SET_DPARAM16(2, ord >> 8);
-					SET_DPARAM16(1, STR_GO_TO_CHECKPOINT);
+					SET_DPARAM16(1, STR_GO_TO_WAYPOINT);
 				}
 			}
 			{
@@ -195,12 +195,12 @@ static uint GetOrderCmdFromTile(Vehicle *v, uint tile)
 		}
 	}
 
-	// check checkpoint
+	// check waypoint
 	if (IS_TILETYPE(tile, MP_RAILWAY)
 	&& v->type == VEH_Train 
 	&& _map_owner[tile] == _local_player
 	&& (_map5[tile]&0xFE)==0xC4)
-		return (GetCheckpointByTile(tile)<<8) | OT_GOTO_CHECKPOINT;
+		return (GetWaypointByTile(tile)<<8) | OT_GOTO_WAYPOINT;
 
 	if (IS_TILETYPE(tile, MP_STATION)) {
 		st = DEREF_STATION(st_index = _map2[tile]);
@@ -296,8 +296,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				case OT_GOTO_DEPOT:				/* goto depot order */
 					xy = _depots[ord >> 8].xy;
 					break;
-				case OT_GOTO_CHECKPOINT:	/* goto checkpoint order */
-					xy = _checkpoints[ord >> 8].xy;
+				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
+					xy = _waypoints[ord >> 8].xy;
 				}
 
 				if (xy)

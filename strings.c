@@ -523,8 +523,8 @@ static byte *DecodeString(byte *buff, const byte *str)
 			break;
 		}
 
-		case 0x9D: { // {CHECKPOINT}
-			Checkpoint *cp = &_checkpoints[GET_DPARAM16(0)];
+		case 0x9D: { // {WAYPOINT}
+			Waypoint *cp = &_waypoints[GET_DPARAM16(0)];
 			StringID str;
 			int idx;
 			if (~cp->town_or_string & 0xC000) {
@@ -533,11 +533,11 @@ static byte *DecodeString(byte *buff, const byte *str)
 			} else {
 				idx = (cp->town_or_string >> 8) & 0x3F;
 				if (idx == 0) {
-					str = STR_CHECKPOINTNAME_CITY;
+					str = STR_WAYPOINTNAME_CITY;
 				} else {
 					InjectDparam(1);
 					SET_DPARAM16(1, idx + 1);
-					str = STR_CHECKPOINTNAME_CITY_SERIAL;
+					str = STR_WAYPOINTNAME_CITY_SERIAL;
 				}
 				SET_DPARAM16(0, cp->town_or_string & 0xFF);
 			}

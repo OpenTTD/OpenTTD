@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Afficher le nom des sta
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Afficher le nom des stations
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Afficher les panneaux
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Afficher les panneaux
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Afficher les points de contrôle
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Afficher les points de contrôle
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Afficher les points de contrôle
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Afficher les points de contrôle
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animation complète
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animation complète
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Détail Maximal
@@ -1074,24 +1074,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Les jets ne se crashent plus (fréquemment) s
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Changer de climat : {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}En route pour {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}En route pour {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}En route pour {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Passant par {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Passant par {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Point de contrôle {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Point de contrôle {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Point de contrôle
+STR_WAYPOINTNAME_CITY						:Point de contrôle {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Point de contrôle {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Point de contrôle
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Modifier nom du point de contrôle
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Modifier nom du point de contrôle
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Impossible de modifier le nom du point de contrôle...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Convertir rail en point de contrôle
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Impossible de construire point de contrôle ici...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Impossible de retirer point de contrôle ici...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Impossible de modifier le nom du point de contrôle...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Convertir rail en point de contrôle
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Impossible de construire point de contrôle ici...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Impossible de retirer point de contrôle ici...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construire les rails avec le mode AutoRail
 

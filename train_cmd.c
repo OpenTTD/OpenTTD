@@ -1582,8 +1582,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 		v->cur_order_index++;
 	}
 
-	// check if we've reached the checkpoint?
-	if ((v->next_order & OT_MASK) == OT_GOTO_CHECKPOINT && v->tile == v->dest_tile) {
+	// check if we've reached the waypoint?
+	if ((v->next_order & OT_MASK) == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
 		v->cur_order_index++;
 	}
 
@@ -1623,8 +1623,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 	} else if ((order & OT_MASK) == OT_GOTO_DEPOT) {
 		v->dest_tile = _depots[order >> 8].xy;
 		result = CheckReverseTrain(v);
-	} else if ((order & OT_MASK) == OT_GOTO_CHECKPOINT) {
-		v->dest_tile = _checkpoints[order >> 8].xy;
+	} else if ((order & OT_MASK) == OT_GOTO_WAYPOINT) {
+		v->dest_tile = _waypoints[order >> 8].xy;
 		result = CheckReverseTrain(v);
 	}
 

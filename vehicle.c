@@ -108,14 +108,14 @@ void VehiclePositionChanged(Vehicle *v)
 	v->bottom_coord = pt.y + sd->ysize + 2;
 }
 
-void UpdateCheckpointSign(Checkpoint *cp)
+void UpdateWaypointSign(Waypoint *cp)
 {
 	Point pt = RemapCoords2(GET_TILE_X(cp->xy)*16, GET_TILE_Y(cp->xy)*16);
-	SET_DPARAM16(0, cp - _checkpoints);
-	UpdateViewportSignPos(&cp->sign, pt.x, pt.y - 0x20, STR_CHECKPOINT_VIEWPORT);
+	SET_DPARAM16(0, cp - _waypoints);
+	UpdateViewportSignPos(&cp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }
 
-void RedrawCheckpointSign(Checkpoint *cp)
+void RedrawWaypointSign(Waypoint *cp)
 {
 	MarkAllViewportsDirty(
 		cp->sign.left - 6,
@@ -128,7 +128,7 @@ void RedrawCheckpointSign(Checkpoint *cp)
 void AfterLoadVehicles()
 {
 	Vehicle *v;
-	Checkpoint *cp;
+	Waypoint *cp;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0) {
@@ -147,8 +147,8 @@ void AfterLoadVehicles()
 		}
 	}
 
-	// update checkpoint signs
-	for(cp=_checkpoints; cp != endof(_checkpoints); cp++) if (cp->xy) UpdateCheckpointSign(cp);
+	// update waypoint signs
+	for(cp=_waypoints; cp != endof(_waypoints); cp++) if (cp->xy) UpdateWaypointSign(cp);
 }
 
 
@@ -294,7 +294,7 @@ void InitializeVehicles()
 
 	// clear it...
 	memset(&_vehicles, 0, sizeof(_vehicles));
-	memset(&_checkpoints, 0, sizeof(_checkpoints));
+	memset(&_waypoints, 0, sizeof(_waypoints));
 	memset(&_depots, 0, sizeof(_depots));
 
 	// setup indexes..
@@ -368,11 +368,11 @@ Depot *AllocateDepot()
 	return free_dep;
 }
 
-Checkpoint *AllocateCheckpoint()
+Waypoint *AllocateWaypoint()
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 
-	for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 		if (cp->xy == 0)
 			return cp;
 	}
@@ -380,11 +380,11 @@ Checkpoint *AllocateCheckpoint()
 	return NULL;
 }
 
-uint GetCheckpointByTile(uint tile)
+uint GetWaypointByTile(uint tile)
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 	int i=0;
-	for(cp=_checkpoints; cp->xy != (TileIndex)tile; cp++) { i++; }
+	for(cp=_waypoints; cp->xy != (TileIndex)tile; cp++) { i++; }
 	return i;
 }
 
@@ -1801,25 +1801,25 @@ static void Load_DEPT()
 	}
 }
 
-static const byte _checkpoint_desc[] = {
-	SLE_VAR(Checkpoint,xy,								SLE_UINT16),
-	SLE_VAR(Checkpoint,town_or_string,		SLE_UINT16),
-	SLE_VAR(Checkpoint,deleted,						SLE_UINT8),
+static const byte _waypoint_desc[] = {
+	SLE_VAR(Waypoint,xy,								SLE_UINT16),
+	SLE_VAR(Waypoint,town_or_string,		SLE_UINT16),
+	SLE_VAR(Waypoint,deleted,						SLE_UINT8),
 
-	SLE_CONDVAR(Checkpoint, build_date, SLE_UINT16, 3, 255),
-	SLE_CONDVAR(Checkpoint, stat_id, SLE_UINT8, 3, 255),
+	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16, 3, 255),
+	SLE_CONDVAR(Waypoint, stat_id, SLE_UINT8, 3, 255),
 
 	SLE_END()
 };
 
 static void Save_CHKP()
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 	int i;
-	for(i=0,cp=_checkpoints; i!=lengthof(_checkpoints); i++,cp++) {
+	for(i=0,cp=_waypoints; i!=lengthof(_waypoints); i++,cp++) {
 		if (cp->xy != 0) {
 			SlSetArrayIndex(i);
-			SlObject(cp, _checkpoint_desc);
+			SlObject(cp, _waypoint_desc);
 		}
 	}
 }
@@ -1828,7 +1828,7 @@ static void Load_CHKP()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SlObject(&_checkpoints[index], _checkpoint_desc);
+		SlObject(&_waypoints[index], _waypoint_desc);
 	}
 }
 

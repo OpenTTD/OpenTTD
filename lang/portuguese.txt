@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estaçõ
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrar nomes de estações
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar indicações
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostrar indicações
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar pontos de passagem
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Mostrar pontos de passagem
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar pontos de passagem
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Mostrar pontos de passagem
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animação completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animação completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Máximo de detalhes
@@ -1072,24 +1072,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Aviões a jacto não irão ter acidentes em aer
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Mudar de clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Dirige-se a {CHECKPOINT}
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Dirige-se a {CHECKPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Dirige-se a {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Dirige-se a {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:Ir via {CHECKPOINT}
+STR_GO_TO_WAYPOINT						:Ir via {WAYPOINT}
 
-STR_CHECKPOINTNAME_CITY						:Ponto de passagem {TOWN}
-STR_CHECKPOINTNAME_CITY_SERIAL					:Ponto de passagem {TOWN} #{COMMA16}
-STR_LANDINFO_CHECKPOINT						:Ponto de passagem
+STR_WAYPOINTNAME_CITY						:Ponto de passagem {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Ponto de passagem {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Ponto de passagem
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Editar nome do ponto de passagem
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Editar nome do ponto de passagem
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Não é possível alterar o nome do ponto de passagem...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Converter linha em ponto de passagem
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Não é possível construir ponto de passagem de comboio aqui...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Não é possível remover ponto de passagem de comboio aqui...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Não é possível alterar o nome do ponto de passagem...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Converter linha em ponto de passagem
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Não é possível construir ponto de passagem de comboio aqui...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Não é possível remover ponto de passagem de comboio aqui...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Construir caminhos-de-ferro usando o modo automático
 

@@ -745,7 +745,7 @@ static const SettingDesc win32_settings[] = {
 };
 
 static const SettingDesc misc_settings[] = {
-	{"display_opt",				SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_CHECKPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|CHECKPOINTS"},
+	{"display_opt",				SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS"},
 	{"news_display_opt",	SDT_UINT16,		(void*)-1,		&_news_display_opt,		NULL},
 	{"fullscreen",				SDT_BOOL,			(void*)false, &_fullscreen,					NULL},
 	{"videodriver",				SDT_STRINGBUF | (lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},

@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Állomásnevek mutatása
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Állomásnevek mutatása
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Feliratok mutatása
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Feliratok mutatása
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Ellenõrzõ pontok mutatása
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Ellenõrzõ pontok mutatása
+STR_WAYPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Ellenõrzõ pontok mutatása
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Ellenõrzõ pontok mutatása
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Teljes animáció
 STR_02D0_FULL_ANIMATION						:{SETX 12}Teljes animáció
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Minden részlet
@@ -1074,24 +1074,24 @@ STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jet-repülõgépek nem fognak (gyakran) lezuhan
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Dátum módosítás: {ORANGE} {DATE_SHORT}
 
-STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Úton {CHECKPOINT} felé
-STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Úton {CHECKPOINT} felé, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Úton {WAYPOINT} felé
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Úton {WAYPOINT} felé, {VELOCITY}
 
-STR_GO_TO_CHECKPOINT						:{CHECKPOINT}on át
+STR_GO_TO_WAYPOINT						:{WAYPOINT}on át
 
-STR_CHECKPOINTNAME_CITY						:{TOWN}i ellenõrzõ pont
-STR_CHECKPOINTNAME_CITY_SERIAL					:{TOWN}i {COMMA16}. ellenõrzõ pont
-STR_LANDINFO_CHECKPOINT						:Ellenõrzõ pont
+STR_WAYPOINTNAME_CITY						:{TOWN}i ellenõrzõ pont
+STR_WAYPOINTNAME_CITY_SERIAL					:{TOWN}i {COMMA16}. ellenõrzõ pont
+STR_LANDINFO_WAYPOINT						:Ellenõrzõ pont
 
-STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
-STR_CHECKPOINT_RAW						:{CHECKPOINT}
-STR_EDIT_CHECKPOINT_NAME					:{WHITE}Módosítd az ellenõrzõ pont nevét
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME					:{WHITE}Módosítd az ellenõrzõ pont nevét
 
-STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Nem lehet megváltoztatni az ellenõrzõ pont nevét...
-STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Sín átalakítása ellenõrzõ ponttá
-STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Nem lehet vonat ellenõrzõ pontot építeni ide...
-STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Nem lehet eltávolítani az ellenõrzõ pontot...
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Nem lehet megváltoztatni az ellenõrzõ pont nevét...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Sín átalakítása ellenõrzõ ponttá
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Nem lehet vonat ellenõrzõ pontot építeni ide...
+STR_CANT_REMOVE_TRAIN_WAYPOINT				:{WHITE}Nem lehet eltávolítani az ellenõrzõ pontot...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Sín építése egyszerûsített módón
 

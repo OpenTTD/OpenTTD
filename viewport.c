@@ -923,14 +923,14 @@ void ViewportAddSigns(DrawPixelInfo *dpi)
 	}
 }
 
-void ViewportAddCheckpoints(DrawPixelInfo *dpi)
+void ViewportAddWaypoints(DrawPixelInfo *dpi)
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 
 	int left, top, right, bottom;
 	StringSpriteToDraw *sstd;
 
-	if (!(_display_opt & DO_CHECKPOINTS))
+	if (!(_display_opt & DO_WAYPOINTS))
 		return;
 
 	left = dpi->left;
@@ -939,14 +939,14 @@ void ViewportAddCheckpoints(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	if (dpi->zoom < 1) {
-		for(cp=_checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 					bottom > cp->sign.top &&
 					top < cp->sign.top + 12 &&
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_1) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_CHECKPOINT_VIEWPORT, cp - _checkpoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_1;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -956,14 +956,14 @@ void ViewportAddCheckpoints(DrawPixelInfo *dpi)
 	} else if (dpi->zoom == 1) {
 		right += 2;
 		bottom += 2;
-		for(cp=_checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 					bottom > cp->sign.top &&
 					top < cp->sign.top + 24 &&
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_1*2) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_CHECKPOINT_VIEWPORT, cp - _checkpoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT, cp - _waypoints, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_1;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -974,14 +974,14 @@ void ViewportAddCheckpoints(DrawPixelInfo *dpi)
 		right += 4;
 		bottom += 5;
 
-		for(cp=_checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp=_waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 					bottom > cp->sign.top &&
 					top < cp->sign.top + 24 &&
 					right > cp->sign.left &&
 					left < cp->sign.left + cp->sign.width_2*4) {
 
-				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_CHECKPOINT_VIEWPORT_TINY, cp - _checkpoints, 0);
+				sstd=AddStringToDraw(cp->sign.left + 1, cp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, cp - _waypoints, 0);
 				if (sstd != NULL) {
 					sstd->width = cp->sign.width_2 | 0x8000;
 					sstd->color = (cp->deleted ? 0xE : 11);
@@ -1181,7 +1181,7 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	ViewportAddTownNames(&vd.dpi);
 	ViewportAddStationNames(&vd.dpi);
 	ViewportAddSigns(&vd.dpi);
-	ViewportAddCheckpoints(&vd.dpi);
+	ViewportAddWaypoints(&vd.dpi);
 #endif
 
 	// This assert should never happen (because the length of the parent_list
@@ -1564,50 +1564,50 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 	return false;
 }
 
-static bool CheckClickOnCheckpoint(ViewPort *vp, int x, int y)
+static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
 {
-	Checkpoint *cp;
+	Waypoint *cp;
 
-	if (!(_display_opt & DO_CHECKPOINTS))
+	if (!(_display_opt & DO_WAYPOINTS))
 		return false;
 
 	if (vp->zoom < 1) {
 		x = x - vp->left + vp->virtual_left;
 		y = y - vp->top + vp->virtual_top;
 
-		for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 			    y >= cp->sign.top &&
 					y < cp->sign.top + 12 &&
 					x >= cp->sign.left &&
 					x < cp->sign.left + cp->sign.width_1) {
-				ShowRenameCheckpointWindow(cp);
+				ShowRenameWaypointWindow(cp);
 				return true;
 			}
 		}
 	} else if (vp->zoom == 1) {
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 			    y >= cp->sign.top &&
 					y < cp->sign.top + 24 &&
 					x >= cp->sign.left &&
 					x < cp->sign.left + cp->sign.width_1 * 2) {
-				ShowRenameCheckpointWindow(cp);
+				ShowRenameWaypointWindow(cp);
 				return true;
 			}
 		}
 	} else {
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		for(cp = _checkpoints; cp != endof(_checkpoints); cp++) {
+		for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 			if (cp->xy &&
 			    y >= cp->sign.top &&
 					y < cp->sign.top + 24 &&
 					x >= cp->sign.left &&
 					x < cp->sign.left + cp->sign.width_2 * 4) {
-				ShowRenameCheckpointWindow(cp);
+				ShowRenameWaypointWindow(cp);
 				return true;
 			}
 		}
@@ -1653,7 +1653,7 @@ void HandleViewportClicked(ViewPort *vp, int x, int y)
 	if (CheckClickOnSign(vp, x, y))
 		return;
 
-	if (CheckClickOnCheckpoint(vp, x, y))
+	if (CheckClickOnWaypoint(vp, x, y))
 		return;
 
 	CheckClickOnLandscape(vp, x, y);

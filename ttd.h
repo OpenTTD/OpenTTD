@@ -47,7 +47,7 @@ typedef struct YearMonthDay {
 // Forward declarations of structs.
 typedef struct Vehicle Vehicle;
 typedef struct Depot Depot;
-typedef struct Checkpoint Checkpoint;
+typedef struct Waypoint Waypoint;
 typedef struct Window Window;
 typedef struct Station Station;
 typedef struct ViewPort ViewPort;
@@ -132,7 +132,7 @@ enum {
 	DO_FULL_ANIMATION = 8,
 	DO_TRANS_BUILDINGS = 0x10,
 	DO_FULL_DETAIL = 0x20,
-	DO_CHECKPOINTS = 0x40,
+	DO_WAYPOINTS = 0x40,
 };
 
 /* Landscape types */

@@ -30,9 +30,9 @@ DEF_COMMAND(CmdSellLandArea);
 DEF_COMMAND(CmdBuildTunnel);
 
 DEF_COMMAND(CmdBuildTrainDepot);
-DEF_COMMAND(CmdBuildTrainCheckpoint);
-DEF_COMMAND(CmdRenameCheckpoint);
-DEF_COMMAND(CmdRemoveTrainCheckpoint);
+DEF_COMMAND(CmdBuildTrainWaypoint);
+DEF_COMMAND(CmdRenameWaypoint);
+DEF_COMMAND(CmdRemoveTrainWaypoint);
 
 DEF_COMMAND(CmdBuildTruckStation);
 
@@ -180,9 +180,9 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildTunnel,								/* 13 */
 	CmdRemoveFromRailroadStation,	/* 14 */
 	CmdConvertRail,								/* 15 */
-	CmdBuildTrainCheckpoint,			/* 16 */
-	CmdRenameCheckpoint,					/* 17 */
-	CmdRemoveTrainCheckpoint,			/* 18 */
+	CmdBuildTrainWaypoint,				/* 16 */
+	CmdRenameWaypoint,						/* 17 */
+	CmdRemoveTrainWaypoint,				/* 18 */
 	CmdBuildTruckStation,					/* 19 */
 	NULL,													/* 20 */
 	CmdBuildBusStation,						/* 21 */

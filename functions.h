@@ -66,7 +66,7 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image);
 
 /* track_land.c */
 void DrawTrainDepotSprite(int x, int y, int image, int railtype);
-void DrawCheckpointSprite(int x, int y, int image);
+void DrawWaypointSprite(int x, int y, int image);
 
 /* road_land.c */
 void DrawRoadDepotSprite(int x, int y, int image);
@@ -215,7 +215,7 @@ uint GetRoadBitsByTile(TileIndex tile);
 int GetTownRadiusGroup(Town *t, uint tile);
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
 void ShowRenameSignWindow(SignStruct *ss);
-void ShowRenameCheckpointWindow(Checkpoint *cp);
+void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int tbl);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);

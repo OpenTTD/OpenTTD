@@ -13,8 +13,8 @@
 static uint _cur_railtype;
 static bool _remove_button_clicked;
 static byte _build_depot_direction;
-static byte _checkpoint_count;
-static byte _cur_checkpoint_type;
+static byte _waypoint_count;
+static byte _cur_waypoint_type;
 
 struct {
 	byte orientation;
@@ -26,7 +26,7 @@ struct {
 
 static void HandleStationPlacement(uint start, uint end);
 static void ShowBuildTrainDepotPicker();
-static void ShowBuildCheckpointPicker();
+static void ShowBuildWaypointPicker();
 static void ShowStationBuilder();
 
 typedef void OnButtonClick(Window *w);
@@ -115,12 +115,12 @@ static void PlaceRail_Depot(uint tile)
 		CMD_BUILD_TRAIN_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT));
 }
 
-static void PlaceRail_Checkpoint(uint tile)
+static void PlaceRail_Waypoint(uint tile)
 {
 	if (!_remove_button_clicked) {
-		DoCommandP(tile, _checkpoint_count > 0 ? (0x100 + _cur_checkpoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_CHECKPOINT));
+		DoCommandP(tile, _waypoint_count > 0 ? (0x100 + _cur_waypoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	} else {
-		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_CHECKPOINT));
+		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT));
 	}
 }
 
@@ -305,12 +305,12 @@ static void BuildRailClick_Sign(Window *w)
 	HandlePlacePushButton(w, 17, 0x12B8, 1, PlaceProc_BuyLand);
 }
 
-static void BuildRailClick_Checkpoint(Window *w)
+static void BuildRailClick_Waypoint(Window *w)
 {
-	_checkpoint_count = GetCustomStationsCount('WAYP');
-	if (HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Checkpoint)
-	    && _checkpoint_count > 1)
-		ShowBuildCheckpointPicker();
+	_waypoint_count = GetCustomStationsCount('WAYP');
+	if (HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
+	    && _waypoint_count > 1)
+		ShowBuildWaypointPicker();
 }
 
 static void BuildRailClick_Convert(Window *w)
@@ -575,7 +575,7 @@ static OnButtonClick * const _build_railroad_button_proc[] = {
 	BuildRailClick_Tunnel,
 	BuildRailClick_Remove,
 	BuildRailClick_Sign,
-	BuildRailClick_Checkpoint,
+	BuildRailClick_Waypoint,
 	BuildRailClick_Convert,
 };
 
@@ -595,7 +595,7 @@ static const uint16 _rail_keycodes[] = {
 	'T',// tunnel
 	'R',// remove
 	0,	// sign
-	'C',// checkpoint
+	'C',// waypoint
 };
 
 
@@ -712,7 +712,7 @@ static const Widget _build_railroad_widgets[] = {
 {      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
+{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 25, STR_CONVERT_RAIL_TIP},
 
 {   WIDGETS_END},
@@ -750,7 +750,7 @@ static const Widget _build_monorail_widgets[] = {
 {      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
+{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 27, STR_CONVERT_RAIL_TIP},
 {   WIDGETS_END},
 };
@@ -787,7 +787,7 @@ static const Widget _build_maglev_widgets[] = {
 {      WWT_PANEL,     7,   352,   373,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,     7,   374,   395,    14,    35, 0x12B7,	STR_0329_PURCHASE_LAND_FOR_FUTURE},
 
-{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_CHECKPOINT_TIP},
+{      WWT_PANEL,     7,   202,   223,    14,    35, SPR_OPENTTD_BASE + 3, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 {      WWT_PANEL,     7,   396,   417,    14,    35, SPR_OPENTTD_BASE + 29, STR_CONVERT_RAIL_TIP},
 {   WIDGETS_END},
 };
@@ -1055,20 +1055,20 @@ static void ShowBuildTrainDepotPicker()
 }
 
 
-static void BuildCheckpointWndProc(Window *w, WindowEvent *e)
+static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
 		int r;
 
-		w->click_state = (1 << 3) << _cur_checkpoint_type;
+		w->click_state = (1 << 3) << _cur_waypoint_type;
 		DrawWindowWidgets(w);
 
 		r = 4*w->hscroll.pos;
-		if(r+0<=_checkpoint_count) DrawCheckpointSprite(2,   25, r + 0);
-		if(r+1<=_checkpoint_count) DrawCheckpointSprite(70,  25, r + 1);
-		if(r+2<=_checkpoint_count) DrawCheckpointSprite(138, 25, r + 2);
-		if(r+3<=_checkpoint_count) DrawCheckpointSprite(206, 25, r + 3);
+		if(r+0<=_waypoint_count) DrawWaypointSprite(2,   25, r + 0);
+		if(r+1<=_waypoint_count) DrawWaypointSprite(70,  25, r + 1);
+		if(r+2<=_waypoint_count) DrawWaypointSprite(138, 25, r + 2);
+		if(r+3<=_waypoint_count) DrawWaypointSprite(206, 25, r + 3);
 		break;
 		}
 	case WE_CLICK: {
@@ -1080,7 +1080,7 @@ static void BuildCheckpointWndProc(Window *w, WindowEvent *e)
 		case 4:
 		case 5:
 		case 6:
-			_cur_checkpoint_type = e->click.widget - 3;
+			_cur_waypoint_type = e->click.widget - 3;
 			SndPlayFx(0x13);
 			SetWindowDirty(w);
 			break;
@@ -1095,33 +1095,33 @@ static void BuildCheckpointWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const Widget _build_checkpoint_widgets[] = {
+static const Widget _build_waypoint_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   275,     0,    13, STR_CHECKPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   275,     0,    13, STR_WAYPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,     7,     0,   275,    14,    91, 0x0, 0},
 
-{      WWT_PANEL,     7,     3,    68,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,     7,    71,   136,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,     7,   139,   204,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,     7,   207,   272,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,     3,    68,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,    71,   136,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,   139,   204,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,   207,   272,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
 
 {  WWT_HSCROLLBAR,    7,     1,   275,    80,    91, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
 };
 
-static const WindowDesc _build_checkpoint_desc = {
+static const WindowDesc _build_waypoint_desc = {
 	-1,-1, 276, 92,
 	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_checkpoint_widgets,
-	BuildCheckpointWndProc
+	_build_waypoint_widgets,
+	BuildWaypointWndProc
 };
 
-static void ShowBuildCheckpointPicker()
+static void ShowBuildWaypointPicker()
 {
-	Window *w = AllocateWindowDesc(&_build_checkpoint_desc);
+	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
 	w->hscroll.cap = 1;
-	w->hscroll.count = (uint) (_checkpoint_count+3) / 4;
+	w->hscroll.count = (uint) (_waypoint_count+3) / 4;
 }
 
 
