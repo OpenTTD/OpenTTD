@@ -428,6 +428,7 @@ void SetDebugString(const char *s)
 		
 		_debug_spritecache_level = v;
 		_debug_misc_level = v;
+		_debug_grf_level = v;
 	}
 
 	// individual levels
@@ -443,6 +444,7 @@ void SetDebugString(const char *s)
 		// check debugging levels
 		if IS_LVL("misc") p = &_debug_misc_level;
 		else if IS_LVL("spritecache") p = &_debug_spritecache_level;
+		else if IS_LVL("grf") p = &_debug_grf_level;
 		else {
 			ShowInfoF("Unknown debug level '%.*s'", s-t, t);
 			return;

@@ -1998,6 +1998,7 @@ static void DeleteStation(Station *st)
 	DeleteName(st->string_id);
 	MarkStationDirty(st);
 	_station_sort_dirty = true;
+	InvalidateWindowClasses(WC_STATION_LIST);
 
 	index = st->index;
 	DeleteWindowById(WC_STATION_VIEW, index);
@@ -2403,6 +2404,7 @@ static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 		_map_owner[tile] = new_player;
 		st->owner = new_player;
 		_station_sort_dirty = true;
+		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}

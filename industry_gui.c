@@ -465,6 +465,8 @@ static void MakeSortedIndustryList()
 	_last_industry_idx = 255; // used for "cache"
 
 	qsort(_industry_sort, n, 1, IndustrySorter);
+
+	//DEBUG(misc, 1) ("Resorting Industries list...");
 }
 
 

@@ -426,6 +426,7 @@ VARDEF bool _ignore_wrong_grf;
 /* Debugging levels */
 VARDEF int _debug_spritecache_level;
 VARDEF int _debug_misc_level;
+VARDEF int _debug_grf_level;
 
 void CDECL debug(const char *s, ...);
 #define DEBUG(name, level) if (level == 0 || _debug_ ## name ## _level >= level) debug

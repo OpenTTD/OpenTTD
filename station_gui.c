@@ -107,9 +107,8 @@ static void MakeSortedStationList(Window *w)
 
 	_last_station_idx = 255; // used for "cache"
 	qsort(_station_sort, n, sizeof(_station_sort[0]), StationSorterByName);
-	//#ifdef _DEBUG
-	//	{printf("Resorting Stations list...\n");}
-	//#endif
+	
+	//DEBUG(misc, 1) ("Resorting Stations list...");
 }
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)

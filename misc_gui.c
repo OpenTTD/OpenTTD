@@ -149,18 +149,17 @@ static void Place_LandInfo(uint tile)
 	GetAcceptedCargo(tile, &lid.ac);
 	GetTileDesc(tile, &lid.td);
 	
-#if defined(_DEBUG)
+	#if defined(_DEBUG)
 	{
-		printf("TILE: %#x (%i,%i)\n", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
-		printf("_map_type_and_height=%#x\n", _map_type_and_height[tile]);
-		printf("_map2=%#x\n", _map2[tile]);
-		printf("_map3_lo=%#x\n", _map3_lo[tile]);
-		printf("_map3_hi=%#x\n", _map3_hi[tile]);
-		printf("_map5=%#x\n", _map5[tile]);
-		printf("_map_owner=%#x\n", _map_owner[tile]);
-		printf("\n");
+		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, GET_TILE_X(tile), GET_TILE_Y(tile));
+		DEBUG(misc, 0) ("_map_type_and_height=%#x", _map_type_and_height[tile]);
+		DEBUG(misc, 0) ("_map2=%#x", _map2[tile]);
+		DEBUG(misc, 0) ("_map3_lo=%#x", _map3_lo[tile]);
+		DEBUG(misc, 0) ("_map3_hi=%#x", _map3_hi[tile]);
+		DEBUG(misc, 0) ("_map5=%#x", _map5[tile]);
+		DEBUG(misc, 0) ("_map_owner=%#x", _map_owner[tile]);
 	}
-#endif
+	#endif
 }
 
 void PlaceLandBlockInfo()

@@ -392,6 +392,8 @@ static void MakeSortedTownList()
 
 	_last_town_idx = 255; // used for "cache"
 	qsort(_town_sort, n, 1, _town_sort_order & 2 ? TownSorterByPop : TownSorterByName);
+
+	//DEBUG(misc, 1) ("Resorting Towns list...");
 }
 
 

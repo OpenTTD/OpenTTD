@@ -1986,15 +1986,12 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 			 *	0000 0000 0000 0000 0000 0000 1111 1111 */
 			return FIXNUM(townnameparts - 86, NUM_FRENCH_1, 0);
 		case 2: /* German */
-			#ifdef _DEBUG
-				printf("German Townnames are buggy... (%d)\n", townnameparts);
-			#endif
+			DEBUG(misc, 0) ("German Townnames are buggy... (%d)", townnameparts);
 			return townnameparts;
 		case 4: /* Latin-American */
 			/*	0000 0000 0000 0000 0000 0000 1111 1111 */
 			return FIXNUM(townnameparts, NUM_SPANISH_1, 0);
 		case 5: /* Silly */
-				//AppendPart(&buf, GETNUM(16, NUM_SILLY_2),silly_2);
 			/*	NUM_SILLY_1	-	lower 16 bits
 			 *	NUM_SILLY_2	-	upper 16 bits without leading 1 (first 8 bytes)
 			 *	1000 0000 2222 2222 0000 0000 1111 1111 */

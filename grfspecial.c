@@ -39,14 +39,13 @@ enum grfmsg_severity {
 static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 {
 	static const char * const severitystr[4] = { "Notice", "Warning", "Error", "Fatal" };
+	char buf[1024];
 	va_list va;
 
-	if(_debug_misc_level==0) return;
 	va_start(va, str);
-	fprintf(stderr, "[%s][%s] ", _cur_grffile, severitystr[severity]);
-	vfprintf(stderr, str, va);
+	vsprintf(buf, str, va);
 	va_end(va);
-	fprintf(stderr, "\n");
+	DEBUG(grf, 1) ("[%s][%s] %s", _cur_grffile, severitystr[severity], buf);
 }
 
 static byte INLINE grf_load_byte(byte **buf) {
