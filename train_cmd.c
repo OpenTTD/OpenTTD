@@ -1311,10 +1311,24 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 	return tfdd;
 }
 
+/*  Send a train to the nearest depot
+	p1 = index of the train
+	p2 = bit 0 = do not stop in depot
+		 bit 1 = set v->set_for_replacement
+		 bit 2 = clear v->set_for_replacement */
 int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v = GetVehicle(p1);
 	TrainFindDepotData tfdd;
+
+	if (!CheckOwnership(v->owner))
+		return CMD_ERROR;
+
+	if (HASBIT(p2, 0)) v->set_for_replacement = true;
+	if (HASBIT(p2, 2)) v->set_for_replacement = false;
+
+	if (HASBIT(p2, 1) || HASBIT(p2, 2)) return CMD_ERROR;   // vehicle has a depot in schedule. It just needed to alter set_for_replacement
+
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
@@ -1337,7 +1351,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+		v->current_order.flags = HASBIT(p2, 0) ? 0 : OF_NON_STOP | OF_FULL_LOAD;
 		v->current_order.station = GetDepotByTile(tfdd.tile);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
@@ -1771,7 +1785,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) ==  (OF_UNLOAD | OF_FULL_LOAD) &&
-			!VehicleNeedsService(v)) {
+			!VehicleNeedsService(v) && !v->set_for_replacement) {
 		v->cur_order_index++;
 	}
 
@@ -1883,6 +1897,27 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 			v->current_order.type = OT_LEAVESTATION;
 			v->current_order.flags = 0;
 
+			if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
+				// only the vehicle owner needs to calculate the rest (locally)
+				if ((_autoreplace_array[v->engine_type] != v->engine_type) ||
+					(_patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+					byte flags = 1;
+					// the flags means, bit 0 = needs to go to depot, bit 1 = have depot in orders
+					if (VehicleHasDepotOrders(v)) SETBIT(flags, 1);
+					if (!(HASBIT(flags, 1) && v->set_for_replacement)) {
+						_current_player = _local_player;
+						DoCommandP(v->tile, v->index, flags, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_SHOW_NO_ERROR);
+						_current_player = OWNER_NONE;
+					}
+				} else { // no need to go to a depot
+					if (v->set_for_replacement) {
+						// it seems that the user clicked "Stop replacing"
+						_current_player = _local_player;
+						DoCommandP(v->tile, v->index, 1 | (1 << 2), NULL, CMD_TRAIN_GOTO_DEPOT | CMD_SHOW_NO_ERROR);
+						_current_player = OWNER_NONE;
+					}
+				}
+			}
 			// If this was not the final order, don't remove it from the list.
 			if (!(b.flags & OF_NON_STOP))
 				return;
@@ -2830,10 +2865,10 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	byte depot;
 	TrainFindDepotData tfdd;
 
-	if (_patches.servint_trains == 0)
+	if (_patches.servint_trains == 0 && !v->set_for_replacement)
 		return;
 
-	if (!VehicleNeedsService(v))
+	if (!VehicleNeedsService(v) && !v->set_for_replacement)
 		return;
 
 	if (v->vehstatus & VS_STOPPED)
