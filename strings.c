@@ -9,14 +9,14 @@
 #include "news.h"
 #include "screenshot.h"
 
-static byte *StationGetSpecialString(byte *buff);
-static byte *GetSpecialTownNameString(byte *buff, int ind);
-static byte *GetSpecialPlayerNameString(byte *buff, int ind);
+static char *StationGetSpecialString(char *buff);
+static char *GetSpecialTownNameString(char *buff, int ind);
+static char *GetSpecialPlayerNameString(char *buff, int ind);
 
-static byte *DecodeString(byte *buff, const byte *str);
+static char *DecodeString(char *buff, const char *str);
 
-static byte **_langpack_offs;
-static byte *_langpack;
+static char **_langpack_offs;
+static char *_langpack;
 static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
@@ -65,18 +65,18 @@ static const uint16 _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 	/* LT_CANDY */  {STR_PASSENGERS, STR_TONS, STR_BAGS, STR_NOTHING, STR_NOTHING, STR_TONS, STR_TONS, STR_LITERS, STR_TONS, STR_NOTHING, STR_LITERS, STR_NOTHING}
 };
 
-static byte *str_cat(byte *dst, const byte *src)
+static char *str_cat(char *dst, const char *src)
 {
 	while ( (*dst++ = *src++) != 0) {}
 	return dst - 1;
 }
 
-static byte *GetStringPtr(uint16 string)
+static char *GetStringPtr(uint16 string)
 {
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
 
-byte *GetString(byte *buffr, uint16 string)
+char *GetString(char *buffr, uint16 string)
 {
 	uint index = string & 0x7FF;
 	uint tab = string >> 11;
@@ -162,7 +162,7 @@ static const uint32 _divisor_table[] = {
 	1
 };
 
-static byte *FormatCommaNumber(byte *buff, int32 number)
+static char *FormatCommaNumber(char *buff, int32 number)
 {
 	uint32 quot,divisor;
 	int i;
@@ -185,7 +185,7 @@ static byte *FormatCommaNumber(byte *buff, int32 number)
 			num = num % _divisor_table[i];
 		}
 		if (tot|=quot || i==9) {
-			*buff++ = (byte)('0' + quot);
+			*buff++ = '0' + quot;
 			if (i==0 || i==3 || i==6) *buff++ = ',';
 		}
 	}
@@ -195,7 +195,7 @@ static byte *FormatCommaNumber(byte *buff, int32 number)
 	return buff;
 }
 
-static byte *FormatNoCommaNumber(byte *buff, int32 number)
+static char *FormatNoCommaNumber(char *buff, int32 number)
 {
 	uint32 quot,divisor;
 	int i;
@@ -218,7 +218,7 @@ static byte *FormatNoCommaNumber(byte *buff, int32 number)
 			num = num % _divisor_table[i];
 		}
 		if (tot|=quot || i==9) {
-			*buff++ = (byte)('0' + quot);
+			*buff++ = '0' + quot;
 		}
 	}
 
@@ -228,9 +228,9 @@ static byte *FormatNoCommaNumber(byte *buff, int32 number)
 }
 
 
-static byte *FormatYmdString(byte *buff, uint16 number)
+static char *FormatYmdString(char *buff, uint16 number)
 {
-	const byte *src;
+	const char *src;
 	YearMonthDay ymd;
 
 	ConvertDayToYMD(&ymd, number);
@@ -244,7 +244,7 @@ static byte *FormatYmdString(byte *buff, uint16 number)
 	return FormatNoCommaNumber(buff+4, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
-static byte *FormatMonthAndYear(byte *buff, uint16 number)
+static char *FormatMonthAndYear(char *buff, uint16 number)
 {
 	const char *src;
 	YearMonthDay ymd;
@@ -257,7 +257,7 @@ static byte *FormatMonthAndYear(byte *buff, uint16 number)
 	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
-static byte *FormatTinyDate(byte *buff, uint16 number)
+static char *FormatTinyDate(char *buff, uint16 number)
 {
 	YearMonthDay ymd;
 
@@ -272,7 +272,7 @@ uint GetCurrentCurrencyRate(void)
     return (&_currency_specs[_opt.currency])->rate;
 }
 
-static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 number, bool compact)
+static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact)
 {
 	const char *s;
 	char c;
@@ -319,7 +319,7 @@ static byte *FormatGenericCurrency(byte *buff, const CurrencySpec *spec, int64 n
 	return buff;
 }
 
-static byte *DecodeString(byte *buff, const byte *str)
+static char *DecodeString(char *buff, const char *str)
 {
 	byte b;
 
@@ -384,7 +384,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 				buff = FormatNoCommaNumber(buff, GetParamInt32());
 				break;
 			case 2: /* {REV} */
-				buff = str_cat(buff, (const byte*)_openttd_revision);
+				buff = str_cat(buff, _openttd_revision);
 				break;
 			case 3: { /* {SHORTCARGO} */
 				// Short description of cargotypes. Layout:
@@ -505,7 +505,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 }
 
 
-static byte *StationGetSpecialString(byte *buff)
+static char *StationGetSpecialString(char *buff)
 {
 	int x = GetParamInt8();
 	if (x & 1) *buff++ = 0xB4;
@@ -517,7 +517,7 @@ static byte *StationGetSpecialString(byte *buff)
 	return buff;
 }
 
-static byte *GetSpecialTownNameString(byte *buff, int ind) {
+static char *GetSpecialTownNameString(char *buff, int ind) {
 	uint32 x = GetParamInt32();
 
 	_town_name_generators[ind](buff, x);
@@ -586,11 +586,11 @@ static const char * const _surname_list[] = {
 	"Nutkins",
 };
 
-static const byte _initial_name_letters[] = {
+static const char _initial_name_letters[] = {
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static byte *GenAndCoName(byte *buff)
+static char *GenAndCoName(char *buff)
 {
 	uint32 x = GetParamInt32();
 	uint base,num;
@@ -608,7 +608,7 @@ static byte *GenAndCoName(byte *buff)
 	return buff;
 }
 
-static byte *GenPlayerName_4(byte *buff)
+static char *GenPlayerName_4(char *buff)
 {
 	uint32 x = GetParamInt32();
 	uint i, base, num;
@@ -663,7 +663,7 @@ static const char * const _song_names[] = {
 	"Hard Drivin'"
 };
 
-static byte *GetSpecialPlayerNameString(byte *buff, int ind)
+static char *GetSpecialPlayerNameString(char *buff, int ind)
 {
 	switch(ind) {
 
@@ -731,10 +731,10 @@ StringID RemapOldStringID(StringID s)
 
 bool ReadLanguagePack(int lang_index) {
 	int tot_count, i;
-	byte *lang_pack;
+	char *lang_pack;
 	size_t len;
-	byte **langpack_offs;
-	byte *s;
+	char **langpack_offs;
+	char *s;
 
 #define HDR ((LanguagePackHeader*)lang_pack)
 	{
@@ -766,14 +766,14 @@ bool ReadLanguagePack(int lang_index) {
 	}
 
 	// Allocate offsets
-	langpack_offs = (byte**)malloc(tot_count * sizeof(byte*));
+	langpack_offs = malloc(tot_count * sizeof(*langpack_offs));
 
 	// Fill offsets
 	s = lang_pack + sizeof(LanguagePackHeader);
 	for(i=0; i!=tot_count; i++) {
-		len = *s;
+		len = (byte)*s;
 		*s++ = 0; // zero terminate the string before.
-		if (len >= 0xC0) { len = ((len & 0x3F) << 8) + *s++; }
+		if (len >= 0xC0) { len = ((len & 0x3F) << 8) + (byte)*s++; }
 		langpack_offs[i] = s;
 		s += len;
 	}

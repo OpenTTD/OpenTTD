@@ -1,7 +1,7 @@
 #ifndef STRINGS_H
 #define STRINGS_H
 
-byte *GetString(byte *buffr, uint16 string);
+char *GetString(char *buffr, uint16 string);
 
 void InjectDParam(int amount);
 
