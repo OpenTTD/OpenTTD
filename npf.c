@@ -596,7 +596,6 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	 * for ships, since the heuristic will not be to far off then. I hope.
 	 */
 	Queue depots;
-	TileType tiletype = 0;
 	int r;
 	NPFFoundTargetData best_result;
 	NPFFoundTargetData result;
@@ -604,17 +603,6 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 	AyStarNode start;
 	Depot* current;
 	Depot *depot;
-
-
-	/* This is a little ugly, but it works :-S */
-	if (type == TRANSPORT_ROAD)
-		tiletype = MP_STREET;
-	else if (type == TRANSPORT_RAIL)
-		tiletype = MP_RAILWAY;
-	else if (type == TRANSPORT_WATER)
-		tiletype = MP_WATER;
-	else
-		assert(0);
 
 	init_InsSort(&depots);
 	/* Okay, let's find all depots that we can use first */
