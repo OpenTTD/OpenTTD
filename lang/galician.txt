@@ -189,6 +189,9 @@ STR_00B7_VERSION						:{BLACK}OpenTTD versión {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Deseño orixinal de Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Gráficos de Simon Foster
 STR_SPECIAL_THANKS						:{BLACK}Agradecementos especiais para:
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Pre-Sinais e Semáforos {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS					:{BLACK}° Bases para Pistas en Pendentes {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Gráficos dos Canais/Peches {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
@@ -360,6 +363,8 @@ STR_SORT_BY_DROPDOWN_NAME					:Nome
 STR_SORT_BY_DATE						:{BLACK}Data
 STR_SORT_BY_UNSORTED						:Sen ordear
 STR_SORT_BY_NUMBER						:Número
+STR_SORT_BY_PROFIT_LAST_YEAR					:Beneficio último ano
+STR_SORT_BY_PROFIT_THIS_YEAR					:Beneficio este ano
 STR_SORT_BY_AGE							:Idade
 STR_SORT_BY_RELIABILITY						:Rendabilidade
 STR_SORT_BY_MAX_SPEED						:Velocidade Máxima
@@ -867,6 +872,7 @@ STR_CURR_RUR							:Rublo Ruso (rur)
 STR_CURR_CZK							:Corona Checa (CZK)
 STR_CURR_ISK							:Corona Islandesa (ISK)
 STR_CURR_NOK							:Corona Noruguesa (NOK)
+STR_CURR_ROL							:Leu Rumano (Lei)
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
@@ -979,6 +985,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permitir sempre aeroportos pequeno
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:no
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:si, pero exclúe os vehículos parados
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:de tódolos vehículos
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Advertir se os ingresos dun tren son negativos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Os vehículos nunca caducan: {ORANGE}{STRING}
@@ -1000,6 +1007,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Deshabilita-los vehículos de es
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Deshabilita-los avións para o ordenador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Activar nova AI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Intervalo de servicio para os trens: {ORANGE}deshabilitado
@@ -1013,6 +1021,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de servicio para 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Data de aparición das noticias en color: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data de comezo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Construcción
