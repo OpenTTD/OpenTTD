@@ -53,6 +53,7 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 		if (w->desc_flags & WDF_STD_BTN) {
 			if (e.click.widget == 0) {
 				DeleteWindow(w);
+				return;
 			} else {
 				if (e.click.widget == 1) {
 					StartWindowDrag(w);
