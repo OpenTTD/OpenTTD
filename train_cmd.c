@@ -367,7 +367,7 @@ int32 EstimateTrainCost(const RailVehicleInfo *rvi)
 	return (rvi->base_cost * (_price.build_railvehicle >> 3)) >> 5;
 }
 
-void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) 
+void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 {
 	u->direction = v->direction;
 	u->owner = v->owner;
@@ -387,7 +387,7 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 	if (building) v->next = u;
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
-	if (building) 
+	if (building)
 		v->value = u->value = v->value >> 1;
 	else
 		u->value = v->value;
@@ -2399,7 +2399,7 @@ static void HandleCrashedTrain(Vehicle *v)
 		ChangeTrainDirRandomly(v);
 	}
 
-	if (state >= 4440 && !(v->tick_counter&0x1F))		
+	if (state >= 4440 && !(v->tick_counter&0x1F))
 		DeleteLastWagon(v);
 }
 

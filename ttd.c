@@ -729,7 +729,7 @@ int ttd_main(int argc, char* argv[])
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
 			NetworkClientConnectGame(network_conn, rport);
-		} 
+		}
 	}
 #endif /* ENABLE_NETWORK */
 

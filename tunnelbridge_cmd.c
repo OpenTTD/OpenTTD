@@ -817,8 +817,8 @@ static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
 			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 		return DoClearBridge(tile, flags);
-	} 
-	
+	}
+
 	return CMD_ERROR;
 }
 

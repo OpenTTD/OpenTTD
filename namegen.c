@@ -13,7 +13,7 @@ static inline int32 SeedChanceBias(int shift_by, int max, uint32 seed, int bias)
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }
 
-static void ReplaceWords(const char *org, const char *rep, char *buf) 
+static void ReplaceWords(const char *org, const char *rep, char *buf)
 {
 	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4);
 }

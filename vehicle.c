@@ -1361,20 +1361,20 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	    settings, a vehicle can be replaced twice.. check if this is the situation here */
 	if (old_engine_type == new_engine_type && v->age == 0)
 		return CMD_ERROR;
-		
+
 	if ( v->type == VEH_Train ) {
 		u = GetLastVehicleInChain(v);
 		if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD )
 			build_cost = build_cost >> 1;   //multiheaded engines have EstimateTrainCost() for both engines
-		
+
 		if ( old_engine_type != new_engine_type ) {
-		
+
 			// prevent that the rear engine can get replaced to something else than the front engine
 			if ( v->u.rail.first_engine != 0xffff && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
 				Vehicle *first = GetFirstVehicleInChain(v);
 				if ( first->engine_type != new_engine_type ) return CMD_ERROR;
 			}
-			
+
 			// checks if the engine is the first one
 			if ( v->u.rail.first_engine == 0xffff ) {
 				if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD ) {
@@ -1431,7 +1431,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	
+
 		if (v->engine_type != new_engine_type) {
 			byte sprite = v->spritenum;
 			byte cargo_type = v->cargo_type;
@@ -1471,7 +1471,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				} else {
 					v->cargo_type = rvi->cargo_type;
 				}
-				
+
 				if ( rvi2->flags & RVI_MULTIHEAD && !(rvi->flags & RVI_MULTIHEAD) &&  v->index == first->index) {
 					if (old_engine_type == u->engine_type ) {
 						Vehicle *w;
@@ -1482,11 +1482,11 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						DeleteVehicle(u);
 					}
 				}
-				
+
 				if ( rvi->flags & RVI_MULTIHEAD && rvi2->flags & RVI_MULTIHEAD &&  v->index == first->index ) {
 					CmdReplaceVehicle(x, y, flags, u->index, p2);
 				}
-				
+
 				if ( rvi->flags & RVI_MULTIHEAD && !(rvi2->flags & RVI_MULTIHEAD) &&  v->index == first->index ) {
 					if ( old_engine_type != u->engine_type ) {
 						Vehicle *w;
@@ -1496,7 +1496,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						}
 					}
 				}
-				
+
 				// updates the id of the front engine in the other units, since the front engine just got a new engine_id
 				// this is needed for wagon override
 				if ( v->u.rail.first_engine == 0xffff && v->next != NULL ) {
@@ -1505,7 +1505,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						veh->u.rail.first_engine = new_engine_type;
 					} while ( (veh=veh->next) != NULL );
 				}
-				
+
 				break;
 				}
 			case VEH_Road:

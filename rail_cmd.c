@@ -1140,7 +1140,7 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
-		
+
 		_map3_lo[tile] &= ~c;
 
 		/* removed last signal from tile? */
@@ -1149,7 +1149,7 @@ int32 CmdRemoveSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_map2[tile] &= ~0xF0;
 			CLRBIT(_map3_hi[tile], 2); // remove any possible semaphores
 		}
-		
+
 		SetSignalsOnBothDir(tile, track);
 
 		MarkTileDirtyByTile(tile);
@@ -1289,7 +1289,7 @@ regular_track:;
 				return CMD_ERROR;
 			cost += ret;
 		};
-		
+
 		m5 &= RAIL_BIT_MASK;
 		if (flags & DC_EXEC)
 			goto regular_track;

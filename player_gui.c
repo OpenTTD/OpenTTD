@@ -927,5 +927,5 @@ void ShowEndGameChart(void)
 			w->window_number = _opt.diff_level;
 			WP(w, highscore_d).rank = SaveHighScoreValue(p);
 		}
-	}		
+	}
 }

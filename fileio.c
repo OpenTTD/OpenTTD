@@ -87,7 +87,7 @@ void FioReadBlock(void *ptr, uint size)
 static inline void FioCloseFile(int slot)
 {
 	if (_fio.handles[slot] != NULL) {
-		fclose(_fio.handles[slot]); 
+		fclose(_fio.handles[slot]);
 		_fio.handles[slot] = NULL;
 	}
 }

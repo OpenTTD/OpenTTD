@@ -203,7 +203,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		CheckRedrawStationCoverage(w);
 	} break;
-	
+
 	case WE_DESTROY:
 		ResetObjectToPlace();
 		break;

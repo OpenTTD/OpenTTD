@@ -1089,7 +1089,7 @@ void IConsoleCmdExec(const char* cmdstr)
 	uint c;
 	uint i;
 	uint l;
-	
+
 	if (strlen(cmdstr) == 0) // only execute if there is something typed obviously
 		return;
 

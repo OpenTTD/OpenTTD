@@ -689,7 +689,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 				diffx = myabs(TileX(start)-TileX(ti->tile));
 				diffy = myabs(TileY(start)-TileY(ti->tile));
-				
+
 				side = myabs( diffx-diffy );
 				if(dir<2) side = 0;
 
@@ -697,7 +697,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 				if (thd->make_square_red) image |= 0x3048000;
 				DrawSelectionSprite(image, ti);
-			} 
+			}
 		return;
 	}
 
@@ -1963,7 +1963,7 @@ void VpStartPreSizing(void)
 	_special_mouse_mode = WSM_PRESIZE;
 }
 
-/* returns information about the 2x1 piece to be build. 
+/* returns information about the 2x1 piece to be build.
  * The lower bits (0-3) are the track type. */
 static byte Check2x1AutoRail(int mode)
 {
@@ -2025,7 +2025,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			b = (Check2x1AutoRail(3)) | HT_LINE;
 		else if (dx==-16)
 			b = (Check2x1AutoRail(2)) | HT_LINE;
-		else 
+		else
 			b = HT_LINE | HT_DIR_X;
 		y = thd->selstart.y;
 	} else if (w == 16) { // Or Y direction?
@@ -2033,7 +2033,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			b = (Check2x1AutoRail(1)) | HT_LINE;
 		else if (dy==-16) // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
-		else 
+		else
 			b = HT_LINE | HT_DIR_Y;
 		x = thd->selstart.x;
 	} else if (w > h * 2) { // still count as x dir?
@@ -2131,7 +2131,7 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 	thd->selend.y = y;
 }
 
-// while dragging 
+// while dragging
 bool VpHandlePlaceSizingDrag(void)
 {
 	Window *w;
@@ -2160,7 +2160,7 @@ bool VpHandlePlaceSizingDrag(void)
 	// mouse button released..
 	// keep the selected tool, but reset it to the original mode.
 	_special_mouse_mode = WSM_NONE;
-	if (_thd.next_drawstyle == HT_RECT) 
+	if (_thd.next_drawstyle == HT_RECT)
 		_thd.place_mode = VHM_RECT;
 	else if ((e.place.userdata & 0xF) == VPM_SIGNALDIRS) // some might call this a hack... -- Dominik
 		_thd.place_mode = VHM_RECT;

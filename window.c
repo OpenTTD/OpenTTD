@@ -52,8 +52,8 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 			if (e.click.widget == 0) { /* 'X' */
 				DeleteWindow(w);
 				return;
-			} 
-			
+			}
+
 			if (e.click.widget == 1) /* 'Title bar' */
 				StartWindowDrag(w);
 		}

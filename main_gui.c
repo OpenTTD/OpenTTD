@@ -121,7 +121,7 @@ void HandleOnEditText(WindowEvent *e) {
  * @param cursor How should the cursor image change? E.g. cursor with depot image in it
  * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
  * @param placeproc Procedure which will be called when someone clicks on the map
- 
+
  * @return true if the button is clicked, false if it's unclicked
  */
 

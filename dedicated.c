@@ -105,7 +105,7 @@ void WINAPI CheckForConsoleInput(void)
 void CreateWindowsConsoleThread(void)
 {
 	/* Create event to signal when console input is ready */
-	hEvent = CreateEvent(NULL, false, false, "keyboard input");    
+	hEvent = CreateEvent(NULL, false, false, "keyboard input");
 
 	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, 0, 0, NULL);
 	if (hThread == NULL)
@@ -151,7 +151,7 @@ static void DedicatedVideoStop(void)
 #ifdef WIN32
 	CloseWindowsConsoleThread();
 #endif
-	free(_dedicated_video_mem); 
+	free(_dedicated_video_mem);
 }
 
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
@@ -183,7 +183,7 @@ static bool InputWaiting(void)
 {
 	if (WaitForSingleObject(hEvent, 1) == WAIT_OBJECT_0)
 		return true;
-  
+
 	return false;
 }
 #endif
