@@ -342,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:G. historial de Rendemento
 STR_0158_COMPANY_VALUE_GRAPH					:Gráfica do Valor da Compañía
 STR_0159_CARGO_PAYMENT_RATES					:Taxas de pago polas cargas
 STR_015A_COMPANY_LEAGUE_TABLE					:Táboa da Liga de compañías
+STR_PERFORMANCE_DETAIL_MENU					:Puntuación de rendemento detallado
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -367,6 +368,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR					:Beneficio último ano
 STR_SORT_BY_PROFIT_THIS_YEAR					:Beneficio este ano
 STR_SORT_BY_AGE							:Idade
 STR_SORT_BY_RELIABILITY						:Rendabilidade
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED						:Velocidade Máxima
 
 ############ range for months starts
@@ -607,7 +609,7 @@ STR_023A_TOO_MANY_TOWNS						:{WHITE}...hai demasiadas cidades
 STR_023B_INCREASE_SIZE_OF_TOWN					:{BLACK}Incrementa-lo tamaño da cidade
 STR_023C_EXPAND							:{BLACK}Expandir
 STR_023D_RANDOM_TOWN						:{BLACK}Cidade aleatoria
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}COnstruír cidade en emprazamento aleatorio
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}Construír cidade en emprazamento aleatorio
 STR_023F_INDUSTRY_GENERATION					:{WHITE}Xeración de Industrias
 STR_0240_COAL_MINE						:{BLACK}Mina de Carbón
 STR_0241_POWER_STATION						:{BLACK}Estación Enerxética
@@ -654,13 +656,13 @@ STR_0269_CONSTRUCT_STEEL_MILL					:{BLACK}Construír Siderúrxica
 STR_026A_CONSTRUCT_FARM						:{BLACK}Construír Granxa
 STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Construír Mina de Hematita
 STR_026C_CONSTRUCT_OIL_WELLS					:{BLACK}Construír Pozo Petrolífero
-STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construct Banco (Só se pode construír en cidades con máis de 1200 hab.)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construír Banco (Só se pode construír en cidades con máis de 1200 hab.)
 STR_026E_CONSTRUCT_PAPER_MILL					:{BLACK}Construír Fábrica de Papel
 STR_026F_CONSTRUCT_FOOD_PROCESSING				:{BLACK}Construír Planta de Procesamiento de Comida
 STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Construír Imprenta
 STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Construír Mina de Ouro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construír Banco (Só se pode construír en cidades)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construír Fábrica de Madeiros (para limpa-los bosques e producir madeiraa)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construír Fábrica de Madeiros (para limpa-los bosques e producir madeira)
 STR_0274_PLANT_FRUIT_PLANTATION					:{BLACK}Plantar Plantación de Froitas
 STR_0275_PLANT_RUBBER_PLANTATION				:{BLACK}Plantar Plant. de Árbores de Caucho
 STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Construír Acuífero
@@ -733,6 +735,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Configuración de Dificultade
 STR_02C6_DIFFICULTY_SETTINGS					:Configuración de Dificultade
 STR_02C7_CONFIG_PATCHES						:Configuración dos Parches
 STR_02C8_CONFIG_PATCHES						:Configurar parches
+STR_NEWGRF_SETTINGS						:Configuración de Newgrf
+STR_NEWGRF_SETTINGS2						:Configuración de Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Amosar nomes de cidades
@@ -765,6 +769,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES						:Subsidios
 STR_02DE_MAP_OF_WORLD						:Mapa do Mundo
 STR_02DF_TOWN_DIRECTORY						:Directorio de cidades
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Paste from viewport
 
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unidades monetarias
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -935,15 +940,19 @@ STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}¡O Euro in
 STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}O tren {COMMA16} ten moi poucas ordes no seu programa
 STR_TRAIN_HAS_VOID_ORDER					:{WHITE}O tren {COMMA16} ten unha orde inválida
 STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}O tren {COMMA16} ten ordes duplicadas
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}O tren {COMMA16} ten unha estación non válida nas ordes
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}O vehículo de estrada {COMMA16} ten moi poucas ordes no seu programa
 STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}O vehículo de estrada {COMMA16} ten unha orde inválida
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}O vehículo de estrada {COMMA16} ten ordes duplicadas
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}O vehículo de Estrada {COMMA16} ten unha estación non válida nas ordes
 STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}O barco {COMMA16} ten moi poucas ordes no seu programa
 STR_SHIP_HAS_VOID_ORDER						:{WHITE}O barco {COMMA16} ten unha orde inválida
 STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}O barco {COMMA16} ten ordes duplicadas
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}O Barco {COMMA16} ten unha estación non válida nas ordes
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}O avión {COMMA16} ten moi poucas ordes no seu programa
 STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}O avión {COMMA16} ten unha orde inválida
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}O avión {COMMA16} ten ordes duplicadas
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}O Avión {COMMA16} ten unha estación non válida nas ordes
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Autorenovación fallida para o tren {COMMA16} (límite de diñeiro)
@@ -986,6 +995,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permitir sempre aeroportos pequeno
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Un tren está perdido se non progresa durante: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Revisa-las ordes do vehículo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:si, pero exclúe os vehículos parados
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:de tódolos vehículos
@@ -995,8 +1005,9 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Autorenova-los vehículos cando 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Autorenovar {ORANGE}{STRING}{LTBLUE} meses antes/despois da idade máxima
 STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Diñeiro mínimo necesario para a autorenovación: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Duración das mensaxes de error: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Árbores invisibles (con edificios transparentes): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Máximo tamaño da estación: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
@@ -1054,6 +1065,8 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Xogar coma xogador: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Escavadora máxica(Elimina industrias, non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Cambiar clima: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Cambiar data: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Diríxese a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Diríxese a {WAYPOINT}, {VELOCITY}
@@ -1064,6 +1077,8 @@ STR_WAYPOINTNAME_CITY						:Punto de Control {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Punto de control {TOWN} #{COMMA16}
 STR_LANDINFO_WAYPOINT						:Punto de control
 
+STR_WAYPOINT							:{WHITE}Punto de ruta
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Selecciona-lo tipo de punto de ruta
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
@@ -1155,37 +1170,28 @@ STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}No se pode reaxusta-lo tren...
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}¡A interface de rede todavía non funciona!
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multixogador
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Buscar un servidor na rede
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Conexión directa
-STR_NETWORK_ENTER_IP						:{BLACK}Introduce a dirección IP do servidor
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Conectar cunha dirección IP coñecida
-STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Comezar un servidor propio
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do xogador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome polo que te identificarán os outros xogadores
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Selecciona o tipo de conexión:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Escoller entre unha partida na Internet ou na rede de área local
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Comezar un servidor propio
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome da partida
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Xogadores na partida / Número máximo de xogadores
-STR_NETWORK_MAP_SIZE						:{BLACK}Tamaño
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Tamaño do mapa
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Idioma, versión do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Pincha nunha partida da lista para seleccionala
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Buscar un servidor na rede
+STR_NETWORK_ENTER_IP						:{BLACK}Introduce a dirección IP do servidor
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Tamaño
+STR_NETWORK_PASSWORD						:{BLACK}Contrasinal:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Unirse á partida
 
@@ -1194,36 +1200,40 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Comezar nova partida
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome da partida mostraráse ó outros xogadores no menú de selección de partida multixogador
-STR_NETWORK_PASSWORD						:{BLACK}Contrasinal:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿Que mapa queres xogar?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Número de xogadores:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Selecciona o número máximo de xogadores. Non é necesario encher tódalas ranuras.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 xogadores
-STR_NETWORK_3_PLAYERS						:3 xogadores
-STR_NETWORK_4_PLAYERS						:4 xogadores
-STR_NETWORK_5_PLAYERS						:5 xogadores
-STR_NETWORK_6_PLAYERS						:6 xogadores
-STR_NETWORK_7_PLAYERS						:7 xogadores
-STR_NETWORK_8_PLAYERS						:8 xogadores
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Partida
 STR_NETWORK_LOAD_GAME						:{BLACK}Cargar Partida
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Cargar Escenario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de partida multixogador
 
-STR_NETWORK_SEND						:{BLACK}Enviar
-STR_NETWORK_SEND_TIP						:{BLACK}Enviar unha mensaxe ós outros xogadores
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da compañía:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Cambia o nome da túa compañía. Presino Enter para aplica-los cambios
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar partida
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Observa-la partida coma espectador
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova compañía
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Abrir unha nova compañía
-STR_NETWORK_READY						:{BLACK}Preparado
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar partida
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Observa-la partida coma espectador
 
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da compañía:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Non se atoparon xogos en rede
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 
@@ -1641,7 +1651,7 @@ STR_5013_CONCRETE						:Cemento
 STR_5014_TUBULAR_STEEL						:Tubular, Aceiro
 STR_BRIDGE_TUBULAR_SILICON					:Tubular, Silicona
 STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}No se pode construí-la ponte aí...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Non se pode constrí-lo túnel aí...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Non se pode construí-lo túnel ahí...
 STR_5017_RAILROAD_TUNNEL					:Túnel de ferrocarril
 STR_5018_ROAD_TUNNEL						:Túnel de estrada
 STR_5019							:
@@ -2260,6 +2270,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Non se pode vende-lo vehículo de
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}No se pode atopar unha ruta a un depósito local
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}No se pode para/arrinca-lo tren...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Intervalo de Servicio: {LTBLUE}{COMMA16}days{BLACK}   Último Servicio: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Intervalo servicio: {LTBLUE}{COMMA16}%{BLACK}   Ult. Servicio: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trens - pincha nun tren para información
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Construír novos trens (é necesarió un depósito)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Trens - pincha nun tren para información, arrastra o vehículo para engadi/remove-lo do tren
@@ -2321,7 +2332,7 @@ STR_9003_ROAD_VEHICLE_DEPOT					:{WHITE}Depósito de Vehículos de Estrada de {TOW
 STR_9004_NEW_VEHICLES						:{BLACK}Novos Vehículos
 STR_9005_INFORMATION						:{BLACK}Información
 STR_9006_NEW_ROAD_VEHICLES					:{WHITE}Novos Vehículos de Estrada
-STR_9007_BUILD_VEHICLE						:{BLACK}Constrír Vehículo
+STR_9007_BUILD_VEHICLE						:{BLACK}Construír Vehículo
 STR_9008_COST_SPEED_RUNNING_COST				:{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Coste de Mantemento: {GOLD}{CURRENCY}/ano{}{BLACK}Capacidade: {GOLD}{STRING}{}{BLACK}Deseñado: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}No se pode construí-lo vehículo de estrada...
 STR_900A_MUST_BUILD_ROAD_VEHICLE				:{WHITE}Debes construír un depósito de vehículos de estrada primeiro
@@ -2530,6 +2541,7 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}¡Afundimento dunha Mina
 STR_BRIBE_FAILED						:{WHITE}O tento de suborno foi
 STR_BRIBE_FAILED_2						:{WHITE}descuberto por un investigador rexional.
 STR_BUILD_DATE							:{BLACK}construído: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Xogo en pausa.{}Non se pode executa-lo comando
 
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detalle
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -2539,8 +2551,18 @@ SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Vehículos:
 STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Estacións:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Beneficio min.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Ingreso min.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Ingreso max.:
 STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Entregado:
 STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Diñeiro:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Crédito:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Puntos totais de puntos posibles
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Configuración Newgrf
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Aplica-los cambios
+STR_NEWGRF_FILENAME						:{BLACK}Ficheiro:

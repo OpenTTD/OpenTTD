@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Varning: den nya AI:n är fortfarande i alpha-stad
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Det grafiska gränssnittet för nätverket är ännu inte helt färdigt!{}Ofullständiga menyval har stängts av.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Flera spelare
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Leta server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leta på nätverket efter en server
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Anslut direkt
-STR_NETWORK_ENTER_IP						:{BLACK}IP-adressen till servern
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Ansluta till en server med känd IP-adress
-STR_NETWORK_START_SERVER					:{BLACK}Starta server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Starta en server för andra att ansluta till
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Namn på spelare:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Namnet som andra spelare kommer att identifiera dig av
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Välj typ av nätverksspel:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Välj mellan att spela på internet eller över det lokala nätverket
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Starta server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Starta en server för andra att ansluta till
+
 STR_NETWORK_GAME_NAME						:{BLACK}Namn
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Namn på nätverksspelet
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Antalet spelare i spelet nu / maximalt antal spelare
-STR_NETWORK_MAP_SIZE						:{BLACK}Storlek
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Storlek på kartan
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Språk, server version, mm
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klicka på ett spel från listan för att välja det
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Leta server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leta på nätverket efter en server
+STR_NETWORK_ENTER_IP						:{BLACK}IP-adressen till servern
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Storlek
+STR_NETWORK_PASSWORD						:{BLACK}Lösenord:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Gå med i spelet
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Starta ett nytt spel
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Namn:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Namnet på nätverksspelet som kommer att synas för dom andra spelarna
-STR_NETWORK_PASSWORD						:{BLACK}Lösenord:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
 STR_NETWORK_SELECT_MAP						:{BLACK}Välj karta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Vilken karta vill du spela?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Nummer av spelare:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Maximalt antal spelare som kan vara med å spela
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 spelare
-STR_NETWORK_3_PLAYERS						:3 spelare
-STR_NETWORK_4_PLAYERS						:4 spelare
-STR_NETWORK_5_PLAYERS						:5 spelare
-STR_NETWORK_6_PLAYERS						:6 spelare
-STR_NETWORK_7_PLAYERS						:7 spelare
-STR_NETWORK_8_PLAYERS						:8 spelare
 STR_NETWORK_START_GAME						:{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP					:{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Ladda spel
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Återuppta ett tidigare sparat spel för fle
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Ladda scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Starta ett nätverksspel från ett scenario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Nätverksspel
 
-STR_NETWORK_SEND						:{BLACK}Skicka
-STR_NETWORK_SEND_TIP						:{BLACK}Skicka ett meddelande till dom andra spelarna
-STR_NETWORK_COMPANY_NAME					:{BLACK}Företagsnamn:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Ändra namnet på ditt företag (enter för att spara ändring)
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Titta på spelet
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Titta på spelet som en åskådare
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Starta ett nytt företag
-STR_NETWORK_READY						:{BLACK}Klar
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Titta på spelet
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Titta på spelet som en åskådare
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Företagsnamn:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE}Kunde inte hitta några nätverksspel
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE}Nätverk, Spelsynkronisering misslyckades
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE}Nätverk, koppling förlorad
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE}Kunde inte ladda det sparade spelet från servern
 STR_NETWORK_ERR_TIMEOUT						:{WHITE}Nätverkskoppling #{NUMU16} förlorad (klient slutade svara)
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

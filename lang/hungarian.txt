@@ -1184,37 +1184,46 @@ TEMP_AI_ACTIVATED						:{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Hálózati felület nem mûködik teljesen!{}Egyes opciók mûködnek, de masok, mint a lobby, etc. nem. Csak információként.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Többjátékos
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Szerver keresése
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Szerver keresése a hálózaton
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Közvetlen kapcsolat
-STR_NETWORK_ENTER_IP						:{BLACK}Írd be a szerver IP címét
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Ismert IP címhez kapcsolódás
-STR_NETWORK_START_SERVER					:{BLACK}Szerver indítása
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Saját szervert indít
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Játékos neve:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}A többi játékos ilyen nével fog ismerni Téged.
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Válassz kapcsolat típust:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Válassz az internetes játék és a helyi hálózatban történõ játék között
+STR_NETWORK_CONNECTION						:{BLACK}Kapcsolat:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Válassz az internetes vagy helyi hálózati játék közül
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Helyi hálózat
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Szerver indítása
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Saját szervert indít
+
 STR_NETWORK_GAME_NAME						:{BLACK}Név
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Játék neve
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Jelenlegi játékosszám / Maximum játékosszám
-STR_NETWORK_MAP_SIZE						:{BLACK}Méret
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}A térkép mérete
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Nyelv, szerver verzió, stb.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Kattints a listában a jatékra hogy kiválaszd
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Szerver keresése
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Szerver keresése a hálózaton
+STR_NETWORK_ADD_SERVER						:{BLACK}Szerver hozzáadása
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Hozzáadja a szervert a listához, így késõbb gyorsabban tudsz hozzá csatlakozni
+STR_NETWORK_ENTER_IP						:{BLACK}Írd be a szerver IP címét
+
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Kliens
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Kliens online / kliens max
+STR_NETWORK_GAME_INFO						:{SILVER}JÁTÉK INFÓ
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Kliens:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Nyelv:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tájtípus:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}A pálya nagysága:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Szerver verzió:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}A szerver címe:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Jelenlegi dátum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Jelszóval védve!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SZERVER OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SZERVER TELE
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Csatlakozás a játékhoz
 
@@ -1223,20 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Új játékot kezd
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Játék neve:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}A játék neve fog megjelenni a többi játékosnak a többjátékos menüben
-STR_NETWORK_PASSWORD						:{BLACK}Jelszó:
+STR_NETWORK_SET_PASSWORD					:{BLACK}Jelszó beállítása
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Védd le a játékodat jelszóval ha nem akarod hogy mások csatlakozzanak
 STR_NETWORK_SELECT_MAP						:{BLACK}Válassz egy térképet:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Melyik terképen akarsz játszani?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Játékosok száma:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Válaszd ki a maximális játékos-számot. Nem kötelezõ mindet kihasználni.
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum hány játékos lehet:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Válaszd ki hány játékos kapcsolódhat maximum. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 játékos
-STR_NETWORK_3_PLAYERS						:3 játékos
-STR_NETWORK_4_PLAYERS						:4 játékos
-STR_NETWORK_5_PLAYERS						:5 játékos
-STR_NETWORK_6_PLAYERS						:6 játékos
-STR_NETWORK_7_PLAYERS						:7 játékos
-STR_NETWORK_8_PLAYERS						:8 játékos
+STR_NETWORK_2_CLIENTS						:2 kliens
+STR_NETWORK_3_CLIENTS						:3 kliens
+STR_NETWORK_4_CLIENTS						:4 kliens
+STR_NETWORK_5_CLIENTS						:5 kliens
+STR_NETWORK_6_CLIENTS						:6 kliens
+STR_NETWORK_7_CLIENTS						:7 kliens
+STR_NETWORK_8_CLIENTS						:8 kliens
+STR_NETWORK_9_CLIENTS						:9 kliens
+STR_NETWORK_10_CLIENTS						:10 kliens
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Beszélt nyelv:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
 STR_NETWORK_START_GAME_TIP					:{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME						:{BLACK}Játék betöltése
@@ -1244,17 +1258,61 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Korábban elmentett többfelhasználós játék 
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Pálya betöltése
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Új hálózati játék kezdése missziós alapon
 
+############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Bármilyen
+STR_NETWORK_LANG_ENGLISH					:Angol
+STR_NETWORK_LANG_GERMAN						:Német
+STR_NETWORK_LANG_FRENCH						:Francia
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Többjátékos játék-lobby
 
-STR_NETWORK_SEND						:{BLACK}Küld
-STR_NETWORK_SEND_TIP						:{BLACK}A többi játékosnak üzenetet küld
-STR_NETWORK_COMPANY_NAME					:{BLACK}Vállalat neve:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Megváltoztatja a vállalatod nevét. Üss entert a módosítások életbeléptetéséhez
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Játék megvizsgálása
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Megtekinted a játékot mint vizsgálóbiztos
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Készülõdés a kapcsolódáshoz:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Egy lista az összes cégrõl aki játékban van. Beléphetsz egybe, vagy kezdhetsz egy
 STR_NETWORK_NEW_COMPANY						:{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Új vállalatot nyit
-STR_NETWORK_READY						:{BLACK}Kész
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Játék megvizsgálása
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Megtekinted a játékot mint vizsgálóbiztos
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Belépés a cégbe
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Segítesz valakinek egy cégénél (többen 1 céget)
+STR_NETWORK_REFRESH						:{BLACK}Szerver frissítése
+STR_NETWORK_REFRESH_TIP						:{BLACK}Szerver infó frissítése
+
+STR_NETWORK_COMPANY_INFO					:{SILVER}CÉG INFÓ
+
+STR_NETWORK_COMPANY_NAME					:{SILVER}A cég neve:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Beiktatás:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}A cég értéke:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Jelelegi összeg:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Elõzõ évi bevétel:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Teljesítmény:  {WHITE}{NUMU16}
+
+STR_NETWORK_VEHICLES						:{SILVER}Jármûvek:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Állomások:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Játékosok:  {WHITE}{STRING}
+
+STR_NETWORK_CONNECTING						:{WHITE}Kapcsolódás...
+
+############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Kapcsolódás..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Engedélyezés..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Várakozás..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Térkép letöltése..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Adatfeldolgozás..
+
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Játékinfó lekérése..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Céginfó lekérése..
+############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} kliens velünk szemben
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kilobájt lett eddig letöltve
+
+STR_NETWORK_DISCONNECT						:{BLACK}Lebontás
+
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Írd be az elküldendõ üzenetet
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Írd be mennyi pénzt akarsz adományozni
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}A szerver jelszóval van védve. Írd be
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}A cég jelszóval van védve. Írd be
+STR_NETWORK_CLIENT_LIST						:{WHITE}Kliens lista
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nem található semmilyen hálózati játék
@@ -1262,7 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} A szerver nem reagált a kérésre
 STR_NETWORK_ERR_DESYNC						:{WHITE} Hálózat - Játék szinkronizáció sikertelen.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Hálózat - Játék kapcsolat elveszett.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nem sikerült a szerver játékmentés betöltése.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Nem tudtam elindítani a szervert.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Nem tudtam kapcsolódni.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} A(z) {NUMU16}. játékos kapcsolata elveszett.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Protokoll-hibát csináltunk, és megszakadt a kapcsolat.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} A te gépeden lévõ és a szerveren lévõ programnak nem egyezik meg a verziója.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Rossz jelszó.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} A szerver tele van
+STR_NETWORK_ERR_KICKED						:{WHITE} Ki lettél rúgva a szerverrõl
+
+STR_NETWORK_ERR_LEFT						:elhagyta a játékot
+############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:általános hiba
+STR_NETWORK_ERR_CLIENT_DESYNC					:szinkronizálási hiba
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:térkép betöltési hiba
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:elveszett a kapcsolat
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokoll hiba
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:nem engedélyezett
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:ismeretlen csomag érkezett
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:rossz verzió
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:a név már használva van
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:rossz játék-jelszó
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:rossz játékos-id a DoCommand-ban
+STR_NETWORK_ERR_CLIENT_KICKED					:a szerver kirúgott
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:belépett a játékba
+STR_NETWORK_GIVE_MONEY						:adott egy kis pénzt ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} A szerver leállította a játékot
+STR_NETWORK_SERVER_REBOOT					:{WHITE} A szerver újraindul...{}Türelem...
 
 ############ end network gui strings
 

@@ -1182,37 +1182,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Ostrzenie: nowe AI jest ciagle w wersji alpha! Ob
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Interface sieciowy nie jest jeszcze zrobiony!{}Niektore opcje dzialaja, ale inne jak lobby, itp. nie.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Gra wieloosobowa
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Szukanie serwera
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Przeszukuje siec w poszukiwaniu serwera
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Polaczenie bezposrednie
-STR_NETWORK_ENTER_IP						:{BLACK}Wpisz adres IP serwera
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Laczenie sie ze znanym IP
-STR_NETWORK_START_SERVER					:{BLACK}Uruchomienie serwera
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Uruchomienie wlasnego serwera
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nazwa gracza:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}To jest nazwa pod ktora beda Cie widziec inni gracze
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Wybierz typ polaczenia:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Wybor miedzy gra w internecie a siecia lokalna
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Uruchomienie serwera
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Uruchomienie wlasnego serwera
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nazwa
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nazwa gry
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Osoby obecne w grze / Maksymalna ilosc graczy
-STR_NETWORK_MAP_SIZE						:{BLACK}Rozmiar
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Rozmiar mapy
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jezyk, wersja serwera, itp.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klinknij na grze z listy by ja wybrac
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Szukanie serwera
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Przeszukuje siec w poszukiwaniu serwera
+STR_NETWORK_ENTER_IP						:{BLACK}Wpisz adres IP serwera
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Rozmiar
+STR_NETWORK_PASSWORD						:{BLACK}Haslo:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Przylacz sie do gry
 
@@ -1221,20 +1212,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Rozpocznij nowa gre
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nazwa gry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nazwa gry bedzie wyswietlana u innych graczy w menu gry wieloosobowej
-STR_NETWORK_PASSWORD						:{BLACK}Haslo:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Zabezpiecz gre haslem jesli nie chcesz by ktos przlaczyl sie do gry
 STR_NETWORK_SELECT_MAP						:{BLACK}Wybierz mape:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Wybierz mape na ktorej chcesz grac
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Ilosc graczy:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Okresl maksymalna ilosc graczy. Nie wszystkie pola musza byc wypelnione.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 graczy
-STR_NETWORK_3_PLAYERS						:3 graczy
-STR_NETWORK_4_PLAYERS						:4 graczy
-STR_NETWORK_5_PLAYERS						:5 graczy
-STR_NETWORK_6_PLAYERS						:6 graczy
-STR_NETWORK_7_PLAYERS						:7 graczy
-STR_NETWORK_8_PLAYERS						:8 graczy
 STR_NETWORK_START_GAME						:{BLACK}Rozpocznij gre
 STR_NETWORK_START_GAME_TIP					:{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
 STR_NETWORK_LOAD_GAME						:{BLACK}Zaladuj gre
@@ -1242,17 +1223,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Przywroc wczesniej zapisana gre wieloosobo
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Zaladuj scenariusz
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Uruchom gre sieciowa uzywajac scenariusza
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Lobby gry wieloosobowej
 
-STR_NETWORK_SEND						:{BLACK}Wyslij
-STR_NETWORK_SEND_TIP						:{BLACK}Wyslij wiadomosc do innych graczy
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nazwa firmy:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Zmien nazwe swojej firmy. Wcisnij Enter by zaakceptowac zmiany
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Gra obserwowana
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ogladaj gre jako widz
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nowa firma
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Rozpoczecie dzialanosci nowej firmy
-STR_NETWORK_READY						:{BLACK}Zrobione
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Gra obserwowana
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ogladaj gre jako widz
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nazwa firmy:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Brak interface'u sieciowego lub skompilowane bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nie mozna znalezc zadnej gry w sieci
@@ -1261,6 +1252,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Blad synchronizacji gry sieciowej.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Polaczenie utracone w grze sieciowej.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nie mozna wczytac zapisanej gry z serwera.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Przekroczony limit czasu dla polaczenia #{NUMU16}.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

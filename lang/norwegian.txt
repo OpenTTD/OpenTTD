@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Advarsel: denne nye AI er fremdeles alfa! Akkurat
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Nettverks brukersnitt er enda ikke helt funksjonellt!!{}Ikke virkende ting har blitt deaktivert.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Flerspiller
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Finn server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Søk nettverk etter en server
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Direkte tilkobling
-STR_NETWORK_ENTER_IP						:{BLACK}Skriv inn IP adressen til serveren
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Koble til en kjent IP
-STR_NETWORK_START_SERVER					:{BLACK}Start server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en egen server
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Dette er navnet andre spillere vil identifisere deg etter
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Velg tilkoblings type:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Velg mellom et internettspill eller et lokalt nettverksspill
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internett
 
+STR_NETWORK_START_SERVER					:{BLACK}Start server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en egen server
+
 STR_NETWORK_GAME_NAME						:{BLACK}Navn
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Navn på spillet
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Spillere akkurat nå i dette spillet / Maksimalt antall spillere
-STR_NETWORK_MAP_SIZE						:{BLACK}Størrelse
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Størrelse på banen
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Språk, server versjon, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klikk på et spill på listen for å velge det
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Finn server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Søk nettverk etter en server
+STR_NETWORK_ENTER_IP						:{BLACK}Skriv inn IP adressen til serveren
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Størrelse
+STR_NETWORK_PASSWORD						:{BLACK}Passord:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Bli med på spill
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start et nytt flerspiller spill
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spill navn:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Spill navnet vil bli vist til andre spillere i flerspill spillvalg menyen
-STR_NETWORK_PASSWORD						:{BLACK}Passord:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Beskytt ditt spill med ett passord viss du ikke vil at andre personer skal bli med på det
 STR_NETWORK_SELECT_MAP						:{BLACK}Velg en bane:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilken bane vil du spille?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Nummer på spillere:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Velg ett maksimum antall spillere. Alle plassene må ikke fylles.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 spillere
-STR_NETWORK_3_PLAYERS						:3 spillere
-STR_NETWORK_4_PLAYERS						:4 spillere
-STR_NETWORK_5_PLAYERS						:5 spillere
-STR_NETWORK_6_PLAYERS						:6 spillere
-STR_NETWORK_7_PLAYERS						:7 spillere
-STR_NETWORK_8_PLAYERS						:8 spillere
 STR_NETWORK_START_GAME						:{BLACK}Start Spill
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start et nytt nettverksspill fra en tilfeldig bane, eller scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Last Spill
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Fortsette et tidligere lagret flerspillere
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Last Scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start et nytt nettverksspill fra en scenario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Flerspillere spill lobby
 
-STR_NETWORK_SEND						:{BLACK}Send
-STR_NETWORK_SEND_TIP						:{BLACK}Send en beskjed til de andre spillerene
-STR_NETWORK_COMPANY_NAME					:{BLACK}Selskap navn:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Forandre navnet på ditt selskap. Trykk enter for å lagre endringene
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Se på spill
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Se på spillet som tilskuer
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt selskap
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Opne et nytt selskap
-STR_NETWORK_READY						:{BLACK}Klar
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Se på spill
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Se på spillet som tilskuer
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Selskap navn:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Ingen nettverks innretning funnet eller kompilert uten ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Kunne ikke finne noen nettverksspill
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Nettverksspill synkroniseringen feilet.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Nettverksspill tilkobling mistet
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Kunne ikke laste server-lagret spill
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tilkobling #{NUMU16} timet ut.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Varovanie: toto nove AI je iba alpha verzia! Mome
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Sietove rozhranie este nie je plne funkcne!{}Nefungujuce casti boli zakazane.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Hra pre viac hracov
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Najst server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hlada po sieti servery
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Priame pripojenie
-STR_NETWORK_ENTER_IP						:{BLACK}Zadajte IP adresu serveru
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Pripoji sa k znamej IP
-STR_NETWORK_START_SERVER					:{BLACK}Urobit server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Spustit vlastny server
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vyberte druh pripojenia:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Vyberte medzi hrou po internete alebo hrou po lokalnej sieti (LAN)
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Lokalna siet (LAN)
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Urobit server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Spustit vlastny server
+
 STR_NETWORK_GAME_NAME						:{BLACK}Meno
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nazov hry
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Pocet hrajucich hracov / Maximalny pocet hracov
-STR_NETWORK_MAP_SIZE						:{BLACK}Velkost
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Velkost mapy
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jazyk, verzia serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Vyberte hru zo zoznamu
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Najst server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hlada po sieti servery
+STR_NETWORK_ENTER_IP						:{BLACK}Zadajte IP adresu serveru
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Velkost
+STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pripojit sa
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Zacat novu hru pre viac hracov
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nazov hry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
-STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatny ludia
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ktoru mapu chces hrat?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Pocet hracov:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Vyber maximalny pocet hracov.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 hraci
-STR_NETWORK_3_PLAYERS						:3 hraci
-STR_NETWORK_4_PLAYERS						:4 hraci
-STR_NETWORK_5_PLAYERS						:5 hracov
-STR_NETWORK_6_PLAYERS						:6 hracov
-STR_NETWORK_7_PLAYERS						:7 hracov
-STR_NETWORK_8_PLAYERS						:8 hracov
 STR_NETWORK_START_GAME						:{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
 STR_NETWORK_LOAD_GAME						:{BLACK}Nacitat hru
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat v ulozenej hre (uistite sa, ze 
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Nahrat scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacat sietovu hru zo scenaria
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sietova hra - lobby
 
-STR_NETWORK_SEND						:{BLACK}Poslat
-STR_NETWORK_SEND_TIP						:{BLACK}Poslat spravu ostatnym hracom
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nazov spolocnosti:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Mozes zmenit nazov spolocnosti. Enterom potvrdis zmeny
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Sledovat hru
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova spolocnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novu spolocnost
-STR_NETWORK_READY						:{BLACK}Pripravene
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Sledovat hru
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nazov spolocnosti:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nebola najdena ziadna sietova hra
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Siet - Chyba synchronizacie hry
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Siet - Stratene spojenie
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nedokazem nahrat hru zo servera
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Vyprsal casovy limit pre spojenie #{NUMU16}.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

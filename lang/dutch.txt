@@ -1184,37 +1184,46 @@ TEMP_AI_ACTIVATED						:{WHITE}Waarschuwing: deze nieuwe AI is nog steeds alpha!
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Netwerkinterface werkt nog niet helemaal!{}Sommige instellingen werken, maar andere als de lobby, etc. niet. Louter ter informatie.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Netwerkspel
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Server zoeken
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Zoeken naar een netwerkserver
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Directe verbinding
-STR_NETWORK_ENTER_IP						:{BLACK}IP adres van de server invoeren
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Verbind naar een bekend IP
-STR_NETWORK_START_SERVER					:{BLACK}Start server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Start eigen server
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spelernaam:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Dit is de naam waarmee andere spelers je herkennen
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Selecteer verbindingstype:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Kies tussen een internetspel of een LAN spel
+STR_NETWORK_CONNECTION						:{BLACK}Verbinding:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Kies tussen een internet spel of een lokaal netwerk spel
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Start server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Start eigen server
+
 STR_NETWORK_GAME_NAME						:{BLACK}Naam
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Naam van het spel
-STR_NETWORK_PLAYERS						:{BLACK}##
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Spelers momenteel in dit spel / Maximum aantal spelers
-STR_NETWORK_MAP_SIZE						:{BLACK}Grootte
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Grootte van de kaart
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Taal, serverversie, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klik op een spel uit de lijst om deze te selecteren
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Server zoeken
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Zoeken naar een netwerkserver
+STR_NETWORK_ADD_SERVER						:{BLACK}Voeg server toe
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen.
+STR_NETWORK_ENTER_IP						:{BLACK}IP adres van de server invoeren
+
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Spelers
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Spelers online / spelers maximaal
+STR_NETWORK_GAME_INFO						:{SILVER}SPEL INFORMATIE
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Spelers:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Taal:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Klimaat:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Kaartgrootte:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Server versiw:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adres4:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Start datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Beveiligd met wachtwoord!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER VOL
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Meespelen
 
@@ -1223,20 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start nieuw spel
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spelnaam:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayer spelselectie menu
-STR_NETWORK_PASSWORD						:{BLACK}Wachtwoord:
+STR_NETWORK_SET_PASSWORD					:{BLACK}Zet wachtwoord
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Bescherm je spel met een wachtwoord als je niet wil dat andere mensen meespelen
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecteer een kaart:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Op welke kaart wil je spelen?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Aantal spelers:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Kies een maximum aantal spelers. Niet alle plaatsen hoeven gevuld te zijn.
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximaal aantal spelers
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 spelers
-STR_NETWORK_3_PLAYERS						:3 spelers
-STR_NETWORK_4_PLAYERS						:4 spelers
-STR_NETWORK_5_PLAYERS						:5 spelers
-STR_NETWORK_6_PLAYERS						:6 spelers
-STR_NETWORK_7_PLAYERS						:7 spelers
-STR_NETWORK_8_PLAYERS						:8 spelers
+STR_NETWORK_2_CLIENTS						:2 spelers
+STR_NETWORK_3_CLIENTS						:3 spelers
+STR_NETWORK_4_CLIENTS						:4 spelers
+STR_NETWORK_5_CLIENTS						:5 spelers
+STR_NETWORK_6_CLIENTS						:6 spelers
+STR_NETWORK_7_CLIENTS						:7 spelers
+STR_NETWORK_8_CLIENTS						:8 spelers
+STR_NETWORK_9_CLIENTS						:9 spelers
+STR_NETWORK_10_CLIENTS						:10 spelers
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Gesproken taal:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Laad spel
@@ -1244,17 +1258,61 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Hervat een eerder opgeslagen netwerkspel (
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Laad Scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start een nieuw netwerkspel van een scenario
 
+############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Elke
+STR_NETWORK_LANG_ENGLISH					:Engels
+STR_NETWORK_LANG_GERMAN						:Duits
+STR_NETWORK_LANG_FRENCH						:Frans
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer lobby
 
-STR_NETWORK_SEND						:{BLACK}Verstuur
-STR_NETWORK_SEND_TIP						:{BLACK}Verstuur een bericht aan de andere spelers
-STR_NETWORK_COMPANY_NAME					:{BLACK}Bedrijfsnaam:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Verander de naam van je bedrijf. Druk op enter om de naam in te voeren
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Bekijk spel
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Bekijk het spel als een toeschouwer
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Klaar om deel te nemen:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Een lijst met alle bedrijven die momenteel in dit spel bestaan. Je kan een meedoen met een bestaand bedrijf of een nieuwe beginnen.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nieuw bedrijf
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open een nieuw bedrijf
-STR_NETWORK_READY						:{BLACK}Klaar
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Bekijk spel
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Bekijk het spel als een toeschouwer
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Dit bedrijf
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Help met het beheren van dit bedrijf
+STR_NETWORK_REFRESH						:{BLACK}Ververs server
+STR_NETWORK_REFRESH_TIP						:{BLACK}Ververs de informatie over deze server
+
+STR_NETWORK_COMPANY_INFO					:{SILVER}BEDRIJFSINFORMATIE
+
+STR_NETWORK_COMPANY_NAME					:{SILVER}Bedrijfsnaam:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Begonnen in:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Bedrijfswaarde:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Huidige kas:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Inkomen vorig jaar:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Prestatie:  {WHITE}{NUMU16}
+
+STR_NETWORK_VEHICLES						:{SILVER}Voertuigen:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stations:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Spelers:  {WHITE}{STRING}
+
+STR_NETWORK_CONNECTING						:{WHITE}Verbinden...
+
+############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Verbinden...
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Inloggen...
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Wachten...
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Downloaden kaart...
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Verwerken data...
+
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Ophalen spelinformatie...
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Ophalen bedrijfsinformatie...
+############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} spelers(s) voor ons
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes gedownloaded
+
+STR_NETWORK_DISCONNECT						:{BLACK}Verbinding verbroken
+
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Voer het te versturen bericht in
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Voer het geldbedrag dat je wilt geven in
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Server is beveiligd. Voer wachtwoord in.
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Bedrijf is beveiligd. Voer wachtwoord in.
+STR_NETWORK_CLIENT_LIST						:{WHITE}Spelers Lijst
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Kon geen enkel netwerkspel vinden
@@ -1262,7 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} De server beantwoorde het verzoek niet
 STR_NETWORK_ERR_DESYNC						:{WHITE} Netwerkspel synchronisatie mislukt.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Netwerkspel verbinding kwijt.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Kon server-opgeslagen spel niet laden
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Kan server niet starten.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Kan geen verbinding maken.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Verbinding #{NUMU16} duurde te lang.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Er is een protocol-fout gemaakt en onze verbinding is gesloten.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} De revisie van deze client komt niet overeen met de revisie van de server.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Ongeldig wachtwoord.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} De server is vol
+STR_NETWORK_ERR_KICKED						:{WHITE} Je bent van de server geschopt
+
+STR_NETWORK_ERR_LEFT						:heeft het spel verlaten
+############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:algemene fout
+STR_NETWORK_ERR_CLIENT_DESYNC					:desynchronisatie fout
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:kan kaart niet laden
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:verbinding verbroken
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protocol fout
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:niet toegelaten
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:raar pakket ontvangen
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:foute revisie
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:naam al in gebruik
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:fout spel-wachtwoord
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:fout speler-nummer in DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:geschopt door server
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:heeft zich bij het spel gevoegd
+STR_NETWORK_GIVE_MONEY						:heeft je geld gegeven ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} De server heeft de sessie gestopt.
+STR_NETWORK_SERVER_REBOOT					:{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
 
 ############ end network gui strings
 

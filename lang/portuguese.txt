@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Atenção: esta nova IA está ainda em versão alpha!
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}A interface de rede ainda não está completamente operacional!{}Alguns itens não estão disponíveis.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multi-jogador
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Localizar servidor
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Pesquisar por um servidor na rede
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Conexão directa
-STR_NETWORK_ENTER_IP						:{BLACK}Introduza o endereço IP do servidor
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Conectar a um IP conhecido
-STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar um servidor próprio
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do jogador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome pelo qual os outros jogadores o irão identificar
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Seleccione o tipo de conexão:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Escolha entre um jogo pela Internet ou pela rede local (LAN)
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar um servidor próprio
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome do jogo
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Jogadores actuais / Máximo de jogadores
-STR_NETWORK_MAP_SIZE						:{BLACK}Tamanho
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Tamanho do mapa
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Idioma, versão do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clique num jogo da lista para o seleccionar
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Localizar servidor
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Pesquisar por um servidor na rede
+STR_NETWORK_ENTER_IP						:{BLACK}Introduza o endereço IP do servidor
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Tamanho
+STR_NETWORK_PASSWORD						:{BLACK}Senha:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Juntar-se ao jogo
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Iniciar novo jogo
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome do jogo:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de selecção de jogos multi-jogador
-STR_NETWORK_PASSWORD						:{BLACK}Senha:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 STR_NETWORK_SELECT_MAP						:{BLACK}Seleccione um mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Em que mapa deseja jogar?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Número de jogadores:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Escolha o número máximo de jogadores. Não necessitam estar todos presentes.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 jogadores
-STR_NETWORK_3_PLAYERS						:3 jogadores
-STR_NETWORK_4_PLAYERS						:4 jogadores
-STR_NETWORK_5_PLAYERS						:5 jogadores
-STR_NETWORK_6_PLAYERS						:6 jogadores
-STR_NETWORK_7_PLAYERS						:7 jogadores
-STR_NETWORK_8_PLAYERS						:8 jogadores
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME						:{BLACK}Abrir Jogo
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Continuar um jogo multi-jogador anteriorme
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Abrir Cenário
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar um novo jogo em rede a partir de um cenário
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de jogo multi-jogador
 
-STR_NETWORK_SEND						:{BLACK}Enviar
-STR_NETWORK_SEND_TIP						:{BLACK}Enviar uma mensagem aos outros jogadores
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da empresa:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Alterar o nome da sua empresa. Pressione Enter para aplicar alterações
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar jogo
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ver jogo como um espectador
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova empresa
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Criar uma nova empresa
-STR_NETWORK_READY						:{BLACK}Pronto
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar jogo
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ver jogo como um espectador
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da empresa:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Não foram encontrados jogos de rede
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} A sincronização do jogo de rede falhou.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} A conexão do jogo de rede perdeu-se.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Não foi possível abrir o jogo.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tempo de espera esgotado na conexão #{NUMU16}.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

@@ -165,9 +165,24 @@ STR_0031_MAIL							:Pasts
 
 
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

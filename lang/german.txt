@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Achtung: Die neue KI ist noch im Alpha-Stadium. D
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Der Netzwerkdialog funktioniert noch{}nicht vollständig!
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Mehrspieler
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Server suchen
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Netzwerk nach einem Server durchsuchen
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Direkt verbinden
-STR_NETWORK_ENTER_IP						:{BLACK}IP Adresse des Servers eingeben
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Zu einer bekannten IP verbinden
-STR_NETWORK_START_SERVER					:{BLACK}Server Starten
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Einen eigenen Server starten
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spielername:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Mit diesem Namen identifizieren dich andere Spieler
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Verbindungstyp wählen:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Zwischen Internetspiel und Spiel im lokalen Netz wählen
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Server Starten
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Einen eigenen Server starten
+
 STR_NETWORK_GAME_NAME						:{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Name des Spiels
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Spieler im Spiel/Maximale Anzahl Spieler
-STR_NETWORK_MAP_SIZE						:{BLACK}Größe
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Größe der Karte
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Sprache, Server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Ein Spiel der Liste durch Anklicken wählen
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Server suchen
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Netzwerk nach einem Server durchsuchen
+STR_NETWORK_ENTER_IP						:{BLACK}IP Adresse des Servers eingeben
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Größe
+STR_NETWORK_PASSWORD						:{BLACK}Passwort:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Dem Spiel beitreten
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Neues Spiel beginnen
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spielname:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
-STR_NETWORK_PASSWORD						:{BLACK}Passwort:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP						:{BLACK}Karte auswählen:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Welche Karte möchtest du spielen?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Anzahl der Spieler:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Wähle eine maximale Spielerzahl. Es können auch weniger mitspielen.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 Spieler
-STR_NETWORK_3_PLAYERS						:3 Spieler
-STR_NETWORK_4_PLAYERS						:4 Spieler
-STR_NETWORK_5_PLAYERS						:5 Spieler
-STR_NETWORK_6_PLAYERS						:6 Spieler
-STR_NETWORK_7_PLAYERS						:7 Spieler
-STR_NETWORK_8_PLAYERS						:8 Spieler
 STR_NETWORK_START_GAME						:{BLACK}Spiel beginnen
 STR_NETWORK_START_GAME_TIP					:{BLACK}Startet ein neues Mehrspielerspiel auf einer Zufallskarte oder einem Szenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Spiel Laden
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Lädt ein gespeichertes Spiel
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Szenario Laden
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Startet ein Mehrspielerspiel in einem Szenario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Mehrspielerlobby
 
-STR_NETWORK_SEND						:{BLACK}Absenden
-STR_NETWORK_SEND_TIP						:{BLACK}Schicke eine Nachricht an die anderen Spieler
-STR_NETWORK_COMPANY_NAME					:{BLACK}Firmenname:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Ändere den Namen des Unternehmens. Mit Eingabetaste bestätigen.
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Beim Spiel zusehen
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Als Zuschauer dem Spiel zusehen
 STR_NETWORK_NEW_COMPANY						:{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Ein neues Unternehmen gründen
-STR_NETWORK_READY						:{BLACK}Fertig
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Beim Spiel zusehen
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Als Zuschauer dem Spiel zusehen
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Firmenname:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Keine Netzwerkschnittstellen gefunden oder ohne ENABLE_NETWORK kompiliert
 STR_NETWORK_ERR_NOSERVER					:{WHITE}Keine Netzwerkspiele gefunden
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE}Synchronisation des Netzwerkspiels fehlgesch
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE}Verbindung zum Netzwerkspiel verloren.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE}Spielstand konnte nicht vom Server geladen werden.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE}Verbindung #{NUMU16} abgelaufen.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

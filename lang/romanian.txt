@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Atentie: algoritmul AI este în stadiul alfa! Mome
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Interfata de retea nu functioneaza inca in totalitate!{}Optiunile nefunctionale au fost dezactivate.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Cautã server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cautã un server în retea
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Conectare directã
-STR_NETWORK_ENTER_IP						:{BLACK}Introdu IP-ul serverului
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Conectare la un IP cunoscut
-STR_NETWORK_START_SERVER					:{BLACK}Porneste serverul
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Porneste un server propriu
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Acesta este numele prin care te vor identifica ceilalti
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Alege tipul de conectare:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Alege între un joc pe Internet si unul în reteaua localã
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Porneste serverul
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Porneste un server propriu
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nume
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Numele jocului
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Jucãtori prezenti în joc / Numãrul maxim de jucãtori
-STR_NETWORK_MAP_SIZE						:{BLACK}Mãrime
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Mãrimea hãrtii
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Limba, versiunea serverului, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Click pe un joc din listã pentru a-l selecta
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Cautã server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cautã un server în retea
+STR_NETWORK_ENTER_IP						:{BLACK}Introdu IP-ul serverului
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Mãrime
+STR_NETWORK_PASSWORD						:{BLACK}Parola:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Intrã în joc
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Începe un joc nou
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nume joc:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Numele jocului va fi afisat celorlalti în meniul de selectare al jocurilor multiplayer
-STR_NETWORK_PASSWORD						:{BLACK}Parola:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protejeazã-ti jocul cu o parolã dacã nu vrei sã intre jucãtori neautorizati
 STR_NETWORK_SELECT_MAP						:{BLACK}Alege o hartã:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ce hartã doresti sa joci?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Numãr de jucãtori:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Alege numãrul maxim de jucãtori. Nu toate locurile trebuie ocupate.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 jucatori
-STR_NETWORK_3_PLAYERS						:3 jucatori
-STR_NETWORK_4_PLAYERS						:4 jucatori
-STR_NETWORK_5_PLAYERS						:5 jucatori
-STR_NETWORK_6_PLAYERS						:6 jucatori
-STR_NETWORK_7_PLAYERS						:7 jucatori
-STR_NETWORK_8_PLAYERS						:8 jucatori
 STR_NETWORK_START_GAME						:{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP					:{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME						:{BLACK}Incarca joc
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Reia un joc multiplayer salvat anterior (a
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Incarca scenariu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Incepe un joc nou intr-un scenariu
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chatul jocului multiplayer
 
-STR_NETWORK_SEND						:{BLACK}Trimite
-STR_NETWORK_SEND_TIP						:{BLACK}Trimite un mesaj celorlalti jucãtori
-STR_NETWORK_COMPANY_NAME					:{BLACK}Numele companiei:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Schimbã numele companiei. Apasã Enter pentru a aplica schimbarea.
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Modul spectator
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Vizioneazã un joc din pozitia unui spectator
 STR_NETWORK_NEW_COMPANY						:{BLACK}Companie nouã
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Fondeazã o nouã companie
-STR_NETWORK_READY						:{BLACK}Pregãtit
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Modul spectator
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Vizioneazã un joc din pozitia unui spectator
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Numele companiei:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Nu a fost detectatã o placã de retea valabilã
 STR_NETWORK_ERR_NOSERVER					:{WHITE}Nu a fost gãsit nici un joc în retea
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Sincronizarea jocului in retea a esuat.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Conexiunea jocului in reatea a fost intrerupta.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nu am reusit sa incarc jocul-server salvat.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Conexiunea #{NUMU16} a expirat.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Varoitus: uusi tekoäly on vielä alpha-koodia! Täl
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Verkkoyhteys ei toimi kunnolla vielä!{}Jotkin asetukset toimivat, mutta toiset, kuten aula, eivät. Ihan vain tiedoksi.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Moninpeli
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Etsi palvelin
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Etsi verkosta palvelin
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Suora yhdistäminen
-STR_NETWORK_ENTER_IP						:{BLACK}Syötä palvelimen IP-osoite
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Yhdistä tunnettuun IP:seen
-STR_NETWORK_START_SERVER					:{BLACK}Käynnistä palvelin
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Käynnistä oma palvelin
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Pelaajan nimi
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Tällä nimellä muut pelaajat tunnistavat sinut
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Valitse yhteystyyppi:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Valitse Internet-pelin tai paikallisverkkopelin väliltä
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Paikallisverkko
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Käynnistä palvelin
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Käynnistä oma palvelin
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nimi
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Pelin nimi
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Pelaajia tässä pelissä / Maksimimäärä pelaajia
-STR_NETWORK_MAP_SIZE						:{BLACK}Koko
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Kartan koko
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Kieli, palvelimen versio, jne.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klikkaa peliä luettelossa valitaksesi
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Etsi palvelin
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Etsi verkosta palvelin
+STR_NETWORK_ENTER_IP						:{BLACK}Syötä palvelimen IP-osoite
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Koko
+STR_NETWORK_PASSWORD						:{BLACK}Salasana:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Liity peliin
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Aloita uusi peli
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Pelin nimi:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nimi näytetään muille pelaajille moninpelivalikossa
-STR_NETWORK_PASSWORD						:{BLACK}Salasana:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Suojele peliäsi salasanalla, jos et halua muiden liittyvän
 STR_NETWORK_SELECT_MAP						:{BLACK}Valitse kartta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Mitä karttaa haluat pelata?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Number of players:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Valitse pelaajien maksimimäärä. Kaikkia koloja ei tarvitse täyttää.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 pelaajaa
-STR_NETWORK_3_PLAYERS						:3 pelaajaa
-STR_NETWORK_4_PLAYERS						:4 pelaajaa
-STR_NETWORK_5_PLAYERS						:5 pelaajaa
-STR_NETWORK_6_PLAYERS						:6 pelaajaa
-STR_NETWORK_7_PLAYERS						:7 pelaajaa
-STR_NETWORK_8_PLAYERS						:8 pelaajaa
 STR_NETWORK_START_GAME						:{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP					:{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla
 STR_NETWORK_LOAD_GAME						:{BLACK}Lataa peli
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Jatka aiemmin tallennettua moninpeliä (mui
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Lataa skenaario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Aloita uusi verkkopeliskenaario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Moninpeliaula
 
-STR_NETWORK_SEND						:{BLACK}Lähetä
-STR_NETWORK_SEND_TIP						:{BLACK}Lähetä viesti muille pelaajille
-STR_NETWORK_COMPANY_NAME					:{BLACK}Yhtiön nimi:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Muuta yhtiösi nimeä. Paina enter soveltaaksesi muutokset
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Seuraa peliä
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Katsele peliä yleisönä
 STR_NETWORK_NEW_COMPANY						:{BLACK}Uusi yhtiö
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Perusta uusi yhtiö
-STR_NETWORK_READY						:{BLACK}Valmis
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Seuraa peliä
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Katsele peliä yleisönä
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Yhtiön nimi:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Verkkolaitteita ei löytynyt tai käännetty ilman ENABLE_NETWORK-valintaa
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Verkkopelejä ei löytynyt
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Verkko-peli -tahdistus epäonnistui
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Verkko-peli -yhteys katosi
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Palvelimen pelitallennetta ei voi ladata
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Yhteys #{NUMU16} aikakatkaistiin
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

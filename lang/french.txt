@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Attention: cette nouvelle IA est en version alpha
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}L'interface réseau n'est pas complètement opérationnelle pour le moment !{}Les items qui ne fonctionnent pas ont été désactivés.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multijoueur
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Trouver un serveur
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cherche sur le réseau un serveur
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Connection directe
-STR_NETWORK_ENTER_IP						:{BLACK}Entrez l'adresse IP du serveur
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Permet la connection directe à une IP connue
-STR_NETWORK_START_SERVER					:{BLACK}Démarrer le serveur
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Démarre son propre serveur
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nom du joueur:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Choisissez le type de connection:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Permet de choisir entre une partie sur sur internet ou sur un lan
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Démarrer le serveur
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Démarre son propre serveur
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nom de la partie
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Joueurs présents dans la partie / Nombre maximum de joueurs
-STR_NETWORK_MAP_SIZE						:{BLACK}Taille
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Taille de la carte
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Langage, version du serveur, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Cliquez une partie de la liste pour la sélectionner
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Trouver un serveur
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cherche sur le réseau un serveur
+STR_NETWORK_ENTER_IP						:{BLACK}Entrez l'adresse IP du serveur
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Taille
+STR_NETWORK_PASSWORD						:{BLACK}Mot de passe:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Rejoindre la partie
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Commencer une nouvelle partie
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nom de la partie:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
-STR_NETWORK_PASSWORD						:{BLACK}Mot de passe:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres joueurs la rejoignent
 STR_NETWORK_SELECT_MAP						:{BLACK}Choisissez une carte:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Sur quelle carte voulez-vous jouer?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Nombre de joueurs:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Choisissez le nombre maximum de joueurs. Vous n'êtes pas obligé de remplir tous les emplacements.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 joueurs
-STR_NETWORK_3_PLAYERS						:3 joueurs
-STR_NETWORK_4_PLAYERS						:4 joueurs
-STR_NETWORK_5_PLAYERS						:5 joueurs
-STR_NETWORK_6_PLAYERS						:6 joueurs
-STR_NETWORK_7_PLAYERS						:7 joueurs
-STR_NETWORK_8_PLAYERS						:8 joueurs
 STR_NETWORK_START_GAME						:{BLACK}Démarrer la partie
 STR_NETWORK_START_GAME_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
 STR_NETWORK_LOAD_GAME						:{BLACK}Charger une partie
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Continuer une partie multijoueur sauvée pr
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Charger un scénario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'un scénario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chat d'avant jeu
 
-STR_NETWORK_SEND						:{BLACK}Envoyer
-STR_NETWORK_SEND_TIP						:{BLACK}Envoie un message aux autres joueurs
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nom de la compagnie:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Change le nom de votre compagnie. Appuyer sur Entrée pour valider les changements
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Observer une partie
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Permet d'observer une partie en tant que spectateur
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nouvelle compagnie
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Crée une nouvelle compagnie
-STR_NETWORK_READY						:{BLACK}Prêt
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Observer une partie
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Permet d'observer une partie en tant que spectateur
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nom de la compagnie:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Aucune partie réseau n'a été trouvée
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} La synchronisation de la partie réseau a éc
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} La connection de la partie réseau a été perdue.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} La sauvegarde serveur n'a pas pu être chargée.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} La connection #{NUMU16} a dépassé le temps d'attente.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

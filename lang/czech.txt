@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Pozor: tato nová umela inteligence je jeste v alp
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Sitove rozhraní jeste není plne funkcni!{}Nektera nastavení fungují, ale napr. vstupní místnost atd. ne. Jen abyste vedeli.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Najít server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hledat server v síti
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Pripojit se primo
-STR_NETWORK_ENTER_IP						:{BLACK}Vloz IP adresu serveru
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Pripojit se na urcitou IP adresu
-STR_NETWORK_START_SERVER					:{BLACK}Spustit server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Spusti tvuj vlastni server
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Jméno hrace:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Podle tohoto jména te ostatní hraci poznají
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vyber typ pripojeni:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Vyber si hru na internetu nebo v místní síti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Spustit server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Spusti tvuj vlastni server
+
 STR_NETWORK_GAME_NAME						:{BLACK}Název
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Název hry
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Kolik je ted ve hre hracu / Maximum hracu ve hre
-STR_NETWORK_MAP_SIZE						:{BLACK}Velikost
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Velikost mapy
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jazyk, verze serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Hru vyberes kliknutim do seznamu
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Najít server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hledat server v síti
+STR_NETWORK_ENTER_IP						:{BLACK}Vloz IP adresu serveru
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Velikost
+STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pridat se
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Zacit novou hru
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Jméno hry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Jméno hry se zobrazi ostatnim hracum v menu, kde si vybiraji sitovou hru
-STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Svoji hru si muzes ochranit heslem, kdyz nechces, aby se ti do ni hlasili jini lide
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Maximální pocet hracu:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 hraci
-STR_NETWORK_3_PLAYERS						:3 hraci
-STR_NETWORK_4_PLAYERS						:4 hraci
-STR_NETWORK_5_PLAYERS						:5 hracu
-STR_NETWORK_6_PLAYERS						:6 hracu
-STR_NETWORK_7_PLAYERS						:7 hracu
-STR_NETWORK_8_PLAYERS						:8 hracu
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME						:{BLACK}Nahrát hru
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat ve drive ulozene hre pro více h
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacit sitovou hru ze scenaria
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupní místnost do multiplayerové hry
 
-STR_NETWORK_SEND						:{BLACK}Poslat
-STR_NETWORK_SEND_TIP						:{BLACK}Poslat zprávu ostatním hracum
-STR_NETWORK_COMPANY_NAME					:{BLACK}Jméno spolecnosti:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Muzes zmenit jméno své spolecnosti. Zmeny potvrdis Enterem.
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Pripojit se do hry jako divák
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nová spolecnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novou spolecnost
-STR_NETWORK_READY						:{BLACK}Pripraven
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Pripojit se do hry jako divák
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Jméno spolecnosti:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Zadna sitova zarizeni nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nenalezena zadna sitova hra
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Sit - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Sit - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nemohu nahrát ulozenou hru ze serveru
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} U spojení c. {NUMU16} byl prekrocen cekaci limit.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

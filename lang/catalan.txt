@@ -1184,37 +1184,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Atenció: aquest nou AI encara està en versió alfa
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}L'interficie de xarxa encara no funciona completament!{}Les parts que no funcionen han estat desactivades.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multijugador
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cercant un servidor a la xarxa
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Connexió directa
-STR_NETWORK_ENTER_IP						:{BLACK}Entra l'adreça IP del servidor
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Connectant a una IP coneguda
-STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar en un servidor propi
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nom del jugador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaràn
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Seleccionar tipus de connexió:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Tria entre jugar per internet o en una xarxa local (LAN)
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar en un servidor propi
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nom del joc
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Jugadors actuals / Màxim num. de jugadors
-STR_NETWORK_MAP_SIZE						:{BLACK}Mida
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Mida del mapa
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Idioma, versió de servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clica en un joc de la llista per triar-lo
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cercant un servidor a la xarxa
+STR_NETWORK_ENTER_IP						:{BLACK}Entra l'adreça IP del servidor
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Mida
+STR_NETWORK_PASSWORD						:{BLACK}Contrasenya:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Connectar-se al joc
 
@@ -1223,20 +1214,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Iniciar nou joc multijugador
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nom del joc:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
-STR_NETWORK_PASSWORD						:{BLACK}Contrasenya:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}amb quin mapa vols jugar?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Nombre de jugadors:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Tria el nombre màxim de jugadors. No és necessari omplir tots els camps.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 jugadors
-STR_NETWORK_3_PLAYERS						:3 jugadors
-STR_NETWORK_4_PLAYERS						:4 jugadors
-STR_NETWORK_5_PLAYERS						:5 jugadors
-STR_NETWORK_6_PLAYERS						:6 jugadors
-STR_NETWORK_7_PLAYERS						:7 jugadors
-STR_NETWORK_8_PLAYERS						:8 jugadors
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Joc
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar un nou joc de xarxa des de un mapa aleatori, o escenari
 STR_NETWORK_LOAD_GAME						:{BLACK}Carregar Joc
@@ -1244,17 +1225,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Continúa amb un joc multijugador desat pre
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Carregar Escenari
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar un nou joc de xarxa des de un escenari
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
-STR_NETWORK_SEND						:{BLACK}Enviar
-STR_NETWORK_SEND_TIP						:{BLACK}Enviar un missatge als altres jugadors
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nom d'Empresa:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Canvía el nom de la teva Empresa. Prem -enter- per aplicar els canvis
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Espectador
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Veure el joc com a espectador
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova Empresa
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Obre una nova Empresa
-STR_NETWORK_READY						:{BLACK}Preparat
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Espectador
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Veure el joc com a espectador
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nom d'Empresa:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No s'an trobat dispositius de xarxa o s'ha compilar sense l'opció ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} No es pot trobar cap joc a la xarxa
@@ -1263,6 +1254,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Ha fallat la sincronització del joc de xarx
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} S'ha perdut la connexió al joc de xarxa.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} No es pot carregar un joc desat al servidor.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} La connexió #{NUMU16} ha esgotat el temps d'espera.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

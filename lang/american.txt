@@ -1183,37 +1183,28 @@ TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, o
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Network interface is not fully working yet!{}Some options work, but others like lobby, etc. don't. Just so you know.
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Find server
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Direct connect
-STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
-STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Connect to a known IP
-STR_NETWORK_START_SERVER					:{BLACK}Start server
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Start an own server
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Select connection type:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Chose between an internet game or a local area nework game
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
 
+STR_NETWORK_START_SERVER					:{BLACK}Start server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Start an own server
+
 STR_NETWORK_GAME_NAME						:{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Name of the game
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Players currently in this game / Maximum number of players
-STR_NETWORK_MAP_SIZE						:{BLACK}Size
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Size of the map
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Language, server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Click a game from the list to select it
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Find server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
+STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Size
+STR_NETWORK_PASSWORD						:{BLACK}Password:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Join game
 
@@ -1222,20 +1213,10 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start new game
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Game name:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
-STR_NETWORK_PASSWORD						:{BLACK}Password:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protect your game with a password if you don't want other people to join it
 STR_NETWORK_SELECT_MAP						:{BLACK}Select a map:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Number of players:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Choose a maximum number of players. Not all slots need to be filled.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 players
-STR_NETWORK_3_PLAYERS						:3 players
-STR_NETWORK_4_PLAYERS						:4 players
-STR_NETWORK_5_PLAYERS						:5 players
-STR_NETWORK_6_PLAYERS						:6 players
-STR_NETWORK_7_PLAYERS						:7 players
-STR_NETWORK_8_PLAYERS						:8 players
 STR_NETWORK_START_GAME						:{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Load Game
@@ -1243,17 +1224,27 @@ STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Resume an earlier saved multiplayer game (
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Load Scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start a new network game from a scenario
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
-STR_NETWORK_SEND						:{BLACK}Send
-STR_NETWORK_SEND_TIP						:{BLACK}Send a message to the other players
-STR_NETWORK_COMPANY_NAME					:{BLACK}Company name:
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Change the name of your company. Hit enter to apply changes
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Watch game
-STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
 STR_NETWORK_NEW_COMPANY						:{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open a new company
-STR_NETWORK_READY						:{BLACK}Ready
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Watch game
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Company name:
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No network devices found or compiled without ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Could not find any network games
@@ -1262,6 +1253,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Network-Game synchronization failed.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Network-Game connection lost.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Could not load server-savegame.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Connection #{NUMU16} timed out.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 

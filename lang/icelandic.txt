@@ -1138,33 +1138,26 @@ TEMP_AI_ACTIVATED						:{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnabl
 
 ############ network gui strings
 
-
 STR_NETWORK_MULTIPLAYER						:{WHITE}Fjölspilun
-
-STR_NETWORK_FIND_SERVER						:{BLACK}Finna þjón
-STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leita að þjónum á neti
-STR_NETWORK_DIRECT_CONNECT					:{BLACK}Bein tenging
-STR_NETWORK_START_SERVER					:{BLACK}Hefja þjón
-STR_NETWORK_START_SERVER_TIP					:{BLACK}Hefja eigin þjón
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nafn leikmanns:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Þetta er nafnið sem aðrir leikmenn munu þekkja þig undir
-
-STR_NETWORK_SELECT_CONNECTION					:{BLACK}Veldu tegund tengingar:
-STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Veldu milli leiks á veraldarvefnum og á innanhúsneti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Innanhúsnet
 STR_NETWORK_INTERNET						:Veraldarvefur
 
+STR_NETWORK_START_SERVER					:{BLACK}Hefja þjón
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Hefja eigin þjón
+
 STR_NETWORK_GAME_NAME						:{BLACK}Nafn
 STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nafn leiksins
-STR_NETWORK_PLAYERS						:{BLACK}#/#
-STR_NETWORK_PLAYERS_TIP						:{BLACK}Leikmenn alls / Hámarksfjöldi leikmanna
-STR_NETWORK_MAP_SIZE						:{BLACK}Stærð
-STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Stærð kortsins
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Tungumál, útgáfa þjóns o.s.frv.
 
-STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+STR_NETWORK_FIND_SERVER						:{BLACK}Finna þjón
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Leita að þjónum á neti
+
+STR_NETWORK_MAP_SIZE						:{BLACK}Stærð
+STR_NETWORK_PASSWORD						:{BLACK}Lykilorð:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Tengjast leik
 
@@ -1173,33 +1166,34 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Hefja nýjan fjölspilunarleik
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nafn leiks:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nafn leiksins mun vera sýnilegt öðrum leikmönnum í fjölspilunarvalmyndinni
-STR_NETWORK_PASSWORD						:{BLACK}Lykilorð:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Verndaðu leikinn þinn með lykilorði ef þú vilt ekki að aðrir tengist honum
 STR_NETWORK_SELECT_MAP						:{BLACK}Veldu kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvaða kort viltu spila?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Fjöldi leikmanna:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Veldu hámarksfjölda leikmanna. Ekki þarf að fylla öll pláss.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_PLAYERS						:2 leikmenn
-STR_NETWORK_3_PLAYERS						:3 leikmenn
-STR_NETWORK_4_PLAYERS						:4 leikmenn
-STR_NETWORK_5_PLAYERS						:5 leikmenn
-STR_NETWORK_6_PLAYERS						:6 leikmenn
-STR_NETWORK_7_PLAYERS						:7 leikmenn
-STR_NETWORK_8_PLAYERS						:8 leikmenn
 STR_NETWORK_START_GAME						:{BLACK}Hefja leik
 STR_NETWORK_LOAD_GAME						:{BLACK}Hlaða leik
 STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Hefja aftur vistaðan fjölspilunarleik (vertu viss um að tengjast sem réttur leikmaður)
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
 STR_NETWORK_GAME_LOBBY						:{WHITE}Anddyri fjölspilunarleiks
 
-STR_NETWORK_SEND						:{BLACK}Senda
-STR_NETWORK_SEND_TIP						:{BLACK}Senda skilaboð til annarra leikmanna
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nafn fyrirtækis
-STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Breyttu nafni fyrirtækis þíns. Ýttu á enter-hnappinn til að staðfesta
+STR_NETWORK_NEW_COMPANY						:{BLACK}Nýtt fyrirtæki
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Fylgjast með leik
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Fylgjast með leiknum sem áhorfandi
-STR_NETWORK_NEW_COMPANY						:{BLACK}Nýtt fyrirtæki
+
+
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nafn fyrirtækis
+
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Enginn netbúnaður fannst eða of flókið án ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Fann enga netleiki
@@ -1208,6 +1202,9 @@ STR_NETWORK_ERR_DESYNC						:{WHITE} Samstilling netleiks mistókst.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Tenging við netleik glataðist.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Gat ekki hlaðið vistuðum leik af þjóni.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tenging #{NUMU16} fjaraði út.
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 ############ end network gui strings
 
