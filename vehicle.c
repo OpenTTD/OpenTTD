@@ -1351,6 +1351,9 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// check that it's the vehicle's owner that requested the replace
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
+	// makes sure that we do not replace a plane with a helicopter or vise versa
+	if (HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0)) return CMD_ERROR;
+
 
 	switch (v->type) {
 		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
