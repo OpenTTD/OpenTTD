@@ -516,7 +516,7 @@ static void HandleAutodirPlacement()
 static void HandleAutoSignalPlacement()
 {
 	TileHighlightData *thd = &_thd;
-	int mode;
+	int mode = 0;
 	uint trackstat = 0;
 
 	int dx = thd->selstart.x - (thd->selend.x&~0xF);
@@ -541,8 +541,10 @@ static void HandleAutoSignalPlacement()
 				trackstat = (thd->drawstyle & 1) ? 4 : 8;
 		}
 
+		/* _patches.drag_signals_density is given as a parameter such that each user in a network
+		 * game can specify his/her own signal density */
 		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y), 
-		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8), 
+		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8) | (_patches.drag_signals_density << 24), 
 		CcPlaySound1E, 
 		(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
 															CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );									

@@ -918,9 +918,9 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* If CmdBuildManySignals is called with copying signals, just copy the style of the first signal
 			* given as parameter by CmdBuildManySignals */
 			switch (track) {
-			case 2: case 4: _map3_lo[tile] = (p2&0xC0) | _map3_lo[tile]&~0xC0; break;
-			case 3: case 5: _map3_lo[tile] = (p2&0x30) | _map3_lo[tile]&~0x30; break;
-			default : _map3_lo[tile] = (p2&0xF0) | _map3_lo[tile]&0xF;
+			case 2: case 4: _map3_lo[tile] = (p2&0xC0) | (_map3_lo[tile]&~0xC0); break;
+			case 3: case 5: _map3_lo[tile] = (p2&0x30) | (_map3_lo[tile]&~0x30); break;
+			default : _map3_lo[tile] = (p2&0xF0) | (_map3_lo[tile]&0xF);
 			}
 			// convert between signal<->semaphores when dragging
 			HASBIT(p1, 3) ? SETBIT(_map3_hi[tile], 2) : CLRBIT(_map3_hi[tile], 2);
@@ -936,10 +936,11 @@ int32 CmdBuildSignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /*	Build many signals by dragging: AutoSignals
 		x,y= start tile
 		p1 = end tile
-		p2 = (byte 0)		- 0 = build, 1 = remove signals
-		p2 = (byte 3)		- 0 = signals, 1 = semaphores
-		p2 = (byte 7-4)	- track-orientation
-		p2 = (byte 8-)	- track style
+		p2 = (byte 0)			- 0 = build, 1 = remove signals
+		p2 = (byte 3)			- 0 = signals, 1 = semaphores
+		p2 = (byte 7-4)		- track-orientation
+		p2 = (byte 8-)		- track style
+		p2 = (byte 24-31)	- user defined signals_density
  */
 int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -951,8 +952,8 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int mode = (p2 >> 4)&0xF;
 	// for vertical/horizontal tracks, double the given signals density
 	// since the original amount will be too dense (shorter tracks)
-	byte signal_density = (mode == 1 || mode == 2) ? _patches.drag_signals_density : _patches.drag_signals_density * 2;
-	byte signals = p2 >> 8;
+	byte signal_density = (mode == 1 || mode == 2) ? (p2 >> 24) : (p2 >> 24) * 2;
+	byte signals = (p2 >> 8)&0xFF;
 	mode = p2 & 0x1;  // build/remove signals
 
 	/* unpack end tile */
@@ -974,13 +975,13 @@ int32 CmdBuildManySignals(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					if (_map3_lo[tile]&0x30) 
 						signals = _map3_lo[tile]&0x30;
 					else
-						signals = 0x30 | _map3_lo[tile]&0xC0;
+						signals = 0x30 | (_map3_lo[tile]&0xC0);
 					break;
 				case 0x10: case 4: /* west corner (N-S), north corner (W-E) */
 					if (_map3_lo[tile]&0xC0) 
 						signals = _map3_lo[tile]&0xC0;
 					else
-						signals = 0xC0 | _map3_lo[tile]&0x30;
+						signals = 0xC0 | (_map3_lo[tile]&0x30);
 					break;
 			}
 		}

@@ -63,8 +63,6 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 
 TileIndex GetStationTileForVehicle(Vehicle *v, Station *st)
 {
-	TileIndex required_tile=0;
-
 	switch (v->type) {
 		case VEH_Train: 		return st->train_tile;
 		case VEH_Aircraft:	return st->airport_tile;
