@@ -938,7 +938,7 @@ void ShowPatchesSelection()
 struct GRFFile *_sel_grffile;
 
 enum {
-	NEwGRF_WND_PROC_OFFSET_TOP_WIDGET = 14,
+	NEWGRF_WND_PROC_OFFSET_TOP_WIDGET = 14,
 	NEWGRF_WND_PROC_ROWSIZE = 14
 };
 
@@ -946,24 +946,26 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		int x, y = NEwGRF_WND_PROC_OFFSET_TOP_WIDGET;
+		int x, y = NEWGRF_WND_PROC_OFFSET_TOP_WIDGET;
 		uint16 i = 0;
 		struct GRFFile *c = _first_grffile;
 
 		DrawWindowWidgets(w);
 		
 		if (_first_grffile == NULL) { // no grf sets installed
-			DrawStringMultiCenter(140, 240, STR_NEWGRF_NO_FILES_INSTALLED, 250);
+			DrawStringMultiCenter(140, 210, STR_NEWGRF_NO_FILES_INSTALLED, 250);
 			break;
 		}
 
 		// draw list of all grf files
 		while (c != NULL) {
 			if (i >= w->vscroll.pos) { // draw files according to scrollbar position
-				DrawSprite(SPRITE_PALETTE(0x2EB | 0x30b8000), 5, y + 3);
-				// give highlighted item other colour
+				bool h = (_sel_grffile==c);
+				// show highlighted item with a different background and highlighted text
+				if(h) GfxFillRect(1, y + 1, 267, y + 12, 156); 
 				// XXX - will be grf name later
-				DoDrawString(c->filename, 25, y + 2, (_sel_grffile == c) ? 0xC : 0x10); 
+				DoDrawString(c->filename, 25, y + 2, h ? 0xC : 0x10); 
+				DrawSprite(SPRITE_PALETTE(0x2EB | 0x30b8000), 5, y + 3);
 				y += NEWGRF_WND_PROC_ROWSIZE;
 			}
 			
@@ -974,7 +976,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 // 		DoDrawString(_sel_grffile->setname, 120, 200, 0x01); // draw grf name
 
 		if (_sel_grffile == NULL) { // no grf file selected yet
-			DrawStringMultiCenter(140, 229, STR_NEWGRF_TIP, 250);
+			DrawStringMultiCenter(140, 210, STR_NEWGRF_TIP, 250);
 		} else {
 			// draw filename
 			x = DrawString(5, 199, STR_NEWGRF_FILENAME, 0);
@@ -990,7 +992,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: { // select a grf file
-			int y = (e->click.pt.y - NEwGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
+			int y = (e->click.pt.y - NEWGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
 
 			if (y >= w->vscroll.cap) { return;} // click out of bounds
 
@@ -1023,30 +1025,31 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	}
 */
 	case WE_DESTROY:
+		_sel_grffile = NULL;
 		DeleteWindowById(WC_QUERY_STRING, 0);
 		break;
 	}
 }
 
 static const Widget _newgrf_widgets[] = {
-{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   279,     0,    13, STR_NEWGRF_SETINGS_CAPTION,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,    14,     0,   268,    14,   182, 0xC01,/*small rows*/				STR_NEWGRF_TIP},
-{      WWT_PANEL,    14,     0,   279,   183,   321, 0x0,												STR_NULL},
+{   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,    14,    11,   279,     0,    13, STR_NEWGRF_SETTINGS_CAPTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX,    14,     0,   268,    14,   182, 0xC01,/*small rows*/					STR_NEWGRF_TIP},
+{      WWT_PANEL,    14,     0,   279,   183,   276, 0x0,													STR_NULL},
 
-{  WWT_SCROLLBAR,    14,   269,   279,    14,   182, 0x0,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    14,   269,   279,    14,   182, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{   WWT_CLOSEBOX,    14,   147,   158,   289,   300, STR_0188,	STR_NULL},
-{   WWT_CLOSEBOX,    14,   159,   170,   289,   300, STR_0189,	STR_NULL},
-{   WWT_CLOSEBOX,    14,   175,   274,   289,   300, STR_NEWGRF_SET_PARAMETERS,	STR_NULL},
+{   WWT_CLOSEBOX,    14,   147,   158,   244,   255, STR_0188,	STR_NULL},
+{   WWT_CLOSEBOX,    14,   159,   170,   244,   255, STR_0189,	STR_NULL},
+{   WWT_CLOSEBOX,    14,   175,   274,   244,   255, STR_NEWGRF_SET_PARAMETERS,		STR_NULL},
 
-{   WWT_CLOSEBOX,     3,     5,   138,   306,   317, STR_NEWGRF_APPLY_CHANGES,	STR_NULL},
-{   WWT_CLOSEBOX,     3,   142,   274,   306,   317, STR_012E_CANCEL,						STR_NULL},
+{   WWT_CLOSEBOX,     3,     5,   138,   261,   272, STR_NEWGRF_APPLY_CHANGES,		STR_NULL},
+{   WWT_CLOSEBOX,     3,   142,   274,   261,   272, STR_012E_CANCEL,							STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 280, 322,
+	WDP_CENTER, WDP_CENTER, 280, 277,
 	WC_GAME_OPTIONS,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_newgrf_widgets,

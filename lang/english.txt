@@ -2602,7 +2602,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP			:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP				:{BLACK}Do you have a high loan?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP			:{BLACK}Total points out of possible points
 
-STR_NEWGRF_SETINGS_CAPTION						:{WHITE}Newgrf settings
+STR_NEWGRF_SETTINGS_CAPTION						:{WHITE}Newgrf settings
 STR_NEWGRF_APPLY_CHANGES							:{BLACK}Apply changes
 STR_NEWGRF_SET_PARAMETERS							:{BLACK}Set parameters
 STR_NEWGRF_TIP												:{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings.
