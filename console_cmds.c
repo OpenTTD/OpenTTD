@@ -234,7 +234,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 			if (item->type == FIOS_TYPE_PARENT) {
 				// huh we are searching for the parent directory
 				char buffer[10];
-				itoa(pos,buffer,10);
+				sprintf(buffer, "%d", pos);
 				IConsoleVarSetString(result, buffer);
 				return result;
 			}
@@ -243,7 +243,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 			if (item->type == FIOS_TYPE_FILE) {
 				if (strcmp(argv[1], item->name) == 0) {
 					char buffer[10];
-					itoa(pos,buffer,10);
+					sprintf(buffer, "%d", pos);
 					IConsoleVarSetString(result, buffer);
 					return result;
 				}			
