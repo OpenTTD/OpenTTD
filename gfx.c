@@ -115,6 +115,8 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 void GfxFillRect(int left, int top, int right, int bottom, int color) {
 	DrawPixelInfo *dpi = _cur_dpi;
 	byte *dst,*ctab;
+	const int otop = top;
+	const int oleft = left;
 
 	if (dpi->zoom != 0)
 		return;
@@ -159,15 +161,13 @@ void GfxFillRect(int left, int top, int right, int bottom, int color) {
 			} while (--bottom);
 		}
 	} else {
-		byte bo = 0;
+		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 		do {
 			int i;
-			byte b = (bo^=1);
-			for(i=0; i!=right;i++)
-				if ((b^=1) != 0)
-					dst[i] = (byte)color;
+			for (i = (bo ^= 1); i < right; i += 2)
+				dst[i] = (byte)color;
 			dst += dpi->pitch;
-		} while (--bottom);
+		} while (--bottom > 0);
 	}
 }
 
