@@ -38,12 +38,12 @@ static void PlaceAir_DemolishArea(uint tile)
 
 static void BuildAirClick_Airport(Window *w)
 {
-	if (HandlePlacePushButton(w, 2, 0xAA4, 1, PlaceAirport)) ShowBuildAirportPicker();
+	if (HandlePlacePushButton(w, 3, 0xAA4, 1, PlaceAirport)) ShowBuildAirportPicker();
 }
 
 static void BuildAirClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 3, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
+	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
 }
 
 static void BuildAirClick_Landscaping(Window *w)
@@ -66,8 +66,8 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget-2 >= 0)
-			_build_air_button_proc[e->click.widget - 2](w);
+		if (e->click.widget - 3 >= 0)
+			_build_air_button_proc[e->click.widget - 3](w);
 		break;
 
 	case WE_PLACE_OBJ:
@@ -86,7 +86,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		UnclickWindowButtons(w);
 		SetWindowDirty(w);
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != 0)
@@ -97,7 +97,8 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _air_toolbar_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,    85,     0,    13, STR_A000_AIRPORTS,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,    73,     0,    13, STR_A000_AIRPORTS,			STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,    74,    85,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 {      WWT_PANEL,     7,     0,    41,    14,    35, 0x2E8,									STR_A01E_BUILD_AIRPORT},
 {      WWT_PANEL,     7,    42,    63,    14,    35, 0x2BF,									STR_018D_DEMOLISH_BUILDINGS_ETC},
 {      WWT_PANEL,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING_S,	STR_LANDSCAPING_TOOLBAR_TIP},
@@ -108,7 +109,7 @@ static const Widget _air_toolbar_widgets[] = {
 static const WindowDesc _air_toolbar_desc = {
 	640-86, 22, 86, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
 	BuildAirToolbWndProc
 };

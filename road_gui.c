@@ -106,58 +106,58 @@ typedef void OnButtonClick(Window *w);
 static void BuildRoadClick_NE(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 2, 0x51F, 1, PlaceRoad_NE);
+	HandlePlacePushButton(w, 3, 0x51F, 1, PlaceRoad_NE);
 }
 
 static void BuildRoadClick_NW(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 3, 0x520, 1, PlaceRoad_NW);
+	HandlePlacePushButton(w, 4, 0x520, 1, PlaceRoad_NW);
 }
 
 
 static void BuildRoadClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceRoad_DemolishArea);
+	HandlePlacePushButton(w, 5, ANIMCURSOR_DEMOLISH, 1, PlaceRoad_DemolishArea);
 }
 
 static void BuildRoadClick_Depot(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 5, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
+	if (HandlePlacePushButton(w, 6, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 6, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
+	if (HandlePlacePushButton(w, 7, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 7, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
+	if (HandlePlacePushButton(w, 8, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
 static void BuildRoadClick_Bridge(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 8, 0xA21, 1, PlaceRoad_Bridge);
+	HandlePlacePushButton(w, 9, 0xA21, 1, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 9, 0x981, 3, PlaceRoad_Tunnel);
+	HandlePlacePushButton(w, 10, 0x981, 3, PlaceRoad_Tunnel);
 }
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<10))
+	if (w->disabled_state & (1<<11))
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	_thd.make_square_red = !!((w->click_state ^= (1 << 10)) & (1<<10));
+	_thd.make_square_red = !!((w->click_state ^= (1 << 11)) & (1<<11));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
 }
 
@@ -182,17 +182,17 @@ static OnButtonClick * const _build_road_button_proc[] = {
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
-		w->disabled_state &= ~(1 << 10);
-		if (!(w->click_state & ((1<<2)|(1<<3)))) {
-			w->disabled_state |= (1 << 10);
-			w->click_state &= ~(1<<10);
+		w->disabled_state &= ~(1 << 11);
+		if (!(w->click_state & ((1<<3)|(1<<4)))) {
+			w->disabled_state |= (1 << 11);
+			w->click_state &= ~(1<<11);
 		}
 		DrawWindowWidgets(w);
 		break;
 
 	case WE_CLICK: {
-		if (e->click.widget >= 2)
-			_build_road_button_proc[e->click.widget - 2](w);
+		if (e->click.widget >= 3)
+			_build_road_button_proc[e->click.widget - 3](w);
 	}	break;
 
 	case WE_KEYPRESS:
@@ -210,16 +210,17 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		default:
 			return;
 		}
+		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
 		e->keypress.cont = false;
 		break;
 
 	case WE_PLACE_OBJ:
-		_remove_button_clicked = (w->click_state & (1 << 10)) != 0;
+		_remove_button_clicked = (w->click_state & (1 << 11)) != 0;
 		_place_proc(e->place.tile);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		UnclickWindowButtons(w);
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
@@ -277,7 +278,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 
 static const Widget _build_road_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   239,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   227,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   228,   239,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 
 {      WWT_PANEL,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,				STR_180B_BUILD_ROAD_SECTION},
 {      WWT_PANEL,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,				STR_180B_BUILD_ROAD_SECTION},
@@ -295,7 +297,7 @@ static const Widget _build_road_widgets[] = {
 static const WindowDesc _build_road_desc = {
 	640-240, 22, 240, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,
 	BuildRoadToolbWndProc
 };

@@ -66,32 +66,32 @@ void PlaceProc_PlantTree(uint tile)
 
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, 3, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, 5, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 5, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 6, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_BuyLand(Window *w)
 {
-	HandlePlacePushButton(w, 6, 4792, 1, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, 7, 4792, 1, PlaceProc_BuyLand);
 }
 
 static void TerraformClick_Trees(Window *w)
 {
-	if (HandlePlacePushButton(w, 7, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
+	if (HandlePlacePushButton(w, 8, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
 }
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, 8, 722, 1, PlaceProc_Sign);
+	HandlePlacePushButton(w, 9, 722, 1, PlaceProc_Sign);
 }
 
 
@@ -113,8 +113,8 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		break;
 	case WE_CLICK:
-		if (e->click.widget >= 3) {
-			_terraform_button_proc[e->click.widget - 3](w);
+		if (e->click.widget >= 4) {
+			_terraform_button_proc[e->click.widget - 4](w);
 		}
 		break;
 
@@ -159,7 +159,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		UnclickWindowButtons(w);
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
@@ -175,7 +175,8 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _terraform_widgets[] = {
 { WWT_CLOSEBOX,     7,   0,  10,   0,  13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION,     7,  11, 135,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_CAPTION,     7,  11, 123,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{WWT_STICKYBOX,     7, 124, 135,   0,  13, 0x0,                     STR_STICKY_BUTTON},
 
 {    WWT_PANEL,     7,  66,  69,  14,  35,  0x0,										STR_NULL},
 
@@ -192,7 +193,7 @@ static const Widget _terraform_widgets[] = {
 static const WindowDesc _terraform_desc = {
 	640-136, 22+36, 136, 36,
 	WC_SCEN_LAND_GEN,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_terraform_widgets,
 	TerraformToolbWndProc
 };

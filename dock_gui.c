@@ -62,33 +62,33 @@ static void PlaceDocks_BuildLock(uint tile)
 
 static void BuildDocksClick_Canal(Window *w)
 {
-	HandlePlacePushButton(w, 2, SPR_OPENTTD_BASE + 11, 1, PlaceDocks_BuildCanal);
+	HandlePlacePushButton(w, 3, SPR_OPENTTD_BASE + 11, 1, PlaceDocks_BuildCanal);
 }
 
 static void BuildDocksClick_Lock(Window *w)
 {
-	HandlePlacePushButton(w, 3, SPR_OPENTTD_BASE + 64, 1, PlaceDocks_BuildLock);
+	HandlePlacePushButton(w, 4, SPR_OPENTTD_BASE + 64, 1, PlaceDocks_BuildLock);
 }
 
 static void BuildDocksClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
+	HandlePlacePushButton(w, 6, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
 }
 
 static void BuildDocksClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 6, 0x2D1, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
+	if (HandlePlacePushButton(w, 7, 0x2D1, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
 
-	if (HandlePlacePushButton(w, 7, 0xE54, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
+	if (HandlePlacePushButton(w, 8, 0xE54, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
 }
 
 static void BuildDocksClick_Buoy(Window *w)
 {
-	HandlePlacePushButton(w, 8, 0x2BE, 1, PlaceDocks_Buoy);
+	HandlePlacePushButton(w, 9, 0x2BE, 1, PlaceDocks_Buoy);
 }
 
 static void BuildDocksClick_Landscaping(Window *w)
@@ -116,7 +116,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		if (e->click.widget - 2 >= 0 && e->click.widget!=4) _build_docks_button_proc[e->click.widget - 2](w);
+		if (e->click.widget - 3 >= 0 && e->click.widget != 5) _build_docks_button_proc[e->click.widget - 3](w);
 	} break;
 
 	case WE_PLACE_OBJ:
@@ -138,7 +138,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		UnclickWindowButtons(w);
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
@@ -165,8 +165,8 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   157,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-
+{    WWT_CAPTION,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   146,   157,     0,    13, 0x0,                         STR_STICKY_BUTTON},
 {      WWT_PANEL,     7,     0,    21,    14,    35, SPR_OPENTTD_BASE+65,					STR_BUILD_CANALS_TIP},
 {      WWT_PANEL,     7,    22,    43,    14,    35, SPR_CANALS_BASE+69,					STR_BUILD_LOCKS_TIP},
 
@@ -183,7 +183,7 @@ static const Widget _build_docks_toolb_widgets[] = {
 static const WindowDesc _build_docks_toolbar_desc = {
 	640-158, 22, 158, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
 	BuildDocksToolbWndProc
 };

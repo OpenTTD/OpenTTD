@@ -214,32 +214,32 @@ static void PlaceRail_AutoSignals(uint tile)
 
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, 3, _cur_railtype*4 + 0x4EF, 1, PlaceRail_N);
+	HandlePlacePushButton(w, 4, _cur_railtype*4 + 0x4EF, 1, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 4, _cur_railtype*4 + 0x4F0, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, 5, _cur_railtype*4 + 0x4F0, 1, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, 5, _cur_railtype*4 + 0x4F1, 1, PlaceRail_E);
+	HandlePlacePushButton(w, 6, _cur_railtype*4 + 0x4F1, 1, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 6, _cur_railtype*4 + 0x4F2, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, 7, _cur_railtype*4 + 0x4F2, 1, PlaceRail_NW);
 }
 
 static void BuildRailClick_AutoRail(Window *w)
 {
-	HandlePlacePushButton(w, 7, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
+	HandlePlacePushButton(w, 8, _cur_railtype + SPR_OPENTTD_BASE + 4, 1, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 8, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, 9, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
 }
 
 static const SpriteID _depot_cursors[] = {
@@ -250,50 +250,50 @@ static const SpriteID _depot_cursors[] = {
 
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 9, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
+	if (HandlePlacePushButton(w, 10, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
 }
 
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, 10, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
+	if (HandlePlacePushButton(w, 11, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
 	    && _waypoint_count > 1)
 		ShowBuildWaypointPicker();
 }
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, 11, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, 12, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
+	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS , 1, PlaceRail_AutoSignals);
 }
 
 static void BuildRailClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, 13, 0xA21, 1, PlaceRail_Bridge);
+	HandlePlacePushButton(w, 14, 0xA21, 1, PlaceRail_Bridge);
 }
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 14, 0x982 + _cur_railtype, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, 15, 0x982 + _cur_railtype, 3, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<15))
+	if (w->disabled_state & (1<<16))
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	_thd.make_square_red = !!((w->click_state ^= (1 << 15)) & (1<<15));
+	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
-	_remove_button_clicked = (w->click_state & (1 << 15)) != 0;
+	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
 
 	// handle station builder
-	if( w->click_state & (1 << 15) )
+	if( w->click_state & (1 << 16) )
 	{
 		if(_remove_button_clicked)
 			SetTileSelectSize(1, 1);
@@ -304,7 +304,7 @@ static void BuildRailClick_Remove(Window *w)
 
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, 16, (SPR_OPENTTD_BASE + 26) + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, 17, (SPR_OPENTTD_BASE + 26) + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
 }
 
 static void BuildRailClick_Landscaping(Window *w)
@@ -596,31 +596,33 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT:
-		w->disabled_state &= ~(1 << 15);
-		if (!(w->click_state & ((1<<3)|(1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<10)|(1<<11)|(1<<12)))) {
-			w->disabled_state |= (1 << 15);
-			w->click_state &= ~(1<<15);
+		w->disabled_state &= ~(1 << 16);
+		if (!(w->click_state & ((1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<8)|(1<<11)|(1<<12)|(1<<13)))) {
+			w->disabled_state |= (1 << 16);
+			w->click_state &= ~(1<<16);
 		}
 		DrawWindowWidgets(w);
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget >= 3) {
+		if (e->click.widget >= 4) {
 			_remove_button_clicked = false;
-			_build_railroad_button_proc[e->click.widget - 3](w);
+			_build_railroad_button_proc[e->click.widget - 4](w);
 		}
 	break;
 
 	case WE_KEYPRESS: {
 		int i;
 
-		for(i=0; i!=lengthof(_rail_keycodes); i++)
+		for(i=0; i!=lengthof(_rail_keycodes); i++) {
 			if (e->keypress.keycode == _rail_keycodes[i]) {
 				e->keypress.cont = false;
 				_remove_button_clicked = false;
 				_build_railroad_button_proc[i](w);
 				break;
 			}
+		}
+		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
 		break;
 	}
 
@@ -663,7 +665,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		UnclickWindowButtons(w);
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
@@ -683,7 +685,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 static const Widget _build_railroad_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   359,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   360,   371,     0,    13, 0x0,     STR_STICKY_BUTTON},
 
 {      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 
@@ -712,14 +715,15 @@ static const Widget _build_railroad_widgets[] = {
 static const WindowDesc _build_railroad_desc = {
 	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_railroad_widgets,
 	BuildRailToolbWndProc
 };
 
 static const Widget _build_monorail_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100B_MONORAIL_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   359,     0,    13, STR_100B_MONORAIL_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   360,   371,     0,    13, 0x0,     STR_STICKY_BUTTON},
 
 {      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 
@@ -748,14 +752,15 @@ static const Widget _build_monorail_widgets[] = {
 static const WindowDesc _build_monorail_desc = {
 	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_monorail_widgets,
 	BuildRailToolbWndProc
 };
 
 static const Widget _build_maglev_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   371,     0,    13, STR_100C_MAGLEV_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   359,     0,    13, STR_100C_MAGLEV_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     7,   360,   371,     0,    13, 0x0,     STR_STICKY_BUTTON},
 
 {      WWT_PANEL,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
 
@@ -784,7 +789,7 @@ static const Widget _build_maglev_widgets[] = {
 static const WindowDesc _build_maglev_desc = {
 	640-372, 22, 372, 36,
 	WC_BUILD_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_maglev_widgets,
 	BuildRailToolbWndProc
 };
