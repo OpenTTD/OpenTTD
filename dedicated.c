@@ -167,6 +167,7 @@ static int DedicatedVideoMainLoop()
 #ifdef UNIX
 	signal(SIGTERM, DedicatedSignalHandler);
 	signal(SIGINT, DedicatedSignalHandler);
+	signal(SIGABRT, DedicatedSignalHandler);
 #endif
 
 	// Load the dedicated server stuff
