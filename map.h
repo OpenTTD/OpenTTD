@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#define TILE_FROM_XY(x,y) (int)((((y) >> 4) << MapLogX()) + ((x) >> 4))
+#define TILE_FROM_XY(x,y) (TileIndex)((((y) >> 4) << MapLogX()) + ((x) >> 4))
 #define TILE_XY(x,y) (((y) << MapLogX()) + (x))
 
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
