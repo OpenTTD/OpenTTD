@@ -1,0 +1,3 @@
+##name Lithuanian
+##ownname Lietuviu
+
