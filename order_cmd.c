@@ -177,7 +177,8 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	sched = &v->schedule_ptr[sel];
 	if (sched->type != OT_GOTO_STATION &&
-			(sched->type != OT_GOTO_DEPOT || (p2 >> 8) == 1))
+			(sched->type != OT_GOTO_DEPOT || (p2 >> 8) == 1) &&
+			(sched->type != OT_GOTO_WAYPOINT || (p2 >> 8) != 2))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

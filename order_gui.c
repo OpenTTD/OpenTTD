@@ -72,6 +72,12 @@ static void DrawOrdersWindow(Window *w)
 		SETBIT(w->disabled_state, 9);	/* unload */
 		SetDParam(2,STR_SERVICE);
 		break;
+
+	case OT_GOTO_WAYPOINT:
+		SETBIT(w->disabled_state, 8); /* full load */
+		SETBIT(w->disabled_state, 9); /* unload */
+		break;
+
 	default:
 		SETBIT(w->disabled_state, 6); /* nonstop */
 		SETBIT(w->disabled_state, 8);	/* full load */
@@ -118,7 +124,7 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, s);
 				} else if (ord.type == OT_GOTO_WAYPOINT) {
 					SetDParam(2, ord.station);
-					SetDParam(1, STR_GO_TO_WAYPOINT);
+					SetDParam(1, (ord.flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 				}
 			}
 			{
