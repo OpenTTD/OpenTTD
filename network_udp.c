@@ -368,17 +368,23 @@ void NetworkUDPClose(void)
 	DEBUG(net, 1) ("[NET][UDP] Closed listeners");
 
 	if (_network_udp_server) {
-		closesocket(_udp_server_socket);
-		_udp_server_socket = INVALID_SOCKET;
+		if (_udp_server_socket != INVALID_SOCKET) {
+			closesocket(_udp_server_socket);
+			_udp_server_socket = INVALID_SOCKET;
+		}
 
-		closesocket(_udp_master_socket);
-		_udp_master_socket = INVALID_SOCKET;
+		if (_udp_master_socket != INVALID_SOCKET) {
+			closesocket(_udp_master_socket);
+			_udp_master_socket = INVALID_SOCKET;
+		}
 
 		_network_udp_server = false;
 		_network_udp_broadcast = 0;
 	} else {
-		closesocket(_udp_client_socket);
-		_udp_client_socket = INVALID_SOCKET;
+		if (_udp_client_socket != INVALID_SOCKET) {
+			closesocket(_udp_client_socket);
+			_udp_client_socket = INVALID_SOCKET;
+		}
 		_network_udp_broadcast = 0;
 	}
 }
