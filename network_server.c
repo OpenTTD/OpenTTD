@@ -578,6 +578,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	NetworkRecv_string(p, client_revision, sizeof(client_revision));
 
+#ifdef WITH_REV
 	// Check if the client has revision control enabled
 	if (strncmp(NOREV_STRING, client_revision, sizeof(client_revision)) != 0) {
 		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision) - 1) != 0) {
@@ -587,6 +588,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			return;
 		}
 	}
+#endif
 
 	NetworkRecv_string(p, name, sizeof(name));
 	playas = NetworkRecv_uint8(p);

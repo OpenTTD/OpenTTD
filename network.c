@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "network_data.h"
 
+#if defined(WITH_REV)
+	extern const char _openttd_revision[];
+#elif defined(WITH_REV_HACK)
+	#define WITH_REV
+	const char _openttd_revision[] = WITH_REV_HACK;
+#else
+	const char _openttd_revision[] = NOREV_STRING;
+#endif
+
+
 #ifdef ENABLE_NETWORK
 
 #include "table/strings.h"

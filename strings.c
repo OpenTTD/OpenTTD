@@ -20,13 +20,7 @@ static byte *_langpack;
 static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
-#if defined(WITH_REV)
-	extern const char _openttd_revision[];
-#elif defined(WITH_REV_HACK)
-	const char _openttd_revision[] = WITH_REV_HACK;
-#else
-	const char _openttd_revision[] = NOREV_STRING;
-#endif
+extern const char _openttd_revision[];
 
 typedef byte *PlayerNameGeneratorProc(byte *buffr);
 
