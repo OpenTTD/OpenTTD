@@ -327,6 +327,8 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		do {
 			*os++ = *sched++;
 		} while (sched->type != OT_NOTHING);
+		/* Make sure the last item is OT_NOTHING */
+		os->type = OT_NOTHING;
 	}
 }
 
