@@ -1708,7 +1708,7 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 	byte old_player;
 	uint32 r;
 	uint slope;
-	int h;
+	uint h;
 
 	old_player = _current_player;
 	_current_player = OWNER_NONE;

@@ -9,8 +9,6 @@
 /* landscape.c */
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
 void FindLandscapeHeightByTile(TileInfo *ti, uint tile);
-uint GetTileSlope(uint tile, int *h);
-int GetTileZ(uint tile);
 
 void DoClearSquare(uint tile);
 void CDECL ModifyTile(uint tile, uint flags, ...);

@@ -20,6 +20,9 @@ typedef enum TileType {
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);
 
+uint GetTileSlope(TileIndex tile, uint *h);
+uint GetTileZ(TileIndex tile);
+
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());

@@ -757,7 +757,9 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 	int32 cost = 0, ret;
 
 	uint tileh;
-	int z, allowed_z = -1, flat_z;
+	uint z;
+	int allowed_z = -1;
+	int flat_z;
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile)
 		if (!EnsureNoVehicle(tile_cur))

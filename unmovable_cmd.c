@@ -253,7 +253,7 @@ void GenerateUnmovables(void)
 	uint tile;
 	uint32 r;
 	int dir;
-	int h;
+	uint h;
 
 	if (_opt.landscape == LT_CANDY)
 		return;

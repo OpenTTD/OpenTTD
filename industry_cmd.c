@@ -959,7 +959,7 @@ static void PlantFarmField(uint tile)
 	int type, type2;
 
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) >= (_opt.snow_line - 16))
+		if (GetTileZ(tile) + 16 >= _opt.snow_line)
 			return;
 	}
 
@@ -1169,7 +1169,7 @@ static bool CheckNewIndustry_NULL(uint tile, int type)
 static bool CheckNewIndustry_Forest(uint tile, int type)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) < (_opt.snow_line + 16) ) {
+		if (GetTileZ(tile) < _opt.snow_line + 16U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
 		}
@@ -1202,7 +1202,7 @@ static bool CheckNewIndustry_Oilwell(uint tile, int type)
 static bool CheckNewIndustry_Farm(uint tile, int type)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) >= (_opt.snow_line - 16)) {
+		if (GetTileZ(tile) + 16 >= _opt.snow_line) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
 		}

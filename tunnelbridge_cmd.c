@@ -586,7 +586,7 @@ static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
 uint CheckTunnelBusy(uint tile, int *length)
 {
-	int z = GetTileZ(tile);
+	uint z = GetTileZ(tile);
 	byte m5 = _map5[tile];
 	int delta = TileOffsByDir(m5 & 3);
 	int len = 0;
@@ -1404,7 +1404,6 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 	int z;
 	int dir, vdir;
 	byte fc;
-	int h;
 
 	if ((_map5[tile] & 0xF0) == 0) {
 		z = GetSlopeZ(x, y) - v->z_pos;
@@ -1472,6 +1471,8 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 		}
 	} else if (_map5[tile] & 0x80) {
 		if (v->type == VEH_Road || (v->type == VEH_Train && v->subtype == TS_Front_Engine)) {
+			uint h;
+
 			if (GetTileSlope(tile, &h) != 0)
 				h += 8; // Compensate for possible foundation
 			if (!(_map5[tile] & 0x40) || // start/end tile of bridge

@@ -1144,7 +1144,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 	uint bitmask;
 	int house;
 	uint slope;
-	int z;
+	uint z;
 	uint oneof;
 
 	// Above snow?

@@ -41,45 +41,6 @@ const byte _tileh_to_sprite[32] = {
 	0,0,0,0,0,0,0,16,0,0,0,17,0,15,18,0,
 };
 
-uint GetTileSlope(uint tile, int *h)
-{
-	uint a,b,c,d,min;
-	int r;
-
-	assert(tile < MapSize());
-
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) {
-		if (h)
-			*h = 0;
-		return 0;
-	}
-
-	min = a = TileHeight(tile);
-	b = TileHeight(tile + TILE_XY(1,0));
-	if (min >= b) min = b;
-	c = TileHeight(tile + TILE_XY(0,1));
-	if (min >= c) min = c;
-	d = TileHeight(tile + TILE_XY(1,1));
-	if (min >= d) min = d;
-
-	r = 0;
-	if ((a-=min)!=0) { r += (--a << 4) + 8; }
-	if ((c-=min)!=0) { r += (--c << 4) + 4; }
-	if ((d-=min)!=0) { r += (--d << 4) + 2; }
-	if ((b-=min)!=0) { r += (--b << 4) + 1; }
-
-	if (h != 0)
-		*h = min * 8;
-
-	return r;
-}
-
-int GetTileZ(uint tile)
-{
-	int h;
-	GetTileSlope(tile, &h);
-	return h;
-}
 
 void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 {
@@ -488,7 +449,7 @@ void InitializeLandscape(uint log_x, uint log_y)
 void ConvertGroundTilesIntoWaterTiles(void)
 {
 	TileIndex tile = 0;
-	int h;
+	uint h;
 
 	for (tile = 0; tile < MapSize(); ++tile) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
