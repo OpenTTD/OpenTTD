@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multi-jogador
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do jogador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome pelo qual os outros jogadores o irão identificar
+STR_NETWORK_CONNECTION						:{BLACK}Conexão:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Escolha entre um jogo pela Internet ou pela rede local
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,24 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clique num jogo da lista para o sele
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Localizar servidor
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Pesquisar por um servidor na rede
+STR_NETWORK_ADD_SERVER						:{BLACK}Adicionar servidor
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Adiciona um servidor à lista que será sempre verificado se existem jogos a decorrer.
 STR_NETWORK_ENTER_IP						:{BLACK}Introduza o endereço IP do servidor
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Tamanho
-STR_NETWORK_PASSWORD						:{BLACK}Senha:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clientes
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clientes ligados / max. clientes
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clientes:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Tamanho do Mapa:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versão do servidor:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Endereço do servidor:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Data de inicio:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Data actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Protegido por password!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVIDOR DESLIGADO
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVIDOR CHEIO
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Juntar-se ao jogo
 
@@ -1214,10 +1230,15 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Iniciar novo jogo
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome do jogo:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de selecção de jogos multi-jogador
+STR_NETWORK_SET_PASSWORD					:{BLACK}Definir password
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 STR_NETWORK_SELECT_MAP						:{BLACK}Seleccione um mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Em que mapa deseja jogar?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo de clientes:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clientes
+STR_NETWORK_3_CLIENTS						:3 clientes
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME						:{BLACK}Abrir Jogo

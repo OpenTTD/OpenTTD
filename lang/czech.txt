@@ -978,7 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Povolit stavbu dlouhých vlaku: {ORA
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnout realistické zrychlování vlaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Odjet, kdyz je plne nalozen jakýkoli náklad pri 'nalozit': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Pouzij vylepsený algoritmus nakládání: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Pouzij vylepseny algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Vozit zbozi do stanice jen pokud je poptávka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Povolit stavbu velmi dlouhých mostu: {ORANGE}{STRING}
@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Jméno hrace:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Podle tohoto jména te ostatní hraci poznají
+STR_NETWORK_CONNECTION						:{BLACK}Pripojeni:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Vyber si mezi hrou internetovou nebo v místní síti
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,17 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Hru vyberes kliknutim do seznamu
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Najít server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hledat server v síti
+STR_NETWORK_ADD_SERVER						:{BLACK}Pridat server
 STR_NETWORK_ENTER_IP						:{BLACK}Vloz IP adresu serveru
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Velikost
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_GAME_INFO						:{SILVER}INFO O HRE
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_LANGUAGE						:{SILVER}Jazyk:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Velikost mapy:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_PASSWORD						:{BLACK}Heslo:
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER JE OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER JE PLNÝ
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pridat se
 
@@ -1214,10 +1223,14 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Zacit novou hru
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Jméno hry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Jméno hry se zobrazi ostatnim hracum v menu, kde si vybiraji sitovou hru
+STR_NETWORK_SET_PASSWORD					:{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Svoji hru si muzes ochranit heslem, kdyz nechces, aby se ti do ni hlasili jini lide
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Jazyk ve hre:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Zacit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME						:{BLACK}Nahrát hru
@@ -1226,6 +1239,7 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacit sitovou hru ze scenaria
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Jakýmkoli
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupní místnost do multiplayerové hry
@@ -1238,7 +1252,7 @@ STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Pripojit se do hry jako divák
 
 STR_NETWORK_COMPANY_NAME					:{BLACK}Jméno spolecnosti:
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_PLAYERS						:{BLACK}Hraci:  {WHITE}{STRING}
 
 
 ############ Leave those lines in this order!!

@@ -1204,8 +1204,8 @@ STR_NETWORK_FIND_SERVER						:{BLACK}Najst server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hlada po sieti servery
 STR_NETWORK_ENTER_IP						:{BLACK}Zadajte IP adresu serveru
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Velkost
-STR_NETWORK_PASSWORD						:{BLACK}Heslo:
+STR_NETWORK_MAP_SIZE						:{SILVER}Velkost mapy:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_PASSWORD						:{SILVER}Heslo:
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Pripojit sa
 
@@ -1236,9 +1236,9 @@ STR_NETWORK_SPECTATE_GAME					:{BLACK}Sledovat hru
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
 
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nazov spolocnosti:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nazov spolocnosti:  {WHITE}{STRING}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_PLAYERS						:{SILVER}Hraci:  {WHITE}{STRING}
 
 
 ############ Leave those lines in this order!!
