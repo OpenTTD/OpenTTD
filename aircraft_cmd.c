@@ -413,7 +413,7 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	if (v->current_order.type == OT_GOTO_DEPOT && p2 != 0) {
+	if (v->current_order.type == OT_GOTO_DEPOT && p2 == 0) {
 		if (flags & DC_EXEC) {
 			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
 			v->current_order.type = OT_DUMMY;
@@ -1579,6 +1579,17 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airp
 {
 	AircraftLandAirplane(v);  // maybe crash airplane
 	v->u.air.state = ENDLANDING;
+	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
+	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
+		// only the vehicle owner needs to calculate the rest (locally)
+		if ((_autoreplace_array[v->engine_type] != v->engine_type) ||
+			(_patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+			// send the aircraft to the hangar at next airport
+			_current_player = _local_player;
+			DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+			_current_player = OWNER_NONE;
+		}
+	}
 }
 
 static void AircraftEventHandler_HeliLanding(Vehicle *v, const AirportFTAClass *Airport)
