@@ -247,20 +247,20 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 5: /* scroll to location */
+		case 6: /* scroll to location */
 			ScrollMainWindowToTile(t->xy);
 			break;
-		case 6: /* town authority */
+		case 7: /* town authority */
 			ShowTownAuthorityWindow(w->window_number);
 			break;
-		case 7: /* rename */
+		case 8: /* rename */
 			SetDParam(0, t->townnameparts);
 			ShowQueryString(t->townnametype, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
 			break;
-		case 8: /* expand town */
+		case 9: /* expand town */
 			ExpandTown(t);
 			break;
-		case 9: /* delete town */
+		case 10: /* delete town */
 			DeleteTown(t);
 			break;
 		}
@@ -279,7 +279,8 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 static const Widget _town_view_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   259,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   247,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   248,   259,     0,    13, 0x0,      STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,      STR_NULL},
 {          WWT_6,    13,     2,   257,    16,   103, 0x0,      STR_NULL},
 {     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,      STR_NULL},
@@ -292,20 +293,21 @@ static const Widget _town_view_widgets[] = {
 static const WindowDesc _town_view_desc = {
 	-1, -1, 260, 150,
 	WC_TOWN_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_widgets,
 	TownViewWndProc
 };
 
 static const Widget _town_view_scen_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   184,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   172,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    13,     0,   259,    14,   105, 0x0,								STR_NULL},
 {          WWT_6,    13,     2,   257,    16,   103, 0x0,								STR_NULL},
 {     WWT_IMGBTN,    13,     0,   259,   106,   137, 0x0,								STR_NULL},
 { WWT_PUSHTXTBTN,    13,     0,    85,   138,   149, STR_00E4_LOCATION,	STR_200B_CENTER_THE_MAIN_VIEW_ON},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,    13,   185,   259,     0,    13, STR_0130_RENAME,		STR_200C_CHANGE_TOWN_NAME},
+{ WWT_PUSHTXTBTN,    13,   173,   247,     0,    13, STR_0130_RENAME,		STR_200C_CHANGE_TOWN_NAME},
 { WWT_PUSHTXTBTN,    13,    86,   171,   138,   149, STR_023C_EXPAND,		STR_023B_INCREASE_SIZE_OF_TOWN},
 { WWT_PUSHTXTBTN,    13,   172,   259,   138,   149, STR_0290_DELETE,		STR_0291_DELETE_THIS_TOWN_COMPLETELY},
 {   WIDGETS_END},
@@ -314,7 +316,7 @@ static const Widget _town_view_scen_widgets[] = {
 static const WindowDesc _town_view_scen_desc = {
 	-1, -1, 260, 150,
 	WC_TOWN_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_scen_widgets,
 	TownViewWndProc
 };
@@ -339,7 +341,8 @@ void ShowTownViewWindow(uint town)
 
 static const Widget _town_directory_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   207,     0,    13, STR_2000_TOWNS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   195,     0,    13, STR_2000_TOWNS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   196,   207,     0,    13, 0x0,              STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    13,     0,    98,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,    13,    99,   196,    14,    25, STR_SORT_BY_POPULATION,STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,    13,     0,   196,    26,   189, 0x0, STR_200A_TOWN_NAMES_CLICK_ON_NAME},
@@ -440,19 +443,19 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 2: { /* Sort by Name ascending/descending */
+		case 3: { /* Sort by Name ascending/descending */
 			_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
 			_town_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 3: { /* Sort by Population ascending/descending */
+		case 4: { /* Sort by Population ascending/descending */
 			_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
 			_town_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 4: { /* Click on Town Matrix */
+		case 5: { /* Click on Town Matrix */
 			uint16 id_v = (e->click.pt.y - 28) / 10;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -480,7 +483,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _town_directory_desc = {
 	-1, -1, 208, 190,
 	WC_TOWN_DIRECTORY,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_directory_widgets,
 	TownDirectoryWndProc
 };

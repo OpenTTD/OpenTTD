@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Newgrf settings
 STR_NEWGRF_SETTINGS2						:Newgrf settings
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS             :Close ALL windows
+STR_CLOSE_ALL_WINDOWS2            :Close ALL windows
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Town names displayed
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Town names displayed
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Station names displayed

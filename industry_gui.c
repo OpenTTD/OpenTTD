@@ -315,11 +315,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 5:
+		case 6:
 			i = DEREF_INDUSTRY(w->window_number);
 			ScrollMainWindowToTile(i->xy + TILE_XY(1,1));
 			break;
-		case 6:
+		case 7:
 			// Destroy Industry button costing money removed per request of dominik
 			//i = DEREF_INDUSTRY(w->window_number);
 			/*	passing only i->xy is not safe if industry has a weird shape like:
@@ -337,7 +337,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 static const Widget _industry_view_widgets[] = {
 {    WWT_TEXTBTN,     9,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     9,    11,   259,     0,    13, STR_4801,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     9,    11,   247,     0,    13, STR_4801,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     9,   248,   259,     0,    13, 0x0,       STR_STICKY_BUTTON},
 {     WWT_IMGBTN,     9,     0,   259,    14,   105, 0x0,				STR_NULL},
 {          WWT_6,     9,     2,   257,    16,   103, 0x0,				STR_NULL},
 {     WWT_IMGBTN,     9,     0,   259,   106,   147, 0x0,				STR_NULL},
@@ -351,7 +352,7 @@ static const Widget _industry_view_widgets[] = {
 static const WindowDesc _industry_view_desc = {
 	-1, -1, 260, 160,
 	WC_INDUSTRY_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_industry_view_widgets,
 	IndustryViewWndProc
 };
@@ -371,7 +372,8 @@ void ShowIndustryViewWindow(int industry)
 
 static const Widget _industry_directory_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   507,     0,    13, STR_INDUSTRYDIR_CAPTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   495,     0,    13, STR_INDUSTRYDIR_CAPTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   496,   507,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,    13,     0,   100,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,    13,   101,   200,    14,    25, STR_SORT_BY_TYPE,				STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,	STR_SORT_ORDER_TIP},
@@ -520,31 +522,31 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 2: {
+		case 3: {
 			_industry_sort_order = _industry_sort_order==0 ? 1 : 0;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 3: {
+		case 4: {
 			_industry_sort_order = _industry_sort_order==2 ? 3 : 2;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 4: {
+		case 5: {
 			_industry_sort_order = _industry_sort_order==4 ? 5 : 4;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 5: {
+		case 6: {
 			_industry_sort_order = _industry_sort_order==6 ? 7 : 6;
 			_industry_sort_dirty = true;
 			SetWindowDirty(w);
 		} break;
 
-		case 7: {
+		case 8: {
 			int y = (e->click.pt.y - 28) / 10;
 			byte p;
 			Industry *c;
@@ -571,7 +573,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _industry_directory_desc = {
 	-1, -1, 508, 190,
 	WC_INDUSTRY_DIRECTORY,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_industry_directory_widgets,
 	IndustryDirectoryWndProc
 };

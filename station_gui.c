@@ -195,7 +195,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	} break;
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 2: {
+		case 3: {
 			uint32 id_v = (e->click.pt.y - 15) / 10;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -231,7 +231,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 static const Widget _player_stations_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   357,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   346,   357,     0,    13, 0x0, STR_STICKY_BUTTON},
 {      WWT_PANEL,    14,     0,   346,    14,   137, 0x0, STR_3057_STATION_NAMES_CLICK_ON},
 {  WWT_SCROLLBAR,    14,   347,   357,    14,   137, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
@@ -240,7 +241,7 @@ static const Widget _player_stations_widgets[] = {
 static const WindowDesc _player_stations_desc = {
 	-1, -1, 358, 138,
 	WC_STATION_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_player_stations_widgets,
 	PlayerStationsWndProc
 };
@@ -259,7 +260,8 @@ void ShowPlayerStations(int player)
 
 static const Widget _station_view_expanded_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
 {  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,					STR_NULL},
@@ -276,7 +278,8 @@ static const Widget _station_view_expanded_widgets[] = {
 
 static const Widget _station_view_widgets[] = {
 {    WWT_TEXTBTN,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    14,    11,   248,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    14,     0,   237,    14,    65, 0x0,					STR_NULL},
 {  WWT_SCROLLBAR,    14,   238,   248,    14,    65, 0x0,					STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    14,     0,   248,    66,    97, 0x0,					STR_NULL},
@@ -317,13 +320,13 @@ static void DrawStationViewWindow(Window *w)
 	}
 	SetVScrollCount(w, num);
 
-	w->disabled_state = st->owner == _local_player ? 0 : (1 << 8);
+	w->disabled_state = st->owner == _local_player ? 0 : (1 << 9);
 
-	if (!(st->facilities & FACIL_TRAIN)) SETBIT(w->disabled_state,  9);
+	if (!(st->facilities & FACIL_TRAIN)) SETBIT(w->disabled_state,  10);
 	if (!(st->facilities & FACIL_TRUCK_STOP) &&
-			!(st->facilities & FACIL_BUS_STOP)) SETBIT(w->disabled_state, 10);
-	if (!(st->facilities & FACIL_AIRPORT)) SETBIT(w->disabled_state, 11);
-	if (!(st->facilities & FACIL_DOCK)) SETBIT(w->disabled_state, 12);
+			!(st->facilities & FACIL_BUS_STOP)) SETBIT(w->disabled_state, 11);
+	if (!(st->facilities & FACIL_AIRPORT)) SETBIT(w->disabled_state, 12);
+	if (!(st->facilities & FACIL_DOCK)) SETBIT(w->disabled_state, 13);
 
 	SetDParam(0, st->index);
 	SetDParam(1, st->facilities);
@@ -438,11 +441,11 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 6:
+		case 7:
 			ScrollMainWindowToTile(DEREF_STATION(w->window_number)->xy);
 			break;
 
-		case 7:
+		case 8:
 			SetWindowDirty(w);
 
 			/* toggle height/widget set */
@@ -452,32 +455,32 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 
-		case 8: {
+		case 9: {
 			Station *st = DEREF_STATION(w->window_number);
 			SetDParam(0, st->town->townnametype);
 			SetDParam(1, st->town->townnameparts);
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		}	break;
 
-		case 9: {
+		case 10: {
 			const Station *st = DEREF_STATION(w->window_number);
 			ShowPlayerTrains(st->owner, w->window_number);
 			break;
 		}
 
-		case 10: {
+		case 11: {
 			const Station *st = DEREF_STATION(w->window_number);
 			ShowPlayerRoadVehicles(st->owner, w->window_number);
 			break;
 		}
 
-		case 11: {
+		case 12: {
 			const Station *st = DEREF_STATION(w->window_number);
 			ShowPlayerAircraft(st->owner, w->window_number);
 			break;
 		}
 
-		case 12: {
+		case 13: {
 			const Station *st = DEREF_STATION(w->window_number);
 			ShowPlayerShips(st->owner, w->window_number);
 			break;
@@ -513,7 +516,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _station_view_desc = {
 	-1, -1, 249, 110,
 	WC_STATION_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_station_view_widgets,
 	StationViewWndProc
 };

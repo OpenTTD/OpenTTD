@@ -13,7 +13,8 @@
 
 static const Widget _smallmap_megabig_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   592,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   580,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   581,   592,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    13,   593,   606,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
 {     WWT_IMGBTN,    13,     0,   606,    14,   407, 0x0,					STR_NULL},
 {          WWT_6,    13,     2,   604,    16,   405, 0x0,					STR_NULL},
@@ -31,7 +32,8 @@ static const Widget _smallmap_megabig_widgets[] = {
 
 static const Widget _smallmap_big_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   431,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   419,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   420,   431,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    13,   432,   445,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
 {     WWT_IMGBTN,    13,     0,   445,    14,   257, 0x0,					STR_NULL},
 {          WWT_6,    13,     2,   443,    16,   255, 0x0,					STR_NULL},
@@ -50,7 +52,8 @@ static const Widget _smallmap_big_widgets[] = {
 
 static const Widget _smallmap_small_widgets[] = {
 {    WWT_TEXTBTN,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,    13,    11,   233,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,    13,    11,   221,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,    13,   222,   233,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,    13,   234,   247,     0,    13, 0x2AA,				STR_01CC_TOGGLE_LARGE_SMALL_MAP},
 {     WWT_IMGBTN,    13,     0,   225,    14,   167, 0x0,					STR_NULL},
 {          WWT_6,    13,     2,   223,    16,   165, 0x0,					STR_NULL},
@@ -879,7 +882,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 2: {/* big/small size */
+		case 3: {/* big/small size */
 			// const Widget *wi = w->widget;
 			DeleteWindow(w);
 			SndPlayFx(SND_15_BEEP);
@@ -890,7 +893,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 4: {/* main wnd */
+		case 5: {/* main wnd */
 			Window *w2;
 			Point pt;
 
@@ -903,23 +906,23 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			WP(w2,vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 		} break;
 
-		case 5: /* show land contours */
-		case 6: /* show vehicles */
-		case 7: /* show industries */
-		case 8: /* show transport routes */
-		case 9: /* show vegetation */
-		case 10: /* show land owners */
-			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
+		case 6: /* show land contours */
+		case 7: /* show vehicles */
+		case 8: /* show industries */
+		case 9: /* show transport routes */
+		case 10: /* show vegetation */
+		case 11: /* show land owners */
+			w->click_state &= ~(1<<6|1<<7|1<<8|1<<9|1<<10|1<<11);
 			w->click_state |= 1 << e->click.widget;
-			_smallmap_type = e->click.widget - 5;
+			_smallmap_type = e->click.widget - 6;
 
 			SetWindowDirty(w);
 			SndPlayFx(SND_15_BEEP);
 			break;
 
-		case 11: /* toggle town names */
-			w->click_state ^= (1 << 11);
-			_smallmap_show_towns = (w->click_state >> 11) & 1;
+		case 12: /* toggle town names */
+			w->click_state ^= (1 << 12);
+			_smallmap_show_towns = (w->click_state >> 12) & 1;
 			SetWindowDirty(w);
 			SndPlayFx(SND_15_BEEP);
 			break;
@@ -927,7 +930,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RCLICK:
-		if (e->click.widget == 4) {
+		if (e->click.widget == 5) {
 			if (_scrolling_viewport)
 				return;
 			_scrolling_viewport = true;
@@ -947,7 +950,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 static const WindowDesc _smallmap_small_desc = {
 	-1,-1, 248, 212,
 	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_smallmap_small_widgets,
 	SmallMapWindowProc
 };
@@ -955,7 +958,7 @@ static const WindowDesc _smallmap_small_desc = {
 static const WindowDesc _smallmap_big_desc = {
 	-1,-1, 446, 302,
 	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_smallmap_big_widgets,
 	SmallMapWindowProc
 };
@@ -963,7 +966,7 @@ static const WindowDesc _smallmap_big_desc = {
 static const WindowDesc _smallmap_megabig_desc = {
 	-1,-1, 607, 452,
 	WC_SMALLMAP,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_smallmap_megabig_widgets,
 	SmallMapWindowProc
 };
@@ -984,7 +987,7 @@ static void DoShowSmallMap(int big)
 
 	w = AllocateWindowDescFront(_smallmap_descs[big], 0);
 	if (w) {
-		w->click_state = (1<<5) << _smallmap_type | _smallmap_show_towns << 11;
+		w->click_state = (1<<6) << _smallmap_type | _smallmap_show_towns << 12;
 		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
 		x = (((vp->virtual_width - (big?220*32:110*32)) >> 1) + vp->virtual_left) >> 2;
