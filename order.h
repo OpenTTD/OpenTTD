@@ -16,16 +16,25 @@ enum {
 
 /* Order flags -- please use OFB instead OF and use HASBIT/SETBIT/CLEARBIT */
 enum {
-	OF_UNLOAD    = 0x2,
-	OF_FULL_LOAD = 0x4, // Also used when to force an aircraft into a depot
+	//Flags for stations:
+	OF_UNLOAD         = 0x2,
+	OF_FULL_LOAD      = 0x4, // Also used when to force an aircraft into a depot
+
+	//Flags for depots:
+	OF_PART_OF_ORDERS	= 0x2,
+	OF_HALT_IN_DEPOT  = 0x4,
+
+	//Common flags
 	OF_NON_STOP  = 0x8
 };
 
 /* Order flags bits */
 enum {
-	OFB_UNLOAD    = 1,
-	OFB_FULL_LOAD = 2,
-	OFB_NON_STOP  = 3
+	OFB_UNLOAD         = 1,
+	OFB_FULL_LOAD      = 2,
+	OFB_PART_OF_ORDERS = 1,
+	OFB_HALT_IN_DEPOT  = 2,
+	OFB_NON_STOP       = 3
 };
 
 /* Possible clone options */

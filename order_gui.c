@@ -167,7 +167,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
 				if ((_map5[tile]&0xFC)==0xC0) {
 					order.type = OT_GOTO_DEPOT;
-					order.flags = OF_UNLOAD;
+					order.flags = OF_PART_OF_ORDERS;
 					order.station = GetDepotByTile(tile)->index;
 					return order;
 				}
@@ -177,7 +177,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 		case MP_STREET:
 			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player) {
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_UNLOAD;
+				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
 				return order;
 			}
@@ -187,7 +187,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 			if (v->type != VEH_Aircraft) break;
 			if ( IsAircraftHangarTile(tile) && _map_owner[tile] == _local_player) {
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_UNLOAD | OF_NON_STOP;
+				order.flags = OF_PART_OF_ORDERS | OF_NON_STOP;	//XXX - whats the nonstop stuff doing here?
 				order.station = _map2[tile];
 				return order;
 			}
@@ -202,7 +202,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 				case 0x83: tile-= TILE_XY(0,1); break;
 				}
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_UNLOAD;
+				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
 				return order;
 			}

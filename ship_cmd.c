@@ -108,7 +108,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.flags & OF_FULL_LOAD)
+			v->current_order.flags & OF_HALT_IN_DEPOT)
 		return;
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v))
@@ -430,9 +430,9 @@ static void ShipEnterDepot(Vehicle *v)
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
 
-		if (t.flags & OF_UNLOAD) {
+		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			v->cur_order_index++;
-		} else if (t.flags & OF_FULL_LOAD) {
+		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -993,7 +993,10 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
+
+			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
+				v->cur_order_index++;
+
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -1006,7 +1009,7 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			v->dest_tile = depot->xy;
 			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
 			v->current_order.station = depot->index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}

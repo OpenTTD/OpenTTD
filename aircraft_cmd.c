@@ -575,7 +575,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 		return;
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.flags & OF_FULL_LOAD)
+			v->current_order.flags & OF_HALT_IN_DEPOT)
 		return;
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v))
@@ -1313,9 +1313,9 @@ static void AircraftEnterHangar(Vehicle *v)
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
 
-		if (old_order.flags & OF_UNLOAD) {
+		if (HASBIT(old_order.flags, OFB_PART_OF_ORDERS)) {
 			v->cur_order_index++;
-		} else if (old_order.flags & OF_FULL_LOAD) { // force depot visit
+		} else if (HASBIT(old_order.flags, OFB_HALT_IN_DEPOT)) { // force depot visit
 			v->vehstatus |= VS_STOPPED;
 			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 

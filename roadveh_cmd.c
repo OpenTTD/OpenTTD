@@ -334,8 +334,10 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (v->current_order.flags & OF_UNLOAD)
+
+			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
 				v->cur_order_index++;
+
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -349,7 +351,7 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
 		v->current_order.station = depot->index;
 		v->dest_tile = depot->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -1531,9 +1533,9 @@ void RoadVehEnterDepot(Vehicle *v)
 		v->current_order.flags = 0;
 
 		// Part of the orderlist?
-		if (t.flags & OF_UNLOAD) {
+		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			v->cur_order_index++;
-		} else if (t.flags & OF_FULL_LOAD) {
+		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -1583,7 +1585,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	// Don't interfere with a depot visit scheduled by the user, or a
 	// depot visit by the order list.
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) != 0)
+			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
 
 	//If we already got a slot at a stop, use that FIRST, and go to a depot later

@@ -1353,7 +1353,7 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (v->current_order.flags & OF_UNLOAD) {
+			if (HASBIT(v->current_order.flags, OF_PART_OF_ORDERS)) {
 				v->u.rail.days_since_order_progr = 0;
 				v->cur_order_index++;
 			}
@@ -2956,10 +2956,10 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
 
-		if (t.flags & OF_UNLOAD) { // Part of the orderlist?
+		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) { // Part of the orderlist?
 			v->u.rail.days_since_order_progr = 0;
 			v->cur_order_index++;
-		} else if (t.flags & OF_FULL_LOAD) { // User initiated?
+		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) { // User initiated?
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -2995,7 +2995,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	// Don't interfere with a depot visit scheduled by the user, or a
 	// depot visit by the order list.
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) != 0)
+			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
 
 	tfdd = FindClosestTrainDepot(v);
