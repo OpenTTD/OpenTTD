@@ -562,7 +562,7 @@ static void FindResolutions()
 }
 
 
-static char *Win32GdiStart(char **parm)
+static const char *Win32GdiStart(char **parm)
 {
 	memset(&_wnd, 0, sizeof(_wnd));
 	_wnd.cursor_visible = true;

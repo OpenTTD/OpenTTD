@@ -1173,7 +1173,7 @@ bool NetworkUDPSearchServer() {
 }
 
 
-#else // ENABLE_NETWORK
+#else // not ENABLE_NETWORK
 
 // stubs
 void NetworkInitialize(const char *hostname) {}
@@ -1187,5 +1187,5 @@ void NetworkProcessCommands() {}
 void NetworkStartSync() {}
 void NetworkUDPListen(int port) {}
 void NetworkUDPReceive() {}
-bool NetworkUDPSearchServer() {}
+bool NetworkUDPSearchServer() { return false; }
 #endif // ENABLE_NETWORK

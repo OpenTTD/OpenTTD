@@ -491,7 +491,7 @@ int ttd_main(int argc, char* argv[])
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
 		case 'n': {
 				network = 1; 
-				if ((bool)mgo.opt) {
+				if (mgo.opt) {
 					network_conn = mgo.opt; 
 					network++;
 				}

@@ -1977,7 +1977,6 @@ TownNameGenerator * const _town_name_generators[] = {
 
 uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 {
-	uint32 a = 0;
 	switch (old_town_name_type) {
 		case 0: case 3: /* English, American */
 			/*	Already OK */
