@@ -1230,7 +1230,26 @@ static void GRFInhibit(byte *buf, int len)
 	 *
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
-	/* TODO */
+	/* XXX: Should we handle forward deactivations? */
+	/* XXX: Even so will fully work only with stages support. */
+
+	byte num;
+	int i;
+	
+	check_length(len, 1, "GRFInhibit");
+	num = grf_load_byte(&buf); len--;
+	check_length(len, 4 * num, "GRFInhibit");
+
+	for (i = 0; i < num; i++) {
+		uint32 grfid = grf_load_dword(&buf);
+		struct GRFFile *file = GetFileByGRFID(grfid);
+
+		/* Unset activation flag */
+		if (file != NULL) {
+			grfmsg(GMS_NOTICE, "GRFInhibit: Deactivating file ``%s''", file->filename);
+			file->flags &= 0xFFFE;
+		}
+	}
 }
 
 
@@ -1322,7 +1341,8 @@ void DecodeSpecialSprite(int num, int spriteid)
 
 	action = buf[0];
 	if (action < NUM_ACTIONS) {
-		handlers[action](buf, num);
+		if (_cur_grffile->flags & 0x0001)
+			handlers[action](buf, num);
 	} else {
 		grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
 	}
