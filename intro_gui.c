@@ -18,19 +18,21 @@ static void ShowSelectTutorialWindow()
 }
 */
 
+/* We go from TOP to the BOTTOM and from LEFT to the RIGHT (scenario
+ * panels are an exception). I know this is a highly unusual concept, guys,
+ * but I hope you'll manage to follow. --pasky */
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,       STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 196, 0x0,                    STR_NULL},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  22,  33, STR_0140_NEW_GAME,      STR_02FB_START_A_NEW_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  22,  33, STR_0141_LOAD_GAME,     STR_02FC_LOAD_A_SAVED_GAME},
-//{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 177, 188, STR_0142_TUTORIAL_DEMONSTRATION, STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 177, 188, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  40,  51, STR_0220_CREATE_SCENARIO,STR_02FE_CREATE_A_CUSTOMIZED_GAME},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  40,  51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 136, 147, STR_SINGLE_PLAYER,      STR_02FF_SELECT_SINGLE_PLAYER_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 136, 147, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 159, 170, STR_0148_GAME_OPTIONS,  STR_0301_DISPLAY_GAME_OPTIONS},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 159, 170, STR_01FE_DIFFICULTY,    STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  40,  51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 177, 188, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 177, 188, STR_0304_QUIT,          STR_0305_QUIT_OPENTTD},
 {    WWT_PANEL_2, RESIZE_NONE, 12,  10,  85,  69, 122, 0x1312,                 STR_030E_SELECT_TEMPERATE_LANDSCAPE},
 {    WWT_PANEL_2, RESIZE_NONE, 12,  90, 165,  69, 122, 0x1314,                 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
@@ -54,8 +56,8 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		switch(e->click.widget) {
 		case 2: DoCommandP(0, 0, 0, NULL, CMD_START_NEW_GAME); break;
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-		case 4: ShowPatchesSelection(); break;
-		case 5: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
+		case 4: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
+		case 5: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 		case 7:
 		#ifdef ENABLE_NETWORK
 			if (!_network_available) {
@@ -68,7 +70,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 			break;
 		case 8: ShowGameOptions(); break;
 		case 9: ShowGameDifficulty(); break;
-		case 10:ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+		case 10:ShowPatchesSelection(); break;
 		case 11:AskExitGame(); break;
 		case 12: case 13: case 14: case 15:
 			DoCommandP(0, e->click.widget - 12, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
