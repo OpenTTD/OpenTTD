@@ -1778,6 +1778,11 @@ static uint GetSlopeZ_Station(TileInfo *ti)
 	return z;
 }
 
+static uint GetSlopeTileh_Station(TileInfo *ti)
+{
+	return 0;
+}
+
 static void GetAcceptedCargo_Station(uint tile, AcceptedCargo *ac)
 {
 	/* not used */
@@ -2451,6 +2456,7 @@ const TileTypeProcs _tile_type_station_procs = {
 	NULL,												/* get_produced_cargo_proc */
 	VehicleEnter_Station,				/* vehicle_enter_tile_proc */
 	NULL,												/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Station,			/* get_slope_tileh_proc */
 };
 
 

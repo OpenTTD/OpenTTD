@@ -1694,6 +1694,28 @@ uint GetSlopeZ_Track(TileInfo *ti)
 	return z;
 }
 
+uint GetSlopeTileh_Track(TileInfo *ti) 
+{
+	// check if it's a foundation
+	if (ti->tileh != 0) {
+		if ((ti->map5 & 0x80) == 0) {
+			uint f = GetRailFoundation(ti->tileh, ti->map5 & 0x3F);
+			if (f != 0) {
+				if (f < 15) {
+					// leveled foundation
+					return 0;
+				}
+				// inclined foundation
+				return _inclined_tileh[f - 15];
+			}
+		} else if ((ti->map5 & 0xC0) == 0xC0) {
+			// depot or checkpoint
+			return 0;
+		}
+	}
+	return ti->tileh;
+}
+
 static void GetAcceptedCargo_Track(uint tile, AcceptedCargo *ac)
 {
 	/* not used */
@@ -1949,4 +1971,5 @@ const TileTypeProcs _tile_type_rail_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	VehicleEnter_Track,				/* vehicle_enter_tile_proc */
 	NULL,											/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Track,			/* get_slope_tileh_proc */
 };

@@ -875,7 +875,29 @@ uint GetSlopeZ_Road(TileInfo *ti)
 		}
 		return GetPartialZ(ti->x&0xF, ti->y&0xF, th) + z;
 	}
-	return z;
+	return z; // normal Z if no slope
+}
+
+uint GetSlopeTileh_Road(TileInfo *ti)
+{
+	// check if it's a foundation
+	if (ti->tileh != 0) {
+		if ((ti->map5 & 0xE0) == 0) { /* road or crossing */
+			uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
+			if (f != 0) {
+				if (f < 15) {
+					// leveled foundation
+					return 0;
+				}
+				// inclined foundation
+				return _inclined_tileh[f - 15];
+			}
+		} else if ((ti->map5 & 0xF0) == 0x20) {
+			// depot
+			return 0;
+		}
+	}
+	return ti->tileh;
 }
 
 static void GetAcceptedCargo_Road(uint tile, AcceptedCargo *ac)
@@ -1129,4 +1151,5 @@ const TileTypeProcs _tile_type_road_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	VehicleEnter_Road,				/* vehicle_enter_tile_proc */
 	VehicleLeave_Road,				/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Road,				/* get_slope_tileh_proc */
 };

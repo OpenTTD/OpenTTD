@@ -332,6 +332,10 @@ static uint GetSlopeZ_Trees(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
+static uint GetSlopeTileh_Trees(TileInfo *ti) {
+	return ti->tileh;
+}
+
 static int32 ClearTile_Trees(uint tile, byte flags) {
 	int num;
 
@@ -644,4 +648,5 @@ const TileTypeProcs _tile_type_trees_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
 	NULL,											/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Trees,			/* get_slope_tileh_proc */
 };

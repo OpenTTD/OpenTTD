@@ -514,6 +514,11 @@ static void DrawTile_Clear(TileInfo *ti)
 
 uint GetSlopeZ_Clear(TileInfo *ti) { return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z; }
 
+uint GetSlopeTileh_Clear(TileInfo *ti)
+{
+	return ti->tileh;
+}
+
 static void GetAcceptedCargo_Clear(uint tile, AcceptedCargo *ac)
 {
 	/* unused */	
@@ -803,4 +808,5 @@ const TileTypeProcs _tile_type_clear_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
 	NULL,											/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Clear,			/* get_slope_tileh_proc */
 };

@@ -237,22 +237,34 @@ uint GetSlopeZ(int x,  int y)
 
 	assert(z < 256);
 */
-
 	return _tile_type_procs[ti.type]->get_slope_z_proc(&ti);
 }
 
-/* TODO: add check if this tile has a foundation or not. Since this can't be done easily with the
-	current landscape arrays, we might have to add a new TileTypeProc. */ 
-bool hasFoundation(uint tile)
+// direction=true:  check for foundation in east and south corner
+// direction=false: check for foundation in west and south corner
+bool hasFoundation(TileInfo *ti, bool direction)
 {
-	return true;
+	bool south, other; // southern corner and east/west corner
+	uint slope = _tile_type_procs[ti->type]->get_slope_tileh_proc(ti);
+	south = ((ti->tileh) & 2) != (slope & 2);
+
+	if(direction)
+		other = ((ti->tileh) & 4) != (slope & 4);
+	else
+		other = ((ti->tileh) & 1) != (slope & 1);
+
+	return south || other;
 }
 
 void DrawFoundation(TileInfo *ti, uint f)
 {
 	uint32 sprite_base = SPR_SLOPES_BASE-14;
-	if(hasFoundation( TILE_FROM_XY(ti->x, ti->y-1) )) sprite_base += 22;		// foundation in NW direction
-	if(hasFoundation( TILE_FROM_XY(ti->x-1, ti->y) )) sprite_base += 22*2;	// foundation in NE direction
+
+	TileInfo ti2;
+	FindLandscapeHeight(&ti2, ti->x, ti->y-1);
+	if(hasFoundation( &ti2, true )) sprite_base += 22;		// foundation in NW direction
+	FindLandscapeHeight(&ti2, ti->x-1, ti->y);
+	if(hasFoundation( &ti2, false )) sprite_base += 22*2;	// foundation in NE direction
 
 	if (f < 15) {
 		// leveled foundation	

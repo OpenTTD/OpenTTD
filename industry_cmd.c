@@ -334,6 +334,10 @@ static uint GetSlopeZ_Industry(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
+static uint GetSlopeTileh_Industry(TileInfo *ti) {
+	return 0;
+}
+
 static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo *ac)
 {
 	int m5 = _map5[tile];
@@ -1819,6 +1823,7 @@ const TileTypeProcs _tile_type_industry_procs = {
 	GetProducedCargo_Industry,  /* get_produced_cargo_proc */
 	NULL,												/* vehicle_enter_tile_proc */
 	NULL,												/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Industry,			/* get_slope_tileh_proc */
 };
 
 static const byte _industry_desc[] = {

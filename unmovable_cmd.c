@@ -106,6 +106,11 @@ static uint GetSlopeZ_Unmovable(TileInfo *ti)
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
+static uint GetSlopeTileh_Unmovable(TileInfo *ti) 
+{
+	return 0;
+}
+
 static int32 ClearTile_Unmovable(uint tile, byte flags)
 {
 	byte m5 = _map5[tile];
@@ -386,4 +391,5 @@ const TileTypeProcs _tile_type_unmovable_procs = {
 	NULL,													/* get_produced_cargo_proc */
 	NULL,													/* vehicle_enter_tile_proc */
 	NULL,													/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Unmovable,			/* get_slope_tileh_proc */
 };

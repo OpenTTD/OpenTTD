@@ -103,6 +103,11 @@ static uint GetSlopeZ_Town(TileInfo *ti)
 	return (uint16) z;	
 }
 
+static uint GetSlopeTileh_Town(TileInfo *ti)
+{
+	return ti->tileh;
+}
+
 static void AnimateTile_Town(uint tile)
 {
 	int old;
@@ -1772,6 +1777,7 @@ const TileTypeProcs _tile_type_town_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
 	NULL,											/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Town,				/* get_slope_tileh_proc */
 };
 
 

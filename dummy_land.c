@@ -13,6 +13,10 @@ static uint GetSlopeZ_Dummy(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
+static uint GetSlopeZ_Dummy(TileInfo *ti) {
+	return ti->tileh;
+}
+
 static int32 ClearTile_Dummy(uint tile, byte flags) {
 	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
 }
@@ -68,5 +72,6 @@ const TileTypeProcs _tile_type_dummy_procs = {
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
 	NULL,											/* vehicle_leave_tile_proc */
+	GetSlopeTileh_Dummy,			/* get_slope_tileh_proc */
 };
 

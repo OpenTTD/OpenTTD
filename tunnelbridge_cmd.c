@@ -1198,6 +1198,12 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + z;
 }
 
+static uint GetSlopeTileh_TunnelBridge(TileInfo *ti) {
+	// not accurate, but good enough for slope graphics drawing
+	return 0;
+}
+
+
 static void GetAcceptedCargo_TunnelBridge(uint tile, AcceptedCargo *ac)
 {
 	/* not used */
@@ -1478,4 +1484,5 @@ const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	NULL,														/* get_produced_cargo_proc */
 	VehicleEnter_TunnelBridge,			/* vehicle_enter_tile_proc */
 	NULL,														/* vehicle_leave_tile_proc */
+	GetSlopeTileh_TunnelBridge,			/* get_slope_tileh_proc */
 };
