@@ -134,7 +134,7 @@ void DrawTextEffects(DrawPixelInfo *dpi);
 
 void InitTextMessage();
 void DrawTextMessage();
-void AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
+void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
 void UndrawTextMessage();
 void TextMessageDailyLoop();
 

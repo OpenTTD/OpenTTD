@@ -210,7 +210,7 @@ void NetworkAddCommandQueue(ClientState *cs, CommandPacket *cp);
 
 // from network.c
 void CloseClient(ClientState *cs);
-void NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...);
+void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...);
 void NetworkGetClientName(char *clientname, size_t size, ClientState *cs);
 uint NetworkCalculateLag(const ClientState *cs);
 byte NetworkGetCurrentLanguageIndex();

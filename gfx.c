@@ -1510,7 +1510,7 @@ void DoPaletteAnimations()
 	int j;
 	int i;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	byte old_val[c*3];
+	byte old_val[114]; // max(c*(38:28)) = 114
 
 	d = _cur_palette + 217*3;
 	memcpy(old_val, d, c*3);

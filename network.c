@@ -61,7 +61,7 @@ void NetworkGetClientName(char *client_name, size_t size, ClientState *cs)
 
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
-void NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...)
+void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...)
 {
 	char buf[1024];
 	va_list va;
