@@ -543,8 +543,7 @@ endif
 ttd_OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
 
 ifdef BEOS
-CXX_SOURCES += os/beos/bemidi.cpp
-CFLAGS += -I.
+CXX_SOURCES += bemidi.cpp
 endif
 
 ifdef WIN32
@@ -746,6 +745,6 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 		>> .deps/$(*F).P; \
 	rm .deps/$(*F).pp
 
-# For DirectMusic build and BeOS specific parts
+# For DirectMusic build
 %.o: %.cpp  $(MAKE_CONFIG)
-	$(CXX_BUILD) $< -o $@
+	$(CXX_BUILD) $<
