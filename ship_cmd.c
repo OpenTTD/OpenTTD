@@ -95,7 +95,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	if ((v->next_order & (OT_MASK | OF_FULL_LOAD)) == (OT_GOTO_DEPOT | OF_FULL_LOAD))
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			v->current_order.flags & OF_FULL_LOAD)
 		return;
 
 	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
@@ -104,15 +105,17 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	i = FindClosestShipDepot(v);
 
 	if (i < 0 || GetTileDist(v->tile, (&_depots[i])->xy) > 12) {
-		if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
-			v->next_order = OT_DUMMY;
+		if (v->current_order.type == OT_GOTO_DEPOT) {
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 		return;
 	}
 
-	v->next_order = OT_GOTO_DEPOT | OF_NON_STOP;
-	v->next_order_param = (byte)i;
+	v->current_order.type = OT_GOTO_DEPOT;
+	v->current_order.flags = OF_NON_STOP;
+	v->current_order.station = (byte)i;
 	v->dest_tile = (&_depots[i])->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 }
@@ -199,15 +202,18 @@ static const TileIndexDiff _dock_offs[] = {
 
 static void ProcessShipOrder(Vehicle *v)
 {
-	uint order;
+	Order order;
 	Station *st;
 
-	if ((v->next_order & OT_MASK) >= OT_GOTO_DEPOT && (v->next_order & OT_MASK) <= OT_LEAVESTATION) {
-		if ((v->next_order & (OT_MASK|OF_UNLOAD)) != (OT_GOTO_DEPOT|OF_UNLOAD))
+	if (v->current_order.type >= OT_GOTO_DEPOT &&
+			v->current_order.type <= OT_LEAVESTATION) {
+		if (v->current_order.type != OT_GOTO_DEPOT ||
+				!(v->current_order.flags & OF_UNLOAD))
 			return;
 	}
 
-	if ((v->next_order & (OT_MASK|OF_UNLOAD|OF_FULL_LOAD)) == (OT_GOTO_DEPOT|OF_UNLOAD|OF_FULL_LOAD) &&
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
 			SERVICE_INTERVAL) {
 		v->cur_order_index++;
 	}
@@ -218,28 +224,30 @@ static void ProcessShipOrder(Vehicle *v)
 
 	order = v->schedule_ptr[v->cur_order_index];
 
-	if (order == 0) {
-		v->next_order = OT_NOTHING;
+	if (order.type == OT_NOTHING) {
+		v->current_order.type = OT_NOTHING;
+		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		return;
 	}
 
-	if (order == (uint)((v->next_order | (v->next_order_param<<8))))
+	if (order.type == v->current_order.type &&
+			order.flags == v->current_order.flags &&
+			order.station == v->current_order.station)
 		return;
 
-	v->next_order = (byte)order;
-	v->next_order_param = (byte)(order >> 8);
+	v->current_order = order;
 
-	if ((order & OT_MASK) == OT_GOTO_STATION) {
-		if ( (byte)(order >> 8) == v->last_station_visited)
+	if (order.type == OT_GOTO_STATION) {
+		if (order.station == v->last_station_visited)
 			v->last_station_visited = 0xFF;
 
-		st = DEREF_STATION(order >> 8);
+		st = DEREF_STATION(order.station);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, _dock_offs[_map5[st->dock_tile]-0x4B]);
 		}
-	} else if ((order & OT_MASK) == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order >> 8].xy;
+	} else if (order.type == OT_GOTO_DEPOT) {
+		v->dest_tile = _depots[order.station].xy;
 	} else {
 		v->dest_tile = 0;
 	}
@@ -248,17 +256,17 @@ static void ProcessShipOrder(Vehicle *v)
 
 static void HandleShipLoading(Vehicle *v)
 {
-	if (v->next_order == OT_NOTHING)
+	if (v->current_order.type == OT_NOTHING)
 		return;
 
-	if (v->next_order != OT_DUMMY) {
-		if ((v->next_order&OT_MASK) != OT_LOADING)
+	if (v->current_order.type != OT_DUMMY) {
+		if (v->current_order.type != OT_LOADING)
 			return;
 
 		if (--v->load_unload_time_rem)
 			return;
 
-		if (v->next_order&OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
 			SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
 			if (LoadUnloadVehicle(v)) {
 				InvalidateWindow(WC_SHIPS_LIST, v->owner);
@@ -269,9 +277,10 @@ static void HandleShipLoading(Vehicle *v)
 		PlayShipSound(v);
 
 		{
-			byte b = v->next_order;
-			v->next_order = OT_LEAVESTATION;
-			if (!(b & OF_NON_STOP))
+			Order b = v->current_order;
+			v->current_order.type = OT_LEAVESTATION;
+			v->current_order.flags = 0;
+			if (!(b.flags & OF_NON_STOP))
 				return;
 		}
 	}
@@ -380,8 +389,6 @@ static int32 EstimateShipCost(uint16 engine_type);
 
 static void ShipEnterDepot(Vehicle *v)
 {
-	byte t;
-
 	v->u.ship.state = 0x80;
 	v->vehstatus |= VS_HIDDEN;
 	v->cur_speed = 0;
@@ -396,15 +403,18 @@ static void ShipEnterDepot(Vehicle *v)
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
+		Order t;
+
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
-		t = v->next_order;
-		v->next_order = OT_DUMMY;
+		t = v->current_order;
+		v->current_order.type = OT_DUMMY;
+		v->current_order.flags = 0;
 
-		if (t&OF_UNLOAD) { v->cur_order_index++; }
-
-		else if (t & 0x40) {
+		if (t.flags & OF_UNLOAD) {
+			v->cur_order_index++;
+		} else if (t.flags & OF_FULL_LOAD) {
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -636,7 +646,7 @@ static void ShipController(Vehicle *v)
 	ProcessShipOrder(v);
 	HandleShipLoading(v);
 
-	if ((v->next_order & OT_MASK) == OT_LOADING)
+	if (v->current_order.type == OT_LOADING)
 		return;
 
 	CheckShipLeaveDepot(v);
@@ -657,21 +667,23 @@ static void ShipController(Vehicle *v)
 			if (r & 0x8) goto reverse_direction;
 
 			if (v->dest_tile != 0 && v->dest_tile == gp.new_tile) {
-				if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
+				if (v->current_order.type == OT_GOTO_DEPOT) {
 					if ((gp.x&0xF)==8 && (gp.y&0xF)==8) {
 						ShipEnterDepot(v);
 						return;
 					}
-				} else if ((v->next_order & OT_MASK) == OT_GOTO_STATION) {
+				} else if (v->current_order.type == OT_GOTO_STATION) {
 					Station *st;
 
-					v->last_station_visited = v->next_order_param;
+					v->last_station_visited = v->current_order.station;
 
 					/* Process station in the schedule. Don't do that for buoys (HVOT_BUOY) */
-					st = DEREF_STATION(v->next_order_param);
+					st = DEREF_STATION(v->current_order.station);
 					if (!(st->had_vehicle_of_type & HVOT_BUOY) 
 							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
-						v->next_order = (v->next_order & (OF_FULL_LOAD|OF_UNLOAD)) | OF_NON_STOP | OT_LOADING;
+						v->current_order.type = OT_LOADING;
+						v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
+						v->current_order.flags |= OF_NON_STOP;
 						ShipArrivesAt(v, st);
 
 						SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
@@ -681,7 +693,8 @@ static void ShipController(Vehicle *v)
 						}
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 					} else { /* leave buoys right aways */
-						v->next_order = OT_LEAVESTATION;
+						v->current_order.type = OT_LEAVESTATION;
+						v->current_order.flags = 0;
 						v->cur_order_index++;
 						InvalidateVehicleOrderWidget(v);
 					}
@@ -689,8 +702,9 @@ static void ShipController(Vehicle *v)
 				}
 			}
 
-			if (v->next_order == OT_LEAVESTATION) {
-				v->next_order = OT_NOTHING;
+			if (v->current_order.type == OT_LEAVESTATION) {
+				v->current_order.type = OT_NOTHING;
+				v->current_order.flags = 0;
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 			}
 		}
@@ -843,7 +857,9 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->string_id = STR_SV_SHIP_NAME;
 		v->u.ship.state = 0x80;
-		*(v->schedule_ptr = _ptr_to_next_order++) = 0;
+		_ptr_to_next_order->type = OT_NOTHING;
+		_ptr_to_next_order->flags = 0;
+		v->schedule_ptr = _ptr_to_next_order++;
 
 		v->service_interval = _patches.servint_ships;
 		v->date_of_last_service = _date;
@@ -917,10 +933,11 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (v->next_order&OF_UNLOAD) {v->cur_order_index++;}
-			v->next_order = OT_DUMMY;
+			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 	} else {
@@ -930,8 +947,9 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (flags & DC_EXEC) {
 			v->dest_tile = _depots[depot].xy;
-			v->next_order = OF_NON_STOP | OF_FULL_LOAD | OT_GOTO_DEPOT;
-			v->next_order_param = depot;
+			v->current_order.type = OT_GOTO_DEPOT;
+			v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.station = depot;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 	}

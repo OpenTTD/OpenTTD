@@ -760,8 +760,12 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static void DoDeleteWaypoint(Waypoint *cp)
 {
+	Order order;
 	cp->xy = 0;
-	DeleteCommandFromVehicleSchedule(((cp-_waypoints) << 8) + OT_GOTO_WAYPOINT);
+	order.type = OT_GOTO_WAYPOINT;
+	order.flags = 0;
+	order.station = cp - _waypoints;
+	DeleteCommandFromVehicleSchedule(order);
 	if (~cp->town_or_string & 0xC000) DeleteName(cp->town_or_string);
 	RedrawWaypointSign(cp);
 }

@@ -13,14 +13,14 @@
 static int OrderGetSel(Window *w)
 {
 	Vehicle *v = &_vehicles[w->window_number];
-	uint16 *sched = v->schedule_ptr;
+	const Order *sched = v->schedule_ptr;
 	int num = WP(w,order_d).sel;
 	int count = 0;
 
 	if (num == 0)
 		return 0;
 
-	while (*sched != 0) {
+	while (sched->type != OT_NOTHING) {
 		sched++;
 		count++;
 		if (--num == 0)
@@ -34,7 +34,8 @@ static void DrawOrdersWindow(Window *w)
 {
 	Vehicle *v;
 	int num, sel;
-	uint16 *sched, ord;
+	const Order *sched;
+	Order ord;
 	int y, i;
 	StringID str;
 	bool shared_schedule;
@@ -47,8 +48,10 @@ static void DrawOrdersWindow(Window *w)
 
 	sched = v->schedule_ptr;
 	num=0;
-	while (*sched != 0)
-		sched++,num++;
+	while (sched->type != OT_NOTHING) {
+		sched++;
+		num++;
+	}
 
 	if ((uint)num + shared_schedule <= (uint)WP(w,order_d).sel)
 		SETBIT(w->disabled_state, 5); /* delete */
@@ -61,7 +64,7 @@ static void DrawOrdersWindow(Window *w)
 	sel = OrderGetSel(w);
 
 	SetDParam(2,STR_8827_FULL_LOAD);
-	switch(v->schedule_ptr[sel] & 0x1F) {
+	switch (v->schedule_ptr[sel].type) {
 	case OT_GOTO_STATION:
 		break;
 	case OT_GOTO_DEPOT:
@@ -88,43 +91,43 @@ static void DrawOrdersWindow(Window *w)
 
 		if ( (uint)(i - w->vscroll.pos) < 6) {
 
-			if (ord == 0) {
+			if (ord.type == OT_NOTHING) {
 				str = shared_schedule ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
 			} else {
 				SetDParam(1, 6);
 
-				if ( (ord & OT_MASK) == OT_GOTO_STATION) {
-					SetDParam(1, STR_8806_GO_TO + ((ord >> 5) & 7));
-					SetDParam(2, ord >> 8);
-				} else if ((ord & OT_MASK) == OT_GOTO_DEPOT) {
+				if (ord.type == OT_GOTO_STATION) {
+					SetDParam(1, STR_8806_GO_TO + (ord.flags >> 1));
+					SetDParam(2, ord.station);
+				} else if (ord.type == OT_GOTO_DEPOT) {
 					StringID s = STR_NULL;
 					if (v->type == VEH_Aircraft) {
 						s = STR_GO_TO_AIRPORT_HANGAR;
-					  SetDParam(2, ord>>8);
+					  SetDParam(2, ord.station);
 					} else {
-						SetDParam(2, _depots[ord >> 8].town_index);
+						SetDParam(2, _depots[ord.station].town_index);
 						switch (v->type) {
 						case VEH_Train:	s = STR_880E_GO_TO_TRAIN_DEPOT; break;
 						case VEH_Road:	s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
 						case VEH_Ship:	s = STR_GO_TO_SHIP_DEPOT; break;
 						}
 					}
-					if (v->type == VEH_Train)
-						s += (ord>>6)&2;
-					SetDParam(1, s + ((ord>>6)&1) );
-				} else if ((ord & OT_MASK) == OT_GOTO_WAYPOINT) {
-					SetDParam(2, ord >> 8);
+					if (v->type == VEH_Train && ord.flags & OF_NON_STOP) s += 2;
+					if (ord.flags & OF_FULL_LOAD) ++s; /* XXX service */
+					SetDParam(1, s);
+				} else if (ord.type == OT_GOTO_WAYPOINT) {
+					SetDParam(2, ord.station);
 					SetDParam(1, STR_GO_TO_WAYPOINT);
 				}
 			}
 			{
 				byte color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
 				SetDParam(0, i+1);
-				if ((ord & OT_MASK) != OT_DUMMY) {
+				if (ord.type != OT_DUMMY) {
 					DrawString(2, y, str, color);
 				} else {
 					SetDParam(1, STR_INVALID_ORDER);
-					SetDParam(2, ord >> 8);
+					SetDParam(2, ord.station);
 					DrawString(2, y, str, color);
 				}
 			}
@@ -133,7 +136,7 @@ static void DrawOrdersWindow(Window *w)
 
 		i++;
 
-		if (ord == 0)
+		if (ord.type == OT_NOTHING)
 			break;
 	}
 }
@@ -288,17 +291,17 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			sel += w->vscroll.pos;
 
 			if (_ctrl_pressed && sel < v->num_orders) { // watch out for schedule_ptr overflow
-				int ord = v->schedule_ptr[sel];
+				Order ord = v->schedule_ptr[sel];
 				int xy = 0;
-				switch (ord & OT_MASK) {
+				switch (ord.type) {
 				case OT_GOTO_STATION:			/* station order */
-					xy = _stations[ord >> 8].xy ;
+					xy = _stations[ord.station].xy ;
 					break;
 				case OT_GOTO_DEPOT:				/* goto depot order */
-					xy = _depots[ord >> 8].xy;
+					xy = _depots[ord.station].xy;
 					break;
 				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
-					xy = _waypoints[ord >> 8].xy;
+					xy = _waypoints[ord.station].xy;
 				}
 
 				if (xy)
@@ -352,7 +355,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	case WE_RCLICK: {
 		Vehicle *v = &_vehicles[w->window_number];
 		if (e->click.widget != 8) break;
-		if ((v->schedule_ptr[OrderGetSel(w)] & OT_MASK) == OT_GOTO_DEPOT)
+		if (v->schedule_ptr[OrderGetSel(w)].type == OT_GOTO_DEPOT)
 			GuiShowTooltips(STR_SERVICE_HINT);
 		else
 			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);

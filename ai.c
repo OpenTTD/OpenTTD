@@ -248,7 +248,7 @@ static int AiChooseShipToReplaceWith(Player *p, Vehicle *v)
 
 static void AiHandleGotoDepot(Player *p, int cmd)
 {
-	if ((p->ai.cur_veh->next_order & OT_MASK) != OT_GOTO_DEPOT)
+	if (p->ai.cur_veh->current_order.type != OT_GOTO_DEPOT)
 		DoCommandByTile(0, p->ai.cur_veh->index, 0, DC_EXEC, cmd);
 
 	if (++p->ai.state_counter <= 1387) {
@@ -256,18 +256,20 @@ static void AiHandleGotoDepot(Player *p, int cmd)
 		return;
 	}
 
-	if ((p->ai.cur_veh->next_order&OT_MASK) == OT_GOTO_DEPOT) {
-		p->ai.cur_veh->next_order = OT_DUMMY;
+	if (p->ai.cur_veh->current_order.type == OT_GOTO_DEPOT) {
+		p->ai.cur_veh->current_order.type = OT_DUMMY;
+		p->ai.cur_veh->current_order.flags = 0;
 		InvalidateWindow(WC_VEHICLE_VIEW, p->ai.cur_veh->index);
 	}
 }
 
 static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	uint16 *os = bak->order, ord;
+	const Order *os = bak->order;
 	int ind = 0;
-	while ((ord = *os++) != 0) {
-		if (DoCommandByTile(0, v->index + (ind << 16), ord, DC_EXEC, CMD_INSERT_ORDER) == CMD_ERROR)
+
+	while (os++->type != OT_NOTHING) {
+		if (DoCommandByTile(0, v->index + (ind << 16), PackOrder(os), DC_EXEC, CMD_INSERT_ORDER) == CMD_ERROR)
 			break;
 		ind++;
 	}
@@ -3519,7 +3521,7 @@ static void AiStateSellVeh(Player *p)
 		if (v->type == VEH_Train) {
 
 			if (!IsTrainDepotTile(v->tile) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
-				if ((v->next_order & OT_MASK) != OT_GOTO_DEPOT)
+				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_TRAIN_GOTO_DEPOT);
 				goto going_to_depot;
 			}
@@ -3529,7 +3531,7 @@ static void AiStateSellVeh(Player *p)
 
 		} else if (v->type == VEH_Road) {
 			if (!IsRoadDepotTile(v->tile) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
-				if ((v->next_order & OT_MASK) != OT_GOTO_DEPOT)
+				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				goto going_to_depot;
 			}
@@ -3537,7 +3539,7 @@ static void AiStateSellVeh(Player *p)
 			DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 		} else if (v->type == VEH_Aircraft) {
 			if (!IsAircraftHangarTile(v->tile) && !(v->vehstatus&VS_STOPPED)) {
-				if ((v->next_order & OT_MASK) != OT_GOTO_DEPOT)
+				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 				goto going_to_depot;
 			}
@@ -3554,8 +3556,9 @@ going_to_depot:;
 	if (++p->ai.state_counter <= 832)
 		return;
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
-		v->next_order = OT_DUMMY;
+	if (v->current_order.type == OT_GOTO_DEPOT) {
+		v->current_order.type = OT_DUMMY;
+		v->current_order.flags = 0;
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 	}
 return_to_loop:;
@@ -3566,7 +3569,7 @@ static void AiStateRemoveStation(Player *p)
 {
 	// Remove stations that aren't in use by any vehicle
 	byte in_use[256], *used;
-	uint16 *ord;
+	Order *ord;
 	Station *st;
 	uint tile;
 
@@ -3575,9 +3578,9 @@ static void AiStateRemoveStation(Player *p)
 
 	// Get a list of all stations that are in use by a vehicle
 	memset(in_use, 0, sizeof(in_use));
-	for(ord=_order_array; ord != _ptr_to_next_order; ord++) {
-		if ((*ord & OT_MASK) == OT_GOTO_STATION)
-			in_use[*ord >> 8] = 1;
+	for (ord = _order_array; ord != _ptr_to_next_order; ++ord) {
+		if (ord->type == OT_GOTO_STATION)
+			in_use[ord->station] = 1;
 	}
 
 	// Go through all stations and delete those that aren't in use

@@ -2139,10 +2139,12 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 			!IsTrainStationTile(tile + _tileoffs_by_dir[v->direction >> 1])) {
 
 			station_id = _map2[tile];
-			if ((!(v->next_order & OF_NON_STOP) && !_patches.new_nonstop) ||
-					 (((v->next_order & OT_MASK) == OT_GOTO_STATION && v->next_order_param == station_id))) {
+			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||
+					(v->current_order.type == OT_GOTO_STATION && v->current_order.station == station_id)) {
 
-				if (!(_patches.new_nonstop && (v->next_order & OF_NON_STOP)) && v->next_order != OT_LEAVESTATION && v->last_station_visited != station_id) {
+				if (!(_patches.new_nonstop && v->current_order.flags & OF_NON_STOP) &&
+						v->current_order.type != OT_LEAVESTATION &&
+						v->last_station_visited != station_id) {
 					x &= 0xF;
 					y &= 0xF;
 
@@ -2199,6 +2201,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 
 static void DeleteStation(Station *st)
 {
+	Order order;
 	int index;
 	st->xy = 0;
 
@@ -2209,7 +2212,10 @@ static void DeleteStation(Station *st)
 
 	index = st->index;
 	DeleteWindowById(WC_STATION_VIEW, index);
-	DeleteCommandFromVehicleSchedule((index << 8) + OT_GOTO_STATION);
+	order.type = OT_GOTO_STATION;
+	order.flags = 0;
+	order.station = index;
+	DeleteCommandFromVehicleSchedule(order);
 	DeleteSubsidyWithStation(index);
 }
 

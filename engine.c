@@ -314,14 +314,14 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
 					// TTDPatch runs on little-endian arch;
 					// Variable is 0x80 + offset in TTD's vehicle structure
 					switch (dsg->variable - 0x80) {
-#define veh_prop(id_, value_) case id_: value = value_; break
+#define veh_prop(id_, value_) case (id_): value = (value_); break
 						veh_prop(0x00, veh->type);
 						veh_prop(0x01, veh->subtype);
 						veh_prop(0x04, veh->index);
 						veh_prop(0x05, veh->index & 0xFF);
 						/* XXX? Is THIS right? */
-						veh_prop(0x0A, veh->next_order_param << 8 | veh->next_order);
-						veh_prop(0x0B, veh->next_order);
+						veh_prop(0x0A, PackOrder(&veh->current_order));
+						veh_prop(0x0B, PackOrder(&veh->current_order) & 0xff);
 						veh_prop(0x0C, veh->num_orders);
 						veh_prop(0x0D, veh->cur_order_index);
 						veh_prop(0x10, veh->load_unload_time_rem);

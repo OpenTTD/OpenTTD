@@ -498,15 +498,15 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		} else if (v->vehstatus & VS_STOPPED) {
 			str = STR_8861_STOPPED;
 		} else {
-			switch(v->next_order & OT_MASK) {
+			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = &_depots[v->next_order_param];
+				Depot *dep = &_depots[v->current_order.station];
 				SetDParam(0, dep->town_index);
 				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
@@ -836,16 +836,14 @@ void ShowShipDepotWindow(uint tile)
 
 
 static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
-	uint16 *sched;
+	Order *sched;
 	int sel;
-	uint ord;
 	Station *st;
 	int i = 0;
 
-	sched = v->schedule_ptr;
 	sel = v->cur_order_index;
 
-	while ((ord=*sched++) != 0) {
+	for (sched = v->schedule_ptr; sched->type != OT_NOTHING; ++sched) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
 			DoDrawString( "\xAF", x-6, y, 16);
@@ -853,11 +851,11 @@ static void DrawSmallShipSchedule(Vehicle *v, int x, int y) {
 		}
 		sel--;
 
-		if ((ord & OT_MASK) == OT_GOTO_STATION) {
-			st = DEREF_STATION(ord >> 8);
+		if (sched->type == OT_GOTO_STATION) {
+			st = DEREF_STATION(sched->station);
 
 			if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
-				SetDParam(0, ord >> 8);
+				SetDParam(0, sched->station);
 				DrawString(x, y, STR_A036, 0);
 
 				y += 6;

@@ -3,6 +3,27 @@
 
 #include "vehicle_gui.h"
 
+typedef struct Order {
+	uint8 type:4;
+	uint8 flags:4;
+	uint8 station;
+} Order;
+
+static inline uint16 PackOrder(const Order *order)
+{
+	return order->station << 8 | order->flags << 4 | order->type;
+}
+
+static inline Order UnpackOrder(uint16 packed)
+{
+	Order order = {
+		(packed & 0x000f),
+		(packed & 0x00f0) >> 4,
+		(packed & 0xff00) >> 8
+	};
+	return order;
+}
+
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
 	uint16 crash_anim_pos;
@@ -145,9 +166,8 @@ struct Vehicle {
 	// related to the current order
 	byte cur_order_index;
 	byte num_orders;
-	byte next_order;
-	byte next_order_param;
-	uint16 *schedule_ptr;
+	Order current_order;
+	Order *schedule_ptr;
 
 	// Boundaries for the current position in the world and a next hash link.
 	// NOSAVE: All of those can be updated with VehiclePositionChanged()
@@ -220,16 +240,13 @@ enum {
 	OT_LEAVESTATION = 4,
 	OT_DUMMY = 5,
 	OT_GOTO_WAYPOINT = 6,
-
-	OT_MASK = 0x1F,
 };
 
 /* Order flags */
 enum {
-	OF_UNLOAD = 0x20,
-	OF_FULL_LOAD = 0x40, // Also used when to force an aircraft into a depot.
-	OF_NON_STOP = 0x80,
-	OF_MASK = 0xE0,
+	OF_UNLOAD    = 0x2,
+	OF_FULL_LOAD = 0x4, // Also used when to force an aircraft into a depot
+	OF_NON_STOP  = 0x8
 };
 
 
@@ -269,8 +286,9 @@ typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 typedef struct {
+	VehicleID clone;
 	byte orderindex;
-	uint16 order[41];
+	Order order[41];
 	uint16 service_interval;
 	char name[32];
 } BackuppedOrders;
@@ -337,7 +355,7 @@ void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void MaybeRenewVehicle(Vehicle *v, int32 build_cost);
 
-void DeleteCommandFromVehicleSchedule(uint cmd);
+void DeleteCommandFromVehicleSchedule(Order cmd);
 
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
@@ -361,7 +379,7 @@ int32 GetTrainRunningCost(Vehicle *v);
 
 int CheckStoppedInDepot(Vehicle *v);
 
-int ScheduleHasDepotOrders(uint16 *schedule);
+int ScheduleHasDepotOrders(const Order *schedule);
 int CheckOrders(Vehicle *v);
 
 typedef struct GetNewVehiclePosResult {
@@ -389,8 +407,8 @@ enum {
 
 VARDEF Vehicle _vehicles[NUM_VEHICLES];
 
-VARDEF uint16 _order_array[5000];
-VARDEF uint16 *_ptr_to_next_order;
+VARDEF Order _order_array[5000];
+VARDEF Order *_ptr_to_next_order;
 
 VARDEF Depot _depots[255];
 

@@ -736,8 +736,9 @@ static void FixVehicle(Vehicle *n, OldVehicle *o, int num)
 			assert(n->schedule_ptr >= _order_array && n->schedule_ptr < _ptr_to_next_order);
 		}
 
-		n->next_order = o->next_order;
-		n->next_order_param = o->next_order_param;
+		n->current_order.type = o->next_order & 0x0f;
+		n->current_order.flags = o->next_order >> 4;
+		n->current_order.station = o->next_order_param;
 		n->num_orders = o->num_orders;
 		n->cur_order_index = o->cur_order_index;
 		n->dest_tile = o->dest_tile;

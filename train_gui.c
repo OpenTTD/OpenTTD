@@ -778,15 +778,15 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
 			}
 		} else {
-			switch(v->next_order & OT_MASK) {
+			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = &_depots[v->next_order_param];
+				Depot *dep = &_depots[v->current_order.station];
 				SetDParam(0, dep->town_index);
 				str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
 				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
@@ -798,7 +798,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case OT_GOTO_WAYPOINT: {
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
 				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
 				break;

@@ -547,15 +547,15 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		} else if (v->vehstatus & VS_STOPPED) {
 			str = STR_8861_STOPPED;
 		} else {
-			switch(v->next_order & OT_MASK) {
+			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				SetDParam(1, v->cur_speed * 8);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				SetDParam(1, v->cur_speed * 8);
 				str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 			} break;
@@ -857,15 +857,15 @@ void ShowAircraftDepotWindow(uint tile)
 }
 
 static void DrawSmallSchedule(Vehicle *v, int x, int y) {
-	uint16 *sched;
+	const Order *sched;
 	int sel;
-	uint ord;
+	Order ord;
 	int i = 0;
 
 	sched = v->schedule_ptr;
 	sel = v->cur_order_index;
 
-	while ((ord=*sched++) != 0) {
+	while ((ord = *sched++).type != OT_NOTHING) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
 			DoDrawString( "\xAF", x-6, y, 16);
@@ -873,8 +873,8 @@ static void DrawSmallSchedule(Vehicle *v, int x, int y) {
 		}
 		sel--;
 
-		if ((ord & OT_MASK) == OT_GOTO_STATION) {
-			SetDParam(0, ord >> 8);
+		if (ord.type == OT_GOTO_STATION) {
+			SetDParam(0, ord.station);
 			DrawString(x, y, STR_A036, 0);
 
 			y += 6;

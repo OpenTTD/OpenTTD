@@ -204,15 +204,15 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		} else if (v->vehstatus & VS_STOPPED) {
 			str = STR_8861_STOPPED;
 		} else {
-			switch(v->next_order & OT_MASK) {
+			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->next_order_param);
+				SetDParam(0, v->current_order.station);
 				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = &_depots[v->next_order_param];
+				Depot *dep = &_depots[v->current_order.station];
 				SetDParam(0, dep->town_index);
 				SetDParam(1, v->cur_speed * 10 >> 5);
 				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;

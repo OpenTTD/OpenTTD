@@ -1231,7 +1231,7 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 	const Vehicle *x;
 	bool has_any_cargo = false;
 
-	if (!(u->next_order & OF_FULL_LOAD)) return false;
+	if (!(u->current_order.flags & OF_FULL_LOAD)) return false;
 
 	for (w = u; w != NULL; w = w->next) {
 		if (w->cargo_count != 0) {
@@ -1246,7 +1246,7 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 		if ((x->type != VEH_Train || x->subtype == 0) && // for all locs
 				u->last_station_visited == x->last_station_visited && // at the same station
 				!(x->vehstatus & VS_STOPPED) && // not stopped
-				(x->next_order & OT_MASK) == OT_LOADING && // loading
+				x->current_order.type == OT_LOADING && // loading
 				u != x) { // not itself
 			bool other_has_any_cargo = false;
 			bool has_space_for_same_type = false;
@@ -1288,7 +1288,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	byte old_player;
 	bool completely_empty = true;
 
-	assert((v->next_order&0x1F) == OT_LOADING);
+	assert(v->current_order.type == OT_LOADING);
 
 	v->cur_speed = 0;
 	old_player = _current_player;
@@ -1309,7 +1309,7 @@ int LoadUnloadVehicle(Vehicle *v)
 				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
 				result |= 1;
 				v->cargo_count = 0;
-			} else if (u->next_order & OF_UNLOAD) {
+			} else if (u->current_order.flags & OF_UNLOAD) {
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
 
@@ -1335,7 +1335,7 @@ int LoadUnloadVehicle(Vehicle *v)
 		}
 
 		/* don't pick up goods that we unloaded */
-		if (u->next_order & OF_UNLOAD) continue;
+		if (u->current_order.flags & OF_UNLOAD) continue;
 
 		/* update stats */
 		ge->days_since_pickup = 0;

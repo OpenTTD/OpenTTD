@@ -402,7 +402,7 @@ uint GetWaypointByTile(uint tile)
 
 Vehicle *IsScheduleShared(Vehicle *u)
 {
-	uint16 *sched = u->schedule_ptr;
+	const Order *sched = u->schedule_ptr;
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
@@ -414,7 +414,8 @@ Vehicle *IsScheduleShared(Vehicle *u)
 
 void DeleteVehicleSchedule(Vehicle *v)
 {
-	uint16 *sched, *cur;
+	Order *sched;
+	Order *cur;
 	int num;
 	Vehicle *u;
 
@@ -446,32 +447,33 @@ void DeleteVehicleSchedule(Vehicle *v)
 	}
 }
 
-void DeleteCommandFromVehicleSchedule(uint cmd)
+void DeleteCommandFromVehicleSchedule(Order cmd)
 {
 	Vehicle *v;
-	uint16 *sched;
-	uint order;
 	bool need_invalidate;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0 && v->schedule_ptr != NULL) {
+			Order *sched;
 
 			// clear last station visited
-			if (v->last_station_visited == (cmd>>8) && (cmd & OT_MASK) == OT_GOTO_STATION)
+			if (v->last_station_visited == cmd.station && cmd.type == OT_GOTO_STATION)
 				v->last_station_visited = 0xFF;
 
 			// check the next order
-			if ( (uint)((v->next_order&OT_MASK) | (v->next_order_param<<8)) == cmd) {
-				v->next_order = OT_DUMMY;
+			if (v->current_order.type == cmd.type &&
+					v->current_order.station == cmd.station) {
+				v->current_order.type = OT_DUMMY;
+				v->current_order.flags = 0;
 				InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 			}
 
 			// clear the order list
 			need_invalidate = false;
-			sched = v->schedule_ptr;
-			while ((order=*sched++) != 0) {
-				if ( (order & (OT_MASK|0xFF00)) == cmd) {
-					sched[-1] = OT_DUMMY;
+			for (sched = v->schedule_ptr; sched->type != OT_NOTHING; ++sched) {
+				if (sched->type == cmd.type && sched->station == cmd.station) {
+					sched->type = OT_DUMMY;
+					sched->flags = 0;
 					need_invalidate = true;
 				}
 			}
@@ -484,6 +486,7 @@ void DeleteCommandFromVehicleSchedule(uint cmd)
 
 void DoDeleteDepot(uint tile)
 {
+	Order order;
 	byte dep_index;
 	Depot *d;
 
@@ -494,7 +497,10 @@ void DoDeleteDepot(uint tile)
 	for(d=_depots,dep_index=0; d->xy != (TileIndex)tile; d++) {dep_index++;}
 	d->xy = 0;
 
-	DeleteCommandFromVehicleSchedule((dep_index << 8) + OT_GOTO_DEPOT);
+	order.type = OT_GOTO_DEPOT;
+	order.flags = 0;
+	order.station = dep_index;
+	DeleteCommandFromVehicleSchedule(order);
 
 	// Delete the depot
 	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
@@ -1586,8 +1592,8 @@ const byte _common_veh_desc[] = {
 
 	SLE_VAR(Vehicle,cur_order_index,	SLE_UINT8),
 	SLE_VAR(Vehicle,num_orders,				SLE_UINT8),
-	SLE_VAR(Vehicle,next_order,				SLE_UINT8),
-	SLE_VAR(Vehicle,next_order_param,	SLE_UINT8),
+	SLE_VAR(Vehicle,current_order,		SLE_UINT8), /* XXX hack to avoid version bump */
+	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
 	SLE_REF(Vehicle,schedule_ptr,			REF_SCHEDULE),
 
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -1731,7 +1737,7 @@ static const byte _disaster_desc[] = {
 	SLE_VAR(Vehicle,z_height,					SLE_UINT8),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
-	SLE_VAR(Vehicle,next_order,				SLE_UINT8),
+	SLE_VAR(Vehicle,current_order.station, SLE_UINT8),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -1858,15 +1864,31 @@ static void Load_CHKP()
 
 static void Save_ORDR()
 {
+	uint16 orders[lengthof(_order_array)];
 	uint len = _ptr_to_next_order - _order_array;
-	SlArray(_order_array, len, SLE_UINT16);
+	uint i;
+
+	assert (len <= lengthof(orders));
+
+	for (i = 0; i < len; ++i)
+		orders[i] = PackOrder(&_order_array[i]);
+
+	SlArray(orders, len, SLE_UINT16);
 }
 
 static void Load_ORDR()
 {
+	uint16 orders[lengthof(_order_array)];
 	uint len = SlGetFieldLength() >> 1;
+	uint i;
+
+	assert (len <= lengthof(orders));
+
 	_ptr_to_next_order = _order_array + len;
-	SlArray(_order_array, len, SLE_UINT16);
+	SlArray(orders, len, SLE_UINT16);
+
+	for (i = 0; i < len; ++i)
+		_order_array[i] = UnpackOrder(orders[i]);
 }
 
 const ChunkHandler _veh_chunk_handlers[] = {

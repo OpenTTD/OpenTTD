@@ -198,7 +198,9 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		_new_aircraft_id = v->index;
 
-		*(v->schedule_ptr = _ptr_to_next_order++) = 0;
+		_ptr_to_next_order->type = OT_NOTHING;
+		_ptr_to_next_order->flags = 0;
+		v->schedule_ptr = _ptr_to_next_order++;
 		// the AI doesn't click on a tile to build airplanes, so the below code will
 		// never work. Therefore just assume the AI's planes always come from Hangar0
 		// On hold for NewAI
@@ -361,11 +363,11 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
- 			if (v->next_order&OF_UNLOAD)
- 				{ v->cur_order_index++; }
-			v->next_order = OT_DUMMY;
+			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 	} else {
@@ -376,8 +378,9 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			v->next_order = OF_NON_STOP | OF_FULL_LOAD | OT_GOTO_DEPOT;
-			v->next_order_param = v->u.air.targetairport;
+			v->current_order.type = OT_GOTO_DEPOT;
+			v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.station = v->u.air.targetairport;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 	}
@@ -466,21 +469,24 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	if ((v->next_order & (OT_MASK | OF_FULL_LOAD)) == (OT_GOTO_DEPOT | OF_FULL_LOAD))
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			v->current_order.flags & OF_FULL_LOAD)
 		return;
 
  	if (_patches.gotodepot && ScheduleHasDepotOrders(v->schedule_ptr))
  		return;
 
-	st = DEREF_STATION(v->next_order_param);
+	st = DEREF_STATION(v->current_order.station);
 	// only goto depot if the target airport has terminals (eg. it is airport)
 	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->nofterminals != 0) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
-		v->next_order = OF_NON_STOP | OT_GOTO_DEPOT;
+		v->current_order.type = OT_GOTO_DEPOT;
+		v->current_order.flags = OF_NON_STOP;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
-	} else if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
-		v->next_order = OT_DUMMY;
+	} else if (v->current_order.type == OT_GOTO_DEPOT) {
+		v->current_order.type = OT_DUMMY;
+		v->current_order.flags = 0;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
 }
@@ -552,7 +558,7 @@ static void HelicopterTickHandler(Vehicle *v)
 
 	// if true, helicopter rotors do not rotate. This should only be the case if a helicopter is
 	// loading/unloading at a terminal or stopped
-	if ((v->next_order&OT_MASK) == OT_LOADING || (v->vehstatus&VS_STOPPED)) {
+	if (v->current_order.type == OT_LOADING || (v->vehstatus & VS_STOPPED)) {
 		if (u->cur_speed != 0) {
 			u->cur_speed++;
 			if (u->cur_speed >= 0x80 && u->cur_image == 0xF40) {
@@ -983,15 +989,18 @@ static void HandleAircraftSmoke(Vehicle *v)
 
 static void ProcessAircraftOrder(Vehicle *v)
 {
-	uint order;
+	Order order;
 
 	// OT_GOTO_DEPOT, OT_LOADING
- 	if ((v->next_order & OT_MASK) >= OT_GOTO_DEPOT && (v->next_order & OT_MASK) <= OT_LOADING) {
- 		if ((v->next_order & (OT_MASK|OF_UNLOAD)) != (OT_GOTO_DEPOT|OF_UNLOAD))
+	if (v->current_order.type >= OT_GOTO_DEPOT &&
+			v->current_order.type <= OT_LOADING) {
+		if (v->current_order.type != OT_GOTO_DEPOT ||
+				!(v->current_order.flags & OF_UNLOAD))
  			return;
  	}
 
- 	if ((v->next_order & (OT_MASK|OF_UNLOAD|OF_FULL_LOAD)) == (OT_GOTO_DEPOT|OF_UNLOAD|OF_FULL_LOAD) &&
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
  			SERVICE_INTERVAL) {
  		v->cur_order_index++;
  	}
@@ -1001,21 +1010,23 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 	order = v->schedule_ptr[v->cur_order_index];
 
-	if (order == 0) {
-		v->next_order = OT_NOTHING;
+	if (order.type == OT_NOTHING) {
+		v->current_order.type = OT_NOTHING;
+		v->current_order.flags = 0;
 		return;
 	}
 
-	if (order == (uint)((v->next_order | (v->next_order_param<<8))))
+	if (order.type == v->current_order.type &&
+			order.flags == v->current_order.flags &&
+			order.station == v->current_order.station)
 		return;
 
-	v->next_order = (byte)order;
-	v->next_order_param = (byte)(order >> 8);
+	v->current_order = order;
 
 	// orders are changed in flight, ensure going to the right station
-	if ((order & OT_MASK) == OT_GOTO_STATION && v->u.air.state == FLYING) {
+	if (order.type == OT_GOTO_STATION && v->u.air.state == FLYING) {
 		AircraftNextAirportPos_and_Order(v);
-		v->u.air.targetairport = order >> 8;
+		v->u.air.targetairport = order.station;
 	}
 
 	InvalidateVehicleOrderWidget(v);
@@ -1023,11 +1034,11 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 static void HandleAircraftLoading(Vehicle *v, int mode)
 {
-	if (v->next_order == OT_NOTHING)
+	if (v->current_order.type == OT_NOTHING)
 		return;
 
-	if (v->next_order != OT_DUMMY) {
-		if ((v->next_order&OT_MASK) != OT_LOADING)
+	if (v->current_order.type != OT_DUMMY) {
+		if (v->current_order.type != OT_LOADING)
 			return;
 
 		if (mode != 0)
@@ -1036,16 +1047,17 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 		if (--v->load_unload_time_rem)
 			return;
 
-		if (v->next_order&OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
 			SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 			LoadUnloadVehicle(v);
 			return;
 		}
 
 		{
-			byte b = v->next_order;
-			v->next_order = OT_NOTHING;
-			if (!(b & OF_NON_STOP))
+			Order b = v->current_order;
+			v->current_order.type = OT_NOTHING;
+			v->current_order.flags = 0;
+			if (!(b.flags & OF_NON_STOP))
 				return;
 		}
 	}
@@ -1105,9 +1117,9 @@ static void MaybeCrashAirplane(Vehicle *v)
 static void AircraftEntersTerminal(Vehicle *v)
 {
 	Station *st;
-	byte old_order;
+	Order old_order;
 
-	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT)
+	if (v->current_order.type == OT_GOTO_DEPOT)
 		return;
 
 	st = DEREF_STATION(v->u.air.targetairport);
@@ -1128,12 +1140,14 @@ static void AircraftEntersTerminal(Vehicle *v)
 			0);
 	}
 
-	old_order = v->next_order;
-	v->next_order = OT_LOADING;
+	old_order = v->current_order;
+	v->current_order.type = OT_LOADING;
+	v->current_order.flags = 0;
 
-	if ((old_order & OT_MASK) == OT_GOTO_STATION &&
-			v->next_order_param == v->last_station_visited) {
-		v->next_order = OT_LOADING | (old_order & (OF_UNLOAD|OF_FULL_LOAD)) | OF_NON_STOP;
+	if (old_order.type == OT_GOTO_STATION &&
+			v->current_order.station == v->last_station_visited) {
+		v->current_order.flags =
+			(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) | OF_NON_STOP;
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
@@ -1143,7 +1157,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 
 static void AircraftEnterHangar(Vehicle *v)
 {
-	byte old_order;
+	Order old_order;
 
 	ServiceAircraft(v);
 
@@ -1151,15 +1165,16 @@ static void AircraftEnterHangar(Vehicle *v)
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
-	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
-		old_order = v->next_order;
-		v->next_order = OT_NOTHING;
+		old_order = v->current_order;
+		v->current_order.type = OT_NOTHING;
+		v->current_order.flags = 0;
 
- 			if (old_order & OF_UNLOAD) { v->cur_order_index++; }
-
- 			else if (old_order & OF_FULL_LOAD) { // force depot visit
+		if (old_order.flags & OF_UNLOAD) {
+			v->cur_order_index++;
+		} else if (old_order.flags & OF_FULL_LOAD) { // force depot visit
 			v->vehstatus |= VS_STOPPED;
 
 			if (v->owner == _local_player) {
@@ -1192,9 +1207,9 @@ static void AircraftNextAirportPos_and_Order(Vehicle *v)
 	Station *st;
 	const AirportFTAClass *Airport;
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_STATION ||
-			(v->next_order&OT_MASK) == OT_GOTO_DEPOT)
-			v->u.air.targetairport = v->next_order_param;
+	if (v->current_order.type == OT_GOTO_STATION ||
+			v->current_order.type == OT_GOTO_DEPOT)
+		v->u.air.targetairport = v->current_order.station;
 
 	st = DEREF_STATION(v->u.air.targetairport);
 	Airport = GetAirport(st->airport_type);
@@ -1248,19 +1263,22 @@ static void AircraftEventHandler_InHangar(Vehicle *v, const AirportFTAClass *Air
 		return;
 	}
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT && (v->vehstatus&VS_STOPPED)) { // if we were sent to the depot, stay there
-		v->next_order = OT_NOTHING;
+	// if we were sent to the depot, stay there
+	if (v->current_order.type == OT_GOTO_DEPOT && (v->vehstatus & VS_STOPPED)) {
+		v->current_order.type = OT_NOTHING;
+		v->current_order.flags = 0;
 		return;
 	}
 
-	if ((v->next_order&OT_MASK) != OT_GOTO_STATION && (v->next_order&OT_MASK) != OT_GOTO_DEPOT)
+	if (v->current_order.type != OT_GOTO_STATION &&
+			v->current_order.type != OT_GOTO_DEPOT)
 		return;
 
 	// if the block of the next position is busy, stay put
 	if (AirportHasBlock(v, &Airport->layout[v->u.air.pos], Airport)) {return;}
 
 	// We are already at the target airport, we need to find a terminal
-	if (v->next_order_param == v->u.air.targetairport) {
+	if (v->current_order.station == v->u.air.targetairport) {
 		// FindFreeTerminal:
 		// 1. Find a free terminal, 2. Occupy it, 3. Set the vehicle's state to that terminal
 		if (v->subtype != 0) {if(!AirportFindFreeTerminal(v, Airport)) {return;}} // airplane
@@ -1294,8 +1312,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *A
 		return;
 	}
 
-	// removed &0x1F
-	if (v->next_order == OT_NOTHING) {return;}
+	if (v->current_order.type == OT_NOTHING) return;
 
 	// if the block of the next position is busy, stay put
 	if (AirportHasBlock(v, &Airport->layout[v->u.air.pos], Airport)) {
@@ -1305,19 +1322,20 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *A
 	// airport-road is free. We either have to go to another airport, or to the hangar
 	// ---> start moving
 
-	switch (v->next_order&OT_MASK) {
+	switch (v->current_order.type) {
 		case OT_GOTO_STATION: // ready to fly to another airport
 			// airplane goto state takeoff, helicopter to helitakeoff
 			v->u.air.state = (v->subtype != 0) ? TAKEOFF : HELITAKEOFF;
 			break;
 		case OT_GOTO_DEPOT:   // visit hangar for serivicing, sale, etc.
-			if (v->next_order_param == v->u.air.targetairport)
+			if (v->current_order.station == v->u.air.targetairport)
 				v->u.air.state = HANGAR;
 			else
 				v->u.air.state = (v->subtype != 0) ? TAKEOFF : HELITAKEOFF;
 			break;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
-			v->next_order  = OT_NOTHING;
+			v->current_order.type = OT_NOTHING;
+			v->current_order.flags = 0;
 			v->u.air.state = HANGAR;
 	}
 	AirportMove(v, Airport);
@@ -1423,7 +1441,7 @@ static void AircraftEventHandler_EndLanding(Vehicle *v, const AirportFTAClass *A
 	// 1. in case all terminals are busy AirportFindFreeTerminal() returns false or
 	// 2. not going for terminal (but depot, no order),
 	// --> get out of the way to the hangar.
-	if ((v->next_order&OT_MASK) == OT_GOTO_STATION) {
+	if (v->current_order.type == OT_GOTO_STATION) {
 		if (AirportFindFreeTerminal(v, Airport)) {return;}
 	}
 	v->u.air.state = HANGAR;
@@ -1442,7 +1460,7 @@ static void AircraftEventHandler_HeliEndLanding(Vehicle *v, const AirportFTAClas
 	// --> else TAKEOFF
 	// the reason behind this is that if an airport has a terminal, it also has a hangar. Airplanes
 	// must go to a hangar.
-	if ((v->next_order&OT_MASK) == OT_GOTO_STATION) {
+	if (v->current_order.type == OT_GOTO_STATION) {
 		if (AirportFindFreeHelipad(v, Airport)) {return;}
 	}
 	v->u.air.state = (Airport->nofterminals != 0) ? HANGAR : HELITAKEOFF;
@@ -1720,7 +1738,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	ProcessAircraftOrder(v);
 	HandleAircraftLoading(v, loop);
 
-	if ((v->next_order&OT_MASK) >= OT_LOADING)
+	if (v->current_order.type >= OT_LOADING)
 		return;
 
 	// pass the right airport structure to the functions

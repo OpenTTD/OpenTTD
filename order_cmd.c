@@ -15,7 +15,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v = &_vehicles[p1 & 0xFFFF];
 	int sel = p1 >> 16;
-	int t;
+	Order new_order = UnpackOrder(p2);
 
 	if (sel > v->num_orders) return_cmd_error(STR_EMPTY);
 	if (_ptr_to_next_order == endof(_order_array)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
@@ -23,21 +23,25 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// for ships, make sure that the station is not too far away from the previous destination.
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
-			sel != 0 && ((t=v->schedule_ptr[sel-1])&OT_MASK) == OT_GOTO_STATION) {
+			sel != 0 && v->schedule_ptr[sel - 1].type == OT_GOTO_STATION) {
 
-		int dist = GetTileDist(DEREF_STATION(t >> 8)->xy, DEREF_STATION(p2 >> 8)->xy);
+		int dist = GetTileDist(
+			DEREF_STATION(v->schedule_ptr[sel - 1].station)->xy,
+			DEREF_STATION(new_order.station)->xy
+		);
 		if (dist >= 130)
 			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
 	}
 
 	if (flags & DC_EXEC) {
-		uint16 *s1, *s2;
+		Order *s1;
+		Order *s2;
 		Vehicle *u;
 
 		s1 = &v->schedule_ptr[sel];
 		s2 = _ptr_to_next_order++;
 		do s2[1] = s2[0]; while (--s2 >= s1);
-		s1[0] = (uint16)p2;
+		*s1 = new_order;
 
 		s1 = v->schedule_ptr;
 
@@ -72,7 +76,9 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 		DeleteVehicleSchedule(dst);
 
 		dst->num_orders = 0;
-		*(dst->schedule_ptr = _ptr_to_next_order++) = 0;
+		_ptr_to_next_order->type = OT_NOTHING;
+		_ptr_to_next_order->flags = 0;
+		dst->schedule_ptr = _ptr_to_next_order++;
 
 		InvalidateWindow(WC_VEHICLE_ORDERS, dst->index);
 	}
@@ -92,9 +98,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return DecloneOrder(v, flags);
 
 	if (flags & DC_EXEC) {
-		uint16 *s1;
-
-		s1 = &v->schedule_ptr[sel];
+		Order *s1 = &v->schedule_ptr[sel];
 
 		// copy all orders to get rid of the hole
 		do s1[0] = s1[1]; while (++s1 != _ptr_to_next_order);
@@ -111,8 +115,11 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					if ((byte)sel < u->cur_order_index)
 						u->cur_order_index--;
 
-					if ((byte)sel == u->cur_order_index && (u->next_order&(OT_MASK|OF_NON_STOP)) == (OT_LOADING|OF_NON_STOP))
-						u->next_order = OT_LOADING;
+					if ((byte)sel == u->cur_order_index &&
+							u->current_order.type == OT_LOADING &&
+							u->current_order.flags & OF_NON_STOP) {
+						u->current_order.flags = 0;
+					}
 
 					InvalidateWindow(WC_VEHICLE_VIEW, u->index);
 					InvalidateWindow(WC_VEHICLE_ORDERS, u->index);
@@ -139,8 +146,10 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->u.rail.days_since_order_progr = 0;
 		}
 
-		if ((v->next_order&(OT_MASK|OF_NON_STOP)) == (OT_LOADING|OF_NON_STOP))
-			v->next_order = OT_LOADING;
+		if (v->current_order.type == OT_LOADING &&
+				v->current_order.flags & OF_NON_STOP) {
+			v->current_order.flags = 0;
+		}
 
 		InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
 	}
@@ -155,29 +164,28 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v = &_vehicles[p1];
 	byte sel = (byte)p2;
-	uint16 *sched;
+	Order *sched;
 
 	if (sel >= v->num_orders)
 		return CMD_ERROR;
 
 	sched = &v->schedule_ptr[sel];
-	if (!((*sched & OT_MASK) == OT_GOTO_STATION ||
-			((*sched & OT_MASK) == OT_GOTO_DEPOT &&  (p2>>8) != 1)))
+	if (sched->type != OT_GOTO_STATION &&
+			(sched->type != OT_GOTO_DEPOT || (p2 >> 8) == 1))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		switch(p2 >> 8) {
+		switch (p2 >> 8) {
 		case 0: // full load
-			*sched ^= OF_FULL_LOAD;
-			if ((*sched & OT_MASK) != OT_GOTO_DEPOT)
-				*sched &= ~OF_UNLOAD;
+			sched->flags ^= OF_FULL_LOAD;
+			if (sched->type != OT_GOTO_DEPOT) sched->flags &= ~OF_UNLOAD;
 			break;
 		case 1: // unload
-			*sched ^= OF_UNLOAD;
-			*sched &= ~OF_FULL_LOAD;
+			sched->flags ^= OF_UNLOAD;
+			sched->flags &= ~OF_FULL_LOAD;
 			break;
 		case 2: // non stop
-			*sched ^= OF_NON_STOP;
+			sched->flags ^= OF_NON_STOP;
 			break;
 		}
 		sched = v->schedule_ptr;
@@ -247,14 +255,12 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		// let's see what happens with road vehicles
 		if (src->type == VEH_Road) {
-			uint16 ord;
-			int i;
-			Station *st;
+			const Order *i;
 			TileIndex required_dst;
 
-			for (i=0; (ord = src->schedule_ptr[i]) != 0; i++) {
-				if ( ( ord & OT_MASK ) == OT_GOTO_STATION ) {
-					st = DEREF_STATION(ord >> 8);
+			for (i = src->schedule_ptr; i->type != OT_NOTHING; ++i) {
+				if (i->type == OT_GOTO_STATION) {
+					const Station *st = DEREF_STATION(i->station);
 					required_dst = (dst->cargo_type == CT_PASSENGERS) ? st->bus_tile : st->lorry_tile;
 					if ( !required_dst )
 						return CMD_ERROR;
@@ -289,7 +295,6 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
 	Vehicle *u = IsScheduleShared(v);
-	uint16 *sched, ord, *os;
 
 	bak->orderindex = v->cur_order_index;
 	bak->service_interval = v->service_interval;
@@ -300,25 +305,24 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		GetName(v->string_id & 0x7FF, bak->name);
 	}
 
-	os = bak->order;
 	// stored shared orders in this special way?
-	if (u) {
-		os[0] = 0xFFFF;
-		os[1] = u->index;
-		return;
-	}
+	if (u != NULL) {
+		bak->clone = u->index;
+	} else {
+		Order *sched = v->schedule_ptr;
+		Order *os = bak->order;
 
-	sched = v->schedule_ptr;
-	do {
-		ord = *sched++;
-		*os++ = ord;
-	} while (ord != 0);
+		bak->clone = INVALID_VEHICLE;
+
+		do {
+			*os++ = *sched++;
+		} while (sched->type != OT_NOTHING);
+	}
 }
 
 void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	uint16 ord, *os;
-	int ind;
+	int i;
 
 	if (bak->name[0]) {
 		strcpy((char*)_decode_parameters, bak->name);
@@ -327,9 +331,8 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 
 	DoCommandP(0, v->index, bak->orderindex|(bak->service_interval<<16) , NULL, CMD_RESTORE_ORDER_INDEX);
 
-	os = bak->order;
-	if (os[0] == 0xFFFF) {
-		DoCommandP(0, v->index | os[1]<<16, 0, NULL, CMD_CLONE_ORDER);
+	if (bak->clone != INVALID_VEHICLE) {
+		DoCommandP(0, v->index | bak->clone << 16, 0, NULL, CMD_CLONE_ORDER);
 		return;
 	}
 
@@ -337,12 +340,9 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	//  order number is one more then the current amount of orders, and because
 	//  in network the commands are queued before send, the second insert always
 	//  fails in test mode. By bypassing the test-mode, that no longer is a problem.
-	ind = 0;
-	while ((ord = *os++) != 0) {
-		if (!DoCommandP(0, v->index + (ind << 16), ord, NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
+	for (i = 0; bak->order[i].type != OT_NOTHING; ++i)
+		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
-		ind++;
-	}
 }
 
 /*	p1 = vehicle
@@ -370,8 +370,8 @@ int CheckOrders(Vehicle *v)
 
 	/* only check every 20 days, so that we don't flood the message log */
 	if ( ( ( v->day_counter % 20) == 0 ) && (v->owner == _local_player) ) {
-
-		uint16 order, old_order;
+		Order order;
+		Order old_order;
 		int i, n_st, problem_type = -1;
 		Station *st;
 		int message=0;
@@ -381,21 +381,25 @@ int CheckOrders(Vehicle *v)
 		order = v->schedule_ptr[0];
 		n_st = 0;
 
- 		for (old_order = i = 0; order!=0; i++ ) {
+		old_order.type = OT_NOTHING;
+		old_order.flags = 0;
+		for (i = 0; order.type != OT_NOTHING; i++) {
 			order = v->schedule_ptr[i];
-			if (order == old_order) {
+			if (order.type == old_order.type &&
+					order.flags == old_order.flags &&
+					order.station == old_order.station) {
 				problem_type = 2;
 				break;
 			}
-			if ( (order & OT_MASK) == OT_DUMMY ) {
+			if (order.type == OT_DUMMY) {
 				problem_type = 1;
 				break;
 			}
-			if ( ( (order & OT_MASK) == OT_GOTO_STATION ) /*&& (order != old_order) */) {
+			if (order.type == OT_GOTO_STATION /*&& (order != old_order) */) {
 				//I uncommented this in order not to get two error messages
 				//when two identical entries are in the list
 				n_st++;
-				st = DEREF_STATION(order >> 8);
+				st = DEREF_STATION(order.station);
 				required_tile = GetStationTileForVehicle(v,st);
 				if (!required_tile) problem_type = 3;
 			}
@@ -404,9 +408,11 @@ int CheckOrders(Vehicle *v)
 
 		//Now, check the last and the first order
 		//as the last order is the end of order marker, jump back 2
-		if ( (v->schedule_ptr[0] == v->schedule_ptr[i-2]) && ( i-2 != 0 ) ) {
+		if (i > 2 &&
+				v->schedule_ptr[0].type == v->schedule_ptr[i - 2].type &&
+				v->schedule_ptr[0].flags == v->schedule_ptr[i - 2].flags &&
+				v->schedule_ptr[0].station == v->schedule_ptr[i - 2].station)
 			problem_type = 2;
-		}
 
 		if ( (n_st < 2) && (problem_type == -1) ) problem_type = 0;
 

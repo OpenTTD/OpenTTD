@@ -425,7 +425,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //			v->cargo_count = 0;
 			v->value = value;
 //			v->day_counter = 0;
-//			v->next_order = 0;
+//			v->current_order = 0;
 //			v->next_station = 0;
 //			v->load_unload_time_rem = 0;
 //			v->progress = 0;
@@ -451,7 +451,9 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //			v->cur_order_index = 0;
 //			v->num_orders = 0;
 
-			*(v->schedule_ptr = _ptr_to_next_order++) = 0;
+			_ptr_to_next_order->type = OT_NOTHING;
+			_ptr_to_next_order->flags = 0;
+			v->schedule_ptr = _ptr_to_next_order++;
 //			v->next_in_chain = 0xffff;
 //			v->next = NULL;
 
@@ -682,7 +684,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					// setting the type to 0 also involves setting up the schedule_ptr field.
 					src->subtype = 0;
 					assert(src->schedule_ptr == NULL);
-					*(src->schedule_ptr = _ptr_to_next_order++) = 0;
+					_ptr_to_next_order->type = OT_NOTHING;
+					_ptr_to_next_order->flags = 0;
+					src->schedule_ptr = _ptr_to_next_order++;
 					src->num_orders = 0;
 				}
 				dst_head = src;
@@ -1138,14 +1142,15 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v = &_vehicles[p1];
 	TrainFindDepotData tfdd;
 
-	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-			if (v->next_order & OF_UNLOAD) {
+			if (v->current_order.flags & OF_UNLOAD) {
 				v->u.rail.days_since_order_progr = 0;
 				v->cur_order_index++;
 			}
 
-			v->next_order = OT_DUMMY;
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 		return 0;
@@ -1157,8 +1162,9 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		v->dest_tile = tfdd.tile;
-		v->next_order = OF_NON_STOP | OF_FULL_LOAD | OT_GOTO_DEPOT;
-		v->next_order_param = GetDepotByTile(tfdd.tile);
+		v->current_order.type = OT_GOTO_DEPOT;
+		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+		v->current_order.station = GetDepotByTile(tfdd.tile);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
 
@@ -1364,8 +1370,8 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 static void FillWithStationData(TrainTrackFollowerData *fd, Vehicle *v)
 {
         fd->dest_coords = v->dest_tile;
-        if ((v->next_order & OT_MASK) == OT_GOTO_STATION)
-                fd->station_index = v->next_order_param;
+        if (v->current_order.type == OT_GOTO_STATION)
+                fd->station_index = v->current_order.station;
         else
                 fd->station_index = -1;
 
@@ -1570,29 +1576,32 @@ bad:;
 
 static bool ProcessTrainOrder(Vehicle *v)
 {
-	uint order;
+	Order order;
 	bool result;
 
 	// These are un-interruptible
-	if ((v->next_order & OT_MASK) >= OT_GOTO_DEPOT && (v->next_order & OT_MASK) <= OT_LEAVESTATION) {
-
+	if (v->current_order.type >= OT_GOTO_DEPOT &&
+			v->current_order.type <= OT_LEAVESTATION) {
 		// Let a depot order in the schedule interrupt.
-		if ((v->next_order & (OT_MASK|OF_UNLOAD)) != (OT_GOTO_DEPOT|OF_UNLOAD))
+		if (v->current_order.type != OT_GOTO_DEPOT ||
+				!(v->current_order.flags & OF_UNLOAD))
 			return false;
 	}
 
-	if ((v->next_order & (OT_MASK|OF_UNLOAD|OF_FULL_LOAD)) == (OT_GOTO_DEPOT|OF_UNLOAD|OF_FULL_LOAD) &&
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) ==  (OF_UNLOAD | OF_FULL_LOAD) &&
 			SERVICE_INTERVAL) {
 		v->cur_order_index++;
 	}
 
 	// check if we've reached the waypoint?
-	if ((v->next_order & OT_MASK) == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
+	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
 		v->cur_order_index++;
 	}
 
 	// check if we've reached a non-stop station while TTDPatch nonstop is enabled..
-	if (_patches.new_nonstop && (v->next_order & OF_NON_STOP) && v->next_order_param == _map2[v->tile]) {
+	if (_patches.new_nonstop && v->current_order.flags & OF_NON_STOP &&
+			v->current_order.station == _map2[v->tile]) {
 		v->cur_order_index++;
 	}
 
@@ -1602,33 +1611,35 @@ static bool ProcessTrainOrder(Vehicle *v)
 	order = v->schedule_ptr[v->cur_order_index];
 
 	// If no order, do nothing.
-	if (order == 0) {
-		v->next_order = OT_NOTHING;
+	if (order.type == OT_NOTHING) {
+		v->current_order.type = OT_NOTHING;
+		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		return false;
 	}
 
 	// If it is unchanged, keep it.
-	if (order == (uint)((v->next_order | (v->next_order_param<<8))))
+	if (order.type == v->current_order.type &&
+			order.flags == v->current_order.flags &&
+			order.station == v->current_order.station)
 		return false;
 
 	// Otherwise set it, and determine the destination tile.
-	v->next_order = (byte)order;
-	v->next_order_param = (byte)(order >> 8);
+	v->current_order = order;
 
 	v->dest_tile = 0;
 
 	result = false;
-	if ((order & OT_MASK) == OT_GOTO_STATION) {
-		if ( (byte)(order >> 8) == v->last_station_visited)
+	if (order.type == OT_GOTO_STATION) {
+		if (order.station == v->last_station_visited)
 			v->last_station_visited = 0xFF;
-		v->dest_tile = DEREF_STATION(order >> 8)->xy;
+		v->dest_tile = DEREF_STATION(order.station)->xy;
 		result = CheckReverseTrain(v);
-	} else if ((order & OT_MASK) == OT_GOTO_DEPOT) {
-		v->dest_tile = _depots[order >> 8].xy;
+	} else if (order.type == OT_GOTO_DEPOT) {
+		v->dest_tile = _depots[order.station].xy;
 		result = CheckReverseTrain(v);
-	} else if ((order & OT_MASK) == OT_GOTO_WAYPOINT) {
-		v->dest_tile = _waypoints[order >> 8].xy;
+	} else if (order.type == OT_GOTO_WAYPOINT) {
+		v->dest_tile = _waypoints[order.station].xy;
 		result = CheckReverseTrain(v);
 	}
 
@@ -1647,24 +1658,24 @@ static void MarkTrainDirty(Vehicle *v)
 
 static void HandleTrainLoading(Vehicle *v, bool mode)
 {
-	if (v->next_order == OT_NOTHING)
+	if (v->current_order.type == OT_NOTHING)
 		return;
 
-	if (v->next_order != OT_DUMMY) {
-		if ((v->next_order&OT_MASK) != OT_LOADING)
+	if (v->current_order.type != OT_DUMMY) {
+		if (v->current_order.type != OT_LOADING)
 			return;
 
 		if (mode)
 			return;
 
 		// don't mark the train as lost if we're loading on the final station.
-		if (v->next_order & OF_NON_STOP)
+		if (v->current_order.flags & OF_NON_STOP)
 			v->u.rail.days_since_order_progr = 0;
 
 		if (--v->load_unload_time_rem)
 			return;
 
-		if (v->next_order&OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
 			SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 			if (LoadUnloadVehicle(v)) {
 				InvalidateWindow(WC_TRAINS_LIST, v->owner);
@@ -1679,11 +1690,12 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 		TrainPlayLeaveStationSound(v);
 
 		{
-			byte b = v->next_order;
-			v->next_order = OT_LEAVESTATION;
+			Order b = v->current_order;
+			v->current_order.type = OT_LEAVESTATION;
+			v->current_order.flags = 0;
 
 			// If this was not the final order, don't remove it from the list.
-			if (!(b & OF_NON_STOP))
+			if (!(b.flags & OF_NON_STOP))
 				return;
 		}
 	}
@@ -1739,15 +1751,19 @@ static void TrainEnterStation(Vehicle *v, int station)
 	}
 
 	// Did we reach the final destination?
-	if ((v->next_order&OT_MASK) == OT_GOTO_STATION && v->next_order_param == (byte)station) {
+	if (v->current_order.type == OT_GOTO_STATION &&
+			v->current_order.station == (byte)station) {
 		// Yeah, keep the load/unload flags
 		// Non Stop now means if the order should be increased.
-		v->next_order = (v->next_order & (OF_FULL_LOAD|OF_UNLOAD)) | OF_NON_STOP | OT_LOADING;
+		v->current_order.type = OT_LOADING;
+		v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
+		v->current_order.flags |= OF_NON_STOP;
 	} else {
 		// No, just do a simple load
-		v->next_order = OT_LOADING;
+		v->current_order.type = OT_LOADING;
+		v->current_order.flags = 0;
 	}
-	v->next_order_param = 0;
+	v->current_order.station = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 	if (LoadUnloadVehicle(v) != 0) {
@@ -2059,8 +2075,9 @@ static void TrainController(Vehicle *v)
 						return;
 					}
 
-					if (v->next_order == OT_LEAVESTATION) {
-						v->next_order = OT_NOTHING;
+					if (v->current_order.type == OT_LEAVESTATION) {
+						v->current_order.type = OT_NOTHING;
+						v->current_order.flags = 0;
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 					}
 				}
@@ -2484,7 +2501,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 	HandleTrainLoading(v, mode);
 
-	if ((v->next_order & OT_MASK) == OT_LOADING)
+	if (v->current_order.type == OT_LOADING)
 		return;
 
 	if (CheckTrainStayInDepot(v))
@@ -2532,8 +2549,6 @@ static const byte _depot_track_ind[4] = {0,1,0,1};
 
 void TrainEnterDepot(Vehicle *v, uint tile)
 {
-	byte t;
-
 	SetSignalsOnBothDir(tile, _depot_track_ind[_map5[tile]&3]);
 
 	if (v->subtype != 0)
@@ -2551,17 +2566,19 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
-	if ((v->next_order&OT_MASK) == OT_GOTO_DEPOT) {
+	if (v->current_order.type == OT_GOTO_DEPOT) {
+		Order t;
+
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
-		t = v->next_order;
-		v->next_order = OT_DUMMY;
+		t = v->current_order;
+		v->current_order.type = OT_DUMMY;
+		v->current_order.flags = 0;
 
-		// Part of the schedule?
-		if (t & OF_UNLOAD) { v->u.rail.days_since_order_progr = 0; v->cur_order_index++; }
-
-		// User initiated?
-		else if (t & OF_FULL_LOAD) {
+		if (t.flags & OF_UNLOAD) { // Part of the schedule?
+			v->u.rail.days_since_order_progr = 0;
+			v->cur_order_index++;
+		} else if (t.flags & OF_FULL_LOAD) { // User initiated?
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -2594,18 +2611,19 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 
 	// Don't interfere with a depot visit scheduled by the user, or a
 	// depot visit by the order list.
-	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT &&
-			(v->next_order & (OF_FULL_LOAD|OF_UNLOAD)) != 0)
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			(v->current_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) != 0)
 		return;
 
 	tfdd = FindClosestTrainDepot(v);
 	/* Only go to the depot if it is not too far out of our way. */
 	if (tfdd.best_length == (uint)-1 || tfdd.best_length > 16 ) {
-		if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
+		if (v->current_order.type == OT_GOTO_DEPOT) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal
 			 * schedule? */
-			v->next_order = OT_DUMMY;
+			v->current_order.type = OT_DUMMY;
+			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 		return;
@@ -2613,11 +2631,14 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 
 	depot = GetDepotByTile(tfdd.tile);
 
-	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT && v->next_order_param != depot && !CHANCE16(3,16))
+	if (v->current_order.type == OT_GOTO_DEPOT &&
+			v->current_order.station != depot &&
+			!CHANCE16(3,16))
 		return;
 
-	v->next_order = OT_GOTO_DEPOT | OF_NON_STOP;
-	v->next_order_param = depot;
+	v->current_order.type = OT_GOTO_DEPOT;
+	v->current_order.flags = OF_NON_STOP;
+	v->current_order.station = depot;
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 }
@@ -2662,8 +2683,8 @@ void OnNewDay_Train(Vehicle *v)
 		CheckOrders(v);
 
 		/* update destination */
-		if ((v->next_order & OT_MASK) == OT_GOTO_STATION &&
-				(tile=DEREF_STATION(v->next_order_param)->train_tile) != 0)
+		if (v->current_order.type == OT_GOTO_STATION &&
+				(tile = DEREF_STATION(v->current_order.station)->train_tile) != 0)
 					v->dest_tile = tile;
 
 		if ((v->vehstatus & VS_STOPPED) == 0) {
@@ -2719,10 +2740,10 @@ void InitializeTrains()
 	_age_cargo_skip_counter = 1;
 }
 
-int ScheduleHasDepotOrders(uint16 *schedule)
+int ScheduleHasDepotOrders(const Order *schedule)
 {
-	for (;*schedule!=0;schedule++)
-		if ((*schedule&OT_MASK) == OT_GOTO_DEPOT)
+	for (; schedule->type != OT_NOTHING; schedule++)
+		if (schedule->type == OT_GOTO_DEPOT)
 			return true;
 	return false;
 }

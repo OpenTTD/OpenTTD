@@ -497,17 +497,18 @@ static void AiNew_State_LocateRoute(Player *p) {
 static bool AiNew_CheckVehicleStation(Player *p, Station *st) {
 	int count = 0;
 	Vehicle *v;
-	uint16 *sched;
-	uint16 ord;
 
 	// Also check if we don't have already a lot of busses to this city...
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == _current_player) {
-			sched = v->schedule_ptr;
-			while (sched != NULL && (ord=*sched++) != 0) {
-				if ((ord & OT_MASK) == OT_GOTO_STATION && DEREF_STATION(ord >> 8) == st) {
-					// This vehicle has this city in his list
-					count++;
+			const Order *sched = v->schedule_ptr;
+			if (sched != NULL) {
+				for (; sched->type != OT_NOTHING; ++sched) {
+					if (sched->type == OT_GOTO_STATION &&
+							DEREF_STATION(sched->station) == st) {
+						// This vehicle has this city in his list
+						count++;
+					}
 				}
 			}
 		}
