@@ -2090,6 +2090,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN					:{WHITE}Can't sell 25% share in this company
 STR_707D_OWNED_BY						:{WHITE}({COMMA16}% owned by {STRING})
 STR_707E_OWNED_BY_OWNED_BY					:{WHITE}({COMMA16}% owned by {STRING}{}   {COMMA16}% owned by {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY					:{BLACK}{BIGFONT}{STRING} has been taken over by {STRING}!
+STR_7080_PROTECTED						:{WHITE}This company does not trade shares yet...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM					:Kirby Paul Tank (Steam)

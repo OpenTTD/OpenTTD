@@ -105,10 +105,9 @@ int64 CalculateCompanyValue(Player *p) {
 		}
 	}
 
-	if (p->player_money > 0)
-		value += p->money64; // add real money value
-
-	return value;
+	value += p->money64 - p->current_loan; // add real money value
+	
+	return max(value, 1);
 }
 
 // if update is set to true, the economy is updated with this score
@@ -1533,6 +1532,12 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
+	
+	
+	if (_cur_year - p->inaugurated_year < 6) {
+		_error_message = STR_7080_PROTECTED;
+		return CMD_ERROR;
+	}
 
 	/* Check if buying shares is allowed (protection against modified clients */
 	if (!_patches.allow_shares)
