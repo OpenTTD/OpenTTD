@@ -2671,7 +2671,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 {
 	Station *around_ptr[8];
-	byte around[8];
+	uint16 around[8];
 	uint16 st_index;
 	int i;
 	Station *st;
@@ -2706,7 +2706,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 		if (IsTileType(cur_tile, MP_STATION)) {
 			st_index = _map2[cur_tile];
 			for(i=0; i!=8; i++)	{
-				if (around[i] == 0xFF) {
+				if (around[i] == INVALID_STATION) {
 					st = GetStation(st_index);
 					if ((st->had_vehicle_of_type & HVOT_BUOY) == 0 &&
 							( !st->town->exclusive_counter || (st->town->exclusivity == st->owner) ) && // check exclusive transport rights
@@ -2753,10 +2753,10 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 	END_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad, max_rad))
 
 	/* no stations around at all? */
-	if (around[0] == 0xFF)
+	if (around[0] == INVALID_STATION)
 		return 0;
 
-	if (around[1] == 0xFF) {
+	if (around[1] == INVALID_STATION) {
 		/* only one station around */
 		moved = (amount * around_ptr[0]->goods[type].rating >> 8) + 1;
 		UpdateStationWaiting(around_ptr[0], type, moved);
@@ -2767,7 +2767,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 	st2 = st1 = NULL;
 	best_rating = best_rating2 = 0;
 
-	for( i = 0; i != 8 && around[i] != 0xFF; i++) {
+	for( i = 0; i != 8 && around[i] != INVALID_STATION; i++) {
 		if (around_ptr[i]->goods[type].rating >= best_rating) {
 			best_rating2 = best_rating;
 			st2 = st1;
