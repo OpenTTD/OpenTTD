@@ -120,6 +120,7 @@ typedef unsigned long in_addr_t;
 #	if defined(__MORPHOS__)
 #		include <sys/filio.h> 	// FIO* defines
 #		include <sys/sockio.h>  // SIO* defines
+#		include <netinet/in.h>
 #	else // __AMIGA__
 #		include	<proto/socket.h>
 #	endif
@@ -131,6 +132,7 @@ typedef unsigned long in_addr_t;
 #	define ioctl ioctlsocket
 
 	typedef unsigned int in_addr_t;
+	typedef long         socklen_t;
 	extern struct Library *SocketBase;
 
 #	ifdef __AMIGA__

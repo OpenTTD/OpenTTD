@@ -402,11 +402,7 @@ void NetworkUDPClose(void)
 void NetworkUDPReceive(SOCKET udp)
 {
 	struct sockaddr_in client_addr;
-#ifndef __MORPHOS__
-	int client_len;
-#else
-	LONG client_len; // for some reason we need a 'LONG' under MorphOS
-#endif
+	socklen_t client_len;
 	int nbytes;
 	static Packet *p = NULL;
 	int packet_len;
