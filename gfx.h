@@ -111,4 +111,9 @@ enum { NUM_SPRITES = 0x3500 }; // 1500 + space for custom GRF sets
 extern byte _palettes[4][256 * 3];
 VARDEF byte _cur_palette[768];
 
+
+typedef enum StringColorFlags {
+	IS_PALETTE_COLOR = 0x100, // color value is already a real palette color index, not an index of a StringColor
+} StringColorFlags;
+
 #endif

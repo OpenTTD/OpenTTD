@@ -1111,20 +1111,9 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
 		if (_display_opt & DO_TRANS_BUILDINGS && ss->width != 0) {
-			/* This is such a frustrating mess - I need to convert
-			 * from real color codes to string color codes and guess
-			 * what, they are completely different. --pasky */
-			static const byte ci2sci[17] = {
-				/*  0 */ 16, /*  1 */  0, /*  2 */  5,
-				/*  3X*/  2, /*  4 */  8, /*  5 */  3,
-				/*  6X*/ 14, /*  7 */  7, /*  8 */  9,
-				/*  9 */ 13, /* 10 */ 10, /* 11 */ 15,
-				/* 12 */  4, /* 13 */  6, /* 14 */ 11,
-				/* 15 */  1, /* 16 */ 12
-			};
-			byte color = ci2sci[ss->color + 1];
-
-			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, color);
+			/* Real colors need the IS_PALETTE_COLOR flag, otherwise colors from _string_colormap are assumed. */
+			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, 
+			           (_color_list[ss->color].window_color_bgb | IS_PALETTE_COLOR));
 		} else {
 			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, 16);
 		}

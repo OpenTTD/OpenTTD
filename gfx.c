@@ -492,7 +492,7 @@ int DoDrawString(const byte *string, int x, int y, uint16 real_color) {
 
 		if (color != 0xFF) {
 switch_color:;
-			if (real_color & 0x100) {
+			if (real_color & IS_PALETTE_COLOR) {
 				_string_colorremap[1] = color;
 				_string_colorremap[2] = 215;
 			} else {
@@ -1976,5 +1976,5 @@ uint16 GetDrawStringPlayerColor(byte player)
 	//  of the player
 	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1)
 			return 1;
-	return (_color_list[_player_colors[player]].window_color_1b) | 0x100;
+	return (_color_list[_player_colors[player]].window_color_1b) | IS_PALETTE_COLOR;
 }
