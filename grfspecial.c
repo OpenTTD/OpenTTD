@@ -1195,7 +1195,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 		for (i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
-			StationSpec *stat = &_cur_grffile->stations[stid];
+			struct StationSpec *stat = &_cur_grffile->stations[stid];
 			byte *bp = &buf[4 + idcount];
 
 			for (c = 0; c < cidcount; c++) {
