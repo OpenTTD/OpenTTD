@@ -508,12 +508,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			_local_player = _network_playas - 1;
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
-
-		// Remeber the player
-		if (_local_player != OWNER_SPECTATOR)
-			_network_playas = _local_player + 1;
-		else
-			_network_playas = OWNER_SPECTATOR;
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;
