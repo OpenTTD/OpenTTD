@@ -385,7 +385,6 @@ char *FiosBrowseTo(const FiosItem *item)
 StringID FiosGetDescText(const char **path, uint32 *tot)
 {
 	struct diskfree_t free;
-	StringID sid;
 	char drive;
 
 	*path = _fios_path;
