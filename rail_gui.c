@@ -153,13 +153,11 @@ static void GenericPlaceSignals(uint tile)
 
 	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL);
 
-	if ((trackstat & 0x30) == 0x30) {
+	if ((trackstat & 0x30)) // N-S direction
 		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? 0x20 : 0x10;
-	}
 
-	if ((trackstat & 0x0C) == 0x0C) {
+	if ((trackstat & 0x0C)) // E-W direction
 		trackstat = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? 4 : 8;
-	}
 
 	// Lookup the bit index
 	i = 0;
@@ -393,35 +391,34 @@ static void HandleAutoSignalPlacement(void)
 	int dx = thd->selstart.x - (thd->selend.x&~0xF);
 	int dy = thd->selstart.y - (thd->selend.y&~0xF);
 
-	if (dx == 0 && dy == 0 ) // 1x1 tile signals
+	if (thd->drawstyle == HT_RECT) { // one tile case
 		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
-	else { // signals have been dragged
-		if (!(thd->drawstyle & 0xE)) { // X,Y direction
-			if (dx == 0)
-				mode = VPM_FIX_X;
-			else if (dy == 0)
-				mode = VPM_FIX_Y;
-
-			trackstat = 0xC0;
-		}	else { // W-E or N-S direction
-			if ((thd->drawstyle & 0xF) == 2 || (thd->drawstyle & 0xF) == 5)
-				mode = 0;
-			else
-				mode = 3;
-
-			if (dx == dy || abs(dx - dy) == 16) // North<->South track |
-				trackstat = (thd->drawstyle & 1) ? 0x20 : 0x10;
-			else if (dx == -dy || abs(dx + dy) == 16) // East<->West track --
-				trackstat = (thd->drawstyle & 1) ? 8 : 4;
-		}
-		// _patches.drag_signals_density is given as a parameter such that each user in a network
-		// game can specify his/her own signal density
-		DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
-		(mode << 4) | (_remove_button_clicked + (_ctrl_pressed ? 8 : 0)) | (trackstat << 8) | (_patches.drag_signals_density << 24),
-		CcPlaySound1E,
-		(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-															CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
+		return;
 	}
+
+	if (!(thd->drawstyle & 0xE)) { // X/Y direction
+		mode = (dx == 0) ? VPM_FIX_X : VPM_FIX_Y;
+		trackstat = 0xC0;
+	} else if (myabs(dx) + myabs(dy) >= 32) { // long line (more than 2 tiles)
+		mode = ((thd->drawstyle & 0xF) == HT_DIR_HU || (thd->drawstyle & 0xF) == HT_DIR_VR) ? 0 : 3;
+
+		if (dx == dy || abs(dx - dy) == 16) // North<->South track |
+			trackstat = (thd->drawstyle & 1) ? 0x20 : 0x10;
+		else if (dx == -dy || abs(dx + dy) == 16) // East<->West track --
+			trackstat = (thd->drawstyle & 1) ? 8 : 4;
+
+	} else { // 2x1 pieces line
+		GenericPlaceSignals(TILE_FROM_XY(thd->selstart.x, thd->selstart.y));
+		return;
+	}
+
+	// _patches.drag_signals_density is given as a parameter such that each user in a network
+	// game can specify his/her own signal density
+	DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
+	(mode << 4) | (_remove_button_clicked | _ctrl_pressed) | (trackstat << 8) | (_patches.drag_signals_density << 24),
+	CcPlaySound1E,
+	(_remove_button_clicked ?	CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
+														CMD_BUILD_MANY_SIGNALS | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
 }
 
 static OnButtonClick * const _build_railroad_button_proc[] = {
