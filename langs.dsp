@@ -183,6 +183,17 @@ InputPath=.\lang\italian.txt
 # End Source File
 # Begin Source File
 
+SOURCE=.\lang\latvian.txt
+# Begin Custom Build
+InputPath=.\lang\latvian.txt
+
+"lang\latvian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	strgen\debug\strgen.exe lang\latvian.txt
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
 SOURCE=.\lang\norwegian.txt
 # Begin Custom Build
 InputPath=.\lang\norwegian.txt
