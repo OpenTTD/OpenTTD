@@ -973,7 +973,7 @@ static void TileLoop_Road(uint tile)
 
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
-					!(GetTileDist(t->xy, tile) >= 8 && grp==0) &&
+					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
 					(_map5[tile]==5 || _map5[tile]==10)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
 					_map2[tile] = ((_map2[tile]&7) <= 1) ? 6 : 7;

@@ -72,6 +72,14 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 #define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x, y))
 
 
+// Functions to calculate distances
+uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm
+uint DistanceSquare(TileIndex, TileIndex); // euclidian- or L2-Norm squared
+uint DistanceMax(TileIndex, TileIndex); // also known as L-Infinity-Norm
+uint DistanceMaxPlusManhattan(TileIndex, TileIndex); // Max + Manhattan
+uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
+
+
 static inline TileIndexDiff TileOffsByDir(uint dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[4];

@@ -169,12 +169,6 @@ void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandC
 /* misc_cmd.c */
 void PlaceTreesRandomly(void);
 
-uint GetTileDist(TileIndex xy1, TileIndex xy2);
-uint GetTileDist1D(TileIndex xy1, TileIndex xy2);
-uint GetTileDist1Db(TileIndex xy1, TileIndex xy2);
-uint GetTileDistAdv(TileIndex xy1, TileIndex xy2);
-bool CheckDistanceFromEdge(TileIndex tile, uint distance);
-
 void InitializeLandscapeVariables(bool only_constants);
 
 /* misc.c */

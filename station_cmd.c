@@ -318,7 +318,7 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 	}
 
 	/* check close enough to town to get central as name? */
-	if (GetTileDist1D(tile,t->xy) < 8) {
+	if (DistanceMax(tile,t->xy) < 8) {
 		found = M(STR_SV_STNAME);
 		if (HASBIT(free_names, M(STR_SV_STNAME))) goto done;
 
@@ -328,7 +328,7 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 
 	/* Check lakeside */
 	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
-			!CheckDistanceFromEdge(tile, 20) &&
+			DistanceFromEdge(tile) < 20 &&
 			CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
 				found = M(STR_SV_STNAME_LAKESIDE);
 				goto done;
@@ -386,7 +386,7 @@ static Station *GetClosestStationFromTile(uint tile, uint threshold, byte owner)
 	uint cur_dist;
 
 	FOR_ALL_STATIONS(st) {
-		cur_dist = GetTileDist(tile, st->xy);
+		cur_dist = DistanceManhattan(tile, st->xy);
 		if (cur_dist < threshold && (owner == 0xFF || st->owner == owner) && (st->xy != 0)) {
 			threshold = cur_dist;
 			best_station = st;
@@ -2591,7 +2591,8 @@ void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radi
 	int i;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0 && st->owner == owner && GetTileDist(tile, st->xy) <= radius) {
+		if (st->xy != 0 && st->owner == owner &&
+				DistanceManhattan(tile, st->xy) <= radius) {
 			ge = st->goods;
 			for(i=0; i!=NUM_CARGO; i++,ge++) {
 				if (ge->enroute_from != 0xFF) {

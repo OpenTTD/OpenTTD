@@ -651,7 +651,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			dist = malloc(num * sizeof(int32));
 
 			do {
-				*dist = GetTileDistAdv(v->tile, rs->xy);
+				*dist = DistanceSquare(v->tile, rs->xy);
 				if (*dist < mindist) {
 					v->dest_tile = rs->xy;
 				}
@@ -999,7 +999,7 @@ typedef struct {
 
 static bool EnumRoadTrackFindDist(uint tile, FindRoadToChooseData *frd, int track, uint length, byte *state)
 {
-	uint dist = GetTileDist(tile, frd->dest);
+	uint dist = DistanceManhattan(tile, frd->dest);
 	if (dist <= frd->mindist) {
 		if (dist != frd->mindist || length < frd->maxtracklen) {
 			frd->maxtracklen = length;
@@ -1577,9 +1577,9 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	i = FindClosestRoadDepot(v);
 
-	if (i < 0 || GetTileDist(v->tile, (&_depots[i])->xy) > 12) {
+	if (i < 0 || DistanceManhattan(v->tile, (&_depots[i])->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT && !(
-			GetTileDist(v->tile, v->dest_tile) > 25 && v->set_for_replacement)) {
+			DistanceManhattan(v->tile, v->dest_tile) > 25 && v->set_for_replacement)) {
 			/*  a vehicle needs a greater distance to a depot to loose it than to find it since
 			they can circle forever othervise if they are in a loop with an unlucky distance	*/
 			v->current_order.type = OT_DUMMY;

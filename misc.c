@@ -533,43 +533,6 @@ void InitializeLandscapeVariables(bool only_constants)
 	}
 }
 
-// distance in Manhattan metric
-uint GetTileDist(TileIndex xy1, TileIndex xy2)
-{
-	return myabs(TileX(xy1) - TileX(xy2)) +
-				myabs(TileY(xy1) - TileY(xy2));
-}
-
-// maximum distance in x _or_ y
-uint GetTileDist1D(TileIndex xy1, TileIndex xy2)
-{
-	return max(myabs(TileX(xy1) - TileX(xy2)),
-						 myabs(TileY(xy1) - TileY(xy2)));
-}
-
-uint GetTileDist1Db(TileIndex xy1, TileIndex xy2)
-{
-	int a = myabs(TileX(xy1) - TileX(xy2));
-	int b = myabs(TileY(xy1) - TileY(xy2));
-
-	if (a > b)
-		return a*2+b;
-	else
-		return b*2+a;
-}
-
-uint GetTileDistAdv(TileIndex xy1, TileIndex xy2)
-{
-	uint a = myabs(TileX(xy1) - TileX(xy2));
-	uint b = myabs(TileY(xy1) - TileY(xy2));
-	return a*a+b*b;
-}
-
-bool CheckDistanceFromEdge(TileIndex tile, uint distance)
-{
-	return IS_INT_INSIDE(TileX(tile), distance, MapSizeX() - distance) &&
-			IS_INT_INSIDE(TileY(tile), distance, MapSizeY() - distance);
-}
 
 void OnNewDay_Train(Vehicle *v);
 void OnNewDay_RoadVeh(Vehicle *v);

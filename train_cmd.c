@@ -1598,7 +1598,7 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 			return length >= ttfd->best_track_dist;
 
 		// didn't find station
-		dist = GetTileDist(tile, ttfd->dest_coords);
+		dist = DistanceManhattan(tile, ttfd->dest_coords);
 		if (dist < ttfd->best_bird_dist) {
 			ttfd->best_bird_dist = dist;
 			ttfd->best_track = state[1];

@@ -166,7 +166,7 @@ static bool IsCloseToTown(uint tile, uint dist)
 	Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0 && GetTileDist(tile, t->xy) < dist)
+		if (t->xy != 0 && DistanceManhattan(tile, t->xy) < dist)
 			return true;
 	}
 	return false;
@@ -970,7 +970,7 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// Check if too close to the edge of map
-	if (!CheckDistanceFromEdge(tile, 12))
+	if (DistanceFromEdge(tile) < 12)
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 	// Can only build on clear flat areas.
@@ -1008,7 +1008,7 @@ Town *CreateRandomTown(void)
 	do {
 		// Generate a tile index not too close from the edge
 		tile = TILE_MASK(Random());
-		if (!CheckDistanceFromEdge(tile, 20))
+		if (DistanceFromEdge(tile) < 20)
 			continue;
 
 		// Make sure the tile is plain
@@ -1074,7 +1074,7 @@ int GetTownRadiusGroup(Town *t, uint tile)
 	uint dist;
 	int i,smallest;
 
-	dist = GetTileDistAdv(tile, t->xy);
+	dist = DistanceSquare(tile, t->xy);
 	if (t->fund_buildings_months && dist <= 25)
 		return 4;
 
@@ -1637,7 +1637,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	n = 0;
 	FOR_ALL_STATIONS(st) {
-		if (GetTileDistAdv(st->xy, t->xy) <= t->radius[0]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
 				if (st->owner < MAX_PLAYERS && t->ratings[st->owner] <= 1000-12)
@@ -1740,7 +1740,7 @@ Town *ClosestTownFromTile(uint tile, uint threshold)
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) {
-			dist = GetTileDist(tile, t->xy);
+			dist = DistanceManhattan(tile, t->xy);
 			if (dist < best) {
 				best = dist;
 				best_town = t;

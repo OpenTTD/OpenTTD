@@ -896,7 +896,7 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 	if (from==to || to->xy == 0 || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
-	fr->distance = GetTileDist(from->xy, to->xy);
+	fr->distance = DistanceManhattan(from->xy, to->xy);
 }
 
 static void FindSubsidyCargoRoute(FoundRoute *fr)
@@ -937,7 +937,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		// Only want big towns
 		if (t->xy == 0 || t->population < 900)
 			return;
-		fr->distance = GetTileDist(i->xy, t->xy);
+		fr->distance = DistanceManhattan(i->xy, t->xy);
 		fr->to = t;
 	} else {
 		// The destination is an industry
@@ -949,7 +949,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 				cargo != i2->accepts_cargo[1] &&
 				cargo != i2->accepts_cargo[2]))
 			return;
-		fr->distance = GetTileDist(i->xy, i2->xy);
+		fr->distance = DistanceManhattan(i->xy, i2->xy);
 		fr->to = i2;
 	}
 }
@@ -1132,7 +1132,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
 				 ind->produced_cargo[0] != 0xFF &&
 				 ind->produced_cargo[0] != cargo_type &&
-				 (t=GetTileDist(ind->xy, xy)) < u) {
+				 (t = DistanceManhattan(ind->xy, xy)) < u) {
 			u = t;
 			best = ind;
 		}
@@ -1171,7 +1171,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			} else {
 				xy = (GetIndustry(s->from))->xy;
 			}
-			if (GetTileDist1D(xy, from->xy) > 9)
+			if (DistanceMax(xy, from->xy) > 9)
 				continue;
 
 			/* Check distance from dest */
@@ -1181,7 +1181,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 				xy = (GetIndustry(s->to))->xy;
 			}
 
-			if (GetTileDist1D(xy, to->xy) > 9)
+			if (DistanceMax(xy, to->xy) > 9)
 				continue;
 
 			/* Found a subsidy, change the values to indicate that it's in use */
@@ -1242,7 +1242,7 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte des
 
 	// Determine profit
 	{
-		int t = GetTileDist(s_from->xy, s_to->xy);
+		int t = DistanceManhattan(s_from->xy, s_to->xy);
 		int r = num_pieces;
 		profit = 0;
 		do {

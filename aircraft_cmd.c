@@ -48,7 +48,7 @@ static uint32 FindNearestHangar(Vehicle *v)
 				// don't crash the planes if we know they can't land at the airport
 				if (HASBIT(v->subtype,1) && st->airport_type == AT_SMALL && !_cheats.no_jetcrash.value) continue;
 
-				temp_distance = GetTileDistAdv(v->tile, st->airport_tile);
+				temp_distance = DistanceSquare(v->tile, st->airport_tile);
 				if (temp_distance < distance) {
 					distance = temp_distance;
 					index_to_target = st->index;

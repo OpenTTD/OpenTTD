@@ -140,7 +140,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
 		sel != 0 && GetVehicleOrder(v, sel - 1)->type == OT_GOTO_STATION) {
 
-		int dist = GetTileDist(
+		int dist = DistanceManhattan(
 			GetStation(GetVehicleOrder(v, sel - 1)->station)->xy,
 			GetStation(new_order.station)->xy
 		);

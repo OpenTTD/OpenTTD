@@ -108,6 +108,50 @@ uint ScaleByMapSize1D(uint n)
 }
 
 
+uint DistanceManhattan(TileIndex t0, TileIndex t1)
+{
+	return
+		abs(TileX(t0) - TileX(t1)) +
+		abs(TileY(t0) - TileY(t1));
+}
+
+
+uint DistanceSquare(TileIndex t0, TileIndex t1)
+{
+	const int x = TileX(t0) - TileX(t1);
+	const int y = TileY(t0) - TileY(t1);
+	return x * x + y * y;
+}
+
+
+uint DistanceMax(TileIndex t0, TileIndex t1)
+{
+	const uint x = abs(TileX(t0) - TileX(t1));
+	const uint y = abs(TileY(t0) - TileY(t1));
+	return x > y ? x : y;
+}
+
+
+uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
+{
+	const uint x = abs(TileX(t0) - TileX(t1));
+	const uint y = abs(TileY(t0) - TileY(t1));
+	return x > y ? 2 * x + y : 2 * y + x;
+}
+
+
+uint DistanceFromEdge(TileIndex tile)
+{
+	const uint xl = TileX(tile);
+	const uint yl = TileY(tile);
+	const uint xh = MapSizeX() - 1 - xl;
+	const uint yh = MapSizeY() - 1 - yl;
+	const uint minl = xl < yl ? xl : yl;
+	const uint minh = xh < yh ? xh : yh;
+	return minl < minh ? minl : minh;
+}
+
+
 const TileIndexDiffC _tileoffs_by_dir[] = {
 	{-1,  0},
 	{ 0,  1},

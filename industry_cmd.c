@@ -1346,7 +1346,7 @@ static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, 
 						return false;
 					}
 				} else if (type == IT_TOY_SHOP) {
-					if (GetTileDist1D(t->xy, cur_tile) > 9)
+					if (DistanceMax(t->xy, cur_tile) > 9)
 						return false;
 					if (ti.type != MP_HOUSE) goto do_clear;
 				} else if (type == IT_WATER_TOWER) {
@@ -1379,7 +1379,7 @@ static bool CheckIfTooCloseToIndustry(uint tile, int type)
 	FOR_ALL_INDUSTRIES(i) {
 		// check if an industry that accepts the same goods is nearby
 		if (i->xy != 0 &&
-				(GetTileDist1D(tile, i->xy) <= 14) &&
+				(DistanceMax(tile, i->xy) <= 14) &&
 				spec->accepts_cargo[0] != 0xFF &&
 				spec->accepts_cargo[0] == i->accepts_cargo[0] &&
 				!(_game_mode == GM_EDITOR &&
@@ -1392,7 +1392,7 @@ static bool CheckIfTooCloseToIndustry(uint tile, int type)
 		// check "not close to" field.
 		if (i->xy != 0 &&
 				(i->type == spec->a || i->type == spec->b || i->type == spec->c) &&
-				GetTileDist1D(tile, i->xy) <= 14) {
+				DistanceMax(tile, i->xy) <= 14) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}

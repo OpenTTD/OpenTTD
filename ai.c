@@ -462,7 +462,7 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 		to_xy = to_ind->xy;
 	}
 
-	fr->distance = GetTileDist(from->xy, to_xy);
+	fr->distance = DistanceManhattan(from->xy, to_xy);
 }
 
 static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
@@ -493,7 +493,7 @@ static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 	if (from->population < 400 || to->population < 400)
 		return;
 
-	fr->distance = GetTileDist(from->xy, to->xy);
+	fr->distance = DistanceManhattan(from->xy, to->xy);
 }
 
 static void AiFindRandomIndustryRoute(FoundRoute *fr)
@@ -531,7 +531,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 			return;
 
 		fr->to = i2;
-		fr->distance = GetTileDist(i->xy, i2->xy);
+		fr->distance = DistanceManhattan(i->xy, i2->xy);
 	} else {
 		// pick a dest town, and see if it's big enough
 		t = AiFindRandomTown();
@@ -539,7 +539,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 			return;
 
 		fr->to = t;
-		fr->distance = GetTileDist(i->xy, t->xy);
+		fr->distance = DistanceManhattan(i->xy, t->xy);
 	}
 }
 
@@ -561,7 +561,7 @@ static void AiFindRandomPassengerRoute(FoundRoute *fr)
 	if (dest == NULL || source == dest || dest->population < 400)
 		return;
 
-	fr->distance = GetTileDist(source->xy, dest->xy);
+	fr->distance = DistanceManhattan(source->xy, dest->xy);
 }
 
 // Warn: depends on 'xy' being the first element in both Town and Industry
@@ -580,9 +580,9 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 
 	dist = 0xFFFF;
 	FOR_ALL_STATIONS(st) if (st->xy != 0 && st->owner == _current_player) {
-		cur = GetTileDist1D(from_tile, st->xy);
+		cur = DistanceMax(from_tile, st->xy);
 		if (cur < dist) dist = cur;
-		cur = GetTileDist1D(to_tile, st->xy);
+		cur = DistanceMax(to_tile, st->xy);
 		if (cur < dist) dist = cur;
 		if (to_tile == from_tile && st->xy == to_tile)
 		    same_station++;
@@ -1419,7 +1419,7 @@ static void AiWantOilRigAircraftRoute(Player *p)
 			// Find a random oil rig industry
 			in = GetIndustry(RandomRange(_total_industries));
 			if (in != NULL && in->type == IT_OIL_RIG) {
-				if (GetTileDist(t->xy, in->xy) < 60)
+				if (DistanceManhattan(t->xy, in->xy) < 60)
 					break;
 			}
 		}
@@ -1843,7 +1843,7 @@ static bool AiEnumFollowTrack(uint tile, AiRailPathFindData *a, int track, uint 
 		return true;
 	}
 
-	if (GetTileDist1D(tile, a->tile2) < 4)
+	if (DistanceMax(tile, a->tile2) < 4)
 		a->count++;
 
 	return false;
@@ -2028,7 +2028,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 
 	// Depth too deep?
 	if (arf->depth >= 4) {
-		uint dist = GetTileDist1Db(tile, arf->final_tile);
+		uint dist = DistanceMaxPlusManhattan(tile, arf->final_tile);
 		if (dist < arf->cur_best_dist) {
 			// Store the tile that is closest to the final position.
 			arf->cur_best_depth = arf->depth;
@@ -2620,7 +2620,7 @@ static bool AiCheckBlockDistances(Player *p, TileIndex tile)
 
 	do {
 		if (aib->cur_building_rule != 255) {
-			if (GetTileDist(aib->use_tile, tile) < 9)
+			if (DistanceManhattan(aib->use_tile, tile) < 9)
 				return false;
 		}
 	} while (++aib, --num);
@@ -2768,7 +2768,7 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 
 static bool AiEnumFollowRoad(uint tile, AiRoadEnum *a, int track, uint length, byte *state)
 {
-	uint dist = GetTileDist(tile, a->dest);
+	uint dist = DistanceManhattan(tile, a->dest);
 	uint tile2;
 
 	if (dist <= a->best_dist) {
@@ -2813,7 +2813,7 @@ static bool AiCheckRoadFinished(Player *p)
 		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 
-	if (GetTileDist(tile, are.dest) <= are.best_dist)
+	if (DistanceManhattan(tile, are.dest) <= are.best_dist)
 		return false;
 
 	if (are.best_dist == 0)
@@ -2913,7 +2913,7 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 
 	// Depth too deep?
 	if (arf->depth >= 4) {
-		uint dist = GetTileDist1Db(tile, arf->final_tile);
+		uint dist = DistanceMaxPlusManhattan(tile, arf->final_tile);
 		if (dist < arf->cur_best_dist) {
 			// Store the tile that is closest to the final position.
 			arf->cur_best_dist = dist;
@@ -3292,7 +3292,7 @@ static void AiStateAirportStuff(Player *p)
 				continue;
 
 			// Dismiss airports too far away.
-			if (GetTileDist1D(st->airport_tile, aib->spec_tile) > aib->rand_rng)
+			if (DistanceMax(st->airport_tile, aib->spec_tile) > aib->rand_rng)
 				continue;
 
 			// It's ideal airport, let's take it!

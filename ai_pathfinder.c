@@ -153,12 +153,12 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 	int r, r2;
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
 		// The station is pointing to a direction, add a tile towards that direction, so the H-value is more accurate
-		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDir(PathFinderInfo->end_direction));
-		r2 = GetTileDist(current->tile, PathFinderInfo->end_tile_br + TileOffsByDir(PathFinderInfo->end_direction));
+		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDir(PathFinderInfo->end_direction));
+		r2 = DistanceManhattan(current->tile, PathFinderInfo->end_tile_br + TileOffsByDir(PathFinderInfo->end_direction));
 	} else {
 		// No direction, so just get the fastest route to the station
-		r = GetTileDist(current->tile, PathFinderInfo->end_tile_tl);
-		r2 = GetTileDist(current->tile, PathFinderInfo->end_tile_br);
+		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl);
+		r2 = DistanceManhattan(current->tile, PathFinderInfo->end_tile_br);
 	}
 	// See if the bottomright is faster than the topleft..
 	if (r2 < r) r = r2;

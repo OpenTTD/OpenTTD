@@ -73,7 +73,7 @@ static int FindClosestShipDepot(Vehicle *v)
 	for(i=0; i!=lengthof(_depots); i++) {
 		tile = _depots[i].xy;
 		if (IsTileType(tile, MP_WATER) && _map_owner[tile] == owner) {
-			dist = GetTileDist(tile, tile2);
+			dist = DistanceManhattan(tile, tile2);
 			if (dist < best_dist) {
 				best_dist = dist;
 				best_depot = i;
@@ -106,7 +106,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	i = FindClosestShipDepot(v);
 
-	if (i < 0 || GetTileDist(v->tile, (&_depots[i])->xy) > 12) {
+	if (i < 0 || DistanceManhattan(v->tile, (&_depots[i])->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -499,7 +499,7 @@ static bool ShipTrackFollower(uint tile, PathFindShip *pfs, int track, uint leng
 
 	// Skip this tile in the calculation
 	if (tile != pfs->skiptile) {
-		pfs->best_bird_dist = minu(pfs->best_bird_dist, GetTileDist1Db(pfs->dest_coords, tile));
+		pfs->best_bird_dist = minu(pfs->best_bird_dist, DistanceMaxPlusManhattan(pfs->dest_coords, tile));
 	}
 
 	return false;

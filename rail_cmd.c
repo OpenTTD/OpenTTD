@@ -701,7 +701,7 @@ static Waypoint *FindDeletedWaypointCloseTo(uint tile)
 
 	for(cp = _waypoints; cp != endof(_waypoints); cp++) {
 		if (cp->deleted && cp->xy) {
-			cur_dist = GetTileDist(tile, cp->xy);
+			cur_dist = DistanceManhattan(tile, cp->xy);
 			if (cur_dist < thres) {
 				thres = cur_dist;
 				best = cp;

@@ -224,7 +224,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 				//  to build there
 				if (!st->goods[CT_PASSENGERS].last_speed) continue;
 				// Is it around our city
-				if (GetTileDist(st->xy, t->xy) > 10) continue;
+				if (DistanceManhattan(st->xy, t->xy) > 10) continue;
 				// It does take this cargo.. what is his rating?
 				if (st->goods[CT_PASSENGERS].rating < AI_CHECKCITY_CARGO_RATING) continue;
 				j++;
@@ -287,7 +287,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 				// It does not take this cargo
 				if (!st->goods[i->produced_cargo[0]].last_speed) continue;
 				// Is it around our industry
-				if (GetTileDist(st->xy, i->xy) > 5) continue;
+				if (DistanceManhattan(st->xy, i->xy) > 5) continue;
 				// It does take this cargo.. what is his rating?
 				if (st->goods[i->produced_cargo[0]].rating < AI_CHECKCITY_CARGO_RATING) continue;
 				j++;
@@ -410,12 +410,17 @@ static void AiNew_State_LocateRoute(Player *p) {
    			max_cargo -= GetTown(p->ainew.from_ic)->act_pass + GetTown(p->ainew.temp)->act_pass;
    			// max_cargo is now the amount of cargo we can move between the two cities
    			// If it is more than the distance, we allow it
-   			if (GetTileDist(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_BUS_CARGO_DISTANCE) {
+   			if (DistanceManhattan(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_BUS_CARGO_DISTANCE) {
    				// We found a good city/industry, save the data of it
    				p->ainew.to_ic = p->ainew.temp;
    				p->ainew.state = AI_STATE_FIND_STATION;
 
-   				DEBUG(ai,1)("[AiNew - LocateRoute] Found bus-route of %d tiles long (from %d to %d)",GetTileDist(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy), p->ainew.from_ic, p->ainew.temp);
+   				DEBUG(ai,1)(
+						"[AiNew - LocateRoute] Found bus-route of %d tiles long (from %d to %d)",
+						DistanceManhattan(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy),
+						p->ainew.from_ic,
+						p->ainew.temp
+					);
 
    				p->ainew.from_tile = 0;
    				p->ainew.to_tile = 0;
@@ -458,8 +463,8 @@ static void AiNew_State_LocateRoute(Player *p) {
    			if (found) {
    				// Yeah, they are compatible!!!
    				// Check the length against the amount of goods
-   				if (GetTileDist(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) > AI_LOCATEROUTE_TRUCK_MIN_DISTANCE &&
-       				GetTileDist(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE) {
+   				if (DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) > AI_LOCATEROUTE_TRUCK_MIN_DISTANCE &&
+       				DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE) {
 	   				p->ainew.to_ic = p->ainew.temp;
 	   				if (p->ainew.from_deliver) {
 	   					p->ainew.cargo = GetIndustry(p->ainew.from_ic)->produced_cargo[0];
@@ -468,7 +473,12 @@ static void AiNew_State_LocateRoute(Player *p) {
    					}
 	   				p->ainew.state = AI_STATE_FIND_STATION;
 
-	   				DEBUG(ai,1)("[AiNew - LocateRoute] Found truck-route of %d tiles long (from %d to %d)",GetTileDist(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy), p->ainew.from_ic, p->ainew.temp);
+	   				DEBUG(ai,1)(
+							"[AiNew - LocateRoute] Found truck-route of %d tiles long (from %d to %d)",
+							DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy),
+							p->ainew.from_ic,
+							p->ainew.temp
+						);
 
 	   				p->ainew.from_tile = 0;
 	   				p->ainew.to_tile = 0;
@@ -637,7 +647,7 @@ static void AiNew_State_FindStation(Player *p) {
 
 	    for (x=0;x<i;x++) {
 	    	if (found_best[x] > best ||
-	     		(found_best[x] == best && GetTileDist(tile, new_tile) > GetTileDist(tile, found_spot[x]))) {
+	     		(found_best[x] == best && DistanceManhattan(tile, new_tile) > DistanceManhattan(tile, found_spot[x]))) {
 	     		new_tile = found_spot[x];
 	     		best = found_best[x];
 	    	}
