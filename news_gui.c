@@ -338,7 +338,11 @@ static void ShowTicker(NewsItem *ni)
 static bool ReadyForNextItem()
 {
 	Window *w;
-	NewsItem *ni = &_news_items[(_forced_news==255)?_current_news:_forced_news];
+	byte item = (_forced_news==255)?_current_news:_forced_news;
+	NewsItem *ni;
+
+	if(item>=MAX_NEWS) return false;
+	ni = &_news_items[item];
 
 	// Ticker message
 	// Check if the status bar message is still being displayed?
