@@ -108,7 +108,7 @@ int64 CalculateCompanyValue(Player *p) {
 
 	value += p->money64 - p->current_loan; // add real money value
 
-	return max(value, 1);
+	return max64(value, 1);
 }
 
 // if update is set to true, the economy is updated with this score
