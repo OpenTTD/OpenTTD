@@ -15,15 +15,20 @@ static INLINE uint32 ROR(uint32 x, int n)
 	return (x >> n) + (x << ((sizeof(x)*8)-n));
 }
 
-/* Fuck bitch code, most probably one of the loops (tileloop, vehicleloop, etc.) 
- * doesn't set up/reset _current_player so the normal random below fails #$%@$#!
- * The old code below is prune to desyncs because randoms interfere.
- * SO FIND THE OFFENDING LOOP AND FIX IT ONCE AND FOR ALL */
-#undef NORMAL_RANDOM // unuseable game, desyncs way too fast
+// For multiplayer, we introduced this new way of random-seeds
+//  It is player-based, so 2 clients can do 2 commands at the same time
+//  without the game desyncing.
+// It is not used for non-multiplayer games
+#ifdef ENABLE_NETWORK
+	#define PLAYER_SEED_RANDOM
+#else
+	#undef PLAYER_SEED_RANDOM
+#endif
+
 uint32 Random()
 {
-#ifdef NORMAL_RANDOM
-	if (_current_player>=MAX_PLAYERS) {
+#ifdef PLAYER_SEED_RANDOM
+	if (_current_player>=MAX_PLAYERS || !_networking) {
 		uint32 s = _random_seeds[0][0];
 		uint32 t = _random_seeds[0][1];
 		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7);

@@ -1378,6 +1378,8 @@ void MaybeRenewVehicle(Vehicle *v, int32 build_cost)
 	v->value = build_cost;
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+
+	_current_player = OWNER_NONE;
 }
 
 

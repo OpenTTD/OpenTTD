@@ -694,6 +694,7 @@ bool GrowTown(Town *t)
 	const TileIndexDiff *ptr;
 	int offs;
 	TileInfo ti;
+	byte old_player;
 
 	static const TileIndexDiff _town_coord_mod[] = {
 		TILE_XY(-1,0),
@@ -712,6 +713,7 @@ bool GrowTown(Town *t)
 	};
 
 	// Current player is a town
+	old_player = _current_player;
 	_current_player = OWNER_TOWN;
 
 	// Find a road that we can base the construction on.
@@ -719,7 +721,9 @@ bool GrowTown(Town *t)
 	ptr = _town_coord_mod;
 	do {
 		if (GetRoadBitsByTile(tile) != 0) {
-			return GrowTownAtRoad(t, tile);
+			int r = GrowTownAtRoad(t, tile);
+			_current_player = old_player;
+			return r;
 		}
 		offs = *ptr++;
 
@@ -737,6 +741,7 @@ bool GrowTown(Town *t)
 		if (ti.tileh == 0 && !(ti.type==MP_HOUSE && ti.map5==0)) {
 			if (DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
 				DoCommandByTile(tile, GenRandomRoadBits(), 0, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
+				_current_player = old_player;
 				return true;
 			}
 		}
@@ -744,6 +749,7 @@ bool GrowTown(Town *t)
 		tile = TILE_ADD(tile, offs);
 	} while (offs != 0);
 
+	_current_player = old_player;
 	return false;
 }
 

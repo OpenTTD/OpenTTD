@@ -1208,10 +1208,12 @@ int LoadUnloadVehicle(Vehicle *v)
 	GoodsEntry *ge;
 	int t;
 	uint count, cap;
+	byte old_player;
 
 	assert((v->next_order&0x1F) == OT_LOADING);
 
 	v->cur_speed = 0;
+	old_player = _current_player;
 	_current_player = v->owner;
 
 	st = DEREF_STATION(last_visited = v->last_station_visited);
@@ -1318,6 +1320,7 @@ next_vehicle:;
 		}
 	}
 
+	_current_player = old_player;
 	return result;
 }
 

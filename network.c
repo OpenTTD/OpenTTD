@@ -365,6 +365,7 @@ void NetworkProcessCommands()
 {
 	CommandQueue *nq;
 	QueuedCommand *qp;
+	byte old_player;
 
 	// queue mode ?
 	if (_networking_queuing)
@@ -380,11 +381,13 @@ void NetworkProcessCommands()
 		}
 
 		// run the command
+		old_player = _current_player;
 		_current_player = qp->cp.player;
 		memcpy(_decode_parameters, qp->cp.dp, (qp->cp.packet_length - COMMAND_PACKET_BASE_SIZE));
 
 		DoCommandP(qp->cp.tile, qp->cp.p1, qp->cp.p2, qp->callback, qp->cmd | CMD_DONT_NETWORK);
 		free(qp);
+		_current_player = old_player;
 	}
 
 	if (!_networking_server) {
@@ -508,7 +511,7 @@ void NetworkSendEvent(uint16 type, uint16 data_len, void * data)
 {
 	EventPacket * ep;
 	ClientState *cs;
-	
+
 	// encode the event ... add its data
 	ep=malloc(data_len+sizeof(EventPacket)-1);
 	ep->event_type = type;
