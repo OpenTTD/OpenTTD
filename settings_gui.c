@@ -816,6 +816,8 @@ static void WritePE(const PatchEntry *pe, int32 val)
 
 	case PE_UINT16: if ((uint16)val > (uint16)pe->max) 
 									*(uint16*)pe->variable = (uint16)pe->max;
+								else if ( (pe->flags & PF_0ISDIS) && ((int16)val < (int16)pe->min) )
+									*(int16*)pe->variable = 0;
 								else if ((uint16)val < (uint16)pe->min)
 									*(uint16*)pe->variable = (uint16)pe->min;
 								else
@@ -940,10 +942,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 							val += pe->step;
 						if (val > pe->max) val = pe->max;
 					} else {
+						// decrease
 						if (val <= pe->min && pe->flags & PF_0ISDIS) {
 							val = 0;
 						} else {
-							// decrease
 							val -= pe->step;
 							if (val < pe->min) val = pe->min;
 						}
