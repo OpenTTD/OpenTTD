@@ -423,8 +423,7 @@ static void FixOldVehicles(void)
 		}
 	}
 
-	if (_vehicle_id_ctr_day > GetVehiclePoolSize())
-		_vehicle_id_ctr_day = 0;
+	_vehicle_id_ctr_day = 0;
 }
 
 /*

@@ -2093,9 +2093,7 @@ static void Load_VEHS(void)
 		}
 	}
 
-	/* This is to ensure all pointers are within the limits of
-	    _vehicles_size */
-	if (_vehicle_id_ctr_day >= GetVehiclePoolSize())
+	if (_sl.full_version < 0x0B01)
 		_vehicle_id_ctr_day = 0;
 }
 
