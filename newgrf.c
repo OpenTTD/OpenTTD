@@ -109,7 +109,8 @@ static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 #define check_length(real, wanted, where) \
 do { \
 	if (real < wanted) { \
-		grfmsg(GMS_ERROR, "%s: Invalid special sprite length %d (expected %d)!", where, real, wanted); \
+		grfmsg(GMS_ERROR, "%s/%d: Invalid special sprite length %d (expected %d)!", \
+		       where, _cur_spriteid - _cur_grffile->sprite_offset, real, wanted); \
 		return; \
 	} \
 } while (0)
@@ -1694,7 +1695,7 @@ static void SkipIf(byte *buf, int len)
 	}
 
 	numsprites = grf_load_byte(&buf);
-	grfmsg(GMS_NOTICE, "Skipping %d->+%d sprites, test was true.", _cur_spriteid - _custom_sprites_base, numsprites);
+	grfmsg(GMS_NOTICE, "Skipping %d->+%d sprites, test was true.", _cur_spriteid - _cur_grffile->sprite_offset, numsprites);
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
 		/* Zero means there are no sprites to skip, so
