@@ -97,6 +97,7 @@ struct Vehicle {
 	uint16 index;			// NOSAVE: Index in vehicle array
 
 	Vehicle *next;		// next
+	Vehicle *first;   // NOSAVE: pointer to the first vehicle in the chain
 
 	StringID string_id; // Displayed string
 

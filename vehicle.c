@@ -14,6 +14,7 @@
 #include "player.h"
 #include "engine.h"
 #include "sound.h"
+#include "debug.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -165,6 +166,7 @@ void AfterLoadVehicles(void)
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
+		v->first = NULL;
 		if (v->type != 0) {
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
@@ -186,6 +188,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	assert(v->orders == NULL);
 
 	v->left_coord = INVALID_COORD;
+	v->first = NULL;
 	v->next = NULL;
 	v->next_hash = 0xffff;
 	v->string_id = 0;
@@ -352,9 +355,20 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 
 Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 {
-	const Vehicle* u;
+	Vehicle* u;
+
+	if (v->first != NULL) {
+		if (v->first->subtype == TS_Front_Engine) {
+			return v->first;
+		} else {
+			DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here");
+		}
+	}
 
 	while ((u = GetPrevVehicleInChain(v)) != NULL) v = u;
+
+	if (v->subtype == TS_Front_Engine)
+		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
 
 	return (Vehicle*)v;
 }

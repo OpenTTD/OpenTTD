@@ -736,6 +736,14 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	dst_head = NULL;
 	if (dst != NULL) dst_head = GetFirstVehicleInChain(dst);
 
+	/* clear the ->first cache */
+	{
+		Vehicle *u;
+
+		for (u = src_head; u != NULL; u = u->next) u->first = NULL;
+		for (u = dst_head; u != NULL; u = u->next) u->first = NULL;
+	}
+
 	/* check if all vehicles in the source train are stopped */
 	if (CheckTrainStoppedInDepot(src_head) < 0)
 		return CMD_ERROR;
@@ -939,6 +947,9 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		// when selling an attached locomotive. we need to delete its window.
 		if (v->subtype == TS_Front_Engine) {
+			Vehicle *u;
+
+			for (u = v; u != NULL; u = u->next) u->first = NULL;
 			DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 
 			// rearrange all vehicles that follow to separate lines.
