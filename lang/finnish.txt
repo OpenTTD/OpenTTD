@@ -356,10 +356,10 @@ STR_SORT_TIP							:{BLACK}Valitse laskeva/nouseva lajittelujärjestys
 SRT_SORT_BY							:{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION						:{BLACK}Asukasluku
-STR_SORT_BY_PRODUCTION						:{BLACK}tuoton mukaan
-STR_SORT_BY_TYPE						:{BLACK}tyypin mukaan
-STR_SORT_BY_TRANSPORTED						:{BLACK}kuljetetun mukaan
-STR_SORT_BY_NAME						:{BLACK}nimen mukaan
+STR_SORT_BY_PRODUCTION						:{BLACK}Tuotto
+STR_SORT_BY_TYPE						:{BLACK}Tyyppi
+STR_SORT_BY_TRANSPORTED						:{BLACK}Kuljetettu
+STR_SORT_BY_NAME						:{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME					:Nimi
 STR_SORT_BY_DATE						:{BLACK}Päiväys
 STR_SORT_BY_UNSORTED						:Ei lajiteltu
@@ -856,6 +856,7 @@ STR_TOWNNAME_CZECH						:Tsekki
 STR_TOWNNAME_SLOVAKISH						:Slovakialainen
 STR_TOWNNAME_HUNGARIAN						:Unkarilainen
 STR_TOWNNAME_AUSTRIAN						:Itävaltalainen
+STR_TOWNNAME_ROMANIAN						:Romania
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Punnat ({POUNDSIGN})
@@ -879,6 +880,7 @@ STR_CURR_RUR							:Venjän rupla (rur)
 STR_CURR_CZK							:Tsekin kruunu (CZK)
 STR_CURR_ISK							:Islannin kruunu (ISK)
 STR_CURR_NOK							:Norjan kruunu (NOK)
+STR_CURR_ROL							:Romanian leu (lei)
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Kieli
@@ -1353,7 +1355,7 @@ STR_2005							:{WHITE}{TOWN}
 STR_2006_POPULATION						:{BLACK}Asukasluku: {ORANGE}{COMMA32}{BLACK}  Taloja: {ORANGE}{COMMA32}
 STR_2007_RENAME_TOWN						:Uudelleennimeä kaupunki
 STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Ei voi uudelleennimetä kaupunkia...
-STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}:n paikallisviranomaiset kieltäytyvät sallimasta tätä
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät sallimasta tätä
 STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Kaupunkien nimet - klikkaa nimeä keskittääksesi päänäkymän kaupunkiin
 STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Keskitä päänäkymä kaupungin sijaintiin
 STR_200C_CHANGE_TOWN_NAME					:{BLACK}Vaihda kaupungin nimeä
@@ -1378,26 +1380,26 @@ STR_201E_STADIUM						:Stadioni
 STR_201F_OLD_HOUSES						:Vanhoja taloja
 STR_2020_LOCAL_AUTHORITY					:{BLACK}Viranomaiset
 STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Näytä tietoja paikallisviranomaisista
-STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN}:n paikallisviranomaiset
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN}: viranomaiset
 STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES						:{WHITE}Alennukset
 STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Vapaat alennukset palveluille:-
 STR_2027_FROM_TO						:{ORANGE}{STRING} paikasta {STRING} paikkaan {STRING}
-STR_2028_BY							:{YELLOW} ({DATE_SHORT}:n mukaan)
+STR_2028_BY							:{YELLOW} ({DATE_SHORT})
 STR_2029							:{STRING} {STRING}
 STR_202A_NONE							:{ORANGE}Ei mitään
 STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Täytetyt alennukset palveluista:-
 STR_202C_FROM_TO						:{ORANGE}{STRING} asemalta {STATION} asemalle {STATION}{YELLOW} ({STRING}
-STR_202D_UNTIL							:{YELLOW}, {DATE_SHORT} saakka)
+STR_202D_UNTIL							:{YELLOW}, {DATE_SHORT} asti)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Alennus päättynyt:{}{}{STRING} paikasta {STRING} paikkaan {STRING} ei sisällä enää alennuksia.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Alennus vedetty pois:{}{}{STRING}:n palvelu asemalta {STATION} asemalle {STATION} ei ole enää alennettu.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Alennus vedetty pois:{}{}{STRING} kuljetuspalvelupalvelu {STATION} -> {STATION} ei ole enää alennettu.
 STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Palvelunalennus tarjottu:{}{}Ensimmäinen {STRING}palvelu kohteesta {STRING} kohteeseen {STRING} ansaitsee vuoden mittaisen alennuksen paikallisviranomaisilta!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa 50% enemmän seuraavan vuoden!
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa tuplaten seuraavan vuoden!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa kolminkertaisesti seuraavan vuoden!
 STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Palvelunalennus ratkaistu yhtiön {STRING} hyväksi!{}{}{STRING}palvelu asemalta {STATION} asemalle {STATION} tuottaa nelinkertaisesti seuraavan vuoden!
-STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}:n paikallisviranomaiset kieltäytyvät sallimasta toisen lentokentän rakentamista tähän kaupunkiin
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät sallimasta toisen lentokentän rakentamista tähän kaupunkiin
 STR_2036_COTTAGES						:Mökkiä
 STR_2037_HOUSES							:Taloa
 STR_2038_FLATS							:Asuntoa
@@ -1713,33 +1715,33 @@ STR_SV_STNAME_SOUTH						:Etelä-{STRING}
 STR_SV_STNAME_EAST						:Itä-{STRING}
 STR_SV_STNAME_WEST						:Länsi-{STRING}
 STR_SV_STNAME_CENTRAL						:Keski-{STRING}
-STR_SV_STNAME_TRANSFER						:{STRING}:n kuljetus
-STR_SV_STNAME_HALT						:{STRING}:n pysähdys
-STR_SV_STNAME_VALLEY						:{STRING}:n laakso
-STR_SV_STNAME_HEIGHTS						:{STRING}:n kukkulat
-STR_SV_STNAME_WOODS						:{STRING}:n metsä
-STR_SV_STNAME_LAKESIDE						:{STRING}:n järvenranta
-STR_SV_STNAME_EXCHANGE						:{STRING}:n vaihde ##
-STR_SV_STNAME_AIRPORT						:{STRING}:n lentokenttä
-STR_SV_STNAME_OILFIELD						:{STRING}:n öljykenttä
-STR_SV_STNAME_MINES						:{STRING}:n kaivokset
-STR_SV_STNAME_DOCKS						:{STRING}:n satamat
-STR_SV_STNAME_BUOY_1						:{STRING}:n poiju 1
-STR_SV_STNAME_BUOY_2						:{STRING}:n poiju 2
-STR_SV_STNAME_BUOY_3						:{STRING}:n poiju 3
-STR_SV_STNAME_BUOY_4						:{STRING}:n poiju 4
-STR_SV_STNAME_BUOY_5						:{STRING}:n poiju 5
-STR_SV_STNAME_BUOY_6						:{STRING}:n poiju 6
-STR_SV_STNAME_BUOY_7						:{STRING}:n poiju 7
-STR_SV_STNAME_BUOY_8						:{STRING}:n poiju 8
-STR_SV_STNAME_BUOY_9						:{STRING}:n poiju 9
-STR_SV_STNAME_ANNEXE						:{STRING}:n lisärakennus
+STR_SV_STNAME_TRANSFER						:{STRING} kuljetus
+STR_SV_STNAME_HALT						:{STRING} pysähdys
+STR_SV_STNAME_VALLEY						:{STRING} laakso
+STR_SV_STNAME_HEIGHTS						:{STRING} kukkulat
+STR_SV_STNAME_WOODS						:{STRING} metsä
+STR_SV_STNAME_LAKESIDE						:{STRING} järvenranta
+STR_SV_STNAME_EXCHANGE						:{STRING} vaihde ##
+STR_SV_STNAME_AIRPORT						:{STRING} lentokenttä
+STR_SV_STNAME_OILFIELD						:{STRING} öljykenttä
+STR_SV_STNAME_MINES						:{STRING} kaivokset
+STR_SV_STNAME_DOCKS						:{STRING} satamat
+STR_SV_STNAME_BUOY_1						:{STRING} poiju 1
+STR_SV_STNAME_BUOY_2						:{STRING} poiju 2
+STR_SV_STNAME_BUOY_3						:{STRING} poiju 3
+STR_SV_STNAME_BUOY_4						:{STRING} poiju 4
+STR_SV_STNAME_BUOY_5						:{STRING} poiju 5
+STR_SV_STNAME_BUOY_6						:{STRING} poiju 6
+STR_SV_STNAME_BUOY_7						:{STRING} poiju 7
+STR_SV_STNAME_BUOY_8						:{STRING} poiju 8
+STR_SV_STNAME_BUOY_9						:{STRING} poiju 9
+STR_SV_STNAME_ANNEXE						:{STRING} lisärakennus
 STR_SV_STNAME_SIDINGS						:{STRING}:n sivuraide
-STR_SV_STNAME_BRANCH						:{STRING}:n haarautuma
+STR_SV_STNAME_BRANCH						:{STRING} haarautuma
 STR_SV_STNAME_UPPER						:Ylä-{STRING}
 STR_SV_STNAME_LOWER						:Ala-{STRING}
-STR_SV_STNAME_HELIPORT						:{STRING}:n helikopterikenttä
-STR_SV_STNAME_FOREST						:{STRING}:n metsä
+STR_SV_STNAME_HELIPORT						:{STRING} helikopterikenttä
+STR_SV_STNAME_FOREST						:{STRING} metsä
 
 ############ end of	savegame specific region!
 
@@ -1851,8 +1853,8 @@ STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Yhteensä:
 STR_7021							:{STRING}{STRING}
 STR_7022_INCOME_GRAPH						:{WHITE}Tulokuvaaja
-STR_CURRCOMPACT32							:{CURRCOMPACT}
-STR_CURRCOMPACT64							:{CURRCOMPACT64}
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Tuottokuvaaja
 STR_7026_BANK_BALANCE						:{WHITE}Tilin kate

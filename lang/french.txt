@@ -856,6 +856,7 @@ STR_TOWNNAME_CZECH						:Tchèques
 STR_TOWNNAME_SLOVAKISH						:Slovaques
 STR_TOWNNAME_HUNGARIAN						:Hongrois
 STR_TOWNNAME_AUSTRIAN						:Autrichiens
+STR_TOWNNAME_ROMANIAN						:Roumain
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Livres ({POUNDSIGN})
@@ -879,6 +880,7 @@ STR_CURR_RUR							:Roubles Russes (RUR)
 STR_CURR_CZK							:Couronnes Tchèques (CZK)
 STR_CURR_ISK							:Couronnes Islandaises (ISK)
 STR_CURR_NOK							:Cour. Norvégiennes (NOK)
+STR_CURR_ROL							:Leu Roumain (Lei)
 STR_CURR_EUR							:Euros (EUR)
 
 STR_OPTIONS_LANG						:{BLACK}Langue
@@ -1223,8 +1225,11 @@ STR_NETWORK_6_PLAYERS						:6 joueurs
 STR_NETWORK_7_PLAYERS						:7 joueurs
 STR_NETWORK_8_PLAYERS						:8 joueurs
 STR_NETWORK_START_GAME						:{BLACK}Démarrer la partie
+STR_NETWORK_START_GAME_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
 STR_NETWORK_LOAD_GAME						:{BLACK}Charger une partie
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Continuer une partie multijoueur sauvée précédemment (attention à reprendre le même joueur)
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Charger un scénario
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'un scénario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chat d'avant jeu
 
@@ -1848,8 +1853,8 @@ STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Total:
 STR_7021							:{STRING}{STRING}
 STR_7022_INCOME_GRAPH						:{WHITE}Graphique du Revenu
-STR_CURRCOMPACT32							:{CURRCOMPACT}
-STR_CURRCOMPACT64							:{CURRCOMPACT64}
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graphique du profit d'opération
 STR_7026_BANK_BALANCE						:{WHITE}Equilibre bancaire
@@ -2554,6 +2559,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Inondations!{}Au moins {COM
 STR_BRIBE_FAILED						:{WHITE}Votre tentative de corruption à été
 STR_BRIBE_FAILED_2						:{WHITE}révélée à la presse par un journaliste régional.
 STR_BUILD_DATE							:{BLACK}Construit le: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Le jeu est en pause.{}La commande ne peut pas être exécutée
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Détail de l'évaluation de la performance
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Détail

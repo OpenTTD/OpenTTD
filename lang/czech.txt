@@ -856,6 +856,7 @@ STR_TOWNNAME_CZECH						:Ceska
 STR_TOWNNAME_SLOVAKISH						:Slovenská
 STR_TOWNNAME_HUNGARIAN						:Madarska
 STR_TOWNNAME_AUSTRIAN						:Rakouská
+STR_TOWNNAME_ROMANIAN						:Rumunská
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Anglické libry ({POUNDSIGN})
@@ -879,6 +880,7 @@ STR_CURR_RUR							:Ruské rubly (RUR)
 STR_CURR_CZK							:Ceske koruny (CZK)
 STR_CURR_ISK							:Islandské koruny (ISK)
 STR_CURR_NOK							:Norské koruny (NOK)
+STR_CURR_ROL							:Rumunský Lei
 STR_CURR_EUR							:Eura (€)
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
@@ -1851,8 +1853,8 @@ STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Celkem:
 STR_7021							:{STRING}{STRING}
 STR_7022_INCOME_GRAPH						:{WHITE}Graf prijmu
-STR_CURRCOMPACT32							:{CURRCOMPACT}
-STR_CURRCOMPACT64							:{CURRCOMPACT64}
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graf provozního zisku
 STR_7026_BANK_BALANCE						:{WHITE}Stav na uctu

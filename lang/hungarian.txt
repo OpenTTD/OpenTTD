@@ -856,6 +856,7 @@ STR_TOWNNAME_CZECH						:Cseh
 STR_TOWNNAME_SLOVAKISH						:Szlovák
 STR_TOWNNAME_HUNGARIAN						:Magyar
 STR_TOWNNAME_AUSTRIAN						:Osztrák
+STR_TOWNNAME_ROMANIAN						:Romániai
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Font ({POUNDSIGN})
@@ -879,6 +880,7 @@ STR_CURR_RUR							:Orosz Rubel (rur)
 STR_CURR_CZK							:Cseh Korona (CZK)
 STR_CURR_ISK							:Izlandi Korona (ISK)
 STR_CURR_NOK							:Norvég Korona (NOK)
+STR_CURR_ROL							:Román Lej (Lej)
 STR_CURR_EUR							:Euró (€)
 
 STR_OPTIONS_LANG						:{BLACK}Nyelv
@@ -1851,8 +1853,8 @@ STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Összesen:
 STR_7021							:{STRING}{STRING}
 STR_7022_INCOME_GRAPH						:{WHITE}Jövedelem grafikon
-STR_CURRCOMPACT32							:{CURRCOMPACT}
-STR_CURRCOMPACT64							:{CURRCOMPACT64}
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Mûködési nyereség grafikon
 STR_7026_BANK_BALANCE						:{WHITE}Banki egyenleg
