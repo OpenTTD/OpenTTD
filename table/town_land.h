@@ -5,7 +5,9 @@ enum {
 	HOUSE_ARCT_CHURCH    = 0x3c,
 	HOUSE_SNOW_CHURCH    = 0x3d,
 	HOUSE_TROP_CHURCH    = 0x53,
-	HOUSE_TOY_CHURCH     = 0x5b
+	HOUSE_TOY_CHURCH     = 0x5b,
+
+	HOUSE_MAX            = 110
 };
 
 #define M(s1, s2, sx, sy, w, h, dz, p) {s1, s2, sx, sy, w - 1, h - 1, dz, p}
@@ -1773,6 +1775,8 @@ static const DrawTownTileStruct _town_draw_tile_data[] = {
 	M(    0x1244,     0x125a,  0,  0, 16, 16,  50, 0),
 };
 #undef M
+// 4 variants * 4 build stages
+assert_compile(lengthof(_town_draw_tile_data) == HOUSE_MAX * 4 * 4);
 
 
 static const StringID _town_tile_names[] = {
@@ -1887,8 +1891,9 @@ static const StringID _town_tile_names[] = {
 	STR_205B_TEAPOT_HOUSE,
 	STR_205C_PIGGY_BANK,
 };
+assert_compile(lengthof(_town_tile_names) == HOUSE_MAX);
 
-static const uint16 _housetype_flags[110] = {
+static const uint16 _housetype_flags[] = {
 	0x1010, 0x1018, 0x100E, 0x100F, 0x7010, 0x0810, 0x100F, 0x1014,
 	0x0000, 0x7018, 0x7010, 0x1004, 0x1008, 0x1018, 0x101C, 0x101C,
 	0x101C, 0x7010, 0x1010, 0x1010, 0x100F, 0x0000, 0x0000, 0x0000,
@@ -1904,8 +1909,9 @@ static const uint16 _housetype_flags[110] = {
 	0x800F, 0x800F, 0x801C, 0x801F, 0x0000, 0x801C, 0x8001, 0x8001,
 	0x801C, 0x801C, 0x801C, 0x801C, 0x801F, 0x801F,
 };
+assert_compile(lengthof(_housetype_flags) == HOUSE_MAX);
 
-static const byte _housetype_extra_flags[110] = {
+static const byte _housetype_extra_flags[] = {
 	 0, 0, 0, 0,32,32, 0, 8,
 	 0, 0, 0, 0, 0, 0, 0, 0,
 	 0, 0, 0, 0,16, 0, 0, 0,
@@ -1921,8 +1927,9 @@ static const byte _housetype_extra_flags[110] = {
 	 0, 0, 0, 8, 0, 0, 0, 0,
 	 0, 0, 0, 0, 0, 0,
 };
+assert_compile(lengthof(_housetype_extra_flags) == HOUSE_MAX);
 
-static const byte _housetype_population[110] = {
+static const byte _housetype_population[] = {
 	187,  85,  40,   5, 220, 220,  30, 140,
 	  0,   0,   0,   0,   0, 150,  95,  95,
 	 95, 130,   6, 110,  65,   0,   0,   0,
@@ -1938,8 +1945,9 @@ static const byte _housetype_population[110] = {
 	 19,  21,  75,  35,   0,  85,  11,  10,
 	 67,  86,  95,  30,  25,  18,
 };
+assert_compile(lengthof(_housetype_population) == HOUSE_MAX);
 
-static const byte _housetype_mailamount[110] = {
+static const byte _housetype_mailamount[] = {
 	70, 55, 20,  2, 85, 85, 12, 22,
 	22,  0,  0,  0,  0, 65, 48, 48,
 	48, 50, 10, 55,  5,  5,  5,  5,
@@ -1955,9 +1963,9 @@ static const byte _housetype_mailamount[110] = {
 	 6,  6, 20,  9,  0, 18,  3,  3,
 	22, 23, 28, 10,  8,  7,
 };
+assert_compile(lengthof(_housetype_mailamount) == HOUSE_MAX);
 
-
-static const byte _housetype_remove_cost[110] = {
+static const byte _housetype_remove_cost[] = {
 	 150, 140, 100,  90, 160, 160,  80, 180,
 	 180,  65,  65,  60,  60, 130, 110, 105,
 	 107, 200, 145, 155, 250, 250, 250, 250,
@@ -1973,8 +1981,9 @@ static const byte _housetype_remove_cost[110] = {
 	  80,  80, 160,  90,  90, 150,  60,  60,
 	 140, 145, 165,  90,  75,  85,
 };
+assert_compile(lengthof(_housetype_remove_cost) == HOUSE_MAX);
 
-static const uint16 _housetype_remove_ratingmod[110] = {
+static const uint16 _housetype_remove_ratingmod[] = {
 	 140, 130,  90, 230, 160, 160,  80, 150,
 	 150,  40,  40,  75,  75, 110, 100, 100,
 	 100, 150, 110, 110, 300, 300, 300, 300,
@@ -1990,13 +1999,14 @@ static const uint16 _housetype_remove_ratingmod[110] = {
 	  75,  75, 130,  80,  80, 130,  45,  45,
 	 130, 130, 130,  70,  65,  95,
 };
+assert_compile(lengthof(_housetype_remove_ratingmod) == HOUSE_MAX);
 
 
 typedef struct {
 	byte min,max;
 } HousetypeYear;
 
-static const HousetypeYear _housetype_years[110] = {
+static const HousetypeYear _housetype_years[] = {
 	{43, 255},
 	{37, 255},
 	{48, 255},
@@ -2108,8 +2118,9 @@ static const HousetypeYear _housetype_years[110] = {
 	{0,  255},
 	{0,  255},
 };
+assert_compile(lengthof(_housetype_years) == HOUSE_MAX);
 
-static const byte _housetype_cargo_passengers[110] = {
+static const byte _housetype_cargo_passengers[] = {
 	8, 8, 8, 2, 10,10,4, 6,
 	6, 2, 2, 2, 2, 8, 6, 6,
 	6, 10,6, 6, 4, 4, 4, 4,
@@ -2125,8 +2136,9 @@ static const byte _housetype_cargo_passengers[110] = {
 	3, 3, 8, 4, 4, 8, 3, 3,
 	8, 8, 8, 4, 3, 3,
 };
+assert_compile(lengthof(_housetype_cargo_passengers) == HOUSE_MAX);
 
-static const byte _housetype_cargo_mail[110] = {
+static const byte _housetype_cargo_mail[] = {
 	 3, 3, 3, 0, 4, 4, 1, 1,
 	 1, 0, 0, 0, 0, 2, 2, 2,
 	 2, 3, 3, 2, 0, 0, 0, 0,
@@ -2142,6 +2154,7 @@ static const byte _housetype_cargo_mail[110] = {
 	 1, 1, 4, 1, 1, 4, 1, 1,
 	 4, 4, 4, 1, 1, 2,
 };
+assert_compile(lengthof(_housetype_cargo_mail) == HOUSE_MAX);
 
 static const byte _housetype_cargo_goods[] = {
 	 4, 4, 1, 0, 6, 6, 0, 2,
@@ -2159,6 +2172,7 @@ static const byte _housetype_cargo_goods[] = {
 	 2, 2, 2, 2, 2, 2, 1, 1,
 	 0, 0, 2, 2, 2, 0
 };
+assert_compile(lengthof(_housetype_cargo_goods) == HOUSE_MAX);
 
 static const byte _housetype_cargo_food[] = {
 	 0, 0, 0, 0, 0, 0, 0, 0,
@@ -2176,8 +2190,9 @@ static const byte _housetype_cargo_food[] = {
 	 0, 0, 0, 0, 0, 0, 0, 0,
 	 4, 4, 0, 0, 0, 4
 };
+assert_compile(lengthof(_housetype_cargo_food) == HOUSE_MAX);
 
-static const byte _house_more_flags[110] = {
+static const byte _house_more_flags[] = {
 	  8,  8,  8,  8,  8,  8,  8, 12,
 	  0,  8,  8,  8,  8,  8,  8,  8,
 	  8,  8,  8,  8, 15,  0,  0,  0,
@@ -2193,4 +2208,4 @@ static const byte _house_more_flags[110] = {
 	  8,  8,  8, 12,  0,  8,  8,  8,
 	  8,  8,  8,  8,  8,  8,
 };
-
+assert_compile(lengthof(_house_more_flags) == HOUSE_MAX);
