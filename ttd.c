@@ -436,23 +436,40 @@ void SetDebugString(const char *s)
 	int v;
 	char *end;
 	const char *t;
-	int *p;
+
+	typedef struct DebugLevel {
+		const char* name;
+		int* level;
+	} DebugLevel;
+
+	#define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
+	static const DebugLevel debug_level[] = {
+		DEBUG_LEVEL(ai),
+		DEBUG_LEVEL(grf),
+		DEBUG_LEVEL(map),
+		DEBUG_LEVEL(misc),
+		DEBUG_LEVEL(ms),
+		DEBUG_LEVEL(net),
+		DEBUG_LEVEL(spritecache)
+	};
+	#undef DEBUG_LEVEL
 
 	// global debugging level?
 	if (*s >= '0' && *s <= '9') {
+		const DebugLevel *i;
+
 		v = strtoul(s, &end, 0);
 		s = end;
 
-		_debug_spritecache_level = v;
-		_debug_misc_level = v;
-		_debug_grf_level = v;
-		_debug_ai_level = v;
-		_debug_net_level = v;
-		_debug_map_level = v;
+		for (i = debug_level; i != endof(debug_level); ++i)
+			*i->level = v;
 	}
 
 	// individual levels
 	for(;;) {
+		const DebugLevel *i;
+		int *p;
+
 		// skip delimiters
 		while (*s == ' ' || *s == ',' || *s == '\t') s++;
 		if (*s == 0) break;
@@ -460,24 +477,23 @@ void SetDebugString(const char *s)
 		t = s;
 		while (*s >= 'a' && *s <= 'z') s++;
 
-#define IS_LVL(x) (s - t == sizeof(x)-1 && !memcmp(t, x, sizeof(x)-1))
 		// check debugging levels
-		if IS_LVL("misc") p = &_debug_misc_level;
-		else if IS_LVL("spritecache") p = &_debug_spritecache_level;
-		else if IS_LVL("grf") p = &_debug_grf_level;
-		else if IS_LVL("ai") p = &_debug_ai_level;
-		else if IS_LVL("net") p = &_debug_net_level;
-		else if IS_LVL("map") p = &_debug_map_level;
-		else if IS_LVL("ms") p = &_debug_ms_level;
-		else {
-			ShowInfoF("Unknown debug level '%.*s'", s-t, t);
-			return;
-		}
-#undef IS_LVL
+		p = NULL;
+		for (i = debug_level; i != endof(debug_level); ++i)
+			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
+				p = i->level;
+				break;
+			}
+
 		if (*s == '=') s++;
 		v = strtoul(s, &end, 0);
 		s = end;
-		if (p) *p = v;
+		if (p != NULL)
+			*p = v;
+		else {
+			ShowInfoF("Unknown debug level '%.*s'", s - t, t);
+			return;
+		}
 	}
 }
 
