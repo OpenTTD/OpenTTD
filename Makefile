@@ -667,8 +667,7 @@ ifdef WITH_DIRECTMUSIC
 CXX_SOURCES += w32dm2.cpp
 endif
 
-DEPS1 = $(foreach obj,$(OBJS),.deps/$(obj))
-DEPS = $(DEPS1:%.o=%.P)
+DEPS = $(OBJS:%.o=.deps/%.d)
 
 LANG_TXT = $(filter-out %.unfinished.txt,$(wildcard lang/*.txt))
 LANGS = $(LANG_TXT:%.txt=%.lng)
@@ -912,20 +911,19 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # first compilation round as we just build everything at that time anyway,
 # therefore we do not need to watch deps.
 
-
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
-	@$(CC) $(CFLAGS) $(CDEFS) -Wp,-MD,.deps/$(*F).pp -c $< -o $@
-	@-cp .deps/$(*F).pp .deps/$(*F).P; \
-		tr ' ' '\012' < .deps/$(*F).pp \
-		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-		>> .deps/$(*F).P; \
-	rm .deps/$(*F).pp
+	@$(CC) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
+	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
-# For DirectMusic build and BeOS specific parts
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
-	@$(CXX) $(CFLAGS) $(CDEFS) -c $< -o $@
+	@$(CXX) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
+	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
+
+# Silence stale header dependencies
+%.h:
+	@true
 
 
 info:
