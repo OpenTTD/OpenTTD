@@ -53,7 +53,10 @@ int compare_FiosItems (const void *a, const void *b) {
 	if (_savegame_sort_order < 2) // sort by date
     r = da->mtime < db->mtime ? -1 : 1;
 	else
-		r = strcasecmp(da->title[0] ? da->title : da->name, db->title[0] ? db->title : db->name);
+		r = strcasecmp(
+			da->title[0] != '\0' ? da->title : da->name,
+			db->title[0] != '\0' ? db->title : db->name
+		);
 
 	if (_savegame_sort_order & 1) r = -r;
 	return r;
@@ -75,13 +78,13 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		strcpy(_fios_save_path, _path.save_dir);
 	}
 
-	if(_game_mode==GM_EDITOR)
+	if (_game_mode == GM_EDITOR)
 		_fios_path = _fios_scn_path;
 	else
 		_fios_path = _fios_save_path;
 
 	// Parent directory, only if not in root already.
-	if (_fios_path[1] != 0) {
+	if (_fios_path[1] != '\0') {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -91,15 +94,15 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	// Show subdirectories first
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
-		while ((dirent = readdir(dir))) {
-			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || !S_ISDIR(sb.st_mode))
-				continue;
-			if (dirent->d_name[0] != '.') {
+		while ((dirent = readdir(dir)) != NULL) {
+			snprintf(filename, lengthof(filename), "%s/%s",
+				_fios_path, dirent->d_name);
+			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
+					dirent->d_name[0] != '.') {
 				fios = FiosAlloc();
 				fios->mtime = 0;
 				fios->type = FIOS_TYPE_DIR;
-				fios->title[0] = 0;
+				fios->title[0] = '\0';
 				sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
 			}
 		}
@@ -123,31 +126,33 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	 *	.SV1	Transport Tycoon Deluxe (Patch) saved game
 	 *	.SV2	Transport Tycoon Deluxe (Patch) saved 2-player game
 	 */
-	dir = opendir(_fios_path[0] ? _fios_path : "/");
+	dir = opendir(_fios_path[0] != '\0' ? _fios_path : "/");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
 			char *t;
 
-			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || S_ISDIR(sb.st_mode))
-				continue;
+			snprintf(filename, lengthof(filename), "%s/%s",
+				_fios_path, dirent->d_name);
+			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t && !strcasecmp(t, ".sav")) { // OpenTTD
-				*t = 0; // cut extension
+			if (t != NULL && strcasecmp(t, ".sav") == 0) { // OpenTTD
+				*t = '\0'; // cut extension
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_FILE;
 				fios->mtime = sb.st_mtime;
 				fios->title[0] = 0;
 				ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
-
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 				int ext = 0; // start of savegame extensions in _old_extensions[]
-				if (t && ((ext++, !strcasecmp(t, ".ss1")) || (ext++, !strcasecmp(t, ".sv1"))
-				          || (ext++, !strcasecmp(t, ".sv2"))) ) { // TTDLX(Patch)
-					*t = 0; // cut extension
+				if (t != NULL && (
+							(ext++, strcasecmp(t, ".ss1") == 0) ||
+							(ext++, strcasecmp(t, ".sv1") == 0) ||
+							(ext++, strcasecmp(t, ".sv2") == 0)
+						)) { // TTDLX(Patch)
+					*t = '\0'; // cut extension
 					fios = FiosAlloc();
-					fios->old_extension = ext-1;
+					fios->old_extension = ext - 1;
 					fios->type = FIOS_TYPE_OLDFILE;
 					fios->mtime = sb.st_mtime;
 					ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
@@ -183,15 +188,15 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	// Show subdirectories first
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
-		while ((dirent = readdir(dir))) {
-			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || !S_ISDIR(sb.st_mode))
-				continue;
-			if (dirent->d_name[0] != '.') {
+		while ((dirent = readdir(dir)) != NULL) {
+			snprintf(filename, lengthof(filename), "%s/%s",
+				_fios_path, dirent->d_name);
+			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
+					dirent->d_name[0] != '.') {
 				fios = FiosAlloc();
-				fios->mtime = 0;
+				fios->mtime = '\0';
 				fios->type = FIOS_TYPE_DIR;
-				fios->title[0] = 0;
+				fios->title[0] = '\0';
 				sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
 			}
 		}
@@ -208,26 +213,28 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	 */
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
-		while ((dirent = readdir(dir))) {
+		while ((dirent = readdir(dir)) != NULL) {
 			char *t;
 
 			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || S_ISDIR(sb.st_mode))
-				continue;
+			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t && !strcasecmp(t, ".scn")) { // OpenTTD
-				*t = 0; // cut extension
+			if (t != NULL && strcasecmp(t, ".scn") != 0) { // OpenTTD
+				*t = '\0'; // cut extension
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_SCENARIO;
 				fios->mtime = sb.st_mtime;
-				fios->title[0] = 0;
+				fios->title[0] = '\0';
 				ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
-
-			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
+			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
+					mode == SLD_NEW_GAME) {
 				int ext = 3; // start of scenario extensions in _old_extensions[]
-				if (t && ((ext++, !strcasecmp(t, ".sv0")) || (ext++, !strcasecmp(t, ".ss0"))) ) {// TTDLX(Patch)
-					*t = 0; // cut extension
+				if (t != NULL && (
+							(ext++, strcasecmp(t, ".sv0") == 0) ||
+							(ext++, strcasecmp(t, ".ss0") == 0)
+						)) {// TTDLX(Patch)
+					*t = '\0'; // cut extension
 					fios = FiosAlloc();
 					fios->old_extension = ext-1;
 					fios->type = FIOS_TYPE_OLD_SCENARIO;
@@ -261,35 +268,36 @@ char *FiosBrowseTo(const FiosItem *item)
 	char *path = _fios_path;
 	char *s;
 
-	switch(item->type) {
-	case FIOS_TYPE_PARENT:
-		s = strrchr(path, '/');
-		if (s != NULL) *s = 0;
-		break;
+	switch (item->type) {
+		case FIOS_TYPE_PARENT:
+			s = strrchr(path, '/');
+			if (s != NULL) *s = '\0';
+			break;
 
-	case FIOS_TYPE_DIR:
-		s = strchr(item->name, '/');
-		if (s) *s = 0;
-		while (*path) path++;
-		*path++ = '/';
-		strcpy(path, item->name);
-		break;
+		case FIOS_TYPE_DIR:
+			s = strchr(item->name, '/');
+			if (s != NULL) *s = '\0';
+			strcat(path, "/");
+			strcat(path, item->name);
+			break;
 
-	case FIOS_TYPE_FILE:
-		FiosMakeSavegameName(str_buffr, item->name);
-		return str_buffr;
+		case FIOS_TYPE_FILE:
+			FiosMakeSavegameName(str_buffr, item->name);
+			return str_buffr;
 
-	case FIOS_TYPE_OLDFILE:
-		sprintf(str_buffr, "%s/%s.%s", _fios_path, item->name, _old_extensions[item->old_extension]);
-		return str_buffr;
+		case FIOS_TYPE_OLDFILE:
+			sprintf(str_buffr, "%s/%s.%s",
+				_fios_path, item->name, _old_extensions[item->old_extension]);
+			return str_buffr;
 
-	case FIOS_TYPE_SCENARIO:
-		sprintf(str_buffr, "%s/%s.scn", path, item->name);
-		return str_buffr;
+		case FIOS_TYPE_SCENARIO:
+			sprintf(str_buffr, "%s/%s.scn", path, item->name);
+			return str_buffr;
 
-	case FIOS_TYPE_OLD_SCENARIO:
-		sprintf(str_buffr, "%s/%s.%s", path, item->name, _old_extensions[item->old_extension]);
-		return str_buffr;
+		case FIOS_TYPE_OLD_SCENARIO:
+			sprintf(str_buffr, "%s/%s.%s",
+				path, item->name, _old_extensions[item->old_extension]);
+			return str_buffr;
 	}
 
 	return NULL;
@@ -300,20 +308,18 @@ char *FiosBrowseTo(const FiosItem *item)
 //  string describing the path.
 StringID FiosGetDescText(const char **path)
 {
-	*path = _fios_path[0] ? _fios_path : "/";
+	*path = _fios_path[0] != '\0' ? _fios_path : "/";
 
 #if defined(__linux__)
 	{
-	struct statvfs s;
+		struct statvfs s;
 
-	if (statvfs(*path, &s) == 0)
-	{
-		uint64 tot = (uint64)s.f_bsize * s.f_bavail;
-		SetDParam(0, (uint32)(tot >> 20));
-		return STR_4005_BYTES_FREE;
-	}
-	else
-		return STR_4006_UNABLE_TO_READ_DRIVE;
+		if (statvfs(*path, &s) == 0) {
+			uint64 tot = (uint64)s.f_bsize * s.f_bavail;
+			SetDParam(0, (uint32)(tot >> 20));
+			return STR_4005_BYTES_FREE;
+		} else
+			return STR_4006_UNABLE_TO_READ_DRIVE;
 	}
 #else
 	SetDParam(0, 0);
@@ -323,7 +329,7 @@ StringID FiosGetDescText(const char **path)
 
 void FiosMakeSavegameName(char *buf, const char *name)
 {
-	if(_game_mode==GM_EDITOR)
+	if (_game_mode == GM_EDITOR)
 		sprintf(buf, "%s/%s.scn", _fios_path, name);
 	else
 		sprintf(buf, "%s/%s.sav", _fios_path, name);
@@ -400,9 +406,10 @@ int GetLanguageList(char **languages, int max)
 
 	dir = opendir(_path.lang_dir);
 	if (dir != NULL) {
-		while ((dirent = readdir(dir))) {
+		while ((dirent = readdir(dir)) != NULL) {
 			char *t = strrchr(dirent->d_name, '.');
-			if (t && !strcmp(t, ".lng")) {
+
+			if (t != NULL && strcmp(t, ".lng") == 0) {
 				languages[num++] = strdup(dirent->d_name);
 				if (num == max) break;
 			}
@@ -419,7 +426,7 @@ static void ChangeWorkingDirectory(char *exe)
 {
 	char *s = strrchr(exe, '/');
 	if (s != NULL) {
-		*s = 0;
+		*s = '\0';
 		chdir(exe);
 		*s = '/';
 	}
@@ -461,21 +468,20 @@ void DeterminePaths(void)
 {
 	char *s;
 
-	_path.game_data_dir = malloc( MAX_PATH );
+	_path.game_data_dir = malloc(MAX_PATH);
 	ttd_strlcpy(_path.game_data_dir, GAME_DATA_DIR, MAX_PATH);
 	#if defined SECOND_DATA_DIR
-	_path.second_data_dir = malloc( MAX_PATH );
-	ttd_strlcpy( _path.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+	_path.second_data_dir = malloc(MAX_PATH);
+	ttd_strlcpy(_path.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
 	#endif
 
 #if defined(USE_HOMEDIR)
 	{
-		char *homedir;
-		homedir = getenv("HOME");
+		const char *homedir = getenv("HOME");
 
-		if(!homedir) {
-			struct passwd *pw = getpwuid(getuid());
-			if (pw) homedir = pw->pw_dir;
+		if (homedir == NULL) {
+			const struct passwd *pw = getpwuid(getuid());
+			if (pw != NULL) homedir = pw->pw_dir;
 		}
 
 		_path.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
@@ -483,14 +489,14 @@ void DeterminePaths(void)
 
 #else /* not defined(USE_HOMEDIR) */
 
-	_path.personal_dir = malloc( MAX_PATH );
+	_path.personal_dir = malloc(MAX_PATH);
 	ttd_strlcpy(_path.personal_dir, PERSONAL_DIR, MAX_PATH);
 
 	// check if absolute or relative path
 	s = strchr(_path.personal_dir, '/');
 
 	// add absolute path
-	if (s==NULL || _path.personal_dir != s) {
+	if (s == NULL || _path.personal_dir != s) {
 		getcwd(_path.personal_dir, MAX_PATH);
 		s = strchr(_path.personal_dir, 0);
 		*s++ = '/';
@@ -502,7 +508,7 @@ void DeterminePaths(void)
 	s = strchr(_path.personal_dir, 0);
 
 	// append a / ?
-	if (s[-1] != '/') { s[0] = '/'; s[1] = 0; }
+	if (s[-1] != '/') strcpy(s, "/");
 
 	_path.save_dir = str_fmt("%ssave", _path.personal_dir);
 	_path.autosave_dir = str_fmt("%s/autosave", _path.save_dir);
@@ -528,4 +534,7 @@ void DeterminePaths(void)
 	mkdir(_path.scenario_dir, 0755);
 }
 
-bool InsertTextBufferClipboard(Textbuf *tb) {return false;}
+bool InsertTextBufferClipboard(Textbuf *tb)
+{
+	return false;
+}
