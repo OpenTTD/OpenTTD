@@ -325,7 +325,7 @@ uint GetWaypointByTile(uint tile);
 void UpdateTrainAcceleration(Vehicle *v);
 int32 GetTrainRunningCost(Vehicle *v);
 
-int CheckTrainStoppedInDepot(Vehicle *v);
+int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 

@@ -343,10 +343,10 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 	/* check mine? */
 	if (HASBIT(free_names, M(STR_SV_STNAME_MINES))) {
 		if (CountMapSquareAround(tile, MP_INDUSTRY, 0, 6) >= 2 ||
-		    CountMapSquareAround(tile, MP_INDUSTRY, 0x64, 0x73) >= 2 ||
-		    CountMapSquareAround(tile, MP_INDUSTRY, 0x2F, 0x33) >= 2 ||
-		    CountMapSquareAround(tile, MP_INDUSTRY, 0x48, 0x58) >= 2 ||
-		    CountMapSquareAround(tile, MP_INDUSTRY, 0x5B, 0x63) >= 2) {
+				CountMapSquareAround(tile, MP_INDUSTRY, 0x64, 0x73) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, 0x2F, 0x33) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, 0x48, 0x58) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, 0x5B, 0x63) >= 2) {
 			found = M(STR_SV_STNAME_MINES);
 			goto done;
 		}
@@ -362,18 +362,20 @@ static bool GenerateStationName(Station *st, uint tile, int flag)
 	}
 
 	/* Check lakeside */
-	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE))
-	    && DistanceFromEdge(tile) < 20
-	    && CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
+	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
+			DistanceFromEdge(tile) < 20 &&
+			CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
 		found = M(STR_SV_STNAME_LAKESIDE);
 		goto done;
 	}
 
 	/* Check woods */
-	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) &&
-	    (CountMapSquareAround(tile, MP_TREES, 0, 255) >= 8 ||
-	     CountMapSquareAround(tile, MP_INDUSTRY, 0x10, 0x11) >= 2)) {
-		found = (_opt.landscape==LT_DESERT) ? M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
+	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) && (
+				CountMapSquareAround(tile, MP_TREES, 0, 255) >= 8 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, 0x10, 0x11) >= 2)
+			) {
+		found = _opt.landscape == LT_DESERT ?
+			M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
 		goto done;
 	}
 
@@ -889,11 +891,12 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 // stolen from TTDPatch
 static void GetStationLayout(byte *layout, int numtracks, int plat_len, struct StationSpec *spec)
 {
-	if (spec != NULL && spec->lengths >= plat_len && spec->platforms[plat_len - 1] >= numtracks
-	    && spec->layouts[plat_len - 1][numtracks - 1]) {
+	if (spec != NULL && spec->lengths >= plat_len &&
+			spec->platforms[plat_len - 1] >= numtracks &&
+			spec->layouts[plat_len - 1][numtracks - 1]) {
 		/* Custom layout defined, follow it. */
 		memcpy(layout, spec->layouts[plat_len - 1][numtracks - 1],
-		       plat_len * numtracks);
+			plat_len * numtracks);
 		return;
 	}
 
@@ -1181,8 +1184,8 @@ void SetCustomStation(byte local_stid, struct StationSpec *spec)
 		int i;
 
 		for (i = 0; i <= _statspec_highest_id[sclass]; i++) {
-			if (_station_spec[sclass][i].grfid == spec->grfid
-			    && _station_spec[sclass][i].localidx == local_stid + 1) {
+			if (_station_spec[sclass][i].grfid == spec->grfid &&
+					_station_spec[sclass][i].localidx == local_stid + 1) {
 				stid = i;
 				/* FIXME: Release original SpriteGroup to
 				 * prevent leaks. But first we need to
@@ -1251,8 +1254,7 @@ ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
 					/* TODO: Town structure. */
 
 				} else /* VSG_SELF */ {
-					if (dsg->variable == 0x40
-					    || dsg->variable == 0x41) {
+					if (dsg->variable == 0x40 || dsg->variable == 0x41) {
 						/* FIXME: This is ad hoc only
 						 * for waypoints. */
 						value = 0x01010000;
@@ -1313,7 +1315,7 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 	}
 
 	error("Custom station 0x%08x::0x%02x has no sprites associated.",
-	       spec->grfid, spec->localidx);
+		spec->grfid, spec->localidx);
 	/* This is what gets subscribed of dtss->image in newgrf.c,
 	 * so it's probably kinda "default offset". Try to use it as
 	 * emergency measure. */
@@ -3104,8 +3106,7 @@ static void Load_STNS(void)
 		}
 	}
 
-	/* This is to ensure all pointers are within the limits of
-	    _stations_size */
+	/* This is to ensure all pointers are within the limits of _stations_size */
 	if (_station_tick_ctr > GetStationPoolSize())
 		_station_tick_ctr = 0;
 }

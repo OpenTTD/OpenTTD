@@ -64,13 +64,15 @@ static bool TrainShouldStop(Vehicle *v, TileIndex tile)
 	assert(IsTileType(v->tile, MP_STATION));
 	//When does a train drive through a station
 	//first we deal with the "new nonstop handling"
-	if ( _patches.new_nonstop && o->flags & OF_NON_STOP && _map2[tile] == o->station )
+	if (_patches.new_nonstop && o->flags & OF_NON_STOP &&
+			_map2[tile] == o->station )
 		return false;
 
 	if (v->last_station_visited == _map2[tile])
 		return false;
 
-	if ( _map2[tile] != o->station && (o->flags & OF_NON_STOP || _patches.new_nonstop))
+	if (_map2[tile] != o->station &&
+			(o->flags & OF_NON_STOP || _patches.new_nonstop))
 		return false;
 
 	return true;
@@ -122,24 +124,22 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		}
 
 		//if we have a 90 degree turn, fix the speed limit to 60
-		if ( _curve_neighbours90[dir][0] == ndir || _curve_neighbours90[dir][1] == ndir) {
+		if (_curve_neighbours90[dir][0] == ndir ||
+				_curve_neighbours90[dir][1] == ndir) {
 			max_speed = 61;
 		}
 	}
 
-	for(i = 0; i < numcurve; i++) {
-		sum += dist[i];
-	}
+	for (i = 0; i < numcurve; i++) sum += dist[i];
 
 	free(dist);
 	dist = NULL;
 
-	if (numcurve > 0) {
-		sum /= numcurve;
-	}
+	if (numcurve > 0) sum /= numcurve;
 
-	if ((curvecount[0] != 0 || curvecount[1] != 0) && (max_speed > 88)) {
+	if ((curvecount[0] != 0 || curvecount[1] != 0) && max_speed > 88) {
 		int total = curvecount[0] + curvecount[1];
+
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
 			max_speed = 0xFFFF;
 		} else if (total > 1) {
@@ -221,53 +221,55 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		switch (v->u.rail.railtype) {
 			case 0:
 			case 1:
-			{
 				force = power / speed; //[N]
 				force *= 22;
 				force /= 10;
-			} break;
+				break;
+
 			case 2:
 				force = power / 25;
-			break;
+				break;
 		}
-	} else
+	} else {
 		//"kickoff" acceleration
 		force = resistance * 10;
+	}
 
 	if (force <= 0) force = 10000;
 
-	if (v->u.rail.railtype != 2)
-		force = min(force, mass * 10 * 200);
+	if (v->u.rail.railtype != 2) force = min(force, mass * 10 * 200);
 
 	if (mode == AM_ACCEL) {
 		return (force - resistance) / (mass * 4);
 	} else {
-		return min((-force - resistance) /(mass * 4), (10000 / (mass * 4)));
+		return min((-force - resistance) / (mass * 4), 10000 / (mass * 4));
 	}
 }
 
 void UpdateTrainAcceleration(Vehicle *v)
 {
-	uint acc, power=0, max_speed=5000, weight=0;
+	uint power = 0;
+	uint max_speed = 5000;
+	uint weight = 0;
 	Vehicle *u = v;
 
 	assert(v->subtype == TS_Front_Engine);
 
 	// compute stuff like max speed, power, and weight.
-	do {
+	for (; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
 		// power is sum of the power for all engines
 		power += rvi->power;
 
 		// limit the max speed to the speed of the slowest vehicle.
-		if (rvi->max_speed && rvi->max_speed <= max_speed) max_speed = rvi->max_speed;
+		if (rvi->max_speed != 0 && rvi->max_speed <= max_speed)
+			max_speed = rvi->max_speed;
 
 		// weight is the sum of the weight of the wagon and the weight of the cargo.
 		weight += rvi->weight;
-		weight += (_cargoc.weights[u->cargo_type] * u->cargo_count) >> 4;
-
-	} while ( (u=u->next) != NULL);
+		weight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+	}
 
 	// these are shown in the UI
 	v->u.rail.cached_weight = weight;
@@ -276,13 +278,7 @@ void UpdateTrainAcceleration(Vehicle *v)
 
 	assert(weight != 0);
 
-	// compute acceleration
-	acc = power / weight * 4;
-
-	if (acc >= 255) acc=255;
-	if (acc == 0) acc++;
-
-	v->acceleration = (byte)acc;
+	v->acceleration = clamp(power / weight * 4, 1, 255);
 }
 
 int GetTrainImage(Vehicle *v, byte direction)
@@ -292,7 +288,7 @@ int GetTrainImage(Vehicle *v, byte direction)
 
 	if (is_custom_sprite(img)) {
 		base = GetCustomVehicleSprite(v, direction + 4 * is_custom_secondhead_sprite(img));
-		if (base) return base;
+		if (base != 0) return base;
 		img = _engine_original_sprites[v->engine_type];
 	}
 
@@ -312,22 +308,24 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleIcon(engine, 6);
-		if (!image) img = _engine_original_sprites[engine];
+		if (image == 0) img = _engine_original_sprites[engine];
 	}
-	if (!image) {
+	if (image == 0) {
 		image = (6 & _engine_sprite_and[img]) + _engine_sprite_base[img];
 	}
 
 	if (rvi->flags & RVI_MULTIHEAD) {
-		DrawSprite(image | image_ormod, x-14, y);
+		DrawSprite(image | image_ormod, x - 14, y);
 		x += 15;
 		image = 0;
 		if (is_custom_sprite(img)) {
 			image = GetCustomVehicleIcon(engine, 2);
-			if (!image) img = _engine_original_sprites[engine];
+			if (image == 0) img = _engine_original_sprites[engine];
 		}
-		if (!image) {
-			image = ((6 + _engine_sprite_add[img+1]) & _engine_sprite_and[img+1]) + _engine_sprite_base[img+1];
+		if (image == 0) {
+			image =
+				((6 + _engine_sprite_add[img + 1]) & _engine_sprite_and[img + 1]) +
+				_engine_sprite_base[img + 1];
 		}
 	}
 	DrawSprite(image | image_ormod, x, y);
@@ -337,7 +335,7 @@ void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	int cap;
-	uint multihead = ((rvi->flags & RVI_MULTIHEAD) ? 1 : 0);
+	uint multihead = (rvi->flags & RVI_MULTIHEAD) ? 1 : 0;
 
 	SetDParam(0, ((_price.build_railvehicle >> 3) * rvi->base_cost) >> 5);
 	SetDParam(2, rvi->max_speed * 10 >> 4);
@@ -416,7 +414,7 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 				u->next = v;
 				v->subtype = TS_Not_First;
 				v->u.rail.first_engine = u->u.rail.first_engine;
-				if (v->u.rail.first_engine == 0xffff && u->subtype == TS_Front_Engine )
+				if (v->u.rail.first_engine == 0xffff && u->subtype == TS_Front_Engine)
 					v->u.rail.first_engine = u->engine_type;
 			} else {
 				v->u.rail.first_engine = 0xffff;
@@ -449,11 +447,13 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 static void NormalizeTrainVehInDepot(Vehicle *u)
 {
 	Vehicle *v;
+
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && v->subtype == TS_Free_Car &&
 				v->tile == u->tile &&
 				v->u.rail.track == 0x80) {
-			if (DoCommandByTile(0,v->index | (u->index<<16), 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE) == CMD_ERROR)
+			if (DoCommandByTile(0, v->index | (u->index << 16), 1, DC_EXEC,
+					CMD_MOVE_RAIL_VEHICLE) == CMD_ERROR)
 				break;
 		}
 	}
@@ -521,10 +521,8 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 	if (building) v->next = u;
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
-	if (building)
-		v->value = u->value = v->value >> 1;
-	else
-		u->value = v->value;
+	if (building) v->value >>= 1;
+	u->value = v->value;
 	u->type = VEH_Train;
 	u->cur_image = 0xAC2;
 	VehiclePositionChanged(u);
@@ -634,30 +632,30 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static bool IsTunnelTile(TileIndex tile)
 {
-	return IsTileType(tile, MP_TUNNELBRIDGE) &&
-				 (_map5[tile]&0x80) == 0;
+	return IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0x80) == 0;
 }
 
 
-int CheckTrainStoppedInDepot(Vehicle *v)
+int CheckTrainStoppedInDepot(const Vehicle *v)
 {
 	int count;
 	TileIndex tile = v->tile;
 
 	/* check if stopped in a depot */
 	if (!IsTileDepotType(tile, TRANSPORT_RAIL) || v->cur_speed != 0) {
-errmsg:
 		_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
 		return -1;
 	}
 
 	count = 0;
-	do {
+	for (; v != NULL; v = v->next) {
 		count++;
-		if (v->u.rail.track != 0x80 || v->tile != (TileIndex)tile ||
-				(v->subtype == TS_Front_Engine && !(v->vehstatus&VS_STOPPED)))
-			goto errmsg;
-	} while ( (v=v->next) != NULL);
+		if (v->u.rail.track != 0x80 || v->tile != tile ||
+				(v->subtype == TS_Front_Engine && !(v->vehstatus & VS_STOPPED))) {
+			_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
+			return -1;
+		}
+	}
 
 	return count;
 }
@@ -670,30 +668,36 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 	v->u.rail.first_engine = 0xffff;
 	if (v == first) {
 		Vehicle *u;
-		if ((v=v->next) == NULL) return NULL;
-		for (u=v; u; u=u->next) u->u.rail.first_engine = v->engine_type;
+
+		v = v->next;
+		if (v == NULL) return NULL;
+		for (u = v; u != NULL; u = u->next) u->u.rail.first_engine = v->engine_type;
 		v->subtype = TS_Free_Car;
 		return v;
 	} else {
 		Vehicle *u;
-		for(u=first; u->next!=v; u=u->next) {}
+
+		for (u = first; u->next != v; u = u->next) {}
 		u->next = v->next;
 		return first;
 	}
 }
 
-static Vehicle *FindGoodVehiclePos(Vehicle *src)
+static Vehicle *FindGoodVehiclePos(const Vehicle *src)
 {
 	Vehicle *dst;
 	uint16 eng = src->engine_type;
 	TileIndex tile = src->tile;
 
 	FOR_ALL_VEHICLES(dst) {
-		if (dst->type == VEH_Train && dst->subtype == TS_Free_Car && dst->tile==tile) {
+		if (dst->type == VEH_Train && dst->subtype == TS_Free_Car &&
+				dst->tile == tile) {
 			// check so all vehicles in the line have the same engine.
 			Vehicle *v = dst;
+
 			while (v->engine_type == eng) {
-				if ((v = v->next) == NULL) return dst;
+				v = v->next;
+				if (v == NULL) return dst;
 			}
 		}
 	}
@@ -701,11 +705,11 @@ static Vehicle *FindGoodVehiclePos(Vehicle *src)
 	return NULL;
 }
 
-/* p1 & 0xffff= source vehicle index
-   p1 & 0xffff0000 = what wagon to put the wagon AFTER, 0xffff0000 to make a new line
-	 p2 & 1 = move all vehicles following the vehicle..
+/* p1 & 0xffff = source vehicle index
+ * p1 & 0xffff0000 = what wagon to put the wagon AFTER,
+ *   0xffff0000 to make a new line
+ * p2 & 1 = move all vehicles following the vehicle..
  */
-
 int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *src, *dst, *src_head, *dst_head;
@@ -717,15 +721,15 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (src->type != VEH_Train) return CMD_ERROR;
 
-	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON)
-	          && is_firsthead_sprite(src->spritenum);
+	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON) &&
+		is_firsthead_sprite(src->spritenum);
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
 	if (((int32)p1 >> 16) == -1) {
 		dst = NULL;
 		if (!is_loco) dst = FindGoodVehiclePos(src);
 	} else {
-		dst = GetVehicle(((int32)p1 >> 16));
+		dst = GetVehicle((int32)p1 >> 16);
 	}
 
 	// don't move the same vehicle..
@@ -752,14 +756,17 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (num < 0)
 			return CMD_ERROR;
 
-		if (num > (_patches.mammoth_trains ? 100 : 9) && dst_head->subtype == TS_Front_Engine )
+		if (num > (_patches.mammoth_trains ? 100 : 9) &&
+				dst_head->subtype == TS_Front_Engine )
 			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
 
 		// if it's a multiheaded vehicle we're dragging to, drag to the vehicle before..
-		while (is_custom_secondhead_sprite(dst->spritenum)
-		       || (!is_custom_sprite(dst->spritenum) && _engine_sprite_add[dst->spritenum] != 0)) {
+		while (is_custom_secondhead_sprite(dst->spritenum) || (
+			!is_custom_sprite(dst->spritenum) &&
+			_engine_sprite_add[dst->spritenum] != 0)
+		) {
 			Vehicle *v = GetPrevVehicleInChain(dst);
-			if (!v || src == v) break;
+			if (v == NULL || src == v) break;
 			dst = v;
 		}
 
@@ -827,10 +834,10 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			// link in the wagon(s) in the chain.
 			{
-				Vehicle *v = src;
-				while (v->next != NULL) {
+				Vehicle *v;
+
+				for (v = src; v->next != NULL; v = v->next) {
 					v->next->u.rail.first_engine = v->u.rail.first_engine;
-					v = v->next;
 				}
 				v->next = dst->next;
 			}
@@ -910,7 +917,8 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// 4) the first and the last vehicle of the chain are not identical
 		// 5) and of "engine" type (i.e. not a carriage)
 		// then let the last vehicle live
-		if ( (p2 == 1) && (v != last) && ( last->engine_type == first->engine_type ) && (last != first) && (first->subtype == TS_Front_Engine) )
+		if (p2 == 1 && v != last && last->engine_type == first->engine_type &&
+				last != first && first->subtype == TS_Front_Engine)
 			last = GetPrevVehicleInChain(last);
 		else
 			last = NULL;
@@ -919,7 +927,8 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// sell last part of multiheaded?
 			last = GetLastVehicleInChain(v);
 			// Check if the end-part is the same engine and check if it is the rear-end
-			if (last->engine_type != first->engine_type || is_firsthead_sprite(last->spritenum))
+			if (last->engine_type != first->engine_type ||
+					is_firsthead_sprite(last->spritenum))
 				last = NULL;
 		} else {
 			last = NULL;
@@ -932,69 +941,54 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 	if (flags & DC_EXEC) {
-		// always redraw the depot. maybe redraw train list
+		Vehicle *tmp;
+
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
-		if (first->subtype == TS_Front_Engine) {
-			RebuildVehicleLists();
-		}
+		if (first->subtype == TS_Front_Engine) RebuildVehicleLists();
+
 		// when selling an attached locomotive. we need to delete its window.
 		if (v->subtype == TS_Front_Engine) {
 			DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 
 			// rearrange all vehicles that follow to separate lines.
 			if (p2 == 2) {
-				Vehicle *u,*tmp;
-				u = v->next;
-				while (u != last) {
-					tmp = u;
-					u = u->next;
-					DoCommandByTile(tmp->tile, tmp->index | ((-1)<<16), 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				const Vehicle* u;
+				const Vehicle* tmp;
+
+				for (u = v->next; u != last; u = tmp) {
+					tmp = u->next;
+					DoCommandByTile(u->tile, u->index | INVALID_VEHICLE << 16, 0, DC_EXEC,
+						CMD_MOVE_RAIL_VEHICLE);
 				}
 			}
 		}
 
 		// delete the vehicles
 		cost = 0;
-		for(;;) {
-			Vehicle *tmp;
-
-			assert(first);
+		for (; v != last && p2 == 1; v = tmp) {
+			assert (first != NULL);
 			first = UnlinkWagon(v, first);
 			cost -= v->value;
-			tmp = v;
-			DeleteVehicle(tmp);
-			if ( v == last ) {
-				last = NULL;
-				break;
-			}
-			if ( (v=v->next) == last || p2 != 1) break;
+			tmp = v->next;
+			DeleteVehicle(v);
 		}
-
-		// delete last vehicle of multiheaded train?
-		if (last) {
-			first = UnlinkWagon(last, first);
-			cost -= last->value;
-			DeleteVehicle(last);
+		if (v != NULL) {
+			first = UnlinkWagon(v, first);
+			cost -= v->value;
+			DeleteVehicle(v);
 		}
 
 		// an attached train changed?
-		if (first && first->subtype == TS_Front_Engine) {
+		if (first != NULL && first->subtype == TS_Front_Engine) {
 			UpdateTrainAcceleration(first);
 			InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 		}
 	} else {
 		cost = 0;
-		for(;;) {
-			cost -= v->value;
-			if ( v == last ) {
-				last = NULL;
-				break;
-			}
-			if ( (v=v->next) == last || p2 != 1) break;
-		}
-		if (last) cost -= last->value;
+		for (; v != last && p2 == 1; v = v->next) cost -= v->value;
+		if (v != NULL) cost -= v->value;
 	}
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
+	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 
 	return cost;
 }
