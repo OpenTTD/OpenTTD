@@ -290,7 +290,7 @@ static const Widget _build_road_widgets[] = {
 {      WWT_PANEL,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,				STR_180F_BUILD_ROAD_BRIDGE},
 {      WWT_PANEL,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,		STR_1810_BUILD_ROAD_TUNNEL},
 {      WWT_PANEL,     7,   196,   217,    14,    35, SPR_IMG_REMOVE, 				STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   218,   239,    14,    35, SPR_IMG_LANDSCAPING_S, STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,   218,   239,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
@@ -322,7 +322,7 @@ static const Widget _build_road_scen_widgets[] = {
 {     WWT_IMGBTN,     7,    66,   107,    14,    35, 0xA22,			STR_180F_BUILD_ROAD_BRIDGE},
 {     WWT_IMGBTN,     7,   108,   129,    14,    35, 0x97D,			STR_1810_BUILD_ROAD_TUNNEL},
 {     WWT_IMGBTN,     7,   130,   151,    14,    35, 0x2CA,			STR_1811_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING_S, STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 

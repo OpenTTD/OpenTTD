@@ -101,7 +101,7 @@ static const Widget _air_toolbar_widgets[] = {
 {  WWT_STICKYBOX,     7,    74,    85,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 {      WWT_PANEL,     7,     0,    41,    14,    35, 0x2E8,									STR_A01E_BUILD_AIRPORT},
 {      WWT_PANEL,     7,    42,    63,    14,    35, 0x2BF,									STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING_S,	STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 

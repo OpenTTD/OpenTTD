@@ -176,7 +176,7 @@ static const Widget _build_docks_toolb_widgets[] = {
 {      WWT_PANEL,     7,    70,    91,    14,    35, 748,													STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
 {      WWT_PANEL,     7,    92,   113,    14,    35, 746,													STR_981D_BUILD_SHIP_DOCK},
 {      WWT_PANEL,     7,   114,   135,    14,    35, 693,													STR_9834_POSITION_BUOY_WHICH_CAN},
-{      WWT_PANEL,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING_S,				STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,				STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 

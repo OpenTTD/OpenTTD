@@ -724,8 +724,7 @@ enum Sprites {
 	SPR_IMG_TRUCK_BAY			= 750,
 	SPR_IMG_BRIDGE				= 2594,
 	SPR_IMG_ROAD_TUNNEL		= 2429,
-	SPR_IMG_REMOVE				= 714,
-	SPR_IMG_LANDSCAPING_S = 742
+	SPR_IMG_REMOVE				= 714
 };
 
 /* Cursor sprite numbers */
