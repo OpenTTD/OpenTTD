@@ -53,8 +53,13 @@ static uint16 _sprite_xsize[NUM_SPRITES];
 static uint8 _sprite_ysize[NUM_SPRITES];
 #endif
 
+typedef struct MemBlock {
+	uint32 size;
+	byte data[VARARRAY_SIZE];
+} MemBlock;
+
 static uint _sprite_lru_counter;
-static byte *_spritecache_ptr;
+static MemBlock *_spritecache_ptr;
 static uint32 _spritecache_size;
 static int _compact_cache_counter;
 
@@ -411,21 +416,20 @@ static bool HandleCachedSpriteHeaders(const char *filename, bool read)
 	return true;
 }
 
-#define S_DATA(x) (*(uint32*)(x))
 #define S_FREE_MASK 1
-#define S_HDRSIZE sizeof(uint32)
+
+static inline MemBlock* NextBlock(MemBlock* block)
+{
+	return (MemBlock*)((byte*)block + (block->size & ~S_FREE_MASK));
+}
 
 static uint32 GetSpriteCacheUsage(void)
 {
-	byte *s = _spritecache_ptr;
-	size_t cur_size, tot_size = 0;
-	for(; (cur_size=S_DATA(s)) != 0; s+=cur_size) {
-		if ( cur_size & S_FREE_MASK ) {
-			cur_size--;
-		} else {
-			tot_size += cur_size;
-		}
-	}
+	size_t tot_size = 0;
+	MemBlock* s;
+
+	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s))
+		if (!(s->size & S_FREE_MASK)) tot_size += s->size;
 
 	return tot_size;
 }
@@ -469,59 +473,51 @@ void IncreaseSpriteLRU(void)
 // That is accomplished by moving the cached data.
 static void CompactSpriteCache(void)
 {
-	byte *s, *t;
-	size_t size, sizeb, cur_size;
-	int i;
+	MemBlock *s;
 
-	DEBUG(spritecache, 2) ("compacting sprite cache, inuse=%d", GetSpriteCacheUsage());
+	DEBUG(spritecache, 2) (
+		"compacting sprite cache, inuse=%d", GetSpriteCacheUsage()
+	);
 
-	s = _spritecache_ptr;
+	for (s = _spritecache_ptr; s->size != 0;) {
+		if (s->size & S_FREE_MASK) {
+			MemBlock* next = NextBlock(s);
+			MemBlock temp;
+			byte** i;
 
-	while (true) {
-		size = S_DATA(s);
-
-		// Only look for free blocks.
-		if (size & S_FREE_MASK) {
-			size -= S_FREE_MASK;
 			// Since free blocks are automatically coalesced, this should hold true.
-			assert(!(S_DATA(s+size) & S_FREE_MASK));
+			assert(!(next->size & S_FREE_MASK));
 
 			// If the next block is the sentinel block, we can safely return
-			if ( (sizeb=S_DATA(s + size)) == 0)
+			if (next->size == 0)
 				break;
 
-			// Locate the sprite number belonging to the next pointer.
-			for(i=0,t=s+size+S_HDRSIZE; _sprite_ptr[i] != t; i++) {assert(i < NUM_SPRITES);}
-
-			// If it's locked, we must not move it.
-#if defined(WANT_LOCKED)
-			if (!_sprite_locked[i]) {
-#endif
-
-				// Offset the sprite pointer by the size of the free block
-				_sprite_ptr[i] -= size;
-
-				// Move the memory
-				memmove(s + S_HDRSIZE, s + S_HDRSIZE + size, sizeb - S_HDRSIZE);
-
-				// What we just did had the effect of swapping the allocated block with the free block, so we need to update
-				//  the block pointers. First update the allocated one. It is in use.
-				S_DATA(s) = sizeb;
-
-				// Then coalesce the free ones that follow.
-				s += sizeb;
-				while ((cur_size = S_DATA(s+size)) & S_FREE_MASK)
-					size += cur_size - S_FREE_MASK;
-				S_DATA(s) = size + S_FREE_MASK;
-				continue;
-#if defined(WANT_LOCKED)
+			// Locate the sprite belonging to the next pointer.
+			for (i = _sprite_ptr; *i != next->data; ++i) {
+				assert(i != endof(_sprite_ptr));
 			}
-#endif
+
+			#ifdef WANT_LOCKED
+			if (_sprite_locked[i]) {
+				s = next;
+				continue;
+			}
+			#endif
+
+			*i = s->data; // Adjust sprite array entry
+			// Swap this and the next block
+			temp = *s;
+			memmove(s, next, next->size);
+			s = NextBlock(s);
+			*s = temp;
+
+			// Coalesce free blocks
+			while (NextBlock(s)->size & S_FREE_MASK) {
+				s->size += NextBlock(s)->size & ~S_FREE_MASK;
+			}
+		} else {
+			s = NextBlock(s);
 		}
-		// Continue with next block until the sentinel is reached.
-		s += size;
-		if (size == 0)
-			break;
 	}
 }
 
@@ -529,8 +525,7 @@ static void DeleteEntryFromSpriteCache(void)
 {
 	int i;
 	int best = -1;
-	byte *s;
-	size_t cur_size, cur;
+	MemBlock* s;
 	int cur_lru;
 
 	DEBUG(spritecache, 2) ("DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
@@ -581,81 +576,69 @@ static void DeleteEntryFromSpriteCache(void)
 		error("Out of sprite memory");
 
 	// Mark the block as free (the block must be in use)
-	s = _sprite_ptr[best];
-	assert(!(S_DATA(s - S_HDRSIZE) & S_FREE_MASK));
-	S_DATA(s - S_HDRSIZE) += S_FREE_MASK;
+	s = (MemBlock*)_sprite_ptr[best] - 1;
+	assert(!(s->size & S_FREE_MASK));
+	s->size |= S_FREE_MASK;
 	_sprite_ptr[best] = NULL;
 
 	// And coalesce adjacent free blocks
-	s = _spritecache_ptr;
-	for(; (cur_size=S_DATA(s)) != 0; s+=cur_size) {
-		if ( cur_size & S_FREE_MASK ) {
-			while ((cur=S_DATA(s+cur_size-S_FREE_MASK)) & S_FREE_MASK) {
-				cur_size += cur - S_FREE_MASK;
-				S_DATA(s) = cur_size;
+	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
+		if (s->size & S_FREE_MASK) {
+			while (NextBlock(s)->size & S_FREE_MASK) {
+				s->size += NextBlock(s)->size & ~S_FREE_MASK;
 			}
-			cur_size--;
 		}
 	}
 }
 
 static byte *LoadSpriteToMem(int sprite)
 {
-	byte *s;
-	size_t mem_req, cur_size;
+	size_t mem_req;
 
 	DEBUG(spritecache, 9) ("load sprite %d", sprite);
 
-restart:
 	// Number of needed bytes
-	mem_req = _sprite_size[sprite] + S_HDRSIZE;
+	mem_req = sizeof(MemBlock) + _sprite_size[sprite];
 
-	// Align this to an uint32 boundary. This also makes sure that the 2 least bit are not used,
-	//  so we could use those for other things.
+	/* Align this to an uint32 boundary. This also makes sure that the 2 least
+	 * bits are not used, so we could use those for other things. */
 	mem_req = (mem_req + sizeof(uint32) - 1) & ~(sizeof(uint32) - 1);
 
-	s = _spritecache_ptr;
-	for(;;) {
-		for(;;) {
-			cur_size = S_DATA(s);
-			if (! (cur_size & S_FREE_MASK) ) break;
+	for (;;) {
+		MemBlock* s;
 
-			cur_size -= S_FREE_MASK;
+		for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
+			if (s->size & S_FREE_MASK) {
+				size_t cur_size = s->size & ~S_FREE_MASK;
 
-			// Now s points at a free block.
-			// The block is exactly the size we need?
-			if (cur_size != mem_req) {
+				/* Is the block exactly the size we need or
+				 * big enough for an additional free block? */
+				if (cur_size == mem_req ||
+						cur_size >= mem_req + sizeof(MemBlock)) {
+					// Set size and in use
+					s->size = mem_req;
 
-				// No.. is it too small?
-				if (cur_size < mem_req + S_HDRSIZE)
-					break;
+					// Do we need to inject a free block too?
+					if (cur_size != mem_req) {
+						NextBlock(s)->size = (cur_size - mem_req) | S_FREE_MASK;
+					}
 
-				// Block was big enough, and we need to inject a free block too.
-				S_DATA(s + mem_req) = cur_size - mem_req + S_FREE_MASK;
+					_sprite_ptr[sprite] = s->data;
 
+					FioSeekToFile(_sprite_file_pos[sprite]);
+					ReadSprite(_sprite_size[sprite], s->data);
+
+					// Patch the height to compensate for a TTD bug?
+					if (sprite == 142) s->data[1] = 10;
+
+					// Return sprite ptr
+					return s->data;
+				}
 			}
-			// Set size and in use
-			S_DATA(s) = mem_req;
-
-			_sprite_ptr[sprite] = (s += S_HDRSIZE);
-
-			FioSeekToFile(_sprite_file_pos[sprite]);
-			ReadSprite(_sprite_size[sprite], s);
-
-			// Patch the height to compensate for a TTD bug?
-			if (sprite == 142) { s[1] = 10; }
-
-			// Return sprite ptr
-			return s;
 		}
 
-		// Reached sentinel, but no block found yet. Need to delete some old entries.
-		if (cur_size == 0) {
-			DeleteEntryFromSpriteCache();
-			goto restart;
-		}
-
-		s += cur_size;
+		// Reached sentinel, but no block found yet. Delete some old entry.
+		DeleteEntryFromSpriteCache();
 	}
 }
 
@@ -951,16 +934,16 @@ static void LoadSpriteTables(void)
 	_compact_cache_counter = 0;
 }
 
-static void GfxInitSpriteMem(byte *ptr, uint32 size)
+static void GfxInitSpriteMem(void *ptr, uint32 size)
 {
 	// initialize sprite cache heap
 	_spritecache_ptr = ptr;
 	_spritecache_size = size;
 
-	// Sentinel block (identified by size=0)
-	S_DATA(ptr + size - S_HDRSIZE) = 0;
 	// A big free block
-	S_DATA(ptr) = size - S_HDRSIZE + S_FREE_MASK;
+	_spritecache_ptr->size = (size - sizeof(MemBlock)) | S_FREE_MASK;
+	// Sentinel block (identified by size == 0)
+	NextBlock(_spritecache_ptr)->size = 0;
 
 	memset(_sprite_ptr, 0, sizeof(_sprite_ptr));
 }
