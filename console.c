@@ -63,10 +63,12 @@ SetWindowDirty(_iconsole_win);
 
 static void IConsoleWndProc(Window *w, WindowEvent *e)
 {
+	// only do window events with the console
+	w = FindWindowById(WC_CONSOLE, 0);
+
 	switch(e->event) {
 
 	case WE_PAINT:
-
 		GfxFillRect(w->left,w->top,w->width,w->height-1,0);
 		{
 		int i=_iconsole_scroll;
@@ -252,7 +254,7 @@ void IConsoleSwitch()
 		_iconsole_mode=ICONSOLE_OPENED;
 		} else
 	if (_iconsole_mode==ICONSOLE_OPENED) {
-		DeleteWindow(_iconsole_win);
+		DeleteWindowById(WC_CONSOLE,0);
 		_iconsole_win=NULL;
 		_iconsole_mode=ICONSOLE_CLOSED;
 		}
