@@ -375,7 +375,7 @@ void DrawGroundSprite(uint32 image)
 		// offset ground sprite because of foundation?
 		AddChildSpriteScreen(image, _cur_vd->offs_x, _cur_vd->offs_y);
 	} else {
-			_added_tile_sprite = true;
+		_added_tile_sprite = true;
 		DrawGroundSpriteAt(image, _cur_ti->x, _cur_ti->y, _cur_ti->z);
 	}
 }
@@ -595,7 +595,11 @@ static int dbg_draw_pushed(const TileInfo *ti)
 
 static void DrawSelectionSprite(uint32 image, const TileInfo *ti)
 {
-	AddSortableSpriteToDraw(image, ti->x, ti->y, 0x10, 0x10, 1, ti->z + 7);
+	if (_added_tile_sprite && !(_thd_ptr->drawstyle & HT_LINE)) { // draw on real ground
+		DrawGroundSpriteAt(image, ti->x, ti->y, ti->z + 7);
+	} else { // draw on top of foundation
+		AddSortableSpriteToDraw(image, ti->x, ti->y, 0x10, 0x10, 1, ti->z + 7);
+	}
 }
 
 static bool IsPartOfAutoLine(int px, int py)
