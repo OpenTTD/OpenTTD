@@ -1481,6 +1481,8 @@ void MaybeRenewVehicle(Vehicle *v)
 	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30))
 		return;
 
+	_current_player = v->owner;
+
 	/* Now renew the vehicle */
 	DoCommandP(v->tile, v->index, v->engine_type, NULL, CMD_RENEW_VEHICLE);
 }
