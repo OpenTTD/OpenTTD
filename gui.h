@@ -93,6 +93,12 @@ void AskForNewGameToStart();
 void DrawEditBox(Window *w, int wid);
 void HandleEditBox(Window *w, int wid);
 
+void BuildFileList();
+void SetFiosType(const byte fiostype);
+
+/*	FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
+static const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
+
 
 /* network gui */
 void ShowNetworkGameWindow();

@@ -368,7 +368,7 @@ static void DrawNewRoadVehWindow(Window *w)
 	}
 }
 
-static void CcBuildRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 

@@ -15,7 +15,7 @@
 int _traininfo_vehicle_pitch = 0;
 
 
-static void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v,*found;
 
@@ -43,7 +43,7 @@ static void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 

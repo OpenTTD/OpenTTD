@@ -3,6 +3,9 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "saveload.h"
+#include "hal.h"
+#include "console.h"
+#include <stdarg.h> /* va_list */
 
 typedef struct TextEffect {
 	StringID string_id;
@@ -12,8 +15,186 @@ typedef struct TextEffect {
 	uint32 params_2;
 } TextEffect;
 
+#define MAX_TEXTMESSAGE_LENGTH 250
+
+typedef struct TextMessage {
+	char message[MAX_TEXTMESSAGE_LENGTH];
+	uint16 color;
+	uint16 end_date;
+} TextMessage;
+
+#define MAX_CHAT_MESSAGES 10
 static TextEffect _text_effect_list[30];
+static TextMessage _text_message_list[MAX_CHAT_MESSAGES];
 TileIndex _animated_tile_list[256];
+
+
+int _textmessage_width = 0;
+bool _textmessage_dirty = true;
+bool _textmessage_visible = false;
+
+const int _textmessage_box_left = 10; // Pixels from left
+const int _textmessage_box_y = 150;  // Height of box
+const int _textmessage_box_bottom = 20; // Pixels from bottom
+const int _textmessage_box_max_width = 400; // Max width of box
+
+static byte _textmessage_backup[150*400]; // (y * max_width)
+
+extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
+
+// Duration is in game-days
+void AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
+{
+	int i;
+	char buf[1024];
+	char buf2[MAX_TEXTMESSAGE_LENGTH];
+	va_list va;
+	int length;
+
+	va_start(va, message);
+	vsprintf(buf, message, va);
+	va_end(va);
+
+	if ((color & 0xFF) == 0xC9) color = 0x1CA;
+
+	length = MAX_TEXTMESSAGE_LENGTH;
+	snprintf(buf2, length, "%s", buf);
+	while (GetStringWidth(buf2) > _textmessage_width - 9) {
+		snprintf(buf2, --length, "%s", buf);
+	}
+
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
+		if (_text_message_list[i].message[0] == '\0') {
+			// Empty spot
+			snprintf(_text_message_list[i].message, MAX_TEXTMESSAGE_LENGTH, "%s", buf2);
+			_text_message_list[i].color = color;
+			_text_message_list[i].end_date = _date + duration;
+
+			_textmessage_dirty = true;
+			return;
+		}
+	}
+
+	// We did not found a free spot, trash the first one, and add to the end
+	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(TextMessage) * (MAX_CHAT_MESSAGES - 1));
+	snprintf(_text_message_list[MAX_CHAT_MESSAGES - 1].message, MAX_TEXTMESSAGE_LENGTH, "%s", buf2);
+	_text_message_list[MAX_CHAT_MESSAGES - 1].color = color;
+	_text_message_list[i].end_date = _date + duration;
+
+	_textmessage_dirty = true;
+}
+
+void InitTextMessage()
+{
+	int i;
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
+		_text_message_list[i].message[0] = '\0';
+	}
+
+	_textmessage_width = _textmessage_box_max_width;
+}
+
+// Hide the textbox
+void UndrawTextMessage()
+{
+	if (_textmessage_visible) {
+		// Sometimes we also need to hide the cursor
+		//   This is because both textmessage and the cursor take a shot of the
+		//   screen before drawing.
+		//   Now the textmessage takes his shot and paints his data before the cursor
+		//   does, so in the shot of the cursor is the screen-data of the textmessage
+		//   included when the cursor hangs somewhere over the textmessage. To
+		//   avoid wrong repaints, we undraw the cursor in that case, and everything
+		//   looks nicely ;)
+		// (and now hope this story above makes sense to you ;))
+
+		if (_cursor.visible) {
+			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _textmessage_box_left &&
+				_cursor.draw_pos.x <= _textmessage_box_left + _textmessage_width &&
+				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _textmessage_box_bottom - _textmessage_box_y &&
+				_cursor.draw_pos.y <= _screen.height - _textmessage_box_bottom) {
+				UndrawMouseCursor();
+			}
+		}
+
+		_textmessage_visible = false;
+		// Put our 'shot' back to the screen
+		memcpy_pitch(
+			_screen.dst_ptr + _textmessage_box_left + (_screen.height-_textmessage_box_bottom-_textmessage_box_y) * _screen.pitch,
+			_textmessage_backup,
+			_textmessage_width, _textmessage_box_y, _textmessage_width, _screen.pitch);
+
+		// And make sure it is updated next time
+		_video_driver->make_dirty(_textmessage_box_left, _screen.height-_textmessage_box_bottom-_textmessage_box_y, _textmessage_width, _textmessage_box_y);
+
+		_textmessage_dirty = true;
+	}
+}
+
+// Check if a message is expired every day
+void TextMessageDailyLoop()
+{
+	int i = 0;
+	while (i < MAX_CHAT_MESSAGES) {
+		if (_text_message_list[i].message[0] == '\0') break;
+		if (_date > _text_message_list[i].end_date) {
+			memmove(&_text_message_list[i], &_text_message_list[i+1], sizeof(TextMessage) * ((MAX_CHAT_MESSAGES - 1) - i));
+			_text_message_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
+			i--;
+			_textmessage_dirty = true;
+		}
+		i++;
+	}
+}
+
+// Draw the textmessage-box
+void DrawTextMessage()
+{
+	int i, j;
+	bool has_message;
+
+	if (!_textmessage_dirty)
+		return;
+
+	// First undraw if needed
+	UndrawTextMessage();
+
+	if (_iconsole_mode == ICONSOLE_FULL)
+		return;
+
+	has_message = false;
+	for ( i = 0; i < MAX_CHAT_MESSAGES; i++) {
+		if (_text_message_list[i].message[0] == '\0') break;
+		has_message = true;
+	}
+	if (!has_message) return;
+
+	// Make a copy of the screen as it is before painting (for undraw)
+	memcpy_pitch(
+		_textmessage_backup,
+		_screen.dst_ptr + _textmessage_box_left + (_screen.height-_textmessage_box_bottom-_textmessage_box_y) * _screen.pitch,
+		_textmessage_width, _textmessage_box_y, _screen.pitch, _textmessage_width);
+
+	// Switch to _screen painting
+	_cur_dpi = &_screen;
+
+	j = 0;
+	// Paint the messages
+	for (i = MAX_CHAT_MESSAGES - 1; i >= 0; i--) {
+		if (_text_message_list[i].message[0] == '\0') continue;
+		j++;
+		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x4322);
+
+		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 2, _screen.height - _textmessage_box_bottom - j * 13 - 1, 0x10);
+		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 3, _screen.height - _textmessage_box_bottom - j * 13, _text_message_list[i].color);
+	}
+
+	// Make sure the data is updated next flush
+	_video_driver->make_dirty(_textmessage_box_left, _screen.height-_textmessage_box_bottom-_textmessage_box_y, _textmessage_width, _textmessage_box_y);
+
+	_textmessage_visible = true;
+	_textmessage_dirty = false;
+}
 
 static void MarkTextEffectAreaDirty(TextEffect *te)
 {

@@ -55,6 +55,12 @@ union WindowEvent {
 
 	struct {
 		byte event;
+		Point pt;
+		int widget;
+	} mouseover;
+
+	struct {
+		byte event;
 		bool cont;   // continue the search? (default true)
 		byte ascii;  // 8-bit ASCII-value of the key
 		uint16 keycode;// untranslated key (including shift-state)
@@ -303,6 +309,8 @@ enum WindowEvents {
 	WE_RCLICK = 17,
 	WE_KEYPRESS = 18,
 	WE_CREATE = 19,
+	WE_MOUSEOVER = 20,
+	WE_ON_EDIT_TEXT_CANCEL = 21,
 };
 
 

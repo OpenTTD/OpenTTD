@@ -13,6 +13,7 @@
 #include "saveload.h"
 #include "economy.h"
 #include "gui.h"
+#include "network.h"
 
 enum {
 	TOWN_HAS_CHURCH     = 0x02,
@@ -928,7 +929,7 @@ static Town *AllocateTown()
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		if (t->xy == 0) {
-			_total_towns++;
+			if (t->index > _total_towns) _total_towns = t->index;
 			return t;
 		}
 	}
@@ -1342,7 +1343,7 @@ int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Town *t = DEREF_TOWN(p1);
 
-	str = AllocateName((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((byte*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 
@@ -1910,7 +1911,7 @@ static void Load_TOWN()
 	while ((index = SlIterateArray()) != -1) {
 		Town *t = DEREF_TOWN(index);
 		SlObject(t, _town_desc);
-		_total_towns++;
+		if (index > _total_towns) _total_towns = index;
 	}
 }
 

@@ -17,7 +17,8 @@ static byte _string_colorremap[3];
 static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
 
-static void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
+
+void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 {
 	byte *dp = (byte*)d;
 	byte *sp = (byte*)s;
@@ -41,6 +42,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 
 	if (_cursor.visible)
 		UndrawMouseCursor();
+	UndrawTextMessage();
 
 	p = _screen.pitch;
 
@@ -254,7 +256,7 @@ enum {
 
 
 /* returns right coordinate */
-int DrawString(int x, int y, uint16 str, byte color)
+int DrawString(int x, int y, uint16 str, uint16 color)
 {
 	GetString(str_buffr, str);
 	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
@@ -262,7 +264,7 @@ int DrawString(int x, int y, uint16 str, byte color)
 }
 
 
-void DrawStringRightAligned(int x, int y, uint16 str, byte color)
+void DrawStringRightAligned(int x, int y, uint16 str, uint16 color)
 {
 	GetString(str_buffr, str);
 	assert(strlen(str_buffr) < sizeof(str_buffr) - 1);
@@ -270,7 +272,7 @@ void DrawStringRightAligned(int x, int y, uint16 str, byte color)
 }
 
 
-int DrawStringCentered(int x, int y, uint16 str, byte color)
+int DrawStringCentered(int x, int y, uint16 str, uint16 color)
 {
 	int w;
 
@@ -283,7 +285,7 @@ int DrawStringCentered(int x, int y, uint16 str, byte color)
 	return w;
 }
 
-void DrawStringCenterUnderline(int x, int y, uint16 str, byte color)
+void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color)
 {
 	int w = DrawStringCentered(x, y, str, color);
 	GfxFillRect(x-(w>>1), y+10, x-(w>>1)+w, y+10, _string_colorremap[1]);
@@ -472,11 +474,14 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 	}
 }
 
-int DoDrawString(const byte *string, int x, int y, byte color) {
+int DoDrawString(const byte *string, int x, int y, uint16 real_color) {
 	DrawPixelInfo *dpi = _cur_dpi;
 	int base = _stringwidth_base;
 	byte c;
+	byte color;
 	int xo = x, yo = y;
+
+	color = real_color & 0xFF;
 
 	if (color != 0xFE) {
 		if (x >= dpi->left + dpi->width ||
@@ -487,8 +492,13 @@ int DoDrawString(const byte *string, int x, int y, byte color) {
 
 		if (color != 0xFF) {
 switch_color:;
-			_string_colorremap[1] = _string_colormap[color].text;
-			_string_colorremap[2] = _string_colormap[color].shadow;
+			if (real_color & 0x100) {
+				_string_colorremap[1] = color;
+				_string_colorremap[2] = 215;
+			} else {
+				_string_colorremap[1] = _string_colormap[color].text;
+				_string_colorremap[2] = _string_colormap[color].shadow;
+			}
 			_color_remap_ptr = _string_colorremap;
 		}
 	}
@@ -1684,6 +1694,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 			UndrawMouseCursor();
 		}
 	}
+	UndrawTextMessage();
 
 #if defined(_DEBUG)
 	if (_dbg_screen_rect)
@@ -1921,9 +1932,18 @@ void ToggleFullScreen(const bool full_screen)
 {
 	_fullscreen = full_screen;
 	/* use preset resolutions, not _screen.height and _screen.width. On windows for example
-	   if Desktop-size is 1280x1024, and gamesize is also 1280x1024, _screen.height will be 
-		 only 1000 because of possible start-bar. For this reason you cannot switch to 
+	   if Desktop-size is 1280x1024, and gamesize is also 1280x1024, _screen.height will be
+		 only 1000 because of possible start-bar. For this reason you cannot switch to
 		 fullscreen mode from this resolution. Use of preset resolution will fix this */
 	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1]))
 		_fullscreen ^= true; // switching resolution failed, put back full_screen to original status
+}
+
+uint16 GetDrawStringPlayerColor(byte player)
+{
+	// Get the color for DrawString-subroutines which matches the color
+	//  of the player
+	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1)
+			return 1;
+	return (_color_list[_player_colors[player]].window_color_1b) | 0x100;
 }

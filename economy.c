@@ -15,6 +15,7 @@
 #include "network.h"
 #include "sound.h"
 #include "engine.h"
+#include "network_data.h"
 
 void UpdatePlayerHouse(Player *p, uint score)
 {
@@ -139,7 +140,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		PlayerEconomyEntry *pee;
 		int numec;
 		int32 min_income;
-		uint32 max_income;
+		int32 max_income;
 
 		numec = min(p->num_valid_stat_ent, 12);
 		if (numec != 0) {
@@ -346,6 +347,7 @@ static void PlayersCheckBankrupt(Player *p)
 	int owner;
 	int64 val;
 
+	// If the player has money again, it does not go bankrupt
 	if (p->player_money >= 0) {
 		p->quarters_of_bankrupcy = 0;
 		return;
@@ -355,43 +357,65 @@ static void PlayersCheckBankrupt(Player *p)
 
 	owner = p->index;
 
-	if (p->quarters_of_bankrupcy == 2) {
-year_2:
-		AddNewsItem( (StringID)(owner + 16),
-			NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+	switch (p->quarters_of_bankrupcy) {
+		case 2:
+			AddNewsItem( (StringID)(owner + 16),
+				NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			break;
+		case 3: {
+			/* XXX - In multiplayer, should we ask other players if it wants to take
+		          over when it is a human company? -- TrueLight */
+			if (IS_HUMAN_PLAYER(owner)) {
+				AddNewsItem( (StringID)(owner + 16),
+					NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+				break;
+			}
 
-	} else if (p->quarters_of_bankrupcy == 3) {
-		if (IS_HUMAN_PLAYER(owner))
-			goto year_2;
-
-		val = CalculateCompanyValue(p);
-		if (val == 0) goto year_4;
-
-		p->bankrupt_value = val;
-		p->bankrupt_asked = 1 << owner;
-		p->bankrupt_timeout = 0;
-	} else if (p->quarters_of_bankrupcy == 4) {
-year_4:
-		DeletePlayerWindows(owner);
-
-		if (IS_HUMAN_PLAYER(owner)) {
-// what does this code do??
-			InitNewsItemStructs();
-			DeleteWindowById(WC_NEWS_WINDOW, 0);
+			// Check if the company has any value.. if not, declare it bankrupt
+			//  right now
+			val = CalculateCompanyValue(p);
+			if (val > 0) {
+				p->bankrupt_value = val;
+				p->bankrupt_asked = 1 << owner; // Don't ask the owner
+				p->bankrupt_timeout = 0;
+				break;
+			}
+			// Else, falltrue to case 4...
 		}
+		case 4: {
+			// Close everything the owner has open
+			DeletePlayerWindows(owner);
 
-// Show bankrupt news
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		AddNewsItem( (StringID)(owner + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+//		Show bankrupt news
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			AddNewsItem( (StringID)(owner + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
-		if (IS_HUMAN_PLAYER(owner)) {
-			p->bankrupt_asked = 255;
-			p->bankrupt_timeout = 0x456;
-		} else {
-			p->money64 = p->player_money = 100000000;
-			ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
-			p->is_active = false;
+			// If the player is human, and it is no network play, leave the player playing
+			if (IS_HUMAN_PLAYER(owner) && !_networking) {
+				p->bankrupt_asked = 255;
+				p->bankrupt_timeout = 0x456;
+			} else {
+				// If we are the server, make sure it is clear that his player is no
+				//  longer with us!
+				if (IS_HUMAN_PLAYER(owner) && _network_server) {
+					NetworkClientInfo *ci;
+					ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					ci->client_playas = (byte)(OWNER_SPECTATOR + 1);
+					// Send the new info to all the clients
+					NetworkUpdateClientInfo(_network_own_client_index);
+				}
+				// Make sure the player no longer controls the company
+				if (IS_HUMAN_PLAYER(owner) && owner == _local_player) {
+					// Switch the player to spectator..
+					_local_player = OWNER_SPECTATOR;
+				}
+				// Convert everything the player owns to NO_OWNER
+				p->money64 = p->player_money = 100000000;
+				ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
+				// Register the player as not-active
+				p->is_active = false;
+			}
 		}
 	}
 }
@@ -811,11 +835,11 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = from = DEREF_TOWN(InteractiveRandomRange(_total_towns));
+	fr->from = from = DEREF_TOWN(RandomRange(_total_towns));
 	if (from->xy == 0 || from->population < 400)
 		return;
 
-	fr->to = to = DEREF_TOWN(InteractiveRandomRange(_total_towns));
+	fr->to = to = DEREF_TOWN(RandomRange(_total_towns));
 	if (from==to || to->xy == 0 || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
@@ -830,12 +854,12 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = i = DEREF_INDUSTRY(InteractiveRandomRange(_total_industries));
+	fr->from = i = DEREF_INDUSTRY(RandomRange(_total_industries));
 	if (i->xy == 0)
 		return;
 
 	// Randomize cargo type
-	if (InteractiveRandom()&1 && i->produced_cargo[1] != 0xFF) {
+	if (Random()&1 && i->produced_cargo[1] != 0xFF) {
 		cargo = i->produced_cargo[1];
 		trans = i->pct_transported[1];
 		total = i->total_production[1];
@@ -855,7 +879,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		// The destination is a town
-		Town *t = DEREF_TOWN(InteractiveRandomRange(_total_towns));
+		Town *t = DEREF_TOWN(RandomRange(_total_towns));
 
 		// Only want big towns
 		if (t->xy == 0 || t->population < 900)
@@ -864,7 +888,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		fr->to = t;
 	} else {
 		// The destination is an industry
-		Industry *i2 = DEREF_INDUSTRY(InteractiveRandomRange(_total_industries));
+		Industry *i2 = DEREF_INDUSTRY(RandomRange(_total_industries));
 
 		// The industry must accept the cargo
 		if (i == i2 || i2->xy == 0 ||
@@ -943,10 +967,8 @@ static void SubsidyMonthlyHandler()
 		}
 	}
 
-	if ((_networking) && (!_networking_server)) return;
-
 	// 25% chance to go on
-	if (ICHANCE16(1,4)) {
+	if (CHANCE16(1,4)) {
 		// Find a free slot
 		s = _subsidies;
 		while (s->cargo_type != 0xFF) {
@@ -972,7 +994,6 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
-					if (_networking_server) NetworkSendEvent(NET_EVENT_SUBSIDY,sizeof(Subsidy),s);
 					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
 					modified = true;
 					break;

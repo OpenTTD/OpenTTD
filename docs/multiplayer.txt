@@ -18,11 +18,18 @@ Multiplayer Manual for OpenTTD
    - select one in the list below the buttons
    - click on "join game".
 
- - if you want to play over the internet you should have the ip of the game server you want connect to.
-   - click direct connect
+ - if you want to play over the internet you should have the ip or hostname of the game server you want connect to.
+   - click add server
    - type in the ip address or hostname
    - if you want to add a port use :<port>
-   - if you want to connect as an special player use #<player-no>
+   
+ - now you can select a company and press: "Join company", to help that company
+ - or you can press "Spectate game", to spectate the game
+ - or you can press "New company", and start your own company (if there are slots free)
+ 
+ - you see a progressbar how far you are with joining the server.
+ 
+ - happy playing
    
 3. Connecting to a Server over the Console
 
@@ -33,38 +40,32 @@ Multiplayer Manual for OpenTTD
 
 4. Playing Internet-Games
 
- - since OpenTTD 0.3.4 you can also play internet games over higher latency connections.
- - to do this the gameservers sync frequency should be highered to a decent value.
-   - open the console [on the server]
-   - type in the following command:
-   
-    ] *net_sync_freq = <4-80>
-    
-    default value: 4
-    
-   - this is lowering the sync frequency of the server and your game should be less laggy.
-   - this is a server variable: it has nothing to do with the clients
-   
- - you can also change when the clients ready packet is sent if you still have lags.
-   - open the console
-   - type in the following command:
-   
-    ] *net_ready_ahead = <1-8>
-    
-    default value: 1
-    
-   - in that way your client is sending its "i am ready for next sync" a bit earlier
-     thats quite good for games where some players have higher latencies than the others.
-   - this is a client variable: it has nothing to do with the server
+ - since OpenTTD 0.3.5 the network protocol has been rewritten and is very stable, even over slow connections.
  
- - to change the client timeout time
-   - open the console [on the server]
-   - type in the following command:
-   
-    ] *net_client_timeout = <30-x>
-    
-    default value: 300
-   
-   - warning: a too low value will disconnect your clients if they have a short lag
-   
-  
+ - it can happen that a connection is that slow, or you have that many clients connected to your server, that your clients start to loose their connection. Some things you can do about it:
+ 
+ - net_frame_freq:
+    change it in console with: net_frame_freq = <number>
+	the number should be between the 0 and 10, not much higher. It indicates the delay between clicking and showing up. The higher, the more you notice it, but the less bandwidth you use.
+	
+ - net_sync_freq:
+    change it in console with: net_sync_freq = <number>
+	the number should be between the 50 and 1000, not much lower, not much higer. It indicates the time between sync-frames. A sync-frame is a frame which checks if all clients are still in sync. When the value it too high, clients can desync in 1960, but the server detects it in 1970. Not really handy. The lower the value, the more bandwidth it uses.
+	
+ NB: changing net_frame_freq has more effect on the bandwidth then net_sync_freq. You should never change net_sync_freq!
+ 
+
+5. Some useful things
+
+ - You can protect your company so nobody else can join uninvited. You do this with opening the console and then enter: protect <password>, where <password> is your password.
+ 
+ - You can give other players some money via the ClientList (under the 'head' in the mainbar).
+ 
+ - You can chat with other players via SHIFT+T or via the ClientList
+ 
+ - Servers can now kick players, so don't make them use it!
+ 
+ - From 0.3.5, desyncs should not happen anymore
+ 
+ - From 0.3.5, patch-settings are also synced. You can now play without deleting openttd.cfg, and with, for example, extra large trains enabled.
+ 

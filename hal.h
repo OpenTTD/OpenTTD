@@ -71,6 +71,8 @@ extern const HalMusicDriver _extmidi_music_driver;
 extern const HalMusicDriver _bemidi_music_driver;
 #endif
 
+extern const HalVideoDriver _dedicated_video_driver;
+
 enum DriverType {
 	VIDEO_DRIVER = 0,
 	SOUND_DRIVER = 1,
@@ -118,6 +120,12 @@ enum {
 	FIOS_TYPE_SCENARIO = 5,
 	FIOS_TYPE_OLD_SCENARIO = 6,
 };
+
+
+// Variables to display file lists
+FiosItem *_fios_list;
+int _fios_num;
+int _saveload_mode;
 
 // get the name of an oldstyle savegame
 void GetOldSaveGameName(char *title, const char *file);

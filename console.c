@@ -10,6 +10,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include "console.h"
+#include "network.h"
 
 #ifdef WIN32
 #include <windows.h>
@@ -19,19 +20,15 @@
 #define ICON_CMDBUF_SIZE 20
 #define ICON_CMDLN_SIZE 255
 #define ICON_LINE_HEIGHT 12
-
-typedef enum {
-	ICONSOLE_OPENED,
-	ICONSOLE_CLOSED
-} _iconsole_modes;
+#define ICON_RIGHT_BORDERWIDTH 10
+#define ICON_BOTTOM_BORDERWIDTH 12
 
 // ** main console ** //
 static bool _iconsole_inited;
 static char* _iconsole_buffer[ICON_BUFFER + 1];
-static char _iconsole_cbuffer[ICON_BUFFER + 1];
+static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static char _iconsole_cmdline[ICON_CMDLN_SIZE];
 static byte _iconsole_cmdpos;
-static _iconsole_modes _iconsole_mode = ICONSOLE_CLOSED;
 static Window* _iconsole_win = NULL;
 static byte _iconsole_scroll;
 
@@ -104,14 +101,20 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 		{
 			int i = _iconsole_scroll;
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
+			int delta = 0;
 			GfxFillRect(w->left, w->top, w->width, w->height - 1, 0);
 			while ((i > _iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
 				DoDrawString(_iconsole_buffer[i], 5,
 					w->height - (_iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
 				i--;
 			}
-			DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
-			DoDrawString(_iconsole_cmdline, 10, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+			delta = w->width - 10 - GetStringWidth(_iconsole_cmdline) - ICON_RIGHT_BORDERWIDTH;
+			if (delta > 0) {
+				DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+				delta = 0;
+			}
+
+			DoDrawString(_iconsole_cmdline, 10 + delta, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
 			break;
 		}
 		case WE_TICK:
@@ -119,11 +122,15 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 			if (_icursor_counter > _icursor_rate) {
 				int posx;
 				int posy;
+				int delta;
 
 				_icursor_state = !_icursor_state;
 
 				_cur_dpi = &_screen;
-				posx = 10 + GetStringWidth(_iconsole_cmdline);
+				delta = w->width - 10 - GetStringWidth(_iconsole_cmdline) - ICON_RIGHT_BORDERWIDTH;
+				if (delta > 0)
+					delta = 0;
+				posx = 10 + GetStringWidth(_iconsole_cmdline) + delta;
 				posy = w->height - 3;
 				GfxFillRect(posx, posy, posx + 5, posy + 1, _icursor_state ? 14 : 0);
 				_video_driver->make_dirty(posx, posy, 5, 1);
@@ -183,9 +190,19 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					break;
 				case WKC_RETURN:
 					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline);
+					_iconsole_cmdbufferpos = 19;
 					IConsoleCmdBufferAdd(_iconsole_cmdline);
 					IConsoleCmdExec(_iconsole_cmdline);
 					IConsoleClearCommand();
+					break;
+				case WKC_CTRL | WKC_RETURN:
+					if (_iconsole_mode == ICONSOLE_FULL) {
+						_iconsole_mode = ICONSOLE_OPENED;
+					} else {
+						_iconsole_mode = ICONSOLE_FULL;
+					}
+					IConsoleResize();
+					MarkWholeScreenDirty();
 					break;
 				case WKC_BACKSPACE:
 					if (_iconsole_cmdpos != 0) _iconsole_cmdpos--;
@@ -239,9 +256,9 @@ void IConsoleInit(void)
 	}
 	IConsoleStdLibRegister();
 	#if defined(WITH_REV)
-	IConsolePrintF(13, "OpenTTD Game Console Revision 4 - %s", _openttd_revision);
+	IConsolePrintF(13, "OpenTTD Game Console Revision 5 - %s", _openttd_revision);
 	#else
-	IConsolePrint(13, "OpenTTD Game Console Revision 4");
+	IConsolePrint(13, "OpenTTD Game Console Revision 5");
 	#endif
 	IConsolePrint(12, "---------------------------------");
 	IConsolePrint(12, "use \"help\" for more info");
@@ -266,9 +283,17 @@ void IConsoleFree(void)
 
 void IConsoleResize(void)
 {
-	if (_iconsole_win != NULL) {
-		_iconsole_win->height = _screen.height / 3;
-		_iconsole_win->width = _screen.width;
+	switch (_iconsole_mode) {
+		case ICONSOLE_OPENED:
+			_iconsole_win->height = _screen.height / 3;
+			_iconsole_win->width = _screen.width;
+			break;
+		case ICONSOLE_FULL:
+			_iconsole_win->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
+			_iconsole_win->width = _screen.width;
+			break;
+		default:
+			break;
 	}
 }
 
@@ -282,6 +307,11 @@ void IConsoleSwitch(void)
 			_iconsole_mode = ICONSOLE_OPENED;
 			break;
 		case ICONSOLE_OPENED:
+			DeleteWindowById(WC_CONSOLE, 0);
+			_iconsole_win = NULL;
+			_iconsole_mode = ICONSOLE_CLOSED;
+			break;
+		case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
 			_iconsole_win = NULL;
 			_iconsole_mode = ICONSOLE_CLOSED;
@@ -331,14 +361,19 @@ void IConsoleCmdBufferNavigate(signed char direction)
 	_iconsole_cmdpos = strlen(_iconsole_cmdbuffer[i]);
 }
 
-void IConsolePrint(byte color_code, const char* string)
+void IConsolePrint(uint16 color_code, const char* string)
 {
 	char* _ex;
 	char* _new;
-	char _exc;
-	char _newc;
+	uint16 _exc;
+	uint16 _newc;
 	char* i;
 	int j;
+
+	if (_network_dedicated) {
+		printf("%s\n", string);
+		return;
+	}
 
 	if (!_iconsole_inited) return;
 
@@ -362,7 +397,7 @@ void IConsolePrint(byte color_code, const char* string)
 }
 
 
-void CDECL IConsolePrintF(byte color_code, const char* s, ...)
+void CDECL IConsolePrintF(uint16 color_code, const char* s, ...)
 {
 	va_list va;
 	char buf[1024];
@@ -384,7 +419,7 @@ void CDECL IConsolePrintF(byte color_code, const char* s, ...)
 void IConsoleDebug(const char* string)
 {
 	if (_stdlib_developer > 1)
-		IConsolePrintF(_iconsole_color_debug, "DEBUG: %s", string);
+		IConsolePrintF(_iconsole_color_debug, "dbg: %s", string);
 }
 
 void IConsoleError(const char* string)
@@ -446,7 +481,7 @@ void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
 	item_new = malloc(sizeof(_iconsole_var)); /* XXX unchecked malloc */
 
 	item_new->name = malloc(strlen(name) + 2); /* XXX unchecked malloc */
-	sprintf(item_new->name, "*%s", name);
+	sprintf(item_new->name, "%s", name);
 
 	item_new->_next = NULL;
 	switch (type) {
@@ -454,6 +489,7 @@ void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
 			item_new->data.bool_ = addr;
 			break;
 		case ICONSOLE_VAR_BYTE:
+		case ICONSOLE_VAR_UINT8:
 			item_new->data.byte_ = addr;
 			break;
 		case ICONSOLE_VAR_UINT16:
@@ -507,7 +543,7 @@ void IConsoleVarInsert(_iconsole_var* var, const char* name)
 	if (var->_next != NULL) return;
 
 	var->name = malloc(strlen(name) + 2); /* XXX unchecked malloc */
-	sprintf(var->name, "*%s", name);
+	sprintf(var->name, "%s", name);
 
 	item = _iconsole_vars;
 	if (item == NULL) {
@@ -540,6 +576,7 @@ _iconsole_var* IConsoleVarAlloc(_iconsole_var_types type)
 			item->_malloc = true;
 			break;
 		case ICONSOLE_VAR_BYTE:
+		case ICONSOLE_VAR_UINT8:
 			item->data.byte_ = malloc(sizeof(*item->data.byte_));
 			*item->data.byte_ = 0;
 			item->_malloc = true;
@@ -607,6 +644,7 @@ void IConsoleVarSetValue(_iconsole_var* var, int value) {
 			*var->data.bool_ = (value != 0);
 			break;
 		case ICONSOLE_VAR_BYTE:
+		case ICONSOLE_VAR_UINT8:
 			*var->data.byte_ = value;
 			break;
 		case ICONSOLE_VAR_UINT16:
@@ -629,6 +667,7 @@ void IConsoleVarSetValue(_iconsole_var* var, int value) {
 
 void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc)
 {
+	if (var == NULL) return;
 	if (dump_desc == NULL) dump_desc = var->name;
 
 	switch (var->type) {
@@ -638,6 +677,7 @@ void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc)
 			break;
 		break;
 		case ICONSOLE_VAR_BYTE:
+		case ICONSOLE_VAR_UINT8:
 			IConsolePrintF(_iconsole_color_default, "%s = %u",
 				dump_desc, *var->data.byte_);
 			break;
@@ -703,7 +743,10 @@ void IConsoleVarHook(const char* name, _iconsole_hook_types type, iconsole_var_h
 
 bool IConsoleVarHookHandle(_iconsole_var* hook_var, _iconsole_hook_types type)
 {
-	iconsole_var_hook proc = NULL;
+	iconsole_var_hook proc;
+	if (hook_var == NULL) return false;
+
+	proc = NULL;
 	switch (type) {
 		case ICONSOLE_HOOK_BEFORE_CHANGE:
 			proc = hook_var->hook_before_change;
@@ -802,6 +845,7 @@ void IConsoleCmdExec(const char* cmdstr)
 	i = 0;
 	c = 0;
 	tokens[c] = tokenstream;
+	tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
 	while (i < l && c < lengthof(tokens) - 1) {
 		if (cmdstr[i] == '"') {
 			if (longtoken) {
@@ -812,9 +856,12 @@ void IConsoleCmdExec(const char* cmdstr)
 					skip_lt_change = true;
 				} else {
 					longtoken = !longtoken;
+					tokentypes[c] = ICONSOLE_VAR_STRING;
 				}
-			} else
+			} else {
 				longtoken = !longtoken;
+				tokentypes[c] = ICONSOLE_VAR_STRING;
+			}
 			if (!skip_lt_change) {
 				if (!longtoken) {
 					if (valid_token) {
@@ -822,6 +869,7 @@ void IConsoleCmdExec(const char* cmdstr)
 						*tokenstream = '\0';
 						tokenstream++;
 						tokens[c] = tokenstream;
+						tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
 						valid_token = false;
 					}
 				}
@@ -833,6 +881,7 @@ void IConsoleCmdExec(const char* cmdstr)
 				*tokenstream = '\0';
 				tokenstream++;
 				tokens[c] = tokenstream;
+				tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
 				valid_token = false;
 			}
 		} else {
@@ -853,28 +902,29 @@ void IConsoleCmdExec(const char* cmdstr)
 	//** interpreting **//
 
 	for (i = 0; i < c; i++) {
-		tokentypes[i] = ICONSOLE_VAR_UNKNOWN;
 		if (tokens[i] != NULL && i > 0 && strlen(tokens[i]) > 0) {
-			if (tokens[i][0] == '*') {
+			if (IConsoleVarGet((char *)tokens[i]) != NULL) {
 				// change the variable to an pointer if execution_mode != 4 is
-				// being prepared. execution_mode 4 is used to assign 
+				// being prepared. execution_mode 4 is used to assign
 				// one variables data to another one
 				// [token 0 and 2]
 				if (!((i == 2) && (tokentypes[1] == ICONSOLE_VAR_UNKNOWN) &&
 					(strcmp(tokens[1], "<<") == 0))) {
-					var = IConsoleVarGet(tokens[i]);
+					// only look for another variable if it isnt an longtoken == string with ""
+					var = NULL;
+					if (tokentypes[i]!=ICONSOLE_VAR_STRING) var = IConsoleVarGet(tokens[i]);
 					if (var != NULL) {
 						// pointer to the data --> token
-						tokens[i] = (char *) var->data.addr; /* XXX: maybe someone finds an cleaner way to do this */ 
+						tokens[i] = (char *) var->data.addr; /* XXX: maybe someone finds an cleaner way to do this */
 						tokentypes[i] = var->type;
 					}
 				}
 			}
-			if (tokens[i] != NULL && tokens[i][0] == '@' && tokens[i][1] == '*') {
-				var = IConsoleVarGet(tokens[i] + 1);
+			if (tokens[i] != NULL && tokens[i][0] == '@' && (IConsoleVarGet(tokens[i]+1) != NULL)) {
+				var = IConsoleVarGet(tokens[i]+1);
 				if (var != NULL) {
 					// pointer to the _iconsole_var struct --> token
-					tokens[i] = (char *) var; /* XXX: maybe someone finds an cleaner way to do this */ 
+					tokens[i] = (char *) var; /* XXX: maybe someone finds an cleaner way to do this */
 					tokentypes[i] = ICONSOLE_VAR_REFERENCE;
 				}
 			}
@@ -960,6 +1010,7 @@ void IConsoleCmdExec(const char* cmdstr)
 						break;
 					}
 					case ICONSOLE_VAR_BYTE:
+					case ICONSOLE_VAR_UINT8:
 					{
 						if (strcmp(tokens[1], "=") == 0) {
 							if (c == 3)
@@ -1088,9 +1139,9 @@ void IConsoleCmdExec(const char* cmdstr)
 							IConsoleError("operation not supported");
 						break;
 					}
-					case ICONSOLE_VAR_NONE: 
-					case ICONSOLE_VAR_REFERENCE: 
-					case ICONSOLE_VAR_UNKNOWN: 
+					case ICONSOLE_VAR_NONE:
+					case ICONSOLE_VAR_REFERENCE:
+					case ICONSOLE_VAR_UNKNOWN:
 						IConsoleError("operation not supported");
 						break;
 				}
@@ -1140,6 +1191,7 @@ void IConsoleCmdExec(const char* cmdstr)
 							IConsoleVarDump(var, NULL);
 							break;
 						case ICONSOLE_VAR_BYTE:
+						case ICONSOLE_VAR_UINT8:
 							*var->data.byte_ = *result->data.byte_;
 							IConsoleVarDump(var, NULL);
 							break;

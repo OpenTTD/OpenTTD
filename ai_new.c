@@ -830,7 +830,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
     	// We want a vehicle in a station once a month at least, so, calculate it!
     	// (the * 2 is because we have 2 stations ;))
-    	amount = ((int)(((float)length / (float)tiles_a_day / 30 * 2))) * 2;
+			amount = length * 2 * 2 / tiles_a_day / 30;
     	if (amount == 0) amount = 1;
    		return amount;
 	} else if (p->ainew.tbt == AI_TRUCK) {
@@ -853,7 +853,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	// We want all the cargo to be gone in a month.. so, we know the cargo it delivers
     	//  we know what the vehicle takes with him, and we know the time it takes him
     	//  to get back here.. now let's do some math!
-    	amount = (int)(((float)length / (float)tiles_a_day / 30 * 2) * ((float)max_cargo / (float)RoadVehInfo(i)->capacity));
+			amount = 2 * length * max_cargo / tiles_a_day / 30 / RoadVehInfo(i)->capacity;
     	amount += 1;
     	return amount;
 	} else {

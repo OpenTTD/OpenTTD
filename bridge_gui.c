@@ -23,7 +23,7 @@ extern const PalSpriteID _bridge_sprites[MAX_BRIDGES];
 extern const uint16 _bridge_speeds[MAX_BRIDGES];
 extern const StringID _bridge_material[MAX_BRIDGES];
 
-static void CcBuildBridge(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildBridge(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
 }

@@ -969,7 +969,9 @@ static void MaybePlantFarmField(Industry *i)
 {
 	uint tile;
 	if (CHANCE16(1,8)) {
-		tile = TileAddWrap(i->xy, ((i->width>>1) + Random() % 31 - 16), ((i->height>>1) + Random() % 31 - 16));
+		int x = (i->width>>1) + Random() % 31 - 16;
+		int y = (i->height>>1) + Random() % 31 - 16;
+		tile = TileAddWrap(i->xy, x, y);
 		if (tile != TILE_WRAPPED)
 			PlantFarmField(tile);
 	}
@@ -1391,7 +1393,7 @@ static Industry *AllocateIndustry()
 	for(i=_industries; i != endof(_industries); i++) {
 		if (i->xy == 0) {
 			int index = i - _industries;
-		    if (index > _total_industries) _total_industries++;
+		    if (index > _total_industries) _total_industries = index;
 			return i;
 		}
 	}
@@ -1476,7 +1478,9 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 	if (i->type == IT_FARM || i->type == IT_FARM_2) {
 		tile = i->xy + TILE_XY((i->width >> 1), (i->height >> 1));
 		for(j=0; j!=50; j++) {
-			uint new_tile = TileAddWrap(tile, Random() % 31 - 16, Random() % 31 - 16);
+			int x = Random() % 31 - 16;
+			int y = Random() % 31 - 16;
+			uint new_tile = TileAddWrap(tile, x, y);
 			if (new_tile != TILE_WRAPPED)
 				PlantFarmField(new_tile);
 		}
@@ -1898,8 +1902,7 @@ static void Load_INDY()
 	_total_industries = 0;
 	while ((index = SlIterateArray()) != -1) {
 		SlObject(DEREF_INDUSTRY(index), _industry_desc);
-		if (index + 1 > _total_industries)
-		    _total_industries = index + 1;
+		if (index > _total_industries) _total_industries = index;
 	}
 }
 

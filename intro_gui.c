@@ -8,9 +8,9 @@
 #include "player.h"
 #include "command.h"
 #include "console.h"
+#include "network.h"
 
-extern void MakeNewGame();
-extern void StartScenario();
+extern void SwitchMode(int new_mode);
 
 /*
 static void ShowSelectTutorialWindow()
@@ -39,11 +39,13 @@ static const Widget _select_game_widgets[] = {
 {   WIDGETS_END},
 };
 
+extern void HandleOnEditText(WindowEvent *e);
+extern void HandleOnEditTextCancel();
+
 static void SelectGameWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(0xC0) & ~(0xF << 12)) | (1 << (_new_opt.landscape+12)) | (!_networking?(1<<6):(1<<7));
-		w->disabled_state = _networking ? 0x30 : 0;
+		w->click_state = (w->click_state & ~(0xC0) & ~(0xF << 12)) | (1 << (_new_opt.landscape+12)) | (1<<6);
 		SetDParam(0, STR_6801_EASY + _new_opt.diff_level);
 		DrawWindowWidgets(w);
 		break;
@@ -54,17 +56,16 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 		case 4: ShowPatchesSelection(); break;
 		case 5: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
-		case 6:
-			if (_networking)
-				DoCommandP(0, 0, 0, NULL, CMD_SET_SINGLE_PLAYER);
-			break;
 		case 7:
+#ifdef ENABLE_NETWORK
 			if (!_network_available) {
 				ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 			} else {
 				ShowNetworkGameWindow();
-				ShowErrorMessage(-1, TEMP_STRING_NO_NETWORK, 0, 0);
 			}
+#else
+			ShowErrorMessage(-1,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+#endif /* ENABLE_NETWORK */
 			break;
 		case 8: ShowGameOptions(); break;
 		case 9: ShowGameDifficulty(); break;
@@ -79,7 +80,11 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case WKC_BACKQUOTE: IConsoleSwitch(); break;
 		}
 		break;
+
+	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
+	case WE_ON_EDIT_TEXT_CANCEL: HandleOnEditTextCancel(); break;
 	}
+
 }
 
 static const WindowDesc _select_game_desc = {
@@ -128,9 +133,7 @@ int32 CmdGenRandomNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_random_seeds[0][0] = p1;
 	_random_seeds[0][1] = p2;
 
-	if (_networking) { NetworkStartSync(true); }
-
-	MakeNewGame();
+	SwitchMode(SM_NEWGAME);
 	return 0;
 }
 
@@ -169,9 +172,7 @@ int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_random_seeds[0][0] = p1;
 	_random_seeds[0][1] = p2;
 
-	if (_networking) { NetworkStartSync(true); }
-
-	StartScenario();
+	SwitchMode(SM_START_SCENARIO);
 	return 0;
 }
 

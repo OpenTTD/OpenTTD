@@ -80,7 +80,7 @@ enum SwitchModes {
 	SM_SAVE = 5,
 	SM_GENRANDLAND = 6,
 	SM_LOAD_SCENARIO = 9,
-
+	SM_START_SCENARIO = 10,
 };
 
 enum MapTileTypes {
@@ -436,6 +436,8 @@ enum {
 	WC_PERFORMANCE_DETAIL = 0x46,
 	WC_CONSOLE = 0x47,
 	WC_EXTRA_VIEW_PORT = 0x48,
+	WC_CLIENT_LIST = 0x49,
+	WC_NETWORK_STATUS_WINDOW = 0x4A,
 };
 
 

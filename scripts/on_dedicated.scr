@@ -1,0 +1,3 @@
+echo "Setting dedicated network server settings..."
+setpassword "*"
+setservername "My example dedicated gameserver"

@@ -1,1035 +1,554 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "network_data.h"
+
+#ifdef ENABLE_NETWORK
+
 #include "table/strings.h"
-#include "gui.h"
-#include "command.h"
-#include "player.h"
-#include "console.h"
-#include "economy.h"
+#include "network_client.h"
+#include "network_server.h"
+#include "network_udp.h"
+#include "network_gamelist.h"
+#include "console.h" /* IConsoleCmdExec */
+#include <stdarg.h> /* va_list */
 
-#if defined(WIN32)
-#	include <windows.h>
-#	include <winsock.h>
+// The listen socket for the server
+static SOCKET _listensocket;
 
-# pragma comment (lib, "ws2_32.lib")
-# define ENABLE_NETWORK
-# define GET_LAST_ERROR() WSAGetLastError()
-# define EWOULDBLOCK WSAEWOULDBLOCK
-#endif
+// Network copy of patches, so the patches of a client are not fucked up
+//  after he joined a server
+static Patches network_tmp_patches;
 
-#if defined(UNIX)
-// Make compatible with WIN32 names
-#	define SOCKET int
-#	define INVALID_SOCKET -1
-// we need different defines for MorphOS and AmigaOS
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
-#	define ioctlsocket ioctl
-# define closesocket close
-# define GET_LAST_ERROR() errno
-#endif
-// Need this for FIONREAD on solaris
-#	define BSD_COMP
-#	include <unistd.h>
-#	include <sys/ioctl.h>
+// The amount of clients connected
+static byte _network_clients_connected = 0;
+// The index counter for new clients (is never decreased)
+static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 
-// Socket stuff
-#	include <sys/socket.h>
-#	include <netinet/in.h>
-#	include <arpa/inet.h>
-# 	include <errno.h>
-# 	include <sys/time.h>
-// NetDB
-#   include <netdb.h>
-
-# ifndef TCP_NODELAY
-#  define TCP_NODELAY 0x0001
-# endif
-
-#endif
-
-
-#if defined(__MORPHOS__) || defined(__AMIGA__)
-#	include <exec/types.h>
-#	include <proto/exec.h> 		// required for Open/CloseLibrary()
-#	if defined(__MORPHOS__)
-#		include <sys/filio.h> 	// FION#? defines
-#	else // __AMIGA__
-#		include	<proto/socket.h>
-#	endif
-
-// make source compatible with bsdsocket.library functions
-# define closesocket(s)     						CloseSocket(s)
-# define GET_LAST_ERROR() 							Errno()
-#	define ioctlsocket(s,request,status)  IoctlSocket((LONG)s,(ULONG)request,(char*)status)
-
-struct Library *SocketBase = NULL;
-
-#if !defined(__MORPHOS__)
-// usleep() implementation
-#include <devices/timer.h>
-#include <dos/dos.h>
-
-struct Device       *TimerBase    = NULL;
-struct MsgPort      *TimerPort    = NULL;
-struct timerequest  *TimerRequest = NULL;
-#endif
-
-#endif /* __MORPHOS__ || __AMIGA__ */
-
-
-#define SEND_MTU 1460
-
-#if defined(ENABLE_NETWORK)
-
-enum {
-	PACKET_TYPE_WELCOME = 0,
-	PACKET_TYPE_READY,
-	PACKET_TYPE_ACK,
-	PACKET_TYPE_SYNC,
-	PACKET_TYPE_FSYNC,
-	PACKET_TYPE_XMIT,
-	PACKET_TYPE_COMMAND,
-	PACKET_TYPE_EVENT,
-};
-
-// sent from client -> server whenever the client wants to exec a command.
-// send from server -> client when another player execs a command.
-typedef struct CommandPacket {
-	byte packet_length;
-	byte packet_type;
-	uint16 cmd;
-	uint32 p1,p2;
-	TileIndex tile;
-	byte player;// player id, this is checked by the server.
-	byte when;  // offset from the current max_frame value minus 1. this is set by the server.
-	uint32 dp[8];
-} CommandPacket;
-
-typedef struct EventPacket {
-	byte packet_length;
-	byte packet_type;
-	byte event_type;
-	byte data_start;
-} EventPacket;
-
-#define COMMAND_PACKET_BASE_SIZE (sizeof(CommandPacket) - 8 * sizeof(uint32))
-
-// sent from server -> client periodically to tell the client about the current tick in the server
-// and how far the client may progress.
-typedef struct SyncPacket {
-	byte packet_length;
-	byte packet_type;
-	byte frames; // how many more frames may the client execute? this is relative to the old value of max.
-	byte server; // where is the server currently executing? this is negatively relative to the old value of max.
-	uint32 random_seed_1; // current random state at server. used to detect out of sync.
-	uint32 random_seed_2;
-} SyncPacket;
-
-typedef struct FrameSyncPacket {
-	byte packet_length;
-	byte packet_type;
-	byte frames; // where is the server currently executing? this is negatively relative to the old value of max.
-} FrameSyncPacket;
-
-// sent from server -> client as an acknowledgement that the server received the command.
-// the command will be executed at the current value of "max".
-typedef struct AckPacket {
-	byte packet_length;
-	byte packet_type;
-	int16 when;
-} AckPacket;
-
-typedef struct ReadyPacket {
-	byte packet_length;
-	byte packet_type;
-} ReadyPacket;
-
-typedef struct FilePacketHdr {
-	byte packet_length;
-	byte packet_type;
-} FilePacketHdr;
-
-// sent from server to client when the client has joined.
-typedef struct WelcomePacket {
-	byte packet_length;
-	byte packet_type;
-	uint32 player_seeds[MAX_PLAYERS][2];
-	uint32 frames_max;
-	uint32 frames_srv;
-	uint32 frames_cnt;
-} WelcomePacket;
-
-typedef struct Packet Packet;
-struct Packet {
-	Packet *next; // this one has to be the first element.
-	uint siz;
-	byte buf[SEND_MTU]; // packet payload
-};
-
-typedef struct ClientState {
-	int socket;
-	bool inactive; // disable sending of commands/syncs to client
-	bool writable;
-	bool ready;
-	uint timeout;
-	uint xmitpos;
-
-	uint eaten;
-	Packet *head, **last;
-
-	uint buflen;											// receive buffer len
-	byte buf[1024];										// receive buffer
-} ClientState;
-
-
-typedef struct QueuedCommand QueuedCommand;
-struct QueuedCommand {
-	QueuedCommand *next;
-	CommandPacket cp;
-	CommandCallback *callback;
-	uint32 cmd;
-	uint32 frame;
-};
-
-typedef struct CommandQueue CommandQueue;
-struct CommandQueue {
-	QueuedCommand *head, **last;
-};
-
-#define MAX_CLIENTS (MAX_PLAYERS + 1)
-
-// packets waiting to be executed, for each of the players.
-// this list is sorted in frame order, so the item on the front will be executed first.
-static CommandQueue _command_queue;
-
-// in the client, this is the list of commands that have not yet been acked.
-// when it is acked, it will be moved to the appropriate position at the end of the player queue.
-static CommandQueue _ack_queue;
-
-static ClientState _clients[MAX_CLIENTS];
-static int _num_clients;
-
-// keep a history of the 16 most recent seeds to be able to capture out of sync errors.
-static uint32 _my_seed_list[16][2];
-static bool _network_ready_sent;
-static uint32 _frame_fsync_last;
-
-typedef struct FutureSeeds {
-	uint32 frame;
-	uint32 seed[2];
-} FutureSeeds;
-
-// remember some future seeds that the server sent to us.
-static FutureSeeds _future_seed[8];
-static uint _num_future_seed;
-
-static SOCKET _listensocket; // tcp socket
-
-static SOCKET _udp_client_socket; // udp server socket
-static SOCKET _udp_server_socket; // udp client socket
-
-typedef struct UDPPacket {
-	byte command_code;
-	byte data_len;
-	byte command_check;
-	byte data[255];
-} UDPPacket;
-
-enum {
-	NET_UDPCMD_SERVERSEARCH = 1,
-	NET_UDPCMD_SERVERACTIVE,
-	NET_UDPCMD_GETSERVERINFO,
-	NET_UDPCMD_SERVERINFO,
-};
-
-void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet);
-static void HandleCommandPacket(ClientState *cs, CommandPacket *np);
-static void CloseClient(ClientState *cs);
-void NetworkSendWelcome(ClientState *cs, bool direct);
-
-uint32 _network_ip_list[10]; // network ip list
-
-// this is set to point to the savegame
-static byte *_transmit_file;
-static size_t _transmit_file_size;
-
-static FILE *_recv_file;
-
-/* multi os compatible sleep function */
-void CSleep(int milliseconds) {
-#if defined(WIN32)
-Sleep(milliseconds);
-#endif
-#if defined(UNIX)
-#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGAOS__)
-usleep(milliseconds*1000);
-#endif
-#ifdef __BEOS__
-snooze(milliseconds*1000);
-#endif
-#if defined(__MORPHOS__)
-usleep(milliseconds*1000);
-#endif
-#if defined(__AMIGAOS__) && !defined(__MORPHOS__)
+// Function that looks up the CI for a given client-index
+NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 {
-	ULONG signals;
-	ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
+	NetworkClientInfo *ci;
 
-	// send IORequest
-	TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
-	TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
-	TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
-	SendIO((struct IORequest *)TimerRequest);
+	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++)
+		if (ci->client_index == client_index)
+			return ci;
 
-	if ( !((signals = Wait(TimerSigBit|SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
-		AbortIO((struct IORequest *)TimerRequest);
+	return NULL;
+}
+
+// Function that looks up the CS for a given client-index
+ClientState *NetworkFindClientStateFromIndex(uint16 client_index)
+{
+	ClientState *cs;
+
+	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++)
+		if (cs->index == client_index)
+			return cs;
+
+	return NULL;
+}
+
+// NetworkGetClientName is a server-safe function to get the name of the client
+//  if the user did not send it yet, Client #<no> is used.
+void NetworkGetClientName(char *client_name, size_t size, ClientState *cs)
+{
+	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	if (ci->client_name[0] == '\0')
+		snprintf(client_name, size, "Client #%d", cs->index);
+	else
+		snprintf(client_name, size, "%s", ci->client_name);
+}
+
+// This puts a text-message to the console, or in the future, the chat-box,
+//  (to keep it all a bit more general)
+void NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...)
+{
+	char buf[1024];
+	va_list va;
+	const int duration = 10; // Game days the messages stay visible
+
+	va_start(va, str);
+	vsprintf(buf, str, va);
+	va_end(va);
+
+	switch (action) {
+		case NETWORK_ACTION_JOIN_LEAVE:
+			IConsolePrintF(color, "*** %s %s", name, buf);
+			AddTextMessage(color, duration, "*** %s %s", name, buf);
+			break;
+		case NETWORK_ACTION_GIVE_MONEY:
+			IConsolePrintF(color, "*** %s %s", name, buf);
+			AddTextMessage(color, duration, "*** %s %s", name, buf);
+			break;
+		case NETWORK_ACTION_CHAT_PLAYER:
+			IConsolePrintF(color, "[Team] %s: %s", name, buf);
+			AddTextMessage(color, duration, "[Team] %s: %s", name, buf);
+			break;
+		case NETWORK_ACTION_CHAT_CLIENT:
+			IConsolePrintF(color, "[Private] %s: %s", name, buf);
+			AddTextMessage(color, duration, "[Private] %s: %s", name, buf);
+			break;
+		case NETWORK_ACTION_CHAT_TO_CLIENT:
+			IConsolePrintF(color, "[Private] To %s: %s", name, buf);
+			AddTextMessage(color, duration, "[Private] To %s: %s", name, buf);
+			break;
+		case NETWORK_ACTION_CHAT_TO_PLAYER:
+			IConsolePrintF(color, "[Team] To %s: %s", name, buf);
+			AddTextMessage(color, duration, "[Team] To %s: %s", name, buf);
+			break;
+		case NETWORK_ACTION_NAME_CHANGE:
+			IConsolePrintF(color, "*** %s changed his name to %s", name, buf);
+			AddTextMessage(color, duration, "*** %s changed his name to %s", name, buf);
+			break;
+		default:
+			IConsolePrintF(color, "[All] %s: %s", name, buf);
+			AddTextMessage(color, duration, "[All] %s: %s", name, buf);
+			break;
 	}
-	WaitIO((struct IORequest *)TimerRequest);
-}
-#endif // __AMIGAOS__ && !__MORPHOS__
-#endif
 }
 
-//////////////////////////////////////////////////////////////////////
-
-// ****************************** //
-// * Network Error Handlers     * //
-// ****************************** //
-
-static void NetworkHandleSaveGameError()
+// Calculate the frame-lag of a client
+uint NetworkCalculateLag(const ClientState *cs)
 {
-		_networking_sync = false;
-		_networking_queuing = true;
-		_switch_mode = SM_MENU;
-		_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+	int lag = cs->last_frame_server - cs->last_frame;
+	// This client has missed his ACK packet after 1 DAY_TICKS..
+	//  so we increase his lag for every frame that passes!
+	// The packet can be out by a max of _net_frame_freq
+	if (cs->last_frame_server + DAY_TICKS + _network_frame_freq < _frame_counter)
+		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _network_frame_freq);
+
+	return lag;
 }
 
-static void NetworkHandleConnectionLost()
-{
-		_networking_sync = false;
-		_networking_queuing = true;
-		_switch_mode = SM_MENU;
-		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
-}
 
-static void NetworkHandleDeSync()
+// There was a non-recoverable error, drop back to the main menu with a nice
+//  error
+void NetworkError(StringID error_string)
 {
-	DEBUG(net, 0) ("NET: error: network sync error at frame %i", _frame_counter);
-	{
-		int i;
-		for (i=15; i>=0; i--) DEBUG(net,0) ("NET frame %i: [0]=%i, [1]=%i",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
-		for (i=0; i<8; i++) DEBUG(net,0) ("NET frame %i: [0]=%i, [1]=%i",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
-	}
-	_networking_sync = false;
-	_networking_queuing = true;
 	_switch_mode = SM_MENU;
-	_switch_mode_errorstr = STR_NETWORK_ERR_DESYNC;
+	_switch_mode_errorstr = error_string;
 }
 
-// ****************************** //
-// * TCP Packets and Handlers   * //
-// ****************************** //
-
-static QueuedCommand *AllocQueuedCommand(CommandQueue *nq)
-{
-	QueuedCommand *qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
-	assert(qp);
-	*nq->last = qp;
-	nq->last = &qp->next;
-	return qp;
+void ClientStartError(char *error) {
+	DEBUG(net, 0)("[NET] Client could not start network: %s",error);
+	NetworkError(STR_NETWORK_ERR_CLIENT_START);
 }
 
-static void QueueClear(CommandQueue *nq)
+void ServerStartError(char *error) {
+	DEBUG(net, 0)("[NET] Server could not start network: %s",error);
+	NetworkError(STR_NETWORK_ERR_SERVER_START);
+}
+
+void NetworkClientError(byte res, ClientState *cs) {
+	// First, send a CLIENT_ERROR to the server, so he knows we are
+	//  disconnection (and why!)
+	NetworkErrorCode errorno;
+
+	// We just want to close the connection..
+	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
+		cs->quited = true;
+		CloseClient(cs);
+		_networking = false;
+
+		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+		return;
+	}
+
+	switch(res) {
+		case NETWORK_RECV_STATUS_DESYNC: errorno = NETWORK_ERROR_DESYNC; break;
+		case NETWORK_RECV_STATUS_SAVEGAME: errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
+		default: errorno = NETWORK_ERROR_GENERAL;
+	}
+	// This means we fucked up and the server closed the connection
+	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL) {
+		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
+
+		// Dequeue all commands before closing the socket
+		NetworkSend_Packets(DEREF_CLIENT(0));
+	}
+
+	_switch_mode = SM_MENU;
+	CloseClient(cs);
+	_networking = false;
+}
+
+// Find all IP-aliases for this host
+void NetworkFindIPs(void)
 {
-	QueuedCommand *qp;
-	while ((qp=nq->head)) {
-		// unlink it.
-		if (!(nq->head = qp->next)) nq->last = &nq->head;
-		free(qp);
+	int i, last;
+
+#if defined(BEOS_NET_SERVER) /* doesn't have neither getifaddrs or net/if.h */
+	/* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
+	int _netstat(int fd, char **output, int verbose);
+
+	int seek_past_header(char **pos, const char *header) {
+		char *new_pos = strstr(*pos, header);
+		if (new_pos == 0) {
+			return B_ERROR;
 		}
-	nq->last = &nq->head;
-}
+		*pos += strlen(header) + new_pos - *pos + 1;
+		return B_OK;
+	}
 
-static int GetNextSyncFrame()
-{
-	uint32 newframe;
-	if (_frame_fsync_last == 0) return -11;
-	newframe = (_frame_fsync_last + 11); // do not use a multiple of 4 since that screws up sync-packets
-	return (_frame_counter_max - newframe);
+	int output_length;
+	char *output_pointer = NULL;
+	char **output;
+	int sock = socket(AF_INET, SOCK_DGRAM, 0);
+	i = 0;
 
-}
+	// If something fails, make sure the list is empty
+	_network_ip_list[0] = 0;
 
-// go through the player queues for each player and see if there are any pending commands
-// that should be executed this frame. if there are, execute them.
-void NetworkProcessCommands()
-{
-	CommandQueue *nq;
-	QueuedCommand *qp;
-	byte old_player;
+	if (sock < 0) {
+		DEBUG(net, 0)("Error creating socket!");
+		return;
+	}
 
-	// queue mode ?
-	if (_networking_queuing)
+	output_length = _netstat(sock, &output_pointer, 1);
+	if (output_length < 0) {
+		DEBUG(net, 0)("Error running _netstat!");
+		return;
+	}
+
+	output = &output_pointer;
+	if (seek_past_header(output, "IP Interfaces:") == B_OK) {
+		for (;;) {
+			uint32 n, fields, read;
+			uint8 i1, i2, i3, i4, j1, j2, j3, j4;
+			struct in_addr inaddr;
+			fields = sscanf(*output, "%u: %hhu.%hhu.%hhu.%hhu, netmask %hhu.%hhu.%hhu.%hhu%n",
+												&n, &i1,&i2,&i3,&i4, &j1,&j2,&j3,&j4, &read);
+			read += 1;
+			if (fields != 9) {
+				break;
+			}
+			inaddr.s_addr = htonl((uint32)i1 << 24 | (uint32)i2 << 16 | (uint32)i3 << 8 | (uint32)i4);
+			if (inaddr.s_addr != 0) {
+				_network_ip_list[i] = inaddr.s_addr;
+				i++;
+			}
+			if (read < 0) {
+				break;
+			}
+			*output += read;
+		}
+		/* XXX - Using either one of these crashes openttd heavily? - wber */
+		/*free(output_pointer);*/
+		/*free(output);*/
+		closesocket(sock);
+	}
+#elif defined(HAVE_GETIFADDRS)
+	struct ifaddrs *ifap, *ifa;
+
+	// If something fails, make sure the list is empty
+	_network_ip_list[0] = 0;
+
+	if (getifaddrs(&ifap) != 0)
 		return;
 
-	nq = &_command_queue;
-	while ( (qp=nq->head) && (!_networking_sync || qp->frame <= _frame_counter)) {
-		// unlink it.
-		if (!(nq->head = qp->next)) nq->last = &nq->head;
-
-		if (qp->frame < _frame_counter && _networking_sync) {
-			DEBUG(net,0) ("warning: !qp->cp.frame < _frame_counter, %d < %d [%d]\n", qp->frame, _frame_counter, _frame_counter_srv+4);
-		}
-
-		// run the command
-		old_player = _current_player;
-		_current_player = qp->cp.player;
-		memcpy(_decode_parameters, qp->cp.dp, (qp->cp.packet_length - COMMAND_PACKET_BASE_SIZE));
-
-		DoCommandP(qp->cp.tile, qp->cp.p1, qp->cp.p2, qp->callback, qp->cmd | CMD_DONT_NETWORK);
-		free(qp);
-		_current_player = old_player;
+	i = 0;
+	for (ifa = ifap; ifa != NULL; ifa = ifa->ifa_next) {
+		if (ifa->ifa_addr == NULL || ifa->ifa_addr->sa_family != AF_INET)
+			continue;
+		_network_ip_list[i] = ((struct sockaddr_in *)ifa->ifa_addr)->sin_addr.s_addr;
+		i++;
 	}
+	freeifaddrs(ifap);
 
-	if (!_networking_server) {
-		// remember the random seed so we can check if we're out of sync.
-		_my_seed_list[_frame_counter & 15][0] = _sync_seed_1;
-		_my_seed_list[_frame_counter & 15][1] = _sync_seed_2;
+#else /* not HAVE_GETIFADDRS */
 
-		while (_num_future_seed) {
-			assert(_future_seed[0].frame >= _frame_counter);
-			if (_future_seed[0].frame != _frame_counter) break;
-			if (_future_seed[0].seed[0] != _sync_seed_1 ||_future_seed[0].seed[1] != _sync_seed_2) NetworkHandleDeSync();
-			memmove(_future_seed, _future_seed + 1, --_num_future_seed * sizeof(FutureSeeds));
-		}
-	}
-}
+	unsigned long len = 0;
+	SOCKET sock;
+	IFREQ ifo[MAX_INTERFACES];
 
-// send a packet to a client
-static void SendBytes(ClientState *cs, void *bytes, uint len)
-{
-	byte *b = (byte*)bytes;
-	uint n;
-	Packet *p;
-
-	assert(len != 0);
-
-	// see if there's space in the last packet?
-	if (!cs->head || (p = (Packet*)cs->last, p->siz == sizeof(p->buf)))
-		p = NULL;
-
-	do {
-		if (!p) {
-			// need to allocate a new packet buffer.
-			p = (Packet*)malloc(sizeof(Packet));
-
-			// insert at the end of the linked list.
-			*cs->last = p;
-			cs->last = &p->next;
-			p->next = NULL;
-			p->siz = 0;
-		}
-
-		// copy bytes to packet.
-		n = minu(sizeof(p->buf) - p->siz, len);
-		memcpy(p->buf + p->siz, b, n);
-		p->siz += n;
-		b += n;
-		p = NULL;
-	} while (len -= n);
-}
-
-// send data direct to a client
-static void SendDirectBytes(ClientState *cs, void *bytes, uint len)
-{
-	char *buf = (char*)bytes;
-	uint n;
-
-	n = send(cs->socket, buf, len, 0);
-	if (n == -1) {
-				int err = GET_LAST_ERROR();
-				DEBUG(net, 0) ("NET: %i] send() failed with error %d", _frame_counter, err);
-				CloseClient(cs);
-			}
-}
-
-// client:
-//   add it to the client's ack queue, and send the command to the server
-// server:
-//   add it to the server's player queue, and send it to all clients.
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
-{
-	int nump;
-	QueuedCommand *qp;
-	ClientState *cs;
-	CommandPacket cp;
-
-	if (!(cmd & CMD_NET_INSTANT)) {
-		qp = AllocQueuedCommand(_networking_server ? &_command_queue : &_ack_queue);
-	} else {
-		qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
-		}
-	qp->cp.packet_type = PACKET_TYPE_COMMAND;
-	qp->cp.tile = tile;
-	qp->cp.p1 = p1;
-	qp->cp.p2 = p2;	
-	qp->cp.cmd = (uint16)cmd;
-	qp->cp.player = _local_player;
-	qp->cp.when = 0;
-	qp->cmd = cmd;
-	qp->callback = callback;
-
-	// so the server knows when to execute it.
-	qp->frame = _frame_counter_max - GetNextSyncFrame();
-
-	// calculate the amount of extra bytes.
-	nump = 8;
-	while ( nump != 0 && ((uint32*)_decode_parameters)[nump-1] == 0) nump--;
-	qp->cp.packet_length = COMMAND_PACKET_BASE_SIZE + nump * sizeof(uint32);
-	if (nump != 0) memcpy(qp->cp.dp, _decode_parameters, nump * sizeof(uint32));
-
-	cp = qp->cp;
-
-	// convert to little endian
-	cp.tile = TO_LE16(cp.tile);
-	cp.p1 = TO_LE32(cp.p1);
-	cp.p2 = TO_LE32(cp.p2);
-	cp.cmd = TO_LE16(cp.cmd);
-
-	// send it to the peers
-	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, &cp, cp.packet_length);
-
-	if (cmd & CMD_NET_INSTANT) {
-		free(qp);
-	}
-}
-
-void NetworkSendEvent(uint16 type, uint16 data_len, void * data)
-{
-	EventPacket * ep;
-	ClientState *cs;
-
-	// encode the event ... add its data
-	ep=malloc(data_len+sizeof(EventPacket)-1);
-	ep->event_type = type;
-	ep->packet_length = data_len+sizeof(EventPacket)-1;
-	ep->packet_type = PACKET_TYPE_EVENT;
-	memcpy(&ep->data_start,data,data_len);
-
-	// send it to the peers
-	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, ep, ep->packet_length);
-
-	// free the temp packet
-	free(ep);
-}
-
-// client:
-//   server sends a command from another player that we should execute.
-//   put it in the command queue.
-//
-// server:
-//   client sends a command that it wants to execute.
-//   fill the when field so the client knows when to execute it.
-//   put it in the appropriate player queue.
-//   send it to all other clients.
-//   send an ack packet to the actual client.
-
-static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
-{
-	QueuedCommand *qp;
-	ClientState *c;
-	AckPacket ap;
-	uint16 cmd;
-
-	DEBUG(net, 2) ("NET: %i] cmd size %d", _frame_counter, np->packet_length);
-	assert(np->packet_length >= COMMAND_PACKET_BASE_SIZE);
-
-	cmd = FROM_LE16(np->cmd);
-
-	if (!(cmd & CMD_NET_INSTANT)) {
-		// put it into the command queue
-		qp = AllocQueuedCommand(&_command_queue);
-	} else {
-		qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
-	}
-	qp->cp = *np;
-
-	qp->frame = _frame_counter_max - GetNextSyncFrame();
-
-	qp->callback = NULL;
-
-	// extra params
-	memcpy(&qp->cp.dp, np->dp, np->packet_length - COMMAND_PACKET_BASE_SIZE);
-
-	ap.packet_type = PACKET_TYPE_ACK;
-	ap.when = TO_LE16(GetNextSyncFrame());
-	ap.packet_length = sizeof(AckPacket);
-	DEBUG(net,4)("NET: %i] NewACK: frame=%i %i",_frame_counter, ap.when,_frame_counter_max - GetNextSyncFrame());
-
-	// send it to the peers
-	if (_networking_server) {
-		for(c=_clients; c->socket != INVALID_SOCKET; c++) {
-			if (c == cs) {
-				if (!(cmd & CMD_NET_INSTANT)) SendDirectBytes(c, &ap, ap.packet_length);
-			} else {
-				if (!cs->inactive) SendBytes(c, &qp->cp, qp->cp.packet_length);
-			}
-		}
-	}
-
-// convert from little endian to big endian?
-#if defined(TTD_BIG_ENDIAN)
-	qp->cp.cmd = FROM_LE16(qp->cp.cmd);
-	qp->cp.tile = FROM_LE16(qp->cp.tile);
-	qp->cp.p1 = FROM_LE32(qp->cp.p1);
-	qp->cp.p2 = FROM_LE32(qp->cp.p2);
+#ifndef WIN32
+	struct ifconf if_conf;
 #endif
 
-	qp->cmd = qp->cp.cmd;
+	// If something fails, make sure the list is empty
+	_network_ip_list[0] = 0;
 
-	if (cmd & CMD_NET_INSTANT) {
-		byte p = _current_player;
-		_current_player = qp->cp.player;
-		memcpy(_decode_parameters, qp->cp.dp, (qp->cp.packet_length - COMMAND_PACKET_BASE_SIZE));
-		DoCommandP(qp->cp.tile, qp->cp.p1, qp->cp.p2, qp->callback, qp->cmd | CMD_DONT_NETWORK);
-		free(qp);
-		_current_player = p;
-		}
-}
-
-static void HandleEventPacket(EventPacket *ep)
-{
-	switch (ep->event_type) {
-		case NET_EVENT_SUBSIDY:
-			RemoteSubsidyAdd((Subsidy *)&ep->data_start);
-			break;
-	}
-}
-
-// sent from server -> client periodically to tell the client about the current tick in the server
-// and how far the client may progress.
-static void HandleSyncPacket(SyncPacket *sp)
-{
-	uint32 s1,s2;
-
-	_frame_counter_srv = _frame_counter_max - sp->server;
-	_frame_counter_max += sp->frames;
-
-	// reset network ready packet state
-	_network_ready_sent = false;
-
-	// queueing only?
-	if (_networking_queuing || _frame_counter == 0)
+	if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
 		return;
+	}
 
-	s1 = FROM_LE32(sp->random_seed_1);
-	s2 = FROM_LE32(sp->random_seed_2);
+#ifdef WIN32
+	// On windows it is easy
+	memset(&ifo[0], 0, sizeof(ifo));
+	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], sizeof(ifo), &len, NULL, NULL)) != 0) {
+		closesocket(sock);
+		return;
+	}
+#else
+	// On linux a bit harder
+	if_conf.ifc_len = (sizeof (struct ifreq)) * MAX_INTERFACES;
+	if_conf.ifc_buf = (char *)&ifo[0];
+	if ((ioctl(sock, SIOCGIFCONF, &if_conf)) == -1) {
+		closesocket(sock);
+		return;
+	}
+	len = if_conf.ifc_len;
+#endif /* WIN32 */
 
-	DEBUG(net, 3) ("NET: %i] sync seeds: 1=%i 2=%i",_frame_counter, sp->random_seed_1, sp->random_seed_2);
-
-	if (_frame_counter_srv <= _frame_counter) {
-		// we are ahead of the server check if the seed is in our list.
-		if (_frame_counter_srv + 16 > _frame_counter) {
-			// the random seed exists in our array check it.
-			if (s1 != _my_seed_list[_frame_counter_srv & 0xF][0] || s2 != _my_seed_list[_frame_counter_srv & 0xF][1]) NetworkHandleDeSync();
+	// Now walk through all IPs and list them
+	for (i = 0; i < (int)(len / sizeof(IFREQ)); i++) {
+		// Request IP for this interface
+#ifdef WIN32
+		_network_ip_list[i] = *(&ifo[i].iiAddress.AddressIn.sin_addr.s_addr);
+#else
+		if ((ioctl(sock, SIOCGIFADDR, &ifo[i])) != 0) {
+			closesocket(sock);
+			return;
 		}
-	} else {
-		// the server's frame has not been executed yet. store the server's seed in a list.
-		if (_num_future_seed < lengthof(_future_seed)) {
-			_future_seed[_num_future_seed].frame = _frame_counter_srv;
-			_future_seed[_num_future_seed].seed[0] = s1;
-			_future_seed[_num_future_seed].seed[1] = s2;
-			_num_future_seed++;
+
+		_network_ip_list[i] = ((struct sockaddr_in *)&ifo[i].ifr_addr)->sin_addr.s_addr;
+#endif
+	}
+
+	closesocket(sock);
+
+#endif /* not HAVE_GETIFADDRS */
+
+	_network_ip_list[i] = 0;
+	last = i - 1;
+
+	DEBUG(net, 3)("Detected IPs:");
+	// Now display to the debug all the detected ips
+	i = 0;
+	while (_network_ip_list[i] != 0) {
+		// Also check for non-used ips (127.0.0.1)
+		if (_network_ip_list[i] == inet_addr("127.0.0.1")) {
+			// If there is an ip after thisone, put him in here
+			if (last > i)
+				_network_ip_list[i] = _network_ip_list[last];
+			// Clear the last ip
+			_network_ip_list[last] = 0;
+			// And we have 1 ip less
+			last--;
+			continue;
 		}
+
+		DEBUG(net, 3)(" %d) %s", i, inet_ntoa(*(struct in_addr *)&_network_ip_list[i]));//inet_ntoa(inaddr));
+		i++;
 	}
 }
 
-static void HandleFSyncPacket(FrameSyncPacket *fsp)
+// Resolve a hostname to a inet_addr
+unsigned long NetworkResolveHost(const char *hostname)
 {
-	DEBUG(net,3)("NET: %i] FSYNC: srv=%i %i",_frame_counter, fsp->frames,(_frame_counter_max - fsp->frames));
-	if (fsp->frames < 1) return;
-	_frame_fsync_last = _frame_counter_srv = _frame_counter_max - fsp->frames;
-}
+	in_addr_t ip;
 
-// sent from server -> client as an acknowledgement that the server received the command.
-// the command will be executed at the current value of "max".
-static void HandleAckPacket(AckPacket * ap)
-{
-	QueuedCommand *q;
-	// move a packet from the ack queue to the end of this player's queue.
-	q = _ack_queue.head;
-	assert(q);
-	if (!(_ack_queue.head = q->next)) _ack_queue.last = &_ack_queue.head;
-	q->next = NULL;
+	// First try: is it an ip address?
+	ip = inet_addr(hostname);
 
-	q->frame = (_frame_counter_max - (FROM_LE16(ap->when)));
-
-	*_command_queue.last = q;
-	_command_queue.last = &q->next;
-
-	DEBUG(net, 2) ("NET %i] ack [frame=%i]",_frame_counter,q->frame);
-}
-
-static void HandleFilePacket(FilePacketHdr *fp)
-{
-	int n = fp->packet_length - sizeof(FilePacketHdr);
-	char tempfile[512];
-
-	sprintf(tempfile, "%s/networkc.tmp",  _path.personal_dir);
-
-	if (n == 0) {
-		assert(_networking_queuing);
-		assert(!_networking_sync);
-		// eof
-		if (_recv_file) { fclose(_recv_file); _recv_file = NULL; }
-
-		// attempt loading the game.
-		_game_mode = GM_NORMAL;
-		if (SaveOrLoad(tempfile, SL_LOAD) != SL_OK) {
-				NetworkCoreDisconnect();
-				NetworkHandleSaveGameError();
-				return;
-				}
-		// sync to server.
-		_networking_queuing = false;
-		NetworkStartSync(false);
-
-		if (_network_playas == 0) {
-			// send a command to make a new player
-			_local_player = 0;
-			NetworkSendCommand(0, 0, 0, CMD_PLAYER_CTRL, NULL);
-			_local_player = OWNER_SPECTATOR;
+	// If not try to resolve the name
+	if (ip == INADDR_NONE) {
+		struct hostent *he = gethostbyname(hostname);
+		if (he == NULL) {
+			DEBUG(net, 0) ("[NET] Cannot resolve %s", hostname);
 		} else {
-			// take control over an existing company
-			if (DEREF_PLAYER(_network_playas-1)->is_active)
-				_local_player = _network_playas-1;
-			else
-				_local_player = OWNER_SPECTATOR;
+			struct in_addr addr = *(struct in_addr *)he->h_addr_list[0];
+			DEBUG(net, 1) ("[NET] Resolved %s to %s", hostname, inet_ntoa(addr));
+			ip = addr.s_addr;
 		}
-
-	} else {
-		if(!_recv_file) {
-			_recv_file = fopen(tempfile, "wb");
-			if (!_recv_file) error("can't open savefile");
-		}
-		fwrite( (char*)fp + sizeof(*fp), n, 1, _recv_file);
 	}
+	return ip;
 }
 
-static void HandleWelcomePacket(WelcomePacket *wp)
+// Converts a string to ip/port/player
+//  Format: IP#player:port
+//
+// connection_string will be re-terminated to seperate out the hostname, and player and port will
+// be set to the player and port strings given by the user, inside the memory area originally
+// occupied by connection_string.
+void ParseConnectionString(const byte **player, const byte **port, byte *connection_string)
 {
-	int i;
-	for (i=0; i<MAX_PLAYERS; i++) {
-
-		_player_seeds[i][0] = FROM_LE32(wp->player_seeds[i][0]);
-		_player_seeds[i][1] = FROM_LE32(wp->player_seeds[i][1]);
+	byte *p;
+	for (p = connection_string; *p != '\0'; p++) {
+		if (*p == '#') {
+			*player = p + 1;
+			*p = '\0';
+		} else if (*p == ':') {
+			*port = p + 1;
+			*p = '\0';
 		}
-	if (wp->frames_srv != 0) {
-		_frame_counter_max = FROM_LE32(wp->frames_max);
-		_frame_counter_srv = FROM_LE32(wp->frames_srv);
-	}
-	if (wp->frames_cnt != 0) {
-		_frame_counter = FROM_LE32(wp->frames_cnt);
 	}
 }
 
-static void HandleReadyPacket(ReadyPacket *rp, ClientState *cs)
-{
-	cs->ready=true;
-	cs->timeout=_network_client_timeout;
-	DEBUG(net,1) ("NET: %i] ready packet recv", _frame_counter);
-}
-
-
-static void CloseClient(ClientState *cs)
-{
-	Packet *p, *next;
-
-	DEBUG(net, 1) ("[NET][TCP] closed client connection");
-
-	assert(cs->socket != INVALID_SOCKET);
-
-	closesocket(cs->socket);
-
-	// free buffers
-	for(p = cs->head; p; p=next) {
-		next = p->next;
-		free(p);
-	}
-
-	// copy up structs...
-	while ((cs+1)->socket != INVALID_SOCKET) {
-		*cs = *(cs+1);
-		cs++;
-	}
-	cs->socket = INVALID_SOCKET;
-
-	if (_networking_server) _network_game.players_on--;
-
-	_num_clients--;
-}
-
-#define NETWORK_BUFFER_SIZE 4096
-static bool ReadPackets(ClientState *cs)
-{
-	byte network_buffer[NETWORK_BUFFER_SIZE];
-	uint pos,size;
-	unsigned long recv_bytes;
-
-	size = cs->buflen;
-
-	for(;;) {
-		if (size != 0) memcpy(network_buffer, cs->buf, size);
-
-		recv_bytes = recv(cs->socket, (char*)network_buffer + size, sizeof(network_buffer) - size, 0);
-		if ( recv_bytes == (unsigned long)-1) {
-			int err = GET_LAST_ERROR();
-			if (err == EWOULDBLOCK) break;
-			DEBUG(net, 0) ("[NET] recv() failed with error %d", err);
-			CloseClient(cs);
-			return false;
-		}
-		// no more bytes for now?
-		if (recv_bytes == 0)
-			break;
-
-		size += recv_bytes; // number of bytes read.
-		pos = 0;
-		while (size >= 2) {
-			byte *packet = network_buffer + pos;
-			// whole packet not there yet?
-			if (size < packet[0]) break;
-			size -= packet[0];
-			pos += packet[0];
-			switch(packet[1]) {
-			case PACKET_TYPE_WELCOME:
-				HandleWelcomePacket((WelcomePacket *)packet);
-				break;
-			case PACKET_TYPE_COMMAND:
-				HandleCommandPacket(cs, (CommandPacket*)packet);
-				break;
-			case PACKET_TYPE_SYNC:
-				assert(_networking_sync || _networking_queuing);
-				assert(!_networking_server);
-				HandleSyncPacket((SyncPacket*)packet);
-				break;
-			case PACKET_TYPE_FSYNC:
-				HandleFSyncPacket((FrameSyncPacket *)packet);
-				break;
-			case PACKET_TYPE_ACK:
-				assert(!_networking_server);
-				HandleAckPacket((AckPacket*)packet);
-				break;
-			case PACKET_TYPE_XMIT:
-				HandleFilePacket((FilePacketHdr*)packet);
-				break;
-			case PACKET_TYPE_READY:
-				HandleReadyPacket((ReadyPacket*)packet, cs);
-				break;
-			case PACKET_TYPE_EVENT:
-				HandleEventPacket((EventPacket*)packet);
-				break;
-			default:
-				DEBUG (net,0) ("NET: %i] unknown packet type",_frame_counter);
-			}
-		}
-
-		assert(size < sizeof(cs->buf));
-
-		memcpy(cs->buf, network_buffer + pos, size);
-	}
-
-	cs->buflen = size;
-
-	return true;
-}
-
-
-static bool SendPackets(ClientState *cs)
-{
-	Packet *p;
-	int n;
-	uint nskip = cs->eaten, nsent = nskip;
-
-	// try sending as much as possible.
-	for(p=cs->head; p ;p = p->next) {
-		if (p->siz) {
-			assert(nskip < p->siz);
-
-			n = send(cs->socket, p->buf + nskip, p->siz - nskip, 0);
-			if (n == -1) {
-				int err = GET_LAST_ERROR();
-				if (err == EWOULDBLOCK) break;
-				DEBUG(net, 0) ("[NET] send() failed with error %d", err);
-				CloseClient(cs);
-				return false;
-			}
-			nsent += n;
-			// send was not able to send it all? then we assume that the os buffer is full and break.
-			if (nskip + n != p->siz)
-				break;
-			nskip = 0;
-		}
-	}
-
-	// nsent bytes in the linked list are not invalid. free as many buffers as possible.
-	// don't actually free the last buffer.
-	while (nsent) {
-		p = cs->head;
-		assert(p->siz != 0);
-
-		// some bytes of the packet are still unsent.
-		if ( (int)(nsent - p->siz) < 0)
-			break;
-		nsent -= p->siz;
-		p->siz = 0;
-		if (p->next) {
-			cs->head = p->next;
-			free(p);
-		}
-	}
-
-	cs->eaten = nsent;
-
-	return true;
-}
-
-// transmit the file..
-static void SendXmit(ClientState *cs)
-{
-	uint pos, n;
-	FilePacketHdr hdr;
-	int p;
-
-	// if too many unsent bytes left in buffer, don't send more.
-	if (cs->head && cs->head->next)
-		return;
-
-	pos = cs->xmitpos - 1;
-
-	p = 20;
-	do {
-		// compute size of data to xmit
-		n = minu(_transmit_file_size - pos, 248);
-
-		hdr.packet_length = n + sizeof(hdr);
-		hdr.packet_type = PACKET_TYPE_XMIT;
-		SendBytes(cs, &hdr, sizeof(hdr));
-
-		if (n == 0) {
-			pos = -1; // eof
-			break;
-		}
-		SendBytes(cs, _transmit_file + pos, n);
-		pos += n;
-	} while (--p);
-
-	cs->xmitpos = pos + 1;
-
-	if (cs->xmitpos == 0) {
-		NetworkSendWelcome(cs,false);
-	}
-
-	DEBUG(net, 2) ("[NET] client xmit at %d", pos + 1);
-}
-
+// Creates a new client from a socket
+//   Used both by the server and the client
 static ClientState *AllocClient(SOCKET s)
 {
 	ClientState *cs;
+	NetworkClientInfo *ci;
+	byte client_no;
 
-	if (_num_clients == MAX_CLIENTS)
-		return NULL;
+	client_no = 0;
 
-	if (_networking_server) _network_game.players_on++;
+	if (_network_server) {
+		// Can we handle a new client?
+		if (_network_clients_connected >= MAX_CLIENTS)
+			return NULL;
 
-	cs = &_clients[_num_clients++];
+		if (_network_game_info.clients_on >= _network_game_info.clients_max)
+			return NULL;
+
+		// Register the login
+		client_no = _network_clients_connected++;
+	}
+
+	cs = &_clients[client_no];
 	memset(cs, 0, sizeof(*cs));
-	cs->last = &cs->head;
 	cs->socket = s;
-	cs->timeout = _network_client_timeout;
+	cs->last_frame = 0;
+	cs->quited = false;
+
+	if (_network_server) {
+		ci = &_network_client_info[client_no];
+		memset(ci, 0, sizeof(*ci));
+
+		cs->index = _network_client_index++;
+		ci->client_index = cs->index;
+		ci->join_date = _date;
+
+		InvalidateWindow(WC_CLIENT_LIST, 0);
+	}
+
 	return cs;
 }
 
-void NetworkSendReadyPacket()
+// Close a connection
+void CloseClient(ClientState *cs)
 {
-	if ((!_network_ready_sent) && (_frame_counter + _network_ready_ahead >= _frame_counter_max)) {
-		ReadyPacket rp;
+	NetworkClientInfo *ci;
+	// Socket is already dead
+	if (cs->socket == INVALID_SOCKET) return;
 
-		DEBUG(net,1) ("NET: %i] ready packet sent", _frame_counter);
+	DEBUG(net, 1) ("[NET] Closed client connection");
 
-		rp.packet_type = PACKET_TYPE_READY;
-		rp.packet_length = sizeof(rp);
-		SendBytes(_clients, &rp, sizeof(rp));
-		_network_ready_sent = true;
-	}
-}
+	if (!cs->quited && _network_server && cs->status > STATUS_INACTIVE) {
+		// We did not receive a leave message from this client...
+		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
+		char str1[100], str2[100];
+		char client_name[NETWORK_NAME_LENGTH];
+		ClientState *new_cs;
 
-void NetworkSendSyncPackets()
-{
-	ClientState *cs;
-	uint32 new_max;
-	SyncPacket sp;
+		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	new_max = _frame_counter + (int)_network_sync_freq;
+		GetString(str1, STR_NETWORK_ERR_LEFT);
+		GetString(str2, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
-	DEBUG(net,3) ("NET: %i] serv: sync max=%i, seed1=%i, seed2=%i",_frame_counter,new_max,_sync_seed_1,_sync_seed_2);
+		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, "%s (%s)", str1, str2);
 
-	sp.packet_length = sizeof(sp);
-	sp.packet_type = PACKET_TYPE_SYNC;
-	sp.frames = new_max - _frame_counter_max;
-	sp.server = _frame_counter_max - _frame_counter;
-	sp.random_seed_1 = TO_LE32(_sync_seed_1);
-	sp.random_seed_2 = TO_LE32(_sync_seed_2);
-	_frame_counter_max = new_max;
-
-	// send it to all the clients and mark them unready
-	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-		cs->ready=false;
-		SendBytes(cs, &sp, sp.packet_length);
-	}
-
-}
-
-void NetworkSendFrameSyncPackets()
-{
-	ClientState *cs;
-	FrameSyncPacket fsp;
-	if ((_frame_counter + 4) < _frame_counter_max) if ((_frame_fsync_last + 4 < _frame_counter)) {
-		// this packet mantains some information about on which frame the server is
-		fsp.frames = _frame_counter_max - _frame_counter;
-		fsp.packet_type = PACKET_TYPE_FSYNC;
-		fsp.packet_length = sizeof (FrameSyncPacket);
-		// send it to all the clients and mark them unready
-		for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-			SendBytes(cs, &fsp, fsp.packet_length);
+		// Inform other clients of this... strange leaving ;)
+		FOR_ALL_CLIENTS(new_cs) {
+			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
+				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->index, errorno);
+			}
 		}
-		_frame_fsync_last = _frame_counter;
 	}
 
-}
+	closesocket(cs->socket);
+	cs->writable = false;
 
-void NetworkSendWelcome(ClientState *cs, bool direct) {
-	WelcomePacket wp;
-	int i;
-	wp.packet_type = PACKET_TYPE_WELCOME;
-	wp.packet_length = sizeof(WelcomePacket);
-	for (i=0; i<MAX_PLAYERS; i++) {
-		wp.player_seeds[i][0]=TO_LE32(_player_seeds[i][0]);
-		wp.player_seeds[i][1]=TO_LE32(_player_seeds[i][1]);
+	// Free all pending and partially received packets
+	while (cs->packet_queue != NULL) {
+		Packet *p = cs->packet_queue->next;
+		free(cs->packet_queue);
+		cs->packet_queue = p;
+	}
+	free(cs->packet_recv);
+	cs->packet_recv = NULL;
+
+	while (cs->command_queue != NULL) {
+		CommandPacket *p = cs->command_queue->next;
+		free(cs->command_queue);
+		cs->command_queue = p;
+	}
+
+	// Close the gap in the client-list
+	ci = DEREF_CLIENT_INFO(cs);
+
+	if (_network_server) {
+		// We just lost one client :(
+		if (cs->status > STATUS_INACTIVE)
+			_network_game_info.clients_on--;
+		_network_clients_connected--;
+
+		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->socket != INVALID_SOCKET) {
+			*cs = *(cs + 1);
+			*ci = *(ci + 1);
+			cs++;
+			ci++;
 		}
-	if (direct) {
-		wp.frames_max=0;
-		wp.frames_srv=0;
-		wp.frames_cnt=TO_LE32(_frame_counter);
-		SendDirectBytes(cs,(void *)&wp,wp.packet_length);
-	} else {
-		wp.frames_max=TO_LE32(_frame_counter_max);
-		wp.frames_srv=TO_LE32(_frame_counter_srv);
-		wp.frames_cnt=0;
-		SendBytes(cs,(void *)&wp,wp.packet_length);
+
+		InvalidateWindow(WC_CLIENT_LIST, 0);
 	}
+
+	// Reset the status of the last socket
+	cs->socket = INVALID_SOCKET;
+	cs->status = STATUS_INACTIVE;
+	cs->index = NETWORK_EMPTY_INDEX;
+	ci->client_index = NETWORK_EMPTY_INDEX;
 }
 
-static void NetworkAcceptClients()
+extern void ShowJoinStatusWindow();
+
+// A client wants to connect to a server
+bool NetworkConnect(const char *hostname, int port)
+{
+	SOCKET s;
+	struct sockaddr_in sin;
+
+	DEBUG(net, 1) ("[NET] Connecting to %s %d", hostname, port);
+
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	if (s == INVALID_SOCKET) {
+		ClientStartError("socket() failed");
+		return false;
+	}
+
+	{ // set nodelay /* XXX should this be done at all? */
+		#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server...
+		int b = 1;
+		// The (const char*) cast is needed for windows!!
+		if (setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) != 0)
+			DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
+		#endif
+	}
+
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
+	sin.sin_port = htons(port);
+	_network_last_host_ip = sin.sin_addr.s_addr;
+
+	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
+		// We failed to connect for which reason what so ever
+		return false;
+	}
+
+	{ // set nonblocking mode for socket..
+		unsigned long blocking = 1;
+		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
+		byte nonblocking = 1;
+		if (setsockopt(s, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)) != 0)
+		#else
+		if (ioctlsocket(s, FIONBIO, &blocking) != 0)
+		#endif
+			DEBUG(net, 0)("[NET] Setting non-blocking failed"); /* XXX should this be an error? */
+	}
+
+	// in client mode, only the first client field is used. it's pointing to the server.
+	AllocClient(s);
+
+	ShowJoinStatusWindow();
+
+	memcpy(&network_tmp_patches, &_patches, sizeof(_patches));
+
+	return true;
+}
+
+// For the server, to accept new clients
+static void NetworkAcceptClients(void)
 {
 	struct sockaddr_in sin;
 	SOCKET s;
@@ -1040,200 +559,362 @@ static void NetworkAcceptClients()
 	LONG sin_len; // for some reason we need a 'LONG' under MorphOS
 #endif
 
+	// Should never ever happen.. is it possible??
 	assert(_listensocket != INVALID_SOCKET);
 
-	for(;;) {
+	for (;;) {
 		sin_len = sizeof(sin);
 		s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
 		if (s == INVALID_SOCKET) return;
 
 		// set nonblocking mode for client socket
+		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
+		{ unsigned long blocking = 1; byte nonblocking = 1; setsockopt(s, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)); }
+		#else
 		{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
+		#endif
 
-		DEBUG(net, 1) ("NET: %i] got client from %s", _frame_counter, inet_ntoa(sin.sin_addr));
+		DEBUG(net, 1) ("[NET] Client connected from %s on frame %d", inet_ntoa(sin.sin_addr), _frame_counter);
 
 		// set nodelay
+		#if !defined(BEOS_NET_SERVER) // not implemented on BeOS net_server...
+		// The (const char*) cast is needed for windows!!
 		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
+		#endif
 
 		cs = AllocClient(s);
 		if (cs == NULL) {
 			// no more clients allowed?
+			// Send to the client that we are full!
+			Packet *p = NetworkSend_Init(PACKET_SERVER_FULL);
+
+			p->buffer[0] = p->size & 0xFF;
+			p->buffer[1] = p->size >> 8;
+
+			send(s, p->buffer, p->size, 0);
 			closesocket(s);
+
+			free(p);
+
 			continue;
 		}
 
-		if (_networking_sync) {
-			// a new client has connected. it needs a snapshot.
-			cs->inactive = true;
+		// a new client has connected. We set him at inactive for now
+		//  maybe he is only requesting server-info. Till he has sent a PACKET_CLIENT_MAP_OK
+		//  the client stays inactive
+		cs->status = STATUS_INACTIVE;
+
+		{
+			// Save the IP of the client
+			NetworkClientInfo *ci;
+			ci = DEREF_CLIENT_INFO(cs);
+			ci->client_ip = sin.sin_addr.s_addr;
 		}
 	}
-
-	// when a new client has joined. it needs different information depending on if it's at the game menu or in an active game.
-	// Game menu:
-	//  - list of players already in the game (name, company name, face, color)
-	//  - list of game settings and patch settings
-	// Active game:
-	//  - the state of the world (includes player name, company name, player face, player color)
-	//  - list of the patch settings
-
-	// Networking can be in several "states".
-	//  * not sync - games don't need to be in sync, and frame counter is not synced. for example intro screen. all commands are executed immediately.
-	//  * sync - games are in sync
 }
 
-static void SendQueuedCommandsToNewClient(ClientState *cs)
+// Set up the listen socket for the server
+bool NetworkListen(void)
 {
-	// send the commands in the server queue to the new client.
-	QueuedCommand *qp;
-	SyncPacket sp;
-	uint32 frame;
-
-	DEBUG(net, 2) ("NET: %i] sending queued commands to client",_frame_counter);
-
-	sp.packet_length = sizeof(sp);
-	sp.packet_type = PACKET_TYPE_SYNC;
-	sp.random_seed_1 = sp.random_seed_2 = 0;
-	sp.server = 0;
-
-	frame = _frame_counter;
-
-	for(qp=_command_queue.head; qp; qp = qp->next) {
-		DEBUG(net, 4) ("NET: %i] sending cmd to be executed at %d (old %d)", _frame_counter, qp->frame, frame);
-		if (qp->frame > frame) {
-			assert(qp->frame <= _frame_counter_max);
-			sp.frames = qp->frame - frame;
-			frame = qp->frame;
-			SendBytes(cs, &sp, sizeof(sp));
-		}
-		SendBytes(cs, &qp->cp, qp->cp.packet_length);
-	}
-
-	if (frame < _frame_counter_max) {
-		DEBUG(net, 4) ("NET: %i] sending queued sync %d (%d)",_frame_counter, _frame_counter_max, frame);
-		sp.frames = _frame_counter_max - frame;
-		SendBytes(cs, &sp, sizeof(sp));
-	}
-
-}
-
-bool NetworkCheckClientReady()
-{
-	bool ready_all = true;
-	uint16 count = 0;
-	ClientState *cs;
-
-	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-		count++;
-		ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
-		if (!cs->ready) cs->timeout-=1;
-		if (cs->timeout == 0) {
-			SetDParam(0,count);
-			ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
-			CloseClient(cs);
-			}
-		}
-	return ready_all;
-}
-
-// ************************** //
-// * TCP Networking         * //
-// ************************** //
-
-unsigned long NetworkResolveHost(const char *hostname)
-{
-	struct hostent* remotehost;
-
-	if ((hostname[0]<0x30) || (hostname[0]>0x39)) {
-		// seems to be an hostname [first character is no number]
-		remotehost = gethostbyname(hostname);
-		if (remotehost == NULL) {
-			DEBUG(net, 1) ("[NET][IP] cannot resolve %s", hostname);
-			return 0;
-		} else {
-			DEBUG(net, 1) ("[NET][IP] resolved %s to %s",hostname, inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
-			return inet_addr(inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
-			}
-	} else {
-		// seems to be an ip [first character is a number]
-		return inet_addr(hostname);
-		}
-
-}
-
-bool NetworkConnect(const char *hostname, int port)
-{
-	SOCKET s;
-	struct sockaddr_in sin;
-	int b;
-
-	DEBUG(net, 1) ("[NET][TCP] Connecting to %s %d", hostname, port);
-
-	s = socket(AF_INET, SOCK_STREAM, 0);
-	if (s == INVALID_SOCKET) error("socket() failed");
-
-	b = 1;
-	setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));
-
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
-	sin.sin_port = htons(port);
-
-	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
-		NetworkClose(true);
-		return false;
-		}
-
-	// set nonblocking mode for socket..
-	{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
-
-	// in client mode, only the first client field is used. it's pointing to the server.
-	AllocClient(s);
-
-	// queue packets.. because we're waiting for the savegame.
-	_networking_queuing = true;
-	_frame_counter_max = 0;
-
-	return true;
-}
-
-void NetworkListen()
-{
-
 	SOCKET ls;
 	struct sockaddr_in sin;
 	int port;
 
 	port = _network_server_port;
 
-	DEBUG(net, 1) ("[NET][TCP] listening on port %d", port);
+	DEBUG(net, 1) ("[NET] Listening on port %d", port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
-	if (ls == INVALID_SOCKET)
-		error("socket() on listen socket failed");
-
-	// reuse the socket
-	{
-		int reuse = 1; if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1)
-			error("setsockopt() on listen socket failed");
+	if (ls == INVALID_SOCKET) {
+		ServerStartError("socket() on listen socket failed");
+		return false;
 	}
 
-	// set nonblocking mode for socket
-	{ unsigned long blocking = 1; ioctlsocket(ls, FIONBIO, &blocking); }
+	{ // reuse the socket
+		int reuse = 1;
+		// The (const char*) cast is needed for windows!!
+		if (setsockopt(ls, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) == -1) {
+			ServerStartError("setsockopt() on listen socket failed");
+			return false;
+		}
+	}
+
+	{ // set nonblocking mode for socket
+		unsigned long blocking = 1;
+		#if defined(__BEOS__) && defined(BEOS_NET_SERVER)
+		byte nonblocking = 1;
+		if (setsockopt(ls, SOL_SOCKET, SO_NONBLOCK, &nonblocking, sizeof(blocking)) != 0)
+		#else
+		if (ioctlsocket(ls, FIONBIO, &blocking) != 0)
+		#endif
+			DEBUG(net, 0)("[NET] Setting non-blocking failed"); /* XXX should this be an error? */
+	}
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = 0;
 	sin.sin_port = htons(port);
 
-	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0)
-		error("bind() failed");
+	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
+		ServerStartError("bind() failed");
+		return false;
+	}
 
-	if (listen(ls, 1) != 0)
-		error("listen() failed");
+	if (listen(ls, 1) != 0) {
+		ServerStartError("listen() failed");
+		return false;
+	}
 
 	_listensocket = ls;
+
+	return true;
 }
 
-void NetworkReceive()
+// Close all current connections
+void NetworkClose(void)
+{
+	ClientState *cs;
+
+	FOR_ALL_CLIENTS(cs) {
+		if (!_network_server) {
+			SEND_COMMAND(PACKET_CLIENT_QUIT)("leaving");
+			NetworkSend_Packets(cs);
+		}
+		CloseClient(cs);
+	}
+
+	if (_network_server) {
+		// We are a server, also close the listensocket
+		closesocket(_listensocket);
+		_listensocket = INVALID_SOCKET;
+		DEBUG(net, 1) ("[NET] Closed listener");
+		NetworkUDPClose();
+	}
+}
+
+// Inits the network (cleans sockets and stuff)
+void NetworkInitialize(void)
+{
+	ClientState *cs;
+
+	_local_command_queue = NULL;
+
+	// Clean all client-sockets
+	for (cs = _clients; cs != &_clients[MAX_CLIENTS]; cs++) {
+		cs->socket = INVALID_SOCKET;
+		cs->status = STATUS_INACTIVE;
+		cs->command_queue = NULL;
+	}
+
+	// Clean the client_info memory
+	memset(_network_client_info, 0, sizeof(_network_client_info));
+	memset(_network_player_info, 0, sizeof(_network_player_info));
+
+	_sync_frame = 0;
+	_network_first_time = true;
+
+	_network_reconnect = 0;
+
+	InitPlayerRandoms();
+
+	NetworkUDPInitialize();
+}
+
+// Query a server to fetch his game-info
+//  If game_info is true, only the gameinfo is fetched,
+//   else only the client_info is fetched
+void NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
+{
+	if (!_network_available) return;
+
+	NetworkDisconnect();
+
+	if (game_info) {
+		NetworkUDPQueryServer(host, port);
+		return;
+	}
+
+	NetworkInitialize();
+
+	_network_server = false;
+
+	// Try to connect
+	_networking = NetworkConnect(host, port);
+
+//	ttd_strlcpy(_network_last_host, host, sizeof(_network_last_host));
+//	_network_last_port = port;
+
+	// We are connected
+	if (_networking) {
+		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
+		return;
+	}
+
+	// No networking, close everything down again
+	NetworkDisconnect();
+}
+
+// Used by clients, to connect to a server
+bool NetworkClientConnectGame(const byte* host, unsigned short port)
+{
+	if (!_network_available) return false;
+
+	if (port == 0) return false;
+
+	ttd_strlcpy(_network_last_host, host, sizeof(_network_last_host));
+	_network_last_port = port;
+
+	NetworkDisconnect();
+	NetworkUDPClose();
+	NetworkInitialize();
+
+	// Try to connect
+	_networking = NetworkConnect(host, port);
+
+	// We are connected
+	if (_networking) {
+		IConsoleCmdExec("exec scripts/on_client.scr 0");
+		NetworkClient_Connected();
+	} else {
+		// Connecting failed
+		NetworkError(STR_NETWORK_ERR_NOCONNECTION);
+	}
+
+	return _networking;
+}
+
+void NetworkInitGameInfo(void)
+{
+#if defined(WITH_REV)
+		extern char _openttd_revision[];
+#else
+		const char _openttd_revision[] = "norev000";
+#endif
+	NetworkClientInfo *ci;
+
+	ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
+	if (_network_game_info.server_name[0] == '\0')
+		snprintf(_network_game_info.server_name, sizeof(_network_game_info.server_name), "Unnamed Server");
+
+	// The server is a client too ;)
+	if (_network_dedicated) {
+		_network_game_info.clients_on = 0;
+		_network_game_info.dedicated = true;
+	} else {
+		_network_game_info.clients_on = 1;
+		_network_game_info.dedicated = false;
+	}
+	strncpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
+	_network_game_info.spectators_on = 0;
+	_network_game_info.game_date = _date;
+	_network_game_info.start_date = ConvertIntDate(_patches.starting_date);
+	_network_game_info.map_width = TILES_X;
+	_network_game_info.map_height = TILES_Y;
+	_network_game_info.map_set = _opt.landscape;
+
+	if (_network_game_info.server_password[0] == '\0') {
+		_network_game_info.use_password = 0;
+	} else {
+		_network_game_info.use_password = 1;
+	}
+
+	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
+	//  The index is NETWORK_SERVER_INDEX ( = 1)
+	ci = &_network_client_info[MAX_CLIENT_INFO - 1];
+	memset(ci, 0, sizeof(*ci));
+
+	ci->client_index = NETWORK_SERVER_INDEX;
+	if (_network_dedicated)
+		ci->client_playas = OWNER_SPECTATOR;
+	else
+		ci->client_playas = _local_player + 1;
+	strncpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
+}
+
+bool NetworkServerStart(void)
+{
+	if (!_network_available) return false;
+
+	NetworkInitialize();
+	if (!NetworkListen())
+		return false;
+
+	// Try to start UDP-server
+	_network_udp_server = true;
+	_network_udp_server = NetworkUDPListen(0, _network_server_port);
+
+	_network_server = true;
+	_networking = true;
+	_frame_counter = 0;
+	_frame_counter_server = 0;
+	_frame_counter_max = 0;
+	_network_own_client_index = NETWORK_SERVER_INDEX;
+
+	_network_clients_connected = 0;
+
+	NetworkInitGameInfo();
+
+	// execute server initialization script
+	IConsoleCmdExec("exec scripts/on_server.scr 0");
+	// if the server is dedicated ... add some other script
+	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
+	return true;
+}
+
+// The server is rebooting...
+// The only difference with NetworkDisconnect, is the packets that is sent
+void NetworkReboot(void)
+{
+	if (_network_server) {
+		ClientState *cs;
+		FOR_ALL_CLIENTS(cs) {
+			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
+			NetworkSend_Packets(cs);
+		}
+	}
+
+	NetworkClose();
+
+	// Free all queued commands
+	while (_local_command_queue != NULL) {
+		CommandPacket *p = _local_command_queue;
+		_local_command_queue = _local_command_queue->next;
+		free(p);
+	}
+
+	_networking = false;
+	_network_server = false;
+}
+
+// We want to disconnect from the host/clients
+void NetworkDisconnect(void)
+{
+	if (_network_server) {
+		ClientState *cs;
+		FOR_ALL_CLIENTS(cs) {
+			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
+			NetworkSend_Packets(cs);
+		}
+	}
+
+	NetworkClose();
+
+	// Free all queued commands
+	while (_local_command_queue != NULL) {
+		CommandPacket *p = _local_command_queue;
+		_local_command_queue = _local_command_queue->next;
+		free(p);
+	}
+
+	if (_networking && !_network_server) {
+		memcpy(&_patches, &network_tmp_patches, sizeof(_patches));
+	}
+
+	_networking = false;
+	_network_server = false;
+}
+
+// Receives something from the network
+bool NetworkReceive(void)
 {
 	ClientState *cs;
 	int n;
@@ -1243,13 +924,13 @@ void NetworkReceive()
 	FD_ZERO(&read_fd);
 	FD_ZERO(&write_fd);
 
-	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+	FOR_ALL_CLIENTS(cs) {
 		FD_SET(cs->socket, &read_fd);
 		FD_SET(cs->socket, &write_fd);
 	}
 
 	// take care of listener port
-	if (_networking_server) {
+	if (_network_server) {
 		FD_SET(_listensocket, &read_fd);
 	}
 
@@ -1259,428 +940,257 @@ void NetworkReceive()
 #else
 	n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
-	if ((n == -1) && (!_networking_server)) NetworkHandleConnectionLost();
+	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
 
 	// accept clients..
-	if (_networking_server && FD_ISSET(_listensocket, &read_fd))
+	if (_network_server && FD_ISSET(_listensocket, &read_fd))
 		NetworkAcceptClients();
 
 	// read stuff from clients
-	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+	FOR_ALL_CLIENTS(cs) {
 		cs->writable = !!FD_ISSET(cs->socket, &write_fd);
 		if (FD_ISSET(cs->socket, &read_fd)) {
-			if (!ReadPackets(cs))
-				cs--;
-		}
-	}
+			if (_network_server)
+				NetworkServer_ReadPackets(cs);
+			else {
+				byte res;
+				// The client already was quiting!
+				if (cs->quited) return false;
+				if ((res = NetworkClient_ReadPackets(cs)) != NETWORK_RECV_STATUS_OKAY) {
+					// The client made an error of which we can not recover
+					//   close the client and drop back to main menu
 
-	// if we're a server, and any client needs a snapshot, create a snapshot and send all commands from the server queue to the client.
-	if (_networking_server && _transmit_file == NULL) {
-		bool didsave = false;
-
-		for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-			if (cs->inactive) {
-				cs->inactive = false;
-				// found a client waiting for a snapshot. make a snapshot.
-				if (!didsave) {
-					char filename[256];
-					sprintf(filename, "%snetwork.tmp",  _path.autosave_dir);
-					didsave = true;
-					if (SaveOrLoad(filename, SL_SAVE) != SL_OK) error("network savedump failed");
-					_transmit_file = ReadFileToMem(filename, &_transmit_file_size, 500000);
-					if (_transmit_file == NULL) error("network savedump failed to load");
+					NetworkClientError(res, cs);
+					return false;
 				}
-				// and start sending the file..
-				cs->xmitpos = 1;
+			}
+		}
+	}
+	return true;
+}
 
-				// send queue of commands to client.
-				SendQueuedCommandsToNewClient(cs);
+// This sends all buffered commands (if possible)
+static void NetworkSend(void)
+{
+	ClientState *cs;
+	FOR_ALL_CLIENTS(cs) {
+		if (cs->writable) {
+			NetworkSend_Packets(cs);
 
-				NetworkSendWelcome(cs, true);
+			if (cs->status == STATUS_MAP) {
+				// This client is in the middle of a map-send, call the function for that
+				SEND_COMMAND(PACKET_SERVER_MAP)(cs);
 			}
 		}
 	}
 }
 
-void NetworkSend()
+// Handle the local-command-queue
+void NetworkHandleLocalQueue(void)
 {
-	ClientState *cs;
-	void *free_xmit;
+	if (_local_command_queue != NULL) {
+		CommandPacket *cp;
+		CommandPacket *cp_prev;
 
-	free_xmit = _transmit_file;
+		cp = _local_command_queue;
+		cp_prev = NULL;
 
-	// send stuff to all clients
-	for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
-		if (cs->xmitpos) {
-			if (cs->writable)
-				SendXmit(cs);
-			free_xmit = NULL;
+		while (cp != NULL) {
+			if (_frame_counter > cp->frame) {
+				// We can execute this command
+				NetworkExecuteCommand(cp);
+
+				if (cp_prev != NULL) {
+					cp_prev->next = cp->next;
+					free(cp);
+					cp = cp_prev->next;
+				} else {
+					// This means we are at our first packet
+					_local_command_queue = cp->next;
+					free(cp);
+					cp = _local_command_queue;
+				}
+
+			} else {
+				// Command is in the future, skip to next
+				//  (commands don't have to be in order in the queue!!)
+				cp_prev = cp;
+				cp = cp->next;
+			}
 		}
-		if (cs->writable)	{
-			if (!SendPackets(cs)) cs--;
-		}
-	}
-
-	// no clients left that xmit the file, free it.
-	if (free_xmit) {
-		_transmit_file = NULL;
-		free(free_xmit);
-	}
-}
-
-
-void NetworkInitialize()
-{
-	ClientState *cs;
-
-	QueueClear(&_command_queue);
-	QueueClear(&_ack_queue);
-	_command_queue.last = &_command_queue.head;
-	_network_game_list = NULL;
-
-	// invalidate all clients
-	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++)
-		cs->socket = INVALID_SOCKET;
-
-}
-
-void NetworkClose(bool client)
-{
-
-	ClientState *cs;
-	// invalidate all clients
-
-	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++) if (cs->socket != INVALID_SOCKET) {
-		CloseClient(cs);
-		}
-
-	if (!client) {
-		// if in servermode --> close listener
-		closesocket(_listensocket);
-		_listensocket= INVALID_SOCKET;
-		DEBUG(net, 1) ("[NET][TCP] closed listener on port %i", _network_server_port);
 	}
 }
 
-void NetworkShutdown()
+
+extern void StateGameLoop();
+
+bool NetworkDoClientLoop(void)
 {
-	_networking_server = false;
-	_networking = false;
-	_networking_sync = false;
-	_frame_counter = 0;
-	_frame_counter_max = 0;
-	_frame_counter_srv = 0;
-}
+	_frame_counter++;
 
-// switch to synced mode.
-void NetworkStartSync(bool fcreset)
-{
-	DEBUG(net, 3) ("[NET][SYNC] switching to synced game mode");
-	_networking_sync = true;
-	_frame_counter = 0;
+	NetworkHandleLocalQueue();
 
-	if (fcreset) {
-		_frame_counter_max = 0;
-		_frame_counter_srv = 0;
-		_frame_fsync_last = 0;
-		}
-	_num_future_seed = 0;
-	_sync_seed_1 = _sync_seed_2 = 0;
-	memset(_my_seed_list, 0, sizeof(_my_seed_list));
-}
+	StateGameLoop();
 
-// ************************** //
-// * UDP Network Extensions * //
-// ************************** //
-
-void NetworkUDPListen(bool client)
-{
-	SOCKET udp;
-	struct sockaddr_in sin;
-	int port;
-
-	if (client) { port = _network_client_port; } else { port = _network_server_port; };
-
-	DEBUG(net, 1) ("[NET][UDP] listening on port %i", port);
-
-	udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-
-	// this disables network
-	_network_available = !(udp == INVALID_SOCKET);
-
-	// set nonblocking mode for socket
-	{ unsigned long blocking = 1; ioctlsocket(udp, FIONBIO, &blocking); }
-
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = 0;
-	sin.sin_port = htons(port);
-
-	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0)
-		DEBUG(net, 1) ("[NET][UDP] error: bind failed on port %i", port);
-
-
-	// enable broadcasting
-	{ unsigned long val=1; setsockopt(udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val)); }
-	// allow reusing
-	{ unsigned long val=1; setsockopt(udp, SOL_SOCKET, SO_REUSEADDR, (char *) &val , sizeof(val)); }
-
-	if (client) { _udp_client_socket = udp; } else { _udp_server_socket = udp; } ;
-
-}
-
-void NetworkUDPClose(bool client)
-{
-	if (client) {
-		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_client_port);
-		closesocket(_udp_client_socket);
-		_udp_client_socket = INVALID_SOCKET;
-		} else {
-		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_server_port);
-		closesocket(_udp_server_socket);
-		_udp_server_socket = INVALID_SOCKET;
-		};
-	}
-
-void NetworkUDPReceive(bool client)
-{
-	struct sockaddr_in client_addr;
-#ifndef __MORPHOS__
-	int client_len;
+	// Check if we are in sync!
+	if (_sync_frame != 0) {
+		if (_sync_frame == _frame_counter) {
+#ifdef NETWORK_SEND_DOUBLE_SEED
+			if (_sync_seed_1 != _random_seeds[0][0] || _sync_seed_2 != _random_seeds[0][1]) {
 #else
-	LONG client_len; // for some reason we need a 'LONG' under MorphOS
+			if (_sync_seed_1 != _random_seeds[0][0]) {
 #endif
-	int nbytes;
-	struct UDPPacket packet;
-	int packet_len;
-
-	SOCKET udp;
-	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
-
-	packet_len = sizeof(packet);
-	client_len = sizeof(client_addr);
-
-	nbytes = recvfrom(udp, (char *) &packet, packet_len , 0, (struct sockaddr *) &client_addr, &client_len);
-	if (nbytes>0) {
-		if (packet.command_code==packet.command_check) switch (packet.command_code) {
-
- 		case NET_UDPCMD_SERVERSEARCH:
- 			if (!client) {
-				packet.command_check=packet.command_code=NET_UDPCMD_SERVERINFO;
-				memcpy(&packet.data,&_network_game,sizeof(_network_game));
-				packet.data_len=sizeof(_network_game);
- 				NetworkUDPSend(client,client_addr, packet);
- 			}
- 			break;
-		case NET_UDPCMD_GETSERVERINFO:
-			if (!client) {
-				packet.command_check=packet.command_code=NET_UDPCMD_SERVERINFO;
-				memcpy(&packet.data,&_network_game,sizeof(_network_game));
-				packet.data_len=sizeof(_network_game);
-				NetworkUDPSend(client,client_addr, packet);
+				NetworkError(STR_NETWORK_ERR_DESYNC);
+				DEBUG(net, 0)("[NET] Sync error detected!");
+				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, DEREF_CLIENT(0));
+				return false;
 			}
-			break;
-		case NET_UDPCMD_SERVERINFO:
- 			if (client) {
-				NetworkGameList * item;
 
-				item = (NetworkGameList *) NetworkGameListAdd();
-				item -> ip = inet_addr(inet_ntoa(client_addr.sin_addr));
-				item -> port = ntohs(client_addr.sin_port);
+			// If this is the first time we have a sync-frame, we
+			//   need to let the server know that we are ready and at the same
+			//   frame as he is.. so we can start playing!
+			if (_network_first_time) {
+				_network_first_time = false;
+				SEND_COMMAND(PACKET_CLIENT_ACK)();
+			}
 
-				memcpy(item,&packet.data,packet.data_len);
- 			}
- 			break;
+			_sync_frame = 0;
+		} else if (_sync_frame < _frame_counter) {
+			DEBUG(net, 1)("[NET] Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
+			_sync_frame = 0;
 		}
+	}
+
+	return true;
+}
+
+// We have to do some UDP checking
+void NetworkUDPGameLoop(void)
+{
+	if (_network_udp_server)
+		NetworkUDPReceive();
+	else if (_udp_client_socket != INVALID_SOCKET) {
+		NetworkUDPReceive();
+		if (_network_udp_broadcast > 0)
+			_network_udp_broadcast--;
 	}
 }
 
-void NetworkUDPBroadCast(bool client, struct UDPPacket packet)
+// The main loop called from ttd.c
+//  Here we also have to do StateGameLoop if needed!
+void NetworkGameLoop(void)
 {
-	int i=0, res;
-	struct sockaddr_in out_addr;
-	uint32 bcaddr;
-	byte * bcptr;
+	if (!_networking) return;
 
-	SOCKET udp;
-	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
+	if (!NetworkReceive()) return;
 
-	while (_network_ip_list[i]!=0) {
-		bcaddr=_network_ip_list[i];
-		out_addr.sin_family = AF_INET;
-		if (client) { out_addr.sin_port = htons(_network_server_port); } else { out_addr.sin_port = htons(_network_client_port); };
-		bcptr = (byte *) &bcaddr;
-		bcptr[3]=255;
-		out_addr.sin_addr.s_addr = bcaddr;
-		res=sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &out_addr,sizeof(out_addr));
-		if (res==-1) DEBUG(net, 1)("udp: broadcast error: %i",GET_LAST_ERROR());
-		i++;
-	}
+	if (_network_server) {
+		// We first increase the _frame_counter
+		_frame_counter++;
 
-}
+		NetworkHandleLocalQueue();
 
-void NetworkUDPSend(bool client, struct sockaddr_in recv,struct UDPPacket packet)
-{
-	SOCKET udp;
-	if (client) udp=_udp_client_socket; else udp=_udp_server_socket;
+		// Then we make the frame
+		StateGameLoop();
 
-	sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &recv,sizeof(recv));
-}
+		_sync_seed_1 = _random_seeds[0][0];
+#ifdef NETWORK_SEND_DOUBLE_SEED
+		_sync_seed_2 = _random_seeds[0][1];
+#endif
 
-
-bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned short * _network_detected_serverport)
-{
-	struct UDPPacket packet;
-	int timeout=3000;
-
-	NetworkGameListClear();
-
-	DEBUG(net, 0) ("[NET][UDP] searching server");
-	*_network_detected_serverip = "255.255.255.255";
-	*_network_detected_serverport = 0;
-
-	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
-	packet.data_len=0;
-	NetworkUDPBroadCast(true, packet);
-	while (timeout>=0) {
-		CSleep(100);
-		timeout-=100;
-	    NetworkUDPReceive(true);
-
-		if (_network_game_count>0) {
-			NetworkGameList * item;
-			item = (NetworkGameList *) NetworkGameListItem(0);
-			*_network_detected_serverip=inet_ntoa(*(struct in_addr *) &item->ip);
-			*_network_detected_serverport=item->port;
- 			timeout=-1;
- 			DEBUG(net, 0) ("[NET][UDP] server found on %s", *_network_detected_serverip);
- 			}
-
-		}
-
-	return (*_network_detected_serverport>0);
-
-}
-
-
-// *************************** //
-// * New Network Core System * //
-// *************************** //
-
-void NetworkIPListInit()
-{
-	struct hostent* he = NULL;
-	char hostname[250];
-	uint32 bcaddr;
-	int i=0;
-
-	gethostname(hostname,250);
-	DEBUG(net, 2) ("[NET][IP] init for host %s", hostname);
-	he=gethostbyname((char *) hostname);
-
-	if (he == NULL) {
-		he = gethostbyname("localhost");
-		}
-
-	if (he == NULL) {
-		bcaddr = inet_addr("127.0.0.1");
-		he = gethostbyaddr(inet_ntoa(*(struct in_addr *) &bcaddr), sizeof(bcaddr), AF_INET);
-		}
-
-	if (he == NULL) {
-		DEBUG(net, 2) ("[NET][IP] cannot resolve %s", hostname);
+		NetworkServer_Tick();
 	} else {
-		while(he->h_addr_list[i]) {
-			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-			_network_ip_list[i]=bcaddr;
-			DEBUG(net, 2) ("[NET][IP] add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-			i++;
+		// Client
+
+		// Make sure we are at the frame were the server is (quick-frames)
+		if (_frame_counter_server > _frame_counter) {
+			while (_frame_counter_server > _frame_counter) {
+				if (!NetworkDoClientLoop()) break;
+			}
+		} else {
+			// Else, keep on going till _frame_counter_max
+			if (_frame_counter_max > _frame_counter) {
+				NetworkDoClientLoop();
+			}
 		}
-
 	}
-	_network_ip_list[i]=0;
 
+	NetworkSend();
 }
 
-/* *************************************************** */
-
-void NetworkCoreInit()
+// This tries to launch the network for a given OS
+void NetworkStartUp(void)
 {
-	DEBUG(net, 3) ("[NET][Core] init()");
+	DEBUG(net, 3) ("[NET][Core] Starting network...");
+	// Network is available
 	_network_available = true;
-	_network_client_timeout = 300;
-	_network_ready_ahead = 1;
+	_network_dedicated = false;
 
-	// [win32] winsock startup
+	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
+	/* XXX - Hard number here, because the strings can currently handle no more
+	    then 10 clients -- TrueLight */
+	_network_game_info.clients_max = 10;
+
+	// Let's load the network in windows
 	#if defined(WIN32)
 	{
 		WSADATA wsa;
-		DEBUG(net, 3) ("[NET][Core] using windows socket library");
+		DEBUG(net, 3) ("[NET][Core] Loading windows socket library");
 		if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
-			DEBUG(net, 3) ("[NET][Core] error: WSAStartup failed");
-			_network_available=false;
-			}
+			DEBUG(net, 0) ("[NET][Core] Error: WSAStartup failed. Network not available.");
+			_network_available = false;
+			return;
+		}
 	}
 	#else
-
-	// [morphos/amigaos] bsd-socket startup
-
-	#if defined(__MORPHOS__) || defined(__AMIGA__)
-	{
-		DEBUG(misc,3) ("[NET][Core] using bsd socket library");
-		if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-			DEBUG(net, 3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
-			_network_available=false;
+		#if defined(__MORPHOS__) || defined(__AMIGA__)
+		{
+			DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
+			if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
+				DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
+				_network_available = false;
+				return;
 			}
 
-		#if !defined(__MORPHOS__)
-		// for usleep() implementation (only required for legacy AmigaOS builds)
-		if ( (TimerPort = CreateMsgPort()) ) {
-			if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
-				if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
-					if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
-						// free ressources...
-						DEBUG(net, 3) ("[NET][Core] Couldn't initialize timer.");
-						_network_available=false;
+			#if defined(__AMIGA__)
+			// for usleep() implementation (only required for legacy AmigaOS builds)
+			if ( (TimerPort = CreateMsgPort()) ) {
+				if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
+					if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
+						if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
+							// free ressources...
+							DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
+							_network_available = false;
+							return;
+						}
 					}
 				}
 			}
+			#endif // __AMIGA__
 		}
-		#endif
+		#endif // __MORPHOS__ / __AMIGA__
+	#endif // WIN32
 
-	}
-	#else
-
-	// [linux/macos] unix-socket startup
-
-		DEBUG(net, 3) ("[NET][Core] using unix socket library");
-
-	#endif
-
-	#endif
-
-
-	if (_network_available) {
-		DEBUG(net, 3) ("[NET][Core] OK: multiplayer available");
-		// initiate network ip list
-		NetworkIPListInit();
-	} else
-		DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
+	NetworkInitialize();
+	DEBUG(net, 3) ("[NET][Core] Network online. Multiplayer available.");
+	NetworkFindIPs();
 }
 
-/* *************************************************** */
-
-void NetworkCoreShutdown()
+// This shuts the network down
+void NetworkShutDown(void)
 {
-	DEBUG(net, 3) ("[NET][Core] shutdown()");
+	DEBUG(net, 3) ("[NET][Core] Shutting down the network.");
+
+	_network_available = false;
 
 	#if defined(__MORPHOS__) || defined(__AMIGA__)
 	{
 		// free allocated ressources
 		#if !defined(__MORPHOS__)
-		if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
-		if (TimerRequest) { DeleteIORequest(TimerRequest); }
-		if (TimerPort)    { DeleteMsgPort(TimerPort); }
+			if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
+			if (TimerRequest) { DeleteIORequest(TimerRequest); }
+			if (TimerPort)    { DeleteMsgPort(TimerPort); }
 		#endif
 
 		if (SocketBase) {
@@ -1690,290 +1200,15 @@ void NetworkCoreShutdown()
 	#endif
 
 	#if defined(WIN32)
-	{ WSACleanup();}
+	{
+		WSACleanup();
+	}
 	#endif
 }
 
-/* *************************************************** */
+#else
 
-void ParseConnectionString(const byte **player, const byte **port, byte *connection_string)
-{
-	byte c = 0;
-	while (connection_string[c] != '\0') {
-		if (connection_string[c] == '#') {
-			*player = &connection_string[c+1];
-			connection_string[c] = '\0';
-		}
-		if (connection_string[c] == ':') {
-			*port = &connection_string[c+1];
-			connection_string[c] = '\0';
-		}
-		c++;
-	}
-}
+void ParseConnectionString(const byte **player, const byte **port, byte *connection_string) {}
+void NetworkUpdateClientInfo(uint16 client_index) {}
 
-bool NetworkCoreConnectGame(const byte* b, unsigned short port)
-{
-	if (!_network_available) return false;
-
-	if (strcmp(b,"auto")==0) {
-		// do autodetect
-		NetworkUDPSearchGame(&b, &port);
-	}
-
-	if (port==0) {
-		// autodetection failed
-		if (_networking_override) NetworkLobbyShutdown();
-		ShowErrorMessage(-1, STR_NETWORK_ERR_NOSERVER, 0, 0);
-		_switch_mode_errorstr = STR_NETWORK_ERR_NOSERVER;
-		return false;
-	}
-
-	NetworkInitialize();
-	_networking = NetworkConnect(b, port);
-	if (_networking) {
-		NetworkLobbyShutdown();
-		IConsoleCmdExec("exec scripts/on_client.scr 0");
-	} else {
-		if (_networking_override)
-			NetworkLobbyShutdown();
-
-		ShowErrorMessage(-1, STR_NETWORK_ERR_NOCONNECTION,0,0);
-		_switch_mode_errorstr = STR_NETWORK_ERR_NOCONNECTION;
-	}
-	return _networking;
-}
-
-/* *************************************************** */
-
-bool NetworkCoreConnectGameStruct(NetworkGameList * item)
-{
-	return NetworkCoreConnectGame(inet_ntoa(*(struct in_addr *) &item->ip),item->port);
-}
-
-/* *************************************************** */
-
-bool NetworkCoreStartGame()
-{
-	if (!_network_available) return false;
-	NetworkLobbyShutdown();
-	NetworkInitialize();
-	NetworkListen();
-	NetworkUDPListen(false);
-	_networking_server = true;
-	_networking = true;
-	NetworkGameFillDefaults(); // clears the network game info
-	_network_game.players_on++; // the serverplayer is online
-	// execute server initialization script
-	IConsoleCmdExec("exec scripts/on_server.scr 0");
-	return true;
-}
-
-/* *************************************************** */
-
-void NetworkCoreDisconnect()
-{
-	/* terminate server */
-	if (_networking_server) {
-		NetworkUDPClose(false);
-		NetworkClose(false);
-		}
-
-	/* terminate client connection */
-	else if (_networking) {
-		NetworkClose(true);
-		}
-
-	NetworkShutdown();
-}
-
-/* *************************************************** */
-
-void NetworkCoreLoop(bool incomming)
-{
-	if (incomming) {
-		// incomming
-		if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
-		if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
-
-		if (_networking)
-			NetworkReceive();
-
-	} else {
-		if ( _udp_client_socket != INVALID_SOCKET ) NetworkUDPReceive(true);
-		if ( _udp_server_socket != INVALID_SOCKET ) NetworkUDPReceive(false);
-
-		if (_networking)
-			NetworkSend();
-	}
-}
-
-void NetworkLobbyInit()
-{
-	DEBUG(net, 3) ("[NET][Lobby] init()");
-	NetworkUDPListen(true);
-}
-
-void NetworkLobbyShutdown()
-{
-	DEBUG(net, 3) ("[NET][Lobby] shutdown()");
-	NetworkUDPClose(true);
-}
-
-
-// ******************************** //
-// * Network Game List Extensions * //
-// ******************************** //
-
-void NetworkGameListClear()
-{
-	NetworkGameList * item;
-	NetworkGameList * next;
-
-	DEBUG(net, 4) ("[NET][G-List] cleared server list");
-
-	item = _network_game_list;
-
-	while (item != NULL) {
-		next = (NetworkGameList *) item -> _next;
-		free (item);
-		item = next;
-	}
-	_network_game_list=NULL;
-	_network_game_count=0;
-}
-
-NetworkGameList * NetworkGameListAdd()
-{
-	NetworkGameList * item;
-	NetworkGameList * before;
-
-	DEBUG(net, 4) ("[NET][G-List] added server to list");
-
-	item = _network_game_list;
-	before = item;
-	while (item != NULL) {
-		before = item;
-		item = (NetworkGameList *) item -> _next;
-	}
-
-	item = malloc(sizeof(NetworkGameList));
-	item -> _next = NULL;
-
-	if (before == NULL) {
-		_network_game_list = item;
-	} else
-		before -> _next = item;
-
-	_network_game_count++;
-	return item;
-}
-
-void NetworkGameListFromLAN()
-{
-	struct UDPPacket packet;
-	DEBUG(net, 2) ("[NET][G-List] searching server over lan");
-	NetworkGameListClear();
-	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
-	packet.data_len=0;
-	NetworkUDPBroadCast(true,packet);
-}
-
-void NetworkGameListFromInternet()
-{
-	DEBUG(net, 2) ("[NET][G-List] searching servers over internet");
-	NetworkGameListClear();
-
-	// **TODO** masterserver communication [internet protocol list]
-}
-
-NetworkGameList * NetworkGameListItem(uint16 index)
-{
-	NetworkGameList * item;
-	NetworkGameList * next;
-	uint16 cnt = 0;
-
-	item = _network_game_list;
-
-	while ((item != NULL) && (cnt != index)) {
-		next = (NetworkGameList *) item -> _next;
-		item = next;
-		cnt++;
-	}
-
-	return item;
-}
-
-// *************************** //
-// * Network Game Extensions * //
-// *************************** //
-
-void NetworkGameFillDefaults()
-{
-	NetworkGameInfo * game = &_network_game;
-	#if defined(WITH_REV)
-		extern char _openttd_revision[];
-	#else
-		const char _openttd_revision[] = "norev000";
-	#endif
-
-	DEBUG(net, 4) ("[NET][G-Info] setting defaults");
-
-	ttd_strlcpy(game->server_name, "OpenTTD Game", sizeof(game->server_name));
-	game->game_password[0]='\0';
-	game->map_name[0]='\0';
-	ttd_strlcpy(game->server_revision, _openttd_revision, sizeof(game->server_revision));
-	game->game_date=0;
-
-	game->map_height=0;
-	game->map_width=0;
-	game->map_set=0;
-
-	game->players_max=8;
-	game->players_on=0;
-
-	game->server_lang=_dynlang.curr;
-}
-
-void NetworkGameChangeDate(uint16 newdate)
-{
-	if (_networking_server)
-		_network_game.game_date = newdate;
-}
-
-#else // not ENABLE_NETWORK
-
-// stubs
-void NetworkInitialize() {}
-void NetworkShutdown() {}
-void NetworkListen() {}
-void NetworkConnect(const char *hostname, int port) {}
-void NetworkReceive() {}
-void NetworkSend() {}
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback) {}
-void NetworkSendEvent(uint16 type, uint16 data_len, void * data) {};
-void NetworkProcessCommands() {}
-void NetworkStartSync(bool fcreset) {}
-void NetworkSendReadyPacket() {}
-void NetworkSendSyncPackets() {}
-void NetworkSendFrameSyncPackets() {}
-bool NetworkCheckClientReady() { return true; }
-void NetworkCoreInit() { _network_available=false; };
-void NetworkCoreShutdown() {};
-void NetworkCoreDisconnect() {};
-void NetworkCoreLoop(bool incomming) {};
-void ParseConnectionString(const byte **player, const byte **port, byte *connection_string) {};
-bool NetworkCoreConnectGame(const byte* b, unsigned short port) {return false;};
-bool NetworkCoreStartGame() {return false;};
-void NetworkLobbyShutdown() {};
-void NetworkLobbyInit() {};
-void NetworkGameListClear() {};
-NetworkGameList * NetworkGameListAdd() {return NULL;};
-void NetworkGameListFromLAN() {};
-void NetworkGameListFromInternet() {};
-void NetworkGameFillDefaults() {};
-NetworkGameList * NetworkGameListItem(uint16 index) {return NULL;};
-bool NetworkCoreConnectGameStruct(NetworkGameList * item) {return false;};
-void NetworkGameChangeDate(uint16 newdate) {};
-
-#endif
+#endif /* ENABLE_NETWORK */

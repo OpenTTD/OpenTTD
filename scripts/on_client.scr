@@ -1,2 +1,1 @@
 echo "Setting default network client settings..."
-*net_ready_ahead = 1

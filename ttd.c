@@ -24,6 +24,7 @@
 #include "ai.h"
 #include "console.h"
 #include "screenshot.h"
+#include "network.h"
 
 #include <stdarg.h>
 
@@ -53,7 +54,7 @@ extern void HalGameLoop();
 
 uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
-bool disable_computer;
+bool disable_computer; // We should get ride of this thing.. is only used for a debug-cheat
 static byte _os_version = 0;
 
 void CDECL error(const char *s, ...) {
@@ -299,17 +300,21 @@ static void showhelp()
 
 	p = strecpy(buf,
 		"Command line options:\n"
-		"  -v drv = Set video driver (see below)\n"
-		"  -s drv = Set sound driver (see below)\n"
-		"  -m drv = Set music driver (see below)\n"
-		"  -r res = Set resolution (for instance 800x600)\n"
-		"  -h     = Display this help text\n"
-		"  -t date= Set starting date\n"
-		"  -d dbg = Debug mode\n"
-		"  -l lng = Select Language\n"
-		"  -e     = Start Editor\n"
-		"  -g     = Start new game immediately (can optionally take a game to load)\n"
-		"  -G seed= Set random seed\n"
+		"  -v drv              = Set video driver (see below)\n"
+		"  -s drv              = Set sound driver (see below)\n"
+		"  -m drv              = Set music driver (see below)\n"
+		"  -r res              = Set resolution (for instance 800x600)\n"
+		"  -h                  = Display this help text\n"
+		"  -t date             = Set starting date\n"
+		"  -d [dbg]            = Debug mode\n"
+		"  -l lng              = Select Language\n"
+		"  -e                  = Start Editor\n"
+		"  -g [savegame]       = Start new/save game immediately\n"
+		"  -G seed             = Set random seed\n"
+		"  -n [ip#player:port] = Start networkgame\n"
+		"  -D                  = Start dedicated server\n"
+		"  -i                  = Ignore wrong grf\n"
+		"  -p #player          = Player as #player (deprecated) (network only)\n"
 	);
 
 	for(i=0; i!=lengthof(_driver_classes); i++,dc++) {
@@ -474,11 +479,40 @@ void ParseResolution(int res[2], char *s)
 	res[1] = strtoul(t + 1, NULL, 0);
 }
 
+void LoadIntroGame()
+{
+	char filename[256];
+	_game_mode = GM_MENU;
+	_display_opt &= ~DO_TRANS_BUILDINGS; // don't make buildings transparent in intro
+
+	_opt_mod_ptr = &_new_opt;
+	GfxLoadSprites();
+	LoadStringWidthTable();
+
+	// Setup main window
+	InitWindowSystem();
+	SetupColorsAndInitialWindow();
+
+	// Generate a world.
+	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
+	if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
+		GenerateWorld(1); // if failed loading, make empty world.
+
+	_opt.currency = _new_opt.currency;
+
+	_pause = 0;
+	_local_player = 0;
+	MarkWholeScreenDirty();
+
+	// Play main theme
+	if (_music_driver->is_song_playing()) ResetMusic();
+}
+
 int ttd_main(int argc, char* argv[])
 {
 	MyGetOptData mgo;
 	int i;
-	int network = 0;
+	bool network = false;
 	char *network_conn = NULL;
 	char *language = NULL;
 	char musicdriver[16], sounddriver[16], videodriver[16];
@@ -486,25 +520,31 @@ int ttd_main(int argc, char* argv[])
 	uint startdate = -1;
 	_ignore_wrong_grf = false;
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
-	_networking_override=false;
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
 	_switch_mode_errorstr = INVALID_STRING_ID;
 
-	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hn::l:eit:d::r:g::G:cp:");
+	// The last param of the following function means this:
+	//   a letter means: it accepts that param (e.g.: -h)
+	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
+	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
+	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hDn::l:eit:d::r:g::G:p:");
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch(i) {
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
+		case 'D': {
+				sprintf(musicdriver,"null");
+				sprintf(sounddriver,"null");
+				sprintf(videodriver,"dedicated");
+			} break;
 		case 'n': {
-				network = 1;
-				_networking_override=true;
-				if (mgo.opt) {
+				network = true;
+				if (mgo.opt)
+					// Optional, you can give an IP
 					network_conn = mgo.opt;
-					network++;
-				}
 				else
 					network_conn = NULL;
 			} break;
@@ -536,7 +576,8 @@ int ttd_main(int argc, char* argv[])
 			break;
 		case 'p': {
 			int i = atoi(mgo.opt);
-			if (IS_INT_INSIDE(i, 0, MAX_PLAYERS))	_network_playas = i + 1;
+			// Play as an other player in network games
+			if (IS_INT_INSIDE(i, 1, MAX_PLAYERS)) _network_playas = i;
 			break;
 		}
 		case -2:
@@ -555,9 +596,6 @@ int ttd_main(int argc, char* argv[])
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != -1) _patches.starting_date = startdate;
-
-	// initialize network-core
-	NetworkCoreInit();
 
 	// enumerate language files
 	InitializeLanguagePacks();
@@ -586,6 +624,11 @@ int ttd_main(int argc, char* argv[])
 	MusicLoop();
 	_savegame_sort_order = 1; // default sorting of savegames is by date, newest first
 
+#ifdef ENABLE_NETWORK
+	// initialize network-core
+	NetworkStartUp();
+#endif /* ENABLE_NETWORK */
+
 	// Default difficulty level
 	_opt_mod_ptr = &_new_opt;
 
@@ -593,27 +636,45 @@ int ttd_main(int argc, char* argv[])
 	if (_opt_mod_ptr->diff_level == 9)
 		SetDifficultyLevel(0, _opt_mod_ptr);
 
-	if ((network) && (_network_available)) {
-		NetworkLobbyInit();
-		if (network_conn!=NULL) {
-			NetworkCoreConnectGame(network_conn,_network_server_port);
-			} else {
-			NetworkCoreConnectGame("auto",_network_server_port);
-			}
-		}
-
 	// initialize the ingame console
 	IConsoleInit();
 	InitPlayerRandoms();
+
+#ifdef ENABLE_NETWORK
+	if ((network) && (_network_available)) {
+		if (network_conn != NULL) {
+			const byte *port = NULL;
+			const byte *player = NULL;
+			uint16 rport;
+
+			rport = NETWORK_DEFAULT_PORT;
+
+			ParseConnectionString(&player, &port, network_conn);
+
+			if (player != NULL) _network_playas = atoi(player);
+			if (port != NULL) rport = atoi(port);
+
+			LoadIntroGame();
+			_switch_mode = SM_NONE;
+			NetworkClientConnectGame(network_conn, rport);
+		} else {
+//			NetworkCoreConnectGame("auto", _network_server_port);
+		}
+	}
+#endif /* ENABLE_NETWORK */
 
 	while (_video_driver->main_loop() == ML_SWITCHDRIVER) {}
 
 	IConsoleFree();
 
+#ifdef ENABLE_NETWORK
 	if (_network_available) {
-		// shutdown network-core
-		NetworkCoreShutdown();
-		}
+		// Shut down the network and close any open connections
+		NetworkDisconnect();
+		NetworkUDPClose();
+		NetworkShutDown();
+	}
+#endif /* ENABLE_NETWORK */
 
 	_video_driver->stop();
 	_music_driver->stop();
@@ -638,35 +699,6 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-static void LoadIntroGame()
-{
-	char filename[256];
-	_game_mode = GM_MENU;
-	_display_opt &= ~DO_TRANS_BUILDINGS; // don't make buildings transparent in intro
-
-	_opt_mod_ptr = &_new_opt;
-	GfxLoadSprites();
-	LoadStringWidthTable();
-
-	// Setup main window
-	InitWindowSystem();
-	SetupColorsAndInitialWindow();
-
-	// Generate a world.
-	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
-	if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
-		GenerateWorld(1); // if failed loading, make empty world.
-
-	_opt.currency = _new_opt.currency;
-
-	_pause = 0;
-	_local_player = 0;
-	MarkWholeScreenDirty();
-
-	// Play main theme
-	if (_music_driver->is_song_playing()) ResetMusic();
-}
-
 void MakeNewGame()
 {
 	_game_mode = GM_NORMAL;
@@ -686,10 +718,15 @@ void MakeNewGame()
 	// Randomize world
 	GenerateWorld(0);
 
-	// Create a single player
-	DoStartupNewPlayer(false);
+	// In a dedicated server, the server does not play
+	if (_network_dedicated) {
+		_local_player = OWNER_SPECTATOR;
+	}	else {
+		// Create a single player
+		DoStartupNewPlayer(false);
 
-	_local_player = 0;
+		_local_player = 0;
+	}
 
 	MarkWholeScreenDirty();
 }
@@ -766,7 +803,7 @@ void StartScenario()
 	MarkWholeScreenDirty();
 }
 
-static bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
+bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 {
 	byte ogm = _game_mode;
 	int r;
@@ -788,9 +825,36 @@ static bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 		return true;
 }
 
-static void SwitchMode(int new_mode)
+void SwitchMode(int new_mode)
 {
 	_in_state_game_loop = true;
+
+#ifdef ENABLE_NETWORK
+	// If we are saving something, the network stays in his current state
+	if (new_mode != SM_SAVE) {
+		// If the network is active, make it not-active
+		if (_networking) {
+			if (_network_server && (new_mode == SM_LOAD || new_mode == SM_NEWGAME)) {
+				NetworkReboot();
+				NetworkUDPClose();
+			} else {
+				NetworkDisconnect();
+				NetworkUDPClose();
+			}
+		}
+
+		// If we are a server, we restart the server
+		if (_is_network_server) {
+			// But not if we are going to the menu
+			if (new_mode != SM_MENU) {
+				NetworkServerStart();
+			} else {
+				// This client no longer wants to be a network-server
+				_is_network_server = false;
+			}
+		}
+	}
+#endif /* ENABLE_NETWORK */
 
 	switch(new_mode) {
 	case SM_EDITOR: // Switch to scenario editor
@@ -798,14 +862,17 @@ static void SwitchMode(int new_mode)
 		break;
 
 	case SM_NEWGAME:
-		if (_networking) { NetworkStartSync(true); } // UGLY HACK HACK HACK
+		if (_network_server)
+			snprintf(_network_game_info.map_name, 40, "Random");
 		MakeNewGame();
+		break;
+
+	case SM_START_SCENARIO:
+		StartScenario();
 		break;
 
 normal_load:
 	case SM_LOAD: { // Load game
-
-		if (_networking) { NetworkStartSync(true); } // UGLY HACK HACK HACK
 
 		_error_message = INVALID_STRING_ID;
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
@@ -814,6 +881,8 @@ normal_load:
 			_opt_mod_ptr = &_opt;
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
+			if (_network_server)
+				snprintf(_network_game_info.map_name, 40, "Loaded game");
 		}
 		break;
 	}
@@ -836,6 +905,9 @@ normal_load:
 			_generating_world = false;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
+
+			if (_network_server)
+				snprintf(_network_game_info.map_name, 40, "Loaded scenario");
 		} else
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 
@@ -844,10 +916,6 @@ normal_load:
 
 
 	case SM_MENU: // Switch to game menu
-
-		if ((_networking) && (!_networking_override)) NetworkCoreDisconnect();
-		_networking_override=false;
-
 		LoadIntroGame();
 		break;
 
@@ -877,18 +945,17 @@ normal_load:
 // The state must not be changed from anywhere
 // but here.
 // That check is enforced in DoCommand.
-static void StateGameLoop()
+void StateGameLoop()
 {
 	// dont execute the state loop during pause
 	if (_pause) return;
 
 	_in_state_game_loop = true;
-	_frame_counter++;
-
-	// store the random seed to be able to detect out of sync errors
-	_sync_seed_1 = _random_seeds[0][0];
-	_sync_seed_2 = _random_seeds[0][1];
- 	if (_networking) disable_computer=true;
+	// _frame_counter is increased somewhere else when in network-mode
+	//  Sidenote: _frame_counter is ONLY used for _savedump in non-MP-games
+	//    Should that not be deleted? If so, the next 2 lines can also be deleted
+	if (!_networking)
+		_frame_counter++;
 
 	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
 		char buf[100];
@@ -915,13 +982,16 @@ static void StateGameLoop()
 		CallVehicleTicks();
 		CallLandscapeTick();
 
-		if (!disable_computer)
+		// To bad the AI does not work in multiplayer, because states are not saved
+		//  perfectly
+		if (!disable_computer && !_networking)
 			RunOtherPlayersLoop();
 
 		CallWindowTickEvent();
 		NewsLoop();
 		_current_player = p;
 	}
+
 	_in_state_game_loop = false;
 }
 
@@ -992,43 +1062,25 @@ void GameLoop()
 	_timer_counter+=8;
 	CursorTick();
 
-	// incomming packets
-	NetworkCoreLoop(true);
+#ifdef ENABLE_NETWORK
+	// Check for UDP stuff
+	NetworkUDPGameLoop();
 
-	if (_networking_sync) {
-		// client: make sure client's time is synched to the server by running frames quickly up to where the server is.
-		if (!_networking_server) {
-			while (_frame_counter < _frame_counter_srv) {
-				NetworkCoreLoop(true);
-				StateGameLoop();
-				NetworkProcessCommands(); // need to process queue to make sure that packets get executed.
-				NetworkCoreLoop(false);
-			}
-		// client: don't exceed the max count told by the server
-		if (_frame_counter < _frame_counter_max) {
-			StateGameLoop();
-			NetworkProcessCommands();
-			}
-		// client: send the ready packet
-		NetworkSendReadyPacket();
-		} else {
-		// server: work on to the frame max
-		if (_frame_counter < _frame_counter_max) {
-			StateGameLoop();
-			NetworkProcessCommands(); // to check if we got any new commands belonging to the current frame before we increase it.
-			NetworkSendFrameSyncPackets();
-			}
-		// server: wait until all clients were ready for going on
-		if (_frame_counter == _frame_counter_max) {
-			if (NetworkCheckClientReady()) NetworkSendSyncPackets();
-			}
-		}
+	if (_networking) {
+		// Multiplayer
+		NetworkGameLoop();
 	} else {
-		// server/client/standalone: not synced --> state game loop
+		if (_network_reconnect > 0 && --_network_reconnect == 0) {
+			// This means that we want to reconnect to the last host
+			// We do this here, because it means that the network is really closed
+			NetworkClientConnectGame(_network_last_host, _network_last_port);
+		}
+		// Singleplayer
 		StateGameLoop();
-		// server/client: process queued network commands
-		if (_networking) NetworkProcessCommands();
 	}
+#else
+	StateGameLoop();
+#endif /* ENABLE_NETWORK */
 
 	if (!_pause && _display_opt&DO_FULL_ANIMATION)
 		DoPaletteAnimations();
@@ -1037,10 +1089,6 @@ void GameLoop()
 		MoveAllTextEffects();
 
 	MouseLoop();
-
-	// send outgoing packets.
-	NetworkCoreLoop(false);
-
 
 	if (_game_mode != GM_MENU)
 		MusicLoop();
@@ -1174,7 +1222,9 @@ bool AfterLoadGame(uint version)
 
 	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
-	if (!_players[0].is_active)
+	// 1 exeption: network-games. Those can have 0 players
+	//   But this exeption is not true for network_servers!
+	if (!_players[0].is_active && (!_networking || (_networking && _network_server)))
 		DoStartupNewPlayer(false);
 
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status

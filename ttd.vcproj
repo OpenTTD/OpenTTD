@@ -268,6 +268,9 @@
 				RelativePath=".\aystar.c">
 			</File>
 			<File
+				RelativePath=".\callback_table.c">
+			</File>
+			<File
 				RelativePath="command.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -301,6 +304,9 @@
 			</File>
 			<File
 				RelativePath=".\console_cmds.c">
+			</File>
+			<File
+				RelativePath=".\dedicated.c">
 			</File>
 			<File
 				RelativePath="economy.c">
@@ -568,6 +574,21 @@
 			</File>
 			<File
 				RelativePath=".\newgrf.c">
+			</File>
+			<File
+				RelativePath=".\network_client.c">
+			</File>
+			<File
+				RelativePath=".\network_data.c">
+			</File>
+			<File
+				RelativePath=".\network_gamelist.c">
+			</File>
+			<File
+				RelativePath=".\network_udp.c">
+			</File>
+			<File
+				RelativePath=".\network_server.c">
 			</File>
 			<File
 				RelativePath="oldloader.c">
@@ -1146,6 +1167,24 @@
 			</File>
 			<File
 				RelativePath=".\newgrf.h">
+			</File>
+			<File
+				RelativePath=".\network_client.h">
+			</File>
+			<File
+				RelativePath=".\network_core.h">
+			</File>
+			<File
+				RelativePath=".\network_data.h">
+			</File>
+			<File
+				RelativePath=".\network_gamelist.h">
+			</File>
+			<File
+				RelativePath=".\network_udp.h">
+			</File>
+			<File
+				RelativePath=".\network_server.h">
 			</File>
 			<File
 				RelativePath="news.h">

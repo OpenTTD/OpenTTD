@@ -146,6 +146,8 @@ enum {
 
 	//CMD_DESTROY_INDUSTRY = 109,
 	CMD_DESTROY_COMPANY_HQ = 111,
+	CMD_GIVE_MONEY = 112,
+	CMD_CHANGE_PATCH_SETTING = 113,
 };
 
 enum {
@@ -166,9 +168,8 @@ enum {
 enum {
 	CMD_AUTO = 0x200,
 	CMD_NO_WATER = 0x400,
-	CMD_DONT_NETWORK = 0x800,		// execute the command without sending it on the network
-	CMD_ASYNC = 0x1000,					// execute the command asynchronously without testing first in networking
-	CMD_NET_INSTANT = 0x2000,
+	CMD_NETWORK_COMMAND = 0x800,		// execute the command without sending it on the network
+	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, // When enabled, the command will bypass the no-DC_EXEC round if in network
 };
 
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)

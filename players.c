@@ -11,6 +11,7 @@
 #include "command.h"
 #include "ai.h"
 #include "sound.h"
+#include "network.h"
 
 extern void StartupEconomy();
 
@@ -489,6 +490,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 	InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	InvalidateWindow(WC_TOOLBAR_MENU, 0);
+	InvalidateWindow(WC_CLIENT_LIST, 0);
 
 	return p;
 }
@@ -538,7 +540,7 @@ void OnTick_Players()
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
-	if (_game_mode != GM_MENU && !--_next_competitor_start) {
+	if (!_networking && _game_mode != GM_MENU && !--_next_competitor_start) {
 		MaybeStartNewPlayer();
 	}
 }
@@ -636,12 +638,44 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!(flags & DC_EXEC))
 		return 0;
 
+	_current_player = OWNER_NONE;
+
 	switch(p1 & 0xff) {
 	case 0: // make new player
 		p = DoStartupNewPlayer(false);
-		if (_local_player == OWNER_SPECTATOR && p != NULL) {
-			_local_player = p->index;
-			MarkWholeScreenDirty();
+		if (p != NULL) {
+			if (_local_player == OWNER_SPECTATOR) {
+				_local_player = p->index;
+				MarkWholeScreenDirty();
+			}
+#ifdef ENABLE_NETWORK
+			if (_network_server) {
+				NetworkClientInfo *ci;
+				// UGLY! p2 is mis-used to fetch the client-id
+				ci = &_network_client_info[p2];
+				ci->client_playas = p->index + 1;
+				NetworkUpdateClientInfo(ci->client_index);
+
+				if (ci->client_playas != 0 && ci->client_playas <= MAX_PLAYERS) {
+					memcpy(_decode_parameters, ci->client_name, 32);
+					/* XXX - What are the consequents of this? It is needed, but is it bad? */
+					_docommand_recursive = 0;
+					DoCommandP(0, ci->client_playas-1, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
+				}
+			} else {
+				_network_playas = p->index + 1;
+			}
+		} else {
+			if (_network_server) {
+				NetworkClientInfo *ci;
+				// UGLY! p2 is mis-used to fetch the client-id
+				ci = &_network_client_info[p2];
+				ci->client_playas = OWNER_SPECTATOR;
+				NetworkUpdateClientInfo(ci->client_index);
+			} else {
+				_network_playas = OWNER_SPECTATOR;
+			}
+#endif /* ENABLE_NETWORK */
 		}
 		break;
 	case 1: // make new ai player

@@ -11,6 +11,7 @@
 #include <wininet.h>
 #include <io.h>
 #include <fcntl.h>
+#include "network.h"
 
 #define SMART_PALETTE_ANIM
 
@@ -719,6 +720,7 @@ static int Win32GdiMainLoop()
 			Sleep(1);
 			GdiFlush();
 			_screen.dst_ptr = _wnd.buffer_bits;
+			DrawTextMessage();
 			DrawMouseCursor();
 		}
 	}
@@ -1805,6 +1807,7 @@ const DriverDesc _video_driver_descs[] = {
 	{"sdl", "SDL Video Driver",					&_sdl_video_driver,			1},
 #endif
 	{"win32", "Win32 GDI Video Driver",	&_win32_video_driver,		Windows_NT3_51},
+	{ "dedicated", "Dedicated Video Driver", &_dedicated_video_driver, 0},
 	{NULL}
 };
 
@@ -1946,12 +1949,12 @@ void CreateConsole()
 	// redirect unbuffered STDIN, STDOUT, STDERR to the console
 #if !defined(__CYGWIN__)
 	*stdout = *_fdopen( _open_osfhandle((long)hand, _O_TEXT), "w" );
-	*stdin = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "w" );
+	*stdin = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
 	*stderr = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
 #else
 	// open_osfhandle is not in cygwin
 	*stdout = *fdopen(1, "w" );
-	*stdin = *fdopen(0, "w" );
+	*stdin = *fdopen(0, "r" );
 	*stderr = *fdopen(2, "w" );
 #endif
 
@@ -2052,3 +2055,21 @@ void DeterminePaths()
 	CreateDirectory(_path.scenario_dir, NULL);
 }
 
+int snprintf(char *str, size_t size, const char *format, ...)
+{
+	va_list ap;
+	int ret;
+
+	va_start(ap, format);
+	ret = vsnprintf(str, size, format, ap);
+	va_end(ap);
+	return ret;
+}
+
+int vsnprintf(char *str, size_t size, const char *format, va_list ap)
+{
+	int ret;
+	ret = _vsnprintf(str, size, format, ap);
+	if (ret < 0) str[size - 1] = '\0';
+	return ret;
+}

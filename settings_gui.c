@@ -8,6 +8,7 @@
 #include "engine.h"
 #include "screenshot.h"
 #include "newgrf.h"
+#include "network.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -295,8 +296,6 @@ static inline bool GetBitAndShift(uint32 *b)
 	return (x&1) != 0;
 }
 
-static GameOptions _opt_mod_temp;
-
 static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = {
 	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},
 	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},
@@ -327,20 +326,29 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		w->click_state = (1 << 4) << _opt_mod_temp.diff_level;
 		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7);
+		// Disable save-button in multiplayer (and if client)
+		if (_networking && !_network_server)
+			w->disabled_state |= (1 << 10);
 		DrawWindowWidgets(w);
 
 		click_a = _difficulty_click_a;
 		click_b = _difficulty_click_b;
 
+		/* XXX - This is most likely the worst way I have ever seen
+		     to disable some buttons and to enable others.
+		     What the value means, is this:
+		       if bit1 is enabled, setting 1 is disabled
+		       then it is shifted to the left, and the story
+		       repeats....
+		   -- TrueLight */
 		disabled = _game_mode == GM_NORMAL ? 0x383E : 0;
-		// XXX
 
 		x = 0;
 		y = 32;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
 			DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, GetBitAndShift(&click_a)?0x20:0);
 			DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, GetBitAndShift(&click_b)?0x20:0);
-			if (GetBitAndShift(&disabled)) {
+			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
 				int color = 0x8000 | _color_list[3].unk2;
 				GfxFillRect(x+6, y+2, x+6+8, y+9, color);
 				GfxFillRect(x+16, y+2, x+16+8, y+9, color);
@@ -366,6 +374,10 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			uint btn, dis;
 			int val;
 			const GameSettingData *info;
+
+			// Don't allow clients to make any changes
+			if  (_networking && !_network_server)
+				return;
 
 			x = e->click.pt.x - 5;
 			if (!IS_INT_INSIDE(x, 0, 21))
@@ -563,19 +575,21 @@ enum {
 	PF_0ISDIS				= 1,
 	PF_NOCOMMA			= 2,
 	PF_MULTISTRING	= 4,
+	PF_PLAYERBASED	= 8, // This has to match the entries that are in settings.c, patch_player_settings
 };
 
 static const PatchEntry _patches_ui[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_VEHICLESPEED,			&_patches.vehicle_speed,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGDATE,					&_patches.status_long_date,					0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SHOWFINANCES,			&_patches.show_finances,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTOSCROLL,				&_patches.autoscroll,								0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_VEHICLESPEED,			&_patches.vehicle_speed,						0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_LONGDATE,					&_patches.status_long_date,					0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_SHOWFINANCES,			&_patches.show_finances,						0,  0,  0, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTOSCROLL,				&_patches.autoscroll,								0,  0,  0, NULL},
 
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_ERRMSG_DURATION,	&_patches.errmsg_duration,					0, 20,  1, NULL},
+	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	&_patches.errmsg_duration,					0, 20,  1, NULL},
 
 	{PE_UINT8,	PF_MULTISTRING, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
-	{PE_UINT8, PF_0ISDIS, STR_CONFIG_PATCHES_SNAP_RADIUS, &_patches.window_snap_radius,     1, 32,  1, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_INVISIBLE_TREES,	&_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
+	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
+	{PE_UINT8,	PF_0ISDIS, STR_CONFIG_PATCHES_SNAP_RADIUS, &_patches.window_snap_radius,     1, 32,  1, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	&_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
 };
 
 static const PatchEntry _patches_construction[] = {
@@ -585,7 +599,7 @@ static const PatchEntry _patches_construction[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				&_patches.signal_side,							0,  0,  0, NULL},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		&_patches.always_small_airport,			0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, &_patches.drag_signals_density, 1, 20,  1, NULL},
+	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, &_patches.drag_signals_density, 1, 20,  1, NULL},
 
 };
 
@@ -597,11 +611,11 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_DEPOT_FINDING,&_patches.new_depot_finding,				0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND,				&_patches.new_pathfinding,	0,  0,  0, NULL},
 
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_WARN_INCOME_LESS, &_patches.train_income_warn,				0,  0,  0, NULL},
-	{PE_UINT8,	PF_MULTISTRING, STR_CONFIG_PATCHES_ORDER_REVIEW,&_patches.order_review_system,0,2,  1, NULL},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_WARN_INCOME_LESS, &_patches.train_income_warn,				0,  0,  0, NULL},
+	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_ORDER_REVIEW,&_patches.order_review_system,0,2,  1, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,		&_patches.never_expire_vehicles,0,0,0, NULL},
 
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, &_patches.lost_train_days,	180,720, 60, NULL},
+	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, &_patches.lost_train_days,	180,720, 60, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,&_patches.autorenew,								0,  0,  0, NULL},
 	{PE_INT16,	0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, &_patches.autorenew_months,				-12, 12,  1, NULL},
 	{PE_CURRENCY, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,&_patches.autorenew_money,					0, 2000000, 100000, NULL},
@@ -728,8 +742,7 @@ static void WritePE(const PatchEntry *pe, int32 val)
 									*(int32*)pe->variable = val;
 								break;
 
-	case PE_CURRENCY: val /= GetCurrentCurrencyRate();
-								if ((int64)val > (int64)pe->max)
+	case PE_CURRENCY: if ((int64)val > (int64)pe->max)
 									*(int64*)pe->variable = (int64)pe->max;
 								else if ((int64)val < (int64)pe->min)
 									*(int64*)pe->variable = (int64)pe->min;
@@ -762,12 +775,24 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		page = &_patches_page[WP(w,def_d).data_1];
 		for(i=0,pe=page->entries; i!=page->num; i++,pe++) {
 			bool disabled = false;
+			bool editable = true;
+			// We do not allow changes of some items when we are a client in a networkgame
+			if (!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)
+				editable = false;
 			if (pe->type == PE_BOOL) {
-				DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
+				if (editable)
+					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
+				else
+					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?7:9, (*(bool*)pe->variable)?0x20:0);
 				SetDParam(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
 				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
 				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
+				if (!editable) {
+					int color = 0x8000 | _color_list[3].unk2;
+					GfxFillRect(x+6, y+2, x+6+8, y+9, color);
+					GfxFillRect(x+16, y+2, x+16+8, y+9, color);
+				}
 				DrawStringCentered(x+10, y+1, STR_6819, 0);
 				DrawStringCentered(x+20, y+1, STR_681A, 0);
 
@@ -816,6 +841,9 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			x = e->click.pt.x - 5;
 			if (x < 0) return;
 
+			if (!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)
+				return;
+
 			if (x < 21) { // clicked on the icon on the left side. Either scroller or bool on/off
 				int32 val = ReadPE(pe), oval = val;
 
@@ -859,7 +887,17 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 				if (val != oval) {
-					WritePE(pe, val);
+					// To make patch-changes network-safe
+					if (pe->type == PE_CURRENCY) {
+						val /= GetCurrentCurrencyRate();
+					}
+					// If an item is playerbased, we do not send it over the network (if any)
+					if (pe->flags & PF_PLAYERBASED) {
+						WritePE(pe, val);
+					} else {
+						// Else we do
+						DoCommandP(0, (byte)WP(w,def_d).data_1 + ((byte)btn << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
+					}
 					SetWindowDirty(w);
 
 					if (pe->click_proc != NULL) // call callback function
@@ -892,7 +930,18 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		if (*e->edittext.str) {
 			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
 			const PatchEntry *pe = &page->entries[WP(w,def_d).data_3];
-			WritePE(pe, atoi(e->edittext.str));
+			int32 val;
+			val = atoi(e->edittext.str);
+			if (pe->type == PE_CURRENCY) {
+				val /= GetCurrentCurrencyRate();
+			}
+			// If an item is playerbased, we do not send it over the network (if any)
+			if (pe->flags & PF_PLAYERBASED) {
+				WritePE(pe, val);
+			} else {
+				// Else we do
+				DoCommandP(0, (byte)WP(w,def_d).data_1 + ((byte)WP(w,def_d).data_3 << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
+			}
 			SetWindowDirty(w);
 
 			if (pe->click_proc != NULL) // call callback function
@@ -905,6 +954,25 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_QUERY_STRING, 0);
 		break;
 	}
+}
+
+int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	const PatchPage *page;
+	const PatchEntry *pe;
+
+	if (flags & DC_EXEC) {
+		page = &_patches_page[(byte)p1];
+		if (page == NULL) return 0;
+		pe = &page->entries[(byte)(p1 >> 8)];
+		if (pe == NULL) return 0;
+
+		WritePE(pe, (int32)p2);
+
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+
+	return 0;
 }
 
 static const Widget _patches_selection_widgets[] = {
@@ -952,7 +1020,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 		struct GRFFile *c = _first_grffile;
 
 		DrawWindowWidgets(w);
-		
+
 		if (_first_grffile == NULL) { // no grf sets installed
 			DrawStringMultiCenter(140, 210, STR_NEWGRF_NO_FILES_INSTALLED, 250);
 			break;
@@ -963,13 +1031,13 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 			if (i >= w->vscroll.pos) { // draw files according to scrollbar position
 				bool h = (_sel_grffile==c);
 				// show highlighted item with a different background and highlighted text
-				if(h) GfxFillRect(1, y + 1, 267, y + 12, 156); 
+				if(h) GfxFillRect(1, y + 1, 267, y + 12, 156);
 				// XXX - will be grf name later
-				DoDrawString(c->filename, 25, y + 2, h ? 0xC : 0x10); 
+				DoDrawString(c->filename, 25, y + 2, h ? 0xC : 0x10);
 				DrawSprite(SPRITE_PALETTE(0x2EB | 0x30b8000), 5, y + 3);
 				y += NEWGRF_WND_PROC_ROWSIZE;
 			}
-			
+
 			c = c->next;
 			if (++i == w->vscroll.cap + w->vscroll.pos) break; // stop after displaying 12 items
 		}
@@ -982,7 +1050,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 			// draw filename
 			x = DrawString(5, 199, STR_NEWGRF_FILENAME, 0);
 			DoDrawString(_sel_grffile->filename, x + 2, 199, 0x01);
-	
+
 			// draw grf id
 			x = DrawString(5, 209, STR_NEWGRF_GRF_ID, 0);
 			snprintf(_userstring, USERSTRING_LEN, "%08X", _sel_grffile->grfid);

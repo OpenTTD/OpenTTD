@@ -90,7 +90,7 @@ Virtually any settings - train numbers, start date, what vehicles your competito
 
 2.11 Network Play 
 
-OpenTTD now supports rudimentary TCP/IP based network play. This is not supported on all platforms. To start a server, use the '-n' CLI switch, and start a client with '-n' and the servers IP adress. The OpenTTD network play runs over port 12345, so you may need to open this on your firewall.
+See multiplayer.txt for more info.
 
 2.12 Rail Recycling.
 

@@ -4,6 +4,7 @@
 #include "gui.h"
 #include "command.h"
 #include "player.h"
+#include "network.h"
 
 #define DEF_COMMAND(yyyy) int32 yyyy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
@@ -128,6 +129,7 @@ DEF_COMMAND(CmdSetRoadDriveSide);
 DEF_COMMAND(CmdSetTownNameType);
 
 DEF_COMMAND(CmdChangeDifficultyLevel);
+DEF_COMMAND(CmdChangePatchSetting);
 
 DEF_COMMAND(CmdStartStopShip);
 DEF_COMMAND(CmdSellShip);
@@ -149,6 +151,7 @@ DEF_COMMAND(CmdCloneOrder);
 
 DEF_COMMAND(CmdClearArea);
 
+DEF_COMMAND(CmdGiveMoney);
 DEF_COMMAND(CmdMoneyCheat);
 DEF_COMMAND(CmdBuildCanal);
 DEF_COMMAND(CmdBuildLock);
@@ -301,6 +304,8 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildManySignals,					/* 110 */
 	//CmdDestroyIndustry,						/* 109 */
 	CmdDestroyCompanyHQ,					/* 111 */
+	CmdGiveMoney,									/* 112 */
+	CmdChangePatchSetting,				/* 113 */
 };
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
@@ -386,15 +391,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	assert(_docommand_recursive == 0);
 
-	if (_networking && !(cmd & CMD_NET_INSTANT) && _pause) {
-		// When the game is paused, and we are in a network game
-		//  we do not allow any commands. This is because
-		//  of some technical reasons
-		ShowErrorMessage(-1, STR_MULTIPLAYER_PAUSED, x, y);
-		_docommand_recursive = 0;
-		return true;
-	}
-
 	_error_message = INVALID_STRING_ID;
 	_error_message_2 = cmd >> 16;
 	_additional_cash_required = 0;
@@ -413,7 +409,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
 	proc = _command_proc_table[cmd & 0xFF];
 
-	// this command is a notest command?
+	// Some commands have a different output in dryrun then the realrun
+	//  e.g.: if you demolish a whole town, the dryrun would say okay.
+	//  but by really destroying, your rating drops and at a certain point
+	//  it will fail. so res and res2 are different
 	// CMD_REMOVE_ROAD: This command has special local authority
 	// restrictions which may cause the test run to fail (the previous
 	// road fragments still stay there and the town won't let you
@@ -426,12 +425,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		(cmd & 0xFF) == CMD_TRAIN_GOTO_DEPOT ||
 		(cmd & 0xFF) == CMD_REMOVE_ROAD;
 
-	if (_networking && (cmd & CMD_ASYNC)) notest = true;
-
 	_docommand_recursive = 1;
 
 	// cost estimation only?
-	if (_shift_pressed && _current_player == _local_player && !(cmd & CMD_DONT_NETWORK)) {
+	if (_shift_pressed && _current_player == _local_player && !(cmd & CMD_NETWORK_COMMAND)) {
 		// estimate the cost.
 		res = proc(x, y, flags, p1, p2);
 		if ((uint32)res >> 16 == 0x8000) {
@@ -446,30 +443,26 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 
 
-
-	// unless the command is a notest command, check if it can be executed.
-	if (!notest) {
+	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		// first test if the command can be executed.
 		res = proc(x,y, flags, p1, p2);
 		if ((uint32)res >> 16 == 0x8000) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto show_error;
 		}
-		// no money?
-		if (res != 0 && !CheckPlayerHasMoney(res)) goto show_error;
+		// no money? Only check if notest is off
+		if (!notest && res != 0 && !CheckPlayerHasMoney(res)) goto show_error;
 	}
 
-	// put the command in a network queue and execute it later?
-	if (_networking && !(cmd & CMD_DONT_NETWORK)) {
-		if (!(cmd & CMD_NET_INSTANT)) {
-			NetworkSendCommand(tile, p1, p2, cmd, callback);
-			_docommand_recursive = 0;
-			return true;
-		} else {
-			// Instant Command ... Relay and Process then
-			NetworkSendCommand(tile, p1, p2, cmd, callback);
-		}
+#ifdef ENABLE_NETWORK
+	// If we are in network, and the command is not from the network
+	//   send it to the command-queue and abort execution
+	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
+		NetworkSend_Command(tile, p1, p2, cmd, callback);
+		_docommand_recursive = 0;
+		return true;
 	}
+#endif /* ENABLE_NETWORK */
 
 	// update last build coordinate of player.
 	if ( tile != 0 && _current_player < MAX_PLAYERS) DEREF_PLAYER(_current_player)->last_build_coordinate = tile;
@@ -478,6 +471,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_yearly_expenses_type = 0;
 	res2 = proc(x,y, flags|DC_EXEC, p1, p2);
 
+	// If notest is on, it means the result of the test can be different then
+	//   the real command.. so ignore the test
 	if (!notest) {
 		assert(res == res2); // sanity check
 	} else {

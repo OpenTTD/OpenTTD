@@ -1,8 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "network.h"
-
 /* vehicle.c */
 
 /* window.c */
@@ -96,8 +94,28 @@ void CDECL ShowInfoF(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
 
 /* ttd.c */
-uint32 Random();
-uint RandomRange(uint max);
+
+// **************
+// * Warning: DO NOT enable this unless you understand what it does
+// *
+// * If enabled, in a network game all randoms will be dumped to the
+// *  stdout if the first client joins (or if you are a client). This
+// *  is to help finding desync problems.
+// *
+// * Warning: DO NOT enable this unless you understand what it does
+// **************
+
+//#define RANDOM_DEBUG
+
+#ifdef RANDOM_DEBUG
+	#define Random() DoRandom(__LINE__, __FILE__)
+	uint32 DoRandom(uint line, char *file);
+	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
+	uint DoRandomRange(uint max, uint line, char *file);
+#else
+	uint32 Random();
+	uint RandomRange(uint max);
+#endif
 
 void InitPlayerRandoms();
 
@@ -114,6 +132,12 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration);
 void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);
 
+void InitTextMessage();
+void DrawTextMessage();
+void AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
+void UndrawTextMessage();
+void TextMessageDailyLoop();
+
 bool AddAnimatedTile(uint tile);
 void DeleteAnimatedTile(uint tile);
 void AnimateAnimatedTiles();
@@ -125,46 +149,21 @@ bool CheckBridge_Stuff(byte bridge_type, int bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
-/* network.c */
 typedef void CommandCallback(bool success, uint tile, uint32 p1, uint32 p2);
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
 
-void NetworkReceive();
-void NetworkSend();
-void NetworkProcessCommands();
-void NetworkListen();
-void NetworkInitialize();
-void NetworkShutdown();
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
-void NetworkSendEvent(uint16 type, uint16 data_len, void * data);
-void NetworkStartSync(bool fcreset);
-void NetworkClose(bool client);
-void NetworkSendReadyPacket();
-void NetworkSendSyncPackets();
-void NetworkSendFrameSyncPackets();
-bool NetworkCheckClientReady();
-
-void NetworkIPListInit();
-
-void NetworkCoreInit();
-void NetworkCoreShutdown();
-void NetworkCoreDisconnect();
-void NetworkCoreLoop(bool incomming);
-bool NetworkCoreConnectGame(const byte* b, unsigned short port);
-bool NetworkCoreConnectGameStruct(NetworkGameList * item);
-bool NetworkCoreStartGame();
-
-void NetworkLobbyShutdown();
-void NetworkLobbyInit();
-
-void NetworkGameListClear();
-NetworkGameList * NetworkGameListAdd();
-void NetworkGameListFromLAN();
-void NetworkGameListFromInternet();
-NetworkGameList * NetworkGameListItem(uint16 index);
-
-void NetworkGameFillDefaults();
-void NetworkGameChangeDate(uint16 newdate);
+/* network.c */
+void NetworkUDPClose(void);
+void NetworkStartUp();
+void NetworkShutDown(void);
+void NetworkGameLoop(void);
+void NetworkUDPGameLoop(void);
+bool NetworkServerStart(void);
+bool NetworkClientConnectGame(const byte* host, unsigned short port);
+void NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
+void NetworkReboot();
+void NetworkDisconnect();
+void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 
 /* misc_cmd.c */
 void PlaceTreesRandomly();
@@ -180,11 +179,16 @@ void InitializeLandscapeVariables(bool only_constants);
 /* misc.c */
 void DeleteName(StringID id);
 byte *GetName(int id, byte *buff);
-StringID AllocateName(const byte *name, byte skip);
+
+// AllocateNameUnique also tests if the name used is not used anywere else
+//  and if it is used, it returns an error.
+#define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
+#define AllocateName(name, skip) RealAllocateName(name, skip, false)
+StringID RealAllocateName(const byte *name, byte skip, bool check_double);
 void ConvertDayToYMD(YearMonthDay *ymd, uint16 date);
 uint ConvertYMDToDay(uint year, uint month, uint day);
 uint ConvertIntDate(uint date);
-
+void CSleep(int milliseconds);
 
 
 /* misc functions */
@@ -221,6 +225,10 @@ void ChangeTownRating(Town *t, int add, int max);
 uint GetRoadBitsByTile(TileIndex tile);
 int GetTownRadiusGroup(Town *t, uint tile);
 int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
+void ShowNetworkChatQueryWindow(byte desttype, byte dest);
+void ShowNetworkGiveMoneyWindow(byte player);
+void ShowNetworkNeedGamePassword();
+void ShowNetworkNeedCompanyPassword();
 void ShowRenameSignWindow(SignStruct *ss);
 void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);

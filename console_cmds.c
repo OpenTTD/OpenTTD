@@ -5,10 +5,10 @@
 #include "engine.h"
 #include "functions.h"
 #include "variables.h"
-
-#if defined(WIN32)
-#	define ENABLE_NETWORK
-#endif
+#include "network_data.h"
+#include "network_client.h"
+#include "network_server.h"
+#include "command.h"
 
 
 // ** scriptfile handling ** //
@@ -39,6 +39,8 @@ static uint32 GetArgumentInteger(const char* arg)
 /* variable and command hooks   */
 /* **************************** */
 
+#ifdef ENABLE_NETWORK
+
 DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 {
 	if (_networking) {
@@ -48,25 +50,43 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 	return true;
 }
 
-#if 0 /* Not used atm */
-DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetwork)
-{
-	if (_networking) {
-		IConsoleError("This variable is forbidden in multiplayer.");
-		return false;
-	}
-	return true;
-}
-#endif
-
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
 {
-	if (!_networking_server) {
+	if (!_network_server) {
 		IConsoleError("This variable only makes sense for a network server.");
 		return false;
 	}
 	return true;
 }
+
+DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetClient)
+{
+	if (!_networking || !_network_server) {
+		IConsoleError("This command is only available for a network server.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetServer)
+{
+	if (!_networking || _network_server) {
+		IConsoleError("You can not use this command for you are a network-server.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_CMD_HOOK(ConCmdHookNeedNetwork)
+{
+	if (!_networking) {
+		IConsoleError("Not connected. Multiplayer only command.");
+		return false;
+	}
+	return true;
+}
+
+#endif /* ENABLE_NETWORK */
 
 /* **************************** */
 /* reset commands               */
@@ -100,41 +120,130 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	return 0;
 }
 
+
 // ********************************* //
 // * Network Core Console Commands * //
 // ********************************* //
 #ifdef ENABLE_NETWORK
 
-DEF_CONSOLE_CMD(ConNetworkConnect)
+DEF_CONSOLE_CMD(ConStatus)
 {
-	char* ip;
-	const char *port = NULL;
-	const char *player = NULL;
-	uint16 rport;
+	const char *status;
+	int lag;
+	const ClientState *cs;
+	const NetworkClientInfo *ci;
+	FOR_ALL_CLIENTS(cs) {
+		lag = NetworkCalculateLag(cs);
+		ci = DEREF_CLIENT_INFO(cs);
 
-	if (argc<2) return NULL;
-
-	ip = argv[1];
-	rport = _network_server_port;
-
-	ParseConnectionString(&player, &port, ip);
-
-	IConsolePrintF(_iconsole_color_default, "Connecting to %s...", ip);
-	if (player!=NULL) {
-		_network_playas = atoi(player);
-		IConsolePrintF(_iconsole_color_default, "    player-no: %s", player);
+		switch (cs->status) {
+			case STATUS_INACTIVE:
+				status = "inactive";
+				break;
+			case STATUS_AUTH:
+				status = "authorized";
+				break;
+			case STATUS_MAP:
+				status = "loading map";
+				break;
+			case STATUS_DONE_MAP:
+				status = "done map";
+				break;
+			case STATUS_PRE_ACTIVE:
+				status = "ready";
+				break;
+			case STATUS_ACTIVE:
+				status = "active";
+				break;
+			default:
+				status = "unknown";
+				break;
+		}
+		IConsolePrintF(8, "Client #%d/%s  status: %s  frame-lag: %d  play-as: %d",
+			cs->index, ci->client_name, status, lag, ci->client_playas);
 	}
-	if (port!=NULL) {
-		rport = atoi(port);
-		IConsolePrintF(_iconsole_color_default, "    port: %s", port);
-	}
-
-	NetworkCoreConnectGame(ip, rport);
 
 	return NULL;
 }
 
-#endif
+DEF_CONSOLE_CMD(ConKick)
+{
+	NetworkClientInfo *ci;
+
+	if (argc == 2) {
+		uint32 index = atoi(argv[1]);
+		if (index == NETWORK_SERVER_INDEX) {
+			IConsolePrint(_iconsole_color_default, "Silly boy, you can not kick yourself!");
+			return NULL;
+		}
+		if (index == 0) {
+			IConsoleError("Invalid Client-ID");
+			return NULL;
+		}
+
+		ci = NetworkFindClientInfoFromIndex(index);
+
+		if (ci != NULL) {
+			SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+			return NULL;
+		} else {
+			IConsoleError("Client-ID not found");
+			return NULL;
+		}
+	}
+
+	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: kick <client-id>. For client-ids, see 'clients'.");
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConNetworkClients)
+{
+	NetworkClientInfo *ci;
+	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
+		if (ci->client_index != NETWORK_EMPTY_INDEX) {
+			IConsolePrintF(8,"Client #%d   name: %s  play-as: %d", ci->client_index, ci->client_name, ci->client_playas);
+		}
+	}
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConNetworkConnect)
+{
+	char* ip;
+	const byte *port = NULL;
+	const byte *player = NULL;
+	uint16 rport;
+
+	if (argc<2) return NULL;
+
+	if (_networking) {
+		// We are in network-mode, first close it!
+		NetworkDisconnect();
+	}
+
+	ip = argv[1];
+	rport = NETWORK_DEFAULT_PORT;
+
+	ParseConnectionString(&player, &port, ip);
+
+	IConsolePrintF(_iconsole_color_default, "Connecting to %s...", ip);
+	if (player != NULL) {
+		_network_playas = atoi(player);
+		IConsolePrintF(_iconsole_color_default, "    player-no: %s", player);
+	}
+	if (port != NULL) {
+		rport = atoi(port);
+		IConsolePrintF(_iconsole_color_default, "    port: %s", port);
+	}
+
+	NetworkClientConnectGame(ip, rport);
+
+	return NULL;
+}
+
+#endif /* ENABLE_NETWORK */
 
 /* ******************************** */
 /*   script file console commands   */
@@ -148,7 +257,7 @@ DEF_CONSOLE_CMD(ConExec)
 	if (argc<2) return NULL;
 
 	doerror = true;
-	_script_file = fopen(argv[1], "rb");
+	_script_file = fopen(argv[1], "r");
 
 	if (_script_file == NULL) {
 		if (argc>2) if (atoi(argv[2])==0) doerror=false;
@@ -158,9 +267,11 @@ DEF_CONSOLE_CMD(ConExec)
 
 	_script_running = true;
 
+	fgets(cmd, sizeof(cmd), _script_file);
 	while (!feof(_script_file) && _script_running) {
-		fgets(cmd, sizeof(cmd), _script_file);
+		strtok(cmd, "\r\n");
 		IConsoleCmdExec(cmd);
+		fgets(cmd, sizeof(cmd), _script_file);
 	}
 
 	_script_running = false;
@@ -206,6 +317,19 @@ DEF_CONSOLE_CMD(ConEchoC)
 {
 	if (argc < 3) return NULL;
 	IConsolePrint(atoi(argv[1]), argv[2]);
+	return NULL;
+}
+
+extern void SwitchMode(int new_mode);
+
+DEF_CONSOLE_CMD(ConNewGame)
+{
+	_docommand_recursive = 0;
+
+	_random_seeds[0][0] = Random();
+	_random_seeds[0][1] = InteractiveRandom();
+
+	SwitchMode(SM_NEWGAME);
 	return NULL;
 }
 
@@ -299,15 +423,15 @@ DEF_CONSOLE_CMD(ConHelp)
 {
 	IConsolePrint(13, " -- console help -- ");
 	IConsolePrint( 1, " variables: [command to list them: list_vars]");
-	IConsolePrint( 1, " *temp_string = \"my little \"");
+	IConsolePrint( 1, " temp_string = \"my little \"");
 	IConsolePrint( 1, "");
 	IConsolePrint( 1, " commands: [command to list them: list_cmds]");
 	IConsolePrint( 1, " [command] [\"string argument with spaces\"] [argument 2] ...");
-	IConsolePrint( 1, " printf \"%s world\" *temp_string");
+	IConsolePrint( 1, " printf \"%s world\" temp_string");
 	IConsolePrint( 1, "");
 	IConsolePrint( 1, " command/variable returning a value into an variable:");
-	IConsolePrint( 1, " *temp_uint16 << random");
-	IConsolePrint( 1, " *temp_uint16 << *temp_uint16_2");
+	IConsolePrint( 1, " temp_uint16 << random");
+	IConsolePrint( 1, " temp_uint16 << temp_uint16_2");
 	IConsolePrint( 1, "");
 	return NULL;
 }
@@ -362,6 +486,131 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 	return NULL;
 }
 
+#ifdef ENABLE_NETWORK
+
+DEF_CONSOLE_CMD(ConSay)
+{
+	if (argc == 2) {
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
+		else
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+	} else
+		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say \"<msg>\"");
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConSayPlayer)
+{
+	if (argc == 3) {
+		if (atoi(argv[1]) < 1 || atoi(argv[1]) > MAX_PLAYERS) {
+			IConsolePrintF(_iconsole_color_default, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
+			return NULL;
+		}
+
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2]);
+		else
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	} else
+		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say_player <playerno> \"<msg>\"");
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConSayClient)
+{
+	if (argc == 3) {
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
+		else
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	} else
+		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say_client <clientno> \"<msg>\"");
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConSetServerName) {
+	if (argc == 2) {
+		strncpy(_network_server_name, argv[1], 40);
+		IConsolePrintF(_iconsole_color_default, "Server-name changed to '%s'", _network_server_name);
+		ttd_strlcpy(_network_game_info.server_name, _network_server_name, 40);
+	} else if (argc == 1) {
+		IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
+		IConsolePrint(_iconsole_color_default, "  Usage: setservername \"<GameName>\".");
+	} else {
+		IConsolePrint(_iconsole_color_default, "Unknow usage. Usage: setservername \"<ServerName>\".");
+	}
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConClientName) {
+	NetworkClientInfo *ci;
+	ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+
+	if (argc == 2 && ci != NULL) {
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[1]);
+		else {
+			if (NetworkFindName(argv[1])) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, argv[1]);
+				ttd_strlcpy(ci->client_name, argv[1], 40);
+				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+			}
+		}
+	} else {
+		IConsolePrint(_iconsole_color_default, "With 'name' you can change your network-player name.");
+		IConsolePrint(_iconsole_color_default, "  Usage: name \"<name>\".");
+	}
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConProtect) {
+	// Protect a company with a password
+	if (_local_player >= MAX_PLAYERS) {
+		IConsolePrintF(_iconsole_color_default, "You have to own a company to make use of this command.");
+		return NULL;
+	}
+	if (argc == 2) {
+		if (strncmp(argv[1], "*", 20) == 0) {
+			_network_player_info[_local_player].password[0] = '\0';
+		} else {
+			strncpy(_network_player_info[_local_player].password, argv[1], 20);
+		}
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+		IConsolePrintF(_iconsole_color_default, "Company protected with '%s'", _network_player_info[_local_player].password);
+	} else {
+		IConsolePrint(_iconsole_color_default, "Protect sets a password on the company, so no-one without the correct password can join.");
+		IConsolePrint(_iconsole_color_default, "  Usage: protect \"<password>\".   Use * as <password> to set no password.");
+	}
+
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConSetPassword) {
+	if (argc == 2) {
+		// Change server password
+		if (strncmp(argv[1], "*", 20) == 0) {
+			_network_game_info.server_password[0] = '\0';
+			_network_game_info.use_password = 0;
+		} else {
+			strncpy(_network_game_info.server_password, argv[1], 20);
+			_network_game_info.use_password = 1;
+		}
+		IConsolePrintF(_iconsole_color_default, "Game-password changed to '%s'", _network_game_info.server_password);
+	} else if (argc == 1) {
+		IConsolePrintF(_iconsole_color_default, "Current game-password is set to '%s'", _network_game_info.server_password);
+		IConsolePrint(_iconsole_color_default, "  Usage: setpassword \"<password>\".   Use * as <password> to set no password.");
+	} else {
+		IConsolePrint(_iconsole_color_default, "Unknow usage. Usage: setpassword \"<password>\".   Use * as <password> to set no password.");
+	}
+
+	return 0;
+}
+
+#endif /* ENABLE_NETWORK */
+
 #ifdef _DEBUG
 /* ****************************************** */
 /*  debug commands and variables */
@@ -390,7 +639,7 @@ void IConsoleDebugLibRegister()
 /*  console command and variable registration */
 /* ****************************************** */
 
-void IConsoleStdLibRegister()
+void IConsoleStdLibRegister(void)
 {
 	// stdlib
 	extern byte _stdlib_developer; /* XXX extern in .c */
@@ -402,8 +651,9 @@ void IConsoleStdLibRegister()
 	// functions [please add them alphabetically]
 #ifdef ENABLE_NETWORK
 	IConsoleCmdRegister("connect", ConNetworkConnect);
-	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
-#endif
+	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
+	IConsoleCmdRegister("clients", ConNetworkClients);
+#endif /* ENABLE_NETWORK */
 	IConsoleCmdRegister("debug_level",  ConDebugLevel);
 	IConsoleCmdRegister("dump_vars",    ConListDumpVariables);
 	IConsoleCmdRegister("echo",         ConEcho);
@@ -415,26 +665,50 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("info_var",     ConInfoVar);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
+#ifdef ENABLE_NETWORK
+	IConsoleCmdRegister("kick",         ConKick);
+	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("protect", ConProtect);
+	IConsoleCmdRegister("name",         ConClientName);
+#endif
+	IConsoleCmdRegister("newgame",         ConNewGame);
 	IConsoleCmdRegister("printf",       ConPrintF);
 	IConsoleCmdRegister("printfc",      ConPrintFC);
 	IConsoleCmdRegister("quit",         ConExit);
 	IConsoleCmdRegister("random",       ConRandom);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
+#ifdef ENABLE_NETWORK
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
+#endif /* ENABLE_NETWORK */
 	IConsoleCmdRegister("return",     ConReturn);
+#ifdef ENABLE_NETWORK
+	IConsoleCmdRegister("say",        ConSay);
+	IConsoleCmdHook("say", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
+	IConsoleCmdRegister("say_player", ConSayPlayer);
+	IConsoleCmdHook("say_player", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
+	IConsoleCmdRegister("say_client", ConSayClient);
+	IConsoleCmdHook("say_client", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
+#endif /* ENABLE_NETWORK */
 	IConsoleCmdRegister("screenshot", ConScreenShot);
 	IConsoleCmdRegister("script",     ConScript);
 	IConsoleCmdRegister("scrollto",   ConScrollToTile);
+#ifdef ENABLE_NETWORK
+	IConsoleCmdRegister("setservername", ConSetServerName);
+	IConsoleCmdHook("setservername", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("setpassword", ConSetPassword);
+	IConsoleCmdHook("setpassword", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("status",   ConStatus);
+	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+#endif /* ENABLE_NETWORK */
 
 	// variables [please add them alphabeticaly]
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
 #ifdef ENABLE_NETWORK
-	IConsoleVarRegister("net_client_timeout", &_network_client_timeout, ICONSOLE_VAR_UINT16);
-	IConsoleVarHook("*net_client_timeout", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
-	IConsoleVarRegister("net_ready_ahead", &_network_ready_ahead, ICONSOLE_VAR_UINT16);
+	IConsoleVarRegister("net_frame_freq", &_network_frame_freq, ICONSOLE_VAR_UINT8);
+	IConsoleVarHook("*net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
 	IConsoleVarRegister("net_sync_freq", &_network_sync_freq, ICONSOLE_VAR_UINT16);
 	IConsoleVarHook("*net_sync_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
-#endif
+#endif /* ENABLE_NETWORK */
 
 
 }

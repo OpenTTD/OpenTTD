@@ -16,7 +16,7 @@ static byte _selected_airport_type;
 static void ShowBuildAirportPicker();
 
 
-static void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);

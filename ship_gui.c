@@ -301,7 +301,7 @@ static void ShowShipDetailsWindow(Vehicle *v)
 	w->caption_color = v->owner;
 }
 
-static void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	if (!success) return;

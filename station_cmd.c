@@ -2415,7 +2415,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Station *st;
 
-	str = AllocateName((byte*)_decode_parameters, 6);
+	str = AllocateNameUnique((byte*)_decode_parameters, 6);
 	if (str == 0)
 		return CMD_ERROR;
 
@@ -2654,7 +2654,7 @@ static int32 ClearTile_Station(uint tile, byte flags) {
 void InitializeStations()
 {
 	int i;
-	
+
 	memset(_stations, 0, sizeof(_stations));
 	for(i = 0; i != lengthof(_stations); i++)
 		_stations[i].index=i;

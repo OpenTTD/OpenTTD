@@ -783,7 +783,7 @@ int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 
-	str = AllocateName((byte*)_decode_parameters, 0);
+	str = AllocateNameUnique((byte*)_decode_parameters, 0);
 	if (str == 0)
 		return CMD_ERROR;
 

@@ -25,7 +25,7 @@ static void DrawAircraftImage(Vehicle *v, int x, int y, VehicleID selection)
 	}
 }
 
-static void CcBuildAircraft(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildAircraft(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 

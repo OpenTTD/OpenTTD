@@ -10,11 +10,12 @@
 #include "player.h"
 #include "town.h"
 #include "sound.h"
+#include "network.h"
 
-#include "hal.h" // Fios items
+#include "hal.h" // for file list
 
 bool _query_string_active;
-static void SetFiosType(const byte fiostype);
+void SetFiosType(const byte fiostype);
 
 typedef struct LandInfoData {
 	Town *town;
@@ -23,7 +24,6 @@ typedef struct LandInfoData {
 	uint tile;
 	TileDesc td;
 } LandInfoData;
-
 
 static void LandInfoWndProc(Window *w, WindowEvent *e)
 {
@@ -764,6 +764,7 @@ void DrawEditBox(Window *w, int wid)
 
 static void QueryStringWndProc(Window *w, WindowEvent *e)
 {
+	static bool closed = false;
 	switch(e->event) {
 	case WE_PAINT: {
 //		int x;
@@ -779,7 +780,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
-			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN)) {
+			if (str_eq(WP(w,querystr_d).buf, WP(w,querystr_d).buf + MAX_QUERYSTR_LEN) && (WP(w,querystr_d).maxlen & 0x1000) == 0) {
 				DeleteWindow(w);
 			} else {
 				byte *buf = WP(w,querystr_d).buf;
@@ -788,6 +789,10 @@ press_ok:;
 				Window *parent;
 
 				DeleteWindow(w);
+
+				// Mask the edit-box as closed, so we don't send out a CANCEL
+				closed = true;
+
 				parent = FindWindowById(wnd_class, wnd_num);
 				if (parent != NULL) {
 					WindowEvent e;
@@ -818,7 +823,20 @@ press_ok:;
 		}
 	} break;
 
+	case WE_CREATE:
+		closed = false;
+		break;
+
 	case WE_DESTROY:
+		// If the window is not closed yet, it means it still needs to send a CANCEL
+		if (!closed) {
+			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
+			if (parent != NULL) {
+				WindowEvent e;
+				e.event = WE_ON_EDIT_TEXT_CANCEL;
+				parent->wndproc(parent, &e);
+			}
+		}
 		_query_string_active = false;
 		break;
 	}
@@ -933,11 +951,7 @@ static const Widget _save_dialog_scen_widgets[] = {
 };
 
 
-static FiosItem *_fios_list;
-static int _fios_num;
-static int _saveload_mode;
-
-static void BuildFileList()
+void BuildFileList()
 {
 	FiosFreeSavegameList();
 	if(_saveload_mode==SLD_NEW_GAME || _saveload_mode==SLD_LOAD_SCENARIO || _saveload_mode==SLD_SAVE_SCENARIO)
@@ -956,9 +970,6 @@ static void DrawFiosTexts()
 		DrawString(2, 37, str, 0);
 	DoDrawString(path, 2, 27, 16);
 }
-
-/*	FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
-static const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
 
 #if defined(_WIN32)
 	extern int CDECL compare_FiosItems (const void *a, const void *b);
@@ -1185,7 +1196,7 @@ void ShowSaveLoadDialog(int mode)
 	}
 
 	// pause is only used in single-player, non-editor mode
-	if(_game_mode != GM_MENU && !_networking && (_game_mode != GM_EDITOR))
+	if(_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR)
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	BuildFileList();
@@ -1282,7 +1293,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 	}
 }
 
-static void SetFiosType(const byte fiostype)
+void SetFiosType(const byte fiostype)
 {
 	switch (fiostype) {
 	case FIOS_TYPE_FILE: case FIOS_TYPE_SCENARIO:

@@ -325,7 +325,7 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}
 
-	DoCommandP(0, v->index, bak->orderindex|(bak->service_interval<<16) , NULL, CMD_RESTORE_ORDER_INDEX | CMD_ASYNC);
+	DoCommandP(0, v->index, bak->orderindex|(bak->service_interval<<16) , NULL, CMD_RESTORE_ORDER_INDEX);
 
 	os = bak->order;
 	if (os[0] == 0xFFFF) {
@@ -333,9 +333,13 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 		return;
 	}
 
+	// CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
+	//  order number is one more then the current amount of orders, and because
+	//  in network the commands are queued before send, the second insert always
+	//  fails in test mode. By bypassing the test-mode, that no longer is a problem.
 	ind = 0;
 	while ((ord = *os++) != 0) {
-		if (!DoCommandP(0, v->index + (ind << 16), ord, NULL, CMD_INSERT_ORDER | CMD_ASYNC))
+		if (!DoCommandP(0, v->index + (ind << 16), ord, NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 		ind++;
 	}

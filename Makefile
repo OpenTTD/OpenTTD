@@ -69,7 +69,7 @@
 #
 # Paths:
 # INSTALL: If not set, the game uses the directory of the binary to
-# store everything (lang, data, gm, save and openttd.cfg), this is the `old' behaviour. 
+# store everything (lang, data, gm, save and openttd.cfg), this is the `old' behaviour.
 # In this case, none of the following paths are used, you also should _not_
 # use `make install', but copy the required stuff yourself (or just play out
 # of you source directory, which should work fine).
@@ -83,7 +83,7 @@
 # PREFIX:	Normally /usr/local
 # BINARY_DIR:	The location of the binary, normally games. (Will be prefixed
 #		with $PREFIX)
-# DATA_DIR: 	The location of the data (lang, data and gm), normally 
+# DATA_DIR: 	The location of the data (lang, data and gm), normally
 #		share/games/openttd. (Will be prefixed with $PREFIX)
 # PERSONAL_DIR:	The directory where openttd.cfg and the save folder will be
 #		stored. You cannot use ~ here, define USE_HOMEDIR for that.
@@ -157,7 +157,7 @@ endif
 # this is used if there aren't any makefile.config
 ifndef CONFIG_INCLUDED
 # sets network on by default if there aren't any config file
-ENABLE_NETWORK:=1   
+ENABLE_NETWORK:=1
 
 # paths for make install
 # disabled as they would break it for some (many?) people if they were default
@@ -287,6 +287,7 @@ BASECFLAGS += -g
 else
 ifdef PROFILE
 BASECFLAGS += -pg
+LDFLAGS += -pg
 else
 # Release mode
 ifndef MORPHOS
@@ -457,9 +458,11 @@ CDEFS += -DMIDI_ARG=\"$(MIDI_ARG)\"
 endif
 endif
 
-# Experimental
 ifdef WITH_NETWORK
 CDEFS += -DENABLE_NETWORK
+ifdef QNX
+LIBS += -lsocket
+endif
 ifdef UNIX
 ifndef OSX
 ifndef MORPHOS
@@ -516,18 +519,21 @@ endif
 C_SOURCES = \
 	ai.c ai_build.c ai_new.c ai_pathfinder.c ai_shared.c aircraft_cmd.c \
 	aircraft_gui.c airport.c airport_gui.c aystar.c bridge_gui.c \
-	clear_cmd.c command.c console.c console_cmds.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
+	callback_table.c clear_cmd.c command.c console.c console_cmds.c \
+	dedicated.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
 	engine.c engine_gui.c fileio.c gfx.c graph_gui.c newgrf.c \
 	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c \
 	minilzo.c misc.c misc_cmd.c misc_gui.c music_gui.c namegen.c network.c \
-	network_gui.c news_gui.c oldloader.c order_cmd.c order_gui.c \
-	pathfind.c player_gui.c players.c queue.c rail_cmd.c rail_gui.c rev.c \
-	road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c saveload.c \
-	screenshot.c settings.c settings_gui.c ship_cmd.c ship_gui.c \
-	smallmap_gui.c sound.c sprite.c spritecache.c station_cmd.c station_gui.c \
-	strings.c subsidy_gui.c terraform_gui.c texteff.c town_cmd.c \
-	town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c tunnelbridge_cmd.c \
-	unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c water_cmd.c widget.c window.c
+	network_client.c network_data.c network_gamelist.c network_gui.c \
+	network_server.c network_udp.c news_gui.c oldloader.c order_cmd.c \
+	order_gui.c pathfind.c player_gui.c players.c queue.c rail_cmd.c \
+	rail_gui.c rev.c road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c \
+	saveload.c screenshot.c settings.c settings_gui.c ship_cmd.c \
+	ship_gui.c smallmap_gui.c sound.c sprite.c spritecache.c station_cmd.c \
+	station_gui.c strings.c subsidy_gui.c terraform_gui.c texteff.c \
+	town_cmd.c town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c \
+	tunnelbridge_cmd.c unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c \
+	water_cmd.c widget.c window.c
 CXX_SOURCES =
 
 ifdef WITH_SDL
@@ -670,8 +676,8 @@ ifeq ($(INSTALL),)
 	is set correctly up - run \"make upgradeconf\")
 endif
 
-ifeq ($(PREFIX), ) 
-	$(error no prefix set - check makefile.config) 
+ifeq ($(PREFIX), )
+	$(error no prefix set - check makefile.config)
 endif
 #	We compare against the non prefixed version here, so we won't install
 #	if only the prefix has been set

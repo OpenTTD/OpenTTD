@@ -8,6 +8,7 @@
 #include <SDL.h>
 #include "player.h"
 #include "hal.h"
+#include "network.h"
 
 #ifdef UNIX
 #include <signal.h>
@@ -607,6 +608,7 @@ static int SdlVideoMainLoop(void)
 		} else {
 			SDL_CALL SDL_Delay(1);
 			_screen.dst_ptr = _sdl_screen->pixels;
+			DrawTextMessage();
 			DrawMouseCursor();
 			DrawSurfaceToScreen();
 		}

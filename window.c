@@ -170,6 +170,7 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 void CallWindowEventNP(Window *w, int event)
 {
 	WindowEvent e;
+
 	e.event = event;
 	w->wndproc(w, &e);
 }
@@ -691,7 +692,40 @@ static bool HandlePopupMenu()
 	return false;
 }
 
-static bool HandleWindowDragging()
+bool HandleMouseOver()
+{
+	Window *w;
+	WindowEvent e;
+	static Window *last_w = NULL;
+
+	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+
+	// We changed window, put a MOUSEOVER event to the last window
+	if (last_w && last_w != w) {
+		e.event = WE_MOUSEOVER;
+		e.mouseover.pt.x = -1;
+		e.mouseover.pt.y = -1;
+		if (last_w->wndproc)
+			last_w->wndproc(last_w, &e);
+	}
+	last_w = w;
+
+	if (w) {
+		// send an event in client coordinates.
+		e.event = WE_MOUSEOVER;
+		e.mouseover.pt.x = _cursor.pos.x - w->left;
+		e.mouseover.pt.y = _cursor.pos.y - w->top;
+		if (w->widget != NULL) {
+			e.mouseover.widget = GetWidgetFromPos(w, e.mouseover.pt.x, e.mouseover.pt.y);
+		}
+		w->wndproc(w, &e);
+	}
+
+	// Mouseover never stops execution
+	return true;
+}
+
+bool HandleWindowDragging()
 {
 	Window *w;
 	// Get out immediately if no window is being dragged at all.
@@ -1083,6 +1117,9 @@ void MouseLoop()
 	if (!HandleViewportScroll())
 		return;
 
+	if (!HandleMouseOver())
+		return;
+
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
@@ -1188,6 +1225,7 @@ void UpdateWindows()
 		if (w->viewport != NULL)
 			UpdateViewportPosition(w);
 	}
+	DrawTextMessage();
 	// Redraw mouse cursor in case it was hidden
 	DrawMouseCursor();
 }

@@ -7,6 +7,7 @@ typedef enum _iconsole_var_types {
 	ICONSOLE_VAR_NONE,
 	ICONSOLE_VAR_BOOLEAN,
 	ICONSOLE_VAR_BYTE,
+	ICONSOLE_VAR_UINT8,
 	ICONSOLE_VAR_UINT16,
 	ICONSOLE_VAR_UINT32,
 	ICONSOLE_VAR_INT16,
@@ -16,6 +17,12 @@ typedef enum _iconsole_var_types {
 	ICONSOLE_VAR_REFERENCE,
 	ICONSOLE_VAR_UNKNOWN
 } _iconsole_var_types;
+
+typedef enum {
+	ICONSOLE_FULL,
+	ICONSOLE_OPENED,
+	ICONSOLE_CLOSED
+} _iconsole_modes;
 
 typedef enum _iconsole_hook_types {
 	ICONSOLE_HOOK_ACCESS,
@@ -80,6 +87,7 @@ VARDEF byte _iconsole_color_error;
 VARDEF byte _iconsole_color_warning;
 VARDEF byte _iconsole_color_debug;
 VARDEF byte _iconsole_color_commands;
+VARDEF _iconsole_modes _iconsole_mode;
 
 // ** ttd.c functions ** //
 
@@ -100,8 +108,8 @@ void IConsoleCmdBufferAdd(const char* cmd);
 void IConsoleCmdBufferNavigate(signed char direction);
 
 // ** console output ** //
-void IConsolePrint(byte color_code, const char* string);
-void CDECL IConsolePrintF(byte color_code, const char* s, ...);
+void IConsolePrint(uint16 color_code, const char* string);
+void CDECL IConsolePrintF(uint16 color_code, const char* s, ...);
 void IConsoleDebug(const char* string);
 void IConsoleError(const char* string);
 void IConsoleWarning(const char* string);

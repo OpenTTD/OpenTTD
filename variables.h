@@ -205,6 +205,7 @@ VARDEF Paths _path;
 
 // Which options struct does options modify?
 VARDEF GameOptions *_opt_mod_ptr;
+VARDEF GameOptions _opt_mod_temp;
 
 // NOSAVE: Used in palette animations only, not really important.
 VARDEF int _timer_counter;
@@ -219,24 +220,6 @@ VARDEF byte _player_colors[MAX_PLAYERS];
 
 VARDEF bool _in_state_game_loop;
 VARDEF uint32 _frame_counter;
-
-VARDEF uint32 _frame_counter_max; // for networking, this is the frame that we are not allowed to execute yet.
-VARDEF uint32 _frame_counter_srv; // for networking, this is the last known framecounter of the server. it is always less than frame_counter_max.
-
-// networking settings
-VARDEF bool _network_available;  // is network mode available?
-VARDEF uint32 _network_ip_list[10]; // Network IPs
-VARDEF uint16 _network_game_count;
-
-VARDEF uint _network_client_port;
-VARDEF uint _network_server_port;
-
-VARDEF uint16 _network_sync_freq;
-VARDEF uint16 _network_ahead_frames;
-VARDEF uint16 _network_ready_ahead;
-VARDEF uint16 _network_client_timeout;
-
-VARDEF uint32 _sync_seed_1, _sync_seed_2;
 
 VARDEF bool _is_ai_player; // current player is an AI player? - Can be removed if new AI is done
 
@@ -292,15 +275,6 @@ VARDEF StringID _switch_mode_errorstr;
 VARDEF bool _exit_game;
 VARDEF SmallFiosItem _file_to_saveload;
 VARDEF byte _make_screenshot;
-
-VARDEF bool _networking;
-VARDEF bool _networking_override; // dont shutdown network core when the GameMenu appears.
-
-VARDEF bool _networking_sync; // if we use network mode and the games must stay in sync.
-VARDEF bool _networking_server;
-VARDEF bool _networking_queuing; // queueing only?
-
-VARDEF byte _network_playas; // an id to play as..
 
 VARDEF byte _get_z_hint; // used as a hint to getslopez to return the right height at a bridge.
 

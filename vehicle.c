@@ -1069,6 +1069,12 @@ static const byte * const _effecttick9_data[6] = {
 
 static void EffectTick_9(Vehicle *v)
 {
+	/*
+	 * Warning: those effects can NOT use Random(), and have to use
+	 *  InteractiveRandom(), because somehow someone forgot to save
+	 *  spritenum to the savegame, and so it will cause desyncs in
+	 *  multiplayer!! (that is: in ToyLand)
+	 */
 	int et;
 	const byte *b;
 
@@ -1086,7 +1092,7 @@ static void EffectTick_9(Vehicle *v)
 			return;
 		}
 		if (v->u.special.unk2 != 0) {
-			v->spritenum = (byte)((Random()&3)+1);
+			v->spritenum = (byte)((InteractiveRandom()&3)+1);
 		} else {
 			v->spritenum = 6;
 		}
@@ -1104,7 +1110,7 @@ again:
 	}
 
 	if (*b == 0x81) {
-		if (v->z_pos > 180 || CHANCE16(1,96)) {
+		if (v->z_pos > 180 || CHANCE16I(1,96, InteractiveRandom())) {
 			v->spritenum = 5;
 			SndPlayVehicleFx(SND_2F_POP, v);
 		}
@@ -1399,7 +1405,7 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
-	str = AllocateName((byte*)_decode_parameters, 2);
+	str = AllocateNameUnique((byte*)_decode_parameters, 2);
 	if (str == 0)
 		return CMD_ERROR;
 

@@ -57,6 +57,8 @@ else
 SDL-CONFIG:=sdl-config
 endif
 
+# Networking, enabled by default
+WITH_NETWORK:=1
 
 # Library detections
 WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)

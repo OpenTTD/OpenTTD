@@ -13,7 +13,7 @@ static void ShowBuildDocksDepotPicker();
 
 static byte _ship_depot_direction;
 
-static void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_02_SPLAT, tile);
@@ -21,7 +21,7 @@ static void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_02_SPLAT, tile);
 }

@@ -31,7 +31,7 @@ static void ShowStationBuilder();
 
 typedef void OnButtonClick(Window *w);
 
-static void CcPlaySound1E(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaySound1E(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_20_SPLAT_2, tile);
 }
@@ -91,7 +91,7 @@ static const uint16 _place_depot_extra[12] = {
 };
 
 
-static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
+void CcRailDepot(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		int dir = p2;
@@ -111,7 +111,7 @@ static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Depot(uint tile)
 {
-	DoCommandP(tile, _cur_railtype, _build_depot_direction, CcDepot,
+	DoCommandP(tile, _cur_railtype, _build_depot_direction, CcRailDepot,
 		CMD_BUILD_TRAIN_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT));
 }
 
@@ -124,7 +124,7 @@ static void PlaceRail_Waypoint(uint tile)
 	}
 }
 
-static void CcStation(bool success, uint tile, uint32 p1, uint32 p2)
+void CcStation(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -180,7 +180,7 @@ static void PlaceRail_Bridge(uint tile)
 	VpStartPlaceSizing(tile, VPM_X_OR_Y);
 }
 
-static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRailTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -192,7 +192,7 @@ static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Tunnel(uint tile)
 {
-	DoCommandP(tile, _cur_railtype, 0, CcBuildTunnel,
+	DoCommandP(tile, _cur_railtype, 0, CcBuildRailTunnel,
 		CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 

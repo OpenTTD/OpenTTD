@@ -490,6 +490,9 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		dis = 0;
 		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 9;
+		// Also disable the buy button if 25% is not-owned by someone
+		//   and the player is not an AI
+		if (GetAmountOwnedBy(p, 0xFF) == 1 && !p->is_ai) dis |= 1 << 9;
 		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
 
 		w->disabled_state = dis;
@@ -501,7 +504,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		DrawPlayerVehiclesAmount(w->window_number);
 
 		DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
-		DrawSprite((p->player_color<<16) + 0x3078C19, 215,49);
+		// Draw company-colour bus (0xC19)
+		DrawSprite(PLAYER_SPRITE_COLOR(p->index) + 0x8C19, 215, 49);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 

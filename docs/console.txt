@@ -40,13 +40,13 @@ VARIABLES:
 VARIABLE HANDLING:
 ------------------
 
-*developer = 0
-*developer ++
+developer = 0
+developer ++
 
-*temp_string = test
-*temp_string = "my little"
+temp_string = test
+temp_string = "my little"
 
-printf "%s world" *temp_string
+printf "%s world" temp_string
 
 
 ---------------------------------------------------

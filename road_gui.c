@@ -20,7 +20,7 @@ static byte _place_road_flag;
 static byte _road_depot_orientation;
 static byte _road_station_picker_orientation;
 
-static void CcPlaySound1D(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaySound1D(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_1F_SPLAT, tile);
 }
@@ -43,7 +43,7 @@ static void PlaceRoad_Bridge(uint tile)
 }
 
 
-static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRoadTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -55,7 +55,7 @@ static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Tunnel(uint tile)
 {
-	DoCommandP(tile, 0x200, 0, CcBuildTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
+	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
 static void BuildRoadOutsideStation(uint tile, int direction)
@@ -68,7 +68,7 @@ static void BuildRoadOutsideStation(uint tile, int direction)
 	}
 }
 
-static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
+void CcRoadDepot(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -79,17 +79,17 @@ static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Depot(uint tile)
 {
-	DoCommandP(tile, _road_depot_orientation, 0, CcDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
+	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
 }
 
 static void PlaceRoad_BusStation(uint tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, 0, CcDepot, CMD_BUILD_BUS_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, 0, CcRoadDepot, CMD_BUILD_BUS_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 }
 
 static void PlaceRoad_TruckStation(uint tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, 0, CcDepot, CMD_BUILD_TRUCK_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, 0, CcRoadDepot, CMD_BUILD_TRUCK_STATION | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 }
 
 static void PlaceRoad_DemolishArea(uint tile)

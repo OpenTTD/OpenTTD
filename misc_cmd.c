@@ -8,6 +8,7 @@
 #include "window.h"
 #include "saveload.h"
 #include "economy.h"
+#include "network.h"
 
 /* p1 = player
    p2 = face
@@ -124,7 +125,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Player *p;
 
-	str = AllocateName((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((byte*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 
@@ -146,7 +147,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Player *p;
 
-	str = AllocateName((byte*)_decode_parameters, 4);
+	str = AllocateNameUnique((byte*)_decode_parameters, 4);
 	if (str == 0)
 		return CMD_ERROR;
 
@@ -228,7 +229,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SignStruct *ss;
 
 	if (_decode_parameters[0] != 0 && !p2) {
-		str = AllocateName((byte*)_decode_parameters, 0);
+		str = AllocateNameUnique((byte*)_decode_parameters, 0);
 		if (str == 0)
 			return CMD_ERROR;
 
@@ -280,6 +281,22 @@ int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return (int32)p1;
 }
 
+int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	SET_EXPENSES_TYPE(EXPENSES_OTHER);
+
+	if (flags & DC_EXEC) {
+		// Add money to player
+		byte old_cp = _current_player;
+		_current_player = p2;
+		SubtractMoneyFromPlayer(-(int32)p1);
+		_current_player = old_cp;
+	}
+
+	// Subtract money from local-player
+	return (int32)p1;
+}
+
 int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
@@ -289,6 +306,9 @@ int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 			_opt_mod_ptr->diff_level = p2;
 		}
+		// If we are a network-client, update the difficult setting (if it is open)
+		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
+			memcpy(&_opt_mod_temp, _opt_mod_ptr, sizeof(GameOptions));
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 	return 0;

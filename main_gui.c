@@ -12,6 +12,13 @@
 #include "vehicle.h"
 #include "console.h"
 #include "sound.h"
+#include "network.h"
+
+#ifdef ENABLE_NETWORK
+#include "network_data.h"
+#include "network_client.h"
+#include "network_server.h"
+#endif /* ENABLE_NETWORK */
 
 #include "table/animcursors.h"
 
@@ -35,7 +42,19 @@ extern void GenerateWorld(int mode);
 extern void GenerateIndustries();
 extern void GenerateTowns();
 
-static void HandleOnEditText(WindowEvent *e) {
+extern uint GetCurrentCurrencyRate();
+
+void HandleOnEditTextCancel() {
+	switch(_rename_what) {
+#ifdef ENABLE_NETWORK
+	case 4:
+		NetworkDisconnect();
+		break;
+#endif /* ENABLE_NETWORK */
+	}
+}
+
+void HandleOnEditText(WindowEvent *e) {
 	byte *b = e->edittext.str;
 	int id;
 	memcpy(_decode_parameters, b, 32);
@@ -52,6 +71,36 @@ static void HandleOnEditText(WindowEvent *e) {
 			return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
+#ifdef ENABLE_NETWORK
+	case 2:
+		// Speak to..
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str);
+		else
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str, NETWORK_SERVER_INDEX);
+		break;
+	case 3: {
+		// Give money
+		int32 money = atoi(e->edittext.str) / GetCurrentCurrencyRate();
+		char msg[100];
+		// Give 'id' the money, and substract it from ourself
+		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY)) break;
+
+		// Inform the player of this action
+		SetDParam(0, money);
+		GetString(msg, STR_NETWORK_GIVE_MONEY);
+
+		if (!_network_server)
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg);
+		else
+			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg, NETWORK_SERVER_INDEX);
+		break;
+	}
+	case 4: {// Game-Password and Company-Password
+		SEND_COMMAND(PACKET_CLIENT_PASSWORD)(id, e->edittext.str);
+		break;
+	}
+#endif /* ENABLE_NETWORK */
 	}
 }
 
@@ -88,9 +137,9 @@ typedef void ToolbarButtonProc(Window *w);
 
 static void ToolbarPauseClick(Window *w)
 {
-	if (_networking && !_networking_server) { return;} // only server can pause the game
+	if (_networking && !_network_server) { return;} // only server can pause the game
 
-	if (DoCommandP(0, _pause?0:1, 0, NULL, CMD_PAUSE | CMD_NET_INSTANT))
+	if (DoCommandP(0, _pause?0:1, 0, NULL, CMD_PAUSE))
 		SndPlayFx(SND_15_BEEP);
 }
 
@@ -111,7 +160,7 @@ static void MenuClickSettings(int index)
 	case 1: ShowGameDifficulty(); return;
 	case 2: ShowPatchesSelection(); return;
 	case 3: ShowNewgrf(); return;
-	
+
 	case 5: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
 	case 6: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
 	case 7: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
@@ -194,9 +243,20 @@ static void MenuClickFinances(int index)
 	ShowPlayerFinances(index);
 }
 
+#ifdef ENABLE_NETWORK
+extern void ShowClientList();
+#endif /* ENABLE_NETWORK */
+
 static void MenuClickCompany(int index)
 {
-	ShowPlayerCompany(index);
+	if (_networking && index == 0) {
+#ifdef ENABLE_NETWORK
+		ShowClientList();
+#endif /* ENABLE_NETWORK */
+	} else {
+		if (_networking) index--;
+		ShowPlayerCompany(index);
+	}
 }
 
 
@@ -270,6 +330,37 @@ static void MenuClickBuildAir(int index)
 	ShowBuildAirToolbar();
 }
 
+#ifdef ENABLE_NETWORK
+void ShowNetworkChatQueryWindow(byte desttype, byte dest)
+{
+	_rename_id = desttype + (dest << 8);
+	_rename_what = 2;
+	ShowQueryString(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 60, 250, 1, 0);
+}
+
+void ShowNetworkGiveMoneyWindow(byte player)
+{
+	_rename_id = player;
+	_rename_what = 3;
+	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0);
+}
+
+void ShowNetworkNeedGamePassword()
+{
+	_rename_id = NETWORK_GAME_PASSWORD;
+	_rename_what = 4;
+	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0);
+}
+
+void ShowNetworkNeedCompanyPassword()
+{
+	_rename_id = NETWORK_COMPANY_PASSWORD;
+	_rename_what = 4;
+	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0);
+}
+
+#endif /* ENABLE_NETWORK */
+
 void ShowRenameSignWindow(SignStruct *ss)
 {
 	_rename_id = ss - _sign_list;
@@ -286,7 +377,7 @@ void ShowRenameWaypointWindow(Waypoint *cp)
 	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
 }
 
-static void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		ShowRenameSignWindow(_new_sign_struct);
@@ -483,6 +574,12 @@ static void UpdatePlayerMenuHeight(Window *w)
 			num++;
 	}
 
+	// Increase one to fit in PlayerList in the menu when
+	//  in network
+	if (_networking && WP(w,menu_d).main_button == 9) {
+		num++;
+	}
+
 	if (WP(w,menu_d).item_count != num) {
 		WP(w,menu_d).item_count = num;
 		SetWindowDirty(w);
@@ -492,6 +589,8 @@ static void UpdatePlayerMenuHeight(Window *w)
 		SetWindowDirty(w);
 	}
 }
+
+extern void DrawPlayerIcon(int p, int x, int y);
 
 static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 {
@@ -510,12 +609,23 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		sel = WP(w,menu_d).sel_index;
 		chk = WP(w,menu_d).checked_items; // let this mean gray items.
 
+		// 9 = playerlist
+		if (_networking && WP(w,menu_d).main_button == 9) {
+			if (sel == 0) {
+				GfxFillRect(x, y, x + 238, y + 9, 0);
+			}
+			DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, 0x0);
+			y += 10;
+			sel--;
+		}
+
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				if (p->index == sel) {
-					GfxFillRect(x, y, x + 0xEE, y + 9, 0);
+					GfxFillRect(x, y, x + 238, y + 9, 0);
 				}
-				DrawSprite( ((p->player_color + 0x307)<<16)+0x82EB, x+2, y+1);
+
+				DrawPlayerIcon(p->index, x + 2, y + 1);
 
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -523,12 +633,13 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 				color = (byte)((p->index==sel) ? 0xC : 0x10);
 				if (chk&1) color = 14;
-				DrawString(x+0x13, y, STR_7021, color);
+				DrawString(x + 19, y, STR_7021, color);
 
 				y += 10;
 			}
 			chk >>= 1;
 		}
+
 		break;
 		}
 
@@ -540,8 +651,14 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_POPUPMENU_SELECT: {
-		int index = GetPlayerIndexFromMenu(GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y));
+		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
 		int action_id = WP(w,menu_d).action_id;
+
+		// We have a new entry at the top of the list of menu 9 when networking
+		//  so keep that in count
+		if (!_networking || (WP(w,menu_d).main_button == 9 && index > 0)) {
+			index = GetPlayerIndexFromMenu(index-1)+1;
+		}
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
@@ -560,7 +677,15 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 	case WE_POPUPMENU_OVER: {
 		int index;
 		UpdatePlayerMenuHeight(w);
-		index = GetPlayerIndexFromMenu(GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y));
+		index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
+
+		// We have a new entry at the top of the list of menu 9 when networking
+		//  so keep that in count
+		if (index != -1) {
+			if (!_networking || (WP(w,menu_d).main_button == 9 && index != 0)) {
+				index = GetPlayerIndexFromMenu(index-1)+1;
+			}
+		}
 
 		if (index == -1 || index == WP(w,menu_d).sel_index)
 			return;
@@ -612,7 +737,10 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w,menu_d).item_count = 0;
-	WP(w,menu_d).sel_index = _local_player != OWNER_SPECTATOR ? _local_player : 0;
+	WP(w,menu_d).sel_index = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
+	if (_networking && main_button == 9 && _local_player != OWNER_SPECTATOR) {
+		WP(w,menu_d).sel_index++;
+	}
 	WP(w,menu_d).action_id = main_button;
 	WP(w,menu_d).main_button = main_button;
 	WP(w,menu_d).checked_items = gray;
@@ -988,7 +1116,7 @@ static void AskResetLandscape(uint mode)
 	AllocateWindowDescFront(&_ask_reset_landscape_desc, mode);
 }
 
-static void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
+void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -1000,7 +1128,7 @@ static void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 static void CommonRaiseLowerBigLand(uint tile, int mode)
 {
 	int size;
-	uint h;
+	byte h;
 
 	_error_message_2 = mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
 
@@ -1049,7 +1177,7 @@ static void PlaceProc_LowerBigLand(uint tile)
 	CommonRaiseLowerBigLand(tile, 0);
 }
 
-//static void CcDemolish(bool success, uint tile, uint32 p1, uint32 p2)
+//void CcDemolish(bool success, uint tile, uint32 p1, uint32 p2)
 //{
 //	if (success) {
 		//SndPlayTileFx(0x10, tile);
@@ -1257,7 +1385,7 @@ static void ToolbarScenGenLand(Window *w)
 	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
 }
 
-static void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -1713,7 +1841,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
 		case WKC_BACKQUOTE: IConsoleSwitch(); e->keypress.cont=false; break;
-		case WKC_CTRL | WKC_ALT | 'C': if(!_networking) ShowCheatWindow(); break;
+		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
 		}
 	} break;
 
@@ -2201,6 +2329,12 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			MarkWholeScreenDirty();
 			break;
 
+#ifdef ENABLE_NETWORK
+		case 'T' | WKC_SHIFT:
+			ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+			break;
+#endif /* ENABLE_NETWORK */
+
 		default:
 			return;
 		}
@@ -2247,7 +2381,7 @@ void SetupColorsAndInitialWindow()
 
 		if (_networking) { // if networking, disable fast-forward button
 			w->disabled_state |= (1 << 1);
-			if (!_networking_server) // if not server, disable pause button
+			if (!_network_server) // if not server, disable pause button
 				w->disabled_state |= (1 << 0);
 		}
 

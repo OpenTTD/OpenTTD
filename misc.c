@@ -5,6 +5,7 @@
 #include "gfx.h"
 #include "assert.h"
 #include "saveload.h"
+#include "network.h"
 
 extern void StartupEconomy();
 extern void InitNewsItemStructs();
@@ -16,21 +17,24 @@ static inline uint32 ROR(uint32 x, int n)
 	return (x >> n) + (x << ((sizeof(x)*8)-n));
 }
 
-// For multiplayer, we introduced this new way of random-seeds
-//  It is player-based, so 2 clients can do 2 commands at the same time
-//  without the game desyncing.
-// It is not used for non-multiplayer games
-#ifdef ENABLE_NETWORK
-	#define PLAYER_SEED_RANDOM
-#else
-	#undef PLAYER_SEED_RANDOM
-#endif
-
-// its for now not used at all because it is still desyncing :(
+/* XXX - Player-seeds don't seem to be used anymore.. which is a good thing
+     so I just disabled them for now. If there are no problems, we can remove
+     it completely! -- TrueLight */
 #undef PLAYER_SEED_RANDOM
 
+#ifdef RANDOM_DEBUG
+#include "network_data.h"
+
+uint32 DoRandom(uint line, char *file)
+#else
 uint32 Random()
+#endif
 {
+#ifdef RANDOM_DEBUG
+	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
+		printf("Random [%d/%d] %s:%d\n",_frame_counter, _current_player, file, line);
+#endif
+
 #ifdef PLAYER_SEED_RANDOM
 	if (_current_player>=MAX_PLAYERS || !_networking) {
 		uint32 s = _random_seeds[0][0];
@@ -41,6 +45,7 @@ uint32 Random()
 		uint32 s = _player_seeds[_current_player][0];
 		uint32 t = _player_seeds[_current_player][1];
 		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7);
+		DEBUG(net, 1)("[NET-Seeds] Player seed called!");
 		return _player_seeds[_current_player][1] = ROR(s, 3);
 	}
 #else
@@ -51,10 +56,17 @@ uint32 Random()
 #endif
 }
 
+#ifdef RANDOM_DEBUG
+uint DoRandomRange(uint max, uint line, char *file)
+{
+	return (uint16)DoRandom(line, file) * max >> 16;
+}
+#else
 uint RandomRange(uint max)
 {
 	return (uint16)Random() * max >> 16;
 }
+#endif
 
 uint32 InteractiveRandom()
 {
@@ -75,7 +87,7 @@ void InitPlayerRandoms()
 	for (i=0; i<MAX_PLAYERS; i++) {
 		_player_seeds[i][0]=InteractiveRandom();
 		_player_seeds[i][1]=InteractiveRandom();
-		}
+	}
 }
 
 void SetDate(uint date)
@@ -84,6 +96,51 @@ void SetDate(uint date)
 	ConvertDayToYMD(&ymd, _date = date);
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
+}
+
+
+// multi os compatible sleep function
+
+#if defined(__AMIGA__)
+// usleep() implementation
+#	include <devices/timer.h>
+#	include <dos/dos.h>
+
+	static struct Device      *TimerBase    = NULL;
+	static struct MsgPort     *TimerPort    = NULL;
+	static struct timerequest *TimerRequest = NULL;
+#endif // __AMIGA__
+
+void CSleep(int milliseconds)
+{
+	#if defined(WIN32)
+		Sleep(milliseconds);
+	#endif
+	#if defined(UNIX)
+		#if !defined(__BEOS__) && !defined(__AMIGAOS__)
+			usleep(milliseconds * 1000);
+		#endif
+		#ifdef __BEOS__
+			snooze(milliseconds * 1000);
+		#endif
+		#if defined(__AMIGAOS__) && !defined(__MORPHOS__)
+		{
+			ULONG signals;
+			ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
+
+			// send IORequest
+			TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
+			TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
+			TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
+			SendIO((struct IORequest *)TimerRequest);
+
+			if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
+				AbortIO((struct IORequest *)TimerRequest);
+			}
+			WaitIO((struct IORequest *)TimerRequest);
+		}
+		#endif // __AMIGAOS__ && !__MORPHOS__
+	#endif
 }
 
 void InitializeClearLand();
@@ -160,6 +217,7 @@ void InitializeGame()
 	InitializeCheats();
 
 	InitTextEffects();
+	InitTextMessage();
 	InitializeAnimatedTiles();
 
 	InitializeLandscapeVariables(false);
@@ -170,6 +228,9 @@ void InitializeGame()
 void GenerateWorld(int mode)
 {
 	int i;
+
+	// Make sure everything is done via OWNER_NONE
+	_current_player = OWNER_NONE;
 
 	_generating_world = true;
 	InitializeGame();
@@ -252,7 +313,7 @@ static void InitializeNameMgr()
 	memset(_name_array, 0, sizeof(_name_array));
 }
 
-StringID AllocateName(const byte *name, byte skip)
+StringID RealAllocateName(const byte *name, byte skip, bool check_double)
 {
 	int free_item = -1;
 	const byte *names;
@@ -266,7 +327,7 @@ StringID AllocateName(const byte *name, byte skip)
 			if (free_item == -1)
 				free_item = i;
 		} else {
-			if (str_eq(names, name)) {
+			if (check_double && str_eq(names, name)) {
 				_error_message = STR_0132_CHOSEN_NAME_IN_USE_ALREADY;
 				return 0;
 			}
@@ -575,9 +636,9 @@ void IncreaseDate()
 	/* yeah, increse day counter and call various daily loops */
 	_date++;
 
-	NetworkGameChangeDate(_date);
-
 	_vehicle_id_ctr_day = 0;
+
+	TextMessageDailyLoop();
 
 	DisasterDailyLoop();
 	WaypointsDailyLoop();
@@ -592,8 +653,6 @@ void IncreaseDate()
 	if ((byte)ymd.month == _cur_month)
 		return;
 	_cur_month = ymd.month;
-
-//	printf("Month %d, %X\n", ymd.month, _random_seeds[0][0]);
 
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {

@@ -64,8 +64,8 @@
 #	define inline _inline
 #	define CDECL _cdecl
 # define NOT_REACHED() _assume(0)
-# define snprintf _snprintf
-# define vsnprintf _vsnprintf
+int snprintf(char *str, size_t size, const char *format, ...);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 # undef TTD_ALIGNMENT_4
 # undef TTD_ALIGNMENT_2
 # define GCC_PACK
@@ -95,6 +95,10 @@ typedef unsigned int uint32;
 
 // This is already defined in unix
 #if !defined(UNIX) && !defined(__CYGWIN__)
+	typedef unsigned int uint;
+#endif
+// Not defined in QNX Neutrino (6.x)
+#if defined(__QNXNTO__)
 	typedef unsigned int uint;
 #endif
 
@@ -175,6 +179,7 @@ assert_compile(sizeof(uint8)	== 1);
 #define GetString OTTD_GetString
 #define DrawString OTTD_DrawString
 #define Random OTTD_Random
+#define CloseConnection OTTD_CloseConnection
 #endif
 
 #endif // !defined(_STDAFX_H)
