@@ -1891,7 +1891,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	// check if we've reached a non-stop station while TTDPatch nonstop is enabled..
 	if (_patches.new_nonstop && v->current_order.flags & OF_NON_STOP &&
-			v->current_order.station == _map2[v->tile]) {
+		v->current_order.station == _map2[v->tile] && IsTileType(v->tile, MP_STATION) ) {
 		v->cur_order_index++;
 	}
 
