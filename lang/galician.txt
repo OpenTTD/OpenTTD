@@ -1068,6 +1068,7 @@ STR_CONFIG_PATCHES_INT32					:{INT32}
 STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Cambia-lo valor
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}¡Algún ou tódolos intervalo(s) de servicio por defecto son incompatibles coa opción elixida! 5-90% e 30-800 días son válidos
 
 STR_TEMPERATE_LANDSCAPE						:escenario templado
 STR_SUB_ARCTIC_LANDSCAPE					:escenario sub-ártico
@@ -1082,6 +1083,7 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Xogar coma xogador: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Escavadora máxica(Elimina industrias, non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Os avíons de jet no se estrelarán (frecuentemente) nos aeroportos pequenos: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Cambiar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Cambiar data: {ORANGE} {DATE_SHORT}
 
@@ -1243,6 +1245,7 @@ STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo de clientes permitidos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (anunciar)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1324,8 +1327,25 @@ STR_NETWORK_CLIENT_LIST						:{WHITE}Lista de Clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Non se atoparon xogos en rede
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} O servidor non respondeu á solicitude
+STR_NETWORK_ERR_DESYNC						:{WHITE} Sincronización da partida en rede fallida
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Perdeuse a conexión da partida en rede
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Non se pode carga-la partida
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Non se pode arrinca-lo servidor
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Non se pode conectar
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Conexión #{NUMU16} fora de tempo
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contrasinal errónea
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} O servidor está cheo
+STR_NETWORK_ERR_KICKED						:{WHITE} Fuches pateado da partida
+STR_NETWORK_ERR_CHEATER						:{WHITE} Non se permite facer trampas neste servidor
 
+STR_NETWORK_ERR_LEFT						:saíu da partida
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:error xeral
+STR_NETWORK_ERR_CLIENT_DESYNC					:error de descincronización
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:no se pode carga-lo mapa
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:coneción perdida
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:error de protocolo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Non Autorizado
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:revisión errónea
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:o nome xa está en uso
