@@ -493,7 +493,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		flotr = FindLengthOfTunnel(src_tile, src_exitdir);
 		dst_tile = flotr.tile;
 	} else {
-		if (IsTileDepotType(src_tile, type)){
+		if (type != TRANSPORT_WATER && (IsRoadStationTile(src_tile) || IsTileDepotType(src_tile, type))){
 			/* This is a road station or a train or road depot. We can enter and exit
 			 * those from one side only. Trackdirs don't support that (yet), so we'll
 			 * do this here. */
@@ -503,7 +503,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 			if (IsRoadStationTile(src_tile))
 				exitdir = GetRoadStationDir(src_tile);
 			else /* Train or road depot. Direction is stored the same for both, in map5 */
-				exitdir = _map5[src_tile] & 3; /* Extract the direction from the map */
+				exitdir = GetDepotDirection(src_tile, type);
 
 			/* Let's see if were headed the right way */
 			if (src_trackdir != _dir_to_diag_trackdir[exitdir])
@@ -529,9 +529,10 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 
 	/* Check the owner of the tile */
 	if (
-		IsTileType(dst_tile, MP_RAILWAY) /* Rail tile */
+		IsTileType(dst_tile, MP_RAILWAY) /* Rail tile (also rail depot) */
+		|| IsTrainStationTile(dst_tile) /* Rail station tile */
 		|| IsTileDepotType(dst_tile, TRANSPORT_ROAD) /* Road depot tile */
-		|| IsTileType(dst_tile, MP_STATION) /* Station tile */
+		|| IsRoadStationTile(dst_tile) /* Road station tile */
 		|| IsTileDepotType(dst_tile, TRANSPORT_WATER) /* Water depot tile */
 	) /* TODO: Crossings, tunnels and bridges are "public" now */
 		/* The above cases are "private" tiles, we need to check the owner */
@@ -545,10 +546,12 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		if (IsRoadStationTile(dst_tile))
 			exitdir = GetRoadStationDir(dst_tile);
 		else /* Road depot */
-			/* Find the trackdirs that are available for a depot with this orientation. They are in both directions */
-			exitdir = _map5[dst_tile] & 3; /* Extract the direction from the map */
-			ts = (1 << _dir_to_diag_trackdir[exitdir])
-			     | (1 << _dir_to_diag_trackdir[_reverse_dir[exitdir]]);
+			exitdir = GetDepotDirection(dst_tile, type);
+		/* Find the trackdirs that are available for a depot or station with this
+		 * orientation. They are only "inwards", since we are reaching this tile
+		 * from some other tile. This prevents vehicles driving into depots from
+		 * the back */
+		ts = (1 << _dir_to_diag_trackdir[exitdir]);
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}
