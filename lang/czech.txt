@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Zobrazit nabidky dotaci
 STR_02DD_SUBSIDIES						:Dotace
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
 STR_EXTRA_VIEW_PORT						:Dalsi pohled
+STR_02DF_TOWN_DIRECTORY						:Seznam mest
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohled {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit soucasne zorné pole jako pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Prejit na pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit pohled do zorného pole
 
-STR_02DF_TOWN_DIRECTORY						:Seznam mest
 STR_02E0_CURRENCY_UNITS						:{BLACK}Jednotky meny
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Vyber jednotek meny
@@ -1040,6 +1040,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Umisteni hlavní listy: {ORANGE}{STRI
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vlevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Uprostred
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Vpravo
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Okno se prichyti k druhému, kdyz je bliz, nez: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Okno se prichyti k druhému, kdyz je bliz, nez: {ORANGE}vypnuto
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Ovládaní
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstrukce
@@ -1217,8 +1219,8 @@ STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Svoji hru si muzes ochranit heslem, kdyz nechces, aby se ti do ni hlasili jini lide
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
-STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Pocet hracu:
-STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Zvol maximalni pocet hracu. Nemusis vybirat maximalni pocet.
+STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Maximální pocet hracu:
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_PLAYERS						:2 hraci
 STR_NETWORK_3_PLAYERS						:3 hraci

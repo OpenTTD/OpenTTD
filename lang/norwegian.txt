@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Vis subsidier
 STR_02DD_SUBSIDIES						:Subsidier
 STR_02DE_MAP_OF_WORLD						:Verdenskart
 STR_EXTRA_VIEW_PORT						:Ekstra utsiktspost
+STR_02DF_TOWN_DIRECTORY						:By oversikt
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Utsiktspost {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopier til utsiktspost
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopier lokaliseringen av den globale utsikten til denne utsiktsposten
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Kopier fra utsiktspost
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Kopier lokaliseringen av denne utsiktsposten til den globale utsikten
 
-STR_02DF_TOWN_DIRECTORY						:By oversikt
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valuta enhet
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Velg valuta enhet

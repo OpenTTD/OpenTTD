@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Toon subsidies
 STR_02DD_SUBSIDIES						:Subsidies
 STR_02DE_MAP_OF_WORLD						:Kaart
 STR_EXTRA_VIEW_PORT						:Extra kijkvenster
+STR_02DF_TOWN_DIRECTORY						:Stedenlijst
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Kijkvenster {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopieer naar kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopieer de lokatie van het algemene scherm naar dit kijkvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Plak van kijkvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Plak de lokatie van dit kijkvenster naar het algemene scherm
 
-STR_02DF_TOWN_DIRECTORY						:Stedenlijst
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valuta
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Kies valuta
@@ -1040,6 +1040,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Positie van hoofd knoppenbalk: {ORAN
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Midden
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Rechts
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Vaste plaats venster radius: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Vaste plaats venster radius: {ORANGE}uit
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Constructie

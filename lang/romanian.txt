@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Afiseazã subventiile (F6)
 STR_02DD_SUBSIDIES						:Subventii (F6)
 STR_02DE_MAP_OF_WORLD						:Harta lumii (F4)
 STR_EXTRA_VIEW_PORT						:Extra ecran
+STR_02DF_TOWN_DIRECTORY						:Lista oraselor
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Ecran{COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiaza pe ecranul principal
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copiaza locatia ecranului principal in acest ecran
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Importa din ecran
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Importa locatia acestui ecran in ecranul principal
 
-STR_02DF_TOWN_DIRECTORY						:Lista oraselor
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unitãti monetare
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Alege unitatea monetarã

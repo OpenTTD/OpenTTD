@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}N‰yt‰ alennukset
 STR_02DD_SUBSIDIES						:Alennukset
 STR_02DE_MAP_OF_WORLD						:Maailmankartta
 STR_EXTRA_VIEW_PORT						:Ylim‰‰r‰inen n‰kym‰
+STR_02DF_TOWN_DIRECTORY						:Kaupunkihakemisto
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}VN‰kym‰ {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopioi n‰kym‰‰n
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopioi p‰‰n‰kym‰n sijainti t‰h‰n n‰kym‰‰n
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Liit‰ n‰kym‰st‰
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Liit‰ sijainti t‰st‰ n‰kym‰st‰ p‰‰n‰kym‰‰n
 
-STR_02DF_TOWN_DIRECTORY						:Kaupunkihakemisto
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valuuttayksikˆt
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Valuuttayksikˆn valinta

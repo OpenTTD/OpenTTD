@@ -762,8 +762,8 @@ STR_02DB_OFF							:{BLACK}Off
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES						:Subsidios
 STR_02DE_MAP_OF_WORLD						:Mapa do Mundo
-
 STR_02DF_TOWN_DIRECTORY						:Directorio de cidades
+
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unidades monetarias
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Selección de unidades monetarias

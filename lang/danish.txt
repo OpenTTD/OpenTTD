@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Vis specialaftaler
 STR_02DD_SUBSIDIES						:Specialaftaler
 STR_02DE_MAP_OF_WORLD						:Kort over verden
 STR_EXTRA_VIEW_PORT						:Flere lokalitetsvinduer
+STR_02DF_TOWN_DIRECTORY						:Byoversigt
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Lokalitetsvinduer {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Gå til lokalitetsvindue
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Hent lokalitet fra global visning
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Hent fra lokalitetsvindue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
-STR_02DF_TOWN_DIRECTORY						:Byoversigt
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valutaenhed
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Valutaenhed selection

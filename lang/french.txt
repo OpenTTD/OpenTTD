@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES						:Subventions
 STR_02DE_MAP_OF_WORLD						:Carte du monde
 STR_EXTRA_VIEW_PORT						:Vue supplémentaire
+STR_02DF_TOWN_DIRECTORY						:Annuaire des villes
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vue {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copier vers la vue
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copie l'emplacement de la vue globale vers cette vue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Coller depuis la vue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Colle l'emplacement de cette vue vers la vue globale
 
-STR_02DF_TOWN_DIRECTORY						:Annuaire des villes
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unité monétaire
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Sélection d'unité monétaire

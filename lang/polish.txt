@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Wyswietl subsydia
 STR_02DD_SUBSIDIES						:Subsydia
 STR_02DE_MAP_OF_WORLD						:Mapa swiata
 STR_EXTRA_VIEW_PORT						:Extra podglad
+STR_02DF_TOWN_DIRECTORY						:Lista miast
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Podglad {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopuj do podgladu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopiuj obecna pozycje z glownego okna do podgladu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Wstaw z podgladu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Ustawia okno glowne na pozycje z podgladu
 
-STR_02DF_TOWN_DIRECTORY						:Lista miast
 STR_02E0_CURRENCY_UNITS						:{BLACK}Waluta
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Wybor waluty

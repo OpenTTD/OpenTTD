@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Zobrazit Dotacie
 STR_02DD_SUBSIDIES						:Dotacie
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
 STR_EXTRA_VIEW_PORT						:Extra pohlad
+STR_02DF_TOWN_DIRECTORY						:Zoznam miest
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohlad {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit pohlad podla mapy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit pohlad podla hlavneho pohladu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Nastavit mapu podla pohladu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit hlavny pohlad na mapu podla tohto pohladu
 
-STR_02DF_TOWN_DIRECTORY						:Zoznam miest
 STR_02E0_CURRENCY_UNITS						:{BLACK}Mena
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Vyber meny

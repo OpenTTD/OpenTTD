@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Állami támogatások
 STR_02DD_SUBSIDIES						:Támogatások
 STR_02DE_MAP_OF_WORLD						:Világtérkép
 STR_EXTRA_VIEW_PORT						:Extra látkép
+STR_02DF_TOWN_DIRECTORY						:Városlista
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}{COMMA16}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Látkép aktualizálása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Beállítja a globális látkép pozicióját erre a látképre
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Látkép visszatöltése
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}A látkép pozicióját beállítja a globális látképre
 
-STR_02DF_TOWN_DIRECTORY						:Városlista
 STR_02E0_CURRENCY_UNITS						:{BLACK}Pénznem
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}A használt pénznem kiválasztása
@@ -1040,6 +1040,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}A fõ eszközsor helye: {ORANGE}{STRIN
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Balra
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Középen
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Jobbra
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}{STRING} képpont
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Építkezés

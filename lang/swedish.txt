@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Visa subventioner
 STR_02DD_SUBSIDIES						:Subventioner
 STR_02DE_MAP_OF_WORLD						:Världskarta
 STR_EXTRA_VIEW_PORT						:Nytt vy fönster
+STR_02DF_TOWN_DIRECTORY						:Lista av städer
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vy fönster {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopiera till vy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopiera kartans position till detta Vyfönster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Klistra in vyn
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Flytta kartans position till den här vyn
 
-STR_02DF_TOWN_DIRECTORY						:Lista av städer
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valutaenheter
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Välj valutaenhet

@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Mostrar subsídios
 STR_02DD_SUBSIDIES						:Subsídios
 STR_02DE_MAP_OF_WORLD						:Mapa do mundo
 STR_EXTRA_VIEW_PORT						:Visualizador extra
+STR_02DF_TOWN_DIRECTORY						:Lista de cidades
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Visualizador {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiar para o visualizador
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copiar a localização do visualizador global para este visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Colar do visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Colar a localização deste visualizador para o visualizador global
 
-STR_02DF_TOWN_DIRECTORY						:Lista de cidades
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unidades monetárias
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Selecção de unidades monetárias

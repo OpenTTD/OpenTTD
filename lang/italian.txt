@@ -765,13 +765,13 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Mostra sussidi
 STR_02DD_SUBSIDIES						:Sussidi
 STR_02DE_MAP_OF_WORLD						:Mappa del mondo
 STR_EXTRA_VIEW_PORT						:Mini visuale extra
+STR_02DF_TOWN_DIRECTORY						:Elenco Città
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Mini visuale {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copia nella mini visuale
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copia la posizione dalla finestra principale alla mini visuale
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Copia dalla mini visuale
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Copia la posizione dalla mini visuale alla finestra principale
 
-STR_02DF_TOWN_DIRECTORY						:Elenco Città
 STR_02E0_CURRENCY_UNITS						:{BLACK}Valuta
 STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Selezione valuta
