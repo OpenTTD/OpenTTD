@@ -4,10 +4,6 @@
 #include "stdafx.h"
 #include "macros.h"
 
-// don't forget to change the airport_depots too for larger mapsizes. TILE_X_BITS 16
-// won't fit in uint16 for example and overflow will occur in the checking code!
-// TrueLight -- So make it a TileIndex..
-
 typedef struct AirportMovingData {
 	int x,y;
 	byte flag;
@@ -267,7 +263,7 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 /////**********Movement Machine on Airports*********************///////
 // first element of depots array tells us how many depots there are (to know size of array)
 // this may be changed later when airports are moved to external file
-static const TileIndex _airport_depots_country[] = {1, TILE_XY(3,0)};
+static const TileIndex _airport_depots_country[] = {TILE_XY(3,0)};
 static const AirportFTAbuildup _airport_fta_country[] = {
 	{ 0,HANGAR,NOTHING_block,1},
 	{ 1,255,AIRPORT_BUSY_block,0}, {1,HANGAR,0,0}, {1,TERM1,TERM1_block,2}, {1,TERM2,0,4}, {1,HELITAKEOFF,0,19}, {1,0,0,6},
@@ -297,7 +293,7 @@ static const AirportFTAbuildup _airport_fta_country[] = {
 	{MAX_ELEMENTS,0,0,0} // end marker. DO NOT REMOVE
 };
 
-static const TileIndex _airport_depots_city[] = {1, TILE_XY(5,0)};
+static const TileIndex _airport_depots_city[] = {TILE_XY(5,0)};
 static const AirportFTAbuildup _airport_fta_city[] = {
 	{ 0,HANGAR,NOTHING_block,1}, {0,TAKEOFF,OUT_WAY_block,1}, {0,0,0,1},
 	{ 1,255,TAXIWAY_BUSY_block,0}, {1,HANGAR,0,0}, {1,TERM2,0,6}, {1,TERM3,0,6}, {1,0,0,7}, // for all else, go to 7
@@ -331,7 +327,7 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	{MAX_ELEMENTS,0,0,0} // end marker. DO NOT REMOVE
 };
 
-static const TileIndex _airport_depots_metropolitan[] = {1, TILE_XY(5,0)};
+static const TileIndex _airport_depots_metropolitan[] = {TILE_XY(5,0)};
 static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{ 0,HANGAR,NOTHING_block,1},
 	{ 1,255,TAXIWAY_BUSY_block,0}, {1,HANGAR,0,0}, {1,TERM2,0,6}, {1,TERM3,0,6}, {1,0,0,7}, // for all else, go to 7
@@ -367,7 +363,7 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{MAX_ELEMENTS,0,0,0} // end marker. DO NOT REMOVE
 };
 
-static const TileIndex _airport_depots_international[] = {2, TILE_XY(0,3), TILE_XY(6,1)};
+static const TileIndex _airport_depots_international[] = {TILE_XY(0,3), TILE_XY(6,1)};
 static const AirportFTAbuildup _airport_fta_international[] = {
 	{ 0,HANGAR,NOTHING_block,2}, {0,255,TERM_GROUP1_block,0}, {0,255,TERM_GROUP2_ENTER1_block,1}, {0,HELITAKEOFF,HELIPAD1_block,2}, {0,0,0,2},
 	{ 1,HANGAR,NOTHING_block,3}, {1,255,HANGAR2_AREA_block,1}, {1,HELITAKEOFF,HELIPAD2_block,3}, {1,0,0,3},
@@ -429,7 +425,7 @@ static const AirportFTAbuildup _airport_fta_international[] = {
 	{MAX_ELEMENTS,0,0,0} // end marker. DO NOT REMOVE
 };
 
-static const TileIndex _airport_depots_heliport_oilrig[] = {0};
+// heliports, oilrigs don't have depots
 static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
 	{0,HELIPAD1,HELIPAD1_block,1},
 	{1,HELITAKEOFF,NOTHING_block,0}, // takeoff

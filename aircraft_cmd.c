@@ -218,8 +218,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			byte i = 0;
 			st = DEREF_STATION(_map2[tile]);
 			Airport = GetAirport(st->airport_type);
-			// first element of depot array contains #of depots on the airport
-			for (cur_depot=&Airport->airport_depots[1]; i != Airport->airport_depots[0]; cur_depot++) {
+			for (cur_depot = Airport->airport_depots; i != Airport->nof_depots; cur_depot++) {
 				if ((uint)(st->airport_tile + *cur_depot) == tile) {
 					assert(Airport->layout[i].heading == HANGAR);
 					v->u.air.pos = Airport->layout[i].position;

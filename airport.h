@@ -32,7 +32,8 @@ typedef struct AirportFTAClass {
 	byte nofhelipadgroups;				// helipads belong to so many groups (MAX is the nofhelipads)
 	byte entry_point;							// when an airplane arrives at this airport, enter it at position entry_point
 	byte acc_planes;							// accept airplanes or helicopters or both
-	const uint16 *airport_depots;	// gives the position of the depots on the airports
+	const TileIndex *airport_depots;	// gives the position of the depots on the airports
+	byte nof_depots;							// number of depots this airport has
 	struct AirportFTA *layout;		// state machine for airport
 } AirportFTAClass;
 
