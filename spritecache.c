@@ -842,7 +842,7 @@ void CheckExternalFiles(void)
 	 */
 	if (win == 5) {
 		_use_dos_palette = false;
-	} else if (dos == 5 || (win == 0 && dos > 0) {
+	} else if (dos == 5 || (win == 0 && dos > 0)) {
 		_use_dos_palette = true;
 	} else {
 		_use_dos_palette = false;
