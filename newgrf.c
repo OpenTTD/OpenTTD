@@ -590,14 +590,14 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT {
 				uint8 heli = grf_load_byte(&buf);
 				avi[i].subtype &= ~0x01; // remove old property
-				avi[i].subtype &= (heli == 0) ? 0 : 1;
+				avi[i].subtype |= (heli == 0) ? 0 : 1;
 			}
 		}	break;
 		case 0x0A: {	/* Large */
 			FOR_EACH_OBJECT {
 				uint8 large = grf_load_byte(&buf);
 				avi[i].subtype &= ~0x02; // remove old property
-				avi[i].subtype &= (large == 1) ? 2 : 0;
+				avi[i].subtype |= (large == 1) ? 2 : 0;
 			}
 		}	break;
 		case 0x0B: {	/* Cost factor */
