@@ -3,9 +3,14 @@
 !define APPNAMEANDVERSION "OpenTTD 0.3.6.0"
 !define APPVERSION "0.3.6.0"
 !define INSTALLERVERSION 14 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define MUI_ICON "..\..\..\openttd.ico"
+!define MUI_UNICON "..\..\..\openttd.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP "top.bmp"
 
 BrandingText "OpenTTD Installer"
-
+SetCompressor LZMA
 
 ; Version Info
 Var AddWinPrePopulate
@@ -25,10 +30,10 @@ Name "${APPNAMEANDVERSION}"
 InstallDir "$PROGRAMFILES\OpenTTD\"
 InstallDirRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder"
 OutFile "openttd-${APPVERSION}-win32.exe"
+CRCCheck force
 
 ShowInstDetails show
 ShowUninstDetails show
-SetCompressor LZMA
 
 Var SHORTCUTS
 Var CDDRIVE
@@ -41,7 +46,7 @@ Var CDDRIVE
 !insertmacro MUI_PAGE_WELCOME
 LicenseForceSelection radiobuttons "I &accept this Agreement" "I &do not accept this agreement"
 
-!insertmacro MUI_PAGE_LICENSE "gpl.txt"
+!insertmacro MUI_PAGE_LICENSE "..\..\..\COPYING"
 
 ;--------------------------------
 ; Rest of pages
@@ -126,7 +131,7 @@ Section "!OpenTTD" Section1
 
 	;Creates the Registry Entries
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Comments" "Visit http://www.openttd.org"
-	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayIcon" "$INSTDIR\setup.ico"
+	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayIcon" "$INSTDIR\openttd.exe,0"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayName" "OpenTTD ${APPVERSION}"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayVersion" "${APPVERSION}"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "HelpLink" "http://www.openttd.org"
@@ -161,6 +166,12 @@ Section "Copy Game Graphics" Section2
 	CopyFiles "$CDDRIVE\trghr.grf" "$INSTDIR\data\trghr.grf" 400
 	CopyFiles "$CDDRIVE\trgir.grf" "$INSTDIR\data\trgir.grf" 334
 	CopyFiles "$CDDRIVE\trgtr.grf" "$INSTDIR\data\trgtr.grf" 546
+	; Copy DOS files
+	CopyFiles "$CDDRIVE\trg1.grf" "$INSTDIR\data\trg1.grf" 2365
+	CopyFiles "$CDDRIVE\trgc.grf" "$INSTDIR\data\trgc.grf" 260
+	CopyFiles "$CDDRIVE\trgh.grf" "$INSTDIR\data\trgh.grf" 400
+	CopyFiles "$CDDRIVE\trgi.grf" "$INSTDIR\data\trgi.grf" 334
+	CopyFiles "$CDDRIVE\trgt.grf" "$INSTDIR\data\trgt.grf" 546
 	SetOutPath "$INSTDIR\"
 SectionEnd
 
@@ -230,12 +241,18 @@ Section Uninstall
 	Delete "$INSTDIR\data\canalsw.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
 	Delete "$INSTDIR\data\autorail.grf"
+	Delete "$INSTDIR\data\sample.cat"
 	Delete "$INSTDIR\data\trg1r.grf"
 	Delete "$INSTDIR\data\trghr.grf"
 	Delete "$INSTDIR\data\trgtr.grf"
-	Delete "$INSTDIR\data\sample.cat"
 	Delete "$INSTDIR\data\trgcr.grf"
 	Delete "$INSTDIR\data\trgir.grf"
+	; Dos Data files
+	Delete "$INSTDIR\data\trg1.grf"
+	Delete "$INSTDIR\data\trgh.grf"
+	Delete "$INSTDIR\data\trgt.grf"
+	Delete "$INSTDIR\data\trgc.grf"
+	Delete "$INSTDIR\data\trgi.grf"
 
 	;Music
 	Delete "$INSTDIR\gm\*.gm"
@@ -257,7 +274,7 @@ Function SelectCD
 	SectionGetFlags ${Section2} $0
 	IntOp $1 $0 & 0x80 ; bit 7 set by upgrade, no need to copy files
 	IntCmp $1 1 DoneCD ;upgrade doesn't need copy files
-	
+
 	IntOp $0 $0 & 1
 	IntCmp $0 1 NoAbort
 		Abort
@@ -274,7 +291,7 @@ NoAbort:
 	Goto TruFinish
 NoTTD:
 	StrCpy $CDDRIVE ""
-	StrCpy $AddWinPrePopulate "Setup couldn't find TTD.  Please enter the path where the graphics files from TTD for Windows are stored and press Next to continue."
+	StrCpy $AddWinPrePopulate "Setup couldn't find TTD.  Please enter the path where the graphics files from TTD are stored and press Next to continue."
 TruFinish:
 	ClearErrors
 	WriteINIStr $R0 "Field 2" "State" $CDDRIVE
