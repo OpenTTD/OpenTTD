@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "spritecache.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -778,66 +779,70 @@ static void EffectTick_7(Vehicle *v)
 	}
 }
 
-static void EffectInit_8(Vehicle *v)
+static void BulldozerInit(Vehicle *v)
 {
-	v->cur_image = 1416;
+	v->cur_image = SPR_BULLDOZER_NE;
 	v->progress = 0;
 	v->u.special.unk0 = 0;
 	v->u.special.unk2 = 0;
 }
 
-#define MK(imag,dir,dur) (imag<<6)+(dir<<4)+dur
-static const byte _effecttick8_data[] = {
-	MK(0,0,4),
-	MK(3,3,4),
-	MK(2,2,7),
-	MK(0,2,7),
-	MK(1,1,3),
-	MK(2,2,7),
-	MK(0,2,7),
-	MK(1,1,3),
-	MK(2,2,7),
-	MK(0,2,7),
-	MK(3,3,6),
-	MK(2,2,6),
-	MK(1,1,7),
-	MK(3,1,7),
-	MK(0,0,3),
-	MK(1,1,7),
-	MK(3,1,7),
-	MK(0,0,3),
-	MK(1,1,7),
-	MK(3,1,7),
-	255
+typedef struct BulldozerMovement {
+	byte image:2;
+	byte direction:2;
+	byte duration:3;
+} BulldozerMovement;
+
+static const BulldozerMovement _bulldozer_movement[] = {
+	{ 0, 0, 4 },
+	{ 3, 3, 4 },
+	{ 2, 2, 7 },
+	{ 0, 2, 7 },
+	{ 1, 1, 3 },
+	{ 2, 2, 7 },
+	{ 0, 2, 7 },
+	{ 1, 1, 3 },
+	{ 2, 2, 7 },
+	{ 0, 2, 7 },
+	{ 3, 3, 6 },
+	{ 2, 2, 6 },
+	{ 1, 1, 7 },
+	{ 3, 1, 7 },
+	{ 0, 0, 3 },
+	{ 1, 1, 7 },
+	{ 3, 1, 7 },
+	{ 0, 0, 3 },
+	{ 1, 1, 7 },
+	{ 3, 1, 7 }
 };
-#undef MK
 
-static const int8 _xy_inc_by_dir[5] = {
-	-1, 0, 1, 0, -1,
+static const struct {
+	int8 x;
+	int8 y;
+} _inc_by_dir[] = {
+	{ -1,  0 },
+	{  0,  1 },
+	{  1,  0 },
+	{  0, -1 }
 };
 
-#define GET_X_INC_BY_DIR(d) _xy_inc_by_dir[d]
-#define GET_Y_INC_BY_DIR(d) _xy_inc_by_dir[(d)+1]
-
-static void EffectTick_8(Vehicle *v)
+static void BulldozerTick(Vehicle *v)
 {
-	byte b;
+	if ((++v->progress & 7) == 0) {
+		const BulldozerMovement* b = &_bulldozer_movement[v->u.special.unk0];
 
-	if (!(++v->progress & 7)) {
-		v->u.special.unk2++;
 		BeginVehicleMove(v);
 
-		b = _effecttick8_data[v->u.special.unk0];
+		v->cur_image = SPR_BULLDOZER_NE + b->image;
 
-		v->cur_image = 0x588 + (b>>6);
+		v->x_pos += _inc_by_dir[b->direction].x;
+		v->y_pos += _inc_by_dir[b->direction].y;
 
-		v->x_pos += GET_X_INC_BY_DIR((b>>4)&3);
-		v->y_pos += GET_X_INC_BY_DIR((b>>4)&3);
-
-		if (v->u.special.unk2 < (b & 7)) {
+		v->u.special.unk2++;
+		if (v->u.special.unk2 < b->duration) {
 			v->u.special.unk2 = 0;
 			v->u.special.unk0++;
-			if (_effecttick8_data[v->u.special.unk0] == 0xFF) {
+			if (v->u.special.unk0 == lengthof(_bulldozer_movement)) {
 				EndVehicleMove(v);
 				DeleteVehicle(v);
 				return;
@@ -1086,7 +1091,7 @@ static EffectInitProc * const _effect_init_procs[] = {
 	EffectInit_5,
 	EffectInit_6,
 	EffectInit_7,
-	EffectInit_8,
+	BulldozerInit,
 	EffectInit_9,
 };
 
@@ -1099,7 +1104,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 	EffectTick_5,
 	EffectTick_6,
 	EffectTick_7,
-	EffectTick_8,
+	BulldozerTick,
 	EffectTick_9,
 };
 

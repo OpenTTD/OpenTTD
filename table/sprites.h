@@ -727,6 +727,12 @@ enum Sprites {
 	SPR_TYCOON_IMG1_BEGIN     = 4814,
 	SPR_TYCOON_IMG2_BEGIN     = 4824,
 
+	/* Effect vehciles */
+	SPR_BULLDOZER_NE = 1416,
+	SPR_BULLDOZER_SE = 1417,
+	SPR_BULLDOZER_SW = 1418,
+	SPR_BULLDOZER_NW = 1419,
+
 	/* road_gui.c */
 	SPR_IMG_ROAD_NW				= 1309,
 	SPR_IMG_ROAD_NE				= 1310,
