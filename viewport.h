@@ -116,4 +116,6 @@ VARDEF Point _tile_fract_coords;
 extern TileHighlightData * const _thd_ptr;
 
 
-#endif
+void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
+
+#endif /* VIEWPORT_H */

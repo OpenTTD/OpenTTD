@@ -257,17 +257,12 @@ void ttd_strlcpy(char *dst, const char *src, size_t len);
 
 // callback from drivers that is called if the game size changes dynamically
 void GameSizeChanged();
-bool MakeScreenshot();
-bool MakeWorldScreenshot(int left, int top, int width, int height, int zoom);
 bool FileExists(const char *filename);
 bool ReadLanguagePack(int index);
 void InitializeLanguagePacks();
 byte *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 int GetLanguageList(char **languages, int max);
 
-const char *GetScreenshotFormatDesc(int i);
-void InitializeScreenshotFormats();
-void SetScreenshotFormat(int i);
 void CheckSwitchToEuro();
 
 void LoadFromConfig();

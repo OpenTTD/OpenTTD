@@ -4,6 +4,7 @@
 #include "town.h"
 #include "vehicle.h"
 #include "news.h"
+#include "screenshot.h"
 
 #define USE_TABLE(x)  { assert(index < lengthof(x)); str = x[index]; break; }
 

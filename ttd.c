@@ -22,6 +22,7 @@
 #include "saveload.h"
 #include "ai.h"
 #include "console.h"
+#include "screenshot.h"
 
 #include <stdarg.h>
 

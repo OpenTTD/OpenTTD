@@ -6,6 +6,7 @@
 #include "gfx.h"
 #include "command.h"
 #include "engine.h"
+#include "screenshot.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

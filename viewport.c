@@ -1132,7 +1132,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 	_cur_dpi = dpi;
 }
 
-void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
+void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	ViewportDrawer vd;
 	int mask;
