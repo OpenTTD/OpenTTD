@@ -87,6 +87,7 @@ typedef enum {
 	NETWORK_ERROR_WRONG_PASSWORD,
 	NETWORK_ERROR_PLAYER_MISMATCH, // Happens in CLIENT_COMMAND
 	NETWORK_ERROR_KICKED,
+	NETWORK_ERROR_CHEATER,
 } NetworkErrorCode;
 
 // Actions that can be used for NetworkTextMessage

@@ -785,16 +785,29 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		return;
 	}
-	if (cp->cmd == CMD_PLAYER_CTRL) {
-		if (cp->p1 == 0)
-			// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
-			cp->p2 = cs - _clients;
-		else {
-			/* We do NOT allow any client to send any PLAYER_CTRL packet..
-			    (they can delete random players with it if they like */
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
-			return;
-		}
+	switch (cp->cmd) {
+		/* Player_ctrl is not always allowed */
+		case CMD_PLAYER_CTRL:
+		{
+			/* cp->p1 == 0, is allowed */
+			if (cp->p1 == 0) {
+				// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
+				cp->p2 = cs - _clients;
+			} else {
+			/* The rest are cheats */
+				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+				return;
+			}
+		} break;
+
+		/* Don't allow those commands if server == advertising (considered cheating) */
+		case CMD_MONEY_CHEAT:
+		{
+			if (_network_advertise) {
+				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+				return;
+			}
+		} break;
 	}
 
 

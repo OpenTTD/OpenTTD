@@ -377,6 +377,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 		_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_PASSWORD;
 	} else if (error == NETWORK_ERROR_KICKED) {
 		_switch_mode_errorstr = STR_NETWORK_ERR_KICKED;
+	} else if (error == NETWORK_ERROR_CHEATER) {
+		_switch_mode_errorstr = STR_NETWORK_ERR_CHEATER;
 	}
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
