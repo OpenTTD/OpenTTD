@@ -317,7 +317,7 @@ STR_013D_INFORMATION						:{BLACK}Upplýsingar
 STR_013E_CAPACITIES						:{BLACK}Burðargeta
 STR_013E_TOTAL_CARGO						:{BLACK}Heildarfarmur
 STR_013F_CAPACITY						:{BLACK}Burðargeta: {LTBLUE}{STRING}
-STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Varningur alls (flutningsgeta) þessarar lestar:
+STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Farmur alls (flutningsgeta) þessarar lestar:
 STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Nýr leikur
 STR_0141_LOAD_GAME						:{BLACK}Opna leik
@@ -738,8 +738,8 @@ STR_02C5_DIFFICULTY_SETTINGS					:Erfiðleikastig
 STR_02C6_DIFFICULTY_SETTINGS					:Erfiðleikastig
 STR_02C7_CONFIG_PATCHES						:Auka stillingar
 STR_02C8_CONFIG_PATCHES						:Auka stillingar
-STR_NEWGRF_SETTINGS						:Newgrf stillingar
-STR_NEWGRF_SETTINGS2						:Newgrf stillingar
+STR_NEWGRF_SETTINGS						:Nýgrf stillingar
+STR_NEWGRF_SETTINGS2						:Nýgrf stillingar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bæjarnöfn sýnd
@@ -946,7 +946,7 @@ STR_CANT_COPY_ORDER_LIST					:{WHITE}Get ekki afritað skipanalista...
 STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Endi sameiginlegra skipana - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Lest {COMMA16} er týnd.
-STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Hagnaður {COMMA16} lestarinnar síðasta ár var {CURRENCY}
+STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Hagnaður lestar {COMMA16} á síðasta ári var {CURRENCY}
 STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}Gjaldeyrissameining í Evrópu!{}{}Evran er nú eini gjaldeyririnn fyrir öll viðskipti í þínu landi!
 
 # Start of order review system.
@@ -1192,11 +1192,11 @@ STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}...of nálægt öðrum iðnaði
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Breyta lest svo hún flytji annan varning
+STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Breyta lest svo hún flytji annan farm
 STR_RAIL_REFIT							:{WHITE}{STRING} (Breyta)
 STR_RAIL_REFIT_VEHICLE						:{BLACK}Breyta lest
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin á að flytja
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest til að flytja valinn varning
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest svo hún flytji valinn farm
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Get ekki breytt lest...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Bil milli skoðana er í hundraðshlutum: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION					:{WHITE}Breyta framleiðslu
@@ -1545,7 +1545,7 @@ STR_202C_FROM_TO						:{ORANGE}{STRING} frá {STATION} til {STATION}{YELLOW} ({ST
 STR_202D_UNTIL							:{YELLOW}, þangað til {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Samsarfssamningur gerður ógildur:{}{}{STRING} flutningur frá {STATION} til {STATION} er ekki lengur samningsbundið.
-STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Nýtt tilboð til samstarfssamnings:{}{}Fyrsti flutningur {STRING} frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Nýtt tilboð til samstarfssamnings: {}{}Fyrsti flutningur {STRING} frá {STRING} til {STRING} mun stofna til eins árs samstarfssamnings við bæjaryfirvöld!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}flutningur {STRING} frá {STATION} til {STATION} mun borga 50% aukalega í heilt ár!
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}flutningur {STRING} frá {STATION} til {STATION} mun borga tvöfalt í heilt ár!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Samstarfssamningur gerður við {STRING}!{}{}flutningur {STRING} frá {STATION} til {STATION} mun borga þrefalt í heilt ár!
@@ -1565,7 +1565,7 @@ STR_2040_CINEMA							:Kvikmyndahús
 STR_2041_SHOPPING_MALL						:Verslunarmiðstöð
 STR_2042_DO_IT							:{BLACK}Gera það
 STR_2043_LIST_OF_THINGS_TO_DO_AT				:{BLACK}Listi yfir hluti sem hægt er að gera í þessum bæ - ýttu á viðkomandi hlut fyrir upplýsingar
-STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Carry out the highlighted action in the list above
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Framkvæma völdu aðgerðina í listanum að ofan
 STR_2045_ACTIONS_AVAILABLE					:{BLACK}Aðgerðir:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN				:Lítil auglýsingaherferð
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN				:Meðalstór auglýsingaherferð
@@ -2620,12 +2620,12 @@ STR_9836_RENAME							:{BLACK}Endurnefna
 STR_9837_RENAME_SHIP_TYPE					:{BLACK}Endurnefna skipategund
 STR_9838_RENAME_SHIP_TYPE					:{WHITE}Endurnefna skipategund
 STR_9839_CAN_T_RENAME_SHIP_TYPE					:{WHITE}Get ekki endurnefnt skipategund...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Breyta vöruflutningaskipum svo þau flytji annan varning
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Breyta vöruflutningaskipum svo þau flytji annan farm
 STR_983B_REFIT							:{WHITE}{STRING} (Breyta)
 STR_983C_REFIT_SHIP						:{BLACK}Breyta skipi
 STR_983D_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm skipið á að flytja
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED			:{BLACK}Breyta skipi til að flytja valinn varning
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Veldu varning til að flytja:-
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED			:{BLACK}Breyta skipi svo það flytji valinn farm
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Veldu farm sem á að flytja:-
 STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP					:{WHITE}Get ekki breytt skipi...
 STR_9842_REFITTABLE						:(breytanlegt)
@@ -2688,30 +2688,123 @@ STR_A032_NAME_AIRCRAFT						:{BLACK}Nefna flugvélina
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta flugvél kemur við á {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flugslys!{}{COMMA16} deyja í sprengingu á {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flugslys!{}Flugvél varð eldsneytislaus, {COMMA16} deyja í sprengingu!
+STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Áfangastaðir:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Endurnefna
 STR_A038_RENAME_AIRCRAFT_TYPE					:{BLACK}Endurnefna tegund flugvélar
 STR_A039_RENAME_AIRCRAFT_TYPE					:{WHITE}Endurnefna tegund flugvélar
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Breyta flugvél svo hún beri annan varning
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Breyta flugvél svo hún flytji annan farm
 STR_A03C_REFIT							:{WHITE}{STRING} (Breya)
 STR_A03D_REFIT_AIRCRAFT						:{BLACK}Breyta flugvél
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu farm sem flugvél á að flytja
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Breyta flugvél svo hún flytji valinn farm
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Veldu farm sem á að flytja:-
+STR_A041_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT					:{WHITE}Get ekki breytt flugvél...
+STR_A043_REFITTABLE						:(breytanleg)
+STR_GO_TO_AIRPORT_HANGAR					:Fara í {STATION} flugskýli
+SERVICE_AT_AIRPORT_HANGAR					:Skoða í {STATION} flugskýli
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT					:{BLACK}{BIGFONT}Loftskipaslys á {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED					:{BLACK}{BIGFONT}Bifreið eyðilagðist í árekstri við FFH
+STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Sprenging í olíuhreinsistöð nálægt {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Verksmiðja eyðilegst við grunsamlegar kringumstæður nálægt {TOWN}!
+STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}FFH lendir rétt hjá {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Hrun í kolanámu veldur eyðileggingu nálægt {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Flóð!{}Að minnsta kosti {COMMA16} er saknað og eru taldir af eftir gífurleg flóð!
 
+STR_BRIBE_FAILED						:{WHITE}Tilraun þín til múturs var
+STR_BRIBE_FAILED_2						:{WHITE}uppgvötuð af héraðsrannsóknarmanni
+STR_BUILD_DATE							:{BLACK}Byggt: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Leikurinn er í bið.{}Skipun getur ekki verið framfylgt
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Nákvæm frammistöðumæling
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Upplýsingar
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Farartæki:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stöðvar:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Lágmarkshagnaður:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Lágmarkstekjur:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Hámarkstekjur:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Flutt:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Farmur:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Reiðufé:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Lán:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Alls:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Fjöldi farartækja; inniheldur fjölda bifreiða, lesta, skipa og flugvéla
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Fjöldi stöðvarhluta. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn, jafnvel þótt þeir séu tengdir sem ein stöð.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Hagnaður tekjulægsta farartækisins (sem er eldra en 2 ára)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Afkoma mánaðarins með minnsta hagnaðinn síðustu 12 ársfjórðunga
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Afkoma mánaðarins með mesta hagnaðinn síðustu 12 ársfjórðunga
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Einingar farms sem fluttar hafa verið síðasta árið
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Fjöldi farmgerða sem fluttar voru í síðasta ársfjórðungi
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Peningar sem þetta fyrirtæki á í bankanum
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Peningar sem þetta fyrirtæki hefur tekið að láni
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Heildarpunktar af mögulegum punktum
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Nýgrf stillingar
+STR_NEWGRF_APPLY_CHANGES					:{BLACK}Virkja breytingar
+STR_NEWGRF_SET_PARAMETERS					:{BLACK}Stilla breytur
+STR_NEWGRF_TIP							:{BLACK}Listi yfir öll Nýgrf sett sem þú hefur sett inn. Smelltu til að breyta stillingunum
+STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Það eru engar nýgrf skrár innsettar! Vinsamlegast skoðaðu leiðbeiningarnar fyrir upplýsingar um hvernig setja á inn nýja grafík
+STR_NEWGRF_FILENAME						:{BLACK}Skráarnafn:
+STR_NEWGRF_GRF_ID						:{BLACK}GRF einkenni:
 
+STR_CURRENCY_WINDOW						:{WHITE}Sérvalinn gjaldeyrir
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Gengi: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Aðskilnaðarmerki:
+STR_CURRENCY_PREFIX						:{LTBLUE}Forskeyti:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Viðskeyti:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Skipta í Evrur: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Skipta í Evrur: {ORANGE}aldrei
+STR_CURRENCY_PREVIEW						:{LTBLUE}Sýnishorn: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Breyta sérvöldum gjaldeyri
 
+STR_TRAIN							:{BLACK}{TRAIN}
+STR_LORRY							:{BLACK}{LORRY}
+STR_PLANE							:{BLACK}{PLANE}
+STR_SHIP							:{BLACK}{SHIP}
 
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Lestir
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Bifreiðir
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Flugvélar
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Skip
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Sýna allar flugvélar sem hafa þessa stöð á áætlun
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
+STR_REPLACE_VEHICLES						:{BLACK}Skipta út vögnum
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Skipta út vögnum
+STR_REPLACE_VEHICLES_START					:{BLACK}Hefja skipti
+STR_REPLACE_VEHICLES_STOP					:{BLACK}Stöðva skipti
+STR_NOT_REPLACING						:{BLACK}Skipti ekki
+STR_NOT_REPLACING_VEHICLE_SELECTED				:{BLACK}Enginn vagn valinn
+STR_REPLACE_HELP_LEFT_ARRAY					:{BLACK}Veldu vagntegund til að skipta út
+STR_REPLACE_HELP_RIGHT_ARRAY					:{BLACK}Velja vagntegund sem þú myndir vilja nota í staðin fyrir vagntegundina sem valinn er vinstra megin
+STR_REPLACE_HELP_STOP_BUTTON					:{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
+STR_REPLACE_HELP_START_BUTTON					:{BLACK}Smelltu til að hefja skipti á vagntegundinni sem valin er til vinstri með vagntegundinni sem valin er til hægri
+STR_REPLACE_HELP_RAILTYPE					:{BLACK}Veldu hvernig lestir þú skipta út
+STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
+STR_REPLACE_HELP						:{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Merkjalisti - {COMMA16} merki
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES						:Járnbrautavagnar
+STR_MONORAIL_VEHICLES						:Einteinungsvagnar
+STR_MAGLEV_VEHICLES						:Segulsvifvagnar
 
 ############ End of list of rail types
 
+STR_TINY_BLACK							:{BLACK}{TINYFONT}{COMMA16}

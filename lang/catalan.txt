@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Mostrar subvencions
 STR_02DD_SUBSIDIES						:Subvencions
 STR_02DE_MAP_OF_WORLD						:Mapa del món
 STR_EXTRA_VIEW_PORT						:Extra viewport
+STR_SIGN_LIST							:Llista de senyals
 STR_02DF_TOWN_DIRECTORY						:Directori de Poblacions
 STR_TOWN_POPULATION						:{BLACK}Població mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Viewport {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Mosyta quin motor dels seleccionats
 STR_REPLACE_HELP						:{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Llista de senyals - {COMMA16} Senyals
 
 ############ Lists rail types
 

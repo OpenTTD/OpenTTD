@@ -188,14 +188,14 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Negalima griauti sios teritorijos....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Orginalo teises priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teises saugomos
 STR_00B7_VERSION						:{BLACK}OpenTTD versija {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD komanda
-STR_TRANSLATED_BY						:{BLACK}  Vertejas - Mindaugas Surdokas (L781)
+STR_TRANSLATED_BY						:{BLACK}  Vertejai: Mindaugas Surdokas (L781), Vytautas Liuolia
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
 STR_00C7_QUIT							:{WHITE}Baigti
 STR_00C8_YES							:{BLACK}Taip
 STR_00C9_NO							:{BLACK}Ne
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ar tu tikrai nori nutraukti zaidima ir gryzti i {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ar tu tikrai nori nutraukti zaidima ir grizti i {STRING}?
 STR_00CB_1							:{BLACK}1
 STR_00CC_2							:{BLACK}2
 STR_00CD_3							:{BLACK}3
@@ -680,20 +680,20 @@ STR_027E_CONSTRUCT_TOY_SHOP					:{BLACK}Statyti zaislu parduotuve
 STR_027F_CONSTRUCT_TOY_FACTORY					:{BLACK}Statyti zaislu fabrika
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS				:{BLACK}Statyti plastmases versmes
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY				:{BLACK}Statyti gaiviuju gerimu fabrika
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR				:{BLACK}Construct Bubble Generator
-STR_0283_CONSTRUCT_TOFFEE_QUARRY				:{BLACK}Construct Toffee Quarry
-STR_0284_CONSTRUCT_SUGAR_MINE					:{BLACK}Construct Sugar Mine
-STR_0285_CAN_T_BUILD_HERE					:{WHITE}Can't build {STRING} here...
-STR_0286_MUST_BUILD_TOWN_FIRST					:{WHITE}...must build town first
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN				:{WHITE}...only one allowed per town
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR				:{BLACK}Statyti burbulu generatoriu
+STR_0283_CONSTRUCT_TOFFEE_QUARRY				:{BLACK}Statyti karameles telkini
+STR_0284_CONSTRUCT_SUGAR_MINE					:{BLACK}Statyti cukraus kasykla
+STR_0285_CAN_T_BUILD_HERE					:{WHITE}Cia neimanoma pastatyti {STRING} ...
+STR_0286_MUST_BUILD_TOWN_FIRST					:{WHITE}...pirma reikia pastatyti miesta
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN				:{WHITE}...mieste gali buti tik vienas
 STR_0288_PLANT_TREES						:{BLACK}Sodinti medzius
 STR_0289_PLACE_SIGN						:{BLACK}Statyti zenkla
 STR_028A_RANDOM_TREES						:{BLACK}Atsitiktiniai medziai
 STR_028B_PLANT_TREES_RANDOMLY_OVER				:{BLACK}Atsitiktinai apsodinti sausuma medziais
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Place rocky areas on landscape
-STR_028D_PLACE_LIGHTHOUSE					:{BLACK}Place lighthouse
-STR_028E_PLACE_TRANSMITTER					:{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA					:{BLACK}Define desert area
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE				:{BLACK}Sukurti uoletas vietas
+STR_028D_PLACE_LIGHTHOUSE					:{BLACK}Statyti svyturi
+STR_028E_PLACE_TRANSMITTER					:{BLACK}Statyti retransliatoriu
+STR_028F_DEFINE_DESERT_AREA					:{BLACK}Pazymeti kaip dykuma
 STR_0290_DELETE							:{BLACK}Salinti
 STR_0291_DELETE_THIS_TOWN_COMPLETELY				:{BLACK}Salinti si miesta
 STR_0292_SAVE_SCENARIO						:Issaugoti scenariju
@@ -707,27 +707,27 @@ STR_0299_SAVE_SCENARIO						:{WHITE}Issaugoti scenariju
 STR_029A_PLAY_SCENARIO						:{BLACK}Isbandyti scenariju (zaisti)
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ar tikrai nori iseiti is sio scenarijaus?
 STR_029C_QUIT_EDITOR						:{WHITE}Iseiti is Redaktoriaus
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...can only be built in towns with a population of at least 1200
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...gali buti pastatyta tik miestuose, kuriuose yra bent 1200 gyventoju
 STR_029E_MOVE_THE_STARTING_DATE					:{BLACK}Zaidimo pradzios data sumazinti 1 metais
 STR_029F_MOVE_THE_STARTING_DATE					:{BLACK}Zaidimo pradzios data padidinti 1 metais
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH				:{WHITE}...ends of bridge must both be on land
-STR_02A1_SMALL							:{BLACK}Small
-STR_02A2_MEDIUM							:{BLACK}Medium
-STR_02A3_LARGE							:{BLACK}Large
-STR_02A4_SELECT_TOWN_SIZE					:{BLACK}Select town size
-STR_02A5_TOWN_SIZE						:{YELLOW}Town size:
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH				:{WHITE}...abu tilto galai turi buti ant zemes
+STR_02A1_SMALL							:{BLACK}Mazas
+STR_02A2_MEDIUM							:{BLACK}Vidutinis
+STR_02A3_LARGE							:{BLACK}Didelis
+STR_02A4_SELECT_TOWN_SIZE					:{BLACK}Issirinkite miesto dydi
+STR_02A5_TOWN_SIZE						:{YELLOW}Miesto dydis:
 
 STR_02B6							:{STRING}  -  {STRING}
-STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS				:{BLACK}Show last message or news report
-STR_02B8_SUMMARY						:{BLACK}Summary
-STR_02B9_FULL							:{BLACK}Full
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS				:{BLACK}Parodyti paskutine zinute ar spaudos pranesima
+STR_02B8_SUMMARY						:{BLACK}Santrauka
+STR_02B9_FULL							:{BLACK}Pilnas
 STR_02BA							:{SILVER}- -  {STRING}  - -
-STR_02BB_TOWN_DIRECTORY						:Town directory
+STR_02BB_TOWN_DIRECTORY						:Miestu katalogas
 STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Tr. priemoniu pavadinimai
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standartinis
 STR_02BF_CUSTOM							:Tinkintas :)
-STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Save custom names
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Issaugoti tinkintus vardus
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Transporto priemoniu pavadinimu pasirinkimo laukas
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Issaugoti transporto priemoniu pavadinimus
 
@@ -786,7 +786,7 @@ STR_02E1							:{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION				:{BLACK}Valiutos pasirinkimas
 STR_02E3_DISTANCE_UNITS						:{BLACK}Mato vienetai
 STR_02E4							:{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Pasirink nato vienetus
+STR_02E5_DISTANCE_UNITS_SELECTION				:{BLACK}Pasirink atstumo vienetus
 STR_02E6_ROAD_VEHICLES						:{BLACK}Automobiliai
 STR_02E7							:{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR				:{BLACK}Pasirink, kuria kelio puse vaziuos masinos
@@ -1009,7 +1009,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nonuniform stations: {ORANGE}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}New algorithm for train pathfinding (NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Always allow small airports: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Visada leisti statyti mazus oro uotus: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}A train is lost if no progress is made for: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
@@ -1054,7 +1054,7 @@ STR_CONFIG_PATCHES_NOSERVICE					:{LTBLUE}Disable servicing when breakdowns set 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Coloured news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_DATE					:{LTBLUE}End game in: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Enable smooth economy (more, smaller changes)
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Tolygi ekonomika (daug, bet nezymiu pokyciu)
 STR_CONFIG_PATCHES_ALLOW_SHARES					:{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging, place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}

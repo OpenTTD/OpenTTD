@@ -1689,16 +1689,16 @@ STR_3060_AIRPORT						:Lotnisko
 STR_3061_TRUCK_LOADING_AREA					:Miejsce zaladunku
 STR_3062_BUS_STATION						:Przystanek
 STR_3063_SHIP_DOCK						:Port
-STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Podswietl teren pokrywany przez projektowana stacje
-STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nie podswietlaj pokrywanego terenu przez projektowana stacje
-STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Pokryj zaznaczony teren
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Podswietl zasieg projektowanej stacji
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nie podswietlaj zasiegu projektowanej stacji
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Pod&#347;wietlaj zasi&#281;g
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Wybierz stacje jednoszynowa.
 STR_3068_DOCK							:{WHITE}Port
 STR_3069_BUOY							:Boja
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...boja na drodze
 STR_306B_HELIPORT						:{BLACK}Lotnisko
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stacja zbyt rozlegla
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...niejednakowe stacje niedostepne
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...niejednorodne stacje niedostepne
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientacja stoczni
