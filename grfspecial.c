@@ -41,6 +41,7 @@ static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 	static const char * const severitystr[4] = { "Notice", "Warning", "Error", "Fatal" };
 	va_list va;
 
+	if(_debug_misc_level==0) return;
 	va_start(va, str);
 	fprintf(stderr, "[%s][%s] ", _cur_grffile, severitystr[severity]);
 	vfprintf(stderr, str, va);
@@ -928,7 +929,8 @@ static void GRFInfo(byte *buf, int len)
 		uint8 version = buf[1];
 		// this is de facto big endian - grf_load_dword() unsuitable
 		uint32 grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
-		printf("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n", _cur_grffile, version, grfid, buf+6, buf+6+strlen(buf+6)+1);
+		if(_debug_misc_level!=0)
+			printf("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n", _cur_grffile, version, grfid, buf+6, buf+6+strlen(buf+6)+1);
 	}
 }
 
