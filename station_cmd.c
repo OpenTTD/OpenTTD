@@ -1006,15 +1006,81 @@ struct StationSpec *GetCustomStation(uint32 classid, byte stid)
 	return &_waypoint_data[stid];
 }
 
+static struct RealSpriteGroup *
+ResolveStationSpriteGroup(struct SpriteGroup *spritegroup, struct Station *stat)
+{
+	switch (spritegroup->type) {
+		case SGT_REAL:
+			return &spritegroup->g.real;
+
+		case SGT_DETERMINISTIC: {
+			struct DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			struct SpriteGroup *target;
+			int value = -1;
+
+			if ((dsg->variable >> 6) == 0) {
+				/* General property */
+				value = GetDeterministicSpriteValue(dsg->variable);
+
+			} else {
+				/* Station-specific property. */
+				if (dsg->var_scope == VSG_SCOPE_PARENT) {
+					/* TODO: Town structure. */
+
+				} else /* VSG_SELF */ {
+					if (dsg->variable == 0x40
+					    || dsg->variable == 0x41) {
+						/* FIXME: This is ad hoc only
+						 * for waypoints. */
+						value = 0x01010000;
+					} else {
+						/* TODO: Only small fraction done. */
+						// 0x80 + offset - 0x10
+						switch (dsg->variable - 0x70) {
+							case 0x80:
+								if (stat) value = stat->facilities;
+								break;
+							case 0x81:
+								if (stat) value = stat->airport_type;
+								break;
+							case 0x82:
+								if (stat) value = stat->truck_stop_status;
+								break;
+							case 0x83:
+								if (stat) value = stat->bus_stop_status;
+								break;
+							case 0x86:
+								if (stat) value = stat->airport_flags & 0xFFFF;
+								break;
+							case 0x87:
+								if (stat) value = (stat->airport_flags >> 8) & 0xFF;
+								break;
+							case 0x8A:
+								if (stat) value = stat->build_date;
+								break;
+						}
+					}
+				}
+			}
+
+			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
+			return ResolveStationSpriteGroup(target, stat);
+		}
+
+		default:
+		case SGT_RANDOM:
+			error("I don't know how to handle random spritegroups yet!");
+			return NULL;
+	}
+}
+
 uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat, byte ctype)
 {
 	struct RealSpriteGroup *rsg;
 
 	assert(spec->classid == 'WAYP');
 
-	/* In the future, variational spritegroups will kick in through this
-	 * accessor, using @stat.  */
-	rsg = TriviallyGetRSG(&spec->spritegroup[ctype]);
+	rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], stat);
 
 	if (rsg->sprites_per_set != 0) {
 		if (rsg->loading_count != 0) {

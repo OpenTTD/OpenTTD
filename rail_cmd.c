@@ -744,6 +744,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		cp->deleted = 0;
 		cp->xy = tile;
+		cp->build_date = _date;
 
 		if (cp->town_or_string == 0) MakeDefaultWaypointName(cp); else RedrawWaypointSign(cp);
 		UpdateWaypointSign(cp);
@@ -1427,6 +1428,22 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
 }
 
+/* This hacks together some dummy one-shot Station structure for a waypoint. */
+static Station *ComposeWaypointStation(uint tile)
+{
+	Waypoint *waypt = &_waypoints[GetWaypointByTile(tile)];
+	static Station stat;
+
+	stat.train_tile = stat.xy = waypt->xy;
+	/* FIXME - We should always keep town. */
+	stat.town = waypt->town_or_string & 0xC000 ? &_towns[waypt->town_or_string & 0xFF] : NULL;
+	stat.string_id = waypt->town_or_string & 0xC000 ? /* FIXME? */ 0 : waypt->town_or_string;
+	stat.build_date = waypt->build_date;
+	stat.class_id = 6; stat.stat_id = waypt->stat_id;
+
+	return &stat;
+}
+
 static void DrawTile_Track(TileInfo *ti)
 {
 	uint32 tracktype_offs, image;
@@ -1551,8 +1568,7 @@ static void DrawTile_Track(TileInfo *ti)
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
 				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
-				/* FIXME: NULL Station! --pasky */
-				uint32 relocation = GetCustomStationRelocation(stat, NULL, 0);
+				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 
 				image = cust->ground_sprite;
 				if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;

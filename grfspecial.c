@@ -1112,8 +1112,8 @@ static void NewSpriteGroup(byte *buf, int len)
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
 			dg->ranges[i].group = _cur_grffile->spritegroups[setid];
-			dg->ranges[i].range_low = grf_load_byte(&buf);
-			dg->ranges[i].range_high = grf_load_byte(&buf);
+			dg->ranges[i].low = grf_load_byte(&buf);
+			dg->ranges[i].high = grf_load_byte(&buf);
 		}
 
 		dg->default_group = malloc(sizeof(*dg->default_group));

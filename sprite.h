@@ -76,7 +76,7 @@ struct DeterministicSpriteGroup {
 	
 	// And apply it to this:
 	byte num_ranges;
-	struct DeterministicSpriteGroupRanges *ranges; // Dynamically allocated
+	struct DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
 	// Dynamically allocated, this is the sole owner
 	struct SpriteGroup *default_group;
@@ -95,16 +95,22 @@ struct SpriteGroup {
 	} g;
 };
 
-struct DeterministicSpriteGroupRanges {
+struct DeterministicSpriteGroupRange {
 	struct SpriteGroup group;
-	byte range_low;
-	byte range_high;
+	byte low;
+	byte high;
 };
 
 /* This is a temporary helper for SpriteGroup users not supporting variational
  * sprite groups yet - it just traverses those cowardly, always taking the
  * default choice until it hits a real sprite group, returning it. */
 static struct RealSpriteGroup *TriviallyGetRSG(struct SpriteGroup *sg);
+/* This takes value (probably of the variable specified in the group) and
+ * chooses corresponding SpriteGroup accordingly to the given
+ * DeterministicSpriteGroup. */
+struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup *dsg, int value);
+/* Get value of a common deterministic SpriteGroup variable. */
+int GetDeterministicSpriteValue(byte var);
 
 
 

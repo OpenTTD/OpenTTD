@@ -504,7 +504,7 @@ ttd_SOURCES = \
 	pathfind.c player_gui.c players.c queue.c rail_cmd.c rail_gui.c rev.c \
 	road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c saveload.c \
 	screenshot.c settings.c settings_gui.c ship_cmd.c ship_gui.c \
-	smallmap_gui.c sound.c spritecache.c station_cmd.c station_gui.c \
+	smallmap_gui.c sound.c sprite.c spritecache.c station_cmd.c station_gui.c \
 	strings.c subsidy_gui.c terraform_gui.c texteff.c town_cmd.c \
 	town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c tunnelbridge_cmd.c \
 	unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c water_cmd.c widget.c window.c \

@@ -753,6 +753,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\sprite.c">
+			</File>
+			<File
 				RelativePath="spritecache.c">
 				<FileConfiguration
 					Name="Release|Win32">
