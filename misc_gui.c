@@ -772,9 +772,25 @@ void SetHScrollCount(Window *w, int num)
 	if (num < w->hscroll.pos) w->hscroll.pos = num;
 }
 
+/* Get the count of characters in the string as well as the width in pixels
+ * [IN]buf: string to be checked
+ * [OUT]count: gets set to the count of characters
+ * [OUT]width: gets set to the pixels width */
+static void GetCurrentStringSize(const byte *buf, int *count, int *width)
+{
+	*count = 0;
+	*width = -1;
+
+	do {
+		if (*++buf == 0)
+			break;
+		(*count)++;
+		(*width) += _stringwidth_table[*buf - 32];
+	} while (1);
+}
+
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 {
-	byte *p;
 	int width,count;
 	int key = we->keypress.ascii;
 
@@ -784,16 +800,37 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 		return 2;
 	} else if (we->keypress.keycode == WKC_RETURN) {
 		return 1;
+#ifdef WIN32
+	} else if (we->keypress.keycode == (WKC_CTRL | 'V')) {
+		if (IsClipboardFormatAvailable(CF_TEXT)) {
+			const byte* data;
+			HGLOBAL cbuf;
+
+			OpenClipboard(NULL);
+			cbuf = GetClipboardData(CF_TEXT);
+			data = GlobalLock(cbuf); // clipboard data
+
+			GetCurrentStringSize(WP(w,querystr_d).buf - 1, &count, &width);
+
+			/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+			for (; (IS_INT_INSIDE(*data, ' ', 256)) && // valid ASCII char
+					(count < WP(w,querystr_d).maxlen - 1 && // max charcount; always allow for terminating '\0'
+					width + _stringwidth_table[(int)(*data) - 32] <= WP(w,querystr_d).maxwidth); ++data) { // max screensize
+
+				// append data and update size parameters
+				WP(w,querystr_d).buf[count] = *data;
+				count++;
+				width += _stringwidth_table[*data - 32];
+			}
+			WP(w,querystr_d).buf[count + 1] = '\0';
+
+			GlobalUnlock(cbuf);
+			CloseClipboard();
+			InvalidateWidget(w, wid);
+		}
+#endif
 	} else {
-		width = -1;
-		p = WP(w,querystr_d).buf - 1;
-		count = 0;
-		do {
-			if (*++p == 0)
-				break;
-			count++;
-			width += _stringwidth_table[*p - 32];
-		} while (1);
+		GetCurrentStringSize(WP(w,querystr_d).buf - 1, &count, &width);
 
 		if (we->keypress.keycode == WKC_BACKSPACE) {
 			if (count != 0) {
@@ -801,15 +838,13 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 				InvalidateWidget(w, wid);
 			}
 		} else if (IS_INT_INSIDE((key = we->keypress.ascii), 32, 256)) {
-			if (count < WP(w,querystr_d).maxlen && width + _stringwidth_table[key-32] <= WP(w,querystr_d).maxwidth) {
+			if (count < WP(w,querystr_d).maxlen && width + _stringwidth_table[key - 32] <= WP(w,querystr_d).maxwidth) {
 				WP(w,querystr_d).buf[count] = key;
-				WP(w,querystr_d).buf[count+1] = 0;
+				WP(w,querystr_d).buf[count + 1] = '\0';
 				InvalidateWidget(w, wid);
 			}
-		} else {
-			// key wasn't caught
+		} else // key wasn't caught
 			we->keypress.cont = true;
-		}
 	}
 
 	return 0;
