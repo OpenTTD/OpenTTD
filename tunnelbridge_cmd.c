@@ -1498,23 +1498,16 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 	return 0;
 }
 
-uint GetVehicleOutOfTunnelTile(Vehicle *v)
+TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 {
-	uint tile = v->tile;
-	int delta_tile;
-	byte z;
+	TileIndex tile;
+	TileIndexDiff delta = (v->direction & 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
+	byte z = v->z_pos;
 
-	/* locate either ending of the tunnel */
-	delta_tile = (v->direction&2) ? TILE_XY(0,1) : TILE_XY(1,0);
-	z = v->z_pos;
-	for(;;) {
-		TileInfo ti;
-		FindLandscapeHeightByTile(&ti, tile);
-
-		if (ti.type == MP_TUNNELBRIDGE && (ti.map5 & 0xF0)==0 && (byte)ti.z == z)
+	for (tile = v->tile;; tile += delta) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0 &&
+				GetTileZ(tile) == z)
 			break;
-
-		tile += delta_tile;
 	}
 	return tile;
 }
