@@ -334,8 +334,8 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 							chain_after++;
 						};
 
-						value = chain_before << 16 | chain_after << 8
-						        | (chain_before + chain_after + 1);
+						value = chain_before | chain_after << 8
+						        | (chain_before + chain_after) << 16;
 					} else {
 						value = 1; /* 1 vehicle in the chain */
 					}
