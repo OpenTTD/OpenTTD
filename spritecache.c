@@ -912,7 +912,8 @@ static void LoadSpriteTables(void)
 			load_index = _custom_sprites_base;
 			for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
 				if (!FiosCheckFileExists(_newgrf_files[j]))
-					continue;
+					// TODO: usrerror()
+					error("NewGRF file missing: %s", _newgrf_files[j]);
 				if (_loading_stage == 0)
 					InitNewGRFFile(_newgrf_files[j], load_index);
 				load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
