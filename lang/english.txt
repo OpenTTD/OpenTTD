@@ -281,7 +281,7 @@ STR_0118_BUBBLE_GENERATOR				:{BLACK}{TINYFONT}Bubble Generator
 STR_0119_TOFFEE_QUARRY					:{BLACK}{TINYFONT}Toffee Quarry
 STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Sugar Mine
 STR_011B_RAILROAD_STATION				:{BLACK}{TINYFONT}Railway Station
-STR_011C_TRUCK_LOADING_BAY				:{BLACK}{TINYFONT}Truck Loading Bay
+STR_011C_TRUCK_LOADING_BAY				:{BLACK}{TINYFONT}Lorry Loading Bay
 STR_011D_BUS_STATION					:{BLACK}{TINYFONT}Bus Station
 STR_011E_AIRPORT_HELIPORT				:{BLACK}{TINYFONT}Airport/Heliport
 STR_011F_DOCK							:{BLACK}{TINYFONT}Dock
@@ -506,26 +506,26 @@ STR_01E6								:{DKGREEN}{TINYFONT}------
 STR_01E7								:{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE					:{BLACK}{TINYFONT}Track{SETX 88}Title
 STR_01E9_SHUFFLE						:{TINYFONT}Shuffle
-STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Program
-STR_01EB_MUSIC_PROGRAM_SELECTION		:{WHITE}Music Program Selection
+STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programme
+STR_01EB_MUSIC_PROGRAM_SELECTION		:{WHITE}Music Programme Selection
 STR_01EC_0								:{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
 STR_01ED								:{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
 STR_01EE_TRACK_INDEX					:{TINYFONT}{BLACK}Track Index
-STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Program - '{STRING}'
+STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programme - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Clear
 STR_01F1_SAVE							:{TINYFONT}{BLACK}Save
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Current program of music tracks
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM		:{BLACK}Select 'all tracks' program
-STR_01F4_SELECT_OLD_STYLE_MUSIC			:{BLACK}Select 'old style music' program
-STR_01F5_SELECT_NEW_STYLE_MUSIC			:{BLACK}Select 'new style music' program
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED	:{BLACK}Select 'Custom 1' (user-defined) program
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED	:{BLACK}Select 'Custom 2' (user-defined) program
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1	:{BLACK}Clear current program (Custom1 or Custom2 only)
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC		:{BLACK}Current programme of music tracks
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM		:{BLACK}Select 'all tracks' programme
+STR_01F4_SELECT_OLD_STYLE_MUSIC			:{BLACK}Select 'old style music' programme
+STR_01F5_SELECT_NEW_STYLE_MUSIC			:{BLACK}Select 'new style music' programme
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED	:{BLACK}Select 'Custom 1' (user-defined) programme
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED	:{BLACK}Select 'Custom 2' (user-defined) programme
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1	:{BLACK}Clear current programme (Custom1 or Custom2 only)
 STR_01F9_SAVE_MUSIC_SETTINGS_TO			:{BLACK}Save music settings to disk
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO		:{BLACK}Click on music track to add to current program (Custom1 or Custom2 only)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE			:{BLACK}Toggle program shuffle on/off
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO		:{BLACK}Click on music track to add to current programme (Custom1 or Custom2 only)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE			:{BLACK}Toggle programme shuffle on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION		:{BLACK}Show music track selection window
-STR_01FD_CLICK_ON_SERVICE_TO_CENTER		:{BLACK}Click on service to center view on industry/town
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER		:{BLACK}Click on service to centre view on industry/town
 STR_01FE_DIFFICULTY						:{BLACK}Difficulty ({STRING})
 STR_01FF								:{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT		:Last message/news report
@@ -813,7 +813,7 @@ STR_032C_3_AIR_SERVICE					:{BLACK}3: Air service
 STR_032D_4_SHIP_SERVICE					:{BLACK}4: Ship service
 STR_032E_5_RAILROAD_SERVICE_ADVANCED	:{BLACK}5: Railway service (advanced)
 STR_032F_AUTOSAVE						:{RED}AUTOSAVE
-STR_0330_SELECT_EZY_STREET_STYLE		:{BLACK}Select 'Ezy Street style music' program
+STR_0330_SELECT_EZY_STREET_STYLE		:{BLACK}Select 'Ezy Street style music' programme
 
 STR_0335_6								:{BLACK}6
 STR_0336_7								:{BLACK}7
@@ -1009,7 +1009,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY		:{LTBLUE}Enable smooth economy (more, smaller
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY		:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS			:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT		:Left
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER	:Center
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER	:Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT	:Right
 
 STR_CONFIG_PATCHES_GUI					:{BLACK}Interface
@@ -1291,12 +1291,12 @@ STR_1805_CAN_T_REMOVE_ROAD_FROM			:{WHITE}Can't remove road from here...
 STR_1806_ROAD_DEPOT_ORIENTATION			:{WHITE}Road Depot Orientation
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE		:{WHITE}Can't build road vehicle depot here...
 STR_1808_CAN_T_BUILD_BUS_STATION		:{WHITE}Can't build bus station...
-STR_1809_CAN_T_BUILD_TRUCK_STATION		:{WHITE}Can't build truck station...
+STR_1809_CAN_T_BUILD_TRUCK_STATION		:{WHITE}Can't build lorry station...
 STR_180A_ROAD_CONSTRUCTION				:Road construction
 STR_180B_BUILD_ROAD_SECTION				:{BLACK}Build road section
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT		:{BLACK}Build road vehicle depot (for building and servicing vehicles)
 STR_180D_BUILD_BUS_STATION				:{BLACK}Build bus station
-STR_180E_BUILD_TRUCK_LOADING_BAY		:{BLACK}Build truck loading bay
+STR_180E_BUILD_TRUCK_LOADING_BAY		:{BLACK}Build lorry loading bay
 STR_180F_BUILD_ROAD_BRIDGE				:{BLACK}Build road bridge
 STR_1810_BUILD_ROAD_TUNNEL				:{BLACK}Build road tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR		:{BLACK}Toggle build/remove for road construction
@@ -1319,8 +1319,8 @@ STR_2006_POPULATION						:{BLACK}Population: {ORANGE}{COMMA32}{BLACK}  Houses: {
 STR_2007_RENAME_TOWN					:Rename Town
 STR_2008_CAN_T_RENAME_TOWN				:{WHITE}Can't rename town...
 STR_2009_LOCAL_AUTHORITY_REFUSES		:{WHITE}{TOWN} local authority refuses to allow this
-STR_200A_TOWN_NAMES_CLICK_ON_NAME		:{BLACK}Town names - click on name to center main view on town
-STR_200B_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Center the main view on town location
+STR_200A_TOWN_NAMES_CLICK_ON_NAME		:{BLACK}Town names - click on name to centre main view on town
+STR_200B_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Centre the main view on town location
 STR_200C_CHANGE_TOWN_NAME				:{BLACK}Change town name
 STR_200D_PASSENGERS_LAST_MONTH_MAX		:{BLACK}Passengers last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
 STR_200E_MAIL_LAST_MONTH_MAX			:{BLACK}Mail last month: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
@@ -1464,11 +1464,11 @@ STR_303F_NO_LONGER_ACCEPTS_OR			:{WHITE}{STATION} no longer accepts {STRING} or 
 STR_3040_NOW_ACCEPTS					:{WHITE}{STATION} now accepts {STRING}
 STR_3041_NOW_ACCEPTS_AND				:{WHITE}{STATION} now accepts {STRING} and {STRING}
 STR_3042_BUS_STATION_ORIENTATION		:{WHITE}Bus Station Orientation
-STR_3043_TRUCK_STATION_ORIENT			:{WHITE}Truck Station Orient.
+STR_3043_TRUCK_STATION_ORIENT			:{WHITE}Lorry Station Orient.
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS		:{WHITE}Too close to another bus station
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK		:{WHITE}Too close to another truck station
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK		:{WHITE}Too close to another lorry station
 STR_3046_MUST_DEMOLISH_BUS_STATION		:{WHITE}Must demolish bus station first
-STR_3047_MUST_DEMOLISH_TRUCK_STATION	:{WHITE}Must demolish truck station first
+STR_3047_MUST_DEMOLISH_TRUCK_STATION	:{WHITE}Must demolish lorry station first
 STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Stations
 STR_3049_0								:{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE							:{YELLOW}- None -
@@ -1479,12 +1479,12 @@ STR_304E_SELECT_RAILROAD_STATION		:{BLACK}Select railway station orientation
 STR_304F_SELECT_NUMBER_OF_PLATFORMS		:{BLACK}Select number of platforms for railway station
 STR_3050_SELECT_LENGTH_OF_RAILROAD		:{BLACK}Select length of railway station
 STR_3051_SELECT_BUS_STATION_ORIENTATION	:{BLACK}Select bus station orientation
-STR_3052_SELECT_TRUCK_LOADING_BAY		:{BLACK}Select truck loading bay orientation
-STR_3053_CENTER_MAIN_VIEW_ON_STATION	:{BLACK}Center main view on station location
+STR_3052_SELECT_TRUCK_LOADING_BAY		:{BLACK}Select lorry loading bay orientation
+STR_3053_CENTER_MAIN_VIEW_ON_STATION	:{BLACK}Centre main view on station location
 STR_3054_SHOW_STATION_RATINGS			:{BLACK}Show station ratings
 STR_3055_CHANGE_NAME_OF_STATION			:{BLACK}Change name of station
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO	:{BLACK}Show list of accepted cargo
-STR_3057_STATION_NAMES_CLICK_ON			:{BLACK}Station names - click on name to center main view on station
+STR_3057_STATION_NAMES_CLICK_ON			:{BLACK}Station names - click on name to centre main view on station
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT	:{BLACK}Select size/type of airport
 STR_3059_SMALL							:{BLACK}Small
 STR_305A_LARGE							:{BLACK}City
@@ -1496,7 +1496,7 @@ STR_305D_0								:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION				:Railway station
 STR_305F_AIRCRAFT_HANGAR				:Aircraft hangar
 STR_3060_AIRPORT						:Airport
-STR_3061_TRUCK_LOADING_AREA				:Truck loading area
+STR_3061_TRUCK_LOADING_AREA				:Lorry loading area
 STR_3062_BUS_STATION					:Bus station
 STR_3063_SHIP_DOCK						:Ship dock
 STR_3064_HIGHLIGHT_COVERAGE_AREA		:{BLACK}Highlight coverage area of proposed site
@@ -1587,7 +1587,7 @@ STR_4829_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}, {STRING}
 
 STR_482A_PRODUCTION_LAST_MONTH			:{BLACK}Production last month:
 STR_482B_TRANSPORTED					:{YELLOW}{STRING}{BLACK} ({COMMA16}% transported)
-STR_482C_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Center the main view on industry location
+STR_482C_CENTER_THE_MAIN_VIEW_ON		:{BLACK}Centre the main view on industry location
 STR_482D_NEW_UNDER_CONSTRUCTION			:{BLACK}{BIGFONT}New {STRING} under construction near {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR			:{BLACK}{BIGFONT}New {STRING} being planted near {TOWN}!
 STR_482F_COST							:{BLACK}Cost: {YELLOW}{CURRENCY}
@@ -2249,13 +2249,13 @@ STR_883E_BUILD_NEW_TRAINS_REQUIRES		:{BLACK}Build new trains (requires train dep
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR		:{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
 STR_8840_BUILD_NEW_TRAIN_VEHICLE		:{BLACK}Build new train vehicle
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE		:{BLACK}Drag train vehicle to here to sell it
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Center main view on train depot location
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Centre main view on train depot location
 STR_8843_TRAIN_VEHICLE_SELECTION		:{BLACK}Train vehicle selection list - click on vehicle for information
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN	:{BLACK}Build the highlighted train vehicle
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE		:{BLACK}Rename train vehicle type
 STR_8846_CURRENT_TRAIN_ACTION_CLICK		:{BLACK}Current train action - click here to stop/start train
 STR_8847_SHOW_TRAIN_S_ORDERS			:{BLACK}Show train's orders
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Center main view on train's location
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN		:{BLACK}Centre main view on train's location
 STR_8849_SEND_TRAIN_TO_DEPOT			:{BLACK}Send train to depot
 STR_884A_FORCE_TRAIN_TO_PROCEED			:{BLACK}Force train to proceed without waiting for signal to clear
 STR_884B_REVERSE_DIRECTION_OF_TRAIN		:{BLACK}Reverse direction of train
@@ -2329,14 +2329,14 @@ STR_901A_ROAD_VEHICLES_CLICK_ON			:{BLACK}Road vehicles - click on vehicle for i
 STR_901B_BUILD_NEW_ROAD_VEHICLES		:{BLACK}Build new road vehicles (requires road vehicle depot)
 STR_901C_CURRENT_VEHICLE_ACTION			:{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS			:{BLACK}Show vehicle's orders
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE	:{BLACK}Center main view on vehicle's location
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE	:{BLACK}Centre main view on vehicle's location
 STR_901F_SEND_VEHICLE_TO_DEPOT			:{BLACK}Send vehicle to depot
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND	:{BLACK}Force vehicle to turn around
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS		:{BLACK}Show road vehicle details
 STR_9022_VEHICLES_CLICK_ON_VEHICLE		:{BLACK}Vehicles - click on vehicle for information
 STR_9023_BUILD_NEW_ROAD_VEHICLE			:{BLACK}Build new road vehicle
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE		:{BLACK}Drag road vehicle to here to sell it
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Center main view on road vehicle depot location
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD		:{BLACK}Centre main view on road vehicle depot location
 STR_9026_ROAD_VEHICLE_SELECTION			:{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD		:{BLACK}Build the highlighted road vehicle
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE	:{BLACK}{BIGFONT}New road vehicle now available!
@@ -2394,14 +2394,14 @@ STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING	:{BLACK}Build ship depot (for building an
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Ships - click on ship for information
 STR_9820_BUILD_NEW_SHIP					:{BLACK}Build new ship
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL		:{BLACK}Drag ship to here to sell it
-STR_9822_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Center main view on ship depot location
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Centre main view on ship depot location
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR		:{BLACK}Ships - click on ship for information
 STR_9824_BUILD_NEW_SHIPS_REQUIRES		:{BLACK}Build new ships (requires ship depot)
 STR_9825_SHIP_SELECTION_LIST_CLICK		:{BLACK}Ship selection list - click on ship for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP		:{BLACK}Build the highlighted ship
 STR_9827_CURRENT_SHIP_ACTION_CLICK		:{BLACK}Current ship action - click here to stop/start ship
 STR_9828_SHOW_SHIP_S_ORDERS				:{BLACK}Show ship's orders
-STR_9829_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Center main view on ship's location
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP		:{BLACK}Centre main view on ship's location
 STR_982A_SEND_SHIP_TO_DEPOT				:{BLACK}Send ship to depot
 STR_982B_SHOW_SHIP_DETAILS				:{BLACK}Show ship details
 STR_982C_NEW_SHIP_NOW_AVAILABLE			:{BLACK}{BIGFONT}New ship now available!
@@ -2468,12 +2468,12 @@ STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES	:{BLACK}Build new aircraft (requires airpor
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT		:{BLACK}Aircraft - click on aircraft for information
 STR_A022_BUILD_NEW_AIRCRAFT				:{BLACK}Build new aircraft
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO		:{BLACK}Drag aircraft to here to sell it
-STR_A024_CENTER_MAIN_VIEW_ON_HANGAR		:{BLACK}Center main view on hangar location
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR		:{BLACK}Centre main view on hangar location
 STR_A025_AIRCRAFT_SELECTION_LIST		:{BLACK}Aircraft selection list - click on aircraft for information
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT	:{BLACK}Build the highlighted aircraft
 STR_A027_CURRENT_AIRCRAFT_ACTION		:{BLACK}Current aircraft action - click here to stop/start aircraft
 STR_A028_SHOW_AIRCRAFT_S_ORDERS			:{BLACK}Show aircraft's orders
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT	:{BLACK}Center main view on aircraft's location
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT	:{BLACK}Centre main view on aircraft's location
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR		:{BLACK}Send aircraft to hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS			:{BLACK}Show aircraft details
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE		:{BLACK}{BIGFONT}New aircraft now available!
