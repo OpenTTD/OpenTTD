@@ -1026,9 +1026,9 @@ static const StringID _performance_titles[] = {
 	STR_706E_TYCOON,
 };
 
-static StringID GetPerformanceTitleFromValue(uint v)
+static inline StringID GetPerformanceTitleFromValue(uint value)
 {
-	return _performance_titles[minu(v, 1000) >> 6];
+	return _performance_titles[minu(value, 1000) >> 6];
 }
 
 static int CDECL _perf_hist_comp(const void *elem1, const void *elem2 ) {

@@ -721,6 +721,108 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+static const StringID _endgame_performance_titles[16] = {
+	STR_0213_BUSINESSMAN,
+	STR_0213_BUSINESSMAN,
+	STR_0213_BUSINESSMAN,
+	STR_0213_BUSINESSMAN,
+	STR_0213_BUSINESSMAN,
+	STR_0214_ENTREPRENEUR,
+	STR_0214_ENTREPRENEUR,
+	STR_0215_INDUSTRIALIST,
+	STR_0215_INDUSTRIALIST,
+	STR_0216_CAPITALIST,
+	STR_0216_CAPITALIST,
+	STR_0217_MAGNATE,
+	STR_0217_MAGNATE,
+	STR_0218_MOGUL,
+	STR_0218_MOGUL,
+	STR_0219_TYCOON_OF_THE_CENTURY,
+};
+
+inline StringID EndGameGetPerformanceTitleFromValue(uint value)
+{
+	return _endgame_performance_titles[minu(value, 1000) >> 6];
+}
+
+/* Save the highscore for the player */
+int SaveHighScoreValue(const Player *p)
+{
+	HighScore *hs = _highscore_table[_opt.diff_level];
+	uint i;
+	uint16 score = p->old_economy[0].performance_history;
+
+	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
+		/* You are in the TOP5. Move all values one down and save us there */
+		if (hs[i].score <= score) {
+			byte buf[sizeof(hs[i].company)];
+			
+			// move all elements one down starting from the replaced one
+			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
+			SetDParam(0, p->president_name_1);
+			SetDParam(1, p->president_name_2);
+			SetDParam(2, p->name_1);
+			SetDParam(3, p->name_1);
+			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
+			ttd_strlcpy(hs[i].company, buf, sizeof(buf));
+			hs[i].score = score;
+			hs[i].title = EndGameGetPerformanceTitleFromValue(score);
+			return i;
+		}
+	}
+
+	return -1; // too bad; we did not make it into the top5
+}
+
+/* Save HighScore table to file */
+void SaveToHighScore(void)
+{
+	FILE *fp = fopen(_highscore_file, "w");
+
+	if (fp != NULL) {
+		uint i;
+		HighScore *hs;
+
+		for (i = 0; i < lengthof(_highscore_table); i++) {
+			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
+				/* First character is a command character, so strlen will fail on that */
+				byte length = min(sizeof(hs->company), (hs->company[0] == '\0') ? 0 : strlen(&hs->company[1]) + 1);
+
+				fwrite(&length, sizeof(length), 1, fp); // write away string length
+				fwrite(hs->company, length, 1, fp);
+				fwrite(&hs->score, sizeof(hs->score), 1, fp);
+				fwrite(&hs->title, sizeof(hs->title), 1, fp);
+			}
+		}
+		fclose(fp);
+	}
+}
+
+/* Initialize the highscore table to 0 and if any file exists, load in values */
+void LoadFromHighScore(void) 
+{
+	FILE *fp = fopen(_highscore_file, "r");
+
+	memset(_highscore_table, 0, sizeof(_highscore_table));
+
+	if (fp != NULL) {
+		uint i;
+		HighScore *hs;
+
+		for (i = 0; i < lengthof(_highscore_table); i++) {
+			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
+				byte length;
+				fread(&length, sizeof(length), 1, fp);
+
+				fread(hs->company, 1, length, fp);
+				fread(&hs->score, sizeof(hs->score), 1, fp);
+				fread(&hs->title, sizeof(hs->title), 1, fp);
+			}
+		}
+		fclose(fp);
+	}
+}
+
 // Save/load of players
 static const byte _player_desc[] = {
 	SLE_VAR(Player,name_2,					SLE_UINT32),

@@ -546,6 +546,8 @@ void HandleButtonClick(Window *w, byte widget);
 Window *GetCallbackWnd();
 void DeleteNonVitalWindows();
 void DeleteAllNonVitalWindows(void);
+void HideVitalWindows(void);
+void ShowVitalWindows(void);
 
 /* window.c */
 VARDEF Window _windows[25];

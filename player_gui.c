@@ -744,3 +744,166 @@ void ShowBuyCompanyDialog(uint player)
 {
 	AllocateWindowDescFront(&_buy_company_desc, player);
 }
+
+/********** HIGHSCORE and ENDGAME windows */
+
+/* Always draw a maximized window and within there the centered background */
+static void SetupHighScoreEndWindow(Window *w, uint *x, uint *y)
+{
+	uint i;
+	// resize window to "full-screen"
+	w->width = _screen.width;
+	w->height = _screen.height;
+	w->widget[0].right = w->width - 1;
+	w->widget[0].bottom = w->height - 1;
+
+	DrawWindowWidgets(w);
+
+	/* Center Highscore/Endscreen background */
+	*x = max(0, (_screen.width  / 2) - (640 / 2));
+	*y = max(0, (_screen.height / 2) - (480 / 2));
+	for (i = 0; i < 10; i++) // the image is split into 10 50px high parts
+		DrawSprite(WP(w, general_d).i + i, *x, *y + (i * 50));
+}
+
+extern StringID EndGameGetPerformanceTitleFromValue(uint value);
+
+/* End game window shown at the end of the game */
+static void EndGameWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT: {
+		const Player *p = DEREF_PLAYER(_local_player);
+		uint x, y;
+
+		SetupHighScoreEndWindow(w, &x, &y);
+
+		/* We need to get performance from last year because the image is shown
+		 * at the start of the new year when these things have already been copied */
+		if (WP(w, general_d).i == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
+			SetDParam(0, p->president_name_1);
+			SetDParam(1, p->president_name_2);
+			SetDParam(2, p->name_1);
+			SetDParam(3, p->name_2);
+			SetDParam(4, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			DrawStringMultiCenter(x + (640 / 2), y + 107, STR_021C_OF_ACHIEVES_STATUS, 640);
+		} else {
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
+		}
+		} break;
+	case WE_CLICK: /* OnClick show the highscore chart */
+		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		ShowHighscoreTable(w->window_number, WP(w, general_d).j);
+		DeleteWindow(w);
+	}
+}
+
+static void HighScoreWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT: {
+		const HighScore *hs = _highscore_table[w->window_number];
+		uint i, x, y;
+
+		SetupHighScoreEndWindow(w, &x, &y);
+
+		SetDParam(0, w->window_number + STR_6801_EASY);
+		DrawStringMultiCenter(x + (640 / 2), y + 62, STR_0211_TOP_COMPANIES_WHO_REACHED, 640);
+
+		/* Draw Highscore peepz */
+		for (i = 0; i < lengthof(_highscore_table[0]); i++) {
+			SetDParam(0, i + 1);
+			DrawString(x + 40, y + 140 + (i * 55), STR_0212, 0x10);
+
+			if (hs[i].company[0] != '\0') {
+				uint16 colour = (WP(w, general_d).j == i) ? 0x3 : 0x10; // draw new highscore in red
+
+				DoDrawString(hs[i].company, x + 71, y + 140 + (i * 55), colour);
+				SetDParam(0, hs[i].title);
+				SetDParam(1, hs[i].score);
+				DrawString(x + 71, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
+			}
+		}
+	} break;	
+
+	case WE_CLICK: /* Onclick get back all hidden windows */
+		if (_game_mode != GM_MENU)				
+			ShowVitalWindows();
+
+		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		DeleteWindow(w);
+		break;
+	}
+}
+
+static const Widget _highscore_widgets[] = {
+{      WWT_PANEL, RESIZE_NONE, 16, 0, 640, 0, 480, 0x0, STR_NULL},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _highscore_desc = {
+	0, 0, 641, 481,
+	WC_HIGHSCORE_ENDSCREEN,0,
+	0,
+	_highscore_widgets,
+	HighScoreWndProc
+};
+
+static const WindowDesc _endgame_desc = {
+	0, 0, 641, 481,
+	WC_HIGHSCORE_ENDSCREEN,0,
+	0,
+	_highscore_widgets,
+	EndGameWndProc
+};
+
+/* Show the highscore table for a given difficulty. When called from
+ * endgame ranking is set to the top5 element that was newly added
+ * and is thus highlighted */
+void ShowHighscoreTable(int difficulty, int ranking)
+{
+	Window *w;
+
+	/* Close all always on-top windows to get a clean screen */
+	if (_game_mode != GM_MENU)
+		HideVitalWindows();
+
+	if (!_networking) // pause game to show chart
+		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+
+	DeleteWindowById(WC_HIGHSCORE_ENDSCREEN, 0);
+	w = AllocateWindowDesc(&_highscore_desc);
+
+	if (w != NULL) {
+		MarkWholeScreenDirty();
+		w->window_number = difficulty; // show highscore chart for difficulty...
+		WP(w, general_d).i = SPR_HIGHSCORE_CHART_BEGIN; // which background to show
+		WP(w, general_d).j = ranking;
+	}
+}
+
+/* Show the endgame victory screen in 2050. Update the new highscore
+ * if it was high enough */
+void ShowEndGameChart(void)
+{
+	Window *w;
+	const Player *p = DEREF_PLAYER(_local_player);
+
+	if (!_networking) { // pause the game and hide all windows to show end-chart
+		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		HideVitalWindows();
+	}
+
+	DeleteWindowById(WC_HIGHSCORE_ENDSCREEN, 0);
+	w = AllocateWindowDesc(&_endgame_desc);
+
+	if (w != NULL) {
+		MarkWholeScreenDirty();
+		w->window_number = _opt.diff_level; // show highscore chart for difficulty...
+		WP(w, general_d).i = (p->old_economy[0].performance_history == SCORE_MAX) ? SPR_TYCOON_IMG2_BEGIN : SPR_TYCOON_IMG1_BEGIN; // which background to show
+		WP(w, general_d).j = SaveHighScoreValue(p);
+	}
+}

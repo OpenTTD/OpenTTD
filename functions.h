@@ -235,7 +235,8 @@ void ShowNetworkNeedCompanyPassword();
 void ShowRenameSignWindow(SignStruct *ss);
 void ShowRenameWaypointWindow(Waypoint *cp);
 int FindFirstBit(uint32 x);
-void ShowHighscoreTable(int tbl);
+void ShowHighscoreTable(int difficulty, int rank);
+void ShowEndGameChart(void);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
 enum SaveOrLoadResult {

@@ -1520,6 +1520,13 @@ void DeleteAllNonVitalWindows(void)
 	}
 }
 
+/* Delete all always on-top windows to get an empty screen */
+void HideVitalWindows(void)
+{
+	DeleteWindowById(WC_MAIN_TOOLBAR, 0);
+	DeleteWindowById(WC_STATUS_BAR, 0);
+}
+
 int PositionMainToolbar(Window *w)
 {
 	DEBUG(misc, 1) ("Repositioning Main Toolbar...");

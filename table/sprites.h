@@ -722,6 +722,10 @@ enum Sprites {
 	SPR_OTTD_Y                = 4843,
 	SPR_OTTD_C                = 4844,
 
+	SPR_HIGHSCORE_CHART_BEGIN = 4804,
+	SPR_TYCOON_IMG1_BEGIN     = 4814,
+	SPR_TYCOON_IMG2_BEGIN     = 4824,
+
 	/* road_gui.c */
 	SPR_IMG_ROAD_NW				= 1309,
 	SPR_IMG_ROAD_NE				= 1310,

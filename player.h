@@ -201,4 +201,15 @@ VARDEF Player _players[MAX_PLAYERS];
 #define IS_HUMAN_PLAYER(p) (!DEREF_PLAYER((byte)(p))->is_ai)
 #define IS_INTERACTIVE_PLAYER(p) (((byte)p) == _local_player)
 
+typedef struct HighScore {
+	char company[100];
+	StringID title;
+	uint16 score;
+} HighScore;
+
+VARDEF HighScore _highscore_table[4][5]; // 4 difficulty-settings; top 5
+void SaveToHighScore(void);
+void LoadFromHighScore(void);
+int SaveHighScoreValue(const Player *p);
+
 #endif /* PLAYER_H */

@@ -340,6 +340,7 @@ VARDEF int _num_screenshot_formats, _cur_screenshot_format;
 VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;
+VARDEF char *_highscore_file;
 VARDEF char *_log_file;
 VARDEF FILE *_log_file_fd;
 

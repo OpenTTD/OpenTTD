@@ -2402,24 +2402,7 @@ void SetupColorsAndInitialWindow()
 		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, 0, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, 0x8080, 0);
 
-		w = AllocateWindowDesc(&_toolb_normal_desc);
-		w->disabled_state = 1 << 17; // disable zoon-in button (by default game is zoomed in)
-
-		if (_networking) { // if networking, disable fast-forward button
-			w->disabled_state |= (1 << 1);
-			if (!_network_server) // if not server, disable pause button
-				w->disabled_state |= (1 << 0);
-		}
-
-		w->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
-
-		_main_status_desc.top = height - 12;
-		w = AllocateWindowDesc(&_main_status_desc);
-		w->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-		WP(w,def_d).data_1 = -1280;
+		ShowVitalWindows();
 
 		/* Bring joining GUI to front till the client is really joined */
 		if (_networking && !_network_server)
@@ -2432,13 +2415,36 @@ void SetupColorsAndInitialWindow()
 
 		w = AllocateWindowDesc(&_toolb_scen_desc);
 		w->disabled_state = 1 << 9;
-		w->flags4 &= ~WF_WHITE_BORDER_MASK;
+		CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
 		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_scen_desc)
 		break;
 	default:
 		NOT_REACHED();
 	}
+}
+
+void ShowVitalWindows(void)
+{
+	Window *w;
+
+	w = AllocateWindowDesc(&_toolb_normal_desc);
+	w->disabled_state = 1 << 17; // disable zoom-in button (by default game is zoomed in)
+	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
+
+	if (_networking) { // if networking, disable fast-forward button
+		SETBIT(w->disabled_state, 1);
+		if (!_network_server) // if not server, disable pause button
+			SETBIT(w->disabled_state, 0);
+	}
+	
+	PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
+
+	_main_status_desc.top = _screen.height - 12;
+	w = AllocateWindowDesc(&_main_status_desc);
+	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
+
+	WP(w,def_d).data_1 = -1280;
 }
 
 void GameSizeChanged()

@@ -2065,6 +2065,7 @@ void DeterminePaths()
 	_path.lang_dir = str_fmt("%slang\\", cfg);
 
 	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+	_highscore_file = str_fmt("%shs.dat", _path.personal_dir);
 	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
 
 	// make (auto)save and scenario folder

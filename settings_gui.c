@@ -330,6 +330,11 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 
 extern void StartupEconomy();
 
+enum {
+	GAMEDIFF_WND_TOP_OFFSET = 45,
+	GAMEDIFF_WND_ROWSIZE    = 9
+};
+
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -338,11 +343,11 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		int i;
 		int x,y,value;
 
-		w->click_state = (1 << 4) << _opt_mod_temp.diff_level;
-		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7);
+		w->click_state = (1 << 3) << _opt_mod_temp.diff_level;
+		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
 		// Disable save-button in multiplayer (and if client)
 		if (_networking && !_network_server)
-			w->disabled_state |= (1 << 10);
+			SETBIT(w->disabled_state, 10);
 		DrawWindowWidgets(w);
 
 		click_a = _difficulty_click_a;
@@ -358,32 +363,32 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		disabled = _game_mode == GM_NORMAL ? 0x383E : 0;
 
 		x = 0;
-		y = 32;
+		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, GetBitAndShift(&click_a)?0x20:0);
-			DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, GetBitAndShift(&click_b)?0x20:0);
+			DrawFrameRect(x+5, y, x+5+8, y+8, 3, GetBitAndShift(&click_a)?0x20:0);
+			DrawFrameRect(x+15, y, x+15+8, y+8, 3, GetBitAndShift(&click_b)?0x20:0);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
 				int color = 0x8000 | _color_list[3].unk2;
-				GfxFillRect(x+6, y+2, x+6+8, y+9, color);
-				GfxFillRect(x+16, y+2, x+16+8, y+9, color);
+				GfxFillRect(x+6, y+1, x+6+8, y+8, color);
+				GfxFillRect(x+16, y+1, x+16+8, y+8, color);
 			}
 
-			DrawStringCentered(x+10, y+1, STR_6819, 0);
-			DrawStringCentered(x+20, y+1, STR_681A, 0);
+			DrawStringCentered(x+10, y, STR_6819, 0);
+			DrawStringCentered(x+20, y, STR_681A, 0);
 
 
 			value = _game_setting_info[i].str + ((int*)&_opt_mod_temp.diff)[i];
 			if (i == 4) value *= 1000; // handle currency option
 			SetDParam(0, value);
-			DrawString(x+30, y+1, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
+			DrawString(x+30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
 
-			y += 11;
+			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
 		}
 	} break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 3: {
+		case 8: {
 			int x,y;
 			uint btn, dis;
 			int val;
@@ -397,19 +402,18 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if (!IS_INT_INSIDE(x, 0, 21))
 				return;
 
-			y = e->click.pt.y - 33;
+			y = e->click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
 			if (y < 0)
 				return;
 
 			// Get button from Y coord.
-			btn = y / 11;
-			if (btn >= GAME_DIFFICULTY_NUM || y % 11 > 9)
+			btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+			if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
 				return;
 
 			// Clicked disabled button?
-			dis = 0;
-			if (_game_mode == GM_NORMAL)
-				dis |= 0x383E;
+			dis = (_game_mode == GM_NORMAL) ? 0x383E : 0;
+
 			if (HASBIT(dis, btn))
 				return;
 
@@ -434,15 +438,15 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		}
-		case 4: case 5: case 6: case 7: // easy/medium/hard/custom
+		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
-			SetDifficultyLevel(e->click.widget - 4, &_opt_mod_temp);
+			SetDifficultyLevel(e->click.widget - 3, &_opt_mod_temp);
 			SetWindowDirty(w);
 			break;
-		case 8:
-			ShowHighscoreTable(_opt_mod_ptr->diff_level);
+		case 7: /* Highscore Table */
+			ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
 			break;
-		case 10: { // Save button - save changes
+		case 10: { /* Save button - save changes */
 			int btn, val;
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
 				val = ((int*)&_opt_mod_temp.diff)[btn];
@@ -479,13 +483,12 @@ static const Widget _game_difficulty_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    29, 0x0,												STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    30,   276, 0x0,												STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,							STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,						STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,							STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,						STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    10,     0,   369,   251,   262, 0x0,												STR_NULL},
-//{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,   369,   251,   262, STR_6838_SHOW_HI_SCORE_CHART,STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,   369,    30,    41, STR_6838_SHOW_HI_SCORE_CHART,STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,												STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,												STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,	STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,						STR_NULL},
@@ -508,11 +511,6 @@ void ShowGameDifficulty()
 	 */
 	memcpy(&_opt_mod_temp, _opt_mod_ptr, sizeof(GameOptions));
 	AllocateWindowDesc(&_game_difficulty_desc);
-}
-
-void ShowHighscoreTable(int tbl)
-{
-	ShowInfoF("ShowHighscoreTable(%d) not implemented", tbl);
 }
 
 // virtual PositionMainToolbar function, calls the right one.

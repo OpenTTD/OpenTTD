@@ -700,8 +700,11 @@ void IncreaseDate()
 		NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */
 
+	/* check if we reached 2090, that's the maximum year. */
+	if (_cur_year == 131) { // end of game on 31 dec 2050
+			ShowEndGameChart();
 	/* check if we reached 2090 (MAX_YEAR_END_REAL), that's the maximum year. */
-	if (_cur_year == (MAX_YEAR_END + 1)) {
+	} else if (_cur_year == (MAX_YEAR_END + 1)) {
 		Vehicle *v;
 		_cur_year = MAX_YEAR_END;
 		_date = 62093;

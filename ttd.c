@@ -648,6 +648,7 @@ int ttd_main(int argc, char* argv[])
 #endif
 
 	LoadFromConfig();
+	LoadFromHighScore();
 
 	// override config?
 	if (musicdriver[0]) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
@@ -748,6 +749,7 @@ int ttd_main(int argc, char* argv[])
 	_sound_driver->stop();
 
 	SaveToConfig();
+	SaveToHighScore();
 
 	// uninitialize airport state machines
 	UnInitializeAirports();
@@ -1176,9 +1178,11 @@ void BeforeSaveGame()
 {
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
-	_saved_scrollpos_x = WP(w,vp_d).scrollpos_x;
-	_saved_scrollpos_y = WP(w,vp_d).scrollpos_y;
-	_saved_scrollpos_zoom = w->viewport->zoom;
+	if (w != NULL) {
+		_saved_scrollpos_x = WP(w,vp_d).scrollpos_x;
+		_saved_scrollpos_y = WP(w,vp_d).scrollpos_y;
+		_saved_scrollpos_zoom = w->viewport->zoom;
+	}
 }
 
 void ConvertTownOwner()
