@@ -229,7 +229,12 @@ enum VehStatus {
 	VS_CRASHED = 0x80,
 };
 
-
+// 1 and 3 do not appear to be used
+enum TrainSubtype {
+	TS_Front_Engine = 0,
+	TS_Not_First = 2,
+	TS_Free_Car = 4,
+};
 
 /* Effect vehicle types */
 enum {

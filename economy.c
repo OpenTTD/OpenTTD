@@ -128,7 +128,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner)
 				continue;
-			if ((v->type == VEH_Train && v->subtype == 0) ||
+			if ((v->type == VEH_Train && v->subtype == TS_Front_Engine) ||
 					v->type == VEH_Road ||
 					(v->type == VEH_Aircraft && v->subtype<=2) ||
 					v->type == VEH_Ship) {
@@ -310,7 +310,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 		// Determine Ids for the new vehicles
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == new_player) {
-				if (v->type == VEH_Train && v->subtype == 0)
+				if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
 					num_train++;
 				else if (v->type == VEH_Road)
 					num_road++;
@@ -330,7 +330,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 					DeleteVehicle(v);
 				} else {
 					v->owner = new_player;
-					if (v->type == VEH_Train && v->subtype == 0)
+					if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
 						v->unitnumber = ++num_train;
 					else if (v->type == VEH_Road)
 						v->unitnumber = ++num_road;
@@ -1297,7 +1297,7 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 	}
 
 	FOR_ALL_VEHICLES(x) {
-		if ((x->type != VEH_Train || x->subtype == 0) && // for all locs
+		if ((x->type != VEH_Train || x->subtype == TS_Front_Engine) && // for all locs
 				u->last_station_visited == x->last_station_visited && // at the same station
 				!(x->vehstatus & VS_STOPPED) && // not stopped
 				x->current_order.type == OT_LOADING && // loading

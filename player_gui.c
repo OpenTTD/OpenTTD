@@ -424,7 +424,7 @@ static void DrawPlayerVehiclesAmount(int player)
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == player) {
 			if (v->type == VEH_Train) {
-				if (v->subtype == 0)
+				if (v->subtype == TS_Front_Engine)
 					train++;
 			} else if (v->type == VEH_Road) {
 				road++;

@@ -65,7 +65,7 @@ void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 	// find a locomotive in the depot.
 	found = NULL;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && v->subtype==0 &&
+		if (v->type == VEH_Train && v->subtype == TS_Front_Engine &&
 				v->tile == tile &&
 				v->u.rail.track == 0x80) {
 			if (found != NULL) // must be exactly one.
@@ -314,12 +314,12 @@ static void DrawTrainDepotWindow(Window *w)
 	hnum = 1;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				  (v->subtype == 0 || v->subtype == 4) &&
+				  (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car) &&
 				v->tile == (TileIndex)tile &&
 				v->u.rail.track == 0x80) {
 					num++;
 					// determine number of items in the X direction.
-					if (v->subtype == 0) {
+					if (v->subtype == TS_Front_Engine) {
 						i = 0;
 						u = v;
 						do i++; while ( (u=u->next) != NULL);
@@ -349,7 +349,7 @@ static void DrawTrainDepotWindow(Window *w)
 	// draw all trains
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				v->subtype == 0 &&
+				v->subtype == TS_Front_Engine &&
 				v->tile == (TileIndex)tile &&
 				v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
@@ -377,7 +377,7 @@ static void DrawTrainDepotWindow(Window *w)
 	// draw all remaining vehicles
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				v->subtype == 4 &&
+				v->subtype == TS_Free_Car &&
 				v->tile == (TileIndex)tile &&
 				v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
@@ -424,7 +424,7 @@ static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehicl
 	/* go through all the locomotives */
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				v->subtype == 0 &&
+				v->subtype == TS_Front_Engine &&
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
 				--row < 0) {
@@ -438,7 +438,7 @@ static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehicl
 	/* and then the list of free wagons */
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				v->subtype == 4 &&
+				v->subtype == TS_Free_Car &&
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
 				--row < 0)
@@ -455,7 +455,7 @@ found_it:
 	d->head = d->wagon = v;
 
 	/* either pressed the flag or the number, but only when it's a loco */
-	if (area_x < 0 && v->subtype==0)
+	if (area_x < 0 && v->subtype == TS_Front_Engine)
 		return area_x;
 
 	/* find the vehicle in this row that was clicked */
@@ -475,7 +475,7 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, int sel, Vehicle *head)
 
 	v = GetVehicle(sel);
 
-	if (/*v->subtype == 0 ||*/ v == wagon)
+	if (/*v->subtype == TS_Front_Engine ||*/ v == wagon)
 		return;
 
 	if (wagon == NULL) {
@@ -576,7 +576,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 			sell_cmd = (e->click.widget == 5 || _ctrl_pressed) ? 1 : 0;
 
-			if (v->subtype != 0) {
+			if (v->subtype != TS_Front_Engine) {
 				DoCommandP(v->tile, v->index, sell_cmd, NULL, CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE));
 			} else {
 				_backup_orders_tile = v->tile;
@@ -597,7 +597,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 						sel != INVALID_VEHICLE) {
 					if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 						TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
-					} else if (gdvp.head != NULL && gdvp.head->subtype==0) {
+					} else if (gdvp.head != NULL && gdvp.head->subtype == TS_Front_Engine) {
 						ShowTrainViewWindow(gdvp.head);
 					}
 				}
@@ -1365,7 +1365,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 				v = GetVehicle(vl->sort_list[id_v].index);
 
-				assert(v->type == VEH_Train && v->subtype == 0 && v->owner == owner);
+				assert(v->type == VEH_Train && v->subtype == TS_Front_Engine && v->owner == owner);
 
 				ShowTrainViewWindow(v);
 			}

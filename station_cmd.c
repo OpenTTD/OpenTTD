@@ -2188,7 +2188,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 	uint16 spd;
 
 	if (v->type == VEH_Train) {
-		if (IS_BYTE_INSIDE(_map5[tile], 0, 8) && v->subtype == 0 &&
+		if (IS_BYTE_INSIDE(_map5[tile], 0, 8) && v->subtype == TS_Front_Engine &&
 			!IsTrainStationTile(tile + TileOffsByDir(v->direction >> 1))) {
 
 			station_id = _map2[tile];

@@ -271,9 +271,9 @@ static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
 	if (u->type != v->type)
 		return false;
 
-	if (u->type == VEH_Train && u->subtype != 0) {
+	if (u->type == VEH_Train && u->subtype != TS_Front_Engine) {
 		u = GetFirstVehicleInChain(u);
-		if (u->subtype != 0)
+		if (u->subtype != TS_Front_Engine)
 			return false;
 	}
 

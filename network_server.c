@@ -1249,7 +1249,7 @@ void NetworkPopulateCompanyInfo(void)
 		if (v->owner < MAX_PLAYERS)
 			switch (v->type) {
 				case VEH_Train:
-					if (v->subtype == 0)
+					if (v->subtype == TS_Front_Engine)
 						_network_player_info[v->owner].num_vehicle[0]++;
 					break;
 				case VEH_Road:

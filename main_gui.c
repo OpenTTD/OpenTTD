@@ -810,7 +810,7 @@ static void ToolbarTrainClick(Window *w)
 	Vehicle *v;
 	int dis = -1;
 	FOR_ALL_VEHICLES(v)
-		if (v->type == VEH_Train && v->subtype == 0) CLRBIT(dis, v->owner);
+		if (v->type == VEH_Train && v->subtype == TS_Front_Engine) CLRBIT(dis, v->owner);
 	PopupMainPlayerToolbMenu(w, 310, 13, dis);
 }
 

@@ -159,7 +159,7 @@ void AfterLoadVehicles()
 			VehiclePositionChanged(v);
 
 			if (v->type == VEH_Train) {
-				if (v->subtype == 0)
+				if (v->subtype == TS_Front_Engine)
 					UpdateTrainAcceleration(v);
 			}
 		}
@@ -2012,7 +2012,7 @@ static void Load_VEHS()
 	FOR_ALL_VEHICLES(v) {
 		Vehicle *w;
 
-		if (v->type != VEH_Train || v->subtype != 0)
+		if (v->type != VEH_Train || v->subtype != TS_Front_Engine)
 			continue;
 
 		for (w = v->next; w; w = w->next)

@@ -39,7 +39,7 @@ void UpdateTrainAcceleration(Vehicle *v)
 	uint acc, power=0, max_speed=5000, weight=0;
 	Vehicle *u = v;
 
-	assert(v->subtype == 0);
+	assert(v->subtype == TS_Front_Engine);
 
 	// compute stuff like max speed, power, and weight.
 	do {
@@ -92,7 +92,7 @@ static int GetRealisticAcceleration(Vehicle *v)
 	float f = 0.0f, spd;
 	int curves = 0;
 
-	assert(v->subtype == 0);
+	assert(v->subtype == TS_Front_Engine);
 
 	// compute inclination force and number of curves.
 	do {
@@ -251,7 +251,7 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 
 			FOR_ALL_VEHICLES(w) {
 				if (w->type == VEH_Train && w->tile == (TileIndex)tile &&
-				    w->subtype == 4 && w->engine_type == engine) {
+				    w->subtype == TS_Free_Car && w->engine_type == engine) {
 					u = GetLastVehicleInChain(w);
 					break;
 				}
@@ -275,12 +275,12 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			v->u.rail.track = 0x80;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
-			v->subtype = 4;
+			v->subtype = TS_Free_Car;
 			if (u != NULL) {
 				u->next = v;
-				v->subtype = 2;
+				v->subtype = TS_Not_First;
 				v->u.rail.first_engine = u->u.rail.first_engine;
-				if (v->u.rail.first_engine == 0xffff && u->subtype == 0)
+				if (v->u.rail.first_engine == 0xffff && u->subtype == TS_Front_Engine )
 					v->u.rail.first_engine = u->engine_type;
 			} else {
 				v->u.rail.first_engine = 0xffff;
@@ -314,7 +314,7 @@ static void NormalizeTrainVehInDepot(Vehicle *u)
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && v->subtype==4 &&
+		if (v->type == VEH_Train && v->subtype == TS_Free_Car &&
 				v->tile == u->tile &&
 				v->u.rail.track == 0x80) {
 			if (DoCommandByTile(0,v->index | (u->index<<16), 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE) == CMD_ERROR)
@@ -377,7 +377,7 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 	u->u.rail.track = 0x80;
 	v->u.rail.first_engine = 0xffff;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
-	u->subtype = 2;
+	u->subtype = TS_Not_First;
 	u->spritenum = v->spritenum + 1;
 	u->cargo_type = v->cargo_type;
 	u->cargo_cap = v->cargo_cap;
@@ -517,7 +517,7 @@ errmsg:
 	do {
 		count++;
 		if (v->u.rail.track != 0x80 || v->tile != (TileIndex)tile ||
-				(v->subtype==0 && !(v->vehstatus&VS_STOPPED)))
+				(v->subtype == TS_Front_Engine && !(v->vehstatus&VS_STOPPED)))
 			goto errmsg;
 	} while ( (v=v->next) != NULL);
 
@@ -534,7 +534,7 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 		Vehicle *u;
 		if ((v=v->next) == NULL) return NULL;
 		for (u=v; u; u=u->next) u->u.rail.first_engine = v->engine_type;
-		v->subtype = 4;
+		v->subtype = TS_Free_Car;
 		return v;
 	} else {
 		Vehicle *u;
@@ -551,7 +551,7 @@ static Vehicle *FindGoodVehiclePos(Vehicle *src)
 	TileIndex tile = src->tile;
 
 	FOR_ALL_VEHICLES(dst) {
-		if (dst->type==VEH_Train && dst->subtype==4 && dst->tile==tile) {
+		if (dst->type == VEH_Train && dst->subtype == TS_Free_Car && dst->tile==tile) {
 			// check so all vehicles in the line have the same engine.
 			Vehicle *v = dst;
 			while (v->engine_type == eng) {
@@ -611,7 +611,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (num < 0)
 			return CMD_ERROR;
 
-		if (num > (_patches.mammoth_trains ? 100 : 9) && dst_head->subtype==0)
+		if (num > (_patches.mammoth_trains ? 100 : 9) && dst_head->subtype == TS_Front_Engine )
 			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
 
 		// if it's a multiheaded vehicle we're dragging to, drag to the vehicle before..
@@ -630,7 +630,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return 0;
 
 	// moving a loco to a new line?, then we need to assign a unitnumber.
-	if (dst == NULL && src->subtype != 0 && is_loco) {
+	if (dst == NULL && src->subtype != TS_Front_Engine && is_loco) {
 		uint unit_num = GetFreeUnitNumber(VEH_Train);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -658,30 +658,30 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (dst == NULL) {
 			// move the train to an empty line. for locomotives, we set the type to 0. for wagons, 4.
 			if (is_loco) {
-				if (src->subtype != 0) {
+				if (src->subtype != TS_Front_Engine) {
 					// setting the type to 0 also involves setting up the orders field.
-					src->subtype = 0;
+					src->subtype = TS_Front_Engine;
 					assert(src->orders == NULL);
 					src->num_orders = 0;
 				}
 				dst_head = src;
 			} else {
-				src->subtype = 4;
+				src->subtype = TS_Free_Car;
 			}
 			src->u.rail.first_engine = 0xffff;
 		} else {
-			if (src->subtype == 0) {
+			if (src->subtype == TS_Front_Engine) {
 				// the vehicle was previously a loco. need to free the order list and delete vehicle windows etc.
 				DeleteWindowById(WC_VEHICLE_VIEW, src->index);
 				DeleteVehicleOrders(src);
 			}
 
-			src->subtype = 2;
+			src->subtype = TS_Not_First;
 			src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
 
 			// setup first_engine
 			src->u.rail.first_engine = dst->u.rail.first_engine;
-			if (src->u.rail.first_engine == 0xffff && dst->subtype == 0)
+			if (src->u.rail.first_engine == 0xffff && dst->subtype == TS_Front_Engine)
 				src->u.rail.first_engine = dst->engine_type;
 
 			// link in the wagon(s) in the chain.
@@ -696,12 +696,12 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			dst->next = src;
 		}
 
-		if (src_head->subtype == 0)
+		if (src_head->subtype == TS_Front_Engine)
 			UpdateTrainAcceleration(src_head);
 		InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
 
 		if (dst_head) {
-			if (dst_head->subtype == 0)
+			if (dst_head->subtype == TS_Front_Engine)
 				UpdateTrainAcceleration(dst_head);
 			InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
 		}
@@ -751,7 +751,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// get first vehicle in chain
 	first = v;
-	if (first->subtype != 0) {
+	if (first->subtype != TS_Front_Engine) {
 		first = GetFirstVehicleInChain(first);
 		last = GetLastVehicleInChain(first);
 		//now if:
@@ -761,7 +761,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// 4) the first and the last vehicle of the chain are not identical
 		// 5) and of "engine" type (i.e. not a carriage)
 		// then let the last vehicle live
-		if ( (p2 == 1) && (v != last) && ( last->engine_type == first->engine_type ) && (last != first) && (first->subtype == 0) )
+		if ( (p2 == 1) && (v != last) && ( last->engine_type == first->engine_type ) && (last != first) && (first->subtype == TS_Front_Engine) )
 			last = GetPrevVehicleInChain(last);
 		else
 			last = NULL;
@@ -785,11 +785,11 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		// always redraw the depot. maybe redraw train list
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
-		if (first->subtype == 0) {
+		if (first->subtype == TS_Front_Engine) {
 			RebuildVehicleLists();
 		}
 		// when selling an attached locomotive. we need to delete its window.
-		if (v->subtype == 0) {
+		if (v->subtype == TS_Front_Engine) {
 			DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 
 			// rearrange all vehicles that follow to separate lines.
@@ -829,7 +829,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		// an attached train changed?
-		if (first && first->subtype == 0) {
+		if (first && first->subtype == TS_Front_Engine) {
 			UpdateTrainAcceleration(first);
 			InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 		}
@@ -1920,7 +1920,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 			// tracks over roads, do owner check of tracks (_map_owner[tile])
 			return
 				_map_owner[tile] == v->owner &&
-				(v->subtype != 0 || (_map3_hi[tile] & 0xF) == v->u.rail.railtype);
+				(v->subtype != TS_Front_Engine || (_map3_hi[tile] & 0xF) == v->u.rail.railtype);
 
 		default:
 			return true;
@@ -1928,7 +1928,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 
 	return
 		_map_owner[tile] == v->owner &&
-		(v->subtype != 0 || (_map3_lo[tile] & 0xF) == v->u.rail.railtype);
+		(v->subtype != TS_Front_Engine || (_map3_lo[tile] & 0xF) == v->u.rail.railtype);
 }
 
 typedef struct {
@@ -2028,14 +2028,14 @@ static int CountPassengersInTrain(Vehicle *v)
 {
 	int num = 0;
 	BEGIN_ENUM_WAGONS(v)
-		if (v->cargo_type == 0) num += v->cargo_count;
+		if (v->cargo_type == CT_PASSENGERS) num += v->cargo_count;
 	END_ENUM_WAGONS(v)
 	return num;
 }
 
 /*
  * Checks whether the specified tried has a collision with another vehicle. If
- * so, destroys this vehicle, and the other vehicle if its subtype is 0 (?).
+ * so, destroys this vehicle, and the other vehicle if its subtype is 0 (TS_Front_Engine).
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
  */
@@ -2074,7 +2074,7 @@ static void CheckTrainCollision(Vehicle *v)
 		num += 2 + CountPassengersInTrain(coll);
 
 	SetVehicleCrashed(v);
-	if (coll->subtype == 0)
+	if (coll->subtype == TS_Front_Engine)
 		SetVehicleCrashed(coll);
 
 
@@ -2093,7 +2093,7 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
 	uint32 d = (uint32)data;
 
-	if (v->type == VEH_Train && v->subtype == 0 && v->tile == (TileIndex)(d >> 8)) {
+	if (v->type == VEH_Train && v->subtype == TS_Front_Engine && v->tile == (TileIndex)(d >> 8)) {
 		byte diff = (v->direction - (byte)d + 2) & 7;
 		if (diff == 2 || (v->cur_speed <= 5 && diff <= 4))
 			return (void*)1;
@@ -2196,14 +2196,14 @@ static void TrainController(Vehicle *v)
 				if (r&0x8)
 					goto invalid_rail;
 
-				if (v->subtype == 0) v->load_unload_time_rem = 0;
+				if (v->subtype == TS_Front_Engine) v->load_unload_time_rem = 0;
 
 				if (!(r&0x4)) {
 					v->tile = gp.new_tile;
 					v->u.rail.track = chosen_track;
 				}
 
-				if (v->subtype == 0)
+				if (v->subtype == TS_Front_Engine)
 					TrainMovedChangeSignals(gp.new_tile, dir>>1);
 
 				/* Signals can only change when the first
@@ -2606,11 +2606,11 @@ void Train_Tick(Vehicle *v)
 
 	v->tick_counter++;
 
-	if (v->subtype == 0) {
+	if (v->subtype == TS_Front_Engine) {
 		TrainLocoHandler(v, false);
 
 		// make sure vehicle wasn't deleted.
-		if (v->type == VEH_Train && v->subtype == 0)
+		if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
 			TrainLocoHandler(v, true);
 	}
 }
@@ -2629,7 +2629,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 {
 	SetSignalsOnBothDir(tile, _depot_track_ind[_map5[tile]&3]);
 
-	if (v->subtype != 0)
+	if (v->subtype != TS_Front_Engine)
 		v = GetFirstVehicleInChain(v);
 
 	VehicleServiceInDepot(v);
@@ -2741,7 +2741,7 @@ void OnNewDay_Train(Vehicle *v)
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
 
-	if (v->subtype == 0) {
+	if (v->subtype == TS_Front_Engine) {
 		CheckVehicleBreakdown(v);
 		AgeVehicle(v);
 
@@ -2785,7 +2785,7 @@ void TrainsYearlyLoop()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && v->subtype == 0) {
+		if (v->type == VEH_Train && v->subtype == TS_Front_Engine) {
 
 			// show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list)
 			if (_patches.train_income_warn && v->owner == _local_player && v->age >= 730 && v->profit_this_year < 0) {
@@ -2809,7 +2809,7 @@ extern void ShowTrainViewWindow(Vehicle *v);
 
 void HandleClickOnTrain(Vehicle *v)
 {
-	if (v->subtype != 0) v = GetFirstVehicleInChain(v);
+	if (v->subtype != TS_Front_Engine) v = GetFirstVehicleInChain(v);
 	ShowTrainViewWindow(v);
 }
 
