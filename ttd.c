@@ -1304,7 +1304,9 @@ void DebugProc(int i)
 		break;
 	case 1:
 		/* Server can not cheat in advertise mode either! */
+#ifdef ENABLE_NETWORK
 		if (!_networking || !_network_server || !_network_advertise)
+#endif /* ENABLE_NETWORK */
 			DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
 		break;
 	case 2:
