@@ -153,20 +153,6 @@ static void DrawOrdersWindow(Window *w)
 	}
 }
 
-
-// lookup a vehicle on a tile
-typedef struct {
-	TileIndex tile;
-	byte owner;
-	byte type;
-} FindVehS;
-
-static void *FindVehicleCallb(Vehicle *v, FindVehS *f)
-{
-	if (v->tile != f->tile || v->owner != f->owner || v->vehstatus & VS_HIDDEN ) return NULL;
-	return v;
-}
-
 static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 {
 	Order order;
