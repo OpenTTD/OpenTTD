@@ -170,6 +170,8 @@ typedef enum {
 CommandPacket *_local_command_queue;
 
 SOCKET _udp_client_socket; // udp client socket
+SOCKET _udp_server_socket; // udp server socket
+SOCKET _udp_master_socket; // udp master socket
 
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)

@@ -4,6 +4,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "network_gamelist.h"
+#include "network_udp.h"
 
 extern void UpdateNetworkGameWindow(bool unselect);
 extern void NetworkPopulateCompanyInfo(void);
@@ -20,13 +21,20 @@ typedef enum {
 	PACKET_UDP_CLIENT_DETAIL_INFO,
 	PACKET_UDP_SERVER_DETAIL_INFO, // Is not used in OpenTTD itself, only for external querying
 	PACKET_UDP_SERVER_REGISTER, // Packet to register itself to the master server
+	PACKET_UDP_MASTER_ACK_REGISTER, // Packet indicating registration has succedeed
+	PACKET_UDP_CLIENT_GET_LIST, // Request for serverlist from master server
+	PACKET_UDP_MASTER_RESPONSE_LIST, // Response from master server with server ip's + port's
 	PACKET_UDP_END
 } PacketUDPType;
 
-static SOCKET _udp_server_socket; // udp server socket
+enum {
+	ADVERTISE_NORMAL_INTERVAL = 450,	// interval between advertising in days
+	ADVERTISE_RETRY_INTERVAL = 5,			// readvertise when no response after this amount of days
+	ADVERTISE_RETRY_TIMES = 3					// give up readvertising after this much failed retries
+};
 
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
-void NetworkSendUDP_Packet(Packet *p, struct sockaddr_in *recv);
+void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {
@@ -58,7 +66,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	NetworkSend_uint8 (packet, _network_game_info.dedicated);
 
 	// Let the client know that we are here
-	NetworkSendUDP_Packet(packet, client_addr);
+	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
 
 	free(packet);
 
@@ -75,6 +83,9 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 		return;
 
 	game_info_version = NetworkRecv_uint8(p);
+
+
+	DEBUG(net, 6)("[NET][UDP] Server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
@@ -205,9 +216,37 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* Indicates end of client list */
 	NetworkSend_uint8(packet, 0);
 
-	NetworkSendUDP_Packet(packet, client_addr);
+	NetworkSendUDP_Packet(_udp_server_socket, packet, client_addr);
 
 	free(packet);
+}
+
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST) {
+	int i;
+	struct in_addr ip;
+	uint16 port;
+	uint8 ver;
+
+	/* packet begins with the protocol version (uint8)
+	 * then an uint16 which indicates how many
+	 * ip:port pairs are in this packet, after that
+	 * an uint32 (ip) and an uint16 (port) for each pair
+	 */
+
+	ver = NetworkRecv_uint8(p);
+
+	if (ver == 1) {
+		for (i = NetworkRecv_uint16(p); i != 0 ; i--) {
+			ip.s_addr = TO_LE32(NetworkRecv_uint32(p));
+			port = NetworkRecv_uint16(p);
+			NetworkUDPQueryServer(inet_ntoa(ip), port);
+		}
+	}
+}
+
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER) {
+	_network_advertise_retries = 0;
+	DEBUG(net, 2)("[NET] We are advertised on the master-server!");
 }
 
 
@@ -220,7 +259,11 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 	RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO),
 	NULL,
 	NULL,
+	RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER),
+	NULL,
+	RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST)
 };
+
 
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_udp_packet) == PACKET_UDP_END);
@@ -241,16 +284,9 @@ void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
 
 
 // Send a packet over UDP
-void NetworkSendUDP_Packet(Packet *p, struct sockaddr_in *recv)
+void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
 {
-	SOCKET udp;
 	int res;
-
-	// Find the correct socket
-	if (_network_udp_server)
-		udp = _udp_server_socket;
-	else
-		udp = _udp_client_socket;
 
 	// Put the length in the buffer
 	p->buffer[0] = p->size & 0xFF;
@@ -266,19 +302,15 @@ void NetworkSendUDP_Packet(Packet *p, struct sockaddr_in *recv)
 }
 
 // Start UDP listener
-bool NetworkUDPListen(uint32 host, uint16 port)
+bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 {
 	struct sockaddr_in sin;
-	SOCKET udp;
 
-	// Make sure sockets are closed
-	if (_network_udp_server)
-		closesocket(_udp_server_socket);
-	else
-		closesocket(_udp_client_socket);
+	// Make sure socket is closed
+	closesocket(*udp);
 
-	udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	if (udp == INVALID_SOCKET) {
+	*udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (*udp == INVALID_SOCKET) {
 		DEBUG(net, 1)("[NET][UDP] Failed to start UDP support");
 		return false;
 	}
@@ -286,7 +318,7 @@ bool NetworkUDPListen(uint32 host, uint16 port)
 	// set nonblocking mode for socket
 	{
 		unsigned long blocking = 1;
-		ioctlsocket(udp, FIONBIO, &blocking);
+		ioctlsocket(*udp, FIONBIO, &blocking);
 	}
 
 	sin.sin_family = AF_INET;
@@ -294,24 +326,16 @@ bool NetworkUDPListen(uint32 host, uint16 port)
 	sin.sin_addr.s_addr = host;
 	sin.sin_port = htons(port);
 
-	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
+	if (bind(*udp, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
 		DEBUG(net, 1) ("[NET][UDP] error: bind failed on %s:%i", inet_ntoa(*(struct in_addr *)&host), port);
 		return false;
 	}
 
-	// enable broadcasting
-	// allow reusing
-	{
+	if (broadcast) {
+		/* Enable broadcast */
 		unsigned long val = 1;
-		setsockopt(udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
-		val = 1;
-		setsockopt(udp, SOL_SOCKET, SO_REUSEADDR, (char *) &val , sizeof(val));
+		setsockopt(*udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
 	}
-
-	if (_network_udp_server)
-		_udp_server_socket = udp;
-	else
-		_udp_client_socket = udp;
 
 	DEBUG(net, 1)("[NET][UDP] Listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);
 
@@ -321,11 +345,15 @@ bool NetworkUDPListen(uint32 host, uint16 port)
 // Close UDP connection
 void NetworkUDPClose(void)
 {
-	DEBUG(net, 1) ("[NET][UDP] Closed listener");
+	DEBUG(net, 1) ("[NET][UDP] Closed listeners");
 
 	if (_network_udp_server) {
 		closesocket(_udp_server_socket);
 		_udp_server_socket = INVALID_SOCKET;
+
+		closesocket(_udp_master_socket);
+		_udp_master_socket = INVALID_SOCKET;
+
 		_network_udp_server = false;
 		_network_udp_broadcast = 0;
 	} else {
@@ -336,7 +364,7 @@ void NetworkUDPClose(void)
 }
 
 // Receive something on UDP level
-void NetworkUDPReceive(void)
+void NetworkUDPReceive(SOCKET udp)
 {
 	struct sockaddr_in client_addr;
 #ifndef __MORPHOS__
@@ -347,12 +375,6 @@ void NetworkUDPReceive(void)
 	int nbytes;
 	static Packet *p = NULL;
 	int packet_len;
-	SOCKET udp;
-
-	if (_network_udp_server)
-		udp = _udp_server_socket;
-	else
-		udp = _udp_client_socket;
 
 	// If p is NULL, malloc him.. this prevents unneeded mallocs
 	if (p == NULL)
@@ -383,7 +405,7 @@ void NetworkUDPReceive(void)
 }
 
 // Broadcast to all ips
-void NetworkUDPBroadCast(void)
+void NetworkUDPBroadCast(SOCKET udp)
 {
 	int i;
 	struct sockaddr_in out_addr;
@@ -408,10 +430,35 @@ void NetworkUDPBroadCast(void)
 		out_addr.sin_port = htons(_network_server_port);
 		out_addr.sin_addr.s_addr = bcaddr;
 
-		NetworkSendUDP_Packet(p, &out_addr);
+		NetworkSendUDP_Packet(udp, p, &out_addr);
 
 		i++;
 	}
+}
+
+
+// Request the the server-list from the master server
+void NetworkUDPQueryMasterServer(void)
+{
+	struct sockaddr_in out_addr;
+	Packet *p;
+
+	if (_udp_client_socket == INVALID_SOCKET)
+		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
+			return;
+
+	p = NetworkSend_Init(PACKET_UDP_CLIENT_GET_LIST);
+
+	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
+	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+
+	// packet only contains protocol version
+	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
+
+	NetworkSendUDP_Packet(_udp_client_socket, p, &out_addr);
+
+	DEBUG(net, 2)("[NET][UDP] Queried Master Server at %s:%d", inet_ntoa(out_addr.sin_addr),ntohs(out_addr.sin_port));
 
 	free(p);
 }
@@ -425,12 +472,12 @@ void NetworkUDPSearchGame(void)
 
 	// No UDP-socket yet..
 	if (_udp_client_socket == INVALID_SOCKET)
-		if (!NetworkUDPListen(0, 0))
+		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
 			return;
 
 	DEBUG(net, 0)("[NET][UDP] Searching server");
 
-	NetworkUDPBroadCast();
+	NetworkUDPBroadCast(_udp_client_socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
@@ -443,7 +490,7 @@ NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port)
 
 	// No UDP-socket yet..
 	if (_udp_client_socket == INVALID_SOCKET)
-		if (!NetworkUDPListen(0, 0))
+		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
 			return NULL;
 
 	ttd_strlcpy(hostname, host, sizeof(hostname));
@@ -462,7 +509,7 @@ NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port)
 	// Init the packet
 	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
 
-	NetworkSendUDP_Packet(p, &out_addr);
+	NetworkSendUDP_Packet(_udp_client_socket, p, &out_addr);
 
 	free(p);
 
@@ -481,9 +528,22 @@ void NetworkUDPAdvertise(void)
 	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
 		return;
 
+	/* check for socket */
+	if (_udp_master_socket == INVALID_SOCKET)
+		if (!NetworkUDPListen(&_udp_master_socket, 0, 0, false))
+			return;
+
 	/* Only send once in the 450 game-days (about 15 minutes) */
-	if (_network_last_advertise_date + 450 > _date)
+	if (_network_advertise_retries == 0) {
+		if ( (_network_last_advertise_date + ADVERTISE_NORMAL_INTERVAL) > _date)
+			return;
+		_network_advertise_retries = ADVERTISE_RETRY_TIMES;
+	}
+
+	if ( (_network_last_advertise_date + ADVERTISE_RETRY_INTERVAL) > _date)
 		return;
+
+	_network_advertise_retries--;
 	_network_last_advertise_date = _date;
 
 	/* Find somewhere to send */
@@ -499,7 +559,8 @@ void NetworkUDPAdvertise(void)
 	NetworkSend_string(p, NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
 	NetworkSend_uint8(p, NETWORK_MASTER_SERVER_VERSION);
 	NetworkSend_uint16(p, _network_server_port);
-	NetworkSendUDP_Packet(p, &out_addr);
+	NetworkSendUDP_Packet(_udp_master_socket, p, &out_addr);
+
 	free(p);
 }
 
@@ -507,6 +568,7 @@ void NetworkUDPInitialize(void)
 {
 	_udp_client_socket = INVALID_SOCKET;
 	_udp_server_socket = INVALID_SOCKET;
+	_udp_master_socket = INVALID_SOCKET;
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;

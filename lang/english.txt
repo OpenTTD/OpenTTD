@@ -1247,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum allowed clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN										:LAN
+STR_NETWORK_INTERNET							:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (advertise)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

@@ -176,8 +176,11 @@ VARDEF uint8 _network_reconnect;
 VARDEF bool _network_udp_server;
 VARDEF uint16 _network_udp_broadcast;
 
+VARDEF byte _network_lan_internet;
+
 VARDEF bool _network_advertise;
 VARDEF uint16 _network_last_advertise_date;
+VARDEF uint8 _network_advertise_retries;
 
 VARDEF bool _network_autoclean_companies;
 VARDEF uint8 _network_autoclean_unprotected; // Remove a company after X months

@@ -747,7 +747,6 @@ static void NetworkClose(void)
 static void NetworkInitialize(void)
 {
 	NetworkClientState *cs;
-	uint i;
 
 	_local_command_queue = NULL;
 
@@ -772,12 +771,6 @@ static void NetworkInitialize(void)
 	InitPlayerRandoms();
 
 	NetworkUDPInitialize();
-
-	// add all servers from the config file to our list
-	for (i=0; i != lengthof(_network_host_list); i++) {
-		if (_network_host_list[i] == NULL) break;
-		NetworkAddServer(_network_host_list[i]);
-	}
 }
 
 // Query a server to fetch his game-info
@@ -946,7 +939,7 @@ bool NetworkServerStart(void)
 
 	// Try to start UDP-server
 	_network_udp_server = true;
-	_network_udp_server = NetworkUDPListen(_network_server_bind_ip, _network_server_port);
+	_network_udp_server = NetworkUDPListen(&_udp_server_socket, _network_server_bind_ip, _network_server_port, false);
 
 	_network_server = true;
 	_networking = true;
@@ -1179,10 +1172,14 @@ static bool NetworkDoClientLoop(void)
 // We have to do some UDP checking
 void NetworkUDPGameLoop(void)
 {
-	if (_network_udp_server)
-		NetworkUDPReceive();
+	if (_network_udp_server) {
+		NetworkUDPReceive(_udp_server_socket);
+		if (_udp_master_socket != INVALID_SOCKET) {
+			NetworkUDPReceive(_udp_master_socket);
+		}
+	}
 	else if (_udp_client_socket != INVALID_SOCKET) {
-		NetworkUDPReceive();
+		NetworkUDPReceive(_udp_client_socket);
 		if (_network_udp_broadcast > 0)
 			_network_udp_broadcast--;
 	}
@@ -1260,6 +1257,7 @@ void NetworkStartUp(void)
 	_network_available = true;
 	_network_dedicated = false;
 	_network_last_advertise_date = 0;
+	_network_advertise_retries = 0;
 
 	/* Load the ip from the openttd.cfg */
 	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);

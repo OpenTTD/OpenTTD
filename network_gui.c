@@ -27,10 +27,17 @@ static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(void);
 
 static byte _selected_field;
+static bool _first_time_show_network_game_window = true;
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN_INTERNET,
 	STR_NETWORK_INTERNET_ADVERTISE,
+	INVALID_STRING_ID
+};
+
+static const StringID _lan_internet_types_dropdown[] = {
+	STR_NETWORK_LAN,
+	STR_NETWORK_INTERNET,
 	INVALID_STRING_ID
 };
 
@@ -76,24 +83,26 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = 0;
 
 		if (_selected_item == NULL) {
-			SETBIT(w->disabled_state, 15); SETBIT(w->disabled_state, 16);
+			SETBIT(w->disabled_state, 17); SETBIT(w->disabled_state, 18);
 		} else if (!_selected_item->online) {
-			SETBIT(w->disabled_state, 15); // Server offline, join button disabled
+			SETBIT(w->disabled_state, 17); // Server offline, join button disabled
 		} else if (_selected_item->info.clients_on == _selected_item->info.clients_max) {
-			SETBIT(w->disabled_state, 15); // Server full, join button disabled
+			SETBIT(w->disabled_state, 17); // Server full, join button disabled
 
 			// revisions don't match, check if server has no revision; then allow connection
 		} else if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
 			if (strncmp(_selected_item->info.server_revision, NOREV_STRING, sizeof(_selected_item->info.server_revision)) != 0)
-				SETBIT(w->disabled_state, 15); // Revision mismatch, join button disabled
+				SETBIT(w->disabled_state, 17); // Revision mismatch, join button disabled
 		}
 
 		SetDParam(0, 0x00);
+		SetDParam(7, _lan_internet_types_dropdown[_network_lan_internet]);
 		DrawWindowWidgets(w);
 
 		DrawEditBox(w, 3);
 
 		DrawString(9, 23, STR_NETWORK_PLAYER_NAME, 2);
+		DrawString(9, 43, STR_NETWORK_CONNECTION, 2);
 
 		DrawString(15, 63, STR_NETWORK_GAME_NAME, 2);
 		DrawString(135, 63, STR_NETWORK_CLIENTS_CAPTION, 2);
@@ -211,10 +220,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		_selected_field = e->click.widget;
 		switch(e->click.widget) {
-		case 0: case 12: /* Close 'X' | Cancel button */
+		case 0: case 14: /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
-		case 8: { /* Matrix to show networkgames */
+		case 4: case 5:
+			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0); // do it for widget 5
+			break;
+		case 10: { /* Matrix to show networkgames */
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -259,10 +271,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 			SetWindowDirty(w);
 		} break;
-		case 9: /* Find server automatically */
-			NetworkUDPSearchGame();
+		case 11: /* Find server automatically */
+			switch (_network_lan_internet) {
+				case 0: NetworkUDPSearchGame(); break;
+				case 1: NetworkUDPQueryMasterServer(); break;
+			}
 			break;
-		case 10: { // Add a server
+		case 12: { // Add a server
 				StringID str = AllocateName((byte*)_network_default_ip, 0);
 
 				ShowQueryString(
@@ -274,10 +289,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				w->window_number);
 				DeleteName(str);
 		} break;
-		case 11: /* Start server */
+		case 13: /* Start server */
 			ShowNetworkStartServerWindow();
 			break;
-		case 15: /* Join Game */
+		case 17: /* Join Game */
 			if (_selected_item != NULL) {
 				memcpy(&_network_game_info, &_selected_item->info, sizeof(NetworkGameInfo));
 				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&_selected_item->ip));
@@ -285,13 +300,23 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				ShowNetworkLobbyWindow();
 			}
 			break;
-		case 16: // Refresh
+		case 18: // Refresh
 			if (_selected_item != NULL) {
 				NetworkQueryServer(_selected_item->info.hostname, _selected_item->port, true);
 			}
 			break;
 
 	}	break;
+
+	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+		switch(e->dropdown.button) {
+			case 5:
+				_network_lan_internet = e->dropdown.index;
+				break;
+		}
+
+		SetWindowDirty(w);
+		break;
 
 	case WE_MOUSELOOP:
 		if (_selected_field == 3)
@@ -314,7 +339,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		switch (HandleEditBoxKey(w, 3, e)) {
 		case 1:
-			HandleButtonClick(w, 8);
+			HandleButtonClick(w, 10);
 			break;
 		}
 
@@ -344,6 +369,9 @@ static const Widget _network_game_window_widgets[] = {
 
 /* LEFT SIDE */
 {     WWT_IMGBTN,   BGC,    90,   230,    22,    33, 0x0,													STR_NETWORK_ENTER_NAME_TIP},
+
+{          WWT_6,   BGC,    90,   230,    42,    53, STR_NETWORK_COMBO1,					STR_NETWORK_CONNECTION_TIP},
+{   WWT_CLOSEBOX,   BGC,   219,   229,    43,    52, STR_0225,										STR_NETWORK_CONNECTION_TIP},
 
 {  WWT_SCROLLBAR,   BGC,   220,   230,    62,   185, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
@@ -380,8 +408,19 @@ static FiosItem *selected_map = NULL; // to highlight slected map
 
 void ShowNetworkGameWindow()
 {
+	uint i;
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
+
+	/* Only show once */
+	if (_first_time_show_network_game_window) {
+		_first_time_show_network_game_window = false;
+		// add all servers from the config file to our list
+		for (i=0; i != lengthof(_network_host_list); i++) {
+			if (_network_host_list[i] == NULL) break;
+			NetworkAddServer(_network_host_list[i]);
+		}
+	}
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
