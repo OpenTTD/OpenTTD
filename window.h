@@ -66,7 +66,7 @@ enum WindowKeyCodes {
 	WKC_CTRL  = 0x4000,
 	WKC_ALT   = 0x2000,
 	WKC_META  = 0x1000,
-	
+
 	// Special ones
 	WKC_NONE = 0,
 	WKC_ESC=1,
@@ -88,7 +88,7 @@ enum WindowKeyCodes {
 	// Return & tab
 	WKC_RETURN = 13,
 	WKC_TAB = 14,
-	
+
 	// Numerical keyboard
 	WKC_NUM_0 = 16,
 	WKC_NUM_1 = 17,
@@ -128,14 +128,14 @@ enum WindowKeyCodes {
 	// we only store this key here, no matter what character is really mapped to it
 	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
 	WKC_BACKQUOTE = 45,
-	
+
 	// 0-9 are mapped to 48-57
 	// A-Z are mapped to 65-90
 	// a-z are mapped to 97-122
-	
+
 
 	//WKC_UNKNOWN = 0xFF,
-	
+
 };
 
 typedef struct WindowDesc {
@@ -161,7 +161,22 @@ enum {
 	WDP_CENTER = -2,
 };
 
+typedef struct {
+	StringID caption;
+	bool caret;
+	WindowClass wnd_class;
+	WindowNumber wnd_num;
+	uint16 maxlen, maxwidth;
+	byte *buf;
+} querystr_d;
+
 #define WP(ptr,str) (*(str*)(ptr)->custom)
+// querystr_d is the bigest struct that comes in w->custom
+//  because 64-bit systems use 64-bit pointers, it is bigger on a 64-bit system
+//  then on a 32-bit system. Therefor the size is calculated from querystr_d
+//  instead of a hardcoded number.
+// if any struct becomes bigger the querystr_d, it should be replaced.
+#define WINDOW_CUSTOM_SIZE sizeof(querystr_d)
 
 typedef struct {
 	uint16 count, cap, pos;
@@ -186,7 +201,7 @@ struct Window {
 	//const WindowDesc *desc;
 	uint32 desc_flags;
 
-	byte custom[16];
+	byte custom[WINDOW_CUSTOM_SIZE];
 };
 
 typedef struct {
@@ -242,22 +257,13 @@ typedef struct {
 } traindetails_d;
 
 typedef struct {
-	int16 scroll_x, scroll_y, subscroll;			
+	int16 scroll_x, scroll_y, subscroll;
 } smallmap_d;
 
 typedef struct {
 	uint32 face;
 	byte gender;
 } facesel_d;
-
-typedef struct {
-	StringID caption;
-	bool caret;
-	WindowClass wnd_class;
-	WindowNumber wnd_num;
-	uint16 maxlen, maxwidth;
-	byte *buf;
-} querystr_d;
 
 typedef struct {
 	int sel;
@@ -308,7 +314,7 @@ enum WindowWidgetBehaviours {
 
 enum WindowWidgetTypes {
 	WWT_EMPTY = 0,
-	
+
 	WWT_IMGBTN = 1, /* button with image */
 	WWT_PANEL = WWT_IMGBTN,
 	WWT_PANEL_2 = 2,/* button with diff image when clicked */
@@ -322,7 +328,7 @@ enum WindowWidgetTypes {
 	WWT_SCROLLBAR = 8,
 	WWT_FRAME = 9, /* frame */
 	WWT_CAPTION = 10,
-	
+
 	WWT_HSCROLLBAR = 11,
 	WWT_LAST = 12,
 
@@ -375,7 +381,7 @@ Window *AllocateWindow(
 							int y,
 							int width,
 							int height,
-							WindowProc *proc, 
+							WindowProc *proc,
 							WindowClass cls,
 							const Widget *widget);
 
@@ -385,7 +391,7 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int value);
 Window *AllocateWindowAutoPlace(
 	int width,
 	int height,
-	WindowProc *proc, 
+	WindowProc *proc,
 	WindowClass cls,
 	const Widget *widget);
 
@@ -394,7 +400,7 @@ Window *AllocateWindowAutoPlace2(
 	WindowNumber exist_num,
 	int width,
 	int height,
-	WindowProc *proc, 
+	WindowProc *proc,
 	WindowClass cls,
 	const Widget *widget);
 

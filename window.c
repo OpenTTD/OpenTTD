@@ -21,9 +21,9 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 	e.event = WE_CLICK;
 
 	if (w->desc_flags & WDF_DEF_WIDGET) {
-		e.click.widget = GetWidgetFromPos(w, x, y); 
+		e.click.widget = GetWidgetFromPos(w, x, y);
 		if (e.click.widget < 0) return; /* exit if clicked outside of widgets */
-		
+
 		wi = &w->widget[e.click.widget];
 
 		if (wi->type & 0xE0) {
@@ -38,21 +38,21 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 			case WWT_NODISTXTBTN:
 				if (HASBIT(w->disabled_state, e.click.widget))
 					return; /* don't allow click if disabled */
-				break;				
+				break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, e.click.pt.x, e.click.pt.y);
 		}
 
 		w->wndproc(w, &e);
-		
+
 		if (w->desc_flags & WDF_STD_BTN) {
 			if (e.click.widget == 0) DeleteWindow(w);
-			else { 
+			else {
 				if (e.click.widget == 1) {
-					if (_ctrl_pressed) 
-						StartWindowSizing(w); 
-					else 
+					if (_ctrl_pressed)
+						StartWindowSizing(w);
+					else
 						StartWindowDrag(w);
 				}
 			}
@@ -80,7 +80,7 @@ void DispatchRightClickEvent(Window *w, int x, int y) {
 	e.event = WE_RCLICK;
 	e.click.pt.x = x;
 	e.click.pt.y = y;
-	w->wndproc(w, &e);	
+	w->wndproc(w, &e);
 }
 
 
@@ -103,12 +103,12 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	_cur_dpi = &bk;
 
 	for(w=_windows; w!=_last_window; w++) {
-		if (right > w->left && 
+		if (right > w->left &&
 				bottom > w->top &&
 				left < w->left + w->width &&
 				top < w->top + w->height) {
-				DrawOverlappedWindow(w, left, top, right, bottom);	
-			}		
+				DrawOverlappedWindow(w, left, top, right, bottom);
+			}
 	}
 }
 
@@ -122,7 +122,7 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 		 		bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
-		
+
 			if (left < (x=v->left)) {
 				DrawOverlappedWindow(w, left, top, x, bottom);
 				DrawOverlappedWindow(w, x, top, right, bottom);
@@ -152,7 +152,7 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 	}
 
 	{
-		DrawPixelInfo *dp = _cur_dpi;	
+		DrawPixelInfo *dp = _cur_dpi;
 		dp->width = right - left;
 		dp->height = bottom - top;
 		dp->left = left - w->left;
@@ -175,7 +175,7 @@ void SetWindowDirty(Window *w)
 {
 	if (w == NULL)
 		return;
-	
+
 	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
 }
 
@@ -220,11 +220,11 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 	Window *w;
 
 	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == cls && 
+		if (w->window_class == cls &&
 			  w->window_number == number) {
 			return w;
 		}
-	}		
+	}
 
 	return NULL;
 }
@@ -232,7 +232,7 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 void DeleteWindowById(WindowClass cls, WindowNumber number)
 {
 	DeleteWindow(FindWindowById(cls, number));
-}	
+}
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
@@ -277,7 +277,7 @@ Window *AllocateWindow(
 							int y,
 							int width,
 							int height,
-							WindowProc *proc, 
+							WindowProc *proc,
 							WindowClass cls,
 							const Widget *widget)
 {
@@ -292,7 +292,7 @@ restart:;
 
 			if (w->window_class != WC_MAIN_WINDOW && w->window_class != WC_MAIN_TOOLBAR &&
 			    w->window_class != WC_STATUS_BAR && w->window_class != WC_NEWS_WINDOW) {
-			
+
 					DeleteWindow(w);
 					goto restart;
 			}
@@ -338,16 +338,16 @@ restart:;
 	w->hscroll.count = 0;
 	w->widget = widget;
 
-	((uint32*)w->custom)[0] = 0;
-	((uint32*)w->custom)[1] = 0;
-	((uint32*)w->custom)[2] = 0;
-	((uint32*)w->custom)[3] = 0;
-
+	{
+		int i;
+		for (i=0;i<lengthof(w->custom);i++)
+			w->custom[i] = 0;
+	}
 
 	_last_window++;
 
 	SetWindowDirty(w);
-	
+
 	CallWindowEventNP(w, WE_CREATE);
 
 	return w;
@@ -358,17 +358,17 @@ Window *AllocateWindowAutoPlace2(
 	WindowNumber exist_num,
 	int width,
 	int height,
-	WindowProc *proc, 
+	WindowProc *proc,
 	WindowClass cls,
 	const Widget *widget)
 {
 	Window *w;
 	int x;
-	
+
 	w = FindWindowById(exist_class, exist_num);
 	if (w == NULL || w->left >= (_screen.width-20) || w->left <= -60 || w->top >= (_screen.height-20)) {
 		return AllocateWindowAutoPlace(width,height,proc,cls,widget);
-	}	
+	}
 
 	x = w->left;
 	if (x > _screen.width - width)
@@ -398,17 +398,17 @@ static bool IsGoodAutoPlace1(int left, int top)
 	if (left < 0 || top < 22 || right > _screen.width || bottom > _screen.height)
 		return false;
 
-	// Make sure it is not obscured by any window.	
+	// Make sure it is not obscured by any window.
 	for(w=_windows; w!=_last_window; w++) {
 		if (w->window_class == WC_MAIN_WINDOW)
 			continue;
 
-		if (right > w->left && 
+		if (right > w->left &&
 		    w->left + w->width > left &&
 				bottom > w->top &&
 				w->top + w->height > top)
 					return false;
-	}	
+	}
 
 	return true;
 }
@@ -428,17 +428,17 @@ static bool IsGoodAutoPlace2(int left, int top)
 	if (top < 22 || top > _screen.height - (height>>2))
 		return false;
 
-	// Make sure it is not obscured by any window.	
+	// Make sure it is not obscured by any window.
 	for(w=_windows; w!=_last_window; w++) {
 		if (w->window_class == WC_MAIN_WINDOW)
 			continue;
 
-		if (left + width > w->left && 
+		if (left + width > w->left &&
 		    w->left + w->width > left &&
 				top + height > w->top &&
 				w->top + w->height > top)
 					return false;
-	}	
+	}
 
 	return true;
 }
@@ -464,8 +464,8 @@ Point GetAutoPlacePosition(int width, int height) {
 		if (IsGoodAutoPlace1(w->left-   width-2,w->top+w->height-height)) goto ok_pos;
 		if (IsGoodAutoPlace1(w->left+w->width-width,w->top+w->height+2)) goto ok_pos;
 		if (IsGoodAutoPlace1(w->left+w->width-width,w->top-   height-2)) goto ok_pos;
-	}	
-	
+	}
+
 	for(w=_windows; w!=_last_window; w++) {
 		if (w->window_class == WC_MAIN_WINDOW)
 			continue;
@@ -478,7 +478,7 @@ Point GetAutoPlacePosition(int width, int height) {
 
 	{
 		int left=0,top=24;
-		
+
 restart:;
 		for(w=_windows; w!=_last_window; w++) {
 			if (w->left == left && w->top == top) {
@@ -487,12 +487,12 @@ restart:;
 				goto restart;
 			}
 		}
-		
+
 		pt.x = left;
 		pt.y = top;
 		return pt;
 	}
-	
+
 ok_pos:;
 	pt.x = _awap_r.left;
 	pt.y = _awap_r.top;
@@ -502,7 +502,7 @@ ok_pos:;
 Window *AllocateWindowAutoPlace(
 	int width,
 	int height,
-	WindowProc *proc, 
+	WindowProc *proc,
 	WindowClass cls,
 	const Widget *widget) {
 
@@ -526,7 +526,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 	Point pt;
 	Window *w;
 
-	if (desc->parent_cls != WC_MAIN_WINDOW && 
+	if (desc->parent_cls != WC_MAIN_WINDOW &&
 			(w = FindWindowById(desc->parent_cls, _alloc_wnd_parent_num), _alloc_wnd_parent_num=0, w) != NULL &&
 			w->left < _screen.width-20 && w->left > -60 && w->top < _screen.height-20) {
 		pt.x = w->left + 10;
@@ -599,7 +599,7 @@ void DecreaseWindowCounters()
 
 	for(w=_last_window; w != _windows;) {
 		--w;
-		
+
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
 			if (w->desc_flags & WDF_UNCLICK_BUTTONS)
@@ -644,7 +644,7 @@ bool HandleDragDrop()
 
 	if (_left_button_down)
 		return false;
-	
+
 	w = GetCallbackWnd();
 
 	ResetObjectToPlace();
@@ -688,7 +688,7 @@ bool HandlePopupMenu()
 	return false;
 }
 
-bool HandleWindowDragging() 
+bool HandleWindowDragging()
 {
 	Window *w;
 	int x, y, t;
@@ -700,7 +700,7 @@ bool HandleWindowDragging()
 	// Otherwise find the window...
 	for(w=_windows; w != _last_window; w++) {
 		if (w->flags4&(WF_DRAGGING|WF_SIZING)) {
-			
+
 			// Stop the dragging if the left mouse button was released
 			if (!_left_button_down) {
 				w->flags4 &= ~(WF_DRAGGING | WF_SIZING);
@@ -733,7 +733,7 @@ bool HandleWindowDragging()
 					w->viewport->top += y;
 				}
 			}
-				
+
 			// And also mark the new position dirty.
 			SetWindowDirty(w);
 			return false;
@@ -784,7 +784,7 @@ bool HandleScrollbarScrolling()
 				w->flags4 &= ~WF_SCROLL_MIDDLE;
 				SetWindowDirty(w);
 				break;
-			}	
+			}
 
 			if (w->flags4 & WF_HSCROLL) {
 				sb = &w->hscroll;
@@ -801,14 +801,14 @@ bool HandleScrollbarScrolling()
 				SetWindowDirty(w);
 			}
 			return false;
-		}		
+		}
 	}
-	
+
 	_scrolling_scrollbar = false;
 	return false;
 }
 
-bool HandleViewportScroll() 
+bool HandleViewportScroll()
 {
 	Window *w;
 	ViewPort *vp;
@@ -823,7 +823,7 @@ stop_capt:;
 		_scrolling_viewport = false;
 		return true;
 	}
-	
+
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 	if (w == NULL) goto stop_capt;
 
@@ -838,9 +838,9 @@ stop_capt:;
 		return false;
 	} else {
 		// scroll the smallmap ?
-		
+
 		_cursor.fix_at = true;
-		
+
 		dx = _cursor.delta.x;
 		dy = _cursor.delta.y;
 
@@ -904,8 +904,8 @@ static Window *MaybeBringWindowToFront(Window *w)
 				w->top  + w->height <= u->top ||
 				u->top + u->height <= w->top)
 					continue;
-		
-		return BringWindowToFront(w);	
+
+		return BringWindowToFront(w);
 	}
 
 	return w;
@@ -915,7 +915,7 @@ static void HandleKeypress(uint32 key)
 {
 	Window *w;
 	WindowEvent we;
-	
+
 	// Setup event
 	we.keypress.event = WE_KEYPRESS;
 	we.keypress.ascii = key & 0xFF;
@@ -965,7 +965,7 @@ void MouseLoop()
 		mousewheel = _cursor.wheel;
 		_cursor.wheel = 0;
 	}
-	
+
 	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
@@ -986,7 +986,7 @@ void MouseLoop()
 
 	if (!HandleViewportScroll())
 		return;
-	
+
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
@@ -1005,7 +1005,7 @@ void MouseLoop()
 				else if (15-(vp->width-x) > 0) { WP(w,vp_d).scrollpos_x += (15-(vp->width-x))*scrollspeed << vp->zoom; }
 				if (y-15<0) { WP(w,vp_d).scrollpos_y += (y-15)*scrollspeed << vp->zoom; }
 				else if (15-(vp->height-y) > 0) { WP(w,vp_d).scrollpos_y += (15-(vp->height-y))*scrollspeed << vp->zoom; }
-#undef scrollspeed		
+#undef scrollspeed
 			}
 		}
 		return;
@@ -1032,7 +1032,7 @@ void MouseLoop()
 					_pause != 0 &&
 					!_cheats.build_in_pause.value)
 						return;
-			
+
 			if (_thd.place_mode == 0) {
 				HandleViewportClicked(vp, x, y);
 			} else {
@@ -1092,7 +1092,7 @@ void UpdateWindows()
 	}
 	// Redraw mouse cursor in case it was hidden
 	DrawMouseCursor();
-}	
+}
 
 
 int GetMenuItemIndex(Window *w, int x, int y)
@@ -1121,11 +1121,11 @@ void InvalidateWidget(Window *w, byte widget_index)
 	const Widget *wi = &w->widget[widget_index];
 //	if (wi->left != -2) {
 		SetDirtyBlocks(
-			w->left + wi->left, 
+			w->left + wi->left,
 			w->top + wi->top,
 			w->left + wi->right + 1,
 			w->top + wi->bottom + 1);
-//	}		
+//	}
 }
 
 void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
@@ -1176,7 +1176,7 @@ void DeleteNonVitalWindows()
 	}
 }
 
-int PositionMainToolbar(Window *w) 
+int PositionMainToolbar(Window *w)
 {
 	DEBUG(misc, 1) ("Repositioning Main Toolbar...");
 
@@ -1198,7 +1198,7 @@ void RelocateAllWindows(int neww, int newh)
 
 	for(w=_windows; w!= _last_window ;w++) {
 		int left, top;
-	
+
 		if (w->window_class == WC_MAIN_WINDOW) {
 			ViewPort *vp = w->viewport;
 			vp->width = w->width = neww;
@@ -1213,7 +1213,7 @@ void RelocateAllWindows(int neww, int newh)
 		if (w->window_class == WC_MAIN_TOOLBAR) {
 			top = w->top;
 			left = PositionMainToolbar(w); // changes toolbar orientation
-		} else if (w->window_class == WC_SELECT_GAME || w->window_class == WC_GAME_OPTIONS || w->window_class == WC_NETWORK_WINDOW){	
+		} else if (w->window_class == WC_SELECT_GAME || w->window_class == WC_GAME_OPTIONS || w->window_class == WC_NETWORK_WINDOW){
 			top = (newh - w->height) >> 1;
 			left = (neww - w->width) >> 1;
 		} else if (w->window_class == WC_NEWS_WINDOW) {
@@ -1221,7 +1221,7 @@ void RelocateAllWindows(int neww, int newh)
 			left = (neww - w->width) >> 1;
 		} else if (w->window_class == WC_STATUS_BAR) {
 			top = newh - w->height;
-			left = (neww - w->width) >> 1;	
+			left = (neww - w->width) >> 1;
 		} else {
 			left = w->left;
 			if (left + (w->width>>1) >= neww) left = neww - w->width;
