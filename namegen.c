@@ -119,6 +119,8 @@ static const char english_6[] =
 	MK(" Springs")
 ;
 
+#define REPLACE_WORDS(a,b,c,d,e,f,g,h)  { if (start[0] == a && start[1] == b && start[2] == c && start[3] == d) { start[0] = e; start[1] = f; start[2] = g; start[3] = h; } }
+
 static byte MakeEnglishTownName(byte *buf, uint32 seed)
 {
 	int i;
@@ -148,10 +150,18 @@ static byte MakeEnglishTownName(byte *buf, uint32 seed)
 	if (start[0]=='C' && (start[1] == 'e' || start[1] == 'i'))
 		start[0] = 'K'; 
 
-	/* FIXME: skip the banned words thing for now 
-	only replacing "Cunt" with "Cult"   */
-	if (start[0]=='C' && start[1] == 'u' && start[2] == 'n' && start[3] == 't')
-		start[2] = 'l';
+	/* Replace certain words (routine identical to TTD now) */
+
+	REPLACE_WORDS('C','u','n','t',  'E','a','s','t');
+	REPLACE_WORDS('S','l','a','g',  'P','i','t','s');
+	REPLACE_WORDS('S','l','u','t',  'E','d','i','n');
+//	REPLACE_WORDS('F','a','r','t',  'B','o','o','t');
+	REPLACE_WORDS('D','r','a','r',  'Q','u','a','r');
+	REPLACE_WORDS('D','r','e','h',  'B','a','s','h');
+	REPLACE_WORDS('F','r','a','r',  'S','h','o','r');
+	REPLACE_WORDS('G','r','a','r',  'A','b','e','r');
+	REPLACE_WORDS('B','r','a','r',  'O','v','e','r');
+	REPLACE_WORDS('W','r','a','r',  'I','n','v','e');
 
 	return result;
 }
