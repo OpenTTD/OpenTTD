@@ -1392,7 +1392,7 @@ int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 void DeleteTown(Town *t)
 {
 	Industry *i;
-	uint tile;
+	TileIndex tile;
 
 	// Delete town authority window
 	//  and remove from list of sorted towns
@@ -1406,18 +1406,24 @@ void DeleteTown(Town *t)
 	}
 
 	// Go through all tiles and delete those belonging to the town
-	tile = 0;
-	do {
-		if (IsTileType(tile, MP_HOUSE)) {
-			if (ClosestTownFromTile(tile, (uint)-1) == t) {
-				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			}
-		} else if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileType(tile, MP_STREET)) {
-			if (_map_owner[tile] == OWNER_TOWN && ClosestTownFromTile(tile, (uint)-1) == t) {
-				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			}
+	for (tile = 0; tile < MapSize(); ++tile) {
+		switch (GetTileType(tile)) {
+			case MP_HOUSE:
+				if (ClosestTownFromTile(tile, (uint)-1) == t)
+					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
+
+			case MP_STREET:
+			case MP_TUNNELBRIDGE:
+				if (_map_owner[tile] == OWNER_TOWN &&
+						ClosestTownFromTile(tile, (uint)-1) == t)
+					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
+
+			default:
+				break;
 		}
-	} while (++tile != MapSize());
+	}
 
 	t->xy = 0;
 	DeleteName(t->townnametype);
