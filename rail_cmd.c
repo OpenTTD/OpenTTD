@@ -1146,7 +1146,7 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /* Stub for the unified Signal builder/remover */
 int32 CmdRemoveSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 1));
+	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 0));
 }
 
 typedef int32 DoConvertRailProc(uint tile, uint totype, bool exec);
