@@ -1604,23 +1604,20 @@ void MaybeReplaceVehicle(Vehicle *v)
 	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
 	 This is a nice way to send 32 bit and only use 16 bit
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
-	new_engine_and_autoreplace_money = (((_patches.autorenew_money / 100000) & 0xFFFF) << 16)
-	 + _autoreplace_array[v->engine_type];
+	new_engine_and_autoreplace_money = ((_patches.autorenew_money / 100000) << 16) + _autoreplace_array[v->engine_type];
 	
 	assert(v->type == _engines[ _autoreplace_array[v->engine_type] ].type);
 	
 	if ( v->type != VEH_Train ) {
 		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
 	} else {
-	// checks if the front engine is outdated
-		if (v->engine_type != _autoreplace_array[v->engine_type] )  
-			DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
-	//we will check all the cars and engines if they should be replaced
-		while (v->next != NULL){
-			v = v->next;
-			if (v->engine_type != _autoreplace_array[v->engine_type] || v->age - v->max_age < (_patches.autorenew_months * 30))
-				DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money , NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+	// checks if any of the engines in the train are either old or listed for replacement
+		do {
+			if ( v->engine_type != _autoreplace_array[v->engine_type] || (v->age - v->max_age) > (_patches.autorenew_months * 30)) {
+				new_engine_and_autoreplace_money = (new_engine_and_autoreplace_money & 0xFFFF0000) + _autoreplace_array[v->engine_type]; // sets the new engine replacement type
+				DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
 			}
+		} while ((v=v->next) != NULL);
 	}
 	_current_player = OWNER_NONE;
 }
