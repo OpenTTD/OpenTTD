@@ -85,24 +85,22 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
-		sprintf(fios->title, ".. (Parent directory)");
+		strcpy(fios->title, ".. (Parent directory)");
 	}
 
 	// Show subdirectories first
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s/%s", _fios_path, dirent->d_name);
-			if (!stat(filename, &sb)) {
-				if (S_ISDIR(sb.st_mode)) {
-					if (dirent->d_name[0] != '.') {
-						fios = FiosAlloc();
-						fios->mtime = 0;
-						fios->type = FIOS_TYPE_DIR;
-						fios->title[0] = 0;
-						sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
-					}
-				}
+			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
+			if (stat(filename, &sb) || !S_ISDIR(sb.st_mode))
+				continue;
+			if (dirent->d_name[0] != '.') {
+				fios = FiosAlloc();
+				fios->mtime = 0;
+				fios->type = FIOS_TYPE_DIR;
+				fios->title[0] = 0;
+				sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
 			}
 		}
 		closedir(dir);
@@ -128,29 +126,32 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s/%s", _fios_path, dirent->d_name);
-			if (!stat(filename, &sb)) {
-				if (!S_ISDIR(sb.st_mode)) {
-					char *t = strrchr(dirent->d_name, '.');
-					if (t && !strcasecmp(t, ".sav")) { // OpenTTD
-						*t = 0; // cut extension
-						fios = FiosAlloc();
-						fios->type = FIOS_TYPE_FILE;
-						fios->mtime = sb.st_mtime;
-						fios->title[0] = 0;
-						ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
-					} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-						int ext = 0; // start of savegame extensions in _old_extensions[]
-						if (t && ((ext++, !strcasecmp(t, ".ss1")) || (ext++, !strcasecmp(t, ".sv1")) || (ext++, !strcasecmp(t, ".sv2"))) ) { // TTDLX(Patch)
-							*t = 0; // cut extension
-							fios = FiosAlloc();
-							fios->old_extension = ext-1;
-							fios->type = FIOS_TYPE_OLDFILE;
-							fios->mtime = sb.st_mtime;
-							ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
-							GetOldSaveGameName(fios->title, filename);
-						}
-					}
+			char *t;
+
+			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
+			if (stat(filename, &sb) || S_ISDIR(sb.st_mode))
+				continue;
+
+			t = strrchr(dirent->d_name, '.');
+			if (t && !strcasecmp(t, ".sav")) { // OpenTTD
+				*t = 0; // cut extension
+				fios = FiosAlloc();
+				fios->type = FIOS_TYPE_FILE;
+				fios->mtime = sb.st_mtime;
+				fios->title[0] = 0;
+				ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
+
+			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
+				int ext = 0; // start of savegame extensions in _old_extensions[]
+				if (t && ((ext++, !strcasecmp(t, ".ss1")) || (ext++, !strcasecmp(t, ".sv1"))
+				          || (ext++, !strcasecmp(t, ".sv2"))) ) { // TTDLX(Patch)
+					*t = 0; // cut extension
+					fios = FiosAlloc();
+					fios->old_extension = ext-1;
+					fios->type = FIOS_TYPE_OLDFILE;
+					fios->mtime = sb.st_mtime;
+					ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name));
+					GetOldSaveGameName(fios->title, filename);
 				}
 			}
 		}
@@ -163,6 +164,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 }
 
 // Get a list of scenarios
+// FIXME: Gross code duplication with FiosGetSavegameList()
 FiosItem *FiosGetScenarioList(int *num, int mode)
 {
 	FiosItem *fios;
@@ -182,17 +184,15 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s/%s", _fios_path, dirent->d_name);
-			if (!stat(filename, &sb)) {
-				if (S_ISDIR(sb.st_mode)) {
-					if (dirent->d_name[0] != '.') {
-						fios = FiosAlloc();
-						fios->mtime = 0;
-						fios->type = FIOS_TYPE_DIR;
-						fios->title[0] = 0;
-						sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
-					}
-				}
+			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
+			if (stat(filename, &sb) || !S_ISDIR(sb.st_mode))
+				continue;
+			if (dirent->d_name[0] != '.') {
+				fios = FiosAlloc();
+				fios->mtime = 0;
+				fios->type = FIOS_TYPE_DIR;
+				fios->title[0] = 0;
+				sprintf(fios->name, "%s/ (Directory)", dirent->d_name);
 			}
 		}
 		closedir(dir);
@@ -209,29 +209,31 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	dir = opendir(_fios_path[0] ? _fios_path : "/");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s/%s", _fios_path, dirent->d_name);
-			if (!stat(filename, &sb)) {
-				if (!S_ISDIR(sb.st_mode)) {
-					char *t = strrchr(dirent->d_name, '.');
-					if (t && !strcasecmp(t, ".scn")) { // OpenTTD
-						*t = 0; // cut extension
-						fios = FiosAlloc();
-						fios->type = FIOS_TYPE_SCENARIO;
-						fios->mtime = sb.st_mtime;
-						fios->title[0] = 0;
-						ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
-					} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
-						int ext = 3; // start of scenario extensions in _old_extensions[]
-						if (t && ((ext++, !strcasecmp(t, ".sv0")) || (ext++, !strcasecmp(t, ".ss0"))) ) { // TTDLX(Patch)
-							*t = 0; // cut extension
-							fios = FiosAlloc();
-							fios->old_extension = ext-1;
-							fios->type = FIOS_TYPE_OLD_SCENARIO;
-							fios->mtime = sb.st_mtime;
-							GetOldScenarioGameName(fios->title, filename);
-							ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
-						}
-					}
+			char *t;
+
+			snprintf(filename, MAX_PATH, "%s/%s", _fios_path, dirent->d_name);
+			if (stat(filename, &sb) || S_ISDIR(sb.st_mode))
+				continue;
+
+			t = strrchr(dirent->d_name, '.');
+			if (t && !strcasecmp(t, ".scn")) { // OpenTTD
+				*t = 0; // cut extension
+				fios = FiosAlloc();
+				fios->type = FIOS_TYPE_SCENARIO;
+				fios->mtime = sb.st_mtime;
+				fios->title[0] = 0;
+				ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
+
+			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
+				int ext = 3; // start of scenario extensions in _old_extensions[]
+				if (t && ((ext++, !strcasecmp(t, ".sv0")) || (ext++, !strcasecmp(t, ".ss0"))) ) {// TTDLX(Patch)
+					*t = 0; // cut extension
+					fios = FiosAlloc();
+					fios->old_extension = ext-1;
+					fios->type = FIOS_TYPE_OLD_SCENARIO;
+					fios->mtime = sb.st_mtime;
+					GetOldScenarioGameName(fios->title, filename);
+					ttd_strlcpy(fios->name, dirent->d_name, sizeof(fios->name)-3);
 				}
 			}
 		}
