@@ -946,6 +946,7 @@ normal_load:
 
 		_error_message = INVALID_STRING_ID;
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
+			LoadIntroGame();
 			ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
 			_opt_mod_ptr = &_opt;
