@@ -32,7 +32,7 @@
 #include <stdarg.h>
 
 void IncreaseSpriteLRU(void);
-void GenerateWorld(int mode);
+void GenerateWorld(int mode, uint log_x, uint log_y);
 void CallLandscapeTick(void);
 void IncreaseDate(void);
 void RunOtherPlayersLoop(void);
@@ -534,6 +534,8 @@ static void LoadIntroGame(void)
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
+	GenerateWorld(1, 6, 6); // Make the viewport initialization happy
+
 	// Setup main window
 	InitWindowSystem();
 	SetupColorsAndInitialWindow();
@@ -545,7 +547,7 @@ static void LoadIntroGame(void)
 		sprintf(filename, "%sopntitle.dat",  _path.second_data_dir);
 		if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
 #endif
-			GenerateWorld(1); // if failed loading, make empty world.
+			GenerateWorld(1, 6, 6); // if failed loading, make empty world.
 	}
 	_opt.currency = _new_opt.currency;
 
@@ -804,7 +806,7 @@ static void MakeNewGame(void)
 	SetupColorsAndInitialWindow();
 
 	// Randomize world
-	GenerateWorld(0);
+	GenerateWorld(0, _patches.map_x, _patches.map_y);
 
 	// In a dedicated server, the server does not play
 	if (_network_dedicated) {
@@ -836,7 +838,7 @@ static void MakeNewEditorWorld(void)
 	SetupColorsAndInitialWindow();
 
 	// Startup the game system
-	GenerateWorld(1);
+	GenerateWorld(1, _patches.map_x, _patches.map_y);
 
 	_local_player = OWNER_NONE;
 	MarkWholeScreenDirty();
@@ -1022,7 +1024,7 @@ normal_load:
 		break;
 
 	case SM_GENRANDLAND:
-		GenerateWorld(2);
+		GenerateWorld(2, _patches.map_x, _patches.map_y);
 		// XXX: set date
 		_local_player = OWNER_NONE;
 		MarkWholeScreenDirty();

@@ -180,6 +180,9 @@ typedef struct Patches {
 	byte wait_oneway_signal;	//waitingtime in days before a oneway signal
 	byte wait_twoway_signal;	//waitingtime in days before a twoway signal
 
+	uint map_x; // Size of map
+	uint map_y;
+
 	byte drag_signals_density; // many signals density
 	bool ainew_active;  // Is the new AI active?
 

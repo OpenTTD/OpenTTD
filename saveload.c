@@ -1007,7 +1007,7 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 }
 
 // actual loader/saver function
-extern void InitializeGame(void);
+void InitializeGame(uint log_x, uint log_y);
 extern bool AfterLoadGame(uint version);
 extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
@@ -1021,7 +1021,7 @@ int SaveOrLoad(const char *filename, int mode)
 
 	// old style load
 	if (mode == SL_OLD_LOAD) {
-		InitializeGame();
+		InitializeGame(8, 8);
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		AfterLoadGame(0);
 		return SL_OK;
@@ -1126,7 +1126,10 @@ init_err:
 
 		if (!fmt->init_read()) goto init_err;
 		// Clear everything
-		InitializeGame();
+		/* Set the current map to 256x256, in case of an old map.
+		 * Else MAPS will read the right information */
+		InitializeGame(8, 8);
+
 		SlLoadChunks();
 		fmt->uninit_read();
 	}

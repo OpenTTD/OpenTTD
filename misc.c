@@ -165,7 +165,7 @@ void InitializeAirportGui(void);
 void InitializeDock(void);
 void InitializeDockGui(void);
 void InitializeIndustries(void);
-void InitializeLandscape(void);
+void InitializeLandscape(uint log_x, uint log_y);
 void InitializeTowns(void);
 void InitializeTrees(void);
 void InitializeSigns(void);
@@ -187,7 +187,7 @@ void GenerateTrees(void);
 
 void ConvertGroundTilesIntoWaterTiles(void);
 
-void InitializeGame(void)
+void InitializeGame(uint log_x, uint log_y)
 {
 	// Initialize the autoreplace array. Needs to be cleared between each game
 	uint i;
@@ -217,7 +217,7 @@ void InitializeGame(void)
 	InitializeOrders();
 
 	InitNewsItemStructs();
-	InitializeLandscape();
+	InitializeLandscape(log_x, log_y);
 	InitializeClearLand();
 	InitializeRail();
 	InitializeRailGui();
@@ -248,7 +248,7 @@ void InitializeGame(void)
 	ResetObjectToPlace();
 }
 
-void GenerateWorld(int mode)
+void GenerateWorld(int mode, uint log_x, uint log_y)
 {
 	int i;
 
@@ -256,7 +256,7 @@ void GenerateWorld(int mode)
 	_current_player = OWNER_NONE;
 
 	_generating_world = true;
-	InitializeGame();
+	InitializeGame(log_x, log_y);
 	SetObjectToPlace(1, 0, 0, 0);
 
 	// Must start economy early because of the costs.
@@ -860,6 +860,28 @@ static void SaveLoad_VIEW(void)
 	SlGlobList(_view_desc);
 }
 
+static uint32 _map_dim_x;
+static uint32 _map_dim_y;
+
+static const SaveLoadGlobVarList _map_dimensions[] = {
+	{&_map_dim_x, SLE_UINT32, 6, 255},
+	{&_map_dim_y, SLE_UINT32, 6, 255},
+	{NULL, 0, 0, 0}
+};
+
+static void Save_MAPSIZE(void)
+{
+	_map_dim_x = MapLogX();
+	_map_dim_y = MapLogY();
+	SlGlobList(_map_dimensions);
+}
+
+static void Load_MAPSIZE(void)
+{
+	SlGlobList(_map_dimensions);
+	InitMap(_map_dim_x, _map_dim_y);
+}
+
 static void SaveLoad_MAPT(void)
 {
   SlArray(_map_type_and_height, MapSize(), SLE_UINT8);
@@ -928,6 +950,7 @@ static void Load_CHTS(void)
 
 
 const ChunkHandler _misc_chunk_handlers[] = {
+	{ 'MAPS', Save_MAPSIZE,  Load_MAPSIZE,  CH_RIFF },
 	{ 'MAPT', SaveLoad_MAPT, SaveLoad_MAPT, CH_RIFF },
 	{ 'MAP2', SaveLoad_MAP2, SaveLoad_MAP2, CH_RIFF },
 	{ 'M3LO', SaveLoad_M3LO, SaveLoad_M3LO, CH_RIFF },

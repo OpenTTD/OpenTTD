@@ -8,13 +8,15 @@
 
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
 
-extern byte   _map_type_and_height[];
-extern byte   _map5[];
-extern byte   _map3_lo[];
-extern byte   _map3_hi[];
-extern byte   _map_owner[];
-extern uint16 _map2[];
-extern byte   _map_extra_bits[];
+extern byte   *_map_type_and_height;
+extern byte   *_map_owner;
+extern uint16 *_map2;
+extern byte   *_map3_lo;
+extern byte   *_map3_hi;
+extern byte   *_map5;
+extern byte   *_map_extra_bits;
+
+void InitMap(uint log_x, uint log_y);
 
 // binary logarithm of the map size, try to avoid using this one
 static inline uint MapLogX(void)  { extern uint _map_log_x; return _map_log_x; }

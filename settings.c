@@ -909,6 +909,9 @@ const SettingDesc patch_settings[] = {
 
 	{"ainew_active",				SDT_BOOL,		(void*)false, &_patches.ainew_active,					NULL},
 
+	{"map_x", SDT_UINT32, (void*)8, &_patches.map_x, NULL},
+	{"map_y", SDT_UINT32, (void*)8, &_patches.map_y, NULL},
+
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 

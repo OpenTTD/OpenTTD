@@ -1397,6 +1397,9 @@ STR_NETWORK_SEND						:{BLACK}Send
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X				:{LTBLUE}X-size of map: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y				:{LTBLUE}Y-size of map: {ORANGE}{STRING}
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cost: {CURRENCY}
 STR_0801_COST							:{RED}Cost: {CURRENCY}
