@@ -197,25 +197,35 @@ void ShowBuildDocksToolbar()
 static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 {
 	int rad;
-	
+
 	switch(e->event) {
 	case WE_PAINT: {
 		if (WP(w,def_d).close)
 			return;
+		w->click_state = (1<<3) << _station_show_coverage;
 		DrawWindowWidgets(w);
-		//Add some code for the coverage area eariler or later!!
 		if (_patches.modified_catchment) {
 			rad = CA_DOCK;
 		} else {
 			rad = 4;
 		}
-		
+
+		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		else SetTileSelectBigSize(0, 0, 0, 0);
+
 		DrawStationCoverageAreaText(2, 15, (uint)-1, rad);
 	} break;
 
 	case WE_CLICK: {
-		if (e->click.widget == 0) {
+		switch(e->click.widget) {
+		case 0:
 			ResetObjectToPlace();
+			break;
+		case 3: case 4:
+			_station_show_coverage = e->click.widget - 3;
+			SndPlayFx(SND_15_BEEP);
+			SetWindowDirty(w);
+			break;
 		}
 	} break;
 
@@ -234,12 +244,14 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 static const Widget _build_dock_station_widgets[] = {
 {   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,     7,    11,   147,     0,    13, STR_3068_DOCK,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,     7,     0,   147,    14,    45, 0x0,						STR_NULL},
+{      WWT_PANEL,     7,     0,   147,    14,    55, 0x0,						STR_NULL},
+{   WWT_CLOSEBOX,    14,    14,    73,    40,    50, STR_02DB_OFF,	STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{   WWT_CLOSEBOX,    14,    74,   133,    40,    50, STR_02DA_ON,		STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_dock_station_desc = {
-	-1, -1, 148, 46,
+	-1, -1, 148, 56,
 	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_dock_station_widgets,
