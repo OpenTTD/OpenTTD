@@ -61,6 +61,8 @@
 #          where it normally would print the revision number
 # MIDI: if set, it will use it as custom path to midi player. 
 #  If unset, it will use the hardcoded path in the c code
+# NOVERBOSE: supress all warnings and errors during compilation. 
+#  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
 #
 # DATA_DIR_PREFIX: This sets the dir OpenTTD looks for the needed files. 
 #   MUST END WITH / if defined
@@ -121,8 +123,17 @@ ifndef CONFIG_INCLUDED
 -include $(LIB_DETECTION)
 endif
 
+# Verbose filter
+
+ifdef NOVERBOSE
+VERBOSE_FILTER =  >/dev/null 2>&1 
+else
+VERBOSE_FILTER = 
+endif
+
 ifdef DISPLAY_WARNINGS
 WARNING_DISPLAY:=-fstrict-aliasing
+VERBOSE_FILTER =  
 else
 WARNING_DISPLAY:=-fno-strict-aliasing
 endif
@@ -153,7 +164,6 @@ endif
 #
 # Compiler configuration
 #
-
 CC=gcc
 CXX=g++
 
@@ -475,6 +485,7 @@ CXX_BUILD = $(CXX_COMPILE) -c
 C_LINK = $(CC) $(LDFLAGS) -o
 
 
+
 ##############################################################################
 #
 # Targets
@@ -500,7 +511,8 @@ $(ENDIAN_CHECK): endian_check.c
 	
 
 $(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
-	$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)
+	@echo 'Compiling and Linking $@'; \
+		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
 $(OSX):
 	@mkdir -p $(OSXAPP)/Contents/MacOS
@@ -512,7 +524,7 @@ $(OSX):
 	@ls os/macos | grep -q "\.class" || \
 	javac os/macos/OpenTTDMidi.java
 	@cp os/macos/OpenTTDMidi.class $(OSXAPP)/contents/macos
-	@cp $(TTD) $(OSXAPP)/Contents/MacOS/openttd
+	@cp $(TTD) $(OSXAPP)/Contents/MacOS/$(TTD)
 
 $(endwarnings): $(64_bit_warnings)
 
@@ -521,15 +533,18 @@ $(64_bit_warnings):
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c rev.o
-	$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^
+	@echo 'Compiling and Linking $@'; \
+		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^ $(VERBOSE_FILTER)
 
 lang/english.lng: lang/english.txt $(STRGEN)
+	@echo 'Generating $@'; \
 	$(STRGEN)
 	
 table/strings.h: lang/english.lng
 
 lang/%.lng: lang/%.txt $(STRGEN)
-	$(STRGEN) $(STRGEN_FLAGS) $<
+	@echo 'Generating $@'; \
+	$(STRGEN) $(STRGEN_FLAGS) $< $(VERBOSE_FILTER)
 
 winres.o: ttd.rc
 	windres -o $@ $<
@@ -554,7 +569,8 @@ FORCE:
 # ttd$(EXE) is removed just to make sure people execute the right binary (openttd$(EXE))
 # remove this for next release!
 clean:
-	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK) ttd$(EXE)
+	@echo 'Cleaning up...'; \
+	rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) ttd$(EXE)
 
 mrproper: clean
 	rm -rf $(MAKE_CONFIG)
@@ -612,9 +628,13 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # list at the same time. It is not an issue that they aren't around during the
 # first compilation round as we just build everything at that time anyway,
 # therefore we do not need to watch deps.
+
+#@echo '$(C_BUILD) $<'; \
+
+
 %.o: %.c $(MAKE_CONFIG)
-	@echo '$(C_BUILD) $<'; \
-		$(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp
+	@echo 'Compiling $(*F).o'; \
+		       $(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp $(VERBOSE_FILTER)
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
 		tr ' ' '\012' < .deps/$(*F).pp \
 		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
