@@ -160,11 +160,11 @@ static byte MakeGermanTownName(char *buf, uint32 seed)
 	}
 
 	// mandatory middle segments including option of hardcoded name
-	i = SeedChance(3, lengthof(name_german_hardcoded) + lengthof(name_german_1), seed);
-	if (i < lengthof(name_german_hardcoded)) {
-		strcat(buf,name_german_hardcoded[i]);
+	i = SeedChance(3, lengthof(name_german_real) + lengthof(name_german_1), seed);
+	if (i < lengthof(name_german_real)) {
+		strcat(buf,name_german_real[i]);
 	} else {
-		strcat(buf, name_german_1[i - lengthof(name_german_hardcoded)]);
+		strcat(buf, name_german_1[i - lengthof(name_german_real)]);
 
 		i = SeedChance(5, lengthof(name_german_2), seed);
 		strcat(buf, name_german_2[i]);
@@ -187,13 +187,13 @@ static byte MakeGermanTownName(char *buf, uint32 seed)
 
 static byte MakeSpanishTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_spanish_1[SeedChance(0, lengthof(name_spanish_1), seed)]);
+	strcpy(buf, name_spanish_real[SeedChance(0, lengthof(name_spanish_real), seed)]);
 	return 0;
 }
 
 static byte MakeFrenchTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_french_1[SeedChance(0, lengthof(name_french_1), seed)]);
+	strcpy(buf, name_french_real[SeedChance(0, lengthof(name_french_real), seed)]);
 	return 0;
 }
 
@@ -261,10 +261,10 @@ static byte MakeFinnishTownName(char *buf, uint32 seed)
 
 	// Select randomly if town name should consists of one or two parts.
 	if (SeedChance(0, 15, seed) >= 10) {
-		strcat(buf, name_finnish_1[SeedChance( 2, lengthof(name_finnish_1), seed)]);
+		strcat(buf, name_finnish_real[SeedChance( 2, lengthof(name_finnish_real), seed)]);
 	} else {
-		strcat(buf, name_finnish_2a[SeedChance( 2, lengthof(name_finnish_2a), seed)]);
-		strcat(buf, name_finnish_2b[SeedChance(10, lengthof(name_finnish_2b), seed)]);
+		strcat(buf, name_finnish_1[SeedChance( 2, lengthof(name_finnish_1), seed)]);
+		strcat(buf, name_finnish_2[SeedChance(10, lengthof(name_finnish_2), seed)]);
 	}
 
 	return 0;
@@ -318,19 +318,19 @@ static byte MakePolishTownName(char *buf, uint32 seed)
 
 static byte MakeCzechTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_czech_1[SeedChance(0, lengthof(name_czech_1), seed)]);
+	strcpy(buf, name_czech_real[SeedChance(0, lengthof(name_czech_real), seed)]);
 	return 0;
 }
 
 static byte MakeRomanianTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_romanian_1[SeedChance(0, lengthof(name_romanian_1), seed)]);
+	strcpy(buf, name_romanian_real[SeedChance(0, lengthof(name_romanian_real), seed)]);
 	return 0;
 }
 
 static byte MakeSlovakTownName(char *buf, uint32 seed)
 {
-	strcpy(buf, name_slovakish_1[SeedChance(0, lengthof(name_slovakish_1), seed)]);
+	strcpy(buf, name_slovak_real[SeedChance(0, lengthof(name_slovak_real), seed)]);
 	return 0;
 }
 
@@ -422,7 +422,7 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 		case 1: /* French */
 			/*	For some reason 86 needs to be subtracted from townnameparts
 			*	0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts - 86, lengthof(name_french_1), 0);
+			return FIXNUM(townnameparts - 86, lengthof(name_french_real), 0);
 
 		case 2: /* German */
 			DEBUG(misc, 0) ("German Townnames are buggy... (%d)", townnameparts);
@@ -430,7 +430,7 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 
 		case 4: /* Latin-American */
 			/*	0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(name_spanish_1), 0);
+			return FIXNUM(townnameparts, lengthof(name_spanish_real), 0);
 
 		case 5: /* Silly */
 			/*	NUM_SILLY_1	-	lower 16 bits

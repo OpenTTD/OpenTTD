@@ -443,7 +443,7 @@ static const char *name_austrian_b2[] = {
 	"Ziller"
 };
 
-static const char *name_german_hardcoded[] = {
+static const char *name_german_real[] = {
 	"Berlin",
 	"Bonn",
 	"Bremen",
@@ -608,7 +608,7 @@ static const char *name_german_4_am[] = {
 	"Main"
 };
 
-static const char *name_spanish_1[] = {
+static const char *name_spanish_real[] = {
 	"Caracas",
 	"Maracay",
 	"Maracaibo",
@@ -697,7 +697,7 @@ static const char *name_spanish_1[] = {
 	"Santa Rosa"
 };
 
-static const char *name_french_1[] = {
+static const char *name_french_real[] = {
 	"Agincourt",
 	"Lille",
 	"Dinan",
@@ -1206,7 +1206,7 @@ static const char *name_dutch_5[] = {
 	"end"
 };
 
-static const char *name_finnish_1[] = {
+static const char *name_finnish_real[] = {
 	"Aijala",
 	"Kisko",
 	"Espoo",
@@ -1234,7 +1234,7 @@ static const char *name_finnish_1[] = {
 	"Pasila"
 };
 
-static const char *name_finnish_2a[] = {
+static const char *name_finnish_1[] = {
 	"Hiekka",
 	"Haapa",
 	"Mylly",
@@ -1263,7 +1263,7 @@ static const char *name_finnish_2a[] = {
 	"Koivu"
 };
 
-static const char *name_finnish_2b[] = {
+static const char *name_finnish_2[] = {
 	"harju",
 	"linna",
 	"järvi",
@@ -1574,7 +1574,7 @@ static const char *name_polish_3_n[] = {
 	" Lesne"
 };
 
-static const char *name_czech_1[] = {
+static const char *name_czech_real[] = {
 	"As",
 	"Benesov",
 	"Beroun",
@@ -1659,7 +1659,7 @@ static const char *name_czech_1[] = {
 	"Znojmo"
 };
 
-static const char *name_romanian_1[]= {
+static const char *name_romanian_real[]= {
 	"Adjud",
 	"Alba Iulia",
 	"Alexandria",
@@ -1756,7 +1756,7 @@ static const char *name_romanian_1[]= {
 	"Zalãu"
 };
 
-static const char *name_slovakish_1[] = {
+static const char *name_slovak_real[] = {
 	"Bratislava",
 	"Banovce nad Bebravou",
 	"Banska Bystrica",

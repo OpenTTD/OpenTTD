@@ -787,6 +787,8 @@ static const SettingDesc gameopt_settings[] = {
 	{"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, &_new_opt.diff, NULL},
 	{"currency",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,	&_new_opt.currency,		"GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SEK|custom" },
 	{"distances",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		&_new_opt.kilometers, "imperial|metric" },
+	// XXX: Slovakish is an awful nonsense. It is either Slovak or
+	// Slovakian, I personally prefer the former. --pasky
 	{"town_names",	SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		&_new_opt.town_name,	"english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss" },
 	{"landscape",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)0,		&_new_opt.landscape,	"normal|hilly|desert|candy" },
 	{"autosave",		SDT_UINT8 | SDT_ONEOFMANY,	(void*)1,		&_new_opt.autosave,		"off|monthly|quarterly|half year|yearly" },
