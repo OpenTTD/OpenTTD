@@ -153,6 +153,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
          case AT_LARGE:    rad = CA_AIR_LARGE; break;
          case AT_METROPOLITAN: rad = CA_AIR_METRO; break;
          case AT_INTERNATIONAL: rad = CA_AIR_INTER; break;
+				 default: rad = 4; break;
        }
      } else {
        rad = 4;
