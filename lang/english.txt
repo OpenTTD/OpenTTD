@@ -2205,6 +2205,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT		:Service non-stop at {TOWN} Train Depot
 STR_HEADING_FOR_TRAIN_DEPOT				:{LTBLUE}Heading for {TOWN} Train Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL			:{LTBLUE}Heading for {TOWN} Train Depot, {VELOCITY}
 
+STR_INVALID_ORDER				:{RED} (Invalid Order)
+
 STR_UNKNOWN_DESTINATION			:unknown destination
 STR_8812_EMPTY							:{LTBLUE}Empty
 STR_8813_FROM							:{LTBLUE}{CARGO} from {STATION}

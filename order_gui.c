@@ -119,7 +119,13 @@ static void DrawOrdersWindow(Window *w)
 			{
 				byte color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
 				SET_DPARAM(0, i+1);
-				DrawString(2, y, str, color);
+				if ((ord & OT_MASK) != OT_DUMMY) {
+					DrawString(2, y, str, color);
+				} else {
+					SET_DPARAM16(1, STR_INVALID_ORDER);
+					SET_DPARAM16(2, ord >> 8);
+					DrawString(2, y, str, color);
+				}
 			}
 			y += 10;
 		}
