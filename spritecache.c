@@ -951,7 +951,7 @@ static void LoadSpriteTables(void)
 	_compact_cache_counter = 0;
 }
 
-void GfxInitSpriteMem(byte *ptr, uint32 size)
+static void GfxInitSpriteMem(byte *ptr, uint32 size)
 {
 	// initialize sprite cache heap
 	_spritecache_ptr = ptr;

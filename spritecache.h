@@ -20,7 +20,6 @@ const SpriteDimension *GetSpriteDimension(SpriteID sprite);
 Sprite *GetSprite(SpriteID sprite);
 byte *GetNonSprite(SpriteID sprite);
 
-void GfxInitSpriteMem(byte *ptr, uint32 size);
 void GfxLoadSprites(void);
 void IncreaseSpriteLRU(void);
 
