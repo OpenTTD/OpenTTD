@@ -1072,7 +1072,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
 
 static char *PrintModuleInfo(char *output, HMODULE mod)
 {
-	char *buffer = alloca(MAX_PATH);
+	char buffer[MAX_PATH];
 	DebugFileInfo dfi;
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);

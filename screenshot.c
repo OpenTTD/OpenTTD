@@ -53,7 +53,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 {
 	BitmapFileHeader bfh;
 	BitmapInfoHeader bih;
-	RgbQuad *rq = alloca(sizeof(RgbQuad) * 256);
+	RgbQuad rq[256];
 	byte *buff;
 	FILE *f;
 	uint i, padw;
@@ -99,7 +99,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	// write file header and info header and palette
 	fwrite(&bfh, 1, sizeof(bfh), f);
 	fwrite(&bih, 1, sizeof(bih), f);
-	fwrite(rq, 1, sizeof(RgbQuad) * 256, f);
+	fwrite(rq, 1, sizeof(rq), f);
 
 	// use by default 64k temp memory
 	maxlines = clamp(65536 / padw, 16, 128);
@@ -146,7 +146,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 
 static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const byte *palette)
 {
-	png_colorp rq = alloca(sizeof(png_color) * 256);
+	png_color rq[256];
 	byte *buff;
 	FILE *f;
 	uint i, y, n;

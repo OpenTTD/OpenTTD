@@ -339,40 +339,40 @@ void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 
 void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
-	TrackPathFinder *tpf = alloca(sizeof(TrackPathFinder));
+	TrackPathFinder tpf;
 
 	assert(direction < 4);
 
 	/* initialize path finder variables */
-	tpf->userdata = data;
-	tpf->enum_proc = enum_proc;
-	tpf->new_link = tpf->links;
-	tpf->num_links_left = 0x400;
+	tpf.userdata = data;
+	tpf.enum_proc = enum_proc;
+	tpf.new_link = tpf.links;
+	tpf.num_links_left = lengthof(tpf.links);
 
-	tpf->rd.cur_length = 0;
-	tpf->rd.depth = 0;
-	tpf->rd.pft_var6 = 0;
+	tpf.rd.cur_length = 0;
+	tpf.rd.depth = 0;
+	tpf.rd.pft_var6 = 0;
 
-	tpf->var2 = HASBIT(flags, 15) ? 0x43 : 0xFF; /* 0x8000 */
+	tpf.var2 = HASBIT(flags, 15) ? 0x43 : 0xFF; /* 0x8000 */
 
-	tpf->disable_tile_hash = HASBIT(flags, 12) != 0;     /* 0x1000 */
-	tpf->hasbit_13 = HASBIT(flags, 13) != 0;		 /* 0x2000 */
+	tpf.disable_tile_hash = HASBIT(flags, 12) != 0;     /* 0x1000 */
+	tpf.hasbit_13 = HASBIT(flags, 13) != 0;		 /* 0x2000 */
 
 
-	tpf->tracktype = (byte)flags;
+	tpf.tracktype = (byte)flags;
 
 	if (HASBIT(flags, 11)) {
-		tpf->rd.pft_var6 = 0xFF;
-		tpf->enum_proc(tile, data, 0, 0, 0);
-		TPFMode2(tpf, tile, direction);
+		tpf.rd.pft_var6 = 0xFF;
+		tpf.enum_proc(tile, data, 0, 0, 0);
+		TPFMode2(&tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */
-		memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
-		TPFMode1(tpf, tile, direction);
+		memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
+		TPFMode1(&tpf, tile, direction);
 	}
 
 	if (after_proc != NULL)
-		after_proc(tpf);
+		after_proc(&tpf);
 }
 
 typedef struct {
@@ -713,19 +713,17 @@ void NewTrainPathfind(uint tile, byte direction, TPFEnumProc *enum_proc, void *d
 	if (!_patches.new_pathfinding) {
 		FollowTrack(tile, 0x3000 | TRANSPORT_RAIL, direction, enum_proc, NULL, data);
 	} else {
-		NewTrackPathFinder *tpf;
+		NewTrackPathFinder tpf;
+		tpf.userdata = data;
+		tpf.enum_proc = enum_proc;
+		tpf.tracktype = 0;
+		tpf.maxlength = _patches.pf_maxlength;
+		tpf.nstack = 0;
+		tpf.new_link = tpf.links;
+		tpf.num_links_left = lengthof(tpf.links);
+		memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
 
-		tpf  = alloca(sizeof(NewTrackPathFinder));
-		tpf->userdata = data;
-		tpf->enum_proc = enum_proc;
-		tpf->tracktype = 0;
-		tpf->maxlength = _patches.pf_maxlength;
-		tpf->nstack = 0;
-		tpf->new_link = tpf->links;
-		tpf->num_links_left = 0x400;
-		memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
-
-		NTPEnum(tpf, tile, direction);
+		NTPEnum(&tpf, tile, direction);
 	}
 }
 
