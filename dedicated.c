@@ -32,11 +32,11 @@
 #	define STDIN 0  /* file descriptor for standard input */
 #endif
 #ifdef __MORPHOS__
-/*  voids the fork, option will be disabled for morphos build anyway, because MorphOS
- *  doesn't support forking (could only implemented with lots of code changes here).
- */
-int morphos_dummy_fork() { return -1; }
-#define fork morphos_dummy_fork
+/* Voids the fork, option will be disabled for MorphOS build anyway, because
+ * MorphOS doesn't support forking (could only implemented with lots of code
+ * changes here). */
+int fork(void) { return -1; }
+int dup2(int oldd, int newd) { return -1; }
 #endif
 
 // This file handles all dedicated-server in- and outputs
