@@ -1573,7 +1573,8 @@ static void DrawTile_Track(TileInfo *ti)
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 				int railtype=(_map3_lo[ti->tile] & 0xF);
 
-				image = cust->ground_sprite + railtype*((image<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
+				image = cust->ground_sprite;
+				image += railtype*((image<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
 				if (image & 0x8000) image = (image & 0x7FFF);
 				
 
@@ -1683,7 +1684,9 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 	// add 1 to get the other direction
 	cust = &stat->renderdata[2];
 
-	img = cust->ground_sprite + railtype*((img<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
+	img = cust->ground_sprite;
+	img += railtype*((img<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
+
 	if (img & 0x8000) img = (img & 0x7FFF);
 	DrawSprite(img, x, y);
 
