@@ -294,17 +294,17 @@ endif
 # -O	optimize or -O2 fully optimize (O's above 2 are not recommended)
 # -pg	profile - generate profiling data.  See "man gprof" to use this.
 
-CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1-3)
+CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 
 # GNU make can only test for (in)equality
 # this is a workaround to test for >=
-ifeq ($(shell if test ! $(CC_VERSION) \< 2.9; then echo true; fi), true)
+ifeq ($(shell if test $(CC_VERSION) -ge 29; then echo true; fi), true)
   CFLAGS += -O -Wall -Wno-multichar -Wsign-compare
 endif
-ifeq ($(shell if test ! $(CC_VERSION) \< 3.0; then echo true; fi), true)
+ifeq ($(shell if test $(CC_VERSION) -ge 30; then echo true; fi), true)
   CFLAGS += -W -Wno-unused-parameter
 endif
-ifeq ($(shell if test ! $(CC_VERSION) \< 3.4; then echo true; fi), true)
+ifeq ($(shell if test $(CC_VERSION) -ge 34; then echo true; fi), true)
   CFLAGS += -Wdeclaration-after-statement
 endif
 
