@@ -533,22 +533,26 @@ static void GenerateTerrain(int type, int flag)
 	p += 8;
 
 	if (flag & 4) {
-		if (!(flag & 2)) {
-			if (!(flag & 1)) {
-				if (x + y > 190)
-					return;
-			} else {
-				if (y < 30 + x)
-					return;
-			}
-		} else {
-			if (!(flag & 1)) {
-				if (x + y < 256)
-					return;
-			} else {
-				if (x < 30 + y)
-					return;
-			}
+		uint xw = x * MapSizeY();
+		uint yw = y * MapSizeX();
+		uint bias = (MapSizeX() + MapSizeY()) * 16;
+
+		switch (flag & 3) {
+			case 0:
+				if (xw + yw > MapSize() - bias) return;
+				break;
+
+			case 1:
+				if (yw < xw + bias) return;
+				break;
+
+			case 2:
+				if (xw + yw < MapSize() + bias) return;
+				break;
+
+			case 3:
+				if (xw < yw + bias) return;
+				break;
 		}
 	}
 
