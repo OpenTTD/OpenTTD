@@ -79,17 +79,17 @@ static inline bool RoadVehiclesAreBuilt(void)
 
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int i;
 		StringID str = STR_02BE_DEFAULT;
 		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
 		SetDParam(0, str);
-		SetDParam(1, _currency_string_list[_opt_mod_ptr->currency]);
-		SetDParam(2, _opt_mod_ptr->kilometers + STR_0139_IMPERIAL_MILES);
-		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_mod_ptr->road_side);
-		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_mod_ptr->town_name);
-		SetDParam(5, _autosave_dropdown[_opt_mod_ptr->autosave]);
+		SetDParam(1, _currency_string_list[_opt_ptr->currency]);
+		SetDParam(2, _opt_ptr->kilometers + STR_0139_IMPERIAL_MILES);
+		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
+		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name);
+		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
 		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
@@ -101,12 +101,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 5: /* Setup currencies dropdown */
-			ShowDropDownMenu(w, _currency_string_list, _opt_mod_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+			ShowDropDownMenu(w, _currency_string_list, _opt_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 			return;
 		case 8: /* Setup distance unit dropdown */
-			ShowDropDownMenu(w, _distances_dropdown, _opt_mod_ptr->kilometers, e->click.widget, 0, 0);
+			ShowDropDownMenu(w, _distances_dropdown, _opt_ptr->kilometers, e->click.widget, 0, 0);
 			return;
 		case 11: { /* Setup road-side dropdown */
 			int i = 0;
@@ -114,17 +114,17 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			/* You can only change the drive side if you are in the menu or ingame with
 			 * no vehicles present. In a networking game only the server can change it */
 			if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
-				i = (-1) ^ (1 << _opt_mod_ptr->road_side); // disable the other value
+				i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
 
-			ShowDropDownMenu(w, _driveside_dropdown, _opt_mod_ptr->road_side, e->click.widget, i, 0);
+			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, e->click.widget, i, 0);
 		} return;
 		case 14: { /* Setup townname dropdown */
-			int i = _opt_mod_ptr->town_name;
+			int i = _opt_ptr->town_name;
 			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
 			return;
 		}
 		case 17: /* Setup autosave dropdown */
-			ShowDropDownMenu(w, _autosave_dropdown, _opt_mod_ptr->autosave, e->click.widget, 0, 0);
+			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, e->click.widget, 0, 0);
 			return;
 		case 20: /* Setup customized vehicle-names dropdown */
 			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names&1)?1:0, e->click.widget, (_vehicle_design_names&2)?0:2, 0);
@@ -149,12 +149,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT:
-		switch(e->dropdown.button) {
+		switch (e->dropdown.button) {
 		case 20: /* Vehicle design names */
 			if (e->dropdown.index == 0) {
 				DeleteCustomEngineNames();
 				MarkWholeScreenDirty();
-			} else if (!(_vehicle_design_names&1)) {
+			} else if (!(_vehicle_design_names & 1)) {
 				LoadCustomEngineNames();
 				MarkWholeScreenDirty();
 			}
@@ -162,15 +162,15 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		case 5: /* Currency */
 			if (e->dropdown.index == 23)
 				ShowCustCurrency();
-			_opt_mod_ptr->currency = _opt.currency = e->dropdown.index;
+			_opt_ptr->currency = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
 		case 8: /* Distance units */
-			_opt_mod_ptr->kilometers = e->dropdown.index;
+			_opt_ptr->kilometers = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
 		case 11: /* Road side */
-			if (_opt_mod_ptr->road_side != e->dropdown.index) { // only change if setting changed
+			if (_opt_ptr->road_side != e->dropdown.index) { // only change if setting changed
 				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_EMPTY));
 				MarkWholeScreenDirty();
 			}
@@ -180,7 +180,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_TOWN_NAME_TYPE | CMD_MSG(STR_EMPTY));
 			break;
 		case 17: /* Autosave options */
-			_opt_mod_ptr->autosave = e->dropdown.index;
+			_opt_ptr->autosave = e->dropdown.index;
 			SetWindowDirty(w);
 			break;
 		case 24: /* Change interface language */
@@ -208,7 +208,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		_opt_mod_ptr->road_side = p1;
+		_opt_ptr->road_side = p1;
 		InvalidateWindow(WC_GAME_OPTIONS,0);
 	}
 	return 0;
@@ -217,7 +217,7 @@ int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSetTownNameType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		_opt_mod_ptr->town_name = p1;
+		_opt_ptr->town_name = p1;
 		InvalidateWindow(WC_GAME_OPTIONS,0);
 	}
 	return 0;
@@ -288,31 +288,31 @@ typedef struct {
 } GameSettingData;
 
 static const GameSettingData _game_setting_info[] = {
-	{0,7,1,0},
-	{0,3,1,STR_6830_IMMEDIATE},
-	{0,2,1,STR_6816_LOW},
-	{0,3,1,STR_26816_NONE},
-	{100,500,50,0},
-	{2,4,1,0},
-	{0,2,1,STR_6820_LOW},
-	{0,4,1,STR_681B_VERY_SLOW},
-	{0,2,1,STR_6820_LOW},
-	{0,2,1,STR_6823_NONE},
-	{0,3,1,STR_6826_X1_5},
-	{0,2,1,STR_6820_LOW},
-	{0,3,1,STR_682A_VERY_FLAT},
-	{0,3,1,STR_VERY_LOW},
-	{0,1,1,STR_682E_STEADY},
-	{0,1,1,STR_6834_AT_END_OF_LINE_AND_AT_STATIONS},
-	{0,1,1,STR_6836_OFF},
-	{0,2,1,STR_6839_PERMISSIVE},
+	{  0,   7,  1, STR_NULL},
+	{  0,   3,  1, STR_6830_IMMEDIATE},
+	{  0,   2,  1, STR_6816_LOW},
+	{  0,   3,  1, STR_26816_NONE},
+	{100, 500, 50, STR_NULL},
+	{  2,   4,  1, STR_NULL},
+	{  0,   2,  1, STR_6820_LOW},
+	{  0,   4,  1, STR_681B_VERY_SLOW},
+	{  0,   2,  1, STR_6820_LOW},
+	{  0,   2,  1, STR_6823_NONE},
+	{  0,   3,  1, STR_6826_X1_5},
+	{  0,   2,  1, STR_6820_LOW},
+	{  0,   3,  1, STR_682A_VERY_FLAT},
+	{  0,   3,  1, STR_VERY_LOW},
+	{  0,   1,  1, STR_682E_STEADY},
+	{  0,   1,  1, STR_6834_AT_END_OF_LINE_AND_AT_STATIONS},
+	{  0,   1,  1, STR_6836_OFF},
+	{  0,   2,  1, STR_6839_PERMISSIVE},
 };
 
 static inline bool GetBitAndShift(uint32 *b)
 {
 	uint32 x = *b;
 	*b >>= 1;
-	return (x&1) != 0;
+	return HASBIT(x, 0);
 }
 
 /*
@@ -349,7 +349,7 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 
 	gm_opt->diff_level = mode;
 	if (mode != 3) { // not custom
-		for(i = 0; i != GAME_DIFFICULTY_NUM; i++)
+		for (i = 0; i != GAME_DIFFICULTY_NUM; i++)
 			((int*)&gm_opt->diff)[i] = _default_game_diff[mode][i];
 	}
 }
@@ -361,15 +361,21 @@ enum {
 	GAMEDIFF_WND_ROWSIZE    = 9
 };
 
+// Temporary holding place of values in the difficulty window until 'Save' is clicked
+static GameOptions _opt_mod_temp;
+// 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
+#define DIFF_INGAME_DISABLED_BUTTONS 0x383E
+
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		uint32 click_a, click_b, disabled;
 		int i;
-		int x,y,value;
+		int y, value;
 
-		w->click_state = (1 << 3) << _opt_mod_temp.diff_level;
+		w->click_state = (1 << 3) << _opt_mod_temp.diff_level; // have current difficulty button clicked
+		// disable all other difficulty buttons during gameplay except for 'custom'
 		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
 
 		if (_game_mode == GM_EDITOR)
@@ -386,53 +392,47 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		click_a = _difficulty_click_a;
 		click_b = _difficulty_click_b;
 
-		/* XXX - This is most likely the worst way I have ever seen
-		     to disable some buttons and to enable others.
-		     What the value means, is this:
-		       if bit1 is enabled, setting 1 is disabled
-		       then it is shifted to the left, and the story
-		       repeats....
-		   -- TrueLight */
-		disabled = _game_mode == GM_NORMAL ? 0x383E : 0;
+		/* XXX - Disabled buttons in normal gameplay. Bitshifted for each button to see if
+		 * that bit is set. If it is set, the button is disabled */
+		disabled = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
-		x = 0;
 		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect(x+5, y, x+5+8, y+8, 3, GetBitAndShift(&click_a)?0x20:0);
-			DrawFrameRect(x+15, y, x+15+8, y+8, 3, GetBitAndShift(&click_b)?0x20:0);
+			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? (1 << 5) : 0);
+			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? (1 << 5) : 0);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
-				int color = 0x8000 | _color_list[3].unk2;
-				GfxFillRect(x+6, y+1, x+6+8, y+8, color);
-				GfxFillRect(x+16, y+1, x+16+8, y+8, color);
+				int color = PALETTE_MODIFIER_COLOR | _color_list[3].unk2;
+				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
+				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
 			}
 
-			DrawStringCentered(x+10, y, STR_6819, 0);
-			DrawStringCentered(x+20, y, STR_681A, 0);
+			DrawStringCentered(10, y, STR_6819, 0);
+			DrawStringCentered(20, y, STR_681A, 0);
 
 
 			value = _game_setting_info[i].str + ((int*)&_opt_mod_temp.diff)[i];
-			if (i == 4) value *= 1000; // handle currency option
+			if (i == 4) value *= 1000; // XXX - handle currency option
 			SetDParam(0, value);
-			DrawString(x+30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
+			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
 
 			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
 		}
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 8: {
-			int x,y;
+		switch (e->click.widget) {
+		case 8: { /* Difficulty settings widget, decode click */
+			const GameSettingData *info;
+			int x, y;
 			uint btn, dis;
 			int val;
-			const GameSettingData *info;
 
 			// Don't allow clients to make any changes
 			if  (_networking && !_network_server)
 				return;
 
 			x = e->click.pt.x - 5;
-			if (!IS_INT_INSIDE(x, 0, 21))
+			if (!IS_INT_INSIDE(x, 0, 21)) // Button area
 				return;
 
 			y = e->click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
@@ -445,7 +445,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				return;
 
 			// Clicked disabled button?
-			dis = (_game_mode == GM_NORMAL) ? 0x383E : 0;
+			dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
 			if (HASBIT(dis, btn))
 				return;
@@ -454,7 +454,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 			val = ((int*)&_opt_mod_temp.diff)[btn];
 
-			info = &_game_setting_info[btn];
+			info = &_game_setting_info[btn]; // get information about the difficulty setting
 			if (x >= 10) {
 				// Increase button clicked
 				val = min(val + info->step, info->max);
@@ -469,8 +469,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			((int*)&_opt_mod_temp.diff)[btn] = val;
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
 			SetWindowDirty(w);
-			break;
-		}
+		}	break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
 			SetDifficultyLevel(e->click.widget - 3, &_opt_mod_temp);
@@ -484,7 +483,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
 				val = ((int*)&_opt_mod_temp.diff)[btn];
 				// if setting has changed, change it
-				if (val != ((int*)&_opt_mod_ptr->diff)[btn])
+				if (val != ((int*)&_opt_mod_temp.diff)[btn])
 					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			}
 			DoCommandP(0, -1, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
@@ -496,13 +495,12 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				StartupEconomy();
 			break;
 		}
-		case 11: // Cancel button - close window
+		case 11: /* Cancel button - close window, abandon changes */
 			DeleteWindow(w);
 			break;
-		}
-		break;
+	} break;
 
-	case WE_MOUSELOOP:
+	case WE_MOUSELOOP: /* Handle the visual 'clicking' of the buttons */
 		if (_difficulty_timeout != 0 && !--_difficulty_timeout) {
 			_difficulty_click_a = 0;
 			_difficulty_click_b = 0;
@@ -511,6 +509,8 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 }
+
+#undef DIFF_INGAME_DISABLED_BUTTONS
 
 static const Widget _game_difficulty_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
@@ -539,10 +539,9 @@ static const WindowDesc _game_difficulty_desc = {
 void ShowGameDifficulty(void)
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	/*	copy current settings to temporary holding place
-	 *	change that when setting stuff, copy back on clicking 'OK'
-	 */
-	memcpy(&_opt_mod_temp, _opt_mod_ptr, sizeof(GameOptions));
+	/* Copy current settings (ingame or in intro) to temporary holding place
+	 * change that when setting stuff, copy back on clicking 'OK' */
+	memcpy(&_opt_mod_temp, _opt_ptr, sizeof(GameOptions));
 	AllocateWindowDesc(&_game_difficulty_desc);
 }
 

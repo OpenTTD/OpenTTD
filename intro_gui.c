@@ -45,8 +45,8 @@ extern void HandleOnEditTextCancel(void);
 static void SelectGameWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(0xC0) & ~(0xF << 12)) | (1 << (_new_opt.landscape+12)) | (1<<6);
-		SetDParam(0, STR_6801_EASY + _new_opt.diff_level);
+		w->click_state = (w->click_state & ~(0xC0) & ~(0xF << 12)) | (1 << (_opt_newgame.landscape + 12)) | (1<<6);
+		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 		break;
 
@@ -73,10 +73,6 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 12: case 13: case 14: case 15:
 			DoCommandP(0, e->click.widget - 12, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
 			break;
-		}
-	case WE_KEYPRESS:
-		switch(e->keypress.keycode) {
-		case WKC_BACKQUOTE: IConsoleSwitch(); break;
 		}
 		break;
 
@@ -293,8 +289,7 @@ void AskExitToGameMenu(void)
 int32 CmdSetNewLandscapeType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		// XXX: some stuff
-		_new_opt.landscape = p1;
+		_opt_newgame.landscape = p1;
 		InvalidateWindowClasses(WC_SELECT_GAME);
 	}
 	return 0;

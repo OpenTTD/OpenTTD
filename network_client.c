@@ -516,7 +516,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
-		_opt_mod_ptr = &_opt;
+
+		_opt_ptr = &_opt; // during a network game you are always in-game
 
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();

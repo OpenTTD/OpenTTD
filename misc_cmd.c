@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "ttd.h"
 #include "string.h"
@@ -7,6 +6,7 @@
 #include "player.h"
 #include "gfx.h"
 #include "window.h"
+#include "gui.h"
 #include "saveload.h"
 #include "economy.h"
 #include "network.h"
@@ -222,15 +222,14 @@ int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
-			((int*)&_opt_mod_ptr->diff)[p1] = p2;
-			_opt_mod_ptr->diff_level = 3;
-		} else {
-			_opt_mod_ptr->diff_level = p2;
-		}
+			((int*)&_opt_ptr->diff)[p1] = p2;
+			_opt_ptr->diff_level = 3;
+		} else
+			_opt_ptr->diff_level = p2;
+
 		// If we are a network-client, update the difficult setting (if it is open)
 		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
-			memcpy(&_opt_mod_temp, _opt_mod_ptr, sizeof(GameOptions));
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
+			ShowGameDifficulty();
 	}
 	return 0;
 }

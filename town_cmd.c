@@ -1872,7 +1872,7 @@ bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type)
 	 *	owned by a town	no removal if rating is lower than ... depends now on
 	 *	difficulty setting. Minimum town rating selected by difficulty level
 	 */
-	modemod = _default_rating_settings[_opt_mod_ptr->diff.town_council_tolerance][type];
+	modemod = _default_rating_settings[_opt.diff.town_council_tolerance][type];
 
 	if (t->ratings[_current_player] < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
 		SetDParam(0, t->index);

@@ -1267,7 +1267,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					strcpy(_file_to_saveload.name, name);
 					DeleteWindow(w);
 				} else if (_saveload_mode == SLD_LOAD_SCENARIO) {
-					_switch_mode = SM_LOAD_SCENARIO;
+					_switch_mode = (_game_mode == GM_MENU) ? SM_LOAD : SM_LOAD_SCENARIO;
 					SetFiosType(file->type);
 					strcpy(_file_to_saveload.name, name);
 					DeleteWindow(w);

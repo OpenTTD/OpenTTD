@@ -1298,7 +1298,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: /* raise corner */
 			HandlePlacePushButton(w, 3, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseBigLand);
 			break;
@@ -1355,7 +1355,7 @@ terraform_size_common:;
 		}
 		break;
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, ~(1<<3 | 1<<4 | 1<<5 | 1<<10|1<<11|1<<12));
+		UnclickSomeWindowButtons(w, ~(1<<3 | 1<<4 | 1<<5 | 1<<10 | 1<<11 | 1<<12));
 		break;
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
@@ -1826,8 +1826,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		if (local == 0xff) local = 0; // spectator
 
 		switch(e->keypress.keycode) {
-		case WKC_F1:
-		case WKC_PAUSE:
+		case WKC_F1: case WKC_PAUSE:
 			ToolbarPauseClick(w);
 			break;
 		case WKC_F2: ShowGameOptions(); break;
@@ -1856,6 +1855,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
+		default: return;
+		e->keypress.cont = false;
 		}
 	} break;
 
@@ -2260,14 +2261,18 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_KEYPRESS:
+		if (e->keypress.keycode == WKC_BACKQUOTE) {
+			IConsoleSwitch();
+			e->keypress.cont = false;
+			break;
+		}
+
 		if (_game_mode == GM_MENU)
 			break;
 
-		switch(e->keypress.keycode) {
-		case 'C':
-		case 'Z': {
-			Point pt;
-			pt = GetTileBelowCursor();
+		switch (e->keypress.keycode) {
+		case 'C': case 'Z': {
+			Point pt = GetTileBelowCursor();
 			if (pt.x != -1) {
 				ScrollMainWindowTo(pt.x, pt.y);
 				if (e->keypress.keycode == 'Z')
@@ -2304,11 +2309,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		case 'X':
 			_display_opt ^= DO_TRANS_BUILDINGS;
 			MarkWholeScreenDirty();
-			break;
-
-		case WKC_BACKQUOTE:
-			IConsoleSwitch();
-			e->keypress.cont=false;
 			break;
 
 #ifdef ENABLE_NETWORK

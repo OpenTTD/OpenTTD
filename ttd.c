@@ -460,10 +460,11 @@ static void UnInitializeGame(void)
 static void LoadIntroGame(void)
 {
 	char filename[256];
-	_game_mode = GM_MENU;
-	_display_opt &= ~DO_TRANS_BUILDINGS; // don't make buildings transparent in intro
 
-	_opt_mod_ptr = &_new_opt;
+	_game_mode = GM_MENU;
+	CLRBITS(_display_opt, DO_TRANS_BUILDINGS); // don't make buildings transparent in intro
+	_opt_ptr = &_opt_newgame;
+
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
@@ -480,7 +481,6 @@ static void LoadIntroGame(void)
 #endif
 			GenerateWorld(1, 6, 6); // if failed loading, make empty world.
 	}
-	_opt.currency = _new_opt.currency;
 
 	_pause = 0;
 	_local_player = 0;
@@ -648,12 +648,11 @@ int ttd_main(int argc, char* argv[])
 	NetworkStartUp();
 #endif /* ENABLE_NETWORK */
 
-	// Default difficulty level
-	_opt_mod_ptr = &_new_opt;
+	_opt_ptr = &_opt_newgame;
 
-	// ugly hack, if diff_level is 9, it means we got no setting from the config file, so we load the default settings.
-	if (_opt_mod_ptr->diff_level == 9)
-		SetDifficultyLevel(0, _opt_mod_ptr);
+	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
+	if (_opt_newgame.diff_level == 9)
+		SetDifficultyLevel(0, &_opt_newgame);
 
 	// initialize the ingame console
 	IConsoleInit();
@@ -734,8 +733,8 @@ static void MakeNewGame(void)
 	_game_mode = GM_NORMAL;
 
 	// Copy in game options
-	_opt_mod_ptr = &_opt;
-	memcpy(&_opt, &_new_opt, sizeof(_opt));
+	_opt_ptr = &_opt;
+	memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
 
 	GfxLoadSprites();
 
@@ -766,8 +765,8 @@ static void MakeNewEditorWorld(void)
 	_game_mode = GM_EDITOR;
 
 	// Copy in game options
-	_opt_mod_ptr = &_opt;
-	memcpy(&_opt, &_new_opt, sizeof(_opt));
+	_opt_ptr = &_opt;
+	memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
 
 	GfxLoadSprites();
 
@@ -787,6 +786,12 @@ static void MakeNewEditorWorld(void)
 void StartupPlayers(void);
 void StartupDisasters(void);
 
+/**
+ * Start Scenario starts a new game based on a scenario.
+ * Eg 'New Game' --> select a preset scenario
+ * This starts a scenario based on your current difficulty settings just
+ * fix the landscape as that can be different from what is selected in the intro
+ */
 static void StartScenario(void)
 {
 	_game_mode = GM_NORMAL;
@@ -798,11 +803,6 @@ static void StartScenario(void)
 		_game_mode = GM_MENU;
 		return;
 	}
-
-	// Copy in game options
-	// Removed copying of game options when using "new game". --dominik
-	// _opt_mod_ptr = &_opt;
-	// memcpy(&_opt, &_new_opt, sizeof(_opt));
 
 	GfxLoadSprites();
 
@@ -818,15 +818,17 @@ static void StartScenario(void)
 		ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
 	}
 
+	{
+		byte landscape = _opt.landscape; // backup loaded landscape;
+		_opt_ptr = &_opt;
+		memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
+		_opt_ptr->landscape = landscape;
+	}
+
 	// Inititalize data
 	StartupPlayers();
 	StartupEngines();
 	StartupDisasters();
-
-	// When starting a scenario, is it really a load..
-	//  and in AfterLoad a player is started when it is
-	//  a scenario.. so we do not need it here.
-//	DoStartupNewPlayer(false);
 
 	_local_player = 0;
 
@@ -886,12 +888,12 @@ void SwitchMode(int new_mode)
 	}
 #endif /* ENABLE_NETWORK */
 
-	switch(new_mode) {
-	case SM_EDITOR: // Switch to scenario editor
+	switch (new_mode) {
+	case SM_EDITOR: /* Switch to scenario editor */
 		MakeNewEditorWorld();
 		break;
 
-	case SM_NEWGAME:
+	case SM_NEWGAME: /* New Game --> 'Random game' */
 #ifdef ENABLE_NETWORK
 		if (_network_server)
 			snprintf(_network_game_info.map_name, 40, "Random");
@@ -899,12 +901,12 @@ void SwitchMode(int new_mode)
 		MakeNewGame();
 		break;
 
-	case SM_START_SCENARIO:
+	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
 		StartScenario();
 		break;
 
-normal_load:
-	case SM_LOAD: { // Load game
+	case SM_LOAD: { /* Load game, Play Scenario */
+		_opt_ptr = &_opt;
 
 		_error_message = INVALID_STRING_ID;
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
@@ -921,19 +923,16 @@ normal_load:
 		break;
 	}
 
-	case SM_LOAD_SCENARIO: {
+	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 		int i;
 
-		if (_game_mode == GM_MENU) goto normal_load;
-
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
-			_opt_mod_ptr = &_opt;
-			_opt_mod_temp = _opt;
+			_opt_ptr = &_opt;
 
 			_local_player = OWNER_NONE;
 			_generating_world = true;
 			// delete all players.
-			for(i=0; i != MAX_PLAYERS; i++) {
+			for (i = 0; i != MAX_PLAYERS; i++) {
 				ChangeOwnershipOfPlayerItems(i, 0xff);
 				_players[i].is_active = false;
 			}
@@ -952,18 +951,18 @@ normal_load:
 	}
 
 
-	case SM_MENU: // Switch to game menu
+	case SM_MENU: /* Switch to game intro menu */
 		LoadIntroGame();
 		break;
 
-	case SM_SAVE: // Save game
+	case SM_SAVE: /* Save game */
 		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE) != SL_OK)
 			ShowErrorMessage(INVALID_STRING_ID, STR_4007_GAME_SAVE_FAILED, 0, 0);
 		else
 			DeleteWindowById(WC_SAVELOAD, 0);
 		break;
 
-	case SM_GENRANDLAND:
+	case SM_GENRANDLAND: /* Generate random land within scenario editor */
 		GenerateWorld(2, _patches.map_x, _patches.map_y);
 		// XXX: set date
 		_local_player = OWNER_NONE;
@@ -971,7 +970,7 @@ normal_load:
 		break;
 	}
 
-	if (_switch_mode_errorstr!=INVALID_STRING_ID)
+	if (_switch_mode_errorstr != INVALID_STRING_ID)
 		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
 
 	_in_state_game_loop = false;
@@ -1037,16 +1036,16 @@ static void DoAutosave(void)
 	char buf[200];
 
 	if (_patches.keep_all_autosave && _local_player != OWNER_SPECTATOR) {
-		Player *p;
+		const Player *p = DEREF_PLAYER(_local_player);
 		char *s;
 		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);
-		p = DEREF_PLAYER(_local_player);
+
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);
-		s= (char*)GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
+		s = (char*)GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
 		strcpy(s, ".sav");
-	} else {
+	} else { /* Save a maximum of 15 autosaves */
 		int n = _autosave_ctr;
 		_autosave_ctr = (_autosave_ctr + 1) & 15;
 		sprintf(buf, "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, n);
@@ -1231,7 +1230,7 @@ static void UpdateExclusiveRights(void)
 	*/
 }
 
-byte convert_currency[] = {
+const byte convert_currency[] = {
 	 0,  1, 12,  8,  3,
 	10, 14, 19,  4,  5,
 	 9, 11, 13,  6, 17,

@@ -2,11 +2,8 @@
 #define VARIABLES_H
 
 #include "player.h"
-//enum { DPARAM_SIZE = 32 };
-
 
 // ********* START OF SAVE REGION
-
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
 #endif
@@ -32,11 +29,15 @@ typedef struct {
 	byte road_side;
 } GameOptions;
 
-// These are the options for the current game
+/* These are the options for the current game
+ * either ingame, or loaded. Also used for networking games */
 VARDEF GameOptions _opt;
 
-// These are the options for the new game
-VARDEF GameOptions _new_opt;
+/* These are the default options for a new game */
+VARDEF GameOptions _opt_newgame;
+
+// Pointer to one of the two _opt OR _opt_newgame structs
+VARDEF GameOptions *_opt_ptr;
 
 enum {
 	CF_NOEURO = 0,
@@ -242,10 +243,6 @@ typedef struct Paths {
 
 VARDEF Paths _path;
 
-// Which options struct does options modify?
-VARDEF GameOptions *_opt_mod_ptr;
-VARDEF GameOptions _opt_mod_temp;
-
 // NOSAVE: Used in palette animations only, not really important.
 VARDEF int _timer_counter;
 
@@ -331,19 +328,16 @@ VARDEF char _savedump_path[64];
 VARDEF uint _savedump_first, _savedump_freq, _savedump_last;
 // end of debug features
 
-
-typedef struct {
-	char *name;
-	char *file;
-} DynLangEnt;
-
 // Used for dynamic language support
 typedef struct {
 	int num; // number of languages
 	int curr; // currently selected language index
 	char curr_file[32]; // currently selected language file
 	StringID dropdown[32 + 1]; // used in settings dialog
-	DynLangEnt ent[32];
+	struct {
+		char *name;
+		char *file;
+	} ent[32];
 } DynamicLanguages;
 
 VARDEF DynamicLanguages _dynlang;
