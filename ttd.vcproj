@@ -419,9 +419,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\newgrf.c">
-			</File>
-			<File
 				RelativePath="landscape.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -568,6 +565,9 @@
 						PreprocessorDefinitions=""
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\newgrf.c">
 			</File>
 			<File
 				RelativePath="oldloader.c">
@@ -1143,6 +1143,9 @@
 			</File>
 			<File
 				RelativePath=".\network.h">
+			</File>
+			<File
+				RelativePath=".\newgrf.h">
 			</File>
 			<File
 				RelativePath="news.h">

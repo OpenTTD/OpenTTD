@@ -19,12 +19,13 @@
  * of help at #tycoon. Also thanks to Michael Blunck for is GRF files which
  * served as subject to the initial testing of this codec. */
 
+
 extern int _skip_sprites;
 extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 extern int _traininfo_vehicle_pitch;
 
-static struct GRFFile *_cur_grffile;
+struct GRFFile *_cur_grffile, *_first_grffile;
 static int _cur_spriteid;
 static int _cur_stage;
 extern int _custom_sprites_base;

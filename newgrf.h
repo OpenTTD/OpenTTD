@@ -1,3 +1,5 @@
+#ifndef NEWGRF_H
+#define NEWGRF_H
 
 struct GRFFile {
 	char *filename;
@@ -28,5 +30,9 @@ struct GRFFile {
 	struct StationSpec stations[256];
 };
 
-struct GRFFile *_first_grffile;
-int _grffile_count;
+extern int _grffile_count;
+extern struct GRFFile *_first_grffile;
+
+
+#endif /* NEWGRF_H */
+
