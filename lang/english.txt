@@ -852,21 +852,21 @@ STR_0335_6							:{BLACK}6
 STR_0336_7							:{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ENGLISH						:English
-STR_TOWNNAME_FRENCH						:French
-STR_TOWNNAME_GERMAN						:German
-STR_TOWNNAME_AMERICAN						:American
-STR_TOWNNAME_LATIN_AMERICAN					:Latin-American
-STR_TOWNNAME_SILLY						:Silly
-STR_TOWNNAME_SWEDISH						:Swedish
-STR_TOWNNAME_DUTCH						:Dutch
-STR_TOWNNAME_FINNISH						:Finnish
-STR_TOWNNAME_POLISH						:Polish
+STR_TOWNNAME_ORIGINAL_ENGLISH 		:English (Original)
+STR_TOWNNAME_FRENCH								:French
+STR_TOWNNAME_GERMAN								:German
+STR_TOWNNAME_ADDITIONAL_ENGLISH		:English (Additional)
+STR_TOWNNAME_LATIN_AMERICAN				:Latin-American
+STR_TOWNNAME_SILLY								:Silly
+STR_TOWNNAME_SWEDISH							:Swedish
+STR_TOWNNAME_DUTCH								:Dutch
+STR_TOWNNAME_FINNISH							:Finnish
+STR_TOWNNAME_POLISH								:Polish
 STR_TOWNNAME_SLOVAKISH						:Slovakish
 STR_TOWNNAME_HUNGARIAN						:Hungarian
-STR_TOWNNAME_AUSTRIAN						:Austrian
-STR_TOWNNAME_ROMANIAN						:Romanian
-STR_TOWNNAME_CZECH						:Czech
+STR_TOWNNAME_AUSTRIAN							:Austrian
+STR_TOWNNAME_ROMANIAN							:Romanian
+STR_TOWNNAME_CZECH								:Czech
 ############ end of	townname region
 
 STR_CURR_GBP							:Pounds ({POUNDSIGN})

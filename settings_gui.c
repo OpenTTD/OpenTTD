@@ -76,7 +76,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, _currency_string_list[_opt_mod_ptr->currency]);
 		SetDParam(2, _opt_mod_ptr->kilometers + STR_0139_IMPERIAL_MILES);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_mod_ptr->road_side);
-		SetDParam(4, STR_TOWNNAME_ENGLISH + _opt_mod_ptr->town_name);
+		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_mod_ptr->town_name);
 		SetDParam(5, _autosave_dropdown[_opt_mod_ptr->autosave]);
 		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		i = GetCurRes();
@@ -103,7 +103,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		}
 		case 14: {
 			int i = _opt_mod_ptr->town_name;
-			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i));
+			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i));
 			return;
 		}
 		case 17:
