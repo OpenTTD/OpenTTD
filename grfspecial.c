@@ -1821,6 +1821,7 @@ static void GRFInhibit(byte *buf, int len)
 	int i;
 
 	check_length(len, 1, "GRFInhibit");
+	buf++, len--;
 	num = grf_load_byte(&buf); len--;
 	check_length(len, 4 * num, "GRFInhibit");
 
