@@ -991,17 +991,20 @@ DEF_CONSOLE_CMD(ConSet) {
 		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 
 		if (argc == 3 && ci != NULL) {
-			if (!_network_server)
-				SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
-			else {
-				if (NetworkFindName(argv[2])) {
-					NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, argv[2]);
-					ttd_strlcpy(ci->client_name, argv[2], sizeof(ci->client_name));
-					NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+			// Don't change the name if it is the same as the old name
+			if (strncmp(ci->client_name, argv[2], sizeof(_network_player_name)) != 0) {
+				if (!_network_server) {
+					SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
+				} else {
+					if (NetworkFindName(argv[2])) {
+						NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, argv[2]);
+						ttd_strlcpy(ci->client_name, argv[2], sizeof(ci->client_name));
+						NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+					}
 				}
+				/* Also keep track of the new name on the client itself */
+				ttd_strlcpy(_network_player_name, argv[2], sizeof(_network_player_name));
 			}
-			/* Also keep track of the new name on the client itself */
-			ttd_strlcpy(_network_player_name, argv[2], sizeof(_network_player_name));
 		} else {
 			IConsolePrint(_iconsole_color_default, "With 'set name' you can change your network-player name.");
 			IConsolePrint(_iconsole_color_warning, "Usage: set name \"<name>\".");
