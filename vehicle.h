@@ -28,6 +28,9 @@ static inline Order UnpackOrder(uint16 packed)
 	return order;
 }
 
+Order UnpackOldOrder(uint16 packed);
+
+
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
 	uint16 crash_anim_pos;

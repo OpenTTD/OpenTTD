@@ -16,6 +16,24 @@
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
 
 
+Order UnpackOldOrder(uint16 packed)
+{
+	Order order;
+	order.type    = (packed & 0x000f);
+	order.flags   = (packed & 0x00f0) >> 4,
+	order.station = (packed & 0xff00) >> 8;
+
+	// Sanity check
+	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
+	if (order.type == OT_NOTHING && (order.flags != 0 || order.station != 0)) {
+		order.type = OT_DUMMY;
+		order.flags = 0;
+	}
+
+	return order;
+}
+
+
 void VehicleInTheWayErrMsg(Vehicle *v)
 {
 	StringID id;
@@ -1896,7 +1914,7 @@ static void Load_ORDR()
 	SlArray(orders, len, SLE_UINT16);
 
 	for (i = 0; i < len; ++i)
-		_order_array[i] = UnpackOrder(orders[i]);
+		_order_array[i] = UnpackOldOrder(orders[i]);
 }
 
 const ChunkHandler _veh_chunk_handlers[] = {

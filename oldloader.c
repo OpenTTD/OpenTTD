@@ -1400,7 +1400,8 @@ bool LoadOldSaveGame(const char *file)
 		}
 	}
 
-	memcpy(_order_array, m->order_list, sizeof(m->order_list));
+	for (i = 0; i < lengthof(m->order_list); ++i)
+		_order_array[i] = UnpackOldOrder(m->order_list[i]);
 	_ptr_to_next_order = _order_array + REMAP_ORDER_IDX(m->ptr_to_next_order);
 
 	FixTown(_towns, m->town_list, lengthof(m->town_list), m->town_name_type);
