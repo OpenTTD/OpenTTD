@@ -77,9 +77,11 @@ static void DoPlaceMoreTrees(uint tile)
 
 		dist = myabs(x) + myabs(y);
 
-		cur_tile=TILE_MASK(tile + TILE_XY(x,y));
+		cur_tile = TILE_MASK(tile + TILE_XY(x,y));
 
-		if (dist <= 13 && IS_TILETYPE(cur_tile, MP_CLEAR)) {
+		/* Only on tiles within 13 squares from tile,
+		    on clear tiles, and NOT on farm-tiles */
+		if (dist <= 13 && IS_TILETYPE(cur_tile, MP_CLEAR) && (_map5[tile] & 0x1F) != 0x0F) {
 			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
 		}
 	} while (--i);
@@ -103,7 +105,8 @@ void PlaceTreesRandomly()
 	do {
 		r = Random();
 		tile = TILE_MASK(r);
-		if (IS_TILETYPE(tile, MP_CLEAR)) {
+		/* Only on clear tiles, and NOT on farm-tiles */
+		if (IS_TILETYPE(tile, MP_CLEAR) && (_map5[tile] & 0x1F) != 0x0F) {
 			PlaceTree(tile, r, 0);
 		}
 	} while (--i);
