@@ -24,8 +24,10 @@ typedef struct DrawTownTileStruct {
 	uint32 sprite_1;
 	uint32 sprite_2;
 
-	byte subtile_xy;
-	byte width_height;
+	byte subtile_x:4;
+	byte subtile_y:4;
+	byte width:4;
+	byte height:4;
 	byte dz;
 	byte proc;
 } DrawTownTileStruct;
@@ -82,10 +84,10 @@ static void DrawTile_Town(TileInfo *ti)
 			image = (image & 0x3FFF) | 0x3224000;
 
 		AddSortableSpriteToDraw(image,
-			ti->x | (dcts->subtile_xy>>4),
-			ti->y | (dcts->subtile_xy&0xF),
-			(dcts->width_height>>4)+1,
-			(dcts->width_height&0xF)+1,
+			ti->x + dcts->subtile_x,
+			ti->y + dcts->subtile_y,
+			dcts->width + 1,
+			dcts->height + 1,
 			dcts->dz,
 			z);
 
