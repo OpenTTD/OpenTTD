@@ -193,7 +193,9 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline);
 					_iconsole_cmdbufferpos = 19;
 					IConsoleCmdBufferAdd(_iconsole_cmdline);
-					IConsoleCmdExec(_iconsole_cmdline);
+					if (strlen(_iconsole_cmdline) != 0) // only execute if there is something typed obviously
+						IConsoleCmdExec(_iconsole_cmdline);
+
 					IConsoleClearCommand();
 					break;
 				case WKC_CTRL | WKC_RETURN:
