@@ -487,7 +487,13 @@ static void MakeWindow(bool full_screen)
 		if (_wnd.main_wnd) {
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
-			_wnd.main_wnd = CreateWindow("TTD", "OpenTTD", style, x, y, w, h, 0, 0, _inst, 0);
+			char Windowtitle[50] = "OpenTTD ";
+			#ifdef WITH_REV_HACK
+				// also show revision number/release in window title
+				extern const char _openttd_revision[];
+				strncat(Windowtitle, _openttd_revision, sizeof(Windowtitle)-(strlen(Windowtitle) + 1));
+			#endif
+			_wnd.main_wnd = CreateWindow("TTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
 			if (_wnd.main_wnd == NULL)
 				error("CreateWindow failed");
 		}
@@ -1779,16 +1785,16 @@ void FiosDelete(const char *name)
 #define Windows_NT3_51	4
 
 /* flags show the minimum required OS to use a given feature. Currently
-	 only dwMajorVersion is used
+	 only dwMajorVersion and dwMinorVersion (WindowsME) are used
 														MajorVersion	MinorVersion
-		Windows Server 2003					5							 2
-		Windows XP									5							 1
-		Windows 2000								5							 0
-		Windows NT 4.0							4							 0
-		Windows Me									4							90
-		Windows 98									4							10
-		Windows 95									4							 0
-		Windows NT 3.51							3							51
+		Windows Server 2003					5							 2				dmusic
+		Windows XP									5							 1				dmusic
+		Windows 2000								5							 0				dmusic
+		Windows NT 4.0							4							 0				win32
+		Windows Me									4							90				dmusic
+		Windows 98									4							10				win32
+		Windows 95									4							 0				win32
+		Windows NT 3.51							3							51				?????
 */
 
 const DriverDesc _video_driver_descs[] = {
@@ -1827,8 +1833,11 @@ byte GetOSVersion()
 	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 
 	if (GetVersionEx(&osvi)) {
-		DEBUG(misc, 2) ("Windows Version is %d", osvi.dwMajorVersion);
-		return (byte)osvi.dwMajorVersion;
+		DEBUG(misc, 2) ("Windows Version is %d.%d", osvi.dwMajorVersion, osvi.dwMinorVersion);
+		// WinME needs directmusic too (dmusic, Windows_2000 mode), all others default to OK
+		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 90) { return Windows_2000;} // WinME
+
+		return osvi.dwMajorVersion;
 	}
 
 	// GetVersionEx failed, but we can safely assume at least Win95/WinNT3.51 is used
