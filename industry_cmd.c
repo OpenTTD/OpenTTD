@@ -86,8 +86,51 @@ typedef struct IndustrySpec {
 
 #include "table/build_industry.h"
 
-static const byte _industry_close_mode[37] = {
-	1,0,2,1,2,1,2,2,2,1,1,1,0,2,2,1,0,1,1,1,1,1,0,2,1,2,1,2,1,1,0,2,1,2,1,1,1,
+typedef enum IndustryType {
+	INDUSTRY_NOT_CLOSABLE,     //! Industry can never close
+	INDUSTRY_PRODUCTION,       //! Industry can close and change of production
+	INDUSTRY_CLOSABLE,         //! Industry can only close (no production change)
+} IndustryType;
+
+
+static const IndustryType _industry_close_mode[37] = {
+	/* COAL_MINE */         INDUSTRY_PRODUCTION,
+	/* POWER_STATION */     INDUSTRY_NOT_CLOSABLE,
+	/* SAWMILL */           INDUSTRY_CLOSABLE,
+	/* FOREST */            INDUSTRY_PRODUCTION,
+	/* OIL_REFINERY */      INDUSTRY_CLOSABLE,
+	/* OIL_RIG */           INDUSTRY_PRODUCTION,
+	/* FACTORY */           INDUSTRY_CLOSABLE,
+	/* PRINTING_WORKS */    INDUSTRY_CLOSABLE,
+	/* STEEL_MILL */        INDUSTRY_CLOSABLE,
+	/* FARM */              INDUSTRY_PRODUCTION,
+	/* COPPER_MINE */       INDUSTRY_PRODUCTION,
+	/* OIL_WELL */          INDUSTRY_PRODUCTION,
+	/* BANK */              INDUSTRY_NOT_CLOSABLE,
+	/* FOOD_PROCESS */      INDUSTRY_CLOSABLE,
+	/* PAPER_MILL */        INDUSTRY_CLOSABLE,
+	/* GOLD_MINE */         INDUSTRY_PRODUCTION,
+	/* BANK_2,  */          INDUSTRY_NOT_CLOSABLE,
+	/* DIAMOND_MINE */      INDUSTRY_PRODUCTION,
+	/* IRON_MINE */         INDUSTRY_PRODUCTION,
+	/* FRUIT_PLANTATION */  INDUSTRY_PRODUCTION,
+	/* RUBBER_PLANTATION */ INDUSTRY_PRODUCTION,
+	/* WATER_SUPPLY */      INDUSTRY_PRODUCTION,
+	/* WATER_TOWER */       INDUSTRY_NOT_CLOSABLE,
+	/* FACTORY_2 */         INDUSTRY_CLOSABLE,
+	/* FARM_2 */            INDUSTRY_PRODUCTION,
+	/* LUMBER_MILL */       INDUSTRY_CLOSABLE,
+	/* COTTON_CANDY */      INDUSTRY_PRODUCTION,
+	/* CANDY_FACTORY */     INDUSTRY_CLOSABLE,
+	/* BATTERY_FARM */      INDUSTRY_PRODUCTION,
+	/* COLA_WELLS */        INDUSTRY_PRODUCTION,
+	/* TOY_SHOP */          INDUSTRY_NOT_CLOSABLE,
+	/* TOY_FACTORY */       INDUSTRY_CLOSABLE,
+	/* PLASTIC_FOUNTAINS */ INDUSTRY_PRODUCTION,
+	/* FIZZY_DRINK_FACTORY */INDUSTRY_CLOSABLE,
+	/* BUBBLE_GENERATOR */  INDUSTRY_PRODUCTION,
+	/* TOFFEE_QUARRY */     INDUSTRY_PRODUCTION,
+	/* SUGAR_MINE */        INDUSTRY_PRODUCTION
 };
 
 static const StringID _industry_prod_up_strings[] = {
@@ -1634,50 +1677,53 @@ void GenerateIndustries(void)
 
 static void ExtChangeIndustryProduction(Industry *i)
 {
-	bool closeit;
+	bool closeit = true;
 	int j;
 
-	if (_industry_close_mode[i->type] == 0) return;
+	switch (_industry_close_mode[i->type]) {
+		case INDUSTRY_NOT_CLOSABLE:
+			return;
 
-	closeit = true;
-
-	if (_industry_close_mode[i->type] == 2) {
-		if ( (byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1,180))
-			closeit = false;
-	} else {
-		for (j=0; j != 2 && i->produced_cargo[j]!=255; j++){
-			uint32 r;
-			int change,percent,old;
-			int mag;
-
-			change = old = i->production_rate[j];
-			if (CHANCE16R(20,1024,r))change -= ((RandomRange(50) + 10)*old) >> 8;
-			if (CHANCE16I(20+(i->pct_transported[j]*20>>8),1024,r>>16)) change += ((RandomRange(50) + 10)*old) >> 8;
-
-			// make sure it doesn't exceed 255 or goes below 0
-			change = clamp(change, 0, 255);
-			if (change == old) {
+		case INDUSTRY_CLOSABLE:
+			if ( (byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1,180))
 				closeit = false;
-				continue;
+			break;
+
+		default: /* INDUSTRY_PRODUCTION */
+			for (j=0; j != 2 && i->produced_cargo[j]!=255; j++){
+				uint32 r;
+				int change,percent,old;
+				int mag;
+
+				change = old = i->production_rate[j];
+				if (CHANCE16R(20,1024,r))change -= ((RandomRange(50) + 10)*old) >> 8;
+				if (CHANCE16I(20+(i->pct_transported[j]*20>>8),1024,r>>16)) change += ((RandomRange(50) + 10)*old) >> 8;
+
+				// make sure it doesn't exceed 255 or goes below 0
+				change = clamp(change, 0, 255);
+				if (change == old) {
+					closeit = false;
+					continue;
+				}
+
+				percent = change*100/old - 100;
+				i->production_rate[j] = change;
+
+				if (change >= _industry_spec[i->type].production_rate[j]/4)
+					closeit = false;
+
+				mag = abs(percent);
+				if (mag >= 10) {
+					SetDParam(3, mag);
+					SetDParam(0,_cargoc.names_s[i->produced_cargo[j]]);
+					SetDParam(1, i->town->index);
+					SetDParam(2, i->type + STR_4802_COAL_MINE);
+					AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+							NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
+							i->xy + TILE_XY(1,1), 0);
+				}
 			}
-
-			percent = change*100/old - 100;
-			i->production_rate[j] = change;
-
-			if (change >= _industry_spec[i->type].production_rate[j]/4)
-				closeit = false;
-
-			mag = abs(percent);
-			if (mag >= 10) {
-				SetDParam(3, mag);
-				SetDParam(0,_cargoc.names_s[i->produced_cargo[j]]);
-				SetDParam(1, i->town->index);
-				SetDParam(2, i->type + STR_4802_COAL_MINE);
-				AddNewsItem(percent>=0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-						NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
-						i->xy + TILE_XY(1,1), 0);
-			}
-		}
+			break;
 	}
 
 	if (closeit) {
@@ -1767,58 +1813,71 @@ static void MaybeNewIndustry(uint32 r)
 	AddNewsItem(	STR_482D_NEW_UNDER_CONSTRUCTION + (type == IT_FOREST), NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ECONOMY,0), i->xy, 0);
 }
 
-static void MaybeCloseIndustry(Industry *i)
+static void ChangeIndustryProduction(Industry *i)
 {
-	uint32 r;
-	StringID str;
+	bool only_decrease = false;
+	StringID str = STR_NULL;
 	int type = i->type;
 
-	if (_industry_close_mode[type] == 1) {
-		/* decrease or increase */
-		if (type == IT_OIL_WELL && _opt.landscape == LT_NORMAL) goto decrease_production;
-		if (CHANCE16I(1,3,r=Random())) {
-			if ((i->pct_transported[0] > 153) ^ CHANCE16I(1,3,r>>16)) {
+	switch (_industry_close_mode[type]) {
+		case INDUSTRY_NOT_CLOSABLE:
+			return;
 
-/* Increase production */
-				if (i->prod_level != 0x80) {
-					byte b;
+		case INDUSTRY_PRODUCTION:
+			/* decrease or increase */
+			if (type == IT_OIL_WELL && _opt.landscape == LT_NORMAL)
+				only_decrease = true;
 
-					i->prod_level <<= 1;
+			if (only_decrease || CHANCE16(1,3)) {
+				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
+				if (!only_decrease && (i->pct_transported[0] > 153) != CHANCE16(1,3)) {
+					/* Increase production */
+					if (i->prod_level != 0x80) {
+						byte b;
 
-					b = i->production_rate[0]*2;
-					if (i->production_rate[0] >= 128) b=255;
-					i->production_rate[0] = b;
-					b = i->production_rate[1]*2;
-					if (i->production_rate[1] >= 128) b=255;
-					i->production_rate[1] = b;
+						i->prod_level <<= 1;
 
-					str = _industry_prod_up_strings[type];
-					goto add_news;
+						b = i->production_rate[0] * 2;
+						if (i->production_rate[0] >= 128)
+							b = 0xFF;
+						i->production_rate[0] = b;
+
+						b = i->production_rate[1] * 2;
+						if (i->production_rate[1] >= 128)
+							b = 0xFF;
+						i->production_rate[1] = b;
+
+						str = _industry_prod_up_strings[type];
+					}
+				} else {
+					/* Decrease production */
+					if (i->prod_level == 4) {
+						i->prod_level = 0;
+						str = _industry_close_strings[type];
+					} else {
+						i->prod_level >>= 1;
+						i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
+						i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
+
+						str = _industry_prod_down_strings[type];
+					}
 				}
-			} else {
-decrease_production:
-
-/* Decrease production */
-				if (i->prod_level == 4) goto close_industry;
-				i->prod_level>>=1;
-				i->production_rate[0] = (i->production_rate[0]+1) >> 1;
-				i->production_rate[1] = (i->production_rate[1]+1) >> 1;
-
-				str = _industry_prod_down_strings[type];
-				goto add_news;
 			}
-		}
-	} else if (_industry_close_mode[type] > 1) {
-		/* maybe close */
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
-close_industry:
-			i->prod_level = 0;
-			str = _industry_close_strings[type];
-add_news:
-			SetDParam(1, type + STR_4802_COAL_MINE);
-			SetDParam(0, i->town->index);
-			AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
-		}
+			break;
+
+		case INDUSTRY_CLOSABLE:
+			/* maybe close */
+			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
+				i->prod_level = 0;
+				str = _industry_close_strings[type];
+			}
+			break;
+	}
+
+	if (str != STR_NULL) {
+		SetDParam(1, type + STR_4802_COAL_MINE);
+		SetDParam(0, i->town->index);
+		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
 	}
 }
 
@@ -1839,7 +1898,7 @@ void IndustryMonthlyLoop(void)
 	} else if (!_patches.smooth_economy && _total_industries > 0) {
 		i = GetIndustry(RandomRange(_total_industries));
 		if (i->xy != 0)
-			MaybeCloseIndustry(i);
+			ChangeIndustryProduction(i);
 	}
 
 	_current_player = old_player;
