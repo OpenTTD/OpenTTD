@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "debug.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "window.h"
 #include "gui.h"

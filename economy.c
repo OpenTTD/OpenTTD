@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
 #include "map.h"
 #include "news.h"
@@ -1191,7 +1192,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 
 			/* Add a news item */
 			pair = SetupSubsidyDecodeParam(s, 0);
-			INJECT_DPARAM(2);
+			InjectDParam(2);
 
 			p = DEREF_PLAYER(_current_player);
 			SetDParam(0, p->name_1);

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "strings.h" // XXX GetCurrentCurrencyRate()
 #include "table/strings.h"
 #include "window.h"
 #include "gui.h"
@@ -726,7 +727,6 @@ static const PatchPage _patches_page[] = {
 	{_patches_ai,						lengthof(_patches_ai) },
 };
 
-extern uint GetCurrentCurrencyRate(void);
 
 static int32 ReadPE(const PatchEntry*pe)
 {

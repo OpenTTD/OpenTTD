@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "namegen.h"
 #include "station.h"
@@ -109,7 +110,7 @@ byte *GetString(byte *buffr, uint16 string)
 	return DecodeString(buffr, GetStringPtr(string));
 }
 
-void InjectDparam(int amount)
+void InjectDParam(int amount)
 {
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32));
 }
@@ -443,7 +444,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 
 		case 0x9A: { // {STATION}
 			Station *st;
-			InjectDparam(1);
+			InjectDParam(1);
 			st = GetStation(GetDParam(1));
 			if (!st->xy) { // station doesn't exist anymore
 				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
@@ -480,7 +481,7 @@ static byte *DecodeString(byte *buff, const byte *str)
 				if (idx == 0) {
 					str = STR_WAYPOINTNAME_CITY;
 				} else {
-					InjectDparam(1);
+					InjectDParam(1);
 					SetDParam(1, idx + 1);
 					str = STR_WAYPOINTNAME_CITY_SERIAL;
 				}

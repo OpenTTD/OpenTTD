@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "debug.h"
+#include "strings.h"
 #include "network_data.h"
 
 #ifdef ENABLE_NETWORK

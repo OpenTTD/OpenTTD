@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "table/strings.h"
 #include "debug.h"
+#include "strings.h"
 #include "map.h"
 #include "tile.h"
 

@@ -412,7 +412,6 @@ static inline uint32 GetDParam(uint n)
 #define COPY_IN_DPARAM(offs,src,num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
 #define COPY_OUT_DPARAM(dst,offs,num) memcpy(dst,_decode_parameters + offs, sizeof(uint32) * (num))
 
-#define INJECT_DPARAM(n) InjectDparam(n);
 
 #define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;
 

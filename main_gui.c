@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -44,8 +45,6 @@ extern void GenerateWorld(int mode, uint log_x, uint log_y);
 
 extern void GenerateIndustries(void);
 extern void GenerateTowns(void);
-
-extern uint GetCurrentCurrencyRate(void);
 
 extern void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
 

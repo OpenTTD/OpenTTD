@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "strings.h" // XXX GetParam*
 #include "table/strings.h"
 #include "map.h"
 #include "vehicle.h"

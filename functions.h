@@ -47,15 +47,6 @@ static inline Point RemapCoords2(int x, int y)
 	return RemapCoords(x, y, GetSlopeZ(x, y));
 }
 
-/* game.c */
-byte *GetString(byte *buffr, uint16 string);
-void InjectDparam(int amount);
-
-int32 GetParamInt32(void);
-int GetParamInt16(void);
-int GetParamInt8(void);
-int GetParamUint16(void);
-
 
 /* clear_land.c */
 void DrawHillyLandTile(TileInfo *ti);

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "debug.h"
+#include "strings.h"
 #include "map.h"
 #include "network_data.h"
 
@@ -44,7 +45,6 @@ static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 /* Some externs / forwards */
 extern void ShowJoinStatusWindow(void);
 extern void StateGameLoop(void);
-extern uint GetCurrentCurrencyRate(void);
 
 // Function that looks up the CI for a given client-index
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
