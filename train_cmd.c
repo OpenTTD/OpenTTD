@@ -732,7 +732,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
-		InvalidateWindow(WC_TRAINS_LIST, _current_player);
+		RebuildVehicleLists();
 	}
 
 	return 0;
