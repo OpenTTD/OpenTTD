@@ -54,7 +54,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			}
 			SetDParam(0, str);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running >> 8);
+			SetDParam(3, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running >> 8);
 			DrawString(2, 15, STR_900D_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -348,13 +348,14 @@ static void DrawNewRoadVehWindow(Window *w)
 
 		WP(w,buildtrain_d).sel_engine = selected_id;
 		if (selected_id != -1) {
+			const RoadVehicleInfo *rvi = RoadVehInfo(selected_id);
 			Engine *e;
 
-			SetDParam(0, road_vehicle_info(selected_id)->base_cost * (_price.roadveh_base>>3)>>5);
-			SetDParam(1, road_vehicle_info(selected_id)->max_speed * 10 >> 5);
-			SetDParam(2, road_vehicle_info(selected_id)->running_cost * _price.roadveh_running >> 8);
-			SetDParam(4, road_vehicle_info(selected_id)->capacity);
-			SetDParam(3, _cargoc.names_long_p[road_vehicle_info(selected_id)->cargo_type]);
+			SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
+			SetDParam(1, rvi->max_speed * 10 >> 5);
+			SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
+			SetDParam(4, rvi->capacity);
+			SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
 
 			e = &_engines[selected_id];
 			SetDParam(6, e->lifelength);

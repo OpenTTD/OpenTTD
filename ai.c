@@ -121,7 +121,7 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
 	int i;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-		RailVehicleInfo *rvi = &rail_vehinfo(i);
+		const RailVehicleInfo *rvi = rail_vehinfo(i);
 		Engine *e = DEREF_ENGINE(i);
 
 		if (e->railtype != railtype || rvi->flags & RVI_WAGON

@@ -568,7 +568,7 @@ static void AiNew_State_FindStation(Player *p) {
 				if (p->ainew.tbt == AI_BUS && (FACIL_BUS_STOP & st->facilities) == FACIL_BUS_STOP) {
 					if (st->town == town) {
 						// Check how much cargo there is left in the station
-						if ((st->goods[p->ainew.cargo].waiting_acceptance & 0xFFF) > road_vehicle_info(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
+						if ((st->goods[p->ainew.cargo].waiting_acceptance & 0xFFF) > RoadVehInfo(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
 							if (AiNew_CheckVehicleStation(p, st)) {
 								// We did found a station that was good enough!
 								new_tile = st->xy;
@@ -827,7 +827,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	// Passenger run.. how long is the route?
     	length = p->ainew.path_info.route_length;
     	// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
-    	tiles_a_day = road_vehicle_info(i)->max_speed * DAY_TICKS / 256 / 16;
+    	tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
     	// We want a vehicle in a station once a month at least, so, calculate it!
     	// (the * 2 is because we have 2 stations ;))
     	amount = ((int)(((float)length / (float)tiles_a_day / 30 * 2))) * 2;
@@ -842,7 +842,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	// Passenger run.. how long is the route?
     	length = p->ainew.path_info.route_length;
     	// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
-    	tiles_a_day = road_vehicle_info(i)->max_speed * DAY_TICKS / 256 / 16;
+    	tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
     	if (p->ainew.from_deliver)
     		max_cargo = DEREF_INDUSTRY(p->ainew.from_ic)->total_production[0];
     	else
@@ -853,7 +853,7 @@ static int AiNew_HowManyVehicles(Player *p) {
     	// We want all the cargo to be gone in a month.. so, we know the cargo it delivers
     	//  we know what the vehicle takes with him, and we know the time it takes him
     	//  to get back here.. now let's do some math!
-    	amount = (int)(((float)length / (float)tiles_a_day / 30 * 2) * ((float)max_cargo / (float)road_vehicle_info(i)->capacity));
+    	amount = (int)(((float)length / (float)tiles_a_day / 30 * 2) * ((float)max_cargo / (float)RoadVehInfo(i)->capacity));
     	amount += 1;
     	return amount;
 	} else {

@@ -46,7 +46,7 @@ int GetAircraftImage(Vehicle *v, byte direction)
 
 void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	int spritenum = aircraft_vehinfo(engine).image_index;
+	int spritenum = AircraftVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleIcon(engine, 6);
@@ -60,17 +60,18 @@ void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 
 	DrawSprite((6 + _aircraft_sprite[spritenum]) | image_ormod, x, y);
 
-	if ((aircraft_vehinfo(engine).subtype & 1) == 0)
+	if ((AircraftVehInfo(engine)->subtype & 1) == 0)
 		DrawSprite(0xF3D, x, y-5);
 }
 
 void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 {
-	SetDParam(0, ((_price.aircraft_base >> 3) * aircraft_vehinfo(engine).base_cost) >> 5);
-	SetDParam(1, aircraft_vehinfo(engine).max_speed << 3);
-	SetDParam(2, aircraft_vehinfo(engine).passanger_capacity);
-	SetDParam(3, aircraft_vehinfo(engine).mail_capacity);
-	SetDParam(4, aircraft_vehinfo(engine).running_cost * _price.aircraft_running >> 8);
+	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
+	SetDParam(0, ((_price.aircraft_base >> 3) * avi->base_cost) >> 5);
+	SetDParam(1, avi->max_speed << 3);
+	SetDParam(2, avi->passanger_capacity);
+	SetDParam(3, avi->mail_capacity);
+	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
 
 	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
 }
@@ -100,7 +101,7 @@ static bool AllocateVehicles(Vehicle **vl, int num)
 
 static int32 EstimateAircraftCost(uint16 engine_type)
 {
-	return aircraft_vehinfo(engine_type).base_cost * (_price.aircraft_base>>3)>>5;
+	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;
 }
 
 
@@ -111,6 +112,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[3], *v, *u, *w;
 	byte unit_num;
 	uint tile = TILE_FROM_XY(x,y);
+	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	Engine *e;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
@@ -121,7 +123,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return value;
 
 	// allocate 2 or 3 vehicle structs, depending on type
-	if (!AllocateVehicles(vl, (aircraft_vehinfo(p1).subtype & 1) == 0 ? 3 : 2) ||
+	if (!AllocateVehicles(vl, (avi->subtype & 1) == 0 ? 3 : 2) ||
 			_ptr_to_next_order >= endof(_order_array))
 					return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -163,11 +165,11 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_DISASTER;
 
-		v->spritenum = aircraft_vehinfo(p1).image_index;
+		v->spritenum = avi->image_index;
 //		v->cargo_count = u->number_of_pieces = 0;
 
-		v->cargo_cap = aircraft_vehinfo(p1).passanger_capacity;
-		u->cargo_cap = aircraft_vehinfo(p1).mail_capacity;
+		v->cargo_cap = avi->passanger_capacity;
+		u->cargo_cap = avi->mail_capacity;
 
 		v->cargo_type = CT_PASSENGERS;
 		u->cargo_type = CT_MAIL;
@@ -180,11 +182,11 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->last_station_visited = 0xFF;
 //		v->destination_coords = 0;
 
-		v->max_speed = aircraft_vehinfo(p1).max_speed;
-		v->acceleration = aircraft_vehinfo(p1).acceleration;
+		v->max_speed = avi->max_speed;
+		v->acceleration = avi->acceleration;
 		v->engine_type = (byte)p1;
 
-		v->subtype = (aircraft_vehinfo(p1).subtype & 1) == 0 ? 0 : 2;
+		v->subtype = (avi->subtype & 1) == 0 ? 0 : 2;
 		v->value = value;
 
 		u->subtype = 4;
@@ -416,7 +418,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
 		return CMD_ERROR;
 
-	pass = aircraft_vehinfo(v->engine_type).passanger_capacity;
+	pass = AircraftVehInfo(v->engine_type)->passanger_capacity;
 	if (p2 != 0) {
 		pass >>= 1;
 		if (p2 != 5)
@@ -433,7 +435,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_cap = pass;
 
 		u = v->next;
-		mail = aircraft_vehinfo(v->engine_type).mail_capacity;
+		mail = AircraftVehInfo(v->engine_type)->mail_capacity;
 		if (p2 != 0) {
 			mail = 0;
 		}
@@ -502,7 +504,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	cost = aircraft_vehinfo(v->engine_type).running_cost * _price.aircraft_running / 364;
+	cost = AircraftVehInfo(v->engine_type)->running_cost * _price.aircraft_running / 364;
 
 	v->profit_this_year -= cost >> 8;
 
@@ -652,7 +654,7 @@ static void ServiceAircraft(Vehicle *v)
 
 static void PlayAircraftSound(Vehicle *v)
 {
-	SndPlayVehicleFx(aircraft_vehinfo(v->engine_type).sfx, v);
+	SndPlayVehicleFx(AircraftVehInfo(v->engine_type)->sfx, v);
 }
 
 static bool UpdateAircraftSpeed(Vehicle *v)
@@ -1062,7 +1064,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (st->airport_type == AT_SMALL && (aircraft_vehinfo(v->engine_type).subtype & 2) && !_cheats.no_jetcrash.value) {
+	if (st->airport_type == AT_SMALL && (AircraftVehInfo(v->engine_type)->subtype & 2) && !_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
 

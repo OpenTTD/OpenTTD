@@ -156,12 +156,29 @@ extern RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
 extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
 extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
-/* TODO: Change this to return a pointer type instead, for the sake of consistency.
- * --pasky. XXX - really needed? Why?. Best to remove the pointer type as well cause
- * _map uses it that way...less conflicts - Darkvater */
-#define rail_vehinfo(e) _rail_vehicle_info[e]
-#define ship_vehicle_info(e) _ship_vehicle_info[e - SHIP_ENGINES_INDEX]
-#define aircraft_vehinfo(e) _aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX]
-#define road_vehicle_info(e) (&_road_vehicle_info[e - ROAD_ENGINES_INDEX])
+
+static inline RailVehicleInfo *rail_vehinfo(uint e)
+{
+	assert(e < lengthof(_rail_vehicle_info));
+	return &_rail_vehicle_info[e];
+}
+
+static inline ShipVehicleInfo *ShipVehInfo(uint e)
+{
+	assert(e - SHIP_ENGINES_INDEX < lengthof(_ship_vehicle_info));
+	return &_ship_vehicle_info[e - SHIP_ENGINES_INDEX];
+}
+
+static inline AircraftVehicleInfo *AircraftVehInfo(uint e)
+{
+	assert(e - AIRCRAFT_ENGINES_INDEX < lengthof(_aircraft_vehicle_info));
+	return &_aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX];
+}
+
+static inline RoadVehicleInfo *RoadVehInfo(uint e)
+{
+	assert(e - ROAD_ENGINES_INDEX < lengthof(_road_vehicle_info));
+	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
+}
 
 #endif

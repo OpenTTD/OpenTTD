@@ -88,13 +88,14 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
+				const AircraftVehicleInfo *avi = AircraftVehInfo(selected_id);
 				Engine *e;
 
-				SetDParam(0, aircraft_vehinfo(selected_id).base_cost * (_price.aircraft_base>>3)>>5);
-				SetDParam(1, aircraft_vehinfo(selected_id).max_speed * 8);
-				SetDParam(2, aircraft_vehinfo(selected_id).passanger_capacity);
-				SetDParam(3, aircraft_vehinfo(selected_id).mail_capacity);
-				SetDParam(4, aircraft_vehinfo(selected_id).running_cost * _price.aircraft_running >> 8);
+				SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
+				SetDParam(1, avi->max_speed * 8);
+				SetDParam(2, avi->passanger_capacity);
+				SetDParam(3, avi->mail_capacity);
+				SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
 
 				e = &_engines[selected_id];
 				SetDParam(6, e->lifelength);
@@ -350,7 +351,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			}
 			SetDParam(0, str);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, _price.aircraft_running * aircraft_vehinfo(v->engine_type).running_cost >> 8);
+			SetDParam(3, _price.aircraft_running * AircraftVehInfo(v->engine_type)->running_cost >> 8);
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);
 		}
 

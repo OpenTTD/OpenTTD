@@ -65,7 +65,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		const Engine *e = DEREF_ENGINE(i);
-		const RailVehicleInfo *rvi = &rail_vehinfo(i);
+		const RailVehicleInfo *rvi = rail_vehinfo(i);
 
 		if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
@@ -128,7 +128,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				const RailVehicleInfo *rvi = &rail_vehinfo(selected_id);
+				const RailVehicleInfo *rvi = rail_vehinfo(selected_id);
 				Engine *e;
 				YearMonthDay ymd;
 

@@ -22,7 +22,7 @@ static byte GetTileShipTrackStatus(uint tile) {
 
 void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	int spritenum = ship_vehicle_info(engine).image_index;
+	int spritenum = ShipVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleIcon(engine, 6);
@@ -38,7 +38,7 @@ void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawShipEngineInfo(int engine, int x, int y, int maxw)
 {
-	ShipVehicleInfo *svi = &ship_vehicle_info(engine);
+	const ShipVehicleInfo *svi = ShipVehInfo(engine);
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
 	SetDParam(1, svi->max_speed * 10 >> 5);
 	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
@@ -135,7 +135,7 @@ void OnNewDay_Ship(Vehicle *v)
 
 
 
-	cost = ship_vehicle_info(v->engine_type).running_cost * _price.ship_running / 364;
+	cost = ShipVehInfo(v->engine_type)->running_cost * _price.ship_running / 364;
 	v->profit_this_year -= cost >> 8;
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
@@ -182,7 +182,7 @@ static void MarkShipDirty(Vehicle *v)
 
 static void PlayShipSound(Vehicle *v)
 {
-	SndPlayVehicleFx(ship_vehicle_info(v->engine_type).sfx, v);
+	SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
 }
 
 static const TileIndexDiff _dock_offs[] = {
@@ -782,7 +782,7 @@ void ShipsYearlyLoop()
 
 static int32 EstimateShipCost(uint16 engine_type)
 {
-	return ship_vehicle_info(engine_type).base_cost * (_price.ship_base>>3)>>5;
+	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
 }
 
 // p1 = type to build
@@ -806,6 +806,8 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		const ShipVehicleInfo *svi = ShipVehInfo(p1);
+
 		v->unitnumber = unit_num;
 
 		v->owner = _current_player;
@@ -823,13 +825,13 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->y_offs = -3;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
-		v->spritenum = ship_vehicle_info(p1).image_index;
-		v->cargo_type = ship_vehicle_info(p1).cargo_type;
-		v->cargo_cap = ship_vehicle_info(p1).capacity;
+		v->spritenum = svi->image_index;
+		v->cargo_type = svi->cargo_type;
+		v->cargo_cap = svi->capacity;
 		v->value = value;
 
 		v->last_station_visited = 255;
-		v->max_speed = ship_vehicle_info(p1).max_speed;
+		v->max_speed = svi->max_speed;
 		v->engine_type = (byte)p1;
 
 		e = &_engines[p1];

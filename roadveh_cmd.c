@@ -71,7 +71,7 @@ int GetRoadVehImage(Vehicle *v, byte direction)
 
 void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	int spritenum = road_vehicle_info(engine)->image_index;
+	int spritenum = RoadVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleIcon(engine, 6);
@@ -87,19 +87,21 @@ void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 {
-	SetDParam(0, ((_price.roadveh_base >> 3) * road_vehicle_info(engine)->base_cost) >> 5);
-	SetDParam(1, road_vehicle_info(engine)->max_speed * 10 >> 5);
-	SetDParam(2, road_vehicle_info(engine)->running_cost * _price.roadveh_running >> 8);
+	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 
-	SetDParam(4, road_vehicle_info(engine)->capacity);
-	SetDParam(3, _cargoc.names_long_p[road_vehicle_info(engine)->cargo_type]);
+	SetDParam(0, ((_price.roadveh_base >> 3) * rvi->base_cost) >> 5);
+	SetDParam(1, rvi->max_speed * 10 >> 5);
+	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
+
+	SetDParam(4, rvi->capacity);
+	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
 static int32 EstimateRoadVehCost(byte engine_type)
 {
-	return ((_price.roadveh_base >> 3) * road_vehicle_info(engine_type)->base_cost) >> 5;
+	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
 }
 
 int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -126,6 +128,8 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
+
 		v->unitnumber = unit_num;
 		v->direction = 0;
 		v->owner = _current_player;
@@ -141,9 +145,9 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.state = 254;
 		v->vehstatus = VS_HIDDEN|VS_STOPPED|VS_DEFPAL;
 
-		v->spritenum = road_vehicle_info(p1)->image_index;
-		v->cargo_type = road_vehicle_info(p1)->cargo_type;
-		v->cargo_cap = road_vehicle_info(p1)->capacity;
+		v->spritenum = rvi->image_index;
+		v->cargo_type = rvi->cargo_type;
+		v->cargo_cap = rvi->capacity;
 //		v->cargo_count = 0;
 		v->value = cost;
 //		v->day_counter = 0;
@@ -155,7 +159,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //	v->u.road.overtaking = 0;
 
 		v->last_station_visited = 0xFF;
-		v->max_speed = road_vehicle_info(p1)->max_speed;
+		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
 
 		e = &_engines[p1];
@@ -631,7 +635,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 static void StartRoadVehSound(Vehicle *v)
 {
-	int s = road_vehicle_info(v->engine_type)->sfx;
+	int s = RoadVehInfo(v->engine_type)->sfx;
 	if (s == 23 && (v->tick_counter&3) == 0) s++;
 	SndPlayVehicleFx(s, v);
 }
@@ -1476,7 +1480,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
-	cost = road_vehicle_info(v->engine_type)->running_cost * _price.roadveh_running / 364;
+	cost = RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364;
 
 	v->profit_this_year -= cost >> 8;
 

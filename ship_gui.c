@@ -175,7 +175,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			}
 			SetDParam(0, str);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, ship_vehicle_info(v->engine_type).running_cost * _price.ship_running >> 8);
+			SetDParam(3, ShipVehInfo(v->engine_type)->running_cost * _price.ship_running >> 8);
 			DrawString(2, 15, STR_9812_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -361,14 +361,15 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
+				const ShipVehicleInfo *svi = ShipVehInfo(selected_id);
 				Engine *e;
 
-				SetDParam(0, ship_vehicle_info(selected_id).base_cost * (_price.ship_base>>3)>>5);
-				SetDParam(1, ship_vehicle_info(selected_id).max_speed * 10 >> 5);
-				SetDParam(2, _cargoc.names_long_p[ship_vehicle_info(selected_id).cargo_type]);
-				SetDParam(3, ship_vehicle_info(selected_id).capacity);
-				SetDParam(4, ship_vehicle_info(selected_id).refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-				SetDParam(5, ship_vehicle_info(selected_id).running_cost * _price.ship_running >> 8);
+				SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
+				SetDParam(1, svi->max_speed * 10 >> 5);
+				SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
+				SetDParam(3, svi->capacity);
+				SetDParam(4, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+				SetDParam(5, svi->running_cost * _price.ship_running >> 8);
 
 				e = &_engines[selected_id];
 				SetDParam(7, e->lifelength);
@@ -474,7 +475,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		StringID str;
 
 		// Possible to refit?
-		if (ship_vehicle_info(v->engine_type).refittable &&
+		if (ShipVehInfo(v->engine_type)->refittable &&
 				v->vehstatus&VS_STOPPED &&
 				v->u.ship.state == 0x80 &&
 				IsShipDepotTile(v->tile))
