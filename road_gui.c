@@ -304,6 +304,7 @@ static const WindowDesc _build_road_desc = {
 
 void ShowBuildRoadToolbar()
 {
+	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDesc(&_build_road_desc);
 }

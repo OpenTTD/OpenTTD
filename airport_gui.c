@@ -126,6 +126,7 @@ static const WindowDesc _air_toolbar_desc = {
 
 void ShowBuildAirToolbar()
 {
+	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDescFront(&_air_toolbar_desc, 0);
 }

@@ -204,6 +204,7 @@ static const WindowDesc _build_docks_toolbar_desc = {
 
 void ShowBuildDocksToolbar()
 {
+	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDesc(&_build_docks_toolbar_desc);
 }

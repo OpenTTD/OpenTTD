@@ -803,6 +803,8 @@ void ShowBuildRailToolbar(int index, int button)
 {
 	Window *w;
 
+	if (_current_player == OWNER_SPECTATOR) return;
+
 	// don't recreate the window if we're clicking on a button and the window exists.
 	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, 0)) || w->wndproc != BuildRailToolbWndProc) {
 		DeleteWindowById(WC_BUILD_TOOLBAR, 0);
