@@ -1047,6 +1047,307 @@ static void FixGameDifficulty(GameDifficulty *n, OldGameSettings *o)
 	n->disasters = o->disasters;
 }
 
+#ifdef TTD_BIG_ENDIAN
+/*	This function fixes the endiannes issues on Big Endian machines.
+ *	Obviously only uint16 (WORD) and uint32 (LONG WORD) 's are fixed
+ *	since these are different on Big Endian machines. A single byte has
+ *	the same ordening */
+static void FixEndianness(OldMain *m)
+{
+	int i;
+	m->date				= BSWAP16(m->date);
+	m->date_fract = BSWAP16(m->date_fract);
+	m->seed_1			= BSWAP32(m->seed_1);
+	m->seed_2			= BSWAP32(m->seed_2);
+
+	/* ----------- TOWNS ----------- */
+	for (i = 0; i < 70; i++) {														// OldTown town_list[70];
+		int j;
+		m->town_list[i].xy							= BSWAP16(m->town_list[i].xy);
+		m->town_list[i].population			= BSWAP16(m->town_list[i].population);
+		m->town_list[i].townnametype		= BSWAP16(m->town_list[i].townnametype);
+		m->town_list[i].townnameparts		= BSWAP32(m->town_list[i].townnameparts);
+		m->town_list[i].sign_left				= BSWAP16(m->town_list[i].sign_left);
+		m->town_list[i].sign_top				= BSWAP16(m->town_list[i].sign_top);
+		m->town_list[i].flags12					= BSWAP16(m->town_list[i].flags12);
+		for (j = 0; j < 5; j++)															// uint16 radius[5];
+			m->town_list[i].radius[j]			= BSWAP16(m->town_list[i].radius[j]);
+		for (j = 0; j < 8; j++)															// uint16 ratings[8];
+			m->town_list[i].ratings[j]		= BSWAP16(m->town_list[i].ratings[j]);
+		m->town_list[i].have_ratings		= BSWAP32(m->town_list[i].have_ratings);
+		m->town_list[i].statues					= BSWAP32(m->town_list[i].statues);
+		m->town_list[i].num_houses			= BSWAP16(m->town_list[i].num_houses);
+		m->town_list[i].new_max_pass		= BSWAP16(m->town_list[i].new_max_pass);
+		m->town_list[i].new_max_mail		= BSWAP16(m->town_list[i].new_max_mail);
+		m->town_list[i].new_act_pass		= BSWAP16(m->town_list[i].new_act_pass);
+		m->town_list[i].new_act_mail		= BSWAP16(m->town_list[i].new_act_mail);
+		m->town_list[i].max_pass				= BSWAP16(m->town_list[i].max_pass);
+		m->town_list[i].max_mail				= BSWAP16(m->town_list[i].max_mail);
+		m->town_list[i].act_pass				= BSWAP16(m->town_list[i].act_pass);
+		m->town_list[i].act_mail				= BSWAP16(m->town_list[i].act_mail);
+		m->town_list[i].new_act_food		= BSWAP16(m->town_list[i].new_act_food);
+		m->town_list[i].new_act_water		= BSWAP16(m->town_list[i].new_act_water);
+		m->town_list[i].act_food				= BSWAP16(m->town_list[i].act_food);
+		m->town_list[i].act_water				= BSWAP16(m->town_list[i].act_water);
+		m->town_list[i].unk56						= BSWAP32(m->town_list[i].unk56);
+		m->town_list[i].unk5A						= BSWAP32(m->town_list[i].unk5A);
+	}
+
+	/* ----------- ORDER LIST ----------- */
+	for (i = 0; i < 5000; i++)														// uint16 order_list[5000];
+		m->order_list[i]							= BSWAP16(m->order_list[i]);
+
+	/* ----------- ANIMATED TILE LIST ----------- */
+	for (i = 0; i < 256; i++)															// uint16 animated_tile_list[256];
+		m->animated_tile_list[i]			= BSWAP16(m->animated_tile_list[i]);
+
+	m->ptr_to_next_order						= BSWAP32(m->ptr_to_next_order);
+
+	/* ----------- DEPOTS ----------- */
+	for (i = 0; i < 255; i++) {														// OldDepot depots[255];
+		m->depots[i].xy								= BSWAP16(m->depots[i].xy);
+		m->depots[i].town							= BSWAP32(m->depots[i].town);
+	}
+
+	m->cur_town_ptr									= BSWAP32(m->cur_town_ptr);
+	m->timer_counter								= BSWAP16(m->timer_counter);
+	m->land_code										= BSWAP16(m->land_code);
+	m->age_cargo_skip_counter				= BSWAP16(m->age_cargo_skip_counter);
+	m->tick_counter									= BSWAP16(m->tick_counter);
+	m->cur_tileloop_tile						= BSWAP16(m->cur_tileloop_tile);
+
+	/* ----------- PRICES ----------- */
+	for (i = 0; i < 49; i++) {														// OldPrice prices[49];
+		m->prices[i].price						= BSWAP32(m->prices[i].price);
+		m->prices[i].frac							= BSWAP16(m->prices[i].frac);
+	}
+
+	/* ----------- CARGO PAYMENT RATES ----------- */
+	for (i = 0; i < 12; i++) {														// OldPaymentRate cargo_payment_rates[12];
+		m->cargo_payment_rates[i].price		= BSWAP32(m->cargo_payment_rates[i].price);
+		m->cargo_payment_rates[i].frac		= BSWAP16(m->cargo_payment_rates[i].frac);
+		m->cargo_payment_rates[i].unused	= BSWAP16(m->cargo_payment_rates[i].unused);
+	}
+
+	/* ----------- MAP3 ----------- */
+	for (i = 0; i < (256*256); i++)												// uint16 map3[256*256];
+		m->map3[i] = BSWAP16(m->map3[i]);
+
+	/* ----------- STATIONS ----------- */
+	for (i = 0; i < 250; i++) {														// OldStation stations[250];
+		int j;
+		m->stations[i].xy							= BSWAP16(m->stations[i].xy);
+		m->stations[i].town						= BSWAP32(m->stations[i].town);
+		m->stations[i].bus_tile				= BSWAP16(m->stations[i].bus_tile);
+		m->stations[i].lorry_tile			= BSWAP16(m->stations[i].lorry_tile);
+		m->stations[i].train_tile			= BSWAP16(m->stations[i].train_tile);
+		m->stations[i].airport_tile		= BSWAP16(m->stations[i].airport_tile);
+		m->stations[i].dock_tile			= BSWAP16(m->stations[i].dock_tile);
+		m->stations[i].string_id			= BSWAP16(m->stations[i].string_id);
+		m->stations[i].sign_left			= BSWAP16(m->stations[i].sign_left);
+		m->stations[i].sign_top				= BSWAP16(m->stations[i].sign_top);
+		m->stations[i].had_vehicle_of_type						= BSWAP16(m->stations[i].had_vehicle_of_type);
+		for (j = 0; j < 12; j++)														// OldGoodsEntry goods[12];
+			m->stations[i].goods[j].waiting_acceptance	= BSWAP16(m->stations[i].goods[j].waiting_acceptance);
+		m->stations[i].airport_flags	= BSWAP16(m->stations[i].airport_flags);
+		m->stations[i].last_vehicle		= BSWAP16(m->stations[i].last_vehicle);
+		m->stations[i].unk8A					= BSWAP32(m->stations[i].unk8A);
+	}
+
+	/* ----------- INDUSTRIES ----------- */
+	for (i = 0; i < 90; i++) {														// OldIndustry industries[90];
+		m->industries[i].xy											= BSWAP16(m->industries[i].xy);
+		m->industries[i].town										= BSWAP32(m->industries[i].town);
+		m->industries[i].cargo_waiting[0]				= BSWAP16(m->industries[i].cargo_waiting[0]);
+		m->industries[i].cargo_waiting[1]				= BSWAP16(m->industries[i].cargo_waiting[1]);
+
+		m->industries[i].last_mo_production[0]	= BSWAP16(m->industries[i].last_mo_production[0]);
+		m->industries[i].last_mo_production[1]	= BSWAP16(m->industries[i].last_mo_production[1]);
+
+		m->industries[i].last_mo_transported[0]	= BSWAP16(m->industries[i].last_mo_transported[0]);
+		m->industries[i].last_mo_transported[1]	= BSWAP16(m->industries[i].last_mo_transported[1]);
+
+		m->industries[i].total_production[0]		= BSWAP16(m->industries[i].total_production[0]);
+		m->industries[i].total_production[1]		= BSWAP16(m->industries[i].total_production[1]);
+
+		m->industries[i].total_transported[0]		= BSWAP16(m->industries[i].total_transported[0]);
+		m->industries[i].total_transported[1]		= BSWAP16(m->industries[i].total_transported[1]);
+		m->industries[i].counter								= BSWAP16(m->industries[i].counter);
+		m->industries[i].unk2E									= BSWAP32(m->industries[i].unk2E);
+		m->industries[i].unk32									= BSWAP32(m->industries[i].unk32);
+	}
+
+	/* ----------- PLAYERS ----------- */
+	for (i = 0; i < 8; i++) {															// OldPlayer players[8];
+		int j, k;
+		m->players[i].name_1						= BSWAP16(m->players[i].name_1);
+		m->players[i].name_2						= BSWAP32(m->players[i].name_2);
+		m->players[i].face							= BSWAP32(m->players[i].face);
+		m->players[i].pres_name_1				= BSWAP16(m->players[i].pres_name_1);
+		m->players[i].pres_name_2				= BSWAP32(m->players[i].pres_name_2);
+		m->players[i].money							= BSWAP32(m->players[i].money);
+		m->players[i].loan							= BSWAP32(m->players[i].loan);
+		m->players[i].bankrupt_value		= BSWAP32(m->players[i].bankrupt_value);
+		m->players[i].bankrupt_timeout	= BSWAP16(m->players[i].bankrupt_timeout);
+		m->players[i].cargo_types				= BSWAP32(m->players[i].cargo_types);
+
+		for (j = 0; j < 3; j++) {														// OldPlayerExpenses expenses[3];
+			for (k = 0; k < 13; k++)
+				m->players[i].expenses[j].cost[k]	= BSWAP32(m->players[i].expenses[j].cost[k]);
+		}
+
+		for (j = 0; j < (24 + 1); j++) {										// OldPlayerEconomy economy[24 + 1];
+			m->players[i].economy->income								= BSWAP32(m->players[i].economy->income);
+			m->players[i].economy->expenses							= BSWAP32(m->players[i].economy->expenses);
+			m->players[i].economy->delivered_cargo			= BSWAP32(m->players[i].economy->delivered_cargo);
+			m->players[i].economy->performance_history	= BSWAP32(m->players[i].economy->performance_history);
+			m->players[i].economy->company_value				= BSWAP32(m->players[i].economy->company_value);
+		}
+
+		m->players[i].inaugurated_date			= BSWAP16(m->players[i].inaugurated_date);
+		m->players[i].last_build_coordinate	= BSWAP16(m->players[i].last_build_coordinate);
+		m->players[i].ai_state_counter			= BSWAP16(m->players[i].ai_state_counter);
+		m->players[i].ai_timeout_counter		= BSWAP16(m->players[i].ai_timeout_counter);
+
+		// OldAiBuildRec ai_src, ai_dst, ai_mid1, ai_mid2;
+		m->players[i].ai_src.spec_tile			= BSWAP16(m->players[i].ai_src.spec_tile);
+		m->players[i].ai_src.use_tile				= BSWAP16(m->players[i].ai_src.use_tile);
+		m->players[i].ai_dst.spec_tile			= BSWAP16(m->players[i].ai_dst.spec_tile);
+		m->players[i].ai_dst.use_tile				= BSWAP16(m->players[i].ai_dst.use_tile);
+		m->players[i].ai_mid1.spec_tile			= BSWAP16(m->players[i].ai_mid1.spec_tile);
+		m->players[i].ai_mid1.use_tile			= BSWAP16(m->players[i].ai_mid1.use_tile);
+		m->players[i].ai_mid2.spec_tile			= BSWAP16(m->players[i].ai_mid2.spec_tile);
+		m->players[i].ai_mid2.use_tile			= BSWAP16(m->players[i].ai_mid2.use_tile);
+
+		m->players[i].ai_loco_id						= BSWAP16(m->players[i].ai_loco_id);
+
+		for (j = 0; j < 9; j++)
+			m->players[i].ai_wagonlist[j]			= BSWAP16(m->players[i].ai_wagonlist[j]);
+		m->players[i].ai_start_tile_a				= BSWAP16(m->players[i].ai_start_tile_a);
+		m->players[i].ai_start_tile_b				= BSWAP16(m->players[i].ai_start_tile_b);
+		m->players[i].ai_cur_tile_a					= BSWAP16(m->players[i].ai_cur_tile_a);
+		m->players[i].ai_cur_tile_b					= BSWAP16(m->players[i].ai_cur_tile_b);
+		for (j = 0; j < 16; j++)														// OldAiBannedTile banned_tiles[16];
+			m->players[i].banned_tiles[j].tile= BSWAP16(m->players[i].banned_tiles[j].tile);
+		m->players[i].location_of_house			= BSWAP16(m->players[i].location_of_house);
+		m->players[i].unk3AA								= BSWAP32(m->players[i].unk3AA);
+		m->players[i].unk3AE								= BSWAP32(m->players[i].unk3AE);
+	}
+
+	/* ----------- VEHICLES ----------- */
+	for (i = 0; i < 850; i++) {														// OldVehicle vehicles[850];
+		m->vehicles[i].next_hash						= BSWAP16(m->vehicles[i].next_hash);
+		m->vehicles[i].index								= BSWAP16(m->vehicles[i].index);
+		m->vehicles[i].schedule_ptr					= BSWAP32(m->vehicles[i].schedule_ptr);
+		m->vehicles[i].dest_tile						= BSWAP16(m->vehicles[i].dest_tile);
+		m->vehicles[i].load_unload_time_rem	= BSWAP16(m->vehicles[i].load_unload_time_rem);
+		m->vehicles[i].date_of_last_service	= BSWAP16(m->vehicles[i].date_of_last_service);
+		m->vehicles[i].service_interval			= BSWAP16(m->vehicles[i].service_interval);
+		m->vehicles[i].max_speed						= BSWAP16(m->vehicles[i].max_speed);
+		m->vehicles[i].x_pos								= BSWAP16(m->vehicles[i].x_pos);
+		m->vehicles[i].y_pos								= BSWAP16(m->vehicles[i].y_pos);
+		m->vehicles[i].tile									= BSWAP16(m->vehicles[i].tile);
+		m->vehicles[i].cur_image						= BSWAP16(m->vehicles[i].cur_image);
+		m->vehicles[i].left_coord						= BSWAP16(m->vehicles[i].left_coord);
+		m->vehicles[i].right_coord					= BSWAP16(m->vehicles[i].right_coord);
+		m->vehicles[i].top_coord						= BSWAP16(m->vehicles[i].top_coord);
+		m->vehicles[i].bottom_coord					= BSWAP16(m->vehicles[i].bottom_coord);
+		m->vehicles[i].vehstatus						= BSWAP16(m->vehicles[i].vehstatus);
+		m->vehicles[i].cur_speed						= BSWAP16(m->vehicles[i].cur_speed);
+		m->vehicles[i].capacity							= BSWAP16(m->vehicles[i].capacity);
+		m->vehicles[i].number_of_pieces			= BSWAP16(m->vehicles[i].number_of_pieces);
+		m->vehicles[i].age_in_days					= BSWAP16(m->vehicles[i].age_in_days);
+		m->vehicles[i].max_age_in_days			= BSWAP16(m->vehicles[i].max_age_in_days);
+		m->vehicles[i].engine_type					= BSWAP16(m->vehicles[i].engine_type);
+		m->vehicles[i].reliability					= BSWAP16(m->vehicles[i].reliability);
+		m->vehicles[i].reliability_spd_dec	= BSWAP16(m->vehicles[i].reliability_spd_dec);
+		m->vehicles[i].profit_this_year			= BSWAP32(m->vehicles[i].profit_this_year);
+		m->vehicles[i].profit_last_year			= BSWAP32(m->vehicles[i].profit_last_year);
+		m->vehicles[i].next_in_chain				= BSWAP16(m->vehicles[i].next_in_chain);
+		m->vehicles[i].value								= BSWAP32(m->vehicles[i].value);
+		m->vehicles[i].string_id						= BSWAP16(m->vehicles[i].string_id);
+
+		// OldVehicleUnion u;
+		switch (m->vehicles[i].type) {
+		case VEH_Train:
+			m->vehicles[i].u.rail.crash_anim_pos			= BSWAP16(m->vehicles[i].u.rail.crash_anim_pos);
+			break;
+		case VEH_Aircraft:
+			m->vehicles[i].u.air.crashed_counter			= BSWAP16(m->vehicles[i].u.air.crashed_counter);
+			break;
+		case VEH_Road:
+			m->vehicles[i].u.road.unk2								= BSWAP16(m->vehicles[i].u.road.unk2);
+			m->vehicles[i].u.road.crashed_ctr					= BSWAP16(m->vehicles[i].u.road.crashed_ctr);
+			break;
+		case VEH_Special:
+			m->vehicles[i].u.special.unk0							= BSWAP16(m->vehicles[i].u.special.unk0);
+			break;
+		case VEH_Disaster:
+			m->vehicles[i].u.disaster.image_override	= BSWAP16(m->vehicles[i].u.disaster.image_override);
+			m->vehicles[i].u.disaster.unk2						= BSWAP16(m->vehicles[i].u.disaster.unk2);
+			break;
+		}
+	}
+
+	/* ----------- SIGNS ----------- */
+	for (i = 0; i < 40; i++) {														// OldSign signs[40];
+		m->signs[i].text									= BSWAP16(m->signs[i].text);
+		m->signs[i].x											= BSWAP16(m->signs[i].x);
+		m->signs[i].y											= BSWAP16(m->signs[i].y);
+		m->signs[i].z											= BSWAP16(m->signs[i].z);
+		m->signs[i].sign_left							= BSWAP16(m->signs[i].sign_left);
+		m->signs[i].sign_top							= BSWAP16(m->signs[i].sign_top);
+	}
+
+	/* ----------- ENGINES ----------- */
+	for (i = 0; i < 256; i++) {														// OldEngine engines[256];
+		m->engines[i].player_avail				= BSWAP16(m->engines[i].player_avail);
+		m->engines[i].intro_date					= BSWAP16(m->engines[i].intro_date);
+		m->engines[i].age									= BSWAP16(m->engines[i].age);
+		m->engines[i].reliability					= BSWAP16(m->engines[i].reliability);
+		m->engines[i].reliability_spd_dec	= BSWAP16(m->engines[i].reliability_spd_dec);
+		m->engines[i].reliability_start		= BSWAP16(m->engines[i].reliability_start);
+		m->engines[i].reliability_max			= BSWAP16(m->engines[i].reliability_max);
+		m->engines[i].reliability_final		= BSWAP16(m->engines[i].reliability_final);
+		m->engines[i].duration_phase_1		= BSWAP16(m->engines[i].duration_phase_1);
+		m->engines[i].duration_phase_2		= BSWAP16(m->engines[i].duration_phase_2);
+		m->engines[i].duration_phase_3		= BSWAP16(m->engines[i].duration_phase_3);
+	}
+
+	m->vehicle_id_ctr_day								= BSWAP16(m->vehicle_id_ctr_day);
+
+	m->next_competitor_start						= BSWAP16(m->next_competitor_start);
+	m->saved_main_scrollpos_x						= BSWAP16(m->saved_main_scrollpos_x);
+	m->saved_main_scrollpos_y						= BSWAP16(m->saved_main_scrollpos_y);
+	m->saved_main_scrollpos_zoom				= BSWAP16(m->saved_main_scrollpos_zoom);
+	m->maximum_loan											= BSWAP32(m->maximum_loan);
+	m->maximum_loan_unround							= BSWAP32(m->maximum_loan_unround);
+	m->economy_fluct										= BSWAP16(m->economy_fluct);
+	m->disaster_delay										= BSWAP16(m->disaster_delay);
+
+	for (i = 0; i < 256; i++)															// uint16 engine_name_strings[256];
+		m->engine_name_strings[i]					= BSWAP16(m->engine_name_strings[i]);
+
+	/* ----------- GAME SETTINGS ----------- */
+	m->game_diff.max_no_competitors			= BSWAP16(m->game_diff.max_no_competitors);
+	m->game_diff.competitor_start_time	= BSWAP16(m->game_diff.competitor_start_time);
+	m->game_diff.number_towns						= BSWAP16(m->game_diff.number_towns);
+	m->game_diff.number_industries			= BSWAP16(m->game_diff.number_industries);
+	m->game_diff.max_loan								= BSWAP16(m->game_diff.max_loan);
+	m->game_diff.initial_interest				= BSWAP16(m->game_diff.initial_interest);
+	m->game_diff.vehicle_costs					= BSWAP16(m->game_diff.vehicle_costs);
+	m->game_diff.competitor_speed				= BSWAP16(m->game_diff.competitor_speed);
+	m->game_diff.competitor_intelligence= BSWAP16(m->game_diff.competitor_intelligence);
+	m->game_diff.vehicle_breakdowns			= BSWAP16(m->game_diff.vehicle_breakdowns);
+	m->game_diff.subsidy_multiplier			= BSWAP16(m->game_diff.subsidy_multiplier);
+	m->game_diff.construction_cost			= BSWAP16(m->game_diff.construction_cost);
+	m->game_diff.terrain_type						= BSWAP16(m->game_diff.terrain_type);
+	m->game_diff.quantity_sea_lakes			= BSWAP16(m->game_diff.quantity_sea_lakes);
+	m->game_diff.economy								= BSWAP16(m->game_diff.economy);
+	m->game_diff.line_reverse_mode			= BSWAP16(m->game_diff.line_reverse_mode);
+	m->game_diff.disasters							= BSWAP16(m->game_diff.disasters);
+}
+#endif
 
 // loader for old style savegames
 bool LoadOldSaveGame(const char *file)
@@ -1072,6 +1373,9 @@ bool LoadOldSaveGame(const char *file)
 	 */
 	m = (OldMain *)malloc(sizeof(OldMain));
 	LoadSavegameBytes(m, sizeof(OldMain));
+	#ifdef TTD_BIG_ENDIAN
+	FixEndianness(m);
+	#endif
 
 	// copy sections of it to our datastructures.
 	memcpy(_map_owner, m->map_owner, sizeof(_map_owner));

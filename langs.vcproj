@@ -44,7 +44,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating american language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
 					Outputs="lang\american.lng"/>
 			</FileConfiguration>
 		</File>
@@ -175,7 +176,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating Original Vehicle names file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
 					Outputs="lang\origveh.lng"/>
 			</FileConfiguration>
 		</File>
@@ -226,6 +228,9 @@
 "
 					Outputs="lang\swedish.lng"/>
 			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\turkish.txt">
 		</File>
 	</Files>
 	<Globals>
