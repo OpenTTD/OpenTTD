@@ -474,12 +474,13 @@ static void GenerateTerrain(int type, int flag)
 	uint y;
 	uint w;
 	uint h;
+	const Sprite* template;
 	const byte *p;
 	byte *tile;
 	byte direction;
 
 	r = Random();
-	p = GetNonSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
+	template = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
 	x = r & MapMaxX();
 	y = (r >> MapLogX()) & MapMaxY();
@@ -490,13 +491,13 @@ static void GenerateTerrain(int type, int flag)
 
 	direction = (r >> 22) & 3;
 	if (direction & 1) {
-		w = p[1];
-		h = p[2];
+		w = template->height;
+		h = template->width;
 	} else {
-		w = p[2];
-		h = p[1];
+		w = template->width;
+		h = template->height;
 	}
-	p += 8;
+	p = template->data;
 
 	if (flag & 4) {
 		uint xw = x * MapSizeY();
