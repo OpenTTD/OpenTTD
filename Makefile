@@ -636,21 +636,21 @@ $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
  		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
 $(OSX): 
-	@rm -fr $(OSXAPP)
-	@mkdir -p $(OSXAPP)/Contents/MacOS
-	@mkdir -p $(OSXAPP)/Contents/Resources
-	@mkdir -p $(OSXAPP)/Contents/Data
-	@mkdir -p $(OSXAPP)/Contents/Lang
-	@echo "APPL????" > $(OSXAPP)/Contents/PkgInfo
-	@cp os/macos/ttd.icns $(OSXAPP)/Contents/Resources/openttd.icns
-	@os/macos/plistgen.sh $(OSXAPP) $(REV)
-	@cp os/macos/track_starter $(OSXAPP)/contents/macos
+	@rm -fr "$(OSXAPP)"
+	@mkdir -p "$(OSXAPP)"/Contents/MacOS
+	@mkdir -p "$(OSXAPP)"/Contents/Resources
+	@mkdir -p "$(OSXAPP)"/Contents/Data
+	@mkdir -p "$(OSXAPP)"/Contents/Lang
+	@echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
+	@cp os/macos/ttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
+	@os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
+	@cp os/macos/track_starter "$(OSXAPP)"/contents/macos
 	@ls os/macos | grep -q "\.class" || \
 	javac os/macos/OpenTTDMidi.java
-	@cp os/macos/OpenTTDMidi.class $(OSXAPP)/contents/macos
-	@cp data/* $(OSXAPP)/Contents/data/
-	@cp lang/*.lng $(OSXAPP)/Contents/lang/
-	@cp $(TTD) $(OSXAPP)/Contents/MacOS/$(TTD)
+	@cp os/macos/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
+	@cp data/* "$(OSXAPP)"/Contents/data/
+	@cp lang/*.lng "$(OSXAPP)"/Contents/lang/
+	@cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
 
 $(endwarnings): $(64_bit_warnings)
 
@@ -713,7 +713,7 @@ rev.c: FORCE
 	@echo 'const int _revision_number = $(REV_NUMBER);' >>rev.c.new
 	@# some additions for MorphOS versions tag
 	@echo '#ifdef __MORPHOS__'  >>rev.c.new
-	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD '$(REV)' ('${BUILDDATE}') © OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
+	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD "'$(REV)'" ('${BUILDDATE}') © OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
 	@echo '#endif' >>rev.c.new
 	@# Only update the real rev.c if it actually changed, to prevent
 	@# useless rebuilds.
