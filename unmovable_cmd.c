@@ -258,8 +258,8 @@ void GenerateUnmovables(void)
 		return;
 
 	/* add radio tower */
-	i = 1000;
-	j = 40; // limit of 40 radio towers per world.
+	i = ScaleByMapSize(1000);
+	j = ScaleByMapSize(40); // maximum number of radio towers on the map
 	do {
 		r = Random();
 		tile = r % MapSize();
@@ -280,7 +280,7 @@ void GenerateUnmovables(void)
 		return;
 
 	/* add lighthouses */
-	i = (Random()&3) + 7;
+	i = ScaleByMapSize1D((Random() & 3) + 7);
 	do {
 restart:
 		r = Random();

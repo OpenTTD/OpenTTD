@@ -740,7 +740,7 @@ void GenerateClearTile(void)
 	uint32 r;
 
 	/* add hills */
-	i = (Random() & 0x3FF) | 0x400;
+	i = ScaleByMapSize((Random() & 0x3FF) + 0x400);
 	do {
 		tile = TILE_MASK(Random());
 		if (IsTileType(tile, MP_CLEAR))
@@ -748,7 +748,7 @@ void GenerateClearTile(void)
 	} while (--i);
 
 	/* add grey squares */
-	i = (Random() & 0x7F) | 0x80;
+	i = ScaleByMapSize((Random() & 0x7F) + 0x80);
 	do {
 		r = Random();
 		tile = TILE_MASK(r);

@@ -1036,8 +1036,9 @@ static const byte _num_initial_towns[3] = {
 
 void GenerateTowns(void)
 {
-	uint n;
-	n = _num_initial_towns[_opt.diff.number_towns] + (Random()&7);
+	uint n =
+		ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
+
 	do CreateRandomTown(); while (--n);
 }
 

@@ -90,7 +90,7 @@ static void DoPlaceMoreTrees(uint tile)
 
 static void PlaceMoreTrees(void)
 {
-	int i = (Random() & 0x1F) + 25;
+	int i = ScaleByMapSize((Random() & 0x1F) + 25);
 	do {
 		DoPlaceMoreTrees(TILE_MASK(Random()));
 	} while (--i);
@@ -102,7 +102,7 @@ void PlaceTreesRandomly(void)
 	uint32 r;
 	uint tile;
 
-	i = 1000;
+	i = ScaleByMapSize(1000);
 	do {
 		r = Random();
 		tile = TILE_MASK(r);
@@ -114,7 +114,7 @@ void PlaceTreesRandomly(void)
 
 	/* place extra trees at rainforest area */
 	if (_opt.landscape == LT_DESERT) {
-		i = 15000;
+		i = ScaleByMapSize(15000);
 
 		do {
 			r = Random();

@@ -54,6 +54,28 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 #endif
 
 
+uint ScaleByMapSize(uint n)
+{
+	int shift = (int)MapLogX() - 8 + (int)MapLogY() - 8;
+
+	if (shift < 0)
+		return (n + (1 << -shift) - 1) >> -shift;
+	else
+		return n << shift;
+}
+
+
+uint ScaleByMapSize1D(uint n)
+{
+	int shift = ((int)MapLogX() - 8 + (int)MapLogY() - 8) / 2;
+
+	if (shift < 0)
+		return (n + (1 << -shift) - 1) >> -shift;
+	else
+		return n << shift;
+}
+
+
 const TileIndexDiffC _tileoffs_by_dir[] = {
 	{-1,  0},
 	{ 0,  1},

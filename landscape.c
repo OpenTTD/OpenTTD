@@ -656,38 +656,38 @@ void GenerateLandscape(void)
 	uint32 r;
 
 	if (_opt.landscape == LT_HILLY) {
-		i = ((Random() & 0x7F) + 950) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize((Random() & 0x7F) + 950);
 		do {
 			GenerateTerrain(2, 0);
 		} while (--i);
 
 		r = Random();
 		flag = (r & 3) | 4;
-		i = (((r >> 16) & 0x7F) + 450) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize(((r >> 16) & 0x7F) + 450);
 		do {
 			GenerateTerrain(4, flag);
 		} while (--i);
 	} else if (_opt.landscape == LT_DESERT) {
-		i = ((Random()&0x7F) + 170) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize((Random()&0x7F) + 170);
 		do {
 			GenerateTerrain(0, 0);
 		} while (--i);
 
 		r = Random();
 		flag = (r & 3) | 4;
-		i = (((r >> 16) & 0xFF) + 1700) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize(((r >> 16) & 0xFF) + 1700);
 		do {
 			GenerateTerrain(0, flag);
 		} while (--i);
 
 		flag ^= 2;
 
-		i = ((Random() & 0x7F) + 410) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize((Random() & 0x7F) + 410);
 		do {
 			GenerateTerrain(3, flag);
 		} while (--i);
 	} else {
-		i = ((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes)*256 + 100) * LANDSCAPE_SIZE_FACTOR;
+		i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
 		do {
 			GenerateTerrain(_opt.diff.terrain_type, 0);
 		} while (--i);

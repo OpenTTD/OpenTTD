@@ -26,6 +26,10 @@ static inline uint MapMaxY(void) { return MapSizeY() - 1; }
 /* The number of tiles in the map */
 static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
 
+// Scale a number relative to the map size
+uint ScaleByMapSize(uint); // Scale relative to the number of tiles
+uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
+
 typedef uint32 TileIndex;
 
 

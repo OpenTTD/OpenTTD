@@ -68,7 +68,6 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 //#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
 #define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
 
-#define LANDSCAPE_SIZE_FACTOR 1
 
 enum {
 	CORRECT_Z_BITS = 1 << 1 | 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7
