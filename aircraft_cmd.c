@@ -946,11 +946,13 @@ static void HandleCrashedAircraft(Vehicle *v)
 	st = GetStation(v->u.air.targetairport);
 
 	// make aircraft crash down to the ground
-	if ( st->airport_tile==0 && ((v->u.air.crashed_counter % 3) == 0) ) {
-		z = GetSlopeZ(v->x_pos, v->y_pos) + 1;
+	if (v->u.air.crashed_counter < 500 && st->airport_tile==0 && ((v->u.air.crashed_counter % 3) == 0) ) {
+		z = GetSlopeZ(v->x_pos, v->y_pos);
 		v->z_pos -= 1;
-		if (v->z_pos < z)
-			DoDeleteAircraft(v);
+		if (v->z_pos == z) {
+			v->u.air.crashed_counter = 500;
+			v->z_pos++;
+		}
 	}
 
 	if (v->u.air.crashed_counter < 650) {
