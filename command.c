@@ -472,7 +472,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	// If notest is on, it means the result of the test can be different then
 	//   the real command.. so ignore the test
-	if (!notest) {
+	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		assert(res == res2); // sanity check
 	} else {
 		if ((uint32)res2 >> 16 == 0x8000) {
