@@ -79,13 +79,16 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 4: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
 		case 5: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 		case 6: case 7: case 8: case 9:
+			// XXX: Useless usage of the CMD infrastructure?
 			DoCommandP(0, e->click.widget - 6, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
 			break;
 		case 10: case 11: case 12: case 13: case 14: case 15:
-			DoCommandP(0, 6 + e->click.widget - 10, _patches.map_y, NULL, CMD_SET_NEW_MAP_SIZE);
+			_patches.map_x = 6 + e->click.widget - 10;
+			InvalidateWindowClasses(WC_SELECT_GAME);
 			break;
 		case 16: case 17: case 18: case 19: case 20: case 21:
-			DoCommandP(0, _patches.map_x, 6 + e->click.widget - 16, NULL, CMD_SET_NEW_MAP_SIZE);
+			_patches.map_y = 6 + e->click.widget - 16;
+			InvalidateWindowClasses(WC_SELECT_GAME);
 			break;
 		case 23:
 #ifdef ENABLE_NETWORK
@@ -326,9 +329,6 @@ int32 CmdSetNewLandscapeType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSetNewMapSize(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		_patches.map_x = p1;
-		_patches.map_y = p2;
-		InvalidateWindowClasses(WC_SELECT_GAME);
 	}
 	return 0;
 }
