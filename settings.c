@@ -867,10 +867,10 @@ const SettingDesc patch_settings[] = {
 	{"forbid_90_deg",				SDT_BOOL, 	(void*)false, &_patches.forbid_90_deg,					NULL},
 	{"improved_load",				SDT_BOOL,		(void*)false,	&_patches.improved_load,				NULL},
 
-	{"max_trains",					SDT_UINT8,	(void*)80,		&_patches.max_trains,						NULL},
-	{"max_roadveh",					SDT_UINT8,	(void*)80,		&_patches.max_roadveh,					NULL},
-	{"max_aircraft",				SDT_UINT8,	(void*)40,		&_patches.max_aircraft,					NULL},
-	{"max_ships",						SDT_UINT8,	(void*)50,		&_patches.max_ships,						NULL},
+	{"max_trains",					SDT_UINT16,	(void*)500,		&_patches.max_trains,						NULL},
+	{"max_roadveh",					SDT_UINT16,	(void*)500,		&_patches.max_roadveh,					NULL},
+	{"max_aircraft",				SDT_UINT16,	(void*)200,		&_patches.max_aircraft,					NULL},
+	{"max_ships",						SDT_UINT16,	(void*)300,		&_patches.max_ships,						NULL},
 
 	{"servint_ispercent",		SDT_BOOL,		(void*)false,	&_patches.servint_ispercent,		NULL},
 	{"servint_trains",			SDT_UINT16, (void*)150,		&_patches.servint_trains,				NULL},

@@ -1762,9 +1762,9 @@ uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y)
 	return result;
 }
 
-uint GetFreeUnitNumber(byte type)
+UnitID GetFreeUnitNumber(byte type)
 {
-	uint unit_num = 0;
+	UnitID unit_num = 0;
 	Vehicle *u;
 
 restart:
@@ -1784,7 +1784,8 @@ const byte _common_veh_desc[] = {
 
 	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
 	SLE_VAR(Vehicle,string_id,				SLE_STRINGID),
-	SLE_VAR(Vehicle,unitnumber,				SLE_UINT8),
+	SLE_CONDVAR(Vehicle,unitnumber,				SLE_FILE_U8 | SLE_VAR_U16, 0, 7),
+	SLE_CONDVAR(Vehicle,unitnumber,				SLE_UINT16, 8, 255),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),

@@ -113,7 +113,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
 	Vehicle *v;
-	byte unit_num;
+	UnitID unit_num;
 	uint tile = TILE_FROM_XY(x,y);
 	Engine *e;
 

@@ -535,7 +535,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	const RailVehicleInfo *rvi;
 	int value,dir;
 	Vehicle *v, *u;
-	byte unit_num;
+	UnitID unit_num;
 	Engine *e;
 	uint tile = TILE_FROM_XY(x,y);
 
@@ -774,7 +774,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// moving a loco to a new line?, then we need to assign a unitnumber.
 	if (dst == NULL && src->subtype != TS_Front_Engine && is_loco) {
-		uint unit_num = GetFreeUnitNumber(VEH_Train);
+		UnitID unit_num = GetFreeUnitNumber(VEH_Train);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 

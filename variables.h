@@ -11,6 +11,8 @@
 # define MAX_PATH 260
 #endif
 
+typedef uint16 UnitID;   //! All unitnumber stuff is of this type (or anyway, should be)
+
 // Prices and also the fractional part.
 VARDEF Prices _price;
 VARDEF uint16 _price_frac[NUM_PRICES];
@@ -135,10 +137,10 @@ typedef struct Patches {
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius; // Windows snap at each other if closer than this
 
-	byte max_trains;				//max trains in game per player (these are 8bit because the unitnumber field can't hold more)
-	byte max_roadveh;				//max trucks in game per player
-	byte max_aircraft;			//max planes in game per player
-	byte max_ships;					//max ships in game per player
+	UnitID max_trains;				//max trains in game per player (these are 16bit because the unitnumber field can't hold more)
+	UnitID max_roadveh;				//max trucks in game per player
+	UnitID max_aircraft;			//max planes in game per player
+	UnitID max_ships;					//max ships in game per player
 
 	bool servint_ispercent;	// service intervals are in percents
 	uint16 servint_trains;	// service interval for trains

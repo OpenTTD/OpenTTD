@@ -661,10 +661,10 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_INT16,	PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, "autorenew_months", &_patches.autorenew_months,				-12, 12,  1, NULL},
 	{PE_CURRENCY, PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONEY,"autorenew_money", &_patches.autorenew_money,					0, 2000000, 100000, NULL},
 
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,			"max_aircraft", &_patches.max_aircraft,							0,240, 10, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_MAX_SHIPS,				"max_ships", &_patches.max_ships,								0,240, 10, NULL},
+	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,5000, 50, NULL},
+	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,5000, 50, NULL},
+	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,			"max_aircraft", &_patches.max_aircraft,						0,5000, 50, NULL},
+	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_SHIPS,				"max_ships", &_patches.max_ships,									0,5000, 50, NULL},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVINT_ISPERCENT,"servint_isperfect",&_patches.servint_ispercent,				0,  0,  0, &CheckInterval},
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS,		"servint_trains",   &_patches.servint_trains,		5,800,  5, &InValidateDetailsWindow},

@@ -873,7 +873,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
 	Vehicle *v;
-	uint unit_num;
+	UnitID unit_num;
 	uint tile = TILE_FROM_XY(x,y);
 	Engine *e;
 

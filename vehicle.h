@@ -100,7 +100,7 @@ struct Vehicle {
 
 	StringID string_id; // Displayed string
 
-	byte unitnumber;	// unit number, for display purposes only
+	UnitID unitnumber;	// unit number, for display purposes only
 	byte owner;				// which player owns the vehicle?
 
 	TileIndex tile;		// Current tile index
@@ -331,7 +331,7 @@ bool IsAircraftHangarTile(TileIndex tile);
 void ShowAircraftViewWindow(Vehicle *v);
 
 bool IsShipDepotTile(TileIndex tile);
-uint GetFreeUnitNumber(byte type);
+UnitID GetFreeUnitNumber(byte type);
 
 int LoadUnloadVehicle(Vehicle *v);
 int GetDepotByTile(uint tile);
