@@ -716,6 +716,10 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 // TTD specific INI stuff
 //***************************
 
+#ifndef EXTERNAL_PLAYER
+#define EXTERNAL_PLAYER "timidity"
+#endif
+
 static const SettingDesc music_settings[] = {
 	{"playlist",	SDT_UINT8,	(void*)0,			&msf.playlist, NULL},
 	{"music_vol", SDT_UINT8,	(void*)128,		&msf.music_vol, NULL},
@@ -724,6 +728,7 @@ static const SettingDesc music_settings[] = {
 	{"custom_2",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_2) << 16, NULL, &msf.custom_2, NULL},
 	{"playing",		SDT_BOOL,		(void*)true,	&msf.btn_down, NULL},
 	{"shuffle",		SDT_BOOL,		(void*)false, &msf.shuffle, NULL},
+	{"extmidi",   SDT_STRINGBUF | (lengthof(msf.extmidi)<<16), EXTERNAL_PLAYER, &msf.extmidi, NULL},
 	{NULL,				0,					NULL,					NULL,																NULL}
 };
 

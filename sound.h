@@ -9,6 +9,7 @@ typedef struct MusicFileSettings {
 	byte custom_2[33];
 	bool btn_down;
 	bool shuffle;
+	char extmidi[80];
 } MusicFileSettings;
 
 VARDEF byte _music_wnd_cursong;

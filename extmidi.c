@@ -4,16 +4,13 @@
 
 #include "ttd.h"
 #include "hal.h"
+#include "sound.h"
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <errno.h>
-
-#ifndef EXTERNAL_PLAYER
-#define EXTERNAL_PLAYER "timidity"
-#endif
 
 static pid_t _pid;
 
@@ -50,9 +47,9 @@ static void extmidi_play_song(const char *filename)
 
 	if (_pid == 0) {
 		#if defined(MIDI_ARG)
-			execlp(EXTERNAL_PLAYER, "extmidi", MIDI_ARG, filename, NULL);
+			execlp(msf.extmidi, "extmidi", MIDI_ARG, filename, NULL);
 		#else
-			execlp(EXTERNAL_PLAYER, "extmidi", filename, NULL);
+			execlp(msf.extmidi, "extmidi", filename, NULL);
 		#endif
 		fprintf(stderr, "extmidi: couldn't execl: %s\n", strerror(errno));
 		exit(0);

@@ -62,7 +62,8 @@
 # RELEASE: this will be the released version number. It replaces all places
 #          where it normally would print the revision number
 # MIDI: if set, it will use it as custom path to midi player.
-#  If unset, it will use the hardcoded path in the c code
+#       If unset, it will use the hardcoded path in the c code
+#       This can still be overriden by the music.extmidi openttd.cfg option.
 # WITH_NETWORK: enable networking
 # DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 #
