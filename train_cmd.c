@@ -955,6 +955,15 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 	}
 }
 
+/* Check if the vehicle is a train and is on the tile we are testing */
+static void *TestTrainOnCrossing(Vehicle *v, void *data)
+{
+	if (v->tile != *(const TileIndex*)data || v->type != VEH_Train)
+		return NULL;
+
+	return v;
+}
+
 static void ReverseTrainDirection(Vehicle *v)
 {
 	int l = 0, r = -1;
@@ -974,10 +983,15 @@ static void ReverseTrainDirection(Vehicle *v)
 		}
 		/* Calculate next tile */
 		tile += _tileoffs_by_dir[t];
+		/* Test if we have a rail/road-crossing */
 		if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
-			if (_map5[tile] & 4) {
-				_map5[tile] &= ~4;
-				MarkTileDirtyByTile(tile);
+			/* Check if there is a train on the tile itself */
+			if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
+				/* If light is on, switch light off */
+				if (_map5[tile] & 4) {
+					_map5[tile] &= ~4;
+					MarkTileDirtyByTile(tile);
+				}
 			}
 		}
 	}
