@@ -1338,6 +1338,7 @@ int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 		if (_players[p1].is_active)
 		{
 			_local_player = p1;
+			MarkWholeScreenDirty();
 			return _local_player;
 		}
 		p1 += p2;

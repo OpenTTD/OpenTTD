@@ -981,7 +981,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Autorenew minimum needed money for
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Duration of error message: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES		:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Snow line height: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD	:{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS			:{LTBLUE}Max trains per player: {ORANGE}{STRING}
@@ -2543,7 +2543,7 @@ STR_PERFORMANCE_DETAIL_TOTAL	:{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP		:{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP		:{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP	:{BLACK}The minimum profit of all the vehicles that are more than 2 years old.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP	:{BLACK}The profit of the vehicle with the lowest income (of all vehicles older than 2 years)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP	:{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP	:{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP	:{BLACK}Units of cargo delivered in the past four quarters.
