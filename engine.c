@@ -119,12 +119,12 @@ void StartupEngines()
 {
 	Engine *e;
 	const EngineInfo *ei;
-	uint32 r;
+	uint32 r, counter = 0;
 
 	SetupEngineNames();
 
 
-	for(e=_engines, ei=_engine_info; e != endof(_engines); e++,ei++) {
+	for(e=_engines, ei=_engine_info; e != endof(_engines); e++, ei++, counter++) {
 		e->age = 0;
 		e->railtype = ei->railtype_climates >> 4;
 		e->flags = 0;
@@ -163,6 +163,25 @@ void StartupEngines()
 		if (!HASBIT(ei->railtype_climates, _opt.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
+		}
+		
+		/* This sets up type for the engine
+		   It is needed if you want to ask the engine what type it is
+		   It should hopefully be the same as when you ask a vehicle what it is
+		   but using this, you can ask what type an engine number is
+		   even if it is not a vehicle (yet)*/
+		e->type = VEH_Train;
+		if 	(counter >= ROAD_ENGINES_INDEX) {
+			e->type = VEH_Road;
+			if 	(counter >= SHIP_ENGINES_INDEX) {
+				e->type = VEH_Ship;
+				if 	(counter >= AIRCRAFT_ENGINES_INDEX) {
+					e->type = VEH_Aircraft;
+					if 	(counter >= TOTAL_NUM_ENGINES) {
+						e->type = VEH_Special;
+					}
+				}
+			}
 		}
 	}
 

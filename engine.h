@@ -70,6 +70,7 @@ typedef struct Engine {
 	byte preview_wait;
 	byte railtype;
 	byte player_avail;
+	byte type;				// type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
 
 
