@@ -945,32 +945,41 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		bool show_local = true; // If this is false, the message is already displayed
 														// on the client who did sent it.
 		/* Find all clients that belong to this player */
+		ci_to = NULL;
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == dest) {
 				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
-				if (cs->index == from_index)
+				if (cs->index == from_index) {
 					show_local = false;
+				}
+				ci_to = ci; // Remember a client that is in the company for company-name
 			}
 		}
+
 		ci = NetworkFindClientInfoFromIndex(from_index);
 		ci_own = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), false, ci->client_name, "%s", msg);
 			if (from_index == NETWORK_SERVER_INDEX)
 				show_local = false;
+			ci_to = ci;
 		}
+
+		/* There is no such player */
+		if (ci_to == NULL)
+			break;
 
 		// Display the message locally (so you know you have sent it)
 		if (ci != NULL && show_local) {
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
-				GetString(name, DEREF_PLAYER(ci->client_playas-1)->name_1);
-				NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), true, name, "%s", msg);
+				GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
+				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas-1), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, true, msg);
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, dest, true, msg);
 					}
 				}
 			}
