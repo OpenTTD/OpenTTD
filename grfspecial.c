@@ -21,6 +21,12 @@ extern int _skip_sprites;
 extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 
+struct StationSpec {
+	uint32 classid;
+	byte tiles;
+	DrawTileSprites renderdata[8];
+};
+
 struct GRFFile {
 	char *filename;
 	uint32 grfid;
@@ -47,9 +53,7 @@ struct GRFFile {
 	int spritegroups_count;
 	struct SpriteGroup *spritegroups;
 
-	uint32 statinfo_classid[256];
-	byte statinfo_tiles[256];
-	DrawTileSprites statinfo_renderdata[256][8];
+	struct StationSpec stations[256];
 };
 
 static struct GRFFile *_cur_grffile, *_first_grffile;
@@ -709,21 +713,25 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x08:
 		{	/* Class ID */
 			FOR_EACH_ENGINE {
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+
 				/* classid, for a change, is always little-endian */
-				_cur_grffile->statinfo_classid[stid+i] = *(buf++) << 24;
-				_cur_grffile->statinfo_classid[stid+i] |= *(buf++) << 16;
-				_cur_grffile->statinfo_classid[stid+i] |= *(buf++) << 8;
-				_cur_grffile->statinfo_classid[stid+i] |= *(buf++);
+				stat->classid = *(buf++) << 24;
+				stat->classid |= *(buf++) << 16;
+				stat->classid |= *(buf++) << 8;
+				stat->classid |= *(buf++);
 			}
 			break;
 		}
 		case 0x09:
 		{	/* Define sprite layout */
 			FOR_EACH_ENGINE {
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
 				int t;
-				_cur_grffile->statinfo_tiles[stid+i] = grf_load_byte(&buf);
-				for (t = 0; t < _cur_grffile->statinfo_tiles[stid+i]; t++) {
-					DrawTileSprites *dts = &_cur_grffile->statinfo_renderdata[stid+i][t];
+
+				stat->tiles = grf_load_byte(&buf);
+				for (t = 0; t < stat->tiles; t++) {
+					DrawTileSprites *dts = &stat->renderdata[t];
 					int seq_count = 0;
 
 					if (t >= 8) {
@@ -763,12 +771,15 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x0a:
 		{	/* Copy sprite layout */
 			FOR_EACH_ENGINE {
-				byte src = grf_load_byte(&buf);
+				struct StationSpec *stat = &_cur_grffile->stations[stid + i];
+				byte srcid = grf_load_byte(&buf);
+				struct StationSpec *srcstat = &_cur_grffile->stations[srcid];
 				int t;
-				_cur_grffile->statinfo_tiles[stid+i] = _cur_grffile->statinfo_tiles[src];
-				for (t = 0; t < _cur_grffile->statinfo_tiles[stid+i]; t++) {
-					DrawTileSprites *dts = &_cur_grffile->statinfo_renderdata[stid+i][t];
-					DrawTileSprites *sdts = &_cur_grffile->statinfo_renderdata[src][t];
+
+				stat->tiles = srcstat->tiles;
+				for (t = 0; t < stat->tiles; t++) {
+					DrawTileSprites *dts = &stat->renderdata[t];
+					DrawTileSprites *sdts = &srcstat->renderdata[t];
 					DrawTileSeqStruct const *sdtss = sdts->seq;
 					int seq_count = 0;
 
@@ -1063,8 +1074,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		/* XXX: This just goes for the default superset for now,
 		 * straight and safe. --pasky */
 		uint8 var = buf[4];
-		uint8 shiftnum = buf[5];
-		uint8 andmask = buf[6];
+		//uint8 shiftnum = buf[5];
+		//uint8 andmask = buf[6];
 		uint8 nvar = buf[7];
 		//uint32 val;
 		uint16 def;
@@ -1194,6 +1205,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 		uint16 groupid = grf_load_word(&bp);
 
 		for (i = 0; i < idcount; i++) {
+			struct StationSpec *stat;
 			uint8 stid = buf[3 + i];
 			int j;
 
@@ -1203,19 +1215,21 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				return;
 			}
 
+			stat = &_cur_grffile->stations[stid];
+
 			// relocate sprite indexes based on spriteset locations
-			for (j = 0; j < _cur_grffile->statinfo_tiles[stid]; j++) {
+			for (j = 0; j < stat->tiles; j++) {
 				DrawTileSeqStruct *seq;
 
-				foreach_draw_tile_seq(seq, (DrawTileSeqStruct*) _cur_grffile->statinfo_renderdata[stid][j].seq) {
+				foreach_draw_tile_seq(seq, (DrawTileSeqStruct*) stat->renderdata[j].seq) {
 					seq->image += _cur_grffile->spritegroups[groupid].loading[0];
 				}
 			}
 			/* FIXME: This means several GRF files defining new stations
 			 * will override each other, but the stid should be GRF-specific
 			 * instead! --pasky */
-			SetCustomStation(_cur_grffile->statinfo_classid[stid], stid, _cur_grffile->statinfo_renderdata[stid], _cur_grffile->statinfo_tiles[stid]);
-			_cur_grffile->statinfo_classid[stid] = 0;
+			SetCustomStation(stat->classid, stid, stat->renderdata, stat->tiles);
+			stat->classid = 0;
 		}
 		return;
 	}
@@ -1251,7 +1265,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 		DEBUG(grf, 6) ("VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
 				last_engines_count, idcount);
 	}
-	
+
 
 	for (i = 0; i < idcount; i++) {
 		uint8 engine_id = buf[3 + i];
@@ -1565,7 +1579,7 @@ static void SpriteReplace(byte *buf, int len)
 	if (num_sets > 16) {
 		grfmsg(GMS_ERROR, "SpriteReplace: Too many sets (%d), taking only the first 16!", num_sets);
 	}
-	
+
 	for (i = 0; i < 16; i++) {
 		if (i < num_sets) {
 			uint8 num_sprites = grf_load_byte(&buf);
@@ -1666,7 +1680,7 @@ static void ParamSet(byte *buf, int len)
 
 	if (len >= 8)
 		data = grf_load_dword(&buf);
-	
+
 	/* You can add 80 to the operation to make it apply only if the target
 	 * is not defined yet.  In this respect, a parameter is taken to be
 	 * defined if any of the following applies:
@@ -1750,11 +1764,10 @@ static void GRFInhibit(byte *buf, int len)
 	 *
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
-	/* XXX: Should we handle forward deactivations? */
 
 	byte num;
 	int i;
-	
+
 	check_length(len, 1, "GRFInhibit");
 	num = grf_load_byte(&buf); len--;
 	check_length(len, 4 * num, "GRFInhibit");
