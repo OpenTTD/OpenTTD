@@ -443,7 +443,7 @@ static void DrawPlayerVehiclesAmount(int player)
 	}
 }
 
-static int GetAmountOwnedBy(Player *p, byte owner)
+int GetAmountOwnedBy(Player *p, byte owner)
 {
 	return (p->share_owners[0] == owner) +
 				 (p->share_owners[1] == owner) +
@@ -489,10 +489,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
 
 		dis = 0;
-		if (GetAmountOwnedBy(p, 0xFF) == 0) dis |= 1 << 9;
+		if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) dis |= 1 << 9;
 		// Also disable the buy button if 25% is not-owned by someone
 		//   and the player is not an AI
-		if (GetAmountOwnedBy(p, 0xFF) == 1 && !p->is_ai) dis |= 1 << 9;
+		if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) dis |= 1 << 9;
 		if (GetAmountOwnedBy(p, _local_player) == 0) dis |= 1 << 10;
 
 		w->disabled_state = dis;
