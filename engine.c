@@ -404,15 +404,25 @@ void NewVehicleAvailable(Engine *e)
 		}
 	}
 
+	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
+	InvalidateWindowClasses(WC_BUILD_VEHICLE);
+
 	// Now available for all players
 	e->player_avail = (byte)-1;
+
+	// Do not introduce new rail wagons
+	if ((byte)index < NUM_TRAIN_ENGINES) {
+		const RailVehicleInfo *rvi = &_rail_vehicle_info[index];
+		if(rvi->flags & RVI_WAGON)
+			return;
+	}
+
+	// make maglev / monorail available
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active)
 			UPDATE_PLAYER_RAILTYPE(e,p);
 	}
 
-	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
-	
 	if ((byte)index < NUM_TRAIN_ENGINES) {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_TRAINAVAIL), 0, 0);
 	} else if ((byte)index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) {
@@ -422,8 +432,6 @@ void NewVehicleAvailable(Engine *e)
 	} else {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_AIRCRAFTAVAIL), 0, 0);
 	}
-
-	InvalidateWindowClasses(WC_BUILD_VEHICLE);
 }
 
 void EnginesMonthlyLoop()
