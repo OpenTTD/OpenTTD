@@ -23,7 +23,7 @@ STR_0010_COAL                                                   :Charbon
 STR_0011_MAIL                                                   :Courrier
 STR_0012_OIL                                                    :Pétrole
 STR_0013_LIVESTOCK                                              :Bétail
-STR_0014_GOODS                                                  :Marchandises
+STR_0014_GOODS                                                  :Biens
 STR_0015_GRAIN                                                  :Grain
 STR_0016_WOOD                                                   :Bois
 STR_0017_IRON_ORE                                               :Fer
@@ -55,7 +55,7 @@ STR_0030_COAL                                                   :Charbon
 STR_0031_MAIL                                                   :Courrier
 STR_0032_OIL                                                    :Pétrole
 STR_0033_LIVESTOCK                                              :Bétail
-STR_0034_GOODS                                                  :Marchandise
+STR_0034_GOODS                                                  :Biens
 STR_0035_GRAIN                                                  :Grain
 STR_0036_WOOD                                                   :Bois
 STR_0037_IRON_ORE                                               :Fer
@@ -87,7 +87,7 @@ STR_0050_TON_OF_COAL                                            :{COMMA16} tonne
 STR_0051_BAG_OF_MAIL                                            :{COMMA16} sac de courrier
 STR_0052_OF_OIL                                                 :{VOLUME} de pétrole
 STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} tête de bétail
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} caisse de marchandise
+STR_0054_CRATE_OF_GOODS                                         :{COMMA16} caisse de biens
 STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonne de grain
 STR_0056_TON_OF_WOOD                                            :{COMMA16} tonne de bois
 STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonne de fer
@@ -119,7 +119,7 @@ STR_0070_TONS_OF_COAL                                           :{COMMA16} tonne
 STR_0071_BAGS_OF_MAIL                                           :{COMMA16} sacs de courrier
 STR_0072_OF_OIL                                                 :{VOLUME} de pétrole
 STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} têtes de bétail
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} caisses de marchandise
+STR_0074_CRATES_OF_GOODS                                        :{COMMA16} caisses de biens
 STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonnes de grain
 STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonnes de bois
 STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonnes de fer
@@ -218,7 +218,7 @@ STR_00DD_ORANGE                                                 :Orange
 STR_00DE_BROWN                                                  :Brun
 STR_00DF_GREY                                                   :Gris
 STR_00E0_WHITE                                                  :Blanc
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Trop de vehicules en jeu
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Trop de véhicules en jeu
 STR_00E2                                                        :{BLACK}{COMMA16}
 STR_00E3                                                        :{RED}{COMMA16}
 STR_00E4_LOCATION                                               :{BLACK}Emplacement
@@ -239,7 +239,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trains
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicules routiers
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Véhicules routiers
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Navires
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aéronefs
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Routes de Transport
@@ -437,7 +437,7 @@ STR_019A_YEARS                                                  :{COMMA16} année
 STR_019B_YEARS                                                  :{RED}{COMMA16} années ({COMMA16})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Vehicule routier
+STR_019C_ROAD_VEHICLE                                           :Véhicule routier
 STR_019D_AIRCRAFT                                               :Aéronef
 STR_019E_SHIP                                                   :Navire
 STR_019F_TRAIN                                                  :Train
@@ -694,7 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer d
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer un Phare
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer un Transmetteur
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir un endroit désertique
-STR_CREATE_LAKE                                                 :{BLACK}Définit une zone d'eau, qui va innonder ses abords si au niveau de la mer
+STR_CREATE_LAKE                                                 :{BLACK}Définit une zone d'eau, qui va inonder ses abords si au niveau de la mer
 STR_0290_DELETE                                                 :{BLACK}Supprimer
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
 STR_0292_SAVE_SCENARIO                                          :Sauvegarder scénario
@@ -724,7 +724,7 @@ STR_02B8_SUMMARY                                                :{BLACK}Sommaire
 STR_02B9_FULL                                                   :{BLACK}Complet
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Annuaire des villes
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Noms de conception des Vehicule
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Noms de conception des Véhicules
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Par Défaut
 STR_02BF_CUSTOM                                                 :Personnalisé
@@ -762,8 +762,8 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Édific
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
-STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :ScreenShot Géant(Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran(Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
 ############ range ends	here
 
@@ -784,18 +784,18 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colle l'
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unité monétaire
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Sélection d'unité monétaire
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Sélectionner l'unité monétaire
 STR_02E3_DISTANCE_UNITS                                         :{BLACK}Système de mesure
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Sélection d'unité de distance
+STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Sélectionner l'unité de distance
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Véhicules routiers
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Choisir le sens de conduite routière
-STR_02E9_DRIVE_ON_LEFT                                          :Conduire sur la gauche
-STR_02EA_DRIVE_ON_RIGHT                                         :Conduire sur la droite
+STR_02E9_DRIVE_ON_LEFT                                          :Conduire à gauche
+STR_02EA_DRIVE_ON_RIGHT                                         :Conduire à droite
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nom des villes
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Sélectionnez le style des noms de ville
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Sélectionner le style des noms de ville
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Sauvegarde automatique
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -836,8 +836,8 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...peut 
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...peut seulement être construit dans les endroits désertiques
 STR_0319_PAUSED                                                 :{YELLOW}* *  SUSPENDU  * *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot enregistré avec succès sous '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot échoué!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Copie d'écran enregistrée avec succès sous '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Copie d'écran a échoué!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Acheter le terrain pour une utilisation ultérieure
 STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Service de véhicule routier
@@ -902,7 +902,7 @@ STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{S
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Selectionner la langue d'interface à utiliser
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plein écran
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Cochez cette case pour jouer à OpenTTD en plein écran
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Cocher cette case pour jouer à OpenTTD plein écran
 
 STR_OPTIONS_RES                                                 :{BLACK}Résolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -910,7 +910,7 @@ STR_OPTIONS_RES_TIP                                             :{BLACK}Selectio
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format de la copie d'écran
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Choisissez le format de la copie d'écran
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Choisir le format de la copie d'écran
 
 STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_AUTOSAVE_FAILED                                             :{WHITE}Enregistrement automatique échoué
@@ -979,21 +979,21 @@ STR_CONFIG_PATCHES                                              :{BLACK}Options 
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurer les options avancées
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Options Avancées
 
-STR_CONFIG_PATCHES_OFF                                          :Désactivé
-STR_CONFIG_PATCHES_ON                                           :Activé
+STR_CONFIG_PATCHES_OFF                                          :Inactif
+STR_CONFIG_PATCHES_ON                                           :Actif
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Afficher vitesse du véhicule dans la barre d'état: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Construction côtière et sur plans inclinés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Autorise des zones de désserte plus réalistes : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permettre la suppression de plus d'éléments possédés par une ville: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Construction côtière et sur pentes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Autoriser des zones de désserte plus réalistes : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et aux navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (Nécessite le NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (Nécessite le NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pleine cargaison par un seul type, si 'chargement complet': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer cargaison seulement lorsqu'il y a une demande: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de ponts longs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer cargaison seulement sur demande: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de longs ponts: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permettre l'ordre d'aller au dépôt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permettre la construction de ressources primaires: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permettre plusieurs industries similaires par ville: {ORANGE}{STRING}
@@ -1013,16 +1013,16 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvell
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un train est perdu si aucun progrès n'est fait pendant: {ORANGE}{STRING} jours
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un train est perdu si aucun progrès n'est fait pendant: {ORANGE}désactivé
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un train est perdu si aucun progrès n'est fait pendant: {ORANGE} inactif
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Vérification des ordres des véhicules : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :non
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :oui, mais exclut les véhicules stoppés
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de tous les véhicules
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Alerte en cas de profit négatif pour un train: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les véhicules n'expirent jamais: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Renouveller automatiquement les véhicules quand ils sont vieux
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveller les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Argent nécessaire pour l'auto-renouvellement : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Renouveler automatiquement les véhicules quand ils sont vieux
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Argent nécessaire pour l'auto-renouvelement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montrer la population d'une ville dans son label : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres invisibles (quand les bâtiments sont transparents) : {ORANGE}{STRING}
@@ -1042,28 +1042,28 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Désacti
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activer la nouvelle IA (alpha): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Maintenance des trains tous les: {ORANGE}{STRING} jours
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Maintenance des trains tous les: {ORANGE}désactivé
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Maintenance des véhicules routiers tous les: {ORANGE}{STRING} jours
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Maintenance des véhicules routiers tous les: {ORANGE}désactivé
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Maintenance des aéronefs tous les: {ORANGE}{STRING} jours
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Maintenance des aéronefs tous les: {ORANGE}désactivé
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Maintenance des navires tous les: {ORANGE}{STRING} jours
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Maintenance des navires tous les: {ORANGE}désactivé
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Désactiver les réparations quand les pannes sont désactivées: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Entretien des trains tous les: {ORANGE}{STRING} jours
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Entretien des trains tous les: {ORANGE}inactif
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Entretien des véhicules routiers tous les: {ORANGE}{STRING} jours
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Entretien des véhicules routiers tous les: {ORANGE}inactif
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Entretien des aéronefs tous les: {ORANGE}{STRING} jours
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Entretien des aéronefs tous les: {ORANGE}inactif
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Entretien des navires tous les: {ORANGE}{STRING} jours
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Entretien des navires tous les: {ORANGE}inactif
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Désactiver les réparations quand les pannes sont inactives: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les journeaux en couleurs apparaissent en: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les journaux en couleur apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Date de départ: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Finir le jeu en : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Date de fin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (plus de petits changements)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop : {ORANGE}{STRING} case(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Gauche
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :A Gauche
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrée
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Droite
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :A Droite
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}{STRING} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}disabled
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}inactif
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction
@@ -1076,7 +1076,7 @@ STR_CONFIG_PATCHES_DISABLED                                     :désactivé
 STR_CONFIG_PATCHES_INT32                                        :{INT32}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
-STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Entrez une valeur
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :Saisir une valeur
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Un ou plusieurs intervalles de service par défaut ci-dessous sont incompatibles avec le paramètre choisi! 5-90% et 30-800 jours sont valides
 
 STR_TEMPERATE_LANDSCAPE                                         :environnement 'Tempéré'
@@ -1202,7 +1202,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossib
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Bienvenue dans cette nouvelle IA, en cours d'élaboration. Vous pouvez vous attendre à rencontrer des problèmes. Dans ce cas, faites une capture d'écran et postez-la sur le forum. Amusez-vous bien !
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Bienvenue dans la nouvelle IA, en élaboration. Copiez l'écran des problèmes et postez-le sur le forum. Bonne partie!
 TEMP_AI_ACTIVATED                                               :{WHITE}Attention: cette nouvelle IA est en version alpha ! Pour le moment seuls les camions et les bus fonctionnent !
 
 ############ network gui strings
@@ -1912,15 +1912,15 @@ STR_6804_CUSTOM                                                 :{BLACK}Personna
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre maximum d'opposants: {ORANGE}{COMMA16}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Démarrage des opposants: {ORANGE}{STRING}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre maximum de compétiteurs: {ORANGE}{COMMA16}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Arrivée des compétiteurs: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nombre de villes: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nombre d'industries: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prêt initial maximum: {ORANGE}{CURRENCY},000
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Taux d'interêt initial: {ORANGE}{COMMA16}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Coûts d'entretien: {ORANGE}{STRING}
-STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des opposants: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligence des opposants: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des compétiteurs: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligence des compétiteurs: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Pannes des véhicules: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicateur de subvention: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Coût des constructions: {ORANGE}{STRING}
@@ -2032,7 +2032,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmente
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Rembourser une partie du prêt
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(President)
 STR_7038_INAUGURATED                                            :{GOLD}Inauguré en: {WHITE}{NUMU16}
-STR_7039_VEHICLES                                               :{GOLD}Vehicules:
+STR_7039_VEHICLES                                               :{GOLD}Véhicules:
 STR_703A_TRAIN                                                  :{WHITE}{COMMA16} train
 STR_703B_TRAINS                                                 :{WHITE}{COMMA16} trains
 STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} véhicule
@@ -2143,7 +2143,7 @@ STR_801C_MAIL_VAN                                               :Wagon de courri
 STR_801D_COAL_CAR                                               :Wagon de charbon
 STR_801E_OIL_TANKER                                             :Citerne de pétrôle
 STR_801F_LIVESTOCK_VAN                                          :Wagon à bétail
-STR_8020_GOODS_VAN                                              :Wagon de marchandises
+STR_8020_GOODS_VAN                                              :Wagon de biens
 STR_8021_GRAIN_HOPPER                                           :Wagon à grain
 STR_8022_WOOD_TRUCK                                             :Wagon à bois
 STR_8023_IRON_ORE_HOPPER                                        :Wagon à fer
@@ -2173,7 +2173,7 @@ STR_803A_MAIL_VAN                                               :Wagon de courri
 STR_803B_COAL_CAR                                               :Wagon de charbon
 STR_803C_OIL_TANKER                                             :Citerne de pétrôle
 STR_803D_LIVESTOCK_VAN                                          :Wagon à bétail
-STR_803E_GOODS_VAN                                              :Wagon de marchandises
+STR_803E_GOODS_VAN                                              :Wagon de biens
 STR_803F_GRAIN_HOPPER                                           :Wagon à grain
 STR_8040_WOOD_TRUCK                                             :Wagon à bois
 STR_8041_IRON_ORE_HOPPER                                        :Wagon à fer
@@ -2205,7 +2205,7 @@ STR_805A_MAIL_VAN                                               :Wagon de courri
 STR_805B_COAL_CAR                                               :Wagon de charbon
 STR_805C_OIL_TANKER                                             :Citerne de pétrôle
 STR_805D_LIVESTOCK_VAN                                          :Wagon à bétail
-STR_805E_GOODS_VAN                                              :Wagon de marchandises
+STR_805E_GOODS_VAN                                              :Wagon de biens
 STR_805F_GRAIN_HOPPER                                           :Wagon à grain
 STR_8060_WOOD_TRUCK                                             :Wagon à bois
 STR_8061_IRON_ORE_HOPPER                                        :Wagon à fer
@@ -2249,9 +2249,9 @@ STR_8086_PERRY_OIL_TANKER                                       :Perry Citerne d
 STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Camion à bétail
 STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Camion à bétail
 STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Camion à bétail
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Camion de marchandises
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Camion de marchandises
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss Camion de marchandises
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Camion de biens
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Camion de biens
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss Camion de biens
 STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Camion à grain
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Camion à grain
 STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Camion à grain
@@ -2392,9 +2392,9 @@ STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Aller sans s'ar
 STR_880C_GO_NON_STOP_TO_LOAD                                    :Aller sans s'arrêter à {STATION} (Charger)
 STR_880D                                                        :
 STR_880E_GO_TO_TRAIN_DEPOT                                      :Go to {TOWN} Dépôt ferroviaire
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Maintenance au dépôt de {TOWN}
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Entretien au dépôt de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Aller sans s'arrêter au dépôt de {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Aller faire la maintenance sans s'arrêter au dépôt de {TOWN}
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Aller faire l'entretien sans s'arrêter au dépôt de {TOWN}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Roule vers le dépôt de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
@@ -2427,7 +2427,7 @@ STR_8828_UNLOAD                                                 :{BLACK}Décharge
 STR_8829_ORDERS                                                 :{WHITE}{STRING} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin des ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
-STR_SERVICE                                                     :{BLACK}Maintenance
+STR_SERVICE                                                     :{BLACK}Entretien
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Impossible de construire le véhicule ferroviaire...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit en: {LTBLUE}{NUMU16}{BLACK} Valeur: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valeur: {LTBLUE}{CURRENCY}
@@ -2445,8 +2445,8 @@ STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Impossible de vendre le véhicule ferroviaire...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Impossible de trouver la route jusqu'au dépôt
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Impossible de démarrer/stopper le train...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}jours{BLACK}   , dernière le : {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalle de maintenance: {LTBLUE}{COMMA16}%{BLACK}   , dernière le : {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalle d'entretien: {LTBLUE}{COMMA16}jours{BLACK}   , dernier le : {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalle d'entretien: {LTBLUE}{COMMA16}%{BLACK}   , dernier le : {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquez sur un train pour obtenir des informations
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Contruire de nouveaux trains (nécessite un dépôt ferroviaire)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquez sur un train pour obtenir des informations, glissez le wagon pour l'ajouter/le supprimer du train
@@ -2463,8 +2463,8 @@ STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer 
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forcer le train à continuer sans tenir compte des feux
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Faire faire demi-tour au train
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Afficher les détails
-STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmenter l'intervalle de maintenance
-STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Diminuer l'intervalle de maintenance
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmenter l'intervalle d'entretien
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Diminuer l'intervalle d'entretien
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher des informations les marchandises
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher des informations sur les wagons
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montrer les capacités de chaque wagon
@@ -2476,7 +2476,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transfor
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer un nouvel ordre
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un chargement complet pour l'ordre sélectionné
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un déchargement complet pour l'ordre sélectionné
-STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucune maintenance n'est requise
+STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nouveau(elle) {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prix: {CURRENCY} Poids: {COMMA16}t{}Vitesse: {VELOCITY}  Puissance: {COMMA16}ch{}Coût d'entretien: {CURRENCY}/an{}Capacité: {STRING}
@@ -2484,7 +2484,7 @@ STR_885C_BROKEN_DOWN                                            :{RED}En panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Poids: {LTBLUE}{COMMA16}t  {BLACK}Puissance: {LTBLUE}{COMMA32}ch{BLACK} Vitesse max.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit cette année: {LTBLUE}{CURRENCY}  (année précédente: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA8}%  {BLACK}Pannes depuis la dernière maintenance: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA8}%  {BLACK}Pannes depuis le dernier entretien: {LTBLUE}{COMMA16}
 STR_8861_STOPPED                                                :{RED}Stoppé
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Impossible de forcer le train à avancer sous le danger...
 STR_8863_CRASHED                                                :{RED}Crashé!
@@ -2559,7 +2559,7 @@ STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renommer
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renommer type de véhicule routier
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Impossible de renommer type de véhicule routier...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Aller à {TOWN} Dépôt Routier
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Maintenance au dépôt de {TOWN}
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Entretien au dépôt de {TOWN}
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construction Portuaire
@@ -2631,7 +2631,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Impossible de réaménager le navire...
 STR_9842_REFITTABLE                                             :(réaménageable)
 STR_GO_TO_SHIP_DEPOT                                            :Aller au dépôt de {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Maintenance au dépôt de {TOWN}
+SERVICE_AT_SHIP_DEPOT                                           :Entretien au dépôt de {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aéroports
@@ -2705,7 +2705,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossible de réaménager l'aéronef...
 STR_A043_REFITTABLE                                             :(réaménageable)
 STR_GO_TO_AIRPORT_HANGAR                                        :Aller au hangar {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Maintenance au hangar {STATION}
+SERVICE_AT_AIRPORT_HANGAR                                       :Entretien au hangar {STATION}
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Désastre impliquant un Zeppelin à {STATION}!

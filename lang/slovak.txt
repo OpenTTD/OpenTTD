@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiestni
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiestnit majak
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiestnit vysielac
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definovat oblast puste
+STR_CREATE_LAKE                                                 :{BLACK}Vyznacenie oblasti vody (zaplavi okolie, ak je to na urovni mora)
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Vymazat kompletne toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
