@@ -194,6 +194,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->string_id = 0;
 	v->next_shared = NULL;
 	v->prev_shared = NULL;
+	v->set_for_replacement = false;
 	/* random_bits is used to pick out a random sprite for vehicles
 	    which are technical the same (newgrf stuff).
 	   Because RandomRange() results in desyncs, and because it does
@@ -1422,6 +1423,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		Engine *e;
 		e = DEREF_ENGINE(new_engine_type);
 
+		v->set_for_replacement = false;
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->age = 0;

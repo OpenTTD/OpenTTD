@@ -180,6 +180,8 @@ struct Vehicle {
 	int32 profit_last_year;
 	uint32 value;
 
+	bool set_for_replacement;   // marks this vehicle to be replaced
+
 	union {
 		VehicleRail rail;
 		VehicleAir air;

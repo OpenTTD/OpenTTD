@@ -363,6 +363,8 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
+	if (p2 != 0) v->set_for_replacement = true; //now all clients knows that the vehicle wants to be replaced
+
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
@@ -1030,7 +1032,8 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
- 			!VehicleNeedsService(v)) {
+ 			!VehicleNeedsService(v) &&
+			v->set_for_replacement == false) {
  		v->cur_order_index++;
  	}
 
@@ -1434,8 +1437,8 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 	AircraftNextAirportPos_and_Order(v);
 
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
-	if ((v->owner == _local_player && _autoreplace_array[v->engine_type] != v->engine_type) ||
-		(v->owner == _local_player && _patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+	if (v->current_order.type != OT_GOTO_DEPOT && ((v->owner == _local_player && _autoreplace_array[v->engine_type] != v->engine_type) ||
+		(v->owner == _local_player && _patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30)))) {
 		_current_player = _local_player;
 		DoCommandP(v->tile, v->index, 1, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 		_current_player = OWNER_NONE;
