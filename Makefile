@@ -64,7 +64,6 @@
 #          where it normally would print the revision number
 # MIDI: if set, it will use it as custom path to midi player.
 #  If unset, it will use the hardcoded path in the c code
-# VERBOSE: actually show the commands used for compilation.
 # WITH_NETWORK: enable networking
 # DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 #
@@ -719,7 +718,6 @@ $(ENDIAN_CHECK): endian_check.c
 
 $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
-	@$(if $(VERBOSE), echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)')
 	@$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)
 
 $(OSX): $(TTD)
@@ -934,7 +932,6 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
-	@$(if $(VERBOSE), echo '$(C_BUILD) $<')
 	@$(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
 		tr ' ' '\012' < .deps/$(*F).pp \
@@ -946,3 +943,9 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
 	@echo '===> Compiling $<'
 	@$(CXX_BUILD) $< -o $@
+
+
+info:
+	@echo 'CFLAGS  = $(CFLAGS)'
+	@echo 'LDFLAGS = $(LDFLAGS)'
+	@echo 'LIBS    = $(LIBS)'
