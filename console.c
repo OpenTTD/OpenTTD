@@ -94,9 +94,6 @@ static void IConsoleClearCommand(void)
 
 static void IConsoleWndProc(Window* w, WindowEvent* e)
 {
-	// only do window events with the console
-	w = FindWindowById(WC_CONSOLE, 0);
-
 	switch(e->event) {
 		case WE_PAINT:
 		{
@@ -104,7 +101,7 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
 			int delta = 0;
 			GfxFillRect(w->left, w->top, w->width, w->height - 1, 0);
-			while ((i > _iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
+			while ((i > 0) && (i > _iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
 				DoDrawString(_iconsole_buffer[i], 5,
 					w->height - (_iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
 				i--;
@@ -281,6 +278,9 @@ void IConsoleFree(void)
 
 void IConsoleResize(void)
 {
+
+	_iconsole_win = FindWindowById(WC_CONSOLE, 0);
+
 	switch (_iconsole_mode) {
 		case ICONSOLE_OPENED:
 			_iconsole_win->height = _screen.height / 3;
@@ -293,6 +293,8 @@ void IConsoleResize(void)
 		default:
 			break;
 	}
+
+	MarkWholeScreenDirty();
 }
 
 void IConsoleSwitch(void)
@@ -315,6 +317,8 @@ void IConsoleSwitch(void)
 			_iconsole_mode = ICONSOLE_CLOSED;
 			break;
 	}
+
+	MarkWholeScreenDirty();
 }
 
 void IConsoleClose(void)
