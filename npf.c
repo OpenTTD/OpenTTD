@@ -108,12 +108,50 @@ int32 NPFCalcZero(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	return 0;
 }
 
-/* Calcs the heuristic to the target station (using NPFFindStationOrTileData). After
- * will save the heuristic into NPFFoundTargetData if it is the smallest until
- * now. It will then also save AyStarNode.user_data[NPF_TRACKDIR_CHOICE] in
- * best_trackdir
+/* Calcs the tile of given station that is closest to a given tile
+ * for this we assume the station is a rectangle,
+ * as defined by its top tile (st->train_tile) and its width/height (st->trainst_w, st->trainst_h)
  */
-int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent) {
+TileIndex CalcClosestStationTile(int station, TileIndex tile) {
+	const Station* st = GetStation(station);
+
+	int x1,x2,x3,tx;
+	int y1,y2,y3,ty;
+
+	x1 = TileX(st->train_tile);			y1 = TileY(st->train_tile);			// topmost corner of station
+	x2 = x1 + st->trainst_w - 1; 		y2 = y1 + st->trainst_h - 1;		// lowermost corner of station
+	x3 = TileX(tile); 							y3 = TileY(tile);								// tile we take the distance from
+
+	// we are going the aim for the x coordinate of the closest corner
+	// but if we are between those coordinates, we will aim for our own x coordinate
+	if (x3 < x1)
+		tx = x1;
+	else if (x3 > x2)
+		tx = x2;
+	else
+		tx = x3;
+
+	// same for y coordinate, see above comment
+	if (y3 < y1)
+		ty = y1;
+	else if (y3 > y2)
+		ty = y2;
+	else
+		ty = y3;
+
+	// return the tile of our target coordinates
+	return TILE_XY(tx,ty);
+};
+
+/* Calcs the heuristic to the target tile (using NPFFindStationOrTileData).
+ * If the target is a station, the heuristic is probably "wrong"! Normally
+ * this shouldn't matter, but if it turns out to be a problem, we could use
+ * the heuristic below?
+ * Afterthis  will save the heuristic into NPFFoundTargetData if it is the
+ * smallest until now. It will then also save
+ * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] in best_trackdir
+ */
+int32 NPFCalcTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
 	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
 	TileIndex from = current->tile;
@@ -129,6 +167,35 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 	#endif
 	return dist;
 }
+
+/* Calcs the heuristic to the target station or tile. Almost the same as above
+ * function, but calculates the distance to train stations with
+ * CalcClosestStationTile instead. So is somewhat more correct for stations
+ * (truly optimistic), but this added correctness is not really required we
+ * believe (matthijs & Hackykid)
+ */
+int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent) {
+	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
+	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
+	TileIndex from = current->tile;
+	TileIndex to = fstd->dest_coords;
+
+	// for train-stations, we are going to aim for the closest station tile
+	if ((as->user_data[NPF_TYPE] == TRANSPORT_RAIL) && (fstd->station_index != -1))
+	 to = CalcClosestStationTile(fstd->station_index, from);
+
+	uint dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
+
+	if (dist < ftd->best_bird_dist) {
+		ftd->best_bird_dist = dist;
+		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
+	}
+	#ifdef NPF_DEBUG
+	debug("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
+	#endif
+	return dist;
+}
+
 
 /* Fills AyStarNode.user_data[NPF_TRACKDIRCHOICE] with the chosen direction to
  * get here, either getting it from the current choice or from the parent's
@@ -747,11 +814,9 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v) {
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
 	if ((v->current_order.type) == OT_GOTO_STATION && v->type == VEH_Train) {
-		const Station* st = GetStation(v->current_order.station);
-		TileIndexDiffC center = {st->trainst_w/2, st->trainst_h/2};
 		fstd->station_index = v->current_order.station;
-		/* Let's take the center of the station as our target tile for trains */
-		fstd->dest_coords = TILE_ADD(st->train_tile, ToTileIndexDiff(center));
+		/* Let's take the closest tile of the station as our target for trains */
+		fstd->dest_coords = CalcClosestStationTile(v->current_order.station, v->tile);
 	} else {
 		fstd->dest_coords = v->dest_tile;
 		fstd->station_index = -1;
