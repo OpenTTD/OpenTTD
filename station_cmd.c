@@ -538,8 +538,16 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 static void DeleteStationIfEmpty(Station *st) {
 	if (st->facilities == 0) {
 		st->delete_ctr = 0;
-		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
+
+	// if a station next to an oilrig is removed, fix ownership
+	if (st->airport_type == AT_OILRIG && st->facilities == (FACIL_AIRPORT|FACIL_DOCK) ) {
+		_station_sort_dirty = true;
+		InvalidateWindow(WC_STATION_LIST, st->owner);
+		st->owner = 0x10;
+	}
+
+	InvalidateWindow(WC_STATION_LIST, st->owner);
 }
 
 // Tries to clear the given area. Returns the cost in case of success.
@@ -2319,7 +2327,7 @@ void BuildOilRig(uint tile)
 			_map3_hi[tile] = 0;
 			_map2[tile] = st->index;
 
-			st->owner = 0x10;
+			st->owner = OWNER_NONE;
       st->airport_flags = 0;
 			st->airport_type = AT_OILRIG;
 			st->xy = tile;
