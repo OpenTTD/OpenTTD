@@ -109,6 +109,7 @@ typedef struct Patches {
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
+	bool invisible_trees; // don't show trees when buildings are transparent
 	
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 

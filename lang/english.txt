@@ -977,6 +977,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE			:{LTBLUE}Autorenew vehicle when it gets o
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS			:{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
 STR_CONFIG_PATCHES_AUTORENEW_MONEY			:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION		:{LTBLUE}Duration of error message: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES		:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT		:{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD		:{LTBLUE}Max station spread: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD	:{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}

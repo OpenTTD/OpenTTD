@@ -858,6 +858,7 @@ static const SettingDesc patch_settings[] = {
 	{"colored_news_date", SDT_UINT32, (void*)2000, (void*)offsetof(Patches, colored_news_date)},
 
 	{"bridge_pillars",  SDT_BOOL, (void*)true, (void*)offsetof(Patches, bridge_pillars)},
+	{"invisible_trees", SDT_BOOL, (void*)false, (void*)offsetof(Patches, invisible_trees)},
 
 	{"keep_all_autosave",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, keep_all_autosave)},
 

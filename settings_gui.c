@@ -678,6 +678,12 @@ int32 AiNew_PatchActive_Warning(int32 p1)
     return 0;
 }
 
+int32 InvisibleTreesActive(int32 p1)
+{
+	MarkWholeScreenDirty();
+	return 0;
+}
+
 typedef int32 PatchButtonClick(int32);
 static PatchButtonClick * const _patch_button_proc[] = {
 	&v_PositionMainToolbar,
@@ -715,6 +721,7 @@ static const PatchEntry _patches_ui[] = {
 	{PE_UINT8, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION, &_patches.errmsg_duration, 0, 20, 1},
 	
 	{PE_UINT8, PF_MULTISTRING, STR_CONFIG_PATCHES_TOOLBAR_POS, &_patches.toolbar_pos, 0, 2, 1, &v_PositionMainToolbar},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_INVISIBLE_TREES, &_patches.invisible_trees, 0, 1, 1, &InvisibleTreesActive},
 };
 
 static const PatchEntry _patches_construction[] = {

@@ -287,6 +287,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
+	if((_display_opt & DO_TRANS_BUILDINGS) || !_patches.invisible_trees)
 	{
 		int i;
 
