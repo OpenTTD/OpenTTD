@@ -35,6 +35,10 @@ static byte _network_clients_connected = 0;
 // The index counter for new clients (is never decreased)
 static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 
+/* Some externs / forwards */
+extern void ShowJoinStatusWindow();
+extern void StateGameLoop();
+
 // Function that looks up the CI for a given client-index
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 {
@@ -48,9 +52,9 @@ NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 }
 
 // Function that looks up the CS for a given client-index
-ClientState *NetworkFindClientStateFromIndex(uint16 client_index)
+NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 
 	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++)
 		if (cs->index == client_index)
@@ -61,7 +65,7 @@ ClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 
 // NetworkGetClientName is a server-safe function to get the name of the client
 //  if the user did not send it yet, Client #<no> is used.
-void NetworkGetClientName(char *client_name, size_t size, ClientState *cs)
+void NetworkGetClientName(char *client_name, size_t size, const NetworkClientState *cs)
 {
 	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 	if (ci->client_name[0] == '\0')
@@ -119,7 +123,7 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *na
 }
 
 // Calculate the frame-lag of a client
-uint NetworkCalculateLag(const ClientState *cs)
+uint NetworkCalculateLag(const NetworkClientState *cs)
 {
 	int lag = cs->last_frame_server - cs->last_frame;
 	// This client has missed his ACK packet after 1 DAY_TICKS..
@@ -150,7 +154,7 @@ void ServerStartError(char *error) {
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
-void NetworkClientError(byte res, ClientState *cs) {
+static void NetworkClientError(byte res, NetworkClientState *cs) {
 	// First, send a CLIENT_ERROR to the server, so he knows we are
 	//  disconnection (and why!)
 	NetworkErrorCode errorno;
@@ -158,7 +162,7 @@ void NetworkClientError(byte res, ClientState *cs) {
 	// We just want to close the connection..
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
 		cs->quited = true;
-		CloseClient(cs);
+		NetworkCloseClient(cs);
 		_networking = false;
 
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -179,12 +183,12 @@ void NetworkClientError(byte res, ClientState *cs) {
 	}
 
 	_switch_mode = SM_MENU;
-	CloseClient(cs);
+	NetworkCloseClient(cs);
 	_networking = false;
 }
 
 // Find all IP-aliases for this host
-void NetworkFindIPs(void)
+static void NetworkFindIPs(void)
 {
 	int i, last;
 
@@ -388,9 +392,9 @@ void ParseConnectionString(const byte **player, const byte **port, byte *connect
 
 // Creates a new client from a socket
 //   Used both by the server and the client
-static ClientState *AllocClient(SOCKET s)
+static NetworkClientState *NetworkAllocClient(SOCKET s)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 	byte client_no;
 
@@ -429,7 +433,7 @@ static ClientState *AllocClient(SOCKET s)
 }
 
 // Close a connection
-void CloseClient(ClientState *cs)
+void NetworkCloseClient(NetworkClientState *cs)
 {
 	NetworkClientInfo *ci;
 	// Socket is already dead
@@ -442,7 +446,7 @@ void CloseClient(ClientState *cs)
 		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
 		char str1[100], str2[100];
 		char client_name[NETWORK_NAME_LENGTH];
-		ClientState *new_cs;
+		NetworkClientState *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -503,10 +507,8 @@ void CloseClient(ClientState *cs)
 	ci->client_index = NETWORK_EMPTY_INDEX;
 }
 
-extern void ShowJoinStatusWindow();
-
 // A client wants to connect to a server
-bool NetworkConnect(const char *hostname, int port)
+static bool NetworkConnect(const char *hostname, int port)
 {
 	SOCKET s;
 	struct sockaddr_in sin;
@@ -550,7 +552,7 @@ bool NetworkConnect(const char *hostname, int port)
 	}
 
 	// in client mode, only the first client field is used. it's pointing to the server.
-	AllocClient(s);
+	NetworkAllocClient(s);
 
 	ShowJoinStatusWindow();
 
@@ -564,7 +566,7 @@ static void NetworkAcceptClients(void)
 {
 	struct sockaddr_in sin;
 	SOCKET s;
-	ClientState *cs;
+	NetworkClientState *cs;
 #ifndef __MORPHOS__
 	int sin_len;
 #else
@@ -594,7 +596,7 @@ static void NetworkAcceptClients(void)
 		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
 		#endif
 
-		cs = AllocClient(s);
+		cs = NetworkAllocClient(s);
 		if (cs == NULL) {
 			// no more clients allowed?
 			// Send to the client that we are full!
@@ -626,7 +628,7 @@ static void NetworkAcceptClients(void)
 }
 
 // Set up the listen socket for the server
-bool NetworkListen(void)
+static bool NetworkListen(void)
 {
 	SOCKET ls;
 	struct sockaddr_in sin;
@@ -682,16 +684,16 @@ bool NetworkListen(void)
 }
 
 // Close all current connections
-void NetworkClose(void)
+static void NetworkClose(void)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 
 	FOR_ALL_CLIENTS(cs) {
 		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_QUIT)("leaving");
 			NetworkSend_Packets(cs);
 		}
-		CloseClient(cs);
+		NetworkCloseClient(cs);
 	}
 
 	if (_network_server) {
@@ -704,9 +706,9 @@ void NetworkClose(void)
 }
 
 // Inits the network (cleans sockets and stuff)
-void NetworkInitialize(void)
+static void NetworkInitialize(void)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	uint i;
 
 	_local_command_queue = NULL;
@@ -735,7 +737,7 @@ void NetworkInitialize(void)
 	// add all servers from the config file to our list
 	for (i=0; i != lengthof(_network_server_list); i++) {
 		if (_network_server_list[i] == NULL) break;
-		AddServer(_network_server_list[i]);
+		NetworkAddServer(_network_server_list[i]);
 	}
 }
 
@@ -775,22 +777,25 @@ void NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
 
 // validates an address entered as a string and adds the server to
 // the list
-void AddServer(byte *b)
+void NetworkAddServer(const byte *b)
 {
 	if (*b != '\0') {
 		const byte *port = NULL;
 		const byte *player = NULL;
+		byte host[NETWORK_HOSTNAME_LENGTH];
 		uint16 rport;
+
+		ttd_strlcpy(host, b, lengthof(host));
 
 		ttd_strlcpy(_network_default_ip, b, lengthof(_network_default_ip));
 		rport = NETWORK_DEFAULT_PORT;
 
-		ParseConnectionString(&player, &port, b);
+		ParseConnectionString(&player, &port, host);
 
 		if (player != NULL) _network_playas = atoi(player);
 		if (port != NULL) rport = atoi(port);
 
-		NetworkQueryServer(b, rport, true);
+		NetworkQueryServer(host, rport, true);
 	}
 }
 
@@ -823,7 +828,7 @@ bool NetworkClientConnectGame(const byte* host, unsigned short port)
 	return _networking;
 }
 
-void NetworkInitGameInfo(void)
+static void NetworkInitGameInfo(void)
 {
 	NetworkClientInfo *ci;
 
@@ -913,7 +918,7 @@ bool NetworkServerStart(void)
 void NetworkReboot(void)
 {
 	if (_network_server) {
-		ClientState *cs;
+		NetworkClientState *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
 			NetworkSend_Packets(cs);
@@ -937,7 +942,7 @@ void NetworkReboot(void)
 void NetworkDisconnect(void)
 {
 	if (_network_server) {
-		ClientState *cs;
+		NetworkClientState *cs;
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
 			NetworkSend_Packets(cs);
@@ -964,9 +969,9 @@ void NetworkDisconnect(void)
 }
 
 // Receives something from the network
-bool NetworkReceive(void)
+static bool NetworkReceive(void)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	int n;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
@@ -1022,7 +1027,7 @@ bool NetworkReceive(void)
 // This sends all buffered commands (if possible)
 static void NetworkSend(void)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	FOR_ALL_CLIENTS(cs) {
 		if (cs->writable) {
 			NetworkSend_Packets(cs);
@@ -1036,7 +1041,7 @@ static void NetworkSend(void)
 }
 
 // Handle the local-command-queue
-void NetworkHandleLocalQueue(void)
+static void NetworkHandleLocalQueue(void)
 {
 	if (_local_command_queue != NULL) {
 		CommandPacket *cp;
@@ -1071,10 +1076,7 @@ void NetworkHandleLocalQueue(void)
 	}
 }
 
-
-extern void StateGameLoop();
-
-bool NetworkDoClientLoop(void)
+static bool NetworkDoClientLoop(void)
 {
 	_frame_counter++;
 
@@ -1168,7 +1170,7 @@ void NetworkGameLoop(void)
 	NetworkSend();
 }
 
-void NetworkGenerateUniqueId()
+static void NetworkGenerateUniqueId(void)
 {
 	md5_state_t state;
 	md5_byte_t digest[16];

@@ -65,7 +65,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	return item;
 }
 
-void NetworkGameListAddQueriedItem(NetworkGameInfo *info, bool server_online)
+void NetworkGameListAddQueriedItem(const NetworkGameInfo *info, bool server_online)
 {
 	// We queried a server and now we are going to add it to the list
 	NetworkGameList *item;

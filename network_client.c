@@ -15,6 +15,8 @@
 // This file handles all the client-commands
 
 
+extern const char _openttd_revision[];
+
 // So we don't make too much typos ;)
 #define MY_CLIENT DEREF_CLIENT(0)
 
@@ -42,8 +44,6 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	p = NetworkSend_Init(PACKET_CLIENT_COMPANY_INFO);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
-
-extern const char _openttd_revision[];
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 {
@@ -805,7 +805,7 @@ void NetworkClient_Connected(void)
 }
 
 // Reads the packets from the socket-stream, if available
-NetworkRecvStatus NetworkClient_ReadPackets(ClientState *cs)
+NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;

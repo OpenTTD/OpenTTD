@@ -147,7 +147,7 @@ DEF_CONSOLE_CMD(ConStatus)
 {
 	const char *status;
 	int lag;
-	const ClientState *cs;
+	const NetworkClientState *cs;
 	const NetworkClientInfo *ci;
 	FOR_ALL_CLIENTS(cs) {
 		lag = NetworkCalculateLag(cs);
@@ -217,7 +217,7 @@ DEF_CONSOLE_CMD(ConKick)
 DEF_CONSOLE_CMD(ConResetCompany)
 {
 	Player *p;
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 
 	if (argc == 2) {

@@ -15,18 +15,20 @@
 
 // This file handles all the server-commands
 
-void NetworkHandleCommandQueue(ClientState *cs);
+void NetworkHandleCommandQueue(NetworkClientState *cs);
 void NetworkPopulateCompanyInfo(void);
-void NetworkSendPatchSettings(ClientState *cs);
+void NetworkSendPatchSettings(NetworkClientState *cs);
+
+extern const char _openttd_revision[];
 
 // Is the network enabled?
 
 // **********
 // Sending functions
-//   DEF_SERVER_SEND_COMMAND has parameter: ClientState *cs
+//   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientState *cs
 // **********
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(ClientState *cs, NetworkClientInfo *ci)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientState *cs, NetworkClientInfo *ci)
 {
 	//
 	// Packet: SERVER_CLIENT_INFO
@@ -119,7 +121,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	}
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(ClientState *cs, NetworkErrorCode error)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, NetworkErrorCode error)
 {
 	//
 	// Packet: SERVER_ERROR
@@ -128,7 +130,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(ClientState *cs, NetworkError
 	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
 	//
 
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	char str1[100], str2[100];
 	char client_name[NETWORK_NAME_LENGTH];
 
@@ -167,10 +169,10 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(ClientState *cs, NetworkError
 	NetworkSend_Packets(cs);
 
 	// The client made a mistake, so drop his connection now!
-	CloseClient(cs);
+	NetworkCloseClient(cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(ClientState *cs, NetworkPasswordType type)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientState *cs, NetworkPasswordType type)
 {
 	//
 	// Packet: SERVER_NEED_PASSWORD
@@ -194,7 +196,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	//
 
 	Packet *p;
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 
 	// Invalid packet when status is AUTH or higher
 	if (cs->status >= STATUS_AUTH)
@@ -226,7 +228,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	//    uint8:  Clients awaiting map
 	//
 	int waiting = 0;
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	Packet *p;
 
 	// Count how many players are waiting in the queue
@@ -327,7 +329,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 				fclose(file_pointer);
 
 				{
-					ClientState *new_cs;
+					NetworkClientState *new_cs;
 					bool new_map_client = false;
 					// Check if there is a client waiting for receiving the map
 					//  and start sending him the map
@@ -364,7 +366,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	}
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(ClientState *cs, uint16 client_index)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientState *cs, uint16 client_index)
 {
 	//
 	// Packet: SERVER_JOIN
@@ -430,7 +432,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	NetworkSend_Packet(p, cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(ClientState *cs, CommandPacket *cp)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientState *cs, CommandPacket *cp)
 {
 	//
 	// Packet: SERVER_COMMAND
@@ -470,7 +472,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(ClientState *cs, CommandPac
 	NetworkSend_Packet(p, cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(ClientState *cs, NetworkAction action, uint16 client_index, const char *msg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientState *cs, NetworkAction action, uint16 client_index, const char *msg)
 {
 	//
 	// Packet: SERVER_CHAT
@@ -490,7 +492,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(ClientState *cs, NetworkAction
 	NetworkSend_Packet(p, cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(ClientState *cs, uint16 client_index, NetworkErrorCode errorno)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientState *cs, uint16 client_index, NetworkErrorCode errorno)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
@@ -509,7 +511,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(ClientState *cs, uint16 
 	NetworkSend_Packet(p, cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(ClientState *cs, uint16 client_index, const char *leavemsg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientState *cs, uint16 client_index, const char *leavemsg)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
@@ -556,15 +558,13 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 
 // **********
 // Receiving functions
-//   DEF_SERVER_RECEIVE_COMMAND has parameter: ClientState *cs, Packet *p
+//   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientState *cs, Packet *p
 // **********
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 {
 	SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
 }
-
-extern const char _openttd_revision[];
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
@@ -682,7 +682,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 {
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
@@ -711,7 +711,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	if (cs->status == STATUS_DONE_MAP && !cs->quited) {
 		char client_name[NETWORK_NAME_LENGTH];
 		char str[100];
-		ClientState *new_cs;
+		NetworkClientState *new_cs;
 		GetString(str, STR_NETWORK_CLIENT_JOINED);
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
@@ -747,7 +747,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	// The client has done a command and wants us to handle it
 	int i;
 	byte callback;
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	NetworkClientInfo *ci;
 	char *dparam_char;
 
@@ -832,7 +832,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 {
 	// This packets means a client noticed an error and is reporting this
 	//  to us. Display the error and report it to the other clients
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	byte errorno = NetworkRecv_uint8(p);
 	char str1[100], str2[100];
 	char client_name[NETWORK_NAME_LENGTH];
@@ -865,7 +865,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 {
 	// The client wants to leave. Display this and report it to the other
 	//  clients.
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	char str1[100], str2[100];
 	char client_name[NETWORK_NAME_LENGTH];
 
@@ -908,7 +908,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, byte from_index)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci, *ci_own, *ci_to;
 
 	switch (desttype) {
@@ -1036,7 +1036,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 }
 
 // The layout for the receive-functions by the server
-typedef void NetworkServerPacket(ClientState *cs, Packet *p);
+typedef void NetworkServerPacket(NetworkClientState *cs, Packet *p);
 
 
 // This array matches PacketType. At an incoming
@@ -1084,7 +1084,7 @@ extern const SettingDesc patch_settings[];
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
 //  this should be removed!!
-void NetworkSendPatchSettings(ClientState *cs)
+void NetworkSendPatchSettings(NetworkClientState *cs)
 {
 	const SettingDesc *item;
 	Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
@@ -1122,7 +1122,7 @@ void NetworkPopulateCompanyInfo(void)
 	Player *p;
 	Vehicle *v;
 	Station *s;
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 	int i;
 	uint16 months_empty;
@@ -1222,7 +1222,7 @@ void NetworkPopulateCompanyInfo(void)
 // Send a packet to all clients with updated info about this client_index
 void NetworkUpdateClientInfo(uint16 client_index)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 
 	ci = NetworkFindClientInfoFromIndex(client_index);
@@ -1242,7 +1242,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
            (and item 1. happens a year later) */
 static void NetworkAutoCleanCompanies()
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 	Player *p;
 	bool clients_in_company[MAX_PLAYERS];
@@ -1300,7 +1300,7 @@ static void NetworkAutoCleanCompanies()
 //  and it returns true if that succeeded.
 bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH])
 {
-	ClientState *new_cs;
+	NetworkClientState *new_cs;
 	NetworkClientInfo *ci;
 	bool found_name = false;
 	byte number = 0;
@@ -1341,7 +1341,7 @@ bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH])
 }
 
 // Reads a packet from the stream
-bool NetworkServer_ReadPackets(ClientState *cs)
+bool NetworkServer_ReadPackets(NetworkClientState *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res;
@@ -1358,7 +1358,7 @@ bool NetworkServer_ReadPackets(ClientState *cs)
 }
 
 // Handle the local command-queue
-void NetworkHandleCommandQueue(ClientState *cs) {
+void NetworkHandleCommandQueue(NetworkClientState *cs) {
 	if (cs->command_queue != NULL) {
 		CommandPacket *cp;
 		CommandPacket *cp_prev;
@@ -1389,7 +1389,7 @@ void NetworkServer_Tick(void)
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	static uint32 last_sync_frame = 0;
 #endif
-	ClientState *cs;
+	NetworkClientState *cs;
 	bool send_frame = false;
 
 	// Update max-frame-counter
@@ -1410,7 +1410,7 @@ void NetworkServer_Tick(void)
 					// Client did still not report in after 4 game-day, drop him
 					//  (that is, the 3 of above, + 1 before any lag is counted)
 					IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because the client did not respond for more then 4 game-days", cs->index);
-					CloseClient(cs);
+					NetworkCloseClient(cs);
 					continue;
 				}
 
@@ -1453,7 +1453,7 @@ void NetworkServer_Tick(void)
 	NetworkUDPAdvertise();
 }
 
-void NetworkServerMonthlyLoop()
+void NetworkServerMonthlyLoop(void)
 {
 	NetworkAutoCleanCompanies();
 }

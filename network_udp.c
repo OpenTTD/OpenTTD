@@ -106,7 +106,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 {
-	ClientState *cs;
+	NetworkClientState *cs;
 	NetworkClientInfo *ci;
 	Packet *packet;
 	Player *player;
@@ -471,7 +471,7 @@ void NetworkUDPQueryServer(const byte* host, unsigned short port)
 
 /* Register us to the master server
      This function checks if it needs to send an advertise */
-void NetworkUDPAdvertise()
+void NetworkUDPAdvertise(void)
 {
 	struct sockaddr_in out_addr;
 	Packet *p;

@@ -14,7 +14,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password);
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name);
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK);
 
-NetworkRecvStatus NetworkClient_ReadPackets(ClientState *cs);
+NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs);
 void NetworkClient_Connected(void);
 
 #endif /* ENABLE_NETWORK */

@@ -193,6 +193,6 @@ VARDEF byte _network_playas; // an id to play as..
 
 void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
-void AddServer(byte *b);
+void NetworkAddServer(const byte *b);
 
 #endif /* NETWORK_H */

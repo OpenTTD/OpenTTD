@@ -86,7 +86,7 @@ assert_compile(sizeof(PacketSize) == 2);
 //  as soon as possible
 // (that is: the next tick, or maybe one tick later if the
 //   OS-network-buffer is full)
-void NetworkSend_Packet(Packet *packet, ClientState *cs)
+void NetworkSend_Packet(Packet *packet, NetworkClientState *cs)
 {
 	Packet *p;
 	assert(packet != NULL);
@@ -114,9 +114,9 @@ void NetworkSend_Packet(Packet *packet, ClientState *cs)
 //  this handles what to do.
 // For clients: close connection and drop back to main-menu
 // For servers: close connection and that is it
-NetworkRecvStatus CloseConnection(ClientState *cs)
+NetworkRecvStatus CloseConnection(NetworkClientState *cs)
 {
-	CloseClient(cs);
+	NetworkCloseClient(cs);
 
 	// Clients drop back to the main menu
 	if (!_network_server) {
@@ -136,7 +136,7 @@ NetworkRecvStatus CloseConnection(ClientState *cs)
 //   2) the OS reports back that it can not send any more
 //        data right now (full network-buffer, it happens ;))
 //   3) sending took too long
-bool NetworkSend_Packets(ClientState *cs)
+bool NetworkSend_Packets(NetworkClientState *cs)
 {
 	ssize_t res;
 	Packet *p;
@@ -242,7 +242,7 @@ void NetworkRecv_string(Packet *p, char* buffer, size_t size)
 // (the line: 'p->size = (uint16)p->buffer[0];' and below)
 assert_compile(sizeof(PacketSize) == 2);
 
-Packet *NetworkRecv_Packet(ClientState *cs, NetworkRecvStatus *status)
+Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 {
 	ssize_t res;
 	Packet *p;
@@ -330,7 +330,7 @@ Packet *NetworkRecv_Packet(ClientState *cs, NetworkRecvStatus *status)
 }
 
 // Add a command to the local command queue
-void NetworkAddCommandQueue(ClientState *cs, CommandPacket *cp)
+void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 {
 	CommandPacket *new_cp = malloc(sizeof(CommandPacket));
 
@@ -390,7 +390,7 @@ void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandC
 		//   client on the server can do everything 1 tick faster then others.
 		//   So to keep the game fair, we delay the command with 1 tick
 		//   which gives about the same speed as most clients.
-		ClientState *cs;
+		NetworkClientState *cs;
 
 		// And we queue it for delivery to the clients
 		FOR_ALL_CLIENTS(cs) {

@@ -3,6 +3,6 @@
 
 void NetworkGameListClear(void);
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port);
-void NetworkGameListAddQueriedItem(NetworkGameInfo *info, bool server_online);
+void NetworkGameListAddQueriedItem(const NetworkGameInfo *info, bool server_online);
 
 #endif /* NETWORK_GAMELIST_H */

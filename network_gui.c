@@ -317,7 +317,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		AddServer(e->edittext.str);
+		NetworkAddServer(e->edittext.str);
 	} break;
 
 	case WE_CREATE: {

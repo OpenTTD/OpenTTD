@@ -107,7 +107,7 @@ typedef enum {
 } NetworkPasswordType;
 
 // To keep the clients all together
-typedef struct ClientState {
+typedef struct NetworkClientState {
 	int socket;
 	uint16 index;
 	uint32 last_frame;
@@ -122,7 +122,7 @@ typedef struct ClientState {
 	Packet *packet_recv; // Partially received packet
 
 	CommandPacket *command_queue; // The command-queue awaiting delivery
-} ClientState;
+} NetworkClientState;
 
 // What packet types are there
 // WARNING: The first 3 packets can NEVER change order again
@@ -173,17 +173,17 @@ SOCKET _udp_client_socket; // udp client socket
 
 // Here we keep track of the clients
 //  (and the client uses [0] for his own communication)
-ClientState _clients[MAX_CLIENTS];
+NetworkClientState _clients[MAX_CLIENTS];
 #define DEREF_CLIENT(i) (&_clients[i])
-// This returns the NetworkClientInfo from a ClientState
+// This returns the NetworkClientInfo from a NetworkClientState
 #define DEREF_CLIENT_INFO(cs) (&_network_client_info[cs - _clients])
 
 // Macros to make life a bit more easier
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
 #define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(void)
 #define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
-#define DEF_SERVER_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(ClientState *cs, Packet *p)
-#define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(ClientState *cs)
+#define DEF_SERVER_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(NetworkClientState *cs, Packet *p)
+#define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(NetworkClientState *cs)
 #define DEF_SERVER_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
 
 #define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
@@ -197,27 +197,27 @@ void NetworkSend_uint16(Packet *packet, uint16 data);
 void NetworkSend_uint32(Packet *packet, uint32 data);
 void NetworkSend_uint64(Packet *packet, uint64 data);
 void NetworkSend_string(Packet *packet, const char* data);
-void NetworkSend_Packet(Packet *packet, ClientState *cs);
+void NetworkSend_Packet(Packet *packet, NetworkClientState *cs);
 
 uint8 NetworkRecv_uint8(Packet *packet);
 uint16 NetworkRecv_uint16(Packet *packet);
 uint32 NetworkRecv_uint32(Packet *packet);
 uint64 NetworkRecv_uint64(Packet *packet);
 void NetworkRecv_string(Packet *packet, char* buffer, size_t size);
-Packet *NetworkRecv_Packet(ClientState *cs, NetworkRecvStatus *status);
+Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status);
 
-bool NetworkSend_Packets(ClientState *cs);
+bool NetworkSend_Packets(NetworkClientState *cs);
 void NetworkExecuteCommand(CommandPacket *cp);
-void NetworkAddCommandQueue(ClientState *cs, CommandPacket *cp);
+void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp);
 
 // from network.c
-void CloseClient(ClientState *cs);
+void NetworkCloseClient(NetworkClientState *cs);
 void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...);
-void NetworkGetClientName(char *clientname, size_t size, ClientState *cs);
-uint NetworkCalculateLag(const ClientState *cs);
+void NetworkGetClientName(char *clientname, size_t size, const NetworkClientState *cs);
+uint NetworkCalculateLag(const NetworkClientState *cs);
 byte NetworkGetCurrentLanguageIndex();
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
-ClientState *NetworkFindClientStateFromIndex(uint16 client_index);
+NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index);
 unsigned long NetworkResolveHost(const char *hostname);
 
 #endif /* ENABLE_NETWORK */

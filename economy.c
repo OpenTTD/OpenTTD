@@ -402,7 +402,7 @@ static void PlayersCheckBankrupt(Player *p)
 					// If we are the server, make sure it is clear that his player is no
 					//  longer with us!
 					NetworkClientInfo *ci;
-					ClientState *cs;
+					NetworkClientState *cs;
 					/* Find all clients that were in control of this company */
 					FOR_ALL_CLIENTS(cs) {
 						ci = DEREF_CLIENT_INFO(cs);
