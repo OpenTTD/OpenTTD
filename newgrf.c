@@ -1667,8 +1667,9 @@ static void SkipIf(byte *buf, int len)
 			return;
 	}
 
+	DEBUG(grf, 7) ("Test condtype %d, param %x, condval %x", condtype, param_val, cond_val);
 	switch (condtype) {
-		case 0: result = (param_val & (1 << cond_val));
+		case 0: result = !!(param_val & (1 << cond_val));
 			break;
 		case 1: result = !(param_val & (1 << cond_val));
 			break;
@@ -1681,7 +1682,7 @@ static void SkipIf(byte *buf, int len)
 			break;
 		case 5: result = (param_val > cond_val);
 			break;
-		case 6: result = param_val; /* GRFID is active (only for param-num=88) */
+		case 6: result = !!param_val; /* GRFID is active (only for param-num=88) */
 			break;
 		case 7: result = !param_val; /* GRFID is not active (only for param-num=88) */
 			break;
