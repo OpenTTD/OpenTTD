@@ -530,6 +530,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\mixer.c">
+			</File>
+			<File
 				RelativePath="namegen.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -1203,6 +1206,9 @@
 			</File>
 			<File
 				RelativePath="md5.h">
+			</File>
+			<File
+				RelativePath=".\mixer.h">
 			</File>
 			<File
 				RelativePath=".\network.h">

@@ -261,6 +261,10 @@ SOURCE=.\misc.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\mixer.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\namegen.c
 # End Source File
 
