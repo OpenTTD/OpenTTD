@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <pwd.h>
+#include <signal.h>
 
 #if defined(__linux__)
 #include <sys/statvfs.h>
@@ -464,6 +465,7 @@ int CDECL main(int argc, char* argv[])
 
 	_random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
 
+	signal(SIGPIPE, SIG_IGN);
 
 	return ttd_main(argc, argv);
 }
