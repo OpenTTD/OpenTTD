@@ -1086,9 +1086,14 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		/* update other vars */
 		UpdateVarsAfterSwap(a);
 		UpdateVarsAfterSwap(b);
+
+		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
+		VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
 	} else {
 		if (!(a->u.rail.track & 0x80)) a->direction ^= 4;
 		UpdateVarsAfterSwap(a);
+
+		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
 }
 
