@@ -1192,7 +1192,7 @@ static bool CheckNewIndustry_Oilwell(uint tile, int type)
 	x = TileX(tile);
 	y = TileY(tile);
 
-	if ( x < 15 || y < 15 || x > 238 || y > 238)
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)
 		return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
