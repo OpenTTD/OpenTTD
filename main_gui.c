@@ -2220,14 +2220,14 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		if (_game_mode == GM_MENU) {
 			off_x = _screen.width / 2;
 
-			DrawSprite(SPR_OTTD_O, off_x - 114, 50);
-			DrawSprite(SPR_OTTD_P, off_x -  80, 50);
-			DrawSprite(SPR_OTTD_E, off_x -  47, 50);
-			DrawSprite(SPR_OTTD_N, off_x -  16, 50);
+			DrawSprite(SPR_OTTD_O, off_x - 120, 50);
+			DrawSprite(SPR_OTTD_P, off_x -  86, 50);
+			DrawSprite(SPR_OTTD_E, off_x -  53, 50);
+			DrawSprite(SPR_OTTD_N, off_x -  22, 50);
 
-			DrawSprite(SPR_OTTD_T, off_x +  28, 50);
-			DrawSprite(SPR_OTTD_T, off_x +  59, 50);
-			DrawSprite(SPR_OTTD_D, off_x +  90, 50);
+			DrawSprite(SPR_OTTD_T, off_x +  34, 50);
+			DrawSprite(SPR_OTTD_T, off_x +  65, 50);
+			DrawSprite(SPR_OTTD_D, off_x +  96, 50);
 			
 			/*
 			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
