@@ -90,11 +90,6 @@ static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileInde
 	road_stop->station = index;
 }
 
-inline int GetRoadStopType(TileIndex tile)
-{
-	return (_map5[tile] < 0x47) ? RS_TRUCK : RS_BUS;
-}
-
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type)
 {
 	switch (type) {

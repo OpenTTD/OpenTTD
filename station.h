@@ -259,7 +259,11 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 int GetCustomStationsCount(enum StationClass sclass);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
-inline int GetRoadStopType(TileIndex tile);
+static inline int GetRoadStopType(TileIndex tile)
+{
+	return (_map5[tile] < 0x47) ? RS_TRUCK : RS_BUS;
+}
+
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
