@@ -917,7 +917,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 
 
-void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, byte from_index)
+void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index)
 {
 	NetworkClientState *cs;
 	NetworkClientInfo *ci, *ci_own, *ci_to;
