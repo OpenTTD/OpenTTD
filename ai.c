@@ -13,6 +13,7 @@
 
 // remove some day perhaps?
 static Player *_cur_ai_player;
+static uint _ai_service_interval;
 
 typedef void AiStateAction(Player *p);
 
@@ -301,8 +302,8 @@ static void AiHandleReplaceTrain(Player *p)
 			veh = _new_train_id;
 			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
-			// Force the service interval to 180 days.. else things can go very wrong :p
-			DoCommandByTile(0, veh, 180, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 		}
 	}
 }
@@ -329,8 +330,8 @@ static void AiHandleReplaceRoadVeh(Player *p)
 			veh = _new_roadveh_id;
 			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
-			// Force the service interval to 180 days.. else things can go very wrong :p
-			DoCommandByTile(0, veh, 180, DC_EXEC, CMD_CHANGE_ROADVEH_SERVICE_INT);
+
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 		}
 	}
 }
@@ -357,8 +358,8 @@ static void AiHandleReplaceAircraft(Player *p)
 			veh = _new_aircraft_id;
 			AiRestoreVehicleOrders(&_vehicles[veh], orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
-			// Force the service interval to 180 days.. else things can go very wrong :p
-			DoCommandByTile(0, veh, 180, DC_EXEC, CMD_CHANGE_AIRCRAFT_SERVICE_INT);
+
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 		}
 	}
 }
@@ -2432,8 +2433,8 @@ handle_nocash:
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
-	// Force the service interval to 180 days.. else things can go very wrong :p
-	DoCommandByTile(0, loco_id, 180, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0)
 		p->ai.num_want_fullload--;
@@ -3179,8 +3180,8 @@ static void AiStateBuildRoadVehicles(Player *p)
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
-	// Force the service interval to 180 days.. else things can go very wrong :p
-	DoCommandByTile(0, loco_id, 180, DC_EXEC, CMD_CHANGE_ROADVEH_SERVICE_INT);
+
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0)
 		p->ai.num_want_fullload--;
@@ -3487,8 +3488,8 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
-	// Force the service interval to 180 days.. else things can go very wrong :p
-	DoCommandByTile(0, loco_id, 180, DC_EXEC, CMD_CHANGE_AIRCRAFT_SERVICE_INT);
+
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0)
 		p->ai.num_want_fullload--;
@@ -3882,6 +3883,12 @@ void AiDoGameLoop(Player *p)
 		AiHandleTakeover(p);
 		return;
 	}
+
+	// Ugly hack to make sure the service interval of the AI is good, not looking
+	//  to the patch-setting
+	// Also, it takes into account the setting if the service-interval is in days
+	//  or in %
+	_ai_service_interval = _patches.servint_ispercent?80:180;
 
 	if (IS_HUMAN_PLAYER(_current_player))
 		return;
