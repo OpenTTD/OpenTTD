@@ -545,28 +545,48 @@ static void AnimateTile_Clear(uint tile)
 	/* unused */
 }
 
-void TileLoopClearHelper(uint tile)
+void TileLoopClearHelper(TileIndex tile)
 {
-	byte img_1, img_2;
-	static byte img_by_map5[8] = { 0,0,0,2, 1,1,0,0, };
-	uint dirty = -1;
+	byte img_1;
+	byte img_2;
+	static byte img_by_map5[] = { 0, 0, 0, 2, 1, 1, 0, 0 };
+	TileIndex dirty = INVALID_TILE;
 
-	img_1 = 0;
-	if (IsTileType(tile, MP_CLEAR)) {
-		img_1 = img_by_map5[(_map5[tile] & 0x1C) >> 2];
-	} else if (IsTileType(tile, MP_TREES) && (_map2[tile] & 0x30) == 0x20) {
-		img_1 = 1;
+	switch (GetTileType(tile)) {
+		case MP_CLEAR:
+			img_1 = img_by_map5[(_map5[tile] & 0x1C) >> 2];
+			break;
+
+		case MP_TREES:
+			if ((_map2[tile] & 0x30) == 0x20)
+				img_1 = 1;
+			else
+				img_1 = 0;
+
+		default:
+			img_1 = 0;
+			break;
 	}
 
-	img_2 = 0;
-	if (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR)) {
-		img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
-	} else if (IsTileType(TILE_ADDXY(tile, 1, 0), MP_TREES) && (_map2[TILE_ADDXY(tile, 1, 0)] & 0x30) == 0x20) {
-		img_2 = 1;
+	switch (GetTileType(TILE_ADDXY(tile, 1, 0))) {
+		case MP_CLEAR:
+			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
+			break;
+
+		case MP_TREES:
+			if ((_map2[TILE_ADDXY(tile, 1, 0)] & 0x30) == 0x20)
+				img_2 = 1;
+			else
+				img_2 = 0;
+			break;
+
+		default:
+			img_2 = 0;
+			break;
 	}
 
-	if (!(_map3_hi[tile] & 0xE0)) {
-		if ( (img_1&2) != (img_2&2) ) {
+	if ((_map3_hi[tile] & 0xE0) == 0) {
+		if ((img_1 & 2) != (img_2 & 2)) {
 			_map3_hi[tile] |= 3 << 5;
 			dirty = tile;
 		}
@@ -577,15 +597,25 @@ void TileLoopClearHelper(uint tile)
 		}
 	}
 
-	img_2 = 0;
-	if (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR)) {
-		img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 0, 1)] & 0x1C) >> 2];
-	} else if (IsTileType(TILE_ADDXY(tile, 0, 1), MP_TREES) && (_map2[TILE_ADDXY(tile, 0, 1)] & 0x30) == 0x20) {
-		img_2 = 1;
+	switch (GetTileType(TILE_ADDXY(tile, 0, 1))) {
+		case MP_CLEAR:
+			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
+			break;
+
+		case MP_TREES:
+			if ((_map2[TILE_ADDXY(tile, 0, 1)] & 0x30) == 0x20)
+				img_2 = 1;
+			else
+				img_2 = 0;
+			break;
+
+		default:
+			img_2 = 0;
+			break;
 	}
 
-	if (!(_map3_hi[tile] & 0x1C)) {
-		if ( (img_1&2) != (img_2&2) ) {
+	if ((_map3_hi[tile] & 0x1C) == 0) {
+		if ((img_1 & 2) != (img_2 & 2)) {
 			_map3_hi[tile] |= 3 << 2;
 			dirty = tile;
 		}
@@ -596,7 +626,7 @@ void TileLoopClearHelper(uint tile)
 		}
 	}
 
-	if (dirty != (uint) -1)
+	if (dirty != INVALID_TILE)
 		MarkTileDirtyByTile(dirty);
 }
 
