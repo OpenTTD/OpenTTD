@@ -372,7 +372,7 @@ void ShowBuildTreesScenToolbar()
 	AllocateWindowDescFront(&_build_trees_scen_desc, 0);
 }
 
-static uint32 _errmsg_decode_params[10];
+static uint32 _errmsg_decode_params[20];
 static StringID _errmsg_message_1, _errmsg_message_2;
 static uint _errmsg_duration;
 

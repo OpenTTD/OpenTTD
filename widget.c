@@ -146,7 +146,7 @@ void DrawWindowWidgets(Window *w)
 	const Widget *wi;
 	DrawPixelInfo *dpi = _cur_dpi;
 	Rect r;
-	uint32 dparam_backup[10];
+	uint32 dparam_backup[20];
 	uint32 cur_click, cur_disabled, cur_hidden;
 
 	if (w->desc_flags & WDF_RESTORE_DPARAM)	COPY_OUT_DPARAM(dparam_backup, 0, lengthof(dparam_backup));
