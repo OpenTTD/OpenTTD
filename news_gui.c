@@ -234,7 +234,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	// add news to _latest_news
 	ni = &_news_items[_latest_news];
-	memset(ni, 0, sizeof(ni));
+	memset(ni, 0, sizeof(*ni));
 
 	ni->string_id = string;
 	ni->display_mode = (byte)flags;
