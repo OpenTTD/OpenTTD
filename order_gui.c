@@ -317,6 +317,68 @@ static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
 	}
 }
 
+enum OrderFlags {
+	FULL_LOAD = 0,
+	UNLOAD = 1,
+	NON_STOP = 2
+};
+
+static void OrderClick_Goto(Window *w, Vehicle *v)
+{
+	InvalidateWidget(w, 7);
+	TOGGLEBIT(w->click_state, 7);
+	if (HASBIT(w->click_state, 7)) {
+		_place_clicked_vehicle = NULL;
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, 1, w);
+	} else {
+		ResetObjectToPlace();
+	}
+}
+
+static void OrderClick_FullLoad(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile, v->index, OrderGetSel(w) | (FULL_LOAD << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+static void OrderClick_Unload(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile, v->index, OrderGetSel(w) | (UNLOAD << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+static void OrderClick_Skip(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile,v->index, 0, NULL, CMD_SKIP_ORDER);
+}
+
+static void OrderClick_Delete(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile,v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
+}
+
+static void OrderClick_Nonstop(Window *w, Vehicle *v)
+{
+	DoCommandP(v->tile, v->index, OrderGetSel(w) | (NON_STOP << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+typedef void OnButtonClick(Window *w, Vehicle *v);
+
+static OnButtonClick * const _order_button_proc[] = {
+	OrderClick_Skip,
+	OrderClick_Delete,
+	OrderClick_Nonstop,
+	OrderClick_Goto,
+	OrderClick_FullLoad,
+	OrderClick_Unload
+};
+
+static const uint16 _order_keycodes[] = {
+	'D', //skip order
+	'F', //delete order
+	'G', //non-stop
+	'H', //goto order
+	'J', //full load
+	'K'  //unload
+};
 
 static void OrdersWndProc(Window *w, WindowEvent *e)
 {
@@ -327,7 +389,6 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		Vehicle *v = GetVehicle(w->window_number);
-		int mode;
 		switch(e->click.widget) {
 		case 2:	{/* orders list */
 			int sel;
@@ -364,40 +425,49 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		}	break;
 
 		case 4: /* skip button */
-			DoCommandP(v->tile,v->index, 0, NULL, CMD_SKIP_ORDER);
+			OrderClick_Skip(w, v);
 			break;
 
 		case 5: /* delete button */
-			DoCommandP(v->tile,v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
-			break;
-
-		case 7: /* goto button */
-			InvalidateWidget(w, 7);
-			w->click_state ^= 1<<7;
-			if (HASBIT(w->click_state, 7)) {
-				_place_clicked_vehicle = NULL;
-				SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, 1, w);
-			} else {
-				ResetObjectToPlace();
-			}
-			break;
-
-		case 8: /* full load button */
-			mode = 0;
-			DoCommandP(v->tile, v->index, OrderGetSel(w) | (mode << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
-			break;
-
-		case 9: /* unload button */
-			mode = 1;
-			DoCommandP(v->tile, v->index, OrderGetSel(w) | (mode << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+			OrderClick_Delete(w, v);
 			break;
 
 		case 6: /* non stop button */
-			mode = 2;
-			DoCommandP(v->tile, v->index, OrderGetSel(w) | (mode << 8), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+			OrderClick_Nonstop(w, v);
 			break;
+			
+		case 7: /* goto button */
+			OrderClick_Goto(w, v);
+			break;
+
+		case 8: /* full load button */
+			OrderClick_FullLoad(w, v);
+			break;
+
+		case 9: /* unload button */
+			OrderClick_Unload(w, v);
+			break;
+
 		}
 	} break;
+	
+	case WE_KEYPRESS: {
+		Vehicle *v = GetVehicle(w->window_number);
+		uint i;
+
+		for(i = 0; i < lengthof(_order_keycodes); i++) {
+			if (e->keypress.keycode == _order_keycodes[i]) {
+				e->keypress.cont = false;
+				//see if the button is disabled 
+				if (!(HASBIT(w->disabled_state, (i + 4)))) {
+					_order_button_proc[i](w, v);
+				}
+				break;
+			}
+		}
+		break;
+	}
+
 
 
 	case WE_RCLICK: {
@@ -442,6 +512,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	}
 }
+
 
 static const Widget _orders_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
