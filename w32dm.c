@@ -33,10 +33,10 @@
 #include "hal.h"
 
 static char * DMusicMidiStart(char **parm);
-static void DMusicMidiStop();
+static void DMusicMidiStop(void);
 static void DMusicMidiPlaySong(const char *filename);
-static void DMusicMidiStopSong();
-static bool DMusicMidiIsSongPlaying();
+static void DMusicMidiStopSong(void);
+static bool DMusicMidiIsSongPlaying(void);
 static void DMusicMidiSetVolume(byte vol);
 
 const HalMusicDriver _dmusic_midi_driver = {
@@ -68,7 +68,7 @@ static char * DMusicMidiStart(char **parm)
   return("Unable to initialize DirectMusic");
 }
 
-static void DMusicMidiStop()
+static void DMusicMidiStop(void)
 {
 	StopSegment();
 }
@@ -91,12 +91,12 @@ static void DMusicMidiPlaySong(const char *filename)
 	seeking = true;
 }
 
-static void DMusicMidiStopSong()
+static void DMusicMidiStopSong(void)
 {
 	StopSegment();
 }
 
-static bool DMusicMidiIsSongPlaying()
+static bool DMusicMidiIsSongPlaying(void)
 {
 	if ((IsSegmentPlaying() == 0) && (seeking == true)) // Not the nicest code, but there is a
 		return(true);                                   // short delay before playing actually

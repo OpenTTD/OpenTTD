@@ -93,7 +93,7 @@ static const char ole_files[] =
 
 static ProcPtrs _proc;
 
-static bool LoadOleDLL()
+static bool LoadOleDLL(void)
 {
 	if (_proc.CoCreateInstance != NULL)
 		return true;
