@@ -1510,15 +1510,17 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 		}
 	} else {
+		/* draw depots / checkpoints */
 		const byte *s;
 		const DrawTrackSeqStruct *drss;
+		byte type = m5 & 0x3F; // 0-3: depots, 4-5: checkpoints
 
 		if (!(m5 & (RAIL_TYPE_MASK&~RAIL_TYPE_SPECIAL)))
 			return;
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		s = _track_depot_layout_table[m5 & 0x3F];
+		s = _track_depot_layout_table[type];
 
 		image = *(const uint16*)s;
 		if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
@@ -1540,7 +1542,7 @@ static void DrawTile_Track(TileInfo *ti)
 		while ((image=drss->image) != 0) {
 			if (image & 0x8000)
 				image |= _drawtile_track_palette;
-			image += tracktype_offs;
+			image += (type<4)?tracktype_offs:0;
 			if (!(_display_opt & DO_TRANS_BUILDINGS)) // show transparent depots
 				image = (image & 0x3FFF) | 0x3224000;
 			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
