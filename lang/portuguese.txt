@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperial (milhas)
 STR_013A_METRIC_KILOMETERS					:Métrico (quilómetros)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:Off
 STR_CONFIG_PATCHES_ON						:On
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permitir a remoção de mais estradas, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Activar aceleração realista para comboios: {ORANGE}{STRING}
@@ -1211,9 +1213,11 @@ STR_NETWORK_ENTER_IP						:{BLACK}Introduza o endereço IP do servidor
 STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
 STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clientes ligados / max. clientes
+STR_NETWORK_GAME_INFO						:{SILVER}INFORMAÇÃO DE JOGO
 STR_ORANGE							:{ORANGE}{STRING}
 STR_NETWORK_CLIENTS						:{SILVER}Clientes:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE						:{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Tamanho do Mapa:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Versão do servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS					:{SILVER}Endereço do servidor:  {WHITE}{STRING}
@@ -1239,6 +1243,16 @@ STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolha o número máximo de clientes
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clientes
 STR_NETWORK_3_CLIENTS						:3 clientes
+STR_NETWORK_4_CLIENTS						:4 clientes
+STR_NETWORK_5_CLIENTS						:5 clientes
+STR_NETWORK_6_CLIENTS						:6 clientes
+STR_NETWORK_7_CLIENTS						:7 clientes
+STR_NETWORK_8_CLIENTS						:8 clientes
+STR_NETWORK_9_CLIENTS						:9 clientes
+STR_NETWORK_10_CLIENTS						:10 clientes
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma falado:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME						:{BLACK}Abrir Jogo
@@ -1247,15 +1261,26 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Abrir Cenário
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar um novo jogo em rede a partir de um cenário
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Qualquer
+STR_NETWORK_LANG_ENGLISH					:Inglês
+STR_NETWORK_LANG_GERMAN						:Alemão
+STR_NETWORK_LANG_FRENCH						:Francês
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de jogo multi-jogador
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Preparando para juntar:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Lista das companhias activas neste jogo. Pode juntar-se a uma delas ou iniciar uma nova companhia.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova empresa
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Criar uma nova empresa
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar jogo
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ver jogo como um espectador
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Juntar a companhia
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Auxiliar na gestão desta companhia
+STR_NETWORK_REFRESH						:{BLACK}Renovar servidor
+STR_NETWORK_REFRESH_TIP						:{BLACK}Renovar a informação do servidor
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFORMAÇÃO DA COMPANHIA
 
 STR_NETWORK_COMPANY_NAME					:{BLACK}Nome da empresa:
 
@@ -2625,3 +2650,5 @@ STR_NEWGRF_TIP							:{BLACK}Lista de todos os conjuntos Newgrf que instalou. Cl
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME						:{BLACK}Nome do ficheiro:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+

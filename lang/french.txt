@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Impérial (miles)
 STR_013A_METRIC_KILOMETERS					:Métrique (kilomètres)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:Désactivé
 STR_CONFIG_PATCHES_ON						:Activé
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Afficher vitesse du véhicule dans la barre d'état: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Construction côtière et sur plans inclinés: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Autorise des zones de désserte plus réalistes : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permettre la suppression de plus de routes, ponts, tunnels, etc possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
@@ -2695,3 +2697,13 @@ STR_NEWGRF_TIP							:{BLACK}Une liste de tous les sets Newgrf que vous avez ins
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Il n'y a actuellement aucun fichier Newgrf installé ! Veuillez vous référer au manuel pour des instructions sur l'installation de nouveaux graphiques.
 STR_NEWGRF_FILENAME						:{BLACK}Nom de fichier:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+STR_TRAIN							:{BLACK}{TRAIN}
+STR_LORRY							:{BLACK}{LORRY}
+STR_PLANE							:{BLACK}{PLANE}
+STR_SHIP							:{BLACK}{SHIP}
+
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Trains
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Véhicules routiers
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Aéronefs
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Navires

@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Brittil‰inen (mailit)
 STR_013A_METRIC_KILOMETERS					:Metrinen (kilometrit)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:Pois
 STR_CONFIG_PATCHES_ON						:P‰‰ll‰
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}N‰yt‰ ajoneuvon nopeus tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Salli rakentaminen rinteisiin ja rannikolle: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Salli realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Salli kaupungin omistamien teiden, tunnelien, siltojen, jne. raivaaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Eritt‰in pitkien junien rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Junien realistinen kiihdytt‰minen: {ORANGE}{STRING}
@@ -2695,3 +2697,5 @@ STR_NEWGRF_TIP							:{BLACK}Lista kaikista asentamistasi Newgrf-paketeista. Kli
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Yht‰‰n Newgrf-tiedostoa ei ole asennettuna! Ole hyv‰ ja katso manuaalista ohjeet uusien grafiikoiden asentamiseksi.
 STR_NEWGRF_FILENAME						:{BLACK}Tiedostonimi:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+

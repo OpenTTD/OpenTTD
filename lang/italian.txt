@@ -2583,3 +2583,5 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Ammontare di denaro in tasca
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Hai preso un prestito troppo elevato?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Totale dei punti rispetto ad un massimo di punti possibili
 
+
+

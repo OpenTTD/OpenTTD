@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OS X
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperial (millas)
 STR_013A_METRIC_KILOMETERS					:Métrica (kilómetros)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:No
 STR_CONFIG_PATCHES_ON						:Sí
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Mostrar velocidad del vehículo en la barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Permitir la construcción en cuestas y orillas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permitir tamaño del área de captación más realista: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permitir demoler más propiedades de poblaciones: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Activar aceleración realista de trenes: {ORANGE}{STRING}
@@ -2695,3 +2697,5 @@ STR_NEWGRF_TIP							:{BLACK}Un listado de todos los Newgrf que tiene instalados
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}¡No tiene ningún fichero newgrf instalado! Por favor, lea las instrucciones en el manual para instalar nuevos gráficos.
 STR_NEWGRF_FILENAME						:{BLACK}Fichero:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
+
+

@@ -310,6 +310,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperiaal (mijlen)
 STR_013A_METRIC_KILOMETERS					:S.I. (kilometers)
@@ -973,6 +974,7 @@ STR_CONFIG_PATCHES_OFF						:Uit
 STR_CONFIG_PATCHES_ON						:Aan
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Geef snelheid in statusbalk weer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Bouwen op hellingen toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Gebruik realistisch handelsgebied: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
@@ -2695,3 +2697,5 @@ STR_NEWGRF_TIP							:{BLACK}Een lijst van alle geïnstalleerde Newgrf sets. Klik
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Er zijn op dit moment geen newgrf bestanden geïnstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
 STR_NEWGRF_FILENAME						:{BLACK}Bestandsnaam:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+

@@ -2695,3 +2695,5 @@ STR_NEWGRF_TIP							:{BLACK}Lista plikow Newgrf jakie sa zainstalowane. Kliknij
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Obecnie nie ma zainstalowanych zadnych plikow newgrf! Prosze sprawdzic instrukcje jak zainstalowac nowe grafiki.
 STR_NEWGRF_FILENAME						:{BLACK}Nazwa pliku:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+

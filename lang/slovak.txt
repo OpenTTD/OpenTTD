@@ -2604,3 +2604,5 @@ STR_NEWGRF_TIP							:{BLACK}Zoznam sady nainstalovanych novych grafik. Nastaven
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
 STR_NEWGRF_FILENAME						:{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
+
+

@@ -2697,3 +2697,5 @@ STR_NEWGRF_TIP							:{BLACK}Eine Liste aller Newgrf-Sets, die installiert sind.
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Keine Newgrf-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
 STR_NEWGRF_FILENAME						:{BLACK}Dateiname:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+

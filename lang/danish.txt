@@ -2590,3 +2590,5 @@ STR_NEWGRF_TIP							:{BLACK}Liste med alle Newgrf sæt du har installeret. Marke
 STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
+
+
