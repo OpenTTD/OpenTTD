@@ -131,7 +131,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 	//
 
 	NetworkClientState *new_cs;
-	char str1[100], str2[100];
+	char str[100];
 	char client_name[NETWORK_NAME_LENGTH];
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
@@ -142,12 +142,11 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 	if (cs->status > STATUS_AUTH) {
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetString(str1, STR_NETWORK_ERR_LEFT);
-		GetString(str2, STR_NETWORK_ERR_CLIENT_GENERAL + error);
+		GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + error);
 
-		DEBUG(net, 2)("[NET] %s made an error (%s) and his connection is closed", client_name, str2);
+		DEBUG(net, 2)("[NET] %s made an error (%s) and his connection is closed", client_name, str);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, "%s (%s)", str1, str2);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
 
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
@@ -472,7 +471,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientState *cs, Com
 	NetworkSend_Packet(p, cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientState *cs, NetworkAction action, uint16 client_index, const char *msg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientState *cs, NetworkAction action, uint16 client_index, bool self_send, const char *msg)
 {
 	//
 	// Packet: SERVER_CHAT
@@ -487,6 +486,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientState *cs, Networ
 
 	NetworkSend_uint8(p, action);
 	NetworkSend_uint16(p, client_index);
+	NetworkSend_uint8(p, self_send);
 	NetworkSend_string(p, msg);
 
 	NetworkSend_Packet(p, cs);
@@ -710,13 +710,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	// Client has the map, now start syncing
 	if (cs->status == STATUS_DONE_MAP && !cs->quited) {
 		char client_name[NETWORK_NAME_LENGTH];
-		char str[100];
 		NetworkClientState *new_cs;
-		GetString(str, STR_NETWORK_CLIENT_JOINED);
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, str);
+		NetworkTextMessage(NETWORK_ACTION_JOIN, 1, false, client_name, "");
 
 		// Mark the client as pre-active, and wait for an ACK
 		//  so we know he is done loading and in sync with us
@@ -834,7 +832,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	//  to us. Display the error and report it to the other clients
 	NetworkClientState *new_cs;
 	byte errorno = NetworkRecv_uint8(p);
-	char str1[100], str2[100];
+	char str[100];
 	char client_name[NETWORK_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
@@ -845,12 +843,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	GetString(str1, STR_NETWORK_ERR_LEFT);
-	GetString(str2, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
+	GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
-	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str2);
+	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str);
 
-	NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, "%s (%s)", str1, str2);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
@@ -866,7 +863,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	// The client wants to leave. Display this and report it to the other
 	//  clients.
 	NetworkClientState *new_cs;
-	char str1[100], str2[100];
+	char str[100];
 	char client_name[NETWORK_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
@@ -875,17 +872,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		return;
 	}
 
-	NetworkRecv_string(p, str2, 100);
+	NetworkRecv_string(p, str, 100);
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	GetString(str1, STR_NETWORK_ERR_LEFT);
-
-	NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, "%s (%s)", str1, str2);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
-			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->index, str2);
+			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->index, str);
 		}
 	}
 
@@ -913,14 +908,17 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 	switch (desttype) {
 	case DESTTYPE_CLIENT:
-		if (dest == 1) {
+		/* Are we sending to the server? */
+		if (dest == NETWORK_SERVER_INDEX) {
 			ci = NetworkFindClientInfoFromIndex(from_index);
+			/* Display the text locally, and that is it */
 			if (ci != NULL)
-				NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), ci->client_name, "%s", msg);
+				NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), false, ci->client_name, "%s", msg);
 		} else {
+			/* Else find the client to send the message to */
 			FOR_ALL_CLIENTS(cs) {
 				if (cs->index == dest) {
-					SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, msg);
+					SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
 					break;
 				}
 			}
@@ -928,15 +926,15 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 		// Display the message locally (so you know you have sent it)
 		if (from_index != dest) {
-			if (from_index == 1) {
+			if (from_index == NETWORK_SERVER_INDEX) {
 				ci = NetworkFindClientInfoFromIndex(from_index);
 				ci_to = NetworkFindClientInfoFromIndex(dest);
 				if (ci != NULL && ci_to != NULL)
-					NetworkTextMessage(NETWORK_ACTION_CHAT_TO_CLIENT, GetDrawStringPlayerColor(ci->client_playas-1), ci_to->client_name, "%s", msg);
+					NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), true, ci_to->client_name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, NETWORK_ACTION_CHAT_TO_CLIENT, dest, msg);
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, dest, true, msg);
 						break;
 					}
 				}
@@ -946,10 +944,11 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 	case DESTTYPE_PLAYER: {
 		bool show_local = true; // If this is false, the message is already displayed
 														// on the client who did sent it.
+		/* Find all clients that belong to this player */
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == dest) {
-				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, msg);
+				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
 				if (cs->index == from_index)
 					show_local = false;
 			}
@@ -957,7 +956,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		ci = NetworkFindClientInfoFromIndex(from_index);
 		ci_own = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
-			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), ci->client_name, "%s", msg);
+			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), false, ci->client_name, "%s", msg);
 			if (from_index == NETWORK_SERVER_INDEX)
 				show_local = false;
 		}
@@ -967,11 +966,11 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
 				GetString(name, DEREF_PLAYER(ci->client_playas-1)->name_1);
-				NetworkTextMessage(NETWORK_ACTION_CHAT_TO_PLAYER, GetDrawStringPlayerColor(ci->client_playas-1), name, "%s", msg);
+				NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, NETWORK_ACTION_CHAT_TO_PLAYER, from_index, msg);
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, true, msg);
 					}
 				}
 			}
@@ -983,11 +982,11 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		/* fall-through to next case */
 	case DESTTYPE_BROADCAST:
 		FOR_ALL_CLIENTS(cs) {
-			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, msg);
+			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
 		}
 		ci = NetworkFindClientInfoFromIndex(from_index);
 		if (ci != NULL)
-			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), ci->client_name, "%s", msg);
+			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), false, ci->client_name, "%s", msg);
 		break;
 	}
 }
@@ -1028,7 +1027,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	if (ci != NULL) {
 		// Display change
 		if (NetworkFindName(name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, name);
 			ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_index);
 		}

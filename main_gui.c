@@ -91,8 +91,7 @@ void HandleOnEditText(WindowEvent *e) {
 		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY)) break;
 
 		// Inform the player of this action
-		SetDParam(0, money);
-		GetString(msg, STR_NETWORK_GIVE_MONEY);
+		snprintf(msg, 100, "%d", money);
 
 		if (!_network_server)
 			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg);

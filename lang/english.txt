@@ -1351,9 +1351,27 @@ STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:wrong player-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:kicked by server
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:has joined the game
-STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
-STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} The server closed the session
+STR_NETWORK_GIVE_MONEY						:gave your company some money ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY				:you gave {STRING} some money ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY				:[Team] To {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT				:[Private] To {STRING}:
+STR_NETWORK_CHAT_ALL							:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:has changed his name to
+STR_NETWORK_SERVER_SHUTDOWN				:{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT					:{WHITE} The server is restarting...{}Please wait...
+
+STR_NETWORK_SERVER								:Server
+STR_NETWORK_CLIENT								:Client
+
+STR_NETWORK_CLIENTLIST_NONE							:(none)
+STR_NETWORK_CLIENTLIST_KICK							:Kick
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Give money
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL			:Speak to all
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY	:Speak to company
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT	:Private message
+
 
 STR_NETWORK_SEND						:{BLACK}Send
 

@@ -91,12 +91,11 @@ typedef enum {
 
 // Actions that can be used for NetworkTextMessage
 typedef enum {
-	NETWORK_ACTION_JOIN_LEAVE,
+	NETWORK_ACTION_JOIN,
+	NETWORK_ACTION_LEAVE,
 	NETWORK_ACTION_CHAT,
 	NETWORK_ACTION_CHAT_PLAYER,
 	NETWORK_ACTION_CHAT_CLIENT,
-	NETWORK_ACTION_CHAT_TO_CLIENT,
-	NETWORK_ACTION_CHAT_TO_PLAYER,
 	NETWORK_ACTION_GIVE_MONEY,
 	NETWORK_ACTION_NAME_CHANGE,
 } NetworkAction;
@@ -212,7 +211,7 @@ void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp);
 
 // from network.c
 void NetworkCloseClient(NetworkClientState *cs);
-void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...);
+void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientState *cs);
 uint NetworkCalculateLag(const NetworkClientState *cs);
 byte NetworkGetCurrentLanguageIndex();

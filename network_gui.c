@@ -983,22 +983,22 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 
 	i = 0;
 	if (_network_own_client_index != ci->client_index) {
-		sprintf(_clientlist_action[i],"Private message");
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT);
 		_clientlist_proc[i++] = &ClientList_SpeakToClient;
 	}
 
 	if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
-		sprintf(_clientlist_action[i],"Speak to company");
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY);
 		_clientlist_proc[i++] = &ClientList_SpeakToPlayer;
 	}
-	sprintf(_clientlist_action[i],"Speak to all");
+	GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL);
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;
 
 	if (_network_own_client_index != ci->client_index) {
 		if (_network_playas >= 1 && _network_playas <= MAX_PLAYERS) {
 			// We are no spectator
 			if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
-				sprintf(_clientlist_action[i],"Give money");
+				GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY);
 				_clientlist_proc[i++] = &ClientList_GiveMoney;
 			}
 		}
@@ -1006,7 +1006,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 
 	// A server can kick clients (but not hisself)
 	if (_network_server && _network_own_client_index != ci->client_index) {
-		sprintf(_clientlist_action[i],"Kick");
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK);
 		_clientlist_proc[i++] = &ClientList_Kick;
 
 /*		sprintf(clientlist_action[i],"Ban");
@@ -1014,7 +1014,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	}
 
 	if (i == 0) {
-		sprintf(_clientlist_action[i],"(none)");
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_NONE);
 		_clientlist_proc[i++] = &ClientList_None;
 	}
 
@@ -1116,9 +1116,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 				colour = 0x10;
 
 			if (ci->client_index == NETWORK_SERVER_INDEX) {
-				DoDrawString("Server", 4, y, colour);
+				DrawString(4, y, STR_NETWORK_SERVER, colour);
 			} else
-				DoDrawString("Client", 4, y, colour);
+				DrawString(4, y, STR_NETWORK_CLIENT, colour);
 
 			// Filter out spectators
 			if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS)

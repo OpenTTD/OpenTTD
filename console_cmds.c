@@ -712,7 +712,7 @@ DEF_CONSOLE_CMD(ConSet) {
 				SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
 			else {
 				if (NetworkFindName(argv[2])) {
-					NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, argv[2]);
+					NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, argv[2]);
 					ttd_strlcpy(ci->client_name, argv[2], sizeof(ci->client_name));
 					NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 				}

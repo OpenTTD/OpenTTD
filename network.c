@@ -38,6 +38,7 @@ static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
 /* Some externs / forwards */
 extern void ShowJoinStatusWindow();
 extern void StateGameLoop();
+extern uint GetCurrentCurrencyRate();
 
 // Function that looks up the CI for a given client-index
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
@@ -76,50 +77,88 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkClientSta
 
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
-void CDECL NetworkTextMessage(NetworkAction action, uint16 color, const char *name, const char *str, ...)
+// If 'self_send' is true, this is the client who is sending the message
+void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...)
 {
 	char buf[1024];
 	va_list va;
 	const int duration = 10; // Game days the messages stay visible
+	char message[1024];
+	char temp[1024];
+	StringID TempStr = STR_NULL;
 
 	va_start(va, str);
 	vsprintf(buf, str, va);
 	va_end(va);
 
 	switch (action) {
-		case NETWORK_ACTION_JOIN_LEAVE:
-			IConsolePrintF(color, "*** %s %s", name, buf);
-			AddTextMessage(color, duration, "*** %s %s", name, buf);
+		case NETWORK_ACTION_JOIN:
+			GetString(temp, STR_NETWORK_CLIENT_JOINED);
+			snprintf(message, sizeof(message), "*** %s %s", name, temp);
+			break;
+		case NETWORK_ACTION_LEAVE:
+			GetString(temp, STR_NETWORK_ERR_LEFT);
+			snprintf(message, sizeof(message), "*** %s %s (%s)", name, temp, buf);
 			break;
 		case NETWORK_ACTION_GIVE_MONEY:
-			IConsolePrintF(color, "*** %s %s", name, buf);
-			AddTextMessage(color, duration, "*** %s %s", name, buf);
+			if (self_send) {
+				TempStr = AllocateName(name, 0);
+				SetDParam(0, TempStr);
+				SetDParam(1, atoi(buf));
+				GetString(temp, STR_NETWORK_GAVE_MONEY_AWAY);
+				DeleteName(TempStr);
+				snprintf(message, sizeof(message), "*** %s", temp);
+			} else {
+				SetDParam(0, atoi(buf));
+				GetString(temp, STR_NETWORK_GIVE_MONEY);
+				snprintf(message, sizeof(message), "*** %s %s", name, temp);
+			}
 			break;
 		case NETWORK_ACTION_CHAT_PLAYER:
-			IConsolePrintF(color, "[Team] %s: %s", name, buf);
-			AddTextMessage(color, duration, "[Team] %s: %s", name, buf);
+			if (self_send) {
+				TempStr = AllocateName(name, 0);
+				SetDParam(0, TempStr);
+				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY);
+				DeleteName(TempStr);
+				snprintf(message, sizeof(message), "%s %s", temp, buf);
+			} else {
+				TempStr = AllocateName(name, 0);
+				SetDParam(0, TempStr);
+				GetString(temp, STR_NETWORK_CHAT_COMPANY);
+				DeleteName(TempStr);
+				snprintf(message, sizeof(message), "%s %s", temp, buf);
+			}
 			break;
 		case NETWORK_ACTION_CHAT_CLIENT:
-			IConsolePrintF(color, "[Private] %s: %s", name, buf);
-			AddTextMessage(color, duration, "[Private] %s: %s", name, buf);
-			break;
-		case NETWORK_ACTION_CHAT_TO_CLIENT:
-			IConsolePrintF(color, "[Private] To %s: %s", name, buf);
-			AddTextMessage(color, duration, "[Private] To %s: %s", name, buf);
-			break;
-		case NETWORK_ACTION_CHAT_TO_PLAYER:
-			IConsolePrintF(color, "[Team] To %s: %s", name, buf);
-			AddTextMessage(color, duration, "[Team] To %s: %s", name, buf);
+			if (self_send) {
+				TempStr = AllocateName(name, 0);
+				SetDParam(0, TempStr);
+				GetString(temp, STR_NETWORK_CHAT_TO_CLIENT);
+				DeleteName(TempStr);
+				snprintf(message, sizeof(message), "%s %s", temp, buf);
+			} else {
+				TempStr = AllocateName(name, 0);
+				SetDParam(0, TempStr);
+				GetString(temp, STR_NETWORK_CHAT_CLIENT);
+				DeleteName(TempStr);
+				snprintf(message, sizeof(message), "%s %s", temp, buf);
+			}
 			break;
 		case NETWORK_ACTION_NAME_CHANGE:
-			IConsolePrintF(color, "*** %s changed his name to %s", name, buf);
-			AddTextMessage(color, duration, "*** %s changed his name to %s", name, buf);
+			GetString(temp, STR_NETWORK_NAME_CHANGE);
+			snprintf(message, sizeof(message), "*** %s %s %s", name, temp, buf);
 			break;
 		default:
-			IConsolePrintF(color, "[All] %s: %s", name, buf);
-			AddTextMessage(color, duration, "[All] %s: %s", name, buf);
+			TempStr = AllocateName(name, 0);
+			SetDParam(0, TempStr);
+			GetString(temp, STR_NETWORK_CHAT_ALL);
+			DeleteName(TempStr);
+			snprintf(message, sizeof(message), "%s %s", temp, buf);
 			break;
 	}
+
+	IConsolePrintF(color, message);
+	AddTextMessage(color, duration, message);
 }
 
 // Calculate the frame-lag of a client
@@ -444,16 +483,15 @@ void NetworkCloseClient(NetworkClientState *cs)
 	if (!cs->quited && _network_server && cs->status > STATUS_INACTIVE) {
 		// We did not receive a leave message from this client...
 		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
-		char str1[100], str2[100];
+		char str[100];
 		char client_name[NETWORK_NAME_LENGTH];
 		NetworkClientState *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetString(str1, STR_NETWORK_ERR_LEFT);
-		GetString(str2, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
+		GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, client_name, "%s (%s)", str1, str2);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
 
 		// Inform other clients of this... strange leaving ;)
 		FOR_ALL_CLIENTS(new_cs) {

@@ -332,7 +332,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, ci->client_name, name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
 			// The player changed from client-player..
 			// Do not display that for now
@@ -340,6 +340,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 		ci->client_playas = playas;
 		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+
+		InvalidateWindow(WC_CLIENT_LIST, 0);
 
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -352,6 +354,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
 		ttd_strlcpy(ci->unique_id, unique_id, sizeof(ci->unique_id));
+
+		InvalidateWindow(WC_CLIENT_LIST, 0);
 
 		return NETWORK_RECV_STATUS_OKAY;
 	}
@@ -596,45 +600,60 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	NetworkClientInfo *ci, *ci_to;
 	uint16 index;
 	char name[NETWORK_NAME_LENGTH];
+	bool self_send;
 
 	index = NetworkRecv_uint16(p);
+	self_send = NetworkRecv_uint8(p);
 	NetworkRecv_string(p, msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
-	if (action == NETWORK_ACTION_CHAT_TO_CLIENT) {
-		snprintf(name, sizeof(name), "%s", ci_to->client_name);
-		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-	} else if (action == NETWORK_ACTION_CHAT_TO_PLAYER) {
-		GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
-		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+	/* Do we display the action locally? */
+	if (self_send) {
+		switch (action) {
+			case NETWORK_ACTION_CHAT_CLIENT:
+				/* For speak to client we need the client-name */
+				snprintf(name, sizeof(name), "%s", ci_to->client_name);
+				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+				break;
+			case NETWORK_ACTION_CHAT_PLAYER:
+			case NETWORK_ACTION_GIVE_MONEY:
+				/* For speak to player or give money, we need the player-name */
+				GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
+				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+				break;
+			default:
+				/* This should never happen */
+				NOT_REACHED();
+				break;
+		}
 	} else {
+		/* Display message from somebody else */
 		snprintf(name, sizeof(name), "%s", ci_to->client_name);
 		ci = ci_to;
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), name, "%s", msg);
+		NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), self_send, name, "%s", msg);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 {
 	int errorno;
-	char str1[100], str2[100];
+	char str[100];
 	uint16 index;
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(p);
 	errorno = NetworkRecv_uint8(p);
 
-	GetString(str1, STR_NETWORK_ERR_LEFT);
-	GetString(str2, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
+	GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, ci->client_name, "%s (%s)", str1, str2);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
@@ -647,18 +666,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 {
-	char str1[100], str2[100];
+	char str[100];
 	uint16 index;
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(p);
-	NetworkRecv_string(p, str2, 100);
-
-	GetString(str1, STR_NETWORK_ERR_LEFT);
+	NetworkRecv_string(p, str, 100);
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, ci->client_name, "%s (%s)", str1, str2);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
@@ -674,18 +691,14 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 {
-	char str1[100];
 	uint16 index;
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(p);
 
-	GetString(str1, STR_NETWORK_CLIENT_JOINED);
-
 	ci = NetworkFindClientInfoFromIndex(index);
-	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_JOIN_LEAVE, 1, ci->client_name, "%s", str1);
-	}
+	if (ci != NULL)
+		NetworkTextMessage(NETWORK_ACTION_JOIN, 1, false, ci->client_name, "");
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
