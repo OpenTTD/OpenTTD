@@ -663,8 +663,10 @@ static void ShipController(Vehicle *v)
 
 					v->last_station_visited = v->next_order_param;
 
+					/* Process station in the schedule. Don't do that for buoys (HVOT_BUOY) */
 					st = DEREF_STATION(v->next_order_param);
-					if (!(st->had_vehicle_of_type & HVOT_BUOY)) {
+					if (!(st->had_vehicle_of_type & HVOT_BUOY) 
+							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
 						v->next_order = (v->next_order & (OF_FULL_LOAD|OF_UNLOAD)) | OF_NON_STOP | OT_LOADING;
 						ShipArrivesAt(v, st);
 
@@ -674,7 +676,7 @@ static void ShipController(Vehicle *v)
 							MarkShipDirty(v);
 						}
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
-					} else {
+					} else { /* leave buoys right aways */
 						v->next_order = OT_LEAVESTATION;
 						v->cur_order_index++;
 						InvalidateVehicleOrderWidget(v);
