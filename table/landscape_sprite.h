@@ -132,28 +132,32 @@ static const SpriteID _landscape_spriteindexes_3[] = {
 };
 
 
-/* Slope graphics indexes temperate climate */
+/* Slope graphics indexes temperate climate 
+Skip first 3 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_0[] = {
  0xfffe,  3,
  SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
  0xffff,
 };
 
-/* Slope graphics indexes arctic climate */
+/* Slope graphics indexes arctic climate
+Skip first 79 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_1[] = {
  0xfffe,  79,
  SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
  0xffff,
 };
 
-/* Slope graphics indexes tropical climate */
+/* Slope graphics indexes tropical climate 
+Skip first 155 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_2[] = {
  0xfffe,  155,
  SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
  0xffff,
 };
 
-/* Slope graphics indexes toyland climate */
+/* Slope graphics indexes toyland climate
+Skip first 231 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_3[] = {
  0xfffe,  231,
  SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
