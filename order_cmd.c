@@ -89,6 +89,7 @@ static Order *AllocateOrder(void)
 			uint index = order->index;
 			memset(order, 0, sizeof(Order));
 			order->index = index;
+			order->next = NULL;
 			return order;
 		}
 	}

@@ -192,6 +192,8 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->next = NULL;
 	v->next_hash = 0xffff;
 	v->string_id = 0;
+	v->next_shared = NULL;
+	v->prev_shared = NULL;
 	/* random_bits is used to pick out a random sprite for vehicles
 	    which are technical the same (newgrf stuff).
 	   Because RandomRange() results in desyncs, and because it does
