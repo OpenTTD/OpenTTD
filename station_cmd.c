@@ -2439,11 +2439,11 @@ static void StationHandleBigTick(Station *st)
 					Vehicle *v = GetVehicle(rs->slot[k]);
 
 					if (v->u.road.slot != rs) {
-						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "\
-							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "\
-							"going to 0x%x! "\
-							"cleaning up (Don't panic)", \
-							rs->xy, st->index, st->xy, v->unitnumber, v->tile, \
+						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "
+							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "
+							"going to 0x%x! "
+							"cleaning up (Don't panic)",
+							rs->xy, st->index, st->xy, v->unitnumber, v->tile,
 							v->dest_tile);
 						v->u.road.slot = NULL;
 						v->u.road.slot_age = 0;
@@ -2460,11 +2460,11 @@ static void StationHandleBigTick(Station *st)
 					Vehicle *v = GetVehicle(rs->slot[k]);
 
 					if (v->u.road.slot != rs) {
-						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "\
-							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "\
-							"going to 0x%x! "\
-							"cleaning up (Don't panic)", \
-							rs->xy, st->index, st->xy, v->unitnumber, v->tile, \
+						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "
+							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "
+							"going to 0x%x! "
+							"cleaning up (Don't panic)",
+							rs->xy, st->index, st->xy, v->unitnumber, v->tile,
 							v->dest_tile);
 						v->u.road.slot = NULL;
 						v->u.road.slot_age = 0;
