@@ -475,7 +475,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 int DoDrawString(const byte *string, int x, int y, byte color) {
 	DrawPixelInfo *dpi = _cur_dpi;
 	int base = _stringwidth_base;
-	byte c, *b;
+	byte c;
 	int xo = x, yo = y;
 
 	if (color != 0xFE) {
@@ -487,9 +487,8 @@ int DoDrawString(const byte *string, int x, int y, byte color) {
 
 		if (color != 0xFF) {
 switch_color:;
-			b = GetSpritePtr(674);
-			_string_colorremap[1] = b[color*2+8];
-			_string_colorremap[2] = b[color*2+9];
+			_string_colorremap[1] = StringColormap[color][0];
+			_string_colorremap[2] = StringColormap[color][1];
 			_color_remap_ptr = _string_colorremap;
 		}
 	}

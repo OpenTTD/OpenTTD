@@ -94,3 +94,25 @@ static const ExtraPaletteValues _extra_palette_values = {
 		92,164,184, 92,164,184,116,180,196,148,200,216,180,220,232},
 };
 
+// Color table for colors in lang files (e.g. {BLACK})
+// 1st color: text
+// 2nd color: shadow
+static const byte StringColormap[17][2] = {
+	{ 150, 215 }, // BLUE
+	{  12, 215 }, // SILVER
+	{ 189, 215 }, // GOLD
+	{ 184, 215 }, // RED
+	{ 174, 215 }, // PURPLE
+	{  30, 215 }, // LTBROWN
+	{ 195, 215 }, // ORANGE
+	{ 209, 215 }, // GREEN
+	{  68, 215 }, // YELLOW
+	{  95, 215 }, // DKGREEN
+	{  79, 215 }, // CREAM
+	{ 116, 215 }, // BROWN
+	{  15, 215 }, // WHITE
+	{ 152, 215 }, // LTBLUE
+	{  32, 215 }, // GRAY
+	{ 133, 215 }, // DKBLUE
+	{ 215,   0 }, // BLACK
+};
