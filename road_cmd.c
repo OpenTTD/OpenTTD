@@ -108,7 +108,8 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 		if (_patches.extra_dynamite)
 			return true;
 
-		t = GetTown(_map2[tile]);
+		t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
@@ -123,17 +124,18 @@ uint GetRoadBitsByTile(TileIndex tile)
 	return (byte)(r | (r >> 8));
 }
 
-// cost for removing inner/edge -roads
-static const uint16 _road_remove_cost[2] = {50, 18};
-
 /* Delete a piece of road
  * p1 = piece type
  */
 int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	// cost for removing inner/edge -roads
+	static const uint16 road_remove_cost[2] = {50, 18};
+
 	TileInfo ti;
 	int32 cost;
-	uint tile;
+	TileIndex tile;
+	byte owner;
 	Town *t;
 	/*	true if the roadpiece was always removeable,
 			false if it was a center piece. Affects town ratings drop
@@ -144,9 +146,20 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
-	if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-		t = GetTown(_map2[tile]); // needed for town rating penalty
-	else
+
+	// owner for railraod crossing is stored somewhere else
+	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
+	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+		owner = _map3_lo[tile];
+	} else
+		owner = _map_owner[tile];
+
+	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
+			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+		} else
+			t = GetTown(_map2[tile]);
+	} else
 		t = NULL;
 
 	// allow deleting road under bridge
@@ -176,13 +189,19 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		cost = _price.remove_road * 2;
 
 		if (flags & DC_EXEC) {
+			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			_map5[tile] = ti.map5 & 0xC7;
 			_map_owner[tile] = OWNER_NONE;
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
 	} else if (ti.type == MP_STREET) {
-		if (!(ti.map5 & 0xF0)) {
+		// check if you're allowed to remove the street owned by a town
+		// removal allowance depends on difficulty setting
+		if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE)) return CMD_ERROR;
+
+		// XXX - change cascading ifs to switch when doing rewrite
+		if ((ti.map5 & 0xF0) == 0) { // normal road
 			uint c = p1, t2;
 
 			if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
@@ -200,18 +219,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (t2&1) cost += _price.remove_road;
 			} while(t2>>=1);
 
-			// check if you're allowed to remove the street owned by a town
-			// removal allowance depends on difficulty setting
-			if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
-				if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE))
-					return CMD_ERROR;
-			}
-
 			if (flags & DC_EXEC) {
-				// checks if the owner is town than decrease town rating by 50 until you have
-				// a "Poor" town rating
-				if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 				_map5[tile] ^= c;
 				if ((_map5[tile]&0xF) == 0)
@@ -221,7 +230,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			}
 			return cost;
-		} else if (!(ti.map5 & 0xE0)) {
+		} else if ((ti.map5 & 0xE0) == 0) { // railroad crossing
 			byte c;
 
 			if (!(ti.map5 & 8)) {
@@ -234,6 +243,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			cost = _price.remove_road * 2;
 			if (flags & DC_EXEC) {
+				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+
 				ModifyTile(tile,
 					MP_SETTYPE(MP_RAILWAY) |
 					MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,

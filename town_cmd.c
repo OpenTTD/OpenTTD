@@ -1807,8 +1807,15 @@ Town *ClosestTownFromTile(uint tile, uint threshold)
 	Town *t;
 	uint dist, best = threshold;
 	Town *best_town = NULL;
+	byte owner;
 
-	if ((IsTileType(tile, MP_STREET) && _map_owner[tile] == OWNER_TOWN) || IsTileType(tile, MP_HOUSE))
+	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
+	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) { // rail crossing
+		owner = _map3_lo[tile];
+	} else
+		owner = _map_owner[tile];
+
+	if ((IsTileType(tile, MP_STREET) && owner == OWNER_TOWN) || IsTileType(tile, MP_HOUSE))
 		return GetTown(_map2[tile]);
 
 	FOR_ALL_TOWNS(t) {
