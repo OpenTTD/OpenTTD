@@ -834,11 +834,17 @@ void CheckExternalFiles(void)
 	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
 		printf("Your sample.cat file is corrupted or missing!");
 
-	if (win == 5) {       // always use the Windows palette if all Windows files are present
+	/*
+	 * all Windows files present -> Windows palette
+	 * all DOS files present -> DOS palette
+	 * no Windows files present and any DOS file present -> DOS palette
+	 * otherwise -> Windows palette
+	 */
+	if (win == 5) {
 		_use_dos_palette = false;
-	} else if (dos == 5) { // else use the DOS palette if all DOS files are present
+	} else if (dos == 5 || (win == 0 && dos > 0) {
 		_use_dos_palette = true;
-	} else {							// some files are missing, regardless of palette. Use Windows
+	} else {
 		_use_dos_palette = false;
 	}
 }
