@@ -497,8 +497,8 @@ void ReadTTDPatchFlags(void)
 
 	_new_ttdpatch_format   = false;
 
-	if (_old_map3[0x1FFFA]     == 'T' && _old_map3[0x1FFFA + 1] == 'T' &&
-			 _old_map3[0x1FFFA + 2] == 'D' && _old_map3[0x1FFFA + 3] == 'p')
+	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
+	if (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0)
 		_new_ttdpatch_format = true;
 
 	/* Clean the misused places */
@@ -1068,7 +1068,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	but correct for those oldies
 	Ps: this also means that if you had exact 893288 pounds, you will go back
 	to 10000.. this is a very VERY small chance ;) */
-	if (p->player_money == 0xda168)
+	if (p->player_money == 893288)
 		p->money64 = p->player_money = p->current_loan = 100000;
 
 	_player_colors[num] = p->player_color;
@@ -1173,8 +1173,8 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, type ),
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
 
-	OCL_NULL( 2 ),         // Hash, calculated automaticly
-	OCL_NULL( 2 ),         // Index, calculated automaticly
+	OCL_NULL( 2 ),         // Hash, calculated automatically
+	OCL_NULL( 2 ),         // Index, calculated automatically
 
 	OCL_VAR ( OC_UINT32,   1, &_old_order_ptr ),
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
@@ -1203,7 +1203,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),
 	OCL_SVAR( OC_UINT16, Vehicle, cur_image ),
 
-	OCL_NULL( 8 ),        // Vehicle sprite box, calculated automaticly
+	OCL_NULL( 8 ),        // Vehicle sprite box, calculated automatically
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U8, Vehicle, vehstatus ),
 	OCL_SVAR( OC_UINT16, Vehicle, cur_speed ),
@@ -1407,10 +1407,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 		_map_extra_bits[i] = ReadByte(ls);
 	}
 
-	if (ls->failed)
-		return false;
-
-	return true;
+	return !ls->failed;
 }
 static bool LoadOldMapPart2(LoadgameState *ls, int num)
 {
@@ -1423,10 +1420,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 		_map5[i] = ReadByte(ls);
 	}
 
-	if (ls->failed)
-		return false;
-
-	return true;
+	return !ls->failed;
 }
 
 
@@ -1512,8 +1506,8 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR (  OC_UINT8,    1, &_opt.kilometers ),
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
 
-	OCL_NULL( 2 ),               // Date stuff, calculated automaticly
-	OCL_NULL( 8 ),               // Player colors, calculated automaticly
+	OCL_NULL( 2 ),               // Date stuff, calculated automatically
+	OCL_NULL( 8 ),               // Player colors, calculated automatically
 
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
@@ -1631,9 +1625,11 @@ void GetOldSaveGameName(char *title, const char *file)
 	title[0] = 0;
 	title[48] = 0;
 
-	if (!f) return;
+	if (f == NULL)
+		return;
+
 	if (fread(title, 1, 48, f) != 48)
-		title[0] = 0;
+		title[0] = '\0';
 
 	fclose(f);
 }
