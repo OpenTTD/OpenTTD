@@ -310,7 +310,8 @@ ifdef OSX
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL
 else
 ifdef MORPHOS
-BASECFLAGS += -O3 -funroll-loops -fexpensive-optimizations -mstring -mmultiple
+BASECFLAGS += -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
+BASECFLAGS += -mcpu=604 -fno-inline -mstring -mmultiple
 else
 BASECFLAGS += -O2
 endif
@@ -358,7 +359,8 @@ endif
 endif
 
 ifdef MORPHOS
-CFLAGS += -noixemul -pipe
+# -Wstrict-prototypes generates much noise because of system headers
+CFLAGS += -Wno-strict-prototypes
 endif
 
 ifdef SUNOS
