@@ -180,7 +180,7 @@ static const AiDefaultRailBlock _raildata_ai_12 = {
 static const AiDefaultRailBlock _raildata_ai_13 = {
 	MKHDR(2,3,2,1,0)
 	MKRAIL(0x21, -3,0),
-	MKRAIL(0x90, -3,1),
+	MKRAIL(0x50, -3,1),
 	MKRAIL(0x81, -2,0),
 	MKRAIL(0x1, -2,1),
 	MKRAIL(0x1, -1,0),
@@ -189,7 +189,7 @@ static const AiDefaultRailBlock _raildata_ai_13 = {
 	MKRAIL(0x1, 0,1),
 	MKRAIL(0x1, 1,0),
 	MKRAIL(0x41, 1,1),
-	MKRAIL(0x60, 2,0),
+	MKRAIL(0xA0, 2,0),
 	MKRAIL(0x11, 2,1),
 	MKCLRRAIL(0, -4,0),
 	MKCLRRAIL(2, 3,1),
@@ -218,7 +218,7 @@ static const AiDefaultRailBlock _raildata_ai_14 = {
 static const AiDefaultRailBlock _raildata_ai_15 = {
 	MKHDR(2,3,2,1,2)
 	MKRAIL(0x21, -3,0),
-	MKRAIL(0x90, -3,1),
+	MKRAIL(0x50, -3,1),
 	MKRAIL(0x81, -2,0),
 	MKRAIL(0x1, -2,1),
 	MKRAIL(0x1, -1,0),
@@ -227,7 +227,7 @@ static const AiDefaultRailBlock _raildata_ai_15 = {
 	MKRAIL(0x1, 0,1),
 	MKRAIL(0x1, 1,0),
 	MKRAIL(0x41, 1,1),
-	MKRAIL(0x60, 2,0),
+	MKRAIL(0xA0, 2,0),
 	MKRAIL(0x11, 2,1),
 	MKCLRRAIL(2, 3,1),
 	MKCLRRAIL(0, -4,0),
