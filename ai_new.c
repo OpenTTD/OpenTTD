@@ -234,7 +234,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type) {
 		int count = 0;
 		int j = 0;
 		
-		if (i->town->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
+		if (i->town != NULL && i->town->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
 		
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
@@ -487,8 +487,7 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st) {
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == _current_player) {
 			sched = v->schedule_ptr;
-			if (sched == NULL) continue;
-			while ((ord=*sched++) != 0) {
+			while (sched != NULL && (ord=*sched++) != 0) {
 				if ((ord & OT_MASK) == OT_GOTO_STATION && DEREF_STATION(ord >> 8) == st) {
 					// This vehicle has this city in his list
 					count++;
