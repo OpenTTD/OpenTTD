@@ -124,7 +124,7 @@ static void DedicatedHandleKeyInput()
 #ifdef WIN32
 	char input;
 #endif
-	char input_line[200];
+	static char input_line[200] = "";
 
 #ifdef UNIX
 	if (InputWaiting()) {
