@@ -691,7 +691,6 @@ static const byte _ship_subcoord[4][6][3] = {
 	}
 };
 
-
 static void ShipController(Vehicle *v)
 {
 	GetNewVehiclePosResult gp;
@@ -779,7 +778,7 @@ static void ShipController(Vehicle *v)
 		}
 	} else {
 		// new tile
-		if (TileX(gp.new_tile) == MapMaxX() || TileY(gp.new_tile) == MapMaxY())
+		if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY())
 			goto reverse_direction;
 
 		dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);

@@ -1214,7 +1214,7 @@ static inline void ClearSlot(Vehicle *v, RoadStop *rs)
 	rs->slot[v->u.road.slotindex] = INVALID_SLOT;
 }
 
-static void RoadVehEventHandler(Vehicle *v)
+static void RoadVehController(Vehicle *v)
 {
 	GetNewVehiclePosResult gp;
 	byte new_dir, old_dir;
@@ -1592,7 +1592,7 @@ static void AgeRoadVehCargo(Vehicle *v)
 void RoadVeh_Tick(Vehicle *v)
 {
 	AgeRoadVehCargo(v);
-	RoadVehEventHandler(v);
+	RoadVehController(v);
 }
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)

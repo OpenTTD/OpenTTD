@@ -821,7 +821,7 @@ static byte GetAircraftFlyingAltitude(const Vehicle *v)
 	return maxz;
 }
 
-static bool Aircraft_5(Vehicle *v)
+static bool AircraftController(Vehicle *v)
 {
 	Station *st;
 	const AirportMovingData *amd;
@@ -876,7 +876,7 @@ static bool Aircraft_5(Vehicle *v)
 	if (amd->flag & AMED_HELI_LOWER) {
 		if (UpdateAircraftSpeed(v)) {
 			if (st->airport_tile == 0) {
-				// FIXME - Aircraft_5 -> if station no longer exists, do not land
+				// FIXME - AircraftController -> if station no longer exists, do not land
 				// helicopter will circle until sign disappears, then go to next order
 				// * what to do when it is the only order left, right now it just stays in 1 place
 				v->u.air.state = FLYING;
@@ -988,8 +988,6 @@ static bool Aircraft_5(Vehicle *v)
 
 	if (amd->flag & AMED_LAND) {
 		if (st->airport_tile == 0) {
-			//FIXME -- FIXED - Aircraft_5 -> if station no longer exists, do not land
-			// * what to do when it is the only order left, right now it just stays in 1 place?
 			v->u.air.state = FLYING;
 			AircraftNextAirportPos_and_Order(v);
 			// get aircraft back on running altitude
@@ -1725,7 +1723,7 @@ static void AirportClearBlock(Vehicle *v, const AirportFTAClass *Airport)
 static void AirportGoToNextPosition(Vehicle *v, const AirportFTAClass *Airport)
 {
 	// if aircraft is not in position, wait until it is
-	if (!Aircraft_5(v)) {return;}
+	if (!AircraftController(v)) {return;}
 
 	AirportClearBlock(v, Airport);
 	AirportMove(v, Airport); // move aircraft to next position
@@ -2099,7 +2097,7 @@ void UpdateAirplanesOnNewStation(Station *st)
 					v->u.air.pos = v->u.air.previous_pos = ap->entry_point;
 					v->u.air.state = FLYING;
 					// landing plane needs to be reset to flying height (only if in pause mode upgrade,
-					// in normal mode, plane is reset in Aircraft_5. It doesn't hurt for FLYING
+					// in normal mode, plane is reset in AircraftController. It doesn't hurt for FLYING
 					GetNewVehiclePos(v, &gp);
 					// set new position x,y,z
 					SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
