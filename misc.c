@@ -730,7 +730,7 @@ int FindFirstBit(uint32 value)
 }
 
 
-extern uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, int line)
+uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, int line)
 {
 	uint x = TileX(tile) + (signed char)(add & 0xFF);
 	uint y = TileY(tile) + ((((0x8080 + add)>>8) & 0xFF) - 0x80);
