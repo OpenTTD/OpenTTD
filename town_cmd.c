@@ -39,6 +39,11 @@ static void TownPoolNewBlock(uint start_item)
 MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, 0, 0, NULL };
 
 
+/* This is the base "normal" number of towns on the 8x8 map, when
+ * one town should get grown per tick. The other numbers of towns
+ * are then scaled based on that. */
+#define TOWN_GROWTH_FREQUENCY 23
+
 enum {
 	TOWN_HAS_CHURCH     = 0x02,
 	TOWN_HAS_STADIUM    = 0x04
@@ -427,17 +432,19 @@ static void TownTickHandler(Town *t)
 
 void OnTick_Town(void)
 {
-	uint i;
-	Town *t;
-	int towns;
+	static int counter;
 
 	if (_game_mode == GM_EDITOR)
 		return;
 
-	/* FIXME: This way we scale for larger map, but not for the smaller
-	 * ones. --pasky */
-	for (towns = ScaleByMapSize(1); towns > 0; towns--) {
-		i = _cur_town_ctr;
+	/* Make sure each town's tickhandler invocation frequency is about the
+	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
+	for (counter += GetTownPoolSize();
+	     counter >= TOWN_GROWTH_FREQUENCY;
+	     counter -= TOWN_GROWTH_FREQUENCY) {
+		int i = _cur_town_ctr;
+		Town *t;
+
 		if (++_cur_town_ctr >= GetTownPoolSize())
 			_cur_town_ctr = 0;
 
