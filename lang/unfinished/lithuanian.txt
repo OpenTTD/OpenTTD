@@ -45,7 +45,7 @@ STR_0026_CANDY							:Sweets
 STR_0027_COLA							:Kola
 STR_0028_COTTON_CANDY						:Cukraus vata
 STR_0029_BUBBLES						:Burbulai
-STR_002A_TOFFEE							:Toffee
+STR_002A_TOFFEE							:Karamele
 STR_002B_BATTERIES						:Baterijos
 STR_002C_PLASTIC						:Plastmase
 STR_002D_FIZZY_DRINKS						:Gaivieji gerimai
@@ -56,7 +56,7 @@ STR_0031_MAIL							:Pastas
 STR_0032_OIL							:Nafta
 STR_0033_LIVESTOCK						:Galviju
 STR_0034_GOODS							:Prekes
-STR_0035_GRAIN							:Grain
+STR_0035_GRAIN							:Grudai
 STR_0036_WOOD							:Mediena
 STR_0037_IRON_ORE						:Gelezies ruda
 STR_0038_STEEL							:Plienas
@@ -75,12 +75,12 @@ STR_0044_SUGAR							:Cukrus
 STR_0045_TOY							:Zaislai
 STR_0046_CANDY							:Saldumynai
 STR_0047_COLA							:Kokakola
-STR_0048_COTTON_CANDY						:Candyfloss
-STR_0049_BUBBLE							:Bubble
-STR_004A_TOFFEE							:Toffee
+STR_0048_COTTON_CANDY						:Cukraus vata
+STR_0049_BUBBLE							:Burbulai
+STR_004A_TOFFEE							:Karamele
 STR_004B_BATTERY						:Battery
 STR_004C_PLASTIC						:Plastic
-STR_004D_FIZZY_DRINK						:Fizzy Drink
+STR_004D_FIZZY_DRINK						:Gaivieji gerimai
 STR_004E							:
 STR_004F_PASSENGER						:{COMMA16} keleiviai
 STR_0050_TON_OF_COAL						:{COMMA16} tonu anglies
@@ -88,31 +88,31 @@ STR_0051_BAG_OF_MAIL						:{COMMA16} pasto maisu
 STR_0052_OF_OIL							:{VOLUME} naftos
 STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} galviju vienetas
 STR_0054_CRATE_OF_GOODS						:{COMMA16} prekiu deze
-STR_0055_TON_OF_GRAIN						:{COMMA16} tonne of grain
+STR_0055_TON_OF_GRAIN						:{COMMA16} tonu grudu
 STR_0056_TON_OF_WOOD						:{COMMA16} tonu medienos
-STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonne of iron ore
-STR_0058_TON_OF_STEEL						:{COMMA16} tonne of steel
+STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonu gelezies rudos
+STR_0058_TON_OF_STEEL						:{COMMA16} tonu plieno
 STR_0059_BAG_OF_VALUABLES					:{COMMA16} bag of valuables
-STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonne of copper ore
-STR_005B_TON_OF_MAIZE						:{COMMA16} tonne of maize
-STR_005C_TON_OF_FRUIT						:{COMMA16} tonne of fruit
-STR_005D_BAG_OF_DIAMONDS					:{COMMA16} bag of diamonds
+STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonu vario rudos
+STR_005B_TON_OF_MAIZE						:{COMMA16} tonu kukuruzu
+STR_005C_TON_OF_FRUIT						:{COMMA16} tonu vaisiu
+STR_005D_BAG_OF_DIAMONDS					:{COMMA16} deziu deimantu
 STR_005E_TON_OF_FOOD						:{COMMA16} tonu maisto
 STR_005F_TON_OF_PAPER						:{COMMA16} tonu popieriaus
-STR_0060_BAG_OF_GOLD						:{COMMA16} bag of gold
+STR_0060_BAG_OF_GOLD						:{COMMA16} aukso kapsu
 STR_0061_OF_WATER						:{VOLUME} vandens
-STR_0062_TON_OF_WHEAT						:{COMMA16} tonne of wheat
-STR_0063_OF_RUBBER						:{VOLUME} of rubber
+STR_0062_TON_OF_WHEAT						:{COMMA16} tonu kvieciu
+STR_0063_OF_RUBBER						:{VOLUME} kauciuko
 STR_0064_TON_OF_SUGAR						:{COMMA16} tonu cukraus
-STR_0065_TOY							:{COMMA16} toy
-STR_0066_BAG_OF_CANDY						:{COMMA16} bag of sweets
+STR_0065_TOY							:{COMMA16} zaislu
+STR_0066_BAG_OF_CANDY						:{COMMA16} saldumynu krepseliu
 STR_0067_OF_COLA						:{VOLUME} Coca-Colos
-STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonne of candyfloss
-STR_0069_BUBBLE							:{COMMA16} bubble
-STR_006A_TON_OF_TOFFEE						:{COMMA16} tonne of toffee
-STR_006B_BATTERY						:{COMMA16} battery
-STR_006C_OF_PLASTIC						:{VOLUME} of plastic
-STR_006D_FIZZY_DRINK						:{COMMA16} fizzy drink
+STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonu cukraus vatos
+STR_0069_BUBBLE							:{COMMA16} burbulu
+STR_006A_TON_OF_TOFFEE						:{COMMA16} tonu karameles
+STR_006B_BATTERY						:{COMMA16} bateriju
+STR_006C_OF_PLASTIC						:{VOLUME} plastmases
+STR_006D_FIZZY_DRINK						:{COMMA16} gaiviuju gerimu
 STR_006E							:
 STR_006F_PASSENGERS						:{COMMA16} keleiviu
 STR_0070_TONS_OF_COAL						:{COMMA16} tonu anglies
@@ -120,31 +120,31 @@ STR_0071_BAGS_OF_MAIL						:{COMMA16} pasto maisu
 STR_0072_OF_OIL							:{VOLUME} naftos
 STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} galviju vienetu
 STR_0074_CRATES_OF_GOODS					:{COMMA16} prekiu dezes
-STR_0075_TONS_OF_GRAIN						:{COMMA16} tonnes of grain
+STR_0075_TONS_OF_GRAIN						:{COMMA16} tonu grudu
 STR_0076_TONS_OF_WOOD						:{COMMA16} tonu medienos
-STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonnes of iron ore
-STR_0078_TONS_OF_STEEL						:{COMMA16} tonnes of steel
+STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonu gelezies rudos
+STR_0078_TONS_OF_STEEL						:{COMMA16} tonu plieno
 STR_0079_BAGS_OF_VALUABLES					:{COMMA16} bags of valuables
-STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tonnes of copper ore
-STR_007B_TONS_OF_MAIZE						:{COMMA16} tonnes of maize
+STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tonu vario rudos
+STR_007B_TONS_OF_MAIZE						:{COMMA16} tonu kukuruzu
 STR_007C_TONS_OF_FRUIT						:{COMMA16} tonu vaisiu
-STR_007D_BAGS_OF_DIAMONDS					:{COMMA16} bags of diamonds
-STR_007E_TONS_OF_FOOD						:{COMMA16} tonnes of food
+STR_007D_BAGS_OF_DIAMONDS					:{COMMA16} deimantu deziu
+STR_007E_TONS_OF_FOOD						:{COMMA16} tonu maisto
 STR_007F_TONS_OF_PAPER						:{COMMA16} tonu popieriaus
-STR_0080_BAGS_OF_GOLD						:{COMMA16} bags of gold
+STR_0080_BAGS_OF_GOLD						:{COMMA16} aukso kapsu
 STR_0081_OF_WATER						:{VOLUME} vandens
-STR_0082_TONS_OF_WHEAT						:{COMMA16} tonnes of wheat
-STR_0083_OF_RUBBER						:{VOLUME} of rubber
+STR_0082_TONS_OF_WHEAT						:{COMMA16} tonu kvieciu
+STR_0083_OF_RUBBER						:{VOLUME} kauciuko
 STR_0084_TONS_OF_SUGAR						:{COMMA16} tonu cukraus
-STR_0085_TOYS							:{COMMA16} toys
-STR_0086_BAGS_OF_CANDY						:{COMMA16} bags of sweets
+STR_0085_TOYS							:{COMMA16} zaislu
+STR_0086_BAGS_OF_CANDY						:{COMMA16} krepseliu saldumynu
 STR_0087_OF_COLA						:{VOLUME} Coca-Colos
-STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tonnes of candyfloss
-STR_0089_BUBBLES						:{COMMA16} bubbles
-STR_008A_TONS_OF_TOFFEE						:{COMMA16} tonnes of toffee
-STR_008B_BATTERIES						:{COMMA16} batteries
-STR_008C_OF_PLASTIC						:{VOLUME} of plastic
-STR_008D_FIZZY_DRINKS						:{COMMA16} fizzy drinks
+STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tonu cukraus vatos
+STR_0089_BUBBLES						:{COMMA16} burbulu
+STR_008A_TONS_OF_TOFFEE						:{COMMA16} tonu karameles
+STR_008B_BATTERIES						:{COMMA16} bateriju
+STR_008C_OF_PLASTIC						:{VOLUME} plastmases
+STR_008D_FIZZY_DRINKS						:{COMMA16} gaiviuju gerimu
 STR_008E							:
 STR_008F_PS							:{TINYFONT}PS
 STR_0090_CL							:{TINYFONT}CL
@@ -188,7 +188,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Negalima griauti sios teritorijos....
 STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION						:{BLACK}OpenTTD versija {REV}
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD komanda
-STR_TRANSLATED_BY						:{BLACK}  Vertejas(ai) -
+STR_TRANSLATED_BY						:{BLACK}  Vertejas - Mindaugas Surdokas (L781)
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -203,20 +203,20 @@ STR_00CE_4							:{BLACK}4
 STR_00CF_5							:{BLACK}5
 STR_00D0_NOTHING						:Nothing
 STR_00D1_DARK_BLUE						:Tamsiai melyna
-STR_00D2_PALE_GREEN						:Pale Green
-STR_00D3_PINK							:Pink
+STR_00D2_PALE_GREEN						:Pilksvai zalia
+STR_00D3_PINK							:Rozine
 STR_00D4_YELLOW							:Geltona
 STR_00D5_RED							:Raudona
-STR_00D6_LIGHT_BLUE						:Light Blue
+STR_00D6_LIGHT_BLUE						:Zydra
 STR_00D7_GREEN							:Zalia
 STR_00D8_DARK_GREEN						:Tamsiai zalia
 STR_00D9_BLUE							:Melyna
 STR_00DA_CREAM							:Kremine
-STR_00DB_MAUVE							:Mauve
-STR_00DC_PURPLE							:Purple
-STR_00DD_ORANGE							:Orange
-STR_00DE_BROWN							:Brown
-STR_00DF_GREY							:Grey
+STR_00DB_MAUVE							:Pilksvai melyna
+STR_00DC_PURPLE							:Violetine
+STR_00DD_ORANGE							:Oranzine
+STR_00DE_BROWN							:Ruda
+STR_00DF_GREY							:Pilka
 STR_00E0_WHITE							:Balta
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME				:{WHITE}Per daug transporto priemoniu zaidime
 STR_00E2							:{BLACK}{COMMA16}
@@ -262,19 +262,19 @@ STR_0109_DIAMOND_MINE						:{BLACK}{TINYFONT}Deimantu kasykla
 STR_010A_COPPER_ORE_MINE					:{BLACK}{TINYFONT}Vario rudos kasykla
 STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Vaisiu plantacija
 STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Kauciuko plantacija
-STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Vandens saltinis
+STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Vandens grezinys
 STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Vandentiekio bokstas
 STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Lentpjuve
-STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Candyfloss miskas
+STR_0110_COTTON_CANDY_FOREST					:{BLACK}{TINYFONT}Cukraus vatos krumynai
 STR_0111_CANDY_FACTORY						:{BLACK}{TINYFONT}Saldainiu fabrikas
-STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Battery Farm
-STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Cola Wells
-STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Toy Shop
-STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Toy Factory
-STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastic Fountains
-STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Fizzy Drink Factory
-STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Bubble Generator
-STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Toffee Quarry
+STR_0112_BATTERY_FARM						:{BLACK}{TINYFONT}Bateriju ferma
+STR_0113_COLA_WELLS						:{BLACK}{TINYFONT}Kolos greziniai
+STR_0114_TOY_SHOP						:{BLACK}{TINYFONT}Zaislu parduotuve
+STR_0115_TOY_FACTORY						:{BLACK}{TINYFONT}Zaislu fabrikas
+STR_0116_PLASTIC_FOUNTAINS					:{BLACK}{TINYFONT}Plastmases versmes
+STR_0117_FIZZY_DRINK_FACTORY					:{BLACK}{TINYFONT}Gaiviuju gerimu fabrikas
+STR_0118_BUBBLE_GENERATOR					:{BLACK}{TINYFONT}Burbulu leistuvas
+STR_0119_TOFFEE_QUARRY						:{BLACK}{TINYFONT}Karameles telkinys
 STR_011A_SUGAR_MINE						:{BLACK}{TINYFONT}Cukraus kasykla
 STR_011B_RAILROAD_STATION					:{BLACK}{TINYFONT}Gelezinkelio stotis
 STR_011C_TRUCK_LOADING_BAY					:{BLACK}{TINYFONT}Sunkvezimiu pakrovimo aikstele
@@ -291,7 +291,7 @@ STR_0126_WATER							:{BLACK}{TINYFONT}Vanduo
 STR_0127_NO_OWNER						:{BLACK}{TINYFONT}Nera savininko
 STR_0128_TOWNS							:{BLACK}{TINYFONT}Miestai
 STR_0129_INDUSTRIES						:{BLACK}{TINYFONT}Pramones imones
-STR_012A_DESERT							:{BLACK}{TINYFONT}Desert
+STR_012A_DESERT							:{BLACK}{TINYFONT}Dykuma
 STR_012B_SNOW							:{BLACK}{TINYFONT}Sniegas
 STR_012C_MESSAGE						:{WHITE}Pranesimas
 STR_012D							:{WHITE}{STRING}
@@ -448,8 +448,8 @@ STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Land Area Information
 STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Cost to clear: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR						:{BLACK}Cost to clear: {LTBLUE}{CURRENCY}
 STR_01A6_N_A							:N/A
-STR_01A7_OWNER							:{BLACK}Owner: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY					:{BLACK}Local authority: {LTBLUE}{STRING}
+STR_01A7_OWNER							:{BLACK}Savininkas: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY					:{BLACK}Savivaldybe: {LTBLUE}{STRING}
 STR_01A9_NONE							:None
 STR_01AA_NAME							:{BLACK}Name
 STR_01AB							:{BLACK}{TINYFONT}{STRING}
@@ -489,7 +489,7 @@ STR_01CA_31ST							:31-a
 ############ range for days	ends
 
 STR_01CB							:{TINYFONT}{COMMA16}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Toggle large/medium/small map size
+STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Pakeisti dideli/vidutini/maza zemelapio dydi
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION				:{WHITE}Pasirink Pavyzdi/Demonstracija
 
 ############ range for cargo acecpted starts
@@ -526,8 +526,8 @@ STR_01E8_TRACK_XTITLE						:{BLACK}{TINYFONT}Takelis{SETX 88}Pavadinimas
 STR_01E9_SHUFFLE						:{TINYFONT}Atsitiktinis
 STR_01EA_PROGRAM						:{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION				:{WHITE}Muzikos programos pasirinkimas
-STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Track Index
-STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programme - '{STRING}'
+STR_01EE_TRACK_INDEX						:{TINYFONT}{BLACK}Takelio numeris
+STR_01EF_PROGRAM						:{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR							:{TINYFONT}{BLACK}Isvalyti
 STR_01F1_SAVE							:{TINYFONT}{BLACK}Issaugoti
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC				:{BLACK}Current programme of music tracks
@@ -571,7 +571,7 @@ STR_0215_INDUSTRIALIST						:Fabrikantas
 STR_0216_CAPITALIST						:Kapitalistas
 STR_0217_MAGNATE						:Magnatas
 STR_0218_MOGUL							:Didziausias magnatas
-STR_0219_TYCOON_OF_THE_CENTURY					:Tycoon of the Century
+STR_0219_TYCOON_OF_THE_CENTURY					:Amziaus magnatas
 STR_HIGHSCORE_NAME						:{BIGFONT}{STRING}, {STRING}
 STR_HIGHSCORE_STATS						:{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS					:{BLACK}{BIGFONT}{STRING} achieves '{STRING}' status!
@@ -593,7 +593,7 @@ STR_022A_GENERATE_RANDOM_LAND					:{BLACK}Generuoti atsitiktine sausuma
 STR_022B_RESET_LANDSCAPE					:{BLACK}Perkrauti landsafta
 STR_022C_RESET_LANDSCAPE					:{WHITE}Perkrauti landsafta
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO				:{WHITE}Ar tikrai nori perkrauti landsafta?
-STR_022E_LANDSCAPE_GENERATION					:{BLACK}Landsafto generavikas
+STR_022E_LANDSCAPE_GENERATION					:{BLACK}Landsafto generavimas
 STR_022F_TOWN_GENERATION					:{BLACK}Miestu generavimas
 STR_0230_INDUSTRY_GENERATION					:{BLACK}Pramones generavimas
 STR_0231_ROAD_CONSTRUCTION					:{BLACK}Kelio konstrukcijos
@@ -609,8 +609,8 @@ STR_023A_TOO_MANY_TOWNS						:{WHITE}...per daug miestu
 STR_023B_INCREASE_SIZE_OF_TOWN					:{BLACK}Padidinti miesto dydi
 STR_023C_EXPAND							:{BLACK}Isplesti
 STR_023D_RANDOM_TOWN						:{BLACK}Atsitiktinis miestas
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}Build town in random location
-STR_023F_INDUSTRY_GENERATION					:{WHITE}Industry Generation
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION				:{BLACK}Pastatyti miesta atsitiktineje vietoje
+STR_023F_INDUSTRY_GENERATION					:{WHITE}Pramones generavimas
 STR_0240_COAL_MINE						:{BLACK}Anglies kasykla
 STR_0241_POWER_STATION						:{BLACK}Elektrine
 STR_0242_SAWMILL						:{BLACK}Lentpjuve
@@ -618,65 +618,65 @@ STR_0243_FOREST							:{BLACK}Miskas
 STR_0244_OIL_REFINERY						:{BLACK}Naftos perdirbimo fabrikas
 STR_0245_OIL_RIG						:{BLACK}Naftos bokstas
 STR_0246_FACTORY						:{BLACK}Fabrikas
-STR_0247_STEEL_MILL						:{BLACK}Steel Mill
-STR_0248_FARM							:{BLACK}Farm
-STR_0249_IRON_ORE_MINE						:{BLACK}Iron Ore Mine
-STR_024A_OIL_WELLS						:{BLACK}Oil Wells
-STR_024B_BANK							:{BLACK}Bank
-STR_024C_PAPER_MILL						:{BLACK}Paper Mill
-STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Food Processing Plant
-STR_024E_PRINTING_WORKS						:{BLACK}Printing Works
-STR_024F_GOLD_MINE						:{BLACK}Gold Mine
-STR_0250_LUMBER_MILL						:{BLACK}Lumber Mill
-STR_0251_FRUIT_PLANTATION					:{BLACK}Fruit Plantation
-STR_0252_RUBBER_PLANTATION					:{BLACK}Rubber Plantation
-STR_0253_WATER_SUPPLY						:{BLACK}Water Supply
-STR_0254_WATER_TOWER						:{BLACK}Water Tower
-STR_0255_DIAMOND_MINE						:{BLACK}Diamond Mine
-STR_0256_COPPER_ORE_MINE					:{BLACK}Copper Ore Mine
-STR_0257_COTTON_CANDY_FOREST					:{BLACK}Candyfloss Forest
-STR_0258_CANDY_FACTORY						:{BLACK}Sweet Factory
-STR_0259_BATTERY_FARM						:{BLACK}Battery Farm
-STR_025A_COLA_WELLS						:{BLACK}Cola Wells
-STR_025B_TOY_SHOP						:{BLACK}Toy Shop
-STR_025C_TOY_FACTORY						:{BLACK}Toy Factory
-STR_025D_PLASTIC_FOUNTAINS					:{BLACK}Plastic Fountains
-STR_025E_FIZZY_DRINK_FACTORY					:{BLACK}Fizzy Drink Factory
-STR_025F_BUBBLE_GENERATOR					:{BLACK}Bubble Generator
-STR_0260_TOFFEE_QUARRY						:{BLACK}Toffee Quarry
-STR_0261_SUGAR_MINE						:{BLACK}Sugar Mine
-STR_0262_CONSTRUCT_COAL_MINE					:{BLACK}Construct Coal Mine
-STR_0263_CONSTRUCT_POWER_STATION				:{BLACK}Construct Power Station
-STR_0264_CONSTRUCT_SAWMILL					:{BLACK}Construct Sawmill
-STR_0265_PLANT_FOREST						:{BLACK}Plant Forest
-STR_0266_CONSTRUCT_OIL_REFINERY					:{BLACK}Construct Oil Refinery
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY				:{BLACK}Construct Oil Rig (Can only be built near the edges of the map)
-STR_0268_CONSTRUCT_FACTORY					:{BLACK}Construct Factory
-STR_0269_CONSTRUCT_STEEL_MILL					:{BLACK}Construct Steel Mill
-STR_026A_CONSTRUCT_FARM						:{BLACK}Construct Farm
-STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Construct Iron Ore Mine
-STR_026C_CONSTRUCT_OIL_WELLS					:{BLACK}Construct Oil Wells
-STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Construct Bank (Can only be built in towns with a population greater than 1200)
-STR_026E_CONSTRUCT_PAPER_MILL					:{BLACK}Construct Paper Mill
-STR_026F_CONSTRUCT_FOOD_PROCESSING				:{BLACK}Construct Food Processing Plant
-STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Construct Printing Works
-STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Construct Gold Mine
+STR_0247_STEEL_MILL						:{BLACK}Plieno liejykla
+STR_0248_FARM							:{BLACK}Ferma
+STR_0249_IRON_ORE_MINE						:{BLACK}Gelezies rudos kasykla
+STR_024A_OIL_WELLS						:{BLACK}Naftos greziniai
+STR_024B_BANK							:{BLACK}Bankas
+STR_024C_PAPER_MILL						:{BLACK}Popieriaus fabrikas
+STR_024D_FOOD_PROCESSING_PLANT					:{BLACK}Maisto perdirbimo imone
+STR_024E_PRINTING_WORKS						:{BLACK}Spaustuve
+STR_024F_GOLD_MINE						:{BLACK}Aukso kasykla
+STR_0250_LUMBER_MILL						:{BLACK}Lentpjuve
+STR_0251_FRUIT_PLANTATION					:{BLACK}Vaisiu plantacija
+STR_0252_RUBBER_PLANTATION					:{BLACK}Kauciuko plantacija
+STR_0253_WATER_SUPPLY						:{BLACK}Vandens grezinys
+STR_0254_WATER_TOWER						:{BLACK}Vandentiekio bokstas
+STR_0255_DIAMOND_MINE						:{BLACK}Deimantu kasykla
+STR_0256_COPPER_ORE_MINE					:{BLACK}Vario rudos kasykla
+STR_0257_COTTON_CANDY_FOREST					:{BLACK}Cukraus vatos krumynai
+STR_0258_CANDY_FACTORY						:{BLACK}Saldainiu fabrikas
+STR_0259_BATTERY_FARM						:{BLACK}Bateriju ferma
+STR_025A_COLA_WELLS						:{BLACK}Kolos greziniai
+STR_025B_TOY_SHOP						:{BLACK}Zaislu parduotuve
+STR_025C_TOY_FACTORY						:{BLACK}Zaislu fabrikas
+STR_025D_PLASTIC_FOUNTAINS					:{BLACK}Plastmases versmes
+STR_025E_FIZZY_DRINK_FACTORY					:{BLACK}Gaiviuju gerimu fabrikas
+STR_025F_BUBBLE_GENERATOR					:{BLACK}Burbulu leistuvas
+STR_0260_TOFFEE_QUARRY						:{BLACK}Karameles telkinys
+STR_0261_SUGAR_MINE						:{BLACK}Cukraus kasykla
+STR_0262_CONSTRUCT_COAL_MINE					:{BLACK}Statyti anglies kasykla
+STR_0263_CONSTRUCT_POWER_STATION				:{BLACK}Statyti elektrine
+STR_0264_CONSTRUCT_SAWMILL					:{BLACK}Statyti lentpjuve
+STR_0265_PLANT_FOREST						:{BLACK}Uzsodinti miska
+STR_0266_CONSTRUCT_OIL_REFINERY					:{BLACK}Statyti naftos perdirbimo imone
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY				:{BLACK}Statyti naftos grezini juroje (Tik netoli zemelapio krastu)
+STR_0268_CONSTRUCT_FACTORY					:{BLACK}Statyti fabrika
+STR_0269_CONSTRUCT_STEEL_MILL					:{BLACK}Statyti plieno liejykla
+STR_026A_CONSTRUCT_FARM						:{BLACK}Statyti ferma
+STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Statyti gelezies rudos kasykla
+STR_026C_CONSTRUCT_OIL_WELLS					:{BLACK}Grezti naftos grezinius
+STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Statyti banka (Tik miestuose su bent 1200 gyventoju)
+STR_026E_CONSTRUCT_PAPER_MILL					:{BLACK}Statyti popieriaus fabrika
+STR_026F_CONSTRUCT_FOOD_PROCESSING				:{BLACK}Statyti maisto perdirbimo imone
+STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Statyti spaustuve
+STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Statyti aukso kasykla
 STR_0272_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Statyti banka (statyti galima tiktai miestuose)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO				:{BLACK}Construct Lumber Mill (to clear rainforest and produce Wood)
-STR_0274_PLANT_FRUIT_PLANTATION					:{BLACK}Plant Fruit Plantation
-STR_0275_PLANT_RUBBER_PLANTATION				:{BLACK}Plant Rubber Plantation
-STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Construct Water Supply
-STR_0277_CONSTRUCT_WATER_TOWER_CAN				:{BLACK}Construct Water Tower (Can only be built in towns)
-STR_0278_CONSTRUCT_DIAMOND_MINE					:{BLACK}Construct Diamond Mine
-STR_0279_CONSTRUCT_COPPER_ORE_MINE				:{BLACK}Construct Copper Ore Mine
-STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Plant Candyfloss Forest
-STR_027B_CONSTRUCT_CANDY_FACTORY				:{BLACK}Construct Sweet Factory
-STR_027C_CONSTRUCT_BATTERY_FARM					:{BLACK}Construct Battery Farm
-STR_027D_CONSTRUCT_COLA_WELLS					:{BLACK}Construct Cola Wells
-STR_027E_CONSTRUCT_TOY_SHOP					:{BLACK}Construct Toy Shop
-STR_027F_CONSTRUCT_TOY_FACTORY					:{BLACK}Construct Toy Factory
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS				:{BLACK}Construct Plastic Fountains
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY				:{BLACK}Construct Fizzy Drink Factory
+STR_0274_PLANT_FRUIT_PLANTATION					:{BLACK}Uzsodinti vaisiu plantacija
+STR_0275_PLANT_RUBBER_PLANTATION				:{BLACK}Uzsodinti kauciuko plantacija
+STR_0276_CONSTRUCT_WATER_SUPPLY					:{BLACK}Grezti artezini grezini
+STR_0277_CONSTRUCT_WATER_TOWER_CAN				:{BLACK}Statyti vandentiekio boksta (tik miestuose)
+STR_0278_CONSTRUCT_DIAMOND_MINE					:{BLACK}Statyti deimantu kasykla
+STR_0279_CONSTRUCT_COPPER_ORE_MINE				:{BLACK}Statyti vario rudos kasykla
+STR_027A_PLANT_COTTON_CANDY_FOREST				:{BLACK}Uzveisti cukraus vatos krumynus
+STR_027B_CONSTRUCT_CANDY_FACTORY				:{BLACK}Statyti saldainiu fabrika
+STR_027C_CONSTRUCT_BATTERY_FARM					:{BLACK}Uzsodinti bateriju ferma
+STR_027D_CONSTRUCT_COLA_WELLS					:{BLACK}Statyti kolos grezinius
+STR_027E_CONSTRUCT_TOY_SHOP					:{BLACK}Statyti zaislu parduotuve
+STR_027F_CONSTRUCT_TOY_FACTORY					:{BLACK}Statyti zaislu fabrika
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS				:{BLACK}Statyti plastmases versmes
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY				:{BLACK}Statyti gaiviuju gerimu fabrika
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR				:{BLACK}Construct Bubble Generator
 STR_0283_CONSTRUCT_TOFFEE_QUARRY				:{BLACK}Construct Toffee Quarry
 STR_0284_CONSTRUCT_SUGAR_MINE					:{BLACK}Construct Sugar Mine
@@ -722,8 +722,8 @@ STR_02BA							:{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY						:Town directory
 STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Vehicle design names
 STR_02BD							:{BLACK}{STRING}
-STR_02BE_DEFAULT						:Default
-STR_02BF_CUSTOM							:Custom
+STR_02BE_DEFAULT						:Standartinis
+STR_02BF_CUSTOM							:Tinkintas :)
 STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Save custom names
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Vehicle design names selection
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Save customised vehicle design names
@@ -731,7 +731,7 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Save customised vehicle design names
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS						:Zaidimo nustatymai
 STR_02C4_GAME_OPTIONS						:Zaidimo nustatymai
-STR_02C5_DIFFICULTY_SETTINGS					:????????90-?
+STR_02C5_DIFFICULTY_SETTINGS					:Sunkumo nustatymai
 STR_02C6_DIFFICULTY_SETTINGS					:????????90-?
 STR_02C7_CONFIG_PATCHES						:Nustatymai
 STR_02C8_CONFIG_PATCHES						:Nustatymai
@@ -1064,126 +1064,1002 @@ STR_CONFIG_PATCHES_GUI						:{BLACK}Interfeisas
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstrukcijos
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Masinos
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stoteles
+STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Ekonomika
+STR_CONFIG_PATCHES_AI						:{BLACK}Priesininkai
+
+STR_CONFIG_PATCHES_DISABLED					:isjungta
+STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
+
+STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Keisti reiksmes
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Some or all of the default service interval(s) below are incompatible with the chosen setting! 5-90% and 30-800 days are valid
+
+STR_TEMPERATE_LANDSCAPE						:Normalus klimatas
+STR_SUB_ARCTIC_LANDSCAPE					:Sub-arktinis klimatas
+STR_SUB_TROPICAL_LANDSCAPE					:Sub-tropinis klimatas
+STR_TOYLAND_LANDSCAPE						:'Zaislinis' klimatas
+
+STR_CHEATS							:{WHITE}Sukciavimai
+STR_CHEATS_TIP							:{BLACK}Laukeliai rodo ar jus naudojote si triuka pries tai
+STR_CHEATS_WARNING						:{BLACK}Demesio! Tu bandai isduoti vargsus savo varzovus. Tai bus tavo geda visiems laikams ir niekada neuzmirsta.
+STR_CHEAT_MONEY							:{LTBLUE}Padauginti pinigu {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Zaisti uz zaideja: {ORANGE}{COMMA16}
+STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magiskas buldozeris (pasalina gamyklas ir kt.): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tuneliai gali susikirsti: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Galima statyti pauzes rezime: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Reaktyviniai lektuvai nesuges (dazniausiai) mazuose oro uostuose: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Perjungti klimata: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Pakeisti data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
+
+STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Juda i {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Juda i {WAYPOINT}, {VELOCITY}
+
+STR_GO_TO_WAYPOINT						:Vaziuoti per {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Vaziuoti be sustojimo per {WAYPOINT}
+
+STR_WAYPOINTNAME_CITY						:Kontroles punktas {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:{TOWN} kontroles punktas#{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontroles punktas
+
+STR_WAYPOINT							:{WHITE}Kontroles punktas
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Pasirinkite punkto tipa
+
+STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Redaguoti punkto varda
+
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Neimanoma pakeisti punkto vardo...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Paversti begius i kontroles punkta
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Cia neimanoma pastatyti traukiniu kontroles punkto...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Nepavyko pasalinti sio traukiniu kontroles punkto
+
+STR_BUILD_AUTORAIL_TIP						:{BLACK}Statyti gelezinkelio begius naudojant automatini rezima
+
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...siame scenarijuje nera miestu
+
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Ar tikrai norite sukurti atsitiktini krastovaizdi?
+STR_MANY_RANDOM_TOWNS						:{BLACK}Daug atsitiktiniu miestu
+STR_RANDOM_TOWNS_TIP						:{BLACK}Uzpildyti zemelapi daugybe atsitiktiniu miestu
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Daug atsitiktiniu pramones imoniu
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Uzpildyti zemelapi daugybe atsitiktiniu pramones imoniu
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Neimanoma sukurti pramones imoniu...
+
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Atidaro zemes tvarkymo irankiu juosta, skirta pakelti/nuleisti zemes lygiui, sodinti medzius ir t.t.
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Zemes tvarkymas
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Zemes lygis
 
 
+STR_TREES_RANDOM_TYPE						:{BLACK}Atsitiktiniai medziai
+STR_TREES_RANDOM_TYPE_TIP					:{BLACK}Sodinti atsitiktinius medzius
 
+STR_CANT_BUILD_CANALS						:{WHITE}Neimanoma cia iskasti kanalu...
+STR_BUILD_CANALS_TIP						:{BLACK}Kasti kanalus
+STR_LANDINFO_CANAL						:Kanalas
 
+STR_CANT_BUILD_LOCKS						:{WHITE}Neimanoma cia irengti sliuzu...
+STR_BUILD_LOCKS_TIP						:{BLACK}Irengti sliuzus
+STR_LANDINFO_LOCK						:Sliuzai
 
+STR_BUOY_IS_IN_USE						:{WHITE}...pluduras naudojamas!
 
+STR_LANDINFO_COORDS						:{BLACK}Koordinates: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Neimanoma pasalinti stoties dalies...
+STR_CANT_CONVERT_RAIL						:{WHITE}Neimanoma cia pakeisti begio tipo...
+STR_CONVERT_RAIL_TIP						:{BLACK}Pakeisti ar pagerinti begio tipa
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP				:{BLACK}Nutempkite lokomotyva cia, noredami parduoti visa traukini
 
+STR_DRAG_DROP							:{BLACK}Nutempti
+STR_STATION_DRAG_DROP						:{BLACK}Statyti stotele uzbreziant jos dydi
 
+STR_FAST_FORWARD						:{BLACK}Pagreitinti laiko tekme
+STR_MESSAGE_HISTORY						:{WHITE}Zinuciu istorija
+STR_MESSAGE_HISTORY_TIP						:{BLACK}Paskutiniu zinuciu sarasas
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Atjungti visus
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Ijungti visus
 
+STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Statyti anglies kasykla
+STR_CONSTRUCT_FOREST_TIP					:{BLACK}Sodinti miska
+STR_CONSTRUCT_OIL_RIG_TIP					:{BLACK}Statyti naftos platforma
+STR_CONSTRUCT_FARM_TIP						:{BLACK}Isteigti ferma
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP				:{BLACK}Statyti vario rudos kasykla
+STR_CONSTRUCT_OIL_WELLS_TIP					:{BLACK}Ieskoti naftos
+STR_CONSTRUCT_GOLD_MINE_TIP					:{BLACK}Statyti aukso kasyklas
+STR_CONSTRUCT_DIAMOND_MINE_TIP					:{BLACK}Statyti deimantu kasyklas
+STR_CONSTRUCT_IRON_ORE_MINE_TIP					:{BLACK}Statyti anglies rudos kasykla
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP				:{BLACK}Uzsodinti vaisiu plantacija
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP				:{BLACK}Uzsodinti kauciuko plantacija
+STR_CONSTRUCT_WATER_SUPPLY_TIP					:{BLACK}Statyti vandens siurbline
+STR_CONSTRUCT_COTTON_CANDY_TIP					:{BLACK}Uzsodinti ledinuku miska
+STR_CONSTRUCT_BATTERY_FARM_TIP					:{BLACK}Statyti saules energijos baterijas
+STR_CONSTRUCT_COLA_WELLS_TIP					:{BLACK}grezti kokakolos grezini
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP				:{BLACK}Statyti plastikinius fontanus
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Statyti muilo burbulu generatoriu
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Statyti saldainiu fabrika
+STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Statyti cukraus kasykla
 
+STR_INDUSTRYDIR_CAPTION						:{WHITE}Gamyklos
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportuota)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportuota)
+STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
+STR_INDUSTRY_TOO_CLOSE						:{WHITE}...per arti kitos gamyklos
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Isteigti traukini, kuris rupinsis prioritetiniais kroviniais
+STR_RAIL_REFIT							:{WHITE}{STRING} (Isteigti)
+STR_RAIL_REFIT_VEHICLE						:{BLACK}Isteigti traukini
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Pasirink prioritetini krovinio tipa, kurio rupinsis traukinys
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Isteigti traukini prioritetiniu kroviniu pervezimui
+STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Negalima isteigti traukinio...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Remonto intervalas procentais: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION					:{WHITE}Keisti produkcija
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+TEMP_AI_IN_PROGRESS						:{WHITE}Sveiki atvyke, darbas prasideda! Nenustebk, jei iskils problemu. Jei taip atsitiks - fotografuok ekrano vaizda ir konsultuokis forumuose. Sekmes!
+TEMP_AI_ACTIVATED						:{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER						:{WHITE}Tinkle
+
+STR_NETWORK_PLAYER_NAME						:{BLACK}Zaidejo vardas:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Tai vardas, pagal kuri kiti zaidejai tave pazins
+STR_NETWORK_CONNECTION						:{BLACK}Rysys:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Pasirink zaidima internete ar vietiniame tinkle (LAN)
+
+STR_NETWORK_START_SERVER					:{BLACK}Sukurti serveri
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Sukurti savo serveri
+
+STR_NETWORK_GAME_NAME						:{BLACK}Vardas
+STR_NETWORK_GAME_NAME_TIP					:{BLACK}Zaidimo pavadinimas
+STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Kalba, serverio versija ir kt.
+STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Pasirink is saraso zaidima
+
+STR_NETWORK_FIND_SERVER						:{BLACK}Rasti serveri
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Ieskoti serverio
+STR_NETWORK_ADD_SERVER						:{BLACK}Prideti serveri
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Prideda serveri i sarasa, kuris tikrinamas ieskant zaidimu
+STR_NETWORK_ENTER_IP						:{BLACK}Ivesk adresa (IP)
+
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Zaidejai
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Zaidzia / maksimaliai zaideju
+STR_NETWORK_GAME_INFO						:{SILVER}Zaidimo informacija
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Zaidejai:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Kalba:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Map size:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Serverio versija:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Serverio adresas:  {WHITE}{STRING} : {NUMU16}
+STR_NETWORK_START_DATE						:{SILVER}Pradzios data:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Dabartine data:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Apsaugota slaptazodziu!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVERIS ISJUNGTAS
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVERIS PILNAS
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}VERSIJU NESUTAPIMAS
+
+STR_NETWORK_JOIN_GAME						:{BLACK}Prisijungti prie zaidimo
 
 
+STR_NETWORK_START_GAME_WINDOW					:{WHITE}Pradeti nauja daugiazaidejini zaidima
 
-
-
-
-
-
-
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Zaidimo vardas:
+STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Zaidimo pavadinimas bus rodomas kitiems zaidejams meniu
+STR_NETWORK_SET_PASSWORD					:{BLACK}Nustatyti slaptazodi
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Apsaugokite savo zaidima slaptazodziu, jei nenorite, kad jis butu viesai prieinamas
+STR_NETWORK_SELECT_MAP						:{BLACK}Pasirinkite zemelapi:
+STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Kuriame zemelapyje norite zaisti?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimalus klientu skaicius:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Pasirinkite maksimalu klientu skaiciu. Nebutinai visos jungtys turi buti uzpildytos
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:Vietinis tinklas
+STR_NETWORK_INTERNET						:Internetas
+STR_NETWORK_LAN_INTERNET					:Vietinis tinklas/ Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internetas (reklamuotis metaserveryje)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klientai
+STR_NETWORK_3_CLIENTS						:3 klientai
+STR_NETWORK_4_CLIENTS						:4 klientai
+STR_NETWORK_5_CLIENTS						:5 klientai
+STR_NETWORK_6_CLIENTS						:6 klientai
+STR_NETWORK_7_CLIENTS						:7 klientai
+STR_NETWORK_8_CLIENTS						:8 klientai
+STR_NETWORK_9_CLIENTS						:9 zaidejai
+STR_NETWORK_10_CLIENTS						:10 zaideju
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Kalba:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME						:{BLACK}Pradeti zaidima
+STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
+STR_NETWORK_LOAD_GAME						:{BLACK}Atverti zaidima
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Atstatyti anksciau issaugota zaidima tinkle (isitikink kad prisijungei prie to pacio zaidejo)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Atverti scenariju
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Pradeti zaidima tinkle pagal scenariju
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Bet kokia
+STR_NETWORK_LANG_ENGLISH					:Anglu
+STR_NETWORK_LANG_GERMAN						:Vokieciu
+STR_NETWORK_LANG_FRENCH						:Prancuzu
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Ruosiamasi jungtis:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Sarasas visu kompaniju zaidime. Gali arba prisijungti prie kurios nors, arba sukurti nauja kompanija (jei yra laisvu vietu)
+STR_NETWORK_NEW_COMPANY						:{BLACK}Nauja kompanija
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Sukursi nauja kompanija
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Stebeti zaidima
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Stebesi zaidima kaip ziurovas
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Prisijungti prie kompanijos
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Padesi valdyti sia kompanija
+STR_NETWORK_REFRESH						:{BLACK}Atnaujinti serveri
+STR_NETWORK_REFRESH_TIP						:{BLACK}Atnaujinti serverio informacija
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}KOMPANIJOS INFORMACIJA
 
+STR_NETWORK_COMPANY_NAME					:{SILVER}Kompanijos pavadinimas:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Pradejo zaisti:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Kompanijos verte:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Dabartinis balansas:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Praeitu metu pajamos:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Performance:  {WHITE}{NUMU16}
 
+STR_NETWORK_VEHICLES						:{SILVER}Transporto priemones:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stoteles:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Zaidejai:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Jungiamasi...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Jungiamasi..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autorizuojamasi..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Laukiama..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Siunciamas zemelapis..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Dumenu apdorojimas...
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registruojamasi..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Fetching game info..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Fetching kompanijos informacija...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} client(s) in front of you
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} Kb parsiusta
 
+STR_NETWORK_DISCONNECT						:{BLACK}Atsijungti
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Ivesk teksta kuri nori siusti
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Ivesk pinigu kieki kuri nori duoti
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Serveris apsaugotas. Ivesk slaptazodi
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Kompanija apsaugota. Ivesk slaptazodi
+STR_NETWORK_CLIENT_LIST						:{WHITE}Zaideju sarasas
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nerastas tinklo irenginys arba sukompiliuota be ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Nerado nei vieno zidimo tinkle
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Serveris neatsake i uzklausa
+STR_NETWORK_ERR_DESYNC						:{WHITE} Zaidimo tinkle sinchronizacija nepavyko
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Nutruko rysys
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Negali atverti issaugoto zaidimo
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Could not start the server
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Negali prisijungti
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Baigesi prisijungimo #{NUMU16} laikas
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Protokoli klaida. Prisijungimas baigtas
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Zaidimo versija neatitinka serverio zaidimo versijos
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Blogas slaptazodis
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serveris pilnas
+STR_NETWORK_ERR_SERVER_BANNED					:{WHITE} Tau uzdrausta prisijungti prie sio serverio (BAN)
+STR_NETWORK_ERR_KICKED						:{WHITE} Tu ismestas is zaidimo (KICK)
+STR_NETWORK_ERR_CHEATER						:{WHITE} Sukciavimas neleidziamas tinklo zaidime
 
+STR_NETWORK_ERR_LEFT						:paliko zaidima
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:klaida
+STR_NETWORK_ERR_CLIENT_DESYNC					:sinchronizacijos klaida
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:negali uzkrauti zemelapio
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:prarastas rysys
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokolo klaida
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Ne autorizuota
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:gautas neteisingas paketas
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:bloga versija
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:toks vardas jau naudojamas
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:blogas zaidimo slaptazodis
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:blogas zaidejo ID (DoCommand)
+STR_NETWORK_ERR_CLIENT_KICKED					:ismestas serverio
+STR_NETWORK_ERR_CLIENT_CHEATER					:bande sukciauti
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:prisijunge prie zaidimo
+STR_NETWORK_GIVE_MONEY						:dave tavo kompanijai siek tiek pinigu: ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:tu davei {STRING} siek tiek pinigu: ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Komanda] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Komanda] Kam {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privaciai] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privaciai] Kam {STRING}:
+STR_NETWORK_CHAT_ALL						:[Visiems] {STRING}:
+STR_NETWORK_NAME_CHANGE						:pakeite savo varda i
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serveris uzsidare
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Serveris persikrauna...{}Prasau palaukti...
+
+STR_NETWORK_SERVER						:Serveris
+STR_NETWORK_CLIENT						:Zaidejas
+
+STR_NETWORK_CLIENTLIST_NONE					:(nera)
+STR_NETWORK_CLIENTLIST_KICK					:Ismesti (Kick)
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Duoti pinigu
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Sakyti visiems
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Sakyti kompanijai
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privati zinute
 
 
-
-
+STR_NETWORK_SEND						:{BLACK}Siusti
 
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Zemelapio X-koord. dydis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Zemelapio Y-koord. dydis: {ORANGE}{STRING}
 
 ##id 0x0800
+STR_0800_COST							:{TINYFONT}{RED}Kainuoja: {CURRENCY}
+STR_0801_COST							:{RED}Kainuoja: {CURRENCY}
+STR_0802_INCOME							:{TINYFONT}{GREEN}Pajamos: {CURRENCY}
+STR_0803_INCOME							:{GREEN}Pajamos: {CURRENCY}
+STR_0804_ESTIMATED_COST						:{TINYFONT}{WHITE}Numatoma kaina: {CURRENCY}
+STR_0805_ESTIMATED_COST						:{WHITE}Numatoma kaina: {CURRENCY}
+STR_0806_ESTIMATED_INCOME					:{TINYFONT}{WHITE}Numatomos pajamos: {CURRENCY}
+STR_0807_ESTIMATED_INCOME					:{WHITE}Numatomos pajamos: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE					:{WHITE}Negali pakelti zemiu cia...
+STR_0809_CAN_T_LOWER_LAND_HERE					:{WHITE}Negali nukasti zemiu cia...
+STR_080A_ROCKS							:Akmenys
+STR_080B_ROUGH_LAND						:Nelygi zeme
+STR_080C_BARE_LAND						:Lygi zeme
+STR_080D_GRASS							:Zole
+STR_080E_FIELDS							:Laukai
+STR_080F_SNOW_COVERED_LAND					:Uzpustyta zeme
+STR_0810_DESERT							:Dykuma
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Neteisingas zemiu nuolydis
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION				:{WHITE}Negalima keliu kombinacija
+STR_1002_EXCAVATION_WOULD_DAMAGE				:{WHITE}Kasinejimai sugriaus tuneli
+STR_1003_ALREADY_AT_SEA_LEVEL					:{WHITE}Ir taip juros lygis
+STR_1004_TOO_HIGH						:{WHITE}Per auksta
+STR_1005_NO_SUITABLE_RAILROAD_TRACK				:{WHITE}Netinkamas begis
+STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Traukinys depe
+STR_1007_ALREADY_BUILT						:{WHITE}...jau pastatytas
+STR_1008_MUST_REMOVE_RAILROAD_TRACK				:{WHITE}Pirmiau pasalinkite gelezinkelio begius
+STR_1009_TOO_MANY_DEPOTS					:{WHITE}Per daug depu
+STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Gelezinkelio statyba
+STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Vienbegio gelezinkelio statyba
+STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}MagLev statyba
+STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Pasirinkite gelezinkelio tilto tipa
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Neimanoma cia pastatyti traukiniu depo...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Neimanoma cia pastatyti gelezinkelio stoties...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE				:{WHITE}Neimanoma cia pastatyti sviesoforu...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Neimanoma cia pastatyti begiu...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Neimanoma pasalinti begiu...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Neimanoma pasalinti sviesoforu...
+STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Traukiniu depo orientacija
+STR_1015_RAILROAD_CONSTRUCTION					:Gelezinkelio statyba
+STR_1016_MONORAIL_CONSTRUCTION					:Vienbegio gelezinkelio statyba
+STR_1017_MAGLEV_CONSTRUCTION					:MagLev statyba
+STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Statyti gelezinkelio begius
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Statyti traukiniu depa (traukiniu surinkimui ir aptarnavimui)
+STR_101A_BUILD_RAILROAD_STATION					:{BLACK}Statyti gelezinkelio stoti
+STR_101B_BUILD_RAILROAD_SIGNALS					:{BLACK}Statyti gelezinkelio sviesoforus
+STR_101C_BUILD_RAILROAD_BRIDGE					:{BLACK}Statyti gelezinkelio tilta
+STR_101D_BUILD_RAILROAD_TUNNEL					:{BLACK}Statyti gelezinkelio tuneli
+STR_101E_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Pasalina begius/sviesoforus
+STR_101F_BRIDGE_SELECTION_CLICK					:{BLACK}Tilto statymas - parink kur statyti tilta
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Pasirink gelezinkelio garazo orientacija
+STR_1021_RAILROAD_TRACK						:Genezinkelio begiai
+STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Gelezinkelio begiai su sviesoforu
+STR_1023_RAILROAD_TRAIN_DEPOT					:Traukinio garazas
+STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...sis langelis priklauso kitai kompanijai
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Gelezinkelio begiai su paprastais sviesoforais
+STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Gelezinkelio begiai su pre-sviesoforais
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS				:Gelezinkelio begiai su exit-sviesoforais
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Gelezinkelio begiai su combo-sviesoforais
 
 
 
 ##id 0x1800
+STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Langelio nuolydis blogos krypties
+STR_1801_MUST_REMOVE_ROAD_FIRST					:{WHITE}Pirmiausia pasalink kelia
+STR_1802_ROAD_CONSTRUCTION					:{WHITE}Kelio tiesimas
+STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Pasirink tilto tipa
+STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Asfaltuoti kelio cia negalima...
+STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Sio kelio pasalinti negalima...
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Automobiliu garazo orientacija
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Automomobiliu garazo cia statyti negalima...
+STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Autobusu stoteles cia statyti negalima...
+STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Sunkvezimiu pakrovimo aiksteles cia statyti negalima...
+STR_180A_ROAD_CONSTRUCTION					:Keliu asfaltavimas
+STR_180B_BUILD_ROAD_SECTION					:{BLACK}Asfaltuoti kelia
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT				:{BLACK}Statyti automobiliu garaza (automoiliu pirkimui ir remontui)
+STR_180D_BUILD_BUS_STATION					:{BLACK}Statyti autobusu stotele
+STR_180E_BUILD_TRUCK_LOADING_BAY				:{BLACK}Statyti sunkveziniu pakrovimo aikstele
+STR_180F_BUILD_ROAD_BRIDGE					:{BLACK}Statyti tilta automobiliams
+STR_1810_BUILD_ROAD_TUNNEL					:{BLACK}Statyti tuneli automobiliams
+STR_1811_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Kelio konstrukciju pasalinimas
+STR_1812_BRIDGE_SELECTION_CLICK					:{BLACK}Tilto statymas - uzzymek statomo tilto ribas
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT				:{BLACK}Pasirink automobiliu garazo orientacija
+STR_1814_ROAD							:Kelias
+STR_1815_ROAD_WITH_STREETLIGHTS					:Kelias su zibintais
+STR_1816_TREE_LINED_ROAD					:Trijuostis kelias
+STR_1817_ROAD_VEHICLE_DEPOT					:Automobiliu garazas
+STR_1818_ROAD_RAIL_LEVEL_CROSSING				:Gelezinkelio pervaza
 
 ##id 0x2000
+STR_2000_TOWNS							:{WHITE}Miestai
+STR_TOWN_LABEL_POP						:{WHITE}{STRING} ({COMMA32})
+STR_2001							:{WHITE}{STRING}
+STR_2002							:{TINYFONT}{BLACK}{STRING}
+STR_2003							:{TINYFONT}{WHITE}{STRING}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED				:{WHITE}Pirmiau turi butu nugriautas pastatas
+STR_2005							:{WHITE}{TOWN}
+STR_2006_POPULATION						:{BLACK}Populiacija: {ORANGE}{COMMA32}{BLACK}  Namai: {ORANGE}{COMMA32}
+STR_2007_RENAME_TOWN						:Pervardinti miesta
+STR_2008_CAN_T_RENAME_TOWN					:{WHITE}Negalima pervardinti miesto...
+STR_2009_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} vietine valdzia neleidzia
+STR_200A_TOWN_NAMES_CLICK_ON_NAME				:{BLACK}Miestu pavadinimai - paspausk ant pavavinimo, kad parodyti ekrano centre
+STR_200B_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centruoti vaizda ties miesto vieta
+STR_200C_CHANGE_TOWN_NAME					:{BLACK}Keisti miesto varda
+STR_200D_PASSENGERS_LAST_MONTH_MAX				:{BLACK}Keleiviu skaicius praeita menesi: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX					:{BLACK}Pasto siuntu praejusi menesi: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200F_TALL_OFFICE_BLOCK					:Aukstas biuru pastatas
+STR_2010_OFFICE_BLOCK						:Biuru kompleksas
+STR_2011_SMALL_BLOCK_OF_FLATS					:Nedidelis daugiabutis
+STR_2012_CHURCH							:Baznycia
+STR_2013_LARGE_OFFICE_BLOCK					:Didelis biuru pastatas
+STR_2014_TOWN_HOUSES						:Rotuse
+STR_2015_HOTEL							:Viesbutis
+STR_2016_STATUE							:Statula
+STR_2017_FOUNTAIN						:Fontanas
+STR_2018_PARK							:Parkas
+STR_2019_OFFICE_BLOCK						:Biuru pastatas
+STR_201A_SHOPS_AND_OFFICES					:Parduotuves ir biurai
+STR_201B_MODERN_OFFICE_BUILDING					:Modern biuru pastatas
+STR_201C_WAREHOUSE						:Sandeliai
+STR_201D_OFFICE_BLOCK						:Biuru pastatas
+STR_201E_STADIUM						:Stadionas
+STR_201F_OLD_HOUSES						:Seni namai
+STR_2020_LOCAL_AUTHORITY					:{BLACK}Savivaldybe
+STR_2021_SHOW_INFORMATION_ON_LOCAL				:{BLACK}Rodyti informacija apie savivaldybe
+STR_2022_LOCAL_AUTHORITY					:{WHITE}{TOWN} savivaldybe
+STR_2023_TRANSPORT_COMPANY_RATINGS				:{BLACK}Transporto kompaniju reitingai:
+STR_2024							:{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES						:{WHITE}Subsidijos
+STR_2026_SUBSIDIES_ON_OFFER_FOR					:{BLACK}Dar nepanaudotos subsidijos:-
+STR_2027_FROM_TO						:{ORANGE}{STRING} is {STRING} i {STRING}
+STR_2028_BY							:{YELLOW} (iki {DATE_SHORT})
+STR_2029							:{STRING} {STRING}
+STR_202A_NONE							:{ORANGE}Niekas
+STR_202B_SERVICES_ALREADY_SUBSIDISED				:{BLACK}Jau subsidijuojama:-
+STR_202C_FROM_TO						:{ORANGE}{STRING} is {STATION} i {STATION}{YELLOW} ({STRING}
+STR_202D_UNTIL							:{YELLOW}, iki {DATE_SHORT})
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Subsidiju pasiulymas baigesi:{}{}{STRING} is {STRING} i {STRING} daugiau nebesubsidijuojama.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Subsidiju laikas baigesi:{}{}{STRING} transportavimas is {STATION} i {STATION} daugiau nebesubsidijuojama.
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Subsidiju pasiulymas:{}{}Pirmasis pervezes {STRING} is {STRING} to {STRING} gaus metine vietines valdzios subsidija!
+STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervezimas is {STATION} i {STATION} metams bus 50% daugiau apmokama!
+STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervezimas is {STATION} i {STATION} bus metus apmokamas padidintu 200% tarifu!
+STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING}  pervezimas is {STATION} i {STATION} bus metus apmokamas padidintu 300% tarifu!
+STR_2034_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subsidijos suteiktos {STRING}!{}{}{STRING} pervezimas is {STATION} i {STATION} bus metus apmokamas padidintu 400% tarifu!
+STR_2035_LOCAL_AUTHORITY_REFUSES				:{WHITE}{TOWN} vietine valdzia neleidzia statyti kito oro uosto siame mieste
+STR_2036_COTTAGES						:Vasarnamiai
+STR_2037_HOUSES							:Namai
+STR_2038_FLATS							:Butai
+STR_2039_TALL_OFFICE_BLOCK					:Daugiaauksciu ofisu blokas
+STR_203A_SHOPS_AND_OFFICES					:Parduotuves ir biurai
+STR_203B_SHOPS_AND_OFFICES					:Parduotuves ir biurai
+STR_203C_THEATER						:Teatras
+STR_203D_STADIUM						:Stadionas
+STR_203E_OFFICES						:Biurai
+STR_203F_HOUSES							:Namai
+STR_2040_CINEMA							:Kino teatras
+STR_2041_SHOPPING_MALL						:Parduotuviu rajonas
+STR_2042_DO_IT							:{BLACK}Pirmyn!
+STR_2043_LIST_OF_THINGS_TO_DO_AT				:{BLACK}List of things to do at this town - click on item for more details
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED				:{BLACK}Carry out the highlighted action in the list above
+STR_2045_ACTIONS_AVAILABLE					:{BLACK}Actions available:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN				:Small advertising campaign
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN				:Medium advertising campaign
+STR_2048_LARGE_ADVERTISING_CAMPAIGN				:Didele reklamine kompanija
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION				:Finansuoti keliu rekonstrukcija
+STR_204A_BUILD_STATUE_OF_COMPANY				:Pastatyti kompanijos statula
+STR_204B_FUND_NEW_BUILDINGS					:Finansuoti nauju pastatu statyba
+STR_204C_BUY_EXCLUSIVE_TRANSPORT				:Issipirkti isskirtines teises transportui
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY				:Papirkti vietine valdzia
+STR_204D_INITIATE_A_SMALL_LOCAL					:{WHITE}{STRING}{}{YELLOW} Inicijuos maza reklamine kompanija, kad pritraukti daugiau keleiviu ir kroviniu i tavo kompanijos stoteles.{}  Kainuos: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL				:{WHITE}{STRING}{}{YELLOW} Inicijuos vidutine reklamine kompanija, kad pritraukti daugiau keleiviu ir kroviniu i tavo kompanijos stoteles.{}  Kainuos: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL					:{WHITE}{STRING}{}{YELLOW} Inicijuos didele reklamine kompanija, kad pritraukti daugiau keleiviu ir kroviniu i tavo kompanijos stoteles.{}  Kainuos: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION				:{WHITE}{STRING}{}{YELLOW} Finansuoja miesto keliu rekonstrukcija. Laikinai (iki 6 men.) sutrinka susisiekimas keliais.{}  Kainuos: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR				:{WHITE}{STRING}{}{YELLOW} Statyti statula kompanijos garbei.{} Kainuos: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF				:{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE					:{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC				:{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
+STR_2054_CAN_T_DO_THIS						:{WHITE}Can't do this...
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING			:{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
+STR_2056							:{TINYFONT}{WHITE}{TOWN}
+STR_2057							:{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2058_UNDER_CONSTRUCTION					:{STRING} (under construction)
+STR_2059_IGLOO							:Igloo
+STR_205A_TEPEES							:Tepees
+STR_205B_TEAPOT_HOUSE						:Teapot-House
+STR_205C_PIGGY_BANK						:Parsiuku bankas
 
 ##id 0x2800
+STR_LANDSCAPING							:Landscaping
+STR_2800_PLANT_TREES						:Plant trees
+STR_2801_PLACE_SIGN						:Place sign
+STR_2802_TREES							:{WHITE}Trees
+STR_2803_TREE_ALREADY_HERE					:{WHITE}...tree already here
+STR_2804_SITE_UNSUITABLE					:{WHITE}...site unsuitable
+STR_2805_CAN_T_PLANT_TREE_HERE					:{WHITE}Can't plant tree here...
+STR_2806							:{WHITE}{STRING}
+STR_2807							:{TINYFONT}{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS						:{WHITE}...too many signs
+STR_2809_CAN_T_PLACE_SIGN_HERE					:{WHITE}Can't place sign here...
+STR_280A_SIGN							:Sign
+STR_280B_EDIT_SIGN_TEXT						:{WHITE}Edit sign text
+STR_280C_CAN_T_CHANGE_SIGN_NAME					:{WHITE}Can't change sign name...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT				:{BLACK}Select tree type to plant
+STR_280E_TREES							:Trees
+STR_280F_RAINFOREST						:Rainforest
+STR_2810_CACTUS_PLANTS						:Cactus Plants
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION					:{WHITE}Gelezinkelio stoties pasirinkimas
+STR_3001_AIRPORT_SELECTION					:{WHITE}Oro uosto pasirinkimas
+STR_3002_ORIENTATION						:{BLACK}Orientacia
+STR_3003_NUMBER_OF_TRACKS					:{BLACK}Keliu kiekis
+STR_3004_PLATFORM_LENGTH					:{BLACK}Platformos ilgis
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Per arti kitos gelezinkelio stoties
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Ribojasi su bent viena stotele
+STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Per daug stoteliu/pakrovimo aiksteliu siame mieste
+STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Per daug stoteliu
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Per daug autobusu sustojimu
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Per daug sunkvezimiu stoteliu
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Per arti kitos stoteles
+STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
+STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Pirmiausia turi nugriauti gelezinkelio stoti
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT				:{WHITE}Per arti kito oro uosto
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Pirmiausia turi nugriauti oro uosta
 
+STR_3030_RENAME_STATION_LOADING					:Pervardinti stotele
+STR_3031_CAN_T_RENAME_STATION					:{WHITE}Stoteles pervardinti negalima...
+STR_3032_RATINGS						:{BLACK}Reitingai
+STR_3033_ACCEPTS						:{BLACK}Priima
+STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Vietinis transporto sistemos reitingas:
 
 ############ range for rating starts
+STR_3035_APPALLING						:Baisus
+STR_3036_VERY_POOR						:Labai blogas
+STR_3037_POOR							:Blogas
+STR_3038_MEDIOCRE						:Pusetinas
+STR_3039_GOOD							:Geras
+STR_303A_VERY_GOOD						:Labai geras
+STR_303B_EXCELLENT						:Puikus
+STR_303C_OUTSTANDING						:Nuostabus
 ############ range for rating ends
 
+STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} daugiau nepriima {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} daugiau nepriima {STRING} arba {STRING}
+STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} jau priima {STRING}
+STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} jau priima {STRING} ir {STRING}
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Autobuso stoteles orientacija
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Sunkvezimio pakrovimo aiksteles orientacija
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Per arti kitos autobuso aiksteles
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Per arti kitos sunkvezimiu pakrovimo aiksteles
+STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Pirmiausia turi nugriauti autobusu stotele
+STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Pirmiausia turi nugriauti sunkvezimiu pakrovimo aikstele
+STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Stoteles
+STR_3049_0							:{YELLOW}{STATION} {STRINL 0x30D1}
+STR_304A_NONE							:{YELLOW}- Nieko -
+STR_304B_SITE_UNSUITABLE					:{WHITE}...netinkama vieta
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Per arti kitos prieplaukos
+STR_304D_MUST_DEMOLISH_DOCK_FIRST				:{WHITE}Pirmiausia nugriauk prieplauka
+STR_304E_SELECT_RAILROAD_STATION				:{BLACK}Pasirink gelezinkelio stoties orientacija
+STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Pasirink gelezinkelio stoties keliu skaiciu
+STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Pasirink gelezinkelio stoties ilgi
+STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Pasirink autobusu stoteles orientacija
+STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Pasirink sunkvezimiu pakrovimo aiksteles orientacija
+STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Rodyti stotele ekrano centre
+STR_3054_SHOW_STATION_RATINGS					:{BLACK}Parodyti stoteles reitingus
+STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Pakeisti stoteles pavadinima
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO				:{BLACK}Rodyti priimamu kroviniu sarasa
+STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Paspausk ant stoteles pavadinimo, kad pamatytum ja ekrano centre
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Select size/type of airport
+STR_3059_SMALL							:{BLACK}Mazas
+STR_305A_LARGE							:{BLACK}Vidutinis
+STR_305AA_LARGE							:{BLACK}Tarpmiestinis oro uostas
+STR_305AB_LARGE							:{BLACK}Tarptautinis oro uostas
+STR_305B_SIZE							:{BLACK}Dydis
+STR_305C_0							:{STATION} {STRINL 0x30D1}
+STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
+STR_305E_RAILROAD_STATION					:Gelezinkelio stotis
+STR_305F_AIRCRAFT_HANGAR					:Lektuvo angaras
+STR_3060_AIRPORT						:Oro uostas
+STR_3061_TRUCK_LOADING_AREA					:Sunkveziniu pakrovimo aikstele
+STR_3062_BUS_STATION						:Autobusu stotele
+STR_3063_SHIP_DOCK						:Laivu prieplauka
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Rodyti stoteles aptarnaujama teritorija
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nerodyti stoteles aptarnaujamos teritorijos
+STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Rodyk aptarnaujama teritorija
+STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Monorail Station Select
+STR_3068_DOCK							:{WHITE}Prieplauka
+STR_3069_BUOY							:Pluduras
+STR_306A_BUOY_IN_THE_WAY					:{WHITE}...pluduras pakeliui
+STR_306B_HELIPORT						:{BLACK}Malunsp. aikstele
+STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station too spread out
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...nonuniform stations disabled
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Prieplaukos orientacija
+STR_3801_MUST_BE_BUILT_ON_WATER					:{WHITE}...turi buti statoma ant vandens
+STR_3802_CAN_T_BUILD_SHIP_DEPOT					:{WHITE}Laivo depo statyti cia negalima...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION				:{BLACK}Pasirink laivo depo orientacija
+STR_3804_WATER							:Vanduo
+STR_3805_COAST_OR_RIVERBANK					:Juros ar upes krantas
+STR_3806_SHIP_DEPOT						:Laivo depas
+STR_3807_CAN_T_BUILD_ON_WATER					:{WHITE}...Negalima statyti ant vandens
 
 ##id 0x4000
+STR_4000_SAVE_GAME						:{WHITE}Issaugoti zaidima
+STR_4001_LOAD_GAME						:{WHITE}Atverti zaidima
+STR_4002_SAVE							:{BLACK}Issaugoti
+STR_4003_DELETE							:{BLACK}Trinti
+STR_4004							:{STRING}, {DATE_LONG}
+STR_4005_BYTES_FREE						:{BLACK}{COMMA32} Mb laisva
+STR_4006_UNABLE_TO_READ_DRIVE					:{BLACK}Negali pasiekti disko
+STR_4007_GAME_SAVE_FAILED					:{WHITE}Zaidimo issaugoti nepavyko
+STR_4008_UNABLE_TO_DELETE_FILE					:{WHITE}Failo istrinti nepavyko
+STR_4009_GAME_LOAD_FAILED					:{WHITE}Zaidimo atverti nepavyko
+STR_400A_LIST_OF_DRIVES_DIRECTORIES				:{BLACK}Disku, katalogu ir issaugotu zaidimu sarasas
+STR_400B_CURRENTLY_SELECTED_NAME				:{BLACK}Pasirinktas zaidimas
+STR_400C_DELETE_THE_CURRENTLY_SELECTED				:{BLACK}Istrinti pasirinkta zaidima
+STR_400D_SAVE_THE_CURRENT_GAME_USING				:{BLACK}Issaugoti zaidima pasirinktu vardu
+STR_400E_SELECT_NEW_GAME_TYPE					:{WHITE}Pasirink zaujo zaidimo tipa
+STR_400F_SELECT_SCENARIO_GREEN_PRE				:{BLACK}Pasirinkite scenariju (zalia spalva), nustatyta zaidima (melyna), ar atsitiktini nauja zaidima
+STR_4010_GENERATE_RANDOM_NEW_GAME				:Atsitiktinai generuoti nauja zaidima
 
 ##id 0x4800
+STR_4800_IN_THE_WAY						:{WHITE}{STRING} kelyje
+STR_4801							:{WHITE}{TOWN} {STRING}
+STR_4802_COAL_MINE						:Anglies kasykla
+STR_4803_POWER_STATION						:Elektrine
+STR_4804_SAWMILL						:Lentpjuve
+STR_4805_FOREST							:Miskas
+STR_4806_OIL_REFINERY						:Naftos perdirbimo imone
+STR_4807_OIL_RIG						:Naftos grezinys juroje
+STR_4808_FACTORY						:Gamykla
+STR_4809_PRINTING_WORKS						:Spaustuve
+STR_480A_STEEL_MILL						:Plieno liejykla
+STR_480B_FARM							:Ferma
+STR_480C_COPPER_ORE_MINE					:Vario rudos kasykla
+STR_480D_OIL_WELLS						:Naftos greziniai
+STR_480E_BANK							:Bankas
+STR_480F_FOOD_PROCESSING_PLANT					:Maisto perdirbimo imone
+STR_4810_PAPER_MILL						:Popieriaus fabrikas
+STR_4811_GOLD_MINE						:Aukso kasykla
+STR_4812_BANK							:Bankas
+STR_4813_DIAMOND_MINE						:Deimantu kasykla
+STR_4814_IRON_ORE_MINE						:Gelezies rudos kasykla
+STR_4815_FRUIT_PLANTATION					:Vaisiu plantacija
+STR_4816_RUBBER_PLANTATION					:Kauciuko plantacija
+STR_4817_WATER_SUPPLY						:Vandens saugykla
+STR_4818_WATER_TOWER						:Water Tower
+STR_4819_FACTORY						:Factory
+STR_481A_FARM							:Farm
+STR_481B_LUMBER_MILL						:Lumber Mill
+STR_481C_COTTON_CANDY_FOREST					:Candyfloss Forest
+STR_481D_CANDY_FACTORY						:Sweet Factory
+STR_481E_BATTERY_FARM						:Battery Farm
+STR_481F_COLA_WELLS						:Cola Wells
+STR_4820_TOY_SHOP						:Toy Shop
+STR_4821_TOY_FACTORY						:Toy Factory
+STR_4822_PLASTIC_FOUNTAINS					:Plastic Fountains
+STR_4823_FIZZY_DRINK_FACTORY					:Fizzy Drink Factory
+STR_4824_BUBBLE_GENERATOR					:Bubble Generator
+STR_4825_TOFFEE_QUARRY						:Toffee Quarry
+STR_4826_SUGAR_MINE						:Sugar Mine
 
 ############ range for requires	starts
+STR_4827_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}
+STR_4828_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES						:{BLACK}Requires: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH					:{BLACK}Production last month:
+STR_482B_TRANSPORTED						:{YELLOW}{STRING}{BLACK} ({COMMA16}% transported)
+STR_482C_CENTER_THE_MAIN_VIEW_ON				:{BLACK}Centre the main view on industry location
+STR_482D_NEW_UNDER_CONSTRUCTION					:{BLACK}{BIGFONT}Statomas(-a) naujas(-a) {STRING} prie {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR					:{BLACK}{BIGFONT}Sodinamas(-a) naujas(-a){STRING} prie {TOWN}!
+STR_482F_COST							:{BLACK}Cost: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY				:{WHITE}Neimanoma cia pastatyti sio tipo pramones imones...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED				:{WHITE}...miskas gali buti pasodintas tik zemiau sniego ribos
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE				:{BLACK}{BIGFONT}{TOWN} {STRING} pranesa apie neatideliotina uzdaryma!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO				:{BLACK}{BIGFONT}Tiekimo problemos vercia {TOWN} {STRING} paskelbti apie neatideliotina uzdaryma!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES				:{BLACK}{BIGFONT}Medziu trukumas vercia {TOWN} {STRING} pasklebti apie neatideliotina uzdaryma!
+STR_4835_INCREASES_PRODUCTION					:{BLACK}{BIGFONT}{TOWN} {STRING} didina produkcijos apimtis!
+STR_4836_NEW_COAL_SEAM_FOUND_AT					:{BLACK}{BIGFONT}{TOWN} {STRING} pranesa apie rastus naujus anglies isteklius!{}Produkcija tikimasi dvigubinti!
+STR_4837_NEW_OIL_RESERVES_FOUND					:{BLACK}{BIGFONT}{TOWN} {STRING} pranesa apie rastus naujus anglies isteklius!{}Produkcija tikimasi dvigubinti!
+STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}{TOWN} {STRING} pagerino zemdirbystes metodus ir tikisi padvigubinti produkcija!
+STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}{TOWN} {STRING} produkcija krenta 50%
+STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Vabzdziu anpludzio baime vercia {TOWN} {STRING}!{} mazinti produkcija perpus.
+STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...gali buti tik prie zemelapio krastu
+STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING} produkcija {TOWN} {STRING} dideja {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING} produkcija {TOWN} {STRING} mazeja {COMMA16}%!
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Tunelyje traukinys
+STR_5001_ROAD_VEHICLE_IN_TUNNEL					:{WHITE}Tunelyje transporto priemone
+STR_5002							:
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY				:{WHITE}Trukdo kitas tunelis
+STR_5004							:
+STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Nepavyko iskasti zemes kitame tunelio gale
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Pirmiau reikia pasalinti tuneli
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Pirmiau reikia pasalinti tilta
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Cannot start and end in the same spot
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Po tiltu turi buti lygi zeme arba vanduo
+STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Pradzia ir pabaiga turi buti vienoje linijoje
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Vieta netinkama ivaziavimui i tuneli
+STR_500C							:
+STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL					:Kabantis (plienas)
+STR_500F_GIRDER_STEEL						:Plieno siju
+STR_5010_CANTILEVER_STEEL					:Plieno konstrukciju
+STR_5011_SUSPENSION_CONCRETE					:Kabantis (betonas)
+STR_5012_WOODEN							:Medinis
+STR_5013_CONCRETE						:Betoninis
+STR_5014_TUBULAR_STEEL						:Vamzdinis (plienas)
+STR_BRIDGE_TUBULAR_SILICON					:Vamzdinis (silicio pluostas)
+STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Negalima cia statyti tilto...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Negalima cia statyti tunelio...
+STR_5017_RAILROAD_TUNNEL					:Gelezinkelio tunelis
+STR_5018_ROAD_TUNNEL						:Tunelis
+STR_5019							:
+STR_501A							:
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Plieninis kabantis gelezinkelio tiltas
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Plieno siju gelezinkelio tiltas
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Plieno konstrukciju gelezinkelio tiltas
+STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Betoninis kabantis gelezinkelio tiltas
+STR_501F_WOODEN_RAIL_BRIDGE					:Medinis gelezinkelio tiltas
+STR_5020_CONCRETE_RAIL_BRIDGE					:Betoninis gelezinkelio tiltas
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Plieninis pakabinamas tiltas
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Plieno siju tiltas
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Plieno konstrukciju tiltas
+STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Pakabinamas tiltas su betono atramomis
+STR_5025_WOODEN_ROAD_BRIDGE					:Medinis tiltas
+STR_5026_CONCRETE_ROAD_BRIDGE					:Betoninis tiltas
+STR_5027_TUBULAR_RAIL_BRIDGE					:Vamzdinis gelezinkelio tiltas
+STR_5028_TUBULAR_ROAD_BRIDGE					:Vamzdinis tiltas
+STR_5029_STEEL							:Plienas
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Kelyje objektas
+STR_5801_TRANSMITTER						:Radijo siustuvas
+STR_5802_LIGHTHOUSE						:Svyturys
+STR_5803_COMPANY_HEADQUARTERS					:Kompanijos bustine
+STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...trukdo kompanijos bustine
+STR_5805_COMPANY_OWNED_LAND					:Kompanijos zeme
+STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Neimanoma uzsisakyti sio zemes ploto...
+STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...jis ir taip priklauso jums!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY							:
+STR_SV_UNNAMED							:Bevardis{SKIP}
+STR_SV_TRAIN_NAME						:Traukinys {COMMA16}
+STR_SV_ROADVEH_NAME						:Transporto priemone {COMMA16}
+STR_SV_SHIP_NAME						:Laivas {COMMA16}
+STR_SV_AIRCRAFT_NAME						:Lektuvas {COMMA16}
 
+STR_SV_STNAME							:{STRING}
+STR_SV_STNAME_NORTH						:{STRING} Siaure
+STR_SV_STNAME_SOUTH						:{STRING} Pietus
+STR_SV_STNAME_EAST						:{STRING} Rytai
+STR_SV_STNAME_WEST						:{STRING} Vakarai
+STR_SV_STNAME_CENTRAL						:{STRING} Centrine
+STR_SV_STNAME_TRANSFER						:{STRING} Perdavimas
+STR_SV_STNAME_HALT						:{STRING} Galine
+STR_SV_STNAME_VALLEY						:{STRING} Slenio
+STR_SV_STNAME_HEIGHTS						:{STRING} Aukstumu
+STR_SV_STNAME_WOODS						:{STRING} Misko
+STR_SV_STNAME_LAKESIDE						:{STRING} Ezero
+STR_SV_STNAME_EXCHANGE						:{STRING}
+STR_SV_STNAME_AIRPORT						:{STRING} Oro Uostas
+STR_SV_STNAME_OILFIELD						:{STRING} Naftos Platforma
+STR_SV_STNAME_MINES						:{STRING} Kasyklos
+STR_SV_STNAME_DOCKS						:{STRING} Dokai
+STR_SV_STNAME_BUOY_1						:{STRING} Pluduras 1
+STR_SV_STNAME_BUOY_2						:{STRING} Pluduras 2
+STR_SV_STNAME_BUOY_3						:{STRING} Pluduras 3
+STR_SV_STNAME_BUOY_4						:{STRING} Pluduras 4
+STR_SV_STNAME_BUOY_5						:{STRING} Pluduras 5
+STR_SV_STNAME_BUOY_6						:{STRING} Pluduras 6
+STR_SV_STNAME_BUOY_7						:{STRING} Pluduras 7
+STR_SV_STNAME_BUOY_8						:{STRING} Pluduras 8
+STR_SV_STNAME_BUOY_9						:{STRING} Pluduras 9
+STR_SV_STNAME_ANNEXE						:{STRING} Kreivoji
+STR_SV_STNAME_SIDINGS						:{STRING} Krastine
+STR_SV_STNAME_BRANCH						:{STRING} Atsaka
+STR_SV_STNAME_UPPER						:Aukstutine {STRING}
+STR_SV_STNAME_LOWER						:Zemutine {STRING}
+STR_SV_STNAME_HELIPORT						:{STRING} Sraigtasparniu Aikstele
+STR_SV_STNAME_FOREST						:{STRING} Miskas
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL					:{WHITE}Sunkumo lygis
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Issaugoti
 
 ############ range for difficulty levels starts
+STR_6801_EASY							:{BLACK}Lengvas
+STR_6802_MEDIUM							:{BLACK}Vidutinis
+STR_6803_HARD							:{BLACK}Sunkus
+STR_6804_CUSTOM							:{BLACK}Individualus
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS					:{LTBLUE}Maksimalus priesininku skaicius: {ORANGE}{COMMA16}
+STR_6806_COMPETITOR_START_TIME					:{LTBLUE}Priesininko zaidimo pradzia: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS						:{LTBLUE}Miestu skaicius: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Gamykliu skaicius: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Maksimali paskola: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Pradinis palukanu procentas: {ORANGE}{COMMA16}%
+STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Iskaidos transporto priem. eksploatacijai: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Kaip priesininkai statys konstrukcijas: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Priesininku intelektas: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Transporto priemoniu gedimai: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Subsidiju daugiklis: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION					:{LTBLUE}Konstrukciju kaina: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE						:{LTBLUE}Vietoves tipas: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Juros/ezeru kiekis: {ORANGE}{STRING}
+STR_6813_ECONOMY						:{LTBLUE}Ekonomika: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING					:{LTBLUE}Traukiniu apsisukimas: {ORANGE}{STRING}
+STR_6815_DISASTERS						:{LTBLUE}Nelaimes, katastrofos: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Nieko
+STR_6816_LOW							:Zemas
+STR_6817_NORMAL							:Normalus
+STR_6818_HIGH							:Aukstas
+STR_6819							:{BLACK}<
+STR_681A							:{BLACK}>
+STR_681B_VERY_SLOW						:Labai letas
+STR_681C_SLOW							:Letas
+STR_681D_MEDIUM							:Vidutinis
+STR_681E_FAST							:Greitas
+STR_681F_VERY_FAST						:Labai greitas
+STR_VERY_LOW							:Labai zemas
+STR_6820_LOW							:Zemas
+STR_6821_MEDIUM							:Vidutinis
+STR_6822_HIGH							:Aukstas
+STR_6823_NONE							:Nera
+STR_6824_REDUCED						:Sumazintas
+STR_6825_NORMAL							:Normalus
+STR_6826_X1_5							:x1.5
+STR_6827_X2							:x2
+STR_6828_X3							:x3
+STR_6829_X4							:x4
+STR_682A_VERY_FLAT						:Labai lygus
+STR_682B_FLAT							:Lygus
+STR_682C_HILLY							:Kalvotas
+STR_682D_MOUNTAINOUS						:Kalnuotas
+STR_682E_STEADY							:Pastovi
+STR_682F_FLUCTUATING						:Kintanti
+STR_6830_IMMEDIATE						:Kartu su zaideju
+STR_6831_3_MONTHS_AFTER_PLAYER					:3 menesiai po zaidejo
+STR_6832_6_MONTHS_AFTER_PLAYER					:6 menesiai po zaidejo
+STR_6833_9_MONTHS_AFTER_PLAYER					:9 menesiai po zaidejo
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS				:Trasos pabaigoje, stotelese
+STR_6835_AT_END_OF_LINE_ONLY					:Tiktai trasos pabaigoje
+STR_6836_OFF							:Isjungta
+STR_6837_ON							:Ijungta
+STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Rodyti rezultatu lentele
+STR_6839_PERMISSIVE						:Atlaidus
+STR_683A_TOLERANT						:Tolerantiskas
+STR_683B_HOSTILE						:Priesiskas
 
 ##id 0x7000
+STR_7000							:
+STR_7001							:{WHITE}{STRING} {BLACK}{STRING}
+STR_7002_PLAYER							:(Zaidejas {COMMA16})
+STR_7004_NEW_FACE						:{BLACK}Naujas veidas
+STR_7005_COLOR_SCHEME						:{BLACK}Spalva
+STR_7006_COLOR_SCHEME						:{GOLD}Spalva:
+STR_7007_NEW_COLOR_SCHEME					:{WHITE}Nauja spalva
+STR_7008_COMPANY_NAME						:{BLACK}Kompanijos pavadinimas
+STR_7009_PRESIDENT_NAME						:{BLACK}Direktoriaus vardas
+STR_700A_COMPANY_NAME						:Kompanijos pavadinimas
+STR_700B_PRESIDENT_S_NAME					:Direktoriaus vardas
+STR_700C_CAN_T_CHANGE_COMPANY_NAME				:{WHITE}Kompanijos vardo pakeisti negalima...
+STR_700D_CAN_T_CHANGE_PRESIDENT					:{WHITE}Direktoriaus vardo pakeisti negalima...
+STR_700E_FINANCES						:{WHITE}{STRING} Finansai {BLACK}{STRING}
+STR_700F_EXPENDITURE_INCOME					:{WHITE}Sanaudos/Pajamos
+STR_7010							:{WHITE}{NUMU16}
+STR_7011_CONSTRUCTION						:{GOLD}Konstrukcijos
+STR_7012_NEW_VEHICLES						:{GOLD}Nauja technika
+STR_7013_TRAIN_RUNNING_COSTS					:{GOLD}Traukiniu sanaudos
+STR_7014_ROAD_VEH_RUNNING_COSTS					:{GOLD}Automobiliu sanaudos
+STR_7015_AIRCRAFT_RUNNING_COSTS					:{GOLD}Lektuvu sanaudos
+STR_7016_SHIP_RUNNING_COSTS					:{GOLD}Laivu sanaudos
+STR_7017_PROPERTY_MAINTENANCE					:{GOLD}Nekilnojamo turto sanaudos
+STR_7018_TRAIN_INCOME						:{GOLD}Traukiniu pajamos
+STR_7019_ROAD_VEHICLES_INCOME					:{GOLD}Masinu pajamos
+STR_701A_AIRCRAFT_INCOME					:{GOLD}Lektuvu pajamos
+STR_701B_SHIP_INCOME						:{GOLD}Laivu pajamos
+STR_701C_LOAN_INTEREST						:{GOLD}Paskolos palukanos
+STR_701D_OTHER							:{GOLD}Kita
+STR_701E							:{BLACK}-{CURRENCY64}
+STR_701F							:{BLACK}+{CURRENCY64}
+STR_7020_TOTAL							:{WHITE}Viso:
+STR_7021							:{STRING}{STRING}
+STR_7022_INCOME_GRAPH						:{WHITE}Pajamu diagrama
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
+STR_7024							:{COMMA32}
+STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Operating Profit Graph
+STR_7026_BANK_BALANCE						:{WHITE}Saskaitos balansas
+STR_7027_LOAN							:{WHITE}Paskola
+STR_MAX_LOAN							:{WHITE}Maksimali paskola:  {BLACK}{CURRENCY64}
+STR_7028							:{BLACK}{CURRENCY64}
+STR_7029_BORROW							:{BLACK}Skolintis{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Grazinti{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...skolintis maksimaliai galima {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Daugiau skolintis negalima...
+STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...kreditas grazintas
+STR_702E_REQUIRED						:{WHITE}...{CURRENCY} reikia
+STR_702F_CAN_T_REPAY_LOAN					:{WHITE}Skolos grazinti negalima...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT				:{BLACK}Pasirink nauja veida
+STR_7031_CHANGE_THE_COMPANY_VEHICLE				:{BLACK}Keicia kompanijos transporto priemoniu spalva
+STR_7032_CHANGE_THE_PRESIDENT_S					:{BLACK}Keicia kompanijos direktoriaus varda
+STR_7033_CHANGE_THE_COMPANY_NAME				:{BLACK}Keicia kompanijos pavadinima
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Paspausk ant pasirinktos spalvos
+STR_7035_INCREASE_SIZE_OF_LOAN					:{BLACK}Padidina paskola
+STR_7036_REPAY_PART_OF_LOAN					:{BLACK}Grazina paskolos dali
+STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(Direktorius)
+STR_7038_INAUGURATED						:{GOLD}Eina pareigas nuo: {WHITE}{NUMU16}
+STR_7039_VEHICLES						:{GOLD}Transporto priemones:
+STR_703A_TRAIN							:{WHITE}{COMMA16} traukinys
+STR_703B_TRAINS							:{WHITE}{COMMA16} traukiniai
+STR_703C_ROAD_VEHICLE						:{WHITE}{COMMA16} automobilis
+STR_703D_ROAD_VEHICLES						:{WHITE}{COMMA16} automobiliai
+STR_703E_AIRCRAFT						:{WHITE}{COMMA16} lektuvas
+STR_703F_AIRCRAFT						:{WHITE}{COMMA16} lektuvai
+STR_7040_SHIP							:{WHITE}{COMMA16} laivas
+STR_7041_SHIPS							:{WHITE}{COMMA16} laivai
+STR_7042_NONE							:{WHITE}Neturi
+STR_7043_FACE_SELECTION						:{WHITE}Veido pasirinkimas
+STR_7044_MALE							:{BLACK}Vyras
+STR_7045_FEMALE							:{BLACK}Moteris
+STR_7046_NEW_FACE						:{BLACK}Naujas veidas
+STR_7047_CANCEL_NEW_FACE_SELECTION				:{BLACK}Nutraukia veido pasirinkima
+STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Uzbaigia veido pasirinkima
+STR_7049_SELECT_MALE_FACES					:{BLACK}Pasirink vyriska veida
+STR_704A_SELECT_FEMALE_FACES					:{BLACK}Pasirink moteriska veida
+STR_704B_GENERATE_RANDOM_NEW_FACE				:{BLACK}Generuoja atsitiktinai nauja veida
+STR_704C_KEY							:{BLACK}Spalva
+STR_704D_SHOW_KEY_TO_GRAPHS					:{BLACK}Rodo zaideju spalvas
+STR_704E_KEY_TO_COMPANY_GRAPHS					:{WHITE}Kompaniju spalvos
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY				:{BLACK}Paspausk kad rodyti/paslepti kompanijos grafika
+STR_7050_UNITS_OF_CARGO_DELIVERED				:{WHITE}Prekiu vienetu pervezta
+STR_7051_COMPANY_PERFORMANCE_RATINGS				:{WHITE}Kompanijos pajegumo reitingas (maksimalus=1000)
+STR_7052_COMPANY_VALUES						:{WHITE}Kompanijos verte
+STR_7053_COMPANY_LEAGUE_TABLE					:{WHITE}Kompaniju lentele
+STR_7054							:{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRING}'
+STR_7055							:{YELLOW}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE				:{BLACK}{BIGFONT}Transport company in trouble!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED				:{BLACK}{BIGFONT}{STRING} will be sold off or declared bankrupt unless performance increases soon!
+STR_7058_PRESIDENT						:{BLACK}{STRING}{}(Manager)
+STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}Transport company merger!
 
 ##id 0x8000
 

@@ -2544,8 +2544,31 @@ STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE				:{BLACK}{BIGFONT}Ný bifreið fáanleg!
 STR_9029							:{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 
+STR_902C_NAME_ROAD_VEHICLE					:{WHITE}Nefna bifreið
+STR_902D_CAN_T_NAME_ROAD_VEHICLE				:{WHITE}Get ekki nefnt bifreið...
+STR_902E_NAME_ROAD_VEHICLE					:{BLACK}Nefna bifreið
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
+STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Bílslys!{}{COMMA16} deyja í sprengingu eftir árekstur við lest
+STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Get ekki snúið bifreið við...
+STR_9034_RENAME							:{BLACK}Endurnefna
+STR_9035_RENAME_ROAD_VEHICLE_TYPE				:{BLACK}Endurnefna tegund bifreiðar
+STR_9036_RENAME_ROAD_VEHICLE_TYPE				:{WHITE}Endurnefna tegund bifreiðar
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE				:{WHITE} Get ekki endurnefnat tegund bifreiðar...
+STR_9038_GO_TO_ROADVEH_DEPOT					:Fara í {TOWN} bifreiðaskýli
+STR_SERVICE_AT_ROADVEH_DEPOT					:Skoða í  {TOWN} bifreiðaskýli
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION					:Hafnarframkvæmdir
+STR_9801_DOCK_CONSTRUCTION					:{WHITE}Hafnarframkvæmdir
+STR_9802_CAN_T_BUILD_DOCK_HERE					:{WHITE}Get ekki byggt höfn hér...
+STR_9803_SHIP_DEPOT						:{WHITE}{TOWN} Slippur
+STR_9804_NEW_SHIPS						:{BLACK}Ný skip
+STR_9805_SHIPS							:{WHITE}{STRING} - {COMMA16} Skip
+STR_9806_CAN_T_BUILD_SHIPS					:{WHITE}Get ekki smíðað skip..
+STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST				:{WHITE}Verður að smíða skip í slippnum fyrst
+STR_9808_NEW_SHIPS						:{WHITE}Ný skip
+STR_9809_BUILD_SHIP						:{BLACK}Smíða skip
+STR_980A_COST_SPEED_CAPACITY_RUNNING				:{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}{}{BLACK}Burðargeta: {GOLD}{STRING} {STRING}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Hannað: {GOLD}{NUMU16}{BLACK}   Endingartími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
 
 
 ##id 0xA000
