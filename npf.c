@@ -410,6 +410,8 @@ int32 NPFFindDepot(AyStar* as, AyStarNode *node) {
 
 /* Will find a station identified using the NPFFindStationOrTileData */
 int32 NPFFindStationOrTile(AyStar* as, AyStarNode *node) {
+	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
+	TileIndex tile = node->tile;
 
 	/* See if we checked this before */
 	if (NPFGetFlag(node, NPF_FLAG_TARGET_CHECKED))
@@ -419,8 +421,6 @@ int32 NPFFindStationOrTile(AyStar* as, AyStarNode *node) {
 
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
-	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
-	TileIndex tile = node->tile;
 	if (
 		(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
 		(IsTileType(tile, MP_STATION) && _map2[tile] == fstd->station_index) /* the station */
