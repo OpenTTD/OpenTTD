@@ -86,7 +86,6 @@ StringID GetPlayerNameString(byte player, byte index);
 void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
-void memswap(void *a, void *b, size_t size);
 
 /* ttd.c */
 uint32 Random();

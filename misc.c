@@ -77,13 +77,6 @@ void InitPlayerRandoms()
 		}
 }
 
-void memswap(void *a, void *b, size_t size) {
-	void *c = alloca(size);
-	memcpy(c, a, size);
-	memcpy(a, b, size);
-	memcpy(b, c, size);
-}
-
 void SetDate(uint date)
 {
 	YearMonthDay ymd;
