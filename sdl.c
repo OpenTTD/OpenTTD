@@ -589,7 +589,7 @@ static int SdlVideoMainLoop(void)
 		if (keys[SDLK_TAB])
 #endif
 		{
-			if (!_networking) _fast_forward |= 2;
+			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
 		} else if (_fast_forward & 2) {
 			_fast_forward = 0;
 		}
