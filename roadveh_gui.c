@@ -795,7 +795,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, v->profit_last_year);
 			DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-			if (v->string_id != STR_SV_TRAIN_NAME) {
+			if (v->string_id != STR_SV_ROADVEH_NAME) {
 				SetDParam(0, v->string_id);
 				DrawString(x + 24, y, STR_01AB, 0);
 			}
