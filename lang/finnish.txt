@@ -932,7 +932,7 @@ STR_CANT_SHARE_ORDER_LIST					:{WHITE}Aikataulua ei voi jakaa...
 STR_CANT_COPY_ORDER_LIST					:{WHITE}Aikataulua ei voi kopioida...
 STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Jaetut pysähdykset loppuivat - -
 
-STR_TRAIN_IS_LOST						:{WHITE}Juna {COMMA16} on menetetty.
+STR_TRAIN_IS_LOST						:{WHITE}Juna {COMMA16} on eksynyt.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Junan {COMMA16} tuotto viime vuonna oli {CURRENCY}
 STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}European Monetary Union, EMU!{}{}Euron on tarkoitus olla ainoa tarvittava valuutta jokapäiväisiin liiketapahtumiin maassasi!
 
@@ -994,7 +994,7 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Uusi algoritmi junien tienhaul
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Juna on menetetty, jos edistystä ei tapahdu: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Juna on eksynyt, jos edistystä ei tapahdu: {ORANGE}{STRING} päivään
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Juna menetetään, jos edistystä ei ole tehty: {ORANGE}pois käytöstä
 STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Tarkista ajoneuvojen pysähdykset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:ei
