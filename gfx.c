@@ -1463,7 +1463,7 @@ static void GfxMainBlitter(byte *sprite, int x, int y, int mode)
 	}
 }
 
-
+#if 0
 static void GfxScalePalette(int pal, byte scaling)
 {
 	byte *dst, *src;
@@ -1482,6 +1482,7 @@ static void GfxScalePalette(int pal, byte scaling)
 		src += 3;
 	} while (--count);
 }
+#endif
 
 void DoPaletteAnimations();
 
@@ -1701,6 +1702,7 @@ void DrawMouseCursor()
 	_cursor.dirty = false;
 }
 
+#if defined(_DEBUG)
 static void DbgScreenRect(int left, int top, int right, int bottom)
 {
 	DrawPixelInfo dp,*old;
@@ -1711,6 +1713,7 @@ static void DbgScreenRect(int left, int top, int right, int bottom)
 	GfxFillRect(left, top, right-1, bottom-1, rand() & 255);
 	_cur_dpi = old;
 }
+#endif
 
 extern bool _dbg_screen_rect;
 

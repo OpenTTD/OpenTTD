@@ -333,13 +333,15 @@ LDFLAGS += -static
 endif
 endif
 
-# If building on Cygwin/MingW don't link with Cygwin libs
+# If building on MingW don't link with Cygwin libs
 ifdef WIN32
-ifdef MINGW
 ifdef CYGWIN
+BASECFLAGS += -mwin32
+LDFLAGS += -mwin32
+endif
+ifdef MINGW
 BASECFLAGS += -mno-cygwin
 LDFLAGS += -mno-cygwin
-endif
 endif
 endif
 
