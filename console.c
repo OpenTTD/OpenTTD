@@ -337,14 +337,18 @@ void IConsoleCmdBufferNavigate(signed char direction)
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 
+/**
+ * Handle the printing of text entered into the console or redirected there
+ * by any other means. Text can be redirected to other players in a network game
+ * as well as to a logfile. If the network server is a dedicated server, all activities
+ * are also logged. All lines to print are added to a temporary buffer which can be
+ * used as a history to print them onscreen
+ * @param color_code the colour of the command. Red in case of errors, etc.
+ * @param string the message entered or output on the console (notice, error, etc.)
+ */
 void IConsolePrint(uint16 color_code, const char* string)
 {
-	char* _ex;
-	char* _new;
-	uint16 _exc;
-	uint16 _newc;
-	char* i;
-	int j;
+	char *i;
 
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
@@ -362,21 +366,18 @@ void IConsolePrint(uint16 color_code, const char* string)
 
 	if (!_iconsole_inited) return;
 
-	_newc = color_code;
-	_new = strdup(string);
+	/* move up all the strings in the buffer one place and do the same for colour
+	 * to accomodate for the new command/message */
+	free(_iconsole_buffer[0]);
+	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
+	_iconsole_buffer[ICON_BUFFER] = strdup(string);
 
-	for (i = _new; *i != '\0'; ++i)
-		if (*i < ' ') *i = ' '; /* filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+	// filter out unprintable characters
+	for (i = _iconsole_buffer[ICON_BUFFER]; *i != '\0'; i++)
+		if (!IsValidAsciiChar((byte)*i)) *i = ' ';
 
-	for (j = ICON_BUFFER; j >= 0; --j) {
-		_ex = _iconsole_buffer[j];
-		_exc = _iconsole_cbuffer[j];
-		_iconsole_buffer[j] = _new;
-		_iconsole_cbuffer[j] = _newc;
-		_new = _ex;
-		_newc = _exc;
-	}
-	free(_ex);
+	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
+	_iconsole_cbuffer[ICON_BUFFER] = color_code;
 
 	IConsoleWriteToLogFile(string);
 
