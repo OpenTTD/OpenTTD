@@ -1,9 +1,6 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-/* Pointer to console window */
-VARDEF Window *_iconsole_win;
-
 // ** console parser ** //
 
 typedef enum _iconsole_var_types {

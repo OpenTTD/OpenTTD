@@ -517,6 +517,16 @@ enum {
 	MAX_SCREEN_HEIGHT = 1200,
 };
 
+/* In certain windows you navigate with the arrow keys. Do not scroll the
+ * gameview when here. Bitencoded variable that only allows scrolling if all
+ * elements are zero */
+enum {
+	SCROLL_CON =  0,
+	SCROLL_EDIT = 1,
+	SCROLL_SAVE = 2,
+};
+VARDEF byte _no_scroll;
+
 #include "functions.h"
 #include "variables.h"
 

@@ -64,7 +64,7 @@ void PlaceProc_LevelLand(uint tile);
 void ShowTerraformToolbar(void);
 
 /* misc_gui.c */
-VARDEF Window *_editbox_win; // pointer to querystringwindow to prevent scrolling when focussed
+
 void PlaceLandBlockInfo(void);
 void ShowAboutWindow(void);
 void ShowBuildTreesToolbar(void);

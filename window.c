@@ -669,7 +669,6 @@ Window *FindWindowFromPt(int x, int y)
 	return NULL;
 }
 
-
 void InitWindowSystem(void)
 {
 	IConsoleClose();
@@ -677,6 +676,7 @@ void InitWindowSystem(void)
 	_last_window = _windows;
 	memset(_viewports, 0, sizeof(_viewports));
 	_active_viewports = 0;
+	_no_scroll = 0;
 }
 
 static void DecreaseWindowCounters(void)

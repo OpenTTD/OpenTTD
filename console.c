@@ -24,6 +24,7 @@
 #define ICON_MAX_ALIAS_LINES 40
 
 // ** main console ** //
+static Window *_iconsole_win; // Pointer to console window
 static bool _iconsole_inited;
 static char* _iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
@@ -290,16 +291,13 @@ void IConsoleSwitch(void)
 			_iconsole_win->height = _screen.height / 3;
 			_iconsole_win->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;
+			SETBIT(_no_scroll, SCROLL_CON);
 			break;
-		case ICONSOLE_OPENED:
+		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
 			_iconsole_win = NULL;
 			_iconsole_mode = ICONSOLE_CLOSED;
-			break;
-		case ICONSOLE_FULL:
-			DeleteWindowById(WC_CONSOLE, 0);
-			_iconsole_win = NULL;
-			_iconsole_mode = ICONSOLE_CLOSED;
+			CLRBIT(_no_scroll, SCROLL_CON);
 			break;
 	}
 

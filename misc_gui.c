@@ -804,7 +804,7 @@ bool InsertTextBufferChar(Textbuf *tb, byte key)
 {
 	const byte charwidth = GetCharacterWidth(key);
 	if (tb->length < tb->maxlength && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
-		memmove(tb->buf + tb->caretpos + 1, tb->buf + tb->caretpos, tb->length - tb->caretpos);
+		memmove(tb->buf + tb->caretpos + 1, tb->buf + tb->caretpos, (tb->length - tb->caretpos) + 1);
 		tb->buf[tb->caretpos] = key;
 		tb->length++;
 		tb->width += charwidth;
@@ -995,7 +995,6 @@ press_ok:;
 
 	case WE_CREATE:
 		closed = false;
-		_editbox_win = w;
 		break;
 
 	case WE_DESTROY:
@@ -1009,7 +1008,7 @@ press_ok:;
 			}
 		}
 		_query_string_active = false;
-		_editbox_win = NULL;
+		CLRBIT(_no_scroll, SCROLL_EDIT);
 		break;
 	}
 }
@@ -1046,6 +1045,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	w = AllocateWindowDesc(&_query_string_desc);
+	SETBIT(_no_scroll, SCROLL_EDIT);
 
 	GetString(_edit_str_buf, str);
 	_edit_str_buf[realmaxlen] = '\0';
@@ -1303,8 +1303,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			FiosDelete(WP(w,querystr_d).text.buf);
 			SetWindowDirty(w);
 			BuildFileList();
-			if (_saveload_mode == SLD_SAVE_GAME)
+			if (_saveload_mode == SLD_SAVE_GAME) {
 				GenerateFileName(); /* Reset file name to current date */
+				UpdateTextBufferSize(&WP(w, querystr_d).text);
+			}
 		} else if (HASBIT(w->click_state, 11)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf);
@@ -1319,6 +1321,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		_query_string_active = false;
 		FiosFreeSavegameList();
+		CLRBIT(_no_scroll, SCROLL_SAVE);
 		break;
 	case WE_RESIZE: {
 		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
@@ -1387,6 +1390,16 @@ void ShowSaveLoadDialog(int mode)
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	_saveload_mode = mode;
+	SETBIT(_no_scroll, SCROLL_SAVE);
+
+	switch (mode) {
+	case SLD_SAVE_GAME:
+		GenerateFileName();
+		break;
+	case SLD_SAVE_SCENARIO:
+		strcpy(_edit_str_buf, "UNNAMED");
+		break;
+	}
 
 	w = AllocateWindowDesc(_saveload_dialogs[mode]);
 	w->vscroll.cap = 24;
@@ -1399,11 +1412,6 @@ void ShowSaveLoadDialog(int mode)
 	WP(w,querystr_d).text.maxwidth = 240;
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
-
-	if (mode == SLD_SAVE_GAME) {
-		GenerateFileName();
-	} else if (mode == SLD_SAVE_SCENARIO)
-		strcpy(_edit_str_buf, "UNNAMED");
 
 	// pause is only used in single-player, non-editor mode, non-menu mode. It
 	// will be unpaused in the WE_DESTROY event handler.

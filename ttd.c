@@ -1036,7 +1036,43 @@ static void DoAutosave(void)
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
 
-extern void HandleKeyScrolling(void);
+static void ScrollMainViewport(int x, int y)
+{
+	if (_game_mode != GM_MENU) {
+		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+		assert(w);
+
+		WP(w,vp_d).scrollpos_x += x << w->viewport->zoom;
+		WP(w,vp_d).scrollpos_y += y << w->viewport->zoom;
+	}
+}
+
+static const int8 scrollamt[16][2] = {
+	{ 0, 0},
+	{-2, 0}, // 1:left
+	{ 0,-2}, // 2:up
+	{-2,-1}, // 3:left + up
+	{ 2, 0}, // 4:right
+	{ 0, 0}, // 5:left + right
+	{ 2,-1}, // 6:right + up
+	{ 0,-2}, // 7:left + right + up = up
+	{ 0 ,2}, // 8:down
+	{-2 ,1}, // 9:down+left
+	{ 0, 0}, // 10:impossible
+	{-2, 0}, // 11:left + up + down = left
+	{ 2, 1}, // 12:down+right
+	{ 0, 2}, // 13:left + right + down = down
+	{ 0,-2}, // 14:left + right + up = up
+	{ 0, 0}, // 15:impossible
+};
+
+static void HandleKeyScrolling(void)
+{
+	if (_dirkeys && !_no_scroll) {
+		int factor = _shift_pressed ? 50 : 10;
+		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
+	}
+}
 
 void GameLoop(void)
 {
