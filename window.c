@@ -701,6 +701,7 @@ bool HandleWindowDragging()
 	// Otherwise find the window...
 	for (w = _windows; w != _last_window; w++) {
 		if (w->flags4 & WF_DRAGGING) {
+			const Widget *t = &w->widget[1]; // the title bar ... ugh
 			const Window *v;
 			int x;
 			int y;
@@ -796,8 +797,33 @@ bool HandleWindowDragging()
 
 			// Make sure the window doesn't leave the screen
 			// 13 is the height of the title bar
-			nx = clamp(nx, 13 - w->width, _screen.width - 13);
+			nx = clamp(nx, 13 - t->right, _screen.width - 13 - t->left);
 			ny = clamp(ny, 0, _screen.height - 13);
+
+			// Make sure the title bar isn't hidden by behind the main tool bar
+			v = FindWindowById(WC_MAIN_TOOLBAR, 0);
+			if (v != NULL) {
+				int v_bottom = v->top + v->height;
+				int v_right = v->left + v->width;
+				if (ny + t->top >= v->top && ny + t->top < v_bottom) {
+					if (v->left < 13 && nx + t->left < v->left) {
+						ny = v_bottom;
+					} else if (v_right > _screen.width - 13 &&
+							nx + t->right > v_right) {
+						ny = v_bottom;
+					} else {
+						if (nx + t->left > v->left - 13 &&
+								nx + t->right < v_right + 13) {
+							if (w->top >= v_bottom)
+								ny = v_bottom;
+							else if (w->left < nx)
+								nx = v->left - 13 - t->left;
+							else
+								nx = v_right + 13 - t->right;
+						}
+					}
+				}
+			}
 
 			if (w->viewport != NULL) {
 				w->viewport->left += nx - w->left;
