@@ -403,7 +403,7 @@ int CheckOrders(Vehicle *v)
 			problem_type = 2;
 		}
 
-		if (n_st < 2) problem_type = 0;
+		if ( (n_st < 2) && (problem_type == -1) ) problem_type = 0;
 
 		SET_DPARAM16(0, v->unitnumber);
 
