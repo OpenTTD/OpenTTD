@@ -1410,7 +1410,7 @@ void DeleteTown(Town *t)
 				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			}
 		}
-	} while (++tile != TILES_X * TILES_Y);
+	} while (++tile != MapSize());
 
 	t->xy = 0;
 	DeleteName(t->townnametype);

@@ -113,7 +113,7 @@ static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
 	uint y2 = y1 + h - 1;
 	uint t;
 
-	for(i=0; i!=TILES_X*TILES_Y; i++) {
+	for (i = 0; i != MapSize(); i++) {
 		if (IS_TILETYPE(i, MP_STATION) && _map2[i] == station_index) {
 			t = GET_TILE_X(i);
 			if (t < x1) x1 = t;

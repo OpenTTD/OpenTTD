@@ -740,7 +740,7 @@ extern uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, i
 	int x = GET_TILE_X(tile) + (signed char)(add & 0xFF);
 	int y = GET_TILE_Y(tile) + ((((0x8080 + add)>>8) & 0xFF) - 0x80);
 
-	if (x < 0 || y < 0 || x >= TILES_X || y >= TILES_Y) {
+	if (x < 0 || y < 0 || x >= MapSizeX() || y >= MapSizeY()) {
 		char buf[512];
 
 		sprintf(buf, "TILE_ADD(%s) when adding 0x%.4X and %d failed", exp, tile, add);

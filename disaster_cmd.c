@@ -178,7 +178,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 					0);
 			}
 		}
-		if (v->y_pos >= (TILES_Y+9) * 16 - 1)
+		if (v->y_pos >= (MapSizeY() + 9) * 16 - 1)
 			DeleteDisasterVeh(v);
 		return;
 	}
@@ -325,7 +325,7 @@ static void DestructIndustry(Industry *i)
 	uint tile;
 	byte index = i - _industries;
 
-	for(tile=0; tile != TILES_X*TILES_Y; tile++) {
+	for(tile=0; tile != MapSize(); tile++) {
 		if (IS_TILETYPE(tile, MP_INDUSTRY) &&	_map2[tile] == index) {
 			_map_owner[tile] = 0;
 			MarkTileDirtyByTile(tile);
@@ -388,7 +388,7 @@ static void DisasterTick_2(Vehicle *v)
 		x = v->x_pos - 15*16;
 		y = v->y_pos;
 
-		if ( (uint)x > (TILES_X-1) * 16-1)
+		if ( (uint)x > MapMaxX() * 16-1)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
@@ -416,7 +416,7 @@ static void DisasterTick_3(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > TILES_X * 16 + 9*16 - 1) {
+	if (gp.x > MapSizeX() * 16 + 9*16 - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
@@ -459,7 +459,7 @@ static void DisasterTick_3(Vehicle *v)
 		x = v->x_pos - 15*16;
 		y = v->y_pos;
 
-		if ( (uint)x > (TILES_X-1) * 16-1)
+		if ( (uint)x > MapMaxX() * 16-1)
 			return;
 
 		tile = TILE_FROM_XY(x,y);
@@ -594,7 +594,7 @@ static void DisasterTick_4b(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > TILES_X * 16 + 9*16 - 1) {
+	if (gp.x > MapSizeX() * 16 + 9*16 - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
@@ -737,7 +737,7 @@ static void Disaster1_Init()
 	x = (GET_TILE_X(Random())) * 16 + 8;
 
 	InitializeDisasterVehicle(v, x, 0, 135, 3, 2);
-	v->dest_tile = TILE_XY(TILES_X/2,TILES_Y/2);
+	v->dest_tile = TILE_XY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	// Allocate shadow too?
@@ -772,7 +772,7 @@ static void Disaster2_Init()
 	if (v == NULL)
 		return;
 
-	x = (TILES_X+9) * 16 - 1;
+	x = (MapSizeX() + 9) * 16 - 1;
 	y = GET_TILE_Y(found->xy)*16 + 37;
 
 	InitializeDisasterVehicle(v,x,y, 135,1,4);
@@ -837,9 +837,9 @@ static void Disaster4_Init()
 
 	x = (GET_TILE_X(Random())) * 16 + 8;
 
-	y = (TILES_X-1)*16-1;
+	y = MapMaxX() * 16 - 1;
 	InitializeDisasterVehicle(v, x, y, 135, 7, 9);
-	v->dest_tile = TILE_XY(TILES_X/2,TILES_Y/2);
+	v->dest_tile = TILE_XY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	// Allocate shadow too?
@@ -867,7 +867,7 @@ static void Disaster5_Init()
 
 	y = 8;
 	dir = 3;
-	if (r & 0x80000000) { y = (TILES_X-1) * 16 - 8 - 1; dir = 7; }
+	if (r & 0x80000000) { y = MapMaxX() * 16 - 8 - 1; dir = 7; }
 	InitializeDisasterVehicle(v, x, y, 0, dir,13);
 	v->age = 0;
 }
@@ -888,7 +888,7 @@ static void Disaster6_Init()
 
 	y = 8;
 	dir = 3;
-	if (r & 0x80000000) { y = (TILES_X-1) * 16 - 8 - 1;	dir = 7; }
+	if (r & 0x80000000) { y = MapMaxX() * 16 - 8 - 1; dir = 7; }
 	InitializeDisasterVehicle(v, x, y, 0, dir,14);
 	v->age = 0;
 }

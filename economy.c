@@ -349,7 +349,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 		uint tile = 0;
 		do {
 			ChangeTileOwner(tile, old_player, new_player);
-		} while (++tile != TILES_X * TILES_Y);
+		} while (++tile != MapSize());
 	}
 
 	// Change color of existing windows

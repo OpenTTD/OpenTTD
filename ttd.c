@@ -1082,7 +1082,7 @@ void GameLoop()
 			ShowScreenshotResult(MakeScreenshot());
 			break;
 		case 2: // make large screenshot
-			ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * 32, 0, MapMaxX() * 64, TILES_Y * 32, 0));
+			ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * 32, 0, MapMaxX() * 64, MapSizeY() * 32, 0));
 			break;
 		}
 	}
@@ -1150,7 +1150,7 @@ void ConvertTownOwner()
 {
 	uint tile;
 
-	for(tile=0; tile!=TILES_X * TILES_Y; tile++) {
+	for (tile = 0; tile != MapSize(); tile++) {
 		if (IS_TILETYPE(tile, MP_STREET)) {
 			if ((_map5[tile] & 0xF0) == 0x10 && _map3_lo[tile] & 0x80)
 				_map3_lo[tile] = OWNER_TOWN;

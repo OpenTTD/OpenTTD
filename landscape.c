@@ -51,7 +51,7 @@ uint GetTileSlope(uint tile, int *h)
 		return 0;
 	}
 
-	assert(tile < TILES_X * TILES_Y && GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
+	assert(tile < MapSize() && GET_TILE_X(tile) != MapMaxX() && GET_TILE_Y(tile) != MapMaxY());
 
 	min = a = _map_type_and_height[tile] & 0xF;
 	b = _map_type_and_height[tile+TILE_XY(1,0)] & 0xF;
@@ -463,21 +463,21 @@ void RunTileLoop()
 	tile = _cur_tileloop_tile;
 
 	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
-	count = (TILES_X/TILELOOP_SIZE) * (TILES_Y/TILELOOP_SIZE);
+	count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
 	do {
 		_tile_type_procs[GET_TILETYPE(tile)]->tile_loop_proc(tile);
 
-		if ( GET_TILE_X(tile) < TILES_X - TILELOOP_SIZE) {
+		if ( GET_TILE_X(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; /* no overflow */
 		} else {
-			tile = TILE_MASK(tile - TILELOOP_SIZE * (TILES_X/TILELOOP_SIZE-1) + TILE_XY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
+			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE-1) + TILE_XY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
 		}
 	} while (--count);
 	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
 
 	tile += 9;
 	if (tile & TILELOOP_CHKMASK)
-		tile = (tile + TILES_X) & TILELOOP_ASSERTMASK;
+		tile = (tile + MapSizeX()) & TILELOOP_ASSERTMASK;
 	_cur_tileloop_tile = tile;
 }
 
@@ -493,8 +493,8 @@ void InitializeLandscape()
 	memset(_map_extra_bits, 0, map_size / 4);
 	memset(_map_type_and_height, MP_CLEAR << 4, map_size);
 
-	for(i=0; i!=TILES_Y-1; i++)
-		memset(_map_type_and_height + i*TILES_X, 0, TILES_X-1);
+	for (i = 0; i != MapMaxY(); i++)
+		memset(_map_type_and_height + i * MapSizeX(), 0,  MapSizeX() - 1);
 
 	memset(_map5, 3, map_size);
 }
@@ -643,7 +643,7 @@ static void CreateDesertOrRainForest()
 			}
 			mt = _map_type_and_height[TILE_MASK(tile + i)];
 		} while ((mt & 0xC) == 0 && (mt >> 4) != MP_WATER);
-	} while (++tile != TILES_X*TILES_Y);
+	} while (++tile != MapSize());
 
 	for(i=0; i!=256; i++)
 		RunTileLoop();
@@ -657,7 +657,7 @@ static void CreateDesertOrRainForest()
 				break;
 			}
 		} while ( !IS_TILETYPE(TILE_MASK(tile+i), MP_CLEAR) || (_map5[TILE_MASK(tile + i)]&0x1C) != 0x14);
-	} while (++tile != TILES_X*TILES_Y);
+	} while (++tile != MapSize());
 }
 
 void GenerateLandscape()
@@ -760,5 +760,5 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 
 bool IsValidTile(uint tile)
 {
-	return (tile < TILES_X * MapMaxY() && GET_TILE_X(tile) != MapMaxX());
+	return (tile < MapSizeX() * MapMaxY() && GET_TILE_X(tile) != MapMaxX());
 }

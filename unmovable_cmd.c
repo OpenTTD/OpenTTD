@@ -262,7 +262,7 @@ void GenerateUnmovables()
 	j = 40; // limit of 40 radio towers per world.
 	do {
 		r = Random();
-		tile = r % (TILES_X*TILES_Y);
+		tile = r % MapSize();
 //		TILE_MASK seems to be not working correctly. Radio masts accumulate in one area.
 //		tile = TILE_MASK(r);
 		if (IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {

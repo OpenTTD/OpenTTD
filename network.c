@@ -936,8 +936,8 @@ static void NetworkInitGameInfo(void)
 	_network_game_info.spectators_on = 0;
 	_network_game_info.game_date = _date;
 	_network_game_info.start_date = ConvertIntDate(_patches.starting_date);
-	_network_game_info.map_width = TILES_X;
-	_network_game_info.map_height = TILES_Y;
+	_network_game_info.map_width = MapSizeX();
+	_network_game_info.map_height = MapSizeY();
 	_network_game_info.map_set = _opt.landscape;
 
 	if (_network_game_info.server_password[0] == '\0') {

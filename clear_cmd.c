@@ -86,7 +86,7 @@ static int TerraformProc(TerraformerState *ts, uint tile, int mode)
 	int r;
 	int32 ret;
 
-	assert(tile < TILES_X * TILES_Y);
+	assert(tile < MapSize());
 
 	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
 		return r;
@@ -135,7 +135,7 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 	TerraformerHeightMod *mod;
 	int count;
 
-	assert(tile < TILES_X * TILES_Y);
+	assert(tile < MapSize());
 
 	if (height < 0) {
 		_error_message = STR_1003_ALREADY_AT_SEA_LEVEL;

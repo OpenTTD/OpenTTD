@@ -579,8 +579,8 @@ void TileLoop_Water(uint tile)
 		{TILE_XY(0,-1), TILE_XY(0,0), TILE_XY(1,0), TILE_XY(0,-1), TILE_XY(1,-1)},
 	};
 
-	if ( IS_INT_INSIDE(GET_TILE_X(tile),1,TILES_X-3+1) &&
-	     IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) {
+	if (IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1) &&
+			IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) {
 		for(i=0; i!=4; i++)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 	}
@@ -589,16 +589,16 @@ void TileLoop_Water(uint tile)
 	_current_player = OWNER_NONE;
 
 	// edges
-	if ( GET_TILE_X(tile)==0 && IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) //NE
+	if (GET_TILE_X(tile) == 0 && IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
 
-	if ( GET_TILE_X(tile)==(TILES_X-2) && IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) //SW
+	if (GET_TILE_X(tile) == (MapSizeX() - 2) && IS_INT_INSIDE(GET_TILE_Y(tile), 1, MapSizeY() - 3 + 1)) //SW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
 
-	if ( GET_TILE_Y(tile)==0 && IS_INT_INSIDE(GET_TILE_X(tile),1,TILES_X-3+1)) //NW
+	if (GET_TILE_Y(tile) == 0 && IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1)) //NW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
 
-	if ( GET_TILE_Y(tile)==(TILES_Y-2) && IS_INT_INSIDE(GET_TILE_X(tile),1,TILES_X-3+1)) //SE
+	if (GET_TILE_Y(tile) == (MapSizeY() - 2) && IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1)) //SE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
 
 }

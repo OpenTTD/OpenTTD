@@ -1376,7 +1376,8 @@ void MarkTileDirty(int x, int y)
 {
 	int z = 0;
 	Point pt;
-	if (IS_INT_INSIDE(x, 0, TILES_X*16) && IS_INT_INSIDE(y, 0, TILES_Y*16))
+	if (IS_INT_INSIDE(x, 0, MapSizeX() * 16) &&
+			IS_INT_INSIDE(y, 0, MapSizeY() * 16))
 		z = GetTileZ(TILE_FROM_XY(x,y));
 	pt = RemapCoords(x, y, z);
 
