@@ -30,15 +30,15 @@ static const byte _track_depot_layout_table_3[] = {
 
 static const byte _track_checkpoint_table_0[] = {
 	TILE_SEQ_BEGIN(0x83F4)
-	TILE_SEQ_LINE(0x8431,  0,  0,  16,  5)
-	TILE_SEQ_LINE(0x8430,  0, 11,  16,  5)
+	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+18,  0,  0,  16,  5)
+	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+19,  0, 11,  16,  5)
 	TILE_SEQ_END()
 };
 
 static const byte _track_checkpoint_table_1[] = {
 	TILE_SEQ_BEGIN(0x83F3)
-	TILE_SEQ_LINE(0x8432,   0,  0, 5, 16)
-	TILE_SEQ_LINE(0x842D,  11,  0, 5, 16)
+	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+20,   0,  0, 5, 16)
+	TILE_SEQ_LINE(0x8000 + SPR_OPENTTD_BASE+21,  11,  0, 5, 16)
 	TILE_SEQ_END()
 };
 
