@@ -305,7 +305,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 
-			ret = CheckRailSlope(tileh, rail_bit, m5 & RAIL_BIT_MASK, tile);
+			ret = CheckRailSlope(tileh, rail_bit, 0, tile);
 			if (ret & CMD_ERROR) return ret;
 			cost += ret;
 
