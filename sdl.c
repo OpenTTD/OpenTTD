@@ -188,14 +188,17 @@ static void InitPalette(void) {
 	UpdatePalette(0, 256);
 }
 
-static void DrawSurfaceToScreen()
+static void CheckPaletteAnim()
 {
-	int n;
-
 	if(_pal_last_dirty != -1) {
 		UpdatePalette(_pal_first_dirty, _pal_last_dirty + 1);
 		_pal_last_dirty = -1;
 	}
+}
+
+static void DrawSurfaceToScreen()
+{
+	int n;
 
 	if ((n=_num_dirty_rects) != 0) {
 		_num_dirty_rects = 0;
@@ -292,7 +295,7 @@ static bool CreateMainSurface(int w, int h)
 
 	DEBUG(misc, 0) ("sdl: using mode %dx%d", w, h);
 
-	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE + SDL_HWPALETTE + (_fullscreen?SDL_FULLSCREEN:SDL_RESIZABLE));
+	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_HWSURFACE + SDL_HWPALETTE + (_fullscreen?SDL_FULLSCREEN:SDL_RESIZABLE));
 	if(newscreen == NULL)
 		return false;
 
@@ -497,7 +500,7 @@ static void SdlVideoStop()
 
 static int SdlVideoMainLoop()
 {
-	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30, cur_ticks;
+	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30, cur_ticks, pal_tick ;
 	int i;
 	uint32 mod;
 	int numkeys;
@@ -509,30 +512,10 @@ static int SdlVideoMainLoop()
 		while ((i=PollEvent()) == -1) {}
 		if (i>=0) return i;
 
+		if (_exit_game)	return ML_QUIT;
+
 		mod = SDL_CALL SDL_GetModState();
-		_ctrl_pressed = !!(mod & (KMOD_LCTRL | KMOD_RCTRL));
-		_shift_pressed = !!(mod & (KMOD_LSHIFT | KMOD_RSHIFT));
-
-
-		keys = SDL_CALL SDL_GetKeyState(&numkeys);
-
-		_dirkeys = 
-			(keys[SDLK_LEFT] ? 1 : 0) + 
-			(keys[SDLK_UP] ? 2 : 0) + 
-			(keys[SDLK_RIGHT] ? 4 : 0) + 
-			(keys[SDLK_DOWN] ? 8 : 0);
-
-		GameLoop();
-
-		_screen.dst_ptr = _sdl_screen->pixels;
-		UpdateWindows();
-
-		if ((cur_ticks=SDL_CALL SDL_GetTicks()) > next_tick) {
-			next_tick = cur_ticks;
-		} else {
-			DrawSurfaceToScreen();
-		}
-
+		keys = SDL_CALL SDL_GetKeyState(&numkeys);		
 #if defined(_DEBUG)
 		if (_shift_pressed) {
 #else
@@ -543,18 +526,37 @@ static int SdlVideoMainLoop()
 			_fast_forward = 0;
 		}
 
-		if (!_fast_forward || _pause) {
-			int d = next_tick - SDL_CALL SDL_GetTicks();
-			if (d > 0) {
-				SDL_CALL SDL_Delay(d);
-			}
-		} else {
-			next_tick = SDL_CALL SDL_GetTicks();
-		}
-		next_tick += 30;
+		cur_ticks=SDL_CALL SDL_GetTicks();
+		if ((_fast_forward && !_pause) || cur_ticks > next_tick)
+			next_tick = cur_ticks;
 
-		if (_exit_game)
-			return ML_QUIT;
+		if (cur_ticks == next_tick) {
+			next_tick += 30;
+
+			_ctrl_pressed = !!(mod & (KMOD_LCTRL | KMOD_RCTRL));
+			_shift_pressed = !!(mod & (KMOD_LSHIFT | KMOD_RSHIFT));
+			
+			// determine which directional keys are down
+			_dirkeys = 
+			    (keys[SDLK_LEFT] ? 1 : 0) + 
+			    (keys[SDLK_UP] ? 2 : 0) + 
+			    (keys[SDLK_RIGHT] ? 4 : 0) + 
+			    (keys[SDLK_DOWN] ? 8 : 0);
+			GameLoop();
+
+			_screen.dst_ptr = _sdl_screen->pixels;
+			UpdateWindows();
+			if (++ pal_tick > 4){
+			    CheckPaletteAnim();
+			    pal_tick = 1;
+			}
+ 			DrawSurfaceToScreen();
+		} else {
+			SDL_CALL SDL_Delay(1);
+			_screen.dst_ptr = _sdl_screen->pixels;
+			DrawMouseCursor();
+			DrawSurfaceToScreen();
+		}
 	}
 }
 
@@ -563,7 +565,7 @@ static bool SdlVideoChangeRes(int w, int h)
 	// see if the mode is available
 	if (GetAvailableVideoMode(&w, &h) != 1)
 		return false;
-	
+
 	CreateMainSurface(w, h);
 	return true;
 }
