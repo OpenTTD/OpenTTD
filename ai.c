@@ -1530,6 +1530,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	uint values[NUM_CARGO];
 	int w,h;
 	uint tile2;
+	int rad;
 
 	for(;p->mode != 4;p++) if (p->mode == 1) {
 		tile2 = TILE_ADD(tile, p->tileoffs);
@@ -1538,11 +1539,18 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 		h = ((p->attr>>4) & 7);
 		if (p->attr&1) intswap(w, h);
 
+
+		if (_patches.modified_catchment) {
+			rad = CA_TRAIN;
+		} else {
+			rad = 4;
+		}
+
 		if (cargo & 0x80) {
-			GetProductionAroundTiles(values, tile2, w, h);
+			GetProductionAroundTiles(values, tile2, w, h, rad);
 			return values[cargo & 0x7F] != 0;
 		} else {
-			GetAcceptanceAroundTiles(values, tile2, w, h);
+			GetAcceptanceAroundTiles(values, tile2, w, h, rad);
 			if (!(values[cargo] & ~7))
 				return false;
 			if (cargo != CT_MAIL)
@@ -2472,16 +2480,24 @@ static void AiStateDeleteRailBlocks(Player *p)
 static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, byte cargo)
 {
 	uint values[NUM_CARGO];
+	int rad;
+	
+	if (_patches.modified_catchment) {
+		rad = CA_TRUCK;		//Same as CA_BUS at the moment? 
+	} else {			//change that at some point?
+		rad = 4;
+	}
+	
 	for(;;p++) {
 		if (p->mode == 4) {
 			return true;
 		} else if (p->mode == 1) {
 			uint tile2 = TILE_ADD(tile, p->tileoffs);
 			if (cargo & 0x80) {
-				GetProductionAroundTiles(values, tile2, 1, 1);
+				GetProductionAroundTiles(values, tile2, 1, 1, rad);
 				return values[cargo & 0x7F] != 0;
 			} else {
-				GetAcceptanceAroundTiles(values, tile2, 1, 1);
+				GetAcceptanceAroundTiles(values, tile2, 1, 1, rad);
 				return (values[cargo]&~7) != 0;
 			}
 		}
@@ -3336,16 +3352,23 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	uint values[NUM_CARGO];
 	int w,h;
 	uint tile2;
+	int rad;
+	
+	if (_patches.modified_catchment) {
+		rad = CA_AIR_LARGE;		//I Have NFI what airport the 
+	} else {				//AI is going to build here
+		rad = 4;
+	}
 
 	for(;p->mode==0;p++) {
 		tile2 = TILE_ADD(tile, p->tileoffs);
 		w = _airport_size_x[p->attr];
 		h = _airport_size_y[p->attr];
 		if (cargo & 0x80) {
-			GetProductionAroundTiles(values, tile2, w, h);
+			GetProductionAroundTiles(values, tile2, w, h, rad);
 			return values[cargo & 0x7F] != 0;
 		} else {
-			GetAcceptanceAroundTiles(values, tile2, w, h);
+			GetAcceptanceAroundTiles(values, tile2, w, h, rad);
 			return values[cargo] >= 8;
 		}
 	}

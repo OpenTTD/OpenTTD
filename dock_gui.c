@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "table/strings.h"
 #include "window.h"
+#include "station.h"
 #include "gui.h"
 #include "viewport.h"
 #include "gfx.h"
@@ -203,12 +204,21 @@ void ShowBuildDocksToolbar()
 
 static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 {
+	int rad;
+	
 	switch(e->event) {
 	case WE_PAINT: {
 		if (WP(w,def_d).close)
 			return;
 		DrawWindowWidgets(w);
-		DrawStationCoverageAreaText(2, 15, (uint)-1);
+		//Add some code for the coverage area eariler or later!!
+		if (_patches.modified_catchment) {
+			rad = CA_DOCK;
+		} else {
+			rad = 4;
+		}
+		
+		DrawStationCoverageAreaText(2, 15, (uint)-1, rad);
 	} break;
 
 	case WE_CLICK: {

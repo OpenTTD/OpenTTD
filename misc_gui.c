@@ -640,12 +640,12 @@ static void DrawStationCoverageText(const uint *accepts, int str_x, int str_y, u
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 
-void DrawStationCoverageAreaText(int sx, int sy, uint mask) {
+void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	int x = _thd.pos.x;
 	int y = _thd.pos.y;
 	uint accepts[NUM_CARGO];
 	if (x != -1) {
-		GetAcceptanceAroundTiles(accepts, TILE_FROM_XY(x,y), _thd.new_size.x >> 4, _thd.new_size.y >> 4);
+		GetAcceptanceAroundTiles(accepts, TILE_FROM_XY(x,y), _thd.new_size.x >> 4, _thd.new_size.y >> 4, rad);
 		DrawStationCoverageText(accepts, sx, sy, mask);
 	}
 }

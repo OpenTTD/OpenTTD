@@ -173,6 +173,16 @@ static inline int FindFirstBit2x64(int value)
 #define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / b))
 #define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * a) / b))
 
+#define FIND_CATCHMENT_RADIUS(st,rad)           \
+	{\
+	if (st->bus_tile || st->lorry_tile || (st->airport_tile && st->airport_type == AT_OILRIG)) rad = 3;             \
+	if (st->train_tile || (st->airport_tile && (st->airport_type == AT_HELIPORT || st->airport_type == AT_SMALL))) rad = 4;        \
+	if (st->dock_tile || (st->airport_tile && st->airport_type == AT_LARGE)) rad = 5;               \
+	if (st->airport_tile && st->airport_type == AT_METROPOLITAN) rad = 6;                           \
+	if (st->airport_tile && st->airport_type == AT_INTERNATIONAL) rad = 8;          }
+
+
+
 #define BEGIN_TILE_LOOP(var,w,h,tile)		\
 		{int h_cur = h;									\
 		uint var = tile;									\

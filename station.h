@@ -73,6 +73,19 @@ enum {
 	HVOT_BUOY = 1 << 6
 };
 
+enum {
+	CA_BUS = 3,
+	CA_TRUCK = 3,
+	CA_AIR_OILPAD = 3,
+	CA_TRAIN = 4,
+	CA_AIR_HELIPORT = 4,
+	CA_AIR_SMALL = 4,
+	CA_AIR_LARGE = 5,
+	CA_DOCK = 5,
+	CA_AIR_METRO = 6, 
+	CA_AIR_INTER = 8,
+}; 
+
 void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radius);
 
 TileIndex GetStationTileForVehicle(Vehicle *v, Station *st);
@@ -88,8 +101,8 @@ VARDEF bool _global_station_sort_dirty;
 #define FOR_ALL_STATIONS(st) for(st=_stations; st != endof(_stations); st++)
 
 
-void GetProductionAroundTiles(uint *produced, uint tile, int w, int h);
-void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h);
+void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad);
+void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad);
 uint GetStationPlatforms(Station *st, uint tile);
 
 

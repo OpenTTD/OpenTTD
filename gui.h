@@ -78,7 +78,7 @@ void ShowPlayerCompany(int player);
 void ShowEstimatedCostOrIncome(int32 cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
-void DrawStationCoverageAreaText(int sx, int sy, uint mask);
+void DrawStationCoverageAreaText(int sx, int sy, uint mask,int rad);
 void CheckRedrawStationCoverage(Window *w);
 
 void ShowSmallMap();

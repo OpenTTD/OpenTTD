@@ -795,6 +795,8 @@ const SettingDesc patch_settings[] = {
 	{"join_stations",				SDT_BOOL,		(void*)true,	&_patches.join_stations,				NULL},
 	{"station_spread",			SDT_UINT8,	(void*)12,		&_patches.station_spread,				NULL},
 	{"full_load_any",				SDT_BOOL,		(void*)true,	&_patches.full_load_any,				NULL},
+	{"modified_catchment", SDT_BOOL, (void*)true, &_patches.modified_catchment},
+
 
 	{"inflation",						SDT_BOOL,		(void*)true,	&_patches.inflation,						NULL},
 	{"selectgoods",					SDT_BOOL,		(void*)true,	&_patches.selectgoods,					NULL},

@@ -640,6 +640,8 @@ static const PatchEntry _patches_stations[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, &_patches.nonuniform_stations,		0,  0,  0, NULL},
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		&_patches.station_spread,						4, 64,  1, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, &_patches.serviceathelipad,					0,  0,  0, NULL},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, &_patches.modified_catchment},
+
 };
 
 static const PatchEntry _patches_economy[] = {

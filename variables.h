@@ -82,6 +82,7 @@ VARDEF byte _saved_scrollpos_zoom;
 // ********* END OF SAVE REGION
 
 typedef struct Patches {
+	bool modified_catchment;	//different-size catchment areas
 	bool vehicle_speed;			// show vehicle speed
 	bool build_on_slopes;		// allow building on slopes
 	bool mammoth_trains;		// allow very long trains

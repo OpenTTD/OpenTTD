@@ -7,6 +7,9 @@
 #include "gfx.h"
 #include "sound.h"
 #include "command.h"
+//needed for catchments
+#include "station.h"
+
 
 static void ShowBusStationPicker();
 static void ShowTruckStationPicker();
@@ -400,6 +403,9 @@ static void ShowRoadDepotPicker()
 }
 
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
+
+	int rad;
+	
 	switch(e->event) {
 	case WE_PAINT: {
 		int image;
@@ -409,8 +415,15 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 		DrawWindowWidgets(w);
 
 		SetTileSelectSize(1, 1);
+		
+		if (_patches.modified_catchment) {
+			rad = CA_TRUCK; // = CA_BUS
+		} else {
+			rad = 4;
+		}
+		
 		if (_station_show_coverage)
-			SetTileSelectBigSize(-4, -4, 8, 8);
+			SetTileSelectBigSize(-rad, -rad, 2*rad, 2*rad);
 
 		image = (w->window_class == WC_BUS_STATION) ? 0x47 : 0x43;
 
@@ -421,8 +434,8 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 
 		DrawStringCentered(70, 120, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
 		DrawStationCoverageAreaText(2, 146,
-			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS))
-		);
+			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS)),
+			3);
 
 	} break;
 

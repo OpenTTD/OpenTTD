@@ -849,6 +849,7 @@ static void HandleStationPlacement(uint start, uint end)
 }
 
 static void StationBuildWndProc(Window *w, WindowEvent *e) {
+	int rad;
 	switch(e->event) {
 	case WE_PAINT: {
 		uint bits;
@@ -876,8 +877,15 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 				SetTileSelectSize(x, y);
 		}
 
+       if (_patches.modified_catchment) {
+         rad = CA_TRAIN;
+       } else {
+         rad = 4;
+       }
+
+
 		if (_station_show_coverage)
-			SetTileSelectBigSize(-4, -4, 8, 8);
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
 
@@ -889,7 +897,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		DrawStringCentered(74, 101, STR_3004_PLATFORM_LENGTH, 0);
 		DrawStringCentered(74, 141, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
 
-		DrawStationCoverageAreaText(2, 166, (uint)-1);
+		DrawStationCoverageAreaText(2, 166, (uint)-1, rad);
 	} break;
 
 	case WE_CLICK: {

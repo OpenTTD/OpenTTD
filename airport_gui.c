@@ -134,6 +134,8 @@ void ShowBuildAirToolbar()
 
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
+	int rad;
+	
 	switch(e->event) {
 	case WE_PAINT: {
 		int sel;
@@ -155,13 +157,28 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		// select default the coverage area to 'Off' (8)
 		w->click_state = ((1<<3) << sel) | ((1<<8) << _station_show_coverage);
 		SetTileSelectSize(_airport_size_x[sel],_airport_size_y[sel]);
-		if (_station_show_coverage)	SetTileSelectBigSize(-4, -4, 8, 8);
+
+     if (_patches.modified_catchment) {
+       switch (sel) {
+         case AT_OILRIG: rad = CA_AIR_OILPAD; break;
+         case AT_HELIPORT: rad = CA_AIR_HELIPORT; break;
+         case AT_SMALL:    rad = CA_AIR_SMALL; break;
+         case AT_LARGE:    rad = CA_AIR_LARGE; break;
+         case AT_METROPOLITAN: rad = CA_AIR_METRO; break;
+         case AT_INTERNATIONAL: rad = CA_AIR_INTER; break;
+       }
+     } else {
+       rad = 4;
+     }
+
+	
+		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
     // strings such as 'Size' and 'Coverage Area'
 		DrawStringCentered(74, 16, STR_305B_SIZE, 0);
 		DrawStringCentered(74, 78, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
-		DrawStationCoverageAreaText(2, 104, (uint)-1);
+		DrawStationCoverageAreaText(2, 104, (uint)-1, rad);
 		break;
 	}
 

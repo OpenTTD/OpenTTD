@@ -376,7 +376,7 @@ static void ShowRejectOrAcceptNews(Station *st, uint32 items, StringID msg)
 }
 
 // Get a list of the cargo types being produced around the tile.
-void GetProductionAroundTiles(uint *produced, uint tile, int w, int h)
+void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
 {
 	int x,y;
 	int x1,y1,x2,y2;
@@ -390,11 +390,11 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h)
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w+4, TILE_X_MAX+1);
-	x1 = max(x-4, 0);
+	x2 = min(x + w + rad, TILE_X_MAX+1);
+	x1 = max(x-rad, 0);
 
-	y2 = min(y + h+4, TILE_Y_MAX+1);
-	y1 = max(y-4, 0);
+	y2 = min(y + h + rad, TILE_Y_MAX+1);
+	y1 = max(y-rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
@@ -425,7 +425,7 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h)
 }
 
 // Get a list of the cargo types that are accepted around the tile.
-void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h)
+void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h, int rad)
 {
 	int x,y;
 	int x1,y1,x2,y2;
@@ -438,10 +438,10 @@ void GetAcceptanceAroundTiles(uint *accepts, uint tile, int w, int h)
 
 	// expand the region by 4 tiles on each side
 	// while making sure that we remain inside the board.
-	x2 = min(x + w + 4, TILE_X_MAX+1);
-	y2 = min(y + h + 4, TILE_Y_MAX+1);
-	x1 = max(x-4, 0);
-	y1 = max(y-4, 0);
+	x2 = min(x + w + rad, TILE_X_MAX+1);
+	y2 = min(y + h + rad, TILE_Y_MAX+1);
+	x1 = max(x-rad, 0);
+	y1 = max(y-rad, 0);
 
 	assert(x1 < x2);
 	assert(y1 < y2);
@@ -473,6 +473,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	TileIndex span[1+1+2+2+1];
 	int i;
 	int min_x, min_y, max_x, max_y;
+	int rad = 4;	//Put this to surpress a compiler warning
 	uint accepts[NUM_CARGO];
 
 	// Don't update acceptance for a buoy
@@ -509,10 +510,15 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			max_y = max(max_y,GET_TILE_Y(tile));
 		}
 	}
+	if (_patches.modified_catchment) {
+		FIND_CATCHMENT_RADIUS(st,rad)
+	} else {
+		rad = 4;
+	}
 
 	// And retrieve the acceptance.
 	if (max_x != 0) {
-		GetAcceptanceAroundTiles(accepts, TILE_XY(min_x, min_y), max_x - min_x + 1, max_y-min_y+1);
+		GetAcceptanceAroundTiles(accepts, TILE_XY(min_x, min_y), max_x - min_x + 1, max_y-min_y+1,rad);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
 	}
@@ -2451,13 +2457,29 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 	uint best_rating, best_rating2;
 	Station *st1, *st2;
 	int t;
+	int rad=0;
+	int w_prod=0, h_prod=0; //width and height of the "producer" of the cargo
+	int x_min_prod, x_max_prod;     //min and max coordinates of the producer
+	int y_min_prod, y_max_prod;     //relative
+	int x_dist, y_dist;
+	int max_rad;
+
 
 	memset(around, 0xff, sizeof(around));
 
-	w += 8;
-	h += 8;
+	if (_patches.modified_catchment) {
+		w_prod = w;
+		h_prod = h;
+		w += 16;
+		h += 16;
+		max_rad = 8;
+	} else {
+ 		w += 8;
+ 		h += 8;
+		max_rad = 4;
+	}
 
-	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(4,4))
+	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad,max_rad))
 		cur_tile = TILE_MASK(cur_tile);
 		if (IS_TILETYPE(cur_tile, MP_STATION)) {
 			st_index = _map2[cur_tile];
@@ -2470,16 +2492,43 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 							(!_patches.selectgoods || st->goods[type].last_speed) && // if last_speed is 0, no vehicle has been there.
 							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
 							((st->facilities & (byte)~FACIL_TRUCK_STOP)!=0 || type!=CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
+								if (_patches.modified_catchment) {
+									FIND_CATCHMENT_RADIUS(st,rad)
+									x_min_prod = y_min_prod = 9;
+									x_max_prod = 8 + w_prod;
+									y_max_prod = 8 + h_prod;
+		
+									x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
+		
+									if (w_cur < x_min_prod) {
+										x_dist = x_min_prod - w_cur;
+									} else {        //save cycles
+										if (w_cur > x_max_prod) x_dist = w_cur - x_max_prod;
+									}
+		
+									y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
+									if (h_cur < y_min_prod) {
+										y_dist = y_min_prod - h_cur;
+									} else {
+										if (h_cur > y_max_prod) y_dist = h_cur - y_max_prod;
+									}
+		
+								} else {
+									x_dist = y_dist = 0;
+								}
+		
+								if ( !(x_dist > rad) && !(y_dist > rad) ) {
 
-						around[i] = st_index;
-						around_ptr[i] = st;
-					}
+									around[i] = st_index;
+									around_ptr[i] = st;
+								}
+							}
 					break;
 				} else if (around[i] == st_index)
 					break;
 			}
 		}
-	END_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(4,4))
+	END_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad, max_rad))
 
 	/* no stations around at all? */
 	if (around[0] == 0xFF)

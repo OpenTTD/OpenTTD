@@ -611,7 +611,8 @@ static void AiNew_State_FindStation(Player *p) {
 	    		if (IS_TILETYPE(new_tile, MP_CLEAR) || IS_TILETYPE(new_tile, MP_TREES)) {
 	    			// This tile we can build on!
 	    			// Check acceptance
-	    			GetAcceptanceAroundTiles(accepts, new_tile, 1, 1);
+						// XXX - Get the catchment area
+	    			GetAcceptanceAroundTiles(accepts, new_tile, 1, 1, 4);
 	    			// >> 3 == 0 means no cargo
 	    			if (accepts[p->ainew.cargo] >> 3 == 0) continue;
 	    			// See if we can build the station
