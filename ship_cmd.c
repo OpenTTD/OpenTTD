@@ -24,7 +24,7 @@ void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 	int spritenum = ship_vehicle_info(engine).image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomEngineSprite(engine, 0xffff, CID_PURCHASE, 0, 0, 6);
+		int sprite = GetCustomVehicleIcon(engine, 6);
 
 		if (sprite) {
 			DrawSprite(sprite | image_ormod, x, y);

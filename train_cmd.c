@@ -174,7 +174,7 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 	uint32 image = 0;
 
 	if (is_custom_sprite(img)) {
-		image = GetCustomEngineSprite(engine, -1, CID_PURCHASE, 0, 0, 6);
+		image = GetCustomVehicleIcon(engine, 6);
 		if (!image) img = _engine_original_sprites[engine];
 	}
 	if (!image) {
@@ -186,7 +186,7 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 		x += 15;
 		image = 0;
 		if (is_custom_sprite(img)) {
-			image = GetCustomEngineSprite(engine, -1, CID_PURCHASE, 0, 0, 2);
+			image = GetCustomVehicleIcon(engine, 2);
 			if (!image) img = _engine_original_sprites[engine];
 		}
 		if (!image) {

@@ -91,7 +91,9 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo, byt
 	GetCustomEngineSprite(v->engine_type, v->type == VEH_Train ? v->u.rail.first_engine : -1, \
 	                      _global_cargo_id[_opt.landscape][v->cargo_type], \
 	                      ((v->cargo_count + 1) * 100) / (v->cargo_cap + 1), \
-	                      !!v->cur_speed, direction);
+	                      !!v->cur_speed, direction)
+#define GetCustomVehicleIcon(v, direction) \
+	GetCustomEngineSprite(v, -1, CID_PURCHASE, 0, 0, direction)
 
 void SetCustomEngineName(int engine, char *name);
 StringID GetCustomEngineName(int engine);
