@@ -419,6 +419,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Nie mozna zmienic okresu miedzy serwisowaniem...
 STR_018B_CLOSE_WINDOW						:{BLACK}Zamkniecie okna
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
+STR_STICKY_BUTTON						:{BLACK}Zaznacza to okno jako niezamykalne dla funkcji 'Zamknij wszystkie okna'
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Niszczenie budynkow itp w danym kwadracie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Obnizenie naroznika terenu
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Wywyzszenie naroznika terenu
@@ -867,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumunskie
 STR_TOWNNAME_CZECH						:Czeskie
 ############ end of	townname region
 
+STR_CURR_GBP							:Funty ({POUNDSIGN})
+STR_CURR_USD							:Dolary ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Jeny ({YENSIGN})
 STR_CURR_ATS							:Szylingi (ATS)
 STR_CURR_BEF							:Franki belgijskie (BEF)
 STR_CURR_CHF							:Franki szwajcarskie (CHF)
 STR_CURR_CZK							:Korony czeskie (CZK)
+STR_CURR_DEM							:Marki niemieckie(DEM)
 STR_CURR_DKK							:Korony dunskie (DKK)
+STR_CURR_ESP							:Pesety (ESP)
 STR_CURR_FIM							:Marki finskie (FIM)
+STR_CURR_FRF							:Franki fr. (FRF)
 STR_CURR_GRD							:Drachmy (GRD)
+STR_CURR_HUF							:Forinty (HUF)
 STR_CURR_ISK							:Korony islandzckie (ISK)
 STR_CURR_ITL							:Liry (ITL)
 STR_CURR_NLG							:Guldeny (NLG)
 STR_CURR_NOK							:Korony norweskie (NOK)
+STR_CURR_PLN							:Zloty (PLN)
 STR_CURR_ROL							:Lewy rumunskie (Lei)
 STR_CURR_RUR							:Ruble (rur)
 STR_CURR_SEK							:Korony szweckie (SEK)
 
+STR_CURR_CUSTOM							:Wlasne...
 
 STR_OPTIONS_LANG						:{BLACK}Jezyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1238,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Wybierz mape na ktorej chcesz grac
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Dopuszczalna ilosc klientow:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Ustaw maksymalna liczbe klientow. Nie wszystkie pola musza byc wypelnione.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (zaawansowane)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1331,6 +1342,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Wersja gry nie zgadza sie z wersja g
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Zle haslo.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serwer jest pelen
 STR_NETWORK_ERR_KICKED						:{WHITE} Zostales wyrzucony z serwera
+STR_NETWORK_ERR_CHEATER						:{WHITE} Ulatwienia sa niedozwolone na tym serwerze
 
 STR_NETWORK_ERR_LEFT						:opuscil gre
 ############ Leave those lines in this order!!
@@ -1346,6 +1358,7 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:Nazwa juz w uzyciu
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:zle haslo gry
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:bledne id gracza w DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:wyrzucony przez serwer
+STR_NETWORK_ERR_CLIENT_CHEATER					:probowal uzyc ulatwien
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY						:dal Ci troche pieniedzy ({CURRENCY})
@@ -1363,6 +1376,8 @@ STR_NETWORK_SERVER						:Serwer
 STR_NETWORK_CLIENT						:Klient
 
 STR_NETWORK_CLIENTLIST_NONE					:(brak)
+STR_NETWORK_CLIENTLIST_KICK					:Wyrzucony
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Przekazanie pieniedzy
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Mow do wszystkich
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Mow do firmy
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Prywatna wiadomosc
@@ -2056,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Wybuduj siedzibe glowna w innym mie
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Nie mozna zbudowac siedziby glownej...
 STR_7072_VIEW_HQ						:{BLACK}Zobacz SG
 STR_RELOCATE_HQ							:{BLACK}Zmien polozenie SG
+STR_COMPANY_PASSWORD						:{BLACK}Haslo
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Ochrona haslem twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie.
+STR_SET_COMPANY_PASSWORD					:Ustaw haslo firmy
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Swiatowa recesja!{}{}Eksperci finansowi obawiaja sie najgorszego z powodu zastoju!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Koniec recesji!{}{}Zmiana w wymianach daje pewnosc umocnienia fabryk i ekonomii!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Przelacz duze/male okienko
@@ -2717,6 +2735,15 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Obecnie nie ma zainstalowanych zadnych
 STR_NEWGRF_FILENAME						:{BLACK}Nazwa pliku:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Wlasna waluta
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Separator:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefiks:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Sufiks:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Przejscie na Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Przejscie  na Euro: {ORANGE}nigdy
+STR_CURRENCY_PREVIEW						:{LTBLUE}Podglad: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Zmien wlasny parametr waluty
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

@@ -864,19 +864,26 @@ STR_TOWNNAME_ROMANIAN						:Rúmensk
 STR_TOWNNAME_CZECH						:Tékknesk
 ############ end of	townname region
 
+STR_CURR_GBP							:Pund ({POUNDSIGN})
+STR_CURR_USD							:Dalir ($)
 STR_CURR_EUR							:Evra (¤)
 STR_CURR_YEN							:Jen ({YENSIGN})
 STR_CURR_ATS							:Austurrískur skildingur (ATS)
 STR_CURR_BEF							:Belgískur Franki (BEF)
 STR_CURR_CHF							:Svissneskur Franki (CHF)
 STR_CURR_CZK							:Tékknesk Kóróna (CZK)
+STR_CURR_DEM							:Þýskt mark (DEM)
 STR_CURR_DKK							:Dönsk Króna (DKK)
+STR_CURR_ESP							:Pesetar (ESP)
 STR_CURR_FIM							:Finnskt mark (FIM)
+STR_CURR_FRF							:Franki (FRF)
 STR_CURR_GRD							:Grísk drakma (GRD)
+STR_CURR_HUF							:Ungversk forinta (HUF)
 STR_CURR_ISK							:Íslensk Króna (ISK)
 STR_CURR_ITL							:Ítölsk Líra (ITL)
 STR_CURR_NLG							:Hollensk Gyllini (NLG)
 STR_CURR_NOK							:Norsk króna (NOK)
+STR_CURR_PLN							:Pólsk Zloty (PLN)
 STR_CURR_ROL							:Rúmensk leu (Lei)
 STR_CURR_RUR							:Rússnesk Rúbla (rur)
 STR_CURR_SEK							:Sænsk Króna (SEK)
@@ -1228,6 +1235,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvaða kort viltu spila?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Hámarksfjöldi notenda:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Veldu hámarksfjölda notenda. Ekki þarf að fylla öll pláss
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:Staðarnet
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:Staðarnet / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (auglýsa)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1331,11 +1340,31 @@ STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:röng útgáfa
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nafn nú þegar í notkun
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:rangt leikja lykilorð
 STR_NETWORK_ERR_CLIENT_KICKED					:hent út af þjón
+STR_NETWORK_ERR_CLIENT_CHEATER					:reyndi að svindla
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:hefur bæst við leikinn
+STR_NETWORK_GIVE_MONEY						:gaf fyrirtækinu þínu pening ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:þú gafst {STRING} pening ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] Til {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Private] Til {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:hefur breytt nafni sínu í
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
+
+STR_NETWORK_SERVER						:Þjónn
+STR_NETWORK_CLIENT						:Notandi
+
+STR_NETWORK_CLIENTLIST_NONE					:(ekkert)
+STR_NETWORK_CLIENTLIST_KICK					:Sparka
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Gefa pening
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Tala við alla
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Tala við fyrirtæki
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Einkaskilaboð
 
 
-
-
+STR_NETWORK_SEND						:{BLACK}Senda
 
 ############ end network gui strings
 
@@ -1397,6 +1426,10 @@ STR_1021_RAILROAD_TRACK						:Lestarteinn
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Lestarteinn með umferðarljósum
 STR_1023_RAILROAD_TRAIN_DEPOT					:Lestarskýli
 STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...svæðið er í eigu annars fyrirtækis
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Lestarteinn með venjulegum ljósum
+STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Lestarteinn með forljósum
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS				:Lestarteinn með útljósum
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Lestarteinn með samljósum
 
 
 
@@ -1561,8 +1594,55 @@ STR_3031_CAN_T_RENAME_STATION					:{WHITE}Get ekki endurnefnt stöð...
 STR_3033_ACCEPTS						:{BLACK}Tekur við
 
 ############ range for rating starts
+STR_3035_APPALLING						:Hræðilegur
+STR_3036_VERY_POOR						:Mjög glataður
+STR_3037_POOR							:Glataður
+STR_3038_MEDIOCRE						:Ágætur
+STR_3039_GOOD							:Góður
+STR_303A_VERY_GOOD						:Mjög góður
+STR_303B_EXCELLENT						:Frábær
+STR_303C_OUTSTANDING						:Æðislegur
 ############ range for rating ends
 
+STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} tekur ekki lengur við {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} tekur ekki lengur við {STRING} eða {STRING}
+STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} tekur nú við {STRING}
+STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} tekur nú við {STRING} og {STRING}
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Staða strætisvagnastöðvar
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Staða póstvagnsstöðvar
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Of nálægt annarri strætisvagnastöð
+STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Of nálægt annarri póstvagnsstöð
+STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Verður að eyða strætisvagnastöðinni fyrst
+STR_3047_MUST_DEMOLISH_TRUCK_STATION				:{WHITE}Verður að eyða póstvagnsstöðinni fyrst
+STR_3048_STATIONS						:{WHITE}{STRING} - {COMMA16} Stöðvar
+STR_3049_0							:{YELLOW}{STATION} {STRINL 0x30D1}
+STR_304A_NONE							:{YELLOW}- Ekkert -
+STR_304B_SITE_UNSUITABLE					:{WHITE}...óhentug staðsetning
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK				:{WHITE}Of nálægt annarri höfn
+STR_304D_MUST_DEMOLISH_DOCK_FIRST				:{WHITE}Verður að eyða höfn fyrst
+STR_304E_SELECT_RAILROAD_STATION				:{BLACK}Veldu stöðu lestarstöðvar
+STR_304F_SELECT_NUMBER_OF_PLATFORMS				:{BLACK}Veldu fjölda lestarspora á lestarstöð
+STR_3050_SELECT_LENGTH_OF_RAILROAD				:{BLACK}Veldu lengd lestarstöðvar
+STR_3051_SELECT_BUS_STATION_ORIENTATION				:{BLACK}Veldu stöðu strætisvagnastöðvar
+STR_3052_SELECT_TRUCK_LOADING_BAY				:{BLACK}Veldu stöðu póstvagnsstöðvar
+STR_3053_CENTER_MAIN_VIEW_ON_STATION				:{BLACK}Færa miðju sýnishorns á staðsetningu stöðvar
+STR_3054_SHOW_STATION_RATINGS					:{BLACK}Sýna einkunn stöðvar
+STR_3055_CHANGE_NAME_OF_STATION					:{BLACK}Breyta nafni stöðvar
+STR_3057_STATION_NAMES_CLICK_ON					:{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT				:{BLACK}Veldu stærð/tegund flugvallar
+STR_3059_SMALL							:{BLACK}Lítill
+STR_305A_LARGE							:{BLACK}Borgar
+STR_305AA_LARGE							:{BLACK}Stórborgarvöllur
+STR_305AB_LARGE							:{BLACK}Alþjóðavöllur
+STR_305B_SIZE							:{BLACK}Stærð
+STR_305C_0							:{STATION} {STRINL 0x30D1}
+STR_305D_0							:{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
+STR_305E_RAILROAD_STATION					:Lestarstöð
+STR_305F_AIRCRAFT_HANGAR					:Flugskýli
+STR_3060_AIRPORT						:Flugvöllur
+STR_3062_BUS_STATION						:Strætisvagnastöð
+STR_3063_SHIP_DOCK						:Skipahöfn
 
 ##id 0x3800
 

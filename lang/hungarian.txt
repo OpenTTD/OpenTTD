@@ -2071,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}A cég fõhadiszállásának újraépítése
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Nem építheted ide a székházadat...
 STR_7072_VIEW_HQ						:{BLACK}Székház
 STR_RELOCATE_HQ							:{BLACK}FH áthelyezése
+STR_COMPANY_PASSWORD						:{BLACK}Jelszó
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
+STR_SET_COMPANY_PASSWORD					:Vállalati jelszó beállítása
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erõsödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -2733,10 +2736,10 @@ STR_NEWGRF_FILENAME						:{BLACK}Fájlnév:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW						:{WHITE}Saját pénznem
-STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Átváltási ráta: {ORANGE}{CURRENCY} = {COMMA16} {POUNDSIGN}
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
 STR_CURRENCY_SEPARATOR						:{LTBLUE}Elválasztó:
 STR_CURRENCY_PREFIX						:{LTBLUE}Elõtag:
-STR_CURRENCY_SUFFIX						:{LTBLUE}Utótag:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Elõtag:
 STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Euróra váltás: {ORANGE}{INT32}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Euróra váltás: {ORANGE}soha
 STR_CURRENCY_PREVIEW						:{LTBLUE}Elõnézet: {ORANGE}{CURRENCY}

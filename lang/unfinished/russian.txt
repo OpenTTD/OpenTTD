@@ -1,0 +1,2 @@
+##name Russian_latin_char
+##ownname Russkiy

@@ -1122,7 +1122,7 @@ STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Bedecke die Karte mit zufällig platzierten
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Kann keine Industrie erzeugen...
 
 STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Öffne die Landschaftsbau-Toolbar, um Land zu senken/heben, Bäume zu pflanzen, etc.
-STR_LANDSCAPING_TOOLBAR						:{WHITE}Landschaft bearbeiten
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Landschaftsbau
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Land ausgleichen
 
 
@@ -1459,7 +1459,7 @@ STR_1802_ROAD_CONSTRUCTION					:{WHITE}Straßenbau
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Brücke wählen
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Kann hier keine Straße bauen...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Kann diese Straße nicht entfernen...
-STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Fahrzeugdepotausrichtung
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Fahrzeugdepot-Ausr.
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Kann Fahrzeugdepot hier nicht bauen...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Kann Busbahnhof nicht bauen...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Kann Lkw-Ladeplatz nicht bauen...
@@ -1634,8 +1634,8 @@ STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} akzeptiert keine  {STRING} mehr
 STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} akzeptiert keine {STRING} oder {STRING} mehr
 STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} akzeptiert jetzt {STRING}
 STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} akzeptiert jetzt {STRING} und {STRING}
-STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Ausrichtung des Busbahnhofes
-STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Ausrichtung des Lkw-Ladeplatzes
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Busbahnhof-Ausr.
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Lkw-Ladeplatzes-Ausr.
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Zu dicht an einem anderen Busbahnhof
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}Zu dicht an einer anderen Lkw-Ladestation
 STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Der Busbahnhof muss erst abgerissen werden
@@ -2071,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Errichte Firmensitz für 1% des Firm
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kann keinen Firmensitz bauen ...
 STR_7072_VIEW_HQ						:{BLACK}Zeige Firmensitz
 STR_RELOCATE_HQ							:{BLACK}HQ verlegen
+STR_COMPANY_PASSWORD						:{BLACK}Passwort
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Schütze deine Firma mit einem Passwort, um unautorisierten Spielern den Beitritt zu verwehren.
+STR_SET_COMPANY_PASSWORD					:Firmen-Passwort setzen
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Schalter für großes/kleines Fenster

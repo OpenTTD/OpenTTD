@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Configuración de Newgrf
 STR_NEWGRF_SETTINGS2						:Configuración de Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Pechar TÓDALAS Fiestras
+STR_CLOSE_ALL_WINDOWS2						:Pechar TÓDALAS Fiestras
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Amosar nomes de cidades
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Amosar nomes de cidades
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Amosar nomes de estacións
@@ -773,7 +775,11 @@ STR_02DD_SUBSIDIES						:Subsidios
 STR_02DE_MAP_OF_WORLD						:Mapa do Mundo
 STR_EXTRA_VIEW_PORT						:Extra viewport
 STR_02DF_TOWN_DIRECTORY						:Directorio de cidades
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vista {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiar a vista
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copia a sitaución da vista global nesta vista
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Paste from viewport
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Pega a situación desta vista na vista global
 
 STR_02E0_CURRENCY_UNITS						:{BLACK}Unidades monetarias
 STR_02E1							:{BLACK}{SKIP}{STRING}
@@ -862,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumano
 STR_TOWNNAME_CZECH						:Checo
 ############ end of	townname region
 
+STR_CURR_GBP							:Libras ({POUNDSIGN})
+STR_CURR_USD							:Dólares ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Chelín Austríaco (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
 STR_CURR_CHF							:Franco Suizo (CHF)
 STR_CURR_CZK							:Corona Checa (CZK)
+STR_CURR_DEM							:Marcos Alemáns (DEM)
 STR_CURR_DKK							:Corona Danesa (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Marco Finés (FIM)
+STR_CURR_FRF							:Franco (FRF)
 STR_CURR_GRD							:Dracma Grego (GRD)
+STR_CURR_HUF							:Forinto Húngaro (HUF)
 STR_CURR_ISK							:Corona Islandesa (ISK)
 STR_CURR_ITL							:Lira Italiana (ITL)
 STR_CURR_NLG							:Florín Holandés (NLG)
 STR_CURR_NOK							:Corona Noruguesa (NOK)
+STR_CURR_PLN							:Zloty Polaco (PLN)
 STR_CURR_ROL							:Leu Rumano (Lei)
 STR_CURR_RUR							:Rublo Ruso (rur)
 STR_CURR_SEK							:Corona Sueca(SEK)
 
+STR_CURR_CUSTOM							:Persoal...
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -966,11 +980,13 @@ STR_CONFIG_PATCHES_OFF						:Off
 STR_CONFIG_PATCHES_ON						:On
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Mostra-la velocidade do vehículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Permiti-la construción en rampas e costas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Habilita-la aceleración realista nos trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Saír se calquera carga está chea,cando 'Carga chea': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflación: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Descarga-la carga só cando haxa demanda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Permiti-la construcción de pontes moi longas: {ORANGE}{STRING}
@@ -1032,10 +1048,13 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Intervalo de servicio para 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Data de aparición das noticias en color: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Data de comezo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
 STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Dereita
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Window snap radius: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Construcción
@@ -1223,6 +1242,7 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿Que mapa queres xogar?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo de clientes permitidos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (anunciar)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1306,9 +1326,24 @@ STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Non se atoparon dispositivos de rede o
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Non se atoparon xogos en rede
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Non Autorizado
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:revisión errónea
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:o nome xa está en uso
+STR_NETWORK_ERR_CLIENT_KICKED					:pateado polo servidor
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:uniuse á partida
+STR_NETWORK_CHAT_COMPANY					:[Equipo] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Equipo] A {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privado] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privado] A {STRING}:
+STR_NETWORK_CHAT_ALL						:[Todos] {STRING}:
 
+STR_NETWORK_SERVER						:Servidor
+STR_NETWORK_CLIENT						:Cliente
 
+STR_NETWORK_CLIENTLIST_NONE					:(ningún)
+STR_NETWORK_CLIENTLIST_KICK					:Patear
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Dar diñeiro
 
 
 
@@ -2646,3 +2681,6 @@ STR_NEWGRF_FILENAME						:{BLACK}Ficheiro:
 
 
 
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Mostrar tódolos avións que teñen esta estación nas súas ordes
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes

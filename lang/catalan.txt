@@ -868,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Romanès
 STR_TOWNNAME_CZECH						:Txec
 ############ end of	townname region
 
+STR_CURR_GBP							:Lliures ({POUNDSIGN})
+STR_CURR_USD							:Dòlars ($)
 STR_CURR_EUR							:Euros (¤)
 STR_CURR_YEN							:Iens ({YENSIGN})
 STR_CURR_ATS							:Shillings Austríacs (ATS)
 STR_CURR_BEF							:Francs Belgues (BEF)
 STR_CURR_CHF							:Francs Suissos (CHF)
 STR_CURR_CZK							:Corones Txeques (CZK)
+STR_CURR_DEM							:Marcs Alemanys (DEM)
 STR_CURR_DKK							:Corones Daneses (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Marcs Finesos (FIM)
+STR_CURR_FRF							:Franc (FRF)
 STR_CURR_GRD							:Dracmes Gregues (GRD)
+STR_CURR_HUF							:Florí Hungarès (HUF)
 STR_CURR_ISK							:Corones Islandeses (ISK)
 STR_CURR_ITL							:Lires Italianes (ITL)
 STR_CURR_NLG							:Florins Holandesos (NLG)
 STR_CURR_NOK							:Corones Noruegues (NOK)
+STR_CURR_PLN							:Zloty Polac (PLN)
 STR_CURR_ROL							:Leu Romanès (Lei)
 STR_CURR_RUR							:Rubles Russos (rur)
 STR_CURR_SEK							:Corones Sueques (SEK)
 
+STR_CURR_CUSTOM							:Personalitzat...
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1239,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}amb quin mapa vols jugar?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Màxim de clients permesos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (anunci)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2061,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Traslladar la seu de l'empresa a un
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}No es pot construir la seu de l'empresa...
 STR_7072_VIEW_HQ						:{BLACK}Veure Seu
 STR_RELOCATE_HQ							:{BLACK}Traslladar Seu
+STR_COMPANY_PASSWORD						:{BLACK}Contrasenya
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats.
+STR_SET_COMPANY_PASSWORD					:Estableix la contrasenya de l'Empresa
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Recesió Mundial!{}{}Economistes experts temen que l'economía es desplomi!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Recesió Terminada!{}{}La millora als negocis dona confiança a les indústries tant com l'economía es consolidi!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Intercanvía mida gran/petita de finestra
@@ -2722,6 +2735,14 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Ara no hi ha arxius de Newgrf instal.l
 STR_NEWGRF_FILENAME						:{BLACK}Nom d'arxiu:
 STR_NEWGRF_GRF_ID						:{BLACK}Id de GRF:
 
+STR_CURRENCY_WINDOW						:{WHITE}Moneda personalitzada
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Separador:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefix:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Canvi a Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Canvi a Euro: {ORANGE}mai
+STR_CURRENCY_PREVIEW						:{LTBLUE}Vista prèvia: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Canviar el paràmetre de la moneda personalitzada
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

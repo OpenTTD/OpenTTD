@@ -145,6 +145,8 @@ STR_008B_BATTERIES						:{COMMA16} batterier
 STR_008C_OF_PLASTIC						:{VOLUME} plastik
 STR_008D_FIZZY_DRINKS						:{COMMA16} sodavand
 STR_008E							:
+STR_00AB_BA							:{TINYFONT}BA
+STR_00AD_FZ							:{TINYFONT}FZ
 STR_00AE							:{WHITE}{DATE_SHORT}
 STR_00AF							:{WHITE}{DATE_LONG}
 STR_00B0_MAP							:{WHITE}Kort - {STRING}
@@ -279,6 +281,7 @@ STR_0134_UNIX							:Unix
 STR_0135_OSX							:OSX
 STR_OSNAME_BEOS							:BeOS
 STR_OSNAME_MORPHOS						:MorphOS
+STR_OSNAME_AMIGAOS						:AmigaOS
 
 STR_0139_IMPERIAL_MILES						:Imperial (miles)
 STR_013A_METRIC_KILOMETERS					:Meter (kilometer)
@@ -321,6 +324,8 @@ STR_015E_QUIT_GAME						:Afslut Spil
 STR_015F_QUIT							:Afslut
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Er du sikker på du vil afslutte dette spil ?
 STR_0161_QUIT_GAME						:{WHITE}Afslut Spil
+STR_SORT_ORDER_TIP						:{BLACK}Vælg sorteringsorden (faldende/stigende)
+STR_SORT_CRITERIA_TIP						:{BLACK}Vælg sortering kriterie
 SRT_SORT_BY							:{BLACK}Sorter efter
 
 STR_SORT_BY_POPULATION						:{BLACK}Indbyggertal
@@ -385,6 +390,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Kan ikke ændre service interval...
 STR_018B_CLOSE_WINDOW						:{BLACK}Luk vindue
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Vindue title - træk her for at flytte vindue
+STR_STICKY_BUTTON						:{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}nedriver bygning osv. på et stykke land
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND					:{BLACK}Hæv et hjørne af landet
@@ -404,6 +410,7 @@ STR_019A_YEARS							:{COMMA16} år ({COMMA16})
 STR_019B_YEARS							:{RED}{COMMA16} år ({COMMA16})
 ############ range for service numbers ends
 
+STR_019C_ROAD_VEHICLE						:Vejkøretøj
 STR_019D_AIRCRAFT						:Fly
 STR_019E_SHIP							:Skibe
 STR_019F_TRAIN							:Tog
@@ -506,6 +513,7 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Vælg 'New style musik' programmet
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Vælg 'Custom 1' (brugerdefineret) programmet
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Select 'Custom 2' (brugerdefineret) programmet
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Ryd det valgte program (Gælder kun Custom1/Custom2)
+STR_01F9_SAVE_MUSIC_SETTINGS					:{BLACK}Gem opsætning for musik
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klik på et musiknummer for at tilføje det til programlisten (Kun for Custom1/Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Skift mellem tilfældig afspilning af/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Vis musiknummer valg vinduet
@@ -690,6 +698,7 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Køretøjsdesignnavne
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standard
 STR_02BF_CUSTOM							:Brugerdefineret
+STR_02C0_SAVE_CUSTOM_NAMES					:{BLACK}Gem ikke standard navne
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Køretøjsdesignnavne valg
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Gem brugerdefinerede køretøjsdesignnavne til disken
 
@@ -704,12 +713,16 @@ STR_NEWGRF_SETTINGS						:Newgrf indstillinger
 STR_NEWGRF_SETTINGS2						:Newgrf indstillinger
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Luk ALLE vinduer
+STR_CLOSE_ALL_WINDOWS2						:Luk ALLE vinduer
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Bynavne vist
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Bynavne vist
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stationsnavne vist
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Stationsnavne vist
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Skilte vist
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Skilte vist
+STR_WAYPOINTS_DISPLAYED						:{CHECKMARK}{SETX 12}Kontrolsteder vist
+STR_WAYPOINTS_DISPLAYED2					:{SETX 12}Kontrolsteder vist
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Fuld animation
 STR_02D0_FULL_ANIMATION						:{SETX 12}Fuld animation
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Fuld detalje
@@ -762,13 +775,16 @@ STR_02F8_EVERY_3_MONTHS						:Hver 3. måned
 STR_02F9_EVERY_6_MONTHS						:Hver 6. måned
 STR_02FA_EVERY_12_MONTHS					:Hver 12. måned
 STR_02FB_START_A_NEW_GAME					:{BLACK}Start et nyt spil
+STR_02FC_LOAD_A_SAVED_GAME					:{BLACK}Hent et gemt spil
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Se demonstrationer/tutorials
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Lav en brugerdefineret verden/scenarie
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Vælg singleplayer spil
+STR_0300_SELECT_MULTIPLAYER_GAME				:{BLACK}Vælg flerspiller spil med 2-8 spillere
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Vis spilindstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Vis sværhedsgrad indstillinger
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Start et nyt spil, med et brugerdefineret scenarie
 STR_0304_QUIT							:{BLACK}Afslut
+STR_0305_QUIT_OPENTTD						:{BLACK}Afslut 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Se demonstration/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...kan kun bygges i byer
@@ -823,23 +839,31 @@ STR_TOWNNAME_ROMANIAN						:Rumænske
 STR_TOWNNAME_CZECH						:Tjekkiske
 ############ end of	townname region
 
+STR_CURR_GBP							:Pund ({POUNDSIGN})
+STR_CURR_USD							:Dollar ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Østrisk Shilling (ATS)
 STR_CURR_BEF							:Belgisk Franc (BEF)
 STR_CURR_CHF							:Sweiziske Franc (CHF)
 STR_CURR_CZK							:Tjekkiske Koruna (CZK)
+STR_CURR_DEM							:Deutschmark (DEM)
 STR_CURR_DKK							:Danske Kroner (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Finske Markka (FIM)
+STR_CURR_FRF							:Franc (FRF)
 STR_CURR_GRD							:Græske Drachmer (GRD)
+STR_CURR_HUF							:Ungarnske Forint (HUF)
 STR_CURR_ISK							:Islandske Kroner (ISK)
 STR_CURR_ITL							:Italienske Lire (ITL)
 STR_CURR_NLG							:Hollandske Guilder (NLG)
 STR_CURR_NOK							:Norske Kroner (NOK)
+STR_CURR_PLN							:Polske Zloty (PLN)
 STR_CURR_ROL							:Rumænske Lei
 STR_CURR_RUR							:Russiske Rubel (rur)
 STR_CURR_SEK							:Svenske Kroner (SEK)
 
+STR_CURR_CUSTOM							:Brugerdefineret...
 
 STR_OPTIONS_LANG						:{BLACK}Sprog
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -927,6 +951,7 @@ STR_CONFIG_PATCHES_OFF						:Fra
 STR_CONFIG_PATCHES_ON						:Til
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Vis køretøjets fart i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
@@ -980,14 +1005,27 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Deaktiver lastbiler for compute
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
+STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}{STRING} dage/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}slået fra
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Standard service interval for fly: {ORANGE}{STRING} dage/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Standard service interval for fly: {ORANGE}slået fra
+STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING} dage/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Start dato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Center
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Højre
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Brugerflade
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
@@ -1003,7 +1041,10 @@ STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Skift indstillingsværdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
 
-
+STR_TEMPERATE_LANDSCAPE						:Tempereret klima
+STR_SUB_ARCTIC_LANDSCAPE					:Arktisk klima
+STR_SUB_TROPICAL_LANDSCAPE					:Tropisk klima
+STR_TOYLAND_LANDSCAPE						:Legetøjsland
 
 STR_CHEATS							:{WHITE}Snydefunktioner
 STR_CHEATS_TIP							:{BLACK}Checkboxes viser om du bruger denne snydefunktion before
@@ -1013,23 +1054,47 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Spil som spiller: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
-
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Skift klima: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Retning mod {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Kør uden stop via {WAYPOINT}
 
+STR_WAYPOINTNAME_CITY						:Kontrolsted {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL					:Kontrolsted {TOWN} #{COMMA16}
+STR_LANDINFO_WAYPOINT						:Kontrolsted
 
+STR_WAYPOINT							:{WHITE}Kontrolsted
+STR_WAYPOINT_GRAPHICS_TIP					:{BLACK}Vælg udsendene på kontrolsteder
 
 STR_WAYPOINT_VIEWPORT						:{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW						:{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME						:{WHITE}Omdøb kontrolsted
 
+STR_CANT_CHANGE_WAYPOINT_NAME					:{WHITE}Kan ikke omdøbe kontrolsted...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP				:{BLACK}Ændre jernbane til kontrolsted
+STR_CANT_BUILD_TRAIN_WAYPOINT					:{WHITE}Kan ikke bygge kontrolsted for tog her...
+STR_CANT_REMOVE_TRAIN_WAYPOINT					:{WHITE}Kan ikke fjerne kontrolsted for tog her...
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Byg togskinner ved hjælp af autotogskinner mode
 
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...der er ingen byer i dette scenarie
 
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Er du sikker på, at ud vil have lavet et tilfældigt landskab?
+STR_MANY_RANDOM_TOWNS						:{BLACK}Mange tilfældige byer
+STR_RANDOM_TOWNS_TIP						:{BLACK}Dæk kortet med tilfældigt placeret byer
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Mange tilfældige industrier
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Dæk kortet med tilfældigt placeret industrier
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Kan ikke lave industrier...
+
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Åben landskabsarkitektursværktøjslinien for at hæve/sænke land, plante træer, osv.
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Landskabsværktøjer
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Udjævn land
 
 
 STR_TREES_RANDOM_TYPE						:{BLACK}Træer af tilfældig type
@@ -1056,7 +1121,9 @@ STR_STATION_DRAG_DROP						:{BLACK}Byg en station via træk & slip
 
 STR_FAST_FORWARD						:{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY						:{WHITE}Tidligere beskeder
-
+STR_MESSAGE_HISTORY_TIP						:{BLACK}En liste of seneste nyheder
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Slå alle fra
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Slå alle til
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Byg Kulmine
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Plant Skov
@@ -1093,12 +1160,17 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Ombyg toget til at køre med den m
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 
-
+TEMP_AI_IN_PROGRESS						:{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet
+TEMP_AI_ACTIVATED						:{WHITE}Advarsel: den nye kunstige intelligents er i et tidligt stadie! Lige nu virker den kun med busser og lastbiler!
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER						:{WHITE}Netværksspil
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Dette er det navn, som andre spillere vil kende dig ved
+STR_NETWORK_CONNECTION						:{BLACK}Forbindelse:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Vælg mellem et internet baseret eller et lokalnet baseret spil
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start en ny server
@@ -1108,37 +1180,181 @@ STR_NETWORK_GAME_NAME_TIP					:{BLACK}Spillets navn
 STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Sprog, server version, osv.
 STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klik på et spil fra listen for at vælge det
 
+STR_NETWORK_FIND_SERVER						:{BLACK}Find server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Søg netværket for en server
+STR_NETWORK_ADD_SERVER						:{BLACK}Tilføj server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Tilføj en server til listen, som altid vil blive checket for om den kører et spil
+STR_NETWORK_ENTER_IP						:{BLACK}Skriv adressen på en server
 
-
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Klienter
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Klienter online / max klienter
+STR_NETWORK_GAME_INFO						:{SILVER}SPIL INFO
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klienter:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Sprog:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Klima:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Størrelse:  {WHITE}{COMMA16}x{COMMA16}
-STR_NETWORK_PASSWORD						:{BLACK}Kodeord:
+STR_NETWORK_SERVER_VERSION					:{SILVER}Server version:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server adresse:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Start dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Nuværende dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Beskyttet af kodeord!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVEREN ER OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVEREN ER FULD
+STR_NETWORK_VERSION_MISMATCH					:{SILVER}Din og serverens version passer ikke sammen
+
+STR_NETWORK_JOIN_GAME						:{BLACK}Tilslut dig et spil
 
 
+STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start et nyt netværksspil
 
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spillets navn:
+STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Navnet vil blive vist til andre spillere i menuen, hvor man vælger netværksspil
+STR_NETWORK_SET_PASSWORD					:{BLACK}Set kodeord
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 STR_NETWORK_SELECT_MAP						:{BLACK}Vælg et kort:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilket kort vil du spille?
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimalt antal tilladte klienter:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Vælg det maksimale antal klienter. Det er ikke nødvendigt at fylde dem alle
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
+STR_NETWORK_LAN_INTERNET					:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (bekendtgør spillet)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klienter
+STR_NETWORK_3_CLIENTS						:3 klienter
+STR_NETWORK_4_CLIENTS						:4 klienter
+STR_NETWORK_5_CLIENTS						:5 klienter
+STR_NETWORK_6_CLIENTS						:6 klienter
+STR_NETWORK_7_CLIENTS						:7 klienter
+STR_NETWORK_8_CLIENTS						:8 klienter
+STR_NETWORK_9_CLIENTS						:9 klienter
+STR_NETWORK_10_CLIENTS						:10 klienter
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Talt sprog:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME						:{BLACK}Start spillet
+STR_NETWORK_START_GAME_TIP					:{BLACK}Start et nyt netværksspil med et tilfældigt kort eller et scenarie
+STR_NETWORK_LOAD_GAME						:{BLACK}Hent et spil
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Fortsyt et tidligere gemt spil med flere spillere (sør for at få den rigtige virksomhed)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hent et scenarie
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start et netværksspil fra et scenarie
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Hvilketsomhelst
+STR_NETWORK_LANG_ENGLISH					:Engelsk
+STR_NETWORK_LANG_GERMAN						:Tysk
+STR_NETWORK_LANG_FRENCH						:Fransk
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY						:{WHITE}Netværksspils lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Forbereder tilslutning:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}En liste over alle selskaber i spillet lige nu. Du kan enten tilslutte dig et eller starte et nyt, hvis der er plads til flere selskaber
+STR_NETWORK_NEW_COMPANY						:{BLACK}Ny virksomhed
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Lav en ny virksomhed
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Tilskuer spil
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Se et spil som tilskuer
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Tilslut dig selskab
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Help manage this company
+STR_NETWORK_REFRESH						:{BLACK}Genopfrisk serveren
+STR_NETWORK_REFRESH_TIP						:{BLACK}Genopfrisk server info
+
+STR_NETWORK_COMPANY_INFO					:{SILVER}VIRKSOMHEDSINFO
+
+STR_NETWORK_COMPANY_NAME					:{SILVER}Virksomhedens navn:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Grundlagt:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Virksomhedens værdi:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Nuværende beholdning:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Sidste års indtægt:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Præstation:  {WHITE}{NUMU16}
+
+STR_NETWORK_VEHICLES						:{SILVER}Køretøjer:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stationer:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Spillere:  {WHITE}{STRING}
+
+STR_NETWORK_CONNECTING						:{WHITE}Forbinder...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Forbinder..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Gdokender..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Venter..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Henter kort..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Behandler data..
+STR_NETWORK_CONNECTING_6					:{BLACK}(6/6) Registere..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Fetching game info..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Fetching company info..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klient(er) foran dig
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes hentet indtil videre
 
+STR_NETWORK_DISCONNECT						:{BLACK}Afbryd forbindelse
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Skrive den tekst, som du vil sende
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Skriv det beløb, som du ønsker at give
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Serveren er beskyttet. Skriv kodeordet
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Virksomheden er beskyttet. Skriv kodeordet
+STR_NETWORK_CLIENT_LIST						:{WHITE}Klient Liste
 
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Kunne ikke finde nogen netværksspil
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Serveren besvarede ikke denne forspørgsel
+STR_NETWORK_ERR_DESYNC						:{WHITE} Netværks synkroniseringsfejl
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Netværksforbindelse mistet
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Kunne ikke hente gemt spil
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Kunne ikke starte serveren
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Kunne ikke forbinde
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Forbindelsen #{NUMU16} svare ikke
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Der opstod en protokol-fejl og forbindelse blev lukket
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revisionen af denne klient passer ikke sammen med serverens revision
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Forkert kodeord
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serveren er fuld
+STR_NETWORK_ERR_KICKED						:{WHITE} Du blev smidt ud af spillet
+STR_NETWORK_ERR_CHEATER						:{WHITE} Snyderi er ikke tilladt på denne server
 
-
+STR_NETWORK_ERR_LEFT						:har forladt spillet
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:generel fejl
+STR_NETWORK_ERR_CLIENT_DESYNC					:synkroniseringsfejl
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:kunne ikke hente kortet
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:forbindelsen blev afbrudt
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokol fejl
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:Not Authorised
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:modtog en underlig pakke
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:forkert revision
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:navnet er allerede i brug
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:wrong game-password
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:forkert player-id i DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:smidt ud af serveren
+STR_NETWORK_ERR_CLIENT_CHEATER					:prøvede at snyde
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:har tilsluttet sig spillet
+STR_NETWORK_GIVE_MONEY						:gav din virksomhed nogle penge ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:du gav {STRING} nogle penge ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] Til {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Private] Til {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:har skiftet navn til
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serveren har lukket ned for dette spil
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Serveren genstarter...{}Vent venligst...
+
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Klient
+
+STR_NETWORK_CLIENTLIST_NONE					:(ingen)
+STR_NETWORK_CLIENTLIST_KICK					:Smid ud
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Giv penge
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Tal til alle
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Tal til virksomhed
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privat besked
 
 
-
-
+STR_NETWORK_SEND						:{BLACK}Send
 
 ############ end network gui strings
 
@@ -1214,7 +1430,7 @@ STR_1802_ROAD_CONSTRUCTION					:{WHITE}Vej Konstruktion
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Vælg vejbro
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Kan ikke bygge vej her...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Kan ikke fjerne vej herfra...
-STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientering af lastbilsdepot
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Retning for garage
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Kan ikke bygge lastbilsdepot her...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Kan ikke bygge rutebilsstation...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Kan ikke bygge lasteplads...
@@ -1826,6 +2042,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Flyt firmaets hovedkvarter for 1% a
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan ikke bygge firmaets hovedkvarter...
 STR_7072_VIEW_HQ						:{BLACK}Vis HK
 STR_RELOCATE_HQ							:{BLACK}Flyt hovedkvarter
+STR_COMPANY_PASSWORD						:{BLACK}Kodeord
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Beskydt din virksomhed med et kodeord for at undgå at fremmede slutter sig til dig
+STR_SET_COMPANY_PASSWORD					:Set virksomhedens kodeord
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Skift mellem stort/lille vindue
@@ -2364,6 +2583,7 @@ STR_GO_TO_SHIP_DEPOT						:Sejl til {TOWN} Skip Depot
 SERVICE_AT_SHIP_DEPOT						:Service i {TOWN} Skip Depot
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Lufthavne
 STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Kan ikke bygge en lufthavn her...
 STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Flyhangar
 STR_A003_NEW_AIRCRAFT						:{BLACK}Nyt fly
@@ -2450,6 +2670,7 @@ STR_BUILD_DATE							:{BLACK}Produceret: {LTBLUE}{DATE_LONG}
 STR_MULTIPLAYER_PAUSED						:{WHITE}Spillet er i pause.{}Kommandoen kan ikke køres
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Præstations oversigt
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detailer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}({COMMA32}/{COMMA32})
 STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
@@ -2466,6 +2687,14 @@ STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Penge:
 STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Total:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Antallet af stationer. Alle dele af en station (f.eks. tog station, bus station, lufthavn) tæller med, også selvom de er sat sammen til en station
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Profit for det køretøj med lavest indkomst (af alle køretøjer ændre end 2 år)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Indkomst i den måned med lavest profit i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Indkomst i den måned med højest profit i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Antal enheder fragtet i de sidste 4 kvartaler
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Antallet af lasttyper fragtet i sidste kvartal
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Kapital denne virksomhed har i banken
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Har du et stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Samlet point af max point
 
@@ -2477,6 +2706,27 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er ingen newgrf filer installeret!
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Brugerdefineret møntfod
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Kurs: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Tilskuer:
+STR_CURRENCY_PREFIX						:{LTBLUE}Præfiks:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Endetillæg:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Skift til Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Skift til Euro: {ORANGE}aldrig
+STR_CURRENCY_PREVIEW						:{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Skift brugerdefineret møntfods parametre
 
+STR_TRAIN							:{BLACK}{TRAIN}
+STR_LORRY							:{BLACK}{LORRY}
+STR_PLANE							:{BLACK}{PLANE}
+STR_SHIP							:{BLACK}{SHIP}
 
+STR_SCHEDULED_TRAINS						:{WHITE}{STATION} - {COMMA16} Tog
+STR_SCHEDULED_ROAD_VEHICLES					:{WHITE}{STATION} - {COMMA16} Køretøjer
+STR_SCHEDULED_AIRCRAFT						:{WHITE}{STATION} - {COMMA16} Fly
+STR_SCHEDULED_SHIPS						:{WHITE}{STATION} - {COMMA16} Skibe
 
+STR_SCHEDULED_TRAINS_TIP					:{BLACK}Vis alle tog, som har denne station i deres køreplan
+STR_SCHEDULED_ROAD_VEHICLES_TIP					:{BLACK}Vis alle køretøjer, som har denne station i deres køreplan
+STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
+STR_SCHEDULED_SHIPS_TIP						:{BLACK}Vis alle skibe, som har denne station i deres ruteplan

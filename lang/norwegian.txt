@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Avslutt gjeldende spill
 STR_015F_QUIT							:Avslutt OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Er du sikker på du vil avslutte dette spillet ?
 STR_0161_QUIT_GAME						:{WHITE}Avslutt spill
+STR_SORT_ORDER_TIP						:{BLACK}Velg sorterings rekkefølge (descending/ascending)
+STR_SORT_CRITERIA_TIP						:{BLACK}Velg sorterings kriterie
 SRT_SORT_BY							:{BLACK}Sorter etter
 
 STR_SORT_BY_POPULATION						:{BLACK}Folketall
@@ -740,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Innstillinger for ny grafikk
 STR_NEWGRF_SETTINGS2						:Innstillinger for ny grafikk
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Lukk ALLE vindu
+STR_CLOSE_ALL_WINDOWS2						:Lukk ALLE Vindu
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Vis bynavn
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Vis bynavn
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Vis stasjonsnavn
@@ -864,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumensk
 STR_TOWNNAME_CZECH						:Tsjekkisk
 ############ end of	townname region
 
+STR_CURR_GBP							:Pund ({POUNDSIGN})
+STR_CURR_USD							:Dollar ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Østerriksk Shilling (ATS)
 STR_CURR_BEF							:Belgisk Franc (BEF)
 STR_CURR_CHF							:Sveitsisk Franc (CHF)
 STR_CURR_CZK							:Tsjekkisk Koruna (CZK)
+STR_CURR_DEM							:Tyske mark (DEM)
 STR_CURR_DKK							:Dansk Krone (DKK)
+STR_CURR_ESP							:Pesetas (ESP)
 STR_CURR_FIM							:Finsk Markka (FIM)
+STR_CURR_FRF							:Frank (FRF)
 STR_CURR_GRD							:Gresk Drachma (GRD)
+STR_CURR_HUF							:Ungarsk Forint (HUF)
 STR_CURR_ISK							:Islandsk Krona (ISK)
 STR_CURR_ITL							:Italiensk Lira (ITL)
 STR_CURR_NLG							:Hollandsk Guilder (NLG)
 STR_CURR_NOK							:Norsk Krone (NOK)
+STR_CURR_PLN							:Polsk Zloty (PLN)
 STR_CURR_ROL							:Rumensk Leu (Lei)
 STR_CURR_RUR							:Russisk Rubel (rur)
 STR_CURR_SEK							:Söta Brors Krona (SEK)
 
+STR_CURR_CUSTOM							:Custom...
 
 STR_OPTIONS_LANG						:{BLACK}Språk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1079,6 +1091,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Har kurs mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Har kurs mot {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Kjør via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Gå uten stopp via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Kontrollpunkt {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollpunkt {TOWN} #{COMMA16}
@@ -1234,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilket kart vil du spille?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimalt tillatte klienter
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Velg maksimalt antall klienter. Alle plassene trenger ikke bli tatt.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internett
 STR_NETWORK_INTERNET_ADVERTISE					:Internett (annonsér)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1327,6 +1342,7 @@ STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Klientversjonen er ikke den samme so
 STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Feil passord.
 STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Tjeneren er full
 STR_NETWORK_ERR_KICKED						:{WHITE} Du ble sparket ut av tjeneren
+STR_NETWORK_ERR_CHEATER						:{WHITE} Juksing er forbudt på denne serveren
 
 STR_NETWORK_ERR_LEFT						:har forlatt spillet
 ############ Leave those lines in this order!!
@@ -1342,13 +1358,29 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:navnet er brukt av noen andre
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:feil passord til spillet
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:feil spiller-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:sparket ut av tjeneren
+STR_NETWORK_ERR_CLIENT_CHEATER					:prøvde å jukse
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:har blitt med i spillet
 STR_NETWORK_GIVE_MONEY						:gav deg penger ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:Du gav {STRING} noen penger ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Lag] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Lag] Til {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privat] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privat] Til {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:har skiftet navn til
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Tjeneren avsluttet spillet
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Tjeneren starter på nytt...{}Vennligst vent
 
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Klient
 
+STR_NETWORK_CLIENTLIST_NONE					:(ingen)
+STR_NETWORK_CLIENTLIST_KICK					:Kast ut
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Gi penger
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Snakk til alle
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Snakk til firma
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privat beskjed
 
 
 STR_NETWORK_SEND						:{BLACK}Send
@@ -2039,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Gjenoppbygg spelskapets hovedkvarte
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan ikke bygge hovedkontor...
 STR_7072_VIEW_HQ						:{BLACK}Se HK
 STR_RELOCATE_HQ							:{BLACK}Omplasser HK
+STR_COMPANY_PASSWORD						:{BLACK}Passord
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Passordbeskytt ditt firma for å forhindre uautoriserte brukere fra å bli med. Bruk '*' for å tømme passord.
+STR_SET_COMPANY_PASSWORD					:Velg firmapassord
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Verdenskrise!{}{}Økonomer frykter det verste. Nedgangstider i møte.
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Verdenskrise over!{}{}Opptur i markedet gir industrien selvsikkerheten tilbake.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Bytte mellom stor/liten vindustørrelse
@@ -2700,6 +2735,14 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Der er for tiden ikke noen nye grafikk
 STR_NEWGRF_FILENAME						:{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Vanlig valuta
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Deler:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefiks:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Bytt til Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Bytt til Euro: {ORANGE}aldri
+STR_CURRENCY_PREVIEW						:{LTBLUE}Forhåndsvis: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Bytt vanlig valutagrense
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

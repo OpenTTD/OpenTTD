@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Configuración Newgrf
 STR_NEWGRF_SETTINGS2						:Configuración Newgrf
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Cerrar TODAS las ventanas
+STR_CLOSE_ALL_WINDOWS2						:Cerrar TODAS las ventanas
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Ver nombres de poblaciones
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Ver nombres de poblaciones
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Ver nombres de estaciones
@@ -866,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumano
 STR_TOWNNAME_CZECH						:Checo
 ############ end of	townname region
 
+STR_CURR_GBP							:Libras ({POUNDSIGN})
+STR_CURR_USD							:Dólares ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Chelín Austriaco (ATS)
 STR_CURR_BEF							:Franco Belga (BEF)
 STR_CURR_CHF							:Franco Suizo (CHF)
 STR_CURR_CZK							:Corona Checa (CZK)
+STR_CURR_DEM							:Marcos (DEM)
 STR_CURR_DKK							:Corona Danesa (DKK)
+STR_CURR_ESP							:Pesetas (ESP)
 STR_CURR_FIM							:Markka Finlandés (FIM)
+STR_CURR_FRF							:Francos (FRF)
 STR_CURR_GRD							:Dracma Griego (GRD)
+STR_CURR_HUF							:Florines Hungaros (HUF)
 STR_CURR_ISK							:Corona de Islandia (ISK)
 STR_CURR_ITL							:Lira Italiana (ITL)
 STR_CURR_NLG							:Florín Holandés (NLG)
 STR_CURR_NOK							:Corona Noruega(NOK)
+STR_CURR_PLN							:Zloty Polaco (PLN)
 STR_CURR_ROL							:Leu Rumano (Lei)
 STR_CURR_RUR							:Rublo Ruso (rur)
 STR_CURR_SEK							:Corona Sueca (SEK)
 
+STR_CURR_CUSTOM							:Personalizado...
 
 STR_OPTIONS_LANG						:{BLACK}Idioma
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1237,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿En qué mapa desea jugar?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo clientes permitidos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Seleccione un número máximo de clientes. No todos los slots serán ocupados.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (anuncio)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2059,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Reubica la sede de la empresa a cua
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}No se puede construir la sede de la empresa...
 STR_7072_VIEW_HQ						:{BLACK}Ver Sede
 STR_RELOCATE_HQ							:{BLACK}Reubicar Sede
+STR_COMPANY_PASSWORD						:{BLACK}Contraseña
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Protege por contraseña tu empresa para prevenir que usuarios no autorizados se unan a ella.
+STR_SET_COMPANY_PASSWORD					:Configurar contraseña de empresa
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas mientras la economía se hunde!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da ánimos a las industrias mientras la economía se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Cambiar entre tamaño de ventana grande/pequeño
@@ -2720,6 +2735,15 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}¡No tiene ningún fichero newgrf instal
 STR_NEWGRF_FILENAME						:{BLACK}Fichero:
 STR_NEWGRF_GRF_ID						:{BLACK}ID GRF:
 
+STR_CURRENCY_WINDOW						:{WHITE}Moneda personalizada
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Separador:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefijo:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Sufijo:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Cambio al Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Cambio al Euro: {ORANGE}nunca
+STR_CURRENCY_PREVIEW						:{LTBLUE}Previa: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Cambiar parámetro de moneda personalizada
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}

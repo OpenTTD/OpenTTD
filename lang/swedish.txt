@@ -742,6 +742,8 @@ STR_NEWGRF_SETTINGS						:Newgrf inställningar
 STR_NEWGRF_SETTINGS2						:Newgrf inställningar
 STR_GAMEOPTMENU_0A						:
 STR_GAMEOPTMENU_0B						:
+STR_CLOSE_ALL_WINDOWS						:Stänga alla fönster
+STR_CLOSE_ALL_WINDOWS2						:Stäng alla fönster
 STR_02C9_TOWN_NAMES_DISPLAYED					:{CHECKMARK}{SETX 12}Stadsnamn visas
 STR_02CA_TOWN_NAMES_DISPLAYED					:{SETX 12}Stadsnamn visas
 STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Stationsnamn visas
@@ -866,23 +868,31 @@ STR_TOWNNAME_ROMANIAN						:Rumänska
 STR_TOWNNAME_CZECH						:Tjeckiska
 ############ end of	townname region
 
+STR_CURR_GBP							:Pund ({POUNDSIGN})
+STR_CURR_USD							:Dollar ($)
 STR_CURR_EUR							:Euro (¤)
 STR_CURR_YEN							:Yen ({YENSIGN})
 STR_CURR_ATS							:Österrikiska shilling (ATS)
 STR_CURR_BEF							:Belgiska franc (BEF)
 STR_CURR_CHF							:Schweiziska franc (CHF)
 STR_CURR_CZK							:Tjeckiska kronor (CZK)
+STR_CURR_DEM							:Tyska mark (DEM)
 STR_CURR_DKK							:Danska kronor (DKK)
+STR_CURR_ESP							:Peseta (ESP)
 STR_CURR_FIM							:Finska mark (FIM)
+STR_CURR_FRF							:Franc (FRF)
 STR_CURR_GRD							:Grekiska drachmer (GRD)
+STR_CURR_HUF							:Ungerska Forint (HUF)
 STR_CURR_ISK							:Isländska kronor (ISK)
 STR_CURR_ITL							:Italienska lire (ITL)
 STR_CURR_NLG							:Holländska guilder (NLG)
 STR_CURR_NOK							:Norska kronor (NOK)
+STR_CURR_PLN							:Polska Zloty (PLN)
 STR_CURR_ROL							:Rumänsk Leu
 STR_CURR_RUR							:Ryska rubel (rur)
 STR_CURR_SEK							:Svenska kronor (SEK)
 
+STR_CURR_CUSTOM							:Egen...
 
 STR_OPTIONS_LANG						:{BLACK}Språk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1043,8 +1053,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position av verktygsraden: {ORANGE}{
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Vänster
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centrerad
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Höger
-STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Fönster snäpp radie: {ORANGE}{STRING} px
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Fönster snäpp radie: {ORANGE}avaktiverad
+STR_CONFIG_PATCHES_SNAP_RADIUS					:{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED				:{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Konstruktion
@@ -1111,8 +1121,8 @@ STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Många slumpmässiga industrier
 STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Täck kartan med slumpmässigt placerade industrier
 STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Kan inte generera industrier...
 
-STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Öppna landskapsverktygen för att bla höja/sänka land, plantera träd, osv
-STR_LANDSCAPING_TOOLBAR						:{WHITE}Landskapsverktygen
+STR_LANDSCAPING_TOOLBAR_TIP					:{BLACK}Öppna landskapsarkitektursverktygen för att bla höja/sänka land, plantera träd, osv
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Landskapsarkitektur
 STR_LEVEL_LAND_TOOLTIP						:{BLACK}Utjämna land
 
 
@@ -1212,7 +1222,7 @@ STR_NETWORK_GAME_INFO						:{SILVER}SPELINFO
 STR_ORANGE							:{ORANGE}{STRING}
 STR_NETWORK_CLIENTS						:{SILVER}Klienter:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE						:{SILVER}Språk:  {WHITE}{STRING}
-STR_NETWORK_TILESET						:{SILVER}Miljö:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Klimat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Kartstorlek:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Serverversion:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS					:{SILVER}Serveradress:  {WHITE}{STRING}
@@ -1237,6 +1247,8 @@ STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Vilken karta vill du spela?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE					:Internet (publik)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1343,7 +1355,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:inte godkänd
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:mottog konstigt paket
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:fel version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:namnet används redan
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:fel spel-lösenord
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:fel spellösenord
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:fel spelar-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED					:utkastad av servern
 STR_NETWORK_ERR_CLIENT_CHEATER					:försökte fuska
@@ -1447,7 +1459,7 @@ STR_1802_ROAD_CONSTRUCTION					:{WHITE}Bygg väg
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Välj vägbro
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Kan inte bygga väg här...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Kan inte ta bort väg här...
-STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Väg riktning för bussgarage
+STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Riktning för bussgarage
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Kan inte bygga bussgarage här...
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Kan inte bygga busshållplats...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Kan inte bygga lastbilsbrygga...
@@ -1516,7 +1528,7 @@ STR_202C_FROM_TO						:{ORANGE}{STRING} från {STATION} till {STATION}{YELLOW} ({
 STR_202D_UNTIL							:{YELLOW}, tills {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED				:{BLACK}{BIGFONT}Subventionen har gått ut:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE				:{BLACK}{BIGFONT}Subventionen gäller inte mer:{}{}{STRING} från {STATION} till {STATION} är inte längre subventionerad
-STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Ny subvention:{}{}Första {STRING}transporten från {STRING} till {STRING} får ett års subvention från kommunen!
+STR_2030_SERVICE_SUBSIDY_OFFERED				:{BLACK}{BIGFONT}Ny subvention:{}{}Första transporten av {STRING} från {STRING} till {STRING} får ett års subvention från kommunen!
 STR_2031_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger 50% extra nästa år!
 STR_2032_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger dubbelt så mycket nästa år!
 STR_2033_SERVICE_SUBSIDY_AWARDED				:{BLACK}{BIGFONT}Subvention tilldelad {STRING}!{}{}{STRING} från {STATION} till {STATION} ger tre gånger så mycket nästa år!
@@ -1565,7 +1577,7 @@ STR_205B_TEAPOT_HOUSE						:Tekanne-Hus
 STR_205C_PIGGY_BANK						:Spargris
 
 ##id 0x2800
-STR_LANDSCAPING							:
+STR_LANDSCAPING							:Landskapsarkitektur
 STR_2800_PLANT_TREES						:Plantera träd
 STR_2801_PLACE_SIGN						:Placera skylt
 STR_2802_TREES							:{WHITE}Träd
@@ -1622,8 +1634,8 @@ STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} tar inte längre emot {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} tar inte längre emot {STRING} och {STRING}
 STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} tar nu emot {STRING}
 STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} tar nu emot {STRING} och {STRING}
-STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Riktning för busshållplats
-STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Riktning för lastbilsbrygga
+STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Busshållplatsriktning
+STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Lastbilsbryggsriktning
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}För nära en annan busshållplats
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK				:{WHITE}För nära en annan lastbilsbrygga
 STR_3046_MUST_DEMOLISH_BUS_STATION				:{WHITE}Måste riva busshållplats först
@@ -1762,8 +1774,8 @@ STR_4838_IMPROVED_FARMING_METHODS				:{BLACK}{BIGFONT}Nya jordbruksmetoder vid {
 STR_4839_PRODUCTION_DOWN_BY_50					:{BLACK}{BIGFONT}Produktionen vid {TOWN} {STRING} går ned med 50%
 STR_483A_INSECT_INFESTATION_CAUSES				:{BLACK}{BIGFONT}Problem med insekter orsakar kris vid {TOWN} {STRING}!{}Produktionen ned med 50%
 STR_483B_CAN_ONLY_BE_POSITIONED					:{WHITE}...kan bara placeras nära kartans kant
-STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}{STRING} produktionen vid {TOWN} {STRING} upp med {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}{STRING} produktionen vid {TOWN} {STRING} ner med {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP						:{BLACK}{BIGFONT}Produktionen av {STRING} vid {TOWN} {STRING} upp med {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}Produktionen av {STRING} vid {TOWN} {STRING} ned med {COMMA16}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Tåg i tunnel
@@ -1981,7 +1993,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graf över vinst
 STR_7026_BANK_BALANCE						:{WHITE}Banksaldo
 STR_7027_LOAN							:{WHITE}Lån
-STR_MAX_LOAN							:{WHITE}Max lån:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN							:{WHITE}Maxlån:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Låna {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Återbetala {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1998,7 +2010,7 @@ STR_7034_CLICK_ON_SELECTED_NEW_COLOR				:{BLACK}Fälj ny färg
 STR_7035_INCREASE_SIZE_OF_LOAN					:{BLACK}Öka lånets storlek
 STR_7036_REPAY_PART_OF_LOAN					:{BLACK}Återbetala en del av lånet
 STR_7037_PRESIDENT						:{WHITE}{STRING}{}{GOLD}(President)
-STR_7038_INAUGURATED						:{GOLD}Började: {WHITE}{NUMU16}
+STR_7038_INAUGURATED						:{GOLD}Etablerades: {WHITE}{NUMU16}
 STR_7039_VEHICLES						:{GOLD}Fordon:
 STR_703A_TRAIN							:{WHITE}{COMMA16} tåg
 STR_703B_TRAINS							:{WHITE}{COMMA16} tåg
@@ -2059,6 +2071,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Bygg om huvudkontor på annan plats 
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Kan inte bygga huvudkontor här...
 STR_7072_VIEW_HQ						:{BLACK}Visa högkvarter
 STR_RELOCATE_HQ							:{BLACK}Omlokalisera huvudkontor
+STR_COMPANY_PASSWORD						:{BLACK}Lösenord
+STR_COMPANY_PASSWORD_TOOLTIP					:{BLACK}Lösenordsskydda ditt företag för att förhindra att obehöriga spelare ansluter.
+STR_SET_COMPANY_PASSWORD					:Ange företagets lösenord
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Växla stor/liten fönsterstorlek
@@ -2684,7 +2699,7 @@ STR_BUILD_DATE							:{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 STR_MULTIPLAYER_PAUSED						:{WHITE}Spelet är pausat.{}Går ej att göra
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Detaljerade prestandabetyg
-STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detaljerat
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}({COMMA32}/{COMMA32})
 STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
@@ -2720,6 +2735,15 @@ STR_NEWGRF_NO_FILES_INSTALLED					:{BLACK}Det finns för närvarande inga newgrf f
 STR_NEWGRF_FILENAME						:{BLACK}Filnamn:
 STR_NEWGRF_GRF_ID						:{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW						:{WHITE}Egen valuta
+STR_CURRENCY_EXCHANGE_RATE					:{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR						:{LTBLUE}Avskiljare:
+STR_CURRENCY_PREFIX						:{LTBLUE}Prefix:
+STR_CURRENCY_SUFFIX						:{LTBLUE}Suffix:
+STR_CURRENCY_SWITCH_TO_EURO					:{LTBLUE}Går över till Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER				:{LTBLUE}Går över till Euro: {ORANGE}aldrig
+STR_CURRENCY_PREVIEW						:{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER					:{BLACK}Ändra valutaparametrar
 
 STR_TRAIN							:{BLACK}{TRAIN}
 STR_LORRY							:{BLACK}{LORRY}
