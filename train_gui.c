@@ -185,7 +185,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			int sel_eng;
 			sel_eng = WP(w,buildtrain_d).sel_engine;
 			if (sel_eng != -1)
-				DoCommandP(w->window_number, sel_eng, 0, (_rail_vehicle_info[sel_eng].flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+				DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 		}	break;
 		case 6:
 			WP(w,buildtrain_d).rename_engine = WP(w,buildtrain_d).sel_engine;
@@ -912,9 +912,7 @@ static void TrainDetailsCargoTab(Vehicle *v, int x, int y)
 
 static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
 {
-	const RailVehicleInfo *rvi;
-
-	rvi = &_rail_vehicle_info[v->engine_type];
+	const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 
 	if (!(rvi->flags & RVI_WAGON)) {
 		SetDParam(0, GetCustomEngineName(v->engine_type));

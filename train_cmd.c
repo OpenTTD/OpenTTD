@@ -41,7 +41,7 @@ void UpdateTrainAcceleration(Vehicle *v)
 
 	// compute stuff like max speed, power, and weight.
 	do {
-		const RailVehicleInfo *rvi = &_rail_vehicle_info[u->engine_type];
+		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
 		// power is sum of the power for all engines
 		power += rvi->power;
@@ -96,7 +96,7 @@ static int GetRealisticAcceleration(Vehicle *v)
 
 	// compute inclination force and number of curves.
 	do {
-		const RailVehicleInfo *rvi = &_rail_vehicle_info[u->engine_type];
+		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 		uint mass = rvi->weight + ((_cargoc.weights[u->cargo_type] * u->cargo_count) >> 4);
 		if (rvi->power) emass += mass;
 
@@ -169,7 +169,7 @@ int GetTrainImage(Vehicle *v, byte direction)
 
 void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	const RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
+	const RailVehicleInfo *rvi = RailVehInfo(engine);
 
 	int img = rvi->image_index;
 	uint32 image = 0;
@@ -199,7 +199,7 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 
 void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 {
-	const RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
+	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	int cap;
 	uint multihead = ((rvi->flags & RVI_MULTIHEAD) ? 1 : 0);
 
@@ -229,7 +229,7 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 	const Engine *e;
 	int x,y;
 
-	rvi = &_rail_vehicle_info[engine];
+	rvi = RailVehInfo(engine);
 	value = (rvi->base_cost * _price.build_railwagon) >> 8;
 
 	if (!(flags & DC_QUERY_COST)) {
@@ -385,7 +385,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	tile = TILE_FROM_XY(x,y);
-	rvi = &_rail_vehicle_info[p1];
+	rvi = RailVehInfo(p1);
 
 	if (rvi->flags & RVI_WAGON) {
 		return CmdBuildRailWagon(p1, tile, flags);
@@ -596,7 +596,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	src = &_vehicles[p1 & 0xffff];
 	if (src->type != VEH_Train) return CMD_ERROR;
 
-	is_loco = !(_rail_vehicle_info[src->engine_type].flags & RVI_WAGON)
+	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON)
 	          && is_firsthead_sprite(src->spritenum);
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
@@ -1041,7 +1041,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
 		 * some nice [Refit] button near each wagon. --pasky */
-		if ((!(_rail_vehicle_info[v->engine_type].flags & RVI_WAGON)
+		if ((!(RailVehInfo(v->engine_type)->flags & RVI_WAGON)
 		     || (_engine_refit_masks[v->engine_type] & (1 << p2)))
 		    && (byte) p2 != v->cargo_type && v->cargo_cap != 0) {
 			cost += (_price.build_railvehicle >> 8);
@@ -1206,12 +1206,12 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 		int engtype = v->engine_type;
 
 		// no smoke?
-		if (_rail_vehicle_info[engtype].flags & 2
+		if (RailVehInfo(engtype)->flags & 2
 		    || _engines[engtype].railtype > 0
 		    || (v->vehstatus&VS_HIDDEN) || (v->u.rail.track & 0xC0) )
 			continue;
 
-		switch (_rail_vehicle_info[engtype].engclass) {
+		switch (RailVehInfo(engtype)->engclass) {
 		case 0:
 			// steam smoke.
 			if ( (v->tick_counter&0xF) == 0 && !IsTrainDepotTile(v->tile) && !IsTunnelTile(v->tile)) {
@@ -1248,7 +1248,7 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 
 	switch (_engines[engtype].railtype) {
 		case 0:
-			SndPlayVehicleFx(sfx[_rail_vehicle_info[engtype].engclass], v);
+			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 			break;
 		case 1:
 			SndPlayVehicleFx(SND_47_MAGLEV_2, v);
@@ -2541,7 +2541,7 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 	v->load_unload_time_rem = 0;
 	v->cur_speed = 0;
 
-	MaybeRenewVehicle(v, EstimateTrainCost(&_rail_vehicle_info[v->engine_type]));
+	MaybeRenewVehicle(v, EstimateTrainCost(RailVehInfo(v->engine_type)));
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
@@ -2621,7 +2621,7 @@ int32 GetTrainRunningCost(Vehicle *v)
 	int32 cost = 0;
 
 	do {
-		const RailVehicleInfo *rvi = &_rail_vehicle_info[v->engine_type];
+		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 		if (rvi->running_cost_base)
 			cost += rvi->running_cost_base * _price.running_rail[rvi->engclass];
 	} while ( (v=v->next) != NULL );
