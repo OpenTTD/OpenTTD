@@ -796,6 +796,7 @@ static const SettingDesc patch_settings[] = {
 	{"join_stations",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, join_stations),				NULL},
 	{"station_spread",			SDT_UINT8,	(void*)12,		(void*)offsetof(Patches, station_spread),				NULL},
 	{"full_load_any",				SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, full_load_any),				NULL},
+	{"improved_load",				SDT_BOOL,		(void*)false, (void*)offsetof(Patches, improved_load),				NULL},
 	{"order_review_system", SDT_UINT8,	(void*)2,			(void*)offsetof(Patches, order_review_system),	NULL},
 
 	{"inflation",						SDT_BOOL,		(void*)true,	(void*)offsetof(Patches, inflation),						NULL},

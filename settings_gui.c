@@ -621,6 +621,7 @@ static const PatchEntry _patches_vehicles[] = {
 static const PatchEntry _patches_stations[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_JOINSTATIONS,			&_patches.join_stations,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_FULLLOADANY,			&_patches.full_load_any,						0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_IMPROVEDLOAD,			&_patches.improved_load,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SELECTGOODS,			&_patches.selectgoods,							0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_NONSTOP,			&_patches.new_nonstop,							0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, &_patches.nonuniform_stations,		0,  0,  0, NULL},

@@ -1200,6 +1200,59 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, byte source, byte des
 	return profit;
 }
 
+/*
+ * Returns true if Vehicle v should wait loading because other vehicle is
+ * already loading the same cargo type
+ * v = vehicle to load, u = GetFirstInChain(v)
+ */
+static bool LoadWait(const Vehicle *v, const Vehicle *u) {
+	const Vehicle *w;
+	const Vehicle *x;
+	bool has_any_cargo = false;
+
+	if (!(u->next_order & OF_FULL_LOAD)) return false;
+
+	for (w = u; w != NULL; w = w->next) {
+		if (w->cargo_count != 0) {
+			if (v->cargo_type == w->cargo_type &&
+					u->last_station_visited == w->cargo_source)
+				return false;
+			has_any_cargo = true;
+		}
+	}
+
+	FOR_ALL_VEHICLES(x) {
+		if ((x->type != VEH_Train || x->subtype == 0) && // for all locs
+				u->last_station_visited == x->last_station_visited && // at the same station
+				!(x->vehstatus & VS_STOPPED) && // not stopped
+				(x->next_order & OT_MASK) == OT_LOADING && // loading
+				u != x) { // not itself
+			bool other_has_any_cargo = false;
+			bool has_space_for_same_type = false;
+			bool other_has_same_type = false;
+
+			for (w = x; w != NULL; w = w->next) {
+				if (w->cargo_count < w->cargo_cap && v->cargo_type == w->cargo_type)
+					has_space_for_same_type = true;
+
+				if (w->cargo_count != 0) {
+					if (v->cargo_type == w->cargo_type &&
+							u->last_station_visited == w->cargo_source)
+						other_has_same_type = true;
+					other_has_any_cargo = true;
+				}
+			}
+
+			if (has_space_for_same_type) {
+				if (other_has_same_type) return true;
+				if (other_has_any_cargo && !has_any_cargo) return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 int LoadUnloadVehicle(Vehicle *v)
 {
 	int profit = 0;
@@ -1278,6 +1331,10 @@ int LoadUnloadVehicle(Vehicle *v)
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
 			if (v->cargo_count == 0)
 				TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+
+			/* Skip loading this vehicle if another train/vehicle is already handling
+			 * the same cargo type at this station */
+			if (_patches.improved_load && LoadWait(v,u)) continue;
 
 			/* TODO: Regarding this, when we do gradual loading, we
 			 * should first unload all vehicles and then start

@@ -87,6 +87,7 @@ typedef struct Patches {
 	bool mammoth_trains;		// allow very long trains
 	bool join_stations;			// allow joining of train stations
 	bool full_load_any;			// new full load calculation, any cargo must be full
+	bool improved_load;			// improved loading algorithm
 	byte station_spread;		// amount a station may spread
 	bool inflation;					// disable inflation
 	bool selectgoods;       // only send the goods to station if a train has been there
