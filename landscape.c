@@ -487,20 +487,14 @@ void InitializeLandscape(uint log_x, uint log_y)
 
 void ConvertGroundTilesIntoWaterTiles(void)
 {
-	uint tile = 0;
+	TileIndex tile = 0;
 	int h;
 
-	while(true) {
+	for (tile = 0; tile < MapSize(); ++tile) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
 			SetTileType(tile, MP_WATER);
 			_map5[tile] = 0;
 			_map_owner[tile] = OWNER_WATER;
-		}
-		tile++;
-		if (TileX(tile) == MapMaxX()) {
-			tile += TILE_XY(-(int)MapMaxX(), 1);
-			if (TileY(tile) == MapMaxY())
-				break;
 		}
 	}
 }
@@ -511,9 +505,12 @@ static const byte _genterrain_tbl_2[5] = { 0, 0, 0, 0, 33 };
 static void GenerateTerrain(int type, int flag)
 {
 	uint32 r;
-	uint x,y;
-	int w,h;
-	byte *p,*tile;
+	uint x;
+	uint y;
+	uint w;
+	uint h;
+	const byte *p;
+	byte *tile;
 	byte direction;
 
 	r = Random();
@@ -526,10 +523,14 @@ static void GenerateTerrain(int type, int flag)
 	if (x < 2 || y < 2)
 		return;
 
-	direction = (byte)(r >> 22) & 3;
-	w = p[2];
-	h = p[1];
-	if (direction & 1) { w = p[1]; h = p[2]; }
+	direction = (r >> 22) & 3;
+	if (direction & 1) {
+		w = p[1];
+		h = p[2];
+	} else {
+		w = p[2];
+		h = p[1];
+	}
 	p += 8;
 
 	if (flag & 4) {
@@ -562,54 +563,66 @@ static void GenerateTerrain(int type, int flag)
 	if (y + h >= MapMaxY() - 1)
 		return;
 
-	tile = &_map_type_and_height[TILE_XY(x,y)];
+	tile = &_map_type_and_height[TILE_XY(x, y)];
 
-	if (direction == 0) {
-		do {
-			int w_cur = w;
-			byte *tile_cur = tile;
+	switch (direction) {
+		case 0:
 			do {
-				if (*p >= *tile_cur) *tile_cur = *p;
-				p++;
-				tile_cur++;
-			} while (--w_cur != 0);
-			tile += TILE_XY(0,1);
-		} while (--h != 0);
-	} else if (direction == 1) {
-		do {
-			int h_cur = h;
-			byte *tile_cur = tile;
+				byte *tile_cur = tile;
+				uint w_cur;
+
+				for (w_cur = w; w_cur != 0; --w_cur) {
+					if (*p >= *tile_cur) *tile_cur = *p;
+					p++;
+					tile_cur++;
+				}
+				tile += TILE_XY(0, 1);
+			} while (--h != 0);
+			break;
+
+		case 1:
 			do {
-				if (*p >= *tile_cur) *tile_cur = *p;
-				p++;
-				tile_cur+=TILE_XY(0,1);
-			} while (--h_cur != 0);
-			tile++;
-		} while (--w != 0);
-	} else if (direction == 2) {
-		tile += w - 1;
-		do {
-			int w_cur = w;
-			byte *tile_cur = tile;
+				byte *tile_cur = tile;
+				uint h_cur;
+
+				for (h_cur = h; h_cur != 0; --h_cur) {
+					if (*p >= *tile_cur) *tile_cur = *p;
+					p++;
+					tile_cur += TILE_XY(0, 1);
+				}
+				tile++;
+			} while (--w != 0);
+			break;
+
+		case 2:
+			tile += TILE_XY(w - 1, 0);
 			do {
-				if (*p >= *tile_cur) *tile_cur = *p;
-				p++;
-				tile_cur--;
-			} while (--w_cur != 0);
-			tile += TILE_XY(0,1);
-		} while (--h != 0);
-	} else  {
-		tile += (h - 1) * TILE_XY(0,1);
-		do {
-			int h_cur = h;
-			byte *tile_cur = tile;
+				byte *tile_cur = tile;
+				uint w_cur;
+
+				for (w_cur = w; w_cur != 0; --w_cur) {
+					if (*p >= *tile_cur) *tile_cur = *p;
+					p++;
+					tile_cur--;
+				}
+				tile += TILE_XY(0, 1);
+			} while (--h != 0);
+			break;
+
+		case 3:
+			tile += TILE_XY(0, h - 1);
 			do {
-				if (*p >= *tile_cur) *tile_cur = *p;
-				p++;
-				tile_cur-=TILE_XY(0,1);
-			} while (--h_cur != 0);
-			tile++;
-		} while (--w != 0);
+				byte *tile_cur = tile;
+				uint h_cur;
+
+				for (h_cur = h; h_cur != 0; --h_cur) {
+					if (*p >= *tile_cur) *tile_cur = *p;
+					p++;
+					tile_cur -= TILE_XY(0, 1);
+				} while (--h_cur != 0);
+				tile++;
+			} while (--w != 0);
+			break;
 	}
 }
 
@@ -618,9 +631,9 @@ static void GenerateTerrain(int type, int flag)
 
 static void CreateDesertOrRainForest(void)
 {
-	uint tile;
+	TileIndex tile;
 	const TileIndexDiffC *data;
-	int i;
+	uint i;
 
 	for (tile = 0; tile != MapSize(); ++tile) {
 		for (data = _make_desert_or_rainforest_data;
@@ -632,7 +645,7 @@ static void CreateDesertOrRainForest(void)
 			SetMapExtraBits(tile, 1);
 	}
 
-	for(i=0; i!=256; i++)
+	for (i = 0; i != 256; i++)
 		RunTileLoop();
 
 	for (tile = 0; tile != MapSize(); ++tile) {
@@ -648,45 +661,35 @@ static void CreateDesertOrRainForest(void)
 
 void GenerateLandscape(void)
 {
-	int i,flag;
+	uint i;
+	uint flag;
 	uint32 r;
 
 	if (_opt.landscape == LT_HILLY) {
-		i = ScaleByMapSize((Random() & 0x7F) + 950);
-		do {
+		for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i)
 			GenerateTerrain(2, 0);
-		} while (--i);
 
 		r = Random();
 		flag = (r & 3) | 4;
-		i = ScaleByMapSize(((r >> 16) & 0x7F) + 450);
-		do {
+		for (i = ScaleByMapSize(((r >> 16) & 0x7F) + 450); i != 0; --i)
 			GenerateTerrain(4, flag);
-		} while (--i);
 	} else if (_opt.landscape == LT_DESERT) {
-		i = ScaleByMapSize((Random()&0x7F) + 170);
-		do {
+		for (i = ScaleByMapSize((Random()&0x7F) + 170); i != 0; --i)
 			GenerateTerrain(0, 0);
-		} while (--i);
 
 		r = Random();
 		flag = (r & 3) | 4;
-		i = ScaleByMapSize(((r >> 16) & 0xFF) + 1700);
-		do {
+		for (i = ScaleByMapSize(((r >> 16) & 0xFF) + 1700); i != 0; --i)
 			GenerateTerrain(0, flag);
-		} while (--i);
 
 		flag ^= 2;
 
-		i = ScaleByMapSize((Random() & 0x7F) + 410);
-		do {
+		for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i)
 			GenerateTerrain(3, flag);
-		} while (--i);
 	} else {
 		i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
-		do {
+		for (; i != 0; --i)
 			GenerateTerrain(_opt.diff.terrain_type, 0);
-		} while (--i);
 	}
 
 	ConvertGroundTilesIntoWaterTiles();
