@@ -1666,7 +1666,7 @@ static const char *name_czech_real[] = {
  * with cloning this for your own language. */
 
 // Sing., pl.
-enum CzechGender {
+typedef enum CzechGender {
 	CZG_SMASC,
 	CZG_SFEM,
 	CZG_SNEUT,
@@ -1677,16 +1677,16 @@ enum CzechGender {
 	CZG_FREE,
 	// Like CZG_FREE, but disallow CZG_SNEUT.
 	CZG_NFREE
-};
-enum CzechPattern {
+} CzechGender;
+typedef enum CzechPattern {
 	CZP_JARNI,
 	CZP_MLADY,
 	CZP_PRIVL
-};
+} CzechPattern;
 /* [CzechGender][CzechPattern] - replaces the last character of the adjective
  * by this. */
 // XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv.
-static const char name_czech_patmod[6][3] = {
+static const char name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { 'í', 'ý', 'X' },
 	/* CZG_SFEM */  { 'í', 'á', 'a' },
 	/* CZG_SNEUT */ { 'í', 'é', 'o' },
@@ -1697,36 +1697,36 @@ static const char name_czech_patmod[6][3] = {
 
 // This way the substantives can choose only some adjectives/endings:
 // At least one of these flags must be satisfied:
-enum CzechAllow {
+typedef enum CzechAllow {
 	CZA_SHORT = 1,
 	CZA_MIDDLE = 2,
 	CZA_LONG = 4,
 	CZA_ALL = ~0
-};
+} CzechAllow;
 // All these flags must be satisfied (in the stem->others direction):
-enum CzechChoose {
+typedef enum CzechChoose {
 	CZC_NONE = 0, // No requirements.
 	CZC_COLOR = 1,
 	CZC_POSTFIX = 2, // Matched if postfix was inserted.
 	CZC_NOPOSTFIX = 4, // Matched if no postfix was inserted.
 	CZC_ANY = ~0
-};
+} CzechChoose;
 
-struct CzechNameSubst {
-	enum CzechGender gender;
-	enum CzechAllow allow;
-	enum CzechChoose choose;
+typedef struct CzechNameSubst {
+	CzechGender gender;
+	CzechAllow allow;
+	CzechChoose choose;
 	const char *name;
-};
+} CzechNameSubst;
 
-struct CzechNameAdj {
-	enum CzechPattern pattern;
-	enum CzechChoose choose;
+typedef struct CzechNameAdj {
+	CzechPattern pattern;
+	CzechChoose choose;
 	const char *name;
-};
+} CzechNameAdj;
 
 // Some of items which should be common are doubled.
-static const struct CzechNameAdj name_czech_adj[] = {
+static const CzechNameAdj name_czech_adj[] = {
 	{ CZP_JARNI, CZC_ANY, "Horní" },
 	{ CZP_JARNI, CZC_ANY, "Horní" },
 	{ CZP_JARNI, CZC_ANY, "Dolní" },
@@ -1778,7 +1778,7 @@ static const struct CzechNameAdj name_czech_adj[] = {
 };
 
 // Considered a stem for choose/allow matching purposes.
-static const struct CzechNameSubst name_czech_subst_full[] = {
+static const CzechNameSubst name_czech_subst_full[] = {
 	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Sedlec" },
 	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Brod" },
 	{ CZG_SMASC, CZA_ALL, CZC_COLOR, "Brod" },
@@ -1798,7 +1798,7 @@ static const struct CzechNameSubst name_czech_subst_full[] = {
 };
 
 // TODO: More stems needed. --pasky
-static const struct CzechNameSubst name_czech_subst_stem[] = {
+static const CzechNameSubst name_czech_subst_stem[] = {
 	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Kostel" },
 	{ CZG_SMASC,             CZA_MIDDLE,            CZC_COLOR, "Kláster" },
 	{ CZG_SMASC, CZA_SHORT,                         CZC_COLOR, "Lhot" },
@@ -1851,7 +1851,7 @@ static const char *name_czech_subst_postfix[] = {
 };
 
 // This array must have the both neutral genders at the end!
-static const struct CzechNameSubst name_czech_subst_ending[] = {
+static const CzechNameSubst name_czech_subst_ending[] = {
 	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ec" },
 	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE,            CZC_ANY, "ín" },
 	{ CZG_SMASC, CZA_SHORT | CZA_MIDDLE | CZA_LONG, CZC_ANY, "ov" },

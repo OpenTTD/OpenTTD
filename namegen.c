@@ -337,11 +337,13 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 	int prob_tails;
 	bool do_prefix, do_suffix, dynamic_subst;
 	/* IDs of the respective parts */
-	int prefix = 0, stem = 0, postfix = 0, ending = 0, suffix = 0;
+	int prefix = 0, ending = 0, suffix = 0;
+	uint postfix = 0;
+	uint stem;
 	/* The select criteria. */
-	enum CzechGender gender;
-	enum CzechChoose choose;
-	enum CzechAllow allow;
+	CzechGender gender;
+	CzechChoose choose;
+	CzechAllow allow;
 
 	// 1:3 chance to use a real name.
 	if (SeedModChance(0, 4, seed) == 0) {
@@ -359,16 +361,15 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 	if (do_prefix) prefix = SeedModChance(5, lengthof(name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, lengthof(name_czech_suffix), seed);
 	// 3:1 chance 3:1 to use dynamic substantive
-	stem = SeedModChance(9, lengthof(name_czech_subst_full)
-	                     + 3 * lengthof(name_czech_subst_stem),
-	                   seed);
-	if (stem < (int) lengthof(name_czech_subst_full)) {
+	stem = SeedModChance(9,
+		lengthof(name_czech_subst_full) + 3 * lengthof(name_czech_subst_stem),
+		seed);
+	if (stem < lengthof(name_czech_subst_full)) {
 		// That was easy!
 		dynamic_subst = false;
 		gender = name_czech_subst_full[stem].gender;
 		choose = name_czech_subst_full[stem].choose;
 		allow = name_czech_subst_full[stem].allow;
-
 	} else {
 		unsigned int map[lengthof(name_czech_subst_ending)];
 		int ending_start = -1, ending_stop = -1;
@@ -393,18 +394,18 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 			// Always drop a postfix.
 			postfix += lengthof(name_czech_subst_postfix);
 		}
-		if (postfix < (int) lengthof(name_czech_subst_postfix))
+		if (postfix < lengthof(name_czech_subst_postfix))
 			choose |= CZC_POSTFIX;
 		else
 			choose |= CZC_NOPOSTFIX;
 
 		// Localize the array segment containing a good gender
 		for (ending = 0; ending < (int) lengthof(name_czech_subst_ending); ending++) {
-			const struct CzechNameSubst *e = &name_czech_subst_ending[ending];
+			const CzechNameSubst *e = &name_czech_subst_ending[ending];
 
-			if (gender == CZG_FREE
-			    || (gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT)
-			    || (gender == e->gender)) {
+			if (gender == CZG_FREE ||
+					(gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT) ||
+					gender == e->gender) {
 				if (ending_start < 0)
 					ending_start = ending;
 
@@ -421,7 +422,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 		// Make a sequential map of the items with good mask
 		i = 0;
 		for (ending = ending_start; ending <= ending_stop; ending++) {
-			const struct CzechNameSubst *e = &name_czech_subst_ending[ending];
+			const CzechNameSubst *e = &name_czech_subst_ending[ending];
 
 			if ((e->choose & choose) == choose && (e->allow & allow) != 0)
 				map[i++] = ending;
@@ -444,7 +445,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 	// Now finally construct the name
 
 	if (do_prefix) {
-		enum CzechPattern pattern = name_czech_adj[prefix].pattern;
+		CzechPattern pattern = name_czech_adj[prefix].pattern;
 		int endpos;
 
 		strcat(buf, name_czech_adj[prefix].name);
@@ -463,7 +464,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 
 	if (dynamic_subst) {
 		strcat(buf, name_czech_subst_stem[stem].name);
-		if (postfix < (int) lengthof(name_czech_subst_postfix)) {
+		if (postfix < lengthof(name_czech_subst_postfix)) {
 			const char *poststr = name_czech_subst_postfix[postfix];
 			const char *endstr = name_czech_subst_ending[ending].name;
 			int postlen, endlen;
@@ -473,19 +474,21 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 			assert(postlen > 0 && endlen > 0);
 
 			// Kill the "avava" and "Jananna"-like cases
-			if (postlen < 2 || postlen > endlen
-			    || ((poststr[1] != 'v' || poststr[1] != endstr[1])
-			        && poststr[2] != endstr[1])) {
-				int buflen;
+			if (postlen < 2 || postlen > endlen || (
+						(poststr[1] != 'v' || poststr[1] != endstr[1]) &&
+						poststr[2] != endstr[1])
+					) {
+				uint buflen;
 				strcat(buf, poststr);
 				buflen = strlen(buf);
 
 				// k-i -> c-i, h-i -> z-i
 				if (endstr[0] == 'i') {
-					if (buf[buflen - 1] == 'k')
-						buf[buflen - 1] = 'c';
-					else if (buf[buflen - 1] == 'h')
-						buf[buflen - 1] = 'z';
+					switch (buf[buflen - 1]) {
+						case 'k': buf[buflen - 1] = 'c'; break;
+						case 'h': buf[buflen - 1] = 'z'; break;
+						default: break;
+					}
 				}
 			}
 		}
