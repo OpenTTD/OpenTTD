@@ -741,8 +741,8 @@ STR_02CB_STATION_NAMES_DISPLAYED				:{CHECKMARK}{SETX 12}Mostrar nomes de estaçõ
 STR_02CC_STATION_NAMES_DISPLAYED				:{SETX 12}Mostrar nomes de estações
 STR_02CD_SIGNS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar indicações
 STR_02CE_SIGNS_DISPLAYED					:{SETX 12}Mostrar indicações
-STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar checkpoints
-STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Mostrar checkpoints
+STR_CHECKPOINTS_DISPLAYED					:{CHECKMARK}{SETX 12}Mostrar pontos de passagem
+STR_CHECKPOINTS_DISPLAYED2					:{SETX 12}Mostrar pontos de passagem
 STR_02CF_FULL_ANIMATION						:{CHECKMARK}{SETX 12}Animação completa
 STR_02D0_FULL_ANIMATION						:{SETX 12}Animação completa
 STR_02D1_FULL_DETAIL						:{CHECKMARK}{SETX 12}Máximo de detalhes
@@ -1077,41 +1077,166 @@ STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Dirige-se para {CHECKPOINT}, {VELOCI
 
 STR_GO_TO_CHECKPOINT						:Ir via {CHECKPOINT}
 
+STR_CHECKPOINTNAME_CITY						:Ponto de passagem {TOWN}
+STR_CHECKPOINTNAME_CITY_SERIAL					:Ponto de passagem {TOWN} #{COMMA16}
+STR_LANDINFO_CHECKPOINT						:Ponto de passagem
+
+STR_CHECKPOINT_VIEWPORT						:{WHITE}{CHECKPOINT}
+STR_CHECKPOINT_VIEWPORT_TINY					:{TINYFONT}{WHITE}{CHECKPOINT}
+STR_CHECKPOINT_RAW						:{CHECKPOINT}
+STR_EDIT_CHECKPOINT_NAME					:{WHITE}Editar nome do ponto de passagem
+
+STR_CANT_CHANGE_CHECKPOINT_NAME					:{WHITE}Não é possível alterar o nome do ponto de passagem...
+STR_CONVERT_RAIL_TO_CHECKPOINT_TIP				:{BLACK}Converter linha em ponto de passagem
+STR_CANT_BUILD_TRAIN_CHECKPOINT					:{WHITE}Não é possível construir ponto de passagem de comboio aqui...
+STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Não é possível remover ponto de passagem de comboio aqui...
+
+STR_BUILD_AUTORAIL_TIP						:{BLACK}Construir caminhos-de-ferro usando o modo automático
+
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...não existe nenhuma cidade neste cenário
+
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Tem a certeza que deseja criar um terreno aleatório?
+STR_MANY_RANDOM_TOWNS						:{BLACK}Várias cidades aleatórias
+STR_RANDOM_TOWNS_TIP						:{BLACK}Cobrir o mapa com cidades colocadas aleatóriamente
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Várias indústrias aleatórias
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Cobrir o mapa com indústrias colocadas aleatóriamente
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Não é possível gerar indústrias...
+
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Terreno
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Nivelar terreno
 
 
+STR_TREES_RANDOM_TYPE						:{BLACK}Árvores de tipo aleatório
+STR_TREES_RANDOM_TYPE_TIP					:{BLACK}Colocar árvores de tipo aleatório
 
+STR_CANT_BUILD_CANALS						:{WHITE}Não é possível construir canais aqui...
+STR_BUILD_CANALS_TIP						:{BLACK}Construir canais
+STR_LANDINFO_CANAL						:Canal
 
+STR_CANT_BUILD_LOCKS						:{WHITE}Construir diques aqui...
+STR_BUILD_LOCKS_TIP						:{BLACK}Build locks
+STR_LANDINFO_LOCK						:Dique
 
+STR_LANDINFO_COORDS						:{BLACK}Coordenadas: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION					:{WHITE}Não é possível remover parte da estação...
+STR_CANT_CONVERT_RAIL						:{WHITE}Não é possível converter o tipo de linha aqui...
+STR_CONVERT_RAIL_TIP						:{BLACK}Converter/Actualizar tipo de linha
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP				:{BLACK}Arrastar locomotiva para aqui para vender todo o comboio
 
+STR_DRAG_DROP							:{BLACK}Arrastar e Largar
+STR_STATION_DRAG_DROP						:{BLACK}Construir estação arrastando
 
+STR_FAST_FORWARD						:{BLACK}Aumentar velocidade do jogo
+STR_MESSAGE_HISTORY						:{WHITE}Histórico de Mensagens
+STR_MESSAGE_HISTORY_TIP						:{BLACK}Lista de notícias recentes
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Desactivar tudo
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Activar tudo
 
+STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Construir Mina de Carvão
+STR_CONSTRUCT_FOREST_TIP					:{BLACK}Plantar Floresta
+STR_CONSTRUCT_OIL_RIG_TIP					:{BLACK}Construir Plataforma de Petróleo
+STR_CONSTRUCT_FARM_TIP						:{BLACK}Construir Quinta
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP				:{BLACK}Construir Mina de Cobre
+STR_CONSTRUCT_OIL_WELLS_TIP					:{BLACK}Construir Poços de Petróleo
+STR_CONSTRUCT_GOLD_MINE_TIP					:{BLACK}Construir Mina de Ouro
+STR_CONSTRUCT_DIAMOND_MINE_TIP					:{BLACK}Construir Mina de Diamantes
+STR_CONSTRUCT_IRON_ORE_MINE_TIP					:{BLACK}Construir Mina de Ferro
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP				:{BLACK}Criar Plantação de Fruta
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP				:{BLACK}Criar Plantação de Árvores da Borracha
+STR_CONSTRUCT_WATER_SUPPLY_TIP					:{BLACK}Construir Abastecimento de Água
+STR_CONSTRUCT_COTTON_CANDY_TIP					:{BLACK}Plantar Floresta de Algodão Doce
+STR_CONSTRUCT_BATTERY_FARM_TIP					:{BLACK}Construir Campo de Baterias
+STR_CONSTRUCT_COLA_WELLS_TIP					:{BLACK}Construir Poços de Cola
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP				:{BLACK}Construir Fontes de Plástico
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Construir Produtor de Bolhas
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Construir Extracção de Caramelo
+STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Construir Mina de Açúcar
 
+STR_INDUSTRYDIR_CAPTION						:{WHITE}Indústrias
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportado)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportado)
+STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
+STR_INDUSTRY_TOO_CLOSE						:{WHITE}...muito perto de outra indústria
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Adaptar comboio para um tipo de carga diferente
+STR_RAIL_REFIT							:{WHITE}{STRING} (Adaptar)
+STR_RAIL_REFIT_VEHICLE						:{BLACK}Adaptar comboio
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Seleccionar tipo de carga do comboio
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Adaptar comboio para transportar a carga seleccionada
+STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Não é possível ajustar comboio...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 
-
-
-
-
-
-
+TEMP_AI_IN_PROGRESS						:{WHITE}Bem-vindo à nova IA, ainda em desenvolvimento. Pode encontrar problemas. Neste caso faça uma captura de ecrã e coloque-a no fórum. Divirta-se!
+TEMP_AI_ACTIVATED						:{WHITE}Atenção: esta nova IA está ainda em versão alpha! Actualmente, só funcionam camiões e autocarros!
 
 ############ network gui strings
 
+TEMP_STRING_NO_NETWORK						:{WHITE}A interface de rede ainda não está completamente operacional!{}As opções que ainda não funcionam foram desactivadas.
+
+STR_NETWORK_MULTIPLAYER						:{WHITE}Multi-jogador
+
+STR_NETWORK_FIND_SERVER						:{BLACK}Localizar servidor
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Pesquisar por um servidor na rede
+STR_NETWORK_DIRECT_CONNECT					:{BLACK}Conexão directa
+STR_NETWORK_ENTER_IP						:{BLACK}Introduza o endereço IP do servidor
+STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Conectar a um IP conhecido
+STR_NETWORK_START_SERVER					:{BLACK}Iniciar servidor
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Iniciar um servidor próprio
+
+STR_NETWORK_PLAYER_NAME						:{BLACK}Nome do jogador:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este é o nome pelo qual os outros jogadores o irão identificar
+
+STR_NETWORK_SELECT_CONNECTION					:{BLACK}Seleccione o tipo de conexão:
+STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Escolha entre um jogo pela Internet ou pela rede local (LAN)
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:LAN
+STR_NETWORK_INTERNET						:Internet
+
+STR_NETWORK_GAME_NAME						:{BLACK}Nome
+STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nome do jogo
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_PLAYERS_TIP						:{BLACK}Jogadores actuais / Máximo de jogadores
+STR_NETWORK_MAP_SIZE						:{BLACK}Tamanho
+STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Tamanho do mapa
+STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Idioma, versão do servidor, etc.
+STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clique num jogo da lista para o seleccionar
+
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+
+STR_NETWORK_JOIN_GAME						:{BLACK}Juntar-se ao jogo
 
 
+STR_NETWORK_START_GAME_WINDOW					:{WHITE}Iniciar novo jogo
 
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nome do jogo:
+STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de selecção de jogos multi-jogador
+STR_NETWORK_PASSWORD						:{BLACK}Senha:
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
+STR_NETWORK_SELECT_MAP						:{BLACK}Seleccione um mapa:
+STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Em que mapa deseja jogar?
+STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Número de jogadores:
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Escolha o número máximo de jogadores. Não necessitam estar todos presentes.
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_PLAYERS						:2 jogadores
+STR_NETWORK_3_PLAYERS						:3 jogadores
+STR_NETWORK_4_PLAYERS						:4 jogadores
+STR_NETWORK_5_PLAYERS						:5 jogadores
+STR_NETWORK_6_PLAYERS						:6 jogadores
+STR_NETWORK_7_PLAYERS						:7 jogadores
+STR_NETWORK_8_PLAYERS						:8 jogadores
+STR_NETWORK_START_GAME						:{BLACK}Iniciar Jogo
+STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
+STR_NETWORK_LOAD_GAME						:{BLACK}Abrir Jogo
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Continuar um jogo multi-jogador anteriormente guardado (assegure-se de conectar com o jogador correcto)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Abrir Cenário
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar um novo jogo em rede a partir de um cenário
 
+STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de espera de jogo multi-jogador
 
-
-
-
-
-
-
-
+STR_NETWORK_SEND						:{BLACK}Enviar
 
 
 ############ end network gui strings
