@@ -1500,7 +1500,12 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
 				byte capacity = rvi->capacity;
 
-				v->spritenum = rvi->image_index;
+				if (rvi->flags & RVI_MULTIHEAD && v->next == NULL ) {
+					v->spritenum = rvi->image_index + 1;	// +1 is the mirrored end of the dualheaded engines
+				} else {
+					v->spritenum = rvi->image_index;
+				}
+				
 				v->cargo_type = rvi->cargo_type;
 				v->cargo_cap = rvi->capacity;
 				v->max_speed = rvi->max_speed;
