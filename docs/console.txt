@@ -1,24 +1,33 @@
 OPENTTD INGAME CONSOLE DOCUMENTATION
 ====================================
+http://openttd.rulez.org/wiki2/index.php/OpenTTDDevBlackBook
+for detailed information
 
 HOTKEY: BACKQUOTE (aka tile, the key left to "1")
 
 COMMANDS:
 ---------
 
-list_cmds [filter]
-list_vars [filter]
 echo [string]
 echoc [color-code] [string]
+exit
+debug_level [0-9]
+dump_vars [filter]
+help
+list_cmds [filter]
+list_vars [filter]
 printf [formatstring] [var] [var] [var]....
 printfc [color-code] [formatstring] [var] [var] [var]....
-screenshot ["big"]
-debug_level [0-9]
-exit
-
+quit
+random
+screenshot ["big"/"no_con"]
 
 VARIABLES:
 ----------
+*con_developer
+-> true = console debugging info
+-> false = no output
+
 *developer
 -> 0 = no output
 -> 1 = console error output [like command not found]

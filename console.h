@@ -17,6 +17,7 @@ enum {
 	ICONSOLE_VAR_INT32,
 	ICONSOLE_VAR_STRING,
 	ICONSOLE_VAR_POINTER,
+	ICONSOLE_VAR_REFERENCE,
 	ICONSOLE_VAR_UNKNOWN
 } _iconsole_var_types;
 
@@ -38,6 +39,12 @@ typedef struct {
 	bool _malloc;
 	} _iconsole_var;
 
+// ** console colors ** //
+VARDEF byte _iconsole_color_default;
+VARDEF byte _iconsole_color_error;
+VARDEF byte _iconsole_color_debug;
+VARDEF byte _iconsole_color_commands;
+
 // ** ttd.c functions ** //
 void SetDebugString(const char *s);
 
@@ -52,8 +59,11 @@ void IConsoleSwitch();
 void IConsoleClose();
 void IConsoleOpen();
 
-// ** console output ** //
+// ** console cmd buffer ** //
+void IConsoleCmdBufferAdd(byte * cmd);
+void IConsoleCmdBufferNavigate(signed char direction);
 
+// ** console output ** //
 void IConsolePrint(byte color_code, byte* string);
 void IConsolePrintF(byte color_code, const char *s, ...);
 void IConsoleDebug(byte* string);
