@@ -98,7 +98,7 @@ STR_005C_TON_OF_FRUIT						:{COMMA16} tuna ovoce
 STR_005D_BAG_OF_DIAMONDS					:{COMMA16} pytel diamantu
 STR_005E_TON_OF_FOOD						:{COMMA16} tuna jídla
 STR_005F_TON_OF_PAPER						:{COMMA16} tuna papíru
-STR_0060_BAG_OF_GOLD						:{COMMA16} balík posty
+STR_0060_BAG_OF_GOLD						:{COMMA16} balík zlata
 STR_0061_OF_WATER						:{VOLUME} vody
 STR_0062_TON_OF_WHEAT						:{COMMA16} tuna kukurice
 STR_0063_OF_RUBBER						:{VOLUME} kaucuku
@@ -1216,7 +1216,7 @@ STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Jméno hry se zobrazi ostatnim hracum v
 STR_NETWORK_PASSWORD						:{BLACK}Heslo:
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Svoji hru si muzes ochranit heslem, kdyz nechces, aby se ti do ni hlasili jini lide
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
-STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve ktere mape si chces zahrat?
+STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
 STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Pocet hracu:
 STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Zvol maximalni pocet hracu. Nemusis vybirat maximalni pocet.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1262,34 +1262,34 @@ STR_0800_COST							:{TINYFONT}{RED}Cena: {CURRENCY}
 STR_0801_COST							:{RED}Cena: {CURRENCY}
 STR_0802_INCOME							:{TINYFONT}{GREEN}Prijem: {CURRENCY}
 STR_0803_INCOME							:{GREEN}Prijem: {CURRENCY}
-STR_0804_ESTIMATED_COST						:{TINYFONT}{WHITE}Odhadovana cena: {CURRENCY}
-STR_0805_ESTIMATED_COST						:{WHITE}Odhadovana cena: {CURRENCY}
-STR_0806_ESTIMATED_INCOME					:{TINYFONT}{WHITE}Odhadovany prijem: {CURRENCY}
-STR_0807_ESTIMATED_INCOME					:{WHITE}Odhadovany prijem: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE					:{WHITE}Nemohu zde zvednout zemi...
-STR_0809_CAN_T_LOWER_LAND_HERE					:{WHITE}Nemohu zde snizit zemi...
-STR_080A_ROCKS							:Kameni
-STR_080B_ROUGH_LAND						:Hrbolata zeme
-STR_080C_BARE_LAND						:Prazdna zeme
-STR_080D_GRASS							:Travnata zeme
+STR_0804_ESTIMATED_COST						:{TINYFONT}{WHITE}Odhadovaná cena: {CURRENCY}
+STR_0805_ESTIMATED_COST						:{WHITE}Odhadovaná cena: {CURRENCY}
+STR_0806_ESTIMATED_INCOME					:{TINYFONT}{WHITE}Odhadovaný prijem: {CURRENCY}
+STR_0807_ESTIMATED_INCOME					:{WHITE}Odhadovaný prijem: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE					:{WHITE}Zde nemohu zvednout zemi...
+STR_0809_CAN_T_LOWER_LAND_HERE					:{WHITE}Zde nemohu snizit zemi...
+STR_080A_ROCKS							:Kamení
+STR_080B_ROUGH_LAND						:Hrbolatá zeme
+STR_080C_BARE_LAND						:Prázdná zeme
+STR_080D_GRASS							:Travnatá zeme
 STR_080E_FIELDS							:Pole
 STR_080F_SNOW_COVERED_LAND					:Zasnezena zeme
 STR_0810_DESERT							:Poust
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Zeme sklonena nespravnym smerem
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION				:{WHITE}Nemozna kombinace koleji
-STR_1002_EXCAVATION_WOULD_DAMAGE				:{WHITE}Uprava terenu by poskodila tunel
-STR_1003_ALREADY_AT_SEA_LEVEL					:{WHITE}Jiz na urovni more
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Zeme sklonena nesprávným smerem
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION				:{WHITE}Nemozna kombinace kolejí
+STR_1002_EXCAVATION_WOULD_DAMAGE				:{WHITE}Úprava terénu by poskodila tunel
+STR_1003_ALREADY_AT_SEA_LEVEL					:{WHITE}Jiz na úrovni more
 STR_1004_TOO_HIGH						:{WHITE}Prilis vysoko
 STR_1005_NO_SUITABLE_RAILROAD_TRACK				:{WHITE}Zadne pouzitelne koleje
 STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Vlak v depu
 STR_1007_ALREADY_BUILT						:{WHITE}...jiz vystaveno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK				:{WHITE}Musis nejprve odstranit koleje
 STR_1009_TOO_MANY_DEPOTS					:{WHITE}Prilis mnoho dep
-STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Vystavba koleji
-STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Vystavba monorailu
-STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Vystavba maglevu
+STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Výstavba kolejí
+STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Výstavba monorailu
+STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Výstavba maglevu
 STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Zvolit zeleznicni most
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Zde nemohu postavit depo...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Zde nemohu postavit nadrazi...
@@ -1298,9 +1298,9 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Zde nemohu postavit koleje...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Nemohu odsud odstranit koleje...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Nemohu odsud odstranit semafory...
 STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Orientace vlakoveho depa
-STR_1015_RAILROAD_CONSTRUCTION					:Vystavba koleji
-STR_1016_MONORAIL_CONSTRUCTION					:Vystavba monorailu
-STR_1017_MAGLEV_CONSTRUCTION					:Vystavba maglevu
+STR_1015_RAILROAD_CONSTRUCTION					:Výstavba kolejí
+STR_1016_MONORAIL_CONSTRUCTION					:Výstavba monorailu
+STR_1017_MAGLEV_CONSTRUCTION					:Výstavba maglevu
 STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Polozit koleje
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Postavit zeleznicni depo ( pro nakup a servis vlaku )
 STR_101A_BUILD_RAILROAD_STATION					:{BLACK}Postavit nadrazi
@@ -1324,7 +1324,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS				:Zeleznicni trat s kombinovanymi signaly
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION				:{WHITE}Nespravny sklon zeme pro silnici
 STR_1801_MUST_REMOVE_ROAD_FIRST					:{WHITE}Musis nejprve odstranit silnici
-STR_1802_ROAD_CONSTRUCTION					:{WHITE}Vystavba silnic
+STR_1802_ROAD_CONSTRUCTION					:{WHITE}Výstavba silnic
 STR_1803_SELECT_ROAD_BRIDGE					:{WHITE}Zvolit silnicni most
 STR_1804_CAN_T_BUILD_ROAD_HERE					:{WHITE}Zde nemohu postavit silnici...
 STR_1805_CAN_T_REMOVE_ROAD_FROM					:{WHITE}Nemohu odsud odstranit silnici
@@ -1332,7 +1332,7 @@ STR_1806_ROAD_DEPOT_ORIENTATION					:{WHITE}Orientace garaze
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE				:{WHITE}Tady nejde postavit garaz
 STR_1808_CAN_T_BUILD_BUS_STATION				:{WHITE}Nemohu postavit autobusovou stanici...
 STR_1809_CAN_T_BUILD_TRUCK_STATION				:{WHITE}Nemohu postavit nakladovou rampu...
-STR_180A_ROAD_CONSTRUCTION					:Vystavba silnic
+STR_180A_ROAD_CONSTRUCTION					:Výstavba silnic
 STR_180B_BUILD_ROAD_SECTION					:{BLACK}Postavit silnici
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT				:{BLACK}Postavit garaz (pro nakup a servis vozidel)
 STR_180D_BUILD_BUS_STATION					:{BLACK}Postavit autobusovou stanici
@@ -1767,7 +1767,7 @@ STR_6808_NO_OF_INDUSTRIES					:{LTBLUE}Mnozstvi prumyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000				:{LTBLUE}Maximalni pocatecni dluh: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE					:{LTBLUE}Pocatecni urokova sazba: {ORANGE}{COMMA16}%
 STR_680B_VEHICLE_RUNNING_COSTS					:{LTBLUE}Cena provozu vozidel: {ORANGE}{STRING}
-STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Rychlost stavby protivnika: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR			:{LTBLUE}Rychlost výstavby protivniku: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS				:{LTBLUE}Inteligence protivniku: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS					:{LTBLUE}Poruchy vozidel: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER					:{LTBLUE}Cinitel dotaci: {ORANGE}{STRING}
@@ -1891,8 +1891,8 @@ STR_7040_SHIP							:{WHITE}{COMMA16} lod
 STR_7041_SHIPS							:{WHITE}{COMMA16} lodí
 STR_7042_NONE							:{WHITE}Nic
 STR_7043_FACE_SELECTION						:{WHITE}Volba tvare
-STR_7044_MALE							:{BLACK}Muz
-STR_7045_FEMALE							:{BLACK}Zena
+STR_7044_MALE							:{BLACK}Muzske
+STR_7045_FEMALE							:{BLACK}Zenske
 STR_7046_NEW_FACE						:{BLACK}Nový oblicej
 STR_7047_CANCEL_NEW_FACE_SELECTION				:{BLACK}Zrusit volbu noveho obliceje
 STR_7048_ACCEPT_NEW_FACE_SELECTION				:{BLACK}Potvrdit vyber obliceje
