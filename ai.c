@@ -1534,7 +1534,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	int rad;
 
 	for(;p->mode != 4;p++) if (p->mode == 1) {
-		tile2 = TILE_ADD(tile, p->tileoffs);
+		tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 
 		w = ((p->attr>>1) & 7);
 		h = ((p->attr>>4) & 7);
@@ -1573,7 +1573,7 @@ static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData 
 
 	for(;;) {
 		// This will seldomly overflow for valid reasons. Mask it to be on the safe side.
-		uint c = TILE_MASK(tile + p->tileoffs);
+		uint c = TILE_MASK(tile + ToTileIndexDiff(p->tileoffs));
 
 		_cleared_town = NULL;
 
@@ -1822,7 +1822,7 @@ static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd
 
 	while (p->mode != 3 || !((--cmd) & 0x80)) p++;
 
-	return tile + p->tileoffs - TileOffsByDir(*dir = p->attr);
+	return tile + ToTileIndexDiff(p->tileoffs) - TileOffsByDir(*dir = p->attr);
 }
 
 typedef struct AiRailPathFindData {
@@ -2357,7 +2357,7 @@ static int AiGetStationIdByDef(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _default_rail_track_data[id]->data;
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile,p->tileoffs)];
+	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
 }
 
 static void AiStateBuildRailVeh(Player *p)
@@ -2373,7 +2373,7 @@ static void AiStateBuildRailVeh(Player *p)
 	ptr = _default_rail_track_data[p->ai.src.cur_building_rule]->data;
 	while (ptr->mode != 0) {	ptr++; }
 
-	tile = TILE_ADD(p->ai.src.use_tile, ptr->tileoffs);
+	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	cargo = p->ai.cargo_type;
 	for(i=0;;) {
@@ -2469,7 +2469,7 @@ static void AiStateDeleteRailBlocks(Player *p)
 		if (aib->cur_building_rule != 255) {
 			b = _default_rail_track_data[aib->cur_building_rule]->data;
 			while (b->mode != 4) {
-				DoCommandByTile(TILE_ADD(aib->use_tile, b->tileoffs), 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				DoCommandByTile(TILE_ADD(aib->use_tile, ToTileIndexDiff(b->tileoffs)), 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				b++;
 			}
 		}
@@ -2493,7 +2493,7 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 		if (p->mode == 4) {
 			return true;
 		} else if (p->mode == 1) {
-			uint tile2 = TILE_ADD(tile, p->tileoffs);
+			uint tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 			if (cargo & 0x80) {
 				GetProductionAroundTiles(values, tile2, 1, 1, rad);
 				return values[cargo & 0x7F] != 0;
@@ -2536,7 +2536,7 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 	int roadflag = 0;
 
 	for(;p->mode != 4;p++) {
-		uint c = TILE_MASK(tile+ p->tileoffs);
+		uint c = TILE_MASK(tile + ToTileIndexDiff(p->tileoffs));
 
 		_cleared_town = NULL;
 
@@ -3085,7 +3085,7 @@ static TileIndex AiGetRoadBlockEdge(byte rule, TileIndex tile, int *dir)
 	const AiDefaultBlockData *p = _road_default_block_data[rule]->data;
 	while (p->mode != 1) p++;
 	*dir = p->attr;
-	return TILE_ADD(tile, p->tileoffs);
+	return TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 }
 
 
@@ -3158,7 +3158,7 @@ static int AiGetStationIdFromRoadBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _road_default_block_data[id]->data;
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile, p->tileoffs)];
+	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
 }
 
 static void AiStateBuildRoadVehicles(Player *p)
@@ -3170,7 +3170,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
 	for(;ptr->mode != 0;ptr++) {}
-	tile = TILE_ADD(p->ai.src.use_tile, ptr->tileoffs);
+	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money);
 	if (veh == -1) {
@@ -3227,7 +3227,7 @@ static void AiStateDeleteRoadBlocks(Player *p)
 			b = _road_default_block_data[aib->cur_building_rule]->data;
 			while (b->mode != 4) {
 				if (b->mode <= 1) {
-					DoCommandByTile(TILE_ADD(aib->use_tile, b->tileoffs), 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+					DoCommandByTile(TILE_ADD(aib->use_tile, ToTileIndexDiff(b->tileoffs)), 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				}
 				b++;
 			}
@@ -3339,7 +3339,7 @@ static int32 AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockDa
 	for(;p->mode == 0;p++) {
 		if (!HASBIT(_avail_aircraft, p->attr))
 			return CMD_ERROR;
-		r = DoCommandByTile(TILE_MASK(tile + p->tileoffs), p->attr,0,flag | DC_AUTO | DC_NO_WATER,CMD_BUILD_AIRPORT);
+		r = DoCommandByTile(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr,0,flag | DC_AUTO | DC_NO_WATER,CMD_BUILD_AIRPORT);
 		if (r == CMD_ERROR)
 			return CMD_ERROR;
 		total_cost += r;
@@ -3362,7 +3362,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	}
 
 	for(;p->mode==0;p++) {
-		tile2 = TILE_ADD(tile, p->tileoffs);
+		tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 		w = _airport_size_x[p->attr];
 		h = _airport_size_y[p->attr];
 		if (cargo & 0x80) {
@@ -3479,7 +3479,7 @@ static int AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _airport_default_block_data[id];
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile, p->tileoffs)];
+	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
 }
 
 static void AiStateBuildAircraftVehicles(Player *p)
@@ -3494,7 +3494,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	ptr = _airport_default_block_data[p->ai.src.cur_building_rule];
 	for(;ptr->mode!=0;ptr++) {}
 
-	tile = TILE_ADD(p->ai.src.use_tile, ptr->tileoffs);
+	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind!=0 ? 1 : 0);
 	if (veh == -1) {

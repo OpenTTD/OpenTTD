@@ -14,7 +14,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 																				const byte nofhelipads,  const byte nofhelipadgroups,
 																				const byte entry_point,  const byte acc_planes,
 																				const AirportFTAbuildup *FA,
-																				const TileIndex *depots, const byte nof_depots);
+																				const TileIndexDiffC *depots, const byte nof_depots);
 static void AirportFTAClass_Destructor(AirportFTAClass *Airport);
 
 static uint16 AirportGetNofElements(const AirportFTAbuildup *FA);
@@ -61,7 +61,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 																				const byte nofhelipads, const byte nofhelipadgroups,
 																				const byte entry_point, const byte acc_planes,
 																				const AirportFTAbuildup *FA,
-																				const TileIndex *depots, const byte nof_depots)
+																				const TileIndexDiffC *depots, const byte nof_depots)
 {
 	// if there are more terminals than 6, internal variables have to be changed, so don't allow that
 	// same goes for helipads

@@ -143,7 +143,7 @@ static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
 
 static int32 RemoveShiplift(uint tile, uint32 flags)
 {
-	int delta = TileOffsByDir(_map5[tile] & 3);
+	TileIndexDiff delta = TileOffsByDir(_map5[tile] & 3);
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -290,17 +290,17 @@ static int32 ClearTile_Water(uint tile, byte flags) {
 	} else if ((m5 & 0x10) == 0x10) {
 		// shiplift
 
-		static const TileIndexDiff _shiplift_tomiddle_offs[12] = {
-			0,0,0,0, // middle
-			TILE_XY(-1, 0),TILE_XY(0, 1),TILE_XY(1, 0),TILE_XY(0, -1), // lower
-			TILE_XY(1, 0),TILE_XY(0, -1),TILE_XY(-1, 0),TILE_XY(0, 1), // upper
+		static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
+			{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
+			{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
+			{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
 		};
 
 		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 		// don't allow water to delete it.
 		if (_current_player == OWNER_WATER) return CMD_ERROR;
 		// move to the middle tile..
-		return RemoveShiplift(tile + _shiplift_tomiddle_offs[m5 & 0xF], flags);
+		return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[m5 & 0xF]), flags);
 	} else {
 		// ship depot
 		if (flags & DC_AUTO)
@@ -480,23 +480,24 @@ static void AnimateTile_Water(uint tile)
 	/* not used */
 }
 
-static void TileLoopWaterHelper(uint tile, const int16 *offs)
+static void TileLoopWaterHelper(uint tile, const TileIndexDiffC *offs)
 {
 	byte *p;
 
 	p = &_map_type_and_height[tile];
-	tile += offs[0];
+	tile += ToTileIndexDiff(offs[0]);
 
 	// type of this tile mustn't be water already.
-	if (p[offs[0]] >> 4 == MP_WATER)
+	if (p[ToTileIndexDiff(offs[0])] >> 4 == MP_WATER)
 		return;
 
-	if ( (p[offs[1]] | p[offs[2]]) & 0xF )
+	if ((p[ToTileIndexDiff(offs[1])] | p[ToTileIndexDiff(offs[2])]) & 0xF)
 		return;
 
-	if ( (p[offs[3]] | p[offs[4]]) & 0xF ) {
+	if ((p[ToTileIndexDiff(offs[3])] | p[ToTileIndexDiff(offs[4])]) & 0xF) {
 		// make coast..
-		if (p[offs[0]] >> 4 == MP_CLEAR || p[offs[0]] >> 4 == MP_TREES) {
+		if (p[ToTileIndexDiff(offs[0])] >> 4 == MP_CLEAR ||
+				p[ToTileIndexDiff(offs[0])] >> 4 == MP_TREES) {
 			_current_player = OWNER_WATER;
 			if (DoCommandByTile(tile,0,0,DC_EXEC | DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR)
 				ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,OWNER_WATER,1);
@@ -573,12 +574,12 @@ static void FloodVehicle(Vehicle *v)
 void TileLoop_Water(uint tile)
 {
 	int i;
-	static const TileIndexDiff _tile_loop_offs_array[4][5] = {
+	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
 		// tile to mod																shore?				shore?
-		{TILE_XY(-1,0), TILE_XY(0,0), TILE_XY(0,1), TILE_XY(-1,0), TILE_XY(-1,1)},
-		{TILE_XY(0,1),  TILE_XY(0,1), TILE_XY(1,1), TILE_XY(0,2),  TILE_XY(1,2)},
-		{TILE_XY(1,0),  TILE_XY(1,0), TILE_XY(1,1), TILE_XY(2,0),  TILE_XY(2,1)},
-		{TILE_XY(0,-1), TILE_XY(0,0), TILE_XY(1,0), TILE_XY(0,-1), TILE_XY(1,-1)},
+		{{-1,  0}, {0, 0}, {0, 1}, {-1,  0}, {-1,  1}},
+		{{ 0,  1}, {0, 1}, {1, 1}, { 0,  2}, { 1,  2}},
+		{{ 1,  0}, {1, 0}, {1, 1}, { 2,  0}, { 2,  1}},
+		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
 
 	if (IS_INT_INSIDE(GET_TILE_X(tile), 1, MapSizeX() - 3 + 1) &&

@@ -162,20 +162,20 @@ static Station *AllocateStation()
 
 
 static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
-	static const TileIndexDiff _count_square_table[7*7+1] = {
-		TILE_XY(-3,-3), 1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
+	static const TileIndexDiffC _count_square_table[] = {
+		{-3, -3}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
+		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}
 	};
-	const TileIndexDiff *p;
+	const TileIndexDiffC *p;
 	int num = 0;
 
 	for (p = _count_square_table; p != endof(_count_square_table); ++p) {
-		tile = TILE_MASK(tile + *p);
+		tile = TILE_MASK(tile + ToTileIndexDiff(*p));
 
 		if (IS_TILETYPE(tile, type) && _map5[tile] >= min && _map5[tile] <= max)
 			num++;
@@ -1612,7 +1612,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->owner = _current_player;
 		if (_current_player == _local_player && afc->nof_depots != 0) {
-      _last_built_aircraft_depot_tile = tile + afc->airport_depots[0];
+      _last_built_aircraft_depot_tile = tile + ToTileIndexDiff(afc->airport_depots[0]);
     }
 
 		st->airport_tile = tile;
@@ -1682,7 +1682,7 @@ END_TILE_LOOP(tile_cur, w,h,tile)
 		uint i;
 
 		for (i = 0; i < afc->nof_depots; ++i)
-			DeleteWindowById(WC_VEHICLE_DEPOT, tile + afc->airport_depots[i]);
+			DeleteWindowById(WC_VEHICLE_DEPOT, tile + ToTileIndexDiff(afc->airport_depots[i]));
 
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
@@ -1779,10 +1779,11 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 	return _price.remove_truck_station;
 }
 
-static const TileIndexDiff _dock_tileoffs_chkaround[4] = {
-	TILE_XY(-1,0),
-	0,0,
-	TILE_XY(0,-1),
+static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
+	{-1,  0},
+	{ 0,  0},
+	{ 0,  0},
+	{ 0, -1}
 };
 static const byte _dock_w_chk[4] = { 2,1,2,1 };
 static const byte _dock_h_chk[4] = { 1,2,1,2 };
@@ -1831,7 +1832,8 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	/* middle */
-	st = GetStationAround(tile + _dock_tileoffs_chkaround[direction],
+	st = GetStationAround(
+		tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 		_dock_w_chk[direction], _dock_h_chk[direction], -1);
 	if (st == CHECK_STATIONS_ERR)
 		return CMD_ERROR;

@@ -190,15 +190,15 @@ static void PlayShipSound(Vehicle *v)
 	SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
 }
 
-static const TileIndexDiff _dock_offs[] = {
-	TILE_XY(2, 0),
-	TILE_XY(-2, 0),
-	TILE_XY(0, 2),
-	TILE_XY(2, 0),
-	TILE_XY(0, -2),
-	TILE_XY(0,0),
-	TILE_XY(0,0),
-	TILE_XY(0,0),
+static const TileIndexDiffC _dock_offs[] = {
+	{ 2,  0},
+	{-2,  0},
+	{ 0,  2},
+	{ 2,  0},
+	{ 0, -2},
+	{ 0,  0},
+	{ 0,  0},
+	{ 0,  0}
 };
 
 static void ProcessShipOrder(Vehicle *v)
@@ -245,7 +245,7 @@ static void ProcessShipOrder(Vehicle *v)
 
 		st = DEREF_STATION(order.station);
 		if (st->dock_tile != 0) {
-			v->dest_tile = TILE_ADD(st->dock_tile, _dock_offs[_map5[st->dock_tile]-0x4B]);
+			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_map5[st->dock_tile]-0x4B]));
 		}
 	} else if (order.type == OT_GOTO_DEPOT) {
 		v->dest_tile = _depots[order.station].xy;
@@ -319,9 +319,9 @@ static void RecalcShipStuff(Vehicle *v)
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 }
 
-static const TileIndexDiff _ship_leave_depot_offs[] = {
-	TILE_XY(-1,0),
-	TILE_XY(0,-1),
+static const TileIndexDiffC _ship_leave_depot_offs[] = {
+	{-1,  0},
+	{ 0, -1}
 };
 
 static void CheckShipLeaveDepot(Vehicle *v)
@@ -337,10 +337,10 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	d = (_map5[tile]&2) ? 1 : 0;
 
 	// Check first side
-	if (_ship_sometracks[d] & GetTileShipTrackStatus(TILE_ADD(tile,_ship_leave_depot_offs[d]))) {
+	if (_ship_sometracks[d] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[d])))) {
 		m = (d==0) ? 0x101 : 0x207;
 	// Check second side
-	} else if (_ship_sometracks[d+2] & GetTileShipTrackStatus(TILE_ADD(tile, -2*_ship_leave_depot_offs[d]))) {
+	} else if (_ship_sometracks[d+2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[d])))) {
 		m = (d==0) ? 0x105 : 0x203;
 	} else {
 		return;

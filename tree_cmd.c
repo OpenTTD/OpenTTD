@@ -466,15 +466,15 @@ static void TileLoop_Trees(uint tile)
 	byte m5;
 	uint16 m2;
 
-	static const TileIndexDiff _tileloop_trees_dir[] = {
-		TILE_XY(-1,-1),
-		TILE_XY(0,-1),
-		TILE_XY(1,-1),
-		TILE_XY(-1,0),
-		TILE_XY(1,0),
-		TILE_XY(-1,1),
-		TILE_XY(0,1),
-		TILE_XY(1,1),
+	static const TileIndexDiffC _tileloop_trees_dir[] = {
+		{-1, -1},
+		{ 0, -1},
+		{ 1, -1},
+		{-1,  0},
+		{ 1,  0},
+		{-1,  1},
+		{ 0,  1},
+		{ 1,  1}
 	};
 
 	if (_opt.landscape == LT_DESERT) {
@@ -514,7 +514,7 @@ static void TileLoop_Trees(uint tile)
 			case 2: { /* add a neighbouring tree */
 				byte m3 = _map3_lo[tile];
 
-				tile += _tileloop_trees_dir[Random() & 7];
+				tile += ToTileIndexDiff(_tileloop_trees_dir[Random() & 7]);
 
 				if (!IS_TILETYPE(tile, MP_CLEAR))
 					return;

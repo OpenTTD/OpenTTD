@@ -49,7 +49,7 @@ typedef struct DrawIndustrySpec4Struct {
 
 
 typedef struct IndustryTileTable {
-	TileIndexDiff ti;
+	TileIndexDiffC ti;
 	byte map5;
 } IndustryTileTable;
 
@@ -982,7 +982,12 @@ static void MaybePlantFarmField(Industry *i)
 
 static void ChopLumberMillTrees(Industry *i)
 {
-	static const TileIndexDiff _chop_dir[4] = { TILE_XY(0,1), TILE_XY(1,0), TILE_XY(0,-1), TILE_XY(-1,0) };
+	static const TileIndexDiffC _chop_dir[] = {
+		{ 0,  1},
+		{ 1,  0},
+		{ 0, -1},
+		{-1,  0}
+	};
 
 	uint tile = i->xy;
 	int dir, a, j;
@@ -1013,7 +1018,7 @@ static void ChopLumberMillTrees(Industry *i)
 					_current_player = old_player;
 					return;
 				}
-				tile += _chop_dir[dir];
+				tile += ToTileIndexDiff(_chop_dir[dir]);
 			} while (--j);
 		}
 		tile -= TILE_XY(1,1);
@@ -1280,7 +1285,7 @@ static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, 
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
 	do {
-		cur_tile = tile + it->ti;
+		cur_tile = tile + ToTileIndexDiff(it->ti);
 		if (!IsValidTile(cur_tile)) {
 			if (it->map5 == 0xff)
 				continue;
@@ -1353,7 +1358,7 @@ do_clear:
 				}
 			}
 		}
-	} while ( (++it)->ti != -0x8000);
+	} while ((++it)->ti.x != -0x80);
 
 	return true;
 }
@@ -1456,14 +1461,14 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 	i->prod_level = 0x10;
 
 	do {
-		cur_tile = tile + it->ti;
+		cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (it->map5 != 0xFF) {
 			byte size;
 
-			size = GET_TILE_X((TileIndex)it->ti);
+			size = it->ti.x;
 			if (size > i->width) i->width = size;
-			size = GET_TILE_Y((TileIndex)it->ti);
+			size = it->ti.y;
 			if (size > i->height)i->height = size;
 
 			DoCommandByTile(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -1473,7 +1478,7 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 			_map2[cur_tile] = i - _industries;
 			_map_owner[cur_tile] = _generating_world ? 0x1E : 0; /* maturity */
 		}
-	} while ( (++it)->ti != -0x8000);
+	} while ((++it)->ti.x != -0x80);
 
 	i->width++;
 	i->height++;

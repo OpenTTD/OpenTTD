@@ -385,14 +385,14 @@ static int GetBestFit1x1(int x, int y)
 	// get the rail in each direction
 	tile = TILE_FROM_XY(x,y);
 	for(i=0; i!=5; i++) {
-		static TileIndexDiff _tile_inc[5] = {
-			TILE_XY(-1, 0),
-			TILE_XY(0, 1) - TILE_XY(-1, 0),
-			TILE_XY(1, 0) - TILE_XY(0, 1),
-			TILE_XY(0, -1) - TILE_XY(1, 0),
-			TILE_XY(0, 0) - TILE_XY(0, -1),
+		static const TileIndexDiffC _tile_inc[] = {
+			{-1     ,  0     },
+			{ 0 - -1,  1 -  0},
+			{ 1 -  0,  0 -  1},
+			{ 0 -  1, -1 -  0},
+			{ 0 -  0,  0 - -1}
 		};
-		tile += _tile_inc[i];
+		tile += ToTileIndexDiff(_tile_inc[i]);
 		m[i] = 0;
 		if (IS_TILETYPE(tile, MP_RAILWAY) && _map5[tile] < 0x80)
 			m[i] = _map5[tile]&0x3F;

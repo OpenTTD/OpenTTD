@@ -186,12 +186,17 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 
 	{
 		int direction = ts->direction, r;
-		const TileIndexDiff *ttm;
+		const TileIndexDiffC *ttm;
 
-		static const TileIndexDiff _terraform_tilepos[5] = {TILE_XY(1,0), TILE_XY(-2,0), TILE_XY(1,1), TILE_XY(0,-2), 0 };
+		static const TileIndexDiffC _terraform_tilepos[] = {
+			{ 1,  0},
+			{-2,  0},
+			{ 1,  1},
+			{ 0, -2}
+		};
 
-		for(ttm = _terraform_tilepos; *ttm != 0; ttm++) {
-			tile += *ttm;
+		for(ttm = _terraform_tilepos; ttm != endof(_terraform_tilepos); ttm++) {
+			tile += ToTileIndexDiff(*ttm);
 
 			r = TerraformGetHeightOfTile(ts, tile);
 			if (r != height && r-direction != height && r+direction != height) {

@@ -26,13 +26,22 @@ static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
 
 typedef int16 TileIndexDiff;
 
+typedef struct TileIndexDiffC {
+	int16 x;
+	int16 y;
+} TileIndexDiffC;
+
+static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
+{
+	return (tidc.y << MapLogX()) + tidc.x;
+}
 
 static inline TileIndexDiff TileOffsByDir(uint dir)
 {
-	extern const TileIndexDiff _tileoffs_by_dir[4];
+	extern const TileIndexDiffC _tileoffs_by_dir[4];
 
 	assert(dir < lengthof(_tileoffs_by_dir));
-	return _tileoffs_by_dir[dir];
+	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
 }
 
 #endif

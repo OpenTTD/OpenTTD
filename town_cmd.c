@@ -362,17 +362,17 @@ static void ChangeTileOwner_Town(uint tile, byte old_player, byte new_player)
 }
 
 
-static const TileIndexDiff _roadblock_tileadd[4+3] = {
-	TILE_XY(0,-1),
-	TILE_XY(1,0),
-	TILE_XY(0,1),
-	TILE_XY(-1,0),
+static const TileIndexDiffC _roadblock_tileadd[] = {
+	{ 0, -1},
+	{ 1,  0},
+	{ 0,  1},
+	{-1,  0},
 
 	// Store the first 3 elements again.
 	// Lets us rotate without using &3.
-	TILE_XY(0,-1),
-	TILE_XY(1,0),
-	TILE_XY(0,1),
+	{ 0, -1},
+	{ 1,  0},
+	{ 0,  1}
 };
 
 static void TownTickHandler(Town *t)
@@ -448,10 +448,10 @@ static bool IsRoadAllowedHere(uint tile, int dir)
 no_slope:
 			// Tile has no slope
 			// Disallow the road if any neighboring tile has a road.
-			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, _roadblock_tileadd[dir+1])), dir^2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, _roadblock_tileadd[dir+3])), dir^2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, _roadblock_tileadd[dir+1] + _roadblock_tileadd[dir+2])), dir) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, _roadblock_tileadd[dir+3] + _roadblock_tileadd[dir+2])), dir))
+			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+1]))), dir^2) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+3]))), dir^2) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+1]) + ToTileIndexDiff(_roadblock_tileadd[dir+2]))), dir) ||
+					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir+3]) + ToTileIndexDiff(_roadblock_tileadd[dir+2]))), dir))
 				return false;
 
 			// Otherwise allow
@@ -556,15 +556,15 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 			a = (int)Random() & 3;
 		} while(a == b);
 
-		if (!IsRoadAllowedHere(TILE_ADD(tile,_roadblock_tileadd[a]), a)) {
+		if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {
 			// A road is not allowed to continue the randomized road,
 			//   return if the road we're trying to build is curved.
 			if ( a != (b^2))
 				return;
 
 			// Return if neither side of the new road is a house
-			if (!IS_TILETYPE(TILE_ADD(tile,_roadblock_tileadd[a+1]), MP_HOUSE) &&
-					!IS_TILETYPE(TILE_ADD(tile,_roadblock_tileadd[a+3]), MP_HOUSE))
+			if (!IS_TILETYPE(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
+					!IS_TILETYPE(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 3])), MP_HOUSE))
 				return;
 
 			// That means that the road is only allowed if there is a house
@@ -597,7 +597,7 @@ static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
 			return;
 
 		// This is the tile we will reach if we extend to this direction.
-		tmptile = TILE_ADD(tile,_roadblock_tileadd[i]);
+		tmptile = TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[i]));
 
 		// Don't do it if it reaches to water.
 		if (IS_WATER_TILE(tmptile))
@@ -708,7 +708,7 @@ static int GrowTownAtRoad(Town *t, uint tile)
 		// Select a random bit from the blockmask, walk a step
 		// and continue the search from there.
 		do block = Random() & 3; while (!HASBIT(mask,block));
-		tile += _roadblock_tileadd[block];
+		tile += ToTileIndexDiff(_roadblock_tileadd[block]);
 
 		// Max number of times is checked.
 	} while (--_grow_town_result >= 0);
@@ -732,25 +732,24 @@ static int GenRandomRoadBits()
 bool GrowTown(Town *t)
 {
 	uint tile;
-	const TileIndexDiff *ptr;
-	int offs;
+	const TileIndexDiffC *ptr;
 	TileInfo ti;
 	byte old_player;
 
-	static const TileIndexDiff _town_coord_mod[] = {
-		TILE_XY(-1,0),
-		TILE_XY(1,1),
-		TILE_XY(1,-1),
-		TILE_XY(-1,-1),
-		TILE_XY(-1,0),
-		TILE_XY(0,2),
-		TILE_XY(2,0),
-		TILE_XY(0,-2),
-		TILE_XY(-1,-1),
-		TILE_XY(-2,2),
-		TILE_XY(2,2),
-		TILE_XY(2,-2),
-		0,
+	static const TileIndexDiffC _town_coord_mod[] = {
+		{-1,  0},
+		{ 1,  1},
+		{ 1, -1},
+		{-1, -1},
+		{-1,  0},
+		{ 0,  2},
+		{ 2,  0},
+		{ 0, -2},
+		{-1, -1},
+		{-2,  2},
+		{ 2,  2},
+		{ 2, -2},
+		{ 0,  0}
 	};
 
 	// Current player is a town
@@ -759,23 +758,19 @@ bool GrowTown(Town *t)
 
 	// Find a road that we can base the construction on.
 	tile = t->xy;
-	ptr = _town_coord_mod;
-	do {
+	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		if (GetRoadBitsByTile(tile) != 0) {
 			int r = GrowTownAtRoad(t, tile);
 			_current_player = old_player;
 			return r;
 		}
-		offs = *ptr++;
-
-		tile = TILE_ADD(tile, offs);
-	} while (offs);
+		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
+	}
 
 	// No road available, try to build a random road block by
 	// clearing some land and then building a road there.
 	tile = t->xy;
-	ptr = _town_coord_mod;
-	do {
+	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		FindLandscapeHeightByTile(&ti, tile);
 
 		// Only work with plain land that not already has a house with map5=0
@@ -786,9 +781,8 @@ bool GrowTown(Town *t)
 				return true;
 			}
 		}
-		offs = *ptr++;
-		tile = TILE_ADD(tile, offs);
-	} while (offs != 0);
+		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
+	}
 
 	_current_player = old_player;
 	return false;
@@ -1085,15 +1079,15 @@ static bool CheckFree2x2Area(Town *t1, uint tile)
 	Town *t;
 	int i;
 
-	static const TileIndexDiff _tile_add[4] = {
-		TILE_XY(0,0),
-		TILE_XY(0,1) - TILE_XY(0,0),
-		TILE_XY(1,0) - TILE_XY(0,1),
-		TILE_XY(1,1) - TILE_XY(1,0),
+	static const TileIndexDiffC _tile_add[] = {
+		{0    , 0    },
+		{0 - 0, 1 - 0},
+		{1 - 0, 0 - 1},
+		{1 - 1, 1 - 0}
 	};
 
 	for(i=0; i!=4; i++) {
-		tile += _tile_add[i];
+		tile += ToTileIndexDiff(_tile_add[i]);
 
 		t = ClosestTownFromTile(tile, (uint)-1);
 		if (t1 != t)
@@ -1503,41 +1497,36 @@ static bool DoBuildStatueOfCompany(uint tile)
 static void TownActionBuildStatue(Town *t, int action)
 {
 	// Layouted as an outward spiral
-	static const TileIndexDiff _statue_tiles[] = {
-	  TILE_XY(-1,0), TILE_XY(0,1),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(-1,0), TILE_XY(-1,0),
-	  TILE_XY(-1,0), TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(0,1),
-	  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1),
-	  TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0),
-	  TILE_XY(-1,0), TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(0,1),
-	  TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(-1,0), TILE_XY(-1,0),
-	  TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0),
-	  TILE_XY(-1,0), TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(0,1),
-	  TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(0,1),  TILE_XY(0,1),
-	  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),  TILE_XY(1,0),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1),
-	  TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1), TILE_XY(0,-1),
-	  TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0),
-	  TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0), TILE_XY(-1,0),
-	  0,
-    };
-	int offs;
+	static const TileIndexDiffC _statue_tiles[] = {
+		{-1, 0},
+		{ 0, 1},
+		{ 1, 0}, { 1, 0},
+		{ 0,-1}, { 0,-1},
+		{-1, 0}, {-1, 0}, {-1, 0},
+		{ 0, 1}, { 0, 1}, { 0, 1},
+		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
+		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
+		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
+		{ 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1},
+		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
+		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
+		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
+		{ 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1},
+		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
+		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
+		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
+		{ 0, 0}
+	};
 	uint tile = t->xy;
-	const TileIndexDiff *p = _statue_tiles;
+	const TileIndexDiffC *p;
 
 	SETBIT(t->statues, _current_player);
 
-	do {
+	for (p = _statue_tiles; p != endof(_statue_tiles); ++p) {
 		if (DoBuildStatueOfCompany(tile))
 			return;
-		offs = *p++;
-		tile = TILE_ADD(tile, offs);
-	} while (offs);
+		tile = TILE_ADD(tile, ToTileIndexDiff(*p));
+	}
 }
 
 static void TownActionFundBuildings(Town *t, int action)

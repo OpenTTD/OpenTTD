@@ -909,7 +909,7 @@ static void Disaster7_Init()
 
 				{
 					uint tile = i->xy;
-					int step = TileOffsByDir(Random() & 3);
+					TileIndexDiff step = TileOffsByDir(Random() & 3);
 					int count = 30;
 					do {
 						DisasterClearSquare(tile);

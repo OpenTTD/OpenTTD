@@ -224,11 +224,11 @@ static void ClickTile_Unmovable(uint tile)
 	}
 }
 
-static const TileIndexDiff _tile_add[4] = {
-	TILE_XY(1,0),
-	TILE_XY(0,1),
-	TILE_XY(-1,0),
-	TILE_XY(0,-1),
+static const TileIndexDiffC _tile_add[] = {
+	{ 1,  0},
+	{ 0,  1},
+	{-1,  0},
+	{ 0, -1}
 };
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
@@ -295,7 +295,7 @@ restart:
 		do {
 			if (--j == 0)
 				goto restart;
-			tile = TILE_MASK(tile + _tile_add[dir]);
+			tile = TILE_MASK(tile + ToTileIndexDiff(_tile_add[dir]));
 		} while (!(IS_TILETYPE(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
 
 		assert(tile == TILE_MASK(tile));

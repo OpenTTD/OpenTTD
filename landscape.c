@@ -631,35 +631,32 @@ static void GenerateTerrain(int type, int flag)
 static void CreateDesertOrRainForest()
 {
 	uint tile;
-	const TileIndexDiff *data;
+	const TileIndexDiffC *data;
 	byte mt;
 	int i;
 
-	tile = 0;
-	do {
-		data = _make_desert_or_rainforest_data;
-		do {
-			if ((i = *data++) == MDORD_LAST) {
-				SetMapExtraBits(tile, 1);
-				break;
-			}
-			mt = _map_type_and_height[TILE_MASK(tile + i)];
-		} while ((mt & 0xC) == 0 && (mt >> 4) != MP_WATER);
-	} while (++tile != MapSize());
+	for (tile = 0; tile != MapSize(); ++tile) {
+		for (data = _make_desert_or_rainforest_data;
+				data != endof(_make_desert_or_rainforest_data); ++data) {
+			mt = _map_type_and_height[TILE_MASK(tile + ToTileIndexDiff(*data))];
+			if ((mt & 0xf) >= 4 || (mt >> 4) == MP_WATER) break;
+		}
+		if (data == endof(_make_desert_or_rainforest_data))
+			SetMapExtraBits(tile, 1);
+	}
 
 	for(i=0; i!=256; i++)
 		RunTileLoop();
 
-	tile = 0;
-	do {
-		data = _make_desert_or_rainforest_data;
-		do {
-			if ((i = *data++) == MDORD_LAST) {
-				SetMapExtraBits(tile, 2);
-				break;
-			}
-		} while ( !IS_TILETYPE(TILE_MASK(tile+i), MP_CLEAR) || (_map5[TILE_MASK(tile + i)]&0x1C) != 0x14);
-	} while (++tile != MapSize());
+	for (tile = 0; tile != MapSize(); ++tile) {
+		for (data = _make_desert_or_rainforest_data;
+				data != endof(_make_desert_or_rainforest_data); ++data) {
+			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
+			if (IS_TILETYPE(t, MP_CLEAR) && (_map5[t] & 0x1c) == 0x14) break;
+		}
+		if (data == endof(_make_desert_or_rainforest_data))
+			SetMapExtraBits(tile, 2);
+	}
 }
 
 void GenerateLandscape()

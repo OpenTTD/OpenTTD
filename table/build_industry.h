@@ -1,6 +1,6 @@
-#define MK(x,y, m) {TILE_XY(x,y), m}
+#define MK(x,y, m) {{x, y}, m}
 
-#define MKEND {-0x8000, 0}
+#define MKEND {{-0x80, 0}, 0}
 
 static const IndustryTileTable _tile_table_coal_mine_0[] = {
 	MK(1,1, 0),

@@ -1,7 +1,6 @@
-#define M(x,y) TILE_XY(x,y)
+#define M(x,y) {x, y}
 
-#define MDORD_LAST 99
-static const TileIndexDiff _make_desert_or_rainforest_data[150] = {
+static const TileIndexDiffC _make_desert_or_rainforest_data[] = {
 	M(-5,-6),
 	M(-4,-6),
 	M(-3,-6),
@@ -150,8 +149,7 @@ static const TileIndexDiff _make_desert_or_rainforest_data[150] = {
 	M(6,3),
 	M(-6,2),
 	M(3,6),
-	M(3,-6),
-	MDORD_LAST,
+	M(3,-6)
 };
 
 

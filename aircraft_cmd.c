@@ -215,12 +215,12 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			Station *st;
 			const AirportFTAClass *Airport;
-			const uint16 *cur_depot;
+			const TileIndexDiffC *cur_depot;
 			byte i = 0;
 			st = DEREF_STATION(_map2[tile]);
 			Airport = GetAirport(st->airport_type);
 			for (cur_depot = Airport->airport_depots; i != Airport->nof_depots; cur_depot++) {
-				if ((uint)(st->airport_tile + *cur_depot) == tile) {
+				if ((uint)(st->airport_tile + ToTileIndexDiff(*cur_depot)) == tile) {
 					assert(Airport->layout[i].heading == HANGAR);
 					v->u.air.pos = Airport->layout[i].position;
 					break;
