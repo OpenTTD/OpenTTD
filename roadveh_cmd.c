@@ -1695,13 +1695,8 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		}
 
 		//We do not have a slot, so make one
-		if (v->u.road.slot == NULL) {
-			//first we need to find out how far our stations are away.
-			if ( rs == NULL ) {
-				free(firststop);
-				firststop = stop = NULL;
-				goto no_stop;
-			}
+		if (v->u.road.slot == NULL && rs != NULL) {
+		//first we need to find out how far our stations are away.
 
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			do {
@@ -1729,6 +1724,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				stop = firststop;
 				for (k = 0; k < num; k++) {
 					int i;
+					bool br = false;
 					for (i = 0; i < NUM_SLOTS; i++) {
 						if ((stop->rs->slot[i] == INVALID_SLOT) && (stop->dist < 120)) {
 
@@ -1741,15 +1737,16 @@ void OnNewDay_RoadVeh(Vehicle *v)
 							v->u.road.slot_age = -30;
 							v->u.road.slotindex = i;
 
-							goto have_slot;	//jump out of BOTH loops
+							br = true;
+							break;
 
 						}
 					}
 					stop++;
+					if (br) break;
 				}
 			}
 
-have_slot:
 		//now we couldn't assign a slot for one reason or another.
 		//so we just go to the nearest station
 			if (v->u.road.slot == NULL) {
@@ -1762,7 +1759,6 @@ have_slot:
 		firststop = stop = NULL;
 	}
 
-no_stop:
 	if (v->vehstatus & VS_STOPPED)
 		return;
 
