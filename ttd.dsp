@@ -769,6 +769,10 @@ SOURCE=.\table\engines.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\table\files.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\table\genland.h
 # End Source File
 
