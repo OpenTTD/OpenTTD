@@ -21,6 +21,7 @@
 extern int _skip_sprites;
 extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
+extern int _traininfo_vehicle_pitch;
 
 struct GRFFile {
 	char *filename;
@@ -1548,8 +1549,10 @@ static void SkipIf(byte *buf, int len)
 		case 0x8D:    /* TTD Version, 00=DOS, 01=Windows */
 			param_val = 1;
 			break;
+		case 0x8E:
+			param_val = _traininfo_vehicle_pitch;
+			break;
 		/* TODO */
-		case 0x8E:    /* How many pixels to displace sprites in train info windows */
 		case 0x8F:    /* Track type cost multipliers */
 		default:
 			if (param >= 0x80) {
@@ -1739,6 +1742,7 @@ static void ParamSet(byte *buf, int len)
 	uint16 src1;
 	uint16 src2;
 	uint16 data = 0;
+	int32 *dest;
 
 	check_length(len, 5, "ParamSet");
 	buf++;
@@ -1790,37 +1794,42 @@ static void ParamSet(byte *buf, int len)
 	 * from action 7, but at the moment the only variable that is valid to
 	 * write is 8E. */
 
-	if (_param_max < target)
-		_param_max = target;
+	if (target == 0x8E) {
+		dest = &_traininfo_vehicle_pitch;
+	} else {
+		if (_param_max < target)
+			_param_max = target;
+		dest = &_paramlist[target];
+	}
 
 	/* FIXME: No checking for overflows. */
 	switch (oper) {
 		case 0x00:
-			_paramlist[target] = src1;
+			*dest = src1;
 			break;
 		case 0x01:
-			_paramlist[target] = src1 + src2;
+			*dest = src1 + src2;
 			break;
 		case 0x02:
-			_paramlist[target] = src1 - src2;
+			*dest = src1 - src2;
 			break;
 		case 0x03:
-			_paramlist[target] = ((uint32) src1) * ((uint32) src2);
+			*dest = ((uint32) src1) * ((uint32) src2);
 			break;
 		case 0x04:
-			_paramlist[target] = ((int32) src1) * ((int32) src2);
+			*dest = ((int32) src1) * ((int32) src2);
 			break;
 		case 0x05:
 			if (src2 & 0x8000) /* src2 is "negative" */
-				_paramlist[target] = src1 >> -((int16) src2);
+				*dest = src1 >> -((int16) src2);
 			else
-				_paramlist[target] = src1 << src2;
+				*dest = src1 << src2;
 			break;
 		case 0x06:
 			if (src2 & 0x8000) /* src2 is "negative" */
-				_paramlist[target] = ((int16) src1) >> -((int16) src2);
+				*dest = ((int16) src1) >> -((int16) src2);
 			else
-				_paramlist[target] = ((int16) src1) << src2;
+				*dest = ((int16) src1) << src2;
 			break;
 		default:
 			grfmsg(GMS_ERROR, "ParamSet: Unknown operation %d, skipping.", oper);

@@ -11,6 +11,9 @@
 #include "player.h"
 #include "engine.h"
 
+
+int _traininfo_vehicle_pitch = 0;
+
 static Engine * const _rail_engines[3] = {
 	&_engines[0],
 	&_engines[NUM_NORMAL_RAIL_ENGINES],
@@ -109,7 +112,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					if (sel==0) selected_id = engine_id;
 					if (IS_INT_INSIDE(--pos, -8, 0)) {
 						DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-						DrawTrainEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+						DrawTrainEngine(x+29, y+6+_traininfo_vehicle_pitch, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 						y += 14;
 					}
 					sel--;
@@ -253,7 +256,7 @@ static void DrawTrainImage(Vehicle *v, int x, int y, int count, int skip, Vehicl
 			int image = GetTrainImage(v, 6);
 			uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
 			if (v->vehstatus & VS_CRASHED) ormod = 0x3248000;
-			DrawSprite(image | ormod, x+14, y+6);
+			DrawSprite(image | ormod, x+14, y+6+_traininfo_vehicle_pitch);
 			if (v->index == selection) DrawFrameRect(x-1, y-1, x+28, y+12, 15, 0x10);
 			x += 29;
 			count--;
@@ -1271,7 +1274,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 				assert(v->type == VEH_Train && v->subtype == 0 && v->owner == window_number);
 
-				DrawTrainImage(v, x + 21, y + 6, 10, 0, INVALID_VEHICLE);
+				DrawTrainImage(v, x + 21, y + 6 + _traininfo_vehicle_pitch, 10, 0, INVALID_VEHICLE);
 				DrawVehicleProfitButton(v, x, y+13);
 
 				SET_DPARAM16(0, v->unitnumber);
