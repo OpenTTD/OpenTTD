@@ -101,7 +101,7 @@ typedef struct CommandPacket {
 	TileIndex tile;
 	byte player;// player id, this is checked by the server.
 	byte when;  // offset from the current max_frame value minus 1. this is set by the server.
-	uint32 dp[10];
+	uint32 dp[8];
 } CommandPacket;
 
 typedef struct EventPacket {
@@ -481,7 +481,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	qp->frame = _frame_counter_max - GetNextSyncFrame();
 
 	// calculate the amount of extra bytes.
-	nump = 10;
+	nump = 8;
 	while ( nump != 0 && ((uint32*)_decode_parameters)[nump-1] == 0) nump--;
 	qp->cp.packet_length = COMMAND_PACKET_BASE_SIZE + nump * sizeof(uint32);
 	if (nump != 0) memcpy(qp->cp.dp, _decode_parameters, nump * sizeof(uint32));
