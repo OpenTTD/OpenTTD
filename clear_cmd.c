@@ -92,11 +92,15 @@ static int TerraformProc(TerraformerState *ts, uint tile, int mode)
 	if ((_map_type_and_height[tile] >> 4) == MP_RAILWAY) {
 		static const byte _railway_modes[4] = {8, 0x10, 4, 0x20};
 		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
+		static const byte _railway_dangslopes2[4] = {0x2, 0x1, 0x8, 0x4};
 
 		// Nothing could be built at the steep slope - this avoids a bug
 		// when you have a single diagonal track in one corner on a
-		// basement and then you raise the other corner.
-		if ((GetTileSlope(tile, NULL)&0xF) == _railway_dangslopes[mode]) {
+		// basement and then you raise/lower the other corner.
+		int tileh = GetTileSlope(tile, NULL) & 0xF;
+		if (tileh == _railway_dangslopes[mode] ||
+				tileh == _railway_dangslopes2[mode]) {
+			_terraform_err_tile = tile;
 			_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
 			return -1;
 		}
