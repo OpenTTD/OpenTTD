@@ -25,10 +25,10 @@ STR_0013_LIVESTOCK						:Kvæg
 STR_0014_GOODS							:Stykgods
 STR_0015_GRAIN							:Korn
 STR_0016_WOOD							:Træ
-STR_0017_IRON_ORE						:Jern Malm
+STR_0017_IRON_ORE						:Jernmalm
 STR_0018_STEEL							:Stål
 STR_0019_VALUABLES						:Værdigenstande
-STR_001A_COPPER_ORE						:Kobber Malm
+STR_001A_COPPER_ORE						:Kobbermalm
 STR_001B_MAIZE							:Majs
 STR_001C_FRUIT							:Frugt
 STR_001D_DIAMONDS						:Diamander
@@ -57,10 +57,10 @@ STR_0033_LIVESTOCK						:Kvæg
 STR_0034_GOODS							:Stykgods
 STR_0035_GRAIN							:Korn
 STR_0036_WOOD							:Træ
-STR_0037_IRON_ORE						:Jern Malm
+STR_0037_IRON_ORE						:Jernmalm
 STR_0038_STEEL							:Stål
 STR_0039_VALUABLES						:Værdigendstand
-STR_003A_COPPER_ORE						:Kobber Malm
+STR_003A_COPPER_ORE						:Kobbermalm
 STR_003B_MAIZE							:Majs
 STR_003C_FRUIT							:Frugt
 STR_003D_DIAMOND						:Diamand
@@ -89,10 +89,10 @@ STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} stk. kvæg
 STR_0054_CRATE_OF_GOODS						:{COMMA16} kasse gods
 STR_0055_TON_OF_GRAIN						:{COMMA16} ton korn
 STR_0056_TON_OF_WOOD						:{COMMA16} ton træ
-STR_0057_TON_OF_IRON_ORE					:{COMMA16} ton jern malm
+STR_0057_TON_OF_IRON_ORE					:{COMMA16} ton jernmalm
 STR_0058_TON_OF_STEEL						:{COMMA16} ton stål
 STR_0059_BAG_OF_VALUABLES					:{COMMA16} sæk værdigendstande
-STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tons kobber malm
+STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tons kobbermalm
 STR_005B_TON_OF_MAIZE						:{COMMA16} ton majs
 STR_005C_TON_OF_FRUIT						:{COMMA16} ton frugt
 STR_005D_BAG_OF_DIAMONDS					:{COMMA16} sæk diamanter
@@ -121,10 +121,10 @@ STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} stk. kvæg
 STR_0074_CRATES_OF_GOODS					:{COMMA16} kasser gods
 STR_0075_TONS_OF_GRAIN						:{COMMA16} tons korn
 STR_0076_TONS_OF_WOOD						:{COMMA16} tons træ
-STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tons jern malm
+STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tons jernmalm
 STR_0078_TONS_OF_STEEL						:{COMMA16} tons stål
 STR_0079_BAGS_OF_VALUABLES					:{COMMA16} sække værdigendstande
-STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tons kobber malm
+STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tons kobbermalm
 STR_007B_TONS_OF_MAIZE						:{COMMA16} tons majs
 STR_007C_TONS_OF_FRUIT						:{COMMA16} tons frugt
 STR_007D_BAGS_OF_DIAMONDS					:{COMMA16} sække diamanter
@@ -1283,7 +1283,7 @@ STR_1002_EXCAVATION_WOULD_DAMAGE				:{WHITE}Udgravning ville skade en tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL					:{WHITE}Allerede ved havoverfladen
 STR_1004_TOO_HIGH						:{WHITE}For højt
 STR_1005_NO_SUITABLE_RAILROAD_TRACK				:{WHITE}Ingen brugbare togskinner
-STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Der er et tog i remisen
+STR_1006_TRAIN_INSIDE_DEPOT					:{WHITE}Der er et tog i depotet
 STR_1007_ALREADY_BUILT						:{WHITE}...allerede bygget
 STR_1008_MUST_REMOVE_RAILROAD_TRACK				:{WHITE}Det er nødvendigt at fjerne togskinnerne først
 STR_1009_TOO_MANY_DEPOTS					:{WHITE}For mange depoter
@@ -1291,28 +1291,28 @@ STR_100A_RAILROAD_CONSTRUCTION					:{WHITE}Togskinne Konstruktion
 STR_100B_MONORAIL_CONSTRUCTION					:{WHITE}Monorail Konstruktion
 STR_100C_MAGLEV_CONSTRUCTION					:{WHITE}Magnetskinnetog Konstruktion
 STR_100D_SELECT_RAIL_BRIDGE					:{WHITE}Vælg togbro
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Kan ikke bygge en remise her...
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT				:{WHITE}Kan ikke bygge et depot her...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION				:{WHITE}Kan ikke bygge en togstation her...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE				:{WHITE}Kan ikke bygge signaler her...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK				:{WHITE}Kan ikke bygge togskinner her...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK				:{WHITE}Kan ikke fjerne togksinner herfra...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM				:{WHITE}Kan ikke fjerne signaler herfra...
-STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Retning for remise
+STR_1014_TRAIN_DEPOT_ORIENTATION				:{WHITE}Retning for depot
 STR_1015_RAILROAD_CONSTRUCTION					:Togskinne konstruktion
 STR_1016_MONORAIL_CONSTRUCTION					:Monorail Konstruktion
 STR_1017_MAGLEV_CONSTRUCTION					:Magnetskinnetog konstruktion
 STR_1018_BUILD_RAILROAD_TRACK					:{BLACK}Byg togskinner
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Byg en remise (til at bygge og servicere tog)
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING				:{BLACK}Byg et depot (til at bygge og servicere tog)
 STR_101A_BUILD_RAILROAD_STATION					:{BLACK}Byg togstation
 STR_101B_BUILD_RAILROAD_SIGNALS					:{BLACK}Byg signaler
 STR_101C_BUILD_RAILROAD_BRIDGE					:{BLACK}Byg bro
 STR_101D_BUILD_RAILROAD_TUNNEL					:{BLACK}Byg tunnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR				:{BLACK}Skift mellem bygning/fjerning af togskinner og signaler
 STR_101F_BRIDGE_SELECTION_CLICK					:{BLACK}Valg af bro - klik på den valgte bro for at bygge den
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Vælg orientering af remise
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO			:{BLACK}Vælg orientering af depot
 STR_1021_RAILROAD_TRACK						:Togskinner
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS				:Togskinner med signaler
-STR_1023_RAILROAD_TRAIN_DEPOT					:Remise
+STR_1023_RAILROAD_TRAIN_DEPOT					:Depot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER				:{WHITE}...området ejes af et andet firma
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS				:Togskinner med almindelige signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS				:Togskinner med indkørselssignaler
@@ -2221,7 +2221,7 @@ STR_8106_MONORAIL_LOCOMOTIVE					:monoraillokomotiv
 STR_8107_MAGLEV_LOCOMOTIVE					:magnetskinnelokomotiv
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} remise
+STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN} depot
 STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS						:{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Tog i vejen
@@ -2235,13 +2235,13 @@ STR_880A_GO_NON_STOP_TO						:Gå uden stop til {STATION}
 STR_880B_GO_NON_STOP_TO_UNLOAD					:Gå uden stop til {STATION} (Aflæsse)
 STR_880C_GO_NON_STOP_TO_LOAD					:Gå uden stop til {STATION} (Læsse)
 STR_880D							:
-STR_880E_GO_TO_TRAIN_DEPOT					:Gå til {TOWN} remise
-STR_SERVICE_AT_TRAIN_DEPOT					:Service i {TOWN} remise
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Gå uden stop til {TOWN} remise
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Service non-stop i {TOWN} remise
+STR_880E_GO_TO_TRAIN_DEPOT					:Gå til {TOWN} depot
+STR_SERVICE_AT_TRAIN_DEPOT					:Service i {TOWN} depot
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT				:Gå uden stop til {TOWN} depot
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Service non-stop i {TOWN} depot
 
-STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Retning mod {TOWN} remise
-STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Retning mod {TOWN} remise, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Kører imod {TOWN} depot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Kører imod {TOWN} depot, {VELOCITY}
 
 STR_INVALID_ORDER						:{RED} (Ugyldig Order)
 
@@ -2254,7 +2254,7 @@ STR_8816							:{BLACK}-
 STR_8817_COST_WEIGHT_T_SPEED_POWER				:{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA16}t{}{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA16}hp{}{BLACK}Kørselsomkostninger: {GOLD}{CURRENCY}/år{}{BLACK}Kapacitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks pålidelighed: {GOLD}{COMMA8}%
 STR_8818_INFORMATION						:{BLACK}Information
 STR_8819_TRAIN_TOO_LONG						:{WHITE}Toget er for langt
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Tog kan kun ændres når de er stoppet i en remise
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED				:{WHITE}Tog kan kun ændres når de er stoppet i et depot
 STR_881B_TRAINS							:{WHITE}{STRING} - {COMMA16} Tog
 STR_881C_NEW_RAIL_VEHICLES					:{WHITE}Nye Jernbanekøretøjer
 STR_881D_NEW_MONORAIL_VEHICLES					:{WHITE}Nye Monorailkøretøjer
@@ -2277,26 +2277,26 @@ STR_882C_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUMU16}{BL
 STR_882D_VALUE							:{LTBLUE}{STRING}{BLACK}   Værdi: {LTBLUE}{CURRENCY}
 STR_882E							:{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING					:{LTBLUE}Læsser / Aflæsser
-STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT				:{WHITE}Kan ikke sende toget til remise...
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT				:{WHITE}Kan ikke sende toget til depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS				:{WHITE}Ikke mere plads til flere ordre
 STR_8832_TOO_MANY_ORDERS					:{WHITE}For mange ordre
 STR_8833_CAN_T_INSERT_NEW_ORDER					:{WHITE}Kan ikke indsætte ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER				:{WHITE}Kan ikke slette denne ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER				:{WHITE}Kan ikke ændre denne ordre...
-STR_8836_MUST_BUILD_TRAIN_DEPOT					:{WHITE}Det er nødvendigt at bygge en remise først
+STR_8836_MUST_BUILD_TRAIN_DEPOT					:{WHITE}Det er nødvendigt at bygge et depot først
 STR_8837_CAN_T_MOVE_VEHICLE					:{WHITE}Kan ikke flytte køretøjet...
 STR_8838_N_A							:N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Kan ikke sælge jernbanekøretøjet...
-STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Kan ikke finde en route til en lokal remise
+STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Kan ikke finde en route til et lokalt depot
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Kan ikke stoppe/starte toget...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Serviceinterval: {LTBLUE}{COMMA16}dage{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Serviceinterval: {LTBLUE}{COMMA16}%{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - klik på et tog for information
-STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Byg nye tog (kræver en remise)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Byg nye tog (kræver et depot)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
 STR_8840_BUILD_NEW_TRAIN_VEHICLE				:{BLACK}Byg nyt tog/togvogn
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE				:{BLACK}Træk tog/togvogn her hend for at sælge
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Centrer skærmen over placeringen af remisen
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Centrer skærmen over placeringen af depot
 STR_8843_TRAIN_VEHICLE_SELECTION				:{BLACK}Tog valgsliste - klik på et køretøj for mere information
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN				:{BLACK}Byg det markerede lokomotiv/togvogn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE				:{BLACK}Omdøb tog-/togvognstypen
