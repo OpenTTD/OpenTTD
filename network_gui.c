@@ -248,7 +248,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 4: case 5:
 			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0, 0); // do it for widget 5
 			break;
-		case 10: { /* Matrix to show networkgames */
+		case 9: { /* Matrix to show networkgames */
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -363,11 +363,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		switch (HandleEditBoxKey(w, 3, e)) {
-		case 1:
-			HandleButtonClick(w, 10);
-			break;
-		}
+		if (HandleEditBoxKey(w, 3, e) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ')
@@ -399,13 +395,12 @@ static const Widget _network_game_window_widgets[] = {
 {          WWT_6,   RESIZE_NONE,   BGC,    90,   231,    42,    53, STR_NETWORK_COMBO1,					STR_NETWORK_CONNECTION_TIP},
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,   220,   230,    43,    52, STR_0225,										STR_NETWORK_CONNECTION_TIP},
 
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   220,   231,    62,   185, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
-
 {     WWT_IMGBTN,   RESIZE_NONE,   BTC,    10,   130,    62,    73, 0x0,													STR_NETWORK_GAME_NAME_TIP },
 {     WWT_IMGBTN,   RESIZE_NONE,   BTC,   131,   180,    62,    73, 0x0,													STR_NETWORK_CLIENTS_CAPTION_TIP },
 {     WWT_IMGBTN,   RESIZE_NONE,   BTC,   181,   219,    62,    73, 0x0,													STR_NETWORK_INFO_ICONS_TIP },
 
 {     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   219,    74,   185, 0x801,												STR_NETWORK_CLICK_GAME_TO_SELECT},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   220,   231,    62,   185, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   115,   195,   206, STR_NETWORK_FIND_SERVER,			STR_NETWORK_FIND_SERVER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   125,   231,   195,   206, STR_NETWORK_ADD_SERVER,			STR_NETWORK_ADD_SERVER_TIP},

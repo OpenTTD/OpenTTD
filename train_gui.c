@@ -307,7 +307,7 @@ static void DrawTrainDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<5)|(1<<6)|(1<<8));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<5)|(1<<8));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -527,7 +527,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		case 9:
 			ScrollMainWindowToTile(w->window_number);
 			break;
-		case 3:
+		case 6:
 			TrainDepotClickTrain(w, e->click.pt.x, e->click.pt.y);
 			break;
 		}
@@ -539,8 +539,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 5:
-		case 6: {
+		case 4: case 5: {
 			Vehicle *v;
 			int sell_cmd;
 
@@ -558,7 +557,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, e->click.widget);
 
-			sell_cmd = (e->click.widget == 6 || _ctrl_pressed) ? 1 : 0;
+			sell_cmd = (e->click.widget == 5 || _ctrl_pressed) ? 1 : 0;
 
 			if (v->subtype != 0) {
 				DoCommandP(v->tile, v->index, sell_cmd, NULL, CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE));
@@ -570,7 +569,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			}
 		}	break;
 
-		case 3: {
+		case 6: {
 				GetDepotVehiclePtData gdvp;
 				VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -597,20 +596,21 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->hscroll.cap += e->sizing.diff.x / 29;
-		w->widget[3].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[6].unkA = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
 }
 
 static const Widget _train_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   337,   348,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   336,     0,    13, STR_8800_TRAIN_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   337,   348,     0,    13, 0x0,										STR_STICKY_BUTTON},
+
 {      WWT_PANEL,    RESIZE_LRB,    14,   314,   336,    14,    13, 0x0,										STR_NULL},
 {      WWT_PANEL,   RESIZE_LRTB,    14,   314,   336,    14,    54, 0x2A9,									STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE},
 {      WWT_PANEL,   RESIZE_LRTB,    14,   314,   336,    55,   109, 0x2BF,									STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP},
 
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   313,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   337,   348,    14,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   167,   110,   121, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   168,   336,   110,   121, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},

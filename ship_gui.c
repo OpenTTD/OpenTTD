@@ -755,7 +755,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 3:
+		case 5:
 			ShipDepotClick(w, e->click.pt.x, e->click.pt.y);
 			break;
 
@@ -775,7 +775,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 3: {
+		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -789,12 +789,12 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 			}
 		} break;
 
-		case 5:
-			if (!HASBIT(w->disabled_state, 5) &&
+		case 4:
+			if (!HASBIT(w->disabled_state, 4) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 5);
+				HandleButtonClick(w, 4);
 
 				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -817,7 +817,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;
 		w->hscroll.cap += e->sizing.diff.x / 90;
-		w->widget[3].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 	}
 }
@@ -826,9 +826,10 @@ static const Widget _ship_depot_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, STR_9803_SHIP_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,										STR_STICKY_BUTTON},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x203,									STR_981F_SHIPS_CLICK_ON_SHIP_FOR},
-{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,													STR_NULL},
+{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,										STR_NULL},
 {     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    61, 0x2A9,									STR_9821_DRAG_SHIP_TO_HERE_TO_SELL},
+
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x203,									STR_981F_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    61, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   146,    62,    73, STR_9804_NEW_SHIPS,			STR_9820_BUILD_NEW_SHIP},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   147,   292,    62,    73, STR_00E4_LOCATION,			STR_9822_CENTER_MAIN_VIEW_ON_SHIP},

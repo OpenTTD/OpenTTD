@@ -471,7 +471,7 @@ enum WindowFlags {
 
 void DispatchLeftClickEvent(Window *w, int x, int y);
 void DispatchRightClickEvent(Window *w, int x, int y);
-void DispatchMouseWheelEvent(Window *w, int wheel);
+void DispatchMouseWheelEvent(Window *w, uint widget, int wheel);
 
 /* window.c */
 void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);

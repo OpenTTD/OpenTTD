@@ -96,13 +96,25 @@ void DispatchRightClickEvent(Window *w, int x, int y) {
 }
 
 
-void DispatchMouseWheelEvent(Window *w, int wheel)
+void DispatchMouseWheelEvent(Window *w, uint widget, int wheel)
 {
-	if (w->vscroll.count > w->vscroll.cap) {
-		int pos = clamp(w->vscroll.pos + wheel, 0, w->vscroll.count - w->vscroll.cap);
-		if (pos != w->vscroll.pos) {
-			w->vscroll.pos = pos;
-			SetWindowDirty(w);
+	const Widget *wi1 = &w->widget[widget];
+	const Widget *wi2 = &w->widget[widget + 1];
+	Scrollbar *sb;
+
+	/* The listbox can only scroll if scrolling was done on the scrollbar itself,
+	 * or on the listbox (and the next item is (must be) the scrollbar) 
+	 * XXX - should be rewritten as a widget-dependent scroller but that's
+	 * not happening until someone rewrites the whole widget-code */
+	if ((sb = &w->vscroll,  wi1->type == WWT_SCROLLBAR)  || (sb = &w->vscroll2, wi1->type == WWT_SCROLL2BAR)  || 
+			(sb = &w->vscroll2, wi2->type == WWT_SCROLL2BAR) || (sb = &w->vscroll, wi2->type == WWT_SCROLLBAR) ) {
+
+		if (sb->count > sb->cap) {
+			int pos = clamp(sb->pos + wheel, 0, sb->count - sb->cap);
+			if (pos != sb->pos) {
+				sb->pos = pos;
+				SetWindowDirty(w);
+			}
 		}
 	}
 }
@@ -1356,7 +1368,7 @@ void MouseLoop()
 		}
 	} else {
 		if (mousewheel)
-			DispatchMouseWheelEvent(w, mousewheel);
+			DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
 
 		if (click == 1)
 			DispatchLeftClickEvent(w, x - w->left, y - w->top);

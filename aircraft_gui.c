@@ -805,22 +805,6 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 	}
 }
 
-static const Widget _aircraft_depot_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   318,     0,    13, STR_A002_AIRCRAFT_HANGAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   319,   330,     0,    13, 0x0,											STR_STICKY_BUTTON},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   295,    14,    61, 0x204,										STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT},
-{      WWT_PANEL,    RESIZE_LRB,    14,   296,   318,    14,    13, 0x0,													STR_NULL},
-{     WWT_IMGBTN,   RESIZE_LRTB,    14,   296,   318,    14,    61, 0x2A9,										STR_A023_DRAG_AIRCRAFT_TO_HERE_TO},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   319,   330,    14,    61, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   159,    62,    73, STR_A003_NEW_AIRCRAFT,		STR_A022_BUILD_NEW_AIRCRAFT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   318,    62,    73, STR_00E4_LOCATION,				STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
-{      WWT_PANEL,    RESIZE_RTB,    14,   319,   318,    62,    73, 0x0,													STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   319,   330,    62,    73, 0x0,											STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
-
-
 static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -830,7 +814,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 3: /* click aircraft */
+		case 5: /* click aircraft */
 			AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
 			break;
 		case 7: /* show build aircraft window */
@@ -848,7 +832,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 3: {
+		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -862,12 +846,12 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 5:
-			if (!HASBIT(w->disabled_state, 5) &&
+		case 4:
+			if (!HASBIT(w->disabled_state, 4) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 5);
+				HandleButtonClick(w, 4);
 
 				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -890,12 +874,26 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;
 		w->hscroll.cap += e->sizing.diff.x / 74;
-		w->widget[3].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 	}
 }
 
+static const Widget _aircraft_depot_widgets[] = {
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   318,     0,    13, STR_A002_AIRCRAFT_HANGAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   319,   330,     0,    13, 0x0,											STR_STICKY_BUTTON},
+{      WWT_PANEL,    RESIZE_LRB,    14,   296,   318,    14,    13, 0x0,													STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    14,   296,   318,    14,    61, 0x2A9,										STR_A023_DRAG_AIRCRAFT_TO_HERE_TO},
 
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   295,    14,    61, 0x204,										STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   319,   330,    14,    61, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   159,    62,    73, STR_A003_NEW_AIRCRAFT,		STR_A022_BUILD_NEW_AIRCRAFT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   318,    62,    73, STR_00E4_LOCATION,				STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
+{      WWT_PANEL,    RESIZE_RTB,    14,   319,   318,    62,    73, 0x0,													STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   319,   330,    62,    73, 0x0,											STR_RESIZE_BUTTON},
+{   WIDGETS_END},
+};
 
 static const WindowDesc _aircraft_depot_desc = {
 	-1, -1, 331, 74,

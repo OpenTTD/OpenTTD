@@ -498,7 +498,7 @@ static void DrawRoadDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<5)|(1<<7));
+	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<7));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -622,7 +622,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 3:
+		case 5:
 			RoadDepotClickVeh(w, e->click.pt.x, e->click.pt.y);
 			break;
 
@@ -642,7 +642,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DRAGDROP: {
 		switch(e->click.widget) {
-		case 3: {
+		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
 
@@ -656,12 +656,12 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 5:
-			if (!HASBIT(w->disabled_state, 5) &&
+		case 4:
+			if (!HASBIT(w->disabled_state, 4) &&
 					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
 				Vehicle *v;
 
-				HandleButtonClick(w, 5);
+				HandleButtonClick(w, 4);
 
 				v = GetVehicle(WP(w,traindepot_d).sel);
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
@@ -685,7 +685,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->hscroll.cap += e->sizing.diff.x / 56;
-		w->widget[3].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
 
 	} break;
 
@@ -697,9 +697,10 @@ static const Widget _road_depot_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, 										STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   303,   314,     0,    13, 0x0,													STR_STICKY_BUTTON},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,												STR_9022_VEHICLES_CLICK_ON_VEHICLE},
 {      WWT_PANEL,    RESIZE_LRB,    14,   280,   302,    14,    13, 0x0,													STR_NULL},
 {     WWT_IMGBTN,   RESIZE_LRTB,    14,   280,   302,    14,    55, 0x2A9,												STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
+
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,												STR_9022_VEHICLES_CLICK_ON_VEHICLE},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   303,   314,    14,    55, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   150,    56,    67, STR_9004_NEW_VEHICLES,				STR_9023_BUILD_NEW_ROAD_VEHICLE},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   151,   302,    56,    67, STR_00E4_LOCATION,						STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
