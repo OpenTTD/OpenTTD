@@ -1,6 +1,10 @@
 #ifndef TTD_H
 #define TTD_H
 
+// FIXME: Include only where really needed.
+// include sprites
+#include "table/sprites.h"
+
 #ifndef VARDEF
 #define VARDEF extern
 #endif
@@ -510,12 +514,6 @@ enum SpecialStrings {
 };
 
 typedef void PlaceProc(uint tile);
-
-enum Sprites {
-	SPR_CANALS_BASE = 0x1406,
-	SPR_SLOPES_BASE = SPR_CANALS_BASE + 70,
-	SPR_OPENTTD_BASE = SPR_SLOPES_BASE + 74,
-};
 
 enum MAP_OWNERS {
 	OWNER_TOWN			= 0xf,	// a town owns the tile

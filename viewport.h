@@ -95,14 +95,6 @@ typedef struct TileHighlightData {
 } TileHighlightData;
 
 
-enum AnimCursors {
-	ANIMCURSOR_DEMOLISH = -1,
-	ANIMCURSOR_LOWERLAND = -2,
-	ANIMCURSOR_RAISELAND = -3,
-	ANIMCURSOR_PICKSTATION = -4,
-	ANIMCURSOR_BUILDSIGNALS = -5,
-};
-
 // common button handler
 bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc);
 
