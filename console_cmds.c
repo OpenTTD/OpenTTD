@@ -960,7 +960,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
 
-	IConsoleAliasRegister("clean_company",		"reset_company");
+	IConsoleAliasRegister("clean_company",		"reset_company %A");
 
 	IConsoleVarRegister("net_frame_freq", &_network_frame_freq, ICONSOLE_VAR_UINT8);
 	IConsoleVarHook("net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
