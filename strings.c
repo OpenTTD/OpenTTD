@@ -59,15 +59,70 @@ const uint16 _currency_string_list[] = {
 };
 
 static const uint16 _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
-	/* LT_NORMAL */ {STR_PASSENGERS, STR_TONS, STR_BAGS, STR_LITERS, STR_ITEMS, STR_CRATES, STR_TONS, STR_TONS, STR_TONS, STR_TONS, STR_BAGS, STR_RES_OTHER},
-	/* LT_HILLY */  {STR_PASSENGERS, STR_TONS, STR_BAGS, STR_LITERS, STR_ITEMS, STR_CRATES, STR_TONS, STR_TONS, STR_RES_OTHER, STR_TONS, STR_BAGS, STR_TONS},
-	/* LT_DESERT */ {STR_PASSENGERS, STR_LITERS, STR_BAGS, STR_LITERS, STR_TONS, STR_CRATES, STR_TONS, STR_TONS, STR_TONS, STR_LITERS, STR_BAGS, STR_TONS},
-	/* LT_CANDY */  {STR_PASSENGERS, STR_TONS, STR_BAGS, STR_NOTHING, STR_NOTHING, STR_TONS, STR_TONS, STR_LITERS, STR_TONS, STR_NOTHING, STR_LITERS, STR_NOTHING}
+	{ /* LT_NORMAL */
+		STR_PASSENGERS,
+		STR_TONS,
+		STR_BAGS,
+		STR_LITERS,
+		STR_ITEMS,
+		STR_CRATES,
+		STR_TONS,
+		STR_TONS,
+		STR_TONS,
+		STR_TONS,
+		STR_BAGS,
+		STR_RES_OTHER
+	},
+
+	{ /* LT_HILLY */
+		STR_PASSENGERS,
+		STR_TONS,
+		STR_BAGS,
+		STR_LITERS,
+		STR_ITEMS,
+		STR_CRATES,
+		STR_TONS,
+		STR_TONS,
+		STR_RES_OTHER,
+		STR_TONS,
+		STR_BAGS,
+		STR_TONS
+	},
+
+	{ /* LT_DESERT */
+		STR_PASSENGERS,
+		STR_LITERS,
+		STR_BAGS,
+		STR_LITERS,
+		STR_TONS,
+		STR_CRATES,
+		STR_TONS,
+		STR_TONS,
+		STR_TONS,
+		STR_LITERS,
+		STR_BAGS,
+		STR_TONS
+	},
+
+	{ /* LT_CANDY */
+		STR_PASSENGERS,
+		STR_TONS,
+		STR_BAGS,
+		STR_NOTHING,
+		STR_NOTHING,
+		STR_TONS,
+		STR_TONS,
+		STR_LITERS,
+		STR_TONS,
+		STR_NOTHING,
+		STR_LITERS,
+		STR_NOTHING
+	}
 };
 
 static char *str_cat(char *dst, const char *src)
 {
-	while ( (*dst++ = *src++) != 0) {}
+	while ((*dst++ = *src++) != '\0') {}
 	return dst - 1;
 }
 
@@ -83,20 +138,20 @@ char *GetString(char *buffr, uint16 string)
 
 	if (string == 0) error("!invalid string id 0 in GetString");
 
-	if ( tab == 4 && index >= 0xC0)
+	if (tab == 4 && index >= 0xC0)
 		return GetSpecialTownNameString(buffr, index - 0xC0);
 
-	if ( tab == 6 && index == 0xD1)
+	if (tab == 6 && index == 0xD1)
 		return StationGetSpecialString(buffr);
 
-	if ( tab == 14 && index >= 0xE4)
+	if (tab == 14 && index >= 0xE4)
 		return GetSpecialPlayerNameString(buffr, index - 0xE4);
 
-	if ( tab == 15)
+	if (tab == 15)
 		return GetName(index, buffr);
 
 	// tab 31 is used for special or dynamic strings
-	if ( tab == 31) {
+	if (tab == 31) {
 		return DecodeString(buffr, index == (STR_SPEC_SCREENSHOT_NAME & 0x7FF) ? _screenshot_name : _userstring);
 	}
 
@@ -177,20 +232,20 @@ static char *FormatCommaNumber(char *buff, int32 number)
 	num = number;
 
 	tot = 0;
-	for(i=0; i!=10; i++) {
+	for (i = 0; i != 10; i++) {
 		divisor = _divisor_table[i];
 		quot = 0;
 		if (num >= divisor) {
 			quot = num / _divisor_table[i];
 			num = num % _divisor_table[i];
 		}
-		if (tot|=quot || i==9) {
+		if (tot |= quot || i == 9) {
 			*buff++ = '0' + quot;
-			if (i==0 || i==3 || i==6) *buff++ = ',';
+			if (i == 0 || i == 3 || i == 6) *buff++ = ',';
 		}
 	}
 
-	*buff = 0;
+	*buff = '\0';
 
 	return buff;
 }
@@ -210,19 +265,19 @@ static char *FormatNoCommaNumber(char *buff, int32 number)
 	num = number;
 
 	tot = 0;
-	for(i=0; i!=10; i++) {
+	for (i = 0; i != 10; i++) {
 		divisor = _divisor_table[i];
 		quot = 0;
 		if (num >= divisor) {
 			quot = num / _divisor_table[i];
 			num = num % _divisor_table[i];
 		}
-		if (tot|=quot || i==9) {
+		if (tot |= quot || i == 9) {
 			*buff++ = '0' + quot;
 		}
 	}
 
-	*buff = 0;
+	*buff = '\0';
 
 	return buff;
 }
@@ -235,7 +290,7 @@ static char *FormatYmdString(char *buff, uint16 number)
 
 	ConvertDayToYMD(&ymd, number);
 
-	for(src = GetStringPtr(ymd.day+STR_01AC_1ST-1); (*buff++=*src++) != 0;) {}
+	for (src = GetStringPtr(ymd.day + STR_01AC_1ST - 1); (*buff++ = *src++) != '\0';) {}
 
 	buff[-1] = ' ';
 	memcpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), 4);
@@ -251,7 +306,7 @@ static char *FormatMonthAndYear(char *buff, uint16 number)
 
 	ConvertDayToYMD(&ymd, number);
 
-	for(src = GetStringPtr(STR_MONTH_JAN + ymd.month); (*buff++=*src++) != 0;) {}
+	for (src = GetStringPtr(STR_MONTH_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
 
 	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
@@ -269,7 +324,7 @@ static char *FormatTinyDate(char *buff, uint16 number)
 
 uint GetCurrentCurrencyRate(void)
 {
-    return (&_currency_specs[_opt.currency])->rate;
+	return _currency_specs[_opt.currency].rate;
 }
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact)
@@ -283,11 +338,14 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	number *= spec->rate;
 
 	// convert from negative
-	if (number < 0) { *buff++ = '-'; number = -number; }
+	if (number < 0) {
+		*buff++ = '-';
+		number = -number;
+	}
 
 	// add prefix part
 	s = spec->prefix;
-	while (s != spec->prefix + lengthof(spec->prefix) && (c=*s++)) *buff++ = c;
+	while (s != spec->prefix + lengthof(spec->prefix) && (c = *s++) != '\0') *buff++ = c;
 
 	// for huge numbers, compact the number into k or M
 	if (compact) {
@@ -305,7 +363,10 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	p = buf;
 	j = 4;
 	do {
-		if (--j == 0) { *p++ = spec->separator; j = 3; }
+		if (--j == 0) {
+			*p++ = spec->separator;
+			j = 3;
+		}
 		*p++ = '0' + number % 10;
 	} while (number /= 10);
 	do *buff++ = *--p; while (p != buf);
@@ -314,7 +375,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 
 	// add suffix part
 	s = spec->suffix;
-	while (s != spec->suffix + lengthof(spec->suffix) && (c=*s++)) *buff++ = c;
+	while (s != spec->suffix + lengthof(spec->suffix) && (c = *s++) != '\0') *buff++ = c;
 
 	return buff;
 }
@@ -323,8 +384,8 @@ static char *DecodeString(char *buff, const char *str)
 {
 	byte b;
 
-	while((b = *str++) != 0) {
-		switch(b) {
+	while ((b = *str++) != '\0') {
+		switch (b) {
 		case 0x1: // {SETX}
 			*buff++ = b;
 			*buff++ = *str++;
@@ -376,7 +437,7 @@ static char *DecodeString(char *buff, const char *str)
 
 		// 0x85 is used as escape character..
 		case 0x85:
-			switch(*str++) {
+			switch (*str++) {
 			case 0: /* {CURRCOMPACT} */
 				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt32(), true);
 				break;
@@ -394,12 +455,12 @@ static char *DecodeString(char *buff, const char *str)
 				uint16 cargo_str = _cargo_string_list[_opt.landscape][(byte)GetParamInt8()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
-				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier );
+				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier);
 				s = GetStringPtr(cargo_str);
 
 				memcpy(buff++, " ", 1);
 				while (*s) *buff++ = *s++;
-			}	break;
+			} break;
 			case 4: /* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
 				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), true);
@@ -442,7 +503,7 @@ static char *DecodeString(char *buff, const char *str)
 			Station *st;
 			InjectDParam(1);
 			st = GetStation(GetDParam(1));
-			if (!st->xy) { // station doesn't exist anymore
+			if (st->xy == 0) { // station doesn't exist anymore
 				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
 				break;
 			}
@@ -500,7 +561,7 @@ static char *DecodeString(char *buff, const char *str)
 			*buff++ = b;
 		}
 	}
-	buff[0] = 0;
+	*buff = '\0';
 	return buff;
 }
 
@@ -508,21 +569,22 @@ static char *DecodeString(char *buff, const char *str)
 static char *StationGetSpecialString(char *buff)
 {
 	int x = GetParamInt8();
-	if (x & 1) *buff++ = 0xB4;
-	if (x & 2) *buff++ = 0xB5;
-	if (x & 4) *buff++ = 0xB6;
-	if (x & 8) *buff++ = 0xB7;
-	if (x & 16) *buff++ = 0xB8;
-	*buff = 0;
+	if (x & 0x01) *buff++ = '\xB4';
+	if (x & 0x02) *buff++ = '\xB5';
+	if (x & 0x04) *buff++ = '\xB6';
+	if (x & 0x08) *buff++ = '\xB7';
+	if (x & 0x10) *buff++ = '\xB8';
+	*buff = '\0';
 	return buff;
 }
 
-static char *GetSpecialTownNameString(char *buff, int ind) {
+static char *GetSpecialTownNameString(char *buff, int ind)
+{
 	uint32 x = GetParamInt32();
 
 	_town_name_generators[ind](buff, x);
 
-	while (*buff != 0) buff++;
+	while (*buff != '\0') buff++;
 	return buff;
 }
 
@@ -613,7 +675,7 @@ static char *GenPlayerName_4(char *buff)
 	uint32 x = GetParamInt32();
 	uint i, base, num;
 
-	buff[0] = _initial_name_letters[ (sizeof(_initial_name_letters) * (byte)x) >> 8];
+	buff[0] = _initial_name_letters[(sizeof(_initial_name_letters) * (byte)x) >> 8];
 	buff[1] = '.';
 	buff[2] = ' '; // Insert a space after initial and period "I. Firstname" instead of "I.Firstname"
 	buff += 3;
@@ -665,8 +727,7 @@ static const char * const _song_names[] = {
 
 static char *GetSpecialPlayerNameString(char *buff, int ind)
 {
-	switch(ind) {
-
+	switch (ind) {
 	// not used
 	case 1: {
 		int i = GetParamInt32() & 0xFFFF;
@@ -687,7 +748,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 	}
 
 	// town name?
-	if (IS_INT_INSIDE(ind-6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START+1)) {
+	if (IS_INT_INSIDE(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
 		buff = GetSpecialTownNameString(buff, ind - 6);
 		return str_cat(buff, " Transport");
 	}
@@ -710,7 +771,6 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 		return str_cat(buff, GetScreenshotFormatDesc(i));
 	}
 
-
 	assert(0);
 	return NULL;
 }
@@ -729,7 +789,8 @@ StringID RemapOldStringID(StringID s)
 	return s;
 }
 
-bool ReadLanguagePack(int lang_index) {
+bool ReadLanguagePack(int lang_index)
+{
 	int tot_count, i;
 	char *lang_pack;
 	size_t len;
@@ -752,13 +813,13 @@ bool ReadLanguagePack(int lang_index) {
 #undef HDR
 
 #if defined(TTD_BIG_ENDIAN)
-	for(i=0; i!=32; i++) {
+	for (i = 0; i != 32; i++) {
 		((LanguagePackHeader*)lang_pack)->offsets[i] = READ_LE_UINT16(&((LanguagePackHeader*)lang_pack)->offsets[i]);
 	}
 #endif
 
 	tot_count = 0;
-	for(i=0; i!=32; i++) {
+	for (i = 0; i != 32; i++) {
 		uint num = ((LanguagePackHeader*)lang_pack)->offsets[i];
 		_langtab_start[i] = tot_count;
 		_langtab_num[i] = num;
@@ -770,10 +831,10 @@ bool ReadLanguagePack(int lang_index) {
 
 	// Fill offsets
 	s = lang_pack + sizeof(LanguagePackHeader);
-	for(i=0; i!=tot_count; i++) {
+	for (i = 0; i != tot_count; i++) {
 		len = (byte)*s;
-		*s++ = 0; // zero terminate the string before.
-		if (len >= 0xC0) { len = ((len & 0x3F) << 8) + (byte)*s++; }
+		*s++ = '\0'; // zero terminate the string before.
+		if (len >= 0xC0) len = ((len & 0x3F) << 8) + (byte)*s++;
 		langpack_offs[i] = s;
 		s += len;
 	}
@@ -805,11 +866,11 @@ void InitializeLanguagePacks(void)
 	def = 0; // default language file
 
 	// go through the language files and make sure that they are valid.
-	for(i=m=0; i!=n; i++) {
+	for (i = m = 0; i != n; i++) {
 		char *s = str_fmt("%s%s", _path.lang_dir, files[i]);
 		in = fopen(s, "rb");
 		free(s);
-		if (!in ||
+		if (in == NULL ||
 				(j = fread(&hdr, sizeof(hdr), 1, in), fclose(in), j) != 1 ||
 				hdr.ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
 				hdr.version != TO_LE32(LANGUAGE_PACK_VERSION)) {
@@ -820,7 +881,7 @@ void InitializeLanguagePacks(void)
 		dl->ent[m].file = files[i];
 		dl->ent[m].name = strdup(hdr.name);
 
-		if (!strcmp(hdr.name, "English")) def = m;
+		if (strcmp(hdr.name, "English") == 0) def = m;
 
 		m++;
 	}
@@ -829,12 +890,12 @@ void InitializeLanguagePacks(void)
 		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
 
 	dl->num = m;
-	for(i=0; i!=dl->num; i++)
+	for (i = 0; i != dl->num; i++)
 		dl->dropdown[i] = SPECSTR_LANGUAGE_START + i;
 	dl->dropdown[i] = INVALID_STRING_ID;
 
-	for(i=0; i!=dl->num; i++)
-		if (!strcmp(dl->ent[i].file, dl->curr_file)) {
+	for (i = 0; i != dl->num; i++)
+		if (strcmp(dl->ent[i].file, dl->curr_file) == 0) {
 			def = i;
 			break;
 		}
