@@ -1205,7 +1205,7 @@ static void PlaceProc_RockyArea(uint tile)
 	if (!IS_TILETYPE(tile, MP_CLEAR))
 		return;
 
-	_map5[tile] = (_map5[tile] & ~0x1C) | 8;
+	_map5[tile] = (_map5[tile] & ~0x1C) | 0xB;
 	MarkTileDirtyByTile(tile);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
