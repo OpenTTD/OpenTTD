@@ -93,7 +93,7 @@
 # USE_HOMEDIR:	If this variable is set, PERSONAL_DIR will be prefixed with
 #		~/ at runtime (the user's homedir)
 # SECOND_DATA_PATH  Use this data dir if a file is not found in the data dir in the data path
-# CUSTOM_LANG_PATH  If this is set, it will use the path given to search for lng files
+# CUSTOM_LANG_PATH  If this is set, it will use the path given to search for lng files 
 #		instead of the lang dir in the data path
 #   NOTE: both SECOND_DATA_PATH and CUSTOM_LANG_PATH uses paths relative to where OTTD is opened
 #
@@ -290,7 +290,7 @@ endif
 # -O	optimize or -O2 fully optimize (O's above 2 are not recommended)
 # -pg	profile - generate profiling data.  See "man gprof" to use this.
 
-CFLAGS=-Wall -Wno-multichar -Wuninitialized -Wno-unused-parameter -Wsign-compare
+CFLAGS=-Wall -Wno-multichar
 CDEFS=-DWITH_REV
 LDFLAGS=
 LIBS=
@@ -773,13 +773,13 @@ release: all
 	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/COPYING.info"
 	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog.info"
 	@strip --strip-all --strip-unneeded --remove-section .comment "/t/openttd-$(RELEASE)-morphos/$(TTD)"
-	@lha a -r "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos"
+	@lha a -r "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos" 
 	@lha a    "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos.info"
 	@rm -fr "/t/openttd-$(RELEASE)-morphos"
 	@rm -fr "/t/openttd-$(RELEASE)-morphos.info"
 	@echo "Release archive can be found in RAM:t/ now."
 
-.PHONY: release
+.PHONY: release 
 endif
 
 ifdef OSX
