@@ -1242,6 +1242,7 @@ STR_NETWORK_ERR_NOCONNECTION			:{WHITE} The server didn't answer the request
 STR_NETWORK_ERR_DESYNC				:{WHITE} Network-Game synchronization failed.
 STR_NETWORK_ERR_LOSTCONNECTION			:{WHITE} Network-Game connection lost.
 STR_NETWORK_ERR_SAVEGAMEERROR			:{WHITE} Could not load server-savegame.
+STR_NETWORK_ERR_TIMEOUT					:{WHITE} Connection #{NUMU16} timed out.
 
 ############ end network gui strings
 

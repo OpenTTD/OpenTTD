@@ -116,6 +116,11 @@ typedef struct AckPacket {
 	byte packet_type;
 } AckPacket;
 
+typedef struct ReadyPacket {
+	byte packet_length;
+	byte packet_type;
+} ReadyPacket;
+
 typedef struct FilePacketHdr {
 	byte packet_length;
 	byte packet_type;
@@ -142,6 +147,8 @@ typedef struct ClientState {
 	int socket;
 	bool inactive; // disable sending of commands/syncs to client
 	bool writable;
+	bool ready;
+	uint timeout;
 	uint xmitpos;
 
 	uint eaten;
@@ -183,6 +190,8 @@ static int _num_clients;
 
 // keep a history of the 16 most recent seeds to be able to capture out of sync errors.
 static uint32 _my_seed_list[16][2];
+static bool _network_ready_sent;
+static uint32 _network_client_timeout;
 
 typedef struct FutureSeeds {
 	int32 frame;
@@ -246,6 +255,7 @@ typedef struct NetworkGameList {
 static NetworkGameInfo _network_game;
 static NetworkGameList * _network_game_list = NULL;
 
+
 /* multi os compatible sleep function */
 void CSleep(int milliseconds) {
 #if defined(WIN32)
@@ -287,30 +297,33 @@ usleep(milliseconds*1000);
 // * Network Error Handlers     * //
 // ****************************** //
 
-static void NetworkHandleSaveGameError() {
+static void NetworkHandleSaveGameError()
+{
 		_networking_sync = false;
 		_networking_queuing = true;
 		_switch_mode = SM_MENU;
 		_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 }
 
-static void NetworkHandleConnectionLost() {
+static void NetworkHandleConnectionLost()
+{
 		_networking_sync = false;
 		_networking_queuing = true;
 		_switch_mode = SM_MENU;
 		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
 }
-static void NetworkHandleDeSync() {
-	printf("fatal error: network sync error at frame %i\n",_frame_counter);
-		{
-			int i;
-			for (i=15; i>=0; i--) printf("frame %i: [0]=%i, [1]=%i\n",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
-			for (i=0; i<8; i++) printf("frame %i: [0]=%i, [1]=%i\n",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
-		}
-		_networking_sync = false;
-		_networking_queuing = true;
-		_switch_mode = SM_MENU;
-		_switch_mode_errorstr = STR_NETWORK_ERR_DESYNC;
+static void NetworkHandleDeSync()
+{
+	DEBUG(net, 0) ("[NET] Fatal ERROR: network sync error at frame %i", _frame_counter);
+	{
+		int i;
+		for (i=15; i>=0; i--) DEBUG(net,0) ("[NET] frame %i: [0]=%i, [1]=%i",_frame_counter-(i+1),_my_seed_list[i][0],_my_seed_list[i][1]);
+		for (i=0; i<8; i++) DEBUG(net,0) ("[NET] frame %i: [0]=%i, [1]=%i",_frame_counter+i,_future_seed[i].seed[0],_future_seed[i].seed[1]);
+	}
+	_networking_sync = false;
+	_networking_queuing = true;
+	_switch_mode = SM_MENU;
+	_switch_mode_errorstr = STR_NETWORK_ERR_DESYNC;
 }
 
 // ****************************** //
@@ -343,12 +356,13 @@ void NetworkProcessCommands()
 		if (!(nq->head = qp->next)) nq->last = &nq->head;
 
 		if (qp->frame < _frame_counter && _networking_sync) {
-			error("!qp->cp.frame < _frame_counter, %d < %d\n", qp->frame, _frame_counter);
+			DEBUG(net,0) ("error: !qp->cp.frame < _frame_counter, %d < %d\n", qp->frame, _frame_counter);
 		}
 
 		// run the command
 		_current_player = qp->cp.player;
 		memcpy(_decode_parameters, qp->cp.dp, (qp->cp.packet_length - COMMAND_PACKET_BASE_SIZE));
+
 		DoCommandP(qp->cp.tile, qp->cp.p1, qp->cp.p2, qp->callback, qp->cmd | CMD_DONT_NETWORK);
 		free(qp);
 	}
@@ -466,7 +480,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	ClientState *c;
 	AckPacket ap;
 
-	printf("net: cmd size %d\n", np->packet_length);
+	DEBUG(net, 2) ("[NET] cmd size %d", np->packet_length);
 
 	assert(np->packet_length >= COMMAND_PACKET_BASE_SIZE);
 
@@ -515,7 +529,8 @@ static void HandleSyncPacket(SyncPacket *sp)
 	_frame_counter_srv = _frame_counter_max - sp->server;
 	_frame_counter_max += sp->frames;
 
-	printf("net: sync max=%d  cur=%d  server=%d\n", _frame_counter_max, _frame_counter, _frame_counter_srv);
+	// reset network ready packet state
+	_network_ready_sent = false;
 
 	// queueing only?
 	if (_networking_queuing || _frame_counter == 0)
@@ -523,6 +538,8 @@ static void HandleSyncPacket(SyncPacket *sp)
 
 	s1 = TO_LE32(sp->random_seed_1);
 	s2 = TO_LE32(sp->random_seed_2);
+
+	DEBUG(net, 2) ("[NET] sync seeds: [1]=%i rnd[2]=%i", sp->random_seed_1, sp->random_seed_2);
 
 	if (_frame_counter_srv <= _frame_counter) {
 		// we are ahead of the server check if the seed is in our list.
@@ -556,7 +573,7 @@ static void HandleAckPacket()
 	*_command_queue.last = q;
 	_command_queue.last = &q->next;
 
-	printf("net: ack\n");
+	DEBUG(net, 2) ("[NET] ack");
 }
 
 static void HandleFilePacket(FilePacketHdr *fp)
@@ -605,7 +622,7 @@ static void CloseClient(ClientState *cs)
 {
 	Packet *p, *next;
 
-	DEBUG(misc,1) ("[NET][TCP] closed client connection");
+	DEBUG(net, 1) ("[NET][TCP] closed client connection");
 
 	assert(cs->socket != INVALID_SOCKET);
 
@@ -645,7 +662,7 @@ static bool ReadPackets(ClientState *cs)
 		if ( recv_bytes == (unsigned long)-1) {
 			int err = GET_LAST_ERROR();
 			if (err == EWOULDBLOCK) break;
-			printf("net: recv() failed with error %d\n", err);
+			DEBUG(net, 0) ("[NET] recv() failed with error %d", err);
 			CloseClient(cs);
 			return false;
 		}
@@ -661,7 +678,6 @@ static bool ReadPackets(ClientState *cs)
 			if (size < packet[0]) break;
 			size -= packet[0];
 			pos += packet[0];
-
 			switch(packet[1]) {
 			case 0:
 				HandleCommandPacket(cs, (CommandPacket*)packet);
@@ -678,8 +694,12 @@ static bool ReadPackets(ClientState *cs)
 			case 3:
 				HandleFilePacket((FilePacketHdr*)packet);
 				break;
+			case 5:
+				cs->ready=true;
+				cs->timeout=_network_client_timeout;
+				break;
 			default:
-				error("unknown packet type");
+				DEBUG (net,0) ("net: unknown packet type");
 			}
 		}
 
@@ -709,7 +729,7 @@ static bool SendPackets(ClientState *cs)
 			if (n == -1) {
 				int err = GET_LAST_ERROR();
 				if (err == EWOULDBLOCK) break;
-				printf("net: send() failed with error %d\n", err);
+				DEBUG(net, 0) ("[NET] send() failed with error %d", err);
 				CloseClient(cs);
 				return false;
 			}
@@ -776,7 +796,7 @@ static void SendXmit(ClientState *cs)
 
 	cs->xmitpos = pos + 1;
 
-	printf("net: client xmit at %d\n", pos + 1);
+	DEBUG(net, 2) ("[NET] client xmit at %d", pos + 1);
 }
 
 static ClientState *AllocClient(SOCKET s)
@@ -792,9 +812,22 @@ static ClientState *AllocClient(SOCKET s)
 	memset(cs, 0, sizeof(*cs));
 	cs->last = &cs->head;
 	cs->socket = s;
+	cs->timeout = _network_client_timeout;
 	return cs;
 }
 
+void NetworkSendReadyPacket()
+{
+	if (!_network_ready_sent) {
+		ReadyPacket *rp	= malloc(sizeof(rp));
+		ClientState *c	= _clients;
+
+		rp->packet_type = 5;
+		rp->packet_length = sizeof(rp);
+		SendBytes(c, rp, sizeof(rp));
+		_network_ready_sent = true;	
+	}
+}
 
 static void NetworkAcceptClients()
 {
@@ -817,7 +850,7 @@ static void NetworkAcceptClients()
 		// set nonblocking mode for client socket
 		{ unsigned long blocking = 1; ioctlsocket(s, FIONBIO, &blocking); }
 
-		printf("net: got client from %s\n", inet_ntoa(sin.sin_addr));
+		DEBUG(net, 1) ("[NET] got client from %s", inet_ntoa(sin.sin_addr));
 
 		// set nodelay
 		{int b = 1; setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b));}
@@ -856,7 +889,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	SyncPacket sp;
 	int32 frame;
 
-	printf("net: sending queued commands to client\n");
+	DEBUG(net, 2) ("[NET] sending queued commands to client");
 
 	sp.packet_length = sizeof(sp);
 	sp.packet_type = 1;
@@ -866,7 +899,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	frame = _frame_counter;
 
 	for(qp=_command_queue.head; qp; qp = qp->next) {
-		printf("net: sending cmd to be executed at %d (old %d)\n", qp->frame, frame);
+		DEBUG(net, 4) ("[NET] sending cmd to be executed at %d (old %d)", qp->frame, frame);
 		if (qp->frame > frame) {
 			assert(qp->frame <= _frame_counter_max);
 			sp.frames = qp->frame - frame;
@@ -877,7 +910,7 @@ static void SendQueuedCommandsToNewClient(ClientState *cs)
 	}
 
 	if (frame < _frame_counter_max) {
-		printf("net: sending queued sync %d (%d)\n", _frame_counter_max, frame);
+		DEBUG(net, 4) ("[NET] sending queued sync %d (%d)", _frame_counter_max, frame);
 		sp.frames = _frame_counter_max - frame;
 		SendBytes(cs, &sp, sizeof(sp));
 	}
@@ -895,10 +928,10 @@ unsigned long NetworkResolveHost(const char *hostname) {
 		// seems to be an hostname [first character is no number]
 		remotehost = gethostbyname(hostname);
 		if (remotehost == NULL) {
-			DEBUG(misc, 2) ("[NET][IP] cannot resolve %s", hostname);
+			DEBUG(net, 1) ("[NET][IP] cannot resolve %s", hostname);
 			return 0;
 		} else {
-			DEBUG(misc,2) ("[NET][IP] resolved %s to %s",hostname, inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
+			DEBUG(net, 1) ("[NET][IP] resolved %s to %s",hostname, inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
 			return inet_addr(inet_ntoa(*(struct in_addr *) remotehost->h_addr_list[0]));
 			}
 	} else {
@@ -914,7 +947,7 @@ bool NetworkConnect(const char *hostname, int port)
 	struct sockaddr_in sin;
 	int b;
 
-	DEBUG(misc, 1) ("[NET][TCP] Connecting to %s %d", hostname, port);
+	DEBUG(net, 1) ("[NET][TCP] Connecting to %s %d", hostname, port);
 
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == INVALID_SOCKET) error("socket() failed");
@@ -953,7 +986,7 @@ void NetworkListen()
 
 	port = _network_server_port;
 
-	DEBUG(misc, 1) ("[NET][TCP] listening on port %d", port);
+	DEBUG(net, 1) ("[NET][TCP] listening on port %d", port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET)
@@ -1007,7 +1040,7 @@ void NetworkReceive()
 #else
 	n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
-	if (n == -1) NetworkHandleConnectionLost();
+	if ((n == -1) && (!_networking_server)) NetworkHandleConnectionLost();
 
 	// accept clients..
 	if (_networking_server && FD_ISSET(_listensocket, &read_fd))
@@ -1052,13 +1085,39 @@ void NetworkSend()
 {
 	ClientState *cs;
 	void *free_xmit;
+	uint16 count;
+	bool ready_all;
 
 	// send sync packets?
 	if (_networking_server && _networking_sync && !_pause) {
+
 		if (++_not_packet >= _network_sync_freq) {
 			SyncPacket sp;
 			uint new_max;
 
+
+			ready_all=false;
+
+			while (!ready_all) {
+				// check wether all clients are ready
+				ready_all=true;
+				count=0;
+				for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+					count++;
+					ready_all = ready_all && (cs->ready || cs->inactive || (cs->xmitpos>0));
+					cs->timeout-=5;
+					if (cs->timeout == 0) {
+						SET_DPARAM16(0,count);
+						ShowErrorMessage(-1,STR_NETWORK_ERR_TIMEOUT,0,0);
+						CloseClient(cs);
+						}
+					}
+				if (!ready_all) {
+					NetworkReceive();
+					CSleep(5);
+					}
+			}
+				
 			_not_packet = 0;
 
 			new_max = max(_frame_counter + (int)_network_ahead_frames, _frame_counter_max);
@@ -1071,8 +1130,11 @@ void NetworkSend()
 			sp.random_seed_2 = TO_LE32(_sync_seed_2);
 			_frame_counter_max = new_max;
 
-			// send it to all the clients
-			for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) SendBytes(cs, &sp, sizeof(sp));
+			// send it to all the clients and mark them unready
+			for(cs=_clients;cs->socket != INVALID_SOCKET; cs++) {
+				cs->ready=false;
+				SendBytes(cs, &sp, sizeof(sp));
+			}
 		}
 	}
 
@@ -1124,7 +1186,7 @@ void NetworkClose(bool client) {
 		// if in servermode --> close listener
 		closesocket(_listensocket);
 		_listensocket= INVALID_SOCKET;
-		DEBUG(misc,1) ("[NET][TCP] closed listener on port %i", _network_server_port);
+		DEBUG(net, 1) ("[NET][TCP] closed listener on port %i", _network_server_port);
 		}
 }
 
@@ -1141,7 +1203,7 @@ void NetworkShutdown()
 // switch to synced mode.
 void NetworkStartSync(bool fcreset)
 {
-	DEBUG(misc,3) ("[NET][SYNC] switching to synced game mode");
+	DEBUG(net, 3) ("[NET][SYNC] switching to synced game mode");
 	_networking_sync = true;
 	_frame_counter = 0;
 	if (fcreset) {
@@ -1182,7 +1244,7 @@ void NetworkUDPListen(bool client)
 
 	if (client) { port = _network_client_port; } else { port = _network_server_port; };
 
-	DEBUG(misc,1) ("[NET][UDP] listening on port %i", port);
+	DEBUG(net, 1) ("[NET][UDP] listening on port %i", port);
 
 	udp = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	
@@ -1197,7 +1259,7 @@ void NetworkUDPListen(bool client)
 	sin.sin_port = htons(port);
 
 	if (bind(udp, (struct sockaddr*)&sin, sizeof(sin)) != 0)
-		DEBUG(misc,1) ("[NET][UDP] error: bind failed on port %i", port);
+		DEBUG(net, 1) ("[NET][UDP] error: bind failed on port %i", port);
 		
 
 	// enable broadcasting
@@ -1211,11 +1273,11 @@ void NetworkUDPListen(bool client)
 
 void NetworkUDPClose(bool client) {
 	if (client) { 
-		DEBUG(misc,1) ("[NET][UDP] closed listener on port %i", _network_client_port);
+		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_client_port);
 		closesocket(_udp_client_socket);
 		_udp_client_socket = INVALID_SOCKET;
 		} else {
-		DEBUG(misc,1) ("[NET][UDP] closed listener on port %i", _network_server_port);
+		DEBUG(net, 1) ("[NET][UDP] closed listener on port %i", _network_server_port);
 		closesocket(_udp_server_socket);
 		_udp_server_socket = INVALID_SOCKET;
 		};
@@ -1292,7 +1354,7 @@ void NetworkUDPBroadCast(bool client, struct UDPPacket packet) {
 		bcptr[3]=255;
 		out_addr.sin_addr.s_addr = bcaddr;
 		res=sendto(udp,(char *) &packet,sizeof(packet),0,(struct sockaddr *) &out_addr,sizeof(out_addr));
-		if (res==-1) DEBUG(misc,1)("udp: broadcast error: %i",GET_LAST_ERROR());
+		if (res==-1) DEBUG(net, 1)("udp: broadcast error: %i",GET_LAST_ERROR());
 		i++;
 	}
 	
@@ -1313,7 +1375,7 @@ bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned sho
 	
 	NetworkGameListClear();
 
-	DEBUG(misc,0) ("[NET][UDP] searching server");
+	DEBUG(net, 0) ("[NET][UDP] searching server");
 	*_network_detected_serverip = "255.255.255.255";
 	*_network_detected_serverport = 0;
 	
@@ -1331,7 +1393,7 @@ bool NetworkUDPSearchGame(const byte ** _network_detected_serverip, unsigned sho
 			*_network_detected_serverip=inet_ntoa(*(struct in_addr *) &item->ip);
 			*_network_detected_serverport=item->port;
  			timeout=-1;
- 			DEBUG(misc,0) ("[NET][UDP] server found on %s", *_network_detected_serverip);
+ 			DEBUG(net, 0) ("[NET][UDP] server found on %s", *_network_detected_serverip);
  			}
 	
 		}
@@ -1352,7 +1414,7 @@ void NetworkIPListInit() {
 	int i=0;
 		
 	gethostname(hostname,250);
-	DEBUG(misc,2) ("[NET][IP] init for host %s", hostname);
+	DEBUG(net, 2) ("[NET][IP] init for host %s", hostname);
 	he=gethostbyname((char *) hostname);
 
 	if (he == NULL) {
@@ -1365,12 +1427,12 @@ void NetworkIPListInit() {
 		}
 
 	if (he == NULL) {
-		DEBUG(misc, 2) ("[NET][IP] cannot resolve %s", hostname);
+		DEBUG(net, 2) ("[NET][IP] cannot resolve %s", hostname);
 	} else {
 		while(he->h_addr_list[i]) { 
 			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
 			_network_ip_list[i]=bcaddr;
-			DEBUG(misc,2) ("[NET][IP] add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
+			DEBUG(net, 2) ("[NET][IP] add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
 			i++;
 		}
 
@@ -1383,17 +1445,18 @@ void NetworkIPListInit() {
 
 void NetworkCoreInit() {
 
-DEBUG(misc,3) ("[NET][Core] init()");
+DEBUG(net, 3) ("[NET][Core] init()");
 _network_available=true;
+_network_client_timeout=3000;
 
 // [win32] winsock startup
 
 #if defined(WIN32)
 {
 	WSADATA wsa;
-	DEBUG(misc,3) ("[NET][Core] using windows socket library");
+	DEBUG(net, 3) ("[NET][Core] using windows socket library");
 	if (WSAStartup(MAKEWORD(2,0), &wsa) != 0) {
-		DEBUG(misc,3) ("[NET][Core] error: WSAStartup failed");
+		DEBUG(net, 3) ("[NET][Core] error: WSAStartup failed");
 		_network_available=false;
 		}
 }
@@ -1405,7 +1468,7 @@ _network_available=true;
 {
 	DEBUG(misc,3) ("[NET][Core] using bsd socket library");
 	if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-		DEBUG(misc,3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
+		DEBUG(net, 3) ("[NET][Core] Couldn't open bsdsocket.library version 4.");
 		_network_available=false;
 		}
 
@@ -1416,7 +1479,7 @@ _network_available=true;
 			if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
 				if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
 					// free ressources... 
-					DEBUG(misc,3) ("[NET][Core] Couldn't initialize timer.");
+					DEBUG(net, 3) ("[NET][Core] Couldn't initialize timer.");
 					_network_available=false;
 				}
 			}
@@ -1429,7 +1492,7 @@ _network_available=true;
 
 // [linux/macos] unix-socket startup
 
-	DEBUG(misc,3) ("[NET][Core] using unix socket library");
+	DEBUG(net, 3) ("[NET][Core] using unix socket library");
 
 #endif
 
@@ -1437,12 +1500,13 @@ _network_available=true;
 
 
 if (_network_available) {
-	DEBUG(misc,3) ("[NET][Core] OK: multiplayer available");
+	DEBUG(net, 3) ("[NET][Core] OK: multiplayer available");
 	// initiate network ip list
 	NetworkIPListInit();
 	IConsoleCmdRegister("connect",NetworkConsoleCmdConnect);
+	IConsoleVarRegister("cfg_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
 	} else {
-	DEBUG(misc,3) ("[NET][Core] FAILED: multiplayer not available");
+	DEBUG(net, 3) ("[NET][Core] FAILED: multiplayer not available");
 	}
 }
 
@@ -1450,7 +1514,7 @@ if (_network_available) {
 
 void NetworkCoreShutdown() {
 
-DEBUG(misc,3) ("[NET][Core] shutdown()");
+DEBUG(net, 3) ("[NET][Core] shutdown()");
 
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 {	
@@ -1564,6 +1628,13 @@ if (incomming) {
 
 	// outgoing
 
+	if ((_networking) && (!_networking_server) && (_frame_counter+1 >= _frame_counter_max)) {
+			// send the "i" am ready message to the server
+			// one frame before "i" reach the frame-limit
+			NetworkSendReadyPacket();
+		}
+
+
 	if (_networking) {
 		NetworkSend();
 		}
@@ -1573,12 +1644,12 @@ if (incomming) {
 }
 
 void NetworkLobbyInit() {
-	DEBUG(misc,3) ("[NET][Lobby] init()");
+	DEBUG(net, 3) ("[NET][Lobby] init()");
 	NetworkUDPListen(true);
 }
 
 void NetworkLobbyShutdown() {
-	DEBUG(misc,3) ("[NET][Lobby] shutdown()");
+	DEBUG(net, 3) ("[NET][Lobby] shutdown()");
 	NetworkUDPClose(true);
 }
 
@@ -1591,7 +1662,7 @@ void NetworkGameListClear() {
 NetworkGameList * item;
 NetworkGameList * next; 
 
-DEBUG(misc,4) ("[NET][G-List] cleared server list");
+DEBUG(net, 4) ("[NET][G-List] cleared server list");
 
 item = _network_game_list;
 while (item != NULL) {
@@ -1607,7 +1678,7 @@ char * NetworkGameListAdd() {
 NetworkGameList * item;
 NetworkGameList * before; 
 
-DEBUG(misc,4) ("[NET][G-List] added server to list");
+DEBUG(net, 4) ("[NET][G-List] added server to list");
 
 item = _network_game_list;
 before = item;
@@ -1628,7 +1699,7 @@ return (char *) item;
 
 void NetworkGameListFromLAN() {
 	struct UDPPacket packet;
-	DEBUG(misc,2) ("[NET][G-List] searching server over lan");
+	DEBUG(net, 2) ("[NET][G-List] searching server over lan");
 	NetworkGameListClear();
 	packet.command_check=packet.command_code=NET_UDPCMD_SERVERSEARCH;
 	packet.data_len=0;
@@ -1636,7 +1707,7 @@ void NetworkGameListFromLAN() {
 }
 
 void NetworkGameListFromInternet() {
-	DEBUG(misc,2) ("[NET][G-List] searching servers over internet");
+	DEBUG(net, 2) ("[NET][G-List] searching servers over internet");
 	NetworkGameListClear();
 
 	// **TODO** masterserver communication [internet protocol list]
@@ -1669,7 +1740,7 @@ void NetworkGameFillDefaults() {
 	extern char _openttd_revision[];
 #endif
 	
-	DEBUG(misc,4) ("[NET][G-Info] setting defaults");
+	DEBUG(net, 4) ("[NET][G-Info] setting defaults");
 
 	ttd_strlcpy(game->server_name,"OpenTTD Game",13);
 	game->game_password[0]='\0';

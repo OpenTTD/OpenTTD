@@ -432,6 +432,7 @@ void SetDebugString(const char *s)
 		_debug_misc_level = v;
 		_debug_grf_level = v;
 		_debug_ai_level = v;
+		_debug_net_level = v;
 	}
 
 	// individual levels
@@ -449,6 +450,7 @@ void SetDebugString(const char *s)
 		else if IS_LVL("spritecache") p = &_debug_spritecache_level;
 		else if IS_LVL("grf") p = &_debug_grf_level;
 		else if IS_LVL("ai") p = &_debug_ai_level;
+		else if IS_LVL("net") p = &_debug_net_level;
 		else {
 			ShowInfoF("Unknown debug level '%.*s'", s-t, t);
 			return;
@@ -881,6 +883,7 @@ void StateGameLoop()
 	// store the random seed to be able to detect out of sync errors
 	_sync_seed_1 = _random_seed_1;
 	_sync_seed_2 = _random_seed_2;
+	if (_networking) disable_computer=true;
 
 	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) { 
 		char buf[100]; 
@@ -993,7 +996,7 @@ void GameLoop()
 		if (_frame_counter < _frame_counter_max) {
 			StateGameLoop();
 			NetworkProcessCommands();
-		}
+			}
 	} else {
 		if (!_pause)
 			StateGameLoop();

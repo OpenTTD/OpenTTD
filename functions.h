@@ -130,6 +130,7 @@ void NetworkShutdown();
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 void NetworkStartSync(bool fcreset);
 void NetworkClose(bool client);
+void NetworkSendReadyPacket();
 
 void NetworkIPListInit();
 

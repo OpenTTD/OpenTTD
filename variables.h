@@ -442,6 +442,7 @@ VARDEF int _debug_spritecache_level;
 VARDEF int _debug_misc_level;
 VARDEF int _debug_grf_level;
 VARDEF int _debug_ai_level;
+VARDEF int _debug_net_level;
 
 void CDECL debug(const char *s, ...);
 #ifdef NO_DEBUG_MESSAGES
