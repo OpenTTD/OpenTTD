@@ -1657,51 +1657,51 @@ STR_INDUSTRY_PROD_GODOWN					:{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING
 STR_5000_TRAIN_IN_TUNNEL					:{WHITE}Vlak v tunelu
 STR_5001_ROAD_VEHICLE_IN_TUNNEL					:{WHITE}Silnicni vozidlo v tunelu
 STR_5002							:
-STR_5003_ANOTHER_TUNNEL_IN_THE_WAY				:{WHITE}V ceste je jiny tunel
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY				:{WHITE}V ceste je jiný tunel
 STR_5004							:
-STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Nemohu vyrovnat zemi na druhem konci tunelu
+STR_5005_UNABLE_TO_EXCAVATE_LAND				:{WHITE}Nemohu vyrovnat zemi na druhém konci tunelu
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST				:{WHITE}Nutno nejprve znicit tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST				:{WHITE}Nutno nejprve znicit most
-STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Nelze zacit a skoncit na stejnem miste
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Pod mostem je nutna rovna zeme nebo voda
-STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Zacatek a konec musi byt v jedne vysce
-STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Misto nevhodne pro vjezd do tunelu
+STR_5008_CANNOT_START_AND_END_ON				:{WHITE}Nelze zacit a skoncit na stejném miste
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED				:{WHITE}Pod mostem je nutná rovná zeme nebo voda
+STR_500A_START_AND_END_MUST_BE_IN				:{WHITE}Zacatek a konec musí být ve stejné vysce
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL				:{WHITE}Místo nevhodné pro vjezd do tunelu
 STR_500C							:
 STR_500D							:{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL					:Zaveseny, Ocelovy
-STR_500F_GIRDER_STEEL						:Tramovy, Ocelovy
-STR_5010_CANTILEVER_STEEL					:Konzolovy, Ocelovy
-STR_5011_SUSPENSION_CONCRETE					:Zaveseny, Betonovy
+STR_500E_SUSPENSION_STEEL					:Zaveseny, ocelový
+STR_500F_GIRDER_STEEL						:Trámový, ocelový
+STR_5010_CANTILEVER_STEEL					:Konzolový, ocelový
+STR_5011_SUSPENSION_CONCRETE					:Zaveseny, betonový
 STR_5012_WOODEN							:Dreveny
-STR_5013_CONCRETE						:Betonovy
-STR_5014_TUBULAR_STEEL						:Potrubni, Ocelovy
-STR_BRIDGE_TUBULAR_SILICON					:Potrubni, Kremikovy
+STR_5013_CONCRETE						:Betonový
+STR_5014_TUBULAR_STEEL						:Potrubní, ocelový
+STR_BRIDGE_TUBULAR_SILICON					:Potrubní, kremikovy
 STR_5015_CAN_T_BUILD_BRIDGE_HERE				:{WHITE}Zde nelze postavit most...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE				:{WHITE}Zde nelze postavit tunel...
 STR_5017_RAILROAD_TUNNEL					:Zeleznicni tunel
 STR_5018_ROAD_TUNNEL						:Silnicni tunel
 STR_5019							:
 STR_501A							:
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Ocelovy zaveseny zeleznicni most
-STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Ocelovy tramovy zeleznicni most
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Ocelovy konzolovy zeleznicni most
-STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Zpevneny betonovy zaveseny zeleznicni most
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE				:Ocelový zaveseny zeleznicni most
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE				:Ocelový trámový zeleznicni most
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE				:Ocelový konzolový zeleznicni most
+STR_501E_REINFORCED_CONCRETE_SUSPENSION				:Zpevneny betonový zaveseny zeleznicni most
 STR_501F_WOODEN_RAIL_BRIDGE					:Dreveny zeleznicni most
-STR_5020_CONCRETE_RAIL_BRIDGE					:Betonovy zeleznicni most
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Ocelovy zaveseny silnicni most
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Ocelovy tramovy silnicni most
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Ocelovy konzolovy silnicni most
-STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Zpevneny betonovy zaveseny silnicni most
+STR_5020_CONCRETE_RAIL_BRIDGE					:Betonový zeleznicni most
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Ocelový zaveseny silnicni most
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Ocelový trámový silnicni most
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Ocelový konzolový silnicni most
+STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Zpevneny betonový zaveseny silnicni most
 STR_5025_WOODEN_ROAD_BRIDGE					:Dreveny silnicni most
-STR_5026_CONCRETE_ROAD_BRIDGE					:Betonovy silnicni most
-STR_5027_TUBULAR_RAIL_BRIDGE					:Potrubni zeleznicni most
-STR_5028_TUBULAR_ROAD_BRIDGE					:Potrubni silnicni most
-STR_5029_STEEL							:Ocelovy
+STR_5026_CONCRETE_ROAD_BRIDGE					:Betonový silnicni most
+STR_5027_TUBULAR_RAIL_BRIDGE					:Potrubní zeleznicni most
+STR_5028_TUBULAR_ROAD_BRIDGE					:Potrubní silnicni most
+STR_5029_STEEL							:Ocelový
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY					:{WHITE}V ceste je objekt
 STR_5801_TRANSMITTER						:Vysilac
-STR_5802_LIGHTHOUSE						:Majak
+STR_5802_LIGHTHOUSE						:Maják
 STR_5803_COMPANY_HEADQUARTERS					:Reditelstvi spolecnosti
 STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...v ceste je reditelstvi spolecnosti
 STR_5805_COMPANY_OWNED_LAND					:Puda vlastnena spolecnosti
@@ -1722,18 +1722,18 @@ STR_SV_AIRCRAFT_NAME						:Letadlo {COMMA16}
 STR_SV_STNAME							:{STRING}
 STR_SV_STNAME_NORTH						:{STRING} sever
 STR_SV_STNAME_SOUTH						:{STRING} jih
-STR_SV_STNAME_EAST						:{STRING} vychod
-STR_SV_STNAME_WEST						:{STRING} zapad
+STR_SV_STNAME_EAST						:{STRING} východ
+STR_SV_STNAME_WEST						:{STRING} západ
 STR_SV_STNAME_CENTRAL						:{STRING} stred
 STR_SV_STNAME_TRANSFER						:{STRING} prestupni
-STR_SV_STNAME_HALT						:{STRING} zastavka
-STR_SV_STNAME_VALLEY						:{STRING} udoli
+STR_SV_STNAME_HALT						:{STRING} zastávka
+STR_SV_STNAME_VALLEY						:{STRING} údolí
 STR_SV_STNAME_HEIGHTS						:{STRING} vysina
-STR_SV_STNAME_WOODS						:{STRING} polesi
+STR_SV_STNAME_WOODS						:{STRING} polesí
 STR_SV_STNAME_LAKESIDE						:{STRING} jezero
-STR_SV_STNAME_EXCHANGE						:{STRING} centrala
+STR_SV_STNAME_EXCHANGE						:{STRING} centrála
 STR_SV_STNAME_AIRPORT						:{STRING} letiste
-STR_SV_STNAME_OILFIELD						:{STRING} ropna plosina
+STR_SV_STNAME_OILFIELD						:{STRING} ropná plosina
 STR_SV_STNAME_MINES						:{STRING} doly
 STR_SV_STNAME_DOCKS						:{STRING} pristav
 STR_SV_STNAME_BUOY_1						:{STRING} bojka 1
@@ -1746,7 +1746,7 @@ STR_SV_STNAME_BUOY_7						:{STRING} bojka 7
 STR_SV_STNAME_BUOY_8						:{STRING} bojka 8
 STR_SV_STNAME_BUOY_9						:{STRING} bojka 9
 STR_SV_STNAME_ANNEXE						:{STRING} pripojne
-STR_SV_STNAME_SIDINGS						:{STRING} odstavne
+STR_SV_STNAME_SIDINGS						:{STRING} odstavné
 STR_SV_STNAME_BRANCH						:{STRING} odbocka
 STR_SV_STNAME_UPPER						:horni {STRING}
 STR_SV_STNAME_LOWER						:dolni {STRING}
