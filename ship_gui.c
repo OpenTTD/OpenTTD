@@ -868,9 +868,8 @@ static void DrawSmallOrderList(Vehicle *v, int x, int y) {
 	int sel, i = 0;
 
 	sel = v->cur_order_index;
-	order = v->orders;
 
-	while (order != NULL) {
+	FOR_VEHICLE_ORDERS(v, order) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
 			DoDrawString( "\xAF", x-6, y, 16);
@@ -888,8 +887,6 @@ static void DrawSmallOrderList(Vehicle *v, int x, int y) {
 					break;
 			}
 		}
-
-		order = order->next;
 	}
 }
 
