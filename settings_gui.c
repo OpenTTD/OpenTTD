@@ -174,7 +174,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 
 		// change screenshot format
-		case 30:
+		case 31:
 			SetScreenshotFormat(e->dropdown.index);
 			SetWindowDirty(w);
 			break;

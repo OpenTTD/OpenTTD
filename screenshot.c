@@ -376,8 +376,12 @@ void SetScreenshotFormat(int i)
 // screenshot generator that dumps the current video buffer
 void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
 {
-	assert(_screen.pitch == (int)pitch);
-	memcpy(buf, _screen.dst_ptr + y * _screen.pitch, n * _screen.pitch);
+	for (; n > 0; --n)
+	{
+		memcpy(buf, _screen.dst_ptr + y * _screen.pitch, _screen.width);
+		++y;
+		buf += pitch;
+	}
 }
 
 extern void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom);
