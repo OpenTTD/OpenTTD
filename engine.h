@@ -157,7 +157,7 @@ extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
 extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
-static inline RailVehicleInfo *rail_vehinfo(uint e)
+static inline RailVehicleInfo *RailVehInfo(uint e)
 {
 	assert(e < lengthof(_rail_vehicle_info));
 	return &_rail_vehicle_info[e];
