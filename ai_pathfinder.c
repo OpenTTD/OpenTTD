@@ -50,19 +50,14 @@ static bool IsRoad(TileIndex tile)
 #define TILES_BETWEEN(a, b, c) (TileX(a) >= TileX(b) && TileX(a) <= TileX(c) && TileY(a) >= TileY(b) && TileY(a) <= TileY(c))
 
 // Check if the current tile is in our end-area
-static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, AyStarNode *node)
+static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current)
 {
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	// It is not allowed to have a station on the end of a bridge or tunnel ;)
-	if (node->user_data[0] != 0) return AYSTAR_DONE;
-	if (TILES_BETWEEN(node->tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br))
-		if (IsTileType(node->tile, MP_CLEAR) || IsTileType(node->tile, MP_TREES))
-			/* XXX: The next line used to be here, but the argument to this function
-			 * changed to an AyStarNode* instead of an OpenListNode*, so we don't
-			 * have the parent available here anymore. Still, if we can build a
-			 * station in anyone direction, we can build it in any direction, right?*/
-			// if (current->path.parent == NULL || TestCanBuildStationHere(node->tile,AiNew_GetDirection(current->path.parent->node.tile, node->tile)))
-			if ( TestCanBuildStationHere(node->tile,0))
+	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
+	if (TILES_BETWEEN(current->path.node.tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br))
+		if (IsTileType(current->path.node.tile, MP_CLEAR) || IsTileType(current->path.node.tile, MP_TREES))
+			if (current->path.parent == NULL || TestCanBuildStationHere(current->path.node.tile,AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile)))
     			return AYSTAR_FOUND_END_NODE;
 
 	return AYSTAR_DONE;

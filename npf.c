@@ -332,6 +332,8 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	TileIndex tile = current->tile;
 	byte trackdir = current->direction;
 	int32 cost = 0;
+	OpenListNode new_node;
+
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
@@ -384,7 +386,8 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	/* Penalise the tile if it is a target tile and the last signal was
 	 * red */
-	if (as->EndNodeCheck(as, current)==AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
+	new_node.path.node = *current;
+	if (as->EndNodeCheck(as, &new_node)==AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
 		cost += _patches.npf_rail_lastred_penalty;
 
 	/* Check for slope */
@@ -409,8 +412,8 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 }
 
 /* Will find any depot */
-int32 NPFFindDepot(AyStar* as, AyStarNode *node) {
-	TileIndex tile = node->tile;
+int32 NPFFindDepot(AyStar* as, OpenListNode *current) {
+	TileIndex tile = current->path.node.tile;
 	if (IsTileDepotType(tile, as->user_data[NPF_TYPE]))
 		return AYSTAR_FOUND_END_NODE;
 	else
@@ -418,8 +421,9 @@ int32 NPFFindDepot(AyStar* as, AyStarNode *node) {
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-int32 NPFFindStationOrTile(AyStar* as, AyStarNode *node) {
+int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current) {
 	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
+	AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
 	/* See if we checked this before */
