@@ -219,7 +219,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 		return;
 
 	// check the rare case that the oldest (to be overwritten) news item is open
-	if (_oldest_news == _current_news || _oldest_news == _forced_news)
+	if (_total_news==MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
 		MoveToNexItem();
 
 	_forced_news = INVALID_NEWS;
