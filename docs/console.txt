@@ -3,7 +3,7 @@ OPENTTD INGAME CONSOLE DOCUMENTATION
 http://openttd.rulez.org/wiki2/index.php/OpenTTDDevBlackBook
 for detailed information
 
-HOTKEY: BACKQUOTE (aka tile, the key left to "1")
+HOTKEY: BACKQUOTE (aka tilde, the key left to "1")
 
 COMMANDS:
 ---------
@@ -52,4 +52,3 @@ printf "%s world" *temp_string
 ---------------------------------------------------
 feel free to add more commands and use this in-game
 console for your debugging / enhancements
-

@@ -8,6 +8,7 @@
 #include "player.h"
 #include "command.h"
 #include "vehicle.h"
+#include "economy.h"
 
 static void DoShowPlayerFinances(int player, bool small);
 
@@ -18,7 +19,7 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 	int64 (*tbl)[13], sum,cost;
 	StringID str;
 
-	if (!(mode & 1)) {
+	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, 0);
 		for(i=0; i!=13; i++)
@@ -61,9 +62,13 @@ static void DrawPlayerEconomyStats(Player *p, byte mode)
 		} while (--j != 0);
 
 		y = 171;
-	} else {
+
+		// draw max loan aligned to loan below (y += 10)
+		SET_DPARAM64(0, (uint64)_economy.max_loan);
+		DrawString(202, y+10, STR_MAX_LOAN, 0);
+
+	} else
 		y = 15;
-	}
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
 	SET_DPARAM64(0, p->money64);

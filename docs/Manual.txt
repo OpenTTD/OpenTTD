@@ -43,7 +43,7 @@ Difficulty Settings lets you configure settings that affect the difficulty of pl
 
 Game Settings lets you set regional settings - currency, language, town names, etc. It also lets you select the resolution to run the game at, as well as the screenshot format to use.
 
-Configure Patches lets you select which patches to use in the game. This allows you ro set the game play to either original Transport Tycoon Deluxe compatible mode or a mode more like playing under TTD-Patch. Patches include building on slopes, longer bridges, longer trains, pre-signals, and TTD-Patch compatible handling of non-stop orders.
+Configure Patches lets you select which patches to use in the game. This allows you to set the game play to either original Transport Tycoon Deluxe compatible mode or a mode more like playing under TTD-Patch. Patches include building on slopes, longer bridges, longer trains, pre-signals, and TTD-Patch compatible handling of non-stop orders.
 
 2.1 Gameplay
 
