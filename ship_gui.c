@@ -504,7 +504,8 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		DrawWindowWidgets(w);
 
 		/* draw the flag */
-		DrawSprite((v->vehstatus & VS_STOPPED) ? 0xC12  : 0xC13, 2, 105);
+		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2,
+			w->widget[5].top + 1);
 
 		if (v->breakdown_ctr == 1) {
 			str = STR_885C_BROKEN_DOWN;
@@ -540,7 +541,8 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			}
 		}
 
-		DrawStringCentered(125, 105, str, 0);
+		DrawStringCentered((w->widget[5].right - w->widget[5].left) / 2,
+			w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	} break;
 
@@ -569,6 +571,13 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		}
 	} break;
 
+	case WE_RESIZE:
+		w->viewport->width  += e->sizing.diff.x;
+		w->viewport->height += e->sizing.diff.y;
+		w->viewport->virtual_width  += e->sizing.diff.x;
+		w->viewport->virtual_height += e->sizing.diff.y;
+		break;
+
 	case WE_DESTROY:
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
@@ -578,24 +587,26 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _ship_view_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   237,     0,    13, STR_980F,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   238,   249,     0,    13, 0x0,       STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   231,    14,   103, 0x0,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,     2,   229,    16,   101, 0x0,				STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,   249,   104,   115, 0x0,				STR_9827_CURRENT_SHIP_ACTION_CLICK},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    14,    31, 0x2AB,			STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    32,    49, 0x2B0,			STR_982A_SEND_SHIP_TO_DEPOT},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    50,    67, 0x2B4,			STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    68,    85, 0x2B2,			STR_9828_SHOW_SHIP_S_ORDERS},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   232,   249,    86,   103, 0x2B3,			STR_982B_SHOW_SHIP_DETAILS},
-{   WIDGETS_END},
+{ WWT_TEXTBTN,    RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,      STR_STICKY_BUTTON},
+{ WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,      STR_NULL},
+{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,      STR_NULL},
+{ WWT_PUSHIMGBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,      STR_9827_CURRENT_SHIP_ACTION_CLICK},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, 0x2AB,    STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, 0x2B0,    STR_982A_SEND_SHIP_TO_DEPOT},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_9828_SHOW_SHIP_S_ORDERS},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_982B_SHOW_SHIP_DETAILS},
+{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
+{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
+{ WIDGETS_END }
 };
 
 static const WindowDesc _ship_view_desc = {
 	-1,-1, 250, 116,
 	WC_VEHICLE_VIEW,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_ship_view_widgets,
 	ShipViewWndProc
 };
