@@ -381,9 +381,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const EngineInfo *info = &_engine_info[engine_id];
 
 				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype ) {
-					count++;
 					if ( _player_num_engines[engine_id] ) {
 						if (sel[0]==0)  selected_id[0] = engine_id;
+						count++;
 						sel[0]--;
 					}
 					if (HASBIT(e->player_avail, _local_player)) {
