@@ -343,27 +343,20 @@ Vehicle *GetLastVehicleInChain(Vehicle *v)
 
 Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 {
-	const Vehicle *org = v;
+	Vehicle *u;
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && org == v->next)
-			return (Vehicle*)v;
-	}
+	FOR_ALL_VEHICLES(u) if (u->next == v) return u;
 
 	return NULL;
 }
 
 Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 {
-	while (true) {
-		const Vehicle* u = v;
+	const Vehicle* u;
 
-		v = GetPrevVehicleInChain(v);
-		/* If there is no such vehicle,
-		    'v' == NULL and so 'u' is the first vehicle in chain */
-		if (v == NULL)
-			return (Vehicle*)u;
-	}
+	while ((u = GetPrevVehicleInChain(v)) != NULL) v = u;
+
+	return (Vehicle*)v;
 }
 
 int CountVehiclesInChain(Vehicle *v)
