@@ -119,6 +119,17 @@ static void SdlAbort(int sig)
 {
 	/* Own hand-made parachute for the cases of failed assertions. */
 	SDL_CALL SDL_Quit();
+
+	switch (sig) {
+		case SIGSEGV:
+		case SIGFPE:
+			signal(sig, SIG_DFL);
+			raise(sig);
+			break;
+
+		default:
+			break;
+	}
 }
 #endif
 
@@ -141,6 +152,8 @@ static char *SdlOpen(uint32 x)
 
 #ifdef UNIX
 	signal(SIGABRT, SdlAbort);
+	signal(SIGSEGV, SdlAbort);
+	signal(SIGFPE, SdlAbort);
 #endif
 
 	return NULL;
@@ -154,6 +167,8 @@ static void SdlClose(uint32 x)
 		SDL_CALL SDL_Quit();
 		#ifdef UNIX
 		signal(SIGABRT, SIG_DFL);
+		signal(SIGSEGV, SIG_DFL);
+		signal(SIGFPE, SIG_DFL);
 		#endif
 	}
 }
