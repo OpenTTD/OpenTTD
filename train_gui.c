@@ -1487,7 +1487,7 @@ void ShowPlayerTrains(int player, int station)
 		w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | player);
 	}
 	if (w) {
-		w->caption_color = w->window_number;
+		w->caption_color = player;
 		w->hscroll.cap = 10;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;

@@ -609,10 +609,12 @@ void DeletePlayerWindows(int pi)
 	DeleteWindowById(WC_COMPANY, pi);
 	DeleteWindowById(WC_FINANCES, pi);
 	DeleteWindowById(WC_STATION_LIST, pi);
-	DeleteWindowById(WC_TRAINS_LIST, pi);
-	DeleteWindowById(WC_ROADVEH_LIST, pi);
-	DeleteWindowById(WC_SHIPS_LIST, pi);
-	DeleteWindowById(WC_AIRCRAFT_LIST, pi);
+	/* The vehicle list windows also have station in the window_number
+	 * A stationindex of -1 means the global vehicle list */
+	DeleteWindowById(WC_TRAINS_LIST, (-1 << 16) | pi);
+	DeleteWindowById(WC_ROADVEH_LIST, (-1 << 16) | pi);
+	DeleteWindowById(WC_SHIPS_LIST, (-1 << 16) | pi);
+	DeleteWindowById(WC_AIRCRAFT_LIST, (-1 << 16) | pi);
 	DeleteWindowById(WC_BUY_COMPANY, pi);
 }
 
