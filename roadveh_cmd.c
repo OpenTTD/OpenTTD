@@ -569,7 +569,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
-			SERVICE_INTERVAL ) {
+			!VehicleNeedsService(v)) {
 		v->cur_order_index++;
 	}
 
@@ -1433,7 +1433,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	if (_patches.servint_roadveh == 0)
 		return;
 
-	if (SERVICE_INTERVAL)
+	if (!VehicleNeedsService(v))
 		return;
 
 	if (v->vehstatus & VS_STOPPED)

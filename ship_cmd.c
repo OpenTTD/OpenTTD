@@ -89,7 +89,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	if (_patches.servint_ships == 0)
 		return;
 
-	if (SERVICE_INTERVAL)
+	if (!VehicleNeedsService(v))
 		return;
 
 	if (v->vehstatus & VS_STOPPED)
@@ -214,7 +214,7 @@ static void ProcessShipOrder(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
-			SERVICE_INTERVAL) {
+			!VehicleNeedsService(v)) {
 		v->cur_order_index++;
 	}
 

@@ -22,6 +22,13 @@ void VehicleServiceInDepot(Vehicle *v)
 	v->reliability = _engines[v->engine_type].reliability;
 }
 
+bool VehicleNeedsService(const Vehicle *v)
+{
+	return _patches.servint_ispercent ? 
+		(v->reliability < _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) : 
+		(v->date_of_last_service + v->service_interval < _date);
+}
+
 Order UnpackOldOrder(uint16 packed)
 {
 	Order order;
