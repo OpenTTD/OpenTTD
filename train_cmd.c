@@ -2564,6 +2564,7 @@ common:;
 			CheckTrainCollision(v);
 		}
 	}
+	return;
 
 invalid_rail:
 	/* We've reached end of line?? */
