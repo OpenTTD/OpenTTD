@@ -1116,11 +1116,21 @@ void NetworkIPListInit() {
 	DEBUG(misc,0) ("iplist: init for host %s", hostname);
 	he=gethostbyname((char *) hostname);
 	
-	while(he->h_addr_list[i]) { 
-		bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-		_network_ip_list[i]=bcaddr;
-		DEBUG(misc,0) ("iplist: add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
-		i++;
+	if (he == NULL) {
+		DEBUG(misc, 0) ("iplist: gethostbyname failed for host %s...trying with IP address", hostname);
+		bcaddr = inet_addr(hostname);
+		he = gethostbyaddr(inet_ntoa(*(struct in_addr *)bcaddr), sizeof(bcaddr), AF_INET);
+	}
+
+	if (he == NULL) {
+		DEBUG(misc, 0) ("iplist: cannot resolve %s", hostname);
+	} else {
+		while(he->h_addr_list[i]) { 
+			bcaddr = inet_addr(inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
+			_network_ip_list[i]=bcaddr;
+			DEBUG(misc,0) ("iplist: add %s",inet_ntoa(*(struct in_addr *) he->h_addr_list[i]));
+			i++;
+		}
 	}
 	_network_ip_list[i]=0;
 	

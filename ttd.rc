@@ -1,7 +1,5 @@
-// Microsoft Visual C++ generated resource script.
+//Microsoft Developer Studio generated resource script.
 //
-#include "resrc1.h"
-
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -11,7 +9,7 @@
 #define APSTUDIO_HIDDEN_SYMBOLS
 #include "windows.h"
 #undef APSTUDIO_HIDDEN_SYMBOLS
-#include "winres.h"
+#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -32,29 +30,30 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-100                     ICON                    "mainicon.ico"
+100                     ICON    DISCARDABLE     "mainicon.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-100 DIALOGEX 0, 0, 305, 70
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+100 DIALOG DISCARDABLE  0, 0, 305, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Fatal Application Failure"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+FONT 8, "MS Sans Serif"
 BEGIN
     PUSHBUTTON      "&Close",12,7,49,50,14
     PUSHBUTTON      "&Submit report",14,81,49,68,14,WS_DISABLED
     PUSHBUTTON      "&Emergency save",13,155,49,68,14
     PUSHBUTTON      "",15,243,49,55,14,WS_DISABLED
-    EDITTEXT        11,7,70,291,118,ES_MULTILINE | ES_READONLY | WS_VSCROLL | 
+    EDITTEXT        11,7,70,291,118,ES_MULTILINE | ES_READONLY | WS_VSCROLL |
                     WS_HSCROLL | NOT WS_TABSTOP
     LTEXT           "",10,36,7,262,34
     ICON            100,IDC_STATIC,9,9,20,20
 END
 
 
+#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -77,15 +76,18 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "Comments", "This program is licensed under the GNU General Public License."
-            VALUE "CompanyName", "OpenTTD Developers"
-            VALUE "FileDescription", "OpenTTD"
-            VALUE "FileVersion", "0.3.3.0"
-            VALUE "InternalName", "openttd"
-            VALUE "LegalCopyright", "Copyright © OpenTTD Developers 2002-2004. All Rights Reserved."
-            VALUE "OriginalFilename", "openttd.exe"
-            VALUE "ProductName", "OpenTTD"
-            VALUE "ProductVersion", "0.3.3.0"
+            VALUE "Comments", "This program is licensed under the GNU General Public License.\0"
+            VALUE "CompanyName", "OpenTTD Developers\0"
+            VALUE "FileDescription", "OpenTTD\0"
+            VALUE "FileVersion", "0.3.3.0\0"
+            VALUE "InternalName", "openttd\0"
+            VALUE "LegalCopyright", "Copyright © OpenTTD Developers 2002-2004. All Rights Reserved.\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "openttd.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "OpenTTD\0"
+            VALUE "ProductVersion", "0.3.3.0\0"
+            VALUE "SpecialBuild", "\0"
         END
     END
     BLOCK "VarFileInfo"
@@ -93,6 +95,8 @@ BEGIN
         VALUE "Translation", 0x0, 1200
     END
 END
+
+#endif    // !_MAC
 
 #endif    // Neutral (Default) resources
 /////////////////////////////////////////////////////////////////////////////
@@ -113,12 +117,12 @@ LANGUAGE LANG_SWEDISH, SUBLANG_DEFAULT
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE DISCARDABLE
 BEGIN
     "resrc1.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE DISCARDABLE
 BEGIN
     "#include ""resource.h""\r\n"
     "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
@@ -128,7 +132,7 @@ BEGIN
     "\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE DISCARDABLE
 BEGIN
     "\r\n"
     "\0"
