@@ -288,8 +288,8 @@ restart:
 		dir = r >> 30;
 		r %= (dir == 0 || dir == 2) ? MapMaxY() : MapMaxX();
 		tile =
-          (dir==0)?TILE_XY(0,r):0 +             // left
-          (dir==1)?TILE_XY(r,0):0 +             // top
+			(dir==0)?TILE_XY(0,r):0 +             // left
+			(dir==1)?TILE_XY(r,0):0 +             // top
 			(dir == 2) ? TILE_XY(MapMaxX(), r) : 0 + // right
 			(dir == 3) ? TILE_XY(r, MapMaxY()) : 0;  // bottom
 		j = 20;
@@ -309,9 +309,9 @@ restart:
 
 extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
 
-/* p1				= relocate HQ
-	 p1&0xFF	= player whose HQ is up for relocation
-*/
+/* p1      = relocate HQ
+ * p1&0xFF = player whose HQ is up for relocation
+ */
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x,y);
@@ -321,7 +321,7 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-  cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 
 	if (cost == CMD_ERROR)
 		return CMD_ERROR;
@@ -417,18 +417,18 @@ static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_playe
 }
 
 const TileTypeProcs _tile_type_unmovable_procs = {
-	DrawTile_Unmovable,						/* draw_tile_proc */
-	GetSlopeZ_Unmovable,					/* get_slope_z_proc */
-	ClearTile_Unmovable,					/* clear_tile_proc */
-	GetAcceptedCargo_Unmovable,		/* get_accepted_cargo_proc */
-	GetTileDesc_Unmovable,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Unmovable,	/* get_tile_track_status_proc */
-	ClickTile_Unmovable,					/* click_tile_proc */
-	AnimateTile_Unmovable,				/* animate_tile_proc */
-	TileLoop_Unmovable,						/* tile_loop_clear */
-	ChangeTileOwner_Unmovable,		/* change_tile_owner_clear */
-	NULL,													/* get_produced_cargo_proc */
-	NULL,													/* vehicle_enter_tile_proc */
-	NULL,													/* vehicle_leave_tile_proc */
-	GetSlopeTileh_Unmovable,			/* get_slope_tileh_proc */
+        DrawTile_Unmovable,             /* draw_tile_proc */
+        GetSlopeZ_Unmovable,            /* get_slope_z_proc */
+        ClearTile_Unmovable,            /* clear_tile_proc */
+        GetAcceptedCargo_Unmovable,     /* get_accepted_cargo_proc */
+        GetTileDesc_Unmovable,          /* get_tile_desc_proc */
+        GetTileTrackStatus_Unmovable,   /* get_tile_track_status_proc */
+        ClickTile_Unmovable,            /* click_tile_proc */
+        AnimateTile_Unmovable,          /* animate_tile_proc */
+        TileLoop_Unmovable,             /* tile_loop_clear */
+        ChangeTileOwner_Unmovable,      /* change_tile_owner_clear */
+        NULL,                           /* get_produced_cargo_proc */
+        NULL,                           /* vehicle_enter_tile_proc */
+        NULL,                           /* vehicle_leave_tile_proc */
+        GetSlopeTileh_Unmovable,        /* get_slope_tileh_proc */
 };
