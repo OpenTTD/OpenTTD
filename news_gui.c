@@ -341,7 +341,7 @@ static bool ReadyForNextItem()
 	byte item = (_forced_news==255)?_current_news:_forced_news;
 	NewsItem *ni;
 
-	if(item>=MAX_NEWS) return false;
+	if(item>=MAX_NEWS) return true;
 	ni = &_news_items[item];
 
 	// Ticker message
