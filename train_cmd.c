@@ -1089,50 +1089,48 @@ static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int trac
 	return length >= tfdd->best_length;
 }
 
-// returns the tile of a depot to goto to
-static uint FindClosestTrainDepot(Vehicle *v)
+// returns the tile of a depot to goto to.
+static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 {
 	int i;
 	TrainFindDepotData tfdd;
 	uint tile = v->tile;
 
-	if (IsTrainDepotTile(tile))
-		return tile;
-
-	if (v->u.rail.track == 0x40) { tile = GetVehicleOutOfTunnelTile(v); }
-
 	tfdd.owner = v->owner;
 	tfdd.best_length = (uint)-1;
+
+	if (IsTrainDepotTile(tile)){
+		tfdd.tile = tile;
+		tfdd.best_length = 0;
+		return tfdd;
+	}
+
+	if (v->u.rail.track == 0x40) { tile = GetVehicleOutOfTunnelTile(v); }
 
 	if (!_patches.new_depot_finding) {
 		// search in all directions
 		for(i=0; i!=4; i++)
 			NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
-		if (tfdd.best_length != (uint)-1)
-			return tfdd.tile;
 	} else {
 		// search in the forward direction first.
 		i = v->direction >> 1;
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
 		NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
-		if (tfdd.best_length != (uint)-1)
-			return tfdd.tile;
-
-		// search in backwards direction
-		i = (v->direction^4) >> 1;
-		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
-		NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
-		if (tfdd.best_length != (uint)-1)
-			return tfdd.tile;
+		if (tfdd.best_length == (uint)-1){
+			// search in backwards direction
+			i = (v->direction^4) >> 1;
+			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
+			NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
+		}
 	}
 
-	return (uint)-1;
+	return tfdd;
 }
 
 int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v = &_vehicles[p1];
-	uint depot_tile;
+	TrainFindDepotData tfdd;
 
 	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
@@ -1147,14 +1145,14 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return 0;
 	}
 
-	depot_tile = FindClosestTrainDepot(v);
-	if (depot_tile == (uint)-1)
+	tfdd = FindClosestTrainDepot(v);
+	if (tfdd.best_length == (uint)-1)
 		return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
 
 	if (flags & DC_EXEC) {
-		v->dest_tile = depot_tile;
+		v->dest_tile = tfdd.tile;
 		v->next_order = OF_NON_STOP | OF_FULL_LOAD | OT_GOTO_DEPOT;
-		v->next_order_param = GetDepotByTile(depot_tile);
+		v->next_order_param = GetDepotByTile(tfdd.tile);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 	}
 
@@ -2566,8 +2564,8 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
-	uint tile;
 	byte depot;
+	TrainFindDepotData tfdd;
 
 	if (_patches.servint_trains == 0)
 		return;
@@ -2587,23 +2585,27 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 			(v->next_order & (OF_FULL_LOAD|OF_UNLOAD)) != 0)
 		return;
 
-	tile = FindClosestTrainDepot(v);
-	if (tile == (uint)-1 || GetTileDist(v->tile, tile) > 12) {
+	tfdd = FindClosestTrainDepot(v);
+	/* Only go to the depot if it is not too far out of our way. */
+	if (tfdd.best_length == (uint)-1 || tfdd.best_length > 16 ) {
 		if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT) {
+			/* If we were already heading for a depot but it has
+			 * suddenly moved farther away, we continue our normal
+			 * schedule? */
 			v->next_order = OT_DUMMY;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		}
 		return;
 	}
 
-	depot = GetDepotByTile(tile);
+	depot = GetDepotByTile(tfdd.tile);
 
 	if ((v->next_order & OT_MASK) == OT_GOTO_DEPOT && v->next_order_param != depot && !CHANCE16(3,16))
 		return;
 
 	v->next_order = OT_GOTO_DEPOT | OF_NON_STOP;
 	v->next_order_param = depot;
-	v->dest_tile = tile;
+	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 }
 
