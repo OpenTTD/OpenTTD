@@ -50,8 +50,7 @@ static void PlaceTree(uint tile, uint32 r, byte m5_or)
 		_map3_hi[tile] = 0;		// no hedge
 
 		// above snowline?
-		if( (_opt.landscape == LT_HILLY) && (GetTileZ(tile) - _opt.snow_line > 0) )
-		{
+		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
 			_map2[tile] = 0xE0;	// set land type to snow
 			_map2[tile] |= (byte)(r >> 24)&0x07; // randomize counter
 		}
