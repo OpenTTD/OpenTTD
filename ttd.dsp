@@ -147,83 +147,83 @@ LINK32=link.exe
 # Name "ttd - Win32 Debug"
 # Name "ttd - Win32 Checked"
 # Name "ttd - Win32 Release with PNG"
+
 # Begin Group "Source Files"
-
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai_build.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai_new.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai_pathfinder.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai_shared.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\airport.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\aystar.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\command.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\console.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\console_cmds.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\documentation.txt
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\economy.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\engine.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\fileio.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\gfx.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\landscape.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\map.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\md5.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\minilzo.c
 
 !IF  "$(CFG)" == "ttd - Win32 Release"
@@ -247,66 +247,67 @@ SOURCE=.\minilzo.c
 !ENDIF 
 
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\misc.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\namegen.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\newgrf.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\oldloader.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\pathfind.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\players.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\queue.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\saveload.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\screenshot.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\sdl.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\settings.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\sound.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\sprite.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\spritecache.c
 # End Source File
+
 # Begin Source File
 
 SOURCE=.\StdAfx.c
@@ -327,22 +328,23 @@ SOURCE=.\StdAfx.c
 !ENDIF 
 
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\strings.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\texteff.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ttd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ttd.rc
 # End Source File
+
 # Begin Source File
 
 SOURCE=.\unix.c
@@ -368,22 +370,23 @@ SOURCE=.\unix.c
 !ENDIF 
 
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\vehicle.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\vehicle_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\viewport.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\w32dm.c
 # End Source File
+
 # Begin Source File
 
 SOURCE=.\w32dm2.cpp
@@ -404,682 +407,691 @@ SOURCE=.\w32dm2.cpp
 !ENDIF 
 
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\widget.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\win32.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\window.c
 # End Source File
+
 # End Group
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ai.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\aystar.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\command.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\console.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\economy.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\engine.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\fileio.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\functions.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\gfx.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\gui.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\hal.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\industry.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\macros.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\map.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\md5.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\news.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\pathfind.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\player.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\queue.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\saveload.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\sound.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\station.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\StdAfx.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\town.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ttd.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\variables.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\vehicle.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\vehicle_gui.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\viewport.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\window.h
 # End Source File
+
 # End Group
 # Begin Group "Listings"
 
 # PROP Default_Filter "*.cod"
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\ai.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\aircraft_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\clear_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\command.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\depot_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\disaster_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\economy.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\engine.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\gfx.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\goods.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\graph_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\industry_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\industry_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\landscape.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\main_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\minilzo.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\misc.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\misc_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\news_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\player_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\player_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\players.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\rail_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\road_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\saveload.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\settings_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\ship_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\smallmap_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\sound.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\spritecache.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\station_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\strings.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\town_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\town_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\train_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\train_gui.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\tree_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\ttd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\vehicle.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\viewport.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\water_cmd.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\widget.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\win32.cod
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\Release\window.cod
 # End Source File
+
 # End Group
 # Begin Group "Gui Source codes"
 
 # PROP Default_Filter ""
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\aircraft_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\airport_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\bridge_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\dock_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\engine_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\graph_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\industry_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\intro_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\main_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\misc_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\music_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\news_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\order_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\player_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\rail_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\road_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\roadveh_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\settings_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ship_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\smallmap_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\station_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\subsidy_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\terraform_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\town_gui.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\train_gui.c
 # End Source File
+
 # End Group
 # Begin Group "Landscape"
 
 # PROP Default_Filter ""
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\aircraft_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\clear_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\disaster_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\dummy_land.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\industry_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\misc_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\order_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\rail_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\road_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\roadveh_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ship_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\station_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\town_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\train_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\tree_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\tunnelbridge_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\unmovable_cmd.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\water_cmd.c
 # End Source File
+
 # End Group
 # Begin Group "Tables"
 
 # PROP Default_Filter ""
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\ai_rail.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\allstrings.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\animcursors.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\build_industry.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\clear_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\directions.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\engines.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\genland.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\industry_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\landscape_const.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\landscape_sprite.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\palettes.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\road_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\roadveh.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\station_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\strings.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\town_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\track_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\train_cmd.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\tree_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\tunnel_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\unmovable_land.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\table\water_land.h
 # End Source File
+
 # End Group
 # Begin Group "Network Source Files"
 
 # PROP Default_Filter ""
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\callback_table.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\dedicated.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_client.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_data.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_gamelist.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_server.c
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_udp.c
 # End Source File
+
 # End Group
 # Begin Group "Network Header Files"
 
 # PROP Default_Filter ""
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_client.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_core.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_data.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_gamelist.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_server.h
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\network_udp.h
 # End Source File
-# End Group
-# Begin Source File
 
+# End Group
+
+# Begin Source File
 SOURCE=.\changelog.txt
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\icon1.ico
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\mainicon.ico
 # End Source File
-# Begin Source File
 
+# Begin Source File
 SOURCE=.\ReadMe.txt
 # End Source File
+
 # End Target
 # End Project
