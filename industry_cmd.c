@@ -725,6 +725,14 @@ static void TileLoop_Industry(uint tile)
 #define SET_AND_UNANIMATE(tile,a,b) { _map5[tile]=a; _map_owner[tile]=b; DeleteAnimatedTile(tile); }
 
 	switch(_map5[tile]) {
+	case 0x18: // coast line at oilrigs
+	case 0x19:
+	case 0x1A:
+	case 0x1B:
+	case 0x1C:
+		TileLoop_Water(tile);
+		break;
+
 	case 0:
 		if (!(_tick_counter & 0x400) && CHANCE16(1,2))
 			SET_AND_ANIMATE(tile,1,0x80);

@@ -1841,6 +1841,11 @@ static void TileLoop_Station(uint tile)
 	// treat a bouy tile as water.
 	else if (_map5[tile] == 0x52)
 		TileLoop_Water(tile);
+
+	// treat a oilrig (the station part) as water
+	else if (_map5[tile] == 0x4B)
+		TileLoop_Water(tile);
+
 }
 
 

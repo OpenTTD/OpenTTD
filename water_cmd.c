@@ -528,6 +528,20 @@ void TileLoop_Water(uint tile)
 		for(i=0; i!=4; i++)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 	}
+
+	// edges
+	if ( GET_TILE_X(tile)==0 && IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) //NE
+		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
+
+	if ( GET_TILE_X(tile)==(TILES_X-2) && IS_INT_INSIDE(GET_TILE_Y(tile),1,TILES_Y-3+1)) //SW
+		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
+
+	if ( GET_TILE_Y(tile)==0 && IS_INT_INSIDE(GET_TILE_X(tile),1,TILES_X-3+1)) //NW
+		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
+
+	if ( GET_TILE_Y(tile)==(TILES_Y-2) && IS_INT_INSIDE(GET_TILE_X(tile),1,TILES_X-3+1)) //SE
+		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
+
 }
 
 
