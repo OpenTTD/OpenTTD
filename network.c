@@ -101,7 +101,7 @@ typedef struct CommandPacket {
 	TileIndex tile;
 	byte player;// player id, this is checked by the server.
 	byte when;  // offset from the current max_frame value minus 1. this is set by the server.
-	uint32 dp[8];
+	uint32 dp[10];
 } CommandPacket;
 
 typedef struct EventPacket {
@@ -460,6 +460,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	int nump;
 	QueuedCommand *qp;
 	ClientState *cs;
+	CommandPacket cp;
 
 	if (!(cmd & CMD_NET_INSTANT)) {
 		qp = AllocQueuedCommand(_networking_server ? &_command_queue : &_ack_queue);
@@ -469,7 +470,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	qp->cp.packet_type = PACKET_TYPE_COMMAND;
 	qp->cp.tile = tile;
 	qp->cp.p1 = p1;
-	qp->cp.p2 = p2;
+	qp->cp.p2 = p2;	
 	qp->cp.cmd = (uint16)cmd;
 	qp->cp.player = _local_player;
 	qp->cp.when = 0;
@@ -480,27 +481,22 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	qp->frame = _frame_counter_max - GetNextSyncFrame();
 
 	// calculate the amount of extra bytes.
-	nump = 8;
+	nump = 10;
 	while ( nump != 0 && ((uint32*)_decode_parameters)[nump-1] == 0) nump--;
 	qp->cp.packet_length = COMMAND_PACKET_BASE_SIZE + nump * sizeof(uint32);
 	if (nump != 0) memcpy(qp->cp.dp, _decode_parameters, nump * sizeof(uint32));
 
-#if defined(TTD_BIG_ENDIAN)
-	// need to convert the command to little endian before sending it.
-	{
-		CommandPacket cp;
-		cp = qp->cp;
-		cp.cmd = TO_LE16(cp.cmd);
-		cp.tile = TO_LE16(cp.tile);
-		cp.p1 = TO_LE32(cp.p1);
-		cp.p2 = TO_LE32(cp.p2);
-		for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, &cp, cp.packet_length);
-	}
-#else
-	// send it to the peers
-	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, &qp->cp, qp->cp.packet_length);
+	cp = qp->cp;
 
-#endif
+	// convert to little endian
+	cp.tile = TO_LE16(cp.tile);
+	cp.p1 = TO_LE32(cp.p1);
+	cp.p2 = TO_LE32(cp.p2);
+	cp.cmd = TO_LE16(cp.cmd);
+
+	// send it to the peers
+	for(cs=_clients; cs->socket != INVALID_SOCKET; cs++) if (!cs->inactive) SendBytes(cs, &cp, cp.packet_length);
+
 	if (cmd & CMD_NET_INSTANT) {
 		free(qp);
 	}
@@ -546,10 +542,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	DEBUG(net, 2) ("NET: %i] cmd size %d", _frame_counter, np->packet_length);
 	assert(np->packet_length >= COMMAND_PACKET_BASE_SIZE);
 
-	cmd = np->cmd;
-#if defined(TTD_BIG_ENDIAN)
-	cmd = TO_LE16(cmd);
-#endif
+	cmd = FROM_LE16(np->cmd);
 
 	if (!(cmd & CMD_NET_INSTANT)) {
 		// put it into the command queue
@@ -567,7 +560,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 	memcpy(&qp->cp.dp, np->dp, np->packet_length - COMMAND_PACKET_BASE_SIZE);
 
 	ap.packet_type = PACKET_TYPE_ACK;
-	ap.when = GetNextSyncFrame();
+	ap.when = TO_LE16(GetNextSyncFrame());
 	ap.packet_length = sizeof(AckPacket);
 	DEBUG(net,4)("NET: %i] NewACK: frame=%i %i",_frame_counter, ap.when,_frame_counter_max - GetNextSyncFrame());
 
@@ -584,10 +577,10 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 
 // convert from little endian to big endian?
 #if defined(TTD_BIG_ENDIAN)
-	qp->cp.cmd = TO_LE16(qp->cp.cmd);
-	qp->cp.tile = TO_LE16(qp->cp.tile);
-	qp->cp.p1 = TO_LE32(qp->cp.p1);
-	qp->cp.p2 = TO_LE32(qp->cp.p2);
+	qp->cp.cmd = FROM_LE16(qp->cp.cmd);
+	qp->cp.tile = FROM_LE16(qp->cp.tile);
+	qp->cp.p1 = FROM_LE32(qp->cp.p1);
+	qp->cp.p2 = FROM_LE32(qp->cp.p2);
 #endif
 
 	qp->cmd = qp->cp.cmd;
@@ -627,8 +620,8 @@ static void HandleSyncPacket(SyncPacket *sp)
 	if (_networking_queuing || _frame_counter == 0)
 		return;
 
-	s1 = TO_LE32(sp->random_seed_1);
-	s2 = TO_LE32(sp->random_seed_2);
+	s1 = FROM_LE32(sp->random_seed_1);
+	s2 = FROM_LE32(sp->random_seed_2);
 
 	DEBUG(net, 3) ("NET: %i] sync seeds: 1=%i 2=%i",_frame_counter, sp->random_seed_1, sp->random_seed_2);
 
@@ -666,7 +659,8 @@ static void HandleAckPacket(AckPacket * ap)
 	assert(q);
 	if (!(_ack_queue.head = q->next)) _ack_queue.last = &_ack_queue.head;
 	q->next = NULL;
-	q->frame = (_frame_counter_max - (ap->when));
+
+	q->frame = (_frame_counter_max - (FROM_LE16(ap->when)));
 
 	*_command_queue.last = q;
 	_command_queue.last = &q->next;
@@ -720,15 +714,16 @@ static void HandleWelcomePacket(WelcomePacket *wp)
 {
 	int i;
 	for (i=0; i<MAX_PLAYERS; i++) {
-		_player_seeds[i][0]=wp->player_seeds[i][0];
-		_player_seeds[i][1]=wp->player_seeds[i][1];
+
+		_player_seeds[i][0] = FROM_LE32(wp->player_seeds[i][0]);
+		_player_seeds[i][1] = FROM_LE32(wp->player_seeds[i][1]);
 		}
 	if (wp->frames_srv != 0) {
-		_frame_counter_max = wp->frames_max;
-		_frame_counter_srv = wp->frames_srv;
+		_frame_counter_max = FROM_LE32(wp->frames_max);
+		_frame_counter_srv = FROM_LE32(wp->frames_srv);
 	}
 	if (wp->frames_cnt != 0) {
-		_frame_counter = wp->frames_cnt;
+		_frame_counter = FROM_LE32(wp->frames_cnt);
 	}
 }
 
@@ -1014,17 +1009,17 @@ void NetworkSendWelcome(ClientState *cs, bool direct) {
 	wp.packet_type = PACKET_TYPE_WELCOME;
 	wp.packet_length = sizeof(WelcomePacket);
 	for (i=0; i<MAX_PLAYERS; i++) {
-		wp.player_seeds[i][0]=_player_seeds[i][0];
-		wp.player_seeds[i][1]=_player_seeds[i][1];
+		wp.player_seeds[i][0]=TO_LE32(_player_seeds[i][0]);
+		wp.player_seeds[i][1]=TO_LE32(_player_seeds[i][1]);
 		}
 	if (direct) {
 		wp.frames_max=0;
 		wp.frames_srv=0;
-		wp.frames_cnt=_frame_counter;
+		wp.frames_cnt=TO_LE32(_frame_counter);
 		SendDirectBytes(cs,(void *)&wp,wp.packet_length);
 	} else {
-		wp.frames_max=_frame_counter_max;
-		wp.frames_srv=_frame_counter_srv;
+		wp.frames_max=TO_LE32(_frame_counter_max);
+		wp.frames_srv=TO_LE32(_frame_counter_srv);
 		wp.frames_cnt=0;
 		SendBytes(cs,(void *)&wp,wp.packet_length);
 	}

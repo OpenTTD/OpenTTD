@@ -113,19 +113,32 @@ typedef unsigned __int64 uint64;
 
 // Setup alignment and conversion macros
 #if defined(TTD_BIG_ENDIAN)
+
 # define TTD_ALIGNMENT_2
 # define TTD_ALIGNMENT_4
+
 static uint32 INLINE TO_LE32(uint32 x) { return BSWAP32(x); }
 static uint16 INLINE TO_LE16(uint16 x) { return BSWAP16(x); }
-# define TO_BE32(x) x
-# define TO_BE16(x) x
+static uint32 INLINE FROM_LE32(uint32 x) { return BSWAP32(x); }
+static uint16 INLINE FROM_LE16(uint16 x) { return BSWAP16(x); }
+#define TO_BE32(x) x
+#define TO_BE16(x) x
+#define FROM_BE32(x) x
+#define FROM_BE16(x) x
 #define TO_BE32X(x) x
+
 #else
-# define TO_LE32(x) x
-# define TO_LE16(x) x
-#define TO_BE32X(x) BSWAP32(x)
+
 static uint32 FORCEINLINE TO_BE32(uint32 x) { return BSWAP32(x); }
 static uint16 FORCEINLINE TO_BE16(uint16 x) { return BSWAP16(x); }
+static uint32 FORCEINLINE FROM_BE32(uint32 x) { return BSWAP32(x); }
+static uint16 FORCEINLINE FROM_BE16(uint16 x) { return BSWAP16(x); }
+#define TO_LE32(x) x
+#define TO_LE16(x) x
+#define TO_BE32X(x) BSWAP32(x)
+#define FROM_LE32(x) x
+#define FROM_LE16(x) x
+
 #endif
 
 #if !defined(GAME_DATA_DIR)
