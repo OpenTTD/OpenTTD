@@ -89,6 +89,7 @@ static void DedicatedSignalHandler(int sig)
 #endif
 
 #ifdef WIN32
+#include <time.h>
 HANDLE hEvent;
 static HANDLE hThread; // Thread to close
 static char _win_console_thread_buffer[200];
@@ -104,8 +105,11 @@ void WINAPI CheckForConsoleInput(void)
 
 void CreateWindowsConsoleThread(void)
 {
+	static char tbuffer[9];
 	/* Create event to signal when console input is ready */
-	hEvent = CreateEvent(NULL, false, false, "keyboard input");
+	hEvent = CreateEvent(NULL, false, false, _strtime(tbuffer));
+	if (hEvent == NULL)
+		error("Cannot create console event!");
 
 	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, 0, 0, NULL);
 	if (hThread == NULL)
@@ -117,6 +121,7 @@ void CreateWindowsConsoleThread(void)
 void CloseWindowsConsoleThread(void)
 {
 	CloseHandle(hThread);
+	CloseHandle(hEvent);
 	DEBUG(misc, 0) ("Windows console thread shut down...");
 }
 
