@@ -12,6 +12,7 @@ int _debug_misc_level;
 int _debug_ms_level;
 int _debug_net_level;
 int _debug_spritecache_level;
+int _debug_oldloader_level;
 
 
 void CDECL debug(const char *s, ...)
@@ -46,7 +47,8 @@ void SetDebugString(const char *s)
 		DEBUG_LEVEL(misc),
 		DEBUG_LEVEL(ms),
 		DEBUG_LEVEL(net),
-		DEBUG_LEVEL(spritecache)
+		DEBUG_LEVEL(spritecache),
+		DEBUG_LEVEL(oldloader)
 	};
 	#undef DEBUG_LEVEL
 

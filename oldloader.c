@@ -2,7 +2,6 @@
 #include "ttd.h"
 #include "table/strings.h"
 #include "map.h"
-#include "tile.h"
 #include "town.h"
 #include "industry.h"
 #include "station.h"
@@ -11,932 +10,399 @@
 #include "engine.h"
 #include "vehicle.h"
 #include "signs.h"
+#include "debug.h"
 #include "depot.h"
 
-extern byte _name_array[512][32];
-extern TileIndex _animated_tile_list[256];
-extern uint16 _custom_sprites_base;
+enum {
+	HEADER_SIZE = 49,
+	BUFFER_SIZE = 4096,
 
-#if defined(_MSC_VER) || defined(__WATCOMC__)
-#pragma pack(push, 1)
-#endif
+	OLD_MAP_SIZE = 256 * 256
+};
 
-typedef struct {
-	uint16 string_id;
-	uint16 x;
-	uint16 right;
-	uint16 y;
-	uint16 bottom;
-	uint16 duration;
-	uint32 params[2];
-} GCC_PACK OldTextEffect;
-assert_compile(sizeof(OldTextEffect) == 0x14);
+typedef struct LoadgameState {
+	FILE *file;
 
-typedef struct {
-	uint16 xy;
-	uint16 population;
-	uint16 townnametype;
-	uint32 townnameparts;
-	byte grow_counter;
-	byte sort_index;
-	int16 sign_left, sign_top;
-	byte namewidth_1, namewidth_2;
-	uint16 flags12;
-	uint16 radius[5];
-	uint16 ratings[8];
-	uint32 have_ratings;
-	uint32 statues;
-	uint16 num_houses;
-	byte time_until_rebuild;
-	byte growth_rate;
-	uint16 new_max_pass, new_max_mail;
-	uint16 new_act_pass, new_act_mail;
-	uint16 max_pass, max_mail;
-	uint16 act_pass, act_mail;
-	byte pct_pass_transported, pct_mail_transported;
-	uint16 new_act_food, new_act_water;
-	uint16 act_food, act_water;
-	byte road_build_months;
-	byte fund_buildings_months;
-	// unused bytes at the end of the Town Struct
-	uint32 unk56;
-	uint32 unk5A;
-} GCC_PACK OldTown;
-assert_compile(sizeof(OldTown) == 0x5E);
+	uint chunk_size;
 
-typedef struct {
-	uint16 xy;
-	uint32 town;
-} GCC_PACK OldDepot;
-assert_compile(sizeof(OldDepot) == 0x6);
+	bool decoding;
+	byte decode_char;
 
-typedef struct {
-	uint32 price;
-	uint16 frac;
-} GCC_PACK OldPrice;
-assert_compile(sizeof(OldPrice) == 0x6);
+	uint buffer_count;
+	uint buffer_cur;
+	byte buffer[BUFFER_SIZE];
 
-typedef struct {
-	uint32 price;
-	uint16 frac;
-	uint16 unused;
-} GCC_PACK OldPaymentRate;
-assert_compile(sizeof(OldPaymentRate) == 8);
+	uint total_read;
+	bool failed;
+} LoadgameState;
 
-typedef struct {
-	uint16 waiting_acceptance;
-	byte days_since_pickup;
-	byte rating;
-	byte enroute_from;
-	byte enroute_time;
-	byte last_speed;
-	byte last_age;
-} GCC_PACK OldGoodsEntry;
-assert_compile(sizeof(OldGoodsEntry) == 8);
+typedef bool OldChunkProc(LoadgameState *ls, int num);
 
-typedef struct {
-	uint16 xy;
-	uint32 town;
-	uint16 bus_tile, lorry_tile, train_tile, airport_tile, dock_tile;
-	byte platforms;
-	byte alpha_order_obsolete;	// alpha_order is obsolete since savegame format 4
-	byte namewidth_1, namewidth_2;
-	uint16 string_id;
-	int16 sign_left, sign_top;
-	uint16 had_vehicle_of_type;
-	OldGoodsEntry goods[12];
-	byte time_since_load, time_since_unload;
-	byte delete_ctr;
-	byte owner;
-	byte facilities;
-	byte airport_type;
-	byte truck_stop_status, bus_stop_status;
-	byte blocked_months_obsolete;
-	byte unk85;
-	uint16 airport_flags;
-	uint16 last_vehicle;
-	uint32 unk8A;
-} GCC_PACK OldStation;
-assert_compile(sizeof(OldStation) == 0x8E);
+typedef struct OldChunks {
+	uint32 type;         //! Type of field
+	uint32 amount;       //! Amount of fields
 
-typedef struct {
-	uint16 xy;
-	uint32 town;
-	byte width;
-	byte height;
-	byte produced_cargo[2];
-	uint16 cargo_waiting[2];
-	byte production_rate[2];
-	byte accepts_cargo[3];
-	byte prod_level;
-	uint16 last_mo_production[2];
-	uint16 last_mo_transported[2];
-	byte pct_transported[2];
-	uint16 total_production[2];
-	uint16 total_transported[2];
-	byte type;
-	byte owner;
-	byte color_map;
-	byte last_prod_year;
-	uint16 counter;
-	byte was_cargo_delivered;
-	byte nothing;
-	uint32 unk2E;
-	uint32 unk32;
-} GCC_PACK OldIndustry;
-assert_compile(sizeof(OldIndustry) == 0x36);
+	void *ptr;           //! Pointer where to save the data (may only be set if offset is 0)
+	uint offset;         //! Offset from basepointer (may only be set if ptr is NULL)
+	OldChunkProc *proc;  //! Pointer to function that is called with OC_CHUNK
+} OldChunks;
 
-typedef struct {
-	int32 cost[13];
-} GCC_PACK OldPlayerExpenses;
-assert_compile(sizeof(OldPlayerExpenses) == 0x34);
+/* OldChunk-Type */
+enum {
+	OC_END       = 0,
+	OC_NULL      = 1 << 0,
+	OC_CHUNK     = 1 << 1,
+	OC_ASSERT    = 1 << 2,
 
-typedef struct {
-	int32 income;
-	int32 expenses;
-	uint32 delivered_cargo;
-	uint32 performance_history;
-	uint32 company_value;
-} GCC_PACK OldPlayerEconomy;
-assert_compile(sizeof(OldPlayerEconomy) == 0x14);
+	OC_VAR_I8    = 1 << 9,
+	OC_VAR_U8    = 1 << 10,
+	OC_VAR_I16   = 1 << 11,
+	OC_VAR_U16   = 1 << 12,
+	OC_VAR_I32   = 1 << 13,
+	OC_VAR_U32   = 1 << 14,
+	OC_VAR_I64   = 1 << 15,
 
-typedef struct {
-	uint16 spec_tile;
-	uint16 use_tile;
-	byte rand_rng;
-	byte cur_rule;
-	byte unk6;
-	byte unk7;
-	byte buildcmd_a;
-	byte buildcmd_b;
-	byte direction;
-	byte cargo;
-	byte unused[8];
-} GCC_PACK OldAiBuildRec;
-assert_compile(sizeof(OldAiBuildRec) == 0x14);
+	OC_FILE_I8   = 1 << 17,
+	OC_FILE_U8   = 1 << 18,
+	OC_FILE_I16  = 1 << 19,
+	OC_FILE_U16  = 1 << 20,
+	OC_FILE_I32  = 1 << 21,
+	OC_FILE_U32  = 1 << 22,
 
-typedef struct {
-	uint16 tile;
-	byte data;
-} GCC_PACK OldAiBannedTile;
-assert_compile(sizeof(OldAiBannedTile) == 3);
+	OC_INT8      = OC_VAR_I8   | OC_FILE_I8,
+	OC_UINT8     = OC_VAR_U8   | OC_FILE_U8,
+	OC_INT16     = OC_VAR_I16  | OC_FILE_I16,
+	OC_UINT16    = OC_VAR_U16  | OC_FILE_U16,
+	OC_INT32     = OC_VAR_I32  | OC_FILE_I32,
+	OC_UINT32    = OC_VAR_U32  | OC_FILE_U32,
 
-typedef struct {
-	uint16 name_1;
-	uint32 name_2;
-	uint32 face;
-	uint16 pres_name_1;
-	uint32 pres_name_2;
-	uint32 money;
-	uint32 loan;
-	byte color;
-	byte money_fract;
-	byte quarters_of_bankrupcy;
-	byte bankrupt_asked;
-	uint32 bankrupt_value;
-	uint16 bankrupt_timeout;
-	uint32 cargo_types;
-	OldPlayerExpenses expenses[3];
-	OldPlayerEconomy economy[24 + 1];
-	uint16 inaugurated_date;
-	uint16 last_build_coordinate;
-	byte num_valid_stat_ent;
-	byte ai_state;
-	byte unused;
-	byte ai_state_mode;
-	uint16 ai_state_counter;
-	uint16 ai_timeout_counter;
-	OldAiBuildRec ai_src, ai_dst, ai_mid1, ai_mid2;
-	byte unused_2[20];
-	byte ai_cargo_type;
-	byte ai_num_wagons;
-	byte ai_build_kind;
-	byte ai_num_build_rec;
-	byte ai_num_loco_to_build;
-	byte ai_num_want_fullload;
-	byte unused_3[14];
-	uint16 ai_loco_id; // NOT USED
-	uint16 ai_wagonlist[9];
-	byte ai_order_list_blocks[20];
-	uint16 ai_start_tile_a;
-	uint16 ai_start_tile_b;
-	uint16 ai_cur_tile_a;
-	uint16 ai_cur_tile_b;
-	byte ai_start_dir_a;
-	byte ai_start_dir_b;
-	byte ai_cur_dir_a;
-	byte ai_cur_dir_b;
-	byte ai_banned_tile_count;
-	OldAiBannedTile banned_tiles[16];
-	byte ai_railtype_to_use;
-	byte ai_route_type_mask;
-	byte block_preview;
-	byte ai_tick;
-	byte max_railtype;
-	uint16 location_of_house;
-	byte share_owners[4];
-	uint32 unk3AA;
-	uint32 unk3AE;
-} GCC_PACK OldPlayer;
-assert_compile(sizeof(OldPlayer) == 0x3B2);
+	OC_TILE      = OC_VAR_U32  | OC_FILE_U16
+};
+/* If it fails, check lines above.. */
+assert_compile(sizeof(TileIndex) == 4);
 
-typedef struct {
-	byte track;
-	byte force_proceed;
-	uint16 crash_anim_pos;
-	byte railtype;
-} GCC_PACK OldVehicleRailUnion;
-assert_compile(sizeof(OldVehicleRailUnion) == 5);
+static LoadgameState _ls;
+static uint32 _bump_assert_value;
+static bool   _read_ttdpatch_flags;
 
-typedef struct {
-	byte unk0;
-	byte targetairport;
-	uint16 crashed_counter;
-	byte state;
-} GCC_PACK OldVehicleAirUnion;
-assert_compile(sizeof(OldVehicleAirUnion) == 5);
-
-typedef struct {
-	byte state;
-	byte frame;
-	uint16 unk2;
-	byte overtaking;
-	byte overtaking_ctr;
-	uint16 crashed_ctr;
-	byte reverse_ctr;
-} GCC_PACK OldVehicleRoadUnion;
-assert_compile(sizeof(OldVehicleRoadUnion) == 9);
-
-typedef struct {
-	uint16 unk0;
-	byte unk2;
-} GCC_PACK OldVehicleSpecialUnion;
-assert_compile(sizeof(OldVehicleSpecialUnion) == 3);
-
-typedef struct {
-	uint16 image_override;
-	uint16 unk2;
-} GCC_PACK OldVehicleDisasterUnion;
-assert_compile(sizeof(OldVehicleDisasterUnion) == 4);
-
-typedef struct {
-	byte state;
-} GCC_PACK OldVehicleShipUnion;
-assert_compile(sizeof(OldVehicleShipUnion) == 1);
-
-typedef union {
-	OldVehicleRailUnion rail;
-	OldVehicleAirUnion air;
-	OldVehicleRoadUnion road;
-	OldVehicleSpecialUnion special;
-	OldVehicleDisasterUnion disaster;
-	OldVehicleShipUnion ship;
-	byte pad[10];
-} GCC_PACK OldVehicleUnion;
-assert_compile(sizeof(OldVehicleUnion) == 10);
-
-typedef struct {
-	byte type;
-	byte subtype;
-	uint16 next_hash; // NOLOAD, calculated automatically.
-	uint16 index;     // NOLOAD, calculated automatically.
-	uint32 schedule_ptr;
-	byte next_order, next_order_param;
-	byte num_orders;
-	byte cur_order_index;
-	uint16 dest_tile;
-	uint16 load_unload_time_rem;
-	uint16 date_of_last_service;
-	uint16 service_interval;
-	byte last_station_visited;
-	byte tick_counter;
-	uint16 max_speed;
-	uint16 x_pos, y_pos;
-	byte z_pos;
-	byte direction;
-	byte x_offs, y_offs;
-	byte sprite_width, sprite_height, z_height;
-	byte owner;
-	uint16 tile;
-	uint16 cur_image;
-
-	int16 left_coord, right_coord, top_coord, bottom_coord; // NOLOAD, calculated automatically.
-	uint16 vehstatus;
-	uint16 cur_speed;
-	byte subspeed;
-	byte acceleration;
-	byte progress;
-	byte cargo_type;
-	uint16 capacity;
-	uint16 number_of_pieces;
-	byte source_of_pieces;
-	byte days_in_transit;
-	uint16 age_in_days, max_age_in_days;
-	byte build_year;
-	byte unitnumber;
-	uint16 engine_type;
-	byte spritenum;
-	byte day_counter;
-	byte breakdowns_since_last_service;
-	byte breakdown_ctr, breakdown_delay, breakdown_chance;
-	uint16 reliability, reliability_spd_dec;
-	uint32 profit_this_year, profit_last_year;
-	uint16 next_in_chain;
-	uint32 value;
-	uint16 string_id;
-	OldVehicleUnion u;
-	byte unused[20];
-} GCC_PACK OldVehicle;
-assert_compile(sizeof(OldVehicle) == 0x80);
-
-typedef struct {
-	byte name[32];
-} GCC_PACK OldName;
-
-typedef struct {
-	uint16 text;
-	int16 x,y,z;
-	byte namewidth_1, namewidth_2;
-	int16 sign_left, sign_top;
-} GCC_PACK OldSign;
-assert_compile(sizeof(OldSign) == 0xE);
-
-typedef struct {
-	uint16 player_avail;
-	uint16 intro_date;
-	uint16 age;
-	uint16 reliability, reliability_spd_dec, reliability_start, reliability_max, reliability_final;
-	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
-	byte lifelength;
-	byte flags;
-	byte preview_player;
-	byte preview_wait;
-	byte railtype;
-	byte unk1B;
-} GCC_PACK OldEngine;
-assert_compile(sizeof(OldEngine) == 0x1C);
-
-typedef struct {
-	byte cargo_type;
-	byte age;
-	byte from;
-	byte to;
-} GCC_PACK OldSubsidy;
-assert_compile(sizeof(OldSubsidy) == 4);
-
-typedef struct {
-	uint16 max_no_competitors;
-	uint16 competitor_start_time;
-	uint16 number_towns;
-	uint16 number_industries;
-	uint16 max_loan;
-	uint16 initial_interest;
-	uint16 vehicle_costs;
-	uint16 competitor_speed;
-	uint16 competitor_intelligence;
-	uint16 vehicle_breakdowns;
-	uint16 subsidy_multiplier;
-	uint16 construction_cost;
-	uint16 terrain_type;
-	uint16 quantity_sea_lakes;
-	uint16 economy;
-	uint16 line_reverse_mode;
-	uint16 disasters;
-} GCC_PACK OldGameSettings;
-assert_compile(sizeof(OldGameSettings) == 0x22);
-
-typedef struct {
-	uint16 date;
-	uint16 date_fract;
-
-	OldTextEffect te_list[30]; // NOLOAD: not so important.
-	uint32 seed_1, seed_2;
-
-	OldTown town_list[70];
-	uint16 order_list[5000];
-
-	uint16 animated_tile_list[256];
-	uint32 ptr_to_next_order;
-	OldDepot depots[255];
-
-	uint32 cur_town_ptr;
-	uint16 timer_counter;
-	uint16 land_code; // NOLOAD: never needed in game
-	uint16 age_cargo_skip_counter;
-	uint16 tick_counter;
-	uint16 cur_tileloop_tile;
-
-	OldPrice prices[49];
-	OldPaymentRate cargo_payment_rates[12];
-
-	byte map_owner[256*256];
-	byte map2[256*256];
-	uint16 map3[256*256];
-	byte map_extra[256*256/4];
-
-	OldStation stations[250];
-	OldIndustry industries[90];
-	OldPlayer players[8];
-	OldVehicle vehicles[850];
-	OldName names[500];
-
-	uint16 vehicle_position_hash[0x1000]; // NOLOAD, calculated automatically.
-
-	OldSign signs[40];
-	OldEngine engines[256];
-
-	uint16 vehicle_id_ctr_day;
-	OldSubsidy subsidies[8];
-
-	uint16 next_competitor_start;
-
-	uint16 saved_main_scrollpos_x, saved_main_scrollpos_y, saved_main_scrollpos_zoom;
-	uint32 maximum_loan, maximum_loan_unround;
-	uint16 economy_fluct;
-	uint16 disaster_delay;
-
-	//NOLOAD. These are calculated from InitializeLandscapeVariables
-	uint16 cargo_names_s[12], cargo_names_p[12], cargo_names_long_s[12], cargo_names_long_p[12], cargo_names_short[12];
-	uint16 cargo_sprites[12];
-
-	uint16 engine_name_strings[256];
-
-	//NOLOAD. These are calculated from InitializeLandscapeVariables
-	uint16 railveh_by_cargo_1[12], railveh_by_cargo_2[12], railveh_by_cargo_3[12];
-	uint16 roadveh_by_cargo_start[12];
-	byte roadveh_by_cargo_count[12];
-	uint16 ship_of_type_start[12];
-	byte ship_of_type_count[12];
-
-	byte human_player_1, human_player_2; //NOLOAD. Calculated automatically.
-	byte station_tick_ctr;
-	byte currency;
-	byte use_kilometers;
-	byte cur_player_tick_index;
-	byte cur_year, cur_month;		//NOLOAD. Calculated automatically.
-	byte player_colors[8];			//NOLOAD. Calculated automatically
-
-	byte inflation_amount;
-	byte inflation_amount_payment_rates;
-	byte interest_rate;
-
-	byte avail_aircraft;
-	byte road_side;
-	byte town_name_type;
-	OldGameSettings game_diff;
-	byte difficulty_level;
-	byte landscape_type;
-	byte trees_tick_ctr;
-	byte vehicle_design_names;
-	byte snow_line_height;
-
-	byte new_industry_randtable[32]; // NOLOAD. Not needed due to different code design.
-
-	//NOLOAD. Initialized by InitializeLandscapeVariables
-	byte cargo_weights[12];
-	byte transit_days_table_1[12];
-	byte transit_days_table_2[12];
-
-	byte map_type_and_height[256*256];
-	byte map5[256*256];
-} GCC_PACK OldMain;
-assert_compile(sizeof(OldMain) == 487801 + 256*256*2);
-
-#if defined(_MSC_VER) || defined(__WATCOMC__)
-#pragma pack(pop)
-#endif
-
-#define REMAP_TOWN_IDX(x) (x - (0x0459154 - 0x0458EF0)) / sizeof(OldTown)
-#define REMAP_TOWN_PTR(x) GetTown( REMAP_TOWN_IDX(x) )
-
-#define REMAP_ORDER_IDX(x) (x - (0x045AB08 - 0x0458EF0)) / sizeof(uint16)
-
-typedef struct LoadSavegameState {
-	int8 mode;
-	byte rep_char;
-
-	size_t count;
-	size_t buffer_count;
-	FILE *fin;
-
-	byte *buffer_cur;
-
-	byte buffer[4096];
-
-} LoadSavegameState;
-
-static LoadSavegameState *_cur_state;
-
-static byte GetSavegameByteFromBuffer(void)
+/**
+ *
+ * Reads a byte from a file (do not call yourself, use ReadByte())
+ *
+ */
+static byte ReadByteFromFile(LoadgameState *ls)
 {
-	LoadSavegameState *lss = _cur_state;
+	/* To avoid slow reads, we read BUFFER_SIZE of bytes per time
+	and just return a byte per time */
+	if (ls->buffer_cur >= ls->buffer_count) {
+		/* Read some new bytes from the file */
+		int count = fread(ls->buffer, 1, BUFFER_SIZE, ls->file);
 
-	if (lss->buffer_count == 0) {
-		int count = fread(lss->buffer, 1, 4096, lss->fin) ;
-/*		if (count == 0) {
-			memset(lss->buffer, 0, sizeof(lss->buffer));
-			count = 4096;
-		}*/
-		assert(count != 0);
-		lss->buffer_count = count;
-		lss->buffer_cur = lss->buffer;
+		/* We tried to read, but there is nothing in the file anymore.. */
+		if (count == 0) {
+			DEBUG(oldloader, 1)("[OldLoader] Read past end of file, loading failed");
+			ls->failed = true;
+		}
+
+		ls->buffer_count = count;
+		ls->buffer_cur   = 0;
 	}
 
-	lss->buffer_count--;
-	return *lss->buffer_cur++;
+	return ls->buffer[ls->buffer_cur++];
 }
 
-static byte DecodeSavegameByte(void)
+/**
+ *
+ * Reads a byte from the buffer and decompress if needed
+ *
+ */
+static byte ReadByte(LoadgameState *ls)
 {
-	LoadSavegameState *lss = _cur_state;
-	int8 x;
+	/* Old savegames have a nice compression algorithm (RLE)
+	which means that we have a chunk, which starts with a length
+	byte. If that byte is negative, we have to repeat the next byte
+	that many times (+1). Else, we need to read that amount of bytes.
+	Works pretty good if you have many zero's behind eachother */
+	int8 new_byte;
 
-	if (lss->mode < 0) {
-		if (lss->count != 0) {
-			lss->count--;
-			return lss->rep_char;
-		}
-	} else if (lss->mode > 0) {
-		if (lss->count != 0) {
-			lss->count--;
-			return GetSavegameByteFromBuffer();
-		}
+	/* Check if we are reading a chunk */
+	if (ls->chunk_size != 0) {
+		ls->total_read++;
+		ls->chunk_size--;
+
+		/* If we are decoding, return the decode_char */
+		if (ls->decoding)
+			return ls->decode_char;
+
+		/* Else return byte from file */
+		return ReadByteFromFile(ls);
 	}
 
-	x = GetSavegameByteFromBuffer();
-	if (x >= 0) {
-		lss->count = x;
-		lss->mode = 1;
-		return GetSavegameByteFromBuffer();
+	/* Read new chunk */
+	new_byte = ReadByteFromFile(ls);
+
+	if (new_byte < 0) {
+		/* Repeat next char for new_byte times */
+		ls->decoding    = true;
+		ls->decode_char = ReadByteFromFile(ls);
+		ls->chunk_size  = -new_byte + 1;
 	} else {
-		lss->mode = -1;
-		lss->count = -x;
-		lss->rep_char = GetSavegameByteFromBuffer();
-		return lss->rep_char;
+		ls->decoding    = false;
+		ls->chunk_size  = new_byte + 1;
 	}
+
+	/* Call this function again to return a byte */
+	return ReadByte(ls);
 }
 
-static void LoadSavegameBytes(void *p, size_t count)
+/**
+ *
+ * Loads a chunk from the old savegame
+ *
+ */
+static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
-	byte *ptr = (byte*)p;
-	assert(count > 0);
-	do {
-		*ptr++ = DecodeSavegameByte();
-	} while (--count);
+	const OldChunks *chunk = chunks;
+	byte *ptr;
+	uint i;
+
+	while (chunk->type != OC_END) {
+		ptr = chunk->ptr;
+
+		for (i = 0; i < chunk->amount; i++) {
+			if (ls->failed)
+				return false;
+
+			/* Handle simple types */
+			if ((chunk->type & 0xFF) != 0) {
+				switch (chunk->type & 0xFF) {
+					case OC_NULL:
+						/* Just read the byte and forget about it */
+						ReadByte(ls);
+						break;
+
+					case OC_CHUNK:
+						/* Call function, with 'i' as parameter to tell which item we
+						are going to read */
+						if (!chunk->proc(ls, i))
+							return false;
+						break;
+
+					case OC_ASSERT:
+						DEBUG(oldloader, 4)("[OldLoader] Assert point: %x / %x", ls->total_read, chunk->offset + _bump_assert_value);
+						if (ls->total_read != chunk->offset + _bump_assert_value)
+							ls->failed = true;
+
+						break;
+
+				}
+			} else {
+				uint32 res = 0;
+
+				/* Reading from the file: bit 16 to 23 have the FILE */
+				switch (((chunk->type >> 16) & 0xFF) << 16) {
+					case OC_FILE_I8:
+						res = ReadByte(ls);
+						res = (int8)res;
+						break;
+
+					case OC_FILE_U8:
+						res = ReadByte(ls);
+						break;
+
+					case OC_FILE_U16:
+						res =  ReadByte(ls);
+						res += ReadByte(ls) << 8;
+						break;
+
+					case OC_FILE_I16:
+						res =  ReadByte(ls);
+						res += ReadByte(ls) << 8;
+						res = (int16)res;
+						break;
+
+					case OC_FILE_U32:
+						res =  ReadByte(ls);
+						res += ReadByte(ls) << 8;
+						res += ReadByte(ls) << 16;
+						res += ReadByte(ls) << 24;
+						break;
+
+					case OC_FILE_I32:
+						res =  ReadByte(ls);
+						res += ReadByte(ls) << 8;
+						res += ReadByte(ls) << 16;
+						res += ReadByte(ls) << 24;
+						res = (int32)res;
+						break;
+				}
+
+				/* Sanity check */
+				assert(base != NULL || chunk->ptr != NULL);
+
+				/* Writing to the var: bit 8 till 15 have the VAR */
+				switch (((chunk->type >> 8) & 0xFF) << 8) {
+					case OC_VAR_I8:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(int8 *)ptr = res & 0xFF;
+							ptr++;
+						} else
+							*(int8 *)(base + chunk->offset) = res & 0xFF;
+							break;
+
+					case OC_VAR_U8:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(uint8 *)ptr = res & 0xFF;
+							ptr++;
+						} else
+							*(uint8 *)(base + chunk->offset) = res & 0xFF;
+							break;
+
+					case OC_VAR_U16:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(uint16 *)ptr = res & 0xFFFF;
+							ptr += 2;
+						} else
+							*(uint16 *)(base + chunk->offset) = res & 0xFFFF;
+							break;
+
+					case OC_VAR_I16:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(int16 *)ptr = res & 0xFFFF;
+							ptr += 2;
+						} else
+							*(int16 *)(base + chunk->offset) = res & 0xFFFF;
+							break;
+
+					case OC_VAR_U32:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(uint32 *)ptr = res;
+							ptr += 4;
+						} else
+							*(uint32 *)(base + chunk->offset) = res;
+							break;
+
+					case OC_VAR_I32:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(int32 *)ptr = res;
+							ptr += 4;
+						} else
+							*(int32 *)(base + chunk->offset) = res;
+							break;
+
+					case OC_VAR_I64:
+						/* Write the data */
+						if (chunk->ptr != NULL) {
+							*(int64 *)ptr = res;
+							ptr += 8;
+						} else
+							*(int64 *)(base + chunk->offset) = res;
+							break;
+				}
+			}
+		}
+
+		chunk++;
+	}
+
+	return true;
 }
+
+/**
+ *
+ * Initialize some data before reading
+ *
+ */
+static void InitLoading(LoadgameState *ls)
+{
+	ls->chunk_size   = 0;
+	ls->total_read   = 0;
+	ls->failed       = false;
+
+	ls->decoding     = false;
+	ls->decode_char  = 0;
+
+	ls->buffer_cur   = 0;
+	ls->buffer_count = 0;
+	memset(ls->buffer, 0, BUFFER_SIZE);
+
+	_bump_assert_value = 0;
+
+	_read_ttdpatch_flags = false;
+}
+
+
+/*
+ * Begin -- Stuff to fix the savegames to be OpenTTD compatible
+ */
 
 extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
 
-static void FixTown(OldTown *o, int num, byte town_name_type)
+static void FixOldTowns(void)
 {
-	Town *t;
-	uint i = 0;
+	Town *town;
 
-	do {
-		if (o->xy == 0)
+	/* Convert town-names if needed */
+	FOR_ALL_TOWNS(town) {
+		if (town->xy == 0)
 			continue;
 
-		if (!AddBlockIfNeeded(&_town_pool, i))
-			error("Towns: failed loading savegame: too many towns");
-
-		t = GetTown(i);
-
-		t->xy = o->xy;
-		t->population = o->population;
-		t->townnametype = o->townnametype;
-		t->townnameparts = o->townnameparts;
-		// Random TownNames
-		if (IS_INT_INSIDE(o->townnametype, 0x20C1, 0x20C2 + 1)) {
-			t->townnametype = SPECSTR_TOWNNAME_ENGLISH + town_name_type;
-			if (o->xy)
-				t->townnameparts = GetOldTownName(o->townnameparts, town_name_type);
+		if (IS_INT_INSIDE(town->townnametype, 0x20C1, 0x20C3)) {
+			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _opt.town_name;
+			town->townnameparts = GetOldTownName(town->townnameparts, _opt.town_name);
 		}
-
-		t->grow_counter = o->grow_counter;
-		t->flags12 = o->flags12;
-		memcpy(t->ratings,o->ratings,sizeof(t->ratings));
-		t->have_ratings = o->have_ratings;
-		t->statues = o->statues;
-		t->num_houses = o->num_houses;
-		t->time_until_rebuild = o->time_until_rebuild;
-		t->growth_rate = o->growth_rate;
-		t->new_max_pass = o->new_max_pass;
-		t->new_max_mail = o->new_max_mail;
-		t->new_act_pass = o->new_act_pass;
-		t->new_act_mail = o->new_act_mail;
-		t->max_pass = o->max_pass;
-		t->max_mail = o->max_mail;
-		t->act_pass = o->act_pass;
-		t->act_mail = o->act_mail;
-		t->pct_pass_transported = o->pct_pass_transported;
-		t->pct_mail_transported = o->pct_mail_transported;
-		t->new_act_food = o->new_act_food;
-		t->new_act_water = o->new_act_water;
-		t->act_food = o->act_food;
-		t->act_water = o->act_water;
-		t->road_build_months = o->road_build_months;
-		t->fund_buildings_months = o->fund_buildings_months;
-	} while (i++,o++,--num);
-}
-
-static void FixIndustry(OldIndustry *o, int num)
-{
-	Industry *i;
-	uint j = 0;
-
-	do {
-		if (o->xy == 0)
-			continue;
-
-		if (!AddBlockIfNeeded(&_industry_pool, j))
-			error("Industries: failed loading savegame: too many industries");
-
-		i = GetIndustry(j);
-
-		i->xy = o->xy;
-		i->town = REMAP_TOWN_PTR(o->town);
-		i->width = o->width;
-		i->height = o->height;
-		i->produced_cargo[0] = o->produced_cargo[0];
-		i->produced_cargo[1] = o->produced_cargo[1];
-		i->cargo_waiting[0] = o->cargo_waiting[0];
-		i->cargo_waiting[1] = o->cargo_waiting[1];
-		i->production_rate[0] = o->production_rate[0];
-		i->production_rate[1] = o->production_rate[1];
-		i->accepts_cargo[0] = o->accepts_cargo[0];
-		i->accepts_cargo[1] = o->accepts_cargo[1];
-		i->accepts_cargo[2] = o->accepts_cargo[2];
-		i->prod_level = o->prod_level;
-		i->last_mo_production[0] = o->last_mo_production[0];
-		i->last_mo_production[1] = o->last_mo_production[1];
-
-		i->last_mo_transported[0] = o->last_mo_transported[0];
-		i->last_mo_transported[1] = o->last_mo_transported[1];
-		i->last_mo_transported[2] = o->last_mo_transported[2];
-
-		i->pct_transported[0] = o->pct_transported[0];
-		i->pct_transported[1] = o->pct_transported[1];
-
-		i->total_production[0] = o->total_production[0];
-		i->total_production[1] = o->total_production[1];
-
-		i->total_transported[0] = i->total_transported[0];
-		i->total_transported[1] = i->total_transported[1];
-
-		i->type = o->type;
-		i->owner = o->owner;
-		i->color_map = o->color_map;
-		i->last_prod_year = o->last_prod_year;
-		i->counter = o->counter;
-		i->was_cargo_delivered = o->was_cargo_delivered;
-	} while (j++,o++,--num);
-}
-
-static void FixGoodsEntry(GoodsEntry *g, OldGoodsEntry *o, int num)
-{
-	do {
-		g->waiting_acceptance = o->waiting_acceptance;
-		g->days_since_pickup = o->days_since_pickup;
-		g->rating = o->rating;
-		g->enroute_from = o->enroute_from;
-		g->enroute_time = o->enroute_time;
-		g->last_speed = o->last_speed;
-		g->last_age = o->last_age;
-	} while (g++,o++,--num);
-}
-
-static void FixStation(OldStation *o, int num)
-{
-	Station *s;
-	uint i = 0;
-
-	do {
-		if (o->xy == 0)
-			continue;
-
-		if (!AddBlockIfNeeded(&_station_pool, i))
-			error("Stations: failed loading savegame: too many stations");
-
-		s = GetStation(i);
-
-		s->xy = o->xy;
-		s->town = REMAP_TOWN_PTR(o->town);
-
-		s->bus_stops = NULL;
-		s->truck_stops = NULL;
-
-		if (o->bus_tile != 0) {
-			s->bus_stops = AllocateRoadStop();
-			s->bus_stops->xy = o->bus_tile;
-			s->bus_stops->used = true;
-			s->bus_stops->status = 3;
-			s->bus_stops->station = s->index;
-			s->bus_stops->next = NULL;
-			s->bus_stops->prev = NULL;
-			s->bus_stops->slot[0] = s->bus_stops->slot[1] = INVALID_SLOT;
-		}
-
-		if (o->lorry_tile != 0) {
-			s->truck_stops = AllocateRoadStop();
-			s->truck_stops->xy = o->lorry_tile;
-			s->truck_stops->used = true;
-			s->truck_stops->status = 3;
-			s->truck_stops->station = s->index;
-			s->truck_stops->next = NULL;
-			s->truck_stops->prev = NULL;
-			s->truck_stops->slot[0] = s->truck_stops->slot[1] = INVALID_SLOT;
-		}
-
-		s->train_tile = o->train_tile;
-		s->airport_tile = o->airport_tile;
-		s->dock_tile = o->dock_tile;
-
-		if (o->train_tile) {
-			int w = (o->platforms >> 3) & 0x7;
-			int h = (o->platforms & 0x7);
-			if (_map5[o->train_tile]&1) intswap(w,h);
-			s->trainst_w = w;
-			s->trainst_h = h;
-		}
-
-		s->string_id = RemapOldStringID(o->string_id);
-		s->had_vehicle_of_type = o->had_vehicle_of_type;
-		FixGoodsEntry(s->goods, o->goods, lengthof(o->goods));
-		s->time_since_load = o->time_since_load;
-		s->time_since_unload = o->time_since_unload;
-		s->delete_ctr = o->delete_ctr;
-		s->owner = o->owner;
-		s->facilities = o->facilities;
-		s->airport_type = o->airport_type;
-		if (s->truck_stops != NULL)
-			s->truck_stops->status = o->truck_stop_status;
-		if (s->bus_stops != NULL)
-			s->bus_stops->status = o->bus_stop_status;
-		s->blocked_months_obsolete = o->blocked_months_obsolete;
-		s->airport_flags = o->airport_flags;
-		s->last_vehicle = o->last_vehicle;
-	} while (i++,o++,--num);
-}
-
-static void FixDepot(OldDepot *o, int num)
-{
-	Depot *depot;
-	uint i = 0;
-
-	do {
-		if (o->xy == 0)
-			continue;
-
-		if (!AddBlockIfNeeded(&_depot_pool, i))
-			error("Depots: failed loading savegame: too many depots");
-
-		depot = GetDepot(i);
-
-		depot->town_index = REMAP_TOWN_IDX(o->town);
-		depot->xy = o->xy;
-	} while (i++,o++,--num);
-}
-
-static void FixOrder(uint16 *o, int num)
-{
-	Order *order;
-	int i;
-
-	for (i = 0; i < num; ++i) {
-		if (!AddBlockIfNeeded(&_order_pool, i))
-			error("Orders: failed loading savegame: too many orders");
-
-		order = GetOrder(i);
-		AssignOrder(order, UnpackOldOrder(*o));
-		/* Recover the next list */
-		if (i > 0 && order->type != OT_NOTHING)
-			GetOrder(i - 1)->next = order;
-
-		o++;
 	}
 }
 
-static void FixVehicle(OldVehicle *o, int num)
+static void FixOldStations(void)
 {
-	Vehicle *n;
-	uint i = 0;
+	Station *st;
 
-	do {
-		if (o->type == 0)
-			continue;
-
-		if (!AddBlockIfNeeded(&_vehicle_pool, i))
-			error("Vehicles: failed loading savegame: too many vehicles");
-
-		n = GetVehicle(i);
-
-		n->type = o->type;
-		n->subtype = o->subtype;
-
-		if (o->schedule_ptr == 0xFFFFFFFF || o->schedule_ptr == 0) {
-			n->orders = NULL;
-		} else {
-			n->orders = GetOrder(REMAP_ORDER_IDX(o->schedule_ptr));
+	FOR_ALL_STATIONS(st) {
+		/* Check if we need to swap width and height for the station */
+		if (st->train_tile) {
+			if (_map5[st->train_tile] & 1) {
+				int w = st->trainst_w;
+				int h = st->trainst_h;
+				intswap(w, h);
+				st->trainst_w = w;
+				st->trainst_h = h;
+			}
 		}
 
-		n->current_order.type = o->next_order & 0x0f;
-		n->current_order.flags = o->next_order >> 4;
-		n->current_order.station = o->next_order_param;
-		n->num_orders = o->num_orders;
-		n->cur_order_index = o->cur_order_index;
-		n->dest_tile = o->dest_tile;
-		n->load_unload_time_rem = o->load_unload_time_rem;
-		n->date_of_last_service = o->date_of_last_service;
-		n->service_interval = o->service_interval;
-		n->last_station_visited = o->last_station_visited;
-		n->tick_counter = o->tick_counter;
-		n->max_speed = o->max_speed;
-		n->x_pos = o->x_pos;
-		n->y_pos = o->y_pos;
-		n->z_pos = o->z_pos;
-		n->direction = o->direction;
-		n->x_offs = o->x_offs;
-		n->y_offs = o->y_offs;
-		n->sprite_width = o->sprite_width;
-		n->sprite_height = o->sprite_height;
-		n->z_height = o->z_height;
-		n->owner = o->owner;
-		n->tile = o->tile;
-		n->cur_image = o->cur_image;
-		if (o->cur_image >= 0x2000) // TTDPatch maps sprites from 0x2000 up.
-			n->cur_image -= 0x2000 - _custom_sprites_base;
-
-		n->vehstatus = o->vehstatus;
-		n->cur_speed = o->cur_speed;
-		n->subspeed = o->subspeed;
-		n->acceleration = o->acceleration;
-		n->progress = o->progress;
-		n->cargo_type = o->cargo_type;
-		n->cargo_cap = o->capacity;
-		n->cargo_count = o->number_of_pieces;
-		n->cargo_source = o->source_of_pieces;
-		n->cargo_days = o->days_in_transit;
-		n->age = o->age_in_days;
-		n->max_age = o->max_age_in_days;
-		n->build_year = o->build_year;
-		n->unitnumber = o->unitnumber;
-		n->engine_type = o->engine_type;
-		switch (o->spritenum) {
-			case 0xfd: n->spritenum = 0xfd; break;
-			case 0xff: n->spritenum = 0xfe; break;
-			default:   n->spritenum = o->spritenum >> 1; break;
+		/* Check if there is a bus or truck station, and convert to new format */
+		if (st->bus_tile_obsolete != 0) {
+			st->bus_stops = AllocateRoadStop();
+			st->bus_stops->xy = st->bus_tile_obsolete;
+			st->bus_stops->used = true;
+			st->bus_stops->status = 3;
+			st->bus_stops->station = st->index;
+			st->bus_stops->next = NULL;
+			st->bus_stops->prev = NULL;
+			st->bus_stops->slot[0] = st->bus_stops->slot[1] = INVALID_SLOT;
 		}
-		n->day_counter = o->day_counter;
-		n->breakdowns_since_last_service = o->breakdowns_since_last_service;
-		n->breakdown_ctr = o->breakdown_ctr;
-		n->breakdown_delay = o->breakdown_delay;
-		n->breakdown_chance = o->breakdown_chance;
-		n->reliability = o->reliability;
-		n->reliability_spd_dec = o->reliability_spd_dec;
-		n->profit_this_year = o->profit_this_year;
-		n->profit_last_year = o->profit_last_year;
-		n->next = (o->next_in_chain == 0xFFFF) ? NULL : GetVehicle(o->next_in_chain);
-		n->value = o->value;
-		n->string_id = RemapOldStringID(o->string_id);
 
-		switch(o->type) {
-		case VEH_Train:
-			n->u.rail.track = o->u.rail.track;
-			n->u.rail.force_proceed = o->u.rail.force_proceed;
-			n->u.rail.crash_anim_pos = o->u.rail.crash_anim_pos;
-			n->u.rail.railtype = o->u.rail.railtype;
-			break;
-
-		case VEH_Road:
-			n->u.road.state = o->u.road.state;
-			n->u.road.frame = o->u.road.frame;
-			n->u.road.unk2 = o->u.road.unk2;
-			n->u.road.overtaking = o->u.road.overtaking;
-			n->u.road.overtaking_ctr = o->u.road.overtaking_ctr;
-			n->u.road.crashed_ctr = o->u.road.crashed_ctr;
-			n->u.road.reverse_ctr = o->u.road.reverse_ctr;
-			break;
-		case VEH_Ship:
-			n->u.ship.state = o->u.ship.state;
-			break;
-		case VEH_Aircraft:
-			n->u.air.crashed_counter = o->u.air.crashed_counter;
-			n->u.air.pos = o->u.air.unk0;
-			n->u.air.targetairport = o->u.air.targetairport;
-			n->u.air.state = o->u.air.state;
-			break;
-		case VEH_Special:
-			n->u.special.unk0 = o->u.special.unk0;
-			n->u.special.unk2 = o->u.special.unk2;
-			n->subtype = o->subtype >> 1;
-			break;
-		case VEH_Disaster:
-			n->u.disaster.image_override = o->u.disaster.image_override;
-			n->u.disaster.unk2 = o->u.disaster.unk2;
-			break;
+		if (st->lorry_tile_obsolete != 0) {
+			st->truck_stops = AllocateRoadStop();
+			st->truck_stops->xy = st->lorry_tile_obsolete;
+			st->truck_stops->used = true;
+			st->truck_stops->status = 3;
+			st->truck_stops->station = st->index;
+			st->truck_stops->next = NULL;
+			st->truck_stops->prev = NULL;
+			st->truck_stops->slot[0] = st->truck_stops->slot[1] = INVALID_SLOT;
 		}
-	} while (i++,o++,--num);
+	}
+}
 
+static void FixOldVehicles(void)
+{
 	/* Check for shared orders, and link them correctly */
 	{
 		Vehicle *v;
@@ -961,654 +427,1198 @@ static void FixVehicle(OldVehicle *o, int num)
 			}
 		}
 	}
+
+	if (_vehicle_id_ctr_day > GetVehiclePoolSize())
+		_vehicle_id_ctr_day = 0;
 }
 
-static void FixSubsidy(Subsidy *n, OldSubsidy *o, int num)
-{
-	do {
-		n->age = o->age;
-		n->cargo_type = o->cargo_type;
-		n->from = o->from;
-		n->to = o->to;
-	} while (n++,o++,--num);
-}
+/*
+ * End -- Stuff to fix the savegames to be OpenTTD compatible
+ */
 
-static void FixEconomy(PlayerEconomyEntry *n, OldPlayerEconomy *o)
-{
-	n->company_value = o->company_value;
-	n->delivered_cargo = o->delivered_cargo;
-	n->income = -o->income;
-	n->expenses = -o->expenses;
-	n->performance_history = o->performance_history;
-}
 
-static void FixAiBuildRec(AiBuildRec *n, OldAiBuildRec *o)
-{
-	n->spec_tile = o->spec_tile;
-	n->use_tile = o->use_tile;
-	n->rand_rng = o->rand_rng;
-	n->cur_building_rule = o->cur_rule;
-	n->unk6 = o->unk6;
-	n->unk7 = o->unk7;
-	n->buildcmd_a = o->buildcmd_a;
-	n->buildcmd_b = o->buildcmd_b;
-	n->direction = o->direction;
-	n->cargo = o->cargo;
-}
+/* Help:
+ *  - OCL_SVAR: load 'type' to offset 'offset' in a struct of type 'base', which must also
+ *       be given via base in LoadChunk() as real pointer
+ *  - OCL_VAR: load 'type' to a global var
+ *  - OCL_END: every struct must end with this
+ *  - OCL_NULL: read 'amount' of bytes and send them to /dev/null or something
+ *  - OCL_CHUNK: load an other proc to load a part of the savegame, 'amount' times
+ *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
+ */
+#define OCL_SVAR(type, base, offset)         { type,          1, NULL,    offsetof(base, offset), NULL }
+#define OCL_VAR(type, amount, pointer)       { type,     amount, pointer, 0,                      NULL }
+#define OCL_END()                                   { OC_END,        0, NULL,    0,                      NULL }
+#define OCL_NULL(amount)                            { OC_NULL,  amount, NULL,    0,                      NULL }
+#define OCL_CHUNK(amount, proc)                     { OC_CHUNK, amount, NULL,    0,                      proc }
+#define OCL_ASSERT(size)                            { OC_ASSERT,     1, NULL, size,                      NULL }
 
-static void FixPlayer(Player *n, OldPlayer *o, int num, byte town_name_type)
-{
-	int i, j;
-	int x = 0;
+/* The savegames has some hard-coded pointers, because it always enters the same
+    piece of memory.. we don't.. so we need to remap ;)
+   Old Towns are 94 bytes big
+   Old Orders are 2 bytes big */
+#define REMAP_TOWN_IDX(x) ((x) - (0x0459154 - 0x0458EF0)) / 94
+#define REMAP_ORDER_IDX(x) ((x) - (0x045AB08 - 0x0458EF0)) / 2
 
-	do {
-		n->name_1 = RemapOldStringID(o->name_1);
-		n->name_2 = o->name_2;
-		/*	In every Old TTD(Patch) game Player1 (0) is human, and all others are AI
-		 *	(Except in .SV2 savegames, which were 2 player games, but we are not fixing
-		 *	that
-		 */
+extern TileIndex _animated_tile_list[256];
+extern byte _name_array[512][32];
+extern uint16 _custom_sprites_base;
 
-		if (x == 0) {
-			if (o->name_1 == 0) // if first player doesn't have a name, he is 'unnamed'
-				n->name_1 = STR_SV_UNNAMED;
-		} else {
-			n->is_ai = 1;
-		}
+static byte   _old_vehicle_multipler;
+static uint8  _old_map3[OLD_MAP_SIZE * 2];
+static bool   _new_ttdpatch_format;
+static uint32 _old_town_index;
+static uint16 _old_string_id;
+static uint16 _old_string_id_2;
 
-		if (o->name_1 != 0)
-			n->is_active = true;
-
-		n->face = o->face;
-		n->president_name_1 = o->pres_name_1;
-		n->president_name_2 = o->pres_name_2;
-
-		n->money64 = n->player_money = o->money;
-		n->current_loan = o->loan;
-
-		// Correct money for scenario loading.
-		// It's always 893288 pounds (and no loan), if not corrected
-		if(o->money==0xda168)
-			n->money64 = n->player_money = n->current_loan =100000;
-
-		n->player_color = o->color;
-		_player_colors[x] = o->color;
-		x++;
-
-		n->player_money_fraction = o->money_fract;
-		n->quarters_of_bankrupcy = o->quarters_of_bankrupcy;
-		n->bankrupt_asked = o->bankrupt_asked;
-		n->bankrupt_value = o->bankrupt_value;
-		n->bankrupt_timeout = o->bankrupt_timeout;
-		n->cargo_types = o->cargo_types;
-
-		for(i=0; i!=3; i++)
-			for(j=0; j!=13; j++)
-				n->yearly_expenses[i][j] = o->expenses[i].cost[j];
-
-		FixEconomy(&n->cur_economy, &o->economy[0]);
-		for(i=0; i!=24; i++) FixEconomy(&n->old_economy[i], &o->economy[i+1]);
-		n->inaugurated_year = o->inaugurated_date - MAX_YEAR_BEGIN_REAL;
-		n->last_build_coordinate = o->last_build_coordinate;
-		n->num_valid_stat_ent = o->num_valid_stat_ent;
-
-		/*	Not good, since AI doesn't have a vehicle assigned as
-		 *	in p->ai.cur_veh and thus will crash on certain actions.
-		 *	Best is to set state to AiStateVehLoop (2)
-		 *	n->ai.state = o->ai_state;
-		 */
-		n->ai.state = 2;
-		n->ai.state_mode = o->ai_state_mode;
-		n->ai.state_counter = o->ai_state_counter;
-		n->ai.timeout_counter = o->ai_timeout_counter;
-		n->ai.banned_tile_count = o->ai_banned_tile_count;
-		n->ai.railtype_to_use = o->ai_railtype_to_use;
-
-		FixAiBuildRec(&n->ai.src, &o->ai_src);
-		FixAiBuildRec(&n->ai.dst, &o->ai_dst);
-		FixAiBuildRec(&n->ai.mid1, &o->ai_mid1);
-		FixAiBuildRec(&n->ai.mid2, &o->ai_mid2);
-
-		n->ai.cargo_type = o->ai_cargo_type;
-		n->ai.num_wagons = o->ai_num_wagons;
-		n->ai.num_build_rec = o->ai_num_build_rec;
-		n->ai.num_loco_to_build = o->ai_num_loco_to_build;
-		n->ai.num_want_fullload = o->ai_num_want_fullload;
-
-		for(i=0; i!=9; i++) n->ai.wagon_list[i] = o->ai_wagonlist[i];
-		memcpy(n->ai.order_list_blocks, o->ai_order_list_blocks, 20);
-		n->ai.start_tile_a = o->ai_start_tile_a;
-		n->ai.start_tile_b = o->ai_start_tile_b;
-		n->ai.cur_tile_a = o->ai_cur_tile_a;
-		n->ai.cur_tile_b = o->ai_cur_tile_b;
-		n->ai.start_dir_a = o->ai_start_dir_a;
-		n->ai.start_dir_b = o->ai_start_dir_b;
-		n->ai.cur_dir_a = o->ai_cur_dir_a;
-		n->ai.cur_dir_b = o->ai_cur_dir_b;
-
-		for(i=0; i!=16; i++) {
-			n->ai.banned_tiles[i] = o->banned_tiles[i].tile;
-			n->ai.banned_val[i] = o->banned_tiles[i].data;
-		}
-
-		n->ai.build_kind = o->ai_build_kind;
-		n->ai.route_type_mask = o->ai_route_type_mask;
-		n->ai.tick = o->ai_tick;
-
-		n->block_preview = o->block_preview;
-		n->max_railtype = (o->max_railtype == 0) ? 1 : o->max_railtype;
-		n->location_of_house = o->location_of_house;
-		if (o->location_of_house == 0xFFFF) n->location_of_house = 0;
-
-		n->share_owners[0] = o->share_owners[0];
-		n->share_owners[1] = o->share_owners[1];
-		n->share_owners[2] = o->share_owners[2];
-		n->share_owners[3] = o->share_owners[3];
-
-		if (o->ai_state == 2) {
-			n->ai.cur_veh = NULL;
-		}
-	} while (n++,o++,--num);
-}
-
-static void FixName(OldName *o, int num)
+void ReadTTDPatchFlags(void)
 {
 	int i;
-	for(i=0; i!=num; i++) {
-		memcpy(_name_array[i], o[i].name, sizeof(o[i].name));
+
+	if (_read_ttdpatch_flags)
+		return;
+
+	_read_ttdpatch_flags = true;
+
+	/* TTDPatch misuses _old_map3 for flags.. read them! */
+	_old_vehicle_multipler = _old_map3[0];
+	/* Somehow.... there was an error in some savegames, so 0 becomes 1
+	and 1 becomes 2. The rest of the values are okay */
+	if (_old_vehicle_multipler < 2)
+		_old_vehicle_multipler++;
+
+	/* TTDPatch incraeses the Vehicle-part in the middle of the game,
+	so if the multipler is anything else but 1, the assert fails..
+	bump the assert value so it doesn't!
+	(1 multipler == 850 vehicles
+	1 vehicle   == 128 bytes */
+	_bump_assert_value = (_old_vehicle_multipler - 1) * 850 * 128;
+
+	_new_ttdpatch_format   = false;
+
+	if (_old_map3[0x1FFFA]     == 'T' && _old_map3[0x1FFFA + 1] == 'T' &&
+			 _old_map3[0x1FFFA + 2] == 'D' && _old_map3[0x1FFFA + 3] == 'p')
+		_new_ttdpatch_format = true;
+
+	/* Clean the misused places */
+	for (i = 0; i < 17; i++)
+		_old_map3[i] = 0;
+	for (i = 0x1FE00; i < 0x20000; i++)
+		_old_map3[i] = 0;
+
+	if (_new_ttdpatch_format)
+		DEBUG(oldloader, 1)("[OldLoader] Found TTDPatch game");
+
+	DEBUG(oldloader, 1)("[OldLoader] Vehicle-multipler is set to %d (%d vehicles)", _old_vehicle_multipler, _old_vehicle_multipler * 850);
+}
+
+static const OldChunks town_chunk[] = {
+	OCL_SVAR(   OC_TILE, Town, xy ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, population ),
+	OCL_SVAR( OC_UINT16, Town, townnametype ),
+	OCL_SVAR( OC_UINT32, Town, townnameparts ),
+	OCL_SVAR(  OC_UINT8, Town, grow_counter ),
+	OCL_NULL( 1 ),         // sort_index,        no longer in use
+	OCL_NULL( 4 ),         // sign-coordinates,  no longer in use
+	OCL_NULL( 2 ),         // namewidth,         no longer in use
+	OCL_SVAR( OC_UINT16, Town, flags12 ),
+	OCL_NULL( 10 ),        // radius,            no longer in use
+
+	OCL_SVAR( OC_UINT16, Town, ratings[0] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[1] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[2] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[3] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[4] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[5] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[6] ),
+	OCL_SVAR( OC_UINT16, Town, ratings[7] ),
+
+	/* XXX - This is pretty odd.. we read 32bit, but only write 8bit.. sure there is
+	nothing changed?? */
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, have_ratings ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, statues ),
+	OCL_SVAR( OC_UINT16, Town, num_houses ),
+	OCL_SVAR(  OC_UINT8, Town, time_until_rebuild ),
+	OCL_SVAR(  OC_UINT8, Town, growth_rate ),
+
+	OCL_SVAR( OC_UINT16, Town, new_max_pass ),
+	OCL_SVAR( OC_UINT16, Town, new_max_mail ),
+	OCL_SVAR( OC_UINT16, Town, new_act_pass ),
+	OCL_SVAR( OC_UINT16, Town, new_act_mail ),
+	OCL_SVAR( OC_UINT16, Town, max_pass ),
+	OCL_SVAR( OC_UINT16, Town, max_mail ),
+	OCL_SVAR( OC_UINT16, Town, act_pass ),
+	OCL_SVAR( OC_UINT16, Town, act_mail ),
+
+	OCL_SVAR(  OC_UINT8, Town, pct_pass_transported ),
+	OCL_SVAR(  OC_UINT8, Town, pct_mail_transported ),
+
+	OCL_SVAR( OC_UINT16, Town, new_act_food ),
+	OCL_SVAR( OC_UINT16, Town, new_act_water ),
+	OCL_SVAR( OC_UINT16, Town, act_food ),
+	OCL_SVAR( OC_UINT16, Town, act_water ),
+
+	OCL_SVAR(  OC_UINT8, Town, road_build_months ),
+	OCL_SVAR(  OC_UINT8, Town, fund_buildings_months ),
+
+	OCL_NULL( 8 ),         // some junk at the end of the record
+
+	OCL_END()
+};
+static bool LoadOldTown(LoadgameState *ls, int num)
+{
+	if (!AddBlockIfNeeded(&_town_pool, num))
+		error("Towns: failed loading savegame: too many towns");
+
+	return LoadChunk(ls, GetTown(num), town_chunk);
+}
+
+static uint16 _old_order;
+static const OldChunks order_chunk[] = {
+	OCL_VAR ( OC_UINT16,   1, &_old_order ),
+	OCL_END()
+};
+static bool LoadOldOrder(LoadgameState *ls, int num)
+{
+	if (!AddBlockIfNeeded(&_order_pool, num))
+		error("Orders: failed loading savegame: too many orders");
+
+	if (!LoadChunk(ls, NULL, order_chunk))
+		return false;
+
+	AssignOrder(GetOrder(num), UnpackOldOrder(_old_order));
+
+	/* Relink the orders to eachother (in TTD(Patch) the orders for one
+	vehicle are behind eachother, with OT_NOTHING as indication that
+	it is the last order */
+	if (num > 0 && GetOrder(num)->type != OT_NOTHING)
+		GetOrder(num - 1)->next = GetOrder(num);
+
+	return true;
+}
+
+static const OldChunks depot_chunk[] = {
+	OCL_SVAR(   OC_TILE, Depot, xy ),
+	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
+	OCL_END()
+};
+static bool LoadOldDepot(LoadgameState *ls, int num)
+{
+	if (!AddBlockIfNeeded(&_depot_pool, num))
+		error("Depots: failed loading savegame: too many depots");
+
+	if (!LoadChunk(ls, GetDepot(num), depot_chunk))
+		return false;
+
+	if (GetDepot(num)->xy != 0) {
+		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
 	}
+
+	return true;
 }
 
-static void FixSign(OldSign *o, int num)
+static int32 _old_price;
+static uint16 _old_price_frac;
+static const OldChunks price_chunk[] = {
+	OCL_VAR (  OC_INT32,   1, &_old_price ),
+	OCL_VAR ( OC_UINT16,   1, &_old_price_frac ),
+	OCL_END()
+};
+static bool LoadOldPrice(LoadgameState *ls, int num)
 {
-	SignStruct *n;
-	uint i = 0;
+	if (!LoadChunk(ls, NULL, price_chunk))
+		return false;
 
-	do {
-		if (o->text == 0)
-			continue;
+	/* We use a struct to store the prices, but they are ints in a row..
+	so just access the struct as an array of int32's */
+	((int32*)&_price)[num] = _old_price;
+	_price_frac[num] = _old_price_frac;
 
-		if (!AddBlockIfNeeded(&_sign_pool, i))
-			error("Signs: failed loading savegame: too many signs");
-
-		n = GetSign(i);
-
-		n->str = o->text;
-		n->x = o->x;
-		n->y = o->y;
-		n->z = o->z;
-	} while (i++,o++,--num);
+	return true;
 }
 
-static void FixEngine(Engine *n, OldEngine *o, int num)
+static const OldChunks cargo_payment_rate_chunk[] = {
+	OCL_VAR (  OC_INT32,   1, &_old_price ),
+	OCL_VAR ( OC_UINT16,   1, &_old_price_frac ),
+
+	OCL_NULL( 2 ),         // Junk
+	OCL_END()
+};
+static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 {
-	int i = 0;
+	if (!LoadChunk(ls, NULL, cargo_payment_rate_chunk))
+		return false;
 
-	do {
-		n->player_avail = o->player_avail;
-		n->intro_date = o->intro_date;
-		n->age = o->age;
-		if ((i >= 27 && i < 54) || (i >= 57 && i < 84) || (i >= 89 && i < 116))
-			n->age = 0xffff;
-		n->reliability = o->reliability;
-		n->reliability_spd_dec = o->reliability_spd_dec;
-		n->reliability_start = o->reliability_start;
-		n->reliability_max = o->reliability_max;
-		n->reliability_final = o->reliability_final;
-		n->duration_phase_1 = o->duration_phase_1;
-		n->duration_phase_2 = o->duration_phase_2;
-		n->duration_phase_3 = o->duration_phase_3;
-		n->lifelength = o->lifelength;
-		n->flags = o->flags;
-		n->preview_player = o->preview_player;
-		n->preview_wait = o->preview_wait;
-		n->railtype = o->railtype;
-	} while (n++,o++,i++,--num);
+	_cargo_payment_rates[num] = -_old_price;
+	_cargo_payment_rates_frac[num] = _old_price_frac;
+
+	return true;
 }
 
-static void FixGameDifficulty(GameDifficulty *n, OldGameSettings *o)
+static uint8 _old_platforms;
+static uint _current_station_id;
+
+static const OldChunks goods_chunk[] = {
+	OCL_SVAR( OC_UINT16, GoodsEntry, waiting_acceptance ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, days_since_pickup ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, rating ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, GoodsEntry, enroute_from ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, enroute_time ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, last_speed ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, last_age ),
+
+	OCL_END()
+};
+static bool LoadOldGood(LoadgameState *ls, int num)
 {
-	n->max_no_competitors = o->max_no_competitors;
-	n->competitor_start_time = o->competitor_start_time;
-	n->number_towns = o->number_towns;
-	n->number_industries = o->number_industries;
-	n->max_loan = o->max_loan;
-	n->initial_interest = o->initial_interest;
-	n->vehicle_costs = o->vehicle_costs;
-	n->competitor_speed = o->competitor_speed;
-	n->competitor_intelligence = o->competitor_intelligence;
-	n->vehicle_breakdowns = o->vehicle_breakdowns;
-	n->subsidy_multiplier = o->subsidy_multiplier;
-	n->construction_cost = o->construction_cost;
-	n->terrain_type = o->terrain_type;
-	n->quantity_sea_lakes = o->quantity_sea_lakes;
-	n->economy = o->economy;
-	n->line_reverse_mode = o->line_reverse_mode;
-	n->disasters = o->disasters;
+	Station *st = GetStation(_current_station_id);
+	return LoadChunk(ls, &st->goods[num], goods_chunk);
 }
 
-#ifdef TTD_BIG_ENDIAN
-/*	This function fixes the endiannes issues on Big Endian machines.
- *	Obviously only uint16 (WORD) and uint32 (LONG WORD) 's are fixed
- *	since these are different on Big Endian machines. A single byte has
- *	the same ordening */
-static void FixEndianness(OldMain *m)
+static const OldChunks station_chunk[] = {
+	OCL_SVAR(   OC_TILE, Station, xy ),
+	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
+
+	OCL_SVAR(   OC_TILE, Station, bus_tile_obsolete ),
+	OCL_SVAR(   OC_TILE, Station, lorry_tile_obsolete ),
+	OCL_SVAR(   OC_TILE, Station, train_tile ),
+	OCL_SVAR(   OC_TILE, Station, airport_tile ),
+	OCL_SVAR(   OC_TILE, Station, dock_tile ),
+
+	OCL_VAR (  OC_UINT8,   1, &_old_platforms ),
+
+	OCL_NULL( 1 ),         // sort-index, no longer in use
+	OCL_NULL( 2 ),         // sign-width, no longer in use
+
+	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
+
+	OCL_NULL( 4 ),         // sign left/top, no longer in use
+
+	OCL_SVAR( OC_UINT16, Station, had_vehicle_of_type ),
+
+	OCL_CHUNK( 12, LoadOldGood ),
+
+	OCL_SVAR(  OC_UINT8, Station, time_since_load ),
+	OCL_SVAR(  OC_UINT8, Station, time_since_unload ),
+	OCL_SVAR(  OC_UINT8, Station, delete_ctr ),
+	OCL_SVAR(  OC_UINT8, Station, owner ),
+	OCL_SVAR(  OC_UINT8, Station, facilities ),
+	OCL_SVAR(  OC_UINT8, Station, airport_type ),
+	OCL_NULL( 2 ),         // Bus/truck status, no longer in use
+	OCL_SVAR(  OC_UINT8, Station, blocked_months_obsolete ),
+	OCL_NULL( 1 ),         // Unknown
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Station, airport_flags ),
+	OCL_SVAR( OC_UINT16, Station, last_vehicle ),
+
+	OCL_NULL( 4 ),         // Junk at end of chunk
+
+	OCL_END()
+};
+static bool LoadOldStation(LoadgameState *ls, int num)
+{
+	Station *st;
+
+	if (!AddBlockIfNeeded(&_station_pool, num))
+		error("Stations: failed loading savegame: too many stations");
+
+	st = GetStation(num);
+	_current_station_id = num;
+
+	if (!LoadChunk(ls, st, station_chunk))
+		return false;
+
+	if (st->xy != 0) {
+		if (st->train_tile) {
+			/* Calculate the trainst_w and trainst_h */
+			int w = (_old_platforms >> 3) & 0x7;
+			int h = (_old_platforms & 0x7);
+			st->trainst_w = w;
+			st->trainst_h = h;
+		}
+
+		st->town    = GetTown(REMAP_TOWN_IDX(_old_town_index));
+		st->string_id = RemapOldStringID(_old_string_id);
+	}
+
+	return true;
+}
+
+static const OldChunks industry_chunk[] = {
+	OCL_SVAR(   OC_TILE, Industry, xy ),
+	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
+	OCL_SVAR(  OC_UINT8, Industry, width ),
+	OCL_SVAR(  OC_UINT8, Industry, height ),
+	OCL_SVAR(  OC_UINT8, Industry, produced_cargo[0] ),
+	OCL_SVAR(  OC_UINT8, Industry, produced_cargo[1] ),
+
+	OCL_SVAR( OC_UINT16, Industry, cargo_waiting[0] ),
+	OCL_SVAR( OC_UINT16, Industry, cargo_waiting[1] ),
+
+	OCL_SVAR(  OC_UINT8, Industry, production_rate[0] ),
+	OCL_SVAR(  OC_UINT8, Industry, production_rate[1] ),
+
+	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[0] ),
+	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[1] ),
+	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[2] ),
+
+	OCL_SVAR(  OC_UINT8, Industry, prod_level ),
+
+	OCL_SVAR( OC_UINT16, Industry, last_mo_production[0] ),
+	OCL_SVAR( OC_UINT16, Industry, last_mo_production[1] ),
+	OCL_SVAR( OC_UINT16, Industry, last_mo_transported[0] ),
+	OCL_SVAR( OC_UINT16, Industry, last_mo_transported[1] ),
+
+	OCL_SVAR(  OC_UINT8, Industry, pct_transported[0] ),
+	OCL_SVAR(  OC_UINT8, Industry, pct_transported[1] ),
+
+	OCL_SVAR( OC_UINT16, Industry, total_production[0] ),
+	OCL_SVAR( OC_UINT16, Industry, total_production[1] ),
+	OCL_SVAR( OC_UINT16, Industry, total_transported[0] ),
+	OCL_SVAR( OC_UINT16, Industry, total_transported[1] ),
+
+	OCL_SVAR(  OC_UINT8, Industry, type ),
+	OCL_SVAR(  OC_UINT8, Industry, owner ),
+	OCL_SVAR(  OC_UINT8, Industry, color_map ),
+	OCL_SVAR(  OC_UINT8, Industry, last_prod_year ),
+	OCL_SVAR( OC_UINT16, Industry, counter ),
+	OCL_SVAR(  OC_UINT8, Industry, was_cargo_delivered ),
+
+	OCL_NULL( 9 ), // Random junk at the end of this chunk
+
+	OCL_END()
+};
+static bool LoadOldIndustry(LoadgameState *ls, int num)
+{
+	Industry *i;
+
+	if (!AddBlockIfNeeded(&_industry_pool, num))
+		error("Industries: failed loading savegame: too many industries");
+
+	i = GetIndustry(num);
+	if (!LoadChunk(ls, i, industry_chunk))
+		return false;
+
+	if (i->xy != 0) {
+		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
+	}
+
+	return true;
+}
+
+static uint _current_player_id;
+static uint16 _old_inaugurated_year;
+static int32 _old_yearly;
+
+static const OldChunks player_yearly_chunk[] = {
+	OCL_VAR(  OC_INT32,   1, &_old_yearly ),
+	OCL_END()
+};
+static bool OldPlayerYearly(LoadgameState *ls, int num)
 {
 	int i;
-	m->date				= BSWAP16(m->date);
-	m->date_fract = BSWAP16(m->date_fract);
-	m->seed_1			= BSWAP32(m->seed_1);
-	m->seed_2			= BSWAP32(m->seed_2);
+	Player *p = DEREF_PLAYER(_current_player_id);
 
-	/* ----------- TOWNS ----------- */
-	for (i = 0; i < 70; i++) {														// OldTown town_list[70];
-		int j;
-		m->town_list[i].xy							= BSWAP16(m->town_list[i].xy);
-		m->town_list[i].population			= BSWAP16(m->town_list[i].population);
-		m->town_list[i].townnametype		= BSWAP16(m->town_list[i].townnametype);
-		m->town_list[i].townnameparts		= BSWAP32(m->town_list[i].townnameparts);
-		m->town_list[i].sign_left				= BSWAP16(m->town_list[i].sign_left);
-		m->town_list[i].sign_top				= BSWAP16(m->town_list[i].sign_top);
-		m->town_list[i].flags12					= BSWAP16(m->town_list[i].flags12);
-		for (j = 0; j < 5; j++)															// uint16 radius[5];
-			m->town_list[i].radius[j]			= BSWAP16(m->town_list[i].radius[j]);
-		for (j = 0; j < 8; j++)															// uint16 ratings[8];
-			m->town_list[i].ratings[j]		= BSWAP16(m->town_list[i].ratings[j]);
-		m->town_list[i].have_ratings		= BSWAP32(m->town_list[i].have_ratings);
-		m->town_list[i].statues					= BSWAP32(m->town_list[i].statues);
-		m->town_list[i].num_houses			= BSWAP16(m->town_list[i].num_houses);
-		m->town_list[i].new_max_pass		= BSWAP16(m->town_list[i].new_max_pass);
-		m->town_list[i].new_max_mail		= BSWAP16(m->town_list[i].new_max_mail);
-		m->town_list[i].new_act_pass		= BSWAP16(m->town_list[i].new_act_pass);
-		m->town_list[i].new_act_mail		= BSWAP16(m->town_list[i].new_act_mail);
-		m->town_list[i].max_pass				= BSWAP16(m->town_list[i].max_pass);
-		m->town_list[i].max_mail				= BSWAP16(m->town_list[i].max_mail);
-		m->town_list[i].act_pass				= BSWAP16(m->town_list[i].act_pass);
-		m->town_list[i].act_mail				= BSWAP16(m->town_list[i].act_mail);
-		m->town_list[i].new_act_food		= BSWAP16(m->town_list[i].new_act_food);
-		m->town_list[i].new_act_water		= BSWAP16(m->town_list[i].new_act_water);
-		m->town_list[i].act_food				= BSWAP16(m->town_list[i].act_food);
-		m->town_list[i].act_water				= BSWAP16(m->town_list[i].act_water);
-		m->town_list[i].unk56						= BSWAP32(m->town_list[i].unk56);
-		m->town_list[i].unk5A						= BSWAP32(m->town_list[i].unk5A);
+	for (i = 0; i < 13; i++) {
+		if (!LoadChunk(ls, NULL, player_yearly_chunk))
+			return false;
+
+		p->yearly_expenses[num][i] = _old_yearly;
 	}
 
-	/* ----------- ORDER LIST ----------- */
-	for (i = 0; i < 5000; i++)														// uint16 order_list[5000];
-		m->order_list[i]							= BSWAP16(m->order_list[i]);
-
-	/* ----------- ANIMATED TILE LIST ----------- */
-	for (i = 0; i < 256; i++)															// uint16 animated_tile_list[256];
-		m->animated_tile_list[i]			= BSWAP16(m->animated_tile_list[i]);
-
-	m->ptr_to_next_order						= BSWAP32(m->ptr_to_next_order);
-
-	/* ----------- DEPOTS ----------- */
-	for (i = 0; i < 255; i++) {														// OldDepot depots[255];
-		m->depots[i].xy								= BSWAP16(m->depots[i].xy);
-		m->depots[i].town							= BSWAP32(m->depots[i].town);
-	}
-
-	m->cur_town_ptr									= BSWAP32(m->cur_town_ptr);
-	m->timer_counter								= BSWAP16(m->timer_counter);
-	m->land_code										= BSWAP16(m->land_code);
-	m->age_cargo_skip_counter				= BSWAP16(m->age_cargo_skip_counter);
-	m->tick_counter									= BSWAP16(m->tick_counter);
-	m->cur_tileloop_tile						= BSWAP16(m->cur_tileloop_tile);
-
-	/* ----------- PRICES ----------- */
-	for (i = 0; i < 49; i++) {														// OldPrice prices[49];
-		m->prices[i].price						= BSWAP32(m->prices[i].price);
-		m->prices[i].frac							= BSWAP16(m->prices[i].frac);
-	}
-
-	/* ----------- CARGO PAYMENT RATES ----------- */
-	for (i = 0; i < 12; i++) {														// OldPaymentRate cargo_payment_rates[12];
-		m->cargo_payment_rates[i].price		= BSWAP32(m->cargo_payment_rates[i].price);
-		m->cargo_payment_rates[i].frac		= BSWAP16(m->cargo_payment_rates[i].frac);
-		m->cargo_payment_rates[i].unused	= BSWAP16(m->cargo_payment_rates[i].unused);
-	}
-
-	/* ----------- MAP3 ----------- */
-	for (i = 0; i < (256*256); i++)												// uint16 map3[256*256];
-		m->map3[i] = BSWAP16(m->map3[i]);
-
-	/* ----------- STATIONS ----------- */
-	for (i = 0; i < 250; i++) {														// OldStation stations[250];
-		int j;
-		m->stations[i].xy							= BSWAP16(m->stations[i].xy);
-		m->stations[i].town						= BSWAP32(m->stations[i].town);
-		m->stations[i].bus_tile				= BSWAP16(m->stations[i].bus_tile);
-		m->stations[i].lorry_tile			= BSWAP16(m->stations[i].lorry_tile);
-		m->stations[i].train_tile			= BSWAP16(m->stations[i].train_tile);
-		m->stations[i].airport_tile		= BSWAP16(m->stations[i].airport_tile);
-		m->stations[i].dock_tile			= BSWAP16(m->stations[i].dock_tile);
-		m->stations[i].string_id			= BSWAP16(m->stations[i].string_id);
-		m->stations[i].sign_left			= BSWAP16(m->stations[i].sign_left);
-		m->stations[i].sign_top				= BSWAP16(m->stations[i].sign_top);
-		m->stations[i].had_vehicle_of_type						= BSWAP16(m->stations[i].had_vehicle_of_type);
-		for (j = 0; j < 12; j++)														// OldGoodsEntry goods[12];
-			m->stations[i].goods[j].waiting_acceptance	= BSWAP16(m->stations[i].goods[j].waiting_acceptance);
-		m->stations[i].airport_flags	= BSWAP16(m->stations[i].airport_flags);
-		m->stations[i].last_vehicle		= BSWAP16(m->stations[i].last_vehicle);
-		m->stations[i].unk8A					= BSWAP32(m->stations[i].unk8A);
-	}
-
-	/* ----------- INDUSTRIES ----------- */
-	for (i = 0; i < 90; i++) {														// OldIndustry industries[90];
-		m->industries[i].xy											= BSWAP16(m->industries[i].xy);
-		m->industries[i].town										= BSWAP32(m->industries[i].town);
-		m->industries[i].cargo_waiting[0]				= BSWAP16(m->industries[i].cargo_waiting[0]);
-		m->industries[i].cargo_waiting[1]				= BSWAP16(m->industries[i].cargo_waiting[1]);
-
-		m->industries[i].last_mo_production[0]	= BSWAP16(m->industries[i].last_mo_production[0]);
-		m->industries[i].last_mo_production[1]	= BSWAP16(m->industries[i].last_mo_production[1]);
-
-		m->industries[i].last_mo_transported[0]	= BSWAP16(m->industries[i].last_mo_transported[0]);
-		m->industries[i].last_mo_transported[1]	= BSWAP16(m->industries[i].last_mo_transported[1]);
-
-		m->industries[i].total_production[0]		= BSWAP16(m->industries[i].total_production[0]);
-		m->industries[i].total_production[1]		= BSWAP16(m->industries[i].total_production[1]);
-
-		m->industries[i].total_transported[0]		= BSWAP16(m->industries[i].total_transported[0]);
-		m->industries[i].total_transported[1]		= BSWAP16(m->industries[i].total_transported[1]);
-		m->industries[i].counter								= BSWAP16(m->industries[i].counter);
-		m->industries[i].unk2E									= BSWAP32(m->industries[i].unk2E);
-		m->industries[i].unk32									= BSWAP32(m->industries[i].unk32);
-	}
-
-	/* ----------- PLAYERS ----------- */
-	for (i = 0; i < 8; i++) {															// OldPlayer players[8];
-		int j, k;
-		m->players[i].name_1						= BSWAP16(m->players[i].name_1);
-		m->players[i].name_2						= BSWAP32(m->players[i].name_2);
-		m->players[i].face							= BSWAP32(m->players[i].face);
-		m->players[i].pres_name_1				= BSWAP16(m->players[i].pres_name_1);
-		m->players[i].pres_name_2				= BSWAP32(m->players[i].pres_name_2);
-		m->players[i].money							= BSWAP32(m->players[i].money);
-		m->players[i].loan							= BSWAP32(m->players[i].loan);
-		m->players[i].bankrupt_value		= BSWAP32(m->players[i].bankrupt_value);
-		m->players[i].bankrupt_timeout	= BSWAP16(m->players[i].bankrupt_timeout);
-		m->players[i].cargo_types				= BSWAP32(m->players[i].cargo_types);
-
-		for (j = 0; j < 3; j++) {														// OldPlayerExpenses expenses[3];
-			for (k = 0; k < 13; k++)
-				m->players[i].expenses[j].cost[k]	= BSWAP32(m->players[i].expenses[j].cost[k]);
-		}
-
-		for (j = 0; j < (24 + 1); j++) {										// OldPlayerEconomy economy[24 + 1];
-			m->players[i].economy->income								= BSWAP32(m->players[i].economy->income);
-			m->players[i].economy->expenses							= BSWAP32(m->players[i].economy->expenses);
-			m->players[i].economy->delivered_cargo			= BSWAP32(m->players[i].economy->delivered_cargo);
-			m->players[i].economy->performance_history	= BSWAP32(m->players[i].economy->performance_history);
-			m->players[i].economy->company_value				= BSWAP32(m->players[i].economy->company_value);
-		}
-
-		m->players[i].inaugurated_date			= BSWAP16(m->players[i].inaugurated_date);
-		m->players[i].last_build_coordinate	= BSWAP16(m->players[i].last_build_coordinate);
-		m->players[i].ai_state_counter			= BSWAP16(m->players[i].ai_state_counter);
-		m->players[i].ai_timeout_counter		= BSWAP16(m->players[i].ai_timeout_counter);
-
-		// OldAiBuildRec ai_src, ai_dst, ai_mid1, ai_mid2;
-		m->players[i].ai_src.spec_tile			= BSWAP16(m->players[i].ai_src.spec_tile);
-		m->players[i].ai_src.use_tile				= BSWAP16(m->players[i].ai_src.use_tile);
-		m->players[i].ai_dst.spec_tile			= BSWAP16(m->players[i].ai_dst.spec_tile);
-		m->players[i].ai_dst.use_tile				= BSWAP16(m->players[i].ai_dst.use_tile);
-		m->players[i].ai_mid1.spec_tile			= BSWAP16(m->players[i].ai_mid1.spec_tile);
-		m->players[i].ai_mid1.use_tile			= BSWAP16(m->players[i].ai_mid1.use_tile);
-		m->players[i].ai_mid2.spec_tile			= BSWAP16(m->players[i].ai_mid2.spec_tile);
-		m->players[i].ai_mid2.use_tile			= BSWAP16(m->players[i].ai_mid2.use_tile);
-
-		m->players[i].ai_loco_id						= BSWAP16(m->players[i].ai_loco_id);
-
-		for (j = 0; j < 9; j++)
-			m->players[i].ai_wagonlist[j]			= BSWAP16(m->players[i].ai_wagonlist[j]);
-		m->players[i].ai_start_tile_a				= BSWAP16(m->players[i].ai_start_tile_a);
-		m->players[i].ai_start_tile_b				= BSWAP16(m->players[i].ai_start_tile_b);
-		m->players[i].ai_cur_tile_a					= BSWAP16(m->players[i].ai_cur_tile_a);
-		m->players[i].ai_cur_tile_b					= BSWAP16(m->players[i].ai_cur_tile_b);
-		for (j = 0; j < 16; j++)														// OldAiBannedTile banned_tiles[16];
-			m->players[i].banned_tiles[j].tile= BSWAP16(m->players[i].banned_tiles[j].tile);
-		m->players[i].location_of_house			= BSWAP16(m->players[i].location_of_house);
-		m->players[i].unk3AA								= BSWAP32(m->players[i].unk3AA);
-		m->players[i].unk3AE								= BSWAP32(m->players[i].unk3AE);
-	}
-
-	/* ----------- VEHICLES ----------- */
-	for (i = 0; i < 850; i++) {														// OldVehicle vehicles[850];
-		m->vehicles[i].next_hash						= BSWAP16(m->vehicles[i].next_hash);
-		m->vehicles[i].index								= BSWAP16(m->vehicles[i].index);
-		m->vehicles[i].schedule_ptr					= BSWAP32(m->vehicles[i].schedule_ptr);
-		m->vehicles[i].dest_tile						= BSWAP16(m->vehicles[i].dest_tile);
-		m->vehicles[i].load_unload_time_rem	= BSWAP16(m->vehicles[i].load_unload_time_rem);
-		m->vehicles[i].date_of_last_service	= BSWAP16(m->vehicles[i].date_of_last_service);
-		m->vehicles[i].service_interval			= BSWAP16(m->vehicles[i].service_interval);
-		m->vehicles[i].max_speed						= BSWAP16(m->vehicles[i].max_speed);
-		m->vehicles[i].x_pos								= BSWAP16(m->vehicles[i].x_pos);
-		m->vehicles[i].y_pos								= BSWAP16(m->vehicles[i].y_pos);
-		m->vehicles[i].tile									= BSWAP16(m->vehicles[i].tile);
-		m->vehicles[i].cur_image						= BSWAP16(m->vehicles[i].cur_image);
-		m->vehicles[i].left_coord						= BSWAP16(m->vehicles[i].left_coord);
-		m->vehicles[i].right_coord					= BSWAP16(m->vehicles[i].right_coord);
-		m->vehicles[i].top_coord						= BSWAP16(m->vehicles[i].top_coord);
-		m->vehicles[i].bottom_coord					= BSWAP16(m->vehicles[i].bottom_coord);
-		m->vehicles[i].vehstatus						= BSWAP16(m->vehicles[i].vehstatus);
-		m->vehicles[i].cur_speed						= BSWAP16(m->vehicles[i].cur_speed);
-		m->vehicles[i].capacity							= BSWAP16(m->vehicles[i].capacity);
-		m->vehicles[i].number_of_pieces			= BSWAP16(m->vehicles[i].number_of_pieces);
-		m->vehicles[i].age_in_days					= BSWAP16(m->vehicles[i].age_in_days);
-		m->vehicles[i].max_age_in_days			= BSWAP16(m->vehicles[i].max_age_in_days);
-		m->vehicles[i].engine_type					= BSWAP16(m->vehicles[i].engine_type);
-		m->vehicles[i].reliability					= BSWAP16(m->vehicles[i].reliability);
-		m->vehicles[i].reliability_spd_dec	= BSWAP16(m->vehicles[i].reliability_spd_dec);
-		m->vehicles[i].profit_this_year			= BSWAP32(m->vehicles[i].profit_this_year);
-		m->vehicles[i].profit_last_year			= BSWAP32(m->vehicles[i].profit_last_year);
-		m->vehicles[i].next_in_chain				= BSWAP16(m->vehicles[i].next_in_chain);
-		m->vehicles[i].value								= BSWAP32(m->vehicles[i].value);
-		m->vehicles[i].string_id						= BSWAP16(m->vehicles[i].string_id);
-
-		// OldVehicleUnion u;
-		switch (m->vehicles[i].type) {
-		case VEH_Train:
-			m->vehicles[i].u.rail.crash_anim_pos			= BSWAP16(m->vehicles[i].u.rail.crash_anim_pos);
-			break;
-		case VEH_Aircraft:
-			m->vehicles[i].u.air.crashed_counter			= BSWAP16(m->vehicles[i].u.air.crashed_counter);
-			break;
-		case VEH_Road:
-			m->vehicles[i].u.road.unk2								= BSWAP16(m->vehicles[i].u.road.unk2);
-			m->vehicles[i].u.road.crashed_ctr					= BSWAP16(m->vehicles[i].u.road.crashed_ctr);
-			break;
-		case VEH_Special:
-			m->vehicles[i].u.special.unk0							= BSWAP16(m->vehicles[i].u.special.unk0);
-			break;
-		case VEH_Disaster:
-			m->vehicles[i].u.disaster.image_override	= BSWAP16(m->vehicles[i].u.disaster.image_override);
-			m->vehicles[i].u.disaster.unk2						= BSWAP16(m->vehicles[i].u.disaster.unk2);
-			break;
-		}
-	}
-
-	/* ----------- SIGNS ----------- */
-	for (i = 0; i < 40; i++) {														// OldSign signs[40];
-		m->signs[i].text									= BSWAP16(m->signs[i].text);
-		m->signs[i].x											= BSWAP16(m->signs[i].x);
-		m->signs[i].y											= BSWAP16(m->signs[i].y);
-		m->signs[i].z											= BSWAP16(m->signs[i].z);
-		m->signs[i].sign_left							= BSWAP16(m->signs[i].sign_left);
-		m->signs[i].sign_top							= BSWAP16(m->signs[i].sign_top);
-	}
-
-	/* ----------- ENGINES ----------- */
-	for (i = 0; i < 256; i++) {														// OldEngine engines[256];
-		m->engines[i].player_avail				= BSWAP16(m->engines[i].player_avail);
-		m->engines[i].intro_date					= BSWAP16(m->engines[i].intro_date);
-		m->engines[i].age									= BSWAP16(m->engines[i].age);
-		m->engines[i].reliability					= BSWAP16(m->engines[i].reliability);
-		m->engines[i].reliability_spd_dec	= BSWAP16(m->engines[i].reliability_spd_dec);
-		m->engines[i].reliability_start		= BSWAP16(m->engines[i].reliability_start);
-		m->engines[i].reliability_max			= BSWAP16(m->engines[i].reliability_max);
-		m->engines[i].reliability_final		= BSWAP16(m->engines[i].reliability_final);
-		m->engines[i].duration_phase_1		= BSWAP16(m->engines[i].duration_phase_1);
-		m->engines[i].duration_phase_2		= BSWAP16(m->engines[i].duration_phase_2);
-		m->engines[i].duration_phase_3		= BSWAP16(m->engines[i].duration_phase_3);
-	}
-
-	m->vehicle_id_ctr_day								= BSWAP16(m->vehicle_id_ctr_day);
-
-	m->next_competitor_start						= BSWAP16(m->next_competitor_start);
-	m->saved_main_scrollpos_x						= BSWAP16(m->saved_main_scrollpos_x);
-	m->saved_main_scrollpos_y						= BSWAP16(m->saved_main_scrollpos_y);
-	m->saved_main_scrollpos_zoom				= BSWAP16(m->saved_main_scrollpos_zoom);
-	m->maximum_loan											= BSWAP32(m->maximum_loan);
-	m->maximum_loan_unround							= BSWAP32(m->maximum_loan_unround);
-	m->economy_fluct										= BSWAP16(m->economy_fluct);
-	m->disaster_delay										= BSWAP16(m->disaster_delay);
-
-	for (i = 0; i < 256; i++)															// uint16 engine_name_strings[256];
-		m->engine_name_strings[i]					= BSWAP16(m->engine_name_strings[i]);
-
-	/* ----------- GAME SETTINGS ----------- */
-	m->game_diff.max_no_competitors			= BSWAP16(m->game_diff.max_no_competitors);
-	m->game_diff.competitor_start_time	= BSWAP16(m->game_diff.competitor_start_time);
-	m->game_diff.number_towns						= BSWAP16(m->game_diff.number_towns);
-	m->game_diff.number_industries			= BSWAP16(m->game_diff.number_industries);
-	m->game_diff.max_loan								= BSWAP16(m->game_diff.max_loan);
-	m->game_diff.initial_interest				= BSWAP16(m->game_diff.initial_interest);
-	m->game_diff.vehicle_costs					= BSWAP16(m->game_diff.vehicle_costs);
-	m->game_diff.competitor_speed				= BSWAP16(m->game_diff.competitor_speed);
-	m->game_diff.competitor_intelligence= BSWAP16(m->game_diff.competitor_intelligence);
-	m->game_diff.vehicle_breakdowns			= BSWAP16(m->game_diff.vehicle_breakdowns);
-	m->game_diff.subsidy_multiplier			= BSWAP16(m->game_diff.subsidy_multiplier);
-	m->game_diff.construction_cost			= BSWAP16(m->game_diff.construction_cost);
-	m->game_diff.terrain_type						= BSWAP16(m->game_diff.terrain_type);
-	m->game_diff.quantity_sea_lakes			= BSWAP16(m->game_diff.quantity_sea_lakes);
-	m->game_diff.economy								= BSWAP16(m->game_diff.economy);
-	m->game_diff.line_reverse_mode			= BSWAP16(m->game_diff.line_reverse_mode);
-	m->game_diff.disasters							= BSWAP16(m->game_diff.disasters);
+	return true;
 }
-#endif
 
-// loader for old style savegames
-bool LoadOldSaveGame(const char *file)
+static const OldChunks player_economy_chunk[] = {
+	OCL_SVAR( OC_INT32, PlayerEconomyEntry, income ),
+	OCL_SVAR( OC_INT32, PlayerEconomyEntry, expenses ),
+	OCL_SVAR( OC_INT32, PlayerEconomyEntry, delivered_cargo ),
+	OCL_SVAR( OC_INT32, PlayerEconomyEntry, performance_history ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, company_value ),
+
+	OCL_END()
+};
+static bool OldPlayerEconomy(LoadgameState *ls, int num)
 {
-	LoadSavegameState lss;
-	OldMain *m;
-	uint map_size;
+	int i;
+	Player *p = DEREF_PLAYER(_current_player_id);
+
+	if (!LoadChunk(ls, &p->cur_economy, player_economy_chunk))
+		return false;
+
+	/* Don't ask, but the number in TTD(Patch) are inversed to OpenTTD */
+	p->cur_economy.income   = -p->cur_economy.income;
+	p->cur_economy.expenses = -p->cur_economy.expenses;
+
+	for (i = 0; i < 24; i++) {
+		if (!LoadChunk(ls, &p->old_economy[i], player_economy_chunk))
+			return false;
+
+		p->old_economy[i].income   = -p->old_economy[i].income;
+		p->old_economy[i].expenses = -p->old_economy[i].expenses;
+	}
+
+	return true;
+}
+
+static const OldChunks player_ai_build_rec_chunk[] = {
+	OCL_SVAR(   OC_TILE, AiBuildRec, spec_tile ),
+	OCL_SVAR(   OC_TILE, AiBuildRec, use_tile ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, rand_rng ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, cur_building_rule ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, unk6 ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, unk7 ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, buildcmd_a ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, buildcmd_b ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, direction ),
+	OCL_SVAR(  OC_UINT8, AiBuildRec, cargo ),
+
+	OCL_NULL( 8 ),  // Junk...
+
+	OCL_END()
+};
+static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
+{
+	Player *p = DEREF_PLAYER(_current_player_id);
+
+	switch (num) {
+		case 0: return LoadChunk(ls, &p->ai.src, player_ai_build_rec_chunk);
+		case 1: return LoadChunk(ls, &p->ai.dst, player_ai_build_rec_chunk);
+		case 2: return LoadChunk(ls, &p->ai.mid1, player_ai_build_rec_chunk);
+		case 3: return LoadChunk(ls, &p->ai.mid2, player_ai_build_rec_chunk);
+	}
+
+	return false;
+}
+static const OldChunks player_ai_chunk[] = {
+	OCL_SVAR(  OC_UINT8, PlayerAI, state ),
+	OCL_NULL( 1 ),         // Junk
+	OCL_SVAR(  OC_UINT8, PlayerAI, state_mode ),
+	OCL_SVAR( OC_UINT16, PlayerAI, state_counter ),
+	OCL_SVAR( OC_UINT16, PlayerAI, timeout_counter ),
+
+	OCL_CHUNK( 4, OldLoadAIBuildRec ),
+
+	OCL_NULL( 20 ),        // More junk
+
+	OCL_SVAR(  OC_UINT8, PlayerAI, cargo_type ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, num_wagons ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, build_kind ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, num_build_rec ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, num_loco_to_build ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, num_want_fullload ),
+
+	OCL_NULL( 14 ),        // Oh no more junk :|
+
+	OCL_NULL( 2 ),         // Loco-id, not used
+
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[0] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[1] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[2] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[3] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[4] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[5] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[6] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[7] ),
+	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[8] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[0] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[1] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[2] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[3] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[4] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[5] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[6] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[7] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[8] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[9] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[10] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[11] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[12] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[13] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[14] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[15] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[16] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[17] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[18] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[19] ),
+
+	OCL_SVAR( OC_UINT16, PlayerAI, start_tile_a ),
+	OCL_SVAR( OC_UINT16, PlayerAI, start_tile_b ),
+	OCL_SVAR( OC_UINT16, PlayerAI, cur_tile_a ),
+	OCL_SVAR( OC_UINT16, PlayerAI, cur_tile_b ),
+
+	OCL_SVAR(  OC_UINT8, PlayerAI, start_dir_a ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, start_dir_b ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, cur_dir_a ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, cur_dir_b ),
+
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_tile_count ),
+
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[0] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[0] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[1] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[1] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[2] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[2] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[3] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[3] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[4] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[4] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[5] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[5] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[6] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[6] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[7] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[7] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[8] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[8] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[9] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[9] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[10] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[10] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[11] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[11] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[12] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[12] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[13] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[13] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[14] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[14] ),
+	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[15] ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[15] ),
+
+	OCL_SVAR(  OC_UINT8, PlayerAI, railtype_to_use ),
+	OCL_SVAR(  OC_UINT8, PlayerAI, route_type_mask ),
+
+	OCL_END()
+};
+static bool OldPlayerAI(LoadgameState *ls, int num)
+{
+	Player *p = DEREF_PLAYER(_current_player_id);
+
+	return LoadChunk(ls, &p->ai, player_ai_chunk);
+}
+
+static const OldChunks player_chunk[] = {
+	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
+	OCL_SVAR( OC_UINT32, Player, name_2 ),
+	OCL_SVAR( OC_UINT32, Player, face ),
+	OCL_VAR ( OC_UINT16,   1, &_old_string_id_2 ),
+	OCL_SVAR( OC_UINT32, Player, president_name_2 ),
+
+	OCL_SVAR(  OC_INT32, Player, player_money ),
+	OCL_SVAR(  OC_INT32, Player, current_loan ),
+
+	OCL_SVAR(  OC_UINT8, Player, player_color ),
+	OCL_SVAR(  OC_UINT8, Player, player_money_fraction ),
+	OCL_SVAR(  OC_UINT8, Player, quarters_of_bankrupcy ),
+	OCL_SVAR(  OC_UINT8, Player, bankrupt_asked ),
+	OCL_SVAR( OC_UINT32, Player, bankrupt_value ),
+	OCL_SVAR( OC_UINT16, Player, bankrupt_timeout ),
+
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Player, cargo_types ),
+
+	OCL_CHUNK( 3, OldPlayerYearly ),
+	OCL_CHUNK( 1, OldPlayerEconomy ),
+
+	OCL_VAR ( OC_UINT16,   1,    &_old_inaugurated_year ),
+	OCL_SVAR(   OC_TILE, Player, last_build_coordinate ),
+	OCL_SVAR(  OC_UINT8, Player, num_valid_stat_ent ),
+
+	OCL_CHUNK( 1, OldPlayerAI ),
+
+	OCL_SVAR(  OC_UINT8, Player, block_preview ),
+	OCL_SVAR(  OC_UINT8, Player, ai.tick ),
+	OCL_SVAR(  OC_UINT8, Player, max_railtype ),
+	OCL_SVAR(   OC_TILE, Player, location_of_house ),
+	OCL_SVAR(  OC_UINT8, Player, share_owners[0] ),
+	OCL_SVAR(  OC_UINT8, Player, share_owners[1] ),
+	OCL_SVAR(  OC_UINT8, Player, share_owners[2] ),
+	OCL_SVAR(  OC_UINT8, Player, share_owners[3] ),
+
+	OCL_NULL( 8 ), // junk at end of chunk
+
+	OCL_END()
+};
+static bool LoadOldPlayer(LoadgameState *ls, int num)
+{
+	Player *p = DEREF_PLAYER(num);
+
+	_current_player_id = num;
+
+	if (!LoadChunk(ls, p, player_chunk))
+		return false;
+
+	p->name_1 = RemapOldStringID(_old_string_id);
+	p->president_name_1 = RemapOldStringID(_old_string_id_2);
+	p->money64 = p->player_money;
+
+	if (num == 0) {
+		/* If the first player has no name, make sure we call it UNNAMED */
+		if (p->name_1 == 0)
+			p->name_1 = STR_SV_UNNAMED;
+	} else {
+		/* Beside some multiplayer maps (1 on 1), which we don't official support,
+		all other players are an AI.. mark them as such */
+		p->is_ai = 1;
+	}
+
+	/* Sometimes it is better to not ask.. in old scenarios, the money
+	was always 893288 pounds. In the newer versions this is correct,
+	but correct for those oldies
+	Ps: this also means that if you had exact 893288 pounds, you will go back
+	to 10000.. this is a very VERY small chance ;) */
+	if (p->player_money == 0xda168)
+		p->money64 = p->player_money = p->current_loan = 100000;
+
+	_player_colors[num] = p->player_color;
+	p->inaugurated_year = _old_inaugurated_year - MAX_YEAR_BEGIN_REAL;
+	if (p->location_of_house == 0xFFFF)
+		p->location_of_house = 0;
+
+	return true;
+}
+
+static uint32 _old_order_ptr;
+static uint16 _old_next_ptr;
+static uint32 _current_vehicle_id;
+
+static const OldChunks vehicle_train_chunk[] = {
+	OCL_SVAR(  OC_UINT8, VehicleRail, track ),
+	OCL_SVAR(  OC_UINT8, VehicleRail, force_proceed ),
+	OCL_SVAR( OC_UINT16, VehicleRail, crash_anim_pos ),
+	OCL_SVAR(  OC_UINT8, VehicleRail, railtype ),
+
+	OCL_NULL( 5 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_road_chunk[] = {
+	OCL_SVAR(  OC_UINT8, VehicleRoad, state ),
+	OCL_SVAR(  OC_UINT8, VehicleRoad, frame ),
+	OCL_SVAR( OC_UINT16, VehicleRoad, unk2 ),
+	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking ),
+	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking_ctr ),
+	OCL_SVAR( OC_UINT16, VehicleRoad, crashed_ctr ),
+	OCL_SVAR(  OC_UINT8, VehicleRoad, reverse_ctr ),
+
+	OCL_NULL( 1 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_ship_chunk[] = {
+	OCL_SVAR(  OC_UINT8, VehicleShip, state ),
+
+	OCL_NULL( 9 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_air_chunk[] = {
+	OCL_SVAR(  OC_UINT8, VehicleAir, pos ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, VehicleAir, targetairport ),
+	OCL_SVAR( OC_UINT16, VehicleAir, crashed_counter ),
+	OCL_SVAR(  OC_UINT8, VehicleAir, state ),
+
+	OCL_NULL( 5 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_special_chunk[] = {
+	OCL_SVAR( OC_UINT16, VehicleSpecial, unk0 ),
+	OCL_SVAR(  OC_UINT8, VehicleSpecial, unk2 ),
+
+	OCL_NULL( 7 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_disaster_chunk[] = {
+	OCL_SVAR( OC_UINT16, VehicleDisaster, image_override ),
+	OCL_SVAR( OC_UINT16, VehicleDisaster, unk2 ),
+
+	OCL_NULL( 6 ), // Junk
+
+	OCL_END()
+};
+static const OldChunks vehicle_empty_chunk[] = {
+	OCL_NULL( 10 ), // Junk
+
+	OCL_END()
+};
+static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
+{
+	Vehicle *v = GetVehicle(_current_vehicle_id);
+	uint temp = ls->total_read;
+	bool res;
+
+	switch (v->type) {
+		case VEH_Train:    res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+		case VEH_Road:     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+		case VEH_Ship:     res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+		case VEH_Aircraft: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
+		case VEH_Special:  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
+		case VEH_Disaster: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
+		default:           res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
+	}
+
+	/* This chunk size should always be 10 bytes */
+	if (ls->total_read - temp != 10) {
+		DEBUG(oldloader, 4)("[OldLoader] Assert failed in Vehicle");
+		return false;
+	}
+
+	return res;
+}
+
+static const OldChunks vehicle_chunk[] = {
+	OCL_SVAR(  OC_UINT8, Vehicle, type ),
+	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
+
+	OCL_NULL( 2 ),         // Hash, calculated automaticly
+	OCL_NULL( 2 ),         // Index, calculated automaticly
+
+	OCL_VAR ( OC_UINT32,   1, &_old_order_ptr ),
+	OCL_VAR ( OC_UINT16,   1, &_old_order ),
+
+	OCL_SVAR(  OC_UINT8, Vehicle, num_orders ),
+	OCL_SVAR(  OC_UINT8, Vehicle, cur_order_index ),
+	OCL_SVAR(   OC_TILE, Vehicle, dest_tile ),
+	OCL_SVAR( OC_UINT16, Vehicle, load_unload_time_rem ),
+	OCL_SVAR( OC_UINT16, Vehicle, date_of_last_service ),
+	OCL_SVAR( OC_UINT16, Vehicle, service_interval ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, last_station_visited ),
+	OCL_SVAR(  OC_UINT8, Vehicle, tick_counter ),
+	OCL_SVAR( OC_UINT16, Vehicle, max_speed ),
+
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, x_pos ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, y_pos ),
+	OCL_SVAR(  OC_UINT8, Vehicle, z_pos ),
+	OCL_SVAR(  OC_UINT8, Vehicle, direction ),
+	OCL_SVAR(   OC_INT8, Vehicle, x_offs ),
+	OCL_SVAR(   OC_INT8, Vehicle, y_offs ),
+	OCL_SVAR(  OC_UINT8, Vehicle, sprite_width ),
+	OCL_SVAR(  OC_UINT8, Vehicle, sprite_height ),
+	OCL_SVAR(  OC_UINT8, Vehicle, z_height ),
+
+	OCL_SVAR(  OC_UINT8, Vehicle, owner ),
+	OCL_SVAR(   OC_TILE, Vehicle, tile ),
+	OCL_SVAR( OC_UINT16, Vehicle, cur_image ),
+
+	OCL_NULL( 8 ),        // Vehicle sprite box, calculated automaticly
+
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U8, Vehicle, vehstatus ),
+	OCL_SVAR( OC_UINT16, Vehicle, cur_speed ),
+	OCL_SVAR(  OC_UINT8, Vehicle, subspeed ),
+	OCL_SVAR(  OC_UINT8, Vehicle, acceleration ),
+	OCL_SVAR(  OC_UINT8, Vehicle, progress ),
+
+	OCL_SVAR(  OC_UINT8, Vehicle, cargo_type ),
+	OCL_SVAR( OC_UINT16, Vehicle, cargo_cap ),
+	OCL_SVAR( OC_UINT16, Vehicle, cargo_count ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, cargo_source ),
+	OCL_SVAR(  OC_UINT8, Vehicle, cargo_days ),
+
+	OCL_SVAR( OC_UINT16, Vehicle, age ),
+	OCL_SVAR( OC_UINT16, Vehicle, max_age ),
+	OCL_SVAR(  OC_UINT8, Vehicle, build_year ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, unitnumber ),
+
+	OCL_SVAR( OC_UINT16, Vehicle, engine_type ),
+
+	OCL_SVAR(  OC_UINT8, Vehicle, spritenum ),
+	OCL_SVAR(  OC_UINT8, Vehicle, day_counter ),
+
+	OCL_SVAR(  OC_UINT8, Vehicle, breakdowns_since_last_service ),
+	OCL_SVAR(  OC_UINT8, Vehicle, breakdown_ctr ),
+	OCL_SVAR(  OC_UINT8, Vehicle, breakdown_delay ),
+	OCL_SVAR(  OC_UINT8, Vehicle, breakdown_chance ),
+
+	OCL_SVAR( OC_UINT16, Vehicle, reliability ),
+	OCL_SVAR( OC_UINT16, Vehicle, reliability_spd_dec ),
+
+	OCL_SVAR(  OC_INT32, Vehicle, profit_this_year ),
+	OCL_SVAR(  OC_INT32, Vehicle, profit_last_year ),
+
+	OCL_VAR ( OC_UINT16,   1, &_old_next_ptr ),
+
+	OCL_SVAR( OC_UINT32, Vehicle, value ),
+
+	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
+
+	OCL_CHUNK( 1, LoadOldVehicleUnion ),
+
+	OCL_NULL( 20 ), // Junk at end of struct (TTDPatch has some data in it)
+
+	OCL_END()
+};
+static bool LoadOldVehicle(LoadgameState *ls, int num)
+{
 	uint i;
 
-	_cur_state = &lss;
-	memset(&lss, 0, sizeof(lss));
+	/* Read the TTDPatch flags, because we need some info from it */
+	ReadTTDPatchFlags();
 
-	lss.fin = fopen(file, "rb");
-	if (lss.fin == NULL) return false;
+	for (i = 0; i < _old_vehicle_multipler; i++) {
+		Vehicle *v;
 
-	/*	B - byte 8bit					(1)
-	 *	W - word 16bit				(2 bytes)
-	 *	L - 'long' word 32bit	(4 bytes)
-	 */
-	fseek(lss.fin, 49, SEEK_SET); // 47B TITLE, W Checksum - Total 49
+		_current_vehicle_id = num * _old_vehicle_multipler + i;
 
-	/*	Load the file into memory
-	 *	Game Data 0x77179 + L4 (256x256) + L5 (256x256)
-	 */
-	m = (OldMain *)malloc(sizeof(OldMain));
-	LoadSavegameBytes(m, sizeof(OldMain));
-	#ifdef TTD_BIG_ENDIAN
-	FixEndianness(m);
-	#endif
+		if (!AddBlockIfNeeded(&_vehicle_pool, _current_vehicle_id))
+			error("Vehicles: failed loading savegame: too many vehicles");
 
-	// copy sections of it to our datastructures.
-	map_size = MapSize();
-	memcpy(_map_owner, m->map_owner, map_size);
-	memcpy(_map_type_and_height, m->map_type_and_height, map_size);
-	memcpy(_map5, m->map5, map_size);
-	for (i = 0; i != map_size; i++) {
-		_map2[i]    = m->map2[i];
-		_map3_lo[i] = m->map3[i] & 0xFF;
-		_map3_hi[i] = m->map3[i] >> 8;
+		v = GetVehicle(_current_vehicle_id);
+		if (!LoadChunk(ls, v, vehicle_chunk))
+			return false;
+
+		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
+			v->orders = GetOrder(REMAP_ORDER_IDX(_old_order_ptr));
+		}
+		AssignOrder(&v->current_order, UnpackOldOrder(_old_order));
+		/* TTDPatch maps sprites from 0x2000 up. */
+		if (v->cur_image >= 0x2000)
+			v->cur_image -= 0x2000 - _custom_sprites_base;
+
+		/* For some reason we need to correct for this */
+		switch (v->spritenum) {
+			case 0xfd: break;
+			case 0xff: v->spritenum = 0xfe; break;
+			default:   v->spritenum >>= 1; break;
+		}
+
+		if (_old_next_ptr != 0xFFFF)
+			v->next = GetVehicle(_old_next_ptr);
+
+		v->string_id = RemapOldStringID(_old_string_id);
+
+		/* Vehicle-subtype is different in TTD(Patch) */
+		if (v->type == VEH_Special)
+			v->subtype = v->subtype >> 1;
 	}
-	memcpy(_map_extra_bits, m->map_extra, map_size / 4);
 
-	// go through the tables and see if we can find any ttdpatch presignals. Then convert those to our format.
-	for (i = 0; i != map_size; i++) {
+	return true;
+}
+
+static const OldChunks sign_chunk[] = {
+	OCL_SVAR( OC_UINT16, SignStruct, str ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,SignStruct, x ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,SignStruct, y ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, SignStruct, z ),
+
+	OCL_NULL( 6 ),         // Width of sign, no longer in use
+
+	OCL_END()
+};
+static bool LoadOldSign(LoadgameState *ls, int num)
+{
+	if (!AddBlockIfNeeded(&_sign_pool, num))
+		error("Signs: failed loading savegame: too many signs");
+
+	return LoadChunk(ls, GetSign(num), sign_chunk);
+}
+
+static const OldChunks engine_chunk[] = {
+	OCL_SVAR( OC_UINT16, Engine, player_avail ),
+	OCL_SVAR( OC_UINT16, Engine, intro_date ),
+	OCL_SVAR( OC_UINT16, Engine, age ),
+	OCL_SVAR( OC_UINT16, Engine, reliability ),
+	OCL_SVAR( OC_UINT16, Engine, reliability_spd_dec ),
+	OCL_SVAR( OC_UINT16, Engine, reliability_start ),
+	OCL_SVAR( OC_UINT16, Engine, reliability_max ),
+	OCL_SVAR( OC_UINT16, Engine, reliability_final ),
+	OCL_SVAR( OC_UINT16, Engine, duration_phase_1 ),
+	OCL_SVAR( OC_UINT16, Engine, duration_phase_2 ),
+	OCL_SVAR( OC_UINT16, Engine, duration_phase_3 ),
+
+	OCL_SVAR(  OC_UINT8, Engine, lifelength ),
+	OCL_SVAR(  OC_UINT8, Engine, flags ),
+	OCL_SVAR(  OC_UINT8, Engine, preview_player ),
+	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
+	OCL_SVAR(  OC_UINT8, Engine, railtype ),
+
+	OCL_NULL( 1 ),         // Junk
+
+	OCL_END()
+};
+static bool LoadOldEngine(LoadgameState *ls, int num)
+{
+	if (!LoadChunk(ls, &_engines[num], engine_chunk))
+		return false;
+
+	/* Make sure wagons are marked as do-not-age */
+	if ((num >= 27 && num < 54) || (num >= 57 && num < 84) || (num >= 89 && num < 116))
+		_engines[num].age = 0xFFFF;
+
+	return true;
+}
+
+static const OldChunks subsidy_chunk[] = {
+	OCL_SVAR(  OC_UINT8, Subsidy, cargo_type ),
+	OCL_SVAR(  OC_UINT8, Subsidy, age ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Subsidy, from ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Subsidy, to ),
+
+	OCL_END()
+};
+static bool LoadOldSubsidy(LoadgameState *ls, int num)
+{
+	return LoadChunk(ls, &_subsidies[num], subsidy_chunk);
+}
+
+static const OldChunks game_difficulty_chunk[] = {
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, max_no_competitors ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_start_time ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, number_towns ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, number_industries ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, max_loan ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, initial_interest ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, vehicle_costs ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_speed ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_intelligence ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, vehicle_breakdowns ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, subsidy_multiplier ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, construction_cost ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, terrain_type ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, quantity_sea_lakes ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, economy ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, line_reverse_mode ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, disasters ),
+	OCL_END()
+};
+static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
+{
+	return LoadChunk(ls, &_opt.diff, game_difficulty_chunk);
+}
+
+
+static bool LoadOldMapPart1(LoadgameState *ls, int num)
+{
+	uint i;
+
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_map_owner[i] = ReadByte(ls);
+	}
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_map2[i] = ReadByte(ls);
+	}
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_old_map3[i * 2] = ReadByte(ls);
+		_old_map3[i * 2 + 1] = ReadByte(ls);
+	}
+	for (i = 0; i < OLD_MAP_SIZE / 4; i++) {
+		_map_extra_bits[i] = ReadByte(ls);
+	}
+
+	if (ls->failed)
+		return false;
+
+	return true;
+}
+static bool LoadOldMapPart2(LoadgameState *ls, int num)
+{
+	uint i;
+
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_map_type_and_height[i] = ReadByte(ls);
+	}
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_map5[i] = ReadByte(ls);
+	}
+
+	if (ls->failed)
+		return false;
+
+	return true;
+}
+
+
+static uint32 _old_cur_town_ctr;
+static const OldChunks main_chunk[] = {
+	OCL_ASSERT( 0 ),
+	OCL_VAR ( OC_UINT16,   1, &_date ),
+	OCL_VAR ( OC_UINT16,   1, &_date_fract ),
+	OCL_NULL( 600 ),            // TextEffects
+	OCL_VAR ( OC_UINT32,   2, &_random_seeds[0] ),
+
+	OCL_ASSERT( 0x264 ),
+	OCL_CHUNK(  70, LoadOldTown ),
+	OCL_ASSERT( 0x1C18 ),
+	OCL_CHUNK(5000, LoadOldOrder ),
+	OCL_ASSERT( 0x4328 ),
+
+	OCL_VAR (   OC_TILE, 256, &_animated_tile_list[0] ),
+	OCL_NULL( 4 ),              // old end-of-order-list-pointer, no longer in use
+
+	OCL_CHUNK( 255, LoadOldDepot ),
+	OCL_ASSERT( 0x4B26 ),
+
+	OCL_VAR ( OC_UINT32,   1, &_old_cur_town_ctr ),
+	OCL_NULL( 2 ),              // timer_counter, no longer in use
+	OCL_NULL( 2 ),              // land_code,     no longer in use
+
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8, 1, &_age_cargo_skip_counter ),
+	OCL_VAR ( OC_UINT16,   1, &_tick_counter ),
+	OCL_VAR (   OC_TILE,   1, &_cur_tileloop_tile ),
+
+	OCL_CHUNK( 49, LoadOldPrice ),
+	OCL_CHUNK( 12, LoadOldCargoPaymentRate ),
+
+	OCL_ASSERT( 0x4CBA ),
+
+	OCL_CHUNK( 1, LoadOldMapPart1 ),
+
+	OCL_ASSERT( 0x48CBA ),
+
+	OCL_CHUNK(250, LoadOldStation ),
+	OCL_CHUNK( 90, LoadOldIndustry ),
+	OCL_CHUNK(  8, LoadOldPlayer ),
+
+	OCL_ASSERT( 0x547F2 ),
+
+	OCL_CHUNK( 850, LoadOldVehicle ),
+
+	OCL_ASSERT( 0x6F0F2 ),
+
+	OCL_VAR (  OC_UINT8, 32 * 500, &_name_array[0] ),
+
+	OCL_NULL( 0x2000 ),            // Old hash-table, no longer in use
+
+	OCL_CHUNK( 40, LoadOldSign ),
+	OCL_CHUNK(256, LoadOldEngine ),
+
+	OCL_VAR ( OC_UINT16,    1, &_vehicle_id_ctr_day ),
+
+	OCL_CHUNK(  8, LoadOldSubsidy ),
+
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_next_competitor_start ),
+	OCL_VAR ( OC_FILE_I16 | OC_VAR_I32,   1, &_saved_scrollpos_x ),
+	OCL_VAR ( OC_FILE_I16 | OC_VAR_I32,   1, &_saved_scrollpos_y ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8,    1, &_saved_scrollpos_zoom ),
+
+	OCL_VAR ( OC_UINT32,    1, &_economy.max_loan ),
+	OCL_VAR ( OC_UINT32,    1, &_economy.max_loan_unround ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,    1, &_economy.fluct ),
+
+	OCL_VAR ( OC_UINT16,    1, &_disaster_delay ),
+
+	OCL_NULL( 144 ),             // cargo-stuff, calculated in InitializeLandscapeVariables
+
+	OCL_VAR ( OC_UINT16,  256, &_engine_name_strings[0] ),
+
+	OCL_NULL( 144 ),             // AI cargo-stuff, calculated in InitializeLandscapeVariables
+	OCL_NULL( 2 ),               // Company indexes of players, no longer in use
+
+	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
+
+	OCL_VAR (  OC_UINT8,    1, &_opt.currency ),
+	OCL_VAR (  OC_UINT8,    1, &_opt.kilometers ),
+	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
+
+	OCL_NULL( 2 ),               // Date stuff, calculated automaticly
+	OCL_NULL( 8 ),               // Player colors, calculated automaticly
+
+	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
+	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
+	OCL_VAR (  OC_UINT8,    1, &_economy.interest_rate ),
+	OCL_VAR (  OC_UINT8,    1, &_avail_aircraft ),
+	OCL_VAR (  OC_UINT8,    1, &_opt.road_side ),
+	OCL_VAR (  OC_UINT8,    1, &_opt.town_name ),
+
+	OCL_CHUNK( 1, LoadOldGameDifficulty ),
+
+	OCL_ASSERT( 0x77130 ),
+
+	OCL_VAR (  OC_UINT8,    1, &_opt.diff_level ),
+	OCL_VAR (  OC_UINT8,    1, &_opt.landscape ),
+	OCL_VAR (  OC_UINT8,    1, &_trees_tick_ctr ),
+
+	OCL_NULL( 1 ),               // Custom vehicle types yes/no, no longer used
+	OCL_VAR (  OC_UINT8,    1, &_opt.snow_line ),
+
+	OCL_NULL( 32 ),              // new_industry_randtable, no longer used (because of new design)
+	OCL_NULL( 36 ),              // cargo-stuff, calculated in InitializeLandscapeVariables
+
+	OCL_ASSERT( 0x77179 ),
+
+	OCL_CHUNK( 1, LoadOldMapPart2 ),
+
+	OCL_ASSERT( 0x97179 ),
+
+	/* Below any (if available) extra chunks from TTDPatch can follow */
+
+	OCL_END()
+};
+static bool LoadOldMain(LoadgameState *ls)
+{
+	int i;
+
+	/* The first 49 is the name of the game + checksum, skip it */
+	fseek(ls->file, HEADER_SIZE, SEEK_SET);
+
+	DEBUG(oldloader, 4)("[OldLoader] Going to read main chunk..");
+	/* Load the biggest chunk */
+	if (!LoadChunk(&_ls, NULL, main_chunk)) {
+		DEBUG(oldloader, 0)("[OldLoader] Loading failed!");
+		return false;
+	}
+	DEBUG(oldloader, 4)("[OldLoader] Done. Converting stuff..");
+
+	/* Fix some general stuff */
+	_opt.landscape = _opt.landscape & 0xF;
+
+	/* Remap some pointers */
+	_cur_town_ctr      = REMAP_TOWN_IDX(_old_cur_town_ctr);
+
+	/* _old_map3 is changed in _map3_lo and _map3_hi */
+	for (i = 0; i < OLD_MAP_SIZE; i++) {
+		_map3_lo[i] = _old_map3[i * 2];
+		_map3_hi[i] = _old_map3[i * 2 + 1];
+	}
+
+	for (i = 0; i < OLD_MAP_SIZE; i ++) {
+		/* We save presignals different from TTDPatch, convert them */
 		if (IsTileType(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
-			// this byte is always zero in real ttd.
+			/* This byte is always zero in TTD for this type of tile */
 			if (_map3_hi[i]) {
-				// convert ttdpatch presignal format to openttd presignal format.
+				/* Convert the presignals to our own format */
 				_map3_hi[i] = (_map3_hi[i] >> 1) & 7;
 			}
 		}
 	}
 
-	FixTown(m->town_list, lengthof(m->town_list), m->town_name_type);
-	FixIndustry(m->industries, lengthof(m->industries));
-	FixStation(m->stations, lengthof(m->stations));
+	/* Fix the game to be compatible with OpenTTD */
+	FixOldTowns();
+	FixOldStations();
+	FixOldVehicles();
 
-	FixDepot(m->depots, lengthof(m->depots));
-	FixOrder(m->order_list, lengthof(m->order_list));
-	FixVehicle(m->vehicles, lengthof(m->vehicles));
-	FixSubsidy(_subsidies, m->subsidies, lengthof(m->subsidies));
+	AddTypeToEngines();
 
-	FixPlayer(_players, m->players, lengthof(m->players), m->town_name_type);
-	FixName(m->names, lengthof(m->names));
-	FixSign(m->signs, lengthof(m->signs));
-	FixEngine(_engines, m->engines, lengthof(m->engines));
+	/* We have a new difficulty setting */
+	_opt.diff.town_council_tolerance = clamp(_opt.diff_level, 0, 2);
 
-	_opt.diff_level = m->difficulty_level;
-	_opt.currency = m->currency;
-	_opt.kilometers = m->use_kilometers;
-	_opt.town_name = m->town_name_type;
-	_opt.landscape = m->landscape_type & 0xf;
-	_opt.snow_line = m->snow_line_height;
-	_opt.autosave = 0;
-	_opt.road_side = m->road_side;
-	FixGameDifficulty(&_opt.diff, &m->game_diff);
+	DEBUG(oldloader, 4)("[OldLoader] Done!");
+	DEBUG(oldloader, 1)("[OldLoader] TTD(Patch) savegame successfully converted");
 
-	// Load globals
-	_date = m->date;
-	_date_fract = m->date_fract;
-	_tick_counter = m->tick_counter;
-	_vehicle_id_ctr_day = m->vehicle_id_ctr_day;
-	_age_cargo_skip_counter = m->age_cargo_skip_counter;
-	_avail_aircraft = m->avail_aircraft;
-	_cur_tileloop_tile = m->cur_tileloop_tile;
-	_disaster_delay = m->disaster_delay;
-	_station_tick_ctr = m->station_tick_ctr;
-	_random_seeds[0][0] = m->seed_1;
-	_random_seeds[0][1] = m->seed_2;
-	_cur_town_ctr = REMAP_TOWN_IDX(m->cur_town_ptr);
-	_cur_player_tick_index = m->cur_player_tick_index;
-	_next_competitor_start = m->next_competitor_start;
-	_trees_tick_ctr = m->trees_tick_ctr;
-	_saved_scrollpos_x = m->saved_main_scrollpos_x;
-	_saved_scrollpos_y = m->saved_main_scrollpos_y;
-	_saved_scrollpos_zoom = m->saved_main_scrollpos_zoom;
+	return true;
+}
 
-	// Load economy stuff
-	_economy.max_loan = m->maximum_loan;
-	_economy.max_loan_unround = m->maximum_loan_unround;
-	_economy.fluct = m->economy_fluct;
-	_economy.interest_rate = m->interest_rate;
-	_economy.infl_amount = m->inflation_amount;
-	_economy.infl_amount_pr = m->inflation_amount_payment_rates;
+bool LoadOldSaveGame(const char *file)
+{
+	DEBUG(oldloader, 4)("[OldLoader] Trying to load an TTD(Patch) savegame");
 
-	for (i = 0; i != lengthof(m->animated_tile_list); ++i)
-		_animated_tile_list[i] = m->animated_tile_list[i];
-	memcpy(_engine_name_strings, m->engine_name_strings, sizeof(m->engine_name_strings));
+	InitLoading(&_ls);
 
-	for(i=0; i!=lengthof(m->prices); i++) {
-		((uint32*)&_price)[i] = m->prices[i].price;
-		_price_frac[i] = m->prices[i].frac;
+	/* Open file */
+	_ls.file = fopen(file, "rb");
+
+	if (_ls.file == NULL) {
+		DEBUG(oldloader, 0)("[OldLoader] Could not open file %s", file);
+		return false;
 	}
 
-	for(i=0; i!=lengthof(m->cargo_payment_rates); i++) {
-		_cargo_payment_rates[i] = -(int32)m->cargo_payment_rates[i].price;
-		_cargo_payment_rates_frac[i] = m->cargo_payment_rates[i].frac;
-	}
+	/* Load the main chunk */
+	if (!LoadOldMain(&_ls))
+		return false;
 
-	free(m);
-	fclose(lss.fin);
+	fclose(_ls.file);
+
 	return true;
 }
 
@@ -1621,7 +1631,9 @@ void GetOldSaveGameName(char *title, const char *file)
 	title[48] = 0;
 
 	if (!f) return;
-	if (fread(title, 1, 48, f) != 48) title[0] = 0;
+	if (fread(title, 1, 48, f) != 48)
+		title[0] = 0;
+
 	fclose(f);
 }
 

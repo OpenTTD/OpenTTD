@@ -13,6 +13,7 @@
 	extern int _debug_ms_level;
 	extern int _debug_net_level;
 	extern int _debug_spritecache_level;
+	extern int _debug_oldloader_level;
 #endif
 
 void CDECL debug(const char *s, ...);
