@@ -6,6 +6,8 @@
 /* main_gui.c */
 void SetupColorsAndInitialWindow(void);
 void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2);
+void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2);
+void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
 
 /* settings_gui.c */
 void ShowGameOptions(void);
@@ -57,14 +59,23 @@ void ShowBuildAirToolbar(void);
 void ShowPlayerAircraft(int player, int station);
 
 /* terraform_gui.c */
+void ShowTerraformToolbar(void);
+
 void PlaceProc_DemolishArea(uint tile);
 void PlaceProc_LowerLand(uint tile);
 void PlaceProc_RaiseLand(uint tile);
 void PlaceProc_LevelLand(uint tile);
-void ShowTerraformToolbar(void);
+bool GUIPlaceProcDragXY(const WindowEvent *we);
+
+enum { // max 32 - 4 = 28 types
+	GUI_PlaceProc_DemolishArea    = 0 << 4,
+	GUI_PlaceProc_LevelArea       = 1 << 4,
+	GUI_PlaceProc_DesertArea      = 2 << 4,
+	GUI_PlaceProc_WaterArea       = 3 << 4,
+	GUI_PlaceProc_ConvertRailArea = 4 << 4
+};
 
 /* misc_gui.c */
-
 void PlaceLandBlockInfo(void);
 void ShowAboutWindow(void);
 void ShowBuildTreesToolbar(void);

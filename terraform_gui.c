@@ -2,6 +2,7 @@
 #include "ttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "tile.h"
 #include "window.h"
 #include "gui.h"
 #include "viewport.h"
@@ -29,6 +30,59 @@ static void GenericRaiseLowerLand(uint tile, int mode)
 	}
 }
 
+/** Scenario editor command that generates desert areas */
+static void GenerateDesertArea(TileIndex end, TileIndex start)
+{
+	int size_x, size_y;
+	int sx = TileX(start);
+	int sy = TileY(start);
+	int ex = TileX(end);
+	int ey = TileY(end);
+
+	if (_game_mode != GM_EDITOR) return;
+
+	if (ex < sx) intswap(ex, sx);
+	if (ey < sy) intswap(ey, sy);
+	size_x = (ex - sx) + 1;
+	size_y = (ey - sy) + 1;
+
+	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
+		if (GetTileType(tile) != MP_WATER)
+			SetMapExtraBits(tile, GetMapExtraBits(tile) == 1 ? 0 : 1);
+	} END_TILE_LOOP(tile, size_x, size_y, 0);
+}
+
+/**
+ * A central place to handle all X_AND_Y dragged GUI functions.
+ * @param we @WindowEvent variable holding in its higher bits (excluding the lower
+ * 4, since that defined the X_Y drag) the type of action to be performed
+ * @return Returns true if the action was found and handled, and false otherwise. This
+ * allows for additional implements that are more local. For example X_Y drag
+ * of convertrail which belongs in rail_gui.c and not terraform_gui.c
+ **/
+bool GUIPlaceProcDragXY(const WindowEvent *we)
+{
+	TileIndex start_tile = we->place.starttile;
+	TileIndex end_tile = we->place.tile;
+
+	switch (we->place.userdata >> 4) {
+	case GUI_PlaceProc_DemolishArea >> 4:
+		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+		break;
+	case GUI_PlaceProc_LevelArea >> 4:
+		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
+		break;
+	case GUI_PlaceProc_DesertArea >> 4:
+		GenerateDesertArea(end_tile, start_tile);
+		break;
+	case GUI_PlaceProc_WaterArea >> 4:
+		DoCommandP(end_tile, start_tile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+		break;
+	default: return false;
+	}
+
+	return true;
+}
 
 typedef void OnButtonClick(Window *w);
 
@@ -44,7 +98,7 @@ static const uint16 _terraform_keycodes[] = {
 
 void PlaceProc_DemolishArea(uint tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
 }
 
 void PlaceProc_RaiseLand(uint tile)
@@ -59,12 +113,10 @@ void PlaceProc_LowerLand(uint tile)
 
 void PlaceProc_LevelLand(uint tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | (2<<4));
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_LevelArea);
 }
 
-static void PlaceProc_PlantTree(uint tile)
-{
-}
+static void PlaceProc_PlantTree(uint tile) {}
 
 static void TerraformClick_Lower(Window *w)
 {
@@ -101,7 +153,6 @@ static void TerraformClick_PlaceSign(Window *w)
 	HandlePlacePushButton(w, 10, 722, 1, PlaceProc_Sign);
 }
 
-
 static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_Lower,
 	TerraformClick_Raise,
@@ -111,8 +162,6 @@ static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_Trees,
 	TerraformClick_PlaceSign,
 };
-
-
 
 static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 {
@@ -149,20 +198,8 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->click.pt.x != -1) {
-			uint start_tile = e->place.starttile;
-			uint end_tile = e->place.tile;
-
-			if (e->place.userdata == VPM_X_AND_Y) {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-			} else if (e->place.userdata == (VPM_X_AND_Y | (2<<4))) {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
-			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
-//				if (e->click.pt.x != -1) {
-//					DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL,
-//						CMD_PLANT_TREE | CMD_AUTO | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
-			} else {
-				assert(true);
-			}
+			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
+				GUIPlaceProcDragXY(e);
 		}
 		break;
 
@@ -182,20 +219,18 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _terraform_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,     7,   0,  10,   0,  13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION,   RESIZE_NONE,     7,  11, 145,   0,  13, STR_LANDSCAPING_TOOLBAR,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{WWT_STICKYBOX,   RESIZE_NONE,     7, 146, 157,   0,  13, 0x0,                     STR_STICKY_BUTTON},
+{ WWT_CLOSEBOX,   RESIZE_NONE,     7,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{  WWT_CAPTION,   RESIZE_NONE,     7,  11, 145,   0,  13, STR_LANDSCAPING_TOOLBAR, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{WWT_STICKYBOX,   RESIZE_NONE,     7, 146, 157,   0,  13, STR_NULL,                STR_STICKY_BUTTON},
 
-{    WWT_PANEL,   RESIZE_NONE,     7,  66,  69,  14,  35,  0x0,										STR_NULL},
-
-{    WWT_PANEL,   RESIZE_NONE,     7,   0,  21,  14,  35,  695,										STR_018E_LOWER_A_CORNER_OF_LAND},
-{    WWT_PANEL,   RESIZE_NONE,     7,  22,  43,  14,  35,  694,										STR_018F_RAISE_A_CORNER_OF_LAND},
-{    WWT_PANEL,   RESIZE_NONE,     7,  44,  65,  14,  35,  SPR_OPENTTD_BASE+68,		STR_LEVEL_LAND_TOOLTIP},
-{    WWT_PANEL,   RESIZE_NONE,     7,  70,  91,  14,  35,  SPR_IMG_DYNAMITE,			STR_018D_DEMOLISH_BUILDINGS_ETC},
-{    WWT_PANEL,   RESIZE_NONE,     7,  92, 113,  14,  35,  4791,									STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{    WWT_PANEL,   RESIZE_NONE,     7, 114, 135,  14,  35,  742,										STR_0185_PLANT_TREES_PLACE_SIGNS},
-{    WWT_PANEL,   RESIZE_NONE,     7, 136, 157,  14,  35,  SPR_OPENTTD_BASE+70,		STR_0289_PLACE_SIGN},
-
+{    WWT_PANEL,   RESIZE_NONE,     7,  66,  69,  14,  35, STR_NULL,                STR_NULL},
+{    WWT_PANEL,   RESIZE_NONE,     7,   0,  21,  14,  35, SPR_IMG_TERRAFORM_DOWN,  STR_018E_LOWER_A_CORNER_OF_LAND},
+{    WWT_PANEL,   RESIZE_NONE,     7,  22,  43,  14,  35, SPR_IMG_TERRAFORM_UP,    STR_018F_RAISE_A_CORNER_OF_LAND},
+{    WWT_PANEL,   RESIZE_NONE,     7,  44,  65,  14,  35, SPR_IMG_LEVEL_LAND,      STR_LEVEL_LAND_TOOLTIP},
+{    WWT_PANEL,   RESIZE_NONE,     7,  70,  91,  14,  35, SPR_IMG_DYNAMITE,        STR_018D_DEMOLISH_BUILDINGS_ETC},
+{    WWT_PANEL,   RESIZE_NONE,     7,  92, 113,  14,  35, SPR_IMG_BUY_LAND,        STR_0329_PURCHASE_LAND_FOR_FUTURE},
+{    WWT_PANEL,   RESIZE_NONE,     7, 114, 135,  14,  35, SPR_IMG_PLANTTREES,      STR_0185_PLANT_TREES_PLACE_SIGNS},
+{    WWT_PANEL,   RESIZE_NONE,     7, 136, 157,  14,  35, SPR_IMG_PLACE_SIGN,      STR_0289_PLACE_SIGN},
 
 {   WIDGETS_END},
 };
@@ -207,8 +242,6 @@ static const WindowDesc _terraform_desc = {
 	_terraform_widgets,
 	TerraformToolbWndProc
 };
-
-
 
 void ShowTerraformToolbar(void)
 {

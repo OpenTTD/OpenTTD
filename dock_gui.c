@@ -47,7 +47,7 @@ static void PlaceDocks_Buoy(uint tile)
 
 static void PlaceDocks_DemolishArea(uint tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
 }
 
 static void PlaceDocks_BuildCanal(uint tile)
@@ -145,9 +145,9 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->click.pt.x != -1) {
-			if (e->place.userdata == VPM_X_AND_Y)
-				DoCommandP(e->place.tile, e->place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-			else if(e->place.userdata == VPM_X_OR_Y)
+			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
+				GUIPlaceProcDragXY(e);
+			} else if(e->place.userdata == VPM_X_OR_Y)
 				DoCommandP(e->place.tile, e->place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 		}
 		break;
@@ -182,8 +182,8 @@ static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                         STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_OPENTTD_BASE+65,					STR_BUILD_CANALS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_CANALS_BASE+69,					STR_BUILD_LOCKS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,					STR_BUILD_CANALS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,					STR_BUILD_LOCKS_TIP},
 
 {      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,													STR_NULL},
 

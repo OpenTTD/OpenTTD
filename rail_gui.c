@@ -203,7 +203,7 @@ void PlaceProc_BuyLand(uint tile)
 
 static void PlaceRail_ConvertRail(uint tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | (1<<4));
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_ConvertRailArea);
 }
 
 static void PlaceRail_AutoSignals(uint tile)
@@ -436,8 +436,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->click.pt.x != -1) {
-			uint start_tile = e->place.starttile;
-			uint end_tile = e->place.tile;
+			TileIndex start_tile = e->place.starttile;
+			TileIndex end_tile = e->place.tile;
 
 			if (e->place.userdata == VPM_X_OR_Y) {
 				ResetObjectToPlace();
@@ -449,12 +449,11 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				_remove_button_clicked = old;
 			} else if (e->place.userdata == VPM_SIGNALDIRS) {
 				HandleAutoSignalPlacement();
-			} else if (e->place.userdata == VPM_X_AND_Y) {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-			} else if (e->place.userdata == (VPM_X_AND_Y | (1<<4))) {
-				DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
-			} else if (e->place.userdata == (VPM_X_AND_Y | (2<<4))) {
-				DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
+			} else if ((e->place.userdata & 0xF) == VPM_X_AND_Y) {
+				if (GUIPlaceProcDragXY(e)) break;
+
+				if ((e->place.userdata >> 0xF) == GUI_PlaceProc_ConvertRailArea)
+					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
 			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
 			} else

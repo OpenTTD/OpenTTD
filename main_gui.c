@@ -49,8 +49,6 @@ extern void GenerateWorld(int mode, uint log_x, uint log_y);
 extern void GenerateIndustries(void);
 extern void GenerateTowns(void);
 
-extern void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
-
 void HandleOnEditTextCancel(void)
 {
 	switch(_rename_what) {
@@ -1145,6 +1143,15 @@ static void AskResetLandscape(uint mode)
 	AllocateWindowDescFront(&_ask_reset_landscape_desc, mode);
 }
 
+// TODO - Incorporate into game itself to allow for ingame raising/lowering of
+// larger chunks at the same time OR remove altogether, as we have 'level land' ?
+/**
+ * Raise/Lower a bigger chunk of land at the same time in the editor. When
+ * raising get the lowest point, when lowering the highest point, and set all
+ * tiles in the selection to that height.
+ * @param tile The top-left tile where the terraforming will start
+ * @param mode 1 for raising, 0 for lowering land
+ */
 static void CommonRaiseLowerBigLand(uint tile, int mode)
 {
 	int size;
@@ -1152,9 +1159,7 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 
 	_error_message_2 = mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
 
-	_generating_world = true;
-
-//	tile = TILE_FROM_XY(TileX(tile) * 16 + _tile_fract_coords.x + 8, TileY(tile) * 16 + _tile_fract_coords.y + 8);
+	_generating_world = true; // used to create green terraformed land
 
 	if (_terraform_size == 1) {
 		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(_error_message_2));
@@ -1165,7 +1170,7 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 		assert(size != 0);
 		if (mode != 0) {
 			/* Raise land */
-			h = 15;
+			h = 15; // XXX - max height
 			BEGIN_TILE_LOOP(tile2, size, size, tile)
 				h = min(h, TileHeight(tile2));
 			END_TILE_LOOP(tile2, size, size, tile)
@@ -1196,20 +1201,6 @@ static void PlaceProc_LowerBigLand(uint tile)
 {
 	CommonRaiseLowerBigLand(tile, 0);
 }
-
-//void CcDemolish(bool success, uint tile, uint32 p1, uint32 p2)
-//{
-//	if (success) {
-		//SndPlayTileFx(0x10, tile);
-		//CreateEffectVehicleAbove(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8, 2, EV_DEMOLISH);
-//	}
-//}
-
-//void PlaceProc_Demolish(uint tile)
-//{
-//	DoCommandP(tile, 0, 0, CcDemolish, CMD_LANDSCAPE_CLEAR | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-//}
-
 
 static void PlaceProc_RockyArea(uint tile)
 {
@@ -1244,27 +1235,34 @@ static void PlaceProc_Transmitter(uint tile)
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
-static void PlaceProc_Desert(uint tile)
+static void PlaceProc_DesertArea(TileIndex tile)
 {
-	SetMapExtraBits(tile, GetMapExtraBits(tile) == 1 ? 0 : 1);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DesertArea);
+}
+
+static void PlaceProc_WaterArea(TileIndex tile)
+{
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_WaterArea);
 }
 
 static const Widget _scen_edit_land_gen_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   153,     0,    13, STR_0223_LAND_GENERATION,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   153,    14,    99, 0x0,				STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, 0x2B6,			STR_018F_RAISE_A_CORNER_OF_LAND},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, 0x2B7,			STR_018E_LOWER_A_CORNER_OF_LAND},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, 0x2BF,			STR_018D_DEMOLISH_BUILDINGS_ETC},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   125,   135,    43,    54, STR_0224,	STR_0228_INCREASE_SIZE_OF_LAND_AREA},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   125,   135,    56,    67, STR_0225,	STR_0229_DECREASE_SIZE_OF_LAND_AREA},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    20,   135,    75,    86, STR_0226_RANDOM_LAND,		STR_022A_GENERATE_RANDOM_LAND},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    20,   135,    88,    99, STR_0227_RESET_LAND,			STR_022B_RESET_LANDSCAPE},
+{   WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
+{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,   RESIZE_NONE,     7,   170,   181,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
+{    WWT_IMGBTN,   RESIZE_NONE,     7,     0,   181,    14,   101, STR_NULL,                  STR_NULL},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    88,   109,    14,    35, 0xFF4,			STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   110,   131,    14,    35, 0xFF5,			STR_028D_PLACE_LIGHTHOUSE},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   132,   153,    14,    35, 0xFF6,			STR_028E_PLACE_TRANSMITTER},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, SPR_OPENTTD_BASE+68,			STR_LEVEL_LAND_TOOLTIP},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    14,    35, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    14,    35, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    14,    35, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    14,    35, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    14,    35, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   134,    14,    35, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   135,   157,    14,    35, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL}, // XXX - dynamic
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   158,   179,    14,    35, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,   139,   149,    43,    54, STR_0224,                  STR_0228_INCREASE_SIZE_OF_LAND_AREA},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,   139,   149,    56,    67, STR_0225,                  STR_0229_DECREASE_SIZE_OF_LAND_AREA},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   149,    75,    86, STR_0226_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   149,    88,    99, STR_0227_RESET_LAND,       STR_022B_RESET_LANDSCAPE},
 {   WIDGETS_END},
 };
 
@@ -1279,12 +1277,80 @@ static const int8 _multi_terraform_coords[][2] = {
 	{-28,  0},{-24, -2},{-20, -4},{-16, -6},{-12, -8},{ -8,-10},{ -4,-12},{  0,-14},{  4,-12},{  8,-10},{ 12, -8},{ 16, -6},{ 20, -4},{ 24, -2},{ 28,  0},
 };
 
+// TODO - Merge with terraform_gui.c (move there) after I have cooled down at its braindeadness
+// and changed OnButtonClick to include the widget as well in the function decleration. Post 0.4.0 - Darkvater
+static void EditorTerraformClick_Dynamite(Window *w)
+{
+	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
+}
+
+static void EditorTerraformClick_LowerBigLand(Window *w)
+{
+	HandlePlacePushButton(w, 5, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerBigLand);
+}
+
+static void EditorTerraformClick_RaiseBigLand(Window *w)
+{
+	HandlePlacePushButton(w, 6, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseBigLand);
+}
+
+static void EditorTerraformClick_LevelLand(Window *w)
+{
+	HandlePlacePushButton(w, 7, SPR_CURSOR_LEVEL_LAND, 2, PlaceProc_LevelLand);
+}
+
+static void EditorTerraformClick_WaterArea(Window *w)
+{
+	HandlePlacePushButton(w, 8, SPR_CURSOR_CANAL, 1, PlaceProc_WaterArea);
+}
+
+static void EditorTerraformClick_RockyArea(Window *w)
+{
+	HandlePlacePushButton(w, 9, SPR_CURSOR_ROCKY_AREA, 1, PlaceProc_RockyArea);
+}
+
+static void EditorTerraformClick_DesertLightHouse(Window *w)
+{
+	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, 1, (_opt.landscape == LT_DESERT) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+}
+
+static void EditorTerraformClick_Transmitter(Window *w)
+{
+	HandlePlacePushButton(w, 11, SPR_CURSOR_TRANSMITTER, 1, PlaceProc_Transmitter);
+}
+
+static const uint16 _editor_terraform_keycodes[] = {
+	'D',
+	'Q',
+	'W',
+	'E',
+	'R',
+	'T',
+	'Y',
+	'U'
+};
+
+typedef void OnButtonClick(Window *w);
+static OnButtonClick * const _editor_terraform_button_proc[] = {
+	EditorTerraformClick_Dynamite,
+	EditorTerraformClick_LowerBigLand,
+	EditorTerraformClick_RaiseBigLand,
+	EditorTerraformClick_LevelLand,
+	EditorTerraformClick_WaterArea,
+	EditorTerraformClick_RockyArea,
+	EditorTerraformClick_DesertLightHouse,
+	EditorTerraformClick_Transmitter
+};
+
 static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
+	case WE_CREATE:
+		// XXX - lighthouse button is widget 10!! Don't forget when changing
+		w->widget[10].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+		break;
+
 	case WE_PAINT:
-		// XXX - lighthouse button is widget 11!! Don't forget when changing
-		w->widget[11].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		DrawWindowWidgets(w);
 
 		{
@@ -1293,93 +1359,71 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 			assert(n != 0);
 			do {
-				DrawSprite(0xFEF, 77 + coords[0], 55 + coords[1]);
+				DrawSprite(SPR_WHITE_POINT, 77 + coords[0], 55 + coords[1]);
 				coords += 2;
 			} while (--n);
 		}
 
-		if (_thd.window_class == WC_SCEN_LAND_GEN && (w->click_state&(1<<3|1<<4))) {
+		if (w->click_state & ( 1 << 5 | 1 << 6)) // change area-size if raise/lower corner is selected
 			SetTileSelectSize(_terraform_size, _terraform_size);
-		}
+
 		break;
+
+	case WE_KEYPRESS: {
+		int i;
+
+		for (i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
+			if (e->keypress.keycode == _editor_terraform_keycodes[i]) {
+				e->keypress.cont = false;
+				_editor_terraform_button_proc[i](w);
+				break;
+			}
+		}
+	} break;
+
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 3: /* raise corner */
-			HandlePlacePushButton(w, 3, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseBigLand);
+		case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
+			_editor_terraform_button_proc[e->click.widget - 4](w);
 			break;
-		case 4: /* lower corner */
-			HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerBigLand);
-			break;
-		case 5: /* demolish */
-			HandlePlacePushButton(w, 5, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
-			break;
-		{
-			int size;
-		case 6: /* increase terraform size */
-			HandleButtonClick(w, 6);
-			size = 1;
-			goto terraform_size_common;
-		case 7: /* decrease terraform size */
-			HandleButtonClick(w, 7);
-			size = -1;
-terraform_size_common:;
+		case 12: case 13: { /* Increase/Decrease terraform size */
+			int size = (e->click.widget == 12) ? 1 : -1;
+			HandleButtonClick(w, e->click.widget);
 			size += _terraform_size;
-			if (!IS_INT_INSIDE(size, 1, 8+1))
-				return;
+
+			if (!IS_INT_INSIDE(size, 1, 8 + 1))	return;
 			_terraform_size = size;
+
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
-			break;
-		}
-
-		case 8: /* gen random land */
-			HandleButtonClick(w, 8);
+		} break;
+		case 14: /* gen random land */
+			HandleButtonClick(w, 14);
 			AskResetLandscape(0);
 			break;
-
-		case 9: /* reset landscape */
-			HandleButtonClick(w,9);
+		case 15: /* reset landscape */
+			HandleButtonClick(w,15);
 			AskResetLandscape(1);
-			break;
-
-		case 10: /* place rocky areas */
-			HandlePlacePushButton(w, 10, 0xFF7, 1, PlaceProc_RockyArea);
-			break;
-
-		case 11: /* place lighthouse */
-			HandlePlacePushButton(w, 11, 0xFF8, 1, _opt.landscape == LT_DESERT ? PlaceProc_Desert : PlaceProc_LightHouse);
-			break;
-
-		case 12: /* place transmitter */
-			HandlePlacePushButton(w, 12, 0xFF9, 1, PlaceProc_Transmitter);
-			break;
-
-		case 13: /* level Land */
-			HandlePlacePushButton(w, 13, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
 			break;
 		}
 		break;
+
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, ~(1<<3 | 1<<4 | 1<<5 | 1<<10 | 1<<11 | 1<<12));
+		UnclickSomeWindowButtons(w, ~(1<<4 | 1<<5 | 1<<6 | 1<<7 | 1<<8 | 1<<9 | 1<<10 | 1<<11));
 		break;
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
 		break;
-	case WE_PLACE_DRAG: {
+	case WE_PLACE_DRAG:
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata & 0xF);
-		return;
-	}
+		break;
+
 	case WE_PLACE_MOUSEUP:
 		if (e->click.pt.x != -1) {
-			uint start_tile = e->place.starttile;
-			uint end_tile = e->place.tile;
-			if (e->place.userdata == VPM_X_AND_Y) {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-			} else if (e->place.userdata == (VPM_X_AND_Y | (2<<4))) {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
-			}
+			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
+				GUIPlaceProcDragXY(e);
 		}
-	break;
+		break;
 
 	case WE_ABORT_PLACE_OBJ:
 		w->click_state = 0;
@@ -1389,19 +1433,24 @@ terraform_size_common:;
 }
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	-1,-1, 154, 100,
+	-1,-1, 182, 102,
 	WC_SCEN_LAND_GEN,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
 	ScenEditLandGenWndProc,
 };
+
+static inline void ShowEditorTerraformToolBar(void)
+{
+	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
+}
 
 static void ToolbarScenGenLand(Window *w)
 {
 	HandleButtonClick(w, 11);
 	SndPlayFx(SND_15_BEEP);
 
-	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
+	ShowEditorTerraformToolBar();
 }
 
 void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
@@ -1419,15 +1468,16 @@ static void PlaceProc_Town(uint tile)
 
 
 static const Widget _scen_edit_town_gen_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   159,     0,    13, STR_0233_TOWN_GENERATION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   159,    14,    81, 0x0,												STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    16,    27, STR_0234_NEW_TOWN,					STR_0235_CONSTRUCT_NEW_TOWN},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    29,    40, STR_023D_RANDOM_TOWN,			STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,			STR_RANDOM_TOWNS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,    53,    68,    79, STR_02A1_SMALL,						STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    54,   105,    68,    79, STR_02A2_MEDIUM,						STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   106,   157,    68,    79, STR_02A3_LARGE,						STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   159,    14,    81, 0x0,                      STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,    53,    68,    79, STR_02A1_SMALL,           STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    54,   105,    68,    79, STR_02A2_MEDIUM,          STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   106,   157,    68,    79, STR_02A3_LARGE,           STR_02A4_SELECT_TOWN_SIZE},
 {   WIDGETS_END},
 };
 
@@ -1435,20 +1485,20 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(1<<6 | 1<<7 | 1<<8) ) | (1 << (_new_town_size + 6));
+		w->click_state = (w->click_state & ~(1<<7 | 1<<8 | 1<<9) ) | (1 << (_new_town_size + 7));
 		DrawWindowWidgets(w);
 		DrawStringCentered(80, 56, STR_02A5_TOWN_SIZE, 0);
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 3: /* new town */
-			HandlePlacePushButton(w, 3, 0xFF0, 1, PlaceProc_Town);
+		switch (e->click.widget) {
+		case 4: /* new town */
+			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, 1, PlaceProc_Town);
 			break;
-		case 4: {/* random town */
+		case 5: {/* random town */
 			Town *t;
 
-			HandleButtonClick(w, 4);
+			HandleButtonClick(w, 5);
 			_generating_world = true;
 			t = CreateRandomTown(20);
 			_generating_world = false;
@@ -1456,8 +1506,8 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 				ScrollMainWindowToTile(t->xy);
 			break;
 		}
-		case 5: {/* many random towns */
-			HandleButtonClick(w, 5);
+		case 6: {/* many random towns */
+			HandleButtonClick(w, 6);
 			_generating_world = true;
 			_game_mode = GM_NORMAL; // little hack to avoid towns of the same size
 			GenerateTowns();
@@ -1466,15 +1516,15 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case 6: case 7: case 8:
-			_new_town_size = e->click.widget - 6;
+		case 7: case 8: case 9:
+			_new_town_size = e->click.widget - 7;
 			SetWindowDirty(w);
 			break;
 		}
 		break;
 
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, 1<<4 | 1<<5);
+		UnclickSomeWindowButtons(w, 1<<5 | 1<<6);
 		break;
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
@@ -1489,7 +1539,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _scen_edit_town_gen_desc = {
 	-1,-1, 160, 82,
 	WC_SCEN_TOWN_GEN,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
 	ScenEditTownGenWndProc,
 };
@@ -2308,7 +2358,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			break;
 
 		case 'L':
-			ShowTerraformToolbar();
+  		if (_game_mode == GM_EDITOR) {
+  			ShowEditorTerraformToolBar();
+  		} else
+  			ShowTerraformToolbar();
 			break;
 
 		case 'X':

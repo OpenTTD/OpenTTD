@@ -179,33 +179,32 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
-	int32 ret;
-	uint th;
-	uint endtile = (uint)p1;
-	int delta;
-	int32 cost;
+	int32 ret, cost;
+	int size_x, size_y;
+	int sx = TileX((TileIndex)p1);
+	int sy = TileY((TileIndex)p1);
+	x >>= 4; y >>= 4;
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// move in which direction?
-	delta = (TileX(tile) == TileX(endtile)) ? TILE_XY(0,1) : TILE_XY(1,0);
-	if (endtile < tile) delta = -delta;
+	if (x < sx) intswap(x, sx);
+	if (y < sy) intswap(y, sy);
+	size_x = (x - sx) + 1;
+	size_y = (y - sy) + 1;
 
 	cost = 0;
-	for(;;) {
+	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
 		ret = 0;
-		th = GetTileSlope(tile, NULL);
-		if(th!=0)
+		if (GetTileSlope(tile, NULL) != 0)
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
 			// can't make water of water!
 			if (IsTileType(tile, MP_WATER)) {
 				_error_message = STR_1007_ALREADY_BUILT;
 			} else {
-
 				/* is middle piece of a bridge? */
 				if (IsTileType(tile, MP_TUNNELBRIDGE) && _map5[tile] & 0x40) { /* build under bridge */
-					if(_map5[tile] & 0x20) { // transport route under bridge
+					if (_map5[tile] & 0x20) { // transport route under bridge
 						_error_message = STR_5800_OBJECT_IN_THE_WAY;
 						ret = CMD_ERROR;
 					}
@@ -213,11 +212,10 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						_error_message = STR_1007_ALREADY_BUILT;
 						ret = CMD_ERROR;
 					}
-
 				/* no bridge? then try to clear it. */
-				} else  {
+				} else
 					ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-				}
+
 				if (ret == CMD_ERROR) return ret;
 				cost += ret;
 
@@ -235,13 +233,9 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				cost += _price.clear_water;
 			}
-		if (tile == endtile)
-			break;
-		tile += delta;
-	}
-	if (cost == 0) return CMD_ERROR;
+	} END_TILE_LOOP(tile, size_x, size_y, 0);
 
-	return cost;
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
 static int32 ClearTile_Water(uint tile, byte flags) {

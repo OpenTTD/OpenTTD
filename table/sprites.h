@@ -677,9 +677,12 @@ enum Sprites {
 	SPR_IMG_TERRAFORM_DOWN  = 695,
 	SPR_IMG_DYNAMITE        = 703,
 	SPR_IMG_ROCKS           = 4084,
-	SPR_IMG_LIGHTHOUSE      = 4085,
+	SPR_IMG_LIGHTHOUSE_DESERT = 4085, // XXX - is Desert image on the desert-climate
 	SPR_IMG_TRANSMITTER     = 4086,
 	SPR_IMG_LEVEL_LAND      = SPR_OPENTTD_BASE + 68,
+	SPR_IMG_BUILD_CANAL     = SPR_OPENTTD_BASE + 65,
+	SPR_IMG_BUILD_LOCK      = SPR_CANALS_BASE + 69,
+	SPR_IMG_PLACE_SIGN      = SPR_OPENTTD_BASE + 70,
 	SPR_IMG_PAUSE           = 726,
 	SPR_IMG_FASTFORWARD     = SPR_OPENTTD_BASE + 57,
 	SPR_IMG_SETTINGS        = 751,
@@ -709,6 +712,7 @@ enum Sprites {
 	SPR_IMG_QUERY           = 723,
 	SPR_IMG_PLANTTREES      = 742,
 	SPR_IMG_SIGN            = 4082,
+	SPR_IMG_BUY_LAND        = 4791,
 
 	/* OPEN TRANSPORT TYCOON in gamescreen */
 	SPR_OTTD_O                = 4842,
