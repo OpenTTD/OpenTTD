@@ -133,7 +133,10 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 							So we'll just shift the rating one back if player is AI and all is fine
 						*/
 					SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
-					DrawString(19, y, STR_2024, (t->exclusivity==p->index)?3:0);
+					if (t->exclusivity == p->index) // red icon for player with exclusive rights
+						DrawSprite((SPR_OPENTTD_BASE + 10) | 0x30b8000, 18, y);
+
+					DrawString(28, y, STR_2024, 0);
 					y+=10;
 				}
 			}
