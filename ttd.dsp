@@ -7,19 +7,19 @@
 CFG=ttd - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE 
+!MESSAGE
 !MESSAGE NMAKE /f "ttd.mak".
-!MESSAGE 
+!MESSAGE
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE 
+!MESSAGE
 !MESSAGE NMAKE /f "ttd.mak" CFG="ttd - Win32 Checked"
-!MESSAGE 
+!MESSAGE
 !MESSAGE Possible choices for configuration are:
-!MESSAGE 
+!MESSAGE
 !MESSAGE "ttd - Win32 Release" (based on "Win32 (x86) Console Application")
 !MESSAGE "ttd - Win32 Debug" (based on "Win32 (x86) Console Application")
-!MESSAGE 
+!MESSAGE
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -80,7 +80,7 @@ LINK32=link.exe
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
 # SUBTRACT LINK32 /pdb:none
 
-!ENDIF 
+!ENDIF
 
 # Begin Target
 
@@ -181,7 +181,7 @@ SOURCE=.\minilzo.c
 
 # SUBTRACT CPP /YX
 
-!ENDIF 
+!ENDIF
 
 # End Source File
 
@@ -271,7 +271,7 @@ SOURCE=.\StdAfx.c
 
 !ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
 
-!ENDIF 
+!ENDIF
 
 # End Source File
 
@@ -311,7 +311,7 @@ SOURCE=.\unix.c
 
 # PROP Exclude_From_Build 1
 
-!ENDIF 
+!ENDIF
 
 # End Source File
 
@@ -345,7 +345,7 @@ SOURCE=.\w32dm2.cpp
 
 !ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
 
-!ENDIF 
+!ENDIF
 
 # End Source File
 
