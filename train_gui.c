@@ -816,6 +816,10 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		w->disabled_state = (v->owner == _local_player) ? 0 : 0x380;
 
+		if (v->cargo_cap == 0) {
+			//we cannot refit this engine
+			SETBIT(w->disabled_state, 12);
+		}
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
