@@ -1809,7 +1809,6 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_PAUSE:
 			ToolbarPauseClick(w);
 			break;
-		case 'L': ShowTerraformToolbar(); break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
 		case WKC_F4: ShowSmallMap(); break;
@@ -1835,7 +1834,6 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
 		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
-		case WKC_BACKQUOTE: IConsoleSwitch(); e->keypress.cont=false; break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
 		}
 	} break;
@@ -2324,9 +2322,18 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			ShowBuildRailToolbar(_last_built_railtype, 0);
 			break;
 
+		case 'L': 
+			ShowTerraformToolbar(); 
+			break;
+
 		case 'X':
 			_display_opt ^= DO_TRANS_BUILDINGS;
 			MarkWholeScreenDirty();
+			break;
+
+		case WKC_BACKQUOTE: 
+			IConsoleSwitch(); 
+			e->keypress.cont=false; 
 			break;
 
 #ifdef ENABLE_NETWORK

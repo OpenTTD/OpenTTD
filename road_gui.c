@@ -192,6 +192,10 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 	}	break;
 
 	case WE_KEYPRESS:
+		// check if we have a query string window open before allowing hotkeys
+		if(FindWindowById(WC_QUERY_STRING, 0)!=NULL)
+			break;
+
 		switch(e->keypress.keycode) {
 		case '1': BuildRoadClick_NE(w); break;
 		case '2': BuildRoadClick_NW(w); break;
