@@ -34,11 +34,8 @@ build-stamp: configure-stamp
 
 	# Add here commands to compile the package.
 	
-	# we specifiy MANUAL_CONFIG here, so our settings take precedence over
-	# the ones in the existing Makefile.config (actually, the existing
-	# Makefile.config is not used at all, though it is overwritten)
 	rm Makefile.config
-	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 
+	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd PERSONAL_DIR=.openttd USE_HOMEDIR=1
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
 
