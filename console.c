@@ -602,6 +602,7 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 		if (cmdline[i] == '%') {
 			i++;
 			if (cmdline[i] == '+') {
+				// all params seperated: "[param 1]" "[param 2]"
 				t=1;
 				while ((tokens[t]!=NULL) && (t<20) && 
 						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
@@ -617,10 +618,30 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 					x += l2+3;
 					t++;
 				}
+			} else if (cmdline[i] == '!') {
+				// merge the params to one: "[param 1] [param 2] [param 3...]"
+				t=1;
+				*linestream = '"';
+				linestream++;
+				while ((tokens[t]!=NULL) && (t<20) && 
+						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
+					int l2 = strlen(tokens[t]);
+					memcpy(linestream,tokens[t],l2);
+					linestream += l2;
+					*linestream = ' ';
+					linestream++;
+					x += l2+1;
+					t++;
+				}
+				*linestream = '"';
+				linestream++;
+				x += 2;
 			} else {
+				// one specific parameter: %A = [param 1] %B = [param 2] ...
 				int l2;
 				t = ((byte)cmdline[i]) - 64;
-				if ((t<20) && (tokens[t]!=NULL)) {
+				if ((t<20) && (tokens[t]!=NULL) && 
+						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
 					l2 = strlen(tokens[t]);
 					*linestream = '"';
 					linestream++;
@@ -632,6 +653,7 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 				}
 			}
 		} else if (cmdline[i] == '\\') {
+			// \\ = \       \' = '      \% = %
 			i++;
 			if (cmdline[i] == '\\') {
 				*linestream = '\\';
@@ -639,11 +661,16 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 			} else if (cmdline[i] == '\'') {
 				*linestream = '\'';
 				linestream++;
+			} else if (cmdline[i] == '%') {
+				*linestream = '%';
+				linestream++;
 			}
 		} else if (cmdline[i] == '\'') {
+			// ' = "
 			*linestream = '"';
 			linestream++;
 		} else if (cmdline[i] == ';') {
+			// ; = start a new line
 			c++;
 			*linestream = '\0';
 			linestream += 1024 - (x % 1024);

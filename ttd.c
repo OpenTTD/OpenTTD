@@ -644,6 +644,8 @@ int ttd_main(int argc, char* argv[])
 
 	// initialize the ingame console
 	IConsoleInit();
+	IConsoleCmdExec("exec scripts/autoexec.scr 0");
+	
 	InitPlayerRandoms();
 
 #ifdef ENABLE_NETWORK

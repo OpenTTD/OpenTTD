@@ -367,8 +367,17 @@ DEF_CONSOLE_CMD(ConPrintFC)
 
 DEF_CONSOLE_CMD(ConAlias)
 {
+	_iconsole_alias* alias;
+
 	if (argc < 3) return NULL;
-	IConsoleAliasRegister(argv[1],argv[2]);
+
+	alias = IConsoleAliasGet(argv[1]);
+	if (alias == NULL) {
+		IConsoleAliasRegister(argv[1],argv[2]);
+	} else {
+		free(alias->cmdline);
+		alias->cmdline = strdup(argv[2]);
+	}
 	return NULL;
 }
 

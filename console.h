@@ -85,6 +85,8 @@ typedef struct _iconsole_alias {
 	void* _next;
 } _iconsole_alias;
 
+_iconsole_alias* IConsoleAliasGet(const char* name);
+
 // ** console parser ** //
 
 _iconsole_cmd* _iconsole_cmds; // list of registred commands
