@@ -1612,18 +1612,17 @@ static void SkipIf(byte *buf, int len)
 	condtype = buf[3];
 
 	if (condtype < 2) {
-		/* Always 1 for bit tests, the given value should
-		 * be ignored. */
+		/* Always 1 for bit tests, the given value should be ignored. */
 		paramsize = 1;
 	}
 
 	buf += 4;
-	if (paramsize == 4)
-		cond_val = grf_load_dword(&buf);
-	else if (paramsize == 2)
-		cond_val = grf_load_word(&buf);
-	else if (paramsize == 1)
-		cond_val = grf_load_byte(&buf);
+	switch (paramsize) {
+		case 4: cond_val = grf_load_dword(&buf); break;
+		case 2: cond_val = grf_load_word(&buf);  break;
+		case 1: cond_val = grf_load_byte(&buf);  break;
+		default: break;
+	}
 
 	switch (param) {
 		case 0x83:    /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
@@ -1640,10 +1639,7 @@ static void SkipIf(byte *buf, int len)
 			param_val = _opt.road_side << 4;
 			break;
 		case 0x88: {  /* see if specified GRFID is active */
-			GRFFile *file;
-
-			file = GetFileByGRFID(cond_val);
-			param_val = (file != NULL);
+			param_val = (GetFileByGRFID(cond_val) != NULL);
 		}	break;
 		case 0x8B:    /* TTDPatch version */
 			param_val = 0xFFFF;
@@ -2053,23 +2049,21 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 		/* 0xd */ ParamSet,
 		/* 0xe */ GRFInhibit,
 	};
-	static int initialized;
+	static bool initialized = false;
 	byte action;
 	byte *buf = malloc(num);
-	int i;
 
 	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 
-	if (initialized == 0) {
+	if (!initialized) {
 		InitializeGRFSpecial();
-		initialized = 1;
+		initialized = true;
 	}
 
 	_cur_stage = stage;
 	_cur_spriteid = spriteid;
 
-	for (i = 0; i != num; i++)
-		buf[i] = FioReadByte();
+	FioReadBlock(buf, num);
 
 	action = buf[0];
 
@@ -2084,21 +2078,28 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 	 * --pasky */
 
 	if (stage == 0) {
-		/* During initialization, actions 0, 1, 2, 3, 4, 5 and 7 are ignored. */
+		switch (action) {
+			case 0x00:
+			case 0x01:
+			case 0x02:
+			case 0x03:
+			case 0x04:
+			case 0x05:
+			case 0x07:
+				/* During initialization, these actions are ignored. */
+				DEBUG (grf, 7) (
+					"DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
+				break;
 
-		if ((action == 0x00) || (action == 0x01) || (action == 0x02) || (action == 0x03)
-		    || (action == 0x04) || (action == 0x05) || (action == 0x07)) {
-			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
-			/* Do nothing. */
-
-		} else if (action < NUM_ACTIONS) {
-			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
- 			handlers[action](buf, num);
-
-		} else {
-			grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
+			default:
+				if (action < NUM_ACTIONS) {
+					DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
+ 					handlers[action](buf, num);
+				} else {
+					grfmsg(GMS_WARN,
+						"Unknown special sprite action %x, skipping.", action);
+				}
 		}
-
 	} else if (stage == 1) {
 		/* A .grf file is activated only if it was active when the game was
 		 * started.  If a game is loaded, only its active .grfs will be
@@ -2110,30 +2111,43 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 		 * carried out.  All others are ignored, because they only need to be
 		 * processed once at initialization.  */
 
-		if ((_cur_grffile == NULL) || strcmp(_cur_grffile->filename, filename))
+		if (_cur_grffile == NULL || strcmp(_cur_grffile->filename, filename) != 0)
 			_cur_grffile = GetFileByFilename(filename);
 
 		if (_cur_grffile == NULL)
 			error("File ``%s'' lost in cache.\n", filename);
 
-		if (!(_cur_grffile->flags & 0x0001)) {
-			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
-			/* Do nothing. */
+		if (_cur_grffile->flags & 0x0001) {
+			switch (action) {
+				case 0x00:
+				case 0x01:
+				case 0x02:
+				case 0x03:
+				case 0x04:
+				case 0x05:
+				case 0x07:
+				case 0x08:
+				case 0x09:
+				case 0x0A:
+				case 0x0B:
+					DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
+					handlers[action](buf, num);
+					break;
 
-		} else if ((action == 0x00) || (action == 0x01) || (action == 0x02) || (action == 0x03)
-			   || (action == 0x04) || (action == 0x05) || (action == 0x07) || (action == 0x08)
-			   || (action == 0x09) || (action == 0x0A) || (action == 0x0B)) {
-			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
-			handlers[action](buf, num);
-
-		} else if (action < NUM_ACTIONS) {
-			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
-			/* Do nothing. */
-
+				default:
+					if (action < NUM_ACTIONS) {
+						DEBUG (grf, 7) (
+							"DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
+					} else {
+						grfmsg(GMS_WARN,
+							"Unknown special sprite action %x, skipping.", action);
+					}
+					break;
+			}
 		} else {
-			grfmsg(GMS_WARN, "Unknown special sprite action %x, skipping.", action);
+			DEBUG (grf, 7) (
+				"DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
 		}
-
 	} else {
 		error("Invalid stage %d", stage);
 	}
