@@ -1083,6 +1083,9 @@ STR_SUB_ARCTIC_LANDSCAPE					:Sub-arctic landscape
 STR_SUB_TROPICAL_LANDSCAPE					:Sub-tropical landscape
 STR_TOYLAND_LANDSCAPE						:Toyland landscape
 
+STR_MAP_HEIGHT_TIP						:Generated map height in tiles
+STR_MAP_WIDTH_TIP						:Generated map width in tiles
+
 STR_CHEATS							:{WHITE}Cheats
 STR_CHEATS_TIP							:{BLACK}Checkboxes indicate if you have used this cheat before
 STR_CHEATS_WARNING						:{BLACK}Warning! You are about to betray your fellow competitors. Keep in mind that such a disgrace will be remembered for eternity.

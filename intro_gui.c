@@ -22,21 +22,40 @@ static void ShowSelectTutorialWindow()
  * a highly unusual concept, guys, but I hope you'll manage to follow. --pasky */
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,       STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 196, 0x0,                    STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 233, 0x0,                    STR_NULL},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  22,  33, STR_0140_NEW_GAME,      STR_02FB_START_A_NEW_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  22,  33, STR_0141_LOAD_GAME,     STR_02FC_LOAD_A_SAVED_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  40,  51, STR_0220_CREATE_SCENARIO,STR_02FE_CREATE_A_CUSTOMIZED_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  40,  51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  85,  69, 122, 0x1312,                 STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 165,  69, 122, 0x1314,                 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 245,  69, 122, 0x1316,                 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 325,  69, 122, 0x1318,                 STR_0311_SELECT_TOYLAND_LANDSCAPE},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 136, 147, STR_SINGLE_PLAYER,      STR_02FF_SELECT_SINGLE_PLAYER_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 136, 147, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 159, 170, STR_0148_GAME_OPTIONS,  STR_0301_DISPLAY_GAME_OPTIONS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 159, 170, STR_01FE_DIFFICULTY,    STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 177, 188, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 177, 188, STR_0304_QUIT,          STR_0305_QUIT_OPENTTD},
+
+{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  85,  67, 120, 0x1312,                 STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 165,  67, 120, 0x1314,                 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 245,  67, 120, 0x1316,                 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 325,  67, 120, 0x1318,                 STR_0311_SELECT_TOYLAND_LANDSCAPE},
+
+/* string&0x1000 shows the number encoded in the lowest 12 bits. Using
+ * just dparams gives some extremely weird results, so this is after
+ * all the most elegant solution. --pasky */
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10,  57, 128, 139, 0x1040,                 STR_MAP_WIDTH_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  64, 111, 128, 139, 0x1080,                 STR_MAP_WIDTH_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 117, 164, 128, 139, 0x1100,                 STR_MAP_WIDTH_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 171, 218, 128, 139, 0x1200,                 STR_MAP_WIDTH_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 224, 271, 128, 139, 0x1400,                 STR_MAP_WIDTH_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 278, 325, 128, 139, 0x1800,                 STR_MAP_WIDTH_TIP},
+
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10,  57, 144, 155, 0x1040,                 STR_MAP_HEIGHT_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  64, 111, 144, 155, 0x1080,                 STR_MAP_HEIGHT_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 117, 164, 144, 155, 0x1100,                 STR_MAP_HEIGHT_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 171, 218, 144, 155, 0x1200,                 STR_MAP_HEIGHT_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 224, 271, 144, 155, 0x1400,                 STR_MAP_HEIGHT_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 278, 325, 144, 155, 0x1800,                 STR_MAP_HEIGHT_TIP},
+
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 173, 184, STR_SINGLE_PLAYER,      STR_02FF_SELECT_SINGLE_PLAYER_GAME},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 173, 184, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 196, 207, STR_0148_GAME_OPTIONS,  STR_0301_DISPLAY_GAME_OPTIONS},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 196, 207, STR_01FE_DIFFICULTY,    STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 214, 225, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 214, 225, STR_0304_QUIT,          STR_0305_QUIT_OPENTTD},
 {    WIDGETS_END },
 };
 
@@ -44,9 +63,11 @@ extern void HandleOnEditText(WindowEvent *e);
 extern void HandleOnEditTextCancel(void);
 
 static void SelectGameWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(1<<10) & ~(0xF << 6)) | (1 << (_opt_newgame.landscape + 6)) | (1<<10);
+		w->click_state &= ~(1<<22) & ~(0xF << 6) & ~(0xFFF << 11);
+		w->click_state |=  (1<<22) | (1 << (_opt_newgame.landscape + 6));
+		w->click_state |= (1 << (10 + _patches.map_x - 6)) | (1 << (16 + _patches.map_y - 6));
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 		break;
@@ -60,7 +81,13 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 		case 6: case 7: case 8: case 9:
 			DoCommandP(0, e->click.widget - 6, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
 			break;
-		case 11:
+		case 10: case 11: case 12: case 13: case 14: case 15:
+			DoCommandP(0, 6 + e->click.widget - 10, _patches.map_y, NULL, CMD_SET_NEW_MAP_SIZE);
+			break;
+		case 16: case 17: case 18: case 19: case 20: case 21:
+			DoCommandP(0, _patches.map_x, 6 + e->click.widget - 16, NULL, CMD_SET_NEW_MAP_SIZE);
+			break;
+		case 23:
 #ifdef ENABLE_NETWORK
 			if (!_network_available) {
 				ShowErrorMessage(-1, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
@@ -70,10 +97,10 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 			ShowErrorMessage(-1 ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 #endif
 			break;
-		case 12: ShowGameOptions(); break;
-		case 13: ShowGameDifficulty(); break;
-		case 14: ShowPatchesSelection(); break;
-		case 15: AskExitGame(); break;
+		case 24: ShowGameOptions(); break;
+		case 25: ShowGameDifficulty(); break;
+		case 26: ShowPatchesSelection(); break;
+		case 27: AskExitGame(); break;
 		}
 		break;
 
@@ -84,7 +111,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e) {
 }
 
 static const WindowDesc _select_game_desc = {
-	WDP_CENTER, WDP_CENTER, 336, 197,
+	WDP_CENTER, WDP_CENTER, 336, 234,
 	WC_SELECT_GAME,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,
@@ -291,6 +318,16 @@ int32 CmdSetNewLandscapeType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		_opt_newgame.landscape = p1;
+		InvalidateWindowClasses(WC_SELECT_GAME);
+	}
+	return 0;
+}
+
+int32 CmdSetNewMapSize(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	if (flags & DC_EXEC) {
+		_patches.map_x = p1;
+		_patches.map_y = p2;
 		InvalidateWindowClasses(WC_SELECT_GAME);
 	}
 	return 0;
