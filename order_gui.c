@@ -344,7 +344,15 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
 		Vehicle *v = _place_clicked_vehicle;
-		if (v) {
+		/*
+		 * Check if we clicked on a vehicle
+		 * and if the GOTO button of this window is pressed
+		 * This is because of all open order windows WE_MOUSELOOP is called
+		 * and if you have 3 windows open, and this check is not done
+		 * the order is copied to the last open window instead of the
+		 * one where GOTO is enalbed
+		 */
+		if (v && HASBIT(w->click_state, 7)) {
 			_place_clicked_vehicle = NULL;
 			HandleOrderVehClick(&_vehicles[w->window_number], v, w);
 		}
