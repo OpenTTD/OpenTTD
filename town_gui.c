@@ -109,9 +109,9 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			// Draw list of players
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
-				if (p->is_active && HASBIT(t->have_ratings, p->index)) {
-					DrawPlayerIcon(p->index, 2, y);
-					
+				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity==p->index)) {
+					if(t->exclusivity==p->index) DrawPlayerIcon(p->index, 2, y);
+
 					SET_DPARAM16(0, p->name_1);
 					SET_DPARAM32(1, p->name_2);
 					SET_DPARAM16(2, GetPlayerNameString(p->index, 3));
@@ -133,7 +133,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 							So we'll just shift the rating one back if player is AI and all is fine
 						*/
 					SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
-					DrawString(19, y, STR_2024, 0);
+					DrawString(19, y, STR_2024, (t->exclusivity==p->index)?3:0);
 					y+=10;
 				}
 			}

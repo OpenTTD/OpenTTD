@@ -863,6 +863,8 @@ static void DoCreateTown(Town *t, TileIndex tile)
 		t->ratings[i] = 500;
 
 	t->have_ratings = 0;
+	t->exclusivity = (byte)-1;
+	t->exclusive_counter = 0;
 	t->statues = 0;
 
 	CreateTownName(t);
@@ -1471,13 +1473,8 @@ static void TownActionFundBuildings(Town *t, int action)
 
 static void TownActionBuyRights(Town *t, int action)
 {
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		if (st->xy && st->town == t && st->owner < 8 && 
-				st->owner != _current_player)
-			st->blocked_months = 12;
-	}
+	t->exclusive_counter = 12;
+	t->exclusivity = _current_player;
 
 	ModifyStationRatingAround(t->xy, _current_player, 130, 17);
 }
@@ -1739,6 +1736,10 @@ void TownsMonthlyLoop()
 		if (t->road_build_months != 0)
 			t->road_build_months--;
 
+		if (t->exclusive_counter != 0)
+			if(--t->exclusive_counter==0)
+				t->exclusivity = (byte)-1;
+
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);
 		UpdateTownUnwanted(t);
@@ -1827,8 +1828,10 @@ static const byte _town_desc[] = {
 	SLE_VAR(Town,fund_buildings_months,	SLE_UINT8),
 	SLE_VAR(Town,road_build_months,			SLE_UINT8),
 
-	// reserve extra space in savegame here. (currently 32 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 4, 2, 255),
+	SLE_VAR(Town,exclusivity,						SLE_UINT8),
+	SLE_VAR(Town,exclusive_counter,			SLE_UINT8),
+	// reserve extra space in savegame here. (currently 30 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 30, 2, 255),
 
 	SLE_END()
 };

@@ -1039,6 +1039,24 @@ void CheckIsPlayerActive()
 	}
 }
 
+// since savegame version 4.1, exclusive transport rights are stored at towns
+void UpdateExclusiveRights()
+{
+	Town *t;
+	FOR_ALL_TOWNS(t) if (t->xy != 0) {
+		t->exclusivity=(byte)-1;
+	}
+	
+	/* FIXME old exclusive rights status is not being imported.
+			could be implemented this way:
+			1.) Go through all stations
+					Build an array town_blocked[ town_id ][ player_id ]
+				 that stores if at least one station in that town is blocked for a player
+			2.) Go through that array, if you find a town that is not blocked for
+				 	one player, but for all others, then give him exclusivity.
+	*/
+}
+
 extern void UpdateOldAircraft();
 
 bool AfterLoadGame(uint version)
@@ -1051,6 +1069,11 @@ bool AfterLoadGame(uint version)
 		ConvertTownOwner();
 	}
 
+	// from version 4.1 of the savegame, exclusive rights are stored at towns
+	if (version <= 0x400) {
+		UpdateExclusiveRights();
+	}
+	
 	// convert road side to my format.
 	if (_opt.road_side) _opt.road_side = 1;
 

@@ -302,7 +302,6 @@ static void StationInitialize(Station *st, TileIndex tile)
 	st->delete_ctr = 0;
 	st->facilities = 0;
 
-	st->blocked_months = 0;
 	st->last_vehicle = INVALID_VEHICLE;
 
 	for(i=0,ge=st->goods; i!=NUM_CARGO; i++, ge++) {
@@ -2184,13 +2183,6 @@ void OnTick_Station()
 
 void StationMonthlyLoop()
 {
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		if (st->blocked_months != 0)
-			st->blocked_months--;
-	}
-
 }
 
 
@@ -2272,7 +2264,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 				if (around[i] == 0xFF) {
 					st = DEREF_STATION(st_index);
 					if ((st->had_vehicle_of_type & HVOT_BUOY) == 0 &&
-							st->blocked_months == 0 &&
+							( !st->town->exclusive_counter || (st->town->exclusivity == st->owner) ) && // check exclusive transport rights
 							st->goods[type].rating != 0 && 
 							(!_patches.selectgoods || st->goods[type].last_speed) && // if last_speed is 0, no vehicle has been there.
 							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
