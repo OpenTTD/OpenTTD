@@ -683,6 +683,10 @@ void IncreaseDate(void)
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service -= 365; // 1 year is 365 days long
 		}
+
+		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
+		 *  all of them if the date is set back, else those messages will hang for ever */
+		InitTextMessage();
 	}
 
 	if (_patches.auto_euro)

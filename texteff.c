@@ -6,6 +6,7 @@
 #include "saveload.h"
 #include "hal.h"
 #include "console.h"
+#include "string.h"
 #include <stdarg.h> /* va_list */
 
 typedef struct TextEffect {
@@ -59,18 +60,21 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	vsprintf(buf, message, va);
 	va_end(va);
 
-	if ((color & 0xFF) == 0xC9) color = 0x1CA;
+	/* Special color magic */
+	if ((color & 0xFF) == 0xC9)
+		color = 0x1CA;
 
-	length = MAX_TEXTMESSAGE_LENGTH;
+	/* Cut the message till it fits inside the chatbox */
+	length = strlen(buf) + 1;
 	snprintf(buf2, length, "%s", buf);
-	while (GetStringWidth(buf2) > _textmessage_width - 9) {
+	while (GetStringWidth(buf2) > _textmessage_width - 9)
 		snprintf(buf2, --length, "%s", buf);
-	}
 
+	/* Find an empty spot and put the message there */
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		if (_text_message_list[i].message[0] == '\0') {
 			// Empty spot
-			snprintf(_text_message_list[i].message, MAX_TEXTMESSAGE_LENGTH, "%s", buf2);
+			ttd_strlcpy(_text_message_list[i].message, buf2, sizeof(_text_message_list[i].message));
 			_text_message_list[i].color = color;
 			_text_message_list[i].end_date = _date + duration;
 
@@ -80,8 +84,8 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	}
 
 	// We did not found a free spot, trash the first one, and add to the end
-	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(TextMessage) * (MAX_CHAT_MESSAGES - 1));
-	snprintf(_text_message_list[MAX_CHAT_MESSAGES - 1].message, MAX_TEXTMESSAGE_LENGTH, "%s", buf2);
+	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(_text_message_list[0]) * (MAX_CHAT_MESSAGES - 1));
+	ttd_strlcpy(_text_message_list[MAX_CHAT_MESSAGES - 1].message, buf2, sizeof(_text_message_list[MAX_CHAT_MESSAGES - 1].message));
 	_text_message_list[MAX_CHAT_MESSAGES - 1].color = color;
 	_text_message_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
 
@@ -91,9 +95,8 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 void InitTextMessage(void)
 {
 	int i;
-	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++)
 		_text_message_list[i].message[0] = '\0';
-	}
 
 	_textmessage_width = _textmessage_box_max_width;
 }
@@ -138,16 +141,23 @@ void UndrawTextMessage(void)
 // Check if a message is expired every day
 void TextMessageDailyLoop(void)
 {
-	int i = 0;
-	while (i < MAX_CHAT_MESSAGES) {
-		if (_text_message_list[i].message[0] == '\0') break;
+	int i;
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
+		if (_text_message_list[i].message[0] == '\0')
+			continue;
+
 		if (_date > _text_message_list[i].end_date) {
-			memmove(&_text_message_list[i], &_text_message_list[i+1], sizeof(TextMessage) * ((MAX_CHAT_MESSAGES - 1) - i));
+			/* Move the remaining messages over the current message */
+			if (i != MAX_CHAT_MESSAGES - 1)
+				memmove(&_text_message_list[i], &_text_message_list[i + 1], sizeof(_text_message_list[i]) * (MAX_CHAT_MESSAGES - i - 1));
+
+			/* Mark the last item as empty */
 			_text_message_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
-			i--;
 			_textmessage_dirty = true;
+
+			/* Go one item back, because we moved the array 1 to the left */
+			i--;
 		}
-		i++;
 	}
 }
 
@@ -166,12 +176,16 @@ void DrawTextMessage(void)
 	if (_iconsole_mode == ICONSOLE_FULL)
 		return;
 
+	/* Check if we have anything to draw at all */
 	has_message = false;
 	for ( i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0') break;
+		if (_text_message_list[i].message[0] == '\0')
+			break;
+
 		has_message = true;
 	}
-	if (!has_message) return;
+	if (!has_message)
+		return;
 
 	// Make a copy of the screen as it is before painting (for undraw)
 	memcpy_pitch(
@@ -185,7 +199,9 @@ void DrawTextMessage(void)
 	j = 0;
 	// Paint the messages
 	for (i = MAX_CHAT_MESSAGES - 1; i >= 0; i--) {
-		if (_text_message_list[i].message[0] == '\0') continue;
+		if (_text_message_list[i].message[0] == '\0')
+			continue;
+
 		j++;
 		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x4322);
 
