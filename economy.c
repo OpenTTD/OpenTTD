@@ -1221,9 +1221,8 @@ int LoadUnloadVehicle(Vehicle *v)
 
 	st = DEREF_STATION(last_visited = v->last_station_visited);
 
-	for(;;) {
-		if (v->cargo_cap == 0)
-			goto next_vehicle;
+	for (; v != NULL; v = v->next) {
+		if (v->cargo_cap == 0) continue;
 
 		ge = &st->goods[v->cargo_type];
 
@@ -1261,8 +1260,7 @@ int LoadUnloadVehicle(Vehicle *v)
 		}
 
 		/* don't pick up goods that we unloaded */
-		if (u->next_order & OF_UNLOAD)
-			goto next_vehicle;
+		if (u->next_order & OF_UNLOAD) continue;
 
 		/* update stats */
 		ge->days_since_pickup = 0;
@@ -1301,10 +1299,6 @@ int LoadUnloadVehicle(Vehicle *v)
 			result |= 2;
 			st->last_vehicle = v->index;
 		}
-
-next_vehicle:;
-		if (!(v = v->next))
-			break;
 	}
 
 	v = u;
