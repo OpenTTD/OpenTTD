@@ -546,7 +546,7 @@ static int ChooseShipTrack(Vehicle *v, uint tile, int dir, uint tracks)
 	uint tile2;
 
 	assert(dir>=0 && dir<=3);
-	tile2 = TILE_ADD(tile, -_tileoffs_by_dir[dir]);
+	tile2 = TILE_ADD(tile, -TileOffsByDir(dir));
 	dir ^= 2;
 	tot_dist = (uint)-1;
 	b = GetTileShipTrackStatus(tile2) & _ship_sometracks[dir] & v->u.ship.state;

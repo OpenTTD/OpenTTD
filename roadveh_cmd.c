@@ -866,7 +866,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	if (FindRoadVehToOvertake(&od))
 		return;
 
-	od.tile = v->tile + _tileoffs_by_dir[v->direction>>1];
+	od.tile = v->tile + TileOffsByDir(v->direction >> 1);
 	if (FindRoadVehToOvertake(&od))
 		return;
 
@@ -1009,7 +1009,7 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int direction)
 		if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
 			m5 -= 0x43;
 do_it:;
-			desttile += _tileoffs_by_dir[m5&3];
+			desttile += TileOffsByDir(m5 & 3);
 			if (desttile == tile && bitmask&_road_pf_table_3[m5&3]) {
 				return_track(FindFirstBit2x64(bitmask&_road_pf_table_3[m5&3]));
 			}
@@ -1178,7 +1178,7 @@ static void RoadVehEventHandler(Vehicle *v)
 
 // switch to another tile
 	if (rd.x & 0x80) {
-		uint tile = v->tile + _tileoffs_by_dir[rd.x&3];
+		uint tile = v->tile + TileOffsByDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, rd.x&3);
 		int tmp;
 		uint32 r;

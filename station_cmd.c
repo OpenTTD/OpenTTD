@@ -1812,7 +1812,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (cost == CMD_ERROR)
 		return CMD_ERROR;
 
-	tile_cur = (tile=ti.tile) + _tileoffs_by_dir[direction];
+	tile_cur = (tile=ti.tile) + TileOffsByDir(direction);
 
 	if (!EnsureNoVehicle(tile_cur))
 		return CMD_ERROR;
@@ -1825,7 +1825,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (cost == CMD_ERROR)
 		return CMD_ERROR;
 
-	tile_cur = tile_cur + _tileoffs_by_dir[direction];
+	tile_cur = tile_cur + TileOffsByDir(direction);
 	FindLandscapeHeightByTile(&ti, tile_cur);
 	if (ti.tileh != 0 || ti.type != MP_WATER)
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
@@ -1887,7 +1887,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			st->index,
 			direction + 0x4C);
 
-		ModifyTile(tile + _tileoffs_by_dir[direction],
+		ModifyTile(tile + TileOffsByDir(direction),
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
 			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR |
 			MP_MAP5,
@@ -1909,7 +1909,7 @@ static int32 RemoveDock(Station *st, uint32 flags)
 		return CMD_ERROR;
 
 	tile1 = st->dock_tile;
-	tile2 = tile1 + _tileoffs_by_dir[_map5[tile1] - 0x4C];
+	tile2 = tile1 + TileOffsByDir(_map5[tile1] - 0x4C);
 
 	if (!EnsureNoVehicle(tile1))
 		return CMD_ERROR;
@@ -2174,7 +2174,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 
 	if (v->type == VEH_Train) {
 		if (IS_BYTE_INSIDE(_map5[tile], 0, 8) && v->subtype == 0 &&
-			!IsTrainStationTile(tile + _tileoffs_by_dir[v->direction >> 1])) {
+			!IsTrainStationTile(tile + TileOffsByDir(v->direction >> 1))) {
 
 			station_id = _map2[tile];
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||

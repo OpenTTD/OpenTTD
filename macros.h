@@ -148,13 +148,7 @@ static inline int FindFirstBit2x64(int value)
 }
 
 
-#if TILE_X_BITS + TILE_Y_BITS <= 16
-	typedef uint16 TileIndex;
-	typedef int16 TileIndexDiff;
-#else
-	typedef uint32 TileIndex;
-	typedef int32 TileIndexDiff;
-#endif
+typedef uint16 TileIndex;
 
 /* [min,max), strictly less than */
 #define IS_BYTE_INSIDE(a,min,max) ((byte)((a)-(min)) < (byte)((max)-(min)))

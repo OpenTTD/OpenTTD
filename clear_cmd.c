@@ -751,7 +751,7 @@ void GenerateClearTile()
 				_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (2<<2));
 				do {
 					if (--j == 0) goto get_out;
-					tile_new = tile + _tileoffs_by_dir[Random() & 3];
+					tile_new = tile + TileOffsByDir(Random() & 3);
 				} while (!IS_TILETYPE(tile_new, MP_CLEAR));
 				tile = tile_new;
 			}

@@ -416,8 +416,6 @@ extern const TileTypeProcs * const _tile_type_procs[16];
 extern const byte _airport_size_x[5];
 extern const byte _airport_size_y[5];
 
-extern const TileIndexDiff _tileoffs_by_dir[4];
-
 /* misc */
 VARDEF byte str_buffr[512];
 VARDEF char _screenshot_name[128];

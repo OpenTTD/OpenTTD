@@ -397,7 +397,7 @@ static bool DoCheckTunnelInWay(uint tile, uint z, uint dir)
 	TileInfo ti;
 	int delta;
 
-	delta = _tileoffs_by_dir[dir];
+	delta = TileOffsByDir(dir);
 
 	do {
 		tile -= delta;
@@ -588,7 +588,8 @@ uint CheckTunnelBusy(uint tile, int *length)
 {
 	int z = GetTileZ(tile);
 	byte m5 = _map5[tile];
-	int delta = _tileoffs_by_dir[m5 & 3], len = 0;
+	int delta = TileOffsByDir(m5 & 3);
+	int len = 0;
 	uint starttile = tile;
 	Vehicle *v;
 

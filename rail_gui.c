@@ -98,7 +98,7 @@ void CcRailDepot(bool success, uint tile, uint32 p1, uint32 p2)
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
 
-		tile += _tileoffs_by_dir[dir];
+		tile += TileOffsByDir(dir);
 
 		if (IS_TILETYPE(tile, MP_RAILWAY)) {
 			PlaceExtraDepotRail(tile, _place_depot_extra[dir]);

@@ -361,13 +361,6 @@ StringID RealAllocateName(const byte *name, byte skip, bool check_double)
 	return free_item | 0x7800 | (skip << 8);
 }
 
-const TileIndexDiff _tileoffs_by_dir[4] = {
-	TILE_XY(-1, 0),
-	TILE_XY(0, 1),
-	TILE_XY(1, 0),
-	TILE_XY(0, -1),
-};
-
 
 #define M(a,b) ((a<<5)|b)
 static const uint16 _month_date_from_year_day[] = {

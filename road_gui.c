@@ -65,7 +65,7 @@ static void PlaceRoad_Tunnel(uint tile)
 static void BuildRoadOutsideStation(uint tile, int direction)
 {
 	static const byte _roadbits_by_dir[4] = {2,1,8,4};
-	tile += _tileoffs_by_dir[direction];
+	tile += TileOffsByDir(direction);
 	// if there is a roadpiece just outside of the station entrance, build a connecting route
 	if (IS_TILETYPE(tile, MP_STREET) && !(_map5[tile]&0x20)) {
 		DoCommandP(tile, _roadbits_by_dir[direction], 0, NULL, CMD_BUILD_ROAD);

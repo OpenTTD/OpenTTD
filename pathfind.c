@@ -140,7 +140,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	// This addition will sometimes overflow by a single tile.
 	// The use of TILE_MASK here makes sure that we still point at a valid
 	// tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail.
-	tile = TILE_MASK(tile + _tileoffs_by_dir[direction]);
+	tile = TILE_MASK(tile + TileOffsByDir(direction));
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
@@ -283,7 +283,7 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 			return;
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
-	tile += _tileoffs_by_dir[direction];
+	tile += TileOffsByDir(direction);
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
@@ -638,7 +638,7 @@ restart:
 	tile_org = tile;
 
 	for(;;) {
-		tile += _tileoffs_by_dir[direction];
+		tile += TileOffsByDir(direction);
 
 		// too long search length? bail out.
 		if (++si.cur_length >= tpf->maxlength)

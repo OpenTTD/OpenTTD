@@ -14,3 +14,10 @@ byte   _map3_hi             [MAP_SIZE];
 byte   _map_owner           [MAP_SIZE];
 uint16 _map2                [MAP_SIZE];
 byte   _map_extra_bits      [MAP_SIZE / 4];
+
+const TileIndexDiff _tileoffs_by_dir[4] = {
+	TILE_XY(-1, 0),
+	TILE_XY(0, 1),
+	TILE_XY(1, 0),
+	TILE_XY(0, -1),
+};

@@ -745,16 +745,16 @@ static void AiNew_State_FindDepot(Player *p) {
 
 	for (i=2;i<p->ainew.path_info.route_length-2;i++) {
 		tile = p->ainew.path_info.route[i];
-		for (j=0;j<lengthof(_tileoffs_by_dir);j++) {
-			if (IS_TILETYPE(tile + _tileoffs_by_dir[j], MP_STREET)) {
+		for (j = 0; j < 4; j++) {
+			if (IS_TILETYPE(tile + TileOffsByDir(j), MP_STREET)) {
 				// Its a street, test if it is a depot
-				if (_map5[tile + _tileoffs_by_dir[j]] & 0x20) {
+				if (_map5[tile + TileOffsByDir(j)] & 0x20) {
 					// We found a depot, is it ours? (TELL ME!!!)
-					if (_map_owner[tile + _tileoffs_by_dir[j]] == _current_player) {
+					if (_map_owner[tile + TileOffsByDir(j)] == _current_player) {
 						// Now, is it pointing to the right direction.........
-						if ((_map5[tile + _tileoffs_by_dir[j]] & 3) == (j ^ 2)) {
+						if ((_map5[tile + TileOffsByDir(j)] & 3) == (j ^ 2)) {
 							// Yeah!!!
-							p->ainew.depot_tile = tile + _tileoffs_by_dir[j];
+							p->ainew.depot_tile = tile + TileOffsByDir(j);
 							p->ainew.depot_direction = j ^ 2; // Reverse direction
 							p->ainew.state = AI_STATE_VERIFY_ROUTE;
 							return;
@@ -781,28 +781,28 @@ static void AiNew_State_FindDepot(Player *p) {
 
 		tile = p->ainew.path_info.route[i];
 
-		for (j=0;j<lengthof(_tileoffs_by_dir);j++) {
+		for (j = 0; j < 4; j++) {
 			// It may not be placed on the road/rail itself
 			// And because it is not build yet, we can't see it on the tile..
 			// So check the surrounding tiles :)
-			if (tile + _tileoffs_by_dir[j] == p->ainew.path_info.route[i-1] ||
-				tile + _tileoffs_by_dir[j] == p->ainew.path_info.route[i+1]) continue;
+			if (tile + TileOffsByDir(j) == p->ainew.path_info.route[i-1] ||
+					tile + TileOffsByDir(j) == p->ainew.path_info.route[i+1]) continue;
 			// Not around a bridge?
 			if (p->ainew.path_info.route_extra[i] != 0) continue;
 			if (IS_TILETYPE(tile, MP_TUNNELBRIDGE)) continue;
 			// Is the terrain clear?
-			if (IS_TILETYPE(tile + _tileoffs_by_dir[j], MP_CLEAR) ||
-				IS_TILETYPE(tile + _tileoffs_by_dir[j], MP_TREES)) {
+			if (IS_TILETYPE(tile + TileOffsByDir(j), MP_CLEAR) ||
+					IS_TILETYPE(tile + TileOffsByDir(j), MP_TREES)) {
 				TileInfo ti;
 				FindLandscapeHeightByTile(&ti, tile);
 				// If the current tile is on a slope (tileh != 0) then we do not allow this
 				if (ti.tileh != 0) continue;
 				// Check if everything went okay..
-				r = AiNew_Build_Depot(p, tile + _tileoffs_by_dir[j], j ^ 2, 0);
+				r = AiNew_Build_Depot(p, tile + TileOffsByDir(j), j ^ 2, 0);
 				if (r == CMD_ERROR) continue;
 				// Found a spot!
 				p->ainew.new_cost += r;
-				p->ainew.depot_tile = tile + _tileoffs_by_dir[j];
+				p->ainew.depot_tile = tile + TileOffsByDir(j);
 				p->ainew.depot_direction = j ^ 2; // Reverse direction
 				p->ainew.state = AI_STATE_VERIFY_ROUTE;
 				return;
@@ -984,14 +984,14 @@ static void AiNew_State_BuildPath(Player *p) {
         	int i, r;
         	for (i=0;i<2;i++) {
             	if (i == 0) {
-            		tile = p->ainew.from_tile + _tileoffs_by_dir[p->ainew.from_direction];
+            		tile = p->ainew.from_tile + TileOffsByDir(p->ainew.from_direction);
             		dir1 = p->ainew.from_direction - 1;
             		if (dir1 < 0) dir1 = 3;
             		dir2 = p->ainew.from_direction + 1;
             		if (dir2 > 3) dir2 = 0;
             		dir3 = p->ainew.from_direction;
             	} else {
-            		tile = p->ainew.to_tile + _tileoffs_by_dir[p->ainew.to_direction];
+            		tile = p->ainew.to_tile + TileOffsByDir(p->ainew.to_direction);
             		dir1 = p->ainew.to_direction - 1;
             		if (dir1 < 0) dir1 = 3;
             		dir2 = p->ainew.to_direction + 1;
@@ -1001,7 +1001,7 @@ static void AiNew_State_BuildPath(Player *p) {
 
             	r = DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
-					dir1 = _tileoffs_by_dir[dir1];
+					dir1 = TileOffsByDir(dir1);
 					if (IS_TILETYPE(tile+dir1, MP_CLEAR) || IS_TILETYPE(tile+dir1, MP_TREES)) {
 						r = DoCommandByTile(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
@@ -1013,7 +1013,7 @@ static void AiNew_State_BuildPath(Player *p) {
 
 				r = DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
-					dir2 = _tileoffs_by_dir[dir2];
+					dir2 = TileOffsByDir(dir2);
 					if (IS_TILETYPE(tile+dir2, MP_CLEAR) || IS_TILETYPE(tile+dir2, MP_TREES)) {
 						r = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
@@ -1025,7 +1025,7 @@ static void AiNew_State_BuildPath(Player *p) {
 
 				r = DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (r != CMD_ERROR) {
-					dir3 = _tileoffs_by_dir[dir3];
+					dir3 = TileOffsByDir(dir3);
 					if (IS_TILETYPE(tile+dir3, MP_CLEAR) || IS_TILETYPE(tile+dir3, MP_TREES)) {
 						r = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (r != CMD_ERROR) {
@@ -1061,7 +1061,7 @@ static void AiNew_State_BuildDepot(Player *p) {
 	}
 
 	// There is a bus on the tile we want to build road on... idle till he is gone! (BAD PERSON! :p)
-	if (!EnsureNoVehicle(p->ainew.depot_tile + _tileoffs_by_dir[p->ainew.depot_direction]))
+	if (!EnsureNoVehicle(p->ainew.depot_tile + TileOffsByDir(p->ainew.depot_direction)))
 		return;
 
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);

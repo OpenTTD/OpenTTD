@@ -121,7 +121,7 @@ static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
 	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret == CMD_ERROR) return CMD_ERROR;
 
-	delta = _tileoffs_by_dir[dir];
+	delta = TileOffsByDir(dir);
 	// lower tile
 	ret = DoCommandByTile(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret == CMD_ERROR) return CMD_ERROR;
@@ -143,7 +143,7 @@ static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
 
 static int32 RemoveShiplift(uint tile, uint32 flags)
 {
-	int delta = _tileoffs_by_dir[_map5[tile] & 3];
+	int delta = TileOffsByDir(_map5[tile] & 3);
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))

@@ -646,7 +646,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 	if (!(v->tick_counter&1))
 		return;
 
-	tile = v->tile + _tileoffs_by_dir[v->direction >> 1];
+	tile = v->tile + TileOffsByDir(v->direction >> 1);
 	if (IsValidTile(tile) &&
 			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r+(r >> 8)) == 0x3F) &&
 			!CHANCE16(1,90)) {
@@ -909,7 +909,7 @@ static void Disaster7_Init()
 
 				{
 					uint tile = i->xy;
-					int step = _tileoffs_by_dir[Random() & 3];
+					int step = TileOffsByDir(Random() & 3);
 					int count = 30;
 					do {
 						DisasterClearSquare(tile);

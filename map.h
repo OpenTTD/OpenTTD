@@ -24,4 +24,15 @@ static inline uint MapMaxY(void) { return MapSizeY() - 1; }
 /* The number of tiles in the map */
 static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
 
+typedef int16 TileIndexDiff;
+
+
+static inline TileIndexDiff TileOffsByDir(uint dir)
+{
+	extern const TileIndexDiff _tileoffs_by_dir[4];
+
+	assert(dir < lengthof(_tileoffs_by_dir));
+	return _tileoffs_by_dir[dir];
+}
+
 #endif

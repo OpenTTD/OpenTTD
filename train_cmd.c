@@ -984,7 +984,7 @@ static void ReverseTrainDirection(Vehicle *v)
 			t = (t - 1) & 3;
 		}
 		/* Calculate next tile */
-		tile += _tileoffs_by_dir[t];
+		tile += TileOffsByDir(t);
 		/* Test if we have a rail/road-crossing */
 		if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
 			/* Check if there is a train on the tile itself */
@@ -1471,7 +1471,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int direction, byte trackbit
 		fd.best_bird_dist = (uint)-1;
 		fd.best_track_dist = (uint)-1;
 		fd.best_track = 0xFF;
-		NewTrainPathfind(tile - _tileoffs_by_dir[direction], direction, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
+		NewTrainPathfind(tile - TileOffsByDir(direction), direction, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
 
 //		printf("Train %d %s\n", v->unitnumber, fd.best_track_dist == -1 ? "NOTFOUND" : "FOUND");
 
@@ -2271,7 +2271,7 @@ red_light: {
 			v->subspeed = 0;
 			v->progress = 255-10;
 			if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
-				uint o_tile = gp.new_tile + _tileoffs_by_dir[dir>>1];
+				uint o_tile = gp.new_tile + TileOffsByDir(dir >> 1);
 				/* check if a train is waiting on the other side */
 				if (VehicleFromPos(o_tile, (void*)( (o_tile<<8) | (dir^4)), (VehicleFromPosProc*)CheckVehicleAtSignal) == NULL)
 					return;
@@ -2452,7 +2452,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		t = (t - 1) & 3;
 	}
 	/* Calculate next tile */
-	tile += _tileoffs_by_dir[t];
+	tile += TileOffsByDir(t);
 	// determine the track status on the next tile.
  	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[t];
 
