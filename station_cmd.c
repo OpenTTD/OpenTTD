@@ -1154,7 +1154,7 @@ uint32 GetCustomStationRelocation(struct StationSpec *spec, struct Station *stat
 	if (rsg->sprites_per_set != 0) {
 		if (rsg->loading_count != 0) {
 			return rsg->loading[0];
-		} else if (rsg->loading_count != 0) {
+		} else if (rsg->loaded_count != 0) {
 			return rsg->loaded[0];
 		}
 	}
