@@ -277,6 +277,12 @@ static const CmdStruct _cmd_structs[] = {
 	{"CROSS", EmitSingleByte, 0xAD},
 	{"RIGHTARROW", EmitSingleByte, 0xAF},
 
+	{"TRAIN", EmitSingleByte, 0xb4},
+	{"LORRY", EmitSingleByte, 0xb5},
+	{"BUS",   EmitSingleByte, 0xb6},
+	{"PLANE", EmitSingleByte, 0xb7},
+	{"SHIP",  EmitSingleByte, 0xb8},
+
 	{"SMALLUPARROW", EmitSingleByte, 0xBC},
 	{"SMALLDOWNARROW", EmitSingleByte, 0xBD},
 	{"THREE_FOURTH", EmitSingleByte, 0xBE},
@@ -744,7 +750,7 @@ int CDECL main(int argc, char* argv[])
 	int show_todo = 0;
 
 	if (argc > 1 && (!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))) {
-		puts("$Revision:$");
+		puts("$Revision$");
 		return 0;
 	}
 
