@@ -1579,13 +1579,13 @@ void NetworkReceive() {}
 void NetworkSend() {}
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback) {}
 void NetworkProcessCommands() {}
-void NetworkStartSync() {}
+void NetworkStartSync(bool fcreset) {}
 void NetworkCoreInit() { _network_available=false; };
 void NetworkCoreShutdown() {};
 void NetworkCoreDisconnect() {};
 void NetworkCoreLoop(bool incomming) {};
-bool NetworkCoreConnectGame(byte* b, unsigned short port) {};
-bool NetworkCoreStartGame() {};
+bool NetworkCoreConnectGame(byte* b, unsigned short port) {return false;};
+bool NetworkCoreStartGame() {return false;};
 void NetworkLobbyShutdown() {};
 void NetworkLobbyInit() {};
 void NetworkGameListClear() {};
@@ -1595,6 +1595,5 @@ void NetworkGameListFromInternet() {};
 void NetworkGameFillDefaults() {};
 char * NetworkGameListItem(uint16 index) {return NULL;};
 void NetworkGameChangeDate(uint16 newdate) {};
-}
 
 #endif
