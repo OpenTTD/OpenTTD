@@ -184,11 +184,15 @@ STR_00B2_MESSAGE						:{YELLOW}Üzenet
 STR_00B3_MESSAGE_FROM						:{YELLOW}{STRING} üzenete
 STR_00B4_CAN_T_DO_THIS						:{WHITE}Nem teheted ezt...
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Nem tisztíthatod meg a területet...
-STR_00B6_ORIGINAL_COPYRIGHT							:{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
-STR_00B7_VERSION												:{BLACK}OpenTTD version {REV}
+STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
+STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Eredeti tervek: Chris Sawyer
-STR_00B9_ORIGINAL_GRAPHICS							:{BLACK}Grafika: Simon Foster
-STR_00BA_COPYRIGHT_OPENTTD							:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
+STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Grafika: Simon Foster
+STR_SPECIAL_THANKS						:{BLACK}Külön köszönet nekik:
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Elõszignálok és szemaforok {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS					:{BLACK}° Lejtõs sinek alapzata {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Csatorna/Zsilip grafika {COPYRIGHT} 2003-2004 George
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -313,12 +317,15 @@ STR_013B_OWNED_BY						:{WHITE}... {STRING} tulajdona
 STR_013C_CARGO							:{BLACK}Rakomány
 STR_013D_INFORMATION						:{BLACK}Információ
 STR_013E_CAPACITIES						:{BLACK}Kapacitás
+STR_013E_TOTAL_CARGO						:{BLACK}Teljes rakomány
 STR_013F_CAPACITY						:{BLACK}Kapacitás: {LTBLUE}{STRING}
+STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Teljes rakománya (kapacitása) ennek a vonatnak:
+STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Új játék
 STR_0141_LOAD_GAME						:{BLACK}Játék betöltése
 STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Tanítás / Demo
-STR_0143_1_PLAYER						:{BLACK}1 játékos
-STR_0144_2_PLAYERS						:{BLACK}2 játékos
+STR_SINGLE_PLAYER						:{BLACK}Egyjátékos
+STR_MULTIPLAYER							:{BLACK}Többjátékos
 
 STR_0148_GAME_OPTIONS						:{BLACK}Beállítások
 
@@ -337,13 +344,16 @@ STR_0159_CARGO_PAYMENT_RATES					:Rakományok szállítási díja
 STR_015A_COMPANY_LEAGUE_TABLE					:A cégek helyezése
 ############ range for menu	ends
 
-STR_015B_OPENTTD				:{WHITE}OpenTTD
+STR_015B_OPENTTD						:{WHITE}OpenTTD
 STR_015C_SAVE_GAME						:Játék mentése
 STR_015D_LOAD_GAME						:Jaték betöltése
 STR_015E_QUIT_GAME						:Kilépés a játékból
 STR_015F_QUIT							:Kilépés
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Biztosan kilépsz ebbõl a játékból ?
 STR_0161_QUIT_GAME						:{WHITE}Kilépés a játékból
+STR_SORT_TIP							:{BLACK}Válassz rendezési sorrendet
+STR_SORT_BY_NAME						:{BLACK}Név
+STR_SORT_BY_DATE						:{BLACK}Dátum
 
 ############ range for months starts
 STR_0162_JAN							:jan
@@ -552,7 +562,7 @@ STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO					:{BLACK}Saját pálya készítése
-STR_0221_OPENTTD					:{YELLOW}OpenTTD
+STR_0221_OPENTTD						:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR					:{YELLOW}pályaszerkesztõ
 STR_0223_LAND_GENERATION					:{WHITE}Táj szerkesztése
 STR_0224							:{BLACK}{UPARROW}
@@ -730,7 +740,7 @@ STR_02D5_LAND_BLOCK_INFO					:Terület-információ
 STR_02D6							:
 STR_02D7_SCREENSHOT_CTRL_S					:Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Óriás képmentés (Ctrl-G)
-STR_02D9_ABOUT_OPENTTD					:Az  'OpenTTD'-ról
+STR_02D9_ABOUT_OPENTTD						:Az  'OpenTTD'-ról
 ############ range ends	here
 
 STR_02DA_ON							:{BLACK}Be
@@ -771,9 +781,9 @@ STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}A játék beállításainak megmutatása
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}A nehézségi beállítások megmutatása
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Új játék kezdése saját pályán
 STR_0304_QUIT							:{BLACK}Kilépés
-STR_0305_LEAVE_OPENTTD					:{BLACK}Kilépés az OpenTTD-bõl
+STR_0305_LEAVE_OPENTTD						:{BLACK}Kilépés az OpenTTD-bõl
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Demonstráció/tanítás megnézése
-STR_0307_OPENTTD				:{WHITE}OpenTTD {REV}
+STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...csak városban építhetõ
 STR_030E_SELECT_TEMPERATE_LANDSCAPE				:{BLACK}Mérsékelt táj kiválasztása
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE				:{BLACK}Szubarktikus táj kiválasztása
@@ -880,8 +890,14 @@ STR_HEADING_FOR_STATION_VEL					:{LTBLUE}{STATION} állomás felé, {VELOCITY}
 STR_NO_ORDERS							:{LTBLUE}Nincs menetrend
 STR_NO_ORDERS_VEL						:{LTBLUE}Nincs menetrend, {VELOCITY}
 
+STR_PASSENGERS							:utas
+STR_BAGS							:táska
+STR_TONS							:tonna
 STR_LITERS							:liter
+STR_ITEMS							:darab
+STR_CRATES							:láda
 STR_RES_OTHER							:egyéb
+STR_NOTHING							:
 
 STR_CANT_SHARE_ORDER_LIST					:{WHITE}Nem lehet megosztani a menetrendet...
 STR_CANT_COPY_ORDER_LIST					:{WHITE}Nem lehet másolni a menetrendet...
@@ -889,6 +905,32 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Megosztott menetrend vége - -
 
 STR_TRAIN_IS_LOST						:{WHITE}{COMMA16}. vonat eltévedt.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}{COMMA16}. vonat profitja az elmúlt évben: {CURRENCY}
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}A(z) {COMMA16}. vonatnak túl rövid a menetrendje
+STR_TRAIN_HAS_VOID_ORDER					:{WHITE}A(z) {COMMA16}. vonatnak üres a menetrendje
+STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}A(z) {COMMA16}. vonatnak duplikált utasításai vannak
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}A(z) {COMMA16}. vonatnak nemlétezõ állomás van a menetrendjében
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}A(z) {COMMA16}. közúti jármûnek túl kevés a teendõje
+STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}A(z) {COMMA16}. közúti jármûnek nincs teendõje
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}A(z) {COMMA16}. köyúti jármûnek duplikált utasításai vannak
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}A(z) {COMMA16}. közúti jármûnek nemlétezõ állomás van a menetrendjében
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}A(z) {COMMA16}. hajónak túl rövid a menetrendje
+STR_SHIP_HAS_VOID_ORDER						:{WHITE}A(z) {COMMA16}. hajónak üres a menetrendje
+STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}A(z) {COMMA16}. hajónak duplikált utasításai vannak
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}A(z) {COMMA16}. hajónak nemlétezõ állomás van a menetrendjében
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}A(z) {COMMA16}. repülõnek túl rövid a menetrendje
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}A(z) {COMMA16}. repülõnek üres a menetrendje
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}A(z) {COMMA16}. repülõnek duplikált utasitásai vannak
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}A(z) {COMMA16}. repülõnek nemlétezõ állomás van a menetrendjében
+# end of order system
+
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Autorenew sikertelen a(z) {COMMA16}. vonaton (pénzlimit)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Autorenew sikertelen a(z) {COMMA16}. közúti jármûvön (pénzlimit)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Autorenew sikertelen a(z) {COMMA16}. hajón (pénzlimit)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Autorenew sikertelen a(z) {COMMA16}. repülõn (pénzlimit)
 
 STR_CONFIG_PATCHES						:{BLACK}Foltok beállítása
 STR_CONFIG_PATCHES_TIP						:{BLACK}Foltok beállítása
@@ -898,12 +940,12 @@ STR_CONFIG_PATCHES_OFF						:Ki
 STR_CONFIG_PATCHES_ON						:Be
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Jármûvek sebességének kijelzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Lejtõre es partokra építés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, pl: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Vonatok valósághû gyorsulása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Egymás mellé építhetõ vonatállomások: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Bármelyik rakomány telipakolása esetén induljon a jármû: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NOTRAINSERVICE				:{LTBLUE}Nincs automatikus vonatjavítás: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Infláció: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Csak akkor szállítson árut az állomásra, ha ott van rá kereslet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Nagyon hosszú hidak engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}'Menj a garázsba' engedélyezés a menetrendben: {ORANGE}{STRING}
@@ -924,8 +966,16 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Új algoritmus a vonatok útkere
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}A vonat eltévedt, ha az úton töltött napok száma legalább : {ORANGE}{STRING} nap
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}A vonat eltévedt ha nem halad elõre: {ORANGE}kikapcsolva
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Jármûvek menetrendjének ellenõrzése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:nem
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:igen, de nem az álló jármûvekre
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:minden jármûre
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Figyelmeztetés, ha a vonat veszteséges: {ORANGE}{STRING}
-STR_CONFIG_AUTORENEW_VEHICLE					:{LTBLUE}Elöregedett jármûvek automatikus cseréje
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Jármûvek sose avuljanak el: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automatán felújítja a jármûvet ha elöregedik
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Automatán felújítja a jármûvet {ORANGE}{STRING}{LTBLUE} hónappal a max életkora elõtt/után
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Automata megújításhoz szükséges minimális pénz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING}
@@ -942,30 +992,48 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Repülõgépek tiltása a gépi ell
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Alap szervízelési idõ a vonatokra: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Alapértelmezett szervízelés közúti jármûveknek: {ORANGE}{STRING} naponta
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Alap szervízelési idõ a köyúti jármûvekre: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Alapértelmezett szervízelés repülõgépeknek: {ORANGE}{STRING} naponta
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Alap szervízelési idõ a repülõkre: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} naponta
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Alap szervízelési idõ a hajókra: {ORANGE}kikapcsolva
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Egyenletes gazdaság (több, kisebb változás)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezõre
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}A fõ eszközsor helye: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Balra
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Középen
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Jobbra
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Építkezés
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Jármûvek
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Állomások
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Gazdaság
+STR_CONFIG_PATCHES_AI						:{BLACK}Ellenfelek
 
 STR_CONFIG_PATCHES_DISABLED					:kikapcsolva
 STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Válassz beállítási értéket
 
-STR_CHEAT_BUILD_IN_PAUSE				:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 
-STR_TOWNDIR_NAME						:{BLACK}Név
-STR_TOWNDIR_POPULATION						:{BLACK}Lakosság
-STR_TOWNDIR_SORT_TIP						:{BLACK}Válassz rendezési sorrendet
+STR_CHEATS							:{WHITE}Csalások
+STR_CHEATS_TIP							:{BLACK}A kijelölõnégyzetek jelzik a csalások eddigi használtságát
+STR_CHEATS_WARNING						:{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
+STR_CHEAT_MONEY							:{LTBLUE}Tõkeemelés {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Játszani mint játékos #{ORANGE}{COMMA16}
+STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, stb): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}A csatornák keresztezhessék egymást: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jet-repülõgépek nem fognak (gyakran) lezuhanni a kisebb repülõtereken: {ORANGE} {STRING}
+
+STR_SORT_BY_POPULATION						:{BLACK}Lakosság
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Úton {CHECKPOINT} felé
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Úton {CHECKPOINT} felé, {VELOCITY}
@@ -988,16 +1056,29 @@ STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Nem lehet eltávolítani az ellenõrzõ 
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Sín építése egyszerûsített módón
 
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...nincs város ezen a pályán
+
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Biztos vagy benne hogy véletlen tájképet akarsz létrehozni?
+STR_MANY_RANDOM_TOWNS						:{BLACK}Sok véletlen város
+STR_RANDOM_TOWNS_TIP						:{BLACK}Elhelyez a térképen véletlenszerüen sok várost.
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Sok véletlen gazdasági épület
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Elhelyez a térképen véletlenszerüen sok gazdasági épületet
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Nem tudok gazdasági épületet generálni...
+
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Tájrendezés
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Talajszint
+
+
 STR_TREES_RANDOM_TYPE						:{BLACK}Véletlenszerû fafélék
 STR_TREES_RANDOM_TYPE_TIP					:{BLACK}Véletlenszerûen kiválasztott fákat helyez el
 
-STR_CANT_BUILD_CANALS							:{WHITE}Nem lehet csatornát építeni ide...
-STR_BUILD_CANALS_TIP							:{BLACK}Csatorna építése
-STR_LANDINFO_CANAL								:Csatorna
+STR_CANT_BUILD_CANALS						:{WHITE}Nem lehet csatornát építeni ide...
+STR_BUILD_CANALS_TIP						:{BLACK}Csatorna építése
+STR_LANDINFO_CANAL						:Csatorna
 
-STR_CANT_BUILD_LOCKS							:{WHITE}Nem lehet zsilipet építeni ide...
-STR_BUILD_LOCKS_TIP								:{BLACK}Zsilip építése
-STR_LANDINFO_LOCK									:Zsilip
+STR_CANT_BUILD_LOCKS						:{WHITE}Nem lehet zsilipet építeni ide...
+STR_BUILD_LOCKS_TIP						:{BLACK}Zsilip építése
+STR_LANDINFO_LOCK						:Zsilip
 
 STR_LANDINFO_COORDS						:{BLACK}Koordináták: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1012,6 +1093,9 @@ STR_STATION_DRAG_DROP						:{BLACK}Állomás építése fogd és dobd módon
 
 STR_FAST_FORWARD						:{BLACK}Játék gyorsítása
 STR_MESSAGE_HISTORY						:{WHITE}Elõzõ üzenetek
+STR_MESSAGE_HISTORY_TIP						:{BLACK}Az elõzõ hírüzenetek listája
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Kikapcsol mind
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Bekapcsol mind
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Szénbánya építése
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Erdõ ültetése
@@ -1033,12 +1117,15 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP				:{BLACK}Buborékgenerátor építése
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP					:{BLACK}Tejkaramella fejtõ építése
 STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Cukorbánya építése
 
-STR_INDUSTRYDIR_NAME						:{BLACK}Név
-STR_INDUSTRYDIR_PRODUCTION					:{BLACK}Termelés
-STR_INDUSTRYDIR_TYPE						:{BLACK}Típus
+STR_SORT_BY_PRODUCTION						:{BLACK}Termelés
+STR_SORT_BY_TYPE						:{BLACK}Típus
+STR_SORT_BY_TRANSPORTED						:{BLACK}Elszállítás
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Gazdasági épületek
-STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING})
+STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% elszállítva)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% elszállítva)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
+
+STR_INDUSTRY_TOO_CLOSE						:{WHITE}...túl közel egy másik gazdasági épülethez
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}A vonat átalakítása másfajta áru szállítására
 STR_RAIL_REFIT							:{WHITE}{STRING} (átalakítható)
@@ -1046,6 +1133,79 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Vonat átalakítása
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Válaszd ki, milyen árut szállítson a vonat
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}A vonat átalakítása a kijelölt áru szállítására
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nem alakíthatod át a vonatot...
+
+
+############ network gui strings
+
+TEMP_STRING_NO_NETWORK						:{WHITE}Hálózati felület nem mûködik jelenleg!
+
+STR_NETWORK_MULTIPLAYER						:{WHITE}Többjátékos
+
+STR_NETWORK_FIND_SERVER						:{BLACK}Szerver keresése
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Szerver keresése a hálózaton
+STR_NETWORK_DIRECT_CONNECT					:{BLACK}Közvetlen kapcsolat
+STR_NETWORK_ENTER_IP						:{BLACK}Írd be a szerver IP címét
+STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Ismert IP címhez kapcsolódás
+STR_NETWORK_START_SERVER					:{BLACK}Szerver indítása
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Saját szervert indít
+
+STR_NETWORK_PLAYER_NAME						:{BLACK}Játékos neve:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}A többi játékos ilyen nével fog ismerni Téged.
+
+STR_NETWORK_SELECT_CONNECTION					:{BLACK}Válassz kapcsolat típust:
+STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Válassz az internetes játék és a helyi hálózatban történõ játék között
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:{BLACK}Helyi hálózat
+STR_NETWORK_INTERNET						:{BLACK}Internet
+
+STR_NETWORK_GAME_NAME						:{BLACK}Név
+STR_NETWORK_GAME_NAME_TIP					:{BLACK}Játék neve
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_PLAYERS_TIP						:{BLACK}Jelenlegi játékosszám / Maximum játékosszám
+STR_NETWORK_MAP_SIZE						:{BLACK}Méret
+STR_NETWORK_MAP_SIZE_TIP					:{BLACK}A térkép mérete
+STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Nyelv, szerver verzió, stb.
+STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Kattints a listában a jatékra hogy kiválaszd
+
+STR_NETWORK_JOIN_GAME						:{BLACK}Csatlakozás a játékhoz
+
+
+STR_NETWORK_START_GAME_WINDOW					:{WHITE}Új játékot kezd
+
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Játék neve:
+STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}A játék neve fog megjelenni a többi játékosnak a többjátékos menüben
+STR_NETWORK_PASSWORD						:{BLACK}Jelszó:
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Védd le a játékodat jelszóval ha nem akarod hogy mások csatlakozzanak
+STR_NETWORK_SELECT_MAP						:{BLACK}Válassz egy térképet:
+STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Melyik terképen akarsz játszani?
+STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Játékosok száma:
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Válaszd ki a maximális játékos-számot. Nem kötelezõ mindet kihasználni.
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_PLAYERS						:{BLACK}2 játékos
+STR_NETWORK_3_PLAYERS						:{BLACK}3 játékos
+STR_NETWORK_4_PLAYERS						:{BLACK}4 játékos
+STR_NETWORK_5_PLAYERS						:{BLACK}5 játékos
+STR_NETWORK_6_PLAYERS						:{BLACK}6 játékos
+STR_NETWORK_7_PLAYERS						:{BLACK}7 játékos
+STR_NETWORK_8_PLAYERS						:{BLACK}8 játékos
+STR_NETWORK_START_GAME						:{BLACK}Játék elindítása
+
+
+STR_NETWORK_GAME_LOBBY						:{WHITE}Többjátékos játék-lobby
+
+STR_NETWORK_SEND						:{BLACK}Küld
+STR_NETWORK_SEND_TIP						:{BLACK}A többi játékosnak üzenetet küld
+STR_NETWORK_COMPANY_NAME					:{BLACK}Vállalat neve:
+STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Megváltoztatja a vállalatod nevét. Üss entert a módosítások életbeléptetéséhez
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Játék megvizsgálása
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Megtekinted a játékot mint vizsgálóbiztos
+STR_NETWORK_NEW_COMPANY						:{BLACK}Új vállalat
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Új vállalatot nyit
+STR_NETWORK_READY						:{BLACK}Kész
+
+
+############ end network gui strings
+
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}{CURRENCY} kiadás
@@ -1236,6 +1396,7 @@ STR_205B_TEAPOT_HOUSE						:Teáskanna-ház
 STR_205C_PIGGY_BANK						:Malacpersely
 
 ##id 0x2800
+STR_LANDSCAPING							:Tájrendezés
 STR_2800_PLANT_TREES						:Faültetés
 STR_2801_PLACE_SIGN						:Felirat lerakása
 STR_2802_TREES							:{WHITE}Fák
@@ -1539,6 +1700,7 @@ STR_SV_STNAME_FOREST						:{STRING}i erdõség
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Nehézségi szint
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Ment
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Könnyû
@@ -1565,8 +1727,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Tenger/tavak mennyisége: {ORANGE}{ST
 STR_6813_ECONOMY						:{LTBLUE}Gazdasági élet: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Vonatok fordítása: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Katasztrófák: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}A városi tanács hozzáállása a területrendezéshez: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Egyiksem
 STR_6816_LOW							:Kevés
 STR_6817_NORMAL							:Normál
 STR_6818_HIGH							:Sok
@@ -1603,12 +1767,14 @@ STR_6835_AT_END_OF_LINE_ONLY					:Csak vonal végén
 STR_6836_OFF							:Ki
 STR_6837_ON							:Be
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Legjobb pontok
+STR_6839_PERMISSIVE						:Engedékeny
+STR_683A_TOLERANT						:Toleráns
+STR_683B_HOSTILE						:Ellenséges
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
-STR_7002_PLAYER_1						:(1. játékos)
-STR_7003_PLAYER_2						:(2. játékos)
+STR_7002_PLAYER							:({COMMA16}. játékos)
 STR_7004_NEW_FACE						:{BLACK}Új arc
 STR_7005_COLOR_SCHEME						:{BLACK}Szín váltása
 STR_7006_COLOR_SCHEME						:{GOLD}Szín:
@@ -1646,8 +1812,8 @@ STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Mûködési nyereség grafikon
 STR_7026_BANK_BALANCE						:{WHITE}Banki egyenleg
 STR_7027_LOAN							:{WHITE}Kölcsön
 STR_7028							:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}{SKIP}{SKIP}{SKIP}{CURRENCY} kölcsönzése
-STR_702A_REPAY							:{BLACK}{SKIP}{SKIP}{SKIP}{CURRENCY} törlesztése
+STR_7029_BORROW							:{BLACK}Kölcsönkér {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Visszafizet {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Nem kölcsönözhetsz több pénzt...
 STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...már letörlesztetted az összeset
@@ -2023,6 +2189,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Mindig javítsd a vonatot a {TOWN}i jármû
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Úton a {TOWN}i jármûtelepre
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Úton a {TOWN}i jármûtelepre, {VELOCITY}
 
+STR_UNKNOWN_DESTINATION						:ismeretlen célpont
 STR_8812_EMPTY							:{LTBLUE}Üres
 STR_8813_FROM							:{LTBLUE}{CARGO} {STATION} állomásról
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}{COMMA16}. vonat a jármûtelepen várakozik
@@ -2088,6 +2255,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL				:{BLACK}Javítási idõköz csökkentése
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED				:{BLACK}A szállított rakomány részletei
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES				:{BLACK}A vonat kocsiainak részletei
 STR_8851_SHOW_CAPACITIES_OF_EACH				:{BLACK}A kocsik kapacitása
+STR_8852_SHOW_TOTAL_CARGO					:{BLACK}Megmutatja a vonat teljes kapacitását, rakománytípusokra lebontva
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER				:{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
 STR_8853_SKIP_THE_CURRENT_ORDER					:{BLACK}Az aktuális célpont kihagyása és ugrás a következõre
 STR_8854_DELETE_THE_HIGHLIGHTED					:{BLACK}A kijelölt célpont törlése
@@ -2335,3 +2503,4 @@ STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Egy szénbánya lesüllyed
 
 STR_BRIBE_FAILED						:{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2						:{WHITE}lefülelte egy helyi nyomozó!
+STR_BUILD_DATE							:{BLACK}Építve: {LTBLUE}{DATE_LONG}
