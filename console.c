@@ -27,6 +27,7 @@ static byte _icursor_counter;
 // ** stdlib ** //
 byte _stdlib_developer=1;
 bool _stdlib_con_developer=false;
+FILE * _iconsole_output_file;
 
 // ** main console cmd buffer ** // sign_de: especialy for Celestar :D
 static byte* _iconsole_cmdbuffer[20];
@@ -186,6 +187,7 @@ void IConsoleInit()
 	#if defined(WITH_REV)
 	extern char _openttd_revision[];
 	#endif
+	_iconsole_output_file = NULL;
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
 	_iconsole_color_warning = 13;
@@ -231,6 +233,7 @@ void IConsoleFree()
 {
 	_iconsole_inited=false;
 	IConsoleClear();
+	if (_iconsole_output_file!=NULL) fclose(_iconsole_output_file);
 }
 
 void IConsoleResize()
@@ -344,9 +347,19 @@ void CDECL IConsolePrintF(byte color_code, const char *s, ...)
 {
 	va_list va;
 	char buf[1024];
+	int len;
+
 	va_start(va, s);
-	vsprintf(buf, s, va);
+	len = vsprintf(buf, s, va);
 	va_end(va);
+
+	if (_iconsole_output_file!=NULL) {
+		// if there is an console output file ... also print it there
+		fwrite((void *) &buf, len, 1, _iconsole_output_file);
+		buf[1023]='\n';
+		fwrite((void *)&buf[1023], 1, 1,_iconsole_output_file);
+		}
+
 	IConsolePrint(color_code, (byte *) &buf);
 }
 

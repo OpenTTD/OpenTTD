@@ -1730,6 +1730,7 @@ bool NetworkCoreConnectGame(const byte* b, unsigned short port)
 	_networking = NetworkConnect(b, port);
 	if (_networking) {
 		NetworkLobbyShutdown();
+		IConsoleCmdExec("exec scripts/on_client.scr 0");
 	} else {
 		if (_networking_override)
 			NetworkLobbyShutdown();
@@ -1760,6 +1761,8 @@ bool NetworkCoreStartGame()
 	_networking = true;
 	NetworkGameFillDefaults(); // clears the network game info
 	_network_game.players_on++; // the serverplayer is online
+	// execute server initialization script
+	IConsoleCmdExec("exec scripts/on_server.scr 0");
 	return true;
 }
 

@@ -10,10 +10,19 @@
 # define ENABLE_NETWORK
 #endif
 
+
+// ** scriptfile handling ** //
+static FILE * _script_file;
+static bool _script_running;
+
 // ** console command / variable defines ** //
+
 #define DEF_CONSOLE_CMD(yyyy) static _iconsole_var * yyyy(byte argc, byte* argv[], byte argt[])
 #define DEF_CONSOLE_CMD_HOOK(yyyy) static bool yyyy(_iconsole_cmd * hookcmd)
 #define DEF_CONSOLE_VAR_HOOK(yyyy) static bool yyyy(_iconsole_var * hookvar)
+
+
+// ** supporting functions ** //
 
 static int32 GetArgumentInteger(byte *arg)
 {
@@ -125,9 +134,67 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 #endif
 
+/* ******************************** */
+/*   script file console commands   */
+/* ******************************** */
+
+DEF_CONSOLE_CMD(ConExec)
+{
+	char cmd[1024];
+	bool doerror;
+
+	if (argc<2) return NULL;
+
+	doerror = true;
+	_script_file = fopen(argv[1],"rb");
+
+	if (_script_file == NULL) {
+		if (argc>2) if (atoi(argv[2])==0) doerror=false;
+		if (doerror) IConsoleError("script file not found");
+		return NULL;
+		}
+
+	_script_running = true;
+
+	while (!feof(_script_file) && _script_running) {
+
+		fgets((char *)&cmd, 1024, _script_file);
+
+		IConsoleCmdExec((byte *) &cmd);
+
+	}
+
+	_script_running = false;
+	fclose(_script_file);
+	return NULL;
+}
+
+DEF_CONSOLE_CMD(ConReturn)
+{
+	_script_running = false;
+	return NULL;
+}
+
 /* **************************** */
 /*   default console commands   */
 /* **************************** */
+
+DEF_CONSOLE_CMD(ConScript)
+{
+	extern FILE* _iconsole_output_file;
+
+	if (_iconsole_output_file!=NULL) {
+		if (argc<2) return NULL;
+		IConsolePrintF(_iconsole_color_default,"file output complete");
+		fclose(_iconsole_output_file);
+	} else {
+		IConsolePrintF(_iconsole_color_default,"file output started to: %s",argv[1]);
+		_iconsole_output_file = fopen(argv[1],"ab");
+		if (_iconsole_output_file == NULL) IConsoleError("could not open file");
+	}
+	return NULL;
+}
+
 
 DEF_CONSOLE_CMD(ConEcho)
 {
@@ -335,6 +402,10 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 
 void IConsoleDebugLibRegister()
 {
+	// stdlib
+	extern bool _stdlib_con_developer;
+
+	IConsoleVarRegister("con_developer",(void *) &_stdlib_con_developer,ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarMemRegister("temp_bool",ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarMemRegister("temp_int16",ICONSOLE_VAR_INT16);
 	IConsoleVarMemRegister("temp_int32",ICONSOLE_VAR_INT32);
@@ -356,7 +427,6 @@ void IConsoleStdLibRegister()
 {
 	// stdlib
 	extern byte _stdlib_developer;
-	extern bool _stdlib_con_developer;
 
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
@@ -373,6 +443,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("dump_vars",ConListDumpVariables);
 	IConsoleCmdRegister("echo",ConEcho);
 	IConsoleCmdRegister("echoc",ConEchoC);
+	IConsoleCmdRegister("exec",ConExec);
 	IConsoleCmdRegister("exit",ConExit);
 	IConsoleCmdRegister("help",ConHelp);
 	IConsoleCmdRegister("info_cmd",ConInfoCmd);
@@ -385,11 +456,12 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("random",ConRandom);
 	IConsoleCmdRegister("resetengines",ConResetEngines);
 	IConsoleCmdHook("resetengines",ICONSOLE_HOOK_ACCESS,ConCmdHookNoNetwork);
+	IConsoleCmdRegister("return",ConReturn);
 	IConsoleCmdRegister("screenshot",ConScreenShot);
+	IConsoleCmdRegister("script",ConScript);
 	IConsoleCmdRegister("scrollto",ConScrollToTile);
 
 	// variables [please add them alphabeticaly]
-	IConsoleVarRegister("con_developer",(void *) &_stdlib_con_developer,ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarRegister("developer",(void *) &_stdlib_developer,ICONSOLE_VAR_BYTE);
 #ifdef ENABLE_NETWORK
 	IConsoleVarRegister("net_client_timeout",&_network_client_timeout,ICONSOLE_VAR_UINT16);
