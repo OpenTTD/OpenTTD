@@ -594,11 +594,17 @@ void NTPEnum(NewTrackPathFinder *tpf, uint tile, uint direction)
 
 restart:
 	if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0) {
-		if ( (uint)(_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
+		/* This is a tunnel tile */
+		if ( (uint)(_map5[tile] & 3) != (direction ^ 2)) { /* ^ 2 is reversing the direction */
+			/* We are not just driving out of the tunnel */
+			if ( (uint)(_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
+				/* We are not driving into the tunnel, or it
+				 * is an invalid tunnel */
 				goto popnext;
-		flotr = FindLengthOfTunnel(tile, direction, tpf->tracktype);
-		si.cur_length += flotr.length;
-		tile = flotr.tile;
+			flotr = FindLengthOfTunnel(tile, direction, tpf->tracktype);
+			si.cur_length += flotr.length;
+			tile = flotr.tile;
+		}
 	}
 
 	// remember the start tile so we know if we're in an inf loop.
