@@ -651,6 +651,7 @@ void AcceptEnginePreview(Engine *e, int player)
 
 	e->preview_player = 0xFF;
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
+	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 }
 
 void EnginesDailyLoop(void)
@@ -756,6 +757,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
+	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 
 	// Now available for all players
 	e->player_avail = (byte)-1;
