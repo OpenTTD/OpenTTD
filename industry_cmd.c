@@ -1181,16 +1181,11 @@ extern bool _ignore_restrictions;
 
 static bool CheckNewIndustry_Oilwell(uint tile, int type)
 {
-	int x,y;
-
 	if(_ignore_restrictions && _game_mode == GM_EDITOR)
 		return true;
 
 	if (type != IT_OIL_RIG && _game_mode == GM_EDITOR)
 		return true;
-
-	x = TileX(tile);
-	y = TileY(tile);
 
 	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)
 		return true;
