@@ -266,6 +266,12 @@ static void AskQuitGameWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 		break;
+
+	case WE_KEYPRESS: /* Return to main menu on pressing 'Enter' */
+		if (e->keypress.keycode == WKC_RETURN)
+			_switch_mode = SM_MENU;
+		break;
+
 	}
 }
 

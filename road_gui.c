@@ -122,16 +122,19 @@ static void BuildRoadClick_Demolish(Window *w)
 
 static void BuildRoadClick_Depot(Window *w)
 {
+	if (_game_mode == GM_EDITOR) return;
 	if (HandlePlacePushButton(w, 5, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
+	if (_game_mode == GM_EDITOR) return;
 	if (HandlePlacePushButton(w, 6, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
+	if (_game_mode == GM_EDITOR) return;
 	if (HandlePlacePushButton(w, 7, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
@@ -304,23 +307,23 @@ void ShowBuildRoadToolbar()
 
 static const Widget _build_road_scen_widgets[] = {
 {    WWT_TEXTBTN,     7,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,     7,    11,   195,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,     7,    11,   173,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+
 {     WWT_IMGBTN,     7,     0,    21,    14,    35, 0x51D,			STR_180B_BUILD_ROAD_SECTION},
 {     WWT_IMGBTN,     7,    22,    43,    14,    35, 0x51E,			STR_180B_BUILD_ROAD_SECTION},
 {     WWT_IMGBTN,     7,    44,    65,    14,    35, 0x2BF,			STR_018D_DEMOLISH_BUILDINGS_ETC},
-{     WWT_IMGBTN,     7,    66,    87,    14,    35, 0x2B7,			STR_018E_LOWER_A_CORNER_OF_LAND},
-{     WWT_IMGBTN,     7,    88,   109,    14,    35, 0x2B6,			STR_018F_RAISE_A_CORNER_OF_LAND},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
 {      WWT_EMPTY,     0,     0,     0,     0,     0, 0x0,				STR_NULL},
-{     WWT_IMGBTN,     7,   110,   151,    14,    35, 0xA22,			STR_180F_BUILD_ROAD_BRIDGE},
-{     WWT_IMGBTN,     7,   152,   173,    14,    35, 0x97D,			STR_1810_BUILD_ROAD_TUNNEL},
-{     WWT_IMGBTN,     7,   174,   195,    14,    35, 0x2CA,			STR_1811_TOGGLE_BUILD_REMOVE_FOR},
+{     WWT_IMGBTN,     7,    66,   107,    14,    35, 0xA22,			STR_180F_BUILD_ROAD_BRIDGE},
+{     WWT_IMGBTN,     7,   108,   129,    14,    35, 0x97D,			STR_1810_BUILD_ROAD_TUNNEL},
+{     WWT_IMGBTN,     7,   130,   151,    14,    35, 0x2CA,			STR_1811_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,     7,   152,   173,    14,    35, SPR_IMG_LANDSCAPING_S, STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_scen_desc = {
-	-1, -1, 196, 36,
+	-1, -1, 174, 36,
 	WC_SCEN_BUILD_ROAD,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_scen_widgets,
