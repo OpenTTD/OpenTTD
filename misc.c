@@ -793,7 +793,8 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	{&_vehicle_id_ctr_day, 			SLE_UINT16, 0, 255},
 	{&_age_cargo_skip_counter, 	SLE_UINT8,	0, 255},
 	{&_avail_aircraft, 					SLE_UINT8,	0, 255},
-	{&_cur_tileloop_tile, 			SLE_UINT16, 0, 255},
+	{&_cur_tileloop_tile, 			SLE_FILE_U16 | SLE_VAR_U32, 0, 5},
+	{&_cur_tileloop_tile, 			SLE_UINT32, 6, 255},
 	{&_disaster_delay, 					SLE_UINT16, 0, 255},
 	{&_station_tick_ctr, 				SLE_UINT16, 0, 255},
 	{&_random_seeds[0][0], 					SLE_UINT32, 0, 255},
@@ -815,8 +816,10 @@ static void SaveLoad_DATE(void)
 
 
 static const SaveLoadGlobVarList _view_desc[] = {
-	{&_saved_scrollpos_x,			SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
-	{&_saved_scrollpos_y,			SLE_FILE_I16 | SLE_VAR_INT, 0, 255},
+	{&_saved_scrollpos_x,			SLE_FILE_I16 | SLE_VAR_INT, 0, 5},
+	{&_saved_scrollpos_x,			SLE_INT32, 6, 255},
+	{&_saved_scrollpos_y,			SLE_FILE_I16 | SLE_VAR_INT, 0, 5},
+	{&_saved_scrollpos_y,			SLE_INT32, 6, 255},
 	{&_saved_scrollpos_zoom,	SLE_UINT8,	0, 255},
 	{NULL,										0,					0,   0}
 };
