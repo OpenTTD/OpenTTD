@@ -322,7 +322,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 	}
 
 	if (flags & DC_EXEC) {
-		ChangeTownRating(t, -rating, -1000);
+		ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM);
 		ClearTownHouse(t, tile);
 	}
 
@@ -1570,13 +1570,12 @@ static void TownActionBribe(Town *t, int action)
 		/*	decrease by a lot!
 		 *	ChangeTownRating is only for stuff in demolishing. Bribe failure should
 		 *	be independent of any cheat settings
-		 *	ChangeTownRating(c, -1000, -50);
 		 */
 		rating = t->ratings[_current_player];
 		if (rating > -50)
-			t->ratings[_current_player] = -50;
+			t->ratings[_current_player] = RATING_BRIBE_DOWN_TO;
 	} else {
-		ChangeTownRating(t, 200, 800);
+		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM);
 	}
 }
 

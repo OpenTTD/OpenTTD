@@ -643,7 +643,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
 		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
 		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-			ChangeTownRating(t, -250, 0);
+			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 	}
 	return  _price.clear_tunnel * (length + 1);
 }
@@ -758,10 +758,10 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		uint c = tile;
 		uint16 new_data;
 
-		//checks if the owner is town then decrease town rating by 250 until
+		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
 		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-			ChangeTownRating(t, -250, 0);
+			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
 		do {
 			m5 = _map5[c];

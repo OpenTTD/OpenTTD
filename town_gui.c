@@ -119,13 +119,13 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					SetDParam(2, GetPlayerNameString(p->index, 3));
 
 					r = t->ratings[p->index];
-					(str = STR_3035_APPALLING, r <= -400) ||	// Apalling
-					(str++, r <= -200) ||											// Very Poor
-					(str++, r <= 0) ||												// Poor
-					(str++, r <= 200) ||											// Mediocore
-					(str++, r <= 400) ||											// Good
-					(str++, r <= 600) ||											// Very Good
-					(str++, r <= 800) ||											// Excellent
+					(str = STR_3035_APPALLING, r <= RATING_APPALLING) ||	// Apalling
+					(str++, r <= RATING_VERYPOOR) ||											// Very Poor
+					(str++, r <= RATING_POOR) ||												// Poor
+					(str++, r <= RATING_MEDIOCRE) ||											// Mediocore
+					(str++, r <= RATING_GOOD) ||											// Good
+					(str++, r <= RATING_VERYGOOD) ||											// Very Good
+					(str++, r <= RATING_EXCELLENT) ||											// Excellent
 					(str++, true);														// Outstanding
 
 					/*	WARNING ugly hack!

@@ -212,7 +212,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				// checks if the owner is town than decrease town rating by 50 until you have
 				// a "Poor" town rating
 				if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
-					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], -100);
+					ChangeTownRating(t, -_road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 				_map5[tile] ^= c;
 				if ((_map5[tile]&0xF) == 0)

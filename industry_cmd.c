@@ -408,7 +408,7 @@ int32 CmdDestroyIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		DeleteIndustry(i);
 		CreateEffectVehicleAbove(x + 8,y + 8, 2, EV_DEMOLISH);
-		ChangeTownRating(t, -1500, -1000);	// penalty is 1500
+		ChangeTownRating(t, RATING_INDUSTRY_DOWN_STEP, RATING_INDUSTRY_MINIMUM);
 	}
 
 	return (_price.build_industry >> 5) * _industry_type_costs[i->type]*2;

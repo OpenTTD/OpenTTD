@@ -197,7 +197,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					if (_game_mode != GM_EDITOR && _current_player < MAX_PLAYERS) {
 						Town *t = ClosestTownFromTile(ti.tile, _patches.dist_local_authority);
 						if (t != NULL)
-							ChangeTownRating(t, 7, 220);
+							ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 					}
 					m2 = 0;
 					if ( (ti.map5 & 0x1C) == 4 ) {
@@ -350,7 +350,7 @@ static int32 ClearTile_Trees(uint tile, byte flags) {
 	if (flags & DC_EXEC && _current_player < MAX_PLAYERS) {
 		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 		if (t != NULL)
-			ChangeTownRating(t, -35, -1000);
+			ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 
 	num = (_map5[tile] >> 6) + 1;
