@@ -117,7 +117,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						ni->string_id, 426);
 				} else {
 					byte bk = _display_opt;
-					_display_opt |= DO_TRANS_BUILDINGS;
+					_display_opt &= ~DO_TRANS_BUILDINGS;
 					DrawWindowViewport(w);
 					_display_opt = bk;
 

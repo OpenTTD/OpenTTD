@@ -818,7 +818,7 @@ static void DrawTile_Road(TileInfo *ti)
 		while ((image=drss->image) != 0) {
 			if (image & 0x8000)
 				image |= ormod;
-			if (!(_display_opt & DO_TRANS_BUILDINGS)) // show transparent depots
+			if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
 				image = (image & 0x3FFF) | 0x3224000;
 
 			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,

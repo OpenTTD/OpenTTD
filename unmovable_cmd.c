@@ -33,7 +33,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			image = PLAYER_SPRITE_COLOR(_map_owner[ti->tile]);
 			image += 0x8A48;
-			if (!(_display_opt & DO_TRANS_BUILDINGS))
+			if (_display_opt & DO_TRANS_BUILDINGS)
 				image = (image & 0x3FFF) | 0x3224000;
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
 		} else if (ti->map5 == 3) {
@@ -59,7 +59,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			dtus = &_draw_tile_unmovable_data[ti->map5];
 
 			image = dtus->image;
-			if (!(_display_opt & DO_TRANS_BUILDINGS))
+			if (_display_opt & DO_TRANS_BUILDINGS)
 				image = (image & 0x3FFF) | 0x3224000;
 
 			AddSortableSpriteToDraw(image,
@@ -82,9 +82,9 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		foreach_draw_tile_seq(dtss, t->seq) {
 			image =	dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
-				image |= ormod;
-			} else {
 				image = (image & 0x3FFF) | 0x03224000;
+			} else {
+				image |= ormod;
 			}
 			AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);

@@ -85,7 +85,7 @@ static void DrawTile_Town(TileInfo *ti)
 
 	/* Add a house on top of the ground? */
 	if ((image = dcts->sprite_2) != 0) {
-		if (!(_display_opt & DO_TRANS_BUILDINGS))
+		if (_display_opt & DO_TRANS_BUILDINGS)
 			image = (image & 0x3FFF) | 0x3224000;
 
 		AddSortableSpriteToDraw(image,
@@ -96,7 +96,7 @@ static void DrawTile_Town(TileInfo *ti)
 			dcts->dz,
 			z);
 
-		if (!(_display_opt & DO_TRANS_BUILDINGS))
+		if (_display_opt & DO_TRANS_BUILDINGS)
 			return;
 	}
 

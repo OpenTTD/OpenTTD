@@ -1104,12 +1104,12 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 				w -= 3;
 			}
 
-			DrawFrameRect(x,y, x+w, bottom, ss->color, (_display_opt & DO_TRANS_BUILDINGS) ? 0 : 0x9);
+			DrawFrameRect(x,y, x+w, bottom, ss->color, (_display_opt & DO_TRANS_BUILDINGS) ? 0x9 : 0);
 		}
 
 		SET_DPARAM32(0, ss->params[0]);
 		SET_DPARAM32(1, ss->params[1]);
-		if (!(_display_opt & DO_TRANS_BUILDINGS) && ss->width != 0) {
+		if (_display_opt & DO_TRANS_BUILDINGS && ss->width != 0) {
 			/* This is such a frustrating mess - I need to convert
 			 * from real color codes to string color codes and guess
 			 * what, they are completely different. --pasky */

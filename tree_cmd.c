@@ -288,7 +288,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
-	if((_display_opt & DO_TRANS_BUILDINGS) || !_patches.invisible_trees)
+	if (!(_display_opt & DO_TRANS_BUILDINGS) || !_patches.invisible_trees)
 	{
 		int i;
 
@@ -296,7 +296,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		i = (ti->map5 >> 6) + 1;
 		do {
 			uint32 image = s[0] + (--i==0 ? (ti->map5 & 7) : 3);
-			if (!(_display_opt & DO_TRANS_BUILDINGS))
+			if (_display_opt & DO_TRANS_BUILDINGS)
 				image = (image & 0x3FFF) | 0x3224000;
 			te[i].image = image;
 			te[i].x = d[0];

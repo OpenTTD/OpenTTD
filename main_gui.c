@@ -849,7 +849,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (_display_opt & DO_WAYPOINTS) x &= ~(1<<8);
 	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<9);
 	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<10);
-	if (!(_display_opt & DO_TRANS_BUILDINGS)) x &= ~(1<<11);
+	if (_display_opt & DO_TRANS_BUILDINGS) x &= ~(1<<11);
 	WP(w,menu_d).checked_items = x;
 }
 

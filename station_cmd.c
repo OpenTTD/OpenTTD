@@ -1950,9 +1950,9 @@ static void DrawTile_Station(TileInfo *ti)
 		// For custom sprites, there's no railtype-based pitching.
 		image += railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 0);
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			if (image&0x8000) image |= image_or_modificator;	
-		} else {
 			image = (image & 0x3FFF) | 0x03224000;
+		} else {
+			if (image&0x8000) image |= image_or_modificator;	
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {

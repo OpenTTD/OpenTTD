@@ -390,9 +390,9 @@ static void DrawWaterStuff(TileInfo *ti, const byte *t, uint32 palette, uint bas
 	for(wdts = (const WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
 		image =	wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			image |= palette;
-		} else {
 			image = (image & 0x3FFF) | 0x03224000;
+		} else {
+			image |= palette;
 		}
 		AddSortableSpriteToDraw(image, ti->x + wdts->delta_x, ti->y + wdts->delta_y, wdts->width, wdts->height, wdts->unk, ti->z + wdts->delta_z);
 	}

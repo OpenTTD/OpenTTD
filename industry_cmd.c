@@ -307,7 +307,7 @@ static void DrawTile_Industry(TileInfo *ti)
 		if (image&0x8000 && (image & 0xFFFF0000) == 0)
 			image |= ormod;
 
-		if (!(_display_opt & DO_TRANS_BUILDINGS))
+		if (_display_opt & DO_TRANS_BUILDINGS)
 			image = (image & 0x3FFF) | 0x3224000;
 
 		AddSortableSpriteToDraw(image,
@@ -318,7 +318,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			dits->dz,
 			z);
 
-		if (!(_display_opt & DO_TRANS_BUILDINGS))
+		if (_display_opt & DO_TRANS_BUILDINGS)
 			return;
 	}
 

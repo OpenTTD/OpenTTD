@@ -641,7 +641,7 @@ static void LoadIntroGame()
 {
 	char filename[256];
 	_game_mode = GM_MENU;
-	_display_opt |= DO_TRANS_BUILDINGS; // don't make buildings transparent in intro
+	_display_opt &= ~DO_TRANS_BUILDINGS; // don't make buildings transparent in intro
 
 	_opt_mod_ptr = &_new_opt;
 	GfxLoadSprites();
