@@ -3,113 +3,113 @@
 ##isocode fy
 
 ##id 0x0000
-STR_NULL							:
-STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Off edge of map
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Too close to edge of map
-STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Not enough cash - requires {CURRENCY}
-STR_0004							:{WHITE}{CURRENCY64}
-STR_0005							:{RED}{CURRENCY64}
-STR_EMPTY							:
-STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Flat land required
-STR_0008_WAITING						:{BLACK}Waiting: {WHITE}{STRING}
-STR_0009							:{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (en-route from
-STR_000B							:{YELLOW}{STATION})
-STR_000C_ACCEPTS						:{BLACK}Accepts: {WHITE}
-STR_000D_ACCEPTS						:{BLACK}Accepts: {GOLD}
-STR_000E							:
-STR_000F_PASSENGERS						:Passengers
-STR_0010_COAL							:Coal
-STR_0011_MAIL							:Post
-STR_0012_OIL							:Oalje
-STR_0013_LIVESTOCK						:Livestock
-STR_0014_GOODS							:Guod
-STR_0015_GRAIN							:Graan
-STR_0016_WOOD							:Hout
-STR_0017_IRON_ORE						:Iron Ore
-STR_0018_STEEL							:Stiel
-STR_0019_VALUABLES						:Kostbere spullen
-STR_001A_COPPER_ORE						:Koper erts
-STR_001B_MAIZE							:Mais
-STR_001C_FRUIT							:Fruit
-STR_001D_DIAMONDS						:Diamant
-STR_001E_FOOD							:Iten
-STR_001F_PAPER							:Papier
-STR_0020_GOLD							:Goud
-STR_0021_WATER							:Wetter
-STR_0022_WHEAT							:Weet
-STR_0023_RUBBER							:Rubber
-STR_0024_SUGAR							:Sûker
-STR_0025_TOYS							:Boartersguod
-STR_0026_CANDY							:Snobbersguod
-STR_0027_COLA							:Cola
-STR_0028_COTTON_CANDY						:Sûkerspin
-STR_0029_BUBBLES						:Bubbels
-STR_002A_TOFFEE							:Toffee
-STR_002B_BATTERIES						:Batterijen
-STR_002C_PLASTIC						:Plestik
-STR_002E							:
-STR_002F_PASSENGER						:Passazjier
-STR_0030_COAL							:Coal
-STR_0031_MAIL							:Post
-STR_0032_OIL							:Oalje
-STR_0033_LIVESTOCK						:Fee
-STR_0034_GOODS							:Guod
-STR_0035_GRAIN							:Nôt
-STR_0036_WOOD							:Hout
-STR_0037_IRON_ORE						:Izer Erts
-STR_0038_STEEL							:Stiel
-STR_0039_VALUABLES						:Kostber guod
-STR_003A_COPPER_ORE						:Koper Erts
-STR_003B_MAIZE							:Mais
-STR_003C_FRUIT							:Fruit
-STR_003D_DIAMOND						:Diamant
-STR_003E_FOOD							:Iten
-STR_003F_PAPER							:Papier
-STR_0040_GOLD							:Goud
-STR_0041_WATER							:Wetter
-STR_0043_RUBBER							:Rubber
-STR_0044_SUGAR							:Sûker
-STR_0045_TOY							:Boartesguod
-STR_0046_CANDY							:Snobbersguod
-STR_0047_COLA							:Cola
-STR_004A_TOFFEE							:Toffee
-STR_004B_BATTERY						:Batterij
-STR_004C_PLASTIC						:Plestik
-STR_004E							:
-STR_004F_PASSENGER						:{COMMA16} passazjier
-STR_0050_TON_OF_COAL						:{COMMA16} ton coal
-STR_0051_BAG_OF_MAIL						:{COMMA16} tassen mei post
-STR_0052_OF_OIL							:{VOLUME} oalje
-STR_0055_TON_OF_GRAIN						:{COMMA16} ton graan
-STR_0056_TON_OF_WOOD						:{COMMA16} ton hout
-STR_0058_TON_OF_STEEL						:{COMMA16} ton stiel
-STR_0059_BAG_OF_VALUABLES					:{COMMA16} tas kostber guod
-STR_005B_TON_OF_MAIZE						:{COMMA16} ton mais
-STR_005C_TON_OF_FRUIT						:{COMMA16} ton fruit
-STR_005E_TON_OF_FOOD						:{COMMA16} ton iten
-STR_005F_TON_OF_PAPER						:{COMMA16} ton papier
-STR_0060_BAG_OF_GOLD						:{COMMA16} tas goud
-STR_0061_OF_WATER						:{VOLUME} wetter
-STR_00B2_MESSAGE						:{YELLOW}Bericht
-STR_00B3_MESSAGE_FROM						:{YELLOW}Bericht fan {STRING}
-STR_00B7_VERSION						:{BLACK}OpenTTD fersje {REV}
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Off edge of map
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Too close to edge of map
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Not enough cash - requires {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_EMPTY                                                       :
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
+STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en-route from
+STR_000B                                                        :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :Passengers
+STR_0010_COAL                                                   :Coal
+STR_0011_MAIL                                                   :Post
+STR_0012_OIL                                                    :Oalje
+STR_0013_LIVESTOCK                                              :Livestock
+STR_0014_GOODS                                                  :Guod
+STR_0015_GRAIN                                                  :Graan
+STR_0016_WOOD                                                   :Hout
+STR_0017_IRON_ORE                                               :Iron Ore
+STR_0018_STEEL                                                  :Stiel
+STR_0019_VALUABLES                                              :Kostbere spullen
+STR_001A_COPPER_ORE                                             :Koper erts
+STR_001B_MAIZE                                                  :Mais
+STR_001C_FRUIT                                                  :Fruit
+STR_001D_DIAMONDS                                               :Diamant
+STR_001E_FOOD                                                   :Iten
+STR_001F_PAPER                                                  :Papier
+STR_0020_GOLD                                                   :Goud
+STR_0021_WATER                                                  :Wetter
+STR_0022_WHEAT                                                  :Weet
+STR_0023_RUBBER                                                 :Rubber
+STR_0024_SUGAR                                                  :Sûker
+STR_0025_TOYS                                                   :Boartersguod
+STR_0026_CANDY                                                  :Snobbersguod
+STR_0027_COLA                                                   :Cola
+STR_0028_COTTON_CANDY                                           :Sûkerspin
+STR_0029_BUBBLES                                                :Bubbels
+STR_002A_TOFFEE                                                 :Toffee
+STR_002B_BATTERIES                                              :Batterijen
+STR_002C_PLASTIC                                                :Plestik
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :Passazjier
+STR_0030_COAL                                                   :Coal
+STR_0031_MAIL                                                   :Post
+STR_0032_OIL                                                    :Oalje
+STR_0033_LIVESTOCK                                              :Fee
+STR_0034_GOODS                                                  :Guod
+STR_0035_GRAIN                                                  :Nôt
+STR_0036_WOOD                                                   :Hout
+STR_0037_IRON_ORE                                               :Izer Erts
+STR_0038_STEEL                                                  :Stiel
+STR_0039_VALUABLES                                              :Kostber guod
+STR_003A_COPPER_ORE                                             :Koper Erts
+STR_003B_MAIZE                                                  :Mais
+STR_003C_FRUIT                                                  :Fruit
+STR_003D_DIAMOND                                                :Diamant
+STR_003E_FOOD                                                   :Iten
+STR_003F_PAPER                                                  :Papier
+STR_0040_GOLD                                                   :Goud
+STR_0041_WATER                                                  :Wetter
+STR_0043_RUBBER                                                 :Rubber
+STR_0044_SUGAR                                                  :Sûker
+STR_0045_TOY                                                    :Boartesguod
+STR_0046_CANDY                                                  :Snobbersguod
+STR_0047_COLA                                                   :Cola
+STR_004A_TOFFEE                                                 :Toffee
+STR_004B_BATTERY                                                :Batterij
+STR_004C_PLASTIC                                                :Plestik
+STR_004E                                                        :
+STR_004F_PASSENGER                                              :{COMMA16} passazjier
+STR_0050_TON_OF_COAL                                            :{COMMA16} ton coal
+STR_0051_BAG_OF_MAIL                                            :{COMMA16} tassen mei post
+STR_0052_OF_OIL                                                 :{VOLUME} oalje
+STR_0055_TON_OF_GRAIN                                           :{COMMA16} ton graan
+STR_0056_TON_OF_WOOD                                            :{COMMA16} ton hout
+STR_0058_TON_OF_STEEL                                           :{COMMA16} ton stiel
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} tas kostber guod
+STR_005B_TON_OF_MAIZE                                           :{COMMA16} ton mais
+STR_005C_TON_OF_FRUIT                                           :{COMMA16} ton fruit
+STR_005E_TON_OF_FOOD                                            :{COMMA16} ton iten
+STR_005F_TON_OF_PAPER                                           :{COMMA16} ton papier
+STR_0060_BAG_OF_GOLD                                            :{COMMA16} tas goud
+STR_0061_OF_WATER                                               :{VOLUME} wetter
+STR_00B2_MESSAGE                                                :{YELLOW}Bericht
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht fan {STRING}
+STR_00B7_VERSION                                                :{BLACK}OpenTTD fersje {REV}
 
-STR_00C8_YES							:{BLACK}Ja
-STR_00C9_NO							:{BLACK}Nee
-STR_00D1_DARK_BLUE						:Tsjuster Blauw
-STR_00D3_PINK							:Roze
-STR_00D4_YELLOW							:Giel
-STR_00D5_RED							:Read
-STR_00D6_LIGHT_BLUE						:Ljocht Blauw
-STR_00D7_GREEN							:Grien
-STR_00D8_DARK_GREEN						:Tsjuster Grien
-STR_00D9_BLUE							:Blauw
-STR_00DC_PURPLE							:Pears
-STR_00DD_ORANGE							:Oranje
-STR_00DE_BROWN							:Brún
-STR_00DF_GREY							:Griis
-STR_00E0_WHITE							:Wyt
+STR_00C8_YES                                                    :{BLACK}Ja
+STR_00C9_NO                                                     :{BLACK}Nee
+STR_00D1_DARK_BLUE                                              :Tsjuster Blauw
+STR_00D3_PINK                                                   :Roze
+STR_00D4_YELLOW                                                 :Giel
+STR_00D5_RED                                                    :Read
+STR_00D6_LIGHT_BLUE                                             :Ljocht Blauw
+STR_00D7_GREEN                                                  :Grien
+STR_00D8_DARK_GREEN                                             :Tsjuster Grien
+STR_00D9_BLUE                                                   :Blauw
+STR_00DC_PURPLE                                                 :Pears
+STR_00DD_ORANGE                                                 :Oranje
+STR_00DE_BROWN                                                  :Brún
+STR_00DF_GREY                                                   :Griis
+STR_00E0_WHITE                                                  :Wyt
 
 
 
@@ -129,31 +129,31 @@ STR_00E0_WHITE							:Wyt
 
 
 ############ range for days	starts
-STR_01B0_5TH							:5
-STR_01B1_6TH							:6
-STR_01B2_7TH							:7
-STR_01B3_8TH							:8
-STR_01B4_9TH							:9
-STR_01B5_10TH							:10
-STR_01B6_11TH							:11
-STR_01B7_12TH							:12
-STR_01B8_13TH							:13
-STR_01B9_14TH							:14
-STR_01BA_15TH							:15
-STR_01BB_16TH							:16
-STR_01BC_17TH							:17
-STR_01BD_18TH							:18
-STR_01BE_19TH							:19
-STR_01BF_20TH							:20
-STR_01C0_21ST							:21
-STR_01C1_22ND							:22
-STR_01C2_23RD							:23
-STR_01C3_24TH							:24
-STR_01C4_25TH							:25
-STR_01C5_26TH							:26
-STR_01C6_27TH							:27
-STR_01C7_28TH							:28
-STR_01C8_29TH							:29
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
 ############ range for days	ends
 
 

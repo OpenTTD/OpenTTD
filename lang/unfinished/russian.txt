@@ -3,207 +3,207 @@
 ##isocode ru
 
 ##id 0x0000
-STR_NULL							:
-STR_0001_OFF_EDGE_OF_MAP					:{WHITE}Za krayami karti
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP				:{WHITE}Blizko k krayu karti
-STR_0003_NOT_ENOUGH_CASH_REQUIRES				:{WHITE}Ne hvataet deneg - neobhodimo {CURRENCY}
-STR_0004							:{WHITE}{CURRENCY64}
-STR_0005							:{RED}{CURRENCY64}
-STR_EMPTY							:
-STR_0007_FLAT_LAND_REQUIRED					:{WHITE}Neobhodima ploskaya poverhnosty
-STR_0008_WAITING						:{BLACK}Ozhidanie: {WHITE}{STRING}
-STR_0009							:{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (marshrut iz
-STR_000B							:{YELLOW}{STATION})
-STR_000C_ACCEPTS						:{BLACK}Prinimaetsya: {WHITE}
-STR_000D_ACCEPTS						:{BLACK}Prinimaetsya: {GOLD}
-STR_000E							:
-STR_000F_PASSENGERS						:Passajiri
-STR_0010_COAL							:Ugoly
-STR_0011_MAIL							:Pochta
-STR_0012_OIL							:Nefty
-STR_0013_LIVESTOCK						:Domashniy skot
-STR_0014_GOODS							:Tovary
-STR_0015_GRAIN							:Zerno
-STR_0016_WOOD							:Derevo
-STR_0017_IRON_ORE						:Zheleznaya Ruda
-STR_0018_STEEL							:Staly
-STR_0019_VALUABLES						:Dragocennosti
-STR_001A_COPPER_ORE						:Mednaya Ruda
-STR_001B_MAIZE							:Kukuruza
-STR_001C_FRUIT							:Frukti
-STR_001D_DIAMONDS						:Almazi
-STR_001E_FOOD							:Prodovolstvie
-STR_001F_PAPER							:Bumaga
-STR_0020_GOLD							:Zoloto
-STR_0021_WATER							:Voda
-STR_0022_WHEAT							:Pshenica
-STR_0023_RUBBER							:Rezina
-STR_0024_SUGAR							:Sahar
-STR_0025_TOYS							:Igrushki
-STR_0026_CANDY							:Sladosti
-STR_0027_COLA							:Kola
-STR_0028_COTTON_CANDY						:Saharnaya vata
-STR_0029_BUBBLES						:Puzirki
-STR_002A_TOFFEE							:Iriska
-STR_002B_BATTERIES						:Batareyki
-STR_002C_PLASTIC						:Plastik
-STR_002D_FIZZY_DRINKS						:Shipuchie napitki
-STR_002E							:
-STR_002F_PASSENGER						:Passajiri
-STR_0030_COAL							:Ugoly
-STR_0031_MAIL							:Pochta
-STR_0032_OIL							:Nefty
-STR_0033_LIVESTOCK						:Domashniy skot
-STR_0034_GOODS							:Tovary
-STR_0035_GRAIN							:Zerno
-STR_0036_WOOD							:Derevo
-STR_0037_IRON_ORE						:Zheleznaya ruda
-STR_0038_STEEL							:Staly
-STR_0039_VALUABLES						:Dragocennosti
-STR_003A_COPPER_ORE						:Mednaya ruda
-STR_003B_MAIZE							:Kukuruza
-STR_003C_FRUIT							:Frukti
-STR_003D_DIAMOND						:Almazi
-STR_003E_FOOD							:Prodovolstvie
-STR_003F_PAPER							:Bumaga
-STR_0040_GOLD							:Zoloto
-STR_0041_WATER							:Voda
-STR_0042_WHEAT							:Pshenica
-STR_0043_RUBBER							:Rezina
-STR_0044_SUGAR							:Sahar
-STR_0045_TOY							:Igrushki
-STR_0046_CANDY							:Sladosti
-STR_0047_COLA							:Kola
-STR_0048_COTTON_CANDY						:Saharnaya vata
-STR_0049_BUBBLE							:Puzirki
-STR_004A_TOFFEE							:Iriska
-STR_004B_BATTERY						:Batareyki
-STR_004C_PLASTIC						:Plastik
-STR_004D_FIZZY_DRINK						:Shipuchie napitki
-STR_004E							:
-STR_004F_PASSENGER						:{COMMA16} passajirov
-STR_0050_TON_OF_COAL						:{COMMA16} tonna uglya
-STR_0051_BAG_OF_MAIL						:{COMMA16} sumka s pochtoy
-STR_0052_OF_OIL							:{VOLUME} nefti
-STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} golov domashnego skota
-STR_0054_CRATE_OF_GOODS						:{COMMA16} korobka s tovarom
-STR_0055_TON_OF_GRAIN						:{COMMA16} tonna zerna
-STR_0056_TON_OF_WOOD						:{COMMA16} tonna dereva
-STR_0057_TON_OF_IRON_ORE					:{COMMA16} tonna zheleznoy rudi
-STR_0058_TON_OF_STEEL						:{COMMA16} tonna stali
-STR_0059_BAG_OF_VALUABLES					:{COMMA16} sumka s dragocennostyami
-STR_005A_TON_OF_COPPER_ORE					:{COMMA16} tonna mednoy rudi
-STR_005B_TON_OF_MAIZE						:{COMMA16} tonna kukuruzi
-STR_005C_TON_OF_FRUIT						:{COMMA16} tonna fruktov
-STR_005D_BAG_OF_DIAMONDS					:{COMMA16} meshok s almazami
-STR_005E_TON_OF_FOOD						:{COMMA16} tonna prodovolstviya
-STR_005F_TON_OF_PAPER						:{COMMA16} tonna bumagi
-STR_0060_BAG_OF_GOLD						:{COMMA16} meshok zolota
-STR_0061_OF_WATER						:{VOLUME} vodi
-STR_0062_TON_OF_WHEAT						:{COMMA16} tonna pshenici
-STR_0063_OF_RUBBER						:{VOLUME} rezini
-STR_0064_TON_OF_SUGAR						:{COMMA16} tonna sahara
-STR_0065_TOY							:{COMMA16} igrushka
-STR_0066_BAG_OF_CANDY						:{COMMA16} meshok sladostey
-STR_0067_OF_COLA						:{VOLUME} koli
-STR_0068_TON_OF_COTTON_CANDY					:{COMMA16} tonna saharnoy vati
-STR_0069_BUBBLE							:{COMMA16} puzirki
-STR_006A_TON_OF_TOFFEE						:{COMMA16} tonna irisok
-STR_006B_BATTERY						:{COMMA16} batareyki
-STR_006C_OF_PLASTIC						:{VOLUME} plastika
-STR_006D_FIZZY_DRINK						:{COMMA16} shipuchie napitki
-STR_006E							:
-STR_006F_PASSENGERS						:{COMMA16} passajiri
-STR_0070_TONS_OF_COAL						:{COMMA16} tonn uglya
-STR_0071_BAGS_OF_MAIL						:{COMMA16} meshkov s pochtoy
-STR_0072_OF_OIL							:{VOLUME} nefti
-STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} golov domashnego skota
-STR_0074_CRATES_OF_GOODS					:{COMMA16} korobok s tovarom
-STR_0075_TONS_OF_GRAIN						:{COMMA16} tonn zerna
-STR_0076_TONS_OF_WOOD						:{COMMA16} tonn dereva
-STR_0077_TONS_OF_IRON_ORE					:{COMMA16} tonn zheleznoy rudi
-STR_0078_TONS_OF_STEEL						:{COMMA16} tonn stali
-STR_0079_BAGS_OF_VALUABLES					:{COMMA16} meshkov s dragocennostyami
-STR_007A_TONS_OF_COPPER_ORE					:{COMMA16} tonn mednoy rudi
-STR_007B_TONS_OF_MAIZE						:{COMMA16} tonn kukuruzi
-STR_007C_TONS_OF_FRUIT						:{COMMA16} tonn fruktov
-STR_007D_BAGS_OF_DIAMONDS					:{COMMA16} meshkov s almazami
-STR_007E_TONS_OF_FOOD						:{COMMA16} tonn prodovolstviya
-STR_007F_TONS_OF_PAPER						:{COMMA16} tonn bumagi
-STR_0080_BAGS_OF_GOLD						:{COMMA16} meshkov zolota
-STR_0081_OF_WATER						:{VOLUME} vodi
-STR_0082_TONS_OF_WHEAT						:{COMMA16} tonn pshenici
-STR_0083_OF_RUBBER						:{VOLUME} rezini
-STR_0084_TONS_OF_SUGAR						:{COMMA16} tonn sahara
-STR_0085_TOYS							:{COMMA16} igrushek
-STR_0086_BAGS_OF_CANDY						:{COMMA16} meshkov so sladostyami
-STR_0087_OF_COLA						:{VOLUME} koli
-STR_0088_TONS_OF_COTTON_CANDY					:{COMMA16} tonn saharnoy vati
-STR_0089_BUBBLES						:{COMMA16} puzirkov
-STR_008A_TONS_OF_TOFFEE						:{COMMA16} tonn irisok
-STR_008B_BATTERIES						:{COMMA16} batareek
-STR_008C_OF_PLASTIC						:{VOLUME} plastika
-STR_008D_FIZZY_DRINKS						:{COMMA16} shipuchih napitkov
-STR_008E							:
-STR_008F_PS							:{TINYFONT}PS
-STR_0090_CL							:{TINYFONT}CL
-STR_0091_ML							:{TINYFONT}ML
-STR_0092_OL							:{TINYFONT}OL
-STR_0093_LV							:{TINYFONT}LV
-STR_0094_GD							:{TINYFONT}GD
-STR_0095_GR							:{TINYFONT}GR
-STR_00AF							:{WHITE}{DATE_LONG}
-STR_00B0_MAP							:{WHITE}Karta - {STRING}
-STR_00B1_GAME_OPTIONS						:{WHITE}Igrovie Opcii
-STR_00B2_MESSAGE						:{YELLOW}Soobshenie
-STR_00B3_MESSAGE_FROM						:{YELLOW}Soobshenie ot {STRING}
-STR_00B4_CAN_T_DO_THIS						:{WHITE}Ne mogu eto sdelaty....
-STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Ne vozmozno ochistity etu mestnosty....
-STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Originalnie avtorskie prava {COPYRIGHT} 1995 Chris Sawyer, Vse prava sohraneni
-STR_00B7_VERSION						:{BLACK}OpenTTD versiya {REV}
-STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2005 Komanda OpenTTD
-STR_TRANSLATED_BY						:{BLACK}  Perevodchik(i) -
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za krayami karti
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Blizko k krayu karti
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ne hvataet deneg - neobhodimo {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_EMPTY                                                       :
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Neobhodima ploskaya poverhnosty
+STR_0008_WAITING                                                :{BLACK}Ozhidanie: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (marshrut iz
+STR_000B                                                        :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                                :{BLACK}Prinimaetsya: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Prinimaetsya: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :Passajiri
+STR_0010_COAL                                                   :Ugoly
+STR_0011_MAIL                                                   :Pochta
+STR_0012_OIL                                                    :Nefty
+STR_0013_LIVESTOCK                                              :Domashniy skot
+STR_0014_GOODS                                                  :Tovary
+STR_0015_GRAIN                                                  :Zerno
+STR_0016_WOOD                                                   :Derevo
+STR_0017_IRON_ORE                                               :Zheleznaya Ruda
+STR_0018_STEEL                                                  :Staly
+STR_0019_VALUABLES                                              :Dragocennosti
+STR_001A_COPPER_ORE                                             :Mednaya Ruda
+STR_001B_MAIZE                                                  :Kukuruza
+STR_001C_FRUIT                                                  :Frukti
+STR_001D_DIAMONDS                                               :Almazi
+STR_001E_FOOD                                                   :Prodovolstvie
+STR_001F_PAPER                                                  :Bumaga
+STR_0020_GOLD                                                   :Zoloto
+STR_0021_WATER                                                  :Voda
+STR_0022_WHEAT                                                  :Pshenica
+STR_0023_RUBBER                                                 :Rezina
+STR_0024_SUGAR                                                  :Sahar
+STR_0025_TOYS                                                   :Igrushki
+STR_0026_CANDY                                                  :Sladosti
+STR_0027_COLA                                                   :Kola
+STR_0028_COTTON_CANDY                                           :Saharnaya vata
+STR_0029_BUBBLES                                                :Puzirki
+STR_002A_TOFFEE                                                 :Iriska
+STR_002B_BATTERIES                                              :Batareyki
+STR_002C_PLASTIC                                                :Plastik
+STR_002D_FIZZY_DRINKS                                           :Shipuchie napitki
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :Passajiri
+STR_0030_COAL                                                   :Ugoly
+STR_0031_MAIL                                                   :Pochta
+STR_0032_OIL                                                    :Nefty
+STR_0033_LIVESTOCK                                              :Domashniy skot
+STR_0034_GOODS                                                  :Tovary
+STR_0035_GRAIN                                                  :Zerno
+STR_0036_WOOD                                                   :Derevo
+STR_0037_IRON_ORE                                               :Zheleznaya ruda
+STR_0038_STEEL                                                  :Staly
+STR_0039_VALUABLES                                              :Dragocennosti
+STR_003A_COPPER_ORE                                             :Mednaya ruda
+STR_003B_MAIZE                                                  :Kukuruza
+STR_003C_FRUIT                                                  :Frukti
+STR_003D_DIAMOND                                                :Almazi
+STR_003E_FOOD                                                   :Prodovolstvie
+STR_003F_PAPER                                                  :Bumaga
+STR_0040_GOLD                                                   :Zoloto
+STR_0041_WATER                                                  :Voda
+STR_0042_WHEAT                                                  :Pshenica
+STR_0043_RUBBER                                                 :Rezina
+STR_0044_SUGAR                                                  :Sahar
+STR_0045_TOY                                                    :Igrushki
+STR_0046_CANDY                                                  :Sladosti
+STR_0047_COLA                                                   :Kola
+STR_0048_COTTON_CANDY                                           :Saharnaya vata
+STR_0049_BUBBLE                                                 :Puzirki
+STR_004A_TOFFEE                                                 :Iriska
+STR_004B_BATTERY                                                :Batareyki
+STR_004C_PLASTIC                                                :Plastik
+STR_004D_FIZZY_DRINK                                            :Shipuchie napitki
+STR_004E                                                        :
+STR_004F_PASSENGER                                              :{COMMA16} passajirov
+STR_0050_TON_OF_COAL                                            :{COMMA16} tonna uglya
+STR_0051_BAG_OF_MAIL                                            :{COMMA16} sumka s pochtoy
+STR_0052_OF_OIL                                                 :{VOLUME} nefti
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} golov domashnego skota
+STR_0054_CRATE_OF_GOODS                                         :{COMMA16} korobka s tovarom
+STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonna zerna
+STR_0056_TON_OF_WOOD                                            :{COMMA16} tonna dereva
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonna zheleznoy rudi
+STR_0058_TON_OF_STEEL                                           :{COMMA16} tonna stali
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} sumka s dragocennostyami
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonna mednoy rudi
+STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonna kukuruzi
+STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonna fruktov
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} meshok s almazami
+STR_005E_TON_OF_FOOD                                            :{COMMA16} tonna prodovolstviya
+STR_005F_TON_OF_PAPER                                           :{COMMA16} tonna bumagi
+STR_0060_BAG_OF_GOLD                                            :{COMMA16} meshok zolota
+STR_0061_OF_WATER                                               :{VOLUME} vodi
+STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonna pshenici
+STR_0063_OF_RUBBER                                              :{VOLUME} rezini
+STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonna sahara
+STR_0065_TOY                                                    :{COMMA16} igrushka
+STR_0066_BAG_OF_CANDY                                           :{COMMA16} meshok sladostey
+STR_0067_OF_COLA                                                :{VOLUME} koli
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonna saharnoy vati
+STR_0069_BUBBLE                                                 :{COMMA16} puzirki
+STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonna irisok
+STR_006B_BATTERY                                                :{COMMA16} batareyki
+STR_006C_OF_PLASTIC                                             :{VOLUME} plastika
+STR_006D_FIZZY_DRINK                                            :{COMMA16} shipuchie napitki
+STR_006E                                                        :
+STR_006F_PASSENGERS                                             :{COMMA16} passajiri
+STR_0070_TONS_OF_COAL                                           :{COMMA16} tonn uglya
+STR_0071_BAGS_OF_MAIL                                           :{COMMA16} meshkov s pochtoy
+STR_0072_OF_OIL                                                 :{VOLUME} nefti
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} golov domashnego skota
+STR_0074_CRATES_OF_GOODS                                        :{COMMA16} korobok s tovarom
+STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonn zerna
+STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn dereva
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonn zheleznoy rudi
+STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonn stali
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} meshkov s dragocennostyami
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonn mednoy rudi
+STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonn kukuruzi
+STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonn fruktov
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} meshkov s almazami
+STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonn prodovolstviya
+STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonn bumagi
+STR_0080_BAGS_OF_GOLD                                           :{COMMA16} meshkov zolota
+STR_0081_OF_WATER                                               :{VOLUME} vodi
+STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonn pshenici
+STR_0083_OF_RUBBER                                              :{VOLUME} rezini
+STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonn sahara
+STR_0085_TOYS                                                   :{COMMA16} igrushek
+STR_0086_BAGS_OF_CANDY                                          :{COMMA16} meshkov so sladostyami
+STR_0087_OF_COLA                                                :{VOLUME} koli
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonn saharnoy vati
+STR_0089_BUBBLES                                                :{COMMA16} puzirkov
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonn irisok
+STR_008B_BATTERIES                                              :{COMMA16} batareek
+STR_008C_OF_PLASTIC                                             :{VOLUME} plastika
+STR_008D_FIZZY_DRINKS                                           :{COMMA16} shipuchih napitkov
+STR_008E                                                        :
+STR_008F_PS                                                     :{TINYFONT}PS
+STR_0090_CL                                                     :{TINYFONT}CL
+STR_0091_ML                                                     :{TINYFONT}ML
+STR_0092_OL                                                     :{TINYFONT}OL
+STR_0093_LV                                                     :{TINYFONT}LV
+STR_0094_GD                                                     :{TINYFONT}GD
+STR_0095_GR                                                     :{TINYFONT}GR
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Karta - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Igrovie Opcii
+STR_00B2_MESSAGE                                                :{YELLOW}Soobshenie
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Soobshenie ot {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne mogu eto sdelaty....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne vozmozno ochistity etu mestnosty....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originalnie avtorskie prava {COPYRIGHT} 1995 Chris Sawyer, Vse prava sohraneni
+STR_00B7_VERSION                                                :{BLACK}OpenTTD versiya {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 Komanda OpenTTD
+STR_TRANSLATED_BY                                               :{BLACK}  Perevodchik(i) -
 
-STR_00C5							:{BLACK}{CROSS}
-STR_00C6							:{SILVER}{CROSS}
-STR_00C7_QUIT							:{WHITE}Vihod
-STR_00C8_YES							:{BLACK}Da
-STR_00C9_NO							:{BLACK}Net
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vi uvereni, chto hotite pokinuty etu igru i vernutsya k {STRING}?
-STR_00CB_1							:{BLACK}1
-STR_00CC_2							:{BLACK}2
-STR_00CD_3							:{BLACK}3
-STR_00CE_4							:{BLACK}4
-STR_00CF_5							:{BLACK}5
-STR_00D0_NOTHING						:Nichego
-STR_00D1_DARK_BLUE						:Temno-Siniy
-STR_00D2_PALE_GREEN						:Bledno-Zeleniy
-STR_00D3_PINK							:Rozoviy
-STR_00D4_YELLOW							:Zheltiy
-STR_00D5_RED							:Krasniy
-STR_00D6_LIGHT_BLUE						:Svetlo-Siniy
-STR_00D7_GREEN							:Zeleniy
-STR_00D8_DARK_GREEN						:Temno-Zeleniy
-STR_00D9_BLUE							:Siniy
-STR_00DA_CREAM							:Kremoviy
-STR_00DB_MAUVE							:Liloviy
-STR_00DC_PURPLE							:Purpurniy
-STR_00DD_ORANGE							:Oranjeviy
-STR_00DE_BROWN							:Korichneviy
-STR_00DF_GREY							:Seriy
-STR_00E0_WHITE							:Beliy
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME				:{WHITE}Slishkom mnogo transporta v igre
-STR_00E2							:{BLACK}{COMMA16}
-STR_00E3							:{RED}{COMMA16}
-STR_00E4_LOCATION						:{BLACK}Poziciya
-STR_00E5_CONTOURS						:Konturi
-STR_00E6_VEHICLES						:Transportnie sredstva
-STR_00E7_INDUSTRIES						:Industrii
-STR_00E8_ROUTES							:Marshruti
-STR_00E9_VEGETATION						:Rastitelnosty
-STR_00EA_OWNERS							:Vladelci
-STR_00EB_ROADS							:{BLACK}{TINYFONT}Dorogi
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Vihod
+STR_00C8_YES                                                    :{BLACK}Da
+STR_00C9_NO                                                     :{BLACK}Net
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vi uvereni, chto hotite pokinuty etu igru i vernutsya k {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Nichego
+STR_00D1_DARK_BLUE                                              :Temno-Siniy
+STR_00D2_PALE_GREEN                                             :Bledno-Zeleniy
+STR_00D3_PINK                                                   :Rozoviy
+STR_00D4_YELLOW                                                 :Zheltiy
+STR_00D5_RED                                                    :Krasniy
+STR_00D6_LIGHT_BLUE                                             :Svetlo-Siniy
+STR_00D7_GREEN                                                  :Zeleniy
+STR_00D8_DARK_GREEN                                             :Temno-Zeleniy
+STR_00D9_BLUE                                                   :Siniy
+STR_00DA_CREAM                                                  :Kremoviy
+STR_00DB_MAUVE                                                  :Liloviy
+STR_00DC_PURPLE                                                 :Purpurniy
+STR_00DD_ORANGE                                                 :Oranjeviy
+STR_00DE_BROWN                                                  :Korichneviy
+STR_00DF_GREY                                                   :Seriy
+STR_00E0_WHITE                                                  :Beliy
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Slishkom mnogo transporta v igre
+STR_00E2                                                        :{BLACK}{COMMA16}
+STR_00E3                                                        :{RED}{COMMA16}
+STR_00E4_LOCATION                                               :{BLACK}Poziciya
+STR_00E5_CONTOURS                                               :Konturi
+STR_00E6_VEHICLES                                               :Transportnie sredstva
+STR_00E7_INDUSTRIES                                             :Industrii
+STR_00E8_ROUTES                                                 :Marshruti
+STR_00E9_VEGETATION                                             :Rastitelnosty
+STR_00EA_OWNERS                                                 :Vladelci
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Dorogi
 
 
 
