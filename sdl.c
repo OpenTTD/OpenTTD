@@ -416,6 +416,8 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->scancode == 0)  key |= WKC_BACKQUOTE;  // yes, that key is code '0' under MorphOS :)
 #elif defined(__BEOS__)
 	if (sym->scancode == 17)  key |= WKC_BACKQUOTE;
+#elif defined(__SVR4) && defined(__sun)
+	if (sym->scancode == 60) key |= WKC_BACKQUOTE;
 #else
 	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
 #endif
