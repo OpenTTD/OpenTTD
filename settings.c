@@ -574,7 +574,7 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			}
 			break;
 		case SDT_STRING:
-			if (*(char**)ptr) free(*(char**)ptr);
+			free(*(char**)ptr);
 			*(char**)ptr = strdup((const char*)p);
 			break;
 		case SDT_STRINGBUF:
