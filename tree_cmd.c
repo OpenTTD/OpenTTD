@@ -521,7 +521,7 @@ static void TileLoop_Trees(uint tile)
 				if ( (_map5[tile] & 0x1C) == 4) {
 					_map2[tile] = 0x10;
 				} else if ((_map5[tile] & 0x1C) == 16) {
-					_map2[tile] = (_map5[tile] << 6) | 0x20;
+					_map2[tile] = ((_map5[tile] & 3) << 6) | 0x20;
 				} else {
 					if ((_map5[tile] & 0x1F) != 3)
 						return;
