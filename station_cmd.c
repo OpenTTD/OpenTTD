@@ -170,14 +170,12 @@ static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
 		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
 		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
 		TILE_XY(-6,1),  1, 1, 1, 1, 1, 1,
-		0,
 	};
-	int j;
-	const TileIndexDiff *p = _count_square_table;
+	const TileIndexDiff *p;
 	int num = 0;
 
-	while ( (j=*p++) != 0 ) {
-		tile = TILE_MASK(tile + j);
+	for (p = _count_square_table; p != endof(_count_square_table); ++p) {
+		tile = TILE_MASK(tile + *p);
 
 		if (IS_TILETYPE(tile, type) && _map5[tile] >= min && _map5[tile] <= max)
 			num++;
