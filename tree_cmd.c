@@ -618,7 +618,7 @@ static void ClickTile_Trees(uint tile)
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Trees(uint tile, int mode)
+static uint32 GetTileTrackStatus_Trees(uint tile, TransportType mode)
 {
 	return 0;
 }

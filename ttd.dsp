@@ -898,6 +898,10 @@ SOURCE=.\table\clear_land.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\table\directions.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\table\engines.h
 # End Source File
 # Begin Source File

@@ -294,7 +294,7 @@
 			</File>
 			<File
 				RelativePath=".\console.c">
-			</File>			
+			</File>
 			<File
 				RelativePath="economy.c">
 				<FileConfiguration
@@ -1103,7 +1103,7 @@
 			</File>
 			<File
 				RelativePath="console.h">
-			</File>			
+			</File>
 			<File
 				RelativePath="economy.h">
 			</File>
@@ -2559,6 +2559,9 @@
 			</File>
 			<File
 				RelativePath="table\clear_land.h">
+			</File>
+			<File
+				RelativePath=".\table\directions.h">
 			</File>
 			<File
 				RelativePath="table\engines.h">

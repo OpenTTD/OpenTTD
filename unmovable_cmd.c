@@ -223,7 +223,7 @@ static void TileLoop_Unmovable(uint tile)
 }
 
 
-static uint32 GetTileTrackStatus_Unmovable(uint tile, int mode)
+static uint32 GetTileTrackStatus_Unmovable(uint tile, TransportType mode)
 {
 	return 0;
 }
