@@ -105,15 +105,24 @@ endif
 
 # updates makefile.config if it's outdated
 ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
-UPDATECONFIG:=upgradeconf
-CONFIG_INCLUDED:=
+	ifndef MANUAL_CONFIG	# manual config should not check this
+		UPDATECONFIG:=upgradeconf
+		CONFIG_INCLUDED:=
+	else
+		# this should define SDL-CONFIG for manual configuration
+		ifeq ($(shell uname),FreeBSD)
+			SDL-CONFIG:=sdl11-config
+		else
+			SDL-CONFIG:=sdl-config
+		endif
+	endif
 else
-# this should define SDL-CONFIG for manual configuration
-ifeq ($(shell uname),FreeBSD)
-SDL-CONFIG:=sdl11-config
-else
-SDL-CONFIG:=sdl-config
-endif
+	# this should define SDL-CONFIG for manual configuration
+	ifeq ($(shell uname),FreeBSD)
+		SDL-CONFIG:=sdl11-config
+	else
+		SDL-CONFIG:=sdl-config
+	endif
 endif
 
 ifndef CONFIG_INCLUDED
