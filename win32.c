@@ -293,13 +293,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		return 0;
 	}
 
-	case WM_CHAR: {
-		uint16 scancode = (( lParam & 0xFF0000 ) >> 16 );
-		if( scancode == 41 )
-			_pressed_key = WKC_BACKQUOTE << 16;
-	} break;
-	
-	
 	case WM_KEYDOWN: {
 		// this is the rewritten ascii input function
 		// it disables windows deadkey handling --> more linux like :D
@@ -307,11 +300,16 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		int r = 0;
 		byte ks[256];
 		unsigned int scan = 0;
+		uint16 scancode = (( lParam & 0xFF0000 ) >> 16 );
+
 		GetKeyboardState(ks);
 		r = ToAscii(wParam, scan, ks, &w, 0);
 		if (r == 0) w = 0; // no translation was possible
 
 		_pressed_key = w | MapWindowsKey(wParam) << 16;
+
+		if( scancode == 41 )
+			_pressed_key = w | WKC_BACKQUOTE << 16;
 
 		if ((_pressed_key>>16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 			_double_size ^= 1;
