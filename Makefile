@@ -710,7 +710,7 @@ $(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
 	$(if $(VERBOSE),@echo '$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)';,@echo 'Compiling and Linking $@';) \
  		$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS) $(VERBOSE_FILTER)
 
-$(OSX): 
+$(OSX): $(TTD)
 	@rm -fr "$(OSXAPP)"
 	@mkdir -p "$(OSXAPP)"/Contents/MacOS
 	@mkdir -p "$(OSXAPP)"/Contents/Resources
@@ -733,7 +733,7 @@ $(64_bit_warnings):
 	$(warning 64 bit CPUs will get some 64 bit specific bugs!)
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
-$(STRGEN): strgen/strgen.c
+$(STRGEN): strgen/strgen.c endian.h
 	@echo 'Compiling and Linking $@'; \
 		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^ $(VERBOSE_FILTER)
 
@@ -849,7 +849,7 @@ endif
 love:
 	@echo "YES! I thought you would never ask. We will have a great time. You can keep me turned on all night"
 
-.PHONY: clean all $(OSX) install $(64_bit_warnings) $(endwarnings) love
+.PHONY: clean all $(OSX) install $(64_bit_warnings) $(endwarnings) love endian.h
 
 
 ### Automatic configuration
@@ -881,7 +881,7 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 #@echo '$(C_BUILD) $<'; \
 
 
-%.o: %.c $(MAKE_CONFIG)
+%.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
 	$(if $(VERBOSE),@echo '$(C_BUILD) $<',@echo 'Compiling $(*F).o'); \
 		       $(C_BUILD) $< -Wp,-MD,.deps/$(*F).pp $(VERBOSE_FILTER)
 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
@@ -891,5 +891,5 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 	rm .deps/$(*F).pp
 
 # For DirectMusic build and BeOS specific parts
-%.o: %.cpp  $(MAKE_CONFIG)
+%.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
 	$(CXX_BUILD) $< -o $@
