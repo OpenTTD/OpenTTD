@@ -128,9 +128,14 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	uint bits;
 	int i;
 	RememberData rd;
-	byte owner;
+	int owner;
 
-	owner = _map_owner[tile];
+	if (tpf->tracktype == TRANSPORT_RAIL) {
+		owner = _map_owner[tile];
+		/* Check if we are on the middle of a bridge (has no owner) */
+		if (IS_TILETYPE(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
+			owner = -1;
+	}
 
 	// This addition will sometimes overflow by a single tile.
 	// The use of TILE_MASK here makes sure that we still point at a valid
@@ -138,8 +143,12 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	tile = TILE_MASK(tile + _tileoffs_by_dir[direction]);
 
 	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL && _map_owner[tile] != owner)
-		return;
+	if (tpf->tracktype == TRANSPORT_RAIL) {
+		/* Check if we are on the middle of a bridge (has no owner) */
+		if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+			if (owner != -1 && _map_owner[tile] != owner)
+				return;
+	}
 
 	if (++tpf->rd.cur_length > 50)
 		return;
@@ -277,8 +286,13 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	tile += _tileoffs_by_dir[direction];
 
 	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL && _map_owner[tile_org] != _map_owner[tile])
-		return;
+	if (tpf->tracktype == TRANSPORT_RAIL) {
+		/* Check if we are on a bridge (middle parts don't have an owner */
+		if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+			if (!IS_TILETYPE(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
+				if (_map_owner[tile_org] != _map_owner[tile])
+					return;
+	}
 
 	tpf->rd.cur_length++;
 
