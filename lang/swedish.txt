@@ -1174,7 +1174,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Varning: den nya AI:n är fortfarande i alpha-stad
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Stöd för nätverksspel fungerar inte än!
+TEMP_STRING_NO_NETWORK						:{WHITE}Det grafiska gränssnittet för nätverket är ännu inte helt färdigt!{}Ofullständiga menyval har stängts av.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Flera spelare
 

@@ -952,8 +952,14 @@ STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}Lod {COMMA16} ma zdvojene prikazy
 STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Lod {COMMA16} ma neplatnu stanicu v prikazoch
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Lietadlo {COMMA16} ma malo prikazov
 STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Lietadlo {COMMA16} ma prazdny prikaz
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Lietadlo {COMMA16} ma zdvojene prikazy
+STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Lietadlo {COMMA16} ma neplatnu stanicu v prikazoch
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Zlyhalo obnovenie vlaku {COMMA16} (finacny limit)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Zlyhalo obnovenie automobilu {COMMA16} (finacny limit)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Zlyhalo obnovenie lode {COMMA16} (financny limit)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Zlyhalo obnovenie lietadla {COMMA16} (finacny limit)
 
 STR_CONFIG_PATCHES						:{BLACK}Konfigurovat Zaplaty
 STR_CONFIG_PATCHES_TIP						:{BLACK}Konfigurovat Zaplaty
@@ -968,6 +974,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Umoznit stavbu dlhych vlakov: {ORAN
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Umoznit spajat stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflacia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Vykladat tovar v stanici len ked je dopyt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Umoznit stavbu dlhych mostov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Umoznit prikaz chod do depa: {ORANGE}{STRING}
@@ -988,9 +995,18 @@ STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Novy algoritmus pre hladanie s
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS				:{LTBLUE}Vlak sa strati pokial nic nedosiahne za: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED			:{LTBLUE}Vlak bude zruzeny ak neurobi zisk za: {ORANGE}vypnute
+STR_CONFIG_PATCHES_ORDER_REVIEW					:{LTBLUE}Obnovenie prikazu vozidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF				:nie
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT				:ano, okrem zastavenych vozidiel (v garazi)
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:ano, u vsetkych vozidiel
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Stare vozidla sa neprestanu vyrabat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred / po
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING} {RED}Vystraha: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
@@ -1005,27 +1021,44 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Zakazat automobily pre pocitac:
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Zakazat lietadla pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Vychodzi servisny interval pre vlaky: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Default service interval for trains: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Vychodzi servisny interval pre automobily: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Vychodzi servisny interval pre lietadla: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
 STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Vychodzi servisny interval pre lode: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Left
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centre
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Na pravo
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Rozhranie
 STR_CONFIG_PATCHES_CONSTRUCTION					:{BLACK}Vystavba
 STR_CONFIG_PATCHES_VEHICLES					:{BLACK}Vozidla
 STR_CONFIG_PATCHES_STATIONS					:{BLACK}Stanice
 STR_CONFIG_PATCHES_ECONOMY					:{BLACK}Ekonomika
+STR_CONFIG_PATCHES_AI						:{BLACK}Protivnici
 
 STR_CONFIG_PATCHES_DISABLED					:zakazane
 STR_CONFIG_PATCHES_INT32					:{INT32}
+STR_CONFIG_PATCHES_CURRENCY					:{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT					:{WHITE}Zmenit hodnotu nastavenia
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE		:{WHITE}Niektore alebo vsetky implicitne servisne intervaly su nekompatibilne s vybranym nastavenim. 5-90% a 30-800 dni su sprave.
 
+STR_TEMPERATE_LANDSCAPE						:krajina mierneho pasma
+STR_SUB_ARCTIC_LANDSCAPE					:subarkticka krajina
+STR_SUB_TROPICAL_LANDSCAPE					:subtropicka krajina
+STR_TOYLAND_LANDSCAPE						:krajina hraciek
 
 STR_CHEATS							:{WHITE}Cheaty
 STR_CHEATS_TIP							:{BLACK}Checkbox indikuje opakovane pouzite cheatu
@@ -1035,6 +1068,9 @@ STR_CHEAT_CHANGE_PLAYER						:{LTBLUE}Hrat ako hrac: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE					:{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS					:{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Umoznit vystavbu v pauze: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH						:{LTBLUE}Triskove lietadla nebudu havarovat (casto) na malych letiskach: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
 
 STR_HEADING_FOR_CHECKPOINT					:{LTBLUE}Smeruje do {CHECKPOINT}
 STR_HEADING_FOR_CHECKPOINT_VEL					:{LTBLUE}Smeruje do {CHECKPOINT}, {VELOCITY}
@@ -1057,8 +1093,17 @@ STR_CANT_REMOVE_TRAIN_CHECKPOINT				:{WHITE}Tu nie je mozne odstranit zeleznicny
 
 STR_BUILD_AUTORAIL_TIP						:{BLACK}Automaticka stavba zeleznicnych kolaji
 
+STR_NO_TOWN_IN_SCENARIO						:{WHITE}...v tomto scenariu nie je ziadne mesto
 
+STR_GENERATE_RANDOM_LANDSCAPE					:{WHITE}Si si isty, ze chces vytvorit nahodny teren?
+STR_MANY_RANDOM_TOWNS						:{BLACK}Vela nahodnych miest
+STR_RANDOM_TOWNS_TIP						:{BLACK}Pokryt mapu s nahodne umiestnenymi mestami
+STR_MANY_RANDOM_INDUSTRIES					:{BLACK}Vela nahodneho priemyslu
+STR_RANDOM_INDUSTRIES_TIP					:{BLACK}Pokryt mapu s nahodne umiestnenym priemyslom
+STR_CAN_T_GENERATE_INDUSTRIES					:{WHITE}Nemozem vygenerovat priemysel
 
+STR_LANDSCAPING_TOOLBAR						:{WHITE}Zmena terenu
+STR_LEVEL_LAND_TOOLTIP						:{BLACK}Menit teren
 
 
 STR_TREES_RANDOM_TYPE						:{BLACK}Nahodne stromy
@@ -1085,6 +1130,9 @@ STR_STATION_DRAG_DROP						:{BLACK}Automaticky postavit stanicu podla oznaceneho
 
 STR_FAST_FORWARD						:{BLACK}Rychle posunutie hry do predu
 STR_MESSAGE_HISTORY						:{WHITE}Historia Sprav
+STR_MESSAGE_HISTORY_TIP						:{BLACK}Zoznam poslednych sprav
+STR_MESSAGES_DISABLE_ALL					:{BLACK}Zakazat vsetky
+STR_MESSAGES_ENABLE_ALL						:{BLACK}Povolit vsetky
 
 STR_CONSTRUCT_COAL_MINE_TIP					:{BLACK}Postavit uholnu banu
 STR_CONSTRUCT_FOREST_TIP					:{BLACK}Vysadit les
@@ -1108,6 +1156,7 @@ STR_CONSTRUCT_SUGAR_MINE_TIP					:{BLACK}Postavit cukrovu banu
 
 STR_INDUSTRYDIR_CAPTION						:{WHITE}Priemysel
 STR_INDUSTRYDIR_ITEM						:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% prevezenych)
+STR_INDUSTRYDIR_ITEM_TWO					:{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% prenesenych)
 STR_INDUSTRYDIR_ITEM_NOPROD					:{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE						:{WHITE}...prilis blizko ineho priemyslu
@@ -1118,23 +1167,92 @@ STR_RAIL_REFIT_VEHICLE						:{BLACK}Prerobit vlak
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Vybrat typ prepravovaneho nakladu
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Prerobit vlak na prepravu vybraneho nakladu
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Nemozno prerobit vlak...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Servisne intervaly su v percentach: {ORANGE}{STRING}
 
+TEMP_AI_IN_PROGRESS						:{WHITE}Vitajte v novom AI. Mozete ocakavat problemy. Ak by nejake nastali urobte screenshot a poslite ho na forum.
+TEMP_AI_ACTIVATED						:{WHITE}Varovanie: toto nove AI je iba alpha verzia! Momentalne iba automobily funguju!
 
 ############ network gui strings
 
+TEMP_STRING_NO_NETWORK						:{WHITE}Sietove rozhranie este nie je plne funkcne!{}Nefungujuce casti boli zakazane.
+
+STR_NETWORK_MULTIPLAYER						:{WHITE}Hra pre viac hracov
+
+STR_NETWORK_FIND_SERVER						:{BLACK}Najst server
+STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hlada po sieti servery
+STR_NETWORK_DIRECT_CONNECT					:{BLACK}Priame pripojenie
+STR_NETWORK_ENTER_IP						:{BLACK}Zadajte IP adresu serveru
+STR_NETWORK_DIRECT_CONNECT_TIP					:{BLACK}Pripoji sa k znamej IP
+STR_NETWORK_START_SERVER					:{BLACK}Urobit server
+STR_NETWORK_START_SERVER_TIP					:{BLACK}Spustit vlastny server
+
+STR_NETWORK_PLAYER_NAME						:{BLACK}Meno hraca:
+STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
+
+STR_NETWORK_SELECT_CONNECTION					:{BLACK}Vyberte druh pripojenia:
+STR_NETWORK_CONNECTION_TYPE_TIP					:{BLACK}Vyberte medzi hrou po internete alebo hrou po lokalnej sieti (LAN)
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN							:Lokalna siet (LAN)
+STR_NETWORK_INTERNET						:Internet
+
+STR_NETWORK_GAME_NAME						:{BLACK}Meno
+STR_NETWORK_GAME_NAME_TIP					:{BLACK}Nazov hry
+STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_PLAYERS_TIP						:{BLACK}Pocet hrajucich hracov / Maximalny pocet hracov
+STR_NETWORK_MAP_SIZE						:{BLACK}Velkost
+STR_NETWORK_MAP_SIZE_TIP					:{BLACK}Velkost mapy
+STR_NETWORK_INFO_ICONS_TIP					:{BLACK}Jazyk, verzia serveru, atd.
+STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Vyberte hru zo zoznamu
+
+STR_NETWORK_PLAYERS_VAL						:{BLACK}{COMMA8}/{COMMA8}
+
+STR_NETWORK_JOIN_GAME						:{BLACK}Pripojit sa
 
 
+STR_NETWORK_START_GAME_WINDOW					:{WHITE}Zacat novu hru pre viac hracov
 
+STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nazov hry:
+STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
+STR_NETWORK_PASSWORD						:{BLACK}Heslo:
+STR_NETWORK_PASSWORD_TIP					:{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatny ludia
+STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
+STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ktoru mapu chces hrat?
+STR_NETWORK_NUMBER_OF_PLAYERS					:{BLACK}Pocet hracov:
+STR_NETWORK_NUMBER_OF_PLAYERS_TIP				:{BLACK}Vyber maximalny pocet hracov.
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_PLAYERS						:2 hraci
+STR_NETWORK_3_PLAYERS						:3 hraci
+STR_NETWORK_4_PLAYERS						:4 hraci
+STR_NETWORK_5_PLAYERS						:5 hracov
+STR_NETWORK_6_PLAYERS						:6 hracov
+STR_NETWORK_7_PLAYERS						:7 hracov
+STR_NETWORK_8_PLAYERS						:8 hracov
+STR_NETWORK_START_GAME						:{BLACK}Spustit hru
+STR_NETWORK_START_GAME_TIP					:{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
+STR_NETWORK_LOAD_GAME						:{BLACK}Nacitat hru
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat v ulozenej hre (uistite sa, ze sa pripojite ako spravny hrac)
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Nahrat scenar
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacat sietovu hru zo scenara
 
+STR_NETWORK_GAME_LOBBY						:{WHITE}Sietova hra - lobby
 
+STR_NETWORK_SEND						:{BLACK}Poslat
+STR_NETWORK_SEND_TIP						:{BLACK}Poslat spravu ostatnym hracom
+STR_NETWORK_COMPANY_NAME					:{BLACK}Nazov spolocnosti:
+STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Mozes zmenit nazov spolocnosti. Enterom potvrdis zmeny
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
+STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
+STR_NETWORK_NEW_COMPANY						:{BLACK}Nova spolocnost
+STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novu spolocnost
+STR_NETWORK_READY						:{BLACK}Pripravene
 
-
-
-
-
-
-
-
+STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER					:{WHITE} Nebola najdena ziadna sietova hra
+STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Server neodpoveda na ziadost
+STR_NETWORK_ERR_DESYNC						:{WHITE} Siet - Chyba synchronizacie hry
+STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Siet - Stratene spojenie
+STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nedokazem nahrat hru zo servera
+STR_NETWORK_ERR_TIMEOUT						:{WHITE} Vyprsal casovy limit pre spojenie #{NUMU16}.
 
 ############ end network gui strings
 
@@ -1328,6 +1446,7 @@ STR_205B_TEAPOT_HOUSE						:Kaviaren
 STR_205C_PIGGY_BANK						:Mala Banka
 
 ##id 0x2800
+STR_LANDSCAPING							:Uprava krajiny
 STR_2800_PLANT_TREES						:Sadit stromy
 STR_2801_PLACE_SIGN						:Vlozit popis
 STR_2802_TREES							:{WHITE}Stromy
@@ -1631,6 +1750,7 @@ STR_SV_STNAME_FOREST						:{STRING} Les
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL					:{WHITE}Uroven obtiaznosti
+STR_OPTIONS_SAVE_CHANGES					:{BLACK}Ulozit
 
 ############ range for difficulty levels starts
 STR_6801_EASY							:{BLACK}Lahka
@@ -1657,8 +1777,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES					:{LTBLUE}Rozsah oceanov/jazier: {ORANGE}{STRI
 STR_6813_ECONOMY						:{LTBLUE}Ekonomika: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING					:{LTBLUE}Otacanie vlakov: {ORANGE}{STRING}
 STR_6815_DISASTERS						:{LTBLUE}Havarie: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL						:{LTBLUE}Postoj miestnej spravy k stavebnym upravam mesta: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Ziadny
 STR_6816_LOW							:Nizke
 STR_6817_NORMAL							:Normalne
 STR_6818_HIGH							:Vysoke
@@ -1695,6 +1817,9 @@ STR_6835_AT_END_OF_LINE_ONLY					:Len na konci trasy
 STR_6836_OFF							:Vyp.
 STR_6837_ON							:Zap.
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Zobrazit tabulku najlepsich
+STR_6839_PERMISSIVE						:Priatelsky
+STR_683A_TOLERANT						:Tolerantny
+STR_683B_HOSTILE						:Nepriatelsky
 
 ##id 0x7000
 STR_7000							:
@@ -1737,6 +1862,7 @@ STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Graf prevadzkoveho zisku
 STR_7026_BANK_BALANCE						:{WHITE}Zostatok v banke
 STR_7027_LOAN							:{WHITE}Pozicka
+STR_MAX_LOAN							:{WHITE}Max. pozicka:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
 STR_7029_BORROW							:{BLACK}Pozicat {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY							:{BLACK}Vratit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -1810,8 +1936,10 @@ STR_706D_PRESIDENT						:Prezident
 STR_706E_TYCOON							:Tycoon
 STR_706F_BUILD_HQ						:{BLACK}Postavit sidlo
 STR_7070_BUILD_COMPANY_HEADQUARTERS				:{BLACK}Postavit sidlo spolocnosti / pozriet na sidlo spolocnosti
+STR_RELOCATE_COMPANY_HEADQUARTERS				:{BLACK}Sidlo spolocnosti mozes premiestnit za 1% hodnoty spolocnosti
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS			:{WHITE}Sidlo spolocnosti sa neda postavit...
 STR_7072_VIEW_HQ						:{BLACK}Pozriet sidlo
+STR_RELOCATE_HQ							:{BLACK}Premiestnit sidlo
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Prepinac velkosti okna
@@ -2115,7 +2243,9 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT				:Opravovat non-stop v {TOWN} Vlakovom Dep
 STR_HEADING_FOR_TRAIN_DEPOT					:{LTBLUE}Smeruje do {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL					:{LTBLUE}Smeruje do {TOWN} depa, {VELOCITY}
 
+STR_INVALID_ORDER						:{RED} (Neplatny prikaz)
 
+STR_UNKNOWN_DESTINATION						:neznamy ciel
 STR_8812_EMPTY							:{LTBLUE}Prazdny
 STR_8813_FROM							:{LTBLUE}{CARGO} z {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT				:{WHITE}Vlak {COMMA16} caka v depe
@@ -2160,6 +2290,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE				:{WHITE}Nemozno predat automobil...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO				:{WHITE}Nemoze najst cestu do depa
 STR_883B_CAN_T_STOP_START_TRAIN					:{WHITE}Nemozno zastavit/spustit vlak...
 STR_883C_SERVICING_INTERVAL_DAYS				:{BLACK}Servisny interval: {LTBLUE}{COMMA16}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT					:{BLACK}Servisny interval: {LTBLUE}{COMMA16}%{BLACK}   Posledny servis bol: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vlaky - kliknut na vlak pre informacie
 STR_883E_BUILD_NEW_TRAINS_REQUIRES				:{BLACK}Vyrobit nove vlaky (potrebne depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR				:{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
@@ -2426,10 +2557,31 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Ropna rafineria explodovala
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Za nejasnych okolnost bola znicena tovaren nedaleko {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' pristalo nedaleko {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Zaval v uholnej bani nedaleko {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Povoden !{}Najmenej {COMMA16} ludi je nezvestnych alebo mrtvych po strasnych zaplavach !
 
 STR_BRIBE_FAILED						:{WHITE}Vas pokus o uplatok bol odhaleny
 STR_BRIBE_FAILED_2						:{WHITE}miestnym vysetrovatelom.
+STR_BUILD_DATE							:{BLACK}Postavene: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Hra je v pauze.{}Nie je mozne vykonat prikaz.
 
+STR_PERFORMANCE_DETAIL						:{WHITE}Podrobne hodnotenie vykonu
+STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Podrobne
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY				:{BLACK}{TINYFONT}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT				:{BLACK}{TINYFONT}({INT32}/{INT32})
+STR_PERFORMANCE_DETAIL_PERCENT					:{WHITE}{INT32}%
+SET_PERFORMANCE_DETAIL_INT					:{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES					:{BLACK}Vozidla:
+STR_PERFORMANCE_DETAIL_STATIONS					:{BLACK}Stanice:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT				:{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME				:{BLACK}Min. prijem:
+STR_PERFORMANCE_DETAIL_MAX_INCOME				:{BLACK}Max. prijem:
+STR_PERFORMANCE_DETAIL_DELIVERED				:{BLACK}Prepravene:
+STR_PERFORMANCE_DETAIL_CARGO					:{BLACK}Naklad:
+STR_PERFORMANCE_DETAIL_MONEY					:{BLACK}Hotovost:
+STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Uver:
+STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Spolu:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Pocet vozidiel (automobilov, vlakov, lodi a lietadiel).
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet casti stanic. Kazda cast stanice (napr.. zeleznicna stanica, autobusova zastavka, letisko) je zapocitana, aj ked su spojene do jednej stanice..
 
