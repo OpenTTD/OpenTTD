@@ -75,7 +75,6 @@ DEF_COMMAND(CmdChangeTrainServiceInt);
 DEF_COMMAND(CmdRestoreOrderIndex);
 
 DEF_COMMAND(CmdBuildIndustry);
-//DEF_COMMAND(CmdDestroyIndustry);
 
 DEF_COMMAND(CmdBuildCompanyHQ);
 DEF_COMMAND(CmdDestroyCompanyHQ);
@@ -309,8 +308,6 @@ static CommandProc * const _command_proc_table[] = {
 	CmdGiveMoney,									/* 113 */
 	CmdChangePatchSetting,				/* 114 */
 	CmdReplaceVehicle,						/* 115 */
-
-	//CmdDestroyIndustry,					/* 109 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

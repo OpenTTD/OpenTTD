@@ -381,17 +381,6 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TILE_XY(1,1));
 			break;
-		case 7:
-			// Destroy Industry button costing money removed per request of dominik
-			//i = GetIndustry(w->window_number);
-			/*	passing only i->xy is not safe if industry has a weird shape like:
-					_ X X
-					X X X
-					_ <--- grass, no industry, but i->xy points there (first top-left tile)!,
-					so passing i->xy to destroy industry will fail in called procedure
-			*/
-			//DoCommandP(i->xy, w->window_number, 0, CcPlaySound10,  CMD_DESTROY_INDUSTRY | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-			break;
 		}
 		}
 		break;

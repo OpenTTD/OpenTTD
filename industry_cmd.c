@@ -411,30 +411,6 @@ static int32 ClearTile_Industry(uint tile, byte flags)
 	return 0;
 }
 
-/* p1 index of industry to destroy */
-/* Destroy Industry button costing money removed per request of dominik
-int32 CmdDestroyIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	uint tile = TILE_FROM_XY(x,y);
-	Industry *i = GetIndustry((uint16)p1);
-  Town *t = ClosestTownFromTile(tile, (uint)-1); // find closest town to penaltize (ALWAYS penaltize)
-
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
-	// check if you're allowed to remove the industry. Minimum amount
-	// of ratings to remove the industry depends on difficulty setting
-	if (!CheckforTownRating(tile, flags, t, INDUSTRY_REMOVE))
-		return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		DeleteIndustry(i);
-		CreateEffectVehicleAbove(x + 8,y + 8, 2, EV_DEMOLISH);
-		ChangeTownRating(t, RATING_INDUSTRY_DOWN_STEP, RATING_INDUSTRY_MINIMUM);
-	}
-
-	return (_price.build_industry >> 5) * _industry_type_costs[i->type]*2;
-}
-*/
 
 static const byte _industry_min_cargo[] = {
 	5, 5, 5, 30, 5, 5, 5, 5,
