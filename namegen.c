@@ -378,6 +378,13 @@ static byte MakeSlovakTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
+static byte MakeNorwegianTownName(byte *buf, uint32 seed)
+{
+	strcpy(buf, "");
+	strcat(buf, name_norwegian_1[GetNumberBasedOnSeed(0, lengthof(name_norwegian_1), seed)]);
+	return 0;
+}
+
 static byte MakeHungarianTownName(byte *buf, uint32 seed)
 {
 	int i;
@@ -422,6 +429,7 @@ TownNameGenerator * const _town_name_generators[] = {
 	MakeFinnishTownName,
 	MakePolishTownName,
 	MakeSlovakTownName,
+	MakeNorwegianTownName,
 	MakeHungarianTownName,
 	MakeAustrianTownName,
 	MakeRomanianTownName,
