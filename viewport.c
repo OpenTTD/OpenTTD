@@ -18,8 +18,8 @@ typedef struct StringSpriteToDraw {
 	uint16 string;
 	uint16 color;
 	struct StringSpriteToDraw *next;
-	int16 x;
-	int16 y;
+	int32 x;
+	int32 y;
 	uint32 params[3];
 	uint16 width;
 } StringSpriteToDraw;
@@ -27,21 +27,28 @@ typedef struct StringSpriteToDraw {
 typedef struct TileSpriteToDraw {
 	uint32 image;
 	struct TileSpriteToDraw *next;
-	int16 x, y;
+	int32 x;
+	int32 y;
 	byte z;
 } TileSpriteToDraw;
 
 typedef struct ChildScreenSpriteToDraw {
 	uint32 image;
-	int16 x,y;
+	int32 x;
+	int32 y;
 	struct ChildScreenSpriteToDraw *next;
 } ChildScreenSpriteToDraw;
 
 typedef struct ParentSpriteToDraw {
 	uint32 image;
-	int16 left, top, right, bottom;
-	int16 tile_x, tile_y;
-	int16 tile_right, tile_bottom;
+	int32 left;
+	int32 top;
+	int32 right;
+	int32 bottom;
+	int32 tile_x;
+	int32 tile_y;
+	int32 tile_right;
+	int32 tile_bottom;
 	ChildScreenSpriteToDraw *child;
 	byte unk16;
 	byte tile_z;
@@ -333,7 +340,7 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 	return GetTileFromScreenXY(x+vp->left, y+vp->top);
 }
 
-void DrawGroundSpriteAt(uint32 image, int16 x, int16 y, byte z)
+void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 {
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;

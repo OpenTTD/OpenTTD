@@ -273,14 +273,16 @@ typedef struct TileDesc {
 } TileDesc;
 
 typedef struct {
-	int16 left, top;
+	int32 left;
+	int32 top;
 	byte width_1, width_2;
 } ViewportSign;
 
 typedef struct SignStruct {
 	StringID str;
 	ViewportSign sign;
-	int16 x,y;
+	int32 x;
+	int32 y;
 	byte z;
 } SignStruct;
 

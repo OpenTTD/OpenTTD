@@ -321,8 +321,10 @@ int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static const byte _sign_desc[] = {
 	SLE_VAR(SignStruct,str,						SLE_UINT16),
-	SLE_VAR(SignStruct,x,							SLE_INT16),
-	SLE_VAR(SignStruct,y,							SLE_INT16),
+	SLE_CONDVAR(SignStruct,x,         SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+	SLE_CONDVAR(SignStruct,y,         SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+	SLE_CONDVAR(SignStruct,x,         SLE_INT32, 5, 255),
+	SLE_CONDVAR(SignStruct,y,         SLE_INT32, 5, 255),
 	SLE_VAR(SignStruct,z,							SLE_UINT8),
 	SLE_END()
 };

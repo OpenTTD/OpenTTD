@@ -9,7 +9,10 @@
 
 typedef struct TextEffect {
 	StringID string_id;
-	int16 x,y,right,bottom;
+	int32 x;
+	int32 y;
+	int32 right;
+	int32 bottom;
 	uint16 duration;
 	uint32 params_1;
 	uint32 params_2;
@@ -276,10 +279,10 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 				continue;
 
 			/* intersection? */
-			if ((int16)dpi->left > te->right ||
-					(int16)dpi->top > te->bottom ||
-					(int16)(dpi->left + dpi->width) <= te->x ||
-					(int16)(dpi->top + dpi->height) <= te->y)
+			if (dpi->left > te->right ||
+					dpi->top > te->bottom ||
+					dpi->left + dpi->width <= te->x ||
+					dpi->top + dpi->height <= te->y)
 						continue;
 			AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
 		}

@@ -178,7 +178,10 @@ struct Vehicle {
 
 	// Boundaries for the current position in the world and a next hash link.
 	// NOSAVE: All of those can be updated with VehiclePositionChanged()
-	int16 left_coord, top_coord, right_coord, bottom_coord;
+	int32 left_coord;
+	int32 top_coord;
+	int32 right_coord;
+	int32 bottom_coord;
 	uint16 next_hash;
 
 	// Related to age and service time

@@ -276,7 +276,9 @@ typedef struct {
 } traindetails_d;
 
 typedef struct {
-	int16 scroll_x, scroll_y, subscroll;
+	int32 scroll_x;
+	int32 scroll_y;
+	int32 subscroll;
 } smallmap_d;
 
 typedef struct {
@@ -291,12 +293,14 @@ typedef struct {
 
 typedef struct {
 	uint16 follow_vehicle;
-	int16 scrollpos_x, scrollpos_y;
+	int32 scrollpos_x;
+	int32 scrollpos_y;
 } vp_d;
 
 typedef struct {
 	uint16 follow_vehicle;
-	int16 scrollpos_x, scrollpos_y;
+	int32 scrollpos_x;
+	int32 scrollpos_y;
 	NewsItem *ni;
 } news_d;
 
