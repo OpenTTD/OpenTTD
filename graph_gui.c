@@ -830,7 +830,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 					that because there is another param after it. 
 					So we'll just shift the rating one back if player is AI and all is fine
 				*/
-			SET_DPARAM16((IS_HUMAN_PLAYER(i) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			SET_DPARAM16((IS_HUMAN_PLAYER(p->index) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);
