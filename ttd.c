@@ -735,6 +735,11 @@ void StartScenario()
 		ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
 	}
 
+	// Inititalize data
+	StartupPlayers();
+	StartupEngines();
+	StartupDisasters();
+
 	// Create a single player
 	DoStartupNewPlayer(false);
 	
