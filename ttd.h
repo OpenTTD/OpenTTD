@@ -86,20 +86,6 @@ enum SwitchModes {
 	SM_START_SCENARIO = 10,
 };
 
-enum MapTileTypes {
-	MP_CLEAR,
-	MP_RAILWAY,
-	MP_STREET,
-	MP_HOUSE,
-	MP_TREES,
-	MP_STATION,
-	MP_WATER,
-	MP_VOID, // invisible tiles at the SW and SE border
-	MP_INDUSTRY,
-	MP_TUNNELBRIDGE,
-	MP_UNMOVABLE
-};
-
 typedef enum TransportTypes {
 	/* These constants are for now linked to the representation of bridges
 	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge

@@ -185,7 +185,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 
 	// check depot first
 	if (_patches.gotodepot) {
-		switch (TileType(tile)) {
+		switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
 				if ((_map5[tile]&0xFC)==0xC0) {
@@ -228,6 +228,9 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 				order.station = GetDepotByTile(tile);
 				return order;
 			}
+
+			default:
+				break;
 		}
 	}
 

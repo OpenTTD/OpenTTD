@@ -320,7 +320,7 @@ static bool IsWateredTile(TileIndex tile)
 {
 	byte m5 = _map5[tile];
 
-	switch (TileType(tile)) {
+	switch (GetTileType(tile)) {
 		case MP_WATER:
 			// true, if not coast/riverbank
 			return m5 != 1;
@@ -502,7 +502,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
 		// make coast..
-		switch (TileType(target)) {
+		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				uint slope = GetTileSlope(target, NULL);
 				byte tracks = _map5[target] & 0x3F;

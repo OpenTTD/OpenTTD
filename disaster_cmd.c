@@ -19,7 +19,7 @@ static void DisasterClearSquare(TileIndex tile)
 	if (!EnsureNoVehicle(tile))
 		return;
 
-	switch (TileType(tile)) {
+	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (IS_HUMAN_PLAYER(_map_owner[tile])) DoClearSquare(tile);
 			break;

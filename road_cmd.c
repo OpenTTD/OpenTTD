@@ -26,7 +26,7 @@ static bool HasTileRoadAt(uint tile, int i)
 	int mask;
 	byte b;
 
-	switch (TileType(tile)) {
+	switch (GetTileType(tile)) {
 	case MP_STREET:
 		b = _map5[tile];
 

@@ -436,7 +436,7 @@ void GetProductionAroundTiles(uint *produced, uint tile, int w, int h, int rad)
 			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
 				GetProducedCargoProc *gpc;
 				uint tile = TILE_XY(xc, yc);
-				gpc = _tile_type_procs[TileType(tile)]->get_produced_cargo_proc;
+				gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
 					cargos[0] = cargos[1] = 0xFF;
 					gpc(tile, cargos);

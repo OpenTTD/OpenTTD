@@ -298,7 +298,7 @@ static inline uint32 GetSmallMapCountoursPixels(uint tile)
 {
 	uint t;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_TUNNELBRIDGE) {
 		t = _map5[tile];
 		if ((t & 0x80) == 0) t>>=1;
@@ -328,7 +328,7 @@ static inline uint32 GetSmallMapVehiclesPixels(uint tile)
 {
 	uint t;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_TUNNELBRIDGE) {
 		t = _map5[tile];
 		if ((t & 0x80) == 0) t>>=1;
@@ -381,7 +381,7 @@ static inline uint32 GetSmallMapIndustriesPixels(uint tile)
 {
 	int t;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_INDUSTRY) {
 		byte color = _industry_smallmap_colors[_map5[tile]];
 		return color + (color << 8) + (color << 16) + (color << 24);
@@ -414,7 +414,7 @@ static inline uint32 GetSmallMapRoutesPixels(uint tile)
 	int t;
 	uint32 bits;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_STATION) {
 		byte m5 = _map5[tile];
 		(bits = MKCOLOR(0x56565656), m5 < 8) ||			//   8 - railroad station (green)
@@ -470,7 +470,7 @@ static inline uint32 GetSmallMapVegetationPixels(uint tile)
 	int i,t;
 	uint32 bits;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_CLEAR) {
 		i = (_map5[tile] & 0x1F) - 4;
 		if (i >= 0) i = (i >> 2);
@@ -515,7 +515,7 @@ static inline uint32 GetSmallMapOwnerPixels(uint tile)
 {
 	int t;
 
-	t = TileType(tile);
+	t = GetTileType(tile);
 	if (t == MP_HOUSE || _map_owner[tile] == OWNER_TOWN) {
 		t = 0x80;
 	} else if (t == MP_INDUSTRY) {

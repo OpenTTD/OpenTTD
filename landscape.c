@@ -87,7 +87,7 @@ void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 
 	ti->tile = tile;
 	ti->map5 = _map5[tile];
-	ti->type = TileType(tile);
+	ti->type = GetTileType(tile);
 	ti->tileh = GetTileSlope(tile, &ti->z);
 }
 
@@ -288,28 +288,28 @@ void DoClearSquare(uint tile)
 
 uint32 GetTileTrackStatus(uint tile, TransportType mode)
 {
-	return _tile_type_procs[TileType(tile)]->get_tile_track_status_proc(tile, mode);
+	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode);
 }
 
 void ChangeTileOwner(uint tile, byte old_player, byte new_player)
 {
-	_tile_type_procs[TileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
+	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
 }
 
 void GetAcceptedCargo(uint tile, AcceptedCargo ac)
 {
 	memset(ac, 0, sizeof(AcceptedCargo));
-	_tile_type_procs[TileType(tile)]->get_accepted_cargo_proc(tile, ac);
+	_tile_type_procs[GetTileType(tile)]->get_accepted_cargo_proc(tile, ac);
 }
 
 void AnimateTile(uint tile)
 {
-	_tile_type_procs[TileType(tile)]->animate_tile_proc(tile);
+	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);
 }
 
 void ClickTile(uint tile)
 {
-	_tile_type_procs[TileType(tile)]->click_tile_proc(tile);
+	_tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
 }
 
 void DrawTile(TileInfo *ti)
@@ -319,7 +319,7 @@ void DrawTile(TileInfo *ti)
 
 void GetTileDesc(uint tile, TileDesc *td)
 {
-	_tile_type_procs[TileType(tile)]->get_tile_desc_proc(tile, td);
+	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);
 }
 
 /* Clear a piece of landscape
@@ -333,7 +333,7 @@ int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	tile = TILE_FROM_XY(x,y);
-	return _tile_type_procs[TileType(tile)]->clear_tile_proc(tile, flags);
+	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
 // p1 = end tile
@@ -446,7 +446,7 @@ void RunTileLoop(void)
 	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
 	count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
 	do {
-		_tile_type_procs[TileType(tile)]->tile_loop_proc(tile);
+		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
 		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; /* no overflow */

@@ -3,6 +3,20 @@
 
 #include "map.h"
 
+typedef enum TileType {
+	MP_CLEAR,
+	MP_RAILWAY,
+	MP_STREET,
+	MP_HOUSE,
+	MP_TREES,
+	MP_STATION,
+	MP_WATER,
+	MP_VOID, // invisible tiles at the SW and SE border
+	MP_INDUSTRY,
+	MP_TUNNELBRIDGE,
+	MP_UNMOVABLE
+} TileType;
+
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);
 
@@ -25,22 +39,22 @@ static inline uint TilePixelHeight(TileIndex tile)
 	return TileHeight(tile) * 8;
 }
 
-static inline int TileType(TileIndex tile)
+static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
 	return _map_type_and_height[tile] >> 4;
 }
 
-static inline void SetTileType(TileIndex tile, uint type)
+static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
 	_map_type_and_height[tile] &= ~0xF0;
 	_map_type_and_height[tile] |= type << 4;
 }
 
-static inline bool IsTileType(TileIndex tile, int type)
+static inline bool IsTileType(TileIndex tile, TileType type)
 {
-	return TileType(tile) == type;
+	return GetTileType(tile) == type;
 }
 
 #endif

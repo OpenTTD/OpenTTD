@@ -1733,13 +1733,13 @@ byte GetDirectionTowards(Vehicle *v, int x, int y)
 uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y)
 {
 	uint old_tile = v->tile;
-	uint32 result = _tile_type_procs[TileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
+	uint32 result = _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 
 	/* When vehicle_enter_tile_proc returns 8, that apparently means that
 	 * we cannot enter the tile at all. In that case, don't call
 	 * leave_tile. */
 	if (!(result & 8) && old_tile != tile) {
-		VehicleLeaveTileProc *proc = _tile_type_procs[TileType(old_tile)]->vehicle_leave_tile_proc;
+		VehicleLeaveTileProc *proc = _tile_type_procs[GetTileType(old_tile)]->vehicle_leave_tile_proc;
 		if (proc != NULL)
 			proc(v, old_tile, x, y);
 	}
