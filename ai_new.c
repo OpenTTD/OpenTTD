@@ -487,12 +487,13 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st) {
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == _current_player) {
 			sched = v->schedule_ptr;
+			if (sched == NULL) continue;
 			while ((ord=*sched++) != 0) {
 				if ((ord & OT_MASK) == OT_GOTO_STATION && DEREF_STATION(ord >> 8) == st) {
 					// This vehicle has this city in his list
 					count++;
 				}
-			};
+			}
 		}
 	}
 
