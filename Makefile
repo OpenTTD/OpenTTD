@@ -292,8 +292,6 @@ ifdef PROFILE
 endif
 
 CDEFS=-DWITH_REV
-LDFLAGS=
-LIBS=
 
 ifndef DEBUG
 ifndef PROFILE
