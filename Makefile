@@ -103,6 +103,8 @@
 # CYGWIN: build in Cygwin environment
 # MINGW: build with MingW compiler, link with MingW libraries
 #
+# VERBOSE: show full compiler invocations instead of brief progress messages
+#
 # Experimental (does not work properly):
 # WITH_DIRECTMUSIC: enable DirectMusic MIDI support
 
@@ -705,7 +707,11 @@ $(ENDIAN_CHECK): endian_check.c
 
 
 $(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
-	@echo '===> Linking $@'
+	@if [ ! "$(VERBOSE)" ]; then \
+		echo '===> Linking $@'; \
+	else \
+		echo $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@; \
+	fi
 	@$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OSX): $(TTD)
@@ -918,12 +924,20 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # therefore we do not need to watch deps.
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
-	@echo '===> Compiling $<'
+	@if [ ! "$(VERBOSE)" ]; then \
+		echo '===> Compiling $<'; \
+	else \
+		echo $(CC) $(CFLAGS) $(CDEFS) -c $< -o $@; \
+	fi
 	@$(CC) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
-	@echo '===> Compiling $<'
+	@if [ ! "$(VERBOSE)" ]; then \
+		echo '===> Compiling $<'; \
+	else \
+		echo $(CXX) $(CFLAGS) $(CDEFS) -c $< -o $@; \
+	fi
 	@$(CXX) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
