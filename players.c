@@ -492,10 +492,8 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 void StartupPlayers()
 {
-	uint32 r;
-	
-	r = Random();
-	_next_competitor_start = (byte)r + _opt.diff.competitor_start_time * 6882 + 1;
+	// The AI starts like in the setting with +2 month max
+	_next_competitor_start = _opt.diff.competitor_start_time * 90 * 74 + RandomRange(60 * 74) + 1;
 }
 
 static void MaybeStartNewPlayer()
@@ -510,10 +508,11 @@ static void MaybeStartNewPlayer()
 			n++;
 
 	// when there's a lot of computers in game, the probability that a new one starts is lower
-	if (n < (uint)_opt.diff.max_no_competitors && n < RandomRange(_opt.diff.max_no_competitors))
+	if (n < (uint)_opt.diff.max_no_competitors && n < RandomRange(_opt.diff.max_no_competitors + 2))
 		DoStartupNewPlayer(true);
 	
-	_next_competitor_start = RandomRange(19980) + 11100;
+	// The next AI starts like the difficulty setting said, with +2 month max
+	_next_competitor_start = _opt.diff.competitor_start_time * 90 * 74 + RandomRange(60 * 74) + 1;
 }
 
 void InitializePlayers()
