@@ -47,15 +47,6 @@ enum {
 static NetworkGameList *_selected_item = NULL;
 static int8 _selected_company_item = -1;
 
-#ifdef WITH_REV_HACK
-	#define WITH_REV
-	const char _openttd_revision[] = WITH_REV_HACK;
-#else
-	#ifdef WITH_REV
-		extern char _openttd_revision[];
-	#endif
-#endif
-
 // Truncates a string to max_width (via GetStringWidth) and adds 3 dots
 //  at the end of the name.
 static void NetworkTruncateString(char *name, const int max_width)

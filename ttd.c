@@ -28,6 +28,11 @@
 
 #include <stdarg.h>
 
+/* Define the _openttd_revision tag if it is not defined */
+#ifndef WITH_REV
+	const char _openttd_revision[] = "norev000";
+#endif
+
 void GameLoop();
 
 void IncreaseSpriteLRU();
@@ -645,7 +650,7 @@ int ttd_main(int argc, char* argv[])
 	// initialize the ingame console
 	IConsoleInit();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
-	
+
 	InitPlayerRandoms();
 
 #ifdef ENABLE_NETWORK

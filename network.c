@@ -785,16 +785,6 @@ bool NetworkClientConnectGame(const byte* host, unsigned short port)
 
 void NetworkInitGameInfo(void)
 {
-#ifdef WITH_REV_HACK
-	#define WITH_REV
-	const char _openttd_revision[] = WITH_REV_HACK;
-#else
-	#if defined(WITH_REV)
-		extern char _openttd_revision[];
-	#else
-		const char _openttd_revision[] = "norev000";
-	#endif
-#endif
 	NetworkClientInfo *ci;
 
 	ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));

@@ -232,14 +232,6 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 void IConsoleInit(void)
 {
 	uint i;
-#ifdef WITH_REV_HACK
-	#define WITH_REV
-	const char _openttd_revision[] = WITH_REV_HACK;
-#else
-	#if defined(WITH_REV)
-	extern char _openttd_revision[];
-	#endif
-#endif
 	_iconsole_output_file = NULL;
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
@@ -604,7 +596,7 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 			if (cmdline[i] == '+') {
 				// all params seperated: "[param 1]" "[param 2]"
 				t=1;
-				while ((tokens[t]!=NULL) && (t<20) && 
+				while ((tokens[t]!=NULL) && (t<20) &&
 						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
 					int l2 = strlen(tokens[t]);
 					*linestream = '"';
@@ -623,7 +615,7 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 				t=1;
 				*linestream = '"';
 				linestream++;
-				while ((tokens[t]!=NULL) && (t<20) && 
+				while ((tokens[t]!=NULL) && (t<20) &&
 						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
 					int l2 = strlen(tokens[t]);
 					memcpy(linestream,tokens[t],l2);
@@ -640,7 +632,7 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 				// one specific parameter: %A = [param 1] %B = [param 2] ...
 				int l2;
 				t = ((byte)cmdline[i]) - 64;
-				if ((t<20) && (tokens[t]!=NULL) && 
+				if ((t<20) && (tokens[t]!=NULL) &&
 						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
 					l2 = strlen(tokens[t]);
 					*linestream = '"';
