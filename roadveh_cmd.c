@@ -56,13 +56,11 @@ int GetRoadVehImage(Vehicle *v, byte direction)
 	int img = v->spritenum;
 	int image;
 
-#ifdef ROADVEH_CUSTOM_SPRITES // TODO --pasky
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleSprite(v, direction);
 		if (image) return image;
 		img = _engine_original_sprites[v->engine_type];
 	}
-#endif
 
 	image = direction + _roadveh_images[img];
 	if (v->cargo_count >= (v->cargo_cap >> 1))
@@ -72,7 +70,18 @@ int GetRoadVehImage(Vehicle *v, byte direction)
 
 void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 {
-	DrawSprite((6 + _roadveh_images[road_vehicle_info(engine)->image_index]) | image_ormod, x, y);
+	int spritenum = road_vehicle_info(engine)->image_index;
+
+	if (is_custom_sprite(spritenum)) {
+		int sprite = GetCustomVehicleIcon(engine, 6);
+
+		if (sprite) {
+			DrawSprite(sprite | image_ormod, x, y);
+			return;
+		}
+		spritenum = _engine_original_sprites[engine];
+	}
+	DrawSprite((6 + _roadveh_images[spritenum]) | image_ormod, x, y);
 }
 
 void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)

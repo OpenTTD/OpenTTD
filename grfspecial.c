@@ -339,6 +339,112 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	return ret;
 }
 
+static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+{
+	RoadVehicleInfo *rvi = &_road_vehicle_info[engine];
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	switch (prop) {
+		case 0x08: {	/* Speed */
+			FOR_EACH_ENGINE {
+				uint8 speed = grf_load_byte(&buf);
+
+				rvi[i].max_speed = speed; // ?? units
+			}
+		}	break;
+		case 0x09: {	/* Running cost factor */
+			FOR_EACH_ENGINE {
+				uint8 runcost = grf_load_byte(&buf);
+
+				rvi[i].running_cost = runcost;
+			}
+		}	break;
+		case 0x0A:	/* Running cost base */
+			/* TODO: I have no idea. --pasky */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = true;
+			break;
+		case 0x0E: {	/* Sprite ID */
+			FOR_EACH_ENGINE {
+				uint8 spriteid = grf_load_byte(&buf);
+
+				if (spriteid == 0xFF)
+					spriteid = 0xFD; // cars have different custom id in the GRF file
+
+				// This is currently not used but there's no reason
+				// in not having it here for the future.
+				if (spriteid == 0xFD && rvi[i].image_index != 0xFD)
+					_engine_original_sprites[ROAD_ENGINES_INDEX + engine + i] = rvi[i].image_index;
+
+				rvi[i].image_index = spriteid;
+			}
+		}	break;
+		case 0x0F: {	/* Cargo capacity */
+			FOR_EACH_ENGINE {
+				uint16 capacity = grf_load_word(&buf);
+
+				rvi[i].capacity = capacity;
+			}
+		}	break;
+		case 0x10: { /* Cargo type */
+			FOR_EACH_ENGINE {
+				uint8 cargo = grf_load_byte(&buf);
+
+				rvi[i].cargo_type = cargo;
+			}
+		}	break;
+		case 0x11: {	/* Cost factor */
+			FOR_EACH_ENGINE {
+				uint8 cost_factor = grf_load_byte(&buf);
+
+				rvi[i].base_cost = cost_factor; // ?? is it base_cost?
+			}
+		}	break;
+		case 0x12: {	/* SFX */
+			FOR_EACH_ENGINE {
+				uint8 sfx = grf_load_byte(&buf);
+
+				rvi[i].sfx = sfx;
+			}
+		}	break;
+		case 0x13:      /* Power in 10hp */
+		case 0x14:      /* Weight in 1/4 tons */
+		case 0x15:      /* Speed in mph*0.8 */
+			/* TODO: Support for road vehicles realistic power
+			 * computations (called rvpower in TTDPatch) is just
+			 * missing in OTTD yet. --pasky */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = true;
+			break;
+		case 0x16: {	/* Cargos available for refitting */
+			FOR_EACH_ENGINE {
+				uint32 refit_mask = grf_load_dword(&buf);
+
+				_engine_refit_masks[ROAD_ENGINES_INDEX + engine + i] = refit_mask;
+			}
+		}	break;
+		case 0x17:      /* Callback */
+		case 0x18:      /* Tractive effort */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = true;
+			break;
+		default:
+			ret = true;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	ShipVehicleInfo *svi = &_ship_vehicle_info[engine];
@@ -460,7 +566,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 
 	static const VCI_Handler handler[5] = {
 		/* GSF_TRAIN */    RailVehicleChangeInfo,
-		/* GSF_ROAD */     NULL,
+		/* GSF_ROAD */     RoadVehicleChangeInfo,
 		/* GSF_SHIP */     ShipVehicleChangeInfo,
 		/* GSF_AIRCRAFT */ NULL,
 		/* GSF_STATION */  NULL,
@@ -478,7 +584,10 @@ static void VehicleChangeInfo(byte *buf, int len)
 	numinfo = buf[3];
 	engine = buf[4];
 
-	if (feature != GSF_TRAIN && feature != GSF_SHIP) {
+	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
+	               feature, numprops, engine, numinfo);
+
+	if (feature != GSF_TRAIN && feature != GSF_ROAD && feature != GSF_SHIP) {
 		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported vehicle type %x, skipping.", feature);
 		return;
 	}
@@ -528,7 +637,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 				ei[i].railtype_climates |= climates;
 			}
 		}	break;
-		case 0x07: { /* Loading spee */
+		case 0x07: { /* Loading speed */
 			/* TODO */
 			/* Hyronymus explained me what does
 			 * this mean and insists on having a
