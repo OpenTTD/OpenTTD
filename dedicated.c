@@ -26,8 +26,44 @@
 static void *_dedicated_video_mem;
 
 #ifdef UNIX
+/* We want to fork our dedicated server */
+void DedicatedFork()
+{
+	/* Fork the program */
+	_dedicated_pid = fork();
+	switch (_dedicated_pid) {
+		case -1:
+			perror("Unable to fork");
+			exit(1);
+		case 0:
+			// We're the child
+
+			/* Open the log-file to log all stuff too */
+			_log_file_fd = fopen(_log_file, "a");
+			if (!_log_file_fd) {
+				perror("Unable to open logfile");
+				exit(1);
+			}
+			/* Redirect stdout and stderr to log-file */
+			if (dup2(fileno(_log_file_fd), fileno(stdout)) == -1) {
+				perror("Re-routing stdout");
+				exit(1);
+			}
+			if (dup2(fileno(_log_file_fd), fileno(stderr)) == -1) {
+				perror("Re-routing stderr");
+				exit(1);
+			}
+			break;
+		default:
+			// We're the parent
+			printf("Loading dedicated server...\n");
+			printf("  - Forked to background with pid %d\n", _dedicated_pid);
+			exit(0);
+	}
+}
+
 /* Signal handlers */
-void DedicatedSignalHandler(int sig)
+static void DedicatedSignalHandler(int sig)
 {
 		_exit_game = true;
 		signal(sig, DedicatedSignalHandler);
@@ -57,7 +93,7 @@ static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 
 #ifdef UNIX
 
-bool InputWaiting()
+static bool InputWaiting()
 {
 	struct timeval tv;
 	fd_set readfds;
@@ -77,21 +113,48 @@ bool InputWaiting()
 		return false;
 }
 #else
-bool InputWaiting()
+static bool InputWaiting()
 {
 	return kbhit();
 }
 #endif
 
-static int DedicatedVideoMainLoop() {
+static void DedicatedHandleKeyInput()
+{
+#ifdef WIN32
+	char input;
+#endif
+	char input_line[200];
+
+#ifdef UNIX
+	if (InputWaiting()) {
+		fgets(input_line, 200, stdin);
+		// Forget about the final \n (or \r)
+		strtok(input_line, "\r\n");
+		IConsoleCmdExec(input_line);
+	}
+#else
+	if (InputWaiting()) {
+		input = getch();
+		printf("%c", input);
+		if (input != '\r')
+			snprintf(input_line, 200, "%s%c", input_line, input);
+		else {
+			printf("\n");
+			IConsoleCmdExec(input_line);
+			sprintf(input_line, "");
+		}
+	}
+#endif
+}
+
+static int DedicatedVideoMainLoop()
+{
 #ifndef WIN32
 	struct timeval tim;
-#else
-	char input;
 #endif
 	uint32 next_tick;
 	uint32 cur_ticks;
-	char input_line[200];
 
 #ifdef WIN32
 	next_tick = GetTickCount() + 30;
@@ -125,26 +188,8 @@ static int DedicatedVideoMainLoop() {
 
 		if (_exit_game) return ML_QUIT;
 
-#ifdef UNIX
-		if (InputWaiting()) {
-			fgets(input_line, 200, stdin);
-			// Forget about the final \n (or \r)
-			strtok(input_line, "\r\n");
-			IConsoleCmdExec(input_line);
-		}
-#else
-		if (InputWaiting()) {
-			input = getch();
-			printf("%c", input);
-			if (input != '\r')
-				snprintf(input_line, 200, "%s%c", input_line, input);
-			else {
-				printf("\n");
-				IConsoleCmdExec(input_line);
-				sprintf(input_line, "");
-			}
-		}
-#endif
+		if (!_dedicated_forks)
+			DedicatedHandleKeyInput();
 
 #ifdef WIN32
 		cur_ticks = GetTickCount();

@@ -314,6 +314,7 @@ static void showhelp()
 		"  -G seed             = Set random seed\n"
 		"  -n [ip#player:port] = Start networkgame\n"
 		"  -D                  = Start dedicated server\n"
+		"  -f                  = Fork into the background (dedicated only)\n"
 		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
 		"  -p #player          = Player as #player (deprecated) (network only)\n"
 	);
@@ -516,6 +517,8 @@ void LoadIntroGame()
 	if (_music_driver->is_song_playing()) ResetMusic();
 }
 
+extern void DedicatedFork();
+
 int ttd_main(int argc, char* argv[])
 {
 	MyGetOptData mgo;
@@ -531,12 +534,14 @@ int ttd_main(int argc, char* argv[])
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
 	_switch_mode_errorstr = INVALID_STRING_ID;
+	_dedicated_forks = false;
+	_dedicated_enabled = false;
 
 	// The last param of the following function means this:
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hDn::l:eit:d::r:g::G:p:");
+	MyGetOptInit(&mgo, argc-1, argv+1, "m:s:v:hDfn::l:eit:d::r:g::G:p:");
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch(i) {
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
@@ -546,7 +551,11 @@ int ttd_main(int argc, char* argv[])
 				sprintf(musicdriver,"null");
 				sprintf(sounddriver,"null");
 				sprintf(videodriver,"dedicated");
+				_dedicated_enabled = true;
 			} break;
+		case 'f': {
+				_dedicated_forks = true;
+			}; break;
 		case 'n': {
 				network = true;
 				if (mgo.opt)
@@ -595,6 +604,13 @@ int ttd_main(int argc, char* argv[])
 	}
 
 	DeterminePaths();
+
+#ifdef UNIX
+	// We must fork here, or we'll end up without some resources we need (like sockets)
+	if (_dedicated_forks)
+		DedicatedFork();
+#endif
+
 	LoadFromConfig();
 
 	// override config?
@@ -603,6 +619,9 @@ int ttd_main(int argc, char* argv[])
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != -1) _patches.starting_date = startdate;
+
+	if (_dedicated_forks && !_dedicated_enabled)
+		_dedicated_forks = false;
 
 	// enumerate language files
 	InitializeLanguagePacks();

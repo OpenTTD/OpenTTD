@@ -322,6 +322,8 @@ VARDEF int _num_screenshot_formats, _cur_screenshot_format;
 VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;
+VARDEF char *_log_file;
+VARDEF FILE *_log_file_fd;
 
 // NOSAVE: These can be recalculated from InitializeLandscapeVariables
 typedef struct {
@@ -418,6 +420,11 @@ VARDEF int _debug_misc_level;
 VARDEF int _debug_grf_level;
 VARDEF int _debug_ai_level;
 VARDEF int _debug_net_level;
+
+/* Forking stuff */
+VARDEF bool _dedicated_forks;
+VARDEF bool _dedicated_enabled;
+VARDEF pid_t _dedicated_pid;
 
 void CDECL debug(const char *s, ...);
 #ifdef NO_DEBUG_MESSAGES
