@@ -404,6 +404,13 @@ static bool IsRoadAllowedHere(uint tile, int dir)
 	TILE_ASSERT(tile);
 
 	for(;;) {
+		// Check if we didn't hit a station. That little roadstation
+		// pinkeye returns nonzero GetRoadBitsByTile(), but the road
+		// doesn't really go through it (nor can we extend it at
+		// that place).
+		if (IS_TILETYPE(tile, MP_STATION))
+			return false;
+
 		// Check if there already is a road at this point?
 		if (GetRoadBitsByTile(tile) == 0) {
 			// No, try to build one in the direction.
