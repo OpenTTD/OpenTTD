@@ -1012,6 +1012,15 @@ static void MakeSortedSaveGameList()
 		qsort(_fios_list + sort_start, s_amount, sizeof(FiosItem), compare_FiosItems);
 }
 
+static void GenerateFileName(void)
+{
+	const Player *p = DEREF_PLAYER(_local_player);
+	SET_DPARAM16(0, p->name_1);
+	SET_DPARAM32(1, p->name_2);
+	SET_DPARAM16(2, _date);
+	GetString(_edit_str_buf, STR_4004);
+}
+
 static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 {
 	const int list_start = 51;
@@ -1115,6 +1124,8 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			FiosDelete(WP(w,querystr_d).buf);
 			SetWindowDirty(w);
 			BuildFileList();
+			if (_saveload_mode == SLD_SAVE_GAME)
+				GenerateFileName(); /* Reset file name to current date */
 		} else if (HASBIT(w->click_state, 11)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).buf);
@@ -1188,11 +1199,7 @@ void ShowSaveLoadDialog(int mode)
 	WP(w,querystr_d).buf = _edit_str_buf;
 
 	if (mode == SLD_SAVE_GAME) {
-		Player *p = &_players[_local_player];
-		SET_DPARAM16(0, p->name_1);
-		SET_DPARAM32(1, p->name_2);
-		SET_DPARAM16(2, _date);
-		GetString(_edit_str_buf, STR_4004);
+		GenerateFileName();
 	} else if (mode == SLD_SAVE_SCENARIO) {
 		strcpy(_edit_str_buf, "UNNAMED");
 	}
