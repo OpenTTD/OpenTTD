@@ -1145,6 +1145,8 @@ static void GenerateFileName(void)
 	GetString(_edit_str_buf, STR_4004);
 }
 
+extern void StartupEngines(void);
+
 static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -1251,6 +1253,9 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		} else if (HASBIT(w->click_state, 11)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).buf);
+
+			/* In the editor set up the vehicle engines correctly (date might have changed) */
+			if (_game_mode == GM_EDITOR) StartupEngines();
 		}
 		break;
 	case WE_DESTROY:
