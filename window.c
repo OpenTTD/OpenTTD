@@ -968,6 +968,10 @@ stop_capt:;
 		return false;
 	} else {
 		// scroll the smallmap ?
+		int hx;
+		int hy;
+		int hvx;
+		int hvy;
 
 		_cursor.fix_at = true;
 
@@ -996,10 +1000,14 @@ stop_capt:;
 			}
 		}
 
-		if (x < 16) { x = 16; sub = 0; }
-		if (x > (TILES_X-2)*16) { x = (TILES_X-2)*16; sub = 0; }
-		if (y < -1120) { y = -1120; sub = 0; }
-		if (y > (TILE_X_MAX-40) * 16) { y = (TILE_X_MAX-40) * 16; sub = 0; }
+		hx = (w->widget[4].right  - w->widget[4].left) / 2;
+		hy = (w->widget[4].bottom - w->widget[4].top ) / 2;
+		hvx = hx * -4 + hy * 8;
+		hvy = hx *  4 + hy * 8;
+		if (x < -hvx) { x = -hvx; sub = 0; }
+		if (x > TILE_X_MAX * 16 - hvx)  { x = TILE_X_MAX * 16 - hvx; sub = 0; }
+		if (y < -hvy) { y = -hvy; sub = 0; }
+		if (y > TILE_Y_MAX * 16 - hvy)  { y = TILE_Y_MAX * 16 - hvy; sub = 0; }
 
 		WP(w,smallmap_d).scroll_x = x;
 		WP(w,smallmap_d).scroll_y = y;
