@@ -226,11 +226,6 @@ endif
 CC=gcc
 CXX=g++
 
-ifdef MORPHOS
-CC += -noixemul -pipe
-CXX += -noixemul -pipe
-endif
-
 # Executable file extension
 ifdef WIN32
 EXE=.exe
@@ -367,6 +362,10 @@ ifdef WITH_NETWORK
 		LDFLAGS += -lbind -lsocket
 	endif
 endif
+endif
+
+ifdef MORPHOS
+CFLAGS += -noixemul -pipe
 endif
 
 ifdef SUNOS
