@@ -54,17 +54,22 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 				return;
 			}
 
-			if (e.click.widget == 1) /* 'Title bar' */
-				StartWindowDrag(w);
+			if (e.click.widget == 1) { /* 'Title bar' */
+				StartWindowDrag(w); // if not return then w = StartWindowDrag(w); to get correct pointer
+				return;
+			}
 		}
 
-		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX)
-			w = StartWindowSizing(w);
+		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
+			StartWindowSizing(w); // if not return then w = StartWindowSizing(w); to get correct pointer
+			return;
+		}
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
 			TOGGLEBIT(w->click_state, e.click.widget);
 			w->flags4 ^= WF_STICKY;
 			InvalidateWidget(w, e.click.widget);
+			return;
 		}
 	}
 
