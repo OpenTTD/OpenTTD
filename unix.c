@@ -353,6 +353,13 @@ const DriverDesc _music_driver_descs[] = {
 	{     NULL,	NULL,										NULL,										0}
 };
 
+/* GetOSVersion returns the minimal required version of OS to be able to use that driver.
+	 Not needed for *nix. */
+byte GetOSVersion()
+{
+	return 1; // any arbitrary number bigger then 0
+}
+
 bool FileExists(const char *filename)
 {
 	return access(filename, 0) == 0;

@@ -275,6 +275,7 @@ void CheckSwitchToEuro();
 void LoadFromConfig();
 void SaveToConfig();
 int ttd_main(int argc, char* argv[]);
+byte GetOSVersion();
 
 void DeterminePaths();
 char * CDECL str_fmt(const char *str, ...);

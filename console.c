@@ -730,7 +730,7 @@ void IConsoleCmdHook(const byte * name, byte type, void * proc)
 
 bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type)
 {
-	bool (*proc)(_iconsole_cmd * hook_cmd);
+	bool (*proc)(_iconsole_cmd * hook_cmd) = NULL;
 	switch (type) {
 	case ICONSOLE_HOOK_AFTER_EXEC:
 		proc = hook_cmd->hook_after_exec;
@@ -741,11 +741,9 @@ bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type)
 	case ICONSOLE_HOOK_ACCESS:
 		proc = hook_cmd->hook_access;
 		break;
-	default:
-		proc = NULL;
-		break;
+	default: return true;
 	}
-	if (proc == NULL) return true;
+
 	return proc(hook_cmd);
 }
 

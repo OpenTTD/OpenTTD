@@ -64,8 +64,8 @@ static char * DMusicMidiStart(char **parm)
 {
 	if (InitDirectMusic() == true)
 		return(0);
-	else
-		return("Unable to initialize DirectMusic");
+
+  return("Unable to initialize DirectMusic");
 }
 
 static void DMusicMidiStop()
@@ -113,4 +113,4 @@ static void DMusicMidiSetVolume(byte vol)
 	SetVolume(vol);
 }
 
-#endif
+#endif /* WIN32_ENABLE_DIRECTMUSIC_SUPPORT */

@@ -52,6 +52,7 @@ extern void HalGameLoop();
 uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
 bool disable_computer;
+static byte _os_version = 0;
 
 void CDECL error(const char *s, ...) {
 	va_list va;
@@ -192,7 +193,7 @@ static const DriverDesc *ChooseDefaultDriver(const DriverDesc *dd)
 	const DriverDesc *best = NULL;
 	int best_pri = -1;
 	do {
-		if ((int)(dd->flags&DF_PRIORITY_MASK) > best_pri) {
+		if ((int)(dd->flags&DF_PRIORITY_MASK) > best_pri && _os_version >= (byte)dd->flags) {
 			best_pri = dd->flags&DF_PRIORITY_MASK;
 			best = dd;
 		}
@@ -571,6 +572,7 @@ int ttd_main(int argc, char* argv[])
 
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
+	_os_version = GetOSVersion();
 	MxInitialize(11025, "sample.cat");
 
 	// This must be done early, since functions use the InvalidateWindow* calls

@@ -1775,32 +1775,66 @@ void FiosDelete(const char *name)
 	DeleteFile(path);
 }
 
+#define Windows_2000		5
+#define Windows_NT3_51	4
+
+/* flags show the minimum required OS to use a given feature. Currently
+	 only dwMajorVersion is used
+														MajorVersion	MinorVersion
+		Windows Server 2003					5							 2
+		Windows XP									5							 1
+		Windows 2000								5							 0
+		Windows NT 4.0							4							 0
+		Windows Me									4							90
+		Windows 98									4							10
+		Windows 95									4							 0
+		Windows NT 3.51							3							51
+*/
+
 const DriverDesc _video_driver_descs[] = {
-	{"null", "Null Video Driver",				&_null_video_driver,	0},
+	{"null", "Null Video Driver",				&_null_video_driver,		0},
 #if defined(WITH_SDL)
-	{"sdl", "SDL Video Driver",					&_sdl_video_driver,	1},
+	{"sdl", "SDL Video Driver",					&_sdl_video_driver,			1},
 #endif
-	{"win32", "Win32 GDI Video Driver",	&_win32_video_driver,	2},
+	{"win32", "Win32 GDI Video Driver",	&_win32_video_driver,		Windows_NT3_51},
 	{NULL}
 };
 
 const DriverDesc _sound_driver_descs[] = {
 	{"null", "Null Sound Driver",			&_null_sound_driver,	0},
 #if defined(WITH_SDL)
-	{"sdl", "SDL Sound Driver",				&_sdl_sound_driver,	1},
+	{"sdl", "SDL Sound Driver",				&_sdl_sound_driver,		1},
 #endif
-	{"win32", "Win32 WaveOut Driver",	&_win32_sound_driver,	2},
+	{"win32", "Win32 WaveOut Driver",	&_win32_sound_driver,	Windows_NT3_51},
 	{NULL}
 };
 
 const DriverDesc _music_driver_descs[] = {
-	{"null", "Null Music Driver",		&_null_music_driver,	0},
+	{"null", "Null Music Driver",		&_null_music_driver,				0},
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
-	{"dmusic", "DirectMusic MIDI Driver",	&_dmusic_midi_driver,	1},
+	{"dmusic", "DirectMusic MIDI Driver",	&_dmusic_midi_driver,	Windows_2000},
 #endif
-	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,	2},
+	// Win32 MIDI driver has higher priority then DMusic, so this one is chosen
+	{"win32", "Win32 MIDI Driver",	&_win32_music_driver,				Windows_NT3_51},
 	{NULL}
 };
+
+byte GetOSVersion()
+{
+	OSVERSIONINFO osvi;
+
+	ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
+	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+
+	if (GetVersionEx(&osvi)) {
+		DEBUG(misc, 2) ("Windows Version is %d", osvi.dwMajorVersion);
+		return (byte)osvi.dwMajorVersion;
+	}
+
+	// GetVersionEx failed, but we can safely assume at least Win95/WinNT3.51 is used
+	DEBUG(misc, 0) ("Windows version retrieval failed, defaulting to level 4");
+	return Windows_NT3_51;
+}
 
 bool FileExists(const char *filename)
 {

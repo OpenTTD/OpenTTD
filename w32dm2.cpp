@@ -302,4 +302,4 @@ void SetVolume(long vol)
 }
 #endif
 
-#endif // WIN32_ENABLE_DIRECTMUSIC_SUPPORT
+#endif /* WIN32_ENABLE_DIRECTMUSIC_SUPPORT */
