@@ -123,7 +123,7 @@ _iconsole_cmd* IConsoleCmdGet(const char* name);
 
 void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type);
 void IConsoleVarMemRegister(const char* name, _iconsole_var_types type);
-void IConsoleVarInsert(_iconsole_var* var, const char* name);
+void IConsoleVarInsert(_iconsole_var* item_new, const char* name);
 _iconsole_var* IConsoleVarGet(const char* name);
 _iconsole_var* IConsoleVarAlloc(_iconsole_var_types type);
 void IConsoleVarFree(_iconsole_var* var);

@@ -52,6 +52,10 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
 {
+	if (!_network_available) {
+		IConsoleError("You can not use this command because there is no network available.");
+		return false;
+	}
 	if (!_network_server) {
 		IConsoleError("This variable only makes sense for a network server.");
 		return false;
@@ -61,7 +65,11 @@ DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
 
 DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetClient)
 {
-	if (!_networking || !_network_server) {
+	if (!_network_available) {
+		IConsoleError("You can not use this command because there is no network available.");
+		return false;
+	}
+	if (!_network_server) {
 		IConsoleError("This command is only available for a network server.");
 		return false;
 	}
@@ -70,8 +78,12 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetClient)
 
 DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetServer)
 {
-	if (!_networking || _network_server) {
-		IConsoleError("You can not use this command for you are a network-server.");
+	if (!_network_available) {
+		IConsoleError("You can not use this command because there is no network available.");
+		return false;
+	}
+	if (_network_server) {
+		IConsoleError("You can not use this command because you are a network-server.");
 		return false;
 	}
 	return true;
@@ -79,6 +91,10 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetServer)
 
 DEF_CONSOLE_CMD_HOOK(ConCmdHookNeedNetwork)
 {
+	if (!_network_available) {
+		IConsoleError("You can not use this command because there is no network available.");
+		return false;
+	}
 	if (!_networking) {
 		IConsoleError("Not connected. Multiplayer only command.");
 		return false;
@@ -618,10 +634,12 @@ DEF_CONSOLE_CMD(ConSetPassword) {
 
 void IConsoleDebugLibRegister()
 {
-	// stdlib
+	// debugging variables and functions
 	extern bool _stdlib_con_developer; /* XXX extern in .c */
 
 	IConsoleVarRegister("con_developer", &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN);
+	IConsoleVarMemRegister("temp_string", ICONSOLE_VAR_STRING);
+	IConsoleVarMemRegister("temp_string2", ICONSOLE_VAR_STRING);
 	IConsoleVarMemRegister("temp_bool", ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarMemRegister("temp_int16", ICONSOLE_VAR_INT16);
 	IConsoleVarMemRegister("temp_int32", ICONSOLE_VAR_INT32);
@@ -629,8 +647,6 @@ void IConsoleDebugLibRegister()
 	IConsoleVarMemRegister("temp_uint16", ICONSOLE_VAR_UINT16);
 	IConsoleVarMemRegister("temp_uint16_2", ICONSOLE_VAR_UINT16);
 	IConsoleVarMemRegister("temp_uint32", ICONSOLE_VAR_UINT32);
-	IConsoleVarMemRegister("temp_string", ICONSOLE_VAR_STRING);
-	IConsoleVarMemRegister("temp_string2", ICONSOLE_VAR_STRING);
 	IConsoleCmdRegister("resettile", ConResetTile);
 }
 #endif
@@ -644,16 +660,7 @@ void IConsoleStdLibRegister(void)
 	// stdlib
 	extern byte _stdlib_developer; /* XXX extern in .c */
 
-#ifdef _DEBUG
-	IConsoleDebugLibRegister();
-#endif
-
-	// functions [please add them alphabetically]
-#ifdef ENABLE_NETWORK
-	IConsoleCmdRegister("connect", ConNetworkConnect);
-	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
-	IConsoleCmdRegister("clients", ConNetworkClients);
-#endif /* ENABLE_NETWORK */
+	// default variables and functions
 	IConsoleCmdRegister("debug_level",  ConDebugLevel);
 	IConsoleCmdRegister("dump_vars",    ConListDumpVariables);
 	IConsoleCmdRegister("echo",         ConEcho);
@@ -665,22 +672,20 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("info_var",     ConInfoVar);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
-#ifdef ENABLE_NETWORK
-	IConsoleCmdRegister("kick",         ConKick);
-	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("protect", ConProtect);
-	IConsoleCmdRegister("name",         ConClientName);
-#endif
 	IConsoleCmdRegister("newgame",         ConNewGame);
 	IConsoleCmdRegister("printf",       ConPrintF);
 	IConsoleCmdRegister("printfc",      ConPrintFC);
 	IConsoleCmdRegister("quit",         ConExit);
 	IConsoleCmdRegister("random",       ConRandom);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
-#ifdef ENABLE_NETWORK
-	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
-#endif /* ENABLE_NETWORK */
 	IConsoleCmdRegister("return",     ConReturn);
+	IConsoleCmdRegister("screenshot", ConScreenShot);
+	IConsoleCmdRegister("script",     ConScript);
+	IConsoleCmdRegister("scrollto",   ConScrollToTile);
+
+	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
+
+	// networking variables and functions
 #ifdef ENABLE_NETWORK
 	IConsoleCmdRegister("say",        ConSay);
 	IConsoleCmdHook("say", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
@@ -688,28 +693,31 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHook("say_player", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
 	IConsoleCmdRegister("say_client", ConSayClient);
 	IConsoleCmdHook("say_client", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
-#endif /* ENABLE_NETWORK */
-	IConsoleCmdRegister("screenshot", ConScreenShot);
-	IConsoleCmdRegister("script",     ConScript);
-	IConsoleCmdRegister("scrollto",   ConScrollToTile);
-#ifdef ENABLE_NETWORK
+	IConsoleCmdRegister("kick",         ConKick);
+	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("protect", ConProtect);
+	IConsoleCmdRegister("name",         ConClientName);
+	IConsoleCmdRegister("connect", ConNetworkConnect);
+	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
+	IConsoleCmdRegister("clients", ConNetworkClients);
 	IConsoleCmdRegister("setservername", ConSetServerName);
 	IConsoleCmdHook("setservername", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdRegister("setpassword", ConSetPassword);
 	IConsoleCmdHook("setpassword", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdRegister("status",   ConStatus);
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-#endif /* ENABLE_NETWORK */
+	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
 
-	// variables [please add them alphabeticaly]
-	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
-#ifdef ENABLE_NETWORK
 	IConsoleVarRegister("net_frame_freq", &_network_frame_freq, ICONSOLE_VAR_UINT8);
-	IConsoleVarHook("*net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
+	IConsoleVarHook("net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
 	IConsoleVarRegister("net_sync_freq", &_network_sync_freq, ICONSOLE_VAR_UINT16);
-	IConsoleVarHook("*net_sync_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
+	IConsoleVarHook("net_sync_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
 #endif /* ENABLE_NETWORK */
 
+	// debugging stuff
+#ifdef _DEBUG
+	IConsoleDebugLibRegister();
+#endif
 
 }
 /* -------------------- don't cross this line --------------------- */

@@ -439,6 +439,7 @@ void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr)
 	char* _new;
 	_iconsole_cmd* item;
 	_iconsole_cmd* item_new;
+	_iconsole_cmd* item_before;
 
 	_new = strdup(name);
 
@@ -452,13 +453,39 @@ void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr)
 	item_new->hook_after_exec = NULL;
 	item_new->hook_before_exec = NULL;
 
+	item_before = NULL;
 	item = _iconsole_cmds;
+
 	if (item == NULL) {
 		_iconsole_cmds = item_new;
 	} else {
-		while (item->_next != NULL) item = item->_next;
-		item->_next = item_new;
+		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
+			item_before = item;
+			item = item->_next;
+			}
+// insertion sort
+		if (item_before==NULL) {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting as startitem
+				_iconsole_cmds = item_new;
+				item_new ->_next = item;
+			}
+		} else {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting
+				item_new ->_next = item_before->_next;
+				item_before ->_next = item_new;
+			}
+		}
+// insertion sort end
 	}
+
 }
 
 _iconsole_cmd* IConsoleCmdGet(const char* name)
@@ -473,17 +500,58 @@ _iconsole_cmd* IConsoleCmdGet(const char* name)
 	return NULL;
 }
 
-void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
+void IConsoleVarInsert(_iconsole_var* item_new, const char* name)
 {
 	_iconsole_var* item;
-	_iconsole_var* item_new;
+	_iconsole_var* item_before;
 
-	item_new = malloc(sizeof(_iconsole_var)); /* XXX unchecked malloc */
+	item_new->_next = NULL;
 
 	item_new->name = malloc(strlen(name) + 2); /* XXX unchecked malloc */
 	sprintf(item_new->name, "%s", name);
 
+	item_before = NULL;
+	item = _iconsole_vars;
+
+	if (item == NULL) {
+		_iconsole_vars = item_new;
+	} else {
+		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
+			item_before = item;
+			item = item->_next;
+			}
+// insertion sort
+		if (item_before==NULL) {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting as startitem
+				_iconsole_vars = item_new;
+				item_new ->_next = item;
+			}
+		} else {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting
+				item_new ->_next = item_before->_next;
+				item_before ->_next = item_new;
+			}
+		}
+// insertion sort end
+	}
+}
+
+void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
+{
+	_iconsole_var* item_new;
+
+	item_new = malloc(sizeof(_iconsole_var)); /* XXX unchecked malloc */
+
 	item_new->_next = NULL;
+
 	switch (type) {
 		case ICONSOLE_VAR_BOOLEAN:
 			item_new->data.bool_ = addr;
@@ -511,20 +579,16 @@ void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
 			error("unknown console variable type");
 			break;
 	}
+
+	IConsoleVarInsert(item_new, name);
+
 	item_new->type = type;
 	item_new->_malloc = false;
 
 	item_new->hook_access = NULL;
 	item_new->hook_after_change = NULL;
 	item_new->hook_before_change = NULL;
-
-	item = _iconsole_vars;
-	if (item == NULL) {
-		_iconsole_vars = item_new;
-	} else {
-		while (item->_next != NULL) item = item->_next;
-		item->_next = item_new;
-	}
+	
 }
 
 void IConsoleVarMemRegister(const char* name, _iconsole_var_types type)
@@ -533,27 +597,6 @@ void IConsoleVarMemRegister(const char* name, _iconsole_var_types type)
 	item = IConsoleVarAlloc(type);
 	IConsoleVarInsert(item, name);
 }
-
-
-void IConsoleVarInsert(_iconsole_var* var, const char* name)
-{
-	_iconsole_var* item;
-
-	// disallow building variable rings
-	if (var->_next != NULL) return;
-
-	var->name = malloc(strlen(name) + 2); /* XXX unchecked malloc */
-	sprintf(var->name, "%s", name);
-
-	item = _iconsole_vars;
-	if (item == NULL) {
-		_iconsole_vars = var;
-	} else {
-		while (item->_next != NULL) item = item->_next;
-		item->_next = var;
-	}
-}
-
 
 _iconsole_var* IConsoleVarGet(const char* name)
 {
