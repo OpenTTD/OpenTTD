@@ -1,0 +1,24 @@
+#!/bin/sh -
+
+SDLCONFIG=`which sdl-config || which sdl11-config || which sdl12-config || echo `
+if [ -n "$SDLCONFIG" ] ; then
+	echo "SDL config is located at: $SDLCONFIG"
+	sed -e"s@XX_SDL_CONFIG_PLACEHOLDER_XX@$SDLCONFIG@g" < Jamfile.next > tmp && mv tmp Jamfile
+else
+	echo "********************************"
+	echo "ERROR! SDL CONFIG WAS NOT FOUND!"
+	echo "********************************"
+	exit 1
+fi
+
+echo "Configure complete. Now use 'jam' to build"
+echo "Add -sWITH_PNG=<dir to png.h> to build with PNG support"
+echo "Add -sWITH_ZLIB=1 to enable zlib savegame support"
+echo "Add -sRELEASE=1 to build an optimized executable"
+echo "Add -sWITH_BONE_NETWORKING=1 to build with BeOS BONE networking support"
+echo "Add -sBEOS_MIDI=1 to enable BeOS native MIDI (libmidi.so) music output"
+echo ""
+echo "For people using make:"
+echo "write make (or gmake)"
+echo "configure have nothing to do with the makefile"
+
