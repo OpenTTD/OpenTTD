@@ -7,7 +7,7 @@
 #include "gfx.h"
 #include "town.h"
 
-#define VIEWPORT_DRAW_MEM (65536)
+#define VIEWPORT_DRAW_MEM (65536 * 2)
 
 static bool _added_tile_sprite;
 static bool _offset_ground_sprites;
@@ -57,6 +57,7 @@ typedef struct ViewportDrawer {
 	ChildScreenSpriteToDraw **last_child;
 
 	ParentSpriteToDraw **parent_list;
+	ParentSpriteToDraw **eof_parent_list;
 
 	byte combine_sprites;
 
@@ -326,7 +327,7 @@ Point GetTileZoomCenter(bool in)
 	return GetTileFromScreenXY(x, y);
 }
 
-void DrawGroundSpriteAt(uint32 image, int x, int y, byte z)
+void DrawGroundSpriteAt(uint32 image, int16 x, int16 y, byte z)
 {
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;
@@ -340,7 +341,7 @@ void DrawGroundSpriteAt(uint32 image, int x, int y, byte z)
 	}
 
 	vd->spritelist_mem += sizeof(TileSpriteToDraw);
-
+	
 	ts->image = image;
 	ts->next = NULL;
 	ts->x = x;
@@ -410,6 +411,18 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 		DEBUG(misc, 0) ("Out of sprite mem\n");
 		return;
 	}
+	if (vd->parent_list >= vd->eof_parent_list) {
+		// This can happen rarely, mostly when you zoom out completely
+		//  and have a lot of stuff that moves (and is added to the 
+		//  sort-list, this function). To solve it, increase
+		//  parent_list somewhere below to a higher number.
+		// This can not really hurt you, it just gives some black
+		//  spots on the screen ;)
+		DEBUG(misc, 0) ("Out of sprite mem (parent_list)\n");
+		return;
+	}	
+	
+	vd->spritelist_mem += sizeof(ParentSpriteToDraw);	
 
 	ps->image = image;
 	ps->tile_x = x;
@@ -435,7 +448,6 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	ps->child = NULL;
 	vd->last_child = &ps->child;
 
-	vd->spritelist_mem += sizeof(ParentSpriteToDraw);
 	*vd->parent_list++ = ps;
 
 	if (vd->combine_sprites == 1) {
@@ -457,6 +469,8 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
+	
+	assert( (image & 0x3fff) < NUM_SPRITES);
 
 	cs = (ChildScreenSpriteToDraw*) vd->spritelist_mem;
 	if ((byte*)cs >= vd->eof_spritelist_mem) {
@@ -466,11 +480,11 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 
 	if (vd->last_child == NULL)
 		return;
+	
+	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);	
 
 	*vd->last_child = cs;
 	vd->last_child = &cs->next;
-
-	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);
 
 	cs->image = image;
 	cs->x = x;
@@ -1122,7 +1136,7 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	DrawPixelInfo *old_dpi;
 
 	byte mem[VIEWPORT_DRAW_MEM];
-	ParentSpriteToDraw *parent_list[750];
+	ParentSpriteToDraw *parent_list[1000];
 
 	_cur_vd = &vd;
 
@@ -1147,6 +1161,7 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	vd.dpi.dst_ptr = old_dpi->dst_ptr + x - old_dpi->left + (y - old_dpi->top) * old_dpi->pitch;
 
 	vd.parent_list = parent_list;
+	vd.eof_parent_list = &parent_list[lengthof(parent_list)];
 	vd.spritelist_mem = mem;
 	vd.eof_spritelist_mem = &mem[sizeof(mem) - 0x40];
 	vd.last_string = &vd.first_string;
@@ -1165,10 +1180,12 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	ViewportAddCheckpoints(&vd.dpi);
 #endif
 
+	// This assert should never happen (because the length of the parent_list
+	//  is checked)
+	assert(vd.parent_list - parent_list <= lengthof(parent_list));
+
 	if (vd.first_tile != NULL)
 		ViewportDrawTileSprites(vd.first_tile);
-
-	assert(vd.parent_list - parent_list <= lengthof(parent_list));
 
 	/* null terminate parent sprite list */
 	*vd.parent_list = NULL;
@@ -1178,7 +1195,7 @@ void ViewportDoDraw(ViewPort *vp, int left, int top, int right, int bottom)
 	
 	if (vd.first_string != NULL)
 		ViewportDrawStrings(&vd.dpi, vd.first_string);
-
+		
 	_cur_dpi = old_dpi;
 }
 
