@@ -1120,7 +1120,7 @@ static const WindowDesc _build_waypoint_desc = {
 static void ShowBuildWaypointPicker()
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
-	w->hscroll.cap = 1;
+	w->hscroll.cap = 4;
 	w->hscroll.count = (uint) (_waypoint_count+3) / 4;
 }
 
