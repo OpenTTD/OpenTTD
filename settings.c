@@ -493,7 +493,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 		if (*end != 0) ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
 	case SDT_ONEOFMANY: {
-		int r = lookup_oneofmany((char*)desc->b, str, -1);
+		int r = lookup_oneofmany((const char*)desc->b, str, -1);
 		if (r != -1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
@@ -516,7 +516,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 	case SDT_STRINGBUF:
 	case SDT_STRINGQUOT:
 	case SDT_INTLIST:
-		return (void*)str;
+		return str;
 	}
 
 	return NULL;
@@ -575,7 +575,7 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			break;
 		case SDT_STRING:
 			if (*(char**)ptr) free(*(char**)ptr);
-			*(char**)ptr = strdup((char*)p);
+			*(char**)ptr = strdup((const char*)p);
 			break;
 		case SDT_STRINGBUF:
 		case SDT_STRINGQUOT:
@@ -681,10 +681,10 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 				sprintf(buf, "%d", i);
 				break;
 			case SDT_ONEOFMANY:
-				make_oneofmany(buf, (char*)desc->b, i);
+				make_oneofmany(buf, (const char*)desc->b, i);
 				break;
 			case SDT_MANYOFMANY:
-				make_manyofmany(buf, (char*)desc->b, i);
+				make_manyofmany(buf, (const char*)desc->b, i);
 				break;
 			case SDT_BOOLX:
 				strcpy(buf, i ? "true" : "false");

@@ -263,7 +263,7 @@ char *FiosBrowseTo(const FiosItem *item)
 		break;
 
 	case FIOS_TYPE_DIR:
-		s = strchr((char*)item->name, '/');
+		s = strchr(item->name, '/');
 		if (s) *s = 0;
 		while (*path) path++;
 		*path++ = '/';

@@ -188,12 +188,14 @@ void NetworkError(StringID error_string)
 	_switch_mode_errorstr = error_string;
 }
 
-void ClientStartError(char *error) {
+static void ClientStartError(const char *error)
+{
 	DEBUG(net, 0)("[NET] Client could not start network: %s",error);
 	NetworkError(STR_NETWORK_ERR_CLIENT_START);
 }
 
-void ServerStartError(char *error) {
+static void ServerStartError(const char *error)
+{
 	DEBUG(net, 0)("[NET] Server could not start network: %s",error);
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }

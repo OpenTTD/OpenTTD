@@ -554,7 +554,7 @@ int ttd_main(int argc, char* argv[])
 	bool network = false;
 	char *network_conn = NULL;
 	char *language = NULL;
-	char *optformat;
+	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
