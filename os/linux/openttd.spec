@@ -1,59 +1,76 @@
-%define name openttd 
-%define version 0.3.5
+#------------------------------------------------------------------------------
+#   openttd.spec
+#       This SPEC file controls the building of custom OpenTTD RPM
+#       packages.
+#------------------------------------------------------------------------------
+
+%define name openttd
+%define version 0.3.6
 %define release 1mdk
 
-Name: %{name} 
+#------------------------------------------------------------------------------
+#   Prologue information
+#------------------------------------------------------------------------------
+Name: %{name}
+Version: %{version}
+Release: %{release}
 Summary: An open source clone of the Microprose game "Transport Tycoon Deluxe"
-Version: %{version} 
-Release: %{release} 
-Source0: %{name}-%{version}.tar.bz2
-URL: http://www.openttd.org
 Group: Games/Strategy
-Packager: Dominik Scherer <dominik@openttd.com>
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 License: GPL
+
+URL: http://www.openttd.org
+
+Source: %{name}-%{version}.tar.gz
+Packager: Dominik Scherer <dominik@openttd.com>
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: libSDL1.2-devel >= 1.2.7
-BuildRequires: libpng3-devel >= 1.2.5 
+BuildRequires: libpng3-devel >= 1.2.5
 BuildRequires: zlib1-devel >= 1.2.1
 
+#------------------------------------------------------------------------------
+#   Description
+#------------------------------------------------------------------------------
 %description
 An enhanced open source clone of the Microprose game "Transport Tycoon Deluxe".
 You require the data files of the original Transport Tycoon Deluxe
 for Windows to play the game. You have to MANUALLY copy them to the
 game data directory!
 
-%prep 
-rm -rf $RPM_BUILD_ROOT 
+#------------------------------------------------------------------------------
+#   install scripts
+#------------------------------------------------------------------------------
+%prep
+rm -rf $RPM_BUILD_ROOT
 %setup
 
 %build
-make BINARY_DIR=%{_gamesbindir}/openttd/ INSTALL_DIR=%{_gamesdatadir}/openttd/ GAME_DATA_DIR=%{_gamesdatadir}/openttd/ USE_HOMEDIR=1 PERSONAL_DIR=.openttd
+make BINARY_DIR=%{_gamesbindir} PREFIX=%{_gamesdatadir} DATA_DIR=openttd INSTALL_DIR=%{_gamesdatadir}/openttd/ USE_HOMEDIR=1 PERSONAL_DIR=.openttd INSTALL=1 RELEASE=%{version}
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{_gamesbindir}/openttd
+mkdir -p $RPM_BUILD_ROOT%{_gamesbindir}
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data
 
-cp ./openttd $RPM_BUILD_ROOT%{_gamesbindir}/openttd/openttd
+cp ./openttd $RPM_BUILD_ROOT%{_gamesbindir}/
 cp -r ./lang/*.lng $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/lang/
 cp -r ./data/*.grf $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data/
 cp -r ./data/opntitle.dat $RPM_BUILD_ROOT%{_gamesdatadir}/openttd/data/
 
 # icon
-install -m644 media/openttd.64.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
+install -m644 media/openttd.32.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -m644 media/openttd.64.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-install -m644 media/openttd.64.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
+install -m644 media/openttd.128.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
 # menu entry
 mkdir -p $RPM_BUILD_ROOT/%{_menudir}
 cat << EOF > $RPM_BUILD_ROOT/%{_menudir}/%{name}
-?package(%{name}):command="%{_gamesbindir}/openttd/openttd" icon="%{name}.png" \
+?package(%{name}):command="%{_gamesbindir}/openttd" icon="%{name}.png" \
   needs="X11" section="Amusement/Strategy" title="OpenTTD" \
   longtitle="%{Summary}"
 EOF
 
-%clean 
-rm -rf $RPM_BUILD_ROOT 
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 %{update_menus}
@@ -61,9 +78,12 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %{clean_menus}
 
-%files 
-%defattr(-,root,root,0755) 
-%{_gamesbindir}/openttd/openttd
+#------------------------------------------------------------------------------
+#   Files listing.
+#------------------------------------------------------------------------------
+%files
+%defattr(-,root,root,0755)
+%{_gamesbindir}/openttd
 
 %{_gamesdatadir}/openttd/lang/american.lng
 %{_gamesdatadir}/openttd/lang/catalan.lng
@@ -78,18 +98,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_gamesdatadir}/openttd/lang/hungarian.lng
 %{_gamesdatadir}/openttd/lang/icelandic.lng
 %{_gamesdatadir}/openttd/lang/italian.lng
-%{_gamesdatadir}/openttd/lang/latvian.lng
 %{_gamesdatadir}/openttd/lang/norwegian.lng
 %{_gamesdatadir}/openttd/lang/origveh.lng
 %{_gamesdatadir}/openttd/lang/polish.lng
 %{_gamesdatadir}/openttd/lang/portuguese.lng
 %{_gamesdatadir}/openttd/lang/romanian.lng
-%{_gamesdatadir}/openttd/lang/russian.lng
 %{_gamesdatadir}/openttd/lang/slovak.lng
 %{_gamesdatadir}/openttd/lang/spanish.lng
 %{_gamesdatadir}/openttd/lang/swedish.lng
-%{_gamesdatadir}/openttd/lang/turkish.lng
 
+%{_gamesdatadir}/openttd/data/autorail.grf
 %{_gamesdatadir}/openttd/data/canalsw.grf
 %{_gamesdatadir}/openttd/data/openttd.grf
 %{_gamesdatadir}/openttd/data/opntitle.dat
@@ -103,8 +121,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %doc changelog.txt readme.txt COPYING os/linux/README.urpmi
 
-%changelog 
-* Wed Dec ?? 2004 Dominik Scherer <dominik@openttd.com> 0.3.5-1mdk
+#------------------------------------------------------------------------------
+#   Change Log
+#------------------------------------------------------------------------------
+%changelog
+* Sun Jan 23 2005 Dominik Scherer <dominik@openttd.com> 0.3.6-1mdk
+- Upgraded to 0.3.6
+- Structured and commented the spec file a bit (inspired by ScummVM)
+
+* Fri Dec 24 2004 Dominik Scherer <dominik@openttd.com> 0.3.5-1mdk
 - Upgraded to 0.3.5
 - Added a warning message about the additional required files (only displayed when installing via urpmi)
 
