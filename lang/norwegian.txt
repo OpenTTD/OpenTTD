@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Flerspiller
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Spiller navn:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Dette er navnet andre spillere vil identifisere deg etter
+STR_NETWORK_CONNECTION						:{BLACK}Forbindelse:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Velg mellom å spille på internett eller i lokalt nettverk (LAN)
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internett
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klikk på et spill på listen for å ve
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Finn server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Søk nettverk etter en server
+STR_NETWORK_ADD_SERVER						:{BLACK}Legg til tjener
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Legger til en tjener i listen over tjenere som alltid vil bli skjekket for aktive spill.
 STR_NETWORK_ENTER_IP						:{BLACK}Skriv inn IP adressen til serveren
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Størrelse
-STR_NETWORK_PASSWORD						:{BLACK}Passord:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Klienter
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Klienter på nett / Maks. antall klienter
+STR_NETWORK_GAME_INFO						:{SILVER}SPILLOVERSIKT
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klienter:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Språk:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Brikkesett:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Kartstørrelse:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Tjenerversjon:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Tjeneradresse:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Startet:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Nettverksdato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Passordbeskyttet!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}TJENEREN ER KOBLET AV
+STR_NETWORK_SERVER_FULL						:{SILVER}TJENEREN ER FULL
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Bli med på spill
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start et nytt flerspiller spill
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Spill navn:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Spill navnet vil bli vist til andre spillere i flerspill spillvalg menyen
+STR_NETWORK_SET_PASSWORD					:{BLACK}Sett passord
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Beskytt ditt spill med ett passord viss du ikke vil at andre personer skal bli med på det
 STR_NETWORK_SELECT_MAP						:{BLACK}Velg en bane:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Hvilken bane vil du spille?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimalt tillatte klienter
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Velg maksimalt antall klienter. Alle plassene trenger ikke bli tatt.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klienter
+STR_NETWORK_3_CLIENTS						:3 klienter
+STR_NETWORK_4_CLIENTS						:4 klienter
+STR_NETWORK_5_CLIENTS						:5 klienter
+STR_NETWORK_6_CLIENTS						:6 klienter
+STR_NETWORK_7_CLIENTS						:7 klienter
+STR_NETWORK_8_CLIENTS						:8 klienter
+STR_NETWORK_9_CLIENTS						:9 klienter
+STR_NETWORK_10_CLIENTS						:10 klienter
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Språk snakket på tjeneren:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Andre spiller skal kunne vite hvilket språk man snakker på denne tjeneren.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start Spill
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start et nytt nettverksspill fra en tilfeldig bane, eller scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Last Spill
@@ -1226,26 +1259,59 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Last Scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start et nytt nettverksspill fra en scenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Hva som helst
+STR_NETWORK_LANG_ENGLISH					:Engelsk
+STR_NETWORK_LANG_GERMAN						:Tysk
+STR_NETWORK_LANG_FRENCH						:Fransk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Flerspillere spill lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Prøver å koble til:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}En liste over firma i spillet. Du kan enten bli med i ett eller starte et nytt.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nytt selskap
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Opne et nytt selskap
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Se på spill
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Se på spillet som tilskuer
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Bli med i firmaet
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Hjelp å styre dette firmaet
+STR_NETWORK_REFRESH						:{BLACK}Oppdater tjener
+STR_NETWORK_REFRESH_TIP						:{BLACK}Oppdater tjenerinfo
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}FIRMAOVERSIKT
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Selskap navn:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Firmaname:  {WHITE}{STRING}
+STR_NETWORK_VALUE						:{SILVER}Firmaverdi:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balanse nå:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Inntekt i fjor:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Nettverksytelse:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Kjøretøy:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stasjoner:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Spillere:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Kobler på...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Kobler på..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoriserer..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Venter..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Laster ned kart..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Behandler data..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Henter spilloversikt..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Henter firmaoversikt..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klient(er) foran oss
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} KB lastet ned så langt
 
+STR_NETWORK_DISCONNECT						:{BLACK}Koble fra
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Skriv inn teksten du vil sende
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Skriv inn hvor mange penger du vil gi
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Tjeneren er beskyttet. Skriv inn passord
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Firmaet er beskyttet. Skriv inn passord
+STR_NETWORK_CLIENT_LIST						:{WHITE}Liste over klienter
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Ingen nettverks innretning funnet eller kompilert uten ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Kunne ikke finne noen nettverksspill
@@ -1253,10 +1319,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Serveren svarte ikke på forespørselen
 STR_NETWORK_ERR_DESYNC						:{WHITE} Nettverksspill synkroniseringen feilet.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Nettverksspill tilkobling mistet
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Kunne ikke laste server-lagret spill
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Klarte ikke å starte tjeneren.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Klarte ikke å opprette forbindelse.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tilkobling #{NUMU16} timet ut.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Det skjedde en protokoll-feil, så forbindelsen er brutt
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Klientversjonen er ikke den samme som tjenerversjonen.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Feil passord.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Tjeneren er full
+STR_NETWORK_ERR_KICKED						:{WHITE} Du ble sparket ut av tjeneren
 
+STR_NETWORK_ERR_LEFT						:har forlatt spillet
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:generell feil
+STR_NETWORK_ERR_CLIENT_DESYNC					:synkroniseringsfeil
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:klarte ikke åpne kartet
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:forbindelsen ble brutt
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokollfeil
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:ikke autorisert
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:mottok merkelig pakke
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:feil versjon
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:navnet er brukt av noen andre
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:feil passord til spillet
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:feil spiller-id i DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:sparket ut av tjeneren
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:har blitt med i spillet
+STR_NETWORK_GIVE_MONEY						:gav deg penger ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Tjeneren avsluttet spillet
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Tjeneren starter på nytt...{}Vennligst vent
 
 ############ end network gui strings
 

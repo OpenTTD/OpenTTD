@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Acesta este numele prin care te vor identifica ceilalti
+STR_NETWORK_CONNECTION						:{BLACK}Conexiune:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Alege intre un joc pe internet si unul pe LAN
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Click pe un joc din listã pentru a-l
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Cautã server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cautã un server în retea
+STR_NETWORK_ADD_SERVER						:{BLACK}Adauga un server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Adauga un server pe lista care va fi verificata pentru jocuri active
 STR_NETWORK_ENTER_IP						:{BLACK}Introdu IP-ul serverului
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Mãrime
-STR_NETWORK_PASSWORD						:{BLACK}Parola:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clienti
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clienti online / Nr. max. clienti
+STR_NETWORK_GAME_INFO						:{SILVER}INFO JOC
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clienti:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Limba:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Marimea hartii:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versiune server:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa server:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Data curenta:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Protejat cu parola!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER PLIN
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Intrã în joc
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Începe un joc nou
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nume joc:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Numele jocului va fi afisat celorlalti în meniul de selectare al jocurilor multiplayer
+STR_NETWORK_SET_PASSWORD					:{BLACK}Pune parola
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protejeazã-ti jocul cu o parolã dacã nu vrei sã intre jucãtori neautorizati
 STR_NETWORK_SELECT_MAP						:{BLACK}Alege o hartã:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ce hartã doresti sa joci?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Numar maxim de clienti
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Alege un numar maxim de clienti. Nu trebuie ocupate toate locurile.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clienti
+STR_NETWORK_3_CLIENTS						:3 clienti
+STR_NETWORK_4_CLIENTS						:4 clienti
+STR_NETWORK_5_CLIENTS						:5 clienti
+STR_NETWORK_6_CLIENTS						:6 clienti
+STR_NETWORK_7_CLIENTS						:7 clienti
+STR_NETWORK_8_CLIENTS						:8 clienti
+STR_NETWORK_9_CLIENTS						:9 clienti
+STR_NETWORK_10_CLIENTS						:10 clienti
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Limba vorbita:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP					:{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME						:{BLACK}Incarca joc
@@ -1226,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Incarca scenariu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Incepe un joc nou intr-un scenariu
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Oricare
+STR_NETWORK_LANG_ENGLISH					:Engleza
+STR_NETWORK_LANG_GERMAN						:Germana
+STR_NETWORK_LANG_FRENCH						:Franceza
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chatul jocului multiplayer
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}In pregatire pentru joc:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Lista companiilor din jocul curent. Poti colabora cu o companie sau sa infiintezi una
 STR_NETWORK_NEW_COMPANY						:{BLACK}Companie nouã
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Fondeazã o nouã companie
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Modul spectator
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Vizioneazã un joc din pozitia unui spectator
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Alatura-te companiei
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Ajuta la conducerea acestei companii
+STR_NETWORK_REFRESH						:{BLACK}Actualizeaza serverul
+STR_NETWORK_REFRESH_TIP						:{BLACK}Actualizeaza informatiile despre server
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO COMPANIE
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Numele companiei:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Numele companiei:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inaugurarea:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valoarea companiei:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balanta curenta:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Performanta:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Vehicule:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Statii:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Jucatori:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Conectare...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Conectare..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Authorizare..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Asteptati..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descarcare harta..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Prelucrare date..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Preluare info joc..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Preluare info companie..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} client(i) inaintea noastra
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes descarcati pana acum
 
+STR_NETWORK_DISCONNECT						:{BLACK}Deconectare
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Introdu textul de trimis
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Introdu suma de bani pe care vrei sa o cedezi
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Server protejat. Introdu parola
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Companie protejata. Introdu parola
+STR_NETWORK_CLIENT_LIST						:{WHITE}Lista de clienti
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE}Nu a fost detectatã o placã de retea valabilã
 STR_NETWORK_ERR_NOSERVER					:{WHITE}Nu a fost gãsit nici un joc în retea
@@ -1253,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE}Serverul nu a rãspuns cererii
 STR_NETWORK_ERR_DESYNC						:{WHITE} Sincronizarea jocului in retea a esuat.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Conexiunea jocului in reatea a fost intrerupta.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nu am reusit sa incarc jocul-server salvat.
+STR_NETWORK_ERR_SERVER_START					:{WHITE}Nu pot porni serverul.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE}Nu pot efectua conectarea.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Conexiunea #{NUMU16} a expirat.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE}Eroare de protocol. Conexiunea a fost inchisa.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE}Versiunea acestui client este diferita de cea a serverului.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE}Parola gresita.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE}Serverul este plin
+STR_NETWORK_ERR_KICKED						:{WHITE}Ai fost dat afara de pe server
 
+STR_NETWORK_ERR_LEFT						:a parasit jocul
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:eroare generala
+STR_NETWORK_ERR_CLIENT_DESYNC					:eroare de desincronizare
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:nu pot incarca harta
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:conexiune pierduta
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:eroare de protocol
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:neautorizat
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:primit pachet ciudat
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:versiune incorecta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nume folosit deja
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:parola gresita
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:player-id in DoCommand gresit
+STR_NETWORK_ERR_CLIENT_KICKED					:dat afara de pe server
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:a intrat in joc
+STR_NETWORK_GIVE_MONEY						:ti-a dat o suma de bani ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE}Serverul a inchis conexiunea
+STR_NETWORK_SERVER_REBOOT					:{WHITE}Serverul este repornit...{}Va rugam asteptati...
 
 ############ end network gui strings
 

@@ -364,8 +364,8 @@ STR_SORT_BY_DROPDOWN_NAME					:jména
 STR_SORT_BY_DATE						:{BLACK}Podle data
 STR_SORT_BY_UNSORTED						:(neradit)
 STR_SORT_BY_NUMBER						:cisla
-STR_SORT_BY_PROFIT_LAST_YEAR					:hrubého zisku letos
-STR_SORT_BY_PROFIT_THIS_YEAR					:hrubého zisku vloni
+STR_SORT_BY_PROFIT_LAST_YEAR					:hrubého zisku vloni
+STR_SORT_BY_PROFIT_THIS_YEAR					:hrubého zisku letos
 STR_SORT_BY_AGE							:stari
 STR_SORT_BY_RELIABILITY						:spolehlivosti
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:celkové kapacity podle druhu nákladu
@@ -1205,14 +1205,23 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Hru vyberes kliknutim do seznamu
 STR_NETWORK_FIND_SERVER						:{BLACK}Najít server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Hledat server v síti
 STR_NETWORK_ADD_SERVER						:{BLACK}Pridat server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Prida server do seznamu, ve kterém se budou hledat bezici hry.
 STR_NETWORK_ENTER_IP						:{BLACK}Vloz IP adresu serveru
 
 STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Hracu
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Hracu online / maximalne
 STR_NETWORK_GAME_INFO						:{SILVER}INFO O HRE
 STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klientu:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE						:{SILVER}Jazyk:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Prostredi:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Velikost mapy:  {WHITE}{COMMA16}x{COMMA16}
-STR_NETWORK_PASSWORD						:{BLACK}Heslo:
+STR_NETWORK_SERVER_VERSION					:{SILVER}Verze hry na serveru:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa serveru:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Pocatecni datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Momentální datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Chraneno heslem!
 STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL						:{SILVER}SERVER JE PLNÝ
 
@@ -1227,7 +1236,18 @@ STR_NETWORK_SET_PASSWORD					:{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Svoji hru si muzes ochranit heslem, kdyz nechces, aby se ti do ni hlasili jini lide
 STR_NETWORK_SELECT_MAP						:{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Ve které mape si chces zahrát?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximální pocet hracu:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Zvol maximální pocet hracu. Muze se jich pripojit i mene.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 hraci
+STR_NETWORK_3_CLIENTS						:3 hraci
+STR_NETWORK_4_CLIENTS						:4 hraci
+STR_NETWORK_5_CLIENTS						:5 hracu
+STR_NETWORK_6_CLIENTS						:6 hracu
+STR_NETWORK_7_CLIENTS						:7 hracu
+STR_NETWORK_8_CLIENTS						:8 hracu
+STR_NETWORK_9_CLIENTS						:9 hracu
+STR_NETWORK_10_CLIENTS						:10 hracu
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
 STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1239,27 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Hrát mapu
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacit sitovou hru ze scenaria
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY						:Jakýmkoli
+STR_NETWORK_LANG_ANY						:Jakýkoli
+STR_NETWORK_LANG_ENGLISH					:Anglictina
+STR_NETWORK_LANG_GERMAN						:Nemcina
+STR_NETWORK_LANG_FRENCH						:Francouzstina
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Vstupní místnost do multiplayerové hry
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Pripravuji se na vstoupení:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Soucasny seznam vsech spolecnosti v této hre. Bud muzes do jedné vstoupit, nebo muzes zalozit novou.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nová spolecnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novou spolecnost
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Pripojit se do hry jako divák
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Vstoupit do spolecnosti
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Pomoz vést tuto spolecnost
+STR_NETWORK_REFRESH						:{BLACK}Obnovit info
+STR_NETWORK_REFRESH_TIP						:{BLACK}Znovu nacte informace o serveru
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO O SPOLECNOSTI
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Jméno spolecnosti:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Jméno spolecnosti:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Zalozeno:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Hodnota spolecnosti:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Stav na uctu:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Lonsky hrubý zisk:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Výkon:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}Hraci:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES						:{SILVER}Vozidla:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stanice:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Hraci:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Pripojovani...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Pripojovani..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Overovani..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Cekani..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Stahování mapy..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Zpracovávání dat..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Prijimani informací o hre..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Prijimani informací o spolecnosti..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} klient(u) pred námi
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kB stazeno
 
+STR_NETWORK_DISCONNECT						:{BLACK}Odpojit se
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Napis zprávu, kterou chces poslat
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Napis castku, kterou chces poskytnout
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Server je chraneny. Napis heslo
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Spolecnost je chranena. Napis heslo
+STR_NETWORK_CLIENT_LIST						:{WHITE}Seznam hracu
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Zadna sitova zarizeni nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nenalezena zadna sitova hra
@@ -1267,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Server neodpovedel na pozadavek
 STR_NETWORK_ERR_DESYNC						:{WHITE} Sit - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Sit - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nemohu nahrát ulozenou hru ze serveru
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Nemohu spustit server.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Nemohu se pripojit.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} U spojení c. {NUMU16} byl prekrocen cekaci limit.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Vznikla chyba v protokolu a nase spojení je preruseno.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Revize hry tohoto klienta neodpovídá revizi hry na serveru.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Spatne heslo.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Server je plný
+STR_NETWORK_ERR_KICKED						:{WHITE} Byl jsi vyhozen ze hry
 
+STR_NETWORK_ERR_LEFT						:opustil hru
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:vseobecna (generální) chyba
+STR_NETWORK_ERR_CLIENT_DESYNC					:chyba v synchronizaci
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:nemohu nahrát hru
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:spojení ztraceno
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:chyba v protokolu
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:nevydáno povolení
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:prisel neplatný paket
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:spatna revize hry
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:jméno se uz pouziva
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:spatne heslo
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:spatne id hrace v DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:vyhozen serverem
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:vstoupil do hry
+STR_NETWORK_GIVE_MONEY						:ti dal nejake penize ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaci
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Server se restartuje...{}Vyckejte prosím...
 
 ############ end network gui strings
 

@@ -1186,6 +1186,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Gra wieloosobowa
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nazwa gracza:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}To jest nazwa pod ktora beda Cie widziec inni gracze
+STR_NETWORK_CONNECTION						:{BLACK}Polaczenie:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Wybierz miedzy gra w internecie a gra w sieci lokalnej
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1200,10 +1202,25 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klinknij na grze z listy by ja wybra
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Szukanie serwera
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Przeszukuje siec w poszukiwaniu serwera
+STR_NETWORK_ADD_SERVER						:{BLACK}Dodaj serwer
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Dodaj serwer do listy ktora bedzie przeszukiwana w poszukiwaniu uruchomionych gier.
 STR_NETWORK_ENTER_IP						:{BLACK}Wpisz adres IP serwera
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Rozmiar
-STR_NETWORK_PASSWORD						:{BLACK}Haslo:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Klientow
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Klientow podlaczonych / klientow maks.
+STR_NETWORK_GAME_INFO						:{SILVER}INFO O GRZE
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Klienci:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Jezyk:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Rozmiar mapy:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Wersja serwera:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adres serwera:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Data uruchomienia:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Biezaca data:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Chronione haslem!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERWER WYLACZONY
+STR_NETWORK_SERVER_FULL						:{SILVER}SERWER PELNY
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Przylacz sie do gry
 
@@ -1212,10 +1229,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Rozpocznij nowa gre
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nazwa gry:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nazwa gry bedzie wyswietlana u innych graczy w menu gry wieloosobowej
+STR_NETWORK_SET_PASSWORD					:{BLACK}Ustaw haslo
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Zabezpiecz gre haslem jesli nie chcesz by ktos przlaczyl sie do gry
 STR_NETWORK_SELECT_MAP						:{BLACK}Wybierz mape:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Wybierz mape na ktorej chcesz grac
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Dopuszczalna ilosc klientow:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Ustaw maksymalna liczbe klientow. Nie wszystkie pola musza byc wypelnione.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 klientow
+STR_NETWORK_3_CLIENTS						:3 klientow
+STR_NETWORK_4_CLIENTS						:4 klientow
+STR_NETWORK_5_CLIENTS						:5 klientow
+STR_NETWORK_6_CLIENTS						:6 klientow
+STR_NETWORK_7_CLIENTS						:7 klientow
+STR_NETWORK_8_CLIENTS						:8 klientow
+STR_NETWORK_9_CLIENTS						:9 klientow
+STR_NETWORK_10_CLIENTS						:10 klientow
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Uzywany jezyk w grze:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Inni gracze beda poinformowani jaki jezyk jest uzywany na serwerze.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Rozpocznij gre
 STR_NETWORK_START_GAME_TIP					:{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
 STR_NETWORK_LOAD_GAME						:{BLACK}Zaladuj gre
@@ -1224,26 +1256,57 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Zaladuj scenariusz
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Uruchom gre sieciowa uzywajac scenariusza
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Dowolny
+STR_NETWORK_LANG_ENGLISH					:Angielski
+STR_NETWORK_LANG_GERMAN						:Niemiecki
+STR_NETWORK_LANG_FRENCH						:Francuski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Lobby gry wieloosobowej
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Przygotowanie do polaczenia:   {ORANGE}{STRING}
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nowa firma
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Rozpoczecie dzialanosci nowej firmy
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Gra obserwowana
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Ogladaj gre jako widz
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Polacz z firma
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Pomoz zarzadzac ta firma
+STR_NETWORK_REFRESH						:{BLACK}Odswiez serwer
+STR_NETWORK_REFRESH_TIP						:{BLACK}Odswiez informacje o serwerze
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO O FIRMIE
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nazwa firmy:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nazwa firmy:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguracja:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Wartosc firmy:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Biezacy bilans:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Przychod w ostatnim roku:  {WHITE}{CURRENCY64}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Pojazdy:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stacje:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Gracze:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Laczenie...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Laczenie..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoryzacja..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Oczekiwanie..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Pobieranie mapy..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Przetwarzanie danych..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Uzyskiwanie informacji o grze..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kB dotad pobranych
 
+STR_NETWORK_DISCONNECT						:{BLACK}Rozlaczony
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Wprowadz tekst do wyslania
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Wprowadz ilosc pieniedzy jaka chcesz przekazac
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Serwer jest chroniony. Wprowadz haslo
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Firma jest chroniona. Wprowadz haslo
+STR_NETWORK_CLIENT_LIST						:{WHITE}Lista klientow
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Brak interface'u sieciowego lub skompilowane bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Nie mozna znalezc zadnej gry w sieci
@@ -1251,10 +1314,30 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Serwer nieodpowiada
 STR_NETWORK_ERR_DESYNC						:{WHITE} Blad synchronizacji gry sieciowej.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Polaczenie utracone w grze sieciowej.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Nie mozna wczytac zapisanej gry z serwera.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Nie mozna uruchomic serwera.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Nie mozna polaczyc.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Przekroczony limit czasu dla polaczenia #{NUMU16}.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Zle haslo.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Serwer jest pelen
+STR_NETWORK_ERR_KICKED						:{WHITE} Zostales wyrzucony z serwera
 
+STR_NETWORK_ERR_LEFT						:opuscil gre
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_DESYNC					:blad synchronizacji
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:nie mozna zaladowac mapy
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:polaczenie utracone
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:blad protokolu
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:nie autoryzowane
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:odebrany nieznany pakiet
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:Nazwa juz w uzyciu
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:zle haslo gry
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:bledne id gracza w DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:wyrzucony przez serwer
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:przylaczyl sie do gry
+STR_NETWORK_GIVE_MONEY						:dal Ci troche pieniedzy ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serwer zamknal sesje
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Restart serwera...{}Prosze czekac...
 
 ############ end network gui strings
 

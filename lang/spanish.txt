@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multijugador
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nombre Jugador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Este es el nombre con el que otros jugadores le identificarán
+STR_NETWORK_CONNECTION						:{BLACK}Conexión:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Seleccione entre un juego en Internet o en una Red de Área Local
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Pulse en un juego de la lista para s
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Encontrar servidor
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Buscar en la red servidores
+STR_NETWORK_ADD_SERVER						:{BLACK}Añadir servidor
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Añade un servidor a la lista que será siempre consultada para ver juegos en ejecución.
 STR_NETWORK_ENTER_IP						:{BLACK}Introduce la dirección IP del servidor
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Tamaño
-STR_NETWORK_PASSWORD						:{BLACK}Contraseña:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clientes
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clientes online / máx clientes
+STR_NETWORK_GAME_INFO						:{SILVER}INFO JUEGO
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clientes:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Tamaño Mapa:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versión servidor:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Dirección servidor:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Fecha inicio:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Fecha actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Protegido por contraseña!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVIDOR APAGADO
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVIDOR LLENO
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Unirme a un juego
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Empezar nuevo juego multijugador
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nombre del juego:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}El nombre del juego será mostrado a otros jugadores en el menu de selección de juego multijugador
+STR_NETWORK_SET_PASSWORD					:{BLACK}Establecer contraseña
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Proteje tu juego con una contraseña si no quieres que otras personas se unan a él
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}¿En qué mapa desea jugar?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Máximo clientes permitidos:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Seleccione un número máximo de clientes. No todos los slots serán ocupados.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clientes
+STR_NETWORK_3_CLIENTS						:3 clientes
+STR_NETWORK_4_CLIENTS						:4 clientes
+STR_NETWORK_5_CLIENTS						:5 clientes
+STR_NETWORK_6_CLIENTS						:6 clientes
+STR_NETWORK_7_CLIENTS						:7 clientes
+STR_NETWORK_8_CLIENTS						:8 clientes
+STR_NETWORK_9_CLIENTS						:9 clientes
+STR_NETWORK_10_CLIENTS						:10 clientes
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma hablado:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Otros jugadores sabrán cual es el idioma hablado en este servidor.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Empezar Juego
 STR_NETWORK_START_GAME_TIP					:{BLACK}Empezar un nuevo juego en red desde un mapa al azar o escenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Cargar Juego
@@ -1226,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Cargar Escenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Comenzar un juego multijugador desde un escenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Alguno
+STR_NETWORK_LANG_ENGLISH					:Inglés
+STR_NETWORK_LANG_GERMAN						:Alemán
+STR_NETWORK_LANG_FRENCH						:Francés
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sala de estar del juego multijugador
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Preparando para unirse:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Un listado de empresas actualmente en el juego. Puede unirse a una o emprezarla.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nueva empresa
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Abre una nueva empresa
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Observar juego
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Observar un juego como espectador
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Unirse a empresa
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Ayudar a dirigir esta empresa
+STR_NETWORK_REFRESH						:{BLACK}Recargar servidor
+STR_NETWORK_REFRESH_TIP						:{BLACK}Recargar información del servidor
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO EMPRESA
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nombre empresa:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nombre empresa:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguración:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valor empresa:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balance actual:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Ingresos último año:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Rendimiento:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Vehículos:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Estaciones:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Jugadores:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Conectando...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Conectando..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autorizando..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Esperando..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descargando mapa..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Procesando datos..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Recibiendo información del juego..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Recibiendo información empresa..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} cliente(s) delante de usted
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes descargados
 
+STR_NETWORK_DISCONNECT						:{BLACK}Desconectado
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Teclee el mensaje de texto a enviar
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Introduce la cantidad de dinero que desea dar
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Servidor protegido. Teclee la contraseña
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Company is protected. Enter password
+STR_NETWORK_CLIENT_LIST						:{WHITE}Lista de clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} No se puede encontrar ningún juego en red
@@ -1253,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} El servidor no responde a la petición
 STR_NETWORK_ERR_DESYNC						:{WHITE} La sincronización del juego ha fallado.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} La conexión con el juego en red se ha perdido.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} No es posible cargar el juego multijugador.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} No se puede iniciar el servidor.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} No se puede conectar.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tiempo de espera agotado en conexión #{NUMU16}.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Se ha producido un error de protocolo y la conexión ha sido cerrada.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La versión de este cliente no corresponde con la versión de este servidor.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contraseña incorrecta.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} El servidor está lleno
+STR_NETWORK_ERR_KICKED						:{WHITE} Has sido expulsado de este servidor
 
+STR_NETWORK_ERR_LEFT						:has abandonado el juego
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:error general
+STR_NETWORK_ERR_CLIENT_DESYNC					:error de desync
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:no se puede cargar el mapa
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:conexión perdida
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:error protocolo
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:no autorizado
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:recibido paquete extraño
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:versión incorrecta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:name already in use
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:contraseña de juego incorrecta
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:id de jugador incorrecto en DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:expulsado por el servidor
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:se ha unido al juego
+STR_NETWORK_GIVE_MONEY						:te ha enviado dinero ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha cerrado la sesión
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Se está reiniciando el servidor...{}Espere por favor...
 
 ############ end network gui strings
 

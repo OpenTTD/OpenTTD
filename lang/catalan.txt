@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multijugador
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nom del jugador:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaràn
+STR_NETWORK_CONNECTION						:{BLACK}Connexió:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Tria entre jugar per internet o jugar en xarxa local
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Clica en un joc de la llista per tri
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Buscar servidor
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cercant un servidor a la xarxa
+STR_NETWORK_ADD_SERVER						:{BLACK}Afegir servidor
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per a jocs iniciats.
 STR_NETWORK_ENTER_IP						:{BLACK}Entra l'adreça IP del servidor
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Mida
-STR_NETWORK_PASSWORD						:{BLACK}Contrasenya:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clients
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clients en línia / clients màxim
+STR_NETWORK_GAME_INFO						:{SILVER}INFORMACIÓ DEL JOC
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clients:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Tamany del mapa:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Versió del servidor:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adreça del servidor:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Data inicial:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Data actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Protegit per contrasenya!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVIDOR DESCONNECTAT
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVIDOR PLÉ
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Connectar-se al joc
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Iniciar nou joc multijugador
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nom del joc:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
+STR_NETWORK_SET_PASSWORD					:{BLACK}Establir contrasenya
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
 STR_NETWORK_SELECT_MAP						:{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}amb quin mapa vols jugar?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Màxim de clients permesos:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clients
+STR_NETWORK_3_CLIENTS						:3 clients
+STR_NETWORK_4_CLIENTS						:4 clients
+STR_NETWORK_5_CLIENTS						:5 clients
+STR_NETWORK_6_CLIENTS						:6 clients
+STR_NETWORK_7_CLIENTS						:7 clients
+STR_NETWORK_8_CLIENTS						:8 clients
+STR_NETWORK_9_CLIENTS						:9 clients
+STR_NETWORK_10_CLIENTS						:10 clients
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Idioma parlat:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Els altres jugadors sabràn quin idioma es parla en aquest servidor.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Iniciar Joc
 STR_NETWORK_START_GAME_TIP					:{BLACK}Iniciar un nou joc de xarxa des de un mapa aleatori, o escenari
 STR_NETWORK_LOAD_GAME						:{BLACK}Carregar Joc
@@ -1226,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Carregar Escenari
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Iniciar un nou joc de xarxa des de un escenari
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Qualsevol
+STR_NETWORK_LANG_ENGLISH					:Anglès
+STR_NETWORK_LANG_GERMAN						:Alemany
+STR_NETWORK_LANG_FRENCH						:Francès
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Preparant per connectar:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Una llista de totes les empreses actuals en aquest joc. Pots utilitzar una o bé iniciar un
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova Empresa
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Obre una nova Empresa
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Espectador
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Veure el joc com a espectador
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Utilitzar empresa
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Ajudar a gestionar aquesta empresa
+STR_NETWORK_REFRESH						:{BLACK}Actualitzar servidor
+STR_NETWORK_REFRESH_TIP						:{BLACK}Actualitzar la informació del servidor
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFORMACIÓ DE L'EMPRESA
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nom d'Empresa:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nom d'empresa:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguració:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valor de l'empresa:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Balanç actual:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Ingresos de l'ultim any:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Rendiment:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Vehicles:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Estacions:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Jugadors:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Connectant...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Connectant..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autoritzant..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Esperant..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Descarregant mapa..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Processant dades..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Obtenint informació del joc..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Obtenint informació de l'empresa..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} client(s) rivals
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes descarregats aproximadament
 
+STR_NETWORK_DISCONNECT						:{BLACK}Desconnecta
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Entra el text del missatge a enviar
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Entra la quantitat de diners que vols obtenir
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Servidor protegit. Entra la contrasenya
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Empresa protegida. Entra la contrasenya
+STR_NETWORK_CLIENT_LIST						:{WHITE}Llista de Clients
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No s'an trobat dispositius de xarxa o s'ha compilar sense l'opció ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} No es pot trobar cap joc a la xarxa
@@ -1253,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} El servidor no ha respós al requerimen
 STR_NETWORK_ERR_DESYNC						:{WHITE} Ha fallat la sincronització del joc de xarxa.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} S'ha perdut la connexió al joc de xarxa.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} No es pot carregar un joc desat al servidor.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} No es pot inciar el servidor.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} No es pot connectar.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} La connexió #{NUMU16} ha esgotat el temps d'espera.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} S'ha obtingut un error de protocol i s'ha tancat la connexió.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La revisió d'aquest client no concorda amb la revisió del servidor.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Contrasenya incorrecta.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} El servidor és plé
+STR_NETWORK_ERR_KICKED						:{WHITE} T'han fet fora del servidor
 
+STR_NETWORK_ERR_LEFT						:ha deixat el joc
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:error general
+STR_NETWORK_ERR_CLIENT_DESYNC					:error de desincronització
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:no es pot carregar el mapa
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:connexió perduda
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:error de protocol
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:no autoritzat
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:s'ha rebut un paquet de dades extrany
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:revisió incorrecta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nom ja utilitzat
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:contrasenya de joc incorrecta
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:id de jugador incorrecta en DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:tret pel servidor
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:ha entrat al joc
+STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha tancat la sesió
+STR_NETWORK_SERVER_REBOOT					:{WHITE} El servidor està reiniciant...{}Espera un moment...
 
 ############ end network gui strings
 

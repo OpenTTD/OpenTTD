@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multijoueur
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Nom du joueur:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
+STR_NETWORK_CONNECTION						:{BLACK}Connection :
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Choisissez entre un jeu Internet et un jeu sur réseau local
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Cliquez une partie de la liste pour 
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Trouver un serveur
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Cherche sur le réseau un serveur
+STR_NETWORK_ADD_SERVER						:{BLACK}Ajouter un serveur
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Ajouter à la liste un serveur où le jeu cherchera toujours des parties en cours.
 STR_NETWORK_ENTER_IP						:{BLACK}Entrez l'adresse IP du serveur
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Taille
-STR_NETWORK_PASSWORD						:{BLACK}Mot de passe:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clients
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clients en ligne / clients max
+STR_NETWORK_GAME_INFO						:{SILVER}INFO DE LA PARTIE
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clients:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Langue:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Terrain:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Taille de la carte :  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Version du serveur :  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresse du serveur :  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Date de début :  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Date courante :  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Protégée par mot de passe !
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVEUR HORS-LIGNE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVEUR PLEIN
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Rejoindre la partie
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Commencer une nouvelle partie
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Nom de la partie:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
+STR_NETWORK_SET_PASSWORD					:{BLACK}Choisir le mot de passe
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres joueurs la rejoignent
 STR_NETWORK_SELECT_MAP						:{BLACK}Choisissez une carte:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Sur quelle carte voulez-vous jouer?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Nombre de clients maximum :
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clients
+STR_NETWORK_3_CLIENTS						:3 clients
+STR_NETWORK_4_CLIENTS						:4 clients
+STR_NETWORK_5_CLIENTS						:5 clients
+STR_NETWORK_6_CLIENTS						:6 clients
+STR_NETWORK_7_CLIENTS						:7 clients
+STR_NETWORK_8_CLIENTS						:8 clients
+STR_NETWORK_9_CLIENTS						:9 clients
+STR_NETWORK_10_CLIENTS						:10 clients
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Langue parlée :
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Démarrer la partie
 STR_NETWORK_START_GAME_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
 STR_NETWORK_LOAD_GAME						:{BLACK}Charger une partie
@@ -1226,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Charger un scénario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Démarrer une nouvelle partie réseau à partir d'un scénario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Peu importe
+STR_NETWORK_LANG_ENGLISH					:Anglais
+STR_NETWORK_LANG_GERMAN						:Allemand
+STR_NETWORK_LANG_FRENCH						:Français
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Chat d'avant jeu
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Se prépare à rejoindre :   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Une liste des compagnies présentes dans le jeu.  Vous pouvez soit en rejoindre une, soit en créer une.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nouvelle compagnie
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Crée une nouvelle compagnie
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Observer une partie
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Permet d'observer une partie en tant que spectateur
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Rejoindre la compagnie
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Aider à gérer cette compagnie
+STR_NETWORK_REFRESH						:{BLACK}Rafraîchir le serveur
+STR_NETWORK_REFRESH_TIP						:{BLACK}Rafraîchir les infos à propos du serveur
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}INFO DE LA COMPAGNIE
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Nom de la compagnie:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Nom de la compagnie :  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguration :  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Valeur de la compagnie :  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Argent courant :  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Revenus de l'année dernière :  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Performance :  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Véhicules :  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stations :  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Joueurs :  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Connection en cours...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Connection en cours..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Autorisation en cours..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Attente..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Téléchargement de la carte..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Traitement des données..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Rapatriement des infos sur le jeu..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Rapatriement des infos sur la compagnie..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} client(s) avant nous
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} ko déjà téléchargés
 
+STR_NETWORK_DISCONNECT						:{BLACK}Déconnecter
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Entrez votre message à envoyer
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Enter the amount of money you want to give
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Le serveur est protégé. Entrez le mot de passe
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}La compagnie est protégée. Entrez le mot de passe
+STR_NETWORK_CLIENT_LIST						:{WHITE}Liste des clients
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Aucune partie réseau n'a été trouvée
@@ -1253,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Le serveur n'a pas répondu à la requêt
 STR_NETWORK_ERR_DESYNC						:{WHITE} La synchronisation de la partie réseau a échouée.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} La connection de la partie réseau a été perdue.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} La sauvegarde serveur n'a pas pu être chargée.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Le serveur n'a pas pu être démarré.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Connection échouée.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} La connection #{NUMU16} a dépassé le temps d'attente.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Il y a eu une erreur de protocole et la connection est donc fermée.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} La révision de ce client ne correspond pas à celle du serveur.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Mot de passe incorrect.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Le serveur est plein
+STR_NETWORK_ERR_KICKED						:{WHITE} Vous avez été jeté du serveur
 
+STR_NETWORK_ERR_LEFT						:a quitté la partie
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:erreur générale
+STR_NETWORK_ERR_CLIENT_DESYNC					:erreur de désynchronisation
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:chargement de la carte impossible
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:connection perdue
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:erreur de protocole
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:non autorisé
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:paquet étrange reçu
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:révision incorrecte
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nom déjà utilisé
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:mot de passe de partie incorrect
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:mauvais player-id dans DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:jeté par le serveur
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:a rejoint la partie
+STR_NETWORK_GIVE_MONEY						:vous a donné un peu d'argent ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Le serveur a fermé la session
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Le serveur redémarre...{}Veuillez patienter...
 
 ############ end network gui strings
 

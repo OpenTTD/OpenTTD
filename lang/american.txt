@@ -978,6 +978,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Enable building very long trains: {
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Allow building very long bridges: {ORANGE}{STRING}
@@ -1187,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
+STR_NETWORK_CONNECTION						:{BLACK}Connection:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Choose between an internet game or a local area nework game
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:LAN
 STR_NETWORK_INTERNET						:Internet
@@ -1201,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Click a game from the list to select
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Search network for a server
+STR_NETWORK_ADD_SERVER						:{BLACK}Add server
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Adds a server to the list which will always be checked for running games.
 STR_NETWORK_ENTER_IP						:{BLACK}Enter the IP address of the server
 
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Clients
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Clients online / clients max
+STR_NETWORK_GAME_INFO						:{SILVER}GAME INFO
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Clients:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Language:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{BLACK}Size
+STR_NETWORK_SERVER_VERSION					:{SILVER}Server version:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Server address:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Start date:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{BLACK}Password:
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL						:{SILVER}SERVER FULL
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Join game
 
@@ -1213,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Start new game
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Game name:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
+STR_NETWORK_SET_PASSWORD					:{BLACK}Set password
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Protect your game with a password if you don't want other people to join it
 STR_NETWORK_SELECT_MAP						:{BLACK}Select a map:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum allowed clients:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choose a maximum number of clients. Not all slots need to be filled.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 clients
+STR_NETWORK_3_CLIENTS						:3 clients
+STR_NETWORK_4_CLIENTS						:4 clients
+STR_NETWORK_5_CLIENTS						:5 clients
+STR_NETWORK_6_CLIENTS						:6 clients
+STR_NETWORK_7_CLIENTS						:7 clients
+STR_NETWORK_8_CLIENTS						:8 clients
+STR_NETWORK_9_CLIENTS						:9 clients
+STR_NETWORK_10_CLIENTS						:10 clients
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Language spoken:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Other players will know which language is spoken on the server.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Load Game
@@ -1225,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Load Scenario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Start a new network game from a scenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Any
+STR_NETWORK_LANG_ENGLISH					:English
+STR_NETWORK_LANG_GERMAN						:German
+STR_NETWORK_LANG_FRENCH						:French
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Multiplayer game lobby
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Preparing to join:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}A list of all companies currently in this game. You can either join one or start a
 STR_NETWORK_NEW_COMPANY						:{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Open a new company
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Watch game
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Watch the game as a spectator
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Join company
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Help managing this company
+STR_NETWORK_REFRESH						:{BLACK}Refresh server
+STR_NETWORK_REFRESH_TIP						:{BLACK}Refresh the server info
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}COMPANY INFO
 
 STR_NETWORK_COMPANY_NAME					:{BLACK}Company name:
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Inauguration:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Company value:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Current balance:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Last year's income:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Performance:  {WHITE}{NUMU16}
 
+STR_NETWORK_VEHICLES						:{SILVER}Vehicles:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Stations:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
 STR_NETWORK_PLAYERS						:{BLACK}#/#
 
+STR_NETWORK_CONNECTING						:{WHITE}Connecting...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Connecting..
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Authorizing..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Waiting..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Downloading map..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Processing data..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Fetching game info..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Fetching company info..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} client(s) in front of us
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} kbytes downloaded so far
 
+STR_NETWORK_DISCONNECT						:{BLACK}Disconnect
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Enter your text message to send
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Enter the amount of money you want to give
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Server is protected. Enter password
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Company is protected. Enter password
+STR_NETWORK_CLIENT_LIST						:{WHITE}Client List
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} No network devices found or compiled without ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Could not find any network games
@@ -1252,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} The server didn't answer the request
 STR_NETWORK_ERR_DESYNC						:{WHITE} Network-Game synchronization failed.
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Network-Game connection lost.
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Could not load server-savegame.
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Could not start the server.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Could not connect.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Connection #{NUMU16} timed out.
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} We made a protocol-error and our connection is closed.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} The revision of this client does not match the revision of the server.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Wrong password.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} The server is full
+STR_NETWORK_ERR_KICKED						:{WHITE} You are kicked out of the server
 
+STR_NETWORK_ERR_LEFT						:has left the game
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:general error
+STR_NETWORK_ERR_CLIENT_DESYNC					:desync error
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:could not load map
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:connection lost
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protocol error
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:not authorized
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:received strange packet
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:wrong revision
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:name already in use
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:wrong game-password
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:wrong player-id in DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED					:kicked by server
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:has joined the game
+STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} The server closed the session
+STR_NETWORK_SERVER_REBOOT					:{WHITE} The server is restarting...{}Please wait...
 
 ############ end network gui strings
 
@@ -2596,6 +2688,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Amount of cash on hand
 STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Do you have a high loan?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Total points out of possible points
 
+STR_NEWGRF_SETTINGS_CAPTION					:{WHITE}Newgrf settings
 STR_NEWGRF_APPLY_CHANGES					:{BLACK}Apply changes
 STR_NEWGRF_SET_PARAMETERS					:{BLACK}Set parameters
 STR_NEWGRF_TIP							:{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings.

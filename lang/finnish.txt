@@ -989,7 +989,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Samantyyppistä teollisuutta voidaan
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch-yhteensopiva pysähtymätön käsittely: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}TTDPatch: Junat pysähtyvät vain aikataulun asemilla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Maantieajoneuvojonotus (kvanttitehosteilla): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
@@ -1188,6 +1188,8 @@ STR_NETWORK_MULTIPLAYER						:{WHITE}Moninpeli
 
 STR_NETWORK_PLAYER_NAME						:{BLACK}Pelaajan nimi
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}Tällä nimellä muut pelaajat tunnistavat sinut
+STR_NETWORK_CONNECTION						:{BLACK}Yhteys:
+STR_NETWORK_CONNECTION_TIP					:{BLACK}Valitse Internet-pelin tai paikaillisverkkopelin välillä
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN							:Paikallisverkko
 STR_NETWORK_INTERNET						:Internet
@@ -1202,10 +1204,26 @@ STR_NETWORK_CLICK_GAME_TO_SELECT				:{BLACK}Klikkaa peliä luettelossa valitakses
 
 STR_NETWORK_FIND_SERVER						:{BLACK}Etsi palvelin
 STR_NETWORK_FIND_SERVER_TIP					:{BLACK}Etsi verkosta palvelin
+STR_NETWORK_ADD_SERVER						:{BLACK}Lisää palvelin
+STR_NETWORK_ADD_SERVER_TIP					:{BLACK}Lisää palvelimen listaan, joka käydään läpi aina uusia pelejä haettaessa.
 STR_NETWORK_ENTER_IP						:{BLACK}Syötä palvelimen IP-osoite
 
-STR_NETWORK_MAP_SIZE						:{BLACK}Koko
-STR_NETWORK_PASSWORD						:{BLACK}Salasana:
+STR_NETWORK_CLIENTS_ONLINE					:{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_CAPTION					:{BLACK}Asiakkaat
+STR_NETWORK_CLIENTS_CAPTION_TIP					:{BLACK}Asiakkaita yhd. / asiakkaita max.
+STR_NETWORK_GAME_INFO						:{SILVER}PELITIEDOT
+STR_ORANGE							:{ORANGE}{STRING}
+STR_NETWORK_CLIENTS						:{SILVER}Asiakkaat:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_LANGUAGE						:{SILVER}Kieli:  {WHITE}{STRING}
+STR_NETWORK_TILESET						:{SILVER}Ruudusto:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE						:{SILVER}Kartan koko:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_SERVER_VERSION					:{SILVER}Palvelimen versio:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Palvelimen osoite:  {WHITE}{STRING}
+STR_NETWORK_START_DATE						:{SILVER}Aloituspäivä:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE					:{SILVER}Päivä nyt:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD						:{SILVER}Salasanasuojattu!
+STR_NETWORK_SERVER_OFFLINE					:{SILVER}PALVELIN KIINNI
+STR_NETWORK_SERVER_FULL						:{SILVER}PALVELIN TÄYNNÄ
 
 STR_NETWORK_JOIN_GAME						:{BLACK}Liity peliin
 
@@ -1214,10 +1232,25 @@ STR_NETWORK_START_GAME_WINDOW					:{WHITE}Aloita uusi peli
 
 STR_NETWORK_NEW_GAME_NAME					:{BLACK}Pelin nimi:
 STR_NETWORK_NEW_GAME_NAME_TIP					:{BLACK}Nimi näytetään muille pelaajille moninpelivalikossa
+STR_NETWORK_SET_PASSWORD					:{BLACK}Aseta salasana
 STR_NETWORK_PASSWORD_TIP					:{BLACK}Suojele peliäsi salasanalla, jos et halua muiden liittyvän
 STR_NETWORK_SELECT_MAP						:{BLACK}Valitse kartta:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Mitä karttaa haluat pelata?
+STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maksimimäärä asiakkaita:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Valitse asiakkaiden maksimimäärä. Kaikkiin lokeroihin ei tarvita välttämättä pelaajia.
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS						:2 asiakasta
+STR_NETWORK_3_CLIENTS						:3 asiakasta
+STR_NETWORK_4_CLIENTS						:4 asiakasta
+STR_NETWORK_5_CLIENTS						:5 asiakasta
+STR_NETWORK_6_CLIENTS						:6 asiakasta
+STR_NETWORK_7_CLIENTS						:7 asiakasta
+STR_NETWORK_8_CLIENTS						:8 asiakasta
+STR_NETWORK_9_CLIENTS						:9 asiakasta
+STR_NETWORK_10_CLIENTS						:10 asiakasta
+STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Puhuttu kieli:
+STR_NETWORK_LANGUAGE_TIP					:{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP					:{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla
 STR_NETWORK_LOAD_GAME						:{BLACK}Lataa peli
@@ -1226,26 +1259,60 @@ STR_NETWORK_LOAD_SCENARIO					:{BLACK}Lataa skenaario
 STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Aloita uusi verkkopeliskenaario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY						:Mikä tahansa
+STR_NETWORK_LANG_ENGLISH					:Englanti
+STR_NETWORK_LANG_GERMAN						:Saksa
+STR_NETWORK_LANG_FRENCH						:Ranska
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Moninpeliaula
 
+STR_NETWORK_PREPARE_TO_JOIN					:{BLACK}Valmistaudu yhdistämään:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP					:{BLACK}Lista pelissä olevista yhtiöistä. Voit joko liittyä yhteen tai perustaa omasi.
 STR_NETWORK_NEW_COMPANY						:{BLACK}Uusi yhtiö
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Perusta uusi yhtiö
 STR_NETWORK_SPECTATE_GAME					:{BLACK}Seuraa peliä
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Katsele peliä yleisönä
+STR_NETWORK_JOIN_COMPANY					:{BLACK}Liity yhtiöön
+STR_NETWORK_JOIN_COMPANY_TIP					:{BLACK}Auta tämän yhtiön hallinnassa
+STR_NETWORK_REFRESH						:{BLACK}Päivitä palvelin
+STR_NETWORK_REFRESH_TIP						:{BLACK}Päivitä palvelintiedot
 
+STR_NETWORK_COMPANY_INFO					:{SILVER}YHTIÖN TIEDOT
 
-STR_NETWORK_COMPANY_NAME					:{BLACK}Yhtiön nimi:
+STR_NETWORK_COMPANY_NAME					:{SILVER}Yhtiön nimi:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR					:{SILVER}Perustettu:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE						:{SILVER}Yhtiön arvo:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE					:{SILVER}Nykyinen kate:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME					:{SILVER}Viime vuoden tulot:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE						:{SILVER}Suorituskyky:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS						:{BLACK}#/#
+STR_NETWORK_VEHICLES						:{SILVER}Ajoneuvot:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS						:{SILVER}Asemat:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS						:{SILVER}Pelaajat:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING						:{WHITE}Yhdistetään...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1					:{BLACK}(1/6) Yhdistetään...
+STR_NETWORK_CONNECTING_2					:{BLACK}(2/6) Valtuutetaan..
+STR_NETWORK_CONNECTING_3					:{BLACK}(3/6) Odotetaan..
+STR_NETWORK_CONNECTING_4					:{BLACK}(4/6) Ladataan karttaa..
+STR_NETWORK_CONNECTING_5					:{BLACK}(5/6) Muokataan dataa..
 
+STR_NETWORK_CONNECTING_SPECIAL_1				:{BLACK}Haetaan pelitiedot..
+STR_NETWORK_CONNECTING_SPECIAL_2				:{BLACK}Haetaan yhtiötiedot...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING					:{BLACK}{INT32} asiakas(ta) ennen meitä
+STR_NETWORK_CONNECTING_DOWNLOADING				:{BLACK}{INT32} / {INT32} ktavua ladattu
 
+STR_NETWORK_DISCONNECT						:{BLACK}Pura yhteys
 
+STR_NETWORK_CHAT_QUERY_CAPTION					:{WHITE}Syötä lähetettävä teksti
+STR_NETWORK_GIVE_MONEY_CAPTION					:{WHITE}Syötä annettava rahamäärä
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION				:{WHITE}Palvelin on suojattu. Anna salasana
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION			:{WHITE}Yhtiö on suojattu. Anna salasana
+STR_NETWORK_CLIENT_LIST						:{WHITE}Asiakaslista
 
 STR_NETWORK_ERR_NOTAVAILABLE					:{WHITE} Verkkolaitteita ei löytynyt tai käännetty ilman ENABLE_NETWORK-valintaa
 STR_NETWORK_ERR_NOSERVER					:{WHITE} Verkkopelejä ei löytynyt
@@ -1253,10 +1320,34 @@ STR_NETWORK_ERR_NOCONNECTION					:{WHITE} Palvelin ei vastannut pyyntöön
 STR_NETWORK_ERR_DESYNC						:{WHITE} Verkko-peli -tahdistus epäonnistui
 STR_NETWORK_ERR_LOSTCONNECTION					:{WHITE} Verkko-peli -yhteys katosi
 STR_NETWORK_ERR_SAVEGAMEERROR					:{WHITE} Palvelimen pelitallennetta ei voi ladata
+STR_NETWORK_ERR_SERVER_START					:{WHITE} Palvelinta ei voitu käynnistää.
+STR_NETWORK_ERR_CLIENT_START					:{WHITE} Yhdistäminen ei onnistunut.
 STR_NETWORK_ERR_TIMEOUT						:{WHITE} Yhteys #{NUMU16} aikakatkaistiin
+STR_NETWORK_ERR_SERVER_ERROR					:{WHITE} Teimme protokollavirheen ja yhteys katkesi.
+STR_NETWORK_ERR_WRONG_REVISION					:{WHITE} Tämän asiakkaan revisio ei vastaa palvelimen revisiota.
+STR_NETWORK_ERR_WRONG_PASSWORD					:{WHITE} Väärä salasana.
+STR_NETWORK_ERR_SERVER_FULL					:{WHITE} Palvelin on täynnä
+STR_NETWORK_ERR_KICKED						:{WHITE} Sinut potkittiin pihalle palvelimelta
 
+STR_NETWORK_ERR_LEFT						:poistui pelistä
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL					:yleinen virhe
+STR_NETWORK_ERR_CLIENT_DESYNC					:tahdistusvirhe
+STR_NETWORK_ERR_CLIENT_SAVEGAME					:karttaa ei voitu ladata
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST				:yhteys katkesi
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR				:protokollavirhe
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED				:ei valtuutettu
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED				:vastaanotettiin omituinen paketti
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION				:väärä revisio
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE				:nimi on jo käytössä
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD				:väärä pelisalasana
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH				:väärä player-id DoCommand:ssa
+STR_NETWORK_ERR_CLIENT_KICKED					:palvelin potki pihalle
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED					:liittyi peliin
+STR_NETWORK_GIVE_MONEY						:antoi sinulle rahaa ({CURRENCY})
+STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Palvelin sulki istunnon
+STR_NETWORK_SERVER_REBOOT					:{WHITE} Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 
 ############ end network gui strings
 
