@@ -345,7 +345,8 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 				i++;
 			}
 		}
-		gd.num_dataset=numd;
+
+		gd.num_dataset = numd + 1;
 
 		DrawGraph(&gd);
 	}	break;
@@ -418,7 +419,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		gd.num_dataset = numd;
+		gd.num_dataset = numd + 1;
 
 		DrawGraph(&gd);
 		break;
@@ -491,7 +492,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		gd.num_dataset = numd;
+		gd.num_dataset = numd + 1;
 
 		DrawGraph(&gd);
 		break;
@@ -783,7 +784,8 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 				i++;
 			}
 		}
-		gd.num_dataset = numd;
+
+		gd.num_dataset = numd + 1;
 
 		DrawGraph(&gd);
 		break;
@@ -859,8 +861,8 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 				i++;
 			}
 		}
-		gd.num_dataset = numd;
 
+		gd.num_dataset = numd + 1;
 
 		DrawGraph(&gd);
 		break;
