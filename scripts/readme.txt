@@ -7,7 +7,7 @@ OpenTTD supports scripts.
  - 'on_server.scr' is executed when you start a server / dedicated server
  - 'on_dedicated.scr' is additionally executed when you start a dedicated server
  - 'pre_server.scr' is executed before the server is started
- - 'pre_dedeicated.scr' is additionally executed when you start a dedicated server
+ - 'pre_dedicated.scr' is additionally executed when you start a dedicated server
 
 For examples how a script can look, check the .example examples.
 
