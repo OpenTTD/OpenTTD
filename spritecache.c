@@ -52,7 +52,7 @@ static const char * const _filename_list[] = {
 	"TRG1R.GRF",
 	"TRGIR.GRF",
 	"signalsw.grf", //0x1320 - 0x1405 inclusive
-//	"openttd.grf",	//0x1406 - 
+//	"openttd.grf",	//0x1406 -
 	NULL
 };
 
@@ -93,7 +93,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 			_skip_sprites--;
 		deaf = 1;
 	}
-	
+
 	type = FioReadByte();
 	if (type == 0xFF) {
 		/* We need to really skip only special sprites in the deaf
@@ -108,7 +108,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		}
 		return;
 	}
-	
+
 	_cur_sprite.info = type;
 #ifdef WANT_SPRITESIZES
 	_cur_sprite.height = FioReadByte();
@@ -146,7 +146,7 @@ static void ReadSprite(int num, byte *dest)
 	byte *rel;
 	int8 i;
 	int j, dist;
-	
+
 	type = FioReadByte();
 	/* We've decoded special sprites when reading headers. */
 	if (type != 0xFF) {
@@ -173,7 +173,7 @@ static void ReadSprite(int num, byte *dest)
 			dist = -(((i&7)<<8)|FioReadByte());
 			i = -(i >> 3);
 			num -= i;
-			
+
 			rel = &dest[dist];
 			while (i--)
 				*dest++ = *rel++;
@@ -209,7 +209,7 @@ static bool LoadNextSprite(int load_index, byte file_index)
 
 #if defined(WANT_NEW_LRU)
 	_sprite_lru_new[load_index] = 0;
-#else	
+#else
 	_sprite_lru[load_index] = 0xFFFF;
 	_sprite_lru_cur[load_index] = 0;
 #endif
@@ -282,7 +282,7 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 			} while (++start <= end);
 		}
 	}
-}	
+}
 
 typedef size_t CDECL fread_t(void*,size_t,size_t,FILE*);
 
@@ -398,20 +398,20 @@ static void CompactSpriteCache()
 	byte *s, *t;
 	size_t size, sizeb, cur_size;
 	int i;
-	
+
 	DEBUG(spritecache, 2) ("compacting sprite cache, inuse=%d", GetSpriteCacheUsage());
 
 	s = _spritecache_ptr;
-	
+
 	while (true) {
 		size = S_DATA(s);
-		
+
 		// Only look for free blocks.
 		if (size & S_FREE_MASK) {
 			size -= S_FREE_MASK;
 			// Since free blocks are automatically coalesced, this should hold true.
 			assert(!(S_DATA(s+size) & S_FREE_MASK));
-			
+
 			// If the next block is the sentinel block, we can safely return
 			if ( (sizeb=S_DATA(s + size)) == 0)
 				break;
@@ -427,13 +427,13 @@ static void CompactSpriteCache()
 				// Offset the sprite pointer by the size of the free block
 				_sprite_ptr[i] -= size;
 
-				// Move the memory 
+				// Move the memory
 				memcpy_overlapping(s+S_HDRSIZE, s+S_HDRSIZE+size, sizeb - S_HDRSIZE );
 
 				// What we just did had the effect of swapping the allocated block with the free block, so we need to update
 				//  the block pointers. First update the allocated one. It is in use.
 				S_DATA(s) = sizeb;
-							
+
 				// Then coalesce the free ones that follow.
 				s += sizeb;
 				while ((cur_size = S_DATA(s+size)) & S_FREE_MASK)
@@ -485,7 +485,7 @@ static void DeleteEntryFromSpriteCache()
 #endif
 				_sprite_lru[i] < cur_lru)
 					continue;
-		
+
 		// Found a sprite with a higher LRU value, then remember it.
 		if (_sprite_lru[i] != cur_lru) {
 			cur_lru = _sprite_lru[i];
@@ -551,7 +551,7 @@ restart:
 			// Now s points at a free block.
 			// The block is exactly the size we need?
 			if (cur_size != mem_req) {
-				
+
 				// No.. is it too small?
 				if (cur_size < mem_req + S_HDRSIZE)
 					break;
@@ -567,7 +567,7 @@ restart:
 
 			FioSeekToFile(_sprite_file_pos[sprite]);
 			ReadSprite(_sprite_size[sprite], s);
-			
+
 			// Patch the height to compensate for a TTD bug?
 			if (sprite == 142) { s[1] = 10; }
 
@@ -580,7 +580,7 @@ restart:
 			DeleteEntryFromSpriteCache();
 			goto restart;
 		}
-		
+
 		s += cur_size;
 	}
 }
@@ -628,7 +628,7 @@ uint RotateSprite(uint s)
 }
 #endif
 
-byte *GetSpritePtr(uint sprite) 
+byte *GetSpritePtr(uint sprite)
 {
 	byte *p;
 
@@ -650,7 +650,7 @@ byte *GetSpritePtr(uint sprite)
 	p = _sprite_ptr[sprite];
 	if (p == NULL)
 		p = LoadSpriteToMem(sprite);  // No, need to load it.
-	return p;	
+	return p;
 }
 
 byte _sprite_page_to_load = 0xFF;
@@ -680,9 +680,18 @@ static void LoadSpriteTables()
 {
 	int i,j;
 
-	/* load initial sprites */
+	/*
+	 * Note for developers:
+	 *   Keep in mind that when you add a LoadGrfIndexed in the 'if'-section below
+	 *   that you should also add the corresponding FioOpenFile to the 'else'-section
+	 *   below.
+	 */
+
+	// Try to load the sprites from cache
 	if (!HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], true)) {
-		
+		// We do not have the sprites in cache yet, or cache is disabled
+		// So just load all files from disk..
+
 		int load_index = 0;
 		for(i=0; _filename_list[i] != NULL; i++) {
 			load_index += LoadGrfFile(_filename_list[i], load_index, (byte)i);
@@ -690,38 +699,48 @@ static void LoadSpriteTables()
 
 		LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 
-		{
-			int l;
-			if ((l=_sprite_page_to_load) != 0)
-				LoadGrfIndexed(_landscape_filenames[l-1], _landscape_spriteindexes[l-1], i++); 
-		}
-		
+		if (_sprite_page_to_load != 0)
+			LoadGrfIndexed(_landscape_filenames[_sprite_page_to_load-1], _landscape_spriteindexes[_sprite_page_to_load-1], i++);
+
 		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
 		load_index = SPR_CANALS_BASE;
 		load_index += LoadGrfFile("canalsw.grf", load_index, i++);
-		/* XXX: Only for debugging. Will be more generic. */
 
-		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT+1;
+		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
 		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
 			load_index += LoadGrfFile(_newgrf_files[j], load_index, i++);
 
-//		load_index += LoadGrfFile("arcticseto.grf", load_index, i++);
-//		load_index += LoadGrfFile("tempsetpo.grf", load_index, i++);
-//		load_index += LoadGrfFile("newshipso.grf", load_index, i++);
-		//load_index += LoadGrfFile("brseto.grf", load_index, i++);
-
+		// If needed, save the cache to file
 		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);
 	} else {
+		// We have sprites cached. We just loaded the cached files
+		//  now we only have to open a file-pointer to all the original grf-files
+		// This is very important. Not all sprites are in the cache. So sometimes
+		//  the game needs to load the sprite from disk. When the file is not
+		//  open it can not read. So all files that are in the 'if'-section
+		//  above should also be in this 'else'-section.
+		//
+		// NOTE: the order of the files must be identical as in the section above!!
+
 		for(i=0; _filename_list[i] != NULL; i++)
-			FioOpenFile(i,_filename_list[i]); 
-		
-		FioOpenFile(i, "openttd.grf");
-		FioOpenFile(i+1, "canalsw.grf");
-		
+			FioOpenFile(i,_filename_list[i]);
+
+		FioOpenFile(i++, "openttd.grf");
+
 		if (_sprite_page_to_load != 0)
-			FioOpenFile(i+2, _landscape_filenames[_sprite_page_to_load-1]);
+			FioOpenFile(i++, _landscape_filenames[_sprite_page_to_load-1]);
+
+		FioOpenFile(i++, "trkfoundw.grf");
+		FioOpenFile(i++, "canalsw.grf");
+
+		// FIXME: if a user changes his newgrf's, the cached-sprites gets
+		//  invalid. We should have some kind of check for this.
+		// The best solution for this is to delete the cached-sprites.. but how
+		//  do we detect it?
+		for(j=0; j!=lengthof(_newgrf_files) && _newgrf_files[j]; j++)
+			FioOpenFile(i++, _newgrf_files[j]);
 	}
 
 	_compact_cache_counter = 0;
@@ -744,7 +763,7 @@ void GfxInitSpriteMem(byte *ptr, uint32 size)
 
 void GfxLoadSprites() {
 	static byte *_sprite_mem;
-	
+
 	// Need to reload the sprites only if the landscape changed
 	if (_sprite_page_to_load != _opt.landscape) {
 		_sprite_page_to_load = _opt.landscape;
@@ -793,4 +812,4 @@ const SpriteDimension *GetSpriteDimension(uint sprite)
 */
 	return sd;
 }
- 
+
