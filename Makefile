@@ -709,11 +709,11 @@ endif
 
 rev.c: FORCE
 	@# setting the revision number in a place, there the binary can read it
-	@echo 'const char _openttd_revision[] = "'$(REV)'";' >>rev.c.new
+	@echo 'const char _openttd_revision[] = "$(REV)";' >>rev.c.new
 	@echo 'const int _revision_number = $(REV_NUMBER);' >>rev.c.new
 	@# some additions for MorphOS versions tag
 	@echo '#ifdef __MORPHOS__'  >>rev.c.new
-	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD "'$(REV)'" ('${BUILDDATE}') © OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
+	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('${BUILDDATE}') © OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
 	@echo '#endif' >>rev.c.new
 	@# Only update the real rev.c if it actually changed, to prevent
 	@# useless rebuilds.
