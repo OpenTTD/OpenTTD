@@ -1014,12 +1014,12 @@ static const Widget _save_dialog_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,								STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   279, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   291, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,								STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,								STR_400B_CURRENTLY_SELECTED_NAME},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,		STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   256,   308,   319, STR_4002_SAVE,			STR_400D_SAVE_THE_CURRENT_GAME_USING},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   280,   291, 0x0,								STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   245,   308,   319, STR_4002_SAVE,			STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   308,   319, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1031,12 +1031,12 @@ static const Widget _save_dialog_scen_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,										STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   279, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   246,   256,    48,   291, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,										STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,										STR_400B_CURRENTLY_SELECTED_NAME},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,				STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   256,   308,   319, STR_4002_SAVE,					STR_400D_SAVE_THE_CURRENT_GAME_USING},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   280,   291, 0x0,										STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   245,   308,   319, STR_4002_SAVE,					STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   246,   256,   308,   319, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
