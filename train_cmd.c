@@ -1143,7 +1143,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	{
 		TileIndex tile = v->tile;
 		int t;
-		/* Determine the non-diagonal direction in which we will exit this tile */
+		/* Determine the diagonal direction in which we will exit this tile */
 		t = v->direction >> 1;
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[t]) {
 			t = (t - 1) & 3;

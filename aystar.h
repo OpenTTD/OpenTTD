@@ -56,7 +56,7 @@ typedef struct AyStar AyStar;
  *	AYSTAR_FOUND_END_NODE : indicates this is the end tile
  *	AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)
  */
-typedef int32 AyStar_EndNodeCheck(AyStar *aystar, OpenListNode *current);
+typedef int32 AyStar_EndNodeCheck(AyStar *aystar, AyStarNode *node);
 
 /*
  * This function is called to calculate the G-value for AyStar Algorithm.

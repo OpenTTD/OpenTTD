@@ -193,6 +193,7 @@ typedef struct Patches {
 	bool new_pathfinding_all; /* Use the newest pathfinding algorithm for all */
 
 	uint32 npf_rail_firstred_penalty; /* The penalty for when the first signal is red */
+	uint32 npf_rail_lastred_penalty; /* The penalty for when the last signal is red */
 	uint32 npf_rail_station_penalty; /* The penalty for station tiles */
 	uint32 npf_rail_slope_penalty; /* The penalty for sloping upwards */
 

@@ -23,10 +23,18 @@ enum { /* Indices into AyStarNode.userdata[] */
 	NPF_TRACKDIR_CHOICE = 0, /* The trackdir chosen to get here */
 	NPF_NODE_FLAGS,
 };
-enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]*/
-	NPF_FLAG_SEEN_SIGNAL = 1, /* Used to mark that a signal was seen on the way, for rail only */
-	NPF_FLAG_REVERSE = 2, /* Used to mark that this node was reached from the second start node, if applicable */
-};
+typedef enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
+	NPF_FLAG_SEEN_SIGNAL, /* Used to mark that a signal was seen on the way, for rail only */
+	NPF_FLAG_REVERSE, /* Used to mark that this node was reached from the second start node, if applicable */
+	NPF_FLAG_LAST_SIGNAL_RED, /* Used to mark that the last signal on this path was red */
+	NPF_FLAG_TARGET_CHECKED, /* Used by end node checking function of npf to mark
+														 that they have evaluated this node. When this
+														 flag is on, NPF_FLAG_IS_TARGET is on when the
+														 node is a target, and off when it is not. Should
+														 never be used directly, only by the end node
+														 checking functions for caching of results. */
+	NPF_FLAG_IS_TARGET, /* See comment for NPF_FLAG_TARGET_CHECKED */
+} NPFNodeFlag;
 
 typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 	uint best_bird_dist; /* The best heuristic found. Is 0 if the target was found */
@@ -42,8 +50,8 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
  * NPFFoundTargetData above for the meaning of the result. */
 NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner);
 /* Will search as above, but with two start nodes, the second being the
- * reverse. Look at the NPF_NODE_REVERSE flag in the result node to see which
- * direction was taken */
+ * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
+ * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
 NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner);
 
 /* Will search a route to the closest depot. */
@@ -56,6 +64,30 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, Tr
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type, Owner owner);
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
+
+
+/*
+ * Functions to manipulate the various NPF related flags on an AyStarNode.
+ */
+
+/**
+ * Returns the current value of the given flag on the given AyStarNode.
+ */
+static inline bool NPFGetFlag(const AyStarNode* node, NPFNodeFlag flag)
+{
+	return HASBIT(node->user_data[NPF_NODE_FLAGS], flag);
+}
+
+/**
+ * Sets the given flag on the given AyStarNode to the given value.
+ */
+static inline void NPFSetFlag(AyStarNode* node, NPFNodeFlag flag, bool value)
+{
+	if (value)
+		SETBIT(node->user_data[NPF_NODE_FLAGS], flag);
+	else
+		CLRBIT(node->user_data[NPF_NODE_FLAGS], flag);
+}
 
 /*
  * Some tables considering tracks, directions and signals.

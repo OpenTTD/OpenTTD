@@ -341,18 +341,29 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	/* Determine extra costs */
 
-	/* Ordinary track with signals */
+	/* Check for signals */
 	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40) {
+		/* Ordinary track with signals */
 		if ((_map2[tile] & _signal_along_trackdir[trackdir]) == 0) {
 			/* Signal facing us is red */
-			if (!(current->user_data[NPF_NODE_FLAGS] & NPF_FLAG_SEEN_SIGNAL)) {
+			if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
 				/* Penalize the first signal we
 				 * encounter, if it is red */
 				cost += _patches.npf_rail_firstred_penalty;
 			}
+			/* Record the state of this signal */
+			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, true);
+		} else {
+			/* Record the state of this signal */
+			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, false);
 		}
-		current->user_data[NPF_NODE_FLAGS] |= NPF_FLAG_SEEN_SIGNAL;
+		NPFSetFlag(current, NPF_FLAG_SEEN_SIGNAL, true);
 	}
+
+	/* Penalise the tile if it is a target tile and the last signal was
+	 * red */
+	if (as->EndNodeCheck(as, current) && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
+		cost += _patches.npf_rail_lastred_penalty;
 
 	/* Check for slope */
 	cost += NPFSlopeCost(current);
@@ -385,8 +396,8 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 }
 
 /* Will find any depot */
-int32 NPFFindDepot(AyStar* as, OpenListNode *current) {
-	TileIndex tile = current->path.node.tile;
+int32 NPFFindDepot(AyStar* as, AyStarNode *node) {
+	TileIndex tile = node->tile;
 	if (IsTileDepotType(tile, as->user_data[NPF_TYPE]))
 		return AYSTAR_FOUND_END_NODE;
 	else
@@ -394,17 +405,28 @@ int32 NPFFindDepot(AyStar* as, OpenListNode *current) {
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current) {
+int32 NPFFindStationOrTile(AyStar* as, AyStarNode *node) {
+
+	/* See if we checked this before */
+	if (NPFGetFlag(node, NPF_FLAG_TARGET_CHECKED))
+		return NPFGetFlag(node, NPF_FLAG_IS_TARGET);
+	/* We're gonna check this now and store the result, let's mark that */
+	NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, true);
+
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
 	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
-	TileIndex tile = current->path.node.tile;
-	if (	(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
+	TileIndex tile = node->tile;
+	if (
+		(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
 		(IsTileType(tile, MP_STATION) && _map2[tile] == fstd->station_index) /* the station */
-	   )
-			return AYSTAR_FOUND_END_NODE;
-	else
+	) {
+		NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, true);
+		return AYSTAR_FOUND_END_NODE;
+	} else {
+		NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, false);
 		return AYSTAR_DONE;
+	}
 }
 
 /* To be called when current contains the (shortest route to) the target node.
@@ -422,9 +444,9 @@ void NPFSaveTargetData(AyStar* as, OpenListNode* current) {
 /* Will just follow the results of GetTileTrackStatus concerning where we can
  * go and where not. Uses AyStar.user_data[NPF_TYPE] as the transport type and
  * an argument to GetTileTrackStatus. Will skip tunnels, meaning that the
- * entry and exit are neighbours. Will fill AyStarNode.user_data[NPF_TRACKDIR_CHOICE] with an
- * appropriate value, and copy AyStarNode.user_data[NPF_NODE_FLAGS] from the
- * parent */
+ * entry and exit are neighbours. Will fill
+ * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] with an appropriate value, and
+ * copy AyStarNode.user_data[NPF_NODE_FLAGS] from the parent */
 void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	byte src_trackdir = current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
@@ -581,7 +603,8 @@ NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFF
 	_npf_aystar.addstart(&_npf_aystar, start1);
 	if (start2) {
 		start2->user_data[NPF_TRACKDIR_CHOICE] = 0xff;
-		start2->user_data[NPF_NODE_FLAGS] = NPF_FLAG_REVERSE;
+		start2->user_data[NPF_NODE_FLAGS] = 0;
+		NPFSetFlag(start2, NPF_FLAG_REVERSE, true);
 		_npf_aystar.addstart(&_npf_aystar, start2);
 	}
 

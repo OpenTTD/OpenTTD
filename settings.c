@@ -933,6 +933,13 @@ const SettingDesc patch_settings[] = {
 	* sure), so we set the default penalty at 10 (the station tile
 	* penalty will further prevent this */
 	{"npf_rail_firstred_penalty",		SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),	&_patches.npf_rail_firstred_penalty,		NULL},
+	/* This penalty is for when the last signal before the target is red.
+	 * This is useful for train stations, where there are multiple
+	 * platforms to choose from, which lie in different signal blocks.
+	 * Every target in a occupied signal block (ie an occupied platform)
+	 * will get this penalty.
+	 */
+	{"npf_rail_lastred_penalty",		SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),	&_patches.npf_rail_lastred_penalty,		NULL},
 	/* When a train plans a route over a station tile, this penalty is
 	* applied. We want that trains plan a route around a typical, 4x5
 	* station, which means two tiles to the right, and two tiles back to
