@@ -203,12 +203,20 @@ static const DriverDesc *ChooseDefaultDriver(const DriverDesc *dd)
 	return best;
 }
 
-void ttd_strlcpy(char *dst, const char *src, size_t len)
+void ttd_strlcpy(char *dst, const char *src, size_t size)
 {
-	assert(len > 0);
-	while (--len && *src)
-		*dst++=*src++;
-	*dst = 0;
+	assert(size > 0);
+	while (--size > 0 && *src != '\0') *dst++ = *src++;
+	*dst = '\0';
+}
+
+void ttd_strlcat(char *dst, const char *src, size_t size)
+{
+	assert(size > 0);
+	for (; size > 0 && *dst != '\0'; --size, ++dst) {}
+	assert(size > 0);
+	while (--size > 0 && *src != '\0') *dst++ = *src++;
+	*dst = '\0';
 }
 
 static char *strecpy(char *dst, const char *src)

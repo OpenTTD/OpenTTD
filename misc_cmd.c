@@ -158,10 +158,8 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(old_str);
 
 		if (p->name_1 == STR_SV_UNNAMED) {
-			byte *s = " Transport";
-			byte *d = (byte*)_decode_parameters, b;
-			d--; do d++; while (*d);
-			do *d++ = b = *s++; while(d != (byte*)endof(_decode_parameters) && b != 0);
+			ttd_strlcat(
+				(char*)_decode_parameters, " Transport", sizeof(_decode_parameters));
 			DoCommandByTile(0, p1, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();

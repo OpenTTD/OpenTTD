@@ -300,6 +300,7 @@ CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 # this is a workaround to test for >=
 ifeq ($(shell if test $(CC_VERSION) -ge 29; then echo true; fi), true)
   CFLAGS += -O -Wall -Wno-multichar -Wsign-compare -Wstrict-prototypes
+  CFLAGS += -Wwrite-strings
 endif
 ifeq ($(shell if test $(CC_VERSION) -ge 30; then echo true; fi), true)
   CFLAGS += -W -Wno-unused-parameter
