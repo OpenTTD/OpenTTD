@@ -1654,6 +1654,9 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
 
+		// if networking, disable fast-forward button
+		if (_networking) w->disabled_state |= (1 << 1);
+
 		// if spectator, disable things
 		if (_current_player == OWNER_SPECTATOR){
 			w->disabled_state |= (1 << 0) | (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23);

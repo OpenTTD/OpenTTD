@@ -542,7 +542,7 @@ static int SdlVideoMainLoop()
 #else
 		if (keys[SDLK_TAB]) {
 #endif
-			_fast_forward |= 2;
+			if (!_networking) _fast_forward |= 2;
 		} else if (_fast_forward&2) {
 			_fast_forward = 0;
 		}

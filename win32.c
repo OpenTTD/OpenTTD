@@ -672,7 +672,7 @@ static int Win32GdiMainLoop()
 #else
 		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0) {
 #endif
-			_fast_forward |= 2;
+			if (!_networking) _fast_forward |= 2;
 		} else if (_fast_forward&2) {
 			_fast_forward = 0;
 		}
