@@ -1,6 +1,8 @@
 #ifndef SIGNS_H
 #define SIGNS_H
 
+#include "pool.h"
+
 typedef struct SignStruct {
 	StringID     str;
 	ViewportSign sign;
@@ -13,16 +15,26 @@ typedef struct SignStruct {
 	uint16       index;
 } SignStruct;
 
-VARDEF SignStruct _sign_list[40];
-VARDEF uint _sign_size;
+extern MemoryPool _sign_pool;
 
+/**
+ * Get the pointer to the sign with index 'index'
+ */
 static inline SignStruct *GetSign(uint index)
 {
-	assert(index < _sign_size);
-	return &_sign_list[index];
+	return (SignStruct*)GetItemFromPool(&_sign_pool, index);
 }
 
-#define FOR_ALL_SIGNS(s) for(s = _sign_list; s != &_sign_list[_sign_size]; s++)
+/**
+ * Get the current size of the SignPool
+ */
+static inline uint16 GetSignPoolSize(void)
+{
+	return _sign_pool.total_items;
+}
+
+#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL)
+#define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 VARDEF SignStruct *_new_sign_struct;
 

@@ -1100,6 +1100,9 @@ static void FixSign(OldSign *o, int num)
 		if (o->text == 0)
 			continue;
 
+		if (!AddBlockIfNeeded(&_sign_pool, i))
+			error("Signs: failed loading savegame: too many signs");
+
 		n = GetSign(i);
 
 		n->str = o->text;

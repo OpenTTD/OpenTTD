@@ -496,7 +496,6 @@ static void InitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_roadstops_size = lengthof(_roadstops);
-	_sign_size      = lengthof(_sign_list);
 	_orders_size    = lengthof(_orders);
 
 	_station_sort  = NULL;
@@ -512,6 +511,7 @@ static void UnInitializeDynamicVariables(void)
 	CleanPool(&_industry_pool);
 	CleanPool(&_station_pool);
 	CleanPool(&_vehicle_pool);
+	CleanPool(&_sign_pool);
 
 	free(_station_sort);
 	free(_vehicle_sort);

@@ -5,6 +5,26 @@
 #include "saveload.h"
 #include "command.h"
 
+enum {
+	/* Max signs: 64000 (4 * 16000) */
+	SIGN_POOL_BLOCK_SIZE_BITS = 2,       /* In bits, so (1 << 2) == 4 */
+	SIGN_POOL_MAX_BLOCKS      = 16000,
+};
+
+/**
+ * Called if a new block is added to the sign-pool
+ */
+static void SignPoolNewBlock(uint start_item)
+{
+	SignStruct *ss;
+
+	FOR_ALL_SIGNS_FROM(ss, start_item)
+		ss->index = start_item++;
+}
+
+/* Initialize the sign-pool */
+MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(SignStruct), &SignPoolNewBlock, 0, 0, NULL };
+
 /**
  *
  * Update the coordinate of one sign
@@ -59,6 +79,10 @@ static SignStruct *AllocateSign(void)
 	FOR_ALL_SIGNS(s)
 		if (s->str == 0)
 			return s;
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_sign_pool))
+		return AllocateSign();
 
 	return NULL;
 }
@@ -177,14 +201,8 @@ void PlaceProc_Sign(uint tile)
  */
 void InitializeSigns(void)
 {
-	SignStruct *s;
-	int i;
-
-	memset(_sign_list, 0, sizeof(_sign_list[0]) * _sign_size);
-
-	i = 0;
-	FOR_ALL_SIGNS(s)
-		s->index = i++;
+	CleanPool(&_sign_pool);
+	AddBlockToPool(&_sign_pool);
 }
 
 static const byte _sign_desc[] = {
@@ -205,13 +223,13 @@ static const byte _sign_desc[] = {
  */
 static void Save_SIGN(void)
 {
-	SignStruct *s;
+	SignStruct *ss;
 
-	FOR_ALL_SIGNS(s) {
+	FOR_ALL_SIGNS(ss) {
 		/* Don't save empty signs */
-		if (s->str != 0) {
-			SlSetArrayIndex(s->index);
-			SlObject(s, _sign_desc);
+		if (ss->str != 0) {
+			SlSetArrayIndex(ss->index);
+			SlObject(ss, _sign_desc);
 		}
 	}
 }
@@ -225,9 +243,13 @@ static void Load_SIGN(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SignStruct *s = GetSign(index);
+		SignStruct *ss;
 
-		SlObject(s, _sign_desc);
+		if (!AddBlockIfNeeded(&_sign_pool, index))
+			error("Signs: failed loading savegame: too many signs");
+
+		ss = GetSign(index);
+		SlObject(ss, _sign_desc);
 	}
 }
 
