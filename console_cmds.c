@@ -150,7 +150,7 @@ static void LoadMap(uint no)
 	BuildFileList();
 
 	/* Check if in range */
-	if (no != 0 && no <= _fios_num) {
+	if (no != 0 && no <= (uint)_fios_num) {
 		const FiosItem *item = &_fios_list[no - 1];
 
 		/* Load the file */
