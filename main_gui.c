@@ -738,7 +738,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
 	{
-		Window * wt;
+		Window *wt = NULL;
 		switch (w->window_class) {
 		case WC_MAIN_WINDOW:
 			wt = FindWindowById(WC_MAIN_TOOLBAR, 0);

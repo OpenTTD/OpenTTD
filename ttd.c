@@ -581,6 +581,7 @@ int ttd_main(int argc, char* argv[])
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
 	MusicLoop();
+	_savegame_sort_order = 1; // default sorting of savegames is by date, newest first
 
 	// Default difficulty level
 	_opt_mod_ptr = &_new_opt;

@@ -521,8 +521,8 @@ static void TileLoopWaterHelper(uint tile, const int16 *offs)
 static void FloodVehicle(Vehicle *v)
 {
 	Vehicle *u;
-	uint16 pass;
 	if (!(v->vehstatus & VS_CRASHED)) {
+		uint16 pass = 0;
 
 		if (v->type == VEH_Road) {	// flood bus/truck
 			pass = 1;	// driver
@@ -550,7 +550,8 @@ static void FloodVehicle(Vehicle *v)
 			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
 			_vehicle_sort_dirty[VEHTRAIN] = true;
 			InvalidateWindow(WC_TRAINS_LIST, v->owner);						
-		}
+		} else
+			return;
 
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, 4);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);

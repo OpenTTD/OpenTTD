@@ -5,32 +5,45 @@ void DrawVehicleProfitButton(Vehicle *v, int x, int y);
 void InitializeVehiclesGuiList();
 
 /* sorter stuff */
-int CDECL GeneralOwnerSorter  (const void *a, const void *b);
-int CDECL VehicleNameSorter   (const void *a, const void *b);
-int CDECL GeneralVehicleSorter(const void *a, const void *b);
-VARDEF uint32	_internal_name_sorter_id;	// internal StringID for default vehicle-names
-VARDEF uint32	_last_vehicle_idx;				// cached index to hopefully speed up name-sorting
-VARDEF bool		_internal_sort_order;			// descending/ascending
-VARDEF byte		_internal_sort_type;			// Miscalleneous sorting criteria
-
 typedef struct SortStruct { // store owner through sorting process
 	uint32	index;
 	byte		owner;
 } SortStruct;
 
-#define PERIODIC_RESORT_DAYS 10
+int CDECL GeneralOwnerSorter(const void *a, const void *b);
+void VehicleSorter(SortStruct *firstelement, uint32 n, uint16 size);
+VARDEF uint32	_internal_name_sorter_id;	// internal StringID for default vehicle-names
+VARDEF uint32	_last_vehicle_idx;				// cached index to hopefully speed up name-sorting
+VARDEF bool		_internal_sort_order;			// descending/ascending
 
-enum VehicleSortListingTypes {
- SORT_BY_UNSORTED											= 0,
- SORT_BY_NUMBER												= 1,
- SORT_BY_NAME													= 2,
- SORT_BY_AGE													= 3,
- SORT_BY_PROFIT_THIS_YEAR							= 4,
- SORT_BY_PROFIT_LAST_YEAR							= 5,
- SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE	= 6,
- SORT_BY_RELIABILITY									= 7,
- SORT_BY_MAX_SPEED										= 8
+#define PERIODIC_RESORT_DAYS 10
+#define DEF_SORTER(yyyy) int CDECL yyyy(const void *a, const void *b)
+
+DEF_SORTER(VehicleUnsortedSorter);
+DEF_SORTER(VehicleNumberSorter);
+DEF_SORTER(VehicleNameSorter);
+DEF_SORTER(VehicleAgeSorter);
+DEF_SORTER(VehicleProfitThisYearSorter);
+DEF_SORTER(VehicleProfitLastYearSorter);
+DEF_SORTER(VehicleCargoSorter);
+DEF_SORTER(VehicleReliabilitySorter);
+DEF_SORTER(VehicleMaxSpeedSorter);
+
+typedef DEF_SORTER(VehicleSortListingTypeFunctions);
+
+static VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {
+	&VehicleUnsortedSorter,
+	&VehicleNumberSorter,
+	&VehicleNameSorter,
+	&VehicleAgeSorter,
+	&VehicleProfitThisYearSorter,
+	&VehicleProfitLastYearSorter,
+	&VehicleCargoSorter,
+	&VehicleReliabilitySorter,
+	&VehicleMaxSpeedSorter
 };
+
+#define SORT_BY_UNSORTED 0
 
 static const uint16 _vehicle_sort_listing[] = {
 	STR_SORT_BY_UNSORTED,

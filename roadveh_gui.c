@@ -747,11 +747,9 @@ static void MakeSortedRoadList(byte owner)
 		n =							_num_road_sort[owner] - _num_road_sort[owner-1];
 	}
 
-	_internal_sort_type				= _road_sort_type[owner];
 	_internal_sort_order			= _road_sort_order[owner];
 	_internal_name_sorter_id	= STR_SV_ROADVEH_NAME;
-	// only name sorting needs a different procedure, all others are handled by the general sorter
-	qsort(firstelement, n, sizeof(_road_sort[0]), (_internal_sort_type == SORT_BY_NAME) ? VehicleNameSorter : GeneralVehicleSorter);
+	qsort(firstelement, n, sizeof(_road_sort[0]), _vehicle_sorter[_road_sort_type[owner]]);
 
 	DEBUG(misc, 1) ("Resorting Roadvehicles list player %d...", owner+1);
 }
@@ -764,7 +762,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		const byte window_number = (byte)w->window_number;
 
 		if (_road_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
-			w->disabled_state |= (1 << 3);
+			w->disabled_state |= (1 << 2);
 
 		if (_road_sort_dirty[window_number] || _vehicle_sort_dirty[VEHROAD]) {
 			_road_sort_dirty[window_number] = false;
@@ -786,11 +784,12 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
 			SET_DPARAM16(2, w->vscroll.count);
-			SET_DPARAM16(3, _vehicle_sort_listing[_road_sort_type[window_number]]);
 			DrawWindowWidgets(w);
 		}
+		/* draw sorting criteria string */
+		DrawString(85, 15, _vehicle_sort_listing[_road_sort_type[window_number]], 0x10);
 		/* draw arrow pointing up/down for ascending/descending soring */
-		DoDrawString(_road_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 85, 15, 0x10);
+		DoDrawString(_road_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 69, 15, 0x10);
 
 		/* draw the roadvehicles */
 		{
@@ -833,13 +832,13 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 3: /* Flip sorting method ascending/descending */
+		case 2: /* Flip sorting method ascending/descending */
 			_road_sort_order[(byte)w->window_number] ^= 1;
 			_road_sort_dirty[(byte)w->window_number] = true;
 			SetWindowDirty(w);
 			break;
-		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, _road_sort_type[(byte)w->window_number], 5, 0); // do it for widget 5
+		case 3: case 4:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _vehicle_sort_listing, _road_sort_type[(byte)w->window_number], 4, 0); // do it for widget 4
 			return;
 		case 6: { /* Matrix to show vehicles */
 			int id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
@@ -889,7 +888,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		_road_sort_type[(byte)w->window_number] = e->dropdown.index;
 
 		if (_road_sort_type[(byte)w->window_number] != SORT_BY_UNSORTED) // enable 'Sort By' if a sorter criteria is chosen
-			w->disabled_state &= ~(1 << 3);
+			w->disabled_state &= ~(1 << 2);
 
 		SetWindowDirty(w);
 		break;
@@ -914,21 +913,21 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 static const Widget _player_roadveh_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,    15,    14,    25, 0x0,											0},
-{ WWT_PUSHTXTBTN,    14,    16,    96,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
-{    WWT_TEXTBTN,    14,    97,   248,    14,    25, STR_02E7,								0},
-{   WWT_CLOSEBOX,    14,   249,   259,    14,    25, STR_0225,								STR_SORT_TIP},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											0},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_9004_NEW_VEHICLES, STR_901B_BUILD_NEW_ROAD_VEHICLES},
-{     WWT_IMGBTN,    14,   130,   259,   208,   219, 0x0, 0},
+{ WWT_PUSHTXTBTN,    14,     0,   129,   208,   219, STR_8815_NEW_VEHICLES,		STR_883E_BUILD_NEW_TRAINS_REQUIRES},
+{      WWT_PANEL,    14,   130,   259,   208,   219, 0x0,											0},
 {      WWT_LAST},
 };
 
 static const WindowDesc _player_roadveh_desc = {
 	-1, -1, 260, 220,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };
@@ -936,11 +935,11 @@ static const WindowDesc _player_roadveh_desc = {
 static const Widget _other_player_roadveh_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   259,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,    15,    14,    25, 0x0,											0},
-{ WWT_PUSHTXTBTN,    14,    16,    96,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
-{    WWT_TEXTBTN,    14,    97,   248,    14,    25, STR_02E7,								0},
-{   WWT_CLOSEBOX,    14,   249,   259,    14,    25, STR_0225,								STR_SORT_TIP},
-{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,							STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   237,    14,    25, 0x0,											STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   238,   248,    14,    25, STR_0225,								STR_SORT_TIP},
+{      WWT_PANEL,    14,   249,   259,    14,    25, 0x0,											0},
+{     WWT_MATRIX,    14,     0,   248,    26,   207, 0x701,										STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   249,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
 };
@@ -948,7 +947,7 @@ static const Widget _other_player_roadveh_widgets[] = {
 static const WindowDesc _other_player_roadveh_desc = {
 	-1, -1, 260, 208,
 	WC_ROADVEH_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_other_player_roadveh_widgets,
 	PlayerRoadVehWndProc
 };

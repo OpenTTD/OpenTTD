@@ -1180,11 +1180,9 @@ static void MakeSortedTrainList(byte owner)
 		n =							_num_train_sort[owner] - _num_train_sort[owner-1];
 	}
 
-	_internal_sort_type				= _train_sort_type[owner];
 	_internal_sort_order			= _train_sort_order[owner];
 	_internal_name_sorter_id	= STR_SV_TRAIN_NAME;
-	// only name sorting needs a different procedure, all others are handled by the general sorter
-	qsort(firstelement, n, sizeof(_train_sort[0]), (_internal_sort_type == SORT_BY_NAME) ? VehicleNameSorter : GeneralVehicleSorter);
+	qsort(firstelement, n, sizeof(_train_sort[0]), _vehicle_sorter[_train_sort_type[owner]]);
 
 	DEBUG(misc, 1) ("Resorting Trains list player %d...", owner+1);
 }
@@ -1197,7 +1195,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		const byte window_number = (byte)w->window_number;
 
 		if (_train_sort_type[window_number] == SORT_BY_UNSORTED) // disable 'Sort By' tooltip on Unsorted sorting criteria
-			w->disabled_state |= (1 << 3);
+			w->disabled_state |= (1 << 2);
 
 		if (_train_sort_dirty[window_number] || _vehicle_sort_dirty[VEHTRAIN]) {
 			_train_sort_dirty[window_number] = false;
@@ -1219,11 +1217,12 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			SET_DPARAM16(0, p->name_1);
 			SET_DPARAM32(1, p->name_2);
 			SET_DPARAM16(2, w->vscroll.count);
-			SET_DPARAM16(3, _vehicle_sort_listing[_train_sort_type[window_number]]);
 			DrawWindowWidgets(w);
 		}
+		/* draw sorting criteria string */
+		DrawString(85, 15, _vehicle_sort_listing[_train_sort_type[window_number]], 0x10);
 		/* draw arrow pointing up/down for ascending/descending soring */
-		DoDrawString(_train_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 150, 15, 0x10);
+		DoDrawString(_train_sort_order[window_number] & 1 ? "\xAA" : "\xA0", 69, 15, 0x10);
 
 		/* draw the trains */
 		{
@@ -1266,13 +1265,13 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		switch(e->click.widget) {
-		case 3: /* Flip sorting method ascending/descending */
+		case 2: /* Flip sorting method ascending/descending */
 			_train_sort_order[(byte)w->window_number] ^= 1;
 			_train_sort_dirty[(byte)w->window_number] = true;
 			SetWindowDirty(w);
 			break;
-		case 4: case 5:/* Select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _vehicle_sort_listing, _train_sort_type[(byte)w->window_number], 5, 0); // do it for widget 5
+		case 3: case 4:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _vehicle_sort_listing, _train_sort_type[(byte)w->window_number], 4, 0); // do it for widget 4
 			return;
 		case 6: { /* Matrix to show vehicles */
 			int id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
@@ -1322,7 +1321,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		_train_sort_type[(byte)w->window_number] = e->dropdown.index;
 
 		if (_train_sort_type[(byte)w->window_number] != SORT_BY_UNSORTED) // enable 'Sort By' if a sorter criteria is chosen
-			w->disabled_state &= ~(1 << 3);
+			w->disabled_state &= ~(1 << 2);
 
 		SetWindowDirty(w);
 		break;
@@ -1347,10 +1346,10 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 static const Widget _player_trains_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,    80,    14,    25, 0x0,										0},
-{ WWT_PUSHTXTBTN,    14,    81,   161,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
-{    WWT_TEXTBTN,    14,   162,   313,    14,    25, STR_02E7,              0},
-{   WWT_CLOSEBOX,    14,   314,   324,    14,    25, STR_0225,              STR_SORT_TIP},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,			              STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_TIP},
+{      WWT_PANEL,    14,   244,   324,    14,    25, 0x0,										0},
 {     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,    14,     0,   161,   208,   219, STR_8815_NEW_VEHICLES,	STR_883E_BUILD_NEW_TRAINS_REQUIRES},
@@ -1361,7 +1360,7 @@ static const Widget _player_trains_widgets[] = {
 static const WindowDesc _player_trains_desc = {
 	-1, -1, 325, 220,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_trains_widgets,
 	PlayerTrainsWndProc
 };
@@ -1369,10 +1368,10 @@ static const WindowDesc _player_trains_desc = {
 static const Widget _other_player_trains_widgets[] = {
 {   WWT_CLOSEBOX,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,    14,    11,   324,     0,    13, STR_881B_TRAINS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,    14,     0,    80,    14,    25, 0x0,										0},
-{ WWT_PUSHTXTBTN,    14,    81,   161,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
-{    WWT_TEXTBTN,    14,   162,   313,    14,    25, STR_02E7,              0},
-{   WWT_CLOSEBOX,    14,   314,   324,    14,    25, STR_0225,              STR_SORT_TIP},
+{ WWT_PUSHTXTBTN,    14,     0,    80,    14,    25, SRT_SORT_BY,           STR_SORT_TIP},
+{      WWT_PANEL,    14,    81,   232,    14,    25, 0x0,										STR_SORT_TIP},
+{   WWT_CLOSEBOX,    14,   233,   243,    14,    25, STR_0225,              STR_SORT_TIP},
+{      WWT_PANEL,    14,   244,   324,    14,    25, 0x0,										0},
 {     WWT_MATRIX,    14,     0,   313,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    14,   314,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_LAST},
@@ -1381,7 +1380,7 @@ static const Widget _other_player_trains_widgets[] = {
 static const WindowDesc _other_player_trains_desc = {
 	-1, -1, 325, 208,
 	WC_TRAINS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_other_player_trains_widgets,
 	PlayerTrainsWndProc
 };

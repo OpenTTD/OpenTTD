@@ -45,103 +45,150 @@ void DrawVehicleProfitButton(Vehicle *v, int x, int y)
 /************ Sorter functions *****************/
 int CDECL GeneralOwnerSorter(const void *a, const void *b)
 {
-	return (*(SortStruct*)a).owner - (*(SortStruct*)b).owner;
+	return (*(const SortStruct*)a).owner - (*(const SortStruct*)b).owner;
+}
+
+/* Variables you need to set before calling this function!
+* 1. (byte)_internal_sort_type:					sorting criteria to sort on
+* 2. (bool)_internal_sort_order:				sorting order, descending/ascending
+* 3. (uint32)_internal_name_sorter_id:	default StringID of the vehicle when no name is set. eg
+*    STR_SV_TRAIN_NAME for trains or STR_SV_AIRCRAFT_NAME for aircraft
+*/
+int CDECL VehicleUnsortedSorter(const void *a, const void *b)
+{
+	return DEREF_VEHICLE((*(const SortStruct*)a).index)->index - DEREF_VEHICLE((*(const SortStruct*)b).index)->index;
+}
+
+int CDECL VehicleNumberSorter(const void *a, const void *b)
+{
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->unitnumber - vb->unitnumber;
+
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
 }
 
 static char _bufcache[64];	// used together with _last_vehicle_idx to hopefully speed up stringsorting
-
-/* Variables you need to set before calling this function!
-* 1. (uint32)_internal_name_sorter_id:	default StringID of the vehicle when no name is set. eg
-*    STR_SV_TRAIN_NAME for trains or STR_SV_AIRCRAFT_NAME for aircraft
-* 2. (bool)_internal_sort_order:				sorting order, descending/ascending
-*/
 int CDECL VehicleNameSorter(const void *a, const void *b)
 {
-	SortStruct *cmp1 = (SortStruct*)a;
-	SortStruct *cmp2 = (SortStruct*)b;
-	Vehicle *v;
+	const SortStruct *cmp1 = (SortStruct*)a;
+	const SortStruct *cmp2 = (SortStruct*)b;
+	const Vehicle *va = DEREF_VEHICLE(cmp1->index);
+	const Vehicle *vb = DEREF_VEHICLE(cmp2->index);
 	char buf1[64] = "\0";
 	int r;
 
-	v = DEREF_VEHICLE(cmp1->index);
-	if (v->string_id != _internal_name_sorter_id) {
-		SET_DPARAM16(0, v->string_id);
+	if (va->string_id != _internal_name_sorter_id) {
+		SET_DPARAM16(0, va->string_id);
 		GetString(buf1, STR_0315);
 	}
 
 	if ( cmp2->index != _last_vehicle_idx) {
 		_last_vehicle_idx = cmp2->index;
-		v = DEREF_VEHICLE(cmp2->index);
 		_bufcache[0] = '\0';
-		if (v->string_id != _internal_name_sorter_id) {
-			SET_DPARAM16(0, v->string_id);
+		if (vb->string_id != _internal_name_sorter_id) {
+			SET_DPARAM16(0, vb->string_id);
 			GetString(_bufcache, STR_0315);
 		}
 	}
 
 	r =  strcmp(buf1, _bufcache);	// sort by name
-	if (_internal_sort_order & 1) r = -r;
-	return r;
+	
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
 }
 
-/* Variables you need to set before calling this function!
-* 1. (byte)_internal_sort_type:		the criteria by which to sort these vehicles (number, age, etc)
-* 2. (bool)_internal_sort_order:	sorting order, descending/ascending
-*/
-int CDECL GeneralVehicleSorter(const void *a, const void *b)
+int CDECL VehicleAgeSorter(const void *a, const void *b)
 {
-	SortStruct *cmp1 = (SortStruct*)a;
-	SortStruct *cmp2 = (SortStruct*)b;
-	Vehicle *va = DEREF_VEHICLE(cmp1->index);
-	Vehicle *vb = DEREF_VEHICLE(cmp2->index);
-	int r;
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->age - vb->age;
 
-	switch (_internal_sort_type) {
-		case SORT_BY_UNSORTED: /* Sort unsorted */
-			return va->index - vb->index;
-		case SORT_BY_NUMBER: /* Sort by Number */
-			r = va->unitnumber - vb->unitnumber;
-			break;
-		/* case SORT_BY_NAME: Sort by Name (VehicleNameSorter)*/
-		case SORT_BY_AGE: /* Sort by Age */
-			r = va->age - vb->age;
-			break;
-		case SORT_BY_PROFIT_THIS_YEAR: /* Sort by Profit this year */
-			r = va->profit_this_year - vb->profit_this_year;
-			break;
-		case SORT_BY_PROFIT_LAST_YEAR: /* Sort by Profit last year */
-			r = va->profit_last_year - vb->profit_last_year;
-			break;
-		case SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE: { /* Sort by Total capacity per cargotype */
-			// FIXME - someone write a normal cargo sorter that also works by cargo_cap,
-			// FIXME - since I seem to be unable to do so :S
-			Vehicle *ua = va;
-			Vehicle *ub = vb;
-			int i;
-			byte _cargo_counta[NUM_CARGO];
-			byte _cargo_countb[NUM_CARGO];
-			do {
-				_cargo_counta[ua->cargo_type]++;
-			} while ( (ua = ua->next) != NULL);
-			do {
-				_cargo_countb[ub->cargo_type]++;
-			} while ( (ub = ub->next) != NULL);
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+	r = va->unitnumber - vb->unitnumber;
 
-			for (i = 0; i < NUM_CARGO; i++) {
-				r = _cargo_counta[i] - _cargo_countb[i];
-				if (r != 0)
-					break;
-			}
-		} break;
-		case SORT_BY_RELIABILITY: /* Sort by Reliability */
-			r = va->reliability - vb->reliability;
-			break;
-		case SORT_BY_MAX_SPEED: /* Sort by Max speed */
-			r = va->max_speed - vb->max_speed;
-			break;
-		default: NOT_REACHED();
-	}
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
+{
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->profit_this_year - vb->profit_this_year;
 	
-	if (_internal_sort_order & 1) r = -r;
-	return r;
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
+{
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->profit_last_year - vb->profit_last_year;
+
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+int CDECL VehicleCargoSorter(const void *a, const void *b)
+{
+	// FIXME - someone write a normal cargo sorter that also works by cargo_cap,
+	// FIXME - since I seem to be unable to do so :S
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = 0;
+	int i;
+	byte _cargo_counta[NUM_CARGO];
+	byte _cargo_countb[NUM_CARGO];
+	memset(_cargo_counta, 0, sizeof(_cargo_counta));
+	memset(_cargo_countb, 0, sizeof(_cargo_countb));
+
+	do {
+		_cargo_counta[va->cargo_type]++;
+	} while ( (va = va->next) != NULL);
+
+	do {
+		_cargo_countb[vb->cargo_type]++;
+	} while ( (vb = vb->next) != NULL);
+
+	for (i = 0; i < NUM_CARGO; i++) {
+		r = _cargo_counta[i] - _cargo_countb[i];
+		if (r != 0)
+			break;
+	}
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+int CDECL VehicleReliabilitySorter(const void *a, const void *b)
+{
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->reliability - vb->reliability;
+
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
+{
+	const Vehicle *va = DEREF_VEHICLE((*(const SortStruct*)a).index);
+	const Vehicle *vb = DEREF_VEHICLE((*(const SortStruct*)b).index);
+	int r = va->max_speed - vb->max_speed;
+
+	if (r == 0) // if the sorting criteria had the same value, sort by unitnumber
+		r = va->unitnumber - vb->unitnumber;
+
+	return (_internal_sort_order & 1) ? -r : r;
 }
