@@ -305,14 +305,14 @@ static const AndOr _smallmap_vegetation_andor[] = {
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 };
 
-static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
-{
-	uint t;
 
-	t = GetTileType(tile);
+static inline TileType GetEffectiveTileType(TileIndex tile)
+{
+	TileType t = GetTileType(tile);
+
 	if (t == MP_TUNNELBRIDGE) {
 		t = _map5[tile];
-		if ((t & 0x80) == 0) t>>=1;
+		if ((t & 0x80) == 0) t >>= 1;
 		if ((t & 6) == 0) {
 			t = MP_RAILWAY;
 		} else if ((t & 6) == 2) {
@@ -321,6 +321,13 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 			t = MP_WATER;
 		}
 	}
+	return t;
+}
+
+
+static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
+{
+	TileType t = GetEffectiveTileType(tile);
 
 	return
 		ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
@@ -338,20 +345,8 @@ static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int rep
 
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 {
-	uint t;
+	TileType t = GetEffectiveTileType(tile);
 
-	t = GetTileType(tile);
-	if (t == MP_TUNNELBRIDGE) {
-		t = _map5[tile];
-		if ((t & 0x80) == 0) t>>=1;
-		if ((t & 6) == 0) {
-			t = MP_RAILWAY;
-		} else if ((t & 6) == 2) {
-			t = MP_STREET;
-		} else {
-			t = MP_WATER;
-		}
-	}
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
@@ -391,24 +386,12 @@ static const byte _industry_smallmap_colors[175] = {
 
 static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 {
-	int t;
+	TileType t = GetEffectiveTileType(tile);
 
-	t = GetTileType(tile);
 	if (t == MP_INDUSTRY) {
 		byte color = _industry_smallmap_colors[_map5[tile]];
 		return color + (color << 8) + (color << 16) + (color << 24);
 	} else {
-		if (t == MP_TUNNELBRIDGE) {
-			t = _map5[tile];
-			if ((t & 0x80) == 0) t>>=1;
-			if ((t & 6) == 0) {
-				t = MP_RAILWAY;
-			} else if ((t & 6) == 2) {
-				t = MP_STREET;
-			} else {
-				t = MP_WATER;
-			}
-		}
 		return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 	}
 }
@@ -423,10 +406,9 @@ static void DrawSmallMapIndustries(byte *dst, uint xc, uint yc, int pitch, int r
 
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 {
-	int t;
+	TileType t = GetEffectiveTileType(tile);
 	uint32 bits;
 
-	t = GetTileType(tile);
 	if (t == MP_STATION) {
 		byte m5 = _map5[tile];
 		(bits = MKCOLOR(0x56565656), m5 < 8) ||			//   8 - railroad station (green)
@@ -437,17 +419,6 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 		(bits = MKCOLOR(0xB8B8B8B8), m5 < 0x73) ||	// 115 - airport (red) (new airports)
 		(bits = MKCOLOR(0xFFFFFFFF), true);					// all others
 	} else {
-		if (t == MP_TUNNELBRIDGE) {
-			t = _map5[tile];
-			if ((t & 0x80) == 0) t>>=1;
-			if ((t & 6) == 0) {
-				t = MP_RAILWAY;
-			} else if ((t & 6) == 2) {
-				t = MP_STREET;
-			} else {
-				t = MP_WATER;
-			}
-		}
 		// ground color
 		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
 	}
@@ -479,11 +450,10 @@ static const uint32 _vegetation_clear_bits[4 + 7] = {
 
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 {
+	TileType t = GetEffectiveTileType(tile);
 	int i;
-	TileType t;
 	uint32 bits;
 
-	t = GetTileType(tile);
 	switch (t) {
 		case MP_CLEAR:
 			i = (_map5[tile] & 0x1F) - 4;
@@ -503,17 +473,6 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		default:
-			if (t == MP_TUNNELBRIDGE) {
-				t = _map5[tile];
-				if ((t & 0x80) == 0) t>>=1;
-				if ((t & 6) == 0) {
-					t = MP_RAILWAY;
-				} else if ((t & 6) == 2) {
-					t = MP_STREET;
-				} else {
-					t = MP_WATER;
-				}
-			}
 			bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 			break;
 	}
@@ -535,9 +494,8 @@ static uint32 _owner_colors[256];
 
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
-	int t;
+	TileType t = GetTileType(tile);
 
-	t = GetTileType(tile);
 	if (t == MP_HOUSE || _map_owner[tile] == OWNER_TOWN) {
 		t = 0x80;
 	} else if (t == MP_INDUSTRY) {
