@@ -1494,20 +1494,17 @@ static void AiStateWantNewRoute(Player *p)
 
 		r = (uint16)Random();
 		
-		dis = _patches.ai_disable_veh;
-		if ((dis & 0xF) == 0xF) return; // no available vehicles at all?
-
 		if (r < 0x7626) {
-			if (dis&DISABLE_TRAINS) continue;
+			if (_patches.ai_disable_veh_train) continue;
 			AiWantTrainRoute(p);
 		} else if (r < 0xC4EA) {
-			if (dis&DISABLE_ROADVEH) continue;
+			if (_patches.ai_disable_veh_roadveh) continue;
 			AiWantRoadRoute(p);
 		} else if (r < 0xD89B) {
-			if (dis&DISABLE_AIRCRAFT) continue;
+			if (_patches.ai_disable_veh_aircraft) continue;
 			AiWantAircraftRoute(p);
 		} else {
-			if (dis&DISABLE_SHIPS) continue;
+			if (_patches.ai_disable_veh_ship) continue;
 			AiWantShipRoute(p);
 		}
 		

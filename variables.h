@@ -129,7 +129,10 @@ typedef struct Patches {
 	bool build_in_pause;		// build while in pause mode
 	bool bridge_pillars;		// show bridge pillars for high bridges
 
-	byte ai_disable_veh;		// mask of vehicle types to disable for ai
+	bool ai_disable_veh_train;		// disable types for AI
+	bool ai_disable_veh_roadveh;		// disable types for AI
+	bool ai_disable_veh_aircraft;		// disable types for AI
+	bool ai_disable_veh_ship;		// disable types for AI
 	uint32 starting_date;		// starting date
 	uint32 colored_news_date; // when does newspaper become colored?
 
@@ -148,13 +151,6 @@ typedef struct Patches {
 	byte wait_twoway_signal;	//waitingtime in days before a twoway signal
 
 } Patches;
-
-enum {
-	DISABLE_TRAINS = 1<<0,
-	DISABLE_ROADVEH = 1 << 1,
-	DISABLE_AIRCRAFT = 1 << 2,
-	DISABLE_SHIPS = 1 << 3,
-};
 
 VARDEF Patches _patches;
 

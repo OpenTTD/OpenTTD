@@ -669,7 +669,6 @@ enum {
 	PE_INT16 = 2,
 	PE_UINT16 = 3,
 	PE_INT32 = 4,
-	PE_BYTE = 5,
 
 	PF_0ISDIS = 1,
 	PF_NOCOMMA = 2,
@@ -719,10 +718,10 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, &_patches.servint_aircraft, 30, 1200, 10},
 	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS, &_patches.servint_ships, 30, 1200, 10},
 
-	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh, 0x01},
-	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh, 0x02},
-	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh, 0x04},
-	{PE_BYTE, 0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS, &_patches.ai_disable_veh, 0x08},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, &_patches.ai_disable_veh_train},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, &_patches.ai_disable_veh_roadveh},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT, &_patches.ai_disable_veh_aircraft},
+	{PE_BOOL, 0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS, &_patches.ai_disable_veh_ship},
 };
 
 static const PatchEntry _patches_stations[] = {
@@ -770,7 +769,6 @@ static int32 ReadPE(const PatchEntry*pe)
 	case PE_INT16:  return *(int16*)pe->variable;
 	case PE_UINT16: return *(uint16*)pe->variable;
 	case PE_INT32:  return *(int32*)pe->variable;
-	case PE_BYTE:   return *(byte*)pe->variable;
 	default:
 		NOT_REACHED();
 	}
@@ -783,13 +781,6 @@ static void WritePE(const PatchEntry *pe, int32 val)
 {
 	switch(pe->type) {
 	case PE_BOOL: *(bool*)pe->variable = (bool)val; break;
-	case PE_BYTE: if ((byte)val > (byte)pe->max) 
-									*(byte*)pe->variable = (byte)pe->max;
-								else if ((byte)val < (byte)pe->min)
-									*(byte*)pe->variable = (byte)pe->min;
-								else
-									*(byte*)pe->variable = (byte)val;
-								break;
 
 	case PE_UINT8: if ((uint8)val > (uint8)pe->max) 
 									*(uint8*)pe->variable = (uint8)pe->max;
@@ -851,12 +842,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			if (pe->type == PE_BOOL) {
 				DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
 				SET_DPARAM16(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-			} else if (pe->type == PE_BYTE) {
-				bool enabled;
-				val = ReadPE(pe);
-				enabled = (byte)val & (byte)pe->min;
-				DrawFrameRect(x+5, y+1, x+15+9, y+9, enabled?6:4, enabled?0x20:0);
-				SET_DPARAM16(0, enabled ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
 				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
 				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
@@ -905,9 +890,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				switch(pe->type) {
 				case PE_BOOL:
 					val ^= 1;
-					break;
-				case PE_BYTE:
-					val ^= pe->min;
 					break;
 				case PE_UINT8:
 				case PE_INT16:

@@ -845,7 +845,10 @@ static const SettingDesc patch_settings[] = {
 
 	{"build_in_pause",  SDT_BOOL, (void*)false, (void*)offsetof(Patches, build_in_pause)},
 
-	{"ai_disable_veh", SDT_UINT8, (void*)0, (void*)offsetof(Patches, ai_disable_veh)},
+	{"ai_disable_veh_train", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_train)},
+	{"ai_disable_veh_roadveh", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_roadveh)},
+	{"ai_disable_veh_aircraft", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_aircraft)},
+	{"ai_disable_veh_ship", SDT_BOOL, (void*)false, (void*)offsetof(Patches, ai_disable_veh_ship)},
 	{"starting_date", SDT_UINT32, (void*)1950, (void*)offsetof(Patches, starting_date)},
 
 	{"colored_news_date", SDT_UINT32, (void*)2000, (void*)offsetof(Patches, colored_news_date)},
