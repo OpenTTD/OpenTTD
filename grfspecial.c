@@ -534,9 +534,9 @@ ignoring:
 }
 
 
-/* A sprite superset contains all sprites of a given vehicle (or multiple
+/* A sprite group contains all sprites of a given vehicle (or multiple
  * vehicles) when carrying given cargo. It consists of several sprite sets.
- * Superset ids are refered as "cargo id"s by TTDPatch documentation,
+ * Group ids are refered as "cargo id"s by TTDPatch documentation,
  * contributing to the global confusion.
  *
  * A sprite set contains all sprites of a given vehicle carrying given cargo at
@@ -551,10 +551,10 @@ static int _spriteset_numents;
 static int _spriteset_feature;
 
 static int _spritesset_count;
-static struct SpriteSuperSet *_spritesset;
+static struct SpriteGroup *_spritesset;
 
 /* Action 0x01 */
-static void SpriteNewSet(byte *buf, int len)
+static void NewSpriteSet(byte *buf, int len)
 {
 	/* <01> <feature> <num-sets> <num-ent>
 	 *
@@ -587,7 +587,7 @@ static void SpriteNewSet(byte *buf, int len)
 }
 
 /* Action 0x02 */
-static void SpriteNewSuperset(byte *buf, int len)
+static void NewSpriteGroup(byte *buf, int len)
 {
 	byte *bufend = buf + len;
 
@@ -609,17 +609,17 @@ static void SpriteNewSuperset(byte *buf, int len)
 	uint8 setid;
 	uint8 numloaded;
 	uint8 numloading;
-	struct SpriteSuperSet *superset;
+	struct SpriteGroup *group;
 	int i;
 
-	check_length(len, 5, "SpriteNewSuperset");
+	check_length(len, 5, "SpriteNewGroup");
 	feature = buf[1];
 	setid = buf[2];
 	numloaded = buf[3];
 	numloading = buf[4];
 
 	if (feature == 4) {
-		grfmsg(GMS_WARN, "SpriteNewSuperset: Stations unsupported, skipping.");
+		grfmsg(GMS_WARN, "SpriteNewGroup: Stations unsupported, skipping.");
 		return;
 	}
 
@@ -628,9 +628,9 @@ static void SpriteNewSuperset(byte *buf, int len)
 		// a semi-futile ask because the great Patchman himself says
 		// this is just buggy. It dereferences last (first) byte of
 		// a schedule list pointer of the vehicle and if it's 0xff
-		// it uses superset 01, otherwise it uses superset 00. Now
+		// it uses group 01, otherwise it uses group 00. Now
 		// if _you_ understand _that_... We just assume it is never
-		// 0xff and therefore go for superset 00. --pasky
+		// 0xff and therefore go for group 00. --pasky
 		uint8 var = buf[4];
 		//uint8 shiftnum = buf[5];
 		//uint8 andmask = buf[6];
@@ -638,14 +638,14 @@ static void SpriteNewSuperset(byte *buf, int len)
 		//uint32 val;
 		uint16 def;
 
-		grfmsg(GMS_WARN, "SpriteNewSuperset(0x81): Unsupported variable %x. Using default cid.", var);
+		grfmsg(GMS_WARN, "SpriteNewGroup(0x81): Unsupported variable %x. Using default cid.", var);
 
 		//val = (0xff << shiftnum) & andmask;
 
 		//Go for the default.
 		if (setid >= _spritesset_count) {
 			_spritesset_count = setid + 1;
-			_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteSuperSet));
+			_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteGroup));
 		}
 		buf += 8 + nvar * 4;
 		def = grf_load_word(&buf);
@@ -653,27 +653,27 @@ static void SpriteNewSuperset(byte *buf, int len)
 		return;
 
 	} else if (numloaded & 0x80) {
-		grfmsg(GMS_WARN, "SpriteNewSuperset(0x%x): Unsupported special superset.", numloaded);
+		grfmsg(GMS_WARN, "SpriteNewGroup(0x%x): Unsupported special group.", numloaded);
 		return;
 	}
 
 	if (!_spriteset_start) {
-		grfmsg(GMS_WARN, "SpriteNewSuperset: No sprite set to work on! Skipping.");
+		grfmsg(GMS_WARN, "SpriteNewGroup: No sprite set to work on! Skipping.");
 		return;
 	}
 
 	if (_spriteset_feature != feature) {
-		grfmsg(GMS_WARN, "SpriteNewSuperset: Superset feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
+		grfmsg(GMS_WARN, "SpriteNewGroup: Group feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
 		return;
 	}
 
 	if (setid >= _spritesset_count) {
 		_spritesset_count = setid + 1;
-		_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteSuperSet));
+		_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteGroup));
 	}
-	superset = &_spritesset[setid];
-	memset(superset, 0, sizeof(struct SpriteSuperSet));
-	superset->sprites_per_set = _spriteset_numents;
+	group = &_spritesset[setid];
+	memset(group, 0, sizeof(struct SpriteGroup));
+	group->sprites_per_set = _spriteset_numents;
 
 	buf += 5;
 
@@ -681,10 +681,10 @@ static void SpriteNewSuperset(byte *buf, int len)
 		uint16 spriteset_id = grf_load_word(&buf);
 
 		if (_spritesset[setid].loaded_count > 16) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
+			grfmsg(GMS_WARN, "SpriteNewGroup: More than 16 sprites in group %x, skipping.", setid);
 			return;
 		}
-		superset->loaded[superset->loaded_count++]
+		group->loaded[group->loaded_count++]
 			= _spriteset_start + spriteset_id * _spriteset_numents;
 	}
 
@@ -692,15 +692,15 @@ static void SpriteNewSuperset(byte *buf, int len)
 		uint16 spriteset_id = grf_load_word(&buf);
 
 		if (_spritesset[setid].loading_count > 16) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
+			grfmsg(GMS_WARN, "SpriteNewGroup: More than 16 sprites in group %x, skipping.", setid);
 			return;
 		}
-		superset->loading[superset->loading_count++] = _spriteset_start + spriteset_id * _spriteset_numents;
+		group->loading[group->loading_count++] = _spriteset_start + spriteset_id * _spriteset_numents;
 	}
 }
 
 /* Action 0x03 */
-static void VehicleMapSpriteSuperset(byte *buf, int len)
+static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 {
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
 	 * id-list	:= [<id>] [id-list]
@@ -710,11 +710,11 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 	 * B n-id          bits 0-6: how many IDs this definition applies to
 	 *                 bit 7: if set, this is a wagon override definition (see below)
 	 * B ids           the IDs for which this definition applies
-	 * B num-cid       number of cargo IDs in this definition
+	 * B num-cid       number of cargo IDs (sprite group IDs) in this definition
 	 *                 can be zero, in that case the def-cid is used always
 	 * B cargo-type    type of this cargo type (e.g. mail=2, wood=7, see below)
-	 * W cid           cargo ID for this type of cargo
-	 * W def-cid       default cargo ID */
+	 * W cid           cargo ID (sprite group ID) for this type of cargo
+	 * W def-cid       default cargo ID (sprite group ID) */
 	/* TODO: Only trains supported now. */
 	/* TODO: Multiple cargo support could be useful even for trains/cars -
 	 * cargo id 0xff is used for showing images in the build train list. */
@@ -727,14 +727,14 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 	uint8 cidcount;
 	int c, i;
 
-	check_length(len, 7, "VehicleMapSpriteSuperset");
+	check_length(len, 7, "VehicleMapSpriteGroup");
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
 	wagover = buf[2] & 0x80;
 	cidcount = buf[3 + idcount];
 
 	if (feature == 4) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Stations unsupported, skipping.");
+		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Stations unsupported, skipping.");
 		return;
 	}
 
@@ -743,7 +743,7 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 	// what should we exactly do with that? --pasky
 
 	if (!_spriteset_start || !_spritesset) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: No sprite set to work on! Skipping.");
+		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
 
@@ -758,10 +758,10 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 
 		for (c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
-			uint16 supersetid = grf_load_word(&bp);
+			uint16 groupid = grf_load_word(&bp);
 
-			if (supersetid >= _spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
+			if (groupid >= _spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _spritesset_count);
 				return;
 			}
 
@@ -770,9 +770,9 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, &_spritesset[supersetid]);
+				SetCustomEngineSprites(engine, ctype, &_spritesset[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -780,22 +780,22 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 
 	{
 		byte *bp = buf + 4 + idcount + cidcount * 3;
-		uint16 supersetid = grf_load_word(&bp);
+		uint16 groupid = grf_load_word(&bp);
 
 		for (i = 0; i < idcount; i++) {
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
 			// Don't tell me you don't love duplicated code!
-			if (supersetid >= _spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
+			if (groupid >= _spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _spritesset_count);
 				return;
 			}
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, CID_DEFAULT, &_spritesset[supersetid]);
+				SetCustomEngineSprites(engine, CID_DEFAULT, &_spritesset[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -1304,9 +1304,9 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 #define NUM_ACTIONS 0xF
 	static const SpecialSpriteHandler handlers[NUM_ACTIONS] = {
 		/* 0x0 */ VehicleChangeInfo,
-		/* 0x1 */ SpriteNewSet,
-		/* 0x2 */ SpriteNewSuperset,
-		/* 0x3 */ VehicleMapSpriteSuperset,
+		/* 0x1 */ NewSpriteSet,
+		/* 0x2 */ NewSpriteGroup,
+		/* 0x3 */ NewVehicle_SpriteGroupMapping,
 		/* 0x4 */ VehicleNewName,
 		/* 0x5 */ GraphicsNew,
 		/* 0x6 */ CfgApply,
@@ -1341,7 +1341,7 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 
 	/* XXX: Action 0x03 is temporarily processed together with actions 0x01
 	 * and 0x02 before it is fixed to be reentrant (probably storing the
-	 * superset information in {struct GRFFile}). --pasky */
+	 * group information in {struct GRFFile}). --pasky */
 
 	if (stage == 0) {
 		/* During initialization, actions 0, 3, 4, 5 and 7 are ignored. */

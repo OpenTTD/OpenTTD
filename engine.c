@@ -175,7 +175,7 @@ uint32 _engine_refit_masks[256];
 struct WagonOverride {
 	byte *train_id;
 	int trains;
-	struct SpriteSuperSet superset;
+	struct SpriteGroup group;
 };
 
 static struct WagonOverrides {
@@ -183,7 +183,7 @@ static struct WagonOverrides {
 	struct WagonOverride *overrides;
 } _engine_wagon_overrides[256];
 
-void SetWagonOverrideSprites(byte engine, struct SpriteSuperSet *superset,
+void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group,
                              byte *train_id, int trains)
 {
 	struct WagonOverrides *wos;
@@ -195,13 +195,13 @@ void SetWagonOverrideSprites(byte engine, struct SpriteSuperSet *superset,
 	                         wos->overrides_count * sizeof(struct WagonOverride));
 
 	wo = &wos->overrides[wos->overrides_count - 1];
-	wo->superset = *superset;
+	wo->group = *group;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static struct SpriteSuperSet *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
+static struct SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
 {
 	struct WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
@@ -215,7 +215,7 @@ static struct SpriteSuperSet *GetWagonOverrideSpriteSet(byte engine, byte overri
 
 		for (j = 0; j < wo->trains; j++) {
 			if (wo->train_id[j] == overriding_engine)
-				return &wo->superset;
+				return &wo->group;
 		}
 	}
 	return NULL;
@@ -227,44 +227,44 @@ byte _engine_original_sprites[256];
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static struct SpriteSuperSet _engine_custom_sprites[256][NUM_CID];
+static struct SpriteGroup _engine_custom_sprites[256][NUM_CID];
 
-void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteSuperSet *superset)
+void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group)
 {
-	assert(superset->sprites_per_set == 4 || superset->sprites_per_set == 8);
-	_engine_custom_sprites[engine][cargo] = *superset;
+	assert(group->sprites_per_set == 4 || group->sprites_per_set == 8);
+	_engine_custom_sprites[engine][cargo] = *group;
 }
 
 int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
                           byte loaded, byte in_motion, byte direction)
 {
-	struct SpriteSuperSet *superset = &_engine_custom_sprites[engine][cargo];
+	struct SpriteGroup *group = &_engine_custom_sprites[engine][cargo];
 	int totalsets, spriteset;
 	int r;
 
 	if (overriding_engine != 0xffff) {
-		struct SpriteSuperSet *overset;
+		struct SpriteGroup *overset;
 
 		overset = GetWagonOverrideSpriteSet(engine, overriding_engine);
-		if (overset) superset = overset;
+		if (overset) group = overset;
 	}
 
-	if (!superset->sprites_per_set && cargo != 29) {
-		// This superset is empty but perhaps there'll be a default one.
-		superset = &_engine_custom_sprites[engine][29];
+	if (!group->sprites_per_set && cargo != 29) {
+		// This group is empty but perhaps there'll be a default one.
+		group = &_engine_custom_sprites[engine][29];
 	}
 
-	if (!superset->sprites_per_set) {
-		// This superset is empty. This function users should therefore
+	if (!group->sprites_per_set) {
+		// This group is empty. This function users should therefore
 		// look up the sprite number in _engine_original_sprites.
 		return 0;
 	}
 
 	direction %= 8;
-	if (superset->sprites_per_set == 4)
+	if (group->sprites_per_set == 4)
 		direction %= 4;
 
-	totalsets = in_motion ? superset->loaded_count : superset->loading_count;
+	totalsets = in_motion ? group->loaded_count : group->loading_count;
 
 	// My aim here is to make it possible to visually determine absolutely
 	// empty and totally full vehicles. --pasky
@@ -281,7 +281,7 @@ int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo,
 			spriteset--;
 	}
 
-	r = (in_motion ? superset->loaded[spriteset] : superset->loading[spriteset]) + direction;
+	r = (in_motion ? group->loaded[spriteset] : group->loading[spriteset]) + direction;
 	return r;
 }
 

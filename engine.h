@@ -59,12 +59,12 @@ enum {
 void StartupEngines();
 
 
-struct SpriteSuperSet {
+struct SpriteGroup {
 	// XXX: Would anyone ever need more than 16 spritesets? Maybe we should
 	// use even less, now we take whole 8kb for custom sprites table, oh my!
 	byte sprites_per_set; // means number of directions - 4 or 8
 	// Loaded = in motion, loading = not moving
-	// Each superset contains several spritesets, for various loading stages
+	// Each group contains several spritesets, for various loading stages
 	byte loaded_count;
 	uint16 loaded[16]; // sprite ids
 	byte loading_count;
@@ -83,8 +83,8 @@ extern byte _local_cargo_id_landscape[NUM_CID];
 extern uint32 _engine_refit_masks[256];
 
 extern byte _engine_original_sprites[256];
-void SetWagonOverrideSprites(byte engine, struct SpriteSuperSet *superset, byte *train_id, int trains);
-void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteSuperSet *superset);
+void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
+void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
 int GetCustomEngineSprite(byte engine, uint16 overriding_engine, byte cargo, byte loaded, byte in_motion, byte direction);
 #define GetCustomVehicleSprite(v, direction) \
