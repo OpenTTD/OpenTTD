@@ -658,7 +658,7 @@ else
 C_SOURCES += extmidi.c unix.c
 endif
 
-ttd_OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
+OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
 
 ifdef BEOS
 CXX_SOURCES += os/beos/bemidi.cpp
@@ -667,15 +667,15 @@ endif
 
 ifdef WIN32
 # Resource file
-ttd_OBJS += winres.o
+OBJS += winres.o
 endif
 
 ifdef WITH_DIRECTMUSIC
 CXX_SOURCES += w32dm2.cpp
 endif
 
-ttd_DEPS1 = $(foreach obj,$(ttd_OBJS),.deps/$(obj))
-ttd_DEPS = $(ttd_DEPS1:%.o=%.P)
+DEPS1 = $(foreach obj,$(OBJS),.deps/$(obj))
+DEPS = $(DEPS1:%.o=%.P)
 
 LANG_TXT = $(filter-out %.unfinished.txt,$(wildcard lang/*.txt))
 LANGS = $(LANG_TXT:%.txt=%.lng)
@@ -715,9 +715,9 @@ $(ENDIAN_CHECK): endian_check.c
 	@$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
 
 
-$(TTD): table/strings.h $(ttd_OBJS) $(MAKE_CONFIG)
+$(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
-	@$(C_LINK) $@ $(TTDLDFLAGS) $(ttd_OBJS) $(LIBS)
+	@$(C_LINK) $@ $(TTDLDFLAGS) $(OBJS) $(LIBS)
 
 $(OSX): $(TTD)
 	@rm -fr "$(OSXAPP)"
@@ -848,7 +848,7 @@ FORCE:
 
 clean:
 	@echo '===> Cleaning up'
-	@rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(ttd_OBJS) endian.h $(ENDIAN_CHECK)
+	@rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) endian.h $(ENDIAN_CHECK)
 
 mrproper: clean
 	@rm -rf $(MAKE_CONFIG)
@@ -921,7 +921,7 @@ upgradeconf: $(MAKE_CONFIG)
 DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 
 # Introduce the dependencies
--include $(ttd_DEPS)
+-include $(DEPS)
 
 # This compiles the object file as well as silently updating its dependencies
 # list at the same time. It is not an issue that they aren't around during the
