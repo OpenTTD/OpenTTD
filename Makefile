@@ -677,7 +677,23 @@ release: all
 	@hdiutil create -ov -format UDZO -srcfolder OpenTTD\ $(RELEASE) openttd-$(RELEASE)-osx.dmg
 	@rm -fr OpenTTD\ $(RELEASE)
 
-.PHONY: release
+nightly_build: all
+	@mkdir -p OpenTTD\ $(RELEASE)
+	@mkdir -p OpenTTD\ $(RELEASE)/docs
+	@cp -R $(OSXAPP) OpenTTD\ $(RELEASE)/
+	@cp docs/OSX_where_did_the_package_go.txt OpenTTD\ $(RELEASE)/Where\ did\ the\ package\ go.txt
+	@cp readme.txt OpenTTD\ $(RELEASE)/docs/
+	@cp docs/README_if_game_crashed_on_OSX.txt OpenTTD\ $(RELEASE)/docs/readme\ if\ crashed\ on\ OSX.txt
+	@cp docs/console.txt OpenTTD\ $(RELEASE)/docs/
+	@cp COPYING OpenTTD\ $(RELEASE)/docs/
+	@cp revisionlog.txt OpenTTD\ $(RELEASE)/revisionlog.txt
+	@cp changelog.txt OpenTTD\ $(RELEASE)/docs/
+	@cp docs/README_if_game_crashed_on_OSX.txt OpenTTD\ $(RELEASE)/docs/
+	@cp os/macos/*.webloc OpenTTD\ $(RELEASE)/
+	@hdiutil create -ov -format UDZO -srcfolder OpenTTD\ $(RELEASE) openttd-$(RELEASE).dmg
+	@rm -fr OpenTTD\ $(RELEASE)
+
+.PHONY: release nightly_build
 endif
 
 rev.c: FORCE
