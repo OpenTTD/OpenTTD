@@ -9,6 +9,8 @@
 // TODO: als er iets in path komt, bouwt AI gewoon verder :(
 // TODO: mail routes
 
+// FIXME: This code is horrible. Indisputably from the style POV, at least. --pasky
+
 /*
  * End of Dutch part
  */
@@ -84,15 +86,15 @@ static void AiNew_State_Nothing(Player *p) {
 //    - Check route
 //    - Build HQ
 static void AiNew_State_WakeUp(Player *p) {
-    int32 money;
-    int c;
-    assert(p->ainew.state == AI_STATE_WAKE_UP);
+	int32 money;
+	int c;
+	assert(p->ainew.state == AI_STATE_WAKE_UP);
 	// First, check if we have a HQ
 	if (p->location_of_house == 0) {
 		// We have no HQ yet, build one on a random place
 		// Random till we found a place for it!
 		// TODO: this should not be on a random place..
-		while (!AiNew_Build_CompanyHQ(p, Random() % MapSize())) { }
+		AiNew_Build_CompanyHQ(p, Random() % MapSize());
 		// Enough for now, but we want to come back here the next time
 		//  so we do not change any status
 		return;
@@ -181,8 +183,8 @@ static void AiNew_State_WakeUp(Player *p) {
 }
 
 static void AiNew_State_ActionDone(Player *p) {
-    p->ainew.action = AI_ACTION_NONE;
-    p->ainew.state = AI_STATE_NOTHING;
+	p->ainew.action = AI_ACTION_NONE;
+	p->ainew.state = AI_STATE_NOTHING;
 }
 
 // Check if a city or industry is good enough to start a route there
