@@ -50,6 +50,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\catalan.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating catalan language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\catalan.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\czech.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -95,6 +107,18 @@
 					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
 "
 					Outputs="lang\english.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\finnish.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating finnish language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\finnish.lng"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -146,6 +170,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\icelandic.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating icelandic language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\icelandic.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\italian.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -194,6 +230,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\portuguese.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating portuguese language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\portuguese.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\romanian.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -206,6 +254,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\russian.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating russian language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\russian.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\slovak.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -215,6 +275,18 @@
 					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
 "
 					Outputs="lang\slovak.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\spanish.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating spanish language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\spanish.lng"/>
 			</FileConfiguration>
 		</File>
 		<File
@@ -231,6 +303,15 @@
 		</File>
 		<File
 			RelativePath=".\lang\turkish.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating turkish language file"
+					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;
+"
+					Outputs="lang\turkish.lng"/>
+			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>
