@@ -1015,7 +1015,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	do {
 		if (!(_rail_vehicle_info[v->engine_type].flags & RVI_WAGON) && (byte)p2 != v->cargo_type && v->cargo_cap != 0) {
-			cost += (_price.ship_base >> 7);
+			cost += (_price.build_railvehicle >> 8);
 			num += v->cargo_cap;
 			if (flags & DC_EXEC) {
 				v->cargo_count = 0;
