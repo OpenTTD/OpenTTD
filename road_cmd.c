@@ -320,7 +320,7 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 			// force full pieces.
 			*pieces |= (*pieces & 0xC) >> 2;
 			*pieces |= (*pieces & 0x3) << 2;
-			return existing ? 0 : _price.terraform;	
+			return (*pieces == (ROAD_NE|ROAD_SW) || *pieces == (ROAD_SE|ROAD_NW)) ? _price.terraform : CMD_ERROR;
 		}
 	}
 	return CMD_ERROR;
