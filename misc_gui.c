@@ -176,7 +176,7 @@ static const char *credits[] = {
 	"  Dominik Scherer (dominik81) - Lead coder",
 	"  Kerekes Miham (MiHaMiX) - Translator system, and Nightlies host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
-  "  Christoph Mallon (Tron) - Programmer, code correctness police",
+	"  Christoph Mallon (Tron) - Programmer, code correctness police",
 	"  Patric Stout (TrueLight) - Coder, network guru, SVN- and website host",
 	"",
 	"Retired Developers:",
