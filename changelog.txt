@@ -1,3 +1,11 @@
+0.3.5 (unreleased)
+------------------------------------------------------------------------
+- Change: (OSX build) Moved data and lang folders inside OpenTTD. This got rid of the package system too, making installing/updating easier
+- Fix (Big Endian computers, which are mac and MorphOS): made it able to load savegames made by TTD
+- Fix (OSX build) music is now on by default again
+- Fix (OSX build) made error opens the console (app in utilities dir, not ingame console). This should fix the problem where people did not get a valid error message
+
+
 0.3.4 (2004-09-14)
 ------------------------------------------------------------------------
 - Add: Dutch translation
