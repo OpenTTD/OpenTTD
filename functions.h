@@ -126,7 +126,7 @@ void NetworkReceive();
 void NetworkSend();
 void NetworkProcessCommands();
 void NetworkListen(int port);
-void NetworkInitialize();
+void NetworkInitialize(const char *hostname);
 void NetworkShutdown();
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 void NetworkStartSync();

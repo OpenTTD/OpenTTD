@@ -26,7 +26,7 @@ void ConnectToServer(byte* b)
 {
 	_networking = true;
 	
-	NetworkInitialize();
+	NetworkInitialize(b);
 	DEBUG(misc, 1) ("Connecting to %s %d\n", b, _network_port);
 	NetworkConnect(b, _network_port);
 }
@@ -177,7 +177,7 @@ void ShowNetworkGameWindow()
 void StartServer()
 {
 	_networking = true;
-	NetworkInitialize();
+	NetworkInitialize(NULL);
 	DEBUG(misc, 1) ("Listening on port %d\n", _network_port);
 	NetworkListen(_network_port);
 	_networking_server = true;

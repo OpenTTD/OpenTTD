@@ -422,7 +422,7 @@ static char *MakeScreenshotName(const char *ext)
 	char *base;
 	int serial;
 
-	if (_game_mode == GM_EDITOR || _local_player == 0xff) {
+	if (_game_mode == GM_EDITOR || _local_player == OWNER_SPECTATOR) {
 		sprintf(_screenshot_name, "screenshot");
 	} else {
 		Player *p = &_players[_local_player];

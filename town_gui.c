@@ -29,7 +29,7 @@ static uint GetMaskOfTownActions(int *nump, Town *t)
 	uint avail_buttons = 0x7F; // by default all buttons except bribe are enabled.
 	uint buttons;
 
-	if (_local_player != 0xff) {
+	if (_local_player != OWNER_SPECTATOR) {
 		// bribe option enabled?
 		if (_patches.bribe) {
 			// if unwanted, disable everything.

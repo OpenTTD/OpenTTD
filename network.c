@@ -482,13 +482,13 @@ static void HandleFilePacket(FilePacketHdr *fp)
 			// send a command to make a new player
 			_local_player = 0;
 			NetworkSendCommand(0, 0, 0, CMD_PLAYER_CTRL, NULL);
-			_local_player = 0xff;
+			_local_player = OWNER_SPECTATOR;
 		} else {
 			// take control over an existing company
 			if (DEREF_PLAYER(_network_playas-1)->is_active)
 				_local_player = _network_playas-1;
 			else
-				_local_player = 0xff;
+				_local_player = OWNER_SPECTATOR;
 		}
 
 	} else {
@@ -971,9 +971,10 @@ void NetworkListen(int port)
 	_listensocket = ls;
 }
 
-void NetworkInitialize()
+void NetworkInitialize(const char *hostname)
 {
 	ClientState *cs;
+
 #if defined(WIN32)
 	WSADATA wsa;
 	if (WSAStartup(MAKEWORD(2,0), &wsa) != 0)
@@ -993,8 +994,15 @@ void NetworkInitialize()
 	for(cs=_clients; cs != &_clients[MAX_CLIENTS]; cs++)
 		cs->socket = INVALID_SOCKET;
 	
-	// startup udp listener
-	NetworkUDPListen(_network_port);
+	/*	startup udp listener
+	 *	- only if this instance is a server, so clients can find it
+	 *	OR
+	 *  - a client, wanting to find a server to connect to
+	 */
+	if (hostname == NULL  || strcmp(hostname,"auto") == 0) {
+		printf("Trying to open UDP port...\n");		
+		NetworkUDPListen(_network_port);
+	}
 }
 
 void NetworkShutdown()
@@ -1168,7 +1176,7 @@ bool NetworkUDPSearchServer() {
 #else // ENABLE_NETWORK
 
 // stubs
-void NetworkInitialize() {}
+void NetworkInitialize(const char *hostname) {}
 void NetworkShutdown() {}
 void NetworkListen(int port) {}
 void NetworkConnect(const char *hostname, int port) {}

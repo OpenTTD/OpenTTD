@@ -489,7 +489,15 @@ int ttd_main(int argc, char* argv[])
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
-		case 'n': network=1; if (mgo.opt) {network_conn = mgo.opt; network++;} break;
+		case 'n': {
+				network = 1; 
+				if ((bool)mgo.opt) {
+					network_conn = mgo.opt; 
+					network++;
+				}
+				else
+					network_conn = NULL;
+			} break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 'l': {
 				language = mgo.opt;
@@ -518,7 +526,7 @@ int ttd_main(int argc, char* argv[])
 			break;
 		case 'p': {
 			int i = atoi(mgo.opt);
-			if (IS_INT_INSIDE(i, 0, 8))	_network_playas = i + 1;
+			if (IS_INT_INSIDE(i, 0, MAX_PLAYERS))	_network_playas = i + 1;
 			break;
 		}
 		case -2:
@@ -573,7 +581,7 @@ int ttd_main(int argc, char* argv[])
 	if (network) {
 		_networking = true;
 		
-		NetworkInitialize();
+		NetworkInitialize(network_conn);
 		if (network==1) {
 			DEBUG(misc, 1) ("Listening on port %d\n", _network_port);
 			NetworkListen(_network_port);
@@ -875,7 +883,7 @@ static void DoAutosave()
 {
 	char buf[200];
 	
-	if (_patches.keep_all_autosave && _local_player != 255) {
+	if (_patches.keep_all_autosave && _local_player != OWNER_SPECTATOR) {
 		Player *p;
 		char *s;
 		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);

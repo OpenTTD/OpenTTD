@@ -581,7 +581,7 @@ void PlayersYearlyLoop()
 		}
 	}
 
-	if (_patches.show_finances && _local_player != 0xff) {
+	if (_patches.show_finances && _local_player != OWNER_SPECTATOR) {
 		ShowPlayerFinances(_local_player);
 		p = DEREF_PLAYER(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
@@ -632,7 +632,7 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	switch(p1 & 0xff) {
 	case 0: // make new player
 		p = DoStartupNewPlayer(false);
-		if (_local_player == 0xff && p != NULL) {
+		if (_local_player == OWNER_SPECTATOR && p != NULL) {
 			_local_player = p->index;
 			MarkWholeScreenDirty();
 		}

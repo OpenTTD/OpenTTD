@@ -597,7 +597,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w,menu_d).item_count = 0;
-	WP(w,menu_d).sel_index = _local_player != 0xff ? _local_player : 0;
+	WP(w,menu_d).sel_index = _local_player != OWNER_SPECTATOR ? _local_player : 0;
 	WP(w,menu_d).action_id = main_button;
 	WP(w,menu_d).main_button = main_button;
 	WP(w,menu_d).checked_items = gray;
@@ -1633,7 +1633,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
 
 		// if spectator, disable things
-		if (_current_player == 0xff){
+		if (_current_player == OWNER_SPECTATOR){
 			w->disabled_state |= (1 << 0) | (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23);
 		} else {
 			w->disabled_state &= ~((1 << 0) | (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23));
@@ -1965,7 +1965,7 @@ void StatusBarWndProc(Window *w, WindowEvent *e)
 		SET_DPARAM16(0, _date);
 		DrawStringCentered(70, 1, ((_pause||_patches.status_long_date)?STR_00AF:STR_00AE), 0);
 		
-		p = _local_player == 0xff ? NULL : DEREF_PLAYER(_local_player);
+		p = _local_player == OWNER_SPECTATOR ? NULL : DEREF_PLAYER(_local_player);
 
 		if (p) {
 			// Draw player money
@@ -1996,7 +1996,7 @@ void StatusBarWndProc(Window *w, WindowEvent *e)
 		if (e->click.widget == 1) {
 			ShowLastNewsMessage();
 		} else if (e->click.widget == 2) {
-			if (_local_player != 0xff) ShowPlayerFinances(_local_player);
+			if (_local_player != OWNER_SPECTATOR) ShowPlayerFinances(_local_player);
 		} else {
 			ResetObjectToPlace();
 		}
