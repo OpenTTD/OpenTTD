@@ -957,6 +957,38 @@ uint GetStationPlatforms(Station *st, uint tile)
 }
 
 
+/* TODO: Multiple classes! */
+/* FIXME: Also, we should actually allocate the station id (but
+ * SetCustomStation() needs to be able to override an existing custom station
+ * as well) on our own. This would also prevent possible weirdness if some GRF
+ * file used non-contignuous station ids. --pasky */
+
+static int _waypoint_highest_id = -1;
+static DrawTileSprites _waypoint_data[256][8];
+
+void SetCustomStation(uint32 classid, byte stid, DrawTileSprites *data, byte tiles)
+{
+	assert(classid == 'WAYP');
+	if (stid > _waypoint_highest_id)
+		_waypoint_highest_id = stid;
+	memcpy(_waypoint_data[stid], data, sizeof(DrawTileSprites) * tiles);
+}
+
+DrawTileSprites *GetCustomStation(uint32 classid, byte stid)
+{
+	assert(classid == 'WAYP');
+	if (stid > _waypoint_highest_id || !_waypoint_data || !_waypoint_data[stid])
+		return NULL;
+	return _waypoint_data[stid];
+}
+
+int GetCustomStationsCount(uint32 classid)
+{
+	assert(classid == 'WAYP');
+	return _waypoint_highest_id + 1;
+}
+
+
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
 	int w,h;

@@ -6,6 +6,7 @@
 #include "gfx.h"
 #include "fileio.h"
 #include "engine.h"
+#include "station.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -26,6 +27,29 @@ struct GRFFile {
 	uint16 flags;
 	uint16 sprite_offset;
 	struct GRFFile *next;
+
+	/* A sprite group contains all sprites of a given vehicle (or multiple
+	 * vehicles) when carrying given cargo. It consists of several sprite
+	 * sets.  Group ids are refered as "cargo id"s by TTDPatch
+	 * documentation, contributing to the global confusion.
+	 *
+	 * A sprite set contains all sprites of a given vehicle carrying given
+	 * cargo at a given *stage* - that is usually its load stage. Ie. you
+	 * can have a spriteset for an empty wagon, wagon full of coal,
+	 * half-filled wagon etc.  Each spriteset contains eight sprites (one
+	 * per direction) or four sprites if the vehicle is symmetric. */
+
+	int spriteset_start;
+	int spriteset_numsets;
+	int spriteset_numents;
+	int spriteset_feature;
+
+	int spritesset_count;
+	struct SpriteGroup *spritesset;
+
+	uint32 statinfo_classid[256];
+	byte statinfo_tiles[256];
+	DrawTileSprites statinfo_renderdata[256][8];
 };
 
 static struct GRFFile *_cur_grffile, *_first_grffile;
@@ -664,7 +688,177 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 	return ret;
 }
 
+static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	int i;
+	int ret = 0;
+
+	/* This is one single huge TODO. It doesn't handle anything more than
+	 * just waypoints for now. */
+
+	//printf("sci %d %d [0x%02x]\n", stid, numinfo, prop);
+	switch (prop) {
+		case 0x08:
+		{	/* Class ID */
+			FOR_EACH_ENGINE {
+				/* classid, for a change, is always little-endian */
+				_cur_grffile->statinfo_classid[stid+i] = *(buf++) << 24;
+				_cur_grffile->statinfo_classid[stid+i] |= *(buf++) << 16;
+				_cur_grffile->statinfo_classid[stid+i] |= *(buf++) << 8;
+				_cur_grffile->statinfo_classid[stid+i] |= *(buf++);
+			}
+			break;
+		}
+		case 0x09:
+		{	/* Define sprite layout */
+			FOR_EACH_ENGINE {
+				int t;
+				_cur_grffile->statinfo_tiles[stid+i] = grf_load_byte(&buf);
+				for (t = 0; t < _cur_grffile->statinfo_tiles[stid+i]; t++) {
+					DrawTileSprites *dts = &_cur_grffile->statinfo_renderdata[stid+i][t];
+					int seq_count = 0;
+
+					if (t >= 8) {
+						grfmsg(GMS_WARN, "StationChangeInfo: Sprite %d>=8, skipping.", t);
+						grf_load_dword(&buf); // at least something
+						continue;
+					}
+
+					dts->ground_sprite = grf_load_dword(&buf);
+					if (!dts->ground_sprite) {
+						static const DrawTileSeqStruct empty = {0x80};
+						dts->seq = &empty;
+						continue;
+					}
+
+					dts->seq = NULL;
+					while (buf < *bufp + len) {
+						DrawTileSeqStruct *dtss;
+
+						// no relative bounding box support
+						dts->seq = realloc((void*)dts->seq, ++seq_count * sizeof(DrawTileSeqStruct));
+						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
+
+						dtss->delta_x = grf_load_byte(&buf);
+						if ((byte) dtss->delta_x == 0x80) break;
+						dtss->delta_y = grf_load_byte(&buf);
+						dtss->delta_z = grf_load_byte(&buf);
+						dtss->width = grf_load_byte(&buf);
+						dtss->height = grf_load_byte(&buf);
+						dtss->unk = grf_load_byte(&buf);
+						dtss->image = grf_load_dword(&buf) - 0x42d;
+					}
+				}
+			}
+			break;
+		}
+		case 0x0a:
+		{	/* Copy sprite layout */
+			FOR_EACH_ENGINE {
+				byte src = grf_load_byte(&buf);
+				int t;
+				_cur_grffile->statinfo_tiles[stid+i] = _cur_grffile->statinfo_tiles[src];
+				for (t = 0; t < _cur_grffile->statinfo_tiles[stid+i]; t++) {
+					DrawTileSprites *dts = &_cur_grffile->statinfo_renderdata[stid+i][t];
+					DrawTileSprites *sdts = &_cur_grffile->statinfo_renderdata[src][t];
+					DrawTileSeqStruct const *sdtss = sdts->seq;
+					int seq_count = 0;
+
+					dts->ground_sprite = sdts->ground_sprite;
+					if (!dts->ground_sprite) {
+						static const DrawTileSeqStruct empty = {0x80};
+						dts->seq = &empty;
+						continue;
+					}
+
+					dts->seq = NULL;
+					while (1) {
+						DrawTileSeqStruct *dtss;
+
+						// no relative bounding box support
+						dts->seq = realloc((void*)dts->seq, ++seq_count * sizeof(DrawTileSeqStruct));
+						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
+						*dtss = *sdtss;
+						if ((byte) dtss->delta_x == 0x80) break;
+						sdtss++;
+					}
+				}
+			}
+			break;
+		}
+		case 0x0b:
+		{	/* Callback */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x0c:
+		{	/* Platforms number */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x0d:
+		{	/* Platforms length */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x0e:
+		{	/* Define custom layout */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				while (buf < *bufp + len) {
+					byte length = grf_load_byte(&buf);
+					byte number = grf_load_byte(&buf);
+					int k = length * number;
+
+					if (!length && !number) break;
+					while (k--) grf_load_byte(&buf);
+				}
+			}
+			ret = 1;
+			break;
+		}
+		case 0x0f:
+		{	/* Copy custom layout */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_byte(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		case 0x10:
+		{	/* Little/lots cargo threshold */
+			/* TODO */
+			FOR_EACH_ENGINE {
+				grf_load_word(&buf);
+			}
+			ret = 1;
+			break;
+		}
+		default:
+			ret = 1;
+			break;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 #undef shift_buf
+
 
 /* Action 0x00 */
 static void VehicleChangeInfo(byte *buf, int len)
@@ -690,7 +884,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 		/* GSF_ROAD */     RoadVehicleChangeInfo,
 		/* GSF_SHIP */     ShipVehicleChangeInfo,
 		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
-		/* GSF_STATION */  NULL,
+		/* GSF_STATION */  StationChangeInfo,
 	};
 
 	uint8 feature;
@@ -708,17 +902,17 @@ static void VehicleChangeInfo(byte *buf, int len)
 	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
 
-	if (feature == GSF_STATION) {
-		grfmsg(GMS_WARN, "VehicleChangeInfo: Stations unsupported, skipping.");
-		return;
-	}
-
-	ei = &_engine_info[engine + _vehshifts[feature]];
+	if (feature != GSF_STATION)
+		ei = &_engine_info[engine + _vehshifts[feature]];
 
 	buf += 5;
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
+
+		if (feature == 4)
+			// stations don't share those common properties
+			goto run_handler;
 
 		switch (prop) {
 		case 0x00: { /* Introduction date */
@@ -771,6 +965,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 			goto ignoring;
 		}
 		default: {
+run_handler:
 			if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
 ignoring:
 				grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
@@ -782,25 +977,6 @@ ignoring:
 #undef shift_buf
 }
 
-
-/* A sprite group contains all sprites of a given vehicle (or multiple
- * vehicles) when carrying given cargo. It consists of several sprite sets.
- * Group ids are refered as "cargo id"s by TTDPatch documentation,
- * contributing to the global confusion.
- *
- * A sprite set contains all sprites of a given vehicle carrying given cargo at
- * a given *stage* - that is usually its load stage. Ie. you can have a
- * spriteset for an empty wagon, wagon full of coal, half-filled wagon etc.
- * Each spriteset contains eight sprites (one per direction) or four sprites if
- * the vehicle is symmetric. */
-
-static int _spriteset_start;
-static int _spriteset_numsets;
-static int _spriteset_numents;
-static int _spriteset_feature;
-
-static int _spritesset_count;
-static struct SpriteGroup *_spritesset;
 
 /* Action 0x01 */
 static void NewSpriteSet(byte *buf, int len)
@@ -823,16 +999,10 @@ static void NewSpriteSet(byte *buf, int len)
 	check_length(len, 4, "NewSpriteSet");
 	feature = buf[1];
 
-	if (feature == GSF_STATION) {
-		_spriteset_start = 0;
-		grfmsg(GMS_WARN, "NewSpriteSet: Stations unsupported, skipping.");
-		return;
-	}
-
-	_spriteset_start = _cur_spriteid + 1;
-	_spriteset_feature = feature;
-	_spriteset_numsets = buf[2];
-	_spriteset_numents = buf[3];
+	_cur_grffile->spriteset_start = _cur_spriteid + 1;
+	_cur_grffile->spriteset_feature = feature;
+	_cur_grffile->spriteset_numsets = buf[2];
+	_cur_grffile->spriteset_numents = buf[3];
 }
 
 /* Action 0x02 */
@@ -850,12 +1020,13 @@ static void NewSpriteGroup(byte *buf, int len)
 	 *                 otherwise it specifies a number of entries, the exact
 	 *                 meaning depends on the feature
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
-	/* TODO: Only trains supported now. No 0x80-types (ugh). */
+	/* TODO: No 0x80-types (ugh). */
 	/* TODO: Also, empty sprites aren't handled for now. Need to investigate
 	 * the "opacity" rules for these, that is which sprite to fall back to
 	 * when. --pasky */
 	uint8 feature;
 	uint8 setid;
+	/* XXX: For stations, these two are "little cargo" and "lotsa cargo" sets. */
 	uint8 numloaded;
 	uint8 numloading;
 	struct SpriteGroup *group;
@@ -869,19 +1040,9 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloaded = buf[3];
 	numloading = buf[4];
 
-	if (feature == GSF_STATION) {
-		grfmsg(GMS_WARN, "NewSpriteGroup: Stations unsupported, skipping.");
-		return;
-	}
-
 	if (numloaded == 0x81) {
-		// XXX: This is _VERY_ ad hoc just to handle Dm3. And that is
-		// a semi-futile ask because the great Patchman himself says
-		// this is just buggy. It dereferences last (first) byte of
-		// a schedule list pointer of the vehicle and if it's 0xff
-		// it uses group 01, otherwise it uses group 00. Now
-		// if _you_ understand _that_... We just assume it is never
-		// 0xff and therefore go for group 00. --pasky
+		/* XXX: This just goes for the default superset for now,
+		 * straight and safe. --pasky */
 		uint8 var = buf[4];
 		//uint8 shiftnum = buf[5];
 		//uint8 andmask = buf[6];
@@ -893,14 +1054,13 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		//val = (0xff << shiftnum) & andmask;
 
-		//Go for the default.
-		if (setid >= _spritesset_count) {
-			_spritesset_count = setid + 1;
-			_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteGroup));
+		if (setid >= _cur_grffile->spritesset_count) {
+			_cur_grffile->spritesset_count = setid + 1;
+			_cur_grffile->spritesset = realloc(_cur_grffile->spritesset, _cur_grffile->spritesset_count * sizeof(struct SpriteGroup));
 		}
 		buf += 8 + nvar * 4;
 		def = grf_load_word(&buf);
-		_spritesset[setid] = _spritesset[def];
+		_cur_grffile->spritesset[setid] = _cur_grffile->spritesset[def];
 		return;
 
 	} else if (numloaded & 0x80) {
@@ -908,14 +1068,14 @@ static void NewSpriteGroup(byte *buf, int len)
 		return;
 	}
 
-	if (!_spriteset_start) {
+	if (!_cur_grffile->spriteset_start) {
 		grfmsg(GMS_ERROR, "NewSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
 
-	if (_spriteset_feature != feature) {
-		grfmsg(GMS_ERROR, "NewSpriteGroup: Group feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
-		return;
+	if (_cur_grffile->spriteset_feature != feature) {
+		grfmsg(GMS_ERROR, "NewSpriteGroup: Group feature %x doesn't match set feature %x! Playing it risky and trying to use it anyway.", feature, _cur_grffile->spriteset_feature);
+		// return; // XXX: we can't because of MB's newstats.grf --pasky
 	}
 
 	check_length(bufend - buf, 5, "NewSpriteGroup");
@@ -933,30 +1093,30 @@ static void NewSpriteGroup(byte *buf, int len)
 		numloading = 16;
 	}
 
-	if (setid >= _spritesset_count) {
-		_spritesset_count = setid + 1;
-		_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteGroup));
+	if (setid >= _cur_grffile->spritesset_count) {
+		_cur_grffile->spritesset_count = setid + 1;
+		_cur_grffile->spritesset = realloc(_cur_grffile->spritesset, _cur_grffile->spritesset_count * sizeof(struct SpriteGroup));
 	}
-	group = &_spritesset[setid];
+	group = &_cur_grffile->spritesset[setid];
 	memset(group, 0, sizeof(struct SpriteGroup));
-	group->sprites_per_set = _spriteset_numents;
+	group->sprites_per_set = _cur_grffile->spriteset_numents;
 	group->loaded_count  = numloaded;
 	group->loading_count = numloading;
 
 	DEBUG(grf, 6) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
 			setid, group->sprites_per_set, group->loaded_count, group->loading_count,
-			_spriteset_start - _cur_grffile->sprite_offset,
-			_spriteset_start + (_spriteset_numents * (numloaded + numloading)) - _cur_grffile->sprite_offset);
+			_cur_grffile->spriteset_start - _cur_grffile->sprite_offset,
+			_cur_grffile->spriteset_start + (_cur_grffile->spriteset_numents * (numloaded + numloading)) - _cur_grffile->sprite_offset);
 
 	for (i = 0; i < numloaded; i++) {
 		uint16 spriteset_id = grf_load_word(&loaded_ptr);
-		group->loaded[i] = _spriteset_start + spriteset_id * _spriteset_numents;
+		group->loaded[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
 		DEBUG(grf, 8) ("NewSpriteGroup: + group->loaded[%i]  = %u (subset %u)", i, group->loaded[i], spriteset_id);
 	}
 
 	for (i = 0; i < numloading; i++) {
 		uint16 spriteset_id = grf_load_word(&loading_ptr);
-		group->loading[i] = _spriteset_start + spriteset_id * _spriteset_numents;
+		group->loading[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
 		DEBUG(grf, 8) ("NewSpriteGroup: + group->loading[%i] = %u (subset %u)", i, group->loading[i], spriteset_id);
 	}
 }
@@ -1000,10 +1160,42 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	DEBUG(grf, 6) ("VehicleMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d.",
 			feature, idcount, cidcount, wagover);
 
+
 	if (feature == GSF_STATION) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Stations unsupported, skipping.");
+		// We do things differently for stations.
+
+		/* XXX: Currently we don't support cargo-specific images, so
+		 * we go straight to the defaults. */
+		byte *bp = buf + 4 + idcount + cidcount * 3;
+		uint16 groupid = grf_load_word(&bp);
+
+		for (i = 0; i < idcount; i++) {
+			uint8 stid = buf[3 + i];
+			int j;
+
+			if (groupid >= _cur_grffile->spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
+				       groupid, _cur_grffile->spritesset_count);
+				return;
+			}
+
+			// relocate sprite indexes based on spriteset locations
+			for (j = 0; j < _cur_grffile->statinfo_tiles[stid]; j++) {
+				DrawTileSeqStruct *seq;
+
+				foreach_draw_tile_seq(seq, (DrawTileSeqStruct*) _cur_grffile->statinfo_renderdata[stid][j].seq) {
+					seq->image += _cur_grffile->spritesset[groupid].loading[0];
+				}
+			}
+			/* FIXME: This means several GRF files defining new stations
+			 * will override each other, but the stid should be GRF-specific
+			 * instead! --pasky */
+			SetCustomStation(_cur_grffile->statinfo_classid[stid], stid, _cur_grffile->statinfo_renderdata[stid], _cur_grffile->statinfo_tiles[stid]);
+			_cur_grffile->statinfo_classid[stid] = 0;
+		}
 		return;
 	}
+
 
 	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
 	 * callback''. I have no idea how this works, so we will ignore it for
@@ -1017,7 +1209,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
 	// what should we exactly do with that? --pasky
 
-	if (!_spriteset_start || !_spritesset) {
+	if (!_cur_grffile->spriteset_start || !_cur_grffile->spritesset) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
@@ -1056,8 +1248,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			DEBUG(grf, 8) ("VehicleMapSpriteGroup: * [%d] Cargo type %x, group id %x", c, ctype, groupid);
 
-			if (groupid >= _spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _spritesset_count);
+			if (groupid >= _cur_grffile->spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritesset_count);
 				return;
 			}
 
@@ -1066,9 +1258,9 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_cur_grffile->spritesset[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, &_spritesset[groupid]);
+				SetCustomEngineSprites(engine, ctype, &_cur_grffile->spritesset[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -1084,16 +1276,16 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
 			// Don't tell me you don't love duplicated code!
-			if (groupid >= _spritesset_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _spritesset_count);
+			if (groupid >= _cur_grffile->spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritesset_count);
 				return;
 			}
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, &_cur_grffile->spritesset[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, CID_DEFAULT, &_spritesset[groupid]);
+				SetCustomEngineSprites(engine, CID_DEFAULT, &_cur_grffile->spritesset[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -1116,6 +1308,7 @@ static void VehicleNewName(byte *buf, int len)
 	 * (completely new scenarios changing all graphics and logically also
 	 * factory names etc). We should then also support all languages (by
 	 * name), not only the original four ones. --pasky */
+	/* TODO: Support for custom station class/type names. */
 
 	uint8 feature;
 	uint8 lang;
@@ -1577,16 +1770,13 @@ void InitNewGRFFile(const char *filename, int sprite_offset)
 {
 	struct GRFFile *newfile;
 
-	newfile = malloc(sizeof(struct GRFFile));
+	newfile = calloc(1, sizeof(struct GRFFile));
 
 	if (newfile == NULL)
 		error ("Out of memory");
 
 	newfile->filename = strdup(filename);
-	newfile->grfid = 0;
-	newfile->flags = 0x0000;
 	newfile->sprite_offset = sprite_offset;
-	newfile->next = NULL;
 
 	if (_first_grffile == NULL) {
 		_cur_grffile = newfile;
@@ -1645,15 +1835,21 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 
 	action = buf[0];
 
-	/* XXX: Action 0x03 is temporarily processed together with actions 0x01
-	 * and 0x02 before it is fixed to be reentrant (probably storing the
-	 * group information in {struct GRFFile}). --pasky */
+	/* XXX: There is a difference between staged loading in TTDPatch and
+	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
+	 * during stage 0, whilst action 3 is carried out during stage 1 (to
+	 * "resolve" cargo IDs... wtf). This is a little problem, because cargo
+	 * IDs are valid only within a given set (action 1) block, and may be
+	 * overwritten after action 3 associates them. But overwriting happens
+	 * in an earlier stage than associating, so...  We just process actions
+	 * 1 and 2 in stage 1 now, let's hope that won't get us into problems.
+	 * --pasky */
 
 	if (stage == 0) {
-		/* During initialization, actions 0, 3, 4, 5 and 7 are ignored. */
+		/* During initialization, actions 0, 1, 2, 3, 4, 5 and 7 are ignored. */
 
-		if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04)
-		    || (action == 0x05) || (action == 0x07)) {
+		if ((action == 0x00) || (action == 0x01) || (action == 0x02) || (action == 0x03)
+		    || (action == 0x04) || (action == 0x05) || (action == 0x07)) {
 			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
 			/* Do nothing. */
 
@@ -1672,7 +1868,7 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 		 * considered active if its action 8 has been processed, i.e. its
 		 * action 8 hasn't been skipped using an action 7.
 		 *
-		 * During activation, only actions 0, 3, 4, 5, 7, 8, 9 and 0A are
+		 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9 and 0A are
 		 * carried out.  All others are ignored, because they only need to be
 		 * processed once at initialization.  */
 
@@ -1686,8 +1882,9 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
 			/* Do nothing. */
 
-		} else if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04) || (action == 0x05)
-		           || (action == 0x07) || (action == 0x08) || (action == 0x09) || (action == 0x0A)) {
+		} else if ((action == 0x00) || (action == 0x01) || (action == 0x02) || (action == 0x03)
+			   || (action == 0x04) || (action == 0x05) || (action == 0x07) || (action == 0x08)
+			   || (action == 0x09) || (action == 0x0A)) {
 			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
 			handlers[action](buf, num);
 

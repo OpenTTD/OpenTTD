@@ -107,4 +107,8 @@ typedef struct DrawTileSprites {
 
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
+void SetCustomStation(uint32 classid, byte stid, DrawTileSprites *data, byte tiles);
+DrawTileSprites *GetCustomStation(uint32 classid, byte stid);
+int GetCustomStationsCount(uint32 classid);
+
 #endif /* STATION_H */

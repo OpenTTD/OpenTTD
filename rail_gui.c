@@ -114,7 +114,12 @@ static void PlaceRail_Depot(uint tile)
 static void PlaceRail_Checkpoint(uint tile)
 {
 	if (!_remove_button_clicked) {
-		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_CHECKPOINT));
+		/* TODO: We need a graphics selector. In the meantime we use the first
+		 * custom station ID which works ok with newstats.grf (if you add it
+		 * to openttd.cfg you want custom checkpoints) and if you don't have
+		 * any custom station graphics it will fall back to the railstation
+		 * sprites anyway. --pasky */
+		DoCommandP(tile, 0x100, 0, CcPlaySound1E, CMD_BUILD_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_CHECKPOINT));
 	} else {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_CHECKPOINT));
 	}

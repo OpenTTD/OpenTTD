@@ -6,6 +6,7 @@
 #include "pathfind.h"
 #include "town.h"
 #include "sound.h"
+#include "station.h"
 
 void ShowTrainDepotWindow(uint tile);
 
@@ -734,6 +735,11 @@ int32 CmdBuildTrainCheckpoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		ModifyTile(tile, MP_MAP5, RAIL_TYPE_CHECKPOINT | dir);
+		if (p1 & 0x100) {
+			// custom graphics
+			_map3_lo[tile] |= 16;
+			_map3_hi[tile] = p1 & 0xff;
+		}
 
 		cp->deleted = 0;
 		cp->xy = tile;
@@ -790,6 +796,8 @@ static int32 RemoveTrainCheckpoint(uint tile, uint32 flags, bool justremove)
 
 		if (justremove) {
 			ModifyTile(tile, MP_MAP5, 1<<direction);
+			_map3_lo[tile] &= ~16;
+			_map3_hi[tile] = 0;
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);
@@ -1405,6 +1413,19 @@ DetailedTrackProc * const _detailed_track_proc[16] = {
 	DetTrackDrawProc_Null,
 };
 
+static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
+                                TileInfo *ti,
+                                byte x, byte y, byte z,
+                                byte xsize, byte ysize, byte zsize)
+{
+	if (image & 0x8000)
+		image |= _drawtile_track_palette;
+	image += tracktype_offs;
+	if (!(_display_opt & DO_TRANS_BUILDINGS)) // show transparent depots
+		image = (image & 0x3FFF) | 0x3224000;
+	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
+}
+
 static void DrawTile_Track(TileInfo *ti)
 {
 	uint32 tracktype_offs, image;
@@ -1521,6 +1542,28 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
+		if (!IS_RAIL_DEPOT(m5) && IS_RAIL_CHECKPOINT(m5) && _map3_lo[ti->tile]&16) {
+			// look for customization
+			DrawTileSprites *cust = GetCustomStation('WAYP', _map3_hi[ti->tile]);
+
+			if (cust) {
+				DrawTileSeqStruct const *seq;
+
+				cust = &cust[2 + (m5 & 0x1)]; // emulate station tile - open with building
+
+				image = cust->ground_sprite;
+				if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
+				DrawGroundSprite(image);
+
+				foreach_draw_tile_seq(seq, cust->seq) {
+					DrawSpecialBuilding(seq->image|0x8000, 0, ti,
+					                    seq->delta_x, seq->delta_y, seq->delta_z,
+					                    seq->width, seq->height, seq->unk);
+				}
+				return;
+			}
+		}
+
 		s = _track_depot_layout_table[type];
 
 		image = *(const uint16*)s;
@@ -1541,13 +1584,9 @@ static void DrawTile_Track(TileInfo *ti)
 		drss = (const DrawTrackSeqStruct*)(s + sizeof(uint16));
 
 		while ((image=drss->image) != 0) {
-			if (image & 0x8000)
-				image |= _drawtile_track_palette;
-			image += (type<4)?tracktype_offs:0;
-			if (!(_display_opt & DO_TRANS_BUILDINGS)) // show transparent depots
-				image = (image & 0x3FFF) | 0x3224000;
-			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
-				ti->y | drss->subcoord_y, drss->width, drss->height, 0x17, ti->z);
+			DrawSpecialBuilding(image, type < 4 ? tracktype_offs : 0, ti,
+			                    drss->subcoord_x, drss->subcoord_y, 0,
+			                    drss->width, drss->height, 0x17);
 			drss++;
 		}
 	}
