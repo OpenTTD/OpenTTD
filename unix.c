@@ -334,7 +334,7 @@ void FiosDelete(const char *name)
 {
 	char path[512];
 
-	FiosMakeSavegameName(path, name);
+	snprintf(path, lengthof(path), "%s/%s", _fios_path, name);
 	unlink(path);
 }
 
