@@ -178,7 +178,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 					0);
 			}
 		}
-		if (v->y_pos >= (MapSizeY() + 9) * 16 - 1)
+		if (v->y_pos >= ((int)MapSizeY() + 9) * 16 - 1)
 			DeleteDisasterVeh(v);
 		return;
 	}
@@ -416,7 +416,7 @@ static void DisasterTick_3(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > MapSizeX() * 16 + 9*16 - 1) {
+	if (gp.x > (int)MapSizeX() * 16 + 9*16 - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
@@ -594,7 +594,7 @@ static void DisasterTick_4b(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > MapSizeX() * 16 + 9*16 - 1) {
+	if (gp.x > (int)MapSizeX() * 16 + 9*16 - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
