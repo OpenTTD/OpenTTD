@@ -161,6 +161,7 @@ static void BuildRoadClick_Remove(Window *w)
 	SetWindowDirty(w);
 	SndPlayFx(0x13);
 	_thd.make_square_red = !!((w->click_state ^= (1 << 12)) & (1<<12));
+	MarkTileDirty(_thd.pos.x, _thd.pos.y);
 }
 
 static void BuildRoadClick_Purchase(Window *w)

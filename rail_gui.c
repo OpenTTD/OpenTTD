@@ -290,6 +290,7 @@ static void BuildRailClick_Remove(Window *w)
 	SndPlayFx(0x13);
 
 	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
+	MarkTileDirty(_thd.pos.x, _thd.pos.y);
 	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
 
 	// handle station builder
