@@ -103,6 +103,7 @@
 # Experimental (does not work properly):
 # WITH_NETWORK: enable networking
 # WITH_DIRECTMUSIC: enable DirectMusic MIDI support
+# DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 
 
 ##############################################################################
@@ -112,7 +113,7 @@
 
 # Makefile version tag
 # it checks if the version tag in makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=3
+MAKEFILE_VERSION:=4
 
 # CONFIG_WRITER have to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -207,8 +208,16 @@ endif
 # Force SDL on UNIX platforms
 ifndef WITH_SDL
 ifdef UNIX
-$(error You need to have SDL installed in order to run OpenTTD on UNIX.)
+ifndef DEDICATED
+$(error You need to have SDL installed in order to run OpenTTD on UNIX. Use DEDICATED if you want to compile a CLI based server)
 endif
+endif
+endif
+
+# For some reason it will not link with libpng if SDL is disabled
+# this automatically disables libpng if no SDL is found
+ifndef WITH_SDL
+WITH_PNG:=
 endif
 
 
