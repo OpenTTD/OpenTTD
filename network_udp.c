@@ -174,8 +174,8 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 			NetworkSend_uint8 (p, 1);
 		} else {
 			NetworkSend_uint8 (p, 0);
-		}		
-		
+		}
+
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			NetworkSend_uint16(packet, _network_player_info[player->index].num_vehicle[i]);
 

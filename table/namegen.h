@@ -1932,7 +1932,7 @@ static const char *name_norwegian_1[] = {
 	"Vik",
 	"Våg"
 };
-	
+
 static const char *name_norwegian_2[] = {
 	"aker",
 	"anger",
@@ -2002,7 +2002,7 @@ static const char *name_norwegian_2[] = {
 	"um",
 	"åsen"
 };
-	
+
 static const char *name_norwegian_real[] = {
 	"Alta",
 	"Arendal",

@@ -104,10 +104,10 @@ void DispatchMouseWheelEvent(Window *w, uint widget, int wheel)
 	Scrollbar *sb;
 
 	/* The listbox can only scroll if scrolling was done on the scrollbar itself,
-	 * or on the listbox (and the next item is (must be) the scrollbar) 
+	 * or on the listbox (and the next item is (must be) the scrollbar)
 	 * XXX - should be rewritten as a widget-dependent scroller but that's
 	 * not happening until someone rewrites the whole widget-code */
-	if ((sb = &w->vscroll,  wi1->type == WWT_SCROLLBAR)  || (sb = &w->vscroll2, wi1->type == WWT_SCROLL2BAR)  || 
+	if ((sb = &w->vscroll,  wi1->type == WWT_SCROLLBAR)  || (sb = &w->vscroll2, wi1->type == WWT_SCROLL2BAR)  ||
 			(sb = &w->vscroll2, wi2->type == WWT_SCROLL2BAR) || (sb = &w->vscroll, wi2->type == WWT_SCROLLBAR) ) {
 
 		if (sb->count > sb->cap) {

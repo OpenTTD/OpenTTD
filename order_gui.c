@@ -51,7 +51,7 @@ static void DrawOrdersWindow(Window *w)
 		1 << 8 |   //full load
 		1 << 9     //unload
 		);
-		
+
 	//disable non-stop for non-trains
 	if (v->type != VEH_Train) {
 		w->disabled_state |= 1 << 6;
@@ -435,7 +435,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		case 6: /* non stop button */
 			OrderClick_Nonstop(w, v);
 			break;
-			
+
 		case 7: /* goto button */
 			OrderClick_Goto(w, v);
 			break;
@@ -450,7 +450,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 		}
 	} break;
-	
+
 	case WE_KEYPRESS: {
 		Vehicle *v = GetVehicle(w->window_number);
 		uint i;
@@ -458,7 +458,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		for(i = 0; i < lengthof(_order_keycodes); i++) {
 			if (e->keypress.keycode == _order_keycodes[i]) {
 				e->keypress.cont = false;
-				//see if the button is disabled 
+				//see if the button is disabled
 				if (!(HASBIT(w->disabled_state, (i + 4)))) {
 					_order_button_proc[i](w, v);
 				}
@@ -561,7 +561,7 @@ void ShowOrdersWindow(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
 	_alloc_wnd_parent_num = veh;
-	
+
 	w = AllocateWindowDesc( (v->owner == _local_player) ? &_orders_desc : &_other_orders_desc);
 
 	w->window_number = veh;

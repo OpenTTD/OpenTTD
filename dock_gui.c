@@ -118,7 +118,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		if (e->click.widget - 3 >= 0 && e->click.widget != 5) _build_docks_button_proc[e->click.widget - 3](w);
 	} break;
-	
+
 	case WE_KEYPRESS: {
 		switch(e->keypress.keycode) {
 			case '1': BuildDocksClick_Canal(w); break;
@@ -128,7 +128,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 			case '5': BuildDocksClick_Dock(w); break;
 			case '6': BuildDocksClick_Buoy(w); break;
 			case 'l': BuildDocksClick_Landscaping(w); break;
-			default: 
+			default:
 				return;
 		}
 	} break;

@@ -1098,7 +1098,7 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 			DeleteWindow(w);
 			DeleteWindowByClass(WC_INDUSTRY_VIEW);
 			DeleteWindowByClass(WC_TOWN_VIEW);
-			DeleteWindowByClass(WC_LAND_INFO);			
+			DeleteWindowByClass(WC_LAND_INFO);
 
 			if (mode) { // reset landscape
 				ResetLandscape();
@@ -1264,7 +1264,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT:
 		// XXX - lighthouse button is widget 11!! Don't forget when changing
-		w->widget[11].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE; 
+		w->widget[11].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		DrawWindowWidgets(w);
 
 		{
@@ -2427,7 +2427,7 @@ void ShowVitalWindows(void)
 		if (!_network_server) // if not server, disable pause button
 			SETBIT(w->disabled_state, 0);
 	}
-	
+
 	PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
 
 	_main_status_desc.top = _screen.height - 12;

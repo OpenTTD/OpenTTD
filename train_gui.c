@@ -358,7 +358,7 @@ static void DrawTrainDepotWindow(Window *w)
 			/* Draw the train number */
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
-			
+
 			/*Draw the train counter */
 			i = 0;
 			u = v;
@@ -366,7 +366,7 @@ static void DrawTrainDepotWindow(Window *w)
 			SetDParam(0, i);				//Set the counter
 			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
 			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
-			
+
 			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
 
@@ -384,7 +384,7 @@ static void DrawTrainDepotWindow(Window *w)
 
 			DrawTrainImage(v, x+50, y, w->hscroll.cap - 1, 0, WP(w,traindepot_d).sel);
 			DrawString(x, y+2, STR_8816, 0);
-			
+
 			/*Draw the train counter */
 			i = 0;
 			u = v;

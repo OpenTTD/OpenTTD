@@ -26,74 +26,74 @@ void InitializeAirports()
 {
 	// country airport
 	CountryAirport = malloc(sizeof(AirportFTAClass));
-	
+
 	AirportFTAClass_Constructor(
-		CountryAirport, 
-		_airport_terminal_country, 
-		NULL, 
-		16, 
-		ALL, 
-		_airport_fta_country, 
-		_airport_depots_country, 
+		CountryAirport,
+		_airport_terminal_country,
+		NULL,
+		16,
+		ALL,
+		_airport_fta_country,
+		_airport_depots_country,
 		lengthof(_airport_depots_country)
 	);
 
 	// city airport
 	CityAirport = malloc(sizeof(AirportFTAClass));
-	
+
 	AirportFTAClass_Constructor(
-		CityAirport, 
-		_airport_terminal_city, 
-		NULL, 
-		19, 
-		ALL, 
-		_airport_fta_city, 
-		_airport_depots_city, 
+		CityAirport,
+		_airport_terminal_city,
+		NULL,
+		19,
+		ALL,
+		_airport_fta_city,
+		_airport_depots_city,
 		lengthof(_airport_depots_city)
 	);
 
 	// metropolitan airport
 	MetropolitanAirport = malloc(sizeof(AirportFTAClass));
-	
+
 	AirportFTAClass_Constructor(
-		MetropolitanAirport, 
-		_airport_terminal_metropolitan, 
-		NULL, 
-		20, 
-		ALL, 
-		_airport_fta_metropolitan, 
-		_airport_depots_metropolitan, 
+		MetropolitanAirport,
+		_airport_terminal_metropolitan,
+		NULL,
+		20,
+		ALL,
+		_airport_fta_metropolitan,
+		_airport_depots_metropolitan,
 		lengthof(_airport_depots_metropolitan)
 	);
 
 	// international airport
 	InternationalAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	
+
 	AirportFTAClass_Constructor(
-		InternationalAirport, 
-		_airport_terminal_international, 
-		_airport_helipad_international, 
-		37, 
-		ALL, 
-		_airport_fta_international, 
-		_airport_depots_international, 
+		InternationalAirport,
+		_airport_terminal_international,
+		_airport_helipad_international,
+		37,
+		ALL,
+		_airport_fta_international,
+		_airport_depots_international,
 		lengthof(_airport_depots_international)
 	);
 
 	// heliport, oilrig
 	Heliport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
-	
+
 	AirportFTAClass_Constructor(
-		Heliport, 
-		NULL, 
-		_airport_helipad_heliport_oilrig, 
-		7, 
-		HELICOPTERS_ONLY, 
-		_airport_fta_heliport_oilrig, 
-		NULL, 
+		Heliport,
+		NULL,
+		_airport_helipad_heliport_oilrig,
+		7,
+		HELICOPTERS_ONLY,
+		_airport_fta_heliport_oilrig,
+		NULL,
 		0
 	);
-	
+
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
 }
 
@@ -118,7 +118,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	const byte * curr;
 	int i;
 	nofterminals = nofhelipads = 0;
-	
+
 	//now we read the number of terminals we have
 	if (terminals != NULL) {
 		i = terminals[0];
@@ -129,11 +129,11 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 			assert(*curr != 0);	//we don't want to have an empty group
 			nofterminals += *curr;
 		}
-	
+
 	}
 	Airport->terminals = terminals;
 
-	//read helipads	
+	//read helipads
 	if (helipads != NULL) {
 		i = helipads[0];
 		nofhelipadgroups = i;
@@ -143,7 +143,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 			assert(*curr != 0); //no empty groups please
 			nofhelipads += *curr;
 		}
-	
+
 	}
 	Airport->helipads = helipads;
 

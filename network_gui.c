@@ -725,9 +725,9 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 				DrawSprite(SPR_LOCK, 120, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
-			if ((_network_player_info[index].income) > 0) 
+			if ((_network_player_info[index].income) > 0)
 				income = true;
-			DrawSprite(SPR_BLOT | (income?0x30d8000:0x30b8000), 130, y); 
+			DrawSprite(SPR_BLOT | (income?0x30d8000:0x30b8000), 130, y);
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW_COMPANY;

@@ -204,32 +204,32 @@ static void ShowBuildAircraftWindow(uint tile)
 
 #define MAX_REFIT 0xFF
 
-const byte _aircraft_refit_normal[] = { 
+const byte _aircraft_refit_normal[] = {
 	CT_PASSENGERS,
 	CT_MAIL,
 	CT_GOODS,
 	CT_VALUABLES,
-	MAX_REFIT 
+	MAX_REFIT
 };
 
-const byte _aircraft_refit_arctic[] = { 
+const byte _aircraft_refit_arctic[] = {
 	CT_PASSENGERS,
 	CT_MAIL,
 	CT_GOODS,
 	CT_FOOD,
-	MAX_REFIT 
+	MAX_REFIT
 };
 
-const byte _aircraft_refit_desert[] = { 
+const byte _aircraft_refit_desert[] = {
 	CT_PASSENGERS,
 	CT_MAIL,
 	CT_FRUIT,
 	CT_GOODS,
 	CT_DIAMONDS,
-	MAX_REFIT 
+	MAX_REFIT
 };
 
-const byte _aircraft_refit_candy[] = { 
+const byte _aircraft_refit_candy[] = {
 	CT_PASSENGERS,
 	CT_SUGAR,
 	CT_TOYS,

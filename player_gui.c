@@ -833,10 +833,10 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 				DrawString(x + 71, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
 			}
 		}
-	} break;	
+	} break;
 
 	case WE_CLICK: /* Onclick get back all hidden windows */
-		if (_game_mode != GM_MENU && !_networking)				
+		if (_game_mode != GM_MENU && !_networking)
 			ShowVitalWindows();
 
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);

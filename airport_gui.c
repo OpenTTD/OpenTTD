@@ -69,7 +69,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		if (e->click.widget - 3 >= 0)
 			_build_air_button_proc[e->click.widget - 3](w);
 		break;
-		
+
 	case WE_KEYPRESS: {
 		switch (e->keypress.keycode) {
 			case '1': BuildAirClick_Airport(w); break;

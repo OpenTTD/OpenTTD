@@ -122,7 +122,7 @@ enum {
 
 	RATING_BRIBE_UP_STEP = 200,
 	RATING_BRIBE_MAXIMUM = 800,
-	RATING_BRIBE_DOWN_TO = -50 					// XXX SHOULD BE SOMETHING LOWER?	
+	RATING_BRIBE_DOWN_TO = -50 					// XXX SHOULD BE SOMETHING LOWER?
 };
 
 bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type);

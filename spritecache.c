@@ -768,7 +768,7 @@ static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
 	};
 }
 
-/* Calculate and check the MD5 hash of the supplied filename. 
+/* Calculate and check the MD5 hash of the supplied filename.
  * returns true if the checksum is correct */
 static bool FileMD5(const MD5File file, bool warn)
 {
@@ -801,17 +801,17 @@ static bool FileMD5(const MD5File file, bool warn)
 		if (ferror(f))
 			if (warn) printf ("Error Reading from %s \n", buf);
 		fclose(f);
-  
+
 		md5_finish(&filemd5state, digest);
 	  return CheckMD5Digest(file, digest, warn);
 	} else { // file not found
 		return false;
-	}	
+	}
 }
 
 /* Checks, if either the Windows files exist (TRG1R.GRF) or the DOS files (TRG1.GRF)
  * by comparing the MD5 checksums of the files. _use_dos_palette is set accordingly.
- * If neither are found, Windows palette is assumed. 
+ * If neither are found, Windows palette is assumed.
  *
  * (Note: Also checks sample.cat for corruption) */
 void CheckExternalFiles()

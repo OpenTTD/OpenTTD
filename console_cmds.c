@@ -217,7 +217,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 
 
 	result = IConsoleVarAlloc(ICONSOLE_VAR_STRING);
-	
+
 	if (argc <= 1) {
 		IConsoleVarSetString(result, "0");
 		return result; // return an zero
@@ -229,7 +229,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 	/* As long as we have files */
 	while (pos < _fios_num) {
 		item = _fios_list + pos;
-		pos++;		
+		pos++;
 		if (strcmp(argv[1], "..") == 0) {
 			if (item->type == FIOS_TYPE_PARENT) {
 				// huh we are searching for the parent directory
@@ -238,7 +238,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 				IConsoleVarSetString(result, buffer);
 				return result;
 			}
-		} else 
+		} else
 			// file records ?
 			if (item->type == FIOS_TYPE_FILE) {
 				if (strcmp(argv[1], item->name) == 0) {
@@ -246,7 +246,7 @@ DEF_CONSOLE_CMD(ConScanFiles)
 					sprintf(buffer, "%d", pos);
 					IConsoleVarSetString(result, buffer);
 					return result;
-				}			
+				}
 			}
 	}
 

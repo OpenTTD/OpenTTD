@@ -333,7 +333,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 		switch(e->click.widget) {
 		case 5: {
-			int line; 
+			int line;
 			int x;
 			byte b;
 
@@ -350,9 +350,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			x = e->click.pt.x;
 			line = (e->click.pt.y - 127) / 10;
 			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line]) {
-				if (IS_INT_INSIDE(x, 5, 25) ) { 
+				if (IS_INT_INSIDE(x, 5, 25) ) {
 					// clicked buttons
-					if (x < 15) {				
+					if (x < 15) {
 						// decrease
 						i->production_rate[line] /= 2;
 						if (i->production_rate[line] < 4)
@@ -360,7 +360,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					} else {
 						// increase
 						b = i->production_rate[line] * 2;
-						if (i->production_rate[line] >= 128) 
+						if (i->production_rate[line] >= 128)
 							b=255;
 						i->production_rate[line] = b;
 					}
@@ -373,12 +373,12 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					// clicked the text
 					WP(w,vp2_d).data_1 = line;
 					SetDParam(0, i->production_rate[line] * 8);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, 
-							STR_CONFIG_GAME_PRODUCTION, 
-							10, 100, w->window_class, 
+					ShowQueryString(STR_CONFIG_PATCHES_INT32,
+							STR_CONFIG_GAME_PRODUCTION,
+							10, 100, w->window_class,
 							w->window_number);
 				}
-			}	
+			}
 			}
 			break;
 		case 6:

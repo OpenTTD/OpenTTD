@@ -511,9 +511,9 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 void InvalidateAircraftWindows(Vehicle *v)
 {
 	Order *o;
-	
+
 	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
-	
+
 	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++, i++) {
 		if (o->type == OT_GOTO_STATION ) {
 			InvalidateWindow(WC_AIRCRAFT_LIST, o->station << 16 | v->owner);
@@ -548,7 +548,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	
+
 	InvalidateAircraftWindows(v);
 }
 
@@ -1714,10 +1714,10 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 static int GetNumTerminals(const AirportFTAClass *Airport)
 {
 	int i, num = 0;
-	
+
 	for (i = Airport->terminals[0]; i > 0; i--)
 		num += Airport->terminals[i];
-		
+
 	return num;
 }
 
@@ -1773,10 +1773,10 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 static int GetNumHelipads(const AirportFTAClass *Airport)
 {
 	int i, num = 0;
-	
+
 	for (i = Airport->helipads[0]; i > 0; i--)
 		num += Airport->helipads[i];
-		
+
 	return num;
 }
 
@@ -1882,7 +1882,7 @@ void Aircraft_Tick(Vehicle *v)
 void UpdateOilRig( void )
 {
 	Station *st;
-	
+
 	FOR_ALL_STATIONS(st) {
 		if (st->airport_type == 5) st->airport_type = AT_OILRIG;
 	}
