@@ -10,7 +10,7 @@
 #include "vehicle.h"
 
 
-static void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
+void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);

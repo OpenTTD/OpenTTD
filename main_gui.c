@@ -44,6 +44,8 @@ extern void GenerateTowns();
 
 extern uint GetCurrentCurrencyRate();
 
+extern void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
+
 void HandleOnEditTextCancel() {
 	switch(_rename_what) {
 #ifdef ENABLE_NETWORK
@@ -1114,15 +1116,6 @@ static const WindowDesc _ask_reset_landscape_desc = {
 static void AskResetLandscape(uint mode)
 {
 	AllocateWindowDescFront(&_ask_reset_landscape_desc, mode);
-}
-
-void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
-{
-	if (success) {
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-	} else {
-		SetRedErrorSquare(_terraform_err_tile);
-	}
 }
 
 static void CommonRaiseLowerBigLand(uint tile, int mode)

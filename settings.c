@@ -783,6 +783,8 @@ static const SettingDesc patch_player_settings[] = {
 	{"invisible_trees",			SDT_BOOL,		(void*)false, &_patches.invisible_trees,			NULL},
 	{"drag_signals_density",SDT_UINT8,	(void*)4,			&_patches.drag_signals_density, NULL},
 
+	{"window_snap_radius",  SDT_UINT8,  (void*)10,    &_patches.window_snap_radius,   NULL},
+
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 
@@ -807,7 +809,6 @@ const SettingDesc patch_settings[] = {
 
 	{"new_nonstop",					SDT_BOOL,		(void*)false,	&_patches.new_nonstop,					NULL},
 	{"roadveh_queue",				SDT_BOOL,		(void*)true,	&_patches.roadveh_queue,				NULL},
-	{"window_snap_radius",  SDT_UINT8,  (void*)10,    &_patches.window_snap_radius,   NULL},
 
 	{"snow_line_height",		SDT_UINT8,	(void*)7,			&_patches.snow_line_height,			NULL},
 
@@ -817,6 +818,7 @@ const SettingDesc patch_settings[] = {
 	{"nonuniform_stations",	SDT_BOOL,		(void*)true,	&_patches.nonuniform_stations,	NULL},
 	{"always_small_airport",SDT_BOOL,		(void*)false,	&_patches.always_small_airport,	NULL},
 	{"realistic_acceleration",SDT_BOOL, (void*)false,	&_patches.realistic_acceleration,	NULL},
+	{"improved_load",				SDT_BOOL,		(void*)false,	&_patches.improved_load,				NULL},
 
 	{"max_trains",					SDT_UINT8,	(void*)80,		&_patches.max_trains,						NULL},
 	{"max_roadveh",					SDT_UINT8,	(void*)80,		&_patches.max_roadveh,					NULL},
