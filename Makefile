@@ -543,24 +543,98 @@ endif
 
 ### Sources
 
-C_SOURCES = \
-	ai.c ai_build.c ai_new.c ai_pathfinder.c ai_shared.c aircraft_cmd.c \
-	aircraft_gui.c airport.c airport_gui.c aystar.c bridge_gui.c \
-	callback_table.c clear_cmd.c command.c console.c console_cmds.c \
-	dedicated.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
-	engine.c engine_gui.c fileio.c gfx.c graph_gui.c newgrf.c \
-	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c md5.c \
-	minilzo.c misc.c misc_cmd.c misc_gui.c music_gui.c namegen.c network.c \
-	network_client.c network_data.c network_gamelist.c network_gui.c \
-	network_server.c network_udp.c news_gui.c oldloader.c order_cmd.c \
-	order_gui.c pathfind.c player_gui.c players.c queue.c rail_cmd.c \
-	rail_gui.c rev.c road_cmd.c road_gui.c roadveh_cmd.c roadveh_gui.c \
-	saveload.c screenshot.c settings.c settings_gui.c ship_cmd.c \
-	ship_gui.c smallmap_gui.c sound.c sprite.c spritecache.c station_cmd.c \
-	station_gui.c strings.c subsidy_gui.c terraform_gui.c texteff.c \
-	town_cmd.c town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c \
-	tunnelbridge_cmd.c unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c \
-	water_cmd.c widget.c window.c
+C_SOURCES += ai.c
+C_SOURCES += ai_build.c
+C_SOURCES += ai_new.c
+C_SOURCES += ai_pathfinder.c
+C_SOURCES += ai_shared.c
+C_SOURCES += aircraft_cmd.c
+C_SOURCES += aircraft_gui.c
+C_SOURCES += airport.c
+C_SOURCES += airport_gui.c
+C_SOURCES += aystar.c
+C_SOURCES += bridge_gui.c
+C_SOURCES += callback_table.c
+C_SOURCES += clear_cmd.c
+C_SOURCES += command.c
+C_SOURCES += console.c
+C_SOURCES += console_cmds.c
+C_SOURCES += dedicated.c
+C_SOURCES += disaster_cmd.c
+C_SOURCES += dock_gui.c
+C_SOURCES += dummy_land.c
+C_SOURCES += economy.c
+C_SOURCES += engine.c
+C_SOURCES += engine_gui.c
+C_SOURCES += fileio.c
+C_SOURCES += gfx.c
+C_SOURCES += graph_gui.c
+C_SOURCES += newgrf.c
+C_SOURCES += industry_cmd.c
+C_SOURCES += industry_gui.c
+C_SOURCES += intro_gui.c
+C_SOURCES += landscape.c
+C_SOURCES += main_gui.c
+C_SOURCES += md5.c
+C_SOURCES += minilzo.c
+C_SOURCES += misc.c
+C_SOURCES += misc_cmd.c
+C_SOURCES += misc_gui.c
+C_SOURCES += music_gui.c
+C_SOURCES += namegen.c
+C_SOURCES += network.c
+C_SOURCES += network_client.c
+C_SOURCES += network_data.c
+C_SOURCES += network_gamelist.c
+C_SOURCES += network_gui.c
+C_SOURCES += network_server.c
+C_SOURCES += network_udp.c
+C_SOURCES += news_gui.c
+C_SOURCES += oldloader.c
+C_SOURCES += order_cmd.c
+C_SOURCES += order_gui.c
+C_SOURCES += pathfind.c
+C_SOURCES += player_gui.c
+C_SOURCES += players.c
+C_SOURCES += queue.c
+C_SOURCES += rail_cmd.c
+C_SOURCES += rail_gui.c
+C_SOURCES += rev.c
+C_SOURCES += road_cmd.c
+C_SOURCES += road_gui.c
+C_SOURCES += roadveh_cmd.c
+C_SOURCES += roadveh_gui.c
+C_SOURCES += saveload.c
+C_SOURCES += screenshot.c
+C_SOURCES += settings.c
+C_SOURCES += settings_gui.c
+C_SOURCES += ship_cmd.c
+C_SOURCES += ship_gui.c
+C_SOURCES += smallmap_gui.c
+C_SOURCES += sound.c
+C_SOURCES += sprite.c
+C_SOURCES += spritecache.c
+C_SOURCES += station_cmd.c
+C_SOURCES += station_gui.c
+C_SOURCES += strings.c
+C_SOURCES += subsidy_gui.c
+C_SOURCES += terraform_gui.c
+C_SOURCES += texteff.c
+C_SOURCES += town_cmd.c
+C_SOURCES += town_gui.c
+C_SOURCES += train_cmd.c
+C_SOURCES += train_gui.c
+C_SOURCES += tree_cmd.c
+C_SOURCES += ttd.c
+C_SOURCES += tunnelbridge_cmd.c
+C_SOURCES += unmovable_cmd.c
+C_SOURCES += vehicle.c
+C_SOURCES += vehicle_gui.c
+C_SOURCES += viewport.c
+C_SOURCES += water_cmd.c
+C_SOURCES += widget.c
+C_SOURCES += window.c
+
 CXX_SOURCES =
 
 ifdef WITH_SDL
