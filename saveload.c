@@ -536,7 +536,8 @@ static size_t SlCalcGlobListLength(const SaveLoadGlobVarList *desc)
 	size_t length = 0;
 
 	while (desc->address) {
-		length += SlCalcConvLen(desc->conv, NULL);
+		if(_sl.version >= desc->from_version && _sl.version <= desc->to_version)
+			length += SlCalcConvLen(desc->conv, NULL);
 		desc++;
 	}
 	return length;
