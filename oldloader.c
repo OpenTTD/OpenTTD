@@ -367,14 +367,8 @@ static void FixOldStations(void)
 
 	FOR_ALL_STATIONS(st) {
 		/* Check if we need to swap width and height for the station */
-		if (st->train_tile) {
-			if (_map5[st->train_tile] & 1) {
-				int w = st->trainst_w;
-				int h = st->trainst_h;
-				intswap(w, h);
-				st->trainst_w = w;
-				st->trainst_h = h;
-			}
+		if (st->train_tile != 0 && _map5[st->train_tile] & 1) {
+			swap_byte(&st->trainst_w, &st->trainst_h);
 		}
 
 		/* Check if there is a bus or truck station, and convert to new format */
