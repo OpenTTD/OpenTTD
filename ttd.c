@@ -78,7 +78,7 @@ void CDECL debug(const char *s, ...)
 	vsprintf(buf, s, va);
 	va_end(va);
 	fprintf(stderr, "dbg: %s\n", buf);
-	IConsoleDebug((byte *) &buf);
+	IConsoleDebug(buf);
 }
 
 void CDECL ShowInfoF(const char *str, ...)
@@ -220,7 +220,7 @@ static char *strecpy(char *dst, const char *src)
 byte *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
 	FILE *in;
-	void *mem;
+	byte *mem;
 	size_t len;
 
 	in = fopen(filename, "rb");
@@ -230,11 +230,11 @@ byte *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	fseek(in, 0, SEEK_END);
 	len = ftell(in);
 	fseek(in, 0, SEEK_SET);
-	if (len > maxsize || (mem=(byte*)malloc(len + 1)) == NULL) {
+	if (len > maxsize || (mem = malloc(len + 1)) == NULL) {
 		fclose(in);
 		return NULL;
 	}
-	((byte*)mem)[len] = 0;
+	mem[len] = 0;
 	if (fread(mem, len, 1, in) != 1) {
 		fclose(in);
 		free(mem);

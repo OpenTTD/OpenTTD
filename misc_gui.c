@@ -1123,7 +1123,7 @@ static void MakeSortedSaveGameList(void)
 	}
 
 	s_amount = _fios_num - sort_start - sort_end;
-	if ((bool)s_amount)
+	if (s_amount > 0)
 		qsort(_fios_list + sort_start, s_amount, sizeof(FiosItem), compare_FiosItems);
 }
 
