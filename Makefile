@@ -57,7 +57,6 @@
 # MANUAL_CONFIG: do not use Makefile.config, config options set manually
 # DEBUG: build in debug mode
 # PROFILE: build in profile mode, disables -s and -fomit-frame-pointer
-# DISPLAY_WARNINGS: when off, some errors are not displayed while compiling
 # TRANSLATOR: build in translator mode (untranslated strings are prepended by
 #             a <TODO> mark)
 # RELEASE: this will be the released version number. It replaces all places
@@ -172,12 +171,6 @@ ENABLE_NETWORK:=1
 #USE_HOMEDIR:=1
 
 -include $(LIB_DETECTION)
-endif
-
-ifdef DISPLAY_WARNINGS
-WARNING_DISPLAY:=-fstrict-aliasing
-else
-WARNING_DISPLAY:=-fno-strict-aliasing
 endif
 
 ifdef SUPRESS_LANG_ERRORS
@@ -314,12 +307,12 @@ endif
 
 ifdef OSX
 # these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
-BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL $(WARNING_DISPLAY)
+BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL
 else
 ifdef MORPHOS
-BASECFLAGS += -O3 -funroll-loops -fexpensive-optimizations -mstring -mmultiple $(WARNING_DISPLAY)
+BASECFLAGS += -O3 -funroll-loops -fexpensive-optimizations -mstring -mmultiple
 else
-BASECFLAGS += -O2 $(WARNING_DISPLAY)
+BASECFLAGS += -O2
 endif
 ifndef PROFILE
 BASECFLAGS += -fomit-frame-pointer
