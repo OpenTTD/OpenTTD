@@ -408,7 +408,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	}
 
 	// check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards)
-#if defined(WIN32)
+#if defined(WIN32) || defined(__OS2__)
 	if (sym->scancode == 41) key |= WKC_BACKQUOTE;
 #elif defined(__APPLE__)
 	if (sym->scancode == 10) key |= WKC_BACKQUOTE;

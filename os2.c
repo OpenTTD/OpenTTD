@@ -6,10 +6,16 @@
 #include <direct.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <stdarg.h>
 #include <time.h>
 #include <dos.h>
 
+#define INCL_DOS
+#define INCL_WINDIALOGS
+#define INCL_OS2MM
+
 #include <os2.h>
+#include <os2me.h>
 
 #if defined(WITH_SDL)
 #include <SDL.h>
@@ -27,6 +33,7 @@ static FiosItem *FiosAlloc()
 		_fios_alloc += 256;
 		_fios_items = realloc(_fios_items, _fios_alloc * sizeof(FiosItem));
 	}
+
 	return &_fios_items[_fios_count++];
 }
 
@@ -45,6 +52,22 @@ int compare_FiosItems (const void *a, const void *b) {
 }
 
 
+static DIR *my_opendir(char *path, char *file)
+{
+	char paths[MAX_PATH];
+
+	append_path(paths, path, file);		
+	return opendir(paths);
+}
+
+static void append_path(char *out, char *path, char *file)
+{
+	if ((path[2] == '\\') && (path[3] == 0))
+		sprintf(out, "%s%s", path, file);
+	else
+		sprintf(out, "%s\\%s", path, file);
+}
+
 // Get a list of savegames
 FiosItem *FiosGetSavegameList(int *num, int mode)
 {
@@ -60,32 +83,31 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		strcpy(_fios_save_path, _path.save_dir);
 	}
 
-	if(_game_mode==GM_EDITOR)
+	if (_game_mode == GM_EDITOR)
 		_fios_path = _fios_scn_path;
 	else
 		_fios_path = _fios_save_path;
 
-	// Parent directory, only if not in root already.
-	if (_fios_path[1] != 0) {
+	// Parent directory, only if not of the type C:\.
+	if (_fios_path[3] != 0) {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		sprintf(fios->title, ".. (Parent directory)");
+		strcpy(fios->title, ".. (Parent directory)");
 	}
 
 	// Show subdirectories first
-	dir = opendir(_fios_path[0] ? _fios_path : "C:\\");
+	dir = my_opendir(_fios_path, "*.*");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s\\%s", _fios_path, dirent->d_name);
+			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb)) {
 				if (S_ISDIR(sb.st_mode)) {
-					if (dirent->d_name[0] != '.') {
+					if (!(dirent->d_name[0] == '.' && (dirent->d_name[1] == 0 || (dirent->d_name[1] == '.' && dirent->d_name[2] == 0))))
+					{
 						fios = FiosAlloc();
-						fios->mtime = 0;
 						fios->type = FIOS_TYPE_DIR;
-						fios->title[0] = 0;
-						sprintf(fios->name, "%s\\ (Directory)", dirent->d_name);
+						strcpy(fios->name, dirent->d_name);
+						sprintf(fios->title, "%s\\ (Directory)", dirent->d_name);
 					}
 				}
 			}
@@ -110,10 +132,10 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	 *      .SV1    Transport Tycoon Deluxe (Patch) saved game
 	 *      .SV2    Transport Tycoon Deluxe (Patch) saved 2-player game
 	 */
-	dir = opendir(_fios_path[0] ? _fios_path : "C:\\");
+	dir = my_opendir(_fios_path, "*.*");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s\\%s", _fios_path, dirent->d_name);
+			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb)) {
 				if (!S_ISDIR(sb.st_mode)) {
 					char *t = strrchr(dirent->d_name, '.');
@@ -185,25 +207,35 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	int sort_start;
 	char filename[MAX_PATH];
 
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = malloc(MAX_PATH);
+	if (mode == SLD_NEW_GAME || _fios_scn_path == NULL) {
+		if (_fios_scn_path == NULL)
+			_fios_scn_path = malloc(MAX_PATH);
 		strcpy(_fios_scn_path, _path.scenario_dir);
 	}
+
 	_fios_path = _fios_scn_path;
 
+	// Parent directory, only if not of the type C:\.
+	if (_fios_path[3] != 0 && mode != SLD_NEW_GAME) {
+		fios = FiosAlloc();
+		fios->type = FIOS_TYPE_PARENT;
+		strcpy(fios->title, ".. (Parent directory)");
+	}
+
 	// Show subdirectories first
-	dir = opendir(_fios_path[0] ? _fios_path : "C:\\");
+	dir = my_opendir(_fios_path, "*.*");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s\\%s", _fios_path, dirent->d_name);
+			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb)) {
 				if (S_ISDIR(sb.st_mode)) {
-					if (dirent->d_name[0] != '.') {
+					if (!(dirent->d_name[0] == '.' && (dirent->d_name[1] == 0 || (dirent->d_name[1] == '.' && dirent->d_name[2] == 0))))
+					{
 						fios = FiosAlloc();
 						fios->mtime = 0;
 						fios->type = FIOS_TYPE_DIR;
-						fios->title[0] = 0;
-						sprintf(fios->name, "%s\\ (Directory)", dirent->d_name);
+						strcpy(fios->name, dirent->d_name);
+						sprintf(fios->title, "%s\\ (Directory)", dirent->d_name);
 					}
 				}
 			}
@@ -219,10 +251,10 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	 *      .SV0    Transport Tycoon Deluxe (Patch) scenario
 	 *      .SS0    Transport Tycoon Deluxe preset scenario
 	 */
-	dir = opendir(_fios_path[0] ? _fios_path : "C:\\");
+	dir = my_opendir(_fios_path, "*.*");
 	if (dir != NULL) {
 		while ((dirent = readdir(dir))) {
-			sprintf (filename, "%s\\%s", _fios_path, dirent->d_name);
+			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb)) {
 				if (!S_ISDIR(sb.st_mode)) {
 					char *t = strrchr(dirent->d_name, '.');
@@ -301,16 +333,28 @@ char *FiosBrowseTo(const FiosItem *item)
 	char *s;
 
 	switch(item->type) {
+	case FIOS_TYPE_DRIVE:
+		sprintf(path, "%c:\\", item->title[0]);
+		break;
+
 	case FIOS_TYPE_PARENT:
-		s = strrchr(path, '\\');
-		if (s != NULL) *s = 0;
+		// Skip drive part
+		path += 3;
+		s = path;
+		while (*path) {
+			if (*path== '\\')
+				s = path;
+			path++;
+		}
+		*s = 0;
 		break;
 
 	case FIOS_TYPE_DIR:
-		s = strchr((char*)item->name, '\\');
-		if (s) *s = 0;
-		while (*path) path++;
-		*path++ = '\\';
+		// Scan to end
+		while (*++path);
+		// Add backslash?
+		if (path[-1] != '\\') *path++ = '\\';
+
 		strcpy(path, item->name);
 		break;
 
@@ -325,7 +369,6 @@ char *FiosBrowseTo(const FiosItem *item)
 	case FIOS_TYPE_SCENARIO:
 		sprintf(str_buffr, "%s\\%s.scn", path, item->name);
 		return str_buffr;
-
 	case FIOS_TYPE_OLD_SCENARIO:
 		sprintf(str_buffr, "%s\\%s.%s", path, item->name, _old_extensions[item->old_extension]);
 		return str_buffr;
@@ -342,11 +385,11 @@ StringID FiosGetDescText(const char **path)
 	struct diskfree_t free;
 	char drive;
 	
-	*path = _fios_path[0] ? _fios_path : "C:\\";
-	drive = 'B' - *path[0];
+	*path = _fios_path;
+	drive = *path[0] - 'A'+1;
 
 	_getdiskfree(drive, &free);
-		
+
 	SetDParam(0, free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector);
 	return STR_4005_BYTES_FREE;
 }
@@ -367,33 +410,33 @@ void FiosDelete(const char *name)
 }
 
 const DriverDesc _video_driver_descs[] = {
-	{"null",	"Null Video Driver",    &_null_video_driver,    0},
+	{	"null",			"Null Video Driver",		&_null_video_driver,		0},
 #if defined(WITH_SDL)
-	{ "sdl",	"SDL Video Driver",	     &_sdl_video_driver,	     1},
+	{	"sdl",			"SDL Video Driver",			&_sdl_video_driver,			1},
 #endif
-	{ "dedicated", "Dedicated Video Driver", &_dedicated_video_driver, 0},
-	{ NULL,	 NULL,								   NULL,								   0}
+	{	"dedicated",	"Dedicated Video Driver",	&_dedicated_video_driver,	0},
+	{	NULL,			NULL,						NULL,						0}
 };
 
 const DriverDesc _sound_driver_descs[] = {
-	{"null",	"Null Sound Driver",    &_null_sound_driver,	    0},
+	{	"null",	"Null Sound Driver",	&_null_sound_driver,		0},
 #if defined(WITH_SDL)
-	{ "sdl",	"SDL Sound Driver",	     &_sdl_sound_driver,		     1},
+	{	"sdl",	"SDL Sound Driver",		&_sdl_sound_driver,			1},
 #endif
-	{ NULL,	 NULL,								   NULL,									   0}
+	{	NULL,	NULL,					NULL,						0}
 };
 
 const DriverDesc _music_driver_descs[] = {
-	{   "null",     "Null Music Driver",	    &_null_music_driver,	    0},
-	{     NULL,     NULL,									   NULL,									   0}
+	{	"os2",		"OS/2 Music Driver",		&_os2_music_driver,			0},
+	{   "null",     "Null Music Driver",	    &_null_music_driver,	    1},
+	{	NULL,		NULL,						NULL,						0}
 };
 
 /* GetOSVersion returns the minimal required version of OS to be able to use that driver.
-	 Not needed for *nix. */
+	 Not needed for OS/2. */
 byte GetOSVersion()
 {
 	return 2;  // any arbitrary number bigger then 0
-				// numbers lower than 2 breaks default music selection on mac
 }
 
 bool FileExists(const char *filename)
@@ -438,15 +481,15 @@ static void ChangeWorkingDirectory(char *exe)
 	}
 }
 
+// for some reason these calls don't actually work properly :/
 void ShowInfo(const char *str)
 {
-	puts(str);
+	WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, "OpenTTD", 0, MB_OK | MB_SYSTEMMODAL | MB_MOVEABLE | MB_INFORMATION);
 }
 
 void ShowOSErrorBox(const char *buf)
 {
-	WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, "OpenTTD", 263, MB_OK | MB_APPLMODAL | MB_MOVEABLE | MB_ERROR);
-// TODO: FIX, doesn't always appear
+	WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, "OpenTTD", 0, MB_OK | MB_SYSTEMMODAL | MB_MOVEABLE | MB_ERROR);
 }
 
 int CDECL main(int argc, char* argv[])
@@ -528,4 +571,86 @@ void DeterminePaths()
 	mkdir(_path.autosave_dir);
 	mkdir(_path.scenario_dir);
 }
+
+// FUNCTION: OS2_SwitchToConsoleMode
+//
+// Switches OpenTTD to a console app at run-time, instead of a PM app
+// Necessary to see stdout, etc
+
+void OS2_SwitchToConsoleMode()
+{
+	PPIB pib;
+	PTIB tib;
+
+	DosGetInfoBlocks(&tib, &pib);
+
+	// Change flag from PM to VIO
+	pib->pib_ultype = 3;
+}
+
+
+/**********************
+ * OS/2 MIDI PLAYER
+ **********************/
+
+/* Interesting how similar the MCI API in OS/2 is to the Win32 MCI API,
+ * eh? Anyone would think they both came from the same place originally! ;)
+ */
+
+static long CDECL MidiSendCommand(const char *cmd, ...)
+{
+	va_list va;
+	char buf[512];
+	va_start(va, cmd);
+	vsprintf(buf, cmd, va);
+	va_end(va);
+	return mciSendString(buf, NULL, 0, NULL, 0);
+}
+
+static void OS2MidiPlaySong(const char *filename)
+{
+	MidiSendCommand("close all");
+
+	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0)
+		return;
+
+	MidiSendCommand("play song from 0");
+}
+
+static void OS2MidiStopSong()
+{
+	MidiSendCommand("close all");
+}
+
+static void OS2MidiSetVolume(byte vol)
+{
+	MidiSendCommand("set song audio volume %d", ((vol/127)*100));
+}
+
+static bool OS2MidiIsSongPlaying()
+{
+	char buf[16];
+	mciSendString("status song mode", buf, sizeof(buf), NULL, 0);
+	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
+}
+
+static char *OS2MidiStart(char **parm)
+{
+	return 0;
+}
+
+static void OS2MidiStop()
+{
+	MidiSendCommand("close all");
+}
+
+const HalMusicDriver _os2_music_driver = {
+	OS2MidiStart,
+	OS2MidiStop,
+	OS2MidiPlaySong,
+	OS2MidiStopSong,
+	OS2MidiIsSongPlaying,
+	OS2MidiSetVolume,
+};
+
 

@@ -20,6 +20,8 @@
 #	include <unistd.h>
 #	include <conio.h>
 #	define STDIN 0  /* file descriptor for standard input */
+
+	extern void OS2_SwitchToConsoleMode();
 #endif
 
 #ifdef UNIX
@@ -98,6 +100,11 @@ static const char *DedicatedVideoStart(char **parm) {
 	// For win32 we need to allocate an console (debug mode does the same)
 	CreateConsole();
 	SetConsoleTitle("OpenTTD Dedicated Server");
+#endif
+
+#ifdef __OS2__
+	// For OS/2 we also need to switch to console mode instead of PM mode
+	OS2_SwitchToConsoleMode();
 #endif
 
 	DEBUG(misc,0)("Loading dedicated server...");

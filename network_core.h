@@ -88,7 +88,7 @@ typedef struct ifreq IFREQ;
 typedef struct ifreq IFREQ;
 #	define ioctlsocket ioctl
 #	define closesocket close
-#	define GET_LAST_ERROR() (errno)
+#	define GET_LAST_ERROR() (sock_errno())
 
 // Includes needed for OS/2 systems
 #	include <types.h>
@@ -103,6 +103,7 @@ typedef struct ifreq IFREQ;
 #	include <sys/time.h>
 #	include <netdb.h>
 #	include <nerrno.h>
+#	define INADDR_NONE 0xffffffff
 
 typedef unsigned long in_addr_t;
 #endif // OS/2

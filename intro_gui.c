@@ -199,6 +199,8 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 		SetDParam(0, STR_OSNAME_MORPHOS);
 #elif defined(__AMIGA__)  
 		SetDParam(0, STR_OSNAME_AMIGAOS);
+#elif defined(__OS2__)
+		SetDParam(0, STR_OSNAME_OS2);
 #else
 		SetDParam(0, STR_0134_UNIX);
 #endif

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ttd.h"
-#if defined(UNIX)
+#if defined(UNIX) || defined(__OS2__)
 #include <ctype.h> // required for tolower()
 #endif
 
