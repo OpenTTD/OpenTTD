@@ -774,7 +774,6 @@ static bool FileMD5(const MD5File file, bool warn)
 {
 	FILE *f;
 	char buf[MAX_PATH];
-    byte *s;
 
 	md5_state_t filemd5state;
 	int len=0;
@@ -786,8 +785,9 @@ static bool FileMD5(const MD5File file, bool warn)
 
 #if !defined(WIN32)
 	if (f == NULL) {
+		byte *s;
 	// make lower case and check again
-		for (s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 	}
