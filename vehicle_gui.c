@@ -365,6 +365,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
 			railtype = WP(w,replaceveh_d).railtype;
+			w->widget[13].color = _player_colors[_local_player];	// sets the colour of that art thing
+			w->widget[16].color = _player_colors[_local_player];	// sets the colour of that art thing
 			for (engine_id = 0; engine_id < NUM_TRAIN_ENGINES; engine_id++) {
 				const Engine *e = DEREF_ENGINE(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
@@ -928,8 +930,6 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
 			w->resize.step_height = 14;
-			w->widget[13].color = _player_colors[_local_player];
-			w->widget[16].color = _player_colors[_local_player];
 			break;
 		case VEH_Road:
 			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
