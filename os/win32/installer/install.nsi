@@ -1,7 +1,7 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.3.2.1"
-!define APPVERSION "0.3.2.1"
+!define APPNAMEANDVERSION "OpenTTD 0.3.3.0"
+!define APPVERSION "0.3.3.0"
 !define INSTALLERVERSION 11
 
 BrandingText "OpenTTD Installer"
@@ -9,7 +9,7 @@ BrandingText "OpenTTD Installer"
 
 ; Version Info
 Var AddWinPrePopulate
-VIProductVersion "0.3.2.1"
+VIProductVersion "0.3.3.0"
 VIAddVersionKey "ProductName" "OpenTTD Installer"
 VIAddVersionKey "Comments" "Installs ${APPNAMEANDVERSION}"
 VIAddVersionKey "CompanyName" "OpenTTD Developers"
@@ -177,13 +177,19 @@ SectionEnd
 ;Uninstall section
 
 Section Uninstall
-	MessageBox MB_YESNOCANCEL|MB_ICONQUESTION "Would you like to remove the Saved Game Folder located at '$INSTDIR\Save?'  If you choose Yes, your Saved Games will be removed." IDYES RemoveSavedGames IDNO NoRemoveSavedGames
+	MessageBox MB_YESNOCANCEL|MB_ICONQUESTION "Would you like to remove the Saved Game Folders located at '$INSTDIR\Save?'  If you choose Yes, your Saved Games will be removed." IDYES RemoveSavedGames IDNO NoRemoveSavedGames
 	RemoveSavedGames:
-		Delete "$INSTDIR\Save\*.*"
-		Delete "$INSTDIR\AutoSave\*.*"
+		Delete "$INSTDIR\Save\AutoSave\*"
+		RMDir "$INSTDIR\Save\AutoSave"
+		Delete "$INSTDIR\Save\*"
 		RMDir "$INSTDIR\Save"
-		RMDir "$INSTDIR\AutoSave"
 	NoRemoveSavedGames:
+
+	MessageBox MB_YESNOCANCEL|MB_ICONQUESTION "Would you like to remove the Scenario Folders located at '$INSTDIR\Scenario?'  If you choose Yes, your Scenarios will be removed." IDYES RemoveScen IDNO NoRemoveScen
+	RemoveScen:
+		Delete "$INSTDIR\Scenario\*"
+		RMDir "$INSTDIR\Scenario"
+	NoRemoveScen:
 
 	;Remove from registry...
 	!insertmacro MUI_STARTMENU_GETFOLDER "OpenTTD" $SHORTCUTS
