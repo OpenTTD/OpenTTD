@@ -1,8 +1,8 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.3.4.0"
-!define APPVERSION "0.3.4.0"
-!define INSTALLERVERSION 12 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPNAMEANDVERSION "OpenTTD 0.3.5.0"
+!define APPVERSION "0.3.5.0"
+!define INSTALLERVERSION 13 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 
 BrandingText "OpenTTD Installer"
 
@@ -24,7 +24,7 @@ Name "${APPNAMEANDVERSION}"
 ; NOTE: Keep trailing backslash!
 InstallDir "$PROGRAMFILES\OpenTTD\"
 InstallDirRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder"
-OutFile "openttd-${APPVERSION}.exe"
+OutFile "openttd-${APPVERSION}-win32.exe"
 
 ShowInstDetails show
 ShowUninstDetails show
@@ -110,9 +110,10 @@ Section "!OpenTTD" Section1
   File ${PATH_ROOT}changelog.txt
   File ${PATH_ROOT}COPYING
   File ${PATH_ROOT}readme.txt
+  File ${PATH_ROOT}known-bugs.txt
 
 	; Copy executable
-	File /oname=openttd.exe        ${PATH_ROOT}Release\openttd.exe
+	File /oname=OpenTTD.exe        ${PATH_ROOT}Release\openttd.exe
 	File ${PATH_ROOT}strgen\Release\strgen.exe
 
 
@@ -124,16 +125,16 @@ Section "!OpenTTD" Section1
 
 
 	;Creates the Registry Entries
-	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Comments" "Visit http://www.openttd.com"
+	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Comments" "Visit http://www.openttd.org"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayIcon" "$INSTDIR\setup.ico"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayName" "OpenTTD ${APPVERSION}"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayVersion" "${APPVERSION}"
-	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "HelpLink" "http://www.openttd.com"
+	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "HelpLink" "http://www.openttd.org"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder" "$INSTDIR"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Publisher" "OpenTTD"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Shortcut Folder" "$SHORTCUTS"
 	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "UninstallString" "$INSTDIR\uninstall.exe"
-	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "URLInfoAbout" "http://www.openttd.com"
+	WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "URLInfoAbout" "http://www.openttd.org"
 	;This key sets the Version DWORD that patches will check against
 	WriteRegDWORD HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Version" ${INSTALLERVERSION}
 
@@ -144,6 +145,7 @@ Section "!OpenTTD" Section1
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Readme.lnk" "$INSTDIR\Readme.txt"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk" "$INSTDIR\Changelog.txt"
+	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk" "$INSTDIR\known-bugs.txt"
 	!insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
@@ -206,16 +208,19 @@ Section Uninstall
 	Delete "$SMPROGRAMS\$SHORTCUTS\Uninstall.lnk"
 	Delete "$SMPROGRAMS\$SHORTCUTS\Readme.lnk"
 	Delete "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk"
+	Delete "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk"
 
 	; Clean up OpenTTD dir
 	Delete "$INSTDIR\changelog.txt"
 	Delete "$INSTDIR\readme.txt"
+	Delete "$INSTDIR\known-bugs.txt"
 	Delete "$INSTDIR\openttd.exe"
 	Delete "$INSTDIR\strgen.exe"
 	Delete "$INSTDIR\COPYING"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\openttd.cfg"
+	Delete "$INSTDIR\save\autosave\network*.tmp" ; temporary network file
 
 	; Data files
 	Delete "$INSTDIR\data\opntitle.dat"
@@ -248,6 +253,9 @@ SectionEnd
 
 Function SelectCD
 	SectionGetFlags ${Section2} $0
+	IntOp $1 $0 & 0x80 ; bit 7 set by upgrade, no need to copy files
+	IntCmp $1 1 DoneCD ;upgrade doesn't need copy files
+	
 	IntOp $0 $0 & 1
 	IntCmp $0 1 NoAbort
 		Abort
@@ -269,7 +277,7 @@ TruFinish:
 	ClearErrors
 	WriteINIStr $R0 "Field 2" "State" $CDDRIVE
 	WriteINIStr $R0 "Field 3" "Text" $AddWinPrePopulate
-
+DoneCD:
 	InstallOptions::dialog $R0
 	Pop $R1
 FunctionEnd
@@ -326,6 +334,7 @@ WelcomeToSetup:
 	ReadRegStr $OLDVERSION HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayVersion"
 	;Gets the older version then displays it in a message box
 	MessageBox MB_OK|MB_ICONINFORMATION "Welcome to ${APPNAMEANDVERSION} Setup.$\n$\nThis will allow you to upgrade from version $OLDVERSION."
+	SectionSetFlags ${Section2} 0x80 ; set bit 7
 	Goto FinishCallback
 
 VersionsAreEqual:
