@@ -65,6 +65,22 @@ static const int _vehshifts[4] = {
 };
 
 
+/* Debugging messages policy:
+ *
+ * These should be the severities used for direct DEBUG() calls
+ * (there is room for exceptions, but you have to have a good cause):
+ *
+ * 0..2 - dedicated to grfmsg()
+ * 3
+ * 4
+ * 5
+ * 6 - action handler entry reporting - one per action
+ * 7 - basic action progress reporting - in loops, only single one allowed
+ * 8 - more detailed progress reporting - less important stuff, in deep loops etc
+ * 9 - extremely detailed progress reporting - detailed reports inside of deep loops and so
+ */
+
+
 enum grfmsg_severity {
 	GMS_NOTICE,
 	GMS_WARN,
@@ -822,7 +838,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	group->loaded_count  = numloaded;
 	group->loading_count = numloading;
 
-	DEBUG(grf, 7) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
+	DEBUG(grf, 6) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
 			setid, group->sprites_per_set, group->loaded_count, group->loading_count,
 			_spriteset_start - _cur_grffile->sprite_offset,
 			_spriteset_start + (_spriteset_numents * (numloaded + numloading)) - _cur_grffile->sprite_offset);
@@ -864,17 +880,20 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	static int last_engines_count;
 	uint8 feature;
 	uint8 idcount;
-	int wagover;
+	bool wagover;
 	uint8 cidcount;
 	int c, i;
 
 	check_length(len, 7, "VehicleMapSpriteGroup");
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
-	wagover = buf[2] & 0x80;
+	wagover = (buf[2] & 0x80) == 0x80;
 	check_length(len, 3 + idcount, "VehicleMapSpriteGroup");
 	cidcount = buf[3 + idcount];
 	check_length(len, 4 + idcount + cidcount * 3, "VehicleMapSpriteGroup");
+
+	DEBUG(grf, 6) ("VehicleMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d.",
+			feature, idcount, cidcount, wagover);
 
 	if (feature == GSF_STATION) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Stations unsupported, skipping.");
@@ -903,14 +922,13 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 		last_engines_count = idcount;
 	}
 
-	if (wagover != 0) {
+	if (wagover) {
 		if (last_engines_count == 0) {
 			grfmsg(GMS_ERROR, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with.");
 			return;
-		} else {
-			DEBUG(grf, 4) ("VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
-					last_engines_count, idcount);
 		}
+		DEBUG(grf, 6) ("VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
+				last_engines_count, idcount);
 	}
 	
 
@@ -925,9 +943,13 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			return;
 		}
 
+		DEBUG(grf, 7) ("VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
+
 		for (c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
 			uint16 groupid = grf_load_word(&bp);
+
+			DEBUG(grf, 8) ("VehicleMapSpriteGroup: * [%d] Cargo type %x, group id %x", c, ctype, groupid);
 
 			if (groupid >= _spritesset_count) {
 				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _spritesset_count);
@@ -937,7 +959,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			if (ctype == 0xFF)
 				ctype = CID_PURCHASE;
 
-			if (wagover != 0) {
+			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
 				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
@@ -951,6 +973,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 		byte *bp = buf + 4 + idcount + cidcount * 3;
 		uint16 groupid = grf_load_word(&bp);
 
+		DEBUG(grf, 8) ("-- Default group id %x", groupid);
+
 		for (i = 0; i < idcount; i++) {
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
@@ -960,7 +984,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				return;
 			}
 
-			if (wagover != 0) {
+			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
 				SetWagonOverrideSprites(engine, &_spritesset[groupid], last_engines, last_engines_count);
 			} else {
@@ -999,6 +1023,9 @@ static void VehicleNewName(byte *buf, int len)
 	id = buf[4] + _vehshifts[feature];
 	endid = id + buf[3];
 
+	DEBUG(grf, 6) ("VehicleNewName: About to rename engines %d..%d (feature %d) in language 0x%x.",
+	               id, endid, feature, lang);
+
 	if (lang & 0x80) {
 		grfmsg(GMS_WARN, "VehicleNewName: No support for changing in-game texts. Skipping.");
 		return;
@@ -1006,6 +1033,7 @@ static void VehicleNewName(byte *buf, int len)
 
 	if (!(lang & 3)) {
 		/* XXX: If non-English name, silently skip it. */
+		DEBUG(grf, 7) ("VehicleNewName: Skipping non-English name.");
 		return;
 	}
 
@@ -1013,8 +1041,12 @@ static void VehicleNewName(byte *buf, int len)
 	for (; id < endid && len > 0; id++) {
 		int ofs = strlen(buf) + 1;
 
-		if (ofs < 128)
+		if (ofs < 128) {
+			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, buf);
 			SetCustomEngineName(id, buf);
+		} else {
+			DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
+		}
 		buf += ofs, len -= ofs;
 	}
 }
@@ -1517,11 +1549,11 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 
 		if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04)
 		    || (action == 0x05) || (action == 0x07)) {
-			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
+			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
 			/* Do nothing. */
 
 		} else if (action < NUM_ACTIONS) {
-			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
+			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
  			handlers[action](buf, num);
 
 		} else {
@@ -1546,16 +1578,16 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 			error("File ``%s'' lost in cache.\n", filename);
 
 		if (!(_cur_grffile->flags & 0x0001)) {
-			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
+			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
 			/* Do nothing. */
 
 		} else if ((action == 0x00) /*|| (action == 0x03)*/ || (action == 0x04) || (action == 0x05)
 		           || (action == 0x07) || (action == 0x08) || (action == 0x09) || (action == 0x0A)) {
-			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
+			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
 			handlers[action](buf, num);
 
 		} else if (action < NUM_ACTIONS) {
-			DEBUG (grf, 5) ("DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
+			DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
 			/* Do nothing. */
 
 		} else {
