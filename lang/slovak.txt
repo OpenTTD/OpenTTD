@@ -540,7 +540,6 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Vybrat 'Novy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Vybrat 'Vlastny 1' (uzivatelom definovany) program
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Vybrat 'Vlastny 2' (uzivatelom definovany) program
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Vymazat aktualny program (len Vlastny 1 a Vlastny 2 program)
-STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Ulozit nastavenia hudby na disk
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Kliknut na stopu pre ulozenie (len Vlastny 1 a Vlastny 2 program)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Zapnut / Vypnut nahodny vyber
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Zobrazit okno pre vyber hudobnych stop
@@ -725,7 +724,6 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nazvy vozidiel
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Vychodzie
 STR_02BF_CUSTOM							:Vlastne
-STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK				:{BLACK}Ulozit vlastne nazvy vozidiel na disk
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Vyber nazvu vozidiel
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Ulozit vlastne nazvy vozidiel na disk
 
@@ -800,16 +798,13 @@ STR_02F8_EVERY_3_MONTHS						:Kazde 3 mesiace
 STR_02F9_EVERY_6_MONTHS						:Kazdych 6 mesiacov
 STR_02FA_EVERY_12_MONTHS					:Kazdych 6 mesiacov
 STR_02FB_START_A_NEW_GAME					:{BLACK}Spustit novu hru
-STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Nahrat / ulozit hru z disku
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Pozriet Vyucbu/ukazky
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Vytvorit vlastny svet / scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Vyber jednouzivatelskej hry
-STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Vyber viacuzivatelskej hry
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Zobraz nastavenia hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Zobraz nastavenia obtiaznosti
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Spustit novu hru z pouzitim vlastneho scenara
 STR_0304_QUIT							:{BLACK}Ukoncit program
-STR_0305_LEAVE_OPENTTD						:{BLACK}Ukoncit 'OpenTTD'
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Pozriet Vyucbu/ukazky
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...moze byt postavene len v meste
@@ -1349,6 +1344,7 @@ STR_NETWORK_CLIENT_JOINED					:vstupil do hry
 STR_NETWORK_GIVE_MONEY						:ti dal nejake peniaze ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Server sa restartuje...{}Cakajte prosim...
+
 
 ############ end network gui strings
 

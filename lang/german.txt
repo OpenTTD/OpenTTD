@@ -540,7 +540,6 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Programm 'Modern' wählen
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Programm 'Individuell 1' (benutzerdefiniert) wählen
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Programm 'Individuell 2' (benutzerdefiniert) wählen
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Lösche laufendes Programm  (nur für Individuell 2 und Individuell 2)
-STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Sichere Musikeinstellungen
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Individuell 1 und Individuell 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Schalte Programmauswahl an/aus
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Zeige Musiktitelauswahl
@@ -725,7 +724,6 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Fahrzeugnamen
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Standard
 STR_02BF_CUSTOM							:Eigene
-STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK				:{BLACK}Eigene Namen abspeichern
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Auswahl der Fahrzeugnamen
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Eigene Namen abspeichern
 
@@ -800,16 +798,13 @@ STR_02F8_EVERY_3_MONTHS						:Alle  3 Monate
 STR_02F9_EVERY_6_MONTHS						:Alle  6 Monate
 STR_02FA_EVERY_12_MONTHS					:Alle 12 Monate
 STR_02FB_START_A_NEW_GAME					:{BLACK}Ein neues Spiel beginnen
-STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Einen Spielstand laden
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Übung / Einführung
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Eine eigene Spielwelt / Szenario kreieren
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Einspielermodus wählen
-STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Mehrspielermodus wählen
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Spieleinstellungen anzeigen
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Schwierigkeitsgrad anzeigen
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Starte ein neues Spiel in einem eigenen Szenario
 STR_0304_QUIT							:{BLACK}Beenden
-STR_0305_LEAVE_OPENTTD						:{BLACK}'OpenTTD' verlassen und beenden
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Übung / Einführung anzeigen
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...kann nur in Städten gebaut werden
@@ -1352,6 +1347,7 @@ STR_NETWORK_CLIENT_JOINED					:hat das Spiel betreten
 STR_NETWORK_GIVE_MONEY						:gab dir etwas Geld ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Der Server hat das Spiel beendet.
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Der Server startet neu...{}Bitte warten...
+
 
 ############ end network gui strings
 

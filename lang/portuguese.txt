@@ -540,7 +540,6 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Seleccionar programa 'estilo moderno
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Seleccionar programa 'Personalizado 1'
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Seleccionar programa 'Personalizado 2'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Limpar programa actual (somente Personaliz. 1 ou Personaliz. 2)
-STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Guardar configurações de música no disco
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Clique na faixa de música para a adicionar ao programa actual (somente Personaliz. 1 ou Personaliz. 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Ligar/Desligar programa aleatório
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}Mostrar janela de selecção de faixas de música
@@ -725,7 +724,6 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Nomes dos veículos
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Predefinição
 STR_02BF_CUSTOM							:Personalizado
-STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK				:{BLACK}Guardar nomes personalizados no disco
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Selecção de nomes dos veículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Guardar nomes dos veículos personalizados no disco
 
@@ -800,16 +798,13 @@ STR_02F8_EVERY_3_MONTHS						:Cada 3 meses
 STR_02F9_EVERY_6_MONTHS						:Cada 6 meses
 STR_02FA_EVERY_12_MONTHS					:Cada 12 meses
 STR_02FB_START_A_NEW_GAME					:{BLACK}Iniciar um novo jogo
-STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Abrir um jogo guardado do disco
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}Mostrar demonstrações/tutoriais
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Criar um cenário de jogo personalizado
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Seleccionar jogo de 1 jogador
-STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Seleccionar jogo multi-jogador de 2-8 jogadores
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Mostrar opções de jogo
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Mostrar opções de dificuldade
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Iniciar um novo jogo, utilizando um cenário personalizado guardado no disco
 STR_0304_QUIT							:{BLACK}Sair
-STR_0305_LEAVE_OPENTTD						:{BLACK}Abandonar o 'OpenTTD', e sair
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Mostrar demonstração/tutorial
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...só se pode construir em cidades
@@ -1303,6 +1298,7 @@ STR_NETWORK_ERR_TIMEOUT						:{WHITE} Tempo de espera esgotado na conexão #{NUMU
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 ############ end network gui strings
 

@@ -540,7 +540,6 @@ STR_01F5_SELECT_NEW_STYLE_MUSIC					:{BLACK}Valitse 'uuden tyylin musiikki'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED				:{BLACK}Valitse 'oma 1' (k‰ytt‰j‰n m‰‰ritett‰viss‰)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED				:{BLACK}Valitse 'oma 2' (k‰ytt‰j‰n m‰‰ritett‰viss‰)
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1				:{BLACK}Tyhj‰‰ nykyinen ohjelma (vain Oma1 tai Oma2)
-STR_01F9_SAVE_MUSIC_SETTINGS_TO					:{BLACK}Tallenna musiikkiasetukset levylle
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO				:{BLACK}Klikkaa musiikkiraidassa lis‰t‰ksesi sen nykyiseen ohjelmaan (vain Oma1 tai Oma2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE					:{BLACK}Ohjelman sekoittaminen p‰‰lle/pois
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION				:{BLACK}N‰yt‰ musiikkiraitojen valintaikkuna
@@ -725,7 +724,6 @@ STR_02BC_VEHICLE_DESIGN_NAMES					:{BLACK}Ajoneuvojen mallinimet
 STR_02BD							:{BLACK}{STRING}
 STR_02BE_DEFAULT						:Oletus
 STR_02BF_CUSTOM							:Oma
-STR_02C0_SAVE_CUSTOM_NAMES_TO_DISK				:{BLACK}Tallenna omat nimet levylle
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION				:{BLACK}Ajoneuvojen mallinimien valinta
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE				:{BLACK}Tallenna omat ajoneuvojen mallinimet levylle
 
@@ -800,16 +798,13 @@ STR_02F8_EVERY_3_MONTHS						:Joka 3. kuukausi
 STR_02F9_EVERY_6_MONTHS						:Joka 6. kuukausi
 STR_02FA_EVERY_12_MONTHS					:Joka 12. kuukausi
 STR_02FB_START_A_NEW_GAME					:{BLACK}Aloita uusi peli
-STR_02FC_LOAD_A_SAVED_GAME_FROM					:{BLACK}Lataa tallennettu peli levylt‰
 STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS				:{BLACK}N‰yt‰ esitykset/pikaohjeet
 STR_02FE_CREATE_A_CUSTOMIZED_GAME				:{BLACK}Luo oma pelimaailma/skenaario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME				:{BLACK}Valitse yksinpeli
-STR_0300_SELECT_TWO_PLAYER_GAME					:{BLACK}Valitse kaksinpeli
 STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}N‰yt‰ peliasetukset
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}N‰yt‰ vaikeusasetukset
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Aloita uusi peli k‰ytt‰en omaa skenaariota
 STR_0304_QUIT							:{BLACK}Lopeta
-STR_0305_LEAVE_OPENTTD						:{BLACK}Poistu 'OpenTTD:st‰' ja lopeta
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}N‰yt‰ esityks/pikaohje
 STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...voidaan rakentaa vain kaupunkeihin
@@ -1352,6 +1347,7 @@ STR_NETWORK_CLIENT_JOINED					:liittyi peliin
 STR_NETWORK_GIVE_MONEY						:antoi sinulle rahaa ({CURRENCY})
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Palvelin sulki istunnon
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Palvelin k‰ynnistyy uudelleen...{}Odota, ole hyv‰...
+
 
 ############ end network gui strings
 
