@@ -150,7 +150,7 @@ static void SaveMap(const char *filename)
 {
 	char buf[200];
 
-	snprintf(buf, sizeof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, filename);
+	snprintf(buf, lengthof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, filename);
 	IConsolePrint(_iconsole_color_default, "Saving map...");
 
 	if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
