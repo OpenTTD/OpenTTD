@@ -2174,11 +2174,11 @@ TownNameGenerator * const _town_name_generators[] = {
 	MakeDutchTownName,
 	MakeFinnishTownName,
 	MakePolishTownName,
-	MakeCzechTownName,
 	MakeSlovakishTownName,
 	MakeHungarianTownName,
 	MakeAustrianTownName,
-	MakeRomanianTownName
+	MakeRomanianTownName,
+	MakeCzechTownName,
 };
 
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
