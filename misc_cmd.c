@@ -285,7 +285,7 @@ int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	p1 = clamp(p1, 0, 0xFFFFFFFF); // Clamp between 4 billion and 0
+	p1 = clamp(p1, 0, 0xFFFFFF); // Clamp between 16 million and 0
 
 	if (p1 == 0)
 		return CMD_ERROR;

@@ -88,7 +88,7 @@ void HandleOnEditText(WindowEvent *e) {
 		int32 money = atoi(e->edittext.str) / GetCurrentCurrencyRate();
 		char msg[100];
 
-		money = clamp(money, 0, 0xFFFFFFFF); // Clamp between 4 billion and 0
+		money = clamp(money, 0, 0xFFFFFF); // Clamp between 16 million and 0
 
 		// Give 'id' the money, and substract it from ourself
 		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY)) break;
