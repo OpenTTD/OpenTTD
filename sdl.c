@@ -430,6 +430,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->scancode == 60) key |= WKC_BACKQUOTE;
 	if (sym->scancode == 49) key |= WKC_BACKSPACE;
 #else
+	if (sym->scancode == 41) key |= WKC_BACKQUOTE; // Linux console
 	if (sym->scancode == 49) key |= WKC_BACKQUOTE;
 #endif
 
