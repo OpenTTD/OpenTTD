@@ -105,7 +105,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, 0);
-			
+
 			// Draw list of players
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
@@ -158,7 +158,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				}
 			}
 		}
-		
+
 		{
 			int i;
 			if ((i=WP(w,def_d).data_1) != -1) {
