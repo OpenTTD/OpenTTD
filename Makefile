@@ -44,6 +44,7 @@
 # UNIX: building on *nix derivate (Linux, FreeBSD)
 # OSX: building on Mac OS X
 # MORPHOS: building on MorphOS
+# BEOS: building on BeOS
 #
 # Summary of library choice defines
 # WITH_ZLIB: savegames using zlib
@@ -330,6 +331,16 @@ ifdef UNIX
 CDEFS += -DUNIX
 endif
 
+ifdef BEOS
+CDEFS += -DBEOS
+LDFLAGS += -lmidi -lbe
+ifdef WITH_NETWORK
+	ifdef BEOS_NET_SERVER
+	CDEFS += -DBEOS_NET_SERVER
+	endif
+endif
+endif
+
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
@@ -493,7 +504,7 @@ endif
 
 ### Sources
 
-ttd_SOURCES = \
+C_SOURCES = \
 	ai.c ai_build.c ai_new.c ai_pathfinder.c ai_shared.c aircraft_cmd.c \
 	aircraft_gui.c airport.c airport_gui.c aystar.c bridge_gui.c \
 	clear_cmd.c command.c console.c console_cmds.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
@@ -507,19 +518,24 @@ ttd_SOURCES = \
 	smallmap_gui.c sound.c sprite.c spritecache.c station_cmd.c station_gui.c \
 	strings.c subsidy_gui.c terraform_gui.c texteff.c town_cmd.c \
 	town_gui.c train_cmd.c train_gui.c tree_cmd.c ttd.c tunnelbridge_cmd.c \
-	unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c water_cmd.c widget.c window.c \
+	unmovable_cmd.c vehicle.c vehicle_gui.c viewport.c water_cmd.c widget.c window.c
+CXX_SOURCES =
 
 ifdef WITH_SDL
-ttd_SOURCES += sdl.c
+C_SOURCES += sdl.c
 endif
 
 ifdef WIN32
-ttd_SOURCES += win32.c w32dm.c
+C_SOURCES += win32.c w32dm.c
 else
-ttd_SOURCES += extmidi.c unix.c
+C_SOURCES += extmidi.c unix.c
 endif
 
-ttd_OBJS = $(ttd_SOURCES:%.c=%.o)
+ttd_OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
+
+ifdef BEOS
+CXX_SOURCES += bemidi.cpp
+endif
 
 ifdef WIN32
 # Resource file
@@ -527,8 +543,7 @@ ttd_OBJS += winres.o
 endif
 
 ifdef WITH_DIRECTMUSIC
-ttd_SOURCES += w32dm2.cpp
-ttd_OBJS += w32dm2.o
+CXX_SOURCES += w32dm2.cpp
 endif
 
 ttd_DEPS1 = $(foreach obj,$(ttd_OBJS),.deps/$(obj))

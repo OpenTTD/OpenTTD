@@ -28,6 +28,17 @@ MORPHOS:=1
 UNIX:=1
 endif
 
+# Automatically recognize if building on BeOS
+ifeq ($(shell uname), BeOS)
+BEOS:=1
+# BeOS uses UNIX setup too
+UNIX:=1
+# Except that in BeOS 5.0 we need to use net_server, not BONE networking
+ifeq ($(shell uname -r), 5.0)
+BEOS_NET_SERVER:=1
+endif
+endif
+
 # FreeBSD uses sdl11 instead of sdl
 ifdef FREEBSD
 SDL-CONFIG:=sdl11-config
