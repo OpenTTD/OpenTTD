@@ -29,7 +29,7 @@ static inline uint32 ROR(uint32 x, int n)
 #ifdef RANDOM_DEBUG
 #include "network_data.h"
 
-uint32 DoRandom(uint line, char *file)
+uint32 DoRandom(int line, const char *file)
 #else
 uint32 Random(void)
 #endif
@@ -61,7 +61,7 @@ uint32 Random(void)
 }
 
 #ifdef RANDOM_DEBUG
-uint DoRandomRange(uint max, uint line, char *file)
+uint DoRandomRange(uint max, int line, const char *file)
 {
 	return (uint16)DoRandom(line, file) * max >> 16;
 }

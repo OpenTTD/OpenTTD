@@ -113,9 +113,9 @@ void NORETURN CDECL error(const char *str, ...);
 
 #ifdef RANDOM_DEBUG
 	#define Random() DoRandom(__LINE__, __FILE__)
-	uint32 DoRandom(uint line, char *file);
+	uint32 DoRandom(int line, const char *file);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
-	uint DoRandomRange(uint max, uint line, char *file);
+	uint DoRandomRange(uint max, int line, const char *file);
 #else
 	uint32 Random(void);
 	uint RandomRange(uint max);
