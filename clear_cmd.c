@@ -595,7 +595,7 @@ void TileLoopClearHelper(uint tile)
 		}
 	}
 
-	if (dirty != -1)
+	if (dirty != (uint) -1)
 		MarkTileDirtyByTile(dirty);
 }
 

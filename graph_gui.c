@@ -40,7 +40,7 @@ static void DrawGraph(GraphDrawer *gw)
 {
 
 	int i,j,k;
-	int x,y,old_x,old_y;
+	uint x,y,old_x,old_y;
 	int color;
 	int right, bottom;
 	int num_x, num_dataset;

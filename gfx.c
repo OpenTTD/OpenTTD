@@ -1684,7 +1684,7 @@ void DrawMouseCursor(void)
 	_cursor.draw_pos.y = y;
 	_cursor.draw_size.y = h;
 
-	assert(w*h < sizeof(_cursor_backup));
+	assert(w*h < (int) sizeof(_cursor_backup));
 
 	// Make backup of stuff below cursor
 	memcpy_pitch(

@@ -469,7 +469,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	NetworkClientInfo *ci;
 
 	if (argc == 2) {
-		uint32 index = atoi(argv[1]);
+		byte index = atoi(argv[1]);
 
 		/* Check valid range */
 		if (index < 1 || index > MAX_PLAYERS) {
