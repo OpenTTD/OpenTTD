@@ -788,8 +788,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Select 'toyland' landscape style
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Fund construction of new industry
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR									:Industry Directory
 STR_0313_FUND_NEW_INDUSTRY				:Fund new industry
-STR_INDUSTRY_DIR						:Industry Directory
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY				:{WHITE}Fund new industry

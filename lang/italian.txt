@@ -787,8 +787,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Seleziona paesaggio 'Città dei Giocat
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Finanzia la costruzione di nuove industrie
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR									:Elenco Industrie
 STR_0313_FUND_NEW_INDUSTRY				:Finanzia nuove industrie
-STR_INDUSTRY_DIR						:Elenco Industrie
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY				:{WHITE}Finanzia nuove industrie

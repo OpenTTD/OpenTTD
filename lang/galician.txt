@@ -788,8 +788,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Selecciona-lo estilo da paisaxe 'Xogu
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Fundar unha nova industria
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR									:Directorio de Industrias
 STR_0313_FUND_NEW_INDUSTRY				:Fundar unha nova industria
-STR_INDUSTRY_DIR						:Directorio de Industrias
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY				:{WHITE}Fundar unha nova industria

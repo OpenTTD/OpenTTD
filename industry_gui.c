@@ -494,11 +494,11 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			SET_DPARAM16(0, i->town->index);
 			SET_DPARAM16(1, i->type + STR_4802_COAL_MINE);
 			if (i->produced_cargo[0] != 0xFF) {
-				SET_DPARAM16(3, i->total_production[0] * 100 >> 8);
+				SET_DPARAM16(3, i->total_production[0]);
 				SET_DPARAM16(2, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 
 				if (i->produced_cargo[1] != 0xFF) {
-					SET_DPARAM16(5, i->total_production[1] * 100 >> 8);
+					SET_DPARAM16(5, i->total_production[1]);
 					SET_DPARAM16(4, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
 					SET_DPARAM16(6, i->pct_transported[0] * 100 >> 8);
 					SET_DPARAM16(7, i->pct_transported[1] * 100 >> 8);

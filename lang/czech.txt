@@ -815,8 +815,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Zeme hracek
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Investovat do nového prumyslu
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR										:Seznam prumyslu
 STR_0313_FUND_NEW_INDUSTRY					:Investovat do prumyslu
-STR_INDUSTRY_DIR						:Seznam prumyslu
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Investovat do prumyslu

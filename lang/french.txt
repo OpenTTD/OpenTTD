@@ -815,8 +815,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Selectionner l'environnement 'Jouet
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Financer la construction de nouvelles industries
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR										:Annuaire des industries
 STR_0313_FUND_NEW_INDUSTRY					:Financer une nouvelle industrie
-STR_INDUSTRY_DIR						:Annuaire des industries
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Financer une nouvelle industrie

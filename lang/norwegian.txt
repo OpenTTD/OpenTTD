@@ -785,8 +785,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Velg leketøysland miljø
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Finansier byggingen av ny industri
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR									:Industri oversikt
 STR_0313_FUND_NEW_INDUSTRY				:Finansier ny industri
-STR_INDUSTRY_DIR						:Industri oversikt
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY				:{WHITE}Finansier ny industri

@@ -787,8 +787,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Välj 'leksaksland' som typ av lands
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Bekosta byggnation av ny industri
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR										:Industriförteckning
 STR_0313_FUND_NEW_INDUSTRY					:Bekosta ny industri
-STR_INDUSTRY_DIR						:Industriförteckning
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Bekosta ny industri

@@ -794,8 +794,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Kies 'speelgoedland'
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Betaal plaatsing van nieuwe industrie
 
 ############ range for menu	starts
-STR_0313_FUND_NEW_INDUSTRY					:Betaal nieuwe industrie
-STR_INDUSTRY_DIR						:Industrielijst
+STR_INDUSTRY_DIR										:Industrielijst
+STR_0313_FUND_NEW_INDUSTRY					:Subsidieer nieuwe industrie
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY					:{WHITE}Betaal nieuwe industrie

@@ -784,8 +784,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE       :{BLACK}Wybierz krajobraz 'Zabawkowy'
 STR_0312_FUND_CONSTRUCTION_OF_NEW       :{BLACK}Ufunduj budowe nowego przedsieb.
 
 ############ range for menu starts
-STR_0313_FUND_NEW_INDUSTRY              :Ufunduj nowe przedsieb.
 STR_INDUSTRY_DIR                        :Katalog fabryk
+STR_0313_FUND_NEW_INDUSTRY              :Ufunduj nowe przedsieb.
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY              :{WHITE}Ufundowanie nowego przedsieb.

@@ -786,8 +786,8 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE		:{BLACK}Vyber 'detsky' styl uzemia
 STR_0312_FUND_CONSTRUCTION_OF_NEW		:{BLACK}Financovat vystavbu noveho priemyslu
 
 ############ range for menu	starts
+STR_INDUSTRY_DIR								:Zoznam priemyslu
 STR_0313_FUND_NEW_INDUSTRY			:Financovat novy priemysel
-STR_INDUSTRY_DIR				:Zoznam priemyslu
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY				:{WHITE}Financovat novy priemysel

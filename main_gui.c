@@ -213,8 +213,8 @@ void MenuClickLeague(int index)
 void MenuClickIndustry(int index)
 {
 	switch(index) {
-	case 0: ShowBuildIndustryWindow(); break;
-	case 1: ShowIndustryDirectory(); break;
+	case 0: ShowIndustryDirectory(); break;
+	case 1: ShowBuildIndustryWindow(); break;
 	}
 }
 
@@ -658,7 +658,7 @@ static void ToolbarLeagueClick(Window *w)
 
 static void ToolbarIndustryClick(Window *w)
 {
-	PopupMainToolbMenu(w, 280, 12, STR_0313_FUND_NEW_INDUSTRY, 2);
+	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2);
 }
 
 static void ToolbarTrainClick(Window *w)
