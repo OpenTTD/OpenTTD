@@ -44,9 +44,9 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 
 	p = _screen.pitch;
 
-	if (yo > 0 || (yo == 0 && xo > 0)) {
+	if (yo > 0) {
 		// Calculate pointers
-		dst = _screen.dst_ptr + (top+height-1) * p + (left+width-1);
+		dst = _screen.dst_ptr + (top + height - 1) * p + left;
 		src = dst - yo * p;
 
 		// Decrease height and increase top
@@ -56,31 +56,21 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 
 		// Adjust left & width
 		if (xo >= 0) {
+			dst += xo;
 			left += xo;
-			src -= xo;
 			width -= xo;
 		} else {
-			dst += xo;
+			src -= xo;
 			width += xo;
 		}
 
-		// Offset pointers to fit into the memmove call
-		dst += -width + 1;
-		src += -width + 1;
-		ht = height;
-
-		do {
-			memmove(dst, src, width);
+		for (ht = height; ht > 0; --ht) {
+			memcpy(dst, src, width);
 			src -= p;
 			dst -= p;
-		} while (--ht);
-
-
-		// This part of the screen is now dirty.
-		_video_driver->make_dirty(left, top, width, height);
-
+		}
 	} else {
-		// Calculate pointers to mem.
+		// Calculate pointers
 		dst = _screen.dst_ptr + top * p + left;
 		src = dst - yo * p;
 
@@ -98,17 +88,16 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 			width += xo;
 		}
 
-		ht = height;
-
-		do {
-			memcpy(dst, src, width);
+		// the y-displacement may be 0 therefore we have to use memmove,
+		// because source and destination may overlap
+		for (ht = height; ht > 0; --ht) {
+			memmove(dst, src, width);
 			src += p;
 			dst += p;
-		} while (--ht);
-
-		// This part of the screen is now dirty.
-		_video_driver->make_dirty(left, top, width, height);
+		}
 	}
+	// This part of the screen is now dirty.
+	_video_driver->make_dirty(left, top, width, height);
 }
 
 
