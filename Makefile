@@ -740,7 +740,7 @@ $(OSX): $(TTD)
 	@mkdir -p "$(OSXAPP)"/Contents/Data
 	@mkdir -p "$(OSXAPP)"/Contents/Lang
 	@echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
-	@cp os/macos/ttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
+	@cp os/macos/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	@os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
 	@cp os/macos/track_starter "$(OSXAPP)"/contents/macos
 	@ls os/macos | grep -q "\.class" || \
