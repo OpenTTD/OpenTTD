@@ -734,19 +734,24 @@ typedef struct RoadVehFindData {
 
 void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
 {
-	static const byte _dists[] = { 
-		4, 8, 4, 4, 4, 8, 4, 4,
-		4, 4, 4, 8, 4, 4, 4, 8,
+	static const short _dists[] = { 
+		-4, -8, -4, -1, 4, 8, 4, 1,
+		-4, -1, 4, 8, 4, 1, -4, -8,
 	};
+	
+	short x_diff = v->x_pos - rvf->x;
+	short y_diff = v->y_pos - rvf->y;
 
 	if (rvf->veh == v || 
 			v->type != VEH_Road || 
 			v->u.road.state == 254 ||
 			myabs(v->z_pos - rvf->veh->z_pos) > 6 ||
 			v->direction != rvf->dir ||
-			myabs(rvf->x - v->x_pos) >= _dists[v->direction] ||
-			myabs(rvf->y - v->y_pos) >= _dists[v->direction+8])
-				return NULL;
+			(_dists[v->direction] < 0 && (x_diff <= _dists[v->direction] || x_diff > 0)) ||
+			(_dists[v->direction] > 0 && (x_diff >= _dists[v->direction] || x_diff < 0)) ||
+			(_dists[v->direction+8] < 0 && (y_diff <= _dists[v->direction+8] || y_diff > 0)) ||
+			(_dists[v->direction+8] > 0 && (y_diff >= _dists[v->direction+8] || y_diff < 0)))
+   				return NULL;
 
 	return v;
 }
@@ -765,6 +770,10 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	rvf.veh = v;
 	u = VehicleFromPos(TILE_FROM_XY(x,y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
 	
+	// This code protects a roadvehicle from being blocked for ever
+	//  If more then 1480 / 74 days a road vehicle is blocked, it will
+	//  drive just through it. The ultimate backup-code of TTD.
+	// It can be disabled.
 	if (u == NULL) {
 		v->u.road.unk2 = 0;
 		return NULL;
