@@ -100,6 +100,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 	}
 
 	type = FioReadByte();
+	_cur_sprite.info = type;
 	if (type == 0xFF) {
 		/* We need to really skip only special sprites in the deaf
 		 * mode.  It won't hurt to proceed regular sprites as usual
@@ -114,7 +115,6 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		return;
 	}
 
-	_cur_sprite.info = type;
 #ifdef WANT_SPRITESIZES
 	_cur_sprite.height = FioReadByte();
 	_cur_sprite.width = FioReadWord();
@@ -724,6 +724,10 @@ static void LoadSpriteTables()
 	 *   Keep in mind that when you add a LoadGrfIndexed in the 'if'-section below
 	 *   that you should also add the corresponding FioOpenFile to the 'else'-section
 	 *   below.
+	 *
+	 * TODO:
+	 *   I think we can live entirely without Indexed GRFs, but I have to
+	 *   invest that further. --octo
 	 */
 
 	// Try to load the sprites from cache
