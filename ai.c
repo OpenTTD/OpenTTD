@@ -113,25 +113,19 @@ static void AiStateVehLoop(Player *p)
 	p->ai.state_counter = 0;
 }
 
-// XXX
-static const byte _rail_locos_count[3] = {
-	27, 3, 5
-};
-extern const byte _rail_engines_start[3];
-
 static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
 {
 	int best_veh_index = -1;
 	byte best_veh_score = 0;
 	int32 r;
+	int i;
 
-	int i = _rail_engines_start[railtype];
-	int end = i + _rail_locos_count[railtype];
-	Engine *e = &_engines[i];
-	do {
-		assert(!(_rail_vehicle_info[i].flags & RVI_WAGON));
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+		RailVehicleInfo *rvi = &rail_vehinfo(i);
+		Engine *e = DEREF_ENGINE(i);
 
-		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
+		if (e->railtype != railtype || rvi->flags & RVI_WAGON
+		    || !HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
 		r = DoCommandByTile(0, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
@@ -142,7 +136,7 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag)
 			best_veh_score = _cmd_build_rail_veh_score;
 			best_veh_index = i;
 		}
-	} while (++e, ++i != end);
+	}
 
 	return best_veh_index;
 }

@@ -15,14 +15,16 @@ void DrawShipEngineInfo(int engine, int x, int y, int maxw);
 
 StringID GetEngineCategoryName(byte engine)
 {
-	if (engine < NUM_NORMAL_RAIL_ENGINES)
-		return STR_8102_RAILROAD_LOCOMOTIVE;
-
-	if (engine < NUM_NORMAL_RAIL_ENGINES + NUM_MONORAIL_ENGINES)
-		return STR_8106_MONORAIL_LOCOMOTIVE;
-
-	if (engine < NUM_TRAIN_ENGINES)
-		return STR_8107_MAGLEV_LOCOMOTIVE;
+	if (engine < NUM_TRAIN_ENGINES) {
+		switch (_engines[engine].railtype) {
+			case 0:
+				return STR_8102_RAILROAD_LOCOMOTIVE;
+			case 1:
+				return STR_8106_MONORAIL_LOCOMOTIVE;
+			case 2:
+				return STR_8107_MAGLEV_LOCOMOTIVE;
+		}
+	}
 
 	if (engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES)
 		return STR_8103_ROAD_VEHICLE;
