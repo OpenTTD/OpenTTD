@@ -90,7 +90,7 @@ static void AiNew_State_WakeUp(Player *p) {
 		// We have no HQ yet, build one on a random place
 		// Random till we found a place for it!
 		// TODO: this should not be on a random place..
-		while (!AiNew_Build_CompanyHQ(p, (Random()&0xFFFF))) { }
+		while (!AiNew_Build_CompanyHQ(p, Random() % MapSize())) { }
 		// Enough for now, but we want to come back here the next time
 		//  so we do not change any status
 		return;
