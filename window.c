@@ -59,7 +59,7 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 		}
 
 		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX)
-			StartWindowSizing(w);
+			w = StartWindowSizing(w);
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
 			TOGGLEBIT(w->click_state, e.click.widget);
