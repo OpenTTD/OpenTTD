@@ -14,7 +14,7 @@ byte _map_owner[TILES_X * TILES_Y];
 byte _map2[TILES_X * TILES_Y];
 byte _map_extra_bits[TILES_X * TILES_Y/4];
 
-extern const TileTypeProcs 
+extern const TileTypeProcs
 	_tile_type_clear_procs,
 	_tile_type_rail_procs,
 	_tile_type_road_procs,
@@ -67,7 +67,7 @@ uint GetTileSlope(uint tile, int *h)
 	if (min >= c) min = c;
 	d = _map_type_and_height[tile+TILE_XY(1,1)] & 0xF;
 	if (min >= d) min = d;
-	
+
 	r = 0;
 	if ((a-=min)!=0) { r += (--a << 4) + 8; }
 	if ((c-=min)!=0) { r += (--c << 4) + 4; }
@@ -136,7 +136,7 @@ uint GetPartialZ(int x, int y, int corners)
 		if (x - y >= 0)
 			z = (x - y) >> 1;
 		break;
-	
+
 	case 2:
 		y^=0xF;
 		if ( (x - y) >= 0)
@@ -213,7 +213,7 @@ uint GetPartialZ(int x, int y, int corners)
 	case 29:
 		z = 1 + (((x^0xF)+(y^0xF))>>1);
 		break;
-		
+
 	case 30:
 		z = 1 + (((x^0xF)+(y^0xF))>>1);
 		break;
@@ -270,7 +270,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 	if(hasFoundation( &ti2, false )) sprite_base += 22*2;	// foundation in NE direction
 
 	if (f < 15) {
-		// leveled foundation	
+		// leveled foundation
 		if( sprite_base < SPR_SLOPES_BASE ) sprite_base = 990; // use original slope sprites
 
 		AddSortableSpriteToDraw(f-1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
@@ -280,12 +280,12 @@ void DrawFoundation(TileInfo *ti, uint f)
 	} else {
 		// inclined foundation
 		sprite_base += 14;
-		
+
 		AddSortableSpriteToDraw(
 			HASBIT( (1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? sprite_base + (f - 15) : 	ti->tileh + 0x3DE - 1,
 			ti->x, ti->y, 1, 1, 1, ti->z
 		);
-		
+
 		ti->tileh = _inclined_tileh[f - 15];
 		OffsetGroundSprite(31, 9);
 	}
@@ -380,7 +380,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);	
+				DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 				// draw explosion animation...
 				if ((x==sx || x==ex) && (y==sy || y==ey)) {
@@ -547,7 +547,7 @@ static void GenerateTerrain(int type, int flag)
 	w = p[2];
 	h = p[1];
 	if (direction & 1) { w = p[1]; h = p[2]; }
-	p += 8;	
+	p += 8;
 
 	if (flag & 4) {
 		if (!(flag & 2)) {
@@ -644,10 +644,10 @@ static void CreateDesertOrRainForest()
 				SetMapExtraBits(tile, 1);
 				break;
 			}
-			mt = _map_type_and_height[tile + i];
+			mt = _map_type_and_height[TILE_MASK(tile + i)];
 		} while ((mt & 0xC) == 0 && (mt >> 4) != MP_WATER);
 	} while (++tile != TILES_X*TILES_Y);
-	
+
 	for(i=0; i!=256; i++)
 		RunTileLoop();
 
@@ -659,7 +659,7 @@ static void CreateDesertOrRainForest()
 				SetMapExtraBits(tile, 2);
 				break;
 			}
-		} while ( !IS_TILETYPE(tile+i, MP_CLEAR) || (_map5[tile + i]&0x1C) != 0x14);
+		} while ( !IS_TILETYPE(TILE_MASK(tile+i), MP_CLEAR) || (_map5[TILE_MASK(tile + i)]&0x1C) != 0x14);
 	} while (++tile != TILES_X*TILES_Y);
 }
 
@@ -667,13 +667,13 @@ void GenerateLandscape()
 {
 	int i,flag;
 	uint32 r;
-	
+
 	if (_opt.landscape == LT_HILLY) {
 		i = ((Random() & 0x7F) + 950) * LANDSCAPE_SIZE_FACTOR;
 		do {
 			GenerateTerrain(2, 0);
 		} while (--i);
-		
+
 		r = Random();
 		flag = (r & 3) | 4;
 		i = (((r >> 16) & 0x7F) + 450) * LANDSCAPE_SIZE_FACTOR;
@@ -685,7 +685,7 @@ void GenerateLandscape()
 		do {
 			GenerateTerrain(0, 0);
 		} while (--i);
-		
+
 		r = Random();
 		flag = (r & 3) | 4;
 		i = (((r >> 16) & 0xFF) + 1700) * LANDSCAPE_SIZE_FACTOR;
@@ -697,7 +697,7 @@ void GenerateLandscape()
 
 		i = ((Random() & 0x7F) + 410) * LANDSCAPE_SIZE_FACTOR;
 		do {
-			GenerateTerrain(3, flag);	
+			GenerateTerrain(3, flag);
 		} while (--i);
 	} else {
 		i = ((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes)*256 + 100) * LANDSCAPE_SIZE_FACTOR;
@@ -753,7 +753,7 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 	int x, y;
 	x = GET_TILE_X(tile) + addx;
 	y = GET_TILE_Y(tile) + addy;
-	
+
 	// Are we about to wrap?
 	if (x > 0 && x < TILE_X_MAX && y > 0 && y < TILE_Y_MAX)
 		return tile + TILE_XY(addx, addy);
