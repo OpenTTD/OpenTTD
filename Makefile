@@ -284,19 +284,21 @@ ifeq ($(shell if test $(CC_VERSION) -ge 34; then echo true; fi), true)
   CFLAGS += -Wdeclaration-after-statement -Wold-style-definition
 endif
 
+ifdef DEBUG
+  CFLAGS += -g -D_DEBUG
+endif
+
+ifdef PROFILE
+  CFLAGS += -pg
+  LDFLAGS += -pg
+endif
+
 CDEFS=-DWITH_REV
 LDFLAGS=
 LIBS=
 
-ifdef DEBUG
-# Debug mode
-CDEFS += -D_DEBUG
-BASECFLAGS += -g
-else
-ifdef PROFILE
-BASECFLAGS += -pg
-LDFLAGS += -pg
-else
+ifndef DEBUG
+ifndef PROFILE
 # Release mode
 ifndef MORPHOS
 # automatical strip breaks under morphos
