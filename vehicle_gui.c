@@ -357,11 +357,14 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 {
 	byte railtype;
 	int selected_id[2] = {-1,-1};
-	int sel[2] = { WP(w,replaceveh_d).sel_index[0], WP(w,replaceveh_d).sel_index[1]};
+	int sel[2];
 	int count = 0;
 	int count2 = 0;
 	int engine_id;
 
+	sel[0] = WP(w,replaceveh_d).sel_index[0];
+	sel[1] = WP(w,replaceveh_d).sel_index[1];
+	
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
 			railtype = WP(w,replaceveh_d).railtype;
@@ -502,8 +505,15 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int y2, int pos, int pos2,
 	int sel1, int sel2, int selected_id1, int selected_id2)
 {
-	int sel[2] = {sel1, sel2};
-	int selected_id[2] = {selected_id1, selected_id2};
+	int sel[2];
+	int selected_id[2];
+
+	sel[0] = sel1;
+	sel[1] = sel2;
+	
+	selected_id[0] = selected_id1;
+	selected_id[1] = selected_id2;
+	
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
 			byte railtype = WP(w,replaceveh_d).railtype;
@@ -644,7 +654,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int pos2 = w->vscroll2.pos;
 				int x2 = 1 + 228;
 				int y2 = 15;
-				int sel[2] = { WP(w,replaceveh_d).sel_index[0], WP(w,replaceveh_d).sel_index[1]};
+				int sel[2];
+				sel[0] = WP(w,replaceveh_d).sel_index[0];
+				sel[1] = WP(w,replaceveh_d).sel_index[1];
 
 				SetupScrollStuffForReplaceWindow(w);
 
