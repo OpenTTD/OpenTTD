@@ -774,24 +774,23 @@ static void NetworkInitialize(void)
 	NetworkUDPInitialize();
 
 	// add all servers from the config file to our list
-	for (i=0; i != lengthof(_network_server_list); i++) {
-		if (_network_server_list[i] == NULL) break;
-		NetworkAddServer(_network_server_list[i]);
+	for (i=0; i != lengthof(_network_host_list); i++) {
+		if (_network_host_list[i] == NULL) break;
+		NetworkAddServer(_network_host_list[i]);
 	}
 }
 
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
-void NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
+NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
 {
-	if (!_network_available) return;
+	if (!_network_available) return NULL;
 
 	NetworkDisconnect();
 
 	if (game_info) {
-		NetworkUDPQueryServer(host, port);
-		return;
+		return NetworkUDPQueryServer(host, port);
 	}
 
 	NetworkInitialize();
@@ -807,18 +806,22 @@ void NetworkQueryServer(const byte* host, unsigned short port, bool game_info)
 	// We are connected
 	if (_networking) {
 		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
-		return;
+		return NULL;
 	}
 
 	// No networking, close everything down again
 	NetworkDisconnect();
+	return NULL;
 }
 
-// validates an address entered as a string and adds the server to
-// the list
+/* Validates an address entered as a string and adds the server to
+ * the list. If you use this functions, the games will be marked
+ * as manually added. */
 void NetworkAddServer(const byte *b)
 {
 	if (*b != '\0') {
+		NetworkGameList *item;
+		uint i;
 		const byte *port = NULL;
 		const byte *player = NULL;
 		byte host[NETWORK_HOSTNAME_LENGTH];
@@ -834,7 +837,26 @@ void NetworkAddServer(const byte *b)
 		if (player != NULL) _network_playas = atoi(player);
 		if (port != NULL) rport = atoi(port);
 
-		NetworkQueryServer(host, rport, true);
+		item = NetworkQueryServer(host, rport, true);
+		item->manually = true;
+	}
+}
+
+/* Generates the list of manually added hosts from NetworkGameList and 
+ * dumps them into the array _network_host_list. This array is needed
+ * by the function that generates the config file. */
+void NetworkRebuildHostList()
+{
+	int i=0;
+	NetworkGameList *item = _network_game_list;
+	while (item != NULL && i!=lengthof(_network_host_list)) {
+		if (item->manually)
+			_network_host_list[i++] = strdup(item->info.hostname);
+		item = item->next;
+	}
+
+	for (; i<lengthof(_network_host_list); i++) {
+		_network_host_list[i] = strdup("");
 	}
 }
 

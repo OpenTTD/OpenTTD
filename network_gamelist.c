@@ -65,6 +65,33 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	return item;
 }
 
+void NetworkGameListRemoveItem(NetworkGameList *remove)
+{
+	NetworkGameList *item;
+
+	item = _network_game_list;
+
+	// examine head of the list
+	if ( remove == _network_game_list ) {
+		_network_game_list = remove->next;
+		free(remove);
+		DEBUG(net, 4) ("[NET][GameList] Removed server from list");
+		return;
+	}
+
+	// examine each item
+	while ( item->next != NULL ) {
+		if ( item->next == remove )
+		{
+			item->next = remove->next;
+			free(remove);
+			DEBUG(net, 4) ("[NET][GameList] Removed server from list");
+			return;
+		}
+		item = item->next;
+	}
+}
+
 void NetworkGameListAddQueriedItem(const NetworkGameInfo *info, bool server_online)
 {
 	// We queried a server and now we are going to add it to the list

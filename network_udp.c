@@ -434,7 +434,7 @@ void NetworkUDPSearchGame(void)
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
-void NetworkUDPQueryServer(const byte* host, unsigned short port)
+NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port)
 {
 	struct sockaddr_in out_addr;
 	Packet *p;
@@ -444,7 +444,7 @@ void NetworkUDPQueryServer(const byte* host, unsigned short port)
 	// No UDP-socket yet..
 	if (_udp_client_socket == INVALID_SOCKET)
 		if (!NetworkUDPListen(0, 0))
-			return;
+			return NULL;
 
 	ttd_strlcpy(hostname, host, sizeof(hostname));
 
@@ -467,6 +467,7 @@ void NetworkUDPQueryServer(const byte* host, unsigned short port)
 	free(p);
 
 	UpdateNetworkGameWindow(false);
+	return item;
 }
 
 /* Register us to the master server

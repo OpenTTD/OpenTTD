@@ -160,7 +160,6 @@ void NetworkGameLoop(void);
 void NetworkUDPGameLoop(void);
 bool NetworkServerStart(void);
 bool NetworkClientConnectGame(const byte* host, unsigned short port);
-void NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
 void NetworkReboot();
 void NetworkDisconnect();
 void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);

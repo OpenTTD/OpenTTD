@@ -101,6 +101,7 @@ typedef struct NetworkGameList {
 	uint32 ip;
 	uint16 port;
 	bool online;																		// False if the server did not respond (default status)
+	bool manually;																	// True if the server was added manually
 	struct NetworkGameList *next;
 } NetworkGameList;
 
@@ -132,7 +133,7 @@ VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 VARDEF char _network_player_name[NETWORK_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
 #define MAX_SAVED_SERVERS 10
-VARDEF char *_network_server_list[MAX_SAVED_SERVERS];
+VARDEF char *_network_host_list[MAX_SAVED_SERVERS];
 
 VARDEF uint16 _network_own_client_index;
 VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
@@ -194,5 +195,7 @@ VARDEF byte _network_playas; // an id to play as..
 void ParseConnectionString(const byte **player, const byte **port, byte *connection_string);
 void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const byte *b);
+void NetworkRebuildHostList();
+NetworkGameList *NetworkQueryServer(const byte* host, unsigned short port, bool game_info);
 
 #endif /* NETWORK_H */

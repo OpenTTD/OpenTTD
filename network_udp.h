@@ -5,7 +5,7 @@ void NetworkUDPInitialize(void);
 bool NetworkUDPListen(uint32 host, uint16 port);
 void NetworkUDPReceive(void);
 void NetworkUDPSearchGame(void);
-void NetworkUDPQueryServer(const byte* host, unsigned short port);
+NetworkGameList *NetworkUDPQueryServer(const byte* host, unsigned short port);
 void NetworkUDPAdvertise(void);
 
 #endif /* NETWORK_LAN_H */

@@ -9,6 +9,7 @@
 
 #include "table/strings.h"
 #include "network_data.h"
+#include "network_gamelist.h"
 #include "window.h"
 #include "gui.h"
 #include "gfx.h"
@@ -299,13 +300,15 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if (_selected_field != 3)
-			break;
-
-		switch (HandleEditBoxKey(w, 3, e)) {
-		case 1:
-			HandleButtonClick(w, 8);
-			break;
+		if (_selected_field != 3) {
+			if ( e->keypress.keycode == WKC_DELETE ) { // press 'delete' to remove servers
+				if (_selected_item != NULL && _selected_item->manually) {
+					NetworkGameListRemoveItem(_selected_item);
+					NetworkRebuildHostList();
+					SetWindowDirty(w);
+					_selected_item = NULL;
+				}
+			}
 		}
 
 		// The name is only allowed when it starts with a letter!
@@ -318,6 +321,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 		NetworkAddServer(e->edittext.str);
+		NetworkRebuildHostList();
 	} break;
 
 	case WE_CREATE: {

@@ -923,12 +923,37 @@ static void LoadList(IniFile *ini, const char *grpname, char **list, int len)
 	}
 }
 
+static void SaveList(IniFile *ini, const char *grpname, char **list, int len)
+{
+	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniItem *item;
+	int i;
+	bool first = true;
+
+	if (!group)
+		return;
+	for ( i=0; i != len; i++) {
+		if ( list[i] == '\0' ) continue;
+
+		if (first) { // add first item to the head of the group
+			item = ini_item_alloc(group, list[i], strlen(list[i]));
+			item->value = item->name;
+			group->item = item;
+			first = false;
+		} else { // all other items are attached to the previous one
+			item->next = ini_item_alloc(group, list[i], strlen(list[i]));
+			item = item->next;
+			item->value = item->name;
+		}
+	}
+}
+
 void LoadFromConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, load_setting_desc);
 	LoadList(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
-	LoadList(ini, "servers", _network_server_list, lengthof(_network_server_list));
+	LoadList(ini, "servers", _network_host_list, lengthof(_network_host_list));
 	ini_free(ini);
 }
 
@@ -936,6 +961,7 @@ void SaveToConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, save_setting_desc);
+	SaveList(ini, "servers", _network_host_list, lengthof(_network_host_list));
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }
