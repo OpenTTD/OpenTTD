@@ -1276,28 +1276,39 @@ void UpdateViewportPosition(Window *w)
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
+#if !defined(NEW_ROTATION)
+		int x;
+		int y;
+		int vx;
+		int vy;
+
+		// Center of the viewport is hot spot
+		x = WP(w,vp_d).scrollpos_x + vp->virtual_width / 2;
+		y = WP(w,vp_d).scrollpos_y + vp->virtual_height / 2;
+		// Convert viewport coordinates to map coordinates
+		// Calculation is scaled by 4 to avoid rounding errors
+		vx = -x + y * 2;
+		vy =  x + y * 2;
+		// clamp to size of map
+		vx = clamp(vx, 0 * 4, TILE_X_MAX * 16 * 4);
+		vy = clamp(vy, 0 * 4, TILE_Y_MAX * 16 * 4);
+		// Convert map coordinates to viewport coordinates
+		x = (-vx + vy) / 2;
+		y = ( vx + vy) / 4;
+		// Set position
+		WP(w,vp_d).scrollpos_x = x - vp->virtual_width / 2;
+		WP(w,vp_d).scrollpos_y = y - vp->virtual_height / 2;
+#else
 		int x,y,t;
 		int err;
 
 		x = WP(w,vp_d).scrollpos_x >> 2;
 		y = WP(w,vp_d).scrollpos_y >> 1;
 
-#if !defined(NEW_ROTATION)
-		t = x;
-		x = y - t;
-		y = y + t;
-
-		// check if inside bounds?
-		t = (-130) << vp->zoom;
-		err = 0;
-		if (y < t || y > (t += TILE_Y_MAX*16-1)) { y = t; err++; }
-		if (x < (t=0) || x > (t=TILE_X_MAX*16-1) ) { x = t; err++; }
-#else
 		t = x;
 		x = x + y;
 		y = x - y;
 		err= 0;
-#endif
 
 		if (err != 0) {
 			/* coordinate remap */
@@ -1306,6 +1317,8 @@ void UpdateViewportPosition(Window *w)
 			WP(w,vp_d).scrollpos_x = pt.x & t;
 			WP(w,vp_d).scrollpos_y = pt.y & t;
 		}
+#endif
+
 		SetViewportPosition(w, WP(w,vp_d).scrollpos_x, WP(w,vp_d).scrollpos_y);
 	}
 }
