@@ -1223,8 +1223,11 @@ STR_NETWORK_6_PLAYERS						:6 Spieler
 STR_NETWORK_7_PLAYERS						:7 Spieler
 STR_NETWORK_8_PLAYERS						:8 Spieler
 STR_NETWORK_START_GAME						:{BLACK}Spiel beginnen
+STR_NETWORK_START_GAME_TIP					:{BLACK}Startet ein neues Mehrspieler-Spiel auf einer Zufallskarte oder einem Scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Spiel Laden
+STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Lädt ein gespeichertes Spiel
 STR_NETWORK_LOAD_SCENARIO					:{BLACK}Szenario Laden
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Startet ein Mehrspieler-Spiel auf einem Scenario
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Mehrspieler-Spiel-Lobby
 
@@ -1934,7 +1937,7 @@ STR_RELOCATE_HQ							:{BLACK}HQ verlegen
 STR_7073_WORLD_RECESSION_FINANCIAL				:{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN				:{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW				:{BLACK}Schalter für großes/kleines Fenster
-STR_7076_COMPANY_VALUE						:{GOLD}Firmenwert : {WHITE}{CURRENCY}
+STR_7076_COMPANY_VALUE						:{GOLD}Firmenwert: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY				:{BLACK}Kaufe 25% Anteil an Firma
 STR_7078_SELL_25_SHARE_IN_COMPANY				:{BLACK}Verkaufe 25% Anteil an Firma
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY				:{BLACK}Kaufe 25% Anteil an dieser Firma
@@ -2553,6 +2556,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Hochwasser!{}Mindesten {COM
 STR_BRIBE_FAILED						:{WHITE}Ihr Bestechungsversuch wurde
 STR_BRIBE_FAILED_2						:{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
 STR_BUILD_DATE							:{BLACK}Errichtet am: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED						:{WHITE}Spiel ist pausiert.{}Befehle können nicht ausgeführt werden.
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Leistungsaufschlüsselung
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Details
