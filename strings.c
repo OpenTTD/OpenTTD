@@ -32,7 +32,7 @@ static LanguagePack *_langpack;
 static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
 
-const uint16 _currency_string_list[] = {
+const StringID _currency_string_list[] = {
 	STR_CURR_GBP,
 	STR_CURR_USD,
 	STR_CURR_EUR,
@@ -60,7 +60,7 @@ const uint16 _currency_string_list[] = {
 	INVALID_STRING_ID
 };
 
-static const uint16 _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
+static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 	{ /* LT_NORMAL */
 		STR_PASSENGERS,
 		STR_TONS,
@@ -128,37 +128,52 @@ static char *str_cat(char *dst, const char *src)
 	return dst - 1;
 }
 
-static const char *GetStringPtr(uint16 string)
+static const char *GetStringPtr(StringID string)
 {
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
 
-char *GetString(char *buffr, uint16 string)
+char *GetString(char *buffr, StringID string)
 {
 	uint index = string & 0x7FF;
 	uint tab = string >> 11;
 
-	if (string == 0) error("!invalid string id 0 in GetString");
+	switch (string) {
+		case 0:
+			error("!invalid string id 0 in GetString");
+			break;
 
-	if (tab == 4 && index >= 0xC0)
-		return GetSpecialTownNameString(buffr, index - 0xC0);
+		case 0x30D1:
+			return StationGetSpecialString(buffr);
 
-	if (tab == 6 && index == 0xD1)
-		return StationGetSpecialString(buffr);
+		case STR_SPEC_SCREENSHOT_NAME:
+			return DecodeString(buffr, _screenshot_name);
+	}
 
-	if (tab == 14 && index >= 0xE4)
-		return GetSpecialPlayerNameString(buffr, index - 0xE4);
+	switch (tab) {
+		case 4:
+			if (index >= 0xC0) return GetSpecialTownNameString(buffr, index - 0xC0);
+			break;
 
-	if (tab == 15)
-		return GetName(index, buffr);
+		case 14:
+			if (index >= 0xE4) return GetSpecialPlayerNameString(buffr, index - 0xE4);
+			break;
 
-	// tab 31 is used for special or dynamic strings
-	if (tab == 31) {
-		return DecodeString(buffr, index == (STR_SPEC_SCREENSHOT_NAME & 0x7FF) ? _screenshot_name : _userstring);
+		case 15:
+			return GetName(index, buffr);
+
+		case 31: // special or dynamic strings
+			return DecodeString(buffr, _userstring);
+
+		default:
+			break;
 	}
 
 	if (index >= _langtab_num[tab])
-		error("!String 0x%X is invalid. Probably because an old version of the .lng file.\n", string);
+		error(
+			"!String 0x%X is invalid. "
+			"Probably because an old version of the .lng file.\n", string
+		);
 
 	return DecodeString(buffr, GetStringPtr(string));
 }
@@ -454,7 +469,7 @@ static char *DecodeString(char *buff, const char *str)
 				// 8-bit = cargo type
 				// 16-bit = cargo count
 				const char *s;
-				uint16 cargo_str = _cargo_string_list[_opt.landscape][(byte)GetParamInt8()];
+				StringID cargo_str = _cargo_string_list[_opt.landscape][(byte)GetParamInt8()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
 				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier);
@@ -651,7 +666,8 @@ static const char * const _surname_list[] = {
 };
 
 static const char _initial_name_letters[] = {
-	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
+	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
 static char *GenAndCoName(char *buff)
@@ -730,23 +746,17 @@ static const char * const _song_names[] = {
 static char *GetSpecialPlayerNameString(char *buff, int ind)
 {
 	switch (ind) {
-	// not used
-	case 1: {
-		int i = GetParamInt32() & 0xFFFF;
-		return str_cat(buff, _silly_company_names[i]);
-	}
+		case 1: // not used
+			return str_cat(buff, _silly_company_names[GetParamInt32() & 0xFFFF]);
 
-	case 2: // used for Foobar & Co company names
-		return GenAndCoName(buff);
+		case 2: // used for Foobar & Co company names
+			return GenAndCoName(buff);
 
-	case 3: // President name
-		return GenPlayerName_4(buff);
+		case 3: // President name
+			return GenPlayerName_4(buff);
 
-	// song names
-	case 4: {
-		const char *song = _song_names[GetParamUint16() - 1];
-		return str_cat(buff, song);
-	}
+		case 4: // song names
+			return str_cat(buff, _song_names[GetParamUint16() - 1]);
 	}
 
 	// town name?
@@ -780,15 +790,22 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 // remap a string ID from the old format to the new format
 StringID RemapOldStringID(StringID s)
 {
-	if (s == 0x7000) s = STR_SV_UNNAMED;
-	else if (s == 0x0006) s = STR_SV_EMPTY;
-	else if (s == 0x8864) s = STR_SV_TRAIN_NAME;
-	else if (s == 0x902B) s = STR_SV_ROADVEH_NAME;
-	else if (s == 0x9830) s = STR_SV_SHIP_NAME;
-	else if (s == 0xA02F) s = STR_SV_AIRCRAFT_NAME;
-	else if (IS_INT_INSIDE(s, 0x300F, 0x3030)) s = s - 0x300F + STR_SV_STNAME;
-	else if (s == 0x70E4 || s == 0x70E9) s = SPECSTR_PLAYERNAME_ENGLISH;
-	return s;
+	switch (s) {
+		case 0x0006: return STR_SV_EMPTY;
+		case 0x7000: return STR_SV_UNNAMED;
+		case 0x70E4: return SPECSTR_PLAYERNAME_ENGLISH;
+		case 0x70E9: return SPECSTR_PLAYERNAME_ENGLISH;
+		case 0x8864: return STR_SV_TRAIN_NAME;
+		case 0x902B: return STR_SV_ROADVEH_NAME;
+		case 0x9830: return STR_SV_SHIP_NAME;
+		case 0xA02F: return STR_SV_AIRCRAFT_NAME;
+
+		default:
+			if (IS_INT_INSIDE(s, 0x300F, 0x3030))
+				return s - 0x300F + STR_SV_STNAME;
+			else
+				return s;
+	}
 }
 
 bool ReadLanguagePack(int lang_index)
@@ -839,10 +856,10 @@ bool ReadLanguagePack(int lang_index)
 		s += len;
 	}
 
-	if (_langpack) free(_langpack);
+	free(_langpack);
 	_langpack = lang_pack;
 
-	if (_langpack_offs) free(_langpack_offs);
+	free(_langpack_offs);
 	_langpack_offs = langpack_offs;
 
 	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, sizeof(_dynlang.curr_file));
@@ -856,7 +873,10 @@ bool ReadLanguagePack(int lang_index)
 void InitializeLanguagePacks(void)
 {
 	DynamicLanguages *dl = &_dynlang;
-	int i, j, n, m,def;
+	int i;
+	int n;
+	int m;
+	int def;
 	LanguagePack hdr;
 	FILE *in;
 	char *files[32];
@@ -867,6 +887,8 @@ void InitializeLanguagePacks(void)
 
 	// go through the language files and make sure that they are valid.
 	for (i = m = 0; i != n; i++) {
+		int j;
+
 		char *s = str_fmt("%s%s", _path.lang_dir, files[i]);
 		in = fopen(s, "rb");
 		free(s);
