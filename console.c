@@ -603,7 +603,8 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 			i++;
 			if (cmdline[i] == '+') {
 				t=1;
-				while ((tokens[t]!=NULL) && (t<20)) {
+				while ((tokens[t]!=NULL) && (t<20) && 
+						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
 					int l2 = strlen(tokens[t]);
 					*linestream = '"';
 					linestream++;
@@ -621,9 +622,13 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 				t = ((byte)cmdline[i]) - 64;
 				if ((t<20) && (tokens[t]!=NULL)) {
 					l2 = strlen(tokens[t]);
+					*linestream = '"';
+					linestream++;
 					memcpy(linestream,tokens[t],l2);
-					x += l2;
 					linestream += l2;
+					*linestream = '"';
+					linestream++;
+					x += l2+2;
 				}
 			}
 		} else if (cmdline[i] == '\\') {
@@ -659,9 +664,11 @@ void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20
 		*linestream = '\0';
 	}
 
-	free(linestream_s);
+	for (i=0; i<c; i++)	{
+		IConsoleCmdExec(lines[i]);
+	}
 
-	for (i=0; i<c; i++)	IConsoleCmdExec(lines[i]);
+	free(linestream_s);
 }
 
 void IConsoleVarInsert(_iconsole_var* item_new, const char* name)
@@ -1034,6 +1041,9 @@ void IConsoleCmdExec(const char* cmdstr)
 	int c;
 	int i;
 	int l;
+
+	if (_stdlib_con_developer)
+		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_cmdline: %s", cmdstr);
 
 	//** clearing buffer **//
 
