@@ -2546,6 +2546,16 @@ void Train_Tick(Vehicle *v)
 
 static const byte _depot_track_ind[4] = {0,1,0,1};
 
+// Validation for the news item "Train is waiting in depot"
+bool ValidateTrainInDepot( uint data_a, uint data_b )
+{
+	Vehicle *v = &_vehicles[data_a];
+	if (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED))
+		return true;
+	else
+		return false;
+}
+
 void TrainEnterDepot(Vehicle *v, uint tile)
 {
 	SetSignalsOnBothDir(tile, _depot_track_ind[_map5[tile]&3]);
@@ -2580,11 +2590,12 @@ void TrainEnterDepot(Vehicle *v, uint tile)
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
-				AddNewsItem(
+				AddValidatedNewsItem(
 					STR_8814_TRAIN_IS_WAITING_IN_DEPOT,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
 					v->index,
-					0);
+					0,
+					ValidateTrainInDepot);
 			}
 		}
 	}

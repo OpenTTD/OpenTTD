@@ -14,19 +14,25 @@ struct NewsItem {
 	TileIndex data_b;
 
 	uint32 params[10];
+
+	/* The validation functions for news items get called immediately
+	 * before the news are supposed to be shown. If this funcion returns
+	 * false, the news item won't be displayed. */
+	bool (*isValid) ( uint data_a, uint data_b );
 };
 
+typedef bool ValidationProc ( uint data_a, uint data_b );
+typedef void DrawNewsCallbackProc(Window *w);
+typedef StringID GetNewsStringCallbackProc(NewsItem *ni);
 
 #define NEWS_FLAGS(mode,flag,type,cb) ((cb)<<24 | (type)<<16 | (flag)<<8 | (mode))
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b);
+void AddValidatedNewsItem(StringID string, uint32 flags, uint data_a, uint data_b, ValidationProc *validation);
 void NewsLoop(void);
 void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs(void);
 
 VARDEF NewsItem _statusbar_news_item;
-
-typedef void DrawNewsCallbackProc(Window *w);
-typedef StringID GetNewsStringCallbackProc(NewsItem *ni);
 
 enum {
 	NT_ARRIVAL_PLAYER = 0,

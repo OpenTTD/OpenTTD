@@ -210,7 +210,6 @@ byte increaseIndex(byte i)
 	return i;
 }
 
-
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
 	NewsItem *ni;
@@ -255,6 +254,14 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	if (w == NULL) return;
 	SetWindowDirty(w);
 	w->vscroll.count = _total_news;
+}
+
+/* To add a news item with an attached validation function. This validation function
+ * makes sure that the news item is not outdated when the newspaper pops up. */
+void AddValidatedNewsItem(StringID string, uint32 flags, uint data_a, uint data_b, ValidationProc validation)
+{
+	AddNewsItem(string, flags, data_a, data_b);
+	_news_items[_latest_news].isValid = validation;
 }
 
 // don't show item if it's older than x days
@@ -419,6 +426,10 @@ static void MoveToNexItem(void)
 
 		// check the date, don't show too old items
 		if (_date - _news_items_age[ni->type] > ni->date)
+			return;
+
+		// execute the validation function to see if this item is still valid
+		if ( ni->isValid != NULL && !ni->isValid(ni->data_a, ni->data_b) )
 			return;
 
 		// show newspaper or send to ticker?
