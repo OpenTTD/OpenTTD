@@ -253,7 +253,7 @@ VARDEF StringID _error_message;
 VARDEF StringID _error_message_2;
 VARDEF int32 _additional_cash_required;
 
-VARDEF uint32 _decode_parameters[10];
+VARDEF uint32 _decode_parameters[20];
 VARDEF byte _current_player;
 
 VARDEF int _docommand_recursive;
