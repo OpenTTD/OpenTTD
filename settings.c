@@ -766,6 +766,7 @@ static const SettingDesc network_settings[] = {
 	{"autoclean_companies", SDT_BOOL, (void*)false, &_network_autoclean_companies, NULL},
 	{"autoclean_unprotected", SDT_UINT8, (void*)12, &_network_autoclean_unprotected, NULL},
 	{"autoclean_protected", SDT_UINT8, (void*)36, &_network_autoclean_protected, NULL},
+	{"restart_game_date", SDT_UINT16, (void*)0, &_network_restart_game_date, NULL},
 	{NULL,							0,											NULL,					NULL,										NULL}
 };
 #endif /* ENABLE_NETWORK */

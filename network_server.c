@@ -1259,6 +1259,23 @@ void NetworkUpdateClientInfo(uint16 client_index)
 	}
 }
 
+extern void SwitchMode(int new_mode);
+
+/* Check if we want to restart the map */
+static void NetworkCheckRestartMap()
+{
+	if (_network_restart_game_date != 0 && _cur_year + 1920 >= _network_restart_game_date) {
+		_docommand_recursive = 0;
+
+		DEBUG(net, 0)("Auto-restarting map. Year %d reached.", _cur_year + 1920);
+
+		_random_seeds[0][0] = Random();
+		_random_seeds[0][1] = InteractiveRandom();
+
+		SwitchMode(SM_NEWGAME);
+	}
+}
+
 /* Check if the server has autoclean_companies activated
     Two things happen:
       1) If a company is not protected, it is closed after 1 year (for example)
@@ -1475,6 +1492,11 @@ void NetworkServer_Tick(void)
 
 	/* See if we need to advertise */
 	NetworkUDPAdvertise();
+}
+
+void NetworkServerYearlyLoop(void)
+{
+	NetworkCheckRestartMap();
 }
 
 void NetworkServerMonthlyLoop(void)

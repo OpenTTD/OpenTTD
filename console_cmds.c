@@ -837,6 +837,23 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
+	// setting the server auto restart date
+	if (strcmp(argv[1],"restart_game_date") == 0) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			_network_restart_game_date = atoi(argv[2]);
+			IConsolePrintF(_iconsole_color_warning, "Restart Game Date changed to '%d'", _network_restart_game_date);
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current Restart Game Date is '%d'", _network_restart_game_date);
+			IConsolePrint(_iconsole_color_warning, "Usage: set restart_game_date <year>. '0' means disabled.");
+			IConsolePrint(_iconsole_color_warning, " Auto-restart the server when 1 jan of this year is reached (e.g.: 2030).");
+		}
+		return NULL;
+	}
+
 #endif /* ENABLE_NETWORK */
 
 	// Patch-options
@@ -868,6 +885,7 @@ DEF_CONSOLE_CMD(ConSet) {
 	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
 	IConsolePrint(_iconsole_color_error, " - server_port <port>");
 	IConsolePrint(_iconsole_color_error, " - server_pw \"<password>\"");
+	IConsolePrint(_iconsole_color_error, " - restart_game_date \"<year>\"");
 #endif /* ENABLE_NETWORK */
 	IConsolePrint(_iconsole_color_error, " - patch <patch_name> [<value>]");
 

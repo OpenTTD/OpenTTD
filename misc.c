@@ -129,7 +129,7 @@ void CSleep(int milliseconds)
 		#ifdef __BEOS__
 			snooze(milliseconds * 1000);
 		#endif
-		#if defined(__AMIGA__) 
+		#if defined(__AMIGA__)
 		{
 			ULONG signals;
 			ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
@@ -145,7 +145,7 @@ void CSleep(int milliseconds)
 			}
 			WaitIO((struct IORequest *)TimerRequest);
 		}
-		#endif // __AMIGA__ 
+		#endif // __AMIGA__
 	#endif
 }
 
@@ -690,6 +690,10 @@ void IncreaseDate()
 	RoadVehiclesYearlyLoop();
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
+#ifdef ENABLE_NETWORK
+	if (_network_server)
+		NetworkServerYearlyLoop();
+#endif /* ENABLE_NETWORK */
 
 	/* check if we reached 2090, that's the maximum year. */
 	if (_cur_year == 171) {
