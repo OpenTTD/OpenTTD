@@ -8,7 +8,7 @@
 
 enum {
 	SAVEGAME_MAJOR_VERSION = 4,
-	SAVEGAME_MINOR_VERSION = 3,
+	SAVEGAME_MINOR_VERSION = 4,
 
 	SAVEGAME_LOADABLE_VERSION = (SAVEGAME_MAJOR_VERSION << 8) + SAVEGAME_MINOR_VERSION
 };
@@ -897,29 +897,63 @@ static const byte * const _desc_includes[] = {
 	_common_veh_desc
 };
 
-typedef struct {
-	void *base;
-	size_t size;
-} ReferenceSetup;
-
-// used to translate "pointers"
-static const ReferenceSetup _ref_setup[] = {
-	{_order_array,sizeof(_order_array[0])},
-	{_vehicles,sizeof(_vehicles[0])},
-	{_stations,sizeof(_stations[0])},
-	{_towns,sizeof(_towns[0])},
-};
-
+/* We can't save pointers to a savegame, so this functions get's
+    the index of the item, and if not available, it hussles with
+    pointers (looks really bad :()
+   Remember that a NULL item has value 0, and all
+    indexes have + 1, so vehicle 0 is saved as index 1. */
 static uint ReferenceToInt(void *v, uint t)
 {
-	if (v == NULL) return 0;
-	return ((byte*)v - (byte*)_ref_setup[t].base) / _ref_setup[t].size + 1;
+	if (v == NULL)
+		return 0;
+
+	switch (t) {
+		case REF_VEHICLE_OLD: // Old vehicles we save as new onces
+		case REF_VEHICLE: return ((Vehicle *)v)->index + 1;
+		case REF_STATION: return ((Station *)v)->index + 1;
+		case REF_TOWN:    return ((Town *)v)->index + 1;
+
+		case REF_SCHEDULE:
+			return ((byte*)v - (byte*)_order_array) / sizeof(_order_array[0]) + 1;
+
+		default:
+			NOT_REACHED();
+	}
+
+	return 0;
 }
 
 void *IntToReference(uint r, uint t)
 {
-	if (r == 0) return NULL;
-	return (byte*)_ref_setup[t].base + (r-1) * _ref_setup[t].size;
+	/* From version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE, and should be loaded
+	    like that */
+	if (t == REF_VEHICLE_OLD &&
+			_sl.full_version >= 0x404)
+		t = REF_VEHICLE;
+
+	if (t != REF_VEHICLE_OLD && r == 0)
+		return NULL;
+
+	switch (t) {
+		case REF_VEHICLE: return GetVehicle(r - 1);
+		case REF_STATION: return GetStation(r - 1);
+		case REF_TOWN:    return GetTown(r - 1);
+
+		case REF_SCHEDULE:
+			return (byte*)_order_array + (r - 1) * sizeof(_order_array[0]);
+
+		case REF_VEHICLE_OLD: {
+			/* Old vehicles were saved differently: invalid vehicle was 0xFFFF,
+			    and the index was not - 1.. correct for this */
+			if (r == INVALID_VEHICLE)
+				return NULL;
+			return GetVehicle(r);
+		}
+		default:
+			NOT_REACHED();
+	}
+
+	return NULL;
 }
 
 typedef struct {
@@ -1029,7 +1063,7 @@ int SaveOrLoad(const char *filename, int mode)
 		if (!fmt->init_write()) goto init_err;
 
 		hdr[0] = fmt->tag;
-		hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION<<16) + (SAVEGAME_MINOR_VERSION << 8));
+		hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION << 16) + (SAVEGAME_MINOR_VERSION << 8));
 		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
 
 		_sl.version = SAVEGAME_MAJOR_VERSION;
@@ -1054,6 +1088,7 @@ init_err:
 				printf("Unknown savegame type, trying to load it as the buggy format.\n");
 				rewind(_sl.fh);
 				_sl.version = 0;
+				_sl.full_version = 0;
 				version = 0;
 				fmt = _saveload_formats + 0; // lzo
 				break;
@@ -1062,9 +1097,12 @@ init_err:
 				// check version number
 				version = TO_BE32(hdr[1]) >> 8;
 
-				// incompatible version?
-				if (version > SAVEGAME_LOADABLE_VERSION) goto read_err;
-				_sl.version = (version>>8);
+				/* Is the version higher than the current? */
+				if (version > SAVEGAME_LOADABLE_VERSION)
+					goto read_err;
+
+				_sl.version = (version >> 8);
+				_sl.full_version = version;
 				break;
 			}
 		}

@@ -405,8 +405,8 @@ ResolveVehicleSpriteGroup(struct SpriteGroup *spritegroup, struct Vehicle *veh,
 						veh_prop(0x57, veh->profit_last_year & 0xFF);
 						veh_prop(0x58, veh->profit_last_year);
 						veh_prop(0x59, veh->profit_last_year & 0xFF);
-						veh_prop(0x5A, veh->next_in_chain_old);
-						veh_prop(0x5B, veh->next_in_chain_old & 0xFF);
+/*						veh_prop(0x5A, veh->next_in_chain_old);
+						veh_prop(0x5B, veh->next_in_chain_old & 0xFF);*/
 						veh_prop(0x5C, veh->value);
 						veh_prop(0x5D, veh->value & 0xFFFFFF);
 						veh_prop(0x5E, veh->value & 0xFFFF);

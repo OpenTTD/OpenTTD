@@ -1788,7 +1788,7 @@ restart:
 const byte _common_veh_desc[] = {
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 
-	SLE_VAR(Vehicle,next_in_chain_old, SLE_UINT16),
+	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
 	SLE_VAR(Vehicle,string_id,				SLE_STRINGID),
 	SLE_VAR(Vehicle,unitnumber,				SLE_UINT8),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
@@ -1964,7 +1964,7 @@ static const byte _special_desc[] = {
 static const byte _disaster_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Disaster, 5),
 
-	SLE_VAR(Vehicle,next_in_chain_old,SLE_UINT16),
+	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 	SLE_VAR(Vehicle,tile,							SLE_UINT16),
@@ -2024,7 +2024,6 @@ static void Save_VEHS()
 				v->last_station_visited = 0xFF;
 
 			SlSetArrayIndex(v->index);
-			v->next_in_chain_old = v->next ? v->next->index : INVALID_VEHICLE;
 			SlObject(v, _veh_descs[v->type - 0x10]);
 		}
 	}
@@ -2039,9 +2038,7 @@ static void Load_VEHS()
 	while ((index = SlIterateArray()) != -1) {
 		Vehicle *v = GetVehicle(index);
 
-		v->next_in_chain_old = INVALID_VEHICLE;
 		SlObject(v, _veh_descs[SlReadByte()]);
-		v->next = (v->next_in_chain_old == INVALID_VEHICLE) ? NULL : GetVehicle(v->next_in_chain_old);
 		if (v->type == VEH_Train)
 			v->u.rail.first_engine = 0xffff;
 

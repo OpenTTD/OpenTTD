@@ -37,6 +37,7 @@ typedef struct {
 	byte block_mode;
 	bool error;
 	byte version;
+	uint16 full_version;
 
 	int obj_len;
 	int array_index, last_array_index;
@@ -73,6 +74,7 @@ enum {
 	REF_VEHICLE = 1,
 	REF_STATION = 2,
 	REF_TOWN = 3,
+	REF_VEHICLE_OLD = 4,
 };
 
 

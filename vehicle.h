@@ -118,7 +118,6 @@ struct Vehicle {
 	byte subtype;			// subtype (for trains, 0 == loco, 4 wagon ??)
 
 	uint16 index;			// NOSAVE: Index in vehicle array
-	uint16 next_in_chain_old; // Next vehicle index for chained vehicles
 
 	Vehicle *next;		// next
 
