@@ -871,15 +871,22 @@ static const SaveLoadGlobVarList _map_dimensions[] = {
 
 static void Save_MAPSIZE(void)
 {
-	_map_dim_x = MapLogX();
-	_map_dim_y = MapLogY();
+	_map_dim_x = MapSizeX();
+	_map_dim_y = MapSizeY();
 	SlGlobList(_map_dimensions);
 }
 
 static void Load_MAPSIZE(void)
 {
+	uint bits_x = 0;
+	uint bits_y = 0;
+
 	SlGlobList(_map_dimensions);
-	InitMap(_map_dim_x, _map_dim_y);
+
+	for (; _map_dim_x > 1; _map_dim_x >>= 1) ++bits_x;
+	for (; _map_dim_y > 1; _map_dim_y >>= 1) ++bits_y;
+
+	InitMap(bits_x, bits_y);
 }
 
 static void SaveLoad_MAPT(void)
