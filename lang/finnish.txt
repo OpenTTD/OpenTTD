@@ -855,7 +855,6 @@ STR_0336_7							:{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH						:Englantilainen
 STR_TOWNNAME_FRENCH						:Ranskalainen
 STR_TOWNNAME_GERMAN						:Saksalainen
-STR_TOWNNAME_ADDITIONAL_ENGLISH						:Amerikkalainen
 STR_TOWNNAME_LATIN_AMERICAN					:Latinalais-Amerikkalainen
 STR_TOWNNAME_SILLY						:Hassu
 STR_TOWNNAME_SWEDISH						:Ruotsalainen
