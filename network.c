@@ -821,7 +821,6 @@ void NetworkAddServer(const byte *b)
 {
 	if (*b != '\0') {
 		NetworkGameList *item;
-		uint i;
 		const byte *port = NULL;
 		const byte *player = NULL;
 		byte host[NETWORK_HOSTNAME_LENGTH];
@@ -842,7 +841,7 @@ void NetworkAddServer(const byte *b)
 	}
 }
 
-/* Generates the list of manually added hosts from NetworkGameList and 
+/* Generates the list of manually added hosts from NetworkGameList and
  * dumps them into the array _network_host_list. This array is needed
  * by the function that generates the config file. */
 void NetworkRebuildHostList()
