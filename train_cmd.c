@@ -963,6 +963,25 @@ static void ReverseTrainDirection(Vehicle *v)
 	if (IsTrainDepotTile(v->tile))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
+	/* Check if we were approaching a rail/road-crossing */
+	{
+		TileIndex tile = v->tile;
+		int t;
+		/* Determine the non-diagonal direction in which we will exit this tile */
+		t = v->direction >> 1;
+		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[t]) {
+			t = (t - 1) & 3;
+		}
+		/* Calculate next tile */
+		tile += _tileoffs_by_dir[t];
+		if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
+			if (_map5[tile] & 4) {
+				_map5[tile] &= ~4;
+				MarkTileDirtyByTile(tile);
+			}
+		}
+	}
+
 	// count number of vehicles
 	u = v;
 	do r++; while ( (u = u->next) != NULL );
