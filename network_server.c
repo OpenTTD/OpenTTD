@@ -995,7 +995,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, dest, true, msg);
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, ci_to->client_index, true, msg);
 					}
 				}
 			}

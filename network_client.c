@@ -619,6 +619,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 			case NETWORK_ACTION_CHAT_PLAYER:
 			case NETWORK_ACTION_GIVE_MONEY:
 				/* For speak to player or give money, we need the player-name */
+				if (ci_to->client_playas > MAX_PLAYERS)
+					return NETWORK_RECV_STATUS_OKAY; // This should never happen
 				GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
