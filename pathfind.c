@@ -145,7 +145,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 	tile = TILE_MASK(tile + TileOffsByDir(direction));
 
 	/* Check in case of rail if the owner is the same */
-	if (IS_TILETYPE(tile, MP_RAILWAY) && tpf->tracktype == TRANSPORT_RAIL) {
+	if (tpf->tracktype == TRANSPORT_RAIL) {
 		if ((IS_TILETYPE(tile, MP_RAILWAY) || IS_TILETYPE(tile, MP_STATION) || IS_TILETYPE(tile, MP_TUNNELBRIDGE)))
 			/* Check if we are on the middle of a bridge (has no owner) */
 			if (!IS_TILETYPE(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
