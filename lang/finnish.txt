@@ -564,7 +564,7 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Rahdin vastaanottamisen muutoks
 STR_020E_SUBSIDIES						:{YELLOW}Alennukset
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Yleistä tietoa
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...liian kaukana edellisestä määränpäästä
-STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parhaat yhtiöt, jotka ylsivät {NUMU16}{}(taso: {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUMU16}{}(taso: {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN						:Liikemies
@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Alennukset
 STR_02DE_MAP_OF_WORLD						:Maailmankartta
 STR_EXTRA_VIEW_PORT						:Ylimääräinen näkymä
 STR_02DF_TOWN_DIRECTORY						:Kaupunkihakemisto
+STR_TOWN_POPULATION						:{BLACK}Maailman asukasluku: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}VNäkymä {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopioi näkymään
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopioi päänäkymän sijainti tähän näkymään
@@ -1140,6 +1141,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Sulkua ei voi rakentaa tähän...
 STR_BUILD_LOCKS_TIP						:{BLACK}Rakenna sulku
 STR_LANDINFO_LOCK						:Sulku
 
+STR_BUOY_IS_IN_USE						:{WHITE}...poiju on käytössä!
 
 STR_LANDINFO_COORDS						:{BLACK}Koordinaatit: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1392,6 +1394,7 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Yksityinen viesti
 STR_NETWORK_SEND						:{BLACK}Lähetä
 
 ############ end network gui strings
+
 
 
 ##id 0x0800
@@ -2783,6 +2786,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Valitse rautatietyyppi, jolle veturikorvau
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään
 STR_REPLACE_HELP						:{BLACK}Tällä voit korvata yhden veturityypin toisella, kun alkuperäisen tyypin junat menevät varikolle
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

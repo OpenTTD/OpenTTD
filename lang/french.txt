@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Autorise des zones de désserte plus ré
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permettre la suppression de plus d'éléments possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Interdire aux trains et aux navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (Nécessite le NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Pleine cargaison par un seul type, si 'chargement complet': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Permettre la corruption de la municipalité
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Nouvelle recherche de dépôt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nouvel algorithme de recherche de route: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nouvelle recherche de chemin globale (NPF, écrase NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
@@ -1090,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construire pendant le mode pause: {ORANGE}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Les jets ne se crashent plus (fréquemment) sur les petites aéroports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Changer de climat : {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Permettre la modification des valeurs de production : {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}En route pour {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1399,9 @@ STR_NETWORK_SEND						:{BLACK}Envoyer
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Taille X de la carte : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Taille Y de la carte : {ORANGE}{STRING}
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Coût: {CURRENCY}
 STR_0801_COST							:{RED}Coût: {CURRENCY}
@@ -1615,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Trop près d'une autre gare
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Ajouter une ou plusieurs gares
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Trop de gares dans cette ville
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Trop de gares
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Trop d'arrêts de bus
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Trop d'aires de chargement
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Trop près d'une autre gare
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Vous devez d'abord détruire la gare
@@ -1688,6 +1696,7 @@ STR_3069_BUOY							:Bouée
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bouée présente
 STR_306B_HELIPORT						:{BLACK}Héliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...gare trop étendue
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...stations non-uniformes désactivées
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientation du dépot naval

@@ -1090,6 +1090,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{S
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Jetvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Verander klimaat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Verander datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Sta aanpassen productiewaarden toe: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Op weg naar {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1397,9 @@ STR_NETWORK_SEND						:{BLACK}Verstuur
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}X-grootte van de kaart: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Y-grootte van de kaart: {ORANGE}{STRING}
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Kosten: {CURRENCY}
 STR_0801_COST							:{RED}Kosten: {CURRENCY}
@@ -1615,6 +1619,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Te dicht bij een ander station
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Teveel (laad)stations in de buurt van deze stad
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Teveel (laad)stations
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Te veel bushaltes
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Te veel vrachtwagenstations
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Te dicht bij een andere (laad)station
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Verwijder eerst treinstation
@@ -1688,6 +1694,7 @@ STR_3069_BUOY							:Boei
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...boei in de weg
 STR_306B_HELIPORT						:{BLACK}Helipoort
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...station te verspreid
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...niet uniforme stations uit
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Bouw scheepswerf
@@ -2122,10 +2129,10 @@ STR_8013_KELLING_3100_DIESEL					:Kelling 3100 (Diesel)
 STR_8014_TURNER_TURBO_DIESEL					:Turner Turbo (Diesel)
 STR_8015_MJS_1000_DIESEL					:MJS 1000 (Diesel)
 STR_8016_SH_125_DIESEL						:SH '125' (Diesel)
-STR_8017_SH_30_ELECTRIC						:SH '30' (Electrisch)
-STR_8018_SH_40_ELECTRIC						:SH '40' (Electrisch)
-STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Electrisch)
-STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Electrisch)
+STR_8017_SH_30_ELECTRIC						:SH '30' (Elektrisch)
+STR_8018_SH_40_ELECTRIC						:SH '40' (Elektrisch)
+STR_8019_T_I_M_ELECTRIC						:'T.I.M.' (Elektrisch)
+STR_801A_ASIASTAR_ELECTRIC					:'AsiaStar' (Elektrisch)
 STR_801B_PASSENGER_CAR						:Passagierswagon
 STR_801C_MAIL_VAN						:Postwagen
 STR_801D_COAL_CAR						:Kolenwagen
@@ -2153,8 +2160,8 @@ STR_8032_TOY_VAN						:Speelgoedwagen
 STR_8033_BATTERY_TRUCK						:Batterijwagen
 STR_8034_FIZZY_DRINK_TRUCK					:Frisdrankwagen
 STR_8035_PLASTIC_TRUCK						:Plastic Truck
-STR_8036_X2001_ELECTRIC						:'X2001' (Electrisch)
-STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Electrisch)
+STR_8036_X2001_ELECTRIC						:'X2001' (Elektrisch)
+STR_8037_MILLENNIUM_Z1_ELECTRIC					:'Millennium Z1' (Elektrisch)
 STR_8038_WIZZOWOW_Z99						:Wizzowow Z99
 STR_8039_PASSENGER_CAR						:Passagiers Rijtuig
 STR_803A_MAIL_VAN						:Postwagen
@@ -2183,10 +2190,10 @@ STR_8050_TOY_VAN						:Speelgoedwagen
 STR_8051_BATTERY_TRUCK						:Batterij Truck
 STR_8052_FIZZY_DRINK_TRUCK					:Frisdrank Truck
 STR_8053_PLASTIC_TRUCK						:Plastic Truck
-STR_8054_LEV1_LEVIATHAN_ELECTRIC				:Lev1 'Leviathan' (Electrisch)
-STR_8055_LEV2_CYCLOPS_ELECTRIC					:Lev2 'Cyclops' (Electrisch)
-STR_8056_LEV3_PEGASUS_ELECTRIC					:Lev3 'Pegasus' (Electrisch)
-STR_8057_LEV4_CHIMAERA_ELECTRIC					:Lev4 'Chimaera' (Electrisch)
+STR_8054_LEV1_LEVIATHAN_ELECTRIC				:Lev1 'Leviathan' (Elektrisch)
+STR_8055_LEV2_CYCLOPS_ELECTRIC					:Lev2 'Cyclops' (Elektrisch)
+STR_8056_LEV3_PEGASUS_ELECTRIC					:Lev3 'Pegasus' (Elektrisch)
+STR_8057_LEV4_CHIMAERA_ELECTRIC					:Lev4 'Chimaera' (Elektrisch)
 STR_8058_WIZZOWOW_ROCKETEER					:Wizzowow Rocketeer
 STR_8059_PASSENGER_CAR						:Passagiers Rijtuig
 STR_805A_MAIL_VAN						:Postwagen

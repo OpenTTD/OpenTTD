@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subvenciones
 STR_02DE_MAP_OF_WORLD						:Mapa del mundo
 STR_EXTRA_VIEW_PORT						:Punto de vista extra
 STR_02DF_TOWN_DIRECTORY						:Listado de poblaciones
+STR_TOWN_POPULATION						:{BLACK}Población mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vista {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiar punto de vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copia la localización de la vista global a este punto de vista
@@ -1089,6 +1090,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construir mientras se está en pausa: {ORAN
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Los Jets no se estrellarán (frecuentemente) en aeropuertos pequeños: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Cambiar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Hacia {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
@@ -1140,6 +1142,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}No se pueden construir dársenas aquí...
 STR_BUILD_LOCKS_TIP						:{BLACK}Constuir dársenas
 STR_LANDINFO_LOCK						:Dársena
 
+STR_BUOY_IS_IN_USE						:{WHITE}...boya en uso!
 
 STR_LANDINFO_COORDS						:{BLACK}Coordenadas: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1392,6 +1395,7 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Mensaje privado
 STR_NETWORK_SEND						:{BLACK}Enviar
 
 ############ end network gui strings
+
 
 
 ##id 0x0800
@@ -1686,6 +1690,7 @@ STR_3069_BUOY							:Boya
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...boya en medio
 STR_306B_HELIPORT						:{BLACK}Helipuerto
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...estación demasiado extendida
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...desactivada estaciones no uniformes
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientación del astillero
@@ -2783,6 +2788,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Seleccione tipo de rail para seleccionar l
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Muestra que locomotora será reemplazada
 STR_REPLACE_HELP						:{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

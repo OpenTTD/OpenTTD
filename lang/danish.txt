@@ -1396,6 +1396,7 @@ STR_NETWORK_SEND						:{BLACK}Send
 ############ end network gui strings
 
 
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Pris: {CURRENCY}
 STR_0801_COST							:{RED}Pris: {CURRENCY}

@@ -984,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Povolit u oblasti pokrytí realistictej
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Povolit bourání více mestskych silnic, mostu, tunelu, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Povolit stavbu dlouhých vlaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Zapnout realistické zrychlování vlaku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Zakázat vlakum a lodím otaceni o 90 stupnu: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Odjet, kdyz je plne nalozen jakýkoli náklad pri 'nalozit': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Pouzij vylepseny algoritmus nakládání: {ORANGE}{STRING}
@@ -1004,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Povolit úplatek místní sprave: {ORANGE}{ST
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Nové vyhledávání dep: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Nový algoritmus pro hledání cesty vlaku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nový globální algoritmus hledání cesty (NPF, nahradí NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Malá letiste se budou moci stále stavet: {ORANGE}{STRING}
 
@@ -1090,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Povolit staveni v pauze: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Letadla nebudou na malých letistich (tak casto) havarovat: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Zmenit podnebí: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Povolit zmenu produkce prumyslu: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Mirim do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Mirim do {WAYPOINT}, {VELOCITY}
@@ -1396,6 +1399,9 @@ STR_NETWORK_SEND						:{BLACK}Poslat
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Rozmer X mapy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Rozmer Y mapy: {ORANGE}{STRING}
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cena: {CURRENCY}
 STR_0801_COST							:{RED}Cena: {CURRENCY}
@@ -1615,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Prilis blízko jinému nadrazi
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Spojuje více jak jedno existující nadrazi nebo nákladovou rampu...
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi nebo nákladových ramp v tomto meste
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Prilis mnoho nadrazi nebo nákladových ramp
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Prilis mnoho autobusových zastávek
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Prilis mnoho zastávek nákladních automobilu
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Prilis blízko k jinému nadrazi nebo nákladové rampe
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Musis nejprve znicit stanici
@@ -1688,6 +1696,7 @@ STR_3069_BUOY							:Bojka
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...bojka v ceste
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...stanice je prilis rozlozita
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...nejednolité stanice nepovoleny
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientace lodního depa

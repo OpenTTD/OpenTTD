@@ -1391,6 +1391,7 @@ STR_NETWORK_SEND						:{BLACK}Senda
 ############ end network gui strings
 
 
+
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Kostnaður: {CURRENCY}
 STR_0801_COST							:{RED}Kostnaður: {CURRENCY}
@@ -1816,14 +1817,40 @@ STR_501F_WOODEN_RAIL_BRIDGE					:Viðarbrú, lestir
 STR_5020_CONCRETE_RAIL_BRIDGE					:Steypubrú, lestir
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE				:Stálhengibrú, vegur
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE				:Stálburðarbitabrú, vegur
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE				:Stálsvifbitabrú, vegur
+STR_5024_REINFORCED_CONCRETE_SUSPENSION				:Styrkt steypuhengibrú, vegur
+STR_5025_WOODEN_ROAD_BRIDGE					:Viðarbrú, vegur
+STR_5026_CONCRETE_ROAD_BRIDGE					:Stepubrú, vegur
+STR_5027_TUBULAR_RAIL_BRIDGE					:Rörabrú, lest
+STR_5028_TUBULAR_ROAD_BRIDGE					:Rörabrú, vegur
+STR_5029_STEEL							:Stál
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY					:{WHITE}Hluturinn er fyrir
+STR_5801_TRANSMITTER						:Sendir
+STR_5802_LIGHTHOUSE						:Viti
+STR_5803_COMPANY_HEADQUARTERS					:Höfuðstöðvar fyritækis
+STR_5804_COMPANY_HEADQUARTERS_IN				:{WHITE}...höfuðstöðvar fyrirtækis eru fyrir
+STR_5805_COMPANY_OWNED_LAND					:Land í eigu fyrirtækis
+STR_5806_CAN_T_PURCHASE_THIS_LAND				:{WHITE}Þú getur ekki keypt þetta land...
+STR_5807_YOU_ALREADY_OWN_IT					:{WHITE}...þú átt það nú þegar!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY							:
+STR_SV_UNNAMED							:Ónefnt{SKIP}
+STR_SV_TRAIN_NAME						:Lest {COMMA16}
+STR_SV_ROADVEH_NAME						:Bifreið {COMMA16}
+STR_SV_SHIP_NAME						:Skip {COMMA16}
+STR_SV_AIRCRAFT_NAME						:Flugvél {COMMA16}
 
+STR_SV_STNAME							:{STRING}
+STR_SV_STNAME_NORTH						:{STRING} Norður
+STR_SV_STNAME_SOUTH						:{STRING} Suður
+STR_SV_STNAME_EAST						:{STRING} Austur
+STR_SV_STNAME_WEST						:{STRING} Vestur
 
 ############ end of	savegame specific region!
 

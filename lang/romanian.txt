@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subventii (F6)
 STR_02DE_MAP_OF_WORLD						:Harta lumii (F4)
 STR_EXTRA_VIEW_PORT						:Extra ecran
 STR_02DF_TOWN_DIRECTORY						:Lista oraselor
+STR_TOWN_POPULATION						:{BLACK}Populatia totala: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Ecran{COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Copiaza pe ecranul principal
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Copiaza locatia ecranului principal in acest ecran
@@ -983,6 +984,7 @@ STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Permite arii de cuprindere mai realist
 STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Permite demolarea unui nr. mai mare constructii: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Permite constructia de trenuri foarte lungi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Permite acceleratie realisticã pentru trenuri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG				:{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (necesita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY					:{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING}
@@ -1003,6 +1005,7 @@ STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Permite mituirea autoritãtilor locale: {OR
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING				:{LTBLUE}Metodã nouã pentru gãsire depou: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS				:{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND				:{LTBLUE}Algoritm nou pentru gãsirea drumurilor (trenuri): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL				:{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS				:{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
@@ -1089,6 +1092,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Construieste în modul pauzã: {ORANGE}{STRI
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Avioanele cu reactie nu se vor prãbusi (frecvent) pe aeroporturile mici: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Schimbã peisajul: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Schimbã data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Merge spre {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
@@ -1231,7 +1235,7 @@ STR_NETWORK_LANGUAGE						:{SILVER}Limba:  {WHITE}{STRING}
 STR_NETWORK_TILESET						:{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE						:{SILVER}Marimea hartii:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION					:{SILVER}Versiune server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa server:  {WHITE}{STRING} : {NUMU16}
+STR_NETWORK_SERVER_ADDRESS					:{SILVER}Adresa serverului:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE						:{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE					:{SILVER}Data curenta:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD						:{SILVER}Protejat cu parola!
@@ -1394,6 +1398,9 @@ STR_NETWORK_SEND						:{BLACK}Trimite
 
 ############ end network gui strings
 
+
+STR_CONFIG_PATCHES_MAP_X					:{LTBLUE}Marimea X a hartii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y					:{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST							:{TINYFONT}{RED}Cheltuieli: {CURRENCY}
@@ -1614,6 +1621,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD				:{WHITE}Prea aproape de altã garã
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING				:{WHITE}Este adiacentã mai multor statii
 STR_3007_TOO_MANY_STATIONS_LOADING				:{WHITE}Prea multe statii in acest oras
 STR_3008_TOO_MANY_STATIONS_LOADING				:{WHITE}Prea multe statii
+STR_3008A_TOO_MANY_BUS_STOPS					:{WHITE}Prea multe statii de autobuz
+STR_3008B_TOO_MANY_TRUCK_STOPS					:{WHITE}Prea multe statii de camion
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION				:{WHITE}Prea aproape de altã statie
 STR_300A_0							:{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD					:{WHITE}Mai întâi trebuie demolatã gara
@@ -1687,6 +1696,7 @@ STR_3069_BUOY							:Balizã
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...balizã în cale
 STR_306B_HELIPORT						:{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...statie prea mare
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...statii neuniforme dezactivat
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Orientarea santierului naval
@@ -2784,6 +2794,7 @@ STR_REPLACE_HELP_RAILTYPE					:{BLACK}Alege un tip de cale ferata pentru care sa
 STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
 STR_REPLACE_HELP						:{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 
+STR_SHORT_DATE							:{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 

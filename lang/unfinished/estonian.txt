@@ -772,6 +772,7 @@ STR_02DD_SUBSIDIES						:Subsiidiumid
 STR_02DE_MAP_OF_WORLD						:Maailmakaart
 STR_EXTRA_VIEW_PORT						:Lisa vaateaken
 STR_02DF_TOWN_DIRECTORY						:Linnade nimistu
+STR_TOWN_POPULATION						:{BLACK}Maailma populatsioon: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vaateaken {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Kopeeri vaateaknasse
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Kopeeri praegune vaade vaateaknasse
@@ -1089,6 +1090,7 @@ STR_CHEAT_BUILD_IN_PAUSE					:{LTBLUE}Pausi ajal ehitamine: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH						:{LTBLUE}Reaktiivlennukid ei kuku alla (tihti) väikestel lennuväljadel: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE					:{LTBLUE}Vaheta kliimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE						:{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD						:{LTBLUE}Luba muutuvad tootmisväärtused: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Suudub kontrollpunti: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
@@ -1140,6 +1142,7 @@ STR_CANT_BUILD_LOCKS						:{WHITE}Siia ei saa lüüse ehitada...
 STR_BUILD_LOCKS_TIP						:{BLACK}Lüüsi ehitamine
 STR_LANDINFO_LOCK						:Lüüs
 
+STR_BUOY_IS_IN_USE						:{WHITE}...poi on kasutusel!
 
 STR_LANDINFO_COORDS						:{BLACK}Koordinaadid: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1392,6 +1395,7 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privaatne sõnum
 STR_NETWORK_SEND						:{BLACK}Saada
 
 ############ end network gui strings
+
 
 
 ##id 0x0800
@@ -1686,6 +1690,7 @@ STR_3069_BUOY							:Poi
 STR_306A_BUOY_IN_THE_WAY					:{WHITE}...poi on ees
 STR_306B_HELIPORT						:{BLACK}Helikopteri plats
 STR_306C_STATION_TOO_SPREAD_OUT					:{WHITE}...jaam on liiga laiaks venitatud
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED				:{WHITE}...korrapäratud jaamad keelatud
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION					:{WHITE}Paadikuuri orientatsioon
@@ -1918,6 +1923,7 @@ STR_6815_DISASTERS						:{LTBLUE}Katastroofid: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL						:{LTBLUE}Linnanõukogu suhtumine seoses maastikukujundamisega: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:Pole
 STR_6816_LOW							:Madal
 STR_6817_NORMAL							:Normaalne
 STR_6818_HIGH							:Kõrge
@@ -1928,6 +1934,7 @@ STR_681C_SLOW							:Aeglane
 STR_681D_MEDIUM							:Keskmine
 STR_681E_FAST							:Kiire
 STR_681F_VERY_FAST						:Väga kiire
+STR_VERY_LOW							:Väga madal
 STR_6820_LOW							:Madal
 STR_6821_MEDIUM							:Keskmine
 STR_6822_HIGH							:Kõrge
@@ -1953,10 +1960,14 @@ STR_6835_AT_END_OF_LINE_ONLY					:Ainult raudtee lõpus
 STR_6836_OFF							:Väljas
 STR_6837_ON							:Sees
 STR_6838_SHOW_HI_SCORE_CHART					:{BLACK}Näita mängijate edetabelit
+STR_6839_PERMISSIVE						:Soodustav
+STR_683A_TOLERANT						:Tolerantne
+STR_683B_HOSTILE						:Vaenulik
 
 ##id 0x7000
 STR_7000							:
 STR_7001							:{WHITE}{STRING}{BLACK}{STRING}
+STR_7002_PLAYER							:(Mängija {COMMA16})
 STR_7004_NEW_FACE						:{BLACK}Uus nägu
 STR_7005_COLOR_SCHEME						:{BLACK}Värvivalik
 STR_7006_COLOR_SCHEME						:{GOLD}Värvivalik:
@@ -1988,13 +1999,16 @@ STR_701F							:{BLACK}+{CURRENCY64}
 STR_7020_TOTAL							:{WHITE}Kokku:
 STR_7021							:{STRING}{STRING}
 STR_7022_INCOME_GRAPH						:{WHITE}Sissetulekute graafik
+STR_CURRCOMPACT32						:{CURRCOMPACT}
+STR_CURRCOMPACT64						:{CURRCOMPACT64}
 STR_7024							:{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH					:{WHITE}Opereerimiskasumi graafik
 STR_7026_BANK_BALANCE						:{WHITE}Kontojääk
 STR_7027_LOAN							:{WHITE}Laen
+STR_MAX_LOAN							:{WHITE}Maksimaalne laen:  {BLACK}{CURRENCY64}
 STR_7028							:{BLACK}{CURRENCY64}
-STR_7029_BORROW							:{BLACK}Laena {SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY							:{BLACK}Maksa tagasi {SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW							:{BLACK}Laena {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY							:{BLACK}Maksa tagasi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN					:{WHITE}...lubatud maksimaalne laenusuurus on {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY				:{WHITE}Rohkem raha ei saa laenata...
 STR_702D_LOAN_ALREADY_REPAYED					:{WHITE}...pole laenu, mida tagasi maksta
@@ -2042,7 +2056,15 @@ STR_7056_TRANSPORT_COMPANY_IN_TROUBLE				:{BLACK}{BIGFONT}Ettevõttel on prbleeme
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED				:{BLACK}{BIGFONT}Ettevõte {STRING} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
 STR_7058_PRESIDENT						:{BLACK}{STRING}{}(President)
 STR_7059_TRANSPORT_COMPANY_MERGER				:{BLACK}{BIGFONT}Ettevõtete ühinemine!
-STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}Ettevõte {STRING} müüdi {CURRENCY} eest ettevõttele {STRING}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR					:{BLACK}{BIGFONT}{STRING} müüdi ettevõttele {STRING} {CURRENCY} eest!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT				:{WHITE}Otsime ettevõtet, kes võtaks meie firma üle.{}{}Kas soovite osta ettevõtte {STRING} {CURRENCY} eest?
+STR_705C_BANKRUPT						:{BLACK}{BIGFONT}Pankrot!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY				:{BLACK}{BIGFONT}{STRING} suleti asutajate poolt ja kõik varad müüakse maha!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED				:{BLACK}{BIGFONT}Loodi uus ettevõte!
+STR_705F_STARTS_CONSTRUCTION_NEAR				:{BLACK}{BIGFONT}{STRING} alustas ehitustöid linna {TOWN} lähedal!
+STR_7060_CAN_T_BUY_COMPANY					:{WHITE}Ettevõtet ei saa osta...
+STR_7061_CARGO_PAYMENT_RATES					:{WHITE}Veoste hindadte graafik
+STR_7062_DAYS_IN_TRANSIT					:{BLACK}{TINYFONT}Päevi teel
 
 ##id 0x8000
 
