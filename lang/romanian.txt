@@ -1174,7 +1174,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Atentie: algoritmul AI este în stadiul alfa! Mome
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}Interfata de retea nu este încã functionalã!
+TEMP_STRING_NO_NETWORK						:{WHITE}Interfata de retea nu functioneaza inca in totalitate!{}Optiunile nefunctionale au fost dezactivate.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multiplayer
 

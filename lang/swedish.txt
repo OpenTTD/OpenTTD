@@ -206,7 +206,7 @@ STR_00CD_3							:{BLACK}3
 STR_00CE_4							:{BLACK}4
 STR_00CF_5							:{BLACK}5
 STR_00D0_NOTHING						:Inget
-STR_00D1_DARK_BLUE						:Mörkgrön
+STR_00D1_DARK_BLUE						:Mörkblå
 STR_00D2_PALE_GREEN						:Mattgrön
 STR_00D3_PINK							:Rosa
 STR_00D4_YELLOW							:Gul

@@ -1174,7 +1174,7 @@ TEMP_AI_ACTIVATED						:{WHITE}Attention: cette nouvelle IA est en version alpha
 
 ############ network gui strings
 
-TEMP_STRING_NO_NETWORK						:{WHITE}L'interface réseau ne fonctionne pas pour le moment!
+TEMP_STRING_NO_NETWORK						:{WHITE}L'interface réseau n'est pas complètement opérationnelle pour le moment !{}Les items qui ne fonctionnent pas ont été désactivés.
 
 STR_NETWORK_MULTIPLAYER						:{WHITE}Multijoueur
 

@@ -887,6 +887,8 @@ STR_OPTIONS_LANG						:{BLACK}Kieli
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Valitse käyttöliittymän kieli
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Koko näyttö
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Laita rasti ruutuun pelataksesi OpenTTD:tä kokoruututilassa
 
 STR_OPTIONS_RES							:{BLACK}Ruudun erottelukyky
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2220,7 +2222,7 @@ STR_8107_MAGLEV_LOCOMOTIVE					:maglev-veturin
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT						:{WHITE}{TOWN}: veturitalli
-STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle!
+STR_8801_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupungilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
 STR_8802_DETAILS						:{WHITE}{STRING} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY					:{WHITE}Juna matkalla
 STR_8804							:{SETX 10}{COMMA8}: {STRING}
@@ -2391,8 +2393,8 @@ STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Hinta: {CURRENCY}{}Nopeus: {VELOCITY
 STR_902C_NAME_ROAD_VEHICLE					:{WHITE}Nimeä maantieajoneuvo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE				:{WHITE}Maantieajoneuvoa ei voi nimetä...
 STR_902E_NAME_ROAD_VEHICLE					:{BLACK}Nimeä maantieajoneuvo
-STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle!
-STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen rekka saapuu asemalle!
+STR_902F_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle ({STATION})!
+STR_9030_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle ({STATION})!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER				:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}Kuljettaja kuolee junatöymäyksen jälkeisessä tulipallossa
 STR_9032_ROAD_VEHICLE_CRASH_DIE					:{BLACK}{BIGFONT}Maantieajoneuvokolari!{}{COMMA16} kuolee junatöymäyksen jälkeisessä tulipallossa
 STR_9033_CAN_T_MAKE_VEHICLE_TURN				:{WHITE}Ajoneuvoa ei voi pakottaa kääntymään ympäri...
@@ -2456,7 +2458,7 @@ STR_982F_NAME_SHIP						:{BLACK}Nimeä laiva
 
 STR_9831_NAME_SHIP						:{WHITE}Nimeä laiva
 STR_9832_CAN_T_NAME_SHIP					:{WHITE}Laivaa ei voi nimetä...
-STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle!
+STR_9833_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle ({STATION})!
 STR_9834_POSITION_BUOY_WHICH_CAN				:{BLACK}Aseta poiju; sitä voidaan käyttää ylimääräisenä opasteena
 STR_9835_CAN_T_POSITION_BUOY_HERE				:{WHITE}Poijua ei voi asettaa tähän...
 STR_9836_RENAME							:{BLACK}Uudelleennimeä
@@ -2528,7 +2530,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Hinta: {CURRENCY} Huippunopeus: {VEL
 STR_A030_NAME_AIRCRAFT						:{WHITE}Nimeä lentokone
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Lentokonetta ei voi nimetä...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Nimeä lentokone
-STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}{STATION}: Kansalaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle!
+STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle ({STATION})!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA16} kuolee tulipallossa asemalla {STATION}
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Kohteet:
 STR_A036							:{TINYFONT}{BLACK}{STATION}

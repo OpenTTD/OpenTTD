@@ -14,8 +14,8 @@ STR_0008_WAITING						:{BLACK}Caka: {WHITE}{STRING}
 STR_0009							:{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (na ceste z
 STR_000B							:{YELLOW}{STATION})
-STR_000C_ACCEPTS						:{BLACK}Prijma: {WHITE}
-STR_000D_ACCEPTS						:{BLACK}Prijma: {GOLD}
+STR_000C_ACCEPTS						:{BLACK}Prijima: {WHITE}
+STR_000D_ACCEPTS						:{BLACK}Prijima: {GOLD}
 STR_000E							:
 STR_000F_PASSENGERS						:Cestujucich
 STR_0010_COAL							:Uhlie
@@ -188,6 +188,10 @@ STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Original copyright {COPYRIGHT} 1995 Chri
 STR_00B7_VERSION						:{BLACK}OpenTTD version {REV}
 STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Original design by Chris Sawyer
 STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Graphics by Simon Foster
+STR_SPECIAL_THANKS						:{BLACK}Specialne podakovanie patri:
+STR_SPECIAL_THANKS_SIGNALS					:{BLACK}° Specialne Semafory a Semafory {COPYRIGHT} 2003 Michael Blunck
+STR_SPECIAL_THANKS_CANALS					:{BLACK}° Stavanie trate na strmych plochach {COPYRIGHT} Marcin Grzegorczyk
+STR_SPECIAL_THANKS_FOUNDATIONS					:{BLACK}° Grafika vodnych kanalov {COPYRIGHT} 2003-2004 George
 STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 The OpenTTD team
 
 STR_00C5							:{BLACK}{CROSS}
@@ -320,6 +324,8 @@ STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Nova Hra
 STR_0141_LOAD_GAME						:{BLACK}Nahrat Hru
 STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Nacvik / Ukazka
+STR_SINGLE_PLAYER						:{BLACK}Jeden hrac
+STR_MULTIPLAYER							:{BLACK}Viacero hracov
 
 STR_0148_GAME_OPTIONS						:{BLACK}Nastavenia Hry
 
@@ -336,6 +342,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH				:Graf hodnotenia vykonu
 STR_0158_COMPANY_VALUE_GRAPH					:Graf hodnoty spolocnosti
 STR_0159_CARGO_PAYMENT_RATES					:Ceny Prepravy
 STR_015A_COMPANY_LEAGUE_TABLE					:Hodnotenie spolocnosti
+STR_PERFORMANCE_DETAIL_MENU					:Detailny rating prevedenia
 ############ range for menu	ends
 
 STR_015B_OPENTTD						:{WHITE}OpenTTD
@@ -345,7 +352,24 @@ STR_015E_QUIT_GAME						:Koniec hry
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME						:{WHITE}Koniec hry
+STR_SORT_TIP							:{BLACK}Vyber sbosob usporiadania zostupny/vzostupny
+SRT_SORT_BY							:{BLACK}Usporiadat podla
 
+STR_SORT_BY_POPULATION						:{BLACK}Populacia
+STR_SORT_BY_PRODUCTION						:{BLACK}Produkcia
+STR_SORT_BY_TYPE						:{BLACK}Typ
+STR_SORT_BY_TRANSPORTED						:{BLACK}Prevezene
+STR_SORT_BY_NAME						:{BLACK}Meno
+STR_SORT_BY_DROPDOWN_NAME					:Meno
+STR_SORT_BY_DATE						:{BLACK}Datum
+STR_SORT_BY_UNSORTED						:Neusporiadane
+STR_SORT_BY_NUMBER						:Cislo
+STR_SORT_BY_PROFIT_LAST_YEAR					:Zisk v poslednom roku
+STR_SORT_BY_PROFIT_THIS_YEAR					:Zisk toho roku
+STR_SORT_BY_AGE							:Vek
+STR_SORT_BY_RELIABILITY						:Spolahlivost
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE			:Uplna kapacita podla typu nakladu
+STR_SORT_BY_MAX_SPEED						:Maximalna rychlost
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -740,6 +764,12 @@ STR_02DB_OFF							:{BLACK}Vyp.
 STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Zobrazit Dotacie
 STR_02DD_SUBSIDIES						:Dotacie
 STR_02DE_MAP_OF_WORLD						:Mapa sveta
+STR_EXTRA_VIEW_PORT						:Extra pohlad
+STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Pohlad {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN				:{BLACK}Nastavit pohlad podla mapy
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT				:{BLACK}Nastavit pohlad podla hlavneho pohladu
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW				:{BLACK}Nastavit mapu podla pohladu
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT				:{BLACK}Nastavit hlavny pohlad na mapu podla tohto pohladu
 
 STR_02DF_TOWN_DIRECTORY						:Zoznam miest
 STR_02E0_CURRENCY_UNITS						:{BLACK}Mena
@@ -825,6 +855,8 @@ STR_TOWNNAME_POLISH						:Polske
 STR_TOWNNAME_SLOVAKISH						:Slovenske
 STR_TOWNNAME_HUNGARIAN						:Madarske
 STR_TOWNNAME_AUSTRIAN						:Rakuske
+STR_TOWNNAME_ROMANIAN						:Rumunske
+STR_TOWNNAME_CZECH						:Ceske
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Libry ({POUNDSIGN})
@@ -848,12 +880,15 @@ STR_CURR_RUR							:Rusle Ruble (rur)
 STR_CURR_CZK							:Ceske Koruny (CZK)
 STR_CURR_ISK							:Islandske Koruny (ISK)
 STR_CURR_NOK							:Norske Koruny (NOK)
+STR_CURR_ROL							:Rumunske Lei
 STR_CURR_EUR							:Euro (€)
 
 STR_OPTIONS_LANG						:{BLACK}Jazyk
 STR_OPTIONS_LANG_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP						:{BLACK}Vyber jazyka rozhrania
 
+STR_OPTIONS_FULLSCREEN						:{BLACK}Cela obrazovka
+STR_OPTIONS_FULLSCREEN_TIP					:{BLACK}Zaskrtnite, ak chcete hrat OpenTTD na celej obrazovke
 
 STR_OPTIONS_RES							:{BLACK}Rozlisenie obrazovky
 STR_OPTIONS_RES_CBO						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -899,9 +934,24 @@ STR_END_OF_SHARED_ORDERS					:{SETX 10}- - Koniec zdielanych smerov - -
 
 STR_TRAIN_IS_LOST						:{WHITE}Vlak {COMMA16} sa stratil.
 STR_TRAIN_IS_UNPROFITABLE					:{WHITE}Zisk vlaku {COMMA16} za posledny rok bol {CURRENCY}
+STR_EURO_INTRODUCE						:{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre kazdodenne prevody v tvojej krajine.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS					:{WHITE}Vlak {COMMA16} ma priliz malo prikazov
+STR_TRAIN_HAS_VOID_ORDER					:{WHITE}Vlak {COMMA16} ma prazdny prikaz
+STR_TRAIN_HAS_DUPLICATE_ENTRY					:{WHITE}Vlak {COMMA16} ma zdvojene prikazy
+STR_TRAIN_HAS_INVALID_ENTRY					:{WHITE}Vlak {COMMA16} ma neplatnu stanicu v prikazoch
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS				:{WHITE}Vozidlo {COMMA16} ma malo prikazov
+STR_ROADVEHICLE_HAS_VOID_ORDER					:{WHITE}Vozidlo {COMMA16} ma prazdny prikaz
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY				:{WHITE}Vozidlo {COMMA16} ma zdvojene prikazy
+STR_ROADVEHICLE_HAS_INVALID_ENTRY				:{WHITE}Vozidlo {COMMA16} ma neplatnu stanicu v prikazoch
+STR_SHIP_HAS_TOO_FEW_ORDERS					:{WHITE}Lod {COMMA16} ma malo prikazov
+STR_SHIP_HAS_VOID_ORDER						:{WHITE}Lod {COMMA16} ma prazdny prikaz
+STR_SHIP_HAS_DUPLICATE_ENTRY					:{WHITE}Lod {COMMA16} ma zdvojene prikazy
+STR_SHIP_HAS_INVALID_ENTRY					:{WHITE}Lod {COMMA16} ma neplatnu stanicu v prikazoch
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS					:{WHITE}Lietadlo {COMMA16} ma malo prikazov
+STR_AIRCRAFT_HAS_VOID_ORDER					:{WHITE}Lietadlo {COMMA16} ma prazdny prikaz
 # end of order system
 
 
@@ -942,7 +992,7 @@ STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Upozornit na stratu vlaku: {ORAN
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING} {RED}Vystraha: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS					:{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
@@ -1315,7 +1365,7 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST				:{WHITE}Letisko sa musi najskor zburat
 STR_3030_RENAME_STATION_LOADING					:Premenovat stanicu/vykladku
 STR_3031_CAN_T_RENAME_STATION					:{WHITE}Stanica sa neda premenovat...
 STR_3032_RATINGS						:{BLACK}Hodnotenie
-STR_3033_ACCEPTS						:{BLACK}Prijma
+STR_3033_ACCEPTS						:{BLACK}Prijima
 STR_3034_LOCAL_RATING_OF_TRANSPORT				:{BLACK}Hodnotenie prepravy:
 
 ############ range for rating starts
@@ -1330,10 +1380,10 @@ STR_303C_OUTSTANDING						:Perfektne
 ############ range for rating ends
 
 STR_303D							:{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
-STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} uz neprijma {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} uz neprijma {STRING} or {STRING}
-STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} teraz prijma {STRING}
-STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} teraz prijma {STRING} and {STRING}
+STR_303E_NO_LONGER_ACCEPTS					:{WHITE}{STATION} uz neprijima {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR					:{WHITE}{STATION} uz neprijima {STRING} alebo {STRING}
+STR_3040_NOW_ACCEPTS						:{WHITE}{STATION} teraz prijima {STRING}
+STR_3041_NOW_ACCEPTS_AND					:{WHITE}{STATION} teraz prijima {STRING} a {STRING}
 STR_3042_BUS_STATION_ORIENTATION				:{WHITE}Otocenie zastavky
 STR_3043_TRUCK_STATION_ORIENT					:{WHITE}Otocenie vykladky
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS				:{WHITE}Prilis blizko inej zastavky
