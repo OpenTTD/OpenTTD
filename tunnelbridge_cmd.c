@@ -383,7 +383,7 @@ not_valid_below:;
 		if (_current_player < MAX_PLAYERS && !(_is_ai_player && !_patches.ainew_active))
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost += (((int64)bridge_len * (int64)_price.build_bridge) * (int64)_bridge_type_price_mod[bridge_type]) >> 8;
+		cost += ((int64)bridge_len * _price.build_bridge * _bridge_type_price_mod[bridge_type]) >> 8;
 	}
 
 	return cost;
