@@ -28,12 +28,10 @@ static void ShowNetworkLobbyWindow(void);
 static byte _selected_field;
 
 static const StringID _connection_types_dropdown[] = {
-	STR_NETWORK_LAN,
-	STR_NETWORK_INTERNET,
+	STR_NETWORK_LAN_INTERNET,
+	STR_NETWORK_INTERNET_ADVERTISE,
 	INVALID_STRING_ID
 };
-
-static byte _network_connection;
 
 static StringID _str_map_name, _str_game_name, _str_server_version, _str_server_address;
 
@@ -77,26 +75,24 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = 0;
 
 		if (_selected_item == NULL) {
-			SETBIT(w->disabled_state, 17); SETBIT(w->disabled_state, 18);
+			SETBIT(w->disabled_state, 15); SETBIT(w->disabled_state, 16);
 		} else if (!_selected_item->online) {
-			SETBIT(w->disabled_state, 17); // Server offline, join button disabled
+			SETBIT(w->disabled_state, 15); // Server offline, join button disabled
 		} else if (_selected_item->info.clients_on == _selected_item->info.clients_max) {
-			SETBIT(w->disabled_state, 17); // Server full, join button disabled
+			SETBIT(w->disabled_state, 15); // Server full, join button disabled
 
 			// revisions don't match, check if server has no revision; then allow connection
 		} else if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
 			if (strncmp(_selected_item->info.server_revision, NOREV_STRING, sizeof(_selected_item->info.server_revision)) != 0)
-				SETBIT(w->disabled_state, 17); // Revision mismatch, join button disabled
+				SETBIT(w->disabled_state, 15); // Revision mismatch, join button disabled
 		}
 
 		SetDParam(0, 0x00);
-		SetDParam(2, STR_NETWORK_LAN + _network_connection);
 		DrawWindowWidgets(w);
 
 		DrawEditBox(w, 3);
 
 		DrawString(9, 23, STR_NETWORK_PLAYER_NAME, 2);
-		DrawString(9, 43, STR_NETWORK_CONNECTION, 2);
 
 		DrawString(15, 63, STR_NETWORK_GAME_NAME, 2);
 		DrawString(135, 63, STR_NETWORK_CLIENTS_CAPTION, 2);
@@ -214,13 +210,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		_selected_field = e->click.widget;
 		switch(e->click.widget) {
-		case 0: case 14: /* Close 'X' | Cancel button */
+		case 0: case 12: /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
-		case 4: case 5: /* Connection type */
-			ShowDropDownMenu(w, _connection_types_dropdown, _network_connection, 5, 0); // do it for widget 5
-			return;
-		case 10: { /* Matrix to show networkgames */
+		case 8: { /* Matrix to show networkgames */
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
@@ -265,10 +258,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 			SetWindowDirty(w);
 		} break;
-		case 11: /* Find server automatically */
+		case 9: /* Find server automatically */
 			NetworkUDPSearchGame();
 			break;
-		case 12: { // Add a server
+		case 10: { // Add a server
 				StringID str = AllocateName((byte*)_network_default_ip, 0);
 
 				ShowQueryString(
@@ -280,10 +273,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				w->window_number);
 				DeleteName(str);
 		} break;
-		case 13: /* Start server */
+		case 11: /* Start server */
 			ShowNetworkStartServerWindow();
 			break;
-		case 17: /* Join Game */
+		case 15: /* Join Game */
 			if (_selected_item != NULL) {
 				memcpy(&_network_game_info, &_selected_item->info, sizeof(NetworkGameInfo));
 				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&_selected_item->ip));
@@ -291,27 +284,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				ShowNetworkLobbyWindow();
 			}
 			break;
-		case 18: // Refresh
+		case 16: // Refresh
 			if (_selected_item != NULL) {
 				NetworkQueryServer(_selected_item->info.hostname, _selected_item->port, true);
 			}
 			break;
 
 	}	break;
-
-	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		_network_connection = e->dropdown.index;
-		switch (_network_connection) {
-		case 0: /* LAN */
-//			NetworkGameListFromLAN();
-			break;
-		case 1: /* Internet */
-//			NetworkGameListFromInternet();
-			break;
-		}
-
-		SetWindowDirty(w);
-		break;
 
 	case WE_MOUSELOOP:
 		if (_selected_field == 3)
@@ -325,7 +304,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		switch (HandleEditBoxKey(w, 3, e)) {
 		case 1:
-			HandleButtonClick(w, 10);
+			HandleButtonClick(w, 8);
 			break;
 		}
 
@@ -370,9 +349,6 @@ static const Widget _network_game_window_widgets[] = {
 /* LEFT SIDE */
 {     WWT_IMGBTN,   BGC,    90,   230,    22,    33, 0x0,													STR_NETWORK_ENTER_NAME_TIP},
 
-{          WWT_6,   BGC,    90,   230,    42,    53, STR_NETWORK_COMBO1,					STR_NETWORK_CONNECTION_TIP},
-{   WWT_CLOSEBOX,   BGC,   219,   229,    43,    52, STR_0225,										STR_NETWORK_CONNECTION_TIP},
-
 {  WWT_SCROLLBAR,   BGC,   220,   230,    62,   185, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 {     WWT_IMGBTN,   BTC,    10,   130,    62,    73, 0x0,													STR_NETWORK_GAME_NAME_TIP },
@@ -415,8 +391,6 @@ void ShowNetworkGameWindow()
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
 	w->vscroll.cap = 8;
-	w->disabled_state = (1<<4) | (1<<5); // disable buttons not yet working
-//	NetworkGameListFromLAN(); // default dropdown item is LAN, so fill that array
 
 	WP(w,querystr_d).caret = 1;
 	WP(w,querystr_d).maxlen = MAX_QUERYSTR_LEN;
@@ -470,8 +444,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		int y = NSSWND_START, pos;
 		const FiosItem *item;
 
-		SetDParam(7, STR_NETWORK_2_CLIENTS + _network_game_info.clients_max - 2);
-		SetDParam(9, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
+		SetDParam(7, STR_NETWORK_LAN_INTERNET + _network_advertise);
+		SetDParam(9, STR_NETWORK_2_CLIENTS + _network_game_info.clients_max - 2);
+		SetDParam(11, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 239, 165, 0xD7);
@@ -481,8 +456,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
 
 		DrawString(10, 43, STR_NETWORK_SELECT_MAP, 2);
-		DrawString(260, 63, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
-		DrawString(260, 105, STR_NETWORK_LANGUAGE_SPOKEN, 2);
+		DrawString(260, 63, STR_NETWORK_CONNECTION, 2);
+		DrawString(260, 95, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
+		DrawString(260, 127, STR_NETWORK_LANGUAGE_SPOKEN, 2);
 
 		// draw list of maps
 		pos = w->vscroll.pos;
@@ -503,7 +479,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		_selected_field = e->click.widget;
 		switch(e->click.widget) {
-		case 0: case 13: /* Close 'X' | Cancel button */
+		case 0: case 15: /* Close 'X' | Cancel button */
 			ShowNetworkGameWindow();
 			break;
 		case 4: { /* Set password button */
@@ -520,13 +496,16 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			else selected_map = _fios_list + y-1;
 			SetWindowDirty(w);
 			} break;
-		case 7: case 8: /* Number of Players */
-			ShowDropDownMenu(w, _players_dropdown, _network_game_info.clients_max - 2, 8, 0); // do it for widget 8
+		case 7: case 8: /* Connection type */
+			ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, 8, 0); // do it for widget 8
+			break;
+		case 9: case 10: /* Number of Players */
+			ShowDropDownMenu(w, _players_dropdown, _network_game_info.clients_max - 2, 10, 0); // do it for widget 10
 			return;
-		case 9: case 10: /* Language */
-			ShowDropDownMenu(w, _language_dropdown, _network_game_info.server_lang, 10, 0); // do it for widget 10
+		case 11: case 12: /* Language */
+			ShowDropDownMenu(w, _language_dropdown, _network_game_info.server_lang, 12, 0); // do it for widget 12
 			return;
-		case  11: /* Start game */
+		case 13: /* Start game */
 			_is_network_server = true;
 			ttd_strlcpy(_network_server_name, WP(w,querystr_d).buf, sizeof(_network_server_name));
 			if(selected_map==NULL) { // start random new game
@@ -542,7 +521,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 				}
 			}
 			break;
-		case 12: /* Load game */
+		case 14: /* Load game */
 			_is_network_server = true;
 			ttd_strlcpy(_network_server_name, WP(w,querystr_d).buf, sizeof(_network_server_name));
 			snprintf(_network_game_info.map_name, sizeof(_network_game_info.map_name), "Loaded game");
@@ -557,9 +536,12 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 		switch(e->dropdown.button) {
 			case 8:
-				_network_game_info.clients_max = e->dropdown.index + 2;
+				_network_advertise = (e->dropdown.index == 0) ? false : true;
 				break;
 			case 10:
+				_network_game_info.clients_max = e->dropdown.index + 2;
+				break;
+			case 12:
 				_network_game_info.server_lang = e->dropdown.index;
 				break;
 		}
@@ -606,11 +588,14 @@ static const Widget _network_start_server_window_widgets[] = {
 {          WWT_6,   BGC,    10,   251,    62,   166, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
 {  WWT_SCROLLBAR,   BGC,   240,   250,    63,   165, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{          WWT_6,   BGC,   260,   390,    77,    88, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{   WWT_CLOSEBOX,   BGC,   379,   389,    78,    87, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{          WWT_6,   BGC,   260,   390,    77,    88, STR_NETWORK_COMBO1,						STR_NETWORK_CONNECTION_TIP},
+{   WWT_CLOSEBOX,   BGC,   379,   389,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
 
-{          WWT_6,   BGC,   260,   390,   119,   130, STR_NETWORK_COMBO3,						STR_NETWORK_LANGUAGE_TIP},
-{   WWT_CLOSEBOX,   BGC,   379,   389,   120,   129, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
+{          WWT_6,   BGC,   260,   390,   109,   120, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{   WWT_CLOSEBOX,   BGC,   379,   389,   110,   119, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+
+{          WWT_6,   BGC,   260,   390,   141,   152, STR_NETWORK_COMBO3,						STR_NETWORK_LANGUAGE_TIP},
+{   WWT_CLOSEBOX,   BGC,   379,   389,   142,   151, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
 
 { WWT_PUSHTXTBTN,   BTC,    55,   145,   180,   191, STR_NETWORK_START_GAME,				STR_NETWORK_START_GAME_TIP},
 { WWT_PUSHTXTBTN,   BTC,   155,   245,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NETWORK_LOAD_GAME_TIP},

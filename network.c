@@ -1167,7 +1167,6 @@ void NetworkStartUp(void)
 	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
-	_network_advertise = false;
 	_network_last_advertise_date = 0;
 
 	/* Load the ip from the openttd.cfg */

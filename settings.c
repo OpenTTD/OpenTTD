@@ -727,6 +727,7 @@ static const SettingDesc network_settings[] = {
 	{"frame_freq",			SDT_UINT8 | SDT_NOSAVE,	(void*)0,			&_network_frame_freq,		NULL},
 	{"server_bind_ip",	SDT_STRINGBUF | (lengthof(_network_server_bind_ip_host) << 16),	"0.0.0.0",	&_network_server_bind_ip_host,	NULL},
 	{"server_port",			SDT_UINT,	(void*)NETWORK_DEFAULT_PORT,	&_network_server_port,	NULL},
+	{"server_advertise",SDT_BOOL, (void*)false, &_network_advertise, NULL},
 	{"player_name",			SDT_STRINGBUF | (lengthof(_network_player_name) << 16), NULL, &_network_player_name, NULL},
 	{"server_password",	SDT_STRINGBUF | (lengthof(_network_game_info.server_password) << 16), NULL, &_network_game_info.server_password, NULL},
 	{"server_name",			SDT_STRINGBUF | (lengthof(_network_server_name) << 16), NULL, &_network_server_name, NULL},

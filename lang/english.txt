@@ -1193,9 +1193,6 @@ STR_NETWORK_PLAYER_NAME						:{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP					:{BLACK}This is the name other players will identify you by
 STR_NETWORK_CONNECTION						:{BLACK}Connection:
 STR_NETWORK_CONNECTION_TIP					:{BLACK}Choose between an internet game or a local area nework game
-STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LAN							:LAN
-STR_NETWORK_INTERNET						:Internet
 
 STR_NETWORK_START_SERVER					:{BLACK}Start server
 STR_NETWORK_START_SERVER_TIP					:{BLACK}Start your own server
@@ -1242,7 +1239,10 @@ STR_NETWORK_SELECT_MAP						:{BLACK}Select a map:
 STR_NETWORK_SELECT_MAP_TIP					:{BLACK}Which map do you want to play?
 STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Maximum allowed clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Choose the maximum number of clients. Not all slots need to be filled
-STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN_INTERNET							:LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE						:Internet (advertise)
+STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 clients
 STR_NETWORK_3_CLIENTS						:3 clients
 STR_NETWORK_4_CLIENTS						:4 clients
@@ -1254,7 +1254,7 @@ STR_NETWORK_9_CLIENTS						:9 clients
 STR_NETWORK_10_CLIENTS						:10 clients
 STR_NETWORK_LANGUAGE_SPOKEN					:{BLACK}Language spoken:
 STR_NETWORK_LANGUAGE_TIP					:{BLACK}Other players will know which language is spoken on the server
-STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME						:{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP					:{BLACK}Start a new network game from a random map, or scenario
 STR_NETWORK_LOAD_GAME						:{BLACK}Load Game
