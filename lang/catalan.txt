@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Abandonar joc
 STR_015F_QUIT							:Sortir
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Estàs segur de voler abandonar aquest joc?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar Joc
+STR_SORT_ORDER_TIP						:{BLACK}Selecciona ordre de classificació (descendent/ascendent)
+STR_SORT_CRITERIA_TIP						:{BLACK}Selecciona criteri de classificació
 SRT_SORT_BY							:{BLACK}Ordenar per
 
 STR_SORT_BY_POPULATION						:{BLACK}Població
@@ -1085,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Cap a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Anar vía {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Anar sense parades via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Punt de Control {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Punt de Control {TOWN} #{COMMA16}
@@ -1351,10 +1354,25 @@ STR_NETWORK_ERR_CLIENT_KICKED					:tret pel servidor
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:ha entrat al joc
 STR_NETWORK_GIVE_MONEY						:gave you some money ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:Has entregat {STRING} diners ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] a {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Private] a {STRING}:
+STR_NETWORK_CHAT_ALL						:[All] {STRING}:
+STR_NETWORK_NAME_CHANGE						:ha canviat el seu nom a
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha tancat la sesió
 STR_NETWORK_SERVER_REBOOT					:{WHITE} El servidor està reiniciant...{}Espera un moment...
 
+STR_NETWORK_SERVER						:Servidor
+STR_NETWORK_CLIENT						:Client
 
+STR_NETWORK_CLIENTLIST_NONE					:(none)
+STR_NETWORK_CLIENTLIST_KICK					:Breu
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Entregar diners
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Parlar a tothom
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Parlar a la Empresa
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Missatge Privat
 
 
 STR_NETWORK_SEND						:{BLACK}Enviar

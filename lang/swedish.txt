@@ -353,6 +353,7 @@ STR_015E_QUIT_GAME						:Avsluta spelet
 STR_015F_QUIT							:Avsluta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Vill du verkligen avsluta spelet?
 STR_0161_QUIT_GAME						:{WHITE}Avsluta spelet
+STR_SORT_ORDER_TIP						:{BLACK}Välj sorteringsordning (fallande/stigande)
 SRT_SORT_BY							:{BLACK}Sortera efter
 
 STR_SORT_BY_POPULATION						:{BLACK}Befolkning
@@ -1085,6 +1086,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}På väg mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}På väg mot {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Gå via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Gå via {WAYPOINT} utan att stanna
 
 STR_WAYPOINTNAME_CITY						:Kontrollstation {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Kontrollstation {TOWN} #{COMMA16}
@@ -1241,7 +1243,7 @@ STR_NETWORK_NUMBER_OF_CLIENTS					:{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP				:{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_COMBO1						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN_INTERNET					:LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE					:Internet (reklam)
+STR_NETWORK_INTERNET_ADVERTISE					:Internet (publik)
 STR_NETWORK_COMBO2						:{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_CLIENTS						:2 klienter
 STR_NETWORK_3_CLIENTS						:3 klienter
@@ -1351,10 +1353,24 @@ STR_NETWORK_ERR_CLIENT_KICKED					:utkastad av servern
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:har anslutit till spelet
 STR_NETWORK_GIVE_MONEY						:gav dig en del pengar ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:Du gav {STRING} en del pengar ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Företaget] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Företaget] Till {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privat] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privat] Till {STRING}:
+STR_NETWORK_CHAT_ALL						:[Alla] {STRING}:
+STR_NETWORK_NAME_CHANGE						:har ändrat namn till
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Servern avslutade sessionen
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Servern startar om...{}Var vänlig vänta...
 
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Klient
 
+STR_NETWORK_CLIENTLIST_NONE					:(ingen)
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Ge pengar
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Prata med alla
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Prata med alla i företaget
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Privat meddelande
 
 
 STR_NETWORK_SEND						:{BLACK}Skicka

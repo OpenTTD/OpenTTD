@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Spel stoppen
 STR_015F_QUIT							:Afsluiten
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Weet u zeker dat u dit spel wilt afsluiten?
 STR_0161_QUIT_GAME						:{WHITE}Spel stoppen
+STR_SORT_ORDER_TIP						:{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
+STR_SORT_CRITERIA_TIP						:{BLACK}Selecteer sorteringscriteria
 SRT_SORT_BY							:{BLACK}Sorteer op
 
 STR_SORT_BY_POPULATION						:{BLACK}Inwoners
@@ -1085,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Op weg naar {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Ga via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Ga non-stop via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Tussenstop {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Tussenstop {TOWN} #{COMMA16}
@@ -1351,10 +1354,25 @@ STR_NETWORK_ERR_CLIENT_KICKED					:geschopt door server
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:heeft zich bij het spel gevoegd
 STR_NETWORK_GIVE_MONEY						:heeft je geld gegeven ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:je hebt {STRING} wat geld gegeven ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Team] Aan {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Prive] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Prive] Aan {STRING}:
+STR_NETWORK_CHAT_ALL						:[Iedereen] {STRING}:
+STR_NETWORK_NAME_CHANGE						:heeft zijn naam veranderd in
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT					:{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
 
+STR_NETWORK_SERVER						:Server
+STR_NETWORK_CLIENT						:Client
 
+STR_NETWORK_CLIENTLIST_NONE					:(geen)
+STR_NETWORK_CLIENTLIST_KICK					:Schop uit het spel
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Geef geld
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Praat met iedereen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Praat met het bedrijf
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Praat met deze persoon
 
 
 STR_NETWORK_SEND						:{BLACK}Verstuur

@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Abandonar juego
 STR_015F_QUIT							:Salir
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}¿Estás seguro que deseas abandonar este juego?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar Juego
+STR_SORT_ORDER_TIP						:{BLACK}Seleccione ordenación (descendiente/ascendinte)
+STR_SORT_CRITERIA_TIP						:{BLACK}Seleccione criterio de orden
 SRT_SORT_BY							:{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION						:{BLACK}Población
@@ -1085,6 +1087,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Hacia {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Ir vía {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Ir directo via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Punto de paso {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Punto de paso {TOWN} #{COMMA16}
@@ -1351,10 +1354,25 @@ STR_NETWORK_ERR_CLIENT_KICKED					:expulsado por el servidor
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:se ha unido al juego
 STR_NETWORK_GIVE_MONEY						:te ha enviado dinero ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:das a {STRING} algo de dinero ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Equipo] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Equipo] a {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Privado] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Privado] a {STRING}:
+STR_NETWORK_CHAT_ALL						:[Todos] {STRING}:
+STR_NETWORK_NAME_CHANGE						:ha cambiado su nombre a
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} El servidor ha cerrado la sesión
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Se está reiniciando el servidor...{}Espere por favor...
 
+STR_NETWORK_SERVER						:Servidor
+STR_NETWORK_CLIENT						:Cliente
 
+STR_NETWORK_CLIENTLIST_NONE					:(ninguno)
+STR_NETWORK_CLIENTLIST_KICK					:Expulsar
+STR_NETWORK_CLIENTLIST_GIVE_MONEY				:Dar dinero
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Hablar a todos
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Hablar a empresa
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Mensaje privado
 
 
 STR_NETWORK_SEND						:{BLACK}Enviar

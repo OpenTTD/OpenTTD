@@ -353,6 +353,8 @@ STR_015E_QUIT_GAME						:Opusc gre
 STR_015F_QUIT							:Wyjscie
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Jestes pewny ze chesz skonczyc gre?
 STR_0161_QUIT_GAME						:{WHITE}Wyjscie
+STR_SORT_ORDER_TIP						:{BLACK}Wybierz porzadek sortowania (malejaco/rosnaco)
+STR_SORT_CRITERIA_TIP						:{BLACK}Wybierz kryterium sortowania
 SRT_SORT_BY							:{BLACK}Sortowanie
 
 STR_SORT_BY_POPULATION						:{BLACK}Populacja
@@ -1084,6 +1086,7 @@ STR_HEADING_FOR_WAYPOINT					:{LTBLUE}Zmierza do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL					:{LTBLUE}Zmierza do {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT						:Idz przez {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT					:Idz bez przestanku przez {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY						:Pkt. kontrolny {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL					:Pkt. kontrolny  {TOWN} #{COMMA16}
@@ -1350,10 +1353,23 @@ STR_NETWORK_ERR_CLIENT_KICKED					:wyrzucony przez serwer
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED					:przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY						:dal Ci troche pieniedzy ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY					:przekazales dla {STRING} troche pieniedzy ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY					:[Zespol] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY					:[Zespol] do {STRING}:
+STR_NETWORK_CHAT_CLIENT						:[Prywatna] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT					:[Prywatna] do {STRING}:
+STR_NETWORK_CHAT_ALL						:[Wszyscy] {STRING}:
+STR_NETWORK_NAME_CHANGE						:zmienil swoja nazwe na
 STR_NETWORK_SERVER_SHUTDOWN					:{WHITE} Serwer zamknal sesje
 STR_NETWORK_SERVER_REBOOT					:{WHITE} Restart serwera...{}Prosze czekac...
 
+STR_NETWORK_SERVER						:Serwer
+STR_NETWORK_CLIENT						:Klient
 
+STR_NETWORK_CLIENTLIST_NONE					:(brak)
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL				:Mow do wszystkich
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY				:Mow do firmy
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT				:Prywatna wiadomosc
 
 
 STR_NETWORK_SEND						:{BLACK}Wyslij
