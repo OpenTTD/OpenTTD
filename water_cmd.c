@@ -532,7 +532,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 		_current_player = OWNER_WATER;
 		{
-			Vehicle *v = FindVehicleBetween(target, target, 0);
+			Vehicle *v = FindVehicleOnTileZ(target, 0);
 			if (v != NULL) FloodVehicle(v);
 		}
 

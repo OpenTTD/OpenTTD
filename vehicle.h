@@ -258,6 +258,7 @@ void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks(void);
+Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 
 void InitializeTrains(void);
 

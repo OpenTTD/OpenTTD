@@ -117,6 +117,16 @@ bool EnsureNoVehicleZ(TileIndex tile, byte z)
 	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ) == NULL;
 }
 
+Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
+{
+	TileInfo ti;
+
+	ti.tile = tile;
+	ti.z = z;
+
+	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
+}
+
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 {
 	int x1 = TileX(from);
