@@ -32,7 +32,6 @@
 void GameLoop();
 
 void IncreaseSpriteLRU();
-void InitializeGame();
 void GenerateWorld(int mode);
 void CallLandscapeTick();
 void IncreaseDate();
