@@ -11,56 +11,63 @@ go to: http://www.tt-forums.net/viewtopic.php?t=9576
 Of course if you have more knowledge about any of these bugs, have more
 specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://sourceforge.net/tracker/?group_id=103924&atid=636365
-If the the bug-report is closed, it has been fixed, which then can be verified
+If the the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.3.5
+Bugs for 0.3.6
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
+-1108615      Catchment area mis-behaving
+-1108610      console logging file type
+-1108442      autorenew takes precedence over autoreplace
+-1107889      server crash and assertion error
+-1106356      re-offered prototypes
+-1104670      Vans in the depot
+-1104519      train pathfinding with new patch
+-1104105      script error (r1547)
+-1103068      game crashes after reversing train in deport
+-1101874      load savegames (and autosave) with dedicated server
+-1099694      incorrect player colors
+-1099233      production down before it's working
+-1098696      Airport shadow remains after crashing
+-1098238      Crash after lone wagon sighting
+-1093191      2 problems with multiplayer savegames
 -1085486      Subsidies: Only count when station is in right suburb
--1084797      building stretch leaves gap
--1084789      delivered cargo bug
--1083941      Train gui crash assertion error
--1083717      graphical glitch
 -1083710      Reverse train in depot crashes OpenTTD
--1074623      bus pathfinding inadequacies
 -1074610      overtaking at signals bug
--1065168      accept iron ore doesn't produce steel
 -1060686      changing (load) order doesn't take effect immediately
 -1053339      depot/station looping
--1050990      Buying trains sometimes accounted for incorrectly
--1040119      Flood and wagons in depot
--1034778      train breaksdown, when breaks set to none
 -1033300      signal bug
 -1030918      Negative city population
--1030502      Buying up a company isn't complete
 -1024703      Infinite access of A: when saving and no disk in drive
 -997251       Realistic acceleration: Trains don't slow down in curves
 -996503       Sound volume bug
 -992677       BeOS MIDI does not initialise on newer BeOS releases
--985475       Different kinds of signals in same tile? [Bug]
--980271       Realistic acceleration bug / Lev4 Chimaera becomes useless
--978372       Inconsistent stopping.
+-985475       Different kinds of signals in same tile?
+-978372       Inconsistent stopping
 -968036       Ship blocked at the edge
 
-Minor Bugs for 0.3.5
+Minor Bugs for 0.3.6
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
+
+-1106889      Chat Interface enhancements
+-1104968      void order message
+-1104358	    train lost message - history
+-1102174	    Bug if 3 people buy 25% shares in one company
+-1099429      show vehicle speed, text too long
 -1090495      Bridges and straight lakesides
 -1087407      wrong message in history
 -1084620      Minor bug considering buses/trucks
 -1034310      color mauve in diagrams
--1031451      Catchment area shows when buying sign.
 -1031184      Smoke visible through tunnel
 -1030661      It's possible to build a tunnel under oil wells
 -1009171      Canals and locks at sea level cause flooding
--998902       Annoying out-of-date message
 -993516       Canal + bouy -> wrong graphics.
 -987891       Large UFO destruction bug
 -987884       farm fences
 -987883       Aircraft landing/taking off
 -987880       company league table updating
--985927       many carriages in depot
 -985924       aircraft taxi speed
 -980276       Overflow in factory directory
 -976824       transmitter base

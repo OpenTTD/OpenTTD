@@ -1,3 +1,140 @@
+0.3.6 (2005-01-24)
+------------------------------------------------------------------------
+- Feature: resizable windows. All useful windows are already made resizable.
+- Feature: highscore chart (accessible from the difficulty window) with top5 companies for a given difficulty (select the difficulty in the menu)
+- Feature: endgame score on 1 jan 2051 where you are added to the highscore if sufficiently large points have been accumulated. Game is paused while
+- Feature: Visually enhanced autorail placing
+           When using the autorail tool, the rail pieces which are going to be build are highlighted.
+           If a piece is shown in red, this indicates that the slope/rail combination is impossible. It does not tell you if
+           the rail line construction might not be possible because of other obstacles, e.g. houses or water.
+- Feature: Autoreplace Vehicles (accessible from the train list)
+           This feature works much like autorenew, but it will get you a new engine type instead of a new one of the same type. Once
+           ordered, it will automatically replace the engines while they visits a depot. The GUI for setting this up have been added on the
+           vehicle overview windows
+- Feature: A counter to tell how many engines you have of each type to the autoreplace vehicle windows
+- Feature: A display for the total map population to the town display
+- Feature: [network] RCon (Remote Connection).
+           A server can set: 'set rcon_pw <password>' to enable rcon
+           A client can now do: 'rcon <password> "<command>"'
+           !!Warning!!: do not give your rcon password to people you do not thrust!
+- Feature: hotkeys for dock and airport toolbar (see http://wiki.openttd.org/index.php/Hotkeys)
+- Feature: [Network] banning system (mostly tnx to guru3) A server can ban people via ClientList using 'ban', 'unban', 'banlist'.
+- Feature: [Network] server can now pause and unpause a game through the console. Use 'pause' and 'unpause'
+- Feature: [OS/2] OS/2 support is now finished (Fixes for networking, file selection, keyboard input, plus many other minor issues)
+- Feature: [SDL] Show revision number in window title
+- Feature: [Unix] Check which gcc version is present and only set availible compiler flags
+- Feature: [Windows] CTRL+V (Paste) now works on all editboxes. This includes 'Add Server', chat, etc.
+- Feature: [Windows] dedicated server is now functioning correctly
+- Feature: Addded keyboard shortcuts for the order window
+- Feature: Aircraft refit options have been restricted to "sane" values.
+- Feature: allows setting the production values of the rawmaterial producing industries in the editor
+- Feature: console support for loading maps. Use 'load', 'list_files' and 'goto_dir' to navigate and load games.
+- Feature: Display server port in the multiplayer game info window
+- Feature: dynamite in landscaping toolbar (hotkey 'D')
+- Feature: Improved Network Lobby GUI with a green dot if company income is positive (else red dot) and lock icon if company is password protected
+- Feature: Make ottd compile on Zeta
+- Feature: MD5 hash check for TTD files (The original TTD files are now checked with a MD5 sum to determine which version of the grf files is used and to warn about possible file corruptions. Thanks to ledow for the original patch)
+- Feature: New companies receive a 5-year protection period against buying-up
+- Feature: norwegian townnames (Simen Graaten)
+- Feature: Order Checking is only execute for ONE vehicle in an order-share system
+- Feature: Passengers aircraft now ignore the amount of mail for "full load any" options
+- Feature: place multiple accepting industies nearby in the editor mode if the appropriate patches are set
+- Feature: population in label of the town (patch setting)
+- Feature: scrolling credits list (in  alphabetical order)
+- Feature: Train window shows now the number of vehicles per row (mpetrov)
+- Feature: [ 1039061 ] Swiss town-names (vulvulune)
+- Feature: [ 1090950 ] Adding 16:10 resolutions for mainly laptops  (doode)
+- Feature: [ 1098254 ] (dis)Allow Shares. Add patch options to allow buying/selling of shares (Hackykid)
+- Fix: [ 1031451 ] Catchment area shows when buying sign
+- Fix: [ 1040119 ] Flood and wagons in depot
+- Fix: [ 1050990 ] Buying trains sometimes accounted for incorrectly.
+- Fix: [ 1084074 ] Delayed news messages
+- Fix: [ 1090495 ] Slopes under high bridges weren't flooded
+- Fix: [ 1092473 ] In scenario editor, when trees are placed randomly, they are no longer placed on farmland
+- Fix: [ 1092661 ] On create, the scrollbar of the server-list was not updated
+- Fix: [ 1092707 ] placing rocks in scenario editor. You can place rocks on trees and vice versa
+- Fix: [ 1093200 ] Drive side in new games. Setting the driver side is possible during the game until someone buys road vehicles. In networked games only the server can change it.
+- Fix: [ 1093466 ] no more glitches with many maps in the scenario list when creating server
+- Fix: [ 1093485 ] Dissappearing rocks in Scenario Editor
+- Fix: [ 1094092 ] Toolbars accessible via keyboard in spectator mode
+- Fix: [ 1095020 ] When all stations in an aircraft's order list are demolished, the plane eventually crashes (running out of fuel)
+- Fix: [ 1095143 ] Servers list now also saves the port
+- Fix: [ 1098553 ] Crash when all vehicles from a vehicles per station list had been removed
+- Fix: [ 1099101 ] starting year patch goes out of range. Clamped year between 1920-2090
+- Fix: [ 1099225 ] Bug Fix - Vehicle Lists not updated at Acqusition (thx tamlin and mpetrov)
+- Fix: [ 1099451 ] Game crashes after the click on Rename (see also Bug 10992). There was no check for non-selected engine
+- Fix: [ 1100736 ] wrong tooltip for place desert button
+- Fix: [ 1100767 ] fast forward in main menu
+- Fix: [ 1101179 ] Crash if generating land while industry window is open. This also happened for towns and the land information window
+- Fix: [ 1101906 ] Configure Patches window text overflow
+- Fix: [ 1101963 ] console in dedicated server
+- Fix: [ 1102275 ] Game crashed when clicking "new face" or "company color" twice
+- Fix: [ 1102776 ], [ 1099535 ] Aircraft vehicle lists are now redrawn when an aircraft arrives in the depot. Station-specific vehicle lists are now redrawn daily as well (not only the master list)
+- Fix: [ 1103113 ] font size changing. Dedicated server did not have code filtering, 'tab' could result in bigger fonts
+- Fix: [ 1103187 ] Order Check messages are now validated before displayed
+- Fix: [ 1103301 ] Railroad tracks on slopes weren't flooded
+- Fix: [ 1104350 ] Crashed trains do not initiate the lost vehicle message anymore
+- Fix: [ 110452 ] On horizontal/vertical tracks you are also charged for building/removing signals on the parallel track on the same tile.
+- Fix: [ 1104969 ] Aircraft in hangar messages are now revalidated before display
+- Fix: [ 1105112 ] Destroyed train locks crossings
+- Fix: [ 1105281 ] upgrade rail fails when train under bridge
+- Fix: [ 1105959 ] Trains don't think they're on a slope any more while they drive around in a tunnel
+- Fix: [ 1105963 ] Buoys can now only be removed if no ship has it in their schedule. (This makes buoys more useable in multiplayer games again, as buoys can't be deleted by other players if they are used.)
+- Fix: [ 1106354 ] Graph's keys get confused
+- Fix: [ 1106930 ] placing signals with 2x1 drags is treated as placing a single signal
+- Fix: [ 1107350 ] console ignoring return character occasionally.
+- Fix: [ 1108008 ] Scenario creation bug; engines are of correct year when scenario is saved
+- Fix: [ 1092474 ] little red box in scenario editor
+- Fix: [ 1099197 ] scrolling through console sometimes crashed the whole game.
+- Fix: [ 1099209 ] Catchment area with drag&drop stations
+- Fix: [Network] 'kick 1' did crash dedicated servers
+- Fix: [Network] A server no longer crashes when a client sends an invalid DoCommand, but drops the client instead.
+- Fix: [Network] Added packet protection. No longer a client or server
+- Fix: [Network] Bug in bind system. Advertising failed on systems with more then 1 ip, and server_bind active to one of them.
+- Fix: [Network] Disabled 'money-cheat' (read: bug which could give people a lot of money)
+- Fix: [SDL] now the binary never links to SDL if DEDICATED is set.
+- Fix: [Windows] somehow mousewheel was disabled on windows using SDL; reenabled again
+- Fix: a modified client could try to replace a vehicle to an invalid engine ID and crash the server.
+- Fix: autoreplace vehicle lists are now redrawn when a new vehicle becomes available
+- Fix: Buy Vehicle GUI now shows HPs bigger than 32000 correctly
+- Fix: Console alias, load_game functionality and load fix
+- Fix: correct error message for when trying to build a railroad station over a bus/truck/etc-station.
+- Fix: Correct landscaping buttons in monorail and maglev toolbars
+- Fix: dedicated server also writes to log file if active
+- Fix: Desert-landscape does no longer crash
+- Fix: Expand town is a bit more agressive
+- Fix: finally zooming in/out always works.
+- Fix: fixed chat-bug (that from a certain moment, nobody could talk)
+- Fix: fixed weight for double-head trains and with that the acceleration (now maglev lvl4 can reach their top speed, and are faster than lvl3)
+- Fix: Full-Loading trains no longer get "lost" after a while (Hackykid)
+- Fix: Graphs were not updated correctly when one graph with a certain selection was already open and another graph window was opened
+- Fix: in multiplayer clientlist can only be opened once
+- Fix: Loan does not count against the company value
+- Fix: nasty bug where one could build one station OVER the other
+- Fix: No crash when creating a game with New English town names any more
+- Fix: now helicopters will use a hangar in schedule to be replaced in, even if they are only set to service there. Since helicopters are serviced at helipads, they will only go there if they needs to be replaced or renewed.
+- Fix: only a server can rename a town in a MP game
+- Fix: really old maps do load again (Darkvater / TrueLight)
+- Fix: Refit engine button is now disabled when cargo capacity equals zero
+- Fix: server issue where some company names were wrong
+- Fix: Ship Vehicle Lists are now redrawn correctly
+- Fix: signal stays red if a track is removed (Darkvater / Tron / TrueLight)
+- Fix: solve AI related order-problem
+- Fix: starting openttd with -g <invalid_name> now acts normal
+- Fix: The cost for an autorenew was not always send to the right player ;)
+- Fix: the scrollbar in the network gui (server list) now updates when scrolling (HackyKid)
+- Fix: Train crashes should no longer desync the game.
+- Fix: When deleting an order, the next pointer was not cleared, resulting in some unusual behavoir from time to time
+- Fix: You can now also delete automatically found servers by pressing "del"
+- Fix: You should no longer be able to delete bridges on any type of underground when there is a vehicle on it
+- Fix: your loan is now substracted from your company value
+- Add: A brand new set of icons.
+- Change: AutoRenew is now a client-side patch instead of a game-side patch
+- Change: Removed the 'close ALL windows' from the toolbar since shift+del does this.
+- Language: Updated all languages
+- Fix: Many more things....
+
+
 0.3.5 (2004-12-24)
 ------------------------------------------------------------------------
 - Feature: [Network] New network, very stable, a lot of new features
