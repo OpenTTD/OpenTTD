@@ -1185,6 +1185,19 @@ void UpdateExclusiveRights()
 	*/
 }
 
+byte covert_currency[] = {
+	 0,  1, 12,  8,  3,
+	10, 14, 19,  4,  5,
+	 9, 11, 13,  6, 17,
+	16, 22, 21,  7, 15,
+	18,  2, 20, };
+
+// since savegame version 4.2 the currencies are arranged differently
+void UpdateCurrencies()
+{
+	_opt.currency = covert_currency[_opt.currency];
+}
+
 extern void UpdateOldAircraft();
 
 bool AfterLoadGame(uint version)
@@ -1200,6 +1213,11 @@ bool AfterLoadGame(uint version)
 	// from version 4.1 of the savegame, exclusive rights are stored at towns
 	if (version <= 0x400) {
 		UpdateExclusiveRights();
+	}
+
+	// from version 4.2 of the savegame, currencies are in a different order
+	if (version <= 0x401) {
+		UpdateCurrencies();
 	}
 
 	// convert road side to my format.

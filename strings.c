@@ -33,29 +33,29 @@ typedef struct {
 } LanguagePackHeader;
 
 const uint16 _currency_string_list[] = {
-	STR_CURR_POUNDS,
-	STR_CURR_DOLLARS,
-	STR_CURR_FF,
-	STR_CURR_DM,
+	STR_CURR_GBP,
+	STR_CURR_USD,
+	STR_CURR_EUR,
 	STR_CURR_YEN,
-	STR_CURR_PT,
-	STR_CURR_FT,
-	STR_CURR_ZL,
 	STR_CURR_ATS,
 	STR_CURR_BEF,
-	STR_CURR_DKK,
-	STR_CURR_FIM,
-	STR_CURR_GRD,
 	STR_CURR_CHF,
-	STR_CURR_NLG,
-	STR_CURR_ITL,
-	STR_CURR_SEK,
-	STR_CURR_RUR,
 	STR_CURR_CZK,
+	STR_CURR_DEM,
+	STR_CURR_DKK,
+	STR_CURR_ESP,
+	STR_CURR_FIM,
+	STR_CURR_FRF,
+	STR_CURR_GRD,
+	STR_CURR_HUF,
 	STR_CURR_ISK,
+	STR_CURR_ITL,
+	STR_CURR_NLG,
 	STR_CURR_NOK,
-	STR_CURR_EUR,
+	STR_CURR_PLN,
 	STR_CURR_ROL,
+	STR_CURR_RUR,
+	STR_CURR_SEK,
 	STR_CURR_CUSTOM,
 	INVALID_STRING_ID
 };
@@ -66,31 +66,6 @@ static const uint16 _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 	/* LT_DESERT */ {STR_PASSENGERS, STR_LITERS, STR_BAGS, STR_LITERS, STR_TONS, STR_CRATES, STR_TONS, STR_TONS, STR_TONS, STR_LITERS, STR_BAGS, STR_TONS},
 	/* LT_CANDY */  {STR_PASSENGERS, STR_TONS, STR_BAGS, STR_NOTHING, STR_NOTHING, STR_TONS, STR_TONS, STR_LITERS, STR_TONS, STR_NOTHING, STR_LITERS, STR_NOTHING}
 };
-
-// get a mask of the allowed currencies depending on the year
-uint GetMaskOfAllowedCurrencies()
-{
-	int i;
-	uint mask = 0;
-	for(i=0; i!=lengthof(_currency_specs); i++) {
-		uint16 to_euro = _currency_specs[i].to_euro;
-		if (i == 23) mask |= (1 << 23); // always allow custom currency
-		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-1920)) continue;
-		if (_cur_year < (2000-1920) && (to_euro == CF_ISEURO)) continue;
-		mask |= (1 << i);
-	}
-	return mask;
-}
-
-void CheckSwitchToEuro()
-{
-	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
-			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
-			_cur_year >= (_currency_specs[_opt.currency].to_euro-1920)) {
-		_opt.currency = 21; // this is the index of euro above.
-		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
-	}
-}
 
 static byte *str_cat(byte *dst, const byte *src)
 {

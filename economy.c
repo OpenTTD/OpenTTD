@@ -18,6 +18,31 @@
 #include "engine.h"
 #include "network_data.h"
 
+// get a mask of the allowed currencies depending on the year
+uint GetMaskOfAllowedCurrencies()
+{
+	int i;
+	uint mask = 0;
+	for(i=0; i!=lengthof(_currency_specs); i++) {
+		uint16 to_euro = _currency_specs[i].to_euro;
+		if (i == 23) mask |= (1 << 23); // always allow custom currency
+		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-1920)) continue;
+		if (_cur_year < (2000-1920) && (to_euro == CF_ISEURO)) continue;
+		mask |= (1 << i);
+	}
+	return mask;
+}
+
+void CheckSwitchToEuro()
+{
+	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
+			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
+			_cur_year >= (_currency_specs[_opt.currency].to_euro-1920)) {
+		_opt.currency = 2; // this is the index of euro above.
+		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
+	}
+}
+
 void UpdatePlayerHouse(Player *p, uint score)
 {
 	byte val;
