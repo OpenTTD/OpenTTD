@@ -125,7 +125,9 @@ else
 	endif
 endif
 
+# this is used if there aren't any makefile.config
 ifndef CONFIG_INCLUDED
+ENABLE_NETWORK:=1   # sets network on by default if there aren't any config file
 -include $(LIB_DETECTION)
 endif
 
