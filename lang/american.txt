@@ -974,7 +974,7 @@ STR_CONFIG_PATCHES_ON						:On
 STR_CONFIG_PATCHES_VEHICLESPEED					:{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES				:{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT					:{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Allow removal of more town-owned roads, bridges, tunnels, etc: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE				:{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS				:{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL				:{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS					:{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
