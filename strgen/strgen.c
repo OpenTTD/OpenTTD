@@ -8,10 +8,6 @@
 #include <unistd.h>
 #endif
 
-#ifdef WITH_REV
-extern char _openttd_revision[];
-#endif
-
 #ifdef __MORPHOS__
 #ifdef stderr
 #undef stderr
@@ -748,9 +744,7 @@ int CDECL main(int argc, char* argv[])
 	int show_todo = 0;
 
 	if (argc > 1 && (!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))) {
-#ifdef WITH_REV
-		puts((char*)_openttd_revision);
-#endif
+		puts("$Revision:$");
 		return 0;
 	}
 

@@ -618,7 +618,7 @@ $(64_bit_warnings):
 	$(warning 64 bit CPUs will get some 64 bit specific bugs!)
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
-$(STRGEN): strgen/strgen.c rev.o
+$(STRGEN): strgen/strgen.c
 	@echo 'Compiling and Linking $@'; \
 		$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $^ $(VERBOSE_FILTER)
 
