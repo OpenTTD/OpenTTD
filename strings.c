@@ -16,7 +16,6 @@ static char *GetSpecialTownNameString(char *buff, int ind);
 static char *GetSpecialPlayerNameString(char *buff, int ind);
 
 static char *DecodeString(char *buff, const char *str);
-static char *FormatNoCommaNumber(char *buff, int32 number);
 
 extern const char _openttd_revision[];
 
@@ -151,12 +150,6 @@ char *GetString(char *buffr, StringID string)
 
 		case STR_SPEC_SCREENSHOT_NAME:
 			return DecodeString(buffr, _screenshot_name);
-	}
-
-	if (string >> 12 == 1) {
-		// black number encoded in the string ID
-		*buffr++ = 31; // BLACK
-		return FormatNoCommaNumber(buffr, string & 0xFFF);
 	}
 
 	switch (tab) {
