@@ -26,6 +26,10 @@ static int _cur_spriteid;
 static int32 _paramlist[0x7f];
 static int _param_max;
 
+/* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
+static uint32 _ttdpatch_flags[8];
+
+
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
 static const int _vehshifts[4] = {
@@ -898,6 +902,10 @@ static void SkipIf(byte *buf, int len)
 			/* XXX: This should be always true (at least until we get multiple loading stages?). */
 			param_val = 1;
 			break;
+		case 0x85:
+			param_val = _ttdpatch_flags[cond_val / 0x20];
+			cond_val %= 0x20;
+			break;
 		case 0x86:
 			param_val = _opt.road_side << 4;
 			break;
@@ -1176,6 +1184,26 @@ static void GRFInhibit(byte *buf, int len)
 	/* TODO */
 }
 
+
+static void InitializeGRFSpecial(void)
+{
+	/* FIXME: We should rather reflect reality in _ttdpatch_flags[]. */
+
+	_ttdpatch_flags[1] = (1 << 0x08)	/* mammothtrains */
+		| (1 << 0x0B)			/* subsidiaries */
+		| (1 << 0x14)			/* bridgespeedlimits */
+		| (1 << 0x16)			/* eternalgame */
+		| (1 << 0x17)			/* newtrains */
+		| (1 << 0x18)			/* newrvs */
+		| (1 << 0x19)			/* newships */
+		| (1 << 0x1A);		/* newplanes */
+
+	_ttdpatch_flags[2] = (1 << 0x0D)	/* signalsontrafficside */
+		| (1 << 0x16)			/* canals */
+		| (1 << 0x17);		/* newstartyear */
+}
+
+
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
  * partial implementation yet; also, we ignore the stages stuff). */
@@ -1203,11 +1231,17 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid)
 		/* 0xd */ ParamSet,
 		/* 0xe */ GRFInhibit,
 	};
+	static int initialized;
 	byte action;
 	byte *buf = malloc(num);
 	int i;
 
 	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
+
+	if (!initialized) {
+		InitializeGRFSpecial();
+		initialized = 1;
+	}
 
 	_cur_grffile = filename;
 	_cur_spriteid = spriteid;
