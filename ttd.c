@@ -1238,6 +1238,17 @@ void UpdateCurrencies()
 	_opt.currency = convert_currency[_opt.currency];
 }
 
+// up to revision 1413, the invisible tiles at the southern border have not been MP_VOID
+// even though they should have. This is fixed by this function
+void UpdateVoidTiles()
+{
+	int i;
+	// create void tiles on the border
+	for (i = 0; i != MapMaxY(); i++)
+		_map_type_and_height[ i * MapSizeX() + MapMaxY() ] = MP_VOID << 4;
+	memset(_map_type_and_height + MapMaxY() * MapSizeX(), MP_VOID << 4, MapSizeX());
+}
+
 extern void UpdateOldAircraft();
 
 bool AfterLoadGame(uint version)
@@ -1328,6 +1339,10 @@ bool AfterLoadGame(uint version)
 		CheckIsPlayerActive();
 	}
 
+	// the void tiles on the southern border used to belong to a wrong class.
+	if (version <= 0x402)
+		UpdateVoidTiles();
+
 	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
 	// 1 exeption: network-games. Those can have 0 players
@@ -1340,7 +1355,6 @@ bool AfterLoadGame(uint version)
 
 	return true;
 }
-
 
 void DebugProc(int i)
 {
