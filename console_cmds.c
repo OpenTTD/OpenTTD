@@ -992,7 +992,7 @@ DEF_CONSOLE_CMD(ConSet) {
 
 		if (argc == 3 && ci != NULL) {
 			// Don't change the name if it is the same as the old name
-			if (strncmp(ci->client_name, argv[2], sizeof(_network_player_name)) != 0) {
+			if (strcmp(ci->client_name, argv[2]) != 0) {
 				if (!_network_server) {
 					SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
 				} else {
