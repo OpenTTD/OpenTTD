@@ -1,9 +1,90 @@
-0.3.5 (unreleased)
+0.3.5 (2004-12-24)
 ------------------------------------------------------------------------
-- Change: (OSX build) Moved data and lang folders inside OpenTTD. This got rid of the package system too, making installing/updating easier
-- Fix (Big Endian computers, which are mac and MorphOS): made it able to load savegames made by TTD
-- Fix (OSX build) music is now on by default again
-- Fix (OSX build) made error opens the console (app in utilities dir, not ingame console). This should fix the problem where people did not get a valid error message
+- Feature: [Network] New network, very stable, a lot of new features
+- Feature: [Network] Ingame Serverlist (with online game-servers to join)
+- Feature: [Network] Webbased Serverlist: http://servers.openttd.org/
+- Feature: [Network] Added dedicated server support
+- Feature: [Network] Cheat protection in MultiPlayer
+- Feature: [Network] Patch settings are also synced with the server
+- Feature: [Network] Chat
+- Feature: Custom currency settings
+- Feature: Per-station vehicle lists
+- Feature: More realistically sized catchment areas
+- Feature: Sticky windows
+- Feature: Even better support for newgrf-files
+- Feature: Implement improved vehicle loading algorithm
+- Feature: Even more advanced console
+- Feature: Game compiles under BEOS_SERVER
+- Feature: Game compiles under OS/2 (no network-support)
+- Feature: OpenTTD runs with the grf files of the DOS version
+- Feature: [Big Endian computers, which are mac and MorphOS]: are able to load savegames by TTD(Patch)
+- Feature: Many more new things...
+- Add: 'l' openes the landscaping toolbar globally
+- Add: Make the town sometimes build streets on slopes
+- Add: Manpage
+- Add: New checkpoint grahpics
+- Add: SHIFT+DEL now deletes all non-vital windows (only status bar and main bar remain)
+- Add: Windows now shows revision, release information in title bar
+- Add: Windows snap at each other
+- Change: [OSX build] Moved data and lang folders inside OpenTTD. This got rid of the package system too, making installing/updating easier
+- Fix: [OSX build] Music is now on by default again
+- Fix: [OSX build] Made error opens the console
+- Fix: [SDL] Added a confirmation dialog when quitting the game
+- Fix: A train can leave and enter the same depot at the same time, then the trai simply got stuck
+- Fix: Crash when making png screenshot with odd resolution (Tron)
+- Fix: Directories in *nix are now sorted alphabetically in ascending order (Tron).
+- Fix: Do not consider a road station as street when growing the town
+- Fix: Engines from other climates do not appear any more when never_expire_vehicles is enabled
+- Fix: Game options (like drive side) are not taken from the scenario when using 'new game' command
+- Fix: Order checker now correctly detects station with invalid facilities
+- Fix: Polished GUI in a lot of ways
+- Fix: Saving or loading a map doesnt pauses the game anymore
+- Fix: Some bridge part isn't displayed transparent in transparent mode
+- Fix: Starting with -r option allows all resolutions (Tron)
+- Fix: The pathfinder no longer sees rail with an other owner as a possible route.
+- Fix: Unable to select other screenshot format in Game Option
+- Fix: Unwanted town renaming
+- Fix: Vehicles slow down under bridge if the track is on a foundation
+- Fix: You can no longer change name of waypoints whom are owned by somebody else
+- Fix: [ 1090313 ] Shares are now also sold when a company goes bankrupt
+- Fix: [ 1087701 ] It is no longer possible to crash trains of other companies by building a depot close to a station. (even more: trains do no longer enter tiles that do not belong to his owner)
+- Fix: [ 1087403 ] Crashed trains aren't reported to have too few orders any more
+- Fix: [ 1086375 ] Backup-order-list was not closed with an OT_NOTHING,
+- Fix: [ 1085255 ] Docks now have a button to display the catchment area
+- Fix: [ 1070274 ] Invisible trains. Weird macros and MSVC optimizing don't always mix. (Tron)
+- Fix: [ 1068269 ] Number of passangers and mail in exclusive test offer window is swapped
+- Fix: [ 1066504 ] Pause key pauses the game
+- Fix: [ 1066121 ] Resetting file name after deleting a file (dannys9)
+- Fix: [ 1066114 ] Code error in win32.c Thanks Shai
+- Fix: [ 1065247 ] Windows can be placed behind toolbar
+- Fix: [ 1064742 ] Editor Map-Menu wrong String
+- Fix: [ 1058809 ] Always report a bus/lorry station as unpassable
+- Fix: [ 1053397 ] Refit train window stays open
+- Fix: [ 1050993 ] Incorrect Tooltip in Road Vehicle List.
+- Fix: [ 1048596 ] Monorail and Maglev sounds are swapped
+- Fix: [ 1040119 ] Flooded wagons in depots don't keep constantly exploding any more
+- Fix: [ 1035303 ] Bug about lowering tracks built on slopes
+- Fix: [ 1035066 ] 'Allow goto depot' turned off, no checkpoints in orders
+- Fix: [ 1034318 ] Place sign and blue message box
+- Fix: [ 1033947 ] Wrong mapping between music titles and songs
+- Fix: [ 1030393 ] Some screensizes crashes OTTD. Fix in general bug that only allows resolutions which were multiple of 8 in width and height. Also use closest possible resolution in fullscreen if window size is not a valid resolution (Tron)
+- Fix: [ 1030275 ] 'Service at' orders ignored after 2090. After 2090 year is reset to 1. Jan 2090, so most of the time, last service was in the future and no service ensured.
+- Fix: [ 1029064 ] Building a station acted weird in some rare situations
+- Fix: [ 1022227 ] Ships could unload cargo at stations without docks
+- Fix: [ 999669 ] Wrong trees (toyland's) in sub-tropical landscape style
+- Fix: [ 993500 ] High bridge rendering error
+- Fix: [ 991101 ] Disabled buttons flicker no more
+- Fix: [ 985925 ] Start/stop flag in train depots always works, regardless of the horizontal scroll position
+- Fix: [ 985439 ] Un-owned rail. Trains could cross competitor's tracks if there was a road-crossing over it.
+- Fix: [ 982611 ] Pathfinding bug; train likes the roundabout. If train needs servicing it will now look 16 tiles along the track instead of 12 tiles manhattan style (blathijs)
+- Fix: [ 967096 ] Fullscreen. New button 'Fullscreen' in 'Game Options' menu which lets you set fullscreen ingame.
+- Fix: [ 958098 ] No longer road/rail crossing signals hang when a train is reversed at the wrong moment (Yeah, our longest open bug finally fixed :) :) :))
+- Fix: [ 926105 ] Ctrl + d bug. Longest outstanding bug has been fixed \o/ 2004-03-30 (Tron)
+- Language: Added Spanish
+- Language: Added Catalan
+- Language: Added Icelandic
+- Language: Updated most languages
+- Fix: Many more things....
 
 
 0.3.4 (2004-09-14)

@@ -3,6 +3,10 @@ OPENTTD INGAME CONSOLE DOCUMENTATION
 http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
 for detailed information
 
+*** WARNING **
+ This document is out of date
+*** WARNING **
+
 HOTKEY: BACKQUOTE (aka tilde, the key left to "1")
 
 COMMANDS:
@@ -34,7 +38,7 @@ VARIABLES:
 -> 2 = console error and debug output
 
 *cursor_rate
--> 1-12 = defines the cursor blink interval 
+-> 1-12 = defines the cursor blink interval
 
 
 VARIABLE HANDLING:

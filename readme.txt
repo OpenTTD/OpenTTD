@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    $LastChangedDate: 2004-07-25 21:22:11 +0200 (Sun, 25 Jul 2004) $
-Release version: 0.3.4
+Last updated:    $LastChangedDate: 2004-12-24 00:25:11 +0100 $
+Release version: 0.3.5
 ------------------------------------------------------------------------
 
 
@@ -91,16 +91,16 @@ trghr.grf
 trgir.grf
 trgtr.grf
 
-(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, 
-TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase 
-to be detected correctly. A few minor graphical glitches with the DOS 
-graphics remain. E.g. the autorail button in the rail toolbar doesn't look 
+(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF,
+TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. Those filenames have to be uppercase
+to be detected correctly. A few minor graphical glitches with the DOS
+graphics remain. E.g. the autorail button in the rail toolbar doesn't look
 as nice as with the Windows graphics.)
 
-If you want music you need to copy the gm/ folder from Windows TTD into your 
+If you want music you need to copy the gm/ folder from Windows TTD into your
 OpenTTD folder, not your data folder.
 
-You can change the data path (which contains savegames as well) in Makefile.config 
+You can change the data path (which contains savegames as well) in Makefile.config
 by setting DATA_DIR_PREFIX and USE_HOMEDIR.
 
 
@@ -161,9 +161,9 @@ MorphOS
 ---- -------------------
 See http://www.openttd.org/translating.php for up-to-date information.
 
-The use of the online Translator service, located at http://translator.openttd.org. 
+The use of the online Translator service, located at http://translator.openttd.org.
 For a username password combo you should contact the development team, either by mail, irc
-or the forums. The system is straight-forward to use, if you have any troubles, read the 
+or the forums. The system is straight-forward to use, if you have any troubles, read the
 online help located there.
 
 If for some reason the website is down for a longer period of time, the information below
@@ -215,32 +215,29 @@ That's all! You should now be able to select the language in the game options.
 X.X) Credits:
 ---- --------
 The OpenTTD team:
-  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
-  Serge Paquet (vurlix)          - Assistant project manager, coder
-  Dominik Scherer (dominik81)    - Coder
-  Tamas Farago (Darkvater)       - Coder
-  Patric Stout (TrueLight)       - Coder, SVN-repository and website host
-  Stefan Meiﬂner (sign_de)       - Network and Console coder
-  Owen Rudge (orudge)            - Contributor, forum host
+  Dominik Scherer (dominik81)    - Lead coder
+  Tamas Farago (Darkvater)       - Lead coder
+  Patric Stout (TrueLight)       - Coder, network guru, SVN-repository and website host
+  Owen Rudge (orudge)            - Contributor, forum host, masterserver host
   Bjarni Corfitzen (Bjarni)      - MacOS port
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Cian Duffy (MYOB)              - BeOS port / manual writing
-  Christian Rosentreter (tokaiz) - MorphOS/AmigaOS port
-  
+  Christian Rosentreter (tokaiz) - MorphOS / AmigaOS port
+  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
+  Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
+
 Thanks to:
   Josef Drexler - For his great work on TTDPatch.
-  Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations).
+  Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
   Mike Ragsdale - OpenTTD installer
-  Celestar - for his many patches, suggestions and fixes
-  blathijs - for his many patches, suggestions and code documentation
+  Celestar - For his many patches, suggestions and fixes
+  blathijs - For his many patches, suggestions and code documentation
+  Tron - For his many patches, suggestions and relentless correcting of the code
+  Stefan Meiﬂner (sign_de) - For his work on the console
   pasky - Many patches, newgrf support, etc.
-  Tron - relentless correcting of the code
-  mivlad - some patches
-  truesatan - Some patches
   Michael Polnick - Some patches
   Michael Blunck - Nice graphics
   George - Canal graphics
   All Translators - For their support to make OpenTTD a truly international game
-  Bug Reporters - Thanks for all bug reports.
-  Moriarty - for the tons of (annoying) bugreports
-  Chris Sawyer - For an amazing game!.
+  Bug Reporters - Thanks for all bug reports
+  Chris Sawyer - For an amazing game!
