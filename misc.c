@@ -609,8 +609,6 @@ void IncreaseDate(void)
 		return;
 	_date_fract = 0;
 
-	printf("%d\n", _frame_counter);
-
 	/* yeah, increse day counter and call various daily loops */
 	_date++;
 

@@ -92,7 +92,7 @@ void NORETURN CDECL error(const char *str, ...);
 // * Warning: DO NOT enable this unless you understand what it does
 // **************
 
-//#define RANDOM_DEBUG
+#define RANDOM_DEBUG
 
 #ifdef RANDOM_DEBUG
 	#define Random() DoRandom(__LINE__, __FILE__)
