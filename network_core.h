@@ -61,25 +61,27 @@ typedef struct ifreq IFREQ;
 #		include <netinet/tcp.h>
 #		include <arpa/inet.h>
 #		include <net/if.h>
-#		if !defined(SUNOS) && !defined(__MORPHOS__) && !defined(__BEOS__)
+// According to glibc/NEWS, <ifaddrs.h> appeared in glibc-2.3.
+#		if !defined(SUNOS) && !defined(__MORPHOS__) && !defined(__BEOS__) \
+		   && !(defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 2))
+// If for any reason ifaddrs.h does not exist on your system, comment out
+//   the following two lines and an alternative way will be used to fetch
+//   the list of IPs from the system.
 #			include <ifaddrs.h>
-// If for any reason ifaddrs.h does not exist on a system, remove define below
-//   and an other system will be used to fetch ips from the system
 #			define HAVE_GETIFADDRS
-#		else
+#		endif
+#		if defined(SUNOS) || defined(__MORPHOS__) || defined(__BEOS__)
 #			define INADDR_NONE 0xffffffff
-#		endif // SUNOS
+#		endif
 #		if defined(__BEOS__) && !defined(BEOS_NET_SERVER)
 			// needed on Zeta
 #			include <sys/sockio.h>
 #		endif
 #	endif // BEOS_NET_SERVER
 
-/* GLibc 2.1 does not support GetIfAddr() */
-#	if defined(__GLIBC__) && (__GLIBC__ == 2) && (__GLIBC_MINOR__ == 1)
-#		undef HAVE_GETIFADDRS
+#	if defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 1)
 		typedef uint32_t in_addr_t;
-#	endif /* __GLIBC__ && (__GLIBC__ == 2) && (__GLIBC_MINOR__ == 1) */
+#	endif
 
 #	include <errno.h>
 #	include <sys/time.h>
