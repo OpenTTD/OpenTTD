@@ -52,6 +52,18 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	return (tidc.y << MapLogX()) + tidc.x;
 }
 
+
+#ifndef _DEBUG
+	#define TILE_ADD(x,y) ((x) + (y))
+#else
+	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
+		const char *exp, const char *file, int line);
+	#define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
+#endif
+
+#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x, y))
+
+
 static inline TileIndexDiff TileOffsByDir(uint dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[4];

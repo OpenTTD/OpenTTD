@@ -730,27 +730,6 @@ int FindFirstBit(uint32 value)
 }
 
 
-uint SafeTileAdd(uint tile, int add, const char *exp, const char *file, int line)
-{
-	uint x = TileX(tile) + (signed char)(add & 0xFF);
-	uint y = TileY(tile) + ((((0x8080 + add)>>8) & 0xFF) - 0x80);
-
-	if (x >= MapSizeX() || y >= MapSizeY()) {
-		char buf[512];
-
-		sprintf(buf, "TILE_ADD(%s) when adding 0x%.4X and %d failed", exp, tile, add);
-#if !defined(_DEBUG) || !defined(_MSC_VER)
-		fprintf(stderr, "%s:%d %s\n", file, line, buf);
-#else
-		_assert(buf, (char*)file, line);
-#endif
-	}
-
-	assert(TILE_XY(x,y) == TILE_MASK(tile + add));
-
-	return TILE_XY(x,y);
-}
-
 static void Save_NAME()
 {
 	int i;

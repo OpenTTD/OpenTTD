@@ -81,16 +81,6 @@ enum {
 
 #define TILE_ASSERT(x) assert( TILE_MASK(x) == (x) );
 
-uint SafeTileAdd(uint x, int add, const char *exp, const char *file, int line);
-
-#if !defined(_DEBUG)
-#	define TILE_ADD(x,y) ((x)+(y))
-#else
-#	define TILE_ADD(x,y) (SafeTileAdd((x),(y), #x ", " #y,  __FILE__, __LINE__))
-#endif
-
-#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x,y))
-
 //#define REMADP_COORDS(x,y,z) { int t = x; x = (y-t)*2; y+=t-z; }
 
 #define PACK_POINT(x,y) ((x) | ((y) << 16))
