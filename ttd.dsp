@@ -332,6 +332,10 @@ SOURCE=.\w32dm.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\waypoint.c
+# End Source File
+
+# Begin Source File
 
 SOURCE=.\w32dm2.cpp
 
@@ -512,6 +516,10 @@ SOURCE=.\vehicle_gui.h
 
 # Begin Source File
 SOURCE=.\viewport.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\waypoint.h
 # End Source File
 
 # Begin Source File

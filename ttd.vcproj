@@ -760,6 +760,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\waypoint.c">
+			</File>								
+			<File
 				RelativePath="widget.c">
 				<FileConfiguration
 					Name="Release|Win32">
@@ -964,6 +967,9 @@
 			<File
 				RelativePath="viewport.h">
 			</File>
+			<File
+				RelativePath="waypoint.h">
+			</File>							
 			<File
 				RelativePath="window.h">
 			</File>
