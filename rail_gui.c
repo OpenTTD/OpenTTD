@@ -8,10 +8,13 @@
 #include "sound.h"
 #include "command.h"
 #include "vehicle.h"
+#include "station.h"
 
 static uint _cur_railtype;
 static bool _remove_button_clicked;
 static byte _build_depot_direction;
+static byte _checkpoint_count;
+static byte _cur_checkpoint_type;
 
 struct {
 	byte orientation;
@@ -23,6 +26,7 @@ struct {
 
 static void HandleStationPlacement(uint start, uint end);
 static void ShowBuildTrainDepotPicker();
+static void ShowBuildCheckpointPicker();
 static void ShowStationBuilder();
 
 typedef void OnButtonClick(Window *w);
@@ -114,12 +118,7 @@ static void PlaceRail_Depot(uint tile)
 static void PlaceRail_Checkpoint(uint tile)
 {
 	if (!_remove_button_clicked) {
-		/* TODO: We need a graphics selector. In the meantime we use the first
-		 * custom station ID which works ok with newstats.grf (if you add it
-		 * to openttd.cfg you want custom checkpoints) and if you don't have
-		 * any custom station graphics it will fall back to the railstation
-		 * sprites anyway. --pasky */
-		DoCommandP(tile, 0x100, 0, CcPlaySound1E, CMD_BUILD_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_CHECKPOINT));
+		DoCommandP(tile, _checkpoint_count > 0 ? (0x100 + _cur_checkpoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_CHECKPOINT));
 	} else {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_CHECKPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_CHECKPOINT));
 	}
@@ -308,7 +307,10 @@ static void BuildRailClick_Sign(Window *w)
 
 static void BuildRailClick_Checkpoint(Window *w)
 {
-	HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Checkpoint);
+	_checkpoint_count = GetCustomStationsCount('WAYP');
+	if (HandlePlacePushButton(w, 18, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Checkpoint)
+	    && _checkpoint_count > 1)
+		ShowBuildCheckpointPicker();
 }
 
 static void BuildRailClick_Convert(Window *w)
@@ -1051,6 +1053,77 @@ static void ShowBuildTrainDepotPicker()
 {
 	AllocateWindowDesc(&_build_depot_desc);
 }
+
+
+static void BuildCheckpointWndProc(Window *w, WindowEvent *e)
+{
+	switch(e->event) {
+	case WE_PAINT: {
+		int r;
+
+		w->click_state = (1 << 3) << _cur_checkpoint_type;
+		DrawWindowWidgets(w);
+
+		r = 4*w->hscroll.pos;
+		if(r+0<=_checkpoint_count) DrawCheckpointSprite(2,   25, r + 0);
+		if(r+1<=_checkpoint_count) DrawCheckpointSprite(70,  25, r + 1);
+		if(r+2<=_checkpoint_count) DrawCheckpointSprite(138, 25, r + 2);
+		if(r+3<=_checkpoint_count) DrawCheckpointSprite(206, 25, r + 3);
+		break;
+		}
+	case WE_CLICK: {
+		switch(e->click.widget) {
+		case 0:
+			ResetObjectToPlace();
+			break;
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+			_cur_checkpoint_type = e->click.widget - 3;
+			SndPlayFx(0x13);
+			SetWindowDirty(w);
+			break;
+		}
+		break;
+	}
+	
+	case WE_MOUSELOOP:
+		if (WP(w,def_d).close)
+			DeleteWindow(w);
+		return;
+	}
+}
+
+static const Widget _build_checkpoint_widgets[] = {
+{   WWT_CLOSEBOX,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,     7,    11,   275,     0,    13, STR_CHECKPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     7,     0,   275,    14,    91, 0x0, 0},
+
+{      WWT_PANEL,     7,     3,    68,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,    71,   136,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,   139,   204,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,     7,   207,   272,    17,    76, 0x0, STR_CHECKPOINT_GRAPHICS_TIP},
+
+{  WWT_HSCROLLBAR,    7,     1,   275,    80,    91, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_LAST},
+};
+
+static const WindowDesc _build_checkpoint_desc = {
+	-1,-1, 276, 92,
+	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_build_checkpoint_widgets,
+	BuildCheckpointWndProc
+};
+
+static void ShowBuildCheckpointPicker()
+{
+	Window *w = AllocateWindowDesc(&_build_checkpoint_desc);
+	w->hscroll.cap = 1;
+	w->hscroll.count = (uint) (_checkpoint_count+3) / 4;
+}
+
 
 void InitializeRailGui()
 {

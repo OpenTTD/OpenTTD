@@ -1620,6 +1620,35 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	}
 }
 
+void DrawCheckpointSprite(int x, int y, int stat_id)
+{
+	// TODO: We should use supersets with cargo-id FF, if available. --pasky
+	DrawTileSprites *cust = GetCustomStation('WAYP', stat_id);
+	DrawTileSeqStruct const *seq;
+	uint32 ormod, img;
+
+	assert(cust);
+
+	// emulate station tile - open with building
+	// add 1 to get the other direction
+	cust = &cust[2];
+
+	ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
+
+	x += 33;
+	y += 17;
+
+	img = cust->ground_sprite;
+	if (img & 0x8000) img = (img & 0x7FFF);
+	DrawSprite(img, x, y);
+
+	foreach_draw_tile_seq(seq, cust->seq) {
+		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
+		DrawSprite((seq->image&0x3FFF) | ormod, x + pt.x, y + pt.y);
+	}
+}
+
+
 #define NUM_SSD_ENTRY 256
 #define NUM_SSD_STACK 32
 

@@ -42,11 +42,12 @@ struct Station {
 	// trainstation width/height
 	byte trainst_w, trainst_h;
 
-	byte stat_id, class_id;
+	byte class_id; // custom graphics station class
+	byte stat_id; // custom graphics station id in the @class_id class
 	uint16 build_date;
 
 	//uint16 airport_flags;
-  uint32 airport_flags;
+	uint32 airport_flags;
 	uint16 index;
 
 	VehicleID last_vehicle;
