@@ -2556,6 +2556,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED		:{BLACK}{BIGFONT}Floods!{}At least {COMMA16} p
 STR_BRIBE_FAILED					:{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2				:{WHITE}discovered by a regional investigator
 STR_BUILD_DATE						:{BLACK}Built: {LTBLUE}{DATE_LONG}
+STR_MULTIPLAYER_PAUSED				:{WHITE}Game is paused.{}Command cannot be executed
 
 STR_PERFORMANCE_DETAIL			:{WHITE}Detail performance rating
 STR_PERFORMANCE_DETAIL_KEY		:{BLACK}Detail

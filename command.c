@@ -385,6 +385,15 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	assert(_docommand_recursive == 0);
 
+	if (_networking && !(cmd & CMD_NET_INSTANT) && _pause) {
+		// When the game is paused, and we are in a network game
+		//  we do not allow any commands. This is because
+		//  of some technical reasons
+		ShowErrorMessage(-1, STR_MULTIPLAYER_PAUSED, x, y);
+		_docommand_recursive = 0;
+		return true;
+	}
+
 	_error_message = INVALID_STRING_ID;
 	_error_message_2 = cmd >> 16;
 	_additional_cash_required = 0;
