@@ -11,6 +11,8 @@
 #include <string.h>
 #include "console.h"
 #include "network.h"
+#include "network_data.h"
+#include "network_server.h"
 
 #ifdef WIN32
 #include <windows.h>
@@ -371,6 +373,12 @@ void IConsolePrint(uint16 color_code, const char* string)
 	uint16 _newc;
 	char* i;
 	int j;
+
+	if (_redirect_console_to_client != 0) {
+		/* Redirect the string to the client */
+		SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromIndex(_redirect_console_to_client), color_code, string);
+		return;
+	}
 
 	if (_network_dedicated) {
 		printf("%s\n", string);

@@ -927,6 +927,8 @@ static void NetworkInitGameInfo(void)
 	NetworkClientInfo *ci;
 
 	ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
+	ttd_strlcpy(_network_game_info.server_password, _network_server_password, sizeof(_network_server_password));
+	ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_rcon_password));
 	if (_network_game_info.server_name[0] == '\0')
 		snprintf(_network_game_info.server_name, sizeof(_network_game_info.server_name), "Unnamed Server");
 

@@ -160,6 +160,8 @@ typedef enum {
 	PACKET_SERVER_ERROR_QUIT,
 	PACKET_SERVER_SHUTDOWN,
 	PACKET_SERVER_NEWGAME,
+	PACKET_SERVER_RCON,
+	PACKET_CLIENT_RCON,
 	PACKET_END // Should ALWAYS be on the end of this list!! (period)
 } PacketType;
 

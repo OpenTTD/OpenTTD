@@ -379,6 +379,18 @@ DEF_CONSOLE_CMD(ConBanList)
 	return NULL;
 }
 
+DEF_CONSOLE_CMD(ConRcon)
+{
+	if (argc < 3) {
+		IConsolePrint(_iconsole_color_default, "Usage: rcon <password> <command>");
+		return NULL;
+	}
+
+	SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+
+	return NULL;
+}
+
 DEF_CONSOLE_CMD(ConStatus)
 {
 	const char *status;
@@ -425,7 +437,7 @@ DEF_CONSOLE_CMD(ConKick)
 
 	if (argc == 2) {
 		uint32 index = atoi(argv[1]);
-		if (index == NETWORK_SERVER_INDEX && !_network_dedicated) {
+		if (index == NETWORK_SERVER_INDEX) {
 			IConsolePrint(_iconsole_color_default, "Silly boy, you can not kick yourself!");
 			return NULL;
 		}
@@ -900,16 +912,39 @@ DEF_CONSOLE_CMD(ConSet) {
 		if (argc == 3) {
 			// Change server password
 			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
-				_network_game_info.server_password[0] = '\0';
+				_network_server_password[0] = '\0';
 				_network_game_info.use_password = 0;
 			} else {
-				ttd_strlcpy(_network_game_info.server_password, argv[2], sizeof(_network_game_info.server_password));
+				ttd_strlcpy(_network_server_password, argv[2], sizeof(_network_server_password));
 				_network_game_info.use_password = 1;
 			}
-			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_game_info.server_password);
+			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_server_password);
+			ttd_strlcpy(_network_game_info.server_password, _network_server_password, sizeof(_network_game_info.server_password));
 		} else {
 			IConsolePrintF(_iconsole_color_default, "Current game-password is set to '%s'", _network_game_info.server_password);
 			IConsolePrint(_iconsole_color_warning, "Usage: set server_pw \"<password>\".   Use * as <password> to set no password.");
+		}
+		return NULL;
+	}
+
+	// setting the rcon password
+	if ((strcmp(argv[1], "rcon_pw") == 0) || (strcmp(argv[1], "rcon_password") == 0)) {
+		if (!_network_server) {
+			IConsolePrintF(_iconsole_color_error, "You are not the server");
+			return NULL;
+		}
+		if (argc == 3) {
+			// Change server password
+			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
+				_network_rcon_password[0] = '\0';
+			} else {
+				ttd_strlcpy(_network_rcon_password, argv[2], sizeof(_network_rcon_password));
+			}
+			IConsolePrintF(_iconsole_color_warning, "Rcon-password changed to '%s'", _network_rcon_password);
+			ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_game_info.rcon_password));
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current rcon-password is set to '%s'", _network_game_info.rcon_password);
+			IConsolePrint(_iconsole_color_warning, "Usage: set rcon_pw \"<password>\".   Use * as <password> to disable rcon.");
 		}
 		return NULL;
 	}
@@ -1123,6 +1158,7 @@ DEF_CONSOLE_CMD(ConSet) {
 	IConsolePrint(_iconsole_color_error, " - autoclean_unprotected <months>");
 	IConsolePrint(_iconsole_color_error, " - company_pw \"<password>\"");
 	IConsolePrint(_iconsole_color_error, " - name \"<playername>\"");
+	IConsolePrint(_iconsole_color_error, " - rcon_pw \"<password>\"");
 	IConsolePrint(_iconsole_color_error, " - server_name \"<name>\"");
 	IConsolePrint(_iconsole_color_error, " - server_advertise on/off");
 	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
@@ -1228,6 +1264,9 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("status",   ConStatus);
 	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
 	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
+
+	IConsoleCmdRegister("rcon",        ConRcon);
+	IConsoleCmdHook("rcon", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
 
 	IConsoleCmdRegister("ban",   ConBan);
 	IConsoleCmdHook("ban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);

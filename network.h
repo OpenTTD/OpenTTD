@@ -42,12 +42,15 @@
 #define NETWORK_VEHICLE_TYPES 5
 #define NETWORK_STATION_TYPES 5
 
-#define NETWORK_NAME_LENGTH 80
-#define NETWORK_HOSTNAME_LENGTH 80
-#define NETWORK_REVISION_LENGTH 10
-#define NETWORK_PASSWORD_LENGTH 20
-#define NETWORK_PLAYERS_LENGTH 200
-#define NETWORK_CLIENT_NAME_LENGTH 25
+enum {
+	NETWORK_NAME_LENGTH        = 80,
+	NETWORK_HOSTNAME_LENGTH    = 80,
+	NETWORK_REVISION_LENGTH    = 10,
+	NETWORK_PASSWORD_LENGTH    = 20,
+	NETWORK_PLAYERS_LENGTH     = 200,
+	NETWORK_CLIENT_NAME_LENGTH = 25,
+	NETWORK_RCONCOMMAND_LENGTH = 500,
+};
 
 // This is the struct used by both client and server
 //  some fields will be empty on the client (like game_password) by default
@@ -71,6 +74,7 @@ typedef struct NetworkGameInfo {
 	uint16 map_height;															// Map height
 	byte map_set;																		// Graphical set
 	bool dedicated;																	// Is this a dedicated server?
+	char rcon_password[NETWORK_PASSWORD_LENGTH];		// RCon password for the server. "" if rcon is disabled
 } NetworkGameInfo;
 
 typedef struct NetworkPlayerInfo {
@@ -155,6 +159,10 @@ VARDEF uint32 _network_server_bind_ip;
 VARDEF char _network_server_bind_ip_host[NETWORK_HOSTNAME_LENGTH];
 VARDEF bool _is_network_server; // Does this client wants to be a network-server?
 VARDEF char _network_server_name[NETWORK_NAME_LENGTH];
+VARDEF char _network_server_password[NETWORK_PASSWORD_LENGTH];
+VARDEF char _network_rcon_password[NETWORK_PASSWORD_LENGTH];
+
+VARDEF uint16 _redirect_console_to_client;
 
 VARDEF uint16 _network_sync_freq;
 VARDEF uint8 _network_frame_freq;

@@ -566,6 +566,15 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 	NetworkSend_Packet(p, cs);
 }
 
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientState *cs, uint16 color, const char *command)
+{
+	Packet *p = NetworkSend_Init(PACKET_SERVER_RCON);
+
+	NetworkSend_uint16(p, color);
+	NetworkSend_string(p, command);
+	NetworkSend_Packet(p, cs);
+}
+
 // **********
 // Receiving functions
 //   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientState *cs, Packet *p
@@ -1082,6 +1091,30 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	}
 }
 
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
+{
+	char pass[NETWORK_PASSWORD_LENGTH];
+	char command[NETWORK_RCONCOMMAND_LENGTH];
+
+	if (_network_game_info.rcon_password[0] == '\0')
+		return;
+
+	NetworkRecv_string(cs, p, pass, sizeof(pass));
+	NetworkRecv_string(cs, p, command, sizeof(command));
+
+	if (strncmp(pass, _network_game_info.rcon_password, sizeof(pass)) != 0) {
+		DEBUG(net, 0)("[RCon] Wrong password from client-id %d", cs->index);
+		return;
+	}
+
+	DEBUG(net, 0)("[RCon] Client-id %d executed: %s", cs->index, command);
+
+	_redirect_console_to_client = cs->index;
+	IConsoleCmdExec(command);
+	_redirect_console_to_client = 0;
+	return;
+}
+
 // The layout for the receive-functions by the server
 typedef void NetworkServerPacket(NetworkClientState *cs, Packet *p);
 
@@ -1121,6 +1154,8 @@ static NetworkServerPacket* const _network_server_packet[] = {
 	NULL, /*PACKET_SERVER_ERROR_QUIT,*/
 	NULL, /*PACKET_SERVER_SHUTDOWN,*/
 	NULL, /*PACKET_SERVER_NEWGAME,*/
+	NULL, /*PACKET_SERVER_RCON,*/
+	RECEIVE_COMMAND(PACKET_CLIENT_RCON),
 };
 
 // If this fails, check the array above with network_data.h

@@ -10,6 +10,7 @@
 #include "gfx.h"
 #include "window.h"
 #include "settings.h"
+#include "console.h"
 
 
 // This file handles all the client-commands
@@ -243,6 +244,14 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)(const char *leavemsg)
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
 
 	NetworkSend_string(p, leavemsg);
+	NetworkSend_Packet(p, MY_CLIENT);
+}
+
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
+{
+	Packet *p = NetworkSend_Init(PACKET_CLIENT_RCON);
+	NetworkSend_string(p, pass);
+	NetworkSend_string(p, command);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -741,6 +750,18 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_RCON)
+{
+	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
+	uint16 color_code;
+
+	color_code = NetworkRecv_uint16(MY_CLIENT, p);
+	NetworkRecv_string(MY_CLIENT, p, rcon_out, sizeof(rcon_out));
+
+	IConsolePrint(color_code, rcon_out);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
 
 
 
@@ -782,6 +803,8 @@ static NetworkClientPacket* const _network_client_packet[] = {
 	RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT),
 	RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN),
 	RECEIVE_COMMAND(PACKET_SERVER_NEWGAME),
+	RECEIVE_COMMAND(PACKET_SERVER_RCON),
+	NULL, /*PACKET_CLIENT_RCON,*/
 };
 
 // If this fails, check the array above with network_data.h
