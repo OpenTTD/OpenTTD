@@ -489,7 +489,7 @@ STR_01CA_31ST							:31st
 ############ range for days	ends
 
 STR_01CB							:{TINYFONT}{COMMA16}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Toggle large/small map size
+STR_01CC_TOGGLE_LARGE_SMALL_MAP					:{BLACK}Toggle large/medium/small map size
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION				:{WHITE}Select Tutorial/Demonstration
 
 ############ range for cargo acecpted starts
