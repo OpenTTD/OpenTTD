@@ -2761,6 +2761,7 @@ STR_SCHEDULED_AIRCRAFT_TIP					:{BLACK}Show all aircraft which have this station
 STR_SCHEDULED_SHIPS_TIP						:{BLACK}Show all ships which have this station on their schedule
 
 STR_REPLACE_VEHICLES						:{BLACK}Replace Vehicles
+STR_REPLACE_VEHICLES_WHITE					:{WHITE}Replace Vehicles
 STR_REPLACE_VEHICLES_START					:{BLACK}Start Replacing Vehicles
 STR_REPLACE_VEHICLES_STOP					:{BLACK}Stop Replaing Vehicles
 STR_NOT_REPLACING						:{BLACK}Not replacing
@@ -2775,8 +2776,8 @@ STR_REPLACE_HELP						:{BLACK}This feature allows you to select an enginetype an
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES							:Rail Vehicles
-STR_MONORAIL_VEHICLES					:Monorail Vehicles
+STR_RAIL_VEHICLES						:Rail Vehicles
+STR_MONORAIL_VEHICLES						:Monorail Vehicles
 STR_MAGLEV_VEHICLES						:Maglev Vehicles
 
 ############ End of list of rail types

@@ -321,7 +321,6 @@ typedef struct {
 	byte sel_index[2];
 	int16 sel_engine[2];
 	uint16 count[2];
-	byte line_height;
 } replaceveh_d;
 
 typedef struct {
