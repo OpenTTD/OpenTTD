@@ -772,9 +772,11 @@ release: all
 	@mkdir -p "/t/openttd-$(RELEASE)-morphos/docs"
 	@mkdir -p "/t/openttd-$(RELEASE)-morphos/data"
 	@mkdir -p "/t/openttd-$(RELEASE)-morphos/lang"
+	@mkdir -p "/t/openttd-$(RELEASE)-morphos/scenario"
 	@cp -R $(TTD)                      "/t/openttd-$(RELEASE)-morphos/"
 	@cp data/*                         "/t/openttd-$(RELEASE)-morphos/data/"
 	@cp lang/*.lng                     "/t/openttd-$(RELEASE)-morphos/lang/"
+	@cp scenario/*                     "/t/openttd-$(RELEASE)-morphos/scenario/"
 	@cp readme.txt                     "/t/openttd-$(RELEASE)-morphos/docs/ReadMe"
 	@cp docs/console.txt               "/t/openttd-$(RELEASE)-morphos/docs/Console"
 	@cp COPYING                        "/t/openttd-$(RELEASE)-morphos/docs/"
@@ -801,6 +803,7 @@ ifdef OSX
 release: all
 	@mkdir -p "OpenTTD $(RELEASE)"
 	@mkdir -p "OpenTTD $(RELEASE)"/docs
+	@mkdir -p "OpenTTD $(RELEASE)"/scenario
 	@cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
 	@cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
 	@cp readme.txt "OpenTTD $(RELEASE)"/docs/
@@ -811,6 +814,7 @@ release: all
 	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
 	@cp os/macos/*.webloc "OpenTTD $(RELEASE)"
 	@cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
+	@cp scenario/* "OpenTTD $(RELEASE)"/scenario/
 	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
 	@rm -fr "OpenTTD $(RELEASE)"
 
