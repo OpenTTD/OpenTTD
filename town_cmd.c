@@ -18,6 +18,27 @@
 #include "network.h"
 
 enum {
+	/* Max towns: 64000 (8 * 8000) */
+	TOWN_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
+	TOWN_POOL_MAX_BLOCKS      = 8000,
+};
+
+/**
+ * Called if a new block is added to the town-pool
+ */
+static void TownPoolNewBlock(uint start_item)
+{
+	Town *t;
+
+	FOR_ALL_TOWNS_FROM(t, start_item)
+			t->index = start_item++;
+}
+
+/* Initialize the town-pool */
+MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, 0, 0, NULL };
+
+
+enum {
 	TOWN_HAS_CHURCH     = 0x02,
 	TOWN_HAS_STADIUM    = 0x04
 };
@@ -413,13 +434,13 @@ void OnTick_Town(void)
 		return;
 
 	i = _cur_town_ctr;
+	if (++_cur_town_ctr >= GetTownPoolSize())
+		_cur_town_ctr = 0;
+
 	t = GetTown(i);
-	if (++i == _towns_size) i = 0;
-	_cur_town_ctr = i;
 
 	if (t->xy != 0)
 		TownTickHandler(t);
-
 }
 
 static byte GetTownRoadMask(TileIndex tile)
@@ -954,10 +975,22 @@ static Town *AllocateTown(void)
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		if (t->xy == 0) {
-			if (t->index > _total_towns) _total_towns = t->index;
+			uint index = t->index;
+
+			if (t->index > _total_towns)
+				_total_towns = t->index;
+
+			memset(t, 0, sizeof(Town));
+			t->index = index;
+
 			return t;
 		}
 	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_town_pool))
+		return AllocateTown();
+
 	return NULL;
 }
 
@@ -1835,22 +1868,18 @@ void TownsMonthlyLoop(void)
 void InitializeTowns(void)
 {
 	Subsidy *s;
-	Town *t;
-	int i;
 
-	memset(_towns, 0, sizeof(_towns[0]) * _towns_size);
-
-	i = 0;
-	FOR_ALL_TOWNS(t)
-		t->index = i++;
+	/* Clean the town pool and create 1 block in it */
+	CleanPool(&_town_pool);
+	AddBlockToPool(&_town_pool);
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (s=_subsidies; s != endof(_subsidies); s++)
 		s->cargo_type = 0xFF;
 
 	_cur_town_ctr = 0;
-	_town_sort_dirty = true;
 	_total_towns = 0;
+	_town_sort_dirty = true;
 }
 
 const TileTypeProcs _tile_type_town_procs = {
@@ -1941,12 +1970,24 @@ static void Save_TOWN(void)
 static void Load_TOWN(void)
 {
 	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Town *t = GetTown(index);
 
+	while ((index = SlIterateArray()) != -1) {
+		Town *t;
+
+		if (!AddBlockIfNeeded(&_town_pool, index))
+			error("Towns: failed loading savegame: too many towns");
+
+		t = GetTown(index);
 		SlObject(t, _town_desc);
-		if (index > _total_towns) _total_towns = index;
+
+		if ((uint)index > _total_towns)
+			_total_towns = index;
 	}
+
+	/* This is to ensure all pointers are within the limits of
+	 *  the size of the TownPool */
+	if (_cur_town_ctr >= GetTownPoolSize())
+		_cur_town_ctr = 0;
 }
 
 void AfterLoadTown(void)

@@ -503,7 +503,6 @@ static void InitializeDynamicVariables(void)
 	_vehicles_size = lengthof(_vehicles);
 	_vehicle_sort = NULL;
 
-	_towns_size = lengthof(_towns);
 	_town_sort = NULL;
 
 	_industries_size = lengthof(_industries);
@@ -516,6 +515,8 @@ static void InitializeDynamicVariables(void)
 static void UnInitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be free'd somewhere... */
+	CleanPool(&_town_pool);
+
 	free(_station_sort);
 
 	free(_vehicle_sort);

@@ -367,14 +367,18 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
 	const Town *t;
-	byte val;
+	uint16 val;
 	int r;
 
 	t = GetTown(*(const uint16*)a);
 	SetDParam(0, t->townnameparts);
 	GetString(buf1, t->townnametype);
 
-	if ( (val=*(const uint16*)b) != _last_town_idx) {
+	/* If 'b' is the same town as in the last round, use the cached value
+	 *  We do this to speed stuff up ('b' is called with the same value a lot of
+	*  times after eachother) */
+	val = *(const uint16*)b;
+	if (val != _last_town_idx) {
 		_last_town_idx = val;
 		t = GetTown(val);
 		SetDParam(0, t->townnameparts);
@@ -401,12 +405,12 @@ static void MakeSortedTownList(void)
 	int n = 0;
 
 	/* Create array for sorting */
-	_town_sort = realloc(_town_sort, _towns_size * sizeof(_town_sort[0]));
+	_town_sort = realloc(_town_sort, GetTownPoolSize() * sizeof(_town_sort[0]));
 	if (_town_sort == NULL)
 		error("Could not allocate memory for the town-sorting-list");
 
 	FOR_ALL_TOWNS(t)
-		if(t->xy)
+		if (t->xy)
 			_town_sort[n++] = t->index;
 
 	_num_town_sort = n;

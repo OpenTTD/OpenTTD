@@ -595,6 +595,9 @@ static void FixTown(OldTown *o, int num, byte town_name_type)
 		if (o->xy == 0)
 			continue;
 
+		if (!AddBlockIfNeeded(&_town_pool, i))
+			error("Towns: failed loading savegame: too many towns");
+
 		t = GetTown(i);
 
 		t->xy = o->xy;

@@ -1,6 +1,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
+#include "pool.h"
 #include "player.h"
 
 struct Town {
@@ -128,20 +129,30 @@ enum {
 
 bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type);
 
-VARDEF Town _towns[250];
-VARDEF uint _towns_size;
-
 VARDEF uint16 *_town_sort;
 
+extern MemoryPool _town_pool;
+
+/**
+ * Get the pointer to the town with index 'index'
+ */
 static inline Town *GetTown(uint index)
 {
-	assert(index < _towns_size);
-	return &_towns[index];
+	return (Town*)GetItemFromPool(&_town_pool, index);
 }
 
-#define FOR_ALL_TOWNS(t) for(t = _towns; t != &_towns[_towns_size]; t++)
+/**
+ * Get the current size of the TownPool
+ */
+static inline uint16 GetTownPoolSize(void)
+{
+	return _town_pool.total_items;
+}
 
-VARDEF int _total_towns; // For the AI: the amount of towns active
+#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL)
+#define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
+
+VARDEF uint _total_towns; // For the AI: the amount of towns active
 
 VARDEF bool _town_sort_dirty;
 VARDEF byte _town_sort_order;
