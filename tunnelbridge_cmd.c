@@ -585,12 +585,12 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
-uint CheckTunnelBusy(uint tile, int *length)
+TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 {
 	uint z = GetTileZ(tile);
 	byte m5 = _map5[tile];
 	int delta = TileOffsByDir(m5 & 3);
-	int len = 0;
+	uint len = 0;
 	uint starttile = tile;
 	Vehicle *v;
 
@@ -604,13 +604,14 @@ uint CheckTunnelBusy(uint tile, int *length)
 		GetTileZ(tile) != z
 	);
 
-	if ((v=FindVehicleBetween(starttile, tile, z)) != NULL) {
-		_error_message = v->type == VEH_Train ? STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
-		return (uint)-1;
+	v = FindVehicleBetween(starttile, tile, z);
+	if (v != NULL) {
+		_error_message = v->type == VEH_Train ?
+			STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
+		return INVALID_TILE;
 	}
 
-	if (length != NULL)
-		*length = len;
+	if (length != NULL) *length = len;
 	return tile;
 }
 
@@ -618,7 +619,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 {
 	Town *t;
 	uint endtile;
-	int length;
+	uint length;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -629,7 +630,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	}
 
 	endtile = CheckTunnelBusy(tile, &length);
-	if (endtile == (uint)-1) return CMD_ERROR;
+	if (endtile == INVALID_TILE) return CMD_ERROR;
 
 	_build_tunnel_endtile = endtile;
 
@@ -828,7 +829,7 @@ static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
 int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 {
 	uint endtile;
-	int length;
+	uint length;
 	Vehicle *v;
 
 	if ((_map5[tile] & 0xFC) == 0x00) {
@@ -838,7 +839,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 		if ( (uint)(_map3_lo[tile] & 0xF) == totype) return CMD_ERROR;
 
 		endtile = CheckTunnelBusy(tile, &length);
-		if (endtile == (uint)-1) return CMD_ERROR;
+		if (endtile == INVALID_TILE) return CMD_ERROR;
 
 		if (exec) {
 			_map3_lo[tile] = (_map3_lo[tile] & 0xF0) + totype;

@@ -2597,7 +2597,7 @@ reverse_train_direction:
 
 }
 
-extern uint CheckTunnelBusy(uint tile, int *length);
+extern TileIndex CheckTunnelBusy(TileIndex tile, uint *length);
 
 /**
  * Deletes/Clears the last wagon of a crashed train. It takes the engine of the
@@ -2635,10 +2635,9 @@ static void DeleteLastWagon(Vehicle *v)
 	DisableTrainCrossing(v->tile);
 
 	if (v->u.rail.track == 0x40) { // inside a tunnel
-		int length;
-		TileIndex endtile = CheckTunnelBusy(v->tile, &length);
+		TileIndex endtile = CheckTunnelBusy(v->tile, NULL);
 
-		if (endtile == (uint)-1) // tunnel is busy (error returned)
+		if (endtile == INVALID_TILE) // tunnel is busy (error returned)
 			return;
 
 		if ((v->direction == 1) || (v->direction == 5) )
