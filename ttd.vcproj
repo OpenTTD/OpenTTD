@@ -761,7 +761,7 @@
 			</File>
 			<File
 				RelativePath=".\waypoint.c">
-			</File>								
+			</File>
 			<File
 				RelativePath="widget.c">
 				<FileConfiguration
@@ -969,7 +969,7 @@
 			</File>
 			<File
 				RelativePath="waypoint.h">
-			</File>							
+			</File>
 			<File
 				RelativePath="window.h">
 			</File>
