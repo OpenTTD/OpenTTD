@@ -1014,7 +1014,14 @@ static void MakeSortedSaveGameList()
 
 static void GenerateFileName(void)
 {
-	const Player *p = DEREF_PLAYER(_local_player);
+	const Player *p;
+	/* Check if we are not a specatator who wants to generate a name..
+	    Let's use the name of player #0 for now. */
+	if (_local_player < MAX_PLAYERS)
+		p = DEREF_PLAYER(_local_player);
+	else
+		p = DEREF_PLAYER(0);
+
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
 	SetDParam(2, _date);
