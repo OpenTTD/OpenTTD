@@ -1651,8 +1651,12 @@ END_TILE_LOOP(tile_cur, w,h,tile)
 	}
 
 	if (flags & DC_EXEC) {
-		if (st->airport_type <= AT_INTERNATIONAL)
-      DeleteWindowById(WC_VEHICLE_DEPOT, tile + GetAirport(st->airport_type)->airport_depots[0]);
+		const AirportFTAClass *afc = GetAirport(st->airport_type);
+		uint i;
+
+		for (i = 0; i < afc->nof_depots; ++i)
+			DeleteWindowById(WC_VEHICLE_DEPOT,
+				tile + GetAirport(st->airport_type)->airport_depots[i]);
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
 
