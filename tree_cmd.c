@@ -8,27 +8,29 @@
 #include "town.h"
 #include "sound.h"
 
-static int GetRandomTreeType(uint tile, uint seed)
+static int GetRandomTreeType(TileIndex tile, uint seed)
 {
-	byte i;
+	switch (_opt.landscape) {
+		case LT_NORMAL:
+			return seed * 12 >> 8;
 
-	if (_opt.landscape == LT_NORMAL) {
-		return seed * 12 >> 8;
-	} else if (_opt.landscape == LT_HILLY) {
-		return (seed >> 5) + 12;
-	} else if (_opt.landscape == LT_DESERT) {
-		i = GetMapExtraBits(tile);
-		if (i == 0) {
-			return (seed >> 6) + 28;
-		} else if (i == 1) {
-			if (seed > 12)
-				return -1;
-			return 27;
-		} else {
-			return (seed * 7 >> 8) + 20;
-		}
-	} else {
-		return (seed * 9 >> 8) + 32;
+		case LT_HILLY:
+			return (seed >> 5) + 12;
+
+		case LT_DESERT:
+			switch (GetMapExtraBits(tile)) {
+				case 0:
+					return (seed >> 6) + 28;
+
+				case 1:
+					return (seed > 12) ? -1 : 27;
+
+				default:
+					return (seed * 7 >> 8) + 20;
+			}
+
+		default:
+			return (seed * 9 >> 8) + 32;
 	}
 }
 
@@ -148,10 +150,13 @@ void GenerateTrees(void)
 
 int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
 	int32 cost;
-	int sx,sy,x,y;
-	int treetype;
+	int sx;
+	int sy;
+	int x;
+	int y;
+
+	if (p2 >= MapSize()) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -163,69 +168,89 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0; // total cost
 
-	for(x=sx; x<=ex; x+=16) {
-		for(y=sy; y<=ey; y+=16) {
+	for (x = sx; x <= ex; x += 16) {
+		for (y = sy; y <= ey; y += 16) {
+			TileInfo ti;
+
 			FindLandscapeHeight(&ti, x, y);
 			if (!EnsureNoVehicle(ti.tile))
 				continue;
 
-			if (ti.type == MP_TREES) {
-				// no more space for trees?
-				if (_game_mode != GM_EDITOR && (ti.map5 & 0xC0) == 0xC0) {
-					_error_message = STR_2803_TREE_ALREADY_HERE;
-					continue;
-				}
+			switch (ti.type) {
+				case MP_TREES:
+					// no more space for trees?
+					if (_game_mode != GM_EDITOR && (ti.map5 & 0xC0) == 0xC0) {
+						_error_message = STR_2803_TREE_ALREADY_HERE;
+						continue;
+					}
 
-				if (flags & DC_EXEC) {
-					_map5[ti.tile] = ti.map5 + 0x40;
-					MarkTileDirtyByTile(ti.tile);
-				}
-				// 2x as expensive to add more trees to an existing tile
-				cost += _price.build_trees * 2;
-			} else {
-				if (ti.type != MP_CLEAR || _map_owner[ti.tile] != OWNER_NONE) {
+					if (flags & DC_EXEC) {
+						_map5[ti.tile] = ti.map5 + 0x40;
+						MarkTileDirtyByTile(ti.tile);
+					}
+					// 2x as expensive to add more trees to an existing tile
+					cost += _price.build_trees * 2;
+					break;
+
+				case MP_CLEAR:
+					if (_map_owner[ti.tile] != OWNER_NONE) {
+						_error_message = STR_2804_SITE_UNSUITABLE;
+						continue;
+					}
+
+					// it's expensive to clear farmland
+					if ((ti.map5 & 0x1F) == 0xF)
+						cost += _price.clear_3;
+					else if ((ti.map5 & 0x1C) == 8)
+						cost += _price.clear_2;
+
+					if (flags & DC_EXEC) {
+						int treetype;
+						int m2;
+
+						if (_game_mode != GM_EDITOR && _current_player < MAX_PLAYERS) {
+							Town *t = ClosestTownFromTile(ti.tile, _patches.dist_local_authority);
+							if (t != NULL)
+								ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
+						}
+
+						switch (ti.map5 & 0x1C) {
+							case 0x04:
+								m2 = 16;
+								break;
+
+							case 0x10:
+								m2 = ((ti.map5 & 3) << 6) | 0x20;
+								break;
+
+							default:
+								m2 = 0;
+								break;
+						}
+
+						treetype = p1;
+						if (treetype == -1) {
+							treetype = GetRandomTreeType(ti.tile, Random() >> 24);
+							if (treetype == -1) treetype = 27;
+						}
+
+						ModifyTile(ti.tile,
+							MP_SETTYPE(MP_TREES) |
+							MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
+							m2, /* map2 */
+							treetype, /* map3lo */
+							_game_mode == GM_EDITOR ? 3 : 0 /* map5 */
+						);
+
+						if (_game_mode == GM_EDITOR && IS_BYTE_INSIDE(treetype, 0x14, 0x1B))
+							SetMapExtraBits(ti.tile, 2);
+					}
+					cost += _price.build_trees;
+					break;
+
+				default:
 					_error_message = STR_2804_SITE_UNSUITABLE;
-					continue;
-				}
-
-				// it's expensive to clear farmland
-				if ((ti.map5 & 0x1F) == 0xF) cost += _price.clear_3;
-				else if ((ti.map5 & 0x1C) == 8) cost += _price.clear_2;
-
-				if (flags & DC_EXEC) {
-					int m2;
-
-					if (_game_mode != GM_EDITOR && _current_player < MAX_PLAYERS) {
-						Town *t = ClosestTownFromTile(ti.tile, _patches.dist_local_authority);
-						if (t != NULL)
-							ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
-					}
-					m2 = 0;
-					if ( (ti.map5 & 0x1C) == 4 ) {
-						m2 = 16;
-					} else if ( (ti.map5 & 0x1C) == 16 ) {
-						m2 = ((ti.map5 & 3) << 6) | 0x20;
-					}
-
-					treetype = p1;
-					if (treetype == -1) {
-						treetype = GetRandomTreeType(ti.tile, Random()>>24);
-						if (treetype==-1) treetype=27;
-					}
-
-					ModifyTile(ti.tile,
-						MP_SETTYPE(MP_TREES) |
-						MP_MAP2 | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
-						m2, /* map2 */
-						treetype, /* map3lo */
-			 			_game_mode == GM_EDITOR ? 3 : 0 /* map5 */
-					);
-
-					if (_game_mode == GM_EDITOR && IS_BYTE_INSIDE(treetype, 0x14, 0x1B)) {
-						SetMapExtraBits(ti.tile, 2);
-					}
-				}
-				cost += _price.build_trees;
+					break;
 			}
 		}
 	}
