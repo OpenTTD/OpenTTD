@@ -44,6 +44,9 @@ int dup2(int oldd, int newd) { return -1; }
 
 static void *_dedicated_video_mem;
 
+extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
+extern void SwitchMode(int new_mode);
+
 #ifdef UNIX
 /* We want to fork our dedicated server */
 void DedicatedFork(void)
@@ -255,10 +258,27 @@ static int DedicatedVideoMainLoop(void)
 	// Load the dedicated server stuff
 	_is_network_server = true;
 	_network_dedicated = true;
-	_switch_mode = SM_NONE;
 	_network_playas = OWNER_SPECTATOR;
 	_local_player = OWNER_SPECTATOR;
-	DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
+
+	/* If SwitchMode is SM_LOAD, it means that the user used the '-g' options */
+	if (_switch_mode != SM_LOAD) {
+		_switch_mode = SM_NONE;
+		DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
+	} else {
+		_switch_mode = SM_NONE;
+		/* First we need to test if the savegame can be loaded, else we will end up playing the
+		 *  intro game... */
+		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
+			/* Loading failed, pop out.. */
+			DEBUG(net, 0)("Loading request map failed. Aborting..");
+			_networking = false;
+		} else {
+			/* We can load this game, so go ahead */
+			SwitchMode(SM_LOAD);
+		}
+	}
+
 	// Done loading, start game!
 
 	if (!_networking) {
