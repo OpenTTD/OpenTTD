@@ -14,16 +14,6 @@ typedef struct RailVehicleInfo {
 	byte cargo_type;
 } RailVehicleInfo;
 
-typedef struct RoadVehicleInfo {
-	byte image_index;
-	byte base_cost;
-	uint16 max_speed;
-	byte cargo_type;
-	uint16 capacity;
-	byte running_cost;
-	byte sfx;
-} RoadVehicleInfo;
-
 typedef struct ShipVehicleInfo {
 	byte image_index;
 	byte base_cost;
@@ -35,6 +25,27 @@ typedef struct ShipVehicleInfo {
 	byte refittable;
 } ShipVehicleInfo;
 
+typedef struct AircraftVehicleInfo {
+	byte image_index;
+	byte base_cost;
+	byte running_cost;
+	byte subtype;
+	byte sfx;
+	byte acceleration;
+	byte max_speed;
+	byte mail_capacity;
+	uint16 passanger_capacity;
+} AircraftVehicleInfo;
+
+typedef struct RoadVehicleInfo {
+	byte image_index;
+	byte base_cost;
+	byte running_cost;
+	byte sfx;
+	byte max_speed;
+	byte capacity;
+	byte cargo_type;
+} RoadVehicleInfo;
 
 typedef struct EngineInfo {
 	uint16 base_intro;
@@ -133,21 +144,27 @@ enum {
 	NUM_ROAD_ENGINES = 88,
 	NUM_SHIP_ENGINES = 11,
 	NUM_AIRCRAFT_ENGINES = 41,
-	TOTAL_NUM_ENGINES = NUM_NORMAL_RAIL_ENGINES+NUM_MONORAIL_ENGINES+NUM_MAGLEV_ENGINES+NUM_ROAD_ENGINES+NUM_SHIP_ENGINES+NUM_AIRCRAFT_ENGINES,
+	TOTAL_NUM_ENGINES = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES + NUM_AIRCRAFT_ENGINES,
 	AIRCRAFT_ENGINES_INDEX = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES,
 	SHIP_ENGINES_INDEX = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES,
 	ROAD_ENGINES_INDEX = NUM_TRAIN_ENGINES,
 };
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
+#define DEREF_ENGINE(i) (&_engines[i])
 VARDEF StringID _engine_name_strings[TOTAL_NUM_ENGINES];
 
+/* Access Vehicle Data */
+//#include "table/engines.h"
 extern EngineInfo _engine_info[TOTAL_NUM_ENGINES];
-extern RailVehicleInfo _rail_vehicle_info[];
-#define road_vehicle_info(e) (&_road_vehicle_info[e - ROAD_ENGINES_INDEX])
-extern RoadVehicleInfo _road_vehicle_info[];
-/* TODO: Change this to return a pointer instead, for the sake of consistency.
- * --pasky */
+extern RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
+extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
+extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+/* TODO: Change this to return a pointer type instead, for the sake of consistency.
+ * --pasky. XXX - really needed? Why?. Best to remove the pointer type as well cause
+ * _map uses it that way...less conflicts - Darkvater */
+#define rail_vehinfo(e) _rail_vehicle_info[e]
 #define ship_vehicle_info(e) _ship_vehicle_info[e - SHIP_ENGINES_INDEX]
-extern ShipVehicleInfo _ship_vehicle_info[];
-
+#define aircraft_vehinfo(e) _aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX]
+#define road_vehicle_info(e) (&_road_vehicle_info[e - ROAD_ENGINES_INDEX])
 #endif
