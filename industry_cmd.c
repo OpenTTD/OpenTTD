@@ -1564,7 +1564,8 @@ Industry *CreateNewIndustry(uint tile, int type)
 	return i;
 }
 
-static const byte _numof_industry_table[3][12] = {
+static const byte _numof_industry_table[4][12] = {
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5},
 	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
 	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},
@@ -1574,15 +1575,18 @@ static void PlaceInitialIndustry(byte type, int amount)
 {
 	int num = _numof_industry_table[_opt.diff.number_industries][amount];
 
-	assert(num > 0);
+	if (_opt.diff.number_industries != 0)
+	{
+		assert(num > 0);
 
-	do {
-		int i = 2000;
 		do {
-			if (CreateNewIndustry(TILE_MASK(Random()), type) != NULL)
-				break; 
-		} while (--i != 0);
-	} while (--num);
+			int i = 2000;
+			do {
+				if (CreateNewIndustry(TILE_MASK(Random()), type) != NULL)
+					break; 
+			} while (--i != 0);
+		} while (--num);
+	}
 }
 
 void GenerateIndustries()

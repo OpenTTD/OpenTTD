@@ -1720,6 +1720,7 @@ STR_6815_DISASTERS						:{LTBLUE}Disasters: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL				:{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE							:None
 STR_6816_LOW							:Low
 STR_6817_NORMAL							:Normal
 STR_6818_HIGH							:High

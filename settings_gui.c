@@ -443,7 +443,7 @@ static const GameSettingData _game_setting_info[] = {
 	{0,7,1,0},
 	{0,3,1,STR_6830_IMMEDIATE},
 	{0,2,1,STR_6816_LOW},
-	{0,2,1,STR_6816_LOW},
+	{0,3,1,STR_26816_NONE},
 	{100,500,50,0},
 	{2,4,1,0},
 	{0,2,1,STR_6820_LOW},
@@ -470,9 +470,9 @@ static bool FORCEINLINE GetBitAndShift(uint32 *b)
 static GameOptions _opt_mod_temp;
 
 static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = {
-	{2, 2, 1, 2, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},
-	{4, 1, 1, 1, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},
-	{7, 0, 2, 1, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2},
+	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},
+	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},
+	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2},
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)
