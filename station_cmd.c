@@ -2119,7 +2119,7 @@ static void ClickTile_Station(uint tile)
 	}
 }
 
-static INLINE bool IsTrainStationTile(uint tile) {
+static inline bool IsTrainStationTile(uint tile) {
 	return IS_TILETYPE(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
 }
 
@@ -2233,7 +2233,7 @@ static void StationHandleBigTick(Station *st)
 	}
 }
 
-static INLINE void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }
+static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }
 
 static byte _rating_boost[3] = { 0, 31, 63};
 

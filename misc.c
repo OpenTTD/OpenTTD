@@ -10,7 +10,7 @@ extern void InitNewsItemStructs();
 
 byte _name_array[512][32];
 
-static INLINE uint32 ROR(uint32 x, int n)
+static inline uint32 ROR(uint32 x, int n)
 {
 	return (x >> n) + (x << ((sizeof(x)*8)-n));
 }

@@ -221,7 +221,7 @@ static const uint16 * const _legend_table[] = {
 };
 
 #if defined(TTD_ALIGNMENT_4)
-	static INLINE void WRITE_PIXELS(void *dst, uint32 val)
+	static inline void WRITE_PIXELS(void *dst, uint32 val)
 	{
 		byte *d = (byte*)dst;
 #	if defined(TTD_BIG_ENDIAN)
@@ -238,7 +238,7 @@ static const uint16 * const _legend_table[] = {
 	}
 
 /* need to use OR, otherwise we will overwrite the wrong pixels at the edges :( */
-	static INLINE void WRITE_PIXELS_OR(void *dst, uint32 val)
+	static inline void WRITE_PIXELS_OR(void *dst, uint32 val)
 	{
 		byte *d = (byte*)dst;
 #	if defined(TTD_BIG_ENDIAN)
@@ -328,7 +328,7 @@ static const uint32 _smallmap_vegetation_andor[12][2] = {
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 };
 
-static uint32 INLINE GetSmallMapCountoursPixels(uint tile)
+static inline uint32 GetSmallMapCountoursPixels(uint tile)
 {
 	uint t;
 
@@ -358,7 +358,7 @@ static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int rep
 }
 
 
-static uint32 INLINE GetSmallMapVehiclesPixels(uint tile)
+static inline uint32 GetSmallMapVehiclesPixels(uint tile)
 {
 	uint t;
 
@@ -411,7 +411,7 @@ static const byte _industry_smallmap_colors[175] = {
 	 15, 15, 15, 15, 15, 15, 15,
 };
 
-static uint32 INLINE GetSmallMapIndustriesPixels(uint tile)
+static inline uint32 GetSmallMapIndustriesPixels(uint tile)
 {
 	int t;
 
@@ -443,7 +443,7 @@ static void DrawSmallMapIndustries(byte *dst, uint xc, uint yc, int pitch, int r
 	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
 
-static uint32 INLINE GetSmallMapRoutesPixels(uint tile)
+static inline uint32 GetSmallMapRoutesPixels(uint tile)
 {
 	int t;
 	uint32 bits;
@@ -499,7 +499,7 @@ static const uint32 _vegetation_clear_bits[4 + 7] = {
 	MKCOLOR(0x54545454),
 };
 
-static uint32 INLINE GetSmallMapVegetationPixels(uint tile)
+static inline uint32 GetSmallMapVegetationPixels(uint tile)
 {
 	int i,t;
 	uint32 bits;
@@ -545,7 +545,7 @@ static void DrawSmallMapVegetation(byte *dst, uint xc, uint yc, int pitch, int r
 
 static uint32 *_owner_colors;
 
-static uint32 INLINE GetSmallMapOwnerPixels(uint tile)
+static inline uint32 GetSmallMapOwnerPixels(uint tile)
 {
 	int t;
 
@@ -601,7 +601,7 @@ static const byte _vehicle_type_colors[6] = {
 	184, 191, 152, 15, 215, 184
 };
 
-static INLINE uint32 dup_byte32(byte b) {
+static inline uint32 dup_byte32(byte b) {
 	return b + (b << 8) + (b << 16) + (b << 24);
 }
 

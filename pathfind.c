@@ -434,7 +434,7 @@ typedef struct {
 
 // called after a new element was added in the queue at the last index.
 // move it down to the proper position
-static void INLINE HeapifyUp(NewTrackPathFinder *tpf)
+static void inline HeapifyUp(NewTrackPathFinder *tpf)
 {
 	StackedItem si;
 	int i = ++tpf->nstack;
@@ -448,7 +448,7 @@ static void INLINE HeapifyUp(NewTrackPathFinder *tpf)
 }
 
 // called after the element 0 was eaten. fill it with a new element
-static void INLINE HeapifyDown(NewTrackPathFinder *tpf)
+static void inline HeapifyDown(NewTrackPathFinder *tpf)
 {
 	StackedItem si;
 	int i = 1, j;

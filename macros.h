@@ -11,20 +11,20 @@
 #undef max
 #endif
 
-static INLINE int min(int a, int b) { if (a <= b) return a; return b; }
-static INLINE int max(int a, int b) { if (a >= b) return a; return b; }
-static INLINE int64 max64(int64 a, int64 b) { if (a >= b) return a; return b; }
+static inline int min(int a, int b) { if (a <= b) return a; return b; }
+static inline int max(int a, int b) { if (a >= b) return a; return b; }
+static inline int64 max64(int64 a, int64 b) { if (a >= b) return a; return b; }
 
-static INLINE uint minu(uint a, uint b) { if (a <= b) return a; return b; }
-static INLINE uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
+static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
+static inline uint maxu(uint a, uint b) { if (a >= b) return a; return b; }
 
 
-static INLINE int clamp(int a, int min, int max) { if (a <= min) return min; if (a >= max) return max; return a; }
-static INLINE int clamp2(int a, int min, int max) { if (a <= min) a=min; if (a >= max) a=max; return a; }
-static INLINE bool int32_add_overflow(int32 a, int32 b) { return (int32)(a^b)>=0 && (int32)(a^(a+b))<0; }
-static INLINE bool int32_sub_overflow(int32 a, int32 b) { return (int32)(a^b)<0 && (int32)(a^(a-b))<0; }
+static inline int clamp(int a, int min, int max) { if (a <= min) return min; if (a >= max) return max; return a; }
+static inline int clamp2(int a, int min, int max) { if (a <= min) a=min; if (a >= max) a=max; return a; }
+static inline bool int32_add_overflow(int32 a, int32 b) { return (int32)(a^b)>=0 && (int32)(a^(a+b))<0; }
+static inline bool int32_sub_overflow(int32 a, int32 b) { return (int32)(a^b)<0 && (int32)(a^(a-b))<0; }
 
-static INLINE bool str_eq(const byte *a, const byte *b)
+static inline bool str_eq(const byte *a, const byte *b)
 {
 	int i=0;
 	while (a[i] == b[i]) {
@@ -36,7 +36,7 @@ static INLINE bool str_eq(const byte *a, const byte *b)
 }
 
 // Will crash if strings are equal
-static INLINE bool str_is_below(byte *a, byte *b) {
+static inline bool str_is_below(byte *a, byte *b) {
 	while (*a <= *b) {
 		if (*a < *b) return true;
 		a++;
@@ -46,19 +46,19 @@ static INLINE bool str_is_below(byte *a, byte *b) {
 }
 
 
-static INLINE int32 BIGMULSS(int32 a, int32 b, int shift) {
+static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
 	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
 }
 
-static INLINE int64 BIGMULSS64(int64 a, int64 b, int shift) {
+static inline int64 BIGMULSS64(int64 a, int64 b, int shift) {
 	return ((a) * (b)) >> (shift);
 }
 
-static INLINE uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
+static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
 	return (uint32)(((uint64)(a) * (uint64)(b)) >> (shift));
 }
 
-static INLINE int64 BIGMULS(int32 a, int32 b) {
+static inline int64 BIGMULS(int32 a, int32 b) {
 	return (int32)(((int64)(a) * (int64)(b)));
 }
 
@@ -145,7 +145,7 @@ extern const byte _ffb_64[128];
  */
 #define KILL_FIRST_BIT(x) _ffb_64[(x)+64]
 
-static INLINE int FindFirstBit2x64(int value)
+static inline int FindFirstBit2x64(int value)
 {
 	int i = 0;
 	if ( (byte) value == 0) {
@@ -195,17 +195,17 @@ static INLINE int FindFirstBit2x64(int value)
 #define abs myabs
 
 
-static INLINE int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
+static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
 #define intxchg(a,b) intxchg_(&(a), (b))
 #define intswap(a,b) ((b) = intxchg_(&(a), (b)))
 
-static INLINE int myabs(int a) { if (a<0) a = -a; return a; }
-static INLINE int64 myabs64(int64 a) { if (a<0) a = -a; return a; }
+static inline int myabs(int a) { if (a<0) a = -a; return a; }
+static inline int64 myabs64(int64 a) { if (a<0) a = -a; return a; }
 
-static INLINE void swap_byte(byte *a, byte *b) { byte t = *a; *a = *b; *b = t; }
-static INLINE void swap_uint16(uint16 *a, uint16 *b) { uint16 t = *a; *a = *b; *b = t; }
-static INLINE void swap_int16(int16 *a, int16 *b) { int16 t = *a; *a = *b; *b = t; }
-static INLINE void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a = *b; *b = t; }
+static inline void swap_byte(byte *a, byte *b) { byte t = *a; *a = *b; *b = t; }
+static inline void swap_uint16(uint16 *a, uint16 *b) { uint16 t = *a; *a = *b; *b = t; }
+static inline void swap_int16(int16 *a, int16 *b) { int16 t = *a; *a = *b; *b = t; }
+static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a = *b; *b = t; }
 
 
 
@@ -214,14 +214,14 @@ static INLINE void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 #	define ADD_WORD(x) (x)&0xFF, ((x) >> 8)&0xFF
 #	define ADD_DWORD(x) (x)&0xFF, ((x) >> 8)&0xFF, ((x) >> 16)&0xFF, ((x) >> 24)&0xFF
 #elif defined(TTD_BIG_ENDIAN)
-	static INLINE uint16 READ_LE_UINT16(const void *b) {
+	static inline uint16 READ_LE_UINT16(const void *b) {
 		return ((const byte*)b)[0] + (((const byte*)b)[1] << 8);
 	}
 #	define ADD_WORD(x) ((x) >> 8)&0xFF, (x)&0xFF
 #	define ADD_DWORD(x) ((x) >> 24)&0xFF, ((x) >> 16)&0xFF, ((x) >> 8)&0xFF,  (x)&0xFF
 #endif
 
-static INLINE void WRITE_LE_UINT16(void *b, uint16 x) {
+static inline void WRITE_LE_UINT16(void *b, uint16 x) {
 	((byte*)b)[0] = (byte)x;
 	((byte*)b)[1] = (byte)(x >> 8);
 }

@@ -43,7 +43,6 @@
 #if defined(__GNUC__)
 # define NORETURN
 # define FORCEINLINE inline
-# define INLINE inline
 # define CDECL
 //#include <alloca.h>
 //#include <malloc.h>
@@ -62,7 +61,7 @@
 #	include <malloc.h> // alloca()
 # define NORETURN __declspec(noreturn)
 #	define FORCEINLINE __forceinline
-#	define INLINE _inline
+#	define inline _inline
 #	define CDECL _cdecl
 # define NOT_REACHED() _assume(0)
 # define snprintf _snprintf
@@ -116,10 +115,10 @@ typedef unsigned __int64 uint64;
 # define TTD_ALIGNMENT_2
 # define TTD_ALIGNMENT_4
 
-static uint32 INLINE TO_LE32(uint32 x) { return BSWAP32(x); }
-static uint16 INLINE TO_LE16(uint16 x) { return BSWAP16(x); }
-static uint32 INLINE FROM_LE32(uint32 x) { return BSWAP32(x); }
-static uint16 INLINE FROM_LE16(uint16 x) { return BSWAP16(x); }
+static inline uint32 TO_LE32(uint32 x) { return BSWAP32(x); }
+static inline uint16 TO_LE16(uint16 x) { return BSWAP16(x); }
+static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
+static inline uint16 FROM_LE16(uint16 x) { return BSWAP16(x); }
 #define TO_BE32(x) x
 #define TO_BE16(x) x
 #define FROM_BE32(x) x

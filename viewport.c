@@ -1227,7 +1227,7 @@ static void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bott
 	}
 }
 
-static void INLINE ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
+static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
 {
 	int t;
 

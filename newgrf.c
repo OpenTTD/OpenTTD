@@ -114,7 +114,7 @@ do { \
 } while (0)
 
 
-static byte INLINE grf_load_byte(byte **buf)
+static inline byte grf_load_byte(byte **buf)
 {
 	return *(*buf)++;
 }
