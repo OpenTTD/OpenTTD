@@ -212,10 +212,6 @@ SOURCE=.\gfx.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\newgrf.c
-# End Source File
-# Begin Source File
-
 SOURCE=.\landscape.c
 # End Source File
 # Begin Source File
@@ -254,6 +250,10 @@ SOURCE=.\namegen.c
 # Begin Source File
 
 SOURCE=.\network.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf.c
 # End Source File
 # Begin Source File
 
@@ -987,6 +987,66 @@ SOURCE=.\table\unmovable_land.h
 # Begin Source File
 
 SOURCE=.\table\water_land.h
+# End Source File
+# End Group
+# Begin Group "Network Source Files"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\callback_table.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\dedicated.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_client.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_data.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_gamelist.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_server.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_udp.c
+# End Source File
+# End Group
+# Begin Group "Network Header Files"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\network_client.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_core.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_data.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_gamelist.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_server.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network_udp.h
 # End Source File
 # End Group
 # Begin Source File
