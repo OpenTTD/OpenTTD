@@ -1360,6 +1360,8 @@ int LoadUnloadVehicle(Vehicle *v)
 		if (v->cargo_count != 0) {
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000) {
 				// deliver goods to the station
+				st->time_since_unload = 0;
+
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
 				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
 				result |= 1;
