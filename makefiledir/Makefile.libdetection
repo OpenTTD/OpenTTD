@@ -4,6 +4,8 @@
 ifdef WINDIR
 ifndef UNIX
 WIN32:=1
+CYGWIN:=1
+MINGW:=1
 endif
 else
 UNIX:=1
