@@ -449,7 +449,7 @@ endif
 ttd_SOURCES = \
 	ai.c ai_build.c ai_new.c ai_pathfinder.c ai_shared.c aircraft_cmd.c \
 	aircraft_gui.c airport.c airport_gui.c aystar.c bridge_gui.c \
-	clear_cmd.c command.c console.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
+	clear_cmd.c command.c console.c console_cmds.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
 	engine.c engine_gui.c fileio.c gfx.c graph_gui.c grfspecial.c \
 	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c \
 	minilzo.c misc.c misc_cmd.c misc_gui.c music_gui.c namegen.c network.c \

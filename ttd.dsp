@@ -188,6 +188,10 @@ SOURCE=.\console.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\console_cmds.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\documentation.txt
 # End Source File
 # Begin Source File
@@ -455,6 +459,10 @@ SOURCE=.\industry.h
 # Begin Source File
 
 SOURCE=.\macros.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\network.h
 # End Source File
 # Begin Source File
 
