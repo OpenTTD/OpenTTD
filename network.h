@@ -87,6 +87,7 @@ typedef struct NetworkClientInfo {
 	byte client_playas;															// As which player is this client playing
 	uint32 client_ip;																// IP-address of the client (so he can be banned)
 	uint16 join_date;																// Gamedate the player has joined
+	char unique_id[NETWORK_NAME_LENGTH];						// Every play sends an unique id so we can indentify him
 } NetworkClientInfo;
 
 typedef struct NetworkGameList {
@@ -125,6 +126,7 @@ VARDEF char _network_player_name[NETWORK_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
 
 VARDEF uint16 _network_own_client_index;
+VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
 
 VARDEF uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 VARDEF uint32 _frame_counter_max; // To where we may go with our clients

@@ -34,6 +34,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(ClientState *cs, Networ
 	//    uint16:  The index of the client (always unique on a server. 1 = server)
 	//    uint8:  As which player the client is playing
 	//    String: The name of the client
+	//    String: The unique id of the client
 	//
 
 	Packet *p;
@@ -43,6 +44,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(ClientState *cs, Networ
 		NetworkSend_uint16(p, ci->client_index);
 		NetworkSend_uint8 (p, ci->client_playas);
 		NetworkSend_string(p, ci->client_name);
+		NetworkSend_string(p, ci->unique_id);
 
 		NetworkSend_Packet(p, cs);
 	}
@@ -564,6 +566,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
 	char name[NETWORK_NAME_LENGTH];
+	char unique_id[NETWORK_NAME_LENGTH];
 	NetworkClientInfo *ci;
 	char test_name[NETWORK_NAME_LENGTH];
 	byte playas;
@@ -589,6 +592,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	NetworkRecv_string(p, name, sizeof(name));
 	playas = NetworkRecv_uint8(p);
 	client_lang = NetworkRecv_uint8(p);
+	NetworkRecv_string(p, unique_id, sizeof(unique_id));
 
 	// Check if someone else already has that name
 	snprintf(test_name, sizeof(test_name), "%s", name);
@@ -607,6 +611,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	ci = DEREF_CLIENT_INFO(cs);
 
 	snprintf(ci->client_name, sizeof(ci->client_name), "%s", test_name);
+	snprintf(ci->unique_id, sizeof(ci->unique_id), "%s", unique_id);
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
 

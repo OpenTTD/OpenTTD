@@ -175,8 +175,8 @@ DEF_CONSOLE_CMD(ConStatus)
 				status = "unknown";
 				break;
 		}
-		IConsolePrintF(8, "Client #%d/%s  status: %s  frame-lag: %d  play-as: %d",
-			cs->index, ci->client_name, status, lag, ci->client_playas);
+		IConsolePrintF(8, "Client #%d/%s  status: %s  frame-lag: %d  play-as: %d  unique-id: %s",
+			cs->index, ci->client_name, status, lag, ci->client_playas, ci->unique_id);
 	}
 
 	return NULL;

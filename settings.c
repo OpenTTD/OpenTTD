@@ -731,6 +731,7 @@ static const SettingDesc network_settings[] = {
 	{"server_password",		SDT_STRINGBUF | (lengthof(_network_game_info.server_password) << 16), NULL, &_network_game_info.server_password, NULL},
 	{"server_name",		SDT_STRINGBUF | (lengthof(_network_server_name) << 16), NULL, &_network_server_name, NULL},
 	{"connect_to_ip",		SDT_STRINGBUF | (lengthof(_network_default_ip) << 16), NULL, &_network_default_ip, NULL},
+	{"network_id",		SDT_STRINGBUF | (lengthof(_network_unique_id) << 16), NULL, &_network_unique_id, NULL},
 	{NULL,						0,											NULL,					NULL,										NULL}
 };
 #endif /* ENABLE_NETWORK */

@@ -549,7 +549,7 @@ C_SOURCES = \
 	callback_table.c clear_cmd.c command.c console.c console_cmds.c \
 	dedicated.c disaster_cmd.c dock_gui.c dummy_land.c economy.c \
 	engine.c engine_gui.c fileio.c gfx.c graph_gui.c newgrf.c \
-	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c \
+	industry_cmd.c industry_gui.c intro_gui.c landscape.c main_gui.c md5.c \
 	minilzo.c misc.c misc_cmd.c misc_gui.c music_gui.c namegen.c network.c \
 	network_client.c network_data.c network_gamelist.c network_gui.c \
 	network_server.c network_udp.c news_gui.c oldloader.c order_cmd.c \

@@ -53,6 +53,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	//    String: Player Name (max NETWORK_NAME_LENGTH)
 	//    uint8:  Play as Player id (1..MAX_PLAYERS)
 	//    uint8:  Language ID
+	//    String: Unique id to find the player back in server-listing
 	//
 
 #if defined(WITH_REV)
@@ -69,6 +70,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	NetworkSend_string(p, _network_player_name); // Player name
 	NetworkSend_uint8(p, _network_playas); // Password
 	NetworkSend_uint8(p, NETLANG_ANY); // Language
+	NetworkSend_string(p, _network_unique_id);
 	NetworkSend_Packet(p, MY_CLIENT);
 }
 
@@ -346,6 +348,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		ci->client_index = index;
 		ci->client_playas = NetworkRecv_uint8(p);
 		NetworkRecv_string(p, ci->client_name, sizeof(ci->client_name));
+		NetworkRecv_string(p, ci->unique_id, sizeof(ci->unique_id));
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
@@ -603,13 +606,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	if (action == NETWORK_ACTION_CHAT_TO_CLIENT) {
-		snprintf(name, 80, "%s", ci_to->client_name);
+		snprintf(name, sizeof(name), "%s", ci_to->client_name);
 		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 	} else if (action == NETWORK_ACTION_CHAT_TO_PLAYER) {
 		GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
 		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 	} else {
-		snprintf(name, 80, "%s", ci_to->client_name);
+		snprintf(name, sizeof(name), "%s", ci_to->client_name);
 		ci = ci_to;
 	}
 

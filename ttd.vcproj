@@ -453,6 +453,10 @@
 						BasicRuntimeChecks="3"/>
 				</FileConfiguration>
 			</File>
+                        <File
+                                RelativePath=".\md5.c">
+                        </File>
+
 			<File
 				RelativePath="minilzo.c">
 				<FileConfiguration

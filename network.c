@@ -10,6 +10,7 @@
 #include "network_gamelist.h"
 #include "console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
+#include "md5.h"
 
 // The listen socket for the server
 static SOCKET _listensocket;
@@ -828,6 +829,7 @@ void NetworkInitGameInfo(void)
 	else
 		ci->client_playas = _local_player + 1;
 	strncpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
+	strncpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
 }
 
 bool NetworkServerStart(void)
@@ -1120,6 +1122,28 @@ void NetworkGameLoop(void)
 	NetworkSend();
 }
 
+void NetworkGenerateUniqueId()
+{
+	md5_state_t state;
+	md5_byte_t digest[16];
+	char hex_output[16*2 + 1];
+	char coding_string[NETWORK_NAME_LENGTH];
+	int di;
+
+	snprintf(coding_string, sizeof(coding_string), "%d%s%d", InteractiveRandom(), "OpenTTD Unique ID", InteractiveRandom());
+
+	/* Generate the MD5 hash */
+	md5_init(&state);
+	md5_append(&state, coding_string, strlen(coding_string));
+	md5_finish(&state, digest);
+
+	for (di = 0; di < 16; ++di)
+		sprintf(hex_output + di * 2, "%02x", digest[di]);
+
+	/* _network_unique_id is our id */
+	snprintf(_network_unique_id, sizeof(_network_unique_id), "%s", hex_output);
+}
+
 // This tries to launch the network for a given OS
 void NetworkStartUp(void)
 {
@@ -1127,6 +1151,10 @@ void NetworkStartUp(void)
 	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
+
+	/* Generate an unique id when there is none yet */
+	if (_network_unique_id[0] == '\0')
+		NetworkGenerateUniqueId();
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
