@@ -1,0 +1,439 @@
+0.3.3 (2004-07-13)
+------------------------------------------------------------------------
+
+- Feature: (MorphOS/AmigaOS) network support
+- Feature: improved german town name generator
+- Change: scenarios now have the file extension .scn
+- Fix: removing and upgrading tracks under a bridge when a train is on the bridge
+- Change: default network port from 12345 (known trojan) to 3979 
+- Fix: pause button was not synched in network games
+- Fix: crash caused by invalid screen resolutions
+- Fix: AI can not build tubular bridges in 1950, etc. Same restrictions apply to it, as to human players.
+- Feature: transparent station signs
+- Feature: show total cargo per wagon type in train details window
+- Fix: volume, liters, was x100, should be x1000
+- Feature: bridges on slopes
+- Fix: bridge building by towns was screwed when executed without testing first
+- Feature: added Galician translation (by Condex)
+- Change: crossing tunnels is now considered a cheat
+- Fix: better AI route finding
+- Fix: AI builds less inner-city bus stations
+- Fix: Better industry spreading on random maps
+- Fix: Two industries that accept the same goods can never be very close to each other
+- Feature: Extra dynamite, allow the removal of town-owned roads, bridges, tunnels for a popularity rating penalty
+- Feature: magic bulldozer cheat, that lets you remove industries, unmovables and town-owned buildings, roads and bridges
+- Fix: destroying bridge (over water or 'higher bridge' with vehicle on it)
+- Fix Game crashes when you hit the build rail button
+- Fix: some scenarios had a max_railtype of 0
+- Fix: Bribe Autorithy. A failed attempt to bribe is now also stored in savegame
+- Fix: 80% CPU load paused in fast-forward
+- Feature: Enabled 'remove' button for stations
+- Feature: Cheat GUI (activate with crtl-alt-c) The game remembers if you have used a cheat
+- Fix: Some airport runways were treated 
+- Fix: minor minimap glitch
+- Fix: station sorting scroll fails with not ennough stations
+- Fix: desert ground for depots in the desert
+- Feature: station sort implemented using qsort()
+- Feature: station list shows #of stations owned by player
+- Fix: trains could run on wrong track type under bridges
+- Fix: screenshot hangs
+- Feature: split canal/lock tool in two tools, one for building canals, one for locks.
+- Fix: wrong sound with ships
+- Fix: toy shop closes even though it has supply
+- Fix: nordic characters
+- Feature: make the HQ generate passengers and mail
+- Fix: slso restore Service Interval when rebuying vehicle
+- Fix: crash with map bits > 8
+- Fix: ufo crash in busstop
+- Fix: town actions has empty row
+- Change: made helicopters able to land on small airports again
+- Feature: display number of houses in town overview window
+- Fix: train stuck with the head in one depot and tail in another
+- Fix: Optimized random radio tower spreading
+- Feature: Land info now shows type of signal
+- Fix: ground below trees is sometimes not covered by snow
+- Fix: fast forward button in scenario editor
+- Change: screenshots are saved to PERSONAL_DIR (unix)
+- Fix: screenshot hotkey does not function in scenario editor
+- Fix: allow deleting a bridge if a vehicle is below
+- Fix: crash loading a scenario
+- Fix: build tracks on water
+- Fix: fast forward button pressed with tab 
+- Fix: vehicles don't get old
+- Feature: realistic train reversing
+- Feature: added support for 64 bit CPUs
+- Fix: finance bug with some original scenarios
+- Feature: added water quantity level "very low", which is the default for easy mode now
+- Fix: 'Stopped' is shown when train is stopping and 'Reverse' is clicked
+- Feature: realistic acceleration turned on, train must first slow down and stop before it can reverse
+- Feature: (MorphOS build) various small improvement to make the the game feel more native
+- Feature: alt + f now toggles full screen (alt + enter still works)
+- Feature: (OSX build) command + q shows the quit window and command + f or enter toggles full screen (alt and control still works too)
+- Feature: pasky's autorenew, autorenews vehicles if enabled.
+- Feature: (incomplete) news history window
+- Feature: larger smallmap size
+- Feature: Austrian Citynames
+- Feature: repaying most possible debt
+- Feature: added Polish translation (by tomek)
+- Feature: added Danish translation (by Gof.dk)
+- Feature: pasky's grfspecial loader. You have to enable them in openttd.cfg using [newgrf] setting
+- Feature: smooth economy changes
+- Fix: 100% CPU bug
+- Fix: crash when AI builds airport
+- Fix: plays wrong music on main screen
+- Fix: inflation was way too high when intrest rate = 0
+- Fix: can't sell anything if money is TOO negative
+- Fix: fast forward button resets
+- Feature: TTDPatch-style gotodepot. Ship depots and aircraft hangars can be inserted in the schedule as well.
+- Feature: ability to add "service if needed" orders (the "full load" button changes to "service" after selecting a depot order)
+- Feature: if a vehicle has depot orders in its schedule, automatic servicing is disabled
+- Change: autosaves are now placed in save/autosave
+- Feature: patch setting so that helicopters get serviced automatically on helipad
+- Fix: "refit train" button remains
+- Change: default savegame directory is /save in Linux
+- Fix: enable up/down scrolling with the mouse
+- Feature: center toolbar on screen
+- Feature: sort savelist by date
+- Feature: allow scrolling in both directions
+- Feature: darkvater's two new airports (metropolitan in 1980 and international in 1990)
+- Feature: Resizing the window in all SDL builds
+- Fix: 1920 all trains
+- Fix: wrong heli breakdownspeed
+- Feature: added MIDI flag to makefile to set custom path to midi player
+- Fix: station list cargo waiting display bug
+- Fix: bug that could allow rails on steep slopes
+- Fix: train depots and checkpoints not flooded by water
+- Fix: added command line option (-i) to deactivate the grf check
+- Fix: signal bug [ 949929 ]
+
+
+0.3.2.1 (2004-05-23)
+- Fix: use english.lng by default
+- Fix: No bridges available in 1920
+- Fix: czech file was missing
+- Feature: now builds on FreeBSD
+- Feature: now builds on MorphOS
+
+
+0.3.2 (2004-05-22)
+- Feature: HP for trians limited to 16bit int
+- Feature: added Czech translation
+- Feature: train refitting
+- Feature: auto euro
+- Fix: don't allow building railroad stations on airports or bus stations
+- Feature: industry directory
+- Feature: added extend vehicle life/noexpire patch
+- Feature: show revision number in title bar
+- Fix: Enable mouse wheel scrolling and zooming in SDL
+- Fix: Construct industries producing raw materials
+- Fix: loading TTD saves gave incorrect reliability parameters for wagons
+- Feature: random network games
+- Fix: fixed order restore bug in network play
+- Fix: network sync fix for train goto depot
+- Feature: smallmap remembers size
+- Fix: Only one statue per player per town
+- Fix: enhanced patch configurator
+- Fix: if realistic acceleration was enabled, train didn't accelerate if they entered a tunnel right after a slope
+- Fix: remove sdl frameskip message
+- Fix: road vehicle on hills speedfix
+- Fix: CompanyValueGraph window too small for currency
+- Fix: mkdir() problem in unix.c
+- Fix: client kills server if it leaves a networkgame
+- Change: autosave go to autosave/
+- Fix: Canal tool resets after 1 use
+- Feature: remember value of show town names in smallmap
+- Feature: norwegian translation
+- Feature: norwegian currency
+- Feature: slovak language
+- Fix: smoother mouse cursor
+- Fix: fixed a couple of overlapping memcpys
+- Feature: use SO_REUSEADDR on listen socket
+- Feature: unix sigabort handling
+- Feature: hungarian translation
+- Fix: quit to beos
+- Fix: dragging to build canals sometimes crashed
+- Fix: cactus plants died on desert
+- Feature: added norwegian translation
+- Feature: added more default resolutions
+- Feature: return error message if DOS grf files are used
+- Feature: bemidi support
+- Fix: invalid letters in spanish town names
+- Fix: rail upgrade button
+- Fix: makefile reorganization
+- Fix: Zoom out button not grayed out
+- Fix: no space between some values and units
+- Change: Plant area of trees now allowed for 20x20 area
+- Change: "kmh^-1" to "km/h"
+- Fix: Station catchment outline-tiles weren't shown properly on slopes
+- Fix: oil rig station wasn't properly deleted
+- Fix: fixed making screenshots in scenario editor
+- Feature: added icelandic currency
+- Change: show original savegame names for oldstyle savegames
+- Fix: mac patches by bjarni
+- Fix: fixed alignment issue in station drawing
+
+
+0.3.1 (2004-04-26)
+- Fix: shift+arrows keys scrolls faster (by pasky)
+- Feature: bridge pillars for higher bridges
+- Fix: [ 941880 ] "monorail in 1985" which allowed you to build monorail/maglev at any year
+- Feature: remember cargo payment rates selection, default to all
+- Fix: town ratings when companies are deleted/merged
+- Fix: vehicle reliability calculation in third phase
+- Change: new directory structure (*.grf+sample.cat in data subdir, *.lng in lang subdir)
+- Feature: fast forward button
+- Fix: random world button in scenario editor doesn't build cities, industries, trees
+- Fix: loading worlds with no towns now fails
+- Fix: outdated sort order after station renaming
+- Feature: copy/share orders from trains in depot
+- Fix: better train detection for copy orders
+- Fix: [ 938481 ] Euro currency bug
+- Fix: [ 938170 ] Go to xxx road depot selection bug (2)
+- Fix: [ 934520 ] scrolling and newspaper in title screen
+- Feature: swedish translation (by poLiSen)
+- Fix: incorrect cargo_days for trains
+- Feature: dragging to construct canals
+- Fix array bounds error with train breakdown speeds
+- Fix: towns deleting random tiles around houses
+- Feature: can now have more than 128 towns
+- Fix: incorrect road vehicle list caption for competitors
+- Fix: vehicle menu graying after a bankrupty
+- Feature: always allow building small airports patch
+- Feature: colorful newspaper after a certain date
+- Feature: build while paused patch
+- Feature: polish town names
+- Fix: selective road removal
+- Feature: clear area now works in scenario editor
+- Feature: drag&drop stations
+- Fix: make houses available in 1920 to prevent hang
+- Fix: duration of breakdown smoke
+- Fix: slope bug under bridges
+- Feature: more realistic train starting and stopping
+- Fix: don't play invalid sounds (fixes road reconstruction crash)
+- Fix: display correct train power with multihead engines
+- Fix: buffer overflow caused by too long string in english.lng
+- Fix: destroying things with no money
+
+0.3.0 (2004-04-14)
+- Change: don't slow down trains as much on hills
+- Fix: aircraft terminal wasn't properly freed if aircraft crashed
+- Fix: fixed station acceptance bug
+- Change: limit amount of radiotowers.
+- Feature: cost estimation with Shift
+- Change: changed speedkey from Shift to Tab.
+- Feature: added patch for starting_date, takes a value on the form yyyy, yyyymm or yyyymmdd.
+- Feature: support for multiheaded trains
+- Feature: sell whole train by dragging loco to special trashcan
+- Feature: drag the whole train with ctrl in depot
+- Fix: fixed buy shares in company
+- Feature: added convert rail tool
+- Change: enhanced patches window with pages.
+- Feature: patch to select what vehicle types the ai will build
+- Feature: better slope graphics
+- Fix: only deliver goods to stations that have a rating != 0
+- Feature: new pathfinding algorithm for trains (enable with new_pathfinding)
+- Change: changed intro graphics
+- Change: all player stuff is deleted when you load a scenario.
+- Fix: added F hotkeys in scenario editor
+- Feature: Added patch to use timidity for BeOS
+- Feature: mousewheel can now be used to scroll in windows
+- Feature: added coordinate display to landinfo window
+- Feature: change default servicing interval for vehicles
+- Feature: change max # of vehicles per player
+- Fix: unable to raise land next to signal
+- Feature: nonuniform stations patch
+- Feature: moved error message box out of the way
+- Fix: aircraft was shown instead of ships in player overview window
+- Feature: canals/shiplifts
+- Feature: build tree of random type
+- Feature: build trees on area
+- Feature: added color coded vehicle profits
+- Feature: ability to close error messages with space.
+- Fix: updated installer to take care of savegames more carefully
+- Fix: don't make a new subsidy if there already exists one that is currently active by a company
+- Fix: town directory sometimes showed huge numbers
+- Fix: fixed bugs when changing owners of items (pieces of rail were not always deleted),
+- Feature: network games (currently unsupported)
+- Fix: fixed bug with large stations in train pathfinder
+- Change: use save/ as save folder on win32
+- Feature: bigger demolish tool
+- Change: moved date in news window
+- Feature: two more bridges
+- Feature: improved depot finding
+- Feature: bribe the town authority
+- Feature: allow building many trees on a single tile.
+- Feature: added snow_line_height setting, only affects new games.
+- Change: don't check if tiles around the clicked station is a station in order gui
+- Fix: deleting docks doesn't produce land
+- Fix: deleting ship depot doesn't produce land
+- Fix: buoy is now treated as water when flooding
+- Feature: errmsg_duration controls how long error messages are displayed
+- Fix: combo presignals bug fix
+- Fix: prevent going to 0,0 if airport/docks is deleted
+- Feature: fullscreen_bpp setting in [win32] sets the bpp to use in fullscreen mode
+- Fix: french town names had bad letters in them
+- Feature: euro symbol
+- Feature: high bridges
+- Fix: order list when replacing train didn't work properly
+- Change: keep checkpoint button down after placing
+- Fix: start in the middle of the map
+- Change: moved disk devices to bottom of list on win32
+- Fix: more error tolerant saveload code
+- Feature: ZLIB savegames (smaller than before)
+- Feature: PNG,PCX screenshot support
+- Feature: indicate with gray in vehicle popup menus if company has no vehicles of that type
+- Feature: clicking on the money brings up finances
+- Fix: (OSX build) now runs even if sdl is not present on the system
+- Fix: (OSX build) now runs on systems older than 10.3
+- Fix: (OSX build) altered compiler settings to make a completely stable app
+- Feature: (OSX build) distribution now uses Apples package system for easier updates
+- Feature: (OSX build) Application is now a proper bundle application
+
+0.2.1 (2004-04-04)
+- Fix: copy orders crashed if you clicked on a wagon
+- Feature: 'A' hotkey now always opens autorail
+- Change: Moved autorail button
+- Feature: X can be used to toggle transparent buildings
+- Fix: don't show transparent buildings in intro
+- Fix: installer doesn't delete savegames
+- Feature: Hotkeys 1-9 can be used to build a bridge in the bridge window
+- Feature: Added more hotkeys in the road build window
+
+0.2 (2004-04-03)
+
+- Feature: autoscroll (only works to left/right)
+- Feature: train checkpoints, instead of ttdpatch's nonstop handling
+- Feature: ttdpatch compatible nonstop handling
+- Fix: news window was moved strangely when resizing
+- Fix: fixed sign drawing bug in max zoom out mode
+- Feature: refresh rate configuration setting
+- Feature: town directory sorting options
+- Feature: pre-signals (ctrl-click on existing signals to change signal type)
+- Feature: show semaphores on the right side if right-sided traffic
+- Improvement: increased number of windows on screen to 20
+- Feature: patch options configuration window
+- Fix: road vehicles sometimes getting stuck
+- Feature: autorail build tool
+- Feature: "show yearly finances window" option
+- Feature: "signals on drive side" patch (by Michael Polnick)
+- Fix: connecting tracks behind depot causing incorrect signal behavior
+- Fix: save/load diskspace bug
+- Feature: "show full date in statusbar" option
+- Feature: italian translation (by duepixel)
+- Feature: road and rail removal by dragging a selection
+- Feature: news item for "train is unprofitable"
+- Feature: news item for "train is lost"
+- Feature: (win32 build) double size mode (ctrl-d to toggle)
+- Fix: incorrect bridge cost for long bridges
+- Feature: "multiple similar industries in close proximity" option
+- Feature: "multiple industries per down" option
+- Feature: "crossing tunnels" option
+- Feature: order sharing and copying ("goto" on other vehicle to copy, ctrl+"goto" to share)
+- Feature: remember last built rail type
+- Feature: "debtmax" faster loan management with ctrl key
+- Fix: disallow buoy in north corner
+- Feature: "go to depot" orders option
+- Feature: "long bridges" option
+- Feature: "select goods" option
+- Feature: "no train service" option
+- Feature: "no inflation" option
+- Improvement: (OSX build) now starts when doubleclicked
+- Improvement: (OSX build) significant performance increase
+- Improvement: optimized startup time
+- Feature: automatically detect available resolutions
+- Feature: "full load any" option, as in ttdpatch
+- Feature: automatic detection of available language files
+- Feature: German translation (by truesatan and wuntvor)
+- Improvement: sorted savegame list
+- Feature: finnish town names (by Jpl)
+- Feature: remember custom difficulty settings
+- Fix: shift key now increases game speed only when game window is active
+- Fix: ctrl button now works with SDL driver
+- Feature: configuration file system
+- Feature: show vehicle speed in vehicle view windows
+- Fix: incorrect weight displayed in "new trains" window
+- Feature: train depot window now has horizontal scrollbar
+- Feature: mammoth trains
+- Fix: incorrect train running cost in newspaper
+- Feature: on-the-fly language selection
+- Feature: load old premade ttd maps (must be renamed to .sv1 extension)
+
+0.1.4
+
+- Feature: crash submit system on win32
+- Fix: train smoke clouds
+- Fix: train engine sounds
+- Fix: play all sounds at 11025 hz (fixes certain sounds)
+- Feature: autosave
+- Fix: scenario editor desert button now makes desert instead of lighthouse
+- Fix: creating random town in scenario editor crash
+- Fix: candy bubbles sometimes caused crash
+- Fix: wrong speed was shown in news window for some vehicles
+- Fix: graph color bleeding
+- Feature: build on coasts
+- Feature: Allow building transmitters, lighthouses and company headquarters on slopes
+- Feature: now builds on MacOSX
+- Fix: arrow keys with SDL driver
+- Change: new savegame format
+- Change: new format for english.lng
+- Fix: don't allow trains to road depots
+- Fix: road vehicle was sometimes shown inside depot
+- Fix: arrow keys in sdl driver were wrong
+- Fix: endianness bugs in save/load
+- Fix: now builds on FreeBSD
+- Fix: screenshot feature now works
+- Fix: rail foundations sometimes displayed unnecessarily
+- Fix: minor AI bugs
+- Fix: fixed industry sounds
+- Feature: in-game resolution selection via settings window
+- Feature: Dutch town names
+- Feature: Added load game menu item
+- Fix: bug where ship depots were very expensive
+- Fix: BeOS build (by MYOB)
+- Fix: yearly expenses data being the same for the past two game years
+- Fix: adding songs to playlists other than custom1 and custom2
+- Fix: first and last tracks playing the wrong music
+- Fix: Palette animation for SDL video (rob)
+- Fix: Get remaining disk space on most Unix-en (rob)
+- Fix: screen went black when resizing
+
+0.1.3
+
+- Fixed message options window
+- Fixed company takeover/purchase
+- Feature: Improved mouse scroll zooming
+- Fixed station code so it's not possible to steal another player's temporarily deleted station
+- Fixed subsidy owner bug when deleting station
+- Fixed crash when deleting a bridge with a train on it
+- Feature: Larger stations and possibility to join stations
+- Fixed missing candy initial cargo payment values
+- Fixed Goods and Food/FizzyDrinks subsidies
+- Fixed graphical glitch in subsidies window
+- Take over company dialog was not shown properly
+- Fixed crash if player windows were open while the company went bankrupt
+- Fixed train slowness on hills
+- Feature: swedish town names (patch by glottis)
+- Feature: more currencies
+- Better window resizing/zooming
+- Added goto road vehicle depot for road vehicle orders
+- Possibility to use either semaphores or signals (Ctrl key)
+- Limited the scrolling rate for year selector in scenario editor
+
+0.1.2
+
+- Mouse wheel can be used to zoom in out on win32 (ludde)
+- Implemented some support for resizing the window dynamically in win32 (ludde)
+- Fixed tunnel mouse icon for maglev and monorail
+
+0.1.1
+
+- Preliminary presignal support
+- Added external MIDI driver for unix version (by robertnorris)
+- Added DirectMusic driver for Win32 version
+- Fixed problem where directories weren't displayed under Linux (by Markus)
+- Center windows properly in higher resolutions
+- Added "build tracks on slopes" feature
+- Fixed colors in map window for routes
+- Command line -g flag now optionally takes a game to load
+- Fixed road drive side
+- Fixed "Fund road construction" not clickable when unavailable

@@ -1,0 +1,80 @@
+# this file detects what OS and libs the computer have/are running
+
+# Automatically recognize if building on Win32
+ifdef WINDIR
+ifndef UNIX
+WIN32:=1
+endif
+else
+UNIX:=1
+endif
+
+# Automatically recognize if building on FreeBSD
+ifeq ($(shell uname),FreeBSD)
+FREEBSD:=1
+endif
+
+# Automatically recognize if building on MacOSX
+ifeq ($(VENDOR), apple)
+OSX:=1
+# OSX uses the unix setup too
+UNIX:=1
+endif
+
+# Automatically recognize if building on MorphOS
+ifeq ($(shell uname), MorphOS)
+MORPHOS:=1
+# MorphOS uses UNIX setup too
+UNIX:=1
+endif
+
+# FreeBSD uses sdl11 instead of sdl
+ifdef FREEBSD
+SDL-CONFIG:=sdl11-config
+else
+SDL-CONFIG:=sdl-config
+endif
+
+
+# Library detections
+WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)
+
+# libpng detection
+ifdef FREEBSD
+# a little hack was needed for FreeBSD because it misses libpng-config
+WITH_PNG:=$(shell ls /usr/lib | grep "libpng" 2>/dev/null) $(shell \
+ls /usr/local/lib | grep "libpng" 2>/dev/null)
+ifdef WITH_PNG
+# makes the flag look nicer in makefile.config
+WITH_PNG:=1
+endif
+else
+WITH_PNG:=$(shell libpng-config --version 2>/dev/null)
+endif
+
+ifdef WITH_PNG
+# LibPNG depends on Zlib
+WITH_ZLIB:=1
+else
+# We go looking for zlib with a little hack
+WITH_ZLIB:=$(shell ls /usr/include | grep "zlib.h" 2>/dev/null) \
+$(shell ls /usr/local/include | grep "zlib.h" 2>/dev/null)
+ifdef WITH_ZLIB
+WITH_ZLIB:=1
+endif
+endif
+
+
+# sets the default paths
+ifdef UNIX
+ifndef OSX
+ifndef MORPHOS
+ifndef BIN_DIR
+#BINARY_DIR:=
+#DATA_DIR_PREFIX:=
+#INSTALL_DIR:=/usr/local/
+#USE_HOMEDIR:=
+endif
+endif
+endif
+endif
