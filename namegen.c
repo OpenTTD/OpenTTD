@@ -1691,6 +1691,100 @@ static byte MakePolishTownName(byte *buf, uint32 seed)
 	return 0;
 }
 
+#define NUM_CZECH_1 82
+static const char czech_1[] = 
+MK("As")
+MK("Benesov")
+MK("Beroun")
+MK("Bezdruzice")
+MK("Blansko")
+MK("Breclav")
+MK("Brno")
+MK("Bruntál")
+MK("Ceská Lípa")
+MK("Ceské Budejovice")
+MK("Ceský Krumlov")
+MK("Decín")
+MK("Domazlice")
+MK("Dubí")
+MK("Frýdek-Místek")
+MK("Havlíckuv Brod")
+MK("Hodonín")
+MK("Hradec Králové")
+MK("Humpolec")
+MK("Cheb")
+MK("Chomutov")
+MK("Chrudim")
+MK("Jablonec nad Nisou")
+MK("Jeseník")
+MK("Jicín")
+MK("Jihlava")
+MK("Jindrichuv Hradec")
+MK("Karlovy Vary")
+MK("Karviná")
+MK("Kladno")
+MK("Klatovy")
+MK("Kolín")
+MK("Kosmonosy")
+MK("Kromeríz")
+MK("Kutná Hora")
+MK("Liberec")
+MK("Litomerice")
+MK("Louny")
+MK("Manetín")
+MK("Melník")
+MK("Mladá Boleslav")
+MK("Most")
+MK("Náchod")
+MK("Nový Jicín")
+MK("Nymburk")
+MK("Olomouc")
+MK("Opava")
+MK("Orácov")
+MK("Ostrava")
+MK("Pardubice")
+MK("Pelhrimov")
+MK("Polzice")
+MK("Písek")
+MK("Plzen")
+MK("Praha")
+MK("Prachatice")
+MK("Prerov")
+MK("Príbram")
+MK("Prostejov")
+MK("Rakovník")
+MK("Rokycany")
+MK("Rudná")
+MK("Rychnov nad Kneznou")
+MK("Semily")
+MK("Sokolov")
+MK("Strakonice")
+MK("Stredokluky")
+MK("Sumperk")
+MK("Svitavy")
+MK("Tábor")
+MK("Tachov")
+MK("Teplice")
+MK("Trebíc")
+MK("Trutnov")
+MK("Uherské Hradiste")
+MK("Ústí nad Labem")
+MK("Ústí nad Orlicí")
+MK("Vsetín")
+MK("Vyskov")
+MK("Zdár nad Sázavou")
+MK("Zlín")
+MK("Znojmo")
+;
+
+static byte MakeCzechTownName(byte *buf, uint32 seed)
+{
+	AppendPart(&buf, GETNUM(0, NUM_CZECH_1), czech_1);
+	return 0;	
+}
+
+
+
 #define NUM_SLOVAKISH_1 87
 static const char slovakish_1[] =
 MK("Bratislava")
@@ -1978,6 +2072,7 @@ TownNameGenerator * const _town_name_generators[] = {
 	MakeDutchTownName,
 	MakeFinnishTownName,
 	MakePolishTownName,
+	MakeCzechTownName,
 	MakeSlovakishTownName,
 	MakeHungarianTownName,
 	MakeAustrianTownName
