@@ -720,16 +720,32 @@ static void FixStation(OldStation *o, int num)
 
 		s->xy = o->xy;
 		s->town = REMAP_TOWN_PTR(o->town);
+
+		s->bus_stops = NULL;
+		s->truck_stops = NULL;
+
 		if (o->bus_tile != 0) {
-			s->bus_stops = GetFirstFreeRoadStop();
+			s->bus_stops = AllocateRoadStop();
 			s->bus_stops->xy = o->bus_tile;
-		} else
-			s->bus_stops = NULL;
+			s->bus_stops->used = true;
+			s->bus_stops->status = 3;
+			s->bus_stops->station = s->index;
+			s->bus_stops->next = NULL;
+			s->bus_stops->prev = NULL;
+			s->bus_stops->slot[0] = s->bus_stops->slot[1] = INVALID_SLOT;
+		}
+
 		if (o->lorry_tile != 0) {
-			s->truck_stops = GetFirstFreeRoadStop();
+			s->truck_stops = AllocateRoadStop();
 			s->truck_stops->xy = o->lorry_tile;
-		} else
-			s->truck_stops = 0;
+			s->truck_stops->used = true;
+			s->truck_stops->status = 3;
+			s->truck_stops->station = s->index;
+			s->truck_stops->next = NULL;
+			s->truck_stops->prev = NULL;
+			s->truck_stops->slot[0] = s->truck_stops->slot[1] = INVALID_SLOT;
+		}
+
 		s->train_tile = o->train_tile;
 		s->airport_tile = o->airport_tile;
 		s->dock_tile = o->dock_tile;

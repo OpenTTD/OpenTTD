@@ -495,7 +495,6 @@ static void ParseResolution(int res[2], char *s)
 static void InitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
-	_roadstops_size = lengthof(_roadstops);
 	_orders_size    = lengthof(_orders);
 
 	_station_sort  = NULL;

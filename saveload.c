@@ -917,10 +917,7 @@ static uint ReferenceToInt(void *v, uint t)
 		case REF_STATION: return ((Station *)v)->index + 1;
 		case REF_TOWN:    return ((Town *)v)->index + 1;
 		case REF_ORDER:   return ((Order *)v)->index + 1;
-
-		case REF_ROADSTOPS:
-			//return ((byte*)v - (byte*)_roadstops) / sizeof(_roadstops[0]) + 1;
-			return (RoadStop *)v - _roadstops + 1;
+		case REF_ROADSTOPS: return ((RoadStop *)v)->index + 1;
 
 		default:
 			NOT_REACHED();
@@ -957,10 +954,12 @@ static void *IntToReference(uint r, uint t)
 				error("Towns: failed loading savegame: too many towns");
 			return GetTown(r - 1);
 		}
+		case REF_ROADSTOPS: {
+			if (!AddBlockIfNeeded(&_roadstop_pool, r - 1))
+				error("RoadStop: failed loading savegame: too many RoadStops");
+			return GetRoadStop(r - 1);
+		}
 
-		case REF_ROADSTOPS:
-			//return (byte*)_roadstops    + (r - 1) * sizeof(_roadstops[0]);
-			return &_roadstops[r - 1];
 		case REF_VEHICLE_OLD: {
 			/* Old vehicles were saved differently: invalid vehicle was 0xFFFF,
 			    and the index was not - 1.. correct for this */

@@ -22,6 +22,10 @@ enum {
 	/* Max stations: 64000 (64 * 1000) */
 	STATION_POOL_BLOCK_SIZE_BITS = 6,       /* In bits, so (1 << 6) == 64 */
 	STATION_POOL_MAX_BLOCKS      = 1000,
+
+	/* Max roadstops: 64000 (32 * 2000) */
+	ROADSTOP_POOL_BLOCK_SIZE_BITS = 5,       /* In bits, so (1 << 5) == 32 */
+	ROADSTOP_POOL_MAX_BLOCKS      = 2000,
 };
 
 /**
@@ -35,8 +39,20 @@ static void StationPoolNewBlock(uint start_item)
 		st->index = start_item++;
 }
 
-/* Initialize the station-pool */
+/**
+ * Called if a new block is added to the roadstop-pool
+ */
+static void RoadStopPoolNewBlock(uint start_item)
+{
+	RoadStop *rs;
+
+	FOR_ALL_ROADSTOPS_FROM(rs, start_item)
+		rs->index = start_item++;
+}
+
+/* Initialize the station-pool and roadstop-pool */
 MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_BLOCK_SIZE_BITS, sizeof(Station), &StationPoolNewBlock, 0, 0, NULL };
+MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, 0, 0, NULL };
 
 
 // FIXME -- need to be embedded into Airport variable. Is dynamically
@@ -110,17 +126,24 @@ uint GetNumRoadStops(const Station *st, RoadStopType type)
 	return num;
 }
 
-RoadStop * GetFirstFreeRoadStop( void )
+RoadStop *AllocateRoadStop( void )
 {
-	RoadStop *rs = _roadstops;
-	int i = 0;
+	RoadStop *rs;
 
-	for ( i = 0; i < NUM_ROAD_STOPS; i++, rs++) {
+	FOR_ALL_ROADSTOPS(rs) {
 		if (!rs->used) {
-			rs->index = i;
+			uint index = rs->index;
+
+			memset(rs, 0, sizeof(RoadStop));
+			rs->index = index;
+
 			return rs;
 		}
 	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_roadstop_pool))
+		return AllocateRoadStop();
 
 	return NULL;
 }
@@ -1448,7 +1471,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 direction, uint32 type
 	}
 
 	//give us a road stop in the list, and check if something went wrong
-	road_stop = GetFirstFreeRoadStop();
+	road_stop = AllocateRoadStop();
 	if (road_stop == NULL)
 		return_cmd_error( (type) ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 
@@ -2908,7 +2931,9 @@ void InitializeStations(void)
 	CleanPool(&_station_pool);
 	AddBlockToPool(&_station_pool);
 
-	memset(_roadstops, 0, sizeof(_roadstops));
+	/* Clean the roadstop pool and create 1 block in it */
+	CleanPool(&_roadstop_pool);
+	AddBlockToPool(&_roadstop_pool);
 
 	_station_tick_ctr = 0;
 
@@ -2946,7 +2971,7 @@ static const byte _roadstop_desc[] = {
 	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
 	SLE_REF(RoadStop,prev,         REF_ROADSTOPS),
 
- SLE_ARR(RoadStop,slot,         SLE_UINT16, NUM_SLOTS),
+	SLE_ARR(RoadStop,slot,         SLE_UINT16, NUM_SLOTS),
 
 	SLE_END()
 };
@@ -3067,27 +3092,19 @@ static void Load_STNS(void)
 
 		if (_sl.full_version < 0x600) {
 			/* Convert old bus and truck tile to new-ones */
-			RoadStop **currstop;
-			RoadStop *prev = NULL;
-			RoadStop *road_stop;
-
 			if (st->bus_tile_obsolete != 0) {
-				road_stop = GetFirstFreeRoadStop();
-				if (road_stop == NULL)
+				st->bus_stops = AllocateRoadStop();
+				if (st->bus_stops == NULL)
 					error("Station: too many busstations in savegame");
 
-				FindRoadStationSpot(RS_BUS, st, &currstop, &prev);
-				*currstop = road_stop;
-				InitializeRoadStop(road_stop, prev, st->bus_tile_obsolete, st->index);
+				InitializeRoadStop(st->bus_stops, NULL, st->bus_tile_obsolete, st->index);
 			}
 			if (st->lorry_tile_obsolete != 0) {
-				road_stop = GetFirstFreeRoadStop();
-				if (road_stop == NULL)
+				st->truck_stops = AllocateRoadStop();
+				if (st->truck_stops == NULL)
 					error("Station: too many truckstations in savegame");
 
-				FindRoadStationSpot(RS_TRUCK, st, &currstop, &prev);
-				*currstop = road_stop;
-				InitializeRoadStop(road_stop, prev, st->lorry_tile_obsolete, st->index);
+				InitializeRoadStop(st->truck_stops, NULL, st->lorry_tile_obsolete, st->index);
 			}
 		}
 	}
@@ -3100,12 +3117,12 @@ static void Load_STNS(void)
 
 static void Save_ROADSTOP( void )
 {
-	uint i;
+	RoadStop *rs;
 
-	for (i = 0; i < lengthof(_roadstops); i++) {
-		if (_roadstops[i].used) {
-			SlSetArrayIndex(i);
-			SlObject(&_roadstops[i], _roadstop_desc);
+	FOR_ALL_ROADSTOPS(rs) {
+		if (rs->used) {
+			SlSetArrayIndex(rs->index);
+			SlObject(rs, _roadstop_desc);
 		}
 	}
 }
@@ -3114,8 +3131,15 @@ static void Load_ROADSTOP( void )
 {
 	int index;
 
-	while ((index = SlIterateArray()) != -1)
-		SlObject(&_roadstops[index], _roadstop_desc);
+	while ((index = SlIterateArray()) != -1) {
+		RoadStop *rs;
+
+		if (!AddBlockIfNeeded(&_roadstop_pool, index))
+			error("RoadStop: failed loading savegame: too many RoadStops");
+
+		rs = GetRoadStop(index);
+		SlObject(rs, _roadstop_desc);
+	}
 }
 
 const ChunkHandler _station_chunk_handlers[] = {

@@ -125,9 +125,6 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st);
 void ShowStationViewWindow(int station);
 void UpdateAllStationVirtCoord(void);
 
-VARDEF RoadStop _roadstops[NUM_ROAD_STOPS * 2];
-VARDEF uint _roadstops_size;
-
 VARDEF SortStruct *_station_sort;
 
 extern MemoryPool _station_pool;
@@ -150,6 +147,33 @@ static inline uint16 GetStationPoolSize(void)
 
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL)
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
+
+
+/* Stuff for ROADSTOPS */
+
+extern MemoryPool _roadstop_pool;
+
+/**
+ * Get the pointer to the roadstop with index 'index'
+ */
+static inline RoadStop *GetRoadStop(uint index)
+{
+	return (RoadStop*)GetItemFromPool(&_roadstop_pool, index);
+}
+
+/**
+ * Get the current size of the RoadStoptPool
+ */
+static inline uint16 GetRoadStopPoolSize(void)
+{
+	return _roadstop_pool.total_items;
+}
+
+#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL)
+#define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
+
+/* End of stuff for ROADSTOPS */
+
 
 VARDEF bool _station_sort_dirty[MAX_PLAYERS];
 VARDEF bool _global_station_sort_dirty;
@@ -238,7 +262,7 @@ RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 inline int GetRoadStopType(TileIndex tile);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
-RoadStop * GetFirstFreeRoadStop( void );
+RoadStop * AllocateRoadStop( void );
 
 static inline bool IsTrainStationTile(uint tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
