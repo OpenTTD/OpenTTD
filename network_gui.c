@@ -362,8 +362,8 @@ static const Widget _network_game_window_widgets[] = {
 {     WWT_IMGBTN,   BGC,   250,   470,    22,   185, 0x0,					STR_NULL},
 {          WWT_6,   BGC,   251,   469,    23,   184, 0x0,					STR_NULL},
 
-{ WWT_PUSHTXTBTN,   BTC,   260,   355,   164,   175, STR_NETWORK_JOIN_GAME,					STR_NULL},
-{ WWT_PUSHTXTBTN,   BTC,   365,   460,   164,   175, STR_NETWORK_REFRESH,					STR_NETWORK_REFRESH_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   257,   355,   164,   175, STR_NETWORK_JOIN_GAME,					STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,   365,   463,   164,   175, STR_NETWORK_REFRESH,					STR_NETWORK_REFRESH_TIP},
 
 {   WIDGETS_END},
 };
@@ -444,23 +444,23 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(11, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
 		DrawWindowWidgets(w);
 
-		GfxFillRect(11, 63, 239, 165, 0xD7);
+		GfxFillRect(11, 63, 259, 165, 0xD7);
 
 		DrawEditBox(w, 3);
 
 		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
 
 		DrawString(10, 43, STR_NETWORK_SELECT_MAP, 2);
-		DrawString(260, 63, STR_NETWORK_CONNECTION, 2);
-		DrawString(260, 95, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
-		DrawString(260, 127, STR_NETWORK_LANGUAGE_SPOKEN, 2);
+		DrawString(280, 63, STR_NETWORK_CONNECTION, 2);
+		DrawString(280, 95, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
+		DrawString(280, 127, STR_NETWORK_LANGUAGE_SPOKEN, 2);
 
 		// draw list of maps
 		pos = w->vscroll.pos;
 		while (pos < _fios_num + 1) {
 			item = _fios_list + pos - 1;
 			if (item == selected_map || (pos == 0 && selected_map == NULL))
-				GfxFillRect(11, y - 1, 239, y + 10, 155); // show highlighted item with a different colour
+				GfxFillRect(11, y - 1, 259, y + 10, 155); // show highlighted item with a different colour
 
 			if (pos == 0) DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
 			else DoDrawString(item->title[0] ? item->title : item->name, 14, y, _fios_colors[item->type] );
@@ -574,32 +574,32 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 static const Widget _network_start_server_window_widgets[] = {
 {   WWT_CLOSEBOX,   BGC,     0,    10,     0,    13, STR_00C5,											STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   BGC,    11,   399,     0,    13, STR_NETWORK_START_GAME_WINDOW,	STR_NULL},
-{     WWT_IMGBTN,   BGC,     0,   399,    14,   199, 0x0,														STR_NULL},
+{    WWT_CAPTION,   BGC,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,	STR_NULL},
+{     WWT_IMGBTN,   BGC,     0,   419,    14,   199, 0x0,														STR_NULL},
 
-{     WWT_IMGBTN,   BGC,    80,   251,    22,    33, 0x0,														STR_NETWORK_NEW_GAME_NAME_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   270,   380,    22,    33, STR_NETWORK_SET_PASSWORD,			STR_NETWORK_PASSWORD_TIP},
+{     WWT_IMGBTN,   BGC,   100,   271,    22,    33, 0x0,														STR_NETWORK_NEW_GAME_NAME_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,			STR_NETWORK_PASSWORD_TIP},
 
-{          WWT_6,   BGC,    10,   251,    62,   166, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
-{  WWT_SCROLLBAR,   BGC,   240,   250,    63,   165, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{          WWT_6,   BGC,    10,   271,    62,   166, 0x0,														STR_NETWORK_SELECT_MAP_TIP},
+{  WWT_SCROLLBAR,   BGC,   260,   270,    63,   165, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{          WWT_6,   BGC,   260,   390,    77,    88, STR_NETWORK_COMBO1,						STR_NETWORK_CONNECTION_TIP},
-{   WWT_CLOSEBOX,   BGC,   379,   389,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
+{          WWT_6,   BGC,   280,   410,    77,    88, STR_NETWORK_COMBO1,						STR_NETWORK_CONNECTION_TIP},
+{   WWT_CLOSEBOX,   BGC,   399,   409,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
 
-{          WWT_6,   BGC,   260,   390,   109,   120, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{   WWT_CLOSEBOX,   BGC,   379,   389,   110,   119, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{          WWT_6,   BGC,   280,   410,   109,   120, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{   WWT_CLOSEBOX,   BGC,   399,   409,   110,   119, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
 
-{          WWT_6,   BGC,   260,   390,   141,   152, STR_NETWORK_COMBO3,						STR_NETWORK_LANGUAGE_TIP},
-{   WWT_CLOSEBOX,   BGC,   379,   389,   142,   151, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
+{          WWT_6,   BGC,   280,   410,   141,   152, STR_NETWORK_COMBO3,						STR_NETWORK_LANGUAGE_TIP},
+{   WWT_CLOSEBOX,   BGC,   399,   409,   142,   151, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
 
-{ WWT_PUSHTXTBTN,   BTC,    55,   145,   180,   191, STR_NETWORK_START_GAME,				STR_NETWORK_START_GAME_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   155,   245,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NETWORK_LOAD_GAME_TIP},
-{ WWT_PUSHTXTBTN,   BTC,   255,   345,   180,   191, STR_012E_CANCEL,								STR_NULL},
+{ WWT_PUSHTXTBTN,   BTC,    40,   140,   180,   191, STR_NETWORK_START_GAME,				STR_NETWORK_START_GAME_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   150,   250,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NETWORK_LOAD_GAME_TIP},
+{ WWT_PUSHTXTBTN,   BTC,   260,   360,   180,   191, STR_012E_CANCEL,								STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _network_start_server_window_desc = {
-	WDP_CENTER, WDP_CENTER, 400, 200,
+	WDP_CENTER, WDP_CENTER, 420, 200,
 	WC_NETWORK_WINDOW,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
 	_network_start_server_window_widgets,
@@ -789,8 +789,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 static const Widget _network_lobby_window_widgets[] = {
 {   WWT_CLOSEBOX,   BGC,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   BGC,    11,   399,     0,    13, STR_NETWORK_GAME_LOBBY,		STR_NULL},
-{     WWT_IMGBTN,   BGC,     0,   399,    14,   209, 0x0,												STR_NULL},
+{    WWT_CAPTION,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,		STR_NULL},
+{     WWT_IMGBTN,   BGC,     0,   419,    14,   209, 0x0,												STR_NULL},
 
 // company list
 {          WWT_6,   BGC,    10,   151,    40,   166, 0x0,												STR_NETWORK_COMPANY_LIST_TIP},
@@ -811,7 +811,7 @@ static const Widget _network_lobby_window_widgets[] = {
 };
 
 static const WindowDesc _network_lobby_window_desc = {
-	WDP_CENTER, WDP_CENTER, 400, 210,
+	WDP_CENTER, WDP_CENTER, 420, 210,
 	WC_NETWORK_WINDOW,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_lobby_window_widgets,
