@@ -761,6 +761,10 @@ SOURCE=.\table\animcursors.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\table\autorail.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\table\build_industry.h
 # End Source File
 

@@ -241,7 +241,7 @@ static bool MxSetBankSource(MixerChannel *mc, uint bank)
 	FioReadBlock(mem, fe->file_size);
 
 	for (i = 0; i != fe->file_size; i++)
-		mem[i] -= 128; // Convert unsigned sound data to signed
+		mem[i] += -128; // Convert unsigned sound data to signed
 
 	assert(fe->bits_per_sample == 8 && fe->channels == 1 && fe->file_size != 0 && fe->rate != 0);
 

@@ -188,6 +188,7 @@
 				WarningLevel="3"
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
+				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="4"
 				CallingConvention="0"
 				CompileAs="1"/>
@@ -2505,6 +2506,9 @@
 			</File>
 			<File
 				RelativePath=".\table\animcursors.h">
+			</File>
+			<File
+				RelativePath=".\table\autorail.h">
 			</File>
 			<File
 				RelativePath="table\build_industry.h">
