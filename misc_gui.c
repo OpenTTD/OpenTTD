@@ -765,7 +765,7 @@ void SetHScrollCount(Window *w, int num)
 
 static void DelChar(Textbuf *tb)
 {
-	tb->width -= GetCharacterWidth(tb->buf[tb->caretpos]);
+	tb->width -= GetCharacterWidth((byte)tb->buf[tb->caretpos]);
 	memmove(tb->buf + tb->caretpos, tb->buf + tb->caretpos + 1, tb->length - tb->caretpos);
 	tb->length--;
 }
@@ -781,7 +781,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 {
 	if (delmode == WKC_BACKSPACE && tb->caretpos != 0) {
 		tb->caretpos--;
-		tb->caretxoffs -= GetCharacterWidth(tb->buf[tb->caretpos]);
+		tb->caretxoffs -= GetCharacterWidth((byte)tb->buf[tb->caretpos]);
 
 		DelChar(tb);
 		return true;
@@ -829,13 +829,13 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 	case WKC_LEFT:
 		if (tb->caretpos != 0) {
 			tb->caretpos--;
-			tb->caretxoffs -= GetCharacterWidth(tb->buf[tb->caretpos]);
+			tb->caretxoffs -= GetCharacterWidth((byte)tb->buf[tb->caretpos]);
 			return true;
 		}
 		break;
 	case WKC_RIGHT:
 		if (tb->caretpos < tb->length) {
-			tb->caretxoffs += GetCharacterWidth(tb->buf[tb->caretpos]);
+			tb->caretxoffs += GetCharacterWidth((byte)tb->buf[tb->caretpos]);
 			tb->caretpos++;
 			return true;
 		}

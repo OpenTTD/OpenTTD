@@ -609,7 +609,8 @@ uint CheckTunnelBusy(uint tile, int *length)
 		return (uint)-1;
 	}
 
-	if (length) *length = len;
+	if (length != NULL)
+		*length = len;
 	return tile;
 }
 
