@@ -18,6 +18,7 @@ static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFT
 static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport);
 static void AirportGoToNextPosition(Vehicle *v, const AirportFTAClass *Airport);
+static void CrashAirplane(Vehicle *v);
 
 static void AircraftNextAirportPos_and_Order(Vehicle *v);
 static byte GetAircraftFlyingAltitude(const Vehicle *v);
@@ -920,8 +921,19 @@ static void HandleCrashedAircraft(Vehicle *v)
 {
 	uint32 r;
 	Station *st;
+	int z;
 
 	v->u.air.crashed_counter++;
+
+	st = DEREF_STATION(v->u.air.targetairport);
+
+	// make aircraft crash down to the ground
+	if ( st->airport_tile==0 && ((v->u.air.crashed_counter % 3) == 0) ) {
+		z = GetSlopeZ(v->x_pos, v->y_pos) + 1;
+		v->z_pos -= 1;
+		if (v->z_pos < z)
+			DoDeleteAircraft(v);
+	}
 
 	if (v->u.air.crashed_counter < 650) {
 		if (CHANCE16R(1,32,r)) {
@@ -935,7 +947,6 @@ static void HandleCrashedAircraft(Vehicle *v)
 				EV_DEMOLISH);
 		}
 	} else if (v->u.air.crashed_counter >= 10000) {
-		st = DEREF_STATION(v->u.air.targetairport);
 		// remove rubble of crashed airplane
 
 		// clear runway-in on all airports, set by crashing plane
@@ -989,13 +1000,25 @@ static void HandleAircraftSmoke(Vehicle *v)
 	}
 }
 
+// returns true if the vehicle does have valid orders
+// false if none are valid
+static bool CheckForValidOrders(Vehicle *v)
+{
+	int i;
+	for (i = 0; i < v->num_orders; i++) {
+		if( v->schedule_ptr[i].type != OT_DUMMY )
+			return true;
+	}
+	return false;
+}
+
 static void ProcessAircraftOrder(Vehicle *v)
 {
 	Order order;
 
 	// OT_GOTO_DEPOT, OT_LOADING
-	if (v->current_order.type >= OT_GOTO_DEPOT &&
-			v->current_order.type <= OT_LOADING) {
+	if (v->current_order.type == OT_GOTO_DEPOT ||
+			v->current_order.type == OT_LOADING) {
 		if (v->current_order.type != OT_GOTO_DEPOT ||
 				!(v->current_order.flags & OF_UNLOAD))
  			return;
@@ -1030,6 +1053,9 @@ static void ProcessAircraftOrder(Vehicle *v)
 		AircraftNextAirportPos_and_Order(v);
 		v->u.air.targetairport = order.station;
 	}
+
+	if ( order.type == OT_DUMMY && !CheckForValidOrders(v))
+		CrashAirplane(v);
 
 	InvalidateVehicleOrderWidget(v);
 }
@@ -1067,12 +1093,47 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 	InvalidateVehicleOrderWidget(v);
 }
 
+static void CrashAirplane(Vehicle *v)
+{
+	uint16 amt;
+	Station *st;
+	StringID newsitem;
+
+	v->vehstatus |= VS_CRASHED;
+	v->u.air.crashed_counter = 0;
+
+	CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
+
+	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+
+	amt = 2;
+	if (v->cargo_type == CT_PASSENGERS) amt += v->cargo_count;
+	SetDParam(0, amt);
+
+	v->cargo_count = 0;
+	v->next->cargo_count = 0,
+	st = DEREF_STATION(v->u.air.targetairport);
+	if(st->airport_tile==0) {
+		newsitem = STR_PLANE_CRASH_OUT_OF_FUEL;
+	} else {
+		SetDParam(1, st->index);
+		newsitem = STR_A034_PLANE_CRASH_DIE_IN_FIREBALL;
+	}
+
+	SetDParam(1, st->index);
+	AddNewsItem(newsitem,
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+		v->index,
+		0);
+
+	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+}
+
 static void MaybeCrashAirplane(Vehicle *v)
 {
 	Station *st;
 	uint16 prob;
 	int i;
-	uint16 amt;
 
 	st = DEREF_STATION(v->u.air.targetairport);
 
@@ -1091,28 +1152,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 		st->goods[i].waiting_acceptance &= ~0xFFF;
 	}
 
-	v->vehstatus |= VS_CRASHED;
-	v->u.air.crashed_counter = 0;
-
-	CreateEffectVehicleRel(v, 4, 4, 8, EV_CRASHED_SMOKE);
-
-	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-
-	amt = 2;
-	if (v->cargo_type == CT_PASSENGERS) amt += v->cargo_count;
-	SetDParam(0, amt);
-
-	v->cargo_count = 0;
-	v->next->cargo_count = 0,
-
-	SetDParam(1, st->index);
-	AddNewsItem(STR_A034_PLANE_CRASH_DIE_IN_FIREBALL,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
-		v->index,
-		0);
-
-	ModifyStationRatingAround(TILE_FROM_XY(v->x_pos, v->y_pos), v->owner, -160, 30);
-	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+	CrashAirplane(v);
 }
 
 // we've landed and just arrived at a terminal

@@ -2665,7 +2665,8 @@ STR_A030_NAME_AIRCRAFT						:{WHITE}Name aircraft
 STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Can't name aircraft...
 STR_A032_NAME_AIRCRAFT						:{BLACK}Name aircraft
 STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Citizens celebrate . . .{}First aircraft arrives at {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL		:{BLACK}{BIGFONT}Plane Crash!{}{COMMA16} die in fireball at {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL							:{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA16} die in fireball!
 STR_A035_DESTINATIONS						:{TINYFONT}{BLACK}Destinations:
 STR_A036							:{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME							:{BLACK}Rename
