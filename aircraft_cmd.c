@@ -443,19 +443,31 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
 	} else {
+		bool next_airport_has_hangar = true;
 		next_airport_index = (HASBIT(p2, 17)) ? (int16)p2 : v->u.air.targetairport;
 		st = GetStation(next_airport_index);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
-		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL)
-					return CMD_ERROR;
+		if (st->xy == 0 || st->airport_tile == 0 || GetAirport(st->airport_type)->terminals == NULL) {
+			if (p2 == 0) {
+				// the aircraft have to search for a hangar on it's own
+				next_airport_has_hangar = false;
+				uint32 temp = FindNearestHangar(v);
+				if (HASBIT(temp, 16)) return CMD_ERROR; // the player do not own a hangar
+				st = GetStation(temp);
+				next_airport_index = (uint16)temp;
+			} else {
+				return CMD_ERROR;
+			}
+		}
 
 		if (flags & DC_EXEC) {
 			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = v->set_for_replacement ? 0 : OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.flags = HASBIT(p2, 16) ? 0 : OF_NON_STOP | OF_FULL_LOAD;
 			v->current_order.station = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-			if (HASBIT(p2, 17)) {
+			if (HASBIT(p2, 17) || (p2 == 0 && v->u.air.state == FLYING && !next_airport_has_hangar)) {
+			// the aircraft is now heading for a different hangar than the next in the orders
 				AircraftNextAirportPos_and_Order(v);
 				v->u.air.targetairport = next_airport_index;
 			}
