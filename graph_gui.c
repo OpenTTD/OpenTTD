@@ -558,7 +558,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
        				// Bah, player gone :(
                    	w->disabled_state += 1 << (i+13);
                    	// Is this player selected? If so, select first player (always save? :s)
-                   	if (w->click_state == 1 << (i+13))
+                   	if (w->click_state == 1U << (i + 13))
                    		w->click_state = 1 << 13;
                    	// We need a repaint
                    	SetWindowDirty(w);

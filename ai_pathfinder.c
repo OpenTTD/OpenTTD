@@ -189,11 +189,11 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile + TileOffsByDir(i))) {
        			if (IS_TILETYPE(current->path.node.tile + TileOffsByDir(i), MP_TUNNELBRIDGE)) {
        				// An existing bridge... let's test the direction ;)
-       				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1) != (i & 1)) continue;
+       				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1U) != (i & 1)) continue;
    					// This problem only is valid for tunnels:
        				// When the last tile was not yet a tunnel, check if we enter from the right side..
        				if (!IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE) && (_map5[current->path.node.tile + TileOffsByDir(i)] & 0x80) == 0) {
-       					if (i != (_map5[current->path.node.tile + TileOffsByDir(i)] & 3)) continue;
+       					if (i != (_map5[current->path.node.tile + TileOffsByDir(i)] & 3U)) continue;
        				}
        			}
        		}
@@ -201,7 +201,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        		if (!PathFinderInfo->rail_or_road && AI_PATHFINDER_IS_ROAD(current->path.node.tile)) {
        			if (IS_TILETYPE(current->path.node.tile, MP_TUNNELBRIDGE)) {
        				// An existing bridge/tunnel... let's test the direction ;)
-       				if ((_map5[current->path.node.tile] & 1) != (i & 1)) continue;
+       				if ((_map5[current->path.node.tile] & 1U) != (i & 1)) continue;
        			}
        		}
 

@@ -450,7 +450,7 @@ typedef struct {
 	HashLink *new_link;
 	uint num_links_left;
 
-	int nstack;
+	uint nstack;
 	StackedItem stack[256]; // priority queue of stacked items
 
 	uint16 hash_head[0x400]; // hash heads. 0 means unused. 0xFFC0 = length, 0x3F = type
@@ -484,7 +484,10 @@ static inline void HeapifyDown(NewTrackPathFinder *tpf)
 {
 	StackedItem si;
 	int i = 1, j;
-	int n = --tpf->nstack;
+	int n;
+
+	assert(tpf->nstack > 0);
+	n = --tpf->nstack;
 
 	if (n == 0) return; // heap is empty so nothing to do?
 

@@ -4,7 +4,7 @@
 #define TILE_FROM_XY(x,y) (int)((((y) >> 4) << MapLogX()) + ((x) >> 4))
 #define TILE_XY(x,y) (int)(((y) << MapLogX()) + (x))
 
-#define TILE_MASK(x) (int)((x) & ((1 << (MapLogX() + MapLogY())) - 1))
+#define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
 
 extern byte   _map_type_and_height[];
 extern byte   _map5[];

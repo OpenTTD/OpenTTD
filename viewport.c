@@ -1186,7 +1186,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	// This assert should never happen (because the length of the parent_list
 	//  is checked)
-	assert(vd.parent_list - parent_list <= lengthof(parent_list));
+	assert(vd.parent_list <= endof(parent_list));
 
 	if (vd.first_tile != NULL)
 		ViewportDrawTileSprites(vd.first_tile);
