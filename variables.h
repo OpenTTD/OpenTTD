@@ -422,12 +422,11 @@ VARDEF int _debug_ai_level;
 VARDEF int _debug_net_level;
 
 /* Forking stuff */
-#if !defined(pid_t)
-typedef int pid_t;
-#endif
 VARDEF bool _dedicated_forks;
 VARDEF bool _dedicated_enabled;
-VARDEF pid_t _dedicated_pid;
+#ifdef UNIX
+	VARDEF pid_t _dedicated_pid;
+#endif
 
 void CDECL debug(const char *s, ...);
 #ifdef NO_DEBUG_MESSAGES
