@@ -184,6 +184,12 @@ STR_00B2_MESSAGE						:{YELLOW}Skilaboð
 STR_00B3_MESSAGE_FROM						:{YELLOW}Skilaboð frá {STRING}
 STR_00B4_CAN_T_DO_THIS						:{WHITE}Get ekki gert þetta....
 STR_00B5_CAN_T_CLEAR_THIS_AREA					:{WHITE}Get ekki hreinsað þetta svæði....
+STR_00B6_ORIGINAL_COPYRIGHT					:{BLACK}Upphaflegur höfundarréttur {COPYRIGHT} 1995 Chris Sawyer, Öll réttindi áskilin
+STR_00B7_VERSION						:{BLACK}OpenTTD útgáfa {REV}
+STR_00B8_ORIGINAL_DESIGN_PROGRAM				:{BLACK}Upphafleg hönnun: Chris Sawyer
+STR_00B9_ORIGINAL_GRAPHICS					:{BLACK}Upphafleg grafík: Simon Foster
+STR_SPECIAL_THANKS						:{BLACK}Sérstakar þakkir:
+STR_00BA_COPYRIGHT_OPENTTD					:{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD hópurinn
 
 STR_00C5							:{BLACK}{CROSS}
 STR_00C6							:{SILVER}{CROSS}
@@ -293,6 +299,8 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY				:{WHITE}Valið nafn er þegar í notkun
 STR_0133_WINDOWS						:Windows
 STR_0134_UNIX							:Unix
 STR_0135_OSX							:OS X
+STR_OSNAME_BEOS							:BeOS
+STR_OSNAME_MORPHOS						:MorphOS
 
 STR_0139_IMPERIAL_MILES						:Amerískt (mílur)
 STR_013A_METRIC_KILOMETERS					:Metrakerfið (kílómetrar)
@@ -300,10 +308,13 @@ STR_013B_OWNED_BY						:{WHITE}...í eigu {STRING}
 STR_013C_CARGO							:{BLACK}Farmur
 STR_013D_INFORMATION						:{BLACK}Upplýsingar
 STR_013E_CAPACITIES						:{BLACK}Pláss
+STR_013E_TOTAL_CARGO						:{BLACK}Heildarfarmur
 STR_013F_CAPACITY						:{BLACK}Pláss: {LTBLUE}{STRING}
 STR_0140_NEW_GAME						:{BLACK}Nýr leikur
 STR_0141_LOAD_GAME						:{BLACK}Opna leik
 STR_0142_TUTORIAL_DEMONSTRATION					:{BLACK}Leiðbeiningar / Sýnikennsla
+STR_SINGLE_PLAYER						:{BLACK}Einspilun
+STR_MULTIPLAYER							:{BLACK}Fjölspilun
 
 STR_0148_GAME_OPTIONS						:{BLACK}Leikjastillingar
 
@@ -322,13 +333,29 @@ STR_0159_CARGO_PAYMENT_RATES					:Línurit: Flutningsgróði
 STR_015A_COMPANY_LEAGUE_TABLE					:Stigatafla fyrirtækja
 ############ range for menu	ends
 
+STR_015B_OPENTTD						:{WHITE}Um OpenTTD
 STR_015C_SAVE_GAME						:Vista leik
 STR_015D_LOAD_GAME						:Opna leik
 STR_015E_QUIT_GAME						:Hætta leik
 STR_015F_QUIT							:Hætta í OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Ertu viss um að þú viljir hætta í þessum leik ?
 STR_0161_QUIT_GAME						:{WHITE}Hætta leik
+SRT_SORT_BY							:{BLACK}Flokka eftir
 
+STR_SORT_BY_POPULATION						:{BLACK}Fólksfjöldi
+STR_SORT_BY_PRODUCTION						:{BLACK}Framleiðsla
+STR_SORT_BY_TYPE						:{BLACK}Tegund
+STR_SORT_BY_TRANSPORTED						:{BLACK}Flutt
+STR_SORT_BY_NAME						:{BLACK}Nafn
+STR_SORT_BY_DROPDOWN_NAME					:Nafn
+STR_SORT_BY_DATE						:{BLACK}Dagsetning
+STR_SORT_BY_UNSORTED						:Óflokkað
+STR_SORT_BY_NUMBER						:Númer
+STR_SORT_BY_PROFIT_LAST_YEAR					:Gróði seinasta árs
+STR_SORT_BY_PROFIT_THIS_YEAR					:Gróði þessa árs
+STR_SORT_BY_AGE							:Aldur
+STR_SORT_BY_RELIABILITY						:Áreiðanleiki
+STR_SORT_BY_MAX_SPEED						:Hámarkshraði
 
 ############ range for months starts
 STR_0162_JAN							:Jan
@@ -458,6 +485,7 @@ STR_01D0_CARGO_ACCEPTED						:{BLACK}Tekið á móti: {LTBLUE}{STRING}, {STRING}, {
 STR_01D1_8							:({COMMA8}/8 {STRING})
 STR_01D3_SOUND_MUSIC						:Hljóð/tónlist
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW				:{BLACK}Sýna hljóð/tónlistar glugga
+STR_01D5_ALL							:{TINYFONT}Allt
 STR_01D9_CUSTOM_1						:{TINYFONT}Sérval 1
 STR_01DA_CUSTOM_2						:{TINYFONT}Sérval 2
 STR_01DB_MUSIC_VOLUME						:{BLACK}{TINYFONT}Tónlistarstyrkur
@@ -522,6 +550,7 @@ STR_021D							:{BLACK}
 STR_021E							:{WHITE}
 STR_021F							:{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO					:{BLACK}Búa til kort
+STR_0221_OPENTTD						:{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR					:{YELLOW}Kortagerð
 STR_0223_LAND_GENERATION					:{WHITE}Landslagsgerð
 STR_0224							:{BLACK}{UPARROW}
@@ -533,7 +562,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA				:{BLACK}Minnka svæði til að lækka/hækka
 STR_022A_GENERATE_RANDOM_LAND					:{BLACK}Mynda til land af handahófi
 STR_022B_RESET_LANDSCAPE					:{BLACK}Eyða landi
 STR_022C_RESET_LANDSCAPE					:{WHITE}Eyða landi
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO				:{BLACK}Ertu viss um að þú viljir eyða landinu?
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO				:{WHITE}Ertu viss um að þú viljir núllstilla landslagið?
 STR_022E_LANDSCAPE_GENERATION					:{BLACK}Landslagsgerð
 STR_022F_TOWN_GENERATION					:{BLACK}Bæjargerð
 STR_0230_INDUSTRY_GENERATION					:{BLACK}Iðnaðargerð
@@ -563,6 +592,7 @@ STR_0248_FARM							:{BLACK}Býli
 STR_0249_IRON_ORE_MINE						:{BLACK}Járnnáma
 STR_024A_OIL_WELLS						:{BLACK}Olíulindir
 STR_024B_BANK							:{BLACK}Banki
+STR_024C_PAPER_MILL						:{BLACK}Pappírsvinnsla
 STR_024E_PRINTING_WORKS						:{BLACK}Prentsmiðja
 STR_024F_GOLD_MINE						:{BLACK}Gullnáma
 STR_0251_FRUIT_PLANTATION					:{BLACK}Ávaxtaekra
@@ -592,6 +622,7 @@ STR_026A_CONSTRUCT_FARM						:{BLACK}Byggja Býli
 STR_026B_CONSTRUCT_IRON_ORE_MINE				:{BLACK}Byggja Járnnámu
 STR_026C_CONSTRUCT_OIL_WELLS					:{BLACK}Byggja Olíulindir
 STR_026D_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Byggja Banka (aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum)
+STR_026E_CONSTRUCT_PAPER_MILL					:{BLACK}Byggja Pappírsvinnslu
 STR_0270_CONSTRUCT_PRINTING_WORKS				:{BLACK}Byggja Prentsmiðju
 STR_0271_CONSTRUCT_GOLD_MINE					:{BLACK}Byggja Gullnámu
 STR_0272_CONSTRUCT_BANK_CAN_ONLY				:{BLACK}Byggja Banka (aðeins hægt að byggja í bæjum)
@@ -689,6 +720,7 @@ STR_02D5_LAND_BLOCK_INFO					:Landssvæðisupplýsingar
 STR_02D6							:
 STR_02D7_SCREENSHOT_CTRL_S					:Skjáskot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G				:Risa skjáskot (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD						:Um 'OpenTTD'
 ############ range ends	here
 
 STR_02DA_ON							:{BLACK}Á
@@ -730,7 +762,9 @@ STR_0301_DISPLAY_GAME_OPTIONS					:{BLACK}Sýna Leikjastillingar
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS				:{BLACK}Sýna Erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING					:{BLACK}Byrja nýjan leik, í eigin landi
 STR_0304_QUIT							:{BLACK}Hætta í OpenTTD
+STR_0305_LEAVE_OPENTTD						:{BLACK}Fara úr 'OpenTTD', og hætta
 STR_0306_VIEW_DEMONSTRATION_TUTORIAL				:{BLACK}Sjá sýnikennslu/leiðbeiningar
+STR_0307_OPENTTD						:{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS				:{WHITE}...aðeins hægt að byggja í bæjum
 STR_0311_SELECT_TOYLAND_LANDSCAPE				:{BLACK}Velja 'leikfangaland' landslagsstíl
 STR_0312_FUND_CONSTRUCTION_OF_NEW				:{BLACK}Fjármagna byggingu nýs iðnaðars
@@ -772,6 +806,9 @@ STR_TOWNNAME_SWEDISH						:Sænsk
 STR_TOWNNAME_DUTCH						:Hollensk
 STR_TOWNNAME_FINNISH						:Finnsk
 STR_TOWNNAME_POLISH						:Pólsk
+STR_TOWNNAME_HUNGARIAN						:Ungversk
+STR_TOWNNAME_AUSTRIAN						:Austurrísk
+STR_TOWNNAME_ROMANIAN						:Rúmensk
 ############ end of	townname region
 
 STR_CURR_POUNDS							:Sterlingspund ({POUNDSIGN})

@@ -352,7 +352,7 @@ STR_015E_QUIT_GAME						:Koniec hry
 STR_015F_QUIT							:Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME						:{WHITE}Koniec hry
-STR_SORT_TIP							:{BLACK}Vyber sbosob usporiadania zostupny/vzostupny
+STR_SORT_TIP							:{BLACK}Vyber sposob usporiadania zostupny/vzostupny
 SRT_SORT_BY							:{BLACK}Usporiadat podla
 
 STR_SORT_BY_POPULATION						:{BLACK}Populacia
@@ -1003,10 +1003,10 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON				:ano, u vsetkych vozidiel
 STR_CONFIG_PATCHES_WARN_INCOME_LESS				:{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES			:{LTBLUE}Stare vozidla sa neprestanu vyrabat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE				:{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred / po
-STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS				:{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti maximalneho veku
+STR_CONFIG_PATCHES_AUTORENEW_MONEY				:{LTBLUE}Minimalny pocet penazi pre automaticke obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION				:{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES				:{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT				:{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD				:{LTBLUE}Maximalne pokrytie stanice: {ORANGE}{STRING} {RED}Vystraha: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD				:{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
@@ -1021,24 +1021,24 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH				:{LTBLUE}Zakazat automobily pre pocitac:
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT				:{LTBLUE}Zakazat lietadla pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS				:{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE					:{LTBLUE}Povolit nove AI (alpha verzia): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Vychodzi servisny interval pre vlaky: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Vychodzi servisny interval pre automobily: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Vychodzi servisny interval pre lietadla: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Vychodzi servisny interval pre lode: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Default service interval for ships: {ORANGE}disabled
+STR_CONFIG_PATCHES_SERVINT_TRAINS				:{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED			:{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
+STR_CONFIG_PATCHES_SERVINT_ROADVEH				:{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED			:{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT				:{LTBLUE}Imlicitny servisny interval pre lietadla: {ORANGE}{STRING} dni/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED			:{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}vypnuty
+STR_CONFIG_PATCHES_SERVINT_SHIPS				:{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED			:{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE				:{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE				:{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY				:{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY				:{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Left
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:Centre
+STR_CONFIG_PATCHES_TOOLBAR_POS					:{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT				:Na lavo
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER				:V strede
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT				:Na pravo
 
 STR_CONFIG_PATCHES_GUI						:{BLACK}Rozhranie
@@ -1231,8 +1231,8 @@ STR_NETWORK_START_GAME						:{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP					:{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
 STR_NETWORK_LOAD_GAME						:{BLACK}Nacitat hru
 STR_NETWORK_LOAD_GAME_TIP					:{BLACK}Pokracovat v ulozenej hre (uistite sa, ze sa pripojite ako spravny hrac)
-STR_NETWORK_LOAD_SCENARIO					:{BLACK}Nahrat scenar
-STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacat sietovu hru zo scenara
+STR_NETWORK_LOAD_SCENARIO					:{BLACK}Nahrat scenario
+STR_NETWORK_LOAD_SCENARIO_TIP					:{BLACK}Zacat sietovu hru zo scenaria
 
 STR_NETWORK_GAME_LOBBY						:{WHITE}Sietova hra - lobby
 
@@ -1240,7 +1240,7 @@ STR_NETWORK_SEND						:{BLACK}Poslat
 STR_NETWORK_SEND_TIP						:{BLACK}Poslat spravu ostatnym hracom
 STR_NETWORK_COMPANY_NAME					:{BLACK}Nazov spolocnosti:
 STR_NETWORK_COMPANY_NAME_TIP					:{BLACK}Mozes zmenit nazov spolocnosti. Enterom potvrdis zmeny
-STR_NETWORK_SPECTATE_GAME					:{BLACK}Navstivit hru
+STR_NETWORK_SPECTATE_GAME					:{BLACK}Sledovat hru
 STR_NETWORK_SPECTATE_GAME_TIP					:{BLACK}Sledovat hru len ako divak
 STR_NETWORK_NEW_COMPANY						:{BLACK}Nova spolocnost
 STR_NETWORK_NEW_COMPANY_TIP					:{BLACK}Zalozit novu spolocnost
@@ -2557,12 +2557,12 @@ STR_B002_OIL_REFINERY_EXPLOSION					:{BLACK}{BIGFONT}Ropna rafineria explodovala
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS			:{BLACK}{BIGFONT}Za nejasnych okolnost bola znicena tovaren nedaleko {TOWN}!
 STR_B004_UFO_LANDS_NEAR						:{BLACK}{BIGFONT}'UFO' pristalo nedaleko {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES				:{BLACK}{BIGFONT}Zaval v uholnej bani nedaleko {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Povoden !{}Najmenej {COMMA16} ludi je nezvestnych alebo mrtvych po strasnych zaplavach !
+STR_B006_FLOOD_VEHICLE_DESTROYED				:{BLACK}{BIGFONT}Povoden!{}Najmenej {COMMA16} ludi je nezvestnych alebo mrtvych po strasnych zaplavach!
 
 STR_BRIBE_FAILED						:{WHITE}Vas pokus o uplatok bol odhaleny
 STR_BRIBE_FAILED_2						:{WHITE}miestnym vysetrovatelom.
 STR_BUILD_DATE							:{BLACK}Postavene: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED						:{WHITE}Hra je v pauze.{}Nie je mozne vykonat prikaz.
+STR_MULTIPLAYER_PAUSED						:{WHITE}Hra je pozastavena.{}Nie je mozne vykonat prikaz.
 
 STR_PERFORMANCE_DETAIL						:{WHITE}Podrobne hodnotenie vykonu
 STR_PERFORMANCE_DETAIL_KEY					:{BLACK}Podrobne
@@ -2583,5 +2583,13 @@ STR_PERFORMANCE_DETAIL_LOAN					:{BLACK}Uver:
 STR_PERFORMANCE_DETAIL_TOTAL					:{BLACK}Spolu:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP				:{BLACK}Pocet vozidiel (automobilov, vlakov, lodi a lietadiel).
-STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet casti stanic. Kazda cast stanice (napr.. zeleznicna stanica, autobusova zastavka, letisko) je zapocitana, aj ked su spojene do jednej stanice..
+STR_PERFORMANCE_DETAIL_STATIONS_TIP				:{BLACK}Pocet casti stanic. Kazda cast stanice (napr. zeleznicna stanica, autobusova zastavka, letisko) je zapocitana, aj ked su spojene do jednej stanice.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP				:{BLACK}Zisk vozidla s najnizsim prijmom (zo vsetkych vozidiel starsich ako 2 roky)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP				:{BLACK}Mnozstvo penazi zarobenych v mesiaci s najmensim ziskom v poslednych 12 kvartaloch
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP				:{BLACK}Mnozstvo penazi zarobenych v mesiaci s najvacsim ziskom v poslednych 12 kvartaloch
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP				:{BLACK}Pocet jednotiek tovaru prevezenych v poslednych styroch kvartaloch.
+STR_PERFORMANCE_DETAIL_CARGO_TIP				:{BLACK}Typy nakladu donesene v poslednom kvartali.
+STR_PERFORMANCE_DETAIL_MONEY_TIP				:{BLACK}Mnozstvo penazi k dispozicii
+STR_PERFORMANCE_DETAIL_LOAN_TIP					:{BLACK}Mas velku pozicku?
+STR_PERFORMANCE_DETAIL_TOTAL_TIP				:{BLACK}Celkove body z vsetkych moznych
 
