@@ -1751,6 +1751,23 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return _price.build_dock;
 }
 
+/* Checks if any ship is servicing the buoy specified. Returns yes or no */
+static bool CheckShipsOnBuoy(Station *st)
+{
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Ship) {
+			const Order *order;
+			FOR_VEHICLE_ORDERS(v, order) {
+				if (order->type == OT_GOTO_STATION && order->station == st->index) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 static int32 RemoveBuoy(Station *st, uint32 flags)
 {
 	uint tile;
@@ -1761,6 +1778,9 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 	}
 
 	tile = st->dock_tile;
+
+	if (CheckShipsOnBuoy(st))
+		return_cmd_error(STR_BUOY_IS_IN_USE);
 
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
