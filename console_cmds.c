@@ -718,6 +718,21 @@ DEF_CONSOLE_CMD(ConSet) {
 		return NULL;
 	}
 
+	// setting the server advertising on/off
+	if (strcmp(argv[1],"server_advertise") == 0) {
+		if (argc == 3) {
+			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
+				_network_advertise = true;
+			else
+				_network_advertise = false;
+			IConsolePrintF(_iconsole_color_warning, "Server-advertise changed to '%s'", (_network_advertise)?"on":"off");
+		} else {
+			IConsolePrintF(_iconsole_color_default, "Current server-advertise is '%s'", (_network_advertise)?"on":"off");
+			IConsolePrint(_iconsole_color_warning, "Usage: set server_advertise on/off.");
+		}
+		return NULL;
+	}
+
 #endif /* ENABLE_NETWORK */
 
 	// Patch-options
@@ -745,6 +760,7 @@ DEF_CONSOLE_CMD(ConSet) {
 	IConsolePrint(_iconsole_color_error, " - servername \"<name>\"");
 	IConsolePrint(_iconsole_color_error, " - server_port <port>");
 	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
+	IConsolePrint(_iconsole_color_error, " - server_advertise on/off");
 #endif /* ENABLE_NETWORK */
 	IConsolePrint(_iconsole_color_error, " - patch <patch_name> [<value>]");
 
