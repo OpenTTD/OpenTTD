@@ -302,7 +302,8 @@ static void showhelp(void)
 		"  -f                  = Fork into the background (dedicated only)\n"
 		#endif
 		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
-		"  -p #player          = Player as #player (deprecated) (network only)\n",
+		"  -p #player          = Player as #player (deprecated) (network only)\n"
+		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n",
 		lastof(buf)
 	);
 
@@ -451,6 +452,8 @@ static void UnInitializeGame(void)
 {
 	UnInitWindowSystem();
 	UnInitNewgrEngines();
+
+	free(_config_file);
 }
 
 static void LoadIntroGame(void)
@@ -509,15 +512,16 @@ int ttd_main(int argc, char* argv[])
 	_switch_mode_errorstr = INVALID_STRING_ID;
 	_dedicated_forks = false;
 	dedicated = false;
+	_config_file = NULL;
 
 	// The last param of the following function means this:
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
 	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "m:s:v:hDfn::l:eit:d::r:g::G:p:";
+		optformat = "m:s:v:hDfn::l:eit:d::r:g::G:p:c:";
 	#else
-		optformat = "m:s:v:hDn::l:eit:d::r:g::G:p:"; // no fork option
+		optformat = "m:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
 	#endif
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
@@ -575,6 +579,9 @@ int ttd_main(int argc, char* argv[])
 			if (IS_INT_INSIDE(i, 1, MAX_PLAYERS)) _network_playas = i;
 			break;
 		}
+		case 'c':
+			_config_file = strdup(mgo.opt);
+			break;
 		case -2:
  		case 'h':
 			showhelp();

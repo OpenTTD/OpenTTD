@@ -582,7 +582,9 @@ void DeterminePaths(void)
 	_path.scenario_dir = str_fmt("%sscenario", _path.personal_dir);
 	_path.gm_dir = str_fmt("%sgm\\", _path.game_data_dir);
 	_path.data_dir = str_fmt("%sdata\\", _path.game_data_dir);
-	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+
+	if (_config_file == NULL)
+		_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
 
 #if defined CUSTOM_LANG_DIR
 	// sets the search path for lng files to the custom one

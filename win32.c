@@ -2131,7 +2131,9 @@ void DeterminePaths(void)
 	_path.data_dir = str_fmt("%sdata\\", cfg);
 	_path.lang_dir = str_fmt("%slang\\", cfg);
 
-	_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+	if (_config_file == NULL)
+		_config_file = str_fmt("%sopenttd.cfg", _path.personal_dir);
+
 	_highscore_file = str_fmt("%shs.dat", _path.personal_dir);
 	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
 
