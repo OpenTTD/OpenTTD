@@ -683,6 +683,46 @@ LANGS = $(LANG_TXT:%.txt=%.lng)
 
 ##############################################################################
 #
+# Build commands
+#
+
+# If we are verbose, we will show commands prefixed by $(Q) (which acts as
+# @ in the non-verbose mode), and we will show the "real" cmds instead of
+# their quiet versions (which are used in the non-verbose mode).
+# Inspired by the Linux kernel build system.
+ifdef VERBOSE
+	Q =
+	quiet =
+else
+	Q = @
+	quiet = quiet_
+endif
+
+# Show the command (quiet or non-quiet version based on the assignment
+# just above) and then execute it.
+cmd = @$(if $($(quiet)cmd_$(1)),echo $($(quiet)cmd_$(1)) &&) $(cmd_$(1))
+
+
+# The build commands themselves. Note that if you omit the quiet version,
+# nothing will be shown in the non-verbose mode.
+
+quiet_cmd_compile_link = '===> Compiling and Linking $@'
+      cmd_compile_link = $(CC) $(BASECFLAGS) $(CDEFS) $< -o $@
+
+quiet_cmd_ttd_link = '===> Linking $@'
+      cmd_ttd_link = $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
+
+COMPILE_PARAMS=$(CFLAGS) $(CDEFS) -MD -c $< -o $@
+
+quiet_cmd_c_compile = '===> Compiling $<'
+      cmd_c_compile = $(CC) $(COMPILE_PARAMS)
+
+quiet_cmd_cxx_compile = '===> Compiling $<'
+      cmd_cxx_compile = $(CXX) $(COMPILE_PARAMS)
+
+
+##############################################################################
+#
 # Targets
 #
 
@@ -699,37 +739,31 @@ all: endian.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
 	@echo '===> Testing endianness'
-	@./$(ENDIAN_CHECK) > $@
+	$(Q)./$(ENDIAN_CHECK) > $@
 
 $(ENDIAN_CHECK): endian_check.c
-	@echo '===> Compiling and Linking $@'
-	@$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
+	$(call cmd,compile_link)
 
 
 $(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
-	@if [ ! "$(VERBOSE)" ]; then \
-		echo '===> Linking $@'; \
-	else \
-		echo $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@; \
-	fi
-	@$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
+	$(call cmd,ttd_link)
 
 $(OSX): $(TTD)
-	@rm -fr "$(OSXAPP)"
-	@mkdir -p "$(OSXAPP)"/Contents/MacOS
-	@mkdir -p "$(OSXAPP)"/Contents/Resources
-	@mkdir -p "$(OSXAPP)"/Contents/Data
-	@mkdir -p "$(OSXAPP)"/Contents/Lang
-	@echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
-	@cp os/macos/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
-	@os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
-	@cp os/macos/track_starter "$(OSXAPP)"/contents/macos
-	@ls os/macos | grep -q "\.class" || \
-	javac os/macos/OpenTTDMidi.java
-	@cp os/macos/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
-	@cp data/* "$(OSXAPP)"/Contents/data/
-	@cp lang/*.lng "$(OSXAPP)"/Contents/lang/
-	@cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
+	$(Q)rm -fr "$(OSXAPP)"
+	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
+	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
+	$(Q)mkdir -p "$(OSXAPP)"/Contents/Data
+	$(Q)mkdir -p "$(OSXAPP)"/Contents/Lang
+	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
+	$(Q)cp os/macos/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
+	$(Q)os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
+	$(Q)cp os/macos/track_starter "$(OSXAPP)"/contents/macos
+	$(Q)ls os/macos | grep -q "\.class" || \
+	$(Q)       javac os/macos/OpenTTDMidi.java
+	$(Q)cp os/macos/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
+	$(Q)cp data/* "$(OSXAPP)"/Contents/data/
+	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/lang/
+	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
 
 $(endwarnings): $(64_bit_warnings)
 
@@ -738,51 +772,50 @@ $(64_bit_warnings):
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c endian.h
-	@echo '===> Compiling and Linking $@'
-	@$(CC) $(BASECFLAGS) $(CDEFS) -o $@ $<
+	$(call cmd,compile_link)
 
 table/strings.h: lang/english.txt $(STRGEN)
 	@echo '===> Generating $@'
-	@$(STRGEN)
+	$(Q)$(STRGEN)
 
 lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
-	@$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS)
+	$(Q)$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS)
 
 winres.o: ttd.rc
 	@echo '===> Compiling resource $<'
-	@windres -o $@ $<
+	$(Q)windres -o $@ $<
 
 ifdef MORPHOS
 release: all
-	@rm -fr "/t/openttd-$(RELEASE)-morphos.lha"
-	@mkdir -p "/t/"
-	@mkdir -p "/t/openttd-$(RELEASE)-morphos"
-	@mkdir -p "/t/openttd-$(RELEASE)-morphos/docs"
-	@mkdir -p "/t/openttd-$(RELEASE)-morphos/data"
-	@mkdir -p "/t/openttd-$(RELEASE)-morphos/lang"
-	@mkdir -p "/t/openttd-$(RELEASE)-morphos/scenario"
-	@cp -R $(TTD)                      "/t/openttd-$(RELEASE)-morphos/"
-	@cp data/*                         "/t/openttd-$(RELEASE)-morphos/data/"
-	@cp lang/*.lng                     "/t/openttd-$(RELEASE)-morphos/lang/"
-	@cp scenario/*                     "/t/openttd-$(RELEASE)-morphos/scenario/"
-	@cp readme.txt                     "/t/openttd-$(RELEASE)-morphos/docs/ReadMe"
-	@cp docs/console.txt               "/t/openttd-$(RELEASE)-morphos/docs/Console"
-	@cp COPYING                        "/t/openttd-$(RELEASE)-morphos/docs/"
-	@cp changelog.txt                  "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog"
-	@cp known-bugs.txt				   "/t/openttd-$(RELEASE)-morphos/docs/known-bugs.txt"
-	@cp os/morphos/icons/openttd.info  "/t/openttd-$(RELEASE)-morphos/$(TTD).info"
-	@cp os/morphos/icons/docs.info     "/t/openttd-$(RELEASE)-morphos/docs.info"
-	@cp os/morphos/icons/drawer.info   "/t/openttd-$(RELEASE)-morphos.info"
-	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ReadMe.info"
-	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/Console.info"
-	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/COPYING.info"
-	@cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog.info"
-	@strip --strip-all --strip-unneeded --remove-section .comment "/t/openttd-$(RELEASE)-morphos/$(TTD)"
-	@lha a -r "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos"
-	@lha a    "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos.info"
-	@rm -fr "/t/openttd-$(RELEASE)-morphos"
-	@rm -fr "/t/openttd-$(RELEASE)-morphos.info"
+	$(Q)rm -fr "/t/openttd-$(RELEASE)-morphos.lha"
+	$(Q)mkdir -p "/t/"
+	$(Q)mkdir -p "/t/openttd-$(RELEASE)-morphos"
+	$(Q)mkdir -p "/t/openttd-$(RELEASE)-morphos/docs"
+	$(Q)mkdir -p "/t/openttd-$(RELEASE)-morphos/data"
+	$(Q)mkdir -p "/t/openttd-$(RELEASE)-morphos/lang"
+	$(Q)mkdir -p "/t/openttd-$(RELEASE)-morphos/scenario"
+	$(Q)cp -R $(TTD)                      "/t/openttd-$(RELEASE)-morphos/"
+	$(Q)cp data/*                         "/t/openttd-$(RELEASE)-morphos/data/"
+	$(Q)cp lang/*.lng                     "/t/openttd-$(RELEASE)-morphos/lang/"
+	$(Q)cp scenario/*                     "/t/openttd-$(RELEASE)-morphos/scenario/"
+	$(Q)cp readme.txt                     "/t/openttd-$(RELEASE)-morphos/docs/ReadMe"
+	$(Q)cp docs/console.txt               "/t/openttd-$(RELEASE)-morphos/docs/Console"
+	$(Q)cp COPYING                        "/t/openttd-$(RELEASE)-morphos/docs/"
+	$(Q)cp changelog.txt                  "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog"
+	$(Q)cp known-bugs.txt				   "/t/openttd-$(RELEASE)-morphos/docs/known-bugs.txt"
+	$(Q)cp os/morphos/icons/openttd.info  "/t/openttd-$(RELEASE)-morphos/$(TTD).info"
+	$(Q)cp os/morphos/icons/docs.info     "/t/openttd-$(RELEASE)-morphos/docs.info"
+	$(Q)cp os/morphos/icons/drawer.info   "/t/openttd-$(RELEASE)-morphos.info"
+	$(Q)cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ReadMe.info"
+	$(Q)cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/Console.info"
+	$(Q)cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/COPYING.info"
+	$(Q)cp os/morphos/icons/document.info "/t/openttd-$(RELEASE)-morphos/docs/ChangeLog.info"
+	$(Q)strip --strip-all --strip-unneeded --remove-section .comment "/t/openttd-$(RELEASE)-morphos/$(TTD)"
+	$(Q)lha a -r "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos"
+	$(Q)lha a    "t:openttd-$(RELEASE)-morphos.lha" "t:openttd-$(RELEASE)-morphos.info"
+	$(Q)rm -fr "/t/openttd-$(RELEASE)-morphos"
+	$(Q)rm -fr "/t/openttd-$(RELEASE)-morphos.info"
 	@echo "Release archive can be found in RAM:t/ now."
 
 .PHONY: release
@@ -790,37 +823,37 @@ endif
 
 ifdef OSX
 release: all
-	@mkdir -p "OpenTTD $(RELEASE)"
-	@mkdir -p "OpenTTD $(RELEASE)"/docs
-	@mkdir -p "OpenTTD $(RELEASE)"/scenario
-	@cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
-	@cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
-	@cp readme.txt "OpenTTD $(RELEASE)"/docs/
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	@cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
-	@cp COPYING "OpenTTD $(RELEASE)"/docs/
-	@cp changelog.txt "OpenTTD $(RELEASE)"/docs/
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
-	@cp os/macos/*.webloc "OpenTTD $(RELEASE)"
-	@cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
-	@cp scenario/* "OpenTTD $(RELEASE)"/scenario/
-	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
-	@rm -fr "OpenTTD $(RELEASE)"
+	$(Q)mkdir -p "OpenTTD $(RELEASE)"
+	$(Q)mkdir -p "OpenTTD $(RELEASE)"/docs
+	$(Q)mkdir -p "OpenTTD $(RELEASE)"/scenario
+	$(Q)cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
+	$(Q)cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
+	$(Q)cp readme.txt "OpenTTD $(RELEASE)"/docs/
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
+	$(Q)cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
+	$(Q)cp COPYING "OpenTTD $(RELEASE)"/docs/
+	$(Q)cp changelog.txt "OpenTTD $(RELEASE)"/docs/
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
+	$(Q)cp os/macos/*.webloc "OpenTTD $(RELEASE)"
+	$(Q)cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
+	$(Q)cp scenario/* "OpenTTD $(RELEASE)"/scenario/
+	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
+	$(Q)rm -fr "OpenTTD $(RELEASE)"
 
 nightly_build: all
-	@mkdir -p "OpenTTD_nightly_$(DATE)"
-	@mkdir -p "OpenTTD_nightly_$(DATE)"/docs
-	@cp -R $(OSXAPP) "OpenTTD_nightly_$(DATE)"/
-	@cp docs/OSX_where_did_the_package_go.txt "OpenTTD_nightly_$(DATE)"/Where\ did\ the\ package\ go.txt
-	@cp readme.txt "OpenTTD_nightly_$(DATE)"/docs/
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	@cp docs/console.txt "OpenTTD_nightly_$(DATE)"/docs/
-	@cp COPYING "OpenTTD_nightly_$(DATE)"/docs/
-	@cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
-	@cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
-	@cp os/macos/*.webloc "OpenTTD_nightly_$(DATE)"/
-	@/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
-	@rm -fr "OpenTTD_nightly_$(DATE)"
+	$(Q)mkdir -p "OpenTTD_nightly_$(DATE)"
+	$(Q)mkdir -p "OpenTTD_nightly_$(DATE)"/docs
+	$(Q)cp -R $(OSXAPP) "OpenTTD_nightly_$(DATE)"/
+	$(Q)cp docs/OSX_where_did_the_package_go.txt "OpenTTD_nightly_$(DATE)"/Where\ did\ the\ package\ go.txt
+	$(Q)cp readme.txt "OpenTTD_nightly_$(DATE)"/docs/
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/readme\ if\ crashed\ on\ OSX.txt
+	$(Q)cp docs/console.txt "OpenTTD_nightly_$(DATE)"/docs/
+	$(Q)cp COPYING "OpenTTD_nightly_$(DATE)"/docs/
+	$(Q)cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
+	$(Q)cp os/macos/*.webloc "OpenTTD_nightly_$(DATE)"/
+	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
+	$(Q)rm -fr "OpenTTD_nightly_$(DATE)"
 
 .PHONY: release nightly_build
 endif
@@ -843,10 +876,10 @@ FORCE:
 
 clean:
 	@echo '===> Cleaning up'
-	@rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) endian.h $(ENDIAN_CHECK)
+	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) endian.h $(ENDIAN_CHECK)
 
 mrproper: clean
-	@rm -rf $(MAKE_CONFIG)
+	$(Q)rm -rf $(MAKE_CONFIG)
 
 ifndef OSX
 ifndef MORPHOS
@@ -904,8 +937,8 @@ love:
 # Export all variables set to subprocesses (a bit dirty)
 .EXPORT_ALL_VARIABLES:
 upgradeconf: $(MAKE_CONFIG)
-	@rm $(MAKE_CONFIG)
-	@$(MAKE) $(MAKE_CONFIG)
+	$(Q)rm $(MAKE_CONFIG)
+	$(Q)$(MAKE) $(MAKE_CONFIG)
 
 .PHONY: upgradeconf
 
@@ -924,21 +957,11 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # therefore we do not need to watch deps.
 
 %.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
-	@if [ ! "$(VERBOSE)" ]; then \
-		echo '===> Compiling $<'; \
-	else \
-		echo $(CC) $(CFLAGS) $(CDEFS) -c $< -o $@; \
-	fi
-	@$(CC) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
+	$(call cmd,c_compile)
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
 %.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
-	@if [ ! "$(VERBOSE)" ]; then \
-		echo '===> Compiling $<'; \
-	else \
-		echo $(CXX) $(CFLAGS) $(CDEFS) -c $< -o $@; \
-	fi
-	@$(CXX) $(CFLAGS) $(CDEFS) -MD -c $< -o $@
+	$(call cmd,cxx_compile)
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
 # Silence stale header dependencies
