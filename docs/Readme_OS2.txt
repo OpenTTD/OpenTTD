@@ -115,4 +115,4 @@ If you have any questions regarding OS/2 issues, please contact me
 (owen@owenrudge.net) and I'll try to help you out. For general OpenTTD
 issues, see the Contacting section of readme.txt.
 
-- Owen Rudge, 26th December 2004
+- Owen Rudge, 26th December 2004
