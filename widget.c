@@ -443,7 +443,7 @@ static WindowNumber _dropdown_windownum;
 static byte _dropdown_var1;
 static byte _dropdown_var2;
 
-static Widget _dropdown_menu_widgets[] = {
+static const Widget _dropdown_menu_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
@@ -497,11 +497,11 @@ void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 						if (dis & 1) {
 							GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
-							_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
+							_color_list[w->widget[0].color].window_color_bga);
 						}
 					} else {
-						int color_1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
-						int color_2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
+						int color_1 = _color_list[w->widget[0].color].window_color_1a;
+						int color_2 = _color_list[w->widget[0].color].window_color_2;
 						GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
 						GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
 					}
@@ -616,8 +616,6 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 			}
 		}
 	}
-
-	_dropdown_menu_widgets[0].color = wi->color;
 
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
