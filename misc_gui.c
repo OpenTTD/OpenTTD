@@ -791,10 +791,10 @@ press_ok:;
 				WindowNumber wnd_num = WP(w,querystr_d).wnd_num;
 				Window *parent;
 
-				DeleteWindow(w);
-
 				// Mask the edit-box as closed, so we don't send out a CANCEL
 				closed = true;
+
+				DeleteWindow(w);
 
 				parent = FindWindowById(wnd_class, wnd_num);
 				if (parent != NULL) {

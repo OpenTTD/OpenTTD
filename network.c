@@ -896,6 +896,8 @@ void NetworkDisconnect(void)
 		}
 	}
 
+	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+
 	NetworkClose();
 
 	// Free all queued commands
