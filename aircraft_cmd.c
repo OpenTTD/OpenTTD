@@ -508,6 +508,19 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 }
 
+void InvalidateAircraftWindows(Vehicle *v)
+{
+	Order *o;
+	
+	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+	
+	for ( o = v->schedule_ptr; o->type != OT_NOTHING; o++, i++) {
+		if (o->type == OT_GOTO_STATION ) {
+			InvalidateWindow(WC_AIRCRAFT_LIST, o->station << 16 | v->owner);
+		}
+	}
+}
+
 void OnNewDay_Aircraft(Vehicle *v)
 {
 	int32 cost;
@@ -535,7 +548,8 @@ void OnNewDay_Aircraft(Vehicle *v)
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+	
+	InvalidateAircraftWindows(v);
 }
 
 void AircraftYearlyLoop()
@@ -1230,6 +1244,7 @@ static void AircraftEnterHangar(Vehicle *v)
 			v->cur_order_index++;
 		} else if (old_order.flags & OF_FULL_LOAD) { // force depot visit
 			v->vehstatus |= VS_STOPPED;
+			InvalidateAircraftWindows(v);
 
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
