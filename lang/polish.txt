@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Wyswietl subsydia
 STR_02DD_SUBSIDIES						:Subsydia
 STR_02DE_MAP_OF_WORLD						:Mapa swiata
 STR_EXTRA_VIEW_PORT						:Extra podglad
+STR_SIGN_LIST							:Lista tablic
 STR_02DF_TOWN_DIRECTORY						:Lista miast
 STR_TOWN_POPULATION						:{BLACK}Swiatowa populacja: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Podglad {COMMA16}
@@ -992,14 +993,14 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD					:{LTBLUE}Uzyj ulepszonego algorytmu zaladunk
 STR_CONFIG_PATCHES_INFLATION					:{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS					:{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES					:{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Zezwalaj na wysy&#322;anie do zajezdni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT					:{LTBLUE}Zezwalaj na wysylanie do zajezdni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND					:{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN				:{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE					:{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE					:{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE					:{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES					:{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP					:
+STR_CONFIG_PATCHES_NEW_NONSTOP					:{LTBLUE}Kompatybilnosc obslugi nonstop z TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE				:{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL					:{LTBLUE}Przesun okno kiedy kursor jest przy krawedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE					:{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING}
@@ -1688,8 +1689,8 @@ STR_3060_AIRPORT						:Lotnisko
 STR_3061_TRUCK_LOADING_AREA					:Miejsce zaladunku
 STR_3062_BUS_STATION						:Przystanek
 STR_3063_SHIP_DOCK						:Port
-STR_3064_HIGHLIGHT_COVERAGE_AREA				:
-STR_3065_DON_T_HIGHLIGHT_COVERAGE				:
+STR_3064_HIGHLIGHT_COVERAGE_AREA				:{BLACK}Podswietl teren pokrywany przez projektowana stacje
+STR_3065_DON_T_HIGHLIGHT_COVERAGE				:{BLACK}Nie podswietlaj pokrywanego terenu przez projektowana stacje
 STR_3066_COVERAGE_AREA_HIGHLIGHT				:{BLACK}Pokryj zaznaczony teren
 STR_3067_MONORAIL_STATION_SELECT				:{WHITE}Wybierz stacje jednoszynowa.
 STR_3068_DOCK							:{WHITE}Port
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Wyswietla typ pojazdu na jaki bedzi
 STR_REPLACE_HELP						:{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Lista tablic - {COMMA16} Tablice
 
 ############ Lists rail types
 

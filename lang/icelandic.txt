@@ -314,9 +314,9 @@ STR_013A_METRIC_KILOMETERS					:Metrakerfið (kílómetrar)
 STR_013B_OWNED_BY						:{WHITE}...í eigu {STRING}
 STR_013C_CARGO							:{BLACK}Farmur
 STR_013D_INFORMATION						:{BLACK}Upplýsingar
-STR_013E_CAPACITIES						:{BLACK}Pláss
+STR_013E_CAPACITIES						:{BLACK}Burðargeta
 STR_013E_TOTAL_CARGO						:{BLACK}Heildarfarmur
-STR_013F_CAPACITY						:{BLACK}Pláss: {LTBLUE}{STRING}
+STR_013F_CAPACITY						:{BLACK}Burðargeta: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT					:{BLACK}Varningur alls (flutningsgeta) þessarar lestar:
 STR_013F_TOTAL_CAPACITY						:{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME						:{BLACK}Nýr leikur
@@ -447,7 +447,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND				:{WHITE}{STRING} {COMMA16} er að eldast um o
 STR_01A3_LAND_AREA_INFORMATION					:{WHITE}Landsvæðisupplýsingar
 STR_01A4_COST_TO_CLEAR_N_A					:{BLACK}Kostnaður við hreinsun: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR						:{BLACK}Kostnaður við hreinsun: {LTBLUE}{CURRENCY}
-STR_01A6_N_A							:Ekki til
+STR_01A6_N_A							:Enginn
 STR_01A7_OWNER							:{BLACK}Eigandi: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY					:{BLACK}Bæjaryfirvöld: {LTBLUE}{STRING}
 STR_01A9_NONE							:Enginn
@@ -564,7 +564,7 @@ STR_020C_NEW_VEHICLES						:{YELLOW}Ný farartæki
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE				:{YELLOW}Breyting á viðtöku farms
 STR_020E_SUBSIDIES						:{YELLOW}Samstarfssamningar
 STR_020F_GENERAL_INFORMATION					:{YELLOW}Almennar upplýsingar
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...of langt frá fyrrverandi stað
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO			:{WHITE}...of langt frá fyrri stað
 STR_0211_TOP_COMPANIES_WHO_REACHED				:{BIGFONT}{BLACK}Efstu fyrirtæki sem náðu {NUMU16}{}({STRING} stig)
 STR_TOP_COMPANIES_NETWORK_GAME					:{BIGFONT}{BLACK}Sambandstafla fyrirtækis í {NUMU16}
 STR_0212							:{BIGFONT}{COMMA16}.
@@ -969,10 +969,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY				:{WHITE}Flugvél {COMMA16} hefur tvöfaldar sk
 STR_AIRCRAFT_HAS_INVALID_ENTRY					:{WHITE}Flugvél {COMMA16} hefur ógilda stöð í áætluninni
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring lestar {COMMA16} mistókst (takmarkaðir peningar)
-STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA16} mistókst (takmarkaðir peningar)
-STR_SHIP_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring skips {COMMA16} mistókst (takmarkaðir peningar)
-STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring flugvélar {COMMA16} mistókst (takmarkaðir peningar)
+STR_TRAIN_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring lestar {COMMA16} mistókst (takmarkað fjármagn)
+STR_ROADVEHICLE_AUTORENEW_FAILED				:{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA16} mistókst (takmarkað fjármagn)
+STR_SHIP_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring skips {COMMA16} mistókst (takmarkað fjármagn)
+STR_AIRCRAFT_AUTORENEW_FAILED					:{WHITE}Sjálfvirk uppfæring flugvélar {COMMA16} mistókst (takmarkað fjármagn)
 
 STR_CONFIG_PATCHES						:{BLACK}Auka stillingar
 STR_CONFIG_PATCHES_TIP						:{BLACK}Auka stillingar
@@ -1195,7 +1195,7 @@ STR_INDUSTRY_TOO_CLOSE						:{WHITE}...of nálægt öðrum iðnaði
 STR_RAIL_REFIT_VEHICLE_TO_CARRY					:{BLACK}Breyta lest svo hún flytji annan varning
 STR_RAIL_REFIT							:{WHITE}{STRING} (Breyta)
 STR_RAIL_REFIT_VEHICLE						:{BLACK}Breyta lest
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin flytur
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm lestin á að flytja
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED				:{BLACK}Breyta lest til að flytja valinn varning
 STR_RAIL_CAN_T_REFIT_VEHICLE					:{WHITE}Get ekki breytt lest...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT				:{LTBLUE}Bil milli skoðana er í hundraðshlutum: {ORANGE}{STRING}
@@ -2491,7 +2491,7 @@ STR_8863_CRASHED						:{RED}Árekstur!
 STR_8865_NAME_TRAIN						:{WHITE}Skírðu lestina
 STR_8866_CAN_T_NAME_TRAIN					:{WHITE}Get ekki skírt lest...
 STR_8867_NAME_TRAIN						:{BLACK}Skýrðu lestina
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lestarslys!{}{COMMA16} deyja í eldsprengingu eftir árekstur
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Lestarslys!{}{COMMA16} deyja í sprengingu eftir árekstur
 STR_8869_CAN_T_REVERSE_DIRECTION				:{WHITE}Get ekki snúið lest við...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE				:{WHITE}Endurskíra lestargerð
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE				:{WHITE}Get ekki endurskírt lestargerð...
@@ -2620,9 +2620,82 @@ STR_9836_RENAME							:{BLACK}Endurnefna
 STR_9837_RENAME_SHIP_TYPE					:{BLACK}Endurnefna skipategund
 STR_9838_RENAME_SHIP_TYPE					:{WHITE}Endurnefna skipategund
 STR_9839_CAN_T_RENAME_SHIP_TYPE					:{WHITE}Get ekki endurnefnt skipategund...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY				:{BLACK}Breyta vöruflutningaskipum svo þau flytji annan varning
+STR_983B_REFIT							:{WHITE}{STRING} (Breyta)
+STR_983C_REFIT_SHIP						:{BLACK}Breyta skipi
+STR_983D_SELECT_TYPE_OF_CARGO_FOR				:{BLACK}Veldu hvernig farm skipið á að flytja
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED			:{BLACK}Breyta skipi til að flytja valinn varning
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY				:{GOLD}Veldu varning til að flytja:-
+STR_9840_NEW_CAPACITY_COST_OF_REFIT				:{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP					:{WHITE}Get ekki breytt skipi...
+STR_9842_REFITTABLE						:(breytanlegt)
+STR_GO_TO_SHIP_DEPOT						:Fara í {TOWN} Skipaskýli
+SERVICE_AT_SHIP_DEPOT						:Skoða í {TOWN} Skipaskýli
 
 ##id 0xA000
+STR_A000_AIRPORTS						:{WHITE}Flugvellir
+STR_A001_CAN_T_BUILD_AIRPORT_HERE				:{WHITE}Get ekki byggt flugvöll hér...
+STR_A002_AIRCRAFT_HANGAR					:{WHITE}{STATION} Flugskýli
+STR_A003_NEW_AIRCRAFT						:{BLACK}Nýja flugvél
+STR_A004_INFORMATION						:{BLACK}Upplýsingar
+STR_A005_NEW_AIRCRAFT						:{WHITE}Ný flugvél
+STR_A006_BUILD_AIRCRAFT						:{BLACK}Smíða flugvél
+STR_A007_COST_SPEED_CAPACITY_PASSENGERS				:{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hraði: {GOLD}{VELOCITY}{}{BLACK}Burðargeta: {GOLD}{COMMA16} farþegar, {COMMA16} pokar af pósti{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY}á ári{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK}  Endingartími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
+STR_A008_CAN_T_BUILD_AIRCRAFT					:{WHITE}Get ekki smíðað flugvél...
+STR_A009_AIRCRAFT						:{WHITE}{STRING} - {COMMA16} Flugvél
+STR_A00A							:{WHITE}{STRING}
+STR_A00B_ORDERS							:{WHITE}{STRING} (Skipanir)
+STR_A00C_DETAILS						:{WHITE}{STRING} (Upplýsingar)
+STR_A00D_AGE_RUNNING_COST_YR					:{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
+STR_A00E_MAX_SPEED						:{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY}  (í fyrra: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS					:{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA16}
+STR_A011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Smíðuð: {LTBLUE}{NUMU16}{BLACK} Virði: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO					:{WHITE}Get ekki sent flugvél í flugskýli...
+STR_HEADING_FOR_HANGAR						:{LTBLUE}Stefnir á {STATION} flugskýli
+STR_HEADING_FOR_HANGAR_VEL					:{LTBLUE}Stefnir á {STATION} flugskýli, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN					:{WHITE}Flugvél {COMMA16} bíður í flugskýli
+STR_A015_AIRCRAFT_IN_THE_WAY					:{WHITE}Flugvél er fyrir
+STR_A016_CAN_T_STOP_START_AIRCRAFT				:{WHITE}Get ekki stöðvað/ræst flugvél...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT					:{WHITE}flugvélin er á flugi
+STR_A018_MUST_BUILD_AIRPORT_FIRST				:{WHITE}Verður að byggja flugvöll fyrst
+STR_A019_CAPACITY						:{BLACK}Burðargeta: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY						:{BLACK}Burðargeta: {LTBLUE}{STRING}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED				:{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
+STR_A01C_CAN_T_SELL_AIRCRAFT					:{WHITE}Get ekki selt flugvélina...
+STR_A01D_AIRPORT_CONSTRUCTION					:Flugvallarframkvæmdir
+STR_A01E_BUILD_AIRPORT						:{BLACK}Byggja flugvöll
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES				:{BLACK}Smíða nýja flugvél (þarfnast flugvallar með flugskýli)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT				:{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
+STR_A022_BUILD_NEW_AIRCRAFT					:{BLACK}Smíða nýja flugvél
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO				:{BLACK}Dragðu flugvél hingað til að selja hana
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR				:{BLACK}Miðja aðalsjónarhorn á flugskýli
+STR_A025_AIRCRAFT_SELECTION_LIST				:{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT				:{BLACK}Smíða valda flugvél
+STR_A027_CURRENT_AIRCRAFT_ACTION				:{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél
+STR_A028_SHOW_AIRCRAFT_S_ORDERS					:{BLACK}Sýna skipanir flugvélar
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT				:{BLACK}Miðja aðalsjónarhorn á flugvélina
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR				:{BLACK}Senda flugvélina i flugskýli
+STR_A02B_SHOW_AIRCRAFT_DETAILS					:{BLACK}Sýna nánari upplýsingar um skip
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE				:{BLACK}{BIGFONT}Ný flugvél nú fáanleg!
+STR_A02D							:{BLACK}{BIGFONT}{STRING}
+STR_A02E_COST_MAX_SPEED_CAPACITY				:{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {COMMA16} farþegar, {COMMA16} pokar af pósti{}Rekstrarkostnaður: {CURRENCY}á ári
 
+STR_A030_NAME_AIRCRAFT						:{WHITE}Nefna flugvélina
+STR_A031_CAN_T_NAME_AIRCRAFT					:{WHITE}Get ekki nefnt flugvélina...
+STR_A032_NAME_AIRCRAFT						:{BLACK}Nefna flugvélina
+STR_A033_CITIZENS_CELEBRATE_FIRST				:{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta flugvél kemur við á {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL				:{BLACK}{BIGFONT}Flugslys!{}{COMMA16} deyja í sprengingu á {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL					:{BLACK}{BIGFONT}Flugslys!{}Flugvél varð eldsneytislaus, {COMMA16} deyja í sprengingu!
+STR_A036							:{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME							:{BLACK}Endurnefna
+STR_A038_RENAME_AIRCRAFT_TYPE					:{BLACK}Endurnefna tegund flugvélar
+STR_A039_RENAME_AIRCRAFT_TYPE					:{WHITE}Endurnefna tegund flugvélar
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE				:{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY				:{BLACK}Breyta flugvél svo hún beri annan varning
+STR_A03C_REFIT							:{WHITE}{STRING} (Breya)
+STR_A03D_REFIT_AIRCRAFT						:{BLACK}Breyta flugvél
 
 ##id 0xB000
 

@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Vis subsidier
 STR_02DD_SUBSIDIES						:Subsidier
 STR_02DE_MAP_OF_WORLD						:Verdenskart
 STR_EXTRA_VIEW_PORT						:Ekstra vindu
+STR_SIGN_LIST							:Skiltliste
 STR_02DF_TOWN_DIRECTORY						:Byoversikt
 STR_TOWN_POPULATION						:{BLACK}Verdensbefolkning: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Vindu {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Dette viser hvilket lokomotiv som o
 STR_REPLACE_HELP						:{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Skiltliste - {COMMA16} Skilt
 
 ############ Lists rail types
 

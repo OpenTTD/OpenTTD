@@ -772,6 +772,7 @@ STR_02DC_DISPLAY_SUBSIDIES					:{BLACK}Mostrar subsídios
 STR_02DD_SUBSIDIES						:Subsídios
 STR_02DE_MAP_OF_WORLD						:Mapa do mundo
 STR_EXTRA_VIEW_PORT						:Visualizador extra
+STR_SIGN_LIST							:Lista de sinais
 STR_02DF_TOWN_DIRECTORY						:Lista de cidades
 STR_TOWN_POPULATION						:{BLACK}População Mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE					:{WHITE}Visualizador {COMMA16}
@@ -2796,6 +2797,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB				:{BLACK}Exibe o tipo de motor que substitui
 STR_REPLACE_HELP						:{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 
 STR_SHORT_DATE							:{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION						:{WHITE}Lista de sinais - {COMMA16} Sinais
 
 ############ Lists rail types
 
