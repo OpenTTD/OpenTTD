@@ -258,7 +258,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 /* To add a news item with an attached validation function. This validation function
  * makes sure that the news item is not outdated when the newspaper pops up. */
-void AddValidatedNewsItem(StringID string, uint32 flags, uint data_a, uint data_b, ValidationProc validation)
+void AddValidatedNewsItem(StringID string, uint32 flags, uint data_a, uint data_b, ValidationProc *validation)
 {
 	AddNewsItem(string, flags, data_a, data_b);
 	_news_items[_latest_news].isValid = validation;
