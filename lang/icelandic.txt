@@ -2454,7 +2454,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Miðstilla sjónarhorn á staðsetning
 STR_8843_TRAIN_VEHICLE_SELECTION				:{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN				:{BLACK}Búa til valinn lestarvagn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE				:{BLACK}Endurnefna lestarvagnstegund
-STR_8846_CURRENT_TRAIN_ACTION_CLICK				:{BLACK}Nýverandi aðgerð lestar - ýttu hér til að ræsa/stöðva lestina
+STR_8846_CURRENT_TRAIN_ACTION_CLICK				:{BLACK}Núverandi aðgerð lestar - ýttu hér til að stöðva/ræsa lestina
 STR_8847_SHOW_TRAIN_S_ORDERS					:{BLACK}Sýna lestarskipanir
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN				:{BLACK}Miðstilla sjónarhorn á staðsetningu lestar
 STR_8849_SEND_TRAIN_TO_DEPOT					:{BLACK}Senda lest í skýli
@@ -2518,6 +2518,31 @@ STR_900F_PROFIT_THIS_YEAR_LAST_YEAR				:{BLACK}Hagnaður á þessu ári: {LTBLUE}{CU
 STR_9010_RELIABILITY_BREAKDOWNS					:{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
 STR_9011_BUILT_VALUE						:{LTBLUE}{STRING}{BLACK}   Byggður: {LTBLUE}{NUMU16}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY						:{BLACK}Rými: {LTBLUE}{STRING}
+STR_9013_MUST_BE_STOPPED_INSIDE					:{WHITE}...verður að stöðvast í bifreiðaskýli
+STR_9014_CAN_T_SELL_ROAD_VEHICLE				:{WHITE}Get ekki selt bifreið...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE				:{WHITE}Get ekki stöðvað/ræst bifreið...
+STR_9016_ROAD_VEHICLE_IS_WAITING				:{WHITE}Bifreið {COMMA16} bíður nú í skýli
+STR_HEADING_FOR_ROAD_DEPOT					:{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL					:{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT				:{WHITE}Get ekki sent bifreið í skýli...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT				:{WHITE}Finnur ekkert nálægt skýli
+STR_901A_ROAD_VEHICLES_CLICK_ON					:{BLACK}Bifreið - ýttu á bifreiðina fyrir upplýsingar
+STR_901B_BUILD_NEW_ROAD_VEHICLES				:{BLACK}Smíða nýja bifreið (þarfnast bifreiðaskýlis)
+STR_901C_CURRENT_VEHICLE_ACTION					:{BLACK}Núverandi aðgerð bifreiðar - ýttu hér til að stöðva/ræsa bifreið
+STR_901D_SHOW_VEHICLE_S_ORDERS					:{BLACK}Sýna skipanir bifreiðar
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE				:{BLACK}Miðja aðalsjónarhornið á bifreið
+STR_901F_SEND_VEHICLE_TO_DEPOT					:{BLACK}Senda bifreið í skýli
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND				:{BLACK}Þvinga bifreið til að snúa við
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS				:{BLACK}Sýna upplýsingar um bifreið
+STR_9022_VEHICLES_CLICK_ON_VEHICLE				:{BLACK}Bifreið - smelltu á bifreið fyrir upplýsingar
+STR_9023_BUILD_NEW_ROAD_VEHICLE					:{BLACK}Smíða nýja bifreið
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE				:{BLACK}Dragðu bifreið hingað til að selja hana
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD				:{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
+STR_9026_ROAD_VEHICLE_SELECTION					:{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD				:{BLACK}Smíða valda bifreið
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE				:{BLACK}{BIGFONT}Ný bifreið fáanleg!
+STR_9029							:{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST				:{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 
 
 ##id 0x9800

@@ -11,7 +11,7 @@ STR_0004							:{WHITE}{CURRENCY64}
 STR_0005							:{RED}{CURRENCY64}
 STR_EMPTY							:
 STR_0007_FLAT_LAND_REQUIRED					:{WHITE}É necessário terreno plano
-STR_0008_WAITING						:{BLACK}Em espera: {WHITE}{STRING}
+STR_0008_WAITING						:{BLACK}Aguardando: {WHITE}{STRING}
 STR_0009							:{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM						:{WHITE}{STRING}{YELLOW}  (em rota de
 STR_000B							:{YELLOW}{STATION})
@@ -86,7 +86,7 @@ STR_004F_PASSENGER						:{COMMA16} passageiro
 STR_0050_TON_OF_COAL						:{COMMA16} tonelada de carvão
 STR_0051_BAG_OF_MAIL						:{COMMA16} saco de correspondências
 STR_0052_OF_OIL							:{VOLUME} de petróleo
-STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} itens de gado
+STR_0053_ITEM_OF_LIVESTOCK					:{COMMA16} insumo de gado
 STR_0054_CRATE_OF_GOODS						:{COMMA16} caixas de bens
 STR_0055_TON_OF_GRAIN						:{COMMA16} tonelada de cereais
 STR_0056_TON_OF_WOOD						:{COMMA16} tonelada de madeira
@@ -118,7 +118,7 @@ STR_006F_PASSENGERS						:{COMMA16} passageiros
 STR_0070_TONS_OF_COAL						:{COMMA16} toneladas de carvão
 STR_0071_BAGS_OF_MAIL						:{COMMA16} sacos de correspondência
 STR_0072_OF_OIL							:{VOLUME} de petróleo
-STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} itens de gado
+STR_0073_ITEMS_OF_LIVESTOCK					:{COMMA16} insumos de gado
 STR_0074_CRATES_OF_GOODS					:{COMMA16} caixas de bens
 STR_0075_TONS_OF_GRAIN						:{COMMA16} toneladas de cereais
 STR_0076_TONS_OF_WOOD						:{COMMA16} toneladas de madeira
@@ -244,7 +244,7 @@ STR_00F7_SHIPS							:{BLACK}{TINYFONT}Barcos
 STR_00F8_AIRCRAFT						:{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES					:{BLACK}{TINYFONT}Rotas de Transporte
 STR_00FA_COAL_MINE						:{BLACK}{TINYFONT}Mina de Carvão
-STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Termeléctrica
+STR_00FB_POWER_STATION						:{BLACK}{TINYFONT}Termoelétrica
 STR_00FC_FOREST							:{BLACK}{TINYFONT}Floresta
 STR_00FD_SAWMILL						:{BLACK}{TINYFONT}Serraria
 STR_00FE_OIL_REFINERY						:{BLACK}{TINYFONT}Refinaria de Petróleo
@@ -261,7 +261,7 @@ STR_0108_FOOD_PROCESSING_PLANT					:{BLACK}{TINYFONT}Companhia Alimenticia
 STR_0109_DIAMOND_MINE						:{BLACK}{TINYFONT}Mina de Diamantes
 STR_010A_COPPER_ORE_MINE					:{BLACK}{TINYFONT}Mina de Cobre
 STR_010B_FRUIT_PLANTATION					:{BLACK}{TINYFONT}Plantação de Frutas
-STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Plantação de seringueiras
+STR_010C_RUBBER_PLANTATION					:{BLACK}{TINYFONT}Plantação de Seringueiras
 STR_010D_WATER_SUPPLY						:{BLACK}{TINYFONT}Poço Artesiano
 STR_010E_WATER_TOWER						:{BLACK}{TINYFONT}Depósito de Água
 STR_010F_LUMBER_MILL						:{BLACK}{TINYFONT}Fábrica de Madeira
@@ -310,7 +310,7 @@ STR_OSNAME_AMIGAOS						:AmigaOS
 STR_OSNAME_OS2							:SO/2
 
 STR_0139_IMPERIAL_MILES						:Imperial (milhas)
-STR_013A_METRIC_KILOMETERS					:Métrico (quilómetros)
+STR_013A_METRIC_KILOMETERS					:Métrico (quilômetros)
 STR_013B_OWNED_BY						:{WHITE}...propriedade de {STRING}
 STR_013C_CARGO							:{BLACK}Carga
 STR_013D_INFORMATION						:{BLACK}Informação
@@ -328,18 +328,18 @@ STR_MULTIPLAYER							:{BLACK}Multi-jogador
 STR_0148_GAME_OPTIONS						:{BLACK}Opções do Jogo
 
 STR_0150_SOMEONE						:alguém{SKIP}{SKIP}
-STR_0151_MAP_OF_WORLD						:Mapa do mundo
+STR_0151_MAP_OF_WORLD						:Mapa Mundi
 STR_0152_TOWN_DIRECTORY						:Lista de cidades
 STR_0153_SUBSIDIES						:Subsídios
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH					:Benefícios operacionais
+STR_0154_OPERATING_PROFIT_GRAPH					:Lucros operacionais
 STR_0155_INCOME_GRAPH						:Lucro
 STR_0156_DELIVERED_CARGO_GRAPH					:Carga entregue
 STR_0157_PERFORMANCE_HISTORY_GRAPH				:Histórico de lucro
 STR_0158_COMPANY_VALUE_GRAPH					:Valor da empresa
 STR_0159_CARGO_PAYMENT_RATES					:Tarifas por carga
-STR_015A_COMPANY_LEAGUE_TABLE					:Classificação de empresas
+STR_015A_COMPANY_LEAGUE_TABLE					:Classificação das empresas
 STR_PERFORMANCE_DETAIL_MENU					:Avaliação detalhada
 ############ range for menu	ends
 
@@ -348,11 +348,11 @@ STR_015C_SAVE_GAME						:Salvar jogo
 STR_015D_LOAD_GAME						:Abrir jogo
 STR_015E_QUIT_GAME						:Abandonar jogo
 STR_015F_QUIT							:Sair
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Tem a certeza que deseja abandonar este jogo?
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO				:{YELLOW}Tem certeza que deseja abandonar este jogo?
 STR_0161_QUIT_GAME						:{WHITE}Abandonar jogo
-STR_SORT_ORDER_TIP						:{BLACK}Selecione forma de ordenação (descendente/ascendente)
-STR_SORT_CRITERIA_TIP						:{BLACK}Selecione um critério de ordenação
-SRT_SORT_BY							:{BLACK}Ordenar por
+STR_SORT_ORDER_TIP						:{BLACK}Selecione forma de classificação (descendente/ascendente)
+STR_SORT_CRITERIA_TIP						:{BLACK}Selecione um critério de classificação
+SRT_SORT_BY							:{BLACK}Classificar por
 
 STR_SORT_BY_POPULATION						:{BLACK}População
 STR_SORT_BY_PRODUCTION						:{BLACK}Produção
@@ -361,7 +361,7 @@ STR_SORT_BY_TRANSPORTED						:{BLACK}Transportado
 STR_SORT_BY_NAME						:{BLACK}Nome
 STR_SORT_BY_DROPDOWN_NAME					:Nome
 STR_SORT_BY_DATE						:{BLACK}Data
-STR_SORT_BY_UNSORTED						:Não ordenado
+STR_SORT_BY_UNSORTED						:Não classificado
 STR_SORT_BY_NUMBER						:Número
 STR_SORT_BY_PROFIT_LAST_YEAR					:Lucros do último ano
 STR_SORT_BY_PROFIT_THIS_YEAR					:Lucros deste ano
@@ -388,7 +388,7 @@ STR_016D_DEC							:Dez
 STR_016E							:{TINYFONT}{STRING}{} {STRING}
 STR_016F							:{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
 STR_0170							:{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME						:{BLACK}Pausa
+STR_0171_PAUSE_GAME						:{BLACK}Pausar o jogo
 STR_0172_SAVE_GAME_ABANDON_GAME					:{BLACK}Salvar jogo, abandonar jogo, sair
 STR_0173_DISPLAY_LIST_OF_COMPANY				:{BLACK}Mostrar lista de estações da empresa
 STR_0174_DISPLAY_MAP						:{BLACK}Mostrar mapa
@@ -416,7 +416,7 @@ STR_0189							:{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING					:{WHITE}Não é possível alterar o intervalo de serviço...
 STR_018B_CLOSE_WINDOW						:{BLACK}Fechar janela
 STR_018C_WINDOW_TITLE_DRAG_THIS					:{BLACK}Título da janela - arraste para mover a janela
-STR_STICKY_BUTTON						:{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
+STR_STICKY_BUTTON						:{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_RESIZE_BUTTON						:{BLACK}Clique e arraste para redimensionar a janela
 STR_018D_DEMOLISH_BUILDINGS_ETC					:{BLACK}Demolir edifícios, etc. num quadrado de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND					:{BLACK}Baixar um canto do terreno
