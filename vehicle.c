@@ -1106,7 +1106,7 @@ again:
 	if (*b == 0x81) {
 		if (v->z_pos > 180 || CHANCE16(1,96)) {
 			v->spritenum = 5;
-			SndPlayVehicleFx(0x2F, v);
+			SndPlayVehicleFx(SND_2F_POP, v);
 		}
 		et = 0;
 		goto again;
@@ -1116,7 +1116,7 @@ again:
 		uint tile;
 
 		et++;
-		SndPlayVehicleFx(0x31, v);
+		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
 		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
 		if (IS_TILETYPE(tile, MP_INDUSTRY) &&

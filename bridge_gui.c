@@ -25,7 +25,7 @@ extern const StringID _bridge_material[MAX_BRIDGES];
 
 static void CcBuildBridge(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) { SndPlayTileFx(0x25, tile); }
+	if (success) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
 }
 
 static void BuildBridge(Window *w, int i)

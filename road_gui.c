@@ -22,7 +22,7 @@ static byte _road_station_picker_orientation;
 
 static void CcPlaySound1D(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) { SndPlayTileFx(0x1D, tile); }
+	if (success) SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
 static void PlaceRoad_NE(uint tile)
@@ -46,7 +46,7 @@ static void PlaceRoad_Bridge(uint tile)
 static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1E, tile);
+		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
@@ -71,7 +71,7 @@ static void BuildRoadOutsideStation(uint tile, int direction)
 static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1D, tile);
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
 		BuildRoadOutsideStation(tile, (int)p1);
 	}
@@ -159,7 +159,7 @@ static void BuildRoadClick_Remove(Window *w)
 	if (w->disabled_state & (1<<12))
 		return;
 	SetWindowDirty(w);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	_thd.make_square_red = !!((w->click_state ^= (1 << 12)) & (1<<12));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
 }
@@ -362,7 +362,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 		case 5:
 		case 6:
 			_road_depot_orientation = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}
@@ -436,13 +436,13 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
 		case 5:
 		case 6:
 			_road_station_picker_orientation = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 7:
 		case 8:
 			_station_show_coverage = e->click.widget - 7;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}

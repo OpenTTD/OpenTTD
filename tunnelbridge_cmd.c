@@ -1407,7 +1407,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
 			if (v->u.rail.track != 0x40 && dir == vdir) {
 				if (v->subtype == 0 && fc == _tunnel_fractcoord_1[dir]) {
 					if (v->spritenum < 4)
-						SndPlayVehicleFx(3, v);
+						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					return 0;
 				}
 				if (fc == _tunnel_fractcoord_2[dir]) {

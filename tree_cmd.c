@@ -382,8 +382,11 @@ static void AnimateTile_Trees(uint tile)
 	/* not used */
 }
 
-static byte _desert_sounds[] = {
-	66,67,68,72
+static SoundFx _desert_sounds[] = {
+	SND_42_LOON_BIRD,
+	SND_43_LION,
+	SND_44_MONKEYS,
+	SND_48_DISTANT_BIRD
 };
 
 static void TileLoopTreesDesert(uint tile)
@@ -440,7 +443,7 @@ static void TileLoopTreesAlps(uint tile)
 		if (tmp == 0xC0) {
 			uint32 r;
 			if (CHANCE16I(1,200,r=Random())) {
-				SndPlayTileFx( (r&0x80000000) ? 57 : 52, tile);
+				SndPlayTileFx((r & 0x80000000) ? SND_39_HEAVY_WIND : SND_34_WIND, tile);
 			}
 			return;
 		} else {

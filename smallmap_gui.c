@@ -881,7 +881,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		case 2: {/* big/small size */
 			// const Widget *wi = w->widget;
 			DeleteWindow(w);
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			{
 				int i = _smallmap_size + 1;
 				if (i == 3) i = 0;
@@ -913,14 +913,14 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			_smallmap_type = e->click.widget - 5;
 
 			SetWindowDirty(w);
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			break;
 
 		case 11: /* toggle town names */
 			w->click_state ^= (1 << 11);
 			_smallmap_show_towns = (w->click_state >> 11) & 1;
 			SetWindowDirty(w);
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			break;
 		}
 		break;

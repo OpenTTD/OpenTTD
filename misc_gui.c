@@ -267,7 +267,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		case 16: /* place trees randomly over the landscape*/
 			w->click_state |= 1 << 16;
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			PlaceTreesRandomly();
 			MarkWholeScreenDirty();
 			break;

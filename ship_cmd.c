@@ -157,7 +157,8 @@ static void HandleBrokenShip(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ? 0xE : 0x3A, v);
+		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+			SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);

@@ -503,7 +503,7 @@ static void RoadVehCrash(Vehicle *v)
 		0);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 22);
-	SndPlayVehicleFx(16, v);
+	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 static void RoadVehCheckTrainCrash(Vehicle *v)
@@ -536,7 +536,8 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ? 0xD : 0x34, v);
+		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+			SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
@@ -635,8 +636,9 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 static void StartRoadVehSound(Vehicle *v)
 {
-	int s = RoadVehInfo(v->engine_type)->sfx;
-	if (s == 23 && (v->tick_counter&3) == 0) s++;
+	SoundFx s = RoadVehInfo(v->engine_type)->sfx;
+	if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
+		s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
 	SndPlayVehicleFx(s, v);
 }
 

@@ -973,7 +973,7 @@ static void TileLoop_Road(uint tile)
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
 					_map2[tile] = ((_map2[tile]&7) <= 1) ? 6 : 7;
 
-					SndPlayTileFx(0x1F,tile);
+					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
 						GET_TILE_X(tile) * 16 + 7,
 						GET_TILE_Y(tile) * 16 + 7,
@@ -1086,7 +1086,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, uint tile, int x, int y)
 	if ((_map5[tile] & 0xF0) == 0x10)	{
 		if (v->type == VEH_Train && (_map5[tile] & 4) == 0) {
 			/* train crossing a road */
-			SndPlayVehicleFx(12, v);
+			SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
 			_map5[tile] |= 4;
 			MarkTileDirtyByTile(tile);
 		}

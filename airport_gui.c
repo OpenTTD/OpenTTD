@@ -19,7 +19,7 @@ static void ShowBuildAirportPicker();
 static void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1D, tile);
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
 	}
 }
@@ -172,12 +172,12 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			break;
 		case 3: case 4: case 5: case 6: case 7:
 			_selected_airport_type = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 8: case 9:
 			_station_show_coverage = e->click.widget - 8;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}

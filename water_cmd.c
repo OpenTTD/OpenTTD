@@ -565,7 +565,7 @@ static void FloodVehicle(Vehicle *v)
 			0);
 	}
 	CreateEffectVehicleRel(v,4,4,8,EV_CRASHED_SMOKE);	// show cool destruction effects
-	SndPlayVehicleFx(16, v); // create sound
+	SndPlayVehicleFx(SND_12_EXPLOSION, v); // create sound
 }
 
 // called from tunnelbridge_cmd

@@ -33,7 +33,7 @@ typedef void OnButtonClick(Window *w);
 
 static void CcPlaySound1E(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) SndPlayTileFx(0x1E, tile);
+	if (success) SndPlayTileFx(SND_20_SPLAT_2, tile);
 }
 
 static void GenericPlaceRail(uint tile, int cmd)
@@ -96,7 +96,7 @@ static void CcDepot(bool success, uint tile, uint32 p1, uint32 p2)
 	if (success) {
 		int dir = p2;
 
-		SndPlayTileFx(0x1E, tile);
+		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
 
 		tile += _place_depot_offs_xy[dir];
@@ -127,7 +127,7 @@ static void PlaceRail_Waypoint(uint tile)
 static void CcStation(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1E, tile);
+		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
 	}
 }
@@ -183,7 +183,7 @@ static void PlaceRail_Bridge(uint tile)
 static void CcBuildTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1E, tile);
+		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
@@ -287,7 +287,7 @@ static void BuildRailClick_Remove(Window *w)
 	if (w->disabled_state & (1<<16))
 		return;
 	SetWindowDirty(w);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 
 	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
 	MarkTileDirty(_thd.pos.x, _thd.pos.y);
@@ -900,7 +900,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		case 3:
 		case 4:
 			_railstation.orientation = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 
@@ -913,7 +913,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		case 11:
 			_railstation.numtracks = (e->click.widget - 5) + 1;
 			_railstation.dragdrop = false;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 
@@ -926,20 +926,20 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		case 18:
 			_railstation.platlength = (e->click.widget - 12) + 1;
 			_railstation.dragdrop = false;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 
 		case 19:
 			_railstation.dragdrop ^= true;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 
 		case 20:
 		case 21:
 			_station_show_coverage = e->click.widget - 20;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}
@@ -1025,7 +1025,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		case 5:
 		case 6:
 			_build_depot_direction = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}
@@ -1091,7 +1091,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		case 6:
 		case 7:
 			_cur_waypoint_type = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}

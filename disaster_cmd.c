@@ -208,7 +208,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 	if (++v->age == 1) {
 		CreateEffectVehicleRel(v, 0, 7, 8, EV_CRASHED_SMOKE);
-		SndPlayVehicleFx(0x10, v);
+		SndPlayVehicleFx(SND_12_EXPLOSION, v);
 		v->u.disaster.image_override = 0xF42;
 	} else if (v->age == 70) {
 		v->u.disaster.image_override = 0xF43;
@@ -311,7 +311,7 @@ static void DisasterTick_UFO(Vehicle *v)
 // destroy?
 		if (v->age > 50) {
 			CreateEffectVehicleRel(v, 0, 7, 8, EV_CRASHED_SMOKE);
-			SndPlayVehicleFx(0x10, v);
+			SndPlayVehicleFx(SND_12_EXPLOSION, v);
 			DeleteDisasterVeh(v);
 		}
 	}
@@ -374,7 +374,7 @@ static void DisasterTick_2(Vehicle *v)
 
 			SetDParam(0, i->town->index);
 			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
-			SndPlayTileFx(0x10, i->xy);
+			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->next_order == 0) {
 		int x,y;
@@ -444,7 +444,7 @@ static void DisasterTick_3(Vehicle *v)
 
 			SetDParam(0, i->town->index);
 			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
-			SndPlayTileFx(0x10, i->xy);
+			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->next_order == 0) {
 		int x,y;
@@ -601,7 +601,7 @@ static void DisasterTick_4b(Vehicle *v)
 		v->next_order = 1;
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_CRASHED_SMOKE);
-		SndPlayVehicleFx(0x10, u);
+		SndPlayVehicleFx(SND_12_EXPLOSION, u);
 
 		DeleteDisasterVeh(u);
 

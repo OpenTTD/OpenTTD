@@ -63,7 +63,7 @@ bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, Place
 	if (w->disabled_state & mask)
 		return false;
 
-	if (!_no_button_sound) SndPlayFx(0x13);
+	if (!_no_button_sound) SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
 
 	if (w->click_state & mask) {
@@ -80,7 +80,7 @@ bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, Place
 
 void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) { SndPlayTileFx(0x10, tile); }
+	if (success) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
 
 
@@ -91,13 +91,13 @@ static void ToolbarPauseClick(Window *w)
 	if (_networking && !_networking_server) { return;} // only server can pause the game
 
 	if (DoCommandP(0, _pause?0:1, 0, NULL, CMD_PAUSE | CMD_NET_INSTANT))
-		SndPlayFx(0x13);
+		SndPlayFx(SND_15_BEEP);
 }
 
 static void ToolbarFastForwardClick(Window *w)
 {
 	_fast_forward ^= true;
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 }
 
 
@@ -596,7 +596,7 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 
 	_popup_menu_active = true;
 
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 
 	return w;
 }
@@ -617,7 +617,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	WP(w,menu_d).main_button = main_button;
 	WP(w,menu_d).checked_items = gray;
 	_popup_menu_active = true;
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	return w;
 }
 
@@ -781,7 +781,7 @@ static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 17);
-		SndPlayFx(0x13);
+		SndPlayFx(SND_15_BEEP);
 	}
 }
 
@@ -789,7 +789,7 @@ static void ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT,FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 18);
-		SndPlayFx(0x13);
+		SndPlayFx(SND_15_BEEP);
 	}
 }
 
@@ -894,7 +894,7 @@ static void ToolbarScenZoomIn(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 9);
-		SndPlayFx(0x13);
+		SndPlayFx(SND_15_BEEP);
 	}
 }
 
@@ -902,7 +902,7 @@ static void ToolbarScenZoomOut(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		HandleButtonClick(w, 10);
-		SndPlayFx(0x13);
+		SndPlayFx(SND_15_BEEP);
 	}
 }
 
@@ -966,7 +966,7 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 				ResetLandscape();
 			}
 			else { // make random landscape
-				SndPlayFx(0x13);
+				SndPlayFx(SND_15_BEEP);
 				_switch_mode = SM_GENRANDLAND;
 			}
 
@@ -991,7 +991,7 @@ static void AskResetLandscape(uint mode)
 static void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1D, tile);
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 	} else {
 		SetRedErrorSquare(_terraform_err_tile);
 	}
@@ -1011,7 +1011,7 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 	if (_terraform_size == 1) {
 		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO);
 	} else {
-		SndPlayTileFx(0x1D, tile);
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 
 		size = _terraform_size;
 		assert(size != 0);
@@ -1070,7 +1070,7 @@ static void PlaceProc_RockyArea(uint tile)
 
 	_map5[tile] = (_map5[tile] & ~0x1C) | 8;
 	MarkTileDirtyByTile(tile);
-	SndPlayTileFx(0x1D, tile);
+	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
 static void PlaceProc_LightHouse(uint tile)
@@ -1082,7 +1082,7 @@ static void PlaceProc_LightHouse(uint tile)
 		return;
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 1);
-	SndPlayTileFx(0x1D, tile);
+	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
 static void PlaceProc_Transmitter(uint tile)
@@ -1094,7 +1094,7 @@ static void PlaceProc_Transmitter(uint tile)
 		return;
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 0);
-	SndPlayTileFx(0x1D, tile);
+	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
 static void PlaceProc_Desert(uint tile)
@@ -1180,7 +1180,7 @@ terraform_size_common:;
 			if (!IS_INT_INSIDE(size, 1, 8+1))
 				return;
 			_terraform_size = size;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		}
@@ -1252,7 +1252,7 @@ static const WindowDesc _scen_edit_land_gen_desc = {
 static void ToolbarScenGenLand(Window *w)
 {
 	HandleButtonClick(w, 11);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 
 	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
 }
@@ -1260,7 +1260,7 @@ static void ToolbarScenGenLand(Window *w)
 static void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0x1D, tile);
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
 	}
 }
@@ -1350,7 +1350,7 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 static void ToolbarScenGenTown(Window *w)
 {
 	HandleButtonClick(w, 12);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 
 	AllocateWindowDescFront(&_scen_edit_town_gen_desc, 0);
 }
@@ -1594,28 +1594,28 @@ static const WindowDesc * const _scenedit_industry_descs[] = {
 static void ToolbarScenGenIndustry(Window *w)
 {
 	HandleButtonClick(w, 13);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	AllocateWindowDescFront(_scenedit_industry_descs[_opt.landscape],0);
 }
 
 static void ToolbarScenBuildRoad(Window *w)
 {
 	HandleButtonClick(w, 14);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	ShowBuildRoadScenToolbar();
 }
 
 static void ToolbarScenPlantTrees(Window *w)
 {
 	HandleButtonClick(w, 15);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	ShowBuildTreesScenToolbar();
 }
 
 static void ToolbarScenPlaceSign(Window *w)
 {
 	HandleButtonClick(w, 16);
-	SndPlayFx(0x13);
+	SndPlayFx(SND_15_BEEP);
 	SelectSignTool();
 }
 

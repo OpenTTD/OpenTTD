@@ -1243,7 +1243,12 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 static void TrainPlayLeaveStationSound(Vehicle *v)
 {
-	static const byte sfx[3] = { 0x2, 0x8, 0x8 };
+	static const SoundFx sfx[] = {
+		SND_04_TRAIN,
+		SND_0A_TRAIN_HORN,
+		SND_0A_TRAIN_HORN
+	};
+
 	int engtype = v->engine_type;
 
 	switch (_engines[engtype].railtype) {
@@ -2007,7 +2012,7 @@ static void CheckTrainCollision(Vehicle *v)
 		0);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
-	SndPlayVehicleFx(17, v);
+	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 }
 
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
@@ -2320,7 +2325,8 @@ static void HandleBrokenTrain(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ? 0xE : 0x3A, v);
+		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+			SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
@@ -2417,7 +2423,7 @@ static void TrainCheckIfLineEnds(Vehicle *v)
 			if (IS_TILETYPE(tile, MP_STREET) && (_map5[tile] & 0xF0)==0x10) {
 				if (!(_map5[tile] & 4)) {
 					_map5[tile] |= 4;
-					SndPlayVehicleFx(12, v);
+					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
 					MarkTileDirtyByTile(tile);
 				}
 			}

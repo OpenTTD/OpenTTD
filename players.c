@@ -592,9 +592,9 @@ void PlayersYearlyLoop()
 		ShowPlayerFinances(_local_player);
 		p = DEREF_PLAYER(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
-			SndPlayFx(0x28);
+			SndPlayFx(SND_01_BAD_YEAR);
 		} else {
-			SndPlayFx(0x27);
+			SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
 }

@@ -1388,7 +1388,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			SubtractMoneyFromPlayer(-profit);
 
 			if (_current_player == _local_player)
-				SndPlayVehicleFx(0x12, v);
+				SndPlayVehicleFx(SND_14_CASHTILL, v);
 
 			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, -profit);
 		}

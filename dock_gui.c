@@ -16,14 +16,14 @@ static byte _ship_depot_direction;
 static void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		SndPlayTileFx(0, tile);
+		SndPlayTileFx(SND_02_SPLAT, tile);
 		ResetObjectToPlace();
 	}
 }
 
 static void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) { SndPlayTileFx(0, tile); }
+	if (success) SndPlayTileFx(SND_02_SPLAT, tile);
 }
 
 
@@ -279,7 +279,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		case 3:
 		case 4:
 			_ship_depot_direction = e->click.widget - 3;
-			SndPlayFx(0x13);
+			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();
 			SetWindowDirty(w);
 			break;

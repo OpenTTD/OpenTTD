@@ -734,7 +734,7 @@ static bool Aircraft_5(Vehicle *v)
 		if (u->cur_speed > 32) {
 			v->cur_speed = 0;
 			if (--u->cur_speed == 32) {
-				SndPlayVehicleFx(0x16, v);
+				SndPlayVehicleFx(SND_18_HELICOPTER, v);
 			}
 		} else {
 			u->cur_speed = 32;
@@ -1098,7 +1098,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 		0);
 
 	ModifyStationRatingAround(TILE_FROM_XY(v->x_pos, v->y_pos), v->owner, -160, 30);
-	SndPlayVehicleFx(16, v);
+	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 // we've landed and just arrived at a terminal
@@ -1182,7 +1182,7 @@ static void AircraftLand(Vehicle *v)
 static void AircraftLandAirplane(Vehicle *v)
 {
 	AircraftLand(v);
-	SndPlayVehicleFx(0x15, v);
+	SndPlayVehicleFx(SND_17_SKID_PLANE, v);
 	MaybeCrashAirplane(v);
 }
 

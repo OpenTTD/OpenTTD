@@ -542,7 +542,7 @@ int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int railbit;
 
 	if (flags & DC_EXEC)
-		SndPlayTileFx(0x1E, TILE_FROM_XY(x,y));
+		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
 
 	/* unpack end point */
 	sx = (p1 & 0xFFFF) & ~0xF;
@@ -592,7 +592,7 @@ int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int railbit;
 
 	if (flags & DC_EXEC)
-		SndPlayTileFx(0x1E, TILE_FROM_XY(x,y));
+		SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
 
 	/* unpack start point */
 	sx = (p1 & 0xFFFF) & ~0xF;

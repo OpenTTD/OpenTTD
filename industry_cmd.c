@@ -473,8 +473,8 @@ static void AnimateTile_Industry(uint tile)
 			m = _map3_lo[tile] + 1;
 
 			switch(m & 7) {
-			case 2:	SndPlayTileFx(45, tile); break;
-			case 6: SndPlayTileFx(41, tile); break;
+			case 2:	SndPlayTileFx(SND_2D_RIP_2, tile); break;
+			case 6: SndPlayTileFx(SND_29_RIP, tile); break;
 			}
 
 			if (m >= 96) {
@@ -492,7 +492,7 @@ static void AnimateTile_Industry(uint tile)
 			m = _map3_lo[tile];
 
 			if (_industry_anim_offs[m] == 0xFF) {
-				SndPlayTileFx(48, tile);
+				SndPlayTileFx(SND_30_CARTOON_SOUND, tile);
 			}
 
 			if (++m >= 70) {
@@ -538,11 +538,11 @@ static void AnimateTile_Industry(uint tile)
 			m = _map3_lo[tile] + 1;
 
 			if (m == 1) {
-				SndPlayTileFx(44, tile);
+				SndPlayTileFx(SND_2C_MACHINERY, tile);
 			} else if (m == 23) {
-				SndPlayTileFx(43, tile);
+				SndPlayTileFx(SND_2B_COMEDY_HIT, tile);
 			} else if (m == 28) {
-				SndPlayTileFx(42, tile);
+				SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile);
 			}
 
 			if (m >= 50 && (m=0,++_map3_hi[tile] >= 8)) {
@@ -595,7 +595,7 @@ static void AnimateTile_Industry(uint tile)
 				if (state < 0x20 || state >= 0x180) {
 					if (!	(_map_owner[tile] & 0x40)) {
 						_map_owner[tile] |= 0x40;
-						SndPlayTileFx(9, tile);
+						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
 					if (state & 7)
 						return;
@@ -684,7 +684,7 @@ static void TileLoopIndustryCase161(uint tile)
 		49, 59, 60, 65,
 	};
 
-	SndPlayTileFx(46, tile);
+	SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
 
 	dir = Random() & 3;
 
@@ -770,7 +770,7 @@ static void TileLoop_Industry(uint tile)
 
 	case 10:
 		if (CHANCE16(1,3)) {
-			SndPlayTileFx(10, tile);
+			SndPlayTileFx(SND_0C_ELECTRIC_SPARK, tile);
 			AddAnimatedTile(tile);
 		}
 		break;
@@ -998,7 +998,7 @@ static void ChopLumberMillTrees(Industry *i)
 					_current_player = OWNER_NONE;
 					_industry_sound_ctr = 1;
 					_industry_sound_tile = tile;
-					SndPlayTileFx(56, tile);
+					SndPlayTileFx(SND_38_CHAINSAW, tile);
 
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 					SetMapExtraBits(tile, 0);
@@ -1018,28 +1018,19 @@ static void ChopLumberMillTrees(Industry *i)
 static const byte _industry_sounds[37][2] = {
 	{0},
 	{0},
-	{1,38},
+	{1, SND_28_SAWMILL},
 	{0},
 	{0},
 	{0},
-	{1,1},
-	{1,1},
+	{1, SND_03_FACTORY_WHISTLE},
+	{1, SND_03_FACTORY_WHISTLE},
 	{0},
-	{3,34},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1,38},
+	{3, SND_24_SHEEP},
 	{0},
 	{0},
 	{0},
 	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1,1},
+	{1, SND_28_SAWMILL},
 	{0},
 	{0},
 	{0},
@@ -1048,7 +1039,16 @@ static const byte _industry_sounds[37][2] = {
 	{0},
 	{0},
 	{0},
-	{1,51},
+	{1, SND_03_FACTORY_WHISTLE},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{0},
+	{1, SND_33_PLASTIC_MINE},
 	{0},
 	{0},
 	{0},
@@ -1092,10 +1092,10 @@ void OnTick_Industry()
 		_industry_sound_ctr++;
 
 		if (_industry_sound_ctr == 75) {
-			SndPlayTileFx(55, _industry_sound_tile);
+			SndPlayTileFx(SND_37_BALLOON_SQUEAK, _industry_sound_tile);
 		} else if (_industry_sound_ctr == 160) {
 			_industry_sound_ctr = 0;
-			SndPlayTileFx(54, _industry_sound_tile);
+			SndPlayTileFx(SND_36_CARTOON_CRASH, _industry_sound_tile);
 		}
 	}
 

@@ -369,7 +369,7 @@ static void ShowTicker(const NewsItem *ni)
 {
 	Window *w;
 
-	SndPlayFx(20);
+	SndPlayFx(SND_16_MORSE);
 	_statusbar_news_item = *ni;
 	w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL)
