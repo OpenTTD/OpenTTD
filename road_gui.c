@@ -399,28 +399,23 @@ static void ShowRoadDepotPicker()
 	AllocateWindowDesc(&_build_road_depot_desc);
 }
 
-static void RoadStationPickerWndProc(Window *w, WindowEvent *e) {
-
-	int rad;
-
+static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
+{
 	switch(e->event) {
 	case WE_PAINT: {
 		int image;
+
+		if (WP(w,def_d).close) return;
 
 		w->click_state = ((1<<3) << _road_station_picker_orientation)	|
 										 ((1<<7) << _station_show_coverage);
 		DrawWindowWidgets(w);
 
-		SetTileSelectSize(1, 1);
-
-		if (_patches.modified_catchment) {
-			rad = CA_TRUCK; // = CA_BUS
-		} else {
-			rad = 4;
-		}
-
-		if (_station_show_coverage)
-			SetTileSelectBigSize(-rad, -rad, 2*rad, 2*rad);
+		if (_station_show_coverage) {
+			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : 4;
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		} else
+			SetTileSelectSize(1, 1);
 
 		image = (w->window_class == WC_BUS_STATION) ? 0x47 : 0x43;
 
