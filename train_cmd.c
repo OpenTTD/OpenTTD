@@ -968,6 +968,21 @@ static void *TestTrainOnCrossing(Vehicle *v, void *data)
 	return v;
 }
 
+static void DisableTrainCrossing(TileIndex tile)
+{
+	/* Test if we have a rail/road-crossing */
+	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+		/* Check if there is a train on the tile itself */
+		if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
+			/* If light is on, switch light off */
+			if (_map5[tile] & 4) {
+				_map5[tile] &= ~4;
+				MarkTileDirtyByTile(tile);
+			}
+		}
+	}
+}
+
 static void ReverseTrainDirection(Vehicle *v)
 {
 	int l = 0, r = -1;
@@ -987,17 +1002,9 @@ static void ReverseTrainDirection(Vehicle *v)
 		}
 		/* Calculate next tile */
 		tile += TileOffsByDir(t);
-		/* Test if we have a rail/road-crossing */
-		if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
-			/* Check if there is a train on the tile itself */
-			if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
-				/* If light is on, switch light off */
-				if (_map5[tile] & 4) {
-					_map5[tile] &= ~4;
-					MarkTileDirtyByTile(tile);
-				}
-			}
-		}
+
+		/* Check if the train left a rail/road-crossing */
+		DisableTrainCrossing(tile);
 	}
 
 	// count number of vehicles
@@ -2328,6 +2335,9 @@ static void DeleteLastWagon(Vehicle *v)
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(t));
 	}
 
+	/* Check if the wagon was on a road/rail-crossing and disable it if no others are on it */
+	DisableTrainCrossing(v->tile);
+
 	if (v->u.rail.track == 0x40) {
 		int length;
 		TileIndex endtile = CheckTunnelBusy(v->tile, &length);
@@ -2389,7 +2399,7 @@ static void HandleCrashedTrain(Vehicle *v)
 		ChangeTrainDirRandomly(v);
 	}
 
-	if (state >= 4440 && !(v->tick_counter&0x1F))
+	if (state >= 4440 && !(v->tick_counter&0x1F))		
 		DeleteLastWagon(v);
 }
 
