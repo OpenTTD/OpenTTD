@@ -50,10 +50,19 @@ static void CDECL grfmsg(enum grfmsg_severity severity, const char *str, ...)
 	DEBUG(grf, 2) ("[%s][%s] %s", _cur_grffile, severitystr[severity], buf);
 }
 
+
+#define check_length(real, wanted, where) \
+do { \
+	if (real < wanted) { \
+		grfmsg(GMS_ERROR, "%s: Invalid special sprite length %d (expected %d)!", where, real, wanted); \
+		return; \
+	} \
+} while (0)
+
+
 static byte INLINE grf_load_byte(byte **buf) {
 	return *(*buf)++;
 }
-
 
 static uint16 grf_load_word(byte **buf)
 {
@@ -76,6 +85,7 @@ static uint16 grf_load_dword(byte **buf)
 	*buf = p + 4;
 	return val;
 }
+
 
 typedef int (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
@@ -447,95 +457,98 @@ static void VehicleChangeInfo(byte *buf, int len)
 		NULL,
 		NULL,
 	};
+	uint8 feature;
+	uint8 numprops;
+	uint8 numinfo;
+	byte engine;
+	EngineInfo *ei;
 
-	if (len > 5) {
-		uint8 feature = buf[1];
-		uint8 numprops = buf[2];
-		uint8 numinfo = buf[3];
-		byte engine = buf[4];
-		EngineInfo *ei;
+	check_length(len, 6, "VehicleChangeInfo");
+	feature = buf[1];
+	numprops = buf[2];
+	numinfo = buf[3];
+	engine = buf[4];
 
-		if (feature != 0 && feature != 2) {
-			grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported vehicle type %x, skipping.", feature);
-			return;
+	if (feature != 0 && feature != 2) {
+		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported vehicle type %x, skipping.", feature);
+		return;
+	}
+
+	ei = &_engine_info[engine + _vehshifts[feature]];
+
+	buf += 5;
+
+	while (numprops-- && buf < bufend) {
+		uint8 prop = grf_load_byte(&buf);
+
+		switch (prop) {
+		case 0x00: {
+			/* Introduction date */
+			foreach_engine {
+				uint16 date = grf_load_word(&buf);
+
+				ei[i].base_intro = date;
+			}
+			break;
 		}
+		case 0x02: {
+			/* Decay speed */
+			foreach_engine {
+				uint8 decay = grf_load_byte(&buf);
 
-		ei = &_engine_info[engine + _vehshifts[feature]];
-
-		buf += 5;
-
-		while (numprops-- && buf < bufend) {
-			uint8 prop = grf_load_byte(&buf);
-
-			switch (prop) {
-			case 0x00: {
-				/* Introduction date */
-				foreach_engine {
-					uint16 date = grf_load_word(&buf);
-
-					ei[i].base_intro = date;
-				}
-				break;
+				ei[i].unk2 &= 0x80;
+				ei[i].unk2 |= decay & 0x7f;
 			}
-			case 0x02: {
-				/* Decay speed */
-				foreach_engine {
-					uint8 decay = grf_load_byte(&buf);
+			break;
+		}
+		case 0x03: {
+			/* Vehicle life */
+			foreach_engine {
+				uint8 life = grf_load_byte(&buf);
 
-					ei[i].unk2 &= 0x80;
-					ei[i].unk2 |= decay & 0x7f;
-				}
-				break;
+				ei[i].lifelength = life;
 			}
-			case 0x03: {
-				/* Vehicle life */
-				foreach_engine {
-					uint8 life = grf_load_byte(&buf);
+			break;
+		}
+		case 0x04: {
+			/* Model life */
+			foreach_engine {
+				uint8 life = grf_load_byte(&buf);
 
-					ei[i].lifelength = life;
-				}
-				break;
+				ei[i].base_life = life;
 			}
-			case 0x04: {
-				/* Model life */
-				foreach_engine {
-					uint8 life = grf_load_byte(&buf);
+			break;
+		}
+		case 0x06: {
+			/* Climates available */
+			foreach_engine {
+				uint8 climates = grf_load_byte(&buf);
 
-					ei[i].base_life = life;
-				}
-				break;
+				ei[i].railtype_climates &= 0xf0;
+				ei[i].railtype_climates |= climates;
 			}
-			case 0x06: {
-				/* Climates available */
-				foreach_engine {
-					uint8 climates = grf_load_byte(&buf);
-
-					ei[i].railtype_climates &= 0xf0;
-					ei[i].railtype_climates |= climates;
-				}
-				break;
+			break;
+		}
+		case 0x07: { /* TODO */
+			/* Loading speed */
+			/* Hyronymus explained me what does
+			 * this mean and insists on having a
+			 * credit ;-). --pasky */
+			/* TODO: This needs to be supported by
+			 * LoadUnloadVehicle() first. */
+			foreach_engine {
+				grf_load_byte(&buf);
 			}
-			case 0x07: { /* TODO */
-				/* Loading speed */
-				/* Hyronymus explained me what does
-				 * this mean and insists on having a
-				 * credit ;-). --pasky */
-				/* TODO: This needs to be supported by
-				 * LoadUnloadVehicle() first. */
-				foreach_engine {
-					grf_load_byte(&buf);
-				}
-				goto ignoring;
-			}
-			default:
-			{
-				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
+			goto ignoring;
+		}
+		default:
+		{
+			if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
 ignoring:
-					grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
-				}
-				break;
+				grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
 			}
-			}
+			break;
+		}
 		}
 	}
 #undef shift_buf
@@ -577,21 +590,21 @@ static void SpriteNewSet(byte *buf, int len)
 	 *                 For stations, must be 12 (hex) for the eighteen
 	 *                         different sprites that make up a station */
 	/* TODO: No stations support. */
+	uint8 feature;
 
-	if (len == 4) {
-		uint8 feature = buf[1];
+	check_length(len, 4, "SpriteNewSet");
+	feature = buf[1];
 
-		if (feature == 4) {
-			_spriteset_start = 0;
-			grfmsg(GMS_WARN, "SpriteNewSet: Stations unsupported, skipping.");
-			return;
-		}
-
-		_spriteset_start = _cur_spriteid + 1;
-		_spriteset_feature = feature;
-		_spriteset_numsets = buf[2];
-		_spriteset_numents = buf[3];
+	if (feature == 4) {
+		_spriteset_start = 0;
+		grfmsg(GMS_WARN, "SpriteNewSet: Stations unsupported, skipping.");
+		return;
 	}
+
+	_spriteset_start = _cur_spriteid + 1;
+	_spriteset_feature = feature;
+	_spriteset_numsets = buf[2];
+	_spriteset_numents = buf[3];
 }
 
 /* Action 0x02 */
@@ -613,94 +626,97 @@ static void SpriteNewSuperset(byte *buf, int len)
 	/* TODO: Also, empty sprites aren't handled for now. Need to investigate
 	 * the "opacity" rules for these, that is which sprite to fall back to
 	 * when. --pasky */
+	uint8 feature;
+	uint8 setid;
+	uint8 numloaded;
+	uint8 numloading;
+	struct SpriteSuperSet *superset;
+	int i;
 
-	if (bufend - buf > 4) {
-		uint8 feature = buf[1];
-		uint8 setid = buf[2];
-		uint8 numloaded = buf[3];
-		uint8 numloading = buf[4];
-		struct SpriteSuperSet *superset;
-		int i;
+	check_length(len, 5, "SpriteNewSuperset");
+	feature = buf[1];
+	setid = buf[2];
+	numloaded = buf[3];
+	numloading = buf[4];
 
-		if (feature == 4) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset: Stations unsupported, skipping.");
-			return;
-		}
+	if (feature == 4) {
+		grfmsg(GMS_WARN, "SpriteNewSuperset: Stations unsupported, skipping.");
+		return;
+	}
 
-		if (numloaded == 0x81) {
-			// XXX: This is _VERY_ ad hoc just to handle Dm3. And that is
-			// a semi-futile ask because the great Patchman himself says
-			// this is just buggy. It dereferences last (first) byte of
-			// a schedule list pointer of the vehicle and if it's 0xff
-			// it uses superset 01, otherwise it uses superset 00. Now
-			// if _you_ understand _that_... We just assume it is never
-			// 0xff and therefore go for superset 00. --pasky
-			uint8 var = buf[4];
-			//uint8 shiftnum = buf[5];
-			//uint8 andmask = buf[6];
-			uint8 nvar = buf[7];
-			//uint32 val;
-			uint16 def;
+	if (numloaded == 0x81) {
+		// XXX: This is _VERY_ ad hoc just to handle Dm3. And that is
+		// a semi-futile ask because the great Patchman himself says
+		// this is just buggy. It dereferences last (first) byte of
+		// a schedule list pointer of the vehicle and if it's 0xff
+		// it uses superset 01, otherwise it uses superset 00. Now
+		// if _you_ understand _that_... We just assume it is never
+		// 0xff and therefore go for superset 00. --pasky
+		uint8 var = buf[4];
+		//uint8 shiftnum = buf[5];
+		//uint8 andmask = buf[6];
+		uint8 nvar = buf[7];
+		//uint32 val;
+		uint16 def;
 
-			grfmsg(GMS_WARN, "SpriteNewSuperset(0x81): Unsupported variable %x. Using default cid.", var);
+		grfmsg(GMS_WARN, "SpriteNewSuperset(0x81): Unsupported variable %x. Using default cid.", var);
 
-			//val = (0xff << shiftnum) & andmask;
+		//val = (0xff << shiftnum) & andmask;
 
-			//Go for the default.
-			if (setid >= _spritesset_count) {
-				_spritesset_count = setid + 1;
-				_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteSuperSet));
-			}
-			buf += 8 + nvar * 4;
-			def = grf_load_word(&buf);
-			_spritesset[setid] = _spritesset[def];
-			return;
-
-		} else if (numloaded & 0x80) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset(0x%x): Unsupported special superset.", numloaded);
-			return;
-		}
-
-		if (!_spriteset_start) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset: No sprite set to work on! Skipping.");
-			return;
-		}
-
-		if (_spriteset_feature != feature) {
-			grfmsg(GMS_WARN, "SpriteNewSuperset: Superset feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
-			return;
-		}
-
+		//Go for the default.
 		if (setid >= _spritesset_count) {
 			_spritesset_count = setid + 1;
 			_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteSuperSet));
 		}
-		superset = &_spritesset[setid];
-		memset(superset, 0, sizeof(struct SpriteSuperSet));
-		superset->sprites_per_set = _spriteset_numents;
+		buf += 8 + nvar * 4;
+		def = grf_load_word(&buf);
+		_spritesset[setid] = _spritesset[def];
+		return;
 
-		buf += 5;
+	} else if (numloaded & 0x80) {
+		grfmsg(GMS_WARN, "SpriteNewSuperset(0x%x): Unsupported special superset.", numloaded);
+		return;
+	}
 
-		for (i = 0; buf < bufend && i < numloaded; i++) {
-			uint16 spriteset_id = grf_load_word(&buf);
+	if (!_spriteset_start) {
+		grfmsg(GMS_WARN, "SpriteNewSuperset: No sprite set to work on! Skipping.");
+		return;
+	}
 
-			if (_spritesset[setid].loaded_count > 16) {
-				grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
-				return;
-			}
-			superset->loaded[superset->loaded_count++]
-				= _spriteset_start + spriteset_id * _spriteset_numents;
+	if (_spriteset_feature != feature) {
+		grfmsg(GMS_WARN, "SpriteNewSuperset: Superset feature %x doesn't match set feature %x! Skipping.", feature, _spriteset_feature);
+		return;
+	}
+
+	if (setid >= _spritesset_count) {
+		_spritesset_count = setid + 1;
+		_spritesset = realloc(_spritesset, _spritesset_count * sizeof(struct SpriteSuperSet));
+	}
+	superset = &_spritesset[setid];
+	memset(superset, 0, sizeof(struct SpriteSuperSet));
+	superset->sprites_per_set = _spriteset_numents;
+
+	buf += 5;
+
+	for (i = 0; buf < bufend && i < numloaded; i++) {
+		uint16 spriteset_id = grf_load_word(&buf);
+
+		if (_spritesset[setid].loaded_count > 16) {
+			grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
+			return;
 		}
+		superset->loaded[superset->loaded_count++]
+			= _spriteset_start + spriteset_id * _spriteset_numents;
+	}
 
-		for (i = 0; buf < bufend && i < numloading; i++) {
-			uint16 spriteset_id = grf_load_word(&buf);
+	for (i = 0; buf < bufend && i < numloading; i++) {
+		uint16 spriteset_id = grf_load_word(&buf);
 
-			if (_spritesset[setid].loading_count > 16) {
-				grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
-				return;
-			}
-			superset->loading[superset->loading_count++] = _spriteset_start + spriteset_id * _spriteset_numents;
+		if (_spritesset[setid].loading_count > 16) {
+			grfmsg(GMS_WARN, "SpriteNewSuperset: More than 16 sprites in superset %x, skipping.", setid);
+			return;
 		}
+		superset->loading[superset->loading_count++] = _spriteset_start + spriteset_id * _spriteset_numents;
 	}
 }
 
@@ -727,79 +743,82 @@ static void VehicleMapSpriteSuperset(byte *buf, int len)
 
 	static byte *last_engines;
 	static int last_engines_count;
+	uint8 feature;
+	uint8 idcount;
+	int wagover;
+	uint8 cidcount;
+	int c, i;
 
-	if (bufend - buf > 6) {
-		uint8 feature = buf[1];
-		uint8 idcount = buf[2] & 0x7f;
-		int wagover = buf[2] & 0x80;
-		uint8 cidcount = buf[3 + idcount];
-		int c, i;
+	check_length(len, 7, "VehicleMapSpriteSuperset");
+	feature = buf[1];
+	idcount = buf[2] & 0x7f;
+	wagover = buf[2] & 0x80;
+	cidcount = buf[3 + idcount];
 
-		if (feature == 4) {
-			grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Stations unsupported, skipping.");
-			return;
+	if (feature == 4) {
+		grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Stations unsupported, skipping.");
+		return;
+	}
+
+	// FIXME: Tropicset contains things like:
+	// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
+	// what should we exactly do with that? --pasky
+
+	if (!_spriteset_start || !_spritesset) {
+		grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: No sprite set to work on! Skipping.");
+		return;
+	}
+
+	if (!wagover && last_engines_count != idcount) {
+		last_engines = realloc(last_engines, idcount);
+		last_engines_count = idcount;
+	}
+
+	for (i = 0; i < idcount; i++) {
+		uint8 engine = buf[3 + i] + _vehshifts[feature];
+		byte *bp = &buf[4 + idcount];
+
+		for (c = 0; c < cidcount; c++) {
+			uint8 ctype = grf_load_byte(&bp);
+			uint16 supersetid = grf_load_word(&bp);
+
+			if (supersetid >= _spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
+				return;
+			}
+
+			if (ctype == 0xff)
+				ctype = CID_PURCHASE;
+
+			if (wagover) {
+				// TODO: No multiple cargo types per vehicle yet. --pasky
+				SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
+			} else {
+				SetCustomEngineSprites(engine, ctype, &_spritesset[supersetid]);
+				last_engines[i] = engine;
+			}
 		}
+	}
 
-		// FIXME: Tropicset contains things like:
-		// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
-		// what should we exactly do with that? --pasky
-
-		if (!_spriteset_start || !_spritesset) {
-			grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: No sprite set to work on! Skipping.");
-			return;
-		}
-
-		if (!wagover && last_engines_count != idcount) {
-			last_engines = realloc(last_engines, idcount);
-			last_engines_count = idcount;
-		}
+	{
+		byte *bp = buf + 4 + idcount + cidcount * 3;
+		uint16 supersetid = grf_load_word(&bp);
 
 		for (i = 0; i < idcount; i++) {
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
-			byte *bp = &buf[4 + idcount];
 
-			for (c = 0; c < cidcount; c++) {
-				uint8 ctype = grf_load_byte(&bp);
-				uint16 supersetid = grf_load_word(&bp);
-
-				if (supersetid >= _spritesset_count) {
-					grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
-					return;
-				}
-
-				if (ctype == 0xff)
-					ctype = CID_PURCHASE;
-
-				if (wagover) {
-					// TODO: No multiple cargo types per vehicle yet. --pasky
-					SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
-				} else {
-					SetCustomEngineSprites(engine, ctype, &_spritesset[supersetid]);
-					last_engines[i] = engine;
-				}
+			// Don't tell me you don't love duplicated code!
+			if (supersetid >= _spritesset_count) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
+				return;
 			}
-		}
 
-		{
-			byte *bp = buf + 4 + idcount + cidcount * 3;
-			uint16 supersetid = grf_load_word(&bp);
-
-			for (i = 0; i < idcount; i++) {
-				uint8 engine = buf[3 + i] + _vehshifts[feature];
-
-				// Don't tell me you don't love duplicated code!
-				if (supersetid >= _spritesset_count) {
-					grfmsg(GMS_WARN, "VehicleMapSpriteSuperset: Spriteset %x out of range %x, skipping.", supersetid, _spritesset_count);
-					return;
-				}
-
-				if (wagover) {
-					// TODO: No multiple cargo types per vehicle yet. --pasky
-					SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
-				} else {
-					SetCustomEngineSprites(engine, CID_DEFAULT, &_spritesset[supersetid]);
-					last_engines[i] = engine;
-				}
+			if (wagover) {
+				// TODO: No multiple cargo types per vehicle yet. --pasky
+				SetWagonOverrideSprites(engine, &_spritesset[supersetid], last_engines, last_engines_count);
+			} else {
+				SetCustomEngineSprites(engine, CID_DEFAULT, &_spritesset[supersetid]);
+				last_engines[i] = engine;
 			}
 		}
 	}
@@ -822,30 +841,34 @@ static void VehicleNewName(byte *buf, int len)
 	 * factory names etc). We should then also support all languages (by
 	 * name), not only the original four ones. --pasky */
 
-	if (len > 5) {
-		uint8 feature = buf[1];
-		uint8 lang = buf[2];
-		uint8 id = buf[4] + _vehshifts[feature];
-		uint8 endid = id + buf[3];
+	uint8 feature;
+	uint8 lang;
+	uint8 id;
+	uint8 endid;
 
-		if (lang & 0x80) {
-			grfmsg(GMS_WARN, "VehicleNewName: No support for changing in-game texts. Skipping.");
-			return;
-		}
+	check_length(len, 6, "VehicleNewName");
+	feature = buf[1];
+	lang = buf[2];
+	id = buf[4] + _vehshifts[feature];
+	endid = id + buf[3];
 
-		if (!(lang & 3)) {
-			/* XXX: If non-English name, silently skip it. */
-			return;
-		}
+	if (lang & 0x80) {
+		grfmsg(GMS_WARN, "VehicleNewName: No support for changing in-game texts. Skipping.");
+		return;
+	}
 
-		buf += 5, len -= 5;
-		for (; id < endid && len > 0; id++) {
-			int ofs = strlen(buf) + 1;
+	if (!(lang & 3)) {
+		/* XXX: If non-English name, silently skip it. */
+		return;
+	}
 
-			if (ofs < 128)
-				SetCustomEngineName(id, buf);
-			buf += ofs, len -= ofs;
-		}
+	buf += 5, len -= 5;
+	for (; id < endid && len > 0; id++) {
+		int ofs = strlen(buf) + 1;
+
+		if (ofs < 128)
+			SetCustomEngineName(id, buf);
+		buf += ofs, len -= ofs;
 	}
 }
 
@@ -862,9 +885,7 @@ static void GraphicsNew(byte *buf, int len)
 	uint8 type;
 	uint8 num;
 
-	if (len != 2)
-		return;
-
+	check_length(len, 2, "GraphicsNew");
 	type = buf[0];
 	num = buf[1];
 
@@ -902,41 +923,44 @@ static void SkipIf(byte *buf, int len)
 	 * B num-sprites */
 	/* TODO: We only support few tests. */
 	/* TODO: More params. More condition types. */
+	uint8 param;
+	uint8 paramsize;
+	uint8 condtype;
+	uint8 numsprites;
+	int val, result;
 
-	if (len > 5) {
-		uint8 param = buf[1];
-		uint8 paramsize = buf[2];
-		uint8 condtype = buf[3];
-		uint8 numsprites = buf[4 + paramsize];
-		int val, result;
+	check_length(len, 6, "SkipIf");
+	param = buf[1];
+	paramsize = buf[2];
+	condtype = buf[3];
+	numsprites = buf[4 + paramsize];
 
-		if (param == 0x83) {
-			val = _opt.landscape;
-		} else {
-			grfmsg(GMS_WARN, "Unsupported param %x. Ignoring test.", param);
+	if (param == 0x83) {
+		val = _opt.landscape;
+	} else {
+		grfmsg(GMS_WARN, "Unsupported param %x. Ignoring test.", param);
+		return;
+	}
+
+	switch (condtype) {
+		case 2: result = (buf[4] == val);
+			break;
+		case 3: result = (buf[4] != val);
+			break;
+		default:
+			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
 			return;
-		}
+	}
 
-		switch (condtype) {
-			case 2: result = (buf[4] == val);
-				break;
-			case 3: result = (buf[4] != val);
-				break;
-			default:
-				grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
-				return;
-		}
+	if (!result)
+		return;
 
-		if (!result)
-			return;
-
-		_skip_sprites = numsprites;
-		if (_skip_sprites == 0) {
-			/* Zero means there are no sprites to skip, so
-			 * we use -1 to indicate that all further
-			 * sprites should be skipped. */
-			_skip_sprites = -1;
-		}
+	_skip_sprites = numsprites;
+	if (_skip_sprites == 0) {
+		/* Zero means there are no sprites to skip, so
+		 * we use -1 to indicate that all further
+		 * sprites should be skipped. */
+		_skip_sprites = -1;
 	}
 }
 
@@ -949,17 +973,18 @@ static void GRFInfo(byte *buf, int len)
 	 * S name          name of this .grf set
 	 * S info          string describing the set, and e.g. author and copyright */
 	/* TODO: Check version. (We should have own versioning done somehow.) */
+	uint8 version;
+	uint32 grfid; /* this is de facto big endian - grf_load_dword() unsuitable */
+	char *name;
+	char *info;
 
-	if (len > 8) {
-		uint8 version = buf[1];
-		// this is de facto big endian - grf_load_dword() unsuitable
-		uint32 grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
-		char *name = buf + 6;
-		char *info = name + strlen(name) + 1;
-
-		DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n",
-		               _cur_grffile, version, grfid, name, info);
-	}
+	check_length(len, 9, "GRFInfo");
+	version = buf[1];
+	grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
+	name = buf + 6;
+	info = name + strlen(name) + 1;
+	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n",
+	               _cur_grffile, version, grfid, name, info);
 }
 
 static void SpriteReplace(byte *buf, int len)
@@ -998,16 +1023,17 @@ static void GRFError(byte *buf, int len)
 		"Designed to be used with %s.",
 		"Invalid parameter %s.",
 	};
+	uint8 severity;
+	uint8 msgid;
 
-	if (len > 5) {
-		uint8 severity = buf[1];
-		uint8 msgid = buf[3];
+	check_length(len, 6, "GRFError");
+	severity = buf[1];
+	msgid = buf[3];
 
-		if (msgid == 0xff) {
-			grfmsg(severity, "%s", buf+4);
-		} else {
-			grfmsg(severity, msgstr[msgid], buf+4);
-		}
+	if (msgid == 0xff) {
+		grfmsg(severity, "%s", buf+4);
+	} else {
+		grfmsg(severity, msgstr[msgid], buf+4);
 	}
 }
 
