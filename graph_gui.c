@@ -1016,8 +1016,8 @@ static StringID GetPerformanceTitleFromValue(uint v)
 }
 
 static int CDECL _perf_hist_comp(const void *elem1, const void *elem2 ) {
-	Player *p1 = *(Player**)elem1;
-	Player *p2 = *(Player**)elem2;
+	const Player *p1 = *(const Player* const *)elem1;
+	const Player *p2 = *(const Player* const *)elem2;
 	int32 v = p2->old_economy[1].performance_history - p1->old_economy[1].performance_history;
 	return (v!=0) | (v >> (sizeof(int32)*8-1));
 }

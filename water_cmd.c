@@ -383,10 +383,10 @@ static void DrawWaterStuff(TileInfo *ti, const byte *t, uint32 palette, uint bas
 	const WaterDrawTileStruct *wdts;
 	uint32 image;
 
-	DrawGroundSprite(*(uint16*)t);
+	DrawGroundSprite(*(const uint16*)t);
 	t += sizeof(uint16);
 
-	for(wdts = (WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
+	for(wdts = (const WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
 		image =	wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			image |= palette;
@@ -429,10 +429,10 @@ void DrawShipDepotSprite(int x, int y, int image)
 	const WaterDrawTileStruct *wdts;
 
 	t = _shipdepot_display_seq[image];
-	DrawSprite(*(uint16*)t, x, y);
+	DrawSprite(*(const uint16*)t, x, y);
 	t += sizeof(uint16);
 
-	for(wdts = (WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
+	for(wdts = (const WaterDrawTileStruct *)t; (byte)wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
 		DrawSprite(wdts->image + PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
 	}

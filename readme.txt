@@ -126,7 +126,7 @@ Windows:
   and it should build automatically. In case you don't build with SDL,
   you need to remove WITH_SDL from the project settings.
   (see also docs/Readme_Windows_MSVC6.0.txt)
-  
+
   You can also build it using the Makefile with MSys/MingW or Cygwin/MingW.
   Please read the Makefile for more information.
 
@@ -147,8 +147,8 @@ FreeBSD
   Use "gmake".
 
 MorphOS
-  Use "make". Note that you need the MorphOS SDK and the 
-  powersdl.library SDK. 
+  Use "make". Note that you need the MorphOS SDK and the
+  powersdl.library SDK.
 
 8.0) Translating:
 ---- -------------------
@@ -209,7 +209,7 @@ The OpenTTD team:
   Cian Duffy (MYOB)              - BeOS port / manual writing
   Christian Rosentreter (tokaiz) - MorphOS/AmigaOS port
   Viktor Strigeus (wiggo)        - Web hosting services
-  
+
 Thanks to:
   Josef Drexler - For his great work on TTDPatch.
   Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations).
@@ -222,4 +222,4 @@ Thanks to:
   George - Canal graphics
   Bug Reporters - Thanks for all bug reports.
   Chris Sawyer - For an amazing game.
-  
+

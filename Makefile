@@ -59,12 +59,12 @@
 #             a <TODO> mark)
 # RELEASE: this will be the released version number. It replaces all places
 #          where it normally would print the revision number
-# MIDI: if set, it will use it as custom path to midi player. 
+# MIDI: if set, it will use it as custom path to midi player.
 #  If unset, it will use the hardcoded path in the c code
-# NOVERBOSE: supress all warnings and errors during compilation. 
+# NOVERBOSE: supress all warnings and errors during compilation.
 #  It looks nicer, but you will not know what went wrong. Use it on released (stable) sources only
 #
-# DATA_DIR_PREFIX: This sets the dir OpenTTD looks for the needed files. 
+# DATA_DIR_PREFIX: This sets the dir OpenTTD looks for the needed files.
 #   MUST END WITH / if defined
 #
 # STATIC: link statically
@@ -134,14 +134,14 @@ endif
 # Verbose filter
 
 ifdef NOVERBOSE
-VERBOSE_FILTER =  >/dev/null 2>&1 
+VERBOSE_FILTER =  >/dev/null 2>&1
 else
-VERBOSE_FILTER = 
+VERBOSE_FILTER =
 endif
 
 ifdef DISPLAY_WARNINGS
 WARNING_DISPLAY:=-fstrict-aliasing
-VERBOSE_FILTER =  
+VERBOSE_FILTER =
 else
 WARNING_DISPLAY:=-fno-strict-aliasing
 endif
@@ -517,14 +517,14 @@ endif
 all: endian.h $(UPDATECONFIG) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
-	@# Check if system is LITTLE_ENDIAN or BIG_ENDIAN 
+	@# Check if system is LITTLE_ENDIAN or BIG_ENDIAN
 	@echo 'Running endian_check'; \
 		./$(ENDIAN_CHECK) > $@
 
 $(ENDIAN_CHECK): endian_check.c
 	@echo 'Compiling and Linking $@'; \
 		$(CC) $(BASECFLAGS) $(CDEFS) endian_check.c -o $@
-	
+
 
 $(TTD): table/strings.h $(ttd_OBJS) $(LANGS) $(MAKE_CONFIG)
 	@echo 'Compiling and Linking $@'; \
@@ -555,7 +555,7 @@ $(STRGEN): strgen/strgen.c rev.o
 lang/english.lng: lang/english.txt $(STRGEN)
 	@echo 'Generating $@'; \
 	$(STRGEN)
-	
+
 table/strings.h: lang/english.lng
 
 lang/%.lng: lang/%.txt $(STRGEN)
@@ -621,7 +621,7 @@ love:
 
 ### Automatic configuration
 -include $(CONFIG_WRITER)
-	
+
 
 # Export all variables set to subprocesses (a bit dirty)
 .EXPORT_ALL_VARIABLES:

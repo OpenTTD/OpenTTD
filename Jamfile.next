@@ -12,7 +12,7 @@ CFILES = 	ai.c aircraft_cmd.c aircraft_gui.c airport_gui.c
 	strings.c subsidy_gui.c texteff.c town_cmd.c town_gui.c
 	train_cmd.c train_gui.c tree_cmd.c ttd.c
 	tunnelbridge_cmd.c unmovable_cmd.c vehicle.c
-	viewport.c water_cmd.c widget.c window.c screenshot.c 
+	viewport.c water_cmd.c widget.c window.c screenshot.c
 	airport.c grfspecial.c terraform_gui.c ;
 
 
@@ -28,10 +28,10 @@ if $(UNIX) {
 	LINKFLAGS += $(SDL_CONFIG_LIBS) ;
 	CC = gcc ;
 	CCFLAGS += -Wall -Wno-multichar -DUNIX -DWITH_SDL ;
-	
+
 	OPTIMFLAGS = -O2 -fomit-frame-pointer ;
 	DEBUGFLAGS = -g ;
-	
+
 # also include extmidi
 	CFILES += extmidi.c unix.c ;
 
@@ -64,7 +64,7 @@ if $(UNIX) {
 ####################
 
 actions ActWin32Res {
-	$(VISUALC)\\..\\common\\msdev98\\bin\\rc /r /i $(STDHDRS) /fo $(<) $(>) 
+	$(VISUALC)\\..\\common\\msdev98\\bin\\rc /r /i $(STDHDRS) /fo $(<) $(>)
 }
 
 rule Win32Res { ActWin32Res $(<) : $(>) ; DEPENDS $(<) : $(>) ; }
@@ -73,11 +73,11 @@ if $(TOOLSET) = VISUALC {
 	OPTIMFLAGS = /Oa /Os /Ow /Oy /Oi /Og /Ox /Gr /Gf /Gy /Zp4 /J	/WX /W3 -DNDEBUG ;
 
 	CCFLAGS += -DWIN32 -DWIN32_EXCEPTION_TRACKER ;
-	CFILES += win32.c ;	
+	CFILES += win32.c ;
 	LINKFLAGS += /opt:nowin98 /LIBPATH:$(VISUALC)\\lib ;
-	
+
 	LINKLIBS = ws2_32.lib winmm.lib user32.lib gdi32.lib ;
-		
+
 # compile resources too
 	EOBJ = ttd.res ;
 	Win32Res ttd.res : ttd.rc ;
@@ -93,7 +93,7 @@ if $(TOOLSET) = VISUALC {
 		CCFLAGS += -DWITH_ZLIB ;
 		LINKLIBS += zlibstat.lib ;
 	}
-	
+
 # build release by default
 	RELEASE = 1 ;
 }
@@ -107,7 +107,7 @@ rule MyObjects {
 
 	_t = $(OUTDIR)/$(>:S=$(SUFOBJ)) ;
 	OPTIM on $(_t) = $(3) ;
-	
+
 	MkDir $(OUTDIR) ;
 	Depends $(_t) : $(OUTDIR) ;
 
@@ -142,7 +142,7 @@ rule LangFile {
 	} else {
 		CompileLang $(<) : $(>) ;
 	}
-	
+
 	Clean clean : $(<) ;
 	DEPENDS $(<) : $(>) ;
 	DEPENDS all : $(<) ;

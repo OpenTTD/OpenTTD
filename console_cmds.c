@@ -39,6 +39,7 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 	return true;
 }
 
+#if 0 /* Not used atm */
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetwork)
 {
 	if (_networking) {
@@ -47,6 +48,7 @@ DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetwork)
 		}
 	return true;
 }
+#endif
 
 DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
 {
@@ -107,7 +109,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	rport = _network_server_port;
 	c = 0;
 	ip = b;
-	
+
 	while (b[c] != 0) {
 		if (((char)b[c]) == '#') {
 			player = &b[c+1];
@@ -201,20 +203,20 @@ DEF_CONSOLE_CMD(ConVarInfo)
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConDebugLevel) 
+DEF_CONSOLE_CMD(ConDebugLevel)
 {
 	if (argc<2) return NULL;
 	SetDebugString(argv[1]);
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConExit) 
+DEF_CONSOLE_CMD(ConExit)
 {
 	_exit_game = true;
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConHelp) 
+DEF_CONSOLE_CMD(ConHelp)
 {
 	IConsolePrint(13	," -- console help -- ");
 	IConsolePrint(1		," variables: [command to list them: list_vars]");
@@ -239,7 +241,7 @@ DEF_CONSOLE_CMD(ConRandom)
 	return result;
 }
 
-DEF_CONSOLE_CMD(ConListCommands) 
+DEF_CONSOLE_CMD(ConListCommands)
 {
 	_iconsole_cmd * item;
 	int l = 0;
@@ -264,7 +266,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 	return NULL;
 }
 
-DEF_CONSOLE_CMD(ConListVariables) 
+DEF_CONSOLE_CMD(ConListVariables)
 {
 	_iconsole_var * item;
 	int l = 0;
@@ -275,7 +277,7 @@ DEF_CONSOLE_CMD(ConListVariables)
 	while (item != NULL) {
 		if (argv[1]!=NULL) {
 
-			if (memcmp((void *) item->name, (void *) argv[1],l)==0)
+			if (memcmp(item->name, argv[1],l)==0)
 					IConsolePrintF(_iconsole_color_default,"%s",item->name);
 
 			} else {
@@ -300,7 +302,7 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 	while (item != NULL) {
 		if (argv[1]!=NULL) {
 
-			if (memcmp((void *) item->name, (void *) argv[1],l)==0)
+			if (memcmp(item->name, argv[1],l)==0)
 					IConsoleVarDump(item,NULL);
 
 			} else {
@@ -319,7 +321,7 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 /*  debug commands and variables */
 /* ****************************************** */
 
-void IConsoleDebugLibRegister() 
+void IConsoleDebugLibRegister()
 {
 	IConsoleVarMemRegister("temp_bool",ICONSOLE_VAR_BOOLEAN);
 	IConsoleVarMemRegister("temp_int16",ICONSOLE_VAR_INT16);
@@ -346,6 +348,8 @@ void IConsoleStdLibRegister()
 
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
+#else
+	(void)ConResetTile; // Silence warning, this is only used in _DEBUG
 #endif
 
 	// functions [please add them alphabeticaly]

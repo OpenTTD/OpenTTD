@@ -3,8 +3,8 @@ static const byte _shipdepot_display_seq_1[] = {
 
 	0,15,0,16,1,0x14,
 	ADD_WORD(0x8FE8),
-	
-	0x80 
+
+	0x80
 };
 
 static const byte _shipdepot_display_seq_2[] = {
@@ -121,7 +121,7 @@ static const byte _shiplift_display_seq_3t[] = {
 	ADD_WORD(0xFDD),
 	0, 0, 0, 1, 0x10, 0x14, ADD_WORD(SPR_CANALS_BASE + 9 + 16 + 3),
 	0xF, 0, 0, 1, 0x10, 0x14, ADD_WORD(SPR_CANALS_BASE + 9 + 20 + 3),
-	0x80, 8	
+	0x80, 8
 };
 
 static const byte * const _shiplift_display_seq[] = {

@@ -354,15 +354,15 @@ static byte _last_town_idx;
 static int CDECL TownNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
-	Town *t;
+	const Town *t;
 	byte val;
 	int r;
 
-	t = DEREF_TOWN(*(byte*)a);
+	t = DEREF_TOWN(*(const byte*)a);
 	SET_DPARAM32(0, t->townnameparts);
 	GetString(buf1, t->townnametype);
 
-	if ( (val=*(byte*)b) != _last_town_idx) {
+	if ( (val=*(const byte*)b) != _last_town_idx) {
 		_last_town_idx = val;
 		t = DEREF_TOWN(val);
 		SET_DPARAM32(0, t->townnameparts);
@@ -376,8 +376,8 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 
 static int CDECL TownPopSorter(const void *a, const void *b)
 {
-	Town *ta = DEREF_TOWN(*(byte*)a);
-	Town *tb = DEREF_TOWN(*(byte*)b);
+	const Town *ta = DEREF_TOWN(*(const byte*)a);
+	const Town *tb = DEREF_TOWN(*(const byte*)b);
 	int r = ta->population - tb->population;
 	if (_town_sort_order & 1) r = -r;
 	return r;

@@ -1520,7 +1520,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		s = _track_depot_layout_table[m5 & 0x3F];
 
-		image = *(uint16*)s;
+		image = *(const uint16*)s;
 		if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
 
 		// adjust ground tile for desert
@@ -1566,11 +1566,11 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	x+=33;
 	y+=17;
 
-	img = *(uint16*)t;
+	img = *(const uint16*)t;
 	if (img & 0x8000) img = (img & 0x7FFF) + railtype;
 	DrawSprite(img, x, y);
 
-	for(dtss = (DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
+	for(dtss = (const DrawTrackSeqStruct *)(t + sizeof(uint16)); dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 		image = dtss->image;
 		if (image & 0x8000) image |= ormod;

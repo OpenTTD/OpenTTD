@@ -422,7 +422,7 @@ static size_t SlCalcObjLength(void *object, const void *desc)
 {
 	size_t length = 0;
 	uint cmd,conv;
-	byte *d = (byte*)desc;
+	const byte *d = (const byte*)desc;
 
 	// Need to determine the length and write a length tag.
 	while (true) {
@@ -464,7 +464,7 @@ static size_t SlCalcObjLength(void *object, const void *desc)
 
 void SlObject(void *object, const void *desc)
 {
-	byte *d = (byte*)desc;
+	const byte *d = (const byte*)desc;
 	void *ptr;
 	uint cmd,conv;
 

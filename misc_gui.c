@@ -963,7 +963,7 @@ static void BuildFileList()
 
 static void DrawFiosTexts()
 {
-	char *path;
+	const char *path;
 	StringID str;
 
 	str = FiosGetDescText(&path);

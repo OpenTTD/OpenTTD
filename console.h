@@ -47,7 +47,7 @@ typedef struct {
 typedef struct {
 	// --------------- //
 	void * addr;
-	byte * name;
+	const byte * name;
 	byte type;
 	// -------------- //
 	void * hook_access;
@@ -85,31 +85,31 @@ void IConsoleClose();
 void IConsoleOpen();
 
 // ** console cmd buffer ** //
-void IConsoleCmdBufferAdd(byte * cmd);
+void IConsoleCmdBufferAdd(const byte *cmd);
 void IConsoleCmdBufferNavigate(signed char direction);
 
 // ** console output ** //
-void IConsolePrint(byte color_code, byte* string);
+void IConsolePrint(byte color_code, const byte* string);
 void CDECL IConsolePrintF(byte color_code, const char *s, ...);
 void IConsoleDebug(byte* string);
-void IConsoleError(byte* string);
+void IConsoleError(const byte* string);
 
 // *** Commands *** //
 
-void IConsoleCmdRegister(byte * name, void * addr);
+void IConsoleCmdRegister(const byte * name, void * addr);
 void* IConsoleCmdGetAddr(byte * name);
 
 // *** Variables *** //
 
-void IConsoleVarRegister(byte * name, void * addr, byte type);
+void IConsoleVarRegister(const byte * name, void * addr, byte type);
 void IConsoleVarMemRegister(byte * name, byte type);
-void IConsoleVarInsert(_iconsole_var * var, byte * name);
-_iconsole_var * IConsoleVarGet(byte * name);
+void IConsoleVarInsert(_iconsole_var * var, const byte * name);
+_iconsole_var * IConsoleVarGet(const byte * name);
 _iconsole_var * IConsoleVarAlloc(byte type);
 void IConsoleVarFree(_iconsole_var * var);
-void IConsoleVarSetString(_iconsole_var * var, byte * string);
+void IConsoleVarSetString(_iconsole_var * var, const byte * string);
 void IConsoleVarSetValue(_iconsole_var * var, int value);
-void IConsoleVarDump(_iconsole_var * var, byte * dump_desc);
+void IConsoleVarDump(_iconsole_var * var, const byte * dump_desc);
 
 // *** Parser *** //
 
@@ -119,8 +119,8 @@ void IConsoleCmdExec(byte * cmdstr);
 void IConsoleStdLibRegister();
 
 // ** hook code ** //
-void IConsoleVarHook(byte * name, byte type, void * proc);
-void IConsoleCmdHook(byte * name, byte type, void * proc);
+void IConsoleVarHook(const byte * name, byte type, void * proc);
+void IConsoleCmdHook(const byte * name, byte type, void * proc);
 bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type);
 bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type);
 

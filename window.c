@@ -25,7 +25,7 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 		if (e.click.widget < 0) return; /* exit if clicked outside of widgets */
 
 		wi = &w->widget[e.click.widget];
-				
+
 		/* don't allow any interaction if the button has been disabled */
 		if (HASBIT(w->disabled_state, e.click.widget))
 			return;

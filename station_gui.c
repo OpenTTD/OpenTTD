@@ -54,9 +54,8 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
 	Station *st;
-	SortStruct *cmp1, *cmp2;
-	cmp1 = (SortStruct*)a;
-	cmp2 = (SortStruct*)b;
+	const SortStruct *cmp1 = (const SortStruct*)a;
+	const SortStruct *cmp2 = (const SortStruct*)b;
 
 	st = DEREF_STATION(cmp1->index);
 	SET_DPARAM16(0, st->town->townnametype);

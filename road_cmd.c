@@ -810,9 +810,9 @@ static void DrawTile_Road(TileInfo *ti)
 
 		s = _road_display_datas[ti->map5 & 0xF];
 
-		DrawGroundSprite(*(uint32*)s);
+		DrawGroundSprite(*(const uint32*)s);
 		s += sizeof(uint32);
-		drss = (DrawRoadSeqStruct*)s;
+		drss = (const DrawRoadSeqStruct*)s;
 
 		while ((image=drss->image) != 0) {
 			if (image & 0x8000)
@@ -840,10 +840,10 @@ void DrawRoadDepotSprite(int x, int y, int image)
 	x+=33;
 	y+=17;
 
-	DrawSprite(*(uint32*)t, x, y);
+	DrawSprite(*(const uint32*)t, x, y);
 	t += sizeof(uint32);
 
-	for(dtss = (DrawRoadSeqStruct *)t; dtss->image != 0; dtss++) {
+	for(dtss = (const DrawRoadSeqStruct *)t; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 
 		image = dtss->image;

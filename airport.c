@@ -88,7 +88,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	Airport->nofhelipadgroups = nofhelipadgroups;
 	Airport->acc_planes = acc_planes;
 	Airport->entry_point = entry_point;
-	Airport->airport_depots = (uint16*)depots;
+	Airport->airport_depots = (const uint16*)depots;
 
 
 	// build the state machine

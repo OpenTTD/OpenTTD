@@ -207,9 +207,9 @@ void IConsoleInit()
 		}
 	IConsoleStdLibRegister();
 	#if defined(WITH_REV)
-	IConsolePrintF(13,"OpenTTD Game Console Revision 3 - %s",_openttd_revision);
+	IConsolePrintF(13,"OpenTTD Game Console Revision 4 - %s",_openttd_revision);
 	#else
-	IConsolePrint(13,"OpenTTD Game Console Revision 3");
+	IConsolePrint(13,"OpenTTD Game Console Revision 4");
 	#endif
 	IConsolePrint(12,"---------------------------------");
 	IConsolePrint(12,"use \"help\" for more info");
@@ -269,16 +269,16 @@ void IConsoleOpen()
 	if (_iconsole_mode==ICONSOLE_CLOSED) IConsoleSwitch();
 }
 
-void IConsoleCmdBufferAdd(byte * cmd)
+void IConsoleCmdBufferAdd(const byte * cmd)
 {
 	int i;
 	if (_iconsole_cmdbufferpos != 19) return;
 	if (_iconsole_cmdbuffer[18]!=NULL) free(_iconsole_cmdbuffer[18]);
 	for (i=18; i>0; i--) _iconsole_cmdbuffer[i]=_iconsole_cmdbuffer[i-1];
-	i=strlen((char *)cmd);
+	i=strlen(cmd);
 	_iconsole_cmdbuffer[0]=malloc(i+1);
 	memset(((void *)_iconsole_cmdbuffer[0]),0,i+1);
-	memcpy(((void *)_iconsole_cmdbuffer[0]),(void *)cmd,i);
+	memcpy(((void *)_iconsole_cmdbuffer[0]),cmd,i);
 	_iconsole_cmdbuffer[0][i]=0;
 	_iconsole_cmdbufferpos = 19;
 }
@@ -303,7 +303,7 @@ void IConsoleCmdBufferNavigate(signed char direction)
 	_iconsole_cmdpos =strlen(_iconsole_cmdbuffer[i]);
 }
 
-void IConsolePrint(byte color_code, byte* string)
+void IConsolePrint(byte color_code, const byte* string)
 {
 	byte * _ex;
 	byte * _new;
@@ -314,7 +314,7 @@ void IConsolePrint(byte color_code, byte* string)
 	if (!_iconsole_inited) return;
 
 	_newc=color_code;
-	i=strlen((char *)string);
+	i=strlen(string);
 	_new=malloc(i+1);
 	memset(_new,0,i+1);
 	memcpy(_new,string,i);
@@ -354,22 +354,22 @@ void IConsoleDebug(byte* string)
 	if (_stdlib_developer>1) IConsolePrintF(_iconsole_color_debug, "DEBUG: %s", string);
 }
 
-void IConsoleError(byte* string)
+void IConsoleError(const byte* string)
 {
 	if (_stdlib_developer>0) IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
 }
 
-void IConsoleCmdRegister(byte * name, void * addr)
+void IConsoleCmdRegister(const byte * name, void * addr)
 {
 	byte * _new;
 	_iconsole_cmd * item;
 	_iconsole_cmd * item_new;
 	int i;
 
-		i=strlen((char *)name);
-		_new=malloc(i+1);
-		memset(_new,0,i+1);
-		memcpy(_new,name,i);
+	i=strlen(name);
+	_new=malloc(i+1);
+	memset(_new,0,i+1);
+	memcpy(_new,name,i);
 
 	item_new = malloc(sizeof(_iconsole_cmd));
 
@@ -390,7 +390,7 @@ void IConsoleCmdRegister(byte * name, void * addr)
 		}
 }
 
-void* IConsoleCmdGet(byte * name)
+void* IConsoleCmdGet(const byte * name)
 {
 	_iconsole_cmd * item;
 
@@ -402,18 +402,18 @@ void* IConsoleCmdGet(byte * name)
 	return NULL;
 }
 
-void IConsoleVarRegister(byte * name, void * addr, byte type)
+void IConsoleVarRegister(const byte * name, void * addr, byte type)
 {
 	byte * _new;
 	_iconsole_var * item;
 	_iconsole_var * item_new;
 	int i;
 
-		i=strlen((char *)name)+1;
-		_new=malloc(i+1);
-		memset(_new,0,i+1);
-		_new[0]='*';
-		memcpy(_new+1,name,i);
+	i=strlen(name)+1;
+	_new=malloc(i+1);
+	memset(_new,0,i+1);
+	_new[0]='*';
+	memcpy(_new+1,name,i);
 
 	item_new = malloc(sizeof(_iconsole_var));
 
@@ -436,7 +436,7 @@ void IConsoleVarRegister(byte * name, void * addr, byte type)
 		}
 }
 
-void IConsoleVarMemRegister(byte * name, byte type)
+void IConsoleVarMemRegister(byte * name, byte type) /* XXX TRON */
 {
 	_iconsole_var * item;
 	item = IConsoleVarAlloc(type);
@@ -444,7 +444,7 @@ void IConsoleVarMemRegister(byte * name, byte type)
 }
 
 
-void IConsoleVarInsert(_iconsole_var * var, byte * name)
+void IConsoleVarInsert(_iconsole_var * var, const byte * name)
 {
 	byte * _new;
 	_iconsole_var * item;
@@ -456,11 +456,11 @@ void IConsoleVarInsert(_iconsole_var * var, byte * name)
 	// dont allow to build variable rings
 	if (item_new->_next != NULL) return;
 
-		i=strlen((char *)name)+1;
-		_new=malloc(i+1);
-		memset(_new,0,i+1);
-		_new[0]='*';
-		memcpy(_new+1,name,i);
+	i=strlen(name)+1;
+	_new=malloc(i+1);
+	memset(_new,0,i+1);
+	_new[0]='*';
+	memcpy(_new+1,name,i);
 
 	item_new->name  = _new;
 
@@ -474,7 +474,7 @@ void IConsoleVarInsert(_iconsole_var * var, byte * name)
 }
 
 
-_iconsole_var * IConsoleVarGet(byte * name)
+_iconsole_var * IConsoleVarGet(const byte * name)
 {
 	_iconsole_var * item;
 
@@ -551,13 +551,12 @@ _iconsole_var * IConsoleVarAlloc(byte type)
 
 void IConsoleVarFree(_iconsole_var * var)
 {
-	if (var ->_malloc) {
-		free(var ->addr);
-		}
+	if (var->_malloc)
+		free(var->addr);
 	free(var);
 }
 
-void IConsoleVarSetString(_iconsole_var * var, byte * string)
+void IConsoleVarSetString(_iconsole_var * var, const byte * string)
 {
 	int l;
 
@@ -567,52 +566,40 @@ void IConsoleVarSetString(_iconsole_var * var, byte * string)
 		free(var->addr);
 		}
 
-	l=strlen((char *) string);
+	l=strlen(string);
 	var->addr=malloc(l+1);
 	var->_malloc=true;
 	memset(var->addr,0,l);
-	memcpy((void *) var->addr,(void *) string, l);
+	memcpy(var->addr, string, l);
 	((byte *)var->addr)[l]=0;
-	}
+}
 
-	void IConsoleVarSetValue(_iconsole_var * var, int value) {
+void IConsoleVarSetValue(_iconsole_var * var, int value) {
 	switch (var->type) {
 			case ICONSOLE_VAR_BOOLEAN:
-					{
-					(*(bool *)var->addr)=(value!=0);
-					}
+					*(bool *)var->addr = (value != 0);
 					break;
 			case ICONSOLE_VAR_BYTE:
-					{
-					(*(byte *)var->addr)=value;
-					}
+					*(byte *)var->addr = value;
 					break;
 			case ICONSOLE_VAR_UINT16:
-					{
-					(*(unsigned short *)var->addr)=value;
-					}
+					*(unsigned short *)var->addr = value;
 					break;
 			case ICONSOLE_VAR_UINT32:
-					{
-					(*(unsigned int *)var->addr)=value;
-					}
+					*(unsigned int *)var->addr = value;
 					break;
 			case ICONSOLE_VAR_INT16:
-					{
-					(*(signed short *)var->addr)=value;
-					}
+					*(signed short *)var->addr = value;
 					break;
 			case ICONSOLE_VAR_INT32:
-					{
-					(*(signed int *)var->addr)=value;
-					}
+					*(signed int *)var->addr = value;
 					break;
 			default:
 					break;
-			}
+	}
 }
 
-void IConsoleVarDump(_iconsole_var * var, byte * dump_desc)
+void IConsoleVarDump(_iconsole_var * var, const byte * dump_desc)
 {
 	byte var_b; // TYPE BYTE
 	unsigned short var_ui16; // TYPE UINT16
@@ -686,7 +673,7 @@ void IConsoleVarDump(_iconsole_var * var, byte * dump_desc)
 // * hooking code              * //
 // * ************************* * //
 
-void IConsoleVarHook(byte * name, byte type, void * proc)
+void IConsoleVarHook(const byte * name, byte type, void * proc)
 {
 	_iconsole_var * hook_var;
 	hook_var = IConsoleVarGet(name);
@@ -706,7 +693,7 @@ void IConsoleVarHook(byte * name, byte type, void * proc)
 
 bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type)
 {
-	bool (*proc)(_iconsole_var * hook_var);
+	bool (*proc)(_iconsole_var * hook_var) = NULL;
 	switch (type) {
 	case ICONSOLE_HOOK_BEFORE_CHANGE:
 		proc = hook_var->hook_before_change;
@@ -717,12 +704,13 @@ bool IConsoleVarHookHandle(_iconsole_var * hook_var, byte type)
 	case ICONSOLE_HOOK_ACCESS:
 		proc = hook_var->hook_access;
 		break;
+	default: return true;
 	}
-	if (proc == NULL) return true;
+
 	return proc(hook_var);
 }
 
-void IConsoleCmdHook(byte * name, byte type, void * proc)
+void IConsoleCmdHook(const byte * name, byte type, void * proc)
 {
 	_iconsole_cmd * hook_cmd;
 	hook_cmd = IConsoleCmdGet(name);
@@ -752,6 +740,9 @@ bool IConsoleCmdHookHandle(_iconsole_cmd * hook_cmd, byte type)
 		break;
 	case ICONSOLE_HOOK_ACCESS:
 		proc = hook_cmd->hook_access;
+		break;
+	default:
+		proc = NULL;
 		break;
 	}
 	if (proc == NULL) return true;
@@ -885,7 +876,7 @@ void IConsoleCmdExec(byte * cmdstr)
 			execution_mode=2; // this is a variable
 			if (c>2) if (strcmp(tokens[1],"<<")==0) {
 				// this is command to variable mode [normal]
-				
+
 				function = NULL;
 				cmd = IConsoleCmdGet(tokens[2]);
 				if (cmd != NULL) function = cmd->addr;
@@ -1115,28 +1106,29 @@ void IConsoleCmdExec(byte * cmdstr)
 	case 4:
 		{
 		// execute command with result or assign a variable
-			if (execution_mode==3) if (IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_ACCESS)) {
-			int i;
-			int diff;
-			void * temp;
-			byte temp2;
+			if (execution_mode==3) {
+				if (IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_ACCESS)) {
+					int i;
+					int diff;
+					void * temp;
+					byte temp2;
 
-			// tokenshifting
-			for (diff=0; diff<2; diff++) {
-				temp=tokens[0];
-				temp2=tokentypes[0];
-				for (i=1; i<20; i++) {
-					tokens[i-1]=tokens[i];
-					tokentypes[i-1]=tokentypes[i];
+					// tokenshifting
+					for (diff=0; diff<2; diff++) {
+						temp=tokens[0];
+						temp2=tokentypes[0];
+						for (i=1; i<20; i++) {
+							tokens[i-1]=tokens[i];
+							tokentypes[i-1]=tokentypes[i];
+						}
+						tokens[19]=temp;
+						tokentypes[19]=temp2;
 					}
-				tokens[19]=temp;
-				tokentypes[19]=temp2;
-				}
-			IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_BEFORE_EXEC);
-			result = function(c,tokens,tokentypes);
-			IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_AFTER_EXEC);
-			} else {
-				execution_mode=255;
+					IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_BEFORE_EXEC);
+					result = function(c,tokens,tokentypes);
+					IConsoleCmdHookHandle(cmd,ICONSOLE_HOOK_AFTER_EXEC);
+				} else
+					execution_mode=255;
 			}
 
 		if (IConsoleVarHookHandle(var,ICONSOLE_HOOK_ACCESS)) if (result!=NULL) {

@@ -132,7 +132,7 @@ static const SpriteID _landscape_spriteindexes_3[] = {
 };
 
 
-/* Slope graphics indexes temperate climate 
+/* Slope graphics indexes temperate climate
 Skip first 3 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_0[] = {
  0xfffe,  3,
@@ -148,7 +148,7 @@ static const SpriteID _slopes_spriteindexes_1[] = {
  0xffff,
 };
 
-/* Slope graphics indexes tropical climate 
+/* Slope graphics indexes tropical climate
 Skip first 155 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_2[] = {
  0xfffe,  155,

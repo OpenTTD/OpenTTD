@@ -528,7 +528,7 @@ static void HandleCommandPacket(ClientState *cs, CommandPacket *np)
 		qp = (QueuedCommand*)calloc(sizeof(QueuedCommand), 1);
 	}
 	qp->cp = *np;
-	
+
 	qp->frame = _frame_counter_max - GetNextSyncFrame();
 
 	qp->callback = NULL;

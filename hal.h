@@ -135,7 +135,7 @@ char *FiosBrowseTo(const FiosItem *item);
 // Get descriptive texts.
 // Returns a path as well as a
 //  string describing the path.
-StringID FiosGetDescText(char **path);
+StringID FiosGetDescText(const char **path);
 // Delete a name
 void FiosDelete(const char *name);
 // Make a filename from a name

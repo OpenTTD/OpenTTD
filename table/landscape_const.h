@@ -66,7 +66,7 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 			STR_000E,
 			STR_001F_PAPER,
 			STR_0020_GOLD,
-			STR_001E_FOOD,			
+			STR_001E_FOOD,
 		},
 		/* hilly weights */
 		{

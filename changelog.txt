@@ -5,7 +5,7 @@
 - Feature: improved german town name generator
 - Change: scenarios now have the file extension .scn
 - Fix: removing and upgrading tracks under a bridge when a train is on the bridge
-- Change: default network port from 12345 (known trojan) to 3979 
+- Change: default network port from 12345 (known trojan) to 3979
 - Fix: pause button was not synched in network games
 - Fix: crash caused by invalid screen resolutions
 - Fix: AI can not build tubular bridges in 1950, etc. Same restrictions apply to it, as to human players.
@@ -29,7 +29,7 @@
 - Fix: 80% CPU load paused in fast-forward
 - Feature: Enabled 'remove' button for stations
 - Feature: Cheat GUI (activate with crtl-alt-c) The game remembers if you have used a cheat
-- Fix: Some airport runways were treated 
+- Fix: Some airport runways were treated
 - Fix: minor minimap glitch
 - Fix: station sorting scroll fails with not ennough stations
 - Fix: desert ground for depots in the desert
@@ -58,7 +58,7 @@
 - Fix: allow deleting a bridge if a vehicle is below
 - Fix: crash loading a scenario
 - Fix: build tracks on water
-- Fix: fast forward button pressed with tab 
+- Fix: fast forward button pressed with tab
 - Fix: vehicles don't get old
 - Feature: realistic train reversing
 - Feature: added support for 64 bit CPUs

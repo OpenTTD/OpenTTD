@@ -536,7 +536,7 @@ static const byte _station_display_datas_82[] = {
 	TILE_SEQ_END()
 };
 
-// end of runway 
+// end of runway
 const byte _station_display_datas_083[] = {
 	TILE_SEQ_BEGIN(0xA59)
 	TILE_SEQ_END()
@@ -570,7 +570,7 @@ const byte _station_display_datas_087[] = {
 	TILE_SEQ_END()
 };
 
-// end of runway 
+// end of runway
 const byte _station_display_datas_088[] = {
 	TILE_SEQ_BEGIN(0xA59)
 	TILE_SEQ_LINE(  0,  0,  0, 16,  1,  6, 0x8A68) // fences
@@ -580,7 +580,7 @@ const byte _station_display_datas_088[] = {
 // runway tiles
 const byte _station_display_datas_089[] = {
 	TILE_SEQ_BEGIN(0xA56)
-	TILE_SEQ_LINE(  0,  0,  0, 16,  1,  6, 0x8A68) // fences	
+	TILE_SEQ_LINE(  0,  0,  0, 16,  1,  6, 0x8A68) // fences
 	TILE_SEQ_END()
 };
 
@@ -857,28 +857,28 @@ static const byte * const _station_display_datas[] = {
 	_station_display_datas_087,
 	_station_display_datas_088,
 	_station_display_datas_089,
-	_station_display_datas_090,		
-	_station_display_datas_091,	
-	_station_display_datas_092,	
-	_station_display_datas_093,	
-	_station_display_datas_094,	
-	_station_display_datas_095,	
-	_station_display_datas_096,	
-	_station_display_datas_097,	
-	_station_display_datas_098,	
-	_station_display_datas_099,	
+	_station_display_datas_090,
+	_station_display_datas_091,
+	_station_display_datas_092,
+	_station_display_datas_093,
+	_station_display_datas_094,
+	_station_display_datas_095,
+	_station_display_datas_096,
+	_station_display_datas_097,
+	_station_display_datas_098,
+	_station_display_datas_099,
 	_station_display_datas_0100,
-	_station_display_datas_0101,		
-	_station_display_datas_0102,		
-	_station_display_datas_0103,	
-	_station_display_datas_0104,	
-	_station_display_datas_0105,	
-	_station_display_datas_0106,	
-	_station_display_datas_0107,	
-	_station_display_datas_0108,	
-	_station_display_datas_0109,	
-	_station_display_datas_0110,	
-	_station_display_datas_0111,	
+	_station_display_datas_0101,
+	_station_display_datas_0102,
+	_station_display_datas_0103,
+	_station_display_datas_0104,
+	_station_display_datas_0105,
+	_station_display_datas_0106,
+	_station_display_datas_0107,
+	_station_display_datas_0108,
+	_station_display_datas_0109,
+	_station_display_datas_0110,
+	_station_display_datas_0111,
 	_station_display_datas_0112,
 	_station_display_datas_0113,
   _station_display_datas_0114,

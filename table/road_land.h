@@ -43,7 +43,7 @@ static const SpriteID _road_tile_sprites_1[16] = {
 
 
 
-#define MAKELINE(a,b,c) ADD_WORD(a), b, c, 
+#define MAKELINE(a,b,c) ADD_WORD(a), b, c,
 static const byte _road_display_datas2_0[] = {
 	0,0
 };

@@ -43,7 +43,7 @@ typedef struct LineName {
 	struct LineName *hash_next;
 	int value;
 	char str[1];
-} LineName; 
+} LineName;
 
 int _cur_line;
 bool _warnings;
@@ -218,7 +218,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"", EmitSingleByte, 10},
 
 	// Colors
-	{"BLUE", EmitSingleByte, 15},		
+	{"BLUE", EmitSingleByte, 15},
 	{"SILVER", EmitSingleByte, 16},
 	{"GOLD", EmitSingleByte, 17},
 	{"RED", EmitSingleByte, 18},
@@ -235,7 +235,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"GRAY", EmitSingleByte, 29},
 	{"DKBLUE", EmitSingleByte, 30},
 	{"BLACK", EmitSingleByte, 31},
-	
+
 	// 0x7B=123 is the LAST special character we may use.
 
 	// Numbers
@@ -245,12 +245,12 @@ static const CmdStruct _cmd_structs[] = {
 	{"NUMU16", EmitSingleByte, 0x7E},
 
 	{"CURRENCY", EmitSingleByte, 0x7F},
-	
+
 	{"CURRCOMPACT", EmitEscapedByte, 0}, // compact currency
 	{"INT32", EmitEscapedByte, 1}, // compact currency
 	{"REV", EmitEscapedByte, 2}, // openttd revision string
 	{"SHORTCARGO", EmitEscapedByte, 3}, // short cargo description, only ### tons, or ### litres
-	
+
 	{"STRINL", EmitStringInl, 0x81},
 
 	{"DATE_LONG", EmitSingleByte, 0x82},
@@ -388,7 +388,7 @@ bool check_commands_match(char *a, char *b)
 void handle_string(char *str, bool master) {
 	char *s,*t,*r;
 	int ent;
-		
+
 	if (*str == '#') {
 		if (str[1] == '#' && str[2] != '#')
 			handle_pragma(str + 2);
@@ -471,7 +471,7 @@ uint32 my_hash_str(uint32 hash, const char *s)
 		if (hash & 1) hash = (hash>>1) ^ 0xDEADBEEF; else hash >>= 1;
 	}
 	return hash;
-	
+
 }
 
 void parse_file(const char *file, bool english) {
@@ -481,7 +481,7 @@ void parse_file(const char *file, bool english) {
 
 	in = fopen(file, "r");
 	if (in == NULL) { error("Cannot open file '%s'", file); }
-	
+
 	_cur_line = 1;
 	while (fgets(buf, sizeof(buf),in) != NULL) {
 		i = strlen(buf);
@@ -512,7 +512,7 @@ void parse_file(const char *file, bool english) {
 						if (hash & 1) hash = (hash>>1) ^ 0xF00BAA4; else hash >>= 1;
 					}
 				}
-			}	
+			}
 		}
 		_hash = hash;
 	}
@@ -579,7 +579,7 @@ void gen_output(FILE *f) {
 		for(j=0; j!=in_use[i]; j++) {
 			char *s = allstr[(i<<11)+j];
 			if (s == NULL) error("Internal error, s==NULL");
-			
+
 			write_length(f, *(uint16*)s);
 			fwrite(s + sizeof(uint16), *(uint16*)s , 1, f);
 			tot_str--;
@@ -642,7 +642,7 @@ void write_strings_h(const char *filename)
 				lastgrp = (i >> 11);
 				fprintf(out, "};\n\nenum {");
 			}
-			
+
 			fprintf(out, next == i ? "%s,\n" : "\n%s = 0x%X,\n", allstr[i] + 1, i);
 			next = i + 1;
 		}
@@ -650,7 +650,7 @@ void write_strings_h(const char *filename)
 
 	fprintf(out, "};\n");
 
-	fprintf(out, 
+	fprintf(out,
 		"\nenum {\n"
 		"\tLANGUAGE_PACK_IDENT = 0x474E414C, // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
 		"\tLANGUAGE_PACK_VERSION = 0x%X,\n"
@@ -690,7 +690,7 @@ void write_langfile(const char *filename, int show_todo)
 		hdr.offsets[i] = TO_LE16(n);
 	}
 
-	// see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...) 
+	// see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...)
 	hdr.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
 	hdr.version = TO_LE32(_hash);
 	strcpy(hdr.name, _lang_name);
@@ -712,7 +712,7 @@ void write_langfile(const char *filename, int show_todo)
 					if (show_todo == 2) {
 						fprintf(stderr, "Warning:%s: String '%s' is untranslated\n", filename, s + 1);
 					} else {
-						char *s = "<TODO> ";
+						const char *s = "<TODO> ";
 						while(*s) put_byte(*s++);
 					}
 				}
@@ -769,10 +769,10 @@ int main(int argc, char* argv[])
 		if (_warnings) return 1;
 
 		// write english.lng and strings.h
-		
+
 		write_langfile("lang/english.lng", 0);
 		write_strings_h("table/strings.h");
-		
+
 	} else if (argc == 2) {
 		parse_file("lang/english.txt", true);
 		parse_file(argv[1], false);

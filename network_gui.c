@@ -144,7 +144,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			NetworkGameListFromInternet();
 			break;
 		}
-		
+
 		_network_game_count_last = _network_game_count;
 		SetWindowDirty(w);
 
@@ -179,7 +179,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			rport = _network_server_port;
 			c = 0;
 			ip = b;
-			
+
 			while (b[c] != 0) {
 				if (((char)b[c]) == '#') {
 					player = &b[c+1];

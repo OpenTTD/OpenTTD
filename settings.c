@@ -325,9 +325,9 @@ static void ini_free(IniFile *ini)
 struct SettingDesc {
 	const char *name;
 	int flags;
-	void *def;
+	const void *def;
 	void *ptr;
-	void *b;
+	const void *b;
 
 };
 
@@ -493,7 +493,7 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 	*buf = 0;
 }
 
-static void *string_to_val(const SettingDesc *desc, const char *str)
+static const void *string_to_val(const SettingDesc *desc, const char *str)
 {
 	unsigned long val;
 	char *end;
@@ -532,11 +532,11 @@ static void *string_to_val(const SettingDesc *desc, const char *str)
 	return NULL;
 }
 
-static void load_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpname, void *base)
+static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void *grpname, void *base)
 {
 	IniGroup *group_def = ini_getgroup(ini, grpname, -1), *group;
 	IniItem *item;
-	void *p;
+	const void *p;
 	void *ptr;
 
 	for (;desc->name;desc++) {
@@ -603,11 +603,12 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpna
 	}
 }
 
-static void save_setting_desc(IniFile *ini, const SettingDesc *desc, void *grpname, void *base)
+static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void *grpname, void *base)
 {
 	IniGroup *group_def = NULL, *group;
 	IniItem *item;
-	void *p, *ptr;
+	const void *p;
+	void *ptr;
 	int i = 0;
 	char buf[512]; // setting buffer
 	const char *s;
@@ -883,7 +884,7 @@ static const SettingDesc patch_settings[] = {
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
 
-typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, void *grpname, void *base);
+typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const void *grpname, void *base);
 
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 {

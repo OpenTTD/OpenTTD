@@ -84,11 +84,11 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		ormod = PLAYER_SPRITE_COLOR(_map_owner[ti->tile]);
 
 		t = _unmovable_display_datas[ti->map5 & 0x7F];
-		DrawGroundSprite(*(uint16*)t | ormod);
+		DrawGroundSprite(*(const uint16*)t | ormod);
 
 		t += sizeof(uint16);
 
-		for(dtss = (DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
+		for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
 			image =	dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
 				image |= ormod;

@@ -1741,7 +1741,7 @@ char *FiosBrowseTo(const FiosItem *item)
 // Get descriptive texts.
 // Returns a path as well as a
 //  string describing the path.
-StringID FiosGetDescText(char **path)
+StringID FiosGetDescText(const char **path)
 {
 	char root[4];
 	DWORD spc, bps, nfc, tnc;
@@ -1812,7 +1812,7 @@ bool FileExists(const char *filename)
 
 static int CDECL LanguageCompareFunc(const void *a, const void *b)
 {
-	return strcmp(*(char**)a, *(char**)b);
+	return strcmp(*(const char* const *)a, *(const char* const *)b);
 }
 
 int GetLanguageList(char **languages, int max)

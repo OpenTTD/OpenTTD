@@ -25,15 +25,15 @@ enum {
 
 // Finite sTate mAchine --> FTA
 typedef struct AirportFTAClass {
-	byte nofelements;						// number of positions the airport consists of
-	byte nofterminals;					// number of terminals this airport has
-	byte nofterminalgroups;			// terminals belong to so many groups (MAX is the nofterminals)
-	byte nofhelipads;						// number of helipads this airport has
-	byte nofhelipadgroups;			// helipads belong to so many groups (MAX is the nofhelipads)
-	byte entry_point;						// when an airplane arrives at this airport, enter it at position entry_point
-	byte acc_planes;						// accept airplanes or helicopters or both
-	uint16 *airport_depots;			// gives the position of the depots on the airports
-	struct AirportFTA *layout;	// state machine for airport
+	byte nofelements;							// number of positions the airport consists of
+	byte nofterminals;						// number of terminals this airport has
+	byte nofterminalgroups;				// terminals belong to so many groups (MAX is the nofterminals)
+	byte nofhelipads;							// number of helipads this airport has
+	byte nofhelipadgroups;				// helipads belong to so many groups (MAX is the nofhelipads)
+	byte entry_point;							// when an airplane arrives at this airport, enter it at position entry_point
+	byte acc_planes;							// accept airplanes or helicopters or both
+	const uint16 *airport_depots;	// gives the position of the depots on the airports
+	struct AirportFTA *layout;		// state machine for airport
 } AirportFTAClass;
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA

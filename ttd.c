@@ -279,10 +279,10 @@ void LoadDriver(int driver, const char *name)
 			error("No such %s driver: %s\n", dc->name, buffer);
 	}
 	var = dc->var;
-	if (*var != NULL) ((HalCommonDriver*)*var)->stop();
+	if (*var != NULL) ((const HalCommonDriver*)*var)->stop();
 	*var = NULL;
 	drv = dd->drv;
-	if ((err=((HalCommonDriver*)drv)->start(parms)) != NULL)
+	if ((err=((const HalCommonDriver*)drv)->start(parms)) != NULL)
 		error("Unable to load driver %s(%s). The error was: %s\n", dd->name, dd->longname, err);
 	*var = drv;
 }

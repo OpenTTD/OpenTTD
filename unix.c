@@ -279,7 +279,7 @@ char *FiosBrowseTo(const FiosItem *item)
 // Get descriptive texts.
 // Returns a path as well as a
 //  string describing the path.
-StringID FiosGetDescText(char **path)
+StringID FiosGetDescText(const char **path)
 {
 	*path = _fios_path[0] ? _fios_path : "/";
 
@@ -360,7 +360,7 @@ bool FileExists(const char *filename)
 
 static int LanguageCompareFunc(const void *a, const void *b)
 {
-	return strcmp(*(char**)a, *(char**)b);
+	return strcmp(*(const char* const *)a, *(const char* const *)b);
 }
 
 int GetLanguageList(char **languages, int max)

@@ -203,18 +203,18 @@ static INLINE void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 
 
 #if defined(TTD_LITTLE_ENDIAN)
-#	define READ_LE_UINT16(b) (*(uint16*)(b))
+#	define READ_LE_UINT16(b) (*(const uint16*)(b))
 #	define ADD_WORD(x) (x)&0xFF, ((x) >> 8)&0xFF
 #	define ADD_DWORD(x) (x)&0xFF, ((x) >> 8)&0xFF, ((x) >> 16)&0xFF, ((x) >> 24)&0xFF
 #elif defined(TTD_BIG_ENDIAN)
 	static INLINE uint16 READ_LE_UINT16(const void *b) {
-		return ((byte*)b)[0] + (((byte*)b)[1] << 8);
+		return ((const byte*)b)[0] + (((const byte*)b)[1] << 8);
 	}
 #	define ADD_WORD(x) ((x) >> 8)&0xFF, (x)&0xFF
 #	define ADD_DWORD(x) ((x) >> 24)&0xFF, ((x) >> 16)&0xFF, ((x) >> 8)&0xFF,  (x)&0xFF
 #endif
 
-static INLINE void WRITE_LE_UINT16(const void *b, uint16 x) {
+static INLINE void WRITE_LE_UINT16(void *b, uint16 x) {
 	((byte*)b)[0] = (byte)x;
 	((byte*)b)[1] = (byte)(x >> 8);
 }

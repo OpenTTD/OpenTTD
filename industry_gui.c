@@ -392,8 +392,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	char buf1[96];
 	byte val;
-	Industry *i = DEREF_INDUSTRY(*(byte*)a);
-	Industry *j = DEREF_INDUSTRY(*(byte*)b);
+	Industry *i = DEREF_INDUSTRY(*(const byte*)a);
+	Industry *j = DEREF_INDUSTRY(*(const byte*)b);
 	int r = 0;
 
 	switch (_industry_sort_order >> 1) {
@@ -437,7 +437,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		SET_DPARAM32(0, i->town->townnameparts);
 		GetString(buf1, i->town->townnametype);
 
-		if ( (val=*(byte*)b) != _last_industry_idx) {
+		if ( (val=*(const byte*)b) != _last_industry_idx) {
 			_last_industry_idx = val;
 			SET_DPARAM32(0, j->town->townnameparts);
 			GetString(_bufcache, j->town->townnametype);

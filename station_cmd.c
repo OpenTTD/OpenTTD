@@ -1743,13 +1743,13 @@ static void DrawTile_Station(TileInfo *ti)
 
 	t = _station_display_datas[ti->map5];
 
-	image = *(uint32*)t;
+	image = *(const uint32*)t;
 	t += sizeof(uint32);
 	if (image & 0x8000)
 		image |= image_or_modificator;
 	DrawGroundSprite(image + base_img);
 
-	for(dtss = (DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
+	for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
 		if ((byte)dtss->delta_z != 0x80) {
 			image =	dtss->image + base_img;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
@@ -1760,7 +1760,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 			AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y, dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
 		} else {
-			image = *(uint32*)&dtss->height + base_img; /* endian ok */
+			image = *(const uint32*)&dtss->height + base_img; /* endian ok */
 
 			if (_display_opt & DO_TRANS_BUILDINGS) {
 				if (image&0x8000) image |= image_or_modificator;
@@ -1785,13 +1785,13 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image)
 
 	t = _station_display_datas[image];
 
-	img = *(uint32*)t;
+	img = *(const uint32*)t;
 	t += sizeof(uint32);
 	if (img & 0x8000)
 		img |= ormod;
 	DrawSprite(img, x, y);
 
-	for(dtss = (DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
+	for(dtss = (const DrawTileSeqStruct *)t; (byte)dtss->delta_x != 0x80; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		DrawSprite((dtss->image | ormod) + railtype, x + pt.x, y + pt.y);
 	}
