@@ -1259,10 +1259,10 @@ static const int8 _multi_terraform_coords[][2] = {
 
 static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 {
-	// XXX: show different tooltips in desert mode
 	switch(e->event) {
 	case WE_PAINT:
-		// XXX: only show reset button when nothing was built
+		// XXX - lighthouse button is widget 11!! Don't forget when changing
+		w->widget[11].tooltips = (_opt.landscape == LT_DESERT) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE; 
 		DrawWindowWidgets(w);
 
 		{
