@@ -43,6 +43,13 @@ static Station *GetStationAround(uint tile, int w, int h, int closest_station)
 		if (IS_TILETYPE(tile_cur, MP_STATION)) {
 			int t;
 			t = _map2[tile_cur];
+			{
+				Station *st = DEREF_STATION(t);
+				// you cannot take control of an oilrig!!
+				if (st->airport_type == AT_OILRIG && st->facilities == (FACIL_AIRPORT|FACIL_DOCK))
+					continue;
+			}
+
 			if (closest_station == -1) {
 				closest_station = t;
 			} else if (closest_station != t) {
@@ -538,16 +545,8 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 static void DeleteStationIfEmpty(Station *st) {
 	if (st->facilities == 0) {
 		st->delete_ctr = 0;
-	}
-
-	// if a station next to an oilrig is removed, fix ownership
-	if (st->airport_type == AT_OILRIG && st->facilities == (FACIL_AIRPORT|FACIL_DOCK) ) {
-		_station_sort_dirty = true;
 		InvalidateWindow(WC_STATION_LIST, st->owner);
-		st->owner = 0x10;
 	}
-
-	InvalidateWindow(WC_STATION_LIST, st->owner);
 }
 
 // Tries to clear the given area. Returns the cost in case of success.
@@ -657,7 +656,7 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 			return false;
 	}
 	// make sure the final size is not too big.
-	if (curw > 15 || curh > 15) return false;
+	if (curw > _patches.station_spread || curh > _patches.station_spread) return false;
 
 	// now tile contains the new value for st->train_tile
 	// curw, curh contain the new value for width and height
