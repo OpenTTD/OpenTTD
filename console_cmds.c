@@ -631,7 +631,7 @@ DEF_CONSOLE_CMD(ConSet) {
 			if (strncmp(argv[2], "*", 20) == 0) {
 				_network_player_info[_local_player].password[0] = '\0';
 			} else {
-				strncpy(_network_player_info[_local_player].password, argv[1], 20);
+				strncpy(_network_player_info[_local_player].password, argv[2], 20);
 			}
 			if (!_network_server)
 				SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
