@@ -446,7 +446,6 @@ Queue* new_BinaryHeap(uint max_size) {
 void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets) {
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
-	uint max_hash;
 	assert(h);
 	#ifdef HASH_DEBUG
 	debug("Allocated hash: %p", h);
@@ -509,7 +508,7 @@ void stat_Hash(Hash* h)
 	uint max_collision = 0;
 	uint max_usage = 0;
 	uint usage[200];
-	uint i,j;
+	uint i;
 	uint collision;
 	HashNode* node;
 
@@ -534,9 +533,12 @@ void stat_Hash(Hash* h)
 	for (i=0;i<=max_collision;i++)
 		if (usage[i]) {
 			printf("%d:%d ", i, usage[i]);
-			/*if (i>0)
+/*
+ 			if (i>0){
+				uint j;
 				for (j=0;j<(usage[i] * 160 / 800);j++)
 					printf("#");
+			}
 			printf("\n");
 			*/
 		}
