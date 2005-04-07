@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolish
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Raise a corner of land
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scrolls list up/down
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - scrolls list left/right
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Show land contours on map
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Show vehicles on map
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Show industries on map
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}New veh
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes to cargo acceptance
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
+STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (on/off/summary)
+STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarized newsmessages
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...too far from previous destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Company League Table in {NUMU16}
@@ -767,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screensho
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}On
 STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Display subsidies
 STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world
