@@ -2008,8 +2008,8 @@ static const Widget _toolb_scen_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,    96,   225,     0,    21, 0x0,					STR_NULL},
 
 {      WWT_PANEL,   RESIZE_NONE,    14,   233,   362,     0,    21, 0x0,					STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   236,   246,     5,    16, STR_0225,		STR_029E_MOVE_THE_STARTING_DATE},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   347,   357,     5,    16, STR_0224,		STR_029F_MOVE_THE_STARTING_DATE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   236,   247,     5,    16, SPR_ARROW_DOWN,	STR_029E_MOVE_THE_STARTING_DATE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   347,   358,     5,    16, SPR_ARROW_UP,   STR_029F_MOVE_THE_STARTING_DATE},
 
 {      WWT_PANEL,   RESIZE_NONE,    14,   371,   392,     0,    21, 0x2C4,				STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},
 

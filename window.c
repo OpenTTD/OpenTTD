@@ -1005,6 +1005,7 @@ static bool HandleWindowDragging(void)
 			/* Stop the sizing if the left mouse button was released */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_SIZING;
+				SetWindowDirty(w);
 				break;
 			}
 
@@ -1111,6 +1112,7 @@ Window *StartWindowSizing(Window *w)
 
 	w = BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
+	SetWindowDirty(w);
 	return w;
 }
 

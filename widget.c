@@ -175,6 +175,8 @@ void DrawWindowWidgets(Window *w)
 	cur_hidden = w->hidden_state;
 
 	do {
+		bool clicked = (cur_click & 1);
+
 		if (dpi->left > (r.right=/*w->left + */wi->right) ||
 		    dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
 				dpi->top > (r.bottom=/*w->top +*/ wi->bottom) ||
@@ -182,34 +184,34 @@ void DrawWindowWidgets(Window *w)
 				(cur_hidden&1))
 					continue;
 
-		switch(wi->type&WWT_MASK) {
-		case WWT_PANEL:
+		switch (wi->type & WWT_MASK) {
+		case WWT_PANEL: /* WWT_IMGBTN */
 		case WWT_PANEL_2: {
 			int img;
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color,
-				(cur_click & 1) ? 0x20 : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
 
-			if ((img=wi->unkA) != 0) {
-				if ((wi->type&WWT_MASK) == WWT_PANEL_2 && (cur_click&1)) img++;
-				DrawSprite(img, r.left+1, r.top+1);
+			if ((img = wi->unkA) != 0) { // has an image
+				if ((wi->type & WWT_MASK) == WWT_PANEL_2 && clicked) img++; // show diff image when clicked
+
+				DrawSprite(img, r.left + 1 + clicked, r.top + 1 + clicked);
 			}
 			goto draw_default;
 		}
 
-		case WWT_CLOSEBOX:
+		case WWT_CLOSEBOX: /* WWT_TEXTBTN */
 		case WWT_4: {
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color,
-					(cur_click & 1) ? 0x20 : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
 			}
 		/* fall through */
 
 		case WWT_5: {
 			StringID str = wi->unkA;
 
-			if ((wi->type&WWT_MASK) == WWT_4 && (cur_click&1)) str++;
+			if ((wi->type&WWT_MASK) == WWT_4 && clicked) str++;
 
-			DrawStringCentered((r.left + r.right+1)>>1, ((r.top+r.bottom + 1)>>1) - 5, str, 0);
+			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, 0);
+			//DrawStringCentered((r.left + r.right+1)>>1, ((r.top+r.bottom + 1)>>1) - 5, str, 0);
 			goto restore_dparam;
 		}
 
@@ -229,8 +231,7 @@ void DrawWindowWidgets(Window *w)
 			int x, amt1, amt2;
 			int color;
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color,
-					(cur_click & 1) ? 0x20 : 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
 
 			c = (wi->unkA&0xFF);
 			amt1 = (wi->right - wi->left + 1) / c;
@@ -277,12 +278,13 @@ void DrawWindowWidgets(Window *w)
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			// draw up/down buttons
-			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP ? 0x20 : 0);
-			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN ? 0x20 : 0);
+			clicked = !!((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? 0x20 : 0);
+			DoDrawString("\xA0", r.left + 2 + clicked, r.top + clicked, 0x10);
 
-			// draw icons in up/down buttons
-			DoDrawString("\xA0", r.left+2, r.top, 0x10);
-			DoDrawString("\xAA", r.left+2, r.bottom-9, 0x10);
+			clicked = !!(((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
+			DoDrawString("\xAA", r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;
@@ -308,12 +310,13 @@ void DrawWindowWidgets(Window *w)
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			// draw up/down buttons
-			DrawFrameRect(r.left, r.top, r.right, r.top+9, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2) ? 0x20 : 0);
-			DrawFrameRect(r.left, r.bottom-9, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2) ? 0x20 : 0);
+			clicked = !!((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
+			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? 0x20 : 0);
+			DoDrawString("\xA0", r.left + 2 + clicked, r.top + clicked, 0x10);
 
-			// draw icons in up/down buttons
-			DoDrawString("\xA0", r.left+2, r.top, 0x10);
-			DoDrawString("\xAA", r.left+2, r.bottom-9, 0x10);
+			clicked = !!((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
+			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? 0x20 : 0);
+			DoDrawString("\xAA", r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;
@@ -340,12 +343,13 @@ void DrawWindowWidgets(Window *w)
 
 			assert(r.bottom - r.top == 11); // XXX - to ensure the same sizes are used everywhere!
 
-			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL) ? 0x20 : 0);
-			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL) ? 0x20 : 0);
+			clicked = !!((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
+			DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, wi->color, (clicked) ? 0x20 : 0);
+			DrawSprite(SPR_ARROW_LEFT, r.left + 1 + clicked, r.top + 1 + clicked);
 
-			// draw icons in up/down buttons
-			DrawSprite(SPR_ARROW_LEFT, r.left + 3, r.top + 2);
-			DrawSprite(SPR_ARROW_RIGHT, r.right - 6, r.top + 2);
+			clicked = !!((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
+			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
+			DrawSprite(SPR_ARROW_RIGHT, r.right - 8 + clicked, r.top + 1 + clicked);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;
@@ -402,16 +406,17 @@ void DrawWindowWidgets(Window *w)
 
 		case WWT_STICKYBOX: {
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (cur_click & 1) ? 0x20 : 0);
-			DrawSprite((cur_click & 1) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2, r.top + 3);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
+			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2 + clicked, r.top + 3 + clicked);
 			break;
 		}
 
 		case WWT_RESIZEBOX: {
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
-			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3, r.top + 3);
+			clicked = !!(w->flags4 & WF_SIZING);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? 0x20 : 0);
+			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3 + clicked, r.top + 3 + clicked);
 			break;
 		}
 
