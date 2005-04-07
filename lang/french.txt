@@ -441,9 +441,9 @@ STR_019C_ROAD_VEHICLE                                           :Véhicule routie
 STR_019D_AIRCRAFT                                               :Aéronef
 STR_019E_SHIP                                                   :Navire
 STR_019F_TRAIN                                                  :Train
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} devient désuet
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} devient très désuet
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} devient très désuet et doit être remplacé d'urgence
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} devient vieux
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} devient très vieux
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} devient très vieux et doit être remplacé d'urgence
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Information sur le Terrain
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coût du balayage: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coût du balayage: {LTBLUE}{CURRENCY}
