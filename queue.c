@@ -443,9 +443,10 @@ Queue* new_BinaryHeap(uint max_size) {
  * Hash
  */
 
-void init_Hash(Hash* h, Hash_HashProc* hash, int num_buckets) {
+void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets) {
 	/* Allocate space for the Hash, the buckets and the bucket flags */
-	int i;
+	uint i;
+	uint max_hash;
 	assert(h);
 	#ifdef HASH_DEBUG
 	debug("Allocated hash: %p", h);
@@ -502,10 +503,54 @@ void delete_Hash(Hash* h, bool free_values) {
 		free(h);
 }
 
+void stat_Hash(Hash* h)
+{
+	uint used_buckets = 0;
+	uint max_collision = 0;
+	uint max_usage = 0;
+	uint usage[200];
+	uint i,j;
+	uint collision;
+	HashNode* node;
+
+	for (i=0;i<200;i++) usage[i] = 0;
+	for (i=0;i<h->num_buckets;i++) {
+		collision = 0;
+		if (h->buckets_in_use[i]) {
+			used_buckets++;
+			node = &h->buckets[i];
+			while (node != NULL) {
+				collision++;
+				node = node->next;
+			}
+			if (collision > max_collision) max_collision = collision;
+		}
+		if (collision > 199) collision = 199;
+		usage[collision]++;
+		if (collision >0 && usage[collision] >= max_usage) max_usage = usage[collision];
+	}
+	printf("---\nHash size: %d\nNodes used: %d\nNon empty buckets: %d\nMax collision: %d\n", h->num_buckets, h->size, used_buckets, max_collision);
+	printf("{ ");
+	for (i=0;i<=max_collision;i++)
+		if (usage[i]) {
+			printf("%d:%d ", i, usage[i]);
+			/*if (i>0)
+				for (j=0;j<(usage[i] * 160 / 800);j++)
+					printf("#");
+			printf("\n");
+			*/
+		}
+	printf ("}\n");
+}
+
 void clear_Hash(Hash* h, bool free_values)
 {
 	uint i;
 	HashNode* node;
+#ifdef HASH_STATS
+	if (h->size > 2000)
+		stat_Hash(h);
+#endif
 	/* Iterate all buckets */
 	for (i=0;i<h->num_buckets;i++)
 	{

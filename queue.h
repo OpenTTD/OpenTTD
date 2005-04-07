@@ -4,6 +4,7 @@
 //#define NOFREE
 //#define QUEUE_DEBUG
 //#define HASH_DEBUG
+//#define HASH_STATS
 
 
 typedef struct Queue Queue;
@@ -142,7 +143,8 @@ struct HashNode {
 	void* value;
 	HashNode* next;
 };
-/* Generates a hash code from the given key pair. You should make sure that
+/**
+ * Generates a hash code from the given key pair. You should make sure that
  * the resulting range is clearly defined.
  */
 typedef uint Hash_HashProc(uint key1, uint key2);
@@ -184,7 +186,7 @@ void* Hash_Get(Hash* h, uint key1, uint key2);
 Hash* new_Hash(Hash_HashProc* hash, int num_buckets);
 /* Builds a new hash in an existing struct. Make sure that hash() always
  * returns a hash less than num_buckets! Call delete_hash after use */
-void init_Hash(Hash* h, Hash_HashProc* hash, int num_buckets);
+void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets);
 /*
  * Deletes the hash and cleans up. Only cleans up memory allocated by new_Hash
  * & friends. If free is true, it will call free() on all the values that

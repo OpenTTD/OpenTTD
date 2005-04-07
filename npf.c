@@ -102,7 +102,17 @@ static const uint _trackdir_length[14] = {
 
 uint NTPHash(uint key1, uint key2)
 {
+	/* This function uses the old hash, which is fixed on 10 bits (1024 buckets) */
 	return PATHFIND_HASH_TILE(key1);
+}
+
+uint NPFHash(uint key1, uint key2)
+{
+	/* TODO: think of a better hash? */
+	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
+	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
+	/* The value of 14 below is based on the maximum value of key2 (13) */
+	return ((((part1 << NPF_HASH_HALFBITS) | part2)) + (NPF_HASH_SIZE * key2 / 14)) % NPF_HASH_SIZE;
 }
 
 int32 NPFCalcZero(AyStar* as, AyStarNode* current, OpenListNode* parent) {
@@ -809,7 +819,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 
 void InitializeNPF(void)
 {
-	init_AyStar(&_npf_aystar, NTPHash, 1024);
+	init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
 	_npf_aystar.max_search_nodes = 0;
