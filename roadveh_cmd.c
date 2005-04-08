@@ -229,6 +229,15 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+static inline void ClearSlot(Vehicle *v, RoadStop *rs)
+{
+	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
+	v->u.road.slot = NULL;
+	v->u.road.slot_age = 0;
+	if (rs != NULL)
+		rs->slot[v->u.road.slotindex] = INVALID_SLOT;
+}
+
 //  p1 = vehicle index in GetVehicle()
 //  p2 not used
 int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -253,6 +262,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
+		ClearSlot(v, v->u.road.slot);
 		DeleteVehicle(v);
 	}
 	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
@@ -1176,14 +1186,6 @@ static const byte _road_veh_data_1[] = {
 };
 
 static const byte _roadveh_data_2[4] = { 0,1,8,9 };
-
-static inline void ClearSlot(Vehicle *v, RoadStop *rs)
-{
-	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
-	v->u.road.slot = NULL;
-	v->u.road.slot_age = 0;
-	rs->slot[v->u.road.slotindex] = INVALID_SLOT;
-}
 
 static void RoadVehController(Vehicle *v)
 {

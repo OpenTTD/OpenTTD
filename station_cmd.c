@@ -2418,6 +2418,30 @@ void DeleteAllPlayerStations(void)
 	}
 }
 
+static void CheckOrphanedSlots(const Station *st, RoadStopType rst)
+{
+	RoadStop *rs;
+	int k;
+
+	for (rs = GetPrimaryRoadStop(st, rst); rs != NULL; rs = rs->next) {
+		for (k = 0; k < NUM_SLOTS; k++) {
+			if (rs->slot[k] != INVALID_SLOT) {
+				Vehicle *v = GetVehicle(rs->slot[k]);
+
+				assert(v->type == VEH_Road);
+				if (v->u.road.slot != rs) {
+					DEBUG(ms, 1) ("Multistop: %s slot desync between stop at 0x%X of station %d "
+						"and Vehicle %d at going to 0x%X! (don't panic)", (v->cargo_type == CT_PASSENGERS) ? "Bus" : "Truck",
+						rs->xy, st->index, v->unitnumber, v->dest_tile);
+					v->u.road.slot = NULL;
+					v->u.road.slot_age = 0;
+					rs->slot[k] = INVALID_SLOT;
+				}
+			}
+		}
+	}
+}
+
 /* this function is called for one station each tick */
 static void StationHandleBigTick(Station *st)
 {
@@ -2428,52 +2452,9 @@ static void StationHandleBigTick(Station *st)
 			DeleteStation(st);
 	}
 
-	//Here we saveguard against orphaned slots
-	{
-		RoadStop *rs;
-
-		for (rs = GetPrimaryRoadStop(st, RS_BUS); rs != NULL; rs = rs->next) {
-			int k;
-			for (k = 0; k < NUM_SLOTS; k++) {
-				if (rs->slot[k] != INVALID_SLOT) {
-					Vehicle *v = GetVehicle(rs->slot[k]);
-
-					if (v->u.road.slot != rs) {
-						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "
-							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "
-							"going to 0x%x! "
-							"cleaning up (Don't panic)",
-							rs->xy, st->index, st->xy, v->unitnumber, v->tile,
-							v->dest_tile);
-						v->u.road.slot = NULL;
-						v->u.road.slot_age = 0;
-						rs->slot[k] = INVALID_SLOT;
-					}
-				}
-			}
-		}
-
-		for (rs = GetPrimaryRoadStop(st, RS_TRUCK); rs != NULL; rs = rs->next) {
-			int k;
-			for (k = 0; k < NUM_SLOTS; k++) {
-				if (rs->slot[k] != INVALID_SLOT) {
-					Vehicle *v = GetVehicle(rs->slot[k]);
-
-					if (v->u.road.slot != rs) {
-						DEBUG(ms, 1) ("Multistop: Truck Slot Desync between stop at "
-							"0x%x of station %d (at 0x%x) and Vehicle %d at 0x%x, "
-							"going to 0x%x! "
-							"cleaning up (Don't panic)",
-							rs->xy, st->index, st->xy, v->unitnumber, v->tile,
-							v->dest_tile);
-						v->u.road.slot = NULL;
-						v->u.road.slot_age = 0;
-						rs->slot[k] = INVALID_SLOT;
-					}
-				}
-			}
-		}
-	}
+	// Here we saveguard against orphaned slots
+	CheckOrphanedSlots(st, RS_BUS);
+	CheckOrphanedSlots(st, RS_TRUCK);
 }
 
 static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }
