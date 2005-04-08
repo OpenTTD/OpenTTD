@@ -1428,7 +1428,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				{
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
 				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine_type);
-				byte capacity = rvi->capacity;
+				byte capacity = rvi2->capacity;
 				Vehicle *first = GetFirstVehicleInChain(v);
 
 				//if (v->owner == _local_player) InvalidateWindowClasses(WC_TRAINS_LIST);
