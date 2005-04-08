@@ -477,6 +477,7 @@ static void RoadVehDelete(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
+	ClearSlot(v, v->u.road.slot);
 	DeleteVehicle(v);
 }
 
