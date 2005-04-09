@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tárgyak 
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Egy pont lesüllyesztése
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Egy pont megemelése
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Görgetõsáv - fel/le görgeti a listát
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Görgetõsáv - jobbra/balra görgeti a listát
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Domborzat mutatása a térképen
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Jármûvek mutatása a térképen
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Gazdasági épületek mutatása a térképen
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járm
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Áruk elfogadásának változásai
 STR_020E_SUBSIDIES                                              :{YELLOW}Támogatások
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Általános információk
+STR_MESSAGES_ALL                                                :{YELLOW}Összes üzenettípus beállítása (be/ki/rövid)
+STR_MESSAGE_SOUND                                               :{YELLOW}Figyelmeztetõ hang lejátszása rövid üzenetnél
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...túl távol van az elõzõ céltól
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUMU16}{}({STRING} Szintet)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Cégdicsõség tábla {NUMU16}

@@ -694,6 +694,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área deserta
+STR_CREATE_LAKE                                                 :{BLACK}Defina a àrea de água; as imediações serão inundadas se colocada ao nível do mar
 STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Guardar cenário

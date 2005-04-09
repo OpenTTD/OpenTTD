@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Niszczen
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Obnizenie naroznika terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Wywyzszenie naroznika terenu
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Pasek przesuwu - przesuwa liste gora/dol
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Pasek przewijania - przewija liste prawo/lewo
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Pokaz zarysy ladu na mapie
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Pokaz pojazdy na mapie
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Pokaz przedsiebiorstwa na mapie
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nowe po
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zamiany w akceptowaniu ladunku
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsydia
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Ogolne informacje
+STR_MESSAGES_ALL                                                :{YELLOW}Ustawienia dla wszystkich typow wiadomosci(wla/wyl/sumarycznie)
+STR_MESSAGE_SOUND                                               :{YELLOW}Graj dzwieki przy sumarycznych wiadomosciach
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...zbyt daleko od poprzedniego celu
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Czolowka firm ktora osiagnela poziom {NUMU16}{}({STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela Ligi Firm w {NUMU16}

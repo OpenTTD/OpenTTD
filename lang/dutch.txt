@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Sloop ge
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Verlaag een hoek van het land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Verhoog een hoek van het land
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbalk - scroll door de lijst
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Schuifbalk - verschuift de lijst naar links/rechts
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Toon landcontouren op de kaart
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Toon voertuigen op de kaart
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Toon industrieën op de kaart
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nieuwe 
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Verandering geaccepteerde goederen
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Algemene informatie
+STR_MESSAGES_ALL                                                :{YELLOW}Instelling voor alle berichttypes (aan/uit/samenvatting)
+STR_MESSAGE_SOUND                                               :{YELLOW}Speel een geluid af voor samengevatte nieuwsberichten
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...te ver van vorige bestemming
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top bedrijven die {NUMU16} bereikt hebben{}({STRING} Niveau)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Bedrijfswedstrijdtabel in {NUMU16}

@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv ned 
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sänk ett hörn av marken
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Höj upp ett hörn av marken
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scrolla listan upp/ned
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Rullningslist - rullar listan höger/vänster
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Visa markkonturer på kartan
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Visa fordon på kartan
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Visa industrier på kartan
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nya for
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ändringar i godsacceptans
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventioner
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generell information
+STR_MESSAGES_ALL                                                :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
+STR_MESSAGE_SOUND                                               :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...för långt från föregående destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Company League Table in {NUMU16}

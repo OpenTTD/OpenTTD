@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolici
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rebaixar una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar una cantonada del terreny
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de desplaçament - desplaça la llista amunt/avall
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra de desplaçament - desplaça la llista dreta/esquerra
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Mostrar els limits de terreny en el mapa
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Mostrar els vehicles en el mapa
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostrar les indústries en el mapa
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Aparici
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Canvis en admisió de càrrega
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencions
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informació General
+STR_MESSAGES_ALL                                                :{YELLOW}Adjust per tots els tipus de missatge (actiu/inactiu/resum)
+STR_MESSAGE_SOUND                                               :{YELLOW}Emetre so per als nous missatges resumits
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...massa lluny del destí previ
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Principals Empreses en asolir el Nivell {NUMU16}{}({STRING} )
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Taula de Lliga d'Empreses a {NUMU16}

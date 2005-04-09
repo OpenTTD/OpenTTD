@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoleaz
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Scade altitudinea unui vârf de teren
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Mãreste altitudinea unui vârf de teren
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Bara de defilare - defileazã în listã sus/jos
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Bara de defilare - stanga/dreapta
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Aratã relieful pe hartã
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Aratã vehiculele pe hartã
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Aratã industriile pe hartã
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicul
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbãri ale acceptãrii mãrfurilor
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventii
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informatii generale
+STR_MESSAGES_ALL                                                :{YELLOW}Setare pentru tipurile de mesaje (da/nu/rezumat)
+STR_MESSAGE_SOUND                                               :{YELLOW}Sunet pentru mesajele-stiri
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...prea departe de destinatia precedentã
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Primele companii care au atins {NUMU16}{}(Nivelul {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Clasamentul companiilor in {NUMU16}
