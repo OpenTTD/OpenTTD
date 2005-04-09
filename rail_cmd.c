@@ -374,7 +374,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 			cost += ret;
 
 			ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (ret & CMD_ERROR) return ret;
+			if (ret == CMD_ERROR) return ret;
 			cost += ret;
 
 			if (flags & DC_EXEC) {
