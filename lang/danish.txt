@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}nedriver
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen op/ned
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - flytter listen mod venstre/højre
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis land konturer på kortet
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis køretøjer på kortet
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industrier på kortet
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kør
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
 STR_020E_SUBSIDIES                                              :{YELLOW}Special aftaler
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
+STR_MESSAGES_ALL                                                :{YELLOW}Opsætning for all beskeder (on/off/refereret)
+STR_MESSAGE_SOUND                                               :{YELLOW}Afspil lyd for refererede nyheder
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt fra forrige destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Bedste virksomheder, som har nået {NUMU16}{}({STRING} Niveau)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Selskabsoversigt i {NUMU16}
@@ -694,6 +697,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer k
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde
+STR_CREATE_LAKE                                                 :{BLACK}Markere et område til at være vand, som vil oversvømme omgivelserne hvis det er ved havoverfladen
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
 STR_0292_SAVE_SCENARIO                                          :Gem scenarie
