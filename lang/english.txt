@@ -770,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screensho
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Off
 STR_02DA_ON                                                     :{BLACK}On
+STR_02DB_OFF                                                    :{BLACK}Off
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Display subsidies
 STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world
