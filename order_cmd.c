@@ -7,6 +7,7 @@
 #include "player.h"
 #include "news.h"
 #include "saveload.h"
+#include "debug.h"
 
 enum {
 	/* Max orders: 64000 (64 * 1000) */
