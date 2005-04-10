@@ -2426,15 +2426,12 @@ static void CheckOrphanedSlots(const Station *st, RoadStopType rst)
 	for (rs = GetPrimaryRoadStop(st, rst); rs != NULL; rs = rs->next) {
 		for (k = 0; k < NUM_SLOTS; k++) {
 			if (rs->slot[k] != INVALID_SLOT) {
-				Vehicle *v = GetVehicle(rs->slot[k]);
+				const Vehicle *v = GetVehicle(rs->slot[k]);
 
-				assert(v->type == VEH_Road);
-				if (v->u.road.slot != rs) {
-					DEBUG(ms, 1) ("Multistop: %s slot desync between stop at 0x%X of station %d "
-						"and Vehicle %d at going to 0x%X! (don't panic)", (v->cargo_type == CT_PASSENGERS) ? "Bus" : "Truck",
-						rs->xy, st->index, v->unitnumber, v->dest_tile);
-					v->u.road.slot = NULL;
-					v->u.road.slot_age = 0;
+				if (v->type != VEH_Road || v->u.road.slot != rs) {
+					DEBUG(ms, 0) (
+						"Multistop: Orphaned %s slot at 0x%X of station %d (don't panic)",
+						(rst == RS_BUS) ? "bus" : "truck", rs->xy, st->index);
 					rs->slot[k] = INVALID_SLOT;
 				}
 			}
