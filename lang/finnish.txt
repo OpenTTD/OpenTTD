@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tuhoa ra
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Madalla maanurkkausta
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Korota maanurkkausta
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Vierityspalkki - vierittää luetteloa ylös/alas
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Vierityspalkki - vierittää listaa vasemmalle/oikealle
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Näytä korkeuskäyrät kartalla
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Näytä ajoneuvot kartalla
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Näytä teollisuuus kartalla
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Uudet a
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Rahdin vastaanottamisen muutokset
 STR_020E_SUBSIDIES                                              :{YELLOW}Alennukset
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Yleistä tietoa
+STR_MESSAGES_ALL                                                :{YELLOW}Asetukset viestityypeille (päällä/pois/tiivistelmä)
+STR_MESSAGE_SOUND                                               :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...liian kaukana edellisestä määränpäästä
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUMU16}{}(taso: {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUMU16}

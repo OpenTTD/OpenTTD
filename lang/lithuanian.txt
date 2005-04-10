@@ -522,13 +522,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Takelis{SETX 88}Pavadinimas
 STR_01E9_SHUFFLE                                                :{TINYFONT}Atsitiktinis
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muzikos programos pasirinkimas
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16}
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Takelio numeris
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Isvalyti
@@ -564,6 +564,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Naujas 
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Prekiu supirkimo stotelese pokycius
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidijas
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Bendraja informacija
+STR_MESSAGES_ALL                                                :{YELLOW}Pranesimu nustatymai (ijungta/isjungta/santrauka)
+STR_MESSAGE_SOUND                                               :{YELLOW}Groti garsus pasirodzius naujienu santraukoms
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...per toli nuo pries tai buvusio keliones tikslo
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Geriausios kompanijos, kurios pasieke {NUMU16}{}({STRING} lygi)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Kompaniju Lygos lentele {NUMU16}
