@@ -362,9 +362,11 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 				v->u.rail.days_since_order_progr = 0;
 
 			if (v->type == VEH_Road && v->u.road.slot != NULL) {
-				//Clear the slot
-				v->u.road.slot->slot[v->u.road.slotindex] = 0;
+				//Clear the slot ClearSlot() of roadveh_cmd.c
+				DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, v->dest_tile);
 				v->u.road.slot = NULL;
+				v->u.road.slot_age = 0;
+				v->u.road.slot->slot[v->u.road.slotindex] = INVALID_SLOT;
 			}
 		}
 
