@@ -229,13 +229,16 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-static inline void ClearSlot(Vehicle *v, RoadStop *rs)
+void ClearSlot(Vehicle *v, RoadStop *rs)
 {
 	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
 	v->u.road.slot = NULL;
 	v->u.road.slot_age = 0;
-	if (rs != NULL)
+	if (rs != NULL) {
+		// check that the slot is indeed assigned to the same vehicle
+		assert(rs->slot[v->u.road.slotindex] == v->index);
 		rs->slot[v->u.road.slotindex] = INVALID_SLOT;
+ }
 }
 
 //  p1 = vehicle index in GetVehicle()

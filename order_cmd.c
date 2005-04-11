@@ -7,7 +7,6 @@
 #include "player.h"
 #include "news.h"
 #include "saveload.h"
-#include "debug.h"
 
 enum {
 	/* Max orders: 64000 (64 * 1000) */
@@ -362,13 +361,8 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 			if (v->type == VEH_Train)
 				v->u.rail.days_since_order_progr = 0;
 
-			if (v->type == VEH_Road && v->u.road.slot != NULL) {
-				//Clear the slot ClearSlot() of roadveh_cmd.c
-				DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, v->dest_tile);
-				v->u.road.slot = NULL;
-				v->u.road.slot_age = 0;
-				v->u.road.slot->slot[v->u.road.slotindex] = INVALID_SLOT;
-			}
+			if (v->type == VEH_Road)
+				ClearSlot(v, v->u.road.slot);
 		}
 
 		/* NON-stop flag is misused to see if a train is in a station that is

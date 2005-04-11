@@ -270,6 +270,7 @@ static inline int GetRoadStopType(TileIndex tile)
 uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
+void ClearSlot(Vehicle *v, RoadStop *rs);
 
 static inline bool IsTrainStationTile(uint tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
