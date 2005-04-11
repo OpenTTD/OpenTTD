@@ -138,35 +138,49 @@ const TileIndexDiffC _tileoffs_by_dir[] = {
 
 uint DistanceManhattan(TileIndex t0, TileIndex t1)
 {
-	return
-		abs(TileX(t0) - TileX(t1)) +
-		abs(TileY(t0) - TileY(t1));
+	const uint dx = abs(TileX(t0) - TileX(t1));
+	const uint dy = abs(TileY(t0) - TileY(t1));
+	return dx + dy;
 }
 
 
 uint DistanceSquare(TileIndex t0, TileIndex t1)
 {
-	const int x = TileX(t0) - TileX(t1);
-	const int y = TileY(t0) - TileY(t1);
-	return x * x + y * y;
+	const int dx = TileX(t0) - TileX(t1);
+	const int dy = TileY(t0) - TileY(t1);
+	return dx * dx + dy * dy;
 }
 
 
 uint DistanceMax(TileIndex t0, TileIndex t1)
 {
-	const uint x = abs(TileX(t0) - TileX(t1));
-	const uint y = abs(TileY(t0) - TileY(t1));
-	return x > y ? x : y;
+	const uint dx = abs(TileX(t0) - TileX(t1));
+	const uint dy = abs(TileY(t0) - TileY(t1));
+	return dx > dy ? dx : dy;
 }
 
 
 uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
 {
-	const uint x = abs(TileX(t0) - TileX(t1));
-	const uint y = abs(TileY(t0) - TileY(t1));
-	return x > y ? 2 * x + y : 2 * y + x;
+	const uint dx = abs(TileX(t0) - TileX(t1));
+	const uint dy = abs(TileY(t0) - TileY(t1));
+	return dx > dy ? 2 * dx + dy : 2 * dy + dx;
 }
 
+uint DistanceTrack(TileIndex t0, TileIndex t1)
+{
+	const uint dx = abs(TileX(t0) - TileX(t1));
+	const uint dy = abs(TileY(t0) - TileY(t1));
+
+	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
+	/* OPTIMISATION:
+	 * Original: diagTracks = max(dx, dy) - min(dx,dy);
+	 * Proof:
+	 * (dx-dy) - straightTracks  == (min + max) - straightTracks = min + // max - 2 * min = max - min */
+	const uint diagTracks = dx + dy - straightTracks; /* The number of diagonal (full tile length) tracks. */
+
+	return diagTracks + straightTracks * STRAIGHT_TRACK_LENGTH;
+}
 
 uint DistanceFromEdge(TileIndex tile)
 {

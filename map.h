@@ -102,10 +102,11 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 }
 
 // Functions to calculate distances
-uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm
+uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm. Is the shortest distance one could go over diagonal tracks (or roads)
 uint DistanceSquare(TileIndex, TileIndex); // euclidian- or L2-Norm squared
 uint DistanceMax(TileIndex, TileIndex); // also known as L-Infinity-Norm
 uint DistanceMaxPlusManhattan(TileIndex, TileIndex); // Max + Manhattan
+uint DistanceTrack(TileIndex, TileIndex); // Returns the shortest distance one could go over tracks
 uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
 
 
@@ -116,5 +117,11 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
 	assert(dir < lengthof(_tileoffs_by_dir));
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
 }
+
+/* Approximation of the length of a straight track, relative to a diagonal
+ * track (ie the size of a tile side). #defined instead of const so it can
+ * stay integer. (no runtime float operations) Is this needed?
+ * This value should be sqrt(2)/2 ~ 0.7071 */
+#define STRAIGHT_TRACK_LENGTH (7071/10000)
 
 #endif

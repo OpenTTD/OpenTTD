@@ -93,7 +93,7 @@ const byte _reverse_trackdir[14] = {
 /* The cost of each trackdir. A diagonal piece is the full NPF_TILE_LENGTH,
  * the shorter piece is sqrt(2)/2*NPF_TILE_LENGTH =~ 0.7071
  */
-#define NPF_STRAIGHT_LENGTH (uint)(NPF_TILE_LENGTH * 0.7071)
+#define NPF_STRAIGHT_LENGTH (uint)(NPF_TILE_LENGTH * STRAIGHT_TRACK_LENGTH)
 static const uint _trackdir_length[14] = {
 	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH,
 	0, 0,
@@ -154,36 +154,8 @@ TileIndex CalcClosestStationTile(int station, TileIndex tile) {
 	return TILE_XY(tx,ty);
 };
 
-/* Calcs the heuristic to the target tile (using NPFFindStationOrTileData).
- * If the target is a station, the heuristic is probably "wrong"! Normally
- * this shouldn't matter, but if it turns out to be a problem, we could use
- * the heuristic below?
- * Afterthis  will save the heuristic into NPFFoundTargetData if it is the
- * smallest until now. It will then also save
- * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] in best_trackdir
- */
-int32 NPFCalcTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent) {
-	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
-	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
-	TileIndex from = current->tile;
-	TileIndex to = fstd->dest_coords;
-	uint dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
-
-	if (dist < ftd->best_bird_dist) {
-		ftd->best_bird_dist = dist;
-		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
-	}
-#ifdef NPF_DEBUG
-	debug("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
-#endif
-	return dist;
-}
-
-/* Calcs the heuristic to the target station or tile. Almost the same as above
- * function, but calculates the distance to train stations with
- * CalcClosestStationTile instead. So is somewhat more correct for stations
- * (truly optimistic), but this added correctness is not really required we
- * believe (matthijs & Hackykid)
+/* Calcs the heuristic to the target station or tile. For train stations, it
+ * takes into account the direction of approach.
  */
 int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
@@ -196,7 +168,12 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 	if ((as->user_data[NPF_TYPE] == TRANSPORT_RAIL) && (fstd->station_index != -1))
 		to = CalcClosestStationTile(fstd->station_index, from);
 
-	dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
+	if (as->user_data[NPF_TYPE] == TRANSPORT_ROAD)
+		/* Since roads only have diagonal pieces, we use manhattan distance here */
+		dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
+	else
+		/* Ships and trains can also go diagonal, so the minimum distance is shorter */
+		dist = DistanceTrack(from, to) * NPF_TILE_LENGTH;
 
 	if (dist < ftd->best_bird_dist) {
 		ftd->best_bird_dist = dist;
