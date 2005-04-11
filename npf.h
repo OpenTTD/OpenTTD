@@ -5,8 +5,6 @@
 #include "aystar.h"
 #include "vehicle.h"
 
-//#define NPF_DEBUG
-//#define NPF_MARKROUTE //Mark the routes considered by the pathfinder by
 //mowing grass
 enum {
 	NPF_HASH_BITS = 12, /* The size of the hash used in pathfinding. Just changing this value should be sufficient to change the hash size. Should be an even value. */

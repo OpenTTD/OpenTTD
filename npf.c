@@ -179,9 +179,7 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 		ftd->best_bird_dist = dist;
 		ftd->best_trackdir = current->user_data[NPF_TRACKDIR_CHOICE];
 	}
-#ifdef NPF_DEBUG
-	debug("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
-#endif
+	DEBUG(npf, 4)("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
 	return dist;
 }
 
@@ -196,9 +194,7 @@ void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
 		current->user_data[NPF_TRACKDIR_CHOICE] = trackdir;
-#ifdef NPF_DEBUG
-		debug("Saving trackdir: %#x", trackdir);
-#endif
+		DEBUG(npf, 6)("Saving trackdir: %#x", trackdir);
 	} else {
 		/* We've already made the decision, so just save our parent's
 		 * decision */
@@ -250,18 +246,24 @@ uint NPFSlopeCost(AyStarNode* current) {
 	 * there is only one level of steepness... */
 }
 
+/* Mark tiles by mowing the grass when npf debug level >= 1 */
 void NPFMarkTile(TileIndex tile) {
-	switch(GetTileType(tile)) {
-		case MP_RAILWAY:
-		case MP_STREET:
-			/* DEBUG: mark visited tiles by mowing the grass under them
-			 * ;-) */
-			_map2[tile] &= ~15;
-			MarkTileDirtyByTile(tile);
-			break;
-		default:
-			break;
-	}
+#ifdef NO_DEBUG_MESSAGES
+	return;
+#else
+	if (_debug_npf_level >= 1)
+		switch(GetTileType(tile)) {
+			case MP_RAILWAY:
+			case MP_STREET:
+				/* DEBUG: mark visited tiles by mowing the grass under them
+				 * ;-) */
+				_map2[tile] &= ~15;
+				MarkTileDirtyByTile(tile);
+				break;
+			default:
+				break;
+		}
+#endif
 }
 
 int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
@@ -304,12 +306,8 @@ int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Check for turns */
 	//TODO
 
-#ifdef NPF_MARKROUTE
 	NPFMarkTile(tile);
-#endif
-#ifdef NPF_DEBUG
-	debug("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
-#endif
+	DEBUG(npf, 4)("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
 	return cost;
 }
 
@@ -395,12 +393,8 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Check for occupied track */
 	//TODO
 
-#ifdef NPF_MARKROUTE
 	NPFMarkTile(tile);
-#endif
-#ifdef NPF_DEBUG
-	debug("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
-#endif
+	DEBUG(npf, 4)("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
 	return cost;
 }
 
@@ -468,9 +462,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	TransportType type = aystar->user_data[NPF_TYPE];
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
-#ifdef NPF_DEBUG
-	debug("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
-#endif
+	DEBUG(npf, 4)("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
 	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_map5[src_tile] & 0xF0)==0 && (_map5[src_tile] & 3) == src_exitdir) {
@@ -544,25 +536,19 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	}
 	trackdirs = ts & 0x3F3F; /* Filter out signal status and the unused bits */
 
-#ifdef NPF_DEBUG
-	debug("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirs);
-#endif
+	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirs);
 	/* Select only trackdirs we can reach from our current trackdir */
 	trackdirs &= _trackdir_reaches_trackdirs[src_trackdir];
 	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
 		trackdirs &= ~_trackdir_crosses_trackdirs[src_trackdir];
-#ifdef NPF_DEBUG
-	debug("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirs);
-#endif
+	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirs);
 
 	/* Enumerate possible track */
 	while (trackdirs != 0) {
 		byte dst_trackdir;
 		dst_trackdir =  FindFirstBit2x64(trackdirs);
 		trackdirs = KillFirstBit2x64(trackdirs);
-#ifdef NPF_DEBUG
-		debug("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirs);
-#endif
+		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirs);
 
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && (_map5[dst_tile]&0xC0) == 0x40) {
