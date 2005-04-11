@@ -121,7 +121,9 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
 /* Approximation of the length of a straight track, relative to a diagonal
  * track (ie the size of a tile side). #defined instead of const so it can
  * stay integer. (no runtime float operations) Is this needed?
+ * Watch out! There are _no_ brackets around here, to prevent intermediate
+ * rounding! Be careful when using this!
  * This value should be sqrt(2)/2 ~ 0.7071 */
-#define STRAIGHT_TRACK_LENGTH (7071/10000)
+#define STRAIGHT_TRACK_LENGTH 7071/10000
 
 #endif
