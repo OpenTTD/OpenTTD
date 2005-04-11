@@ -1324,7 +1324,11 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
-			tfdd.best_length = ftd.best_path_dist;
+			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
+			/* Our caller expects a number of tiles, so we just approximate that
+			* number by this. It might not be completely what we want, but it will
+			* work for now :-) We can possibly change this when the old pathfinder
+			* is removed. */
 		}
 	} else if (!_patches.new_depot_finding) {
 		// search in all directions
