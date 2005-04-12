@@ -182,12 +182,10 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		vmass += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
 		mass += vmass; //[t]
 
-		if (!IsTileType(u->tile, MP_TUNNELBRIDGE)) {
-			if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
-				incl += vmass * 60;		//3% slope, quite a bit actually
-			} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
-				incl -= vmass * 60;
-			}
+		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
+			incl += vmass * 60;		//3% slope, quite a bit actually
+		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
+			incl -= vmass * 60;
 		}
 	}
 
@@ -2099,7 +2097,11 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 		CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 
 		if (new_z != old_z) {
-			SETBIT(v->u.rail.flags, (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+			TileIndex tile = TILE_FROM_XY(v->x_pos, v->y_pos);
+
+			// XXX workaround, whole UP/DOWN detection needs overhaul
+			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0x80) != 0)
+				SETBIT(v->u.rail.flags, (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
 		}
 	}
 
