@@ -2322,7 +2322,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
 
 	if (v->type == VEH_Train) {
 		if (IS_BYTE_INSIDE(_map5[tile], 0, 8) && v->subtype == TS_Front_Engine &&
-			!IsTrainStationTile(tile + TileOffsByDir(v->direction >> 1))) {
+				!IsCompatibleTrainStationTile(tile + TileOffsByDir(v->direction >> 1), tile)) {
 
 			station_id = _map2[tile];
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||

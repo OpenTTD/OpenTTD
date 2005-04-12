@@ -154,7 +154,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			do {
 				station_length++;
 				tile = TILE_ADD(tile, TileOffsByDir(v->direction / 2));
-			} while (IsTrainStationTile(tile) && (_map5[tile] & 1) == (_map5[v->tile] & 1));
+			} while (IsCompatibleTrainStationTile(tile, v->tile));
 
 			delta_v = v->cur_speed / (station_length + 1);
 			if (v->max_speed > (v->cur_speed - delta_v))

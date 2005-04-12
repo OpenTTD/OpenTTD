@@ -276,6 +276,15 @@ static inline bool IsTrainStationTile(uint tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
 }
 
+static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
+{
+	assert(IsTrainStationTile(ref));
+	return
+		IsTrainStationTile(tile) &&
+		(_map3_lo[tile] & 0x0F) == (_map3_lo[ref] & 0x0F) && // same rail type?
+		(_map5[tile] & 0x01) == (_map5[ref] & 0x01); // same direction?
+}
+
 static inline bool IsRoadStationTile(uint tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0x43, 0x4B);
 }
