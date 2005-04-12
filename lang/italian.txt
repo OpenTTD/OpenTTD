@@ -13,7 +13,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Richiesto terreno piano
 STR_0008_WAITING                                                :{BLACK}In attesa: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (on viaggio da
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (in viaggio da
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accettati: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accettati: {GOLD}
@@ -188,6 +188,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non puoi
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versione {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_TRANSLATED_BY                                               :{BLACK}  Traduttore/i -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -306,6 +307,7 @@ STR_0135_OSX                                                    :OSX
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
 
 STR_0139_IMPERIAL_MILES                                         :Imperiale (miglia)
 STR_013A_METRIC_KILOMETERS                                      :Metrico (kilometri)
@@ -415,10 +417,12 @@ STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Non puoi
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Chiudi finestra
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Nome finestra - trascinala per muovere la finestra
 STR_STICKY_BUTTON                                               :{BLACK} Marca questa finestra come inchiudibile con il tasto 'Chiudi TUTTE le finestre'
+STR_RESIZE_BUTTON                                               :{BLACK}Clicca e trascina per ridimensionare la finestra
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolisci edifici ecc... su una casella del terreno
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abbassa un angolo del terreno
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Alza un angolo del terreno
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra di scorrimento - scorre la lista sù/giù
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra di scorrimento - scorre la lista sinistra/destra
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Mostra contorni dei terreni sulla mappa
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Mostra veicoli sulla mappa
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostra industrie sulla mappa
@@ -561,6 +565,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuovi v
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambiamenti della merce accettata
 STR_020E_SUBSIDIES                                              :{YELLOW}Sussidi
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informazioni generali
+STR_MESSAGES_ALL                                                :{YELLOW}Impostazione per tutti i tipi di messaggio (on/off/sommario)
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...troppo lontano dalla destinazione precedente
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top Ten delle compagnie che hanno raggiunto l'anno 2050{}({STRING} Livello)
 STR_0212                                                        :{BIGFONT}{COMMA16}.
@@ -571,6 +576,8 @@ STR_0216_CAPITALIST                                             :Capitalista
 STR_0217_MAGNATE                                                :Magnate
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate del secolo
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS                                        :{BIGFONT}{STRING}{STRING} archivi '{STRING}' stato!
 STR_021C_OF_ACHIEVES_STATUS                                     :{BIGFONT}{STRING}{STRING} di {STRING} archivi '{STRING}' stato!
 STR_021D                                                        :{BLACK}
@@ -767,6 +774,7 @@ STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_02DF_TOWN_DIRECTORY                                         :Elenco Città
+STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA16}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la posizione dalla finestra principale alla mini visuale
@@ -846,6 +854,7 @@ STR_0336_7                                                      :{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglese
 STR_TOWNNAME_FRENCH                                             :Francese
 STR_TOWNNAME_GERMAN                                             :Tedesco
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inglese (Aggiuntivo)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americano
 STR_TOWNNAME_SILLY                                              :Stupidi
 STR_TOWNNAME_SWEDISH                                            :Svedese
@@ -853,10 +862,12 @@ STR_TOWNNAME_DUTCH                                              :Olandese
 STR_TOWNNAME_FINNISH                                            :Finlandese
 STR_TOWNNAME_POLISH                                             :Polacco
 STR_TOWNNAME_SLOVAKISH                                          :Slovacco
+STR_TOWNNAME_NORWEGIAN                                          :Norvegese
 STR_TOWNNAME_HUNGARIAN                                          :Ungherese
 STR_TOWNNAME_AUSTRIAN                                           :Austriaci
 STR_TOWNNAME_ROMANIAN                                           :Rumeni
 STR_TOWNNAME_CZECH                                              :Cechi
+STR_TOWNNAME_SWISS                                              :Svizzero
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlina ({POUNDSIGN})
@@ -974,6 +985,7 @@ STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consent
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione industrie, strade speciali, ecc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci ai treni e alle navi di fare curve di 90 gradi: {ORANGE}{STRING} {LTBLUE} (Richiede NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci stazioni ferroviarie quando sono vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lascia stazione quanto uno dei tipi di merce è a pieno carico: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
@@ -994,6 +1006,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consent
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Nuovo sistema individuazione deposito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Nuovo algoritmo pathfinding dei treni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo pathfinding globale (NPF, sovrascrive NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti la costruzione piccoli aeroporti: {ORANGE}{STRING}
 
@@ -1037,7 +1050,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interva
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Notizie colorate pubblicate dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data di inizio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Concludi il gioco il: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita nuova economia stabile (diverse piccole modifiche)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni da altre compagnie
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore costruisci i semafori ogni: {ORANGE}{STRING} quadrato/i
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sinistra

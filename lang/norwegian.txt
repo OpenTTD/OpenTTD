@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygn
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk et hjørne av et landstykke
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hev et hjørne av et landstykke
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen opp/ned
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Rullefelt - ruller listen til venstre/høyre
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landkonturer på kartet
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis kjøretøy på kartet
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industri på kartet
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjø
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringer i godtatte varer
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidier
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generell informasjon
+STR_MESSAGES_ALL                                                :{YELLOW}Innstilling for alle meldingstyper (på/av/sammendrag)
+STR_MESSAGE_SOUND                                               :{YELLOW}Spill av lyd for nyhetssammendrag
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt i fra forrige destinasjon
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Beste firma som nådde {NUMU16}{}({STRING} Nivå)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firmarangering i {NUMU16}
