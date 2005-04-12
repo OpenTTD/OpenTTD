@@ -229,7 +229,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	if (v->u.rail.railtype != 2) force = min(force, mass * 10 * 200);
 
 	if (mode == AM_ACCEL) {
-		return max((force - resistance) / (mass * 4), 2);
+		return (force - resistance) / (mass * 4);
 	} else {
 		return min((-force - resistance) / (mass * 4), 10000 / (mass * 4));
 	}
