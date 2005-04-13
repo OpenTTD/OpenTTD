@@ -58,7 +58,7 @@ typedef struct ifreq IFREQ;
 #		include <net/if.h>
 // According to glibc/NEWS, <ifaddrs.h> appeared in glibc-2.3.
 #		if !defined(SUNOS) && !defined(__MORPHOS__) && !defined(__BEOS__) \
-		   && !(defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 2))
+		   && !(defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 2)) && !defined(__dietlibc__)
 // If for any reason ifaddrs.h does not exist on your system, comment out
 //   the following two lines and an alternative way will be used to fetch
 //   the list of IPs from the system.
