@@ -1815,12 +1815,13 @@ char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
 			if (s != NULL) *s = '\0';
+			if (path[2] == '\0' ) strcat(path, "\\");
 			break;
 
 		case FIOS_TYPE_DIR:
 			s = strchr(item->name, '\\');
 			if (s != NULL) *s = '\0';
-			if (path[3]!= '\0' ) strcat(path, "\\");
+			if (path[3] != '\0' ) strcat(path, "\\");
 			strcat(path, item->name);
 			break;
 
