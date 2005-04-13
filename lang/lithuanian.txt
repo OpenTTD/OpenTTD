@@ -722,8 +722,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Miesto 
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Parodyti paskutine zinute ar spaudos pranesima
-STR_02B8_SUMMARY                                                :{BLACK}Santrauka
-STR_02B9_FULL                                                   :{BLACK}Pilnas
+STR_SUMMARY                                                     :Santrauka
+STR_FULL                                                        :Pilnas
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Miestu katalogas
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Tr. priemoniu pavadinimai
@@ -769,8 +769,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Fotografuoti vi
 STR_02D9_ABOUT_OPENTTD                                          :Apie 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}Ijungta
 STR_02DB_OFF                                                    :{BLACK}Isjungta
+STR_02DA_ON                                                     :{BLACK}Ijungta
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Rodyti subsidijas
 STR_02DD_SUBSIDIES                                              :Subsidijos
 STR_02DE_MAP_OF_WORLD                                           :Zemelapis

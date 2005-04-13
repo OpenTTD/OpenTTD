@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "strings.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "window.h"
 #include "gui.h"
@@ -340,6 +341,31 @@ static const SoundFx _news_sounds[] = {
 	0
 };
 
+/** Get the value of an item of the news-display settings. This is
+ * a little tricky since on/off/summary must use 2 bits to store the value
+ * @param item the item whose value is requested
+ * @return return the found value which is between 0-2
+ */
+static inline byte GetNewsDisplayValue(byte item)
+{
+	assert(item < 10 && ((_news_display_opt >> (item * 2)) & 0x3) <= 2);
+	return (_news_display_opt >> (item * 2)) & 0x3;
+}
+
+/** Set the value of an item in the news-display settings. This is
+ * a little tricky since on/off/summary must use 2 bits to store the value
+ * @param item the item whose value is being set
+ * @param val new value
+ */
+static inline void SetNewsDisplayValue(byte item, byte val)
+{
+	assert(item < 10 && val <= 2);
+	item *= 2;
+	CLRBIT(_news_display_opt, item);
+	CLRBIT(_news_display_opt, item + 1);
+	_news_display_opt |= val << item;
+}
+
 // open up an own newspaper window for the news item
 static void ShowNewspaper(NewsItem *ni)
 {
@@ -392,7 +418,8 @@ static void ShowTicker(const NewsItem *ni)
 {
 	Window *w;
 
-	SndPlayFx(SND_16_MORSE);
+	if (_news_ticker_sound) SndPlayFx(SND_16_MORSE);
+
 	_statusbar_news_item = *ni;
 	w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL)
@@ -448,11 +475,24 @@ static void MoveToNexItem(void)
 		if ( ni->isValid != NULL && !ni->isValid(ni->data_a, ni->data_b) )
 			return;
 
-		// show newspaper or send to ticker?
-		if (!HASBIT(_news_display_opt, ni->type) && !(ni->flags & NF_FORCE_BIG))
-			ShowTicker(ni);
-		else
-			ShowNewspaper(ni);
+  	switch (GetNewsDisplayValue(ni->type)) {
+  	case 0: { /* Off - show nothing only a small reminder in the status bar */
+  		Window *w = FindWindowById(WC_STATUS_BAR, 0);
+			if (w != NULL) {
+				WP(w, def_d).data_2 = 91;
+				SetWindowDirty(w);
+			}
+  	} break;
+  	case 1: /* Summary - show ticker, but if forced big, cascade to full */
+  		if (!(ni->flags & NF_FORCE_BIG)) {
+  			ShowTicker(ni);
+  			break;
+  		}
+  		/* Fallthrough */
+  	case 2: /* Full - show newspaper*/
+  		ShowNewspaper(ni);
+  		break;
+  	}
 	}
 }
 
@@ -664,92 +704,173 @@ void ShowMessageHistory(void)
 	}
 }
 
+/** Setup the disabled/enabled buttons in the message window
+ * If the value is 'off' disable the [<] widget, and enable the [>] one
+ * Same-wise for all the others. Starting value of 3 is the first widget
+ * group. These are grouped as [<][>] .. [<][>], etc.
+ */
+static void SetMessageButtonStates(Window *w, byte value, int element)
+{
+	element *= 2;
+	switch (value) {
+	case 0: /* Off */
+		SETBIT(w->disabled_state, element + 3);
+		CLRBIT(w->disabled_state, element + 3 + 1);
+		break;
+	case 1: /* Summary */
+		CLRBIT(w->disabled_state, element + 3);
+		CLRBIT(w->disabled_state, element + 3 + 1);
+		break;
+	case 2: /* Full */
+		SETBIT(w->disabled_state, element + 3 + 1);
+		CLRBIT(w->disabled_state, element + 3);
+		break;
+	default: NOT_REACHED();
+	}
+}
 
 static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 {
+	static const StringID message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
+	static const uint32 message_val[] = {0x0, 0x55555555, 0xAAAAAAAA}; // 0x555.. = 01010101010101010101 (all summary), 286.. 1010... (full)
+	static const uint32 message_dis[] = {
+		(1 << 3) | (1 << 5) | (1 << 7) | (1 << 9)  | (1 << 11) | (1 << 13) | (1 << 15) | (1 << 17) | (1 << 19) | (1 << 21),
+		0,
+		(1 << 4) | (1 << 6) | (1 << 8) | (1 << 10) | (1 << 12) | (1 << 14) | (1 << 16) | (1 << 18) | (1 << 20) | (1 << 22),
+	};
+
+	/* WP(w, def_d).data_1 are stores the clicked state of the fake widgets
+	 * WP(w, def_d).data_2 stores state of the ALL on/off/summary button */
 	switch (e->event) {
+	case WE_CREATE: {
+		uint32 val = _news_display_opt;
+		int i;
+		WP(w, def_d).data_1 = WP(w, def_d).data_2 = 0;
+
+		// Set up the initial disabled buttons in the case of 'off' or 'full'
+		for (i = 0; i != 10; i++, val >>= 2) SetMessageButtonStates(w, val & 0x3, i);
+	} break;
+
 	case WE_PAINT: {
-		uint16 x = _news_display_opt;
-		uint32 cs = 0;
+		uint32 val = _news_display_opt;
+		int click_state = WP(w, def_d).data_1;
 		int i, y;
 
-		for (i = 3; i != 23; i += 2) {
-			cs |= 1 << (i + (x & 1));
-			x >>= 1;
-		}
-		cs |= (w->click_state >> 23) << 23;
-
-		w->click_state = cs;
+		if (_news_ticker_sound) SETBIT(w->click_state, 25);
 		DrawWindowWidgets(w);
-
 		DrawStringCentered(185, 15, STR_0205_MESSAGE_TYPES, 0);
 
-		y = 27;
-		for (i = STR_0206_ARRIVAL_OF_FIRST_VEHICLE; i <= STR_020F_GENERAL_INFORMATION; i++) {
-			DrawString(124, y, i, 0);
-			y += 12;
+		/* XXX - Draw the fake widgets-buttons. Can't add these to the widget-desc since
+		 * openttd currently can only handle 32 widgets. So hack it *g* */
+		for (i = 0, y = 26; i != 10; i++, y += 12, click_state >>= 1, val >>= 2) {
+			bool clicked = !!(click_state & 1);
+
+			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? 0x20 : 0);
+			DrawStringCentered(((13 + 89 + 1) >> 1) + clicked, ((y + 11 + y + 1) >> 1) - 5 + clicked, message_opt[val & 0x3], 0x10);
+			DrawString(103, y + 1, i + STR_0206_ARRIVAL_OF_FIRST_VEHICLE, 0);
 		}
 
-		break;
-	}
+		DrawString(  8, y + 9, message_opt[WP(w, def_d).data_2], 0x10);
+		DrawString(103, y + 9, STR_MESSAGES_ALL, 0);
+		DrawString(103, y + 9 + 12, STR_MESSAGE_SOUND, 0);
 
-	case WE_CLICK: {
-		int wid;
-		if ((uint)(wid = e->click.widget - 3) < 20) {
-			if (!(wid & 1))
-				_news_display_opt &= ~(1 << (wid / 2));
-			else
-				_news_display_opt |= (1 << (wid / 2));
-			SetWindowDirty(w);
-			// XXX: write settings
-		}
-		if (e->click.widget == 23) {
-			_news_display_opt = 0;
-			HandleButtonClick(w, 23);
-			SetWindowDirty(w);
-		}
-		if (e->click.widget == 24) {
-			_news_display_opt = ~0;
-			HandleButtonClick(w, 24);
-			SetWindowDirty(w);
-		}
 	} break;
+
+	case WE_CLICK:
+		switch (e->click.widget) {
+		case 2: /* Clicked on any of the fake widgets */
+			if (e->click.pt.x > 13 && e->click.pt.x < 89 && e->click.pt.y > 26 && e->click.pt.y < 146) {
+				int element = (e->click.pt.y - 26) / 12;
+				byte val = (GetNewsDisplayValue(element) + 1) % 3;
+
+				SetMessageButtonStates(w, val, element);
+				SetNewsDisplayValue(element, val);
+
+				WP(w, def_d).data_1 |= (1 << element);
+				w->flags4 |= 5 << WF_TIMEOUT_SHL; // XXX - setup unclick (fake widget)
+				SetWindowDirty(w);
+			}
+			break;
+		case 23: case 24: /* Dropdown menu for all settings */
+			ShowDropDownMenu(w, message_opt, WP(w, def_d).data_2, 24, 0, 0);
+			break;
+		case 25: /* Change ticker sound on/off */
+			_news_ticker_sound ^= 1;
+			TOGGLEBIT(w->click_state, e->click.widget);
+			InvalidateWidget(w, e->click.widget);
+			break;
+		default: { /* Clicked on the [<] .. [>] widgets */
+			int wid = e->click.widget;
+			if (wid > 2 && wid < 23) {
+				int element = (wid - 3) / 2;
+				byte val = (GetNewsDisplayValue(element) + ((wid & 1) ? -1 : 1)) % 3;
+
+				SetMessageButtonStates(w, val, element);
+				SetNewsDisplayValue(element, val);
+				SetWindowDirty(w);
+			}
+		} break;
+		} break;
+
+	case WE_DROPDOWN_SELECT: /* Select all settings for newsmessages */
+		WP(w, def_d).data_2 = e->dropdown.index;
+		_news_display_opt = message_val[WP(w, def_d).data_2];
+		w->disabled_state = message_dis[WP(w, def_d).data_2];
+		SetWindowDirty(w);
+		break;
+
+	case WE_TIMEOUT: /* XXX - Hack to animate 'fake' buttons */
+		WP(w, def_d).data_1 = 0;
+		SetWindowDirty(w);
+		break;
+
 	}
 }
 
 static const Widget _message_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   369,     0,    13, STR_0204_MESSAGE_OPTIONS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   369,    14,   172, 0x0,											STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    26,    37, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    26,    37, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    38,    49, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    38,    49, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    50,    61, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    50,    61, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    62,    73, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    62,    73, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    74,    85, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    74,    85, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    86,    97, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    86,    97, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,    98,   109, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,    98,   109, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,   110,   121, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,   110,   121, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,   122,   133, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,   122,   133, STR_02B9_FULL,						STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,     2,    61,   134,   145, STR_02B8_SUMMARY,				STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    62,   121,   134,   145, STR_02B9_FULL,						STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, STR_NULL,             STR_NULL},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    15,   170,   154,   165, STR_MESSAGES_DISABLE_ALL,STR_NULL },
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   200,   355,   154,   165, STR_MESSAGES_ENABLE_ALL,	STR_NULL },
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    38,    49, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    38,    49, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    50,    61, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    50,    61, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    62,    73, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    62,    73, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    74,    85, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    74,    85, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    86,    97, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    86,    97, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    98,   109, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    98,   109, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   110,   121, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   110,   121, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   122,   133, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   122,   133, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,       STR_HSCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,      STR_HSCROLL_BAR_SCROLLS_LIST},
+
+{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, STR_NULL,             STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,             STR_NULL},
+{          WWT_4,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,         STR_NULL},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _message_options_desc = {
-	270, 22, 370, 173,
+	270, 22, 410, 185,
 	WC_GAME_OPTIONS, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,

@@ -258,6 +258,7 @@ void CheckSwitchToEuro(void);
 
 void LoadFromConfig(void);
 void SaveToConfig(void);
+void CheckConfig(void);
 int ttd_main(int argc, char* argv[]);
 byte GetOSVersion(void);
 

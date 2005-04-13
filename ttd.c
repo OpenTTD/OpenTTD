@@ -601,6 +601,7 @@ int ttd_main(int argc, char* argv[])
 #endif
 
 	LoadFromConfig();
+	CheckConfig();
 	LoadFromHighScore();
 
 	// override config?

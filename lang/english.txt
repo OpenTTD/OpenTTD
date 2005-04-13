@@ -565,7 +565,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}New veh
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes to cargo acceptance
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
-STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (on/off/summary)
+STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (off/summary/full)
 STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarized newsmessages
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...too far from previous destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
@@ -723,8 +723,9 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Town si
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
-STR_02B8_SUMMARY                                                :{BLACK}Summary
-STR_02B9_FULL                                                   :{BLACK}Full
+STR_OFF                                                         :Off
+STR_SUMMARY                                                     :Summary
+STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Town directory
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Vehicle design names
@@ -770,8 +771,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screensho
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}On
 STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Display subsidies
 STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world

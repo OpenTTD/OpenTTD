@@ -155,14 +155,14 @@ void DrawVehicleProfitButton(Vehicle *v, int x, int y)
 
 	// draw profit-based colored icons
 	if(v->age <= 365 * 2)
-		ormod = 0x3158000; // grey
+		ormod = PALETTE_TO_GREY;
 	else if(v->profit_last_year < 0)
-		ormod = 0x30b8000; //red
+		ormod = PALETTE_TO_RED;
 	else if(v->profit_last_year < 10000)
-		ormod = 0x30a8000; // yellow
+		ormod = PALETTE_TO_YELLOW;
 	else
-		ormod = 0x30d8000; // green
-	DrawSprite((SPR_BLOT) | ormod, x, y);
+		ormod = PALETTE_TO_GREEN;
+	DrawSprite(SPR_BLOT | ormod, x, y);
 }
 
 /************ Sorter functions *****************/

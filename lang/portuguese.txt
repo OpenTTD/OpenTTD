@@ -720,8 +720,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostrar a última mensagem ou notícia
-STR_02B8_SUMMARY                                                :{BLACK}Resumo
-STR_02B9_FULL                                                   :{BLACK}Completo
+STR_SUMMARY                                                     :Resumo
+STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista de cidades
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nomes dos veículos
@@ -767,8 +767,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura gigante
 STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD...
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}On
 STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostrar subsídios
 STR_02DD_SUBSIDIES                                              :Subsídios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do mundo

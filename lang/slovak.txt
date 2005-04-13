@@ -720,8 +720,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Velkost
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Zobraz poslednu spravu alebo novinku
-STR_02B8_SUMMARY                                                :{BLACK}Obsah
-STR_02B9_FULL                                                   :{BLACK}Plne
+STR_SUMMARY                                                     :Obsah
+STR_FULL                                                        :Plne
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Zoznam miest
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nazvy vozidiel
@@ -767,8 +767,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Velky ScreenSho
 STR_02D9_ABOUT_OPENTTD                                          :O hre 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}Zap.
 STR_02DB_OFF                                                    :{BLACK}Vyp.
+STR_02DA_ON                                                     :{BLACK}Zap.
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Zobrazit Dotacie
 STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta

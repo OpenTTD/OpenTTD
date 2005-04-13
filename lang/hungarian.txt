@@ -723,8 +723,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}A város
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Utolsó üzenet vagy újsághír megmutatása
-STR_02B8_SUMMARY                                                :{BLACK}Kivonat
-STR_02B9_FULL                                                   :{BLACK}Teljes
+STR_SUMMARY                                                     :Kivonat
+STR_FULL                                                        :Teljes
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Városlista
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Jármûvek márkanevei
@@ -770,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés
 STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-ról
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}Be
 STR_02DB_OFF                                                    :{BLACK}Ki
+STR_02DA_ON                                                     :{BLACK}Be
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Állami támogatások
 STR_02DD_SUBSIDIES                                              :Támogatások
 STR_02DE_MAP_OF_WORLD                                           :Világtérkép

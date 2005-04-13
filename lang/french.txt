@@ -723,8 +723,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Taille:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Afficher le dernier message ou bulletin de nouvelles
-STR_02B8_SUMMARY                                                :{BLACK}Sommaire
-STR_02B9_FULL                                                   :{BLACK}Complet
+STR_SUMMARY                                                     :Sommaire
+STR_FULL                                                        :Complet
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Annuaire des villes
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Noms de conception des Véhicules
@@ -770,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}Activé
 STR_02DB_OFF                                                    :{BLACK}Désactivé
+STR_02DA_ON                                                     :{BLACK}Activé
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES                                              :Subventions
 STR_02DE_MAP_OF_WORLD                                           :Carte du monde

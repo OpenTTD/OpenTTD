@@ -2238,6 +2238,9 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(320, 1,	STR_02BA, 0);
 			}
 		}
+
+		if (WP(w, def_d).data_2 > 0)
+			DrawSprite(SPR_BLOT | PALETTE_TO_RED, 489, 2);
 		break;
 
 	case WE_CLICK:
@@ -2251,10 +2254,20 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TICK: {
-		if (_pause || WP(w,def_d).data_1 <= -1280)
-			return;
-		WP(w,def_d).data_1 -= 2;
-		InvalidateWidget(w, 1);
+		if (_pause) return;
+
+		if (WP(w, def_d).data_1 > -1280) { /* Scrolling text */
+			WP(w, def_d).data_1 -= 2;
+			InvalidateWidget(w, 1);
+		}
+
+		if (WP(w, def_d).data_2 > 0) { /* Red blot to show there are new unread newsmessages */
+			WP(w, def_d).data_2 -= 2;
+		} else if (WP(w, def_d).data_2 < 0) {
+			WP(w, def_d).data_2 = 0;
+			InvalidateWidget(w, 1);
+		}
+
 		break;
 	}
 	}

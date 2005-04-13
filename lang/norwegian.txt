@@ -723,8 +723,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørr
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis siste melding eller nyhetsrapport
-STR_02B8_SUMMARY                                                :{BLACK}Sammendrag
-STR_02B9_FULL                                                   :{BLACK}Fullt
+STR_SUMMARY                                                     :Sammendrag
+STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Navn på kjøretøy
@@ -770,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stor skjermdump
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}På
 STR_02DB_OFF                                                    :{BLACK}Av
+STR_02DA_ON                                                     :{BLACK}På
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Vis subsidier
 STR_02DD_SUBSIDIES                                              :Subsidier
 STR_02DE_MAP_OF_WORLD                                           :Verdenskart

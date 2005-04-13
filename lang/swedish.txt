@@ -723,8 +723,8 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsst
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Visa senaste meddelande eller nyhet
-STR_02B8_SUMMARY                                                :{BLACK}Summering
-STR_02B9_FULL                                                   :{BLACK}Full
+STR_SUMMARY                                                     :Summering
+STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Lista av städer
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Fordonens modellnamn
@@ -770,8 +770,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Gigantisk skärm
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
 ############ range ends	here
 
-STR_02DA_ON                                                     :{BLACK}På
 STR_02DB_OFF                                                    :{BLACK}Av
+STR_02DA_ON                                                     :{BLACK}På
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Visa subventioner
 STR_02DD_SUBSIDIES                                              :Subventioner
 STR_02DE_MAP_OF_WORLD                                           :Världskarta
