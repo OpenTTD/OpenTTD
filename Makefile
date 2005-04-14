@@ -160,13 +160,11 @@ ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
 			SDL-CONFIG:=sdl-config
 		endif
 	endif
-else
-	# this should define SDL-CONFIG for manual configuration
-	ifeq ($(shell uname),FreeBSD)
-		SDL-CONFIG:=sdl11-config
-	else
-		SDL-CONFIG:=sdl-config
-	endif
+endif
+
+ifndef SDL-CONFIG
+	UPDATECONFIG:=upgradeconf
+	CONFIG_INCLUDED:=
 endif
 
 # this is used if there aren't any Makefile.config
@@ -776,6 +774,7 @@ quiet_cmd_cxx_compile = '===> Compiling $<'
 
 ifdef OSX
 OSX:=OSX
+OSX_MIDI_PLAYER_FILE:=os/macos/OpenTTDMidi.class
 endif
 
 
@@ -803,7 +802,7 @@ $(OSX): $(TTD)
 	$(Q)os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
 	$(Q)cp os/macos/track_starter "$(OSXAPP)"/contents/macos
 	$(Q)ls os/macos | grep -q "\.class" || \
-	$(Q)       javac os/macos/OpenTTDMidi.java
+	       javac os/macos/OpenTTDMidi.java
 	$(Q)cp os/macos/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
 	$(Q)cp data/* "$(OSXAPP)"/Contents/data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/lang/
@@ -920,7 +919,7 @@ FORCE:
 
 clean:
 	@echo '===> Cleaning up'
-	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) endian.h $(ENDIAN_CHECK)
+	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h $(ENDIAN_CHECK)
 
 mrproper: clean
 	$(Q)rm -rf $(MAKE_CONFIG)
