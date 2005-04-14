@@ -177,6 +177,12 @@ enum {
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)
 #define return_cmd_error(errcode) do { return CMD_ERROR | (errcode); } while (0)
 
+static inline bool CmdFailed(int32 res)
+{
+	// lower 16bits are the StringID of the possible error
+	return res <= (CMD_ERROR | INVALID_STRING_ID);
+}
+
 /* command.c */
 int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);

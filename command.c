@@ -349,7 +349,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	// only execute the test call if it's toplevel, or we're not execing.
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
 		res = proc(x, y, flags&~DC_EXEC, p1, p2);
-		if ((uint32)res >> 16 == 0x8000) {
+		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto error;
 		}
@@ -368,7 +368,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves with "SET_EXPENSES_TYPE(...);" at the beginning of the function */
 	res = proc(x, y, flags, p1, p2);
-	if ((uint32)res >> 16 == 0x8000) {
+	if (CmdFailed(res)) {
 		if (res & 0xFFFF) _error_message = res & 0xFFFF;
 error:
 		_docommand_recursive--;
@@ -443,7 +443,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (_shift_pressed && _current_player == _local_player && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
 		// estimate the cost.
 		res = proc(x, y, flags, p1, p2);
-		if ((uint32)res >> 16 == 0x8000) {
+		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			ShowErrorMessage(_error_message, _error_message_2, x, y);
 		} else {
@@ -458,7 +458,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		// first test if the command can be executed.
 		res = proc(x,y, flags, p1, p2);
-		if ((uint32)res >> 16 == 0x8000) {
+		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto show_error;
 		}
@@ -489,7 +489,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		assert(res == res2); // sanity check
 	} else {
-		if ((uint32)res2 >> 16 == 0x8000) {
+		if (CmdFailed(res)) {
 			if (res2 & 0xFFFF) _error_message = res2 & 0xFFFF;
 			goto show_error;
 		}

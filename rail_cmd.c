@@ -307,7 +307,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 			switch (m5 & 0x38) { // what's under the bridge?
 				case 0x00: // clear land
 					ret = CheckRailSlope(tileh, rail_bit, 0, tile);
-					if (ret & CMD_ERROR) return ret;
+					if (CmdFailed(ret)) return ret;
 					cost += ret;
 
 					if (flags & DC_EXEC) {
@@ -340,7 +340,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 			}
 
 			ret = CheckRailSlope(tileh, rail_bit, m5 & RAIL_BIT_MASK, tile);
-			if (ret & CMD_ERROR) return ret;
+			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
 			if (flags & DC_EXEC) _map5[tile] = m5 | rail_bit;
@@ -370,11 +370,11 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 
 		default:
 			ret = CheckRailSlope(tileh, rail_bit, 0, tile);
-			if (ret & CMD_ERROR) return ret;
+			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
 			ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (ret == CMD_ERROR) return ret;
+			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
 			if (flags & DC_EXEC) {
