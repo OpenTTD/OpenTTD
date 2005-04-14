@@ -8,10 +8,18 @@
 //  that says or TTD_LITTLE_ENDIAN, or TTD_BIG_ENDIAN. Makefile takes
 //  care of the real writing to the file.
 
-int main () {
+int main (int argc, char *argv[]) {
   unsigned char EndianTest[2] = { 1, 0 };
+  int force_BE = 0, force_LE = 0;
+
+  if (argc > 1 && strcmp(argv[1], "BE") == 0)
+    force_BE = 1;
+  if (argc > 1 && strcmp(argv[1], "LE") == 0)
+    force_LE = 1;
+
   printf("#ifndef ENDIAN_H\n#define ENDIAN_H\n");
-  if( *(short *) EndianTest == 1 )
+
+  if ( (*(short *) EndianTest == 1 && force_BE != 1) || force_LE == 1)
     printf("#define TTD_LITTLE_ENDIAN\n");
   else
     printf("#define TTD_BIG_ENDIAN\n");

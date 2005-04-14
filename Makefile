@@ -107,6 +107,14 @@
 #
 # VERBOSE: show full compiler invocations instead of brief progress messages
 #
+# Special for crosscompiling there are some commands available:
+#
+# ENDIAN_FORCE: forces the endian-check to give a certain result. Can be either BE or LE.
+# WINDRES: the location of your windres
+# CC_HOST: the gcc of your localhost if you are making a target that produces incompatible executables
+# CFLAGS_HOST: cflags used for CC_HOST. Make it something if you are getting errors when you try to compi
+#		windows executables on linux. (just: CFLAGS_HOST:='-I' or something)
+#
 # Experimental (does not work properly):
 # WITH_DIRECTMUSIC: enable DirectMusic MIDI support
 
@@ -119,7 +127,7 @@
 
 # Makefile version tag
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=6
+MAKEFILE_VERSION:=7
 
 # CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -261,6 +269,23 @@ endwarnings:=endwarnings
 BASECFLAGS += -m64
 endif
 
+# Check if there is a windres override
+ifndef WINDRES
+WINDRES = windres
+endif
+
+# Check if we have a new target
+ifdef CC_TARGET
+CC = $(CC_TARGET)
+endif
+
+# Check if CC_HOST is defined. If not, it is CC
+ifndef CC_HOST
+CC_HOST = $(CC)
+endif
+ifndef CFLAGS_HOST
+CFLAGS_HOST = $(BASECFLAGS)
+endif
 
 # When calling the compiler, use these flags
 # -g	debugging symbols
@@ -520,7 +545,10 @@ CDEFS += -DWIN32_ENABLE_DIRECTMUSIC_SUPPORT
 endif
 
 ifdef WIN32
-LIBS += -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32 -lstdc++
+LIBS += -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32
+ifdef WITH_DIRECTMUSIC
+LIBS += -lstdc++
+endif
 TTDLDFLAGS += -Wl,--subsystem,windows
 endif
 
@@ -723,7 +751,7 @@ cmd = @$(if $($(quiet)cmd_$(1)),echo $($(quiet)cmd_$(1)) &&) $(cmd_$(1))
 # nothing will be shown in the non-verbose mode.
 
 quiet_cmd_compile_link = '===> Compiling and Linking $@'
-      cmd_compile_link = $(CC) $(BASECFLAGS) $(CDEFS) $< -o $@
+      cmd_compile_link = $(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
 
 quiet_cmd_ttd_link = '===> Linking $@'
       cmd_ttd_link = $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
@@ -755,7 +783,7 @@ all: endian.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
 
 endian.h: $(ENDIAN_CHECK)
 	@echo '===> Testing endianness'
-	$(Q)./$(ENDIAN_CHECK) > $@
+	$(Q)./$(ENDIAN_CHECK) $(ENDIAN_FORCE) > $@
 
 $(ENDIAN_CHECK): endian_check.c
 	$(call cmd,compile_link)
@@ -800,7 +828,7 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 
 winres.o: ttd.rc
 	@echo '===> Compiling resource $<'
-	$(Q)windres -o $@ $<
+	$(Q)$(WINDRES) -o $@ $<
 
 ifdef MORPHOS
 release: all
