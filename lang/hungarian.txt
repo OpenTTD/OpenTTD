@@ -565,7 +565,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járm
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Áruk elfogadásának változásai
 STR_020E_SUBSIDIES                                              :{YELLOW}Támogatások
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Általános információk
-STR_MESSAGES_ALL                                                :{YELLOW}Összes üzenettípus beállítása (be/ki/rövid)
+STR_MESSAGES_ALL                                                :{YELLOW}Összes üzenettípus beállítása (be/rövid/ki)
 STR_MESSAGE_SOUND                                               :{YELLOW}Figyelmeztetõ hang lejátszása rövid üzenetnél
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...túl távol van az elõzõ céltól
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUMU16}{}({STRING} Szintet)

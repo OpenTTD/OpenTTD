@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostrar a última mensagem ou notícia
+STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Resumo
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Stærð b
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Sýna seinustu skilaboð eða fréttatilkynningu
+STR_OFF                                                         :Af
 STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

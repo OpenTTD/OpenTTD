@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolish
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Raise a corner of land
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scrolls list up/down
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - scrolls list left/right
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Show land contours on map
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Show vehicles on map
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Show industries on map
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}New veh
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes of cargo acceptance
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
+STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (off/summary/full)
+STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarized newsmessages
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...too far from previous destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Company League Table in {NUMU16}
@@ -694,6 +697,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place ro
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area
+STR_CREATE_LAKE                                                 :{BLACK}Define water area, will flood its surroundings if at sea level
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -719,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Town si
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
+STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Summary
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

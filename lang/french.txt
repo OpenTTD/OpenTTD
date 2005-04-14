@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Taille:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Afficher le dernier message ou bulletin de nouvelles
+STR_OFF                                                         :Aucun
 STR_SUMMARY                                                     :Sommaire
 STR_FULL                                                        :Complet
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
@@ -1166,7 +1167,7 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Construi
 STR_FAST_FORWARD                                                :{BLACK}Avance rapide du jeu
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des Messages
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Liste des messages récents
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Tous en  sommaire
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Tous en sommaire
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Tous en complet
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construire une mine de charbon

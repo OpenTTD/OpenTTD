@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsst
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Visa senaste meddelande eller nyhet
+STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Summering
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørr
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis siste melding eller nyhetsrapport
+STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Sammendrag
 STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

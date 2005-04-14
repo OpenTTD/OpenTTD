@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Wielkos
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Pokaz ostatnia wiadomosc lub ogloszenie
+STR_OFF                                                         :Wyl
 STR_SUMMARY                                                     :Sumarycznie
 STR_FULL                                                        :Pelne
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

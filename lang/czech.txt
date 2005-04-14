@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikos
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Ukázat poslední zprávu nebo clanek
+STR_OFF                                                         :Vypnuto
 STR_SUMMARY                                                     :Shrnutí
 STR_FULL                                                        :Plná
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

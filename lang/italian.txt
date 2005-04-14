@@ -408,7 +408,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruis
 STR_0182_BUILD_ROADS                                            :{BLACK}Costruisci strade
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aereoporti
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, piazza scritte ecc...
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, posiziona cartelli ecc...
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Info sul terreno
 STR_0187_OPTIONS                                                :{BLACK}Opzioni
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -566,8 +566,9 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambiam
 STR_020E_SUBSIDIES                                              :{YELLOW}Sussidi
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informazioni generali
 STR_MESSAGES_ALL                                                :{YELLOW}Impostazione per tutti i tipi di messaggio (on/off/sommario)
+STR_MESSAGE_SOUND                                               :{YELLOW}Esegui un suono per i messaggi sommarizzati
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...troppo lontano dalla destinazione precedente
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top Ten delle compagnie che hanno raggiunto l'anno 2050{}({STRING} Livello)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Le maggiori compagnie che hanno raggiunto il livello {NUMU16}{}({STRING})
 STR_0212                                                        :{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN                                            :Uomo d'affari
 STR_0214_ENTREPRENEUR                                           :Imprenditore
@@ -578,8 +579,8 @@ STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate del secolo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
-STR_021B_ACHIEVES_STATUS                                        :{BIGFONT}{STRING}{STRING} archivi '{STRING}' stato!
-STR_021C_OF_ACHIEVES_STATUS                                     :{BIGFONT}{STRING}{STRING} di {STRING} archivi '{STRING}' stato!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} raggiunge lo stato '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} di {STRING} raggiunge lo stato '{STRING}'!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA16}
@@ -688,13 +689,14 @@ STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Non puoi
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...devi costruire prima una città
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...ammessa solo una per città
 STR_0288_PLANT_TREES                                            :{BLACK}Pianta Alberi
-STR_0289_PLACE_SIGN                                             :{BLACK}Piazza Segnale
+STR_0289_PLACE_SIGN                                             :{BLACK}Posiziona cartello
 STR_028A_RANDOM_TREES                                           :{BLACK}Alberi Casuali
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Pianta alberi casualmente nel paesaggio
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Piazza terreno roccioso nel paesaggio
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza Faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza Trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisci area desertica
+STR_CREATE_LAKE                                                 :{BLACK}Definisce un'area d'acqua, si allagherà se a livello del mare
 STR_0290_DELETE                                                 :{BLACK}Elimina
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina questa città completamente
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
@@ -720,6 +722,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensi
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostra ultimo messaggio o un report
+STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
@@ -773,6 +776,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostra s
 STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
+STR_SIGN_LIST                                                   :Lista cartelli
 STR_02DF_TOWN_DIRECTORY                                         :Elenco Città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA16}
@@ -982,6 +986,7 @@ STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sulle coste/pendii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permetti aree di carico/scarico più realistiche: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione industrie, strade speciali, ecc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
@@ -1022,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata visualizzazione messaggio di errore: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di un paese nell'etichetta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
@@ -1047,6 +1053,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervallo di servizio predefinito per gli aerei: {ORANGE}disabilitato
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}{STRING} giorni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}disabilitato
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disabilità servicing quando i guasti sono "nessuno": {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Notizie colorate pubblicate dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data di inizio: {ORANGE}{STRING}
@@ -1091,6 +1098,7 @@ STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consent
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet non si schiantano troppo di frequente nei piccoli aeroporti: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambia paesaggio: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambia data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permetti la modifica dei valori di produzione: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Direzione {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Direzione {WAYPOINT}, {VELOCITY}
@@ -1142,6 +1150,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossib
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Costruisci chiusa
 STR_LANDINFO_LOCK                                               :Chiusa
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...la boa è in uso!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordinate: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1194,6 +1203,7 @@ STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selezion
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Riadatta il treno per trasportare il tipo di carico selezionato
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossibile riadattare il treno...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Gli intervalli di servizio sono in percentuale: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvenuto nella nuova IA, in sviluppo. Puoi aspettarti dei problemi. Quando succede, fai uno screenshot e invialo sul forum. Divertiti!
 TEMP_AI_ACTIVATED                                               :{WHITE}Attenzione: la nuova IA è ancora in alpha! Solo i Camion e i Bus funzionano, per ora!
@@ -1231,7 +1241,13 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimens:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versione server:  {WHITE}{STRING}
-STR_NETWORK_PASSWORD                                            :{BLACK}Password:
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server:  {WHITE}{STRING} : {NUMU16}
+STR_NETWORK_START_DATE                                          :{SILVER}Data di inizio:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data corrente:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Protetto da password!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PIENO
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIONE DIFFERENTE
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Entra nel gioco
 
@@ -1240,11 +1256,30 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Avvia nu
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome gioco:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Il nome della partita verrà visualizzato dagli altri giocatori nel menu di selezione del gioco
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Imposta password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteggi il tuo gioco con una password se non vuoi che altre persone vi entrino
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleziona una mappa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Con quale mappa vuoi giocare?
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{STRING}
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Massimo numero di clients:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Imposta il numero massimo di clients. Non tutti devono essere riempiti
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (avvisa)
+STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_2_CLIENTS                                           :2 clients
+STR_NETWORK_3_CLIENTS                                           :3 clients
+STR_NETWORK_4_CLIENTS                                           :4 clients
+STR_NETWORK_5_CLIENTS                                           :5 clients
+STR_NETWORK_6_CLIENTS                                           :6 clients
+STR_NETWORK_7_CLIENTS                                           :7 clients
+STR_NETWORK_8_CLIENTS                                           :8 clients
+STR_NETWORK_9_CLIENTS                                           :9 clients
+STR_NETWORK_10_CLIENTS                                          :10 clients
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Lingua parlata:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Gli altri giocatori sapranno quale lingua viene parlata sul server
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Avvia gioco
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Inizia una nuova partita in rete partendo da una mappa random o da uno scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Carica Gioco
@@ -1253,26 +1288,61 @@ STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Carica S
 STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Inizia una nuova partita in rete partendo da uno scenario
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Qualsiasi
+STR_NETWORK_LANG_ENGLISH                                        :Inglese
+STR_NETWORK_LANG_GERMAN                                         :Tedesco
+STR_NETWORK_LANG_FRENCH                                         :Francese
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza di gioco multiplayer
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}In procinto di entrare:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista di tutte le compagnie attualmente nel gioco. Puoi usare una di queste o fondarne una se c'è un posto libero
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nuova compagnia
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Apri una nuova compagnia
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Assisti alla partita
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Assisti al gioco come spettatore
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Usa compagnia
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Aiuta a controllare questa compagnia
+STR_NETWORK_REFRESH                                             :{BLACK}Ricarica server
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Ricarica informazioni del server
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMAZIONI COMPAGNIA
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome compagnia:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurazione:  {WHITE}{NUMU16}
+STR_NETWORK_VALUE                                               :{SILVER}Valore compagnia:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Bilancio corrente:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Entrate dell'ultimo anno:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUMU16}
 
-STR_NETWORK_PLAYERS                                             :{BLACK}#/#
+STR_NETWORK_VEHICLES                                            :{SILVER}Veicoli:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stazioni:  {WHITE}{NUMU16} {TRAIN}, {NUMU16} {LORRY}, {NUMU16} {BUS}, {NUMU16} {PLANE}, {NUMU16} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Giocatori:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING                                          :{WHITE}Connessione in corso...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connessione..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizzazione..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Attendere prego..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Download mappa..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Caricamento dei dati..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrazione..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ricezione informazioni gioco..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ricezione informazioni compagnia..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{INT32} clients in attesa
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{INT32} / {INT32} kbytes scaricati fin'ora
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnessione
 
+STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Inserisci il messaggio di testo da inviare
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserisci l'ammontare di denaro che vuoi donare
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protetto. Inserisci la password
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserisci la password
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista dei clients
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Impossibile trovare partite in rete
@@ -1280,18 +1350,63 @@ STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Il serv
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizzazione alla partita in rete fallita.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Connessione alla partita in rete persa.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Impossibile caricare il savegame dal server.
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Impossibile inizializzare il server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Impossibile connettersi
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Connessione #{NUMU16} time-out.
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Un errore di protocollo ha chiuso la connessione
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La revision del client non è la stessa di quella del server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Password Errata
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Il server è pieno
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sei stato bannato da questo server
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Sei stato kickato dal gioco
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} I trucchi non sono ammessi su questo server
 
+STR_NETWORK_ERR_LEFT                                            :ha lasciato il gioco
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :errore generale
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :errore di sincronizzazione
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Impossibile caricare la mappa
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Connessione perduta
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :errore di protocollo
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Non Autorizzato
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevuto uno strano pacchetto
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisione errata
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome già in uso
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :game-password errata
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :player-id errato in DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED                                   :kickato dal server
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :ha provato a usare un trucco
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED                                       :è entrato nel gioco
+STR_NETWORK_GIVE_MONEY                                          :ha donato alla tua compagnia del denaro ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :hai donato a {STRING} del denaro ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY                                        :[Gruppo] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Gruppo] A {STRING}:
+STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}:
+STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}:
+STR_NETWORK_NAME_CHANGE                                         :ha cambiato il suo nome in
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Il server ha chiuso la sessione
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Il server si sta riavviando...{}Attendere prego...
+
+STR_NETWORK_SERVER                                              :Server
+STR_NETWORK_CLIENT                                              :Client
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(niente)
+STR_NETWORK_CLIENTLIST_KICK                                     :Kick
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dona denaro
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tutti
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parla alla compagnia
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Messaggio privato
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Invia
 
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X della mappa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y della mappa: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Costo: {CURRENCY}
@@ -1386,6 +1501,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passaggio a liv
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Città
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
@@ -1398,8 +1514,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}L'autori
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Elenco città - clicca sul nome per centrare la visuale sulla città
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra la visuale sulla città
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Cambia nome alla città
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passeggeri ultimo mese: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta ultimo mese: {ORANGE}{COMMA16}{BLACK}  max: {ORANGE}{COMMA16}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passeggeri il mese scorso: {ORANGE}{COMMA32}{BLACK}  massimo: {ORANGE}{COMMA32}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta il mese scorso: {ORANGE}{COMMA32}{BLACK}  massimo: {ORANGE}{COMMA32}
 STR_200F_TALL_OFFICE_BLOCK                                      :Blocco di uffici alto
 STR_2010_OFFICE_BLOCK                                           :Blocco di uffici
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Piccolo blocco di appartamenti
@@ -1484,7 +1600,7 @@ STR_205C_PIGGY_BANK                                             :Banca-porcellin
 ##id 0x2800
 STR_LANDSCAPING                                                 :Modellazione terreno
 STR_2800_PLANT_TREES                                            :Pianta alberi
-STR_2801_PLACE_SIGN                                             :Piazza cartello
+STR_2801_PLACE_SIGN                                             :Posiziona cartello
 STR_2802_TREES                                                  :{WHITE}Alberi
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...albero già qui
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
@@ -1494,7 +1610,7 @@ STR_2807                                                        :{TINYFONT}{WHIT
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...troppi cartelli
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Non puoi piazzare un cartello qui...
 STR_280A_SIGN                                                   :Cartello
-STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Modifica testo Cartello
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Modifica testo del cartello
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Non puoi modificare il testo del cartello...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleziona il tipo di albero da piantare
 STR_280E_TREES                                                  :Alberi
@@ -1511,6 +1627,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Troppo v
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Unisci stazione esistente/area di carico
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Troppe stazioni/aree di carico in questa città
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Troppe stazioni/aree di carico
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe fermate dell'autobus
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe stazioni merci
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Troppo vicino ad un'altra stazione/Area di carico
 STR_300A_0                                                      :{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Devi demolire stazione ferroviaria prima
@@ -1584,6 +1702,7 @@ STR_3069_BUOY                                                   :Boa
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boa in mezzo
 STR_306B_HELIPORT                                               :{BLACK}Eliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazione troppo estesa
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientamento deposito navale
@@ -1976,6 +2095,9 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sposta l
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Non puoi costruire la sede della compagnia...
 STR_7072_VIEW_HQ                                                :{BLACK}Guarda Sede
 STR_RELOCATE_HQ                                                 :{BLACK}Sposta Sede
+STR_COMPANY_PASSWORD                                            :{BLACK}Password
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la tuo compagnia con una password per impedire accessi non autorizzati.
+STR_SET_COMPANY_PASSWORD                                        :Imposta password della compagnia
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessione Mondiale!{}{}Gli esperti finanziari temono la peggior crisi economica!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessione Finita!{}{}Rialzo negli scambi dà fiducia alle industrie per un rafforzamento economico!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Seleziona dimensione grande/piccola della finestra
@@ -1989,6 +2111,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Non puoi
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% posseduto da {STRING})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% posseduto da {STRING}{}   {COMMA16}% posseduto da {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} è stata rilevata da {STRING}!
+STR_7080_PROTECTED                                              :{WHITE}Questa compagnia non è abbastanza vecchia per compravendere azioni...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapore)
@@ -2514,6 +2637,7 @@ STR_GO_TO_SHIP_DEPOT                                            :Vai a {TOWN} De
 SERVICE_AT_SHIP_DEPOT                                           :Manutenzione a {TOWN} Deposito Navale
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Aeroporti
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non puoi costruire aeroporto qui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nuovo Aereo
@@ -2567,6 +2691,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non puoi
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nome aereo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo aereo atterrato a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Aereo precipitato!{}{COMMA16} morti in una palla di fuoco a {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha finito il carburante, {COMMA16} morti in una palla di fuoco!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinazioni:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Rinomina
@@ -2628,10 +2753,23 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Ammontar
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Hai preso un prestito troppo elevato?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totale dei punti rispetto ad un massimo di punti possibili
 
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni newgrf
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applica cambiamenti
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Imposta parametri
+STR_NEWGRF_TIP                                                  :{BLACK}Una lista di tutti i Newgrf che hai installato. Cliccane uno per cambiarne le impostazioni
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Non ci sono attualmente file newgrf installati! Fare riferimento al manuale per installarne di nuovi
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome file:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separatore:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefisso:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffisso:
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passa agli Euro: {ORANGE}{INT32}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passa agli Euro: {ORANGE}mai
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Anteprima: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia i parametri della valuta personalizzata
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_LORRY                                                       :{BLACK}{LORRY}
@@ -2648,10 +2786,29 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra t
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tutti gli aerei che hanno questa stazione tra gli ordini
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questo porto tra gli ordini
 
+STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza Veicoli
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Finisci Rimpiazzo Veicoli
+STR_NOT_REPLACING                                               :{BLACK}Nessun rimpiazzo
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nessun veicolo selezionato
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleziona il tipo di locomotore da rimpiazzare
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleziona quale locomotore usare al posto di quello selezionato a sinistra
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Premi per fermare il rimpiazzo dei locomotori del tipo selezionato a sinistra
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premi per iniziare il rimpiazzo dei locomotori del tipo selezionato a sinistra con quello selezionato a destra
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleziona il tipo di ferrovia per la quale vuoi rimpiazzare i locomotori
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se alcuno
+STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
 
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA16} Cartelli
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES                                               :Veicoli Ferroviari
+STR_MONORAIL_VEHICLES                                           :Veicoli Monorotaia
+STR_MAGLEV_VEHICLES                                             :Veicoli Maglev
 
 ############ End of list of rail types
 
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
