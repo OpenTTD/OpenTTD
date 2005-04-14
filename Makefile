@@ -496,7 +496,7 @@ endif
 # MIDI setup
 ifdef OSX
 ifndef MIDI
-MIDI:=$(OSXAPP)/contents/macos/track_starter
+MIDI:=$(OSXAPP)/contents/macosx/track_starter
 endif
 ifndef SECOND_DATA_PATH
 SECOND_DATA_PATH:="$(OSXAPP)/contents/data/"
@@ -774,7 +774,7 @@ quiet_cmd_cxx_compile = '===> Compiling $<'
 
 ifdef OSX
 OSX:=OSX
-OSX_MIDI_PLAYER_FILE:=os/macos/OpenTTDMidi.class
+OSX_MIDI_PLAYER_FILE:=os/macosx/OpenTTDMidi.class
 endif
 
 
@@ -798,12 +798,12 @@ $(OSX): $(TTD)
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Data
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Lang
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
-	$(Q)cp os/macos/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
-	$(Q)os/macos/plistgen.sh "$(OSXAPP)" "$(REV)"
-	$(Q)cp os/macos/track_starter "$(OSXAPP)"/contents/macos
-	$(Q)ls os/macos | grep -q "\.class" || \
-	       javac os/macos/OpenTTDMidi.java
-	$(Q)cp os/macos/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
+	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
+	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
+	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/contents/macos
+	$(Q)ls os/macosx | grep -q "\.class" || \
+	       javac os/macosx/OpenTTDMidi.java
+	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
 	$(Q)cp data/* "$(OSXAPP)"/Contents/data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
@@ -877,7 +877,7 @@ release: all
 	$(Q)cp COPYING "OpenTTD $(RELEASE)"/docs/
 	$(Q)cp changelog.txt "OpenTTD $(RELEASE)"/docs/
 	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp os/macos/*.webloc "OpenTTD $(RELEASE)"
+	$(Q)cp os/macosx/*.webloc "OpenTTD $(RELEASE)"
 	$(Q)cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
 	$(Q)cp scenario/* "OpenTTD $(RELEASE)"/scenario/
 	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
@@ -894,7 +894,7 @@ nightly_build: all
 	$(Q)cp COPYING "OpenTTD_nightly_$(DATE)"/docs/
 	$(Q)cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
 	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
-	$(Q)cp os/macos/*.webloc "OpenTTD_nightly_$(DATE)"/
+	$(Q)cp os/macosx/*.webloc "OpenTTD_nightly_$(DATE)"/
 	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
 	$(Q)rm -fr "OpenTTD_nightly_$(DATE)"
 

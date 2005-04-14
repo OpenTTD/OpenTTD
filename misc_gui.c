@@ -175,7 +175,7 @@ static const char *credits[] = {
 	"Original graphics by Simon Foster",
 	"",
 	"The OpenTTD team (in alphabetical order):",
-	"  Bjarni Corfitzen (Bjarni) - MacOS port",
+	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder",
 	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
 	"  Tamas Faragó (Darkvater) - Lead coder",
 	"  Dominik Scherer (dominik81) - Lead coder",

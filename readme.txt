@@ -212,7 +212,7 @@ That's all! You should now be able to select the language in the game options.
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
-  Bjarni Corfitzen (Bjarni)      - MacOS port
+  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder
   Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamas Faragó (Darkvater)       - Lead programmer
   Dominik Scherer (dominik81)    - Lead programmer
