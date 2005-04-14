@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}A város
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Utolsó üzenet vagy újsághír megmutatása
+STR_OFF                                                         :Ki
 STR_SUMMARY                                                     :Kivonat
 STR_FULL                                                        :Teljes
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolir 
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar um canto do terreno
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Levantar um canto do terreno
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de rolamento - rola a lista acima/abaixo
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra de deslize - desloca a lista para a esquerda/direita
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Mostrar contornos do terreno no mapa
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Mostrar veículos no mapa
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostrar indústrias no mapa
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos v
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Alterações de aceitação de carga
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsídios
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informações gerais
+STR_MESSAGES_ALL                                                :{YELLOW}Configuração para todos os tipos de mensagens (ligado/desligado/resumo)
+STR_MESSAGE_SOUND                                               :{YELLOW}Alerta sonoro para resumos de mensagens noticiosas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...Muito distante do destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de companhias que chegaram a {NUMU16}{}({STRING} Nivél)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela de Liga de Companhias em {NUMU16}

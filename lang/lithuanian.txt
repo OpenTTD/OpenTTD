@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Sprogdin
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Nuzeminti zemes lygi
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Paaukstinti zemes lygi
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Prasukimo juosta - prasuka sarasa aukstyn/zemyn
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Prasukimo juosta - prasuka sarasa i kaire/desine
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Rodyti zemes konturus zemelapyje
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Rodyti transporto priemones zemelapyje
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Rodyti gamyklas zemelapyje

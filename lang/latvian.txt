@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demole't
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Pazemina't zemes stu'ri
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Pacelt zemes stu'ri
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Skrollba'rs - bi'da sarakstu augs'up/lejup
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Skrollba'ri - skrolle' sarakstu pal kreisi un pa labi
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Ra'di't zemes kontu'ras uz kartes
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Ra'di't transporta li'dzekl'us uz kartes
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Ra'di't industrijas uz kartes
@@ -564,6 +565,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie 
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Izmain'as kravas pien'ems'ana'
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsi'dijas
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Vispa'ri'ga informa'cija
+STR_MESSAGES_ALL                                                :{YELLOW}Rez'i'ms visiem zin'ojumu tipiem (iesle'gts/izsle'gts/kopsavilkums)
+STR_MESSAGE_SOUND                                               :{YELLOW}Spe'le't skan'as effektu zin'u kopsavilkumiem
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...pa'ra'k ta'lu no ieprieks'e'ja' gala punkta
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Laba'ka's kompa'nijas, kas sasniegus'as{NUMU16}{}({STRING} Level)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Kompa'niju li'gu tabula {NUMU16}
