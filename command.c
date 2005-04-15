@@ -490,7 +490,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		assert(res == res2); // sanity check
 	} else {
-		if (CmdFailed(res)) {
+		if (CmdFailed(res2)) {
 			if (res2 & 0xFFFF) _error_message = res2 & 0xFFFF;
 			goto show_error;
 		}
