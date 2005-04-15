@@ -435,7 +435,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_CONVERT_RAIL ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
-		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD ||
+		(cmd & 0xFF) == CMD_REMOVE_ROAD ||
 		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD;
 
 	_docommand_recursive = 1;
