@@ -1090,12 +1090,16 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
 		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner);
-		if (ftd.best_bird_dist != 0 || ftd.best_trackdir == 0xff) {
-			/* Not found, just do something, or we are already there */
+		if (ftd.best_trackdir == 0xff) {
+			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
 			//TODO: go straight ahead if possible?
 			return_track(FindFirstBit2x64(bitmask));
 		} else {
+			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+			we did not find our target, but ftd.best_trackdir contains the direction leading
+			to the tile closest to our target. */
 			return_track(ftd.best_trackdir);
 		}
 	} else {

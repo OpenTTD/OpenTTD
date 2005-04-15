@@ -1672,12 +1672,17 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 		assert(trackdir != 0xff);
 
 		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner);
-		if (ftd.best_bird_dist != 0 || ftd.best_trackdir == 0xff) {
-			/* Not found, or we are already there. Just do something */
+
+		if (ftd.best_trackdir == 0xff) {
+			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
 			//TODO: go straight ahead if possible?
 			best_track = FIND_FIRST_BIT(bits);
 		} else {
+			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+			we did not find our target, but ftd.best_trackdir contains the direction leading
+			to the tile closest to our target. */
 			/* Discard enterdir information, making it a normal track */
 			best_track = ftd.best_trackdir & 7; /* TODO: Wrapper function? */
 		}

@@ -576,12 +576,14 @@ static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
 
 		ftd = NPFRouteToStationOrTile(src_tile, _track_direction_to_trackdir[track][v->direction], &fstd, TRANSPORT_WATER, v->owner);
 
-		if (ftd.best_bird_dist == 0 && ftd.best_trackdir != 0xff)
-			/* Found the target, and it is not our current tile */
+		if (ftd.best_trackdir != 0xff)
+			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+			we did not find our target, but ftd.best_trackdir contains the direction leading
+			to the tile closest to our target. */
 			return ftd.best_trackdir & 7; /* TODO: Wrapper function? */
 		else
-			return -1; /* Couldn't find target, reverse */
-			/* TODO: When the target is unreachable, the ship will keep reversing */
+			return -1; /* Already at target, reverse? */
 	} else {
 		uint b;
 		uint tot_dist, dist;
