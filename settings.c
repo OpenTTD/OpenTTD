@@ -926,6 +926,9 @@ const SettingDesc patch_settings[] = {
 	/* New Path Finding */
 	{"new_pathfinding_all",	SDT_BOOL,		(void*)false, &_patches.new_pathfinding_all,	NULL},
 
+	/* The maximum number of nodes to search */
+	{"npf_max_search_nodes",   SDT_UINT32, (void*)10000,  &_patches.npf_max_search_nodes,		NULL},
+
 	/* When a red signal is encountered, a small detour can be made around
 	* it. This specifically occurs when a track is doubled, in which case
 	* the detour is typically 2 tiles. It is also often used at station

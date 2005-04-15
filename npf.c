@@ -785,7 +785,10 @@ void InitializeNPF(void)
 	init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
-	_npf_aystar.max_search_nodes = 0;
+	//_npf_aystar.max_search_nodes = 0;
+	/* We will limit the number of nodes for now, until we have a better
+	 * solution to really fix performance */
+	_npf_aystar.max_search_nodes = _patches.npf_max_search_nodes;
 #if 0
 	init_AyStar(&_train_find_station, NTPHash, 1024);
 	init_AyStar(&_train_find_depot, NTPHash, 1024);
