@@ -548,24 +548,24 @@ STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Afficher
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Cliquez sur le service pour centrer la vue sur l'industrie ou la ville
 STR_01FE_DIFFICULTY                                             :{BLACK}Difficulté ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
-STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Message précédent/Bulletin de nouvelles
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Message/Bulletin précédent
 STR_0201_MESSAGE_SETTINGS                                       :Options de messagerie
 STR_MESSAGE_HISTORY_MENU                                        :Historique des Messages
 STR_0202_SEND_MESSAGE                                           :Envoyer message
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afficher le dernier message ou bulletin d'information, afficher les options des messages
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afficher le dernier message/bulletin, afficher les options des messages
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Options des messages
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Types de message:-
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station du joueur
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station d'un competiteur
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / désastres
-STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Information corporative
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informations corporatives
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Conseils / information sur les véhicules du joueur
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveaux véhicules
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de cargaison
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventions
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Information génerale
-STR_MESSAGES_ALL                                                :{YELLOW}Paramètre pour tous les types de messages (actif/inactif/sommaire)
+STR_MESSAGES_ALL                                                :{YELLOW}Pour tout types de messages (aucun/sommaire/complet)
 STR_MESSAGE_SOUND                                               :{YELLOW}Emettre son pour les bulletins sommaires
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...trop loin de la destination précédente
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUMU16}{}({STRING} niveau)
@@ -722,7 +722,7 @@ STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Sélectio
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Taille:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
-STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Afficher le dernier message ou bulletin de nouvelles
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Afficher le dernier message ou bulletin
 STR_OFF                                                         :Aucun
 STR_SUMMARY                                                     :Sommaire
 STR_FULL                                                        :Complet
@@ -771,8 +771,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Désactivé
-STR_02DA_ON                                                     :{BLACK}Activé
+STR_02DB_OFF                                                    :{BLACK}Inactif
+STR_02DA_ON                                                     :{BLACK}Actif
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Afficher les subventions
 STR_02DD_SUBSIDIES                                              :Subventions
 STR_02DE_MAP_OF_WORLD                                           :Carte du monde
@@ -804,7 +804,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Sélectio
 STR_02F4_AUTOSAVE                                               :{BLACK}Sauvegarde automatique
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Sélectionnez l'intervalle de temps entre les sauvegardes automatiques
-STR_02F7_OFF                                                    :Désactivé
+STR_02F7_OFF                                                    :Inactif
 STR_02F8_EVERY_3_MONTHS                                         :Tous les 3 mois
 STR_02F9_EVERY_6_MONTHS                                         :Tous les 6 mois
 STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 mois
@@ -1076,7 +1076,7 @@ STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stations
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economie
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Compétiteurs
 
-STR_CONFIG_PATCHES_DISABLED                                     :désactivé
+STR_CONFIG_PATCHES_DISABLED                                     :inactif
 STR_CONFIG_PATCHES_INT32                                        :{INT32}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
@@ -1970,8 +1970,8 @@ STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mois après le
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mois après le joueur
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :A la fin de la ligne et aux gares
 STR_6835_AT_END_OF_LINE_ONLY                                    :A la fin de la ligne seulement
-STR_6836_OFF                                                    :Désactivé
-STR_6837_ON                                                     :Activé
+STR_6836_OFF                                                    :Inactif
+STR_6837_ON                                                     :Actif
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Afficher le tableau des scores
 STR_6839_PERMISSIVE                                             :Laxiste
 STR_683A_TOLERANT                                               :Tolérant
@@ -2072,7 +2072,7 @@ STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} à été vendue à {STRING} pour {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez vous acheter {STRING} pour {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Banqueroute!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} à été fermée par ses créanciers et tout ses acrifs vendus!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} à été fermée par ses créanciers et tous ses actifs vendus!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nouvelle compagnie de transport crée!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} commence à construire près de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossible d'acheter la compagnie...

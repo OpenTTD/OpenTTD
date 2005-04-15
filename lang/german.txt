@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgr
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Letzte Nachricht oder letzten Bericht anzeigen
+STR_OFF                                                         :Aus
 STR_SUMMARY                                                     :Ticker
 STR_FULL                                                        :Zeitung
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

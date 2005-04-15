@@ -4,19 +4,19 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ârpus kartes robežas
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pârâk tuvu kartes malai
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robežas
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - vajag {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei j&#257;b&#363;t plakanai
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (ce&#316;&#257; no
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cel'a' no
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Pie&#326;em: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Pie&#326;em: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Pien'em: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasažierus
 STR_0010_COAL                                                   :Ogles
@@ -25,9 +25,9 @@ STR_0012_OIL                                                    :Naftu
 STR_0013_LIVESTOCK                                              :Liellopus
 STR_0014_GOODS                                                  :Preces
 STR_0015_GRAIN                                                  :Graudus
-STR_0016_WOOD                                                   :Kokmateriâlus
-STR_0017_IRON_ORE                                               :Dzelzs r&#363;du
-STR_0018_STEEL                                                  :T&#275;raudu
+STR_0016_WOOD                                                   :Kokmateria'lus
+STR_0017_IRON_ORE                                               :Dzelzs ru'du
+STR_0018_STEEL                                                  :Te'raudu
 STR_0019_VALUABLES                                              :V&#275;rtspap&#299;ri
 STR_001A_COPPER_ORE                                             :Vara r&#363;da
 STR_001B_MAIZE                                                  :Kukur&#363;za
@@ -723,6 +723,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Town si
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
+STR_OFF                                                         :Nav
 STR_SUMMARY                                                     :Summary
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
