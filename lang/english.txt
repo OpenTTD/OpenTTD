@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Last message/news report
 STR_0201_MESSAGE_SETTINGS                                       :Message settings
 STR_MESSAGE_HISTORY_MENU                                        :Message History
-STR_0202_SEND_MESSAGE                                           :Send message
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Show last message/news report, show message options
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Message Options
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Message types:-

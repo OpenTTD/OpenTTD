@@ -142,7 +142,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 void ShowMusicWindow(void);
 
 /* main_gui.c */
-VARDEF byte _newspaper_flag;
 VARDEF byte _construct_mode;
 VARDEF byte _station_show_coverage;
 VARDEF PlaceProc *_place_proc;

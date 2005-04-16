@@ -436,7 +436,6 @@ static void MenuClickNewspaper(int index)
 	case 0: ShowLastNewsMessage(); break;
 	case 1: ShowMessageOptions(); break;
 	case 2: ShowMessageHistory(); break;
-	case 3: ; /* XXX: chat not done */
 	}
 }
 
@@ -976,7 +975,7 @@ static void ToolbarMusicClick(Window *w)
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, _newspaper_flag != 2 ? 3 : 4);
+	PopupMainToolbMenu(w, 0x1E0, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
 }
 
 static void ToolbarHelpClick(Window *w)
