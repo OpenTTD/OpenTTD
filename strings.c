@@ -343,7 +343,7 @@ static char *FormatTinyDate(char *buff, uint16 number)
 
 uint GetCurrentCurrencyRate(void)
 {
-	return _currency_specs[_opt.currency].rate;
+	return _currency_specs[_opt_ptr->currency].rate;
 }
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact)
@@ -427,7 +427,7 @@ static char *DecodeString(char *buff, const char *str)
 			buff = FormatNoCommaNumber(buff, GetParamInt16());
 			break;
 		case 0x7F: // {CURRENCY}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt32(), false);
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), false);
 			break;
 		// 0x80 is reserved for EURO
 		case 0x81: // {STRINL}
@@ -442,9 +442,9 @@ static char *DecodeString(char *buff, const char *str)
 			break;
 		case 0x84: {// {VELOCITY}
 			int value = GetParamInt16();
-			if (_opt.kilometers) value = value * 1648 >> 10;
+			if (_opt_ptr->kilometers) value = value * 1648 >> 10;
 			buff = FormatCommaNumber(buff, value);
-			if (_opt.kilometers) {
+			if (_opt_ptr->kilometers) {
 				memcpy(buff, " km/h", 5);
 				buff += 5;
 			} else {
@@ -458,7 +458,7 @@ static char *DecodeString(char *buff, const char *str)
 		case 0x85:
 			switch (*str++) {
 			case 0: /* {CURRCOMPACT} */
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt32(), true);
+				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), true);
 				break;
 			case 1: /* {INT32} */
 				buff = FormatNoCommaNumber(buff, GetParamInt32());
@@ -471,7 +471,7 @@ static char *DecodeString(char *buff, const char *str)
 				// 8-bit = cargo type
 				// 16-bit = cargo count
 				const char *s;
-				StringID cargo_str = _cargo_string_list[_opt.landscape][(byte)GetParamInt8()];
+				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][(byte)GetParamInt8()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
 				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier);
@@ -482,7 +482,7 @@ static char *DecodeString(char *buff, const char *str)
 			} break;
 			case 4: /* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), true);
+				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt64(), true);
 				break;
 
 			default:
@@ -541,7 +541,7 @@ static char *DecodeString(char *buff, const char *str)
 		}
 
 		case 0x9C: { // {CURRENCY64}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt.currency], GetParamInt64(), false);
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt64(), false);
 			break;
 		}
 
@@ -679,7 +679,7 @@ static char *GenAndCoName(char *buff)
 
 	base = 0;
 	num = 29;
-	if (_opt.landscape == LT_CANDY) {
+	if (_opt_ptr->landscape == LT_CANDY) {
 		base = num;
 		num = 12;
 	}
@@ -710,7 +710,7 @@ static char *GenPlayerName_4(char *buff)
 
 	base = 0;
 	num = 29;
-	if (_opt.landscape == LT_CANDY) {
+	if (_opt_ptr->landscape == LT_CANDY) {
 		base = num;
 		num = 12;
 	}
