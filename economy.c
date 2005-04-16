@@ -1480,7 +1480,7 @@ int LoadUnloadVehicle(Vehicle *v)
 void PlayersMonthlyLoop(void)
 {
 	PlayersGenStatistics();
-	if (_patches.inflation)
+	if (_patches.inflation && _cur_year < MAX_YEAR_END)
 		AddInflation();
 	PlayersPayInterest();
 	// Reset the _current_player flag
