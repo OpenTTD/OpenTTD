@@ -18,6 +18,7 @@ Table of Contents:
  * 8.1 Guidelines
  * 8.2 Translation
  * 8.3 Previewing
+9.0) Troubleshooting
 X.X) Credits
 
 
@@ -71,7 +72,7 @@ are:
 	Windows - Win32 GDI (faster) or SDL
 	Linux - SDL
 	FreeBSD - SDL
-	MacOS - SDL
+	MacOSX - SDL
 	BeOS - SDL
 	MorphOS - SDL
 
@@ -122,16 +123,21 @@ Several important non-standard controls:
 6.0) Configuration File:
 ---- -------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple windows-like
-.INI format. It's mostly undocumented.
+.INI format. It's mostly undocumented. Almost all settings can be changed ingame by
+using the 'Configure patches' window.
 
 
 7.0) Compiling:
 ---- ----------
 Windows:
   You need Microsoft Visual Studio 6 or .NET. Open the project file
-  and it should build automatically. In case you don't build with SDL,
-  you need to remove WITH_SDL from the project settings.
-  (see also docs/Readme_Windows_MSVC6.0.txt)
+  and it should build automatically. In case you want to build with SDL support
+  you need to add WITH_SDL to the project settings.
+  PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these to
+  work you need their development files. Best is to download the openttd-useful.zip
+  file from SourceForge under the File tab. Put the header files into your compiler's
+  include/ directory and the library (.lib) files into the lib/ directory. For more help
+  with VS6 see docs/Readme_Windows_MSVC6.0.txt.
 
   You can also build it using the Makefile with MSys/MingW or Cygwin/MingW.
   Please read the Makefile for more information.
@@ -158,10 +164,10 @@ MorphOS
 ---- -------------------
 See http://www.openttd.org/translating.php for up-to-date information.
 
-The use of the online Translator service, located at http://translator.openttd.org.
-For a username password combo you should contact the development team, either by mail, irc
-or the forums. The system is straight-forward to use, if you have any troubles, read the
-online help located there.
+The use of the online Translator service, located at http://translator.openttd.org is
+highly encouraged. For a username password combo you should contact the development team,
+either by mail, irc or the forums. The system is straight-forward to use, if you have any
+troubles, read the online help located there.
 
 If for some reason the website is down for a longer period of time, the information below
 might be of help.
@@ -174,6 +180,9 @@ Here are some translation guidelines which you should follow closely.
       This avoids double work, as someone else may have already started translating to the same language.
     * Translators must use the charater set ISO 8859-15.
       Otherwise, some characters will not display correctly in the game.
+    * Currently it is not possible to translate into other charactersets than Latin, also changing
+      the order of strings is unsupported. Eg. it is always '16tonnes of coal' and cannot be
+      'coal existing of 16tonnes'
 
 8.2) Translation:
 ---- -------------------
@@ -208,6 +217,23 @@ in the lang subdirectory, which is where your language file should also be.
 
 That's all! You should now be able to select the language in the game options.
 
+9.0) Troubleshooting
+To see all startup options available to you, start OpenTTD with the "./openttd -h"
+option. This might help you tweak some of the settings.
+If the game is acting weird and you feel adventorous you can try the "-d [[<name>]=[<level>]"
+flag, where the higher levels will give you more debugging output. The name can help
+you to filter out only some type of debugging messages. This is mostly undocumented
+so best is to look in debug.c for the various debugging types. For more information
+look at http://wiki.openttd.org/index.php/Command_line
+
+The most frequent problem is missing data files. Don't forget to put all grf
+files from TTD into your data/ folder including sample.cat!
+Another, less frequent problem is the game refusing to run when you don't have a
+soundcard. To solve this, force OpenTTD to run without sound/music by running it with
+the command line option: "./openttd -s null -m null". This will disable both sound
+and music.
+Under Windows98 and lower it is impossible to use a dedicated server; it will fail to
+start. Perhaps this is for the better because those OS's are not known for their stability.
 
 X.X) Credits:
 ---- --------
@@ -215,13 +241,13 @@ The OpenTTD team (in alphabetical order):
   Bjarni Corfitzen (Bjarni)      - MacOSX port, coder
   Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamas Faragó (Darkvater)       - Lead programmer
-  Dominik Scherer (dominik81)    - Lead programmer
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Owen Rudge (orudge)            - Contributor, forum host, masterserver host
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
 Retired Developers:
+  Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
   Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
