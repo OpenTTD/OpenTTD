@@ -1560,7 +1560,16 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		int i;
 		DoClearSquare(tile);
+
+		/* Clear all vehicles destined for this station */
+		for (i = 0; i != NUM_SLOTS; i++) {
+			if (cur_stop->slot[i] != INVALID_SLOT) {
+				Vehicle *v = GetVehicle(cur_stop->slot[i]);
+				ClearSlot(v, v->u.road.slot);
+			}
+		}
 
 		cur_stop->used = false;
 		if (cur_stop->prev != NULL)	//alter previous stop
