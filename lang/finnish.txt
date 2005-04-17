@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Viimeisin viesti/uutisraportti
 STR_0201_MESSAGE_SETTINGS                                       :Viestiasetukset
 STR_MESSAGE_HISTORY_MENU                                        :Viestihistoria
-STR_0202_SEND_MESSAGE                                           :Lähetä viesti
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Viestiasetukset
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Viestityypit:-

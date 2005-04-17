@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Paskutine zinute/naujiena
 STR_0201_MESSAGE_SETTINGS                                       :Zinuciu nustatymai
 STR_MESSAGE_HISTORY_MENU                                        :Zinuciu istorija
-STR_0202_SEND_MESSAGE                                           :Siusti zinute
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Parodyti paskutine zinute/naujiena, rodyti zinuciu nustatymus
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Zinuciu nustatymai
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Zinuciu tipai:-

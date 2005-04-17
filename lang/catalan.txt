@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Darrer missatge/notícia
 STR_0201_MESSAGE_SETTINGS                                       :Preferències dels Missatges
 STR_MESSAGE_HISTORY_MENU                                        :Historial de Missatges
-STR_0202_SEND_MESSAGE                                           :Enviar missatge
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostrar darrers missatges/notícies, mostrar opcions de missatges
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcions de Missatges
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipus de Missages:-

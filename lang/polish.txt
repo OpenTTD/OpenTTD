@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ostatnia wiadomosc/ogloszenie
 STR_0201_MESSAGE_SETTINGS                                       :Ustawienia wiadomosci
 STR_MESSAGE_HISTORY_MENU                                        :Poprzednie wiadomosci
-STR_0202_SEND_MESSAGE                                           :Wyslij wiadomosc
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Pokaz ostatnia wiadomosc/ogloszenie, pokaz ustawienia wiadomosci
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcje wiadomosci
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:-

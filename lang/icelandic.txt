@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Síðustu skilaboð/frétt
 STR_0201_MESSAGE_SETTINGS                                       :Skilaboðastillingar
 STR_MESSAGE_HISTORY_MENU                                        :Saga skilaboða
-STR_0202_SEND_MESSAGE                                           :Senda skilaboð
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Sýna síðustu skilaboð/fréttatilkynningu, sýna skilaboðastillingar
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Skilaboðastillingar
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Skilaboðategundir:-

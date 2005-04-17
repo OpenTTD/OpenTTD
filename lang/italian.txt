@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimi messaggi/nuovi rapporti
 STR_0201_MESSAGE_SETTINGS                                       :Impostazioni messaggi
 STR_MESSAGE_HISTORY_MENU                                        :Cronologia messaggi
-STR_0202_SEND_MESSAGE                                           :Invia Messaggio
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra Impostazione messaggi
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Impostazione messaggi
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi di messaggio:-

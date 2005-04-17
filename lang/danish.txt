@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Sidste Besked/Nyheds rapport
 STR_0201_MESSAGE_SETTINGS                                       :Besked Indstillinger
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere beskeder
-STR_0202_SEND_MESSAGE                                           :Send besked
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyheds rapport, vis besked indstillinger
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Besked Indstillinger
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Besked typer:-
@@ -723,6 +722,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørr
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis sidste besked eller nyheds rapport
+STR_OFF                                                         :Fra
 STR_SUMMARY                                                     :Resume
 STR_FULL                                                        :Fuldt
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

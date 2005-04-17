@@ -550,7 +550,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Última mensaxe/noticia
 STR_0201_MESSAGE_SETTINGS                                       :Configuración das Mensaxes
 STR_MESSAGE_HISTORY_MENU                                        :Historial de Mensaxes
-STR_0202_SEND_MESSAGE                                           :Enviar Mensaxe
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Amosa-la última mensaxe/noticia, amosa-las opcións das mensaxes
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcións das mensaxes
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipos de mensaxes:-

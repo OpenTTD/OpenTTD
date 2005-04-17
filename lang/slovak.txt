@@ -422,6 +422,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Zburanie
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvysit roh terenu
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Posuvacia lista
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Posuvacia lista - posuva vypis dolava/doprava
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Zobrazit vrstevnice na mape
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Zobrazit dopravne prostriedky na mape
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Zobrazit priemysel na mape
@@ -550,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Zobrazit poslednu spravu/novinku
 STR_0201_MESSAGE_SETTINGS                                       :Nastavenia sprav
 STR_MESSAGE_HISTORY_MENU                                        :Historia Sprav
-STR_0202_SEND_MESSAGE                                           :Poslat spravu
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zobrazit poslednu spravu/novinku, nastavenia sprav
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nastavenia sprav
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Typ sprav:-
@@ -564,6 +564,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Nove vo
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zmeny prijmu nakladu
 STR_020E_SUBSIDIES                                              :{YELLOW}Dotacie
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Hlavne informacie
+STR_MESSAGES_ALL                                                :{YELLOW}Nastavenie pre vsetky typov sprav (vypnute/strucne/zapnute)
+STR_MESSAGE_SOUND                                               :{YELLOW}Prehrat zvuk pre strucne novinove spravy
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...prilis daleko z predchadzajuceho ciela
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUMU16}{}({STRING} uroven)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabulka spolocnosti v roku {NUMU16}
@@ -720,6 +722,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Velkost
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Zobraz poslednu spravu alebo novinku
+STR_OFF                                                         :Vypnute
 STR_SUMMARY                                                     :Obsah
 STR_FULL                                                        :Plne
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

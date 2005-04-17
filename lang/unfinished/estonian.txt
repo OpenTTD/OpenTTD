@@ -550,7 +550,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Viimane teade
 STR_0201_MESSAGE_SETTINGS                                       :Teadete seaded
 STR_MESSAGE_HISTORY_MENU                                        :Teadete ajalugu
-STR_0202_SEND_MESSAGE                                           :Saada Teade
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näitab viimase teate, kuvab teadete seaded
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete seaded
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:

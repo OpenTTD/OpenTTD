@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Senaste meddelandet/nyheten
 STR_0201_MESSAGE_SETTINGS                                       :Meddelandeinställningar
 STR_MESSAGE_HISTORY_MENU                                        :Meddelandehistorik
-STR_0202_SEND_MESSAGE                                           :Skicka meddelande
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meddelandeinställningar
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:-

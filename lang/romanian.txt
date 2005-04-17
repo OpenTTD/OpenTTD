@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimul mesaj/ultima stire
 STR_0201_MESSAGE_SETTINGS                                       :Setãri mesaje
 STR_MESSAGE_HISTORY_MENU                                        :Lista ultimelor mesaje
-STR_0202_SEND_MESSAGE                                           :Trimite mesaj
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afiseaza ultimul mesaj (ultima stire) si optiunile pentru mesaje
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Optiuni mesaje
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipuri mesaje:-

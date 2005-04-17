@@ -551,7 +551,6 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Laatste (nieuws)bericht
 STR_0201_MESSAGE_SETTINGS                                       :Berichteninstellingen
 STR_MESSAGE_HISTORY_MENU                                        :Berichtengeschiedenis
-STR_0202_SEND_MESSAGE                                           :Stuur bericht
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Toon laatste (nieuws)bericht, toon berichteninstellingen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berichtenopties
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Berichttypen:-
