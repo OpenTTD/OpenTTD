@@ -652,8 +652,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		st = GetStation(order->station);
 
 		{
-			int32 *dist;
-			int32 mindist = 0xFFFFFFFF;
+			uint mindist = 0xFFFFFFFF;
 			int num;
 			RoadStopType type;
 			RoadStop *rs;
@@ -670,18 +669,12 @@ static void ProcessRoadVehOrder(Vehicle *v)
 				return;
 			}
 
-			dist = malloc(num * sizeof(int32));
-
-			do {
-				*dist = DistanceSquare(v->tile, rs->xy);
-				if (*dist < mindist) {
+			for (rs = GetPrimaryRoadStop(st, type); rs != NULL; rs = rs->next) {
+				if (DistanceManhattan(v->tile, rs->xy) < mindist) {
 					v->dest_tile = rs->xy;
 				}
-				rs = rs->next;
-			} while ( rs != NULL );
+			}
 
-			free(dist);
-			dist = NULL;
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->station)->xy;
@@ -1157,28 +1150,16 @@ found_best_track:;
 	return best_track;
 }
 
-static int RoadFindPathToStation(const Vehicle *v, TileIndex tile)
+static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
 {
-	FindRoadToChooseData frd;
-	int i, best_track = -1;
-	uint best_dist = (uint) -1, best_maxlen = (uint) -1;
+  NPFFindStationOrTileData fstd;
+  byte trackdir = _dir_to_diag_trackdir[(v->direction >> 1) & 3];
 
-	frd.dest = tile;
-	frd.maxtracklen = (uint) -1;
-	frd.mindist = (uint) -1;
+  fstd.dest_coords = tile;
+  fstd.station_index = -1;	// indicates that the destination is a tile, not a station
 
-	for (i = 0; i < 4; i++) {
-		FollowTrack(v->tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
-
-		if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen )) {
-			best_dist = frd.mindist;
-			best_maxlen = frd.maxtracklen;
-			best_track = i;
-		}
-	}
-	return best_maxlen;
+  return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner).best_path_dist;
 }
-
 
 typedef struct RoadDriveEntry {
 	byte x,y;
@@ -1672,17 +1653,12 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		}
 
 		//We do not have a slot, so make one
-		if (v->u.road.slot == NULL && rs != NULL) {
+		if (v->u.road.slot == NULL && rs != NULL && IsTileType(v->tile, MP_STREET)) {
 		//first we need to find out how far our stations are away.
 
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			do {
-				stop->dist = 0xFFFFFFFF;
-
-				//FIXME This doesn't fully work yet, as it only goes
-				//to one tile BEFORE the stop in question and doesn't
-				//regard the direction of the exit
-				stop->dist = RoadFindPathToStation(v, rs->xy);
+				stop->dist = RoadFindPathToStation(v, rs->xy) / NPF_TILE_LENGTH;
 				DEBUG(ms, 3) ("Multistop: Distance to stop at 0x%x is %d", rs->xy, stop->dist);
 				stop->rs = rs;
 
@@ -1694,7 +1670,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				rs = rs->next;
 			} while (rs != NULL);
 
-			if (mindist < 120) {	//if we're reasonably close, get us a slot
+			if (mindist < 180) {	//if we're reasonably close, get us a slot
 				int k;
 				bubblesort(firststop, num, sizeof(StopStruct), dist_compare);
 
