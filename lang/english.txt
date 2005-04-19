@@ -695,7 +695,7 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant tr
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place rocky areas on landscape
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area, press and hold CTRL to remove it
 STR_CREATE_LAKE                                                 :{BLACK}Define water area, will flood its surroundings if at sea level
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely

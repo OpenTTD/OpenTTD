@@ -46,10 +46,15 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	size_x = (ex - sx) + 1;
 	size_y = (ey - sy) + 1;
 
+	_generating_world = true;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
-		if (GetTileType(tile) != MP_WATER)
-			SetMapExtraBits(tile, GetMapExtraBits(tile) == 1 ? 0 : 1);
+		if (GetTileType(tile) != MP_WATER) {
+			SetMapExtraBits(tile, (_ctrl_pressed) ? 0 : 1);
+			DoClearSquare(tile);
+			MarkTileDirtyByTile(tile);
+		}
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
+	_generating_world = false;
 }
 
 /**
