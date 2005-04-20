@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial
 STR_SINGLE_PLAYER                                               :{BLACK}Single player
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Mapsize:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Game Options
 
 STR_0150_SOMEONE                                                :someone{SKIP}{SKIP}
@@ -1583,7 +1591,7 @@ STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}  Cost: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Build a statue in honor of your company.{} Cost: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Build a statue in honour of your company.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
