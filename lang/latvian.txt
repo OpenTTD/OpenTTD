@@ -523,13 +523,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}
+STR_01E7                                                        :{DKGREEN}{TINYFONT} "{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Treks{SETX 88}Nosaukums
 STR_01E9_SHUFFLE                                                :{TINYFONT}Sajaukt
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muzikas programmas izve'le
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16}
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16}  "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Treka indekss
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Dze'st

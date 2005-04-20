@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial
 STR_SINGLE_PLAYER                                               :{BLACK}Singolo giocatore
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Dimensioni mappa:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opzioni di gioco
 
 STR_0150_SOMEONE                                                :qualcuno{SKIP}{SKIP}
@@ -568,6 +576,7 @@ STR_MESSAGES_ALL                                                :{YELLOW}Imposta
 STR_MESSAGE_SOUND                                               :{YELLOW}Esegui un suono per i messaggi sommarizzati
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...troppo lontano dalla destinazione precedente
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Le maggiori compagnie che hanno raggiunto il livello {NUMU16}{}({STRING})
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Classifica società  del{NUMU16}
 STR_0212                                                        :{BIGFONT}{COMMA16}.
 STR_0213_BUSINESSMAN                                            :Uomo d'affari
 STR_0214_ENTREPRENEUR                                           :Imprenditore

@@ -10,7 +10,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Du har i
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Trenger flatt land
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flatt land er nødvendig
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (på vei fra
@@ -25,7 +25,7 @@ STR_0012_OIL                                                    :Olje
 STR_0013_LIVESTOCK                                              :Buskap
 STR_0014_GOODS                                                  :Gods
 STR_0015_GRAIN                                                  :Korn
-STR_0016_WOOD                                                   :Ved
+STR_0016_WOOD                                                   :Tømmer
 STR_0017_IRON_ORE                                               :Jernmalm
 STR_0018_STEEL                                                  :Stål
 STR_0019_VALUABLES                                              :Verdisaker
@@ -48,16 +48,16 @@ STR_0029_BUBBLES                                                :Bobler
 STR_002A_TOFFEE                                                 :Karamell
 STR_002B_BATTERIES                                              :Batterier
 STR_002C_PLASTIC                                                :Plastikk
-STR_002D_FIZZY_DRINKS                                           :Mineralvann
+STR_002D_FIZZY_DRINKS                                           :Brus
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passasjerer
+STR_002F_PASSENGER                                              :Passasjer
 STR_0030_COAL                                                   :Kull
 STR_0031_MAIL                                                   :Post
 STR_0032_OIL                                                    :Olje
 STR_0033_LIVESTOCK                                              :Buskap
 STR_0034_GOODS                                                  :Gods
 STR_0035_GRAIN                                                  :Korn
-STR_0036_WOOD                                                   :Ved
+STR_0036_WOOD                                                   :Tømmer
 STR_0037_IRON_ORE                                               :Jernmalm
 STR_0038_STEEL                                                  :Stål
 STR_0039_VALUABLES                                              :Verdisaker
@@ -73,14 +73,14 @@ STR_0042_WHEAT                                                  :Hvete
 STR_0043_RUBBER                                                 :Gummi
 STR_0044_SUGAR                                                  :Sukker
 STR_0045_TOY                                                    :Leketøy
-STR_0046_CANDY                                                  :Søtsaker
+STR_0046_CANDY                                                  :Søtsak
 STR_0047_COLA                                                   :Cola
 STR_0048_COTTON_CANDY                                           :Sukkerspinn
 STR_0049_BUBBLE                                                 :Boble
 STR_004A_TOFFEE                                                 :Karamell
 STR_004B_BATTERY                                                :Batteri
 STR_004C_PLASTIC                                                :Plastikk
-STR_004D_FIZZY_DRINK                                            :Mineralvann
+STR_004D_FIZZY_DRINK                                            :Brus
 STR_004E                                                        :
 STR_004F_PASSENGER                                              :{COMMA16} passasjer
 STR_0050_TON_OF_COAL                                            :{COMMA16} tonn kull
@@ -89,7 +89,7 @@ STR_0052_OF_OIL                                                 :{VOLUME} olje
 STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} enhet buskap
 STR_0054_CRATE_OF_GOODS                                         :{COMMA16} kasse gods
 STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonn korn
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonn ved
+STR_0056_TON_OF_WOOD                                            :{COMMA16} tonn tømmer
 STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonn jernmalm
 STR_0058_TON_OF_STEEL                                           :{COMMA16} tonn stål
 STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} sekk med verdisaker
@@ -104,7 +104,7 @@ STR_0061_OF_WATER                                               :{VOLUME} vann
 STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonn hvete
 STR_0063_OF_RUBBER                                              :{VOLUME} gummi
 STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonn sukker
-STR_0065_TOY                                                    :{COMMA16} leketøy
+STR_0065_TOY                                                    :{COMMA16} leke
 STR_0066_BAG_OF_CANDY                                           :{COMMA16} sekk med søtsaker
 STR_0067_OF_COLA                                                :{VOLUME} cola
 STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonn sukkerspinn
@@ -112,7 +112,7 @@ STR_0069_BUBBLE                                                 :{COMMA16} boble
 STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonn karamell
 STR_006B_BATTERY                                                :{COMMA16} batteri
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_006D_FIZZY_DRINK                                            :{COMMA16} mineralvann
+STR_006D_FIZZY_DRINK                                            :{COMMA16} brus
 STR_006E                                                        :
 STR_006F_PASSENGERS                                             :{COMMA16} passasjerer
 STR_0070_TONS_OF_COAL                                           :{COMMA16} tonn kull
@@ -121,7 +121,7 @@ STR_0072_OF_OIL                                                 :{VOLUME} olje
 STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} enheter buskap
 STR_0074_CRATES_OF_GOODS                                        :{COMMA16} kasser gods
 STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonn korn
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn ved
+STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn tømmer
 STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonn jernmalm
 STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonn stål
 STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} sekker med verdisaker
@@ -136,15 +136,15 @@ STR_0081_OF_WATER                                               :{VOLUME} vann
 STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonn hvete
 STR_0083_OF_RUBBER                                              :{VOLUME} gummi
 STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonn sukker
-STR_0085_TOYS                                                   :{COMMA16} leketøy
+STR_0085_TOYS                                                   :{COMMA16} leker
 STR_0086_BAGS_OF_CANDY                                          :{COMMA16} sekker søtsaker
 STR_0087_OF_COLA                                                :{VOLUME} cola
 STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonn sukkerspinn
 STR_0089_BUBBLES                                                :{COMMA16} bobler
 STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonn karameller
-STR_008B_BATTERIES                                              :{COMMA16} batteri
+STR_008B_BATTERIES                                              :{COMMA16} batterier
 STR_008C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} mineralvann
+STR_008D_FIZZY_DRINKS                                           :{COMMA16} brus
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL
@@ -183,19 +183,19 @@ STR_00B0_MAP                                                    :{WHITE}Kart - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spillinnstillinger
 STR_00B2_MESSAGE                                                :{YELLOW}Melding
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding fra {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikke gjøre det....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde feltet....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opprinnelig copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikke gjøre dette....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde dette området....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Opprinnelig opphavsbeskyttet {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versjon {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-teamet
 STR_TRANSLATED_BY                                               :{BLACK}  Oversetter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}Avslutte
+STR_00C7_QUIT                                                   :{WHITE}Avslutt
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nei
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil avslutte og returnere til {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på at du vil avslutte og gå tilbake til {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -212,8 +212,8 @@ STR_00D7_GREEN                                                  :Grønn
 STR_00D8_DARK_GREEN                                             :Mørkegrønn
 STR_00D9_BLUE                                                   :Blå
 STR_00DA_CREAM                                                  :Kremgul
-STR_00DB_MAUVE                                                  :Lilla
-STR_00DC_PURPLE                                                 :Purpur
+STR_00DB_MAUVE                                                  :Fiolett
+STR_00DC_PURPLE                                                 :Lilla
 STR_00DD_ORANGE                                                 :Oransje
 STR_00DE_BROWN                                                  :Brun
 STR_00DF_GREY                                                   :Grå
@@ -223,7 +223,7 @@ STR_00E2                                                        :{BLACK}{COMMA16
 STR_00E3                                                        :{RED}{COMMA16}
 STR_00E4_LOCATION                                               :{BLACK}Sted
 STR_00E5_CONTOURS                                               :Konturer
-STR_00E6_VEHICLES                                               :Kjøretøyer
+STR_00E6_VEHICLES                                               :Kjøretøy
 STR_00E7_INDUSTRIES                                             :Industrier
 STR_00E8_ROUTES                                                 :Ruter
 STR_00E9_VEGETATION                                             :Vegetasjon
@@ -262,24 +262,24 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kobbergruve
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruktplantasje
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Gummiplantasje
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vannreservoar
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vannkilde
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vanntårn
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Sagbruk
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sukkerspinnskog
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Godterifabrikk
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterigård
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batterifarm
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Colabrønner
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Leketøysbutikk
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Leketøysfabrikk
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Lekebutikk
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Lekefabrikk
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastikkfontener
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Mineralvannfabrikk
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Brusfabrikk
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Boblegenerator
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamellbrudd
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sukkergruve
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Jernbanestasjon
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lasteterminal
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Bussstasjon
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flyplass/Heliport
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flyplass/Helikopterstasjon
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Kai
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Utmark
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Gress
@@ -297,7 +297,7 @@ STR_012C_MESSAGE                                                :{WHITE}Melding
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Avbryt
 STR_012F_OK                                                     :{BLACK}OK
-STR_0130_RENAME                                                 :{BLACK}Bytt navn
+STR_0130_RENAME                                                 :{BLACK}Gi nytt navn
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mange navn definert
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Navnet er allerede i bruk
 

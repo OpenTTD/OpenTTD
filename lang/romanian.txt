@@ -722,6 +722,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Mãrime 
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Re-afiseazã ultimul mesaj
+STR_OFF                                                         :Oprit
 STR_SUMMARY                                                     :Pe scurt
 STR_FULL                                                        :Pe larg
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
