@@ -13,22 +13,21 @@
 // TODO: make it train compatible
 static bool TestCanBuildStationHere(uint tile, byte dir)
 {
-    Player *p = DEREF_PLAYER(_current_player);
-    if (dir == TEST_STATION_NO_DIR) {
-        // TODO: currently we only allow spots that can be access from al 4 directions...
-        //  should be fixed!!!
-        for (dir=0;dir<4;dir++) {
-        	int res = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
-            if (res != CMD_ERROR)
-            	return true;
-        }
-        return false;
-    } else {
-       	int res = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
-        if (res == CMD_ERROR)
-        	return false;
-    }
-    return true;
+	Player *p = DEREF_PLAYER(_current_player);
+
+	if (dir == TEST_STATION_NO_DIR) {
+		int32 ret;
+		// TODO: currently we only allow spots that can be access from al 4 directions...
+		//  should be fixed!!!
+		for (dir=0;dir<4;dir++) {
+			ret = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
+			if (!CmdFailed(ret)) return true;
+		}
+		return false;
+	}
+
+	// return true if command succeeded, so the inverse of CmdFailed()
+	return !CmdFailed(AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST));
 }
 
 
@@ -191,7 +190,7 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 // What tiles are around us.
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current) {
 		uint i;
-		int r;
+		int ret;
 		int dir;
 
    	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
@@ -248,8 +247,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        			if (PathFinderInfo->rail_or_road) {
        				// Rail check
        				dir = AiNew_GetRailDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
-       				r = DoCommandByTile(current->path.node.tile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
-       				if (r == CMD_ERROR) continue;
+       				ret = DoCommandByTile(current->path.node.tile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+       				if (CmdFailed(ret)) continue;
 #ifdef AI_PATHFINDER_NO_90DEGREES_TURN
        				if (current->path.parent->parent != NULL) {
        					// Check if we don't make a 90degree curve
@@ -278,8 +277,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
        				}
        				// Only destruct things if it is MP_CLEAR of MP_TREES
        				if (dir != 0) {
-       					r = DoCommandByTile(current->path.node.tile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
-       					if (r == CMD_ERROR) continue;
+       					ret = DoCommandByTile(current->path.node.tile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+       					if (CmdFailed(ret)) continue;
        				}
        			}
 
@@ -320,8 +319,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
     	    	if (TILES_BETWEEN(new_tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) break;
 
     	    	// Try building the bridge..
-    	    	r = DoCommandByTile(tile, new_tile, (0<<8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
-	    	   	if (r == CMD_ERROR) continue;
+    	    	ret = DoCommandByTile(tile, new_tile, (0<<8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
+	    	   	if (CmdFailed(ret)) continue;
     		   	// We can build a bridge here.. add him to the neighbours
    				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
 	   			aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_BRIDGE + (dir << 8);
@@ -339,9 +338,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
     		(dir == 2 && ti.tileh == 3) ||
     		(dir == 3 && ti.tileh == 9)) {
     		// Now simply check if a tunnel can be build
-    		r = DoCommandByTile(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
+    		ret = DoCommandByTile(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
     		FindLandscapeHeightByTile(&ti, _build_tunnel_endtile);
-    		if (r != CMD_ERROR && (ti.tileh == 3 || ti.tileh == 6 || ti.tileh == 9 || ti.tileh == 12)) {
+    		if (!CmdFailed(ret) && (ti.tileh == 3 || ti.tileh == 6 || ti.tileh == 9 || ti.tileh == 12)) {
     			aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
 	   			aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
 	   			aystar->neighbours[aystar->num_neighbours++].direction = 0;

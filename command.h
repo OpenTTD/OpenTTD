@@ -177,6 +177,11 @@ enum {
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)
 #define return_cmd_error(errcode) do { return CMD_ERROR | (errcode); } while (0)
 
+/**
+ * Check the return value of a DoCommand*() function
+ * @param res the resulting value from the command to be checked
+ * @return Return true if the command failed, false otherwise
+ */
 static inline bool CmdFailed(int32 res)
 {
 	// lower 16bits are the StringID of the possible error

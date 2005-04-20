@@ -12,7 +12,7 @@
 //  Params:
 //    tile : tile where HQ is going to be build
 bool AiNew_Build_CompanyHQ(Player *p, uint tile) {
-	if (DoCommandByTile(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ) == CMD_ERROR)
+	if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ)))
 		return false;
 	DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ);
 	return true;
@@ -29,10 +29,11 @@ bool AiNew_Build_CompanyHQ(Player *p, uint tile) {
 int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtracks, byte direction, byte flag) {
 	if (type == AI_TRAIN)
 		return DoCommandByTile(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
-	else if (type == AI_BUS)
+
+	if (type == AI_BUS)
 		return DoCommandByTile(tile, direction, RS_BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
-	else
-		return DoCommandByTile(tile, direction, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+
+	return DoCommandByTile(tile, direction, RS_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 // Builds a brdige. The second best out of the ones available for this player
@@ -61,8 +62,8 @@ int AiNew_Build_Bridge(Player *p, uint tile_a, uint tile_b, byte flag) {
 	// Now, simply, build the bridge!
 	if (p->ainew.tbt == AI_TRAIN)
 		return DoCommandByTile(tile_a, tile_b, (0<<8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
-	else
-		return DoCommandByTile(tile_a, tile_b, (0x80 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+
+	return DoCommandByTile(tile_a, tile_b, (0x80 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 }
 
 
@@ -97,7 +98,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
      		cost += DoCommandByTile(route[part], 0, 0, flag, CMD_BUILD_TUNNEL);
      		PathFinderInfo->position++;
      		// TODO: problems!
-     		if (cost == CMD_ERROR) {
+     		if (CmdFailed(cost)) {
      			DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be build!");
 				return 0;
      		}
@@ -108,7 +109,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
      		cost += AiNew_Build_Bridge(p, route[part], route[part-1], flag);
      		PathFinderInfo->position++;
      		// TODO: problems!
-     		if (cost == CMD_ERROR) {
+     		if (CmdFailed(cost)) {
      			DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be build!");
 				return 0;
      		}
@@ -126,7 +127,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	     		old_dir = dir;
 	     		// Build the tile
 	     		res = DoCommandByTile(route[part], 0, dir, flag, CMD_BUILD_SINGLE_RAIL);
-	     		if (res == CMD_ERROR) {
+	     		if (CmdFailed(res)) {
 	     			// Problem.. let's just abort it all!
 	     			p->ainew.state = AI_STATE_NOTHING;
 	     			return 0;
@@ -147,7 +148,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
      		cost += DoCommandByTile(route[part], 0x200, 0, flag, CMD_BUILD_TUNNEL);
      		PathFinderInfo->position++;
      		// TODO: problems!
-     		if (cost == CMD_ERROR) {
+     		if (CmdFailed(cost)) {
      			DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be build!");
 				return 0;
      		}
@@ -158,7 +159,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
      		cost += AiNew_Build_Bridge(p, route[part], route[part+1], flag);
      		PathFinderInfo->position++;
      		// TODO: problems!
-     		if (cost == CMD_ERROR) {
+     		if (CmdFailed(cost)) {
      			DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be build!");
 				return 0;
      		}
@@ -181,15 +182,14 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	     			// Build the tile
 	     			res = DoCommandByTile(route[part], dir, 0, flag | DC_NO_WATER, CMD_BUILD_ROAD);
 	     			// Currently, we ignore CMD_ERRORs!
-	     			if (res == CMD_ERROR && flag == DC_EXEC && !IsTileType(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
-     					// Problem.. let's just abort it all!
-     					DEBUG(ai,0)("Darn, the route could not be builded.. aborting!");
-    	     			p->ainew.state = AI_STATE_NOTHING;
-    	     			return 0;
-    	     		} else {
-    	     			if (res != CMD_ERROR)
-    	     				cost += res;
-    	     		}
+						if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
+							// Problem.. let's just abort it all!
+							DEBUG(ai,0)("Darn, the route could not be builded.. aborting!");
+							p->ainew.state = AI_STATE_NOTHING;
+							return 0;
+						}
+
+    	     	if (!CmdFailed(res)) cost += res;
 		     	}
 	     		// Go to the next tile
 	     		part++;
@@ -213,7 +213,7 @@ int AiNew_PickVehicle(Player *p) {
         // Not supported yet
         return -1;
     } else {
-        int start, count, i, r = CMD_ERROR;
+        int start, count, i, ret = CMD_ERROR;
         start = _cargoc.ai_roadveh_start[p->ainew.cargo];
         count = _cargoc.ai_roadveh_count[p->ainew.cargo];
 
@@ -223,11 +223,11 @@ int AiNew_PickVehicle(Player *p) {
         	// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
         	if (!HASBIT(_engines[i].player_avail, _current_player) || _engines[i].reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
         	// Can we build it?
-        	r = DoCommandByTile(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
-        	if (r != CMD_ERROR) break;
+        	ret = DoCommandByTile(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
+        	if (!CmdFailed(ret)) break;
        	}
        	// We did not find a vehicle :(
-       	if (r == CMD_ERROR) { return -1; }
+       	if (CmdFailed(ret)) { return -1; }
        	return i;
     }
 }
@@ -237,25 +237,24 @@ int AiNew_Build_Vehicle(Player *p, uint tile, byte flag) {
 	int i = AiNew_PickVehicle(p);
 	if (i == -1) return CMD_ERROR;
 
-	if (p->ainew.tbt == AI_TRAIN) {
+	if (p->ainew.tbt == AI_TRAIN)
 		return CMD_ERROR;
-	} else {
-		return DoCommandByTile(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
-	}
+
+	return DoCommandByTile(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
 }
 
-int AiNew_Build_Depot(Player *p, uint tile, byte direction, byte flag) {
+int AiNew_Build_Depot(Player *p, uint tile, byte direction, byte flag)
+{
 	static const byte _roadbits_by_dir[4] = {2,1,8,4};
-	int r, r2;
-    if (p->ainew.tbt == AI_TRAIN) {
+	int ret, ret2;
+    if (p->ainew.tbt == AI_TRAIN)
     	return DoCommandByTile(tile, 0, direction, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRAIN_DEPOT);
-    } else {
-    	r = DoCommandByTile(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
-    	if (r == CMD_ERROR) return r;
-    	// Try to build the road from the depot
-    	r2 = DoCommandByTile(tile + TileOffsByDir(direction), _roadbits_by_dir[direction], 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
-    	// If it fails, ignore it..
-    	if (r2 == CMD_ERROR) return r;
-    	return r + r2;
-    }
+
+		ret = DoCommandByTile(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
+		if (CmdFailed(ret)) return ret;
+		// Try to build the road from the depot
+		ret2 = DoCommandByTile(tile + TileOffsByDir(direction), _roadbits_by_dir[direction], 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+		// If it fails, ignore it..
+		if (CmdFailed(ret2)) return ret;
+		return ret + ret2;
 }
