@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Leiðbein
 STR_SINGLE_PLAYER                                               :{BLACK}Einspilun
 STR_MULTIPLAYER                                                 :{BLACK}Fjölspilun
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Kortastærð:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Leikjastillingar
 
 STR_0150_SOMEONE                                                :einhver{SKIP}{SKIP}

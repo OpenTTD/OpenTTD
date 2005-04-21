@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Wprowadz
 STR_SINGLE_PLAYER                                               :{BLACK}Gra jednoosobowa
 STR_MULTIPLAYER                                                 :{BLACK}Gra wieloosobowa
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Wielkosc mapy:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opcje gry
 
 STR_0150_SOMEONE                                                :ktos{SKIP}{SKIP}
