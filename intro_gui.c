@@ -56,7 +56,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 
-		DrawString(170, 121, STR_MAPSIZE, 0);
+		DrawStringRightAligned(216, 121, STR_MAPSIZE, 0);
 		DrawString(223, 121, mapsizes[_patches.map_x - 6], 0x10);
 		DrawString(270, 121, STR_BY, 0);
 		DrawString(283, 121, mapsizes[_patches.map_y - 6], 0x10);
