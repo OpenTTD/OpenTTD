@@ -57,7 +57,7 @@ static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *curr
 	if (TILES_BETWEEN(current->path.node.tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br))
 		if (IsTileType(current->path.node.tile, MP_CLEAR) || IsTileType(current->path.node.tile, MP_TREES))
 			if (current->path.parent == NULL || TestCanBuildStationHere(current->path.node.tile,AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile)))
-    			return AYSTAR_FOUND_END_NODE;
+	return AYSTAR_FOUND_END_NODE;
 
 	return AYSTAR_DONE;
 }
@@ -173,7 +173,7 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 	PathNode *parent = &current->path;
 
 	do {
-     	PathFinderInfo->route_extra[i] = parent->node.user_data[0];
+		PathFinderInfo->route_extra[i] = parent->node.user_data[0];
 		PathFinderInfo->route[i++] = parent->node.tile;
 		if (i > lengthof(PathFinderInfo->route)) {
 			// We ran out of space for the PathFinder
@@ -189,171 +189,171 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 
 // What tiles are around us.
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current) {
-		uint i;
-		int ret;
-		int dir;
+	uint i;
+	int ret;
+	int dir;
 
-   	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
+	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 
-    aystar->num_neighbours = 0;
+	aystar->num_neighbours = 0;
 
-  	// Go through all surrounding tiles and check if they are within the limits
-   	for (i=0;i<4;i++) {
-   		if (TileX(TileOffsByDir(i) + current->path.node.tile) > 1 &&
-					TileX(TileOffsByDir(i) + current->path.node.tile) < MapMaxX() - 1 &&
-       		TileY(TileOffsByDir(i) + current->path.node.tile) > 1 &&
-					TileY(TileOffsByDir(i) + current->path.node.tile) < MapMaxY() - 1) {
-       		// We also directly test if the current tile can connect to this tile..
-       		//  We do this simply by just building the tile!
+	// Go through all surrounding tiles and check if they are within the limits
+	for (i = 0; i < 4; i++) {
+		if (TileX(TileOffsByDir(i) + current->path.node.tile) > 1 &&
+				TileX(TileOffsByDir(i) + current->path.node.tile) < MapMaxX() - 1 &&
+				TileY(TileOffsByDir(i) + current->path.node.tile) > 1 &&
+				TileY(TileOffsByDir(i) + current->path.node.tile) < MapMaxY() - 1) {
+			// We also directly test if the current tile can connect to this tile..
+			//  We do this simply by just building the tile!
 
-       		// If the next step is a bridge, we have to enter it the right way
-       		if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile + TileOffsByDir(i))) {
-       			if (IsTileType(current->path.node.tile + TileOffsByDir(i), MP_TUNNELBRIDGE)) {
-       				// An existing bridge... let's test the direction ;)
-       				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1U) != (i & 1)) continue;
-   					// This problem only is valid for tunnels:
-       				// When the last tile was not yet a tunnel, check if we enter from the right side..
-       				if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 0x80) == 0) {
-       					if (i != (_map5[current->path.node.tile + TileOffsByDir(i)] & 3U)) continue;
-       				}
-       			}
-       		}
-       		// But also if we are on a bridge, we can only move a certain direction
-       		if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile)) {
-       			if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
-       				// An existing bridge/tunnel... let's test the direction ;)
-       				if ((_map5[current->path.node.tile] & 1U) != (i & 1)) continue;
-       			}
-       		}
+			// If the next step is a bridge, we have to enter it the right way
+			if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile + TileOffsByDir(i))) {
+				if (IsTileType(current->path.node.tile + TileOffsByDir(i), MP_TUNNELBRIDGE)) {
+					// An existing bridge... let's test the direction ;)
+					if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 1U) != (i & 1)) continue;
+					// This problem only is valid for tunnels:
+					// When the last tile was not yet a tunnel, check if we enter from the right side..
+					if ((_map5[current->path.node.tile + TileOffsByDir(i)] & 0x80) == 0) {
+						if (i != (_map5[current->path.node.tile + TileOffsByDir(i)] & 3U)) continue;
+					}
+				}
+			}
+			// But also if we are on a bridge, we can only move a certain direction
+			if (!PathFinderInfo->rail_or_road && IsRoad(current->path.node.tile)) {
+				if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
+					// An existing bridge/tunnel... let's test the direction ;)
+					if ((_map5[current->path.node.tile] & 1U) != (i & 1)) continue;
+				}
+			}
 
-       		if ((AI_PATHFINDER_FLAG_BRIDGE & current->path.node.user_data[0]) != 0 ||
-       			(AI_PATHFINDER_FLAG_TUNNEL & current->path.node.user_data[0]) != 0) {
-       			// We are a bridge/tunnel, how cool!!
-       			//  This means we can only point forward.. get the direction from the user_data
-       			if (i != (current->path.node.user_data[0] >> 8)) continue;
-       		}
-       		dir = 0;
+			if ((AI_PATHFINDER_FLAG_BRIDGE & current->path.node.user_data[0]) != 0 ||
+					(AI_PATHFINDER_FLAG_TUNNEL & current->path.node.user_data[0]) != 0) {
+				// We are a bridge/tunnel, how cool!!
+				//  This means we can only point forward.. get the direction from the user_data
+				if (i != (current->path.node.user_data[0] >> 8)) continue;
+			}
+			dir = 0;
 
-       		// First, check if we have a parent
-       		if (current->path.parent == NULL && current->path.node.user_data[0] == 0) {
-       			// If not, this means we are at the starting station
-       			if (PathFinderInfo->start_direction != AI_PATHFINDER_NO_DIRECTION) {
-		       		// We do need a direction?
-		       		if (AiNew_GetDirection(current->path.node.tile, current->path.node.tile + TileOffsByDir(i)) != PathFinderInfo->start_direction)
-		       			// We are not pointing the right way, invalid tile
-		       			continue;
-		       	}
-       		} else if (current->path.node.user_data[0] == 0) {
-       			if (PathFinderInfo->rail_or_road) {
-       				// Rail check
-       				dir = AiNew_GetRailDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
-       				ret = DoCommandByTile(current->path.node.tile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
-       				if (CmdFailed(ret)) continue;
+			// First, check if we have a parent
+			if (current->path.parent == NULL && current->path.node.user_data[0] == 0) {
+				// If not, this means we are at the starting station
+				if (PathFinderInfo->start_direction != AI_PATHFINDER_NO_DIRECTION) {
+					// We do need a direction?
+					if (AiNew_GetDirection(current->path.node.tile, current->path.node.tile + TileOffsByDir(i)) != PathFinderInfo->start_direction) {
+						// We are not pointing the right way, invalid tile
+						continue;
+					}
+				}
+			} else if (current->path.node.user_data[0] == 0) {
+				if (PathFinderInfo->rail_or_road) {
+					// Rail check
+					dir = AiNew_GetRailDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
+					ret = DoCommandByTile(current->path.node.tile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+					if (CmdFailed(ret)) continue;
 #ifdef AI_PATHFINDER_NO_90DEGREES_TURN
-       				if (current->path.parent->parent != NULL) {
-       					// Check if we don't make a 90degree curve
-       					int dir1 = AiNew_GetRailDirection(current->path.parent->parent->node.tile, current->path.parent->node.tile, current->path.node.tile);
-       					if (_illegal_curves[dir1] == dir || _illegal_curves[dir] == dir1) {
-       						continue;
-       					}
-       				}
+					if (current->path.parent->parent != NULL) {
+						// Check if we don't make a 90degree curve
+						int dir1 = AiNew_GetRailDirection(current->path.parent->parent->node.tile, current->path.parent->node.tile, current->path.node.tile);
+						if (_illegal_curves[dir1] == dir || _illegal_curves[dir] == dir1) {
+							continue;
+						}
+					}
 #endif
-       			} else {
-       				// Road check
-       				dir = AiNew_GetRoadDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
-       				if (IsRoad(current->path.node.tile)) {
-       					if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
-       						// We have a bridge, how nicely! We should mark it...
-       						dir = 0;
-       					} else {
-	       					// It already has road.. check if we miss any bits!
-	       					if ((_map5[current->path.node.tile] & dir) != dir) {
-	       						// We do miss some pieces :(
-	       						dir &= ~_map5[current->path.node.tile];
-	       					} else {
-	       						dir = 0;
-    	   					}
-    	   				}
-       				}
-       				// Only destruct things if it is MP_CLEAR of MP_TREES
-       				if (dir != 0) {
-       					ret = DoCommandByTile(current->path.node.tile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
-       					if (CmdFailed(ret)) continue;
-       				}
-       			}
-
-       		}
+				} else {
+					// Road check
+					dir = AiNew_GetRoadDirection(current->path.parent->node.tile, current->path.node.tile, current->path.node.tile + TileOffsByDir(i));
+					if (IsRoad(current->path.node.tile)) {
+						if (IsTileType(current->path.node.tile, MP_TUNNELBRIDGE)) {
+							// We have a bridge, how nicely! We should mark it...
+							dir = 0;
+						} else {
+							// It already has road.. check if we miss any bits!
+							if ((_map5[current->path.node.tile] & dir) != dir) {
+								// We do miss some pieces :(
+								dir &= ~_map5[current->path.node.tile];
+							} else {
+								dir = 0;
+							}
+						}
+					}
+					// Only destruct things if it is MP_CLEAR of MP_TREES
+					if (dir != 0) {
+						ret = DoCommandByTile(current->path.node.tile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+						if (CmdFailed(ret)) continue;
+					}
+				}
+			}
 
 			// The tile can be connected
-   			aystar->neighbours[aystar->num_neighbours].tile = TileOffsByDir(i) + current->path.node.tile;
-   			aystar->neighbours[aystar->num_neighbours].user_data[0] = 0;
-   			aystar->neighbours[aystar->num_neighbours++].direction = 0;
-       	}
-    }
+			aystar->neighbours[aystar->num_neighbours].tile = TileOffsByDir(i) + current->path.node.tile;
+			aystar->neighbours[aystar->num_neighbours].user_data[0] = 0;
+			aystar->neighbours[aystar->num_neighbours++].direction = 0;
+		}
+	}
 
-    // Next step, check for bridges and tunnels
-    if (current->path.parent != NULL && current->path.node.user_data[0] == 0) {
+	// Next step, check for bridges and tunnels
+	if (current->path.parent != NULL && current->path.node.user_data[0] == 0) {
 
-        TileInfo ti;
-        // First we get the dir from this tile and his parent
-    	int dir = AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile);
-    	// It means we can only walk with the track, so the bridge has to be in the same direction
-    	TileIndex tile = current->path.node.tile;
-    	TileIndex new_tile = tile;
+		TileInfo ti;
+		// First we get the dir from this tile and his parent
+		int dir = AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile);
+		// It means we can only walk with the track, so the bridge has to be in the same direction
+		TileIndex tile = current->path.node.tile;
+		TileIndex new_tile = tile;
 
-    	FindLandscapeHeightByTile(&ti, tile);
+		FindLandscapeHeightByTile(&ti, tile);
 
-   		// Bridges can only be build on land that is not flat
-   		//  And if there is a road or rail blocking
-   		if (ti.tileh != 0 ||
-     		(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_STREET)) ||
-       		(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_RAILWAY))) {
+		// Bridges can only be build on land that is not flat
+		//  And if there is a road or rail blocking
+		if (ti.tileh != 0 ||
+				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_STREET)) ||
+				(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_RAILWAY))) {
 
-    		for (;;) {
-    			new_tile += TileOffsByDir(dir);
+			for (;;) {
+				new_tile += TileOffsByDir(dir);
 
-    	    	// Precheck, is the length allowed?
-    	    	if (!CheckBridge_Stuff(0,GetBridgeLength(tile, new_tile))) break;
+				// Precheck, is the length allowed?
+				if (!CheckBridge_Stuff(0,GetBridgeLength(tile, new_tile))) break;
 
-    	    	// Check if we hit the station-tile.. we don't like that!
-    	    	if (TILES_BETWEEN(new_tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) break;
+				// Check if we hit the station-tile.. we don't like that!
+				if (TILES_BETWEEN(new_tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) break;
 
-    	    	// Try building the bridge..
-    	    	ret = DoCommandByTile(tile, new_tile, (0<<8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
-	    	   	if (CmdFailed(ret)) continue;
-    		   	// We can build a bridge here.. add him to the neighbours
-   				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
-	   			aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_BRIDGE + (dir << 8);
-	   			aystar->neighbours[aystar->num_neighbours++].direction = 0;
+				// Try building the bridge..
+				ret = DoCommandByTile(tile, new_tile, (0<<8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
+				if (CmdFailed(ret)) continue;
+				// We can build a bridge here.. add him to the neighbours
+				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
+				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_BRIDGE + (dir << 8);
+				aystar->neighbours[aystar->num_neighbours++].direction = 0;
 				// We can only have 12 neighbours, and we need 1 left for tunnels
 				if (aystar->num_neighbours == 11) break;
 			}
-    	}
+		}
 
-    	// Next, check for tunnels!
-    	// Tunnels can only be build with tileh of 3, 6, 9 or 12, depending on the direction
-    	//  For now, we check both sides for this tile.. terraforming gives fuzzy result
-    	if ((dir == 0 && ti.tileh == 12) ||
-    		(dir == 1 && ti.tileh == 6) ||
-    		(dir == 2 && ti.tileh == 3) ||
-    		(dir == 3 && ti.tileh == 9)) {
-    		// Now simply check if a tunnel can be build
-    		ret = DoCommandByTile(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
-    		FindLandscapeHeightByTile(&ti, _build_tunnel_endtile);
-    		if (!CmdFailed(ret) && (ti.tileh == 3 || ti.tileh == 6 || ti.tileh == 9 || ti.tileh == 12)) {
-    			aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
-	   			aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
-	   			aystar->neighbours[aystar->num_neighbours++].direction = 0;
-    		}
-    	}
-  	}
+		// Next, check for tunnels!
+		// Tunnels can only be build with tileh of 3, 6, 9 or 12, depending on the direction
+		//  For now, we check both sides for this tile.. terraforming gives fuzzy result
+		if ((dir == 0 && ti.tileh == 12) ||
+				(dir == 1 && ti.tileh == 6) ||
+				(dir == 2 && ti.tileh == 3) ||
+				(dir == 3 && ti.tileh == 9)) {
+			// Now simply check if a tunnel can be build
+			ret = DoCommandByTile(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
+			FindLandscapeHeightByTile(&ti, _build_tunnel_endtile);
+			if (!CmdFailed(ret) && (ti.tileh == 3 || ti.tileh == 6 || ti.tileh == 9 || ti.tileh == 12)) {
+				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
+				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
+				aystar->neighbours[aystar->num_neighbours++].direction = 0;
+			}
+		}
+	}
 }
 
 extern uint GetRailFoundation(uint tileh, uint bits);
 extern uint GetRoadFoundation(uint tileh, uint bits);
 extern uint GetBridgeFoundation(uint tileh, byte direction);
 enum {
-    BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
+	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };
 
 // The most important function: it calculates the g-value
