@@ -40,6 +40,11 @@ static inline uint16 GetWaypointPoolSize(void)
 	return _waypoint_pool.total_items;
 }
 
+static inline bool IsWaypointIndex(uint index)
+{
+	return index < GetWaypointPoolSize();
+}
+
 #define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL)
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 

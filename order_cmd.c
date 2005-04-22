@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "ttd.h"
+#include "airport.h"
+#include "depot.h"
 #include "table/strings.h"
 #include "vehicle.h"
+#include "waypoint.h"
 #include "command.h"
 #include "station.h"
 #include "player.h"
@@ -147,9 +150,145 @@ void AssignOrder(Order *order, Order data)
  */
 int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_order)
 {
-	Vehicle *v      = GetVehicle(veh_sel & 0xFFFF);
+	Vehicle *v;
 	int sel         = veh_sel >> 16;
 	Order new_order = UnpackOrder(packed_order);
+
+	if (!IsVehicleIndex(veh_sel & 0xFFFF)) return CMD_ERROR;
+	v = GetVehicle(veh_sel & 0xFFFF);
+	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	switch (new_order.type) {
+		case OT_GOTO_STATION: {
+			const Station* st;
+
+			if (!IsStationIndex(new_order.station)) return CMD_ERROR;
+			st = GetStation(new_order.station);
+
+			if (!IsValidStation(st) ||
+					(st->airport_type != AT_OILRIG && !CheckOwnership(st->owner))) {
+				return CMD_ERROR;
+			}
+
+			switch (v->type) {
+				case VEH_Train:
+					if (!(st->facilities & FACIL_TRAIN)) return CMD_ERROR;
+					break;
+
+				case VEH_Road:
+					if (v->cargo_type == CT_PASSENGERS) {
+						if (!(st->facilities & FACIL_BUS_STOP)) return CMD_ERROR;
+					} else {
+						if (!(st->facilities & FACIL_TRUCK_STOP)) return CMD_ERROR;
+					}
+					break;
+
+				case VEH_Ship:
+					if (!(st->facilities & FACIL_DOCK)) return CMD_ERROR;
+					break;
+
+				case VEH_Aircraft:
+					if (!(st->facilities & FACIL_AIRPORT)) return CMD_ERROR;
+					break;
+
+				default:
+					return CMD_ERROR;
+			}
+
+			switch (new_order.flags) {
+				case 0:
+				case OF_FULL_LOAD:
+				case OF_UNLOAD:
+				case OF_NON_STOP:
+				case OF_NON_STOP | OF_FULL_LOAD:
+				case OF_NON_STOP | OF_UNLOAD:
+					break;
+
+				default:
+					return CMD_ERROR;
+			}
+			break;
+		}
+
+		case OT_GOTO_DEPOT: {
+			if (v->type == VEH_Aircraft) {
+				const Station* st;
+
+				if (!IsStationIndex(new_order.station)) return CMD_ERROR;
+				st = GetStation(new_order.station);
+
+				if (!IsValidStation(st) ||
+						(st->airport_type != AT_OILRIG && !CheckOwnership(st->owner)) ||
+						!(st->facilities & FACIL_AIRPORT) ||
+						GetAirport(st->airport_type)->nof_depots == 0) {
+					return CMD_ERROR;
+				}
+			} else {
+				const Depot* dp;
+
+				if (!IsDepotIndex(new_order.station)) return CMD_ERROR;
+				dp = GetDepot(new_order.station);
+
+				if (!IsValidDepot(dp) ||
+						!CheckOwnership(GetTileOwner(dp->xy))) {
+					return CMD_ERROR;
+				}
+
+				switch (v->type) {
+					case VEH_Train:
+						if (!IsTileDepotType(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
+						break;
+
+					case VEH_Road:
+						if (!IsTileDepotType(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
+						break;
+
+					case VEH_Ship:
+						if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
+						break;
+
+					default:
+						return CMD_ERROR;
+				}
+			}
+
+			switch (new_order.flags) {
+				case OF_PART_OF_ORDERS:
+				case OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+				case OF_NON_STOP | OF_PART_OF_ORDERS:
+				case OF_NON_STOP | OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+					break;
+
+				default:
+					return CMD_ERROR;
+			}
+			break;
+		}
+
+		case OT_GOTO_WAYPOINT: {
+			const Waypoint* wp;
+
+			if (v->type != VEH_Train) return CMD_ERROR;
+
+			if (!IsWaypointIndex(new_order.station)) return CMD_ERROR;
+			wp = GetWaypoint(new_order.station);
+
+			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
+
+			switch (new_order.flags) {
+				case 0:
+				case OF_NON_STOP:
+					break;
+
+				default:
+					return CMD_ERROR;
+			}
+			break;
+		}
+
+		default:
+			return CMD_ERROR;
+	}
 
 	if (sel > v->num_orders)
 		return_cmd_error(STR_EMPTY);
@@ -170,7 +309,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 
 		int dist = DistanceManhattan(
 			GetStation(GetVehicleOrder(v, sel - 1)->station)->xy,
-			GetStation(new_order.station)->xy
+			GetStation(new_order.station)->xy // XXX type != OT_GOTO_STATION?
 		);
 		if (dist >= 130)
 			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
@@ -269,9 +408,14 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
  */
 int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selected)
 {
-	Vehicle *v = GetVehicle(vehicle_id), *u;
+	Vehicle *v;
+	Vehicle *u;
 	uint sel   = selected;
 	Order *order;
+
+	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
+	v = GetVehicle(vehicle_id);
+	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* XXX -- Why is this here? :s */
 	_error_message = STR_EMPTY;
@@ -347,7 +491,11 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selec
  */
 int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_used)
 {
-	Vehicle *v = GetVehicle(vehicle_id);
+	Vehicle *v;
+
+	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
+	v = GetVehicle(vehicle_id);
+	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Goto next order */
@@ -394,9 +542,13 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
  */
 int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
 {
-	Vehicle *v = GetVehicle(veh_sel & 0xFFFF);
+	Vehicle *v;
 	byte sel = veh_sel >> 16;
 	Order *order;
+
+	if (!IsVehicleIndex(veh_sel & 0xFFFF)) return CMD_ERROR;
+	v = GetVehicle(veh_sel & 0xFFFF);
+	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
 	if (sel >= v->num_orders)
@@ -422,6 +574,9 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
 		case OFB_NON_STOP:
 			TOGGLEBIT(order->flags, OFB_NON_STOP);
 			break;
+
+			default:
+				return CMD_ERROR;
 		}
 
 		/* Update the windows, also for vehicles that share the same order list */
@@ -653,8 +808,13 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
  */
 int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 vehicle_id, uint32 data)
 {
+	Vehicle* v;
+
+	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
+	v = GetVehicle(vehicle_id);
+	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
-		Vehicle *v = GetVehicle(vehicle_id);
 		v->service_interval = data >> 16;
 		v->cur_order_index = data & 0xFFFF;
 	}

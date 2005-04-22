@@ -146,6 +146,11 @@ static inline uint16 GetStationPoolSize(void)
 	return _station_pool.total_items;
 }
 
+static inline bool IsStationIndex(uint index)
+{
+	return index < GetStationPoolSize();
+}
+
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL)
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
@@ -292,7 +297,7 @@ static inline bool IsRoadStationTile(uint tile) {
 /**
  * Check if a station really exists.
  */
-static inline bool IsValidStation(Station* station)
+static inline bool IsValidStation(const Station* station)
 {
 	return station->xy != 0; /* XXX: Replace by INVALID_TILE someday */
 }

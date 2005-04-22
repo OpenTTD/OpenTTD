@@ -28,6 +28,11 @@ static inline uint16 GetDepotPoolSize(void)
 	return _depot_pool.total_items;
 }
 
+static inline bool IsDepotIndex(uint index)
+{
+	return index < GetDepotPoolSize();
+}
+
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL)
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
 
@@ -44,7 +49,7 @@ VARDEF TileIndex _last_built_ship_depot_tile;
 /**
  * Check if a depot really exists.
  */
-static inline bool IsValidDepot(Depot* depot)
+static inline bool IsValidDepot(const Depot* depot)
 {
 	return depot->xy != 0; /* XXX: Replace by INVALID_TILE someday */
 }
