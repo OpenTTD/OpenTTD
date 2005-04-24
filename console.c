@@ -16,13 +16,12 @@
 #include "network_server.h"
 
 #define ICON_BUFFER 79
-#define ICON_HISTORY_SIZE 20
+#define ICON_CMDBUF_SIZE 20
 #define ICON_CMDLN_SIZE 255
 #define ICON_LINE_HEIGHT 12
 #define ICON_RIGHT_BORDERWIDTH 10
 #define ICON_BOTTOM_BORDERWIDTH 12
 #define ICON_MAX_ALIAS_LINES 40
-#define ICON_TOKEN_COUNT 20
 
 // ** main console ** //
 static Window *_iconsole_win; // Pointer to console window
@@ -38,8 +37,8 @@ bool _stdlib_con_developer = false;
 FILE* _iconsole_output_file;
 
 // ** main console cmd buffer
-static char *_iconsole_history[ICON_HISTORY_SIZE];
-static byte _iconsole_historypos;
+static char* _iconsole_cmdbuffer[ICON_CMDBUF_SIZE];
+static byte _iconsole_cmdbufferpos;
 
 /* *************** */
 /*  end of header  */
@@ -55,12 +54,10 @@ static void IConsoleClearCommand(void)
 	SetWindowDirty(_iconsole_win);
 }
 
-static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
-
 // ** console window ** //
 static void IConsoleWndProc(Window* w, WindowEvent* e)
 {
-	switch (e->event) {
+	switch(e->event) {
 		case WE_PAINT: {
 			int i = _iconsole_scroll;
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
@@ -96,11 +93,11 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 			e->keypress.cont = false;
 			switch (e->keypress.keycode) {
 				case WKC_UP:
-					IConsoleHistoryNavigate(+1);
+					IConsoleCmdBufferNavigate(+1);
 					SetWindowDirty(w);
 					break;
 				case WKC_DOWN:
-					IConsoleHistoryNavigate(-1);
+					IConsoleCmdBufferNavigate(-1);
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
@@ -136,7 +133,8 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					break;
 				case WKC_RETURN: case WKC_NUM_ENTER:
 					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline.buf);
-					IConsoleHistoryAdd(_iconsole_cmdline.buf);
+					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+					IConsoleCmdBufferAdd(_iconsole_cmdline.buf);
 
 					IConsoleCmdExec(_iconsole_cmdline.buf);
 					IConsoleClearCommand();
@@ -147,28 +145,23 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					MarkWholeScreenDirty();
 					break;
 				case (WKC_CTRL | 'V'):
-					if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
-						IConsoleResetHistoryPos();
+					if (InsertTextBufferClipboard(&_iconsole_cmdline))
 						SetWindowDirty(w);
-					}
 					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
-					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode)) {
-						IConsoleResetHistoryPos();
+					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode))
 						SetWindowDirty(w);
-					}
+					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
 					break;
 				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode)) {
-						IConsoleResetHistoryPos();
+					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode))
 						SetWindowDirty(w);
-					}
 					break;
 				default:
 					if (IsValidAsciiChar(e->keypress.ascii)) {
 						_iconsole_scroll = ICON_BUFFER;
 						InsertTextBufferChar(&_iconsole_cmdline, e->keypress.ascii);
-						IConsoleResetHistoryPos();
+						_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
 						SetWindowDirty(w);
 					} else
 						e->keypress.cont = true;
@@ -200,7 +193,7 @@ void IConsoleInit(void)
 	_iconsole_color_debug = 5;
 	_iconsole_color_commands = 2;
 	_iconsole_scroll = ICON_BUFFER;
-	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
+	_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
 	_iconsole_inited = true;
 	_iconsole_mode = ICONSOLE_CLOSED;
 	_iconsole_win = NULL;
@@ -209,19 +202,19 @@ void IConsoleInit(void)
 	_redirect_console_to_client = 0;
 #endif
 
-	memset(_iconsole_history, 0, sizeof(_iconsole_history));
+	memset(_iconsole_cmdbuffer, 0, sizeof(_iconsole_cmdbuffer));
 	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
 	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
 	_iconsole_cmdline.buf = calloc(ICON_CMDLN_SIZE, sizeof(*_iconsole_cmdline.buf)); // create buffer and zero it
 	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE - 1;
 
 	IConsoleStdLibRegister();
-	IConsolePrintF(13, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
-	IConsolePrint(12,  "------------------------------------");
-	IConsolePrint(12,  "use \"help\" for more info");
-	IConsolePrint(12,  "");
+	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
+	IConsolePrint(12, "---------------------------------");
+	IConsolePrint(12, "use \"help\" for more info");
+	IConsolePrint(12, "");
 	IConsoleClearCommand();
-	IConsoleHistoryAdd("");
+	IConsoleCmdBufferAdd("");
 }
 
 void IConsoleClear(void)
@@ -263,6 +256,7 @@ void IConsoleFree(void)
 
 void IConsoleResize(void)
 {
+
 	_iconsole_win = FindWindowById(WC_CONSOLE, 0);
 
 	switch (_iconsole_mode) {
@@ -275,7 +269,7 @@ void IConsoleResize(void)
 			_iconsole_win->width = _screen.width;
 			break;
 		default:
-			NOT_REACHED();
+			break;
 	}
 
 	MarkWholeScreenDirty();
@@ -289,7 +283,7 @@ void IConsoleSwitch(void)
 			_iconsole_win->height = _screen.height / 3;
 			_iconsole_win->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;
-			SETBIT(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
+			SETBIT(_no_scroll, SCROLL_CON);
 			break;
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
@@ -312,44 +306,34 @@ void IConsoleOpen(void)
 	if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();
 }
 
-/**
- * Add the entered line into the history so you can look it back
- * scroll, etc. Put it to the beginning as it is the latest text
- * @param cmd Text to be entered into the 'history'
- */
-void IConsoleHistoryAdd(const char *cmd)
+void IConsoleCmdBufferAdd(const char* cmd)
 {
-	free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
-
-	memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-	_iconsole_history[0] = strdup(cmd);
-	IConsoleResetHistoryPos();
+	int i;
+	if (_iconsole_cmdbufferpos != (ICON_CMDBUF_SIZE - 1)) return;
+	free(_iconsole_cmdbuffer[ICON_CMDBUF_SIZE - 2]);
+	for (i = (ICON_CMDBUF_SIZE - 2); i > 0; i--) _iconsole_cmdbuffer[i] = _iconsole_cmdbuffer[i - 1];
+	_iconsole_cmdbuffer[0] = strdup(cmd);
 }
 
-/**
- * Navigate Up/Down in the history of typed commands
- * @param direction Go further back in history (+1), go to recently typed commands (-1)
- */
-void IConsoleHistoryNavigate(signed char direction)
+void IConsoleCmdBufferNavigate(signed char direction)
 {
-	int i = _iconsole_historypos + direction;
-
-	// watch out for overflows, just wrap around
-	if (i < 0) i = ICON_HISTORY_SIZE - 1;
-	if (i >= ICON_HISTORY_SIZE) i = 0;
-
+	int i;
+	i = _iconsole_cmdbufferpos + direction;
+	if (i < 0) i = ICON_CMDBUF_SIZE - 1;
+	if (i >= ICON_CMDBUF_SIZE) i = 0;
 	if (direction > 0)
-		if (_iconsole_history[i] == NULL) i = 0;
-
-	if (direction < 0) {
-		while (i > 0 && _iconsole_history[i] == NULL) i--;
-	}
-
-	_iconsole_historypos = i;
+		while (_iconsole_cmdbuffer[i] == NULL) {
+			i++;
+			if (i >= ICON_CMDBUF_SIZE) i = 0;
+		}
+	if (direction < 0)
+		while (_iconsole_cmdbuffer[i] == NULL) {
+			--i;
+			if (i < 0) i = ICON_CMDBUF_SIZE - 1;
+		}
+	_iconsole_cmdbufferpos = i;
 	IConsoleClearCommand();
-	// copy history to 'command prompt / bash'
-	assert(_iconsole_history[i] != NULL && IS_INT_INSIDE(i, 0, ICON_HISTORY_SIZE));
-	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxlength);
+	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_cmdbuffer[i], _iconsole_cmdline.maxlength);
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 
@@ -400,276 +384,173 @@ void IConsolePrint(uint16 color_code, const char* string)
 	if (_iconsole_win != NULL) SetWindowDirty(_iconsole_win);
 }
 
-/**
- * Handle the printing of text entered into the console or redirected there
- * by any other means. Uses printf() style format, for more information look
- * at @IConsolePrint()
- */
+
 void CDECL IConsolePrintF(uint16 color_code, const char* s, ...)
 {
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
+	char buf[1024];
+	int len;
 
 	va_start(va, s);
-	vsnprintf(buf, sizeof(buf), s, va);
+	len = vsnprintf(buf, sizeof(buf), s, va);
 	va_end(va);
 
 	IConsolePrint(color_code, buf);
 }
 
-/**
- * It is possible to print debugging information to the console,
- * which is achieved by using this function. Can only be used by
- * @debug() in debug.c. You need at least a level 2 (developer) for debugging
- * messages to show up
- */
 void IConsoleDebug(const char* string)
 {
 	if (_stdlib_developer > 1)
 		IConsolePrintF(_iconsole_color_debug, "dbg: %s", string);
 }
 
-/**
- * It is possible to print warnings to the console. These are mostly
- * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
- * debugging messages to show up
- */
+void IConsoleError(const char* string)
+{
+	if (_stdlib_developer > 0)
+		IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
+}
+
 void IConsoleWarning(const char* string)
 {
 	if (_stdlib_developer > 0)
 		IConsolePrintF(_iconsole_color_warning, "WARNING: %s", string);
 }
 
-/**
- * It is possible to print error information to the console. This can include
- * game errors, or errors in general you would want the user to notice
- */
-void IConsoleError(const char* string)
+void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr)
 {
-	IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
-}
+	char* _new;
+	_iconsole_cmd* item;
+	_iconsole_cmd* item_new;
+	_iconsole_cmd* item_before;
 
-/**
- * Register a new command to be used in the console
- * @param name name of the command that will be used
- * @param addr function that will be called upon execution of command
- */
-void IConsoleCmdRegister(const char *name, IConsoleCmdAddr addr)
-{
-	IConsoleCmd *item, *item_before;
-	char *new_cmd = strdup(name);
-	IConsoleCmd *item_new = malloc(sizeof(IConsoleCmd));
+	_new = strdup(name);
+
+	item_new = malloc(sizeof(_iconsole_cmd));
 
 	item_new->_next = NULL;
 	item_new->addr = addr;
-	item_new->name = new_cmd;
+	item_new->name = _new;
 
 	item_new->hook_access = NULL;
 	item_new->hook_after_exec = NULL;
 	item_new->hook_before_exec = NULL;
 
-	// first command
-	if (_iconsole_cmds == NULL) {
-		_iconsole_cmds = item_new;
-		return;
-	}
-
 	item_before = NULL;
 	item = _iconsole_cmds;
 
-	/* BEGIN - Alphabetically insert the commands into the linked list */
-	while (item != NULL) {
-		int i = strcmp(item->name, item_new->name);
-		if (i == 0) {
-			IConsoleError("a command with this name already exists; insertion aborted");
-			free(item_new);
-			return;
+	if (item == NULL) {
+		_iconsole_cmds = item_new;
+	} else {
+		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
+			item_before = item;
+			item = item->_next;
+			}
+// insertion sort
+		if (item_before==NULL) {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting as startitem
+				_iconsole_cmds = item_new;
+				item_new ->_next = item;
+			}
+		} else {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting
+				item_new ->_next = item_before->_next;
+				item_before ->_next = item_new;
+			}
 		}
-
-		if (i > 0) break; // insert at this position
-
-		item_before = item;
-		item = item->_next;
+// insertion sort end
 	}
 
-	if (item_before == NULL) {
-		_iconsole_cmds = item_new;
-	} else
-		item_before->_next = item_new;
-
-	item_new->_next = item;
-	/* END - Alphabetical insert */
 }
 
-/**
- * Find the command pointed to by its string
- * @param name command to be found
- * @return return Cmdstruct of the found command, or NULL on failure
- */
-IConsoleCmd *IConsoleCmdGet(const char *name)
+_iconsole_cmd* IConsoleCmdGet(const char* name)
 {
-	IConsoleCmd *item;
+	_iconsole_cmd* item;
 
-	for (item = _iconsole_cmds; item != NULL; item = item->_next) {
+	item = _iconsole_cmds;
+	while (item != NULL) {
 		if (strcmp(item->name, name) == 0) return item;
+		item = item->_next;
 	}
 	return NULL;
 }
 
-/**
- * Register a an alias for an already existing command in the console
- * @param name name of the alias that will be used
- * @param cmd name of the command that 'name' will be alias of
- */
-void IConsoleAliasRegister(const char *name, const char *cmd)
+void IConsoleAliasRegister(const char* name, const char* cmdline)
 {
-	IConsoleAlias *item, *item_before;
-	char *new_alias = strdup(name);
-	char *cmd_aliased = strdup(cmd);
-	IConsoleAlias *item_new = malloc(sizeof(IConsoleAlias));
+	char* _new;
+	char* _newcmd;
+	_iconsole_alias* item;
+	_iconsole_alias* item_new;
+	_iconsole_alias* item_before;
+
+	_new = strdup(name);
+	_newcmd = strdup(cmdline);
+
+	item_new = malloc(sizeof(_iconsole_alias));
 
 	item_new->_next = NULL;
-	item_new->cmdline = cmd_aliased;
-	item_new->name = new_alias;
+	item_new->cmdline = _newcmd;
+	item_new->name = _new;
 
 	item_before = NULL;
 	item = _iconsole_aliases;
 
-	// first command
-	if (_iconsole_aliases == NULL) {
+	if (item == NULL) {
 		_iconsole_aliases = item_new;
-		return;
-	}
-
-	item_before = NULL;
-	item = _iconsole_aliases;
-
-	/* BEGIN - Alphabetically insert the commands into the linked list */
-	while (item != NULL) {
-		int i = strcmp(item->name, item_new->name);
-		if (i == 0) {
-			IConsoleError("an alias with this name already exists; insertion aborted");
-			free(item_new);
-			return;
+	} else {
+		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
+			item_before = item;
+			item = item->_next;
+			}
+// insertion sort
+		if (item_before==NULL) {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting as startitem
+				_iconsole_aliases = item_new;
+				item_new ->_next = item;
+			}
+		} else {
+			if (strcmp(item->name,item_new->name)<=0) {
+				// appending
+				item ->_next = item_new;
+			} else {
+				// inserting
+				item_new ->_next = item_before->_next;
+				item_before ->_next = item_new;
+			}
 		}
-
-		if (i > 0) break; // insert at this position
-
-		item_before = item;
-		item = item->_next;
+// insertion sort end
 	}
 
-	if (item_before == NULL) {
-		_iconsole_aliases = item_new;
-	} else
-		item_before->_next = item_new;
-
-	item_new->_next = item;
-	/* END - Alphabetical insert */
 }
 
-/**
- * Find the alias pointed to by its string
- * @param name alias to be found
- * @return return Aliasstruct of the found alias, or NULL on failure
- */
-IConsoleAlias *IConsoleAliasGet(const char *name)
+_iconsole_alias* IConsoleAliasGet(const char* name)
 {
-	IConsoleAlias* item;
+	_iconsole_alias* item;
 
-	for (item = _iconsole_aliases; item != NULL; item = item->_next) {
+	item = _iconsole_aliases;
+	while (item != NULL) {
 		if (strcmp(item->name, name) == 0) return item;
+		item = item->_next;
 	}
-
 	return NULL;
 }
 
-static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
+static void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20])
 {
-	int len = min(ICON_MAX_STREAMSIZE - bufpos, strlen(src));
-	strncpy(dst, src, len);
-
-	return len;
-}
-
-/**
- * An alias is just another name for a command, or for more commands
- * Execute it as well.
- * @param cmdstr is the alias of the command
- * @param tokens are the parameters given to the original command (0 is the first param)
- * @param tokencount the number of parameters passed
- */
-static void IConsoleAliasExec(const char *cmdstr, char *tokens[ICON_TOKEN_COUNT], int tokencount)
-{
-	const char *cmdptr;
-	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];
-	int i;
-	uint a_index, astream_i;
-
-	memset(&aliases, 0, sizeof(aliases));
-	memset(&aliasstream, 0, sizeof(aliasstream));
-
-	aliases[0] = aliasstream;
-	for (cmdptr = cmdstr, a_index = 0, astream_i = 0; *cmdptr != '\0'; *cmdptr++) {
-		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
-
-		switch (*cmdptr) {
-		case '\'': /* ' will double for : */
-			aliasstream[astream_i++] = '"';
-			break;
-		case ';': /* Cmd seperator, start new line */
-			aliasstream[astream_i] = '\0';
-			aliases[++a_index] = &aliasstream[++astream_i];
-			*cmdptr++;
-			break;
-		case '%': /* One specific parameter: %A = [param 1] %B = [param 2] ... */
-			*cmdptr++;
-			switch (*cmdptr) {
-			case '+': { /* All parameters seperated: "[param 1]" "[param 2]" */
-				for (i = 0; i != tokencount; i++) {
-					aliasstream[astream_i++] = '"';
-					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
-					aliasstream[astream_i++] = '"';
-					aliasstream[astream_i++] = ' ';
-				}
-			} break;
-			case '!': { /* Merge the parameters to one: "[param 1] [param 2] [param 3...]" */
-				aliasstream[astream_i++] = '"';
-				for (i = 0; i != tokencount; i++) {
-					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
-					aliasstream[astream_i++] = ' ';
-				}
-				aliasstream[astream_i++] = '"';
-
-			} break;
-				default: {
-				int param = *cmdptr - 'A';
-
-				if (param < 0 || param >= tokencount) {
-					IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
-					return;
-				}
-
-				aliasstream[astream_i++] = '"';
-				astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[param], astream_i);
-				aliasstream[astream_i++] = '"';
-			} break;
-			} break;
-
-		default:
-			aliasstream[astream_i++] = *cmdptr;
-			break;
-		}
-	}
-
-	for (i = 0; i <= (int)a_index; i++) IConsoleCmdExec(aliases[i]);
-}
-
-#if 0
-static void IConsoleAliasExec(const char* cmdline, char* tokens[TOKEN_COUNT], byte tokentypes[TOKEN_COUNT])
-{
-	char *lines[ICON_MAX_ALIAS_LINES];
-	char *linestream, *linestream_s;
+	char* lines[ICON_MAX_ALIAS_LINES];
+	char* linestream;
+	char* linestream_s;
 
 	int c;
 	int i;
@@ -677,10 +558,13 @@ static void IConsoleAliasExec(const char* cmdline, char* tokens[TOKEN_COUNT], by
 	int x;
 	byte t;
 
-	memset(lines, 0, ICON_MAX_ALIAS_LINES); // clear buffer
+	//** clearing buffer **//
 
-	linestream_s = linestream = malloc(1024 * ICON_MAX_ALIAS_LINES);
-	memset(linestream, 0, 1024 * ICON_MAX_ALIAS_LINES);
+	for (i = 0; i < 40; i++) {
+		lines[0] = NULL;
+	}
+	linestream_s = linestream = malloc(1024*ICON_MAX_ALIAS_LINES);
+	memset(linestream, 0, 1024*ICON_MAX_ALIAS_LINES);
 
 	//** parsing **//
 
@@ -785,13 +669,12 @@ static void IConsoleAliasExec(const char* cmdline, char* tokens[TOKEN_COUNT], by
 		*linestream = '\0';
 	}
 
-	for (i = 0; i < c; i++)	IConsoleCmdExec(lines[i]);
+	for (i=0; i<c; i++)	{
+		IConsoleCmdExec(lines[i]);
+	}
 
 	free(linestream_s);
 }
-#endif
-
-static void IConsoleVarExec(char *token[ICON_TOKEN_COUNT]) {}
 
 void IConsoleVarInsert(_iconsole_var* item_new, const char* name)
 {
@@ -894,10 +777,8 @@ void IConsoleVarMemRegister(const char* name, _iconsole_var_types type)
 _iconsole_var* IConsoleVarGet(const char* name)
 {
 	_iconsole_var* item;
-	for (item = _iconsole_vars; item != NULL; item = item->_next) {
+	for (item = _iconsole_vars; item != NULL; item = item->_next)
 		if (strcmp(item->name, name) == 0) return item;
-	}
-
 	return NULL;
 }
 
@@ -1104,7 +985,7 @@ bool IConsoleVarHookHandle(_iconsole_var* hook_var, _iconsole_hook_types type)
 
 void IConsoleCmdHook(const char* name, _iconsole_hook_types type, iconsole_cmd_hook proc)
 {
-	IConsoleCmd* hook_cmd = IConsoleCmdGet(name);
+	_iconsole_cmd* hook_cmd = IConsoleCmdGet(name);
 	if (hook_cmd == NULL) return;
 	switch (type) {
 		case ICONSOLE_HOOK_AFTER_EXEC:
@@ -1123,7 +1004,7 @@ void IConsoleCmdHook(const char* name, _iconsole_hook_types type, iconsole_cmd_h
 	}
 }
 
-bool IConsoleCmdHookHandle(IConsoleCmd* hook_cmd, _iconsole_hook_types type)
+bool IConsoleCmdHookHandle(_iconsole_cmd* hook_cmd, _iconsole_hook_types type)
 {
 	iconsole_cmd_hook proc = NULL;
 	switch (type) {
@@ -1144,96 +1025,9 @@ bool IConsoleCmdHookHandle(IConsoleCmd* hook_cmd, _iconsole_hook_types type)
 	return proc == NULL ? true : proc(hook_cmd);
 }
 
-/**
- * Execute a given command passed to us. First chop it up into
- * individual tokens, then execute it if possible
- * @param cmdstr string to be parsed and executed
- */
-void IConsoleCmdExec(const char *cmdstr)
-{
-	IConsoleCmd   *cmd    = NULL;
-	IConsoleAlias *alias  = NULL;
-	_iconsole_var *var    = NULL;
-
-	const char *cmdptr;
-	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
-	uint t_index, tstream_i;
-
-	bool longtoken = false;
-
-	for (cmdptr = cmdstr; *cmdptr != '\0'; *cmdptr++) {
-		if (!IsValidAsciiChar(*cmdptr)) {
-			IConsoleError("command contains malformed characters, aborting");
-			return;
-		}
-	}
-
-	if (_stdlib_con_developer)
-		IConsolePrintF(_iconsole_color_debug, "condbg: executing cmdline: %s", cmdstr);
-
-	memset(&tokens, 0, sizeof(tokens));
-	memset(&tokenstream, 0, sizeof(tokenstream));
-
-	/* 1. Split up commandline into tokens, seperated by spaces, commands
-	 * enclosed in "" are taken as one token. We can only go as far as the amount
-	 * of characters in our stream or the max amount of tokens we can handle */
-	tokens[0] = tokenstream;
-	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; *cmdptr++) {
-		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
-
-		switch (*cmdptr) {
-		case ' ': /* Token seperator */
-			if (!longtoken) {
-				tokenstream[tstream_i] = '\0';
-				tokens[++t_index] = &tokenstream[tstream_i + 1];
-			} else
-				tokenstream[tstream_i] = *cmdptr;
-
-			tstream_i++;
-			break;
-		case '"': /* Tokens enclosed in "" are one token */
-			longtoken = !longtoken;
-			break;
-		default: /* Normal character */
-			tokenstream[tstream_i++] = *cmdptr;
-			break;
-		}
-	}
-
-	t_index++; // index was 0
-
-	/* 2. Determine type of command (cmd, alias or variable) and execute
-	 * First try commands, then aliases, and finally variables
-	 */
-	 cmd = IConsoleCmdGet(tokens[0]);
-	 if (cmd != NULL) {
-		if (IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_ACCESS)) {
-			IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_BEFORE_EXEC);
-			cmd->addr(t_index, tokens, NULL);
-			IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_AFTER_EXEC);
-		}
-	 	return;
-	 }
-
-	 alias = IConsoleAliasGet(tokens[0]);
-	 if (alias != NULL) {
-	 	IConsoleAliasExec(alias->cmdline, &tokens[1], t_index - 1);
-	 	return;
-	 }
-
-	 var = IConsoleVarGet(tokens[0]);
-	 if (var != NULL) {
-	 	IConsoleVarExec(tokens);
-	 	return;
-	 }
-
-	 IConsoleError("command or variable not found");
-}
-
-#if 0
 void IConsoleCmdExec(const char* cmdstr)
 {
-	IConsoleCmdAddr function;
+	_iconsole_cmd_addr function;
 	char* tokens[20];
 	byte  tokentypes[20];
 	char* tokenstream;
@@ -1241,8 +1035,8 @@ void IConsoleCmdExec(const char* cmdstr)
 	byte  execution_mode;
 	_iconsole_var* var     = NULL;
 	_iconsole_var* result  = NULL;
-	IConsoleCmd* cmd     = NULL;
-	IConsoleAlias* alias = NULL;
+	_iconsole_cmd* cmd     = NULL;
+	_iconsole_alias* alias = NULL;
 
 	bool longtoken;
 	bool valid_token;
@@ -1252,10 +1046,14 @@ void IConsoleCmdExec(const char* cmdstr)
 	uint i;
 	uint l;
 
-	for (; strchr("\n\r \t", *cmdstr) != NULL; cmdstr++) {
+	for (; strchr("\n\r \t", *cmdstr) != NULL; ++cmdstr) {
 		switch (*cmdstr) {
-			case '\0': case '#': return;
-			default: break;
+			case '\0':
+			case '#':
+				return;
+
+			default:
+				break;
 		}
 	}
 
@@ -1686,4 +1484,3 @@ void IConsoleCmdExec(const char* cmdstr)
 	//** freeing the tokenstream **//
 	free(tokenstream_s);
 }
-#endif
