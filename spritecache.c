@@ -70,7 +70,7 @@ typedef struct MD5File {
 } MD5File;
 
 typedef struct FileList {
-	const MD5File basic[4];     // grf files that always have to be loaded
+	const MD5File basic[5];     // grf files that always have to be loaded
 	const MD5File landscape[3]; // landscape specific grf files
 } FileList;
 
