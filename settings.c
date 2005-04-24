@@ -1061,7 +1061,7 @@ void CheckConfig(void)
 	// fix up news_display_opt from old to new
 	int i;
 	uint32 tmp;
-	for (i = 0, tmp = _news_display_opt; i != 10; i++, tmp >>= 1) {
+	for (i = 0, tmp = _news_display_opt; i != 10; i++, tmp >>= 2) {
 		if ((tmp & 0x3) == 0x3) { // old settings
 			_news_display_opt = 0xAAAAAAAA; // set all news-messages to full 1010101010...
 			break;
