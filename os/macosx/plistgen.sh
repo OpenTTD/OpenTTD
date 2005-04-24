@@ -43,4 +43,4 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>NSPrincipalClass</key>
         <string>NSApplication</string>
 </dict>
-</plist>" > "$1"/contents/Info.plist
+</plist>" > "$1"/Contents/Info.plist

@@ -496,13 +496,13 @@ endif
 # MIDI setup
 ifdef OSX
 ifndef MIDI
-MIDI:=$(OSXAPP)/contents/macosx/track_starter
+MIDI:=$(OSXAPP)/Contents/macosx/track_starter
 endif
 ifndef SECOND_DATA_PATH
-SECOND_DATA_PATH:="$(OSXAPP)/contents/data/"
+SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
 endif
 ifndef CUSTOM_LANG_DIR
-CUSTOM_LANG_DIR:="$(OSXAPP)/contents/lang/"
+CUSTOM_LANG_DIR:="$(OSXAPP)/Contents/Lang/"
 endif
 endif
 
@@ -800,12 +800,12 @@ $(OSX): $(TTD)
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
-	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/contents/macos
+	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/Contents/macos
 	$(Q)ls os/macosx | grep -q "\.class" || \
 	       javac os/macosx/OpenTTDMidi.java
-	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/contents/macos
-	$(Q)cp data/* "$(OSXAPP)"/Contents/data/
-	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/lang/
+	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/Contents/macos
+	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
+	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
 
 $(endwarnings): $(64_bit_warnings)
