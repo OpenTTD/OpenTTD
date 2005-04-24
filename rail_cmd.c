@@ -343,7 +343,10 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags,
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
-			if (flags & DC_EXEC) _map5[tile] = m5 | rail_bit;
+			if (flags & DC_EXEC) {
+				_map2[tile] &= ~RAIL_MAP2LO_GROUND_MASK; // Bare land
+				_map5[tile] = m5 | rail_bit;
+			}
 			break;
 
 		case MP_STREET:
