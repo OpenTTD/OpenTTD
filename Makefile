@@ -778,10 +778,14 @@ OSX_MIDI_PLAYER_FILE:=os/macosx/OpenTTDMidi.class
 endif
 
 
-all: endian.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
+all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
 
-endian.h: $(ENDIAN_CHECK)
-	@echo '===> Testing endianness'
+endian_host.h: $(ENDIAN_CHECK)
+	@echo '===> Testing endianness for host'
+	$(Q)./$(ENDIAN_CHECK) > $@
+
+endian_target.h: $(ENDIAN_CHECK)
+	@echo '===> Testing endianness for target'
 	$(Q)./$(ENDIAN_CHECK) $(ENDIAN_FORCE) > $@
 
 $(ENDIAN_CHECK): endian_check.c
@@ -814,7 +818,7 @@ $(64_bit_warnings):
 	$(warning 64 bit CPUs will get some 64 bit specific bugs!)
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
-$(STRGEN): strgen/strgen.c endian.h
+$(STRGEN): strgen/strgen.c endian_host.h
 	$(call cmd,compile_link)
 
 table/strings.h: lang/english.txt $(STRGEN)
@@ -919,7 +923,8 @@ FORCE:
 
 clean:
 	@echo '===> Cleaning up'
-	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h $(ENDIAN_CHECK)
+# endian.h is out-dated and no longer in use, so it can be removed soon
+	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h endian_host.h endian_target.h $(ENDIAN_CHECK)
 
 mrproper: clean
 	$(Q)rm -rf $(MAKE_CONFIG)
@@ -999,11 +1004,11 @@ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
 # first compilation round as we just build everything at that time anyway,
 # therefore we do not need to watch deps.
 
-%.o: %.c $(MAKE_CONFIG) endian.h table/strings.h
+%.o: %.c $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,c_compile)
 	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
 
-%.o: %.cpp  $(MAKE_CONFIG) endian.h table/strings.h
+%.o: %.cpp  $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,cxx_compile)
 	@mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d)
 

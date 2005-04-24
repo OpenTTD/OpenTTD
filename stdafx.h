@@ -116,8 +116,12 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #if defined(WIN32) || defined(__OS2__)
   #define TTD_LITTLE_ENDIAN
 #else
-// Else include endian.h, which has the endian-type, autodetected by the Makefile
-  #include "endian.h"
+// Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile
+  #if defined(STRGEN)
+    #include "endian_host.h"
+  #else
+    #include "endian_target.h"
+  #endif
 #endif
 
 #if defined(UNIX)

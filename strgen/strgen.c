@@ -1,3 +1,5 @@
+#define STRGEN
+
 #include "../stdafx.h"
 #include <stdio.h>
 #include <string.h>
