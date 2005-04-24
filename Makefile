@@ -804,10 +804,10 @@ $(OSX): $(TTD)
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
-	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/Contents/macos
+	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/Contents/MacOS
 	$(Q)ls os/macosx | grep -q "\.class" || \
 	       javac os/macosx/OpenTTDMidi.java
-	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/Contents/macos
+	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/Contents/MacOS
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
