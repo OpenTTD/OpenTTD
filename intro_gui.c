@@ -159,27 +159,12 @@ int32 CmdGenRandomNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-int32 CmdLoadGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (!(flags & DC_EXEC))
-		return 0;
-
-//	ShowSaveLoadDialog(0);
-	return 0;
-}
-
 int32 CmdCreateScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!(flags & DC_EXEC))
 		return 0;
 
 	_switch_mode = SM_EDITOR;
-	return 0;
-}
-
-int32 CmdSetSinglePlayer(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	printf("CmdSetSinglePlayer\n");
 	return 0;
 }
 

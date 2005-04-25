@@ -185,12 +185,6 @@ int32 CmdPause(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-
-int32 CmdResume(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	return 0;
-}
-
 int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);

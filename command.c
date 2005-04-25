@@ -112,7 +112,6 @@ DEF_COMMAND(CmdTurnRoadVeh);
 DEF_COMMAND(CmdChangeRoadVehServiceInt);
 
 DEF_COMMAND(CmdPause);
-DEF_COMMAND(CmdResume);
 
 DEF_COMMAND(CmdBuyShareInCompany);
 DEF_COMMAND(CmdSellShareInCompany);
@@ -138,9 +137,7 @@ DEF_COMMAND(CmdRefitShip);
 
 
 DEF_COMMAND(CmdStartNewGame);
-DEF_COMMAND(CmdLoadGame);
 DEF_COMMAND(CmdCreateScenario);
-DEF_COMMAND(CmdSetSinglePlayer);
 
 DEF_COMMAND(CmdSetNewLandscapeType);
 
@@ -279,9 +276,9 @@ static CommandProc * const _command_proc_table[] = {
 	CmdRefitShip,									/* 91 */
 
 	CmdStartNewGame,							/* 92 */
-	CmdLoadGame,									/* 93 */
+	NULL,                         /* 93 */
 	CmdCreateScenario,						/* 94 */
-	CmdSetSinglePlayer,						/* 95 */
+	NULL,                         /* 95 */
 	NULL,													/* 96 */
 	CmdSetNewLandscapeType,				/* 97 */
 
@@ -290,7 +287,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdCloneOrder,								/* 99 */
 
 	CmdClearArea,									/* 100 */
-	CmdResume,										/* 101 */
+	NULL,                         /* 101 */
 
 	CmdMoneyCheat,								/* 102 */
 	CmdBuildCanal,								/* 103 */
