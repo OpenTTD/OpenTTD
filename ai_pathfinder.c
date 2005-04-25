@@ -19,7 +19,7 @@ static bool TestCanBuildStationHere(uint tile, byte dir)
 		int32 ret;
 		// TODO: currently we only allow spots that can be access from al 4 directions...
 		//  should be fixed!!!
-		for (dir=0;dir<4;dir++) {
+		for (dir = 0; dir < 4; dir++) {
 			ret = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
 			if (!CmdFailed(ret)) return true;
 		}
@@ -35,7 +35,7 @@ static bool IsRoad(TileIndex tile)
 {
 	return
 		// MP_STREET, but not a road depot?
-		(IsTileType(tile, MP_STREET) && !(IsTileDepotType(tile, TRANSPORT_ROAD))) ||
+		(IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
 			// road tunnel?
 			((_map5[tile] & 0x80) == 0 && (_map5[tile] & 0x4) == 0x4) ||
@@ -56,8 +56,8 @@ static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *curr
 	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
 	if (TILES_BETWEEN(current->path.node.tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br))
 		if (IsTileType(current->path.node.tile, MP_CLEAR) || IsTileType(current->path.node.tile, MP_TREES))
-			if (current->path.parent == NULL || TestCanBuildStationHere(current->path.node.tile,AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile)))
-	return AYSTAR_FOUND_END_NODE;
+			if (current->path.parent == NULL || TestCanBuildStationHere(current->path.node.tile, AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile)))
+				return AYSTAR_FOUND_END_NODE;
 
 	return AYSTAR_DONE;
 }
@@ -82,9 +82,11 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current);
 
 // This creates the AiPathFinder
-AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFinderInfo) {
+AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFinderInfo)
+{
 	PathNode start_node;
-	uint x,y;
+	uint x;
+	uint y;
 	// Create AyStar
 	AyStar *result = malloc(sizeof(AyStar));
 	init_AyStar(result, AiPathFinder_Hash, 1 << 10);
@@ -113,7 +115,7 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 	// Now we add all the starting tiles
 	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
 		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
-			start_node.node.tile = TILE_XY(x,y);
+			start_node.node.tile = TILE_XY(x, y);
 			result->addstart(result, &start_node.node);
 		}
 	}
@@ -122,9 +124,11 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 }
 
 // To reuse AyStar we sometimes have to clean all the memory
-void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo) {
+void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo)
+{
 	PathNode start_node;
-	uint x,y;
+	uint x;
+	uint y;
 
 	aystar->clear(aystar);
 
@@ -140,16 +144,17 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 	// Now we add all the starting tiles
 	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
 		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
-			if (!(IsTileType(TILE_XY(x,y), MP_CLEAR) || IsTileType(TILE_XY(x,y), MP_TREES))) continue;
-			if (!TestCanBuildStationHere(TILE_XY(x,y),TEST_STATION_NO_DIR)) continue;
-			start_node.node.tile = TILE_XY(x,y);
+			if (!(IsTileType(TILE_XY(x, y), MP_CLEAR) || IsTileType(TILE_XY(x, y), MP_TREES))) continue;
+			if (!TestCanBuildStationHere(TILE_XY(x, y), TEST_STATION_NO_DIR)) continue;
+			start_node.node.tile = TILE_XY(x, y);
 			aystar->addstart(aystar, &start_node.node);
 		}
 	}
 }
 
 // The h-value, simple calculation
-static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent) {
+static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+{
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, r2;
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
@@ -167,7 +172,8 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 }
 
 // We found the end.. let's get the route back and put it in an array
-static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *current) {
+static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *current)
+{
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	uint i = 0;
 	PathNode *parent = &current->path;
@@ -177,18 +183,19 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 		PathFinderInfo->route[i++] = parent->node.tile;
 		if (i > lengthof(PathFinderInfo->route)) {
 			// We ran out of space for the PathFinder
-			DEBUG(ai,0)("[AiPathFinder] Ran out of spacein the route[] array!!!");
+			DEBUG(ai, 0)("[AiPathFinder] Ran out of space in the route[] array!!!");
 			PathFinderInfo->route_length = -1; // -1 indicates out of space
 			return;
 		}
 		parent = parent->parent;
 	} while (parent != NULL);
 	PathFinderInfo->route_length = i;
-	DEBUG(ai,1)("[Ai-PathFinding] Found route of %d nodes long in %d nodes of searching",i,Hash_Size(&aystar->ClosedListHash));
+	DEBUG(ai, 1)("[Ai-PathFinding] Found route of %d nodes long in %d nodes of searching", i, Hash_Size(&aystar->ClosedListHash));
 }
 
 // What tiles are around us.
-static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current) {
+static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current)
+{
 	uint i;
 	int ret;
 	int dir;
@@ -202,10 +209,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 		TileIndex ctile = current->path.node.tile; // Current tile
 		TileIndex atile = ctile + TileOffsByDir(i); // Adjacent tile
 
-		if (TileX(atile) > 1 &&
-				TileX(atile) < MapMaxX() - 1 &&
-				TileY(atile) > 1 &&
-				TileY(atile) < MapMaxY() - 1) {
+		if (TileX(atile) > 1 && TileX(atile) < MapMaxX() - 1 &&
+				TileY(atile) > 1 && TileY(atile) < MapMaxY() - 1) {
 			// We also directly test if the current tile can connect to this tile..
 			//  We do this simply by just building the tile!
 
@@ -296,7 +301,6 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
 	// Next step, check for bridges and tunnels
 	if (current->path.parent != NULL && current->path.node.user_data[0] == 0) {
-
 		TileInfo ti;
 		// First we get the dir from this tile and his parent
 		int dir = AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile);
@@ -316,13 +320,13 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				new_tile += TileOffsByDir(dir);
 
 				// Precheck, is the length allowed?
-				if (!CheckBridge_Stuff(0,GetBridgeLength(tile, new_tile))) break;
+				if (!CheckBridge_Stuff(0, GetBridgeLength(tile, new_tile))) break;
 
 				// Check if we hit the station-tile.. we don't like that!
-				if (TILES_BETWEEN(new_tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) break;
+				if (TILES_BETWEEN(new_tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br)) break;
 
 				// Try building the bridge..
-				ret = DoCommandByTile(tile, new_tile, (0<<8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
+				ret = DoCommandByTile(tile, new_tile, (0 << 8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (CmdFailed(ret)) continue;
 				// We can build a bridge here.. add him to the neighbours
 				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
@@ -360,7 +364,8 @@ enum {
 };
 
 // The most important function: it calculates the g-value
-static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent) {
+static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+{
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, res = 0;
 	TileInfo ti, parent_ti;
@@ -370,7 +375,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	FindLandscapeHeightByTile(&parent_ti, parent->path.node.tile);
 
 	// Check if we hit the end-tile
-	if (TILES_BETWEEN(current->tile,PathFinderInfo->end_tile_tl,PathFinderInfo->end_tile_br)) {
+	if (TILES_BETWEEN(current->tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br)) {
 		// We are at the end-tile, check if we had a direction or something...
 		if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION && AiNew_GetDirection(current->tile, parent->path.node.tile) != PathFinderInfo->end_direction)
 			// We are not pointing the right way, invalid tile
