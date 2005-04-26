@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Pavyzdzi
 STR_SINGLE_PLAYER                                               :{BLACK}Vienas zaidejas
 STR_MULTIPLAYER                                                 :{BLACK}Keli zaidejai
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Zemelapio dydis:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Zaidimo nustatymai
 
 STR_0150_SOMEONE                                                :kazkas{SKIP}{SKIP}
@@ -722,6 +730,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Miesto 
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Parodyti paskutine zinute ar spaudos pranesima
+STR_OFF                                                         :Isjungta
 STR_SUMMARY                                                     :Santrauka
 STR_FULL                                                        :Pilnas
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -

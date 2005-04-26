@@ -218,7 +218,7 @@ STR_00DD_ORANGE                                                 :Arancio
 STR_00DE_BROWN                                                  :Marrone
 STR_00DF_GREY                                                   :Grigio
 STR_00E0_WHITE                                                  :Bianco
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Troppi veicoli del gioco
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Troppi veicoli nel gioco
 STR_00E2                                                        :{BLACK}{COMMA16}
 STR_00E3                                                        :{RED}{COMMA16}
 STR_00E4_LOCATION                                               :{BLACK}Locazione
@@ -299,7 +299,7 @@ STR_012E_CANCEL                                                 :{BLACK}Annulla
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rinomina
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Troppi nomi definiti
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Scelto nome già in uso
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Il nome scelto è già in uso
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -321,7 +321,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico t
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
 STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial / Demonstrazione
+STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial / Dimostrazione
 STR_SINGLE_PLAYER                                               :{BLACK}Singolo giocatore
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
@@ -341,7 +341,7 @@ STR_0152_TOWN_DIRECTORY                                         :Elenco Città
 STR_0153_SUBSIDIES                                              :Sussidi
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operazionale
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
 STR_0155_INCOME_GRAPH                                           :Grafico degli incassi
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafico merce consegnata
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico prestazioni

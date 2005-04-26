@@ -4,19 +4,19 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robežas
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Arpus kartes robežas
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Parak tuvu kartes malai
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - vajag {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jabut plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cel'a' no
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cela no
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Pien'em: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Pienem: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Pienem: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasažierus
 STR_0010_COAL                                                   :Ogles
@@ -25,9 +25,9 @@ STR_0012_OIL                                                    :Naftu
 STR_0013_LIVESTOCK                                              :Liellopus
 STR_0014_GOODS                                                  :Preces
 STR_0015_GRAIN                                                  :Graudus
-STR_0016_WOOD                                                   :Kokmateria'lus
-STR_0017_IRON_ORE                                               :Dzelzs ru'du
-STR_0018_STEEL                                                  :Te'raudu
+STR_0016_WOOD                                                   :Kokmaterialus
+STR_0017_IRON_ORE                                               :Dzelzs rudu
+STR_0018_STEEL                                                  :Teraudu
 STR_0019_VALUABLES                                              :V&#275;rtspap&#299;ri
 STR_001A_COPPER_ORE                                             :Vara r&#363;da
 STR_001B_MAIZE                                                  :Kukur&#363;za
@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Ma'ci'bu
 STR_SINGLE_PLAYER                                               :{BLACK}Viens spe'le'ta'js
 STR_MULTIPLAYER                                                 :{BLACK}Daudz-spe'le'ta'ju
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Kartes izme'ri:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spe'les rez'i'mi
 
 STR_0150_SOMEONE                                                :ka'ds{SKIP}{SKIP}
@@ -1500,32 +1508,32 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Road vehicle de
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level crossing
 
 ##id 0x2000
-STR_2000_TOWNS                                                  :{WHITE}Towns
+STR_2000_TOWNS                                                  :{WHITE}Pilse'tas
 STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Vispirms ja'demole' celtne
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA32}{BLACK}  Houses: {ORANGE}{COMMA32}
-STR_2007_RENAME_TOWN                                            :Rename Town
-STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Can't rename town...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} local authority refuses to allow this
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Town names - click on name to centre view on town
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centre the main view on town location
-STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Pârsaukt pilsçtu
+STR_2006_POPULATION                                             :{BLACK}Iedzi'vota'ji: {ORANGE}{COMMA32}{BLACK}  Ma'jas: {ORANGE}{COMMA32}
+STR_2007_RENAME_TOWN                                            :Pa'rsaukt pilse'tu
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nevar pa'rsaukt pilse'tu...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} viete'ja's varas iesta'des noraida s'a'du ri'ci'bu
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Pilse'tu nosaukumi - izve'lies pilse'tu lai iecentre'tu uz to skatu
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Iecentre't galveno skatu uz pilse'tas atras'ana's vietu
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Pa'rsaukt pilse'tu
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasaz'ieri paga'jus'aja' me'nesi': {ORANGE}{COMMA32}{BLACK}  maksima'lais skaits: {ORANGE}{COMMA32}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pasts paga'jus'aja' me'nesi': {ORANGE}{COMMA32}{BLACK}  Maksima'lais apjoms: {ORANGE}{COMMA32}
-STR_200F_TALL_OFFICE_BLOCK                                      :Tall office block
-STR_2010_OFFICE_BLOCK                                           :Office block
-STR_2011_SMALL_BLOCK_OF_FLATS                                   :Small block of flats
-STR_2012_CHURCH                                                 :Baznîca
-STR_2013_LARGE_OFFICE_BLOCK                                     :Large office block
-STR_2014_TOWN_HOUSES                                            :Town houses
-STR_2015_HOTEL                                                  :Viesnîca
-STR_2016_STATUE                                                 :Statue
-STR_2017_FOUNTAIN                                               :Fountain
-STR_2018_PARK                                                   :Park
+STR_200F_TALL_OFFICE_BLOCK                                      :Augstceltne: ofisu ma'ja
+STR_2010_OFFICE_BLOCK                                           :Ofisu kvarta'ls
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Mazs dzi'vokl'u kvarta'ls
+STR_2012_CHURCH                                                 :Bazni'ca
+STR_2013_LARGE_OFFICE_BLOCK                                     :Liels ofisu kvarta'ls
+STR_2014_TOWN_HOUSES                                            :Dzi'vojama's ma'jas
+STR_2015_HOTEL                                                  :Viesni'ca
+STR_2016_STATUE                                                 :Statuja
+STR_2017_FOUNTAIN                                               :Stru'klaka
+STR_2018_PARK                                                   :Parks
 STR_2019_OFFICE_BLOCK                                           :Office block
 STR_201A_SHOPS_AND_OFFICES                                      :Shops and offices
 STR_201B_MODERN_OFFICE_BUILDING                                 :Modern office building

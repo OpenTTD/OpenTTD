@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Veiledni
 STR_SINGLE_PLAYER                                               :{BLACK}Énspiller
 STR_MULTIPLAYER                                                 :{BLACK}Flerspiller
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Kartstørrelse:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spillinnstillinger
 
 STR_0150_SOMEONE                                                :noen{SKIP}{SKIP}
@@ -333,13 +341,13 @@ STR_0152_TOWN_DIRECTORY                                         :Bykatalog
 STR_0153_SUBSIDIES                                              :Subsidier
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over fortjeneste
-STR_0155_INCOME_GRAPH                                           :Graf over inntekter
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Fortjenestegraf
+STR_0155_INCOME_GRAPH                                           :Inntektsgraf
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf over leverte varer
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Prestasjonhistorikk
 STR_0158_COMPANY_VALUE_GRAPH                                    :Graf over firmaverdi
 STR_0159_CARGO_PAYMENT_RATES                                    :Prisliste for varer
-STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabell over firmarangering
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Firmarangeringstabell
 STR_PERFORMANCE_DETAIL_MENU                                     :Detaljert prestasjonsnivå
 ############ range for menu	ends
 
@@ -350,11 +358,11 @@ STR_015E_QUIT_GAME                                              :Avslutt gjelden
 STR_015F_QUIT                                                   :Avslutt OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil avslutte dette spillet ?
 STR_0161_QUIT_GAME                                              :{WHITE}Avslutt spill
-STR_SORT_ORDER_TIP                                              :{BLACK}Velg sorterings rekkefølge (descending/ascending)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Velg sorterings kriterie
+STR_SORT_ORDER_TIP                                              :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Velg sorteringskriterier
 SRT_SORT_BY                                                     :{BLACK}Sorter etter
 
-STR_SORT_BY_POPULATION                                          :{BLACK}Folketall
+STR_SORT_BY_POPULATION                                          :{BLACK}Innbyggertall
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produksjon
 STR_SORT_BY_TYPE                                                :{BLACK}Type
 STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportert
@@ -364,7 +372,7 @@ STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_UNSORTED                                            :Usortert
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fortjeneste forrige år
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fortjeneste dette året
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fortjeneste inneværende år
 STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålitelighet
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapasitet per varetype
@@ -388,16 +396,16 @@ STR_016D_DEC                                                    :Des
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
 STR_0170                                                        :{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME                                             :{BLACK}Pause spillet
+STR_0171_PAUSE_GAME                                             :{BLACK}Pause
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Lagre spill, avbryt spillet, avslutte
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over firmaets stasjoner
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vis kart
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vis kart og byoversikt
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Vis byoversikt
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vis firmaets økonomiske informasjon
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Vis firmaets generelle informasjon
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vis firmaets økonomiske data
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Vis firmaets generelle data
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Vis grafer
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Vis firmarangering
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Vis firmarangeringstabell
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over firmaets tog
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over firmaets biler
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over firmaets skip
@@ -408,15 +416,15 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bygg jer
 STR_0182_BUILD_ROADS                                            :{BLACK}Bygg vei
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bygg kaier
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bygg flyplasser
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant trær, plasser skilt, osv.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Plant trær, skilt, osv.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informasjon om felt
 STR_0187_OPTIONS                                                :{BLACK}Innstillinger
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikke endre service-intervall
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan ikke endre serviceintervall
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Lukk vindu
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindustittel - dra her for å flytte vindu
-STR_STICKY_BUTTON                                               :{BLACK}Merk dette vinduet som ulukkbart for 'Lukk alle vinduer'-knappen
+STR_STICKY_BUTTON                                               :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen
 STR_RESIZE_BUTTON                                               :{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygninger o.l.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk et hjørne av et landstykke
@@ -426,7 +434,7 @@ STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Rullefel
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landkonturer på kartet
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis kjøretøy på kartet
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industri på kartet
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transport ruter på kartet
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transportruter på kartet
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Vis vegetasjon på kartet
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Vis landeiere på kartet
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Skru av/på bynavn på kartet
@@ -444,13 +452,13 @@ STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} er gammel
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} er veldig gammel
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} er stein gammel og må byttes ut
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} er veldig gammel og må byttes ut snarest
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for å fjerne: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne: {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Fjerningskostnad: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Fjerningskostnad:  {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eier: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Bystyre: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal myndighet: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Navn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -506,8 +514,8 @@ STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Juk
 STR_01D3_SOUND_MUSIC                                            :Lyd/Musikk
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Vis lyd/musikkinnstillinger
 STR_01D5_ALL                                                    :{TINYFONT}Alle
-STR_01D6_OLD_STYLE                                              :{TINYFONT}Old Style
-STR_01D7_NEW_STYLE                                              :{TINYFONT}New Style
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Gamle slagere
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Nye godbiter
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Egendefinert 1
 STR_01DA_CUSTOM_2                                               :{TINYFONT}Egendefinert 2

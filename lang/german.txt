@@ -1023,8 +1023,8 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Ein Zug ist verloren, wenn kein Fortschritt seit: {ORANGE}{STRING} Tagen
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Ein Zug ist verloren, wenn kein Fortschritt seit: {ORANGE}ausgeschaltet
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Ein Zug ist verirrt, wenn kein Fortschritt seit: {ORANGE}{STRING} Tagen
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Ein Zug ist verirrt, wenn kein Fortschritt seit: {ORANGE}ausgeschaltet
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fahrpläne prüfen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nein
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, aber ohne gestoppte Fahrzeuge
@@ -1067,7 +1067,7 @@ STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farbige
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Spiel beenden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube anteile an anderen Firmen zu kaufen
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position der Haupttoolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links

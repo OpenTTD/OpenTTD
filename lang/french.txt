@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutoriel
 STR_SINGLE_PLAYER                                               :{BLACK}Un joueur
 STR_MULTIPLAYER                                                 :{BLACK}Multijoueurs
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Taille de la carte :
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Options
 
 STR_0150_SOMEONE                                                :quelqu'un{SKIP}{SKIP}
@@ -1932,7 +1940,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantit
 STR_6813_ECONOMY                                                :{LTBLUE}Economie: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Demi-tour des trains: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Désastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Attitude du conseil municipal envers la restructuration de la zone : {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}Attitude de l'hotel de ville face au repaysagement : {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Aucune
@@ -2394,7 +2402,7 @@ STR_880A_GO_NON_STOP_TO                                         :Aller sans s'ar
 STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Aller sans s'arrêter à {STATION} (Décharger)
 STR_880C_GO_NON_STOP_TO_LOAD                                    :Aller sans s'arrêter à {STATION} (Charger)
 STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Go to {TOWN} Dépôt ferroviaire
+STR_880E_GO_TO_TRAIN_DEPOT                                      :Aller au dépôt de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Entretien au dépôt de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Aller sans s'arrêter au dépôt de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Aller faire l'entretien sans s'arrêter au dépôt de {TOWN}
