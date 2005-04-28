@@ -1027,7 +1027,7 @@ STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un trai
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un train est perdu si aucun progrès n'est fait pendant: {ORANGE} inactif
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Vérification des ordres des véhicules : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :non
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :oui, mais exclut les véhicules stoppés
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :de tous, sauf ceux stoppés
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de tous les véhicules
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Alerte en cas de profit négatif pour un train: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les véhicules n'expirent jamais: {ORANGE}{STRING}

@@ -325,6 +325,14 @@ STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial
 STR_SINGLE_PLAYER                                               :{BLACK}Un Xogador
 STR_MULTIPLAYER                                                 :{BLACK}Multixogador
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Tamaño do mapa:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opcións da Partida
 
 STR_0150_SOMEONE                                                :alguén{SKIP}{SKIP}
@@ -718,6 +726,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño 
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Amosa-la última mesaxe ou noticia
+STR_OFF                                                         :Apagado
 STR_SUMMARY                                                     :Sumario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
@@ -771,6 +780,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Amosa-lo
 STR_02DD_SUBSIDIES                                              :Subsidios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do Mundo
 STR_EXTRA_VIEW_PORT                                             :Extra viewport
+STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA32}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA16}
@@ -1344,6 +1354,7 @@ STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Non se 
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Non se pode arrinca-lo servidor
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Non se pode conectar
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexión #{NUMU16} fora de tempo
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} A protocol-error was made and the connection was closed
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A revisión deste cliente no e igual ca revisión do servidor.
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Contrasinal errónea
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} O servidor está cheo
@@ -2731,6 +2742,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Crédito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de vehículos; inclúe camións/buses, trens, navíos e aeronaves
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Beneficio do vehículo con menos ingresos (de tódolos vehículos de máis de 2 anos)
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unidades de carga levadas nos últimos catro quartos
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Número de tipos de carga levados no último cuarto
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Amount of cash on hand
