@@ -28,6 +28,8 @@ OpenTTD is a clone of Transport Tycoon Deluxe, a popular game originally
 written by Chris Sawyer.  It attempts to mimic the original game as closely
 as possible while extending it with new features.
 
+OpenTTD is licensed under the GNU General Public License version 2.0. For
+more information, see the file 'COPYING'.
 
 2.0) Contacting:
 ---- ----------
@@ -37,7 +39,7 @@ on irc.freenode.net).
 
 The OpenTTD homepage is http://www.openttd.org/.
 
-You can find a forum for OpenTTD at
+You can also find the OpenTTD forums at
 http://www.tt-forums.net/index.php?c=20
 
 
@@ -56,7 +58,7 @@ Please include the following information in your bug report:
         - OpenTTD version (PLEASE test the latest SVN/daily build)
         - Bug details, including instructions how to reproduce it
         - Platform and compiler (Win32, Linux, FreeBSD, ...)
-        - Attach a save game or a screenshot if possible
+        - Attach a saved game or a screenshot if possible
         - If this bug only occurred recently please note the last
           version without the bug and the first version including
           the bug. That way we can fix it quicker by looking at the
@@ -72,9 +74,10 @@ are:
 	Windows - Win32 GDI (faster) or SDL
 	Linux - SDL
 	FreeBSD - SDL
-	MacOSX - SDL
+	Mac OS X - SDL
 	BeOS - SDL
 	MorphOS - SDL
+	OS/2 - SDL
 
 
 4.0) Running OpenTTD:
@@ -108,23 +111,23 @@ by setting DATA_DIR_PREFIX and USE_HOMEDIR.
 ---- -----------------
 
 OpenTTD has a lot of features going beyond the original TTD emulation.
-Currently there is unfortunately no comprehensive list of features. You could
-check the features list on the web, and some optional features can be
-controlled through the Configure patches dialog. We also implement some
+Unfortunately, there is currently no comprehensive list of features, but there is
+a basic features list on the web, and some optional features can be
+controlled through the Configure Patches dialog. We also implement some
 features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
 * Use Ctrl to place presignals
-* Ctrl-d toggles double mode on win32
+* Ctrl-D toggles double mode in the Windows version
 * Ingame console. More information at http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
 
 
 6.0) Configuration File:
 ---- -------------------
-The configuration file for OpenTTD (openttd.cfg) is in a simple windows-like
+The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
 .INI format. It's mostly undocumented. Almost all settings can be changed ingame by
-using the 'Configure patches' window.
+using the 'Configure Patches' window.
 
 
 7.0) Compiling:
@@ -134,12 +137,12 @@ Windows:
   and it should build automatically. In case you want to build with SDL support
   you need to add WITH_SDL to the project settings.
   PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these to
-  work you need their development files. Best is to download the openttd-useful.zip
-  file from SourceForge under the File tab. Put the header files into your compiler's
+  work you need their development files. For best results, download the openttd-useful.zip
+  file from SourceForge under the Files tab. Put the header files into your compiler's
   include/ directory and the library (.lib) files into the lib/ directory. For more help
   with VS6 see docs/Readme_Windows_MSVC6.0.txt.
 
-  You can also build it using the Makefile with MSys/MingW or Cygwin/MingW.
+  You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
   Please read the Makefile for more information.
 
 Unix:
@@ -153,21 +156,26 @@ MacOS:
 BeOS:
   Use "make".
 
-FreeBSD
+FreeBSD:
   Use "gmake".
 
-MorphOS
+MorphOS:
   Use "make". Note that you need the MorphOS SDK and the
   powersdl.library SDK.
+
+OS/2:
+  Open Watcom C/C++ 1.3 or later is required to build the OS/2 version. See the
+  docs/Readme_OS2.txt file for more information.
+
 
 8.0) Translating:
 ---- -------------------
 See http://www.openttd.org/translating.php for up-to-date information.
 
-The use of the online Translator service, located at http://translator.openttd.org is
-highly encouraged. For a username password combo you should contact the development team,
-either by mail, irc or the forums. The system is straight-forward to use, if you have any
-troubles, read the online help located there.
+The use of the online Translator service, located at http://translator.openttd.org/, is
+highly encouraged. For a username/password combo you should contact the development team,
+either by mail, IRC or the forums. The system is straightforward to use, and if you have any
+problems, read the online help located there.
 
 If for some reason the website is down for a longer period of time, the information below
 might be of help.
@@ -180,9 +188,9 @@ Here are some translation guidelines which you should follow closely.
       This avoids double work, as someone else may have already started translating to the same language.
     * Translators must use the charater set ISO 8859-15.
       Otherwise, some characters will not display correctly in the game.
-    * Currently it is not possible to translate into other charactersets than Latin, also changing
-      the order of strings is unsupported. Eg. it is always '16tonnes of coal' and cannot be
-      'coal existing of 16tonnes'
+    * Currently it is not possible to translate into character sets other than Latin. Also, changing
+      the order of strings is unsupported. For instance, it is always '16 tonnes of coal' and cannot be
+      'coal existing of 16 tonnes'
 
 8.2) Translation:
 ---- -------------------
@@ -212,37 +220,42 @@ Example:
 strgen lang/german.txt
 
 This results in compiling german.txt and produces another file named german.lng.
-Any missing strings are replaced with the english strings. Note that it looks for english.txt
+Any missing strings are replaced with the English strings. Note that it looks for english.txt
 in the lang subdirectory, which is where your language file should also be.
 
 That's all! You should now be able to select the language in the game options.
 
 9.0) Troubleshooting
+---- ---------------
+
 To see all startup options available to you, start OpenTTD with the "./openttd -h"
 option. This might help you tweak some of the settings.
-If the game is acting weird and you feel adventorous you can try the "-d [[<name>]=[<level>]"
-flag, where the higher levels will give you more debugging output. The name can help
-you to filter out only some type of debugging messages. This is mostly undocumented
-so best is to look in debug.c for the various debugging types. For more information
-look at http://wiki.openttd.org/index.php/Command_line
 
-The most frequent problem is missing data files. Don't forget to put all grf
-files from TTD into your data/ folder including sample.cat!
+If the game is acting strange and you feel adventorous you can try the "-d [[<name>]=[<level>]"
+flag, where the higher levels will give you more debugging output. The "name" variable can help
+you to display only some type of debugging messages. This is mostly undocumented
+so best is to look in the source code file debug.c for the various debugging types. For more
+information look at http://wiki.openttd.org/index.php/Command_line.
+
+The most frequent problem is missing data files. Don't forget to put all GRF files from TTD
+into your data/ folder including sample.cat!
+
 Another, less frequent problem is the game refusing to run when you don't have a
-soundcard. To solve this, force OpenTTD to run without sound/music by running it with
+sound card. To solve this, force OpenTTD to run without sound/music by running it with
 the command line option: "./openttd -s null -m null". This will disable both sound
 and music.
-Under Windows98 and lower it is impossible to use a dedicated server; it will fail to
+
+Under Windows 98 and lower it is impossible to use a dedicated server; it will fail to
 start. Perhaps this is for the better because those OS's are not known for their stability.
 
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
-  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder
+  Bjarni Corfitzen (Bjarni)      - Mac OS X port, coder
   Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamas Faragó (Darkvater)       - Lead programmer
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
-  Owen Rudge (orudge)            - Contributor, forum host, masterserver host
+  Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
