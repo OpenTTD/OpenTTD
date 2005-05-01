@@ -1456,7 +1456,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				} else {
 					v->cargo_type = rvi->cargo_type;
 				}
-
+#if 0
+// we disable this because they can crash the game. They will be fixed at a later date
 				if ( rvi2->flags & RVI_MULTIHEAD && !(rvi->flags & RVI_MULTIHEAD) &&  v->index == first->index) {
 					if (old_engine_type == u->engine_type ) {
 						Vehicle *w;
@@ -1481,6 +1482,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						}
 					}
 				}
+#endif
 
 				// updates the id of the front engine in the other units, since the front engine just got a new engine_id
 				// this is needed for wagon override
