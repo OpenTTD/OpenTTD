@@ -13,6 +13,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "waypoint.h"
+#include "debug.h"
 
 static uint _cur_railtype;
 static bool _remove_button_clicked;
@@ -256,7 +257,7 @@ static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
 	if (HandlePlacePushButton(w, 11, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
-	    && _waypoint_count > 1)
+	    && _waypoint_count > 0)
 		ShowBuildWaypointPicker();
 }
 
@@ -859,32 +860,22 @@ static void ShowBuildTrainDepotPicker(void)
 
 static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-		int r;
-
-		w->click_state = (1 << 3) << _cur_waypoint_type;
+		w->click_state = (1 << 3) << (_cur_waypoint_type - w->hscroll.pos);
 		DrawWindowWidgets(w);
 
-		r = 4*w->hscroll.pos;
-		if(r+0<=_waypoint_count) DrawWaypointSprite(2,   25, r + 0, _cur_railtype);
-		if(r+1<=_waypoint_count) DrawWaypointSprite(70,  25, r + 1, _cur_railtype);
-		if(r+2<=_waypoint_count) DrawWaypointSprite(138, 25, r + 2, _cur_railtype);
-		if(r+3<=_waypoint_count) DrawWaypointSprite(206, 25, r + 3, _cur_railtype);
-		if(r+4<=_waypoint_count) DrawWaypointSprite(274, 25, r + 4, _cur_railtype);
+		if(w->hscroll.pos + 0 <= _waypoint_count) DrawWaypointSprite(2,   25, w->hscroll.pos + 0, _cur_railtype);
+		if(w->hscroll.pos + 1 <= _waypoint_count) DrawWaypointSprite(70,  25, w->hscroll.pos + 1, _cur_railtype);
+		if(w->hscroll.pos + 2 <= _waypoint_count) DrawWaypointSprite(138, 25, w->hscroll.pos + 2, _cur_railtype);
+		if(w->hscroll.pos + 3 <= _waypoint_count) DrawWaypointSprite(206, 25, w->hscroll.pos + 3, _cur_railtype);
+		if(w->hscroll.pos + 4 <= _waypoint_count) DrawWaypointSprite(274, 25, w->hscroll.pos + 4, _cur_railtype);
 		break;
-		}
+	}
 	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 0:
-			ResetObjectToPlace();
-			break;
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-			_cur_waypoint_type = e->click.widget - 3;
+		switch (e->click.widget) {
+		case 3: case 4: case 5: case 6: case 7:
+			_cur_waypoint_type = e->click.widget - 3 + w->hscroll.pos;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -895,10 +886,11 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 	case WE_MOUSELOOP:
 		if (WP(w,def_d).close)
 			DeleteWindow(w);
-		return;
+		break;
 
 	case WE_DESTROY:
-		ResetObjectToPlace();
+		if (!WP(w,def_d).close)
+			ResetObjectToPlace();
 		break;
 	}
 }
@@ -930,7 +922,7 @@ static void ShowBuildWaypointPicker(void)
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
 	w->hscroll.cap = 5;
-	w->hscroll.count = (uint) (_waypoint_count+4) / 5;
+	w->hscroll.count = _waypoint_count + 1;
 }
 
 
