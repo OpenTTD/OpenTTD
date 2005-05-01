@@ -994,7 +994,7 @@ STR_CONFIG_PATCHES_OFF                                          :pois
 STR_CONFIG_PATCHES_ON                                           :päällä
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ajoneuvon nopeus tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Realistisemmankokoiset vaikutusalueet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen, jne. raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Junat kiihdyttävät realistisesti: {ORANGE}{STRING}
@@ -1101,7 +1101,7 @@ STR_CHEATS_WARNING                                              :{BLACK}Varoitus
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Pelaa pelaajana: {ORANGE}{COMMA16}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (siirrä teollisuutta yms.): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat risteätä: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat mennä ristiin: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Rakenna tauon aikana: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkukoneet eivät syöksy (usein) pienille lentokentille: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaihda ilmastoa: {ORANGE} {STRING}
@@ -1503,7 +1503,7 @@ STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Sillan v
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Valitse huoltoaseman suunta.
 STR_1814_ROAD                                                   :Tie
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Tie katuvaloilla
-STR_1816_TREE_LINED_ROAD                                        :Kolmikaistatie
+STR_1816_TREE_LINED_ROAD                                        :Puilla reunustettu tie
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Huoltoasema
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Tasoliittymä
 
@@ -2023,7 +2023,7 @@ STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA32}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Tuottokuvaaja
-STR_7026_BANK_BALANCE                                           :{WHITE}Tilin kate
+STR_7026_BANK_BALANCE                                           :{WHITE}Tilin saldo
 STR_7027_LOAN                                                   :{WHITE}Laina
 STR_MAX_LOAN                                                    :{WHITE}Laina enimmillään:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
@@ -2077,9 +2077,9 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT
 STR_7058_PRESIDENT                                              :{BLACK}{STRING}{}(pääjohtaja)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Kuljetusyhtiöiden sulautuminen!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} on myyty yhtiölle {STRING} hintaan {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko tilata yhtiön {STRING} hintaan {CURRENCY}?
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko ostaa yhtiön {STRING} hintaan {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Konkurssi!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} on suljettu velkojien käskystä ja kaikki edut myyty pois!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Uusi kuljetusyhtiö perustettu!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} aloittaa rakentamisen kaupugin {TOWN} lähistölle!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Yhtiötä ei voi ostaa...
@@ -2562,8 +2562,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ajoneuvo
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nimeä ajoneuvo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junatöymäyksen jälkeisessä tulipallossa
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA16} kuolee junatöymäyksen jälkeisessä tulipallossa
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA16} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ajoneuvoa ei voi pakottaa kääntymään ympäri...
 STR_9034_RENAME                                                 :{BLACK}Nimeä
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
@@ -2758,7 +2758,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Viimeise
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Viimeisen neljän neljänneksen kuljetetun rahdin määrä
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Viimeisen neljänneksen kuljetetun rahdin tyyppi
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Käteisvarat
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Onko lainasi suuri?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tämän yhtiön ottaman lainan määrä
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Summa kaikista mahdollisista pisteistä.
 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf-asetukset
