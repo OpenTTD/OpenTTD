@@ -310,7 +310,14 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		/* See where we are now */
-		byte trackdir = _dir_to_diag_trackdir[(v->direction>>1)&3];
+		byte trackdir;
+		if (IsRoadStationTile(tile))
+			/* if we are in a station, simulate leaving the station (since
+			 * v->direction won't contain anything usefule than */
+			trackdir = _dir_to_diag_trackdir[GetRoadStationDir(tile)];
+		else
+			trackdir = _dir_to_diag_trackdir[(v->direction>>1)&3];
+
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist == 0)
 			return GetDepotByTile(ftd.node.tile); /* Target found */
