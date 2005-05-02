@@ -1368,13 +1368,13 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		DrawEditBox(w, 2);
+		DrawEditBox(w, 1);
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
-		case 4: DeleteWindow(w); break; // Cancel
-		case 3: // Send
+		switch(e->click.widget) {
+		case 3: DeleteWindow(w); break; // Cancel
+		case 2: // Send
 press_ok:;
 			if (strcmp(WP(w, querystr_d).text.buf, WP(w, querystr_d).text.buf + MAX_QUERYSTR_LEN) == 0) {
 				DeleteWindow(w);
@@ -1406,11 +1406,11 @@ press_ok:;
 			DeleteWindow(w);
 			return;
 		}
-		HandleEditBox(w, 2);
+		HandleEditBox(w, 1);
 	} break;
 
 	case WE_KEYPRESS: {
-		switch (HandleEditBoxKey(w, 2, e)) {
+		switch(HandleEditBoxKey(w, 1, e)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape
@@ -1436,7 +1436,6 @@ press_ok:;
 
 static const Widget _chat_window_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   639,     0,    13, STR_NULL,         STR_NULL}, // background
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   639,     0,    13, STR_NULL,         STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   399,     1,    12, STR_NULL,         STR_NULL}, // text box
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   400,   519,     1,    12, STR_NETWORK_SEND, STR_NULL}, // send button
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   520,   639,     1,    12, STR_012E_CANCEL,  STR_NULL}, // cancel button
@@ -1446,7 +1445,7 @@ static const Widget _chat_window_widgets[] = {
 static const WindowDesc _chat_window_desc = {
 	WDP_CENTER, -26, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_chat_window_widgets,
 	ChatWindowWndProc
 };
