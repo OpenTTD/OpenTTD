@@ -18,6 +18,18 @@ typedef enum TileType {
 	MP_UNMOVABLE
 } TileType;
 
+/* XXX: This should be moved out to a new file (rail.h) along with some other
+ * cleanups. I'll do that after 0.4) */
+typedef enum {
+	RAILTYPE_RAIL   = 0,
+	RAILTYPE_MONO   = 1,
+	RAILTYPE_MAGLEV = 2,
+	RAILTYPE_END,
+	RAILTYPE_MASK   = 0x3,
+	INVALID_RAILTYPE = 0xFF,
+} RailType;
+
+
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);
 

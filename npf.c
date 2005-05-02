@@ -445,6 +445,48 @@ void NPFSaveTargetData(AyStar* as, OpenListNode* current) {
 	ftd->node = current->path.node;
 }
 
+/**
+ * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
+ * Note that there is no check if the given trackdir is actually present on
+ * the tile!
+ * The given trackdir is used when there are (could be) multiple rail types on
+ * one tile.
+ */
+static inline RailType GetTileRailType(TileIndex tile, byte trackdir)
+{
+	byte type = INVALID_RAILTYPE;
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			/* railway track */
+			type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		case MP_STREET:
+			/* rail/road crossing */
+			if ((_map5[tile] & 0xF0) == 0x10)
+				type = _map3_hi[tile] & RAILTYPE_MASK;
+			break;
+		case MP_STATION:
+			if (IsTrainStationTile(tile))
+				type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		case MP_TUNNELBRIDGE:
+			/* railway tunnel */
+			if ((_map5[tile] & 0xFC) == 0) type = _map3_lo[tile] & RAILTYPE_MASK;
+			/* railway bridge ending */
+			if ((_map5[tile] & 0xC6) == 0x80) type = _map3_lo[tile] & RAILTYPE_MASK;
+			/* on railway bridge */
+			if ((_map5[tile] & 0xC6) == 0xC0 && (_map5[tile] & 0x1) == (_trackdir_to_exitdir[trackdir] & 0x1))
+				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
+			/* under bridge (any type) */
+			if ((_map5[tile] & 0xC0) == 0xC0 && (_map5[tile] & 0x1) != (trackdir & 0x1))
+				type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		default:
+			break;
+	}
+	return type;
+}
+
 /* Will just follow the results of GetTileTrackStatus concerning where we can
  * go and where not. Uses AyStar.user_data[NPF_TYPE] as the transport type and
  * an argument to GetTileTrackStatus. Will skip tunnels, meaning that the
@@ -504,7 +546,17 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		}
 	}
 
-	// TODO: check correct rail type (mono, maglev, etc)
+	/* check correct rail type (mono, maglev, etc)
+	 * XXX: This now compares with the previous tile, which should not pose a
+	 * problem, but it might be nicer to compare with the first tile, or even
+	 * the type of the vehicle... Maybe an NPF_RAILTYPE userdata sometime? */
+	if (type == TRANSPORT_RAIL) {
+		byte src_type = GetTileRailType(src_tile, src_trackdir);
+		byte dst_type = GetTileRailType(dst_tile, _trackdir_to_exitdir[src_trackdir]);
+		if (src_type != dst_type) {
+			return;
+		}
+	}
 
 	/* Check the owner of the tile */
 	if (
