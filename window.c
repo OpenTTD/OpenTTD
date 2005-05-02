@@ -716,7 +716,8 @@ void ResetWindowSystem(void)
 {
 	UnInitWindowSystem();
 	InitWindowSystem();
-	memset(&_thd, 0, sizeof(TileHighlightData));
+	_thd.pos.x = 0;
+	_thd.pos.y = 0;
 }
 
 static void DecreaseWindowCounters(void)
