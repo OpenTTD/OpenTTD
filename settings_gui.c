@@ -612,14 +612,14 @@ static int32 CheckInterval(int32 p1)
 typedef int32 PatchButtonClick(int32);
 
 typedef struct PatchEntry {
-	byte type;										// type of selector
-	byte flags;										// selector flags
-	StringID str;									// string with descriptive text
-	char console_name[40];				// the name this patch has in console
-	void *variable;								// pointer to the variable
-	int32 min,max;								// range for spinbox setting
-	uint32 step;									// step for spinbox
-	PatchButtonClick *click_proc;	// callback procedure
+  byte type;                    // type of selector
+  byte flags;                   // selector flags
+  StringID str;                 // string with descriptive text
+  char console_name[40];        // the name this patch has in console
+  void *variable;               // pointer to the variable
+  int32 min, max;               // range for spinbox setting
+  uint32 step;                  // step for spinbox
+  PatchButtonClick *click_proc; // callback procedure
 } PatchEntry;
 
 enum {
@@ -629,7 +629,7 @@ enum {
 	PE_UINT16		= 3,
 	PE_INT32		= 4,
 	PE_CURRENCY	= 5,
-
+	// selector flags
 	PF_0ISDIS				= 1 << 0,
 	PF_NOCOMMA			= 1 << 1,
 	PF_MULTISTRING	= 1 << 2,
@@ -752,15 +752,14 @@ static const PatchPage _patches_page[] = {
 
 static int32 ReadPE(const PatchEntry*pe)
 {
-	switch(pe->type) {
+	switch (pe->type) {
 	case PE_BOOL:   return *(bool*)pe->variable;
 	case PE_UINT8:  return *(uint8*)pe->variable;
 	case PE_INT16:  return *(int16*)pe->variable;
 	case PE_UINT16: return *(uint16*)pe->variable;
 	case PE_INT32:  return *(int32*)pe->variable;
 	case PE_CURRENCY:  return (*(int32*)pe->variable) * GetCurrentCurrencyRate();
-	default:
-		NOT_REACHED();
+	default: NOT_REACHED();
 	}
 
 	/* useless, but avoids compiler warning this way */
@@ -769,9 +768,7 @@ static int32 ReadPE(const PatchEntry*pe)
 
 static void WritePE(const PatchEntry *pe, int32 val)
 {
-
 	if ((pe->flags & PF_0ISDIS) && val <= 0) {
-		// "clamp" 'disabled' value to smallest type
 		switch (pe->type) {
 			case PE_BOOL: case PE_UINT8:
 				*(bool*)pe->variable = 0;
@@ -786,50 +783,31 @@ static void WritePE(const PatchEntry *pe, int32 val)
 		return;
 	}
 
-	switch(pe->type) {
-	case PE_BOOL: *(bool*)pe->variable = (bool)val; break;
-
-	case PE_UINT8: if ((uint8)val > (uint8)pe->max)
-									*(uint8*)pe->variable = (uint8)pe->max;
-								else if ((uint8)val < (uint8)pe->min)
-									*(uint8*)pe->variable = (uint8)pe->min;
-								else
-									*(uint8*)pe->variable = (uint8)val;
-								break;
-
-	case PE_INT16: if ((int16)val > (int16)pe->max)
-									*(int16*)pe->variable = (int16)pe->max;
-								else if ((int16)val < (int16)pe->min)
-									*(int16*)pe->variable = (int16)pe->min;
-								else
-									*(int16*)pe->variable = (int16)val;
-								break;
-
-	case PE_UINT16: if ((uint16)val > (uint16)pe->max)
-									*(uint16*)pe->variable = (uint16)pe->max;
-								else if ((uint16)val < (uint16)pe->min)
-									*(uint16*)pe->variable = (uint16)pe->min;
-								else
-									*(uint16*)pe->variable = (uint16)val;
-								break;
-
-	case PE_CURRENCY:
-	case PE_INT32: if ((int32)val > (int32)pe->max)
-									*(int32*)pe->variable = (int32)pe->max;
-								else if ((int32)val < (int32)pe->min)
-									*(int32*)pe->variable = (int32)pe->min;
-								else
-									*(int32*)pe->variable = val;
-								break;
-	default:
-		NOT_REACHED();
+	// "clamp" 'disabled' value to smallest type
+	switch (pe->type) {
+		case PE_BOOL:
+			*(bool*)pe->variable = (bool)val;
+			break;
+		case PE_UINT8:
+			*(uint8*)pe->variable = (uint8)clamp((uint8)val, (uint8)pe->min, (uint8)pe->max);
+			break;
+		case PE_INT16:
+			*(int16*)pe->variable = (int16)clamp((int16)val, (int16)pe->min, (int16)pe->max);
+			break;
+		case PE_UINT16:
+			*(uint16*)pe->variable = (uint16)clamp((uint16)val, (uint16)pe->min, (uint16)pe->max);
+			break;
+		case PE_CURRENCY: case PE_INT32:
+			*(int32*)pe->variable = (int32)clamp((int32)val, (int32)pe->min, (int32)pe->max);
+			break;
+		default: NOT_REACHED();
 	}
 }
 
 static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 {
 	uint i;
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int x,y;
 		const PatchEntry *pe;
@@ -1161,8 +1139,6 @@ void ShowPatchesSelection(void)
 	AllocateWindowDesc(&_patches_selection_desc);
 }
 
-GRFFile *_sel_grffile;
-
 enum {
 	NEWGRF_WND_PROC_OFFSET_TOP_WIDGET = 14,
 	NEWGRF_WND_PROC_ROWSIZE = 14
@@ -1170,6 +1146,7 @@ enum {
 
 static void NewgrfWndProc(Window *w, WindowEvent *e)
 {
+	static GRFFile *_sel_grffile;
 	switch (e->event) {
 	case WE_PAINT: {
 		int x, y = NEWGRF_WND_PROC_OFFSET_TOP_WIDGET;
