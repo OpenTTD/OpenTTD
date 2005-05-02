@@ -297,9 +297,9 @@ static inline bool IsRoadStationTile(uint tile) {
 /**
  * Check if a station really exists.
  */
-static inline bool IsValidStation(const Station* station)
+static inline bool IsValidStation(const Station *st)
 {
-	return station->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+	return st->xy != 0; /* XXX: Replace by INVALID_TILE someday */
 }
 
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
