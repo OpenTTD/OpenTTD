@@ -73,7 +73,7 @@ void ResortVehicleLists(void)
 		}
 }
 
-void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
+void BuildVehicleList(vehiclelist_d *vl, VehicleType type, int owner, int station)
 {
 	int subtype = (type != VEH_Aircraft) ? TS_Front_Engine : 2;
 	int n = 0;

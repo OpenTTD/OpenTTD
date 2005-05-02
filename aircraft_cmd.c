@@ -13,6 +13,7 @@
 #include "sound.h"
 #include "player.h"
 #include "airport.h"
+#include "vehicle_gui.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport);

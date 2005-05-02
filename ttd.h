@@ -25,6 +25,15 @@ typedef struct Pair {
 	int b;
 } Pair;
 
+/**
+ * Is used as a general sortable struct (using qsort and friends). Is used for
+ * sorting vehicles and stations at the moment
+ */
+typedef struct SortStruct {
+	uint32	index;
+	byte		owner;
+} SortStruct;
+
 typedef struct YearMonthDay {
 	int year, month, day;
 } YearMonthDay;

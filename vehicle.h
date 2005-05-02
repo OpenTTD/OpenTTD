@@ -2,8 +2,48 @@
 #define VEHICLE_H
 
 #include "pool.h"
-#include "vehicle_gui.h"
 #include "order.h"
+
+typedef enum VehicleTypes{
+	VEH_Train = 0x10,
+	VEH_Road = 0x11,
+	VEH_Ship = 0x12,
+	VEH_Aircraft = 0x13,
+	VEH_Special = 0x14,
+	VEH_Disaster = 0x15,
+} VehicleType;
+
+enum VehStatus {
+	VS_HIDDEN = 1,
+	VS_STOPPED = 2,
+	VS_UNCLICKABLE = 4,
+	VS_DEFPAL = 0x8,
+	VS_TRAIN_SLOWING = 0x10,
+	VS_DISASTER = 0x20,
+	VS_AIRCRAFT_BROKEN = 0x40,
+	VS_CRASHED = 0x80,
+};
+
+// 1 and 3 do not appear to be used
+typedef enum TrainSubtypes {
+	TS_Front_Engine = 0,
+	TS_Not_First = 2,
+	TS_Free_Car = 4,
+} TrainSubtype;
+
+/* Effect vehicle types */
+typedef enum EffectVehicle {
+	EV_CHIMNEY_SMOKE   = 0,
+	EV_STEAM_SMOKE     = 1,
+	EV_DIESEL_SMOKE    = 2,
+	EV_ELECTRIC_SPARK  = 3,
+	EV_SMOKE           = 4,
+	EV_EXPLOSION_LARGE = 5,
+	EV_BREAKDOWN_SMOKE = 6,
+	EV_EXPLOSION_SMALL = 7,
+	EV_BULLDOZER       = 8,
+	EV_BUBBLE          = 9
+} EffectVehicle;
 
 typedef struct VehicleRail {
 	uint16 last_speed;		// NOSAVE: only used in UI
@@ -91,8 +131,8 @@ struct WorldSprite {
 };
 
 struct Vehicle {
-	byte type;				// type, ie roadven,train,ship,aircraft,special
-	byte subtype;			// subtype (for trains, 0 == loco, 4 wagon ??)
+	VehicleType type;	// type, ie roadven,train,ship,aircraft,special
+	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)(Filled with values from EffectVehicles or TrainSubTypes)
 
 	uint16 index;			// NOSAVE: Index in vehicle array
 
@@ -199,47 +239,6 @@ struct Vehicle {
 #define is_custom_firsthead_sprite(x) (x == 0xfd)
 #define is_custom_secondhead_sprite(x) (x == 0xfe)
 
-enum {
-	VEH_Train = 0x10,
-	VEH_Road = 0x11,
-	VEH_Ship = 0x12,
-	VEH_Aircraft = 0x13,
-	VEH_Special = 0x14,
-	VEH_Disaster = 0x15,
-};
-
-enum VehStatus {
-	VS_HIDDEN = 1,
-	VS_STOPPED = 2,
-	VS_UNCLICKABLE = 4,
-	VS_DEFPAL = 0x8,
-	VS_TRAIN_SLOWING = 0x10,
-	VS_DISASTER = 0x20,
-	VS_AIRCRAFT_BROKEN = 0x40,
-	VS_CRASHED = 0x80,
-};
-
-// 1 and 3 do not appear to be used
-enum TrainSubtype {
-	TS_Front_Engine = 0,
-	TS_Not_First = 2,
-	TS_Free_Car = 4,
-};
-
-/* Effect vehicle types */
-typedef enum EffectVehicle {
-	EV_CHIMNEY_SMOKE   = 0,
-	EV_STEAM_SMOKE     = 1,
-	EV_DIESEL_SMOKE    = 2,
-	EV_ELECTRIC_SPARK  = 3,
-	EV_SMOKE           = 4,
-	EV_EXPLOSION_LARGE = 5,
-	EV_BREAKDOWN_SMOKE = 6,
-	EV_EXPLOSION_SMALL = 7,
-	EV_BULLDOZER       = 8,
-	EV_BUBBLE          = 9
-} EffectVehicle;
-
 typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
@@ -319,6 +318,19 @@ typedef struct GetNewVehiclePosResult {
 	uint old_tile;
 	uint new_tile;
 } GetNewVehiclePosResult;
+
+/**
+ * Returns the Trackdir on which the vehicle is currently located.
+ * Works for trains and ships.
+ * Currently works only sortof for road vehicles, since they have a fuzzy
+ * concept of being "on" a trackdir. Dunno really what it returns for a road
+ * vehicle that is halfway a tile, never really understood that part. For road
+ * vehicles that are at the beginning or end of the tile, should just return
+ * the diagonal trackdir on which they are driving. I _think_.
+ * For other vehicles types, or vehicles with no clear trackdir (such as those
+ * in depots), returns 0xFF.
+ */
+byte GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
 bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp);

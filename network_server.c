@@ -1291,6 +1291,9 @@ void NetworkPopulateCompanyInfo(void)
 				case VEH_Ship:
 					_network_player_info[v->owner].num_vehicle[4]++;
 					break;
+				case VEH_Special:
+				case VEH_Disaster:
+					break;
 			}
 	}
 

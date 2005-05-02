@@ -11,6 +11,7 @@
 #include "news.h"
 #include "sound.h"
 #include "depot.h"
+#include "vehicle_gui.h"
 
 static void FloodVehicle(Vehicle *v);
 

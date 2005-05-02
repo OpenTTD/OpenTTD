@@ -1,6 +1,8 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
+#include "vehicle.h"
+
 struct vehiclelist_d;
 
 void DrawVehicleProfitButton(Vehicle *v, int x, int y);
@@ -10,16 +12,10 @@ void InitializeVehiclesGuiList(void);
 void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
-void BuildVehicleList(struct vehiclelist_d *vl, int type, int owner, int station);
+void BuildVehicleList(struct vehiclelist_d *vl, VehicleType type, int owner, int station);
 void SortVehicleList(struct vehiclelist_d *vl);
 
-typedef struct SortStruct { // store owner through sorting process
-	uint32	index;
-	byte		owner;
-} SortStruct;
-
 int CDECL GeneralOwnerSorter(const void *a, const void *b);
-void VehicleSorter(SortStruct *firstelement, uint32 n, uint16 size);
 VARDEF uint32	_internal_name_sorter_id;	// internal StringID for default vehicle-names
 VARDEF uint32	_last_vehicle_idx;				// cached index to hopefully speed up name-sorting
 VARDEF bool		_internal_sort_order;			// descending/ascending

@@ -118,6 +118,8 @@ static void DrawOrdersWindow(Window *w)
 						case VEH_Train: s = STR_880E_GO_TO_TRAIN_DEPOT;   break;
 						case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
 						case VEH_Ship:  s = STR_GO_TO_SHIP_DEPOT;         break;
+						default:
+						break;
 					}
 				}
 				if (v->type == VEH_Train && order->flags & OF_NON_STOP)

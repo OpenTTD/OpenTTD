@@ -15,6 +15,7 @@
 #include "player.h"
 #include "sound.h"
 #include "depot.h"
+#include "vehicle_gui.h"
 
 void ShowRoadVehViewWindow(Vehicle *v);
 
@@ -316,7 +317,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 			 * v->direction won't contain anything usefule than */
 			trackdir = _dir_to_diag_trackdir[GetRoadStationDir(tile)];
 		else
-			trackdir = _dir_to_diag_trackdir[(v->direction>>1)&3];
+			trackdir = GetVehicleTrackdir(v);
 
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist == 0)
@@ -1160,7 +1161,8 @@ found_best_track:;
 static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
 {
   NPFFindStationOrTileData fstd;
-  byte trackdir = _dir_to_diag_trackdir[(v->direction >> 1) & 3];
+  byte trackdir = GetVehicleTrackdir(v);
+	assert(trackdir != 0xFF);
 
   fstd.dest_coords = tile;
   fstd.station_index = -1;	// indicates that the destination is a tile, not a station

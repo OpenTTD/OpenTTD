@@ -73,7 +73,7 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
-		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
+		byte trackdir = GetVehicleTrackdir(v);
 		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner);
 		if (ftd.best_bird_dist == 0)
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
@@ -567,14 +567,12 @@ static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		uint src_tile = TILE_ADD(tile, TileOffsByDir(_reverse_dir[enterdir]));
-		byte track = FIND_FIRST_BIT(v->u.ship.state);
-		assert (KILL_FIRST_BIT(v->u.ship.state) == 0); /* Check that only one bit is set in state */
-		assert (v->u.ship.state != 0x80); /* Check that we are not in a depot */
-		assert (track < 6);
+		byte trackdir = GetVehicleTrackdir(v);
+		assert (trackdir != 0xFF); /* Check that we are not in a depot */
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTile(src_tile, _track_direction_to_trackdir[track][v->direction], &fstd, TRANSPORT_WATER, v->owner);
+		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner);
 
 		if (ftd.best_trackdir != 0xff)
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

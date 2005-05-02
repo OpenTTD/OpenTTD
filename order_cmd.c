@@ -10,6 +10,7 @@
 #include "player.h"
 #include "news.h"
 #include "saveload.h"
+#include "vehicle_gui.h"
 
 enum {
 	/* Max orders: 64000 (64 * 1000) */

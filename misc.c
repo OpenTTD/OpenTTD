@@ -12,6 +12,7 @@
 #include "network_data.h"
 #include "network_server.h"
 #include "engine.h"
+#include "vehicle_gui.h"
 
 extern void StartupEconomy(void);
 extern void InitNewsItemStructs(void);

@@ -16,6 +16,7 @@
 #include "sound.h"
 #include "depot.h"
 #include "waypoint.h"
+#include "vehicle_gui.h"
 
 #define is_firsthead_sprite(spritenum) \
 	(is_custom_sprite(spritenum) \
@@ -1317,7 +1318,8 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
-		byte trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
+		byte trackdir = GetVehicleTrackdir(v);
+		assert (trackdir != 0xFF);
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_RAIL, v->owner);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
@@ -1668,7 +1670,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 
 		NPFFillWithOrderData(&fstd, v);
 		/* The enterdir for the new tile, is the exitdir for the old tile */
-		trackdir = _track_exitdir_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][enterdir];
+		trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
 		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner);
@@ -1804,8 +1806,8 @@ static bool CheckReverseTrain(Vehicle *v)
 
 		NPFFillWithOrderData(&fstd, v);
 
-		trackdir = _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
-		trackdir_rev = REVERSE_TRACKDIR(_track_direction_to_trackdir[FIND_FIRST_BIT(last->u.rail.track)][last->direction]);
+		trackdir = GetVehicleTrackdir(v);
+		trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(v));
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
