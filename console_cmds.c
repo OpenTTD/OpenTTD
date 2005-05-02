@@ -117,6 +117,7 @@ DEF_CONSOLE_CMD(ConResetTile)
 
 	return false;
 }
+#endif /* _DEBUG */
 
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
@@ -136,7 +137,6 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 
 	return false;
 }
-#endif /* _DEBUG */
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void BuildFileList(void);
