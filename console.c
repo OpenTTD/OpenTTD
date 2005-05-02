@@ -16,17 +16,17 @@
 #include "network_server.h"
 
 #define ICON_BUFFER 79
-#define ICON_CMDBUF_SIZE 20
-#define ICON_CMDLN_SIZE 255
+#define ICON_HISTORY_SIZE 20
 #define ICON_LINE_HEIGHT 12
 #define ICON_RIGHT_BORDERWIDTH 10
 #define ICON_BOTTOM_BORDERWIDTH 12
 #define ICON_MAX_ALIAS_LINES 40
+#define ICON_TOKEN_COUNT 20
 
 // ** main console ** //
 static Window *_iconsole_win; // Pointer to console window
 static bool _iconsole_inited;
-static char* _iconsole_buffer[ICON_BUFFER + 1];
+static char *_iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static Textbuf _iconsole_cmdline;
 static byte _iconsole_scroll;
@@ -34,11 +34,11 @@ static byte _iconsole_scroll;
 // ** stdlib ** //
 byte _stdlib_developer = 1;
 bool _stdlib_con_developer = false;
-FILE* _iconsole_output_file;
+FILE *_iconsole_output_file;
 
 // ** main console cmd buffer
-static char* _iconsole_cmdbuffer[ICON_CMDBUF_SIZE];
-static byte _iconsole_cmdbufferpos;
+static char *_iconsole_history[ICON_HISTORY_SIZE];
+static byte _iconsole_historypos;
 
 /* *************** */
 /*  end of header  */
@@ -54,10 +54,12 @@ static void IConsoleClearCommand(void)
 	SetWindowDirty(_iconsole_win);
 }
 
+static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
+
 // ** console window ** //
 static void IConsoleWndProc(Window* w, WindowEvent* e)
 {
-	switch(e->event) {
+	switch (e->event) {
 		case WE_PAINT: {
 			int i = _iconsole_scroll;
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
@@ -93,11 +95,11 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 			e->keypress.cont = false;
 			switch (e->keypress.keycode) {
 				case WKC_UP:
-					IConsoleCmdBufferNavigate(+1);
+					IConsoleHistoryNavigate(+1);
 					SetWindowDirty(w);
 					break;
 				case WKC_DOWN:
-					IConsoleCmdBufferNavigate(-1);
+					IConsoleHistoryNavigate(-1);
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
@@ -133,8 +135,7 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					break;
 				case WKC_RETURN: case WKC_NUM_ENTER:
 					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline.buf);
-					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
-					IConsoleCmdBufferAdd(_iconsole_cmdline.buf);
+					IConsoleHistoryAdd(_iconsole_cmdline.buf);
 
 					IConsoleCmdExec(_iconsole_cmdline.buf);
 					IConsoleClearCommand();
@@ -145,23 +146,28 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					MarkWholeScreenDirty();
 					break;
 				case (WKC_CTRL | 'V'):
-					if (InsertTextBufferClipboard(&_iconsole_cmdline))
+					if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
+						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
+					}
 					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
-					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode))
+					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode)) {
+						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
-					_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+					}
 					break;
 				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode))
+					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode)) {
+						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
+					}
 					break;
 				default:
 					if (IsValidAsciiChar(e->keypress.ascii)) {
 						_iconsole_scroll = ICON_BUFFER;
 						InsertTextBufferChar(&_iconsole_cmdline, e->keypress.ascii);
-						_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
 					} else
 						e->keypress.cont = true;
@@ -182,10 +188,9 @@ static const WindowDesc _iconsole_window_desc = {
 	IConsoleWndProc,
 };
 
-extern const char _openttd_revision[];
-
 void IConsoleInit(void)
 {
+	extern const char _openttd_revision[];
 	_iconsole_output_file = NULL;
 	_iconsole_color_default = 1;
 	_iconsole_color_error = 3;
@@ -193,7 +198,7 @@ void IConsoleInit(void)
 	_iconsole_color_debug = 5;
 	_iconsole_color_commands = 2;
 	_iconsole_scroll = ICON_BUFFER;
-	_iconsole_cmdbufferpos = ICON_CMDBUF_SIZE - 1;
+	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
 	_iconsole_inited = true;
 	_iconsole_mode = ICONSOLE_CLOSED;
 	_iconsole_win = NULL;
@@ -202,19 +207,19 @@ void IConsoleInit(void)
 	_redirect_console_to_client = 0;
 #endif
 
-	memset(_iconsole_cmdbuffer, 0, sizeof(_iconsole_cmdbuffer));
+	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
 	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
 	_iconsole_cmdline.buf = calloc(ICON_CMDLN_SIZE, sizeof(*_iconsole_cmdline.buf)); // create buffer and zero it
 	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE - 1;
 
+	IConsolePrintF(13, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
+	IConsolePrint(12,  "------------------------------------");
+	IConsolePrint(12,  "use \"help\" for more information");
+	IConsolePrint(12,  "");
 	IConsoleStdLibRegister();
-	IConsolePrintF(13, "OpenTTD Game Console Revision 6 - %s", _openttd_revision);
-	IConsolePrint(12, "---------------------------------");
-	IConsolePrint(12, "use \"help\" for more info");
-	IConsolePrint(12, "");
 	IConsoleClearCommand();
-	IConsoleCmdBufferAdd("");
+	IConsoleHistoryAdd("");
 }
 
 void IConsoleClear(void)
@@ -256,7 +261,6 @@ void IConsoleFree(void)
 
 void IConsoleResize(void)
 {
-
 	_iconsole_win = FindWindowById(WC_CONSOLE, 0);
 
 	switch (_iconsole_mode) {
@@ -269,7 +273,7 @@ void IConsoleResize(void)
 			_iconsole_win->width = _screen.width;
 			break;
 		default:
-			break;
+			NOT_REACHED();
 	}
 
 	MarkWholeScreenDirty();
@@ -283,7 +287,7 @@ void IConsoleSwitch(void)
 			_iconsole_win->height = _screen.height / 3;
 			_iconsole_win->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;
-			SETBIT(_no_scroll, SCROLL_CON);
+			SETBIT(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
 			break;
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
@@ -296,44 +300,47 @@ void IConsoleSwitch(void)
 	MarkWholeScreenDirty();
 }
 
-void IConsoleClose(void)
+void IConsoleClose(void) {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
+void IConsoleOpen(void)  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();}
+
+/**
+ * Add the entered line into the history so you can look it back
+ * scroll, etc. Put it to the beginning as it is the latest text
+ * @param cmd Text to be entered into the 'history'
+ */
+void IConsoleHistoryAdd(const char *cmd)
 {
-	if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();
+	free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
+
+	memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
+	_iconsole_history[0] = strdup(cmd);
+	IConsoleResetHistoryPos();
 }
 
-void IConsoleOpen(void)
+/**
+ * Navigate Up/Down in the history of typed commands
+ * @param direction Go further back in history (+1), go to recently typed commands (-1)
+ */
+void IConsoleHistoryNavigate(signed char direction)
 {
-	if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch();
-}
+	int i = _iconsole_historypos + direction;
 
-void IConsoleCmdBufferAdd(const char* cmd)
-{
-	int i;
-	if (_iconsole_cmdbufferpos != (ICON_CMDBUF_SIZE - 1)) return;
-	free(_iconsole_cmdbuffer[ICON_CMDBUF_SIZE - 2]);
-	for (i = (ICON_CMDBUF_SIZE - 2); i > 0; i--) _iconsole_cmdbuffer[i] = _iconsole_cmdbuffer[i - 1];
-	_iconsole_cmdbuffer[0] = strdup(cmd);
-}
+	// watch out for overflows, just wrap around
+	if (i < 0) i = ICON_HISTORY_SIZE - 1;
+	if (i >= ICON_HISTORY_SIZE) i = 0;
 
-void IConsoleCmdBufferNavigate(signed char direction)
-{
-	int i;
-	i = _iconsole_cmdbufferpos + direction;
-	if (i < 0) i = ICON_CMDBUF_SIZE - 1;
-	if (i >= ICON_CMDBUF_SIZE) i = 0;
 	if (direction > 0)
-		while (_iconsole_cmdbuffer[i] == NULL) {
-			i++;
-			if (i >= ICON_CMDBUF_SIZE) i = 0;
-		}
-	if (direction < 0)
-		while (_iconsole_cmdbuffer[i] == NULL) {
-			--i;
-			if (i < 0) i = ICON_CMDBUF_SIZE - 1;
-		}
-	_iconsole_cmdbufferpos = i;
+		if (_iconsole_history[i] == NULL) i = 0;
+
+	if (direction < 0) {
+		while (i > 0 && _iconsole_history[i] == NULL) i--;
+	}
+
+	_iconsole_historypos = i;
 	IConsoleClearCommand();
-	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_cmdbuffer[i], _iconsole_cmdline.maxlength);
+	// copy history to 'command prompt / bash'
+	assert(_iconsole_history[i] != NULL && IS_INT_INSIDE(i, 0, ICON_HISTORY_SIZE));
+	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxlength);
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 
@@ -348,8 +355,6 @@ void IConsoleCmdBufferNavigate(signed char direction)
  */
 void IConsolePrint(uint16 color_code, const char* string)
 {
-	char *i;
-
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
 		/* Redirect the string to the client */
@@ -372,9 +377,11 @@ void IConsolePrint(uint16 color_code, const char* string)
 	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
 	_iconsole_buffer[ICON_BUFFER] = strdup(string);
 
-	// filter out unprintable characters
-	for (i = _iconsole_buffer[ICON_BUFFER]; *i != '\0'; i++)
-		if (!IsValidAsciiChar((byte)*i)) *i = ' ';
+	{ // filter out unprintable characters
+		char *i;
+		for (i = _iconsole_buffer[ICON_BUFFER]; *i != '\0'; i++)
+			if (!IsValidAsciiChar((byte)*i)) *i = ' ';
+	}
 
 	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
 	_iconsole_cbuffer[ICON_BUFFER] = color_code;
@@ -384,1103 +391,716 @@ void IConsolePrint(uint16 color_code, const char* string)
 	if (_iconsole_win != NULL) SetWindowDirty(_iconsole_win);
 }
 
-
-void CDECL IConsolePrintF(uint16 color_code, const char* s, ...)
+/**
+ * Handle the printing of text entered into the console or redirected there
+ * by any other means. Uses printf() style format, for more information look
+ * at @IConsolePrint()
+ */
+void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
 {
 	va_list va;
-	char buf[1024];
-	int len;
+	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, s);
-	len = vsnprintf(buf, sizeof(buf), s, va);
+	vsnprintf(buf, sizeof(buf), s, va);
 	va_end(va);
 
 	IConsolePrint(color_code, buf);
 }
 
+/**
+ * It is possible to print debugging information to the console,
+ * which is achieved by using this function. Can only be used by
+ * @debug() in debug.c. You need at least a level 2 (developer) for debugging
+ * messages to show up
+ */
 void IConsoleDebug(const char* string)
 {
 	if (_stdlib_developer > 1)
 		IConsolePrintF(_iconsole_color_debug, "dbg: %s", string);
 }
 
-void IConsoleError(const char* string)
-{
-	if (_stdlib_developer > 0)
-		IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
-}
-
+/**
+ * It is possible to print warnings to the console. These are mostly
+ * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
+ * debugging messages to show up
+ */
 void IConsoleWarning(const char* string)
 {
 	if (_stdlib_developer > 0)
 		IConsolePrintF(_iconsole_color_warning, "WARNING: %s", string);
 }
 
-void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr)
+/**
+ * It is possible to print error information to the console. This can include
+ * game errors, or errors in general you would want the user to notice
+ */
+void IConsoleError(const char* string)
 {
-	char* _new;
-	_iconsole_cmd* item;
-	_iconsole_cmd* item_new;
-	_iconsole_cmd* item_before;
-
-	_new = strdup(name);
-
-	item_new = malloc(sizeof(_iconsole_cmd));
-
-	item_new->_next = NULL;
-	item_new->addr = addr;
-	item_new->name = _new;
-
-	item_new->hook_access = NULL;
-	item_new->hook_after_exec = NULL;
-	item_new->hook_before_exec = NULL;
-
-	item_before = NULL;
-	item = _iconsole_cmds;
-
-	if (item == NULL) {
-		_iconsole_cmds = item_new;
-	} else {
-		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
-			item_before = item;
-			item = item->_next;
-			}
-// insertion sort
-		if (item_before==NULL) {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting as startitem
-				_iconsole_cmds = item_new;
-				item_new ->_next = item;
-			}
-		} else {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting
-				item_new ->_next = item_before->_next;
-				item_before ->_next = item_new;
-			}
-		}
-// insertion sort end
-	}
-
+	IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
 }
 
-_iconsole_cmd* IConsoleCmdGet(const char* name)
+/**
+ * Change a string into its number representation. Supports
+ * decimal and hexadecimal numbers as well as 'on'/'off' 'true'/'false'
+ * @param *value the variable a successfull conversion will be put in
+ * @param *arg the string to be converted
+ * @return Return true on success or false on failure
+ */
+bool GetArgumentInteger(uint32 *value, const char *arg)
 {
-	_iconsole_cmd* item;
+	int result = sscanf(arg, "%u", value);
 
-	item = _iconsole_cmds;
-	while (item != NULL) {
+	if (result == 0 && arg[0] == '0' && (arg[1] == 'x' || arg[1] == 'X'))
+		result = sscanf(arg, "%x", value);
+
+	if (result == 0 && (strcmp(arg, "on") == 0 || strcmp(arg, "true") == 0 )) {*value = 1; result = 1;}
+
+	if (result == 0 && (strcmp(arg, "off") == 0 || strcmp(arg, "false") == 0)) {*value = 0; result = 1;}
+
+	return !!result;
+}
+
+/**
+ * Perhaps ugly macro, but this saves us the trouble of writing the same function
+ * three types, just with different variables. Yes, templates would be handy. It was
+ * either this define or an even more ugly void* magic function
+ */
+#define IConsoleAddSorted(_base, item_new, IConsoleType, type)                      \
+{                                                                                   \
+	IConsoleType *item, *item_before;                                                 \
+	/* first command */                                                               \
+	if (_base == NULL) {                                                              \
+		_base = item_new;                                                               \
+		return;                                                                         \
+	}                                                                                 \
+                                                                                    \
+	item_before = NULL;                                                               \
+	item = _base;                                                                     \
+                                                                                    \
+	/* BEGIN - Alphabetically insert the commands into the linked list */             \
+	while (item != NULL) {                                                            \
+		int i = strcmp(item->name, item_new->name);                                     \
+		if (i == 0) {                                                                   \
+			IConsoleError(type " with this name already exists; insertion aborted");      \
+			free(item_new);                                                               \
+			return;                                                                       \
+		}                                                                               \
+                                                                                    \
+		if (i > 0) break; /* insert at this position */                                 \
+                                                                                    \
+		item_before = item;                                                             \
+		item = item->next;                                                              \
+	}                                                                                 \
+                                                                                    \
+	if (item_before == NULL) {                                                        \
+		_base = item_new;                                                               \
+	} else                                                                            \
+		item_before->next = item_new;                                                   \
+                                                                                    \
+	item_new->next = item;                                                            \
+	/* END - Alphabetical insert */                                                   \
+}
+
+/**
+ * Register a new command to be used in the console
+ * @param name name of the command that will be used
+ * @param proc function that will be called upon execution of command
+ */
+void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc)
+{
+	char *new_cmd = strdup(name);
+	IConsoleCmd *item_new = malloc(sizeof(IConsoleCmd));
+
+	item_new->next = NULL;
+	item_new->proc = proc;
+	item_new->name = new_cmd;
+
+	item_new->hook.access = NULL;
+	item_new->hook.pre = NULL;
+	item_new->hook.post = NULL;
+
+	IConsoleAddSorted(_iconsole_cmds, item_new, IConsoleCmd, "a command");
+}
+
+/**
+ * Find the command pointed to by its string
+ * @param name command to be found
+ * @return return Cmdstruct of the found command, or NULL on failure
+ */
+IConsoleCmd *IConsoleCmdGet(const char *name)
+{
+	IConsoleCmd *item;
+
+	for (item = _iconsole_cmds; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
-		item = item->_next;
 	}
 	return NULL;
 }
 
-void IConsoleAliasRegister(const char* name, const char* cmdline)
+/**
+ * Register a an alias for an already existing command in the console
+ * @param name name of the alias that will be used
+ * @param cmd name of the command that 'name' will be alias of
+ */
+void IConsoleAliasRegister(const char *name, const char *cmd)
 {
-	char* _new;
-	char* _newcmd;
-	_iconsole_alias* item;
-	_iconsole_alias* item_new;
-	_iconsole_alias* item_before;
+	char *new_alias = strdup(name);
+	char *cmd_aliased = strdup(cmd);
+	IConsoleAlias *item_new = malloc(sizeof(IConsoleAlias));
 
-	_new = strdup(name);
-	_newcmd = strdup(cmdline);
+	item_new->next = NULL;
+	item_new->cmdline = cmd_aliased;
+	item_new->name = new_alias;
 
-	item_new = malloc(sizeof(_iconsole_alias));
-
-	item_new->_next = NULL;
-	item_new->cmdline = _newcmd;
-	item_new->name = _new;
-
-	item_before = NULL;
-	item = _iconsole_aliases;
-
-	if (item == NULL) {
-		_iconsole_aliases = item_new;
-	} else {
-		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
-			item_before = item;
-			item = item->_next;
-			}
-// insertion sort
-		if (item_before==NULL) {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting as startitem
-				_iconsole_aliases = item_new;
-				item_new ->_next = item;
-			}
-		} else {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting
-				item_new ->_next = item_before->_next;
-				item_before ->_next = item_new;
-			}
-		}
-// insertion sort end
-	}
-
+	IConsoleAddSorted(_iconsole_aliases, item_new, IConsoleAlias, "an alias");
 }
 
-_iconsole_alias* IConsoleAliasGet(const char* name)
+/**
+ * Find the alias pointed to by its string
+ * @param name alias to be found
+ * @return return Aliasstruct of the found alias, or NULL on failure
+ */
+IConsoleAlias *IConsoleAliasGet(const char *name)
 {
-	_iconsole_alias* item;
+	IConsoleAlias* item;
 
-	item = _iconsole_aliases;
-	while (item != NULL) {
+	for (item = _iconsole_aliases; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
-		item = item->_next;
 	}
+
 	return NULL;
 }
 
-static void IConsoleAliasExec(const char* cmdline, char* tokens[20], byte tokentypes[20])
+/** copy in an argument into the aliasstream */
+static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
 {
-	char* lines[ICON_MAX_ALIAS_LINES];
-	char* linestream;
-	char* linestream_s;
+	int len = min(ICON_MAX_STREAMSIZE - bufpos, strlen(src));
+	strncpy(dst, src, len);
 
-	int c;
+	return len;
+}
+
+/**
+ * An alias is just another name for a command, or for more commands
+ * Execute it as well.
+ * @param *alias is the alias of the command
+ * @param tokencount the number of parameters passed
+ * @param *tokens are the parameters given to the original command (0 is the first param)
+ */
+void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT])
+{
+	const char *cmdptr;
+	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];
 	int i;
-	int l;
-	int x;
-	byte t;
+	uint a_index, astream_i;
 
-	//** clearing buffer **//
+	memset(&aliases, 0, sizeof(aliases));
+	memset(&aliasstream, 0, sizeof(aliasstream));
 
-	for (i = 0; i < 40; i++) {
-		lines[0] = NULL;
-	}
-	linestream_s = linestream = malloc(1024*ICON_MAX_ALIAS_LINES);
-	memset(linestream, 0, 1024*ICON_MAX_ALIAS_LINES);
+	aliases[0] = aliasstream;
+	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; *cmdptr++) {
+		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
 
-	//** parsing **//
-
-	l = strlen(cmdline);
-	i = 0;
-	c = 0;
-	x = 0;
-	t = 0;
-	lines[c] = linestream;
-
-	while (i < l && c < ICON_MAX_ALIAS_LINES - 1) {
-		if (cmdline[i] == '%') {
-			i++;
-			if (cmdline[i] == '+') {
-				// all params seperated: "[param 1]" "[param 2]"
-				t=1;
-				while ((tokens[t]!=NULL) && (t<20) &&
-						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
-					int l2 = strlen(tokens[t]);
-					*linestream = '"';
-					linestream++;
-					memcpy(linestream,tokens[t],l2);
-					linestream += l2;
-					*linestream = '"';
-					linestream++;
-					*linestream = ' ';
-					linestream++;
-					x += l2+3;
-					t++;
+		switch (*cmdptr) {
+		case '\'': /* ' will double for "" */
+			aliasstream[astream_i++] = '"';
+			break;
+		case ';': /* Cmd seperator, start new command */
+			aliasstream[astream_i] = '\0';
+			aliases[++a_index] = &aliasstream[++astream_i];
+			*cmdptr++;
+			break;
+		case '%': /* Some or all parameters */
+			*cmdptr++;
+			switch (*cmdptr) {
+			case '+': { /* All parameters seperated: "[param 1]" "[param 2]" */
+				for (i = 0; i != tokencount; i++) {
+					aliasstream[astream_i++] = '"';
+					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
+					aliasstream[astream_i++] = '"';
+					aliasstream[astream_i++] = ' ';
 				}
-			} else if (cmdline[i] == '!') {
-				// merge the params to one: "[param 1] [param 2] [param 3...]"
-				t=1;
-				*linestream = '"';
-				linestream++;
-				while ((tokens[t]!=NULL) && (t<20) &&
-						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
-					int l2 = strlen(tokens[t]);
-					memcpy(linestream,tokens[t],l2);
-					linestream += l2;
-					*linestream = ' ';
-					linestream++;
-					x += l2+1;
-					t++;
+			} break;
+			case '!': { /* Merge the parameters to one: "[param 1] [param 2] [param 3...]" */
+				aliasstream[astream_i++] = '"';
+				for (i = 0; i != tokencount; i++) {
+					astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
+					aliasstream[astream_i++] = ' ';
 				}
-				linestream--;
-				*linestream = '"';
-				linestream++;
-				x += 1;
-			} else {
-				// one specific parameter: %A = [param 1] %B = [param 2] ...
-				int l2;
-				t = ((byte)cmdline[i]) - 64;
-				if ((t<20) && (tokens[t]!=NULL) &&
-						((tokentypes[t] == ICONSOLE_VAR_STRING) || (tokentypes[t] == ICONSOLE_VAR_UNKNOWN))) {
-					l2 = strlen(tokens[t]);
-					*linestream = '"';
-					linestream++;
-					memcpy(linestream,tokens[t],l2);
-					linestream += l2;
-					*linestream = '"';
-					linestream++;
-					x += l2+2;
+				aliasstream[astream_i++] = '"';
+
+			} break;
+				default: { /* One specific parameter: %A = [param 1] %B = [param 2] ... */
+				int param = *cmdptr - 'A';
+
+				if (param < 0 || param >= tokencount) {
+					IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
+					IConsolePrintF(_iconsole_color_warning, "Usage of alias '%s': %s", alias->name, alias->cmdline);
+					return;
 				}
-			}
-		} else if (cmdline[i] == '\\') {
-			// \\ = \       \' = '      \% = %
-			i++;
-			if (cmdline[i] == '\\') {
-				*linestream = '\\';
-				linestream++;
-			} else if (cmdline[i] == '\'') {
-				*linestream = '\'';
-				linestream++;
-			} else if (cmdline[i] == '%') {
-				*linestream = '%';
-				linestream++;
-			}
-		} else if (cmdline[i] == '\'') {
-			// ' = "
-			*linestream = '"';
-			linestream++;
-		} else if (cmdline[i] == ';') {
-			// ; = start a new line
-			c++;
-			*linestream = '\0';
-			linestream += 1024 - (x % 1024);
-			x += 1024 - (x % 1024);
-			lines[c] = linestream;
-		} else {
-			*linestream = cmdline[i];
-			linestream++;
-			x++;
-		}
-		i++;
-	}
 
-	linestream--;
-	if (*linestream != '\0') {
-		c++;
-		linestream++;
-		*linestream = '\0';
-	}
+				aliasstream[astream_i++] = '"';
+				astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[param], astream_i);
+				aliasstream[astream_i++] = '"';
+			} break;
+			} break;
 
-	for (i=0; i<c; i++)	{
-		IConsoleCmdExec(lines[i]);
-	}
-
-	free(linestream_s);
-}
-
-void IConsoleVarInsert(_iconsole_var* item_new, const char* name)
-{
-	_iconsole_var* item;
-	_iconsole_var* item_before;
-
-	item_new->_next = NULL;
-
-	item_new->name = malloc(strlen(name) + 2); /* XXX unchecked malloc */
-	sprintf(item_new->name, "%s", name);
-
-	item_before = NULL;
-	item = _iconsole_vars;
-
-	if (item == NULL) {
-		_iconsole_vars = item_new;
-	} else {
-		while ((item->_next != NULL) && (strcmp(item->name,item_new->name)<=0)) {
-			item_before = item;
-			item = item->_next;
-			}
-// insertion sort
-		if (item_before==NULL) {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting as startitem
-				_iconsole_vars = item_new;
-				item_new ->_next = item;
-			}
-		} else {
-			if (strcmp(item->name,item_new->name)<=0) {
-				// appending
-				item ->_next = item_new;
-			} else {
-				// inserting
-				item_new ->_next = item_before->_next;
-				item_before ->_next = item_new;
-			}
-		}
-// insertion sort end
-	}
-}
-
-void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type)
-{
-	_iconsole_var* item_new;
-
-	item_new = malloc(sizeof(_iconsole_var)); /* XXX unchecked malloc */
-
-	item_new->_next = NULL;
-
-	switch (type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			item_new->data.bool_ = addr;
-			break;
-		case ICONSOLE_VAR_BYTE:
-		case ICONSOLE_VAR_UINT8:
-			item_new->data.byte_ = addr;
-			break;
-		case ICONSOLE_VAR_UINT16:
-			item_new->data.uint16_ = addr;
-			break;
-		case ICONSOLE_VAR_UINT32:
-			item_new->data.uint32_ = addr;
-			break;
-		case ICONSOLE_VAR_INT16:
-			item_new->data.int16_ = addr;
-			break;
-		case ICONSOLE_VAR_INT32:
-			item_new->data.int32_ = addr;
-			break;
-		case ICONSOLE_VAR_STRING:
-			item_new->data.string_ = addr;
-			break;
 		default:
-			error("unknown console variable type");
+			aliasstream[astream_i++] = *cmdptr;
 			break;
+		}
 	}
 
-	IConsoleVarInsert(item_new, name);
+	for (i = 0; i <= (int)a_index; i++) IConsoleCmdExec(aliases[i]); // execute each alias in turn
+}
 
+/**
+ * Special function for adding string-type variables. They in addition
+ * also need a 'size' value saying how long their string buffer is.
+ * @param size the length of the string buffer
+ * For more information see @IConsoleVarRegister()
+ */
+void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help)
+{
+	IConsoleVar *var;
+	IConsoleVarRegister(name, addr, ICONSOLE_VAR_STRING, help);
+	var = IConsoleVarGet(name);
+	var->size = size;
+}
+
+/**
+ * Register a new variable to be used in the console
+ * @param name name of the variable that will be used
+ * @param addr memory location the variable will point to
+ * @param help the help string shown for the variable
+ * @param type the type of the variable (simple atomic) so we know which values it can get
+ */
+void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help)
+{
+	char *new_cmd = strdup(name);
+	IConsoleVar *item_new = malloc(sizeof(IConsoleVar));
+
+	item_new->help = (help != NULL) ? strdup(help) : NULL;
+
+	item_new->next = NULL;
+	item_new->name = new_cmd;
+	item_new->addr = addr;
+	item_new->proc = NULL;
 	item_new->type = type;
-	item_new->_malloc = false;
 
-	item_new->hook_access = NULL;
-	item_new->hook_after_change = NULL;
-	item_new->hook_before_change = NULL;
+	item_new->hook.access = NULL;
+	item_new->hook.pre = NULL;
+	item_new->hook.post = NULL;
 
+	IConsoleAddSorted(_iconsole_vars, item_new, IConsoleVar, "a variable");
 }
 
-void IConsoleVarMemRegister(const char* name, _iconsole_var_types type)
+/**
+ * Find the variable pointed to by its string
+ * @param name variable to be found
+ * @return return Varstruct of the found variable, or NULL on failure
+ */
+IConsoleVar *IConsoleVarGet(const char *name)
 {
-	_iconsole_var* item;
-	item = IConsoleVarAlloc(type);
-	IConsoleVarInsert(item, name);
-}
-
-_iconsole_var* IConsoleVarGet(const char* name)
-{
-	_iconsole_var* item;
-	for (item = _iconsole_vars; item != NULL; item = item->_next)
+	IConsoleVar *item;
+	for (item = _iconsole_vars; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
+	}
+
 	return NULL;
 }
 
-_iconsole_var* IConsoleVarAlloc(_iconsole_var_types type)
+/**
+ * Set a new value to a console variable
+ * @param *var the variable being set/changed
+ * @param value the new value given to the variable, cast properly
+ */
+static void IConsoleVarSetValue(const IConsoleVar *var, uint32 value)
 {
-	_iconsole_var* item = malloc(sizeof(_iconsole_var)); /* XXX unchecked malloc */
-	item->_next = NULL;
-	item->name = NULL;
-	item->type = type;
-	switch (item->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			item->data.bool_ = malloc(sizeof(*item->data.bool_));
-			*item->data.bool_ = false;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_BYTE:
-		case ICONSOLE_VAR_UINT8:
-			item->data.byte_ = malloc(sizeof(*item->data.byte_));
-			*item->data.byte_ = 0;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_UINT16:
-			item->data.uint16_ = malloc(sizeof(*item->data.uint16_));
-			*item->data.uint16_ = 0;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_UINT32:
-			item->data.uint32_ = malloc(sizeof(*item->data.uint32_));
-			*item->data.uint32_ = 0;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_INT16:
-			item->data.int16_ = malloc(sizeof(*item->data.int16_));
-			*item->data.int16_ = 0;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_INT32:
-			item->data.int32_ = malloc(sizeof(*item->data.int32_));
-			*item->data.int32_ = 0;
-			item->_malloc = true;
-			break;
-		case ICONSOLE_VAR_POINTER:
-		case ICONSOLE_VAR_STRING:
-			// needs no memory ... it gets memory when it is set to an value
-			item->data.addr = NULL;
-			item->_malloc = false;
-			break;
-		default:
-			error("unknown console variable type");
-			break;
-	}
-
-	item->hook_access = NULL;
-	item->hook_after_change = NULL;
-	item->hook_before_change = NULL;
-	return item;
-}
-
-
-void IConsoleVarFree(_iconsole_var* var)
-{
-	if (var->_malloc)
-		free(var->data.addr);
-	free(var->name);
-	free(var);
-}
-
-void IConsoleVarSetString(_iconsole_var* var, const char* string)
-{
-	if (string == NULL) return;
-
-	if (var->_malloc)
-		free(var->data.string_);
-
-	var->data.string_ = strdup(string);
-	var->_malloc = true;
-}
-
-void IConsoleVarSetValue(_iconsole_var* var, int value) {
 	switch (var->type) {
 		case ICONSOLE_VAR_BOOLEAN:
-			*var->data.bool_ = (value != 0);
+			*(bool*)var->addr = (value != 0);
 			break;
 		case ICONSOLE_VAR_BYTE:
-		case ICONSOLE_VAR_UINT8:
-			*var->data.byte_ = value;
+			*(byte*)var->addr = (byte)value;
 			break;
 		case ICONSOLE_VAR_UINT16:
-			*var->data.uint16_ = value;
-			break;
-		case ICONSOLE_VAR_UINT32:
-			*var->data.uint32_ = value;
+			*(uint16*)var->addr = (byte)value;
 			break;
 		case ICONSOLE_VAR_INT16:
-			*var->data.int16_ = value;
+			*(int16*)var->addr = (int16)value;
+			break;
+		case ICONSOLE_VAR_UINT32:
+			*(uint32*)var->addr = (uint32)value;
 			break;
 		case ICONSOLE_VAR_INT32:
-			*var->data.int32_ = value;
+			*(int32*)var->addr = (int32)value;
 			break;
-		default:
-			assert(0);
-			break;
+		default: NOT_REACHED();
 	}
+
+	IConsoleVarPrintSetValue(var);
 }
 
-void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc)
+/**
+ * Set a new value to a string-type variable. Basically this
+ * means to copy the new value over to the container.
+ * @param *var the variable in question
+ * @param *value the new value
+ */
+static void IConsoleVarSetStringvalue(const IConsoleVar *var, char *value)
 {
-	if (var == NULL) return;
-	if (dump_desc == NULL) dump_desc = var->name;
+	if (var->type != ICONSOLE_VAR_STRING || var->addr == NULL) return;
+
+	ttd_strlcpy((char*)var->addr, (char*)value, var->size);
+	IConsoleVarPrintSetValue(var); // print out the new value, giving feedback
+	return;
+}
+
+/**
+ * Query the current value of a variable and return it
+ * @param *var the variable queried
+ * @return current value of the variable
+ */
+static uint32 IConsoleVarGetValue(const IConsoleVar *var)
+{
+	uint32 result = 0;
 
 	switch (var->type) {
 		case ICONSOLE_VAR_BOOLEAN:
-			IConsolePrintF(_iconsole_color_default, "%s = %s",
-				dump_desc, *var->data.bool_ ? "true" : "false");
+			result = *(bool*)var->addr;
 			break;
 		case ICONSOLE_VAR_BYTE:
-		case ICONSOLE_VAR_UINT8:
-			IConsolePrintF(_iconsole_color_default, "%s = %u",
-				dump_desc, *var->data.byte_);
+			result = *(byte*)var->addr;
 			break;
 		case ICONSOLE_VAR_UINT16:
-			IConsolePrintF(_iconsole_color_default, "%s = %u",
-				dump_desc, *var->data.uint16_);
-			break;
-		case ICONSOLE_VAR_UINT32:
-			IConsolePrintF(_iconsole_color_default, "%s = %u",
-				dump_desc, *var->data.uint32_);
+			result = *(uint16*)var->addr;
 			break;
 		case ICONSOLE_VAR_INT16:
-			IConsolePrintF(_iconsole_color_default, "%s = %i",
-				dump_desc, *var->data.int16_);
+			result = *(int16*)var->addr;
+			break;
+		case ICONSOLE_VAR_UINT32:
+			result = *(uint32*)var->addr;
 			break;
 		case ICONSOLE_VAR_INT32:
-			IConsolePrintF(_iconsole_color_default, "%s = %i",
-				dump_desc, *var->data.int32_);
+			result = *(int32*)var->addr;
+			break;
+		default: NOT_REACHED();
+	}
+	return result;
+}
+
+/**
+ * Get the value of the variable and put it into a printable
+ * string form so we can use it for printing
+ */
+static char *IConsoleVarGetStringValue(const IConsoleVar *var)
+{
+	static char tempres[50];
+	char *value = tempres;
+
+	switch (var->type) {
+		case ICONSOLE_VAR_BOOLEAN:
+			snprintf(tempres, sizeof(tempres), "%s", (*(bool*)var->addr) ? "on" : "off");
+			break;
+		case ICONSOLE_VAR_BYTE:
+			snprintf(tempres, sizeof(tempres), "%u", *(byte*)var->addr);
+			break;
+		case ICONSOLE_VAR_UINT16:
+			snprintf(tempres, sizeof(tempres), "%u", *(uint16*)var->addr);
+			break;
+		case ICONSOLE_VAR_UINT32:
+			snprintf(tempres, sizeof(tempres), "%u",  *(uint32*)var->addr);
+			break;
+		case ICONSOLE_VAR_INT16:
+			snprintf(tempres, sizeof(tempres), "%i", *(int16*)var->addr);
+			break;
+		case ICONSOLE_VAR_INT32:
+			snprintf(tempres, sizeof(tempres), "%i",  *(int32*)var->addr);
 			break;
 		case ICONSOLE_VAR_STRING:
-			IConsolePrintF(_iconsole_color_default, "%s = %s",
-				dump_desc, var->data.string_);
-			break;
-		case ICONSOLE_VAR_REFERENCE:
-			IConsolePrintF(_iconsole_color_default, "%s = @%s",
-				dump_desc, var->data.reference_);
-		case ICONSOLE_VAR_UNKNOWN:
-		case ICONSOLE_VAR_POINTER:
-			IConsolePrintF(_iconsole_color_default, "%s = @%p",
-				dump_desc, var->data.addr);
-			break;
-		case ICONSOLE_VAR_NONE:
-			IConsolePrintF(_iconsole_color_default, "%s = [nothing]",
-				dump_desc);
-			break;
+			value = (char*)var->addr;
+		default: NOT_REACHED();
 	}
+
+	return value;
+}
+
+/**
+ * Print out the value of the variable when asked
+ */
+void IConsoleVarPrintGetValue(const IConsoleVar *var)
+{
+	char *value;
+	/* Some variables need really specific handling, handle this in its
+	 * callback function */
+	if (var->proc != NULL) {
+		var->proc(0, NULL);
+		return;
+	}
+
+	value = IConsoleVarGetStringValue(var);
+	IConsolePrintF(_iconsole_color_warning, "Current value for '%s' is:  %s", var->name, value);
+}
+
+/**
+ * Print out the value of the variable after it has been assigned
+ * a new value, thus giving us feedback on the action
+ */
+void IConsoleVarPrintSetValue(const IConsoleVar *var)
+{
+	char *value = IConsoleVarGetStringValue(var);
+	IConsolePrintF(_iconsole_color_warning, "'%s' changed to:  %s", var->name, value);
+}
+
+/**
+ * Execute a variable command. Without any parameters, print out its value
+ * with parameters it assigns a new value to the variable
+ * @param *var the variable that we will be querying/changing
+ * @param tokencount how many additional parameters have been given to the commandline
+ * @param *token the actual parameters the variable was called with
+ */
+void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_TOKEN_COUNT])
+{
+	const char *tokenptr = token[0];
+	byte t_index = tokencount;
+	uint32 value;
+
+	if (tokencount == 0) { /* Just print out value */
+		IConsoleVarPrintGetValue(var);
+		return;
+	}
+
+	/* Use of assignment sign is not mandatory but supported, so just 'ignore it appropiately' */
+	if (strcmp(tokenptr, "=") == 0) tokencount--;
+
+	if (tokencount == 1) {
+		/* Some variables need really special handling, handle it in their callback procedure */
+		if (var->proc != NULL) {
+			var->proc(tokencount, &token[t_index - tokencount]); // set the new value
+			var->proc(0, NULL); // print out new value
+			return;
+		}
+		/* Strings need special processing. No need to convert the argument to
+		 * an integer value, just copy over the argument on a one-by-one basis */
+		if (var->type == ICONSOLE_VAR_STRING) {
+			IConsoleVarSetStringvalue(var, token[t_index - tokencount]);
+			return;
+		} else if (GetArgumentInteger(&value, token[t_index - tokencount])) {
+			IConsoleVarSetValue(var, value);
+			return;
+		}
+
+		/* Increase or decrease the value by one. This of course can only happen to 'number' types */
+		if (strcmp(tokenptr, "++") == 0 && var->type != ICONSOLE_VAR_STRING) {
+			IConsoleVarSetValue(var, IConsoleVarGetValue(var) + 1);
+			return;
+		}
+
+		if (strcmp(tokenptr, "--") == 0 && var->type != ICONSOLE_VAR_STRING) {
+			IConsoleVarSetValue(var, IConsoleVarGetValue(var) - 1);
+			return;
+		}
+	}
+
+	IConsoleError("invalid variable assignment");
 }
 
 // * ************************* * //
 // * hooking code              * //
 // * ************************* * //
-
-void IConsoleVarHook(const char* name, _iconsole_hook_types type, iconsole_var_hook proc)
+/**
+ * General internal hooking code that is the same for both commands and variables
+ * @param hooks @IConsoleHooks structure that will be set according to
+ * @param type type access trigger
+ * @param proc function called when the hook criteria is met
+ */
+static void IConsoleHookAdd(IConsoleHooks *hooks, IConsoleHookTypes type, IConsoleHook *proc)
 {
-	_iconsole_var* hook_var = IConsoleVarGet(name);
-	if (hook_var == NULL) return;
+	if (hooks == NULL || proc == NULL) return;
+
 	switch (type) {
-		case ICONSOLE_HOOK_BEFORE_CHANGE:
-			hook_var->hook_before_change = proc;
-			break;
-		case ICONSOLE_HOOK_AFTER_CHANGE:
-			hook_var->hook_after_change = proc;
-			break;
-		case ICONSOLE_HOOK_ACCESS:
-			hook_var->hook_access = proc;
-			break;
-		case ICONSOLE_HOOK_BEFORE_EXEC:
-		case ICONSOLE_HOOK_AFTER_EXEC:
-			assert(0);
-			break;
+	case ICONSOLE_HOOK_ACCESS:
+		hooks->access = proc;
+		break;
+	case ICONSOLE_HOOK_PRE_ACTION:
+		hooks->pre = proc;
+		break;
+	case ICONSOLE_HOOK_POST_ACTION:
+		hooks->post = proc;
+		break;
+	default: NOT_REACHED();
 	}
 }
 
-bool IConsoleVarHookHandle(_iconsole_var* hook_var, _iconsole_hook_types type)
+/**
+ * Handle any special hook triggers. If the hook type is met check if
+ * there is a function associated with that and if so, execute it
+ * @param hooks @IConsoleHooks structure that will be checked
+ * @param type type of hook, trigger that needs to be activated
+ * @return true on a successfull execution of the hook command or if there
+ * is no hook/trigger present at all. False otherwise
+ */
+static bool IConsoleHookHandle(IConsoleHooks *hooks, IConsoleHookTypes type)
 {
-	iconsole_var_hook proc;
-	if (hook_var == NULL) return false;
+	IConsoleHook *proc = NULL;
+	if (hooks == NULL) return false;
 
-	proc = NULL;
 	switch (type) {
-		case ICONSOLE_HOOK_BEFORE_CHANGE:
-			proc = hook_var->hook_before_change;
-			break;
-		case ICONSOLE_HOOK_AFTER_CHANGE:
-			proc = hook_var->hook_after_change;
-			break;
-		case ICONSOLE_HOOK_ACCESS:
-			proc = hook_var->hook_access;
-			break;
-		case ICONSOLE_HOOK_BEFORE_EXEC:
-		case ICONSOLE_HOOK_AFTER_EXEC:
-			assert(0);
-			break;
+	case ICONSOLE_HOOK_ACCESS:
+		proc = hooks->access;
+		break;
+	case ICONSOLE_HOOK_PRE_ACTION:
+		proc = hooks->pre;
+		break;
+	case ICONSOLE_HOOK_POST_ACTION:
+		proc = hooks->post;
+		break;
+	default: NOT_REACHED();
 	}
-	return proc == NULL ? true : proc(hook_var);
+
+	return (proc == NULL) ? true : proc();
 }
 
-void IConsoleCmdHook(const char* name, _iconsole_hook_types type, iconsole_cmd_hook proc)
+/**
+ * Add a hook to a command that will be triggered at certain points
+ * @param name name of the command that the hook is added to
+ * @param type type of hook that is added (ACCESS, BEFORE and AFTER change)
+ * @param proc function called when the hook criteria is met
+ */
+void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc)
 {
-	_iconsole_cmd* hook_cmd = IConsoleCmdGet(name);
-	if (hook_cmd == NULL) return;
-	switch (type) {
-		case ICONSOLE_HOOK_AFTER_EXEC:
-			hook_cmd->hook_after_exec = proc;
-			break;
-		case ICONSOLE_HOOK_BEFORE_EXEC:
-			hook_cmd->hook_before_exec = proc;
-			break;
-		case ICONSOLE_HOOK_ACCESS:
-			hook_cmd->hook_access = proc;
-			break;
-		case ICONSOLE_HOOK_BEFORE_CHANGE:
-		case ICONSOLE_HOOK_AFTER_CHANGE:
-			assert(0);
-			break;
-	}
+	IConsoleCmd *cmd = IConsoleCmdGet(name);
+	if (cmd == NULL) return;
+	IConsoleHookAdd(&cmd->hook, type, proc);
 }
 
-bool IConsoleCmdHookHandle(_iconsole_cmd* hook_cmd, _iconsole_hook_types type)
+/**
+ * Add a hook to a variable that will be triggered at certain points
+ * @param name name of the variable that the hook is added to
+ * @param type type of hook that is added (ACCESS, BEFORE and AFTER change)
+ * @param proc function called when the hook criteria is met
+ */
+void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc)
 {
-	iconsole_cmd_hook proc = NULL;
-	switch (type) {
-		case ICONSOLE_HOOK_AFTER_EXEC:
-			proc = hook_cmd->hook_after_exec;
-			break;
-		case ICONSOLE_HOOK_BEFORE_EXEC:
-			proc = hook_cmd->hook_before_exec;
-			break;
-		case ICONSOLE_HOOK_ACCESS:
-			proc = hook_cmd->hook_access;
-			break;
-		case ICONSOLE_HOOK_BEFORE_CHANGE:
-		case ICONSOLE_HOOK_AFTER_CHANGE:
-			assert(0);
-			break;
-	}
-	return proc == NULL ? true : proc(hook_cmd);
+	IConsoleVar *var = IConsoleVarGet(name);
+	if (var == NULL) return;
+	IConsoleHookAdd(&var->hook, type, proc);
 }
 
-void IConsoleCmdExec(const char* cmdstr)
+/**
+ * Add a callback function to the variable. Some variables need
+ * very special processing, which can only be done with custom code
+ * @param name name of the variable the callback function is added to
+ * @param proc the function called
+ */
+void IConsoleVarProcAdd(const char *name, IConsoleCmdProc *proc)
 {
-	_iconsole_cmd_addr function;
-	char* tokens[20];
-	byte  tokentypes[20];
-	char* tokenstream;
-	char* tokenstream_s;
-	byte  execution_mode;
-	_iconsole_var* var     = NULL;
-	_iconsole_var* result  = NULL;
-	_iconsole_cmd* cmd     = NULL;
-	_iconsole_alias* alias = NULL;
+	IConsoleVar *var = IConsoleVarGet(name);
+	if (var == NULL) return;
+	var->proc = proc;
+}
 
-	bool longtoken;
-	bool valid_token;
-	bool skip_lt_change;
+/**
+ * Execute a given command passed to us. First chop it up into
+ * individual tokens (seperated by spaces), then execute it if possible
+ * @param cmdstr string to be parsed and executed
+ */
+void IConsoleCmdExec(const char *cmdstr)
+{
+	IConsoleCmd   *cmd    = NULL;
+	IConsoleAlias *alias  = NULL;
+	IConsoleVar   *var    = NULL;
 
-	uint c;
-	uint i;
-	uint l;
+	const char *cmdptr;
+	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
+	uint t_index, tstream_i;
 
-	for (; strchr("\n\r \t", *cmdstr) != NULL; ++cmdstr) {
-		switch (*cmdstr) {
-			case '\0':
-			case '#':
-				return;
+	bool longtoken = false;
+	bool foundtoken = false;
 
-			default:
-				break;
+	for (cmdptr = cmdstr; *cmdptr != '\0'; *cmdptr++) {
+		if (!IsValidAsciiChar(*cmdptr)) {
+			IConsoleError("command contains malformed characters, aborting");
+			return;
 		}
 	}
 
 	if (_stdlib_con_developer)
-		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_cmdline: %s", cmdstr);
+		IConsolePrintF(_iconsole_color_debug, "condbg: executing cmdline: '%s'", cmdstr);
 
-	//** clearing buffer **//
+	memset(&tokens, 0, sizeof(tokens));
+	memset(&tokenstream, 0, sizeof(tokenstream));
 
-	for (i = 0; i < 20; i++) {
-		tokens[i] = NULL;
-		tokentypes[i] = ICONSOLE_VAR_NONE;
-	}
-	tokenstream_s = tokenstream = malloc(1024);
-	memset(tokenstream, 0, 1024);
+	/* 1. Split up commandline into tokens, seperated by spaces, commands
+	 * enclosed in "" are taken as one token. We can only go as far as the amount
+	 * of characters in our stream or the max amount of tokens we can handle */
+	tokens[0] = tokenstream;
+	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; *cmdptr++) {
+		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
 
-	//** parsing **//
+		switch (*cmdptr) {
+		case ' ': /* Token seperator */
+			if (!foundtoken) break;
 
-	longtoken = false;
-	valid_token = false;
-	skip_lt_change = false;
-	l = strlen(cmdstr);
-	i = 0;
-	c = 0;
-	tokens[c] = tokenstream;
-	tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
-	while (i < l && c < lengthof(tokens) - 1) {
-		if (cmdstr[i] == '"') {
-			if (longtoken) {
-				if (cmdstr[i + 1] == '"') {
-					i++;
-					*tokenstream = '"';
-					tokenstream++;
-					skip_lt_change = true;
-				} else {
-					longtoken = !longtoken;
-					tokentypes[c] = ICONSOLE_VAR_STRING;
-				}
-			} else {
-				longtoken = !longtoken;
-				tokentypes[c] = ICONSOLE_VAR_STRING;
-			}
-			if (!skip_lt_change) {
-				if (!longtoken) {
-					if (valid_token) {
-						c++;
-						*tokenstream = '\0';
-						tokenstream++;
-						tokens[c] = tokenstream;
-						tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
-						valid_token = false;
-					}
-				}
-				skip_lt_change=false;
-			}
-		} else if (!longtoken && cmdstr[i] == ' ') {
-			if (valid_token) {
-				c++;
-				*tokenstream = '\0';
-				tokenstream++;
-				tokens[c] = tokenstream;
-				tokentypes[c] = ICONSOLE_VAR_UNKNOWN;
-				valid_token = false;
-			}
-		} else {
-			valid_token = true;
-			*tokenstream = cmdstr[i];
-			tokenstream++;
-		}
-		i++;
-	}
+			tokenstream[tstream_i] = (longtoken) ? *cmdptr : '\0';
 
-	tokenstream--;
-	if (*tokenstream != '\0') {
-		c++;
-		tokenstream++;
-		*tokenstream = '\0';
-	}
-
-	//** interpreting **//
-
-	for (i = 0; i < c; i++) {
-		if (tokens[i] != NULL && i > 0 && strlen(tokens[i]) > 0) {
-			if (IConsoleVarGet((char *)tokens[i]) != NULL) {
-				// change the variable to an pointer if execution_mode != 4 is
-				// being prepared. execution_mode 4 is used to assign
-				// one variables data to another one
-				// [token 0 and 2]
-				if (!((i == 2) && (tokentypes[1] == ICONSOLE_VAR_UNKNOWN) &&
-					(strcmp(tokens[1], "<<") == 0))) {
-					// only look for another variable if it isnt an longtoken == string with ""
-					var = NULL;
-					if (tokentypes[i]!=ICONSOLE_VAR_STRING) var = IConsoleVarGet(tokens[i]);
-					if (var != NULL) {
-						// pointer to the data --> token
-						tokens[i] = (char *) var->data.addr; /* XXX: maybe someone finds an cleaner way to do this */
-						tokentypes[i] = var->type;
-					}
-				}
-			}
-			if (tokens[i] != NULL && tokens[i][0] == '@' && (IConsoleVarGet(tokens[i]+1) != NULL)) {
-				var = IConsoleVarGet(tokens[i]+1);
-				if (var != NULL) {
-					// pointer to the _iconsole_var struct --> token
-					tokens[i] = (char *) var; /* XXX: maybe someone finds an cleaner way to do this */
-					tokentypes[i] = ICONSOLE_VAR_REFERENCE;
-				}
-			}
-		}
-	}
-
-	execution_mode=0;
-
-	function = NULL;
-	cmd = IConsoleCmdGet(tokens[0]);
-	if (cmd != NULL) {
-		function = cmd->addr;
-	} else {
-		alias = IConsoleAliasGet(tokens[0]);
-		if (alias != NULL) execution_mode = 5; // alias handling
-	}
-
-	if (function != NULL) {
-		execution_mode = 1; // this is a command
-	} else {
-		var = IConsoleVarGet(tokens[0]);
-		if (var != NULL) {
-			execution_mode = 2; // this is a variable
-			if (c > 2 && strcmp(tokens[1], "<<") == 0) {
-				// this is command to variable mode [normal]
-
-				function = NULL;
-				cmd = IConsoleCmdGet(tokens[2]);
-				if (cmd != NULL) function = cmd->addr;
-
-				if (function != NULL) {
-					execution_mode = 3;
-				} else {
-					result = IConsoleVarGet(tokens[2]);
-					if (result != NULL)
-						execution_mode = 4;
-				}
-			}
-		}
-	}
-
-	//** executing **//
-	if (_stdlib_con_developer)
-		IConsolePrintF(_iconsole_color_debug, "CONDEBUG: execution_mode: %i",
-			execution_mode);
-	switch (execution_mode) {
-		case 0:
-			// not found
-			IConsoleError("command or variable not found");
+			tstream_i++;
+			foundtoken = false;
 			break;
-		case 1:
-			if (IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_ACCESS)) {
-				// execution with command syntax
-				IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_BEFORE_EXEC);
-				result = function(c, tokens, tokentypes);
-				if (result != NULL) {
-					IConsoleVarDump(result, "result");
-					IConsoleVarFree(result);
-				}
-				IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_AFTER_EXEC);
-				break;
-			}
-		case 2:
-		{
-			// execution with variable syntax
-			if (IConsoleVarHookHandle(var, ICONSOLE_HOOK_ACCESS) && (c == 2 || c == 3)) {
-				// ** variable modifications ** //
-				IConsoleVarHookHandle(var, ICONSOLE_HOOK_BEFORE_CHANGE);
-				switch (var->type) {
-					case ICONSOLE_VAR_BOOLEAN:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3) {
-								*var->data.bool_ = (atoi(tokens[2]) != 0);
-							} else {
-								*var->data.bool_ = false;
-							}
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							*var->data.bool_ = true;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							*var->data.bool_ = false;
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_BYTE:
-					case ICONSOLE_VAR_UINT8:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								*var->data.byte_ = atoi(tokens[2]);
-							else
-								*var->data.byte_ = 0;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*var->data.byte_;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--")==0) {
-							--*var->data.byte_;
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_UINT16:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								*var->data.uint16_ = atoi(tokens[2]);
-							else
-								*var->data.uint16_ = 0;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*var->data.uint16_;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							--*var->data.uint16_;
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_UINT32:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								*var->data.uint32_ = atoi(tokens[2]);
-							else
-								*var->data.uint32_ = 0;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*var->data.uint32_;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							--*var->data.uint32_;
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_INT16:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								*var->data.int16_ = atoi(tokens[2]);
-							else
-								*var->data.int16_ = 0;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*var->data.int16_;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							--*var->data.int16_;
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_INT32:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								*var->data.int32_ = atoi(tokens[2]);
-							else
-								*var->data.int32_ = 0;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*var->data.int32_;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							--*var->data.int32_;
-							IConsoleVarDump(var, NULL);
-						}
-						else { IConsoleError("operation not supported"); }
-						break;
-					}
-					case ICONSOLE_VAR_STRING:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3)
-								IConsoleVarSetString(var, tokens[2]);
-							else
-								IConsoleVarSetString(var, "");
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_POINTER:
-					{
-						if (strcmp(tokens[1], "=") == 0) {
-							if (c == 3) {
-								if (tokentypes[2] == ICONSOLE_VAR_UNKNOWN)
-									var->data.addr = (void*)atoi(tokens[2]); /* direct access on memory [by address] */
-								else
-									var->data.addr = (void*)tokens[2]; /* direct acces on memory [by variable] */
-							} else
-								var->data.addr = NULL;
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "++") == 0) {
-							++*(char*)&var->data.addr; /* change the address + 1 */
-							IConsoleVarDump(var, NULL);
-						} else if (strcmp(tokens[1], "--") == 0) {
-							--*(char*)&var->data.addr; /* change the address - 1 */
-							IConsoleVarDump(var, NULL);
-						}
-						else
-							IConsoleError("operation not supported");
-						break;
-					}
-					case ICONSOLE_VAR_NONE:
-					case ICONSOLE_VAR_REFERENCE:
-					case ICONSOLE_VAR_UNKNOWN:
-						IConsoleError("operation not supported");
-						break;
-				}
-				IConsoleVarHookHandle(var, ICONSOLE_HOOK_AFTER_CHANGE);
-			}
-			if (c == 1) // ** variable output ** //
-				IConsoleVarDump(var, NULL);
+		case '"': /* Tokens enclosed in "" are one token */
+			longtoken = !longtoken;
 			break;
-		}
-		case 3:
-		case 4:
-		{
-			// execute command with result or assign a variable
-			if (execution_mode == 3) {
-				if (IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_ACCESS)) {
-					int i;
-					int diff;
-					void* temp;
-					byte temp2;
+		default: /* Normal character */
+			tokenstream[tstream_i++] = *cmdptr;
 
-					// tokenshifting
-					for (diff = 0; diff < 2; diff++) {
-						temp = tokens[0];
-						temp2 = tokentypes[0];
-						for (i = 0; i < 19; i++) {
-							tokens[i] = tokens[i + 1];
-							tokentypes[i] = tokentypes[i + 1];
-						}
-						tokens[19] = temp;
-						tokentypes[19] = temp2;
-					}
-					IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_BEFORE_EXEC);
-					result = function(c, tokens, tokentypes);
-					IConsoleCmdHookHandle(cmd, ICONSOLE_HOOK_AFTER_EXEC);
-				} else
-					execution_mode = 255;
-			}
-
-			if (IConsoleVarHookHandle(var, ICONSOLE_HOOK_ACCESS) && result != NULL) {
-				if (result->type != var->type) {
-					IConsoleError("variable type missmatch");
-				} else {
-					IConsoleVarHookHandle(var, ICONSOLE_HOOK_BEFORE_CHANGE);
-					switch (result->type) {
-						case ICONSOLE_VAR_BOOLEAN:
-							*var->data.bool_ = *result->data.bool_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_BYTE:
-						case ICONSOLE_VAR_UINT8:
-							*var->data.byte_ = *result->data.byte_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_UINT16:
-							*var->data.uint16_ = *result->data.uint16_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_UINT32:
-							*var->data.uint32_ = *result->data.uint32_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_INT16:
-							*var->data.int16_ = *result->data.int16_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_INT32:
-							*var->data.int32_ = *result->data.int32_;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_POINTER:
-							var->data.addr = result->data.addr;
-							IConsoleVarDump(var, NULL);
-							break;
-						case ICONSOLE_VAR_STRING:
-							IConsoleVarSetString(var, result->data.string_);
-							IConsoleVarDump(var, NULL);
-							break;
-						default:
-							IConsoleError("variable type missmatch");
-							break;
-					}
-					IConsoleVarHookHandle(var, ICONSOLE_HOOK_AFTER_CHANGE);
-				}
-
-				if (execution_mode == 3) {
-					IConsoleVarFree(result);
-				}
+			if (!foundtoken) {
+				tokens[t_index++] = &tokenstream[tstream_i - 1];
+				foundtoken = true;
 			}
 			break;
 		}
-		case 5: {
-			// execute an alias
-			IConsoleAliasExec(alias->cmdline, tokens,tokentypes);
-			}
-			break;
-		default:
-			// execution mode invalid
-			IConsoleError("invalid execution mode");
-			break;
 	}
 
-	//** freeing the tokenstream **//
-	free(tokenstream_s);
+	if (_stdlib_con_developer) {
+		uint i;
+		for (i = 0; tokens[i] != NULL; i++)
+			IConsolePrintF(_iconsole_color_debug, "condbg: token %d is: '%s'", i, tokens[i]);
+	}
+
+	/* 2. Determine type of command (cmd, alias or variable) and execute
+	 * First try commands, then aliases, and finally variables. Execute
+	 * the found action taking into account its hooking code
+	 */
+	 cmd = IConsoleCmdGet(tokens[0]);
+	 if (cmd != NULL) {
+		if (IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_ACCESS)) {
+			IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_PRE_ACTION);
+			if (cmd->proc(t_index, tokens)) { // index started with 0
+				IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_POST_ACTION);
+  		} else cmd->proc(0, NULL); // if command failed, give help
+		}
+	 	return;
+	 }
+
+	 t_index--; // ignore the variable-name for comfort for both aliases and variaables
+	 alias = IConsoleAliasGet(tokens[0]);
+	 if (alias != NULL) {
+	 	IConsoleAliasExec(alias, t_index, &tokens[1]);
+	 	return;
+	 }
+
+	 var = IConsoleVarGet(tokens[0]);
+	 if (var != NULL) {
+	 	if (IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_ACCESS)) {
+	 		IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_PRE_ACTION);
+	 		IConsoleVarExec(var, t_index, &tokens[1]);
+	 		if (t_index != 0) // value has indeed been changed
+	 			IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_POST_ACTION);
+	 	}
+	 	return;
+	 }
+
+	 IConsoleError("command or variable not found");
 }

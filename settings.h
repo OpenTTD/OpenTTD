@@ -42,4 +42,7 @@ typedef struct SettingDesc {
 	const void *b;
 } SettingDesc;
 
+void IConsoleSetPatchSetting(const char *name, const char *value);
+void IConsoleGetPatchSetting(const char *name);
+
 #endif /* SETTINGS_H */

@@ -217,6 +217,6 @@ void ParseConnectionString(const char **player, const char **port, char *connect
 void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList(void);
-void NetworkChangeCompanyPassword(const char *str);
+bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 
 #endif /* NETWORK_H */

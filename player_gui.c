@@ -656,7 +656,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		#ifdef ENABLE_NETWORK
 		case 2: /* Change company password */
 			if (*b == 0) *b = '*'; // empty password is a '*' because of console argument
-			NetworkChangeCompanyPassword(b);
+			NetworkChangeCompanyPassword(1, &b);
 		#endif
 		}
 	} break;

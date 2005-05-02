@@ -1370,21 +1370,6 @@ void NetworkShutDown(void)
 	}
 	#endif
 }
-
-void NetworkChangeCompanyPassword(const char *str)
-{
-	if (strncmp(str, "*", sizeof(_network_player_info[_local_player].password)) == 0) {
-		_network_player_info[_local_player].password[0] = '\0';
-		IConsolePrint(_iconsole_color_warning, "Company password protection removed.");
-	} else {
-		ttd_strlcpy(_network_player_info[_local_player].password, str, sizeof(_network_player_info[_local_player].password));
-		IConsolePrintF(_iconsole_color_warning, "Company protected with password '%s'.", _network_player_info[_local_player].password);
-	}
-
-	if (!_network_server)
-		SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
-}
-
 #else
 
 void ParseConnectionString(const char **player, const char **port, char *connection_string) {}

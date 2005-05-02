@@ -1,4 +1,3 @@
-/* -------------------- dont cross this line --------------------- */
 #include "stdafx.h"
 #include "ttd.h"
 #include "console.h"
@@ -15,30 +14,14 @@
 #include "settings.h"
 #include "hal.h" /* for file list */
 
-
 // ** scriptfile handling ** //
-static FILE * _script_file;
+static FILE *_script_file;
 static bool _script_running;
 
 // ** console command / variable defines ** //
+#define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
+#define DEF_CONSOLE_HOOK(function) static bool function(void)
 
-#define DEF_CONSOLE_CMD(yyyy) static _iconsole_var * yyyy(byte argc, char* argv[], byte argt[])
-#define DEF_CONSOLE_CMD_HOOK(yyyy) static bool yyyy(_iconsole_cmd * hookcmd)
-#define DEF_CONSOLE_VAR_HOOK(yyyy) static bool yyyy(_iconsole_var * hookvar)
-
-
-// ** supporting functions ** //
-
-static uint32 GetArgumentInteger(const char* arg)
-{
-	uint32 result;
-	sscanf(arg, "%u", &result);
-
-	if (result == 0 && arg[0] == '0' && arg[1] == 'x')
-		sscanf(arg, "%x", &result);
-
-	return result;
-}
 
 /* **************************** */
 /* variable and command hooks   */
@@ -46,7 +29,49 @@ static uint32 GetArgumentInteger(const char* arg)
 
 #ifdef ENABLE_NETWORK
 
-DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
+static inline bool NetworkAvailable(void)
+{
+	if (!_network_available) {
+		IConsoleError("You cannot use this command because there is no network available.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookServerOnly)
+{
+	if (!NetworkAvailable()) return false;
+
+	if (!_network_server) {
+		IConsoleError("This variable is only available to a network server.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookClientOnly)
+{
+	if (!NetworkAvailable()) return false;
+
+	if (_network_server) {
+		IConsoleError("This command is not available to a network server.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookNeedNetwork)
+{
+	if (!NetworkAvailable()) return false;
+
+	if (!_networking) {
+		IConsoleError("Not connected. This command is only available in multiplayer.");
+		return false;
+	}
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookNoNetwork)
 {
 	if (_networking) {
 		IConsoleError("This command is forbidden in multiplayer.");
@@ -55,125 +80,91 @@ DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetwork)
 	return true;
 }
 
-DEF_CONSOLE_VAR_HOOK(ConVarHookNoNetClient)
-{
-	if (!_network_available) {
-		IConsoleError("You can not use this command because there is no network available.");
-		return false;
-	}
-	if (!_network_server) {
-		IConsoleError("This variable only makes sense for a network server.");
-		return false;
-	}
-	return true;
-}
-
-DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetClient)
-{
-	if (!_network_available) {
-		IConsoleError("You can not use this command because there is no network available.");
-		return false;
-	}
-	if (!_network_server) {
-		IConsoleError("This command is only available for a network server.");
-		return false;
-	}
-	return true;
-}
-
-DEF_CONSOLE_CMD_HOOK(ConCmdHookNoNetServer)
-{
-	if (!_network_available) {
-		IConsoleError("You can not use this command because there is no network available.");
-		return false;
-	}
-	if (_network_server) {
-		IConsoleError("You can not use this command because you are a network-server.");
-		return false;
-	}
-	return true;
-}
-
-DEF_CONSOLE_CMD_HOOK(ConCmdHookNeedNetwork)
-{
-	if (!_network_available) {
-		IConsoleError("You can not use this command because there is no network available.");
-		return false;
-	}
-	if (!_networking) {
-		IConsoleError("Not connected. Multiplayer only command.");
-		return false;
-	}
-	return true;
-}
-
 #endif /* ENABLE_NETWORK */
 
-/* **************************** */
-/* reset commands               */
-/* **************************** */
+static void IConsoleHelp(const char *str)
+{
+	IConsolePrintF(_iconsole_color_warning, "- %s", str);
+}
 
 DEF_CONSOLE_CMD(ConResetEngines)
 {
+	if (argc == 0) {
+		IConsoleHelp("Reset status data of all engines. This might solve some issues with 'lost' engines. Usage: 'resetengines'");
+		return true;
+	}
+
 	StartupEngines();
-	return 0;
+	return true;
 }
 
 #ifdef _DEBUG
 DEF_CONSOLE_CMD(ConResetTile)
 {
-	if (argc == 2) {
-		TileIndex tile = (TileIndex)GetArgumentInteger(argv[1]);
-		DoClearSquare(tile);
+	if (argc == 0) {
+		IConsoleHelp("Reset a tile to bare land. Usage: 'resettile <tile>'");
+		IConsoleHelp("Tile can be either decimal (34161) or hexadecimal (0x4a5B)");
+		return true;
 	}
 
-	return 0;
+	if (argc == 2) {
+		uint32 result;
+		if (GetArgumentInteger(&result, argv[1])) {
+			DoClearSquare((TileIndex)result);
+			return true;
+		}
+	}
+
+	return false;
 }
-#endif
 
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
-	if (argc == 2) {
-		TileIndex tile = (TileIndex)GetArgumentInteger(argv[1]);
-		ScrollMainWindowToTile(tile);
+	if (argc == 0) {
+		IConsoleHelp("Center the screen on a given tile. Usage: 'scrollto <tile>'");
+		IConsoleHelp("Tile can be either decimal (34161) or hexadecimal (0x4a5B)");
+		return true;
 	}
 
-	return 0;
+	if (argc == 2) {
+		uint32 result;
+		if (GetArgumentInteger(&result, argv[1])) {
+			ScrollMainWindowToTile((TileIndex)result);
+			return true;
+		}
+	}
+
+	return false;
 }
+#endif /* _DEBUG */
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void BuildFileList(void);
 extern void SetFiosType(const byte fiostype);
 
-/* Save the map to current dir */
-static void SaveMap(const char *filename)
-{
-	char buf[200];
-
-	snprintf(buf, lengthof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, filename);
-	IConsolePrint(_iconsole_color_default, "Saving map...");
-
-	if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
-		IConsolePrint(_iconsole_color_error, "SaveMap failed");
-	} else
-		IConsolePrintF(_iconsole_color_default, "Map sucessfully saved to %s", buf);
-}
-
 /* Save the map to a file */
 DEF_CONSOLE_CMD(ConSave)
 {
-	/* We need 1 argument */
-	if (argc == 2) {
-		/* Save the map */
-		SaveMap(argv[1]);
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Save the current game. Usage: 'save <filename>'");
+		return true;
 	}
 
-	/* Give usage */
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: save <filename>");
-	return NULL;
-}
+	if (argc == 2) {
+		char buf[200];
 
+		snprintf(buf, lengthof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, argv[1]);
+		IConsolePrint(_iconsole_color_default, "Saving map...");
+
+		if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
+			IConsolePrint(_iconsole_color_error, "SaveMap failed");
+		} else
+			IConsolePrintF(_iconsole_color_default, "Map sucessfully saved to %s", buf);
+		return true;
+	}
+
+	return false;
+}
 
 static const FiosItem* GetFiosItem(const char* file)
 {
@@ -198,104 +189,101 @@ static const FiosItem* GetFiosItem(const char* file)
 
 DEF_CONSOLE_CMD(ConLoad)
 {
-	const FiosItem* item;
-	const char* file;
+	const FiosItem *item;
+	const char *file;
 
-	if (argc != 2) {
-		IConsolePrint(_iconsole_color_default, "Usage: load <file | number>");
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Load a game by name or index. Usage: 'load <file | number>'");
+		return true;
 	}
+
+	if (argc != 2) return false;
 
 	file = argv[1];
 	item = GetFiosItem(file);
 	if (item != NULL) {
 		switch (item->type) {
-			case FIOS_TYPE_FILE:
-			case FIOS_TYPE_OLDFILE:
+			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE:
 				_switch_mode = SM_LOAD;
 				SetFiosType(item->type);
 				strcpy(_file_to_saveload.name, FiosBrowseTo(item));
 				break;
-
-			default:
-				IConsolePrintF(_iconsole_color_error, "%s: Not a map.", file);
-				break;
+			default: IConsolePrintF(_iconsole_color_error, "%s: Not a savegame.", file);
 		}
-	} else {
-		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.",
-			file);
-	}
+	} else
+		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.", file);
 
 	FiosFreeSavegameList();
-	return NULL;
+	return true;
 }
-
 
 /* List all the files in the current dir via console */
 DEF_CONSOLE_CMD(ConListFiles)
 {
 	int i;
 
+	if (argc == 0) {
+		IConsoleHelp("List all the files in the current dir via console. Usage: 'ls | dir'");
+		return true;
+	}
+
 	BuildFileList();
 
 	for (i = 0; i < _fios_num; i++) {
-		const FiosItem* item = &_fios_list[i];
-
-		IConsolePrintF(_iconsole_color_default, "%d) %s",
-			i, item->title[0] != '\0' ? item->title : item->name);
+		const FiosItem *item = &_fios_list[i];
+		IConsolePrintF(_iconsole_color_default, "%d) %s", i, (item->title[0] != '\0') ? item->title : item->name);
 	}
 
 	FiosFreeSavegameList();
-	return NULL;
+	return true;
 }
-
 
 /* Change the dir via console */
 DEF_CONSOLE_CMD(ConChangeDirectory)
 {
-	const FiosItem* item;
-	const char* file;
+	const FiosItem *item;
+	const char *file;
 
-	if (argc != 2) {
-		IConsolePrint(_iconsole_color_default, "Usage: cd <directory | number>");
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Change the dir via console. Usage: 'cd <directory | number>'");
+		return true;
 	}
+
+	if (argc != 2) return false;
 
 	file = argv[1];
 	item = GetFiosItem(file);
 	if (item != NULL) {
 		switch (item->type) {
-			case FIOS_TYPE_DIR:
-			case FIOS_TYPE_DRIVE:
-			case FIOS_TYPE_PARENT:
+			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
 				FiosBrowseTo(item);
 				break;
-
-			default:
-				IConsolePrintF(_iconsole_color_error, "%s: Not a directory.", file);
-				break;
+			default: IConsolePrintF(_iconsole_color_error, "%s: Not a directory.", file);
 		}
-	} else {
-		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.",
-			file);
-	}
+	} else
+		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.", file);
 
 	FiosFreeSavegameList();
-	return NULL;
+	return true;
 }
 
 
 DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 {
-	const char* path;
+	const char *path;
 
-	// XXX Workaround for broken file handling
+	if (argc == 0) {
+		IConsoleHelp("Print out the current working directory. Usage: 'pwd'");
+		return true;
+	}
+
+	// XXX - Workaround for broken file handling
 	FiosGetSavegameList(&_fios_num, SLD_LOAD_GAME);
 	FiosFreeSavegameList();
 
 	FiosGetDescText(&path, NULL);
 	IConsolePrint(_iconsole_color_default, path);
-	return NULL;
+	return true;
 }
 
 
@@ -307,71 +295,80 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 DEF_CONSOLE_CMD(ConBan)
 {
 	NetworkClientInfo *ci;
+	uint32 index;
 
-	if (argc == 2) {
-		uint32 index = atoi(argv[1]);
-		if (index == NETWORK_SERVER_INDEX) {
-			IConsolePrint(_iconsole_color_default, "Silly boy, you can not ban yourself!");
-			return NULL;
-		}
-		if (index == 0) {
-			IConsoleError("Invalid Client-ID");
-			return NULL;
-		}
-
-		ci = NetworkFindClientInfoFromIndex(index);
-
-		if (ci != NULL) {
-			uint i;
-			/* Add user to ban-list */
-			for (i = 0; i < lengthof(_network_ban_list); i++) {
-				if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
-					_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ci->client_ip));
-					break;
-				}
-			}
-
-			SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
-			return NULL;
-		} else {
-			IConsoleError("Client-ID not found");
-			return NULL;
-		}
+	if (argc == 0) {
+		IConsoleHelp("Ban a player from a network game. Usage: 'ban <client-id>'");
+		IConsoleHelp("For client-id's, see the command 'clients'");
+		return true;
 	}
 
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: ban <client-id>. For client-ids, see 'clients'.");
+	if (argc != 2) return false;
 
-	return NULL;
+	index = atoi(argv[1]);
+
+	if (index == NETWORK_SERVER_INDEX) {
+		IConsolePrint(_iconsole_color_default, "Silly boy, you can not ban yourself!");
+		return true;
+	}
+	if (index == 0) {
+		IConsoleError("Invalid Client-ID");
+		return true;
+	}
+
+	ci = NetworkFindClientInfoFromIndex(index);
+
+	if (ci != NULL) {
+		uint i;
+		/* Add user to ban-list */
+		for (i = 0; i < lengthof(_network_ban_list); i++) {
+			if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
+				_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ci->client_ip));
+				break;
+			}
+		}
+
+		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+	} else
+		IConsoleError("Client-ID not found");
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConUnBan)
 {
-	if (argc == 2) {
-		uint i;
-		for (i = 0; i < lengthof(_network_ban_list); i++) {
-			if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
-				continue;
+	uint i;
 
-			if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0) {
-				_network_ban_list[i][0] = '\0';
-				IConsolePrint(_iconsole_color_default, "IP unbanned.");
-				return NULL;
-			}
-		}
-
-		IConsolePrint(_iconsole_color_default, "IP not in ban-list.");
-
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip>'");
+		return true;
 	}
 
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: unban <ip>.");
+	if (argc != 2) return false;
 
-	return NULL;
+	for (i = 0; i < lengthof(_network_ban_list); i++) {
+		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
+			continue;
+
+		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0) {
+			_network_ban_list[i][0] = '\0';
+			IConsolePrint(_iconsole_color_default, "IP unbanned.");
+			return true;
+		}
+	}
+
+	IConsolePrint(_iconsole_color_default, "IP not in ban-list.");
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConBanList)
 {
 	uint i;
+
+	if (argc == 0) {
+		IConsoleHelp("List the IP's of banned clients: Usage 'banlist'");
+		return true;
+	}
 
 	IConsolePrint(_iconsole_color_default, "Banlist: ");
 
@@ -382,115 +379,109 @@ DEF_CONSOLE_CMD(ConBanList)
 		IConsolePrintF(_iconsole_color_default, "  %d) %s", i + 1, _network_ban_list[i]);
 	}
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConPauseGame)
 {
+	if (argc == 0) {
+		IConsoleHelp("Pause a network game. Usage: 'pause'");
+		return true;
+	}
+
 	if (_pause == 0) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_iconsole_color_default, "Game paused.");
 	} else
 		IConsolePrint(_iconsole_color_default, "Game is already paused.");
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConUnPauseGame)
 {
+	if (argc == 0) {
+		IConsoleHelp("Unpause a network game. Usage: 'unpause'");
+		return true;
+	}
+
 	if (_pause != 0) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_iconsole_color_default, "Game unpaused.");
 	} else
 		IConsolePrint(_iconsole_color_default, "Game is already unpaused.");
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConRcon)
 {
-	if (argc < 3) {
-		IConsolePrint(_iconsole_color_default, "Usage: rcon <password> <command>");
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Remote control the server from another client. Usage: 'rcon <password> <command>'");
+		IConsoleHelp("Remember to enclose the command in quotes, otherwise only the first parameter is sent");
+		return true;
 	}
 
-	SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+	if (argc < 3) return false;
 
-	return NULL;
+	SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConStatus)
 {
+	static const char *stat_str[] = {"inactive", "authorized", "waiting", "loading map", "map done", "ready", "active"};
 	const char *status;
-	int lag;
 	const NetworkClientState *cs;
-	const NetworkClientInfo *ci;
-	FOR_ALL_CLIENTS(cs) {
-		lag = NetworkCalculateLag(cs);
-		ci = DEREF_CLIENT_INFO(cs);
 
-		switch (cs->status) {
-			case STATUS_INACTIVE:
-				status = "inactive";
-				break;
-			case STATUS_AUTH:
-				status = "authorized";
-				break;
-			case STATUS_MAP_WAIT:
-				status = "waiting";
-				break;
-			case STATUS_MAP:
-				status = "loading map";
-				break;
-			case STATUS_DONE_MAP:
-				status = "done map";
-				break;
-			case STATUS_PRE_ACTIVE:
-				status = "ready";
-				break;
-			case STATUS_ACTIVE:
-				status = "active";
-				break;
-			default:
-				status = "unknown";
-				break;
-		}
+	if (argc == 0) {
+		IConsoleHelp("List the status of all clients connected to the server: Usage 'status'");
+		return true;
+	}
+
+	FOR_ALL_CLIENTS(cs) {
+		int lag = NetworkCalculateLag(cs);
+		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+
+		status = (cs->status <= STATUS_ACTIVE) ? stat_str[cs->status] : "unknown";
 		IConsolePrintF(8, "Client #%d/%s  status: %s  frame-lag: %d  play-as: %d  unique-id: %s",
 			cs->index, ci->client_name, status, lag, ci->client_playas, ci->unique_id);
 	}
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConKick)
 {
 	NetworkClientInfo *ci;
+	uint32 index;
 
-	if (argc == 2) {
-		uint32 index = atoi(argv[1]);
-		if (index == NETWORK_SERVER_INDEX) {
-			IConsolePrint(_iconsole_color_default, "Silly boy, you can not kick yourself!");
-			return NULL;
-		}
-		if (index == 0) {
-			IConsoleError("Invalid Client-ID");
-			return NULL;
-		}
-
-		ci = NetworkFindClientInfoFromIndex(index);
-
-		if (ci != NULL) {
-			SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
-			return NULL;
-		} else {
-			IConsoleError("Client-ID not found");
-			return NULL;
-		}
+	if (argc == 0) {
+		IConsoleHelp("Kick a player from a network game. Usage: 'kick <client-id>'");
+		IConsoleHelp("For client-id's, see the command 'clients'");
+		return true;
 	}
 
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: kick <client-id>. For client-ids, see 'clients'.");
+	if (argc != 2) return false;
 
-	return NULL;
+	index = atoi(argv[1]);
+	if (index == NETWORK_SERVER_INDEX) {
+		IConsolePrint(_iconsole_color_default, "Silly boy, you can not kick yourself!");
+		return true;
+	}
+	if (index == 0) {
+		IConsoleError("Invalid Client-ID");
+		return true;
+	}
+
+	ci = NetworkFindClientInfoFromIndex(index);
+
+	if (ci != NULL) {
+		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+	} else
+		IConsoleError("Client-ID not found");
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConResetCompany)
@@ -498,79 +489,92 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	Player *p;
 	NetworkClientState *cs;
 	NetworkClientInfo *ci;
+	byte index;
 
-	if (argc == 2) {
-		byte index = atoi(argv[1]);
-
-		/* Check valid range */
-		if (index < 1 || index > MAX_PLAYERS) {
-			IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-ID must be between 1 and %d.", MAX_PLAYERS);
-			return NULL;
-		}
-
-		/* Check if company does exist */
-		index--;
-		p = DEREF_PLAYER(index);
-		if (!p->is_active) {
-			IConsolePrintF(_iconsole_color_error, "Company does not exist.");
-			return NULL;
-		}
-
-		if (p->is_ai) {
-			IConsolePrintF(_iconsole_color_error, "Company is owned by an AI.");
-			return NULL;
-		}
-
-		/* Check if the company has active players */
-		FOR_ALL_CLIENTS(cs) {
-			ci = DEREF_CLIENT_INFO(cs);
-			if (ci->client_playas-1 == index) {
-				IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
-				return NULL;
-			}
-		}
-		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-		if (ci->client_playas-1 == index) {
-			IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
-			return NULL;
-		}
-
-		/* It is safe to remove this company */
-		DoCommandP(0, 2, index, NULL, CMD_PLAYER_CTRL);
-		IConsolePrint(_iconsole_color_default, "Company deleted.");
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Remove an (idle) company from the game. Usage: 'reset_company <company-id>'");
+		return true;
 	}
 
-	IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: reset_company <company-id>.");
+	if (argc != 2) return false;
 
-	return NULL;
+	index = atoi(argv[1]);
+
+	/* Check valid range */
+	if (index < 1 || index > MAX_PLAYERS) {
+		IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-ID must be between 1 and %d.", MAX_PLAYERS);
+		return true;
+	}
+
+	/* Check if company does exist */
+	index--;
+	p = DEREF_PLAYER(index);
+	if (!p->is_active) {
+		IConsolePrintF(_iconsole_color_error, "Company does not exist.");
+		return true;
+	}
+
+	if (p->is_ai) {
+		IConsolePrintF(_iconsole_color_error, "Company is owned by an AI.");
+		return true;
+	}
+
+	/* Check if the company has active players */
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if (ci->client_playas-1 == index) {
+			IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
+			return true;
+		}
+	}
+	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	if (ci->client_playas - 1 == index) {
+		IConsolePrintF(_iconsole_color_error, "Cannot remove company; a client is connected to that company.");
+		return true;
+	}
+
+	/* It is safe to remove this company */
+	DoCommandP(0, 2, index, NULL, CMD_PLAYER_CTRL);
+	IConsolePrint(_iconsole_color_default, "Company deleted.");
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConNetworkClients)
 {
 	NetworkClientInfo *ci;
+
+	if (argc == 0) {
+		IConsoleHelp("Get a list of connected clients including their ID, name, and company-id. Usage: 'clients'");
+		return true;
+	}
+
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		if (ci->client_index != NETWORK_EMPTY_INDEX) {
 			IConsolePrintF(8,"Client #%d   name: %s  play-as: %d", ci->client_index, ci->client_name, ci->client_playas);
 		}
 	}
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
-	char* ip;
+	char *ip;
 	const char *port = NULL;
 	const char *player = NULL;
 	uint16 rport;
 
-	if (argc<2) return NULL;
-
-	if (_networking) {
-		// We are in network-mode, first close it!
-		NetworkDisconnect();
+	if (argc == 0) {
+		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
+		IConsoleHelp("IP can contain port and player: 'IP#Player:Port', eg: 'server.ottd.org#2:443'");
+		return true;
 	}
+
+	if (argc < 2) return false;
+
+	if (_networking) // We are in network-mode, first close it!
+		NetworkDisconnect();
 
 	ip = argv[1];
 	rport = NETWORK_DEFAULT_PORT;
@@ -589,7 +593,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 	NetworkClientConnectGame(ip, rport);
 
-	return NULL;
+	return true;
 }
 
 #endif /* ENABLE_NETWORK */
@@ -600,36 +604,44 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 DEF_CONSOLE_CMD(ConExec)
 {
-	char cmd[1024];
+	char cmdline[ICON_CMDLN_SIZE];
 
-	if (argc < 2) return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Execute a local script file. Usage: 'exec <script> <?>'");
+		return true;
+	}
+
+	if (argc < 2) return false;
 
 	_script_file = fopen(argv[1], "r");
 
 	if (_script_file == NULL) {
-		if (argc <= 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
-		return NULL;
+		if (argc == 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
+		return true;
 	}
 
 	_script_running = true;
 
-	while (_script_running && fgets(cmd, sizeof(cmd), _script_file) != NULL) {
-		IConsoleCmdExec(cmd);
-	}
+	while (_script_running && fgets(cmdline, sizeof(cmdline), _script_file) != NULL)
+		IConsoleCmdExec(cmdline);
 
-	if (ferror(_script_file)) {
+	if (ferror(_script_file))
 		IConsoleError("Encountered errror while trying to read from script file");
-	}
 
 	_script_running = false;
 	fclose(_script_file);
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConReturn)
 {
+	if (argc == 0) {
+		IConsoleHelp("Stop executing a running script. Usage: 'return'");
+		return true;
+	}
+
 	_script_running = false;
-	return NULL;
+	return true;
 }
 
 /* **************************** */
@@ -640,591 +652,482 @@ extern bool CloseConsoleLogIfActive(void);
 DEF_CONSOLE_CMD(ConScript)
 {
 	extern FILE* _iconsole_output_file;
+
+	if (argc == 0) {
+		IConsoleHelp("Start or stop logging console output to a file. Usage: 'script <filename>'");
+		IConsoleHelp("If filename is omitted, a running log is stopped if it is active");
+		return true;
+	}
+
 	if (!CloseConsoleLogIfActive()) {
-		if (argc < 2) return NULL;
+		if (argc < 2) return false;
+
 		IConsolePrintF(_iconsole_color_default, "file output started to: %s",	argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
 		if (_iconsole_output_file == NULL) IConsoleError("could not open file");
 	}
 
-	return NULL;
+	return true;
 }
 
 
 DEF_CONSOLE_CMD(ConEcho)
 {
-	if (argc < 2) return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Print back the first argument to the console. Usage: 'echo <arg>'");
+		return true;
+	}
+
+	if (argc < 2) return false;
 	IConsolePrint(_iconsole_color_default, argv[1]);
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConEchoC)
 {
-	if (argc < 3) return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Print back the first argument to the console in a given colour. Usage: 'echoc <colour> <arg2>'");
+		return true;
+	}
+
+	if (argc < 3) return false;
 	IConsolePrint(atoi(argv[1]), argv[2]);
-	return NULL;
+	return true;
 }
 
 extern void SwitchMode(int new_mode);
 
 DEF_CONSOLE_CMD(ConNewGame)
 {
+	if (argc == 0) {
+		IConsoleHelp("Start a new game. Usage: 'newgame'");
+		return true;
+	}
+
 	_docommand_recursive = 0;
 
 	_random_seeds[0][0] = Random();
 	_random_seeds[0][1] = InteractiveRandom();
 
 	SwitchMode(SM_NEWGAME);
-	return NULL;
-}
-
-DEF_CONSOLE_CMD(ConPrintF)
-{
-	if (argc < 3) return NULL;
-	IConsolePrintF(_iconsole_color_default, argv[1] , argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9], argv[10], argv[11], argv[12], argv[13], argv[14], argv[15], argv[16], argv[17], argv[18], argv[19]); /* XXX ugh... */
-	return NULL;
-}
-
-DEF_CONSOLE_CMD(ConPrintFC)
-{
-	if (argc < 3) return NULL;
-	IConsolePrintF(atoi(argv[1]), argv[2] , argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9], argv[10], argv[11], argv[12], argv[13], argv[14], argv[15], argv[16], argv[17], argv[18], argv[19]); /* XXX ugh... */
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConAlias)
 {
-	_iconsole_alias* alias;
+	IConsoleAlias *alias;
 
-	if (argc < 3) return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Add a new alias, or redefine the behaviour of an existing alias . Usage: 'alias <name> <command>'");
+		return true;
+	}
+
+	if (argc < 3) return false;
 
 	alias = IConsoleAliasGet(argv[1]);
 	if (alias == NULL) {
-		IConsoleAliasRegister(argv[1],argv[2]);
+		IConsoleAliasRegister(argv[1], argv[2]);
 	} else {
 		free(alias->cmdline);
 		alias->cmdline = strdup(argv[2]);
 	}
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConScreenShot)
 {
+	if (argc == 0) {
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big|no_con]'");
+		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create the screenshot");
+		return true;
+	}
+
 	if (argc < 2) {
 		_make_screenshot = 1;
 	} else {
 		if (strcmp(argv[1], "big") == 0)
-			_make_screenshot=2;
+			_make_screenshot = 2;
+
 		if (strcmp(argv[1], "no_con") == 0) {
 			IConsoleClose();
 			_make_screenshot = 1;
 		}
 	}
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConInfoVar)
 {
-	if (argc < 2) return NULL;
-	if (argt[1] != ICONSOLE_VAR_REFERENCE) {
-		IConsoleError("first argument has to be a variable reference");
-	} else {
-		_iconsole_var* item;
-		item = (_iconsole_var*)argv[1];
-		IConsolePrintF(_iconsole_color_default, "var_name: %s", item->name);
-		IConsolePrintF(_iconsole_color_default, "var_type: %i", item->type);
-		IConsolePrintF(_iconsole_color_default, "var_addr: %i", item->data.addr);
-		if (item->_malloc)
-			IConsolePrintF(_iconsole_color_default, "var_malloc: internal");
-		else
-			IConsolePrintF(_iconsole_color_default, "var_malloc: external");
-		if (item->hook_access) IConsoleWarning("var_access hooked");
-		if (item->hook_before_change) IConsoleWarning("var_before_change hooked");
-		if (item->hook_after_change) IConsoleWarning("var_after_change hooked");
+	static const char *_icon_vartypes[] = {"boolean", "byte", "uint16", "uint32", "int16", "int32", "string"};
+	const IConsoleVar *var;
+
+	if (argc == 0) {
+		IConsoleHelp("Print out debugging information about a variable. Usage: 'info_var <var>'");
+		return true;
 	}
-	return NULL;
+
+	if (argc < 2) return false;
+
+	var = IConsoleVarGet(argv[1]);
+	if (var == NULL) {
+		IConsoleError("the given variable was not found");
+		return true;
+	}
+
+	IConsolePrintF(_iconsole_color_default, "variable name: %s", var->name);
+	IConsolePrintF(_iconsole_color_default, "variable type: %s", _icon_vartypes[var->type]);
+	IConsolePrintF(_iconsole_color_default, "variable addr: 0x%X", var->addr);
+
+	if (var->hook.access) IConsoleWarning("variable is access hooked");
+	if (var->hook.pre) IConsoleWarning("variable is pre hooked");
+	if (var->hook.post) IConsoleWarning("variable is post hooked");
+	return true;
 }
 
 
 DEF_CONSOLE_CMD(ConInfoCmd)
 {
-	if (argc < 2) return NULL;
-	if (argt[1] != ICONSOLE_VAR_UNKNOWN) {
-		IConsoleError("first argument has to be a command name");
-	} else {
-		_iconsole_cmd* item;
-		item = IConsoleCmdGet(argv[1]);
-		if (item == NULL) {
-			IConsoleError("the given command was not found");
-			return NULL;
-		}
-		IConsolePrintF(_iconsole_color_default, "cmd_name: %s", item->name);
-		IConsolePrintF(_iconsole_color_default, "cmd_addr: %i", item->addr);
-		if (item->hook_access) IConsoleWarning("cmd_access hooked");
-		if (item->hook_before_exec) IConsoleWarning("cmd_before_exec hooked");
-		if (item->hook_after_exec) IConsoleWarning("cmd_after_exec hooked");
+	const IConsoleCmd *cmd;
+
+	if (argc == 0) {
+		IConsoleHelp("Print out debugging information about a command. Usage: 'info_cmd <cmd>'");
+		return true;
 	}
-	return NULL;
+
+	if (argc < 2) return false;
+
+	cmd = IConsoleCmdGet(argv[1]);
+	if (cmd == NULL) {
+		IConsoleError("the given command was not found");
+		return true;
+	}
+
+	IConsolePrintF(_iconsole_color_default, "command name: %s", cmd->name);
+	IConsolePrintF(_iconsole_color_default, "command proc: 0x%X", cmd->proc);
+
+	if (cmd->hook.access) IConsoleWarning("command is access hooked");
+	if (cmd->hook.pre) IConsoleWarning("command is pre hooked");
+	if (cmd->hook.post) IConsoleWarning("command is post hooked");
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConDebugLevel)
 {
-	if (argc < 2) return NULL;
+	if (argc == 0) {
+		IConsoleHelp("Set the default debugging level for the game. Usage: 'debug_level <level>'");
+		IConsoleHelp("Level can be any combination of names, levels. Eg 'net=5 ms=4'. Remember to enclose it in \"'s");
+		return true;
+	}
+
+	if (argc < 2) return false;
 	SetDebugString(argv[1]);
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConExit)
 {
+	if (argc == 0) {
+		IConsoleHelp("Exit the game. Usage: 'exit'");
+		return true;
+	}
+
 	_exit_game = true;
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConHelp)
 {
-	IConsolePrint(13, " -- console help -- ");
-	IConsolePrint( 1, " variables: [command to list them: list_vars]");
-	IConsolePrint( 1, " temp_string = \"my little \"");
-	IConsolePrint( 1, "");
-	IConsolePrint( 1, " commands: [command to list them: list_cmds]");
-	IConsolePrint( 1, " [command] [\"string argument with spaces\"] [argument 2] ...");
-	IConsolePrint( 1, " printf \"%s world\" temp_string");
-	IConsolePrint( 1, "");
-	IConsolePrint( 1, " command/variable returning a value into an variable:");
-	IConsolePrint( 1, " temp_uint16 << random");
-	IConsolePrint( 1, " temp_uint16 << temp_uint16_2");
-	IConsolePrint( 1, "");
-	return NULL;
-}
+	if (argc == 2) {
+		IConsoleCmd *cmd;
+		IConsoleVar *var;
 
-DEF_CONSOLE_CMD(ConRandom)
-{
-	_iconsole_var* result;
-	result = IConsoleVarAlloc(ICONSOLE_VAR_UINT16);
-	IConsoleVarSetValue(result, rand());
-	return result;
+		cmd = IConsoleCmdGet(argv[1]);
+	 	if (cmd != NULL) {
+	 		cmd->proc(0, NULL);
+	 		return true;
+	 	}
+
+	 	var = IConsoleVarGet(argv[1]);
+   	if (var != NULL && var->help != NULL) {
+   		IConsolePrintF(_iconsole_color_warning, "%s.", var->help);
+   		return true;
+   	}
+
+   	IConsoleError("command or variable not found");
+   	return true;
+  }
+
+	IConsolePrint(13, " -- OpenTTD Console Help -- ");
+	IConsolePrint( 1, " variables: [command to list all variables: list_vars]");
+	IConsolePrint( 1, " set value with '<var> = <value>', use '++/--' to in-or decrement");
+	IConsolePrint( 1, " or omit '=' and just '<var> <value>'. get value with typing '<var>'");
+	IConsolePrint( 1, "");
+	IConsolePrint( 1, " commands: [command to list all commands: list_cmds]");
+	IConsolePrint( 1, " call commands with '<command> <arg2> <arg3>...'");
+	IConsolePrint( 1, "");
+	IConsolePrint( 1, " to assign strings, or use them as arguments, enclose it within quotes");
+	IConsolePrint( 1, " like this: '<command> \"string argument with spaces\"'");
+	IConsolePrint( 1, " use 'help <command>|<variable>' to get specific information");
+	IConsolePrint( 1, "");
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConListCommands)
 {
-	const _iconsole_cmd* item;
+	const IConsoleCmd *cmd;
 	size_t l = 0;
+
+	if (argc == 0) {
+		IConsoleHelp("List all registered commands. Usage: 'list_cmds [<pre-filter>]'");
+		return true;
+	}
 
 	if (argv[1] != NULL) l = strlen(argv[1]);
 
-	for (item = _iconsole_cmds; item != NULL; item = item->_next)
-		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
-			IConsolePrintF(_iconsole_color_default, "%s", item->name);
+	for (cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
+		if (argv[1] == NULL || strncmp(cmd->name, argv[1], l) == 0) {
+				IConsolePrintF(_iconsole_color_default, "%s", cmd->name);
+		}
+	}
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConListVariables)
 {
-	const _iconsole_var* item;
+	const IConsoleVar *var;
 	size_t l = 0;
+
+	if (argc == 0) {
+		IConsoleHelp("List all registered variables. Usage: 'list_vars [<pre-filter>]'");
+		return true;
+	}
 
 	if (argv[1] != NULL) l = strlen(argv[1]);
 
-	for (item = _iconsole_vars; item != NULL; item = item->_next)
-		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
-			IConsolePrintF(_iconsole_color_default, "%s", item->name);
+	for (var = _iconsole_vars; var != NULL; var = var->next) {
+		if (argv[1] == NULL || strncmp(var->name, argv[1], l) == 0)
+			IConsolePrintF(_iconsole_color_default, "%s", var->name);
+	}
 
-	return NULL;
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConListAliases)
 {
-	const _iconsole_alias* item;
+	const IConsoleAlias *alias;
 	size_t l = 0;
+
+	if (argc == 0) {
+		IConsoleHelp("List all registered aliases. Usage: 'list_aliases [<pre-filter>]'");
+		return true;
+	}
 
 	if (argv[1] != NULL) l = strlen(argv[1]);
 
-	for (item = _iconsole_aliases; item != NULL; item = item->_next)
-		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
-			IConsolePrintF(_iconsole_color_default, "%s => %s", item->name, item->cmdline);
+	for (alias = _iconsole_aliases; alias != NULL; alias = alias->next) {
+		if (argv[1] == NULL || strncmp(alias->name, argv[1], l) == 0)
+			IConsolePrintF(_iconsole_color_default, "%s => %s", alias->name, alias->cmdline);
+	}
 
-	return NULL;
-}
-
-DEF_CONSOLE_CMD(ConListDumpVariables)
-{
-	const _iconsole_var* item;
-	size_t l = 0;
-
-	if (argv[1] != NULL) l = strlen(argv[1]);
-
-	for (item = _iconsole_vars; item != NULL; item = item->_next)
-		if (argv[1] == NULL || strncmp(item->name, argv[1], l) == 0)
-			IConsoleVarDump(item, NULL);
-
-	return NULL;
+	return true;
 }
 
 #ifdef ENABLE_NETWORK
 
 DEF_CONSOLE_CMD(ConSay)
 {
-	if (argc == 2) {
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
-		else
-			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+	if (argc == 0) {
+		IConsoleHelp("Chat to your fellow players in a multiplayer game. Usage: 'say \"<msg>\"'");
+		return true;
+	}
+
+	if (argc != 2) return false;
+
+	if (!_network_server) {
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
 	} else
-		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say \"<msg>\"");
-	return NULL;
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConSayPlayer)
 {
-	if (argc == 3) {
-		if (atoi(argv[1]) < 1 || atoi(argv[1]) > MAX_PLAYERS) {
-			IConsolePrintF(_iconsole_color_default, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
-			return NULL;
-		}
+	if (argc == 0) {
+		IConsoleHelp("Chat to a certain player in a multiplayer game. Usage: 'say_player <player-no> \"<msg>\"'");
+		IConsoleHelp("PlayerNo is the player that plays as company <playerno>, 1 through max_players");
+		return true;
+	}
 
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2]);
-		else
-			NetworkServer_HandleChat(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	if (argc != 3) return false;
+
+	if (atoi(argv[1]) < 1 || atoi(argv[1]) > MAX_PLAYERS) {
+		IConsolePrintF(_iconsole_color_default, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
+		return true;
+	}
+
+	if (!_network_server) {
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2]);
 	} else
-		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say_player <playerno> \"<msg>\"");
-	return NULL;
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConSayClient)
 {
-	if (argc == 3) {
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
-		else
-			NetworkServer_HandleChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	if (argc == 0) {
+		IConsoleHelp("Chat to a certain player in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'");
+  	IConsoleHelp("For client-id's, see the command 'clients'");
+		return true;
+	}
+
+	if (argc != 3) return false;
+
+	if (!_network_server) {
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
 	} else
-		IConsolePrint(_iconsole_color_default, "Unknown usage. Usage: say_client <clientno> \"<msg>\"");
-	return NULL;
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+
+	return true;
 }
 
+DEF_CONSOLE_HOOK(ConHookServerPW)
+{
+	if (strncmp(_network_server_password, "*", NETWORK_PASSWORD_LENGTH) == 0) {
+		_network_server_password[0] = '\0';
+		_network_game_info.use_password = 0;
+	} else
+		_network_game_info.use_password = 1;
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookRconPW)
+{
+	if (strncmp(_network_rcon_password, "*", NETWORK_PASSWORD_LENGTH) == 0)
+		_network_rcon_password[0] = '\0';
+
+	ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_game_info.rcon_password));
+
+	return true;
+}
+
+/* Also use from within player_gui to change the password graphically */
+bool NetworkChangeCompanyPassword(byte argc, char *argv[])
+{
+	if (argc == 0) {
+		IConsolePrintF(_iconsole_color_warning, "Current value of 'company_pw': %s", _network_player_info[_local_player].password);
+		return true;
+	}
+
+	if (_local_player >= MAX_PLAYERS) {
+		IConsoleError("You have to own a company to make use of this command.");
+		return false;
+	}
+
+	if (argc != 1) return false;
+
+	if (strncmp(argv[0], "*", sizeof(_network_player_info[_local_player].password)) == 0)
+		argv[0][0] = '\0';
+
+	ttd_strlcpy(_network_player_info[_local_player].password, argv[0], sizeof(_network_player_info[_local_player].password));
+
+	if (!_network_server)
+		SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConProcPlayerName)
+{
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+
+	if (ci == NULL) return false;
+
+	// Don't change the name if it is the same as the old name
+	if (strcmp(ci->client_name, _network_player_name) != 0) {
+		if (!_network_server) {
+			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_network_player_name);
+		} else {
+			if (NetworkFindName(_network_player_name)) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, _network_player_name);
+				ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
+				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+			}
+		}
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookServerName)
+{
+	ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookServerAdvertise)
+{
+	if (!_network_advertise)
+		NetworkUDPRemoveAdvertise();
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConProcServerIP)
+{
+	if (argc == 0) {
+		IConsolePrintF(_iconsole_color_warning, "Current value of 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+		return true;
+	}
+
+	if (argc != 1) return false;
+
+	_network_server_bind_ip = inet_addr(argv[0]);
+	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConPatch)
+{
+	if (argc == 0) {
+		IConsoleHelp("Change patch variables for all players. Usage: 'patch <name> [<value>]'");
+		IConsoleHelp("Omitting <value> will print out the current value of the patch-setting.");
+		return true;
+	}
+
+	if (argc == 1 || argc > 3) return false;
+
+	if (argc == 2) {
+		IConsoleGetPatchSetting(argv[1]);
+	} else
+		IConsoleSetPatchSetting(argv[1], argv[2]);
+
+	return true;
+}
 #endif /* ENABLE_NETWORK */
 
-/* **************************** */
-/*   the "set" command          */
-/* **************************** */
+DEF_CONSOLE_CMD(ConListDumpVariables)
+{
+	const IConsoleVar *var;
+	size_t l = 0;
 
-extern void ConsoleSetPatchSetting(char *name, char *value);
-extern void ConsoleGetPatchSetting(char *name);
-
-DEF_CONSOLE_CMD(ConSet) {
-	if (argc < 2) {
-		IConsolePrint(_iconsole_color_warning, "Unknonw usage. Usage: set [setting] [value].");
-		return NULL;
+	if (argc == 0) {
+		IConsoleHelp("List all variables with their value. Usage: 'dump_vars [<pre-filter>]'");
+		return true;
 	}
 
-#ifdef ENABLE_NETWORK
+	if (argv[1] != NULL) l = strlen(argv[1]);
 
-	// setting the server password
-	if ((strcmp(argv[1],"server_pw") == 0) || (strcmp(argv[1],"server_password") == 0)) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			// Change server password
-			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
-				_network_server_password[0] = '\0';
-				_network_game_info.use_password = 0;
-			} else {
-				ttd_strlcpy(_network_server_password, argv[2], sizeof(_network_server_password));
-				_network_game_info.use_password = 1;
-			}
-			IConsolePrintF(_iconsole_color_warning, "Game-password changed to '%s'", _network_server_password);
-			ttd_strlcpy(_network_game_info.server_password, _network_server_password, sizeof(_network_game_info.server_password));
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current game-password is set to '%s'", _network_game_info.server_password);
-			IConsolePrint(_iconsole_color_warning, "Usage: set server_pw \"<password>\".   Use * as <password> to set no password.");
-		}
-		return NULL;
+	for (var = _iconsole_vars; var != NULL; var = var->next) {
+		if (argv[1] == NULL || strncmp(var->name, argv[1], l) == 0)
+			IConsoleVarPrintGetValue(var);
 	}
 
-	// setting the rcon password
-	if ((strcmp(argv[1], "rcon_pw") == 0) || (strcmp(argv[1], "rcon_password") == 0)) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			// Change server password
-			if (strncmp(argv[2], "*", NETWORK_PASSWORD_LENGTH) == 0) {
-				_network_rcon_password[0] = '\0';
-			} else {
-				ttd_strlcpy(_network_rcon_password, argv[2], sizeof(_network_rcon_password));
-			}
-			IConsolePrintF(_iconsole_color_warning, "Rcon-password changed to '%s'", _network_rcon_password);
-			ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_game_info.rcon_password));
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current rcon-password is set to '%s'", _network_game_info.rcon_password);
-			IConsolePrint(_iconsole_color_warning, "Usage: set rcon_pw \"<password>\".   Use * as <password> to disable rcon.");
-		}
-		return NULL;
-	}
-
-	// setting the company password
-	if ((strcmp(argv[1],"company_pw") == 0) || (strcmp(argv[1],"company_password") == 0)) {
-		if (!_networking) {
-			IConsolePrintF(_iconsole_color_error,"No network game running");
-			return NULL;
-		}
-		if (_local_player >= MAX_PLAYERS) {
-			IConsolePrintF(_iconsole_color_default, "You have to own a company to make use of this command.");
-			return NULL;
-		}
-		if (argc == 3) {
-			NetworkChangeCompanyPassword(argv[2]);
-		} else {
-			IConsolePrint(_iconsole_color_default, "'set company_pw' sets a password for your company, so no-one without the correct password can join.");
-			IConsolePrint(_iconsole_color_warning, "Usage: set company_pw \"<password>\".   Use * as <password> to set no password.");
-		}
-		return NULL;
-	}
-
-	// setting the player name
-	if (strcmp(argv[1],"name") == 0) {
-		NetworkClientInfo *ci;
-
-		if (!_networking) {
-			IConsolePrintF(_iconsole_color_error,"No network game running");
-			return NULL;
-		}
-
-		ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-
-		if (argc == 3 && ci != NULL) {
-			// Don't change the name if it is the same as the old name
-			if (strcmp(ci->client_name, argv[2]) != 0) {
-				if (!_network_server) {
-					SEND_COMMAND(PACKET_CLIENT_SET_NAME)(argv[2]);
-				} else {
-					if (NetworkFindName(argv[2])) {
-						NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, argv[2]);
-						ttd_strlcpy(ci->client_name, argv[2], sizeof(ci->client_name));
-						NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-					}
-				}
-				/* Also keep track of the new name on the client itself */
-				ttd_strlcpy(_network_player_name, argv[2], sizeof(_network_player_name));
-			}
-		} else {
-			IConsolePrint(_iconsole_color_default, "With 'set name' you can change your network-player name.");
-			IConsolePrint(_iconsole_color_warning, "Usage: set name \"<name>\".");
-		}
-		return NULL;
-	}
-
-	// setting the server name
-	if (strcmp(argv[1],"server_name") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			ttd_strlcpy(_network_server_name, argv[2], sizeof(_network_server_name));
-			IConsolePrintF(_iconsole_color_warning, "Server-name changed to '%s'", _network_server_name);
-			ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current server-name is '%s'", _network_server_name);
-			IConsolePrint(_iconsole_color_warning, "Usage: set server_name \"<GameName>\".");
-		}
-		return NULL;
-	}
-
-	// setting the server port
-	if (strcmp(argv[1],"server_port") == 0) {
-		if (argc == 3 && atoi(argv[2]) != 0) {
-			_network_server_port = atoi(argv[2]);
-			IConsolePrintF(_iconsole_color_warning, "Server-port changed to '%d'", _network_server_port);
-			IConsolePrintF(_iconsole_color_warning, "Changes will take effect the next time you start a server.");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current server-port is '%d'", _network_server_port);
-			IConsolePrint(_iconsole_color_warning, "Usage: set server_port <port>.");
-		}
-		return NULL;
-	}
-
-	// setting the server ip
-	if (strcmp(argv[1],"server_bind_ip") == 0 || strcmp(argv[1],"server_ip_bind") == 0 ||
-			strcmp(argv[1],"server_ip") == 0 || strcmp(argv[1],"server_bind") == 0) {
-		if (argc == 3) {
-			_network_server_bind_ip = inet_addr(argv[2]);
-			snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
-			IConsolePrintF(_iconsole_color_warning, "Server-bind-ip changed to '%s'", _network_server_bind_ip_host);
-			IConsolePrintF(_iconsole_color_warning, "Changes will take effect the next time you start a server.");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current server-bind-ip is '%s'", _network_server_bind_ip_host);
-			IConsolePrint(_iconsole_color_warning, "Usage: set server_bind_ip <ip>.");
-		}
-		return NULL;
-	}
-
-	// setting max-join-time
-	if (strcmp(argv[1],"max_join_time") == 0) {
-		if (argc == 3 && atoi(argv[2]) != 0) {
-			_network_max_join_time = atoi(argv[2]);
-			IConsolePrintF(_iconsole_color_warning, "Max-join-time changed to '%d'", _network_max_join_time);
-			IConsolePrintF(_iconsole_color_warning, "Changes will take effect immediatly.");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current max-join-time is '%d'", _network_max_join_time);
-			IConsolePrint(_iconsole_color_warning, "Usage: set max_join_time <ticks> (default = 500).");
-		}
-		return NULL;
-	}
-
-
-	// setting the server advertising on/off
-	if (strcmp(argv[1],"server_advertise") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
-				_network_advertise = true;
-			else {
-				NetworkUDPRemoveAdvertise();
-				_network_advertise = false;
-			}
-			IConsolePrintF(_iconsole_color_warning, "Server-advertise changed to '%s'", (_network_advertise)?"on":"off");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current server-advertise is '%s'", (_network_advertise)?"on":"off");
-			IConsolePrint(_iconsole_color_warning, "Usage: set server_advertise on/off.");
-		}
-		return NULL;
-	}
-
-	// setting the server 'pause on client join' on/off
-	if (strcmp(argv[1],"pause_on_join") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
-				_network_pause_on_join = true;
-			else
-				_network_pause_on_join = false;
-			IConsolePrintF(_iconsole_color_warning, "Pause-on-join changed to '%s'", (_network_pause_on_join)?"on":"off");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current pause-on-join is '%s'", (_network_pause_on_join)?"on":"off");
-			IConsolePrint(_iconsole_color_warning, "Usage: set pause_on_join on/off.");
-		}
-		return NULL;
-	}
-
-	// setting the server autoclean on/off
-	if (strcmp(argv[1],"autoclean_companies") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			if (strcmp(argv[2], "on") == 0 || atoi(argv[2]) == 1)
-				_network_autoclean_companies = true;
-			else
-				_network_autoclean_companies = false;
-			IConsolePrintF(_iconsole_color_warning, "Autoclean-companies changed to '%s'", (_network_autoclean_companies)?"on":"off");
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current autoclean-companies is '%s'", (_network_autoclean_companies)?"on":"off");
-			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_companies on/off.");
-		}
-		return NULL;
-	}
-
-	// setting the server autoclean protected
-	if (strcmp(argv[1],"autoclean_protected") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			_network_autoclean_protected = atoi(argv[2]);
-			IConsolePrintF(_iconsole_color_warning, "Autoclean-protected changed to '%d'", _network_autoclean_protected);
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current autoclean-protected is '%d'", _network_autoclean_protected);
-			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_protected <months>.");
-		}
-		return NULL;
-	}
-
-	// setting the server autoclean protected
-	if (strcmp(argv[1],"autoclean_unprotected") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			_network_autoclean_unprotected = atoi(argv[2]);
-			IConsolePrintF(_iconsole_color_warning, "Autoclean-unprotected changed to '%d'", _network_autoclean_unprotected);
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current autoclean-unprotected is '%d'", _network_autoclean_unprotected);
-			IConsolePrint(_iconsole_color_warning, "Usage: set autoclean_unprotected <months>.");
-		}
-		return NULL;
-	}
-
-	// setting the server auto restart date
-	if (strcmp(argv[1],"restart_game_date") == 0) {
-		if (!_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3) {
-			_network_restart_game_date = atoi(argv[2]);
-			IConsolePrintF(_iconsole_color_warning, "Restart Game Date changed to '%d'", _network_restart_game_date);
-		} else {
-			IConsolePrintF(_iconsole_color_default, "Current Restart Game Date is '%d'", _network_restart_game_date);
-			IConsolePrint(_iconsole_color_warning, "Usage: set restart_game_date <year>. '0' means disabled.");
-			IConsolePrint(_iconsole_color_warning, " Auto-restart the server when 1 jan of this year is reached (e.g.: 2030).");
-		}
-		return NULL;
-	}
-
-#endif /* ENABLE_NETWORK */
-
-	// Patch-options
-	if (strcmp(argv[1],"patch") == 0) {
-		if (_networking && !_network_server) {
-			IConsolePrintF(_iconsole_color_error, "You are not the server");
-			return NULL;
-		}
-		if (argc == 3)
-			ConsoleGetPatchSetting(argv[2]);
-		else if (argc == 4)
-			ConsoleSetPatchSetting(argv[2], argv[3]);
-		else
-			IConsolePrint(_iconsole_color_warning, "Usage: set patch <patch_name> [<value>].");
-		return NULL;
-	}
-
-
-	IConsolePrint(_iconsole_color_error, "Unknown setting");
-	IConsolePrint(_iconsole_color_error, "Known settings are:");
-#ifdef ENABLE_NETWORK
-	IConsolePrint(_iconsole_color_error, " - autoclean_companies on/off");
-	IConsolePrint(_iconsole_color_error, " - autoclean_protected <months>");
-	IConsolePrint(_iconsole_color_error, " - autoclean_unprotected <months>");
-	IConsolePrint(_iconsole_color_error, " - company_pw \"<password>\"");
-	IConsolePrint(_iconsole_color_error, " - max_join_time <frames>");
-	IConsolePrint(_iconsole_color_error, " - name \"<playername>\"");
-	IConsolePrint(_iconsole_color_error, " - pause_on_join on/off");
-	IConsolePrint(_iconsole_color_error, " - rcon_pw \"<password>\"");
-	IConsolePrint(_iconsole_color_error, " - server_name \"<name>\"");
-	IConsolePrint(_iconsole_color_error, " - server_advertise on/off");
-	IConsolePrint(_iconsole_color_error, " - server_bind_ip <ip>");
-	IConsolePrint(_iconsole_color_error, " - server_port <port>");
-	IConsolePrint(_iconsole_color_error, " - server_pw \"<password>\"");
-	IConsolePrint(_iconsole_color_error, " - restart_game_date \"<year>\"");
-#endif /* ENABLE_NETWORK */
-	IConsolePrint(_iconsole_color_error, " - patch <patch_name> [<value>]");
-
-	return NULL;
+	return true;
 }
 
 
@@ -1238,12 +1141,10 @@ static void IConsoleDebugLibRegister(void)
 	// debugging variables and functions
 	extern bool _stdlib_con_developer; /* XXX extern in .c */
 
-	IConsoleVarRegister("con_developer", &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN);
-	IConsoleVarMemRegister("temp_string2", ICONSOLE_VAR_STRING);
-	IConsoleVarMemRegister("temp_uint16_2", ICONSOLE_VAR_UINT16);
-	IConsoleCmdRegister("resettile", ConResetTile);
-	IConsoleAliasRegister("dbg_echo","echo %A; echo %B");
-	IConsoleAliasRegister("dbg_echo2","echo %+");
+	IConsoleVarRegister("con_developer",    &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN, "Enable/disable console debugging information (internal)");
+	IConsoleCmdRegister("resettile",        ConResetTile);
+	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
+	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }
 #endif
 
@@ -1268,86 +1169,129 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("info_var",     ConInfoVar);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
-	IConsoleCmdRegister("list_aliases",    ConListAliases);
-	IConsoleCmdRegister("newgame",         ConNewGame);
-	IConsoleCmdRegister("printf",       ConPrintF);
-	IConsoleCmdRegister("printfc",      ConPrintFC);
+	IConsoleCmdRegister("list_aliases", ConListAliases);
+	IConsoleCmdRegister("newgame",      ConNewGame);
 	IConsoleCmdRegister("quit",         ConExit);
-	IConsoleCmdRegister("random",       ConRandom);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
-	IConsoleCmdRegister("return",     ConReturn);
-	IConsoleCmdRegister("screenshot", ConScreenShot);
-	IConsoleCmdRegister("script",     ConScript);
-	IConsoleCmdRegister("scrollto",   ConScrollToTile);
-	IConsoleCmdRegister("set",			ConSet);
-	IConsoleCmdRegister("alias",		ConAlias);
-	IConsoleCmdRegister("load",			ConLoad);
-	IConsoleCmdRegister("save",			ConSave);
-	IConsoleCmdRegister("ls", ConListFiles);
-	IConsoleCmdRegister("cd", ConChangeDirectory);
-	IConsoleCmdRegister("pwd", ConPrintWorkingDirectory);
-	IConsoleAliasRegister("dir", "ls");
+	IConsoleCmdRegister("return",       ConReturn);
+	IConsoleCmdRegister("screenshot",   ConScreenShot);
+	IConsoleCmdRegister("script",       ConScript);
+	IConsoleCmdRegister("scrollto",     ConScrollToTile);
+	IConsoleCmdRegister("alias",	      ConAlias);
+	IConsoleCmdRegister("load",			    ConLoad);
+	IConsoleCmdRegister("save",			    ConSave);
+	IConsoleCmdRegister("ls",           ConListFiles);
+	IConsoleCmdRegister("cd",           ConChangeDirectory);
+	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
+
+	IConsoleAliasRegister("dir",      "ls");
+	IConsoleAliasRegister("newmap",   "newgame");
+	IConsoleAliasRegister("new_map",  "newgame");
 	IConsoleAliasRegister("new_game", "newgame");
-	IConsoleAliasRegister("newmap", "newgame");
-	IConsoleAliasRegister("new_map", "newgame");
-
-	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE);
-
-	// temporary data containers for alias scripting
-	IConsoleVarMemRegister("temp_string", ICONSOLE_VAR_STRING);
-	IConsoleVarMemRegister("temp_bool", ICONSOLE_VAR_BOOLEAN);
-	IConsoleVarMemRegister("temp_int16", ICONSOLE_VAR_INT16);
-	IConsoleVarMemRegister("temp_int32", ICONSOLE_VAR_INT32);
-	IConsoleVarMemRegister("temp_pointer", ICONSOLE_VAR_POINTER);
-	IConsoleVarMemRegister("temp_uint16", ICONSOLE_VAR_UINT16);
-	IConsoleVarMemRegister("temp_uint32", ICONSOLE_VAR_UINT32);
 
 
-	// networking variables and functions
+	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE, "Redirect debugging output from the console/command line to the ingame console (value 2). Default value: 1");
+
+	/* networking variables and functions */
 #ifdef ENABLE_NETWORK
-	IConsoleCmdRegister("say",        ConSay);
-	IConsoleCmdHook("say", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
-	IConsoleCmdRegister("say_player", ConSayPlayer);
-	IConsoleCmdHook("say_player", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
-	IConsoleCmdRegister("say_client", ConSayClient);
-	IConsoleCmdHook("say_client", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
-	IConsoleCmdRegister("kick",         ConKick);
-	IConsoleCmdHook("kick", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("reset_company",         ConResetCompany);
-	IConsoleCmdHook("reset_company", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("connect", ConNetworkConnect);
-	IConsoleCmdHook("connect", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetServer);
-	IConsoleCmdRegister("clients", ConNetworkClients);
-	IConsoleCmdRegister("status",   ConStatus);
-	IConsoleCmdHook("status", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdHook("resetengines", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetwork);
+	/*** Networking commands ***/
+	IConsoleCmdRegister("say",             ConSay);
+	IConsoleCmdHookAdd("say",              ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("say_player",      ConSayPlayer);
+	IConsoleCmdHookAdd("say_player",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("say_client",      ConSayClient);
+	IConsoleCmdHookAdd("say_client",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("kick",            ConKick);
+	IConsoleCmdHookAdd("kick",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("reset_company",   ConResetCompany);
+	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleAliasRegister("clean_company", "reset_company %A");
+	IConsoleCmdRegister("connect",         ConNetworkConnect);
+	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
+	IConsoleCmdRegister("clients",         ConNetworkClients);
+	IConsoleCmdRegister("status",          ConStatus);
+	IConsoleCmdHookAdd("status",           ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdHookAdd("resetengines",     ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 
-	IConsoleCmdRegister("rcon",        ConRcon);
-	IConsoleCmdHook("rcon", ICONSOLE_HOOK_ACCESS, ConCmdHookNeedNetwork);
+	IConsoleCmdRegister("rcon",            ConRcon);
+	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
-	IConsoleCmdRegister("ban",   ConBan);
-	IConsoleCmdHook("ban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("unban",   ConUnBan);
-	IConsoleCmdHook("unban", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("banlist",   ConBanList);
-	IConsoleCmdHook("banlist", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("pause",   ConPauseGame);
-	IConsoleCmdHook("pause", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
-	IConsoleCmdRegister("unpause",   ConUnPauseGame);
-	IConsoleCmdHook("unpause", ICONSOLE_HOOK_ACCESS, ConCmdHookNoNetClient);
+	IConsoleCmdRegister("ban",             ConBan);
+	IConsoleCmdHookAdd("ban",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("unban",           ConUnBan);
+	IConsoleCmdHookAdd("unban",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("banlist",         ConBanList);
+	IConsoleCmdHookAdd("banlist",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("pause",           ConPauseGame);
+	IConsoleCmdHookAdd("pause",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("unpause",         ConUnPauseGame);
+	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
-	IConsoleAliasRegister("clean_company",		"reset_company %A");
+	IConsoleCmdRegister("patch",           ConPatch);
+	IConsoleCmdHookAdd("patch",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
-	IConsoleVarRegister("net_frame_freq", &_network_frame_freq, ICONSOLE_VAR_UINT8);
-	IConsoleVarHook("net_frame_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
-	IConsoleVarRegister("net_sync_freq", &_network_sync_freq, ICONSOLE_VAR_UINT16);
-	IConsoleVarHook("net_sync_freq", ICONSOLE_HOOK_ACCESS, ConVarHookNoNetClient);
+	/*** Networking variables ***/
+	IConsoleVarRegister("net_frame_freq",        &_network_frame_freq, ICONSOLE_VAR_BYTE, "The amount of frames before a command will be (visibly) executed. Default value: 1");
+	IConsoleVarHookAdd("net_frame_freq",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarRegister("net_sync_freq",         &_network_sync_freq,  ICONSOLE_VAR_UINT16, "The amount of frames to check if the game is still in sync. Default value: 100");
+	IConsoleVarHookAdd("net_sync_freq",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarStringRegister("server_pw",       &_network_server_password, sizeof(_network_server_password), "Set the server password to protect your server. Use '*' to clear the password");
+	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_POST_ACTION, ConHookServerPW);
+	IConsoleAliasRegister("server_password",     "server_pw %+");
+
+	IConsoleVarStringRegister("rcon_pw",         &_network_rcon_password, sizeof(_network_rcon_password), "Set the rcon-password to change server behaviour. Use '*' to disable rcon");
+	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_POST_ACTION, ConHookRconPW);
+	IConsoleAliasRegister("rcon_password",       "rcon_pw %+");
+
+	IConsoleVarStringRegister("company_pw",      NULL, 0, "Set a password for your company, so no one without the correct password can join. Use '*' to clear the password");
+	IConsoleVarHookAdd("company_pw",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleVarProcAdd("company_pw",             NetworkChangeCompanyPassword);
+	IConsoleAliasRegister("company_password",    "company_pw %+");
+
+	IConsoleVarStringRegister("name",            &_network_player_name, sizeof(_network_player_name), "Set your name for multiplayer");
+	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_POST_ACTION, ConProcPlayerName);
+
+	IConsoleVarStringRegister("server_name",     &_network_server_name, sizeof(_network_server_name), "Set the name of the server for multiplayer");
+	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_POST_ACTION, ConHookServerName);
+
+	IConsoleVarRegister("server_port",           &_network_server_port, ICONSOLE_VAR_UINT32, "Set the server port. Changes take effect the next time you start a server");
+
+	IConsoleVarRegister("server_ip",             &_network_server_bind_ip, ICONSOLE_VAR_UINT32, "Set the IP the server binds to. Changes take effect the next time you start a server");
+	IConsoleVarProcAdd("server_ip",              ConProcServerIP);
+	IConsoleAliasRegister("server_bind_ip",      "server_ip %+");
+	IConsoleAliasRegister("server_ip_bind",      "server_ip %+");
+	IConsoleAliasRegister("server_bind",         "server_ip %+");
+
+	IConsoleVarRegister("max_join_time",         &_network_max_join_time, ICONSOLE_VAR_UINT16, "Set the maximum amount of time (ticks) a client is allowed to join. Default value: 500");
+
+	IConsoleVarRegister("server_advertise",      &_network_advertise, ICONSOLE_VAR_BOOLEAN, "Set if the server will advertise to the master server and show up there");
+	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_POST_ACTION, ConHookServerAdvertise);
+
+	IConsoleVarRegister("pause_on_join",         &_network_pause_on_join, ICONSOLE_VAR_BOOLEAN, "Set if the server should pause gameplay while a client is joining. This might help slow users");
+	IConsoleVarHookAdd("pause_on_join",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("autoclean_companies",   &_network_autoclean_companies, ICONSOLE_VAR_BOOLEAN, "Automatically shut down inactive companies to free them up for other players. Customize with 'autoclean_(un)protected'");
+	IConsoleVarHookAdd("autoclean_companies",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("autoclean_protected",   &_network_autoclean_protected, ICONSOLE_VAR_BYTE, "Automatically remove the password from an inactive company after the given amount of months");
+	IConsoleVarHookAdd("autoclean_protected",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("autoclean_unprotected", &_network_autoclean_protected, ICONSOLE_VAR_BYTE, "Automatically shut down inactive companies after the given amount of months");
+	IConsoleVarHookAdd("autoclean_unprotected",  ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("restart_game_date",     &_network_restart_game_date, ICONSOLE_VAR_BYTE, "Auto-restart the server when Jan 1st of the set year is reached. Use '0' to disable this");
+	IConsoleVarHookAdd("restart_game_date",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
 #endif /* ENABLE_NETWORK */
 
 	// debugging stuff
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
-
 }
-/* -------------------- don't cross this line --------------------- */

@@ -1,108 +1,118 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-// ** console parser ** //
+// maximum length of a typed in command
+#define ICON_CMDLN_SIZE 255
+// maximum length of a totally expanded command
+#define ICON_MAX_STREAMSIZE 1024
 
-typedef enum _iconsole_var_types {
-	ICONSOLE_VAR_NONE,
+typedef enum IConsoleVarTypes {
 	ICONSOLE_VAR_BOOLEAN,
 	ICONSOLE_VAR_BYTE,
-	ICONSOLE_VAR_UINT8,
 	ICONSOLE_VAR_UINT16,
 	ICONSOLE_VAR_UINT32,
 	ICONSOLE_VAR_INT16,
 	ICONSOLE_VAR_INT32,
-	ICONSOLE_VAR_STRING,
-	ICONSOLE_VAR_POINTER,
-	ICONSOLE_VAR_REFERENCE,
-	ICONSOLE_VAR_UNKNOWN
-} _iconsole_var_types;
+	ICONSOLE_VAR_STRING
+} IConsoleVarTypes;
 
-typedef enum {
+typedef enum IConsoleModes {
 	ICONSOLE_FULL,
 	ICONSOLE_OPENED,
 	ICONSOLE_CLOSED
-} _iconsole_modes;
+} IConsoleModes;
 
-typedef enum _iconsole_hook_types {
+typedef enum IConsoleHookTypes {
 	ICONSOLE_HOOK_ACCESS,
-	ICONSOLE_HOOK_BEFORE_CHANGE,
-	ICONSOLE_HOOK_BEFORE_EXEC,
-	ICONSOLE_HOOK_AFTER_CHANGE,
-	ICONSOLE_HOOK_AFTER_EXEC
-} _iconsole_hook_types;
+	ICONSOLE_HOOK_PRE_ACTION,
+	ICONSOLE_HOOK_POST_ACTION
+} IConsoleHookTypes;
 
-struct _iconsole_var;
-typedef bool (*iconsole_var_hook)(struct _iconsole_var* hook_var);
+/** --Hooks--
+ * Hooks are certain triggers get get accessed/executed on either
+ * access, before execution/change or after execution/change. This allows
+ * for general flow of permissions or special action needed in some cases
+ */
+typedef bool IConsoleHook(void);
+typedef struct IConsoleHooks{
+	IConsoleHook *access; // trigger when accessing the variable/command
+	IConsoleHook *pre;    // trigger before the variable/command is changed/executed
+	IConsoleHook *post;   // trigger after the variable/command is changed/executed
+} IConsoleHooks;
 
-typedef struct _iconsole_var {
-	// --------------- //
-	union {
-		void*   addr;
-		bool*   bool_;
-		byte*   byte_;
-		uint16* uint16_;
-		uint32* uint32_;
-		int16*  int16_;
-		int32*  int32_;
-		char*   string_;
-		struct _iconsole_var* reference_;
-	} data;
-	char* name;
-	_iconsole_var_types type;
-	// -------------- //
-	iconsole_var_hook hook_access;
-	iconsole_var_hook hook_before_change;
-	iconsole_var_hook hook_after_change;
-	// -------------- //
-	struct _iconsole_var* _next;
-	bool _malloc;
-} _iconsole_var;
+/** --Commands--
+ * Commands are commands, or functions. They get executed once and any
+ * effect they produce are carried out. The arguments to the commands
+ * are given to them, each input word seperated by a double-quote (") is an argument
+ * If you want to handle multiple words as one, enclose them in double-quotes
+ * eg. 'say "hello sexy boy"'
+ */
+typedef bool (IConsoleCmdProc)(byte argc, char *argv[]);
 
-struct _iconsole_cmd;
-typedef bool (*iconsole_cmd_hook)(struct _iconsole_cmd* hook_cmd);
+struct IConsoleCmd;
+typedef struct IConsoleCmd {
+	char *name;               // name of command
+	struct IConsoleCmd *next; // next command in list
 
-typedef _iconsole_var* (*_iconsole_cmd_addr)(byte argc, char* argv[], byte argt[]);
+	IConsoleCmdProc *proc;    // process executed when command is typed
+	IConsoleHooks hook;       // any special trigger action that needs executing
+} IConsoleCmd;
 
-typedef struct _iconsole_cmd {
-	// -------------- //
-	_iconsole_cmd_addr addr;
-	char* name;
-	// -------------- //
-	iconsole_cmd_hook hook_access;
-	iconsole_cmd_hook hook_before_exec;
-	iconsole_cmd_hook hook_after_exec;
-	// -------------- //
-	void* _next;
-} _iconsole_cmd;
+/** --Variables--
+ * Variables are pointers to real ingame variables which allow for
+ * changing while ingame. After changing they keep their new value
+ * and can be used for debugging, gameplay, etc. It accepts:
+ * - no arguments; just print out current value
+ * - '= <new value>' to assign a new value to the variable
+ * - '++' to increase value by one
+ * - '--' to decrease value by one
+ */
+struct IConsoleVar;
+typedef struct IConsoleVar {
+	char *name;               // name of the variable
+	struct IConsoleVar *next; // next variable in list
 
-void IConsoleAliasRegister(const char* name, const char* cmdline);
+	void *addr;               // the address where the variable is pointing at
+	uint32 size;              // size of the variable, used for strings
+	char *help;               // the optional help string shown when requesting information
+	IConsoleVarTypes type;    // type of variable (for correct assignment/output)
+	IConsoleCmdProc *proc;    // some variables need really special handling, use a callback function for that
+	IConsoleHooks hook;       // any special trigger action that needs executing
+} IConsoleVar;
 
-typedef struct _iconsole_alias {
-	// -------------- //
-	char * cmdline;
-	char* name;
-	void* _next;
-} _iconsole_alias;
+/** --Aliases--
+ * Aliases are like shortcuts for complex functions, variable assignments,
+ * etc. You can use a simple alias to rename a longer command (eg 'lv' for
+ * 'list_vars' for example), or concatenate more commands into one
+ * (eg. 'ng' for 'load %A; unpause; debug_level 5'). Aliases can parse the arguments
+ * given to them in the command line.
+ * - "%A - %Z" substitute arguments 1 t/m 26
+ * - "%+" lists all parameters keeping them seperated
+ * - "%!" also lists all parameters but presenting them to the aliased command as one argument
+ * - ";" allows for combining commands (see example 'ng')
+ */
+struct IConsoleAlias;
+typedef struct IConsoleAlias {
+	char *name;                 // name of the alias
+	struct IConsoleAlias *next; // next alias in list
 
-_iconsole_alias* IConsoleAliasGet(const char* name);
+	char *cmdline;              // command(s) that is/are being aliased
+} IConsoleAlias;
 
 // ** console parser ** //
+IConsoleCmd   *_iconsole_cmds;    // list of registred commands
+IConsoleVar   *_iconsole_vars;    // list of registred vars
+IConsoleAlias *_iconsole_aliases; // list of registred aliases
 
-_iconsole_cmd* _iconsole_cmds; // list of registred commands
-_iconsole_var* _iconsole_vars; // list of registred vars
-_iconsole_alias* _iconsole_aliases; // list of registred aliases
-
-// ** console colors ** //
+// ** console colors/modes ** //
 VARDEF byte _iconsole_color_default;
 VARDEF byte _iconsole_color_error;
 VARDEF byte _iconsole_color_warning;
 VARDEF byte _iconsole_color_debug;
 VARDEF byte _iconsole_color_commands;
-VARDEF _iconsole_modes _iconsole_mode;
+VARDEF IConsoleModes _iconsole_mode;
 
 // ** console functions ** //
-
 void IConsoleInit(void);
 void IConsoleClear(void);
 void IConsoleFree(void);
@@ -112,44 +122,42 @@ void IConsoleClose(void);
 void IConsoleOpen(void);
 
 // ** console cmd buffer ** //
-void IConsoleCmdBufferAdd(const char* cmd);
-void IConsoleCmdBufferNavigate(signed char direction);
+void IConsoleHistoryAdd(const char *cmd);
+void IConsoleHistoryNavigate(signed char direction);
 
 // ** console output ** //
-void IConsolePrint(uint16 color_code, const char* string);
-void CDECL IConsolePrintF(uint16 color_code, const char* s, ...);
-void IConsoleDebug(const char* string);
-void IConsoleError(const char* string);
-void IConsoleWarning(const char* string);
+void IConsolePrint(uint16 color_code, const char *string);
+void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
+void IConsoleDebug(const char *string);
+void IConsoleWarning(const char *string);
+void IConsoleError(const char *string);
 
 // *** Commands *** //
-
-void IConsoleCmdRegister(const char* name, _iconsole_cmd_addr addr);
-_iconsole_cmd* IConsoleCmdGet(const char* name);
+void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc);
+void IConsoleAliasRegister(const char *name, const char *cmd);
+IConsoleCmd *IConsoleCmdGet(const char *name);
+IConsoleAlias *IConsoleAliasGet(const char *name);
 
 // *** Variables *** //
-
-void IConsoleVarRegister(const char* name, void* addr, _iconsole_var_types type);
-void IConsoleVarMemRegister(const char* name, _iconsole_var_types type);
-void IConsoleVarInsert(_iconsole_var* item_new, const char* name);
-_iconsole_var* IConsoleVarGet(const char* name);
-_iconsole_var* IConsoleVarAlloc(_iconsole_var_types type);
-void IConsoleVarFree(_iconsole_var* var);
-void IConsoleVarSetString(_iconsole_var* var, const char* string);
-void IConsoleVarSetValue(_iconsole_var* var, int value);
-void IConsoleVarDump(const _iconsole_var* var, const char* dump_desc);
+void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help);
+void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help);
+IConsoleVar* IConsoleVarGet(const char *name);
+void IConsoleVarPrintGetValue(const IConsoleVar *var);
+void IConsoleVarPrintSetValue(const IConsoleVar *var);
 
 // *** Parser *** //
+void IConsoleCmdExec(const char *cmdstr);
+void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
+void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[]);
 
-void IConsoleCmdExec(const char* cmdstr);
-
-// ** console std lib ** //
+// ** console std lib (register ingame commands/aliases/variables) ** //
 void IConsoleStdLibRegister(void);
 
-// ** hook code ** //
-void IConsoleVarHook(const char* name, _iconsole_hook_types type, iconsole_var_hook proc);
-void IConsoleCmdHook(const char* name, _iconsole_hook_types type, iconsole_cmd_hook proc);
-bool IConsoleVarHookHandle(_iconsole_var* hook_var, _iconsole_hook_types type);
-bool IConsoleCmdHookHandle(_iconsole_cmd* hook_cmd, _iconsole_hook_types type);
+// ** Hooking code ** //
+void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);
+void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);
+void IConsoleVarProcAdd(const char *name, IConsoleCmdProc *proc);
 
+// ** Supporting functions **//
+bool GetArgumentInteger(uint32 *value, const char *arg);
 #endif /* CONSOLE_H */
