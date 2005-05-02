@@ -1023,6 +1023,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	for (cmdptr = cmdstr; *cmdptr != '\0'; *cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {
 			IConsoleError("command contains malformed characters, aborting");
+			IConsolePrintF(_iconsole_color_error, "ERROR: command was: '%s'", cmdstr);
 			return;
 		}
 	}

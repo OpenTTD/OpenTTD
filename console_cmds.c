@@ -193,7 +193,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	const char *file;
 
 	if (argc == 0) {
-		IConsoleHelp("Load a game by name or index. Usage: 'load <file | number>'");
+		IConsoleHelp("Load a game by name or index. Usage: 'load <file \\ number>'");
 		return true;
 	}
 
@@ -223,7 +223,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 	int i;
 
 	if (argc == 0) {
-		IConsoleHelp("List all the files in the current dir via console. Usage: 'ls | dir'");
+		IConsoleHelp("List all the files in the current dir via console. Usage: 'ls \\ dir'");
 		return true;
 	}
 
@@ -245,7 +245,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	const char *file;
 
 	if (argc == 0) {
-		IConsoleHelp("Change the dir via console. Usage: 'cd <directory | number>'");
+		IConsoleHelp("Change the dir via console. Usage: 'cd <directory \\ number>'");
 		return true;
 	}
 
@@ -605,6 +605,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 DEF_CONSOLE_CMD(ConExec)
 {
 	char cmdline[ICON_CMDLN_SIZE];
+	char *cmdptr;
 
 	if (argc == 0) {
 		IConsoleHelp("Execute a local script file. Usage: 'exec <script> <?>'");
@@ -622,8 +623,16 @@ DEF_CONSOLE_CMD(ConExec)
 
 	_script_running = true;
 
-	while (_script_running && fgets(cmdline, sizeof(cmdline), _script_file) != NULL)
+	while (_script_running && fgets(cmdline, sizeof(cmdline), _script_file) != NULL) {
+		/* Remove newline characters from the executing script */
+		for (cmdptr = cmdline; *cmdptr != '\0'; *cmdptr++) {
+			if (*cmdptr == '\n' || *cmdptr == '\r') {
+				*cmdptr = '\0';
+				break;
+			}
+		}
 		IConsoleCmdExec(cmdline);
+	}
 
 	if (ferror(_script_file))
 		IConsoleError("Encountered errror while trying to read from script file");
@@ -737,7 +746,7 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big|no_con]'");
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big\\no_con]'");
 		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create the screenshot");
 		return true;
 	}
@@ -839,12 +848,24 @@ DEF_CONSOLE_CMD(ConExit)
 DEF_CONSOLE_CMD(ConHelp)
 {
 	if (argc == 2) {
-		IConsoleCmd *cmd;
-		IConsoleVar *var;
+		const IConsoleCmd *cmd;
+		const IConsoleVar *var;
+		const IConsoleAlias *alias;
 
 		cmd = IConsoleCmdGet(argv[1]);
 	 	if (cmd != NULL) {
 	 		cmd->proc(0, NULL);
+	 		return true;
+	 	}
+
+	 	alias = IConsoleAliasGet(argv[1]);
+	 	if (alias != NULL) {
+	 		cmd = IConsoleCmdGet(alias->cmdline);
+	 		if (cmd != NULL) {
+	 			cmd->proc(0, NULL);
+	 			return true;
+	 		}
+	 		IConsolePrintF(_iconsole_color_error, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
 	 		return true;
 	 	}
 
@@ -868,7 +889,7 @@ DEF_CONSOLE_CMD(ConHelp)
 	IConsolePrint( 1, "");
 	IConsolePrint( 1, " to assign strings, or use them as arguments, enclose it within quotes");
 	IConsolePrint( 1, " like this: '<command> \"string argument with spaces\"'");
-	IConsolePrint( 1, " use 'help <command>|<variable>' to get specific information");
+	IConsolePrint( 1, " use 'help <command>\\<variable>' to get specific information");
 	IConsolePrint( 1, "");
 	return true;
 }
