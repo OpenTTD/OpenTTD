@@ -223,10 +223,11 @@ DEF_CONSOLE_CMD(ConListFiles)
 	int i;
 
 	if (argc == 0) {
-		IConsoleHelp("List all the files in the current dir via console. Usage: 'ls \\ dir'");
+		IConsoleHelp("List all loadable savegames and directories in the current dir via console. Usage: 'ls \\ dir'");
 		return true;
 	}
 
+	_saveload_mode = SLD_LOAD_GAME;
 	BuildFileList();
 
 	for (i = 0; i < _fios_num; i++) {
