@@ -1045,10 +1045,14 @@ void IConsoleCmdExec(const char *cmdstr)
 		case ' ': /* Token seperator */
 			if (!foundtoken) break;
 
-			tokenstream[tstream_i] = (longtoken) ? *cmdptr : '\0';
+			if (longtoken) {
+				tokenstream[tstream_i] = *cmdptr;
+			} else {
+				tokenstream[tstream_i] = '\0';
+				foundtoken = false;
+			}
 
 			tstream_i++;
-			foundtoken = false;
 			break;
 		case '"': /* Tokens enclosed in "" are one token */
 			longtoken = !longtoken;
