@@ -944,8 +944,8 @@ const SettingDesc patch_settings[] = {
 	* penalty will further prevent this.
 	* We give presignal exits (and combo's) a different (larger) penalty, because we really
 	* don't want trains waiting in front of a presignal exit. */
-	{"npf_rail_firstred_penalty",   SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_firstred_penalty,		NULL},
-	{"npf_rail_firstred_exit_penalty", SDT_UINT32, (void*)(100 * NPF_TILE_LENGTH),	&_patches.npf_rail_firstred_exit_penalty,		NULL},
+	{"npf_rail_firstred_penalty",   SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_firstred_penalty,    NULL},
+	{"npf_rail_firstred_exit_penalty", SDT_UINT32, (void*)(100 * NPF_TILE_LENGTH), &_patches.npf_rail_firstred_exit_penalty, NULL},
 	/* This penalty is for when the last signal before the target is red.
 	 * This is useful for train stations, where there are multiple
 	 * platforms to choose from, which lie in different signal blocks.
@@ -960,11 +960,19 @@ const SettingDesc patch_settings[] = {
 	* a penalty of 1 tile for every station tile passed, the route will
 	* be around it.
 	*/
-	{"npf_rail_station_penalty",    SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_station_penalty, 		NULL},
-	{"npf_rail_slope_penalty",      SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_slope_penalty,				NULL},
-	{"npf_rail_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_rail_curve_penalty,				NULL},
+	{"npf_rail_station_penalty",    SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_station_penalty,     NULL},
+	{"npf_rail_slope_penalty",      SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_slope_penalty,       NULL},
+	/* This penalty is applied when a train makes a turn. Its value of 1 makes
+	 * sure that it has a minimal impact on the pathfinding, only when two
+	 * paths have equal length it will make a difference */
+	{"npf_rail_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_rail_curve_penalty,       NULL},
+	{"npf_buoy_penalty",            SDT_UINT32, (void*)(2 * NPF_TILE_LENGTH),   &_patches.npf_buoy_penalty,             NULL},
+	/* This penalty is applied when a ship makes a turn. It is bigger than the
+	 * rail curve penalty, since ships (realisticly) have more trouble with
+	 * making turns */
+	{"npf_water_curve_penalty",     SDT_UINT32, (void*)(NPF_TILE_LENGTH / 4),   &_patches.npf_water_curve_penalty,      NULL},
 
-	{NULL,									0,					NULL,					NULL,																						NULL}
+	{NULL,                          0,          NULL,                           NULL,                                   NULL}
 };
 
 static const SettingDesc currency_settings[] = {

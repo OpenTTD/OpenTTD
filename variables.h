@@ -211,6 +211,8 @@ typedef struct Patches {
 	uint32 npf_rail_station_penalty; /* The penalty for station tiles */
 	uint32 npf_rail_slope_penalty; /* The penalty for sloping upwards */
 	uint32 npf_rail_curve_penalty; /* The penalty for curves */
+	uint32 npf_buoy_penalty; /* The penalty for going over (through) a buoy */
+	uint32 npf_water_curve_penalty; /* The penalty for curves */
 
 	bool population_in_label; // Show the population of a town in his label?
 } Patches;

@@ -166,7 +166,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 			st = GetStation(new_order.station);
 
 			if (!IsValidStation(st) ||
-					(st->airport_type != AT_OILRIG && !(st->had_vehicle_of_type & HVOT_BUOY) && !CheckOwnership(st->owner))) {
+					(st->airport_type != AT_OILRIG && !(IsBuoy(st)) && !CheckOwnership(st->owner))) {
 				return CMD_ERROR;
 			}
 

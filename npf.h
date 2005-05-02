@@ -118,6 +118,11 @@ const byte _signal_against_trackdir[14];
 const uint16 _trackdir_reaches_trackdirs[14];
 
 /**
+ * Maps a trackdir to the trackdir that you will end up on if you go straight
+ * ahead. This will be the same trackdir for diagonal trackdirs, but a
+ * different (alternating) one for straight trackdirs */
+const uint16 _next_trackdir[14];
+/**
  * Maps a trackdir to all trackdirs that make 90 deg turns with it.
  */
 const uint16 _trackdir_crosses_trackdirs[14];
@@ -160,6 +165,23 @@ const byte _reverse_dir[4];
  * Maps a trackdir to the reverse trackdir.
  */
 const byte _reverse_trackdir[14];
+
+/* Returns the Track that a given Trackdir represents */
+static inline byte TrackdirToTrack(byte trackdir) { return trackdir & 0x7; }
+
+/* Returns a Trackdir for the given Track. Since every Track corresponds to
+ * two Trackdirs, we choose the one which points between N and SE.
+ * Note that the actual implementation is quite futile, but this might change
+ * in the future.
+ */
+static inline byte TrackToTrackdir(byte track) { return track; }
+
+/* Checks if a given Track is diagonal */
+static inline bool IsDiagonalTrack(byte track) { return track == 0x0 || track == 0x1; }
+
+/* Checks if a given Trackdir is diagonal. */
+static inline bool IsDiagonalTrackdir(byte trackdir) { return IsDiagonalTrack(TrackdirToTrack(trackdir)); }
+
 
 #define REVERSE_TRACKDIR(trackdir) (trackdir ^ 0x8)
 

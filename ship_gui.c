@@ -890,7 +890,7 @@ static void DrawSmallOrderList(Vehicle *v, int x, int y) {
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {
-			if (!(GetStation(order->station)->had_vehicle_of_type & HVOT_BUOY)) {
+			if (!IsBuoy(GetStation(order->station))){
 				SetDParam(0, order->station);
 				DrawString(x, y, STR_A036, 0);
 

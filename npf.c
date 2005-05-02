@@ -36,6 +36,11 @@ const uint16 _trackdir_reaches_trackdirs[14] = {
 	0x0520, 0x2A00, 0x2A00, 0x0520, 0x2A00, 0x1009
 };
 
+const uint16 _next_trackdir[14] = {
+	0,  1,  3,  2,  5,  4, 0, 0,
+	8,  9,  11, 10, 13, 12
+};
+
 /* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
 const uint16 _trackdir_crosses_trackdirs[14] = {
 	0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C, 0, 0,
@@ -273,7 +278,13 @@ int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
 
-	/* TODO Penalties? */
+	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(current->direction))
+		cost += _patches.npf_buoy_penalty; /* A small penalty for going over buoys */
+
+	if (current->direction != _next_trackdir[parent->path.node.direction])
+		cost += _patches.npf_water_curve_penalty;
+
+	/* TODO More penalties? */
 
 	return cost;
 }
@@ -385,7 +396,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	if (current->direction != parent->path.node.direction)
+	if (current->direction != _next_trackdir[parent->path.node.direction])
 		cost += _patches.npf_rail_curve_penalty;
 	//TODO, with realistic acceleration, also the amount of straight track between
 	//      curves should be taken into account, as this affects the speed limit.

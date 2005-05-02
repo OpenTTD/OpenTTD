@@ -642,7 +642,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	rect.min_y = MapSizeY();
 	rect.max_x = rect.max_y = 0;
 	// Don't update acceptance for a buoy
-	if (st->had_vehicle_of_type & HVOT_BUOY)
+	if (IsBuoy(st))
 		return;
 
 	/* old accepted goods types */
@@ -1855,6 +1855,8 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		StationInitialize(st, ti.tile);
 		st->dock_tile = ti.tile;
 		st->facilities |= FACIL_DOCK;
+		/* Buoys are marked in the Station struct by this flag. Yes, it is this
+		 * braindead.. */
 		st->had_vehicle_of_type |= HVOT_BUOY;
 		st->owner = OWNER_NONE;
 
@@ -1913,6 +1915,8 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = 0;
+		/* Buoys are marked in the Station struct by this flag. Yes, it is this
+		 * braindead.. */
 		st->facilities &= ~FACIL_DOCK;
 		st->had_vehicle_of_type &= ~HVOT_BUOY;
 
@@ -2706,7 +2710,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 			for(i=0; i!=8; i++)	{
 				if (around[i] == INVALID_STATION) {
 					st = GetStation(st_index);
-					if ((st->had_vehicle_of_type & HVOT_BUOY) == 0 &&
+					if (!IsBuoy(st) &&
 							( !st->town->exclusive_counter || (st->town->exclusivity == st->owner) ) && // check exclusive transport rights
 							st->goods[type].rating != 0 &&
 							(!_patches.selectgoods || st->goods[type].last_speed) && // if last_speed is 0, no vehicle has been there.

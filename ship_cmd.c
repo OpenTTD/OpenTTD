@@ -714,46 +714,58 @@ static void ShipController(Vehicle *v)
 			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 			if (r & 0x8) goto reverse_direction;
 
-			if (v->dest_tile != 0 && v->dest_tile == gp.new_tile) {
-				if (v->current_order.type == OT_GOTO_DEPOT) {
-					if ((gp.x&0xF)==8 && (gp.y&0xF)==8) {
-						ShipEnterDepot(v);
-						return;
-					}
-				} else if (v->current_order.type == OT_GOTO_STATION) {
-					Station *st;
-
-					v->last_station_visited = v->current_order.station;
-
-					/* Process station in the orderlist. Don't do that for buoys (HVOT_BUOY) */
-					st = GetStation(v->current_order.station);
-					if (!(st->had_vehicle_of_type & HVOT_BUOY)
-							&& (st->facilities & FACIL_DOCK)) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
-						v->current_order.type = OT_LOADING;
-						v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
-						v->current_order.flags |= OF_NON_STOP;
-						ShipArrivesAt(v, st);
-
-						SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
-						if (LoadUnloadVehicle(v)) {
-							InvalidateWindow(WC_SHIPS_LIST, v->owner);
-							MarkShipDirty(v);
-						}
-						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-					} else { /* leave buoys right aways */
-						v->current_order.type = OT_LEAVESTATION;
-						v->current_order.flags = 0;
-						v->cur_order_index++;
-						InvalidateVehicleOrder(v);
-					}
-					goto else_end;
-				}
-			}
-
+			/* A leave station order only needs one tick to get processed, so we can
+			 * always skip ahead. */
 			if (v->current_order.type == OT_LEAVESTATION) {
 				v->current_order.type = OT_NOTHING;
 				v->current_order.flags = 0;
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			} else if (v->dest_tile != 0) {
+				/* We have a target, let's see if we reached it... */
+				if (v->current_order.type == OT_GOTO_STATION &&
+						IsBuoyTile(v->dest_tile) &&
+						DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
+					/* We got within 3 tiles of our target buoy, so let's skip to our
+					 * next order */
+					v->cur_order_index++;
+					v->current_order.type = OT_DUMMY;
+					InvalidateVehicleOrder(v);
+				} else {
+					/* Non-buoy orders really need to reach the tile */
+					if (v->dest_tile == gp.new_tile) {
+						if (v->current_order.type == OT_GOTO_DEPOT) {
+							if ((gp.x&0xF)==8 && (gp.y&0xF)==8) {
+								ShipEnterDepot(v);
+								return;
+							}
+						} else if (v->current_order.type == OT_GOTO_STATION) {
+							Station *st;
+
+							v->last_station_visited = v->current_order.station;
+
+							/* Process station in the orderlist. */
+							st = GetStation(v->current_order.station);
+							if (st->facilities & FACIL_DOCK) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
+								v->current_order.type = OT_LOADING;
+								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
+								v->current_order.flags |= OF_NON_STOP;
+								ShipArrivesAt(v, st);
+
+								SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
+								if (LoadUnloadVehicle(v)) {
+									InvalidateWindow(WC_SHIPS_LIST, v->owner);
+									MarkShipDirty(v);
+								}
+								InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+							} else { /* leave stations without docks right aways */
+								v->current_order.type = OT_LEAVESTATION;
+								v->current_order.flags = 0;
+								v->cur_order_index++;
+								InvalidateVehicleOrder(v);
+							}
+						}
+					}
+				}
 			}
 		}
 	} else {
@@ -789,7 +801,6 @@ static void ShipController(Vehicle *v)
 
 		v->direction = b[2];
 	}
-else_end:;
 
 	/* update image of ship, as well as delta XY */
 	dir = ShipGetNewDirection(v, gp.x, gp.y);

@@ -103,6 +103,8 @@ enum {
 	HVOT_TRUCK = 1 << 3,
 	HVOT_AIRCRAFT = 1 << 4,
 	HVOT_SHIP = 1 << 5,
+	/* This bit is used to mark stations. No, it does not belong here, but what
+	 * can we do? ;-) */
 	HVOT_BUOY = 1 << 6
 };
 
@@ -290,7 +292,7 @@ static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
 		(_map5[tile] & 0x01) == (_map5[ref] & 0x01); // same direction?
 }
 
-static inline bool IsRoadStationTile(uint tile) {
+static inline bool IsRoadStationTile(TileIndex tile) {
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0x43, 0x4B);
 }
 
@@ -300,6 +302,15 @@ static inline bool IsRoadStationTile(uint tile) {
 static inline bool IsValidStation(const Station *st)
 {
 	return st->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+}
+
+static inline bool IsBuoy(const Station* st)
+{
+	return st->had_vehicle_of_type & HVOT_BUOY; /* XXX: We should really ditch this ugly coding and switch to something sane... */
+}
+
+static inline bool IsBuoyTile(TileIndex tile) {
+	return IsTileType(tile, MP_STATION) && _map5[tile] == 0x52;
 }
 
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
