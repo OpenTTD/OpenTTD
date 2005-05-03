@@ -1291,7 +1291,7 @@ void DrawArrowButtons(int x, int y, int state)
 	DrawStringCentered(x+15, y+1, STR_681A, 0);
 }
 
-char str_separator[2];
+char _str_separator[2];
 
 static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 {
@@ -1313,7 +1313,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		// separator
 		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
 		x = DrawString(x, y + 1, STR_CURRENCY_SEPARATOR, 0);
-		DoDrawString(str_separator, x + 4, y + 1, 6);
+		DoDrawString(_str_separator, x + 4, y + 1, 6);
 		x = 35;
 		y+=12;
 		i++;
@@ -1375,7 +1375,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			case 1: // separator
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(str_separator, 0);
+				str = AllocateName(_str_separator, 0);
 				len = 1;
 				edittext = true;
 			break;
@@ -1434,22 +1434,22 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			int val;
 			const char *b = e->edittext.str;
 			switch (WP(w,def_d).data_2) {
-				case 0:
+				case 0: /* Exchange rate */
 					val = atoi(b);
 					val = clamp(val, 1, 5000);
 					_currency_specs[23].rate = val;
 				break;
-				case 1:
-					_currency_specs[23].separator = b[0];
-					ttd_strlcpy(str_separator, b, 16);
+				case 1: /* Thousands seperator */
+					_currency_specs[23].separator = (b[0] == '\0') ? ' ' : b[0];
+					ttd_strlcpy(_str_separator, b, 16);
 				break;
-				case 2:
+				case 2: /* Currency prefix */
 					ttd_strlcpy(_currency_specs[23].prefix, b, 16);
 				break;
-				case 3:
+				case 3: /* Currency suffix */
 					ttd_strlcpy(_currency_specs[23].suffix, b, 16);
 				break;
-				case 4:
+				case 4: /* Year to switch to euro */
 					val = atoi(b);
 					val = clamp(val, 1999, MAX_YEAR_END_REAL);
 					if (val == 1999) val = 0;
@@ -1492,8 +1492,8 @@ void ShowCustCurrency(void)
 {
 	Window *w;
 
-	str_separator[0] = _currency_specs[23].separator;
-	str_separator[1] = '\0';
+	_str_separator[0] = _currency_specs[23].separator;
+	_str_separator[1] = '\0';
 
 	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
 	w = AllocateWindowDesc(&_cust_currency_desc);
