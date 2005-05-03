@@ -1414,12 +1414,12 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		if(edittext) {
+		if (edittext) {
 			WP(w,def_d).data_2 = line;
 			ShowQueryString(
 			str,
 			STR_CURRENCY_CHANGE_PARAMETER,
-			len, // maximum number of characters OR
+			len + 1, // maximum number of characters OR
 			250, // characters up to this width pixels, whichever is satisfied first
 			w->window_class,
 			w->window_number);
