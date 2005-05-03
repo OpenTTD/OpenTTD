@@ -872,7 +872,7 @@ DEF_CONSOLE_CMD(ConHelp)
 
 	 	var = IConsoleVarGet(argv[1]);
    	if (var != NULL && var->help != NULL) {
-   		IConsolePrintF(_iconsole_color_warning, "%s.", var->help);
+   		IConsoleHelp(var->help);
    		return true;
    	}
 
