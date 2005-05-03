@@ -17,6 +17,8 @@
 #include "debug.h"
 #include "npf.h"
 #include "vehicle_gui.h"
+#include "depot.h"
+#include "station.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -1714,11 +1716,15 @@ byte GetDirectionTowards(Vehicle *v, int x, int y)
 
 byte GetVehicleTrackdir(const Vehicle* v)
 {
+	if (v->vehstatus & VS_CRASHED)
+		return 0xff;
+
 	switch(v->type)
 	{
 		case VEH_Train:
 			if (v->u.rail.track == 0x80)
-				return 0xFF; /* Train in depot */
+				/* We'll assume the train is facing outwards */
+				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_RAIL)]; /* Train in depot */
 			else if (v->u.rail.track == 0x40)
 				/* train in tunnel, so just use his direction and assume a diagonal track */
 				return _dir_to_diag_trackdir[(v->direction>>1)&3];
@@ -1726,12 +1732,17 @@ byte GetVehicleTrackdir(const Vehicle* v)
 				return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
 		case VEH_Ship:
 			if (v->u.ship.state == 0x80)
-				return 0xFF; /* Ship in depot */
+				/* We'll assume the ship is facing outwards */
+				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_WATER)]; /* Ship in depot */
 			else
 				return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
 		case VEH_Road:
 			if (v->u.road.state == 254)
-				return 0xFF; /* Road vehicle in depot */
+				/* We'll assume the road vehicle is facing outwards */
+				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_ROAD)]; /* Road vehicle in depot */
+			else if (IsRoadStationTile(v->tile))
+				/* We'll assume the road vehicle is facing outwards */
+				return _dir_to_diag_trackdir[GetRoadStationDir(v->tile)]; /* Road vehicle in a station */
 			else
 				return _dir_to_diag_trackdir[(v->direction>>1)&3];
 		case VEH_Aircraft:

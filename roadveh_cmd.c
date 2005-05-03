@@ -311,13 +311,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		/* See where we are now */
-		byte trackdir;
-		if (IsRoadStationTile(tile))
-			/* if we are in a station, simulate leaving the station (since
-			 * v->direction won't contain anything usefule than */
-			trackdir = _dir_to_diag_trackdir[GetRoadStationDir(tile)];
-		else
-			trackdir = GetVehicleTrackdir(v);
+		byte trackdir = GetVehicleTrackdir(v);
 
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist == 0)
@@ -1665,7 +1659,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		}
 
 		//We do not have a slot, so make one
-		if (v->u.road.slot == NULL && rs != NULL && IsTileType(v->tile, MP_STREET)) {
+		if (v->u.road.slot == NULL && rs != NULL) {
 		//first we need to find out how far our stations are away.
 
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
