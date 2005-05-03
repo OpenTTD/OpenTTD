@@ -1002,6 +1002,9 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
 		return CMD_ERROR;
 
+	if (v->vehstatus & VS_CRASHED)
+		return CMD_ERROR;
+
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
 

@@ -1298,7 +1298,8 @@ static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int trac
 	return length >= tfdd->best_length;
 }
 
-// returns the tile of a depot to goto to.
+// returns the tile of a depot to goto to. The given vehicle must be on track,
+// so not crashed, in a depot, etc.
 static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 {
 	int i;
@@ -1360,6 +1361,9 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Train || !CheckOwnership(v->owner))
+		return CMD_ERROR;
+
+	if (v->vehstatus & VS_CRASHED)
 		return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
