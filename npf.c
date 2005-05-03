@@ -259,11 +259,18 @@ void NPFMarkTile(TileIndex tile) {
 	if (_debug_npf_level >= 1)
 		switch(GetTileType(tile)) {
 			case MP_RAILWAY:
-			case MP_STREET:
 				/* DEBUG: mark visited tiles by mowing the grass under them
 				 * ;-) */
-				_map2[tile] &= ~15;
-				MarkTileDirtyByTile(tile);
+				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
+					_map2[tile] &= ~15; /* Clear bits 0-3 */
+					MarkTileDirtyByTile(tile);
+				}
+				break;
+			case MP_STREET:
+				if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
+					_map3_hi[tile] &= ~0x70; /* Clear bits 4-6 */
+					MarkTileDirtyByTile(tile);
+				}
 				break;
 			default:
 				break;
