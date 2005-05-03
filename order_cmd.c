@@ -534,7 +534,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 
 /**
  *
- * Add an order to the orderlist of a vehicle
+ * Modify an order in the orderlist of a vehicle
  *
  * @param veh_sel      First 16 bits are the ID of the vehicle. The next 16 are the selected order (if any)
  *                       If the lastone is given, order will be inserted above thatone
@@ -580,10 +580,14 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
 				return CMD_ERROR;
 		}
 
-		/* Update the windows, also for vehicles that share the same order list */
+		/* Update the windows and full load flags, also for vehicles that share the same order list */
 		{
 			Vehicle *u = GetFirstVehicleFromSharedList(v);
 			while (u != NULL) {
+				/* toggle u->current_order "Full load" flag if it changed */
+				if (sel == u->cur_order_index &&
+						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD))
+					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
 				InvalidateVehicleOrder(u);
 				u = u->next_shared;
 			}
