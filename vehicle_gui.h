@@ -12,7 +12,7 @@ void InitializeVehiclesGuiList(void);
 void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
-void BuildVehicleList(struct vehiclelist_d *vl, VehicleType type, int owner, int station);
+void BuildVehicleList(struct vehiclelist_d *vl, int type, int owner, int station);
 void SortVehicleList(struct vehiclelist_d *vl);
 
 int CDECL GeneralOwnerSorter(const void *a, const void *b);

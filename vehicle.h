@@ -4,14 +4,14 @@
 #include "pool.h"
 #include "order.h"
 
-typedef enum VehicleTypes{
+enum {
 	VEH_Train = 0x10,
 	VEH_Road = 0x11,
 	VEH_Ship = 0x12,
 	VEH_Aircraft = 0x13,
 	VEH_Special = 0x14,
 	VEH_Disaster = 0x15,
-} VehicleType;
+} ;
 
 enum VehStatus {
 	VS_HIDDEN = 1,
@@ -131,7 +131,7 @@ struct WorldSprite {
 };
 
 struct Vehicle {
-	VehicleType type;	// type, ie roadven,train,ship,aircraft,special
+	byte type;	// type, ie roadven,train,ship,aircraft,special
 	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)(Filled with values from EffectVehicles or TrainSubTypes)
 
 	uint16 index;			// NOSAVE: Index in vehicle array
