@@ -1042,7 +1042,7 @@ DEF_CONSOLE_HOOK(ConHookRconPW)
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		IConsolePrintF(_iconsole_color_warning, "Current value of 'company_pw': %s", _network_player_info[_local_player].password);
+		IConsolePrintF(_iconsole_color_warning, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
 		return true;
 	}
 
@@ -1103,7 +1103,7 @@ DEF_CONSOLE_HOOK(ConHookServerAdvertise)
 DEF_CONSOLE_CMD(ConProcServerIP)
 {
 	if (argc == 0) {
-		IConsolePrintF(_iconsole_color_warning, "Current value of 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+		IConsolePrintF(_iconsole_color_warning, "Current value for 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 		return true;
 	}
 

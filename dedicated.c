@@ -110,12 +110,13 @@ void WINAPI CheckForConsoleInput(void)
 void CreateWindowsConsoleThread(void)
 {
 	static char tbuffer[9];
+	DWORD dwThreadId;
 	/* Create event to signal when console input is ready */
 	hEvent = CreateEvent(NULL, false, false, _strtime(tbuffer));
 	if (hEvent == NULL)
 		error("Cannot create console event!");
 
-	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, 0, 0, NULL);
+	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
 	if (hThread == NULL)
 		error("Cannot create console thread!");
 
