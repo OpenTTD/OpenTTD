@@ -471,7 +471,7 @@ DEF_CONSOLE_CMD(ConKick)
 		return true;
 	}
 	if (index == 0) {
-		IConsoleError("Invalid Client-ID");
+		IConsoleError("Invalid client-id");
 		return true;
 	}
 
@@ -480,7 +480,7 @@ DEF_CONSOLE_CMD(ConKick)
 	if (ci != NULL) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
 	} else
-		IConsoleError("Client-ID not found");
+		IConsoleError("Client-id not found");
 
 	return true;
 }
@@ -493,7 +493,8 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	byte index;
 
 	if (argc == 0) {
-		IConsoleHelp("Remove an (idle) company from the game. Usage: 'reset_company <company-id>'");
+		IConsoleHelp("Remove an idle company from the game. Usage: 'reset_company <company-id>'");
+		IConsoleHelp("For company-id's, see the list of companies from the dropdown menu. Player 1 is 1, etc.");
 		return true;
 	}
 
@@ -503,7 +504,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* Check valid range */
 	if (index < 1 || index > MAX_PLAYERS) {
-		IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-ID must be between 1 and %d.", MAX_PLAYERS);
+		IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
 
@@ -511,26 +512,26 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	index--;
 	p = DEREF_PLAYER(index);
 	if (!p->is_active) {
-		IConsolePrintF(_iconsole_color_error, "Company does not exist.");
+		IConsoleError("Company does not exist.");
 		return true;
 	}
 
 	if (p->is_ai) {
-		IConsolePrintF(_iconsole_color_error, "Company is owned by an AI.");
+		IConsoleError("Company is owned by an AI.");
 		return true;
 	}
 
 	/* Check if the company has active players */
 	FOR_ALL_CLIENTS(cs) {
 		ci = DEREF_CLIENT_INFO(cs);
-		if (ci->client_playas-1 == index) {
-			IConsolePrintF(_iconsole_color_error, "Cannot remove company: a client is connected to that company.");
+		if (ci->client_playas - 1 == index) {
+			IConsoleError("Cannot remove company: a client is connected to that company.");
 			return true;
 		}
 	}
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (ci->client_playas - 1 == index) {
-		IConsolePrintF(_iconsole_color_error, "Cannot remove company; a client is connected to that company.");
+		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;
 	}
 
@@ -552,7 +553,7 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		if (ci->client_index != NETWORK_EMPTY_INDEX) {
-			IConsolePrintF(8,"Client #%d   name: %s  play-as: %d", ci->client_index, ci->client_name, ci->client_playas);
+			IConsolePrintF(8, "Client #%d   name: %s  play-as company: %d", ci->client_index, ci->client_name, ci->client_playas);
 		}
 	}
 
@@ -880,17 +881,17 @@ DEF_CONSOLE_CMD(ConHelp)
    	return true;
   }
 
-	IConsolePrint(13, " -- OpenTTD Console Help -- ");
-	IConsolePrint( 1, " variables: [command to list all variables: list_vars]");
+	IConsolePrint(13, " ---- OpenTTD Console Help ---- ");
+	IConsolePrint( 1, " - variables: [command to list all variables: list_vars]");
 	IConsolePrint( 1, " set value with '<var> = <value>', use '++/--' to in-or decrement");
 	IConsolePrint( 1, " or omit '=' and just '<var> <value>'. get value with typing '<var>'");
-	IConsolePrint( 1, "");
-	IConsolePrint( 1, " commands: [command to list all commands: list_cmds]");
+	IConsolePrint( 1, " - commands: [command to list all commands: list_cmds]");
 	IConsolePrint( 1, " call commands with '<command> <arg2> <arg3>...'");
-	IConsolePrint( 1, "");
-	IConsolePrint( 1, " to assign strings, or use them as arguments, enclose it within quotes");
+	IConsolePrint( 1, " - to assign strings, or use them as arguments, enclose it within quotes");
 	IConsolePrint( 1, " like this: '<command> \"string argument with spaces\"'");
-	IConsolePrint( 1, " use 'help <command>\\<variable>' to get specific information");
+	IConsolePrint( 1, " - use 'help <command>\\<variable>' to get specific information");
+	IConsolePrint( 1, " - scroll console output with shift + (up\\down)\\(pageup\\pagedown))");
+	IConsolePrint( 1, " - scroll console input history with the up\\down arrows");
 	IConsolePrint( 1, "");
 	return true;
 }
@@ -1231,6 +1232,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("connect",         ConNetworkConnect);
 	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
 	IConsoleCmdRegister("clients",         ConNetworkClients);
+	IConsoleCmdHookAdd("clients",          ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleCmdRegister("status",          ConStatus);
 	IConsoleCmdHookAdd("status",           ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdHookAdd("resetengines",     ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
