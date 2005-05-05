@@ -134,7 +134,7 @@ struct Vehicle {
 	byte type;	// type, ie roadven,train,ship,aircraft,special
 	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)(Filled with values from EffectVehicles or TrainSubTypes)
 
-	uint16 index;			// NOSAVE: Index in vehicle array
+	VehicleID index;	// NOSAVE: Index in vehicle array
 
 	Vehicle *next;		// next
 	Vehicle *first;   // NOSAVE: pointer to the first vehicle in the chain
@@ -235,9 +235,9 @@ struct Vehicle {
 	} u;
 };
 
-#define is_custom_sprite(x) (x >= 0xfd)
-#define is_custom_firsthead_sprite(x) (x == 0xfd)
-#define is_custom_secondhead_sprite(x) (x == 0xfe)
+#define is_custom_sprite(x) (x >= 0xFD)
+#define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
+#define IS_CUSTOM_SECONDHEAD_SPRITE(x) (x == 0xFE)
 
 typedef void VehicleTickProc(Vehicle *v);
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
@@ -378,8 +378,7 @@ static inline bool IsValidVehicle(Vehicle* v)
  */
 static inline bool IsVehicleIndex(uint index)
 {
-	if (index < GetVehiclePoolSize())
-		return true;
+	if (index < GetVehiclePoolSize()) return true;
 
 	return false;
 }
@@ -389,8 +388,7 @@ static inline Order *GetVehicleOrder(const Vehicle *v, int index)
 {
 	Order *order = v->orders;
 
-	if (index < 0)
-		return NULL;
+	if (index < 0) return NULL;
 
 	while (order != NULL && index-- > 0)
 		order = order->next;
@@ -403,8 +401,7 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v)
 {
 	Order *order = v->orders;
 
-	if (order == NULL)
-		return NULL;
+	if (order == NULL) return NULL;
 
 	while (order->next != NULL)
 		order = order->next;
@@ -438,7 +435,7 @@ VARDEF byte _cmd_build_rail_veh_var1;
 // for each player, for each vehicle type, keep a list of the vehicles.
 //VARDEF Vehicle *_vehicle_arr[8][4];
 
-#define INVALID_VEHICLE 0xffff
+#define INVALID_VEHICLE 0xFFFF
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */

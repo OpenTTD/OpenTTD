@@ -207,7 +207,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->left_coord = INVALID_COORD;
 	v->first = NULL;
 	v->next = NULL;
-	v->next_hash = 0xffff;
+	v->next_hash = INVALID_VEHICLE;
 	v->string_id = 0;
 	v->next_shared = NULL;
 	v->prev_shared = NULL;
@@ -375,15 +375,20 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	Vehicle* u;
 
 	if (v->first != NULL) {
-		if (v->first->subtype == TS_Front_Engine) {
-			return v->first;
-		} else {
-			DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here");
-		}
+		if (v->first->subtype == TS_Front_Engine) return v->first;
+
+		DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here, rebuilding cache!");
 	}
 
+	/* It is the fact (currently) that newly built vehicles do not have
+	* their ->first pointer set. When this is the case, go up to the
+	* first engine and set the pointers correctly. Also the first pointer
+	* is not saved in a savegame, so this has to be fixed up after loading */
+
+	/* Find the 'locomotive' or the first wagon in a chain */
 	while ((u = GetPrevVehicleInChain(v)) != NULL) v = u;
 
+	/* Set the first pointer of all vehicles in that chain to the first wagon */
 	if (v->subtype == TS_Front_Engine)
 		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
 
@@ -402,7 +407,7 @@ void DeleteVehicle(Vehicle *v)
 	DeleteName(v->string_id);
 	v->type = 0;
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
-	v->next_hash = 0xffff;
+	v->next_hash = INVALID_VEHICLE;
 
 	if (v->orders != NULL)
 		DeleteVehicleOrders(v);
@@ -414,7 +419,7 @@ void DeleteVehicleChain(Vehicle *v)
 		Vehicle *u = v;
 		v = v->next;
 		DeleteVehicle(u);
-	} while (v);
+	} while (v != NULL);
 }
 
 
@@ -1716,40 +1721,36 @@ byte GetDirectionTowards(Vehicle *v, int x, int y)
 
 byte GetVehicleTrackdir(const Vehicle* v)
 {
-	if (v->vehstatus & VS_CRASHED)
-		return 0xff;
+	if (v->vehstatus & VS_CRASHED) return 0xFF;
 
 	switch(v->type)
 	{
 		case VEH_Train:
-			if (v->u.rail.track == 0x80)
-				/* We'll assume the train is facing outwards */
+			if (v->u.rail.track == 0x80) /* We'll assume the train is facing outwards */
 				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_RAIL)]; /* Train in depot */
-			else if (v->u.rail.track == 0x40)
-				/* train in tunnel, so just use his direction and assume a diagonal track */
-				return _dir_to_diag_trackdir[(v->direction>>1)&3];
-			else
-				return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
+
+			if (v->u.rail.track == 0x40) /* train in tunnel, so just use his direction and assume a diagonal track */
+				return _dir_to_diag_trackdir[(v->direction >> 1) & 3];
+
+			return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
+			break;
 		case VEH_Ship:
-			if (v->u.ship.state == 0x80)
-				/* We'll assume the ship is facing outwards */
+			if (v->u.ship.state == 0x80) /* We'll assume the ship is facing outwards */
 				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_WATER)]; /* Ship in depot */
-			else
-				return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
+
+			return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];
+			break;
 		case VEH_Road:
-			if (v->u.road.state == 254)
-				/* We'll assume the road vehicle is facing outwards */
+			if (v->u.road.state == 254) /* We'll assume the road vehicle is facing outwards */
 				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_ROAD)]; /* Road vehicle in depot */
-			else if (IsRoadStationTile(v->tile))
-				/* We'll assume the road vehicle is facing outwards */
+
+			if (IsRoadStationTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
 				return _dir_to_diag_trackdir[GetRoadStationDir(v->tile)]; /* Road vehicle in a station */
-			else
-				return _dir_to_diag_trackdir[(v->direction>>1)&3];
-		case VEH_Aircraft:
-		case VEH_Special:
-		case VEH_Disaster:
-		default:
-			return 0xFF;
+
+			return _dir_to_diag_trackdir[(v->direction >> 1) & 3];
+			break;
+		/* case VEH_Aircraft: case VEH_Special: case VEH_Disaster: */
+		default: return 0xFF;
 	}
 }
 /* Return value has bit 0x2 set, when the vehicle enters a station. Then,
