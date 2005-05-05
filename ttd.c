@@ -421,8 +421,8 @@ static void ParseResolution(int res[2], char *s)
 		return;
 	}
 
-	res[0] = strtoul(s, NULL, 0);
-	res[1] = strtoul(t + 1, NULL, 0);
+	res[0] = clamp(strtoul(s, NULL, 0), 64, MAX_SCREEN_WIDTH);
+	res[1] = clamp(strtoul(t + 1, NULL, 0), 64, MAX_SCREEN_HEIGHT);
 }
 
 static void InitializeDynamicVariables(void)
