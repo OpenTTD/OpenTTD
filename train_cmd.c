@@ -18,12 +18,11 @@
 #include "waypoint.h"
 #include "vehicle_gui.h"
 
-#define is_firsthead_sprite(spritenum) \
-	(is_custom_sprite(spritenum) \
-		? is_custom_firsthead_sprite(spritenum) \
-		: _engine_sprite_add[spritenum] == 0)
+#define IS_FIRSTHEAD_SPRITE(spritenum) \
+	(is_custom_sprite(spritenum) ? IS_CUSTOM_FIRSTHEAD_SPRITE(spritenum) : _engine_sprite_add[spritenum] == 0)
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
+extern void ShowTrainViewWindow(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
 static const byte _vehicle_initial_y_fract[4] = {8,4,8,10};
@@ -277,7 +276,7 @@ int GetTrainImage(const Vehicle *v, byte direction)
 	int base;
 
 	if (is_custom_sprite(img)) {
-		base = GetCustomVehicleSprite(v, direction + 4 * is_custom_secondhead_sprite(img));
+		base = GetCustomVehicleSprite(v, direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img));
 		if (base != 0) return base;
 		img = _engine_original_sprites[v->engine_type];
 	}
@@ -583,7 +582,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->dest_tile = 0;
 
 			v->engine_type = (byte)p1;
-			e = &_engines[p1];
+			e = DEREF_ENGINE(p1);
 
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
@@ -654,23 +653,23 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 // returns the new value of first
 static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 {
-	// unlinking the first vehicle of the chain?
-	v->u.rail.first_engine = 0xffff;
-	if (v == first) {
-		Vehicle *u;
+	Vehicle *u;
 
+	v->u.rail.first_engine = INVALID_VEHICLE;
+
+	// unlinking the first vehicle of the chain?
+	if (v == first) {
 		v = v->next;
 		if (v == NULL) return NULL;
+
 		for (u = v; u != NULL; u = u->next) u->u.rail.first_engine = v->engine_type;
 		v->subtype = TS_Free_Car;
 		return v;
-	} else {
-		Vehicle *u;
-
-		for (u = first; u->next != v; u = u->next) {}
-		u->next = v->next;
-		return first;
 	}
+
+	for (u = first; u->next != v; u = u->next) {}
+	u->next = v->next;
+	return first;
 }
 
 static Vehicle *FindGoodVehiclePos(const Vehicle *src)
@@ -711,8 +710,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (src->type != VEH_Train) return CMD_ERROR;
 
-	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON) &&
-		is_firsthead_sprite(src->spritenum);
+	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON) && IS_FIRSTHEAD_SPRITE(src->spritenum);
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
 	if (((int32)p1 >> 16) == -1) {
@@ -754,14 +752,12 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (num < 0)
 			return CMD_ERROR;
 
-		if (num > (_patches.mammoth_trains ? 100 : 9) &&
-				dst_head->subtype == TS_Front_Engine )
+		if (num > (_patches.mammoth_trains ? 100 : 9) && dst_head->subtype == TS_Front_Engine )
 			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
 
 		// if it's a multiheaded vehicle we're dragging to, drag to the vehicle before..
-		while (is_custom_secondhead_sprite(dst->spritenum) || (
-			!is_custom_sprite(dst->spritenum) &&
-			_engine_sprite_add[dst->spritenum] != 0)
+		while (IS_CUSTOM_SECONDHEAD_SPRITE(dst->spritenum) || (
+			!is_custom_sprite(dst->spritenum) && _engine_sprite_add[dst->spritenum] != 0)
 		) {
 			Vehicle *v = GetPrevVehicleInChain(dst);
 			if (v == NULL || src == v) break;
@@ -884,17 +880,43 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = wagon/loco index
-// p2 = mode
-//   0: sell just the vehicle
-//   1: sell the vehicle and all vehicles that follow it in the chain
-//   2: when selling attached locos, rearrange all vehicles after it to separate lines.
+/**
+ * Search for a matching rear-engine of a dual-headed train.
+ * Do this as if you would find matching parentheses. If a new
+ * engine is 'started', first 'close' that before 'closing' our
+ * searched engine
+ */
+static Vehicle *GetRearEngine(const Vehicle *v, uint16 engine)
+{
+	Vehicle *u;
+	int en_count = 1;
+
+	for (u = v->next; u != NULL; u = u->next) {
+		if (u->engine_type == engine) { // find matching engine
+			en_count += (IS_FIRSTHEAD_SPRITE(u->spritenum)) ? +1 : -1;
+
+			if (en_count == 0) return (Vehicle *)u;
+		}
+	}
+	return NULL;
+}
+
+/**
+ * Sell a (single) train wagon/engine.
+ * @param p1 the wagon/engine index
+ * @param p2 the selling mode
+ * - 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
+ * - 1: sell the vehicle and all vehicles following it in the chain
+        if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
+ * - 2: when selling attached locos, rearrange all vehicles after it to separate lines;
+ *      all wagons of the same type will go on the same line. Used by the AI currently
+ */
 int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v, *first,*last;
-	int32 cost;
+	Vehicle *v, *tmp, *first;
+	int32 cost = 0;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsVehicleIndex(p1) || p2 > 2) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -903,94 +925,127 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	// get first vehicle in chain
-	first = v;
-	if (first->subtype != TS_Front_Engine) {
-		first = GetFirstVehicleInChain(first);
-		last = GetLastVehicleInChain(first);
-		//now if:
-		// 1) we delete a whole a chain, and
-		// 2) we don't actually try to delete the last engine
-		// 3) the first and the last vehicle of that train are of the same type, and
-		// 4) the first and the last vehicle of the chain are not identical
-		// 5) and of "engine" type (i.e. not a carriage)
-		// then let the last vehicle live
-		if (p2 == 1 && v != last && last->engine_type == first->engine_type &&
-				last != first && first->subtype == TS_Front_Engine)
-			last = GetPrevVehicleInChain(last);
-		else
-			last = NULL;
-	} else {
-		if (p2 != 1) {
-			// sell last part of multiheaded?
-			last = GetLastVehicleInChain(v);
-			// Check if the end-part is the same engine and check if it is the rear-end
-			if (last->engine_type != first->engine_type ||
-					is_firsthead_sprite(last->spritenum))
-				last = NULL;
-		} else {
-			last = NULL;
-		}
-	}
+	first = GetFirstVehicleInChain(v);
 
 	// make sure the vehicle is stopped in the depot
 	if (CheckTrainStoppedInDepot(first) < 0)
 		return CMD_ERROR;
 
-
-	if (flags & DC_EXEC) {
-		Vehicle *tmp;
-
+	if ((flags & DC_EXEC) && v == first && first->subtype == TS_Front_Engine) {
+		DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
-		if (first->subtype == TS_Front_Engine) RebuildVehicleLists();
+	}
 
-		// when selling an attached locomotive. we need to delete its window.
-		if (v->subtype == TS_Front_Engine) {
-			Vehicle *u;
+	switch (p2) {
+		case 0: case 2: { /* Delete given wagon */
+			bool switch_engine = false;    // update second wagon to engine?
+			byte ori_subtype = v->subtype; // backup subtype of deleted wagon in case DeleteVehicle() changes
 
-			for (u = v; u != NULL; u = u->next) u->first = NULL;
-			DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-
-			// rearrange all vehicles that follow to separate lines.
-			if (p2 == 2) {
-				const Vehicle* u;
-				const Vehicle* tmp;
-
-				for (u = v->next; u != last; u = tmp) {
-					tmp = u->next;
-					DoCommandByTile(u->tile, u->index | INVALID_VEHICLE << 16, 0, DC_EXEC,
-						CMD_MOVE_RAIL_VEHICLE);
+			/* 1. Delete the engine, if it is dualheaded also delete the matching
+			* rear engine of the loco (from the point of deletion onwards) */
+			Vehicle *rear = (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) ? GetRearEngine(v, v->engine_type) : NULL;
+			if (rear != NULL) {
+				cost -= v->value;
+				if (flags & DC_EXEC) {
+					v = UnlinkWagon(rear, v);
+					DeleteVehicle(rear);
 				}
 			}
-		}
 
-		// delete the vehicles
-		cost = 0;
-		for (; v != last && p2 == 1; v = tmp) {
-			assert (first != NULL);
-			first = UnlinkWagon(v, first);
-			cost -= v->value;
-			tmp = v->next;
-			DeleteVehicle(v);
-		}
-		if (v != NULL) {
-			first = UnlinkWagon(v, first);
-			cost -= v->value;
-			DeleteVehicle(v);
-		}
+			/* 2. We are selling the first engine, some special action might be required
+				* here, so take attention */
+			if (flags & DC_EXEC && v == first) {
+				Vehicle *new_f = first->next;
 
-		// an attached train changed?
-		if (first != NULL && first->subtype == TS_Front_Engine) {
-			UpdateTrainAcceleration(first);
-			InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
-		}
-	} else {
-		cost = 0;
-		for (; v != last && p2 == 1; v = v->next) cost -= v->value;
-		if (v != NULL) cost -= v->value;
+				/* 2.1 If the first wagon is sold, update the first-> pointers to NULL */
+				for (tmp = first; tmp != NULL; tmp = tmp->next) tmp->first = NULL;
+
+				/* 2.2 If there are wagons present after the deleted front engine, check
+					* if the second wagon (which will be first) is an engine. If it is one,
+					* promote it as a new train, retaining the unitnumber, orders */
+				if (new_f != NULL) {
+					if (!(RailVehInfo(new_f->engine_type)->flags & RVI_WAGON) && IS_FIRSTHEAD_SPRITE(new_f->spritenum)) {
+						switch_engine = true;
+						/* Copy important data from the front engine */
+						new_f->unitnumber = first->unitnumber;
+						new_f->current_order = first->current_order;
+						new_f->cur_order_index = first->cur_order_index;
+						new_f->orders = first->orders;
+						new_f->num_orders = first->num_orders;
+						first->orders = NULL; // XXX - to not to delete the orders */
+						ShowTrainViewWindow(new_f);
+					}
+				}
+			}
+
+			/* 3. Delete the requested wagon */
+			cost -= v->value;
+			if (flags & DC_EXEC) {
+				first = UnlinkWagon(v, first);
+				DeleteVehicle(v);
+
+				/* 4 If the second wagon was an engine, update it to front_engine
+					* which UnlinkWagon() has changed to TS_Free_Car */
+				if (switch_engine) first->subtype = TS_Front_Engine;
+
+				/* 5. If the train still exists, update its acceleration, window, etc. */
+				if (first != NULL && first->subtype == TS_Front_Engine) {
+					InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
+					UpdateTrainAcceleration(first);
+				}
+
+
+				/* (6.) Borked AI. If it sells an engine it expects all wagons lined
+				* up on a new line to be added to the newly built loco. Replace it is.
+				* Totally braindead cause building a new engine adds all loco-less
+				* engines to its train anyways */
+				if (p2 == 2 && ori_subtype == TS_Front_Engine) {
+					for (v = first; v != NULL; v = tmp) {
+						tmp = v->next;
+						DoCommandByTile(v->tile, v->index | INVALID_VEHICLE << 16, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+					}
+				}
+			}
+		} break;
+		case 1: { /* Delete wagon and all wagons after it given certain criteria */
+			/* 1. Count the number for first and rear engines for dualheads
+			* to be able to deduce which ones go with which ones */
+			int enf_count = 0;
+			int enr_count = 0;
+			for (tmp = first; tmp != NULL; tmp = tmp->next) {
+				if (RailVehInfo(tmp->engine_type)->flags & RVI_MULTIHEAD)
+					(IS_FIRSTHEAD_SPRITE(tmp->spritenum)) ? enf_count++ : enr_count++;
+			}
+
+			/* 2. Start deleting every vehicle after the selected one
+			* If we encounter a matching rear-engine to a front-engine
+			* earlier in the chain (before deletion), leave it alone */
+			for (; v != NULL; v = tmp) {
+				tmp = v->next;
+
+				if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
+					/* Always delete newly encountered front-engines */
+					if (IS_FIRSTHEAD_SPRITE(v->spritenum)) {
+						enf_count--;
+					/* If we have more rear engines than front engines, then that means
+					* that this rear-engine does not belong to any front-engine; delete */
+					} else if (enr_count > enf_count) { enr_count--;}
+					/* Otherwise leave it alone */
+					else continue;
+				}
+
+				cost -= v->value;
+				if (flags & DC_EXEC) {
+					first = UnlinkWagon(v, first);
+					DeleteVehicle(v);
+				}
+			}
+
+			/* 3. If it is still a valid train after selling, update its acceleration */
+			if (flags & DC_EXEC && first != NULL && first->subtype == TS_Front_Engine) UpdateTrainAcceleration(first);
+		} break;
 	}
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
-
 	return cost;
 }
 
@@ -3135,8 +3190,6 @@ void TrainsYearlyLoop(void)
 		}
 	}
 }
-
-extern void ShowTrainViewWindow(Vehicle *v);
 
 void HandleClickOnTrain(Vehicle *v)
 {
