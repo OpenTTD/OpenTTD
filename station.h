@@ -50,8 +50,6 @@ struct Station {
 	TileIndex airport_tile;
 	TileIndex dock_tile;
 	Town *town;
-	// alpha_order is obsolete since savegame format 4
-	byte alpha_order_obsolete;
 	uint16 string_id;
 
 	ViewportSign sign;
