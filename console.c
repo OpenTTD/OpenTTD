@@ -450,7 +450,8 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 {
 	int result = sscanf(arg, "%u", value);
 
-	if (result == 0 && arg[0] == '0' && (arg[1] == 'x' || arg[1] == 'X'))
+	/* Hexadecimal numbers start with 0x, so at least the first number has been parsed */
+	if (result == 1 && arg[0] == '0' && (arg[1] == 'x' || arg[1] == 'X'))
 		result = sscanf(arg, "%x", value);
 
 	if (result == 0 && (strcmp(arg, "on") == 0 || strcmp(arg, "true") == 0 )) {*value = 1; result = 1;}
