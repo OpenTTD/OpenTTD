@@ -1634,7 +1634,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	CheckOrders(v->index, OC_INIT);
 
 	/* update destination */
-	if (v->current_order.type == OT_GOTO_STATION) {
+	if (v->current_order.type == OT_GOTO_STATION && !(v->vehstatus & VS_CRASHED)) {
 		RoadStop *rs;
 		uint32 mindist = 0xFFFFFFFF;
 		int num;
