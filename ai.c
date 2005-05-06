@@ -3882,14 +3882,14 @@ static void AiAdjustLoan(Player *p)
 	if (p->player_money > base * 1400) {
 		// Decrease loan
 		if (p->current_loan != 0) {
-			DoCommandByTile(0, _current_player, 0, DC_EXEC, CMD_DECREASE_LOAN);
+			DoCommandByTile(0, 0, 0, DC_EXEC, CMD_DECREASE_LOAN);
 		}
 	} else if (p->player_money < base * 500) {
 		// Increase loan
 		if (p->current_loan < _economy.max_loan &&
 				p->num_valid_stat_ent >= 2 &&
 				-(p->old_economy[0].expenses+p->old_economy[1].expenses) < base * 60) {
-			DoCommandByTile(0, _current_player, 0, DC_EXEC, CMD_INCREASE_LOAN);
+			DoCommandByTile(0, 0, 0, DC_EXEC, CMD_INCREASE_LOAN);
 		}
 	}
 }

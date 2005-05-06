@@ -18,7 +18,7 @@
 int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		DEREF_PLAYER(p1)->face = p2;
+		GetPlayer(_current_player)->face = p2;
 		MarkWholeScreenDirty();
 	}
 	return 0;
@@ -31,11 +31,7 @@ int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p,*pp;
 
-//	/* can only set color for itself */
-//	if ( (byte)p1 != _current_player)
-//		return CMD_ERROR;
-
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(_current_player);
 
 	/* ensure no dups */
 	FOR_ALL_PLAYERS(pp) {
@@ -44,7 +40,7 @@ int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		_player_colors[p1] = (byte)p2;
+		_player_colors[_current_player] = (byte)p2;
 		p->player_color = (byte)p2;
 		MarkWholeScreenDirty();
 	}
@@ -56,10 +52,7 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Player *p;
 	int32 size;
 
-	if ( (byte)p1 != _current_player)
-		return CMD_ERROR;
-
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(_current_player);
 
 	if (p->current_loan >= _economy.max_loan) {
 		SetDParam(0, _economy.max_loan);
@@ -70,7 +63,7 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (p2)
 			size = _economy.max_loan - p->current_loan;
 		else
-			size = IS_HUMAN_PLAYER((byte)p1) ? 10000 : 50000;
+			size = IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000;
 
 		p->money64 += size;
 		p->current_loan += size;
@@ -85,10 +78,8 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int32 size;
-	if ( (byte)p1 != _current_player)
-		return CMD_ERROR;
 
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(_current_player);
 
 	if (p->current_loan == 0)
 		return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
@@ -100,7 +91,7 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	    if (_patches.ainew_active)
  		    size = min(size, 10000);
 	    else
-		    size = min(size, IS_HUMAN_PLAYER((byte)p1) ? 10000 : 50000);
+		    size = min(size, IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000);
 	} else {	// only repay in chunks of 10K
 		size = min(size, p->player_money);
 		size = max(size, 10000);

@@ -168,11 +168,11 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 6: /* increase loan */
-			DoCommandP(0, w->window_number, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
+			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 			break;
 
 		case 7: /* repay loan */
-			DoCommandP(0, w->window_number, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
+			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 			break;
 		}
 		break;
@@ -285,7 +285,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 
 			for(i=0; i!=16; i++) {
 				if (!(used_colors & 1) && --item < 0) {
-					DoCommandP(0, w->window_number, i, NULL, CMD_SET_PLAYER_COLOR);
+					DoCommandP(0, 0, i, NULL, CMD_SET_PLAYER_COLOR);
 					DeleteWindow(w);
 					break;
 				}
@@ -327,7 +327,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 		switch(e->click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4: /* ok click */
-			DoCommandP(0, w->window_number, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
+			DoCommandP(0, 0, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
 			DeleteWindow(w);
 			break;
 		case 5: /* male click */
