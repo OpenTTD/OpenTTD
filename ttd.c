@@ -1413,22 +1413,3 @@ bool AfterLoadGame(uint version)
 
 	return true;
 }
-
-void DebugProc(int i)
-{
-	switch(i) {
-	case 0:
-		*(byte*)0 = 0;
-		break;
-	case 1:
-		/* Server can not cheat in advertise mode either! */
-#ifdef ENABLE_NETWORK
-		if (!_networking || !_network_server || !_network_advertise)
-#endif /* ENABLE_NETWORK */
-			DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
-		break;
-	case 2:
-		UpdateAllStationVirtCoord();
-		break;
-	}
-}

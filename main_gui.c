@@ -2292,7 +2292,7 @@ static WindowDesc _main_status_desc = {
 	StatusBarWndProc
 };
 
-extern void DebugProc(int i);
+extern void UpdateAllStationVirtCoord(void);
 
 static void MainWindowWndProc(Window *w, WindowEvent *e) {
 	int off_x;
@@ -2339,8 +2339,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 
-		if (_game_mode == GM_MENU)
-			break;
+		if (_game_mode == GM_MENU) break;
 
 		switch (e->keypress.keycode) {
 		case 'C': case 'Z': {
@@ -2356,18 +2355,26 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		case WKC_ESC: ResetObjectToPlace(); break;
 		case WKC_DELETE: DeleteNonVitalWindows(); break;
 		case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
-		case 'Q' | WKC_CTRL: AskExitGame(); break;
-		case 'Q' | WKC_META: AskExitGame(); break; // this enables command + Q on mac
+		case 'Q' | WKC_CTRL: case 'Q' | WKC_META: AskExitGame(); break; // this enables command + Q on mac
 		case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
-		case '0' | WKC_ALT:
-		case '1' | WKC_ALT:
-		case '2' | WKC_ALT:
+#if defined(_DEBUG)
+		case '0' | WKC_ALT: /* Crash the game */
+			*(byte*)0 = 0;
+			break;
+		case '1' | WKC_ALT: /* Gimme money */
+			/* Server can not cheat in advertise mode either! */
+		#ifdef ENABLE_NETWORK
+			if (!_networking || !_network_server || !_network_advertise)
+		#endif
+				DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
+			break;
+		case '2' | WKC_ALT: /* Update the coordinates of all station signs */
+			UpdateAllStationVirtCoord();
+			break;
 		case '3' | WKC_ALT:
 		case '4' | WKC_ALT:
-#if defined(_DEBUG)
-			DebugProc(e->keypress.keycode - ('0' | WKC_ALT));
-#endif
 			break;
+#endif
 
 		case 'X':
 			_display_opt ^= DO_TRANS_BUILDINGS;
@@ -2375,15 +2382,12 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			break;
 
 #ifdef ENABLE_NETWORK
-		case WKC_RETURN:
-		case 'T' | WKC_SHIFT:
-			if (_networking)
-				ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+		case WKC_RETURN: case 'T' | WKC_SHIFT:
+			if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
 			break;
-#endif /* ENABLE_NETWORK */
+#endif
 
-		default:
-			return;
+		default: return;
 		}
 		e->keypress.cont = false;
 		break;
