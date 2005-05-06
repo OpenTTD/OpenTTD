@@ -955,7 +955,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			/* 2. We are selling the first engine, some special action might be required
 				* here, so take attention */
-			if (flags & DC_EXEC && v == first) {
+			if ((flags & DC_EXEC) && v == first) {
 				Vehicle *new_f = first->next;
 
 				/* 2.1 If the first wagon is sold, update the first-> pointers to NULL */
@@ -1043,7 +1043,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* 3. If it is still a valid train after selling, update its acceleration */
-			if (flags & DC_EXEC && first != NULL && first->subtype == TS_Front_Engine) UpdateTrainAcceleration(first);
+			if ((flags & DC_EXEC) && first != NULL && first->subtype == TS_Front_Engine) UpdateTrainAcceleration(first);
 		} break;
 	}
 	return cost;

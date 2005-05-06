@@ -9,6 +9,7 @@
 #endif
 
 typedef uint16 UnitID;   //! All unitnumber stuff is of this type (or anyway, should be)
+typedef uint16 EngineID; //! All enginenumbers should be of this type
 
 // Prices and also the fractional part.
 VARDEF Prices _price;

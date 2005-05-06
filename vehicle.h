@@ -26,9 +26,9 @@ enum VehStatus {
 
 // 1 and 3 do not appear to be used
 typedef enum TrainSubtypes {
-	TS_Front_Engine = 0,
-	TS_Not_First = 2,
-	TS_Free_Car = 4,
+	TS_Front_Engine = 0, // Leading engine of a train
+	TS_Not_First = 2,    // Wagon or additional engine
+	TS_Free_Car = 4,     // First in a wagon chain (in depot)
 } TrainSubtype;
 
 /* Effect vehicle types */
@@ -161,7 +161,7 @@ struct Vehicle {
 	byte z_height;		// z-height of vehicle sprite
 	int8 x_offs;			// x offset for vehicle sprite
 	int8 y_offs;			// y offset for vehicle sprite
-	uint16 engine_type;
+	EngineID engine_type;
 
 	// for randomized variational spritegroups
 	// bitmask used to resolve them; parts of it get reseeded when triggers
@@ -366,7 +366,7 @@ static inline uint16 GetVehiclePoolSize(void)
 /**
  * Check if a Vehicle really exists.
  */
-static inline bool IsValidVehicle(Vehicle* v)
+static inline bool IsValidVehicle(const Vehicle *v)
 {
 	return v->type != 0;
 }
