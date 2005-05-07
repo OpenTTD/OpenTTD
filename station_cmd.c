@@ -2650,12 +2650,16 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str,old_str;
 	Station *st;
 
+	if (!IsStationIndex(p1)) return CMD_ERROR;
+	st = GetStation(p1);
+
+	if (!IsValidStation(st) || !CheckOwnership(st->owner)) return CMD_ERROR;
+
 	str = AllocateNameUnique((const char*)_decode_parameters, 6);
 	if (str == 0)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		st = GetStation(p1);
 		old_str = st->string_id;
 		st->string_id = str;
 		UpdateStationVirtCoord(st);
