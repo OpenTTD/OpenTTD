@@ -177,6 +177,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildSingleSignal,					/* 8  */
 	CmdRemoveSingleSignal,				/* 9  */
 	CmdTerraformLand,							/* 10 */
+	/***************************************************/
 	CmdPurchaseLandArea,					/* 11 */
 	CmdSellLandArea,							/* 12 */
 	CmdBuildTunnel,								/* 13 */
@@ -331,6 +332,9 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	int32 res;
 	CommandProc *proc;
 
+	/* Do not even think about executing out-of-bounds tile-commands */
+	if (TILE_FROM_XY(x,y) > MapSize()) return CMD_ERROR;
+
 	proc = _command_proc_table[procc];
 
 	if (_docommand_recursive == 0) {
@@ -398,6 +402,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	int x = TileX(tile) * 16;
 	int y = TileY(tile) * 16;
+
+	/* Do not even think about executing out-of-bounds tile-commands */
+	if (tile > MapSize()) return false;
 
 	assert(_docommand_recursive == 0);
 
