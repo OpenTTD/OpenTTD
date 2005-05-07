@@ -1329,6 +1329,11 @@ typedef struct TrainFindDepotData {
 	uint best_length;
 	uint tile;
 	byte owner;
+	/**
+	 * true if reversing is necesarry for the train to get to this depot This
+	 * value is unused when new depot finding and NPF are both disabled
+	 */
+	bool reverse;
 } TrainFindDepotData;
 
 static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
@@ -1365,6 +1370,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 
 	tfdd.owner = v->owner;
 	tfdd.best_length = (uint)-1;
+	tfdd.reverse = false;
 
 	if (IsTileDepotType(tile, TRANSPORT_RAIL)){
 		tfdd.tile = tile;
@@ -1376,17 +1382,22 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
+		Vehicle* last = GetLastVehicleInChain(v);
 		byte trackdir = GetVehicleTrackdir(v);
+		byte trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(last));
+
 		assert (trackdir != 0xFF);
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_RAIL, v->owner);
+		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
-			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
 			/* Our caller expects a number of tiles, so we just approximate that
 			* number by this. It might not be completely what we want, but it will
 			* work for now :-) We can possibly change this when the old pathfinder
 			* is removed. */
+			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
+			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE))
+				tfdd.reverse = true;
 		}
 	} else if (!_patches.new_depot_finding) {
 		// search in all directions
@@ -1398,6 +1409,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
 		NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
 		if (tfdd.best_length == (uint)-1){
+			tfdd.reverse = true;
 			// search in backwards direction
 			i = (v->direction^4) >> 1;
 			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
@@ -1447,6 +1459,9 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
 		v->current_order.station = GetDepotByTile(tfdd.tile)->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		/* If there is no depot in front, reverse automatically */
+		if (tfdd.reverse)
+			DoCommandByTile(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 	}
 
 	return 0;
@@ -1868,7 +1883,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		NPFFillWithOrderData(&fstd, v);
 
 		trackdir = GetVehicleTrackdir(v);
-		trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(v));
+		trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(last));
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 

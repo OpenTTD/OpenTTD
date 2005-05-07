@@ -212,6 +212,7 @@ typedef struct Patches {
 	uint32 npf_rail_station_penalty; /* The penalty for station tiles */
 	uint32 npf_rail_slope_penalty; /* The penalty for sloping upwards */
 	uint32 npf_rail_curve_penalty; /* The penalty for curves */
+	uint32 npf_rail_depot_reverse_penalty; /* The penalty for reversing in depots */
 	uint32 npf_buoy_penalty; /* The penalty for going over (through) a buoy */
 	uint32 npf_water_curve_penalty; /* The penalty for curves */
 
@@ -452,7 +453,8 @@ VARDEF byte _vehicle_design_names;
 /* tunnelbridge */
 #define MAX_BRIDGES 13
 
-/* For new pathfinding. Define here so it is globally available */
+/* For new pathfinding. Define here so it is globally available without having
+ * to include npf.h */
 #define NPF_TILE_LENGTH 100
 
 /* Autoreplace vehicle stuff*/

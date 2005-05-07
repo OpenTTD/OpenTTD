@@ -97,7 +97,7 @@ typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
 typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 
 // For internal use, see aystar.c
-typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode* start_node);
+typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode* start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
 typedef int AyStar_Loop(AyStar *aystar);
 typedef int AyStar_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
@@ -161,7 +161,7 @@ struct AyStar {
 };
 
 
-void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node);
+void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 int AyStarMain_Main(AyStar *aystar);
 int AyStarMain_Loop(AyStar *aystar);
 int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);

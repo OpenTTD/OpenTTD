@@ -300,6 +300,7 @@ int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	TileIndex tile = current->tile;
 	int32 cost = 0;
+
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
@@ -335,6 +336,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	TileIndex tile = current->tile;
 	byte trackdir = current->direction;
 	int32 cost = 0;
+	/* HACK: We create a OpenListNode manualy, so we can call EndNodeCheck */
 	OpenListNode new_node;
 
 	/* Determine base length */
@@ -408,6 +410,13 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	//TODO, with realistic acceleration, also the amount of straight track between
 	//      curves should be taken into account, as this affects the speed limit.
 
+	/* Check for reverse in depot */
+	if (IsTileDepotType(tile, TRANSPORT_RAIL) && !as->EndNodeCheck(as, &new_node)==AYSTAR_FOUND_END_NODE)
+		/* Penalise any depot tile that is not the last tile in the path. This
+		 * _should_ penalise every occurence of reversing in a depot (and only
+		 * that) */
+		cost += _patches.npf_rail_depot_reverse_penalty;
+
 	/* Check for occupied track */
 	//TODO
 
@@ -419,6 +428,9 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 /* Will find any depot */
 int32 NPFFindDepot(AyStar* as, OpenListNode *current) {
 	TileIndex tile = current->path.node.tile;
+
+	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
+	 * since checking the cache not that much faster than the actual check */
 	if (IsTileDepotType(tile, as->user_data[NPF_TYPE]))
 		return AYSTAR_FOUND_END_NODE;
 	else
@@ -544,8 +556,11 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 			else /* Train or road depot. Direction is stored the same for both, in map5 */
 				exitdir = GetDepotDirection(src_tile, type);
 
-			/* Let's see if were headed the right way */
-			if (src_trackdir == _dir_to_diag_trackdir[_reverse_dir[exitdir]])
+			/* Let's see if were headed the right way into the depot, and reverse
+			 * otherwise (only for trains, since only with trains you can
+			 * (sometimes) reach tiles after reversing that you couldn't reach
+			 * without reversing. */
+			if (src_trackdir == _dir_to_diag_trackdir[_reverse_dir[exitdir]] && type == TRANSPORT_RAIL)
 				/* We are headed inwards. We can only reverse here, so we'll not
 				 * consider this direction, but jump ahead to the reverse direction.
 				 * It would be nicer to return one neighbour here (the reverse
@@ -647,13 +662,14 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 /*
  * Plan a route to the specified target (which is checked by target_proc),
  * from start1 and if not NULL, from start2 as well. The type of transport we
- * are checking is in type.
+ * are checking is in type. reverse_penalty is applied to all routes that
+ * originate from the second start node.
  * When we are looking for one specific target (optionally multiple tiles), we
  * should use a good heuristic to perform aystar search. When we search for
  * multiple targets that are spread around, we should perform a breadth first
  * search by specifiying CalcZero as our heuristic.
  */
-NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, Owner owner) {
+NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, Owner owner, uint reverse_penalty) {
 	int r;
 	NPFFoundTargetData result;
 
@@ -674,12 +690,12 @@ NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFF
 	/* Initialize Start Node(s) */
 	start1->user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 	start1->user_data[NPF_NODE_FLAGS] = 0;
-	_npf_aystar.addstart(&_npf_aystar, start1);
+	_npf_aystar.addstart(&_npf_aystar, start1, 0);
 	if (start2) {
 		start2->user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 		start2->user_data[NPF_NODE_FLAGS] = 0;
 		NPFSetFlag(start2, NPF_FLAG_REVERSE, true);
-		_npf_aystar.addstart(&_npf_aystar, start2);
+		_npf_aystar.addstart(&_npf_aystar, start2, reverse_penalty);
 	}
 
 	/* Initialize result */
@@ -717,38 +733,40 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1
 
 	start1.tile = tile1;
 	start2.tile = tile2;
+	/* We set this in case the target is also the start tile, we will just
+	 * return a not found then */
+	start1.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 	start1.direction = trackdir1;
 	start2.direction = trackdir2;
+	start2.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 
-	return NPFRouteInternal(&start1, &start2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner);
+	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner, 0);
 }
 
 NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, byte trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner) {
-	AyStarNode start;
-
-	assert(tile != 0);
-
-	start.tile = tile;
-	start.direction = trackdir;
-	/* We set this in case the target is also the start tile, we will just
-	 * return a not found then */
-	start.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
-
-	return NPFRouteInternal(&start, NULL, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner);
+	return NPFRouteToStationOrTileTwoWay(tile, trackdir, INVALID_TILE, 0, target, type, owner);
 }
 
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type, Owner owner) {
-	AyStarNode start;
+NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, TransportType type, Owner owner, uint reverse_penalty) {
+	AyStarNode start1;
+	AyStarNode start2;
 
-	start.tile = tile;
-	start.direction = trackdir;
+	start1.tile = tile1;
+	start2.tile = tile2;
 	/* We set this in case the target is also the start tile, we will just
 	 * return a not found then */
-	start.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
+	start1.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
+	start1.direction = trackdir1;
+	start2.direction = trackdir2;
+	start2.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start, NULL, NULL, NPFFindDepot, NPFCalcZero, type, owner);
+	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), NULL, NPFFindDepot, NPFCalcZero, type, owner, reverse_penalty);
+}
+
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type, Owner owner) {
+	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, INVALID_TILE, 0, type, owner, 0);
 }
 
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type, Owner owner) {
@@ -826,7 +844,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, Tran
 		 * return a not found then */
 		start.user_data[NPF_TRACKDIR_CHOICE] = 0xff;
 		start.user_data[NPF_NODE_FLAGS] = 0;
-		_npf_aystar.addstart(&_npf_aystar, &start);
+		_npf_aystar.addstart(&_npf_aystar, &start, 0);
 
 		/* Initialize result */
 		result.best_bird_dist = (uint)-1;

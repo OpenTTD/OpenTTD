@@ -966,6 +966,10 @@ const SettingDesc patch_settings[] = {
 	 * sure that it has a minimal impact on the pathfinding, only when two
 	 * paths have equal length it will make a difference */
 	{"npf_rail_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_rail_curve_penalty,       NULL},
+	/* Ths penalty is applied when a vehicle reverses inside a depot (doesn't
+	 * apply to ships, as they can just come out the other end). XXX: Is this a
+	 * good value? */
+	{"npf_rail_depot_reverse_penalty", SDT_UINT32, (void*)(NPF_TILE_LENGTH * 50), &_patches.npf_rail_depot_reverse_penalty, NULL},
 	{"npf_buoy_penalty",            SDT_UINT32, (void*)(2 * NPF_TILE_LENGTH),   &_patches.npf_buoy_penalty,             NULL},
 	/* This penalty is applied when a ship makes a turn. It is bigger than the
 	 * rail curve penalty, since ships (realisticly) have more trouble with

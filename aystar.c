@@ -56,7 +56,7 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 
 // Adds a node to the OpenList
 //  It makes a copy of node, and puts the pointer of parent in the struct
-static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode *node, int f, int g, int userdata)
+static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode *node, int f, int g)
 {
 	// Add a new Node to the OpenList
 	OpenListNode* new_node = malloc(sizeof(OpenListNode));
@@ -120,7 +120,7 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 		aystar->OpenListQueue.push(&aystar->OpenListQueue, check, new_f);
 	} else {
 		// A new node, add him to the OpenList
-		AyStarMain_OpenList_Add(aystar, closedlist_parent, current, new_f, new_g, 0);
+		AyStarMain_OpenList_Add(aystar, closedlist_parent, current, new_f, new_g);
 	}
 
 	return AYSTAR_DONE;
@@ -248,13 +248,14 @@ int AyStarMain_Main(AyStar *aystar) {
  * if wanted. You should make sure that clear() is called before adding nodes
  * if the AyStar has been used before (though the normal main loop calls
  * clear() automatically when the algorithm finishes
+ * g is the cost for starting with this node.
  */
-void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node) {
+void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g) {
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
-	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, 0, 0);
+	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, g);
 }
 
 void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets) {

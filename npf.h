@@ -14,6 +14,17 @@ enum {
 	NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1
 };
 
+enum {
+	/** This penalty is the equivalent of "inifite", which means that paths that
+	 * get this penalty will be chosen, but only if there is no other route
+	 * without it. Be careful with not applying this penalty to often, or the
+	 * total path cost might overflow..
+	 * For now, this is just a Very Big Penalty, we might actually implement
+	 * this in a nicer way :-)
+	 */
+	NPF_INFINITE_PENALTY = 1000 * NPF_TILE_LENGTH
+};
+
 typedef struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.targetdata */
 	TileIndex dest_coords; /* An indication of where the station is, for heuristic purposes, or the target tile */
 	int station_index; /* station index we're heading for, or -1 when we're heading for a tile */
@@ -62,8 +73,15 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, byte trackdir1
 /* Will search a route to the closest depot. */
 
 /* Search using breadth first. Good for little track choice and inaccurate
- * heuristic, such as railway/road */
+ * heuristic, such as railway/road.*/
 NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, byte trackdir, TransportType type, Owner owner);
+/* Same as above but with two start nodes, the second being the reverse. Call
+ * NPFGetBit(result.node, NPF_FLAG_REVERSE) to see from which node the path
+ * orginated. All pathfs from the second node will have the given
+ * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
+ * tile).
+ */
+NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, byte trackdir1, TileIndex tile2, byte trackdir2, TransportType type, Owner owner, uint reverse_penalty);
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
  * of choices and accurate heuristics, such as water. */
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, byte trackdir, TransportType type, Owner owner);
