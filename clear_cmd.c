@@ -210,19 +210,22 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 	return true;
 }
 
-/* Terraform land
- * p1 - corners
- * p2 - direction
+/** Terraform land
+ * @param x,y coordinates to terraform
+ * @param p1 corners to terraform. Human user only north, towns more
+ * @param p2 direction; eg up or down
  */
-
 int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TerraformerState ts;
-	uint tile;
+	TileIndex tile;
 	int direction;
 
 	TerraformerHeightMod modheight_data[576];
 	TileIndex tile_table_data[625];
+
+	/* A normal user can only terraform one corner, the northern one; p1 & 8 */
+	if (_current_player < MAX_PLAYERS && p1 != 8) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -267,7 +270,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		int count;
 		TileIndex *ti = ts.tile_table;
 
-		for(count = ts.tile_table_count; count != 0; count--, ti++) {
+		for (count = ts.tile_table_count; count != 0; count--, ti++) {
 			uint z, t;
 			uint tile = *ti;
 
@@ -289,7 +292,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			int count;
 			TileIndex *ti = ts.tile_table;
-			for(count = ts.tile_table_count; count != 0; count--, ti++) {
+			for (count = ts.tile_table_count; count != 0; count--, ti++) {
 				DoCommandByTile(*ti, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 		}
@@ -301,7 +304,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			uint til;
 
 			mod = ts.modheight;
-			for(count = ts.modheight_count; count != 0; count--, mod++) {
+			for (count = ts.modheight_count; count != 0; count--, mod++) {
 				til = mod->tile;
 
 				SetTileHeight(til, mod->height);
@@ -313,7 +316,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			int count;
 			TileIndex *ti = ts.tile_table;
-			for(count = ts.tile_table_count; count != 0; count--, ti++) {
+			for (count = ts.tile_table_count; count != 0; count--, ti++) {
 				MarkTileDirtyByTile(*ti);
 			}
 		}

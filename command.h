@@ -191,4 +191,6 @@ int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint p
 bool IsValidCommand(uint cmd);
 int32 GetAvailableMoneyForCommand(void);
 
+/* Validate functions for rail building */
+static inline bool ValParamRailtype(uint32 rail) { return (rail > GetPlayer(_current_player)->max_railtype) ? false : true;}
 #endif /* COMMAND_H */

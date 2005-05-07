@@ -161,11 +161,12 @@ bool CheckBridge_Stuff(byte bridge_type, int bridge_len)
 	return true;
 }
 
-/* Build a Bridge
- * x,y - end tile coord
- * p1  - packed start tile coords (~ dx)
- * p2&0xFF - bridge type (hi bh)
- * p2>>8 - rail type. &0x80 means road bridge.
+/** Build a Bridge
+ * @param x,y end tile coord
+ * @param p1 packed start tile coords (~ dx)
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0- 7) - bridge type (hi bh)
+ * - p2 = (bit 8-..) - rail type. bit15 ((x>>8)&0x80) means road bridge.
  */
 int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -185,11 +186,15 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	bridge_type = p2 & 0xFF;
 	railtype = (byte)(p2 >> 8);
 
+	/* Out of bounds bridge */
+	if (bridge_type >= MAX_BRIDGES) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+
 	// type of bridge
-	if (railtype & 0x80) {
+	if (HASBIT(railtype, 7)) { // bit 15 of original p2 param
 		railtype = 0;
 		rail_or_road = 2;
 	} else {
+		if (!ValParamRailtype(railtype)) return CMD_ERROR;
 		rail_or_road = 0;
 	}
 
@@ -197,9 +202,6 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	sy = TileY(p1) * 16;
 
 	direction = 0;
-
-	if (bridge_type >= MAX_BRIDGES) // out of bounds bridge
-		return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
@@ -249,7 +251,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the start landscape */
 
-	if ((ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
+	if (CmdFailed(ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)))
 		return CMD_ERROR;
 	cost = ret;
 
@@ -261,7 +263,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the end landscape */
 
-	if ((ret=DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
+	if (CmdFailed(ret = DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)))
 		return CMD_ERROR;
 	cost += ret;
 
@@ -338,7 +340,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 not_valid_below:;
 			/* try and clear the middle landscape */
-			if ((ret=DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)) == CMD_ERROR)
+			if (CmdFailed(ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)))
 				return CMD_ERROR;
 			cost += ret;
 			m5 = 0xC0;

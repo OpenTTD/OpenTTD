@@ -273,11 +273,11 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
 	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);
 }
 
-/* Clear a piece of landscape
- * p1 = 0,
- * p2 = 0
+/** Clear a piece of landscape
+ * @param x,y coordinates of clearance
+ * @param p1 unused
+ * @param p2 unused
  */
-
 int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x, y);

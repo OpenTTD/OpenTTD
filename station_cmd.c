@@ -917,22 +917,23 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, StationS
 	}
 }
 
-/* build railroad station
- * p1 & 1 - orientation
- * (p1 >> 8) & 0xFF - numtracks
- * (p1 >> 16) & 0xFF - platform length
- * p2 & 0xF  - railtype
- * p2 & 0x10 - set for custom station
- * p2 >> 8   - custom station id
+/** Build railroad station
+ * @param x_org,y_org starting position of station dragging/placement
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0)    - orientation (p1 & 1)
+ * - p1 = (bit  8-15) - number of tracks (p1 >> 8) & 0xFF)
+ * - p1 = (bit 16-23) - platform length (p1 >> 16) & 0xFF)
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0- 3) - railtype (p2 & 0xF)
+ * - p2 = (bit  4)    - set for custom station (p2 & 0x10)
+ * - p2 = (bit  8-..) - custom station id (p2 >> 8)
  */
-
-int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	/* unpack params */
-	int w_org,h_org;
-	uint tile_org;
-	int32 cost, ret;
 	Station *st;
+	TileIndex tile_org;
+	int w_org, h_org;
+	int32 cost, ret;
 	int est;
 	int plat_len, numtracks;
 	int direction;
@@ -940,25 +941,23 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile_org = TILE_FROM_XY(x_org,y_org);
+	tile_org = TILE_FROM_XY(x, y);
 
 	/* Does the authority allow this? */
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org))
-		return CMD_ERROR;
+	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
+	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
 
-	{
-		/* unpack parameters */
-		direction = p1 & 1;
-		plat_len = (p1 >> 16) & 0xFF;
-		numtracks = (p1 >> 8) & 0xFF;
-		/* w = length, h = num_tracks */
-		if (direction) {
-			h_org = plat_len;
-			w_org = numtracks;
-		} else {
-			w_org = plat_len;
-			h_org = numtracks;
-		}
+	/* unpack parameters */
+	direction = p1 & 1;
+	numtracks = (p1 >> 8) & 0xFF;
+	plat_len = (p1 >> 16) & 0xFF;
+	/* w = length, h = num_tracks */
+	if (direction) {
+		h_org = plat_len;
+		w_org = numtracks;
+	} else {
+		w_org = plat_len;
+		h_org = numtracks;
 	}
 
 	// these values are those that will be stored in train_tile and station_platforms
@@ -970,7 +969,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 	est = -1;
 	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
-	if ((ret=CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << direction, _patches.nonuniform_stations ? &est : NULL)) == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << direction, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
 	cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
 	// Make sure there are no similar stations around us.
@@ -1026,7 +1025,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
 		//  (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags)
-		if (CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << direction, _patches.nonuniform_stations ? &est : NULL) == CMD_ERROR) return CMD_ERROR;
+		if (CmdFailed(CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << direction, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
 
 		st->train_tile = finalvalues[0];
 		if (!st->facilities) st->xy = finalvalues[0];
@@ -1045,7 +1044,7 @@ int32 CmdBuildRailroadStation(int x_org, int y_org, uint32 flags, uint32 p1, uin
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
 		do {
-			int tile = tile_org;
+			TileIndex tile = tile_org;
 			int w = plat_len;
 			do {
 
