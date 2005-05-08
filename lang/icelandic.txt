@@ -1980,9 +1980,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Aðeins á enda b
 STR_6836_OFF                                                    :Ekki á
 STR_6837_ON                                                     :Á
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Sýna topplistann
-STR_6839_PERMISSIVE                                             :Eftirgefinn
-STR_683A_TOLERANT                                               :Umburðarlyndur
-STR_683B_HOSTILE                                                :Fjandsamlegur
+STR_6839_PERMISSIVE                                             :Eftirgefin
+STR_683A_TOLERANT                                               :Umburðarlynd
+STR_683B_HOSTILE                                                :Fjandsamleg
 
 ##id 0x7000
 STR_7000                                                        :

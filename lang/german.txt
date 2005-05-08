@@ -147,36 +147,36 @@ STR_008C_OF_PLASTIC                                             :{VOLUME}  Plast
 STR_008D_FIZZY_DRINKS                                           :{COMMA16} Limonade
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
-STR_0090_CL                                                     :{TINYFONT}CL
-STR_0091_ML                                                     :{TINYFONT}ML
-STR_0092_OL                                                     :{TINYFONT}OL
-STR_0093_LV                                                     :{TINYFONT}LV
-STR_0094_GD                                                     :{TINYFONT}GD
-STR_0095_GR                                                     :{TINYFONT}GR
-STR_0096_WD                                                     :{TINYFONT}WD
-STR_0097_OR                                                     :{TINYFONT}OR
+STR_0090_CL                                                     :{TINYFONT}KL
+STR_0091_ML                                                     :{TINYFONT}PO
+STR_0092_OL                                                     :{TINYFONT}ÖL
+STR_0093_LV                                                     :{TINYFONT}VI
+STR_0094_GD                                                     :{TINYFONT}WK
+STR_0095_GR                                                     :{TINYFONT}GT
+STR_0096_WD                                                     :{TINYFONT}HO
+STR_0097_OR                                                     :{TINYFONT}EE
 STR_0098_ST                                                     :{TINYFONT}ST
-STR_0099_VL                                                     :{TINYFONT}VL
-STR_009A_CO                                                     :{TINYFONT}CO
-STR_009B_MZ                                                     :{TINYFONT}MZ
-STR_009C_FT                                                     :{TINYFONT}FT
-STR_009D_DM                                                     :{TINYFONT}DM
-STR_009E_FD                                                     :{TINYFONT}FD
-STR_009F_PR                                                     :{TINYFONT}PR
+STR_0099_VL                                                     :{TINYFONT}WE
+STR_009A_CO                                                     :{TINYFONT}KU
+STR_009B_MZ                                                     :{TINYFONT}MA
+STR_009C_FT                                                     :{TINYFONT}FR
+STR_009D_DM                                                     :{TINYFONT}DI
+STR_009E_FD                                                     :{TINYFONT}NM
+STR_009F_PR                                                     :{TINYFONT}PA
 STR_00A0_GD                                                     :{TINYFONT}GD
-STR_00A1_WR                                                     :{TINYFONT}WR
-STR_00A2_WH                                                     :{TINYFONT}WH
-STR_00A3_RB                                                     :{TINYFONT}RB
-STR_00A4_SG                                                     :{TINYFONT}SG
-STR_00A5_TY                                                     :{TINYFONT}TY
-STR_00A6_SW                                                     :{TINYFONT}SW
-STR_00A7_CL                                                     :{TINYFONT}CL
-STR_00A8_CF                                                     :{TINYFONT}CF
-STR_00A9_BU                                                     :{TINYFONT}BU
-STR_00AA_TF                                                     :{TINYFONT}TF
+STR_00A1_WR                                                     :{TINYFONT}WA
+STR_00A2_WH                                                     :{TINYFONT}WZ
+STR_00A3_RB                                                     :{TINYFONT}KA
+STR_00A4_SG                                                     :{TINYFONT}ZU
+STR_00A5_TY                                                     :{TINYFONT}SP
+STR_00A6_SW                                                     :{TINYFONT}BO
+STR_00A7_CL                                                     :{TINYFONT}CO
+STR_00A8_CF                                                     :{TINYFONT}ZW
+STR_00A9_BU                                                     :{TINYFONT}LB
+STR_00AA_TF                                                     :{TINYFONT}KM
 STR_00AB_BA                                                     :{TINYFONT}BA
 STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}FZ
+STR_00AD_FZ                                                     :{TINYFONT}LI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
@@ -424,7 +424,7 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fenster schließen
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben um das Fenster zu bewegen
-STR_STICKY_BUTTON                                               :{BLACK}Diese Fenster markieren, damit es nicht durch die
+STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Land absenken
@@ -548,7 +548,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Programm
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Programm 'Modern' wählen
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Programm 'Individuell 1' (benutzerdefiniert) wählen
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Programm 'Individuell 2' (benutzerdefiniert) wählen
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Lösche laufendes Programm  (nur für Individuell 2 und Individuell 2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Lösche laufendes Programm  (nur für Individuell 1 und Individuell 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Musikeinstellungen speichern
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Individuell 1 und Individuell 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Schalte Programmauswahl an/aus
@@ -611,7 +611,7 @@ STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt er
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrie errichten
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Straße bauen
 STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Vegetation und andere Objekte
-STR_0233_TOWN_GENERATION                                        :{WHITE}Stadt erzeugen
+STR_0233_TOWN_GENERATION                                        :{WHITE}Stadt errichten
 STR_0234_NEW_TOWN                                               :{BLACK}Neue Stadt
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Neue Stadt errichten
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kann hier keine Stadt errichten...
@@ -693,7 +693,7 @@ STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Limonade
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Luftblasengenerator errichten
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Karamellgrube errichten
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zuckerbergwerk errichten
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kann hier nicht {STRING} bauen...
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kann {STRING} hier nicht bauen...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...erst muss eine Stadt errichtet werden
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...pro Stadt nur einmal erlaubt
 STR_0288_PLANT_TREES                                            :{BLACK}Bäume pflanzen
@@ -1013,13 +1013,13 @@ STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Lange D
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zeige Signale auf der selben Seite wie den Straßenverkehr: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibles "Nonstop"-Verhalten: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeugwarteschlange (mit Mengenwirkung): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeugwarteschlange (mit Überlagerung): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Karte scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Neues Wegfinden für Depots: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Neuen Algorithmus für die Züge zur Wegfindung benutzen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue globale Wegfindung (NWF, ersetzt NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Neuen Algorithmus zur Wegfindung nur für Züge benutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue globale Wegfindung für alle Fahrzeuge: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
@@ -1158,7 +1158,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Kann hie
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Schleusen bauen
 STR_LANDINFO_LOCK                                               :Schleuse
 
-STR_BUOY_IS_IN_USE                                              :{WHITE}... Boje wird gebraucht!
+STR_BUOY_IS_IN_USE                                              :{WHITE}... Boje wird genutzt!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinaten: {LTBLUE}{NUMU16}x{NUMU16} ({STRING})
 
@@ -1230,7 +1230,7 @@ STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Einen ei
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Name des Spiels
-STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprache, Server version, etc.
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprache, Server-Version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ein Spiel der Liste durch Anklicken wählen
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Server suchen
@@ -1240,14 +1240,14 @@ STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Fügt ein
 STR_NETWORK_ENTER_IP                                            :{BLACK}IP Adresse des Servers eingeben
 
 STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
-STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / Clients max.
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienten
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienten online / Clienten max.
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienten:  {WHITE}{COMMA8} / {COMMA8}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprache:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Mapgröße:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_TILESET                                             :{SILVER}Landschaft:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartengröße:  {WHITE}{COMMA16}x{COMMA16}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server Adresse:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
@@ -1268,7 +1268,7 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Karte auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welche Karte möchtest du spielen?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Anzahl an Clients:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Anzahl an Clienten:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Wählt die max. Anzahl an Clienten aus. Nicht alle Slots müssen belegt werden.
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
@@ -1366,14 +1366,14 @@ STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Ihre Ve
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Falsches Passwort.
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Der Server ist voll.
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Du bist von diesem Server verbannt
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Sie wurden vom Server gekickt.
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Du wurdest vom Server gekickt.
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheating ist auf diesem Server nicht erlaubt
 
 STR_NETWORK_ERR_LEFT                                            :hat das Spiel verlassen.
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :Allgemeiner Fehler
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :Synchronisationsfehler
-STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Map konnte nicht geladen werden.
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :Karte konnte nicht geladen werden.
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Verbindung verloren
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :Protokollfehler
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nicht authorisiert
@@ -1636,7 +1636,7 @@ STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt a
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Stadtgebiet
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Busbahnhöfe
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele LKW-Ladeplätze
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele Lkw-Ladeplätze
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Stationen/Ladeplätze liegen zu dicht beisammen
 STR_300A_0                                                      :{WHITE}{STATION} {STRINL 0x30D1}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Bahnhof muss erst abgerissen werden

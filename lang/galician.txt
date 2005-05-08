@@ -279,7 +279,7 @@ STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Estación de Ferrocarril
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Bahía de Carga de Camións
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Estación de Autobús
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aerporto/"Heliporto"
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aerporto/Heliporto
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Peirao
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Terra Quebrada
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Terra con Herba
@@ -430,6 +430,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoler 
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar unha esquina de terreo
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar unha esquina de terreo
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de desprazamento - despraza a lista hacia arriba/abaixo
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barra de desprazamento - despraza a lista a esquerda/dereita
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Amosa-los contornos do terreo no mapa
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Amosa-los vehículos no mapa
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Amosa-las industrias no mapa
@@ -571,6 +572,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos v
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambios na aceptación de carga
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidios
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Información xeral
+STR_MESSAGES_ALL                                                :{YELLOW}Configuración para tódolos tipos de mesaxes (off/sumario/completo)
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...Demasiado lonxe do destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Mellores compañías que chegaron ó {NUMU16}{}(Nivel {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Táboa da Liga de Compañías en {NUMU16}
@@ -2399,8 +2401,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Face-lo servici
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas o Depósito de Trens de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Face-lo servicio sen paradas no Depósito de Trens de {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}En camiño ó Depósito de Trens de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}En camiño ó Depósito de Trens de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}En camiño ó Depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}En camiño ó Depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orde Inválida)
 
@@ -2527,8 +2529,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Non se pode vende-lo vehículo de estrada...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se pode parar/arrincar o vehículo de estrada...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}O vehículo de estrada {COMMA16} está a esperar no depósito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Diríxese o depósito de estrada de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Diríxese o depósito de estrada de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Diríxese o depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Diríxese o depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se pode atopar unha ruta o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
@@ -2717,6 +2719,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}¡Factoría destruida en circunstancias sospeitosas cerca de {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}¡Aterrizaxe dun 'OVNI cerca de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}¡Afundimento dunha Mina de Carbón deixa un rastro de destrucción cerca de {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}¡Inundacións!{}¡Hay polo menos {COMMA16} desaparecidos, presuntamente mortos tras unha grande inundación!
 
 STR_BRIBE_FAILED                                                :{WHITE}O tento de suborno foi
 STR_BRIBE_FAILED_2                                              :{WHITE}descuberto por un investigador rexional.
@@ -2764,6 +2767,7 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Cambiar a Euro: {ORANGE}{INT32}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Camiar a Euro: {ORANGE}nunca
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia-lo parámetro de moeda personalizada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_LORRY                                                       :{BLACK}{LORRY}
@@ -2785,8 +2789,10 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplaz
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Reemplazar Vehículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai vehículos seleccionados
+STR_REPLACE_HELP                                                :{BLACK}Permíteche reemplazar untipo de máquina cunha doutro tipo, cando trens do tipo orixinal entran nun depósito
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA16} Sinais
 
 ############ Lists rail types
 
