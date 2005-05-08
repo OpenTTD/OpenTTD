@@ -50,7 +50,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
 		if (GetTileType(tile) != MP_WATER) {
 			SetMapExtraBits(tile, (_ctrl_pressed) ? 0 : 1);
-			DoClearSquare(tile);
+			DoCommandP(tile, 0, 0, NULL, CMD_LANDSCAPE_CLEAR);
 			MarkTileDirtyByTile(tile);
 		}
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
