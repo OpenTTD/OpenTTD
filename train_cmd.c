@@ -935,6 +935,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, first->index);
 		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
+		RebuildVehicleLists();
 	}
 
 	switch (p2) {
