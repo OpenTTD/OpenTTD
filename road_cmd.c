@@ -124,8 +124,10 @@ uint GetRoadBitsByTile(TileIndex tile)
 	return (byte)(r | (r >> 8));
 }
 
-/* Delete a piece of road
- * p1 = piece type
+/** Delete a piece of road.
+ * @param x,y tile coordinates for road construction
+ * @param p1 road piece flags
+ * @param p2 unused
  */
 int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -137,12 +139,15 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile;
 	byte owner;
 	Town *t;
-	/*	true if the roadpiece was always removeable,
-			false if it was a center piece. Affects town ratings drop
-	*/
+	/* true if the roadpiece was always removeable,
+	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
+	byte pieces = (byte)p1;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) */
+	if (pieces >> 4) return CMD_ERROR;
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
@@ -169,10 +174,9 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	{
 		bool b;
 		_road_special_gettrackstatus = true;
-		b = CheckAllowRemoveRoad(tile, p1, &edge_road);
+		b = CheckAllowRemoveRoad(tile, pieces, &edge_road);
 		_road_special_gettrackstatus = false;
-		if (!b)
-			return CMD_ERROR;
+		if (!b) return CMD_ERROR;
 	}
 
 	if (ti.type == MP_TUNNELBRIDGE) {
@@ -180,9 +184,9 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return CMD_ERROR;
 
 		if ((ti.map5 & 0xE9) == 0xE8) {
-			if (p1 & 10) goto return_error;
+			if (pieces & 10) goto return_error;
 		} else if ((ti.map5 & 0xE9) == 0xE9) {
-			if (p1 & 5) goto return_error;
+			if (pieces & 5) goto return_error;
 		} else
 			goto return_error;
 
@@ -202,7 +206,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		// XXX - change cascading ifs to switch when doing rewrite
 		if ((ti.map5 & 0xF0) == 0) { // normal road
-			uint c = p1, t2;
+			byte c = pieces, t2;
 
 			if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
 				c |= (c & 0xC) >> 2;
@@ -235,10 +239,10 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (!(ti.map5 & 8)) {
 				c = 2;
-				if (p1 & 5) goto return_error;
+				if (pieces & 5) goto return_error;
 			} else {
 				c = 1;
-				if (p1 & 10) goto return_error;
+				if (pieces & 10) goto return_error;
 			}
 
 			cost = _price.remove_road * 2;
@@ -340,30 +344,33 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 	return CMD_ERROR;
 }
 
-/* Build a piece of road
- * p1 = piece flags
- * p2 = town which is building the road
+/** Build a piece of road.
+ * @param x,y tile coordinates for road construction
+ * @param p1 road piece flags
+ * @param p2 the town that is building the road (0 if not applicable)
  */
-
 int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	int32 cost;
 	byte pieces = (byte)p1, existing = 0;
-	uint tile;
+	TileIndex tile;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
+	 * if a non-player is building the road */
+	if ((pieces >> 4) || (_current_player < MAX_PLAYERS && p2 != 0) || !IsTownIndex(p2)) return CMD_ERROR;
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
 
 	// allow building road under bridge
-	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (ti.type == MP_STREET) {
 		if (!(ti.map5 & 0xF0)) {
-			if ( ((pieces) & (byte)(ti.map5)) == (pieces))
+			if ( (pieces & (byte)(ti.map5)) == (pieces))
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			existing = ti.map5;
 		} else {
@@ -433,12 +440,12 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return cost;
 	} else {
 do_clear:;
-		if (DoCommandByTile(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
+		if (CmdFailed(DoCommandByTile(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 			return CMD_ERROR;
 	}
 
 	cost = CheckRoadSlope(ti.tileh, &pieces, existing);
-	if (cost == CMD_ERROR) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (CmdFailed(cost)) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	if (cost && (!_patches.build_on_slopes || (!_patches.ainew_active && _is_ai_player)))
 		return CMD_ERROR;
@@ -494,122 +501,129 @@ int32 DoConvertStreetRail(uint tile, uint totype, bool exec)
 }
 
 
-// Build a long piece of road.
-// x,y = end tile
-// p1 = start tile
-// p2&1 = start tile starts in the 2nd half
-// p2&2 = end tile starts in the 2nd half
-// p2&4 = direction (0 = along x, 1=along y)
+/** Build a long piece of road.
+ * @param x,y end tile of drag
+ * @param p1 start tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
+ * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
+ * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
+ */
 int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint start_tile, end_tile, tile;
-	int mode;
-	int32 cost,ret;
+	TileIndex start_tile, end_tile, tile;
+	int32 cost, ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
 	end_tile = TILE_FROM_XY(x, y);
 
-	if (start_tile > end_tile || (start_tile == end_tile && (p2&1))) {
-		uint t = start_tile; start_tile = end_tile; end_tile = t;
+	/* Only drag in X or Y direction dictated by the direction variable */
+	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
+	if (HASBIT(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
+
+	/* Swap start and ending tile, also the half-tile drag var (bit 0 and 1) */
+	if (start_tile > end_tile || (start_tile == end_tile && HASBIT(p2, 0))) {
+		TileIndex t = start_tile;
+		start_tile = end_tile;
+		end_tile = t;
 		p2 ^= IS_INT_INSIDE(p2&3, 1, 3) ? 3 : 0;
 	}
 
 	cost = 0;
 	tile = start_tile;
 	// Start tile is the small number.
-	for(;;) {
-		mode = (p2&4) ? 5 : 10;
+	for (;;) {
+		uint bits = HASBIT(p2, 2) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
+		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
+		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
-		if (tile == start_tile && (p2&1))
-			mode &= (4+2);
-		else if (tile == end_tile && !(p2&2))
-			mode &= (1+8);
-
-		ret = DoCommandByTile(tile, mode, 0, flags, CMD_BUILD_ROAD);
-		if (ret == CMD_ERROR) {
-			if (_error_message != STR_1007_ALREADY_BUILT)
-				return CMD_ERROR;
-		} else {
+		ret = DoCommandByTile(tile, bits, 0, flags, CMD_BUILD_ROAD);
+		if (CmdFailed(ret)) {
+			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
+		} else
 			cost += ret;
-		}
 
-		if (tile == end_tile)
-			break;
+		if (tile == end_tile) break;
 
-		tile += (p2&4)?TILE_XY(0,1):TILE_XY(1,0);
+		tile += HASBIT(p2, 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
 	}
 
-	// already built?
-	if (cost == 0)
-		return CMD_ERROR;
-
-	return cost;
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
-// Remove a long piece of road.
-// x,y = end tile
-// p1 = start tile
-// p2&1 = start tile starts in the 2nd half
-// p2&2 = end tile starts in the 2nd half
-// p2&4 = direction (0 = along x, 1=along y)
+/** Remove a long piece of road.
+ * @param x,y end tile of drag
+ * @param p1 start tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
+ * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
+ * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
+ */
 int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint start_tile, end_tile, tile;
-	int32 cost,ret;
+	TileIndex start_tile, end_tile, tile;
+	int32 cost, ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
 	end_tile = TILE_FROM_XY(x, y);
 
-	if (start_tile > end_tile || (start_tile == end_tile && (p2&1))) {
-		uint t = start_tile; start_tile = end_tile; end_tile = t;
+	/* Only drag in X or Y direction dictated by the direction variable */
+	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
+	if (HASBIT(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
+
+	/* Swap start and ending tile, also the half-tile drag var (bit 0 and 1) */
+	if (start_tile > end_tile || (start_tile == end_tile && HASBIT(p2, 0))) {
+		TileIndex t = start_tile;
+		start_tile = end_tile;
+		end_tile = t;
 		p2 ^= IS_INT_INSIDE(p2&3, 1, 3) ? 3 : 0;
 	}
 
 	cost = 0;
 	tile = start_tile;
 	// Start tile is the small number.
-	for(;;) {
-		uint bits = (p2 & 4) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
-		if (tile == end_tile && !(p2&2)) bits &= ROAD_NW | ROAD_NE;
-		if (tile == start_tile && (p2&1)) bits &= ROAD_SE | ROAD_SW;
+	for (;;) {
+		uint bits = HASBIT(p2, 2) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
+		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
+		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
 		// try to remove the halves.
 		if (bits) {
 			ret = DoCommandByTile(tile, bits, 0, flags, CMD_REMOVE_ROAD);
-			if (ret != CMD_ERROR)
-				cost += ret;
+			if (!CmdFailed(ret)) cost += ret;
 		}
 
-		if (tile == end_tile)
-			break;
+		if (tile == end_tile) break;
 
-		tile += (p2&4)?TILE_XY(0,1):TILE_XY(1,0);
+		tile += HASBIT(p2, 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
 	}
 
-	// already built?
-	if (cost == 0)
-		return CMD_ERROR;
-
-	return cost;
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
-/* Build a road depot
- * p1 - direction (0-3)
- * p2 - unused
+/** Build a road depot.
+ * @param x,y tile coordinates where the depot will be built
+ * @param p1 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p2 unused
  */
-
 int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	int32 cost;
 	Depot *dep;
-	uint tile;
+	TileIndex tile;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (p2 > 3) return CMD_ERROR; // check direction
 
 	FindLandscapeHeight(&ti, x, y);
 
@@ -624,8 +638,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	dep = AllocateDepot();
 	if (dep == NULL)

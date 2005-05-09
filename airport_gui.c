@@ -135,24 +135,25 @@ void ShowBuildAirToolbar(void)
 
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int sel;
 		int rad = 4; // default catchment radious
+		uint32 avail_airports;
 
-		if (WP(w,def_d).close)
-			return;
-		w->disabled_state = 0;
+		if (WP(w,def_d).close) return;
 
 		sel = _selected_airport_type;
-		// FIXME -- BuildAirportPickerWndProc - set availability of airports by year, instead of airplane
-		if (!(_avail_aircraft & 1)) { w->disabled_state |= (1<<3); if (sel == AT_SMALL) sel = AT_LARGE; }
-		if (!(_avail_aircraft & 2)) {	w->disabled_state |= (1<<4); if (sel == AT_LARGE) sel = AT_SMALL; }
-		if (!(_avail_aircraft & 4)) {	w->disabled_state |= (1<<5); }	// heliport
-		// 1980-1-1 is --> 21915
-		// 1990-1-1 is --> 25568
-		if (_date < 21915) {w->disabled_state |= (1<<6);}	// metropilitan airport 1980
-		if (_date < 25568) {w->disabled_state |= (1<<7);}	// international airport 1990
+		avail_airports = GetValidAirports();
+
+		if (!HASBIT(avail_airports, 0) && sel == AT_SMALL) sel = AT_LARGE;
+		if (!HASBIT(avail_airports, 1) && sel == AT_LARGE) sel = AT_SMALL;
+
+		/* 'Country Airport' starts at widget 3, and if its bit is set, it is available,
+		 * so take its opposite value to set the disabled_state. There are only 5 available
+		 * airports, so XOr with 0x1F (1 1111) */
+		w->disabled_state = (avail_airports ^ 0x1F) << 3;
+
 		_selected_airport_type = sel;
 		// select default the coverage area to 'Off' (8)
 		w->click_state = ((1<<3) << sel) | ((1<<8) << _station_show_coverage);

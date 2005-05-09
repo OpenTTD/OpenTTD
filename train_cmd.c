@@ -517,10 +517,11 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 	VehiclePositionChanged(u);
 }
 
-/* Build a railroad vehicle
- * p1 = vehicle type id
+/** Build a railroad vehicle.
+ * @param x,y tile coordinates (depot) where rail-vehicle is built
+ * @param p1 engine type id
+ * @param p2 unused
  */
-
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	const RailVehicleInfo *rvi;
@@ -530,8 +531,11 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Engine *e;
 	TileIndex tile = TILE_FROM_XY(x,y);
 
+	/* Check if the engine-type is valid (for the player) */
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
 
+	/* Check if the train is actually being built in a depot belonging
+	 * to the player. Doesn't matter if only the cost is queried */
 	if (!(flags & DC_QUERY_COST)) {
 		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
 		if (_map_owner[tile] != _current_player) return CMD_ERROR;
@@ -543,9 +547,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	rvi = RailVehInfo(p1);
 
-	if (rvi->flags & RVI_WAGON) {
-		return CmdBuildRailWagon(p1, tile, flags);
-	}
+	if (rvi->flags & RVI_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	value = EstimateTrainCost(rvi);
 
@@ -694,10 +696,12 @@ static Vehicle *FindGoodVehiclePos(const Vehicle *src)
 	return NULL;
 }
 
-/* p1 & 0xffff = source vehicle index
- * p1 & 0xffff0000 = what wagon to put the wagon AFTER,
- *   0xffff0000 to make a new line
- * p2 & 1 = move all vehicles following the vehicle..
+/** Move a rail vehicle around inside the depot.
+ * @param x,y unused
+ * @param p1 various bitstuffed elements
+ * - p1 (bit  0 - 15) source vehicle index (p1 & 0xFFFF)
+ * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER (p1 & 0xFFFF0000) XXX - 0xFFFF0000 to make a new line
+ * @param p2 (bit 0) move all vehicles following the source vehicle
  */
 int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -721,8 +725,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	// don't move the same vehicle..
-	if (src == dst)
-		return 0;
+	if (src == dst) return 0;
 
 	/* the player must be the owner */
 	if (!CheckOwnership(src->owner) || (dst!=NULL && !CheckOwnership(dst->owner)))
@@ -741,16 +744,14 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		for (u = dst_head; u != NULL; u = u->next) u->first = NULL;
 	}
 
-	/* check if all vehicles in the source train are stopped */
-	if (CheckTrainStoppedInDepot(src_head) < 0)
-		return CMD_ERROR;
+	/* check if all vehicles in the source train are stopped inside a depot */
+	if (CheckTrainStoppedInDepot(src_head) < 0) return CMD_ERROR;
 
 	/* check if all the vehicles in the dest train are stopped,
 	 * and that the length of the dest train is no longer than XXX vehicles */
 	if (dst_head != NULL) {
 		int num = CheckTrainStoppedInDepot(dst_head);
-		if (num < 0)
-			return CMD_ERROR;
+		if (num < 0) return CMD_ERROR;
 
 		if (num > (_patches.mammoth_trains ? 100 : 9) && dst_head->subtype == TS_Front_Engine )
 			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
@@ -768,8 +769,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	// when moving all wagons, we can't have the same src_head and dst_head
-	if (p2 & 1 && src_head == dst_head)
-		return 0;
+	if (HASBIT(p2, 0) && src_head == dst_head) return 0;
 
 	// moving a loco to a new line?, then we need to assign a unitnumber.
 	if (dst == NULL && src->subtype != TS_Front_Engine && is_loco) {
@@ -784,7 +784,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* do it? */
 	if (flags & DC_EXEC) {
-		if (p2 & 1) {
+		if (HASBIT(p2, 0)) {
 			// unlink ALL wagons
 			if (src != src_head) {
 				Vehicle *v = src_head;
@@ -859,7 +859,11 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* p1 = train to start / stop */
+/** Start/Stop a train.
+ * @param x,y unused
+ * @param p1 train to start/stop
+ * @param p2 unused
+ */
 int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -868,8 +872,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->u.rail.days_since_order_progr = 0;
@@ -901,15 +904,15 @@ static Vehicle *GetRearEngine(const Vehicle *v, uint16 engine)
 	return NULL;
 }
 
-/**
- * Sell a (single) train wagon/engine.
+/** Sell a (single) train wagon/engine.
+ * @param x,y unused
  * @param p1 the wagon/engine index
  * @param p2 the selling mode
- * - 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
- * - 1: sell the vehicle and all vehicles following it in the chain
-        if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
- * - 2: when selling attached locos, rearrange all vehicles after it to separate lines;
- *      all wagons of the same type will go on the same line. Used by the AI currently
+ * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
+ * - p2 = 1: sell the vehicle and all vehicles following it in the chain
+             if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
+ * - p2 = 2: when selling attached locos, rearrange all vehicles after it to separate lines;
+ *           all wagons of the same type will go on the same line. Used by the AI currently
  */
 int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -920,16 +923,14 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	first = GetFirstVehicleInChain(v);
 
 	// make sure the vehicle is stopped in the depot
-	if (CheckTrainStoppedInDepot(first) < 0)
-		return CMD_ERROR;
+	if (CheckTrainStoppedInDepot(first) < 0) return CMD_ERROR;
 
 	if ((flags & DC_EXEC) && v == first && first->subtype == TS_Front_Engine) {
 		DeleteWindowById(WC_VEHICLE_VIEW, first->index);
@@ -1226,8 +1227,12 @@ static void ReverseTrainDirection(Vehicle *v)
 	CLRBIT(v->u.rail.flags, VRF_REVERSING);
 }
 
-/* p1 = vehicle */
-int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+/** Reverse train.
+ * @param x,y unused
+ * @param p1 train to reverse
+ * @param p2 unused
+ */
+ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -1235,16 +1240,14 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	_error_message = STR_EMPTY;
 
 //	if (v->u.rail.track & 0x80 || IsTileDepotType(v->tile, TRANSPORT_RAIL))
 //		return CMD_ERROR;
 
-	if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0)
-		return CMD_ERROR;
+	if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (_patches.realistic_acceleration && v->cur_speed != 0) {
@@ -1258,6 +1261,11 @@ int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Force a train through a red signal
+ * @param x,y unused
+ * @param p1 train to ignore the red signal
+ * @param p2 unused
+ */
 int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -1266,8 +1274,7 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC)
 		v->u.rail.force_proceed = 0x50;
@@ -1421,6 +1428,11 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 	return tfdd;
 }
 
+/** Send a train to a depot
+ * @param x,y unused
+ * @param p1 train to send to the depot
+ * @param p2 unused
+ */
 int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -1430,11 +1442,9 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED)
-		return CMD_ERROR;
+	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {

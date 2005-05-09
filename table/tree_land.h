@@ -1,9 +1,15 @@
+#ifndef TREE_LAND_H
+#define TREE_LAND_H
+
 static const SpriteID _tree_sprites_1[4] = {
 	0x118D,
 	0x11A0,
 	0x11B3,
 	0x11C6,
 };
+
+static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
+static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
 static const byte _tree_layout_xy[4][8] = {
 {9, 3, 1, 8, 0, 0, 8, 9},
@@ -211,3 +217,6 @@ static const PalSpriteID _tree_layout_sprite[164+(79-48+1)][4] = {
 	{     0x716,      0x716,      0x6f3,      0x6ec}, /* 30 */
 	{     0x716,      0x701,      0x6fa,      0x716}, /* 31 */
 };
+
+#endif /* TREE_LAND_H */
+

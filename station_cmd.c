@@ -1432,7 +1432,7 @@ void FindRoadStationSpot(bool truck_station, Station *st, RoadStop ***currstop, 
 
 /** Build a bus station
  * @param x,y coordinates to build bus station at
- * @param p1 direction the busstop exit is pointing towards
+ * @param p1 busstop entrance direction (0 through 3), where 0 is NW, 1 is NE, etc.
  * @param p2 0 for Bus stops, 1 for truck stops
  */
 int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -1655,20 +1655,24 @@ static const byte * const _airport_map5_tiles[] = {
 	_airport_map5_tiles_international,	// International Airport (xlarge)
 };
 
-/* Place an Airport
- * p1 - airport type
- * p2 - unused
+/** Place an Airport.
+ * @param x,y tile coordinates where airport will be built
+ * @param p1 airport type, @see airport.h
+ * @param p2 unused
  */
 int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile;
+	TileIndex tile;
 	Town *t;
 	Station *st;
 	int32 cost;
-	int w,h;
+	int w, h;
 	bool airport_upgrade = true;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	/* Check if a valid, buildable airport was chosen for construction */
+	if (!HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
 
 	tile = TILE_FROM_XY(x,y);
 
@@ -1694,17 +1698,15 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	h = _airport_size_y[p1];
 
 	cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (cost == CMD_ERROR) return CMD_ERROR;
 
 	st = GetStationAround(tile, w, h, -1);
-	if (st == CHECK_STATIONS_ERR)
-		return CMD_ERROR;
+	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
 	if (st == NULL) {
 		st = GetClosestStationFromTile(tile, 8, _current_player);
-		if (st!=NULL && st->facilities) st = NULL;
+		if (st != NULL && st->facilities) st = NULL;
 	}
 
 	if (st != NULL) {
@@ -1720,8 +1722,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		airport_upgrade = false;
 
 		st = AllocateStation();
-		if (st == NULL)
-			return CMD_ERROR;
+		if (st == NULL) return CMD_ERROR;
 
 		st->town = t;
 
@@ -1732,7 +1733,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		// if airport type equals Heliport then generate
 		// type 5 name, which is heliport, otherwise airport names (1)
-		if (!GenerateStationName(st, tile, p1 == AT_HELIPORT ? 5 : 1))
+		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT) ? 5 : 1))
 			return CMD_ERROR;
 
 		if (flags & DC_EXEC)
@@ -1828,10 +1829,11 @@ END_TILE_LOOP(tile_cur, w,h,tile)
 	return cost;
 }
 
-/* Build a buoy
- * p1,p2 unused
+/** Build a buoy.
+ * @param x,y tile coordinates of bouy construction
+ * @param p1 unused
+ * @param p2 unused
  */
-
 int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
@@ -1845,14 +1847,12 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	st = AllocateStation();
-	if (st == NULL)
-		return CMD_ERROR;
+	if (st == NULL) return CMD_ERROR;
 
 	st->town = ClosestTownFromTile(ti.tile, (uint)-1);
 	st->sign.width_1 = 0;
 
-	if (!GenerateStationName(st, ti.tile, 4))
-		return CMD_ERROR;
+	if (!GenerateStationName(st, ti.tile, 4)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		StationInitialize(st, ti.tile);
@@ -1946,12 +1946,17 @@ static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
 static const byte _dock_w_chk[4] = { 2,1,2,1 };
 static const byte _dock_h_chk[4] = { 1,2,1,2 };
 
+/** Build a dock/haven.
+ * @param x,y tile coordinates where dock will be built
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	int direction;
 	int32 cost;
-	uint tile, tile_cur;
+	TileIndex tile, tile_cur;
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1964,25 +1969,20 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			(direction++,ti.tileh) != 6)
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
-	if (!EnsureNoVehicle(ti.tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(ti.tile)) return CMD_ERROR;
 
 	cost = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = (tile=ti.tile) + TileOffsByDir(direction);
 
-	if (!EnsureNoVehicle(tile_cur))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
 	FindLandscapeHeightByTile(&ti, tile_cur);
-	if (ti.tileh != 0 || ti.type != MP_WATER)
-		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (ti.tileh != 0 || ti.type != MP_WATER) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	cost = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = tile_cur + TileOffsByDir(direction);
 	FindLandscapeHeightByTile(&ti, tile_cur);
@@ -1993,8 +1993,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	st = GetStationAround(
 		tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 		_dock_w_chk[direction], _dock_h_chk[direction], -1);
-	if (st == CHECK_STATIONS_ERR)
-		return CMD_ERROR;
+	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 
 	/* Find a station close to us */
 	if (st == NULL) {
@@ -2006,17 +2005,14 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (st->owner != OWNER_NONE && st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (!CheckStationSpreadOut(st, tile, 1, 1))
-			return CMD_ERROR;
+		if (!CheckStationSpreadOut(st, tile, 1, 1)) return CMD_ERROR;
 
-		if (st->dock_tile != 0)
-			return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
+		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
 		Town *t;
 
 		st = AllocateStation();
-		if (st == NULL)
-			return CMD_ERROR;
+		if (st == NULL) return CMD_ERROR;
 
 		st->town = t = ClosestTownFromTile(tile, (uint)-1);
 
@@ -2025,8 +2021,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->sign.width_1 = 0;
 
-		if (!GenerateStationName(st, tile, 3))
-			return CMD_ERROR;
+		if (!GenerateStationName(st, tile, 3)) return CMD_ERROR;
 
 		if (flags & DC_EXEC)
 			StationInitialize(st, tile);

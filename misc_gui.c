@@ -5,6 +5,7 @@
 #include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "table/tree_land.h"
 #include "map.h"
 #include "window.h"
 #include "gui.h"
@@ -271,8 +272,6 @@ void ShowAboutWindow(void)
 
 static int _tree_to_plant;
 
-static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
-static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
 static const uint32 _tree_sprites[] = {
 	0x655,0x663,0x678,0x62B,0x647,0x639,0x64E,0x632,0x67F,0x68D,0x69B,0x6A9,
 	0x6AF,0x6D2,0x6D9,0x6C4,0x6CB,0x6B6,0x6BD,0x6E0,

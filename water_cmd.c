@@ -22,42 +22,41 @@ static bool IsClearWaterTile(uint tile)
 	return (ti.type == MP_WATER && ti.tileh == 0 && ti.map5 == 0);
 }
 
-/* Build a ship depot
- * p1 - direction
+/** Build a ship depot.
+ * @param x,y tile coordinates where ship depot is built
+ * @param p1 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p2 unused
  */
-
 int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile, tile2;
+	TileIndex tile, tile2;
 
 	int32 cost, ret;
 	Depot *depot;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
+	if (p1 > 3) return CMD_ERROR;
+
 	tile = TILE_FROM_XY(x,y);
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tile2 = tile + (p1 ? TILE_XY(0,1) : TILE_XY(1,0));
-	if (!EnsureNoVehicle(tile2))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
 
 	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(ret)) return CMD_ERROR;
 	ret = DoCommandByTile(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(ret)) return CMD_ERROR;
 
 	// pretend that we're not making land from the water even though we actually are.
 	cost = 0;
 
 	depot = AllocateDepot();
-	if (depot == NULL)
-		return CMD_ERROR;
+	if (depot == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		depot->xy = tile;

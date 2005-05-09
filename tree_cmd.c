@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ttd.h"
 #include "table/strings.h"
+#include "table/tree_land.h"
 #include "map.h"
 #include "tile.h"
 #include "viewport.h"
@@ -142,11 +143,11 @@ void GenerateTrees(void)
 	} while (--i);
 }
 
-/* Plant a tree
- * p1 = tree type, -1 means random.
- * p2 = end tile
+/** Plant a tree.
+ * @param x,y start tile of area-drag of tree plantation
+ * @param p1 tree type, -1 means random.
+ * @param p2 end tile of area-drag
  */
-
 int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
@@ -155,7 +156,9 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	int x;
 	int y;
 
-	if (p2 >= MapSize()) return CMD_ERROR;
+	if (p2 > MapSize()) return CMD_ERROR;
+	/* Check the tree type. It can be random or some valid value within the current climate */
+	if (p1 != (uint)-1 && p1 - _tree_base_by_landscape[_opt.landscape] >= _tree_count_by_landscape[_opt.landscape]) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -254,18 +257,13 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	if (cost == 0) return CMD_ERROR;
-	return cost;
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
 typedef struct TreeListEnt {
 	uint32 image;
 	byte x,y;
 } TreeListEnt;
-
-
-#include "table/tree_land.h"
-
 
 static void DrawTile_Trees(TileInfo *ti)
 {

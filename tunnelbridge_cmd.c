@@ -533,7 +533,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 
 /** Build Tunnel.
  * @param x,y start tile coord of tunnel
- * @param p1 railtype
+ * @param p1 railtype, 0x200 for road tunnel
  * @param p2 unused (XXX - ptr to uint that recieves end tile; wtf?????)
  */
 int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -547,7 +547,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!ValParamRailtype(p1)) return CMD_ERROR;
+	if (p1 != 0x200 && !ValParamRailtype(p1)) return CMD_ERROR;
 
 	_build_tunnel_railtype = (byte)(p1 & 0xFF);
 	_build_tunnel_bh = (byte)(p1 >> 8);

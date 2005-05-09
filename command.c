@@ -189,7 +189,6 @@ static CommandProc * const _command_proc_table[] = {
 	NULL,													/* 20 */
 	CmdBuildRoadStop,							/* 21 */
 	NULL,													/* 22 */
-	/***************************************************/
 	CmdBuildLongRoad,							/* 23 */
 	CmdRemoveLongRoad,						/* 24 */
 	CmdBuildRoad,									/* 25 */
@@ -209,6 +208,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdTrainGotoDepot,						/* 39 */
 	CmdForceTrainProceed,					/* 40 */
 	CmdReverseTrainDirection,			/* 41 */
+	/***************************************************/
 
 	CmdModifyOrder,								/* 42 */
 	CmdSkipOrder,									/* 43 */
