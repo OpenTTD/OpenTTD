@@ -1116,10 +1116,15 @@ restart:
 	st->train_tile = tile;
 }
 
-// remove a single tile from a railroad station
+/** Remove a single tile from a railroad station.
+ * This allows for custom-built station with holes and weird layouts
+ * @param x,y tile coordinates to remove
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TILE_FROM_XY(x, y);
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1386,9 +1391,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 
 int32 DoConvertStationRail(uint tile, uint totype, bool exec)
 {
-	Station *st;
-
-	st = GetStation(_map2[tile]);
+	const Station *st = GetStation(_map2[tile]);
 	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is not a railroad station?
@@ -1427,26 +1430,23 @@ void FindRoadStationSpot(bool truck_station, Station *st, RoadStop ***currstop, 
 	}
 }
 
-/* Build a bus station
- * direction - direction of the stop exit
- * type - 0 for Bus stops, 1 for truck stops
+/** Build a bus station
+ * @param x,y coordinates to build bus station at
+ * @param p1 direction the busstop exit is pointing towards
+ * @param p2 0 for Bus stops, 1 for truck stops
  */
-
-int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 direction, uint32 type)
+int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	Station *st;
 	RoadStop *road_stop;
 	RoadStop **currstop;
 	RoadStop *prev = NULL;
-	uint tile;
+	TileIndex tile;
 	int32 cost;
-	Station *st;
-	//Bus stops have a _map5 value of 0x47 + direction
-	//Truck stops have 0x43 + direction
-	byte gfxbase = (type) ? 0x43 : 0x47;
+	bool type = !!p2;
 
-	//saveguard the parameters
-	if (direction > 3 || type > 1)
-		return CMD_ERROR;
+	/* Saveguard the parameters */
+	if (p1 > 3) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1455,7 +1455,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 direction, uint32 type
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
-	cost = CheckFlatLandBelow(tile, 1, 1, flags, 1 << direction, NULL);
+	cost = CheckFlatLandBelow(tile, 1, 1, flags, 1 << p1, NULL);
 	if (cost == CMD_ERROR)
 		return CMD_ERROR;
 
@@ -1526,8 +1526,10 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 direction, uint32 type
 		ModifyTile(tile,
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
 			MP_MAP2 | MP_MAP5 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-			st->index,			/* map2 parameter */
-			gfxbase + direction       /* map5 parameter */
+			st->index,                       /* map2 parameter */
+			/* XXX - Truck stops have 0x43 _map5[] value + direction
+			 * XXX - Bus stops have a _map5 value of 0x47 + direction */
+			((type) ? 0x43 : 0x47) + p1 /* map5 parameter */
 		);
 
 		UpdateStationVirtCoordDirty(st);

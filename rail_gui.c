@@ -121,7 +121,7 @@ static void PlaceRail_Depot(uint tile)
 static void PlaceRail_Waypoint(uint tile)
 {
 	if (!_remove_button_clicked) {
-		DoCommandP(tile, _waypoint_count > 0 ? (0x100 + _cur_waypoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
+		DoCommandP(tile, (_waypoint_count > 0) ? (0x100 + _cur_waypoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	} else {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT));
 	}

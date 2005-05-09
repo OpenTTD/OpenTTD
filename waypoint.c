@@ -147,15 +147,23 @@ static Waypoint *FindDeletedWaypointCloseTo(uint tile)
 	return best;
 }
 
-/* Convert existing rail to waypoint */
+/** Convert existing rail to waypoint. Eg build a waypoint station over
+ * piece of rail
+ * @param x,y coordinates where waypoint will be built
+ * @param p1 graphics for waypoint type, bit 8 signifies custom waypoint gfx (& 0x100)
+ * @param p2 unused
+ */
 int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x, y);
 	Waypoint *wp;
 	uint tileh;
 	uint dir;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	/* if custom gfx are used, make sure it is within bounds */
+	if ((int)p1 > 0x100 + GetCustomStationsCount(STAT_CLASS_WAYP)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _map5[tile] != 1) && (dir = 1, _map5[tile] != 2)))
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
@@ -175,8 +183,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	wp = FindDeletedWaypointCloseTo(tile);
 	if (wp == NULL) {
 		wp = AllocateWaypoint();
-		if (wp == NULL)
-			return CMD_ERROR;
+		if (wp == NULL) return CMD_ERROR;
 
 		wp->town_index = 0;
 		wp->string = STR_NULL;
@@ -271,20 +278,29 @@ int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
 	return _price.remove_train_depot;
 }
 
-/* Command call to remove a waypoint */
+/** Delete a waypoint
+ * @param x,y coordinates where waypoint is to be deleted
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 
-/* Rename a waypoint
- * p1 = id of waypoint */
+/** Rename a waypoint.
+ * @param x,y unused
+ * @param p1 id of waypoint
+ * @param p2 unused
+ */
 int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
 	StringID str;
+
+	if (!IsWaypointIndex(p1)) return CMD_ERROR;
 
 	if (_decode_parameters[0] != 0) {
 		str = AllocateNameUnique((const char*)_decode_parameters, 0);

@@ -971,14 +971,21 @@ extern int32 DoConvertStationRail(uint tile, uint totype, bool exec);
 extern int32 DoConvertStreetRail(uint tile, uint totype, bool exec);
 extern int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec);
 
-// p1 = start tile
-// p2 = new railtype
+/** Convert one rail type to the other. You can convert normal rail to
+ * monorail/maglev easily or vice-versa.
+ * @param ex,ey end tile of rail conversion drag
+ * @param p1 start tile of drag
+ * @param p2 new railtype to convert to
+ */
 int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 ret, cost, money;
-	int sx,sy,x,y;
+	int sx, sy, x, y;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (!ValParamRailtype(p2)) return CMD_ERROR;
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	// make sure sx,sy are smaller than ex,ey
 	sx = TileX(p1) * 16;
@@ -987,31 +994,31 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	if (ey < sy) intswap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
-	ret = false;
 	cost = 0;
-	for(x=sx; x<=ex; x+=16) {
-		for(y=sy; y<=ey; y+=16) {
-			uint tile = TILE_FROM_XY(x,y);
-			DoConvertRailProc *p;
 
-			if (IsTileType(tile, MP_RAILWAY)) p = DoConvertRail;
-			else if (IsTileType(tile, MP_STATION)) p = DoConvertStationRail;
-			else if (IsTileType(tile, MP_STREET)) p = DoConvertStreetRail;
-			else if (IsTileType(tile, MP_TUNNELBRIDGE)) p = DoConvertTunnelBridgeRail;
+	for (x = sx; x <= ex; x += 16) {
+		for (y = sy; y <= ey; y += 16) {
+			TileIndex tile = TILE_FROM_XY(x,y);
+			DoConvertRailProc *proc;
+
+			if (IsTileType(tile, MP_RAILWAY)) proc = DoConvertRail;
+			else if (IsTileType(tile, MP_STATION)) proc = DoConvertStationRail;
+			else if (IsTileType(tile, MP_STREET)) proc = DoConvertStreetRail;
+			else if (IsTileType(tile, MP_TUNNELBRIDGE)) proc = DoConvertTunnelBridgeRail;
 			else continue;
 
-			ret = p(tile, p2, false);
-			if (ret == CMD_ERROR) continue;
+			ret = proc(tile, p2, false);
+			if (CmdFailed(ret)) continue;
 			cost += ret;
 
 			if (flags & DC_EXEC) {
 				if ( (money -= ret) < 0) { _additional_cash_required = ret; return cost - ret; }
-				p(tile, p2, true);
+				proc(tile, p2, true);
 			}
 		}
 	}
-	if (cost == 0) cost = CMD_ERROR;
-	return cost;
+
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
 static int32 RemoveTrainDepot(uint tile, uint32 flags)

@@ -212,7 +212,7 @@ static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
 
 /** Terraform land
  * @param x,y coordinates to terraform
- * @param p1 corners to terraform. Human user only north, towns more
+ * @param p1 corners to terraform.
  * @param p2 direction; eg up or down
  */
 int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -223,9 +223,6 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	TerraformerHeightMod modheight_data[576];
 	TileIndex tile_table_data[625];
-
-	/* A normal user can only terraform one corner, the northern one; p1 & 8 */
-	if (_current_player < MAX_PLAYERS && p1 != 8) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -380,31 +377,28 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-/* Purchase a land area
- * p1 = unused
- * p2 = unused
+/** Purchase a land area. Actually you only purchase one tile, so
+ * the name is a bit confusing ;p
+ * @param x,y the tile the player is purchasing
+ * @param p1 unused
+ * @param p2 unused
  */
-
 int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile;
+	TileIndex tile;
 	int32 cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	tile = TILE_FROM_XY(x,y);
 
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (IsTileType(tile, MP_UNMOVABLE) &&
-			_map5[tile] == 3 &&
-			_map_owner[tile] == _current_player)
+	if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 3 && _map_owner[tile] == _current_player)
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 
 	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		ModifyTile(tile,
@@ -439,9 +433,15 @@ static int32 ClearTile_Clear(uint tile, byte flags)
 	return *price;
 }
 
+/** Sell a land area. Actually you only sell one tile, so
+ * the name is a bit confusing ;p
+ * @param x,y the tile the player is selling
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile;
+	TileIndex tile;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -450,13 +450,12 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC)
 		DoClearSquare(tile);
 
-	return - _price.purchase_land*2;
+	return - _price.purchase_land * 2;
 }
 
 

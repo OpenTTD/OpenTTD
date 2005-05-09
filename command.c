@@ -177,7 +177,6 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildSingleSignal,					/* 8  */
 	CmdRemoveSingleSignal,				/* 9  */
 	CmdTerraformLand,							/* 10 */
-	/***************************************************/
 	CmdPurchaseLandArea,					/* 11 */
 	CmdSellLandArea,							/* 12 */
 	CmdBuildTunnel,								/* 13 */
@@ -190,6 +189,7 @@ static CommandProc * const _command_proc_table[] = {
 	NULL,													/* 20 */
 	CmdBuildRoadStop,							/* 21 */
 	NULL,													/* 22 */
+	/***************************************************/
 	CmdBuildLongRoad,							/* 23 */
 	CmdRemoveLongRoad,						/* 24 */
 	CmdBuildRoad,									/* 25 */

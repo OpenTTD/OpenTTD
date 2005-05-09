@@ -433,7 +433,7 @@ static byte _build_tunnel_railtype;
 
 static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_tile)
 {
-	uint end_tile;
+	TileIndex end_tile;
 	int direction;
 	int32 cost, ret;
 	TileInfo ti;
@@ -472,8 +472,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 		if ( (direction ? 9U : 12U) != ti.tileh)
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (ret == CMD_ERROR)
-			return CMD_ERROR;
+		if (CmdFailed(ret)) return CMD_ERROR;
 		cost += ret;
 	}
 	cost += _price.build_tunnel;
@@ -507,8 +506,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (ret == CMD_ERROR)
-			return CMD_ERROR;
+		if (CmdFailed(ret)) return CMD_ERROR;
 		cost += ret;
 	}
 
@@ -533,10 +531,10 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 	return cost + _price.build_tunnel;
 }
 
-/* Build Tunnel
- * x,y - start tile coord
- * p1 - railtype
- * p2 - ptr to uint that recieves end tile
+/** Build Tunnel.
+ * @param x,y start tile coord of tunnel
+ * @param p1 railtype
+ * @param p2 unused (XXX - ptr to uint that recieves end tile; wtf?????)
  */
 int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -545,9 +543,11 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint z;
 	static const int8 _build_tunnel_coord_mod[4+1] = { -16, 0, 16, 0, -16 };
 	static const byte _build_tunnel_tileh[4] = {3, 9, 12, 6};
-	uint excavated_tile;
+	TileIndex excavated_tile;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (!ValParamRailtype(p1)) return CMD_ERROR;
 
 	_build_tunnel_railtype = (byte)(p1 & 0xFF);
 	_build_tunnel_bh = (byte)(p1 >> 8);
@@ -579,18 +579,13 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (ti.tileh != _build_tunnel_tileh[direction]) {
-		if (DoCommandByTile(ti.tile, ti.tileh & ~_build_tunnel_tileh[direction], 0, flags, CMD_TERRAFORM_LAND) == CMD_ERROR)
+		if (CmdFailed(DoCommandByTile(ti.tile, ti.tileh & ~_build_tunnel_tileh[direction], 0, flags, CMD_TERRAFORM_LAND)))
 			return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 		excavated_tile = 1;
 	}
 
-	if (flags & DC_EXEC && DoBuildTunnel(x,y,tiorg.x,tiorg.y,flags&~DC_EXEC,excavated_tile) == CMD_ERROR)
-		return CMD_ERROR;
-
-	return DoBuildTunnel(x,y,tiorg.x, tiorg.y,flags,excavated_tile);
+	return DoBuildTunnel(x, y, tiorg.x, tiorg.y, flags, excavated_tile);
 }
-
-static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
 TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 {
@@ -625,8 +620,9 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 static int32 DoClearTunnel(uint tile, uint32 flags)
 {
 	Town *t;
-	uint endtile;
+	TileIndex endtile;
 	uint length;
+	static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -835,7 +831,7 @@ static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
 
 int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 {
-	uint endtile;
+	TileIndex endtile;
 	uint length;
 	Vehicle *v;
 
@@ -870,7 +866,7 @@ int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
 		}
 		return _price.build_rail >> 1;
 	} else if ((_map5[tile]&0xC6) == 0x80) {
-		uint starttile;
+		TileIndex starttile;
 		int32 cost;
 		uint z = TilePixelHeight(tile);
 
