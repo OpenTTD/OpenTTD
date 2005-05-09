@@ -639,14 +639,14 @@ static void HandleStationPlacement(uint start, uint end)
 		CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 
-static void StationBuildWndProc(Window *w, WindowEvent *e) {
-	int rad;
-	switch(e->event) {
+static void StationBuildWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
 	case WE_PAINT: {
+		int rad;
 		uint bits;
 
-		if (WP(w,def_d).close)
-			return;
+		if (WP(w,def_d).close) return;
 
 		bits = (1<<3) << ( _railstation.orientation);
 		if (_railstation.dragdrop) {
@@ -673,6 +673,13 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
+		/* Update buttons for correct spread value */
+		w->disabled_state = 0;
+		for (bits = _patches.station_spread; bits < 7; bits++) {
+			SETBIT(w->disabled_state, bits + 5);
+			SETBIT(w->disabled_state, bits + 12);
+		}
+
 		DrawWindowWidgets(w);
 
 		StationPickerDrawSprite(39, 42, _cur_railtype, 2);
@@ -687,7 +694,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e) {
 	} break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3:
 		case 4:
 			_railstation.orientation = e->click.widget - 3;

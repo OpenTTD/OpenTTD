@@ -148,15 +148,14 @@ bool CheckBridge_Stuff(byte bridge_type, int bridge_len)
 {
 	int max;	// max possible length of a bridge (with patch 100)
 
-	if (_bridge_available_year[bridge_type] > _cur_year)
-				return false;
+	if (bridge_type >= MAX_BRIDGES) return false;
+	if (_bridge_available_year[bridge_type] > _cur_year) return false;
 
 	max = _bridge_maxlen[bridge_type];
 	if (max >= 16 && _patches.longbridges)
 		max = 100;
 
-	if (bridge_len < _bridge_minlen[bridge_type] || bridge_len > max)
-		return false;
+	if (bridge_len < _bridge_minlen[bridge_type] || bridge_len > max) return false;
 
 	return true;
 }
@@ -186,8 +185,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	bridge_type = p2 & 0xFF;
 	railtype = (byte)(p2 >> 8);
 
-	/* Out of bounds bridge */
-	if (bridge_type >= MAX_BRIDGES) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	// type of bridge
 	if (HASBIT(railtype, 7)) { // bit 15 of original p2 param
@@ -220,6 +218,10 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else
 		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
 
+	/* set and test bridge length, availability */
+	bridge_len = ((sx + sy - x - y) >> 4) - 1;
+	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+
 	/* retrieve landscape height and ensure it's on land */
 	if (
 		((FindLandscapeHeight(&ti_end, sx, sy),
@@ -246,8 +248,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// Towns are not allowed to use bridges on slopes.
 	allow_on_slopes = ((!_is_ai_player || _patches.ainew_active)
-	                   && _current_player != OWNER_TOWN
-			   && _patches.build_on_slopes);
+	                   && _current_player != OWNER_TOWN && _patches.build_on_slopes);
 
 	/* Try and clear the start landscape */
 
@@ -295,17 +296,14 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		);
 	}
 
-	/* set various params */
-	bridge_len = ((sx + sy - x - y) >> 4) - 1;
+	// position of middle part of the odd bridge (larger than MAX(i) otherwise)
+	odd_middle_part = (bridge_len % 2) ? (bridge_len / 2) : bridge_len;
 
-	//position of middle part of the odd bridge (larger than MAX(i) otherwise)
-	odd_middle_part=(bridge_len%2)?(bridge_len/2):bridge_len;
-
-	for(i = 0; i != bridge_len; i++) {
-		if (direction != 0)
-			y+=16;
-		else
-			x+=16;
+	for (i = 0; i != bridge_len; i++) {
+		if (direction != 0) {
+			y += 16;
+		} else
+			x += 16;
 
 		FindLandscapeHeight(&ti, x, y);
 

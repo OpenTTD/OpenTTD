@@ -587,6 +587,12 @@ static int32 InValidateDetailsWindow(int32 p1)
 	return 0;
 }
 
+static int32 InvalidateStationBuildWindow(int32 p1)
+{
+	InvalidateWindow(WC_BUILD_STATION, 0);
+	return 0;
+}
+
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
 static int32 CheckInterval(int32 p1)
 {
@@ -704,7 +710,7 @@ static const PatchEntry _patches_stations[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SELECTGOODS,			"select_goods",  &_patches.selectgoods,							0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_NONSTOP,			"new_nonstop", &_patches.new_nonstop,							0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, "nonuniform_stations", &_patches.nonuniform_stations,		0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		"station_spread", &_patches.station_spread,						4, 64,  1, NULL},
+	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		"station_spread", &_patches.station_spread,						4, 64,  1, &InvalidateStationBuildWindow},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, "service_at_helipad", &_patches.serviceathelipad,					0,  0,  0, NULL},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, "modified_catchment", &_patches.modified_catchment, 0, 0, 0, NULL},
 

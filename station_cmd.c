@@ -918,7 +918,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, StationS
 }
 
 /** Build railroad station
- * @param x_org,y_org starting position of station dragging/placement
+ * @param x,y starting position of station dragging/placement
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0)    - orientation (p1 & 1)
  * - p1 = (bit  8-15) - number of tracks (p1 >> 8) & 0xFF)
@@ -959,6 +959,8 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		w_org = plat_len;
 		h_org = numtracks;
 	}
+
+	if (h_org > _patches.station_spread || w_org > _patches.station_spread) return CMD_ERROR;
 
 	// these values are those that will be stored in train_tile and station_platforms
 	finalvalues[0] = tile_org;

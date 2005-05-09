@@ -192,5 +192,5 @@ bool IsValidCommand(uint cmd);
 int32 GetAvailableMoneyForCommand(void);
 
 /* Validate functions for rail building */
-static inline bool ValParamRailtype(uint32 rail) { return (rail > GetPlayer(_current_player)->max_railtype) ? false : true;}
+static inline bool ValParamRailtype(uint32 rail) { return rail <= GetPlayer(_current_player)->max_railtype;}
 #endif /* COMMAND_H */

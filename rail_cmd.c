@@ -276,7 +276,7 @@ static uint32 CheckRailSlope(uint tileh, uint rail_bits, uint existing, TileInde
 }
 
 /* Validate functions for rail building */
-static inline bool ValParamTrackOrientation(uint32 rail) {return (rail > 5) ? false : true;}
+static inline bool ValParamTrackOrientation(uint32 rail) {return rail <= 5;}
 
 /** Build a single piece of rail
  * @param x,y coordinates on where to build
@@ -292,7 +292,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost = 0;
 	int32 ret;
 
-	if (!(ValParamRailtype(p1) && ValParamTrackOrientation(p2))) return CMD_ERROR;
+	if (!ValParamRailtype(p1) || !ValParamTrackOrientation(p2)) return CMD_ERROR;
 
 	tile = TILE_FROM_XY(x, y);
 	tileh = GetTileSlope(tile, NULL);
@@ -590,7 +590,8 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 	byte railbit = (p2 >> 4) & 7;
 	byte mode = HASBIT(p2, 7);
 
-	if (!(ValParamRailtype(p2 & 0x3) && ValParamTrackOrientation(railbit))) return CMD_ERROR;
+	if (!ValParamRailtype(p2 & 0x3) || !ValParamTrackOrientation(railbit)) return CMD_ERROR;
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	/* unpack end point */
 	ex = TileX(p1) * 16;
