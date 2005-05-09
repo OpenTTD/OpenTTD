@@ -163,7 +163,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* if custom gfx are used, make sure it is within bounds */
-	if ((int)p1 > 0x100 + GetCustomStationsCount(STAT_CLASS_WAYP)) return CMD_ERROR;
+	if (p1 > 0x100 + (uint)GetCustomStationsCount(STAT_CLASS_WAYP)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _map5[tile] != 1) && (dir = 1, _map5[tile] != 2)))
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
