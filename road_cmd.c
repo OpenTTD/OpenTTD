@@ -623,7 +623,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p2 > 3) return CMD_ERROR; // check direction
+	if (p1 > 3) return CMD_ERROR; // check direction
 
 	FindLandscapeHeight(&ti, x, y);
 
