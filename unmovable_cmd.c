@@ -373,8 +373,9 @@ int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Find player that has HQ flooded, and reset their location_of_house */
 	if (_current_player == OWNER_WATER)	{
-		tile = TILE_FROM_XY(x,y);
 		bool dodelete = false;
+		tile = TILE_FROM_XY(x,y);
+
 		FOR_ALL_PLAYERS(p) {
 			if (p->location_of_house == tile) {
 				dodelete = true;
