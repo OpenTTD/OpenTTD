@@ -58,7 +58,7 @@ static const uint16 _road_pf_table_3[4] = {
 	0x910, 0x1600, 0x2005, 0x2A
 };
 
-int GetRoadVehImage(Vehicle *v, byte direction)
+int GetRoadVehImage(const Vehicle *v, byte direction)
 {
 	int img = v->spritenum;
 	int image;
@@ -405,19 +405,24 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Change the service interval for road vehicles.
+ * @param x,y unused
+ * @param p1 vehicle ID that is being service-interval-changed
+ * @param p2 new service interval
+ */
 int32 CmdChangeRoadVehServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (serv_int != p2 || !IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->service_interval = (uint16)p2;
+		v->service_interval = serv_int;
 		InvalidateWindowWidget(WC_VEHICLE_DETAILS, v->index, 7);
 	}
 

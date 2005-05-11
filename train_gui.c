@@ -280,7 +280,7 @@ static void ShowBuildTrainWindow(uint tile)
 	}
 }
 
-static void DrawTrainImage(Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
+static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
 	do {
 		if (--skip < 0) {
@@ -980,7 +980,7 @@ void ShowTrainViewWindow(Vehicle *v)
 	}
 }
 
-static void TrainDetailsCargoTab(Vehicle *v, int x, int y)
+static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 {
 	int num;
 	StringID str;
@@ -998,7 +998,7 @@ static void TrainDetailsCargoTab(Vehicle *v, int x, int y)
 	}
 }
 
-static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
+static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 
@@ -1014,7 +1014,7 @@ static void TrainDetailsInfoTab(Vehicle *v, int x, int y)
 	}
 }
 
-static void TrainDetailsCapacityTab(Vehicle *v, int x, int y)
+static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 {
 	if (v->cargo_cap != 0) {
 		SetDParam(1, v->cargo_cap);
@@ -1023,7 +1023,7 @@ static void TrainDetailsCapacityTab(Vehicle *v, int x, int y)
 	}
 }
 
-typedef void TrainDetailsDrawerProc(Vehicle *v, int x, int y);
+typedef void TrainDetailsDrawerProc(const Vehicle *v, int x, int y);
 
 static TrainDetailsDrawerProc * const _train_details_drawer_proc[3] = {
 	TrainDetailsCargoTab,
@@ -1033,7 +1033,7 @@ static TrainDetailsDrawerProc * const _train_details_drawer_proc[3] = {
 
 static void DrawTrainDetailsWindow(Window *w)
 {
-	Vehicle *v, *u;
+	const Vehicle *v, *u;
 	uint16 tot_cargo[NUM_CARGO][2];	// count total cargo ([0]-actual cargo, [1]-total cargo)
 	int max_speed = 0xFFFF;
 	int i,num,x,y,sel;
@@ -1151,14 +1151,14 @@ static void DrawTrainDetailsWindow(Window *w)
 
 static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawTrainDetailsWindow(w);
 		break;
 	case WE_CLICK: {
 		int mod;
-		Vehicle *v;
-		switch(e->click.widget) {
+		const Vehicle *v;
+		switch (e->click.widget) {
 		case 2: /* name train */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
@@ -1172,13 +1172,9 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 			mod = _ctrl_pressed? -5 : -10;
 do_change_service_int:
 			v = GetVehicle(w->window_number);
-			mod += v->service_interval;
 
-				/*	%-based service interval max 5%-90%
-						day-based service interval max 30-800 days */
-				mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
-				if (mod == v->service_interval)
-					return;
+			mod = GetServiceIntervalClamped(mod + v->service_interval);
+			if (mod == v->service_interval) return;
 
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_TRAIN_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;

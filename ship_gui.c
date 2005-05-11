@@ -34,8 +34,16 @@ void Set_DPARAM_Ship_Build_Window(uint16 engine_number)
 	SetDParam(6, ymd.year + 1920);
 }
 
-static void DrawShipImage(Vehicle *v, int x, int y, VehicleID selection);
+static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
+{
+	int image = GetShipImage(v, 6);
+	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+	DrawSprite(image | ormod, x+32, y+10);
 
+	if (v->index == selection) {
+		DrawFrameRect(x-5, y-1, x+67, y+21, 15, 0x10);
+	}
+}
 
 const byte _ship_refit_types[4][16] = {
 	{CT_MAIL, CT_COAL, CT_LIVESTOCK, CT_GOODS, CT_GRAIN, CT_WOOD, CT_IRON_ORE, CT_STEEL, CT_VALUABLES, 255},
@@ -168,12 +176,11 @@ static void ShowShipRefitWindow(Vehicle *v)
 
 static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 {
-	Vehicle *v = GetVehicle(w->window_number);
-	StringID str;
-	int mod;
+	switch (e->event) {
+	case WE_PAINT: {
+		const Vehicle *v = GetVehicle(w->window_number);
+		StringID str;
 
-	switch(e->event) {
-	case WE_PAINT:
 		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
 		if (!_patches.servint_ships) // disable service-scroller when interval is set to disabled
 			w->disabled_state |= (1 << 5) | (1 << 6);
@@ -247,32 +254,32 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 			str = STR_8813_FROM;
 		}
 		DrawString(74, 78, str, 0);
-		break;
+	} break;
 
-	case WE_CLICK:
-		switch(e->click.widget) {
+	case WE_CLICK: {
+		int mod;
+		const Vehicle *v;
+		switch (e->click.widget) {
 		case 2: /* rename */
+			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w->window_class, w->window_number);
 			break;
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;
-			goto change_int;
+			goto do_change_service_int;
 		case 6: /* decrease int */
 			mod = _ctrl_pressed?- 5 : -10;
-change_int:
-			mod += v->service_interval;
+do_change_service_int:
+			v = GetVehicle(w->window_number);
 
-			/*	%-based service interval max 5%-90%
-					day-based service interval max 30-800 days */
-			mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
-			if (mod == v->service_interval)
-				return;
+			mod = GetServiceIntervalClamped(mod + v->service_interval);
+			if (mod == v->service_interval) return;
 
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SHIP_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		}
-		break;
+	} break;
 
 	case WE_4:
 		if (FindWindowById(WC_VEHICLE_VIEW, w->window_number) == NULL)
@@ -619,18 +626,6 @@ void ShowShipViewWindow(Vehicle *v)
 	if (w) {
 		w->caption_color = v->owner;
 		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), 0);
-	}
-}
-
-
-static void DrawShipImage(Vehicle *v, int x, int y, VehicleID selection)
-{
-	int image = GetShipImage(v, 6);
-	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	DrawSprite(image | ormod, x+32, y+10);
-
-	if (v->index == selection) {
-		DrawFrameRect(x-5, y-1, x+67, y+21, 15, 0x10);
 	}
 }
 

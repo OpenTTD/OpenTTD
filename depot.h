@@ -41,6 +41,16 @@ static inline bool IsDepotIndex(uint index)
 #define MIN_SERVINT_DAYS    30
 #define MAX_SERVINT_DAYS   800
 
+/** Get the service interval domain.
+ * Get the new proposed service interval for the vehicle is indeed, clamped
+ * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
+ * @param index proposed service interval
+ */
+static inline uint16 GetServiceIntervalClamped(uint index)
+{
+	return (_patches.servint_ispercent) ? clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
+}
+
 VARDEF TileIndex _last_built_train_depot_tile;
 VARDEF TileIndex _last_built_road_depot_tile;
 VARDEF TileIndex _last_built_aircraft_depot_tile;

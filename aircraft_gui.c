@@ -36,7 +36,7 @@ void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
 
 }
 
-static void DrawAircraftImage(Vehicle *v, int x, int y, VehicleID selection)
+static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetAircraftImage(v, 6);
 	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
@@ -378,11 +378,10 @@ static void ShowAircraftRefitWindow(Vehicle *v)
 
 static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 {
-	int mod;
-	Vehicle *v = GetVehicle(w->window_number), *u;
+	switch (e->event) {
+	case WE_PAINT: {
+		const Vehicle *v = GetVehicle(w->window_number);
 
-	switch(e->event) {
-	case WE_PAINT:
 		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
 		if (!_patches.servint_aircraft) // disable service-scroller when interval is set to disabled
 			w->disabled_state |= (1 << 5) | (1 << 6);
@@ -440,6 +439,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		DrawAircraftImage(v, 3, 57, INVALID_VEHICLE);
 
 		{
+			const Vehicle *u;
 			int y = 57;
 
 			do {
@@ -471,34 +471,32 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 				}
 			} while ( (v=v->next) != NULL);
 		}
-		break;
+	} break;
 
-	case WE_CLICK:
-		switch(e->click.widget) {
+	case WE_CLICK: {
+		int mod;
+		const Vehicle *v;
+		switch (e->click.widget) {
 		case 2: /* rename */
+			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_A030_NAME_AIRCRAFT, 31, 150, w->window_class, w->window_number);
 			break;
-
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;
-			goto change_int;
+			goto do_change_service_int;
 		case 6: /* decrease int */
 			mod = _ctrl_pressed?- 5 : -10;
-change_int:
-			mod += v->service_interval;
+do_change_service_int:
+			v = GetVehicle(w->window_number);
 
-			/*	%-based service interval max 5%-90%
-					day-based service interval max 30-800 days */
-			mod = _patches.servint_ispercent ? clamp(mod, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(mod, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS+1);
-			if (mod == v->service_interval)
-				return;
+			mod = GetServiceIntervalClamped(mod + v->service_interval);
+			if (mod == v->service_interval) return;
 
-			DoCommandP(v->tile, v->index, mod, NULL,
-				CMD_CHANGE_AIRCRAFT_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
+			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_AIRCRAFT_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		}
-		break;
+	} break;
 
 	case WE_4:
 		if (FindWindowById(WC_VEHICLE_VIEW, w->window_number) == NULL)

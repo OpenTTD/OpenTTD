@@ -271,9 +271,9 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) ;
 
 /* train_cmd.h */
 int GetTrainImage(const Vehicle *v, byte direction);
-int GetAircraftImage(Vehicle *v, byte direction);
-int GetRoadVehImage(Vehicle *v, byte direction);
-int GetShipImage(Vehicle *v, byte direction);
+int GetAircraftImage(const Vehicle *v, byte direction);
+int GetRoadVehImage(const Vehicle *v, byte direction);
+int GetShipImage(const Vehicle *v, byte direction);
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
 Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
@@ -307,7 +307,7 @@ UnitID GetFreeUnitNumber(byte type);
 int LoadUnloadVehicle(Vehicle *v);
 
 void UpdateTrainAcceleration(Vehicle *v);
-int32 GetTrainRunningCost(Vehicle *v);
+int32 GetTrainRunningCost(const Vehicle *v);
 
 int CheckTrainStoppedInDepot(const Vehicle *v);
 

@@ -5,6 +5,7 @@
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "depot.h"
 #include "engine.h"
 #include "command.h"
 #include "station.h"
@@ -86,7 +87,7 @@ static bool HaveHangarInOrderList(Vehicle *v)
 }
 #endif
 
-int GetAircraftImage(Vehicle *v, byte direction)
+int GetAircraftImage(const Vehicle *v, byte direction)
 {
 	int spritenum = v->spritenum;
 
@@ -475,21 +476,24 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = vehicle
-// p2 = new service int
+/** Change the service interval for aircraft.
+ * @param x,y unused
+ * @param p1 vehicle ID that is being service-interval-changed
+ * @param p2 new service interval
+ */
 int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (serv_int != p2 || !IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->service_interval = (uint16)p2;
+		v->service_interval = serv_int;
 		InvalidateWindowWidget(WC_VEHICLE_DETAILS, v->index, 7);
 	}
 
