@@ -126,7 +126,7 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str,old_str;
+	StringID str;
 	Player *p;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 4);
@@ -134,13 +134,11 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		p = DEREF_PLAYER(_current_player);
-		old_str = p->name_1;
+		DeleteName(p->name_1);
 		p->name_1 = str;
-		DeleteName(old_str);
 		MarkWholeScreenDirty();
-	} else {
+	} else
 		DeleteName(str);
-	}
 
 	return 0;
 }
@@ -152,7 +150,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str,old_str;
+	StringID str;
 	Player *p;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 4);
@@ -160,18 +158,16 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		p = DEREF_PLAYER(_current_player);
-		old_str = p->president_name_1;
+		DeleteName(p->president_name_1);
 		p->president_name_1 = str;
-		DeleteName(old_str);
 
 		if (p->name_1 == STR_SV_UNNAMED) {
 			ttd_strlcat((char*)_decode_parameters, " Transport", sizeof(_decode_parameters));
-			DoCommandByTile(0, p1, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
+			DoCommandByTile(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();
-	} else {
+	} else
 		DeleteName(str);
-	}
 
 	return 0;
 }

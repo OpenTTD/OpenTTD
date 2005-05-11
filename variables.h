@@ -279,7 +279,7 @@ VARDEF bool _is_ai_player; // current player is an AI player? - Can be removed i
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 
-VARDEF byte _local_player;
+VARDEF PlayerID _local_player;
 VARDEF byte _display_opt;
 VARDEF byte _pause;
 VARDEF int _caret_timer;
@@ -292,7 +292,7 @@ VARDEF StringID _error_message_2;
 VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
-VARDEF byte _current_player;
+VARDEF PlayerID _current_player;
 
 VARDEF int _docommand_recursive;
 
