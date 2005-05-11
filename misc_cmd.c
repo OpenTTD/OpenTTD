@@ -11,10 +11,11 @@
 #include "economy.h"
 #include "network.h"
 
-/* p1 = player
-   p2 = face
+/** Change the player's face.
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 face bitmasked
  */
-
 int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
@@ -24,16 +25,18 @@ int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* p1 = player
- * p2 = color
+/** Change the player's company-colour
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 new colour for vehicles, property, etc.
  */
 int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p,*pp;
+	Player *p, *pp;
 
 	p = GetPlayer(_current_player);
 
-	/* ensure no dups */
+	/* Ensure no two companies have the same colour */
 	FOR_ALL_PLAYERS(pp) {
 		if (pp->is_active && pp != p && pp->player_color == (byte)p2)
 			return CMD_ERROR;
@@ -47,10 +50,14 @@ int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Increase the loan of your company.
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 when set, loans the maximum amount in one go (press CTRL)
+ */
 int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int32 size;
 
 	p = GetPlayer(_current_player);
 
@@ -60,13 +67,11 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		if (p2)
-			size = _economy.max_loan - p->current_loan;
-		else
-			size = IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000;
+		/* Loan the maximum amount or not? */
+		int32 loan = (p2) ? _economy.max_loan - p->current_loan : IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000;
 
-		p->money64 += size;
-		p->current_loan += size;
+		p->money64 += loan;
+		p->current_loan += loan;
 		UpdatePlayerMoney32(p);
 		InvalidatePlayerWindows(p);
 	}
@@ -74,55 +79,61 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Decrease the loan of your company.
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 when set, pays back the maximum loan permitting money (press CTRL)
+ */
 int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int32 size;
+	int32 loan;
 
 	p = GetPlayer(_current_player);
 
-	if (p->current_loan == 0)
-		return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
+	if (p->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
 
-	size = p->current_loan;
+	loan = p->current_loan;
 
-	// p2 is true while CTRL is pressed (repay all possible loan, or max money you have)
-	if (!p2) {
-	    if (_patches.ainew_active)
- 		    size = min(size, 10000);
-	    else
-		    size = min(size, IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000);
-	} else {	// only repay in chunks of 10K
-		size = min(size, p->player_money);
-		size = max(size, 10000);
-		size -= size % 10000;
+	/* p2 is true while CTRL is pressed (repay all possible loan, or max money you have)
+	 * Repay any loan in chunks of 10.000 pounds */
+	if (p2) {
+		loan = min(loan, p->player_money);
+		loan = max(loan, 10000);
+		loan -= loan % 10000;
+	} else {
+		loan = (_patches.ainew_active) ? min(loan, 10000) : min(loan, IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000);
 	}
 
-	if (p->player_money < size) {
-		SetDParam(0, size);
+	if (p->player_money < loan) {
+		SetDParam(0, loan);
 		return_cmd_error(STR_702E_REQUIRED);
 	}
 
 	if (flags & DC_EXEC) {
-		p->money64 -= size;
-		p->current_loan -= size;
+		p->money64 -= loan;
+		p->current_loan -= loan;
 		UpdatePlayerMoney32(p);
 		InvalidatePlayerWindows(p);
 	}
 	return 0;
 }
 
+/** Change the name of the company.
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str,old_str;
 	Player *p;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 4);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		p = DEREF_PLAYER(p1);
+		p = DEREF_PLAYER(_current_player);
 		old_str = p->name_1;
 		p->name_1 = str;
 		DeleteName(old_str);
@@ -134,24 +145,27 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Change the name of the president.
+ * @param x,y unused
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str,old_str;
 	Player *p;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 4);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		p = DEREF_PLAYER(p1);
+		p = DEREF_PLAYER(_current_player);
 		old_str = p->president_name_1;
 		p->president_name_1 = str;
 		DeleteName(old_str);
 
 		if (p->name_1 == STR_SV_UNNAMED) {
-			ttd_strlcat(
-				(char*)_decode_parameters, " Transport", sizeof(_decode_parameters));
+			ttd_strlcat((char*)_decode_parameters, " Transport", sizeof(_decode_parameters));
 			DoCommandByTile(0, p1, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();

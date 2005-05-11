@@ -111,7 +111,7 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 
 	if (m5 & 0x80) {
 		if (_current_player == OWNER_WATER)
-			return DoCommandByTile(tile, OWNER_WATER, 0, DC_EXEC, CMD_DESTROY_COMPANY_HQ);
+			return DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_DESTROY_COMPANY_HQ);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}
 
@@ -309,58 +309,45 @@ restart:
 
 extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
 
-/* p1      = relocate HQ
- * p1&0xFF = player whose HQ is up for relocation
+/** Build or relocate the HQ. This depends if the HQ is already built or not
+ * @param x,y the coordinates where the HQ will be built or relocated to
+ * @param p1 relocate HQ (set to some value, usually 1 or true)
+ * @param p2 unused
  */
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x,y);
 	Player *p = DEREF_PLAYER(_current_player);
-	int score;
-	int32 cost = 0;
+	int cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	if (CmdFailed(cost)) return CMD_ERROR;
 
-	if (cost == CMD_ERROR)
-		return CMD_ERROR;
+	if (p1) { /* Moving HQ */
+		int32 ret;
 
-	if (p1) {
-		int32 ret = DoCommand(
-			TileX(p->location_of_house) * 16, TileY(p->location_of_house) * 16,
-			p1 & 0xFF, 0, flags, CMD_DESTROY_COMPANY_HQ);
+		if (p->location_of_house == 0) return CMD_ERROR;
 
-		if (ret == CMD_ERROR)
-			return CMD_ERROR;
+		ret = DoCommandByTile(p->location_of_house, 0, 0, flags, CMD_DESTROY_COMPANY_HQ);
+
+		if (CmdFailed(ret)) return CMD_ERROR;
 
 		cost += ret;
+	} else { /* Building new HQ */
+		if (p->location_of_house != 0) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
-		score = UpdateCompanyRatingAndValue(p, false);
+		int score = UpdateCompanyRatingAndValue(p, false);
 
 		p->location_of_house = tile;
 
-		ModifyTile(tile + TILE_XY(0,0),
-			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-			0x80
-		);
-
-		ModifyTile(tile + TILE_XY(0,1),
-			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-			0x81
-		);
-
-		ModifyTile(tile + TILE_XY(1,0),
-			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-			0x82
-		);
-
-		ModifyTile(tile + TILE_XY(1,1),
-			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-			0x83
-		);
+		ModifyTile(tile + TILE_XY(0,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
+		ModifyTile(tile + TILE_XY(0,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
+		ModifyTile(tile + TILE_XY(1,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
+		ModifyTile(tile + TILE_XY(1,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
 		UpdatePlayerHouse(p, score);
 		InvalidateWindow(WC_COMPANY, (int)p->index);
 	}
@@ -368,17 +355,24 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-/*	p1 = owner of the HQ */
+/** Destroy a HQ.
+ * During normal gameplay you can only implicitely destroy a HQ when you are
+ * rebuilding it. Otherwise, only water can destroy it. Unfortunately there is
+ * no safeguard against a hacked client to call this command, unless we also add
+ * flags to the command table which commands can be called directly and which not.
+ * @param x,y tile coordinates where HQ is located to destroy
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	Player *p;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-	if ((int)p1 != OWNER_WATER)	// destruction was initiated by player
-		p = DEREF_PLAYER((byte)p1);
-	else {	// find player that has HQ flooded, and reset their location_of_house
+	/* Find player that has HQ flooded, and reset their location_of_house */
+	if (_current_player == OWNER_WATER)	{
 		bool dodelete = false;
 		FOR_ALL_PLAYERS(p) {
 			if (p->location_of_house == tile) {
@@ -386,9 +380,9 @@ int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 			}
 		}
-		if (!dodelete)
-			return CMD_ERROR;
-	}
+		if (!dodelete) return CMD_ERROR;
+	} else  /* Destruction was initiated by player */
+		p = DEREF_PLAYER(_current_player);
 
 	if (flags & DC_EXEC) {
 		p->location_of_house = 0; // reset HQ position

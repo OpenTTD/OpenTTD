@@ -12,13 +12,8 @@
 #include "industry.h"
 #include "town.h"
 
-static const byte _build_industry_types[4][12] = {
-	{ 1,  2, 4,  6, 8, 0, 3, 5,  9, 11, 18 },
-	{ 1, 14, 4, 13, 7, 0, 3, 9, 11, 15 },
-	{ 25, 13, 4, 23, 22, 11, 17, 10, 24, 19, 20, 21 },
-	{ 27, 30, 31, 33, 26, 28, 29, 32, 34, 35, 36 },
-};
-
+/* Present in table/build_industry.h" */
+extern const byte _build_industry_types[4][12];
 extern const byte _industry_type_costs[37];
 
 static void UpdateIndustryProduction(Industry *i);
@@ -30,7 +25,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
-			int ind_type = _build_industry_types[_opt.landscape][WP(w,def_d).data_1];
+			int ind_type = _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1];
 
 			SetDParam(0, (_price.build_industry >> 5) * _industry_type_costs[ind_type]);
 			DrawStringCentered(85, w->height - 21, STR_482F_COST, 0);
@@ -46,7 +41,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ:
-		if (DoCommandP(e->place.tile, _build_industry_types[_opt.landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
+		if (DoCommandP(e->place.tile, _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
 			ResetObjectToPlace();
 		break;
 
@@ -267,7 +262,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 
 void ShowBuildIndustryWindow(void)
 {
-	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt.landscape],0);
+	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
 }
 
 #define NEED_ALTERB	((_game_mode == GM_EDITOR || _cheats.setup_prod.value) && (i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES))

@@ -1698,7 +1698,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	h = _airport_size_y[p1];
 
 	cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (cost == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	st = GetStationAround(tile, w, h, -1);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
@@ -2643,6 +2643,11 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
 	InvalidateWindow(WC_STATION_VIEW, st->index);
 }
 
+/** Rename a station
+ * @param x,y unused
+ * @param p1 station ID that is to be renamed
+ * @param p2 unused
+ */
 int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str,old_str;
@@ -2654,8 +2659,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidStation(st) || !CheckOwnership(st->owner)) return CMD_ERROR;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 6);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		old_str = st->string_id;

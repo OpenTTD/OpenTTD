@@ -646,34 +646,53 @@ StringID GetCustomEngineName(int engine)
 }
 
 
-void AcceptEnginePreview(Engine *e, int player)
+void AcceptEnginePreview(Engine *e, PlayerID player)
 {
-	Player *p;
+	Player *p = DEREF_PLAYER(player);
 
 	SETBIT(e->player_avail, player);
 
-	p = DEREF_PLAYER(player);
-
-	UPDATE_PLAYER_RAILTYPE(e,p);
+	UPDATE_PLAYER_RAILTYPE(e, p);
 
 	e->preview_player = 0xFF;
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 }
 
+static PlayerID GetBestPlayer(PlayerID pp)
+{
+	const Player *p;
+	int32 best_hist;
+	PlayerID best_player;
+	uint mask = 0;
+
+	do {
+		best_hist = -1;
+		best_player = -1;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active && p->block_preview == 0 && !HASBIT(mask, p->index) &&
+					p->old_economy[0].performance_history > best_hist) {
+				best_hist = p->old_economy[0].performance_history;
+				best_player = p->index;
+			}
+		}
+
+		if (best_player == (PlayerID)-1) return -1;
+
+		SETBIT(mask, best_player);
+	} while (--pp != 0);
+
+	return best_player;
+}
+
 void EnginesDailyLoop(void)
 {
 	Engine *e;
-	int i,num;
-	Player *p;
-	uint mask;
-	int32 best_hist;
-	int best_player;
+	int i;
 
-	if (_cur_year >= 130)
-		return;
+	if (_cur_year >= 130) return;
 
-	for(e=_engines,i=0; i!=TOTAL_NUM_ENGINES; e++,i++) {
+	for (e = _engines, i = 0; i != TOTAL_NUM_ENGINES; e++, i++) {
 		if (e->flags & ENGINE_INTRODUCING) {
 			if (e->flags & ENGINE_PREVIEWING) {
 				if (e->preview_player != 0xFF && !--e->preview_wait) {
@@ -681,47 +700,45 @@ void EnginesDailyLoop(void)
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player++;
 				}
-			} else if (e->preview_player != 0xFF) {
-				num = e->preview_player;
-				mask = 0;
-				do {
-					best_hist = -1;
-					best_player = -1;
-					FOR_ALL_PLAYERS(p) {
-						if (p->is_active && p->block_preview == 0 && !HASBIT(mask,p->index) &&
-								p->old_economy[0].performance_history > best_hist) {
-							best_hist = p->old_economy[0].performance_history;
-							best_player = p->index;
-						}
-					}
-					if (best_player == -1) {
-						e->preview_player = 0xFF;
-						goto next_engine;
-					}
-					mask |= (1 << best_player);
-				} while (--num != 0);
+ 			} else if (e->preview_player != 0xFF) {
+				PlayerID best_player = GetBestPlayer(e->preview_player);
+
+				if (best_player == (PlayerID)-1) {
+					e->preview_player = 0xFF;
+					continue;
+				}
 
 				if (!IS_HUMAN_PLAYER(best_player)) {
-					/* TTDBUG: TTD has a bug here */
+					/* XXX - TTDBUG: TTD has a bug here ???? */
 					AcceptEnginePreview(e, best_player);
 				} else {
 					e->flags |= ENGINE_PREVIEWING;
 					e->preview_wait = 20;
-					if (IS_INTERACTIVE_PLAYER(best_player)) {
+					if (IS_INTERACTIVE_PLAYER(best_player))
 						ShowEnginePreviewWindow(i);
-					}
 				}
 			}
 		}
-		next_engine:;
 	}
 }
 
+/** Accept an engine prototype. XXX - it is possible that the top-player
+ * changes while you are waiting to accept the offer? Then it becomes invalid
+ * @param x,y unused
+ * @param p1 engine-prototype offered
+ * @param p2 unused
+ */
 int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (flags & DC_EXEC) {
-		AcceptEnginePreview(&_engines[p1], _current_player);
-	}
+	Engine *e;
+	if (!IsEngineIndex(p1)) return CMD_ERROR;
+
+	e = DEREF_ENGINE(p1);
+	if (GetBestPlayer(e->preview_player) != _current_player) return CMD_ERROR;
+
+	if (flags & DC_EXEC)
+		AcceptEnginePreview(e, _current_player);
+
 	return 0;
 }
 
@@ -818,13 +835,19 @@ void EnginesMonthlyLoop(void)
 	AdjustAvailAircraft();
 }
 
+/** Rename an engine.
+ * @param x,y unused
+ * @param p1 engine ID to rename
+ * @param p2 unused
+ */
 int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 
+	if (!IsEngineIndex(p1)) return CMD_ERROR;
+
 	str = AllocateNameUnique((const char*)_decode_parameters, 0);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		StringID old_str = _engine_name_strings[p1];
@@ -926,7 +949,7 @@ bool IsEngineBuildable(uint engine, byte type)
 	const Engine *e;
 
 	// check if it's an engine that is in the engine array
-	if (engine >= TOTAL_NUM_ENGINES) return false;
+	if (!IsEngineIndex(engine)) return false;
 
 	e = DEREF_ENGINE(engine);
 

@@ -1621,7 +1621,11 @@ void MaybeReplaceVehicle(Vehicle *v)
 	_current_player = OWNER_NONE;
 }
 
-
+/** Give a custom name to your vehicle
+ * @param x,y unused
+ * @param p1 vehicle ID to name
+ * @param p2 unused
+ */
 int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -1631,12 +1635,10 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (!CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 2);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		StringID old_str = v->string_id;

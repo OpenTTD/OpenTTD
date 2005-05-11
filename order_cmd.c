@@ -140,28 +140,31 @@ void AssignOrder(Order *order, Order data)
 	order->station = data.station;
 }
 
-/**
- *
- * Add an order to the orderlist of a vehicle
- *
- * @param veh_sel      First 16 bits are the ID of the vehicle. The next 16 are the selected order (if any)
- *                       If the lastone is given, order will be inserted above thatone
- * @param packed_order Packed order to insert
- *
+/** Add an order to the orderlist of a vehicle.
+ * @param x,y unused
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0 - 15) - ID of the vehicle (p1 & 0xFFFF)
+ * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
+ *                        the order will be inserted before that one (p1 & 0xFFFF0000)>>16
+ *                        only the first 8 bytes used currently (bit 16 - 23) (max 255)
+ * @param p2 packed order to insert
  */
-int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_order)
+int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	int sel         = veh_sel >> 16;
-	Order new_order = UnpackOrder(packed_order);
+	VehicleID veh = p1 & 0xFFFF;
+	OrderID sel_ord = p1 >> 16;
+	Order new_order = UnpackOrder(p2);
 
-	if (!IsVehicleIndex(veh_sel & 0xFFFF)) return CMD_ERROR;
-	v = GetVehicle(veh_sel & 0xFFFF);
+	if (!IsVehicleIndex(veh)) return CMD_ERROR;
+	v = GetVehicle(veh);
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
+	/* Check if the inserted order is to the correct destination (owner, type),
+	 * and has the correct flags if any */
 	switch (new_order.type) {
 		case OT_GOTO_STATION: {
-			const Station* st;
+			const Station *st;
 
 			if (!IsStationIndex(new_order.station)) return CMD_ERROR;
 			st = GetStation(new_order.station);
@@ -192,8 +195,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 					if (!(st->facilities & FACIL_AIRPORT)) return CMD_ERROR;
 					break;
 
-				default:
-					return CMD_ERROR;
+				default: return CMD_ERROR;
 			}
 
 			switch (new_order.flags) {
@@ -205,8 +207,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 				case OF_NON_STOP | OF_UNLOAD:
 					break;
 
-				default:
-					return CMD_ERROR;
+				default: return CMD_ERROR;
 			}
 			break;
 		}
@@ -248,8 +249,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 						if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
 						break;
 
-					default:
-						return CMD_ERROR;
+					default: return CMD_ERROR;
 				}
 			}
 
@@ -260,8 +260,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 				case OF_NON_STOP | OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
 					break;
 
-				default:
-					return CMD_ERROR;
+				default: return CMD_ERROR;
 			}
 			break;
 		}
@@ -281,35 +280,30 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 				case OF_NON_STOP:
 					break;
 
-				default:
-					return CMD_ERROR;
+				default: return CMD_ERROR;
 			}
 			break;
 		}
 
-		default:
-			return CMD_ERROR;
+		default: return CMD_ERROR;
 	}
 
-	if (sel > v->num_orders)
-		return_cmd_error(STR_EMPTY);
+	if (sel_ord > v->num_orders) return CMD_ERROR;
 
-	if (IsOrderPoolFull())
-		return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+	if (IsOrderPoolFull()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
 	/* XXX - This limit is only here because the backuppedorders can't
-	    handle any more then this.. */
-	if (v->num_orders >= 40)
-		return_cmd_error(STR_8832_TOO_MANY_ORDERS);
+	 * handle any more then this.. */
+	if (v->num_orders >= 40) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 
 	/* For ships, make sure that the station is not too far away from the
 	 * previous destination, for human players with new pathfinding disabled */
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
-		sel != 0 && GetVehicleOrder(v, sel - 1)->type == OT_GOTO_STATION
+		sel_ord != 0 && GetVehicleOrder(v, sel_ord - 1)->type == OT_GOTO_STATION
 		&& !_patches.new_pathfinding_all) {
 
 		int dist = DistanceManhattan(
-			GetStation(GetVehicleOrder(v, sel - 1)->station)->xy,
+			GetStation(GetVehicleOrder(v, sel_ord - 1)->station)->xy,
 			GetStation(new_order.station)->xy // XXX type != OT_GOTO_STATION?
 		);
 		if (dist >= 130)
@@ -317,10 +311,8 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 	}
 
 	if (flags & DC_EXEC) {
-		Order *new;
 		Vehicle *u;
-
-		new = AllocateOrder();
+		Order *new = AllocateOrder();
 		AssignOrder(new, new_order);
 
 		/* Create new order and link in list */
@@ -329,9 +321,9 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 		} else {
 			/* Try to get the previous item (we are inserting above the
 			    selected) */
-			Order *order = GetVehicleOrder(v, sel - 1);
+			Order *order = GetVehicleOrder(v, sel_ord - 1);
 
-			if (order == NULL && GetVehicleOrder(v, sel) != NULL) {
+			if (order == NULL && GetVehicleOrder(v, sel_ord) != NULL) {
 				/* There is no previous item, so we are altering v->orders itself
 				    But because the orders can be shared, we copy the info over
 				    the v->orders, so we don't have to change the pointers of
@@ -356,14 +348,13 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 			u->num_orders++;
 
 			/* If the orderlist was empty, assign it */
-			if (u->orders == NULL)
-				u->orders = v->orders;
+			if (u->orders == NULL) u->orders = v->orders;
 
 			assert(v->orders == u->orders);
 
 			/* If there is added an order before the current one, we need
 			to update the selected order */
-			if (sel <= u->cur_order_index) {
+			if (sel_ord <= u->cur_order_index) {
 				uint cur = u->cur_order_index + 1;
 				/* Check if we don't go out of bound */
 				if (cur < u->num_orders)
@@ -382,10 +373,9 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 packed_o
 	return 0;
 }
 
-/**
- *
- * Declone an order-list
- *
+/** Declone an order-list
+ * @param *dst delete the orders of this vehicle
+ * @param flags execution flags
  */
 static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 {
@@ -399,50 +389,43 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 	return 0;
 }
 
-/**
- *
- * Delete an order from the orderlist of a vehicle
- *
- * @param vehicle_id The ID of the vehicle
- * @param selected   The order to delete
- *
+/** Delete an order from the orderlist of a vehicle.
+ * @param x,y unused
+ * @param p1 the ID of the vehicle
+ * @param p2 the order to delete (max 255)
  */
-int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selected)
+int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
-	Vehicle *u;
-	uint sel   = selected;
+	Vehicle *v, *u;
+	VehicleID veh_id = p1;
+	OrderID sel_ord = p2;
 	Order *order;
 
-	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
-	v = GetVehicle(vehicle_id);
+	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
+	v = GetVehicle(veh_id);
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	/* XXX -- Why is this here? :s */
-	_error_message = STR_EMPTY;
-
 	/* If we did not select an order, we maybe want to de-clone the orders */
-	if (sel >= v->num_orders)
+	if (sel_ord >= v->num_orders)
 		return DecloneOrder(v, flags);
 
-	order = GetVehicleOrder(v, sel);
-	if (order == NULL)
-		return CMD_ERROR;
+	order = GetVehicleOrder(v, sel_ord);
+	if (order == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (GetVehicleOrder(v, sel - 1) == NULL) {
-			if (GetVehicleOrder(v, sel + 1) != NULL) {
+		if (GetVehicleOrder(v, sel_ord - 1) == NULL) {
+			if (GetVehicleOrder(v, sel_ord + 1) != NULL) {
 				/* First item, but not the last, so we need to alter v->orders
 				    Because we can have shared order, we copy the data
 				    from the next item over the deleted */
-				order = GetVehicleOrder(v, sel + 1);
+				order = GetVehicleOrder(v, sel_ord + 1);
 				SwapOrders(v->orders, order);
 			} else {
 				/* Last item, so clean the list */
 				v->orders = NULL;
 			}
 		} else {
-			GetVehicleOrder(v, sel - 1)->next = order->next;
+			GetVehicleOrder(v, sel_ord - 1)->next = order->next;
 		}
 
 		/* Give the item free */
@@ -453,20 +436,18 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selec
 		while (u != NULL) {
 			u->num_orders--;
 
-			if (sel < u->cur_order_index)
+			if (sel_ord < u->cur_order_index)
 				u->cur_order_index--;
 
 			/* If we removed the last order, make sure the shared vehicles
-			    also set their orders to NULL */
-			if (v->orders == NULL)
-				u->orders = NULL;
+			 * also set their orders to NULL */
+			if (v->orders == NULL) u->orders = NULL;
 
 			assert(v->orders == u->orders);
 
 			/* NON-stop flag is misused to see if a train is in a station that is
-			    on his order list or not */
-			if (sel == u->cur_order_index &&
-					u->current_order.type == OT_LOADING &&
+			 * on his order list or not */
+			if (sel_ord == u->cur_order_index && u->current_order.type == OT_LOADING &&
 					HASBIT(u->current_order.flags, OFB_NON_STOP)) {
 				u->current_order.flags = 0;
 			}
@@ -483,43 +464,35 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 selec
 	return 0;
 }
 
-/**
- *
- * Goto next order of order-list
- *
- * @param vehicle_id The ID of the vehicle
- *
+/** Goto next order of order-list.
+ * @param x,y unused
+ * @param p1 The ID of the vehicle which order is skipped
+ * @param p2 unused
  */
-int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_used)
+int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	VehicleID veh_id = p1;
 
-	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
-	v = GetVehicle(vehicle_id);
+	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
+	v = GetVehicle(veh_id);
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Goto next order */
-		{
-			byte b = v->cur_order_index + 1;
-			if (b >= v->num_orders)
-				b = 0;
+		OrderID b = v->cur_order_index + 1;
+		if (b >= v->num_orders) b = 0;
 
-			v->cur_order_index = b;
+		v->cur_order_index = b;
 
-			if (v->type == VEH_Train)
-				v->u.rail.days_since_order_progr = 0;
+		if (v->type == VEH_Train) v->u.rail.days_since_order_progr = 0;
 
-			if (v->type == VEH_Road)
-				ClearSlot(v, v->u.road.slot);
-		}
+		if (v->type == VEH_Road) ClearSlot(v, v->u.road.slot);
 
 		/* NON-stop flag is misused to see if a train is in a station that is
-		    on his order list or not */
-		if (v->current_order.type == OT_LOADING &&
-				HASBIT(v->current_order.flags, OFB_NON_STOP)) {
+		 * on his order list or not */
+		if (v->current_order.type == OT_LOADING && HASBIT(v->current_order.flags, OFB_NON_STOP))
 			v->current_order.flags = 0;
-		}
 
 		InvalidateVehicleOrder(v);
 	}
@@ -532,37 +505,39 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 vehicle_id, uint32 not_use
 }
 
 
-/**
- *
- * Modify an order in the orderlist of a vehicle
- *
- * @param veh_sel      First 16 bits are the ID of the vehicle. The next 16 are the selected order (if any)
- *                       If the lastone is given, order will be inserted above thatone
- * @param mode         Mode to change the order to
- *
+/** Modify an order in the orderlist of a vehicle.
+ * @param x,y unused
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0 - 15) - ID of the vehicle (p1 & 0xFFFF)
+ * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
+ *                        the order will be inserted before that one (p1 & 0xFFFF0000)>>16
+ *                        only the first 8 bytes used currently (bit 16 - 23) (max 255)
+ * @param p2 mode to change the order to (always set)
  */
-int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
+int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	byte sel = veh_sel >> 16;
 	Order *order;
+	OrderID sel_ord = p1 >> 16; // XXX - automatically truncated to 8 bits.
+	VehicleID veh = p1 & 0xFFFF;
 
-	if (!IsVehicleIndex(veh_sel & 0xFFFF)) return CMD_ERROR;
-	v = GetVehicle(veh_sel & 0xFFFF);
+	if (!IsVehicleIndex(veh)) return CMD_ERROR;
+	if (p2 != OFB_FULL_LOAD || p2 != OFB_UNLOAD || p2 != OFB_NON_STOP) return CMD_ERROR;
+
+	v = GetVehicle(veh);
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
-	if (sel >= v->num_orders)
-		return CMD_ERROR;
+	if (sel_ord >= v->num_orders) return CMD_ERROR;
 
-	order = GetVehicleOrder(v, sel);
+	order = GetVehicleOrder(v, sel_ord);
 	if (order->type != OT_GOTO_STATION &&
-			(order->type != OT_GOTO_DEPOT || mode == OFB_UNLOAD) &&
-			(order->type != OT_GOTO_WAYPOINT || mode != OFB_NON_STOP))
+		 (order->type != OT_GOTO_DEPOT || p2 == OFB_UNLOAD) &&
+		 (order->type != OT_GOTO_WAYPOINT || p2 != OFB_NON_STOP))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		switch (mode) {
+		switch (p2) {
 		case OFB_FULL_LOAD:
 			TOGGLEBIT(order->flags, OFB_FULL_LOAD);
 			if (order->type != OT_GOTO_DEPOT)
@@ -575,9 +550,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
 		case OFB_NON_STOP:
 			TOGGLEBIT(order->flags, OFB_NON_STOP);
 			break;
-
-			default:
-				return CMD_ERROR;
+		default: NOT_REACHED();
 		}
 
 		/* Update the windows and full load flags, also for vehicles that share the same order list */
@@ -585,7 +558,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 veh_sel, uint32 mode)
 			Vehicle *u = GetFirstVehicleFromSharedList(v);
 			while (u != NULL) {
 				/* toggle u->current_order "Full load" flag if it changed */
-				if (sel == u->cur_order_index &&
+				if (sel_ord == u->cur_order_index &&
 						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD))
 					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
 				InvalidateVehicleOrder(u);

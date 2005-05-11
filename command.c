@@ -208,7 +208,6 @@ static CommandProc * const _command_proc_table[] = {
 	CmdTrainGotoDepot,						/* 39 */
 	CmdForceTrainProceed,					/* 40 */
 	CmdReverseTrainDirection,			/* 41 */
-	/***************************************************/
 
 	CmdModifyOrder,								/* 42 */
 	CmdSkipOrder,									/* 43 */
@@ -237,6 +236,7 @@ static CommandProc * const _command_proc_table[] = {
 
 	CmdSellAircraft,							/* 59 */
 	CmdStartStopAircraft,					/* 60 */
+	/***************************************************/
 	CmdBuildAircraft,							/* 61 */
 	CmdSendAircraftToHangar,			/* 62 */
 	CmdChangeAircraftServiceInt,	/* 63 */
@@ -302,7 +302,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdStartScenario,							/* 109 */
 	CmdBuildSignalTrack,					/* 110 */
 	CmdRemoveSignalTrack,					/* 111 */
-	CmdDestroyCompanyHQ,					/* 112 */
+	CmdDestroyCompanyHQ,					/* 112    <-- done */
 	CmdGiveMoney,									/* 113 */
 	CmdChangePatchSetting,				/* 114 */
 	CmdReplaceVehicle,						/* 115 */

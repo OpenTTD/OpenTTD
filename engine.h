@@ -66,10 +66,10 @@ typedef struct Engine {
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
 	byte lifelength;
 	byte flags;
-	byte preview_player;
+	PlayerID preview_player;
 	byte preview_wait;
 	byte railtype;
-	byte player_avail;
+	PlayerID player_avail;
 	byte type;				// type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
 
@@ -128,7 +128,7 @@ void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw);
 void DrawShipEngineInfo(int engine, int x, int y, int maxw);
 void DrawAircraftEngineInfo(int engine, int x, int y, int maxw);
 
-void AcceptEnginePreview(Engine *e, int player);
+void AcceptEnginePreview(Engine *e, PlayerID player);
 
 void LoadCustomEngineNames(void);
 void DeleteCustomEngineNames(void);
@@ -150,8 +150,20 @@ enum {
 	ROAD_ENGINES_INDEX = NUM_TRAIN_ENGINES,
 };
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
-#define DEREF_ENGINE(i) (&_engines[i])
+#define FOR_ALL_ENGINES(e) for (e = _engines; e != endof(_engines); e++)
+#define DEREF_ENGINE(i) (GetEngine(i))
+static inline Engine* GetEngine(uint i)
+{
+  assert(i < lengthof(_engines));
+  return &_engines[i];
+}
+
 VARDEF StringID _engine_name_strings[TOTAL_NUM_ENGINES];
+
+static inline bool IsEngineIndex(uint index)
+{
+	return index < TOTAL_NUM_ENGINES;
+}
 
 /* Access Vehicle Data */
 //#include "table/engines.h"

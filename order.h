@@ -69,7 +69,7 @@ typedef struct Order {
 
 typedef struct {
 	VehicleID clone;
-	byte orderindex;
+	OrderID orderindex;
 	Order order[41];
 	uint16 service_interval;
 	char name[32];

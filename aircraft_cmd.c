@@ -358,7 +358,11 @@ static void DoDeleteAircraft(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-// p1 = vehicle
+/** Sell an aircraft.
+ * @param x,y unused
+ * @param p1 vehicle ID to be sold
+ * @param p2 unused
+ */
 int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -383,7 +387,11 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return -(int32)v->value;
 }
 
-// p1 = vehicle
+/** Start/Stop an aircraft.
+ * @param x,y unused
+ * @param p1 aircraft to start/stop
+ * @param p2 unused
+ */
 int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -392,13 +400,11 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	// cannot stop airplane when in flight, or when taking off / landing
-	if (v->u.air.state >= STARTTAKEOFF) {
+	if (v->u.air.state >= STARTTAKEOFF)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
-	}
 
 	if (flags & DC_EXEC) {
 		v->vehstatus ^= VS_STOPPED;

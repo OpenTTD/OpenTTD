@@ -1478,8 +1478,10 @@ int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* p1 = vehicle
- * p2 = new service int
+/** Change the service interval for trains.
+ * @param x,y unused
+ * @param p1 vehicle ID that is being service-interval-changed
+ * @param p2 new service interval (0 - 65536)
  */
 int32 CmdChangeTrainServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1489,8 +1491,7 @@ int32 CmdChangeTrainServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->service_interval = (uint16)p2;

@@ -159,7 +159,7 @@ typedef struct Player {
 	byte player_money_fraction;
 	byte max_railtype;
 	byte block_preview;
-	byte index;
+	PlayerID index;
 
 	uint16 cargo_types; /* which cargo types were transported the last year */
 

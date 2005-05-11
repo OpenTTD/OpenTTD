@@ -64,18 +64,13 @@ typedef struct DrawIndustrySpec4Struct {
 	byte image_3;
 } DrawIndustrySpec4Struct;
 
-
-
-#include "table/industry_land.h"
-
-
 typedef struct IndustryTileTable {
 	TileIndexDiffC ti;
 	byte map5;
 } IndustryTileTable;
 
 typedef struct IndustrySpec {
-	const IndustryTileTable * const * table;
+	const IndustryTileTable *const *table;
 	byte num_table;
 	byte a,b,c;
 	byte produced_cargo[2];
@@ -84,6 +79,7 @@ typedef struct IndustrySpec {
 	byte check_proc;
 } IndustrySpec;
 
+#include "table/industry_land.h"
 #include "table/build_industry.h"
 
 typedef enum IndustryType {
@@ -1549,47 +1545,59 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
-/* p1 = industry type 0-36 */
+/** Build/Fund an industry
+ * @param x,y coordinates where industry is built
+ * @param p1 industry type @see build_industry.h and @see industry.h
+ * @param p2 unused
+ */
 int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
 	Town *t;
+	Industry *i;
+	TileIndex tile = TILE_FROM_XY(x,y);
 	int num;
 	const IndustryTileTable * const *itt;
 	const IndustryTileTable *it;
-	Industry *i;
 	const IndustrySpec *spec;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	if (!CheckSuitableIndustryPos(tile))
-		return CMD_ERROR;
+	if (!CheckSuitableIndustryPos(tile)) return CMD_ERROR;
+
+	/* Check if the to-be built/founded industry is available for this climate.
+	 * Unfortunately we have no easy way of checking, except for looping the table */
+	{ const byte *i;
+		bool found = false;
+		for (i = &_build_industry_types[_opt_ptr->landscape][0]; i != endof(_build_industry_types[_opt_ptr->landscape]); i++) {
+			if (*i == p1) {found = true; break;}
+		}
+		if (!found) return CMD_ERROR;
+	}
 
 	spec = &_industry_spec[p1];
+	/* If the patch for non-raw-material industries is not on, you cannot build raw-material industries.
+	 * Raw material industries are industries that do not accept cargo (at least for now) */
+	if (!_patches.build_rawmaterial_ind && spec->accepts_cargo[0] == 255 &&
+		  spec->accepts_cargo[1] == 255 && spec->accepts_cargo[2] == 255) return CMD_ERROR;
 
-	if (!_check_new_industry_procs[spec->check_proc](tile, p1))
-		return CMD_ERROR;
+	if (!_check_new_industry_procs[spec->check_proc](tile, p1)) return CMD_ERROR;
 
-	if ((t=CheckMultipleIndustryInTown(tile, p1)) == NULL)
-		return CMD_ERROR;
+	if ((t = CheckMultipleIndustryInTown(tile, p1)) == NULL) return CMD_ERROR;
 
 	num = spec->num_table;
 	itt = spec->table;
 
 	do {
-		if (--num < 0)
-			return_cmd_error(STR_0239_SITE_UNSUITABLE);
-	} while (!CheckIfIndustryTilesAreFree(tile, it=itt[num], p1, t));
+		if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1, t));
 
 
-	if (!CheckIfTooCloseToIndustry(tile, p1))
-		return CMD_ERROR;
+	if (!CheckIfTooCloseToIndustry(tile, p1)) return CMD_ERROR;
 
-	if ( (i = AllocateIndustry()) == NULL)
-		return CMD_ERROR;
+	if ( (i = AllocateIndustry()) == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC)
-		DoCreateNewIndustry(i, tile, p1, it, t, 0x10);
+		DoCreateNewIndustry(i, tile, p1, it, t, OWNER_NONE);
 
 	return (_price.build_industry >> 5) * _industry_type_costs[p1];
 }
