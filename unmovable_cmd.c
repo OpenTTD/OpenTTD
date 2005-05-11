@@ -366,13 +366,14 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile;
 	Player *p;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
 	/* Find player that has HQ flooded, and reset their location_of_house */
 	if (_current_player == OWNER_WATER)	{
+		tile = TILE_FROM_XY(x,y);
 		bool dodelete = false;
 		FOR_ALL_PLAYERS(p) {
 			if (p->location_of_house == tile) {
@@ -381,15 +382,17 @@ int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 		if (!dodelete) return CMD_ERROR;
-	} else  /* Destruction was initiated by player */
+	} else /* Destruction was initiated by player */
 		p = DEREF_PLAYER(_current_player);
 
+	if (p->location_of_house == 0) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
+		DoClearSquare(p->location_of_house + TILE_XY(0,0));
+		DoClearSquare(p->location_of_house + TILE_XY(0,1));
+		DoClearSquare(p->location_of_house + TILE_XY(1,0));
+		DoClearSquare(p->location_of_house + TILE_XY(1,1));
 		p->location_of_house = 0; // reset HQ position
-		DoClearSquare(tile + TILE_XY(0,0));
-		DoClearSquare(tile + TILE_XY(0,1));
-		DoClearSquare(tile + TILE_XY(1,0));
-		DoClearSquare(tile + TILE_XY(1,1));
 		InvalidateWindow(WC_COMPANY, (int)p->index);
 	}
 
