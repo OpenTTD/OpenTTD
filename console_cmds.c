@@ -43,7 +43,7 @@ DEF_CONSOLE_HOOK(ConHookServerOnly)
 	if (!NetworkAvailable()) return false;
 
 	if (!_network_server) {
-		IConsoleError("This variable is only available to a network server.");
+		IConsoleError("This command/variable is only available to a network server.");
 		return false;
 	}
 	return true;
@@ -54,7 +54,7 @@ DEF_CONSOLE_HOOK(ConHookClientOnly)
 	if (!NetworkAvailable()) return false;
 
 	if (_network_server) {
-		IConsoleError("This command is not available to a network server.");
+		IConsoleError("This command/variable is not available to a network server.");
 		return false;
 	}
 	return true;
@@ -65,7 +65,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 	if (!NetworkAvailable()) return false;
 
 	if (!_networking) {
-		IConsoleError("Not connected. This command is only available in multiplayer.");
+		IConsoleError("Not connected. This command/variable is only available in multiplayer.");
 		return false;
 	}
 	return true;
@@ -74,7 +74,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 DEF_CONSOLE_HOOK(ConHookNoNetwork)
 {
 	if (_networking) {
-		IConsoleError("This command is forbidden in multiplayer.");
+		IConsoleError("This command/variable is forbidden in multiplayer.");
 		return false;
 	}
 	return true;
@@ -1042,6 +1042,7 @@ DEF_CONSOLE_HOOK(ConHookRconPW)
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
+		if (_local_player >= MAX_PLAYERS) return true; // dedicated server
 		IConsolePrintF(_iconsole_color_warning, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
 		return true;
 	}
