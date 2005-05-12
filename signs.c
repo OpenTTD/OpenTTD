@@ -95,12 +95,12 @@ static SignStruct *AllocateSign(void)
 	return NULL;
 }
 
-/**
- *
- * Place a sign at the given x/y
- *
- * @param p1 player number
- * @param p2 not used
+/** Place a sign at the given coordinates. Ownership of sign has
+ * no effect whatsoever except for the colour the sign gets for easy recognition,
+ * but everybody is able to rename/remove it.
+ * @param x,y coordinates to place sign at
+ * @param p1 unused
+ * @param p2 unused
  */
 int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -108,15 +108,14 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try to locate a new sign */
 	ss = AllocateSign();
-	if (ss == NULL)
-		return_cmd_error(STR_2808_TOO_MANY_SIGNS);
+	if (ss == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
 		ss->str = STR_280A_SIGN;
 		ss->x = x;
 		ss->y = y;
-		ss->owner = p1;
+		ss->owner = _current_player; // owner of the sign; just eyecandy
 		ss->z = GetSlopeZ(x,y);
 		UpdateSignVirtCoords(ss);
 		MarkSignDirty(ss);
@@ -128,37 +127,35 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/**
- * Rename a sign
- *
- * @param sign_id Index of the sign
- * @param new owner, if OWNER_NONE, sign will be removed, except in scenario editor, where signs have no owner
- * and ownership has no influence of any kind
+/** Rename a sign. If the new name of the sign is empty, we assume
+ * the user wanted to delete it. So delete it. Ownership of signs
+ * has no meaning/effect whatsoever except for eyecandy
+ * @param x,y unused
+ * @param p1 index of the sign to be renamed/removed
+ * @param p2 unused
  */
-int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
+int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str;
 	SignStruct *ss;
 
-	/* If GetDParam(0) == nothing, we delete the sign */
-	if (GetDParam(0) != 0 && (_game_mode == GM_EDITOR || owner != OWNER_NONE)) {
+	/* If GetDParam(0) != 0 means the new text for the sign is non-empty.
+	 * So rename the sign. If it is empty, it has no name, so delete it */
+	if (GetDParam(0) != 0) {
 		/* Create the name */
-		str = AllocateName((const char*)_decode_parameters, 0);
-		if (str == 0)
-			return CMD_ERROR;
+		StringID str = AllocateName((const char*)_decode_parameters, 0);
+		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			ss = GetSign(sign_id);
-
-			MarkSignDirty(ss);
+			ss = GetSign(p1);
 
 			/* Delete the old name */
 			DeleteName(ss->str);
 			/* Assign the new one */
 			ss->str = str;
-			ss->owner = owner;
+			ss->owner = _current_player;
 
-			/* Update */
+			/* Update; mark sign dirty twice, because it can either becom longer, or shorter */
+			MarkSignDirty(ss);
 			UpdateSignVirtCoords(ss);
 			MarkSignDirty(ss);
 			InvalidateWindow(WC_SIGN_LIST, 0);
@@ -167,10 +164,9 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 sign_id, uint32 owner)
 			/* Free the name, because we did not assign it yet */
 			DeleteName(str);
 		}
-	} else {
-		/* Delete sign */
+	} else { /* Delete sign */
 		if (flags & DC_EXEC) {
-			ss = GetSign(sign_id);
+			ss = GetSign(p1);
 
 			/* Delete the name */
 			DeleteName(ss->str);

@@ -1527,41 +1527,40 @@ static void DoAcquireCompany(Player *p)
 
 extern int GetAmountOwnedBy(Player *p, byte owner);
 
+/** Acquire shares in an opposing company.
+ * @param x,y unused
+ * @param p1 player to buy the shares from
+ * @param p2 unused
+ */
 int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int64 cost;
-	byte *b;
-	int i;
+
+	/* Check if buying shares is allowed (protection against modified clients */
+	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
 
-
-	if (_cur_year - p->inaugurated_year < 6) {
-		_error_message = STR_7080_PROTECTED;
-		return CMD_ERROR;
-	}
-
-	/* Check if buying shares is allowed (protection against modified clients */
-	if (!_patches.allow_shares)
-		return CMD_ERROR;
+	/* Protect new companies from hostile takeovers */
+	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0)
-		return 0;
+	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) return 0;
 
-	/* We can not buy out a real player in networking */
-	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai)
-		return 0;
+	/* We can not buy out a real player (temporarily). TODO: well, enable it obviously */
+	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) return 0;
 
 	cost = CalculateCompanyValue(p) >> 2;
 	if (flags & DC_EXEC) {
-		b = p->share_owners;
+		int i;
+		byte *b = p->share_owners;
+
 		while (*b != 0xFF) b++; /* share owners is guaranteed to contain at least one 0xFF */
 		*b = _current_player;
 
-		for(i=0;p->share_owners[i] == _current_player;) {
+		for (i = 0; p->share_owners[i] == _current_player;) {
 			if (++i == 4) {
 				p->bankrupt_value = 0;
 				DoAcquireCompany(p);
@@ -1573,29 +1572,31 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
+/** Sell shares in an opposing company.
+ * @param x,y unused
+ * @param p1 player to sell the shares from
+ * @param p2 unused
+ */
 int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int64 cost;
-	byte *b;
+
+	/* Check if buying shares is allowed (protection against modified clients */
+	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
 
-	/* Check if selling shares is allowed (protection against modified clients */
-	if (!_patches.allow_shares)
-		return CMD_ERROR;
-
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, _current_player) == 0)
-		return 0;
+	if (GetAmountOwnedBy(p, _current_player) == 0) return 0;
 
 	/* adjust it a little to make it less profitable to sell and buy */
 	cost = CalculateCompanyValue(p) >> 2;
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		b = p->share_owners;
+		byte *b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
 		*b = 0xFF;
 		InvalidateWindow(WC_COMPANY, (int)p1);
@@ -1603,12 +1604,27 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
+/** Buy up another company.
+ * When a competing company is gone bankrupt you get the chance to purchase
+ * that company.
+ * @todo currently this only works for AI players
+ * @param x,y unused
+ * @param p1 player/company to buy up
+ * @param p2 unused
+ */
 int32 CmdBuyCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
+
+	/* Disable takeovers in multiplayer games */
+	if (p1 >= MAX_PLAYERS || _networking) return CMD_ERROR;
+
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = DEREF_PLAYER(p1);
-	if (flags & 1) {
+
+	if (!p->is_ai) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
 		DoAcquireCompany(p);
 	}
 	return p->bankrupt_value;

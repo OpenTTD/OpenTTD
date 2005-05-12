@@ -570,27 +570,34 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/**
- *
- * Clone/share/copy an order-list of an other vehicle
- *
- * @param veh1_veh2 First 16 bits are of destination vehicle, last 16 of source vehicle
- * @param mode      Mode of cloning (CO_SHARE, CO_COPY, CO_UNSHARE)
- *
+/** Clone/share/copy an order-list of an other vehicle.
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0-15) - destination vehicle to clone orders to (p1 & 0xFFFF)
+ * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
+ * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
  */
-int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
+int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *dst = GetVehicle(veh1_veh2 & 0xFFFF);
+	Vehicle *dst;
+	VehicleID veh_src = (p1 >> 16) & 0xFFFF;
+	VehicleID veh_dst = p1 & 0xFFFF;
 
-	if (dst->type == 0 || dst->owner != _current_player)
-		return CMD_ERROR;
+	if (!IsVehicleIndex(veh_dst)) return CMD_ERROR;
 
-	switch(mode) {
+	dst = GetVehicle(veh_dst);
+
+	if (dst->type == 0 || !CheckOwnership(dst->owner)) return CMD_ERROR;
+
+	switch (p2) {
 		case CO_SHARE: {
-			Vehicle *src = GetVehicle(veh1_veh2 >> 16);
+			Vehicle *src;
+
+			if (!IsVehicleIndex(veh_src)) return CMD_ERROR;
+
+			src = GetVehicle(veh_src);
 
 			/* Sanity checks */
-			if (src->type == 0 || src->owner != _current_player || dst->type != src->type || dst == src)
+			if (src->type == 0 || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
@@ -631,11 +638,15 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
 		} break;
 
 		case CO_COPY: {
-			Vehicle *src = GetVehicle(veh1_veh2 >> 16);
+			Vehicle *src;
 			int delta;
 
+			if (!IsVehicleIndex(veh_src)) return CMD_ERROR;
+
+			src = GetVehicle(veh_src);
+
 			/* Sanity checks */
-			if (src->type == 0 || src->owner != _current_player || dst->type != src->type || dst == src)
+			if (src->type == 0 || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't copy all the orders from busses (and visa versa) */
@@ -685,8 +696,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode)
 			}
 		} break;
 
-		case CO_UNSHARE:
-			return DecloneOrder(dst, flags);
+		case CO_UNSHARE: return DecloneOrder(dst, flags);
 	}
 
 	return 0;

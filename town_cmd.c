@@ -1014,12 +1014,22 @@ static Town *AllocateTown(void)
 	return NULL;
 }
 
+/** Create a new town.
+ * This obviously only works in the scenario editor. Function not removed
+ * as it might be possible in the future to fund your own town :)
+ * @param x,y coordinates where town is built
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TILE_FROM_XY(x,y);
 	TileInfo ti;
 	Town *t;
 	uint32 townnameparts;
+
+	/* Only in the scenario editor */
+	if (_game_mode != GM_EDITOR) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -1042,8 +1052,7 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// Allocate town struct
 	t = AllocateTown();
-	if (t == NULL)
-		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
+	if (t == NULL) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	// Create the town
 	if (flags & DC_EXEC) {
@@ -1428,19 +1437,26 @@ static void ClearTownHouse(Town *t, uint tile) {
 	if (eflags & 0x10) DoClearTownHouseHelper(tile + TILE_XY(1,1));
 }
 
+/** Rename a town (server-only).
+ * @param x,y unused
+ * @param p1 town ID to rename
+ * @param p2 unused
+ */
 int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
-	Town *t = GetTown(p1);
+	Town *t;
+
+	if (!IsTownIndex(p1)) return CMD_ERROR;
+
+	t = GetTown(p1);
 
 	str = AllocateNameUnique((const char*)_decode_parameters, 4);
-	if (str == 0)
-		return CMD_ERROR;
+	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		StringID old_str = t->townnametype;
+		DeleteName(t->townnametype);
 		t->townnametype = str;
-		DeleteName(old_str);
 
 		UpdateTownVirtCoord(t);
 		_town_sort_dirty = true;
@@ -1673,18 +1689,32 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBribe
 };
 
-// p1 = town
-// p2 = action
+extern uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t);
+
+/** Do a town action.
+ * This performs an action such as advertising, building a statue, funding buildings,
+ * but also bribing the town-council
+ * @param x,y unused
+ * @param p1 town to do the action at
+ * @param p2 action to perform, @see _town_action_proc for the list of available actions
+ */
 int32 CmdDoTownAction(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
+	Town *t;
+
+	if (!IsTownIndex(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
+
+	t = GetTown(p1);
+
+	if (!HASBIT(GetMaskOfTownActions(NULL, _current_player, t), p2)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	cost = (_price.build_industry >> 8) * _town_action_costs[p2];
 
 	if (flags & DC_EXEC) {
-		_town_action_proc[p2](GetTown(p1), p2);
+		_town_action_proc[p2](t, p2);
 		InvalidateWindow(WC_TOWN_AUTHORITY, p1);
 	}
 

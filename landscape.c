@@ -287,13 +287,19 @@ int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
-// p1 = end tile
+/** Clear a big piece of landscape
+ * @param x,y end coordinates of area dragging
+ * @param p1 start tile of area dragging
+ * @param p2 unused
+ */
 int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost,ret, money;
+	int32 cost, ret, money;
 	int sx,sy;
 	int x,y;
 	bool success = false;
+
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -306,22 +312,22 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
 
-	for(x=sx; x<=ex; x+=16) {
-		for(y=sy; y<=ey; y+=16) {
+	for (x = sx; x <= ex; x += 16) {
+		for (y = sy; y <= ey; y += 16) {
 			ret = DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags &~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			if (ret == CMD_ERROR) continue;
+			if (CmdFailed(ret)) continue;
 			cost += ret;
 			success = true;
 
 			if (flags & DC_EXEC) {
-				if ( ret>0 && (money -= ret) < 0) {
+				if (ret > 0 && (money -= ret) < 0) {
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
 				DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 				// draw explosion animation...
-				if ((x==sx || x==ex) && (y==sy || y==ey)) {
+				if ((x == sx || x == ex) && (y == sy || y == ey)) {
 					// big explosion in each corner, or small explosion for single tiles
 					CreateEffectVehicleAbove(x + 8, y + 8, 2,
 						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
@@ -331,9 +337,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	if (!success)
-		cost = CMD_ERROR;
-	return cost;
+	return (success) ? cost : CMD_ERROR;
 }
 
 

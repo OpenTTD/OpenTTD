@@ -172,8 +172,14 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = 0   decrease pause counter
-// p1 = 1   increase pause counter
+/** Pause/Unpause the game (server-only).
+ * Increase or decrease the pause counter. If the counter is zero,
+ * the game is unpaused. A counter is used instead of a boolean value
+ * to have more control over the game when saving/loading, etc.
+ * @param x,y unused
+ * @param p1 0 = decrease pause counter; 1 = increase pause counter
+ * @param p2 unused
+ */
 int32 CmdPause(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
@@ -213,16 +219,29 @@ int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return (int32)p1;
 }
 
+/** Change difficulty level/settings (server-only).
+ * We cannot really check for valid values of p2 (too much work mostly); stored
+ * in file 'settings_gui.c' _game_setting_info[]; we'll just trust the server it knows
+ * what to do and does this correctly
+ * @param x,y unused
+ * @param p1 the difficulty setting being changed. If it is -1, the difficulty level
+ *           itself is changed. The new value is inside p2
+ * @param p2 new value for a difficulty setting or difficulty level
+ */
 int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	if (p1 >= GAME_DIFFICULTY_NUM) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
 			((int*)&_opt_ptr->diff)[p1] = p2;
-			_opt_ptr->diff_level = 3;
+			_opt_ptr->diff_level = 3; // custom difficulty level
 		} else
 			_opt_ptr->diff_level = p2;
 
-		// If we are a network-client, update the difficult setting (if it is open)
+		/* If we are a network-client, update the difficult setting (if it is open).
+		 * Use this instead of just dirtying the window because we need to load in
+		* the new difficulty settings */
 		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
 			ShowGameDifficulty();
 	}

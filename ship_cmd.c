@@ -403,8 +403,10 @@ static bool ShipAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
-
-int32 EstimateShipCost(uint16 engine_type);
+int32 EstimateShipCost(EngineID engine_type)
+{
+	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
+}
 
 static void ShipEnterDepot(Vehicle *v)
 {
@@ -851,12 +853,11 @@ void ShipsYearlyLoop(void)
 	}
 }
 
-int32 EstimateShipCost(uint16 engine_type)
-{
-	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
-}
-
-// p1 = type to build
+/** Build a ship.
+ * @param x,y tile coordinates of depot where ship is built
+ * @param p1 ship type being built (engine)
+ * @param p2 unused
+ */
 int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
@@ -870,8 +871,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	value = EstimateShipCost(p1);
-	if (flags & DC_QUERY_COST)
-		return value;
+	if (flags & DC_QUERY_COST) return value;
 
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
@@ -932,12 +932,17 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 	}
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 
 	return value;
 }
 
+/** Sell a ship.
+ * @param x,y unused
+ * @param p1 vehicle ID to be sold
+ * @param p2 unused
+ */
 int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -946,8 +951,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -960,14 +964,17 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteVehicle(v);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 	}
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window
 
 	return -(int32)v->value;
 }
 
-// p1 = vehicle
+/** Start/Stop a ship.
+ * @param x,y unused
+ * @param p1 ship ID to start/stop
+ * @param p2 unused
+ */
 int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -976,38 +983,41 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowClasses(WC_SHIPS_LIST);
 	}
-
-	InvalidateWindowClasses(WC_SHIPS_LIST);
 
 	return 0;
 }
 
+/** Send a ship to the depot.
+ * @param x,y unused
+ * @param p1 vehicle ID to send to the depot
+ * @param p2 unused
+ */
 int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	Depot *depot;
+	const Depot *dep;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED)
-		return CMD_ERROR;
+	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
+	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-
+			/* If the orders to 'goto depot' are in the orders list (forced servicing),
+			 * then skip to the next order; effectively cancelling this forced service */
 			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
 				v->cur_order_index++;
 
@@ -1015,18 +1025,19 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
-	} else {
-		depot = FindClosestShipDepot(v);
-		if (depot == NULL)
-			return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
+		return 0;
+	}
 
-		if (flags & DC_EXEC) {
-			v->dest_tile = depot->xy;
-			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
-			v->current_order.station = depot->index;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-		}
+	dep = FindClosestShipDepot(v);
+	if (dep == NULL)
+		return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
+
+	if (flags & DC_EXEC) {
+		v->dest_tile = dep->xy;
+		v->current_order.type = OT_GOTO_DEPOT;
+		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
+		v->current_order.station = dep->index;
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	return 0;

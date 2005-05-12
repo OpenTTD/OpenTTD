@@ -105,13 +105,16 @@ void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
-int32 EstimateRoadVehCost(byte engine_type)
+int32 EstimateRoadVehCost(EngineID engine_type)
 {
 	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
 }
 
-// p1 = engine_type
-// p2 not used
+/** Build a road vehicle.
+ * @param x,y tile coordinates of depot where road vehicle is built
+ * @param p1 bus/truck type being built (engine)
+ * @param p2 unused
+ */
 int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
@@ -125,8 +128,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	cost = EstimateRoadVehCost(p1);
-	if (flags & DC_QUERY_COST)
-		return cost;
+	if (flags & DC_QUERY_COST) return cost;
 
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
@@ -181,7 +183,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
 
-		e = &_engines[p1];
+		e = DEREF_ENGINE(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
@@ -202,14 +204,17 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
 	}
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
 
 	return cost;
 }
 
-// p1 = vehicle
+/** Start/Stop a road vehicle.
+ * @param x,y unused
+ * @param p1 road vehicle ID to start/stop
+ * @param p2 unused
+ */
 int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -218,8 +223,7 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->vehstatus ^= VS_STOPPED;
@@ -242,8 +246,11 @@ void ClearSlot(Vehicle *v, RoadStop *rs)
  }
 }
 
-//  p1 = vehicle index in GetVehicle()
-//  p2 not used
+/** Sell a road vehicle.
+ * @param x,y unused
+ * @param p1 vehicle ID to be sold
+ * @param p2 unused
+ */
 int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -252,8 +259,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -335,24 +341,29 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 	}
 }
 
+/** Send a road vehicle to the depot.
+ * @param x,y unused
+ * @param p1 vehicle ID to send to the depot
+ * @param p2 unused
+ */
 int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	Depot *depot;
+	const Depot *dep;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED)
-		return CMD_ERROR;
+	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
+	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
-
+			/* If the orders to 'goto depot' are in the orders list (forced servicing),
+			 * then skip to the next order; effectively cancelling this forced service */
 			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
 				v->cur_order_index++;
 
@@ -363,21 +374,25 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return 0;
 	}
 
-	depot = FindClosestRoadDepot(v);
-	if (depot == NULL)
-		return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
+	dep = FindClosestRoadDepot(v);
+	if (dep == NULL) return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
-		v->current_order.station = depot->index;
-		v->dest_tile = depot->xy;
+		v->current_order.station = dep->index;
+		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
 	return 0;
 }
 
+/** Turn a roadvehicle around.
+ * @param x,y unused
+ * @param p1 vehicle ID to turn
+ * @param p2 unused
+ */
 int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
@@ -386,15 +401,13 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & (VS_HIDDEN|VS_STOPPED) ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
 			v->cur_speed < 5) {
-		_error_message = STR_EMPTY;
 		return CMD_ERROR;
 	}
 

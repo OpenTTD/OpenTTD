@@ -27,48 +27,50 @@ static const Widget _town_authority_widgets[] = {
 extern const byte _town_action_costs[8];
 extern void DrawPlayerIcon(int p, int x, int y);
 
-static uint GetMaskOfTownActions(int *nump, Town *t)
+/** Get a list of available actions to do at a town.
+ * @param *nump if not NULL add put the number of available actions in it
+ * @param pid the player that is querying the town
+ * @param *t the town that is queried
+ * @return bitmasked value of enabled actions
+ */
+uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 {
 	int32 avail, ref;
-	int i, num;
+	int num = 0;
 	uint avail_buttons = 0x7F; // by default all buttons except bribe are enabled.
-	uint buttons;
+	uint buttons = 0;
 
-	if (_local_player != OWNER_SPECTATOR) {
+	if (pid != OWNER_SPECTATOR) {
+		int i;
 		// bribe option enabled?
 		if (_patches.bribe) {
 			// if unwanted, disable everything.
-			if (t->unwanted[_local_player]) {
+			if (t->unwanted[pid]) {
 				avail_buttons = 0;
-			} else if (t->ratings[_local_player] < 600)
-				avail_buttons |= (1 << 7); // only bribe if less than excellent
+			} else if (t->ratings[pid] < 600)
+				SETBIT(avail_buttons, 7); // only bribe if less than excellent
 		}
 
 		// Things worth more than this are not shown
-		avail = DEREF_PLAYER(_local_player)->player_money + _price.station_value * 200;
+		avail = DEREF_PLAYER(pid)->player_money + _price.station_value * 200;
 		ref = _price.build_industry >> 8;
 
-		for(i=0,buttons=0,num=0; i != lengthof(_town_action_costs); i++,avail_buttons>>=1) {
-			if (avail_buttons&1 && avail >= _town_action_costs[i] * ref) {
+		for (i = 0; i != lengthof(_town_action_costs); i++, avail_buttons >>= 1) {
+			if (HASBIT(avail_buttons, 0) && avail >= _town_action_costs[i] * ref) {
 				SETBIT(buttons, i);
 				num++;
 			}
 		}
 
-		// Disable build statue if already built
-		if(HASBIT(t->statues, _local_player))
-		{
+		/* Disable build statue if already built */
+		if (HASBIT(t->statues, pid)) {
 			CLRBIT(buttons, 4);
 			num--;
 		}
 
-	} else {
-		// no actions available for spectator
-		buttons = 0;
-		num = 0;
 	}
 
-	if (nump) *nump = num;
+	if (nump != NULL) *nump = num;
 	return buttons;
 }
 
@@ -86,13 +88,12 @@ static int GetNthSetBit(uint32 bits, int n)
 
 static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 {
-	uint buttons;
-	int numact;
-	Town *t = GetTown(w->window_number);
+	switch (e->event) {
+	case WE_PAINT: {
+		const Town *t = GetTown(w->window_number);
+		int numact;
+		uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
 
-	switch(e->event) {
-	case WE_PAINT:
-		buttons = GetMaskOfTownActions(&numact, t);
 		SetVScrollCount(w, numact + 1);
 
 		if (WP(w,def_d).data_1 != -1 && !HASBIT(buttons, WP(w,def_d).data_1))
@@ -176,16 +177,17 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		break;
+	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: { /* listbox */
+			const Town *t = GetTown(w->window_number);
 			int y = (e->click.pt.y - 0x6B) / 10;
 			if (!IS_INT_INSIDE(y, 0, 5))
 				return;
 
-			y = GetNthSetBit(GetMaskOfTownActions(NULL, t), y + w->vscroll.pos - 1);
+			y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
 			if (y >= 0) {
 				WP(w,def_d).data_1 = y;
 				SetWindowDirty(w);
@@ -194,7 +196,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 6: { /* carry out the action */
-			DoCommandP(t->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_2054_CAN_T_DO_THIS));
+			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_2054_CAN_T_DO_THIS));
 			break;
 		}
 		}

@@ -1299,9 +1299,9 @@ void AgeVehicle(Vehicle *v)
 }
 
 extern int32 EstimateTrainCost(const RailVehicleInfo *rvi);
-extern int32 EstimateRoadVehCost(byte engine_type);
-extern int32 EstimateShipCost(uint16 engine_type);
-extern int32 EstimateAircraftCost(uint16 engine_type);
+extern int32 EstimateRoadVehCost(EngineID engine_type);
+extern int32 EstimateShipCost(EngineID engine_type);
+extern int32 EstimateAircraftCost(EngineID engine_type);
 extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);

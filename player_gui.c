@@ -510,13 +510,16 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			if (!_networking) SETBIT(w->hidden_state, 11); // hide company-password widget
 		} else {
 			if (_patches.allow_shares) { /* shares are allowed */
+				/* If all shares are owned by someone (none by nobody), disable buy button */
 				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) SETBIT(dis, 9);
 
-				/* We cannot buy out real players in a network game */
+				/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
 				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) SETBIT(dis, 9);
 
+				/* If the player doesn't own any shares, disable sell button */
 				if (GetAmountOwnedBy(p, _local_player) == 0) SETBIT(dis, 10);
 
+				/* Spectators cannot do anything of course */
 				if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
 			} else /* shares are not allowed, disable buy/sell buttons */
 				dis |= (1 << 9) | (1 << 10);

@@ -41,11 +41,11 @@ static const SpriteID _aircraft_sprite[] = {
  * INVALID_STATION is returned, if the player does not have any suitable
  * airports (like helipads only)
  */
-static uint16 FindNearestHangar(const Vehicle *v)
+static StationID FindNearestHangar(const Vehicle *v)
 {
 	const Station *st;
 	uint best = 0;
-	uint16 index = INVALID_STATION;
+	StationID index = INVALID_STATION;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT &&
@@ -153,13 +153,17 @@ static bool AllocateVehicles(Vehicle **vl, int num)
 	return success;
 }
 
-int32 EstimateAircraftCost(uint16 engine_type)
+int32 EstimateAircraftCost(EngineID engine_type)
 {
 	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;
 }
 
 
-/* p1 = engine */
+/** Build an aircraft.
+ * @param x,y tile coordinates of depot where aircraft is built
+ * @param p1 aircraft type being built (engine)
+ * @param p2 unused
+ */
 int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
@@ -180,8 +184,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	value = EstimateAircraftCost(p1);
 
-	if (flags & DC_QUERY_COST)
-		return value;
+	if (flags & DC_QUERY_COST) return value;
 
 	// allocate 2 or 3 vehicle structs, depending on type
 	if (!AllocateVehicles(vl, (avi->subtype & 1) == 0 ? 3 : 2) ||
@@ -299,7 +302,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 		VehiclePositionChanged(u);
 
-		// Aircraft with 3 vehicles?
+		// Aircraft with 3 vehicles (chopper)?
 		if (v->subtype == 0) {
 			w = vl[2];
 
@@ -323,9 +326,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
 	}
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
 
 	return value;
 }
@@ -381,16 +383,15 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		DoDeleteAircraft(v);
+		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
 	}
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
 
 	return -(int32)v->value;
 }
 
 /** Start/Stop an aircraft.
  * @param x,y unused
- * @param p1 aircraft to start/stop
+ * @param p1 aircraft ID to start/stop
  * @param p2 unused
  */
 int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -417,20 +418,23 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = vehicle
-// p2 = if set, the aircraft will try to goto a depot, but not stop
+/** Send an aircraft to the hangar.
+ * @param x,y unused
+ * @param p1 vehicle ID to send to the hangar
+ * @param p2 various bitmasked elements
+ * - p2 = 0      - aircraft goes to the depot and stays there (user command)
+ * - p2 non-zero - aircraft will try to goto a depot, but not stop there (eg forced servicing)
+ * - p2 (bit 17) - aircraft will try to goto a depot at the next airport
+ */
 int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	Station *st;
-	uint16 next_airport_index;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && p2 == 0) {
 		if (flags & DC_EXEC) {
@@ -441,23 +445,23 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} else {
 		bool next_airport_has_hangar = true;
-		next_airport_index = (HASBIT(p2, 17)) ? (int16)p2 : v->u.air.targetairport;
-		st = GetStation(next_airport_index);
+		/* XXX - I don't think p2 is any valid station cause all calls use either 0, 1, or 1<<16!!!!!!!!! */
+		StationID next_airport_index = (HASBIT(p2, 17)) ? (StationID)p2 : v->u.air.targetairport;
+		const Station *st = GetStation(next_airport_index);
 		// If an airport doesn't have terminals (so no landing space for airports),
 		// it surely doesn't have any hangars
-		if (st->xy == 0 || st->airport_tile == 0 ||
-				GetAirport(st->airport_type)->nof_depots == 0) {
-			if (p2 == 0) {
-				// the aircraft has to search for a hangar on its own
-				uint16 station = FindNearestHangar(v);
+		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
+			StationID station;
 
-				next_airport_has_hangar = false;
-				if (station == INVALID_STATION) return CMD_ERROR;
-				st = GetStation(station);
-				next_airport_index = station;
-			} else {
-				return CMD_ERROR;
-			}
+			if (p2 != 0) return CMD_ERROR;
+			// the aircraft has to search for a hangar on its own
+			station = FindNearestHangar(v);
+
+			next_airport_has_hangar = false;
+			if (station == INVALID_STATION) return CMD_ERROR;
+			st = GetStation(station);
+			next_airport_index = station;
+
 		}
 
 		if (flags & DC_EXEC) {
@@ -1594,7 +1598,7 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airp
 		// only the vehicle owner needs to calculate the rest (locally)
 		if ((_autoreplace_array[v->engine_type] != v->engine_type) ||
 			(_patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
-			// send the aircraft to the hangar at next airport
+			// send the aircraft to the hangar at next airport (bit 17 set)
 			_current_player = _local_player;
 			DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 			_current_player = OWNER_NONE;
