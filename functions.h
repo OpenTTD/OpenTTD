@@ -228,6 +228,7 @@ enum SaveOrLoadMode {
 int SaveOrLoad(const char *filename, int mode);
 
 void AfterLoadTown(void);
+void GenRandomNewGame(uint32 rnd1, uint32 rnd2);
 void AskExitGame(void);
 void AskExitToGameMenu(void);
 

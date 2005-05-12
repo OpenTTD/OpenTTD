@@ -176,8 +176,10 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 14: /* Town names */
-			if (_game_mode == GM_MENU)
-				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_TOWN_NAME_TYPE | CMD_MSG(STR_EMPTY));
+			if (_game_mode == GM_MENU) {
+				_opt_ptr->town_name = e->dropdown.index;
+				InvalidateWindow(WC_GAME_OPTIONS, 0);
+			}
 			break;
 		case 17: /* Autosave options */
 			_opt_ptr->autosave = e->dropdown.index;
@@ -205,24 +207,22 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 }
 
+/** Change the side of the road vehicles drive on (server only).
+ * @param x,y unused
+ * @param p1 the side of the road; 0 = left side and 1 = right side
+ * @param p2 unused
+ */
 int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	/* Check boundaries and you can only change this if NO vehicles have been built yet */
+	if (p1 > 1 || RoadVehiclesAreBuilt()) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		_opt_ptr->road_side = p1;
 		InvalidateWindow(WC_GAME_OPTIONS,0);
 	}
 	return 0;
 }
-
-int32 CmdSetTownNameType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (flags & DC_EXEC) {
-		_opt_ptr->town_name = p1;
-		InvalidateWindow(WC_GAME_OPTIONS,0);
-	}
-	return 0;
-}
-
 
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
@@ -369,24 +369,24 @@ static GameOptions _opt_mod_temp;
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		uint32 click_a, click_b, disabled;
-		int i;
-		int y, value;
-
-		w->click_state = (1 << 3) << _opt_mod_temp.diff_level; // have current difficulty button clicked
+		case WE_CREATE: /* Setup disabled buttons when creating window */
 		// disable all other difficulty buttons during gameplay except for 'custom'
 		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
 
-		if (_game_mode == GM_EDITOR)
-			SETBIT(w->disabled_state, 7);
+		if (_game_mode == GM_EDITOR) SETBIT(w->disabled_state, 7);
 
 		if (_networking) {
 			SETBIT(w->disabled_state, 7); // disable highscore chart in multiplayer
 			if (!_network_server)
 				SETBIT(w->disabled_state, 10); // Disable save-button in multiplayer (and if client)
 		}
+		break;
+	case WE_PAINT: {
+		uint32 click_a, click_b, disabled;
+		int i;
+		int y, value;
 
+		w->click_state = (1 << 3) << _opt_mod_temp.diff_level; // have current difficulty button clicked
 		DrawWindowWidgets(w);
 
 		click_a = _difficulty_click_a;

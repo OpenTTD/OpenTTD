@@ -45,6 +45,14 @@ static const Widget _select_game_widgets[] = {
 extern void HandleOnEditText(WindowEvent *e);
 extern void HandleOnEditTextCancel(void);
 
+static inline void CreateScenario(void) {_switch_mode = SM_EDITOR;}
+
+static inline void SetNewLandscapeType(byte landscape)
+{
+	_opt_newgame.landscape = landscape;
+	InvalidateWindowClasses(WC_SELECT_GAME);
+}
+
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	/* We do +/- 6 for the map_xy because 64 is 2^6, but it is the lowest available element */
@@ -64,13 +72,12 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 2: DoCommandP(0, 0, 0, NULL, CMD_START_NEW_GAME); break;
+		case 2: AskForNewGameToStart(); break;
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-		case 4: DoCommandP(0, InteractiveRandom(), 0, NULL, CMD_CREATE_SCENARIO); break;
+		case 4: CreateScenario(); break;
 		case 5: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 		case 6: case 7: case 8: case 9:
-			// XXX: Useless usage of the CMD infrastructure?
-			DoCommandP(0, e->click.widget - 6, 0, NULL, CMD_SET_NEW_LANDSCAPE_TYPE);
+			SetNewLandscapeType(e->click.widget - 6);
 			break;
 		case 10: case 11: /* Mapsize X */
 			ShowDropDownMenu(w, mapsizes, _patches.map_x - 6, 11, 0, 0);
@@ -122,50 +129,12 @@ void ShowSelectGameWindow(void)
 	AllocateWindowDesc(&_select_game_desc);
 }
 
-
-// p1 = mode
-//    0 - start new game
-//    1 - close new game dialog
-
-int32 CmdStartNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+void GenRandomNewGame(uint32 rnd1, uint32 rnd2)
 {
-	if (!(flags & DC_EXEC))
-		return 0;
-
-	switch(p1) {
-	case 0: // show select game window
-		AskForNewGameToStart();
-		break;
-	case 1: // close select game window
-		DeleteWindowById(WC_SAVELOAD, 0);
-		break;
-	}
-
-	return 0;
-}
-
-int32 CmdGenRandomNewGame(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (!(flags & DC_EXEC))
-		return 0;
-
-	// this forces stuff into test mode.
-	_docommand_recursive = 0;
-
-	_random_seeds[0][0] = p1;
-	_random_seeds[0][1] = p2;
+	_random_seeds[0][0] = rnd1;
+	_random_seeds[0][1] = rnd2;
 
 	SwitchMode(SM_NEWGAME);
-	return 0;
-}
-
-int32 CmdCreateScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (!(flags & DC_EXEC))
-		return 0;
-
-	_switch_mode = SM_EDITOR;
-	return 0;
 }
 
 int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -296,13 +265,4 @@ static const WindowDesc _ask_quit_game_desc = {
 void AskExitToGameMenu(void)
 {
 	AllocateWindowDescFront(&_ask_quit_game_desc, 0);
-}
-
-int32 CmdSetNewLandscapeType(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (flags & DC_EXEC) {
-		_opt_newgame.landscape = p1;
-		InvalidateWindowClasses(WC_SELECT_GAME);
-	}
-	return 0;
 }

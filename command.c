@@ -63,7 +63,7 @@ DEF_COMMAND(CmdStartStopTrain);
 
 DEF_COMMAND(CmdSellRailWagon);
 
-DEF_COMMAND(CmdTrainGotoDepot);
+DEF_COMMAND(CmdSendTrainToDepot);
 DEF_COMMAND(CmdForceTrainProceed);
 DEF_COMMAND(CmdReverseTrainDirection);
 
@@ -123,7 +123,6 @@ DEF_COMMAND(CmdRenameTown);
 DEF_COMMAND(CmdDoTownAction);
 
 DEF_COMMAND(CmdSetRoadDriveSide);
-DEF_COMMAND(CmdSetTownNameType);
 
 DEF_COMMAND(CmdChangeDifficultyLevel);
 DEF_COMMAND(CmdChangePatchSetting);
@@ -135,13 +134,6 @@ DEF_COMMAND(CmdSendShipToDepot);
 DEF_COMMAND(CmdChangeShipServiceInt);
 DEF_COMMAND(CmdRefitShip);
 
-
-DEF_COMMAND(CmdStartNewGame);
-DEF_COMMAND(CmdCreateScenario);
-
-DEF_COMMAND(CmdSetNewLandscapeType);
-
-DEF_COMMAND(CmdGenRandomNewGame);
 DEF_COMMAND(CmdCloneOrder);
 
 DEF_COMMAND(CmdClearArea);
@@ -205,7 +197,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdStartStopTrain,						/* 36 */
 	NULL,													/* 37 */
 	CmdSellRailWagon,							/* 38 */
-	CmdTrainGotoDepot,						/* 39 */
+	CmdSendTrainToDepot,		  	  /* 39 */
 	CmdForceTrainProceed,					/* 40 */
 	CmdReverseTrainDirection,			/* 41 */
 
@@ -236,11 +228,11 @@ static CommandProc * const _command_proc_table[] = {
 
 	CmdSellAircraft,							/* 59 */
 	CmdStartStopAircraft,					/* 60 */
-	/***************************************************/
+
 	CmdBuildAircraft,							/* 61 */
 	CmdSendAircraftToHangar,			/* 62 */
 	CmdChangeAircraftServiceInt,	/* 63 */
-	CmdRefitAircraft,							/* 64 */
+	CmdRefitAircraft,							/* 64 <-- Hackykid */
 
 	CmdPlaceSign,									/* 65 */
 	CmdRenameSign,								/* 66 */
@@ -252,60 +244,60 @@ static CommandProc * const _command_proc_table[] = {
 	CmdTurnRoadVeh,								/* 71 */
 	CmdChangeRoadVehServiceInt,		/* 72 */
 
-	CmdPause,											/* 73 */
+	CmdPause,											/* 73 <-- TODO: check/enforce by server */
 
 	CmdBuyShareInCompany,					/* 74 */
 	CmdSellShareInCompany,				/* 75 */
 	CmdBuyCompany,								/* 76 */
 
-	CmdBuildTown,									/* 77 */
+	CmdBuildTown,									/* 77 <-- offline / scenario only */
 	NULL,													/* 78 */
 	NULL,													/* 79 */
-	CmdRenameTown,								/* 80 */
+	CmdRenameTown,								/* 80 <-- TODO: check/enforce by server */
 	CmdDoTownAction,							/* 81 */
 
-	CmdSetRoadDriveSide,					/* 82 */
-	CmdSetTownNameType,						/* 83 */
+	CmdSetRoadDriveSide,					/* 82 <-- TODO: check/enforce by server */
+	NULL,              						/* 83 */
 	NULL,													/* 84 */
-	CmdChangeDifficultyLevel,			/* 85 */
+	CmdChangeDifficultyLevel,			/* 85 <-- TODO: check/enforce by server */
 
 	CmdStartStopShip,							/* 86 */
 	CmdSellShip,									/* 87 */
 	CmdBuildShip,									/* 88 */
 	CmdSendShipToDepot,						/* 89 */
 	CmdChangeShipServiceInt,			/* 90 */
-	CmdRefitShip,									/* 91 */
+	CmdRefitShip,									/* 91 <-- Hackykid */
 
-	CmdStartNewGame,							/* 92 */
+	NULL,            							/* 92 */
 	NULL,                         /* 93 */
-	CmdCreateScenario,						/* 94 */
+	NULL,             						/* 94 */
 	NULL,                         /* 95 */
 	NULL,													/* 96 */
-	CmdSetNewLandscapeType,				/* 97 */
+	NULL,                 				/* 97 */
 
-	CmdGenRandomNewGame,					/* 98 */
+	NULL,                					/* 98 */
 
 	CmdCloneOrder,								/* 99 */
 
 	CmdClearArea,									/* 100 */
 	NULL,                         /* 101 */
-
-	CmdMoneyCheat,								/* 102 */
+	/***************************************************/
+	CmdMoneyCheat,								/* 102 <-- offline only */
 	CmdBuildCanal,								/* 103 */
-	CmdPlayerCtrl,								/* 104 */
+	CmdPlayerCtrl,								/* 104 <-- TODO: check/enforce by server */
 
-	CmdLevelLand,									/* 105 */
+	CmdLevelLand,									/* 105 <-- Hackykid */
 
-	CmdRefitRailVehicle,					/* 106 */
+	CmdRefitRailVehicle,					/* 106 <-- Hackykid */
 	CmdRestoreOrderIndex,					/* 107 */
-	CmdBuildLock,									/* 108 */
-	CmdStartScenario,							/* 109 */
-	CmdBuildSignalTrack,					/* 110 */
-	CmdRemoveSignalTrack,					/* 111 */
-	CmdDestroyCompanyHQ,					/* 112    <-- done */
+	CmdBuildLock,									/* 108 <-- Hackykid */
+	CmdStartScenario,							/* 109 <-- UNNEEDED */
+	CmdBuildSignalTrack,					/* 110 <-- Hackykid */
+	CmdRemoveSignalTrack,					/* 111 <-- Hackykid */
+	CmdDestroyCompanyHQ,					/* 112 */
 	CmdGiveMoney,									/* 113 */
-	CmdChangePatchSetting,				/* 114 */
-	CmdReplaceVehicle,						/* 115 */
+	CmdChangePatchSetting,				/* 114 <-- TODO: check/enforce by server */
+	CmdReplaceVehicle,						/* 115 <-- Hackykid */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */
@@ -386,7 +378,7 @@ error:
 
 int32 GetAvailableMoneyForCommand(void)
 {
-	uint pid = _current_player;
+	PlayerID pid = _current_player;
 	if (pid >= MAX_PLAYERS) return 0x7FFFFFFF; // max int
 	return DEREF_PLAYER(pid)->player_money;
 }

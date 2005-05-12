@@ -712,15 +712,11 @@ DEF_CONSOLE_CMD(ConNewGame)
 {
 	if (argc == 0) {
 		IConsoleHelp("Start a new game. Usage: 'newgame'");
+		IConsoleHelp("The server can force a new game using 'newgame', any client using it will part and start a single-player game");
 		return true;
 	}
 
-	_docommand_recursive = 0;
-
-	_random_seeds[0][0] = Random();
-	_random_seeds[0][1] = InteractiveRandom();
-
-	SwitchMode(SM_NEWGAME);
+	GenRandomNewGame(Random(), InteractiveRandom());
 	return true;
 }
 

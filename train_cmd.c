@@ -1433,7 +1433,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
  * @param p1 train to send to the depot
  * @param p2 unused
  */
-int32 CmdTrainGotoDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSendTrainToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	TrainFindDepotData tfdd;

@@ -1480,8 +1480,8 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 			break;
 
 		case 6: /* Click the listbox */
-			if(e->click.pt.y < list_start)
-				DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
+			if (e->click.pt.y < list_start)
+				GenRandomNewGame(Random(), InteractiveRandom());
 			else {
 				char *name;
 				int y = (e->click.pt.y - list_start) / 10;

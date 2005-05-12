@@ -563,8 +563,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			_is_network_server = true;
 			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
-			if(selected_map==NULL) { // start random new game
-				DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
+			if (selected_map == NULL) { // start random new game
+				GenRandomNewGame(Random(), InteractiveRandom());
 			} else { // load a scenario
 				char *name;
 				if ((name = FiosBrowseTo(selected_map)) != NULL) {

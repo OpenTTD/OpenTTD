@@ -265,7 +265,7 @@ static int DedicatedVideoMainLoop(void)
 	/* If SwitchMode is SM_LOAD, it means that the user used the '-g' options */
 	if (_switch_mode != SM_LOAD) {
 		_switch_mode = SM_NONE;
-		DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_GEN_RANDOM_NEW_GAME);
+		GenRandomNewGame(Random(), InteractiveRandom());
 	} else {
 		_switch_mode = SM_NONE;
 		/* First we need to test if the savegame can be loaded, else we will end up playing the
