@@ -259,44 +259,43 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 }
 
 // use 255 as new_player to delete the player.
-void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
+void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
-	byte old = _current_player;
+	PlayerID old = _current_player;
 	_current_player = old_player;
 
-	if (new_player == 255) {
+	if (new_player == OWNER_SPECTATOR) {
 		Subsidy *s;
 
-		for(s=_subsidies; s != endof(_subsidies); s++) {
+		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != 0xff && s->age >= 12) {
-				Station *st = GetStation(s->to);
-				if (st->owner == old_player)
+				if (GetStation(s->to)->owner == old_player)
 					s->cargo_type = 0xff;
 			}
 		}
 	}
 
-	// take care of rating in towns
-	{
-		Town *t;
+	/* Take care of rating in towns */
+	{ Town *t;
+		if (new_player != OWNER_SPECTATOR) {
+			FOR_ALL_TOWNS(t) {
+				/* If a player takes over, give the ratings to that player. */
+				if (IsValidTown(t) && HASBIT(t->have_ratings, old_player)) {
+					if (HASBIT(t->have_ratings, new_player)) {
+						// use max of the two ratings.
+						t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
+					} else {
+						SETBIT(t->have_ratings, new_player);
+						t->ratings[new_player] = t->ratings[old_player];
+					}
+				}
 
-		// if a player takes over, give the ratings to that player.
-		if (new_player != 255) {
-			FOR_ALL_TOWNS(t) if (t->xy && HASBIT(t->have_ratings, old_player)) {
-				if (HASBIT(t->have_ratings, new_player)) {
-					// use max of the two ratings.
-					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
-				} else {
-					SETBIT(t->have_ratings, new_player);
-					t->ratings[new_player] = t->ratings[old_player];
+				/* Reset ratings for the town */
+				if (IsValidTown(t)) {
+					t->ratings[old_player] = 500;
+					CLRBIT(t->have_ratings, old_player);
 				}
 			}
-		}
-
-		// reset rating for the towns.
-		FOR_ALL_TOWNS(t) if (t->xy) {
-			t->ratings[old_player] = 500;
-			CLRBIT(t->have_ratings, old_player);
 		}
 	}
 
@@ -310,20 +309,27 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 		// Determine Ids for the new vehicles
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == new_player) {
-				if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
-					num_train++;
-				else if (v->type == VEH_Road)
-					num_road++;
-				else if (v->type == VEH_Ship)
-					num_ship++;
-				else if (v->type == VEH_Aircraft && v->subtype <= 2)
-					num_aircraft++;
+				switch (v->type) {
+					case VEH_Train:
+						if (v->subtype == TS_Front_Engine) num_train++;
+						break;
+					case VEH_Road:
+						num_road++;
+						break;
+					case VEH_Ship:
+						num_ship++;
+						break;
+					case VEH_Aircraft:
+						if (v->subtype <= 2) num_aircraft++;
+						break;
+					default: break;
+				}
 			}
 		}
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_Train, VEH_Aircraft+1) ) {
-				if (new_player == 255) {
+				if (new_player == OWNER_SPECTATOR) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
@@ -345,16 +351,16 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 
 	// Change ownership of tiles
 	{
-		uint tile = 0;
+		TileIndex tile = 0;
 		do {
 			ChangeTileOwner(tile, old_player, new_player);
 		} while (++tile != MapSize());
 	}
 
 	// Change color of existing windows
-	if (new_player != 255) {
+	if (new_player != OWNER_SPECTATOR) {
 		Window *w;
-		for(w=_windows; w != _last_window; w++) {
+		for (w = _windows; w != _last_window; w++) {
 			if (w->caption_color == old_player)
 				w->caption_color = new_player;
 		}
@@ -366,7 +372,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 
 		/* Check for shares */
 		FOR_ALL_PLAYERS(p) {
-			for(i = 0; i < 4; i++) {
+			for (i = 0; i < 4; i++) {
 				/* 'Sell' the share if this player has any */
 				if (p->share_owners[i] == _current_player)
 					p->share_owners[i] = 0xFF;
@@ -374,7 +380,7 @@ void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player)
 		}
 		p = DEREF_PLAYER(_current_player);
 		/* Sell all the shares that people have on this company */
-		for(i = 0; i < 4; i++)
+		for (i = 0; i < 4; i++)
 			p->share_owners[i] = 0xFF;
 	}
 
@@ -1666,7 +1672,3 @@ const ChunkHandler _economy_chunk_handlers[] = {
 	{ 'SUBS', Save_SUBS,			Load_SUBS, CH_ARRAY},
 	{ 'ECMY', SaveLoad_ECMY, SaveLoad_ECMY, CH_RIFF | CH_LAST},
 };
-
-
-
-
