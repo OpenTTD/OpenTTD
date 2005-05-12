@@ -1,3 +1,6 @@
+/** @file,
+ * sjdlfkasjdf
+ */
 #include "stdafx.h"
 #include "ttd.h"
 #include "string.h"
@@ -217,7 +220,7 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 
 void SubtractMoneyFromPlayer(int32 cost)
 {
-	uint pid = _current_player;
+	PlayerID pid = _current_player;
 	if (pid < MAX_PLAYERS)
 		SubtractMoneyFromAnyPlayer(DEREF_PLAYER(pid), cost);
 }
@@ -630,23 +633,36 @@ static void DeletePlayerStuff(int pi)
 	p->president_name_1 = 0;
 }
 
-// functionality.
-// 0 - make new player
-// 1 - make new AI player
-// 2 - delete player (p2)
-// 3 - join player (p1 >> 8) & 0xFF with (p1 >> 16) & 0xFF
+/** Control the players: add, delete, etc.
+ * @param x,y unused
+ * @param p1 various functionality
+ * - p1 = 0 - create a new player, Which player (network) it will be is in p2
+ * - p1 = 1 - create a new AI player
+ * - p1 = 2 - delete a player. Player is identified by p2
+ * - p1 = 3 - merge two companies together. Player to merge #1 with player #2. Identified by p2
+ * @param p2 various functionality, dictated by p1
+ * - p1 = 0 - ClientID of the newly created player
+ * - p1 = 2 - PlayerID of the that is getting deleted
+ * - p1 = 3 - #1 p2 = (bit  0-15) - player to merge (p2 & 0xFFFF)
+ *          - #2 p2 = (bit 16-31) - player to be merged into ((p2>>16)&0xFFFF)
+ * @todo In the case of p1=0, create new player, the clientID of the new player is in parameter
+ * p2. This parameter is passed in at function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
+ * on the server itself. First of all this is unbelievably ugly; second of all, well,
+ * it IS ugly! <b>Someone fix this up :)</b> So where to fix?@n
+ * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
+ * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
+ */
 int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	int pi;
-	Player *p;
+	if (flags & DC_EXEC) _current_player = OWNER_NONE;
 
-	if (!(flags & DC_EXEC))
-		return 0;
+	switch (p1) {
+	case 0: { /* Create a new player */
+		Player *p;
+		PlayerID pid = p2;
 
-	_current_player = OWNER_NONE;
+		if (!(flags & DC_EXEC) || pid >= MAX_PLAYERS) return 0;
 
-	switch(p1 & 0xff) {
-	case 0: // make new player
 		p = DoStartupNewPlayer(false);
 
 #ifdef ENABLE_NETWORK
@@ -665,9 +681,9 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				NetworkClientInfo *ci;
-				// UGLY! p2 is mis-used to fetch the client-id
-				ci = &_network_client_info[p2];
+				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at server-side
+				 * in network_server.c:838, function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+				NetworkClientInfo *ci = &_network_client_info[pid];
 				ci->client_playas = p->index + 1;
 				NetworkUpdateClientInfo(ci->client_index);
 
@@ -690,47 +706,61 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					_local_player = player_backup;
 				}
 			}
-		} else {
-			if (_network_server) {
-				NetworkClientInfo *ci;
-				// UGLY! p2 is mis-used to fetch the client-id
-				ci = &_network_client_info[p2];
-				ci->client_playas = OWNER_SPECTATOR;
-				NetworkUpdateClientInfo(ci->client_index);
-			}
-#endif /* ENABLE_NETWORK */
+		} else if (_network_server) {
+				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at server-side
+				* in network_server.c:838, function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+			NetworkClientInfo *ci = &_network_client_info[pid];
+			ci->client_playas = OWNER_SPECTATOR;
+			NetworkUpdateClientInfo(ci->client_index);
 		}
-		break;
-	case 1: // make new ai player
+#endif /* ENABLE_NETWORK */
+	} break;
+
+	case 1: /* Make a new AI player */
+		if (!(flags & DC_EXEC)) return 0;
+
 		DoStartupNewPlayer(true);
 		break;
-	case 2: // delete player
+
+	case 2: { /* Delete a player */
+		Player *p;
+
+		if (p2 >= MAX_PLAYERS) return CMD_ERROR;
+
+		if (!(flags & DC_EXEC)) return 0;
+
 		p = DEREF_PLAYER(p2);
 
 		/* Only allow removal of HUMAN companies */
-		if (IS_HUMAN_PLAYER(p2)) {
+		if (IS_HUMAN_PLAYER(p->index)) {
 			/* Delete any open window of the company */
-			DeletePlayerWindows(p2);
+			DeletePlayerWindows(p->index);
 
 			/* Show the bankrupt news */
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
-			AddNewsItem( (StringID)(p2 + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem( (StringID)(p->index + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			/* Remove the company */
-			ChangeOwnershipOfPlayerItems(p2, 255);
-			p->money64 = p->player_money = 100000000;
+			ChangeOwnershipOfPlayerItems(p->index, OWNER_SPECTATOR);
+			p->money64 = p->player_money = 100000000; // XXX - wtf?
 			p->is_active = false;
 		}
-		break;
+	} break;
 
-	case 3: // join player
-		pi = (byte)(p1 >> 8);
-		ChangeOwnershipOfPlayerItems(pi, (byte)(p1 >> 16));
-		DeletePlayerStuff(pi);
-		break;
+	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
+		PlayerID pid_old = p2 & 0xFFFF;
+		PlayerID pid_new = (p2 >> 16) & 0xFFFF;
+
+		if (pid_old >= MAX_PLAYERS || pid_new >= MAX_PLAYERS) return CMD_ERROR;
+
+		if (!(flags & DC_EXEC)) return CMD_ERROR;
+
+		ChangeOwnershipOfPlayerItems(pid_old, pid_new);
+		DeletePlayerStuff(pid_old);
+	} break;
+	default: return CMD_ERROR;
 	}
-
 
 	return 0;
 }

@@ -12,6 +12,94 @@
 #include "town.h"
 #include "sprite.h"
 
+/** Destroy a HQ.
+ * During normal gameplay you can only implicitely destroy a HQ when you are
+ * rebuilding it. Otherwise, only water can destroy it.
+ * @param tile tile coordinates where HQ is located to destroy
+ * @param flags docommand flags of calling function
+ */
+int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
+{
+	Player *p;
+
+	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
+
+	/* Find player that has HQ flooded, and reset their location_of_house */
+	if (_current_player == OWNER_WATER)	{
+		bool dodelete = false;
+
+		FOR_ALL_PLAYERS(p) {
+			if (p->location_of_house == tile) {
+				dodelete = true;
+				break;
+			}
+		}
+		if (!dodelete) return CMD_ERROR;
+	} else /* Destruction was initiated by player */
+		p = DEREF_PLAYER(_current_player);
+
+		if (p->location_of_house == 0) return CMD_ERROR;
+
+		if (flags & DC_EXEC) {
+			DoClearSquare(p->location_of_house + TILE_XY(0,0));
+			DoClearSquare(p->location_of_house + TILE_XY(0,1));
+			DoClearSquare(p->location_of_house + TILE_XY(1,0));
+			DoClearSquare(p->location_of_house + TILE_XY(1,1));
+			p->location_of_house = 0; // reset HQ position
+			InvalidateWindow(WC_COMPANY, (int)p->index);
+		}
+
+	// cost of relocating company is 1% of company value
+		return CalculateCompanyValue(p) / 100;
+}
+
+/** Build or relocate the HQ. This depends if the HQ is already built or not
+ * @param x,y the coordinates where the HQ will be built or relocated to
+ * @param p1 relocate HQ (set to some value, usually 1 or true)
+ * @param p2 unused
+ */
+ extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
+int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	TileIndex tile = TILE_FROM_XY(x,y);
+	Player *p = DEREF_PLAYER(_current_player);
+	int cost;
+
+	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
+
+	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	if (CmdFailed(cost)) return CMD_ERROR;
+
+	if (p1) { /* Moving HQ */
+		int32 ret;
+
+		if (p->location_of_house == 0) return CMD_ERROR;
+
+		ret = DestroyCompanyHQ(p->location_of_house, flags);
+
+		if (CmdFailed(ret)) return CMD_ERROR;
+
+		cost += ret;
+	} else { /* Building new HQ */
+		if (p->location_of_house != 0) return CMD_ERROR;
+	}
+
+	if (flags & DC_EXEC) {
+		int score = UpdateCompanyRatingAndValue(p, false);
+
+		p->location_of_house = tile;
+
+		ModifyTile(tile + TILE_XY(0,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
+		ModifyTile(tile + TILE_XY(0,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
+		ModifyTile(tile + TILE_XY(1,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
+		ModifyTile(tile + TILE_XY(1,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
+		UpdatePlayerHouse(p, score);
+		InvalidateWindow(WC_COMPANY, (int)p->index);
+	}
+
+	return cost;
+}
+
 typedef struct DrawTileUnmovableStruct {
 	uint16 image;
 	byte subcoord_x;
@@ -110,8 +198,7 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 	byte m5 = _map5[tile];
 
 	if (m5 & 0x80) {
-		if (_current_player == OWNER_WATER)
-			return DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_DESTROY_COMPANY_HQ);
+		if (_current_player == OWNER_WATER) return DestroyCompanyHQ(tile, DC_EXEC);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}
 
@@ -306,101 +393,6 @@ restart:
 		_map_owner[tile] = OWNER_NONE;
 	} while (--i);
 }
-
-extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
-
-/** Build or relocate the HQ. This depends if the HQ is already built or not
- * @param x,y the coordinates where the HQ will be built or relocated to
- * @param p1 relocate HQ (set to some value, usually 1 or true)
- * @param p2 unused
- */
-int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	TileIndex tile = TILE_FROM_XY(x,y);
-	Player *p = DEREF_PLAYER(_current_player);
-	int cost;
-
-	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
-
-	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
-	if (CmdFailed(cost)) return CMD_ERROR;
-
-	if (p1) { /* Moving HQ */
-		int32 ret;
-
-		if (p->location_of_house == 0) return CMD_ERROR;
-
-		ret = DoCommandByTile(p->location_of_house, 0, 0, flags, CMD_DESTROY_COMPANY_HQ);
-
-		if (CmdFailed(ret)) return CMD_ERROR;
-
-		cost += ret;
-	} else { /* Building new HQ */
-		if (p->location_of_house != 0) return CMD_ERROR;
-	}
-
-	if (flags & DC_EXEC) {
-		int score = UpdateCompanyRatingAndValue(p, false);
-
-		p->location_of_house = tile;
-
-		ModifyTile(tile + TILE_XY(0,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
-		ModifyTile(tile + TILE_XY(0,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
-		ModifyTile(tile + TILE_XY(1,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
-		ModifyTile(tile + TILE_XY(1,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
-		UpdatePlayerHouse(p, score);
-		InvalidateWindow(WC_COMPANY, (int)p->index);
-	}
-
-	return cost;
-}
-
-/** Destroy a HQ.
- * During normal gameplay you can only implicitely destroy a HQ when you are
- * rebuilding it. Otherwise, only water can destroy it. Unfortunately there is
- * no safeguard against a hacked client to call this command, unless we also add
- * flags to the command table which commands can be called directly and which not.
- * @param x,y tile coordinates where HQ is located to destroy
- * @param p1 unused
- * @param p2 unused
- */
-int32 CmdDestroyCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	TileIndex tile;
-	Player *p;
-
-	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
-
-	/* Find player that has HQ flooded, and reset their location_of_house */
-	if (_current_player == OWNER_WATER)	{
-		bool dodelete = false;
-		tile = TILE_FROM_XY(x,y);
-
-		FOR_ALL_PLAYERS(p) {
-			if (p->location_of_house == tile) {
-				dodelete = true;
-				break;
-			}
-		}
-		if (!dodelete) return CMD_ERROR;
-	} else /* Destruction was initiated by player */
-		p = DEREF_PLAYER(_current_player);
-
-	if (p->location_of_house == 0) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		DoClearSquare(p->location_of_house + TILE_XY(0,0));
-		DoClearSquare(p->location_of_house + TILE_XY(0,1));
-		DoClearSquare(p->location_of_house + TILE_XY(1,0));
-		DoClearSquare(p->location_of_house + TILE_XY(1,1));
-		p->location_of_house = 0; // reset HQ position
-		InvalidateWindow(WC_COMPANY, (int)p->index);
-	}
-
-	// cost of relocating company is 1% of company value
-	return CalculateCompanyValue(p) / 100;
-}
-
 
 static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_player)
 {

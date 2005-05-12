@@ -1017,19 +1017,21 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-/**
- * Network-safe changing of patch-settings.
- * @param p1 bytes 0 - 7:  the patches type (page) that is being changed (construction, network, ai)
- * @param p1 bytes 8 - ..: the actual patch (entry) being set inside the category
+/** Network-safe changing of patch-settings.
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit 0- 7) - the patches type (page) that is being changed (construction, network, ai) (p1 & 0xFF)
+ * - p2 = (bit 8-15) - the actual patch (entry) being set inside the category ((p1>>8) & 0xFF)
  * @param p2 the new value for the patch
+ * @todo check that the new value is a valid one. Awful lot of work, but since only
+ * the server is allowed to do this, we trust it on this one :)
  */
 int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	byte pcat = p1 & 0xFF;
 	byte pel = (p1 >> 8) & 0xFF;
 
-	if (pcat >= lengthof(_patches_page)) return 0;
-	if (pel >= _patches_page[pcat].num) return 0;
+	if (pcat >= lengthof(_patches_page)) return CMD_ERROR;
+	if (pel >= _patches_page[pcat].num) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		const PatchEntry *pe = &_patches_page[pcat].entries[pel];

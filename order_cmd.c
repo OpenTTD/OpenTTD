@@ -697,6 +697,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} break;
 
 		case CO_UNSHARE: return DecloneOrder(dst, flags);
+		default: return CMD_ERROR;
 	}
 
 	return 0;
@@ -708,10 +709,8 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  *  without loosing the order-list
  *
  */
-void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
+void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 {
-	bool shared = IsOrderListShared(v);
-
 	/* Save general info */
 	bak->orderindex       = v->cur_order_index;
 	bak->service_interval = v->service_interval;
@@ -724,19 +723,15 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	}
 
 	/* If we have shared orders, store it on a special way */
-	if (shared) {
-		Vehicle *u;
-		if (v->next_shared)
-			u = v->next_shared;
-		else
-			u = v->prev_shared;
+	if (IsOrderListShared(v)) {
+		const Vehicle *u = (v->next_shared) ? v->next_shared : v->prev_shared;
 
 		bak->clone = u->index;
 	} else {
 		/* Else copy the orders */
 		Order *order, *dest;
 
-		dest  = bak->order;
+		dest = bak->order;
 
 		/* We do not have shared orders */
 		bak->clone = INVALID_VEHICLE;
@@ -759,16 +754,13 @@ void BackupVehicleOrders(Vehicle *v, BackuppedOrders *bak)
  */
 void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	int i;
+	uint i;
 
 	/* If we have a custom name, process that */
 	if (bak->name[0] != 0) {
 		strcpy((char*)_decode_parameters, bak->name);
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}
-
-	/* Restore vehicle number and service interval */
-	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , NULL, CMD_RESTORE_ORDER_INDEX);
 
 	/* If we had shared orders, recover that */
 	if (bak->clone != INVALID_VEHICLE) {
@@ -780,31 +772,44 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	    order number is one more than the current amount of orders, and because
 	    in network the commands are queued before send, the second insert always
 	    fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-	for (i = 0; bak->order[i].type != OT_NOTHING; i++)
+	for (i = 0; bak->order[i].type != OT_NOTHING; i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
+	}
+
+	/* Restore vehicle order-index and service interval */
+	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , NULL, CMD_RESTORE_ORDER_INDEX);
 }
 
-/**
- *
- * Restore the current-order-index of a vehicle and sets service-interval
- *
- * @param vehicle_id The ID of the vehicle
- * @param data       First 16 bits are the current-order-index
- *                   The last 16 bits are the service-interval
- *
+/** Restore the current order-index of a vehicle and sets service-interval.
+ * @param x,y unused
+ * @param p1 the ID of the vehicle
+ * @param p2 various bistuffed elements
+ * - p2 = (bit  0-15) - current order-index (p2 & 0xFFFF)
+ * - p2 = (bit 16-31) - service interval (p2 >> 16)
+ * @todo Unfortunately you cannot safely restore the unitnumber or the old vehicle
+ * as far as I can see. We can store it in BackuppedOrders, and restore it, but
+ * but we have no way of seeing it has been tampered with or not, as we have no
+ * legit way of knowing what that ID was.@n
+ * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
+ * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
  */
-int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 vehicle_id, uint32 data)
+int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle* v;
+	Vehicle *v;
+	OrderID cur_ord = p2 & 0xFFFF;
+	uint16 serv_int = p2 >> 16;
 
-	if (!IsVehicleIndex(vehicle_id)) return CMD_ERROR;
-	v = GetVehicle(vehicle_id);
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
+	v = GetVehicle(p1);
+	/* Check the vehicle type and ownership, and if the service interval and order are in range */
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->num_orders) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->service_interval = data >> 16;
-		v->cur_order_index = data & 0xFFFF;
+		v->cur_order_index = cur_ord;
+		v->service_interval = serv_int;
 	}
 
 	return 0;

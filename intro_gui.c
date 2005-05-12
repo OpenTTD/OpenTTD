@@ -137,21 +137,13 @@ void GenRandomNewGame(uint32 rnd1, uint32 rnd2)
 	SwitchMode(SM_NEWGAME);
 }
 
-int32 CmdStartScenario(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+void StartScenarioEditor(uint32 rnd1, uint32 rnd2)
 {
-	if (!(flags & DC_EXEC))
-		return 0;
-
-	// this forces stuff into test mode.
-	_docommand_recursive = 0;
-
-	_random_seeds[0][0] = p1;
-	_random_seeds[0][1] = p2;
+	_random_seeds[0][0] = rnd1;
+	_random_seeds[0][1] = rnd2;
 
 	SwitchMode(SM_START_SCENARIO);
-	return 0;
 }
-
 
 static const Widget _ask_abandon_game_widgets[] = {
 {  WWT_TEXTBTN, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,      STR_NULL},

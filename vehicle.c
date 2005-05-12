@@ -1306,9 +1306,13 @@ extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p
 extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
-/* Replaces a vehicle (used to be called autorenew)
-    p1 - Index of vehicle
-    p2 - Type of new engine */
+/** Replaces a vehicle (used to be called autorenew).
+ * @param x,y unused
+ * @param p1 index of vehicle being replaced
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0-15) - new engine type for the vehicle (p2 & 0xFFFF)
+ * - p2 = (bit 16-31) - money the player wants to have left after replacement counted in 100.000 (100K) (p2 >> 16)
+ */
 int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* makesvariables to inform about how much money the player wants to have left after replacing
@@ -1317,11 +1321,11 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
 	 This is a nice way to send 32 bit and only use 16 bit
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
-	uint16 new_engine_type = (uint16)(p2 & 0xFFFF);
-	uint32 autorefit_money = (p2  >> 16) * 100000;
+	EngineID new_engine_type = (p2 & 0xFFFF);
+	uint32 autorefit_money = (p2 >> 16) * 100000;
 	Vehicle *v, *u, *first;
 	int cost, build_cost, rear_engine_cost = 0;
-	byte old_engine_type;
+	EngineID old_engine_type;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -1329,9 +1333,9 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	old_engine_type = v->engine_type;
 
-	// first we make sure that it's a valid type the user requested
-	// check that it's an engine that is in the engine array
-	if (new_engine_type >= TOTAL_NUM_ENGINES ) return CMD_ERROR;
+	/* First we make sure that it's a valid type the user requested
+	 * check that it's an engine that is in the engine array */
+	if (!IsEngineIndex(new_engine_type)) return CMD_ERROR;
 
 	// check that the new vehicle type is the same as the original one
 	if (v->type != DEREF_ENGINE(new_engine_type)->type) return CMD_ERROR;
@@ -1357,8 +1361,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* In a rare situation, when 2 clients are connected to 1 company and have the same
 	    settings, a vehicle can be replaced twice.. check if this is the situation here */
-	if (old_engine_type == new_engine_type && v->age == 0)
-		return CMD_ERROR;
+	if (old_engine_type == new_engine_type && v->age == 0) return CMD_ERROR;
 
 	if ( v->type == VEH_Train ) {
 		first = GetFirstVehicleInChain(v);
@@ -1415,8 +1418,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		/* We do not really buy a new vehicle, we upgrade the old one */
-		Engine *e;
-		e = DEREF_ENGINE(new_engine_type);
+		Engine *e = DEREF_ENGINE(new_engine_type);
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -1426,7 +1428,6 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->build_year = _cur_year;
 
 		v->value = build_cost;
-
 
 		if (v->engine_type != new_engine_type) {
 			byte sprite = v->spritenum;

@@ -572,7 +572,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 					strcpy(_file_to_saveload.name, name);
 					snprintf(_network_game_info.map_name, sizeof(_network_game_info.map_name), "Loaded scenario");
 					DeleteWindow(w);
-					DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_START_SCENARIO);
+					StartScenarioEditor(Random(), InteractiveRandom());
 				}
 			}
 			break;

@@ -191,31 +191,42 @@ int32 CmdPause(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-
+/** Change the financial flow of your company.
+ * This is normally only enabled in offline mode, but if there is a debug
+ * build, you can cheat (to test).
+ * @param x,y unused
+ * @param p1 the amount of money to receive (if negative), or spend (if positive)
+ * @param p2 unused
+ */
 int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+#ifndef _DEBUG
+	if (_networking) return CMD_ERROR;
+#endif
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	return (int32)p1;
 }
 
+/** Transfer funds (money) from one player to another.
+ * @param x,y unused
+ * @param p1 the amount of money to transfer; max 16.000.000
+ * @param p2 the player to transfer the money to
+ */
 int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	p1 = clamp(p1, 0, 0xFFFFFF); // Clamp between 16 million and 0
-
-	if (p1 == 0)
-		return CMD_ERROR;
+	if (!_networking || (int32)p1 <= 0 || p2 >= MAX_PLAYERS) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		// Add money to player
-		byte old_cp = _current_player;
+		/* Add money to player (cast to signed to prevent 'stealing' money) */
+		PlayerID old_cp = _current_player;
 		_current_player = p2;
 		SubtractMoneyFromPlayer(-(int32)p1);
 		_current_player = old_cp;
 	}
 
-	// Subtract money from local-player
+	/* Subtract money from local-player (cast to signed to prevent 'stealing' money) */
 	return (int32)p1;
 }
 

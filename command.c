@@ -77,7 +77,6 @@ DEF_COMMAND(CmdRestoreOrderIndex);
 DEF_COMMAND(CmdBuildIndustry);
 
 DEF_COMMAND(CmdBuildCompanyHQ);
-DEF_COMMAND(CmdDestroyCompanyHQ);
 DEF_COMMAND(CmdSetPlayerFace);
 DEF_COMMAND(CmdSetPlayerColor);
 
@@ -148,8 +147,6 @@ DEF_COMMAND(CmdPlayerCtrl);
 DEF_COMMAND(CmdLevelLand);
 
 DEF_COMMAND(CmdRefitRailVehicle);
-
-DEF_COMMAND(CmdStartScenario);
 
 DEF_COMMAND(CmdBuildSignalTrack);
 DEF_COMMAND(CmdRemoveSignalTrack);
@@ -232,7 +229,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildAircraft,							/* 61 */
 	CmdSendAircraftToHangar,			/* 62 */
 	CmdChangeAircraftServiceInt,	/* 63 */
-	CmdRefitAircraft,							/* 64 <-- Hackykid */
+	CmdRefitAircraft,							/* 64 <-- REFIT: Hackykid */
 
 	CmdPlaceSign,									/* 65 */
 	CmdRenameSign,								/* 66 */
@@ -250,7 +247,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdSellShareInCompany,				/* 75 */
 	CmdBuyCompany,								/* 76 */
 
-	CmdBuildTown,									/* 77 <-- offline / scenario only */
+	CmdBuildTown,									/* 77 <-- offline */
 	NULL,													/* 78 */
 	NULL,													/* 79 */
 	CmdRenameTown,								/* 80 <-- TODO: check/enforce by server */
@@ -266,7 +263,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildShip,									/* 88 */
 	CmdSendShipToDepot,						/* 89 */
 	CmdChangeShipServiceInt,			/* 90 */
-	CmdRefitShip,									/* 91 <-- Hackykid */
+	CmdRefitShip,									/* 91 <-- REFIT: Hackykid */
 
 	NULL,            							/* 92 */
 	NULL,                         /* 93 */
@@ -274,30 +271,29 @@ static CommandProc * const _command_proc_table[] = {
 	NULL,                         /* 95 */
 	NULL,													/* 96 */
 	NULL,                 				/* 97 */
-
 	NULL,                					/* 98 */
 
 	CmdCloneOrder,								/* 99 */
 
 	CmdClearArea,									/* 100 */
 	NULL,                         /* 101 */
-	/***************************************************/
-	CmdMoneyCheat,								/* 102 <-- offline only */
+
+	CmdMoneyCheat,								/* 102 <-- offline (debug) */
 	CmdBuildCanal,								/* 103 */
-	CmdPlayerCtrl,								/* 104 <-- TODO: check/enforce by server */
+	CmdPlayerCtrl,								/* 104 */
 
-	CmdLevelLand,									/* 105 <-- Hackykid */
+	CmdLevelLand,									/* 105 */
 
-	CmdRefitRailVehicle,					/* 106 <-- Hackykid */
+	CmdRefitRailVehicle,					/* 106 <-- REFIT: Hackykid */
 	CmdRestoreOrderIndex,					/* 107 */
-	CmdBuildLock,									/* 108 <-- Hackykid */
-	CmdStartScenario,							/* 109 <-- UNNEEDED */
-	CmdBuildSignalTrack,					/* 110 <-- Hackykid */
-	CmdRemoveSignalTrack,					/* 111 <-- Hackykid */
-	CmdDestroyCompanyHQ,					/* 112 */
+	CmdBuildLock,									/* 108 */
+	NULL,           							/* 109 */
+	CmdBuildSignalTrack,					/* 110 */
+	CmdRemoveSignalTrack,					/* 111 */
+	NULL,               					/* 112 */
 	CmdGiveMoney,									/* 113 */
 	CmdChangePatchSetting,				/* 114 <-- TODO: check/enforce by server */
-	CmdReplaceVehicle,						/* 115 <-- Hackykid */
+	CmdReplaceVehicle,						/* 115 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

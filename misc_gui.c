@@ -1496,7 +1496,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 					SetFiosType(file->type);
 					strcpy(_file_to_saveload.name, name);
 					DeleteWindow(w);
-					DoCommandP(0, Random(), InteractiveRandom(), NULL, CMD_START_SCENARIO);
+					StartScenarioEditor(Random(), InteractiveRandom());
 				}
 			}
 			break;

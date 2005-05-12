@@ -141,7 +141,7 @@ static inline Order UnpackOrder(uint32 packed)
 }
 
 /* Functions */
-void BackupVehicleOrders(Vehicle *v, BackuppedOrders *order);
+void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order);
 void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *order);
 void DeleteDestinationFromVehicleOrder(Order dest);
 void InvalidateVehicleOrder(const Vehicle *v);

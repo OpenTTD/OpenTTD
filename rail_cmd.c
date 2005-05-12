@@ -555,8 +555,8 @@ static int32 ValidateAutoDrag(byte *railbit, int x, int y, int ex, int ey)
 	// validate the direction
 	while (((trdx <= 0) && (dx > 0)) || ((trdx >= 0) && (dx < 0)) ||
 	       ((trdy <= 0) && (dy > 0)) || ((trdy >= 0) && (dy < 0))) {
-		if (*railbit < 8) { // first direction is invalid, try the other
-			SETBIT(*railbit, 3);
+		if (!HASBIT(*railbit, 3)) { // first direction is invalid, try the other
+			SETBIT(*railbit, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
 		} else // other direction is invalid too, invalid drag
@@ -625,11 +625,19 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 	return (total_cost == 0) ? CMD_ERROR : total_cost;
 }
 
+/** Build rail on a stretch of track.
+ * Stub for the unified rail builder/remover
+ * @see CmdRailTrackHelper
+ */
 int32 CmdBuildRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	return CmdRailTrackHelper(x, y, flags, p1, CLRBIT(p2, 7));
 }
 
+/** Build rail on a stretch of track.
+ * Stub for the unified rail builder/remover
+ * @see CmdRailTrackHelper
+ */
 int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	return CmdRailTrackHelper(x, y, flags, p1, SETBIT(p2, 7));
@@ -813,36 +821,42 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-/*	Build many signals by dragging: AutoSignals
- * x,y = start tile
- * p1  = end tile
- * p2  = (bit 0)			- 0 = build, 1 = remove signals
- * p2  = (bit 3)			- 0 = signals, 1 = semaphores
- * p2  = (bit 4-6)		- track-orientation, valid values: 0-5
- * p2  = (bit 24-31)	- user defined signals_density
+/**	Build many signals by dragging; AutoSignals
+ * @param x,y start tile of drag
+ * @param p1  end tile of drag
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0)    - 0 = build, 1 = remove signals
+ * - p2 = (bit  3)    - 0 = signals, 1 = semaphores
+ * - p2 = (bit  4- 6) - track-orientation, valid values: 0-5
+ * - p2 = (bit 24-31) - user defined signals_density
  */
 static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int ex, ey;
-	byte railbit = (p2 >> 4) & 7;
-	bool error = true;
-	TileIndex tile = TILE_FROM_XY(x, y);
 	int32 ret, total_cost, signal_ctr;
-	byte m5, semaphores = (HASBIT(p2, 3)) ? 8 : 0;
+	byte m5, signals;
+	TileIndex tile = TILE_FROM_XY(x, y);
+	bool error = true;
+
 	int mode = p2 & 0x1;
-	// for vertical/horizontal tracks, double the given signals density
-	// since the original amount will be too dense (shorter tracks)
-	byte signal_density = (railbit & 0x6) ? (p2 >> 24) * 2: (p2 >> 24);
-	byte signals;
+	byte semaphores = (HASBIT(p2, 3)) ? 8 : 0;
+	byte railbit = (p2 >> 4) & 0x7;
+	byte signal_density = (p2 >> 24);
+
+	if (p1 > MapSize()) return CMD_ERROR;
+	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	/* for vertical/horizontal tracks, double the given signals density
+	* since the original amount will be too dense (shorter tracks) */
+	if (railbit & 0x6) signal_density *= 2;
 
 	// unpack end tile
 	ex = TileX(p1) * 16;
 	ey = TileY(p1) * 16;
 
-	if (ValidateAutoDrag(&railbit, x, y, ex, ey) == CMD_ERROR)
-		return CMD_ERROR;
+	if (CmdFailed(ValidateAutoDrag(&railbit, x, y, ex, ey))) return CMD_ERROR;
 
 	// copy the signal-style of the first rail-piece if existing
 	m5 = _map5[tile];
@@ -851,9 +865,8 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 		if (signals == 0) signals = _signals_table_both[railbit];
 
 		semaphores = (_map3_hi[tile] & ~3) ? 8 : 0; // copy signal/semaphores style (independent of CTRL)
-	} else { // no signals exist, drag a two-way signal stretch
+	} else // no signals exist, drag a two-way signal stretch
 		signals = _signals_table_both[railbit];
-	}
 
 	/* signal_density_ctr	- amount of tiles already processed
 	 * signals_density		- patch setting to put signal on every Nth tile (double space on |, -- tracks)
@@ -864,25 +877,22 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 									and convert all others to semaphore/signal
 	 * mode				- 1 remove signals, 0 build signals */
 	signal_ctr = total_cost = 0;
-	for(;;) {
+	for (;;) {
 		// only build/remove signals with the specified density
 		if ((signal_ctr %	signal_density) == 0 ) {
 			ret = DoCommand(x, y, (railbit & 7) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Abort placement for any other error than NOT_SUITABLE_TRACK
 			 * This includes vehicles on track, competitor's tracks, etc. */
-			if (ret == CMD_ERROR) {
-				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) {
-					return CMD_ERROR;
-				}
+			if (CmdFailed(ret)) {
+				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) return CMD_ERROR;
 			} else {
 				error = false;
 				total_cost += ret;
 			}
 		}
 
-		if (ex == x && ey == y) // reached end of drag
-			break;
+		if (ex == x && ey == y) break; // reached end of drag
 
 		x += _railbit.xinc[railbit];
 		y += _railbit.yinc[railbit];
@@ -895,7 +905,10 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	return (error) ? CMD_ERROR : total_cost;
 }
 
-/* Stub for the unified Signal builder/remover */
+/** Build signals on a stretch of track.
+ * Stub for the unified signal builder/remover
+ * @see CmdSignalTrackHelper
+ */
 int32 CmdBuildSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	return CmdSignalTrackHelper(x, y, flags, p1, p2);
@@ -941,7 +954,10 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return _price.remove_signals;
 }
 
-/* Stub for the unified Signal builder/remover */
+/** Remove signals on a stretch of track.
+ * Stub for the unified signal builder/remover
+ * @see CmdSignalTrackHelper
+ */
 int32 CmdRemoveSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 0));

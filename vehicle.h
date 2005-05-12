@@ -55,7 +55,7 @@ typedef struct VehicleRail {
 
 	// NOSAVE: for wagon override - id of the first engine in train
 	// 0xffff == not in train
-	uint16 first_engine;
+	EngineID first_engine;
 
 	byte track;
 	byte force_proceed;

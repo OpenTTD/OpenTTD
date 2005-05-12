@@ -159,30 +159,44 @@ static void MarkTilesAroundDirty(uint tile)
 	MarkTileDirtyByTile(TILE_ADDXY(tile, -1, 0));
 }
 
+/** Builds a lock (ship-lift)
+ * @param x,y tile coordinates where to place the lock
+ * @param p1 unused
+ * @param p2 unused
+ */
 int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tile = TILE_FROM_XY(x,y);
-	int32 ret;
-	uint th;
+	TileIndex tile = TILE_FROM_XY(x,y);
+	uint tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-	th = GetTileSlope(tile, NULL);
+	tileh = GetTileSlope(tile, NULL);
 
-	if (th==3 || th==6 || th==9 || th==12) {
-		static const byte _shiplift_dirs[16] = {0,0,0,2,0,0,1,0,0,3,0,0,0};
-		ret = DoBuildShiplift(tile, _shiplift_dirs[th], flags);
-		return ret;
-		}
-	else
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (tileh == 3 || tileh == 6 || tileh == 9 || tileh == 12) {
+		static const byte _shiplift_dirs[16] = {0, 0, 0, 2, 0, 0, 1, 0, 0, 3, 0, 0, 0};
+		return DoBuildShiplift(tile, _shiplift_dirs[tileh], flags);
+	}
+
+	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 }
 
+/** Build a piece of canal.
+ * @param x,y end tile of stretch-dragging
+ * @param p1 start tile of stretch-dragging
+ * @param p2 unused
+ */
 int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 ret, cost;
 	int size_x, size_y;
-	int sx = TileX((TileIndex)p1);
-	int sy = TileY((TileIndex)p1);
+	int sx, sy;
+
+	if (p1 > MapSize()) return CMD_ERROR;
+
+	sx = TileX(p1);
+	sy = TileY(p1);
+	/* x,y are in pixel-coordinates, transform to tile-coordinates
+	 * to be able to use the BEGIN_TILE_LOOP() macro */
 	x >>= 4; y >>= 4;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -192,11 +206,13 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	size_x = (x - sx) + 1;
 	size_y = (y - sy) + 1;
 
+	/* Outside the editor you can only drag canals, and not areas */
+	if (_game_mode != GM_EDITOR && (sx != x && sy != y)) return CMD_ERROR;
+
 	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
 		ret = 0;
-		if (GetTileSlope(tile, NULL) != 0)
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+		if (GetTileSlope(tile, NULL) != 0) return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
 			// can't make water of water!
 			if (IsTileType(tile, MP_WATER)) {
@@ -204,19 +220,16 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				/* is middle piece of a bridge? */
 				if (IsTileType(tile, MP_TUNNELBRIDGE) && _map5[tile] & 0x40) { /* build under bridge */
-					if (_map5[tile] & 0x20) { // transport route under bridge
-						_error_message = STR_5800_OBJECT_IN_THE_WAY;
-						ret = CMD_ERROR;
-					}
-					else if (_map5[tile] & 0x18) { // already water under bridge
-						_error_message = STR_1007_ALREADY_BUILT;
-						ret = CMD_ERROR;
-					}
+					if (_map5[tile] & 0x20) // transport route under bridge
+						return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
+
+					if (_map5[tile] & 0x18) // already water under bridge
+						return_cmd_error(STR_1007_ALREADY_BUILT);
 				/* no bridge? then try to clear it. */
 				} else
 					ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
-				if (ret == CMD_ERROR) return ret;
+				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 
 				/* execute modifications */

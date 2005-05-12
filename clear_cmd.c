@@ -322,17 +322,20 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/*
- * p1 - start
+/** Levels a selected (rectangle) area of land
+ * @param x,y end tile of area-drag
+ * @param p1 start tile of area drag
+ * @param p2 unused
  */
-
 int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
 	int size_x, size_y;
 	int sx, sy;
 	uint h, curh;
-	uint tile;
+	TileIndex tile;
 	int32 ret, cost, money;
+
+	if (p1 > MapSize()) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -354,11 +357,11 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
 
-	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile)
+	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		curh = TileHeight(tile2);
 		while (curh != h) {
-			ret = DoCommandByTile(tile2, 8, (curh > h)?0:1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
-			if (ret == CMD_ERROR) break;
+			ret = DoCommandByTile(tile2, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
+			if (CmdFailed(ret)) break;
 			cost += ret;
 
 			if (flags & DC_EXEC) {
@@ -366,15 +369,14 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommandByTile(tile2, 8, (curh > h)?0:1, flags, CMD_TERRAFORM_LAND);
+				DoCommandByTile(tile2, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 			}
 
 			curh += (curh > h) ? -1 : 1;
 		}
-	END_TILE_LOOP(tile2, size_x, size_y, tile)
+	} END_TILE_LOOP(tile2, size_x, size_y, tile)
 
-	if (cost == 0) return CMD_ERROR;
-	return cost;
+	return (cost == 0) ? CMD_ERROR : cost;
 }
 
 /** Purchase a land area. Actually you only purchase one tile, so
