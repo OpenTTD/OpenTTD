@@ -822,6 +822,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	// Only CMD_PLAYER_CTRL is always allowed, for the rest, playas needs
 	//  to match the player in the packet
 	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas-1 != cp->player) {
+		IConsolePrintF(_iconsole_color_error, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
+									 ci->client_playas - 1, inet_ntoa(*(struct in_addr *)&ci->client_ip), cp->player);
 		// The player did a command with the wrong player_id.. bad!!
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		return;
