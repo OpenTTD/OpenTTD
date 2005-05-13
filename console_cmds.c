@@ -170,6 +170,7 @@ static const FiosItem* GetFiosItem(const char* file)
 {
 	int i;
 
+	_saveload_mode = SLD_LOAD_GAME;
 	BuildFileList();
 
 	for (i = 0; i < _fios_num; i++) {
@@ -227,7 +228,6 @@ DEF_CONSOLE_CMD(ConListFiles)
 		return true;
 	}
 
-	_saveload_mode = SLD_LOAD_GAME;
 	BuildFileList();
 
 	for (i = 0; i < _fios_num; i++) {
