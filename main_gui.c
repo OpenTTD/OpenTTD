@@ -59,43 +59,41 @@ void HandleOnEditTextCancel(void)
 	}
 }
 
-void HandleOnEditText(WindowEvent *e) {
+void HandleOnEditText(WindowEvent *e)
+{
 	const char *b = e->edittext.str;
 	int id;
 	memcpy(_decode_parameters, b, 32);
 
 	id = _rename_id;
 
-	switch(_rename_what) {
-	case 0:
-		// for empty string send "remove sign" parameter
+	switch (_rename_what) {
+	case 0: /* Rename a s sign, if string is empty, delete sign */
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
 		break;
-	case 1:
-		if(*b == 0)
-			return;
+	case 1: /* Rename a waypoint */
+		if (*b == 0) return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 #ifdef ENABLE_NETWORK
-	case 2:
-		// Speak to..
+	case 2: /* Speak to.. */
 		if (!_network_server)
 			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str);
 		else
 			NetworkServer_HandleChat(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str, NETWORK_SERVER_INDEX);
 		break;
-	case 3: {
-		// Give money
-		int32 money = atoi(e->edittext.str) / GetCurrentCurrencyRate();
-		char msg[100];
+	case 3: { /* Give money, you can only give money in excess of loan */
+		const Player *p = DEREF_PLAYER(_current_player);
+		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / GetCurrentCurrencyRate());
+		char msg[20];
 
-		money = clamp(money, 0, 0xFFFFFF); // Clamp between 16 million and 0
+		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
 
 		// Give 'id' the money, and substract it from ourself
-		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY)) break;
+		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS))) break;
 
 		// Inform the player of this action
-		snprintf(msg, 100, "%d", money);
+		snprintf(msg, sizeof(msg), "%d", money);
 
 		if (!_network_server)
 			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg);
@@ -103,10 +101,9 @@ void HandleOnEditText(WindowEvent *e) {
 			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg, NETWORK_SERVER_INDEX);
 		break;
 	}
-	case 4: {// Game-Password and Company-Password
+	case 4: /* Game-Password and Company-Password */
 		SEND_COMMAND(PACKET_CLIENT_PASSWORD)(id, e->edittext.str);
 		break;
-	}
 #endif /* ENABLE_NETWORK */
 	}
 }

@@ -1806,8 +1806,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} production down by 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insect infestation causes havoc at {TOWN} {STRING}!{}Production down by 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...can only be positioned near edges of map
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} goes up by {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} goes down by {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} increases {COMMA16}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} decreases {COMMA16}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Train in tunnel
@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Can't bo
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...no loan to repay
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} required
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Can't repay loan...
+STR_INSUFFICIENT_FUNDS                                         	:{WHITE}Can't give away money that is loaned from the bank...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Select new face for manager
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change the company vehicle livery
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change the manager's name

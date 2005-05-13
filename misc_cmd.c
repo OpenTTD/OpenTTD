@@ -208,26 +208,34 @@ int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Transfer funds (money) from one player to another.
+ * To prevent abuse	in multiplayer games you can only send money to other
+ * players if you have paid off your loan (either explicitely, or implicitely
+ * given the fact that you have more money than loan).
  * @param x,y unused
- * @param p1 the amount of money to transfer; max 16.000.000
+ * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the player to transfer the money to
  */
 int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	const Player *p = DEREF_PLAYER(_current_player);
+	int32 amount = min((int32)p1, 20000000);
+
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	if (!_networking || (int32)p1 <= 0 || p2 >= MAX_PLAYERS) return CMD_ERROR;
+	/* You can only transfer funds that is in excess of your loan */
+	if (p->money64 - p->current_loan < amount || amount <= 0) return CMD_ERROR;
+	if (!_networking || p2 >= MAX_PLAYERS) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Add money to player (cast to signed to prevent 'stealing' money) */
+		/* Add money to player */
 		PlayerID old_cp = _current_player;
 		_current_player = p2;
-		SubtractMoneyFromPlayer(-(int32)p1);
+		SubtractMoneyFromPlayer(-amount);
 		_current_player = old_cp;
 	}
 
-	/* Subtract money from local-player (cast to signed to prevent 'stealing' money) */
-	return (int32)p1;
+	/* Subtract money from local-player */
+	return amount;
 }
 
 /** Change difficulty level/settings (server-only).
