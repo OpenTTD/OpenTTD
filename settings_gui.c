@@ -70,7 +70,7 @@ static int GetCurRes(void)
 
 static inline bool RoadVehiclesAreBuilt(void)
 {
-	Vehicle *v;
+	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road) return true;
 	}
@@ -171,7 +171,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 11: /* Road side */
 			if (_opt_ptr->road_side != e->dropdown.index) { // only change if setting changed
-				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_EMPTY));
+				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 				MarkWholeScreenDirty();
 			}
 			break;
@@ -214,8 +214,9 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
  */
 int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	/* Check boundaries and you can only change this if NO vehicles have been built yet */
-	if (p1 > 1 || RoadVehiclesAreBuilt()) return CMD_ERROR;
+	/* Check boundaries and you can only change this if NO vehicles have been built yet,
+	 * except in the intro-menu where of course it's always possible to do so. */
+	if (p1 > 1 || (_game_mode != GM_MENU && RoadVehiclesAreBuilt())) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		_opt_ptr->road_side = p1;

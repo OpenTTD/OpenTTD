@@ -196,7 +196,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 6: { /* carry out the action */
-			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_2054_CAN_T_DO_THIS));
+			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 			break;
 		}
 		}
