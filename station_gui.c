@@ -472,27 +472,31 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		}	break;
 
-		case 10: {
+		case 10: { /* Show a list of scheduled trains to this station */
 			const Station *st = GetStation(w->window_number);
 			ShowPlayerTrains(st->owner, w->window_number);
 			break;
 		}
 
-		case 11: {
+		case 11: { /* Show a list of scheduled road-vehicles to this station */
 			const Station *st = GetStation(w->window_number);
 			ShowPlayerRoadVehicles(st->owner, w->window_number);
 			break;
 		}
 
-		case 12: {
+		case 12: { /* Show a list of scheduled aircraft to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowPlayerAircraft(st->owner, w->window_number);
+			/* Since oilrigs have no owners, show the scheduled aircraft of current player */
+			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+			ShowPlayerAircraft(owner, w->window_number);
 			break;
 		}
 
-		case 13: {
+		case 13: { /* Show a list of scheduled ships to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowPlayerShips(st->owner, w->window_number);
+			/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
+			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+			ShowPlayerShips(owner, w->window_number);
 			break;
 		}
 		}
