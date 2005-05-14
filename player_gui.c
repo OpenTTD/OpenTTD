@@ -509,6 +509,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			if (!_networking) SETBIT(w->hidden_state, 11); // hide company-password widget
 		} else {
+			if (p->location_of_house == 0) SETBIT(dis, 7);
+
 			if (_patches.allow_shares) { /* shares are allowed */
 				/* If all shares are owned by someone (none by nobody), disable buy button */
 				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) SETBIT(dis, 9);
