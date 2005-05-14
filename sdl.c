@@ -421,6 +421,8 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 #elif defined(__SVR4) && defined(__sun)
 	if (sym->scancode == 60) key |= WKC_BACKQUOTE;
 	if (sym->scancode == 49) key |= WKC_BACKSPACE;
+#elif defined(__sgi__)
+	if (sym->scancode == 22) key |= WKC_BACKQUOTE;
 #else
 	if (sym->scancode == 41) key |= WKC_BACKQUOTE; // Linux console
 	if (sym->scancode == 49) key |= WKC_BACKQUOTE;

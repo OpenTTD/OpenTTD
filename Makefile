@@ -332,9 +332,11 @@ ifndef DEBUG
 ifndef PROFILE
 # Release mode
 ifndef MORPHOS
+ifndef IRIX
 # automatical strip breaks under morphos
 BASECFLAGS += -s
 LDFLAGS += -s
+endif
 endif
 endif
 
@@ -349,7 +351,9 @@ else
 BASECFLAGS += -O2
 endif
 ifndef PROFILE
+ifndef IRIX
 BASECFLAGS += -fomit-frame-pointer
+endif
 endif
 endif
 endif
