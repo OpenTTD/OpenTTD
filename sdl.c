@@ -636,7 +636,7 @@ static bool SdlVideoChangeRes(int w, int h)
 
 void ToggleFullScreen(bool full_screen)
 {
-	_fullscreen ^= full_screen;
+	_fullscreen = full_screen;
 	GetVideoModes(); // get the list of available video modes
 	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1]))
 		_fullscreen ^= true; // switching resolution failed, put back full_screen to original status
