@@ -232,13 +232,6 @@ static void DrawSurfaceToScreen(void)
 	}
 }
 
-static int CDECL compare_res(const void *pa, const void *pb)
-{
-	int x = ((const uint16*)pa)[0] - ((const uint16*)pb)[0];
-	if (x != 0) return x;
-	return ((const uint16*)pa)[1] - ((const uint16*)pb)[1];
-}
-
 static const uint16 default_resolutions[][2] = {
 	{ 640,  480},
 	{ 800,  600},
