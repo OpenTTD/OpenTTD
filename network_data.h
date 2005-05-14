@@ -33,14 +33,14 @@ typedef struct Packet {
 
 typedef struct CommandPacket {
 	struct CommandPacket *next;
-	byte player;
-	uint32 cmd;
-	uint32 p1;
-	uint32 p2;
-	uint32 tile; // Always make it uint32, so it is bigmap compatible
-	uint32 dp[20]; // decode_params
-	uint32 frame; // In which frame must this packet be executed?
-	byte callback;
+	byte player;   /// player that is executing the command (PlayerID)
+	uint32 cmd;    /// command being executed
+	uint32 p1;     /// parameter p1
+	uint32 p2;     /// parameter p2
+	uint32 tile;   /// tile command being executed on ; always make it uint32, so it is bigmap compatible (TileIndex)
+	uint32 dp[20]; /// _decode_parameters (for sending strings, etc.)
+	uint32 frame;  /// the frame in which this packet is executed
+	byte callback; /// any callback function executed upon successful completion of the command
 } CommandPacket;
 
 typedef enum {

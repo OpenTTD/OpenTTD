@@ -154,146 +154,146 @@ DEF_COMMAND(CmdRemoveSignalTrack);
 DEF_COMMAND(CmdReplaceVehicle);
 
 /* The master command table */
-static CommandProc * const _command_proc_table[] = {
-	CmdBuildRailroadTrack,				/* 0  */
-	CmdRemoveRailroadTrack,				/* 1  */
-	CmdBuildSingleRail,						/* 2  */
-	CmdRemoveSingleRail,					/* 3  */
-	CmdLandscapeClear,						/* 4  */
-	CmdBuildBridge,								/* 5  */
-	CmdBuildRailroadStation,			/* 6  */
-	CmdBuildTrainDepot,						/* 7  */
-	CmdBuildSingleSignal,					/* 8  */
-	CmdRemoveSingleSignal,				/* 9  */
-	CmdTerraformLand,							/* 10 */
-	CmdPurchaseLandArea,					/* 11 */
-	CmdSellLandArea,							/* 12 */
-	CmdBuildTunnel,								/* 13 */
-	CmdRemoveFromRailroadStation,	/* 14 */
-	CmdConvertRail,								/* 15 */
-	CmdBuildTrainWaypoint,				/* 16 */
-	CmdRenameWaypoint,						/* 17 */
-	CmdRemoveTrainWaypoint,				/* 18 */
-	NULL,                         /* 19 */
-	NULL,													/* 20 */
-	CmdBuildRoadStop,							/* 21 */
-	NULL,													/* 22 */
-	CmdBuildLongRoad,							/* 23 */
-	CmdRemoveLongRoad,						/* 24 */
-	CmdBuildRoad,									/* 25 */
-	CmdRemoveRoad,								/* 26 */
-	CmdBuildRoadDepot,						/* 27 */
-	NULL,													/* 28 */
-	CmdBuildAirport,							/* 29 */
-	CmdBuildDock,									/* 30 */
-	CmdBuildShipDepot,						/* 31 */
-	CmdBuildBuoy,									/* 32 */
-	CmdPlantTree,									/* 33 */
-	CmdBuildRailVehicle,					/* 34 */
-	CmdMoveRailVehicle,						/* 35 */
-	CmdStartStopTrain,						/* 36 */
-	NULL,													/* 37 */
-	CmdSellRailWagon,							/* 38 */
-	CmdSendTrainToDepot,		  	  /* 39 */
-	CmdForceTrainProceed,					/* 40 */
-	CmdReverseTrainDirection,			/* 41 */
+static const Command _command_proc_table[] = {
+	{CmdBuildRailroadTrack,                  0}, /*   0 */
+	{CmdRemoveRailroadTrack,                 0}, /*   1 */
+	{CmdBuildSingleRail,                     0}, /*   2 */
+	{CmdRemoveSingleRail,                    0}, /*   3 */
+	{CmdLandscapeClear,                      0}, /*   4 */
+	{CmdBuildBridge,                         0}, /*   5 */
+	{CmdBuildRailroadStation,                0}, /*   6 */
+	{CmdBuildTrainDepot,                     0}, /*   7 */
+	{CmdBuildSingleSignal,                   0}, /*   8 */
+	{CmdRemoveSingleSignal,                  0}, /*   9 */
+	{CmdTerraformLand,                       0}, /*  10 */
+	{CmdPurchaseLandArea,                    0}, /*  11 */
+	{CmdSellLandArea,                        0}, /*  12 */
+	{CmdBuildTunnel,                         0}, /*  13 */
+	{CmdRemoveFromRailroadStation,           0}, /*  14 */
+	{CmdConvertRail,                         0}, /*  15 */
+	{CmdBuildTrainWaypoint,                  0}, /*  16 */
+	{CmdRenameWaypoint,                      0}, /*  17 */
+	{CmdRemoveTrainWaypoint,                 0}, /*  18 */
+	{NULL,                                   0}, /*  19 */
+	{NULL,                                   0}, /*  20 */
+	{CmdBuildRoadStop,                       0}, /*  21 */
+	{NULL,                                   0}, /*  22 */
+	{CmdBuildLongRoad,                       0}, /*  23 */
+	{CmdRemoveLongRoad,                      0}, /*  24 */
+	{CmdBuildRoad,                           0}, /*  25 */
+	{CmdRemoveRoad,                          0}, /*  26 */
+	{CmdBuildRoadDepot,                      0}, /*  27 */
+	{NULL,                                   0}, /*  28 */
+	{CmdBuildAirport,                        0}, /*  29 */
+	{CmdBuildDock,                           0}, /*  30 */
+	{CmdBuildShipDepot,                      0}, /*  31 */
+	{CmdBuildBuoy,                           0}, /*  32 */
+	{CmdPlantTree,                           0}, /*  33 */
+	{CmdBuildRailVehicle,                    0}, /*  34 */
+	{CmdMoveRailVehicle,                     0}, /*  35 */
+	{CmdStartStopTrain,                      0}, /*  36 */
+	{NULL,                                   0}, /*  37 */
+	{CmdSellRailWagon,                       0}, /*  38 */
+	{CmdSendTrainToDepot,                    0}, /*  39 */
+	{CmdForceTrainProceed,                   0}, /*  40 */
+	{CmdReverseTrainDirection,               0}, /*  41 */
 
-	CmdModifyOrder,								/* 42 */
-	CmdSkipOrder,									/* 43 */
-	CmdDeleteOrder,								/* 44 */
-	CmdInsertOrder,								/* 45 */
+	{CmdModifyOrder,                         0}, /*  42 */
+	{CmdSkipOrder,                           0}, /*  43 */
+	{CmdDeleteOrder,                         0}, /*  44 */
+	{CmdInsertOrder,                         0}, /*  45 */
 
-	CmdChangeTrainServiceInt,			/* 46 */
+	{CmdChangeTrainServiceInt,               0}, /*  46 */
 
-	CmdBuildIndustry,							/* 47 */
-	CmdBuildCompanyHQ,						/* 48 */
-	CmdSetPlayerFace,							/* 49 */
-	CmdSetPlayerColor,						/* 50 */
+	{CmdBuildIndustry,                       0}, /*  47 */
+	{CmdBuildCompanyHQ,                      0}, /*  48 */
+	{CmdSetPlayerFace,                       0}, /*  49 */
+	{CmdSetPlayerColor,                      0}, /*  50 */
 
-	CmdIncreaseLoan,							/* 51 */
-	CmdDecreaseLoan,							/* 52 */
+	{CmdIncreaseLoan,                        0}, /*  51 */
+	{CmdDecreaseLoan,                        0}, /*  52 */
 
-	CmdWantEnginePreview,					/* 53 */
+	{CmdWantEnginePreview,                   0}, /*  53 */
 
-	CmdNameVehicle,								/* 54 */
-	CmdRenameEngine,							/* 55 */
+	{CmdNameVehicle,                         0}, /*  54 */
+	{CmdRenameEngine,                        0}, /*  55 */
 
-	CmdChangeCompanyName,					/* 56 */
-	CmdChangePresidentName,				/* 57 */
+	{CmdChangeCompanyName,                   0}, /*  56 */
+	{CmdChangePresidentName,                 0}, /*  57 */
 
-	CmdRenameStation,							/* 58 */
+	{CmdRenameStation,                       0}, /*  58 */
 
-	CmdSellAircraft,							/* 59 */
-	CmdStartStopAircraft,					/* 60 */
+	{CmdSellAircraft,                        0}, /*  59 */
+	{CmdStartStopAircraft,                   0}, /*  60 */
 
-	CmdBuildAircraft,							/* 61 */
-	CmdSendAircraftToHangar,			/* 62 */
-	CmdChangeAircraftServiceInt,	/* 63 */
-	CmdRefitAircraft,							/* 64 */
+	{CmdBuildAircraft,                       0}, /*  61 */
+	{CmdSendAircraftToHangar,                0}, /*  62 */
+	{CmdChangeAircraftServiceInt,            0}, /*  63 */
+	{CmdRefitAircraft,                       0}, /*  64 */
 
-	CmdPlaceSign,									/* 65 */
-	CmdRenameSign,								/* 66 */
+	{CmdPlaceSign,                           0}, /*  65 */
+	{CmdRenameSign,                          0}, /*  66 */
 
-	CmdBuildRoadVeh,							/* 67 */
-	CmdStartStopRoadVeh,					/* 68 */
-	CmdSellRoadVeh,								/* 69 */
-	CmdSendRoadVehToDepot,				/* 70 */
-	CmdTurnRoadVeh,								/* 71 */
-	CmdChangeRoadVehServiceInt,		/* 72 */
+	{CmdBuildRoadVeh,                        0}, /*  67 */
+	{CmdStartStopRoadVeh,                    0}, /*  68 */
+	{CmdSellRoadVeh,                         0}, /*  69 */
+	{CmdSendRoadVehToDepot,                  0}, /*  70 */
+	{CmdTurnRoadVeh,                         0}, /*  71 */
+	{CmdChangeRoadVehServiceInt,             0}, /*  72 */
 
-	CmdPause,											/* 73 <-- TODO: check/enforce by server */
+	{CmdPause,                      CMD_SERVER}, /*  73 */
 
-	CmdBuyShareInCompany,					/* 74 */
-	CmdSellShareInCompany,				/* 75 */
-	CmdBuyCompany,								/* 76 */
+	{CmdBuyShareInCompany,                   0}, /*  74 */
+	{CmdSellShareInCompany,                  0}, /*  75 */
+	{CmdBuyCompany,                          0}, /*  76 */
 
-	CmdBuildTown,									/* 77 <-- offline */
-	NULL,													/* 78 */
-	NULL,													/* 79 */
-	CmdRenameTown,								/* 80 <-- TODO: check/enforce by server */
-	CmdDoTownAction,							/* 81 */
+	{CmdBuildTown,                 CMD_OFFLINE}, /*  77 */
+	{NULL,                                   0}, /*  78 */
+	{NULL,                                   0}, /*  79 */
+	{CmdRenameTown,                 CMD_SERVER}, /*  80 */
+	{CmdDoTownAction,                        0}, /*  81 */
 
-	CmdSetRoadDriveSide,					/* 82 <-- TODO: check/enforce by server */
-	NULL,              						/* 83 */
-	NULL,													/* 84 */
-	CmdChangeDifficultyLevel,			/* 85 <-- TODO: check/enforce by server */
+	{CmdSetRoadDriveSide,           CMD_SERVER}, /*  82 */
+	{NULL,                                   0}, /*  83 */
+	{NULL,                                   0}, /*  84 */
+	{CmdChangeDifficultyLevel,      CMD_SERVER}, /*  85 */
 
-	CmdStartStopShip,							/* 86 */
-	CmdSellShip,									/* 87 */
-	CmdBuildShip,									/* 88 */
-	CmdSendShipToDepot,						/* 89 */
-	CmdChangeShipServiceInt,			/* 90 */
-	CmdRefitShip,									/* 91 */
+	{CmdStartStopShip,                       0}, /*  86 */
+	{CmdSellShip,                            0}, /*  87 */
+	{CmdBuildShip,                           0}, /*  88 */
+	{CmdSendShipToDepot,                     0}, /*  89 */
+	{CmdChangeShipServiceInt,                0}, /*  90 */
+	{CmdRefitShip,                           0}, /*  91 */
 
-	NULL,            							/* 92 */
-	NULL,                         /* 93 */
-	NULL,             						/* 94 */
-	NULL,                         /* 95 */
-	NULL,													/* 96 */
-	NULL,                 				/* 97 */
-	NULL,                					/* 98 */
+	{NULL,                                   0}, /*  92 */
+	{NULL,                                   0}, /*  93 */
+	{NULL,                                   0}, /*  94 */
+	{NULL,                                   0}, /*  95 */
+	{NULL,                                   0}, /*  96 */
+	{NULL,                                   0}, /*  97 */
+	{NULL,                                   0}, /*  98 */
 
-	CmdCloneOrder,								/* 99 */
+	{CmdCloneOrder,                          0}, /*  99 */
 
-	CmdClearArea,									/* 100 */
-	NULL,                         /* 101 */
+	{CmdClearArea,                           0}, /* 100 */
+	{NULL,                                   0}, /* 101 */
 
-	CmdMoneyCheat,								/* 102 <-- offline (debug) */
-	CmdBuildCanal,								/* 103 */
-	CmdPlayerCtrl,								/* 104 */
+	{CmdMoneyCheat,                CMD_OFFLINE}, /* 102 */
+	{CmdBuildCanal,                          0}, /* 103 */
+	{CmdPlayerCtrl,                          0}, /* 104 */
 
-	CmdLevelLand,									/* 105 */
+	{CmdLevelLand,                           0}, /* 105 */
 
-	CmdRefitRailVehicle,					/* 106 */
-	CmdRestoreOrderIndex,					/* 107 */
-	CmdBuildLock,									/* 108 */
-	NULL,           							/* 109 */
-	CmdBuildSignalTrack,					/* 110 */
-	CmdRemoveSignalTrack,					/* 111 */
-	NULL,               					/* 112 */
-	CmdGiveMoney,									/* 113 */
-	CmdChangePatchSetting,				/* 114 <-- TODO: check/enforce by server */
-	CmdReplaceVehicle,						/* 115 */
+	{CmdRefitRailVehicle,                    0}, /* 106 */
+	{CmdRestoreOrderIndex,                   0}, /* 107 */
+	{CmdBuildLock,                           0}, /* 108 */
+	{NULL,                                   0}, /* 109 */
+	{CmdBuildSignalTrack,                    0}, /* 110 */
+	{CmdRemoveSignalTrack,                   0}, /* 111 */
+	{NULL,                                   0}, /* 112 */
+	{CmdGiveMoney,                           0}, /* 113 */
+	{CmdChangePatchSetting,         CMD_SERVER}, /* 114 */
+	{CmdReplaceVehicle,                      0}, /* 115 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */
@@ -301,11 +301,13 @@ bool IsValidCommand(uint cmd)
 {
 	cmd = cmd & 0xFF;
 
-	if (cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd] == NULL)
+	if (cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd].proc == NULL)
 		return false;
 
 	return true;
 }
+
+byte GetCommandFlags(uint cmd) {return _command_proc_table[cmd & 0xFF].flags;}
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
@@ -323,7 +325,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (TILE_FROM_XY(x,y) > MapSize()) return CMD_ERROR;
 
-	proc = _command_proc_table[procc];
+	proc = _command_proc_table[procc].proc;
 
 	if (_docommand_recursive == 0) {
 		_error_message = INVALID_STRING_ID;
@@ -412,7 +414,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	// get pointer to command handler
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
-	proc = _command_proc_table[cmd & 0xFF];
+	proc = _command_proc_table[cmd & 0xFF].proc;
 
 	// Some commands have a different output in dryrun than the realrun
 	//  e.g.: if you demolish a whole town, the dryrun would say okay.

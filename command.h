@@ -159,6 +159,19 @@ enum {
 	CMD_SHOW_NO_ERROR = 0x2000,
 };
 
+/** Command flags for the command table
+ * @see _command_proc_table
+ */
+enum {
+	CMD_SERVER  = 0x1, /// the command can only be initiated by the server
+	CMD_OFFLINE = 0x2, /// the command cannot be executed in a multiplayer game; single-player only
+};
+
+typedef struct Command {
+	CommandProc *proc;
+	byte flags;
+} Command;
+
 //#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)
 #define return_cmd_error(errcode) do { return CMD_ERROR | (errcode); } while (0)
 
@@ -178,8 +191,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 
 bool IsValidCommand(uint cmd);
+byte GetCommandFlags(uint cmd);
 int32 GetAvailableMoneyForCommand(void);
 
-/* Validate functions for rail building */
-static inline bool ValParamRailtype(uint32 rail) { return rail <= GetPlayer(_current_player)->max_railtype;}
 #endif /* COMMAND_H */

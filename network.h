@@ -92,13 +92,13 @@ typedef struct NetworkPlayerInfo {
 } NetworkPlayerInfo;
 
 typedef struct NetworkClientInfo {
-	uint16 client_index;														// Index of the client (same as ClientState->index)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];		// Name of the client
-	byte client_lang;																// The language of the client
-	byte client_playas;															// As which player is this client playing
-	uint32 client_ip;																// IP-address of the client (so he can be banned)
-	uint16 join_date;																// Gamedate the player has joined
-	char unique_id[NETWORK_NAME_LENGTH];						// Every play sends an unique id so we can indentify him
+	uint16 client_index;                          /// Index of the client (same as ClientState->index)
+	char client_name[NETWORK_CLIENT_NAME_LENGTH]; /// Name of the client
+	byte client_lang;                             /// The language of the client
+	byte client_playas;                           /// As which player is this client playing (PlayerID)
+	uint32 client_ip;                             /// IP-address of the client (so he can be banned)
+	uint16 join_date;                             /// Gamedate the player has joined
+	char unique_id[NETWORK_NAME_LENGTH];          /// Every play sends an unique id so we can indentify him
 } NetworkClientInfo;
 
 typedef struct NetworkGameList {

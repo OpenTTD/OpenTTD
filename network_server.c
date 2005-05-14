@@ -775,14 +775,40 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	}
 }
 
+static inline const char* GetPlayerIP(const NetworkClientInfo *ci) {return inet_ntoa(*(struct in_addr *)&ci->client_ip);}
+
+/** Enforce the command flags.
+ * Eg a server-only command can only be executed by a server, etc.
+ * @param *cp the commandpacket that is going to be checked
+ * @param *ci client information for debugging output to console
+ */
+static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *ci)
+{
+	byte flags = GetCommandFlags(cp->cmd);
+
+	if (flags & CMD_SERVER && ci->client_index != NETWORK_SERVER_INDEX) {
+		IConsolePrintF(_iconsole_color_error, "WARNING: server only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
+		return false;
+	}
+
+	if (flags & CMD_OFFLINE) {
+		IConsolePrintF(_iconsole_color_error, "WARNING: offline only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
+		return false;
+	}
+	return true;
+}
+
+/** The client has done a command and wants us to handle it
+ * @param *cs the connected client that has sent the command
+ * @param *p the packet in which the command was sent
+ */
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
-	// The client has done a command and wants us to handle it
+	NetworkClientState *new_cs;
+	const NetworkClientInfo *ci;
+	char *dparam_char;
 	uint i;
 	byte callback;
-	NetworkClientState *new_cs;
-	NetworkClientInfo *ci;
-	char *dparam_char;
 
 	CommandPacket *cp = malloc(sizeof(CommandPacket));
 
@@ -798,9 +824,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	cp->p1     = NetworkRecv_uint32(cs, p);
 	cp->p2     = NetworkRecv_uint32(cs, p);
 	cp->tile   = NetworkRecv_uint32(cs, p);
-	/* We are going to send them byte by byte, because dparam is misused
-	    for chars (if it is used), and else we have a BigEndian / LittleEndian
-	    problem.. we should fix the misuse of dparam... -- TrueLight */
+	/** @todo We are going to send dparams byte by byte, because dparam is misused
+	 * for charstrings (if it is used), and else we have a Big/Little Endian
+	 * problem.. we should fix the misuse of dparam... -- TrueLight
+	 */
 	dparam_char = (char *)&cp->dp[0];
 	for (i = 0; i < lengthof(cp->dp) * 4; i++) {
 		*dparam_char = NetworkRecv_uint8(cs, p);
@@ -809,50 +836,47 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	callback = NetworkRecv_uint8(cs, p);
 
-	if (cs->quited)
-		return;
+	if (cs->quited) return;
+
+	ci = DEREF_CLIENT_INFO(cs);
 
 	/* Check if cp->cmd is valid */
 	if (!IsValidCommand(cp->cmd)) {
+		IConsolePrintF(_iconsole_color_error, "WARNING: invalid command from player %d (IP: %s).", ci->client_playas, GetPlayerIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
 	}
 
-	ci = DEREF_CLIENT_INFO(cs);
-	// Only CMD_PLAYER_CTRL is always allowed, for the rest, playas needs
-	//  to match the player in the packet
-	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas-1 != cp->player) {
+	if (!CheckCommandFlags(cp, ci)) {
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
+		return;
+	}
+
+	/** Only CMD_PLAYER_CTRL is always allowed, for the rest, playas needs
+	 * to match the player in the packet. If it doesn't, the client has done
+	 * something pretty naughty (or a bug), and will be kicked
+	 */
+	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas - 1 != cp->player) {
 		IConsolePrintF(_iconsole_color_error, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
-									 ci->client_playas - 1, inet_ntoa(*(struct in_addr *)&ci->client_ip), cp->player);
-		// The player did a command with the wrong player_id.. bad!!
+									 ci->client_playas, GetPlayerIP(ci), cp->player);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		return;
 	}
-	switch (cp->cmd) {
-		/* Player_ctrl is not always allowed */
-		case CMD_PLAYER_CTRL:
-		{
-			/* cp->p1 == 0, is allowed */
-			if (cp->p1 == 0) {
-				// UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
-				cp->p2 = cs - _clients;
-			} else {
-			/* The rest are cheats */
-				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
-				return;
-			}
-		} break;
 
-		/* Don't allow those commands if server == advertising (considered cheating) */
-		case CMD_MONEY_CHEAT:
-		{
-			if (_network_advertise) {
-				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
-				return;
-			}
-		} break;
+	/** @todo CMD_PLAYER_CTRL with p1 = 0 announces a new player to the server. To give the
+	 * player the correct ID, the server injects p2 and executes the command. Any other p1
+	 * is prohibited. Pretty ugly and should be redone together with its function.
+	 * @see CmdPlayerCtrl() players.c:655
+	 */
+	if (cp->cmd == CMD_PLAYER_CTRL) {
+		if (cp->p1 != 0) {
+			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+			return;
+		}
+
+		// XXX - UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
+		cp->p2 = cs - _clients;
 	}
-
 
 	// The frame can be executed in the same frame as the next frame-packet
 	//  That frame just before that frame is saved in _frame_counter_max
@@ -865,11 +889,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		if (new_cs->status > STATUS_AUTH) {
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
-			if (new_cs != cs)
-				cp->callback = 0;
-			else
-				cp->callback = callback;
-
+			cp->callback = (new_cs != cs) ? 0 : callback;
 			NetworkAddCommandQueue(new_cs, cp);
 		}
 	}
