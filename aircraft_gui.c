@@ -205,64 +205,11 @@ static void ShowBuildAircraftWindow(uint tile)
 	}
 }
 
-#define MAX_REFIT 0xFF
-
-const byte _aircraft_refit_normal[] = {
-	CT_PASSENGERS,
-	CT_MAIL,
-	CT_GOODS,
-	CT_VALUABLES,
-	MAX_REFIT
-};
-
-const byte _aircraft_refit_arctic[] = {
-	CT_PASSENGERS,
-	CT_MAIL,
-	CT_GOODS,
-	CT_FOOD,
-	MAX_REFIT
-};
-
-const byte _aircraft_refit_desert[] = {
-	CT_PASSENGERS,
-	CT_MAIL,
-	CT_FRUIT,
-	CT_GOODS,
-	CT_DIAMONDS,
-	MAX_REFIT
-};
-
-const byte _aircraft_refit_candy[] = {
-	CT_PASSENGERS,
-	CT_SUGAR,
-	CT_TOYS,
-	CT_CANDY,
-	CT_COLA,
-	CT_COTTON_CANDY,
-	CT_BUBBLES,
-	CT_TOFFEE,
-	CT_BATTERIES,
-	CT_PLASTIC,
-	CT_FIZZY_DRINKS,
-	MAX_REFIT
-};
-
-const byte * const _aircraft_refit_types[4] = {
-	_aircraft_refit_normal, _aircraft_refit_arctic, _aircraft_refit_desert, _aircraft_refit_candy
-};
-
-#undef MAX_REFIT
-
 static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-		Vehicle *v = GetVehicle(w->window_number);
-		const byte *b;
-		int sel;
-		int x,y;
-		byte color;
-		int cargo;
+		const Vehicle *v = GetVehicle(w->window_number);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -271,72 +218,31 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 		DrawString(1, 15, STR_A040_SELECT_CARGO_TYPE_TO_CARRY, 0);
 
 		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
+		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
 
-		cargo = -1;
-		x = 6;
-		y = 25;
-		sel = WP(w,refit_d).sel;
-
-#define show_cargo(ctype) { \
-		color = 16; \
-		if (sel == 0) { \
-			cargo = ctype; \
-			color = 12; \
-		} \
-		sel--; \
-		DrawString(x, y, _cargoc.names_s[ctype], color); \
-		y += 10; \
-		}
-
-		if (_engine_refit_masks[v->engine_type]) {
-			uint32 mask = _engine_refit_masks[v->engine_type];
-			int cid = 0;
-
-			for (; mask; mask >>= 1, cid++) {
-				if (!(mask & 1)) // not this cid
-					continue;
-				if (!(_local_cargo_id_landscape[cid] & (1 << _opt.landscape))) // not in this landscape
-					continue;
-
-				show_cargo(_local_cargo_id_ctype[cid]);
-			}
-
-		} else { // generic refit list
-			b = _aircraft_refit_types[_opt.landscape];
-			do {
-				show_cargo(*b);
-			} while (*++b != 0xFF);
-		}
-
-#undef show_cargo
-
-		WP(w,refit_d).cargo = cargo;
-
-		if (cargo != -1) {
-			int32 cost = DoCommandByTile(v->tile, v->index, cargo, DC_QUERY_COST, CMD_REFIT_AIRCRAFT);
-			if (cost != CMD_ERROR) {
+		if (WP(w,refit_d).cargo != CT_INVALID) {
+			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_AIRCRAFT);
+			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long_p[cargo]);
+				SetDParam(0, _cargoc.names_long_p[WP(w,refit_d).cargo]);
 				SetDParam(1, _aircraft_refit_capacity);
 				DrawString(1, 137, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
-
-		break;
-	}
+	}	break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: { /* listbox */
-				int y = e->click.pt.y - 25;
-				if (y >= 0) {
-					WP(w,refit_d).sel = y / 10;
-					SetWindowDirty(w);
-				}
-			} break;
+			int y = e->click.pt.y - 25;
+			if (y >= 0) {
+				WP(w,refit_d).sel = y / 10;
+				SetWindowDirty(w);
+			}
+		} break;
 		case 4: /* refit button */
-			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = GetVehicle(w->window_number);
+			if (WP(w,refit_d).cargo != CT_INVALID) {
+				const Vehicle *v = GetVehicle(w->window_number);
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_AIRCRAFT | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT)))
 					DeleteWindow(w);
 			}

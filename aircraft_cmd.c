@@ -504,32 +504,38 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
 	return 0;
 }
 
-// p1 = vehicle
-// p2 = new cargo type(0xFF)
-// p2 = skip check for stopped in hanger (0x0100)
+/** Refits an aircraft to the specified cargo type.
+ * @param x,y unused
+ * @param p1 vehicle ID of the aircraft to refit
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
+ * - p2 = (bit 8)   - skip check for stopped in hangar, used by autoreplace (p2 & 0x100)
+ * @todo p2 bit8 check <b>NEEDS TO GO</b>
+ */
 int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v,*u;
+	Vehicle *v;
 	int pass, mail;
 	int32 cost;
-	byte SkipStoppedInHangerCheck = (p2 & 0x100) >> 8; //excludes the cargo value
-	byte new_cargo_type = p2 & 0xFF; //gets the cargo number
-	AircraftVehicleInfo *avi;
+	bool SkipStoppedInHangerCheck = !!HASBIT(p2, 8); // XXX - needs to go, yes?
+	CargoID new_cid = p2 & 0xFF; //gets the cargo number
+	const AircraftVehicleInfo *avi;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft) return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!SkipStoppedInHangerCheck && !CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	avi = AircraftVehInfo(v->engine_type);
 
-	if (!CheckOwnership(v->owner) || (!CheckStoppedInHangar(v) && !(SkipStoppedInHangerCheck)))
-		return CMD_ERROR;
+	/* Check cargo */
+	if (new_cid > NUM_CARGO || !CanRefitTo(v, new_cid)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
-	switch (new_cargo_type) {
+	switch (new_cid) {
 		case CT_PASSENGERS:
 			pass = avi->passenger_capacity;
 			break;
@@ -548,24 +554,22 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	_aircraft_refit_capacity = pass;
 
 	cost = 0;
-	if (IS_HUMAN_PLAYER(v->owner) && new_cargo_type != v->cargo_type) {
+	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {
 		cost = _price.aircraft_base >> 7;
 	}
 
 	if (flags & DC_EXEC) {
+		Vehicle *u;
 		v->cargo_cap = pass;
 
 		u = v->next;
-		mail = avi->mail_capacity;
-		if (new_cargo_type != CT_PASSENGERS) {
-			mail = 0;
-		}
+		mail = (new_cid != CT_PASSENGERS) ? 0 : avi->mail_capacity;
 		u->cargo_cap = mail;
 		//autorefitted planes wants to keep the cargo
 		//it will be checked if the cargo is valid in CmdReplaceVehicle
 		if (!(SkipStoppedInHangerCheck))
 			v->cargo_count = u->cargo_count = 0;
-		v->cargo_type = new_cargo_type;
+		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
 

@@ -1282,25 +1282,31 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-// p1 = vehicle to refit
-// p2 = new cargo (0xFF)
-// p2 = skip check for stopped in hanger (0x0100)
+/** Refits a train to the specified cargo type.
+ * @param x,y unused
+ * @param p1 vehicle ID of the train to refit
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
+ * - p2 = (bit 8)   - skip check for stopped in depot, used by autoreplace (p2 & 0x100)
+ * @todo p2 bit8 check <b>NEEDS TO GO</b>
+ */
 int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;
 	uint num;
-
-	byte SkipStoppedInDepotCheck = (p2 & 0x100) >> 8;
-
-	p2 = p2 & 0xFF;
+	CargoID new_cid = p2 & 0xFF; //gets the cargo number
+	bool SkipStoppedInDepotCheck = !!HASBIT(p2, 8); // XXX - needs to go, yes?
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Train || !CheckOwnership(v->owner) || ((CheckTrainStoppedInDepot(v) < 0) && !(SkipStoppedInDepotCheck)))
-		return CMD_ERROR;
+	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!SkipStoppedInDepotCheck && CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
+
+	/* Check cargo */
+	if (new_cid > NUM_CARGO) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 
@@ -1311,17 +1317,17 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
 		 * some nice [Refit] button near each wagon. --pasky */
-		if ((!(RailVehInfo(v->engine_type)->flags & RVI_WAGON)
-		     || (_engine_refit_masks[v->engine_type] & (1 << p2)))
-		    && (byte) p2 != v->cargo_type && v->cargo_cap != 0) {
+		if (!CanRefitTo(v, new_cid)) continue;
+
+		if (new_cid != v->cargo_type && v->cargo_cap != 0) {
 			cost += (_price.build_railvehicle >> 8);
 			num += v->cargo_cap;
 			if (flags & DC_EXEC) {
-		//autorefitted train cars wants to keep the cargo
-		//it will be checked if the cargo is valid in CmdReplaceVehicle
+				//autorefitted train cars wants to keep the cargo
+				//it will be checked if the cargo is valid in CmdReplaceVehicle
 				if (!(SkipStoppedInDepotCheck))
 					v->cargo_count = 0;
-				v->cargo_type = (byte)p2;
+				v->cargo_type = new_cid;
 				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			}
 		}

@@ -20,34 +20,74 @@ enum {
 	ENGINE_PREVIEWING = 4,
 };
 
-/* This maps per-landscape cargo ids to globally unique cargo ids usable ie. in
- * the custom GRF files. It is basically just a transcribed table from
- * TTDPatch's newgrf.txt. */
-byte _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO] = {
-	/* LT_NORMAL */ {  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 12 },
-	/* LT_HILLY */  {  0,  1,  2,  3,  4,  5,  6,  7, 28, 11, 10, 12 },
-	/* LT_DESERT */ {  0, 16,  2,  3, 13,  5,  6,  7, 14, 15, 10, 12 },
-	/* LT_CANDY */  {  0, 17,  2, 18, 19, 20, 21, 22, 23, 24, 25, 26 },
-	// 27 is paper in temperate climate in TTDPatch
-	// Following can be renumbered:
-	// 29 is the default cargo for the purpose of spritesets
-	// 30 is the purchase list image (the equivalent of 0xff) for the purpose of spritesets
+/** TRANSLATE FROM LOCAL CARGO TO GLOBAL CARGO ID'S.
+ * This maps the per-landscape cargo ID's to globally unique cargo ID's usable ie. in
+ * the custom GRF  files. It is basically just a transcribed table from TTDPatch's newgrf.txt.
+ */
+const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO] = {
+	/* LT_NORMAL */ {GC_PASSENGERS, GC_COAL,  GC_MAIL, GC_OIL, GC_LIVESTOCK, GC_GOODS, GC_GRAIN, GC_WOOD, GC_IRON_ORE,    GC_STEEL,  GC_VALUABLES, GC_PAPER_TEMP},
+	/* LT_HILLY */  {GC_PASSENGERS, GC_COAL,  GC_MAIL, GC_OIL, GC_LIVESTOCK, GC_GOODS, GC_GRAIN, GC_WOOD, GC_INVALID,     GC_PAPER,  GC_VALUABLES, GC_FOOD },
+	/* LT_DESERT */ {GC_PASSENGERS, GC_RUBBER,GC_MAIL, GC_OIL, GC_FRUIT,     GC_GOODS, GC_GRAIN, GC_WOOD, GC_COPPER_ORE,  GC_WATER,  GC_VALUABLES, GC_FOOD },
+	/* LT_CANDY */  {GC_PASSENGERS, GC_SUGAR, GC_MAIL, GC_TOYS,GC_BATTERIES, GC_CANDY, GC_TOFFEE,GC_COLA, GC_COTTON_CANDY,GC_BUBBLES,GC_PLASTIC,   GC_FIZZY_DRINKS },
+	/**
+	 * - GC_INVALID (255) means that  cargo is not available for that climate
+	 * - GC_PAPER_TEMP (27) is paper in  temperate climate in TTDPatch
+	 * Following can  be renumbered:
+	 * - GC_DEFAULT (29) is the defa ult cargo for the purpose of spritesets
+	 * - GC_PURCHASE (30) is the purchase list image (the equivalent of 0xff) for the purpose of spritesets
+	 */
 };
 
-/* These two arrays provide a reverse mapping. */
-byte _local_cargo_id_ctype[NUM_CID] = {
-	CT_PASSENGERS, CT_COAL, CT_MAIL, CT_OIL, CT_LIVESTOCK, CT_GOODS, CT_GRAIN, CT_WOOD, // 0-7
-	CT_IRON_ORE, CT_STEEL, CT_VALUABLES, CT_PAPER, CT_FOOD, CT_FRUIT, CT_COPPER_ORE, CT_WATER, // 8-15
-	CT_RUBBER, CT_SUGAR, CT_TOYS, CT_BATTERIES, CT_CANDY, CT_TOFFEE, CT_COLA, CT_COTTON_CANDY, // 16-23
-	CT_BUBBLES, CT_PLASTIC, CT_FIZZY_DRINKS, CT_PAPER /* unsup. */, CT_HILLY_UNUSED // 24-28
+/** BEGIN --- TRANSLATE FROM GLOBAL CARGO TO LOCAL CARGO ID'S **/
+/** Map global cargo ID's to local-cargo ID's */
+const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID] = {
+	CT_PASSENGERS,CT_COAL,   CT_MAIL,        CT_OIL,      CT_LIVESTOCK,CT_GOODS,  CT_GRAIN,      CT_WOOD,         /*  0- 7 */
+	CT_IRON_ORE,  CT_STEEL,  CT_VALUABLES,   CT_PAPER,    CT_FOOD,     CT_FRUIT,  CT_COPPER_ORE, CT_WATER,        /*  8-15 */
+	CT_RUBBER,    CT_SUGAR,  CT_TOYS,        CT_BATTERIES,CT_CANDY,    CT_TOFFEE, CT_COLA,       CT_COTTON_CANDY, /* 16-23 */
+	CT_BUBBLES,   CT_PLASTIC,CT_FIZZY_DRINKS,CT_PAPER     /* unsup. */,CT_HILLY_UNUSED,                           /* 24-28 */
+	CT_INVALID,   CT_INVALID                                                                                      /* 29-30 */
 };
 
-/* LT'th bit is set of the particular landscape if cargo available there.
- * 1: LT_NORMAL, 2: LT_HILLY, 4: LT_DESERT, 8: LT_CANDY */
-byte _local_cargo_id_landscape[NUM_CID] = {
-	15, 3, 15, 7, 3, 7, 7, 7, 1, 1, 7, 2, 7, // 0-12
-	4, 4, 4, 4, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1, 2, // 13-28
+#define MC(cargo) (1 << cargo)
+/** Bitmasked value where the global cargo ID is available in landscape
+ * 0: LT_NORMAL, 1: LT_HILLY, 2: LT_DESERT, 3: LT_CANDY */
+const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE] =
+{ /* LT_NORMAL: temperate */
+	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|
+	MC(GC_IRON_ORE)|MC(GC_STEEL)|MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_UNDEFINED),
+	/* LT_HILLY: arctic */
+	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|
+	MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_VALUABLES)|MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_UNDEFINED),
+	/* LT_DESERT: rainforest/desert */
+	MC(GC_PASSENGERS)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|
+	MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_RUBBER),
+	/* LT_CANDY: toyland */
+	MC(GC_PASSENGERS)|MC(GC_MAIL)|MC(GC_SUGAR)|MC(GC_TOYS)|MC(GC_BATTERIES)|MC(GC_CANDY)|
+	MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS)
 };
+/** END   --- TRANSLATE FROM GLOBAL CARGO TO LOCAL CARGO ID'S **/
+
+/** Bitmasked values of what type of cargo is refittable for the given vehicle-type.
+ * This coupled with the landscape information (_landscape_global_cargo_mask) gives
+ * us exactly what is refittable and what is not */
+const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
+	/* Trains */
+	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_IRON_ORE)|
+	MC(GC_STEEL)|MC(GC_VALUABLES)|MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_SUGAR)|
+	MC(GC_TOYS)|MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	/* Road vehicles (not refittable by default) */
+	0,
+	/* Ships */
+	MC(GC_COAL)|MC(GC_MAIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_IRON_ORE)|MC(GC_STEEL)|MC(GC_VALUABLES)|
+	MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_RUBBER)|MC(GC_SUGAR)|MC(GC_TOYS)|MC(GC_BATTERIES)|
+	MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	/* Aircraft */
+	MC(GC_PASSENGERS)|MC(GC_MAIL)|MC(GC_GOODS)|MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_SUGAR)|MC(GC_TOYS)|
+	MC(GC_BATTERIES)|MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	/* Special/Disaster */
+	0,0
+};
+#undef MC
 
 void ShowEnginePreviewWindow(int engine);
 
@@ -267,7 +307,7 @@ byte _engine_original_sprites[TOTAL_NUM_ENGINES];
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CID];
+static SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 
 void SetCustomEngineSprites(byte engine, byte cargo, SpriteGroup *group)
 {
@@ -462,10 +502,11 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 {
 	SpriteGroup *group;
-	byte cargo = CID_PURCHASE;
+	byte cargo = GC_PURCHASE;
 
 	if (v != NULL) {
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		assert(cargo != GC_INVALID);
 	}
 
 	group = &_engine_custom_sprites[engine][cargo];
@@ -483,7 +524,7 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 {
 	SpriteGroup *group;
 	RealSpriteGroup *rsg;
-	byte cargo = CID_PURCHASE;
+	byte cargo = GC_PURCHASE;
 	byte loaded = 0;
 	bool in_motion = 0;
 	int totalsets, spriteset;
@@ -493,6 +534,8 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 		int capacity = v->cargo_cap;
 
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		assert(cargo != GC_INVALID);
+
 		if (capacity == 0) capacity = 1;
 		loaded = (v->cargo_count * 100) / capacity;
 		in_motion = (v->cur_speed != 0);

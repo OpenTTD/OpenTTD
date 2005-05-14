@@ -79,23 +79,56 @@ enum {
 	RVI_WAGON = 2,
 };
 
+enum {
+	NUM_VEHICLE_TYPES = 6
+};
 
 void AddTypeToEngines(void);
 void StartupEngines(void);
 
-
-extern byte _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
-enum {
-	CID_DEFAULT = 29,
-	CID_PURCHASE = 30,
-	NUM_CID = 31,
+enum GlobalCargo {
+	GC_PASSENGERS   =   0,
+	GC_COAL         =   1,
+	GC_MAIL         =   2,
+	GC_OIL          =   3,
+	GC_LIVESTOCK    =   4,
+	GC_GOODS        =   5,
+	GC_GRAIN        =   6, // GC_WHEAT / GC_MAIZE
+	GC_WOOD         =   7,
+	GC_IRON_ORE     =   8,
+	GC_STEEL        =   9,
+	GC_VALUABLES    =  10, // GC_GOLD / GC_DIAMONDS
+	GC_PAPER        =  11,
+	GC_FOOD         =  12,
+	GC_FRUIT        =  13,
+	GC_COPPER_ORE   =  14,
+	GC_WATER        =  15,
+	GC_RUBBER       =  16,
+	GC_SUGAR        =  17,
+	GC_TOYS         =  18,
+	GC_BATTERIES    =  19,
+	GC_CANDY        =  20,
+	GC_TOFFEE       =  21,
+	GC_COLA         =  22,
+	GC_COTTON_CANDY =  23,
+	GC_BUBBLES      =  24,
+	GC_PLASTIC      =  25,
+	GC_FIZZY_DRINKS =  26,
+	GC_PAPER_TEMP   =  27,
+	GC_UNDEFINED    =  28, // undefined; unused slot in arctic climate
+	GC_DEFAULT      =  29,
+	GC_PURCHASE     =  30,
+	GC_INVALID      = 255,
+	NUM_GLOBAL_CID  =  31
 };
-extern byte _local_cargo_id_ctype[NUM_CID];
-extern byte _local_cargo_id_landscape[NUM_CID];
 
-extern uint32 _engine_refit_masks[256];
+VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
+VARDEF const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
+VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
+VARDEF const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
 
-extern byte _engine_original_sprites[256];
+VARDEF uint32 _engine_refit_masks[256];
+VARDEF byte _engine_original_sprites[256];
 void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none

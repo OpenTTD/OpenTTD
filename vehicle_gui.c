@@ -165,6 +165,42 @@ void DrawVehicleProfitButton(Vehicle *v, int x, int y)
 	DrawSprite(SPR_BLOT | ormod, x, y);
 }
 
+/** Draw the list of available refit options.
+ * Draw the list and highlight the selected refit option (if any)
+ * @param *v vehicle(type) to get the refit-options of
+ * @param sel selected refit cargo-type in the window
+ * @return the cargo type that is hightlighted, CT_INVALID if none
+ */
+CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
+{
+	uint32 cmask;
+	CargoID cid, cargo = CT_INVALID;
+	int y = 25;
+#define show_cargo(ctype) { \
+		byte colour = 16; \
+		if (sel == 0) { \
+			cargo = ctype; \
+			colour = 12; \
+} \
+		sel--; \
+		DrawString(6, y, _cargoc.names_s[ctype], colour); \
+		y += 10; \
+}
+
+		/* Check if engine has custom refit or normal ones, and get its bitmasked value.
+		 * Now just and it with the bitmasked available cargo on the current landscape, and
+		* where the bits are set: those are available */
+		cmask = (_engine_refit_masks[v->engine_type] != 0) ? _engine_refit_masks[v->engine_type] : _default_refitmasks[v->type - VEH_Train];
+		cmask &= _landscape_global_cargo_mask[_opt_ptr->landscape];
+
+		/* Check which cargo has been selected from the refit window and draw list */
+		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
+			if (HASBIT(cmask, 0)) // vehicle is refittable to this cargo
+				show_cargo(_local_cargo_id_ctype[cid]);
+		}
+		return cargo;
+}
+
 /************ Sorter functions *****************/
 int CDECL GeneralOwnerSorter(const void *a, const void *b)
 {

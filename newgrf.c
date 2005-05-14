@@ -1450,8 +1450,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				return;
 			}
 
-			if (ctype == 0xFF)
-				ctype = CID_PURCHASE;
+			if (ctype == GC_INVALID) ctype = GC_PURCHASE;
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
@@ -1482,7 +1481,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				// TODO: No multiple cargo types per vehicle yet. --pasky
 				SetWagonOverrideSprites(engine, &_cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, CID_DEFAULT, &_cur_grffile->spritegroups[groupid]);
+				SetCustomEngineSprites(engine, GC_DEFAULT, &_cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
 			}
 		}

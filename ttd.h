@@ -67,6 +67,7 @@ typedef struct DrawPixelInfo DrawPixelInfo;
 typedef uint16 VehicleID;
 typedef byte PlayerID;
 typedef byte OrderID;
+typedef byte CargoID;
 typedef uint16 StringID;
 typedef uint16 SpriteID;
 typedef uint32 PalSpriteID;

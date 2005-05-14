@@ -662,23 +662,11 @@ void ShowTrainDepotWindow(uint tile)
 	}
 }
 
-const byte _rail_vehicle_refit_types[4][16] = {
-	{ 0,1,2,4,5,6,7,8,9,10,0xFF },	// normal
-	{ 0,1,4,5,6,7,9,11,10,0xFF },		// arctic
-	{ 0,4,5,8,6,7,9,10,0xFF },			// desert
-	{ 0,1,3,5,7,8,9,6,4,10,11,0xFF }// candy
-};
-
 static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-		Vehicle *v = GetVehicle(w->window_number);
-		const byte *b;
-		int sel;
-		int x,y;
-		byte color;
-		int cargo;
+		const Vehicle *v = GetVehicle(w->window_number);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -686,57 +674,19 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 
 		DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
 
-		cargo = -1;
-		x = 6;
-		y = 25;
-		sel = WP(w,refit_d).sel;
+		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
+		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
 
-#define show_cargo(ctype) { \
-		color = 16; \
-		if (sel == 0) { \
-			cargo = ctype; \
-			color = 12; \
-		} \
-		sel--; \
-		DrawString(x, y, _cargoc.names_s[ctype], color); \
-		y += 10; \
-		}
-
-		if (_engine_refit_masks[v->engine_type]) {
-			uint32 mask = _engine_refit_masks[v->engine_type];
-			int cid = 0;
-
-			for (; mask; mask >>= 1, cid++) {
-				if (!(mask & 1)) // not this cid
-					continue;
-				if (!(_local_cargo_id_landscape[cid] & (1 << _opt.landscape))) // not in this landscape
-					continue;
-
-				show_cargo(_local_cargo_id_ctype[cid]);
-			}
-
-		} else { // generic refit list
-			b = _rail_vehicle_refit_types[_opt.landscape];
-			do {
-				show_cargo(*b);
-			} while (*++b != 255);
-		}
-
-#undef show_cargo
-
-		WP(w,refit_d).cargo = cargo;
-
-		if (cargo != -1) {
-			int32 cost = DoCommandByTile(v->tile, v->index, cargo, 0, CMD_REFIT_RAIL_VEHICLE);
-			if (cost != CMD_ERROR) {
+		if (WP(w,refit_d).cargo != CT_INVALID) {
+			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_RAIL_VEHICLE);
+			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long_p[cargo]);
+				SetDParam(0, _cargoc.names_long_p[WP(w,refit_d).cargo]);
 				SetDParam(1, _returned_refit_amount);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
-		break;
-	}
+	}	break;
 
 	case WE_CLICK:
 		switch(e->click.widget) {
@@ -748,8 +698,8 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 		case 4: /* refit button */
-			if (WP(w,refit_d).cargo != 0xFF) {
-				Vehicle *v = GetVehicle(w->window_number);
+			if (WP(w,refit_d).cargo != CT_INVALID) {
+				const Vehicle *v = GetVehicle(w->window_number);
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE)))
 					DeleteWindow(w);
 			}
@@ -809,9 +759,9 @@ static Widget _train_view_widgets[] = {
 
 static void TrainViewWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-		Vehicle *v, *u;
+		const Vehicle *v, *u;
 		StringID str;
 
 		v = GetVehicle(w->window_number);
@@ -820,20 +770,14 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		SETBIT(w->disabled_state, 12);
 
-		/* See if any carriage can be refitted */
+		/* See if any vehicle can be refitted */
 		for ( u = v; u != NULL; u = u->next) {
-			if (_engine_refit_masks[u->engine_type] != 0) {
+			if (_engine_refit_masks[u->engine_type] != 0 ||
+						 (!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
 				CLRBIT(w->disabled_state, 12);
 				/* We have a refittable carriage, bail out */
 				break;
 			}
-		}
-
-		/* Above code doesn't seem to handle non-newgrf engines, do it separately
-		TODO: handle engines which are NOT the head of the train, but don't break wagons */
-		if (v->cargo_cap != 0) {
-			/* we can refit this engine */
-			CLRBIT(w->disabled_state, 12);
 		}
 
 		/* draw widgets & caption */

@@ -248,7 +248,7 @@ typedef struct StationSpec {
 	StationLayout **layouts;
 
 	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
-	 * whilst spritegroup[1] is "CID_PURCHASE". */
+	 * whilst spritegroup[1] is "GC_PURCHASE". */
 	SpriteGroup spritegroup[2];
 } StationSpec;
 

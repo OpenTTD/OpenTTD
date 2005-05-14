@@ -6,6 +6,7 @@
 struct vehiclelist_d;
 
 void DrawVehicleProfitButton(Vehicle *v, int x, int y);
+CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel);
 void InitializeVehiclesGuiList(void);
 
 /* sorter stuff */

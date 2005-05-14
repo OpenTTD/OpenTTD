@@ -229,7 +229,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildAircraft,							/* 61 */
 	CmdSendAircraftToHangar,			/* 62 */
 	CmdChangeAircraftServiceInt,	/* 63 */
-	CmdRefitAircraft,							/* 64 <-- REFIT: Hackykid */
+	CmdRefitAircraft,							/* 64 */
 
 	CmdPlaceSign,									/* 65 */
 	CmdRenameSign,								/* 66 */
@@ -263,7 +263,7 @@ static CommandProc * const _command_proc_table[] = {
 	CmdBuildShip,									/* 88 */
 	CmdSendShipToDepot,						/* 89 */
 	CmdChangeShipServiceInt,			/* 90 */
-	CmdRefitShip,									/* 91 <-- REFIT: Hackykid */
+	CmdRefitShip,									/* 91 */
 
 	NULL,            							/* 92 */
 	NULL,                         /* 93 */
@@ -284,7 +284,7 @@ static CommandProc * const _command_proc_table[] = {
 
 	CmdLevelLand,									/* 105 */
 
-	CmdRefitRailVehicle,					/* 106 <-- REFIT: Hackykid */
+	CmdRefitRailVehicle,					/* 106 */
 	CmdRestoreOrderIndex,					/* 107 */
 	CmdBuildLock,									/* 108 */
 	NULL,           							/* 109 */
