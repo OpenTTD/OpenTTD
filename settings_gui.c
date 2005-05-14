@@ -1072,7 +1072,7 @@ void IConsoleSetPatchSetting(char *name, const char *value)
 	pe = IConsoleGetPatch(name, &page, &entry);
 
 	if (pe == NULL) {
-		IConsolePrintF(_iconsole_color_warning, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
 		return;
 	}
 
@@ -1095,7 +1095,7 @@ void IConsoleSetPatchSetting(char *name, const char *value)
 			tval2 = tval;
 		}
 
-		IConsolePrintF(_iconsole_color_warning, "'%s' changed to:  %s", name, tval2);
+		IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", name, tval2);
 	}
 }
 
@@ -1107,7 +1107,7 @@ void IConsoleGetPatchSetting(const char *name)
 
 	/* We did not find the patch setting */
 	if (pe == NULL) {
-		IConsolePrintF(_iconsole_color_warning, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
 		return;
 	}
 
@@ -1116,7 +1116,7 @@ void IConsoleGetPatchSetting(const char *name)
 	} else
 		snprintf(value, sizeof(value), "%d", ReadPE(pe));
 
-	IConsolePrintF(_iconsole_color_warning, "Current value for '%s' is: '%s'", name, value);
+	IConsolePrintF(_icolour_warn, "Current value for '%s' is: '%s'", name, value);
 }
 
 static const Widget _patches_selection_widgets[] = {

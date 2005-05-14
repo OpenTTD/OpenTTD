@@ -787,12 +787,12 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 	byte flags = GetCommandFlags(cp->cmd);
 
 	if (flags & CMD_SERVER && ci->client_index != NETWORK_SERVER_INDEX) {
-		IConsolePrintF(_iconsole_color_error, "WARNING: server only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
+		IConsolePrintF(_icolour_err, "WARNING: server only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
 		return false;
 	}
 
 	if (flags & CMD_OFFLINE) {
-		IConsolePrintF(_iconsole_color_error, "WARNING: offline only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
+		IConsolePrintF(_icolour_err, "WARNING: offline only command from player %d (IP: %s), kicking...", ci->client_playas, GetPlayerIP(ci));
 		return false;
 	}
 	return true;
@@ -842,7 +842,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	/* Check if cp->cmd is valid */
 	if (!IsValidCommand(cp->cmd)) {
-		IConsolePrintF(_iconsole_color_error, "WARNING: invalid command from player %d (IP: %s).", ci->client_playas, GetPlayerIP(ci));
+		IConsolePrintF(_icolour_err, "WARNING: invalid command from player %d (IP: %s).", ci->client_playas, GetPlayerIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
 	}
@@ -857,8 +857,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
 	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas - 1 != cp->player) {
-		IConsolePrintF(_iconsole_color_error, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
-									 ci->client_playas, GetPlayerIP(ci), cp->player);
+		IConsolePrintF(_icolour_err, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
+									 ci->client_playas - 1, GetPlayerIP(ci), cp->player);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		return;
 	}
@@ -1433,13 +1433,13 @@ static void NetworkAutoCleanCompanies(void)
 			if (_network_player_info[p->index].months_empty > _network_autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
 				/* Shut the company down */
 				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
-				IConsolePrintF(_iconsole_color_default, "Auto-cleaned company #%d", p->index+1);
+				IConsolePrintF(_icolour_def, "Auto-cleaned company #%d", p->index+1);
 			}
 			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
 			if (_network_player_info[p->index].months_empty > _network_autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
 				/* Unprotect the company */
 				_network_player_info[p->index].password[0] = '\0';
-				IConsolePrintF(_iconsole_color_default, "Auto-removed protection from company #%d", p->index+1);
+				IConsolePrintF(_icolour_def, "Auto-removed protection from company #%d", p->index+1);
 				_network_player_info[p->index].months_empty = 0;
 			}
 		} else {
@@ -1562,14 +1562,14 @@ void NetworkServer_Tick(void)
 				if (lag > 3) {
 					// Client did still not report in after 4 game-day, drop him
 					//  (that is, the 3 of above, + 1 before any lag is counted)
-					IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
+					IConsolePrintF(_icolour_err,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
 					NetworkCloseClient(cs);
 					continue;
 				}
 
 				// Report once per time we detect the lag
 				if (cs->lag_test == 0) {
-					IConsolePrintF(_iconsole_color_warning,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->index);
+					IConsolePrintF(_icolour_warn,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->index);
 					cs->lag_test = 1;
 				}
 			} else {
@@ -1578,7 +1578,7 @@ void NetworkServer_Tick(void)
 		} else if (cs->status == STATUS_PRE_ACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _network_max_join_time) {
-				IConsolePrintF(_iconsole_color_error,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
 				NetworkCloseClient(cs);
 			}
 		}

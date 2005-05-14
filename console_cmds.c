@@ -84,7 +84,7 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 
 static void IConsoleHelp(const char *str)
 {
-	IConsolePrintF(_iconsole_color_warning, "- %s", str);
+	IConsolePrintF(_icolour_warn, "- %s", str);
 }
 
 DEF_CONSOLE_CMD(ConResetEngines)
@@ -154,12 +154,12 @@ DEF_CONSOLE_CMD(ConSave)
 		char buf[200];
 
 		snprintf(buf, lengthof(buf), "%s%s%s.sav", _path.save_dir, PATHSEP, argv[1]);
-		IConsolePrint(_iconsole_color_default, "Saving map...");
+		IConsolePrint(_icolour_def, "Saving map...");
 
 		if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
-			IConsolePrint(_iconsole_color_error, "SaveMap failed");
+			IConsolePrint(_icolour_err, "SaveMap failed");
 		} else
-			IConsolePrintF(_iconsole_color_default, "Map sucessfully saved to %s", buf);
+			IConsolePrintF(_icolour_def, "Map sucessfully saved to %s", buf);
 		return true;
 	}
 
@@ -209,10 +209,10 @@ DEF_CONSOLE_CMD(ConLoad)
 				SetFiosType(item->type);
 				strcpy(_file_to_saveload.name, FiosBrowseTo(item));
 				break;
-			default: IConsolePrintF(_iconsole_color_error, "%s: Not a savegame.", file);
+			default: IConsolePrintF(_icolour_err, "%s: Not a savegame.", file);
 		}
 	} else
-		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.", file);
+		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
 
 	FiosFreeSavegameList();
 	return true;
@@ -232,7 +232,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 
 	for (i = 0; i < _fios_num; i++) {
 		const FiosItem *item = &_fios_list[i];
-		IConsolePrintF(_iconsole_color_default, "%d) %s", i, (item->title[0] != '\0') ? item->title : item->name);
+		IConsolePrintF(_icolour_def, "%d) %s", i, (item->title[0] != '\0') ? item->title : item->name);
 	}
 
 	FiosFreeSavegameList();
@@ -259,10 +259,10 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
 				FiosBrowseTo(item);
 				break;
-			default: IConsolePrintF(_iconsole_color_error, "%s: Not a directory.", file);
+			default: IConsolePrintF(_icolour_err, "%s: Not a directory.", file);
 		}
 	} else
-		IConsolePrintF(_iconsole_color_error, "%s: No such file or directory.", file);
+		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
 
 	FiosFreeSavegameList();
 	return true;
@@ -283,7 +283,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	FiosFreeSavegameList();
 
 	FiosGetDescText(&path, NULL);
-	IConsolePrint(_iconsole_color_default, path);
+	IConsolePrint(_icolour_def, path);
 	return true;
 }
 
@@ -309,7 +309,7 @@ DEF_CONSOLE_CMD(ConBan)
 	index = atoi(argv[1]);
 
 	if (index == NETWORK_SERVER_INDEX) {
-		IConsolePrint(_iconsole_color_default, "Silly boy, you can not ban yourself!");
+		IConsolePrint(_icolour_def, "Silly boy, you can not ban yourself!");
 		return true;
 	}
 	if (index == 0) {
@@ -353,12 +353,12 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0) {
 			_network_ban_list[i][0] = '\0';
-			IConsolePrint(_iconsole_color_default, "IP unbanned.");
+			IConsolePrint(_icolour_def, "IP unbanned.");
 			return true;
 		}
 	}
 
-	IConsolePrint(_iconsole_color_default, "IP not in ban-list.");
+	IConsolePrint(_icolour_def, "IP not in ban-list.");
 	return true;
 }
 
@@ -371,13 +371,13 @@ DEF_CONSOLE_CMD(ConBanList)
 		return true;
 	}
 
-	IConsolePrint(_iconsole_color_default, "Banlist: ");
+	IConsolePrint(_icolour_def, "Banlist: ");
 
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
 		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
 			continue;
 
-		IConsolePrintF(_iconsole_color_default, "  %d) %s", i + 1, _network_ban_list[i]);
+		IConsolePrintF(_icolour_def, "  %d) %s", i + 1, _network_ban_list[i]);
 	}
 
 	return true;
@@ -392,9 +392,9 @@ DEF_CONSOLE_CMD(ConPauseGame)
 
 	if (_pause == 0) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		IConsolePrint(_iconsole_color_default, "Game paused.");
+		IConsolePrint(_icolour_def, "Game paused.");
 	} else
-		IConsolePrint(_iconsole_color_default, "Game is already paused.");
+		IConsolePrint(_icolour_def, "Game is already paused.");
 
 	return true;
 }
@@ -408,9 +408,9 @@ DEF_CONSOLE_CMD(ConUnPauseGame)
 
 	if (_pause != 0) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		IConsolePrint(_iconsole_color_default, "Game unpaused.");
+		IConsolePrint(_icolour_def, "Game unpaused.");
 	} else
-		IConsolePrint(_iconsole_color_default, "Game is already unpaused.");
+		IConsolePrint(_icolour_def, "Game is already unpaused.");
 
 	return true;
 }
@@ -467,7 +467,7 @@ DEF_CONSOLE_CMD(ConKick)
 
 	index = atoi(argv[1]);
 	if (index == NETWORK_SERVER_INDEX) {
-		IConsolePrint(_iconsole_color_default, "Silly boy, you can not kick yourself!");
+		IConsolePrint(_icolour_def, "Silly boy, you can not kick yourself!");
 		return true;
 	}
 	if (index == 0) {
@@ -504,7 +504,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* Check valid range */
 	if (index < 1 || index > MAX_PLAYERS) {
-		IConsolePrintF(_iconsole_color_error, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
+		IConsolePrintF(_icolour_err, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
 
@@ -537,7 +537,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* It is safe to remove this company */
 	DoCommandP(0, 2, index, NULL, CMD_PLAYER_CTRL);
-	IConsolePrint(_iconsole_color_default, "Company deleted.");
+	IConsolePrint(_icolour_def, "Company deleted.");
 
 	return true;
 }
@@ -583,14 +583,14 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 	ParseConnectionString(&player, &port, ip);
 
-	IConsolePrintF(_iconsole_color_default, "Connecting to %s...", ip);
+	IConsolePrintF(_icolour_def, "Connecting to %s...", ip);
 	if (player != NULL) {
 		_network_playas = atoi(player);
-		IConsolePrintF(_iconsole_color_default, "    player-no: %s", player);
+		IConsolePrintF(_icolour_def, "    player-no: %s", player);
 	}
 	if (port != NULL) {
 		rport = atoi(port);
-		IConsolePrintF(_iconsole_color_default, "    port: %s", port);
+		IConsolePrintF(_icolour_def, "    port: %s", port);
 	}
 
 	NetworkClientConnectGame(ip, rport);
@@ -673,7 +673,7 @@ DEF_CONSOLE_CMD(ConScript)
 	if (!CloseConsoleLogIfActive()) {
 		if (argc < 2) return false;
 
-		IConsolePrintF(_iconsole_color_default, "file output started to: %s",	argv[1]);
+		IConsolePrintF(_icolour_def, "file output started to: %s",	argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
 		if (_iconsole_output_file == NULL) IConsoleError("could not open file");
 	}
@@ -690,7 +690,7 @@ DEF_CONSOLE_CMD(ConEcho)
 	}
 
 	if (argc < 2) return false;
-	IConsolePrint(_iconsole_color_default, argv[1]);
+	IConsolePrint(_icolour_def, argv[1]);
 	return true;
 }
 
@@ -781,9 +781,9 @@ DEF_CONSOLE_CMD(ConInfoVar)
 		return true;
 	}
 
-	IConsolePrintF(_iconsole_color_default, "variable name: %s", var->name);
-	IConsolePrintF(_iconsole_color_default, "variable type: %s", _icon_vartypes[var->type]);
-	IConsolePrintF(_iconsole_color_default, "variable addr: 0x%X", var->addr);
+	IConsolePrintF(_icolour_def, "variable name: %s", var->name);
+	IConsolePrintF(_icolour_def, "variable type: %s", _icon_vartypes[var->type]);
+	IConsolePrintF(_icolour_def, "variable addr: 0x%X", var->addr);
 
 	if (var->hook.access) IConsoleWarning("variable is access hooked");
 	if (var->hook.pre) IConsoleWarning("variable is pre hooked");
@@ -809,8 +809,8 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 		return true;
 	}
 
-	IConsolePrintF(_iconsole_color_default, "command name: %s", cmd->name);
-	IConsolePrintF(_iconsole_color_default, "command proc: 0x%X", cmd->proc);
+	IConsolePrintF(_icolour_def, "command name: %s", cmd->name);
+	IConsolePrintF(_icolour_def, "command proc: 0x%X", cmd->proc);
 
 	if (cmd->hook.access) IConsoleWarning("command is access hooked");
 	if (cmd->hook.pre) IConsoleWarning("command is pre hooked");
@@ -863,7 +863,7 @@ DEF_CONSOLE_CMD(ConHelp)
 	 			cmd->proc(0, NULL);
 	 			return true;
 	 		}
-	 		IConsolePrintF(_iconsole_color_error, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
+	 		IConsolePrintF(_icolour_err, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
 	 		return true;
 	 	}
 
@@ -906,7 +906,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 
 	for (cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
 		if (argv[1] == NULL || strncmp(cmd->name, argv[1], l) == 0) {
-				IConsolePrintF(_iconsole_color_default, "%s", cmd->name);
+				IConsolePrintF(_icolour_def, "%s", cmd->name);
 		}
 	}
 
@@ -927,7 +927,7 @@ DEF_CONSOLE_CMD(ConListVariables)
 
 	for (var = _iconsole_vars; var != NULL; var = var->next) {
 		if (argv[1] == NULL || strncmp(var->name, argv[1], l) == 0)
-			IConsolePrintF(_iconsole_color_default, "%s", var->name);
+			IConsolePrintF(_icolour_def, "%s", var->name);
 	}
 
 	return true;
@@ -947,7 +947,7 @@ DEF_CONSOLE_CMD(ConListAliases)
 
 	for (alias = _iconsole_aliases; alias != NULL; alias = alias->next) {
 		if (argv[1] == NULL || strncmp(alias->name, argv[1], l) == 0)
-			IConsolePrintF(_iconsole_color_default, "%s => %s", alias->name, alias->cmdline);
+			IConsolePrintF(_icolour_def, "%s => %s", alias->name, alias->cmdline);
 	}
 
 	return true;
@@ -983,7 +983,7 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 	if (argc != 3) return false;
 
 	if (atoi(argv[1]) < 1 || atoi(argv[1]) > MAX_PLAYERS) {
-		IConsolePrintF(_iconsole_color_default, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
+		IConsolePrintF(_icolour_def, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
 
@@ -1039,7 +1039,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
 		if (_local_player >= MAX_PLAYERS) return true; // dedicated server
-		IConsolePrintF(_iconsole_color_warning, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
+		IConsolePrintF(_icolour_warn, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
 		return true;
 	}
 
@@ -1100,7 +1100,7 @@ DEF_CONSOLE_HOOK(ConHookServerAdvertise)
 DEF_CONSOLE_CMD(ConProcServerIP)
 {
 	if (argc == 0) {
-		IConsolePrintF(_iconsole_color_warning, "Current value for 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+		IConsolePrintF(_icolour_warn, "Current value for 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 		return true;
 	}
 

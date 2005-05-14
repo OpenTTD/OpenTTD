@@ -105,11 +105,11 @@ IConsoleVar   *_iconsole_vars;    // list of registred vars
 IConsoleAlias *_iconsole_aliases; // list of registred aliases
 
 // ** console colors/modes ** //
-VARDEF byte _iconsole_color_default;
-VARDEF byte _iconsole_color_error;
-VARDEF byte _iconsole_color_warning;
-VARDEF byte _iconsole_color_debug;
-VARDEF byte _iconsole_color_commands;
+VARDEF byte _icolour_def;
+VARDEF byte _icolour_err;
+VARDEF byte _icolour_warn;
+VARDEF byte _icolour_dbg;
+VARDEF byte _icolour_cmd;
 VARDEF IConsoleModes _iconsole_mode;
 
 // ** console functions ** //

@@ -73,11 +73,11 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 			/* If the text is longer than the window, don't show the starting ']' */
 			delta = w->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 			if (delta > 0) {
-				DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+				DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _icolour_cmd);
 				delta = 0;
 			}
 
-			DoDrawString(_iconsole_cmdline.buf, 10 + delta, w->height - ICON_LINE_HEIGHT, _iconsole_color_commands);
+			DoDrawString(_iconsole_cmdline.buf, 10 + delta, w->height - ICON_LINE_HEIGHT, _icolour_cmd);
 
 			if (_iconsole_cmdline.caret)
 				DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, w->height - ICON_LINE_HEIGHT, 12);
@@ -134,7 +134,7 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					IConsoleSwitch();
 					break;
 				case WKC_RETURN: case WKC_NUM_ENTER:
-					IConsolePrintF(_iconsole_color_commands, "] %s", _iconsole_cmdline.buf);
+					IConsolePrintF(_icolour_cmd, "] %s", _iconsole_cmdline.buf);
 					IConsoleHistoryAdd(_iconsole_cmdline.buf);
 
 					IConsoleCmdExec(_iconsole_cmdline.buf);
@@ -192,11 +192,11 @@ void IConsoleInit(void)
 {
 	extern const char _openttd_revision[];
 	_iconsole_output_file = NULL;
-	_iconsole_color_default = 1;
-	_iconsole_color_error = 3;
-	_iconsole_color_warning = 13;
-	_iconsole_color_debug = 5;
-	_iconsole_color_commands = 2;
+	_icolour_def  =  1;
+	_icolour_err  =  3;
+	_icolour_warn = 13;
+	_icolour_dbg  =  5;
+	_icolour_cmd  =  2;
 	_iconsole_scroll = ICON_BUFFER;
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
 	_iconsole_inited = true;
@@ -243,7 +243,7 @@ static void IConsoleWriteToLogFile(const char* string)
 bool CloseConsoleLogIfActive(void)
 {
 	if (_iconsole_output_file != NULL) {
-		IConsolePrintF(_iconsole_color_default, "file output complete");
+		IConsolePrintF(_icolour_def, "file output complete");
 		fclose(_iconsole_output_file);
 		_iconsole_output_file = NULL;
 		return true;
@@ -416,7 +416,7 @@ void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
 void IConsoleDebug(const char* string)
 {
 	if (_stdlib_developer > 1)
-		IConsolePrintF(_iconsole_color_debug, "dbg: %s", string);
+		IConsolePrintF(_icolour_dbg, "dbg: %s", string);
 }
 
 /**
@@ -427,7 +427,7 @@ void IConsoleDebug(const char* string)
 void IConsoleWarning(const char* string)
 {
 	if (_stdlib_developer > 0)
-		IConsolePrintF(_iconsole_color_warning, "WARNING: %s", string);
+		IConsolePrintF(_icolour_warn, "WARNING: %s", string);
 }
 
 /**
@@ -436,7 +436,7 @@ void IConsoleWarning(const char* string)
  */
 void IConsoleError(const char* string)
 {
-	IConsolePrintF(_iconsole_color_error, "ERROR: %s", string);
+	IConsolePrintF(_icolour_err, "ERROR: %s", string);
 }
 
 /**
@@ -638,7 +638,7 @@ void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens
 
 				if (param < 0 || param >= tokencount) {
 					IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
-					IConsolePrintF(_iconsole_color_warning, "Usage of alias '%s': %s", alias->name, alias->cmdline);
+					IConsolePrintF(_icolour_warn, "Usage of alias '%s': %s", alias->name, alias->cmdline);
 					return;
 				}
 
@@ -843,7 +843,7 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var)
 	}
 
 	value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(_iconsole_color_warning, "Current value for '%s' is:  %s", var->name, value);
+	IConsolePrintF(_icolour_warn, "Current value for '%s' is:  %s", var->name, value);
 }
 
 /**
@@ -853,7 +853,7 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var)
 void IConsoleVarPrintSetValue(const IConsoleVar *var)
 {
 	char *value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(_iconsole_color_warning, "'%s' changed to:  %s", var->name, value);
+	IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", var->name, value);
 }
 
 /**
@@ -1025,13 +1025,13 @@ void IConsoleCmdExec(const char *cmdstr)
 	for (cmdptr = cmdstr; *cmdptr != '\0'; *cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {
 			IConsoleError("command contains malformed characters, aborting");
-			IConsolePrintF(_iconsole_color_error, "ERROR: command was: '%s'", cmdstr);
+			IConsolePrintF(_icolour_err, "ERROR: command was: '%s'", cmdstr);
 			return;
 		}
 	}
 
 	if (_stdlib_con_developer)
-		IConsolePrintF(_iconsole_color_debug, "condbg: executing cmdline: '%s'", cmdstr);
+		IConsolePrintF(_icolour_dbg, "condbg: executing cmdline: '%s'", cmdstr);
 
 	memset(&tokens, 0, sizeof(tokens));
 	memset(&tokenstream, 0, sizeof(tokenstream));
@@ -1073,7 +1073,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	if (_stdlib_con_developer) {
 		uint i;
 		for (i = 0; tokens[i] != NULL; i++)
-			IConsolePrintF(_iconsole_color_debug, "condbg: token %d is: '%s'", i, tokens[i]);
+			IConsolePrintF(_icolour_dbg, "condbg: token %d is: '%s'", i, tokens[i]);
 	}
 
 	/* 2. Determine type of command (cmd, alias or variable) and execute
