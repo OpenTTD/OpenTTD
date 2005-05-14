@@ -66,7 +66,8 @@ void DrawMouseCursor(void);
 void ScreenSizeChanged(void);
 void UndrawMouseCursor(void);
 bool ChangeResInGame(int w, int h);
-void ToggleFullScreen(const bool full_screen);
+void SortResolutions(int count);
+void ToggleFullScreen(bool full_screen);
 
 /* gfx.c */
 #define ASCII_LETTERSTART 32

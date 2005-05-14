@@ -277,18 +277,19 @@ static void GetVideoModes(void)
 			if (IS_INT_INSIDE(w, 640, MAX_SCREEN_WIDTH + 1) &&
 					IS_INT_INSIDE(h, 480, MAX_SCREEN_HEIGHT + 1)) {
 				int j;
-				for (j = 0; j < n; ++j)
-					if (_resolutions[j][0] == w && _resolutions[j][1] == h)
-						break;
+				for (j = 0; j < n; j++) {
+					if (_resolutions[j][0] == w && _resolutions[j][1] == h) break;
+				}
+
 				if (j == n) {
-					_resolutions[n][0] = w;
-					_resolutions[n][1] = h;
+					_resolutions[j][0] = w;
+					_resolutions[j][1] = h;
 					if (++n == lengthof(_resolutions)) break;
 				}
 			}
 		}
 		_num_resolutions = n;
-		qsort(_resolutions, n, sizeof(_resolutions[0]), compare_res);
+		SortResolutions(_num_resolutions);
 	}
 }
 
@@ -519,16 +520,13 @@ static int PollEvent(void)
 			return ML_QUIT;
 		break;
 
-	case SDL_KEYDOWN:
+		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
 		if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
 				(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
-			_fullscreen ^= true;
-			GetVideoModes();
-			CreateMainSurface(_screen.width, _screen.height);
-			MarkWholeScreenDirty();
-		} else {
+			ToggleFullScreen(!_fullscreen);
+		} else
 			_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
-		}
+
 		break;
 
 	case SDL_VIDEORESIZE: {
@@ -634,12 +632,21 @@ static int SdlVideoMainLoop(void)
 
 static bool SdlVideoChangeRes(int w, int h)
 {
-	// see if the mode is available
-	if (GetAvailableVideoMode(&w, &h) != 1)
-		return false;
+	/* See if the mode is available. Ignore return value
+	 * since we will get back a valid resolution anyways. Either exactly
+	 * the same one, or one clamped to the closest available one */
+	GetAvailableVideoMode(&w, &h);
 
 	CreateMainSurface(w, h);
 	return true;
+}
+
+void ToggleFullScreen(bool full_screen)
+{
+	_fullscreen ^= full_screen;
+	GetVideoModes(); // get the list of available video modes
+	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1]))
+		_fullscreen ^= true; // switching resolution failed, put back full_screen to original status
 }
 
 const HalVideoDriver _sdl_video_driver = {

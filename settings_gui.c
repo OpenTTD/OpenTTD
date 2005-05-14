@@ -102,13 +102,13 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 5: /* Setup currencies dropdown */
-			ShowDropDownMenu(w, _currency_string_list, _opt_ptr->currency, e->click.widget, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+		case 4: case 5: /* Setup currencies dropdown */
+			ShowDropDownMenu(w, _currency_string_list, _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 			return;
-		case 8: /* Setup distance unit dropdown */
-			ShowDropDownMenu(w, _distances_dropdown, _opt_ptr->kilometers, e->click.widget, 0, 0);
+		case 7: case 8: /* Setup distance unit dropdown */
+			ShowDropDownMenu(w, _distances_dropdown, _opt_ptr->kilometers, 8, 0, 0);
 			return;
-		case 11: { /* Setup road-side dropdown */
+		case 10: case 11: { /* Setup road-side dropdown */
 			int i = 0;
 
 			/* You can only change the drive side if you are in the menu or ingame with
@@ -116,34 +116,34 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
 				i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
 
-			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, e->click.widget, i, 0);
+			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, 11, i, 0);
 		} return;
-		case 14: { /* Setup townname dropdown */
+		case 13: case 14: { /* Setup townname dropdown */
 			int i = _opt_ptr->town_name;
-			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, e->click.widget, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
+			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, 14, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
 			return;
 		}
-		case 17: /* Setup autosave dropdown */
-			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, e->click.widget, 0, 0);
+		case 16: case 17: /* Setup autosave dropdown */
+			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, 17, 0, 0);
 			return;
-		case 20: /* Setup customized vehicle-names dropdown */
-			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names&1)?1:0, e->click.widget, (_vehicle_design_names&2)?0:2, 0);
+		case 19: case 20: /* Setup customized vehicle-names dropdown */
+			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, 20, (_vehicle_design_names & 2) ? 0 : 2, 0);
 			return;
 		case 21: /* Save customized vehicle-names to disk */
 			return;
-		case 24: /* Setup interface language dropdown */
-			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, e->click.widget, 0, 0);
+		case 23: case 24: /* Setup interface language dropdown */
+			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, 24, 0, 0);
 			return;
-		case 27: /* Setup resolution dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), e->click.widget, 0, 0);
+		case 26: case 27: /* Setup resolution dropdown */
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
 			(_fullscreen) ? CLRBIT(w->click_state, 28) : SETBIT(w->click_state, 28);
 			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
 			SetWindowDirty(w);
 			return;
-		case 31: /* Setup screenshot format dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, e->click.widget, 0, 0);
+		case 30: case 31: /* Setup screenshot format dropdown */
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, 31, 0, 0);
 			return;
 		}
 		break;

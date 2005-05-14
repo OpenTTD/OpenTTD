@@ -322,11 +322,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 	}	break;
 
-
 	case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
 		switch (wParam) {
-		case VK_RETURN: /* Full Screen */
-			MakeWindow(!_wnd.fullscreen);
+		case VK_RETURN: case 0x46: /* Full Screen on ALT + ENTER/F(VK_F) */
+			ToggleFullScreen(!_wnd.fullscreen);
 			return 0;
 		case VK_MENU: /* Just ALT */
 			return 0; // do nothing
@@ -602,26 +601,34 @@ static void FindResolutions(void)
 	int i = 0, n = 0;
 	DEVMODE dm;
 
-	while (EnumDisplaySettings(NULL, i++, &dm)) {
-		if (dm.dmBitsPerPel == 8 &&
-				IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
-				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1) && (
-					n == 0 ||
-					_resolutions[n - 1][0] != dm.dmPelsWidth ||
-					_resolutions[n - 1][1] != dm.dmPelsHeight
-				)) {
-			_resolutions[n][0] = dm.dmPelsWidth;
-			_resolutions[n][1] = dm.dmPelsHeight;
-			if (++n == lengthof(_resolutions)) break;
+	while (EnumDisplaySettings(NULL, i++, &dm) != 0) {
+		if (dm.dmBitsPerPel == 8 && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
+				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)){
+			int j;
+			for (j = 0; j < n; j++) {
+				if (_resolutions[j][0] == dm.dmPelsWidth && _resolutions[j][1] == dm.dmPelsHeight) break;
+			}
+
+			/* In the previous loop we have checked already existing/added resolutions if
+			 * they are the same as the new ones. If this is not the case (j == n); we have
+			 * looped all and found none, add the new one to the list. If we have reached the
+			 * maximum amount of resolutions, then quit querying the display */
+			if (j == n) {
+				_resolutions[j][0] = dm.dmPelsWidth;
+				_resolutions[j][1] = dm.dmPelsHeight;
+				if (++n == lengthof(_resolutions)) break;
+			}
 		}
 	}
 
+	/* We have found no resolutions, show the default list */
 	if (n == 0) {
 		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
 		n = lengthof(default_resolutions);
 	}
 
 	_num_resolutions = n;
+	SortResolutions(_num_resolutions);
 }
 
 
@@ -775,6 +782,8 @@ static bool Win32GdiChangeRes(int w, int h)
 
 	return true;
 }
+
+void ToggleFullScreen(bool full_screen) {MakeWindow(full_screen);}
 
 const HalVideoDriver _win32_video_driver = {
 	Win32GdiStart,
