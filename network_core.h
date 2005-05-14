@@ -7,6 +7,8 @@
 // =============================
 // Include standard stuff per OS
 
+#ifdef ENABLE_NETWORK
+
 // Windows stuff
 #if defined(WIN32)
 #include <windows.h>
@@ -74,7 +76,7 @@ typedef struct ifreq IFREQ;
 #		endif
 #	endif // BEOS_NET_SERVER
 
-#	if defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 1)
+#	if !defined(__BEOS__) && defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 1)
 		typedef uint32_t in_addr_t;
 #	endif
 
@@ -171,4 +173,6 @@ static inline bool SetNoDelay(int d)
 	#endif
 }
 
-#endif // NETWORK_CORE_H
+#endif /* ENABLE_NETWORK */
+
+#endif /* NETWORK_CORE_H */

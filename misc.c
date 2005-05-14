@@ -113,6 +113,8 @@ void SetDate(uint date)
 }
 
 
+#ifdef ENABLE_NETWORK
+
 // multi os compatible sleep function
 
 #ifdef __AMIGA__
@@ -156,6 +158,8 @@ void CSleep(int milliseconds)
 		#endif // __AMIGA__
 	#endif
 }
+
+#endif /* ENABLE_NETWORK */
 
 void InitializeVehicles(void);
 void InitializeWaypoints(void);

@@ -713,6 +713,8 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			ci->client_playas = OWNER_SPECTATOR;
 			NetworkUpdateClientInfo(ci->client_index);
 		}
+#else
+		}
 #endif /* ENABLE_NETWORK */
 	} break;
 

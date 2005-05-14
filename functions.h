@@ -167,8 +167,6 @@ StringID RealAllocateName(const char *name, byte skip, bool check_double);
 void ConvertDayToYMD(YearMonthDay *ymd, uint16 date);
 uint ConvertYMDToDay(uint year, uint month, uint day);
 uint ConvertIntDate(uint date);
-void CSleep(int milliseconds);
-
 
 /* misc functions */
 void MarkTileDirty(int x, int y);
