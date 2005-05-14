@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemohu p
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... zadny dluh ke splacení
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} potreba
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Nemohu zaplatit dluh.
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Nemuzes darovat peníze pujcene z banky...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Zvol nový oblicej prezidenta
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Zvol nový nater vozidel spolecnosti
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Zmenit jméno prezidenta

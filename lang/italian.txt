@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Non puoi
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già ripagato
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} richiesti
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Non puoi ripagare debito...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Non è possibile donare denaro, è in prestito dalla banca
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleziona una nuova faccia per il presidente
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Cambia colore dei veicoli della società
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Cambia il nome del presidente

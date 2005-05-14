@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nem kölc
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...már letörlesztetted az összeset
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} kellene hozzá
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Nem törleszthetsz a kölcsönbõl...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Új arc választása az elnöknek
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}A cég jármûvei színének megváltoztatása
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Az elnök nevének megváltoztatása

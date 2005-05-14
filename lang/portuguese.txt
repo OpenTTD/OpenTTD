@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Não é po
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...não há empréstimo para pagar
 STR_702E_REQUIRED                                               :{WHITE}...necessário {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Não é possível pagar empréstimo...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Não é possível ceder capital proveniente de empréstimo bancário...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleccione uma nova cara para o presidente
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Alterar cores dos veículos
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Alterar nome do presidente

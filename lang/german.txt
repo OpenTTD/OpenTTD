@@ -2034,6 +2034,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kann kei
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Kredit bereits zurückgezahlt
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} benötigt
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kredit kann nicht getilgt werden...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Profil für Manager aussuchen
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Firmenfarbe ändern
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Managername ändern
