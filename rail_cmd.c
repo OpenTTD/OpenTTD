@@ -1619,6 +1619,10 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 	dest.tile = tile;
 	dest.track = track;
 
+	/** @todo "Hackish" fix for the tunnel problems. This is needed because a tunnel
+	 * is some kind of invisible black hole, and there is some special magic going
+	 * on in there. This 'workaround' can be removed once the maprewrite is done.
+	 */
 	if (GetTileType(tile)==MP_TUNNELBRIDGE && ((_map5[tile] & 0xF0)==0)) {
 		// It is a tunnel we're checking, we need to do some special stuff
 		// because VehicleFromPos will not find the vihicle otherwise
@@ -1628,12 +1632,10 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 		dest.track = 1 << (direction & 1); // get the trackbit the vehicle would have if it has not entered the tunnel yet (ie is still visible)
 
 		// check for a vehicle with that trackdir on the start tile of the tunnel
-		if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL)
-			return true;
+		if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL) return true;
 
 		// check for a vehicle with that trackdir on the end tile of the tunnel
-		if (VehicleFromPos(flotr.tile, &dest, SignalVehicleCheckProc) != NULL)
-			return true;
+		if (VehicleFromPos(flotr.tile, &dest, SignalVehicleCheckProc) != NULL) return true;
 
 		// now check all tiles from start to end for a "hidden" vehicle
 		// NOTE: the hashes for tiles may overlap, so this could maybe be optimised a bit by not checking every tile?
@@ -1645,9 +1647,9 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 
 		// no vehicle found
 		return false;
-	} else {
-		return VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL;
-	};
+	}
+
+	return VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL;
 }
 
 static void SetSignalsAfterProc(TrackPathFinder *tpf)
