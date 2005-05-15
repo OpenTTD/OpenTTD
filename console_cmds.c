@@ -843,6 +843,19 @@ DEF_CONSOLE_CMD(ConExit)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConPart)
+{
+	if (argc == 0) {
+		IConsoleHelp("Leave the currently joined/running game (only ingame). Usage: 'part'");
+		return true;
+	}
+
+	if (_game_mode != GM_NORMAL) return false;
+
+	_switch_mode = SM_MENU;
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConHelp)
 {
 	if (argc == 2) {
@@ -1184,6 +1197,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("echoc",        ConEchoC);
 	IConsoleCmdRegister("exec",         ConExec);
 	IConsoleCmdRegister("exit",         ConExit);
+	IConsoleCmdRegister("part",         ConPart);
 	IConsoleCmdRegister("help",         ConHelp);
 	IConsoleCmdRegister("info_cmd",     ConInfoCmd);
 	IConsoleCmdRegister("info_var",     ConInfoVar);
@@ -1227,6 +1241,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleAliasRegister("clean_company", "reset_company %A");
 	IConsoleCmdRegister("connect",         ConNetworkConnect);
+	IConsoleAliasRegister("join",          "connect %A");
 	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
 	IConsoleCmdRegister("clients",         ConNetworkClients);
 	IConsoleCmdHookAdd("clients",          ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
