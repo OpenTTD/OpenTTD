@@ -302,8 +302,8 @@ int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsWaypointIndex(p1)) return CMD_ERROR;
 
-	if (_decode_parameters[0] != 0) {
-		str = AllocateNameUnique((const char*)_decode_parameters, 0);
+	if (_cmd_text[0] != '\0') {
+		str = AllocateNameUnique(_cmd_text, 0);
 		if (str == 0)
 			return CMD_ERROR;
 

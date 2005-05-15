@@ -5,6 +5,7 @@
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
 
+#include "string.h"
 #include "table/strings.h"
 #include "network_client.h"
 #include "command.h"
@@ -394,12 +395,6 @@ void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 	}
 }
 
-// If this fails, make sure you change the following line below:
-//   'memcpy(qp->dp, _decode_parameters, 10 * sizeof(uint32));'
-// Also, in network_data.h, change the size of CommandPacket->dp!
-// (this protection is there to make sure in network.h dp is of the right size!)
-assert_compile(sizeof(_decode_parameters) == 20 * sizeof(uint32));
-
 // Prepare a DoCommand to be send over the network
 void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
 {
@@ -430,8 +425,7 @@ void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandC
 		c->frame = 0; // The client can't tell which frame, so just make it 0
 	}
 
-	// Copy the _decode_parameters to dp
-	memcpy(c->dp, _decode_parameters, 20 * sizeof(uint32));
+	ttd_strlcpy(c->text, (_cmd_text != NULL) ? _cmd_text : "", lengthof(c->text));
 
 	if (_network_server) {
 		// If we are the server, we queue the command in our 'special' queue.
@@ -471,7 +465,7 @@ void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandC
 void NetworkExecuteCommand(CommandPacket *cp)
 {
 	_current_player = cp->player;
-	memcpy(_decode_parameters, cp->dp, sizeof(cp->dp));
+	_cmd_text = cp->text;
 	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
 	if (cp->callback > _callback_table_count) {
 		DEBUG(net,0) ("[NET] Received out-of-bounds callback! (%d)", cp->callback);

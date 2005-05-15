@@ -129,7 +129,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Player *p;
 
-	str = AllocateNameUnique((const char*)_decode_parameters, 4);
+	str = AllocateNameUnique(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -153,7 +153,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Player *p;
 
-	str = AllocateNameUnique((const char*)_decode_parameters, 4);
+	str = AllocateNameUnique(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -162,7 +162,10 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		p->president_name_1 = str;
 
 		if (p->name_1 == STR_SV_UNNAMED) {
-			ttd_strlcat((char*)_decode_parameters, " Transport", sizeof(_decode_parameters));
+			char buf[80];
+
+			snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
+			_cmd_text = buf;
 			DoCommandByTile(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();

@@ -276,11 +276,11 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		const char *b = e->edittext.str;
-		if (*b == 0)
-			return;
-		memcpy(_decode_parameters, b, 32);
-		DoCommandP(0, w->window_number, 0, NULL, CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
+		if (e->edittext.str[0] != '\0') {
+			_cmd_text = e->edittext.str;
+			DoCommandP(0, w->window_number, 0, NULL,
+				CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
+		}
 	} break;
 	}
 }

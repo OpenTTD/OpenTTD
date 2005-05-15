@@ -219,12 +219,11 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		const char *b = e->edittext.str;
-		if (*b == 0)
-			return;
-
-		memcpy(_decode_parameters, b, 32);
-		DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
+		if (e->edittext.str[0] != '\0') {
+			_cmd_text = e->edittext.str;
+			DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL,
+				CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
+		}
 	} break;
 
 	case WE_RESIZE: {
@@ -1144,11 +1143,11 @@ do_change_service_int:
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		const char *b = e->edittext.str;
-		if (*b == 0)
-			return;
-		memcpy(_decode_parameters, b, 32);
-		DoCommandP(0, w->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
+		if (e->edittext.str[0] != '\0') {
+			_cmd_text = e->edittext.str;
+			DoCommandP(0, w->window_number, 0, NULL,
+				CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
+		}
 	} break;
 	}
 }

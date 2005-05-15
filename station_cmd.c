@@ -2658,7 +2658,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsValidStation(st) || !CheckOwnership(st->owner)) return CMD_ERROR;
 
-	str = AllocateNameUnique((const char*)_decode_parameters, 6);
+	str = AllocateNameUnique(_cmd_text, 6);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

@@ -38,7 +38,7 @@ typedef struct CommandPacket {
 	uint32 p1;     /// parameter p1
 	uint32 p2;     /// parameter p2
 	uint32 tile;   /// tile command being executed on ; always make it uint32, so it is bigmap compatible (TileIndex)
-	uint32 dp[20]; /// _decode_parameters (for sending strings, etc.)
+	char text[80];
 	uint32 frame;  /// the frame in which this packet is executed
 	byte callback; /// any callback function executed upon successful completion of the command
 } CommandPacket;

@@ -1451,7 +1451,7 @@ int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	t = GetTown(p1);
 
-	str = AllocateNameUnique((const char*)_decode_parameters, 4);
+	str = AllocateNameUnique(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

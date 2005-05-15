@@ -7,6 +7,8 @@
 #include "player.h"
 #include "network.h"
 
+const char* _cmd_text = NULL;
+
 #define DEF_COMMAND(yyyy) int32 yyyy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 DEF_COMMAND(CmdBuildRailroadTrack);
@@ -323,7 +325,10 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (TILE_FROM_XY(x,y) > MapSize()) return CMD_ERROR;
+	if (TILE_FROM_XY(x,y) > MapSize()) {
+		_cmd_text = NULL;
+		return CMD_ERROR;
+	}
 
 	proc = _command_proc_table[procc].proc;
 
@@ -352,6 +357,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 		if (!(flags & DC_EXEC)) {
 			_docommand_recursive--;
+			_cmd_text = NULL;
 			return res;
 		}
 	}
@@ -363,6 +369,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 		if (res & 0xFFFF) _error_message = res & 0xFFFF;
 error:
 		_docommand_recursive--;
+		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
 
@@ -371,6 +378,7 @@ error:
 		SubtractMoneyFromPlayer(res);
 	}
 
+	_cmd_text = NULL;
 	return res;
 }
 
@@ -394,7 +402,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int y = TileY(tile) * 16;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile > MapSize()) return false;
+	if (tile > MapSize()) {
+		_cmd_text = NULL;
+		return false;
+	}
 
 	assert(_docommand_recursive == 0);
 
@@ -405,6 +416,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	// spectator has no rights.
 	if (_current_player == OWNER_SPECTATOR) {
 		ShowErrorMessage(_error_message, _error_message_2, x, y);
+		_cmd_text = NULL;
 		return false;
 	}
 
@@ -446,6 +458,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		}
 
 		_docommand_recursive = 0;
+		_cmd_text = NULL;
 		return false;
 	}
 
@@ -467,6 +480,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
 		_docommand_recursive = 0;
+		_cmd_text = NULL;
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
@@ -505,6 +519,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 0;
 
 	if (callback) callback(true, tile, p1, p2);
+	_cmd_text = NULL;
 	return true;
 
 show_error:
@@ -516,5 +531,6 @@ callb_err:
 	_docommand_recursive = 0;
 
 	if (callback) callback(false, tile, p1, p2);
+	_cmd_text = NULL;
 	return false;
 }

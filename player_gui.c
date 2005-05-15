@@ -650,7 +650,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		if (*b == 0 && WP(w,def_d).byte_1 != 2) // empty string is allowed for password
 			return;
 
-		memcpy(_decode_parameters, b, 32);
+		_cmd_text = b;
 		switch (WP(w,def_d).byte_1) {
 		case 0: /* Change president name */
 			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));

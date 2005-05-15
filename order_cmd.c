@@ -758,7 +758,7 @@ void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 
 	/* If we have a custom name, process that */
 	if (bak->name[0] != 0) {
-		strcpy((char*)_decode_parameters, bak->name);
+		_cmd_text = bak->name;
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}
 

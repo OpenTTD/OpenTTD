@@ -63,7 +63,8 @@ void HandleOnEditText(WindowEvent *e)
 {
 	const char *b = e->edittext.str;
 	int id;
-	memcpy(_decode_parameters, b, 32);
+
+	_cmd_text = b;
 
 	id = _rename_id;
 

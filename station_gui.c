@@ -503,14 +503,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		Station *st;
-		const char *b = e->edittext.str;
-		if (*b == 0)
-			return;
-		memcpy(_decode_parameters, b, 32);
+		if (e->edittext.str[0] != '\0') {
+			Station* st = GetStation(w->window_number);
 
-		st = GetStation(w->window_number);
-		DoCommandP(st->xy, w->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
+			_cmd_text = e->edittext.str;
+			DoCommandP(st->xy, w->window_number, 0, NULL,
+				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
+		}
 	} break;
 
 	case WE_DESTROY: {

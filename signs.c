@@ -142,7 +142,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 * So rename the sign. If it is empty, it has no name, so delete it */
 	if (GetDParam(0) != 0) {
 		/* Create the name */
-		StringID str = AllocateName((const char*)_decode_parameters, 0);
+		StringID str = AllocateName(_cmd_text, 0);
 		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
