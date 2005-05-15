@@ -627,7 +627,7 @@ DEF_CONSOLE_CMD(ConExec)
 
 	while (_script_running && fgets(cmdline, sizeof(cmdline), _script_file) != NULL) {
 		/* Remove newline characters from the executing script */
-		for (cmdptr = cmdline; *cmdptr != '\0'; *cmdptr++) {
+		for (cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
 			if (*cmdptr == '\n' || *cmdptr == '\r') {
 				*cmdptr = '\0';
 				break;

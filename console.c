@@ -601,7 +601,7 @@ void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens
 	memset(&aliasstream, 0, sizeof(aliasstream));
 
 	aliases[0] = aliasstream;
-	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; *cmdptr++) {
+	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
 
 		switch (*cmdptr) {
@@ -611,10 +611,10 @@ void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens
 		case ';': /* Cmd seperator, start new command */
 			aliasstream[astream_i] = '\0';
 			aliases[++a_index] = &aliasstream[++astream_i];
-			*cmdptr++;
+			cmdptr++;
 			break;
 		case '%': /* Some or all parameters */
-			*cmdptr++;
+			cmdptr++;
 			switch (*cmdptr) {
 			case '+': { /* All parameters seperated: "[param 1]" "[param 2]" */
 				for (i = 0; i != tokencount; i++) {
@@ -1022,7 +1022,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	bool longtoken = false;
 	bool foundtoken = false;
 
-	for (cmdptr = cmdstr; *cmdptr != '\0'; *cmdptr++) {
+	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {
 			IConsoleError("command contains malformed characters, aborting");
 			IConsolePrintF(_icolour_err, "ERROR: command was: '%s'", cmdstr);
@@ -1040,7 +1040,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
 	tokens[0] = tokenstream;
-	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; *cmdptr++) {
+	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
 
 		switch (*cmdptr) {
