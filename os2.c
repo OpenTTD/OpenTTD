@@ -114,8 +114,8 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
-					strcmp(filename, ".") != 0 &&
-					strcmp(filename, "..") != 0) {
+					strcmp(dirent->d_name, ".") != 0 &&
+					strcmp(dirent->d_name, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
@@ -243,8 +243,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
 			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
-					strcmp(filename, ".") != 0 &&
-					strcmp(filename, "..") != 0) {
+					strcmp(dirent->d_name, ".") != 0 &&
+					strcmp(dirent->d_name, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
@@ -357,7 +357,7 @@ char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_DIR:
 			s = strchr(item->name, '\\');
 			if (s != NULL) *s = '\0';
-			strcat(path, "\\");
+			if (path[3]!= '\0' ) strcat(path, "\\");
 			strcat(path, item->name);
 			break;
 
