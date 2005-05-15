@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    $LastChangedDate: 2004-12-24 00:25:11 +0100 $
-Release version: 0.3.6
+Last updated:    2005-05-15
+Release version: 0.4.0
 ------------------------------------------------------------------------
 
 
@@ -269,6 +269,7 @@ Thanks to:
   Marcin Grzegorczyk - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
   Matthijs Kooijman (blathijs) - For his many patches, suggestions and major work on maprewrite
   Petr Baudis (pasky) - Many patches, newgrf support, etc.
+  Simon Sasburg (HackyKid) - For the many bugfixes he has blessed us with (and future PBS)
   Stefan Meiﬂner (sign_de) - For his work on the console
   Mike Ragsdale - OpenTTD installer
   Cian Duffy (MYOB) - BeOS port / manual writing

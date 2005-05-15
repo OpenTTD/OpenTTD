@@ -195,6 +195,7 @@ static const char *credits[] = {
 	"  Matthijs Kooijman (blathijs) - For his many patches, suggestions and major work on maprewrite",
 	"  Petr Baudis (pasky) - Many patches, newgrf support",
 	"  Stefan Meiﬂner (sign_de) - For his work on the console",
+	"  Simon Sasburg (HackyKid) - For the many bugfixes he has blessed us with (and future PBS)",
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
 	"  Christian Rosentreter (tokaiz) - MorphOS / AmigaOS port",
 	"",

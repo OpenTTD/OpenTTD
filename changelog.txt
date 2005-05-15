@@ -1,3 +1,82 @@
+0.4.0 (2005-05-15)
+------------------------------------------------------------------------
+- Feature: Bigger maps. Enjoy playing up to 2028x2048 (64 times as big as you were used to!)
+- Feature: New realistic acceleration; should be much better. Inlcudes gigger penalty on narrow curves and speedlimits in depots/stations
+- Feature: It is now possible to build multiple road stations (up to 8) on a single station (multibus).
+- Feature: New PathFinder (NPF). Support for train/road and ship based on A*. No more braindead pathfinding
+- Feature: Dynamic towns/industries/stations/vehicles/signs/orders/everything, up to 64K
+- Feature: Brand new OldLoader so OpenTTD is TTD(Patch) compatible again. Also endian safe
+- Feature: Even better newgrf support, except for callbacks, everything works (ok, almost)
+- Feature: Improved multiplayer. More console options, less desyncs and more fun
+- Feature: Protected OpenTTD from interference of hacked clients, so it should be safe to play again.
+- Feature: [ 1093261 ] Saving vehicle sorting criteria for each vehicle type
+- Feature: [ 1107690 ] Resizable orders GUI
+- Feature: [ 1166978 ] Focus keyboard on input-box in Multiplayer Menu
+- Feature: [ 1174313 ] terrain hotkeys nonfunctional in scenario editor (D,Q,W,E,R,T,Y,U fltr)
+- Feature: Complete rework of console and new commands like ls, save, load, help, etc.
+- Feature: Signs are shown in the colour of the player who created them
+- Feature: Add cheat option to set production of raw-material industries in game
+- Feature: Replace trian GUI remembers railtype selected from the dropdown menu
+- Feature: Improved Autoreplace
+- Feature: many more smaller features :D
+- Fix: [ 1108618 ] A wrong error message was displayed when trying to
+- Fix: [ 1110407 ] Game does not crash any more when a newgrf file doesn't exist
+- Fix: [ 1112469 ] Clearing land for free by reallocating HQ
+- Fix: [ 1112469 ] Clearing land for free by reallocating HQ
+- Fix: [ 1113037 ] crash when accessing hi-scores in editor, it is now disabled.
+- Fix: [ 1113399 ] Game no longer crashes when right-clicking a disabled Full Load button
+- Fix: [ 1114100 ] Dedicated server boots again
+- Fix: [ 1114950 ] Game crashed sometimes when there were no industries in the map
+- Fix: [ 1115200 ] In the main menu, when starting a new game while the load game dialog is open, openttd asserts.
+- Fix: [ 1117538 ] non-stop orders are no longer accidently skipped
+- Fix: [ 1116619 ] Generate the correct smoke type for diesel trains
+- Fix: [ 1119308 ] Max passengers / mail variables are now 32 bit
+- Fix: [ 1109400 ] Better test if a string actually contains any console command
+- Fix: [ 1108637 ] 'Play scenario' now loads game options and difficulty, 'Load game' starts game with user-selected values.
+- Fix: [ 1143587 ] carriages of newgrfs can be refitted again
+- Fix: [ 1117730 ] Production values of temperate-climate banks can now be altered
+- Fix: [ 1118810 ] openttd: ship_cmd.c:642 ... Assertion failed. Mapwrap fixed in ship_cmd.c (was implicitely ok before biggermaps).
+- Fix: [ 1117327 ] Assertion error on kick. When a company is cleaned all its windows need to be closed. For global vehicle lists, the no-staiton index of -1 was not taken into account
+- Fix: [ 1114261 ] Speeding up when pressing ALT+TAB (Windows)
+- Fix: [ 1149403 ] Signals dissaper after typing text and pressing enter!. Signs in Scenario Editor have no owner so ignore that.
+- Fix: [ 1149766 ] Single tile Bridge in Volcano City scenario. Some bridges still had the old single-tile bridge bug that was caused by improper town growth in combination with DC_AUTO. Fixed the scenario.
+- Fix: [ 1119147 ] Stop startup memory corruption crash using optimized MSVC6. MSVC6 workaround as it's too stupid again for its own good
+- Fix: [ 1101874 ] Dedicated server now accepts '-g' (load game) as param
+- Fix: [ 1155696 ] Crash with german umlauts in station names.
+- Fix: [ 1158618 ] Segmentation fault when loading savegame, out of bounds array check.
+- Fix: [ 1149487 ] Autosave ignoring settings
+- Fix: [ 1024703 ] Infinite access for A:\ (win32). Patch [1171208]. Only requery drive(s) if the user changes a directory, also surpress the OS error box that pops up on some windows machines.
+- Fix: [ 1095110 ] Create Lake and draggable Create Desert tools
+- Fix: [ 1172878 ] Trains "Go to depot" button: click twice skip to next order
+- Fix: [ 1146215 ] Engine power not updated w/auto replace" autoreplace now forces an update of the cache.
+- Fix: [ 1173690 ] Path displaying as "C:\\" in saveload window win32-only
+- Fix: [ 1179892 ] click & drag removal of road assertion fail.
+- Fix: [ 1174237 ] Max loan always in euros, use _opt_ptr instead of _opt
+- Fix: [ 1184201 ] AI orders its vehicles to a competitor's truck stop.
+- Fix: [ 1188986 ] Song in main menu screen should loop when it ends.
+- Fix: [ 1188777 ] Non-existing sprite #5125 (presignal). The DOS grf file trgi.grf has 6 less sprites than the windows one.
+- Fix: [ 1190625 ] Changing mapsize crashes game with highlighting.
+- Fix: [ 1190896 1184378 ] [NPF] Trains ignoring their railtype (mono, maglev)
+- Fix: [ 1202115 ] Clicking shipslist on bouy asserts GetPlayer().
+- Fix: [ 1187613 ] No HQ present for competitor, disable 'View HQ' button
+- Fix: [ 1193048 ] Pre-signal stays red when there is only a single exit signal
+- Fix: [ 1185176 ] Train in tunnel is not properly detected by signal code
+- Fix: [newgrf] rotors of custom helicopters are displayed correctly in the hangar window
+- Fix: Scenario Editor now handles human-made roads better (try to build a city layout before placing the city, finally that works very nice)
+- Fix: [Newgrf] helicopters are correctly recognized
+- Fix: [autoreplace] made sure that planes only show planes in replace GUI and helicopters only show helicopters
+- Fix: (Work around?) crash when generating tropical maps
+- Fix: [autoreplace] Cheaters can no longer exploit autoreplace to get vehicles, that's not invented yet
+- Fix: [autoreplace] Fixed a stupid bug introduced in r1687, that made a crash if anybody tried to autoreplace anything but an aircraft
+- Fix: expand railroad stations beyond maximum spread
+- Fix: [autoreplace] fixed a typo that could prevent autoreplaced aircraft from automatically go to a hangar
+- Fix: Hacked clients can no longer be used to build vehicles that are not available yet
+- Fix: Minimum profit of vehicles was calculated wrong for Performance Rating
+- Fix: no longer a station where you only unload is bad for your town-rating
+- Fix: Crash in scenario-editor with terraforming out-of-map bounds.
+- Fix: Game would crash if you full-screened with the 'fullscreen' button than chose a resolution from the dropdown box that was no longer valid.
+- Fix: Scrolling with the arrow keys is now smooth and it now also scrolls exactly in tile direction if e.g. up and left are pressed
+- Fix: many more fixes but I am too tired to list them all
 0.3.6 (2005-01-24)
 ------------------------------------------------------------------------
 - Feature: resizable windows. All useful windows are already made resizable.

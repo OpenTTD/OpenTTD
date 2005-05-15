@@ -1,8 +1,8 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.3.6.0"
-!define APPVERSION "0.3.6.0"
-!define INSTALLERVERSION 14 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPNAMEANDVERSION "OpenTTD 0.4.0.0"
+!define APPVERSION "0.4.0.0"
+!define INSTALLERVERSION 15 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !define MUI_ICON "..\..\..\openttd.ico"
 !define MUI_UNICON "..\..\..\openttd.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
@@ -69,11 +69,12 @@ Page custom SelectCD SelectCD2 ": TTD folder"
 
 !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\OpenTTD.exe"
 !define MUI_FINISHPAGE_LINK "Visit OpenTTD's homepage"
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.openttd.org/"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
+!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -241,6 +242,7 @@ Section Uninstall
 	Delete "$INSTDIR\data\canalsw.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
 	Delete "$INSTDIR\data\autorail.grf"
+	Delete "$INSTDIR\data\dosdummy.grf"
 	Delete "$INSTDIR\data\sample.cat"
 	Delete "$INSTDIR\data\trg1r.grf"
 	Delete "$INSTDIR\data\trghr.grf"
