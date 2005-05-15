@@ -1709,15 +1709,14 @@ make_red:
 				continue;
 		}
 
-		// Update signals on the other side of this exit signal, it changed.
-		// If this segment has presignals, then we treat exit signals going into the segment as normal signals.
-		if (_map3_hi[tile]&2 && (_map3_hi[tile]&1 || !ssd->has_presignal)) {
+		/* Update signals on the other side of this exit-combo signal; it changed. */
+		if (_map3_hi[tile] & 2 ) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
 				ssd->cur_stack++;
 			} else {
-				printf("NUM_SSD_STACK too small\n");
+				printf("NUM_SSD_STACK too small\n"); /// @todo WTF is this???
 			}
 		}
 
