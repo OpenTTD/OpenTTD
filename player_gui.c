@@ -653,10 +653,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		_cmd_text = b;
 		switch (WP(w,def_d).byte_1) {
 		case 0: /* Change president name */
-			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
+			DoCommandP(0, 0, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
 			break;
 		case 1: /* Change company name */
-			DoCommandP(0, w->window_number, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
+			DoCommandP(0, 0, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
 			break;
 		#ifdef ENABLE_NETWORK
 		case 2: /* Change company password */
