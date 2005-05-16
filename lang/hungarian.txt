@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}  Új kereskedelmi épületek építésének támogatása a városban.{}  Ára: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}  Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}  Ára: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{} Ára: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Nem teheted ezt...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Közlekedési zûrzavar {TOWN} városában!{}{}{STRING} által indított útjavítás keseríti meg hat hónapig az autóvezetõk életét!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2445,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Felpakol / Lepakol
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A remízben kellene állnia ehhez
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nem küldheted a vonatot a jármûtelepre...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nincs több hely új célpontnak
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Túl sok a célpont
@@ -2674,7 +2674,7 @@ STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a le
 STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Elõbb repülõteret kell építened
 STR_A019_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A a hangárban kellene állnia ehhez
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A hangárban kellene állnia ehhez
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nem adhatod el a repülõgépet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Repülõtér építése
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Repülõtér építése

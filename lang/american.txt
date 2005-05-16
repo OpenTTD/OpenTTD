@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Can't do this...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Can't bo
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...no loan to repay
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} required
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Can't repay loan...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Can't give away money that is loaned from the bank...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Select new face for president
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change the company vehicle livery
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change the president's name
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Value: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Loading / Unloading
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Can't send train to depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No more space for orders
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Too many orders

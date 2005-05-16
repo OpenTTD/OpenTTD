@@ -998,9 +998,9 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Raunver
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Leyfa byggingu mjög langra lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Raunveruleg hröðun lesta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90°  beygjur: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90°  beygjur: {ORANGE}{STRING} {LTBLUE} (þarfnast NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Yfirgefa lestarstöð þegar einhver farmur er fullur, ef kveikt er á 'fullhlaða': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Yfirgefa stöð þegar einn farmur er fullfermdur, ef valið er 'fullferma': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Nota endurbættan algóriþma við hleðslu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Verðbólga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Leyfa m
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Má byggja iðnaði af sömu gerð nálægt hvor öðrum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sýna alltaf fulla dagsetningu í upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Sýna fjármálaglugga í lok árs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch samhæfð meðhöndlun stansleysu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Bifreiðir fara í biðraðir (með stórvægilegum aukaverkunum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Færa sjónarhorn þegar músin nálgast brún gluggans: {ORANGE}{STRING}
@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Kosta byggingu verslunarhúsnæðis í bænum.{}  Kostnaður: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Ekki hægt...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Glundroði í umferð {TOWN}!{}{}Uppbygging vega kostuð af {STRING} veldur 6 mánaða vesæld meðal ökumanna!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ekki hæg
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ekkert lán til að borga
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} vantar
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Getur ekki borgað lán...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Það er ekki hægt að gefa peninga sem teknir eru að láni frá bankanum...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Velja nýtt andlit á forstöðumanninn
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Breyta útliti á farartækjum fyrirtækisins
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Breyta nafni forstöðumanns
@@ -2418,7 +2418,7 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Lest {COMMA16} bíður í skýli
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ný faratæki
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA16}tonn{}{BLACK}Hraði: {GOLD}{VELOCITY}{BLACK}   Orka: {GOLD}{COMMA32}hestöfl{}{BLACK}Viðhaldskostnaður: {GOLD}{CURRENCY}/ár{}{BLACK}Burðargeta: {GOLD}{STRING}{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK} Líftími: {GOLD}{COMMA16} ár{}{BLACK}Áreiðanleiki mest: {GOLD}{COMMA8}%
+STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA16}tonn{}{BLACK}Hraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA32}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Burðargeta: {GOLD}{STRING}{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK} Líftími: {GOLD}{COMMA16} ár{}{BLACK}Áreiðanleiki mest: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Upplýsingar
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin er of löng
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Virði: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Fermandi / Affermandi
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Lest þarf að vera stöðvuð í skýli
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Get ekki sent lest í skýli...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ekki pláss fyrir fleiri skipanir
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Of margar skipanir
@@ -2490,10 +2491,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða le
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ný {STRING} er nú fáanleg!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA16}tonn{}Hraði: {VELOCITY}  Kraftur: {COMMA16}hö{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA16}tonn{}Hraði: {VELOCITY}  Hestöfl: {COMMA16}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Keyrslukostnaður: {LTBLUE}{CURRENCY}/ár
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA16}t  {BLACK}Kraftur: {LTBLUE}{COMMA32}hp{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA16}t  {BLACK}Hestöfl: {LTBLUE}{COMMA32}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
 STR_8861_STOPPED                                                :{RED}Stöðvaður

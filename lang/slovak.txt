@@ -998,7 +998,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, atd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakazat vlakom a lodiam otacenie o 90 stupnov: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakazat vlakom a lodiam otacenie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Umoznit spajat stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
@@ -1019,7 +1019,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Nove vyhladavanie depa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Novy algoritmus pre hladanie smeru: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus vyhladavania cesty (NPF, nahradzuje NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit male letiska: {ORANGE}{STRING}
 
@@ -1033,7 +1033,7 @@ STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Upozorn
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Stare vozidla sa neprestanu vyrabat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti max. veku
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. mnozstvo penazi pre automaticke obnovovanie vozidiel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. mnozstvo penazi pre aut. obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit populaciu mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
@@ -1068,7 +1068,7 @@ STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Datum z
 STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Ukoncit hru v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit nakup akcii od ostatnych spolocnosti
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri tahani umiestnit semafory kazdych(e): {ORANGE}{STRING} dlazdic(e)
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Na lavo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :V strede
@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Na 1 rok kupit exkluzivne dopravne prava pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie dopravnych sluzieb len vasej spolocnosti.{} Cena: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu ked sa to prevali!{}  Cost: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}To sa neda urobit...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {STRING} prinesie 6 mesiacov utrpenia pre motoristov!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemozno 
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...pozicka uz bola splatena
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} potrebne
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Pozicka sa neda vratit...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Nie je mozne poskytnut peniaze, ktore su pozicane z banky...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Vybrat novu tvar prezidenta
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Zmenit vzhlad spolocnosti
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Zmenit meno prezidenta
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Cena: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Naklada/Vyklada
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musi byt zastaveny v depe
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlak sa neda poslat do depa...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nemozno zadat dalsie prikazy
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prilis vela prikazov

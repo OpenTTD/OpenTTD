@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}  Kostnad: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens kommun kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Muta den lokala kommunen för att öka din värdering, på risken av att få höga böter om du blir upptäckt.{}  Kostnad: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Kan inte utföra detta...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {STRING} medför 6 månader av elände för bilister!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kan inte
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...lånet redan återbetalt
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} krävs
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan inte återbetala lånet...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan inte ge bort pengar som är lånade från banken...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Välj nytt ansikte på VD:n
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Byt färg på företaget
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Byt VD:ns namn
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Värde: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastar / lastar av
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tåget måste stoppas inne i depån
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan inte skicka tåg till depå...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ingen mer plats för order
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}För många order

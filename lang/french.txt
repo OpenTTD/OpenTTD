@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financer la construction de nouveaux immeubles commerciaux.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Acheter les droits de transports exclusifs dans cette ville pour 1 an. Seules vos ligness seront autorisées dans la ville.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}  Coût: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Impossible...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Problèmes de traffic à {TOWN}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossib
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Prêt déjà remboursé
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nécessaires
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Impossible de rembourser...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Choix d'un nouveau visage pour le P.D.G.
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change la couleur des véhicules
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change le nom du président directeur général
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valeur: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Chargement/déchargement
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Le train doit être stoppé dans un dépôt
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Impossible d'envoyer le train au dépôt...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Plus de places pour les ordres
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Trop d'ordres

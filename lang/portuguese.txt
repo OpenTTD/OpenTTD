@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}  Custo: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e a carga usem somente estações da sua companhia.{} Custo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar a autoridade local para aumentar a sua avaliação, correndo o  risco de uma penalidade severa se apanhado.{}  Custo: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Não pode fazer isto...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 meses de miséria aos condutores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})

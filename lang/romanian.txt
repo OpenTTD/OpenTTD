@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanteazã constructia de noi clãdiri comerciale în oras.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Cumpãrã drepturile exclusive în acest oras pe o perioadã de un an. Autoritãtile locale vor folosi doar compania ta pentru transportul de pasageri si mãrfuri.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{}  Cost: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Nu pot face asta...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Haos pe strãzile din {TOWN}!{}{}Programul finantat de {STRING} pentru reconstructia strãzilor, aduce 6 luni de haos participantilor la trafic!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nu mai p
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...nu ai nici un credit de plãtit
 STR_702E_REQUIRED                                               :{WHITE}...ai nevoie de {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Nu poti plãti creditul...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Nu poti dona din banii împrumutati de bancã...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Alege o nouã fotografie a presedintelui
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Schimbã culoarea care îti reprezintã compania
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Schimbã numele presedintelui

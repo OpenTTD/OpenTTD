@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Can't do this...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Daugiau 
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...kreditas grazintas
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} reikia
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Skolos grazinti negalima...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Negalima dovanoti is banko pasiskolintu pinigu...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Pasirink nauja veida
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Keicia kompanijos transporto priemoniu spalva
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Keicia kompanijos direktoriaus varda

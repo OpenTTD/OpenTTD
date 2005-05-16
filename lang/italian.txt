@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanzia la costruzione di nuove strutture commerciali nella città.{}  Costo: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra 1 anno di esclusiva sui trasporti nella città. Compra 1 anno di esclusiva sui diritti di trasporto in città. L'autorità cittadina autorizzerà passeggeri e merci a usare solo le tue stazioni.{} Costo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompi l’autorità locale per incrementare la tua valutazione con il rischio di una severa multa se scoperto.{}  Costo: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Non puoi farlo...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione stradale finanziata da {STRING} porterà 6 mesi di disagio agli automobilisti!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2445,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valore: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carica / Scarica
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Il treno deve essere fermato nel deposito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Non puoi mandare treno al deposito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Spazio per gli ordini terminato
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Troppi ordini

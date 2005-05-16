@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Finanzieren Sie den Bau kommerzieller Gebäude im Ort.{}Kosten: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Kaufen Sie für 1 Jahre die exklusiven Transportrechte der Stadt. Die Stadtverwaltung erlaubt nur Passagier- und Frachttransporte Ihres Unternehmens.{}Kosten: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Bestechen Sie die Stadtverwaltung, um Ihre Bewertung zu verbessern. Dabei riskieren Sie allerdings eine harte Strafe, falls Sie ertappt werden.{}Kosten: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Leider nicht möglich...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßensanierungsprogramm finanziert durch {STRING} wird 6 Monate lang Verzögerungen im Verkehr bewirken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2445,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laden / Entladen
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kann den Zug nicht ins Depot schicken...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Kein Platz für weitere Aufträge
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zu viele Aufträge

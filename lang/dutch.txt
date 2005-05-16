@@ -1595,7 +1595,6 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciele gebouwen in de stad.{}  Kosten: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze stad. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
-STR_2054_CAN_T_DO_THIS                                          :{WHITE}Kan dit niet doen...
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
@@ -2034,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kan geen
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...geen lening om terug te betalen
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} benodigd
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan geen lening terugbetalen
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Kies nieuw gezicht voor directeur
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Verander het uiterlijk van de bedrijfsvoertuigen
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Verander de naam van de manager
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Waarde: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}In- en uitladen
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan trein niet naar depot sturen...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Geen ruimte meer voor orders
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Teveel orders
