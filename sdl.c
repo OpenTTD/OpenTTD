@@ -706,4 +706,9 @@ static void DbgRedraw()
 }
 #endif
 
-#endif // WITH_SDL
+#else
+
+/* Stub for dedicated server */
+void ToggleFullScreen(bool full_screen) {}
+
+#endif /* WITH_SDL */
