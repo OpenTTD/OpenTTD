@@ -457,10 +457,6 @@ endif
 # libpng config
 ifdef WITH_PNG
 CDEFS += -DWITH_PNG
-# FreeBSD doesn't use libpng-config
-ifdef FREEBSD
-LIBS += -lpng
-else
 CFLAGS += $(shell libpng-config --cflags)
 
 # seems like older libpng versions are broken and need this
@@ -474,7 +470,6 @@ LIBS += $(shell libpng-config --static $(PNGCONFIG_FLAGS))
 endif
 else
 LIBS += $(shell libpng-config  --L_opts $(PNGCONFIG_FLAGS))
-endif
 endif
 endif
 

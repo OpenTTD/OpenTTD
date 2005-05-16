@@ -66,17 +66,7 @@ WITH_NETWORK:=1
 WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)
 
 # libpng detection
-ifdef FREEBSD
-# a little hack was needed for FreeBSD because it misses libpng-config
-WITH_PNG:=$(shell ls /usr/lib | grep "libpng" 2>/dev/null) $(shell \
-ls /usr/local/lib | grep "libpng" 2>/dev/null)
-ifdef WITH_PNG
-# makes the flag look nicer in makefile.config
-WITH_PNG:=1
-endif
-else
 WITH_PNG:=$(shell libpng-config --version 2>/dev/null)
-endif
 
 ifdef WITH_PNG
 # LibPNG depends on Zlib
