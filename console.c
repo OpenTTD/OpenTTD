@@ -151,6 +151,9 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 						SetWindowDirty(w);
 					}
 					break;
+					case (WKC_CTRL | 'L'):
+					IConsoleCmdExec("clear");
+					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
 					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode)) {
 						IConsoleResetHistoryPos();
@@ -222,13 +225,19 @@ void IConsoleInit(void)
 	IConsoleHistoryAdd("");
 }
 
-void IConsoleClear(void)
+void IConsoleClearBuffer(void)
 {
 	uint i;
-	for (i = 0; i <= ICON_BUFFER; i++)
+	for (i = 0; i <= ICON_BUFFER; i++) {
 		free(_iconsole_buffer[i]);
+		_iconsole_buffer[i] = NULL;
+	}
+}
 
+static void IConsoleClear(void)
+{
 	free(_iconsole_cmdline.buf);
+	IConsoleClearBuffer();
 }
 
 static void IConsoleWriteToLogFile(const char* string)
@@ -1021,6 +1030,8 @@ void IConsoleCmdExec(const char *cmdstr)
 
 	bool longtoken = false;
 	bool foundtoken = false;
+
+	if (*cmdstr == '\0') return; // don't execute empty commands
 
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {

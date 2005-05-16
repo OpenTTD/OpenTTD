@@ -114,8 +114,8 @@ VARDEF IConsoleModes _iconsole_mode;
 
 // ** console functions ** //
 void IConsoleInit(void);
-void IConsoleClear(void);
 void IConsoleFree(void);
+void IConsoleClearBuffer(void);
 void IConsoleResize(void);
 void IConsoleSwitch(void);
 void IConsoleClose(void);

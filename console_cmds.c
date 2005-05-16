@@ -268,7 +268,6 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	return true;
 }
 
-
 DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 {
 	const char *path;
@@ -284,6 +283,18 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 
 	FiosGetDescText(&path, NULL);
 	IConsolePrint(_icolour_def, path);
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConClearBuffer)
+{
+	if (argc == 0) {
+		IConsoleHelp("Clear the console buffer. Usage: 'clear'");
+		return true;
+	}
+
+	IConsoleClearBuffer();
+	InvalidateWindow(WC_CONSOLE, 0);
 	return true;
 }
 
@@ -1217,6 +1228,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
+	IConsoleCmdRegister("clear",        ConClearBuffer);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("newmap",   "newgame");
