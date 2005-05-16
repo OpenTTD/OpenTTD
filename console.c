@@ -1031,8 +1031,6 @@ void IConsoleCmdExec(const char *cmdstr)
 	bool longtoken = false;
 	bool foundtoken = false;
 
-	if (*cmdstr == '\0') return; // don't execute empty commands
-
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {
 			IConsoleError("command contains malformed characters, aborting");
@@ -1050,7 +1048,6 @@ void IConsoleCmdExec(const char *cmdstr)
 	/* 1. Split up commandline into tokens, seperated by spaces, commands
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
-	tokens[0] = tokenstream;
 	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
 
@@ -1087,6 +1084,7 @@ void IConsoleCmdExec(const char *cmdstr)
 			IConsolePrintF(_icolour_dbg, "condbg: token %d is: '%s'", i, tokens[i]);
 	}
 
+	if (tokens[0] == '\0') return; // don't execute empty commands
 	/* 2. Determine type of command (cmd, alias or variable) and execute
 	 * First try commands, then aliases, and finally variables. Execute
 	 * the found action taking into account its hooking code
