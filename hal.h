@@ -12,6 +12,7 @@ typedef struct {
 	void (*make_dirty)(int left, int top, int width, int height);
 	int (*main_loop)(void);
 	bool (*change_resolution)(int w, int h);
+	void (*toggle_fullscreen)(bool fullscreen);
 } HalVideoDriver;
 
 enum {

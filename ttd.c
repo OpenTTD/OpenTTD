@@ -148,7 +148,7 @@ static int NullVideoMainLoop(void)
 }
 
 static bool NullVideoChangeRes(int w, int h) { return false; }
-
+static void NullVideoFullScreen(bool fs) {}
 
 const HalVideoDriver _null_video_driver = {
 	NullVideoStart,
@@ -156,6 +156,7 @@ const HalVideoDriver _null_video_driver = {
 	NullVideoMakeDirty,
 	NullVideoMainLoop,
 	NullVideoChangeRes,
+	NullVideoFullScreen,
 };
 
 // NULL sound driver

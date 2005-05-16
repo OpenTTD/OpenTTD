@@ -783,7 +783,7 @@ static bool Win32GdiChangeRes(int w, int h)
 	return true;
 }
 
-void ToggleFullScreen(bool full_screen) {MakeWindow(full_screen);}
+static void Win32GdiFullScreen(bool full_screen) {MakeWindow(full_screen);}
 
 const HalVideoDriver _win32_video_driver = {
 	Win32GdiStart,
@@ -791,6 +791,7 @@ const HalVideoDriver _win32_video_driver = {
 	Win32GdiMakeDirty,
 	Win32GdiMainLoop,
 	Win32GdiChangeRes,
+	Win32GdiFullScreen,
 };
 
 

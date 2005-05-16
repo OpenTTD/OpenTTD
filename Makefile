@@ -687,9 +687,12 @@ C_SOURCES += water_cmd.c
 C_SOURCES += waypoint.c
 C_SOURCES += widget.c
 C_SOURCES += window.c
-C_SOURCES += sdl.c
 
 CXX_SOURCES =
+
+ifdef WITH_SDL
+C_SOURCES += sdl.c
+endif
 
 ifdef WIN32
 C_SOURCES += win32.c w32dm.c

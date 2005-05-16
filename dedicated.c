@@ -167,6 +167,7 @@ static void DedicatedVideoStop(void)
 
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
+static void DedicatedVideoFullScreen(bool fs) {}
 
 #if defined(UNIX) || defined(__OS2__)
 static bool InputWaiting(void)
@@ -322,6 +323,7 @@ const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoMakeDirty,
 	DedicatedVideoMainLoop,
 	DedicatedVideoChangeRes,
+	DedicatedVideoFullScreen,
 };
 
 #else
@@ -339,6 +341,7 @@ void DedicatedFork(void) {}
 static void DedicatedVideoStop(void) { free(_dedicated_video_mem); }
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
+static void DedicatedVideoFullScreen(bool fs) {}
 static int DedicatedVideoMainLoop(void) { return ML_QUIT; }
 
 const HalVideoDriver _dedicated_video_driver = {
@@ -347,6 +350,7 @@ const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoMakeDirty,
 	DedicatedVideoMainLoop,
 	DedicatedVideoChangeRes,
+	DedicatedVideoFullScreen,
 };
 
 #endif /* ENABLE_NETWORK */

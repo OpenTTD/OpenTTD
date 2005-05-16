@@ -636,7 +636,7 @@ static bool SdlVideoChangeRes(int w, int h)
 	return true;
 }
 
-void ToggleFullScreen(bool full_screen)
+static void SdlVideoFullScreen(bool full_screen)
 {
 	_fullscreen = full_screen;
 	GetVideoModes(); // get the list of available video modes
@@ -650,6 +650,7 @@ const HalVideoDriver _sdl_video_driver = {
 	SdlVideoMakeDirty,
 	SdlVideoMainLoop,
 	SdlVideoChangeRes,
+	SdlVideoFullScreen,
 };
 
 static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
@@ -705,10 +706,5 @@ static void DbgRedraw()
 	DrawSurfaceToScreen();
 }
 #endif
-
-#else
-
-/* Stub for dedicated server */
-void ToggleFullScreen(bool full_screen) {}
 
 #endif /* WITH_SDL */

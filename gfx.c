@@ -1979,6 +1979,8 @@ bool ChangeResInGame(int w, int h)
 	return true;
 }
 
+void ToggleFullScreen(bool fs) {_video_driver->toggle_fullscreen(fs);}
+
 static int CDECL compare_res(const void *pa, const void *pb)
 {
 	int x = ((const uint16*)pa)[0] - ((const uint16*)pb)[0];
