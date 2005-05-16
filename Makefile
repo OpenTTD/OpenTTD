@@ -778,7 +778,7 @@ quiet_cmd_cxx_compile = '===> Compiling $<'
 
 ifdef OSX
 OSX:=OSX
-OSX_MIDI_PLAYER_FILE:=os/macosx/OpenTTDMidi.class
+OSX_MIDI_PLAYER_FILE:=os/macos/OpenTTDMidi.class
 endif
 
 
