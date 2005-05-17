@@ -476,10 +476,16 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 
 #ifdef ENABLE_NETWORK
-	// If we are in network, and the command is not from the network
-	//   send it to the command-queue and abort execution
+	/** If we are in network, and the command is not from the network
+	 * send it to the command-queue and abort execution
+	 * If we are a dedicated server temporarily switch local player, otherwise
+	 * the other parties won't be able to execute our command and will desync.
+	 * @todo Rewrite dedicated server to something more than a dirty hack!
+	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
+		if (_network_dedicated) _local_player = 0;
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
+		if (_network_dedicated) _local_player = OWNER_SPECTATOR;
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
 		return true;
