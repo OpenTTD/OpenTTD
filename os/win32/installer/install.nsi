@@ -233,6 +233,7 @@ Section Uninstall
 	Delete "$INSTDIR\crash.log"
 	Delete "$INSTDIR\openttd.cfg"
 	Delete "$INSTDIR\hs.dat"
+	Delete "$INSTDIR\cached_sprites.*"
 	Delete "$INSTDIR\save\autosave\network*.tmp" ; temporary network file
 
 	; Data files
