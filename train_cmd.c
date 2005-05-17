@@ -932,9 +932,11 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// make sure the vehicle is stopped in the depot
 	if (CheckTrainStoppedInDepot(first) < 0) return CMD_ERROR;
 
-	if ((flags & DC_EXEC) && v == first && first->subtype == TS_Front_Engine) {
-		DeleteWindowById(WC_VEHICLE_VIEW, first->index);
-		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
+	if (flags & DC_EXEC) {
+		if (v == first && first->subtype == TS_Front_Engine) {
+			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
+		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		RebuildVehicleLists();
 	}
