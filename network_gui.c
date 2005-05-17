@@ -1363,6 +1363,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
+		SETBIT(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 		closed = false;
 		break;
 
@@ -1421,6 +1422,7 @@ press_ok:;
 
 	case WE_DESTROY:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
+		CLRBIT(_no_scroll, SCROLL_CHAT);
 		// If the window is not closed yet, it means it still needs to send a CANCEL
 		if (!closed) {
 			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);

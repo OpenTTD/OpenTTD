@@ -536,6 +536,7 @@ enum {
 	SCROLL_CON =  0,
 	SCROLL_EDIT = 1,
 	SCROLL_SAVE = 2,
+	SCROLL_CHAT = 4,
 };
 VARDEF byte _no_scroll;
 

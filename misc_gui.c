@@ -930,7 +930,12 @@ void DrawEditBox(Window *w, int wid)
 static void QueryStringWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
-	switch(e->event) {
+	switch (e->event) {
+	case WE_CREATE:
+		SETBIT(_no_scroll, SCROLL_EDIT);
+		closed = false;
+		break;
+
 	case WE_PAINT:
 		SetDParam(0, WP(w,querystr_d).caption);
 		DrawWindowWidgets(w);
@@ -987,10 +992,6 @@ press_ok:;
 		}
 	} break;
 
-	case WE_CREATE:
-		closed = false;
-		break;
-
 	case WE_DESTROY:
 		// If the window is not closed yet, it means it still needs to send a CANCEL
 		if (!closed) {
@@ -1039,7 +1040,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	w = AllocateWindowDesc(&_query_string_desc);
-	SETBIT(_no_scroll, SCROLL_EDIT);
 
 	GetString(_edit_str_buf, str);
 	_edit_str_buf[realmaxlen] = '\0';
