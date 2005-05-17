@@ -41,6 +41,11 @@ static inline uint16 GetSignPoolSize(void)
 	return _sign_pool.total_items;
 }
 
+static inline bool IsSignIndex(uint index)
+{
+	return index < GetSignPoolSize();
+}
+
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL)
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
