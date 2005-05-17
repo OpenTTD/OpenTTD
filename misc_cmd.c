@@ -129,6 +129,8 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Player *p;
 
+	if (_cmd_text[0] == '\0') return CMD_ERROR;
+
 	str = AllocateNameUnique(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
@@ -152,6 +154,8 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Player *p;
+
+	if (_cmd_text[0] == '\0') return CMD_ERROR;
 
 	str = AllocateNameUnique(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
