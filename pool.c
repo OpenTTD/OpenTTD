@@ -10,7 +10,7 @@ void CleanPool(MemoryPool *pool)
 {
 	uint i;
 
-	DEBUG(misc, 4)("[Pool] (%s) Cleaing pool..", pool->name);
+	DEBUG(misc, 4)("[Pool] (%s) Cleaning pool..", pool->name);
 
 	/* Free all blocks */
 	for (i = 0; i < pool->current_blocks; i++)

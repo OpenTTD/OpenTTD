@@ -1115,7 +1115,7 @@ DEF_CONSOLE_HOOK(ConHookServerName)
 
 DEF_CONSOLE_HOOK(ConHookServerAdvertise)
 {
-	if (!_network_advertise)
+	if (!_network_advertise) // remove us from advertising
 		NetworkUDPRemoveAdvertise();
 
 	return true;
