@@ -136,17 +136,15 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	SignStruct *ss;
-
-	/* If GetDParam(0) != 0 means the new text for the sign is non-empty.
+	/* If _cmd_text != 0 means the new text for the sign is non-empty.
 	 * So rename the sign. If it is empty, it has no name, so delete it */
-	if (GetDParam(0) != 0) {
+	if (_cmd_text != NULL) {
 		/* Create the name */
 		StringID str = AllocateName(_cmd_text, 0);
 		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			ss = GetSign(p1);
+			SignStruct *ss = GetSign(p1);
 
 			/* Delete the old name */
 			DeleteName(ss->str);
@@ -166,7 +164,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} else { /* Delete sign */
 		if (flags & DC_EXEC) {
-			ss = GetSign(p1);
+			SignStruct *ss = GetSign(p1);
 
 			/* Delete the name */
 			DeleteName(ss->str);
